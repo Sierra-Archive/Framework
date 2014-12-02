@@ -103,30 +103,58 @@ final Class Transporte_Armazem_Cargas_DAO extends Framework\App\Dao
                         'class'             => 'obrigatorio'
                     )
                 )
-            ),
-            Array(
-                'mysql_titulo'      => 'telefone',
-                'mysql_tipovar'     => 'varchar', //varchar, int, 
-                'mysql_tamanho'     => 30,
+            ),Array(
+                'mysql_titulo'      => 'inicio_data',
+                'mysql_tipovar'     => 'date', //varchar, int, 
+                'mysql_tamanho'     => 10,
                 'mysql_null'        => false,  // nulo ?
-                'mysql_default'     => false, // valor padrao
+                'mysql_default'     => '0000-00-00', // valor padrao
                 'mysql_primary'     => false,  // chave primaria
                 'mysql_estrangeira' => false, // chave estrangeira     ligacao|apresentacao|condicao
                 'mysql_autoadd'     => false,
                 'mysql_comment'     => false,
-                'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
-                'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
+                'mysql_inside'      => 'data_brasil_eua({valor})', // Funcao Executada quando o dado for inserido no banco de dados
+                'mysql_outside'     => 'data_eua_brasil({valor})', // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'          => '', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Telefone',
+                    'Nome'              => 'Data do Inicio',
+                    'Mascara'           => 'Data',
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',
                     'formtipo'          => 'input',
+                    'validar'           => 'Control_Layoult_Valida_Data',
                     'input'             => array(
                         'tipo'              => 'text',
-                        'class'             => 'obrigatorio masc_fone'
+                        'class'             => 'obrigatorio'
+                    )
+                )
+            ),Array(
+                'mysql_titulo'      => 'fim_data',
+                'mysql_tipovar'     => 'date', //varchar, int, 
+                'mysql_tamanho'     => 10,
+                'mysql_null'        => false,  // nulo ?
+                'mysql_default'     => '0000-00-00', // valor padrao
+                'mysql_primary'     => false,  // chave primaria
+                'mysql_estrangeira' => false, // chave estrangeira     ligacao|apresentacao|condicao
+                'mysql_autoadd'     => false,
+                'mysql_comment'     => false,
+                'mysql_inside'      => 'data_brasil_eua({valor})', // Funcao Executada quando o dado for inserido no banco de dados
+                'mysql_outside'     => 'data_eua_brasil({valor})', // Funcao Executada quando o dado for retirado no banco de dados
+                'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
+                'linkextra'          => '', //0 ninguem, 1 admin, 2 todos 
+                'edicao'            => Array(
+                    'Nome'              => 'Data do Fim',
+                    'Mascara'           => 'Data',
+                    'valor_padrao'      => false,
+                    'readonly'          => false,
+                    'aviso'             => '',
+                    'formtipo'          => 'input',
+                    'validar'           => 'Control_Layoult_Valida_Data',
+                    'input'             => array(
+                        'tipo'              => 'text',
+                        'class'             => 'obrigatorio'
                     )
                 )
             ),
