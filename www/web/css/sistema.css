@@ -1,0 +1,91 @@
+/**
+
+
+   BOOTSTRAP COMPLEMENTAR
+
+*/
+.circle {
+    border-radius: 500px 500px 500px 500px !important;
+}
+.circle:hover, .circle:focus, .circle:active, .circle.active, .circle.disabled, .circle[disabled] {
+    border-radius: 500px 500px 500px 500px !important;
+}
+
+
+
+// tabela mover a direita
+table .left {
+    text-align:left  !important;
+}
+table .right {
+    text-align:right !important;
+}
+
+
+/* CALENDARIO */
+
+ul#days, ul.weeks {
+  font-family : 'courier new', monospace;
+  list-style-type : none;
+  margin : 10px 0 10px 0;
+  padding:0px;
+  
+}
+
+ul#days li span {
+  background-color : #669900;
+  border : 1px solid #000;
+  cursor : help;
+  font-weight : bold;
+  color : #fff;
+  padding : 1px;
+}
+
+ul.weeks li a.al, ul.weeks li a.na  { 
+  color : #666;
+  text-decoration : none;
+  background-color : #ffffcc;
+  border : 1px solid #999;
+  padding : 1px;
+  margin-right: 7px;
+}
+
+ul.weeks li a.na, ul.weeks li a.na:hover, ul.weeks li a.na:focus, ul.weeks li a.na:active   { 
+  background : transparent;
+  color : #666;
+  cursor : default;
+}
+
+ul.weeks li a.al:hover, ul.weeks li a.al:focus, ul.weeks li a.al:active {
+  color : #000;
+  background-color : #eecc11;
+  border : 1px solid #000;
+  text-decoration : none;
+  cursor : pointer;
+}
+
+ul.weeks li a.nu { 
+  color : #eee;
+  padding : 1px;
+  margin-right: 7px;
+  border : 1px solid #ccc;
+  background-color : #eee;
+  cursor : default;
+}
+
+span.sep {
+  display : none;
+}
+
+
+
+
+.btn {
+    margin-bottom: 2px;
+}
+
+
+// Formularios
+.obrigatoriomarcado {
+    border: 2px solid #FFAEB0 !important;
+}

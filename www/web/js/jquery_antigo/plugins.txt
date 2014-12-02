@@ -1,0 +1,9 @@
+Usados pelos Slides de Imagens:
+-jquery.history.js
+-jquery.opacityrollover.js
+-jush.js
+-jquery.galleriffic.js
+
+
+Upload de arquivos:
+-jquery.uploadify.v2.1.4.js

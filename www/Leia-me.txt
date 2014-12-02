@@ -1,0 +1,320 @@
+
+/***************************************************************************************\
+*                                                                                       *
+*                                                                                       *
+*                                       PROJETO                                         *
+*                                                                                       *
+*                                                                                       *
+\***************************************************************************************/
+Nome:            AutoProjeto
+Versão Atual:    Versão 2.2
+Desenvolvedores: Ricardo Rebello Sierra
+Reinicio1:       2012-09-30
+Reinicio2:       2012-12-30
+
+Framework Genérico
+Desenvolvedor: Ricardo Rebello Sierra <sierra.csi@gmail.com>
+
+/***************************************************************************************\
+*                                                                                       *
+*                                                                                       *
+*                                       ARQUITETURA                                         *
+*                                                                                       *
+*                                                                                       *
+\***************************************************************************************/
+
+
+_________________________________________________________________________
+Dependencias do Código:
+Javascript
+-> Jquery
+-> Angularjs (Da Google)
+-> Mordernizr
+
+______________________________________________________________________________________
+Estrutura:
+    index.php   -> Arquivo que carrega o Sistema
+    .htaccess   -> Responsavel por redirecionar qlqr link para index.php
+    app/*
+        Acl.php -> Controla o Acesso dos usuarios a cada modulo
+        Boot.php -> Realiza o Boot do Sistema
+        Conexao.php -> Class responsavel pela conexao e toda query do mysql
+        Controle.php -> Controle do Sistema, todos os controles o herdam
+                        Ele carrega o Visual e o Modelo tambem.
+                        Assim como identifica se o layoult retorna em html ou json (ajax)
+        Funcao.php -> Responsavel pelas funcoes exenciais ao sistema
+    arq/* -> Fica todos os arquivos que subiram por upload de acordo com o modulo
+    lang/* -> Fica todos os arquivos de linguagem do sistema
+    layoult/* -> Fica todos os layoults do sistema
+    libs/* -> Fica todas as Bibliotecas do Sistema
+    mod/* -> Ficam todos os modulos do sistema
+        _Sistema -> Modulo Nativo do Sistema (Não pode ser deletado)
+    web/* -> Ficam todos os js, img, css e flashs requeridos em todo o sistema
+
+
+/***************************************************************************************\
+*                                                                                       *
+*                                                                                       *
+*                                      PROGRAMANDO                                      *
+*                                                                                       *
+*                                                                                       *
+\***************************************************************************************/
+______________________________________________________________________________________
+
+
+Função e Metodos Nativos do Sistema:
+    Modelo
+        Usado dentro de Modelo para fazer consultas mysql
+            $this->bd->query( {QUERY_SQL} );
+    Visual
+        Armazena um Conteudo HTML:
+            public blocar($txt);
+            public Bloco_Maior_CriaConteudo($gravidade=0);
+            public Bloco_Maior_CriaTitulo($titulo, $gravidade=0);
+            public Bloco_Maior_CriaJanela($titulo,$url='', $gravidade=0);
+            public Bloco_Menor_CriaConteudo($gravidade=0);
+            public Bloco_Menor_CriaTitulo($titulo,$gravidade=0);
+        Cria Janela de Tamanho Pequeno com o COnteudo do Bloco até então
+            @params $titulo     Titulo a ser Contido na Janela
+            @params $gravidade  Quanto maior mais importancia, aparecerá emcima das outras
+            public Bloco_Menor_CriaJanela($titulo,$gravidade=0)
+
+
+
+
+Criando Seu Próprio Modulo do Sistema:
+    Preparo:
+        Crie um diretorio dentro da pasta /mod/ sendo o nome do diretorio o nome
+        do modulo.
+        Todo Modulo deve possuir 4 arquivos padroes Obrigatorios.
+            _Home.Class.php
+            { modulo }_Controle.php
+            { modulo }_Modelo.php
+            { modulo }_Visual.php
+        Para cada submodulo crie 3 arquivos extras
+            { modulo }_{ submodulo }C.php
+            { modulo }_{ submodulo }M.php
+            { modulo }_{ submodulo }V.php
+    Acesso:
+        Url: / {modulo} / {submodulo } / {Metodo} / {argumento1} / ... /
+
+
+
+/***************************************************************************************\
+*                                                                                       *
+*                                                                                       *
+*                                   ÁRVORE DO PROJETO                                   *
+*                                                                                       *
+*                                                                                       *
+\***************************************************************************************/
+config/
+	chamadas.php
+	config.php
+	funcoes.php
+App/
+                                Acl.php
+                                    public function Usuario_Senha_Verificar($email=false,$senha=false)
+mod/
+				Controle.php
+						    public $model;
+						    public $Visual;
+						    public $logado;
+								protected $calendario;
+								protected $config_dia;
+								protected $config_mes;
+								protected $config_ano;
+								protected $config_dataixi;
+							 	public function __construct($usuario = '0',$senha = '0'){
+								public function redirect($url)
+								public function error($error)
+								public function log($mensagem)
+								private function usuario()
+								public function Categorias_ShowTab($tipo='')
+								public function Categorias_formcadastro($tipo)
+								public function Categorias_inserir()
+								public function Categorias_ShowSelect(&$form,$tipo)
+								function __destruct()
+					
+				Modelo.php
+								* Class CONEXAO
+								public function Categorias_Retorna($tipo='',$parent=0)
+								public function Categorias_inserir($nome,$categoria,$tipo)
+					 
+				Visual.php
+								public function renderizar($logado = 0,&$calendario = 0,$config_dia = 0,$config_mes = 0,$config_ano = 0,$config_dataixi = 0)
+								public function novajanela($titulo,$url='')
+								public function getjanela()
+								public function novajaneladir($titulo)
+								public function getjaneladir()
+								public function janelaajax($titulo)
+								public function retornablocos()
+								public function novatabela($tipo,&$tabela)
+								public function blocar($txt)
+								private function carrega_menu(&$calendario,$config_dia,$config_mes,$config_ano,$config_dataixi)
+								private function janela_menu($titulo = 'calendario', $conteudo = 0,&$calendario,$config_dia,$config_mes,$config_ano,$config_dataixi)
+								public function Json_Start($title='',$historico=true)
+								public function Json_IncluiTipo($tipo,&$array)
+								public function Json_Retorna()
+								public function Categorias_ShowTab(&$array,&$tabela,$i=0,$nivel=0)
+								public function Categorias_ShowSelect(&$array,&$form,$i=0,$nivel=0)
+								* OBS: outras duas classes
+				
+				agenda/
+								compromissoC.php
+												static function compromisso_formcadastro($data,&$selectlocais)
+												public function compromisso()
+												public function compromisso_inserir()
+												* show();
+												* add();
+												* del();
+									
+								compromissoM.php
+												public function compromisso_inserir($nome,$dt_inicio,$dt_fim,$descricao,$local)
+												public function compromisso_retorna(&$array)
+												public function compromisso_fullretorna(&$array)
+												public function compromisso_fullretorna_unico($id)
+												* show();
+												* add();
+												* del();
+									
+								compromissoV.php
+								
+								controle.php
+								
+								homeC.php
+								
+								homeM.php
+								
+								homeV.php
+								
+								model.php
+								
+								statC.php
+								
+								statM.php
+								
+								statV.php
+								
+								Visual.php
+								
+					
+				financeiro/
+								Controle.php
+								
+								Modelo.php
+								
+								Visual.php
+								
+								financasC.php
+												public function diaria()
+												public function financas($dia = 0,$mes = 0,$ano = 0)
+												public function mensal()
+												public function financas_carregajanelaadd()
+												public function financas_formcadastro($data,&$selectlocais)
+												public function financas_inserir()
+												public function financas_Del()
+									
+								financasM.php
+												public function retorna_financeiro(&$financas,$ano = 0,$mes = 0, $dia = 0)
+												public function retorna_financeiro_tipo(&$financas, $tipo = 0,$ano = 0,$mes = 0, $dia = 0)
+												public function retorna_financeiro_subtipo(&$financas, $categoria = 0,$ano = 0,$mes = 0, $dia = 0)
+												public function financas_inserir($data,$valor,$positivo,$categoria,$usuario_social,$obs)
+												public function financas_Del($id)
+								
+								financasV.php
+							
+				usuario_social/
+								Controle.php
+								
+								Modelo.php
+												public function porc_ficar($personaid)
+												public function porc_confiar($usuario_id)
+												public function porc_amizade($personaid)
+												public function retorna_usuario_social(&$usuario_social)
+												public function retorna_acoes($personaid,&$acoes)
+												public function estatisticas()
+									
+								Visual.php
+								
+								acoesC.php
+								acoesM.php
+								acoesV.php
+								usuario_socialC.php
+								usuario_socialM.php
+								usuario_socialV.php
+								statC.php
+								statM.php
+								statV.php
+					
+				
+				* projeto/
+								Controle.php
+								Modelo.php
+								Visual.php
+								projetoC.php
+												public function infoprojeto();
+												public function listarclientes();
+												public function listaratividades();
+												public function editarprojeto();
+												public function editargravarprojeto();
+												public function criarprojeto();
+												public function criargravarprojeto();
+												public function delprojeto();
+												public function delgravarprojeto();
+								projetoM.php
+												public function infoprojeto();
+												public function listarclientes();
+												public function listaratividades();
+								projetoV.php
+								listagemC.php
+												public function procurar();
+												public function listar();
+								listagemM.php
+												public function procurar();
+												public function listar();
+								listagemV.php
+					
+				
+				usuarios/
+				
+web/
+				css/
+				img/
+				js/
+								site.js
+
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/***************************************************************************************\
+*                                                                                       *
+*                                                                                       *
+*                                       A FAZER                                         *
+*                                                                                       *
+*                                                                                       *
+\***************************************************************************************/
+
+
+
+
+
+
+
+
+
+

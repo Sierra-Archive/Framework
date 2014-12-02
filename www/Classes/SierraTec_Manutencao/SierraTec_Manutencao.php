@@ -1,0 +1,482 @@
+<?php
+namespace Framework\Classes;
+
+class SierraTec_Manutencao {
+    
+    
+    protected $registro;
+    protected $_Conexao;
+    public function __construct() {
+        $this->registro = \Framework\App\Registro::getInstacia();
+        $this->_Conexao = $this->registro->_Conexao;
+    }
+    /***********************************
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     *                 FUNCOES DE MANUTENCAO
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     */
+    public function Manutencao(){
+        // Atualiza Dependencias
+        $this->Atualiza_Dependencia('app');
+        $this->Atualiza_Dependencia();
+        
+        // Limpa Bando de Dados
+        $this->BD_Limpar();
+    }
+    /**
+     * Procura Por Todos os Usos de Dao e Coloca ai !
+     * @param type $dir
+     */
+    private function Atualiza_Dependencia($dir='mod'){
+
+        // Carrega Todos os DAO
+        if($dir=='mod'){
+            $dir = MOD_PATH;  
+        }else if($dir=='app'){
+            $dir = APP_PATH;  
+        }else{
+            $dir = $dir.DS;
+        }
+        
+        $dependencia_dao            = Array();
+        $dependencia_dao_CONSTANTE  = Array();
+        // Le pasta
+        $diretorio = dir($dir);
+        
+        // PRocura Arqiuvos e Anota valores usados
+        while($arquivo = $diretorio -> read()){
+            $achado         = Array();
+            // Ignora Propria Pasta, pasta anterior e Arquivo Autoload
+            if($arquivo!='..' && $arquivo!='.' && $arquivo!='AutoLoad.php'){
+                if(is_dir($dir.$arquivo)){
+                    $this->Atualiza_Dependencia($dir.$arquivo);
+                }else{
+                    $conteudo = file_get_contents($dir.$arquivo);
+                    // PRocura Ocorrencias de COnexao
+                    $resultado = preg_match_all(
+                        '/Sql_(Select|Inserir|Update|Delete)'.
+                            '(\(|\(\')([_A-Za-z]+)(\)|\,|\')/U', 
+                        $conteudo, 
+                        $achado
+                    );
+                    if ($resultado >= 1) {
+                        reset($achado[3]);
+                        while(key($achado[3])!==NULL){
+                            $dependencia_dao[current($achado[3])] = current($achado[3]);
+                            next($achado[3]);
+                        }
+                    }
+                    // Procura DAO iniciado
+                    $resultado = preg_match_all(
+                        '/[_A-Za-z]+_DAO/U', 
+                        $conteudo, 
+                        $achado
+                    );
+                    if ($resultado >= 1) {
+                        reset($achado[0]);
+                        while(key($achado[0])!==NULL){
+                            $current = str_replace('_DAO', '', current($achado[0]));
+                            $dependencia_dao[$current] = $current;
+                            next($achado[0]);
+                        }
+                    }
+                    // Procura CONSTANTES DE BANCO DE DADOS
+                    $resultado = preg_match_all(
+                        '/MYSQL_(.+)[^([:alnum:]_)]/U', 
+                        $conteudo, 
+                        $achado
+                    );
+                    if ($resultado >= 1) {
+                        reset($achado[1]);
+                        while(key($achado[1])!==NULL){
+                            $constante = str_replace(')', '', 'MYSQL_'.current($achado[1]));
+                            eval('$dependencia_dao_CONSTANTE[$constante] = '.$constante.';');
+                            next($achado[1]);
+                        }
+                    }
+                }   
+            }
+        }
+        
+        // Adiciona as COnstantes a Classe
+        $tabelas = &\Conexao::$tabelas;
+        foreach($tabelas as &$valor){
+            if(in_array($valor['nome'], $dependencia_dao_CONSTANTE)){
+                //var_dump($valor['nome'],$valor['class']); echo "\n\n";
+                $dependencia_dao[$valor['class']] = $valor['class'];
+            }
+        }
+        
+        
+        // Grava em Config do Modulo
+        // Aumenta uma Versao V.V.V+1
+        // Grava Dependencia DAO #update
+        var_dump($dir,$dependencia_dao,$dependencia_dao_CONSTANTE);
+    }
+    
+    
+    /***********************************
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     *                 FUNCOES DE ALTERACAO DE CODIGO ESPECIFICAS
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     */
+    /**
+     * Pega o Arquivo de CONFIG atual e altera valores
+     * @param type $nome
+     * @param type $valor
+     * @param type $config
+     * @return type
+     */
+    public function Alterar_Config($nome,$valor=false,$config='config'){
+        
+        // Carrega CONFIG
+        $arq = INI_PATH.SRV_NAME.DS.$config.'.php'; 
+        if(file_exists($arq)){
+            $conteudo = file_get_contents($arq);
+            // Caso valor seja falso, apenas retorna valor
+            if($valor===false){
+                return $this->PHP_GetConstante($conteudo, $nome,$valor);
+            }else{
+                // SE nao, pega o novo conteudo e altera no arquivo.
+                $conteudo = $this->PHP_GetConstante($conteudo, $nome,$valor);
+            }
+            
+            // Salvar
+            file_put_contents($arq, $conteudo);
+                    
+            //Retorna
+            return true;
+        }
+    }
+    
+    /***********************************
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     *                 FUNCOES DE ALTERACAO DE CODIGO GENERICAS
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     */
+    /**
+     * 
+     * @param type $codigo
+     * @param type $variavel
+     */
+    private function PHP_GetVariavel($codigo,$variavel){
+        // Procura CONSTANTES DE BANCO DE DADOS
+        $achado = Array();
+        $resultado = preg_match_all(
+            '/\$'.$variavel.'[ \t\n\r\f\v]*=[ \t\n\r\f\v]*([^ \t\n\r\f\v]*);/U', 
+            $codigo, 
+            $achado
+        );
+        if ($resultado >= 1) {
+        var_dump(
+            $achado);
+            reset($achado[1]);
+            while(key($achado[1])!==NULL){
+                $constante = 'MYSQL'.current($achado[1]);
+                $dependencia_dao_CONSTANTE[$constante] = $constante;
+                next($achado[1]);
+            }
+        }
+    }
+    /**
+     * Pega um Código, procura por uma constante, se alterarvalor for falso, devolve o valor da constante,
+     * se nao o altera.
+     * @param type $codigo
+     * @param type $nome_Constante
+     * @param type $alterarvalor
+     */
+    private function PHP_GetConstante($codigo,$nome_Constante,$alterarvalor=false){
+        // Procura CONSTANTES DE BANCO DE DADOS
+        $achado = Array();
+        $resultado = preg_match_all(
+            '/define\(\''.$nome_Constante.'\'[ \t\n\r\f\v]*,[ \t\n\r\f\v]*([^ \t\n\r\f\v]*)\);/U', 
+            $codigo, 
+            $achado
+        );
+        if ($resultado > 1) {
+            $this->log('Não se pode ter duas constantes com o mesmo nome',$nome_Constante);
+        }
+        
+        // Caso nao tenha resultado
+        if ($resultado == 0) {
+            // Caso tenha valor, cria a constante
+            if($alterarvalor!==false){
+                if(is_bool($alterarvalor)){
+                    $resultado = 'true';
+                }else if($alterarvalor==='false' || $alterarvalor==='falso'){
+                    $resultado = 'false';
+                }else if(is_string($alterarvalor)){
+                    $resultado = '\''.$alterarvalor.'\'';
+                }else{
+                    $resultado = (int) $alterarvalor;
+                }
+                
+                $codigo = preg_replace(
+                    '/\?>/U', 
+                    'define(\''.$nome_Constante.'\','.$resultado.'); '."\n\n".'?>', 
+                    $codigo,
+                    1
+                );
+                return $codigo;
+            }
+        }else 
+        //CASo tenha resultado
+        if ($resultado >= 1) {
+            $resultado = $achado[1][0];
+            
+            // CAso alterar valor seja falso, retorna no mesmo tipo e nao como string usando eval
+            if($alterarvalor===false){
+                return eval('return '.$resultado.';');
+            }
+            
+            // CAso seja inteiro, boleano ou string
+            if(strpos($resultado, '\'')!==false || strtolower($resultado)=='null'){
+                $tipo = 'string';
+                $resultado = '\''.$alterarvalor.'\'';
+            }else if(strtolower($resultado)=='false' || strtolower($resultado)=='true'){
+                $tipo = 'boleano';
+                if($alterarvalor===true || $alterarvalor==='true'){
+                    $resultado = 'true';
+                }else if($alterarvalor==='false' || $alterarvalor==='falso'){
+                    $resultado = 'false';
+                }
+            }else{
+                $tipo = 'numeral';
+                $resultado = (string) $alterarvalor;
+            }
+            
+            $codigo = preg_replace(
+                '/define\(\''.$nome_Constante.'\'([ \t\n\r\f\v]*),([ \t\n\r\f\v]*)([^ \t\n\r\f\v;]*)\);/U', 
+                'define(\''.$nome_Constante.'\'$1,${2}'.$resultado.');', 
+                $codigo
+            );
+            return $codigo;
+        }
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    /***********************************
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     *                 FUNCOES DE ALTERACAO DE BANCO DE DADOS ESPECIFICAS
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     */
+    
+    // Remove Tabelas não Usadas e campos nao usados
+    // #update
+    public function BD_Limpar(){
+        
+    }
+    
+    
+    public function Verificar_Sis_Dao(){
+        // Verificar se Toda Dao tem Primaria..
+        //etc..
+    }
+    /***********************************
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     *                 FUNCOES DE ALTERACAO DE BANCO DE DADOS GENERICOS
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     */
+    
+    
+    
+    
+    /***********************************
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     *                 FUNCOES DE EXportacao E ATUALIZACAOde CONTEUDO
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     */
+    
+    /**
+     *  troca o nome de um servidor para outro
+     * @param type $novo Nome antigo
+     * @param type $antigo Nome Novo
+     */
+    public function Tranferencia_DB_Servidor($novo,$antigo=false){
+        $tabelas = &\Framework\App\Conexao::$tabelas;
+        foreach($tabelas as $indice=>&$valor){
+            if($valor['static']===false){
+                if($antigo!==false){
+                    $this->_Conexao->query('UPDATE '.$indice.' SET servidor=\''.$novo.'\' WHERE servidor=\''.$antigo.'\'');
+                }else{
+                    $this->_Conexao->query('UPDATE '.$indice.' SET servidor=\''.$novo.'\'');
+                }
+            }
+        }
+        //$this->_Modelo->db->
+    }
+    /**
+     * Atualiza Código e Banco de Dados para Versoes mais Recentes
+     * @param type $versao Versão antiga para Atualizacao
+     */
+    public function Atualizacao_Version($versao=2.2){
+        $versao_atual = SISTEMA_CFG_VERSION;
+        
+        // Atualizacao para Versao 2.3
+        if($versao<2.3 && $versao_atual>=2.3){
+            $qnt = Array();
+            $qnt['deupau'] = 0;
+            $sucesso = 0;
+            $foi = false;
+            // Acrescentar Categoria em Todos os Financeiros
+            $atualizar = Array();
+            $financeiro = $this->_Conexao->Sql_Select('Financeiro_Pagamento_Interno',false,0,''/*,'motivo,motivoid,categoria'*/);
+            if(is_object($financeiro)) $financeiro = Array($financeiro);
+            if(!empty($financeiro)){
+                foreach($financeiro as $valor){
+                    $valor->categoria = (int) $valor->categoria;
+                    if($valor->motivo=='comercio_Estoque' && ($valor->categoria=='' || $valor->categoria==0 || $valor->categoria==NULL)){
+                        $valor_motivo = $this->_Conexao->Sql_Select('Comercio_Fornecedor_Material',Array('id'=>$valor->motivoid),1,'','categoria');
+                        if(!is_object($valor_motivo)){  ++$qnt['deupau']; continue;}
+                        $valor->categoria = $valor_motivo->categoria;
+                        $foi = $this->_Conexao->Sql_Update($valor);
+                        if($foi){
+                            $sucesso=$sucesso+1;
+                        }
+                    }
+                    
+                    if($valor->categoria=='' || $valor->categoria==0 || $valor->categoria==NULL){
+                        if(isset($qnt['nullo'])){
+                            ++$qnt['nullo'];
+                        }else{
+                            $qnt['nullo'] = 1;
+                        }
+                    }else{
+                        if(isset($qnt[$valor->categoria])){
+                            ++$qnt[$valor->categoria];
+                        }else{
+                            $qnt[$valor->categoria] = 1;
+                        }
+                    }
+                }
+            }
+            var_dump($sucesso,$qnt);
+            
+            
+            
+        }
+    }
+}

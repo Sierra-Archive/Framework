@@ -1,0 +1,17 @@
+{
+    "name" : "sierratecnologia/framework",
+    "description" : "Project Description",
+    "keywords" : [
+        "Project First Tag",
+        "Project Second Tag",
+        "Project Third Tag"
+    ],
+    "homepage" : "http://www.ricardosierra.com.br/",
+    
+    "require": {
+        "php" : ">=5.4.0"
+    },
+    "require-dev" : {
+        "phpunit/phpunit" : "4.0.*"
+    }
+}

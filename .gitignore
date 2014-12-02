@@ -1,0 +1,5 @@
+nbproject/private/
+www/arq/**/*
+www/cache/**/*
+www/Ini/**/*
+www/Ini/**/!config.php
