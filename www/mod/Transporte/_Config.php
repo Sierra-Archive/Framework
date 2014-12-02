@@ -26,14 +26,28 @@ $config_Menu = function (){
             'Icon'                  => 'truck',
             'Filhos'                => false,
         ),'Administrar'=>Array(
-            'Filhos'                => Array('Dicas de Estradas'=>Array(
+            'Filhos'                => Array('Leilão'=>Array(
+                'Nome'                  => 'Leilão',
+                'Link'                  => 'Transporte/Carga/Leilao_Transportadora',
+                'Gravidade'             => 90,
+                'Img'                   => 'turboadmin/m-dashboard.png',
+                'Icon'                  => 'rss',
+                'Filhos'                => false,
+            ),'Leilão'=>Array(
+                'Nome'                  => 'Leilão',
+                'Link'                  => 'Transporte/Carga/Leilao_Caminhoneiro',
+                'Gravidade'             => 80,
+                'Img'                   => 'turboadmin/m-dashboard.png',
+                'Icon'                  => 'rss',
+                'Filhos'                => false,
+            ),'Dicas de Estradas'=>Array(
                 'Nome'                  => 'Dicas de Estradas',
                 'Link'                  => 'Transporte/Estrada/Estradas',
                 'Gravidade'             => 75,
                 'Img'                   => 'turboadmin/m-dashboard.png',
                 'Icon'                  => 'rss',
                 'Filhos'                => false,
-            ),'Dicas de Estradas'=>Array(
+            ),'Minhas Cargas'=>Array(
                 'Nome'                  => 'Minhas Cargas',
                 'Link'                  => 'Transporte/Carga/Cargas',
                 'Gravidade'             => 70,
@@ -72,6 +86,15 @@ $config_Permissoes = function (){
             'Modulo'                => 'Transporte', // Modulo Referente
             'SubModulo'             => 'Caminhoneiro',   // Submodulo Referente
             'Metodo'                => 'Painel',  // Metodos referentes separados por virgula
+        ),
+        Array(
+            'Nome'                  => 'Transporte - Caminhoneiro (Leilão)',
+            'Desc'                  => '',
+            'Chave'                 => 'Transporte_Caminhoneiro_Leilao_Caminhoneiro',
+            'End'                   => 'Transporte/Caminhoneiro/Leilao_Caminhoneiro', // Endereco que deve conter a url para permitir acesso
+            'Modulo'                => 'Transporte', // Modulo Referente
+            'SubModulo'             => 'Caminhoneiro',   // Submodulo Referente
+            'Metodo'                => 'Leilao_Caminhoneiro',  // Metodos referentes separados por virgula
         ),
         Array(
             'Nome'                  => 'Transporte - Caminhoneiro (Listagens)',
@@ -153,6 +176,15 @@ $config_Permissoes = function (){
             'Modulo'                => 'Transporte', // Modulo Referente
             'SubModulo'             => 'Carga',   // Submodulo Referente
             'Metodo'                => 'Cargas_Del',  // Metodos referentes separados por virgula
+        ),
+        Array(
+            'Nome'                  => 'Transporte - Transportadora (Leilão)',
+            'Desc'                  => '',
+            'Chave'                 => 'Transporte_Caminhoneiro_Leilao_Transportadora',
+            'End'                   => 'Transporte/Caminhoneiro/Leilao_Transportadora', // Endereco que deve conter a url para permitir acesso
+            'Modulo'                => 'Transporte', // Modulo Referente
+            'SubModulo'             => 'Caminhoneiro',   // Submodulo Referente
+            'Metodo'                => 'Leilao_Transportadora',  // Metodos referentes separados por virgula
         ),
     );
 };

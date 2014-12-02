@@ -89,7 +89,7 @@ class Transporte_CargaControle extends Transporte_Controle
                 'Link'      => 'Transporte/Carga/Cargas',
             )
         )));
-        $carga = $this->_Modelo->db->Sql_Select('Transporte_Carga');
+        $carga = $this->_Modelo->db->Sql_Select('Transporte_Carga','{sigla}log_user_add=\''.$this->_Acl->Usuario_GetID().'\'');
         if(is_object($carga)) $carga = Array(0=>$carga);
         if($carga!==false && !empty($carga)){
             list($tabela,$i) = self::Cargas_Tabela($carga,false);
@@ -121,7 +121,7 @@ class Transporte_CargaControle extends Transporte_Controle
         $titulo = 'Listagem de Transportes de Cargas ('.$i.')';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Cargaistrar Cargas');
+        $this->_Visual->Json_Info_Update('Titulo','Listagem de Cargas');
     }
     /**
      * Listagem das Cargas Criadas pelo Usuario
@@ -169,7 +169,16 @@ class Transporte_CargaControle extends Transporte_Controle
         $formid     = 'formTransporte_CargaC_NoticiaEdit';
         $formbt     = 'Alterar Transporte de Carga';
         $formlink   = 'Transporte/Carga/Cargas_Edit2/'.$id;
-        $editar     = Array('Transporte_Carga',$id);
+        $editar    =  $this->_Modelo->db->Sql_Select('Transporte_Carga', Array('id'=>$id,'log_user_add'=>  $this->_Acl->Usuario_GetID()));
+        if(!is_object($editar)){
+            $mensagens = array(
+                "tipo" => 'erro',
+                "mgs_principal" => $language['mens_erro']['erro'],
+                "mgs_secundaria" => 'Você não Possue essa Carga'
+            );
+            $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+            exit;
+        }
         $campos = Transporte_Carga_DAO::Get_Colunas();
         \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos,$editar);   
     }
@@ -202,7 +211,7 @@ class Transporte_CargaControle extends Transporte_Controle
         
     	$id = (int) $id;
         // Puxa Transporte e deleta
-        $carga    =  $this->_Modelo->db->Sql_Select('Transporte_Carga', Array('id'=>$id,''=>$id));
+        $carga    =  $this->_Modelo->db->Sql_Select('Transporte_Carga', Array('id'=>$id,'log_user_add'=>  $this->_Acl->Usuario_GetID()));
         $sucesso =  $this->_Modelo->db->Sql_Delete($carga);
         // Mensagem
     	if($sucesso===true){
@@ -303,5 +312,199 @@ class Transporte_CargaControle extends Transporte_Controle
         }
         $this->_Visual->Json_Info_Update('Historico', false);  
     }*/
+    static function Leilao_Transportadora_Tabela(&$carga,$show_usuario=true){
+        $registro   = \Framework\App\Registro::getInstacia();
+        $Visual     = &$registro->_Visual;
+        $tabela = Array();
+        $editar = false;
+        $i = 0;
+        if(is_object($carga)) $carga = Array(0=>$carga);reset($carga);
+        foreach ($carga as &$valor) {                
+            $tabela['Id'][$i]           = '#'.$valor->id;
+            $tabela['Foto'][$i]         = '<img src="'.$valor->foto.'" style="max-width:100px;" />';
+            $tabela['Carga'][$i]       = $valor->nome;
+            if($valor->status==3 || $valor->status=='3'){
+                $texto = 'Entregue';
+                $valor->status='3';
+            }else if($valor->status==2 || $valor->status=='2'){
+                $texto = 'Em Armazenamento';
+                $valor->status='2';
+            }else if($valor->status==1 || $valor->status=='1'){
+                $texto = 'Em Transporte';
+                $valor->status='1';
+            }else{
+                $texto = 'Em Leilão';
+                $valor->status='0';
+                $editar = true;
+            }
+            $tabela['Funções'][$i]      =/* '<span id="status'.$valor->id.'">'.*/$Visual->Tema_Elementos_Btn('Status'.$valor->status     ,Array($texto        ,'Transporte/Carga/Status/'.$valor->id.'/'    ,''))/*.'</span>'*/;
+            /*if($valor->destaque==1){
+                $texto = 'Em Destaque';
+            }else{
+                $texto = 'Não está em destaque';
+            }
+            $tabela['Funções'][$i]      .= '<span id="destaques'.$valor->id.'">'.$Visual->Tema_Elementos_Btn('Destaque'.$valor->destaque   ,Array($texto   ,'Transporte/Carga/Destaques/'.$valor->id.'/'    ,'')).'</span>';
+            */
+            if($editar===true){
+                $tabela['Funções'][$i]      .= $Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Transporte de Carga'        ,'Transporte/Carga/Leilao_Transportadora_Edit/'.$valor->id.'/'    ,'')).
+                                           $Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Transporte de Carga'       ,'Transporte/Carga/Leilao_Transportadora_Del/'.$valor->id.'/'     ,'Deseja realmente deletar esse Transporte de Carga ?'));
+            }
+            ++$i;
+        }
+        return Array($tabela,$i);
+    }
+    
+    /**
+     * Listagem das Leilao_Transportadora Criadas pelo Usuario
+     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
+     * @version 2.0
+     */
+    public function Leilao_Transportadora($export=false){
+        $i = 0;
+        self::Endereco_Noticia(false);
+        $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
+            Array(
+                'Adicionar Transporte de Carga',
+                'Transporte/Carga/Leilao_Transportadora_Add',
+                ''
+            ),
+            Array(
+                'Print'     => true,
+                'Pdf'       => true,
+                'Excel'     => true,
+                'Link'      => 'Transporte/Carga/Leilao_Transportadora',
+            )
+        )));
+        $carga = $this->_Modelo->db->Sql_Select('Transporte_Carga','{sigla}log_user_add=\''.$this->_Acl->Usuario_GetID().'\'');
+        if(is_object($carga)) $carga = Array(0=>$carga);
+        if($carga!==false && !empty($carga)){
+            list($tabela,$i) = self::Leilao_Transportadora_Tabela($carga,false);
+            // SE exportar ou mostra em tabela
+            if($export!==false){
+                self::Export_Todos($export,$tabela, 'Meus Transportes de Carga');
+            }else{
+                $this->_Visual->Show_Tabela_DataTable(
+                    $tabela,     // Array Com a Tabela
+                    '',          // style extra
+                    true,        // true -> Add ao Bloco, false => Retorna html
+                    false,        // Apagar primeira coluna ?
+                    Array(       // Ordenacao
+                        Array(
+                            0,'desc'
+                        )
+                    )
+                );
+            }
+            unset($tabela);
+        }else{
+            if($export!==false){
+                $mensagem = 'Nenhum Transporte de Carga Cadastrada para exportar';
+            }else{
+                $mensagem = 'Nenhum Transporte de Carga Cadastrada';
+            }
+            $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">'.$mensagem.'</font></b></center>');
+        }
+        $titulo = 'Listagem de Transportes de Leilao_Transportadora ('.$i.')';
+        $this->_Visual->Bloco_Unico_CriaJanela($titulo);
+        //Carrega Json
+        $this->_Visual->Json_Info_Update('Titulo','Listagem de Leilao_Transportadora');
+    }
+    static function Leilao_Caminhoneiro_Tabela(&$carga,$show_usuario=true){
+        $registro   = \Framework\App\Registro::getInstacia();
+        $Visual     = &$registro->_Visual;
+        $tabela = Array();
+        $editar = false;
+        $i = 0;
+        if(is_object($carga)) $carga = Array(0=>$carga);reset($carga);
+        foreach ($carga as &$valor) {                
+            $tabela['Id'][$i]           = '#'.$valor->id;
+            $tabela['Foto'][$i]         = '<img src="'.$valor->foto.'" style="max-width:100px;" />';
+            $tabela['Carga'][$i]       = $valor->nome;
+            if($valor->status==3 || $valor->status=='3'){
+                $texto = 'Entregue';
+                $valor->status='3';
+            }else if($valor->status==2 || $valor->status=='2'){
+                $texto = 'Em Armazenamento';
+                $valor->status='2';
+            }else if($valor->status==1 || $valor->status=='1'){
+                $texto = 'Em Transporte';
+                $valor->status='1';
+            }else{
+                $texto = 'Em Leilão';
+                $valor->status='0';
+                $editar = true;
+            }
+            $tabela['Funções'][$i]      =/* '<span id="status'.$valor->id.'">'.*/$Visual->Tema_Elementos_Btn('Status'.$valor->status     ,Array($texto        ,'Transporte/Carga/Status/'.$valor->id.'/'    ,''))/*.'</span>'*/;
+            /*if($valor->destaque==1){
+                $texto = 'Em Destaque';
+            }else{
+                $texto = 'Não está em destaque';
+            }
+            $tabela['Funções'][$i]      .= '<span id="destaques'.$valor->id.'">'.$Visual->Tema_Elementos_Btn('Destaque'.$valor->destaque   ,Array($texto   ,'Transporte/Carga/Destaques/'.$valor->id.'/'    ,'')).'</span>';
+            */
+            if($editar===true){
+                $tabela['Funções'][$i]      .= $Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Transporte de Carga'        ,'Transporte/Carga/Leilao_Caminhoneiro_Edit/'.$valor->id.'/'    ,'')).
+                                           $Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Transporte de Carga'       ,'Transporte/Carga/Leilao_Caminhoneiro_Del/'.$valor->id.'/'     ,'Deseja realmente deletar esse Transporte de Carga ?'));
+            }
+            ++$i;
+        }
+        return Array($tabela,$i);
+    }
+    
+    /**
+     * Listagem das Leilao_Caminhoneiro Criadas pelo Usuario
+     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
+     * @version 2.0
+     */
+    public function Leilao_Caminhoneiro($export=false){
+        $i = 0;
+        self::Endereco_Noticia(false);
+        $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
+            Array(
+                'Adicionar Transporte de Carga',
+                'Transporte/Carga/Leilao_Caminhoneiro_Add',
+                ''
+            ),
+            Array(
+                'Print'     => true,
+                'Pdf'       => true,
+                'Excel'     => true,
+                'Link'      => 'Transporte/Carga/Leilao_Caminhoneiro',
+            )
+        )));
+        $carga = $this->_Modelo->db->Sql_Select('Transporte_Carga','{sigla}log_user_add=\''.$this->_Acl->Usuario_GetID().'\'');
+        if(is_object($carga)) $carga = Array(0=>$carga);
+        if($carga!==false && !empty($carga)){
+            list($tabela,$i) = self::Leilao_Caminhoneiro_Tabela($carga,false);
+            // SE exportar ou mostra em tabela
+            if($export!==false){
+                self::Export_Todos($export,$tabela, 'Meus Transportes de Carga');
+            }else{
+                $this->_Visual->Show_Tabela_DataTable(
+                    $tabela,     // Array Com a Tabela
+                    '',          // style extra
+                    true,        // true -> Add ao Bloco, false => Retorna html
+                    false,        // Apagar primeira coluna ?
+                    Array(       // Ordenacao
+                        Array(
+                            0,'desc'
+                        )
+                    )
+                );
+            }
+            unset($tabela);
+        }else{
+            if($export!==false){
+                $mensagem = 'Nenhum Transporte de Carga Cadastrada para exportar';
+            }else{
+                $mensagem = 'Nenhum Transporte de Carga Cadastrada';
+            }
+            $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">'.$mensagem.'</font></b></center>');
+        }
+        $titulo = 'Listagem de Transportes de Leilao_Caminhoneiro ('.$i.')';
+        $this->_Visual->Bloco_Unico_CriaJanela($titulo);
+        //Carrega Json
+        $this->_Visual->Json_Info_Update('Titulo','Listagem de Leilao_Caminhoneiro');
+    }
 }
 ?>
