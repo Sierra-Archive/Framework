@@ -1,5 +1,8 @@
 nbproject/private/
 www/arq/**/*
-www/cache/**/*
+www/arq/**/!.htaccess
+www/Cache/**/*
+www/Cache/**/!.htaccess
 www/Ini/**/*
 www/Ini/**/!config.php
+www/Ini/**/!.htaccess
