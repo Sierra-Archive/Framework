@@ -26,15 +26,15 @@ $config_Menu = function (){
             'Icon'                  => 'truck',
             'Filhos'                => false,
         ),'Administrar'=>Array(
-            'Filhos'                => Array('Leilão'=>Array(
-                'Nome'                  => 'Leilão',
+            'Filhos'                => Array('Leilão de Trans.'=>Array(
+                'Nome'                  => 'Leilão de Trans.',
                 'Link'                  => 'Transporte/Carga/Leilao_Transportadora',
                 'Gravidade'             => 90,
                 'Img'                   => 'turboadmin/m-dashboard.png',
                 'Icon'                  => 'rss',
                 'Filhos'                => false,
-            ),'Leilão'=>Array(
-                'Nome'                  => 'Leilão',
+            ),'Leilão de Caminhoneiro'=>Array(
+                'Nome'                  => 'Leilão de Caminhoneiro',
                 'Link'                  => 'Transporte/Carga/Leilao_Caminhoneiro',
                 'Gravidade'             => 80,
                 'Img'                   => 'turboadmin/m-dashboard.png',
@@ -90,10 +90,10 @@ $config_Permissoes = function (){
         Array(
             'Nome'                  => 'Transporte - Caminhoneiro (Leilão)',
             'Desc'                  => '',
-            'Chave'                 => 'Transporte_Caminhoneiro_Leilao_Caminhoneiro',
-            'End'                   => 'Transporte/Caminhoneiro/Leilao_Caminhoneiro', // Endereco que deve conter a url para permitir acesso
+            'Chave'                 => 'Transporte_Carga_Leilao_Caminhoneiro',
+            'End'                   => 'Transporte/Carga/Leilao_Caminhoneiro', // Endereco que deve conter a url para permitir acesso
             'Modulo'                => 'Transporte', // Modulo Referente
-            'SubModulo'             => 'Caminhoneiro',   // Submodulo Referente
+            'SubModulo'             => 'Carga',   // Submodulo Referente
             'Metodo'                => 'Leilao_Caminhoneiro',  // Metodos referentes separados por virgula
         ),
         Array(
@@ -180,10 +180,10 @@ $config_Permissoes = function (){
         Array(
             'Nome'                  => 'Transporte - Transportadora (Leilão)',
             'Desc'                  => '',
-            'Chave'                 => 'Transporte_Caminhoneiro_Leilao_Transportadora',
-            'End'                   => 'Transporte/Caminhoneiro/Leilao_Transportadora', // Endereco que deve conter a url para permitir acesso
+            'Chave'                 => 'Transporte_Carga_Leilao_Transportadora',
+            'End'                   => 'Transporte/Carga/Leilao_Transportadora', // Endereco que deve conter a url para permitir acesso
             'Modulo'                => 'Transporte', // Modulo Referente
-            'SubModulo'             => 'Caminhoneiro',   // Submodulo Referente
+            'SubModulo'             => 'Carga',   // Submodulo Referente
             'Metodo'                => 'Leilao_Transportadora',  // Metodos referentes separados por virgula
         ),
     );
