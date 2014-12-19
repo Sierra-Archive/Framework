@@ -412,15 +412,6 @@ var Sierra = (function () {
             id = $(formulario),
             url = formulario.action,
             passar = true;
-    
-        // Verifica se Contem a url do Sistema e Tira
-        if(url.indexOf(ConfigArquivoPadrao) != -1){
-            url = url.split(ConfigArquivoPadrao);
-            url = url[1];
-        }else{
-            url = url;
-        }
-        console.log(url);
 
         // verifica se existe validor
         id.find('input').each(function (i) {
@@ -881,7 +872,16 @@ var Sierra = (function () {
             xhr.send(null);
              */
             console.log(ConfigArquivoPadrao+"ajax/"+url,ConfigArquivoPadrao,url);
-            $.ajax({ type: tip, url: ConfigArquivoPadrao+"ajax/"+url, async: true,  dataType: 'json', data: params,/*complete: function () { 
+            // Verifica se Contem a url do Sistema e Tira
+            if(url.indexOf(ConfigArquivoPadrao) != -1){
+                url = url.split(ConfigArquivoPadrao);
+                url = ConfigArquivoPadrao+"ajax/"+url[1];
+            }else if(url.indexOf('http') != -1){
+                url = url;
+            }else{
+                url = ConfigArquivoPadrao+"ajax/"+url;
+            }
+            $.ajax({ type: tip, url: url, async: true,  dataType: 'json', data: params,/*complete: function () { 
 
             },*/success: function (data) {
                 if (resposta === true) {
