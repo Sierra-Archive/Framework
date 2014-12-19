@@ -410,8 +410,17 @@ var Sierra = (function () {
             params = $(formulario.elements).serialize(),
             //var self = this,
             id = $(formulario),
-            url = formulario.action.split(ConfigArquivoPadrao),
+            url = formulario.action,
             passar = true;
+    
+        // Verifica se Contem a url do Sistema e Tira
+        if(url.indexOf(ConfigArquivoPadrao) != -1){
+            url = url.split(ConfigArquivoPadrao);
+            url = url[1];
+        }else{
+            url = url;
+        }
+        console.log(url);
 
         // verifica se existe validor
         id.find('input').each(function (i) {
@@ -462,7 +471,7 @@ var Sierra = (function () {
         });
         // verifica se pode passar
         if (passar === true) {
-            Modelo_Ajax_Chamar(url[1],params,'POST',true,false,true);
+            Modelo_Ajax_Chamar(url,params,'POST',true,false,true);
             Control_Ajax_Popup_Fechar('popup');
             $button.attr('disabled',false);
             //self.reset();
@@ -871,6 +880,7 @@ var Sierra = (function () {
             xhr.open("GET", "http://jsperf.com");
             xhr.send(null);
              */
+            console.log(ConfigArquivoPadrao+"ajax/"+url,ConfigArquivoPadrao,url);
             $.ajax({ type: tip, url: ConfigArquivoPadrao+"ajax/"+url, async: true,  dataType: 'json', data: params,/*complete: function () { 
 
             },*/success: function (data) {

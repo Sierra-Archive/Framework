@@ -137,25 +137,19 @@ if(
   ){
     require_once (INI_PATH_TEMP.SRV_NAME.'/config.php');
     require_once (INI_PATH_TEMP.SRV_NAME.'/config_modulos.php');
-}else{
     
-    // SISTEMA CONFIG
-    define('INI_PATH'       , ROOT_PADRAO      .'Ini'      .DS);
-    define('LIB_PATH'       , ROOT_PADRAO      .'libs'     .DS);
-    define('CLASS_PATH'     , ROOT_PADRAO      .'Classes'  .DS);
-    define('INTER_PATH'     , ROOT_PADRAO      .'Interface'.DS);
-    define('MOD_PATH'       , ROOT_PADRAO      .'mod'      .DS);
+    require_once (INI_PATH_TEMP.'config.php');
+}else{
+    require_once (INI_PATH_TEMP.'config.php');
     throw new \Exception('Config não encontrado', 2828); //
 }
-require_once (INI_PATH_TEMP.'config.php');
-
-    
 // SISTEMA CONFIG
 define('INI_PATH'       , ROOT      .'Ini'      .DS);
 define('LIB_PATH'       , ROOT      .'libs'     .DS);
 define('CLASS_PATH'     , ROOT      .'Classes'  .DS);
 define('INTER_PATH'     , ROOT      .'Interface'.DS);
 define('MOD_PATH'       , ROOT      .'mod'      .DS);
+
 
 /***********************************************************
  * CONTROLE DE ERROS

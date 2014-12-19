@@ -612,7 +612,7 @@ readfile($link);*/
      * @version 0.0.2
      */
     static function Gerador_Formulario(&$objeto,&$form){
-        $tempo = new \Framework\App\Tempo('Controle Gerador Formulario');
+        //$tempo = new \Framework\App\Tempo('Controle Gerador Formulario');
         $Registro   = &\Framework\App\Registro::getInstacia();
         $Modelo    = $Registro->_Modelo;
         $extrangeiras = Array();
@@ -1092,7 +1092,7 @@ readfile($link);*/
         $Controle = &$registro->_Controle;
         $Modelo = &$registro->_Modelo;
         $Visual = &$registro->_Visual;
-        $tempo = new \Framework\App\Tempo('Controle Gerador Form Janela');
+        //$tempo = new \Framework\App\Tempo('Controle Gerador Form Janela');
         
         // Define Popup
         if(isset($_GET['formselect']) && $_GET['formselect']!=''){
@@ -1151,7 +1151,7 @@ readfile($link);*/
             self::mysql_AtualizaValores($campos, $objeto,$id);
         }
         // Puxa Form
-        $form = new \Framework\Classes\Form($formid,$formlink,'formajax');
+        $form = new \Framework\Classes\Form($formid,$formlink,'formajax',"mini",'horizontal','off');
         \Framework\App\Controle::Gerador_Formulario($campos, $form);
         // Carrega formulario
         if($bloco==='html'){
@@ -1212,7 +1212,7 @@ readfile($link);*/
      */
     protected function Gerador_Formulario_Janela2($titulo,$dao,$funcao = '',$sucesso1,$sucesso2,$colocar=false,$erro1 = '',$erro2 = ''){
         global $language;
-        $tempo = new \Framework\App\Tempo('Controle Gerador Form Janela2');
+        //$tempo = new \Framework\App\Tempo('Controle Gerador Form Janela2');
         // Variaveis
         $camponovo = false;
         // Verifica se é pra Add ou Editar
@@ -2099,7 +2099,7 @@ readfile($link);*/
                 $endereco_html .= self::$config_template['Buscar'];
             }
             // cria form se nao tiver logado
-            if($this->_Acl->logado===false){
+            if($this->_Acl->logado===false && $this->_request->getSubModulo()!=='erro' && $this->_request->getSubModulo()!=='Recurso' && $this->_request->getSubModulo()!=='localidades'){
                 $form = new \Framework\Classes\Form('Formlogin','',''); //formajax /'.SISTEMA_MODULO.'/'.SISTEMA_SUB.'/'.SISTEMA_MET
                 $form->Input_Novo('Login','sistema_login','','text', '',30, '');
                 $form->Input_Novo('Senha','sistema_senha','','password', 30, '','');

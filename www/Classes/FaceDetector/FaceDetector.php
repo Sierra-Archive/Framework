@@ -133,7 +133,7 @@ class FaceDetector
             $grayImage  = array_fill(0, $width, array_fill(0, $height, 0));
             //$img      = $grayImage;
             $squares    = $grayImage;
-            $tempo = new \Framework\App\Tempo('1 parte');
+            //$tempo = new \Framework\App\Tempo('1 parte');
             var_dump($width,$height);
             for($i = 0; $i < $width; ++$i)
             {
@@ -458,7 +458,7 @@ class Stage
 	public function pass(&$grayImage, &$squares, $i, $j, $scale)
 	{
             
-            $tempo = new \Framework\App\Tempo('Teste');
+            //$tempo = new \Framework\App\Tempo('Teste');
             
             
 		$sum = 0;

@@ -73,7 +73,7 @@ class Visual
     * @version 2.0
     */
     public function __construct($naozerado=true) {
-        //$imprimir = new \Framework\App\Tempo('Construcao Visual - SEM SMARTY');
+        $imprimir = new \Framework\App\Tempo('Construcao Visual - SEM SMARTY');
         if($naozerado){
             self::$config_template    = config_template();
             $this->_Registro        = &\Framework\App\Registro::getInstacia();
@@ -737,7 +737,7 @@ class Visual
         '<div id="escondido">'.
         '</div>'.
         '<div class="growlUI" style="display:none;">'.
-            '<h1>Growl Notification</h1> <h2>Have a nice day!</h2>'.
+            '<h1>SierraTecnologia</h1> <h2>Ricardo Sierra <sierra.csi@gmail.com></h2>'.
         '</div>'.
         '<div id="popup" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="popup" aria-hidden="true">'.
             '<div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button><h3 id="popuptitulo">Popup</h3></div>'.
@@ -1104,7 +1104,7 @@ class Visual
      * @version 0.0.1
      */
     public function renderizar(&$calendario = 0,$config_dia = 0,$config_mes = 0,$config_ano = 0,$config_dataixi = 0) {
-        //$imprimir = new \Framework\App\Tempo('Renderizar Json Visual - SEM SMARTY');
+        $imprimir = new \Framework\App\Tempo('Renderizar Json Visual - SEM SMARTY');
 	// logado =2 ajax
         $params = array(
             'site_titulo'   => $this->Json_Get_Titulo(),
@@ -1277,7 +1277,7 @@ class Visual
      * @version 0.0.1
      */
     public function renderizar_bloco($tpl,$params = Array()){
-        //$imprimir = new \Framework\App\Tempo('Renderizar bloco Visual - SEM SMARTY');
+        $imprimir = new \Framework\App\Tempo('Renderizar bloco Visual - SEM SMARTY');
         //$this->clear_cache($this->template_dir.$tpl.'.tpl');
         return $this->renderizar_Template($tpl,$params);
     }
@@ -1795,7 +1795,7 @@ class Visual
      * @version 0.0.1
      */
     public function Json_Retorna(){
-        //$imprimir = new \Framework\App\Tempo('Retornar Json Visual - SEM SMARTY');
+        $imprimir = new \Framework\App\Tempo('Retornar Json Visual - SEM SMARTY');
         if($this->jsonativado===false){
             $this->Json_Start();
         }

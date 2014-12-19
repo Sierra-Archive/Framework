@@ -10,7 +10,12 @@ class Request
     private $_url;
     
     public function __construct() {
-        $this->_permitidos = config_modulos();
+        
+        if(function_exists('config_modulos')){
+            $this->_permitidos = config_modulos();
+        }else{
+            $this->permitidos = Array();
+        }
         
         // Puxa URL e a separada pela /
         if(isset($_GET['url'])){

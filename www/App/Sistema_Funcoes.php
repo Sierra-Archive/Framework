@@ -231,7 +231,7 @@ Class Sistema_Funcoes {
             return false;
         }
         // Verifica se Modulo é permitido
-        if($modulo!='_Sistema' && !array_key_exists($modulo,config_modulos())){
+        if($modulo!='_Sistema' && function_exists('config_modulos') && !array_key_exists($modulo,config_modulos())){
             return false;
         }else{
             return true;

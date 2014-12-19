@@ -229,7 +229,7 @@ class Cache {
      * @return boolean Se o cache foi salvo
      */
     protected function Arquivos_Salvar($key, &$content, $time = null) {
-        $tempo = new \Framework\App\Tempo('Cache - Salvar '.$key);
+        //$tempo = new \Framework\App\Tempo('Cache - Salvar '.$key);
         $time = strtotime(!is_null($time) ? $time.' seconds' : self::$time.' seconds');
 
         // Gera o nome do arquivo
@@ -251,7 +251,7 @@ class Cache {
      * @return mixed Se o cache foi encontrado retorna o seu valor, caso contrário retorna NULL
      */
     protected function Arquivos_Leitura($key) {
-        $tempo = new \Framework\App\Tempo('Cache - Leitura '.$key);
+        //$tempo = new \Framework\App\Tempo('Cache - Leitura '.$key);
         $filename = $this->Arquivos_GerarEndereco($key);
         if (file_exists($filename) && is_readable($filename)) {
             return unserialize(file_get_contents($filename));
@@ -285,7 +285,7 @@ class Cache {
 
     // TIPO SHMOD
     protected function Shmop_Salvar($name, &$data, $timeout) {
-        $tempo = new \Framework\App\Tempo('CacheRAM - Salvar '.$name);
+        //$tempo = new \Framework\App\Tempo('CacheRAM - Salvar '.$name);
         // delete cache
         $id=shmop_open($this->Cache_Cod($name), "a", 0, 0);
         shmop_delete($id);
@@ -303,7 +303,7 @@ class Cache {
     }
 
     protected function Shmop_Leitura($name) {
-        $tempo = new \Framework\App\Tempo('CacheRAM - Leitura '.$name);
+        //$tempo = new \Framework\App\Tempo('CacheRAM - Leitura '.$name);
         if (!$this->Shmop_Expirar_Checar($name)) {
             $id=shmop_open($this->Cache_Cod($name), "a", 0, 0);
 

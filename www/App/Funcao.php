@@ -5,29 +5,30 @@
  */
 
 /**
- *     SEGURANÇA
+ *     SEGURANÇA - Antiinjection
  * @param type $sql
  * @return type
  * 
  * @version 0.2 -> Alterado para caso receba um Array, usar recursao para fazer antiinfection em todos
  */
-function anti_injection ($sql){
+function anti_injection($sql,$tags=false){
      if(is_array($sql)){
          $seg = Array();
          foreach($sql as $indice=>&$valor){
-             $seg[\anti_injection($indice)] = \anti_injection($valor);
+             $seg[\anti_injection($indice)] = \anti_injection($valor,$tags);
          }
+         $sql = $seq;
      }else{
-        // remove palavras que contenham sintaxe sql
-        $seg = preg_replace("/(from|select|insert|delete|where|drop table|show tables|#|\*|--|\\\\)/i", '', $sql);
-        $seg = trim($seg);//limpa espa�os vazio
-        $seg = strip_tags($seg);//tira tags html e php
-        $seg = addslashes($seg);//Adiciona barras invertidas a uma string
+        /*// remove palavras que contenham sintaxe sql
+        $sql = mysql_real_escape_string($sql);
+        if($tags===false){
+            $sql = strip_tags($sql);//tira tags html e php
+        }*/
      }
-     return $seg;
+     return $sql;
 }
 /**
- * Descriptografa
+ * Criptografia Fraca
  * @param type $x
  * @return type
  */
