@@ -12,14 +12,14 @@ class Transporte_Principal implements PrincipalInterface
         // Se for Armazem Libera Painel de Armazem
         
         if($registro->_Acl->Get_Permissao_Url('Transporte/Armazem/Painel')){
-                $this->_Visual->Bloco_Customizavel(Array(
+                $Visual->Bloco_Customizavel(Array(
                     Array(
                         'span'      =>      12,
                         'conteudo'  =>  Array(Array(
                             'div_ext'   =>      false,
                             'title_id'  =>      false,
                             'title'     =>      'Painel sobre o Meu Armazem',
-                            'html'      =>      '<span id="painel_armazem">'.Transporte_ArmazemControle::Painel_Mensagem('painel_armazem').'</span>',
+                            'html'      =>      '<span id="painel_armazem">'.Transporte_ArmazemControle::Painel_Armazem('painel_armazem').'</span>',
                         )/*,Array(
                             'div_ext'   =>      false,
                             'title_id'  =>      false,

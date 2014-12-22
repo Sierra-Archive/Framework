@@ -1,6 +1,6 @@
 <?php
 
-class Transporte_CargaModelo extends Transporte_Modelo
+class Transporte_TransportadoraVisual extends Transporte_Visual
 {
     public function __construct(){
         parent::__construct();

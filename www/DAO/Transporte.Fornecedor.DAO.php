@@ -1,16 +1,17 @@
 <?php
-final Class Transporte_Armazem_Cargas_DAO extends Framework\App\Dao 
+final Class Transporte_Fornecedor_DAO extends Framework\App\Dao 
 {
     protected $id;
-    protected $categoria_armazem;
+    protected $usuario;
+    protected $categoria;
     protected $capacidade;
-    protected $inicio_data;
-    protected $fim_data;
+    protected $capacidade_usada;
+    protected $telefone;
     protected $status;
     protected $valor;
     protected $obs;
     protected static $objetocarregado     = false;     protected static $mysql_colunas       = false;     protected static $mysql_outside       = Array();     protected static $mysql_inside        = Array(); public function __construct() {  parent::__construct(); } public static function Get_Nome(){
-        return MYSQL_TRANSPORTE_ARMAZEM_CARGAS;
+        return MYSQL_TRANSPORTE_FORNECEDOR;
     }
     /**
      * Fornece Permissão de Copia da tabela
@@ -20,7 +21,7 @@ final Class Transporte_Armazem_Cargas_DAO extends Framework\App\Dao
         return false;
     }
     public static function Get_Sigla(){
-        return 'TAC';
+        return 'TF';
     }
     public static function Get_Engine(){
         return 'InnoDB';
@@ -50,9 +51,34 @@ final Class Transporte_Armazem_Cargas_DAO extends Framework\App\Dao
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'          => '' ,//0 ninguem, 1 admin, 2 todos 
+            ),Array(
+                'mysql_titulo'      => 'usuario',
+                'mysql_tipovar'     => 'int', //varchar, int, 
+                'mysql_tamanho'     => 11,
+                'mysql_null'        => true,
+                'mysql_default'     => false,
+                'mysql_primary'     => false,
+                'mysql_estrangeira' => 'U.id|U.nome-U.razao_social|U.ativado=1-EXTB.categoria='.CFG_TEC_CAT_ID_CLIENTES, // chave estrangeira
+                'mysql_autoadd'     => false,
+                'mysql_comment'     => false,
+                'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
+                'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
+                'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
+                'linkextra'          => '', // //0 ninguem, 1 admin, 2 todos 
+                'edicao'            => Array(
+                    'Nome'              => 'Cliente',
+                    'valor_padrao'      => false,
+                    'readonly'          => false,
+                    'aviso'             => 'Minimo 3 caracteres',
+                    'formtipo'          => 'input',
+                    'input'             => array(
+                        'tipo'              => 'text',
+                        'class'             => 'obrigatorio'
+                    )
+                )
             ),
             Array(
-                'mysql_titulo'      => 'categoria_armazem',
+                'mysql_titulo'      => 'categoria',
                 'mysql_tipovar'     => 'int', //varchar, int, 
                 'mysql_tamanho'     => 11,
                 'mysql_null'        => true, // true NULL, false, NOT NULL
@@ -66,7 +92,7 @@ final Class Transporte_Armazem_Cargas_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'          => 'categoria/Admin/Categorias_Add/Transporte_Armazem', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Tipo de Armazem Necessario',
+                    'Nome'              => 'Tipo de Armazem',
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',
@@ -92,7 +118,7 @@ final Class Transporte_Armazem_Cargas_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'          => '', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Capacidade Utilizada',
+                    'Nome'              => 'Capacidade do Armazem',
                     'Mascara'           => 'Numero',
                     'valor_padrao'      => false,
                     'readonly'          => false,
@@ -103,58 +129,57 @@ final Class Transporte_Armazem_Cargas_DAO extends Framework\App\Dao
                         'class'             => 'obrigatorio'
                     )
                 )
-            ),Array(
-                'mysql_titulo'      => 'inicio_data',
-                'mysql_tipovar'     => 'date', //varchar, int, 
-                'mysql_tamanho'     => 10,
+            ),
+            Array(
+                'mysql_titulo'      => 'capacidade_usada',
+                'mysql_tipovar'     => 'int', //varchar, int, 
+                'mysql_tamanho'     => 11,
                 'mysql_null'        => false,  // nulo ?
-                'mysql_default'     => '0000-00-00', // valor padrao
+                'mysql_default'     => false, // valor padrao
                 'mysql_primary'     => false,  // chave primaria
                 'mysql_estrangeira' => false, // chave estrangeira     ligacao|apresentacao|condicao
                 'mysql_autoadd'     => false,
                 'mysql_comment'     => false,
-                'mysql_inside'      => 'data_brasil_eua({valor})', // Funcao Executada quando o dado for inserido no banco de dados
-                'mysql_outside'     => 'data_eua_brasil({valor})', // Funcao Executada quando o dado for retirado no banco de dados
+                'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
+                'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'          => '', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Data do Inicio',
-                    'Mascara'           => 'Data',
+                    'Nome'              => 'Capacidade Usada do Armazem',
+                    'Mascara'           => 'Numero',
                     'valor_padrao'      => false,
                     'readonly'          => false,
-                    'aviso'             => '',
+                    'aviso'             => '0 = Nenhum',
                     'formtipo'          => 'input',
-                    'validar'           => 'Control_Layoult_Valida_Data',
                     'input'             => array(
                         'tipo'              => 'text',
                         'class'             => 'obrigatorio'
                     )
                 )
-            ),Array(
-                'mysql_titulo'      => 'fim_data',
-                'mysql_tipovar'     => 'date', //varchar, int, 
-                'mysql_tamanho'     => 10,
+            ),
+            Array(
+                'mysql_titulo'      => 'telefone',
+                'mysql_tipovar'     => 'varchar', //varchar, int, 
+                'mysql_tamanho'     => 30,
                 'mysql_null'        => false,  // nulo ?
-                'mysql_default'     => '0000-00-00', // valor padrao
+                'mysql_default'     => false, // valor padrao
                 'mysql_primary'     => false,  // chave primaria
                 'mysql_estrangeira' => false, // chave estrangeira     ligacao|apresentacao|condicao
                 'mysql_autoadd'     => false,
                 'mysql_comment'     => false,
-                'mysql_inside'      => 'data_brasil_eua({valor})', // Funcao Executada quando o dado for inserido no banco de dados
-                'mysql_outside'     => 'data_eua_brasil({valor})', // Funcao Executada quando o dado for retirado no banco de dados
+                'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
+                'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'          => '', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Data do Fim',
-                    'Mascara'           => 'Data',
+                    'Nome'              => 'Telefone',
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',
                     'formtipo'          => 'input',
-                    'validar'           => 'Control_Layoult_Valida_Data',
                     'input'             => array(
                         'tipo'              => 'text',
-                        'class'             => 'obrigatorio'
+                        'class'             => 'obrigatorio masc_fone'
                     )
                 )
             ),
@@ -182,20 +207,12 @@ final Class Transporte_Armazem_Cargas_DAO extends Framework\App\Dao
                     'select'            => array(
                         'opcoes'            => array(
                             array(
-                                'value'         =>  '3',
-                                'nome'          => 'Entregue'
-                            ),
-                            array(
-                                'value'         =>  '2',
-                                'nome'          => 'Em Armazenamento'
-                            ),
-                            array(
                                 'value'         =>  '1',
-                                'nome'          => 'Em Transporte'
+                                'nome'          => 'Aberta'
                             ),
                             array(
                                 'value'         =>  '0',
-                                'nome'          => 'Em Leilão'
+                                'nome'          => 'Fechada'
                             ),
                         )
                     )
@@ -215,7 +232,19 @@ final Class Transporte_Armazem_Cargas_DAO extends Framework\App\Dao
                 'mysql_inside'      => '\Framework\App\Sistema_Funcoes::Tranf_Real_Float({valor})', // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => '\Framework\App\Sistema_Funcoes::Tranf_Float_Real({valor})', // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', // //0 ninguem, 1 admin, 2 todos
+                'linkextra'          => '', // //0 ninguem, 1 admin, 2 todos 
+                'edicao'            => Array(
+                    'Nome'              => 'Preço da Diaria por Unidade de Medida',
+                    'Mascara'           => 'Real',
+                    'valor_padrao'      => false,
+                    'readonly'          => false,
+                    'aviso'             => 'Minimo 3 caracteres',
+                    'formtipo'          => 'input',
+                    'input'             => array(
+                        'tipo'              => 'text',
+                        'class'             => 'obrigatorio'
+                    )
+                )
             ),
             Array(
                 'mysql_titulo'      => 'obs',

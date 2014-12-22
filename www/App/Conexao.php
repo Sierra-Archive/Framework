@@ -159,7 +159,7 @@ final class Conexao
      */
     public function query($sql,$autoreparo=true) 
     {
-        //$tempo = new \Framework\App\Tempo('Conexao Query');
+        $tempo = new \Framework\App\Tempo('Conexao Query');
         $passar = true;
         //echo "\n\n<br><br>".$sql;
         while(!$re = $this->mysqli->query($sql)) {
@@ -190,7 +190,7 @@ final class Conexao
      * #update ... Invez de fazxer varias conexoes, armazena tudo em uma variavel, e faz uma conexao só no final
      */
     protected function Sql_Log($tabela,$campos,$valores,$tipo='Update'){
-        //$tempo = new \Framework\App\Tempo('Log');
+        $tempo = new \Framework\App\Tempo('Log');
         $query = 'INSERT INTO '.MYSQL_LOG_SQL.' (tabela,campos,valores) VALUES (\''.$tabela.'\',\''.$campos.'\',\''.$valores.'\',\''.APP_HORA.'\')';
         $this->query($query,true);
         
@@ -598,7 +598,7 @@ final class Conexao
     public function Sql_Inserir(&$Objeto,$tempo=true){
         if($tempo){
             $temponome  = 'Inserir';
-            //$imprimir   = new \Framework\App\Tempo($temponome);
+            $tempo2   = new \Framework\App\Tempo($temponome);
         }
         if(is_object($Objeto)){
             $sql = 'Insert '.call_user_func(array($Objeto, 'Get_Nome')).' ';
@@ -710,9 +710,9 @@ final class Conexao
     public function Sql_Update(&$Objeto, $log=true,$tempo=true){
         if($tempo){
             $temponome  = 'Update';
-            //$imprimir   = new \Framework\App\Tempo($temponome);
+            $tempo2   = new \Framework\App\Tempo($temponome);
         }
-        //$tempo = new \Framework\App\Tempo('Conexao_Update');  
+        $tempo = new \Framework\App\Tempo('Conexao_Update');  
         if(is_array($Objeto)){
             reset($Objeto);
             while (key($Objeto) !== null) {
@@ -942,7 +942,7 @@ final class Conexao
         return Array($sql,$sql_tabela_sigla,$sql_condicao,$valores,$tabelas_usadas,$j);
     }
     public function Sql_Contar($class_dao, $where = false){
-        //$tempo = new \Framework\App\Tempo('Conexao_Contar');   
+        $tempo = new \Framework\App\Tempo('Conexao_Contar');   
         // Expections
         if($class_dao==''){
             throw new \Exception('Dao não existe: '.$class_dao,3251);
@@ -997,10 +997,10 @@ final class Conexao
         if($limit===false) $limit = 0;
         /*if($tempo){
             $temponome  = $class_dao.' - '.  serialize($condicao).$limit.$order_by;
-            //$imprimir   = new \Framework\App\Tempo('Select Completo');
+            $tempo2   = new \Framework\App\Tempo('Select Completo');
         }*/
         //echo "\n\n\n".$class_dao;
-        //$tempo = new \Framework\App\Tempo('Conexao_Select');   
+        $tempo = new \Framework\App\Tempo('Conexao_Select');   
         // Expections
         if($class_dao==''){
             throw new \Exception('Dao não existe: '.$class_dao,3251);
@@ -1675,7 +1675,7 @@ final class Conexao
      * @version 0.0.1
      */
     private static function Tabelas_Variaveis_Gerar(){
-        //$tempo = new \Framework\App\Tempo('Conexao - Processar Tabelas Gerar Variaveis');
+        $tempo = new \Framework\App\Tempo('Conexao - Processar Tabelas Gerar Variaveis');
         $tabelas        = &self::$tabelas;
         $siglas         = &self::$tabelas_siglas;
         $links          = &self::$tabelas_Links;
@@ -1796,7 +1796,7 @@ final class Conexao
      * @version 0.0.1
      */
     protected function Tabelas(){
-        //$tempo = new \Framework\App\Tempo('Conexao - Processar Tabelas');
+        $tempo = new \Framework\App\Tempo('Conexao - Processar Tabelas');
         $tabelas        = &self::$tabelas;
         $tabelas_ext    = &self::$tabelas_ext;
         

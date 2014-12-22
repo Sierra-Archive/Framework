@@ -28,13 +28,13 @@ class Acl{
     public      static  $config = false;    
     
     public function __construct($id = false) {
-        //$tempo = new \Framework\App\Tempo('ACl');   
+        $tempo = new \Framework\App\Tempo('ACl');   
         
         // Recupera Registro
         $this->_Registro    = &\Framework\App\Registro::getInstacia();
         $this->_db          = &$this->_Registro->_Conexao;
         $this->_Request     = &$this->_Registro->_Request;
-        //$tempo = new \Framework\App\Tempo('Acl - Construct');
+        $tempo = new \Framework\App\Tempo('Acl - Construct');
         if($id){
             // Caso esteja carregando de outro usuario
             $this->_id = (int) $id;
@@ -70,7 +70,7 @@ class Acl{
                 // Puxa Login E senha e verifica cadastro
                 $login = \anti_injection($_POST['sistema_login']);
                 $senha = \Framework\App\Sistema_Funcoes::Form_Senha_Blindar($_POST['sistema_senha']);
-                var_dump($login,$senha);
+                //var_dump($login,$senha);
                 $this->logado = $this->Usuario_Senha_Verificar($login, $senha);
                 
                 // Avisa se login nao teve resultado
@@ -687,7 +687,7 @@ class Acl{
         return false;
     }
     public static function &Sistema_Modulos_Carregar_Menu(){
-        //$tempo = new \Framework\App\Tempo('\Framework\App\Acl::Sistema_Modulos_Configs->Menu');
+        $tempo = new \Framework\App\Tempo('\Framework\App\Acl::Sistema_Modulos_Configs->Menu');
         // Le todos arquivos Menus dos modulos permitidos
         $ponteiro   = Array('_Sistema' => '_Sistema');
         if(function_exists('config_modulos')){
@@ -711,7 +711,7 @@ class Acl{
         return $config;
     }
     public static function &Sistema_Modulos_Carregar_Permissoes(){
-        //$tempo = new \Framework\App\Tempo('\Framework\App\Acl::Sistema_Modulos_Configs->Permissoes');
+        $tempo = new \Framework\App\Tempo('\Framework\App\Acl::Sistema_Modulos_Configs->Permissoes');
         // Le todos arquivos Menus dos modulos permitidos
         $ponteiro   = Array('_Sistema' => '_Sistema');
         if(function_exists('config_modulos')){
@@ -735,7 +735,7 @@ class Acl{
         return $config;
     }
     public static function &Sistema_Modulos_Carregar_Funcional(){
-        //$tempo = new \Framework\App\Tempo('\Framework\App\Acl::Sistema_Modulos_Configs->Funcional');
+        $tempo = new \Framework\App\Tempo('\Framework\App\Acl::Sistema_Modulos_Configs->Funcional');
         // ordena na ordem correta
         $registro = \Framework\App\Registro::getInstacia();
         $funcional = $registro->_Cache->Ler('Config_Funcional');
@@ -746,7 +746,7 @@ class Acl{
         return $funcional;
     }
     public static function &Sistema_Modulos_Carregar_Funcional_Completo(){
-        //$tempo = new \Framework\App\Tempo('\Framework\App\Acl::Sistema_Modulos_Configs->Funcional_Completo');
+        $tempo = new \Framework\App\Tempo('\Framework\App\Acl::Sistema_Modulos_Configs->Funcional_Completo');
         // Le todos arquivos Menus dos modulos permitidos
         $ponteiro   = Array('_Sistema' => '_Sistema');
         if(function_exists('config_modulos')){

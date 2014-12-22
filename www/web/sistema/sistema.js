@@ -533,7 +533,7 @@ var Sierra = (function () {
         History.Adapter.bind(window,'statechange',function () { // Note: We are using statechange instead of popstate
             // Log the State
             var State = History.getState(),  // Note: We are using History.getState() instead of event.state
-                url = State.url.slice(ConfigArquivoPadrao.length-1);
+                url = State.url/*.slice(ConfigArquivoPadrao.length-1)*/;
             if (Historico_Controle !== State.data.id) {
                 Historico_Controle = State.data.id;
                 Modelo_Ajax_Chamar(url,'','get',true,true,true);
@@ -672,8 +672,9 @@ var Sierra = (function () {
     
         for (var i in json){
             if(json[i] !== undefined){
-                url = json[i]['Url'].split(ConfigArquivoPadrao),
-                Modelo_Ajax_Chamar(url[1],'','get',true,true,true);
+                url = json[i]['Url'];
+                
+                Modelo_Ajax_Chamar(url,'','get',true,true,true);
             }
         }
     };
@@ -946,7 +947,7 @@ var Sierra = (function () {
             //Historico
             var aleatorio = Math.random();
             Historico_Controle = aleatorio;
-            History.pushState({/*json: data,*/id: aleatorio}, document.title, ConfigArquivoPadrao+url);
+            History.pushState({/*json: data,*/id: aleatorio}, document.title, url);
             //window.location.hash = url;
         }
     };
@@ -957,7 +958,6 @@ var Sierra = (function () {
             eval(link.attr('acao')+'(link);');
         }
         // Corta e Chama AJAX
-        url = url.slice(ConfigArquivoPadrao.length);
         Modelo_Ajax_Chamar(url,'','get',true,false,true);
     };
     

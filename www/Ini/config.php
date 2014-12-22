@@ -214,14 +214,20 @@ if(  !defined('MYSQL_TRANSPORTE_CAMINHONEIRO')){
 if(  !defined('MYSQL_TRANSPORTE_ESTRADA')){
     define('MYSQL_TRANSPORTE_ESTRADA'                  , 'Transporte_Estrada');
 }
-if(  !defined('MYSQL_TRANSPORTE_ARMAZEM_CARGAS')){
-    define('MYSQL_TRANSPORTE_ARMAZEM_CARGAS'           , 'Transporte_Armazem_Cargas');
+if(  !defined('MYSQL_TRANSPORTE_ARMAZEM_PEDIDO')){
+    define('MYSQL_TRANSPORTE_ARMAZEM_PEDIDO'           , 'Transporte_Armazem_Pedido');
 }
-if(  !defined('MYSQL_TRANSPORTE_CARGA')){
-    define('MYSQL_TRANSPORTE_CARGA'                    , 'Transporte_Carga');
+if(  !defined('MYSQL_TRANSPORTE_CAMINHONEIRO_PEDIDO')){
+    define('MYSQL_TRANSPORTE_CAMINHONEIRO_PEDIDO'      , 'Transporte_Caminhoneiro_Pedido');
 }
-if(  !defined('MYSQL_TRANSPORTE_TRANSPORTADORA_CARGAS')){
-    define('MYSQL_TRANSPORTE_TRANSPORTADORA_CARGAS'    , 'Transporte_Transportadora_Cargas');
+if(  !defined('MYSQL_TRANSPORTE_FORNECEDOR')){
+    define('MYSQL_TRANSPORTE_FORNECEDOR'    , 'Transporte_Fornecedor');
+}
+if(  !defined('MYSQL_TRANSPORTE_TRANSPORTADORA')){
+    define('MYSQL_TRANSPORTE_TRANSPORTADORA'    , 'Transporte_Transportadora');
+}
+if(  !defined('MYSQL_TRANSPORTE_TRANSPORTADORA_PEDIDO')){
+    define('MYSQL_TRANSPORTE_TRANSPORTADORA_PEDIDO'    , 'Transporte_Transportadora_Pedido');
 }
 
 

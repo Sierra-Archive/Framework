@@ -1,15 +1,15 @@
 <?php
 
-class Transporte_ArmazemControle extends Transporte_Controle
+class Transporte_TransportadoraControle extends Transporte_Controle
 {
     public function __construct(){
         parent::__construct();
     }
-    static function Endereco_Armazem($true=true){
+    static function Endereco_Transportadora($true=true){
         $registro = \Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
-        $titulo = 'Armazens';
-        $link = 'Transporte/Armazem/Armazens';
+        $titulo = 'Transportadoras';
+        $link = 'Transporte/Transportadora/Transportadoras';
         if($true===true){
             $_Controle->Tema_Endereco($titulo,$link);
         }else{
@@ -22,16 +22,16 @@ class Transporte_ArmazemControle extends Transporte_Controle
      * @version 2.0
      */
     public function Main(){
-        \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'Transporte/Armazem/Armazens');
+        \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'Transporte/Transportadora/Transportadoras');
         return false;
     }
-    static function Armazens_Tabela(&$armazem){
+    static function Transportadoras_Tabela(&$transportadora){
         $registro   = \Framework\App\Registro::getInstacia();
         $Visual     = &$registro->_Visual;
         $tabela = Array();
         $i = 0;
-        if(is_object($armazem)) $armazem = Array(0=>$armazem);reset($armazem);
-        foreach ($armazem as &$valor) {                
+        if(is_object($transportadora)) $transportadora = Array(0=>$transportadora);reset($transportadora);
+        foreach ($transportadora as &$valor) {                
             $tabela['Id'][$i]           = '#'.$valor->id;
             $tabela['Categoria'][$i]    = $valor->categoria2;
             $tabela['Titulo'][$i]       = $valor->nome;
@@ -45,13 +45,13 @@ class Transporte_ArmazemControle extends Transporte_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 2.0
      */
-    public function Armazens($export=false){
+    public function Transportadoras($export=false){
         $i = 0;
-        self::Endereco_Armazem(false);
-        $armazem = $this->_Modelo->db->Sql_Select('Transporte_Armazem');
-        if(is_object($armazem)) $armazem = Array(0=>$armazem);
-        if($armazem!==false && !empty($armazem)){
-            list($tabela,$i) = self::Transportes_Tabela($armazem);
+        self::Endereco_Transportadora(false);
+        $transportadora = $this->_Modelo->db->Sql_Select('Transporte_Transportadora');
+        if(is_object($transportadora)) $transportadora = Array(0=>$transportadora);
+        if($transportadora!==false && !empty($transportadora)){
+            list($tabela,$i) = self::Transportes_Tabela($transportadora);
             // SE exportar ou mostra em tabela
             if($export!==false){
                 self::Export_Todos($export,$tabela, 'Blocos');
@@ -71,38 +71,38 @@ class Transporte_ArmazemControle extends Transporte_Controle
             unset($tabela);
         }else{
             if($export!==false){
-                $mensagem = 'Nenhum Armazem Cadastrada para exportar';
+                $mensagem = 'Nenhum Transportadora Cadastrada para exportar';
             }else{
-                $mensagem = 'Nenhum Armazem Cadastrada';
+                $mensagem = 'Nenhum Transportadora Cadastrada';
             }
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">'.$mensagem.'</font></b></center>');
         }
         $titulo = 'Listagem de Transportes ('.$i.')';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Armazemistrar Transportes');
+        $this->_Visual->Json_Info_Update('Titulo','Transportadoraistrar Transportes');
     }
     /**
-     * Painel Adminstrativo de Armazens
+     * Painel Adminstrativo de Transportadoras
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 2.0
      */
     public function Painel(){
         return true;
     }
-    static function Painel_Armazem($camada,$retornar=true){
+    static function Painel_Transportadora($camada,$retornar=true){
         $existe = false;
         if($retornar==='false') $retornar = false;
         // Verifica se Existe Conexao, se nao tiver abre o adicionar conexao, se nao, abre a pasta!
         $registro = \Framework\App\Registro::getInstacia();
-        $resultado = $registro->_Modelo->db->Sql_Select('Transporte_Armazem','{sigla}usuario=\''.$registro->_Acl->Usuario_GetID().'\'',1);
+        $resultado = $registro->_Modelo->db->Sql_Select('Transporte_Transportadora','{sigla}usuario=\''.$registro->_Acl->Usuario_GetID().'\'',1);
         if(is_object($resultado)){
             $existe = true;
         }
         
         // Dependendo se Existir Cria Formulario ou Lista arquivos
         if($existe===false){
-            $html = '<b>Ainda faltam insformações sobre o seu Armazem</b><br>'.self::Painel_Armazem_Add($camada);
+            $html = '<b>Ainda faltam insformações sobre o seu Transportadora</b><br>'.self::Painel_Transportadora_Add($camada);
         }else{
             $html = 'Painel';
         }
@@ -133,8 +133,8 @@ class Transporte_ArmazemControle extends Transporte_Controle
                         'conteudo'  =>  Array(Array(
                             'div_ext'   =>      false,
                             'title_id'  =>      false,
-                            'title'     =>      'Pasta da '.$titulo.' #'.$identificador->id.' na Armazem',
-                            'html'      =>      '<span id="proposta_'.$identificador->id.'">'.self::Painel_Armazem('comercio_Proposta',$identificador->id,'proposta_'.$identificador->id).'</span>',
+                            'title'     =>      'Pasta da '.$titulo.' #'.$identificador->id.' na Transportadora',
+                            'html'      =>      '<span id="proposta_'.$identificador->id.'">'.self::Painel_Transportadora('comercio_Proposta',$identificador->id,'proposta_'.$identificador->id).'</span>',
                         )/*,Array(
                             'div_ext'   =>      false,
                             'title_id'  =>      false,
@@ -145,28 +145,28 @@ class Transporte_ArmazemControle extends Transporte_Controle
                 ));*/
         return true;
     }
-    static protected function Painel_Armazem_Add($camada){
+    static protected function Painel_Transportadora_Add($camada){
         // Carrega Config
         $titulo1    = 'Salvar Dados';
         $titulo2    = 'Salvar Dados';
-        $formid     = 'form_Transporte_Armazem_Add';
+        $formid     = 'form_Transporte_Transportadora_Add';
         $formbt     = 'Salvar Dados';
-        $formlink   = 'Transporte/Armazem/Painel_Armazem_Add2/'.$camada;
-        $campos = Transporte_Armazem_DAO::Get_Colunas();
+        $formlink   = 'Transporte/Transportadora/Painel_Transportadora_Add2/'.$camada;
+        $campos = Transporte_Transportadora_DAO::Get_Colunas();
         // Remove Essas Colunas
         self::DAO_Campos_Retira($campos, 'usuario');
         // Chama Formulario
        return \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos,false,'html',false);
     }
-    public function Painel_Armazem_Add2($camada){
-        $resultado = $this->_Modelo->db->Sql_Select('Transporte_Armazem','{sigla}usuario=\''.$this->_Acl->Usuario_GetID().'\'',1);
+    public function Painel_Transportadora_Add2($camada){
+        $resultado = $this->_Modelo->db->Sql_Select('Transporte_Transportadora','{sigla}usuario=\''.$this->_Acl->Usuario_GetID().'\'',1);
         if(is_object($resultado)){
-            self::Painel_Armazem($camada,false);
+            self::Painel_Transportadora($camada,false);
             return true;
         }
         $titulo     = 'Dados Atualizados com Sucesso';
-        $dao        = 'Transporte_Armazem';
-        $funcao     = 'Transporte_ArmazemControle::Painel_Armazem(\''.$camada.'\',\'false\');';
+        $dao        = 'Transporte_Transportadora';
+        $funcao     = 'Transporte_TransportadoraControle::Painel_Transportadora(\''.$camada.'\',\'false\');';
         $sucesso1   = 'Atualização bem sucedida';
         $sucesso2   = 'Dados Atualizados com sucesso.';
         $alterar    = Array(

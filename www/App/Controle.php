@@ -611,8 +611,8 @@ readfile($link);*/
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.0.2
      */
-    static function Gerador_Formulario(&$objeto,&$form){
-        //$tempo = new \Framework\App\Tempo('Controle Gerador Formulario');
+    static function Gerador_Formulario(&$objeto,&$form,$cache=true){
+        $tempo = new \Framework\App\Tempo('Controle Gerador Formulario');
         $Registro   = &\Framework\App\Registro::getInstacia();
         $Modelo    = $Registro->_Modelo;
         $extrangeiras = Array();
@@ -621,7 +621,7 @@ readfile($link);*/
         foreach ($objeto as &$valor){
                 
             // Pega Link extra
-            if(isset($valor['linkextra']) && $valor['linkextra']!==false){
+            if(isset($valor['linkextra']) && $valor['linkextra']!==false && $valor['linkextra']!==''){
                 // Verifica se Tem Permissao
                 $permitir = explode('/', $valor['linkextra']);
                 $permitir = $permitir[0];
@@ -763,7 +763,7 @@ readfile($link);*/
                         self::DAO_Campos_TrocaID($colunas_temporaria,'{id}');
                         // Puxa CAmpos Javascript
                         $form_js = new \Framework\Classes\Form();
-                        $javascript_campos = self::Gerador_Formulario($colunas_temporaria, $form_js);
+                        $javascript_campos = self::Gerador_Formulario($colunas_temporaria, $form_js,false);
                         $javascript_campos = str_replace(Array('"','\n','\r','    '), Array('\"','','',''), $javascript_campos);
                         $javascript_campos = preg_replace('/\s/',' ',trim($javascript_campos));
                     }else{
@@ -808,7 +808,7 @@ readfile($link);*/
                             // Separa os Span
                             $html .= $form->addtexto('</span><span id="'.$tabelalinkada['SelectMultiplo']['Linkado'].'controlador_'.$valor2.'">');
                             // PEga os CAmpos Extrangeiros
-                            self::Gerador_Formulario($colunas_temporaria, $form);
+                            self::Gerador_Formulario($colunas_temporaria, $form,false);
                         }
                     }
                 }
@@ -1092,7 +1092,7 @@ readfile($link);*/
         $Controle = &$registro->_Controle;
         $Modelo = &$registro->_Modelo;
         $Visual = &$registro->_Visual;
-        //$tempo = new \Framework\App\Tempo('Controle Gerador Form Janela');
+        $tempo = new \Framework\App\Tempo('Controle Gerador Form Janela');
         
         // Define Popup
         if(isset($_GET['formselect']) && $_GET['formselect']!=''){
@@ -1152,7 +1152,7 @@ readfile($link);*/
         }
         // Puxa Form
         $form = new \Framework\Classes\Form($formid,$formlink,'formajax',"mini",'horizontal','off');
-        \Framework\App\Controle::Gerador_Formulario($campos, $form);
+        \Framework\App\Controle::Gerador_Formulario($campos, $form, true);
         // Carrega formulario
         if($bloco==='html'){
             return $form->retorna_form($formbt);
@@ -1212,7 +1212,7 @@ readfile($link);*/
      */
     protected function Gerador_Formulario_Janela2($titulo,$dao,$funcao = '',$sucesso1,$sucesso2,$colocar=false,$erro1 = '',$erro2 = ''){
         global $language;
-        //$tempo = new \Framework\App\Tempo('Controle Gerador Form Janela2');
+        $tempo = new \Framework\App\Tempo('Controle Gerador Form Janela2');
         // Variaveis
         $camponovo = false;
         // Verifica se é pra Add ou Editar

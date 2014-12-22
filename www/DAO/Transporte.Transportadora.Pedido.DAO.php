@@ -1,11 +1,20 @@
 <?php
-final Class Transporte_Carga_DAO extends Framework\App\Dao 
+final Class Transporte_Transportadora_Pedido_DAO extends Framework\App\Dao 
 {
     protected $id;
     protected $categoria_transporte;
-    protected $categoria_armazem;
+    protected $descricao_carga;
+    protected $comprimento;
+    protected $altura;
+    protected $largura;
     protected $capacidade;
+    protected $qnt_volumes;
+    protected $peso_bruto;
+    protected $descricao_embalagem;
     protected $inicio_data;
+    
+    
+    protected $caminhoneiro;
     protected $fim_data;
     protected $inicio_pais;
     protected $inicio_estado;
@@ -15,14 +24,13 @@ final Class Transporte_Carga_DAO extends Framework\App\Dao
     protected $fim_estado;
     protected $fim_cidade;
     protected $fim_bairro;
-    protected $leilao_id;
-    protected $leilao_valor;
-    protected $leilao_data;
-    protected $leilao_qnt;
+    
+    
+    
     protected $status;
     protected $obs;
     protected static $objetocarregado     = false;     protected static $mysql_colunas       = false;     protected static $mysql_outside       = Array();     protected static $mysql_inside        = Array(); public function __construct() {  parent::__construct(); } public static function Get_Nome(){
-        return MYSQL_TRANSPORTE_CARGA;
+        return MYSQL_TRANSPORTE_TRANSPORTADORA_PEDIDO;
     }
     /**
      * Fornece Permissão de Copia da tabela
@@ -32,7 +40,7 @@ final Class Transporte_Carga_DAO extends Framework\App\Dao
         return false;
     }
     public static function Get_Sigla(){
-        return 'TC';
+        return 'TTP';
     }
     public static function Get_Engine(){
         return 'InnoDB';
@@ -90,32 +98,6 @@ final Class Transporte_Carga_DAO extends Framework\App\Dao
                 )
             ),
             Array(
-                'mysql_titulo'      => 'categoria_armazem',
-                'mysql_tipovar'     => 'int', //varchar, int, 
-                'mysql_tamanho'     => 11,
-                'mysql_null'        => true, // true NULL, false, NOT NULL
-                'mysql_default'     => false,//false -> NONE, outro -> default
-                'mysql_primary'     => false, // chave primaria
-                'mysql_estrangeira' => 'C.id|C.nome|CA.mod_acc=Transporte_Armazem', // chave estrangeira     ligacao|apresentacao|condicao
-                'mysql_autoadd'     => false,
-                'mysql_comment'     => false,
-                'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
-                'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
-                'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => 'categoria/Admin/Categorias_Add/Transporte_Armazem', //0 ninguem, 1 admin, 2 todos 
-                'edicao'            => Array(
-                    'Nome'              => 'Tipo de Armazem Necessario',
-                    'valor_padrao'      => false,
-                    'readonly'          => false,
-                    'aviso'             => '',
-                    'formtipo'          => 'select',
-                    'select'             => array(
-                        'class'             => 'obrigatorio',
-                        'infonulo'          => 'Escolha uma Tipo de Armazenagem',
-                    )
-                )
-            ),
-            Array(
                 'mysql_titulo'      => 'capacidade',
                 'mysql_tipovar'     => 'int', //varchar, int, 
                 'mysql_tamanho'     => 11,
@@ -139,6 +121,30 @@ final Class Transporte_Carga_DAO extends Framework\App\Dao
                     'input'             => array(
                         'tipo'              => 'text',
                         'class'             => 'obrigatorio'
+                    )
+                )
+            ),Array(
+                'mysql_titulo'      => 'caminhoneiro',
+                'mysql_tipovar'     => 'int', //varchar, int, 
+                'mysql_tamanho'     => 11,
+                'mysql_null'        => true,  // nulo ?
+                'mysql_default'     => 0, // valor padrao
+                'mysql_primary'     => false,  // chave primaria
+                'mysql_estrangeira' => 'TC.id|TC.nome', // chave estrangeira     ligacao|apresentacao|condicao
+                'mysql_autoadd'     => false,
+                'mysql_comment'     => false,
+                'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
+                'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
+                'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
+                'edicao'            => Array(
+                    'Nome'              => 'Caminhoneiro',
+                    'valor_padrao'      => false,
+                    'readonly'          => false,
+                    'aviso'             => '',
+                    'formtipo'          => 'select',
+                    'select'             => array(
+                        'class'             => 'obrigatorio',
+                        'infonulo'          => 'Escolha um Caminhoneiro',
                     )
                 )
             ),Array(
@@ -361,109 +367,6 @@ final Class Transporte_Carga_DAO extends Framework\App\Dao
                     'readonly'          => false,
                     'aviso'             => ''
                 ) 
-            ),Array(
-                'mysql_titulo'      => 'leilao_id',
-                'mysql_tipovar'     => 'int', //varchar, int, 
-                'mysql_tamanho'     => 11,
-                'mysql_null'        => true,  // nulo ?
-                'mysql_default'     => 0, // valor padrao
-                'mysql_primary'     => false,  // chave primaria
-                'mysql_estrangeira' => 'U.id|U.nome-U.razao_social'/*.'|U.ativado=1-EXTB.categoria='.CFG_TEC_CAT_ID_CLIENTES'*/, // chave estrangeira
-                'mysql_autoadd'     => false,
-                'mysql_comment'     => false,
-                'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
-                'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
-                'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'edicao'            => Array(
-                    'Nome'              => 'Autor do Lance',
-                    'valor_padrao'      => false,
-                    'readonly'          => false,
-                    'aviso'             => '',
-                    'formtipo'          => 'select',
-                    'select'             => array(
-                        'class'             => 'obrigatorio',
-                        'infonulo'          => '',
-                    )
-                )
-            ),Array(
-                'mysql_titulo'      => 'leilao_qnt',
-                'mysql_tipovar'     => 'int', //varchar, int, 
-                'mysql_tamanho'     => 11,
-                'mysql_null'        => true, // true NULL, false, NOT NULL
-                'mysql_default'     => false,//false -> NONE, outro -> default
-                'mysql_primary'     => false, // chave primaria
-                'mysql_estrangeira' => false, // chave estrangeira
-                'mysql_autoadd'     => false,
-                'mysql_comment'     => false,
-                'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
-                'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
-                'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', //0 ninguem, 1 admin, 2 todos 
-                'edicao'            => Array(
-                    'Nome'              => 'Quantidade de Lances',
-                    'Mascara'           => 'Numero',
-                    'valor_padrao'      => false,
-                    'readonly'          => false,
-                    'aviso'             => '0 = Nenhum',
-                    'formtipo'          => 'input',
-                    'input'             => array(
-                        'tipo'              => 'text',
-                        'class'             => 'obrigatorio'
-                    )
-                )
-            ),Array(
-                'mysql_titulo'      => 'leilao_valor',
-                'mysql_tipovar'     => 'float', //varchar, int, 
-                'mysql_tamanho'     => 30,
-                'mysql_null'        => true,
-                'mysql_default'     => false,
-                'mysql_primary'     => false,
-                'mysql_estrangeira' => false, // chave estrangeira
-                'mysql_autoadd'     => false,
-                'mysql_comment'     => false,
-                'mysql_inside'      => '\Framework\App\Sistema_Funcoes::Tranf_Real_Float({valor})', // Funcao Executada quando o dado for inserido no banco de dados
-                'mysql_outside'     => '\Framework\App\Sistema_Funcoes::Tranf_Float_Real({valor})', // Funcao Executada quando o dado for retirado no banco de dados
-                'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', // //0 ninguem, 1 admin, 2 todos 
-                'edicao'            => Array(
-                    'Nome'              => 'Valor do Lance',
-                    'Mascara'           => 'Real',
-                    'valor_padrao'      => false,
-                    'readonly'          => false,
-                    'aviso'             => '',
-                    'formtipo'          => 'input',
-                    'input'             => array(
-                        'tipo'              => 'text',
-                        'class'             => 'obrigatorio'
-                    )
-                )
-            ),Array(
-                'mysql_titulo'      => 'leilao_data',
-                'mysql_tipovar'     => 'date', //varchar, int, 
-                'mysql_tamanho'     => 10,
-                'mysql_null'        => false,  // nulo ?
-                'mysql_default'     => '0000-00-00', // valor padrao
-                'mysql_primary'     => false,  // chave primaria
-                'mysql_estrangeira' => false, // chave estrangeira     ligacao|apresentacao|condicao
-                'mysql_autoadd'     => false,
-                'mysql_comment'     => false,
-                'mysql_inside'      => 'data_brasil_eua({valor})', // Funcao Executada quando o dado for inserido no banco de dados
-                'mysql_outside'     => 'data_eua_brasil({valor})', // Funcao Executada quando o dado for retirado no banco de dados
-                'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', //0 ninguem, 1 admin, 2 todos 
-                'edicao'            => Array(
-                    'Nome'              => 'Data do Lance',
-                    'Mascara'           => 'Data',
-                    'valor_padrao'      => false,
-                    'readonly'          => false,
-                    'aviso'             => '',
-                    'formtipo'          => 'input',
-                    'validar'           => 'Control_Layoult_Valida_Data',
-                    'input'             => array(
-                        'tipo'              => 'text',
-                        'class'             => 'obrigatorio'
-                    )
-                )
             ),
             // Status
             Array(

@@ -2,7 +2,7 @@
 namespace Framework\App;
 class Boot {
     public static function Iniciar(){     
-        //$tempo = new \Framework\App\Tempo('BOOT Iniciar');   
+        $tempo = new \Framework\App\Tempo('BOOT Iniciar');   
         // Inicia SEssao e Classes PARTE 1
         \Framework\App\Session::init();
         $registro = &\Framework\App\Registro::getInstacia();

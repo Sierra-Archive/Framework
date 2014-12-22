@@ -1,4 +1,5 @@
 <?php  
+$tempo = new \Framework\App\Tempo('AutoLoad');
 /**
  *  SISTEMA DE AUTO LOAD
  * @param type $class
@@ -289,4 +290,6 @@ if(!is_dir(CACHE_PATH)){
 require_once    APP_PATH . 'Funcao.php';
   
 define('SERVER_URL',           $_SERVER['REQUEST_URI']);
+
+unset($tempo);
 ?>
