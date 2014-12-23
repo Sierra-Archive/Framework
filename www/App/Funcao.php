@@ -17,7 +17,7 @@ function anti_injection($sql,$tags=false){
          foreach($sql as $indice=>&$valor){
              $seg[\anti_injection($indice)] = \anti_injection($valor,$tags);
          }
-         $sql = $seq;
+         $sql = $seg;
      }else{
         /*// remove palavras que contenham sintaxe sql
         $sql = mysql_real_escape_string($sql);

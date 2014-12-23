@@ -8,6 +8,8 @@ $config_Modulo = function (){
         'Dependencias'              =>  false,
     );
 };
+
+// Menu
 $config_Menu = function (){
     return Array(
         'Agenda'=>Array(

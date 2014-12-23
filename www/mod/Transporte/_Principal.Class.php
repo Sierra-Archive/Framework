@@ -9,8 +9,8 @@ class Transporte_Principal implements PrincipalInterface
     */
     static function Home(&$controle, &$modelo, &$Visual){
         $registro = Framework\App\Registro::getInstacia();
-        // Se for Armazem Libera Painel de Armazem
         
+        // Se for Armazem Libera Painel de Armazem
         if($registro->_Acl->Get_Permissao_Url('Transporte/Armazem/Painel')){
                 $Visual->Bloco_Customizavel(Array(
                     Array(
@@ -20,6 +20,66 @@ class Transporte_Principal implements PrincipalInterface
                             'title_id'  =>      false,
                             'title'     =>      'Painel sobre o Meu Armazem',
                             'html'      =>      '<span id="painel_armazem">'.Transporte_ArmazemControle::Painel_Armazem('painel_armazem').'</span>',
+                        )/*,Array(
+                            'div_ext'   =>      false,
+                            'title_id'  =>      false,
+                            'title'     =>      'Sub-'.$tema,
+                            'html'      =>      ' Aqui tem !',
+                        ),*/),
+                    )
+                ));;
+        }
+        
+        // Se for Caminhoneiro Libera Painel de Caminhoneiro
+        if($registro->_Acl->Get_Permissao_Url('Transporte/Caminhoneiro/Painel')){
+                $Visual->Bloco_Customizavel(Array(
+                    Array(
+                        'span'      =>      12,
+                        'conteudo'  =>  Array(Array(
+                            'div_ext'   =>      false,
+                            'title_id'  =>      false,
+                            'title'     =>      'Painel sobre o Meu Caminhoneiro',
+                            'html'      =>      '<span id="painel_caminhoneiro">'.Transporte_CaminhoneiroControle::Painel_Caminhoneiro('painel_caminhoneiro').'</span>',
+                        )/*,Array(
+                            'div_ext'   =>      false,
+                            'title_id'  =>      false,
+                            'title'     =>      'Sub-'.$tema,
+                            'html'      =>      ' Aqui tem !',
+                        ),*/),
+                    )
+                ));;
+        }
+        
+        // Se for Transportadora Libera Painel de Transportadora
+        if($registro->_Acl->Get_Permissao_Url('Transporte/Transportadora/Painel')){
+                $Visual->Bloco_Customizavel(Array(
+                    Array(
+                        'span'      =>      12,
+                        'conteudo'  =>  Array(Array(
+                            'div_ext'   =>      false,
+                            'title_id'  =>      false,
+                            'title'     =>      'Painel sobre o Meu Transportadora',
+                            'html'      =>      '<span id="painel_transportadora">'.Transporte_TransportadoraControle::Painel_Transportadora('painel_transportadora').'</span>',
+                        )/*,Array(
+                            'div_ext'   =>      false,
+                            'title_id'  =>      false,
+                            'title'     =>      'Sub-'.$tema,
+                            'html'      =>      ' Aqui tem !',
+                        ),*/),
+                    )
+                ));;
+        }
+        
+        // Se for Fornecedor Libera Painel de Fornecedor
+        if($registro->_Acl->Get_Permissao_Url('Transporte/Fornecedor/Painel')){
+                $Visual->Bloco_Customizavel(Array(
+                    Array(
+                        'span'      =>      12,
+                        'conteudo'  =>  Array(Array(
+                            'div_ext'   =>      false,
+                            'title_id'  =>      false,
+                            'title'     =>      'Painel sobre o Meu Fornecedor',
+                            'html'      =>      '<span id="painel_fornecedor">'.Transporte_FornecedorControle::Painel_Fornecedor('painel_fornecedor').'</span>',
                         )/*,Array(
                             'div_ext'   =>      false,
                             'title_id'  =>      false,
@@ -65,7 +125,7 @@ class Transporte_Principal implements PrincipalInterface
      * BUSCAS
      */
     static function Busca_Armazens($controle, $modelo, $Visual, $busca){
-        $where = Array(Array(
+        /*$where = Array(Array(
           'nome'                    => '%'.$busca.'%',
           //'texto'                   => '%'.$busca.'%',
         ));
@@ -83,7 +143,9 @@ class Transporte_Principal implements PrincipalInterface
         }
         $titulo = 'Busca de Armazens: '.$busca.' ('.$i.')';
         $Visual->Bloco_Unico_CriaJanela($titulo);
-        return $i;
+        return $i;*/
+        
+        return false;
     }
 }
 ?>

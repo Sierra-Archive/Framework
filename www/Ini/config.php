@@ -12,16 +12,16 @@ if(!defined('SISTEMA_DEDICADO')){
 
 // RESTRITO AO SISTEMA
 if(!defined('SISTEMA_CFG_VERSION')){
-    define('SISTEMA_CFG_VERSION',        2.3); // SE esta em um dedicado
+    define('SISTEMA_CFG_VERSION',        2.3); // 
 }
 
 
 // DINAMICA DO SISTEMA
 if(!defined('SISTEMA_EXPORTAR_PDF')){
-    define('SISTEMA_EXPORTAR_PDF',        false); // SE esta em um dedicado
+    define('SISTEMA_EXPORTAR_PDF',        false); // 
 }
 if(!defined('SISTEMA_EXPORTAR_EXCEL')){
-    define('SISTEMA_EXPORTAR_EXCEL',        true); // SE esta em um dedicado
+    define('SISTEMA_EXPORTAR_EXCEL',        true); // 
 }
 
 
@@ -214,20 +214,29 @@ if(  !defined('MYSQL_TRANSPORTE_CAMINHONEIRO')){
 if(  !defined('MYSQL_TRANSPORTE_ESTRADA')){
     define('MYSQL_TRANSPORTE_ESTRADA'                  , 'Transporte_Estrada');
 }
-if(  !defined('MYSQL_TRANSPORTE_ARMAZEM_PEDIDO')){
-    define('MYSQL_TRANSPORTE_ARMAZEM_PEDIDO'           , 'Transporte_Armazem_Pedido');
-}
-if(  !defined('MYSQL_TRANSPORTE_CAMINHONEIRO_PEDIDO')){
-    define('MYSQL_TRANSPORTE_CAMINHONEIRO_PEDIDO'      , 'Transporte_Caminhoneiro_Pedido');
-}
 if(  !defined('MYSQL_TRANSPORTE_FORNECEDOR')){
-    define('MYSQL_TRANSPORTE_FORNECEDOR'    , 'Transporte_Fornecedor');
+    define('MYSQL_TRANSPORTE_FORNECEDOR'                , 'Transporte_Fornecedor');
 }
 if(  !defined('MYSQL_TRANSPORTE_TRANSPORTADORA')){
-    define('MYSQL_TRANSPORTE_TRANSPORTADORA'    , 'Transporte_Transportadora');
+    define('MYSQL_TRANSPORTE_TRANSPORTADORA'            , 'Transporte_Transportadora');
 }
 if(  !defined('MYSQL_TRANSPORTE_TRANSPORTADORA_PEDIDO')){
-    define('MYSQL_TRANSPORTE_TRANSPORTADORA_PEDIDO'    , 'Transporte_Transportadora_Pedido');
+    define('MYSQL_TRANSPORTE_TRANSPORTADORA_PEDIDO'     , 'Transporte_Transportadora_Pedido');
+}
+if(  !defined('MYSQL_TRANSPORTE_ARMAZEM_PEDIDO')){
+    define('MYSQL_TRANSPORTE_ARMAZEM_PEDIDO'            , 'Transporte_Armazem_Pedido');
+}
+if(  !defined('MYSQL_TRANSPORTE_CAMINHONEIRO_PEDIDO')){
+    define('MYSQL_TRANSPORTE_CAMINHONEIRO_PEDIDO'       , 'Transporte_Caminhoneiro_Pedido');
+}
+if(  !defined('MYSQL_TRANSPORTE_TRANSPORTADORA_PEDIDO_LANCE')){
+    define('MYSQL_TRANSPORTE_TRANSPORTADORA_PEDIDO_LANCE', 'Transporte_Transportadora_Pedido_Lance');
+}
+if(  !defined('MYSQL_TRANSPORTE_ARMAZEM_PEDIDO_LANCE')){
+    define('MYSQL_TRANSPORTE_ARMAZEM_PEDIDO_LANCE'      , 'Transporte_Armazem_Pedido_Lance');
+}
+if(  !defined('MYSQL_TRANSPORTE_CAMINHONEIRO_PEDIDO_LANCE')){
+    define('MYSQL_TRANSPORTE_CAMINHONEIRO_PEDIDO_LANCE'  , 'Transporte_Caminhoneiro_Pedido_Lance');
 }
 
 

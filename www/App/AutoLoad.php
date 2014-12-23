@@ -12,6 +12,17 @@ define('DAO_PATH'       , ROOT_PADRAO.'DAO'.DS);
 function __autoload($class){
     $original = $class;
     
+    // Carrega Dao
+    if(strpos($class, '_DAO')!==false){
+        $class = str_replace(Array('_'), Array('.'), $class);
+        if( file_exists  (DAO_PATH . $class.'.php')){
+            require_once (DAO_PATH . $class.'.php');
+        }else{
+            throw new \Exception('Classe Dao não encontrada'.$class, 2802);
+            return true;
+        }
+    }
+    
     // Se for Classe App
     if(strpos($class, 'Framework\App')!==false){
         $class_partes = explode('\\',$class);
@@ -35,17 +46,6 @@ function __autoload($class){
             return true;
         }else{
             throw new \Exception('Classe não encontrada'.CLASS_PATH . $class.DS.$class.'.php'.$class, 2802);
-        }
-    }
-    
-    // Carrega Dao
-    if(strpos($class, '_DAO')!==false){
-        $class = str_replace(Array('_'), Array('.'), $class);
-        if( file_exists  (DAO_PATH . $class.'.php')){
-            require_once (DAO_PATH . $class.'.php');
-        }else{
-            throw new \Exception('Classe Dao não encontrada'.$class, 2802);
-            return true;
         }
     }
     
@@ -292,4 +292,52 @@ require_once    APP_PATH . 'Funcao.php';
 define('SERVER_URL',           $_SERVER['REQUEST_URI']);
 
 unset($tempo);
+
+/*
+$tempo = new \Framework\App\Tempo('Teeste1');
+$i = 0;
+$config = Array();
+while($i<1000){
+    $config_Modulo = function (){
+        return Array(
+            'Nome'                      =>  'Agenda',
+            'Descrição'                 =>  '',
+            'System_Require'            =>  '2.21.1',
+            'Version'                   =>  '0.0.1',
+            'Dependencias'              =>  false,
+        );
+    };
+    ++$i;
+    $config    = array_merge_recursive($config,$config_Modulo()   );
+}
+unset($tempo);
+
+$tempo = new \Framework\App\Tempo('Teeste2');
+$i = 0;
+$config = Array();
+while($i<1000){
+    $config_Modulo = Array(
+        'Nome'                      =>  'Agenda',
+        'Descrição'                 =>  '',
+        'System_Require'            =>  '2.21.1',
+        'Version'                   =>  '0.0.1',
+        'Dependencias'              =>  false,
+    );
+    ++$i;
+    $config    = array_merge_recursive($config,$config_Modulo   );
+}
+unset($tempo);
+
+$tempo = new \Framework\App\Tempo('Teeste3');
+$i = 0;
+$config = Array();
+while($i<1000){
+    $config['Nome']= 'Agenda';
+    $config['Descrição']                 =  '';
+     $config['System_Require']            =  '2.21.1';
+     $config['Version']                   =  '0.0.1';
+    $config['Dependencias']              =  false;
+    ++$i;
+}
+unset($tempo);*/
 ?>

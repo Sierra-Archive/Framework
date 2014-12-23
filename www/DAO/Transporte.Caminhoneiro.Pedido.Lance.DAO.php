@@ -1,15 +1,15 @@
 <?php
-final Class Transporte_Armazem_Pedido_Lance_DAO extends Framework\App\Dao 
+final Class Transporte_Caminhoneiro_Pedido_Lance_DAO extends Framework\App\Dao 
 {
     protected $id;
-    protected $fornecedor;
+    protected $transportadora;
     protected $pedido;
     protected $usuario;
     protected $status;
     protected $valor;
     protected $obs;
     protected static $objetocarregado     = false;     protected static $mysql_colunas       = false;     protected static $mysql_outside       = Array();     protected static $mysql_inside        = Array(); public function __construct() {  parent::__construct(); } public static function Get_Nome(){
-        return MYSQL_TRANSPORTE_ARMAZEM_PEDIDO_LANCE;
+        return MYSQL_TRANSPORTE_CAMINHONEIRO_PEDIDO_LANCE;
     }
     /**
      * Fornece Permissão de Copia da tabela
@@ -19,7 +19,7 @@ final Class Transporte_Armazem_Pedido_Lance_DAO extends Framework\App\Dao
         return false;
     }
     public static function Get_Sigla(){
-        return 'TAPL';
+        return 'TCPL';
     }
     public static function Get_Engine(){
         return 'InnoDB';
@@ -51,7 +51,7 @@ final Class Transporte_Armazem_Pedido_Lance_DAO extends Framework\App\Dao
                 'linkextra'          => '' ,//0 ninguem, 1 admin, 2 todos 
             ),
             Array(
-                'mysql_titulo'      => 'fornecedor',
+                'mysql_titulo'      => 'transportadora',
                 'mysql_tipovar'     => 'int', //varchar, int, 
                 'mysql_tamanho'     => 11,
                 'mysql_null'        => true, // true NULL, false, NOT NULL

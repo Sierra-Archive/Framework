@@ -1,5 +1,5 @@
 <?php
-final Class Transporte_Armazem_Pedido_Lance_DAO extends Framework\App\Dao 
+final Class Transporte_Transportadora_Pedido_Lance_DAO extends Framework\App\Dao 
 {
     protected $id;
     protected $fornecedor;
@@ -19,7 +19,7 @@ final Class Transporte_Armazem_Pedido_Lance_DAO extends Framework\App\Dao
         return false;
     }
     public static function Get_Sigla(){
-        return 'TAPL';
+        return 'TTPL';
     }
     public static function Get_Engine(){
         return 'InnoDB';

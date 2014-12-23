@@ -1926,7 +1926,7 @@ class Visual
                 $acesso = '';
                 if(!empty($valor['acesso'])){
                     foreach ($valor['acesso'] as &$valor2){
-                        $oacesso = Categoria_Acesso_DAO::Mod_Acesso_Get($valor2);
+                        $oacesso = \Categoria_Acesso_DAO::Mod_Acesso_Get($valor2);
                         if($acesso==''){
                             $acesso .= $oacesso['nome'];
                         }

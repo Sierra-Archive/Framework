@@ -10,6 +10,22 @@ $config_Modulo = function (){
 };
 $config_Menu = function (){
     return Array(
+        'Fornecedores'=>Array(
+            'Nome'                  => 'Fornecedores',
+            'Link'                  => 'Transporte/Fornecedor/Fornecedores',
+            'Gravidade'             => 75,
+            'Img'                   => 'turboadmin/m-dashboard.png',
+            'Icon'                  => 'truck',
+            'Filhos'                => false,
+        ),
+        'Transportadoras'=>Array(
+            'Nome'                  => 'Transportadoras',
+            'Link'                  => 'Transporte/Transportadora/Transportadoras',
+            'Gravidade'             => 75,
+            'Img'                   => 'turboadmin/m-dashboard.png',
+            'Icon'                  => 'truck',
+            'Filhos'                => false,
+        ),
         'Armazens'=>Array(
             'Nome'                  => 'Armazens',
             'Link'                  => 'Transporte/Armazem/Armazens',
@@ -26,41 +42,228 @@ $config_Menu = function (){
             'Icon'                  => 'truck',
             'Filhos'                => false,
         ),'Administrar'=>Array(
-            'Filhos'                => Array('Leilão de Trans.'=>Array(
-                'Nome'                  => 'Leilão de Trans.',
-                'Link'                  => 'Transporte/Carga/Leilao_Transportadora',
-                'Gravidade'             => 90,
-                'Img'                   => 'turboadmin/m-dashboard.png',
-                'Icon'                  => 'rss',
-                'Filhos'                => false,
-            ),'Leilão de Caminhoneiro'=>Array(
-                'Nome'                  => 'Leilão de Caminhoneiro',
-                'Link'                  => 'Transporte/Carga/Leilao_Caminhoneiro',
-                'Gravidade'             => 80,
-                'Img'                   => 'turboadmin/m-dashboard.png',
-                'Icon'                  => 'rss',
-                'Filhos'                => false,
-            ),'Dicas de Estradas'=>Array(
+            'Filhos'                => Array('Dicas de Estradas'=>Array(
                 'Nome'                  => 'Dicas de Estradas',
                 'Link'                  => 'Transporte/Estrada/Estradas',
                 'Gravidade'             => 75,
                 'Img'                   => 'turboadmin/m-dashboard.png',
                 'Icon'                  => 'rss',
                 'Filhos'                => false,
-            ),'Minhas Cargas'=>Array(
-                'Nome'                  => 'Minhas Cargas',
-                'Link'                  => 'Transporte/Carga/Cargas',
+            ),),
+        ),'Pedido de Transporte'=>Array(
+            'Filhos'                => Array('Propostas Aceitas'=>Array(
+                'Nome'                  => 'Propostas Aceitas',
+                'Link'                  => 'Transporte/Pedido/Trans_Ped_Aceitas',
+                'Gravidade'             => 80,
+                'Img'                   => 'turboadmin/m-dashboard.png',
+                'Icon'                  => 'rss',
+                'Filhos'                => false,
+            ),'Meus Pedidos'=>Array(
+                'Nome'                  => 'Meus Pedidos',
+                'Link'                  => 'Transporte/Pedido/Trans_Ped_Minhas',
                 'Gravidade'             => 70,
                 'Img'                   => 'turboadmin/m-dashboard.png',
-                'Icon'                  => 'truck',
+                'Icon'                  => 'rss',
                 'Filhos'                => false,
-            ),),
+            ),'Propostas Aceitas'=>Array(
+                'Nome'                  => 'Propostas Novas',
+                'Link'                  => 'Transporte/Pedido/Trans_Ped_Novas',
+                'Gravidade'             => 60,
+                'Img'                   => 'turboadmin/m-dashboard.png',
+                'Icon'                  => 'rss',
+                'Filhos'                => false,
+            ),'Adicionar Pedido'=>Array(
+                'Nome'                  => 'Adicionar Pedido',
+                'Link'                  => 'Transporte/Pedido/Trans_Ped_Add',
+                'Gravidade'             => 50,
+                'Img'                   => 'turboadmin/m-dashboard.png',
+                'Icon'                  => 'rss',
+                'Filhos'                => false,
+            ),'Propostas Aceitas'=>Array(
+                'Nome'                  => 'Propostas Aceitas',
+                'Link'                  => 'Transporte/Pedido/Trans_Sol_PedAceitos',
+                'Gravidade'             => 40,
+                'Img'                   => 'turboadmin/m-dashboard.png',
+                'Icon'                  => 'rss',
+                'Filhos'                => false,
+            ),'Propostas Pendentes'=>Array(
+                'Nome'                  => 'Propostas Pendentes',
+                'Link'                  => 'Transporte/Pedido/Trans_Sol_PedPendente',
+                'Gravidade'             => 30,
+                'Img'                   => 'turboadmin/m-dashboard.png',
+                'Icon'                  => 'rss',
+                'Filhos'                => false,
+            ),'Propostas Recusadas'=>Array(
+                'Nome'                  => 'Propostas Recusadas',
+                'Link'                  => 'Transporte/Pedido/Trans_Sol_PedRecusados',
+                'Gravidade'             => 20,
+                'Img'                   => 'turboadmin/m-dashboard.png',
+                'Icon'                  => 'rss',
+                'Filhos'                => false,
+            ),'Ver Novos Pedidos'=>Array(
+                'Nome'                  => 'Ver Novos Pedidos',
+                'Link'                  => 'Transporte/Pedido/Trans_Sol_Solicitacoes',
+                'Gravidade'             => 10,
+                'Img'                   => 'turboadmin/m-dashboard.png',
+                'Icon'                  => 'rss',
+                'Filhos'                => false,
+            )),
+        ),'Pedido de Caminhoneiro'=>Array(
+            'Filhos'                => Array('Propostas Aceitas'=>Array(
+                'Nome'                  => 'Propostas Aceitas',
+                'Link'                  => 'Transporte/Pedido/Caminho_Ped_Aceitas',
+                'Gravidade'             => 80,
+                'Img'                   => 'turboadmin/m-dashboard.png',
+                'Icon'                  => 'rss',
+                'Filhos'                => false,
+            ),'Meus Pedidos'=>Array(
+                'Nome'                  => 'Meus Pedidos',
+                'Link'                  => 'Transporte/Pedido/Caminho_Ped_Minhas',
+                'Gravidade'             => 70,
+                'Img'                   => 'turboadmin/m-dashboard.png',
+                'Icon'                  => 'rss',
+                'Filhos'                => false,
+            ),'Propostas Aceitas'=>Array(
+                'Nome'                  => 'Propostas Novas',
+                'Link'                  => 'Transporte/Pedido/Caminho_Ped_novas',
+                'Gravidade'             => 60,
+                'Img'                   => 'turboadmin/m-dashboard.png',
+                'Icon'                  => 'rss',
+                'Filhos'                => false,
+            ),'Adicionar Pedido'=>Array(
+                'Nome'                  => 'Adicionar Pedido',
+                'Link'                  => 'Transporte/Pedido/Caminho_Ped_Add',
+                'Gravidade'             => 50,
+                'Img'                   => 'turboadmin/m-dashboard.png',
+                'Icon'                  => 'rss',
+                'Filhos'                => false,
+            ),'Propostas Aceitas'=>Array(
+                'Nome'                  => 'Propostas Aceitas',
+                'Link'                  => 'Transporte/Pedido/Caminho_Sol_PedAceitos',
+                'Gravidade'             => 40,
+                'Img'                   => 'turboadmin/m-dashboard.png',
+                'Icon'                  => 'rss',
+                'Filhos'                => false,
+            ),'Propostas Pendentes'=>Array(
+                'Nome'                  => 'Propostas Pendentes',
+                'Link'                  => 'Transporte/Pedido/Caminho_Sol_PedPendente',
+                'Gravidade'             => 30,
+                'Img'                   => 'turboadmin/m-dashboard.png',
+                'Icon'                  => 'rss',
+                'Filhos'                => false,
+            ),'Propostas Recusadas'=>Array(
+                'Nome'                  => 'Propostas Recusadas',
+                'Link'                  => 'Transporte/Pedido/Caminho_Sol_PedRecusados',
+                'Gravidade'             => 20,
+                'Img'                   => 'turboadmin/m-dashboard.png',
+                'Icon'                  => 'rss',
+                'Filhos'                => false,
+            ),'Ver Novas Pedidos'=>Array(
+                'Nome'                  => 'Ver Novas Pedidos',
+                'Link'                  => 'Transporte/Pedido/Caminho_Sol_Solicitacoes',
+                'Gravidade'             => 10,
+                'Img'                   => 'turboadmin/m-dashboard.png',
+                'Icon'                  => 'rss',
+                'Filhos'                => false,
+            )),
+        ),'Pedido de Armazem'=>Array(
+            'Filhos'                => Array('Propostas Aceitas'=>Array(
+                'Nome'                  => 'Propostas Aceitas',
+                'Link'                  => 'Transporte/Pedido/Arma_Ped_Aceitas',
+                'Gravidade'             => 80,
+                'Img'                   => 'turboadmin/m-dashboard.png',
+                'Icon'                  => 'rss',
+                'Filhos'                => false,
+            ),'Meus Pedidos'=>Array(
+                'Nome'                  => 'Meus Pedidos',
+                'Link'                  => 'Transporte/Pedido/Arma_Ped_Minhas',
+                'Gravidade'             => 70,
+                'Img'                   => 'turboadmin/m-dashboard.png',
+                'Icon'                  => 'rss',
+                'Filhos'                => false,
+            ),'Propostas Aceitas'=>Array(
+                'Nome'                  => 'Propostas Novas',
+                'Link'                  => 'Transporte/Pedido/Arma_Ped_novas',
+                'Gravidade'             => 60,
+                'Img'                   => 'turboadmin/m-dashboard.png',
+                'Icon'                  => 'rss',
+                'Filhos'                => false,
+            ),'Adicionar Pedido'=>Array(
+                'Nome'                  => 'Adicionar Pedido',
+                'Link'                  => 'Transporte/Pedido/Arma_Ped_Add',
+                'Gravidade'             => 50,
+                'Img'                   => 'turboadmin/m-dashboard.png',
+                'Icon'                  => 'rss',
+                'Filhos'                => false,
+            ),'Propostas Aceitas'=>Array(
+                'Nome'                  => 'Propostas Aceitas',
+                'Link'                  => 'Transporte/Pedido/Arma_Sol_PedAceitos',
+                'Gravidade'             => 40,
+                'Img'                   => 'turboadmin/m-dashboard.png',
+                'Icon'                  => 'rss',
+                'Filhos'                => false,
+            ),'Propostas Pendentes'=>Array(
+                'Nome'                  => 'Propostas Pendentes',
+                'Link'                  => 'Transporte/Pedido/Arma_Sol_PedPendente',
+                'Gravidade'             => 30,
+                'Img'                   => 'turboadmin/m-dashboard.png',
+                'Icon'                  => 'rss',
+                'Filhos'                => false,
+            ),'Propostas Recusadas'=>Array(
+                'Nome'                  => 'Propostas Recusadas',
+                'Link'                  => 'Transporte/Pedido/Arma_Sol_PedRecusados',
+                'Gravidade'             => 20,
+                'Img'                   => 'turboadmin/m-dashboard.png',
+                'Icon'                  => 'rss',
+                'Filhos'                => false,
+            ),'Ver Novas Pedidos'=>Array(
+                'Nome'                  => 'Ver Novas Pedidos',
+                'Link'                  => 'Transporte/Pedido/Arma_Sol_Solicitacoes',
+                'Gravidade'             => 10,
+                'Img'                   => 'turboadmin/m-dashboard.png',
+                'Icon'                  => 'rss',
+                'Filhos'                => false,
+            )),
         ),
     );
 };
 $config_Permissoes = function (){
     return Array(
         Array(
+            'Nome'                  => 'Transporte - Transportadora (Painel)',
+            'Desc'                  => '',
+            'Chave'                 => 'Transporte_Transportadora_Painel',
+            'End'                   => 'Transporte/Transportadora/Painel', // Endereco que deve conter a url para permitir acesso
+            'Modulo'                => 'Transporte', // Modulo Referente
+            'SubModulo'             => 'Transportadora',   // Submodulo Referente
+            'Metodo'                => 'Painel',  // Metodos referentes separados por virgula
+        ),
+        Array(
+            'Nome'                  => 'Transporte - Transportadora (Listagens)',
+            'Desc'                  => '',
+            'Chave'                 => 'Transporte_Transportadora_Transportadoras',
+            'End'                   => 'Transporte/Transportadora/Transportadoras', // Endereco que deve conter a url para permitir acesso
+            'Modulo'                => 'Transporte', // Modulo Referente
+            'SubModulo'             => 'Transportadora',   // Submodulo Referente
+            'Metodo'                => 'Transportadoras',  // Metodos referentes separados por virgula
+        ),Array(
+            'Nome'                  => 'Transporte - Fornecedor (Painel)',
+            'Desc'                  => '',
+            'Chave'                 => 'Transporte_Fornecedor_Painel',
+            'End'                   => 'Transporte/Fornecedor/Painel', // Endereco que deve conter a url para permitir acesso
+            'Modulo'                => 'Transporte', // Modulo Referente
+            'SubModulo'             => 'Fornecedor',   // Submodulo Referente
+            'Metodo'                => 'Painel',  // Metodos referentes separados por virgula
+        ),
+        Array(
+            'Nome'                  => 'Transporte - Fornecedor (Listagens)',
+            'Desc'                  => '',
+            'Chave'                 => 'Transporte_Fornecedor_Fornecedores',
+            'End'                   => 'Transporte/Fornecedor/Fornecedores', // Endereco que deve conter a url para permitir acesso
+            'Modulo'                => 'Transporte', // Modulo Referente
+            'SubModulo'             => 'Fornecedor',   // Submodulo Referente
+            'Metodo'                => 'Fornecedores',  // Metodos referentes separados por virgula
+        ),Array(
             'Nome'                  => 'Transporte - Armazem (Painel)',
             'Desc'                  => '',
             'Chave'                 => 'Transporte_Armazem_Painel',
@@ -86,15 +289,6 @@ $config_Permissoes = function (){
             'Modulo'                => 'Transporte', // Modulo Referente
             'SubModulo'             => 'Caminhoneiro',   // Submodulo Referente
             'Metodo'                => 'Painel',  // Metodos referentes separados por virgula
-        ),
-        Array(
-            'Nome'                  => 'Transporte - Caminhoneiro (Leilão)',
-            'Desc'                  => '',
-            'Chave'                 => 'Transporte_Carga_Leilao_Caminhoneiro',
-            'End'                   => 'Transporte/Carga/Leilao_Caminhoneiro', // Endereco que deve conter a url para permitir acesso
-            'Modulo'                => 'Transporte', // Modulo Referente
-            'SubModulo'             => 'Carga',   // Submodulo Referente
-            'Metodo'                => 'Leilao_Caminhoneiro',  // Metodos referentes separados por virgula
         ),
         Array(
             'Nome'                  => 'Transporte - Caminhoneiro (Listagens)',
@@ -141,51 +335,82 @@ $config_Permissoes = function (){
             'SubModulo'             => 'Estrada',   // Submodulo Referente
             'Metodo'                => 'Estradas_Del',  // Metodos referentes separados por virgula
         ),
+        
+        
+        // PEdidos
+        
         Array(
-            'Nome'                  => 'Transporte - Minhas Cargas (Listagem)',
+            'Nome'                  => 'Transporte - Pedido Caminhoneiro - Propostas Aceitas (->)',
             'Desc'                  => '',
-            'Chave'                 => 'Transporte_Carga_Cargas',
-            'End'                   => 'Transporte/Carga/Cargas', // Endereco que deve conter a url para permitir acesso
+            'Chave'                 => 'Transporte_Pedido_Caminho_Ped_Aceitas', // CHave unica nunca repete, chave primaria
+            'End'                   => 'Transporte/Pedido/Caminho_Ped_Aceitas', // Endereco que deve conter a url para permitir acesso
             'Modulo'                => 'Transporte', // Modulo Referente
-            'SubModulo'             => 'Carga',   // Submodulo Referente
-            'Metodo'                => 'Cargas',  // Metodos referentes separados por virgula
+            'SubModulo'             => 'Pedido',   // Submodulo Referente
+            'Metodo'                => 'Caminho_Ped_Aceitas',  // Metodos referentes separados por virgula
         ),
         Array(
-            'Nome'                  => 'Transporte - Minhas Cargas (Add)',
+            'Nome'                  => 'Transporte - Pedido Caminhoneiro - Propostas Novas (->)',
             'Desc'                  => '',
-            'Chave'                 => 'Transporte_Carga_Cargas_Add', // CHave unica nunca repete, chave primaria
-            'End'                   => 'Transporte/Carga/Cargas_Add', // Endereco que deve conter a url para permitir acesso
+            'Chave'                 => 'Transporte_Pedido_Trans_Ped_Novas', // CHave unica nunca repete, chave primaria
+            'End'                   => 'Transporte/Pedido/Trans_Ped_Novas', // Endereco que deve conter a url para permitir acesso
             'Modulo'                => 'Transporte', // Modulo Referente
-            'SubModulo'             => 'Carga',   // Submodulo Referente
-            'Metodo'                => 'Cargas_Add,Cargas_Add2',  // Metodos referentes separados por virgula
+            'SubModulo'             => 'Pedido',   // Submodulo Referente
+            'Metodo'                => 'Trans_Ped_Novas',  // Metodos referentes separados por virgula
         ),
         Array(
-            'Nome'                  => 'Transporte - Minhas Cargas (Editar)',
+            'Nome'                  => 'Transporte - Pedido Caminhoneiro - Meus Pedidos (->)',
             'Desc'                  => '',
-            'Chave'                 => 'Transporte_Carga_Cargas_Edit', // CHave unica nunca repete, chave primaria
-            'End'                   => 'Transporte/Carga/Cargas_Edit', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
-            'Modulo'                => 'Transporte', // Modulo Referente // Modulo Referente
-            'SubModulo'             => 'Carga',   // Submodulo Referente   // Submodulo Referente
-            'Metodo'                => 'Cargas_Edit,Cargas_Edit2',  // Metodos referentes separados por virgula
-        ),
-        Array(
-            'Nome'                  => 'Transporte - Minhas Cargas (Deletar)',
-            'Desc'                  => '',
-            'Chave'                 => 'Transporte_Carga_Cargas_Del', // CHave unica nunca repete, chave primaria
-            'End'                   => 'Transporte/Carga/Cargas_Del', // Endereco que deve conter a url para permitir acesso
+            'Chave'                 => 'Transporte_Pedido_Caminho_Ped_Minhas', // CHave unica nunca repete, chave primaria
+            'End'                   => 'Transporte/Pedido/Caminho_Ped_Minhas', // Endereco que deve conter a url para permitir acesso
             'Modulo'                => 'Transporte', // Modulo Referente
-            'SubModulo'             => 'Carga',   // Submodulo Referente
-            'Metodo'                => 'Cargas_Del',  // Metodos referentes separados por virgula
+            'SubModulo'             => 'Pedido',   // Submodulo Referente
+            'Metodo'                => 'Caminho_Ped_Minhas',  // Metodos referentes separados por virgula
         ),
         Array(
-            'Nome'                  => 'Transporte - Transportadora (Leilão)',
+            'Nome'                  => 'Transporte - Pedido Caminhoneiro - Aceitar Proposta (->)',
             'Desc'                  => '',
-            'Chave'                 => 'Transporte_Carga_Leilao_Transportadora',
-            'End'                   => 'Transporte/Carga/Leilao_Transportadora', // Endereco que deve conter a url para permitir acesso
+            'Chave'                 => 'Transporte_Pedido_Trans_Ped_Novas_Aceitar', // CHave unica nunca repete, chave primaria
+            'End'                   => 'Transporte/Pedido/Trans_Ped_Novas_Aceitar', // Endereco que deve conter a url para permitir acesso
             'Modulo'                => 'Transporte', // Modulo Referente
-            'SubModulo'             => 'Carga',   // Submodulo Referente
-            'Metodo'                => 'Leilao_Transportadora',  // Metodos referentes separados por virgula
+            'SubModulo'             => 'Pedido',   // Submodulo Referente
+            'Metodo'                => 'Trans_Ped_Novas_Aceitar',  // Metodos referentes separados por virgula
         ),
+        
+        'Adicionar Pedido'=>Array(
+                'Nome'                  => 'Aceitar Proposta',
+                'Link'                  => 'Transporte/Pedido/Trans_Ped_Novas_Aceitar',
+                'Gravidade'             => 50,
+                'Img'                   => 'turboadmin/m-dashboard.png',
+                'Icon'                  => 'rss',
+                'Filhos'                => false,
+            ),'Propostas Aceitas'=>Array(
+                'Nome'                  => 'Propostas Aceitas',
+                'Link'                  => 'Transporte/Pedido/Caminho_Sol_PedAceitos',
+                'Gravidade'             => 40,
+                'Img'                   => 'turboadmin/m-dashboard.png',
+                'Icon'                  => 'rss',
+                'Filhos'                => false,
+            ),'Propostas Pendentes'=>Array(
+                'Nome'                  => 'Propostas Pendentes',
+                'Link'                  => 'Transporte/Pedido/Caminho_Sol_PedPendente',
+                'Gravidade'             => 30,
+                'Img'                   => 'turboadmin/m-dashboard.png',
+                'Icon'                  => 'rss',
+                'Filhos'                => false,
+            ),'Propostas Recusadas'=>Array(
+                'Nome'                  => 'Propostas Recusadas',
+                'Link'                  => 'Transporte/Pedido/Caminho_Sol_PedRecusados',
+                'Gravidade'             => 20,
+                'Img'                   => 'turboadmin/m-dashboard.png',
+                'Icon'                  => 'rss',
+                'Filhos'                => false,
+            ),'Ver Novas Pedidos'=>Array(
+                'Nome'                  => 'Ver Novas Pedidos',
+                'Link'                  => 'Transporte/Pedido/Caminho_Sol_Solicitacoes',
+                'Gravidade'             => 10,
+                'Img'                   => 'turboadmin/m-dashboard.png',
+                'Icon'                  => 'rss',
+                'Filhos'                => false,
     );
 };
 /**
