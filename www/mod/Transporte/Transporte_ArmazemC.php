@@ -71,9 +71,9 @@ class Transporte_ArmazemControle extends Transporte_Controle
             unset($tabela);
         }else{
             if($export!==false){
-                $mensagem = 'Nenhum Armazem Cadastrada para exportar';
+                $mensagem = 'Nenhum Armazém Cadastrado para exportar';
             }else{
-                $mensagem = 'Nenhum Armazem Cadastrada';
+                $mensagem = 'Nenhum Armazém Cadastrado';
             }
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">'.$mensagem.'</font></b></center>');
         }
@@ -102,7 +102,7 @@ class Transporte_ArmazemControle extends Transporte_Controle
         
         // Dependendo se Existir Cria Formulario ou Lista arquivos
         if($existe===false){
-            $html = '<b>Ainda faltam insformações sobre o seu Armazem</b><br>'.self::Painel_Armazem_Add($camada);
+            $html = '<b>Ainda faltam insformações sobre o seu Armazém</b><br>'.self::Painel_Armazem_Add($camada);
         }else{
             $html = 'Painel';
         }

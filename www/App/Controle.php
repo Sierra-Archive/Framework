@@ -1102,13 +1102,19 @@ readfile($link);*/
         }
         
         // Se nao for ajax sai do Popup
-        if($bloco==='Popup' && LAYOULT_IMPRIMIR!=='AJAX'){
-            $bloco='All';
-            define('LAYOULT_POPUP', false);
-        }else if($bloco==='Popup'){
-            define('LAYOULT_POPUP', true);
+        if(!defined('LAYOULT_POPUP')){
+            if($bloco==='Popup' && LAYOULT_IMPRIMIR!=='AJAX'){
+                $bloco='All';
+                define('LAYOULT_POPUP', false);
+            }else if($bloco==='Popup'){
+                define('LAYOULT_POPUP', true);
+            }else{
+                define('LAYOULT_POPUP', false);
+            }
         }else{
-            define('LAYOULT_POPUP', false);
+            if($bloco==='Popup' && LAYOULT_IMPRIMIR!=='AJAX'){
+                $bloco='All';
+            }
         }
         
         if(!is_array($campos)){

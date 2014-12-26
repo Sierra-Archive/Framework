@@ -6,7 +6,7 @@ final Class Transporte_Caminhoneiro_DAO extends Framework\App\Dao
     protected $categoria;
     protected $capacidade;
     protected $telefone;
-    protected $status;
+    //protected $status;
     protected $ano;
     protected $placa;
     protected $renavan;
@@ -160,7 +160,7 @@ final Class Transporte_Caminhoneiro_DAO extends Framework\App\Dao
                         'class'             => 'obrigatorio masc_fone'
                     )
                 )
-            ),
+            )/*,
             // Status
             Array(
                 'mysql_titulo'      => 'status',
@@ -195,7 +195,7 @@ final Class Transporte_Caminhoneiro_DAO extends Framework\App\Dao
                         )
                     )
                 )
-            ),Array(
+            )*/,Array(
                 'mysql_titulo'      => 'ano',
                 'mysql_tipovar'     => 'varchar', //varchar, int, 
                 'mysql_tamanho'     => 100,

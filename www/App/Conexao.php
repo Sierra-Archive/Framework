@@ -636,6 +636,7 @@ final class Conexao
                 }
             }
             $sql .= $sql1.') VALUES '.$sql2.')';
+            //echo $sql;
             $this->query($sql);
             return true;
         }else if(is_array($Objeto)){

@@ -192,16 +192,16 @@ final Class Categoria_Acesso_DAO extends Framework\App\Dao
                 'chave'     =>  'usuario_veiculo_Equipamento',
              ),
             // Modulos de Transporte
-            'Transporte|Armazem'   => Array(                
-                'nome'      =>  'Tipo de Armazem', 
-                'chave_nome'=>  'Armazens',               
-                'chave'     =>  'Transporte_Armazem',
-             ),
-            // Modulos de Transporte
             'Transporte|Caminhao'   => Array(                
                 'nome'      =>  'Tipo de Caminhão', 
                 'chave_nome'=>  'Caminhões',               
                 'chave'     =>  'Transporte_Caminhao',
+             ),
+            // Modulos de Transporte
+            'Transporte|Armazem'   => Array(                
+                'nome'      =>  'Tipo de Armazém', 
+                'chave_nome'=>  'Armazens',               
+                'chave'     =>  'Transporte_Armazem',
              ),
         );
     }
@@ -237,7 +237,7 @@ final Class Categoria_Acesso_DAO extends Framework\App\Dao
                 // Verifica se o modulo é permitido
                 if(\Framework\App\Sistema_Funcoes::Perm_Modulos($modulo,$submodulo)){
                    $array[] = $value;
-                } 
+                }
             }
             return $array;
         }
@@ -246,11 +246,11 @@ final Class Categoria_Acesso_DAO extends Framework\App\Dao
         // Percorre os modulos que aceitam categorias
         $percorrer = self::Mod_Acesso();
         foreach($percorrer as &$value){
-            if($chave==$value['chave']){
+            if(strtoupper($chave)===strtoupper($value['chave'])){
                 return $value['nome'];
             }
         }
-        throw new \Exception('Categoria de Acesso não encontrado.',404);
+        throw new \Exception('Categoria de Acesso não encontrado. '.$chave,404);
     }
     public static function Mod_Acesso_Get_Chave(){
         $repassar = self::Mod_Acesso_Get();

@@ -4,7 +4,6 @@ final Class Transporte_Caminhoneiro_Pedido_Lance_DAO extends Framework\App\Dao
     protected $id;
     protected $transportadora;
     protected $pedido;
-    protected $usuario;
     protected $status;
     protected $valor;
     protected $obs;
@@ -99,32 +98,6 @@ final Class Transporte_Caminhoneiro_Pedido_Lance_DAO extends Framework\App\Dao
                     'select'             => array(
                         'class'             => 'obrigatorio',
                         'infonulo'          => 'Escolha um Fornecedor',
-                    )
-                )
-            ),
-            Array(
-                'mysql_titulo'      => 'usuario',
-                'mysql_tipovar'     => 'int', //varchar, int, 
-                'mysql_tamanho'     => 11,
-                'mysql_null'        => true, // true NULL, false, NOT NULL
-                'mysql_default'     => false,//false -> NONE, outro -> default
-                'mysql_primary'     => false, // chave primaria
-                'mysql_estrangeira' => 'U.id|U.nome', // chave estrangeira     ligacao|apresentacao|condicao
-                'mysql_autoadd'     => false,
-                'mysql_comment'     => false,
-                'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
-                'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
-                'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'         => false, //0 ninguem, 1 admin, 2 todos 
-                'edicao'            => Array(
-                    'Nome'              => 'Escolha',
-                    'valor_padrao'      => false,
-                    'readonly'          => false,
-                    'aviso'             => '',
-                    'formtipo'          => 'select',
-                    'select'             => array(
-                        'class'             => 'obrigatorio',
-                        'infonulo'          => 'Escolha',
                     )
                 )
             ),

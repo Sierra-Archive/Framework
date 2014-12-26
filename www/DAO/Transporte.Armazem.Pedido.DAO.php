@@ -73,7 +73,7 @@ final Class Transporte_Armazem_Pedido_DAO extends Framework\App\Dao
                     'formtipo'          => 'select',
                     'select'             => array(
                         'class'             => 'obrigatorio',
-                        'infonulo'          => 'Escolha uma Tipo de Armazenagem',
+                        'infonulo'          => 'Escolha um Tipo de Armazenagem',
                     )
                 )
             ),

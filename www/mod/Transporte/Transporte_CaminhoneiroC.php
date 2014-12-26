@@ -71,9 +71,9 @@ class Transporte_CaminhoneiroControle extends Transporte_Controle
             unset($tabela);
         }else{
             if($export!==false){
-                $mensagem = 'Nenhum Caminhoneiro Cadastrada para exportar';
+                $mensagem = 'Nenhum Caminhoneiro Cadastrado para exportar';
             }else{
-                $mensagem = 'Nenhum Caminhoneiro Cadastrada';
+                $mensagem = 'Nenhum Caminhoneiro Cadastrado';
             }
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">'.$mensagem.'</font></b></center>');
         }
@@ -95,14 +95,14 @@ class Transporte_CaminhoneiroControle extends Transporte_Controle
         if($retornar==='false') $retornar = false;
         // Verifica se Existe Conexao, se nao tiver abre o adicionar conexao, se nao, abre a pasta!
         $registro = \Framework\App\Registro::getInstacia();
-        $resultado = $registro->_Modelo->db->Sql_Select('Transporte_Caminhoneiro','{sigla}usuario=\''.$this->_Acl->Usuario_GetID().'\'',1);
+        $resultado = $registro->_Modelo->db->Sql_Select('Transporte_Caminhoneiro','{sigla}usuario=\''.$registro->_Acl->Usuario_GetID().'\'',1);
         if(is_object($resultado)){
             $existe = true;
         }
         
         // Dependendo se Existir Cria Formulario ou Lista arquivos
         if($existe===false){
-            $html = '<b>Ainda faltam insformações sobre o seu Caminhão</b><br>'.self::Painel_Caminhoneiro_Add($motivo, $motivoid, $camada);
+            $html = '<b>Ainda faltam insformações sobre o seu Caminhão</b><br>'.self::Painel_Caminhoneiro_Add($camada);
         }else{
             $html = 'Painel';
         }

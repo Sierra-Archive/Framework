@@ -93,7 +93,7 @@ final Class Transporte_Transportadora_Pedido_DAO extends Framework\App\Dao
                     'formtipo'          => 'select',
                     'select'             => array(
                         'class'             => 'obrigatorio',
-                        'infonulo'          => 'Escolha uma Tipo de Caminhao',
+                        'infonulo'          => 'Escolha um Tipo de Caminhao',
                     )
                 )
             ),
@@ -392,20 +392,12 @@ final Class Transporte_Transportadora_Pedido_DAO extends Framework\App\Dao
                     'select'            => array(
                         'opcoes'            => array(
                             array(
-                                'value'         =>  '3',
-                                'nome'          => 'Entregue'
-                            ),
-                            array(
-                                'value'         =>  '2',
-                                'nome'          => 'Em Armazenamento'
-                            ),
-                            array(
                                 'value'         =>  '1',
-                                'nome'          => 'Em Transporte'
+                                'nome'          => 'Fechado'
                             ),
                             array(
                                 'value'         =>  '0',
-                                'nome'          => 'Em Leilão'
+                                'nome'          => 'Aberto'
                             ),
                         )
                     )
