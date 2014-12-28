@@ -39,7 +39,7 @@ final Class Transporte_Armazem_Pedido_DAO extends Framework\App\Dao
             Array(
                 'mysql_titulo'      => 'id',
                 'mysql_tipovar'     => 'int', //varchar, int, 
-                'mysql_tamanho'     => 255,
+                'mysql_tamanho'     => 11,
                 'mysql_null'        => false,
                 'mysql_default'     => false,
                 'mysql_primary'     => true,
@@ -52,28 +52,28 @@ final Class Transporte_Armazem_Pedido_DAO extends Framework\App\Dao
                 'linkextra'          => '' ,//0 ninguem, 1 admin, 2 todos 
             ),
             Array(
-                'mysql_titulo'      => 'categoria_armazem',
+                'mysql_titulo'      => 'categoria_transporte',
                 'mysql_tipovar'     => 'int', //varchar, int, 
                 'mysql_tamanho'     => 11,
                 'mysql_null'        => true, // true NULL, false, NOT NULL
                 'mysql_default'     => false,//false -> NONE, outro -> default
                 'mysql_primary'     => false, // chave primaria
-                'mysql_estrangeira' => 'C.id|C.nome|CA.mod_acc=Transporte_Armazem', // chave estrangeira     ligacao|apresentacao|condicao
+                'mysql_estrangeira' => 'C.id|C.nome|CA.mod_acc=Transporte_Caminhao', // chave estrangeira     ligacao|apresentacao|condicao
                 'mysql_autoadd'     => false,
                 'mysql_comment'     => false,
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => 'categoria/Admin/Categorias_Add/Transporte_Armazem', //0 ninguem, 1 admin, 2 todos 
+                'linkextra'          => 'categoria/Admin/Categorias_Add/Transporte_Caminhao', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Tipo de Armazem Necessario',
+                    'Nome'              => 'Tipo de Caminhao Necessario',
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',
                     'formtipo'          => 'select',
                     'select'             => array(
                         'class'             => 'obrigatorio',
-                        'infonulo'          => 'Escolha um Tipo de Armazenagem',
+                        'infonulo'          => 'Escolha um Tipo de Caminhao',
                     )
                 )
             ),
@@ -158,6 +158,172 @@ final Class Transporte_Armazem_Pedido_DAO extends Framework\App\Dao
                     )
                 )
             ),
+            Array(
+                'mysql_titulo'      => 'inicio_pais',
+                'mysql_tipovar'     => 'int', //varchar, int, 
+                'mysql_tamanho'     => 11,
+                'mysql_null'        => false,  // nulo ?
+                'mysql_default'     => false, // valor padrao
+                'mysql_primary'     => false,  // chave primaria
+                'mysql_estrangeira' => 'SLP.id|SLP.nome', // chave estrangeira     ligacao|apresentacao|condicao
+                'form_change'       => 'U', // CHANGE PARA EXTRANGEIRAS -> Sigla Tabela Pai / Sigla Tabela Atual ou false
+                'mysql_autoadd'     => false,
+                'mysql_comment'     => false,
+                'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
+                'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
+                'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
+                'edicao'            => Array(
+                    'Nome'              => 'Pais de Saida',
+                    'valor_padrao'      => false,
+                    'readonly'          => false,
+                    'aviso'             => ''
+                ) 
+            ),
+            Array(
+                'mysql_titulo'      => 'inicio_estado',
+                'mysql_tipovar'     => 'int', //varchar, int, 
+                'mysql_tamanho'     => 11,
+                'mysql_null'        => false,  // nulo ?
+                'mysql_default'     => false, // valor padrao
+                'mysql_primary'     => false,  // chave primaria
+                'mysql_estrangeira' => 'SLE.id|SLE.sigla|SLE.pais={inicio_pais}', // chave estrangeira     ligacao|apresentacao|condicao
+                'form_change'       => 'U', // CHANGE PARA EXTRANGEIRAS -> Sigla Tabela Pai / Sigla Tabela Atual ou false
+                'mysql_autoadd'     => false,
+                'mysql_comment'     => false,
+                'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
+                'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
+                'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
+                'edicao'            => Array(
+                    'Nome'              => 'Estado de Saida',
+                    'valor_padrao'      => false,
+                    'readonly'          => false,
+                    'aviso'             => ''
+                )
+            ),
+            Array(
+                'mysql_titulo'      => 'inicio_cidade',
+                'mysql_tipovar'     => 'int', //varchar, int, 
+                'mysql_tamanho'     => 11,
+                'mysql_null'        => false,  // nulo ?
+                'mysql_default'     => false, // valor padrao
+                'mysql_primary'     => false,  // chave primaria
+                'mysql_estrangeira' => 'SLC.id|SLC.nome|SLC.estado={inicio_estado}', // chave estrangeira     ligacao|apresentacao|condicao
+                'form_change'       => 'U', // CHANGE PARA EXTRANGEIRAS -> Sigla Tabela Pai / Sigla Tabela Atual ou false
+                'mysql_autoadd'     => false,
+                'mysql_comment'     => false,
+                'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
+                'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
+                'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
+                'edicao'            => Array(
+                    'Nome'              => 'Cidade de Saida',
+                    'valor_padrao'      => false,
+                    'readonly'          => false,
+                    'aviso'             => ''
+                )
+            ),
+            Array(
+                'mysql_titulo'      => 'inicio_bairro',
+                'mysql_tipovar'     => 'int', //varchar, int, 
+                'mysql_tamanho'     => 11,
+                'mysql_null'        => false,  // nulo ?
+                'mysql_default'     => false, // valor padrao
+                'mysql_primary'     => false,  // chave primaria
+                'mysql_estrangeira' => 'SLB.id|SLB.nome|SLB.cidade={inicio_cidade}', // chave estrangeira     ligacao|apresentacao|condicao
+                'mysql_autoadd'     => false,
+                'mysql_comment'     => false,
+                'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
+                'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
+                'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
+                'edicao'            => Array(
+                    'Nome'              => 'Bairro de Saida',
+                    'valor_padrao'      => false,
+                    'readonly'          => false,
+                    'aviso'             => ''
+                ) 
+            ),
+            Array(
+                'mysql_titulo'      => 'fim_pais',
+                'mysql_tipovar'     => 'int', //varchar, int, 
+                'mysql_tamanho'     => 11,
+                'mysql_null'        => false,  // nulo ?
+                'mysql_default'     => false, // valor padrao
+                'mysql_primary'     => false,  // chave primaria
+                'mysql_estrangeira' => 'SLP.id|SLP.nome', // chave estrangeira     ligacao|apresentacao|condicao
+                'form_change'       => 'U', // CHANGE PARA EXTRANGEIRAS -> Sigla Tabela Pai / Sigla Tabela Atual ou false
+                'mysql_autoadd'     => false,
+                'mysql_comment'     => false,
+                'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
+                'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
+                'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
+                'edicao'            => Array(
+                    'Nome'              => 'Pais de Chegada',
+                    'valor_padrao'      => false,
+                    'readonly'          => false,
+                    'aviso'             => ''
+                ) 
+            ),
+            Array(
+                'mysql_titulo'      => 'fim_estado',
+                'mysql_tipovar'     => 'int', //varchar, int, 
+                'mysql_tamanho'     => 11,
+                'mysql_null'        => false,  // nulo ?
+                'mysql_default'     => false, // valor padrao
+                'mysql_primary'     => false,  // chave primaria
+                'mysql_estrangeira' => 'SLE.id|SLE.sigla|SLE.pais={fim_pais}', // chave estrangeira     ligacao|apresentacao|condicao
+                'form_change'       => 'U', // CHANGE PARA EXTRANGEIRAS -> Sigla Tabela Pai / Sigla Tabela Atual ou false
+                'mysql_autoadd'     => false,
+                'mysql_comment'     => false,
+                'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
+                'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
+                'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
+                'edicao'            => Array(
+                    'Nome'              => 'Estado de Chegada',
+                    'valor_padrao'      => false,
+                    'readonly'          => false,
+                    'aviso'             => ''
+                )
+            ),
+            Array(
+                'mysql_titulo'      => 'fim_cidade',
+                'mysql_tipovar'     => 'int', //varchar, int, 
+                'mysql_tamanho'     => 11,
+                'mysql_null'        => false,  // nulo ?
+                'mysql_default'     => false, // valor padrao
+                'mysql_primary'     => false,  // chave primaria
+                'mysql_estrangeira' => 'SLC.id|SLC.nome|SLC.estado={fim_estado}', // chave estrangeira     ligacao|apresentacao|condicao
+                'form_change'       => 'U', // CHANGE PARA EXTRANGEIRAS -> Sigla Tabela Pai / Sigla Tabela Atual ou false
+                'mysql_autoadd'     => false,
+                'mysql_comment'     => false,
+                'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
+                'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
+                'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
+                'edicao'            => Array(
+                    'Nome'              => 'Cidade de Chegada',
+                    'valor_padrao'      => false,
+                    'readonly'          => false,
+                    'aviso'             => ''
+                )
+            ),
+            Array(
+                'mysql_titulo'      => 'fim_bairro',
+                'mysql_tipovar'     => 'int', //varchar, int, 
+                'mysql_tamanho'     => 11,
+                'mysql_null'        => false,  // nulo ?
+                'mysql_default'     => false, // valor padrao
+                'mysql_primary'     => false,  // chave primaria
+                'mysql_estrangeira' => 'SLB.id|SLB.nome|SLB.cidade={fim_cidade}', // chave estrangeira     ligacao|apresentacao|condicao
+                'mysql_autoadd'     => false,
+                'mysql_comment'     => false,
+                'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
+                'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
+                'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
+                'edicao'            => Array(
+                    'Nome'              => 'Bairro de Chegada',
+                    'valor_padrao'      => false,
+                    'readonly'          => false,
+                    'aviso'             => ''
+                ) 
+            ),
             // Status
             Array(
                 'mysql_titulo'      => 'status',
@@ -182,40 +348,16 @@ final Class Transporte_Armazem_Pedido_DAO extends Framework\App\Dao
                     'select'            => array(
                         'opcoes'            => array(
                             array(
-                                'value'         =>  '3',
-                                'nome'          => 'Entregue'
-                            ),
-                            array(
-                                'value'         =>  '2',
-                                'nome'          => 'Em Armazenamento'
-                            ),
-                            array(
                                 'value'         =>  '1',
-                                'nome'          => 'Em Transporte'
+                                'nome'          => 'Fechado'
                             ),
                             array(
                                 'value'         =>  '0',
-                                'nome'          => 'Em Leilão'
+                                'nome'          => 'Aberto'
                             ),
                         )
                     )
                 )
-            ),
-            // Calcula Sózinho
-            Array(
-                'mysql_titulo'      => 'valor',
-                'mysql_tipovar'     => 'float', //varchar, int, 
-                'mysql_tamanho'     => 30,
-                'mysql_null'        => true,
-                'mysql_default'     => false,
-                'mysql_primary'     => false,
-                'mysql_estrangeira' => false, // chave estrangeira
-                'mysql_autoadd'     => false,
-                'mysql_comment'     => false,
-                'mysql_inside'      => '\Framework\App\Sistema_Funcoes::Tranf_Real_Float({valor})', // Funcao Executada quando o dado for inserido no banco de dados
-                'mysql_outside'     => '\Framework\App\Sistema_Funcoes::Tranf_Float_Real({valor})', // Funcao Executada quando o dado for retirado no banco de dados
-                'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', // //0 ninguem, 1 admin, 2 todos
             ),
             Array(
                 'mysql_titulo'      => 'obs',

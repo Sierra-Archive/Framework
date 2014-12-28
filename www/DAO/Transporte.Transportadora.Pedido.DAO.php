@@ -59,7 +59,7 @@ final Class Transporte_Transportadora_Pedido_DAO extends Framework\App\Dao
             Array(
                 'mysql_titulo'      => 'id',
                 'mysql_tipovar'     => 'int', //varchar, int, 
-                'mysql_tamanho'     => 255,
+                'mysql_tamanho'     => 11,
                 'mysql_null'        => false,
                 'mysql_default'     => false,
                 'mysql_primary'     => true,
@@ -121,30 +121,6 @@ final Class Transporte_Transportadora_Pedido_DAO extends Framework\App\Dao
                     'input'             => array(
                         'tipo'              => 'text',
                         'class'             => 'obrigatorio'
-                    )
-                )
-            ),Array(
-                'mysql_titulo'      => 'caminhoneiro',
-                'mysql_tipovar'     => 'int', //varchar, int, 
-                'mysql_tamanho'     => 11,
-                'mysql_null'        => true,  // nulo ?
-                'mysql_default'     => 0, // valor padrao
-                'mysql_primary'     => false,  // chave primaria
-                'mysql_estrangeira' => 'TC.id|TC.nome', // chave estrangeira     ligacao|apresentacao|condicao
-                'mysql_autoadd'     => false,
-                'mysql_comment'     => false,
-                'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
-                'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
-                'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'edicao'            => Array(
-                    'Nome'              => 'Caminhoneiro',
-                    'valor_padrao'      => false,
-                    'readonly'          => false,
-                    'aviso'             => '',
-                    'formtipo'          => 'select',
-                    'select'             => array(
-                        'class'             => 'obrigatorio',
-                        'infonulo'          => 'Escolha um Caminhoneiro',
                     )
                 )
             ),Array(
