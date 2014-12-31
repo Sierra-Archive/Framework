@@ -198,7 +198,7 @@ class Transporte_PedidoControle extends Transporte_Controle
             }
             // SE exportar ou mostra em tabela
             if($export!==false){
-                self::Export_Todos($export,$tabela, 'Blocos');
+                self::Export_Todos($export,$tabela, 'Propostas Aceitas');
             }else{
                 $this->_Visual->Show_Tabela_DataTable(
                     $tabela,     // Array Com a Tabela
@@ -256,7 +256,7 @@ class Transporte_PedidoControle extends Transporte_Controle
             }
             // SE exportar ou mostra em tabela
             if($export!==false){
-                self::Export_Todos($export,$tabela, 'Blocos');
+                self::Export_Todos($export,$tabela, 'Novas Propostas');
             }else{
                 $this->_Visual->Show_Tabela_DataTable(
                     $tabela,     // Array Com a Tabela
@@ -317,7 +317,7 @@ class Transporte_PedidoControle extends Transporte_Controle
             }
             // SE exportar ou mostra em tabela
             if($export!==false){
-                self::Export_Todos($export,$tabela, 'Blocos');
+                self::Export_Todos($export,$tabela, 'Pedidos Cadastrados');
             }else{
                 $this->_Visual->Show_Tabela_DataTable(
                     $tabela,     // Array Com a Tabela
@@ -374,7 +374,7 @@ class Transporte_PedidoControle extends Transporte_Controle
             }
             // SE exportar ou mostra em tabela
             if($export!==false){
-                self::Export_Todos($export,$tabela, 'Blocos');
+                self::Export_Todos($export,$tabela, 'Pedidos pendentes');
             }else{
                 $this->_Visual->Show_Tabela_DataTable(
                     $tabela,     // Array Com a Tabela
@@ -458,7 +458,7 @@ class Transporte_PedidoControle extends Transporte_Controle
             }
             // SE exportar ou mostra em tabela
             if($export!==false){
-                self::Export_Todos($export,$tabela, 'Blocos');
+                self::Export_Todos($export,$tabela, 'Propostas Aceitas');
             }else{
                 $this->_Visual->Show_Tabela_DataTable(
                     $tabela,     // Array Com a Tabela
@@ -514,7 +514,7 @@ class Transporte_PedidoControle extends Transporte_Controle
             }
             // SE exportar ou mostra em tabela
             if($export!==false){
-                self::Export_Todos($export,$tabela, 'Blocos');
+                self::Export_Todos($export,$tabela, 'Propostas Recusadas');
             }else{
                 $this->_Visual->Show_Tabela_DataTable(
                     $tabela,     // Array Com a Tabela
@@ -571,7 +571,7 @@ class Transporte_PedidoControle extends Transporte_Controle
             }
             // SE exportar ou mostra em tabela
             if($export!==false){
-                self::Export_Todos($export,$tabela, 'Blocos');
+                self::Export_Todos($export,$tabela, 'Propostas Pendentes');
             }else{
                 $this->_Visual->Show_Tabela_DataTable(
                     $tabela,     // Array Com a Tabela
@@ -918,7 +918,7 @@ class Transporte_PedidoControle extends Transporte_Controle
             }
             // SE exportar ou mostra em tabela
             if($export!==false){
-                self::Export_Todos($export,$tabela, 'Blocos');
+                self::Export_Todos($export,$tabela, 'Propostas Aceitas');
             }else{
                 $this->_Visual->Show_Tabela_DataTable(
                     $tabela,     // Array Com a Tabela
@@ -976,7 +976,7 @@ class Transporte_PedidoControle extends Transporte_Controle
             }
             // SE exportar ou mostra em tabela
             if($export!==false){
-                self::Export_Todos($export,$tabela, 'Blocos');
+                self::Export_Todos($export,$tabela, 'Novas Propostas');
             }else{
                 $this->_Visual->Show_Tabela_DataTable(
                     $tabela,     // Array Com a Tabela
@@ -1037,7 +1037,7 @@ class Transporte_PedidoControle extends Transporte_Controle
             }
             // SE exportar ou mostra em tabela
             if($export!==false){
-                self::Export_Todos($export,$tabela, 'Blocos');
+                self::Export_Todos($export,$tabela, 'Pedidos Cadastrados');
             }else{
                 $this->_Visual->Show_Tabela_DataTable(
                     $tabela,     // Array Com a Tabela
@@ -1094,7 +1094,7 @@ class Transporte_PedidoControle extends Transporte_Controle
             }
             // SE exportar ou mostra em tabela
             if($export!==false){
-                self::Export_Todos($export,$tabela, 'Blocos');
+                self::Export_Todos($export,$tabela, 'Pedidos pendentes');
             }else{
                 $this->_Visual->Show_Tabela_DataTable(
                     $tabela,     // Array Com a Tabela
@@ -1178,7 +1178,7 @@ class Transporte_PedidoControle extends Transporte_Controle
             }
             // SE exportar ou mostra em tabela
             if($export!==false){
-                self::Export_Todos($export,$tabela, 'Blocos');
+                self::Export_Todos($export,$tabela, 'Propostas Aceitas');
             }else{
                 $this->_Visual->Show_Tabela_DataTable(
                     $tabela,     // Array Com a Tabela
@@ -1234,7 +1234,7 @@ class Transporte_PedidoControle extends Transporte_Controle
             }
             // SE exportar ou mostra em tabela
             if($export!==false){
-                self::Export_Todos($export,$tabela, 'Blocos');
+                self::Export_Todos($export,$tabela, 'Propostas Recusadas');
             }else{
                 $this->_Visual->Show_Tabela_DataTable(
                     $tabela,     // Array Com a Tabela
@@ -1291,7 +1291,7 @@ class Transporte_PedidoControle extends Transporte_Controle
             }
             // SE exportar ou mostra em tabela
             if($export!==false){
-                self::Export_Todos($export,$tabela, 'Blocos');
+                self::Export_Todos($export,$tabela, 'Propostas Pendentes');
             }else{
                 $this->_Visual->Show_Tabela_DataTable(
                     $tabela,     // Array Com a Tabela
@@ -1634,7 +1634,7 @@ class Transporte_PedidoControle extends Transporte_Controle
             }
             // SE exportar ou mostra em tabela
             if($export!==false){
-                self::Export_Todos($export,$tabela, 'Blocos');
+                self::Export_Todos($export,$tabela, 'Propostas Aceitas');
             }else{
                 $this->_Visual->Show_Tabela_DataTable(
                     $tabela,     // Array Com a Tabela
@@ -1692,7 +1692,7 @@ class Transporte_PedidoControle extends Transporte_Controle
             }
             // SE exportar ou mostra em tabela
             if($export!==false){
-                self::Export_Todos($export,$tabela, 'Blocos');
+                self::Export_Todos($export,$tabela, 'Novas Propostas');
             }else{
                 $this->_Visual->Show_Tabela_DataTable(
                     $tabela,     // Array Com a Tabela
@@ -1753,7 +1753,7 @@ class Transporte_PedidoControle extends Transporte_Controle
             }
             // SE exportar ou mostra em tabela
             if($export!==false){
-                self::Export_Todos($export,$tabela, 'Blocos');
+                self::Export_Todos($export,$tabela, 'Pedidos Cadastrados');
             }else{
                 $this->_Visual->Show_Tabela_DataTable(
                     $tabela,     // Array Com a Tabela
@@ -1810,7 +1810,7 @@ class Transporte_PedidoControle extends Transporte_Controle
             }
             // SE exportar ou mostra em tabela
             if($export!==false){
-                self::Export_Todos($export,$tabela, 'Blocos');
+                self::Export_Todos($export,$tabela, 'Pedidos pendentes');
             }else{
                 $this->_Visual->Show_Tabela_DataTable(
                     $tabela,     // Array Com a Tabela
@@ -1894,7 +1894,7 @@ class Transporte_PedidoControle extends Transporte_Controle
             }
             // SE exportar ou mostra em tabela
             if($export!==false){
-                self::Export_Todos($export,$tabela, 'Blocos');
+                self::Export_Todos($export,$tabela, 'Propostas Aceitas');
             }else{
                 $this->_Visual->Show_Tabela_DataTable(
                     $tabela,     // Array Com a Tabela
@@ -1950,7 +1950,7 @@ class Transporte_PedidoControle extends Transporte_Controle
             }
             // SE exportar ou mostra em tabela
             if($export!==false){
-                self::Export_Todos($export,$tabela, 'Blocos');
+                self::Export_Todos($export,$tabela, 'Propostas Recusadas');
             }else{
                 $this->_Visual->Show_Tabela_DataTable(
                     $tabela,     // Array Com a Tabela
@@ -2007,7 +2007,7 @@ class Transporte_PedidoControle extends Transporte_Controle
             }
             // SE exportar ou mostra em tabela
             if($export!==false){
-                self::Export_Todos($export,$tabela, 'Blocos');
+                self::Export_Todos($export,$tabela, 'Propostas Pendentes');
             }else{
                 $this->_Visual->Show_Tabela_DataTable(
                     $tabela,     // Array Com a Tabela

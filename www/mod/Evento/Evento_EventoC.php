@@ -92,7 +92,7 @@ class Evento_EventoControle extends Evento_Controle
             list($tabela,$i) = self::Eventos_Tabela($eventos);
             // SE exportar ou mostra em tabela
             if($export!==false){
-                self::Export_Todos($export,$tabela, 'Blocos');
+                self::Export_Todos($export,$tabela, 'Eventos');
             }else{
                 $this->_Visual->Show_Tabela_DataTable(
                     $tabela,     // Array Com a Tabela

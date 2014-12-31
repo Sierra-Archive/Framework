@@ -7,12 +7,13 @@ final Class Transporte_Caminhoneiro_DAO extends Framework\App\Dao
     protected $capacidade;
     protected $telefone;
     //protected $status;
+    protected $carteira;
     protected $ano;
     protected $placa;
     protected $renavan;
     protected $ipva;
-    protected $ipva_valor;
-    protected $ipva_data;
+    /*protected $ipva_valor;
+    protected $ipva_data;*/
     protected $obs1;
     protected $obs2;
     protected $obs3;
@@ -98,7 +99,7 @@ final Class Transporte_Caminhoneiro_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'          => 'categoria/Admin/Categorias_Add/Transporte_Caminhao', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Tipo de Caminhão',
+                    'Nome'              => 'Tipo de Transporte',
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',
@@ -195,7 +196,33 @@ final Class Transporte_Caminhoneiro_DAO extends Framework\App\Dao
                         )
                     )
                 )
-            )*/,Array(
+            )*/,
+            Array(
+                'mysql_titulo'      => 'carteira',
+                'mysql_tipovar'     => 'varchar', //varchar, int, 
+                'mysql_tamanho'     => 30,
+                'mysql_null'        => true,  // nulo ?
+                'mysql_default'     => 'Sem nome', // valor padrao
+                'mysql_primary'     => false,  // chave primaria
+                'mysql_estrangeira' => false, // chave estrangeira     ligacao|apresentacao|condicao
+                'mysql_autoadd'     => false,
+                'mysql_comment'     => false,
+                'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
+                'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
+                'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
+                'edicao'            => Array(
+                    'Nome'              => 'Carteira de Motorista',
+                    'valor_padrao'      => false,
+                    'readonly'          => false,
+                    'aviso'             => 'Apenas letras',
+                    'formtipo'          => 'input',
+                    'form_escondido'    => true,    // Vai aparecer, quando trocar select
+                    'input'             => array(
+                        'tipo'              => 'text',
+                        'class'             => 'obrigatorio'
+                    )
+                )
+            ),Array(
                 'mysql_titulo'      => 'ano',
                 'mysql_tipovar'     => 'varchar', //varchar, int, 
                 'mysql_tamanho'     => 100,
@@ -296,7 +323,7 @@ final Class Transporte_Caminhoneiro_DAO extends Framework\App\Dao
                         'class'             => 'obrigatorio'
                     )
                 )
-            ),Array(
+            )/*,Array(
                 'mysql_titulo'      => 'ipva_valor',
                 'mysql_tipovar'     => 'float', //varchar, int, 
                 'mysql_tamanho'     => 30,
@@ -349,7 +376,7 @@ final Class Transporte_Caminhoneiro_DAO extends Framework\App\Dao
                         'class'             => 'obrigatorio'
                     )
                 )
-            ),
+            )*/,
             Array(
                 'mysql_titulo'      => 'obs1',
                 'mysql_tipovar'     => 'longtext', //varchar, int, 

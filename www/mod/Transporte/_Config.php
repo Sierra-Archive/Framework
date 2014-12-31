@@ -34,8 +34,8 @@ $config_Menu = function (){
             'Icon'                  => 'truck',
             'Filhos'                => false,
         ),
-        'Caminhoneiros'=>Array(
-            'Nome'                  => 'Caminhoneiros',
+        'Autonômos'=>Array(
+            'Nome'                  => 'Autonômos',
             'Link'                  => 'Transporte/Caminhoneiro/Caminhoneiros',
             'Gravidade'             => 70,
             'Img'                   => 'turboadmin/m-dashboard.png',
@@ -113,8 +113,8 @@ $config_Menu = function (){
                 'Icon'                  => 'truck',
                 'Filhos'                => false,
             )),
-        ),'Pedido de Caminhoneiro'=>Array(
-            'Nome'                  => 'Pedido de Caminhoneiro',
+        ),'Pedido de Autonômo'=>Array(
+            'Nome'                  => 'Pedido de Autonômo',
             'Link'                  => '#',
             'Gravidade'             => 80,
             'Img'                   => '',
@@ -297,7 +297,7 @@ $config_Permissoes = function (){
             'Metodo'                => 'Armazens',  // Metodos referentes separados por virgula
         ),
         Array(
-            'Nome'                  => 'Transporte - Caminhoneiro (Painel)',
+            'Nome'                  => 'Transporte - Autonômo (Painel)',
             'Desc'                  => '',
             'Chave'                 => 'Transporte_Caminhoneiro_Painel',
             'End'                   => 'Transporte/Caminhoneiro/Painel', // Endereco que deve conter a url para permitir acesso
@@ -306,7 +306,7 @@ $config_Permissoes = function (){
             'Metodo'                => 'Painel',  // Metodos referentes separados por virgula
         ),
         Array(
-            'Nome'                  => 'Transporte - Caminhoneiro (Listagens)',
+            'Nome'                  => 'Transporte - Autonômo (Listagens)',
             'Desc'                  => '',
             'Chave'                 => 'Transporte_Caminhoneiro_Caminhoneiros',
             'End'                   => 'Transporte/Caminhoneiro/Caminhoneiros', // Endereco que deve conter a url para permitir acesso
@@ -462,9 +462,9 @@ $config_Permissoes = function (){
             'Metodo'                => 'Trans_Sol_Solicitacoes',  // Metodos referentes separados por virgula
         ),
         
-        // PEdidos Caminhoneiro
+        // PEdidos Autonômos
         Array(
-            'Nome'                  => 'Transporte - Pedido Caminhoneiro - Propostas Aceitas (->)',
+            'Nome'                  => 'Transporte - Pedido Autonômo - Propostas Aceitas (->)',
             'Desc'                  => '',
             'Chave'                 => 'Transporte_Pedido_Caminho_Ped_Aceitas', // CHave unica nunca repete, chave primaria
             'End'                   => 'Transporte/Pedido/Caminho_Ped_Aceitas', // Endereco que deve conter a url para permitir acesso
@@ -473,7 +473,7 @@ $config_Permissoes = function (){
             'Metodo'                => 'Caminho_Ped_Aceitas',  // Metodos referentes separados por virgula
         ),
         Array(
-            'Nome'                  => 'Transporte - Pedido Caminhoneiro - Propostas Novas (->)',
+            'Nome'                  => 'Transporte - Pedido Autonômo - Propostas Novas (->)',
             'Desc'                  => '',
             'Chave'                 => 'Transporte_Pedido_Caminho_Ped_Novas', // CHave unica nunca repete, chave primaria
             'End'                   => 'Transporte/Pedido/Caminho_Ped_Novas', // Endereco que deve conter a url para permitir acesso
@@ -482,7 +482,7 @@ $config_Permissoes = function (){
             'Metodo'                => 'Caminho_Ped_Novas',  // Metodos referentes separados por virgula
         ),
         Array(
-            'Nome'                  => 'Transporte - Pedido Caminhoneiro - Meus Pedidos (->)',
+            'Nome'                  => 'Transporte - Pedido Autonômo - Meus Pedidos (->)',
             'Desc'                  => '',
             'Chave'                 => 'Transporte_Pedido_Caminho_Ped_Minhas', // CHave unica nunca repete, chave primaria
             'End'                   => 'Transporte/Pedido/Caminho_Ped_Minhas', // Endereco que deve conter a url para permitir acesso
@@ -491,7 +491,7 @@ $config_Permissoes = function (){
             'Metodo'                => 'Caminho_Ped_Minhas',  // Metodos referentes separados por virgula
         ),
         Array(
-            'Nome'                  => 'Transporte - Pedido Caminhoneiro - Aceitar Proposta (->)',
+            'Nome'                  => 'Transporte - Pedido Autonômo - Aceitar Proposta (->)',
             'Desc'                  => '',
             'Chave'                 => 'Transporte_Pedido_Caminho_Ped_Novas_Aceitar', // CHave unica nunca repete, chave primaria
             'End'                   => 'Transporte/Pedido/Caminho_Ped_Novas_Aceitar', // Endereco que deve conter a url para permitir acesso
@@ -500,7 +500,7 @@ $config_Permissoes = function (){
             'Metodo'                => 'Caminho_Ped_Novas_Aceitar',  // Metodos referentes separados por virgula
         ),
         Array(
-            'Nome'                  => 'Transporte - Pedido Caminhoneiro - Adicionar Pedido (->)',
+            'Nome'                  => 'Transporte - Pedido Autonômo - Adicionar Pedido (->)',
             'Desc'                  => '',
             'Chave'                 => 'Transporte_Pedido_Caminho_Ped_Add', // CHave unica nunca repete, chave primaria
             'End'                   => 'Transporte/Pedido/Caminho_Ped_Add', // Endereco que deve conter a url para permitir acesso
@@ -509,7 +509,7 @@ $config_Permissoes = function (){
             'Metodo'                => 'Caminho_Ped_Add,Caminho_Ped_Add2',  // Metodos referentes separados por virgula
         ),
         Array(
-            'Nome'                  => 'Transporte - Pedido Caminhoneiro - Cancelar Pedido (->)',
+            'Nome'                  => 'Transporte - Pedido Autonômo - Cancelar Pedido (->)',
             'Desc'                  => '',
             'Chave'                 => 'Transporte_Pedido_Caminho_Ped_Del', // CHave unica nunca repete, chave primaria
             'End'                   => 'Transporte/Pedido/Caminho_Ped_Del', // Endereco que deve conter a url para permitir acesso
@@ -518,7 +518,7 @@ $config_Permissoes = function (){
             'Metodo'                => 'Caminho_Ped_Del',  // Metodos referentes separados por virgula
         ),
         Array(
-            'Nome'                  => 'Transporte - Pedido Caminhoneiro - Cancelar Solicitação (->)',
+            'Nome'                  => 'Transporte - Pedido Autonômo - Cancelar Solicitação (->)',
             'Desc'                  => '',
             'Chave'                 => 'Transporte_Pedido_Caminho_Sol_Del', // CHave unica nunca repete, chave primaria
             'End'                   => 'Transporte/Pedido/Caminho_Sol_Del', // Endereco que deve conter a url para permitir acesso
@@ -527,7 +527,7 @@ $config_Permissoes = function (){
             'Metodo'                => 'Caminho_Sol_Del',  // Metodos referentes separados por virgula
         ),
         Array(
-            'Nome'                  => 'Transporte - Pedido Caminhoneiro - Adicionar Solicitação (<-)',
+            'Nome'                  => 'Transporte - Pedido Autonômo - Adicionar Solicitação (<-)',
             'Desc'                  => '',
             'Chave'                 => 'Transporte_Pedido_Caminho_Sol_Add', // CHave unica nunca repete, chave primaria
             'End'                   => 'Transporte/Pedido/Caminho_Sol_Add', // Endereco que deve conter a url para permitir acesso
@@ -536,7 +536,7 @@ $config_Permissoes = function (){
             'Metodo'                => 'Caminho_Sol_Add,Caminho_Sol_Add2',  // Metodos referentes separados por virgula
         ),
         Array(
-            'Nome'                  => 'Transporte - Pedido Caminhoneiro - Propostas Aceitas (<-)',
+            'Nome'                  => 'Transporte - Pedido Autonômo - Propostas Aceitas (<-)',
             'Desc'                  => '',
             'Chave'                 => 'Transporte_Pedido_Caminho_Sol_PedAceitos', // CHave unica nunca repete, chave primaria
             'End'                   => 'Transporte/Pedido/Caminho_Sol_PedAceitos', // Endereco que deve conter a url para permitir acesso
@@ -545,7 +545,7 @@ $config_Permissoes = function (){
             'Metodo'                => 'Caminho_Sol_PedAceitos',  // Metodos referentes separados por virgula
         ),
         Array(
-            'Nome'                  => 'Transporte - Pedido Caminhoneiro - Propostas Pendentes (<-)',
+            'Nome'                  => 'Transporte - Pedido Autonômo - Propostas Pendentes (<-)',
             'Desc'                  => '',
             'Chave'                 => 'Transporte_Pedido_Caminho_Sol_PedPendente', // CHave unica nunca repete, chave primaria
             'End'                   => 'Transporte/Pedido/Caminho_Sol_PedPendente', // Endereco que deve conter a url para permitir acesso
@@ -554,7 +554,7 @@ $config_Permissoes = function (){
             'Metodo'                => 'Caminho_Sol_PedPendente',  // Metodos referentes separados por virgula
         ),
         Array(
-            'Nome'                  => 'Transporte - Pedido Caminhoneiro - Propostas Recusadas (<-)',
+            'Nome'                  => 'Transporte - Pedido Autonômo - Propostas Recusadas (<-)',
             'Desc'                  => '',
             'Chave'                 => 'Transporte_Pedido_Caminho_Sol_PedRecusados', // CHave unica nunca repete, chave primaria
             'End'                   => 'Transporte/Pedido/Caminho_Sol_PedRecusados', // Endereco que deve conter a url para permitir acesso
@@ -563,7 +563,7 @@ $config_Permissoes = function (){
             'Metodo'                => 'Caminho_Sol_PedRecusados',  // Metodos referentes separados por virgula
         ),
         Array(
-            'Nome'                  => 'Transporte - Pedido Caminhoneiro - Ver Novos Pedidos (<-)',
+            'Nome'                  => 'Transporte - Pedido Autonômo - Ver Novos Pedidos (<-)',
             'Desc'                  => '',
             'Chave'                 => 'Transporte_Pedido_Caminho_Sol_Solicitacoes', // CHave unica nunca repete, chave primaria
             'End'                   => 'Transporte/Pedido/Caminho_Sol_Solicitacoes', // Endereco que deve conter a url para permitir acesso

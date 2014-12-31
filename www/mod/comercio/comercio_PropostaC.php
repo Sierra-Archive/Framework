@@ -930,7 +930,7 @@ class comercio_PropostaControle extends comercio_Controle
                 // Coloca Endereco
                 self::Endereco_Proposta(true,$tema);
                 $this->Tema_Endereco('Visualizar '.$titulo);
-                // Coloca COnteudo em Blocos
+                // Coloca COnteudo em Janelas
                 $this->_Visual->Blocar($html);
                 if($layoult==='Unico'){
                     $this->_Visual->Bloco_Unico_CriaJanela($titulo.' #'.$identificador->id);
@@ -1848,7 +1848,6 @@ class comercio_PropostaControle extends comercio_Controle
         // Se tiver IMPOSTO Add
         if(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Propostas_Imposto')!==false){
             $imposto = \Framework\App\Sistema_Funcoes::Tranf_Porc_Float(\anti_injection($_POST['imposto']));
-            //var_dump($imposto,$valortotal,Framework\App\Sistema_Funcoes::Tranf_Float_Real($imposto*$valortotal));
             $html .= '<b>Imposto:</b> '.Framework\App\Sistema_Funcoes::Tranf_Float_Real($imposto*$valortotal).'<br>';
             $valortotal_semimposto = $valortotal-($imposto*$valortotal);
         }   
@@ -1857,7 +1856,6 @@ class comercio_PropostaControle extends comercio_Controle
         if(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Proposta_Comissao')!==false){
             $comissao = \Framework\App\Sistema_Funcoes::Tranf_Porc_Float(\anti_injection($_POST['comissao']));
             $html .= '<b>Comissão:</b> '.Framework\App\Sistema_Funcoes::Tranf_Float_Real($comissao*$valortotal_semimposto).'<br>';
-            //var_dump(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Proposta_Comissao'),$valortotal,Framework\App\Sistema_Funcoes::Tranf_Float_Real(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Proposta_Comissao')*$valortotal));
             //$valortotal = $valortotal+($comissao*$valortotal);
         }        
         

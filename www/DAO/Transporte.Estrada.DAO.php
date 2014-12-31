@@ -89,7 +89,7 @@ final Class Transporte_Estrada_DAO extends Framework\App\Dao
                 'mysql_outside'     => 'data_eua_brasil({valor})', // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Data da Noticia',
+                    'Nome'              => 'Data da Dica de Estrada',
                     'Mascara'           => 'Data',
                     'valor_padrao'      => APP_DATA_BR,
                     'readonly'          => false,

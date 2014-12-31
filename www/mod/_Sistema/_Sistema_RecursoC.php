@@ -110,7 +110,7 @@ $('#produtocontrolador1 select').attr('id','produto1');
         }
         // Captura Informacoes e Cria UNIVERSAL
         $universal = new \Universal_Vivo_Cep_DAO();
-        var_dump($xml,$resultado[0]);
+        //var_dump($xml,$resultado[0]);
         $estado = (Array) $xml->uf;
         $cidade = (Array) $xml->cidade;
         $bairro = (Array) $xml->bairro;

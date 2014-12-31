@@ -33,8 +33,9 @@ class Transporte_FornecedorControle extends Transporte_Controle
         if(is_object($fornecedor)) $fornecedor = Array(0=>$fornecedor);reset($fornecedor);
         foreach ($fornecedor as &$valor) {                
             $tabela['Id'][$i]           = '#'.$valor->id;
+            $tabela['Razão Social'][$i] = $valor->usuario2;
             $tabela['Categoria'][$i]    = $valor->categoria2;
-            $tabela['Titulo'][$i]       = $valor->nome;
+            $tabela['Observação'][$i]       = $valor->obs;
             ++$i;
         }
         return Array($tabela,$i);
@@ -51,10 +52,10 @@ class Transporte_FornecedorControle extends Transporte_Controle
         $fornecedor = $this->_Modelo->db->Sql_Select('Transporte_Fornecedor');
         if(is_object($fornecedor)) $fornecedor = Array(0=>$fornecedor);
         if($fornecedor!==false && !empty($fornecedor)){
-            list($tabela,$i) = self::Transportes_Tabela($fornecedor);
+            list($tabela,$i) = self::Fornecedores_Tabela($fornecedor);
             // SE exportar ou mostra em tabela
             if($export!==false){
-                self::Export_Todos($export,$tabela, 'Blocos');
+                self::Export_Todos($export,$tabela, 'Fornecedores');
             }else{
                 $this->_Visual->Show_Tabela_DataTable(
                     $tabela,     // Array Com a Tabela
@@ -77,10 +78,10 @@ class Transporte_FornecedorControle extends Transporte_Controle
             }
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">'.$mensagem.'</font></b></center>');
         }
-        $titulo = 'Listagem de Transportes ('.$i.')';
+        $titulo = 'Listagem de Fornecedores ('.$i.')';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Fornecedoristrar Transportes');
+        $this->_Visual->Json_Info_Update('Titulo','Listagem de Fornecedores');
     }
     /**
      * Painel Adminstrativo de Fornecedores

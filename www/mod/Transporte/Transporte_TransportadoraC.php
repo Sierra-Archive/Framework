@@ -33,8 +33,9 @@ class Transporte_TransportadoraControle extends Transporte_Controle
         if(is_object($transportadora)) $transportadora = Array(0=>$transportadora);reset($transportadora);
         foreach ($transportadora as &$valor) {                
             $tabela['Id'][$i]           = '#'.$valor->id;
+            $tabela['Razão Social'][$i] = $valor->usuario2;
             $tabela['Categoria'][$i]    = $valor->categoria2;
-            $tabela['Titulo'][$i]       = $valor->nome;
+            $tabela['Observação'][$i]       = $valor->obs;
             ++$i;
         }
         return Array($tabela,$i);
@@ -51,10 +52,10 @@ class Transporte_TransportadoraControle extends Transporte_Controle
         $transportadora = $this->_Modelo->db->Sql_Select('Transporte_Transportadora');
         if(is_object($transportadora)) $transportadora = Array(0=>$transportadora);
         if($transportadora!==false && !empty($transportadora)){
-            list($tabela,$i) = self::Transportes_Tabela($transportadora);
+            list($tabela,$i) = self::Transportadoras_Tabela($transportadora);
             // SE exportar ou mostra em tabela
             if($export!==false){
-                self::Export_Todos($export,$tabela, 'Blocos');
+                self::Export_Todos($export,$tabela, 'Transportadoras');
             }else{
                 $this->_Visual->Show_Tabela_DataTable(
                     $tabela,     // Array Com a Tabela
@@ -77,10 +78,10 @@ class Transporte_TransportadoraControle extends Transporte_Controle
             }
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">'.$mensagem.'</font></b></center>');
         }
-        $titulo = 'Listagem de Transportes ('.$i.')';
+        $titulo = 'Listagem de Transportadoras ('.$i.')';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Transportadoraistrar Transportes');
+        $this->_Visual->Json_Info_Update('Titulo','Listagem de Transportadoras');
     }
     /**
      * Painel Adminstrativo de Transportadoras

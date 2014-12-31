@@ -1120,7 +1120,7 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
                 $funcao = 'Endereco_'.$tema;
                 self::$funcao(true);
                 $this->Tema_Endereco('Visualizar '.$titulo);
-                // Coloca COnteudo em Blocos
+                // Coloca COnteudo em Janela
                 $this->_Visual->Blocar($html);
                 if($layoult==='Unico'){
                     $this->_Visual->Bloco_Unico_CriaJanela($titulo.' #'.$identificador->id);

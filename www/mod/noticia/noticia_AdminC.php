@@ -84,7 +84,7 @@ class noticia_AdminControle extends noticia_Controle
             list($tabela,$i) = self::Noticias_Tabela($noticia);
             // SE exportar ou mostra em tabela
             if($export!==false){
-                self::Export_Todos($export,$tabela, 'Blocos');
+                self::Export_Todos($export,$tabela, 'Noticias');
             }else{
                 $this->_Visual->Show_Tabela_DataTable(
                     $tabela,     // Array Com a Tabela

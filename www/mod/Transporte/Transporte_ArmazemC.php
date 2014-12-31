@@ -33,8 +33,9 @@ class Transporte_ArmazemControle extends Transporte_Controle
         if(is_object($armazem)) $armazem = Array(0=>$armazem);reset($armazem);
         foreach ($armazem as &$valor) {                
             $tabela['Id'][$i]           = '#'.$valor->id;
+            $tabela['Razão Social'][$i] = $valor->usuario2;
             $tabela['Categoria'][$i]    = $valor->categoria2;
-            $tabela['Titulo'][$i]       = $valor->nome;
+            $tabela['Observação'][$i]       = $valor->obs;
             ++$i;
         }
         return Array($tabela,$i);
@@ -51,10 +52,10 @@ class Transporte_ArmazemControle extends Transporte_Controle
         $armazem = $this->_Modelo->db->Sql_Select('Transporte_Armazem');
         if(is_object($armazem)) $armazem = Array(0=>$armazem);
         if($armazem!==false && !empty($armazem)){
-            list($tabela,$i) = self::Transportes_Tabela($armazem);
+            list($tabela,$i) = self::Armazens_Tabela($armazem);
             // SE exportar ou mostra em tabela
             if($export!==false){
-                self::Export_Todos($export,$tabela, 'Blocos');
+                self::Export_Todos($export,$tabela, 'Armazens');
             }else{
                 $this->_Visual->Show_Tabela_DataTable(
                     $tabela,     // Array Com a Tabela
@@ -77,10 +78,10 @@ class Transporte_ArmazemControle extends Transporte_Controle
             }
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">'.$mensagem.'</font></b></center>');
         }
-        $titulo = 'Listagem de Transportes ('.$i.')';
+        $titulo = 'Listagem de Armazéns ('.$i.')';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Armazemistrar Transportes');
+        $this->_Visual->Json_Info_Update('Titulo','Listagem de Armazéns');
     }
     /**
      * Painel Adminstrativo de Armazens

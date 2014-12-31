@@ -83,7 +83,7 @@ class Transporte_EstradaControle extends Transporte_Controle
             list($tabela,$i) = self::Estradas_Tabela($estrada);
             // SE exportar ou mostra em tabela
             if($export!==false){
-                self::Export_Todos($export,$tabela, 'Blocos');
+                self::Export_Todos($export,$tabela, 'Dicas de Estradas');
             }else{
                 $this->_Visual->Show_Tabela_DataTable(
                     $tabela,     // Array Com a Tabela

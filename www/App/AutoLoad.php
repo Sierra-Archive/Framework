@@ -161,7 +161,7 @@ define('MOD_PATH'       , ROOT      .'mod'      .DS);
 // Fuder tudo com Variavies nao inicializadas, afim de nao deixar ter perda de performace
 function Erro_Get_Leve($error, $message,$_1,$_2)
 {
-    echo var_dump($message.'<br>Arquivo: '.$_1.'<br>Linha:'.$_2,3100);
+    //echo var_dump($message.'<br>Arquivo: '.$_1.'<br>Linha:'.$_2,3100);
     if(SISTEMA_DEBUG===true){
         if($error == 8)
         {

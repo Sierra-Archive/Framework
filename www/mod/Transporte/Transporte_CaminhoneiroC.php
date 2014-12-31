@@ -8,7 +8,7 @@ class Transporte_CaminhoneiroControle extends Transporte_Controle
     static function Endereco_Caminhoneiro($true=true){
         $registro = \Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
-        $titulo = 'Caminhoneiros';
+        $titulo = 'Autonômos';
         $link = 'Transporte/Caminhoneiro/Caminhoneiros';
         if($true===true){
             $_Controle->Tema_Endereco($titulo,$link);
@@ -34,7 +34,9 @@ class Transporte_CaminhoneiroControle extends Transporte_Controle
         foreach ($caminhoneiro as &$valor) {                
             $tabela['Id'][$i]           = '#'.$valor->id;
             $tabela['Categoria'][$i]    = $valor->categoria2;
-            $tabela['Titulo'][$i]       = $valor->nome;
+            $tabela['Nome'][$i]         = $valor->usuario2;
+            $tabela['Capacidade'][$i]   = $valor->capacidade;
+            $tabela['Telefone'][$i]       = $valor->telefone;
             ++$i;
         }
         return Array($tabela,$i);
@@ -51,10 +53,10 @@ class Transporte_CaminhoneiroControle extends Transporte_Controle
         $caminhoneiro = $this->_Modelo->db->Sql_Select('Transporte_Caminhoneiro');
         if(is_object($caminhoneiro)) $caminhoneiro = Array(0=>$caminhoneiro);
         if($caminhoneiro!==false && !empty($caminhoneiro)){
-            list($tabela,$i) = self::Transportes_Tabela($caminhoneiro);
+            list($tabela,$i) = self::Caminhoneiros_Tabela($caminhoneiro);
             // SE exportar ou mostra em tabela
             if($export!==false){
-                self::Export_Todos($export,$tabela, 'Blocos');
+                self::Export_Todos($export,$tabela, 'Autonômos');
             }else{
                 $this->_Visual->Show_Tabela_DataTable(
                     $tabela,     // Array Com a Tabela
@@ -71,16 +73,16 @@ class Transporte_CaminhoneiroControle extends Transporte_Controle
             unset($tabela);
         }else{
             if($export!==false){
-                $mensagem = 'Nenhum Caminhoneiro Cadastrado para exportar';
+                $mensagem = 'Nenhum Autonômo Cadastrado para exportar';
             }else{
-                $mensagem = 'Nenhum Caminhoneiro Cadastrado';
+                $mensagem = 'Nenhum Autonômo Cadastrado';
             }
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">'.$mensagem.'</font></b></center>');
         }
-        $titulo = 'Listagem de Transportes ('.$i.')';
+        $titulo = 'Listagem de Autonômos ('.$i.')';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Caminhoneiroistrar Transportes');
+        $this->_Visual->Json_Info_Update('Titulo','Listagem de Autonômos');
     }
     /**
      * Painel Adminstrativo de Caminhoneiros
@@ -102,7 +104,7 @@ class Transporte_CaminhoneiroControle extends Transporte_Controle
         
         // Dependendo se Existir Cria Formulario ou Lista arquivos
         if($existe===false){
-            $html = '<b>Ainda faltam insformações sobre o seu Caminhão</b><br>'.self::Painel_Caminhoneiro_Add($camada);
+            $html = '<b>Ainda faltam insformações sobre você</b><br>'.self::Painel_Caminhoneiro_Add($camada);
         }else{
             $html = 'Painel';
         }
