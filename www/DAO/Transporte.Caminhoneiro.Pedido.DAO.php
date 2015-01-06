@@ -370,7 +370,7 @@ final Class Transporte_Caminhoneiro_Pedido_DAO extends Framework\App\Dao
                 'mysql_default'     => false, // valor padrao
                 'mysql_primary'     => false,  // chave primaria
                 'mysql_estrangeira' => 'SLP.id|SLP.nome', // chave estrangeira     ligacao|apresentacao|condicao
-                'form_change'       => 'U', // CHANGE PARA EXTRANGEIRAS -> Sigla Tabela Pai / Sigla Tabela Atual ou false
+                'form_change'       => 'TAP', // CHANGE PARA EXTRANGEIRAS -> Sigla Tabela Pai / Sigla Tabela Atual ou false
                 'mysql_autoadd'     => false,
                 'mysql_comment'     => false,
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
@@ -391,7 +391,7 @@ final Class Transporte_Caminhoneiro_Pedido_DAO extends Framework\App\Dao
                 'mysql_default'     => false, // valor padrao
                 'mysql_primary'     => false,  // chave primaria
                 'mysql_estrangeira' => 'SLE.id|SLE.sigla|SLE.pais={inicio_pais}', // chave estrangeira     ligacao|apresentacao|condicao
-                'form_change'       => 'U', // CHANGE PARA EXTRANGEIRAS -> Sigla Tabela Pai / Sigla Tabela Atual ou false
+                'form_change'       => 'TAP', // CHANGE PARA EXTRANGEIRAS -> Sigla Tabela Pai / Sigla Tabela Atual ou false
                 'mysql_autoadd'     => false,
                 'mysql_comment'     => false,
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
@@ -412,7 +412,7 @@ final Class Transporte_Caminhoneiro_Pedido_DAO extends Framework\App\Dao
                 'mysql_default'     => false, // valor padrao
                 'mysql_primary'     => false,  // chave primaria
                 'mysql_estrangeira' => 'SLC.id|SLC.nome|SLC.estado={inicio_estado}', // chave estrangeira     ligacao|apresentacao|condicao
-                'form_change'       => 'U', // CHANGE PARA EXTRANGEIRAS -> Sigla Tabela Pai / Sigla Tabela Atual ou false
+                'form_change'       => 'TAP', // CHANGE PARA EXTRANGEIRAS -> Sigla Tabela Pai / Sigla Tabela Atual ou false
                 'mysql_autoadd'     => false,
                 'mysql_comment'     => false,
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
@@ -453,7 +453,7 @@ final Class Transporte_Caminhoneiro_Pedido_DAO extends Framework\App\Dao
                 'mysql_default'     => false, // valor padrao
                 'mysql_primary'     => false,  // chave primaria
                 'mysql_estrangeira' => 'SLP.id|SLP.nome', // chave estrangeira     ligacao|apresentacao|condicao
-                'form_change'       => 'U', // CHANGE PARA EXTRANGEIRAS -> Sigla Tabela Pai / Sigla Tabela Atual ou false
+                'form_change'       => 'TAP', // CHANGE PARA EXTRANGEIRAS -> Sigla Tabela Pai / Sigla Tabela Atual ou false
                 'mysql_autoadd'     => false,
                 'mysql_comment'     => false,
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
@@ -474,7 +474,7 @@ final Class Transporte_Caminhoneiro_Pedido_DAO extends Framework\App\Dao
                 'mysql_default'     => false, // valor padrao
                 'mysql_primary'     => false,  // chave primaria
                 'mysql_estrangeira' => 'SLE.id|SLE.sigla|SLE.pais={fim_pais}', // chave estrangeira     ligacao|apresentacao|condicao
-                'form_change'       => 'U', // CHANGE PARA EXTRANGEIRAS -> Sigla Tabela Pai / Sigla Tabela Atual ou false
+                'form_change'       => 'TAP', // CHANGE PARA EXTRANGEIRAS -> Sigla Tabela Pai / Sigla Tabela Atual ou false
                 'mysql_autoadd'     => false,
                 'mysql_comment'     => false,
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
@@ -495,7 +495,7 @@ final Class Transporte_Caminhoneiro_Pedido_DAO extends Framework\App\Dao
                 'mysql_default'     => false, // valor padrao
                 'mysql_primary'     => false,  // chave primaria
                 'mysql_estrangeira' => 'SLC.id|SLC.nome|SLC.estado={fim_estado}', // chave estrangeira     ligacao|apresentacao|condicao
-                'form_change'       => 'U', // CHANGE PARA EXTRANGEIRAS -> Sigla Tabela Pai / Sigla Tabela Atual ou false
+                'form_change'       => 'TAP', // CHANGE PARA EXTRANGEIRAS -> Sigla Tabela Pai / Sigla Tabela Atual ou false
                 'mysql_autoadd'     => false,
                 'mysql_comment'     => false,
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados

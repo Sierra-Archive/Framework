@@ -86,7 +86,7 @@ class noticia_Principal implements PrincipalInterface
           'texto'                   => '%'.$busca.'%',
         ));
         $i = 0;
-        $noticias = $modelo->db->Sql_Select('Musica_Album_Noticia',$where);
+        $noticias = $modelo->db->Sql_Select('Noticia',$where);
         if($noticias===false) return false;
         // add botao
         $Visual->Blocar('<a title="Adicionar Noticia" class="btn btn-success lajax explicar-titulo" acao="" href="'.URL_PATH.'Noticia/Admin/Noticias_Add">Adicionar novo Noticia</a><div class="space15"></div>');

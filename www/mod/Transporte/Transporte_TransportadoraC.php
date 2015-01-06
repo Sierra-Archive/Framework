@@ -103,7 +103,7 @@ class Transporte_TransportadoraControle extends Transporte_Controle
         
         // Dependendo se Existir Cria Formulario ou Lista arquivos
         if($existe===false){
-            $html = '<b>Ainda faltam insformações sobre o seu Transportadora</b><br>'.self::Painel_Transportadora_Add($camada);
+            $html = '<b>Ainda faltam insformações sobre vocês</b><br>'.self::Painel_Transportadora_Add($camada);
         }else{
             $html = 'Painel';
         }

@@ -95,22 +95,22 @@ final Class Transporte_Fornecedor_DAO extends Framework\App\Dao
                 'mysql_null'        => true, // true NULL, false, NOT NULL
                 'mysql_default'     => false,//false -> NONE, outro -> default
                 'mysql_primary'     => false, // chave primaria
-                'mysql_estrangeira' => 'C.id|C.nome|CA.mod_acc=Transporte_Armazem', // chave estrangeira     ligacao|apresentacao|condicao
+                'mysql_estrangeira' => 'C.id|C.nome|CA.mod_acc=Transporte_Fornecedor', // chave estrangeira     ligacao|apresentacao|condicao
                 'mysql_autoadd'     => false,
                 'mysql_comment'     => false,
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => 'categoria/Admin/Categorias_Add/Transporte_Armazem', //0 ninguem, 1 admin, 2 todos 
+                'linkextra'          => 'categoria/Admin/Categorias_Add/Transporte_Fornecedor', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Tipo de Armazem',
+                    'Nome'              => 'Tipo de Fornecedor',
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',
                     'formtipo'          => 'select',
                     'select'             => array(
                         'class'             => 'obrigatorio',
-                        'infonulo'          => 'Escolha um Tipo de Armazenagem',
+                        'infonulo'          => 'Escolha um Tipo de Fornecedor',
                     )
                 )
             ),

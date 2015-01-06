@@ -1,6 +1,6 @@
 <?php
 
-class Transporte_TransportadoraModelo extends Transporte_Modelo
+class Transporte_FornecedorModelo extends Transporte_Modelo
 {
     public function __construct(){
         parent::__construct();

@@ -60,6 +60,19 @@ $config_Permissoes = function (){
     return Array(
         
         
+        // Grupos
+        Array(
+            'Nome'                  => 'Sistema - Controle Grupos - Listagem',
+            'Desc'                  => '',
+            'Chave'                 => 'usuario_grupo', // CHave unica nunca repete, chave primaria
+            'End'                   => 'usuario/grupo', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
+            'Modulo'                => 'usuario', // Modulo Referente
+            'SubModulo'             => 'grupo',   // Submodulo Referente
+            'Metodo'                => '*',  // Metodos referentes separados por virgula
+            'Permissao_Func'        => Array(// Permissoes NEcessarias
+                'usuario_grupo' => true
+            ),
+        ),
         // Funcionario
         Array(
             'Nome'                  => \Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Funcionario_nome').' - Listagem',
@@ -219,6 +232,12 @@ $config_Permissoes = function (){
  */
 $config_Funcional = function (){
     return Array(
+        'usuario_grupo'  => Array(
+            'Nome'                  => 'Grupos -> Se Mostra Opções de Grupos',
+            'Desc'                  => 'Se Mostra Opções de Grupos',
+            'chave'                 => 'usuario_grupo',
+            'Valor'                 => false,  // false, true, ou array com os grupos que pode
+        ),
         'usuario_usuarios_showconfig'  => Array(
             'Nome'                  => 'Usuarios -> Ocultar Grupos',
             'Desc'                  => 'Se verdadeiro mostra so os clientes ativos',

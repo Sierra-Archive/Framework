@@ -1797,38 +1797,64 @@ final class Conexao
      * @version 0.0.1
      */
     protected function Tabelas(){
-        $tempo = new \Framework\App\Tempo('Conexao - Processar Tabelas');
         $tabelas        = &self::$tabelas;
         $tabelas_ext    = &self::$tabelas_ext;
-        
-        // Carrega Todos os DAO
-        $diretorio = dir(DAO_PATH);  
-        
-        // Percorre Diretório
-        while($arquivo = $diretorio -> read()){
-            if(strpos($arquivo, 'DAO.php')!==false){
-                $arquivo                = str_replace(Array('.php','.'), Array('','_') , $arquivo);
-                $arquivo_nome           = $arquivo::Get_Nome();
-                $tabelas[$arquivo_nome] = self::Load($arquivo,$arquivo_nome);
-                $sigla = &$tabelas[$arquivo_nome]['sigla'];
-                
-                // Aproveita o while e Pega as extrangeiras
-                $resultado_unico = new $arquivo();
-                $extrangeira    = $resultado_unico->Get_Extrangeiras();
-                if($extrangeira!==false){
-                    reset($extrangeira);
-                    while (key($extrangeira) !== null) {
-                        $current = current($extrangeira);
-                        list($ligacao,$mostrar,$extcondicao) = $this->Extrangeiras_Quebra($current['conect']);
-                        
-                        // ARMAZENA NA VARIAVEL DE CONTROLE AS SIGLAS
-                        $tabelas_ext[$ligacao[0]][$sigla] = $sigla;
-                        next($extrangeira);
+        if(defined('TEMP_DEPENDENCIA_DAO')){
+            $arquivos = unserialize(TEMP_DEPENDENCIA_DAO);
+            var_dump($arquivos);
+            if(!empty($arquivos)){
+                foreach($arquivos as $arquivo){
+                    $arquivo = $arquivo.'_DAO';
+                    $arquivo_nome           = $arquivo::Get_Nome();
+                    $tabelas[$arquivo_nome] = self::Load($arquivo,$arquivo_nome);
+                    $sigla = &$tabelas[$arquivo_nome]['sigla'];
+
+                    // Aproveita o while e Pega as extrangeiras
+                    $resultado_unico = new $arquivo();
+                    $extrangeira    = $resultado_unico->Get_Extrangeiras();
+                    if($extrangeira!==false){
+                        reset($extrangeira);
+                        while (key($extrangeira) !== null) {
+                            $current = current($extrangeira);
+                            list($ligacao,$mostrar,$extcondicao) = $this->Extrangeiras_Quebra($current['conect']);
+
+                            // ARMAZENA NA VARIAVEL DE CONTROLE AS SIGLAS
+                            $tabelas_ext[$ligacao[0]][$sigla] = $sigla;
+                            next($extrangeira);
+                        }
                     }
                 }
             }
+        }else{
+            $tempo = new \Framework\App\Tempo('Conexao - Processar Tabelas');
+            // Carrega Todos os DAO
+            $diretorio = dir(DAO_PATH);
+            // Percorre Diretório
+            while($arquivo = $diretorio -> read()){
+                if(strpos($arquivo, 'DAO.php')!==false){
+                    $arquivo                = str_replace(Array('.php','.'), Array('','_') , $arquivo);
+                    $arquivo_nome           = $arquivo::Get_Nome();
+                    $tabelas[$arquivo_nome] = self::Load($arquivo,$arquivo_nome);
+                    $sigla = &$tabelas[$arquivo_nome]['sigla'];
+
+                    // Aproveita o while e Pega as extrangeiras
+                    $resultado_unico = new $arquivo();
+                    $extrangeira    = $resultado_unico->Get_Extrangeiras();
+                    if($extrangeira!==false){
+                        reset($extrangeira);
+                        while (key($extrangeira) !== null) {
+                            $current = current($extrangeira);
+                            list($ligacao,$mostrar,$extcondicao) = $this->Extrangeiras_Quebra($current['conect']);
+
+                            // ARMAZENA NA VARIAVEL DE CONTROLE AS SIGLAS
+                            $tabelas_ext[$ligacao[0]][$sigla] = $sigla;
+                            next($extrangeira);
+                        }
+                    }
+                }
+            }
+            $diretorio -> close();
         }
-        $diretorio -> close();       
     }
     /**
     * Retorna Subcategorias que sao de outras tabelas

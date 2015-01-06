@@ -2,9 +2,6 @@
 namespace Framework\App;
 /**
  * Sistema de cache
- *
- * @author Thiago Belem <contato@thiagobelem.net>
- * @link http://blog.thiagobelem.net/
  */
 class Cache {
 
@@ -28,6 +25,9 @@ class Cache {
      */
     private $folder;
 
+    //memcache
+    private $memcache_tempo = 60; // ainda nao implementado 
+    
     /**
      * Construtor
      *
@@ -43,7 +43,7 @@ class Cache {
      */
     public function __construct($folder = null) {
         // Tenta Conectar Memcache, se nao faz pelo hd mesmo
-        if(class_exists('Memcached')){
+        if(class_exists('\Memcached')){
             self::$cache = new \Memcached();
             $retorno = self::$cache->addServer('localhost', 11211);
             if($retorno!==false){
@@ -51,7 +51,7 @@ class Cache {
                 self::$tipo_performace = 'rapido';
                 /*// checando dados no cache e carregando em $rows
                 if (!($rows = $cache->get('lista_usuarios'))) {
-                    if ($cache->getResultCode() == Memcached::RES_NOTFOUND) {
+                    if ($cache->getResultCode() == \Memcached::RES_NOTFOUND) {
                         // dados não encontrados no cache.
                         // inserir no cache dados obtidos no banco
                         // obter lista de usuarios do banco de dados
@@ -82,7 +82,7 @@ class Cache {
      */
     protected function Cache_Cod($name) {
         // maintain list of caches here
-        $id=array(
+        static::$Cod=array(
             'Conexao'       => 1001,
             'Framework'     => 1002
         );
@@ -92,27 +92,26 @@ class Cache {
     // Salvar e Ler
     public function Ler($key,$ram=false){
         // SE for pra DEBUG nao salva
-        if(SISTEMA_DEBUG===TRUE){
+        /*if(SISTEMA_DEBUG===TRUE){
             return false;
-        }
+        }*/
 
         // Continua
         $retorno = false;
         if(self::$tipo==='Memcache'){
             // SE FOR DEBUG DELETA CACHE
-            if(SISTEMA_DEBUG===TRUE){
+            /*if(SISTEMA_DEBUG===TRUE){
                 self::$cache->delete(sha1($key));
                 return false;
-            }
+            }*/
             $retorno = self::$cache->get(sha1($key));
             if (!($retorno)) {
-                if (self::$cache->getResultCode() == Memcached::RES_NOTFOUND) {
+                if (self::$cache->getResultCode() == \Memcached::RES_NOTFOUND) {
                     return false;
                 }else{
                     return false;
                 }
             }else{
-                var_dump(unserialize($retorno));
                 return unserialize($retorno);
             }
 
@@ -126,7 +125,9 @@ class Cache {
                 return $this->Arquivos_Leitura($key);
             }
         }
-        // SE nao Faz de Arquivo
+        
+        
+        // SE nao Faz de Arquivo (MAIS LENTA)
         return $this->Arquivos_Leitura($key);
     }
     public function Salvar($key, &$content, $time = null, $ram=false){
@@ -159,10 +160,10 @@ class Cache {
                 else  $this->Arquivos_Leitura($key);
             }
             catch(Exception $e){*/
-                return $this->Arquivos_Salvar($key, $content, $time);
+                return $this->Arquivos_Apaga($key, $content, $time);
             //}
         }
-        return $this->Arquivos_Salvar($key, $content, $time);
+        return $this->Arquivos_Apaga($key, $content, $time);
     }
 
 
@@ -234,6 +235,7 @@ class Cache {
 
         // Gera o nome do arquivo
         $filename = $this->Arquivos_GerarEndereco($key);
+        //echo "\n\n Nome do Arquivo: $filename";
 
         // Cria o arquivo com o conteúdo
         return  file_put_contents($filename, serialize($content))

@@ -69,8 +69,8 @@ abstract class Controle
         /*$face = new \Framework\Classes\SierraTec_Facebook();
         $face->Armazena();
         
-        exit;
-        $manutencao = new \Framework\Classes\SierraTec_Manutencao();
+        exit;*/
+        /*$manutencao = new \Framework\Classes\SierraTec_Manutencao();
         $manutencao->Manutencao();*/
         
         /*$framework = new \Framework\Classes\SierraTec_Manutencao();
@@ -599,6 +599,9 @@ readfile($link);*/
 
         }
         return false;
+    }
+    public function Gerador_Visualizar_Unidade(&$objeto){
+        var_dump($objeto);
     }
     /**
      * Gera um Formulario em cima do Layoult escolhido e do Banco de Dados escolhido..

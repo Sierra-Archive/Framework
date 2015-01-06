@@ -176,7 +176,7 @@ final Class Categoria_Acesso_DAO extends Framework\App\Dao
                 'chave'     =>  'projeto_Tarefa',
              ),
             // Modulos de Usuario
-            'usuario'       => Array(                
+            'usuario|grupo'       => Array(                
                 'nome'      =>  'Tipo de Grupo',  
                 'chave_nome'=>  'Grupos',              
                 'chave'     =>  'usuario_grupo',
@@ -193,7 +193,7 @@ final Class Categoria_Acesso_DAO extends Framework\App\Dao
              ),
             // Modulos de Transporte
             'Transporte|Caminhao'   => Array(                
-                'nome'      =>  'Tipo de Caminhão', 
+                'nome'      =>  'Tipo de Autonômo', 
                 'chave_nome'=>  'Caminhões',               
                 'chave'     =>  'Transporte_Caminhao',
              ),
@@ -202,6 +202,18 @@ final Class Categoria_Acesso_DAO extends Framework\App\Dao
                 'nome'      =>  'Tipo de Armazém', 
                 'chave_nome'=>  'Armazens',               
                 'chave'     =>  'Transporte_Armazem',
+             ),
+            // Modulos de Transporte
+            'Transporte|Transportadora'   => Array(                
+                'nome'      =>  'Tipo de Transportadora', 
+                'chave_nome'=>  'Transportadoras',               
+                'chave'     =>  'Transporte_Transportadora',
+             ),
+            // Modulos de Transporte
+            'Transporte|Fornecedor'   => Array(                
+                'nome'      =>  'Tipo de Fornecedor', 
+                'chave_nome'=>  'Fornecedores',               
+                'chave'     =>  'Transporte_Fornecedor',
              ),
         );
     }

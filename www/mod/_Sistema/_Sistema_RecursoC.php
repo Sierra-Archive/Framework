@@ -42,6 +42,7 @@ $('#produtocontrolador1 select').attr('id','produto1');
         // Inicia Classe, Gera suas colunas e acha a coluna alterada
         $alterado = $dominio['classe'].'_DAO';
         $alterado = new $alterado();
+        // PRimeiro Foreach
         $alterado = $alterado->Get_Extrangeiras_ComExterna();
         foreach($alterado as $indice=>&$valor){
             if($indice!==$campo_alterado){

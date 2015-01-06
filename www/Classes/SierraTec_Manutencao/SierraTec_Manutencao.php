@@ -4,6 +4,7 @@ namespace Framework\Classes;
 class SierraTec_Manutencao {
     
     
+    protected $log;
     protected $registro;
     protected $_Conexao;
     public function __construct() {
@@ -21,7 +22,11 @@ class SierraTec_Manutencao {
      * 
      * 
      * 
-     *                 FUNCOES DE MANUTENCAO
+     *                 FUNCOES DE MANUTENCAO,
+     * 
+     *                  SEMPRE QUE O CODIGO FOR ALTERADO MANUTENCAO RODA
+
+                        E COLOCA AS CONFIGURACOES NECESSARIAS
      * 
      * 
      * 
@@ -34,10 +39,27 @@ class SierraTec_Manutencao {
      * 
      * 
      */
+    public function log($log){
+        echo $log;
+    }
+    
+    /**
+     * Descobre Quais Dao o Cliente Necessita
+     */
     public function Manutencao(){
         // Atualiza Dependencias
-        $this->Atualiza_Dependencia('app');
-        $this->Atualiza_Dependencia();
+        $dependencia_dao = array_merge(
+            $this->Atualiza_Dependencia_Banco_De_Dados('app'),
+            $this->Atualiza_Dependencia_Banco_De_Dados(CLASS_PATH)
+        );
+        $modulos = config_modulos();
+        foreach($modulos as &$valor){
+            var_dump($dependencia_dao);
+            echo "\n\nProximo:".$valor;
+            $dependencia_dao = array_merge($dependencia_dao,$this->Atualiza_Dependencia_Banco_De_Dados(MOD_PATH.$valor.DS));
+        }
+        var_dump($dependencia_dao);
+        $this->Alterar_Config('TEMP_DEPENDENCIA_DAO',serialize($dependencia_dao),'_temp');
         
         // Limpa Bando de Dados
         $this->BD_Limpar();
@@ -46,15 +68,13 @@ class SierraTec_Manutencao {
      * Procura Por Todos os Usos de Dao e Coloca ai !
      * @param type $dir
      */
-    private function Atualiza_Dependencia($dir='mod'){
+    private function Atualiza_Dependencia_Banco_De_Dados($dir=ROOT_PADRAO){
 
         // Carrega Todos os DAO
         if($dir=='mod'){
             $dir = MOD_PATH;  
         }else if($dir=='app'){
             $dir = APP_PATH;  
-        }else{
-            $dir = $dir.DS;
         }
         
         $dependencia_dao            = Array();
@@ -68,7 +88,7 @@ class SierraTec_Manutencao {
             // Ignora Propria Pasta, pasta anterior e Arquivo Autoload
             if($arquivo!='..' && $arquivo!='.' && $arquivo!='AutoLoad.php'){
                 if(is_dir($dir.$arquivo)){
-                    $this->Atualiza_Dependencia($dir.$arquivo);
+                    $dependencia_dao = array_merge($dependencia_dao,$this->Atualiza_Dependencia_Banco_De_Dados($dir.$arquivo.DS));
                 }else{
                     $conteudo = file_get_contents($dir.$arquivo);
                     // PRocura Ocorrencias de COnexao
@@ -105,11 +125,15 @@ class SierraTec_Manutencao {
                         $conteudo, 
                         $achado
                     );
+                    
                     if ($resultado >= 1) {
                         reset($achado[1]);
                         while(key($achado[1])!==NULL){
-                            $constante = str_replace(')', '', 'MYSQL_'.current($achado[1]));
-                            eval('$dependencia_dao_CONSTANTE[$constante] = '.$constante.';');
+                            if(current($achado[1]));
+                            $constante = str_replace(Array(')','\'','('), Array('','',''), 'MYSQL_'.current($achado[1]));
+                            if($constante!=='MYSQL_'){
+                                eval('$dependencia_dao_CONSTANTE[$constante] = '.$constante.';');
+                            }
                             next($achado[1]);
                         }
                     }
@@ -118,7 +142,7 @@ class SierraTec_Manutencao {
         }
         
         // Adiciona as COnstantes a Classe
-        $tabelas = &\Conexao::$tabelas;
+        $tabelas = &\Framework\App\Conexao::$tabelas;
         foreach($tabelas as &$valor){
             if(in_array($valor['nome'], $dependencia_dao_CONSTANTE)){
                 //var_dump($valor['nome'],$valor['class']); echo "\n\n";
@@ -130,7 +154,7 @@ class SierraTec_Manutencao {
         // Grava em Config do Modulo
         // Aumenta uma Versao V.V.V+1
         // Grava Dependencia DAO #update
-        var_dump($dir,$dependencia_dao,$dependencia_dao_CONSTANTE);
+        return $dependencia_dao;
     }
     
     
@@ -170,6 +194,7 @@ class SierraTec_Manutencao {
         // Carrega CONFIG
         $arq = INI_PATH.SRV_NAME.DS.$config.'.php'; 
         if(file_exists($arq)){
+            chmod ($arq, 0777);
             $conteudo = file_get_contents($arq);
             // Caso valor seja falso, apenas retorna valor
             if($valor===false){
@@ -184,8 +209,20 @@ class SierraTec_Manutencao {
                     
             //Retorna
             return true;
+        }else{
+            $arquivo = fopen ($arq, 'w');
+            if(is_int($valor)){
+                $conteudo_novo = '<?php'."\n".'define(\''.$nome.'\',  '.$valor.');'."\n"."?>";
+            }else{
+                $conteudo_novo = '<?php'."\n".'define(\''.$nome.'\',  \''.$valor.'\');'."\n"."?>";
+            }
+            
+            if (!fwrite($arquivo, $conteudo_novo)) die('Não foi possível atualizar o arquivo.');
+            fclose($arquivo);
+            chmod ($arq, 0777);
         }
     }
+    
     
     /***********************************
      * 
@@ -198,7 +235,168 @@ class SierraTec_Manutencao {
      * 
      * 
      * 
-     *                 FUNCOES DE ALTERACAO DE CODIGO GENERICAS
+     *                 FUNCOES DE VERIFICAÇÂO DE CONSISTENCIA
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     */
+    public function Verificar_Sis_Dao(){
+        // Verificar se Toda Dao tem Primaria..
+        //etc..
+    }
+    
+    
+    
+    
+    /***********************************
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     *                 FUNCOES DE LIMPEZA E BACKUP
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     */
+    
+    // Remove Tabelas não Usadas e campos nao usados
+    // #update
+    public function BD_Limpar(){
+        // Antes de Limpar Faz Backup
+        $this->BD_Backup();
+    }
+    public function BD_Backup(){
+        // Antes de Limpar Faz Backup
+    }
+    
+    
+    
+    
+    /***********************************
+     * 
+     * 
+     * 
+     * 
+     *                 FUNCOES DE TRANSFERENCIA DE DOMINIO E ATUALIZACAO   de CONTEUDO
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     */
+    
+    /**
+     *  troca o nome de um servidor para outro
+     * @param type $novo Nome antigo
+     * @param type $antigo Nome Novo
+     */
+    public function Tranferencia_DB_Servidor($novo,$antigo=false){
+        $tabelas = &\Framework\App\Framework\App\Conexao::$tabelas;
+        foreach($tabelas as $indice=>&$valor){
+            if($valor['static']===false){
+                if($antigo!==false){
+                    $this->_Conexao->query('UPDATE '.$indice.' SET servidor=\''.$novo.'\' WHERE servidor=\''.$antigo.'\'');
+                }else{
+                    $this->_Conexao->query('UPDATE '.$indice.' SET servidor=\''.$novo.'\'');
+                }
+            }
+        }
+        //$this->_Modelo->db->
+    }
+    /**
+     * Atualiza Código e Banco de Dados para Versoes mais Recentes
+     * @param type $versao Versão antiga para Atualizacao
+     */
+    public function Atualizacao_Version($versao=2.2){
+        $versao_atual = SISTEMA_CFG_VERSION;
+        
+        // Atualizacao para Versao 2.3
+        if($versao<2.3 && $versao_atual>=2.3){
+            $qnt = Array();
+            $qnt['deupau'] = 0;
+            $sucesso = 0;
+            $foi = false;
+            // Acrescentar Categoria em Todos os Financeiros
+            $atualizar = Array();
+            $financeiro = $this->_Conexao->Sql_Select('Financeiro_Pagamento_Interno',false,0,''/*,'motivo,motivoid,categoria'*/);
+            if(is_object($financeiro)) $financeiro = Array($financeiro);
+            if(!empty($financeiro)){
+                foreach($financeiro as $valor){
+                    $valor->categoria = (int) $valor->categoria;
+                    if($valor->motivo=='comercio_Estoque' && ($valor->categoria=='' || $valor->categoria==0 || $valor->categoria==NULL)){
+                        $valor_motivo = $this->_Conexao->Sql_Select('Comercio_Fornecedor_Material',Array('id'=>$valor->motivoid),1,'','categoria');
+                        if(!is_object($valor_motivo)){  ++$qnt['deupau']; continue;}
+                        $valor->categoria = $valor_motivo->categoria;
+                        $foi = $this->_Conexao->Sql_Update($valor);
+                        if($foi){
+                            $sucesso=$sucesso+1;
+                        }
+                    }
+                    
+                    if($valor->categoria=='' || $valor->categoria==0 || $valor->categoria==NULL){
+                        if(isset($qnt['nullo'])){
+                            ++$qnt['nullo'];
+                        }else{
+                            $qnt['nullo'] = 1;
+                        }
+                    }else{
+                        if(isset($qnt[$valor->categoria])){
+                            ++$qnt[$valor->categoria];
+                        }else{
+                            $qnt[$valor->categoria] = 1;
+                        }
+                    }
+                }
+            }
+            var_dump($sucesso,$qnt);
+            
+            
+            
+        }
+    }
+    
+    
+    
+    
+    
+    
+    /***********************************
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     *                 FUNCOES DE BUSCA GENERICA EM CODIGO
      * 
      * 
      * 
@@ -312,171 +510,28 @@ class SierraTec_Manutencao {
     }
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    /***********************************
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     *                 FUNCOES DE ALTERACAO DE BANCO DE DADOS ESPECIFICAS
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     */
-    
-    // Remove Tabelas não Usadas e campos nao usados
-    // #update
-    public function BD_Limpar(){
+    private function PHP_GetClasses($codigo){
+        
+        $achado = Array();
+        $resultado = preg_match_all(
+            '/\$'.$variavel.'[ \t\n\r\f\v]*=[ \t\n\r\f\v]*([^ \t\n\r\f\v]*);/U', 
+            $codigo, 
+            $achado
+        );
+    }
+    private function PHP_GetClasses_Variaveis($codigo){
+        
+    }
+    private function PHP_GetClasses_Metodos($codigo){
+        
+    }
+    private function PHP_GetFunction($codigo){
         
     }
     
     
-    public function Verificar_Sis_Dao(){
-        // Verificar se Toda Dao tem Primaria..
-        //etc..
-    }
-    /***********************************
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     *                 FUNCOES DE ALTERACAO DE BANCO DE DADOS GENERICOS
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     */
     
     
     
     
-    /***********************************
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     *                 FUNCOES DE EXportacao E ATUALIZACAOde CONTEUDO
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     */
-    
-    /**
-     *  troca o nome de um servidor para outro
-     * @param type $novo Nome antigo
-     * @param type $antigo Nome Novo
-     */
-    public function Tranferencia_DB_Servidor($novo,$antigo=false){
-        $tabelas = &\Framework\App\Conexao::$tabelas;
-        foreach($tabelas as $indice=>&$valor){
-            if($valor['static']===false){
-                if($antigo!==false){
-                    $this->_Conexao->query('UPDATE '.$indice.' SET servidor=\''.$novo.'\' WHERE servidor=\''.$antigo.'\'');
-                }else{
-                    $this->_Conexao->query('UPDATE '.$indice.' SET servidor=\''.$novo.'\'');
-                }
-            }
-        }
-        //$this->_Modelo->db->
-    }
-    /**
-     * Atualiza Código e Banco de Dados para Versoes mais Recentes
-     * @param type $versao Versão antiga para Atualizacao
-     */
-    public function Atualizacao_Version($versao=2.2){
-        $versao_atual = SISTEMA_CFG_VERSION;
-        
-        // Atualizacao para Versao 2.3
-        if($versao<2.3 && $versao_atual>=2.3){
-            $qnt = Array();
-            $qnt['deupau'] = 0;
-            $sucesso = 0;
-            $foi = false;
-            // Acrescentar Categoria em Todos os Financeiros
-            $atualizar = Array();
-            $financeiro = $this->_Conexao->Sql_Select('Financeiro_Pagamento_Interno',false,0,''/*,'motivo,motivoid,categoria'*/);
-            if(is_object($financeiro)) $financeiro = Array($financeiro);
-            if(!empty($financeiro)){
-                foreach($financeiro as $valor){
-                    $valor->categoria = (int) $valor->categoria;
-                    if($valor->motivo=='comercio_Estoque' && ($valor->categoria=='' || $valor->categoria==0 || $valor->categoria==NULL)){
-                        $valor_motivo = $this->_Conexao->Sql_Select('Comercio_Fornecedor_Material',Array('id'=>$valor->motivoid),1,'','categoria');
-                        if(!is_object($valor_motivo)){  ++$qnt['deupau']; continue;}
-                        $valor->categoria = $valor_motivo->categoria;
-                        $foi = $this->_Conexao->Sql_Update($valor);
-                        if($foi){
-                            $sucesso=$sucesso+1;
-                        }
-                    }
-                    
-                    if($valor->categoria=='' || $valor->categoria==0 || $valor->categoria==NULL){
-                        if(isset($qnt['nullo'])){
-                            ++$qnt['nullo'];
-                        }else{
-                            $qnt['nullo'] = 1;
-                        }
-                    }else{
-                        if(isset($qnt[$valor->categoria])){
-                            ++$qnt[$valor->categoria];
-                        }else{
-                            $qnt[$valor->categoria] = 1;
-                        }
-                    }
-                }
-            }
-            var_dump($sucesso,$qnt);
-            
-            
-            
-        }
-    }
 }

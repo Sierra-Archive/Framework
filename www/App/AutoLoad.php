@@ -291,7 +291,39 @@ require_once    APP_PATH . 'Funcao.php';
   
 define('SERVER_URL',           $_SERVER['REQUEST_URI']);
 
+
+
+
+
+
+
+// SE TIVER CONFIGURACAO GERADA PELO FRAMEWORK ABRE
+if(file_exists(INI_PATH.SRV_NAME.DS.'_temp.php')){
+    require_once(INI_PATH.SRV_NAME.DS.'_temp.php');
+}
+
+
+
+
+
+
+
+
+
+
 unset($tempo);
+
+
+
+
+
+
+
+
+
+
+
+
 
 /*
 $tempo = new \Framework\App\Tempo('Teeste1');

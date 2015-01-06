@@ -9,6 +9,9 @@ if(!defined('SISTEMA_SERVIDORES')){
 if(!defined('SISTEMA_DEDICADO')){
     define('SISTEMA_DEDICADO',        false); // SE esta em um dedicado
 }
+if(!defined('SISTEMA_CACHE_PAGINAS')){
+    define('SISTEMA_CACHE_PAGINAS',        false);
+}
 
 // RESTRITO AO SISTEMA
 if(!defined('SISTEMA_CFG_VERSION')){

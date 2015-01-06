@@ -1,12 +1,32 @@
 <?php
 namespace Framework\App;
 class Boot {
-    public static function Iniciar(){     
+    static $url = false;
+    public static function Iniciar(){  
+        // Pega Instancia e Inicia Cache
+        $registro = &\Framework\App\Registro::getInstacia();
+        $registro->_Cache   = new \Framework\App\Cache(CACHE_PATH);   
+        
+        // Verifica SE EXISTE CACHE
+        if(SISTEMA_CACHE_PAGINAS){
+            if(isset($_GET['url'])){
+                self::$url = md5($_GET['url']);
+            }else{
+                self::$url = md5('index');
+            }
+            $Cache = $registro->_Cache->Ler('Pagina_'.self::$url);
+            if ($Cache) {
+                echo $Cache;
+                return false;
+            }
+        }
+        
+        
+        
+        // Se nao tiver cache continua
         $tempo = new \Framework\App\Tempo('BOOT Iniciar');   
         // Inicia SEssao e Classes PARTE 1
         \Framework\App\Session::init();
-        $registro = &\Framework\App\Registro::getInstacia();
-        $registro->_Cache   = new \Framework\App\Cache(CACHE_PATH);
         $registro->_Conexao = new \Framework\App\Conexao();
         $registro->_Request = new \Framework\App\Request();
         
@@ -78,6 +98,8 @@ class Boot {
         }else{
             throw new \Exception('Módulo não Encontrado', 404); //
         }
+        
+        return true;
     }
     public static function Desligar(){
         // Destroi A PORRA TODA
@@ -94,6 +116,14 @@ class Boot {
         }
         // Fecha Conexao
         $registro->destruir('_Conexao');
+        
+        // Salvar Cache e Da exite
+        if(SISTEMA_CACHE_PAGINAS){
+            $conteudo = ob_get_contents();
+            $registro->_Cache->Salvar('Pagina_'.self::$url,$conteudo);
+        }
+        
+        // Da Exit
         exit;
     }
 }
