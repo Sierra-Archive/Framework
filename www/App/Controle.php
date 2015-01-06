@@ -602,6 +602,27 @@ readfile($link);*/
     }
     public function Gerador_Visualizar_Unidade(&$objeto){
         var_dump($objeto);
+        var_dump(get_class($objeto));
+        var_dump(get_class_methods($objeto));
+        $html = '';
+        
+        
+        if($usuario->login!='')  $html .= '<p><label style="width:150px;">Login </label>: '.$usuario->login.'</p>';
+        
+        $html = '<iframe width="560" height="315" src="http://www.youtube.com/embed/'.$video->youtube.'" frameborder="0" allowfullscreen></iframe>';
+        $conteudo = array(
+            'id' => 'popup',
+            'title' => $video->musica2.' - '.$video->nome,
+            'botoes' => array(
+                array(
+                    'text' => 'Fechar Janela',
+                    'clique' => '$( this ).dialog( "close" );'
+                )
+            ),
+            'html' => $html
+        );
+        $this->_Visual->Json_IncluiTipo('Popup',$conteudo);
+        $this->_Visual->Json_Info_Update('Historico', false);
     }
     /**
      * Gera um Formulario em cima do Layoult escolhido e do Banco de Dados escolhido..

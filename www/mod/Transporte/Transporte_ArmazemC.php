@@ -35,10 +35,20 @@ class Transporte_ArmazemControle extends Transporte_Controle
             $tabela['Id'][$i]           = '#'.$valor->id;
             $tabela['Razão Social'][$i] = $valor->usuario2;
             $tabela['Categoria'][$i]    = $valor->categoria2;
-            $tabela['Observação'][$i]       = $valor->obs;
+            $tabela['Observação'][$i]   = $valor->obs;
+            $tabela['Visualizar'][$i]   = $Visual->Tema_Elementos_Btn('Visualizar'     ,Array('Visualizar'        ,'Transporte/Armazem/Visualizar/'.$valor->id    ,''));
+            
             ++$i;
         }
         return Array($tabela,$i);
+    }
+    public function Visualizar($id,$export=false){
+        
+        
+        $fornecedor = $this->_Modelo->db->Sql_Select('Transporte_Armazem','TA.id=\''.((int) $id).'\'',1);
+        
+        $this->Gerador_Visualizar_Unidade($fornecedor);
+        
     }
     
     /**

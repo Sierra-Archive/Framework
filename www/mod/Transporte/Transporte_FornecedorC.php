@@ -36,16 +36,16 @@ class Transporte_FornecedorControle extends Transporte_Controle
             $tabela['Razão Social'][$i] = $valor->usuario2;
             $tabela['Categoria'][$i]    = $valor->categoria2;
             $tabela['Observação'][$i]   = $valor->obs;
-            $tabela['Visualizar'][$i]   =  $this->_Visual->Tema_Elementos_Btn('Status0'     ,Array('Recusar'        ,'Transporte/Pedido/Arma_Ped_Novas_Aceitar/'.$valor->id.'/2'    ,''));
+            $tabela['Visualizar'][$i]   = $Visual->Tema_Elementos_Btn('Visualizar'     ,Array('Visualizar'        ,'Transporte/Fornecedor/Visualizar/'.$valor->id    ,''));
                
             ++$i;
         }
         return Array($tabela,$i);
     }
-    public function Fornecedores_Visualizar($id,$export=false){
+    public function Visualizar($id,$export=false){
         
         
-        $fornecedor = $this->_Modelo->db->Sql_Select('Transporte_Fornecedor','id=\''.((int) $id).'\'',1);
+        $fornecedor = $this->_Modelo->db->Sql_Select('Transporte_Fornecedor','TF.id=\''.((int) $id).'\'',1);
         
         $this->Gerador_Visualizar_Unidade($fornecedor);
         
@@ -81,9 +81,9 @@ class Transporte_FornecedorControle extends Transporte_Controle
             unset($tabela);
         }else{
             if($export!==false){
-                $mensagem = 'Nenhum Fornecedor Cadastrada para exportar';
+                $mensagem = 'Nenhum Fornecedor Cadastrado para exportar';
             }else{
-                $mensagem = 'Nenhum Fornecedor Cadastrada';
+                $mensagem = 'Nenhum Fornecedor Cadastrado';
             }
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">'.$mensagem.'</font></b></center>');
         }
