@@ -600,19 +600,29 @@ readfile($link);*/
         }
         return false;
     }
-    public function Gerador_Visualizar_Unidade(&$objeto){
-        var_dump($objeto);
-        var_dump(get_class($objeto));
-        var_dump(get_class_methods($objeto));
+    public function Gerador_Visualizar_Unidade(&$objeto, $titulo = 'Sem Titulo'){
+        $objeto_Classe = get_class($objeto);
+        $colunas = $objeto_Classe::Gerar_Colunas();
         $html = '';
+
+        // Roda as Colunas
+        foreach ($colunas as $value) {
+            $valor      = &$value['mysql_titulo'];
+            $valor2     = $valor.'2';
+            if(isset($value['edicao']['Nome']) && isset($objeto->$valor)){
+                if($objeto->$valor2!=''){
+                    $html .= '<p style="clear:left;"><label style="width:120px; float:left;"><b>'.$value['edicao']['Nome'].':</b></label> '.$objeto->$valor2.'</p>';
+                }else if($objeto->$valor!=''){
+                    $html .= '<p style="clear:left;"><label style="width:120px; float:left;"><b>'.$value['edicao']['Nome'].':</b></label> '.$objeto->$valor.'</p>';
+                }
+            }
+        }
+
         
-        
-        if($usuario->login!='')  $html .= '<p><label style="width:150px;">Login </label>: '.$usuario->login.'</p>';
-        
-        $html = '<iframe width="560" height="315" src="http://www.youtube.com/embed/'.$video->youtube.'" frameborder="0" allowfullscreen></iframe>';
+        // Formula Json
         $conteudo = array(
             'id' => 'popup',
-            'title' => $video->musica2.' - '.$video->nome,
+            'title' => $titulo,
             'botoes' => array(
                 array(
                     'text' => 'Fechar Janela',

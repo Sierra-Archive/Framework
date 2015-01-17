@@ -22,10 +22,7 @@ class Agenda_Principal implements PrincipalInterface
     * @version 2.0
     */
     static function Home(&$controle, &$modelo, &$Visual){
-        $registro = \Framework\App\Registro::getInstacia();
-        Agenda_compromissoControle::compromisso_formcadastro($modelo, $Visual);
-        Agenda_compromissoControle::proximoscompromissos($modelo, $Visual);
-        Agenda_compromissoControle::anteriorescompromissos($modelo, $Visual);
+        Agenda_PastaControle::Pastas_Listar(false,$modelo,$Visual,'Maior');
     }
     static function Config(){
         return false;

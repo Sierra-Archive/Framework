@@ -300,9 +300,19 @@ if(  !defined('MYSQL_EVENTO_MANIFESTACAO_TERRITORIAL')){
     define('MYSQL_EVENTO_MANIFESTACAO_TERRITORIAL'      , 'Evento_Manifestacao_Territorial');
 }
 
-if(  !defined('MYSQL_AGENDA_ATIVIDADE')){
+
+// AGENDA
+if(  !defined('MYSQL_AGENDA_COMPROMISSO')){
+    define('MYSQL_AGENDA_COMPROMISSO'                   , 'Agenda_Compromisso');
+}
+if(  !defined('MYSQL_AGENDA_ATIVIDADE_HORA')){
     define('MYSQL_AGENDA_ATIVIDADE'                     , 'Agenda_Atividade');
 }
+if(  !defined('MYSQL_AGENDA_ATIVIDADE_HORA')){
+    define('MYSQL_AGENDA_ATIVIDADE_HORA'                , 'Agenda_Atividade_Hora');
+}
+
+
 if(  !defined('MYSQL_INSTITUICAO')){
     define('MYSQL_INSTITUICAO'                          , 'Instituição');
 }

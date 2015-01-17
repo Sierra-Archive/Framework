@@ -67,7 +67,7 @@ function __autoload($class){
             require_once (INTER_PATH.$class.'.Interface.php');
             return true;
         }else{
-            throw new \Exception('Interface não encontrada'.$class, 2802);
+            throw new \Exception('Interface não encontrada: '.$class, 2802);
         }
     }
     

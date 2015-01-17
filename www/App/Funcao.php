@@ -147,7 +147,7 @@ function orderMultiDimensionalArray(&$toOrderArray, $field, $inverse = false) {
  * @param type $data
  * @return type
  */
-// Cria uma função que retorna o timestamp de uma data no formato DD/MM/AAAA
+// Cria uma função que retorna o timestamp de uma data
 function Data_geraTimestamp($data,$quebra=true) {
     $data = trim($data);
     // Formato: 23/09/2013 00:00:00 ou 2013-09-23 00:00:00
@@ -208,8 +208,19 @@ function Data_CalculaDiferenca($data_inicial,$data_final){
     // Calcula a diferença de segundos entre as duas datas:
     $diferenca = $time_final - $time_inicial;
 
-    // Calcula a diferença de dias
+    // Calcula a diferença de horas
     $dias = (int)floor( $diferenca / (60 * 60));
+    return $dias;
+}
+function Data_CalculaDiferenca_Em_Segundos($data_inicial,$data_final){
+    // Usa a função criada e pega o timestamp das duas datas:
+    $time_inicial = Data_geraTimestamp($data_inicial);
+    $time_final = Data_geraTimestamp($data_final);
+    // Calcula a diferença de segundos entre as duas datas:
+    $diferenca = $time_final - $time_inicial;
+
+    // Calcula a diferença de segundos
+    $dias = (int)floor( $diferenca );
     return $dias;
 }
 /**

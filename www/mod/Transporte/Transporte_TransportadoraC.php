@@ -45,9 +45,9 @@ class Transporte_TransportadoraControle extends Transporte_Controle
     public function Visualizar($id,$export=false){
         
         
-        $fornecedor = $this->_Modelo->db->Sql_Select('Transporte_Transportadora','TT.id=\''.((int) $id).'\'',1);
+        $transportadora = $this->_Modelo->db->Sql_Select('Transporte_Transportadora','TT.id=\''.((int) $id).'\'',1);
         
-        $this->Gerador_Visualizar_Unidade($fornecedor);
+        $this->Gerador_Visualizar_Unidade($transportadora, 'Visualizar Transportadora #'.$id);
         
     }
     

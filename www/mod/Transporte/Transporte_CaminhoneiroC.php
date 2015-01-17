@@ -44,11 +44,10 @@ class Transporte_CaminhoneiroControle extends Transporte_Controle
         return Array($tabela,$i);
     }
     public function Visualizar($id,$export=false){
+
+        $caminhoneiro = $this->_Modelo->db->Sql_Select('Transporte_Caminhoneiro','TC.id=\''.((int) $id).'\'',1);
         
-        
-        $fornecedor = $this->_Modelo->db->Sql_Select('Transporte_Caminhoneiro','TC.id=\''.((int) $id).'\'',1);
-        
-        $this->Gerador_Visualizar_Unidade($fornecedor);
+        $this->Gerador_Visualizar_Unidade($caminhoneiro, 'Visualizar Autônomo #'.$id);
         
     }
     

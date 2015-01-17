@@ -137,7 +137,7 @@ final Class Predial_Bloco_Apart_Advertencia_DAO extends Framework\App\Dao
                     'readonly'          => false,
                     'aviso'             => '',
                     'formtipo'          => 'input',
-                    'validar'           => 'Control_Layoult_Valida_DataTime',
+                    'validar'           => 'Control_Layoult_Valida_DataHora',
                     'input'             => array(
                         'tipo'              => 'text',
                         'class'             => 'obrigatorio masc_data_hora'

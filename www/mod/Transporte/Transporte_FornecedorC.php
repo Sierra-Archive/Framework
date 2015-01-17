@@ -47,7 +47,7 @@ class Transporte_FornecedorControle extends Transporte_Controle
         
         $fornecedor = $this->_Modelo->db->Sql_Select('Transporte_Fornecedor','TF.id=\''.((int) $id).'\'',1);
         
-        $this->Gerador_Visualizar_Unidade($fornecedor);
+        $this->Gerador_Visualizar_Unidade($fornecedor, 'Visualizar Fornecedor #'.$id);
         
     }
     /**

@@ -28,7 +28,7 @@ final Class Transporte_Caminhoneiro_DAO extends Framework\App\Dao
         return false;
     }
     public static function Get_Sigla(){
-        return 'TA';
+        return 'TC';
     }
     public static function Get_Engine(){
         return 'InnoDB';
@@ -73,7 +73,7 @@ final Class Transporte_Caminhoneiro_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'          => '', // //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Cliente',
+                    'Nome'              => 'Nome',
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => 'Minimo 3 caracteres',

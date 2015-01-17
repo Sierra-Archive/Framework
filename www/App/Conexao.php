@@ -1272,7 +1272,7 @@ final class Conexao
         
         // Executa query
         // 
-        //if(!$tempo) echo $sql."<br><br>\n\n\n";
+        //echo $sql."<br><br>\n\n\n";
         if($tempo){
             unset($condicaotempo);
         }

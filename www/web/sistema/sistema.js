@@ -1536,6 +1536,22 @@ var Sierra = (function () {
         }
         return true;
     };
+    function Control_Layoult_Valida_Hora (date) {
+        var ardt    =   new Array,
+            ExpReg  =   new RegExp("(0[1-9]|1[0-9]|2[0-4])/([0-5][0-9])"),
+            ardt    =   date.split(":"),
+            erro    =   false;
+        if(date==='00:00') return true;
+        if ( date.search(ExpReg) === -1) {
+            erro = true;
+        }
+        
+        
+        if (erro) {
+            return false;
+        }
+        return true;
+    };
     /**
      * 00/0000 Mes ano\\\\
     * 
@@ -1559,7 +1575,7 @@ var Sierra = (function () {
         }
         return true;
     };
-    function Control_Layoult_Valida_DataTime (datetime) {
+    function Control_Layoult_Valida_DataHora (datetime) {
         var ardt        =   new Array,
             ExpReg      =   new RegExp("(0[1-9]|1[0-9]|2[0-4]):[0-5][0-9]:[0-5][0-9]"),
             erro        =   false,

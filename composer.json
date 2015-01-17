@@ -1,0 +1,32 @@
+{
+	"name": "sierratec/Framework",
+	"description": "The SierraTecnologia Framework 1.0.",
+	"authors": [
+		{
+			"name": "Ricardo Rebello Sierra",
+			"email": "contato@ricardorebellosierra.com.br"
+		}
+	],
+	"keywords": ["sierra", "tecnologia", "framework"],
+	"license": "MIT",
+	"type": "project",
+
+	"require": {
+		"php": ">=5.3.4"
+	},
+
+
+
+	"autoload": {
+		"psr-0": {
+			"Application\\"	: "src/",
+			"App\\"		: "src/",
+			"Classes\\"	: "src/",
+			"Libs\\"	: "src/"
+		}
+	},
+	"require-dev": {
+		"phpunit/phpunit": "3.7.*",
+        "phpdocumentor/phpdocumentor": "2.*"
+    }
+} 

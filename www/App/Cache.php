@@ -92,9 +92,9 @@ class Cache {
     // Salvar e Ler
     public function Ler($key,$ram=false){
         // SE for pra DEBUG nao salva
-        /*if(SISTEMA_DEBUG===TRUE){
+        if(SISTEMA_DEBUG===TRUE){
             return false;
-        }*/
+        }
 
         // Continua
         $retorno = false;

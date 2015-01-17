@@ -38,7 +38,7 @@ class Agenda_PastaControle extends Agenda_Controle
     }
     protected function Endereco_Pasta($true=true){
         if($true===true){
-            $this->Tema_Endereco('Pastas','Agenda/Pasta/Main');
+            $this->Tema_Endereco('Pastas','Agenda/Pasta/Pastas');
         }else{
             $this->Tema_Endereco('Pastas');
         }
@@ -76,11 +76,17 @@ class Agenda_PastaControle extends Agenda_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 2.0
      */
-    public function Pastas(){
-        $i = 0;
+    public function Pastas($export=false){
         $this->Endereco_Pasta(false);
+        self::Pastas_Listar($export,$this->_Modelo,$this->_Visual);
+        
+        //Carrega Json
+        $this->_Visual->Json_Info_Update('Titulo','Arquivo de Pastas');
+    }
+    static function Pastas_Listar($export=false,&$Modelo,&$Visual,$tipo='Unico'){
+        $i = 0;
         // Botao Add
-        $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
+        $Visual->Blocar($Visual->Tema_Elementos_Btn('Superior'     ,Array(
             Array(
                 'Adicionar Pasta',
                 'Agenda/Pasta/Pastas_Add',
@@ -93,19 +99,34 @@ class Agenda_PastaControle extends Agenda_Controle
                 'Link'      => 'Agenda/Pasta/Pastas',
             )
         )));
-        $pastas = $this->_Modelo->db->Sql_Select('Usuario_Agenda_Pasta');
+        $pastas = $Modelo->db->Sql_Select('Usuario_Agenda_Pasta');
         if($pastas!==false && !empty($pastas)){
             list($tabela,$i) = self::Pastas_Tabela($pastas);
-            $this->_Visual->Show_Tabela_DataTable($tabela);
+            if($export!==false){
+                self::Export_Todos($export,$tabela, 'Pastas');
+            }else{
+                $Visual->Show_Tabela_DataTable(
+                    $tabela,     // Array Com a Tabela
+                    '',          // style extra
+                    true,        // true -> Add ao Bloco, false => Retorna html
+                    true,        // Apagar primeira coluna ?
+                    Array(       // Ordenacao
+                        Array(
+                            0,'desc'
+                        )
+                    )
+                );
+            }
             unset($tabela);
         }else{           
-            $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhuma Pasta no Arquivo de Pastas</font></b></center>');
+            $Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhuma Pasta no Arquivo de Pastas</font></b></center>');
         }
         $titulo = 'Arquivo de Pastas ('.$i.')';
-        $this->_Visual->Bloco_Unico_CriaJanela($titulo);
-        
-        //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Arquivo de Pastas');
+        if($tipo==='Unico'){
+            $Visual->Bloco_Unico_CriaJanela($titulo);
+        }else{
+            $Visual->Bloco_Maior_CriaJanela($titulo);
+        }
     }
     /**
      * 
@@ -210,7 +231,7 @@ class Agenda_PastaControle extends Agenda_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 2.0
      */
-    public function Cores(){
+    public function Cores($export=false){
         $this->Endereco_Cor(false);
         $i = 0;
         // Botao Add
@@ -239,7 +260,21 @@ class Agenda_PastaControle extends Agenda_Controle
                                            $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Cor'       ,'Agenda/Pasta/Cores_Del/'.$valor->id.'/'     ,'Deseja realmente deletar essa Cor ?'));
                 ++$i;
             }
-            $this->_Visual->Show_Tabela_DataTable($tabela);
+            if($export!==false){
+                self::Export_Todos($export,$tabela, 'Cores');
+            }else{
+                $this->_Visual->Show_Tabela_DataTable(
+                    $tabela,     // Array Com a Tabela
+                    '',          // style extra
+                    true,        // true -> Add ao Bloco, false => Retorna html
+                    true,        // Apagar primeira coluna ?
+                    Array(       // Ordenacao
+                        Array(
+                            0,'desc'
+                        )
+                    )
+                );
+            }
             unset($tabela);
         }else{ 
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhuma Cor</font></b></center>');
