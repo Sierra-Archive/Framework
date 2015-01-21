@@ -35,7 +35,7 @@ class Acl{
         $this->_db          = &$this->_Registro->_Conexao;
         $this->_Request     = &$this->_Registro->_Request;
         $tempo = new \Framework\App\Tempo('Acl - Construct');
-        if($id){
+        if($id!==false){
             // Caso esteja carregando de outro usuario
             $this->_id = (int) $id;
         }else{
@@ -66,7 +66,7 @@ class Acl{
             }else
             // Caso nao tenha sessao quer dizer que tem POST
             // se nao tiver sessao, verifica se o post foi acessado, caso contrario verifica se a sessao corresponde ao usuario e senha
-            if(\Framework\App\Session::get(SESSION_ADMIN_LOG)===false || \Framework\App\Session::get(SESSION_ADMIN_SENHA)===false || \Framework\App\Session::get(SESSION_ADMIN_LOG)=='' || \Framework\App\Session::get(SESSION_ADMIN_SENHA)==''){
+            if(isset($_POST['sistema_login']) && isset($_POST['sistema_senha']) && (\Framework\App\Session::get(SESSION_ADMIN_LOG)===false || \Framework\App\Session::get(SESSION_ADMIN_SENHA)===false || \Framework\App\Session::get(SESSION_ADMIN_LOG)=='' || \Framework\App\Session::get(SESSION_ADMIN_SENHA)=='')){
                 // Puxa Login E senha e verifica cadastro
                 $login = \anti_injection($_POST['sistema_login']);
                 $senha = \Framework\App\Sistema_Funcoes::Form_Senha_Blindar($_POST['sistema_senha']);

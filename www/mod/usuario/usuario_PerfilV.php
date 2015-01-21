@@ -22,6 +22,17 @@ class usuario_PerfilVisual extends usuario_Visual
         if($tipo=='Funcionrio' || $tipo=="Funcionario" || $tipo=="funcionario" || $tipo=="funcionário" || $tipo=="funcionrio")  $tipo = "Funcionário";
         if($tipo=="Usurio" || $tipo=="Usuario" || $tipo=="usuario" || $tipo=="usuário" || $tipo=="usurio")                      $tipo = 'Usuário';
         $nome = $usuario->nome;
+        
+        $email = '';
+        if(isset($usuario->email)){
+            $email .= $usuario->email.' ';
+        }
+        
+        if(isset($usuario->id)){
+            $id = $usuario->id;
+        }else{
+            $id = '';
+        }
         if(LAYOULT_IMPRIMIR!='AJAX'){
             $html .= '<div class="profile-head">'.
                         '<div class="span8">'.
