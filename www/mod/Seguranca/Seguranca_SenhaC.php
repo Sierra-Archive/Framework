@@ -20,7 +20,7 @@ class Seguranca_SenhaControle extends Seguranca_Controle
     }
     protected function Endereco_Senha($true=true){
         if($true===true){
-            $this->Tema_Endereco('Senhas','Seguranca/Senhas/Senhas');
+            $this->Tema_Endereco('Senhas','Seguranca/Senha/Senhas');
         }else{
             $this->Tema_Endereco('Senhas');
         }
@@ -50,14 +50,15 @@ class Seguranca_SenhaControle extends Seguranca_Controle
         reset($Senhas);
         foreach ($Senhas as $indice=>&$valor) {
             $tabela['#Id'][$i]          =   '#'.$valor->id;
+            $tabela['Categoria'][$i]    =   $valor->categoria2;
             $tabela['Url'][$i]          =   $valor->url;
             $tabela['Login'][$i]        =   $valor->login;
             $tabela['Senha'][$i]        =   $valor->senha;
-            $tabela['Adicionado'][$i]   =   $valor->log_date_add;
             $tabela['Destaque'][$i]     = '<span class="destaque'.$valor->id.'">'.self::Destaquelabel($valor).'</span>';
             $tabela['Status'][$i]       = '<span class="status'.$valor->id.'">'.self::Statuslabel($valor).'</span>';
-            $tabela['Funções'][$i]      =   $Visual->Tema_Elementos_Btn('Editar'          ,Array('Editar Senha'        ,'Seguranca/Senhas/Senhas_Edit/'.$valor->id.'/'    ,'')).
-                                            $Visual->Tema_Elementos_Btn('Deletar'         ,Array('Deletar Senha'       ,'Seguranca/Senhas/Senhas_Del/'.$valor->id.'/'     ,'Deseja realmente deletar essa Senha ?'));
+            $tabela['Adicionada em'][$i]=   $valor->log_date_add;
+            $tabela['Funções'][$i]      =   $Visual->Tema_Elementos_Btn('Editar'          ,Array('Editar Senha'        ,'Seguranca/Senha/Senhas_Edit/'.$valor->id.'/'    ,'')).
+                                            $Visual->Tema_Elementos_Btn('Deletar'         ,Array('Deletar Senha'       ,'Seguranca/Senha/Senhas_Del/'.$valor->id.'/'     ,'Deseja realmente deletar essa Senha ?'));
             ++$i;
         }
         return Array($tabela,$i);
@@ -74,18 +75,18 @@ class Seguranca_SenhaControle extends Seguranca_Controle
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
             Array(
                 'Adicionar Senha',
-                'Seguranca/Senhas/Senhas_Add',
+                'Seguranca/Senha/Senhas_Add',
                 ''
             ),
             Array(
                 'Print'     => true,
                 'Pdf'       => true,
                 'Excel'     => true,
-                'Link'      => 'Seguranca/Senhas/Senhas',
+                'Link'      => 'Seguranca/Senha/Senhas',
             )
         )));
         // Query
-        $Senhas = $this->_Modelo->db->Sql_Select('Seguranca_Senha',false,0,'','id,url,login,senha,log_date_add');
+        $Senhas = $this->_Modelo->db->Sql_Select('Seguranca_Senha',false,0,''/*,'categoria,categoria2,id,url,login,senha,log_date_add'*/);
         if($Senhas!==false && !empty($Senhas)){
             list($tabela,$i) = self::Senhas_Tabela($Senhas);
             if($export!==false){
@@ -125,7 +126,7 @@ class Seguranca_SenhaControle extends Seguranca_Controle
         $titulo2    = 'Salvar Senha';
         $formid     = 'form_Sistema_Admin_Senhas';
         $formbt     = 'Salvar';
-        $formlink   = 'Seguranca/Senhas/Senhas_Add2/';
+        $formlink   = 'Seguranca/Senha/Senhas_Add2/';
         $campos = Seguranca_Senha_DAO::Get_Colunas();
         \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos);
     }
@@ -158,7 +159,7 @@ class Seguranca_SenhaControle extends Seguranca_Controle
         $titulo2    = 'Alteração de Senha';
         $formid     = 'form_Sistema_AdminC_SenhaEdit';
         $formbt     = 'Alterar Senha';
-        $formlink   = 'Seguranca/Senhas/Senhas_Edit2/'.$id;
+        $formlink   = 'Seguranca/Senha/Senhas_Edit2/'.$id;
         $editar     = Array('Seguranca_Senha',$id);
         $campos = Seguranca_Senha_DAO::Get_Colunas();
         \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos,$editar);
@@ -175,7 +176,7 @@ class Seguranca_SenhaControle extends Seguranca_Controle
         $dao        = Array('Seguranca_Senha',$id);
         $funcao     = '$this->Senhas();';
         $sucesso1   = 'Senha Alterada com Sucesso.';
-        $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
+        $sucesso2   = 'Senha teve a alteração bem sucedida';
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);      
     }
@@ -280,16 +281,16 @@ class Seguranca_SenhaControle extends Seguranca_Controle
         $status = $objeto->status;
         $id = $objeto->id;
         if($status=='0'){
-            $tipo = 'warning';
+            $tipo = 'important';
             $nometipo = 'Ultrapassada';
         }
         else{
-            $tipo = 'important';
+            $tipo = 'success';
             $nometipo = 'Em Uso';
         }
         $html = '<span class="badge badge-'.$tipo.'">'.$nometipo.'</span>';
-        if($link===true && \Framework\App\Registro::getInstacia()->_Acl->Get_Permissao_Url('Seguranca/Senhas/Status')!==false){
-            $html = '<a href="'.URL_PATH.'Seguranca/Senhas/Status/'.$id.'" border="1" class="lajax explicar-titulo" title="'.$nometipo.'" acao="" confirma="Deseja Realmente alterar o Status?">'.$html.'</a>';
+        if($link===true && \Framework\App\Registro::getInstacia()->_Acl->Get_Permissao_Url('Seguranca/Senha/Status')!==false){
+            $html = '<a href="'.URL_PATH.'Seguranca/Senha/Status/'.$id.'" border="1" class="lajax explicar-titulo" title="'.$nometipo.'" acao="" confirma="Deseja Realmente alterar o Status?">'.$html.'</a>';
         }
         return $html;
     }
@@ -358,8 +359,8 @@ class Seguranca_SenhaControle extends Seguranca_Controle
             $nometipo = 'Destaque';
         }
         $html = '<span class="badge badge-'.$tipo.'">'.$nometipo.'</span>';
-        if($link===true && \Framework\App\Registro::getInstacia()->_Acl->Get_Permissao_Url('Seguranca/Senhas/Destaque')!==false){
-            $html = '<a href="'.URL_PATH.'Seguranca/Senhas/Destaque/'.$id.'" border="1" class="lajax explicar-titulo" title="'.$nometipo.'" acao="" confirma="Deseja Realmente alterar o Destaque?">'.$html.'</a>';
+        if($link===true && \Framework\App\Registro::getInstacia()->_Acl->Get_Permissao_Url('Seguranca/Senha/Destaque')!==false){
+            $html = '<a href="'.URL_PATH.'Seguranca/Senha/Destaque/'.$id.'" border="1" class="lajax explicar-titulo" title="'.$nometipo.'" acao="" confirma="Deseja Realmente alterar o Destaque?">'.$html.'</a>';
         }
         return $html;
     }

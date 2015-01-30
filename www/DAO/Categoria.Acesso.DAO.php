@@ -87,11 +87,6 @@ final Class Categoria_Acesso_DAO extends Framework\App\Dao
     }
     private static function Mod_Acesso(){
         return Array(
-            'Agenda_financas'               => Array(                
-                'nome'      =>  'Tipo de Finanças',  
-                'chave_nome'=>  'Financeiro',              
-                'chave'     =>  'Agenda_financas',
-             ),
             'Agenda|Pasta'                  => Array(                
                 'nome'      =>  'Tipo de Pasta',   
                 'chave_nome'=>  'Pastas',             
@@ -215,6 +210,12 @@ final Class Categoria_Acesso_DAO extends Framework\App\Dao
                 'chave_nome'=>  'Fornecedores',               
                 'chave'     =>  'Transporte_Fornecedor',
              ),
+            // Modulos de Noticias
+            'Seguranca'                       => Array(                
+                'nome'      =>  'Tipo de Segurança',   
+                'chave_nome'=>  'Segurança',             
+                'chave'     =>  'Seguranca',
+             ),
         );
     }
     /**
@@ -231,7 +232,7 @@ final Class Categoria_Acesso_DAO extends Framework\App\Dao
             foreach($percorrer as &$value){
                 if(strtoupper($tipo)===strtoupper($value['chave'])) return $value;
             }
-            throw new \Exception('Categoria de Acesso não encontrado.',404);
+            throw new \Exception('Categoria de Acesso não encontrado. Tipo:'.$tipo,404);
         }else{
             $array = Array();
             // Percorre os modulos que aceitam categorias

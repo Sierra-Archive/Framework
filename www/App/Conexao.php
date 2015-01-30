@@ -176,6 +176,37 @@ final class Conexao
         //var_dump($sql,'final',$re);
         return $re;
     }
+    public function multi_query($sql,$autoreparo=true) 
+    {
+        $tempo = new \Framework\App\Tempo('Conexao MultiQuery');
+        $passar = true;
+        //echo "\n\n<br><br>".$sql;
+        if ($this->mysqli->multi_query($sql/*,MYSQLI_ASYNC*/)) {
+            //return true;
+            do {
+                /* store first result set */
+                if ($result = $this->mysqli->store_result()) {
+                    /*while ($row = $result->fetch_row()) {
+                        printf("%s\n", $row[0]);
+                    }*/
+                    $result->free();
+                }
+                /* print divider */
+                if ($this->mysqli->more_results()) {
+                    //printf("-----------------\n");
+                }else break;
+            } while ($this->mysqli->next_result());
+        }else{
+            $erro = $this->mysqli->error;
+            if(SISTEMA_DEBUG===true){
+                echo '#QUERY:'.$sql.'n\n<br \>ERRO:'.$erro."\n\n<br \><br \>";
+            }
+            throw new \Exception('Erro de Query MULTIPLA: '.$erro,3110);
+        }
+        //var_dump($sql,'final',$re);
+        return true;
+        
+    }
     public function ultimo_id(){
         return $this->mysqli->insert_id;
     }
@@ -389,7 +420,7 @@ final class Conexao
                             $inf_campo .= $valor['mysql_tipovar'];		
                             // text e blog nao aceita default
                             if(strpos($valor['mysql_tipovar'], 'TEXT')===false && strpos($valor['mysql_tipovar'], 'BLOG')===false){
-                                if($valor['mysql_tamanho']  !==false && $valor['mysql_tipovar']!='DATETIME' && $valor['mysql_tipovar']!='DATE'){
+                                if(isset($valor['mysql_tamanho']) && $valor['mysql_tamanho']  !==false && $valor['mysql_tipovar']!='DATETIME' && $valor['mysql_tipovar']!='DATE' && $valor['mysql_tipovar']!='TIME'){
                                     $inf_campo .= '('.$valor['mysql_tamanho'].')';
                                 }
                                 if($valor['mysql_null'] === false && $valor['mysql_default'] !== false){
@@ -494,7 +525,7 @@ final class Conexao
                         $query .= '`'.$valor['mysql_titulo'].'` '.$valor['mysql_tipovar'];		
                         // text e blog nao aceita default
                         if(strpos($valor['mysql_tipovar'], 'TEXT')===false && strpos($valor['mysql_tipovar'], 'BLOG')===false){
-                            if($valor['mysql_tamanho']  !==false && $valor['mysql_tipovar']!='DATETIME' && $valor['mysql_tipovar']!='DATE'){
+                            if(isset($valor['mysql_tamanho']) && $valor['mysql_tamanho']  !==false && $valor['mysql_tipovar']!='DATETIME' && $valor['mysql_tipovar']!='DATE' && $valor['mysql_tipovar']!='TIME'){
                                 $query .= '('.$valor['mysql_tamanho'].')';
                             }
                             if($valor['mysql_null'] === false && $valor['mysql_default'] !== false && $valor['mysql_autoadd']===false){
@@ -595,7 +626,7 @@ final class Conexao
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.0.1
      */
-    public function Sql_Inserir(&$Objeto,$tempo=true){
+    public function Sql_Inserir(&$Objeto,$tempo=true,$retorna=false){
         if($tempo){
             $temponome  = 'Inserir';
             $tempo2   = new \Framework\App\Tempo($temponome);
@@ -635,14 +666,26 @@ final class Conexao
                     else            $sql2 .= ', '.$valor_add;
                 }
             }
-            $sql .= $sql1.') VALUES '.$sql2.')';
+            $sql .= $sql1.') VALUES '.$sql2.');';
             //echo $sql;
-            $this->query($sql);
+            if($retorna){
+                return $sql;
+            }else{
+                return $this->query($sql);
+            }
+            
             return true;
         }else if(is_array($Objeto)){
+            $sql = '';
             foreach($Objeto as &$valor){
-                $this->Sql_Inserir($valor);
+                $sql .= $this->Sql_Inserir($valor,true,true);
             }
+            if($retorna){
+                return $sql;
+            }else{
+                return $this->multi_query($sql);
+            }
+            
             return true;
         }else{
             return false;
@@ -689,7 +732,7 @@ final class Conexao
                 $sql .= '; ';
             }
             // Executa as Querys
-            $this->query($sql,true);
+            $this->multi_query($sql,true);
         }
         return true;
     }
@@ -708,7 +751,7 @@ final class Conexao
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.0.1
      */
-    public function Sql_Update(&$Objeto, $log=true,$tempo=true){
+    public function Sql_Update(&$Objeto, $log=true,$tempo=true,$retornar=false){
         if($tempo){
             $temponome  = 'Update';
             $tempo2   = new \Framework\App\Tempo($temponome);
@@ -716,9 +759,16 @@ final class Conexao
         $tempo = new \Framework\App\Tempo('Conexao_Update');  
         if(is_array($Objeto)){
             reset($Objeto);
+            $sql = '';
             while (key($Objeto) !== null) {
-                self::Sql_Update($Objeto[key($Objeto)]);
+                $sql .= $this->Sql_Update($Objeto[key($Objeto)],true,true,true);
                 next($Objeto);
+            }            
+            // Executa ou retorna sql
+            if($retornar){
+                return $sql;
+            }else{
+                return $this->multi_query($sql,true);
             }
             return true;
         }else if(is_object($Objeto)){
@@ -762,13 +812,21 @@ final class Conexao
                 next($primarias);
             }
             // Executa query #update
-            $this->query($sql,true);
+            if($retornar){
+                return $sql.';';
+            }else{
+                return $this->query($sql,true);
+            }
             return true;
         }else{
             $edicao = explode('|', $Objeto);
             
             $sql = 'UPDATE '.call_user_func(array($edicao[0].'_DAO', 'Get_Nome')).' SET '.$edicao[1].', log_date_edit=\''.APP_HORA.'\', log_user_edit=\''.\Framework\App\Acl::Usuario_GetID_Static().'\' WHERE '.$edicao[2];
-            $this->query($sql,true);
+            if($retornar){
+                return $sql.';';
+            }else{
+                return $this->query($sql,true);
+            }
         }
     }
     private function Sql_Select_Comeco($class_dao,$campos){

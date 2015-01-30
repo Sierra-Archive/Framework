@@ -42,7 +42,7 @@ $config_Menu = function (){
                 'Filhos'                => false,
             ),),
         ),
-        /*'Relatórios'=>Array(
+        /*'Relatório'=>Array(
             'Filhos'                => Array('Processos'=>Array(
                 'Nome'                  => 'Processos',
                 'Link'                  => 'comercio_venda/Relatorio/Main',

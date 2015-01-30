@@ -138,8 +138,8 @@ $config_Menu = function (){
                 'Filhos'                => false,
             ),),
         ),
-        'Relatórios' => Array(
-            'Nome'                  => 'Relatórios',
+        'Relatório' => Array(
+            'Nome'                  => 'Relatório',
             'Filhos'                => Array('Estoque'=>Array(
                 'Nome'                  => 'Estoque',
                 'Link'                  => 'comercio/Estoque/Estoques',

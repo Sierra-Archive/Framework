@@ -2,7 +2,7 @@
 $config_Modulo = function (){
     return Array(
         'Nome'                      =>  'projeto',
-        'Descrição'                 =>  '',
+        'Descrição'                 =>  'Modulo desenvolvido para Desenvolvimentos',
         'System_Require'            =>  '2.21.1',
         'Version'                   =>  '0.0.1',
         'Dependencias'              =>  false,

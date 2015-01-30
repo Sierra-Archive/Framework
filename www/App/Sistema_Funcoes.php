@@ -440,7 +440,7 @@ Class Sistema_Funcoes {
     public static function Tranf_Float_Real($float){
         if(strpos($float, 'R$')!==false) return $float;
         $float = (float) $float;
-        return ($float>=0?'R$ '.number_format($float, 2, ',', '.'):'<span class="text-error">- R$ '.number_format($float*-1, 2, ',', '.').'</span>');
+        return ($float>=0?'R$'.number_format($float, 2, ',', '.'):'<span class="text-error">- R$ '.number_format($float*-1, 2, ',', '.').'</span>');
     }
     public static function Tranf_Porc_Float($porc){
         if($porc==='') return 0.0;
@@ -700,6 +700,22 @@ Class Sistema_Funcoes {
         // Calcula e devolve nova data
         $data = mktime($novo_hora, $novo_minuto, $novo_segundos, $novo_mes, $novo_dia, $novo_ano);
         return date($tipo, $data);
+    }
+    /**
+     * 
+     * @param type $info (mes, ano, dia, semana, etc...
+     * @param type $data
+     */
+    static public function Get_Info_Data($info, $data){
+        if($info=='mes_nome'){
+            return jdmonthname($data,0);
+        }else if($info=='mes'){
+            $data = explode('/',$data);
+            return $data[1];
+        }else{
+            
+        }
+        return '';
     }
 }
 

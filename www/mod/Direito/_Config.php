@@ -10,7 +10,7 @@ $config_Modulo = function (){
 };
 $config_Menu = function (){
     return Array(
-        'Relatórios'=>Array(
+        'Relatório'=>Array(
             'Filhos'                => Array('Processos'=>Array(
                 'Nome'                  => 'Processos',
                 'Link'                  => 'Direito/Relatorio/Main',

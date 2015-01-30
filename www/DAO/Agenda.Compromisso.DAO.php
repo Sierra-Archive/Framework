@@ -22,7 +22,7 @@ final Class Agenda_Compromisso_DAO extends Framework\App\Dao
         return false;
     }
     public static function Get_Sigla(){
-        return 'AA';
+        return 'AC';
     }
     public static function Get_Engine(){
         return 'InnoDB';
@@ -156,7 +156,6 @@ final Class Agenda_Compromisso_DAO extends Framework\App\Dao
             ),Array(
                 'mysql_titulo'      => 'dt_inicio',
                 'mysql_tipovar'     => 'time', //varchar, int, 
-                'mysql_tamanho'     => 8,
                 'mysql_null'        => false,
                 'mysql_default'     => '00:00:00', // valor padrao
                 'mysql_primary'     => false,
@@ -181,7 +180,6 @@ final Class Agenda_Compromisso_DAO extends Framework\App\Dao
             ),Array(
                 'mysql_titulo'      => 'dt_fim',
                 'mysql_tipovar'     => 'time', //varchar, int, 
-                'mysql_tamanho'     => 8,
                 'mysql_null'        => false,
                 'mysql_default'     => '00:00:00', // valor padrao
                 'mysql_primary'     => false,

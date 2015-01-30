@@ -663,9 +663,6 @@ if(!defined('MYSQL_ADVOGADO_CLIENTES')){
 }
 
 // CONFIGURACOES DO BANCO DE DADOS
-if(!defined('MYSQL_USUARIO_AGENDA_FINANCAS')){
-    define('MYSQL_USUARIO_AGENDA_FINANCAS',      'Financeiro');  // reus
-}
 if(!defined('MYSQL_FINANCEIRO_FINANCAS')){
     define('MYSQL_FINANCEIRO_FINANCAS',          'Financeiro_Financas');  // reus
 }
@@ -719,7 +716,10 @@ if(!defined('MYSQL_MUSICA_ALBUM_ARTISTA')){
 
 
 
-
+// MODULO SEGURANCA
+if(!defined('MYSQL_SEGURANCA_SENHA')){
+    define('MYSQL_SEGURANCA_SENHA'     , 'Seguranca_Senha');
+}
 
 
 

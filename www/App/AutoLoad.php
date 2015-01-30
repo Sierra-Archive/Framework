@@ -270,12 +270,15 @@ define('ARQ_URL',           URL_PATH.'arq'.US.SRV_NAME_SQL.US);
 define('ARQ_PATH',          ROOT.'arq'.DS.SRV_NAME_SQL.DS);
 define('CACHE_PATH',        ROOT.'Cache'.DS.SRV_NAME_SQL.DS);
 define('LANG_PATH',         ROOT.'lang'.DS.SISTEMA_LINGUAGEM.DS);
+
+define('TEMP_PATH',         ROOT.'Temp'.DS.SRV_NAME_SQL.DS);
+define('TEMP_URL',          URL_PATH.'Temp'.US.SRV_NAME_SQL.US);
 // Cria e da Permissao na Pasta de Arquivos principal
 if(!is_dir(ROOT.'arq'.DS)){
     mkdir (ROOT.'arq'.DS, 0777 );
 }
-if(!is_dir(ROOT.'Cache'.DS)){
-    mkdir (ROOT.'Cache'.DS, 0777 );
+if(!is_dir(ROOT.'Temp'.DS)){
+    mkdir (ROOT.'Temp'.DS, 0777 );
 }
 //chmod (URL_PATH.'arq'.DS, 0777 );
 // Permissao de Pasta do Servidor
@@ -284,6 +287,9 @@ if(!is_dir(ARQ_PATH)){
 }
 if(!is_dir(CACHE_PATH)){
     mkdir (CACHE_PATH, 0777 );
+}
+if(!is_dir(TEMP_PATH)){
+    mkdir (TEMP_PATH, 0777 );
 }
 
 // Linguagem e Pacote de Funcoes

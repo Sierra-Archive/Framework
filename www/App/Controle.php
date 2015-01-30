@@ -230,7 +230,70 @@ readfile($link);*/
 	// Envia o arquivo para o cliente
 	readfile($arquivoLocal);
     }
-    
+    protected function Gerador_Grafico_Padrao($titulo,$x_nome='EixoX',$y_nome='EixoY',$dados=Array(),$tipo = 'points',$larg=600,$alt=400, $convert_real=true){
+        // Se nao existir cria
+        $folder     = TEMP_PATH.'Grafico';
+        $folder_url = TEMP_URL.'Grafico';
+        if(!file_exists($folder))
+        {
+            mkdir($folder, 0777);
+        }
+
+
+        // Inclui funcao
+        //require_once("libs/phplot/phplot.php");
+        $plot = new \Framework\Classes\PHPlot($larg, $alt);
+        $plot->SetTitle(utf8_decode($titulo));
+        $plot->SetXTitle(utf8_decode($x_nome));
+        $plot->SetYTitle(utf8_decode($y_nome));
+        
+        // Passar para Real
+        // setar o valores no eixo Y no formato moeda
+        // este metodo aceita uma função quando o parametro custom é setado
+        $plot->SetYLabelType('custom', '\Framework\App\Sistema_Funcoes::Tranf_Float_Real');
+
+
+        /*# Definimos os dados do gráfico
+        $dados = array(
+                array('Janeiro', 10),
+                array('Fevereiro', 5),
+                array('Março', 4),
+                array('Abril', 8),
+                array('Maio', 7),
+                array('Junho', 5),
+        );*/
+        $nome_Arquivo       = md5(serialize($dados)).'.png';
+        $nome_Arquivo_url   = $folder_url.US.$nome_Arquivo;
+        $nome_Arquivo       = $folder.DS.$nome_Arquivo;
+        $plot->SetIsInline(true);
+        $plot->SetDataValues($dados);
+        $plot->SetOutputFile($nome_Arquivo);
+
+        # Mostramos o gráfico na tela
+        //$plot->SetPlotType($tipo); //points, pie, bars
+
+        $plot->DrawGraph();
+        return $nome_Arquivo_url;
+    }
+    protected function Gerador_Grafico_Pizza($titulo,$x_nome='EixoX',$y_nome='EixoY',$x_dados=Array(),$y_dados=Array(),$tipo = 'points',$larg=300,$alt=200){
+        // Inclui funcao
+        require_once("libs/phplot/phplot.php");
+
+        $larg = $_GET['larg'];
+        $alt = $_GET['alt'];
+        $titulo = $_GET['titulo'];
+        $data = unserialize($_GET['data']);
+        $settings = unserialize($_GET['settings']);
+
+        $plot = new PHPlot($larg, $alt);
+        $plot->SetTitle($titulo);
+        $plot->SetDataValues($data);
+        $plot->SetDataType('text-data-single');
+        $plot->SetPlotType('pie');
+        foreach ($data as $row) $plot->SetLegend($row[0]);
+        $plot->SetCallback('draw_graph', 'draw_data_table', $settings);
+        $plot->DrawGraph();
+    }
     protected function Export_Todos($tipo,&$conteudo,$arquivo_nome='Relatorio'){
         $tipo = (string) 'Export_'.$tipo;
         if(is_callable(array($this,$tipo))){
@@ -659,7 +722,7 @@ readfile($link);*/
                 // Verifica se Tem Permissao
                 $permitir = explode('/', $valor['linkextra']);
                 $permitir = $permitir[0];
-                if(!\Framework\App\Sistema_Funcoes::Perm_Modulos($permitir)){
+                if(\Framework\App\Sistema_Funcoes::Perm_Modulos($permitir)===true){
                     $linkextra = $valor['linkextra'];
                 }else{
                     $linkextra = '';
