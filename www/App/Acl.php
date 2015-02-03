@@ -133,16 +133,10 @@ class Acl{
                 }
             }
             // SE A PAGINA FOR PROIBIDA PARA USUARIOS DESLOGADOS TRAVA
-            if($this->logado===false && TEMA_LOGIN===true && $this->_Request->getSubModulo()!=='erro' && $this->_Request->getSubModulo()!=='Recurso' && $this->_Request->getSubModulo()!=='localidades'){
-                
-                if(LAYOULT_IMPRIMIR==='AJAX'){
-                    \Framework\App\Sistema_Funcoes::Erro('5060');
-                    \Framework\App\Controle::Tema_Travar();
-                }else{
-                    $visual = new \Framework\App\Visual();
-                    $visual->renderizar_login(/*$this->calendario,$this->config_dia,$this->config_mes,$this->config_ano,$this->config_dataixi*/);
-                    \Framework\App\Controle::Tema_Travar();
-                }
+            if(TEMA_LOGIN===true && $this->logado===false && $this->_Request->getSubModulo()!=='erro' && $this->_Request->getSubModulo()!=='Recurso' && $this->_Request->getSubModulo()!=='localidades'){
+                $visual = new \Framework\App\Visual();
+                $visual->renderizar_login(/*$this->calendario,$this->config_dia,$this->config_mes,$this->config_ano,$this->config_dataixi*/);
+                \Framework\App\Controle::Tema_Travar();
             }            
         }
         self::$Sis_Permissao = $this->_db->Sql_Select('Sistema_Permissao');

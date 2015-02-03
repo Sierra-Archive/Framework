@@ -951,6 +951,12 @@ $config_Funcional = function (){
             'chave'                 => 'comercio_Propostas_Biblioteca',
             'Valor'                 => false,
         ),
+        'comercio_Propostas_Biblioteca_Automatico'  => Array(
+            'Nome'                  => 'Se cria Biblioteca automaticamente em Propostas',
+            'Desc'                  => 'Se cria Biblioteca automaticamente  em Propostas',
+            'chave'                 => 'comercio_Propostas_Biblioteca_Automatico',
+            'Valor'                 => false,
+        ),
         /**
          * Se Carrega Com Si Custo de Mao de Obra
          */

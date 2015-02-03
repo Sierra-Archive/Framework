@@ -2202,13 +2202,12 @@ readfile($link);*/
                 $endereco_html .= self::$config_template['Buscar'];
             }
             // cria form se nao tiver logado
-            if($this->_Acl->logado===false && $this->_request->getSubModulo()!=='erro' && $this->_request->getSubModulo()!=='Recurso' && $this->_request->getSubModulo()!=='localidades'){
+            if(TEMA_LOGIN===false && $this->_Acl->logado===false && $this->_request->getSubModulo()!=='erro' && $this->_request->getSubModulo()!=='Recurso' && $this->_request->getSubModulo()!=='localidades'){
                 $form = new \Framework\Classes\Form('Formlogin','',''); //formajax /'.SISTEMA_MODULO.'/'.SISTEMA_SUB.'/'.SISTEMA_MET
                 $form->Input_Novo('Login','sistema_login','','text', '',30, '');
                 $form->Input_Novo('Senha','sistema_senha','','password', 30, '','');
                 $this->_Visual->Blocar($form->retorna_form('Entrar'));
                 $this->_Visual->Bloco_Menor_CriaJanela('Login');
-                return true;
             }
             /*// carrega menu estatisticas se exister antes de encerrar tudo
             if(file_exists(MOD_PATH.''.\anti_injection(SISTEMA_MODULO).'/StatC.php')){

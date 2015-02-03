@@ -209,7 +209,7 @@ class Financeiro_Controle extends \Framework\App\Controle
             return Array($tabela,$i);
         }
     }
-    protected function Movimentacao_Interna_Grafico($where=Array(),$tipo='Mini',$total=false,$endereco='', $titulo='Gráfico'){
+    protected function Movimentacao_Interna_Grafico($where=Array(),$tipo='mes',$total=false,$endereco='', $titulo='Gráfico'){
         if(is_array($where)){
             $where['pago']='0';
         }else if($where!==''){
@@ -222,20 +222,66 @@ class Financeiro_Controle extends \Framework\App\Controle
         $total_qnt = 0;
         $tabela = Array();
         
-        $mes = Array(
-            0=>'0.0',
-            1=>'0.0',
-            2=>'0.0',
-            3=>'0.0',
-            4=>'0.0',
-            5=>'0.0',
-            6=>'0.0',
-            7=>'0.0',
-            8=>'0.0',
-            9=>'0.0',
-            10=>'0.0',
-            11=>'0.0',
-        );
+        if($tipo==='mes'){
+            $mes = Array(
+                0=>'0.0',
+                1=>'0.0',
+                2=>'0.0',
+                3=>'0.0',
+                4=>'0.0',
+                5=>'0.0',
+                6=>'0.0',
+                7=>'0.0',
+                8=>'0.0',
+                9=>'0.0',
+                10=>'0.0',
+                11=>'0.0',
+            );
+        }else if($tipo==='semana'){
+            $semana = Array(
+                0=>'0.0',
+                1=>'0.0',
+                2=>'0.0',
+                3=>'0.0',
+                4=>'0.0',
+                5=>'0.0',
+                6=>'0.0'
+            );
+        }else{
+            $dia = Array(
+                0=>'0.0',
+                1=>'0.0',
+                2=>'0.0',
+                3=>'0.0',
+                4=>'0.0',
+                5=>'0.0',
+                6=>'0.0',
+                7=>'0.0',
+                8=>'0.0',
+                9=>'0.0',
+                10=>'0.0',
+                11=>'0.0',
+                12=>'0.0',
+                13=>'0.0',
+                14=>'0.0',
+                15=>'0.0',
+                16=>'0.0',
+                17=>'0.0',
+                18=>'0.0',
+                19=>'0.0',
+                20=>'0.0',
+                21=>'0.0',
+                22=>'0.0',
+                23=>'0.0',
+                24=>'0.0',
+                25=>'0.0',
+                26=>'0.0',
+                27=>'0.0',
+                28=>'0.0',
+                29=>'0.0',
+                30=>'0.0'
+            );
+        }
         
         // SElect
         $financeiros = $this->_Modelo->db->Sql_Select('Financeiro_Pagamento_Interno',$where);
@@ -251,9 +297,15 @@ class Financeiro_Controle extends \Framework\App\Controle
                     $chamar = $valor->motivo.'Modelo';
                 }
                 if(class_exists($chamar)){
-                    $mes_temp_n = Framework\App\Sistema_Funcoes::Get_Info_Data('mes',$valor->dt_vencimento)-1;
-                    $mes[$mes_temp_n] += \Framework\App\Sistema_Funcoes::Tranf_Real_Float($valor->valor);
-
+                    
+                    if($tipo==='mes'){
+                        $mes[(Framework\App\Sistema_Funcoes::Get_Info_Data('mes',$valor->dt_vencimento)-1)] += \Framework\App\Sistema_Funcoes::Tranf_Real_Float($valor->valor);
+                    }else if($tipo==='semana'){
+                        $semana[Framework\App\Sistema_Funcoes::Get_Info_Data('semana',$valor->dt_vencimento)] += \Framework\App\Sistema_Funcoes::Tranf_Real_Float($valor->valor);
+                    }else{
+                        $dia[(Framework\App\Sistema_Funcoes::Get_Info_Data('dia',$valor->dt_vencimento)-1)] += \Framework\App\Sistema_Funcoes::Tranf_Real_Float($valor->valor);
+                    }
+                    
                     if($total!==false){
                         $total_qnt = $total_qnt + \Framework\App\Sistema_Funcoes::Tranf_Real_Float($valor->valor);
                     }
@@ -263,19 +315,9 @@ class Financeiro_Controle extends \Framework\App\Controle
         }
         
         # Definimos os dados do gráfico
-        $dados = array(
-                /*array('Janeiro', $mes[0]),
-                array('Fevereiro', $mes[1]),
-                array('Março', $mes[2]),
-                array('Abril', $mes[3]),
-                array('Maio', $mes[4]),
-                array('Junho', $mes[5]),
-                array('Julho', $mes[6]),
-                array('Agosto', $mes[7]),
-                array('Setembro', $mes[8]),
-                array('Out', $mes[9]),
-                array('Nov', $mes[10]),
-                array('Dez', $mes[11]),*/
+        
+        if($tipo==='mes'){
+            $dados = array(
                 array('Jan', $mes[0]),
                 array('Fev', $mes[1]),
                 array('Mar', $mes[2]),
@@ -288,7 +330,23 @@ class Financeiro_Controle extends \Framework\App\Controle
                 array('Out', $mes[9]),
                 array('Nov', $mes[10]),
                 array('Dez', $mes[11]),
-        );
+            );
+        }else if($tipo==='semana'){;
+            $dados = array(
+                array('Dom', $semana[0]),
+                array('Seg', $semana[1]),
+                array('Ter', $semana[2]),
+                array('Qua', $semana[3]),
+                array('Qui', $semana[4]),
+                array('Sex', $semana[5]),
+                array('Sab', $semana[6]),
+            );
+        }else{
+            $dados = Array();
+            foreach($dia as $indice=>$valor){
+                $dados[] = array($indice, $valor);
+            }
+        }
         
         $html = '<img src="'.$this->Gerador_Grafico_Padrao($titulo, 'Mês', 'Valor (R$)', $dados).'" />';
         
@@ -313,6 +371,69 @@ class Financeiro_Controle extends \Framework\App\Controle
         $tabela = Array();
         $total_qnt = 0;
         
+        
+        
+        if($tipo==='mes'){
+            $mes = Array(
+                0=>'0.0',
+                1=>'0.0',
+                2=>'0.0',
+                3=>'0.0',
+                4=>'0.0',
+                5=>'0.0',
+                6=>'0.0',
+                7=>'0.0',
+                8=>'0.0',
+                9=>'0.0',
+                10=>'0.0',
+                11=>'0.0',
+            );
+        }else if($tipo==='semana'){
+            $semana = Array(
+                0=>'0.0',
+                1=>'0.0',
+                2=>'0.0',
+                3=>'0.0',
+                4=>'0.0',
+                5=>'0.0',
+                6=>'0.0'
+            );
+        }else{
+            $dia = Array(
+                0=>'0.0',
+                1=>'0.0',
+                2=>'0.0',
+                3=>'0.0',
+                4=>'0.0',
+                5=>'0.0',
+                6=>'0.0',
+                7=>'0.0',
+                8=>'0.0',
+                9=>'0.0',
+                10=>'0.0',
+                11=>'0.0',
+                12=>'0.0',
+                13=>'0.0',
+                14=>'0.0',
+                15=>'0.0',
+                16=>'0.0',
+                17=>'0.0',
+                18=>'0.0',
+                19=>'0.0',
+                20=>'0.0',
+                21=>'0.0',
+                22=>'0.0',
+                23=>'0.0',
+                24=>'0.0',
+                25=>'0.0',
+                26=>'0.0',
+                27=>'0.0',
+                28=>'0.0',
+                29=>'0.0',
+                30=>'0.0'
+            );
+        }        
+        
         $financeiros = $this->_Modelo->db->Sql_Select('Financeiro_Pagamento_Interno',$where);
         if($financeiros!==false && !empty($financeiros)){
             if(is_object($financeiros)) $financeiros = Array(0=>$financeiros);
@@ -326,9 +447,14 @@ class Financeiro_Controle extends \Framework\App\Controle
                     $chamar = $valor->motivo.'Modelo';
                 }
                 if(class_exists($chamar)){
-                    $mes_temp_n = Framework\App\Sistema_Funcoes::Get_Info_Data('mes',$valor->dt_vencimento)-1;
-                    $mes[$mes_temp_n] += \Framework\App\Sistema_Funcoes::Tranf_Real_Float($valor->valor);
-
+                    if($tipo==='mes'){
+                        $mes[(Framework\App\Sistema_Funcoes::Get_Info_Data('mes',$valor->dt_vencimento)-1)] += \Framework\App\Sistema_Funcoes::Tranf_Real_Float($valor->valor);
+                    }else if($tipo==='semana'){
+                        $semana[Framework\App\Sistema_Funcoes::Get_Info_Data('semana',$valor->dt_vencimento)] += \Framework\App\Sistema_Funcoes::Tranf_Real_Float($valor->valor);
+                    }else{
+                        $dia[(Framework\App\Sistema_Funcoes::Get_Info_Data('dia',$valor->dt_vencimento)-1)] += \Framework\App\Sistema_Funcoes::Tranf_Real_Float($valor->valor);
+                    }
+                    
                     if($total!==false){
                         $total_qnt = $total_qnt + \Framework\App\Sistema_Funcoes::Tranf_Real_Float($valor->valor);
                     }
@@ -338,19 +464,9 @@ class Financeiro_Controle extends \Framework\App\Controle
         }
         
         # Definimos os dados do gráfico
-        $dados = array(
-                /*array('Janeiro', $mes[0]),
-                array('Fevereiro', $mes[1]),
-                array('Março', $mes[2]),
-                array('Abril', $mes[3]),
-                array('Maio', $mes[4]),
-                array('Junho', $mes[5]),
-                array('Julho', $mes[6]),
-                array('Agosto', $mes[7]),
-                array('Setembro', $mes[8]),
-                array('Out', $mes[9]),
-                array('Nov', $mes[10]),
-                array('Dez', $mes[11]),*/
+        
+        if($tipo==='mes'){
+            $dados = array(
                 array('Jan', $mes[0]),
                 array('Fev', $mes[1]),
                 array('Mar', $mes[2]),
@@ -363,8 +479,23 @@ class Financeiro_Controle extends \Framework\App\Controle
                 array('Out', $mes[9]),
                 array('Nov', $mes[10]),
                 array('Dez', $mes[11]),
-        );
-        
+            );
+        }else if($tipo==='semana'){;
+            $dados = array(
+                array('Dom', $semana[0]),
+                array('Seg', $semana[1]),
+                array('Ter', $semana[2]),
+                array('Qua', $semana[3]),
+                array('Qui', $semana[4]),
+                array('Sex', $semana[5]),
+                array('Sab', $semana[6]),
+            );
+        }else{
+            $dados = Array();
+            foreach($dia as $indice=>$valor){
+                $dados[] = array($indice, $valor);
+            }
+        }
         $html = '<img src="'.$this->Gerador_Grafico_Padrao($titulo, 'Mês', 'Valor (R$)', $dados).'" />';
         
         

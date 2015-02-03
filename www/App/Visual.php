@@ -1243,29 +1243,40 @@ class Visual
      * @version 0.0.1
      */
     public function renderizar_login(){
-        // logado =2 ajax
-        $params = array(
-            'site_titulo'   => 'Entrar',
-            'url_css'       => $this->template_url.'css/',
-            'url_js'        => $this->template_url.'js/',
-            'url_img'       => $this->template_url.'img/',
-            'url_assets'    => $this->template_url.'assets/',
-            'menu'          => '',
-            'sistema'       => array(
-                'css'           => $this->Sistema_Css(),
-                'extras'        => $this->Sistema_Extras()
-            )/*,
-            'template'  => array(
-                'usuario'       => $this->tmp_usuario(),
-                'menu'          => $this->tmp_menu(),
-                'Bloco_Unico'   => $this->Bloco_Unico_Retornar(),
-                'Bloco_Maior'   => $this->Bloco_Maior_Retornar(),
-                'Bloco_Menor'   => $this->Bloco_Menor_Retornar()
-            )*/
-        );
-        
-        //$this->clear_cache($this->template_dir.'page_login.tpl');
-        $this->renderizar_Template('page_login',$params,false);
+        if(LAYOULT_IMPRIMIR=='AJAX'){
+            $form = new \Framework\Classes\Form('Formlogin',SISTEMA_DIR_INT,''); //formajax /'.SISTEMA_MODULO.'/'.SISTEMA_SUB.'/'.SISTEMA_MET
+            $form->Input_Novo('Login','sistema_login','','text', '',30, '');
+            $form->Input_Novo('Senha','sistema_senha','','password', 30, '','');
+            $this->_Visual->Blocar($form->retorna_form('Entrar'));
+            $this->_Visual->Bloco_Menor_CriaJanela('Login');
+            
+            echo $this->_Visual->Json_Retorna();
+            return true;
+        }else{
+            // logado =2 ajax
+            $params = array(
+                'site_titulo'   => 'Entrar',
+                'url_css'       => $this->template_url.'css/',
+                'url_js'        => $this->template_url.'js/',
+                'url_img'       => $this->template_url.'img/',
+                'url_assets'    => $this->template_url.'assets/',
+                'menu'          => '',
+                'sistema'       => array(
+                    'css'           => $this->Sistema_Css(),
+                    'extras'        => $this->Sistema_Extras()
+                )/*,
+                'template'  => array(
+                    'usuario'       => $this->tmp_usuario(),
+                    'menu'          => $this->tmp_menu(),
+                    'Bloco_Unico'   => $this->Bloco_Unico_Retornar(),
+                    'Bloco_Maior'   => $this->Bloco_Maior_Retornar(),
+                    'Bloco_Menor'   => $this->Bloco_Menor_Retornar()
+                )*/
+            );
+
+            //$this->clear_cache($this->template_dir.'page_login.tpl');
+            $this->renderizar_Template('page_login',$params,false);
+        }
     }
     /**
      * 

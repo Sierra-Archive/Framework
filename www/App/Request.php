@@ -8,6 +8,7 @@ class Request
     private $_argumentos;
     private $_permitidos;
     private $_url;
+    public  $url_inteira = '';
     
     public function __construct() {
         
@@ -47,6 +48,8 @@ class Request
             $this->_modulo = DEFAULT_MODULO;
             define('LAYOULT_IMPRIMIR', 'COMPLETO');
         }
+        
+        
         // Extrai primeiro elemento como submodulo
         if(is_array($url) && count($url)>0){
             $this->_submodulo   = \anti_injection(array_shift($url));
@@ -59,6 +62,9 @@ class Request
         }else{
             $this->_metodo = DEFAULT_METODO;
         }
+        
+        
+        
         // Resto fica como os argumentos
         if(is_array($url) && count($url)>0){
             $this->_argumentos  = $url;
@@ -66,9 +72,16 @@ class Request
             $this->_argumentos = Array();
         }
         
+        
+        $this->url_inteira = $this->_modulo.'/'.$this->_submodulo.'/'.$this->_metodo;
+        foreach($this->_argumentos as $valor){
+            $this->url_inteira .= '/'.$valor;
+        }
+        
         define('SISTEMA_MODULO', $this->_modulo);
         define('SISTEMA_SUB', $this->_submodulo);
         define('SISTEMA_MET', $this->_metodo);
+        define('SISTEMA_DIR_INT', $this->url_inteira);
         
         // Bloqueia caso modulo nao seja permitido: Da que a pagina nao foi encontrada
         if(!\Framework\App\Sistema_Funcoes::Perm_Modulos($this->_modulo)){

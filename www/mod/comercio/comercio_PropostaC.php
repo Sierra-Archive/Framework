@@ -1549,6 +1549,12 @@ class comercio_PropostaControle extends comercio_Controle
             // Pega o ID
             $identificador  = $this->_Modelo->db->Sql_Select('Comercio_Proposta', Array(),1,'id DESC');
             $this->Proposta_Atualizar_Valor($identificador);
+            
+            // Se tiver essa opcao, cria a pasta automaticamente na biblioteca
+            if(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Propostas_Biblioteca')===true && \Framework\App\Sistema_Funcoes::Perm_Modulos('biblioteca')===true && \Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Propostas_Biblioteca_Automatico')===true){
+                
+                
+            }
         }
         // Recarrega
         $this->Propostas($tema);
@@ -2187,6 +2193,21 @@ class comercio_PropostaControle extends comercio_Controle
                     APP_DATA_BR                   // Data Inicial
                 );
             }else if($resultado->status=='2'){ // de Aprovada em Execução para Finalizada
+                
+                if(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Propostas_Biblioteca')===true && \Framework\App\Sistema_Funcoes::Perm_Modulos('biblioteca')===true){
+                    $mensagens = array(
+                        "tipo"              => 'erro',
+                        "mgs_principal"     => 'Erro',
+                        "mgs_secundaria"    => 'Essa OS não pode ser finalizada.'
+                    );
+                    $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+
+                    $this->_Visual->Json_Info_Update('Historico', false);
+                    return true;
+                    
+                }
+                
+                // Se
                 $resultado->status='3';
                 // Inserir Pagamento de Funcionários
                 /*$funcionarios = $this->_Modelo->db->Sql_Select('Comercio_Proposta_Funcionario', Array('proposta'=>$id));

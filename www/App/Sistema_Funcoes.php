@@ -708,14 +708,25 @@ Class Sistema_Funcoes {
      */
     static public function Get_Info_Data($info, $data){
         if($info=='mes_nome'){
-            return jdmonthname($data,0);
+            return (string) jdmonthname($data,0);
         }else if($info=='mes'){
             $data = explode('/',$data);
-            return $data[1];
-        }else{
-            
+            return (int) $data[1];
+        }else if($info=='semana'){
+            $data = explode('/',$data);
+            return (int) date("w", mktime(0,0,0,$data[1],$data[0],$data[2]) );
+        }else if($info=='semana_do_ano'){
+          $data = explode('/',$data);
+          return (int) intval( date('z', mktime(0,0,0,$data[1],$data[0],$data[2]) ) / 7 ) + 1;
+        }else if($info=='dia'){
+            $data = explode('/',$data);
+            return (int) $data[0];
+        }else if($info=='ano'){
+            $data = explode('/',$data);
+            return (int) $data[2];
         }
-        return '';
+        
+        return false;
     }
 }
 

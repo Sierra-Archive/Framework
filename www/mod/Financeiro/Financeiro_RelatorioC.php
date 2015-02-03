@@ -448,7 +448,12 @@ class Financeiro_RelatorioControle extends Financeiro_Controle
         }
         return false;
     }
-    public function Grafico_Relatorio($tipo_relatorio_Grafico = 'Pagar', $data_inicial = '2014-01-01', $data_final = APP_DATA, $categoria = false){
+    
+    
+    
+    
+    
+    public function Grafico_Relatorio($tipo_relatorio_Grafico = 'Pagar', $data_inicial = '2014-01-01', $data_final = APP_DATA, $categoria = false, $tipo_grafico = 'mes'){
         
         self::Endereco_Grafico_Financeiro(false);
         
@@ -489,6 +494,14 @@ class Financeiro_RelatorioControle extends Financeiro_Controle
         $form->Select_Opcao('Visualizar em PDF','pdf',0);
         $form->Select_Opcao('Download em PDF','pdfdownload',0);
         $form->Select_Fim();*/
+        
+        // Tipo de Grafico
+        $form->Select_Novo('Tipo de Gráfico', 'tipo_grafico', 'tipo_grafico', '', '', '', false, false, '', 'Escolha um Tipo de Gráfico');
+        $form->Select_Opcao('Mensal','mes',1);
+        $form->Select_Opcao('Diário','dia',0);
+        $form->Select_Opcao('Semanal','semana',0);
+        $form->Select_Fim();
+        
         // Bloca Conteudo e Cria Janela de COnfiguração
         $this->_Visual->Blocar($form->retorna_form('Atualizar')); // Relatório
         $this->_Visual->Bloco_Menor_CriaJanela('Configuração do Relatório','', 0, false);
@@ -498,7 +511,7 @@ class Financeiro_RelatorioControle extends Financeiro_Controle
         
         // Chama Funcao
         $tipo_relatorio_Grafico = 'Grafico_'.$tipo_relatorio_Grafico;
-        $html = $this->$tipo_relatorio_Grafico($data_inicial, $data_final,$categoria, $tipo_visual);
+        $html = $this->$tipo_relatorio_Grafico($data_inicial, $data_final,$categoria, $tipo_grafico, $tipo_visual);
         $titulo = 'Relatório de Contas à Pagar';
         $this->_Visual->Blocar('<span id="Grafico_relatorio_tabela">'.$html.'</span>');
         $this->_Visual->Bloco_Maior_CriaJanela('<span id="Grafico_relatorio_titulo">'.$titulo.'</span>','', 0, false);
@@ -544,6 +557,14 @@ class Financeiro_RelatorioControle extends Financeiro_Controle
             $tipo_relatorio_Grafico = 'Pagar';
             $titulo = 'Relatório de Contas à Pagar';
         }
+        if(isset($_POST['tipo_grafico'])){
+            $tipo_grafico = \anti_injection($_POST['tipo_grafico']);
+            if($tipo_grafico!=='mes' && $tipo_grafico!=='semana' && $tipo_grafico!=='dia'){
+                $tipo_grafico = 'mes';
+            }
+        }else{
+            $tipo_grafico = 'mes';
+        }
         if(isset($_POST['tipo_visual'])){
             $tipo_visual = \anti_injection($_POST['tipo_visual']);
             if($tipo_visual==='imprimir'){
@@ -562,7 +583,7 @@ class Financeiro_RelatorioControle extends Financeiro_Controle
         }
         $tipo_relatorio_Grafico = 'Grafico_'.$tipo_relatorio_Grafico;
         // Chama Funcao Correspondente e Imprime Resultado
-        $html = $this->$tipo_relatorio_Grafico($data_inicial, $data_final, $categoria,$tipo_visual);
+        $html = $this->$tipo_relatorio_Grafico($data_inicial, $data_final, $categoria,$tipo_grafico,$tipo_visual);
         $conteudo = array(
             'location' => '#Grafico_relatorio_tabela',
             'js' => '',
@@ -584,7 +605,7 @@ class Financeiro_RelatorioControle extends Financeiro_Controle
     /**
      * Contas a Pagar
      */
-    public function Grafico_Pagar($datainicial, $datafinal,$categoria='false',$export = false){
+    public function Grafico_Pagar($datainicial, $datafinal,$categoria='false',$tipo_grafico='mes',$export = false){
         
         // Parametros
         $where  = '{sigla}entrada_motivo = \'Servidor\' AND {sigla}entrada_motivoid = \''.SRV_NAME_SQL.'\' AND {sigla}dt_vencimento >= \''.$datainicial.'\' AND {sigla}dt_vencimento <= \''.$datafinal.'\'';
@@ -606,12 +627,12 @@ class Financeiro_RelatorioControle extends Financeiro_Controle
                 'Print'     => true,
                 'Pdf'       => true,
                 'Excel'     => true,
-                'Link'      => 'Financeiro/Relatorio/Pagar/'.$datainicial.'/'.$datafinal.'/'.($categoria===false?'false':$categoria),
+                'Link'      => 'Financeiro/Relatorio/Pagar/'.$datainicial.'/'.$datafinal.'/'.($categoria===false?'false':$categoria).'/'.$tipo_grafico,
             )
         ))*/;
         
         // Chama
-        list($html,$i,$total) = $this->Movimentacao_Interna_Grafico($where,'Mini', true, 'Pagar/'.$datainicial.'/'.$datafinal);
+        list($html,$i,$total) = $this->Movimentacao_Interna_Grafico($where,$tipo_grafico, true, 'Pagar/'.$datainicial.'/'.$datafinal);
         
         // ADiciona Total
         $html_total = '<br><table class="table">
@@ -648,7 +669,7 @@ class Financeiro_RelatorioControle extends Financeiro_Controle
     /**
      * Contas a Receber
      */
-    public function Grafico_Receber($datainicial, $datafinal,$categoria='false',$export = false){
+    public function Grafico_Receber($datainicial, $datafinal,$categoria='false', $tipo_grafico = 'mes',$export = false){
         
         // Parametros
         $where  = '{sigla}saida_motivo = \'Servidor\' AND {sigla}saida_motivoid = \''.SRV_NAME_SQL.'\' AND {sigla}dt_vencimento >= \''.$datainicial.'\' AND {sigla}dt_vencimento <= \''.$datafinal.'\'';
@@ -676,7 +697,7 @@ class Financeiro_RelatorioControle extends Financeiro_Controle
         ))*/;
         
         // Chama
-        list($html,$i,$total) = $this->Movimentacao_Interna_Grafico($where,'Mini',true, 'Receber/'.$datainicial.'/'.$datafinal);
+        list($html,$i,$total) = $this->Movimentacao_Interna_Grafico($where,$tipo_grafico, true, 'Receber/'.$datainicial.'/'.$datafinal);
         
         
         // ADiciona Total
@@ -711,7 +732,7 @@ class Financeiro_RelatorioControle extends Financeiro_Controle
         }
         return false;
     }
-    public function Grafico_Pago($datainicial, $datafinal,$categoria='false',$export = false){
+    public function Grafico_Pago($datainicial, $datafinal,$categoria='false', $tipo_grafico = 'mes',$export = false){
         
         // Parametros
         $where  = '{sigla}entrada_motivo = \'Servidor\' AND {sigla}entrada_motivoid = \''.SRV_NAME_SQL.'\' AND {sigla}dt_vencimento >= \''.$datainicial.'\' AND {sigla}dt_vencimento <= \''.$datafinal.'\'';
@@ -739,7 +760,7 @@ class Financeiro_RelatorioControle extends Financeiro_Controle
             )
         ))*/;
         // Chama
-        list($html,$i,$total) = $this->Movimentacao_Interna_Grafico_Pago($where,'Mini',true, 'Pago/'.$datainicial.'/'.$datafinal);  
+        list($html,$i,$total) = $this->Movimentacao_Interna_Grafico_Pago($where,$tipo_grafico, true, 'Pago/'.$datainicial.'/'.$datafinal);  
         
         // ADiciona Total
         $html_total = '<br><table class="table">
@@ -776,7 +797,7 @@ class Financeiro_RelatorioControle extends Financeiro_Controle
     /**
      * Contas a Receber
      */
-    public function Grafico_Recebido($datainicial, $datafinal,$categoria='false',$export = false){   
+    public function Grafico_Recebido($datainicial, $datafinal,$categoria='false', $tipo_grafico = 'mes',$export = false){   
         
         // Parametros    
         $where  = '{sigla}dt_vencimento >= \''.$datainicial.'\' AND {sigla}dt_vencimento <= \''.$datafinal.'\' AND saida_motivo = \'Servidor\' AND saida_motivoid = \''.SRV_NAME_SQL.'\'';
@@ -804,7 +825,7 @@ class Financeiro_RelatorioControle extends Financeiro_Controle
         ))*/;
         
         // Chama
-        list($html,$i,$total) = $this->Movimentacao_Interna_Grafico_Pago($where,'Mini',true, 'Recebido/'.$datainicial.'/'.$datafinal);
+        list($html,$i,$total) = $this->Movimentacao_Interna_Grafico_Pago($where,$tipo_grafico, true, 'Recebido/'.$datainicial.'/'.$datafinal);
         
         // ADiciona Total
         $html_total = '<br><table class="table">
