@@ -316,7 +316,7 @@ class SierraTec_Manutencao {
      * @param type $antigo Nome Novo
      */
     public function Tranferencia_DB_Servidor($novo,$antigo=false){
-        $tabelas = &\Framework\App\Framework\App\Conexao::$tabelas;
+        $tabelas = &\Framework\App\Conexao::$tabelas;
         foreach($tabelas as $indice=>&$valor){
             if($valor['static']===false){
                 if($antigo!==false){

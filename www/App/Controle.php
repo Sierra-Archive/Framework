@@ -62,9 +62,9 @@ abstract class Controle
         /*$manutencao = new \Framework\Classes\SierraTec_Manutencao();
         $manutencao->Atualizacao_Version(2.2);
         */
-        /*$manutencao = new \Framework\Classes\SierraTec_Manutencao();
-        $manutencao->Tranferencia_DB_Servidor('SiTec');
-        exit;*/
+       /* $manutencao = new \Framework\Classes\SierraTec_Manutencao();
+        $manutencao->Tranferencia_DB_Servidor('Fenix_Atls');
+        exit;/**/
         
         /*$face = new \Framework\Classes\SierraTec_Facebook();
         $face->Armazena();

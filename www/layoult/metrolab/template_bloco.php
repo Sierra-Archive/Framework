@@ -1,5 +1,5 @@
 <?php if( $params['Tipo']==='Bloco'){ ?>
-    <div class="widget<?php if($params['conteudo_tipo']==='abas'){ ?> tabbable<?php } ?> <?php echo TEMA_LOGO; ?>"<?php echo $params['div_ext']; ?>>
+    <div class="widget<?php if($params['conteudo_tipo']==='abas'){ ?> tabbable<?php } ?> <?php echo TEMA_COLOR; ?>"<?php echo $params['div_ext']; ?>>
         <div class="widget-title">
             <h4<?php echo $params['titulo_ext']; ?>><i class="icon-reorder"></i><?php echo $params['titulo']; ?></h4>
             <?php if(isset($params['Id'])){ ?>
