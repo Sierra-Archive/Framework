@@ -31,7 +31,7 @@
     <!-- Header -->
     <div id="header" class="wrapper">
         <div class="fix" style="line-height: 20px; height:20px;"></div>
-        <!--<div class="logo"><a class="brand" href="<?php echo URL_PATH; ?>"><img src="<?php echo ARQ_URL; ?>_Sistema/logo.png" alt="<?php echo SISTEMA_NOME; ?>" style="max-width: 300px;" /></a></div>-->
+        <!--<div class="logo"><a class="navbar-brand" href="<?php echo URL_PATH; ?>"><img src="<?php echo ARQ_URL; ?>_Sistema/logo.png" alt="<?php echo SISTEMA_NOME; ?>" style="max-width: 300px;" /></a></div>-->
         <!--<ul class="middleNav">
             <li class="iMes"><a href="#" title=""><span>Support tickets</span></a><span class="numberMiddle">9</span></li>
             <li class="iStat"><a href="#" title=""><span>Statistics</span></a></li>
@@ -47,7 +47,7 @@
             <!-- Left navigation -->
         <div class="leftNav">
             <?php echo $params['template']['menu']; ?>
-            <div class="logo"><a class="brand" href="<?php echo URL_PATH; ?>"><img src="<?php echo ARQ_URL; ?>_Sistema/logo.png" alt="<?php echo SISTEMA_NOME; ?>" style="max-width: 300px;" /></a></div>
+            <div class="logo"><a class="navbar-brand" href="<?php echo URL_PATH; ?>"><img src="<?php echo ARQ_URL; ?>_Sistema/logo.png" alt="<?php echo SISTEMA_NOME; ?>" style="max-width: 300px;" /></a></div>
         </div>
 
         <!-- Content -->
@@ -57,10 +57,10 @@
                 <?php echo $params['template']['Bloco_Unico']; ?>
             </spam>
             <div class="fluid">
-                <div class="span8" id="blocomaior"<?php if( $params['template']['Bloco_Maior']==''){ ?> style="display: none;"<?php } ?>>
+                <div class="col-8" id="blocomaior"<?php if( $params['template']['Bloco_Maior']==''){ ?> style="display: none;"<?php } ?>>
                     <?php echo $params['template']['Bloco_Maior']; ?>
                 </div>
-                <div class="span4" id="blocomenor"<?php if( $params['template']['Bloco_Menor']==''){ ?> style="display: none;"<?php } ?>>
+                <div class="col-4" id="blocomenor"<?php if( $params['template']['Bloco_Menor']==''){ ?> style="display: none;"<?php } ?>>
                     <?php echo $params['template']['Bloco_Menor']; ?>
                 </div>
             </div>

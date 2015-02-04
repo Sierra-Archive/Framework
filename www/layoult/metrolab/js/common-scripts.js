@@ -21,7 +21,7 @@ var Script = function () {
 
 //    sidebar toggle
 
-    $('.icon-reorder').click(function () {
+    $('.glyphicon-reorder').click(function () {
         if ($('#sidebar > ul').is(":visible") === true) {
             $('#main-content').css({
                 'margin-left': '0px'

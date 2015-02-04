@@ -35,22 +35,22 @@ class usuario_PerfilVisual extends usuario_Visual
         }
         if(LAYOULT_IMPRIMIR!='AJAX'){
             $html .= '<div class="profile-head">'.
-                        '<div class="span8">'.
+                        '<div class="col-8">'.
                             '<h1>'.$nome.'</h1>'.
                             '<p>'.$email.'</p>'.
                         '</div>'.
 
-                        '<div class="span4">'.
+                        '<div class="col-4">'.
                             '<a class="btn btn-edit btn-large pull-right mtop20 lajax explicar-titulo" acao="" href="'.URL_PATH.'usuario/Admin/Usuarios_Edit/'.$id.'" title="Editar Usuário">Editar Usuário</a>'.
                         '</div>'.
                     '</div>';
         }
         $html .= '<div class="space15"></div>';
         if(LAYOULT_IMPRIMIR!='AJAX'){
-            $html .= '<div class="row-fluid">'.
-            '<div class="span8 bio">';
+            $html .= '<div class="row">'.
+            '<div class="col-8 bio">';
         }else{
-            $html .= '<div class="span12 bio">';
+            $html .= '<div class="col-12 bio">';
         }
         $html .= '<h2>Dados do '.$tipo.'</h2>';
         if($usuario->login!='')  $html .= '<p><label style="width:150px;">Login </label>: '.$usuario->login.'</p>';
@@ -104,7 +104,7 @@ class usuario_PerfilVisual extends usuario_Visual
         if(LAYOULT_IMPRIMIR!='AJAX'){
             $html .= '</div>';
             if($mensagens!==false){
-                $html .= '<div class="span4">';
+                $html .= '<div class="col-4">';
                 foreach($mensagens AS &$valor){
                     $html .= '';
                 }

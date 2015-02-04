@@ -28,7 +28,7 @@
         <div class="login-wrap" style="max-width:480px;">
             <div class="metro single-size <?php echo CFG_LP_LOGINCOR1; ?>">
                 <div class="locked">
-                    <i class="icon-lock"></i>
+                    <i class="glyphicon-lock"></i>
                     <span>Identificação</span>
                 </div>
             </div>
@@ -45,30 +45,30 @@
             <div class="metro single-size <?php echo CFG_LP_LOGINCOR4; ?> login">
                 <button type="submit" class="btn login-btn">
                     Entrar
-                    <i class="icon-long-arrow-right"></i>
+                    <i class="glyphicon-long-arrow-right"></i>
                 </button>
             </div><!--
             <div class="metro double-size navy-blue ">
                 <a href="index.html" class="social-link">
-                    <i class="icon-facebook-sign"></i>
+                    <i class="glyphicon-facebook-sign"></i>
                     <span>Facebook Login</span>
                 </a>
             </div>
             <div class="metro single-size deep-red">
                 <a href="index.html" class="social-link">
-                    <i class="icon-google-plus-sign"></i>
+                    <i class="glyphicon-google-plus-sign"></i>
                     <span>Google Login</span>
                 </a>
             </div>
             <div class="metro double-size blue">
                 <a href="index.html" class="social-link">
-                    <i class="icon-twitter-sign"></i>
+                    <i class="glyphicon-twitter-sign"></i>
                     <span>Twitter Login</span>
                 </a>
             </div>
             <div class="metro single-size purple">
                 <a href="index.html" class="social-link">
-                    <i class="icon-skype"></i>
+                    <i class="glyphicon-skype"></i>
                     <span>Skype Login</span>
                 </a>
             </div>-->

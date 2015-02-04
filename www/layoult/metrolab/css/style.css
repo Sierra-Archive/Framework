@@ -395,7 +395,7 @@ a,a:focus, a:hover, a:active {
 }
 
 /* header nav bar*/
-#header .brand {
+#header .navbar-brand {
     margin-top: 0px !important;
     padding: 18px 20px;
     width: 132px;
@@ -420,7 +420,7 @@ a,a:focus, a:hover, a:active {
     margin-right: 0px !important;
 }
 
-#header .navbar-inverse .brand, .navbar-inverse .nav > li > a{
+#header .navbar-inverse .navbar-brand, .navbar-inverse .nav > li > a{
     color: #fff;
 }
 
@@ -438,7 +438,7 @@ a,a:focus, a:hover, a:active {
     display: inline-block !important;
 }
 
-#header.navbar-inverse .btn-navbar {
+#header.navbar-inverse .navbar-btn {
     background-image: none;
     margin-top: 10px;
     color: white;
@@ -448,7 +448,7 @@ a,a:focus, a:hover, a:active {
     border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
 }
 
-#header.navbar-inverse .btn-navbar:hover {
+#header.navbar-inverse .navbar-btn:hover {
     background-color: #caced1;
 }
 
@@ -466,7 +466,7 @@ a,a:focus, a:hover, a:active {
     border-radius: 0;
 }
 
-#header.navbar-inverse .navbar-inner {
+#header.navbar-inverse{
     height: 60px;
     border:none !important;
 }
@@ -513,18 +513,19 @@ a,a:focus, a:hover, a:active {
 }
 
 /* i8 fix for form input height in fluid rows */
-.ie8 .row-fluid [class*="span"] {
+.ie8 .row [class*="col-"] {
     min-height: 20px !important;
 }
 
 /* body container */
 #main-content {
-    margin-top: 0px;
+    margin-top: 60px;
     margin-left: 180px;
     min-height: 1000px;
     background: #fff;
     //margin-bottom: 40px !important;
     margin-bottom: 0px !important;
+    //padding-left: 15px !important;
 }
 
 /* page container */
@@ -536,7 +537,7 @@ a,a:focus, a:hover, a:active {
     padding: 0 30px;
 }
 
-.sidebar-toggle-box .icon-reorder {
+.sidebar-toggle-box .glyphicon-reorder {
     cursor: pointer;
     display: inline-block;
     font-size: 20px;
@@ -557,7 +558,7 @@ a,a:focus, a:hover, a:active {
 
 /* sidebar menu */
 
-[class^="icon-"], [class*=" icon-"] {
+[class^="glyphicon-"], [class*=" glyphicon-"] {
     margin-top: 0;
 }
 
@@ -572,6 +573,7 @@ a,a:focus, a:hover, a:active {
     height: 100%;
     width: 180px;
     z-index: 100;
+    //margin-top:60px !important;
 }
 
 #sidebar ul{
@@ -607,6 +609,9 @@ a,a:focus, a:hover, a:active {
     border: 0px;
     line-height: 30px;
 }
+#sidebar > ul > li > ul {
+    padding: 0 !important;
+}
 
 #sidebar > ul > li > a {
     display: block;
@@ -620,7 +625,7 @@ a,a:focus, a:hover, a:active {
     font-size: 12px;
     font-weight: normal;
     text-align: left;
-    width: 150px;
+    width: 100%;
     padding: 5px 15px;
     background: #505050;
 
@@ -726,7 +731,7 @@ a,a:focus, a:hover, a:active {
 #sidebar > ul > li > ul.sub > li > a {
     display: block;
     position: relative;
-    padding: 10px 10px 10px 45px;
+    padding: 10px 10px 10px 25px;
     color: #ccc;
     text-decoration: none;
     text-shadow: 0 1px 1px #000;
@@ -797,7 +802,7 @@ form legend {
     padding: 0px !important;
 }
 
-.widget-body.form .control-group:last-child {
+.widget-body.form .form-group:last-child {
     padding-bottom: 0px !important;
     margin-bottom: 0px !important;
 }
@@ -1123,7 +1128,7 @@ form legend {
 }
 
 /* icon buttons */
-.icon-btn {
+.glyphicon-btn {
     height: 70px;
     width: 50px;
     margin: 10px 0px 10px 0px;
@@ -1143,11 +1148,11 @@ form legend {
     transition: all 0.3s ease !important;
 }
 
-.ie8 .icon-btn:hover {
+.ie8 .glyphicon-btn:hover {
     filter: none !important;
 }
 
-.icon-btn:hover {
+.glyphicon-btn:hover {
     border: 1px solid #404040;
     background: #fff !important;
     text-decoration: none !important;
@@ -1160,19 +1165,19 @@ form legend {
     transition: all 0.3s ease !important;
 }
 
-.icon-btn i {
+.glyphicon-btn i {
     font-size: 20px;
     color: #777 !important;
 }
 
-.icon-btn div {
+.glyphicon-btn div {
     margin-top: 5px;
     margin-bottom: 20px;
     font-size: 12px !important;
     font-family: Arial;
 }
 
-.icon-btn .badge {
+.glyphicon-btn .badge {
     position: absolute;
     font-size: 10px !important;
     top: 26px;
@@ -1187,7 +1192,7 @@ form legend {
     font-family: Arial;
 }
 
-.icon-btn:hover .badge {
+.glyphicon-btn:hover .badge {
     -webkit-transition: all 0.3s ease !important;
     -moz-transition: all 0.3s ease !important;
     -ms-transition: all 0.3s ease !important;
@@ -1195,14 +1200,14 @@ form legend {
     transition: all 0.3s ease !important;
 }
 
-.icon-btn i {
+.glyphicon-btn i {
     -webkit-transition: all .5s ease-in-out;
     -moz-transition: all .5s ease-in-out;
     -o-transition: all .5s ease-in-out;
     -ms-transition: all .5s ease-in-out;
 }
 
-.icon-btn:hover i {
+.glyphicon-btn:hover i {
     -webkit-transform: rotate(360deg);
     -moz-transform: rotate(360deg);
     -o-transform: rotate(360deg);
@@ -1351,13 +1356,13 @@ form legend {
 
 /*fontawesome*/
 
-.fontawesome-icon-list .span3{
+.fontawesome-glyphicon-list .col-3{
     margin-left: 0;
 }
-.fontawesome-icon-list .span3 i{
+.fontawesome-glyphicon-list .col-3 i{
     font-size: 16px;
 }
-.fontawesome-icon-list .span3 a{
+.fontawesome-glyphicon-list .col-3 a{
     color: #888888;
 }
 
@@ -1469,7 +1474,7 @@ form legend {
 }
 
 /* font awesome icon classes */
-[class^="icon-"], [class*=" icon-"],[class^="icon-"]:hover, [class*=" icon-"]:hover {
+[class^="glyphicon-"], [class*=" glyphicon-"],[class^="glyphicon-"]:hover, [class*=" glyphicon-"]:hover {
     background: none !important;
 }
 
@@ -2196,7 +2201,7 @@ table.sliders tr td {
 
 /*font awesome icon style*/
 
-.icon-style-list ul.unstyled li {
+.glyphicon-style-list ul.unstyled li {
     /*border: 1px solid #EAEAEA;*/
     font-family: arial;
     line-height: 30px;
@@ -2209,12 +2214,12 @@ table.sliders tr td {
     -webkit-border-radius: 3px;
 }
 
-.icon-style-list ul.unstyled li i {
+.glyphicon-style-list ul.unstyled li i {
     font-size: 16px;
     padding-right: 5px;
 }
 
-.icon-style-list h3, .icon-style-list h4 {
+.glyphicon-style-list h3, .glyphicon-style-list h4 {
     font-family: Arial;
 }
 
@@ -2521,7 +2526,7 @@ a.social-link i {
 
 }
 
-.square-state .icon-btn {
+.square-state .glyphicon-btn {
     margin-top: 0;
     margin-bottom: 20px;
 }
@@ -4136,15 +4141,15 @@ ul.amounts li {
     background: #f1f1f1;
 }
 
-.invoice-date-range .control-group label, .invoice-date-range .control-group input {
+.invoice-date-range .form-group label, .invoice-date-range .form-group input {
     float: left;
 }
 
-.invoice-date-range .control-group label {
+.invoice-date-range .form-group label {
     width: 70px;
 }
 
-.invoice-date-range .control-group input {
+.invoice-date-range .form-group input {
     margin-right: 15px;
 }
 
@@ -4238,7 +4243,7 @@ ul.amounts li {
 margin-right: 21px;
 }
 
-.feedback .control-group  {
+.feedback .form-group  {
     margin-bottom: 15px;
 }
 
@@ -4540,10 +4545,10 @@ margin-right: 21px;
 }
 
 
-.widget-title > .actions > .btn.btn-mini {
+.widget-title > .actions > .btn.btn-xs {
     margin-top: 0px;
 }
-.widget-title > .actions > .btn-group > .btn.btn-mini {
+.widget-title > .actions > .btn-group > .btn.btn-xs {
     margin-top: 2px !important;
 }
 
@@ -4610,6 +4615,9 @@ margin-right: 21px;
 /**
 Alterado
 */
+.login-wrap input {
+    color: #666666 !important;
+}
 
 .login-wrap .gray {
     background: #666666;

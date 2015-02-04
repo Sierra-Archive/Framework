@@ -36,7 +36,7 @@ a:hover {
   cursor: pointer;
 }
 /* Work in progress */
-a.tree-toggle-icon-only {
+a.tree-toggle-glyphicon-only {
   height: 16px;
   width: 20px;
   line-height: 16px;
@@ -55,6 +55,6 @@ a.tree-toggle {
   background: url("../img/bstree-halflings.png") no-repeat;
   background-position: 0 -22px;
 }
-a.tree-toggle.closed, a.tree-toggle-icon-only.closed {
+a.tree-toggle.closed, a.tree-toggle-glyphicon-only.closed {
   background-position: 0 1px;
 }

@@ -6,7 +6,7 @@
                     <a href="<?php echo URL_PATH; ?><?php echo $params['btn_add']['url']; ?>" class="lajax" acao="">
                 <?php } ?>
                         <button class="btn green" onClick="<?php echo $params['btn_add']['onclick']; ?>">
-                            <?php echo $params['btn_add']['nome']; ?> <i class="icon-plus"></i>
+                            <?php echo $params['btn_add']['nome']; ?> <i class="glyphicon-plus"></i>
                         </button>
                 <?php if($params['btn_add']!=='#' && $params['btn_add']!==''){ ?>
                     </a>
@@ -15,7 +15,7 @@
         <?php } ?>
         <?php if(is_array($params['Ferramentas'])){ ?>
             <div class="btn-group pull-right">
-                <button class="btn dropdown-toggle" data-toggle="dropdown"><i class="icon-cog"></i> Ferramentas <i class="icon-angle-down"></i>
+                <button class="btn dropdown-toggle" data-toggle="dropdown"><i class="glyphicon-cog"></i> Ferramentas <i class="glyphicon-angle-down"></i>
                 </button>
                 <ul class="dropdown-menu pull-right">
                     <?php if($params['Ferramentas']['Print']){ 
@@ -32,48 +32,48 @@
     <div class="space15"></div>
 <?php }else if($params['Tipo']=='Personalizado'){ ?>
     <a href="<?php echo URL_PATH; ?><?php echo $params['btn_add']['url']; ?>" class="btn btn-<?php echo $params['btn_add']['cor']; ?> lajax explicar-titulo" title="<?php echo $params['btn_add']['nome']; ?>" acao="">
-        <i class="icon-<?php echo $params['btn_add']['icone']; ?>"></i>
+        <i class="glyphicon-<?php echo $params['btn_add']['icone']; ?>"></i>
     </a>
 
 <?php }else if($params['Tipo']==='Destaque0'){ ?>
     <a href="<?php echo URL_PATH; ?><?php echo $params['btn_add']['url']; ?>" class="btn btn-danger lajax explicar-titulo" title="<?php echo $params['btn_add']['nome']; ?>" acao="">
-        <i class="icon-star-empty"></i>
+        <i class="glyphicon-star-empty"></i>
     </a>
 <?php }else if($params['Tipo']==='Destaque1'){ ?>
     <a href="<?php echo URL_PATH; ?><?php echo $params['btn_add']['url']; ?>" class="btn btn-success lajax explicar-titulo" title="<?php echo $params['btn_add']['nome']; ?>" acao="">
-        <i class="icon-star"></i>
+        <i class="glyphicon-star"></i>
     </a>
 
 <?php }else if($params['Tipo']==='Status0'){ ?>
     <a href="<?php echo URL_PATH; ?><?php echo $params['btn_add']['url']; ?>" class="btn btn-danger lajax explicar-titulo" title="<?php echo $params['btn_add']['nome']; ?>" acao="">
-        <i class="icon-thumbs-down" alt="Dtivado"></i>
+        <i class="glyphicon-thumbs-down" alt="Dtivado"></i>
     </a>
 <?php }else if($params['Tipo']==='Status1'){ ?>
     <a href="<?php echo URL_PATH; ?><?php echo $params['btn_add']['url']; ?>" class="btn btn-success lajax explicar-titulo" title="<?php echo $params['btn_add']['nome']; ?>" acao="">
-        <i class="icon-thumbs-up" alt="Ativado"></i>
+        <i class="glyphicon-thumbs-up" alt="Ativado"></i>
     </a>
 <?php }else if($params['Tipo']==='Email'){ ?>
     <a href="<?php echo URL_PATH; ?><?php echo $params['btn_add']['url']; ?>" class="btn btn-primary lajax explicar-titulo" title="<?php echo $params['btn_add']['nome']; ?>" acao="">
-        <i class="icon-envelope"></i>
+        <i class="glyphicon-envelope"></i>
     </a>
 <?php }else if($params['Tipo']==='Baixar'){ ?>
     <a href="<?php echo URL_PATH; ?><?php echo $params['btn_add']['url']; ?>" class="btn btn-inverse explicar-titulo" target="_BLANK" title="<?php echo $params['btn_add']['nome']; ?>">
-        <i class="icon-download"></i>
+        <i class="glyphicon-download"></i>
     </a>
 <?php }else if($params['Tipo']==='Visualizar'){ ?>
     <a href="<?php echo URL_PATH; ?><?php echo $params['btn_add']['url']; ?>" class="btn btn-success lajax explicar-titulo" title="<?php echo $params['btn_add']['nome']; ?>" acao="">
-        <i class="icon-eye-open"></i>
+        <i class="glyphicon-eye-open"></i>
     </a>
 <?php }else if($params['Tipo']==='Zoom'){ ?>
     <a href="<?php echo URL_PATH; ?><?php echo $params['btn_add']['url']; ?>" class="btn btn-info lajax explicar-titulo" title="<?php echo $params['btn_add']['nome']; ?>" acao="">
-        <i class="icon-zoom-in"></i>
+        <i class="glyphicon-zoom-in"></i>
     </a>
 <?php }else if($params['Tipo']==='Editar'){ ?>
     <a href="<?php echo URL_PATH; ?><?php echo $params['btn_add']['url']; ?>" class="btn btn-warning lajax explicar-titulo" confirma="Deseja Realmente Editar?" title="<?php echo $params['btn_add']['nome']; ?>" acao="">
-        <i class="icon-pencil"></i>
+        <i class="glyphicon-pencil"></i>
     </a>
 <?php }else if($params['Tipo']==='Deletar'){ ?>
     <a href="<?php echo URL_PATH; ?><?php echo $params['btn_add']['url']; ?>" class="btn btn-danger lajax explicar-titulo" confirma="<?php echo $params['btn_add']['onclick']; ?>" title="<?php echo $params['btn_add']['nome']; ?>" acao="">
-        <i class="icon-trash "></i>
+        <i class="glyphicon-trash "></i>
     </a>
 <?php } ?>

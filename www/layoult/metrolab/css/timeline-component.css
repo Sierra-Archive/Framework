@@ -236,19 +236,19 @@
     margin: 0 0 0 -25px;
 }
 
-.metro_tmicon-phone:before {
+.metro_tmglyphicon-phone:before {
     content: "\e000";
 }
 
-.metro_tmicon-screen:before {
+.metro_tmglyphicon-screen:before {
     content: "\e001";
 }
 
-.metro_tmicon-mail:before {
+.metro_tmglyphicon-mail:before {
     content: "\e002";
 }
 
-.metro_tmicon-earth:before {
+.metro_tmglyphicon-earth:before {
     content: "\e003";
 }
 

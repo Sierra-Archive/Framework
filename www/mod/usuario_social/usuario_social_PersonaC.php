@@ -251,12 +251,12 @@ class usuario_social_PersonaControle extends usuario_social_Controle
         );
         $persona = $this->_Modelo->db->Sql_Select('Usuario_Social',$where, 1);
         self::Endereco_Persona_Ver($persona,false);
-        $html  = '<div class="span6">'; 
+        $html  = '<div class="col-6">'; 
         $html .= '<b>Nome:</b> '.$persona->nome.'<br>';  
         $html .= '<b>Sexo:</b> '.$persona->sexo; 
         $html .= '</div>';    
         $titulo = 'Informações da Persona (#'.$persona_id.')';
-        $this->_Visual->Blocar('<div class="row-fluid">'.$html.'</div>');
+        $this->_Visual->Blocar('<div class="row">'.$html.'</div>');
         $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',20);
         
         //Comentarios, Ficou e Acoes
@@ -611,7 +611,7 @@ class usuario_social_PersonaControle extends usuario_social_Controle
         );
         self::Endereco_Persona_Ver_Ficar_Ver($ficada_id,$persona_id);
         $ficada = $this->_Modelo->db->Sql_Select('Usuario_Social_Ficou',$where, 1);
-        $html  = '<div class="span12">';  
+        $html  = '<div class="col-12">';  
         $html .= '<b>Nome 1:</b> '.$ficada->persona12.'<br>';  
         $html .= '<b>Nome 2:</b> '.$ficada->persona22.'<br>';  
         $html .= '<b>Observação:</b> '.$ficada->obs; 
@@ -627,7 +627,7 @@ class usuario_social_PersonaControle extends usuario_social_Controle
             $titulo = 'Informações da Ficada de '.$persona->nome.' (#'.$ficada_id.')';
             $this->Ficou_Comentario($ficada_id,$persona_id);
         }
-        $this->_Visual->Blocar('<div class="row-fluid">'.$html.'</div>');
+        $this->_Visual->Blocar('<div class="row">'.$html.'</div>');
         $this->_Visual->Bloco_Maior_CriaJanela($titulo,'',20);
         $this->_Visual->Json_Info_Update('Titulo',$titulo);
     }

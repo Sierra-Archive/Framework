@@ -570,7 +570,7 @@ var Sierra = (function () {
         Visual_Layoult_UniForm();
         // Atualiza TabIndex
         var tabindex = 1;
-        $('.control-group').find('input,select,textarea,a.chosen-single').each(function() {
+        $('.form-group').find('input,select,textarea,a.chosen-single').each(function() {
             if (this.type != "hidden" && $( this ).attr("escondendo")!=='ativado' && $( this ).css("display")!=='none') {
                 var $input = $(this);
                 $( this ).attr("tabindex", tabindex);
@@ -637,7 +637,7 @@ var Sierra = (function () {
             }
         }
         popup.children(".modal-header").children("#popuptitulo").html(json['title']);
-        popup.children(".modal-body").html('<div class="row-fluid">'+json['html']+'</div>');
+        popup.children(".modal-body").html('<div class="row">'+json['html']+'</div>');
         popup.children(".modal-footer").html(footer);
         popup.css('display','block').addClass('in');
     };

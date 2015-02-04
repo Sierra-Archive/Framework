@@ -194,7 +194,7 @@ html .fc,
   
 /* icon (for jquery ui) */
   
-.fc-button-content .fc-icon-wrap {
+.fc-button-content .fc-glyphicon-wrap {
   position: relative;
   float: left;
   top: 50%;

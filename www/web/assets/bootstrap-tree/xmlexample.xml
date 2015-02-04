@@ -9,7 +9,7 @@
     <value>number_8</value>
     <children>
       <node>
-        <text><![CDATA[<i class="icon-shopping-cart"></i> Purchase Metro lab Today]]></text>
+        <text><![CDATA[<i class="glyphicon-shopping-cart"></i> Purchase Metro lab Today]]></text>
         <id>root/number_8/wow</id>
         <href>#</href>
         <leaf>1</leaf>
@@ -26,7 +26,7 @@
     <value>number_9</value>
     <children>
       <node>
-        <text><![CDATA[<i class="icon-shopping-cart"></i> Purchase admin lab Today]]></text>
+        <text><![CDATA[<i class="glyphicon-shopping-cart"></i> Purchase admin lab Today]]></text>
         <id>root/number_9/admin lab</id>
         <href>#</href>
         <leaf>1</leaf>

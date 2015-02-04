@@ -9,9 +9,9 @@
         <div class="body-con"<?php echo $params['div_ext']; ?>><?php echo $params['conteudo']; ?></div>
     <?php } ?>
 <?php }else{ ?>
-    <div class="row-fluid">
+    <div class="row">
     <?php foreach($params['tamanho'] as $indice=>$span){ ?>
-        <div class="span<?php echo $span; ?>">
+        <div class="col-<?php echo $span; ?>">
               <?php echo $params['conteudo'][$indice];  ?>
         </div>
     <?php } ?>

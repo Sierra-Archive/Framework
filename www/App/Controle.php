@@ -343,7 +343,7 @@ readfile($link);*/
     }
     private static function Export_Imprimir(&$conteudo,$arquivo_nome='Relatorio'){
         // Começa HTML
-        $html = '<html><head><title>'.$arquivo_nome.'</title><script type=\'text/javascript\' src=\''.WEB_URL.'sistema/jquery/jquery-1.8.3.min.js\'></script><style> '
+        $html = '<html><head><title>'.$arquivo_nome.'</title><script type=\'text/javascript\' src=\''.WEB_URL.'sistema/jquery/jquery.min.js\'></script><style> '
                 . 'body {'
                     . 'font-size: 12px;'
                 . '}'
@@ -2188,7 +2188,7 @@ readfile($link);*/
                 if($valor[1]!==false){
                     $endereco_html .= '<li>'.
                     '<a class="lajax" href="'.URL_PATH.$valor[1].'" acao="">'.$valor[0].'</a>'.
-                    '<span class="divider">/</span>'.
+                    ''.
                     '</li>';
                 }else{
                     $endereco_html .= '<li class="active">'.

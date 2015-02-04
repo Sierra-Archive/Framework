@@ -41,8 +41,8 @@
 .elfinder-dialog .elfinder-dialog-resize .ui-resizable-e{height:100%;width:10px}
 .elfinder-dialog .elfinder-dialog-resize .ui-resizable-s{width:100%;height:10px}
 .elfinder-dialog .elfinder-dialog-resize .ui-resizable-se{background:0 0;bottom:0;right:0;margin-right:-7px;margin-bottom:-7px}
-.elfinder-dialog-resize .ui-icon-grip-solid-vertical{position:absolute;top:50%;right:0;margin-top:-8px;margin-right:-11px}
-.elfinder-dialog-resize .ui-icon-grip-solid-horizontal{position:absolute;left:50%;bottom:0;margin-left:-8px;margin-bottom:-11px}
+.elfinder-dialog-resize .ui-glyphicon-grip-solid-vertical{position:absolute;top:50%;right:0;margin-top:-8px;margin-right:-11px}
+.elfinder-dialog-resize .ui-glyphicon-grip-solid-horizontal{position:absolute;left:50%;bottom:0;margin-left:-8px;margin-bottom:-11px}
 .elfinder-resize-row .elfinder-buttonset{float:right}
 .elfinder-resize-rotate-slider{float:left;width:195px;margin:7px 7px 0}
 .elfinder-file-edit{width:99%;height:99%;margin:0;padding:2px;border:1px solid #ccc}
@@ -73,8 +73,8 @@
 .elfinder-ro .elfinder-perms{background-position:0 -64px}
 .elfinder-wo .elfinder-perms{background-position:0 -80px}
 .elfinder-drag-helper{width:60px;height:50px;padding:0 0 0 25px;z-index:100000}
-.elfinder-drag-helper-icon-plus{position:absolute;width:16px;height:16px;left:43px;top:55px;background:url('../img/elfinder/toolbar.png') 0 -544px no-repeat;display:none}
-.elfinder-drag-helper-plus .elfinder-drag-helper-icon-plus{display:block}
+.elfinder-drag-helper-glyphicon-plus{position:absolute;width:16px;height:16px;left:43px;top:55px;background:url('../img/elfinder/toolbar.png') 0 -544px no-repeat;display:none}
+.elfinder-drag-helper-plus .elfinder-drag-helper-glyphicon-plus{display:block}
 .elfinder-drag-num{position:absolute;top:0;left:0;width:16px;height:14px;text-align:center;padding-top:2px;font-size:12px;font-weight:700;color:#fff;background-color:red;-moz-border-radius:8px;-webkit-border-radius:8px;border-radius:8px}
 .elfinder-drag-helper .elfinder-cwd-icon{margin:0 0 0 -24px;float:left}
 .elfinder-overlay{opacity:0;filter:Alpha(Opacity=0)}
@@ -111,31 +111,31 @@
 .elfinder-cwd-view-icons .elfinder-symlink{bottom:6px;left:0}
 .elfinder-cwd-icon{display:block;width:48px;height:48px;margin:2px auto;background:url('../img/elfinder/icons-big.png') 0 0 no-repeat;-moz-background-clip:padding;-webkit-background-clip:padding-box;background-clip:padding-box}
 .elfinder-cwd .elfinder-droppable-active .elfinder-cwd-icon{background-position:0 -100px}
-.elfinder-cwd-icon-directory{background-position:0 -50px}
-.elfinder-cwd-icon-application{background-position:0 -150px}
-.elfinder-cwd-icon-x-empty,.elfinder-cwd-icon-text{background-position:0 -200px}
-.elfinder-cwd-icon-image,.elfinder-cwd-icon-vnd-adobe-photoshop,.elfinder-cwd-icon-postscript{background-position:0 -250px}
-.elfinder-cwd-icon-audio{background-position:0 -300px}
-.elfinder-cwd-icon-video,.elfinder-cwd-icon-flash-video{background-position:0 -350px}
-.elfinder-cwd-icon-rtf,.elfinder-cwd-icon-rtfd{background-position:0 -401px}
-.elfinder-cwd-icon-pdf{background-position:0 -450px}
-.elfinder-cwd-icon-vnd-ms-office,.elfinder-cwd-icon-msword,.elfinder-cwd-icon-vnd-ms-word,.elfinder-cwd-icon-vnd-oasis-opendocument-text,.elfinder-cwd-icon-ms-excel,.elfinder-cwd-icon-vnd-ms-excel,.elfinder-cwd-icon-vnd-oasis-opendocument-spreadsheet,.elfinder-cwd-icon-vnd-ms-powerpoint,.elfinder-cwd-icon-vnd-oasis-opendocument-presentation{background-position:0 -500px}
-.elfinder-cwd-icon-html{background-position:0 -550px}
-.elfinder-cwd-icon-css{background-position:0 -600px}
-.elfinder-cwd-icon-javascript,.elfinder-cwd-icon-x-javascript{background-position:0 -650px}
-.elfinder-cwd-icon-x-perl{background-position:0 -700px}
-.elfinder-cwd-icon-x-python{background-position:0 -750px}
-.elfinder-cwd-icon-x-ruby{background-position:0 -800px}
-.elfinder-cwd-icon-x-sh,.elfinder-cwd-icon-x-shellscript{background-position:0 -850px}
-.elfinder-cwd-icon-x-c,.elfinder-cwd-icon-x-csrc,.elfinder-cwd-icon-x-chdr,.elfinder-cwd-icon-x-c--,.elfinder-cwd-icon-x-c--src,.elfinder-cwd-icon-x-c--hdr,.elfinder-cwd-icon-x-java,.elfinder-cwd-icon-x-java-source{background-position:0 -900px}
-.elfinder-cwd-icon-x-php{background-position:0 -950px}
-.elfinder-cwd-icon-xml{background-position:0 -1000px}
-.elfinder-cwd-icon-zip,.elfinder-cwd-icon-x-zip,.elfinder-cwd-icon-x-7z-compressed{background-position:0 -1050px}
-.elfinder-cwd-icon-x-gzip,.elfinder-cwd-icon-x-tar{background-position:0 -1100px}
-.elfinder-cwd-icon-x-bzip,.elfinder-cwd-icon-x-bzip2{background-position:0 -1150px}
-.elfinder-cwd-icon-x-rar,.elfinder-cwd-icon-x-rar-compressed{background-position:0 -1200px}
-.elfinder-cwd-icon-x-shockwave-flash{background-position:0 -1250px}
-.elfinder-cwd-icon-group{background-position:0 -1300px}
+.elfinder-cwd-glyphicon-directory{background-position:0 -50px}
+.elfinder-cwd-glyphicon-application{background-position:0 -150px}
+.elfinder-cwd-glyphicon-x-empty,.elfinder-cwd-glyphicon-text{background-position:0 -200px}
+.elfinder-cwd-glyphicon-image,.elfinder-cwd-glyphicon-vnd-adobe-photoshop,.elfinder-cwd-glyphicon-postscript{background-position:0 -250px}
+.elfinder-cwd-glyphicon-audio{background-position:0 -300px}
+.elfinder-cwd-glyphicon-video,.elfinder-cwd-glyphicon-flash-video{background-position:0 -350px}
+.elfinder-cwd-glyphicon-rtf,.elfinder-cwd-glyphicon-rtfd{background-position:0 -401px}
+.elfinder-cwd-glyphicon-pdf{background-position:0 -450px}
+.elfinder-cwd-glyphicon-vnd-ms-office,.elfinder-cwd-glyphicon-msword,.elfinder-cwd-glyphicon-vnd-ms-word,.elfinder-cwd-glyphicon-vnd-oasis-opendocument-text,.elfinder-cwd-glyphicon-ms-excel,.elfinder-cwd-glyphicon-vnd-ms-excel,.elfinder-cwd-glyphicon-vnd-oasis-opendocument-spreadsheet,.elfinder-cwd-glyphicon-vnd-ms-powerpoint,.elfinder-cwd-glyphicon-vnd-oasis-opendocument-presentation{background-position:0 -500px}
+.elfinder-cwd-glyphicon-html{background-position:0 -550px}
+.elfinder-cwd-glyphicon-css{background-position:0 -600px}
+.elfinder-cwd-glyphicon-javascript,.elfinder-cwd-glyphicon-x-javascript{background-position:0 -650px}
+.elfinder-cwd-glyphicon-x-perl{background-position:0 -700px}
+.elfinder-cwd-glyphicon-x-python{background-position:0 -750px}
+.elfinder-cwd-glyphicon-x-ruby{background-position:0 -800px}
+.elfinder-cwd-glyphicon-x-sh,.elfinder-cwd-glyphicon-x-shellscript{background-position:0 -850px}
+.elfinder-cwd-glyphicon-x-c,.elfinder-cwd-glyphicon-x-csrc,.elfinder-cwd-glyphicon-x-chdr,.elfinder-cwd-glyphicon-x-c--,.elfinder-cwd-glyphicon-x-c--src,.elfinder-cwd-glyphicon-x-c--hdr,.elfinder-cwd-glyphicon-x-java,.elfinder-cwd-glyphicon-x-java-source{background-position:0 -900px}
+.elfinder-cwd-glyphicon-x-php{background-position:0 -950px}
+.elfinder-cwd-glyphicon-xml{background-position:0 -1000px}
+.elfinder-cwd-glyphicon-zip,.elfinder-cwd-glyphicon-x-zip,.elfinder-cwd-glyphicon-x-7z-compressed{background-position:0 -1050px}
+.elfinder-cwd-glyphicon-x-gzip,.elfinder-cwd-glyphicon-x-tar{background-position:0 -1100px}
+.elfinder-cwd-glyphicon-x-bzip,.elfinder-cwd-glyphicon-x-bzip2{background-position:0 -1150px}
+.elfinder-cwd-glyphicon-x-rar,.elfinder-cwd-glyphicon-x-rar-compressed{background-position:0 -1200px}
+.elfinder-cwd-glyphicon-x-shockwave-flash{background-position:0 -1250px}
+.elfinder-cwd-glyphicon-group{background-position:0 -1300px}
 .elfinder-cwd input{width:100%;border:0 solid;margin:0;padding:0}
 .elfinder-cwd-view-icons input,.elfinder-cwd-view-icons{text-align:center}
 .elfinder-cwd table{width:100%;border-collapse:collapse;border:0 solid;margin:0 0 10px}
@@ -178,17 +178,17 @@
 .elfinder-notify-progressbar{width:180px;height:8px;border:1px solid #aaa;background:#f5f5f5;margin:5px auto;overflow:hidden}
 .elfinder-notify-progress{width:100%;height:8px;background:url(../img/progress.gif) center center repeat-x}
 .elfinder-notify-progressbar,.elfinder-notify-progress{-moz-border-radius:2px;-webkit-border-radius:2px;border-radius:2px}
-.elfinder-dialog-icon-open,.elfinder-dialog-icon-file,.elfinder-dialog-icon-reload{background-position:0 -225px}
-.elfinder-dialog-icon-mkdir{background-position:0 -64px}
-.elfinder-dialog-icon-mkfile{background-position:0 -96px}
-.elfinder-dialog-icon-copy,.elfinder-dialog-icon-prepare,.elfinder-dialog-icon-move{background-position:0 -128px}
-.elfinder-dialog-icon-upload{background-position:0 -160px}
-.elfinder-dialog-icon-rm{background-position:0 -192px}
-.elfinder-dialog-icon-download{background-position:0 -260px}
-.elfinder-dialog-icon-save{background-position:0 -295px}
-.elfinder-dialog-icon-rename{background-position:0 -330px}
-.elfinder-dialog-icon-archive,.elfinder-dialog-icon-extract{background-position:0 -365px}
-.elfinder-dialog-icon-search{background-position:0 -402px}
+.elfinder-dialog-glyphicon-open,.elfinder-dialog-glyphicon-file,.elfinder-dialog-glyphicon-reload{background-position:0 -225px}
+.elfinder-dialog-glyphicon-mkdir{background-position:0 -64px}
+.elfinder-dialog-glyphicon-mkfile{background-position:0 -96px}
+.elfinder-dialog-glyphicon-copy,.elfinder-dialog-glyphicon-prepare,.elfinder-dialog-glyphicon-move{background-position:0 -128px}
+.elfinder-dialog-glyphicon-upload{background-position:0 -160px}
+.elfinder-dialog-glyphicon-rm{background-position:0 -192px}
+.elfinder-dialog-glyphicon-download{background-position:0 -260px}
+.elfinder-dialog-glyphicon-save{background-position:0 -295px}
+.elfinder-dialog-glyphicon-rename{background-position:0 -330px}
+.elfinder-dialog-glyphicon-archive,.elfinder-dialog-glyphicon-extract{background-position:0 -365px}
+.elfinder-dialog-glyphicon-search{background-position:0 -402px}
 .elfinder-dialog-confirm-applyall{padding-top:3px}
 .elfinder-dialog-confirm .elfinder-dialog-icon{background-position:0 -32px}
 .elfinder-info-title .elfinder-cwd-icon{float:left;width:48px;height:48px;margin-right:1em}
@@ -265,13 +265,13 @@
 .elfinder-quicklook-preview img{display:block;margin:0 auto}
 .elfinder-quicklook-navbar{position:absolute;left:50%;bottom:4px;width:140px;height:32px;padding:0;margin-left:-70px;border:1px solid transparent;border-radius:19px;-moz-border-radius:19px;-webkit-border-radius:19px}
 .elfinder-quicklook-fullscreen .elfinder-quicklook-navbar{width:188px;margin-left:-94px;padding:5px;border:1px solid #eee;background:#000}
-.elfinder-quicklook-fullscreen .elfinder-quicklook-navbar-icon-close,.elfinder-quicklook-fullscreen .elfinder-quicklook-navbar-separator{display:inline}
+.elfinder-quicklook-fullscreen .elfinder-quicklook-navbar-glyphicon-close,.elfinder-quicklook-fullscreen .elfinder-quicklook-navbar-separator{display:inline}
 .elfinder-quicklook-navbar-icon{width:32px;height:32px;margin:0 7px;float:left;background:url("../img/elfinder/quicklook-icons.png") 0 0 no-repeat}
-.elfinder-quicklook-navbar-icon-fullscreen{background-position:0 -64px}
-.elfinder-quicklook-navbar-icon-fullscreen-off{background-position:0 -96px}
-.elfinder-quicklook-navbar-icon-prev{background-position:0 0}
-.elfinder-quicklook-navbar-icon-next{background-position:0 -32px}
-.elfinder-quicklook-navbar-icon-close{background-position:0 -128px;display:none}
+.elfinder-quicklook-navbar-glyphicon-fullscreen{background-position:0 -64px}
+.elfinder-quicklook-navbar-glyphicon-fullscreen-off{background-position:0 -96px}
+.elfinder-quicklook-navbar-glyphicon-prev{background-position:0 0}
+.elfinder-quicklook-navbar-glyphicon-next{background-position:0 -32px}
+.elfinder-quicklook-navbar-glyphicon-close{background-position:0 -128px;display:none}
 .elfinder-quicklook-navbar-separator{width:1px;height:32px;float:left;border-left:1px solid #fff;display:none}
 .elfinder-quicklook-preview-text-wrapper{width:100%;height:100%;background:#fff;color:#222;font-size:.9em;overflow:auto}
 pre.elfinder-quicklook-preview-text{margin:0;padding:3px 9px}
@@ -294,42 +294,42 @@ embed.elfinder-quicklook-preview-audio{height:30px;background:0 0}
 .elfinder-toolbar .ui-widget-content { box-shadow: none; }
 .elfinder-buttonset{margin:1px 4px;float:left;background:0 0;padding:0;}
 .elfinder .elfinder-button{width:16px;height:16px;margin:0;padding:4px;float:left;overflow:hidden;position:relative;border:0 solid}
-.elfinder .ui-icon-search{cursor:pointer}
+.elfinder .ui-glyphicon-search{cursor:pointer}
 .elfinder-toolbar-button-separator{float:left;padding:0;height:24px;border-top:0 solid;border-right:0 solid;border-bottom:0 solid;width:0}
 .elfinder .elfinder-button.ui-state-disabled{opacity:1;filter:Alpha(Opacity=100)}
 .elfinder .elfinder-button.ui-state-disabled .elfinder-button-icon{opacity:.4;filter:Alpha(Opacity=40)}
 .elfinder-rtl .elfinder-buttonset{float:right}
 .elfinder-button-icon{width:16px;height:16px;display:block;background:url('../img/elfinder/toolbar.png') no-repeat}
-.elfinder-button-icon-home{background-position:0 0}
-.elfinder-button-icon-back{background-position:0 -112px}
-.elfinder-button-icon-forward{background-position:0 -128px}
-.elfinder-button-icon-up{background-position:0 -144px}
-.elfinder-button-icon-reload{background-position:0 -160px}
-.elfinder-button-icon-open{background-position:0 -176px}
-.elfinder-button-icon-mkdir{background-position:0 -192px}
-.elfinder-button-icon-mkfile{background-position:0 -208px}
-.elfinder-button-icon-rm{background-position:0 -224px}
-.elfinder-button-icon-copy{background-position:0 -240px}
-.elfinder-button-icon-cut{background-position:0 -256px}
-.elfinder-button-icon-paste{background-position:0 -272px}
-.elfinder-button-icon-getfile{background-position:0 -288px}
-.elfinder-button-icon-duplicate{background-position:0 -304px}
-.elfinder-button-icon-rename{background-position:0 -320px}
-.elfinder-button-icon-edit{background-position:0 -336px}
-.elfinder-button-icon-quicklook{background-position:0 -352px}
-.elfinder-button-icon-upload{background-position:0 -368px}
-.elfinder-button-icon-download{background-position:0 -384px}
-.elfinder-button-icon-info{background-position:0 -400px}
-.elfinder-button-icon-extract{background-position:0 -416px}
-.elfinder-button-icon-archive{background-position:0 -432px}
-.elfinder-button-icon-view{background-position:0 -448px}
-.elfinder-button-icon-view-list{background-position:0 -464px}
-.elfinder-button-icon-help{background-position:0 -480px}
-.elfinder-button-icon-resize{background-position:0 -512px}
-.elfinder-button-icon-search{background-position:0 -561px}
-.elfinder-button-icon-sort{background-position:0 -577px}
-.elfinder-button-icon-rotate-r{background-position:0 -625px}
-.elfinder-button-icon-rotate-l{background-position:0 -641px}
+.elfinder-button-glyphicon-home{background-position:0 0}
+.elfinder-button-glyphicon-back{background-position:0 -112px}
+.elfinder-button-glyphicon-forward{background-position:0 -128px}
+.elfinder-button-glyphicon-up{background-position:0 -144px}
+.elfinder-button-glyphicon-reload{background-position:0 -160px}
+.elfinder-button-glyphicon-open{background-position:0 -176px}
+.elfinder-button-glyphicon-mkdir{background-position:0 -192px}
+.elfinder-button-glyphicon-mkfile{background-position:0 -208px}
+.elfinder-button-glyphicon-rm{background-position:0 -224px}
+.elfinder-button-glyphicon-copy{background-position:0 -240px}
+.elfinder-button-glyphicon-cut{background-position:0 -256px}
+.elfinder-button-glyphicon-paste{background-position:0 -272px}
+.elfinder-button-glyphicon-getfile{background-position:0 -288px}
+.elfinder-button-glyphicon-duplicate{background-position:0 -304px}
+.elfinder-button-glyphicon-rename{background-position:0 -320px}
+.elfinder-button-glyphicon-edit{background-position:0 -336px}
+.elfinder-button-glyphicon-quicklook{background-position:0 -352px}
+.elfinder-button-glyphicon-upload{background-position:0 -368px}
+.elfinder-button-glyphicon-download{background-position:0 -384px}
+.elfinder-button-glyphicon-info{background-position:0 -400px}
+.elfinder-button-glyphicon-extract{background-position:0 -416px}
+.elfinder-button-glyphicon-archive{background-position:0 -432px}
+.elfinder-button-glyphicon-view{background-position:0 -448px}
+.elfinder-button-glyphicon-view-list{background-position:0 -464px}
+.elfinder-button-glyphicon-help{background-position:0 -480px}
+.elfinder-button-glyphicon-resize{background-position:0 -512px}
+.elfinder-button-glyphicon-search{background-position:0 -561px}
+.elfinder-button-glyphicon-sort{background-position:0 -577px}
+.elfinder-button-glyphicon-rotate-r{background-position:0 -625px}
+.elfinder-button-glyphicon-rotate-l{background-position:0 -641px}
 .elfinder .elfinder-menubutton{overflow:visible}
 .elfinder-button-menu{position:absolute;left:0;top:29px;padding:3px 0; background: #FAFAFA; border: 1px solid #DDD;}
 .elfinder-button-menu-item{white-space:nowrap;font-size:.72em;cursor:default;padding:5px 19px;position:relative}
@@ -345,9 +345,9 @@ embed.elfinder-quicklook-preview-audio{height:30px;background:0 0}
 .elfinder-button-search input{ width:160px; height: 26px; font-family: Arial; padding: 5px 8px;font-size: 11px; border:1px solid #d5d5d5;outline:0 solid; box-sizing: border-box; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; }
 .elfinder-rtl .elfinder-button-search input{direction:rtl}
 .elfinder-button-search .ui-icon{position:absolute;height:18px;top:50%;margin:-8px 4px 0;opacity:.3;filter:Alpha(Opacity=30)}
-.elfinder-ltr .elfinder-button-search .ui-icon-search{left:0}
-.elfinder-rtl .elfinder-button-search .ui-icon-search,.elfinder-ltr .elfinder-button-search .ui-icon-close{right:0}
-.elfinder-rtl .elfinder-button-search .ui-icon-close{left:0}
+.elfinder-ltr .elfinder-button-search .ui-glyphicon-search{left:0}
+.elfinder-rtl .elfinder-button-search .ui-glyphicon-search,.elfinder-ltr .elfinder-button-search .ui-glyphicon-close{right:0}
+.elfinder-rtl .elfinder-button-search .ui-glyphicon-close{left:0}
 
 
 /* navbar */

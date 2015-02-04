@@ -31,7 +31,7 @@ class usuario_Principal implements PrincipalInterface
             $_Controle->Widget_Add('Superior',
             '<li class="dropdown mtop5">'.
                 '<a class="dropdown-toggle element lajax" acao="" data-placement="bottom" data-toggle="tooltip" href="'.URL_PATH.'usuario/Admin/Usuarios_Add/cliente" data-original-title="Novo Cliente">'.
-                    '<i class="icon-user"></i>'.
+                    '<i class="glyphicon-user"></i>'.
                 '</a>'.
             '</li>');
         }

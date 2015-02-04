@@ -27,7 +27,7 @@ class Evento_Principal implements PrincipalInterface
         $_Controle->Widget_Add('Superior',
         '<li class="dropdown mtop5">'.
             '<a class="dropdown-toggle element lajax" acao="" data-placement="bottom" data-toggle="tooltip" href="'.URL_PATH.'Evento/Evento/Eventos_Add" data-original-title="Novo Evento">'.
-                '<i class="icon-building"></i>'.
+                '<i class="glyphicon-building"></i>'.
             '</a>'.
         '</li>');
         return true;

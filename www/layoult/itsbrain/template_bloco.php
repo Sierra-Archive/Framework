@@ -10,7 +10,7 @@
 <?php }else{ ?>
     <div class="fluid">
     <?php foreach($params['tamanho'] as $indice=>$span){ ?>
-        <div class="span<?php echo $span; ?>">
+        <div class="col-<?php echo $span; ?>">
               <?php echo $params['conteudo'][$indice];  ?>
         </div>
     <?php } ?>

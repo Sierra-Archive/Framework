@@ -23,17 +23,17 @@ function Control_Atualizacao(){
 // widget tools
 function Control_Layoult_Botoes()
 {
-    jQuery('.widget .tools .icon-chevron-down, .widget .tools .icon-chevron-up').click(function () {
+    jQuery('.widget .tools .glyphicon-chevron-down, .widget .tools .glyphicon-chevron-up').click(function () {
         var el = jQuery(this).parents(".widget").children(".widget-body");
-        if (jQuery(this).hasClass("icon-chevron-down")) {
-            jQuery(this).removeClass("icon-chevron-down").addClass("icon-chevron-up");
+        if (jQuery(this).hasClass("glyphicon-chevron-down")) {
+            jQuery(this).removeClass("glyphicon-chevron-down").addClass("glyphicon-chevron-up");
             el.slideUp(200);
         } else {
-            jQuery(this).removeClass("icon-chevron-up").addClass("icon-chevron-down");
+            jQuery(this).removeClass("glyphicon-chevron-up").addClass("glyphicon-chevron-down");
             el.slideDown(200);
         }
     });
-    jQuery('.widget .tools .icon-remove').click(function () {
+    jQuery('.widget .tools .glyphicon-remove').click(function () {
         jQuery(this).parents(".widget").parent().remove();
     });
 }

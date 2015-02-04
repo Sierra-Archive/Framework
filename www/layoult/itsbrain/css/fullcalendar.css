@@ -44,7 +44,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f8f8f8', end
 .fc-header-right  .fc-button-content { height: 38px; }
 	
 /* icon (for jquery ui) */
-.fc-button-content .fc-icon-wrap { position: relative; float: left; top: 50%; }	
+.fc-button-content .fc-glyphicon-wrap { position: relative; float: left; top: 50%; }	
 .fc-button-content .ui-icon { position: relative; float: left; margin-top: -50%; *margin-top: 0; *top: -50%; }
 	
 /* gloss effect */	

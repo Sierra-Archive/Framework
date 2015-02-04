@@ -2,10 +2,10 @@
 function config_template(){
     return Array(
         'Buscar'           => '<li class="pull-right search-wrap">
-                <form class="hidden-phone formajax"  id="form_Sistema_Busca" action="'.URL_PATH.'_Sistema/Principal/Busca">
+                <form class="hidden-xs formajax"  id="form_Sistema_Busca" action="'.URL_PATH.'_Sistema/Principal/Busca">
                     <div class="input-append search-input-area">
                         <input type="text" id="busca" class="">
-                        <button type="button" class="btn"><i class="icon-search"></i> </button>
+                        <button type="button" class="btn"><i class="glyphicon-search"></i> </button>
                     </div>
                 </form>
             </li>',
@@ -27,12 +27,12 @@ function config_template(){
                 $("#windows_tab_'.$id.'").addClass("active")';
             },
         ),
-        'camada_maior'      => '#blocomaior', //'.container-fluid > .row-fluid > .span8',
-        'camada_menor'      => '#blocomenor', //'.container-fluid > .row-fluid > .span4',
-        'camada_unica'      => '#blocounico', //'.container-fluid > .row-fluid > .span12'
+        'camada_maior'      => '#blocomaior', //'.container > .row > .col-8',
+        'camada_menor'      => '#blocomenor', //'.container > .row > .col-4',
+        'camada_unica'      => '#blocounico', //'.container > .row > .col-12'
         //'TEMA_JS_UNIFORM'   => 'NAO',
         'javascript'        => Array(
-            'datatable_sdom'            => "<'row-fluid'<'span6'l><'span6'f>r>t<'row-fluid'<'span6'i><'span6'p>>",
+            'datatable_sdom'            => "<'row'<'col-6'l><'col-6'f>r>t<'row'<'col-6'i><'col-6'p>>",
             'datatable_sPaginationType' => 'bootstrap',
             'datatable_bJQueryUI'       => false,
             'datatable_bAutoWidth'      => true,

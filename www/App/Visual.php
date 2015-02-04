@@ -648,11 +648,12 @@ class Visual
         $array_js = Array(
             // Linguagem
             'lang/'.$this->sistema_linguagem.'/Linguagem',
-            
             // Identifica Oq cada Broser Suporta
             'sistema/modernizr/modernizr',
             // Jquery
-            'sistema/jquery/jquery-1.8.3.min',
+            'sistema/jquery/jquery.min',
+            // Detecta BRowser para Jquery
+            'sistema/jquery.browser',
             // Historico HTML5
             'sistema/historico/jquery.history',
             // Carregamento igual Google
@@ -745,7 +746,7 @@ class Visual
             '<div class="modal-footer"></div>'.
         '</div>'.
         //'<div id="dialog-confirm" title="Deletar Proposta?">'.
-        //'<p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>Essa ação não pode ser revertida. Você esta certo disso?</p>'.
+        //'<p><span class="ui-icon ui-glyphicon-alert" style="float:left; margin:0 7px 20px 0;"></span>Essa ação não pode ser revertida. Você esta certo disso?</p>'.
         //'</div>'.
         // Arquivo JS
         $this->Arquivos_Js_Get().

@@ -11498,8 +11498,8 @@
 		"sPagePrevDisabled": "fg-button ui-button ui-state-default ui-corner-left ui-state-disabled",
 		"sPageNextEnabled": "fg-button ui-button ui-state-default ui-corner-right",
 		"sPageNextDisabled": "fg-button ui-button ui-state-default ui-corner-right ui-state-disabled",
-		"sPageJUINext": "ui-icon ui-icon-circle-arrow-e",
-		"sPageJUIPrev": "ui-icon ui-icon-circle-arrow-w",
+		"sPageJUINext": "ui-icon ui-glyphicon-circle-arrow-e",
+		"sPageJUIPrev": "ui-icon ui-glyphicon-circle-arrow-w",
 		
 		/* Full numbers paging buttons */
 		"sPageButton": "fg-button ui-button ui-state-default",
@@ -11519,11 +11519,11 @@
 		"sSortableAsc": "ui-state-default",
 		"sSortableDesc": "ui-state-default",
 		"sSortableNone": "ui-state-default",
-		"sSortJUIAsc": "css_right ui-icon ui-icon-triangle-1-n",
-		"sSortJUIDesc": "css_right ui-icon ui-icon-triangle-1-s",
-		"sSortJUI": "css_right ui-icon ui-icon-carat-2-n-s",
-		"sSortJUIAscAllowed": "css_right ui-icon ui-icon-carat-1-n",
-		"sSortJUIDescAllowed": "css_right ui-icon ui-icon-carat-1-s",
+		"sSortJUIAsc": "css_right ui-icon ui-glyphicon-triangle-1-n",
+		"sSortJUIDesc": "css_right ui-icon ui-glyphicon-triangle-1-s",
+		"sSortJUI": "css_right ui-icon ui-glyphicon-carat-2-n-s",
+		"sSortJUIAscAllowed": "css_right ui-icon ui-glyphicon-carat-1-n",
+		"sSortJUIDescAllowed": "css_right ui-icon ui-glyphicon-carat-1-s",
 		"sSortJUIWrapper": "DataTables_sort_wrapper",
 		"sSortIcon": "DataTables_sort_icon",
 		

@@ -456,14 +456,14 @@ class projeto_ProjetoControle extends projeto_Controle
             'id'    =>  $projeto_id,
         );
         $projeto = $this->_Modelo->db->Sql_Select('Projeto',$where, 1);
-        $html  = '<div class="span6">';
+        $html  = '<div class="col-6">';
         $html .= '<b>Categoria:</b> '.$projeto->categoria2.'<br>';  
         $html .= '<b>Nome:</b> '.$projeto->nome.'<br>';  
         $html .= '<b>Observação:</b> '.$projeto->obs; 
         $html .= '</div>';    
         $titulo = 'Informações do Projeto (#'.$projeto_id.')';
         if($popup=='return'){
-            return Array($titulo,'<div class="row-fluid">'.$html.'</div>');
+            return Array($titulo,'<div class="row">'.$html.'</div>');
         }else if($popup===true){
             $conteudo = array(
                 'id' => 'popup',
@@ -479,7 +479,7 @@ class projeto_ProjetoControle extends projeto_Controle
             $this->_Visual->Json_IncluiTipo('Popup',$conteudo);
             $this->_Visual->Json_Info_Update('Titulo','Visualizar Projeto');
         }else{
-            $this->_Visual->Blocar('<div class="row-fluid">'.$html.'</div>');
+            $this->_Visual->Blocar('<div class="row">'.$html.'</div>');
             $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',20);
             $this->_Visual->Json_Info_Update('Titulo','Visualizar Projeto');
         }
