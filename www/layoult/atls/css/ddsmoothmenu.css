@@ -16,7 +16,7 @@
     position: relative;
     display: inline;
     float: left;
-    z-index: 9999 !important;
+    z-index: 120 !important;
 }
 
 /*Top level menu link items style*/

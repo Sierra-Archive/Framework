@@ -53,8 +53,8 @@
                         <!-- BEGIN USER LOGIN DROPDOWN -->
                         <?php echo $params['template']['usuario']; 
                      }?>
-                    <section class="header-bottom">
-                        <div class="search-block">
+                    <section class="header-bottom" style="clear:both;">
+                        <div class="search-block" style="float:left;">
                             <input type="text" value="" placeholder="Procurar" />
                             <input type="submit" value="" title="Search" />
                         </div>
@@ -82,14 +82,14 @@
         ?>
 
         <!--Banner Block-->
-        <section class="banner-wrapper">
+        <section class="banner-wrapper" id="blocounico"<?php if( $params['template']['Bloco_Unico']==''){ ?> style="display: none;"<?php } ?>>
             <?php echo $params['template']['Bloco_Unico']; ?>
         </section>
         <!--Content Block-->
 
         <section class="content-wrapper">
             <div class="content-container container">
-                <div class="col-main-left" id="blocounico"<?php if( $params['template']['Bloco_Unico']==''){ ?> style="display: none;"<?php } ?>>
+                <div class="col-main-left" id="blocomaior"<?php if( $params['template']['Bloco_Maior']==''){ ?> style="display: none;"<?php } ?>>
                     <?php echo $params['template']['Bloco_Maior']; ?>
                 </div>
                 <aside class="right-sidebar" id="blocomenor"<?php if( $params['template']['Bloco_Menor']==''){ ?> style="display: none;"<?php } ?>>

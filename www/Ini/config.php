@@ -190,6 +190,15 @@ if(!defined('MYSQL_SIS_LOG_PERFORMACE')){
     define('MYSQL_SIS_LOG_PERFORMACE'                   , 'Sistema_Log_Performace');
 }
 
+// CURSO
+
+if(!defined('MYSQL_CURSO')){
+    define('MYSQL_CURSO'                                , 'Curso');
+}
+if(!defined('MYSQL_CURSO_TURMA')){
+    define('MYSQL_CURSO_TURMA'                          , 'Curso_Turma');
+}
+
 //COMERCIO VENDAS
 if(  !defined('MYSQL_COMERCIO_VENDA_MESA')){
     define('MYSQL_COMERCIO_VENDA_MESA'                  , 'Comercio_Venda_Mesa');

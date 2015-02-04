@@ -6,20 +6,17 @@ foreach($params['widgets'] as $v){
         $duplo='';
     }
     if($cont==0){
-        echo '<div class="metro-nav">';
+        echo '<ul class="nav nav-pills" role="tablist">';
     } ?>
-    <div class="metro-nav-block nav-<?php echo $v['cor']; echo $duplo; ?>">
-        <a data-original-title="<?php echo $v['nome']; ?>" href="<?php echo $v['link']; ?>" class="lajax" acao="">
-            <i class="icon-<?php echo $v['icon']; ?>"></i>
-            <div class="info"><?php echo $v['numero']; ?></div>
-            <div class="status"><?php echo $v['nome']; ?></div>
+    <li role="presentation" class="active <?php echo $v['cor']; echo $duplo; ?>">
+        <a href="<?php echo $v['link']; ?>" class="lajax" acao="">
+            <?php echo $v['nome']; ?> <span class="badge"><?php echo $v['numero']; ?></span>
         </a>
-    </div>
+    </li>
     <?php ++$cont;
     if($cont===5){ ?>
         </div>
         <?php $cont=0;
     }
 }
-if($cont!==0) { echo '</div>'; } ?>
-<div class="space15"></div>
+if($cont!==0) { echo '</ul>'; } ?>
