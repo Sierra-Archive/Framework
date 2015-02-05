@@ -1,3 +1,4 @@
+nbproject/*
 nbproject/private/
 www/arq/**/*
 www/arq/**/!.htaccess
