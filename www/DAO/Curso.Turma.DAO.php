@@ -7,10 +7,9 @@ final Class Curso_Turma_DAO extends Framework\App\Dao
     protected $qnt;
     protected $inicio;
     protected $fim;
-    protected $valor;
     protected $carga;
     protected $status;
-    protected $obs;
+    //protected $obs;
     protected static $objetocarregado     = false;     protected static $mysql_colunas       = false;     protected static $mysql_outside       = Array();     protected static $mysql_inside        = Array(); public function __construct() {  parent::__construct(); } public static function Get_Nome(){
         return MYSQL_CURSO_TURMA;
     }
@@ -184,33 +183,6 @@ final Class Curso_Turma_DAO extends Framework\App\Dao
                 )
             ),
             Array(
-                'mysql_titulo'      => 'valor',
-                'mysql_tipovar'     => 'float', //varchar, int, 
-                'mysql_tamanho'     => 30,
-                'mysql_null'        => true,
-                'mysql_default'     => false,
-                'mysql_primary'     => false,
-                'mysql_estrangeira' => false, // chave estrangeira
-                'mysql_autoadd'     => false,
-                'mysql_comment'     => false,
-                'mysql_inside'      => '\Framework\App\Sistema_Funcoes::Tranf_Real_Float({valor})', // Funcao Executada quando o dado for inserido no banco de dados
-                'mysql_outside'     => '\Framework\App\Sistema_Funcoes::Tranf_Float_Real({valor})', // Funcao Executada quando o dado for retirado no banco de dados
-                'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', // //0 ninguem, 1 admin, 2 todos 
-                'edicao'            => Array(
-                    'Nome'              => 'Valor',
-                    'Mascara'           => 'Real',
-                    'valor_padrao'      => false,
-                    'readonly'          => false,
-                    'aviso'             => '',
-                    'formtipo'          => 'input',
-                    'input'             => array(
-                        'tipo'              => 'text',
-                        'class'             => ''
-                    )
-                )
-            ),
-            Array(
                 'mysql_titulo'      => 'carga',
                 'mysql_tipovar'     => 'int', //varchar, int, 
                 'mysql_tamanho'     => 11,
@@ -270,7 +242,7 @@ final Class Curso_Turma_DAO extends Framework\App\Dao
                         )
                     )
                 )
-            ),
+            ),/*
             Array(
                 'mysql_titulo'      => 'obs',
                 'mysql_tipovar'     => 'longtext', //varchar, int, 
@@ -296,7 +268,7 @@ final Class Curso_Turma_DAO extends Framework\App\Dao
                         'class'             => ''
                     )
                 )
-            )
+            )*/
         );
     }
 }

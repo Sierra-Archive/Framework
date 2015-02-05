@@ -59,7 +59,9 @@ class Curso_TurmaControle extends Curso_Controle
                 $del_url    = 'Curso/Turma/Turmas_Del/'.$valor->id.'/'.$valor->curso.'/';
             }
             $tabela['Nome'][$i]             = $valor->nome;
-            $tabela['Lançamento'][$i]       = $valor->lancamento;
+            $tabela['Vagas'][$i]            = $valor->qnt;
+            $tabela['Inicio'][$i]           = $valor->inicio;
+            $tabela['Fim'][$i]              = $valor->fim;
             $tabela['Data Registrada no Sistema'][$i]  = $valor->log_date_add;
             $status                                 = $valor->status;
             if($status!=1){

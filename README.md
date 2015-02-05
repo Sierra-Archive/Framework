@@ -8,7 +8,8 @@ Para usar deve criar uma pasta chamada localhost ou o nome do dominio que esta
 hospedado, os arquivos de configuração devem ficar dentro dela.
 
 `config.php`
-    <?php
+
+    ```<?php
     define('SIS_SERVER',        'servidor');// Seu servidor do bando de dados
     define('SIS_USUARIO',        'usuario');// Nome de usuario do banco de dados
     define('SIS_SENHA',        'senha_aqui');// Senha do banco de dados
@@ -44,11 +45,11 @@ hospedado, os arquivos de configuração devem ficar dentro dela.
 
     // Configuracao de Layoult
     define('TEMA_PADRAO', 'metrolab');
-    ?>
-
+    ?>```
 
 `config_modulos.php`
-    <?php
+
+    ```<?php
     // Modulos
     function config_modulos(){ 
         return Array(
@@ -61,8 +62,7 @@ hospedado, os arquivos de configuração devem ficar dentro dela.
             [...] outros modulos [...]
         );
     }
-    ?>
-
+    ?>```
 
 Estrutura
 -----------------
@@ -72,38 +72,38 @@ Estrutura
 * Classes/ `Classes Genéricas que podem ser usadas`
 * DAO/ `Arquivos destinado as tabelas do banco de dados`
 * Ini/ `Arquivos de Configuração`
-* * dominio.com/
-* Interface/
+* Ini/dominio.com/
+* Interface/ `Interface das Classes Principais do Framework`
 * Temp/ `usado para criação de imagens`
 * arq/ `Destinado aos arquivos de upload e do sistema`
 * lang/
 * layoult/ `Temas do Framework`
-* * nome_do_layoult/ `Temas (xN)`
-* * * config/
-* * * * config.php
-* * * css/
-* * * img/
-* * * elemento_botao.php
-* * * elemento_miniwidget.php
-* * * page_login.php
-* * * template.php
-* * * template_abas.php
-* * * template_bloco.php
-* * * template_form.php
-* * * template_tabela.php
-* * * widget_menu.php
-* * * widget_usuario.php
+* layoult/nome_do_layoult/ `Temas (xN)`
+* layoult/nome_do_layoult/ config/
+* layoult/nome_do_layoult/ * config.php
+* layoult/nome_do_layoult/ css/
+* layoult/nome_do_layoult/ img/
+* layoult/nome_do_layoult/ elemento_botao.php
+* layoult/nome_do_layoult/ elemento_miniwidget.php
+* layoult/nome_do_layoult/ page_login.php
+* layoult/nome_do_layoult/ template.php
+* layoult/nome_do_layoult/ template_abas.php
+* layoult/nome_do_layoult/ template_bloco.php
+* layoult/nome_do_layoult/ template_form.php
+* layoult/nome_do_layoult/ template_tabela.php
+* layoult/nome_do_layoult/ widget_menu.php
+* layoult/nome_do_layoult/ widget_usuario.php
 * libs/ `Bibliotecas que podem ser usadas`
 * mod/ `Modulos do Framework (xN)`
-* * nome_do_modulo/
-* * * _Config.php
-* * * _Principal.Class.php
-* * * {nome_do_modulo}_Controle.php
-* * * {nome_do_modulo}_Modelo.php
-* * * {nome_do_modulo}_Visual.php
-* * * {nome_do_modulo}_{nome_do_submodulo}C.php
-* * * {nome_do_modulo}_{nome_do_submodulo}M.php
-* * * {nome_do_modulo}_{nome_do_submodulo}V.php
+* mod/nome_do_modulo/
+* mod/nome_do_modulo/_Config.php
+* mod/nome_do_modulo/_Principal.Class.php
+* mod/nome_do_modulo/{nome_do_modulo}_Controle.php
+* mod/nome_do_modulo/{nome_do_modulo}_Modelo.php
+* mod/nome_do_modulo/{nome_do_modulo}_Visual.php
+* mod/nome_do_modulo/{nome_do_modulo}_{nome_do_submodulo}C.php
+* mod/nome_do_modulo/{nome_do_modulo}_{nome_do_submodulo}M.php
+* mod/nome_do_modulo/{nome_do_modulo}_{nome_do_submodulo}V.php
 * web/ `Plugins html e js usados pelo framework`
 * index.php
 * .htaccess

@@ -39,14 +39,9 @@ class Curso_CursoControle extends Curso_Controle
         if(is_object($cursos)) $cursos = Array(0=>$cursos);
         reset($cursos);
         foreach ($cursos as &$valor) {
-            $tabela['Nome do Curso'][$i]          =   $valor->nome;
+            $tabela['Nome do Curso'][$i]            =   $valor->nome;
             
-            if($valor->foto==='' || $valor->foto===false){
-                $foto = WEB_URL.'img'.US.'icons'.US.'clientes.png';
-            }else{
-                $foto = $valor->foto;
-            }
-            $tabela['Foto'][$i]                     = '<img src="'.$foto.'" style="max-width:100px;" />';
+            $tabela['Custo'][$i]                    =   $valor->valor;
             $tabela['Data Cadastrada'][$i]          =   $valor->log_date_add;
             $status                                 = $valor->status;
             if($status!=1){
