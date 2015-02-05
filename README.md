@@ -1,10 +1,13 @@
 Framework
 =========
 
+Instalação
+-------
+
 Para usar deve criar uma pasta chamada localhost ou o nome do dominio que esta
 hospedado, os arquivos de configuração devem ficar dentro dela.
 
-config.php {
+`config.php`
     <?php
     define('SIS_SERVER',        'servidor');// Seu servidor do bando de dados
     define('SIS_USUARIO',        'usuario');// Nome de usuario do banco de dados
@@ -42,9 +45,9 @@ config.php {
     // Configuracao de Layoult
     define('TEMA_PADRAO', 'metrolab');
     ?>
-}
 
-config_modulos.php {
+
+`config_modulos.php`
     <?php
     // Modulos
     function config_modulos(){ 
@@ -59,4 +62,48 @@ config_modulos.php {
         );
     }
     ?>
-}
+
+
+Estrutura
+-----------------
+
+* App/ `Classes Principais do Framework`
+* Cache/ `Destinada para arquivos de cache`
+* Classes/ `Classes Genéricas que podem ser usadas`
+* DAO/ `Arquivos destinado as tabelas do banco de dados`
+* Ini/ `Arquivos de Configuração`
+* * dominio.com/
+* Interface/
+* Temp/ `usado para criação de imagens`
+* arq/ `Destinado aos arquivos de upload e do sistema`
+* lang/
+* layoult/ `Temas do Framework`
+* * nome_do_layoult/ `Temas (xN)`
+* * * config/
+* * * * config.php
+* * * css/
+* * * img/
+* * * elemento_botao.php
+* * * elemento_miniwidget.php
+* * * page_login.php
+* * * template.php
+* * * template_abas.php
+* * * template_bloco.php
+* * * template_form.php
+* * * template_tabela.php
+* * * widget_menu.php
+* * * widget_usuario.php
+* libs/ `Bibliotecas que podem ser usadas`
+* mod/ `Modulos do Framework (xN)`
+* * nome_do_modulo/
+* * * _Config.php
+* * * _Principal.Class.php
+* * * {nome_do_modulo}_Controle.php
+* * * {nome_do_modulo}_Modelo.php
+* * * {nome_do_modulo}_Visual.php
+* * * {nome_do_modulo}_{nome_do_submodulo}C.php
+* * * {nome_do_modulo}_{nome_do_submodulo}M.php
+* * * {nome_do_modulo}_{nome_do_submodulo}V.php
+* web/ `Plugins html e js usados pelo framework`
+* index.php
+* .htaccess
