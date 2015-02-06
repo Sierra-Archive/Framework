@@ -1,6 +1,8 @@
 Framework
 =========
 
+Framework desenvolvido para Sistemas de Gestão
+
 Instalação
 -------
 
@@ -9,7 +11,7 @@ hospedado, os arquivos de configuração devem ficar dentro dela.
 
 `config.php`
 
-    ```<?php
+    <?php
     define('SIS_SERVER',        'servidor');// Seu servidor do bando de dados
     define('SIS_USUARIO',        'usuario');// Nome de usuario do banco de dados
     define('SIS_SENHA',        'senha_aqui');// Senha do banco de dados
@@ -45,11 +47,11 @@ hospedado, os arquivos de configuração devem ficar dentro dela.
 
     // Configuracao de Layoult
     define('TEMA_PADRAO', 'metrolab');
-    ?>```
+    ?>
 
 `config_modulos.php`
 
-    ```<?php
+    <?php
     // Modulos
     function config_modulos(){ 
         return Array(
@@ -62,7 +64,7 @@ hospedado, os arquivos de configuração devem ficar dentro dela.
             [...] outros modulos [...]
         );
     }
-    ?>```
+    ?>
 
 Estrutura
 -----------------

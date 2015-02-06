@@ -73,7 +73,7 @@ class Boot {
         $permissao = $registro->_Acl->Get_Permissao_Url($geturl);
 
         if($permissao===false){
-            throw new \Exception('Sem Permissão', 2826); 
+            throw new \Exception('Sem Permissão', 403); 
         }
         
         // Verifica se Existe e Executa
