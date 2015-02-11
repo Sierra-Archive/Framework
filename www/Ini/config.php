@@ -198,6 +198,9 @@ if(!defined('MYSQL_CURSO')){
 if(!defined('MYSQL_CURSO_TURMA')){
     define('MYSQL_CURSO_TURMA'                          , 'Curso_Turma');
 }
+if(!defined('MYSQL_CURSO_TURMA_INSCRICAO')){
+    define('MYSQL_CURSO_TURMA_INSCRICAO'                , 'Curso_Turma_Inscricao');
+}
 
 //COMERCIO VENDAS
 if(  !defined('MYSQL_COMERCIO_VENDA_MESA')){

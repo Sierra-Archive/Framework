@@ -98,7 +98,7 @@ class Curso_Principal implements PrincipalInterface
         $albuns = $modelo->db->Sql_Select('Curso_Turma',$where);
         if($albuns===false) return false;
         // add botao
-        $Visual->Blocar('<a title="Adicionar Turma" class="btn btn-success lajax explicar-titulo" acao="" href="'.URL_PATH.'Curso/Turma/Turmas_Add">Adicionar novo Turma</a><div class="space15"></div>');
+        $Visual->Blocar('<a title="Adicionar Turma" class="btn btn-success lajax explicar-titulo" acao="" href="'.URL_PATH.'Curso/Turma/Turmas_Add">Adicionar nova Turma</a><div class="space15"></div>');
         if(is_object($albuns)) $albuns = Array(0=>$albuns);
         if($albuns!==false && !empty($albuns)){
             list($tabela,$i) = Curso_TurmaControle::Turmas_Tabela($albuns);

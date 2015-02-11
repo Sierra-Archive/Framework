@@ -109,11 +109,11 @@ class Curso_TurmaControle extends Curso_Controle
         }
         $i = 0;
         if($curso!==false){
-            $titulo_add = 'Adicionar novo Turma ao Curso: '.$curso_registro->nome;
+            $titulo_add = 'Adicionar nova Turma ao Curso: '.$curso_registro->nome;
             $url_add = '/'.$curso;
             $add_url = 'Curso/Turma/Turmas_Add/'.$curso;
         }else{
-            $titulo_add = 'Adicionar novo Turma';
+            $titulo_add = 'Adicionar nova Turma';
             $url_add = '/false';
             $add_url    = 'Curso/Turma/Turmas_Add';
         }

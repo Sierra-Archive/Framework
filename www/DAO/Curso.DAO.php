@@ -178,7 +178,7 @@ final Class Curso_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'          => '', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Descrição',
+                    'Nome'              => 'Descrição do Curso',
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',

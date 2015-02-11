@@ -85,6 +85,8 @@ class Curso_CursoControle extends Curso_Controle
             list($tabela,$i) = self::Cursos_Tabela($cursos);
             
             if($export!==false){
+                // Retira Status
+                unset($tabela['Status']);
                 self::Export_Todos($export,$tabela, 'Cursos');
             }else{
                 $this->_Visual->Show_Tabela_DataTable(
