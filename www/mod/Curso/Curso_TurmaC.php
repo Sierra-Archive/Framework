@@ -384,5 +384,14 @@ class Curso_TurmaControle extends Curso_Controle
         }
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
+    public function Inscricao_Fazer(){
+        
+    }
+    public function Incricao_Mover(){
+        
+    }
+    public function Inscricao_Mover2(){
+        
+    }
 }
 ?>

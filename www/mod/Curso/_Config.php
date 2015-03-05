@@ -129,6 +129,28 @@ $config_Permissoes = function (){
             'SubModulo'             => 'Turma',   // Submodulo Referente
             'Metodo'                => 'Status',  // Metodos referentes separados por virgula
         ),
+        
+        
+        
+        /// Inscrições
+        Array(
+            'Nome'                  => 'Midia (Inscrições) - Se Inscrever',
+            'Desc'                  => '',
+            'Chave'                 => 'Curso_Turma_Inscricao_Fazer',
+            'End'                   => 'Curso/Turma/Inscricao_Fazer', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
+            'Modulo'                => 'Curso', // Modulo Referente // Modulo Referente
+            'SubModulo'             => 'Turma',   // Submodulo Referente   // Submodulo Referente
+            'Metodo'                => 'Inscricao_Fazer',  // Metodos referentes separados por virgula
+        ),
+        Array(
+            'Nome'                  => 'Midia (Inscrições) - Mover Inscrição',
+            'Desc'                  => '',
+            'Chave'                 => 'Curso_Turma_Inscricao_Mover',
+            'End'                   => 'Curso/Turma/Inscricao_Mover', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
+            'Modulo'                => 'Curso', // Modulo Referente // Modulo Referente
+            'SubModulo'             => 'Turma',   // Submodulo Referente   // Submodulo Referente
+            'Metodo'                => 'Inscricao_Mover,Inscricao_Mover2',  // Metodos referentes separados por virgula
+        ),
     );
 };
 /**

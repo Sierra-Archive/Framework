@@ -35,6 +35,7 @@ DELIMITER ;
  */
 final class Conexao
 {
+    protected $type                     =  'pdo'; //'mysqli';
     protected $host                     =  '';
     protected $usuario                  =  '';
     protected $senha                    =  '';
@@ -143,6 +144,10 @@ final class Conexao
 
     public static function &Dao_GetColunas($nome){
         return self::$tabelas[$nome]['colunas'];
+    }
+    public function prepare($sql,$autoreparo=true) 
+    {
+        return $this->mysqli->prepare($sql);
     }
     /**
      * Carrega Query

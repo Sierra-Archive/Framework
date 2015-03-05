@@ -321,9 +321,20 @@ class comercio_PropostaControle extends comercio_Controle
                     }
                     $tabela['Pagamento'][$i]                    =  $pagamento;
                     if(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Proposta_Lucro')){
-                        $tabela['Lucro'][$i]                        =  $valor->pagar_lucro;
+                        $cf_lucro = true;
+                    }else{
+                        $cf_lucro = false;
                     }
                     if(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Proposta_Desconto')){
+                        $cf_desconto = true;
+                    }else{
+                        $cf_desconto = false;
+                    }
+                    
+                    // Nao deixa aparecer os dois
+                    if($cf_lucro===true){
+                        $tabela['Lucro'][$i]                        =  $valor->pagar_lucro;
+                    }else if($cf_desconto){
                         $tabela['Desconto'][$i]                     =  $valor->pagar_desconto;
                     }
                     $tabela['Valor Total'][$i]                  =  $valor->valor;

@@ -32,7 +32,7 @@ function config_template(){
         'camada_unica'      => '#blocounico', //'.container > .row > .col-12'
         //'TEMA_JS_UNIFORM'   => 'NAO',
         'javascript'        => Array(
-            'datatable_sdom'            => "<'row'<'col-6'l><'col-6'f>r>t<'row'<'col-6'i><'col-6'p>>",
+            'datatable_sdom'            => "<'container-fluid'<'col-sm-6'l><'col-sm-6'f>r>t<'container-fluid'<'col-sm-6'i><'col-sm-6'p>>",
             'datatable_sPaginationType' => 'bootstrap',
             'datatable_bJQueryUI'       => false,
             'datatable_bAutoWidth'      => true,

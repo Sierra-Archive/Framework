@@ -230,6 +230,15 @@ readfile($link);*/
 	// Envia o arquivo para o cliente
 	readfile($arquivoLocal);
     }
+    protected function Gerador_Notificacao($pagina_permissao,$notificacao){
+        // Se nao existir cria
+        $folder     = TEMP_PATH.'Grafico';
+        $folder_url = TEMP_URL.'Grafico';
+        if(!file_exists($folder))
+        {
+            mkdir($folder, 0777);
+        }
+    }
     protected function Gerador_Grafico_Padrao($titulo,$x_nome='EixoX',$y_nome='EixoY',$dados=Array(),$tipo = 'points',$larg=600,$alt=400, $convert_real=true){
         // Se nao existir cria
         $folder     = TEMP_PATH.'Grafico';
@@ -2236,72 +2245,8 @@ readfile($link);*/
                             'html' =>  $endereco_html
                         );
                         $this->_Visual->Json_IncluiTipo('Conteudo',$conteudo);
-                    }                    
-                    // Continua
-                    $configuracao_layoult = config_template();
-
-                    if($configuracao_layoult['camada_unica']!==false){
-                        $html = $this->_Visual->Bloco_Unico_Retornar();
-                        $js = '';
-                        if($html==''){
-                            $js = '$(\''.$configuracao_layoult['camada_unica'].'\').hide();';
-                        }else{
-                            $js = '$(\''.$configuracao_layoult['camada_unica'].'\').show();';
-                        }
-                        $conteudo = array(
-                            'location'  => $configuracao_layoult['camada_unica'],
-                            'js'        => $js,
-                            'html'      => $html
-                        );
-                        // Joga pro Json se nao for o caso de popup
-                        if($zerar===true || $html!=''){
-                            $this->_Visual->Json_IncluiTipo('Conteudo',$conteudo);
-                        }
-                        $html = $this->_Visual->Bloco_Maior_Retornar();
-                    }else{
-                        $html = $this->_Visual->Bloco_Unico_Retornar().$this->_Visual->Bloco_Maior_Retornar();
-                    }
-
-                    $js = '';
-                    if($html==''){
-                        $js = '$(\''.$configuracao_layoult['camada_maior'].'\').hide();';
-                    }else{
-                        $js = '$(\''.$configuracao_layoult['camada_maior'].'\').show();';
-                    }
-                    $conteudo = array(
-                        'location' => $configuracao_layoult['camada_maior'],
-                        'js' => $js,
-                        'html' => $html
-                    );
-                    // Joga pro Json se nao for o caso de popup
-                    if($zerar===true || $html!=''){
-                        $this->_Visual->Json_IncluiTipo('Conteudo',$conteudo);
-                    }
-
-                    $html = $this->_Visual->Bloco_Menor_Retornar();
-                    $js = '';
-                    if($html==''){
-                        $js = '$(\''.$configuracao_layoult['camada_menor'].'\').hide();';
-                    }else{
-                        $js = '$(\''.$configuracao_layoult['camada_menor'].'\').show();';
-                    }
-                    $conteudo = array(
-                        'location' => $configuracao_layoult['camada_menor'],
-                        'js' => $js,
-                        'html' =>  $html
-                    );
-                    // Joga pro Json se nao for o caso de popup
-                    if($zerar===true || $html!=''){
-                        $this->_Visual->Json_IncluiTipo('Conteudo',$conteudo);
-                    }
-                    // inclui js e zera o head js
-                    $javascript = $this->_Visual->Javascript_Executar();
-                    if($javascript!=''){
-                        $this->_Visual->Json_IncluiTipo('JavascriptInterno',$javascript);
-                        //zera js
-                        $this->_Visual->Javascript_Executar(false);
-                    }
-                    echo $this->_Visual->Json_Retorna();
+                    }    
+                    echo $this->_Visual->Json_Retorna($zerar);
                     return true;
                 }
             }else{

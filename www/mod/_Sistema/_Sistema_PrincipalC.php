@@ -5,6 +5,9 @@ class _Sistema_PrincipalControle extends _Sistema_Controle
         
         parent::__construct();
     }
+    public function Main(){
+        return $this->Home();
+    }
     /**
      * Home
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>

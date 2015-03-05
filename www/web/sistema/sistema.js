@@ -561,6 +561,7 @@ var Sierra = (function () {
         Control_Atualizacao();
         // Privadas
         Visual_Layoult_DataTable('.datatable');
+        Visual_Layoult_DataTable_Massiva('.Listagem_Table');
         Visual_Layoult_Aviso();
         Control_Layoult_Recarrega_Formulario();
         console.timeEnd('Acao_LINK');
@@ -626,6 +627,7 @@ var Sierra = (function () {
             body        = '',
             footer      = '',
             popup       = $(document.getElementById(json['id'])),
+            popup2      = popup.children(".modal-dialog").children(".modal-content"),
             i           = 0,
             tam = Object.keys(json['botoes']).length;
         // Percorre Botoes e os fazem
@@ -633,12 +635,12 @@ var Sierra = (function () {
             if (json['botoes'][i]['clique'] === '$( this ).dialog( "close" );') {
                 footer += '<button class="btn" data-dismiss="modal" aria-hidden="true" onCLick="Sierra.Control_Ajax_Popup_Fechar(\''+json["id"]+'\');">'+json['botoes'][i]['text']+'</button>';
             }else{
-                footer += '<button class="btn btn-primary" onCLick="'+json['botoes'][i]['clique']+'">'+json['botoes'][i]['text']+'</button>';
+                footer += '<button class="btn btn-primary" onClick="'+json['botoes'][i]['clique']+'">'+json['botoes'][i]['text']+'</button>';
             }
         }
-        popup.children(".modal-header").children("#popuptitulo").html(json['title']);
-        popup.children(".modal-body").html('<div class="row">'+json['html']+'</div>');
-        popup.children(".modal-footer").html(footer);
+        popup2.children(".modal-header").children("#popuptitulo").html(json['title']);
+        popup2.children(".modal-body").html('<div class="row">'+json['html']+'</div>');
+        popup2.children(".modal-footer").html(footer);
         popup.css('display','block').addClass('in');
     };
     /**
@@ -968,26 +970,26 @@ var Sierra = (function () {
      * @type Number|@exp;_L4@pro;i|Number
      */
     function Visual_Layoult_DataTable (camada) {
-        var i = 0, config = Configuracoes_Template;
+        var i = 0;
         // Verifica se existe uma DataTable a ser transformada
         $(camada).each(function () {
-            if (!$(this).parent().is(".dataTables_wrapper")) {
-                var apagar  = true,
-                    ordenar,
-                    atual = $(this);
+            var apagar  = true,
+                ordenar,
+                atual = $(this);
+            if ( !($.fn.dataTable.isDataTable(atual)) ) {
                 eval('ordenar = '+atual.attr('ordenar')+';');
                 if (atual.hasClass('apagado1')) {
                     apagar = false;
                 }
                 atual.dataTable({
-                    "bJQueryUI"         : config['datatable_bJQueryUI'],
-                    "bAutoWidth"        : config['datatable_bAutoWidth'],
-                    "sdom"              : config['datatable_sdom'],
-                    "sPaginationType"   : config['datatable_sPaginationType'],
-                    "bPaginate"         : true,     
+                    //"bJQueryUI"         : Configuracoes_Template['datatable_bJQueryUI'],
+                    //"bAutoWidth"        : Configuracoes_Template['datatable_bAutoWidth'],
+                    //"sdom"              : Configuracoes_Template['datatable_sdom'],
+                    //"sPaginationType"   : Configuracoes_Template['datatable_sPaginationType'],
+                    //"bPaginate"         : true,     
                     "bProcessing"       : true,  // Mensagem de Processando
                     "bDeferRender"      : true,  // Ajudar no Carregamento 
-                    "iDisplayLength"    : 100,   // Quantidade por pagina
+                    "iDisplayLength"    : 25,   // Quantidade por pagina
                     "aoColumnDefs"      : [{ 
                         "bSearchable"       : true, 
                         "bVisible"          : apagar, 
@@ -1003,10 +1005,36 @@ var Sierra = (function () {
             }
         });
         // se existir, essa datatable é acionada
-        if (i>0) {
+        /*if (i>0) {
             jQuery('.dataTables_filter input').addClass("input-small"); // modify table search input
             jQuery('.dataTables_length select').addClass("input-mini"); // modify table per page dropdown
-        }
+        }*/
+    };
+    function Visual_Layoult_DataTable_Massiva (camada) {
+        var i = 0;
+        // Verifica se existe uma DataTable a ser transformada
+        $(camada).each(function () {
+            var apagar  = true,
+                ordenar,
+                atual = $(this);
+            if ( !($.fn.dataTable.isDataTable(atual)) ) {
+                eval('ordenar = '+atual.attr('ordenar')+';');
+                if (atual.hasClass('apagado1')) {
+                    apagar = false;
+                }
+                atual.dataTable({          
+                    "processing": true,
+                    "serverSide": true,
+                    "ajax": "http://localhost/Framework/www/xhr.php"
+                });
+                i = i+1;
+            }
+        });
+        // se existir, essa datatable é acionada
+        /*if (i>0) {
+            jQuery('.dataTables_filter input').addClass("input-small"); // modify table search input
+            jQuery('.dataTables_length select').addClass("input-mini"); // modify table per page dropdown
+        }*/
     };
     /**
      * Atualiza UNIFORM

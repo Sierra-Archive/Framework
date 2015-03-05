@@ -36,7 +36,7 @@
             <!-- END LOGO -->
             <!-- BEGIN RESPONSIVE MENU TOGGLER -->
 
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+            <button id="menuresponsivo_trocar" type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>

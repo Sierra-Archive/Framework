@@ -689,12 +689,11 @@ class Visual
         //$array_js[] = 'assets/ckeditor/ckeditor';
         if($temaconfig['bootstrap']===true){
             $array_js[] = 'sistema/bootstrap/js/bootstrap.min';
-            $array_js[] = 'sistema/bootstrap/js/bootstrap-fileupload';
+            //$array_js[] = 'sistema/bootstrap/js/bootstrap-fileupload';
         }
         
         // DATATABLE
-        $array_js[] = 'assets/data-tables/jquery.dataTables';
-        $array_js[] = 'assets/data-tables/DT_bootstrap';
+        $array_js[] = 'sistema/data-tables/jquery.dataTables';
         
         // FORMULARIOS
         $array_js[] = 'assets/uniform/jquery.uniform.min';
@@ -734,16 +733,22 @@ class Visual
         $this->Arquivos_Js($array_js);
         
         // Começa Retorno
-        return '<div class="push"></div><!-- .push -->'.
-        '<div id="escondido">'.
-        '</div>'.
+        return '<div class="push"></div>'.
+        '<div id="escondido"></div>'.
         '<div class="growlUI" style="display:none;">'.
-            '<h1>SierraTecnologia</h1> <h2>Ricardo Sierra <sierra.csi@gmail.com></h2>'.
+            '<h1>SierraTecnologia</h1> <h2>Ricardo Sierra <contato@ricardosierra.com.br></h2>'.
         '</div>'.
-        '<div id="popup" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="popup" aria-hidden="true">'.
-            '<div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button><h3 id="popuptitulo">Popup</h3></div>'.
-            '<div class="modal-body"></div>'.
-            '<div class="modal-footer"></div>'.
+        '<div class="modal fade" id="popup" tabindex="-1" role="dialog" aria-labelledby="popup" aria-hidden="true">'.
+            '<div class="modal-dialog">'.
+                '<div class="modal-content">'.
+                    '<div class="modal-header">'.
+                        '<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>'.
+                        '<h4 class="modal-title" id="popuptitulo">Popup</h4>'.
+                    '</div>'.
+                    '<div class="modal-body"></div>'.
+                    '<div class="modal-footer"></div>'.
+                '</div>'.
+            '</div>'.
         '</div>'.
         //'<div id="dialog-confirm" title="Deletar Proposta?">'.
         //'<p><span class="ui-icon ui-glyphicon-alert" style="float:left; margin:0 7px 20px 0;"></span>Essa ação não pode ser revertida. Você esta certo disso?</p>'.
@@ -817,8 +822,8 @@ class Visual
         if($temaconfig['bootstrap']===true){
             array_push($array_css,
                 'sistema/bootstrap/css/bootstrap.min',
-                'sistema/bootstrap/css/bootstrap-responsive.min',
-                'sistema/bootstrap/css/bootstrap-fileupload'
+                'sistema/bootstrap/css/bootstrap-theme.min'
+                //'sistema/bootstrap/css/bootstrap-fileupload'
             );
         }
         
@@ -859,6 +864,9 @@ class Visual
             // DUAL LIST
             'sistema/bootstrap-duallistbox/bootstrap-duallistbox',
                 
+            // DATATABLE
+            'sistema/data-tables/DT_bootstrap',
+            
             // Sistema
             'css/sistema'
         );        
@@ -1248,10 +1256,10 @@ class Visual
             $form = new \Framework\Classes\Form('Formlogin',SISTEMA_DIR_INT,''); //formajax /'.SISTEMA_MODULO.'/'.SISTEMA_SUB.'/'.SISTEMA_MET
             $form->Input_Novo('Login','sistema_login','','text', '',30, '');
             $form->Input_Novo('Senha','sistema_senha','','password', 30, '','');
-            $this->_Visual->Blocar($form->retorna_form('Entrar'));
-            $this->_Visual->Bloco_Menor_CriaJanela('Login');
+            $this->Blocar($form->retorna_form('Entrar'));
+            $this->Bloco_Menor_CriaJanela('Login');
             
-            echo $this->_Visual->Json_Retorna();
+            echo $this->Json_Retorna();
             return true;
         }else{
             // logado =2 ajax
@@ -1382,6 +1390,32 @@ class Visual
         }
         $config = Array(
             'Tipo'      => 'Dinamica',
+            'Opcao'     => Array(
+                'Tabela'         => $tabela,
+                'Style'          => $style,
+                'Apagado1'       => $apagado1,
+                'aaSorting'      => $aaSortingtxt,
+                'Colunas  '      => $ColunasOrd // Ordenacao das Colunas
+            )
+        );
+        if($blocar===true){
+            $this->Blocar($this->renderizar_bloco('template_tabela',$config));
+        }else{
+            return $this->renderizar_bloco('template_tabela',$config);
+        }
+    }
+    public function Show_Tabela_DataTable_Massiva($tabela, $style='', $blocar=true, $apagado1=false, $aaSorting=Array(Array(0,'asc')), $ColunasOrd=false) {
+        $aaSortingtxt = '';
+        $i = 0;
+        if(is_array($aaSorting)){
+            foreach($aaSorting as &$valor){
+                if($i>0) $aaSortingtxt .= ',';
+                $aaSortingtxt .= '['.$valor[0].',\''.$valor[1].'\']';
+                ++$i;
+            }
+        }
+        $config = Array(
+            'Tipo'      => 'Massiva',
             'Opcao'     => Array(
                 'Tabela'         => $tabela,
                 'Style'          => $style,
@@ -1806,11 +1840,91 @@ class Visual
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.0.1
      */
-    public function Json_Retorna(){
+    public function Json_Retorna($zerar=true){
         $imprimir = new \Framework\App\Tempo('Retornar Json Visual - SEM SMARTY');
+        
+        
+        // Inicia se nao tiver iniciado
         if($this->jsonativado===false){
             $this->Json_Start();
         }
+        
+        
+        
+        
+        
+        
+        
+                        
+        // Pega Conteudo Alocado e Coloca Aqui
+        $configuracao_layoult = config_template();
+
+        if($configuracao_layoult['camada_unica']!==false){
+            $html = $this->Bloco_Unico_Retornar();
+            $js = '';
+            if($html==''){
+                $js = '$(\''.$configuracao_layoult['camada_unica'].'\').hide();';
+            }else{
+                $js = '$(\''.$configuracao_layoult['camada_unica'].'\').show();';
+            }
+            $conteudo = array(
+                'location'  => $configuracao_layoult['camada_unica'],
+                'js'        => $js,
+                'html'      => $html
+            );
+            // Joga pro Json se nao for o caso de popup
+            if($zerar===true || $html!=''){
+                $this->Json_IncluiTipo('Conteudo',$conteudo);
+            }
+            $html = $this->Bloco_Maior_Retornar();
+        }else{
+            $html = $this->Bloco_Unico_Retornar().$this->Bloco_Maior_Retornar();
+        }
+
+        $js = '';
+        if($html==''){
+            $js = '$(\''.$configuracao_layoult['camada_maior'].'\').hide();';
+        }else{
+            $js = '$(\''.$configuracao_layoult['camada_maior'].'\').show();';
+        }
+        $conteudo = array(
+            'location' => $configuracao_layoult['camada_maior'],
+            'js' => $js,
+            'html' => $html
+        );
+        // Joga pro Json se nao for o caso de popup
+        if($zerar===true || $html!=''){
+            $this->Json_IncluiTipo('Conteudo',$conteudo);
+        }
+
+        $html = $this->Bloco_Menor_Retornar();
+        $js = '';
+        if($html==''){
+            $js = '$(\''.$configuracao_layoult['camada_menor'].'\').hide();';
+        }else{
+            $js = '$(\''.$configuracao_layoult['camada_menor'].'\').show();';
+        }
+        $conteudo = array(
+            'location' => $configuracao_layoult['camada_menor'],
+            'js' => $js,
+            'html' =>  $html
+        );
+        // Joga pro Json se nao for o caso de popup
+        if($zerar===true || $html!=''){
+            $this->Json_IncluiTipo('Conteudo',$conteudo);
+        }
+        // inclui js e zera o head js
+        $javascript = $this->Javascript_Executar();
+        if($javascript!=''){
+            $this->Json_IncluiTipo('JavascriptInterno',$javascript);
+            //zera js
+            $this->Javascript_Executar(false);
+        }
+        
+        
+        
+        
+        // Continuar
         if($this->json['Info']['Titulo']!=''){
             $html='';
             if(isset($this->menu['SubMenu'])){

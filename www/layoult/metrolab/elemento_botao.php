@@ -46,7 +46,7 @@
 
 <?php }else if($params['Tipo']==='Status0'){ ?>
     <a href="<?php echo URL_PATH; ?><?php echo $params['btn_add']['url']; ?>" class="btn btn-danger lajax explicar-titulo" title="<?php echo $params['btn_add']['nome']; ?>" acao="">
-        <i class="glyphicon-thumbs-down" alt="Dtivado"></i>
+        <i class="glyphicon-thumbs-down" alt="Desativado"></i>
     </a>
 <?php }else if($params['Tipo']==='Status1'){ ?>
     <a href="<?php echo URL_PATH; ?><?php echo $params['btn_add']['url']; ?>" class="btn btn-success lajax explicar-titulo" title="<?php echo $params['btn_add']['nome']; ?>" acao="">
