@@ -128,6 +128,7 @@ class Form
                 'titulo'            => $titulo,
                 'html'              => $html,
                 'escondido'         => $escondido,
+                'ColunaTipo'        => $this->ColunaTipo
             )
         );
         $html                   = $this->_Visual->renderizar_bloco('template_form',$config);
@@ -239,6 +240,7 @@ class Form
                 // Outros
                 'layoult'           => $this->layoult,
                 'form_dependencia'  => $this->form_dependencia,
+                'ColunaTipo'        => $this->ColunaTipo
             )
         );
         $html = $Visual->renderizar_bloco('template_form',$config);
@@ -295,6 +297,7 @@ class Form
                 'valida'            => $valida,
                 'form_dependencia'  => $this->form_dependencia,
                 'escondido'         => $escondido,
+                'ColunaTipo'        => $this->ColunaTipo
             )
         );
         $html = $this->_Visual->renderizar_bloco('template_form',$config);
@@ -358,6 +361,7 @@ class Form
                 'valida'            => $valida,
                 'form_dependencia'  => $this->form_dependencia,
                 'escondido'         => $escondido,
+                'ColunaTipo'        => $this->ColunaTipo
             )
         );
         $html = $this->_Visual->renderizar_bloco('template_form',$config);
@@ -406,6 +410,7 @@ class Form
                 'urlextra'          => $urlextra,
                 'form_dependencia'  => $this->form_dependencia,
                 'escondido'         => $escondido,
+                'ColunaTipo'        => $this->ColunaTipo
             )
         );
         $html = $this->_Visual->renderizar_bloco('template_form',$config);
@@ -456,6 +461,7 @@ class Form
                 'form_dependencia'  => $this->form_dependencia,
                 'condicao'          => $condicao,
                 'escondido'         => $escondido,
+                'ColunaTipo'        => $this->ColunaTipo
             )
         );
         $this->radioextra       = $url;
@@ -493,6 +499,7 @@ class Form
                 'layoult'           => $this->layoult,
                 'form_dependencia'  => $this->form_dependencia,
                 'classextra'        => $classextra,
+                'ColunaTipo'        => $this->ColunaTipo
             )
         );
         $html                   = $this->_Visual->renderizar_bloco('template_form',$config);
@@ -554,6 +561,7 @@ class Form
                 'form_dependencia'  => $this->form_dependencia,
                 'condicao'          => $condicao,
                 'escondido'         => $escondido,
+                'ColunaTipo'        => $this->ColunaTipo
             )
         );
         $this->checkboxextra      = $url;
@@ -585,6 +593,7 @@ class Form
                 'selected'          => $selected,
                 'layoult'           => $this->layoult,
                 'form_dependencia'  => $this->form_dependencia,
+                'ColunaTipo'        => $this->ColunaTipo
             )
         );
         $html                   = $this->_Visual->renderizar_bloco('template_form',$config);
@@ -608,6 +617,7 @@ class Form
                 'end'               => $this->checkboxextra,
                 'form_dependencia'  => $this->form_dependencia,
                 'condicao'          => $this->checkboxcondicao,
+                'ColunaTipo'        => $this->ColunaTipo
             )
         );
         $this->selectid         = '';
@@ -666,6 +676,7 @@ class Form
                 'class'             => $class,
                 'infonulo'          => $infonulo,
                 'multiplo'          => $multiplo,
+                'ColunaTipo'        => $this->ColunaTipo
             )
         );
         $this->selectextra      = $url;
@@ -717,6 +728,7 @@ class Form
                 'end'               => $this->selectextra,
                 'form_dependencia'  => $this->form_dependencia,
                 'condicao'          => $this->selectcondicao,
+                'ColunaTipo'        => $this->ColunaTipo
             )
         );
         $this->selectid         = '';

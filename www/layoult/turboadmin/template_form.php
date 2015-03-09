@@ -6,19 +6,19 @@
     }
 
     if($params['Opcao']['end']!=''){ ?>
-        <form id="<?php echo $params['Opcao']['id']; ?>"<?php echo $c['a']['s']; ?> action="<?php echo $params['Opcao']['url']; ?><?php echo $params['Opcao']['end']; ?>" method="post" enctype="multipart/form-data" autocomplete="<?php echo $params['Opcao']['AutoComplete']; ?>">
+        <form id="<?php echo $params['Opcao']['id']; ?>"<?php echo $c['a']['s']; ?> class="form-<?php echo $params['Opcao']['ColunaForm']; ?> <?php echo $params['Opcao']['class']; ?>" action="<?php echo $params['Opcao']['url']; ?><?php echo $params['Opcao']['end']; ?>" method="post" enctype="multipart/form-data" autocomplete="<?php echo $params['Opcao']['AutoComplete']; ?>">
     <?php }else{ ?>
-        <form id="<?php echo $params['Opcao']['id']; ?>"<?php echo $c['a']['s']; ?> action="<?php echo $params['Opcao']['url']; ?>" method="post" enctype="multipart/form-data" autocomplete="<?php echo $params['Opcao']['AutoComplete']; ?>">
+        <form id="<?php echo $params['Opcao']['id']; ?>"<?php echo $c['a']['s']; ?> class="form-<?php echo $params['Opcao']['ColunaForm']; ?> <?php echo $params['Opcao']['class']; ?>" action="<?php echo $params['Opcao']['url']; ?>" method="post" enctype="multipart/form-data" autocomplete="<?php echo $params['Opcao']['AutoComplete']; ?>">
     <?php } ?>
     <?php if($params['Opcao']['layoult']==='full'){ ?><ul class="align-list"><?php } ?>
 
 
 <?php }else if($params['Tipo']==='SelectMultiplo'){ ?>
     <div class="form-group"<?php if($params['Opcao']['escondido']!==false){ ?> id="<?php echo $params['Opcao']['id']; ?>_escondendo"<?php } ?><?php if($params['Opcao']['escondido']==='apagado'){ ?> style="display: none;"<?php } ?>>
-    <label class="col-sm-2 control-label" for="<?php echo $params['Opcao']['id']; ?>"><?php echo $params['Opcao']['titulo']; ?>
+    <label class="<?php if($params['Opcao']['ColunaForm']==='horizontal') echo 'col-sm-2 control-label'; ?>" for="<?php echo $params['Opcao']['id']; ?>"><?php echo $params['Opcao']['titulo']; ?>
     <?php if($params['Opcao']['js']!=''){ ?> <a href="#" onClick="<?php echo $params['Opcao']['js']; ?>" style="" class="lajax btn btn-primary">+</a><?php } ?>
     </label>
-    <div class="col-sm-9">
+    <?php if($params['Opcao']['ColunaForm']!=='horizontal') echo '<div class="col-sm-9">'; ?>
     <!--Comeca Select--><SELECT tabindex="<?php echo $params['TabIndex']; ?>" name="<?php echo $params['Opcao']['nome']; ?>"<?php if($params['Opcao']['id']!=''){ ?> id="<?php echo $params['Opcao']['id']; ?>"<?php } ?><?php if($params['Opcao']['change']!=''){ ?> onchange="<?php echo $params['Opcao']['change']; ?>"<?php } ?> class="col-<?php if($params['Opcao']['js']!='' || $params['Opcao']['end']!=''){ ?>8<?php }else{ ?>12<?php } ?><?php if($params['Opcao']['form_dependencia']===false){ ?> form-select-padrao <?php echo $params['Opcao']['class']; ?>" data-placeholder="<?php echo $params['Opcao']['infonulo']; } ?>"<?php if($params['Opcao']['escondido']==='apagar'){ ?> escondendo="desativado"<?php }else if($params['Opcao']['escondido']==='apagado'){ ?> escondendo="ativado"<?php } ?> multiple="multiple">
 
     <?php foreach($params['Opcao']['Option'] as $v){ ?>
@@ -58,10 +58,10 @@
 
 <?php }else if($params['Tipo']==='Radio_Inicio'){ ?> 
     <div class="form-group"<?php if($params['Opcao']['escondido']!==false){ ?> id="<?php echo $params['Opcao']['id']; ?>_escondendo"<?php } ?><?php if($params['Opcao']['escondido']==='apagado'){ ?> style="display: none;"<?php } ?>>
-    <label class="col-sm-2 control-label" for="<?php echo $params['Opcao']['id']; ?>"><?php echo $params['Opcao']['titulo']; ?>
+    <label class="<?php if($params['Opcao']['ColunaForm']==='horizontal') echo 'col-sm-2 control-label'; ?>" for="<?php echo $params['Opcao']['id']; ?>"><?php echo $params['Opcao']['titulo']; ?>
     <?php if($params['Opcao']['js']!=''){ ?> <a href="#" onClick="<?php echo $params['Opcao']['js']; ?>" style="" class="lajax btn btn-primary">+</a><?php } ?>
     </label>
-    <div class="col-sm-9">
+    <?php if($params['Opcao']['ColunaForm']!=='horizontal') echo '<div class="col-sm-9">'; ?>
     
 <?php }else if($params['Tipo']==='Radio_Opcao'){ ?>
     <label class="<?php echo $params['Opcao']['classextra']; ?>">
@@ -74,10 +74,10 @@
     
 <?php }else if($params['Tipo']==='CheckBox_Inicio'){ ?> 
     <div class="form-group"<?php if($params['Opcao']['escondido']!==false){ ?> id="<?php echo $params['Opcao']['id']; ?>_escondendo"<?php } ?><?php if($params['Opcao']['escondido']==='apagado'){ ?> style="display: none;"<?php } ?>>
-    <label class="col-sm-2 control-label" for="<?php echo $params['Opcao']['id']; ?>"><?php echo $params['Opcao']['titulo']; ?>
+    <label class="<?php if($params['Opcao']['ColunaForm']==='horizontal') echo 'col-sm-2 control-label'; ?>" for="<?php echo $params['Opcao']['id']; ?>"><?php echo $params['Opcao']['titulo']; ?>
     <?php if($params['Opcao']['js']!=''){ ?> <a href="#" onClick="<?php echo $params['Opcao']['js']; ?>" style="" class="lajax btn btn-primary">+</a><?php } ?>
     </label>
-    <div class="col-sm-9">
+    <?php if($params['Opcao']['ColunaForm']!=='horizontal') echo '<div class="col-sm-9">'; ?>
     
 <?php }else if($params['Tipo']==='Checkbox_Opcao'){ ?>
     <label class="checkbox line">
@@ -102,8 +102,8 @@
 
 <?php }else if($params['Tipo']==='Upload'){ ?>
     <div class="form-group"<?php if($params['Opcao']['escondido']!==false){ ?> id="<?php echo $params['Opcao']['id']; ?>_escondendo"<?php } ?><?php if($params['Opcao']['escondido']==='apagado'){ ?> style="display: none;"<?php } ?>>
-        <label class="col-sm-2 control-label" for="<?php echo $params['Opcao']['id']; ?>"><?php echo $params['Opcao']['titulo']; ?></label>
-        <div class="col-sm-9">
+        <label class="<?php if($params['Opcao']['ColunaForm']==='horizontal') echo 'col-sm-2 control-label'; ?>" for="<?php echo $params['Opcao']['id']; ?>"><?php echo $params['Opcao']['titulo']; ?></label>
+        <?php if($params['Opcao']['ColunaForm']!=='horizontal') echo '<div class="col-sm-9">'; ?>
             <div data-provides="fileupload" class="fileupload fileupload-new">
                 <?php if($params['Opcao']['tipo']==='Imagem'){ ?>
                     <div style="width: 200px; height: 150px;" class="fileupload-new thumbnail">

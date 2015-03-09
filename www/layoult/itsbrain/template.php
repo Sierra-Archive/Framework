@@ -57,10 +57,10 @@
                 <?php echo $params['template']['Bloco_Unico']; ?>
             </spam>
             <div class="fluid">
-                <div class="col-8" id="blocomaior"<?php if( $params['template']['Bloco_Maior']==''){ ?> style="display: none;"<?php } ?>>
+                <div class="col-sm-8" id="blocomaior"<?php if( $params['template']['Bloco_Maior']==''){ ?> style="display: none;"<?php } ?>>
                     <?php echo $params['template']['Bloco_Maior']; ?>
                 </div>
-                <div class="col-4" id="blocomenor"<?php if( $params['template']['Bloco_Menor']==''){ ?> style="display: none;"<?php } ?>>
+                <div class="col-sm-4" id="blocomenor"<?php if( $params['template']['Bloco_Menor']==''){ ?> style="display: none;"<?php } ?>>
                     <?php echo $params['template']['Bloco_Menor']; ?>
                 </div>
             </div>

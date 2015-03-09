@@ -632,7 +632,7 @@ class Financeiro_RelatorioControle extends Financeiro_Controle
         ))*/;
         
         // Chama
-        list($html,$i,$total) = $this->Movimentacao_Interna_Grafico($where,$tipo_grafico, true, 'Pagar/'.$datainicial.'/'.$datafinal);
+        list($html,$i,$total) = $this->Movimentacao_Interna_Grafico('Contas à pagar',$where,$tipo_grafico, true, 'Pagar/'.$datainicial.'/'.$datafinal);
         
         // ADiciona Total
         $html_total = '<br><table class="table">
@@ -697,7 +697,7 @@ class Financeiro_RelatorioControle extends Financeiro_Controle
         ))*/;
         
         // Chama
-        list($html,$i,$total) = $this->Movimentacao_Interna_Grafico($where,$tipo_grafico, true, 'Receber/'.$datainicial.'/'.$datafinal);
+        list($html,$i,$total) = $this->Movimentacao_Interna_Grafico('Contas à Receber',$where,$tipo_grafico, true, 'Receber/'.$datainicial.'/'.$datafinal);
         
         
         // ADiciona Total
@@ -760,7 +760,7 @@ class Financeiro_RelatorioControle extends Financeiro_Controle
             )
         ))*/;
         // Chama
-        list($html,$i,$total) = $this->Movimentacao_Interna_Grafico_Pago($where,$tipo_grafico, true, 'Pago/'.$datainicial.'/'.$datafinal);  
+        list($html,$i,$total) = $this->Movimentacao_Interna_Grafico_Pago('Contas Pagas', $where,$tipo_grafico, true, 'Pago/'.$datainicial.'/'.$datafinal);  
         
         // ADiciona Total
         $html_total = '<br><table class="table">
@@ -825,7 +825,7 @@ class Financeiro_RelatorioControle extends Financeiro_Controle
         ))*/;
         
         // Chama
-        list($html,$i,$total) = $this->Movimentacao_Interna_Grafico_Pago($where,$tipo_grafico, true, 'Recebido/'.$datainicial.'/'.$datafinal);
+        list($html,$i,$total) = $this->Movimentacao_Interna_Grafico_Pago('Contas Recebidas',$where,$tipo_grafico, true, 'Recebido/'.$datainicial.'/'.$datafinal);
         
         // ADiciona Total
         $html_total = '<br><table class="table">

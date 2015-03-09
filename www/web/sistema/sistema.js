@@ -560,7 +560,7 @@ var Sierra = (function () {
         Control_Layoult_Botoes();
         Control_Atualizacao();
         // Privadas
-        Visual_Layoult_DataTable('.datatable');
+        //Visual_Layoult_DataTable('.datatable');
         Visual_Layoult_DataTable_Massiva('.Listagem_Table');
         Visual_Layoult_Aviso();
         Control_Layoult_Recarrega_Formulario();

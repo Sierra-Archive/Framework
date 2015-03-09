@@ -31,7 +31,7 @@
 <?php }else{ ?>
     <div class="row">
     <?php foreach($params['tamanho'] as $indice=>$span){ ?>
-        <div class="col-<?php echo $span; ?>">
+        <div class="col-md-<?php echo $span; ?>">
               <?php echo $params['conteudo'][$indice];  ?>
         </div>
     <?php } ?>

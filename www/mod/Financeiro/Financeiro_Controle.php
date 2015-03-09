@@ -209,7 +209,7 @@ class Financeiro_Controle extends \Framework\App\Controle
             return Array($tabela,$i);
         }
     }
-    protected function Movimentacao_Interna_Grafico($where=Array(),$tipo='mes',$total=false,$endereco='', $titulo='Gráfico'){
+    protected function Movimentacao_Interna_Grafico($titulo='Gráfico', $where=Array(),$tipo='mes',$total=false,$endereco=''){
         if(is_array($where)){
             $where['pago']='0';
         }else if($where!==''){
@@ -357,7 +357,7 @@ class Financeiro_Controle extends \Framework\App\Controle
             return Array($html,$i);
         }
     }
-    protected function Movimentacao_Interna_Grafico_Pago($where=Array(),$tipo='Mini',$total=false,$endereco=''){
+    protected function Movimentacao_Interna_Grafico_Pago($titulo='Gráfico', $where=Array(),$tipo='Mini',$total=false,$endereco=''){
         if(is_array($where)){
             $where['pago']='1';
         }else if($where!==''){
