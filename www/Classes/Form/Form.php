@@ -9,7 +9,7 @@ class Form
     private $_Registro          ;
     private $_Visual            ;
     // Coluna Tipo
-    private $ColunaTipo         = 'horizontal';
+    private $ColunaForm         = 'horizontal';
     //
     private $selectextra        = '';
     private $selectid           = '';
@@ -41,13 +41,13 @@ class Form
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 2.0
     */
-    public function __construct($id = 'formulario',$endereco = '', $classe='', $layoult="mini",$ColunaTipo='horizontal',$autocomplete='on') { //layoult pode ser comprimido, completo, ajax
+    public function __construct($id = 'formulario',$endereco = '', $classe='', $layoult="mini",$ColunaForm='horizontal',$autocomplete='on') { //layoult pode ser comprimido, completo, ajax
         // Puxa Registro
         $this->_Registro = &\Framework\App\Registro::getInstacia();
         $this->_Visual     = &$this->_Registro->_Visual;
         $this->layoult = $layoult;
         // Grava Coluna Tipo
-        $this->ColunaTipo = $ColunaTipo;
+        $this->ColunaForm = $ColunaForm;
         // Popup SELECT
         if(isset($_GET['formselect']) && $_GET['formselect']!='' && isset($_GET['condicao']) && $_GET['condicao']!=''){
             $extra = '?formselect='.\anti_injection($_GET['formselect']).
@@ -66,7 +66,7 @@ class Form
                 'end'               => $endereco.$extra,
                 'layoult'           => $this->layoult,
                 'form_dependencia'  => $this->form_dependencia,
-                'ColunaForm'        => $ColunaTipo,
+                'ColunaForm'        => $ColunaForm,
                 'AutoComplete'      => $autocomplete
             )
         );
@@ -128,7 +128,7 @@ class Form
                 'titulo'            => $titulo,
                 'html'              => $html,
                 'escondido'         => $escondido,
-                'ColunaTipo'        => $this->ColunaTipo
+                'ColunaForm'        => $this->ColunaForm
             )
         );
         $html                   = $this->_Visual->renderizar_bloco('template_form',$config);
@@ -240,7 +240,7 @@ class Form
                 // Outros
                 'layoult'           => $this->layoult,
                 'form_dependencia'  => $this->form_dependencia,
-                'ColunaTipo'        => $this->ColunaTipo
+                'ColunaForm'        => $this->ColunaForm
             )
         );
         $html = $Visual->renderizar_bloco('template_form',$config);
@@ -297,7 +297,7 @@ class Form
                 'valida'            => $valida,
                 'form_dependencia'  => $this->form_dependencia,
                 'escondido'         => $escondido,
-                'ColunaTipo'        => $this->ColunaTipo
+                'ColunaForm'        => $this->ColunaForm
             )
         );
         $html = $this->_Visual->renderizar_bloco('template_form',$config);
@@ -361,7 +361,7 @@ class Form
                 'valida'            => $valida,
                 'form_dependencia'  => $this->form_dependencia,
                 'escondido'         => $escondido,
-                'ColunaTipo'        => $this->ColunaTipo
+                'ColunaForm'        => $this->ColunaForm
             )
         );
         $html = $this->_Visual->renderizar_bloco('template_form',$config);
@@ -410,7 +410,7 @@ class Form
                 'urlextra'          => $urlextra,
                 'form_dependencia'  => $this->form_dependencia,
                 'escondido'         => $escondido,
-                'ColunaTipo'        => $this->ColunaTipo
+                'ColunaForm'        => $this->ColunaForm
             )
         );
         $html = $this->_Visual->renderizar_bloco('template_form',$config);
@@ -461,7 +461,7 @@ class Form
                 'form_dependencia'  => $this->form_dependencia,
                 'condicao'          => $condicao,
                 'escondido'         => $escondido,
-                'ColunaTipo'        => $this->ColunaTipo
+                'ColunaForm'        => $this->ColunaForm
             )
         );
         $this->radioextra       = $url;
@@ -483,7 +483,7 @@ class Form
      */
     public function Radio_Opcao($titulo,$value,$selected = 0){
         ++self::$tab_index;
-        if($this->ColunaTipo=='vertical'){
+        if($this->ColunaForm=='vertical'){
             $classextra = 'radio-block-level';
         }else{
             $classextra = 'radio';
@@ -498,8 +498,7 @@ class Form
                 'id'                => $this->radioid,
                 'layoult'           => $this->layoult,
                 'form_dependencia'  => $this->form_dependencia,
-                'classextra'        => $classextra,
-                'ColunaTipo'        => $this->ColunaTipo
+                'classextra'        => $classextra
             )
         );
         $html                   = $this->_Visual->renderizar_bloco('template_form',$config);
@@ -523,6 +522,7 @@ class Form
                 'end'               => $this->radioextra,
                 'form_dependencia'  => $this->form_dependencia,
                 'condicao'          => $this->radiocondicao,
+                'ColunaForm'        => $this->ColunaForm
             )
         );
         $this->radioid          = '';
@@ -561,7 +561,7 @@ class Form
                 'form_dependencia'  => $this->form_dependencia,
                 'condicao'          => $condicao,
                 'escondido'         => $escondido,
-                'ColunaTipo'        => $this->ColunaTipo
+                'ColunaForm'        => $this->ColunaForm
             )
         );
         $this->checkboxextra      = $url;
@@ -592,8 +592,7 @@ class Form
                 'valor'             => $value,
                 'selected'          => $selected,
                 'layoult'           => $this->layoult,
-                'form_dependencia'  => $this->form_dependencia,
-                'ColunaTipo'        => $this->ColunaTipo
+                'form_dependencia'  => $this->form_dependencia
             )
         );
         $html                   = $this->_Visual->renderizar_bloco('template_form',$config);
@@ -617,7 +616,7 @@ class Form
                 'end'               => $this->checkboxextra,
                 'form_dependencia'  => $this->form_dependencia,
                 'condicao'          => $this->checkboxcondicao,
-                'ColunaTipo'        => $this->ColunaTipo
+                'ColunaForm'        => $this->ColunaForm
             )
         );
         $this->selectid         = '';
@@ -676,7 +675,7 @@ class Form
                 'class'             => $class,
                 'infonulo'          => $infonulo,
                 'multiplo'          => $multiplo,
-                'ColunaTipo'        => $this->ColunaTipo
+                'ColunaForm'        => $this->ColunaForm
             )
         );
         $this->selectextra      = $url;
@@ -728,7 +727,7 @@ class Form
                 'end'               => $this->selectextra,
                 'form_dependencia'  => $this->form_dependencia,
                 'condicao'          => $this->selectcondicao,
-                'ColunaTipo'        => $this->ColunaTipo
+                'ColunaForm'        => $this->ColunaForm
             )
         );
         $this->selectid         = '';

@@ -688,7 +688,7 @@ class Visual
         // Editor de texto
         //$array_js[] = 'assets/ckeditor/ckeditor';
         if($temaconfig['bootstrap']===true){
-            $array_js[] = 'sistema/bootstrap/js/bootstrap.min';
+            $array_js[] = 'sistema/bootstrap/js/bootstrap';
             //$array_js[] = 'sistema/bootstrap/js/bootstrap-fileupload';
         }
         
@@ -697,7 +697,7 @@ class Visual
         
         // FORMULARIOS
         $array_js[] = 'assets/uniform/jquery.uniform.min';
-        $array_js[] = 'assets/chosen/chosen.jquery.min';
+        $array_js[] = 'sistema/chosen/chosen.jquery';
         
         
         $array_js[] = 'assets/jquery-tags-input/jquery.tagsinput.min';
@@ -821,8 +821,8 @@ class Visual
         // ASSETS NOVOS
         if($temaconfig['bootstrap']===true){
             array_push($array_css,
-                'sistema/bootstrap/css/bootstrap.min',
-                'sistema/bootstrap/css/bootstrap-theme.min'
+                'sistema/bootstrap/css/bootstrap',
+                'sistema/bootstrap/css/bootstrap-theme'
                 //'sistema/bootstrap/css/bootstrap-fileupload'
             );
         }
@@ -853,7 +853,7 @@ class Visual
             'assets/metr-folio/css/metro-gallery', // media="screen"
             //FORMULARIO
             'assets/uniform/css/uniform.default',
-            'assets/chosen/chosen.min',
+            'sistema/chosen/chosen',
             'assets/jquery-tags-input/jquery.tagsinput',
             'assets/bootstrap-datepicker/css/datepicker',
             'assets/bootstrap-timepicker/compiled/timepicker',
@@ -868,7 +868,7 @@ class Visual
             'sistema/data-tables/DT_bootstrap',
             
             // Sistema
-            'css/sistema'
+            'sistema/sistema'
         );        
         
         $this->Arquivos_Css($array_css);
@@ -2157,12 +2157,11 @@ class Visual
         return $i;
     }
     static function Tema_Tipos($complemento){
-         return Array(5,Array(
-             '',
+         return Array(4,Array(
              $complemento.'-success',
-             $complemento.'-important',
+             $complemento.'-info',
              $complemento.'-warning',
-             $complemento.'-success'
+             $complemento.'-danger'
          ));
     }
 }

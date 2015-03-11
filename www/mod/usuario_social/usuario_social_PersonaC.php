@@ -611,7 +611,7 @@ class usuario_social_PersonaControle extends usuario_social_Controle
         );
         self::Endereco_Persona_Ver_Ficar_Ver($ficada_id,$persona_id);
         $ficada = $this->_Modelo->db->Sql_Select('Usuario_Social_Ficou',$where, 1);
-        $html  = '<div class="col-12">';  
+        $html  = '<div class="col-sm-12">';  
         $html .= '<b>Nome 1:</b> '.$ficada->persona12.'<br>';  
         $html .= '<b>Nome 2:</b> '.$ficada->persona22.'<br>';  
         $html .= '<b>Observação:</b> '.$ficada->obs; 

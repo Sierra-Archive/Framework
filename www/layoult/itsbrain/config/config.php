@@ -17,9 +17,9 @@ function config_template(){
                 return '$( ".tabs" ).tabs( "option", "active", '.($id-1).' );';
             },
         ),
-        'camada_maior'      => '#blocomaior', //'.container > .row > .col-8',
-        'camada_menor'      => '#blocomenor', //'.container > .row > .col-4',
-        'camada_unica'      => '#blocounico', //'.container > .row > .col-12'
+        'camada_maior'      => '#blocomaior', //'.container > .row > .col-sm-8',
+        'camada_menor'      => '#blocomenor', //'.container > .row > .col-sm-4',
+        'camada_unica'      => '#blocounico', //'.container > .row > .col-sm-12'
         //'TEMA_JS_UNIFORM'   => 'NAO',
         'javascript'        => Array(
             'datatable_sdom'            => "<'datatable-header'fl>t<'datatable-footer'ip>",

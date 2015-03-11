@@ -27,9 +27,9 @@ function config_template(){
                 $("#windows_tab_'.$id.'").addClass("active")';
             },
         ),
-        'camada_maior'      => '#blocomaior', //'.container > .row > .col-8',
-        'camada_menor'      => '#blocomenor', //'.container > .row > .col-4',
-        'camada_unica'      => '#blocounico', //'.container > .row > .col-12'
+        'camada_maior'      => '#blocomaior', //'.container > .row > .col-sm-8',
+        'camada_menor'      => '#blocomenor', //'.container > .row > .col-sm-4',
+        'camada_unica'      => '#blocounico', //'.container > .row > .col-sm-12'
         //'TEMA_JS_UNIFORM'   => 'NAO',
         'javascript'        => Array(
             'datatable_sdom'            => "<'row'<'col-6'l><'col-6'f>r>t<'row'<'col-6'i><'col-6'p>>",

@@ -89,3 +89,65 @@ span.sep {
 .obrigatoriomarcado {
     border: 2px solid #FFAEB0 !important;
 }
+
+//.btn-inverse,.btn-inverse:hover{text-shadow:0 -1px 0 rgba(0,0,0,.25);color:#fff}
+
+
+.btn-inverse {
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.15) inset, 0 1px 1px rgba(0, 0, 0, 0.075);
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.2);
+}
+
+
+
+
+
+.btn {
+    min-width: 40px;
+}
+
+.btn-inverse {
+  color: #FFFFFF;
+  background-color: #000033;
+  border-color: #000000;
+}
+.btn-inverse:hover,
+.btn-inverse:focus,
+.btn-inverse.focus,
+.btn-inverse:active,
+.btn-inverse.active,
+.open > .dropdown-toggle.btn-inverse {
+  color: #FFFFFF;
+  background-color: #330000;
+  border-color: #000000;
+}
+.btn-inverse:active,
+.btn-inverse.active,
+.open > .dropdown-toggle.btn-inverse {
+  background-image: none;
+}
+.btn-inverse.disabled,
+.btn-inverse[disabled],
+fieldset[disabled] .btn-inverse,
+.btn-inverse.disabled:hover,
+.btn-inverse[disabled]:hover,
+fieldset[disabled] .btn-inverse:hover,
+.btn-inverse.disabled:focus,
+.btn-inverse[disabled]:focus,
+fieldset[disabled] .btn-inverse:focus,
+.btn-inverse.disabled.focus,
+.btn-inverse[disabled].focus,
+fieldset[disabled] .btn-inverse.focus,
+.btn-inverse.disabled:active,
+.btn-inverse[disabled]:active,
+fieldset[disabled] .btn-inverse:active,
+.btn-inverse.disabled.active,
+.btn-inverse[disabled].active,
+fieldset[disabled] .btn-inverse.active {
+  background-color: #330000;
+  border-color: #FFFFFF;
+}
+.btn-inverse .badge {
+  color: #FFFFFF;
+  background-color: #000033;
+}

@@ -108,7 +108,7 @@ class Enquete_ShowControle extends Enquete_Controle
         }
         // Captura Cores
         list($cores_qnt,$cores)             = \Framework\App\Visual::Tema_Tipos('label');
-        list($barracores_qnt,$barracores)   = \Framework\App\Visual::Tema_Tipos('progress');
+        list($barracores_qnt,$barracores)   = \Framework\App\Visual::Tema_Tipos('progress-bar');
         $cor = 0;
         // Percorre Votos
         if(!empty($votos)){
@@ -117,7 +117,7 @@ class Enquete_ShowControle extends Enquete_Controle
             }
         }
         // Percorre Respostas
-        $html = '<ul class="unstyled">';
+        $html = '<ul class="list-unstyled">';
         foreach($respostas as &$valor){
             if(!isset($contagem_votos[$valor->id]) || $total_votos==0){
                 $os_votos  = 0;
@@ -126,12 +126,14 @@ class Enquete_ShowControle extends Enquete_Controle
                 $os_votos = $contagem_votos[$valor->id];
                 $porc = round($os_votos/$total_votos*100);
             }
-            $html .= '<li>'.$valor->nome.' <strong class="label '.$cores[$cor].'"> '.$porc.'%</strong>
-                <div class="space10"></div>
-                <div class="progress '.$barracores[$cor].'">
-                    <div class="bar" style="width: '.$porc.'%;"></div>
-                </div>
-            </li>';
+            $html .= '<li>'.$valor->nome.' <strong class="label '.$cores[$cor].'"> '.$porc.'%</strong>'.
+                '<div class="space10"></div>'.
+                '<div class="progress">'.
+                    '<div style="width: '.$porc.'%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="'.$porc.'" role="progressbar" class="progress-bar progress-bar-striped '.$barracores[$cor].'">'.
+                        '<span class="sr-only">'.$porc.'%</span>'.
+                    '</div>'.
+                '</div>'.
+            '</li>';
             ++$cor;
             if($cor==$cores_qnt) $cor=0;
         }

@@ -21,9 +21,9 @@ class comercio_certificado_PropostaVisual extends comercio_certificado_Visual
         $html .= '<div class="space15"></div>';
         if(LAYOULT_IMPRIMIR!=='AJAX'){
             $html .= '<div class="row">'.
-            '<div class="col-8 bio">';
+            '<div class="col-sm-8 bio">';
         }else{
-            $html .= '<div class="col-12 bio">';
+            $html .= '<div class="col-sm-12 bio">';
         }
         $html .= '<h2>Dados da Proposta</h2>';
     

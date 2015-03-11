@@ -311,9 +311,9 @@ class comercio_certificado_ProdutoControle extends comercio_certificado_Controle
         }
         $formulario->addtexto('</span>');
         $html = $formulario->retorna_form('Salvar');
-        $html = str_replace(Array('col-12'), Array('col-8'), $html);
+        $html = str_replace(Array('col-sm-12'), Array('col-sm-8'), $html);
         // HTML EXTRA PARA ADD CAMPOS EXTRAS
-        $input = str_replace(Array('1:','col-12'), Array('\'+quant+\':','col-8'), $input);
+        $input = str_replace(Array('1:','col-sm-12'), Array('\'+quant+\':','col-sm-8'), $input);
         $html =   $botao.$html.'<script> function inputadd(){'.
                             'var quant = 1+$("#Formulario_de_Auditorias_Input input").size();'.
                             'if(quant>=10) $("#produtos_auditorias > .widget-body > .clearfix").hide();'.

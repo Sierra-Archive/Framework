@@ -16,6 +16,9 @@ class comercio_PropostaControle extends comercio_Controle
     * @version 2.0
     */
     public function __construct(){
+        if(!\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Propostas')){
+            throw new \Exception('Submodulo Comercio_Proposta Não Permitido para este Projeto', 404);
+        }
         parent::__construct();
     }
     /**
