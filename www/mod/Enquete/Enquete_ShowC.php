@@ -129,7 +129,7 @@ class Enquete_ShowControle extends Enquete_Controle
             $html .= '<li>'.$valor->nome.' <strong class="label '.$cores[$cor].'"> '.$porc.'%</strong>'.
                 '<div class="space10"></div>'.
                 '<div class="progress">'.
-                    '<div style="width: '.$porc.'%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="'.$porc.'" role="progressbar" class="progress-bar progress-bar-striped '.$barracores[$cor].'">'.
+                    '<div style="width: '.$porc.'%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="'.$porc.'" role="progressbar" class="progress-bar progress-bar-striped active '.$barracores[$cor].'">'.
                         '<span class="sr-only">'.$porc.'%</span>'.
                     '</div>'.
                 '</div>'.

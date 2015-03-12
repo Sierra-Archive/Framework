@@ -1,14 +1,6 @@
 <?php
 function config_template(){
     return Array(
-        'links_js'           => Array(
-            'jqueryui'              => true,
-            'bootstrap'             => true,
-        ),
-        'links_css'          => Array(
-            'jqueryui'              => true,
-            'bootstrap'             => true,
-        ),
         'plugins'           => Array(
             'abas_inverter'         => true,
             'abas_id'               => 'windows_tab_',

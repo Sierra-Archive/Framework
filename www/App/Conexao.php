@@ -51,6 +51,8 @@ final class Conexao
     static    $tabelas_Links            = Array();
     static    $tabelas_Links_Invertido  = Array();
     
+    public $contagem = 0;
+    
     /**
      * Construtor
      * 
@@ -1058,6 +1060,8 @@ final class Conexao
      * 
      */
     public function Sql_Select($class_dao,$condicao = false,$limit = 0, $order_by='', $campos = '*', $tempo = true){
+        ++$this->contagem;
+        var_dump('.Classe ('.$this->contagem.') -> '.$class_dao);
         if($limit===false) $limit = 0;
         /*if($tempo){
             $temponome  = $class_dao.' - '.  serialize($condicao).$limit.$order_by;
@@ -1963,6 +1967,7 @@ final class Conexao
     */
     public function __destruct()
     {
+        var_dump($this->contagem);
         $this->logurl();
         $this->mysqli->close();
     }

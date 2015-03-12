@@ -86,7 +86,7 @@ $(function(){
     $('#load-twitter-updates').click(function(){
         get_tweets()
     });
-    $('#t-twitter-status').limit('140','#t-twitter-limit');
+   // $('#t-twitter-status').limit('140','#t-twitter-limit');
     
     
     /*$('.datatable').dataTable({

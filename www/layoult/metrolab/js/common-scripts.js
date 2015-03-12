@@ -148,9 +148,9 @@ var Script = function () {
 
 // scroller
 
-    $('.scroller').slimscroll({
+    /*$('.scroller').slimscroll({
         height: 'auto'
-    });
+    });*/
     
     Template_Menu_Consertar();
     $(window).resize(function() {

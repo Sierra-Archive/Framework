@@ -2,21 +2,13 @@
 function config_template(){
     return Array(
         'Buscar'           => '<li class="pull-right search-wrap">
-                <form class="hidden-xs formajax"  id="form_Sistema_Busca" action="'.URL_PATH.'_Sistema/Principal/Busca">
-                    <div class="input-append search-input-area">
-                        <input type="text" id="busca" class="">
-                        <button type="button" class="btn"><i class="glyphicon-search"></i> </button>
-                    </div>
-                </form>
-            </li>',
-        'links_js'           => Array(
-            'jqueryui'              => true,
-            'bootstrap'             => true,
-        ),
-        'links_css'          => Array(
-            'jqueryui'              => true,
-            'bootstrap'             => true,
-        ),
+            <form class="hidden-xs formajax"  id="form_Sistema_Busca" action="'.URL_PATH.'_Sistema/Principal/Busca">
+                <div class="input-append search-input-area">
+                    <input type="text" id="busca" class="">
+                    <button type="button" class="btn"><i class="glyphicon-search"></i> </button>
+                </div>
+            </form>
+        </li>',
         'plugins'           => Array(
             'abas_inverter'         => true,
             'abas_id'               => 'windows_tab_',

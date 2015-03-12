@@ -424,7 +424,7 @@ $.extend( true, $.fn.dataTable.defaults, {
  * to give the custom type top priority
  * 
  * @param {type} param
- */
+
 jQuery.fn.dataTableExt.aTypes.unshift(
     function ( sData )
     {
@@ -695,4 +695,4 @@ jQuery.extend( jQuery.fn.dataTableExt.oSort, {
     "ip-address-desc": function ( a, b ) {
         return ((a < b) ? 1 : ((a > b) ? -1 : 0));
     }
-});
+}); */

@@ -39,7 +39,7 @@ class Modelo
      */
     public function Sistema_Menu($parent=0){
         $where = Array('parent'=>$parent, 'status'  =>    '1');
-        $menu = $this->db->Sql_Select('Sistema_Menu',$where);
+        $menu = $this->db->Sql_Select('Sistema_Menu',$where,0,'','id,link,ext,nome,img,icon');
         if($menu===false && $parent==0){
             $configmenu = \Framework\App\Acl::Sistema_Modulos_Carregar_Menu();
             $this->Sistema_Menu_Insere($configmenu);

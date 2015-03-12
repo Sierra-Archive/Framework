@@ -663,71 +663,43 @@ class Visual
             // Bloquear Tela
             'js/jquery/jquery.blockUI',
             
-            
-            
-            
-            
-            
-            
             'js/jquery/jquery.tabify',
-            'js/jquery/jquery.limit',
             
             //'js/jquery/jquery-impromptu.3.1.min',
             
             // Mascara de Formulario
             'assets/bootstrap-mask/jquery.maskedinput-1.3.min',
             
-            // Calendario Jquert
-            'js/jquery/jquery.fullcalendar',
-        );
-        if($temaconfig['jqueryui']===true){
             // Jquery UI
-            $array_js[] = 'sistema/jquery-ui/jquery-ui.min';
-        }
+            //'sistema/jquery-ui/jquery-ui.min',
         
-        // Editor de texto
-        //$array_js[] = 'assets/ckeditor/ckeditor';
-        if($temaconfig['bootstrap']===true){
-            $array_js[] = 'sistema/bootstrap/js/bootstrap';
-            //$array_js[] = 'sistema/bootstrap/js/bootstrap-fileupload';
-        }
+            'sistema/bootstrap/js/bootstrap',
         
-        // DATATABLE
-        $array_js[] = 'sistema/data-tables/jquery.dataTables';
+            // DATATABLE
+            'sistema/data-tables/jquery.dataTables',
         
-        // FORMULARIOS
-        $array_js[] = 'assets/uniform/jquery.uniform.min';
-        $array_js[] = 'sistema/chosen/chosen.jquery';
+            // FORMULARIOS
+            //'assets/uniform/jquery.uniform.min',
+            'sistema/chosen/chosen.jquery',
         
         
-        $array_js[] = 'assets/jquery-tags-input/jquery.tagsinput.min';
-        // EDITAR HTML5
-        $array_js[] = 'assets/bootstrap-wysihtml5/wysihtml5-0.3.0';
-        $array_js[] = 'assets/bootstrap-wysihtml5/bootstrap-wysihtml5';
-        // DIAL LIST
-        $array_js[] = 'sistema/bootstrap-duallistbox/jquery.bootstrap-duallistbox';
+            //'assets/jquery-tags-input/jquery.tagsinput.min',
+            // EDITAR HTML5
+            //'assets/bootstrap-wysihtml5/wysihtml5-0.3.0',
+            //'assets/bootstrap-wysihtml5/bootstrap-wysihtml5',
+            // DIAL LIST
+            'sistema/bootstrap-duallistbox/jquery.bootstrap-duallistbox',
         
-        // Datas
-        $array_js[] = 'assets/bootstrap-datepicker/js/bootstrap-datepicker';
-        $array_js[] = 'assets/bootstrap-timepicker/js/bootstrap-timepicker';
-        $array_js[] = 'assets/bootstrap-timepicker/jquery-ui-timepicker-addon';
-        $array_js[] = 'assets/bootstrap-daterangepicker/date';
-        $array_js[] = 'assets/bootstrap-daterangepicker/daterangepicker';
         
-        $array_js[] = 'assets/jquery-slimscroll/jquery.slimscroll.min';
-        $array_js[] = 'assets/bootstrap-colorpicker/js/bootstrap-colorpicker';
+            //'assets/jquery-slimscroll/jquery.slimscroll.min',
         
-        // Formularios
-        $array_js[] = 'assets/bootstrap-inputmask/bootstrap-inputmask.min';
-        $array_js[] = 'js/plugins/form-component';
-        $array_js[] = 'assets/metr-folio/js/jquery.metro-gal.plugins.min';
-        $array_js[] = 'assets/metr-folio/js/jquery.metro-gal.megafoliopro';
-        
-        // Imagem
-        //$array_js[] = 'js/jquery/jquery.lightbox-0.5';
-        //
-        // Carrega Sistema
-        $array_js[] = 'sistema/sistema';
+            // Formularios
+            //'assets/bootstrap-inputmask/bootstrap-inputmask.min',
+            //'assets/metr-folio/js/jquery.metro-gal.plugins.min',
+            //'assets/metr-folio/js/jquery.metro-gal.megafoliopro',
+            // Carrega Sistema
+            'sistema/sistema'
+        );
         
         // Carrega no JS
         $this->Arquivos_Js($array_js);
@@ -767,8 +739,57 @@ class Visual
     
     
     /*****
-     *  CSS E JS NAO USADOS MAIS
+     *  CSS NAO USADOS MAIS
      * 
+     * 
+        // calendario
+        'css/plugins/jquery.fullcalendar',
+        'css/plugins/jquery.fullcalendar.print', // media="print"
+        'assets/jquery-tags-input/jquery.tagsinput',
+        // DAta
+        'assets/bootstrap-datepicker/css/datepicker',
+        'assets/bootstrap-timepicker/compiled/timepicker',
+        'assets/bootstrap-colorpicker/css/colorpicker',
+        'assets/bootstrap-daterangepicker/daterangepicker',
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+    /*****
+     *  JS NAO USADOS MAIS
+     * 
+            'js/jquery/jquery.limit',
+            'assets/bootstrap-colorpicker/js/bootstrap-colorpicker',
+            // Calendario Jquert
+            'js/jquery/jquery.fullcalendar',
+        // Imagem
+        'js/jquery/jquery.lightbox-0.5';
+             Popup
+            'js/jquery/jquery.apprise',
+            'css/plugins/jquery.apprise',
+            
+            
+            // Graficos
+            'assets/flot/jquery.flot',
+            'assets/flot/jquery.flot.resize',
+            'assets/flot/jquery.flot.pie',
+            'assets/flot/jquery.flot.stack',
+            'assets/flot/jquery.flot.crosshair',
+            // Editor de texto
+            'assets/ckeditor/ckeditor';
+            // Formularios 
+            'js/plugins/form-component',
+            // Datas
+            'assets/bootstrap-datepicker/js/bootstrap-datepicker',
+            'assets/bootstrap-timepicker/js/bootstrap-timepicker',
+            'assets/bootstrap-timepicker/jquery-ui-timepicker-addon',
+            'assets/bootstrap-daterangepicker/date',
+            'assets/bootstrap-daterangepicker/daterangepicker',
+     * 
+     * 
+     * *** OUTROS
      * 
         // Cria Botoes que Podem ser Arrastados
         $array_js[] = 'assets/bootstrap-toggle-buttons/static/js/jquery.toggle.buttons';
@@ -784,18 +805,6 @@ class Visual
      *  // CAMADAS ELASTICAS< QUE VAO AUMENTANDO
         $array_js[] = 'js/jquery/jquery.elastic;
      * 
-     * 
-     *      Popup
-     *      'js/jquery/jquery.apprise',
-            'css/plugins/jquery.apprise',
-            
-            
-            // Graficos
-            'assets/flot/jquery.flot',
-            'assets/flot/jquery.flot.resize',
-            'assets/flot/jquery.flot.pie',
-            'assets/flot/jquery.flot.stack',
-            'assets/flot/jquery.flot.crosshair',
      */
     
     
@@ -809,58 +818,34 @@ class Visual
      * @version 0.0.1
      */
     private function Sistema_Css(){
-        $temaconfig         = &self::$config_template['links_css'];
         
         $array_css = Array();
         
-        // Carrega Css
-        if($temaconfig['jqueryui']===true){
-            // Jquery UI
-            $array_css[] = 'sistema/jquery-ui/jquery-ui.min';
-        }
-        // ASSETS NOVOS
-        if($temaconfig['bootstrap']===true){
-            array_push($array_css,
-                'sistema/bootstrap/css/bootstrap',
-                'sistema/bootstrap/css/bootstrap-theme'
-                //'sistema/bootstrap/css/bootstrap-fileupload'
-            );
-        }
-        
-        /****
-         * Carrega Css Principais
-         */
+        // JQUERY UI, BOOTSTRAP, e outros usados pelo framework
         array_push($array_css,
+            'sistema/jquery-ui/jquery-ui.min',
+            'sistema/bootstrap/css/bootstrap',
+            'sistema/bootstrap/css/bootstrap-theme',
             // Carregamento igual Google
             'sistema/nprogress/nprogress',
             // Sistema de Mensagens
             'sistema/toastr/toastr.min',
                 
             // Pequeno Aviso
-            'css/plugins/jquery.tiptip',
+            //'css/plugins/jquery.tiptip',
             // Bloquear Tela
-            'css/plugins/jquery.blockui'
-        );
-        
-        // Carrega Resto de Css
-        array_push($array_css,
+            'css/plugins/jquery.blockui',
+             // OUTROS
             'css/jcalendar',
                 
             // Pequeno Aviso
-            'css/plugins/jquery.fullcalendar',
-            'css/plugins/jquery.fullcalendar.print', // media="print"
             'assets/font-awesome/css/font-awesome',
             'assets/metr-folio/css/metro-gallery', // media="screen"
             //FORMULARIO
             'assets/uniform/css/uniform.default',
             'sistema/chosen/chosen',
-            'assets/jquery-tags-input/jquery.tagsinput',
-            'assets/bootstrap-datepicker/css/datepicker',
-            'assets/bootstrap-timepicker/compiled/timepicker',
-            'assets/bootstrap-colorpicker/css/colorpicker',
-            'assets/bootstrap-daterangepicker/daterangepicker',
             // Editor HTML5
-            'assets/bootstrap-wysihtml5/bootstrap-wysihtml5',
+            //'assets/bootstrap-wysihtml5/bootstrap-wysihtml5',
             // DUAL LIST
             'sistema/bootstrap-duallistbox/bootstrap-duallistbox',
                 

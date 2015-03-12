@@ -560,7 +560,7 @@ var Sierra = (function () {
         Control_Layoult_Botoes();
         Control_Atualizacao();
         // Privadas
-        //Visual_Layoult_DataTable('.datatable');
+        Visual_Layoult_DataTable('.datatable');
         Visual_Layoult_DataTable_Massiva('.Listagem_Table');
         Visual_Layoult_Aviso();
         Control_Layoult_Recarrega_Formulario();
@@ -858,7 +858,7 @@ var Sierra = (function () {
     function Modelo_Ajax_Chamar (url, params, tip, resposta, historico,carregando) {
         console.time('Acao_LINK');
         var retorno = false;
-        //retorno = Cache_Ler(url);
+        retorno = Cache_Ler(url);
         if(retorno!==false){
             Modelo_Ajax_JsonTratar(url,retorno,historico);
         }else{
@@ -888,7 +888,7 @@ var Sierra = (function () {
 
             },*/success: function (data) {
                 if (resposta === true) {
-                    //Cache_Gravar(url,data);
+                    Cache_Gravar(url,data);
                     Modelo_Ajax_JsonTratar(url,data,historico);
                 }
                 // Agora Tira o CArregando
@@ -976,7 +976,10 @@ var Sierra = (function () {
             var apagar  = true,
                 ordenar,
                 atual = $(this);
-            if ( !($.fn.dataTable.isDataTable(atual)) ) {
+            console.log('Datatable',$.fn.dataTable.isDataTable(atual));
+            if (!atual.hasClass('dataTable')) {
+            //if ( !($.fn.dataTable.isDataTable(atual)) ) {
+                console.log('Datatable Foi');
                 eval('ordenar = '+atual.attr('ordenar')+';');
                 if (atual.hasClass('apagado1')) {
                     apagar = false;
@@ -1006,8 +1009,8 @@ var Sierra = (function () {
         });
         // se existir, essa datatable é acionada
         /*if (i>0) {
-            jQuery('.dataTables_filter input').addClass("input-small"); // modify table search input
-            jQuery('.dataTables_length select').addClass("input-mini"); // modify table per page dropdown
+            jQuery('.dataTables_filter').find('input').addClass("input-small"); // modify table search input
+            jQuery('.dataTables_length').find('select').addClass("input-mini"); // modify table per page dropdown
         }*/
     };
     function Visual_Layoult_DataTable_Massiva (camada) {
@@ -1060,12 +1063,12 @@ var Sierra = (function () {
             width: "90%"
         });
 
-        $('.cp1').colorpicker({
+       /* $('.cp1').colorpicker({
             format: 'hex'
         });
         $('.cp2').colorpicker();
         //WYSIWYG Editor
-        $('.wysihtmleditor5').wysihtml5();
+        $('.wysihtmleditor5').wysihtml5();*/
     };
     function Visual_Layoult_Aviso () {
         
@@ -1491,8 +1494,9 @@ var Sierra = (function () {
         v=v.toUpperCase();             //Maiúsculas
         v=v.replace(/[^IVXLCDM]/g,""); //Remove tudo o que não for I, V, X, L, C, D ou M
         //Essa é complicada! Copiei daqui: http://www.diveintopython.org/refactoring/refactoring.html
-        while(v.replace(/^M{0,4}(CM|CD|D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3})$/,"")!="");
+        while(v.replace(/^M{0,4}(CM|CD|D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3})$/,"")!=""){
             v=v.replace(/.$/,"");
+        }
         return v;
     };
     /**
@@ -1505,9 +1509,10 @@ var Sierra = (function () {
         v=v.replace(/^http:\/\/?/,"");
         dominio=v;
         caminho="";
-        if(v.indexOf("/")>-1);
+        if(v.indexOf("/")>-1){
             dominio=v.split("/")[0];
-            caminho=v.replace(/[^\/]*/,"");
+        }
+        caminho=v.replace(/[^\/]*/,"");
         dominio=dominio.replace(/[^\w\.\+-:@]/g,"");
         caminho=caminho.replace(/[^\w\d\+-@:\?&=%\(\)\.]/g,"");
         caminho=caminho.replace(/([\?&])=/,"$1");
