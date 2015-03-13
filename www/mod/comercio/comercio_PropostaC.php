@@ -294,6 +294,15 @@ class comercio_PropostaControle extends comercio_Controle
         if($proposta!==false && !empty($proposta)){
             if(is_object($proposta)) $proposta = Array(0=>$proposta);
             reset($proposta);
+            //Permissoes
+            $perm_status = $this->_Registro->_Acl->Get_Permissao_Url('comercio/Proposta/StatusPropostas');
+            $perm_view = $this->_Registro->_Acl->Get_Permissao_Url('comercio/Proposta/Propostas_View');
+            $perm_sub = $this->_Registro->_Acl->Get_Permissao_Url('comercio/Proposta/Propostas_Sub');
+            $perm_comentario = $this->_Registro->_Acl->Get_Permissao_Url('comercio/Proposta/Propostas_Comentario');
+            $perm_editar = $this->_Registro->_Acl->Get_Permissao_Url('comercio/Proposta/Propostas_Edit');
+            $perm_deletar = $this->_Registro->_Acl->Get_Permissao_Url('comercio/Proposta/Propostas_Del');
+            
+            //
             foreach ($proposta as $indice=>&$valor) {
                 $tabela['Número'][$i]       =  '#'.$valor->id;
                 if($valor->propostatipo==1 || $valor->propostatipo=='1'){
@@ -342,14 +351,15 @@ class comercio_PropostaControle extends comercio_Controle
                     }
                     $tabela['Valor Total'][$i]                  =  $valor->valor;
                 }
-                $tabela['Status'][$i]                       = '<span class="status'.$valor->id.'">'.self::label($valor,$tema).'</span>';
-                $tabela['Funções'][$i]   =  $this->_Visual->Tema_Elementos_Btn('Visualizar' ,Array('Visualizar '.$titulo         ,'comercio/Proposta/Propostas_View/'.$valor->id.'/'.$tema.'/'    ,'')).
-                                            $this->_Visual->Tema_Elementos_Btn('Personalizado'    ,Array('Sub '.$titulo    ,'comercio/Proposta/Propostas_Sub/'.$valor->id.'/'.$tema.'/'    ,'','collapse','warning')).
-                                            $this->_Visual->Tema_Elementos_Btn('Personalizado'    ,Array('Histórico da '.$titulo    ,'comercio/Proposta/Propostas_Comentario/'.$valor->id.'/'.$tema.'/'    ,'','file','inverse')).
-                                            $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar '.$titulo             ,'comercio/Proposta/Propostas_Edit/'.$valor->id.'/'.$tema.'/'    ,'')).
-                                            $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar '.$titulo            ,'comercio/Proposta/Propostas_Del/'.$valor->id.'/'.$tema.'/'     ,'Deseja realmente deletar essa Proposta ? Isso irá afetar o sistema!'));
+                if($perm_status) $tabela['Status'][$i]                       = '<span class="status'.$valor->id.'">'.self::label($valor,$tema).'</span>';
+                $tabela['Funções'][$i]   =  $this->_Visual->Tema_Elementos_Btn('Visualizar' ,Array('Visualizar '.$titulo         ,'comercio/Proposta/Propostas_View/'.$valor->id.'/'.$tema.'/'    ,''),$perm_view).
+                                            $this->_Visual->Tema_Elementos_Btn('Personalizado'    ,Array('Sub '.$titulo    ,'comercio/Proposta/Propostas_Sub/'.$valor->id.'/'.$tema.'/'    ,'','collapse','warning'),$perm_sub).
+                                            $this->_Visual->Tema_Elementos_Btn('Personalizado'    ,Array('Histórico da '.$titulo    ,'comercio/Proposta/Propostas_Comentario/'.$valor->id.'/'.$tema.'/'    ,'','file','inverse'),$perm_comentario).
+                                            $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar '.$titulo             ,'comercio/Proposta/Propostas_Edit/'.$valor->id.'/'.$tema.'/'    ,''),$perm_editar).
+                                            $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar '.$titulo            ,'comercio/Proposta/Propostas_Del/'.$valor->id.'/'.$tema.'/'     ,'Deseja realmente deletar essa Proposta ? Isso irá afetar o sistema!'),$perm_deletar);
                 ++$i;
             }
+                                                                                                                                                                                                        
             if($export!==false){
                 self::Export_Todos($export,$tabela, $titulo_plural);
             }else{
@@ -2312,7 +2322,7 @@ class comercio_PropostaControle extends comercio_Controle
             $nometipo = 'Recusada';
         }
         $html = '<span class="badge badge-'.$tipo.'">'.$nometipo.'</span>';
-        if(/*$status!='3' && */$objeto->condicao_pagar!=NULL && $link===true && \Framework\App\Registro::getInstacia()->_Acl->Get_Permissao_Url('comercio/Proposta/StatusPropostas')!==false){
+        if(/*$status!='3' && */$objeto->condicao_pagar!=NULL && $link===true){
             $html = '<a href="'.URL_PATH.'comercio/Proposta/StatusPropostas/'.$id.'/'.$tema.'" border="1" class="lajax explicar-titulo" title="'.$nometipo.'" acao="" confirma="Deseja Realmente alterar o Status?">'.$html.'</a>';
         }
         return $html;
@@ -2365,12 +2375,14 @@ class comercio_PropostaControle extends comercio_Controle
         if($comentario!==false && !empty($comentario)){
             if(is_object($comentario)) $comentario = Array(0=>$comentario);
             reset($comentario);
+            $perm_editar = $this->_Registro->_Acl->Get_Permissao_Url('comercio/Proposta/Propostas_Comentario_Edit');
+            $perm_del = $this->_Registro->_Acl->Get_Permissao_Url('comercio/Estoque/Propostas_Comentario_Del');
             foreach ($comentario as $indice=>&$valor) {
                 $tabela['#Id'][$i]          =   '#'.$valor->id;
                 $tabela['Comentário'][$i]   =   nl2br($valor->comentario);
                 $tabela['Data'][$i]         =   $valor->log_date_add;
-                $tabela['Funções'][$i]      =   $this->_Visual->Tema_Elementos_Btn('Editar'          ,Array('Editar Comentário'        ,'comercio/Proposta/Propostas_Comentario_Edit/'.$proposta_id.'/'.$valor->id.'/'.$tema    ,'')).
-                                                $this->_Visual->Tema_Elementos_Btn('Deletar'         ,Array('Deletar Comentário'       ,'comercio/Proposta/Propostas_Comentario_Del/'.$proposta_id.'/'.$valor->id.'/'.$tema     ,'Deseja realmente deletar esse Comentário dessa '.$titulo.' ?'));
+                $tabela['Funções'][$i]      =   $this->_Visual->Tema_Elementos_Btn('Editar'          ,Array('Editar Comentário'        ,'comercio/Proposta/Propostas_Comentario_Edit/'.$proposta_id.'/'.$valor->id.'/'.$tema    ,''),$perm_editar).
+                                                $this->_Visual->Tema_Elementos_Btn('Deletar'         ,Array('Deletar Comentário'       ,'comercio/Proposta/Propostas_Comentario_Del/'.$proposta_id.'/'.$valor->id.'/'.$tema     ,'Deseja realmente deletar esse Comentário dessa '.$titulo.' ?'),$perm_del);
                 ++$i;
             }
             if($export!==false){
@@ -2605,6 +2617,9 @@ class comercio_PropostaControle extends comercio_Controle
             )
         )));
         $sub = $this->_Modelo->db->Sql_Select('Comercio_Proposta_Sub',$where);
+        $perm_editar = $this->_Registro->_Acl->Get_Permissao_Url('comercio/Proposta/Propostas_Sub_Edit');
+        $perm_del = $this->_Registro->_Acl->Get_Permissao_Url('comercio/Estoque/Propostas_Sub_Del');
+            
         if($sub!==false && !empty($sub)){
             if(is_object($sub)) $sub = Array(0=>$sub);
             reset($sub);
@@ -2612,8 +2627,8 @@ class comercio_PropostaControle extends comercio_Controle
                 $tabela['#Id'][$i]          =   '#'.$valor->id;
                 $tabela['Obs'][$i]          =   nl2br($valor->obs);
                 $tabela['Data'][$i]         =   $valor->log_date_add;
-                $tabela['Funções'][$i]      =   $this->_Visual->Tema_Elementos_Btn('Editar'          ,Array('Editar Sub proposta'        ,'comercio/Proposta/Propostas_Sub_Edit/'.$proposta_id.'/'.$valor->id.'/'.$tema    ,'')).
-                                                $this->_Visual->Tema_Elementos_Btn('Deletar'         ,Array('Deletar Sub proposta'       ,'comercio/Proposta/Propostas_Sub_Del/'.$proposta_id.'/'.$valor->id.'/'.$tema     ,'Deseja realmente deletar esse Sub proposta dessa '.$titulo.' ?'));
+                $tabela['Funções'][$i]      =   $this->_Visual->Tema_Elementos_Btn('Editar'          ,Array('Editar Sub proposta'        ,'comercio/Proposta/Propostas_Sub_Edit/'.$proposta_id.'/'.$valor->id.'/'.$tema    ,''),$perm_editar).
+                                                $this->_Visual->Tema_Elementos_Btn('Deletar'         ,Array('Deletar Sub proposta'       ,'comercio/Proposta/Propostas_Sub_Del/'.$proposta_id.'/'.$valor->id.'/'.$tema     ,'Deseja realmente deletar esse Sub proposta dessa '.$titulo.' ?'),$perm_del);
                 ++$i;
             }
             if($export!==false){
@@ -3053,14 +3068,18 @@ class comercio_PropostaControle extends comercio_Controle
         if($visita!==false && !empty($visita)){
             if(is_object($visita)) $visita = Array(0=>$visita);
             reset($visita);
+            $perm_view = $this->_Registro->_Acl->Get_Permissao_Url('comercio/Proposta/Visitas_Comentario');
+            $perm_editar = $this->_Registro->_Acl->Get_Permissao_Url('comercio/Proposta/Visitas_Edit');
+            $perm_del = $this->_Registro->_Acl->Get_Permissao_Url('comercio/Proposta/Visitas_Del');
+            
             foreach ($visita as $indice=>&$valor) {
                 $tabela['Cliente'][$i]         =  $valor->clientepossivel;
                 $tabela['Responsável'][$i]     =  $valor->responsavel2;
                 $tabela['Data do Contato'][$i] =  $valor->data;
                 $tabela['Próximo Contato'][$i] =  $valor->data_proximo;
-                $tabela['Funções'][$i]    =   $this->_Visual->Tema_Elementos_Btn('Personalizado'    ,Array('Histórico da Visita'    ,'comercio/Proposta/Visitas_Comentario/'.$valor->id    ,'','file','inverse'));
-                $tabela['Funções'][$i]   .=   $this->_Visual->Tema_Elementos_Btn('Editar'           ,Array('Editar Agenda de Visita'                          ,'comercio/Proposta/Visitas_Edit/'.$valor->id.'/'    ,'')).
-                                              $this->_Visual->Tema_Elementos_Btn('Deletar'          ,Array('Deletar Agenda de Visita'                         ,'comercio/Proposta/Visitas_Del/'.$valor->id.'/'     ,'Deseja realmente deletar essa agenda de Visita!'));
+                $tabela['Funções'][$i]    =   $this->_Visual->Tema_Elementos_Btn('Personalizado'    ,Array('Histórico da Visita'    ,'comercio/Proposta/Visitas_Comentario/'.$valor->id    ,'','file','inverse'),$perm_view);
+                $tabela['Funções'][$i]   .=   $this->_Visual->Tema_Elementos_Btn('Editar'           ,Array('Editar Agenda de Visita'                          ,'comercio/Proposta/Visitas_Edit/'.$valor->id.'/'    ,''),$perm_editar).
+                                              $this->_Visual->Tema_Elementos_Btn('Deletar'          ,Array('Deletar Agenda de Visita'                         ,'comercio/Proposta/Visitas_Del/'.$valor->id.'/'     ,'Deseja realmente deletar essa agenda de Visita!'),$perm_del);
                 ++$i;
             }
             if($export!==false){
@@ -3197,12 +3216,15 @@ class comercio_PropostaControle extends comercio_Controle
         if($comentario!==false && !empty($comentario)){
             if(is_object($comentario)) $comentario = Array(0=>$comentario);
             reset($comentario);
+            $perm_editar = $this->_Registro->_Acl->Get_Permissao_Url('comercio/Proposta/Visitas_Comentario_Edit');
+            $perm_del = $this->_Registro->_Acl->Get_Permissao_Url('comercio/Proposta/Visitas_Comentario_Del');
+            
             foreach ($comentario as $indice=>&$valor) {
                 $tabela['#Id'][$i]          =   '#'.$valor->id;
                 $tabela['Comentário'][$i]   =   nl2br($valor->comentario);
                 $tabela['Data'][$i]         =   $valor->log_date_add;
-                $tabela['Funções'][$i]      =   $this->_Visual->Tema_Elementos_Btn('Editar'          ,Array('Editar Comentário de Visita'        ,'comercio/Proposta/Visitas_Comentario_Edit/'.$visita_id.'/'.$valor->id    ,'')).
-                                                $this->_Visual->Tema_Elementos_Btn('Deletar'         ,Array('Deletar Comentário de Visita'       ,'comercio/Proposta/Visitas_Comentario_Del/'.$visita_id.'/'.$valor->id     ,'Deseja realmente deletar esse Comentário desse Visita ?'));
+                $tabela['Funções'][$i]      =   $this->_Visual->Tema_Elementos_Btn('Editar'          ,Array('Editar Comentário de Visita'        ,'comercio/Proposta/Visitas_Comentario_Edit/'.$visita_id.'/'.$valor->id    ,''),$perm_editar).
+                                                $this->_Visual->Tema_Elementos_Btn('Deletar'         ,Array('Deletar Comentário de Visita'       ,'comercio/Proposta/Visitas_Comentario_Del/'.$visita_id.'/'.$valor->id     ,'Deseja realmente deletar esse Comentário desse Visita ?'),$perm_del);
                 ++$i;
             }
             $this->_Visual->Show_Tabela_DataTable($tabela,'', true, false, Array(Array(0,'desc')));

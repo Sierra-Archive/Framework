@@ -95,6 +95,9 @@ class _Sistema_AdminControle extends _Sistema_Controle
         if(is_object($menu)) $menu = Array(0=>$menu);
         if($menu!==false && !empty($menu)){
             reset($menu);
+            $perm_status = $this->_Registro->_Acl->Get_Permissao_Url('_Sistema/Admin/Menu_Status');
+            $perm_editar = $this->_Registro->_Acl->Get_Permissao_Url('_Sistema/Admin/Menus_Edit');
+            $perm_del = $this->_Registro->_Acl->Get_Permissao_Url('_Sistema/Admin/Menus_Del');
             foreach ($menu as &$valor) {
                 $tabela['Pai'][$i]          =  $valor->parent2;
                 $tabela['#Gravidade'][$i]   = '#'.$valor->gravidade;
@@ -107,10 +110,10 @@ class _Sistema_AdminControle extends _Sistema_Controle
                 }else{
                     $texto = 'Ativado';
                 }
-                $tabela['Status'][$i]        = '<span id="status'.$valor->id.'">'.$this->_Visual->Tema_Elementos_Btn('Status'.$valor->status     ,Array($texto        ,'_Sistema/Admin/Menu_Status/'.$valor->id.'/'    ,'')).'</span>';
+                $tabela['Status'][$i]        = '<span id="status'.$valor->id.'">'.$this->_Visual->Tema_Elementos_Btn('Status'.$valor->status     ,Array($texto        ,'_Sistema/Admin/Menu_Status/'.$valor->id.'/'    ,''),$perm_status).'</span>';
             
-                $tabela['Funções'][$i]      = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Menu'        ,'_Sistema/Admin/Menus_Edit/'.$valor->id.'/'    ,'')).
-                                              $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Menu'       ,'_Sistema/Admin/Menus_Del/'.$valor->id.'/'     ,'Deseja realmente deletar esse Menu ? Isso irá afetar o sistema!'));
+                $tabela['Funções'][$i]      = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Menu'        ,'_Sistema/Admin/Menus_Edit/'.$valor->id.'/'    ,''),$perm_editar).
+                                              $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Menu'       ,'_Sistema/Admin/Menus_Del/'.$valor->id.'/'     ,'Deseja realmente deletar esse Menu ? Isso irá afetar o sistema!'),$perm_del);
                 ++$i;
             }
             if($export!==false && $export!=='Unico'){
@@ -314,6 +317,8 @@ class _Sistema_AdminControle extends _Sistema_Controle
         if(is_object($permissao)) $permissao = Array(0=>$permissao);
         if($permissao!==false && !empty($permissao)){
             reset($permissao);
+            $perm_editar = $this->_Registro->_Acl->Get_Permissao_Url('_Sistema/Admin/Permissoes_Edit');
+            $perm_del = $this->_Registro->_Acl->Get_Permissao_Url('_Sistema/Admin/Permissoes_Del');
             foreach ($permissao as &$valor) {
                 $tabela['Chave'][$i]        = $valor->chave;
                 $tabela['Modulo'][$i]       = $valor->modulo;
@@ -321,8 +326,8 @@ class _Sistema_AdminControle extends _Sistema_Controle
                 $tabela['Nome'][$i]         = $valor->nome;
                 $tabela['Endereço'][$i]     = $valor->end;
                 $tabela['Descrição'][$i]    = $valor->descricao;
-                $tabela['Funções'][$i]      = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Permissao'        ,'_Sistema/Admin/Permissoes_Edit/'.$valor->chave.'/'    ,'')).
-                                              $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Permissao'       ,'_Sistema/Admin/Permissoes_Del/'.$valor->chave.'/'     ,'Deseja realmente deletar essa Permissao ? Isso irá afetar o sistema!'));
+                $tabela['Funções'][$i]      = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Permissao'        ,'_Sistema/Admin/Permissoes_Edit/'.$valor->chave.'/'    ,''),$perm_editar).
+                                              $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Permissao'       ,'_Sistema/Admin/Permissoes_Del/'.$valor->chave.'/'     ,'Deseja realmente deletar essa Permissao ? Isso irá afetar o sistema!'),$perm_del);
                 ++$i;
             }
             if($export!==false && $export!=='Unico'){
@@ -502,6 +507,8 @@ class _Sistema_AdminControle extends _Sistema_Controle
         if(is_object($grupos)) $grupos = Array(0=>$grupos);
         if($grupos!==false && !empty($grupos)){
             reset($grupos);
+            $perm_editar = $this->_Registro->_Acl->Get_Permissao_Url('_Sistema/Admin/Grupos_Edit');
+            $perm_del = $this->_Registro->_Acl->Get_Permissao_Url('_Sistema/Admin/Grupos_Del');
             foreach ($grupos as $indice=>&$valor) {
                 $num_usuarios = $this->_Modelo->db->query('SELECT id,nome'.
                         ' FROM '.MYSQL_USUARIOS.' WHERE servidor=\''.SRV_NAME_SQL.'\' AND grupo='.$valor->id.' AND deletado=0');
@@ -512,9 +519,9 @@ class _Sistema_AdminControle extends _Sistema_Controle
                 $tabela['Tipo de Grupo'][$i]    = $valor->categoria2;
                 $tabela['Nome'][$i]             = '<a href="'.URL_PATH.'_Sistema/Admin/Grupo_Permissao/'.$valor->id.'" acao="" class="lajax">'.$valor->nome.'</a>';
                 $tabela['Integrantes'][$i]      = $num_qnt;
-                $tabela['Funções'][$i]          = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Grupo'        ,'_Sistema/Admin/Grupos_Edit/'.$valor->id.'/'.$grupocat    ,''));
+                $tabela['Funções'][$i]          = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Grupo'        ,'_Sistema/Admin/Grupos_Edit/'.$valor->id.'/'.$grupocat    ,''),$perm_editar);
                 if($num_qnt===0){
-                    $tabela['Funções'][$i]          .= $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Grupo'       ,'_Sistema/Admin/Grupos_Del/'.$valor->id.'/'.$grupocat     ,'Deseja realmente deletar esse Grupo ? Isso irá afetar o sistema!'));
+                    $tabela['Funções'][$i]          .= $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Grupo'       ,'_Sistema/Admin/Grupos_Del/'.$valor->id.'/'.$grupocat     ,'Deseja realmente deletar esse Grupo ? Isso irá afetar o sistema!'),$perm_del);
                 }
                 ++$i;
             }
@@ -688,14 +695,16 @@ class _Sistema_AdminControle extends _Sistema_Controle
         if(is_object($grupopermissaos)) $grupopermissaos = Array(0=>$grupopermissaos);
         if($grupopermissaos!==false && !empty($grupopermissaos)){
             reset($grupopermissaos);
+            $perm_editar = $this->_Registro->_Acl->Get_Permissao_Url('_Sistema/Admin/Grupo_Permissao_Edit');
+            $perm_del = $this->_Registro->_Acl->Get_Permissao_Url('_Sistema/Admin/Grupo_Permissao_Del');
             foreach ($grupopermissaos as $indice=>&$valor) {
                 $tabela['#Id'][$i]          = '#'.$valor->id;
                 $tabela['Grupo'][$i]        = $valor->grupo2;
                 $tabela['Permissão'][$i]    = $valor->permissao2;
                 $tabela['Valor'][$i]        = $valor->valor;
-                $tabela['Funções'][$i]      =  $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Permissão de Grupo'        ,'_Sistema/Admin/Grupo_Permissao_Edit/'.$valor->id.'/'    ,''));
+                $tabela['Funções'][$i]      =  $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Permissão de Grupo'        ,'_Sistema/Admin/Grupo_Permissao_Edit/'.$valor->id.'/'    ,''),$perm_editar);
                 if($valor->id>4){
-                    $tabela['Funções'][$i]  .= $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Permissão de Grupo'       ,'_Sistema/Admin/Grupo_Permissao_Del/'.$valor->id.'/'     ,'Deseja realmente deletar esse Grupo ? Isso irá afetar o sistema!'));
+                    $tabela['Funções'][$i]  .= $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Permissão de Grupo'       ,'_Sistema/Admin/Grupo_Permissao_Del/'.$valor->id.'/'     ,'Deseja realmente deletar esse Grupo ? Isso irá afetar o sistema!'),$perm_del);
                 }
                 ++$i;
             }
@@ -899,6 +908,8 @@ class _Sistema_AdminControle extends _Sistema_Controle
         if(is_object($grupopermissaos)) $grupopermissaos = Array(0=>$grupopermissaos);
         if($grupopermissaos!==false && !empty($grupopermissaos)){
             reset($grupopermissaos);
+            $perm_editar = $this->_Registro->_Acl->Get_Permissao_Url('_Sistema/Admin/Newsletter_Edit');
+            $perm_del = $this->_Registro->_Acl->Get_Permissao_Url('_Sistema/Admin/Newsletter_Del');
             foreach ($grupopermissaos as $indice=>&$valor) {
                 $tabela['Id'][$i]           = $valor->id;
                 $tabela['Nome'][$i]         = $valor->nome;
@@ -912,8 +923,8 @@ class _Sistema_AdminControle extends _Sistema_Controle
                 }
                 $tabela['Estado'][$i]       = $valor->estado;
                 $tabela['Linguagem'][$i]    = $valor->lang;
-                $tabela['Funções'][$i]      = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Newsletter'        ,'_Sistema/Admin/Newsletter_Edit/'.$valor->id.'/'    ,'')).
-                                              $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Newsletter'       ,'_Sistema/Admin/Newsletter_Del/'.$valor->id.'/'     ,'Deseja realmente deletar essa Newsletter ? Isso irá afetar o sistema!'));
+                $tabela['Funções'][$i]      = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Newsletter'        ,'_Sistema/Admin/Newsletter_Edit/'.$valor->id.'/'    ,''),$perm_editar).
+                                              $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Newsletter'       ,'_Sistema/Admin/Newsletter_Del/'.$valor->id.'/'     ,'Deseja realmente deletar essa Newsletter ? Isso irá afetar o sistema!'),$perm_del);
                 ++$i;
             }
             if($export!==false && $export!=='Unico'){

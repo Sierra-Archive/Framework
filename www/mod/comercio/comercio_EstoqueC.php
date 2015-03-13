@@ -259,8 +259,12 @@ class comercio_EstoqueControle extends comercio_Controle
             )
         )));
         // CONEXAO
-        $materiais = $this->_Modelo->db->Sql_Select('Comercio_Fornecedor_Material');
+        $materiais = $this->_Modelo->db->Sql_Select('Comercio_Fornecedor_Material',false,0,'');
+        
         if($materiais!==false && !empty($materiais)){
+            $perm_editar = $this->_Registro->_Acl->Get_Permissao_Url('comercio/Estoque/Material_Entrada_Edit');
+            $perm_del = $this->_Registro->_Acl->Get_Permissao_Url('comercio/Estoque/Material_Entrada_Del');
+            
             if(is_object($materiais)) $materiais = Array(0=>$materiais);
             reset($materiais);
             foreach ($materiais as &$valor) {
@@ -276,8 +280,8 @@ class comercio_EstoqueControle extends comercio_Controle
                 $tabela['Fornecedor'][$i]       = $valor->fornecedor2;
                 $tabela['Data'][$i]             = $valor->data;
                 $tabela['Valor'][$i]            = $valor->valor;
-                $tabela['Funções'][$i]   = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Entrada de NFE'        ,'comercio/Estoque/Material_Entrada_Edit/'.$valor->id.'/'    ,'')).
-                                           $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Entrada de NFE'       ,'comercio/Estoque/Material_Entrada_Del/'.$valor->id.'/'     ,'Deseja realmente deletar essa Entrada de NFE ?'));
+                $tabela['Funções'][$i]   = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Entrada de NFE'        ,'comercio/Estoque/Material_Entrada_Edit/'.$valor->id.'/'    ,''),$perm_editar).
+                                           $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Entrada de NFE'       ,'comercio/Estoque/Material_Entrada_Del/'.$valor->id.'/'     ,'Deseja realmente deletar essa Entrada de NFE ?'),$perm_del);
                 ++$i;
             }
             if($export!==false){

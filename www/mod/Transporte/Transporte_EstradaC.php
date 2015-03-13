@@ -31,6 +31,10 @@ class Transporte_EstradaControle extends Transporte_Controle
         $tabela = Array();
         $i = 0;
         if(is_object($estrada)) $estrada = Array(0=>$estrada);reset($estrada);
+        $perm_status = $registro->_Acl->Get_Permissao_Url('Transporte/Estrada/Status');
+        $perm_destaque = $registro->_Acl->Get_Permissao_Url('Transporte/Estrada/Destaques');
+        $perm_editar = $registro->_Acl->Get_Permissao_Url('Transporte/Estrada/Estradas_Edit');
+        $perm_del = $registro->_Acl->Get_Permissao_Url('Transporte/Estrada/Estradas_Del');
         foreach ($estrada as &$valor) {                
             $tabela['Id'][$i]           = '#'.$valor->id;
             $tabela['Foto'][$i]         = '<img src="'.$valor->foto.'" style="max-width:100px;" />';
@@ -42,15 +46,15 @@ class Transporte_EstradaControle extends Transporte_Controle
                 $texto = 'Desativado';
                 $valor->status='0';
             }
-            $tabela['Funções'][$i]      = '<span id="status'.$valor->id.'">'.$Visual->Tema_Elementos_Btn('Status'.$valor->status     ,Array($texto        ,'Transporte/Estrada/Status/'.$valor->id.'/'    ,'')).'</span>';
+            $tabela['Funções'][$i]      = '<span id="status'.$valor->id.'">'.$Visual->Tema_Elementos_Btn('Status'.$valor->status     ,Array($texto        ,'Transporte/Estrada/Status/'.$valor->id.'/'    ,''),$perm_status).'</span>';
             if($valor->destaque==1){
                 $texto = 'Em Destaque';
             }else{
                 $texto = 'Não está em destaque';
             }
-            $tabela['Funções'][$i]      .= '<span id="destaques'.$valor->id.'">'.$Visual->Tema_Elementos_Btn('Destaque'.$valor->destaque   ,Array($texto   ,'Transporte/Estrada/Destaques/'.$valor->id.'/'    ,'')).'</span>';
-            $tabela['Funções'][$i]      .= $Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Dica de Estrada'        ,'Transporte/Estrada/Estradas_Edit/'.$valor->id.'/'    ,'')).
-                                           $Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Dica de Estrada'       ,'Transporte/Estrada/Estradas_Del/'.$valor->id.'/'     ,'Deseja realmente deletar esse Dica de Estrada ?'));
+            $tabela['Funções'][$i]      .= '<span id="destaques'.$valor->id.'">'.$Visual->Tema_Elementos_Btn('Destaque'.$valor->destaque   ,Array($texto   ,'Transporte/Estrada/Destaques/'.$valor->id.'/'    ,''),$perm_destaques).'</span>';
+            $tabela['Funções'][$i]      .= $Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Dica de Estrada'        ,'Transporte/Estrada/Estradas_Edit/'.$valor->id.'/'    ,''),$perm_editar).
+                                           $Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Dica de Estrada'       ,'Transporte/Estrada/Estradas_Del/'.$valor->id.'/'     ,'Deseja realmente deletar esse Dica de Estrada ?'),$perm_del);
             ++$i;
         }
         return Array($tabela,$i);

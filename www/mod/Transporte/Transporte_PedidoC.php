@@ -186,14 +186,15 @@ class Transporte_PedidoControle extends Transporte_Controle
         if($pedido!==false && !empty($pedido)){
             $i = 0;
             reset($pedido);
+            $perm_status = $this->_Registro->_Acl->Get_Permissao_Url('Transporte/Pedido/Arma_Ped_Novas_Aceitar');
             foreach ($pedido as &$valor) {                
                 $tabela['Id'][$i]           = '#'.$valor->id;
                 $tabela['Pedido'][$i] = '#'.$valor->pedido2;
                 $tabela['Armazem'][$i] = '#'.$valor->log_user_id;
                 $tabela['Valor'][$i]       = $valor->valor;
                 $tabela['Observação'][$i]       = $valor->obs;
-                $tabela['Funções'][$i]      = $this->_Visual->Tema_Elementos_Btn('Status1'     ,Array('Aceitar'        ,'Transporte/Pedido/Arma_Ped_Novas_Aceitar/'.$valor->id.'/1'    ,'')).
-                                            $this->_Visual->Tema_Elementos_Btn('Status0'     ,Array('Recusar'        ,'Transporte/Pedido/Arma_Ped_Novas_Aceitar/'.$valor->id.'/2'    ,''));
+                $tabela['Funções'][$i]      = $this->_Visual->Tema_Elementos_Btn('Status1'     ,Array('Aceitar'        ,'Transporte/Pedido/Arma_Ped_Novas_Aceitar/'.$valor->id.'/1'    ,''),$perm_status).
+                                            $this->_Visual->Tema_Elementos_Btn('Status0'     ,Array('Recusar'        ,'Transporte/Pedido/Arma_Ped_Novas_Aceitar/'.$valor->id.'/2'    ,''),$perm_status);
                 ++$i;
             }
             // SE exportar ou mostra em tabela
@@ -244,14 +245,15 @@ class Transporte_PedidoControle extends Transporte_Controle
         if($pedido!==false && !empty($pedido)){
             $i = 0;
             reset($pedido);
+            $perm_status = $this->_Registro->_Acl->Get_Permissao_Url('Transporte/Pedido/Arma_Ped_Novas_Aceitar');
             foreach ($pedido as &$valor) {                
                 $tabela['Id'][$i]           = '#'.$valor->id;
                 $tabela['Pedido'][$i] = '#'.$valor->pedido2;
                 $tabela['Armazem'][$i] = '#'.$valor->log_user_id;
                 $tabela['Valor'][$i]       = $valor->valor;
                 $tabela['Observação'][$i]       = $valor->obs;
-                $tabela['Funções'][$i]      = $this->_Visual->Tema_Elementos_Btn('Status1'     ,Array('Aceitar'        ,'Transporte/Pedido/Arma_Ped_Novas_Aceitar/'.$valor->id.'/1'    ,'')).
-                                            $this->_Visual->Tema_Elementos_Btn('Status0'     ,Array('Recusar'        ,'Transporte/Pedido/Arma_Ped_Novas_Aceitar/'.$valor->id.'/2'    ,''));
+                $tabela['Funções'][$i]      = $this->_Visual->Tema_Elementos_Btn('Status1'     ,Array('Aceitar'        ,'Transporte/Pedido/Arma_Ped_Novas_Aceitar/'.$valor->id.'/1'    ,''), $perm_status).
+                                            $this->_Visual->Tema_Elementos_Btn('Status0'     ,Array('Recusar'        ,'Transporte/Pedido/Arma_Ped_Novas_Aceitar/'.$valor->id.'/2'    ,''), $perm_status);
                 ++$i;
             }
             // SE exportar ou mostra em tabela
@@ -305,6 +307,7 @@ class Transporte_PedidoControle extends Transporte_Controle
         if($pedido!==false && !empty($pedido)){
             $i = 0;
             reset($pedido);
+            $perm_del = $this->_Registro->_Acl->Get_Permissao_Url('Transporte/Pedido/Arma_Ped_Del');
             foreach ($pedido as &$valor) {                
                 $tabela['Id'][$i]           = '#'.$valor->id;
                 $tabela['Descrição'][$i]       = $valor->descricao_carga;
@@ -312,7 +315,7 @@ class Transporte_PedidoControle extends Transporte_Controle
                                                 ' cm<br><b>Comprimento:</b>'.$valor->comprimento.
                                                 ' cm<br><b>Largura:</b>'.$valor->largura.' cm<br><b>Volume:</b>'.$valor->altura*$valor->comprimento*$valor->largura.' cm³';
                 $tabela['Observação'][$i]       = $valor->obs;
-                $tabela['Funções'][$i]      = $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Cancelar Pedido'       ,'Transporte/Pedido/Arma_Ped_Del/'.$valor->id.'/'     ,'Deseja realmente Cancelar esse Pedido ?'));
+                $tabela['Funções'][$i]      = $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Cancelar Pedido'       ,'Transporte/Pedido/Arma_Ped_Del/'.$valor->id.'/'     ,'Deseja realmente Cancelar esse Pedido ?'),$perm_del);
                 ++$i;
             }
             // SE exportar ou mostra em tabela
@@ -362,6 +365,7 @@ class Transporte_PedidoControle extends Transporte_Controle
         if($pedido!==false && !empty($pedido)){
             $i = 0;
             reset($pedido);
+            $perm_add = $this->_Registro->_Acl->Get_Permissao_Url('Transporte/Pedido/Arma_Sol_Add');
             foreach ($pedido as &$valor) {                
                 $tabela['Id'][$i]           = '#'.$valor->id;
                 $tabela['Descrição'][$i]       = $valor->descricao_carga;
@@ -369,7 +373,7 @@ class Transporte_PedidoControle extends Transporte_Controle
                                                 ' cm<br><b>Comprimento:</b>'.$valor->comprimento.
                                                 ' cm<br><b>Largura:</b>'.$valor->largura.' cm<br><b>Volume:</b>'.$valor->altura*$valor->comprimento*$valor->largura.' cm³';
                 $tabela['Observação'][$i]       = $valor->obs;
-                $tabela['Funções'][$i]      = $this->_Visual->Tema_Elementos_Btn('Status1'     ,Array('Fazer Proposta'        ,'Transporte/Pedido/Arma_Sol_Add/'.$valor->id.'/'    ,''));
+                $tabela['Funções'][$i]      = $this->_Visual->Tema_Elementos_Btn('Status1'     ,Array('Fazer Proposta'        ,'Transporte/Pedido/Arma_Sol_Add/'.$valor->id.'/'    ,''),$perm_add);
                 ++$i;
             }
             // SE exportar ou mostra em tabela
@@ -560,13 +564,14 @@ class Transporte_PedidoControle extends Transporte_Controle
         if($pedido!==false && !empty($pedido)){
             $i = 0;
             reset($pedido);
+            $perm_del = $this->_Registro->_Acl->Get_Permissao_Url('Transporte/Pedido/Arma_Sol_Del');
             foreach ($pedido as &$valor) {                
                 $tabela['Id'][$i]           = '#'.$valor->id;
                 $tabela['Pedido'][$i] = '#'.$valor->pedido2;
                 $tabela['Fornecedor'][$i] = '#'.$valor->fornecedor2;
                 $tabela['Valor'][$i]       = $valor->valor;
                 $tabela['Observação'][$i]       = $valor->obs;
-                $tabela['Funções'][$i]      = $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Cancelar Proposta'       ,'Transporte/Pedido/Arma_Sol_Del/'.$valor->id.'/'     ,'Deseja realmente Cancelar essa Proposta ?'));
+                $tabela['Funções'][$i]      = $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Cancelar Proposta'       ,'Transporte/Pedido/Arma_Sol_Del/'.$valor->id.'/'     ,'Deseja realmente Cancelar essa Proposta ?'),$perm_del);
                 ++$i;
             }
             // SE exportar ou mostra em tabela
@@ -906,14 +911,15 @@ class Transporte_PedidoControle extends Transporte_Controle
         if($pedido!==false && !empty($pedido)){
             $i = 0;
             reset($pedido);
+            $perm_status = $this->_Registro->_Acl->Get_Permissao_Url('Transporte/Pedido/Trans_Ped_Novas_Aceitar');
             foreach ($pedido as &$valor) {                
                 $tabela['Id'][$i]           = '#'.$valor->id;
                 $tabela['Pedido'][$i] = '#'.$valor->pedido2;
                 $tabela['Transportadora'][$i] = '#'.$valor->log_user_id;
                 $tabela['Valor'][$i]       = $valor->valor;
                 $tabela['Observação'][$i]       = $valor->obs;
-                $tabela['Funções'][$i]      = $this->_Visual->Tema_Elementos_Btn('Status1'     ,Array('Aceitar'        ,'Transporte/Pedido/Trans_Ped_Novas_Aceitar/'.$valor->id.'/1'    ,'')).
-                                            $this->_Visual->Tema_Elementos_Btn('Status0'     ,Array('Recusar'        ,'Transporte/Pedido/Trans_Ped_Novas_Aceitar/'.$valor->id.'/2'    ,''));
+                $tabela['Funções'][$i]      = $this->_Visual->Tema_Elementos_Btn('Status1'     ,Array('Aceitar'        ,'Transporte/Pedido/Trans_Ped_Novas_Aceitar/'.$valor->id.'/1'    ,''),$perm_status).
+                                            $this->_Visual->Tema_Elementos_Btn('Status0'     ,Array('Recusar'        ,'Transporte/Pedido/Trans_Ped_Novas_Aceitar/'.$valor->id.'/2'    ,''),$perm_status);
                 ++$i;
             }
             // SE exportar ou mostra em tabela
@@ -964,14 +970,15 @@ class Transporte_PedidoControle extends Transporte_Controle
         if($pedido!==false && !empty($pedido)){
             $i = 0;
             reset($pedido);
+            $perm_status = $this->_Registro->_Acl->Get_Permissao_Url('Transporte/Pedido/Trans_Ped_Novas_Aceitar');
             foreach ($pedido as &$valor) {                
                 $tabela['Id'][$i]           = '#'.$valor->id;
                 $tabela['Pedido'][$i] = '#'.$valor->pedido2;
                 $tabela['Transportadora'][$i] = '#'.$valor->log_user_id;
                 $tabela['Valor'][$i]       = $valor->valor;
                 $tabela['Observação'][$i]       = $valor->obs;
-                $tabela['Funções'][$i]      = $this->_Visual->Tema_Elementos_Btn('Status1'     ,Array('Aceitar'        ,'Transporte/Pedido/Trans_Ped_Novas_Aceitar/'.$valor->id.'/1'    ,'')).
-                                            $this->_Visual->Tema_Elementos_Btn('Status0'     ,Array('Recusar'        ,'Transporte/Pedido/Trans_Ped_Novas_Aceitar/'.$valor->id.'/2'    ,''));
+                $tabela['Funções'][$i]      = $this->_Visual->Tema_Elementos_Btn('Status1'     ,Array('Aceitar'        ,'Transporte/Pedido/Trans_Ped_Novas_Aceitar/'.$valor->id.'/1'    ,''),$perm_status).
+                                            $this->_Visual->Tema_Elementos_Btn('Status0'     ,Array('Recusar'        ,'Transporte/Pedido/Trans_Ped_Novas_Aceitar/'.$valor->id.'/2'    ,''), $perm_status);
                 ++$i;
             }
             // SE exportar ou mostra em tabela
@@ -1025,6 +1032,7 @@ class Transporte_PedidoControle extends Transporte_Controle
         if($pedido!==false && !empty($pedido)){
             $i = 0;
             reset($pedido);
+            $perm_del = $this->_Registro->_Acl->Get_Permissao_Url('Transporte/Pedido/Trans_Ped_Del');
             foreach ($pedido as &$valor) {                
                 $tabela['Id'][$i]           = '#'.$valor->id;
                 $tabela['Descrição'][$i]       = $valor->descricao_carga;
@@ -1032,7 +1040,7 @@ class Transporte_PedidoControle extends Transporte_Controle
                                                 ' cm<br><b>Comprimento:</b>'.$valor->comprimento.
                                                 ' cm<br><b>Largura:</b>'.$valor->largura.' cm<br><b>Volume:</b>'.$valor->altura*$valor->comprimento*$valor->largura.' cm³';
                 $tabela['Observação'][$i]       = $valor->obs;
-                $tabela['Funções'][$i]      = $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Cancelar Pedido'       ,'Transporte/Pedido/Trans_Ped_Del/'.$valor->id.'/'     ,'Deseja realmente Cancelar esse Pedido ?'));
+                $tabela['Funções'][$i]      = $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Cancelar Pedido'       ,'Transporte/Pedido/Trans_Ped_Del/'.$valor->id.'/'     ,'Deseja realmente Cancelar esse Pedido ?'),$perm_del);
                 ++$i;
             }
             // SE exportar ou mostra em tabela
@@ -1082,6 +1090,7 @@ class Transporte_PedidoControle extends Transporte_Controle
         if($pedido!==false && !empty($pedido)){
             $i = 0;
             reset($pedido);
+            $perm_status = $this->_Registro->_Acl->Get_Permissao_Url('Transporte/Pedido/Trans_Sol_Add');
             foreach ($pedido as &$valor) {                
                 $tabela['Id'][$i]           = '#'.$valor->id;
                 $tabela['Descrição'][$i]       = $valor->descricao_carga;
@@ -1089,7 +1098,7 @@ class Transporte_PedidoControle extends Transporte_Controle
                                                 ' cm<br><b>Comprimento:</b>'.$valor->comprimento.
                                                 ' cm<br><b>Largura:</b>'.$valor->largura.' cm<br><b>Volume:</b>'.$valor->altura*$valor->comprimento*$valor->largura.' cm³';
                 $tabela['Observação'][$i]       = $valor->obs;
-                $tabela['Funções'][$i]      = $this->_Visual->Tema_Elementos_Btn('Status1'     ,Array('Fazer Proposta'        ,'Transporte/Pedido/Trans_Sol_Add/'.$valor->id.'/'    ,''));
+                $tabela['Funções'][$i]      = $this->_Visual->Tema_Elementos_Btn('Status1'     ,Array('Fazer Proposta'        ,'Transporte/Pedido/Trans_Sol_Add/'.$valor->id.'/'    ,''),$perm_status);
                 ++$i;
             }
             // SE exportar ou mostra em tabela
@@ -1280,13 +1289,14 @@ class Transporte_PedidoControle extends Transporte_Controle
         if($pedido!==false && !empty($pedido)){
             $i = 0;
             reset($pedido);
+            $perm_del = $this->_Registro->_Acl->Get_Permissao_Url('Transporte/Pedido/Trans_Sol_Del');
             foreach ($pedido as &$valor) {                
                 $tabela['Id'][$i]           = '#'.$valor->id;
                 $tabela['Pedido'][$i] = '#'.$valor->pedido2;
                 $tabela['Fornecedor'][$i] = '#'.$valor->fornecedor2;
                 $tabela['Valor'][$i]       = $valor->valor;
                 $tabela['Observação'][$i]       = $valor->obs;
-                $tabela['Funções'][$i]      = $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Cancelar Proposta'       ,'Transporte/Pedido/Trans_Sol_Del/'.$valor->id.'/'     ,'Deseja realmente Cancelar essa Proposta ?'));
+                $tabela['Funções'][$i]      = $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Cancelar Proposta'       ,'Transporte/Pedido/Trans_Sol_Del/'.$valor->id.'/'     ,'Deseja realmente Cancelar essa Proposta ?'),$perm_del);
                 ++$i;
             }
             // SE exportar ou mostra em tabela
@@ -1622,14 +1632,15 @@ class Transporte_PedidoControle extends Transporte_Controle
         if($pedido!==false && !empty($pedido)){
             $i = 0;
             reset($pedido);
+            $perm_status = $this->_Registro->_Acl->Get_Permissao_Url('Transporte/Pedido/Caminho_Ped_Novas_Aceitar');
             foreach ($pedido as &$valor) {                
                 $tabela['Id'][$i]           = '#'.$valor->id;
                 $tabela['Pedido'][$i] = '#'.$valor->pedido2;
                 $tabela['Caminhoneiro'][$i] = '#'.$valor->log_user_id;
                 $tabela['Valor'][$i]       = $valor->valor;
                 $tabela['Observação'][$i]       = $valor->obs;
-                $tabela['Funções'][$i]      = $this->_Visual->Tema_Elementos_Btn('Status1'     ,Array('Aceitar'        ,'Transporte/Pedido/Caminho_Ped_Novas_Aceitar/'.$valor->id.'/1'    ,'')).
-                                            $this->_Visual->Tema_Elementos_Btn('Status0'     ,Array('Recusar'        ,'Transporte/Pedido/Caminho_Ped_Novas_Aceitar/'.$valor->id.'/2'    ,''));
+                $tabela['Funções'][$i]      = $this->_Visual->Tema_Elementos_Btn('Status1'     ,Array('Aceitar'        ,'Transporte/Pedido/Caminho_Ped_Novas_Aceitar/'.$valor->id.'/1'    ,''),$perm_status).
+                                            $this->_Visual->Tema_Elementos_Btn('Status0'     ,Array('Recusar'        ,'Transporte/Pedido/Caminho_Ped_Novas_Aceitar/'.$valor->id.'/2'    ,''),$perm_status);
                 ++$i;
             }
             // SE exportar ou mostra em tabela
@@ -1680,14 +1691,15 @@ class Transporte_PedidoControle extends Transporte_Controle
         if($pedido!==false && !empty($pedido)){
             $i = 0;
             reset($pedido);
+            $perm_status = $this->_Registro->_Acl->Get_Permissao_Url('Transporte/Pedido/Caminho_Ped_Novas_Aceitar');
             foreach ($pedido as &$valor) {                
                 $tabela['Id'][$i]           = '#'.$valor->id;
                 $tabela['Pedido'][$i] = '#'.$valor->pedido2;
                 $tabela['Caminhoneiro'][$i] = '#'.$valor->log_user_id;
                 $tabela['Valor'][$i]       = $valor->valor;
                 $tabela['Observação'][$i]       = $valor->obs;
-                $tabela['Funções'][$i]      = $this->_Visual->Tema_Elementos_Btn('Status1'     ,Array('Aceitar'        ,'Transporte/Pedido/Caminho_Ped_Novas_Aceitar/'.$valor->id.'/1'    ,'')).
-                                            $this->_Visual->Tema_Elementos_Btn('Status0'     ,Array('Recusar'        ,'Transporte/Pedido/Caminho_Ped_Novas_Aceitar/'.$valor->id.'/2'    ,''));
+                $tabela['Funções'][$i]      = $this->_Visual->Tema_Elementos_Btn('Status1'     ,Array('Aceitar'        ,'Transporte/Pedido/Caminho_Ped_Novas_Aceitar/'.$valor->id.'/1'    ,''),$perm_status).
+                                            $this->_Visual->Tema_Elementos_Btn('Status0'     ,Array('Recusar'        ,'Transporte/Pedido/Caminho_Ped_Novas_Aceitar/'.$valor->id.'/2'    ,''),$perm_status);
                 ++$i;
             }
             // SE exportar ou mostra em tabela
@@ -1741,6 +1753,7 @@ class Transporte_PedidoControle extends Transporte_Controle
         if($pedido!==false && !empty($pedido)){
             $i = 0;
             reset($pedido);
+            $perm_del = $this->_Registro->_Acl->Get_Permissao_Url('Transporte/Pedido/Caminho_Ped_Del');
             foreach ($pedido as &$valor) {                
                 $tabela['Id'][$i]           = '#'.$valor->id;
                 $tabela['Descrição'][$i]       = $valor->descricao_carga;
@@ -1748,7 +1761,7 @@ class Transporte_PedidoControle extends Transporte_Controle
                                                 ' cm<br><b>Comprimento:</b>'.$valor->comprimento.
                                                 ' cm<br><b>Largura:</b>'.$valor->largura.' cm<br><b>Volume:</b>'.$valor->altura*$valor->comprimento*$valor->largura.' cm³';
                 $tabela['Observação'][$i]       = $valor->obs;
-                $tabela['Funções'][$i]      = $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Cancelar Pedido'       ,'Transporte/Pedido/Caminho_Ped_Del/'.$valor->id.'/'     ,'Deseja realmente Cancelar esse Pedido ?'));
+                $tabela['Funções'][$i]      = $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Cancelar Pedido'       ,'Transporte/Pedido/Caminho_Ped_Del/'.$valor->id.'/'     ,'Deseja realmente Cancelar esse Pedido ?'), $perm_del);
                 ++$i;
             }
             // SE exportar ou mostra em tabela
@@ -1798,6 +1811,7 @@ class Transporte_PedidoControle extends Transporte_Controle
         if($pedido!==false && !empty($pedido)){
             $i = 0;
             reset($pedido);
+            $perm_add = $this->_Registro->_Acl->Get_Permissao_Url('Transporte/Pedido/Caminho_Sol_Add');
             foreach ($pedido as &$valor) {                
                 $tabela['Id'][$i]           = '#'.$valor->id;
                 $tabela['Descrição'][$i]       = $valor->descricao_carga;
@@ -1805,7 +1819,7 @@ class Transporte_PedidoControle extends Transporte_Controle
                                                 ' cm<br><b>Comprimento:</b>'.$valor->comprimento.
                                                 ' cm<br><b>Largura:</b>'.$valor->largura.' cm<br><b>Volume:</b>'.$valor->altura*$valor->comprimento*$valor->largura.' cm³';
                 $tabela['Observação'][$i]       = $valor->obs;
-                $tabela['Funções'][$i]      = $this->_Visual->Tema_Elementos_Btn('Status1'     ,Array('Fazer Proposta'        ,'Transporte/Pedido/Caminho_Sol_Add/'.$valor->id.'/'    ,''));
+                $tabela['Funções'][$i]      = $this->_Visual->Tema_Elementos_Btn('Status1'     ,Array('Fazer Proposta'        ,'Transporte/Pedido/Caminho_Sol_Add/'.$valor->id.'/'    ,''),$perm_add);
                 ++$i;
             }
             // SE exportar ou mostra em tabela
@@ -1996,13 +2010,14 @@ class Transporte_PedidoControle extends Transporte_Controle
         if($pedido!==false && !empty($pedido)){
             $i = 0;
             reset($pedido);
+            $perm_del = $this->_Registro->_Acl->Get_Permissao_Url('Transporte/Pedido/Caminho_Sol_Del');
             foreach ($pedido as &$valor) {                
                 $tabela['Id'][$i]           = '#'.$valor->id;
                 $tabela['Pedido'][$i] = '#'.$valor->pedido2;
                 $tabela['Transportadora'][$i] = '#'.$valor->transportadora2;
                 $tabela['Valor'][$i]       = $valor->valor;
                 $tabela['Observação'][$i]       = $valor->obs;
-                $tabela['Funções'][$i]      = $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Cancelar Proposta'       ,'Transporte/Pedido/Caminho_Sol_Del/'.$valor->id.'/'     ,'Deseja realmente Cancelar essa Proposta ?'));
+                $tabela['Funções'][$i]      = $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Cancelar Proposta'       ,'Transporte/Pedido/Caminho_Sol_Del/'.$valor->id.'/'     ,'Deseja realmente Cancelar essa Proposta ?'),$perm_del);
                 ++$i;
             }
             // SE exportar ou mostra em tabela

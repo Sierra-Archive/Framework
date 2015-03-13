@@ -120,6 +120,8 @@ class usuario_AcessoControle extends usuario_Controle
         if(is_object($usuarios)) $usuarios = Array(0=>$usuarios);
         if($usuarios!==false && !empty($usuarios)){
             reset($usuarios);
+            $perm_editar = $this->_Registro->_Acl->Get_Permissao_Url('usuario/Acesso/UsuariosAcesso_Edit');
+            
             foreach ($usuarios as $indice=>&$valor) {
                 $tabela['#Id'][$i]       = '#'.$valor->id;
                 $tabela['Grupo'][$i]     = $valor->grupo2;
@@ -155,7 +157,7 @@ class usuario_AcessoControle extends usuario_Controle
                 }
                 $tabela['Acesso'][$i]    = $permissoes;
                 // Funcoes
-                $tabela['Funções'][$i]   = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Permissão do Usuario'        ,'usuario/Acesso/UsuariosAcesso_Edit/'.$valor->id.$linkextra    ,''));
+                $tabela['Funções'][$i]   = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Permissão do Usuario'        ,'usuario/Acesso/UsuariosAcesso_Edit/'.$valor->id.$linkextra    ,''),$perm_editar);
                 ++$i;
             }
             $this->_Visual->Show_Tabela_DataTable($tabela);

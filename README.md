@@ -3,6 +3,8 @@ Framework
 
 Framework desenvolvido para Sistemas de Gestão
 
+"O que me cita, me excita!"
+
 Instalação
 -------
 

@@ -9,7 +9,7 @@ class Tempo{
         $this->comeco = microtime(true);
     }
     public function Fechar($fechar=true){
-        $tempofinal = number_format(microtime(true)-$this->comeco, 10);
+        $tempofinal = number_format((microtime(true)-$this->comeco)*1000, 10);
         self::$log[] = Array(
             $this->nome,
             $tempofinal,
@@ -25,7 +25,7 @@ class Tempo{
         $this->Fechar(false);
     }
     private static function Tempo_Pagina(){
-        $tempofinal = number_format(microtime(true)-TEMPO_COMECO, 10);
+        $tempofinal = number_format((microtime(true)-TEMPO_COMECO)*1000, 10);
         self::$log[] = Array(
             SERVER_URL,
             $tempofinal,
@@ -102,7 +102,7 @@ class Tempo{
         
         // Grava Tempo de Log
         $nome   = 'Log Salvar S.M';
-        $tempo  = number_format(microtime(true)-$comeco, 10);
+        $tempo  = number_format((microtime(true)-$comeco)*1000, 10);
         $chave  = sha1($nome);
         if(isset($registro_mysql[$chave])){
             $log_sql = &$registro_mysql[$chave];

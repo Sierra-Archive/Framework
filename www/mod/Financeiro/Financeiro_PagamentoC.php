@@ -520,12 +520,16 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
         if($formas!==false && !empty($formas)){
             if(is_object($formas)) $formas = Array(0=>$formas);
             reset($formas);
+            $perm_condicoes = $this->_Registro->_Acl->Get_Permissao_Url('Financeiro/Pagamento/Condicoes');
+            $perm_editar = $this->_Registro->_Acl->Get_Permissao_Url('Financeiro/Pagamento/Formas_Edit');
+            $perm_del = $this->_Registro->_Acl->Get_Permissao_Url('Financeiro/Pagamento/Formas_Del');
+            
             foreach ($formas as $indice=>&$valor) {
                 //$tabela['#Id'][$i]       = '#'.$valor->id;
                 $tabela['Nome'][$i]      = $valor->nome;
-                $tabela['Funções'][$i]   = $this->_Visual->Tema_Elementos_Btn('Visualizar'      ,Array('Visualizar Condições de Pagamento','Financeiro/Pagamento/Condicoes/'.$valor->id.'/'    ,'')).
-                                           $this->_Visual->Tema_Elementos_Btn('Editar'          ,Array('Editar Forma de Pagamento'        ,'Financeiro/Pagamento/Formas_Edit/'.$valor->id.'/'    ,'')).
-                                           $this->_Visual->Tema_Elementos_Btn('Deletar'         ,Array('Deletar Forma de Pagamento'       ,'Financeiro/Pagamento/Formas_Del/'.$valor->id.'/'     ,'Deseja realmente deletar essa Forma de Pagamento ?'));
+                $tabela['Funções'][$i]   = $this->_Visual->Tema_Elementos_Btn('Visualizar'      ,Array('Visualizar Condições de Pagamento','Financeiro/Pagamento/Condicoes/'.$valor->id.'/'    ,''),$perm_condicoes).
+                                           $this->_Visual->Tema_Elementos_Btn('Editar'          ,Array('Editar Forma de Pagamento'        ,'Financeiro/Pagamento/Formas_Edit/'.$valor->id.'/'    ,''),$perm_editar).
+                                           $this->_Visual->Tema_Elementos_Btn('Deletar'         ,Array('Deletar Forma de Pagamento'       ,'Financeiro/Pagamento/Formas_Del/'.$valor->id.'/'     ,'Deseja realmente deletar essa Forma de Pagamento ?'),$perm_del);
                 ++$i;
             }
             if($export!==false){
@@ -700,14 +704,18 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
         if($condicoes!==false && !empty($condicoes)){
             if(is_object($condicoes)) $condicoes = Array(0=>$condicoes);
             reset($condicoes);
+            $perm_editar = $this->_Registro->_Acl->Get_Permissao_Url('Financeiro/Pagamento/Condicoes_Edit');
+            $perm_del = $this->_Registro->_Acl->Get_Permissao_Url('Financeiro/Pagamento/Condicoes_Del');
+            
+            
             foreach ($condicoes as $indice=>&$valor) {
                 //$tabela['#Id'][$i]       = '#'.$valor->id;
                 $tabela['Forma de Pagamento'][$i]   = $valor->forma_pagar2;
                 $tabela['Nome'][$i]                 = $valor->nome;
                 $tabela['Entrada'][$i]              = $valor->entrada;
                 $tabela['N° de Parcelas'][$i]       = $valor->parcelas.' Parcelas';
-                $tabela['Funções'][$i]              = $this->_Visual->Tema_Elementos_Btn('Editar'          ,Array('Editar '.$titulo        ,'Financeiro/Pagamento/Condicoes_Edit/'.$valor->id.$link_extra    ,'')).
-                                                      $this->_Visual->Tema_Elementos_Btn('Deletar'         ,Array('Deletar '.$titulo       ,'Financeiro/Pagamento/Condicoes_Del/'.$valor->id.$link_extra     ,'Deseja realmente deletar essa '.$titulo.' ?'));
+                $tabela['Funções'][$i]              = $this->_Visual->Tema_Elementos_Btn('Editar'          ,Array('Editar '.$titulo        ,'Financeiro/Pagamento/Condicoes_Edit/'.$valor->id.$link_extra    ,''),$perm_editar).
+                                                      $this->_Visual->Tema_Elementos_Btn('Deletar'         ,Array('Deletar '.$titulo       ,'Financeiro/Pagamento/Condicoes_Del/'.$valor->id.$link_extra     ,'Deseja realmente deletar essa '.$titulo.' ?'),$perm_del);
                 ++$i;
             }
             

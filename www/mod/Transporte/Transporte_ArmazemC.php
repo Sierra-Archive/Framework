@@ -31,12 +31,13 @@ class Transporte_ArmazemControle extends Transporte_Controle
         $tabela = Array();
         $i = 0;
         if(is_object($armazem)) $armazem = Array(0=>$armazem);reset($armazem);
+        $perm_view = $registro->_Acl->Get_Permissao_Url('Transporte/Armazem/Visualizar');
         foreach ($armazem as &$valor) {                
             $tabela['Id'][$i]           = '#'.$valor->id;
             $tabela['Razão Social'][$i] = $valor->usuario2;
             $tabela['Categoria'][$i]    = $valor->categoria2;
             $tabela['Observação'][$i]   = $valor->obs;
-            $tabela['Visualizar'][$i]   = $Visual->Tema_Elementos_Btn('Visualizar'     ,Array('Visualizar'        ,'Transporte/Armazem/Visualizar/'.$valor->id    ,''));
+            $tabela['Visualizar'][$i]   = $Visual->Tema_Elementos_Btn('Visualizar'     ,Array('Visualizar'        ,'Transporte/Armazem/Visualizar/'.$valor->id    ,''),$perm_view);
             
             ++$i;
         }

@@ -79,6 +79,11 @@ class comercio_ProdutoControle extends comercio_Controle
         if($produto!==false && !empty($produto)){
             if(is_object($produto)) $produto = Array(0=>$produto);
             reset($produto);
+            $perm_view = $this->_Registro->_Acl->Get_Permissao_Url('comercio/Estoque/Estoques');
+            $perm_reduzir = $this->_Registro->_Acl->Get_Permissao_Url('comercio/Produto/Estoque_Reduzir');
+            $perm_editar = $this->_Registro->_Acl->Get_Permissao_Url('comercio/Produto/Produtos_Edit');
+            $perm_del = $this->_Registro->_Acl->Get_Permissao_Url('comercio/Produto/Produtos_Del');
+            
             foreach ($produto as &$valor) {
                 if($comercio_Produto_Cod){
                     $tabela['#Cod'][$i]      = '#'.$valor->cod;
@@ -104,16 +109,16 @@ class comercio_ProdutoControle extends comercio_Controle
                         $tabela['Estoque'][$i]   .= ' '.$valor->unidade2;
                     }
                     $tabela['Estoque'][$i] .= '</a>';
-                    $tabela['Funções'][$i]  = $this->_Visual->Tema_Elementos_Btn('Visualizar' ,Array('Visualizar Estoque'    ,'comercio/Estoque/Estoques/'.$valor->id.'/'    ,'')).
-                                            $this->_Visual->Tema_Elementos_Btn('Personalizado'   ,Array('Reduzir Estoque'  ,'comercio/Produto/Estoque_Reduzir/'.$valor->id.'/'    ,'','long-arrow-down','inverse'));
+                    $tabela['Funções'][$i]  = $this->_Visual->Tema_Elementos_Btn('Visualizar' ,Array('Visualizar Estoque'    ,'comercio/Estoque/Estoques/'.$valor->id.'/'    ,''),$perm_view).
+                                            $this->_Visual->Tema_Elementos_Btn('Personalizado'   ,Array('Reduzir Estoque'  ,'comercio/Produto/Estoque_Reduzir/'.$valor->id.'/'    ,'','long-arrow-down','inverse'),$perm_reduzir);
                 }else{
                     if($comercio_Unidade){
                         $tabela['Unidade'][$i]   = $valor->unidade2;
                     }
                     $tabela['Funções'][$i]   = '';
                 }
-                $tabela['Funções'][$i]   .= $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Produto'        ,'comercio/Produto/Produtos_Edit/'.$valor->id.'/'    ,'')).
-                                            $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Produto'       ,'comercio/Produto/Produtos_Del/'.$valor->id.'/'     ,'Deseja realmente deletar esse Produto ?'));
+                $tabela['Funções'][$i]   .= $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Produto'        ,'comercio/Produto/Produtos_Edit/'.$valor->id.'/'    ,''),$perm_editar).
+                                            $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Produto'       ,'comercio/Produto/Produtos_Del/'.$valor->id.'/'     ,'Deseja realmente deletar esse Produto ?'),$perm_del);
                 ++$i;
             }
             $ordem = Array($ordem,'asc');

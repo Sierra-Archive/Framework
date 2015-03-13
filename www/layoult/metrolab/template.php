@@ -46,11 +46,11 @@
         <div class="navbar-header navbar-right">
             <ul class="nav pull-right top-menu navbar-nav">
                 <!-- BEGIN SUPPORT  -->
-                <li class="dropdown mtop5"><a class="dropdown-toggle element lajax" acao="" data-placement="bottom" data-toggle="tooltip" href="http://localhost/Framework/www/usuario/Admin/Usuarios_Add/cliente" data-original-title="Novo Cliente"><i class="glyphicon-user"></i></a></li>                            <!-- END SUPPORT -->
+                <li class="dropdown mtop5"><a class="dropdown-toggle element lajax" acao="" data-placement="bottom" data-toggle="tooltip" href="<?php echo SISTEMA_URL.SISTEMA_DIR; ?>usuario/Admin/Usuarios_Add/cliente" data-original-title="Novo Cliente"><i class="glyphicon-user"></i></a></li>                            <!-- END SUPPORT -->
                 <!-- BEGIN USER LOGIN DROPDOWN -->
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <img src="http://localhost/Framework/web/img/icons/clientes.png" width="30" height="30">
+                        <img src="<?php echo SISTEMA_URL.SISTEMA_DIR; ?>web/img/icons/clientes.png" width="30" height="30">
                         <span class="username">ADMINISTRADOR</span>
                         <b class="caret"></b>
                     </a>

@@ -45,7 +45,7 @@ class comercio_venda_Principal implements PrincipalInterface
                     $cor = 'important';
                     $numero = $valor->valor;
                     $html .= '<a data-original-title="Novo Caixa" 
-                        href="http://localhost/Framework/comercio_venda/Carrinho/Carrinhos_Add?popup=true" 
+                        href="'.SISTEMA_URL.SISTEMA_DIR.'comercio_venda/Carrinho/Carrinhos_Add?popup=true" 
                         data-toggle="tooltip" data-placement="bottom" acao="" class="glyphicon-btn col-3 lajax">
                         <i class="glyphicon-food"></i>
                         <div>Balcão '.$i.'</div>
@@ -80,7 +80,7 @@ class comercio_venda_Principal implements PrincipalInterface
                 
                 // Faz o Html da Parada
                 $html .= '<a data-original-title="Novo Caixa" 
-                        href="http://localhost/Framework/comercio_venda/Carrinho/Carrinhos_Add?popup=true" 
+                        href="'.SISTEMA_URL.SISTEMA_DIR.'comercio_venda/Carrinho/Carrinhos_Add?popup=true" 
                         data-toggle="tooltip" data-placement="bottom" acao="" class="glyphicon-btn col-3 lajax">
                         <i class="glyphicon-food"></i>
                     <div>'.$valor->nome.'</div>

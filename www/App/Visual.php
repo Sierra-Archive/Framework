@@ -934,7 +934,7 @@ class Visual
             $config = Array(
                 "url_path"      => URL_PATH,
                 'user_name'     => $this->_Acl->logado_usuario->nome,
-                'upload_foto'   => ($this->_Acl->logado_usuario->foto)?$this->_Acl->logado_usuario->foto:'http://localhost/Framework/web/img/icons/clientes.png'/*$this->Show_Upload('usuario','Perfil','PerfilFoto','PerfilFoto',$foto,'usuario'.DS,$this->_Acl->logado_usuario->id,'','36','36')*/
+                'upload_foto'   => ($this->_Acl->logado_usuario->foto)?$this->_Acl->logado_usuario->foto:SISTEMA_URL.SISTEMA_DIR.'web/img/icons/clientes.png'/*$this->Show_Upload('usuario','Perfil','PerfilFoto','PerfilFoto',$foto,'usuario'.DS,$this->_Acl->logado_usuario->id,'','36','36')*/
             );
             $html = $this->renderizar_bloco('widget_usuario',$config);
         }
@@ -1164,7 +1164,7 @@ class Visual
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.0.1
      */
-    public function Tema_Elementos_Btn($tipo='Editar',$nome = Array('Adicionar','#','')){
+    public function Tema_Elementos_Btn($tipo='Editar',$nome = Array('Adicionar','#',''),$permissao='_'){
         if(!is_array($nome)) throw new \Exception('$nome não é array: '.$nome,2810);
         if($tipo=='Superior'){
             if(isset($nome[1]['Print'])){
@@ -1179,7 +1179,7 @@ class Visual
             }else{
                 $ferramentas = false;
             }
-            $permissao = $this->_Registro->_Acl->Get_Permissao_Url($nome[1]);
+            if($permissao==='_') $permissao = $this->_Registro->_Acl->Get_Permissao_Url($nome[1]);
             if($permissao!==false && isset($nome[2])){
                 $array = Array(
                     'btn_add'           => Array(
@@ -1201,33 +1201,47 @@ class Visual
             }
             return $this->renderizar_bloco('elemento_botao',$array);  
         }else if($tipo=='Personalizado'){
-            $permissao = $this->_Registro->_Acl->Get_Permissao_Url($nome[1]);
+            if($permissao==='_') $permissao = $this->_Registro->_Acl->Get_Permissao_Url($nome[1]);
             if($permissao===false) return '';
-            $array = Array(
-                'btn_add'           => Array(
-                    'nome'              => $nome[0],
-                    'url'               => $nome[1],
-                    'onclick'           => $nome[2],
-                    'icone'             => $nome[3],
-                    'cor'               => $nome[4],
-                ),
-                'Ferramentas'       => '',
-                'Tipo'              => $tipo
-            );
-            return $this->renderizar_bloco('elemento_botao',$array);  
+            //'onclick'           => $nome[2]
+            return     '<a href="'.URL_PATH.$nome[1].'" class="btn btn-'.$nome[4].' lajax explicar-titulo" title="'.$nome[0].'" acao=""><i class="glyphicon-'.$nome[3].'"></i></a>';  
         }else{
-            $permissao = $this->_Registro->_Acl->Get_Permissao_Url($nome[1]);
+            if($permissao==='_') $permissao = $this->_Registro->_Acl->Get_Permissao_Url($nome[1]);
             if($permissao===false) return '';
-            $array = Array(
-                'btn_add'           => Array(
-                    'nome'              => $nome[0],
-                    'url'               => $nome[1],
-                    'onclick'           => $nome[2],
-                ),
-                'Ferramentas'       => '',
-                'Tipo'              => $tipo
-            );
-            return $this->renderizar_bloco('elemento_botao',$array);  
+            //'onclick'           => $nome[2],
+            if($tipo==='Destaque0'){
+                $cor    = 'danger';
+                $icone  = 'star-empty';
+            }else if($tipo==='Destaque1'){
+                $cor    = 'success';
+                $icone  = 'star';                
+            }else if($tipo==='Status0'){
+                $cor    = 'danger';
+                $icone  = 'thumbs-down';                
+            }else if($tipo==='Status1'){
+                $cor    = 'success';
+                $icone  = 'thumbs-up';                
+            }else if($tipo==='Email'){
+                $cor    = 'primary';
+                $icone  = 'envelope';                
+            }else if($tipo==='Baixar'){
+                $cor    = 'inverse';
+                $icone  = 'download';                
+            }else if($tipo==='Visualizar'){
+                $cor    = 'success';
+                $icone  = 'eye-open';                
+            }else if($tipo==='Zoom'){
+                $cor    = 'info';
+                $icone  = 'zoom-in';                
+            }else if($tipo==='Editar'){
+                $cor    = 'warning" confirma="Deseja Realmente Editar?';
+                $icone  = 'pencil';                
+            }else/* if($tipo==='Deletar')*/{
+                $cor    = 'danger" confirma="'.$nome[2];
+                $icone  = 'trash';                
+            }
+            return '<a href="'.URL_PATH.$nome[1].'" class="btn lajax explicar-titulo btn-'.$cor.'" title="'.$nome[0].'" acao="">
+        <i class="glyphicon-'.$icone.'"></i></a>';
         }
     }
     /**

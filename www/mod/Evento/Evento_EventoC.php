@@ -37,6 +37,11 @@ class Evento_EventoControle extends Evento_Controle
         $i = 0;
         if(is_object($eventos)) $eventos = Array(0=>$eventos);
         reset($eventos);
+        $perm_status = $this->_Registro->_Acl->Get_Permissao_Url('Evento/Evento/Status');
+        $perm_destaque = $this->_Registro->_Acl->Get_Permissao_Url('Evento/Evento/Destaques');
+        $perm_editar = $this->_Registro->_Acl->Get_Permissao_Url('Evento/Evento/Eventos_Edit');
+        $perm_del = $this->_Registro->_Acl->Get_Permissao_Url('Evento/Evento/Eventos_Del');
+
         foreach ($eventos as &$valor) {
             $tabela['Nome do Evento'][$i]           =   $valor->nome;
             $tabela['Local'][$i]                    =   $valor->local2;
@@ -51,7 +56,9 @@ class Evento_EventoControle extends Evento_Controle
                 $texto = 'Desativado';
             }
             $destaque                                     = $valor->destaque;
-            $tabela['Funções'][$i]                   =   '<span id="status'.$valor->id.'">'.$Visual->Tema_Elementos_Btn('Status'.$valor->status     ,Array($texto        ,'Evento/Evento/Status/'.$valor->id.'/'    ,'')).'</span>';
+            if($perm_status)    $tabela['Funções'][$i]                   =   '<span id="status'.$valor->id.'">'.$Visual->Tema_Elementos_Btn('Status'.$valor->status     ,Array($texto        ,'Evento/Evento/Status/'.$valor->id.'/'    ,'')).'</span>';
+            else                $tabela['Funções'][$i] = '';
+            
             if($destaque==1){
                 $destaque = 1;
                 $texto = 'Em Destaque';
@@ -59,9 +66,9 @@ class Evento_EventoControle extends Evento_Controle
                 $destaque = 0;
                 $texto = 'Não está em destaque';
             }
-            $tabela['Funções'][$i]      .= '<span id="destaques'.$valor->id.'">'.$Visual->Tema_Elementos_Btn('Destaque'.$destaque   ,Array($texto   ,'Evento/Evento/Destaques/'.$valor->id.'/'    ,'')).'</span>'.            
-                                            $Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Evento'        ,'Evento/Evento/Eventos_Edit/'.$valor->id.'/'    ,'')).
-                                            $Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Evento'       ,'Evento/Evento/Eventos_Del/'.$valor->id.'/'     ,'Deseja realmente deletar esse Evento ?'));
+            $tabela['Funções'][$i]      .= '<span id="destaques'.$valor->id.'">'.$Visual->Tema_Elementos_Btn('Destaque'.$destaque   ,Array($texto   ,'Evento/Evento/Destaques/'.$valor->id.'/'    ,''),$perm_destaque).'</span>'.            
+                                            $Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Evento'        ,'Evento/Evento/Eventos_Edit/'.$valor->id.'/'    ,''),$perm_editar).
+                                            $Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Evento'       ,'Evento/Evento/Eventos_Del/'.$valor->id.'/'     ,'Deseja realmente deletar esse Evento ?'),$perm_del);
             ++$i;
         }
         return Array($tabela,$i);

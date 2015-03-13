@@ -31,13 +31,14 @@ class Transporte_CaminhoneiroControle extends Transporte_Controle
         $tabela = Array();
         $i = 0;
         if(is_object($caminhoneiro)) $caminhoneiro = Array(0=>$caminhoneiro);reset($caminhoneiro);
+        $perm_view = $registro->_Acl->Get_Permissao_Url('Transporte/Caminhoneiro/Visualizar');
         foreach ($caminhoneiro as &$valor) {                
             $tabela['Id'][$i]           = '#'.$valor->id;
             $tabela['Categoria'][$i]    = $valor->categoria2;
             $tabela['Nome'][$i]         = $valor->usuario2;
             $tabela['Capacidade'][$i]   = $valor->capacidade;
             $tabela['Telefone'][$i]     = $valor->telefone;
-            $tabela['Visualizar'][$i]   = $Visual->Tema_Elementos_Btn('Visualizar'     ,Array('Visualizar'        ,'Transporte/Caminhoneiro/Visualizar/'.$valor->id    ,''));
+            $tabela['Visualizar'][$i]   = $Visual->Tema_Elementos_Btn('Visualizar'     ,Array('Visualizar'        ,'Transporte/Caminhoneiro/Visualizar/'.$valor->id    ,''), $perm_view);
             
             ++$i;
         }

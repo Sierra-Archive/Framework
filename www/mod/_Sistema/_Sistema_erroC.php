@@ -83,7 +83,9 @@ Server Errors
         $error['2800']    = 'Problema no código, ligue para o administrador.';
         $error['2801']    = 'Problema no código, ligue para o administrador.';
         $error['2802']    = 'Faltando arquivos ao Sistema.';
+        $error['2808']    = 'Problemas de Performace.';
         $error['2810']    = 'Problema no código. Parametro Errado';
+        
         
         $error['2826']    = 'Sem Permissão de Arquivos.';
         $error['2828']    = 'Servidor não autorizado, por favor consulte o administrador.';

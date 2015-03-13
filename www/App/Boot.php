@@ -24,7 +24,7 @@ class Boot {
         
         
         // Se nao tiver cache continua
-        $tempo = new \Framework\App\Tempo('BOOT Iniciar');   
+        $tempo = new \Framework\App\Tempo('BOOT Inicial');   
         // Inicia SEssao e Classes PARTE 1
         \Framework\App\Session::init();
         $registro->_Conexao = new \Framework\App\Conexao();
@@ -76,6 +76,8 @@ class Boot {
             throw new \Exception('Sem Permissão', 403); 
         }
         
+        unset($tempo);
+        
         // Verifica se Existe e Executa
         if(is_readable($modulo_rotaC) && is_readable($modulo_rotaM) && is_readable($modulo_rotaV)){
             if(is_readable($submodulo_rotaC) && is_readable($submodulo_rotaM) && is_readable($submodulo_rotaV)){
@@ -102,6 +104,7 @@ class Boot {
         return true;
     }
     public static function Desligar(){
+        $tempo = new \Framework\App\Tempo('BOOT Desligar');  
         // Destroi A PORRA TODA
         $registro = &\Framework\App\Registro::getInstacia();
         $registro->destruir('_Controle');

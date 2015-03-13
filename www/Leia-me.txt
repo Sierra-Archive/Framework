@@ -1,4 +1,4 @@
-
+/ Fazer, Permissao de Todos os Icones, Tirar de Dentro do Looping
 /***************************************************************************************\
 *                                                                                       *
 *                                                                                       *

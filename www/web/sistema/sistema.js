@@ -65,7 +65,13 @@ var Sierra = (function () {
     }
     function Cache_Gravar(nome,valor) {
         if (Modernizr.localstorage) {
-            window.localStorage.setObject('SierraTec_'+nome, valor);
+            try { 
+                console.log(window.localStorage.length);
+                window.localStorage.setObject('SierraTec_'+nome, valor);
+            } catch(e) {
+                console.log(e);
+                return false;
+            }
             return true;
         }else{
             Cache['SierraTec_'+nome] = new Array('SierraTec_'+nome,valor);
@@ -859,6 +865,7 @@ var Sierra = (function () {
         console.time('Acao_LINK');
         var retorno = false;
         retorno = Cache_Ler(url);
+        console.log('Retorno',retorno);
         if(retorno!==false){
             Modelo_Ajax_JsonTratar(url,retorno,historico);
         }else{

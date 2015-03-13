@@ -25,7 +25,10 @@ class Acl{
     private $_Request;
     
     // Configuracoes
-    public      static  $config = false;    
+    public      static  $config = false;   
+    
+    
+    public static $log_qnt_get_permissao = 0;
     
     public function __construct($id = false) {
         $tempo = new \Framework\App\Tempo('ACl');   
@@ -205,6 +208,19 @@ class Acl{
      * @return boolean
      */
     public function Get_Permissao_Url($url) {
+        // Economiza Tempo quando a URL é obvia que é permitida
+        if($url===SISTEMA_URL.SISTEMA_DIR.'#' || $url===SISTEMA_URL.SISTEMA_DIR.'#/'){
+            return true;
+        }
+        // Faz Controle de Excesso de Permissao, para Performace
+        ++static::$log_qnt_get_permissao;
+        //var_dump($url);echo "<br><br>\n\n";
+        if(SISTEMA_DEBUG && static::$log_qnt_get_permissao>40){
+            throw new \Exception('Permissão Requisitada mais de 40 vezes em uma mesma pagina.',2808);
+        }
+        
+        // Começa Tratamento
+        $tempo = new \Framework\App\Tempo('Acl Get Permissao');
         $permissoes_quepossuem = Array();
         $array = &self::$Sis_Permissao;
         reset($array);
