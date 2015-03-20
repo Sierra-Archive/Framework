@@ -245,7 +245,7 @@ class comercio_EstoqueControle extends comercio_Controle
         self::Endereco_Entrada_Material(false);
         $i = 0;
         // BOTAO IMPRIMIR / ADD
-        $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
+        /*$this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
             Array(
                 'Adicionar Entrada de NFE',
                 'comercio/Estoque/Material_Entrada_Add',
@@ -258,43 +258,48 @@ class comercio_EstoqueControle extends comercio_Controle
                 'Link'      => 'comercio/Estoque/Material_Entrada',
             )
         )));
-        // CONEXAO
-        $materiais = $this->_Modelo->db->Sql_Select('Comercio_Fornecedor_Material',false,0,'');
         
-        if($materiais!==false && !empty($materiais)){
-            $perm_editar = $this->_Registro->_Acl->Get_Permissao_Url('comercio/Estoque/Material_Entrada_Edit');
-            $perm_del = $this->_Registro->_Acl->Get_Permissao_Url('comercio/Estoque/Material_Entrada_Del');
-            
-            if(is_object($materiais)) $materiais = Array(0=>$materiais);
-            reset($materiais);
-            foreach ($materiais as &$valor) {
-                if($valor->documento==0){
-                    $documento = 'Nfe';
-                }else if($valor->documento==1){
-                    $documento = 'Boleto';
-                }else{
-                    $documento = 'Recibo';
+        if($export!==false){
+            $materiais = $this->_Modelo->db->Sql_Select('Comercio_Fornecedor_Material',false,0,'');
+
+            if($materiais!==false && !empty($materiais)){
+                $perm_editar = $this->_Registro->_Acl->Get_Permissao_Url('comercio/Estoque/Material_Entrada_Edit');
+                $perm_del = $this->_Registro->_Acl->Get_Permissao_Url('comercio/Estoque/Material_Entrada_Del');
+
+                if(is_object($materiais)) $materiais = Array(0=>$materiais);
+                reset($materiais);
+                foreach ($materiais as &$valor) {
+                    if($valor->documento==0){
+                        $documento = 'Nfe';
+                    }else if($valor->documento==1){
+                        $documento = 'Boleto';
+                    }else{
+                        $documento = 'Recibo';
+                    }
+                    $tabela['Número'][$i]           = $valor->numero;
+                    $tabela['Documento'][$i]        = $documento;
+                    $tabela['Fornecedor'][$i]       = $valor->fornecedor2;
+                    $tabela['Data'][$i]             = $valor->data;
+                    $tabela['Valor'][$i]            = $valor->valor;
+                    $tabela['Funções'][$i]   = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Entrada de NFE'        ,'comercio/Estoque/Material_Entrada_Edit/'.$valor->id.'/'    ,''),$perm_editar).
+                                               $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Entrada de NFE'       ,'comercio/Estoque/Material_Entrada_Del/'.$valor->id.'/'     ,'Deseja realmente deletar essa Entrada de NFE ?'),$perm_del);
+                    ++$i;
                 }
-                $tabela['Número'][$i]           = $valor->numero;
-                $tabela['Documento'][$i]        = $documento;
-                $tabela['Fornecedor'][$i]       = $valor->fornecedor2;
-                $tabela['Data'][$i]             = $valor->data;
-                $tabela['Valor'][$i]            = $valor->valor;
-                $tabela['Funções'][$i]   = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Entrada de NFE'        ,'comercio/Estoque/Material_Entrada_Edit/'.$valor->id.'/'    ,''),$perm_editar).
-                                           $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Entrada de NFE'       ,'comercio/Estoque/Material_Entrada_Del/'.$valor->id.'/'     ,'Deseja realmente deletar essa Entrada de NFE ?'),$perm_del);
-                ++$i;
-            }
-            if($export!==false){
-                self::Export_Todos($export,$tabela, 'Comercio - Produtos (Estoque)');
-            }else{
-                $this->_Visual->Show_Tabela_DataTable($tabela);
-            }
-            unset($tabela);
+                unset($tabela);
+            }  
+            self::Export_Todos($export,$tabela, 'Comercio - Produtos (Estoque)');
+        }else{*/
+            $tabela = Array(
+                'Número','Documento','Fornecedor','Data','Valor','Funções'
+            );
+        //}
+        $this->_Visual->Show_Tabela_DataTable_Massiva($tabela);
+        /*
         }else{             
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhuma Entrada de NFE</font></b></center>');
-        }
-        $titulo = 'Listagem de Entrada de NFE ('.$i.')';
-        $this->_Visual->Bloco_Unico_CriaJanela($titulo);
+        }*/
+        $titulo = 'Listagem de Entrada de NFE (<span id="DataTable_Contador">0</span>)';
+        $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',0,Array("link"=>"comercio/Estoque/Material_Entrada_Add",'icon'=>'add','nome'=>'Adicionar Entrada de NFE'));
         
         //Carrega Json
         $this->_Visual->Json_Info_Update('Titulo','Administrar Entrada de NFE');

@@ -65,8 +65,6 @@ class Boot {
         
         
         // Inicia SEssao e Classes PARTE 2
-        $registro->_Modelo  = new $modelo_Executar;
-        $registro->_Visual  = new $visual_Executar;
         $registro->_Acl     = new \Framework\App\Acl();
         
         // Verifica Permissão da URL
@@ -81,18 +79,36 @@ class Boot {
         // Verifica se Existe e Executa
         if(is_readable($modulo_rotaC) && is_readable($modulo_rotaM) && is_readable($modulo_rotaV)){
             if(is_readable($submodulo_rotaC) && is_readable($submodulo_rotaM) && is_readable($submodulo_rotaV)){
-
-                // Chama Controle
+                // Chama Controle, Modelo, e Visual
+                $registro->_Modelo  = new $modelo_Executar;
+                $registro->_Visual  = new $visual_Executar;
                 $registro->_Controle = new $controle_Executar;
-                if(is_callable(array($registro->_Controle,$metodo))){
-                    $metodo = $getmetodo;
+                
+                if(REQUISICAO_TIPO=='MODELO'){
+                    if(is_callable(array($registro->_Modelo,$metodo))){
+                        $metodo = $getmetodo;
+                    }else{
+                        $metodo = 'Main';
+                    }
+                    if(count($getargs)>0){
+                        call_user_func_array(array($registro->_Modelo,$metodo), $getargs);
+                    }else{
+                        call_user_func(array($registro->_Modelo,$metodo));
+                    }
+                    // Impede Retorno do Json do Controle
+                    \Framework\App\Controle::Tema_Travar();
                 }else{
-                    $metodo = 'Main';
-                }
-                if(count($getargs)>0){
-                    call_user_func_array(array($registro->_Controle,$metodo), $getargs);
-                }else{
-                    call_user_func(array($registro->_Controle,$metodo));
+                    if(is_callable(array($registro->_Controle,$metodo))){
+                        $metodo = $getmetodo;
+                    }else{
+                        $metodo = 'Main';
+                    }
+                    if(count($getargs)>0){
+                        call_user_func_array(array($registro->_Controle,$metodo), $getargs);
+                    }else{
+                        call_user_func(array($registro->_Controle,$metodo));
+                    }
+                    
                 }
             }else{
                 throw new \Exception('SubMódulo não Encontrado', 404); //

@@ -232,9 +232,19 @@ function Data_CalculaDiferenca_Em_Segundos($data_inicial,$data_final){
 function data_brasil_eua($data)
 {
     $array = explode("/",$data);
-    if(!isset($array[2])){
-        return '0000-00-00';
+    
+    // Permite parametro com data imcompleta
+    if(!isset($array[1])){
+        return $array[0];
+    }else if(!isset($array[2]) || strlen($array[2])<4){
+        return $array[1].'-'.$array[0];
     }
+    
+    if(((int)$array[2])<1000){
+        
+    }
+    
+    // Retorna Data Correta
     return $array[2].'-'.$array[1].'-'.$array[0];
 }
 /**

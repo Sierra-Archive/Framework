@@ -35,7 +35,7 @@ DELIMITER ;
  */
 final class Conexao
 {
-    protected $type                     =  'pdo'; //'mysqli';
+    protected $type                     =  'mysqli'; //'pdo';
     protected $host                     =  '';
     protected $usuario                  =  '';
     protected $senha                    =  '';

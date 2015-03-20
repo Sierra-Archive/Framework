@@ -274,10 +274,15 @@ abstract class Dao implements \DaoInterface
      * @param type $nome
      * @return boolean
      */
-    final public function bd_set($nome){
+    final public function bd_set($nome, $novo_valor=''){
         // Pega as variaveis static
         $aceita_config = &static::$aceita_config;
         $campos_naoaceita_config = &static::$campos_naoaceita_config;
+        
+        // Se tiver novo valor, anula o anterior
+        if($novo_valor!==''){
+            $this->$nome = $novo_valor;
+        }
         // Resutlado
         if(!isset($this->$nome)){
             return false;
@@ -300,7 +305,7 @@ abstract class Dao implements \DaoInterface
         if(!$funcao){
             return $this->$nome;
         }else{
-            $funcao = str_replace(Array('{valor}'), Array('$this->$nome'), $funcao);
+            $funcao = str_replace('{valor}', '$this->$nome', $funcao);
             if($funcao==''){
                 return $this->$nome;
             }

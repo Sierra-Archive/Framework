@@ -236,26 +236,38 @@ class Visual
         $this->Layoult_BlocoUnico = array();
     }
     /**
-    * Add Conteudo Com titulo ao conteudo que engloba tudo
-    * 
-    * @name Bloco_Unico_CriaJanela
-    * @access public
-    * 
-    * @param string $titulo
-    * @param string $url
-    * 
-    * @uses \Framework\App\Visual::$Layoult_BlocoUnico
-    * @uses \Framework\App\Visual::$blocos 
-    * 
-    * @return void
-    * 
-    * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.02
-    */
+     * Add Conteudo Com titulo ao conteudo que engloba tudo
+     * 
+     * @name Bloco_Unico_CriaJanela
+     * @access public
+     * 
+     * @param string $titulo
+     * @param string $url
+     * @param int $gravidade Quanto maior mais em cima ficara
+     * @param string $botaoextra Array(icon,nome,link) or Javascript String
+     * @param type $fechado
+     * @return string
+     * @throws \Exception
+     * 
+     * @uses \Framework\App\Visual::$Layoult_BlocoUnico
+     * @uses \Framework\App\Visual::$blocos 
+     * 
+     * @return void
+     * 
+     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
+     * @version 0.02
+     */
     public function Bloco_Unico_CriaJanela($titulo,$url='', $gravidade=0,$botaoextra = false, $fechado=false) {
         if($url!='') $titulo = $titulo.'<a class="lajax-admin" href="'.$url.'" acao="">+</a>';
         list($tipo,$bloco) = $this->retornablocos();
         $identificador = 'div_unica_'.rand(100000, 999999);
+        if(is_array($botaoextra)){
+            if(!(isset($botaoextra['link']) && isset($botaoextra['icon']) && isset($botaoextra['nome']))){
+                throw new \Exception('Botao Extra com Indices Faltando: '.serialize($botaoextra),2812);
+            }else{
+                $botaoextra['link'] = URL_PATH.$botaoextra['link'];
+            }
+        }
         $config = Array(
             'Id'            => $identificador,
             'Tipo'          => 'Bloco',
@@ -566,8 +578,8 @@ class Visual
         //'<script type="text/javascript" src="'.WEB_URL.'"></script>'.
         
         // Cria Cache
-        $this->Javascript_Executar('Sierra.Cache_Deletar(\'Dependencias_Js\');'
-                . 'setTimeout(function(){Sierra.Cache_Gravar(\'Dependencias_Js\',\''.implode('|',$this->arquivos_js).'\');},10);');
+        $this->Javascript_Executar('Sierra.Sessao_Deletar(\'Dependencias_Js\');'
+                . 'setTimeout(function(){Sierra.Sessao_Gravar(\'Dependencias_Js\',\''.implode('|',$this->arquivos_js).'\');},10);');
         
         return '<script type="text/javascript" src="'.WEB_URL.'min/?f='.implode(".js,",$this->arquivos_js).'.js"></script>';
     }
@@ -620,8 +632,8 @@ class Visual
         if(empty($this->arquivos_css)) return false;
         
         // Cria Cache
-        $this->Javascript_Executar('Sierra.Cache_Deletar(\'Dependencias_Css\');'
-                . 'setTimeout(function(){Sierra.Cache_Gravar(\'Dependencias_Css\',\''.implode('|',$this->arquivos_css).'\');},10);');
+        $this->Javascript_Executar('Sierra.Sessao_Deletar(\'Dependencias_Css\');'
+                . 'setTimeout(function(){Sierra.Sessao_Gravar(\'Dependencias_Css\',\''.implode('|',$this->arquivos_css).'\');},10);');
         
         return '<link href="'.WEB_URL.'min/?f='.implode(".css,",$this->arquivos_css).'.css" rel="stylesheet" />';
     }
@@ -1403,7 +1415,11 @@ class Visual
             return $this->renderizar_bloco('template_tabela',$config);
         }
     }
-    public function Show_Tabela_DataTable_Massiva($tabela, $style='', $blocar=true, $apagado1=false, $aaSorting=Array(Array(0,'asc')), $ColunasOrd=false) {
+    public function Show_Tabela_DataTable_Massiva($tabela, $url=false, $style='', $blocar=true, $apagado1=false, $aaSorting=Array(Array(0,'asc')), $ColunasOrd=false) {
+       if($url === false){
+           $url = filter_input(INPUT_GET, 'url', FILTER_SANITIZE_URL);
+       }
+        
         $aaSortingtxt = '';
         $i = 0;
         if(is_array($aaSorting)){
@@ -1417,6 +1433,7 @@ class Visual
             'Tipo'      => 'Massiva',
             'Opcao'     => Array(
                 'Tabela'         => $tabela,
+                'Url'            => 'Modelo/'.$url,
                 'Style'          => $style,
                 'Apagado1'       => $apagado1,
                 'aaSorting'      => $aaSortingtxt,

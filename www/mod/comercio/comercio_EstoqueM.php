@@ -52,5 +52,90 @@ class comercio_EstoqueModelo extends comercio_Modelo
         }
         return Array('Compra de Nota Fiscal '.$material->documento,'Fornecedor '.$material->fornecedor2);
     }
+    
+    public function Material_Entrada(){
+        
+        // Table's primary key
+        $primaryKey = 'id';
+        
+        
+        $perm_editar = $this->_Registro->_Acl->Get_Permissao_Url('comercio/Estoque/Material_Entrada_Edit');
+        $perm_del = $this->_Registro->_Acl->Get_Permissao_Url('comercio/Estoque/Material_Entrada_Del');
+        
+        if($perm_editar && $perm_del){
+            $funcao = function( $d, $row ) {
+                return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Entrada de NFE'        ,'comercio/Estoque/Material_Entrada_Edit/'.$d.'/'    ,''),true).
+                       Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Entrada de NFE'       ,'comercio/Estoque/Material_Entrada_Del/'.$d.'/'     ,'Deseja realmente deletar essa Entrada de NFE ?'),true);
+            };
+        }else if($perm_editar){
+            $funcao = function( $d, $row ) {
+                return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Entrada de NFE'        ,'comercio/Estoque/Material_Entrada_Edit/'.$d.'/'    ,''),true);
+            };
+        }else if($perm_del){
+            $funcao = function( $d, $row ) {
+                return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Entrada de NFE'       ,'comercio/Estoque/Material_Entrada_Del/'.$d.'/'     ,'Deseja realmente deletar essa Entrada de NFE ?'),true);
+            };
+        }else{
+            $funcao = function( $d, $row ) {
+                return '';
+            };
+        }
+
+        // Array of database columns which should be read and sent back to DataTables.
+        // The `db` parameter represents the column name in the database, while the `dt`
+        // parameter represents the DataTables column identifier. In this case simple
+        // indexes
+              /*  if($valor->documento==0){
+                    $documento = 'Nfe';
+                }else if($valor->documento==1){
+                    $documento = 'Boleto';
+                }else{
+                    $documento = 'Recibo';
+                }
+                $tabela['Número'][$i]           = $valor->numero;
+                $tabela['Documento'][$i]        = $documento;
+                $tabela['Fornecedor'][$i]       = $valor->fornecedor2;
+                $tabela['Data'][$i]             = $valor->data;
+                $tabela['Valor'][$i]            = $valor->valor;
+                $tabela['Funções'][$i]   = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Entrada de NFE'        ,'comercio/Estoque/Material_Entrada_Edit/'.$valor->id.'/'    ,''),$perm_editar).
+                                           $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Entrada de NFE'       ,'comercio/Estoque/Material_Entrada_Del/'.$valor->id.'/'     ,'Deseja realmente deletar essa Entrada de NFE ?'),$perm_del);
+                ++$i;*/
+        $columns = array(
+            array( 'db' => 'numero', 'dt' => 0 ),
+            array( 'db' => 'documento',  'dt' => 1 ,
+                'formatter' => function( $d, $row ) {
+                    if($d==0){
+                        return 'Nfe';
+                    }else if($d==1){
+                        return 'Boleto';
+                    }else{
+                        return 'Recibo';
+                    }
+                }),
+            array( 'db' => 'fornecedor',   'dt' => 2 ),
+            array( 'db' => 'data',     'dt' => 3 ),
+            array( 'db' => 'valor',     'dt' => 4 ),
+            array( 'db' => 'id',     'dt' => 5,
+                'formatter' => $funcao)
+            /*array(
+                'db'        => 'start_date',
+                'dt'        => 4,
+                'formatter' => function( $d, $row ) {
+                    return date( 'jS M y', strtotime($d));
+                }
+            ),
+            array(
+                'db'        => 'salary',
+                'dt'        => 5,
+                'formatter' => function( $d, $row ) {
+                    return '$'.number_format($d);
+                }
+            )*/
+        );
+
+        echo json_encode(
+            \Framework\Classes\Datatable::complex( $_GET, Framework\App\Registro::getInstacia()->_Conexao, 'Comercio_Fornecedor_Material', $primaryKey, $columns )
+        );
+    }
 }
 ?>

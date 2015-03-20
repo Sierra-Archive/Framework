@@ -14,7 +14,7 @@
         if ($params['Opcao']['Tabela']){
             $colunas = count($params['Opcao']['Tabela']);
             $contador = 0;  ?>
-            <table class="table table-hover table-striped table-bordered dt-responsive datatable<?php if($params['Opcao']['Apagado1']){ ?> apagado1<?php } ?>" ordenar="<?php echo $params['Opcao']['aaSorting']; ?>"><thead><tr>
+            <table class="table table-hover table-striped table-bordered dt-responsive datatable<?php if($params['Opcao']['Apagado1']){ ?> apagado1<?php } ?>" ordenar="[<?php echo $params['Opcao']['aaSorting']; ?>]"><thead><tr>
             <?php foreach($params['Opcao']['Tabela'] as $k=>$v){ ?>
                 <th<?php if($contador>1 && $contador<($colunas-1)){ ?> class="hidden-xs"<?php } ?>><b><?php echo $k; ?></b></th>
                 <?php ++$contador; ?>
@@ -45,8 +45,8 @@
         if ($params['Opcao']['Tabela']){
             $colunas = count($params['Opcao']['Tabela']);
             $contador = 0;  ?>
-            <table class="table table-hover table-striped table-bordered dt-responsive Listagem_Table row<?php if($params['Opcao']['Apagado1']){ ?> apagado1<?php } ?>" ordenar="<?php echo $params['Opcao']['aaSorting']; ?>"><thead><tr>
-            <?php foreach($params['Opcao']['Tabela'] as $k=>$v){ ?>
+            <table url="<?php echo $params['Opcao']['Url']; ?>" class="table table-hover table-striped table-bordered dt-responsive Listagem_Table row<?php if($params['Opcao']['Apagado1']){ ?> apagado1<?php } ?>" ordenar="[<?php echo $params['Opcao']['aaSorting']; ?>]"><thead><tr>
+            <?php foreach($params['Opcao']['Tabela'] as $k){ ?>
                 <th<?php if($contador>1 && $contador<($colunas-1)){ ?> class="hidden-xs"<?php } ?>><b><?php echo $k; ?></b></th>
                 <?php ++$contador; ?>
             <?php } ?>

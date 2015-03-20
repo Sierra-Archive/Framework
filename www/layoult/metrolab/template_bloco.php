@@ -13,7 +13,7 @@
             if($params['btn_extra']!==false){ ?>
                 <?php if(is_array($params['btn_extra'])){ ?>
                     <div class="update-btn">
-                        <a class="btn btn-default" href="<?php echo $params['btn_extra']['link']; ?>" class="lajax" acao=""><i class="glyphicon-<?php echo $params['btn_extra']['icon']; ?>"></i> <?php echo $params['btn_extra']['nome']; ?></a>
+                        <a class="btn btn-default lajax" href="<?php echo $params['btn_extra']['link']; ?>" class="lajax" acao=""><i class="glyphicon-<?php echo $params['btn_extra']['icon']; ?>"></i> <?php echo $params['btn_extra']['nome']; ?></a>
                     </div>
                 <?php }else{ ?>
                     <div class="update-btn">

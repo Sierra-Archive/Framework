@@ -37,6 +37,7 @@ var Sierra = (function () {
             "__.___.___-_",       //RG
             "R$ 0,00"             // REAL
         ],
+        DataTable_Selected          = [],
         documento                   = $(document),
         janela                      = $(window);
     /**
@@ -50,6 +51,24 @@ var Sierra = (function () {
     * @param {type} haystack
     * @returns {Boolean}
     */
+    function Sessao_Ler(nome) {
+        if(Cache['SierraTec_'+nome]!=undefined){
+            return Cache['SierraTec_'+nome][1];
+        }
+        return false;
+    }
+    function Sessao_Gravar(nome,valor) {
+        Cache['SierraTec_'+nome] = new Array('SierraTec_'+nome,valor);
+        return true;
+    }  
+    function Sessao_Deletar(nome) {
+        if(nome===false){
+            Cache = {};
+        }else{
+            Cache['SierraTec_'+nome] = undefined;
+        }
+        return true;
+    }    
     function Cache_Ler(nome) {
         if (Modernizr.localstorage===true) {
             if (window.localStorage.getItem('SierraTec_'+nome)) {
@@ -57,10 +76,7 @@ var Sierra = (function () {
             }
             return false;
         }else{
-            if(Cache['SierraTec_'+nome]!=undefined){
-                return Cache['SierraTec_'+nome][1];
-            }
-            return false;
+            return Sessao_Ler(nome);
         }
     }
     function Cache_Gravar(nome,valor) {
@@ -74,8 +90,7 @@ var Sierra = (function () {
             }
             return true;
         }else{
-            Cache['SierraTec_'+nome] = new Array('SierraTec_'+nome,valor);
-            return true;
+            return Sessao_Gravar(nome,valor);
         }
     }  
     function Cache_Deletar(nome) {
@@ -87,35 +102,35 @@ var Sierra = (function () {
             }
             return true;
         }else{
-            if(nome===false){
-                Cache = {};
-            }else{
-                Cache['SierraTec_'+nome] = new Array('SierraTec_'+nome,valor);
-            }
-            return true;
+            return Sessao_Deletar(nome);
         }
     }    
     function Cookie_Salvar(name,value){    //função universal para criar cookie
 
         var expires,
-            exdays = 7,
+            exdays = 70,
             date;
         date = new Date(); //  criando o COOKIE com a data atual
         date.setTime(date.getTime()+(exdays*24*60*60*1000));
         expires = date.toUTCString();
         document.cookie = name+"="+value+"; expires="+expires+"; path=/";
     }
-    function Cookie_Ler(){
-        var c_name = document.cookie; // listando o nome de todos os cookies
-        if(c_name!=undefined && c_name.length > 0) // verificando se o mesmo existe
+    function Cookie_Ler(strCookie){
+        var strNomeIgual = strCookie + "=";
+        var arrCookies = document.cookie.split(';');
+
+                console.log(arrCookies);
+        for(var i = 0; i < arrCookies.length; i++)
         {
-            var posCookie = c_name.indexOf(cookieSeuNome); // checando se existe o cookieSeuNome 
-            if (posCookie >= 0) //se existir o cookie mostra um alert no browser
+            var strValorCookie = arrCookies[i];
+            while(strValorCookie.charAt(0) == ' ')
             {
-                return true;
+                strValorCookie = strValorCookie.substring(1, strValorCookie.length);
             }
-            else{
-                return false;
+            if(strValorCookie.indexOf(strNomeIgual) == 0)
+            {
+                console.log(strValorCookie.substring(strNomeIgual.length, strValorCookie.length));
+                return strValorCookie.substring(strNomeIgual.length, strValorCookie.length);
             }
         }
         return false;
@@ -328,6 +343,18 @@ var Sierra = (function () {
             }
         };
     };
+    documento.on("click", 'tbody > tr', function () {
+        var id = this.id;
+        var index = $.inArray(id, DataTable_Selected);
+ 
+        if ( index === -1 ) {
+            DataTable_Selected.push( id );
+        } else {
+            DataTable_Selected.splice( index, 1 );
+        }
+        console.log(DataTable_Selected);
+        $(this).toggleClass('selected');
+    } );
     /**
      * POPUP -> Fecha Janela
      */
@@ -741,7 +768,7 @@ var Sierra = (function () {
         }
         if (script !== '') {
             // Salva Cache
-            Cache_Gravar('Dependencias_Css',cache.join('|'));
+            Sessao_Gravar('Dependencias_Css',cache.join('|'));
             
             $('head').append('<link href="'+ConfigArquivoPadrao+'web/min/?f='+script+'" rel="stylesheet" />');
         }
@@ -791,7 +818,7 @@ var Sierra = (function () {
         
         if(script!==''){
             // Salva Cache
-            Cache_Gravar('Dependencias_Js',cache.join('|'));
+            Sessao_Gravar('Dependencias_Js',cache.join('|'));
 
             $('head').append('<script type="text/javascript" src="'+ConfigArquivoPadrao+'web/min/?f='+script+'"></script>');
         }
@@ -864,7 +891,7 @@ var Sierra = (function () {
     function Modelo_Ajax_Chamar (url, params, tip, resposta, historico,carregando) {
         console.time('Acao_LINK');
         var retorno = false;
-        retorno = Cache_Ler(url);
+        //retorno = Cache_Ler(url);
         console.log('Retorno',retorno);
         if(retorno!==false){
             Modelo_Ajax_JsonTratar(url,retorno,historico);
@@ -881,16 +908,11 @@ var Sierra = (function () {
             xhr.open("GET", "http://jsperf.com");
             xhr.send(null);
              */
-            console.log(ConfigArquivoPadrao+"ajax/"+url,ConfigArquivoPadrao,url);
             // Verifica se Contem a url do Sistema e Tira
-            if(url.indexOf(ConfigArquivoPadrao) != -1){
-                url = url.split(ConfigArquivoPadrao);
-                url = ConfigArquivoPadrao+"ajax/"+url[1];
-            }else if(url.indexOf('http') != -1){
-                url = url;
-            }else{
-                url = ConfigArquivoPadrao+"ajax/"+url;
+            if(!(url.indexOf('http') != -1 ) && !(url.indexOf('www'))){
+                url = ConfigArquivoPadrao+url;
             }
+            
             $.ajax({ type: tip, url: url, async: true,  dataType: 'json', data: params,/*complete: function () { 
 
             },*/success: function (data) {
@@ -983,7 +1005,6 @@ var Sierra = (function () {
             var apagar  = true,
                 ordenar,
                 atual = $(this);
-            console.log('Datatable',$.fn.dataTable.isDataTable(atual));
             if (!atual.hasClass('dataTable')) {
             //if ( !($.fn.dataTable.isDataTable(atual)) ) {
                 console.log('Datatable Foi');
@@ -991,7 +1012,7 @@ var Sierra = (function () {
                 if (atual.hasClass('apagado1')) {
                     apagar = false;
                 }
-                atual.dataTable({
+                atual.DataTable({
                     //"bJQueryUI"         : Configuracoes_Template['datatable_bJQueryUI'],
                     //"bAutoWidth"        : Configuracoes_Template['datatable_bAutoWidth'],
                     //"sdom"              : Configuracoes_Template['datatable_sdom'],
@@ -999,13 +1020,13 @@ var Sierra = (function () {
                     //"bPaginate"         : true,     
                     "bProcessing"       : true,  // Mensagem de Processando
                     "bDeferRender"      : true,  // Ajudar no Carregamento 
-                    "iDisplayLength"    : 25,   // Quantidade por pagina
+                    "iDisplayLength"    : 10,   // Quantidade por pagina
                     "aoColumnDefs"      : [{ 
                         "bSearchable"       : true, 
                         "bVisible"          : apagar, 
                         "aTargets"          : [0] 
                     }],
-                    "aaSorting"         : [ordenar],
+                    "aaSorting"         : ordenar,
                     "bLengthChange"     :true,
                     "bFilter"           :true,
                     "bSort"             :true, // Usuario pode Multi-Ordenacao ?
@@ -1026,16 +1047,107 @@ var Sierra = (function () {
         $(camada).each(function () {
             var apagar  = true,
                 ordenar,
-                atual = $(this);
-            if ( !($.fn.dataTable.isDataTable(atual)) ) {
-                eval('ordenar = '+atual.attr('ordenar')+';');
+                atual = $(this),
+                colunas_imprimir = [],
+                cont = 0,
+                j  = atual.children('thead').children('tr').children('th').length-1;
+            if (!atual.hasClass('dataTable')) {
+                ordenar = Cookie_Ler('TabelaOrdenar_'+atual.attr('url'));
+                if(ordenar===false){
+                    eval('ordenar = '+atual.attr('ordenar')+';');
+                }
                 if (atual.hasClass('apagado1')) {
                     apagar = false;
                 }
-                atual.dataTable({          
+                
+                for(;cont<j;++cont){
+                    colunas_imprimir.push(cont);
+                }
+                
+                atual.DataTable({          
                     "processing": true,
                     "serverSide": true,
-                    "ajax": "http://localhost/Framework/www/xhr.php"
+                    "ajax": $.fn.dataTable.pipeline( {
+                        url: ConfigArquivoPadrao+atual.attr('url'),
+                        pages: 5 // number of pages to cache
+                    } ),
+                    "bProcessing"       : true,  // Mensagem de Processando
+                    "bDeferRender"      : true,  // Ajudar no Carregamento 
+                    "iDisplayLength"    : 10,   // Quantidade por pagina
+                    "aoColumnDefs"      : [{ 
+                        "bSearchable"       : true, 
+                        "bVisible"          : apagar, 
+                        "aTargets"          : [0] 
+                    }],
+                    "aaSorting"         : ordenar,
+                    "bLengthChange"     :true,
+                    "bFilter"           :true,
+                    "bSort"             :true, // Usuario pode Multi-Ordenacao ?
+                    "bInfo"             :true,
+                    "rowCallback": function( row, data ) {
+                        if ( $.inArray(data.DT_RowId, DataTable_Selected) !== -1 ) {
+                            $(row).addClass('selected');
+                        }
+                    },
+                    //"dom": '<"top"lT<"clear">if><"clear">rt<"bottom"ip<"clear">>',
+                    "dom": '<"top"Tf><"clear">rt<"bottom"ip<"clear">>',
+                    "tableTools": {  
+                        /*"aButtons": [
+                            {
+                                "sExtends": "copy",
+                                "sButtonText": "Copiar"
+                            },
+                            {
+                                "sExtends": "csv",
+                                "sButtonText": "Salvar para CSV"
+                            },
+                            {
+                                "sExtends": "xls",
+                                "oSelectorOpts": {
+                                    page: 'current'
+                                }
+                            },
+                            {
+                                "sExtends": "pdf",
+                                "sButtonText": "Salvar para PDF"
+                            },
+                            {
+                                "sExtends": "print",
+                                "sButtonText": "Imprimir"
+                            }
+                        ],*/
+                        "sSwfPath": ConfigArquivoPadrao+"web/sistema/data-tables/swf/copy_csv_xls_pdf.swf",
+                        "aButtons": [
+                            {
+                                "sExtends": "copy",
+                                "mColumns": colunas_imprimir
+                            },
+                            {
+                                "sExtends": "csv",
+                                "mColumns": colunas_imprimir
+                            },
+                            {
+                                "sExtends": "xls",
+                                "mColumns": colunas_imprimir
+                            },
+                            {
+                                "sExtends": "pdf",
+                                "mColumns": colunas_imprimir
+                            },
+                            {
+                                "sExtends": "print",
+                                "mColumns": colunas_imprimir
+                                /*"fnClick": function (nButton, oConfig, oFlash) {
+                                    oTable.fnSetColumnVis(j, false);
+                                    $('div.dataTables_scrollHead').show();
+                                    $(window).keyup(function(){
+                                          oTable.fnSetColumnVis(j, true);
+                                    });
+                                }*/
+                                //"sMessage": 'Clique em Imprimir ou Cancele <button>Imprimir</button>'
+                            },
+                        ]
+                    }
                 });
                 i = i+1;
             }
@@ -1839,6 +1951,7 @@ var Sierra = (function () {
         Control_Ajax_Popup_Fechar           : Control_Ajax_Popup_Fechar,
         Control_Layoult_Recarrega           : Control_Layoult_Recarrega,
         Control_Layoult_Recarrega_Formulario: Control_Layoult_Recarrega_Formulario,
+        Control_Link_Dinamico               : Control_Link_Dinamico,
         
         Modelo_Ajax_Chamar                  : Modelo_Ajax_Chamar,
         Modelo_Ajax_JsonTratar              : Modelo_Ajax_JsonTratar,
@@ -1849,6 +1962,9 @@ var Sierra = (function () {
         Visual_Tratamento_Maiusculo_Primeira: Visual_Tratamento_Maiusculo_Primeira,
         
         // Caches
+        Sessao_Ler                          : Sessao_Ler,
+        Sessao_Gravar                       : Sessao_Gravar,
+        Sessao_Deletar                      : Sessao_Deletar,
         Cache_Ler                           : Cache_Ler,
         Cache_Gravar                        : Cache_Gravar,
         Cache_Deletar                       : Cache_Deletar,

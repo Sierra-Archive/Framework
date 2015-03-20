@@ -750,53 +750,47 @@ class Acl{
         $registro = \Framework\App\Registro::getInstacia();
         $funcional = $registro->_Cache->Ler('Config_Funcional');
         if (!$funcional) {
-            $funcional = self::Sistema_Modulos_Carregar_Funcional_Completo();
+            $ponteiro   = Array('_Sistema' => '_Sistema');
+            if(function_exists('config_modulos')){
+                $ponteiro   = array_merge($ponteiro,config_modulos());
+            }
+            $funcional     = Array();
+            reset($ponteiro);
+            while (key($ponteiro) !== null) {
+                $current = current($ponteiro);
+                if (is_dir(MOD_PATH.''.$current)) {
+                    // SE existe arquivo config
+                    if(file_exists(MOD_PATH.''.$current.'/_Config.php')){
+                        // Puxa
+                        include MOD_PATH.''.$current.'/_Config.php';
+                        // Merge Com Config Funcional se Existir
+                        if(file_exists(INI_PATH.SRV_NAME.'/'.$current.'.php')){
+                            include INI_PATH.SRV_NAME.'/'.$current.'.php';
+                            // Pega Arrays com configs
+                            $config_funciona = $config_Funcional();
+                            $config_Funcional = $Funcional;
+
+                            // Merge só valor
+                            reset($config_Funcional);
+                            while (key($config_Funcional) !== null) {
+                                $current2 = current($config_Funcional);
+                                if(isset($current2['Valor'])){
+                                    $config_funciona[key($config_Funcional)]['Valor'] = $current2['Valor'];
+                                }
+                                next($config_Funcional);
+                            }
+                        }else{
+                            $config_funciona = $config_Funcional();
+                        }
+                        // Realiza Merge para Indexir Configuracoes
+                        $funcional    = array_merge_recursive($funcional,$config_funciona       );
+                    } 
+                }
+                next($ponteiro);
+            }
             $registro->_Cache->Salvar('Config_Funcional', $funcional);
         }
         return $funcional;
-    }
-    public static function &Sistema_Modulos_Carregar_Funcional_Completo(){
-        $tempo = new \Framework\App\Tempo('\Framework\App\Acl::Sistema_Modulos_Configs->Funcional_Completo');
-        // Le todos arquivos Menus dos modulos permitidos
-        $ponteiro   = Array('_Sistema' => '_Sistema');
-        if(function_exists('config_modulos')){
-            $ponteiro   = array_merge($ponteiro,config_modulos());
-        }
-        $config     = Array();
-        reset($ponteiro);
-        while (key($ponteiro) !== null) {
-            $current = current($ponteiro);
-            if (is_dir(MOD_PATH.''.$current)) {
-                // SE existe arquivo config
-                if(file_exists(MOD_PATH.''.$current.'/_Config.php')){
-                    // Puxa
-                    include MOD_PATH.''.$current.'/_Config.php';
-                    // Merge Com Config Funcional se Existir
-                    if(file_exists(INI_PATH.SRV_NAME.'/'.$current.'.php')){
-                        include INI_PATH.SRV_NAME.'/'.$current.'.php';
-                        // Pega Arrays com configs
-                        $config_funciona = $config_Funcional();
-                        $config_Funcional = $Funcional;
-
-                        // Merge só valor
-                        reset($config_Funcional);
-                        while (key($config_Funcional) !== null) {
-                            $current2 = current($config_Funcional);
-                            if(isset($current2['Valor'])){
-                                $config_funciona[key($config_Funcional)]['Valor'] = $current2['Valor'];
-                            }
-                            next($config_Funcional);
-                        }
-                    }else{
-                        $config_funciona = $config_Funcional();
-                    }
-                    // Realiza Merge para Indexir Configuracoes
-                    $config    = array_merge_recursive($config,$config_funciona       );
-                } 
-            }
-            next($ponteiro);
-        }
-        return $config;
     }
     /**
      * 

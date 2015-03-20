@@ -86,6 +86,8 @@ Server Errors
         $error['2808']    = 'Problemas de Performace.';
         $error['2810']    = 'Problema no código. Parametro Errado';
         
+        $error['2812']    = 'Array Inválido';
+        
         
         $error['2826']    = 'Sem Permissão de Arquivos.';
         $error['2828']    = 'Servidor não autorizado, por favor consulte o administrador.';
