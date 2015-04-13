@@ -126,6 +126,10 @@ class noticia_AdminControle extends noticia_Controle
         $formbt     = 'Salvar';
         $formlink   = 'noticia/Admin/Noticias_Add2/';
         $campos = Noticia_DAO::Get_Colunas();
+        
+        if(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('noticia_Categoria') === false) self::DAO_Campos_Retira($campos, 'categoria');
+        self::DAO_Campos_Retira($campos, 'Artistas');
+
         \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos);
     }
     /**

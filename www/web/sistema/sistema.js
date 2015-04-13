@@ -1007,7 +1007,6 @@ var Sierra = (function () {
                 atual = $(this);
             if (!atual.hasClass('dataTable')) {
             //if ( !($.fn.dataTable.isDataTable(atual)) ) {
-                console.log('Datatable Foi');
                 eval('ordenar = '+atual.attr('ordenar')+';');
                 if (atual.hasClass('apagado1')) {
                     apagar = false;
@@ -1063,7 +1062,6 @@ var Sierra = (function () {
                 for(;cont<j;++cont){
                     colunas_imprimir.push(cont);
                 }
-                
                 atual.DataTable({          
                     "processing": true,
                     "serverSide": true,
@@ -1136,15 +1134,15 @@ var Sierra = (function () {
                             },
                             {
                                 "sExtends": "print",
-                                "mColumns": colunas_imprimir
+                                "mColumns": colunas_imprimir,
                                 /*"fnClick": function (nButton, oConfig, oFlash) {
                                     oTable.fnSetColumnVis(j, false);
                                     $('div.dataTables_scrollHead').show();
                                     $(window).keyup(function(){
                                           oTable.fnSetColumnVis(j, true);
                                     });
-                                }*/
-                                //"sMessage": 'Clique em Imprimir ou Cancele <button>Imprimir</button>'
+                                },*/
+                                "sMessage": 'Clique em Imprimir ou Cancele <button>Imprimir</button>'
                             },
                         ]
                     }

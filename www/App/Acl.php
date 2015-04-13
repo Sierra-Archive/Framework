@@ -215,8 +215,8 @@ class Acl{
         // Faz Controle de Excesso de Permissao, para Performace
         ++static::$log_qnt_get_permissao;
         //var_dump($url);echo "<br><br>\n\n";
-        if(SISTEMA_DEBUG && static::$log_qnt_get_permissao>40){
-            throw new \Exception('Permissão Requisitada mais de 40 vezes em uma mesma pagina.',2808);
+        if(SISTEMA_DEBUG && static::$log_qnt_get_permissao>60){
+            throw new \Exception('Permissão Requisitada mais de 60 vezes em uma mesma pagina.',2808);
         }
         
         // Começa Tratamento

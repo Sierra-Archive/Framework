@@ -1427,7 +1427,8 @@ readfile($link);*/
         $sigla = $dao_completo::Get_Sigla();
         $links = \Framework\App\Conexao::Tabelas_GetLinks_Recolher($sigla);
         $campos = &Conexao::Tabelas_GetCampos_Recolher($sigla);
-        foreach ($campos as &$valor){
+        if($campos!==NULL && !empty($campos)){
+            foreach ($campos as &$valor){
             if(isset($valor['TabelaLinkada'])){
                 $tabelalinkada = &$valor['TabelaLinkada'];
                 
@@ -1558,6 +1559,7 @@ readfile($link);*/
                     }
                 }
             }
+        }
         }
         // Termina de Tratar as LINKADAS
         if($erro1=='') $erro1 = $language['mens_erro']['erro'];

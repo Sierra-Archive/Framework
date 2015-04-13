@@ -76,6 +76,13 @@ $config_Permissoes = function (){
  * @author Ricardo Sierra <web@ricardosierra.com.br>
  */
 $config_Funcional = function (){
-    return Array();
+    return Array(
+        'noticia_Categoria'  => Array(
+            'Nome'                  => 'Se possui categoria em noticias',
+            'Desc'                  => 'Se possui categoria em noticias',
+            'chave'                 => 'noticia_Categoria',
+            'Valor'                 => true,
+        )
+    );
 };
 ?>
