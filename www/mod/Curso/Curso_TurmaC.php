@@ -39,22 +39,24 @@ class Curso_TurmaControle extends Curso_Controle
             $_Controle->Tema_Endereco($titulo);
         }
     }
-    static function Turmas_Tabela(&$albuns,$curso=false){
+    static function Turmas_Tabela(&$cursos,$curso=false){
         if($curso==='false') $curso = false;
         $registro   = \Framework\App\Registro::getInstacia();
         $Modelo     = &$registro->_Modelo;
         $Visual     = &$registro->_Visual;
         $tabela = Array();
         $i = 0;
-        if(is_object($albuns)) $albuns = Array(0=>$albuns);
-        reset($albuns);
-        foreach ($albuns as &$valor) {
+        if(is_object($cursos)) $cursos = Array(0=>$cursos);
+        reset($cursos);
+        foreach ($cursos as &$valor) {
             if($curso===false || $curso==0){
                 
                 $tabela['Curso'][$i]   = $valor->curso2;
+                $ver_url    = 'Curso/Turma/Turmas_Ver/'.$valor->id.'/';
                 $edit_url   = 'Curso/Turma/Turmas_Edit/'.$valor->id.'/';
                 $del_url    = 'Curso/Turma/Turmas_Del/'.$valor->id.'/';
             }else{
+                $ver_url    = 'Curso/Turma/Turmas_Ver/'.$valor->id.'/'.$valor->curso.'/';
                 $edit_url   = 'Curso/Turma/Turmas_Edit/'.$valor->id.'/'.$valor->curso.'/';
                 $del_url    = 'Curso/Turma/Turmas_Del/'.$valor->id.'/'.$valor->curso.'/';
             }
@@ -71,9 +73,37 @@ class Curso_TurmaControle extends Curso_Controle
                 $status = 1;
                 $texto = 'Ativado';
             }
-            $tabela['Funções'][$i]          = '<span id="status'.$valor->id.'">'.$Visual->Tema_Elementos_Btn('Status'.$status     ,Array($texto        ,'Curso/Turma/Status/'.$valor->id.'/'    ,'')).'</span>'.
+            $tabela['Funções'][$i]          = $Visual->Tema_Elementos_Btn('Visualizar' ,Array('Ver Turma'        ,$ver_url    ,'')).
+                                              '<span id="status'.$valor->id.'">'.$Visual->Tema_Elementos_Btn('Status'.$status     ,Array($texto        ,'Curso/Turma/Status/'.$valor->id.'/'    ,'')).'</span>'.
                                               $Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Turma'        ,$edit_url    ,'')).
                                               $Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Turma'       ,$del_url     ,'Deseja realmente deletar esse Turma ?'));
+            ++$i;
+        }
+        return Array($tabela,$i);
+    }
+    static function Abertas_Tabela(&$cursos,$curso=false,$inscrever=true){
+        if($curso==='false') $curso = false;
+        $registro   = \Framework\App\Registro::getInstacia();
+        $Modelo     = &$registro->_Modelo;
+        $Visual     = &$registro->_Visual;
+        $tabela = Array();
+        $i = 0;
+        if(is_object($cursos)) $cursos = Array(0=>$cursos);
+        reset($cursos);
+        foreach ($cursos as &$valor) {
+            if($curso===false || $curso==0){
+                
+                $tabela['Curso'][$i]   = $valor->curso2;
+                $inscricao_url    = 'Curso/Turma/Inscricao_Fazer/'.$valor->id.'/';
+            }else{
+                $inscricao_url    = 'Curso/Turma/Inscricao_Fazer/'.$valor->id.'/'.$valor->curso.'/';
+            }
+            $tabela['Nome'][$i]             = $valor->nome;
+            $tabela['Vagas'][$i]            = $valor->qnt;
+            $tabela['Inicio'][$i]           = $valor->inicio;
+            $tabela['Fim'][$i]              = $valor->fim;
+            if($inscrever) $tabela['Funções'][$i]          = $Visual->Tema_Elementos_Btn('Personalizado'     ,
+                    Array('Se Inscrever'        ,$inscricao_url    ,'','hdd','success'));
             ++$i;
         }
         return Array($tabela,$i);
@@ -88,23 +118,21 @@ class Curso_TurmaControle extends Curso_Controle
         if($curso!==false){
             $curso = (int) $curso;
             if($curso==0){
-                $curso_registro = $this->_Modelo->db->Sql_Select('Curso',Array(),1,'id DESC');
+                $curso_registro = $this->_Modelo->db->Sql_Select('Curso','',1,'id DESC');
                 if($curso_registro===false){
                     throw new \Exception('Não existe nenhum curso:', 404);
                 }
                 $curso = $curso_registro->id;
             }else{
-                $curso_registro = $this->_Modelo->db->Sql_Select('Curso',Array('id'=>$curso),1);
+                $curso_registro = $this->_Modelo->db->Sql_Select('Curso','Cu.id='.$curso.'',1);
                 if($curso_registro===false){
                     throw new \Exception('Esse Curso não existe:', 404);
                 }
             }
-            $where = Array(
-                'curso'   => $curso,
-            );
+            $where = '{sigla}.curso='.$curso.'';
             self::Endereco_Turma(false, $curso_registro);
         }else{
-            $where = Array();
+            $where = false;
             self::Endereco_Turma(false, false);
         }
         $i = 0;
@@ -132,14 +160,14 @@ class Curso_TurmaControle extends Curso_Controle
                 'Link'      => 'Curso/Turma/Turmas'.$url_add,
             )
         )));
-        $albuns = $this->_Modelo->db->Sql_Select('Curso_Turma',$where);
+        $cursos = $this->_Modelo->db->Sql_Select('Curso_Turma',$where);
         if($curso!==false){
             $titulo = 'Listagem de Turmas: '.$curso_registro->nome;
         }else{
             $titulo = 'Listagem de Turmas em Todos os Cursos';
         }
-        if($albuns!==false && !empty($albuns)){
-            list($tabela,$i) = self::Turmas_Tabela($albuns,$curso);
+        if($cursos!==false && !empty($cursos)){
+            list($tabela,$i) = self::Turmas_Tabela($cursos,$curso);
             $titulo = $titulo.' ('.$i.')';
             if($export!==false){
                 self::Export_Todos($export,$tabela, $titulo);
@@ -163,6 +191,87 @@ class Curso_TurmaControle extends Curso_Controle
                 $erro = 'Nenhuma Turma nesse Curso';
             }else{
                 $erro = 'Nenhuma Turma nos Cursos';
+            }         
+            $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">'.$erro.'</font></b></center>');
+        }
+        $this->_Visual->Bloco_Unico_CriaJanela($titulo);
+        
+        //Carrega Json
+        $this->_Visual->Json_Info_Update('Titulo',$titulo);
+    }
+    /**
+     * 
+     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
+     * @version 2.0
+     */
+    public function Abertas($curso=false,$export=false){
+        if($curso ==='false' || $curso ===0)  $curso    = false;
+        if($curso!==false){
+            $curso = (int) $curso;
+            if($curso==0){
+                $curso_registro = $this->_Modelo->db->Sql_Select('Curso',Array(),1,'id DESC');
+                if($curso_registro===false){
+                    throw new \Exception('Não existe nenhum curso:', 404);
+                }
+                $curso = $curso_registro->id;
+            }else{
+                $curso_registro = $this->_Modelo->db->Sql_Select('Curso',Array('id'=>$curso),1);
+                if($curso_registro===false){
+                    throw new \Exception('Esse Curso não existe:', 404);
+                }
+            }
+            $where = '{sigla}.curso='.$curso.' AND {sigla}.inicio>=\''.APP_DATA_BR.'\'';
+            self::Endereco_Turma(false, $curso_registro);
+        }else{
+            $where = '{sigla}.inicio>=\''.APP_DATA_BR.'\'';
+            self::Endereco_Turma(false, false);
+        }
+        $i = 0;
+        if($curso!==false){
+            $url_add = '/'.$curso;
+        }else{
+            $url_add = '/false';
+        }
+        $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
+            false,
+            Array(
+                'Print'     => true,
+                'Pdf'       => true,
+                'Excel'     => true,
+                'Link'      => 'Curso/Turma/Turmas'.$url_add,
+            )
+        )));
+        $cursos = $this->_Modelo->db->Sql_Select('Curso_Turma',$where);
+        if($curso!==false){
+            $titulo = 'Listagem de Turmas: '.$curso_registro->nome;
+        }else{
+            $titulo = 'Listagem de Turmas em Todos os Cursos';
+        }
+        if($cursos!==false && !empty($cursos)){
+            list($tabela,$i) = self::Abertas_Tabela($cursos,$curso);
+            $titulo = $titulo.' ('.$i.')';
+            if($export!==false){
+                self::Export_Todos($export,$tabela, $titulo);
+            }else{
+                $this->_Visual->Show_Tabela_DataTable(
+                    $tabela,     // Array Com a Tabela
+                    '',          // style extra
+                    true,        // true -> Add ao Bloco, false => Retorna html
+                    false,        // Apagar primeira coluna ?
+                    Array(       // Ordenacao
+                        Array(
+                            0,'desc'
+                        )
+                    )
+                );
+            }
+            unset($tabela);
+        }else{
+            $titulo = $titulo.' ('.$i.')';
+            if($curso!==false){
+                $erro = 'Nenhuma Turma com inscrição aberta nesse Curso';
+            }else{
+                $erro = 'Nenhuma Turma com inscrição aberta';
             }         
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">'.$erro.'</font></b></center>');
         }
@@ -231,6 +340,15 @@ class Curso_TurmaControle extends Curso_Controle
             $funcao     = '$this->Turmas('.$curso.');';
         }
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
+    }
+    /**
+     * 
+     * @param type $id
+     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
+     * @version 2.0
+     */
+    public function Turmas_Ver($id,$curso = false){
+        
     }
     /**
      * 
@@ -387,7 +505,7 @@ class Curso_TurmaControle extends Curso_Controle
     public function Inscricao_Fazer(){
         
     }
-    public function Incricao_Mover(){
+    public function Inscricao_Mover(){
         
     }
     public function Inscricao_Mover2(){

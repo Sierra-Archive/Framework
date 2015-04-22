@@ -1442,6 +1442,7 @@ readfile($link);*/
                     }
                     
                     // Caso Exista o Mesmo o trata
+                    var_dump($get);
                     if(isset($get) && is_array($get)){
                         // Busca AS caracteristicas da tabela mandando a sigla como parametro
                         $nome_da_tab        = \Framework\App\Conexao::Tabelas_GetSiglas_Recolher($tabelalinkada['Tabela']);
@@ -1452,6 +1453,7 @@ readfile($link);*/
                         $where = Array($tabelalinkada['SelectMultiplo']['Linkar'] => $identificador);
                         $respostas  = $this->_Modelo->db->Sql_Select($nome_da_tab, $where);
                         // PEga essas opcoes e deleta a porra toda !
+                        var_dump($respostas);
                         if($respostas!==false){
                             if(!is_array($respostas)) $respostas = Array($respostas);
                             $this->_Modelo->db->Sql_Delete($respostas,true);
@@ -1494,13 +1496,14 @@ readfile($link);*/
                         // Busca AS caracteristicas da tabela mandando a sigla como parametro
                         $nome_da_tab        = \Framework\App\Conexao::Tabelas_GetSiglas_Recolher($tabelalinkada['Tabela']);
                         $nome_da_tab        = $nome_da_tab['classe'];
-                        $nome_da_tab_classe = $nome_da_tab.'_DAO';
+                            
                         // Pega as tabelas linkadas reversa para poder achar a outra tabela de ligacao
                         $links_reverso = \Framework\App\Conexao::Tabelas_GetLinks_Recolher($tabelalinkada['Tabela'],true);
                         unset($links_reverso[$sigla]);
                         // Seleciona e Atualiza
                         $where = Array($links[$tabelalinkada['Tabela']] => $identificador);
                         $respostas  = $this->_Modelo->db->Sql_Select($nome_da_tab, $where);
+                        //var_dump($respostas);
                         if($respostas!==false){
                             if(!is_array($respostas)) $respostas = Array($respostas);
                             // Caso nao tenha campo de controle deleta os que nao 
@@ -1525,13 +1528,14 @@ readfile($link);*/
                             }
                         }
                         // Agora registra o que importa
+                        //var_dump($get,$camponovo);
                         if(!empty($get) && $camponovo!==false){
                             foreach($get as &$valor2){
                                 // Caso nao exista pula
                                 if($valor2=='' || $valor===NULL) continue;
                                 // Confere o Resto
                                 if($ovalor===false){
-                                    $objeto2 = new $nome_da_tab_classe;
+                                    $objeto2 = new $nome_da_tab;
                                     $objeto2->$links[$tabelalinkada['Tabela']]  = $identificador;
                                     $objeto2->$camponovo                        = $valor2;
                                     $sucesso = $this->_Modelo->db->Sql_Inserir($objeto2);
@@ -1542,7 +1546,7 @@ readfile($link);*/
                                     );
                                     $respostas2  = $this->_Modelo->db->Sql_Select($nome_da_tab, $where,1);
                                     if($respostas2===false){
-                                        $objeto2 = new $nome_da_tab_classe;
+                                        $objeto2 = new $nome_da_tab;
                                         $objeto2->$links[$tabelalinkada['Tabela']]  = $identificador;
                                         $objeto2->$camponovo                        = $valor2;
                                         $objeto2->$ovalor                           = '1';

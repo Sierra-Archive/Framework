@@ -201,7 +201,7 @@ class Financeiro_AdminControle extends Financeiro_Controle
     * @param Class &$Visual Visual Passado por Ponteiro
     * 
     * @uses $language
-    * @uses usuario_social_Visual::$Usuario_social_ShowSelect Exibe Select de Usuario_social
+    * @uses social_Visual::$Usuario_social_ShowSelect Exibe Select de Usuario_social
     * @uses Form Carrega Novo Formulário
     * @uses \Framework\Classes\Form::$Input_Novo Coloca os Novos Inputs
     * @uses \Framework\Classes\Form::$Select_Novo Add Novo Select

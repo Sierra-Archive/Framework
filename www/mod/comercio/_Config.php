@@ -11,11 +11,6 @@ $config_Modulo = function (){
 $config_Menu = function (){
     return Array(
         'Administrar' => Array(
-            'Nome'                  => 'Administrar',
-            'Link'                  => '#',
-            'Gravidade'             => 2,
-            'Img'                   => 'turboadmin/m-dashboard.png',
-            'Icon'                  => 'cog',
             'Filhos'                => Array('Fornecedores'=>Array(
                 'Nome'                  => 'Fornecedores',
                 'Link'                  => 'comercio/Fornecedor/Fornecedores',
@@ -139,7 +134,6 @@ $config_Menu = function (){
             ),),
         ),
         'Relatório' => Array(
-            'Nome'                  => 'Relatório',
             'Filhos'                => Array('Estoque'=>Array(
                 'Nome'                  => 'Estoque',
                 'Link'                  => 'comercio/Estoque/Estoques',

@@ -17,30 +17,40 @@ $config_Menu = function (){
             'Img'                   => 'turboadmin/m-dashboard.png',
             'Icon'                  => 'dashboard',
             'Filhos'                => false,
-        ),'Administrar' => Array(
-            'Nome'                  => 'Administrar',
+        ),'Cadastros' => Array(
+            'Nome'                  => 'Cadastros',
             'Link'                  => '#',
             'Gravidade'             => 10,
             'Img'                   => 'turboadmin/m-dashboard.png',
             'Icon'                  => 'cog',
-        ),'Cadastros' => Array(
-            'Nome'                  => 'Cadastros',
+        ),'Administrar' => Array(
+            'Nome'                  => 'Administrar',
             'Link'                  => '#',
             'Gravidade'             => 8,
-            'Img'                   => 'turboadmin/m-dashboard.png',
-            'Icon'                  => 'cog',
-        ),'Acesso' => Array(
-            'Nome'                  => 'Acesso',
+            'Img'                   => '',
+            'Icon'                  => 'building',
+        ),'Configurações' => Array(
+            'Nome'                  => 'Configurações',
             'Link'                  => '#',
             'Gravidade'             => 6,
             'Img'                   => 'turboadmin/m-dashboard.png',
-            'Icon'                  => 'user',
+            'Icon'                  => 'wrench',
             'Filhos'                => Array('Grupos'=>Array(
                 'Nome'                  => 'Grupos',
                 'Link'                  => '_Sistema/Admin/Grupos',
                 'Gravidade'             => 1,
                 'Img'                   => 'turboadmin/m-dashboard.png',
                 'Icon'                  => 'group',
+                'Filhos'                => false,
+            ),'Menu'=>Array(
+                'Nome'                  => 'Menu',
+                'Link'                  => '_Sistema/Admin/Menus',
+                'Gravidade'             => 1,
+                'Img'                   => 'turboadmin/m-dashboard.png',
+                'Icon'                  => 'dashboard',
+                'Permissao_Func'        => Array(// Permissoes NEcessarias
+                    '_Sistema_Avancado' => true
+                ),
                 'Filhos'                => false,
             ))
         ),'Relatório' => Array(
@@ -55,23 +65,6 @@ $config_Menu = function (){
             'Gravidade'             => 3,
             'Img'                   => 'turboadmin/m-dashboard.png',
             'Icon'                  => 'book',
-        ),'Avançado' => Array(
-            'Nome'                  => 'Avançado',
-            'Link'                  => '#',
-            'Gravidade'             => 2,
-            'Img'                   => 'turboadmin/m-dashboard.png',
-            'Icon'                  => 'wrench',
-            'Filhos'                => Array('Menu'=>Array(
-                'Nome'                  => 'Menu',
-                'Link'                  => '_Sistema/Admin/Menus',
-                'Gravidade'             => 1,
-                'Img'                   => 'turboadmin/m-dashboard.png',
-                'Icon'                  => 'dashboard',
-                'Permissao_Func'        => Array(// Permissoes NEcessarias
-                    '_Sistema_Avancado' => true
-                ),
-                'Filhos'                => false,
-            ))
         )
     );
 };

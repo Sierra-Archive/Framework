@@ -25,7 +25,7 @@ final Class Sistema_Local_Pais_DAO extends Framework\App\Dao
         return true;
     }
     public static function Get_Class(){
-        return str_replace(Array('_DAO'), Array(''), get_class());
+        return get_class() ; //return str_replace(Array('_DAO'), Array(''), get_class());
     }
     public static function Gerar_Colunas(){
         return Array(

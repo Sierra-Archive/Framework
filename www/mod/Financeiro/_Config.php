@@ -344,6 +344,12 @@ $config_Funcional = function (){
             'Desc'                  => 'Se usuarios terão saldo próprio dentro do sistema',
             'chave'                 => 'Financeiro_User_Saldo',
             'Valor'                 => false,
+        ),
+        'Financeiro_User_Planos'  => Array(
+            'Nome'                  => 'Usuarios -> Planos',
+            'Desc'                  => 'Se usuarios terão acesso a diferentes planos dentro do sistema',
+            'chave'                 => 'Financeiro_User_Planos',
+            'Valor'                 => false,
         )
     );
 };

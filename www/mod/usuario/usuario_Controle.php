@@ -440,9 +440,9 @@ class usuario_Controle extends \Framework\App\Controle
         if($tipo=='Funcionrio' || $tipo=="Funcionario") $tipo = "Funcionário";
         if($tipo=="Usurio" || $tipo=="Usuario")         $tipo = 'Usuário';
         // Cria Tipo 2:
-        if($tipo=='Cliente'){
+        if($tipo=='Cliente' || $tipo=='cliente'){
             $tipo2  = 'cliente';
-        }else if($tipo=='Funcionário'){
+        }else if($tipo=='Funcionário' || $tipo=='funcionário' || $tipo=='Funcionario' || $tipo=='funcionario'){
             $tipo2  = 'funcionario';
         }
         if($tipo2=='usuario'){
@@ -529,10 +529,10 @@ class usuario_Controle extends \Framework\App\Controle
         if($tipo=='Funcionrio' || $tipo=="Funcionario") $tipo = "Funcionário";
         if($tipo=="Usurio" || $tipo=="Usuario")         $tipo = 'Usuário';
         // Cria Tipo 2:
-        if($tipo=='Cliente'){
+        if($tipo=='Cliente' || $tipo=='cliente'){
             $tipo2  = 'cliente';
             $this->Tema_Endereco('Clientes','usuario/Admin/ListarCliente');
-        }else if($tipo=='Funcionário'){
+        }else if($tipo=='Funcionário' || $tipo=='Funcionario' || $tipo=='funcionário' || $tipo=='funcionario'){
             $tipo2  = 'funcionario';
             $this->Tema_Endereco('Funcionários','usuario/Admin/ListarFuncionarios');
         }else{

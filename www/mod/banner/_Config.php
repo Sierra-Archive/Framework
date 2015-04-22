@@ -11,11 +11,6 @@ $config_Modulo = function (){
 $config_Menu = function (){
     return Array(
         'Administrar'=>Array(
-            'Nome'                  => 'Administrar',
-            'Link'                  => '#',
-            'Gravidade'             => 10,
-            'Img'                   => 'turboadmin/m-dashboard.png',
-            'Icon'                  => 'cog',
             'Filhos'                => Array('Banners'=>Array(
                 'Nome'                  => 'Banners',
                 'Link'                  => 'banner/Admin/Main/',

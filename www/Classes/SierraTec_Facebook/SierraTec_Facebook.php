@@ -108,22 +108,22 @@ class SierraTec_Facebook {
         if($idamigo=='') $idamigo = 0;
         // VERIFICA SE CONVERSA JA ESTA REGISTRADA SE NAO TIVER CADASTRA ELA NO DBA
         $contador = 0;
-        $sql = $this->db->query('SELECT id FROM '.MYSQL_USUARIO_SOCIAL_HIST_FACE.' WHERE deletado!=1 AND id='.$conversaid.' AND faceid1='.$meuid.' AND faceid2='.$idamigo.'');
+        $sql = $this->db->query('SELECT id FROM '.MYSQL_SOCIAL_HIST_FACE.' WHERE deletado!=1 AND id='.$conversaid.' AND faceid1='.$meuid.' AND faceid2='.$idamigo.'');
         while ($campo = $sql->fetch_object()) {
             ++$contador;
         }
         if($contador==0){
-            $this->db->query('INSERT INTO '.MYSQL_USUARIO_SOCIAL_HIST_FACE.' (id, faceid1, faceid2, updated_time, unread) VALUES (\''.$conversaid.'\',\''.$meuid.'\',\''.$idamigo.'\',\''.$dataleitura.'\',\''.$lida.'\')');
+            $this->db->query('INSERT INTO '.MYSQL_SOCIAL_HIST_FACE.' (id, faceid1, faceid2, updated_time, unread) VALUES (\''.$conversaid.'\',\''.$meuid.'\',\''.$idamigo.'\',\''.$dataleitura.'\',\''.$lida.'\')');
         }
 
         // VERIFICA SE A MENSAGEM DA CONVERSA  JA ESTA REGISTRADA SE NAO TIVER CADASTRA ELA NO DBA
         $contador = 0;
-        $sql = $this->db->query('SELECT id FROM '.MYSQL_USUARIO_SOCIAL_HIST_FACE_MGS.' WHERE deletado!=1 AND id='.$mensagemid.' AND conversaid='.$conversaid.' AND criacao=\''.$datamensagem.'\'');
+        $sql = $this->db->query('SELECT id FROM '.MYSQL_SOCIAL_HIST_FACE_MGS.' WHERE deletado!=1 AND id='.$mensagemid.' AND conversaid='.$conversaid.' AND criacao=\''.$datamensagem.'\'');
         while ($campo = $sql->fetch_object()) {
             ++$contador;
         }
         if($contador==0){
-            $this->db->query('INSERT INTO '.MYSQL_USUARIO_SOCIAL_HIST_FACE_MGS.' (id, fromname, fromid, message, criacao, conversaid) VALUES (\''.$mensagemid.'\',\''.$mensagemusername.'\',\''.$mensagemuserid.'\',\''.$mensagem.'\',\''.$datamensagem.'\',\''.$conversaid.'\')');
+            $this->db->query('INSERT INTO '.MYSQL_SOCIAL_HIST_FACE_MGS.' (id, fromname, fromid, message, criacao, conversaid) VALUES (\''.$mensagemid.'\',\''.$mensagemusername.'\',\''.$mensagemuserid.'\',\''.$mensagem.'\',\''.$datamensagem.'\',\''.$conversaid.'\')');
         }
         return 1;
     } 

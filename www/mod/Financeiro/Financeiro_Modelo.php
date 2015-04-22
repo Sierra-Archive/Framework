@@ -28,7 +28,11 @@ class Financeiro_Modelo extends \Framework\App\Modelo
      */
     static function MovInt_Inserir(&$modelo,$user,$valor,$positivo,$motivo,$motivoid,$dt_vencimento,$dt_pago='0000-00-00 00:00:00'){
         GLOBAL $config;
-        $modelo->db->query('INSERT INTO '.MYSQL_FINANCEIRO_MOV_INT.' (user,valor,positivo,motivo,motivoid,dt_vencimento,log_date_add,dt_pago) VALUES (\''.$user.'\',\''.$valor.'\',\''.$positivo.'\',\''.$motivo.'\',\''.$motivoid.'\',\''.$dt_vencimento.'\',\''.APP_HORA.'\',\''.$dt_pago.'\')');
+        if($positivo==1){
+            $modelo->db->query('INSERT INTO '.MYSQL_FINANCEIRO_MOV_INT.' (saida_motivo,saida_motivoid,entrada_motivo,entrada_motivoid,valor,positivo,motivo,motivoid,dt_vencimento,log_date_add,dt_pago) VALUES (\'Servidor\',\''.SRV_NAME_SQL.'\',\'Usuario\',\''.$user.'\',\''.$valor.'\',\''.$positivo.'\',\''.$motivo.'\',\''.$motivoid.'\',\''.$dt_vencimento.'\',\''.APP_HORA.'\',\''.$dt_pago.'\')');
+        }else{
+            $modelo->db->query('INSERT INTO '.MYSQL_FINANCEIRO_MOV_INT.' (entrada_motivo,entrada_motivoid,saida_motivo,saida_motivoid,valor,positivo,motivo,motivoid,dt_vencimento,log_date_add,dt_pago) VALUES (\'Servidor\',\''.SRV_NAME_SQL.'\',\'Usuario\',\''.$user.'\',\''.$valor.'\',\''.$positivo.'\',\''.$motivo.'\',\''.$motivoid.'\',\''.$dt_vencimento.'\',\''.APP_HORA.'\',\''.$dt_pago.'\')');
+        }
     }
     /**
      *  Se tem debito devendo volta 1 se nao volta 0
@@ -41,7 +45,7 @@ class Financeiro_Modelo extends \Framework\App\Modelo
         $sql = $modelo->db->query('
                 SELECT motivoid
                 FROM '.MYSQL_FINANCEIRO_MOV_INT.'
-                WHERE deletado!=1 AND motivo = \''.$motivo.'\' AND user = '.$usuarioid.' AND positivo = 0 AND dt_pago=\'0000-00-00 00:00:00\' ORDER BY log_date_add DESC LIMIT 1');
+                WHERE deletado!=1 AND motivo = \''.$motivo.'\' AND saida_motivo = \'Usuario\' AND saida_motivoid = '.$usuarioid.' AND pago = 0 ORDER BY log_date_add DESC LIMIT 1');
         while($campo = $sql->fetch_object()){
             $i = $campo->motivoid;
         }
@@ -53,7 +57,7 @@ class Financeiro_Modelo extends \Framework\App\Modelo
     public function MovFin_Carregar(&$array,$usuarioid){
         $i = 0;
         // CONSULTA EXTERNOS E GANHOS EM CIMA DE OUTROS USUARIOS
-        $sql = $this->db->query('SELECT * FROM (
+        /*$sql = $this->db->query('SELECT * FROM (
                 SELECT positivo, valor, obs, log_date_add
                 FROM '.MYSQL_FINANCEIRO_MOV_EXT.'
                 WHERE deletado!=1 AND user = '.$usuarioid.'
@@ -62,6 +66,17 @@ class Financeiro_Modelo extends \Framework\App\Modelo
                 FROM '.MYSQL_FINANCEIRO_MOV_INT.'
                 WHERE deletado!=1 AND user = '.$usuarioid.'
             )a
+            ORDER BY log_date_add
+        ');*/
+        $sql = $this->db->query('SELECT * FROM (
+                SELECT 1 as positivo, valor, obs, log_date_add
+                FROM '.MYSQL_FINANCEIRO_MOV_INT.'
+                WHERE deletado!=1 AND entrada_motivo = \'Usuario\' AND entrada_motivoid = '.$usuarioid.'
+            UNION ALL
+                SELECT 0 as positivo, valor, \'associado\' AS obs, log_date_add
+                FROM '.MYSQL_FINANCEIRO_MOV_INT.'
+                WHERE deletado!=1 AND saida_motivo = \'Usuario\' AND saida_motivoid = '.$usuarioid.'
+            ) as U
             ORDER BY log_date_add
         ');
         while($campo = $sql->fetch_object()){
@@ -83,7 +98,7 @@ class Financeiro_Modelo extends \Framework\App\Modelo
         if($usuarioid!=0 && $usuarioid!='' && isset($usuarioid) && is_int($usuarioid)){
             $valor = 0;
             // CONSULTA EXTERNOS E GANHOS EM CIMA DE OUTROS USUARIOS
-            $sql = $this->db->query('SELECT * FROM (
+            /*$sql = $this->db->query('SELECT * FROM (
                     SELECT positivo, valor, log_date_add
                     FROM '.MYSQL_FINANCEIRO_MOV_EXT.'
                     WHERE deletado!=1 AND user = '.$usuarioid.'
@@ -100,15 +115,19 @@ class Financeiro_Modelo extends \Framework\App\Modelo
                 }else{
                     $valor = $valor - $campo->valor;
                 }
-            }
+            }*/
             // CONSULTA SEUS GASTOS NO SISTEMA
             $i=0;
+            /*$sql = $this->db->query('
+                    SELECT id, valor, positivo, motivo, motivoid, dt_vencimento, dt_pago
+                    FROM '.MYSQL_FINANCEIRO_MOV_INT.'
+                    WHERE deletado!=1 AND user = '.$usuarioid.' AND positivo = 0 ORDER BY log_date_add');*/
             $sql = $this->db->query('
                     SELECT id, valor, positivo, motivo, motivoid, dt_vencimento, dt_pago
                     FROM '.MYSQL_FINANCEIRO_MOV_INT.'
-                    WHERE deletado!=1 AND user = '.$usuarioid.' AND positivo = 0 ORDER BY log_date_add');
+                    WHERE deletado!=1 AND saida_motivo = \'Usuario\' AND saida_motivoid = '.$usuarioid.' ORDER BY pago,log_date_add');
             while($campo = $sql->fetch_object()){
-                if($valor>=$campo->valor){
+                if($campo->pago==1){
                     $valor = $valor-$campo->valor;
                     $array[$i]['situacao'] = 'Pago';
                     if($campo->dt_pago=='0000-00-00 00:00:00'){
@@ -137,16 +156,26 @@ class Financeiro_Modelo extends \Framework\App\Modelo
         if(!is_int($usuarioid)) $usuarioid = (int) $usuarioid;
         $valor = 0;
         // CONSULTA EXTERNOS E GANHOS EM CIMA DE OUTROS USUARIOS
-        $sql = $modelo->db->query('SELECT * FROM (
-                SELECT positivo, valor, log_date_add
+        /*$sql = $modelo->db->query('SELECT * FROM (
+                SELECT valor, log_date_add
                 FROM '.MYSQL_FINANCEIRO_MOV_EXT.'
-                WHERE deletado!=1 AND user = '.$usuarioid.'
+                WHERE deletado!=1 AND entrada_motivoid = '.$usuarioid.'
             UNION ALL
                 SELECT positivo, valor, log_date_add
                 FROM '.MYSQL_FINANCEIRO_MOV_INT.'
                 WHERE deletado!=1 AND user = '.$usuarioid.'
-            )a
+            ) as U
             ORDER BY log_date_add
+        ');*/
+        $sql = $modelo->db->query('SELECT U.valor, U.log_date_add, U.positivo FROM (
+                SELECT G.valor, G.log_date_add, 1 as positivo
+                FROM '.MYSQL_FINANCEIRO_MOV_INT.' as G
+                WHERE G.deletado!=1 AND G.entrada_motivo = \'Usuario\' AND G.entrada_motivoid = '.$usuarioid.'
+            UNION ALL
+                SELECT P.valor, P.log_date_add, 0 as positivo
+                FROM '.MYSQL_FINANCEIRO_MOV_INT.' as P
+                WHERE P.deletado!=1 AND P.saida_motivo = \'Usuario\' AND P.saida_motivoid = '.$usuarioid.'
+            ) as U ORDER BY log_date_add
         ');
         while($campo = $sql->fetch_object()){
             if($campo->positivo==1){

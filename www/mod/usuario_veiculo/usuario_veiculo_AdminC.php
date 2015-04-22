@@ -162,8 +162,8 @@ class usuario_veiculo_AdminControle extends usuario_veiculo_Controle
     * @param Class &$modelo Modelo Passado por Ponteiro
     * @param Class &$Visual Visual Passado por Ponteiro
     * 
-    * @uses usuario_social_Modelo Carrega Persona Modelo
-    * @uses usuario_social_Modelo::$retorna_usuario_social Retorna Pessoas
+    * @uses social_Modelo Carrega Persona Modelo
+    * @uses social_Modelo::$retorna_social Retorna Pessoas
     * @uses financeiroControle::$veiculos_formcadastro retorna Formulario de Cadastro de Veiculos
     * @uses \Framework\App\Visual::$blocar Add html ao bloco de conteudo
     * @uses \Framework\App\Visual::$Bloco_Menor_CriaJanela Add html do bloco a uma Janela Lateral Direita
@@ -356,8 +356,8 @@ class usuario_veiculo_AdminControle extends usuario_veiculo_Controle
     * @param Class &$Visual Visual Passado por Ponteiro
     * 
     * @uses $language
-    * @uses usuario_social_Modelo Carrega Persona Modelo
-    * @uses usuario_social_Modelo::$retorna_usuario_social Retorna Pessoas
+    * @uses social_Modelo Carrega Persona Modelo
+    * @uses social_Modelo::$retorna_social Retorna Pessoas
     * @uses financeiroControle::$marcas_formcadastro retorna Formulario de Cadastro de Marcas
     * @uses \Framework\App\Visual::$blocar Add html ao bloco de conteudo
     * @uses \Framework\App\Visual::$Bloco_Menor_CriaJanela Add html do bloco a uma Janela Lateral Direita

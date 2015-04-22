@@ -27,7 +27,7 @@ final Class Comercio_Proposta_Funcionario_DAO extends Framework\App\Dao
         return 1;
     }
     public static function Get_Class(){
-        return str_replace(Array('_DAO'), Array(''), get_class());
+        return get_class() ; //return str_replace(Array('_DAO'), Array(''), get_class());
     }
     public static function Get_LinkTable(){
         return Array(

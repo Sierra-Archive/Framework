@@ -218,19 +218,19 @@ mod/
 												public function retorna_financeiro(&$financas,$ano = 0,$mes = 0, $dia = 0)
 												public function retorna_financeiro_tipo(&$financas, $tipo = 0,$ano = 0,$mes = 0, $dia = 0)
 												public function retorna_financeiro_subtipo(&$financas, $categoria = 0,$ano = 0,$mes = 0, $dia = 0)
-												public function financas_inserir($data,$valor,$positivo,$categoria,$usuario_social,$obs)
+												public function financas_inserir($data,$valor,$positivo,$categoria,$social,$obs)
 												public function financas_Del($id)
 								
 								financasV.php
 							
-				usuario_social/
+				social/
 								Controle.php
 								
 								Modelo.php
 												public function porc_ficar($personaid)
 												public function porc_confiar($usuario_id)
 												public function porc_amizade($personaid)
-												public function retorna_usuario_social(&$usuario_social)
+												public function retorna_social(&$social)
 												public function retorna_acoes($personaid,&$acoes)
 												public function estatisticas()
 									
@@ -239,9 +239,9 @@ mod/
 								acoesC.php
 								acoesM.php
 								acoesV.php
-								usuario_socialC.php
-								usuario_socialM.php
-								usuario_socialV.php
+								socialC.php
+								socialM.php
+								socialV.php
 								statC.php
 								statM.php
 								statV.php

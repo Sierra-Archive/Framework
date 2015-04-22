@@ -4539,3 +4539,7 @@ h4 > a.link_titulo:hover {
     text-decoration: none;
     opacity: .4;
 } 
+
+#footer {
+    height: 20px;
+}

@@ -144,7 +144,9 @@ final class Conexao
     private function __clone(){}
 
     public static function &Dao_GetColunas($nome){
-        if(isset(self::$tabelas[$nome]['colunas'])){
+        if(isset(self::$tabelas[$nome.'_DAO']['colunas'])){
+            return self::$tabelas[$nome.'_DAO']['colunas'];
+        }else if(isset(self::$tabelas[$nome]['colunas'])){
             return self::$tabelas[$nome]['colunas'];
         }
         throw new \Exception('Colunas com classe '.$nome.' nao Existe: '.$this->mysqli->error,3251);
@@ -156,10 +158,11 @@ final class Conexao
         $tabelas = &self::$tabelas;
         foreach($tabelas as $indice=>&$valor){
             if($valor['nome']===$nome){
+                if(isset(self::$tabelas[$nome.'_DAO']["colunas"])) return self::$tabelas[$nome.'_DAO']["colunas"];
                 return self::$tabelas[$nome]["colunas"];
             }
         }
-        throw new \Exception('Colunas com nome '.$nome.' nao Existe: '.$this->mysqli->error,3251);
+        throw new \Exception('Colunas com nome '.$nome.' nao Existe.',3251);
     }
     
     public function prepare($sql,$autoreparo=true) 
@@ -253,7 +256,7 @@ final class Conexao
      * Unknown column 'foto' in 'field list'
      * Unknown column 'login' in 'where clause'
      * Unknown column 'C.local' in 'on clause'
-     * Table 'Projeto_Framework.usuario_social' doesn't exist
+     * Table 'Projeto_Framework.social' doesn't exist
      * <Exemplos> De erros sem Reparaçaão Automatica
      * You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'ANDD senha='e10adc3949ba59abbe56e057f20f883e' AND ativado='1'' at line 1
      * 
@@ -1096,7 +1099,11 @@ final class Conexao
         $menor      = ' < ';
         $maiorigual = ' >= ';
         $menorigual = ' <= ';
-        $class_dao      = $class_dao.'_DAO';
+        
+        // Se nao Colocarem o _DAO, ele coloca
+        if(strpos($class_dao, '_DAO')===false){
+            $class_dao      = $class_dao.'_DAO';
+        }
         
         // Carrega Cache
         $Cache = $this->_Cache->Ler('Select-'.$class_dao.$campos);
@@ -1335,7 +1342,7 @@ final class Conexao
         }else if(strpos($condicao, '{sigla}')!==false){
             if($sql_condicao!='') $sql_condicao .= ' AND ';
             $sql_condicao .= str_replace('{sigla}', $sql_tabela_sigla.'.', $condicao);
-        }else if($condicao!==false){
+        }else if($condicao!==false && $condicao!==''){
             if($sql_condicao!='') $sql_condicao .= ' AND ';
             $sql_condicao .= (string) $condicao;
         }        
@@ -1819,7 +1826,13 @@ final class Conexao
      */
     public static function &Tabelas_GetCampos_Recolher($sigla){
         $array = \Framework\App\Conexao::Tabelas_GetSiglas_Recolher($sigla);
-        return self::$tabelas[$array['tabela']]['colunas'];
+        if(!isset(self::$tabelas[$array['classe']])){
+            if(!isset(self::$tabelas[$array['classe'].'_DAO'])){
+                throw new \Exception('Classe '.$array['classe'].' nao Existe: ',2828);
+            }
+            return self::$tabelas[$array['classe'].'_DAO']['colunas'];
+        }
+        return self::$tabelas[$array['classe']]['colunas'];
     }
     /**
      * 

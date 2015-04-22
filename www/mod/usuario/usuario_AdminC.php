@@ -299,8 +299,8 @@ class usuario_AdminControle extends usuario_Controle
     * @param Class &$modelo Modelo Passado por Ponteiro
     * @param Class &$Visual Visual Passado por Ponteiro
     * 
-    * @uses usuario_social_Modelo Carrega Persona Modelo
-    * @uses usuario_social_Modelo::$retorna_usuario_social Retorna Pessoas
+    * @uses social_Modelo Carrega Persona Modelo
+    * @uses social_Modelo::$retorna_social Retorna Pessoas
     * @uses financeiroControle::$usuarios_formcadastro retorna Formulario de Cadastro de usuarios
     * @uses \Framework\App\Visual::$blocar Add html ao bloco de conteudo
     * @uses \Framework\App\Visual::$Bloco_Unico_CriaJanela Add html do bloco a uma Janela Lateral Direita
