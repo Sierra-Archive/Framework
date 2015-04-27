@@ -11,7 +11,7 @@ RewriteCond $0 !=images/favicon.ico
 RewriteRule ^([^/]+/)*favicon\.ico$ arq/favicon.ico [L]
 
 
-# RewriteCond %{REQUEST_FILENAME} !-d // Nao sao Diretorios, Agora Vai esconder os Diretorios
+#RewriteCond %{REQUEST_FILENAME} !-d // Nao sao Diretorios, Agora Vai esconder os Diretorios
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-l
 

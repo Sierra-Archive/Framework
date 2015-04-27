@@ -39,6 +39,24 @@ class Curso_TurmaControle extends Curso_Controle
             $_Controle->Tema_Endereco($titulo);
         }
     }
+    static function Endereco_Aberta($true=true,$curso=false){
+        if($curso==='false') $curso = false;
+        $registro = \Framework\App\Registro::getInstacia();
+        $_Controle = $registro->_Controle;
+        if($curso===false){
+            $titulo = 'Todos os Turmas';
+            $link   = 'Curso/Turma/Abertas';
+        }else{
+            Curso_CursoControle::Endereco_Curso();
+            $titulo = $curso->nome;
+            $link   = 'Curso/Turma/Abertas/'.$curso->id;
+        }
+        if($true===true){
+            $_Controle->Tema_Endereco($titulo,$link);
+        }else{
+            $_Controle->Tema_Endereco($titulo);
+        }
+    }
     static function Turmas_Tabela(&$cursos,$curso=false){
         if($curso==='false') $curso = false;
         $registro   = \Framework\App\Registro::getInstacia();
@@ -129,7 +147,7 @@ class Curso_TurmaControle extends Curso_Controle
                     throw new \Exception('Esse Curso não existe:', 404);
                 }
             }
-            $where = '{sigla}.curso='.$curso.'';
+            $where = '{sigla}curso='.$curso.'';
             self::Endereco_Turma(false, $curso_registro);
         }else{
             $where = false;
@@ -220,11 +238,11 @@ class Curso_TurmaControle extends Curso_Controle
                     throw new \Exception('Esse Curso não existe:', 404);
                 }
             }
-            $where = '{sigla}.curso='.$curso.' AND {sigla}.inicio>=\''.APP_DATA_BR.'\'';
-            self::Endereco_Turma(false, $curso_registro);
+            $where = '{sigla}qnt>0 AND {sigla}curso='.$curso.' AND {sigla}inicio>=\''.APP_DATA.'\'';
+            self::Endereco_Aberta(false, $curso_registro);
         }else{
-            $where = '{sigla}.inicio>=\''.APP_DATA_BR.'\'';
-            self::Endereco_Turma(false, false);
+            $where = '{sigla}qnt>0 AND {sigla}inicio>=\''.APP_DATA.'\'';
+            self::Endereco_Aberta(false, false);
         }
         $i = 0;
         if($curso!==false){
@@ -348,7 +366,14 @@ class Curso_TurmaControle extends Curso_Controle
      * @version 2.0
      */
     public function Turmas_Ver($id,$curso = false){
-        
+        if($curso==='false') $curso = false;
+        if($id===false){
+            throw new \Exception('Turma não existe:'. $id, 404);
+        }
+        $id         = (int) $id;
+        if($curso!==false){
+            $curso    = (int) $curso;
+        }
     }
     /**
      * 
@@ -502,13 +527,181 @@ class Curso_TurmaControle extends Curso_Controle
         }
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
-    public function Inscricao_Fazer(){
+    /**
+     * 
+     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
+     * @version 2.0
+     */
+    protected static function Campos_Deletar_Inscricao(&$campos){
+        self::DAO_Campos_Retira($campos, 'valor');
+        self::DAO_Campos_Retira($campos, 'pago');
+        self::DAO_Campos_Retira($campos, 'curso');
+        self::DAO_Campos_Retira($campos, 'turma');
+    }
+    public function Inscricao_Fazer($id,$curso = false){
+        if($curso==='false') $curso = false;
+        if($id===false){
+            throw new \Exception('Turma não existe:'. $id, 404);
+        }
+        $id         = (int) $id;
+        
+        $this->_Visual->Blocar('Ao Continuar Você Concorda com os temos abaixo:<br><br>Regras sobe Cancelamento e Transferência de Curso:
+            <br><br>
+
+
+    Cancelamento de inscrição em até 60 (sessenta) dias de antecedência ao curso: o aluno poderá transferir a sua inscrição para outra data disponível, somente.<br>
+    Cancelamento de inscrição entre 60(sessenta) e 30(trinta) dias de antecedência ao curso: o aluno poderá transferir sua inscrição para outra data disponível ou cancelar participação com 25% (vinte e cinco) de multa.<br>
+    Cancelamento de inscrição entre 30(trinta) e 15(quinze) dias de antecedência ao curso: o aluno poderá transferir sua inscrição para outra data disponível ou cancelar participação com 50% (vinte e cinco) de multa.<br>
+    Cancelamento de inscrição em até 15 dias de antecedência ao curso: o aluno perderá o direito à inscrição, sem ressarcimento.');
+        
+        if($curso!==false){
+            $curso    = (int) $curso;
+            self::Endereco_Aberta(true, $curso);
+            $turma_registro = $this->_Modelo->db->Sql_Select('Curso_Turma',Array('id'=>$curso),1);
+            if($turma_registro===false){
+                throw new \Exception('Essa Turma não existe nesse Curso:', 404);
+            }
+            $formlink   = 'Curso/Turma/Inscricao_Fazer2/'.$id;
+        }else{
+            self::Endereco_Aberta(true, false);
+            $turma_registro = $this->_Modelo->db->Sql_Select('Curso_Turma',false,1);
+            if($turma_registro===false){
+                throw new \Exception('Essa Turma não existe:', 404);
+            }
+            $formlink   = 'Curso/Turma/Inscricao_Fazer2/'.$id;
+        }
+        
+        // Verifica Vagas
+        if($turma_registro->qnt<=0){
+            $mensagens = array(
+                "tipo"              => 'erro',
+                "mgs_principal"     => 'Sem Vagas',
+                "mgs_secundaria"    => 'Não possui mais vagas nessa Turma! :('
+            );
+            $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+            $this->_Visual->Json_Info_Update('Historico', false);
+            $this->layoult_zerar = false; 
+            return false;
+        }
+        
+        
+         // Carrega Config
+        $titulo1    = 'Confirmar Inscrição';
+        $titulo2    = 'Confirmar Inscrição';
+        $formid     = 'form_Curso_Turma_Incricao_Fazer';
+        $formbt     = 'Confirmar Inscrição';
+        $campos = Curso_Turma_Inscricao_DAO::Get_Colunas();
+        self::Campos_Deletar_Inscricao($campos);
+        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos);
+    
         
     }
-    public function Inscricao_Mover(){
+    public function Inscricao_Fazer2($id,$curso = false){
+        if($curso==='false') $curso = false;
+        if($id===false){
+            throw new \Exception('Turma não existe:'. $id, 404);
+        }
+        $id         = (int) $id;
+        
+        
+        if($curso!==false){
+            $curso    = (int) $curso;
+            self::Endereco_Aberta(true, $curso);
+            $turma_registro = $this->_Modelo->db->Sql_Select('Curso_Turma',Array('curso'=>$curso),1);
+            if($turma_registro===false){
+                throw new \Exception('Essa Turma não existe nesse Curso:', 404);
+            }
+        }else{
+            self::Endereco_Aberta(true, false);
+            $turma_registro = $this->_Modelo->db->Sql_Select('Curso_Turma',false,1);
+            if($turma_registro===false){
+                throw new \Exception('Essa Turma não existe:', 404);
+            }
+        }
+        
+        
+        $curso_registro = $this->_Modelo->db->Sql_Select('Curso','{sigla}id=\''.$turma_registro->curso.'\'',1);
+        if($curso_registro===false){
+            throw new \Exception('Esse Curso não existe', 404);
+        }
+        
+        // Verifica Vagas
+        if($turma_registro->qnt<=0){
+            $mensagens = array(
+                "tipo"              => 'erro',
+                "mgs_principal"     => 'Sem Vagas',
+                "mgs_secundaria"    => 'Não possui mais vagas nessa Turma! :('
+            );
+            $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+            $this->_Visual->Javascript_Executar(
+                    '$("#'.$valor2.'").css(\'border\', \'2px solid #FFAEB0\').focus();'
+            );
+            $this->_Visual->Json_Info_Update('Historico', false);
+            $this->layoult_zerar = false; 
+            return false;
+        }
+        
+        
+        
+        $titulo     = 'Inscrição Confirmada com Sucesso';
+        $dao        = 'Curso_Turma_Inscricao';
+        $funcao     = false;
+        $sucesso1   = 'Inscrição bem sucedida';
+        $sucesso2   = 'Inscrição Confirmada com Sucesso';
+        $alterar    = Array('curso'=>$turma_registro->curso,'turma'=>$turma_registro->id);
+        $sucesso = $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
+        if($sucesso===true){
+            $motivo = 'Curso';
+            $identificador  = $this->_Modelo->db->Sql_Select('Curso_Turma_Inscricao', false,1,'id DESC');
+            $identificador  = $identificador->id;
+            $usuarioid  = $this->_Acl->Usuario_GetID();
+            
+            // Diminui Vagas da Turma e Salva
+            $turma_registro->qnt = $turma_registro->qnt-1;
+            $this->_Modelo->db->Sql_Update($turma_registro);
+
+            /*
+             * TRABALHA PARCELAS DO FINANCEIRO
+             */
+            // Passa tudo pra Contas a Receber
+            Financeiro_PagamentoControle::Condicao_GerarPagamento(
+                \anti_injection($_POST["condicao_pagar"]),    // Condição de Pagamento
+                $motivo,                                      // Motivo
+                $identificador,                               // MotivoID
+                'Servidor',                                   // Entrada_Motivo
+                SRV_NAME_SQL,                                 // Entrada_MotivoID
+                'Usuario',                                   // Saida_Motivo
+                $usuarioid,                                // Saida_MotivoID
+                $curso_registro->valor,             // Valor
+                APP_DATA_BR // Data Inicial
+                //(int) $_POST["categoria"]                     // Categoria
+            );
+        }
+        $this->Abertas($curso);
+    }
+    public function Inscricao_Mover($inscricao,$turma,$curso = false){
+        if($curso==='false') $curso = false;
+        if($id===false){
+            throw new \Exception('Turma não existe:'. $id, 404);
+        }
+        $id         = (int) $id;
+        if($curso!==false){
+            $curso    = (int) $curso;
+            self::Endereco_Aberta(true, $curso);
+        }else{
+            self::Endereco_Aberta(true, false);
+        }
         
     }
-    public function Inscricao_Mover2(){
+    public function Inscricao_Mover2($inscricao,$turma,$curso = false){
+        if($curso==='false') $curso = false;
+        if($id===false){
+            throw new \Exception('Turma não existe:'. $id, 404);
+        }
+        $id         = (int) $id;
+        if($curso!==false){
+            $curso    = (int) $curso;
+        }
         
     }
 }

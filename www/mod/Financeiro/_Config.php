@@ -90,7 +90,50 @@ $config_Menu = function (){
                     'Financeiro_Financa' => true
                 ),
                 'Filhos'                => false,
-            ),),
+            ),
+                
+            //Contas de Usuarios
+            'Minhas Contas à Pagar'=>Array(
+                'Nome'                  => 'Minhas Contas à Pagar',
+                'Link'                  => 'Financeiro/Usuario/Pagar',
+                'Gravidade'             => 20,
+                'Img'                   => 'money',
+                'Icon'                  => 'money',
+                'Permissao_Func'        => Array(// Permissoes NEcessarias
+                    'Financeiro_User_Saldo' => true
+                ),
+                'Filhos'                => false,
+            ),'Minhas Contas Pagas'=>Array(
+                'Nome'                  => 'Minhas Contas Pagas',
+                'Link'                  => 'Financeiro/Usuario/Pago',
+                'Gravidade'             => 19,
+                'Img'                   => 'money',
+                'Icon'                  => 'money',
+                'Permissao_Func'        => Array(// Permissoes NEcessarias
+                    'Financeiro_User_Saldo' => true
+                ),
+                'Filhos'                => false,
+            ),'Minhas Contas à Receber'=>Array(
+                'Nome'                  => 'Minhas Contas à Receber',
+                'Link'                  => 'Financeiro/Usuario/Receber',
+                'Gravidade'             => 18,
+                'Img'                   => 'money',
+                'Icon'                  => 'money',
+                'Permissao_Func'        => Array(// Permissoes NEcessarias
+                    'Financeiro_User_Saldo' => true
+                ),
+                'Filhos'                => false,
+            ),'Minhas Contas Recebidas'=>Array(
+                'Nome'                  => 'Minhas Contas Recebidas',
+                'Link'                  => 'Financeiro/Usuario/Recebido',
+                'Gravidade'             => 17,
+                'Img'                   => 'money',
+                'Icon'                  => 'money',
+                'Permissao_Func'        => Array(// Permissoes NEcessarias
+                    'Financeiro_User_Saldo' => true
+                ),
+                'Filhos'                => false,
+            )),
         ),
     );
 };
@@ -216,7 +259,7 @@ $config_Permissoes = function (){
             'Metodo'                => 'Pagar',  // Metodos referentes separados por virgula
         ),
         Array(
-            'Nome'                  => 'Financeiro (Contas a Pagas) - Listagem',
+            'Nome'                  => 'Financeiro (Contas Pagas) - Listagem',
             'Desc'                  => '',
             'Chave'                 => 'Financeiro_Pagamento_Pago',
             'End'                   => 'Financeiro/Pagamento/Pago', // Endereco que deve conter a url para permitir acesso
@@ -321,6 +364,72 @@ $config_Permissoes = function (){
             'Metodo'                => 'Financas_Del',  // Metodos referentes separados por virgula
             'Permissao_Func'        => Array(// Permissoes NEcessarias
                 'Financeiro_Financa' => true
+            ),
+        ),
+        
+        
+        
+        // Pagamento de Usuario
+        Array(
+            'Nome'                  => 'Financeiro de Usuários (Contas a Receber) - Listagem',
+            'Desc'                  => '',
+            'Chave'                 => 'Financeiro_Usuario_Receber',
+            'End'                   => 'Financeiro/Usuario/Receber', // Endereco que deve conter a url para permitir acesso
+            'Modulo'                => 'Financeiro', // Modulo Referente
+            'SubModulo'             => 'Usuario',   // Submodulo Referente
+            'Metodo'                => 'Receber',  // Metodos referentes separados por virgula
+            'Permissao_Func'        => Array(// Permissoes NEcessarias
+                'Financeiro_User_Saldo' => true
+            ),
+        ),
+        Array(
+            'Nome'                  => 'Financeiro de Usuários (Contas Recebidas) - Listagem',
+            'Desc'                  => '',
+            'Chave'                 => 'Financeiro_Usuario_Recebido',
+            'End'                   => 'Financeiro/Usuario/Recebido', // Endereco que deve conter a url para permitir acesso
+            'Modulo'                => 'Financeiro', // Modulo Referente
+            'SubModulo'             => 'Usuario',   // Submodulo Referente
+            'Metodo'                => 'Recebido',  // Metodos referentes separados por virgula
+            'Permissao_Func'        => Array(// Permissoes NEcessarias
+                'Financeiro_User_Saldo' => true
+            ),
+        ),
+        Array(
+            'Nome'                  => 'Financeiro de Usuários (Contas a Pagar) - Listagem',
+            'Desc'                  => '',
+            'Chave'                 => 'Financeiro_Usuario_Pagar',
+            'End'                   => 'Financeiro/Usuario/Pagar', // Endereco que deve conter a url para permitir acesso
+            'Modulo'                => 'Financeiro', // Modulo Referente
+            'SubModulo'             => 'Usuario',   // Submodulo Referente
+            'Metodo'                => 'Pagar',  // Metodos referentes separados por virgula
+            'Permissao_Func'        => Array(// Permissoes NEcessarias
+                'Financeiro_User_Saldo' => true
+            ),
+        ),
+        Array(
+            'Nome'                  => 'Financeiro de Usuários (Contas Pagas) - Listagem',
+            'Desc'                  => '',
+            'Chave'                 => 'Financeiro_Usuario_Pago',
+            'End'                   => 'Financeiro/Usuario/Pago', // Endereco que deve conter a url para permitir acesso
+            'Modulo'                => 'Financeiro', // Modulo Referente
+            'SubModulo'             => 'Usuario',   // Submodulo Referente
+            'Metodo'                => 'Pago',  // Metodos referentes separados por virgula
+            'Permissao_Func'        => Array(// Permissoes NEcessarias
+                'Financeiro_User_Saldo' => true
+            ),
+        ),
+        
+        // Pagar Receber
+        Array(
+            'Nome'                  => 'Financeiro de Usuários (Contas a Receber/a Pagar) - Declarar Pago',
+            'Desc'                  => '',
+            'Chave'                 => 'Financeiro_Usuario_Financeiros_Pagar',
+            'End'                   => 'Financeiro/Usuario/Financeiros_Pagar', // Endereco que deve conter a url para permitir acesso
+            'Modulo'                => 'Financeiro', // Modulo Referente
+            'SubModulo'             => 'Usuario',   // Submodulo Referente
+            'Metodo'                => 'Financeiros_Pagar',  // Metodos referentes separados por virgula
+            'Permissao_Func'        => Array(// Permissoes NEcessarias
+                'Financeiro_User_Saldo' => true
             ),
         ),
     );

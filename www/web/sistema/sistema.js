@@ -908,8 +908,8 @@ var Sierra = (function () {
             xhr.open("GET", "http://jsperf.com");
             xhr.send(null);
              */
-            // Verifica se Contem a url do Sistema e Tira
-            if(!(url.indexOf('http') != -1 ) && !(url.indexOf('www'))){
+            // Verifica se Contem http ou www se nao tiver acrescenta url do sistema
+            if(url.indexOf('http://') === -1 && url.indexOf('www.') === -1){
                 url = ConfigArquivoPadrao+url;
             }
             

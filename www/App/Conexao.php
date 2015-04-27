@@ -1459,7 +1459,7 @@ final class Conexao
             $tabela_link = self::Tabelas_GetSiglas_Recolher($objeto['Tabela']);
             
             // Captura Colunas da tabela
-            $class_Executar = $tabela_link['classe'].'_DAO';
+            $class_Executar = $tabela_link['classe'];
             // Escolhe os Selecionados
             $selecionado    = Array();
             $where          = Array();
@@ -1574,7 +1574,7 @@ final class Conexao
                 $tipo = 'Tabela';
             }
             // PEga Classe para Percorrer valores do selectmultiplo selecionados
-            $classe_dao = $tabela_utilizada['classe'].'_DAO';
+            $classe_dao = $tabela_utilizada['classe'];
             // Guarda OS SELECIONADOS
             if($opcoes!==false){
                 foreach($opcoes as &$valor){

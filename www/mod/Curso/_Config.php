@@ -166,7 +166,7 @@ $config_Permissoes = function (){
             'End'                   => 'Curso/Turma/Inscricao_Fazer', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
             'Modulo'                => 'Curso', // Modulo Referente // Modulo Referente
             'SubModulo'             => 'Turma',   // Submodulo Referente   // Submodulo Referente
-            'Metodo'                => 'Inscricao_Fazer',  // Metodos referentes separados por virgula
+            'Metodo'                => 'Inscricao_Fazer,Inscricao_Fazer2',  // Metodos referentes separados por virgula
         ),
         Array(
             'Nome'                  => 'Midia (Inscrições) - Mover Inscrição',

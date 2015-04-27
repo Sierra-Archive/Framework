@@ -71,7 +71,7 @@ class Boot {
         $permissao = $registro->_Acl->Get_Permissao_Url($geturl);
 
         if($permissao===false){
-            throw new \Exception('Sem Permissão', 403); 
+            throw new \Exception('Sem Permissão: '.$geturl, 403); 
         }
         
         unset($tempo);
