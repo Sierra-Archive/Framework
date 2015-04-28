@@ -70,6 +70,9 @@ class Form
                 'AutoComplete'      => $autocomplete
             )
         );
+        if($this->_Visual===false){
+            throw new \Exception('Visual não foi Carregado no Construtor de Formulário.',2828);
+        }
         $this->form = $this->_Visual->renderizar_bloco('template_form',$config);
     }
     /**

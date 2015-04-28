@@ -59,8 +59,8 @@ class Acl{
             if($logout==='sair'){
                 \Framework\App\Session::destroy(false);
                 $this->logado           = false;
-                $Visual = new \Framework\App\Visual();
-                $Visual->renderizar_login(/*$this->calendario,$this->config_dia,$this->config_mes,$this->config_ano,$this->config_dataixi*/);
+                $this->_Registro->_Visual = new \Framework\App\Visual();
+                $this->_Registro->_Visual->renderizar_login(/*$this->calendario,$this->config_dia,$this->config_mes,$this->config_ano,$this->config_dataixi*/);
                 \Framework\App\Controle::Tema_Travar();
             }else
             // CASO NAO TENHA FEITO LOGIN, E NEM PREENCHIDO O 
@@ -137,8 +137,8 @@ class Acl{
             }
             // SE A PAGINA FOR PROIBIDA PARA USUARIOS DESLOGADOS TRAVA
             if(TEMA_LOGIN===true && $this->logado===false && $this->_Request->getSubModulo()!=='erro' && $this->_Request->getSubModulo()!=='Recurso' && $this->_Request->getSubModulo()!=='localidades'){
-                $visual = new \Framework\App\Visual();
-                $visual->renderizar_login(/*$this->calendario,$this->config_dia,$this->config_mes,$this->config_ano,$this->config_dataixi*/);
+                $this->_Registro->_Visual = new \Framework\App\Visual();
+                $this->_Registro->_Visual->renderizar_login(/*$this->calendario,$this->config_dia,$this->config_mes,$this->config_ano,$this->config_dataixi*/);
                 \Framework\App\Controle::Tema_Travar();
             }            
         }
