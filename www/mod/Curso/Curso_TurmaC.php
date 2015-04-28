@@ -586,8 +586,9 @@ class Curso_TurmaControle extends Curso_Controle
         }
         
         // Inscricao Verifica se ja tem
+        $usuarioid  = $this->_Acl->Usuario_GetID();
         $insc_registro = $this->_Modelo->db->Sql_Select('Curso_Turma_Inscricao','{sigla}usuario=\''.$usuarioid.'\' && {sigla}turma=\''.$turma_registro->curso.'\'',1);
-        if($insc_registro===false){
+        if($insc_registro!==false){
             $mensagens = array(
                 "tipo"              => 'erro',
                 "mgs_principal"     => 'Erro',
@@ -640,7 +641,7 @@ class Curso_TurmaControle extends Curso_Controle
         
         // Inscricao Verifica se ja tem
         $insc_registro = $this->_Modelo->db->Sql_Select('Curso_Turma_Inscricao','{sigla}usuario=\''.$usuarioid.'\' && {sigla}turma=\''.$turma_registro->curso.'\'',1);
-        if($insc_registro===false){
+        if($insc_registro!==false){
             $mensagens = array(
                 "tipo"              => 'erro',
                 "mgs_principal"     => 'Erro',

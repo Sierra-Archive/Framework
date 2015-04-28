@@ -112,12 +112,13 @@ class Financeiro_UsuarioControle extends Financeiro_Controle
                 'Link'      => 'Financeiro/Usuario/Pagar',
             )
         )));
+        $usuarioid  = $this->_Acl->Usuario_GetID();
         
         // Parametros
         $titulo = 'Listagem de Contas à pagar';
         $where  = Array(
-            'entrada_motivo'     => 'Servidor',
-            'entrada_motivoid'   => SRV_NAME_SQL,
+            'entrada_motivo'     => 'Usuario',
+            'entrada_motivoid'   => $usuarioid,
         );
         list($tabela,$i) = $this->Movimentacao_Interna($where,'Mini');
         $titulo = $titulo.' ('.$i.')';
@@ -150,11 +151,12 @@ class Financeiro_UsuarioControle extends Financeiro_Controle
                 'Link'      => 'Financeiro/Usuario/Receber',
             )
         )));
+        $usuarioid  = $this->_Acl->Usuario_GetID();
         
         $titulo = 'Listagem de Contas à Receber';
         $where  = Array(
-            'saida_motivo'     => 'Servidor',
-            'saida_motivoid'   => SRV_NAME_SQL,
+            'saida_motivo'     => 'Usuario',
+            'saida_motivoid'   => $usuarioid,
         );
         
         list($tabela,$i) = $this->Movimentacao_Interna($where,'Mini');
@@ -185,12 +187,13 @@ class Financeiro_UsuarioControle extends Financeiro_Controle
                 'Link'      => 'Financeiro/Usuario/Pago',
             )
         )));
+        $usuarioid  = $this->_Acl->Usuario_GetID();
         
         // Parametros
         $titulo = 'Listagem de Contas Pagas';
         $where  = Array(
-            'entrada_motivo'     => 'Servidor',
-            'entrada_motivoid'   => SRV_NAME_SQL,
+            'entrada_motivo'     => 'Usuario',
+            'entrada_motivoid'   => $usuarioid,
         );
         list($tabela,$i) = $this->Movimentacao_Interna_Pago($where,'Mini');
         $titulo = $titulo.' ('.$i.')';
@@ -223,11 +226,12 @@ class Financeiro_UsuarioControle extends Financeiro_Controle
                 'Link'      => 'Financeiro/Usuario/Recebido',
             )
         )));
+        $usuarioid  = $this->_Acl->Usuario_GetID();
         
         $titulo = 'Listagem de Contas Recebidas';
         $where  = Array(
-            'saida_motivo'     => 'Servidor',
-            'saida_motivoid'   => SRV_NAME_SQL,
+            'saida_motivo'     => 'Usuario',
+            'saida_motivoid'   => $usuarioid,
         );
         
         list($tabela,$i) = $this->Movimentacao_Interna_Pago($where,'Mini');

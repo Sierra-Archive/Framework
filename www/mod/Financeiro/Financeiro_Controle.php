@@ -80,7 +80,16 @@ class Financeiro_Controle extends \Framework\App\Controle
         $_Modelo->db->Sql_Inserir($financeiro);
         return true;
     }
-    protected function Movimentacao_Interna($where=Array(),$tipo='Mini',$total=false,$endereco=''){
+    /**
+     * 
+     * @param type $where
+     * @param type $tipo
+     * @param type $total
+     * @param type $endereco
+     * @param type $pagamento Se tem permissao pra declarar pago ou se tem que pagar
+     * @return type
+     */
+    protected function Movimentacao_Interna($where=Array(),$tipo='Mini',$total=false,$endereco='',$pagamento=true){
         
         $tempo = new \Framework\App\Tempo('Mov Interna');
         if(is_array($where)){

@@ -421,7 +421,7 @@ $config_Permissoes = function (){
         
         // Pagar Receber
         Array(
-            'Nome'                  => 'Financeiro de Usuários (Contas a Receber/a Pagar) - Declarar Pago',
+            'Nome'                  => 'Financeiro de Usuários (Contas a Receber/a Pagar) - Declarar Pago/Pagar',
             'Desc'                  => '',
             'Chave'                 => 'Financeiro_Usuario_Financeiros_Pagar',
             'End'                   => 'Financeiro/Usuario/Financeiros_Pagar', // Endereco que deve conter a url para permitir acesso
