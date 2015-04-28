@@ -70,6 +70,10 @@ class biblioteca_BibliotecaControle extends biblioteca_Controle
             if(is_object($bibliotecas)) $bibliotecas = Array(0=>$bibliotecas);
             reset($bibliotecas);
             if(!empty($bibliotecas)){
+                $perm_download = \Framework\App\Registro::getInstacia()->_Acl->Get_Permissao_Url('biblioteca/Biblioteca/Download');
+                $perm_editar = \Framework\App\Registro::getInstacia()->_Acl->Get_Permissao_Url('biblioteca/Biblioteca/Bibliotecas_Edit');
+                $perm_del = \Framework\App\Registro::getInstacia()->_Acl->Get_Permissao_Url('biblioteca/Biblioteca/Bibliotecas_Del');
+
                 foreach ($bibliotecas as &$valor) {
                     if($valor->tipo==1){
                         $tipo       =   'pasta';
@@ -111,12 +115,12 @@ class biblioteca_BibliotecaControle extends biblioteca_Controle
                     $tabela['Data'][$i]             = $valor->log_date_add;
                     
                     if($valor->tipo==1){
-                        $tabela['Funções'][$i]          = $Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Pasta'        ,'biblioteca/Biblioteca/Bibliotecas_Edit/'.$valor->id.'/'.$raiz    ,'')).
-                                                          $Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Pasta'       ,'biblioteca/Biblioteca/Bibliotecas_Del/'.$valor->id.'/'.$raiz     ,'Deseja realmente deletar essa pasta ?'));
+                        $tabela['Funções'][$i]          = $Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Pasta'        ,'biblioteca/Biblioteca/Bibliotecas_Edit/'.$valor->id.'/'.$raiz    ,''),$perm_editar).
+                                                          $Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Pasta'       ,'biblioteca/Biblioteca/Bibliotecas_Del/'.$valor->id.'/'.$raiz     ,'Deseja realmente deletar essa pasta ?'),$perm_del);
                     }else{
-                        $tabela['Funções'][$i]          = $Visual->Tema_Elementos_Btn('Baixar'     ,Array('Download de Arquivo'   ,'biblioteca/Biblioteca/Download/'.$valor->id    ,'')).
-                                                          $Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Arquivo'        ,'biblioteca/Biblioteca/Bibliotecas_Edit/'.$valor->id.'/'.$raiz    ,'')).
-                                                          $Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Arquivo'       ,'biblioteca/Biblioteca/Bibliotecas_Del/'.$valor->id.'/'.$raiz     ,'Deseja realmente deletar esse arquivo ?'));
+                        $tabela['Funções'][$i]          = $Visual->Tema_Elementos_Btn('Baixar'     ,Array('Download de Arquivo'   ,'biblioteca/Biblioteca/Download/'.$valor->id    ,''),$perm_download).
+                                                          $Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Arquivo'        ,'biblioteca/Biblioteca/Bibliotecas_Edit/'.$valor->id.'/'.$raiz    ,''),$perm_editar).
+                                                          $Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Arquivo'       ,'biblioteca/Biblioteca/Bibliotecas_Del/'.$valor->id.'/'.$raiz     ,'Deseja realmente deletar esse arquivo ?'),$perm_del);
                     }
                     $funcao .= $tabela['Funções'][$i];
                     ++$i;

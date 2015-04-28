@@ -25,7 +25,10 @@ class Acl{
     private $_Request;
     
     // Configuracoes
-    public      static  $config = false;    
+    public      static  $config = false;   
+    
+    
+    public static $log_qnt_get_permissao = 0;
     
     public function __construct($id = false) {
         $tempo = new \Framework\App\Tempo('ACl');   
@@ -205,6 +208,19 @@ class Acl{
      * @return boolean
      */
     public function Get_Permissao_Url($url) {
+        // Economiza Tempo quando a URL é obvia que é permitida
+        if($url===SISTEMA_URL.SISTEMA_DIR.'#' || $url===SISTEMA_URL.SISTEMA_DIR.'#/'){
+            return true;
+        }
+        // Faz Controle de Excesso de Permissao, para Performace
+        ++static::$log_qnt_get_permissao;
+        //var_dump($url);echo "<br><br>\n\n";
+        if(SISTEMA_DEBUG && static::$log_qnt_get_permissao>60){
+            throw new \Exception('Permissão Requisitada mais de 60 vezes em uma mesma pagina.',2808);
+        }
+        
+        // Começa Tratamento
+        $tempo = new \Framework\App\Tempo('Acl Get Permissao');
         $permissoes_quepossuem = Array();
         $array = &self::$Sis_Permissao;
         reset($array);
@@ -734,53 +750,47 @@ class Acl{
         $registro = \Framework\App\Registro::getInstacia();
         $funcional = $registro->_Cache->Ler('Config_Funcional');
         if (!$funcional) {
-            $funcional = self::Sistema_Modulos_Carregar_Funcional_Completo();
+            $ponteiro   = Array('_Sistema' => '_Sistema');
+            if(function_exists('config_modulos')){
+                $ponteiro   = array_merge($ponteiro,config_modulos());
+            }
+            $funcional     = Array();
+            reset($ponteiro);
+            while (key($ponteiro) !== null) {
+                $current = current($ponteiro);
+                if (is_dir(MOD_PATH.''.$current)) {
+                    // SE existe arquivo config
+                    if(file_exists(MOD_PATH.''.$current.'/_Config.php')){
+                        // Puxa
+                        include MOD_PATH.''.$current.'/_Config.php';
+                        // Merge Com Config Funcional se Existir
+                        if(file_exists(INI_PATH.SRV_NAME.'/'.$current.'.php')){
+                            include INI_PATH.SRV_NAME.'/'.$current.'.php';
+                            // Pega Arrays com configs
+                            $config_funciona = $config_Funcional();
+                            $config_Funcional = $Funcional;
+
+                            // Merge só valor
+                            reset($config_Funcional);
+                            while (key($config_Funcional) !== null) {
+                                $current2 = current($config_Funcional);
+                                if(isset($current2['Valor'])){
+                                    $config_funciona[key($config_Funcional)]['Valor'] = $current2['Valor'];
+                                }
+                                next($config_Funcional);
+                            }
+                        }else{
+                            $config_funciona = $config_Funcional();
+                        }
+                        // Realiza Merge para Indexir Configuracoes
+                        $funcional    = array_merge_recursive($funcional,$config_funciona       );
+                    } 
+                }
+                next($ponteiro);
+            }
             $registro->_Cache->Salvar('Config_Funcional', $funcional);
         }
         return $funcional;
-    }
-    public static function &Sistema_Modulos_Carregar_Funcional_Completo(){
-        $tempo = new \Framework\App\Tempo('\Framework\App\Acl::Sistema_Modulos_Configs->Funcional_Completo');
-        // Le todos arquivos Menus dos modulos permitidos
-        $ponteiro   = Array('_Sistema' => '_Sistema');
-        if(function_exists('config_modulos')){
-            $ponteiro   = array_merge($ponteiro,config_modulos());
-        }
-        $config     = Array();
-        reset($ponteiro);
-        while (key($ponteiro) !== null) {
-            $current = current($ponteiro);
-            if (is_dir(MOD_PATH.''.$current)) {
-                // SE existe arquivo config
-                if(file_exists(MOD_PATH.''.$current.'/_Config.php')){
-                    // Puxa
-                    include MOD_PATH.''.$current.'/_Config.php';
-                    // Merge Com Config Funcional se Existir
-                    if(file_exists(INI_PATH.SRV_NAME.'/'.$current.'.php')){
-                        include INI_PATH.SRV_NAME.'/'.$current.'.php';
-                        // Pega Arrays com configs
-                        $config_funciona = $config_Funcional();
-                        $config_Funcional = $Funcional;
-
-                        // Merge só valor
-                        reset($config_Funcional);
-                        while (key($config_Funcional) !== null) {
-                            $current2 = current($config_Funcional);
-                            if(isset($current2['Valor'])){
-                                $config_funciona[key($config_Funcional)]['Valor'] = $current2['Valor'];
-                            }
-                            next($config_Funcional);
-                        }
-                    }else{
-                        $config_funciona = $config_Funcional();
-                    }
-                    // Realiza Merge para Indexir Configuracoes
-                    $config    = array_merge_recursive($config,$config_funciona       );
-                } 
-            }
-            next($ponteiro);
-        }
-        return $config;
     }
     /**
      * 

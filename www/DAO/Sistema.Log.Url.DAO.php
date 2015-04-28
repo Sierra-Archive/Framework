@@ -34,7 +34,7 @@ final Class Sistema_Log_Url_DAO extends Framework\App\Dao
         return 1;
     }
     public static function Get_Class(){
-        return str_replace(Array('_DAO'), Array(''), get_class());
+        return get_class() ; //return str_replace(Array('_DAO'), Array(''), get_class());
     }
     public static function Gerar_Colunas(){
         return Array(
@@ -51,7 +51,7 @@ final Class Sistema_Log_Url_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '' ,//0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '' ,//0 ninguem, 1 admin, 2 todos 
             ),
             Array(
                 'mysql_titulo'      => 'ip',
@@ -66,7 +66,7 @@ final Class Sistema_Log_Url_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos
-                'linkextra'          => '' ,//0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '' ,//0 ninguem, 1 admin, 2 todos 
             ),
             Array(
                 'mysql_titulo'      => 'cliente_pc',
@@ -81,7 +81,7 @@ final Class Sistema_Log_Url_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos
-                'linkextra'          => '' ,//0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '' ,//0 ninguem, 1 admin, 2 todos 
             ),
             Array(
                 'mysql_titulo'      => 'url',
@@ -96,7 +96,7 @@ final Class Sistema_Log_Url_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos
-                'linkextra'          => '' ,//0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '' ,//0 ninguem, 1 admin, 2 todos 
             ),
             Array(
                 'mysql_titulo'      => 'server_get',
@@ -111,7 +111,7 @@ final Class Sistema_Log_Url_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos
-                'linkextra'          => '' ,//0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '' ,//0 ninguem, 1 admin, 2 todos 
             ),
             Array(
                 'mysql_titulo'      => 'server_post',
@@ -126,7 +126,7 @@ final Class Sistema_Log_Url_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos
-                'linkextra'          => '' ,//0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '' ,//0 ninguem, 1 admin, 2 todos 
             ),
             Array(
                 'mysql_titulo'      => 'user',
@@ -141,7 +141,7 @@ final Class Sistema_Log_Url_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos
-                'linkextra'          => '' ,//0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '' ,//0 ninguem, 1 admin, 2 todos 
             ),
             Array(
                 'mysql_titulo'      => 'tempo',
@@ -156,7 +156,7 @@ final Class Sistema_Log_Url_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos
-                'linkextra'          => '' ,//0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '' ,//0 ninguem, 1 admin, 2 todos 
             ),
             Array(
                 'mysql_titulo'      => 'cfg_localscript',
@@ -171,7 +171,7 @@ final Class Sistema_Log_Url_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos
-                'linkextra'          => '' ,//0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '' ,//0 ninguem, 1 admin, 2 todos 
             )
         );
     }

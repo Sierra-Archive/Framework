@@ -1,4 +1,4 @@
-var Script = function () {
+/*var Script = function () {
 
 // easy pie chart
 
@@ -36,4 +36,4 @@ var Script = function () {
         });
     });
 
-}();
+}();*/

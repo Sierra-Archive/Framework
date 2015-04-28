@@ -42,16 +42,54 @@ class _Sistema_erroControle extends _Sistema_Controle
             $codigo = 'default';
         }
         
+        
+        /*Client Request Errors
+
+    400 Bad Request
+    401 Authorization Required
+    402 Payment Required (not used yet)
+    403 Forbidden
+    404 Not Found
+    405 Method Not Allowed
+    406 Not Acceptable (encoding)
+    407 Proxy Authentication Required
+    408 Request Timed Out
+    409 Conflicting Request
+    410 Gone
+    411 Content Length Required
+    412 Precondition Failed
+    413 Request Entity Too Long
+    414 Request URI Too Long
+    415 Unsupported Media Type
+
+Server Errors
+
+    500 Internal Server Error
+    501 Not Implemented
+    502 Bad Gateway
+    503 Service Unavailable
+    504 Gateway Timeout
+    505 HTTP Version Not Supported
+*/
+        
+        
+        
         $error['default'] = 'Um erro ocorreu e a página não pode ser mostrada.';
         
+        $error['401']     = 'Você necessita estar autenticado.';
+        $error['403']     = 'Acesso Proibido.';
         $error['404']     = 'Essa página não existe em nossos servidores.';
         
         $error['2800']    = 'Problema no código, ligue para o administrador.';
         $error['2801']    = 'Problema no código, ligue para o administrador.';
         $error['2802']    = 'Faltando arquivos ao Sistema.';
+        $error['2808']    = 'Problemas de Performace.';
         $error['2810']    = 'Problema no código. Parametro Errado';
         
-        $error['2826']    = 'Sem Permissão.';
+        $error['2812']    = 'Array Inválido';
+        
+        
+        $error['2826']    = 'Sem Permissão de Arquivos.';
         $error['2828']    = 'Servidor não autorizado, por favor consulte o administrador.';
         
         $error['2901']    = 'Grupo Inexistente';

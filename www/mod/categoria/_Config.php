@@ -10,7 +10,7 @@ $config_Modulo = function(){
 };
 $config_Menu = function (){
     return Array(
-        'Avançado' => Array(
+        'Administrar' => Array(
             'Filhos'                => Array('Categorias' =>Array(
                 'Nome'                  => 'Categorias',
                 'Link'                  => 'categoria/Admin/Categorias',

@@ -31,7 +31,7 @@ final Class  Engenharia_Empreendimento_Custo_DAO extends Framework\App\Dao
         return 1;
     }
     public static function Get_Class(){
-        return str_replace(Array('_DAO'), Array(''), get_class());
+        return get_class() ; //return str_replace(Array('_DAO'), Array(''), get_class());
     }
     public static function Gerar_Colunas(){
         return Array(
@@ -48,7 +48,7 @@ final Class  Engenharia_Empreendimento_Custo_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '' ,//0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '' ,//0 ninguem, 1 admin, 2 todos 
             ),Array(
                 'mysql_titulo'      => 'empreendimento',
                 'mysql_tipovar'     => 'int', //varchar, int, 
@@ -63,7 +63,7 @@ final Class  Engenharia_Empreendimento_Custo_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => 'Engenharia/Empreendimento/Empreendimentos_Add',
+                'linkextra'         => 'Engenharia/Empreendimento/Empreendimentos_Add',
                 'edicao'            => Array(
                     'Nome'              => 'Empreendimento',
                     'valor_padrao'      => false,
@@ -87,7 +87,7 @@ final Class  Engenharia_Empreendimento_Custo_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => 'Engenharia/Unidade/Unidades_Add',
+                'linkextra'         => 'Engenharia/Unidade/Unidades_Add',
                 'edicao'            => Array(
                     'Nome'              => 'Unidade do Empreendimento',
                     'valor_padrao'      => false,
@@ -136,7 +136,7 @@ final Class  Engenharia_Empreendimento_Custo_DAO extends Framework\App\Dao
                 'mysql_inside'      => '\Framework\App\Sistema_Funcoes::Tranf_Real_Float({valor})', // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => '\Framework\App\Sistema_Funcoes::Tranf_Float_Real({valor})', // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', // //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '', // //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
                     'Nome'              => 'Valor',
                     'Mascara'           => 'Real',
@@ -163,7 +163,7 @@ final Class  Engenharia_Empreendimento_Custo_DAO extends Framework\App\Dao
                 'mysql_inside'      => 'data_brasil_eua({valor})', // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => 'data_eua_brasil({valor})', // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
                     'Nome'              => 'Data Prevista do Pagamento',
                     'Mascara'           => 'Data',
@@ -191,7 +191,7 @@ final Class  Engenharia_Empreendimento_Custo_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => 'Financeiro/Banco/Bancos_Add', //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => 'Financeiro/Banco/Bancos_Add', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
                     'Nome'              => 'Banco Financiador',
                     'valor_padrao'      => false,

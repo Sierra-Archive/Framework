@@ -82,7 +82,7 @@ $config_Permissoes = function (){
         ),
         
         Array(
-            'Nome'                  => 'Administrar',
+            'Nome'                  => 'Mensagens (Assuntos) - Listagem',
             'Desc'                  => '',
             'Chave'                 => 'usuario_mensagem_Assunto_Assuntos',
             'End'                   => 'usuario_mensagem/Assunto/Assuntos', // Endereco que deve conter a url para permitir acesso

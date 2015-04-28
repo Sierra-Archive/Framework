@@ -72,7 +72,7 @@ class Seguranca_SenhaControle extends Seguranca_Controle
         $this->Endereco_Senha(false);
         $i = 0;
         // Add BOtao
-        $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
+        /*$this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
             Array(
                 'Adicionar Senha',
                 'Seguranca/Senha/Senhas_Add',
@@ -86,7 +86,7 @@ class Seguranca_SenhaControle extends Seguranca_Controle
             )
         )));
         // Query
-        $Senhas = $this->_Modelo->db->Sql_Select('Seguranca_Senha',false,0,''/*,'categoria,categoria2,id,url,login,senha,log_date_add'*/);
+        $Senhas = $this->_Modelo->db->Sql_Select('Seguranca_Senha',false,0,''/*,'categoria,categoria2,id,url,login,senha,log_date_add'*//*);
         if($Senhas!==false && !empty($Senhas)){
             list($tabela,$i) = self::Senhas_Tabela($Senhas);
             if($export!==false){
@@ -107,8 +107,15 @@ class Seguranca_SenhaControle extends Seguranca_Controle
             unset($tabela);
         }else{    
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhuma Senha</font></b></center>');
-        }
-        $titulo = 'Listagem de Senhas ('.$i.')';
+        }*/
+        
+        
+        $tabela = Array(
+            'Id','Categoria','Url','Login','Senha','Destaque','Status','Adicionada em','Funções'
+        );
+        $this->_Visual->Show_Tabela_DataTable_Massiva($tabela);
+        
+        $titulo = 'Listagem de Senhas (<span id="DataTable_Contador">0</span>)';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         
         //Carrega Json

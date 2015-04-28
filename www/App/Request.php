@@ -33,8 +33,10 @@ class Request
             $this->_modulo = \anti_injection(array_shift($url)); 
             if($this->isAjax()===true){
                 define('LAYOULT_IMPRIMIR', 'AJAX');
-                if($this->_modulo =='ajax'){
-                    $this->_modulo = \anti_injection(array_shift($url));
+                
+                if($this->_modulo =='Modelo'){
+                    $this->_modulo = \anti_injection(array_shift($url)); 
+                    define('REQUISICAO_TIPO', 'MODELO');
                 }
             }else{
                 // SE tiver com Ajax no Comeco, Retira, foi passado como Ajax, 
@@ -49,6 +51,9 @@ class Request
             define('LAYOULT_IMPRIMIR', 'COMPLETO');
         }
         
+        if(!defined('REQUISICAO_TIPO')){
+            define('REQUISICAO_TIPO', 'CONTROLE');
+        }
         
         // Extrai primeiro elemento como submodulo
         if(is_array($url) && count($url)>0){

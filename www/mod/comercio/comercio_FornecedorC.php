@@ -248,7 +248,7 @@ class comercio_FornecedorControle extends comercio_Controle
             'id'    =>  $fornecedor_id,
         );
         $fornecedor = $this->_Modelo->db->Sql_Select('Comercio_Fornecedor',$where, 1);
-        $html  = '<div class="span4">';
+        $html  = '<div class="col-sm-4">';
         $html .= '<b>Razão Social:</b> '.           $fornecedor->nome.'<br>'; 
         $html .= '<b>CNPJ:</b> '.                   $fornecedor->cnpj.'<br>'; 
         $html .= '<b>Cpf:</b> '.                    $fornecedor->cpf.'<br>'; 
@@ -257,7 +257,7 @@ class comercio_FornecedorControle extends comercio_Controle
         $html .= '<b>Conta:</b> '.                  $fornecedor->conta.'<br>';
         $html .= '<b>Site:</b> '.                   $fornecedor->site.'<br>'; 
         $html .= '<b>Ie:</b> '.                     $fornecedor->ie.'<br>';  
-        $html .= '</div><div class="span4">';  
+        $html .= '</div><div class="col-sm-4">';  
         $html .= '<b>Email Principal:</b> '.        $fornecedor->email.'<br>';  
         $html .= '<b>Fax:</b> '.                    $fornecedor->fax.'<br>';  
         $html .= '<b>Cep:</b> '.                    $fornecedor->cep.'<br>';  
@@ -267,7 +267,7 @@ class comercio_FornecedorControle extends comercio_Controle
         $html .= '<b>Endereço:</b> '.               $fornecedor->endereco.'<br>';  
         $html .= '<b>Número:</b> '.                 $fornecedor->numero.'<br>';    
         $html .= '<b>Complemento:</b> '.            $fornecedor->complemento.'<br>';    
-        $html .= '</div><div class="span4">';
+        $html .= '</div><div class="col-sm-4">';
         $html .= '<b>Telefone de Contato 1:</b> '.  $fornecedor->telefone1.'<br>'; 
         $html .= '<b>Email de Contato 1:</b> '.     $fornecedor->email1.'<br>';  
         $html .= '<b>Celular de Contato 1:</b> '.   $fornecedor->celular1.'<br>'; 
@@ -291,7 +291,7 @@ class comercio_FornecedorControle extends comercio_Controle
             );
             $this->_Visual->Json_IncluiTipo('Popup',$conteudo);
         }else{
-            $this->_Visual->Blocar('<div class="row-fluid">'.$html.'</div>');
+            $this->_Visual->Blocar('<div class="row">'.$html.'</div>');
             $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',20);
             $this->_Visual->Json_Info_Update('Titulo','Visualizar Fornecedor');
         }

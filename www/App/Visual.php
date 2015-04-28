@@ -236,26 +236,38 @@ class Visual
         $this->Layoult_BlocoUnico = array();
     }
     /**
-    * Add Conteudo Com titulo ao conteudo que engloba tudo
-    * 
-    * @name Bloco_Unico_CriaJanela
-    * @access public
-    * 
-    * @param string $titulo
-    * @param string $url
-    * 
-    * @uses \Framework\App\Visual::$Layoult_BlocoUnico
-    * @uses \Framework\App\Visual::$blocos 
-    * 
-    * @return void
-    * 
-    * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.02
-    */
+     * Add Conteudo Com titulo ao conteudo que engloba tudo
+     * 
+     * @name Bloco_Unico_CriaJanela
+     * @access public
+     * 
+     * @param string $titulo
+     * @param string $url
+     * @param int $gravidade Quanto maior mais em cima ficara
+     * @param string $botaoextra Array(icon,nome,link) or Javascript String
+     * @param type $fechado
+     * @return string
+     * @throws \Exception
+     * 
+     * @uses \Framework\App\Visual::$Layoult_BlocoUnico
+     * @uses \Framework\App\Visual::$blocos 
+     * 
+     * @return void
+     * 
+     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
+     * @version 0.02
+     */
     public function Bloco_Unico_CriaJanela($titulo,$url='', $gravidade=0,$botaoextra = false, $fechado=false) {
         if($url!='') $titulo = $titulo.'<a class="lajax-admin" href="'.$url.'" acao="">+</a>';
         list($tipo,$bloco) = $this->retornablocos();
         $identificador = 'div_unica_'.rand(100000, 999999);
+        if(is_array($botaoextra)){
+            if(!(isset($botaoextra['link']) && isset($botaoextra['icon']) && isset($botaoextra['nome']))){
+                throw new \Exception('Botao Extra com Indices Faltando: '.serialize($botaoextra),2812);
+            }else{
+                $botaoextra['link'] = URL_PATH.$botaoextra['link'];
+            }
+        }
         $config = Array(
             'Id'            => $identificador,
             'Tipo'          => 'Bloco',
@@ -566,8 +578,8 @@ class Visual
         //'<script type="text/javascript" src="'.WEB_URL.'"></script>'.
         
         // Cria Cache
-        $this->Javascript_Executar('Sierra.Cache_Deletar(\'Dependencias_Js\');'
-                . 'setTimeout(function(){Sierra.Cache_Gravar(\'Dependencias_Js\',\''.implode('|',$this->arquivos_js).'\');},10);');
+        $this->Javascript_Executar('Sierra.Sessao_Deletar(\'Dependencias_Js\');'
+                . 'setTimeout(function(){Sierra.Sessao_Gravar(\'Dependencias_Js\',\''.implode('|',$this->arquivos_js).'\');},10);');
         
         return '<script type="text/javascript" src="'.WEB_URL.'min/?f='.implode(".js,",$this->arquivos_js).'.js"></script>';
     }
@@ -620,8 +632,8 @@ class Visual
         if(empty($this->arquivos_css)) return false;
         
         // Cria Cache
-        $this->Javascript_Executar('Sierra.Cache_Deletar(\'Dependencias_Css\');'
-                . 'setTimeout(function(){Sierra.Cache_Gravar(\'Dependencias_Css\',\''.implode('|',$this->arquivos_css).'\');},10);');
+        $this->Javascript_Executar('Sierra.Sessao_Deletar(\'Dependencias_Css\');'
+                . 'setTimeout(function(){Sierra.Sessao_Gravar(\'Dependencias_Css\',\''.implode('|',$this->arquivos_css).'\');},10);');
         
         return '<link href="'.WEB_URL.'min/?f='.implode(".css,",$this->arquivos_css).'.css" rel="stylesheet" />';
     }
@@ -648,11 +660,12 @@ class Visual
         $array_js = Array(
             // Linguagem
             'lang/'.$this->sistema_linguagem.'/Linguagem',
-            
             // Identifica Oq cada Broser Suporta
             'sistema/modernizr/modernizr',
             // Jquery
-            'sistema/jquery/jquery-1.8.3.min',
+            'sistema/jquery/jquery.min',
+            // Detecta BRowser para Jquery
+            'sistema/jquery.browser',
             // Historico HTML5
             'sistema/historico/jquery.history',
             // Carregamento igual Google
@@ -662,90 +675,67 @@ class Visual
             // Bloquear Tela
             'js/jquery/jquery.blockUI',
             
-            
-            
-            
-            
-            
-            
             'js/jquery/jquery.tabify',
-            'js/jquery/jquery.limit',
             
             //'js/jquery/jquery-impromptu.3.1.min',
             
             // Mascara de Formulario
             'assets/bootstrap-mask/jquery.maskedinput-1.3.min',
             
-            // Calendario Jquert
-            'js/jquery/jquery.fullcalendar',
-        );
-        if($temaconfig['jqueryui']===true){
             // Jquery UI
-            $array_js[] = 'sistema/jquery-ui/jquery-ui.min';
-        }
+            //'sistema/jquery-ui/jquery-ui.min',
         
-        // Editor de texto
-        //$array_js[] = 'assets/ckeditor/ckeditor';
-        if($temaconfig['bootstrap']===true){
-            $array_js[] = 'sistema/bootstrap/js/bootstrap.min';
-            $array_js[] = 'sistema/bootstrap/js/bootstrap-fileupload';
-        }
+            'sistema/bootstrap/js/bootstrap',
         
-        // DATATABLE
-        $array_js[] = 'assets/data-tables/jquery.dataTables';
-        $array_js[] = 'assets/data-tables/DT_bootstrap';
+            // DATATABLE
+            'sistema/data-tables/jquery.dataTables',
         
-        // FORMULARIOS
-        $array_js[] = 'assets/uniform/jquery.uniform.min';
-        $array_js[] = 'assets/chosen/chosen.jquery.min';
+            // FORMULARIOS
+            //'assets/uniform/jquery.uniform.min',
+            'sistema/chosen/chosen.jquery',
         
         
-        $array_js[] = 'assets/jquery-tags-input/jquery.tagsinput.min';
-        // EDITAR HTML5
-        $array_js[] = 'assets/bootstrap-wysihtml5/wysihtml5-0.3.0';
-        $array_js[] = 'assets/bootstrap-wysihtml5/bootstrap-wysihtml5';
-        // DIAL LIST
-        $array_js[] = 'sistema/bootstrap-duallistbox/jquery.bootstrap-duallistbox';
+            //'assets/jquery-tags-input/jquery.tagsinput.min',
+            // EDITAR HTML5
+            //'assets/bootstrap-wysihtml5/wysihtml5-0.3.0',
+            //'assets/bootstrap-wysihtml5/bootstrap-wysihtml5',
+            // DIAL LIST
+            'sistema/bootstrap-duallistbox/jquery.bootstrap-duallistbox',
         
-        // Datas
-        $array_js[] = 'assets/bootstrap-datepicker/js/bootstrap-datepicker';
-        $array_js[] = 'assets/bootstrap-timepicker/js/bootstrap-timepicker';
-        $array_js[] = 'assets/bootstrap-timepicker/jquery-ui-timepicker-addon';
-        $array_js[] = 'assets/bootstrap-daterangepicker/date';
-        $array_js[] = 'assets/bootstrap-daterangepicker/daterangepicker';
         
-        $array_js[] = 'assets/jquery-slimscroll/jquery.slimscroll.min';
-        $array_js[] = 'assets/bootstrap-colorpicker/js/bootstrap-colorpicker';
+            //'assets/jquery-slimscroll/jquery.slimscroll.min',
         
-        // Formularios
-        $array_js[] = 'assets/bootstrap-inputmask/bootstrap-inputmask.min';
-        $array_js[] = 'js/plugins/form-component';
-        $array_js[] = 'assets/metr-folio/js/jquery.metro-gal.plugins.min';
-        $array_js[] = 'assets/metr-folio/js/jquery.metro-gal.megafoliopro';
-        
-        // Imagem
-        //$array_js[] = 'js/jquery/jquery.lightbox-0.5';
-        //
-        // Carrega Sistema
-        $array_js[] = 'sistema/sistema';
+            // Formularios
+            //'assets/bootstrap-inputmask/bootstrap-inputmask.min',
+            //'assets/metr-folio/js/jquery.metro-gal.plugins.min',
+            //'assets/metr-folio/js/jquery.metro-gal.megafoliopro',
+            // Carrega Sistema
+            'sistema/sistema'
+        );
         
         // Carrega no JS
         $this->Arquivos_Js($array_js);
         
         // Começa Retorno
-        return '<div class="push"></div><!-- .push -->'.
-        '<div id="escondido">'.
-        '</div>'.
+        return '<div class="push"></div>'.
+        '<div id="escondido"></div>'.
         '<div class="growlUI" style="display:none;">'.
-            '<h1>SierraTecnologia</h1> <h2>Ricardo Sierra <sierra.csi@gmail.com></h2>'.
+            '<h1>SierraTecnologia</h1> <h2>Ricardo Sierra <contato@ricardosierra.com.br></h2>'.
         '</div>'.
-        '<div id="popup" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="popup" aria-hidden="true">'.
-            '<div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button><h3 id="popuptitulo">Popup</h3></div>'.
-            '<div class="modal-body"></div>'.
-            '<div class="modal-footer"></div>'.
+        '<div class="modal fade" id="popup" tabindex="-1" role="dialog" aria-labelledby="popup" aria-hidden="true">'.
+            '<div class="modal-dialog">'.
+                '<div class="modal-content">'.
+                    '<div class="modal-header">'.
+                        '<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>'.
+                        '<h4 class="modal-title" id="popuptitulo">Popup</h4>'.
+                    '</div>'.
+                    '<div class="modal-body"></div>'.
+                    '<div class="modal-footer"></div>'.
+                '</div>'.
+            '</div>'.
         '</div>'.
         //'<div id="dialog-confirm" title="Deletar Proposta?">'.
-        //'<p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>Essa ação não pode ser revertida. Você esta certo disso?</p>'.
+        //'<p><span class="ui-icon ui-glyphicon-alert" style="float:left; margin:0 7px 20px 0;"></span>Essa ação não pode ser revertida. Você esta certo disso?</p>'.
         //'</div>'.
         // Arquivo JS
         $this->Arquivos_Js_Get().
@@ -761,8 +751,57 @@ class Visual
     
     
     /*****
-     *  CSS E JS NAO USADOS MAIS
+     *  CSS NAO USADOS MAIS
      * 
+     * 
+        // calendario
+        'css/plugins/jquery.fullcalendar',
+        'css/plugins/jquery.fullcalendar.print', // media="print"
+        'assets/jquery-tags-input/jquery.tagsinput',
+        // DAta
+        'assets/bootstrap-datepicker/css/datepicker',
+        'assets/bootstrap-timepicker/compiled/timepicker',
+        'assets/bootstrap-colorpicker/css/colorpicker',
+        'assets/bootstrap-daterangepicker/daterangepicker',
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+    /*****
+     *  JS NAO USADOS MAIS
+     * 
+            'js/jquery/jquery.limit',
+            'assets/bootstrap-colorpicker/js/bootstrap-colorpicker',
+            // Calendario Jquert
+            'js/jquery/jquery.fullcalendar',
+        // Imagem
+        'js/jquery/jquery.lightbox-0.5';
+             Popup
+            'js/jquery/jquery.apprise',
+            'css/plugins/jquery.apprise',
+            
+            
+            // Graficos
+            'assets/flot/jquery.flot',
+            'assets/flot/jquery.flot.resize',
+            'assets/flot/jquery.flot.pie',
+            'assets/flot/jquery.flot.stack',
+            'assets/flot/jquery.flot.crosshair',
+            // Editor de texto
+            'assets/ckeditor/ckeditor';
+            // Formularios 
+            'js/plugins/form-component',
+            // Datas
+            'assets/bootstrap-datepicker/js/bootstrap-datepicker',
+            'assets/bootstrap-timepicker/js/bootstrap-timepicker',
+            'assets/bootstrap-timepicker/jquery-ui-timepicker-addon',
+            'assets/bootstrap-daterangepicker/date',
+            'assets/bootstrap-daterangepicker/daterangepicker',
+     * 
+     * 
+     * *** OUTROS
      * 
         // Cria Botoes que Podem ser Arrastados
         $array_js[] = 'assets/bootstrap-toggle-buttons/static/js/jquery.toggle.buttons';
@@ -778,18 +817,6 @@ class Visual
      *  // CAMADAS ELASTICAS< QUE VAO AUMENTANDO
         $array_js[] = 'js/jquery/jquery.elastic;
      * 
-     * 
-     *      Popup
-     *      'js/jquery/jquery.apprise',
-            'css/plugins/jquery.apprise',
-            
-            
-            // Graficos
-            'assets/flot/jquery.flot',
-            'assets/flot/jquery.flot.resize',
-            'assets/flot/jquery.flot.pie',
-            'assets/flot/jquery.flot.stack',
-            'assets/flot/jquery.flot.crosshair',
      */
     
     
@@ -803,63 +830,42 @@ class Visual
      * @version 0.0.1
      */
     private function Sistema_Css(){
-        $temaconfig         = &self::$config_template['links_css'];
         
         $array_css = Array();
         
-        // Carrega Css
-        if($temaconfig['jqueryui']===true){
-            // Jquery UI
-            $array_css[] = 'sistema/jquery-ui/jquery-ui.min';
-        }
-        // ASSETS NOVOS
-        if($temaconfig['bootstrap']===true){
-            array_push($array_css,
-                'sistema/bootstrap/css/bootstrap.min',
-                'sistema/bootstrap/css/bootstrap-responsive.min',
-                'sistema/bootstrap/css/bootstrap-fileupload'
-            );
-        }
-        
-        /****
-         * Carrega Css Principais
-         */
+        // JQUERY UI, BOOTSTRAP, e outros usados pelo framework
         array_push($array_css,
+            'sistema/jquery-ui/jquery-ui.min',
+            'sistema/bootstrap/css/bootstrap',
+            'sistema/bootstrap/css/bootstrap-theme',
             // Carregamento igual Google
             'sistema/nprogress/nprogress',
             // Sistema de Mensagens
             'sistema/toastr/toastr.min',
                 
             // Pequeno Aviso
-            'css/plugins/jquery.tiptip',
+            //'css/plugins/jquery.tiptip',
             // Bloquear Tela
-            'css/plugins/jquery.blockui'
-        );
-        
-        // Carrega Resto de Css
-        array_push($array_css,
+            'css/plugins/jquery.blockui',
+             // OUTROS
             'css/jcalendar',
                 
             // Pequeno Aviso
-            'css/plugins/jquery.fullcalendar',
-            'css/plugins/jquery.fullcalendar.print', // media="print"
             'assets/font-awesome/css/font-awesome',
             'assets/metr-folio/css/metro-gallery', // media="screen"
             //FORMULARIO
             'assets/uniform/css/uniform.default',
-            'assets/chosen/chosen.min',
-            'assets/jquery-tags-input/jquery.tagsinput',
-            'assets/bootstrap-datepicker/css/datepicker',
-            'assets/bootstrap-timepicker/compiled/timepicker',
-            'assets/bootstrap-colorpicker/css/colorpicker',
-            'assets/bootstrap-daterangepicker/daterangepicker',
+            'sistema/chosen/chosen',
             // Editor HTML5
-            'assets/bootstrap-wysihtml5/bootstrap-wysihtml5',
+            //'assets/bootstrap-wysihtml5/bootstrap-wysihtml5',
             // DUAL LIST
             'sistema/bootstrap-duallistbox/bootstrap-duallistbox',
                 
+            // DATATABLE
+            'sistema/data-tables/DT_bootstrap',
+            
             // Sistema
-            'css/sistema'
+            'sistema/sistema'
         );        
         
         $this->Arquivos_Css($array_css);
@@ -940,7 +946,7 @@ class Visual
             $config = Array(
                 "url_path"      => URL_PATH,
                 'user_name'     => $this->_Acl->logado_usuario->nome,
-                'upload_foto'   => ($this->_Acl->logado_usuario->foto)?$this->_Acl->logado_usuario->foto:'http://localhost/Framework/web/img/icons/clientes.png'/*$this->Show_Upload('usuario','Perfil','PerfilFoto','PerfilFoto',$foto,'usuario'.DS,$this->_Acl->logado_usuario->id,'','36','36')*/
+                'upload_foto'   => ($this->_Acl->logado_usuario->foto)?$this->_Acl->logado_usuario->foto:SISTEMA_URL.SISTEMA_DIR.'web/img/icons/clientes.png'/*$this->Show_Upload('usuario','Perfil','PerfilFoto','PerfilFoto',$foto,'usuario'.DS,$this->_Acl->logado_usuario->id,'','36','36')*/
             );
             $html = $this->renderizar_bloco('widget_usuario',$config);
         }
@@ -1170,7 +1176,7 @@ class Visual
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.0.1
      */
-    public function Tema_Elementos_Btn($tipo='Editar',$nome = Array('Adicionar','#','')){
+    public function Tema_Elementos_Btn($tipo='Editar',$nome = Array('Adicionar','#',''),$permissao='_'){
         if(!is_array($nome)) throw new \Exception('$nome não é array: '.$nome,2810);
         if($tipo=='Superior'){
             if(isset($nome[1]['Print'])){
@@ -1185,7 +1191,7 @@ class Visual
             }else{
                 $ferramentas = false;
             }
-            $permissao = $this->_Registro->_Acl->Get_Permissao_Url($nome[1]);
+            if($permissao==='_') $permissao = $this->_Registro->_Acl->Get_Permissao_Url($nome[1]);
             if($permissao!==false && isset($nome[2])){
                 $array = Array(
                     'btn_add'           => Array(
@@ -1207,33 +1213,47 @@ class Visual
             }
             return $this->renderizar_bloco('elemento_botao',$array);  
         }else if($tipo=='Personalizado'){
-            $permissao = $this->_Registro->_Acl->Get_Permissao_Url($nome[1]);
+            if($permissao==='_') $permissao = $this->_Registro->_Acl->Get_Permissao_Url($nome[1]);
             if($permissao===false) return '';
-            $array = Array(
-                'btn_add'           => Array(
-                    'nome'              => $nome[0],
-                    'url'               => $nome[1],
-                    'onclick'           => $nome[2],
-                    'icone'             => $nome[3],
-                    'cor'               => $nome[4],
-                ),
-                'Ferramentas'       => '',
-                'Tipo'              => $tipo
-            );
-            return $this->renderizar_bloco('elemento_botao',$array);  
+            //'onclick'           => $nome[2]
+            return     '<a href="'.URL_PATH.$nome[1].'" class="btn btn-'.$nome[4].' lajax explicar-titulo" title="'.$nome[0].'" acao=""><i class="glyphicon-'.$nome[3].'"></i></a>';  
         }else{
-            $permissao = $this->_Registro->_Acl->Get_Permissao_Url($nome[1]);
+            if($permissao==='_') $permissao = $this->_Registro->_Acl->Get_Permissao_Url($nome[1]);
             if($permissao===false) return '';
-            $array = Array(
-                'btn_add'           => Array(
-                    'nome'              => $nome[0],
-                    'url'               => $nome[1],
-                    'onclick'           => $nome[2],
-                ),
-                'Ferramentas'       => '',
-                'Tipo'              => $tipo
-            );
-            return $this->renderizar_bloco('elemento_botao',$array);  
+            //'onclick'           => $nome[2],
+            if($tipo==='Destaque0'){
+                $cor    = 'danger';
+                $icone  = 'star-empty';
+            }else if($tipo==='Destaque1'){
+                $cor    = 'success';
+                $icone  = 'star';                
+            }else if($tipo==='Status0'){
+                $cor    = 'danger';
+                $icone  = 'thumbs-down';                
+            }else if($tipo==='Status1'){
+                $cor    = 'success';
+                $icone  = 'thumbs-up';                
+            }else if($tipo==='Email'){
+                $cor    = 'primary';
+                $icone  = 'envelope';                
+            }else if($tipo==='Baixar'){
+                $cor    = 'inverse';
+                $icone  = 'download';                
+            }else if($tipo==='Visualizar'){
+                $cor    = 'success';
+                $icone  = 'eye-open';                
+            }else if($tipo==='Zoom'){
+                $cor    = 'info';
+                $icone  = 'zoom-in';                
+            }else if($tipo==='Editar'){
+                $cor    = 'warning" confirma="Deseja Realmente Editar?';
+                $icone  = 'pencil';                
+            }else/* if($tipo==='Deletar')*/{
+                $cor    = 'danger" confirma="'.$nome[2];
+                $icone  = 'trash';                
+            }
+            return '<a href="'.URL_PATH.$nome[1].'" class="btn lajax explicar-titulo btn-'.$cor.'" title="'.$nome[0].'" acao="">
+        <i class="glyphicon-'.$icone.'"></i></a>';
         }
     }
     /**
@@ -1247,10 +1267,10 @@ class Visual
             $form = new \Framework\Classes\Form('Formlogin',SISTEMA_DIR_INT,''); //formajax /'.SISTEMA_MODULO.'/'.SISTEMA_SUB.'/'.SISTEMA_MET
             $form->Input_Novo('Login','sistema_login','','text', '',30, '');
             $form->Input_Novo('Senha','sistema_senha','','password', 30, '','');
-            $this->_Visual->Blocar($form->retorna_form('Entrar'));
-            $this->_Visual->Bloco_Menor_CriaJanela('Login');
+            $this->Blocar($form->retorna_form('Entrar'));
+            $this->Bloco_Menor_CriaJanela('Login');
             
-            echo $this->_Visual->Json_Retorna();
+            echo $this->Json_Retorna();
             return true;
         }else{
             // logado =2 ajax
@@ -1383,6 +1403,37 @@ class Visual
             'Tipo'      => 'Dinamica',
             'Opcao'     => Array(
                 'Tabela'         => $tabela,
+                'Style'          => $style,
+                'Apagado1'       => $apagado1,
+                'aaSorting'      => $aaSortingtxt,
+                'Colunas  '      => $ColunasOrd // Ordenacao das Colunas
+            )
+        );
+        if($blocar===true){
+            $this->Blocar($this->renderizar_bloco('template_tabela',$config));
+        }else{
+            return $this->renderizar_bloco('template_tabela',$config);
+        }
+    }
+    public function Show_Tabela_DataTable_Massiva($tabela, $url=false, $style='', $blocar=true, $apagado1=false, $aaSorting=Array(Array(0,'asc')), $ColunasOrd=false) {
+       if($url === false){
+           $url = filter_input(INPUT_GET, 'url', FILTER_SANITIZE_URL);
+       }
+        
+        $aaSortingtxt = '';
+        $i = 0;
+        if(is_array($aaSorting)){
+            foreach($aaSorting as &$valor){
+                if($i>0) $aaSortingtxt .= ',';
+                $aaSortingtxt .= '['.$valor[0].',\''.$valor[1].'\']';
+                ++$i;
+            }
+        }
+        $config = Array(
+            'Tipo'      => 'Massiva',
+            'Opcao'     => Array(
+                'Tabela'         => $tabela,
+                'Url'            => 'Modelo/'.$url,
                 'Style'          => $style,
                 'Apagado1'       => $apagado1,
                 'aaSorting'      => $aaSortingtxt,
@@ -1805,11 +1856,91 @@ class Visual
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.0.1
      */
-    public function Json_Retorna(){
+    public function Json_Retorna($zerar=true){
         $imprimir = new \Framework\App\Tempo('Retornar Json Visual - SEM SMARTY');
+        
+        
+        // Inicia se nao tiver iniciado
         if($this->jsonativado===false){
             $this->Json_Start();
         }
+        
+        
+        
+        
+        
+        
+        
+                        
+        // Pega Conteudo Alocado e Coloca Aqui
+        $configuracao_layoult = config_template();
+
+        if($configuracao_layoult['camada_unica']!==false){
+            $html = $this->Bloco_Unico_Retornar();
+            $js = '';
+            if($html==''){
+                $js = '$(\''.$configuracao_layoult['camada_unica'].'\').hide();';
+            }else{
+                $js = '$(\''.$configuracao_layoult['camada_unica'].'\').show();';
+            }
+            $conteudo = array(
+                'location'  => $configuracao_layoult['camada_unica'],
+                'js'        => $js,
+                'html'      => $html
+            );
+            // Joga pro Json se nao for o caso de popup
+            if($zerar===true || $html!=''){
+                $this->Json_IncluiTipo('Conteudo',$conteudo);
+            }
+            $html = $this->Bloco_Maior_Retornar();
+        }else{
+            $html = $this->Bloco_Unico_Retornar().$this->Bloco_Maior_Retornar();
+        }
+
+        $js = '';
+        if($html==''){
+            $js = '$(\''.$configuracao_layoult['camada_maior'].'\').hide();';
+        }else{
+            $js = '$(\''.$configuracao_layoult['camada_maior'].'\').show();';
+        }
+        $conteudo = array(
+            'location' => $configuracao_layoult['camada_maior'],
+            'js' => $js,
+            'html' => $html
+        );
+        // Joga pro Json se nao for o caso de popup
+        if($zerar===true || $html!=''){
+            $this->Json_IncluiTipo('Conteudo',$conteudo);
+        }
+
+        $html = $this->Bloco_Menor_Retornar();
+        $js = '';
+        if($html==''){
+            $js = '$(\''.$configuracao_layoult['camada_menor'].'\').hide();';
+        }else{
+            $js = '$(\''.$configuracao_layoult['camada_menor'].'\').show();';
+        }
+        $conteudo = array(
+            'location' => $configuracao_layoult['camada_menor'],
+            'js' => $js,
+            'html' =>  $html
+        );
+        // Joga pro Json se nao for o caso de popup
+        if($zerar===true || $html!=''){
+            $this->Json_IncluiTipo('Conteudo',$conteudo);
+        }
+        // inclui js e zera o head js
+        $javascript = $this->Javascript_Executar();
+        if($javascript!=''){
+            $this->Json_IncluiTipo('JavascriptInterno',$javascript);
+            //zera js
+            $this->Javascript_Executar(false);
+        }
+        
+        
+        
+        
+        // Continuar
         if($this->json['Info']['Titulo']!=''){
             $html='';
             if(isset($this->menu['SubMenu'])){
@@ -2042,12 +2173,11 @@ class Visual
         return $i;
     }
     static function Tema_Tipos($complemento){
-         return Array(5,Array(
-             '',
+         return Array(4,Array(
              $complemento.'-success',
-             $complemento.'-important',
+             $complemento.'-info',
              $complemento.'-warning',
-             $complemento.'-success'
+             $complemento.'-danger'
          ));
     }
 }

@@ -15,7 +15,7 @@ $config_Menu = function (){
         'Agenda'=>Array(
             'Nome'                  => 'Agenda',
             'Link'                  => '#',
-            'Gravidade'             => 10,
+            'Gravidade'             => 90,
             'Img'                   => 'turboadmin/m-dashboard.png',
             'Icon'                  => 'time',
             'Filhos'                => Array('Pastas'=>Array(
@@ -42,7 +42,6 @@ $config_Menu = function (){
             ),),
         ),
         'Administrar'=>Array(
-            'Nome'                  => 'Administrar',
             'Filhos'                => Array('Pastas Cores'=>Array(
                 'Nome'                  => 'Pastas Cores',
                 'Link'                  => 'Agenda/Pasta/Cores',

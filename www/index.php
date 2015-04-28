@@ -1,5 +1,4 @@
 <?php
-
 /*
 $julio = '12312312318371287318732';
 define('JULIO', '12312312318371287318732');
@@ -93,7 +92,7 @@ if (isset($_SERVER['HTTP_ACCEPT_ENCODING']) && substr_count($_SERVER['HTTP_ACCEP
 try{ 
     // Inicia CONSTANTES DO SISTEMA
     define('TEMPO_COMECO', microtime(true));
-    define('TEMPO_IMPRIMIR', true);
+    define('TEMPO_IMPRIMIR', false);
     define('DS', DIRECTORY_SEPARATOR);
     define('US', '/'); // Divisor de URL
     define('ROOT_PADRAO'    , realpath(dirname(__FILE__)). DS);

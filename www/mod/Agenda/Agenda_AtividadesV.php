@@ -25,7 +25,7 @@ class Agenda_AtividadesVisual extends Agenda_Visual
      * 
      * 
      * 
-    * Função para gravar Relações entre tabelas e usuario_social, é uma funcao static e é chamada por diversos oturos modulos
+    * Função para gravar Relações entre tabelas e social, é uma funcao static e é chamada por diversos oturos modulos
     * 
     * @name Show_Atividades
     * @access public

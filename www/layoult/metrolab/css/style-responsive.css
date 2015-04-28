@@ -1,11 +1,61 @@
 
+/**
+
+FEITO POR RICARDO SIERRA
+*/
+
+
+    
+/*  tablet to landscape and desktop *//*
+@media (min-width: 980px) and (max-width: 1199px) {
+    .container-fluid {
+        padding-left: 30px !important;
+        padding-right: 30px !important;
+    }
+}
+
+ @media (min-width: 1200px) {
+    .container-fluid {
+        padding-left: 45px !important;
+        padding-right: 0px !important;
+    }
+    .dataTables_wrapper {
+        margin-right: -30px !important;
+    }
+    .datatable {
+        margin-left: 15px !important;
+        margin-right: -45px !important;
+    }
+    .dataTables_length {
+        padding-left:15px !important;
+    }
+    .dataTables_info {
+        padding-left:15px !important;
+    }
+}*/
+
+
+
+/**
+
+IMPORTADO
+*/
+
+
+
 @media (min-width: 768px) {
     /* FEITO POR MIM */
     ul.nav > li.dropdown > a.dropdown-toggle > span {
         display: inline !important;
     }
+    
+    .container-fluid{
+        padding-left: 25px !important;
+        padding-right: 25px !important;
+    }
     /* FEITO POR MIM */
 }
+
  @media (min-width: 980px) {
     /* sidebar */
     #sidebar {
@@ -17,14 +67,10 @@
             margin-top:1px !important;
             width: 100%;
     }
-
-    /* body container */
-    #main-content {
-            margin-top: 0px !important;
-    }
-
-    .fixed-top #main-content {
-            margin-top: 20px;
+    
+    #header.navbar {
+        margin-left: 15px;
+        padding-right: 15px;
     }
 }
 
@@ -67,9 +113,9 @@
 	}
 
 	/* body */
-	.fixed-top #main-content {
+	/*.fixed-top #main-content {
 		margin-top: 0px;
-	} 
+	} */
 
 	/* container */
 	#container {
@@ -188,7 +234,8 @@
 	}
 }
 
-@media (min-width: 768px) and (max-width: 1280px) {
+/* SOMENTE APARECE EM PCS GIGaNTES */
+@media (min-width: 768px) and (max-width: 1200px) {
 
 
     /*---lock page----*/
@@ -299,7 +346,7 @@
 
 	/* body container */	
 	#main-content {
-		margin: 7px !important;
+		//margin: 0px !important;
 		position: none !important;
 	}
 
@@ -309,11 +356,11 @@
 	}
 
 	/* sidebar collabler */
-	#sidebar .btn-navbar.collapsed .arrow { 
+	#sidebar .navbar-btn.collapsed .arrow { 
 		display: none;
 	}	
 
-	#sidebar .btn-navbar .arrow {
+	#sidebar .navbar-btn .arrow {
 	  position: absolute;
 	  right: 35px;
 	  width: 0; 
@@ -389,7 +436,7 @@
 @media (max-width: 767px) {
 
     /****FEITO POR MIM***/
-    #header.navbar-inverse .navbar-inner {
+    #header.navbar-inverse{
         height: 60px !important; //height: 185px !important;
     }
     ul.nav > li.dropdown > a.dropdown-toggle > span {
@@ -397,9 +444,9 @@
     }
     /******************/
 
-    #main-content {
+    /*#main-content {
         margin: 1px !important;
-    }
+    }*/
 
     /*login page*/
 
@@ -474,11 +521,11 @@
 	body {
 	 	padding: 0px 5px 5px 5px !important;
 	}
-    #header .brand {
+    #header .navbar-brand {
         margin-top: -5px !important;
         padding: 22px 35px !important;
     }
-    .navbar-inverse .brand, .navbar-inverse .nav > li > a{
+    .navbar-inverse .navbar-brand, .navbar-inverse .nav > li > a{
         color: #fff !important;
     }
 
@@ -522,7 +569,7 @@
 	}
 
 	/* sidebar */
-	#sidebar .btn-navbar .arrow {
+	#sidebar .navbar-btn .arrow {
 	 	display: none;
 	}
 			
@@ -550,7 +597,7 @@
 		margin-top: 0px !important;
 	}
 
-	.container-fluid {
+	.container {
 	 	margin: 0px;
 	 	padding:5px;
 	}
@@ -561,9 +608,9 @@
 	}
 	
 	/* body container */
-	#main-content {
+	/*#main-content {
 		margin: 0px  !important;
-	}
+	}*/
 
 	/* style switcher */
 	#theme-change {
@@ -574,8 +621,6 @@
 	.breadcrumb {
 		padding-left: 10px;
   		padding-right: 10px;
-		margin-left: -5px;
-		margin-right: -5px;
 	}
 
 	#header.navbar .nav > li > .dropdown-menu.notification::after {
@@ -789,7 +834,7 @@
 @media (max-width: 430px) {
 
     /****FEITO POR MIM***/
-    #header.navbar-inverse .navbar-inner {
+    #header.navbar-inverse{
         height: 60px !important; //height: 185px !important;
     }
     ul.nav > li.dropdown > a.dropdown-toggle > span {
@@ -815,9 +860,6 @@
         z-index: none;
     }
 
-    #main-content {
-        margin: 1px !important;
-    }
 
     /*login page*/
 
@@ -899,7 +941,7 @@
     .countDays, .countHours, .countMinutes, .countSeconds {
         margin: 10px;
     }
-    #header .brand {
+    #header .navbar-brand {
         margin-top: -5px !important;
         padding: 22px 35px !important;
     }
@@ -908,7 +950,7 @@
 		width: 100%;
 		padding: 0px !important;
 	}
-    .navbar-inverse .brand, .navbar-inverse .nav > li > a{
+    .navbar-inverse .navbar-brand, .navbar-inverse .nav > li > a{
         color: #fff !important;
     }
 
@@ -955,7 +997,7 @@
 @media (max-width: 385px) {
 
     /****FEITO POR MIM***/
-    #header.navbar-inverse .navbar-inner {
+    #header.navbar-inverse{
         height: 60px !important; //height: 185px !important;
     }
     ul.nav > li.dropdown > a.dropdown-toggle > span {
@@ -971,9 +1013,6 @@
         z-index: none;
     }
 
-    #main-content {
-        margin: 1px !important;
-    }
 
     /*login page*/
 
@@ -1082,7 +1121,7 @@
 		margin-top: 0px !important;
 		height: 84px !important;
 	}
-    .navbar-inverse .brand, .navbar-inverse .nav > li > a{
+    .navbar-inverse .navbar-brand, .navbar-inverse .nav > li > a{
         color: #fff !important;
     }
 
@@ -1130,7 +1169,7 @@
 @media (max-width: 320px) {
 
     /****FEITO POR MIM***/
-    #header.navbar-inverse .navbar-inner {
+    #header.navbar-inverse{
         height: 60px !important; //height: 185px !important;
     }
     ul.nav > li.dropdown > a.dropdown-toggle > span {
@@ -1146,9 +1185,6 @@
         z-index: none;
     }
 
-    #main-content {
-        margin: 1px !important;
-    }
 
     /*---lock page----*/
 
@@ -1233,12 +1269,12 @@
     #forgotform #input-email {
         width: 203px;
     }
-    #header .brand {
+    #header .navbar-brand {
         margin-top: -5px !important;
         padding: 22px 22px !important;
     }
 
-    .navbar-inverse .brand, .navbar-inverse .nav > li > a{
+    .navbar-inverse .navbar-brand, .navbar-inverse .nav > li > a{
         color: #fff !important;
     }
 

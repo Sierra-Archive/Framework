@@ -51,7 +51,7 @@ final Class Transporte_Transportadora_Pedido_DAO extends Framework\App\Dao
         return 1;
     }
     public static function Get_Class(){
-        return str_replace(Array('_DAO'), Array(''), get_class());
+        return get_class() ; //return str_replace(Array('_DAO'), Array(''), get_class());
     }
     public static function Gerar_Colunas(){
         return Array(
@@ -68,7 +68,7 @@ final Class Transporte_Transportadora_Pedido_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '' ,//0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '' ,//0 ninguem, 1 admin, 2 todos 
             ),
             Array(
                 'mysql_titulo'      => 'categoria',
@@ -83,7 +83,7 @@ final Class Transporte_Transportadora_Pedido_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => 'categoria/Admin/Categorias_Add/Transporte_Caminhao', //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => 'categoria/Admin/Categorias_Add/Transporte_Caminhao', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
                     'Nome'              => 'Tipo de Caminhao Necessario',
                     'valor_padrao'      => false,
@@ -108,7 +108,7 @@ final Class Transporte_Transportadora_Pedido_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', // //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '', // //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
                     'Nome'              => 'Descriçao da Carga',
                     'valor_padrao'      => false,
@@ -133,7 +133,7 @@ final Class Transporte_Transportadora_Pedido_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', // //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '', // //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
                     'Nome'              => 'Descrição da Embalagem',
                     'valor_padrao'      => false,
@@ -159,7 +159,7 @@ final Class Transporte_Transportadora_Pedido_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
                     'Nome'              => 'Comprimento',
                     'Mascara'           => 'Numero',
@@ -186,7 +186,7 @@ final Class Transporte_Transportadora_Pedido_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
                     'Nome'              => 'Altura',
                     'Mascara'           => 'Numero',
@@ -213,7 +213,7 @@ final Class Transporte_Transportadora_Pedido_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
                     'Nome'              => 'Largura',
                     'Mascara'           => 'Numero',
@@ -240,7 +240,7 @@ final Class Transporte_Transportadora_Pedido_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
                     'Nome'              => 'Capacidade',
                     'Mascara'           => 'Numero',
@@ -267,7 +267,7 @@ final Class Transporte_Transportadora_Pedido_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
                     'Nome'              => 'Qnt de Volumes',
                     'Mascara'           => 'Numero',
@@ -294,7 +294,7 @@ final Class Transporte_Transportadora_Pedido_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
                     'Nome'              => 'Peso Bruto',
                     'Mascara'           => 'Numero',
@@ -320,7 +320,7 @@ final Class Transporte_Transportadora_Pedido_DAO extends Framework\App\Dao
                 'mysql_inside'      => 'data_brasil_eua({valor})', // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => 'data_eua_brasil({valor})', // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
                     'Nome'              => 'Data do Inicio',
                     'Mascara'           => 'Data',
@@ -347,7 +347,7 @@ final Class Transporte_Transportadora_Pedido_DAO extends Framework\App\Dao
                 'mysql_inside'      => 'data_brasil_eua({valor})', // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => 'data_eua_brasil({valor})', // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
                     'Nome'              => 'Data do Fim',
                     'Mascara'           => 'Data',
@@ -542,7 +542,7 @@ final Class Transporte_Transportadora_Pedido_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
                     'Nome'              => 'Status',
                     'valor_padrao'      => 0,

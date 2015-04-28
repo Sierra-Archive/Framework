@@ -29,7 +29,7 @@ final Class Usuario_Anexo_DAO extends Framework\App\Dao
         return 1;
     }
     public static function Get_Class(){
-        return str_replace(Array('_DAO'), Array(''), get_class());
+        return get_class() ; //return str_replace(Array('_DAO'), Array(''), get_class());
     }
     public static function Gerar_Colunas(){
         return Array(
@@ -46,7 +46,7 @@ final Class Usuario_Anexo_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '' ,//0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '' ,//0 ninguem, 1 admin, 2 todos 
             ),
             Array(
                 'mysql_titulo'      => 'usuario',
@@ -61,7 +61,7 @@ final Class Usuario_Anexo_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos
-                'linkextra'          => '' ,//0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '' ,//0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
                     'Nome'              => 'Usuario',
                     'valor_padrao'      => '0',
@@ -82,7 +82,7 @@ final Class Usuario_Anexo_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
                     'Nome'              => 'Endereço do Arquivo',
                     'valor_padrao'      => false,
@@ -107,7 +107,7 @@ final Class Usuario_Anexo_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', // //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '', // //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
                     'Nome'              => 'Extensao do Arquivo',
                     'valor_padrao'      => false,
@@ -132,7 +132,7 @@ final Class Usuario_Anexo_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
                     'Nome'              => 'Nome do Arquivo',
                     'valor_padrao'      => false,

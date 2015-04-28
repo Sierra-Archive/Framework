@@ -2219,7 +2219,7 @@ $.widget("ui.resizable", $.ui.mouse, {
 
 				//TODO : What's going on here?
 				if ('se' == handle) {
-					axis.addClass('ui-icon ui-icon-gripsmall-diagonal-se');
+					axis.addClass('ui-icon ui-glyphicon-gripsmall-diagonal-se');
 				};
 
 				//Insert into internal handles object and append to element
@@ -5531,8 +5531,8 @@ $.widget( "ui.accordion", {
 		header: "> li > :first-child,> :not(li):even",
 		heightStyle: "auto",
 		icons: {
-			activeHeader: "ui-icon-triangle-1-s",
-			header: "ui-icon-triangle-1-e"
+			activeHeader: "ui-glyphicon-triangle-1-s",
+			header: "ui-glyphicon-triangle-1-e"
 		},
 
 		// callbacks
@@ -6123,7 +6123,7 @@ if ( $.uiBackCompat !== false ) {
 	(function( $, prototype ) {
 		$.extend( prototype.options.icons, {
 			activeHeader: null, // remove default so we fall back to old values
-			headerSelected: "ui-icon-triangle-1-s"
+			headerSelected: "ui-glyphicon-triangle-1-s"
 		});
 
 		var _createIcons = prototype._createIcons;
@@ -6820,7 +6820,7 @@ $.widget( "ui.autocomplete", $.ui.autocomplete, {
 var lastActive, startXPos, startYPos, clickDragged,
 	baseClasses = "ui-button ui-widget ui-state-default ui-corner-all",
 	stateClasses = "ui-state-hover ui-state-active ",
-	typeClasses = "ui-button-icons-only ui-button-icon-only ui-button-text-icons ui-button-text-icon-primary ui-button-text-icon-secondary ui-button-text-only",
+	typeClasses = "ui-button-icons-only ui-button-glyphicon-only ui-button-text-icons ui-button-text-glyphicon-primary ui-button-text-glyphicon-secondary ui-button-text-only",
 	formResetHandler = function() {
 		var buttons = $( this ).find( ":ui-button" );
 		setTimeout(function() {
@@ -7140,15 +7140,15 @@ $.widget( "ui.button", {
 			}
 
 			if ( icons.primary ) {
-				buttonElement.prepend( "<span class='ui-button-icon-primary ui-icon " + icons.primary + "'></span>" );
+				buttonElement.prepend( "<span class='ui-button-glyphicon-primary ui-icon " + icons.primary + "'></span>" );
 			}
 
 			if ( icons.secondary ) {
-				buttonElement.append( "<span class='ui-button-icon-secondary ui-icon " + icons.secondary + "'></span>" );
+				buttonElement.append( "<span class='ui-button-glyphicon-secondary ui-icon " + icons.secondary + "'></span>" );
 			}
 
 			if ( !this.options.text ) {
-				buttonClasses.push( multipleIcons ? "ui-button-icons-only" : "ui-button-icon-only" );
+				buttonClasses.push( multipleIcons ? "ui-button-icons-only" : "ui-button-glyphicon-only" );
 
 				if ( !this.hasTitle ) {
 					buttonElement.attr( "title", $.trim( buttonText ) );
@@ -8695,16 +8695,16 @@ $.extend(Datepicker.prototype, {
 			this._getFormatConfig(inst)));
 		var prev = (this._canAdjustMonth(inst, -1, drawYear, drawMonth) ?
 			'<a class="ui-datepicker-prev ui-corner-all" data-handler="prev" data-event="click"' +
-			' title="' + prevText + '"><span class="ui-icon ui-icon-circle-triangle-' + ( isRTL ? 'e' : 'w') + '">' + prevText + '</span></a>' :
-			(hideIfNoPrevNext ? '' : '<a class="ui-datepicker-prev ui-corner-all ui-state-disabled" title="'+ prevText +'"><span class="ui-icon ui-icon-circle-triangle-' + ( isRTL ? 'e' : 'w') + '">' + prevText + '</span></a>'));
+			' title="' + prevText + '"><span class="ui-icon ui-glyphicon-circle-triangle-' + ( isRTL ? 'e' : 'w') + '">' + prevText + '</span></a>' :
+			(hideIfNoPrevNext ? '' : '<a class="ui-datepicker-prev ui-corner-all ui-state-disabled" title="'+ prevText +'"><span class="ui-icon ui-glyphicon-circle-triangle-' + ( isRTL ? 'e' : 'w') + '">' + prevText + '</span></a>'));
 		var nextText = this._get(inst, 'nextText');
 		nextText = (!navigationAsDateFormat ? nextText : this.formatDate(nextText,
 			this._daylightSavingAdjust(new Date(drawYear, drawMonth + stepMonths, 1)),
 			this._getFormatConfig(inst)));
 		var next = (this._canAdjustMonth(inst, +1, drawYear, drawMonth) ?
 			'<a class="ui-datepicker-next ui-corner-all" data-handler="next" data-event="click"' +
-			' title="' + nextText + '"><span class="ui-icon ui-icon-circle-triangle-' + ( isRTL ? 'w' : 'e') + '">' + nextText + '</span></a>' :
-			(hideIfNoPrevNext ? '' : '<a class="ui-datepicker-next ui-corner-all ui-state-disabled" title="'+ nextText + '"><span class="ui-icon ui-icon-circle-triangle-' + ( isRTL ? 'w' : 'e') + '">' + nextText + '</span></a>'));
+			' title="' + nextText + '"><span class="ui-icon ui-glyphicon-circle-triangle-' + ( isRTL ? 'w' : 'e') + '">' + nextText + '</span></a>' :
+			(hideIfNoPrevNext ? '' : '<a class="ui-datepicker-next ui-corner-all ui-state-disabled" title="'+ nextText + '"><span class="ui-icon ui-glyphicon-circle-triangle-' + ( isRTL ? 'w' : 'e') + '">' + nextText + '</span></a>'));
 		var currentText = this._get(inst, 'currentText');
 		var gotoDate = (this._get(inst, 'gotoCurrent') && inst.currentDay ? currentDate : today);
 		currentText = (!navigationAsDateFormat ? currentText :
@@ -9177,7 +9177,7 @@ $.widget("ui.dialog", {
 				.appendTo( uiDialogTitlebar );
 
 			( this.uiDialogTitlebarCloseText = $( "<span>" ) )
-				.addClass( "ui-icon ui-icon-closethick" )
+				.addClass( "ui-icon ui-glyphicon-closethick" )
 				.text( options.closeText )
 				.appendTo( uiDialogTitlebarClose );
 
@@ -9512,7 +9512,7 @@ $.widget("ui.dialog", {
 		})
 		.css( "position", position )
 		.find( ".ui-resizable-se" )
-			.addClass( "ui-icon ui-icon-grip-diagonal-se" );
+			.addClass( "ui-icon ui-glyphicon-grip-diagonal-se" );
 	},
 
 	_minHeight: function() {
@@ -10894,7 +10894,7 @@ $.widget( "ui.menu", {
 	delay: 300,
 	options: {
 		icons: {
-			submenu: "ui-icon-carat-1-e"
+			submenu: "ui-glyphicon-carat-1-e"
 		},
 		menus: "ul",
 		position: {
@@ -12730,8 +12730,8 @@ $.widget( "ui.spinner", {
 	options: {
 		culture: null,
 		icons: {
-			down: "ui-icon-triangle-1-s",
-			up: "ui-icon-triangle-1-n"
+			down: "ui-glyphicon-triangle-1-s",
+			up: "ui-glyphicon-triangle-1-n"
 		},
 		incremental: true,
 		max: null,

@@ -44,7 +44,7 @@ final Class Usuario_Mensagem_DAO extends Framework\App\Dao
         return 1;
     }
     public static function Get_Class(){
-        return str_replace(Array('_DAO'), Array(''), get_class());
+        return get_class() ; //return str_replace(Array('_DAO'), Array(''), get_class());
     }
     public static function Gerar_Colunas(){
         return Array(
@@ -61,7 +61,7 @@ final Class Usuario_Mensagem_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '' ,//0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '' ,//0 ninguem, 1 admin, 2 todos 
             ),
             Array(
                 'mysql_titulo'      => 'escritor',
@@ -76,7 +76,7 @@ final Class Usuario_Mensagem_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => ''/*, //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => ''/*, //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
                     'Nome'              => 'De',
                     'valor_padrao'      => false,
@@ -113,7 +113,7 @@ final Class Usuario_Mensagem_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
                     'Nome'              => 'Para',
                     'valor_padrao'      => '0',
@@ -139,7 +139,7 @@ final Class Usuario_Mensagem_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
                     'Nome'              => 'Para',
                     'valor_padrao'      => 'Suporte',
@@ -165,7 +165,7 @@ final Class Usuario_Mensagem_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => 'usuario_mensagem/Setor/Setores_Add',
+                'linkextra'         => 'usuario_mensagem/Setor/Setores_Add',
                 'edicao'            => Array(
                     'Nome'              => 'Setor',
                     'valor_padrao'      => false,
@@ -191,7 +191,7 @@ final Class Usuario_Mensagem_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => 'usuario_mensagem/Assunto/Assuntos_Add',
+                'linkextra'         => 'usuario_mensagem/Assunto/Assuntos_Add',
                 'edicao'            => Array(
                     'Nome'              => 'Assunto',
                     'valor_padrao'      => false,
@@ -243,7 +243,7 @@ final Class Usuario_Mensagem_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => 'usuario_mensagem/Origem/Origens_Add',
+                'linkextra'         => 'usuario_mensagem/Origem/Origens_Add',
                 'edicao'            => Array(
                     'Nome'              => 'Origem',
                     'valor_padrao'      => false,
@@ -269,7 +269,7 @@ final Class Usuario_Mensagem_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => 'comercio/Marca/Marcas_Add',
+                'linkextra'         => 'comercio/Marca/Marcas_Add',
                 'edicao'            => Array(
                     'Nome'              => 'Marca da Linha',
                     'valor_padrao'      => false,
@@ -295,7 +295,7 @@ final Class Usuario_Mensagem_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => 'comercio/Linha/Linhas_Add', 
+                'linkextra'         => 'comercio/Linha/Linhas_Add', 
                 'edicao'            => Array(
                     'Nome'              => 'Linha do Produto',
                     'valor_padrao'      => false,
@@ -321,7 +321,7 @@ final Class Usuario_Mensagem_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => 'comercio/Produto/Produtos_Add',
+                'linkextra'         => 'comercio/Produto/Produtos_Add',
                 'edicao'            => Array(
                     'Nome'              => 'Produto',
                     'valor_padrao'      => false,
@@ -347,7 +347,7 @@ final Class Usuario_Mensagem_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
                     'Nome'              => 'Número do Lote',
                     'valor_padrao'      => false,
@@ -373,7 +373,7 @@ final Class Usuario_Mensagem_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '',
+                'linkextra'         => '',
                 'edicao'            => Array(
                     'Nome'              => 'Data de Validade',
                     'Mascara'           => 'Validade',
@@ -401,7 +401,7 @@ final Class Usuario_Mensagem_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '',
+                'linkextra'         => '',
                 'edicao'            => Array(
                     'Nome'              => 'Data de Fabricação',
                     'Mascara'           => 'Validade',
@@ -429,7 +429,7 @@ final Class Usuario_Mensagem_DAO extends Framework\App\Dao
                 'mysql_inside'      => 'br2nl({valor})', // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => 'nl2br({valor})', // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
                     'Nome'              => 'Mensagem',
                     'valor_padrao'      => false,
@@ -455,7 +455,7 @@ final Class Usuario_Mensagem_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => ''
+                'linkextra'         => ''
             ),
             Array(
                 'mysql_titulo'      => 'finalizado',
@@ -470,7 +470,7 @@ final Class Usuario_Mensagem_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => ''
+                'linkextra'         => ''
             ),
             Array(
                 'mysql_titulo'      => 'dt_lido',
@@ -485,7 +485,7 @@ final Class Usuario_Mensagem_DAO extends Framework\App\Dao
                 'mysql_inside'      => 'date_replace({valor}, "Y-m-d H:i:s")', // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => 'date_replace({valor}, "d/m/y | H:i")', // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', //0 ninguem, 1 admin, 2 todos
+                'linkextra'         => '', //0 ninguem, 1 admin, 2 todos
             )
         );
     }

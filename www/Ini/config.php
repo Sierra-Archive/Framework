@@ -198,6 +198,9 @@ if(!defined('MYSQL_CURSO')){
 if(!defined('MYSQL_CURSO_TURMA')){
     define('MYSQL_CURSO_TURMA'                          , 'Curso_Turma');
 }
+if(!defined('MYSQL_CURSO_TURMA_INSCRICAO')){
+    define('MYSQL_CURSO_TURMA_INSCRICAO'                , 'Curso_Turma_Inscricao');
+}
 
 //COMERCIO VENDAS
 if(  !defined('MYSQL_COMERCIO_VENDA_MESA')){
@@ -598,28 +601,28 @@ if(!defined('MYSQL_FINANCEIRO_FINANCEIRO_FORMA')){
     define('MYSQL_FINANCEIRO_BANCO'                     , 'Financeiro_Banco');
 }
 // AUTO ATUALIZADOS
-if(!defined('MYSQL_USUARIO_SOCIAL')){
-    define('MYSQL_USUARIO_SOCIAL'                       , 'Usuario_Social');
-} if(!defined('MYSQL_USUARIO_SOCIAL_COMENTARIO')){
-    define('MYSQL_USUARIO_SOCIAL_COMENTARIO'            , 'Usuario_Social_Comentario');
-} if(!defined('MYSQL_USUARIO_SOCIAL_FICOU')){
-    define('MYSQL_USUARIO_SOCIAL_FICOU'                 , 'Usuario_Social_Ficou');
-}if(!defined('MYSQL_USUARIO_SOCIAL_FICOU_COMENTARIO')){
-    define('MYSQL_USUARIO_SOCIAL_FICOU_COMENTARIO'      , 'Usuario_Social_Ficou_Comentario');
-}if(!defined('MYSQL_USUARIO_SOCIAL_CARACTERISTICA')){
-    define('MYSQL_USUARIO_SOCIAL_CARACTERISTICA'        , 'Usuario_Social_Caracteristica');
-}if(!defined('MYSQL_USUARIO_SOCIAL_CARACTERISTICA_ACAO')){
-    define('MYSQL_USUARIO_SOCIAL_CARACTERISTICA_ACAO'   , 'Usuario_Social_Caracteristica_Acao');
-}if(!defined('MYSQL_USUARIO_SOCIAL_TELEFONE')){
-    define('MYSQL_USUARIO_SOCIAL_TELEFONE'              , 'Usuario_Social_Telefone');
-}if(!defined('MYSQL_USUARIO_SOCIAL_TELEFONE_CHAMADA')){
-    define('MYSQL_USUARIO_SOCIAL_TELEFONE_CHAMADA'      , 'Usuario_Social_Telefone_Chamada');
-}if(!defined('MYSQL_USUARIO_SOCIAL_ACAO')){
-    define('MYSQL_USUARIO_SOCIAL_ACAO'                  , 'Usuario_Social_Acao');
-}if(!defined('MYSQL_USUARIO_SOCIAL_ACAO_PARTICIPANTE')){
-    define('MYSQL_USUARIO_SOCIAL_ACAO_PARTICIPANTE'     , 'Usuario_Social_Acao_Participante');
-}if(!defined('MYSQL_USUARIO_SOCIAL_ACAO_PRESENTE')){
-    define('MYSQL_USUARIO_SOCIAL_ACAO_PRESENTE'         , 'Usuario_Social_Acao_Presente');
+if(!defined('MYSQL_SOCIAL')){
+    define('MYSQL_SOCIAL'                       , 'Social');
+} if(!defined('MYSQL_SOCIAL_COMENTARIO')){
+    define('MYSQL_SOCIAL_COMENTARIO'            , 'Social_Comentario');
+} if(!defined('MYSQL_SOCIAL_FICOU')){
+    define('MYSQL_SOCIAL_FICOU'                 , 'Social_Ficou');
+}if(!defined('MYSQL_SOCIAL_FICOU_COMENTARIO')){
+    define('MYSQL_SOCIAL_FICOU_COMENTARIO'      , 'Social_Ficou_Comentario');
+}if(!defined('MYSQL_SOCIAL_CARACTERISTICA')){
+    define('MYSQL_SOCIAL_CARACTERISTICA'        , 'Social_Caracteristica');
+}if(!defined('MYSQL_SOCIAL_CARACTERISTICA_ACAO')){
+    define('MYSQL_SOCIAL_CARACTERISTICA_ACAO'   , 'Social_Caracteristica_Acao');
+}if(!defined('MYSQL_USUARIO_TELEFONE')){
+    define('MYSQL_USUARIO_TELEFONE'              , 'Usuario_Telefone');
+}if(!defined('MYSQL_USUARIO_TELEFONE_CHAMADA')){
+    define('MYSQL_USUARIO_TELEFONE_CHAMADA'      , 'Usuario_Telefone_Chamada');
+}if(!defined('MYSQL_SOCIAL_ACAO')){
+    define('MYSQL_SOCIAL_ACAO'                  , 'Social_Acao');
+}if(!defined('MYSQL_SOCIAL_ACAO_PARTICIPANTE')){
+    define('MYSQL_SOCIAL_ACAO_PARTICIPANTE'     , 'Social_Acao_Participante');
+}if(!defined('MYSQL_SOCIAL_ACAO_PRESENTE')){
+    define('MYSQL_SOCIAL_ACAO_PRESENTE'         , 'Social_Acao_Presente');
 }
 // AUTO NAO USADOS
 if(!defined('MYSQL_USUARIO_AGENDA_PASTA')){
@@ -632,14 +635,14 @@ if(!defined('MYSQL_USUARIO_AGENDA_PASTA')){
     define('MYSQL_PROJETO_COMENTARIO',           'Projeto_Comentario');
 } if(!defined('MYSQL_PROJ_CONT')){
     define('MYSQL_PROJ_CONT',                    'Projeto_Contas');
-} if(!defined('MYSQL_USUARIO_SOCIAL_TIPO')){
-    define('MYSQL_USUARIO_SOCIAL_TIPO',          'Usuario_social_tipo');
-} if(!defined('MYSQL_USUARIO_SOCIAL_HIST_FACE')){
-    define('MYSQL_USUARIO_SOCIAL_HIST_FACE',     'Usuario_social_Historico_Face');
-} if(!defined('MYSQL_USUARIO_SOCIAL_HIST_FACE_MGS')){
-    define('MYSQL_USUARIO_SOCIAL_HIST_FACE_MGS', 'Usuario_social_Historico_Face_Mensagens');
-} if(!defined('MYSQL_USUARIO_SOCIAL_RELACOES')){
-    define('MYSQL_USUARIO_SOCIAL_RELACOES',      'Usuario_social_Relacoes');
+} if(!defined('MYSQL_SOCIAL_TIPO')){
+    define('MYSQL_SOCIAL_TIPO',          'Usuario_social_tipo');
+} if(!defined('MYSQL_SOCIAL_HIST_FACE')){
+    define('MYSQL_SOCIAL_HIST_FACE',     'Usuario_social_Historico_Face');
+} if(!defined('MYSQL_SOCIAL_HIST_FACE_MGS')){
+    define('MYSQL_SOCIAL_HIST_FACE_MGS', 'Usuario_social_Historico_Face_Mensagens');
+} if(!defined('MYSQL_SOCIAL_RELACOES')){
+    define('MYSQL_SOCIAL_RELACOES',      'Usuario_social_Relacoes');
 } if(!defined('MYSQL_USUARIO_AGENDA_COMPROMISSOS')){
     define('MYSQL_USUARIO_AGENDA_COMPROMISSOS',  'agenda_compromissos');
 } if(!defined('MYSQL_USUARIO_AGENDA_ATIVIDADES')){

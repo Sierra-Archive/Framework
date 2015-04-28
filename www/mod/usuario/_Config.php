@@ -10,6 +10,17 @@ $config_Modulo = function (){
 };
 $config_Menu = function (){
     return Array(
+        'Lista Telefonica' => Array(
+            'Nome'                  => 'Lista Telefonica',
+            'Link'                  => 'usuario/Telefone/Telefones',
+            'Gravidade'             => 100,
+            'Img'                   => 'turboadmin/m-users.png',
+            'Icon'                  => 'phone',
+            'Permissao_Func'        => Array(// Permissoes NEcessarias
+                'usuario_Telefone_Lista' => true
+            ),
+            'Filhos'                => false,
+        ),
         'Administrar'=>Array(
             'Filhos'                => Array('Usuários'=>Array(
                 'Nome'                  => 'Usuários',
@@ -39,14 +50,10 @@ $config_Menu = function (){
                 ),
                 'Filhos'                => false,
             )),
-        ),'Acesso' => Array(
-            'Nome'                  => 'Acesso',
-            'Link'                  => '#',
-            'Gravidade'             => 100,
-            'Img'                   => 'turboadmin/m-dashboard.png',
-            'Icon'                  => 'user',
-            'Filhos'                => Array('Usuários'=>Array(
-                'Nome'                  => 'Usuários',
+        ),'Configurações' => Array(
+            'Nome'                  => 'Configurações',
+            'Filhos'                => Array('A. de Usuários'=>Array(
+                'Nome'                  => 'A. de Usuários',
                 'Link'                  => 'usuario/Acesso/Listar_Clientesnao',
                 'Gravidade'             => 1,
                 'Img'                   => 'turboadmin/m-dashboard.png',
@@ -222,6 +229,57 @@ $config_Permissoes = function (){
             'Metodo'                => '*',  // Metodos referentes separados por virgula
         ),
         
+        
+        
+        Array(
+            'Nome'                  => 'Telefone - Listagem',
+            'Desc'                  => '',
+            'Chave'                 => 'usuario_Telefone_Telefones', // CHave unica nunca repete, chave primaria
+            'End'                   => 'usuario/Telefone/Telefones', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
+            'Modulo'                => 'usuario', // Modulo Referente
+            'SubModulo'             => 'Telefone',   // Submodulo Referente
+            'Metodo'                => 'Telefones',  // Metodos referentes separados por virgula
+            'Permissao_Func'        => Array(// Permissoes NEcessarias
+                'usuario_Telefone_Lista' => true
+            ),
+        ),
+        Array(
+            'Nome'                  => 'Telefone - Add',
+            'Desc'                  => '',
+            'Chave'                 => 'usuario_Telefone_Telefones_Add', // CHave unica nunca repete, chave primaria
+            'End'                   => 'usuario/Telefone/Telefones_Add', // Endereco que deve conter a url para permitir acesso
+            'Modulo'                => 'usuario', // Modulo Referente
+            'SubModulo'             => 'Telefone',   // Submodulo Referente
+            'Metodo'                => 'Telefones_Add,Telefones_Add2',  // Metodos referentes separados por virgula
+            'Permissao_Func'        => Array(// Permissoes NEcessarias
+                'usuario_Telefone_Lista' => true
+            ),
+        ),
+        Array(
+            'Nome'                  => 'Telefone - Editar',
+            'Desc'                  => '',
+            'Chave'                 => 'usuario_Telefone_Telefones_Edit', // CHave unica nunca repete, chave primaria
+            'End'                   => 'usuario/Telefone/Telefones_Edit', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
+            'Modulo'                => 'usuario', // Modulo Referente // Modulo Referente
+            'SubModulo'             => 'Telefone',   // Submodulo Referente   // Submodulo Referente
+            'Metodo'                => 'Telefones_Edit,Telefones_Edit2',  // Metodos referentes separados por virgula
+            'Permissao_Func'        => Array(// Permissoes NEcessarias
+                'usuario_Telefone_Lista' => true
+            ),
+        ),
+        Array(
+            'Nome'                  => 'Telefone - Deletar',
+            'Desc'                  => '',
+            'Chave'                 => 'usuario_Telefone_Telefones_Del', // CHave unica nunca repete, chave primaria
+            'End'                   => 'usuario/Telefone/Telefones_Del', // Endereco que deve conter a url para permitir acesso
+            'Modulo'                => 'usuario', // Modulo Referente
+            'SubModulo'             => 'Telefone',   // Submodulo Referente
+            'Metodo'                => 'Telefones_Del',  // Metodos referentes separados por virgula
+            'Permissao_Func'        => Array(// Permissoes NEcessarias
+                'usuario_Telefone_Lista' => true
+            ),
+        ),
+        
     );
 };
 /**
@@ -343,6 +401,12 @@ $config_Funcional = function (){
             'Nome'                  => 'Usuarios -> Comentarios',
             'Desc'                  => 'Se tem historico de comentarios em usuarios',
             'chave'                 => 'usuario_Comentarios',
+            'Valor'                 => false,
+        ),
+        'usuario_Telefone_Lista'  => Array(
+            'Nome'                  => 'Telefone -> Listagem',
+            'Desc'                  => 'Se possui listagem de telefones',
+            'chave'                 => 'usuario_Telefone_Lista',
             'Valor'                 => false,
         ),
     );

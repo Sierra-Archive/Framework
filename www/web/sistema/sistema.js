@@ -37,6 +37,7 @@ var Sierra = (function () {
             "__.___.___-_",       //RG
             "R$ 0,00"             // REAL
         ],
+        DataTable_Selected          = [],
         documento                   = $(document),
         janela                      = $(window);
     /**
@@ -50,6 +51,24 @@ var Sierra = (function () {
     * @param {type} haystack
     * @returns {Boolean}
     */
+    function Sessao_Ler(nome) {
+        if(Cache['SierraTec_'+nome]!=undefined){
+            return Cache['SierraTec_'+nome][1];
+        }
+        return false;
+    }
+    function Sessao_Gravar(nome,valor) {
+        Cache['SierraTec_'+nome] = new Array('SierraTec_'+nome,valor);
+        return true;
+    }  
+    function Sessao_Deletar(nome) {
+        if(nome===false){
+            Cache = {};
+        }else{
+            Cache['SierraTec_'+nome] = undefined;
+        }
+        return true;
+    }    
     function Cache_Ler(nome) {
         if (Modernizr.localstorage===true) {
             if (window.localStorage.getItem('SierraTec_'+nome)) {
@@ -57,19 +76,21 @@ var Sierra = (function () {
             }
             return false;
         }else{
-            if(Cache['SierraTec_'+nome]!=undefined){
-                return Cache['SierraTec_'+nome][1];
-            }
-            return false;
+            return Sessao_Ler(nome);
         }
     }
     function Cache_Gravar(nome,valor) {
         if (Modernizr.localstorage) {
-            window.localStorage.setObject('SierraTec_'+nome, valor);
+            try { 
+                console.log(window.localStorage.length);
+                window.localStorage.setObject('SierraTec_'+nome, valor);
+            } catch(e) {
+                console.log(e);
+                return false;
+            }
             return true;
         }else{
-            Cache['SierraTec_'+nome] = new Array('SierraTec_'+nome,valor);
-            return true;
+            return Sessao_Gravar(nome,valor);
         }
     }  
     function Cache_Deletar(nome) {
@@ -81,35 +102,35 @@ var Sierra = (function () {
             }
             return true;
         }else{
-            if(nome===false){
-                Cache = {};
-            }else{
-                Cache['SierraTec_'+nome] = new Array('SierraTec_'+nome,valor);
-            }
-            return true;
+            return Sessao_Deletar(nome);
         }
     }    
     function Cookie_Salvar(name,value){    //função universal para criar cookie
 
         var expires,
-            exdays = 7,
+            exdays = 70,
             date;
         date = new Date(); //  criando o COOKIE com a data atual
         date.setTime(date.getTime()+(exdays*24*60*60*1000));
         expires = date.toUTCString();
         document.cookie = name+"="+value+"; expires="+expires+"; path=/";
     }
-    function Cookie_Ler(){
-        var c_name = document.cookie; // listando o nome de todos os cookies
-        if(c_name!=undefined && c_name.length > 0) // verificando se o mesmo existe
+    function Cookie_Ler(strCookie){
+        var strNomeIgual = strCookie + "=";
+        var arrCookies = document.cookie.split(';');
+
+                console.log(arrCookies);
+        for(var i = 0; i < arrCookies.length; i++)
         {
-            var posCookie = c_name.indexOf(cookieSeuNome); // checando se existe o cookieSeuNome 
-            if (posCookie >= 0) //se existir o cookie mostra um alert no browser
+            var strValorCookie = arrCookies[i];
+            while(strValorCookie.charAt(0) == ' ')
             {
-                return true;
+                strValorCookie = strValorCookie.substring(1, strValorCookie.length);
             }
-            else{
-                return false;
+            if(strValorCookie.indexOf(strNomeIgual) == 0)
+            {
+                console.log(strValorCookie.substring(strNomeIgual.length, strValorCookie.length));
+                return strValorCookie.substring(strNomeIgual.length, strValorCookie.length);
             }
         }
         return false;
@@ -322,6 +343,18 @@ var Sierra = (function () {
             }
         };
     };
+    documento.on("click", 'tbody > tr', function () {
+        var id = this.id;
+        var index = $.inArray(id, DataTable_Selected);
+ 
+        if ( index === -1 ) {
+            DataTable_Selected.push( id );
+        } else {
+            DataTable_Selected.splice( index, 1 );
+        }
+        console.log(DataTable_Selected);
+        $(this).toggleClass('selected');
+    } );
     /**
      * POPUP -> Fecha Janela
      */
@@ -561,6 +594,7 @@ var Sierra = (function () {
         Control_Atualizacao();
         // Privadas
         Visual_Layoult_DataTable('.datatable');
+        Visual_Layoult_DataTable_Massiva('.Listagem_Table');
         Visual_Layoult_Aviso();
         Control_Layoult_Recarrega_Formulario();
         console.timeEnd('Acao_LINK');
@@ -570,7 +604,7 @@ var Sierra = (function () {
         Visual_Layoult_UniForm();
         // Atualiza TabIndex
         var tabindex = 1;
-        $('.control-group').find('input,select,textarea,a.chosen-single').each(function() {
+        $('.form-group').find('input,select,textarea,a.chosen-single').each(function() {
             if (this.type != "hidden" && $( this ).attr("escondendo")!=='ativado' && $( this ).css("display")!=='none') {
                 var $input = $(this);
                 $( this ).attr("tabindex", tabindex);
@@ -626,6 +660,7 @@ var Sierra = (function () {
             body        = '',
             footer      = '',
             popup       = $(document.getElementById(json['id'])),
+            popup2      = popup.children(".modal-dialog").children(".modal-content"),
             i           = 0,
             tam = Object.keys(json['botoes']).length;
         // Percorre Botoes e os fazem
@@ -633,12 +668,12 @@ var Sierra = (function () {
             if (json['botoes'][i]['clique'] === '$( this ).dialog( "close" );') {
                 footer += '<button class="btn" data-dismiss="modal" aria-hidden="true" onCLick="Sierra.Control_Ajax_Popup_Fechar(\''+json["id"]+'\');">'+json['botoes'][i]['text']+'</button>';
             }else{
-                footer += '<button class="btn btn-primary" onCLick="'+json['botoes'][i]['clique']+'">'+json['botoes'][i]['text']+'</button>';
+                footer += '<button class="btn btn-primary" onClick="'+json['botoes'][i]['clique']+'">'+json['botoes'][i]['text']+'</button>';
             }
         }
-        popup.children(".modal-header").children("#popuptitulo").html(json['title']);
-        popup.children(".modal-body").html('<div class="row-fluid">'+json['html']+'</div>');
-        popup.children(".modal-footer").html(footer);
+        popup2.children(".modal-header").children("#popuptitulo").html(json['title']);
+        popup2.children(".modal-body").html('<div class="row">'+json['html']+'</div>');
+        popup2.children(".modal-footer").html(footer);
         popup.css('display','block').addClass('in');
     };
     /**
@@ -733,7 +768,7 @@ var Sierra = (function () {
         }
         if (script !== '') {
             // Salva Cache
-            Cache_Gravar('Dependencias_Css',cache.join('|'));
+            Sessao_Gravar('Dependencias_Css',cache.join('|'));
             
             $('head').append('<link href="'+ConfigArquivoPadrao+'web/min/?f='+script+'" rel="stylesheet" />');
         }
@@ -783,7 +818,7 @@ var Sierra = (function () {
         
         if(script!==''){
             // Salva Cache
-            Cache_Gravar('Dependencias_Js',cache.join('|'));
+            Sessao_Gravar('Dependencias_Js',cache.join('|'));
 
             $('head').append('<script type="text/javascript" src="'+ConfigArquivoPadrao+'web/min/?f='+script+'"></script>');
         }
@@ -857,6 +892,7 @@ var Sierra = (function () {
         console.time('Acao_LINK');
         var retorno = false;
         //retorno = Cache_Ler(url);
+        console.log('Retorno',retorno);
         if(retorno!==false){
             Modelo_Ajax_JsonTratar(url,retorno,historico);
         }else{
@@ -872,21 +908,16 @@ var Sierra = (function () {
             xhr.open("GET", "http://jsperf.com");
             xhr.send(null);
              */
-            console.log(ConfigArquivoPadrao+"ajax/"+url,ConfigArquivoPadrao,url);
-            // Verifica se Contem a url do Sistema e Tira
-            if(url.indexOf(ConfigArquivoPadrao) != -1){
-                url = url.split(ConfigArquivoPadrao);
-                url = ConfigArquivoPadrao+"ajax/"+url[1];
-            }else if(url.indexOf('http') != -1){
-                url = url;
-            }else{
-                url = ConfigArquivoPadrao+"ajax/"+url;
+            // Verifica se Contem http ou www se nao tiver acrescenta url do sistema
+            if(url.indexOf('http://') === -1 && url.indexOf('www.') === -1){
+                url = ConfigArquivoPadrao+url;
             }
+            
             $.ajax({ type: tip, url: url, async: true,  dataType: 'json', data: params,/*complete: function () { 
 
             },*/success: function (data) {
                 if (resposta === true) {
-                    //Cache_Gravar(url,data);
+                    Cache_Gravar(url,data);
                     Modelo_Ajax_JsonTratar(url,data,historico);
                 }
                 // Agora Tira o CArregando
@@ -968,32 +999,33 @@ var Sierra = (function () {
      * @type Number|@exp;_L4@pro;i|Number
      */
     function Visual_Layoult_DataTable (camada) {
-        var i = 0, config = Configuracoes_Template;
+        var i = 0;
         // Verifica se existe uma DataTable a ser transformada
         $(camada).each(function () {
-            if (!$(this).parent().is(".dataTables_wrapper")) {
-                var apagar  = true,
-                    ordenar,
-                    atual = $(this);
+            var apagar  = true,
+                ordenar,
+                atual = $(this);
+            if (!atual.hasClass('dataTable')) {
+            //if ( !($.fn.dataTable.isDataTable(atual)) ) {
                 eval('ordenar = '+atual.attr('ordenar')+';');
                 if (atual.hasClass('apagado1')) {
                     apagar = false;
                 }
-                atual.dataTable({
-                    "bJQueryUI"         : config['datatable_bJQueryUI'],
-                    "bAutoWidth"        : config['datatable_bAutoWidth'],
-                    "sdom"              : config['datatable_sdom'],
-                    "sPaginationType"   : config['datatable_sPaginationType'],
-                    "bPaginate"         : true,     
+                atual.DataTable({
+                    //"bJQueryUI"         : Configuracoes_Template['datatable_bJQueryUI'],
+                    //"bAutoWidth"        : Configuracoes_Template['datatable_bAutoWidth'],
+                    //"sdom"              : Configuracoes_Template['datatable_sdom'],
+                    //"sPaginationType"   : Configuracoes_Template['datatable_sPaginationType'],
+                    //"bPaginate"         : true,     
                     "bProcessing"       : true,  // Mensagem de Processando
                     "bDeferRender"      : true,  // Ajudar no Carregamento 
-                    "iDisplayLength"    : 100,   // Quantidade por pagina
+                    "iDisplayLength"    : 10,   // Quantidade por pagina
                     "aoColumnDefs"      : [{ 
                         "bSearchable"       : true, 
                         "bVisible"          : apagar, 
                         "aTargets"          : [0] 
                     }],
-                    "aaSorting"         : [ordenar],
+                    "aaSorting"         : ordenar,
                     "bLengthChange"     :true,
                     "bFilter"           :true,
                     "bSort"             :true, // Usuario pode Multi-Ordenacao ?
@@ -1003,10 +1035,126 @@ var Sierra = (function () {
             }
         });
         // se existir, essa datatable é acionada
-        if (i>0) {
+        /*if (i>0) {
+            jQuery('.dataTables_filter').find('input').addClass("input-small"); // modify table search input
+            jQuery('.dataTables_length').find('select').addClass("input-mini"); // modify table per page dropdown
+        }*/
+    };
+    function Visual_Layoult_DataTable_Massiva (camada) {
+        var i = 0;
+        // Verifica se existe uma DataTable a ser transformada
+        $(camada).each(function () {
+            var apagar  = true,
+                ordenar,
+                atual = $(this),
+                colunas_imprimir = [],
+                cont = 0,
+                j  = atual.children('thead').children('tr').children('th').length-1;
+            if (!atual.hasClass('dataTable')) {
+                ordenar = Cookie_Ler('TabelaOrdenar_'+atual.attr('url'));
+                if(ordenar===false){
+                    eval('ordenar = '+atual.attr('ordenar')+';');
+                }
+                if (atual.hasClass('apagado1')) {
+                    apagar = false;
+                }
+                
+                for(;cont<j;++cont){
+                    colunas_imprimir.push(cont);
+                }
+                atual.DataTable({          
+                    "processing": true,
+                    "serverSide": true,
+                    "ajax": $.fn.dataTable.pipeline( {
+                        url: ConfigArquivoPadrao+atual.attr('url'),
+                        pages: 5 // number of pages to cache
+                    } ),
+                    "bProcessing"       : true,  // Mensagem de Processando
+                    "bDeferRender"      : true,  // Ajudar no Carregamento 
+                    "iDisplayLength"    : 10,   // Quantidade por pagina
+                    "aoColumnDefs"      : [{ 
+                        "bSearchable"       : true, 
+                        "bVisible"          : apagar, 
+                        "aTargets"          : [0] 
+                    }],
+                    "aaSorting"         : ordenar,
+                    "bLengthChange"     :true,
+                    "bFilter"           :true,
+                    "bSort"             :true, // Usuario pode Multi-Ordenacao ?
+                    "bInfo"             :true,
+                    "rowCallback": function( row, data ) {
+                        if ( $.inArray(data.DT_RowId, DataTable_Selected) !== -1 ) {
+                            $(row).addClass('selected');
+                        }
+                    },
+                    //"dom": '<"top"lT<"clear">if><"clear">rt<"bottom"ip<"clear">>',
+                    "dom": '<"top"Tf><"clear">rt<"bottom"ip<"clear">>',
+                    "tableTools": {  
+                        /*"aButtons": [
+                            {
+                                "sExtends": "copy",
+                                "sButtonText": "Copiar"
+                            },
+                            {
+                                "sExtends": "csv",
+                                "sButtonText": "Salvar para CSV"
+                            },
+                            {
+                                "sExtends": "xls",
+                                "oSelectorOpts": {
+                                    page: 'current'
+                                }
+                            },
+                            {
+                                "sExtends": "pdf",
+                                "sButtonText": "Salvar para PDF"
+                            },
+                            {
+                                "sExtends": "print",
+                                "sButtonText": "Imprimir"
+                            }
+                        ],*/
+                        "sSwfPath": ConfigArquivoPadrao+"web/sistema/data-tables/swf/copy_csv_xls_pdf.swf",
+                        "aButtons": [
+                            {
+                                "sExtends": "copy",
+                                "mColumns": colunas_imprimir
+                            },
+                            {
+                                "sExtends": "csv",
+                                "mColumns": colunas_imprimir
+                            },
+                            {
+                                "sExtends": "xls",
+                                "mColumns": colunas_imprimir
+                            },
+                            {
+                                "sExtends": "pdf",
+                                "mColumns": colunas_imprimir
+                            },
+                            {
+                                "sExtends": "print",
+                                "mColumns": colunas_imprimir,
+                                /*"fnClick": function (nButton, oConfig, oFlash) {
+                                    oTable.fnSetColumnVis(j, false);
+                                    $('div.dataTables_scrollHead').show();
+                                    $(window).keyup(function(){
+                                          oTable.fnSetColumnVis(j, true);
+                                    });
+                                },*/
+                                "sMessage": 'Clique em Imprimir ou Cancele <button>Imprimir</button>'
+                            },
+                        ]
+                    }
+                });
+                i = i+1;
+            }
+        });
+        // se existir, essa datatable é acionada
+        /*if (i>0) {
             jQuery('.dataTables_filter input').addClass("input-small"); // modify table search input
             jQuery('.dataTables_length select').addClass("input-mini"); // modify table per page dropdown
-        }
+        }*/
     };
     /**
      * Atualiza UNIFORM
@@ -1032,12 +1180,12 @@ var Sierra = (function () {
             width: "90%"
         });
 
-        $('.cp1').colorpicker({
+       /* $('.cp1').colorpicker({
             format: 'hex'
         });
         $('.cp2').colorpicker();
         //WYSIWYG Editor
-        $('.wysihtmleditor5').wysihtml5();
+        $('.wysihtmleditor5').wysihtml5();*/
     };
     function Visual_Layoult_Aviso () {
         
@@ -1463,8 +1611,9 @@ var Sierra = (function () {
         v=v.toUpperCase();             //Maiúsculas
         v=v.replace(/[^IVXLCDM]/g,""); //Remove tudo o que não for I, V, X, L, C, D ou M
         //Essa é complicada! Copiei daqui: http://www.diveintopython.org/refactoring/refactoring.html
-        while(v.replace(/^M{0,4}(CM|CD|D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3})$/,"")!="");
+        while(v.replace(/^M{0,4}(CM|CD|D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3})$/,"")!=""){
             v=v.replace(/.$/,"");
+        }
         return v;
     };
     /**
@@ -1477,9 +1626,10 @@ var Sierra = (function () {
         v=v.replace(/^http:\/\/?/,"");
         dominio=v;
         caminho="";
-        if(v.indexOf("/")>-1);
+        if(v.indexOf("/")>-1){
             dominio=v.split("/")[0];
-            caminho=v.replace(/[^\/]*/,"");
+        }
+        caminho=v.replace(/[^\/]*/,"");
         dominio=dominio.replace(/[^\w\.\+-:@]/g,"");
         caminho=caminho.replace(/[^\w\d\+-@:\?&=%\(\)\.]/g,"");
         caminho=caminho.replace(/([\?&])=/,"$1");
@@ -1799,6 +1949,7 @@ var Sierra = (function () {
         Control_Ajax_Popup_Fechar           : Control_Ajax_Popup_Fechar,
         Control_Layoult_Recarrega           : Control_Layoult_Recarrega,
         Control_Layoult_Recarrega_Formulario: Control_Layoult_Recarrega_Formulario,
+        Control_Link_Dinamico               : Control_Link_Dinamico,
         
         Modelo_Ajax_Chamar                  : Modelo_Ajax_Chamar,
         Modelo_Ajax_JsonTratar              : Modelo_Ajax_JsonTratar,
@@ -1809,6 +1960,9 @@ var Sierra = (function () {
         Visual_Tratamento_Maiusculo_Primeira: Visual_Tratamento_Maiusculo_Primeira,
         
         // Caches
+        Sessao_Ler                          : Sessao_Ler,
+        Sessao_Gravar                       : Sessao_Gravar,
+        Sessao_Deletar                      : Sessao_Deletar,
         Cache_Ler                           : Cache_Ler,
         Cache_Gravar                        : Cache_Gravar,
         Cache_Deletar                       : Cache_Deletar,

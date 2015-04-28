@@ -45,9 +45,9 @@ class comercio_venda_Principal implements PrincipalInterface
                     $cor = 'important';
                     $numero = $valor->valor;
                     $html .= '<a data-original-title="Novo Caixa" 
-                        href="http://localhost/Framework/comercio_venda/Carrinho/Carrinhos_Add?popup=true" 
-                        data-toggle="tooltip" data-placement="bottom" acao="" class="icon-btn span3 lajax">
-                        <i class="icon-food"></i>
+                        href="'.SISTEMA_URL.SISTEMA_DIR.'comercio_venda/Carrinho/Carrinhos_Add?popup=true" 
+                        data-toggle="tooltip" data-placement="bottom" acao="" class="glyphicon-btn col-3 lajax">
+                        <i class="glyphicon-food"></i>
                         <div>Balcão '.$i.'</div>
                         <span class="badge badge-'.$cor.'">'.$numero.'</span>
                     </a>';
@@ -57,7 +57,7 @@ class comercio_venda_Principal implements PrincipalInterface
                     ++$j;
                     if($j>=4){
                         $j = 0;
-                        $html .= '</div><div class="row-fluid">';
+                        $html .= '</div><div class="row">';
                     }
                 }
             }
@@ -80,9 +80,9 @@ class comercio_venda_Principal implements PrincipalInterface
                 
                 // Faz o Html da Parada
                 $html .= '<a data-original-title="Novo Caixa" 
-                        href="http://localhost/Framework/comercio_venda/Carrinho/Carrinhos_Add?popup=true" 
-                        data-toggle="tooltip" data-placement="bottom" acao="" class="icon-btn span3 lajax">
-                        <i class="icon-food"></i>
+                        href="'.SISTEMA_URL.SISTEMA_DIR.'comercio_venda/Carrinho/Carrinhos_Add?popup=true" 
+                        data-toggle="tooltip" data-placement="bottom" acao="" class="glyphicon-btn col-3 lajax">
+                        <i class="glyphicon-food"></i>
                     <div>'.$valor->nome.'</div>
                     <span class="badge badge-'.$cor.'">'.$numero.'</span>
                 </a>';
@@ -91,7 +91,7 @@ class comercio_venda_Principal implements PrincipalInterface
                 ++$j;
                 if($j>=4){
                     $j = 0;
-                    $html .= '</div><div class="row-fluid">';
+                    $html .= '</div><div class="row">';
                 }
             }
         }
@@ -101,31 +101,31 @@ class comercio_venda_Principal implements PrincipalInterface
             return false;
         }
         
-        /*<a href="#" class="icon-btn span2">
-                <i class="icon-barcode"></i>
+        /*<a href="#" class="glyphicon-btn col-2">
+                <i class="glyphicon-barcode"></i>
                 <div>Products</div>
                 <span class="badge badge-success">4</span>
             </a>
-            <a href="#" class="icon-btn span2">
-                <i class="icon-reorder"></i>
+            <a href="#" class="glyphicon-btn col-2">
+                <i class="glyphicon-reorder"></i>
                 <div>Reports</div>
             </a>
-            <a href="#" class="icon-btn span2">
-                <i class="icon-sitemap"></i>
+            <a href="#" class="glyphicon-btn col-2">
+                <i class="glyphicon-sitemap"></i>
                 <div>Categories</div>
             </a>
-            <a href="#" class="icon-btn span2">
-                <i class="icon-calendar"></i>
+            <a href="#" class="glyphicon-btn col-2">
+                <i class="glyphicon-calendar"></i>
                 <div>Calendar</div>
                 <span class="badge badge-success">4</span>
             </a>
-            <a href="#" class="icon-btn span2">
-                <i class="icon-envelope"></i>
+            <a href="#" class="glyphicon-btn col-2">
+                <i class="glyphicon-envelope"></i>
                 <div>Inbox</div>
                 <span class="badge badge-info">12</span>
             </a>*/
         
-        $html = '<div class="row-fluid">
+        $html = '<div class="row">
             '.$html.'
         </div>';
         // Acrescenta na Tela
@@ -138,7 +138,7 @@ class comercio_venda_Principal implements PrincipalInterface
         $_Controle->Widget_Add('Superior',
         '<li class="dropdown mtop5">'.
             '<a class="dropdown-toggle element lajax" acao="" data-placement="bottom" data-toggle="tooltip" href="'.URL_PATH.'comercio_venda/Carrinho/Carrinhos_Add" data-original-title="Novo Caixa">'.
-                '<i class="icon-shopping-cart"></i>'.
+                '<i class="glyphicon-shopping-cart"></i>'.
             '</a>'.
         '</li>');
     }

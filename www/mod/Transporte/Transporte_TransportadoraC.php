@@ -31,12 +31,13 @@ class Transporte_TransportadoraControle extends Transporte_Controle
         $tabela = Array();
         $i = 0;
         if(is_object($transportadora)) $transportadora = Array(0=>$transportadora);reset($transportadora);
+        $perm_view = $registro->_Acl->Get_Permissao_Url('Transporte/Transportadora/Visualizar');
         foreach ($transportadora as &$valor) {                
             $tabela['Id'][$i]           = '#'.$valor->id;
             $tabela['Razão Social'][$i] = $valor->usuario2;
             $tabela['Categoria'][$i]    = $valor->categoria2;
             $tabela['Observação'][$i]   = $valor->obs;
-            $tabela['Visualizar'][$i]   = $Visual->Tema_Elementos_Btn('Visualizar'     ,Array('Visualizar'        ,'Transporte/Transportadora/Visualizar/'.$valor->id    ,''));
+            $tabela['Visualizar'][$i]   = $Visual->Tema_Elementos_Btn('Visualizar'     ,Array('Visualizar'        ,'Transporte/Transportadora/Visualizar/'.$valor->id    ,''),$perm_view);
             
             ++$i;
         }

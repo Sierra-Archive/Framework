@@ -257,7 +257,7 @@ class usuario_veiculo_VeiculoControle extends usuario_veiculo_Controle
             'id'    =>  $veiculo_id,
         );
         $veiculo = $this->_Modelo->db->Sql_Select('Usuario_Veiculo',$where, 1);
-        $html  = '<div class="span6">';
+        $html  = '<div class="col-6">';
         $html .= '<b>Tipo de Veiculo:</b> '.$veiculo->categoria2.'<br>';  
         $html .= '<b>Marca:</b> '.$veiculo->marca2.'<br>';  
         $html .= '<b>Modelo:</b> '.$veiculo->modelo2.'<br>';  
@@ -265,7 +265,7 @@ class usuario_veiculo_VeiculoControle extends usuario_veiculo_Controle
         if(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_veiculo_VeiculoVALOR')){
             $html .= '<b>Valor do Veiculo:</b> '.$veiculo->valor;
         }
-        $html .= '</div><div class="span6">'; 
+        $html .= '</div><div class="col-6">'; 
         if(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_veiculo_VeiculoIPVA')){
             $html .= '<b>Nº Ipva:</b> '.$veiculo->ipva; 
             $html .= '<b>Data Ipva:</b> '.$veiculo->ipva_data; 
@@ -302,7 +302,7 @@ class usuario_veiculo_VeiculoControle extends usuario_veiculo_Controle
             );
             $this->_Visual->Json_IncluiTipo('Popup',$conteudo);
         }else{
-            $this->_Visual->Blocar('<div class="row-fluid">'.$html.'</div>');
+            $this->_Visual->Blocar('<div class="row">'.$html.'</div>');
             $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',20);
             $this->_Visual->Json_Info_Update('Titulo','Visualizar Veiculo');
         }

@@ -39,7 +39,7 @@ final Class Universal_Vivo_Cnpj_DAO extends Framework\App\Dao
         return true;
     }
     public static function Get_Class(){
-        return str_replace(Array('_DAO'), Array(''), get_class());
+        return get_class() ; //return str_replace(Array('_DAO'), Array(''), get_class());
     }
     public static function Gerar_Colunas(){
         return Array(
@@ -56,7 +56,7 @@ final Class Universal_Vivo_Cnpj_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '' ,//0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '' ,//0 ninguem, 1 admin, 2 todos 
             ),Array(
                 'mysql_titulo'      => 'info_cnpj',
                 'mysql_tipovar'     => 'varchar', //varchar, int, 
@@ -70,7 +70,7 @@ final Class Universal_Vivo_Cnpj_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', // //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '', // //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
                     'Nome'              => 'Cnpj',
                     'valor_padrao'      => false,
@@ -95,7 +95,7 @@ final Class Universal_Vivo_Cnpj_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', // //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '', // //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
                     'Nome'              => 'Cep',
                     'valor_padrao'      => false,
@@ -120,7 +120,7 @@ final Class Universal_Vivo_Cnpj_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', // //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '', // //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
                     'Nome'              => 'Numero',
                     'valor_padrao'      => false,
@@ -145,7 +145,7 @@ final Class Universal_Vivo_Cnpj_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', // //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '', // //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
                     'Nome'              => 'Complemento',
                     'valor_padrao'      => false,
@@ -197,7 +197,7 @@ final Class Universal_Vivo_Cnpj_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', // //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '', // //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
                     'Nome'              => 'NomeEmpresa',
                     'valor_padrao'      => false,
@@ -222,7 +222,7 @@ final Class Universal_Vivo_Cnpj_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', // //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '', // //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
                     'Nome'              => 'NomeFantasia',
                     'valor_padrao'      => false,
@@ -247,7 +247,7 @@ final Class Universal_Vivo_Cnpj_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', // //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '', // //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
                     'Nome'              => 'AtividadePrincipal',
                     'valor_padrao'      => false,
@@ -272,7 +272,7 @@ final Class Universal_Vivo_Cnpj_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', // //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '', // //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
                     'Nome'              => 'AtividadeSecundaria',
                     'valor_padrao'      => false,
@@ -297,7 +297,7 @@ final Class Universal_Vivo_Cnpj_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', // //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '', // //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
                     'Nome'              => 'NaturezaJuridica',
                     'valor_padrao'      => false,
@@ -323,7 +323,7 @@ final Class Universal_Vivo_Cnpj_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', // //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '', // //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
                     'Nome'              => 'SituacaoCadastral',
                     'valor_padrao'      => false,
@@ -375,7 +375,7 @@ final Class Universal_Vivo_Cnpj_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', // //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '', // //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
                     'Nome'              => 'MotivoSituacaoCadastral',
                     'valor_padrao'      => false,
@@ -400,7 +400,7 @@ final Class Universal_Vivo_Cnpj_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', // //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '', // //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
                     'Nome'              => 'SituacaoEspecial',
                     'valor_padrao'      => false,

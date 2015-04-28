@@ -221,6 +221,16 @@ function Erro_Formatar( $errno, $errstr, $errfile, $errline, $previ = '', $trace
 }
 function Erro_Email($errno, $errstr, $errfile, $errline){
     $mensagem = Erro_Formatar( $errno, $errstr, $errfile, $errline);
+    
+    // Verifica Existencia das Constantes
+    if(!defined('CLASS_PATH')){
+        if(!defined('ROOT')){
+            define('ROOT', ROOT_PADRAO);
+        } 
+        define('CLASS_PATH', ROOT      .'Classes'  .DS);
+    }   
+    
+    // Carrega se Nao tiver carregado
     require_once CLASS_PATH . 'Email'.DS.'Email'.'.php';
     $mailer = new \Framework\Classes\Email();
     $send	= $mailer->setTo('sierra.csi@gmail.com', 'Ricardo Sierra')

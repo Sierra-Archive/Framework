@@ -38,6 +38,10 @@ class Enquete_EnqueteControle extends Enquete_Controle
         $i = 0;
         if(is_object($enquetes)) $enquetes = Array(0=>$enquetes);
         reset($enquetes);
+        $perm_view = $registro->_Acl->Get_Permissao_Url('Enquete/Resposta/Respostas');
+        $perm_editar = $registro->_Acl->Get_Permissao_Url('Enquete/Enquete/Enquetes_Edit');
+        $perm_del = $registro->_Acl->Get_Permissao_Url('Enquete/Enquete/Enquetes_Del');
+
         foreach ($enquetes as &$valor) {
             $resp_votos = $Modelo->db->Sql_Select('Enquete_Voto',Array(
                 'enquete'   =>  $valor->id
@@ -54,9 +58,9 @@ class Enquete_EnqueteControle extends Enquete_Controle
             $tabela['Nº de Votos'][$i]      = ($resp_votos_res==1)?$resp_votos_res.' Voto':$resp_votos_res.' Votos';
             $tabela['Observação'][$i]       = $valor->obs;
             $tabela['Data Registrado'][$i]  = $valor->log_date_add;
-            $tabela['Funções'][$i]          = $Visual->Tema_Elementos_Btn('Visualizar' ,Array('Visualizar Enquete'    ,'Enquete/Resposta/Respostas/'.$valor->id.'/'    ,'')).
-                                              $Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Enquete'        ,'Enquete/Enquete/Enquetes_Edit/'.$valor->id.'/'    ,'')).
-                                              $Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Enquete'       ,'Enquete/Enquete/Enquetes_Del/'.$valor->id.'/'     ,'Deseja realmente deletar essa Enquete ?'));
+            $tabela['Funções'][$i]          = $Visual->Tema_Elementos_Btn('Visualizar' ,Array('Visualizar Enquete'    ,'Enquete/Resposta/Respostas/'.$valor->id.'/'    ,''),$perm_view).
+                                              $Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Enquete'        ,'Enquete/Enquete/Enquetes_Edit/'.$valor->id.'/'    ,''),$perm_editar).
+                                              $Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Enquete'       ,'Enquete/Enquete/Enquetes_Del/'.$valor->id.'/'     ,'Deseja realmente deletar essa Enquete ?'),$perm_del);
             ++$i;
         }
         return Array($tabela,$i);

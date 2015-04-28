@@ -40,7 +40,7 @@ $('#produtocontrolador1 select').attr('id','produto1');
         // Pega ["tabela"] e ["class"] da tabela que estava sendo alterada no forum
         $dominio = \Framework\App\Conexao::Tabelas_GetSiglas_Recolher($dominiosigla);
         // Inicia Classe, Gera suas colunas e acha a coluna alterada
-        $alterado = $dominio['classe'].'_DAO';
+        $alterado = $dominio['classe'];
         $alterado = new $alterado();
         // PRimeiro Foreach
         $alterado = $alterado->Get_Extrangeiras_ComExterna();
@@ -299,7 +299,7 @@ $('#produtocontrolador1 select').attr('id','produto1');
         // Pega ["tabela"] e ["class"] da tabela que estava sendo alterada no forum
         $dominio = \Framework\App\Conexao::Tabelas_GetSiglas_Recolher($dominiosigla);
         // Inicia Classe e Captura Extrangeiras
-        $class = $dominio['classe'].'_DAO';
+        $class = $dominio['classe'];
         $class = new $class();
         $extrangeiras1 = $class->Get_Extrangeiras();
         

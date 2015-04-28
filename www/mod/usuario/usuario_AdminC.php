@@ -299,8 +299,8 @@ class usuario_AdminControle extends usuario_Controle
     * @param Class &$modelo Modelo Passado por Ponteiro
     * @param Class &$Visual Visual Passado por Ponteiro
     * 
-    * @uses usuario_social_Modelo Carrega Persona Modelo
-    * @uses usuario_social_Modelo::$retorna_usuario_social Retorna Pessoas
+    * @uses social_Modelo Carrega Persona Modelo
+    * @uses social_Modelo::$retorna_social Retorna Pessoas
     * @uses financeiroControle::$usuarios_formcadastro retorna Formulario de Cadastro de usuarios
     * @uses \Framework\App\Visual::$blocar Add html ao bloco de conteudo
     * @uses \Framework\App\Visual::$Bloco_Unico_CriaJanela Add html do bloco a uma Janela Lateral Direita
@@ -747,12 +747,14 @@ class usuario_AdminControle extends usuario_Controle
         if($comentario!==false && !empty($comentario)){
             if(is_object($comentario)) $comentario = Array(0=>$comentario);
             reset($comentario);
+            $perm_editar = $this->_Registro->_Acl->Get_Permissao_Url('usuario/Admin/Usuarios_Comentario_Edit');
+            $perm_del = $this->_Registro->_Acl->Get_Permissao_Url('usuario/Admin/Usuarios_Comentario_Del');
             foreach ($comentario as $indice=>&$valor) {
                 $tabela['#Id'][$i]          =   '#'.$valor->id;
                 $tabela['Comentário'][$i]   =   nl2br($valor->comentario);
                 $tabela['Data'][$i]         =   $valor->log_date_add;
-                $tabela['Funções'][$i]      =   $this->_Visual->Tema_Elementos_Btn('Editar'          ,Array('Editar Comentário de Usuario'        ,'usuario/Admin/Usuarios_Comentario_Edit/'.$usuario_id.'/'.$valor->id.'/'.$tipo    ,'')).
-                                                $this->_Visual->Tema_Elementos_Btn('Deletar'         ,Array('Deletar Comentário de Usuario'       ,'usuario/Admin/Usuarios_Comentario_Del/'.$usuario_id.'/'.$valor->id.'/'.$tipo     ,'Deseja realmente deletar esse Comentário desse '.$nomedisplay_sing.' ?'));
+                $tabela['Funções'][$i]      =   $this->_Visual->Tema_Elementos_Btn('Editar'          ,Array('Editar Comentário de Usuario'        ,'usuario/Admin/Usuarios_Comentario_Edit/'.$usuario_id.'/'.$valor->id.'/'.$tipo    ,''),$perm_editar).
+                                                $this->_Visual->Tema_Elementos_Btn('Deletar'         ,Array('Deletar Comentário de Usuario'       ,'usuario/Admin/Usuarios_Comentario_Del/'.$usuario_id.'/'.$valor->id.'/'.$tipo     ,'Deseja realmente deletar esse Comentário desse '.$nomedisplay_sing.' ?'),$perm_del);
                 ++$i;
             }
             $this->_Visual->Show_Tabela_DataTable($tabela,'', true, false, Array(Array(0,'desc')));

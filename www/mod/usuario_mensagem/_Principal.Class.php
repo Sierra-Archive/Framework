@@ -28,7 +28,7 @@ class usuario_mensagem_Principal implements PrincipalInterface
         $_Controle->Widget_Add('Superior',
         '<li class="dropdown mtop5">'.
             '<a class="dropdown-toggle element lajax" acao="" data-placement="bottom" data-toggle="tooltip" href="'.URL_PATH.'usuario_mensagem/Suporte/Mensagem_formulario" data-original-title="Novo Chamado">'.
-                '<i class="icon-file"></i>'.
+                '<i class="glyphicon-file"></i>'.
             '</a>'.
         '</li>');
     }    

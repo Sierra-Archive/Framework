@@ -31,7 +31,7 @@ final Class Predial_Bloco_Apart_Advertencia_DAO extends Framework\App\Dao
         return 1;
     }
     public static function Get_Class(){
-        return str_replace(Array('_DAO'), Array(''), get_class());
+        return get_class() ; //return str_replace(Array('_DAO'), Array(''), get_class());
     }
     public static function Gerar_Colunas(){
         return Array(
@@ -48,7 +48,7 @@ final Class Predial_Bloco_Apart_Advertencia_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', //0 ninguem, 1 admin, 2 todos,
+                'linkextra'         => '', //0 ninguem, 1 admin, 2 todos,
             ),Array(
                 'mysql_titulo'      => 'bloco',
                 'mysql_tipovar'     => 'int', //varchar, int, 
@@ -63,7 +63,7 @@ final Class Predial_Bloco_Apart_Advertencia_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => 'predial/Bloco/Blocos_Add',
+                'linkextra'         => 'predial/Bloco/Blocos_Add',
                 'edicao'            => Array(
                     'Nome'              => 'Bloco',
                     'valor_padrao'      => false,
@@ -83,7 +83,7 @@ final Class Predial_Bloco_Apart_Advertencia_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => 'predial/Apart/Aparts_Add',
+                'linkextra'         => 'predial/Apart/Aparts_Add',
                 'edicao'            => Array(
                     'Nome'              => 'Apartamento',
                     'valor_padrao'      => false,
@@ -104,7 +104,7 @@ final Class Predial_Bloco_Apart_Advertencia_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => 'categoria/Admin/Categorias_Add/predial_Advertencia', //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => 'categoria/Admin/Categorias_Add/predial_Advertencia', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
                     'Nome'              => 'Tipo da Advertência',
                     'valor_padrao'      => false,
@@ -130,7 +130,7 @@ final Class Predial_Bloco_Apart_Advertencia_DAO extends Framework\App\Dao
                 'mysql_inside'      => 'data_hora_brasil_eua({valor})', // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => 'data_hora_eua_brasil({valor})', // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
                     'Nome'              => 'Data do Acontecido',
                     'valor_padrao'      => APP_HORA_BR,
@@ -157,7 +157,7 @@ final Class Predial_Bloco_Apart_Advertencia_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
                     'Nome'              => 'Nome',
                     'valor_padrao'      => false,
@@ -183,7 +183,7 @@ final Class Predial_Bloco_Apart_Advertencia_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
                     'Nome'              => 'Descrição',
                     'valor_padrao'      => false,

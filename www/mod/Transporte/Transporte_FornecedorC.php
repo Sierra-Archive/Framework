@@ -31,12 +31,13 @@ class Transporte_FornecedorControle extends Transporte_Controle
         $tabela = Array();
         $i = 0;
         if(is_object($fornecedor)) $fornecedor = Array(0=>$fornecedor);reset($fornecedor);
+        $perm_view = $this->_Registro->_Acl->Get_Permissao_Url('Transporte/Fornecedor/Visualizar');
         foreach ($fornecedor as &$valor) {                
             $tabela['Id'][$i]           = '#'.$valor->id;
             $tabela['Razão Social'][$i] = $valor->usuario2;
             $tabela['Categoria'][$i]    = $valor->categoria2;
             $tabela['Observação'][$i]   = $valor->obs;
-            $tabela['Visualizar'][$i]   = $Visual->Tema_Elementos_Btn('Visualizar'     ,Array('Visualizar'        ,'Transporte/Fornecedor/Visualizar/'.$valor->id    ,''));
+            $tabela['Visualizar'][$i]   = $Visual->Tema_Elementos_Btn('Visualizar'     ,Array('Visualizar'        ,'Transporte/Fornecedor/Visualizar/'.$valor->id    ,''), $perm_view);
                
             ++$i;
         }

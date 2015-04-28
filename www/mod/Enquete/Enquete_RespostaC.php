@@ -45,11 +45,14 @@ class Enquete_RespostaControle extends Enquete_Controle
         if(is_object($respostas)) $respostas = Array(0=>$respostas);
         reset($respostas);
         $qnt_votos_totais = 0;
+        $perm_editar = $registro->_Acl->Get_Permissao_Url('Enquete/Resposta/Respostas_Edit');
+        $perm_del = $registro->_Acl->Get_Permissao_Url('Enquete/Resposta/Respostas_Del');
+
         foreach ($respostas as &$valor) {
             $resp_votos = $Modelo->db->Sql_Select('Enquete_Voto',Array(
                 'enquete'   =>  $valor->enquete,
                 'resposta'  =>  $valor->id
-            ));
+            ),0,'','enquete,resposta');
             if($resp_votos===false){
                 $valor->qnt_votos = 0;
             }else if(is_object($resp_votos)){
@@ -64,8 +67,8 @@ class Enquete_RespostaControle extends Enquete_Controle
             $tabela['Nome'][$i]             = $valor->nome;
             $tabela['Votos'][$i]            = $valor->qnt_votos.' / '.$qnt_votos_totais;
             $tabela['Data Registrado'][$i]  = $valor->log_date_add;
-            $tabela['Funções'][$i]          = $Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Resposta'        ,'Enquete/Resposta/Respostas_Edit/'.$valor->enquete.'/'.$valor->id.'/'    ,'')).
-                                              $Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Resposta'       ,'Enquete/Resposta/Respostas_Del/'.$valor->enquete.'/'.$valor->id.'/'     ,'Deseja realmente deletar essa Resposta ?'));
+            $tabela['Funções'][$i]          = $Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Resposta'        ,'Enquete/Resposta/Respostas_Edit/'.$valor->enquete.'/'.$valor->id.'/'    ,''),$perm_editar).
+                                              $Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Resposta'       ,'Enquete/Resposta/Respostas_Del/'.$valor->enquete.'/'.$valor->id.'/'     ,'Deseja realmente deletar essa Resposta ?'),$perm_del);
             ++$i;
         }
         return Array($tabela,$i);

@@ -4,6 +4,7 @@ final Class Usuario_DAO extends Framework\App\Dao
     protected $id;
     protected $indicado_por;
     protected $grupo;
+    protected $crm;
     protected $nome;
     protected $fisica;
     protected $perfil_nascimento;
@@ -112,7 +113,7 @@ final Class Usuario_DAO extends Framework\App\Dao
         return 1;
     }
     public static function Get_Class(){
-        return str_replace(Array('_DAO'), Array(''), get_class());
+        return get_class() ; //return str_replace(Array('_DAO'), Array(''), get_class());
     }
     public static function Gerar_Colunas(){
         if(isset($_COOKIE['indicativo_nome'])){
@@ -179,6 +180,20 @@ final Class Usuario_DAO extends Framework\App\Dao
                         'infonulo'          => 'Escolha um Grupo de Usuários',
                     )
                 )
+            ),
+            Array(
+                'mysql_titulo'      => 'crm',
+                'mysql_tipovar'     => 'varchar', //varchar, int, 
+                'mysql_tamanho'     => 30,
+                'mysql_null'        => true,  // nulo ?
+                'mysql_default'     => 0, // valor padrao
+                'mysql_primary'     => false,  // chave primaria
+                'mysql_estrangeira' => false, // chave estrangeira     ligacao|apresentacao|condicao
+                'mysql_autoadd'     => false,
+                'mysql_comment'     => false,
+                'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
+                'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
+                'perm_copia'        => false //permissao funcional necessaria para campo 2 todos 
             ),
             Array(
                 'mysql_titulo'      => 'eng_clienteinvestidor',

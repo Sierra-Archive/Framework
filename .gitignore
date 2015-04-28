@@ -1,3 +1,4 @@
+nbproject/*
 nbproject/private/
 www/arq/**/*
 www/arq/**/!.htaccess
@@ -7,5 +8,5 @@ www/Ini/**/*
 www/Ini/**/!config.php
 www/Ini/**/!.htaccess
 www/Ini/**/!.htaccess
-www/mod/usuario_social/*
+www/mod/social/*
 www/DAO/Usuario.Social.**/*

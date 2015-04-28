@@ -841,7 +841,7 @@ require.register("dropzone/lib/dropzone.js", function(exports, require, module){
             response = JSON.parse(response);
           }
           /* #MODIFICADO POR RICARDO SIERRA */
-          sierra_url = sierra_url.split(ConfigArquivoPadrao+"ajax/");
+          sierra_url = sierra_url.split(ConfigArquivoPadrao);
           sierra_url = sierra_url[1];
           Sierra.Modelo_Ajax_JsonTratar(sierra_url,JSON.parse(response));
           return _this.finished(file, response, e);

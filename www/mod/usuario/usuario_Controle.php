@@ -34,7 +34,15 @@ class usuario_Controle extends \Framework\App\Controle
         $Financeiro_User_Saldo          = \Framework\App\Acl::Sistema_Modulos_Configs_Funcional('Financeiro_User_Saldo');
         $usuario_mensagem_EmailSetor    = \Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_mensagem_EmailSetor');
         $usuario_Admin_Grupo            = \Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Grupo_Mostrar');
-        
+
+        // Get Permissoes (Fora Do LOOPING por performace)
+        $perm_view = $registro->_Acl->Get_Permissao_Url($url_ver);
+        $perm_comentario = $registro->_Acl->Get_Permissao_Url('usuario/Admin/Usuarios_Comentario');
+        $perm_anexo = $registro->_Acl->Get_Permissao_Url('usuario/Anexo/Anexar');
+        $perm_email = $registro->_Acl->Get_Permissao_Url('usuario/Admin/Usuarios_Email');
+        $perm_status = $registro->_Acl->Get_Permissao_Url('usuario/Admin/Status');
+        $perm_editar = $registro->_Acl->Get_Permissao_Url($url_editar);
+        $perm_del = $registro->_Acl->Get_Permissao_Url($url_deletar);
         
         // Verifica Grupo
         $Ativado_Grupo = false;
@@ -145,7 +153,7 @@ class usuario_Controle extends \Framework\App\Controle
 
             // Visualizar
             $funcoes_qnt = 1;
-            $tabela['Funções'][$i]          = $Visual->Tema_Elementos_Btn('Visualizar'     ,Array('Visualizar '.$nomedisplay_sing        ,$url_ver.'/'.$valor->id.'/'.$linkextra    ,''));
+            $tabela['Funções'][$i]          = $Visual->Tema_Elementos_Btn('Visualizar'     ,Array('Visualizar '.$nomedisplay_sing        ,$url_ver.'/'.$valor->id.'/'.$linkextra    ,''),$perm_view);
             // Financeiro Especifico
             if(\Framework\App\Sistema_Funcoes::Perm_Modulos('Financeiro') && $Financeiro_User_Saldo){
                 $tabela['Funções'][$i]     .=   '<a confirma="O '.$nomedisplay_sing.' realizou um deposito para a empresa?" title="Add quantia ao Saldo do '.$nomedisplay_sing.'" class="btn lajax explicar-titulo" acao="" href="'.URL_PATH.'Financeiro/Admin/financeiro_deposito/'.$valor->id.$linkextra.'"><img border="0" src="'.WEB_URL.'img/icons/cifrao_16x16.png" alt="Depositar"></a>'.
@@ -159,7 +167,7 @@ class usuario_Controle extends \Framework\App\Controle
                     $funcoes_qnt = 0;
                 }
                 ++$funcoes_qnt;
-                $tabela['Funções'][$i]     .=   $Visual->Tema_Elementos_Btn('Personalizado'   ,Array('Histórico'    ,'usuario/Admin/Usuarios_Comentario/'.$valor->id.$linkextra    ,'','file','inverse'));
+                $tabela['Funções'][$i]     .=   $Visual->Tema_Elementos_Btn('Personalizado'   ,Array('Histórico'    ,'usuario/Admin/Usuarios_Comentario/'.$valor->id.$linkextra    ,'','file','inverse'),$perm_comentario);
             }
             // Anexo de Usuario
             if(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Anexo')){
@@ -168,7 +176,7 @@ class usuario_Controle extends \Framework\App\Controle
                     $funcoes_qnt = 0;
                 }
                 ++$funcoes_qnt;
-                $tabela['Funções'][$i]     .=   $Visual->Tema_Elementos_Btn('Personalizado'   ,Array('Anexos'    ,'usuario/Anexo/Anexar/'.$valor->id.$linkextra    ,'','file','inverse'));
+                $tabela['Funções'][$i]     .=   $Visual->Tema_Elementos_Btn('Personalizado'   ,Array('Anexos'    ,'usuario/Anexo/Anexar/'.$valor->id.$linkextra    ,'','file','inverse'),$perm_anexo);
             }
             // Email para Usuario
             if(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Admin_Email')){
@@ -177,7 +185,7 @@ class usuario_Controle extends \Framework\App\Controle
                     $funcoes_qnt = 0;
                 }
                 ++$funcoes_qnt;
-                $tabela['Funções'][$i]     .=   $Visual->Tema_Elementos_Btn('Email'      ,Array('Enviar email para '.$nomedisplay_sing        ,'usuario/Admin/Usuarios_Email/'.$valor->id.$linkextra    ,''));
+                $tabela['Funções'][$i]     .=   $Visual->Tema_Elementos_Btn('Email'      ,Array('Enviar email para '.$nomedisplay_sing        ,'usuario/Admin/Usuarios_Email/'.$valor->id.$linkextra    ,''),$perm_email);
             }
             // Email para Setor
             if(\Framework\App\Sistema_Funcoes::Perm_Modulos('usuario_mensagem') && $usuario_mensagem_EmailSetor){
@@ -186,7 +194,7 @@ class usuario_Controle extends \Framework\App\Controle
                     $funcoes_qnt = 0;
                 }
                 ++$funcoes_qnt;
-                $tabela['Funções'][$i]     .=   $Visual->Tema_Elementos_Btn('Personalizado'   ,Array('Enviar email para Setor'    ,'usuario/Admin/Usuarios_Email/'.$valor->id.$linkextra.'/Setor/'    ,'','envelope','danger'));
+                $tabela['Funções'][$i]     .=   $Visual->Tema_Elementos_Btn('Personalizado'   ,Array('Enviar email para Setor'    ,'usuario/Admin/Usuarios_Email/'.$valor->id.$linkextra.'/Setor/'    ,'','envelope','danger'),$perm_email);
             }
             // Verifica se Possue Status e Mostra
             if($usuario_Admin_Ativado_Listar!==false){
@@ -202,15 +210,15 @@ class usuario_Controle extends \Framework\App\Controle
                     $funcoes_qnt = 0;
                 }
                 ++$funcoes_qnt;
-                $tabela['Funções'][$i]     .=   '<span id="status'.$valor->id.'">'.$Visual->Tema_Elementos_Btn('Status'.$valor->ativado     ,Array($texto        ,'usuario/Admin/Status/'.$valor->id.'/'    ,'')).'</span>';
+                $tabela['Funções'][$i]     .=   '<span id="status'.$valor->id.'">'.$Visual->Tema_Elementos_Btn('Status'.$valor->ativado     ,Array($texto        ,'usuario/Admin/Status/'.$valor->id.'/'    ,''),$perm_status).'</span>';
             }
             if($funcoes_qnt>2){
                 $tabela['Funções'][$i]     .=   '<br>';
                 $funcoes_qnt = 0;
             }
             $funcoes_qnt = $funcoes_qnt+2;
-            $tabela['Funções'][$i]         .=   $Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar '.$nomedisplay_sing        ,$url_editar.'/'.$valor->id.$linkextra.'/'    ,'')).
-                                                $Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar '.$nomedisplay_sing       ,$url_deletar.'/'.$valor->id.$linkextra     ,'Deseja realmente deletar esse '.$nomedisplay_sing.'?'));
+            $tabela['Funções'][$i]         .=   $Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar '.$nomedisplay_sing        ,$url_editar.'/'.$valor->id.$linkextra.'/'    ,''),$perm_editar).
+                                                $Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar '.$nomedisplay_sing       ,$url_deletar.'/'.$valor->id.$linkextra     ,'Deseja realmente deletar esse '.$nomedisplay_sing.'?'),$perm_del);
             ++$i;
         }
         return Array($tabela,$i);
@@ -432,9 +440,9 @@ class usuario_Controle extends \Framework\App\Controle
         if($tipo=='Funcionrio' || $tipo=="Funcionario") $tipo = "Funcionário";
         if($tipo=="Usurio" || $tipo=="Usuario")         $tipo = 'Usuário';
         // Cria Tipo 2:
-        if($tipo=='Cliente'){
+        if($tipo=='Cliente' || $tipo=='cliente'){
             $tipo2  = 'cliente';
-        }else if($tipo=='Funcionário'){
+        }else if($tipo=='Funcionário' || $tipo=='funcionário' || $tipo=='Funcionario' || $tipo=='funcionario'){
             $tipo2  = 'funcionario';
         }
         if($tipo2=='usuario'){
@@ -521,10 +529,10 @@ class usuario_Controle extends \Framework\App\Controle
         if($tipo=='Funcionrio' || $tipo=="Funcionario") $tipo = "Funcionário";
         if($tipo=="Usurio" || $tipo=="Usuario")         $tipo = 'Usuário';
         // Cria Tipo 2:
-        if($tipo=='Cliente'){
+        if($tipo=='Cliente' || $tipo=='cliente'){
             $tipo2  = 'cliente';
             $this->Tema_Endereco('Clientes','usuario/Admin/ListarCliente');
-        }else if($tipo=='Funcionário'){
+        }else if($tipo=='Funcionário' || $tipo=='Funcionario' || $tipo=='funcionário' || $tipo=='funcionario'){
             $tipo2  = 'funcionario';
             $this->Tema_Endereco('Funcionários','usuario/Admin/ListarFuncionarios');
         }else{

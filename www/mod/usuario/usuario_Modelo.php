@@ -176,9 +176,13 @@ class usuario_Modelo extends \Framework\App\Modelo
      * @return string
      */
     static function PlanoStatus($modelo, $user){
+        // Carrega e Inicializa Variavies
         $registro = \Framework\App\Registro::getInstacia();
         $acl = $registro->_Acl;
         $usuarioid = $acl->Usuario_GetID();
+        $planostatus = Array();
+        
+        // Executa
         if(file_exists(MOD_PATH.'Financeiro'.DS.'Financeiro_Controle.php')){
             // CONSULTA SE TEM DEBIDOS NO MODO USUARIO
             $planopendente = Financeiro_Modelo::MovInt_VerificaDebito($modelo,$usuarioid,'usuario');

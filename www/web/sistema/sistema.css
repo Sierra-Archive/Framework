@@ -1,0 +1,160 @@
+/**
+
+
+   BOOTSTRAP COMPLEMENTAR
+
+*/
+.circle {
+    border-radius: 500px 500px 500px 500px !important;
+}
+.circle:hover, .circle:focus, .circle:active, .circle.active, .circle.disabled, .circle[disabled] {
+    border-radius: 500px 500px 500px 500px !important;
+}
+
+
+
+// tabela mover a direita
+table .left {
+    text-align:left  !important;
+}
+table .right {
+    text-align:right !important;
+}
+
+
+/* CALENDARIO */
+
+ul#days, ul.weeks {
+  font-family : 'courier new', monospace;
+  list-style-type : none;
+  margin : 10px 0 10px 0;
+  padding:0px;
+  
+}
+
+ul#days li span {
+  background-color : #669900;
+  border : 1px solid #000;
+  cursor : help;
+  font-weight : bold;
+  color : #fff;
+  padding : 1px;
+}
+
+ul.weeks li a.al, ul.weeks li a.na  { 
+  color : #666;
+  text-decoration : none;
+  background-color : #ffffcc;
+  border : 1px solid #999;
+  padding : 1px;
+  margin-right: 7px;
+}
+
+ul.weeks li a.na, ul.weeks li a.na:hover, ul.weeks li a.na:focus, ul.weeks li a.na:active   { 
+  background : transparent;
+  color : #666;
+  cursor : default;
+}
+
+ul.weeks li a.al:hover, ul.weeks li a.al:focus, ul.weeks li a.al:active {
+  color : #000;
+  background-color : #eecc11;
+  border : 1px solid #000;
+  text-decoration : none;
+  cursor : pointer;
+}
+
+ul.weeks li a.nu { 
+  color : #eee;
+  padding : 1px;
+  margin-right: 7px;
+  border : 1px solid #ccc;
+  background-color : #eee;
+  cursor : default;
+}
+
+span.sep {
+  display : none;
+}
+
+
+
+
+.btn {
+    margin-bottom: 2px;
+}
+
+
+// Formularios
+.obrigatoriomarcado {
+    border: 2px solid #FFAEB0 !important;
+}
+
+//.btn-inverse,.btn-inverse:hover{text-shadow:0 -1px 0 rgba(0,0,0,.25);color:#fff}
+
+
+.btn-inverse {
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.15) inset, 0 1px 1px rgba(0, 0, 0, 0.075);
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.2);
+}
+
+
+
+
+
+.btn {
+    min-width: 40px;
+}
+
+.btn-inverse {
+  color: #FFFFFF;
+  background-color: #000033;
+  border-color: #000000;
+}
+.btn-inverse:hover,
+.btn-inverse:focus,
+.btn-inverse.focus,
+.btn-inverse:active,
+.btn-inverse.active,
+.open > .dropdown-toggle.btn-inverse {
+  color: #FFFFFF;
+  background-color: #330000;
+  border-color: #000000;
+}
+.btn-inverse:active,
+.btn-inverse.active,
+.open > .dropdown-toggle.btn-inverse {
+  background-image: none;
+}
+.btn-inverse.disabled,
+.btn-inverse[disabled],
+fieldset[disabled] .btn-inverse,
+.btn-inverse.disabled:hover,
+.btn-inverse[disabled]:hover,
+fieldset[disabled] .btn-inverse:hover,
+.btn-inverse.disabled:focus,
+.btn-inverse[disabled]:focus,
+fieldset[disabled] .btn-inverse:focus,
+.btn-inverse.disabled.focus,
+.btn-inverse[disabled].focus,
+fieldset[disabled] .btn-inverse.focus,
+.btn-inverse.disabled:active,
+.btn-inverse[disabled]:active,
+fieldset[disabled] .btn-inverse:active,
+.btn-inverse.disabled.active,
+.btn-inverse[disabled].active,
+fieldset[disabled] .btn-inverse.active {
+  background-color: #330000;
+  border-color: #FFFFFF;
+}
+.btn-inverse .badge {
+  color: #FFFFFF;
+  background-color: #000033;
+}
+
+
+.DTTT_Print .container-fluid {
+    margin-left:-180px !important;
+    margin-top:-60px !important;
+    padding: 0px !important;
+}

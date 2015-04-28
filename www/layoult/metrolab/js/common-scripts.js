@@ -1,3 +1,74 @@
+function Template_TrocarMenu() {
+    if ($('#sidebar > ul').is(":visible") === true) {
+        $('#main-content').css({
+            'margin-left': '0px'
+        });
+        $('#sidebar > ul').hide();
+        $("#container").addClass("sidebar-closed");
+
+        if($(window).width()>979){
+            $('#sidebar').css({
+                'margin-left': '-180px'
+            });
+        }else{
+            $('#sidebar').css({
+                'margin-left': '0'
+            });
+        }
+    } else {
+        $('#sidebar > ul').show();
+        $('#sidebar').css({
+            'margin-left': '0'
+        });
+        $("#container").removeClass("sidebar-closed");
+
+        if($(window).width()>979){
+            $('#main-content').css({
+                'margin-left': '180px'
+            });
+        }else{
+            $('#main-content').css({
+                'margin-left': '0'
+            });
+        }
+    }
+}
+function Template_Menu_Consertar() {
+    if ($('#sidebar > ul').is(":visible") === true) {
+        $('#sidebar > ul').show();
+        $('#sidebar').css({
+            'margin-left': '0'
+        });
+        $("#container").removeClass("sidebar-closed");
+
+        if($(window).width()>979){
+            $('#main-content').css({
+                'margin-left': '180px'
+            });
+        }else{
+            $('#main-content').css({
+                'margin-left': '0'
+            });
+        }
+    } else {
+        $('#main-content').css({
+            'margin-left': '0px'
+        });
+        $('#sidebar > ul').hide();
+        $("#container").addClass("sidebar-closed");
+
+        if($(window).width()>979){
+            $('#sidebar').css({
+                'margin-left': '-180px'
+            });
+        }else{
+            $('#sidebar').css({
+                'margin-left': '0'
+            });
+        }
+    }
+}
+
 var Script = function () {
 
 //    sidebar dropdown menu
@@ -19,29 +90,8 @@ var Script = function () {
         }
     });
 
-//    sidebar toggle
-
-    $('.icon-reorder').click(function () {
-        if ($('#sidebar > ul').is(":visible") === true) {
-            $('#main-content').css({
-                'margin-left': '0px'
-            });
-            $('#sidebar').css({
-                'margin-left': '-180px'
-            });
-            $('#sidebar > ul').hide();
-            $("#container").addClass("sidebar-closed");
-        } else {
-            $('#main-content').css({
-                'margin-left': '180px'
-            });
-            $('#sidebar > ul').show();
-            $('#sidebar').css({
-                'margin-left': '0'
-            });
-            $("#container").removeClass("sidebar-closed");
-        }
-    });
+    //    sidebar toggle
+    $('.glyphicon-reorder,#menuresponsivo_trocar').click(Template_TrocarMenu);
 
 // custom scrollbar
     $(".sidebar-scroll").niceScroll({styler:"fb",cursorcolor:"#4A8BC2", cursorwidth: '5', cursorborderradius: '0px', background: '#404040', cursorborder: ''});
@@ -98,9 +148,13 @@ var Script = function () {
 
 // scroller
 
-    $('.scroller').slimscroll({
+    /*$('.scroller').slimscroll({
         height: 'auto'
+    });*/
+    
+    Template_Menu_Consertar();
+    $(window).resize(function() {
+        Template_Menu_Consertar();
     });
-
 
 }();

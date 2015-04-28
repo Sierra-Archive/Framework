@@ -6,7 +6,7 @@
   "cls": "folder",
   "id": "root\/number_8",
   "children": [{
-    "text": "<i class='icon-share'></i> View Details",
+    "text": "<i class='glyphicon-share'></i> View Details",
     "leaf": "1",
     "href": "#",
     "value": "The Best Admin Theme!",

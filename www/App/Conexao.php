@@ -35,6 +35,7 @@ DELIMITER ;
  */
 final class Conexao
 {
+    protected $type                     =  'mysqli'; //'pdo';
     protected $host                     =  '';
     protected $usuario                  =  '';
     protected $senha                    =  '';
@@ -49,6 +50,7 @@ final class Conexao
     static    $tabelas_ext              = Array();
     static    $tabelas_Links            = Array();
     static    $tabelas_Links_Invertido  = Array();
+    
     
     /**
      * Construtor
@@ -142,7 +144,30 @@ final class Conexao
     private function __clone(){}
 
     public static function &Dao_GetColunas($nome){
-        return self::$tabelas[$nome]['colunas'];
+        if(isset(self::$tabelas[$nome.'_DAO']['colunas'])){
+            return self::$tabelas[$nome.'_DAO']['colunas'];
+        }else if(isset(self::$tabelas[$nome]['colunas'])){
+            return self::$tabelas[$nome]['colunas'];
+        }
+        throw new \Exception('Colunas com classe '.$nome.' nao Existe: '.$this->mysqli->error,3251);
+    }
+    /**
+     * Get Colunas Pelo NOme
+     */
+    public static function &Dao_GetColunas_Nome($nome){
+        $tabelas = &self::$tabelas;
+        foreach($tabelas as $indice=>&$valor){
+            if($valor['nome']===$nome){
+                if(isset(self::$tabelas[$nome.'_DAO']["colunas"])) return self::$tabelas[$nome.'_DAO']["colunas"];
+                return self::$tabelas[$nome]["colunas"];
+            }
+        }
+        throw new \Exception('Colunas com nome '.$nome.' nao Existe.',3251);
+    }
+    
+    public function prepare($sql,$autoreparo=true) 
+    {
+        return $this->mysqli->prepare($sql);
     }
     /**
      * Carrega Query
@@ -231,7 +256,7 @@ final class Conexao
      * Unknown column 'foto' in 'field list'
      * Unknown column 'login' in 'where clause'
      * Unknown column 'C.local' in 'on clause'
-     * Table 'Projeto_Framework.usuario_social' doesn't exist
+     * Table 'Projeto_Framework.social' doesn't exist
      * <Exemplos> De erros sem Reparaçaão Automatica
      * You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'ANDD senha='e10adc3949ba59abbe56e057f20f883e' AND ativado='1'' at line 1
      * 
@@ -408,7 +433,8 @@ final class Conexao
             }else if($campo=='id'){
                 return $this->query('ALTER TABLE `'.$tabela.'` ADD `'.$campo.'`  INT( 11 ) NOT NULL AUTO_INCREMENT PRIMARY KEY COMMENT \'Chave Primária\';',false);
             }else{
-                $colunas = &self::$tabelas[$tabela]["colunas"];
+                
+                $colunas = &self::Dao_GetColunas_Nome($tabela);
                 $existe = false;
                 if(isset($colunas) && !empty($colunas)){
                     foreach($colunas as &$valor){
@@ -632,10 +658,11 @@ final class Conexao
             $tempo2   = new \Framework\App\Tempo($temponome);
         }
         if(is_object($Objeto)){
-            $sql = 'Insert '.call_user_func(array($Objeto, 'Get_Nome')).' ';
+            $class_name = get_class($Objeto);
+            $sql = 'INSERT '.self::$tabelas[$class_name]['nome'].' ';
 
             // Divide por Servidores
-            if(call_user_func(array($Objeto, 'Get_StaticTable'))===false){
+            if(self::$tabelas[$class_name]['static']===false){
                 $sql1 = '(servidor';
                 $sql2 = '(\'' .SRV_NAME_SQL.'\'';
             }else{
@@ -715,11 +742,12 @@ final class Conexao
             $this->Sql_Update($objetos,false);
         }else{
             foreach($objetos as &$Objeto){
+                $class_name = get_class($Objeto);
                 $valores = $Objeto->Get_Object_Vars();
-                $sql = 'DELETE FROM  '.call_user_func(array($Objeto, 'Get_Nome'));
+                $sql = 'DELETE FROM  '.self::$tabelas[$class_name]['nome'];
                 $primarias = $Objeto->Get_Primaria();
                 $contador = 0;
-                if(empty($primarias)) throw new \Exception('Não Existe chave primaria: '.call_user_func(array($Objeto, 'Get_Nome')),3120);
+                if(empty($primarias)) throw new \Exception('Não Existe chave primaria: '.self::$tabelas[$class_name]['nome'],3120);
                 foreach($primarias as &$valor){
                     if($contador==0){
                         $sql .= ' WHERE ';
@@ -772,10 +800,11 @@ final class Conexao
             }
             return true;
         }else if(is_object($Objeto)){
+            $class_name = get_class($Objeto);
             // Captura Variaveis do Objeto e Primarias
             $valores = $Objeto->Get_Object_Vars();
             $primarias = $Objeto->Get_Primaria();
-            if(empty($primarias)) throw new \Exception('Não Existe chave primaria: '.call_user_func(array($Objeto, 'Get_Nome')),3120);
+            if(empty($primarias)) throw new \Exception('Não Existe chave primaria: '.self::$tabelas[$class_name]['nome'],3120);
             // Começa Query
             $sql    = '';
             $i      = 0;
@@ -797,7 +826,7 @@ final class Conexao
                 return true;
             }
             
-            $sql = 'UPDATE '.call_user_func(array($Objeto, 'Get_Nome')).' SET '.$sql.', log_date_edit=\''.APP_HORA.'\', log_user_edit=\''.\Framework\App\Acl::Usuario_GetID_Static().'\'';
+            $sql = 'UPDATE '.self::$tabelas[$class_name]['nome'].' SET '.$sql.', log_date_edit=\''.APP_HORA.'\', log_user_edit=\''.\Framework\App\Acl::Usuario_GetID_Static().'\'';
             $contador = 0;
             reset($primarias);
             while (key($primarias) !== null) {
@@ -821,7 +850,7 @@ final class Conexao
         }else{
             $edicao = explode('|', $Objeto);
             
-            $sql = 'UPDATE '.call_user_func(array($edicao[0].'_DAO', 'Get_Nome')).' SET '.$edicao[1].', log_date_edit=\''.APP_HORA.'\', log_user_edit=\''.\Framework\App\Acl::Usuario_GetID_Static().'\' WHERE '.$edicao[2];
+            $sql = 'UPDATE '.self::$tabelas[$edicao[0].'_DAO']['nome'].' SET '.$edicao[1].', log_date_edit=\''.APP_HORA.'\', log_user_edit=\''.\Framework\App\Acl::Usuario_GetID_Static().'\' WHERE '.$edicao[2];
             if($retornar){
                 return $sql.';';
             }else{
@@ -883,8 +912,8 @@ final class Conexao
         $extrangeira    = $resultado_unico->Get_Extrangeiras();
         
         // Escolhe Tabela
-        $sql_tabela_nome    = call_user_func(array($class_dao, 'Get_Nome'));
-        $sql_tabela_sigla   = call_user_func(array($class_dao, 'Get_Sigla'));
+        $sql_tabela_nome    = self::$tabelas[$class_dao]['nome'];
+        $sql_tabela_sigla   = self::$tabelas[$class_dao]['sigla'];
         $sql_tabela   = $sql_tabela_nome.' '.$sql_tabela_sigla;
         $tabelas_usadas[$sql_tabela_sigla] = $sql_tabela_nome;
         
@@ -984,7 +1013,7 @@ final class Conexao
         $numero_de_campos_nativos = $i;
         // WHERE  -> Adiciona Servidor se Tabela nao for estatica
         $j = 0;
-        if(call_user_func(array($class_dao, 'Get_StaticTable'))===false){
+        if(self::$tabelas[$class_dao]['static']===false){
             $sql_condicao .= $sql_tabela_sigla.'.servidor = \''.SRV_NAME_SQL.'\'';
             ++$j;
         }
@@ -1009,11 +1038,11 @@ final class Conexao
             $class_dao = $class_dao.'_DAO';
         }
         // Captura Nome da Tabela
-        $sql_tabela_nome    = call_user_func(array($class_dao, 'Get_Nome'));
+        $sql_tabela_nome    = self::$tabelas[$class_dao]['nome'];
         
         // Ve se tem servidor
         $condicao = '';
-        if(call_user_func(array($class_dao, 'Get_StaticTable'))===false){
+        if(self::$tabelas[$class_dao]['static']===false){
             $condicao .= ' && servidor = \''.SRV_NAME_SQL.'\'';
         }
         
@@ -1059,7 +1088,7 @@ final class Conexao
             $tempo2   = new \Framework\App\Tempo('Select Completo');
         }*/
         //echo "\n\n\n".$class_dao;
-        $tempo = new \Framework\App\Tempo('Conexao_Select');   
+        $tempo_total = new \Framework\App\Tempo('Conexao_Select');   
         // Expections
         if($class_dao==''){
             throw new \Exception('Dao não existe: '.$class_dao,3251);
@@ -1070,7 +1099,11 @@ final class Conexao
         $menor      = ' < ';
         $maiorigual = ' >= ';
         $menorigual = ' <= ';
-        $class_dao      = $class_dao.'_DAO';
+        
+        // Se nao Colocarem o _DAO, ele coloca
+        if(strpos($class_dao, '_DAO')===false){
+            $class_dao      = $class_dao.'_DAO';
+        }
         
         // Carrega Cache
         $Cache = $this->_Cache->Ler('Select-'.$class_dao.$campos);
@@ -1309,7 +1342,7 @@ final class Conexao
         }else if(strpos($condicao, '{sigla}')!==false){
             if($sql_condicao!='') $sql_condicao .= ' AND ';
             $sql_condicao .= str_replace('{sigla}', $sql_tabela_sigla.'.', $condicao);
-        }else if($condicao!==false){
+        }else if($condicao!==false && $condicao!==''){
             if($sql_condicao!='') $sql_condicao .= ' AND ';
             $sql_condicao .= (string) $condicao;
         }        
@@ -1426,7 +1459,7 @@ final class Conexao
             $tabela_link = self::Tabelas_GetSiglas_Recolher($objeto['Tabela']);
             
             // Captura Colunas da tabela
-            $class_Executar = $tabela_link['classe'].'_DAO';
+            $class_Executar = $tabela_link['classe'];
             // Escolhe os Selecionados
             $selecionado    = Array();
             $where          = Array();
@@ -1541,7 +1574,7 @@ final class Conexao
                 $tipo = 'Tabela';
             }
             // PEga Classe para Percorrer valores do selectmultiplo selecionados
-            $classe_dao = $tabela_utilizada['classe'].'_DAO';
+            $classe_dao = $tabela_utilizada['classe'];
             // Guarda OS SELECIONADOS
             if($opcoes!==false){
                 foreach($opcoes as &$valor){
@@ -1747,7 +1780,7 @@ final class Conexao
             $sigla = &$current['sigla'];
             
             $siglas[$sigla] = Array(
-                'tabela'    => key($tabelas),
+                'tabela'    => $current['nome'],
                 'classe'    => $current['class']
             );
             if($Link!==false){
@@ -1793,7 +1826,13 @@ final class Conexao
      */
     public static function &Tabelas_GetCampos_Recolher($sigla){
         $array = \Framework\App\Conexao::Tabelas_GetSiglas_Recolher($sigla);
-        return self::$tabelas[$array['tabela']]['colunas'];
+        if(!isset(self::$tabelas[$array['classe']])){
+            if(!isset(self::$tabelas[$array['classe'].'_DAO'])){
+                throw new \Exception('Classe '.$array['classe'].' nao Existe: ',2828);
+            }
+            return self::$tabelas[$array['classe'].'_DAO']['colunas'];
+        }
+        return self::$tabelas[$array['classe']]['colunas'];
     }
     /**
      * 
@@ -1863,9 +1902,8 @@ final class Conexao
             if(!empty($arquivos)){
                 foreach($arquivos as $arquivo){
                     $arquivo = $arquivo.'_DAO';
-                    $arquivo_nome           = $arquivo::Get_Nome();
-                    $tabelas[$arquivo_nome] = self::Load($arquivo,$arquivo_nome);
-                    $sigla = &$tabelas[$arquivo_nome]['sigla'];
+                    $tabelas[$arquivo] = self::Load($arquivo);
+                    $sigla = &$tabelas[$arquivo]['sigla'];
 
                     // Aproveita o while e Pega as extrangeiras
                     $resultado_unico = new $arquivo();
@@ -1891,9 +1929,9 @@ final class Conexao
             while($arquivo = $diretorio -> read()){
                 if(strpos($arquivo, 'DAO.php')!==false){
                     $arquivo                = str_replace(Array('.php','.'), Array('','_') , $arquivo);
-                    $arquivo_nome           = $arquivo::Get_Nome();
-                    $tabelas[$arquivo_nome] = self::Load($arquivo,$arquivo_nome);
-                    $sigla = &$tabelas[$arquivo_nome]['sigla'];
+
+                    $tabelas[$arquivo] = self::Load($arquivo);
+                    $sigla = &$tabelas[$arquivo]['sigla'];
 
                     // Aproveita o while e Pega as extrangeiras
                     $resultado_unico = new $arquivo();

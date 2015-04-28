@@ -230,6 +230,15 @@ readfile($link);*/
 	// Envia o arquivo para o cliente
 	readfile($arquivoLocal);
     }
+    protected function Gerador_Notificacao($pagina_permissao,$notificacao){
+        // Se nao existir cria
+        $folder     = TEMP_PATH.'Grafico';
+        $folder_url = TEMP_URL.'Grafico';
+        if(!file_exists($folder))
+        {
+            mkdir($folder, 0777);
+        }
+    }
     protected function Gerador_Grafico_Padrao($titulo,$x_nome='EixoX',$y_nome='EixoY',$dados=Array(),$tipo = 'points',$larg=600,$alt=400, $convert_real=true){
         // Se nao existir cria
         $folder     = TEMP_PATH.'Grafico';
@@ -343,7 +352,7 @@ readfile($link);*/
     }
     private static function Export_Imprimir(&$conteudo,$arquivo_nome='Relatorio'){
         // Começa HTML
-        $html = '<html><head><title>'.$arquivo_nome.'</title><script type=\'text/javascript\' src=\''.WEB_URL.'sistema/jquery/jquery-1.8.3.min.js\'></script><style> '
+        $html = '<html><head><title>'.$arquivo_nome.'</title><script type=\'text/javascript\' src=\''.WEB_URL.'sistema/jquery/jquery.min.js\'></script><style> '
                 . 'body {'
                     . 'font-size: 12px;'
                 . '}'
@@ -1418,7 +1427,8 @@ readfile($link);*/
         $sigla = $dao_completo::Get_Sigla();
         $links = \Framework\App\Conexao::Tabelas_GetLinks_Recolher($sigla);
         $campos = &Conexao::Tabelas_GetCampos_Recolher($sigla);
-        foreach ($campos as &$valor){
+        if($campos!==NULL && !empty($campos)){
+            foreach ($campos as &$valor){
             if(isset($valor['TabelaLinkada'])){
                 $tabelalinkada = &$valor['TabelaLinkada'];
                 
@@ -1432,6 +1442,7 @@ readfile($link);*/
                     }
                     
                     // Caso Exista o Mesmo o trata
+                    var_dump($get);
                     if(isset($get) && is_array($get)){
                         // Busca AS caracteristicas da tabela mandando a sigla como parametro
                         $nome_da_tab        = \Framework\App\Conexao::Tabelas_GetSiglas_Recolher($tabelalinkada['Tabela']);
@@ -1442,6 +1453,7 @@ readfile($link);*/
                         $where = Array($tabelalinkada['SelectMultiplo']['Linkar'] => $identificador);
                         $respostas  = $this->_Modelo->db->Sql_Select($nome_da_tab, $where);
                         // PEga essas opcoes e deleta a porra toda !
+                        var_dump($respostas);
                         if($respostas!==false){
                             if(!is_array($respostas)) $respostas = Array($respostas);
                             $this->_Modelo->db->Sql_Delete($respostas,true);
@@ -1484,13 +1496,14 @@ readfile($link);*/
                         // Busca AS caracteristicas da tabela mandando a sigla como parametro
                         $nome_da_tab        = \Framework\App\Conexao::Tabelas_GetSiglas_Recolher($tabelalinkada['Tabela']);
                         $nome_da_tab        = $nome_da_tab['classe'];
-                        $nome_da_tab_classe = $nome_da_tab.'_DAO';
+                            
                         // Pega as tabelas linkadas reversa para poder achar a outra tabela de ligacao
                         $links_reverso = \Framework\App\Conexao::Tabelas_GetLinks_Recolher($tabelalinkada['Tabela'],true);
                         unset($links_reverso[$sigla]);
                         // Seleciona e Atualiza
                         $where = Array($links[$tabelalinkada['Tabela']] => $identificador);
                         $respostas  = $this->_Modelo->db->Sql_Select($nome_da_tab, $where);
+                        //var_dump($respostas);
                         if($respostas!==false){
                             if(!is_array($respostas)) $respostas = Array($respostas);
                             // Caso nao tenha campo de controle deleta os que nao 
@@ -1515,13 +1528,14 @@ readfile($link);*/
                             }
                         }
                         // Agora registra o que importa
+                        //var_dump($get,$camponovo);
                         if(!empty($get) && $camponovo!==false){
                             foreach($get as &$valor2){
                                 // Caso nao exista pula
                                 if($valor2=='' || $valor===NULL) continue;
                                 // Confere o Resto
                                 if($ovalor===false){
-                                    $objeto2 = new $nome_da_tab_classe;
+                                    $objeto2 = new $nome_da_tab;
                                     $objeto2->$links[$tabelalinkada['Tabela']]  = $identificador;
                                     $objeto2->$camponovo                        = $valor2;
                                     $sucesso = $this->_Modelo->db->Sql_Inserir($objeto2);
@@ -1532,7 +1546,7 @@ readfile($link);*/
                                     );
                                     $respostas2  = $this->_Modelo->db->Sql_Select($nome_da_tab, $where,1);
                                     if($respostas2===false){
-                                        $objeto2 = new $nome_da_tab_classe;
+                                        $objeto2 = new $nome_da_tab;
                                         $objeto2->$links[$tabelalinkada['Tabela']]  = $identificador;
                                         $objeto2->$camponovo                        = $valor2;
                                         $objeto2->$ovalor                           = '1';
@@ -1549,6 +1563,7 @@ readfile($link);*/
                     }
                 }
             }
+        }
         }
         // Termina de Tratar as LINKADAS
         if($erro1=='') $erro1 = $language['mens_erro']['erro'];
@@ -2188,7 +2203,7 @@ readfile($link);*/
                 if($valor[1]!==false){
                     $endereco_html .= '<li>'.
                     '<a class="lajax" href="'.URL_PATH.$valor[1].'" acao="">'.$valor[0].'</a>'.
-                    '<span class="divider">/</span>'.
+                    ''.
                     '</li>';
                 }else{
                     $endereco_html .= '<li class="active">'.
@@ -2236,72 +2251,8 @@ readfile($link);*/
                             'html' =>  $endereco_html
                         );
                         $this->_Visual->Json_IncluiTipo('Conteudo',$conteudo);
-                    }                    
-                    // Continua
-                    $configuracao_layoult = config_template();
-
-                    if($configuracao_layoult['camada_unica']!==false){
-                        $html = $this->_Visual->Bloco_Unico_Retornar();
-                        $js = '';
-                        if($html==''){
-                            $js = '$(\''.$configuracao_layoult['camada_unica'].'\').hide();';
-                        }else{
-                            $js = '$(\''.$configuracao_layoult['camada_unica'].'\').show();';
-                        }
-                        $conteudo = array(
-                            'location'  => $configuracao_layoult['camada_unica'],
-                            'js'        => $js,
-                            'html'      => $html
-                        );
-                        // Joga pro Json se nao for o caso de popup
-                        if($zerar===true || $html!=''){
-                            $this->_Visual->Json_IncluiTipo('Conteudo',$conteudo);
-                        }
-                        $html = $this->_Visual->Bloco_Maior_Retornar();
-                    }else{
-                        $html = $this->_Visual->Bloco_Unico_Retornar().$this->_Visual->Bloco_Maior_Retornar();
-                    }
-
-                    $js = '';
-                    if($html==''){
-                        $js = '$(\''.$configuracao_layoult['camada_maior'].'\').hide();';
-                    }else{
-                        $js = '$(\''.$configuracao_layoult['camada_maior'].'\').show();';
-                    }
-                    $conteudo = array(
-                        'location' => $configuracao_layoult['camada_maior'],
-                        'js' => $js,
-                        'html' => $html
-                    );
-                    // Joga pro Json se nao for o caso de popup
-                    if($zerar===true || $html!=''){
-                        $this->_Visual->Json_IncluiTipo('Conteudo',$conteudo);
-                    }
-
-                    $html = $this->_Visual->Bloco_Menor_Retornar();
-                    $js = '';
-                    if($html==''){
-                        $js = '$(\''.$configuracao_layoult['camada_menor'].'\').hide();';
-                    }else{
-                        $js = '$(\''.$configuracao_layoult['camada_menor'].'\').show();';
-                    }
-                    $conteudo = array(
-                        'location' => $configuracao_layoult['camada_menor'],
-                        'js' => $js,
-                        'html' =>  $html
-                    );
-                    // Joga pro Json se nao for o caso de popup
-                    if($zerar===true || $html!=''){
-                        $this->_Visual->Json_IncluiTipo('Conteudo',$conteudo);
-                    }
-                    // inclui js e zera o head js
-                    $javascript = $this->_Visual->Javascript_Executar();
-                    if($javascript!=''){
-                        $this->_Visual->Json_IncluiTipo('JavascriptInterno',$javascript);
-                        //zera js
-                        $this->_Visual->Javascript_Executar(false);
-                    }
-                    echo $this->_Visual->Json_Retorna();
+                    }    
+                    echo $this->_Visual->Json_Retorna($zerar);
                     return true;
                 }
             }else{

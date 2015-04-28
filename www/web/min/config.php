@@ -111,7 +111,7 @@ $min_serveOptions['bubbleCssImports'] = false;
  * Note: Despite this setting, if you include a number at the end of the
  * querystring, maxAge will be set to one year. E.g. /min/f=hello.css&123456
  */
-$min_serveOptions['maxAge'] = 1800;
+$min_serveOptions['maxAge'] = 18000;
 
 
 /**
@@ -186,7 +186,7 @@ $min_uploaderHoursBehind = 0;
  * Path to Minify's lib folder. If you happen to move it, change 
  * this accordingly.
  */
-$min_libPath = dirname(__FILE__) . '/lib';
+$min_libPath = dirname(__FILE__) . DS.'lib';
 
 
 // try to disable output_compression (may not have an effect)

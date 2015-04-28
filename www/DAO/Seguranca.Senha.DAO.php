@@ -2,6 +2,7 @@
 final Class Seguranca_Senha_DAO extends Framework\App\Dao 
 {
     protected $id;
+    protected $usuario;
     protected $categoria;
     protected $url;
     protected $login;
@@ -32,7 +33,7 @@ final Class Seguranca_Senha_DAO extends Framework\App\Dao
         return 1;
     }
     public static function Get_Class(){
-        return str_replace(Array('_DAO'), Array(''), get_class());
+        return get_class() ; //return str_replace(Array('_DAO'), Array(''), get_class());
     }
     public static function Gerar_Colunas(){
         return Array(
@@ -51,6 +52,32 @@ final Class Seguranca_Senha_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos
             ),
             Array(
+                'mysql_titulo'      => 'usuario',
+                'mysql_tipovar'     => 'int', //varchar, int, 
+                'mysql_tamanho'     => 11,
+                'mysql_null'        => true, // true NULL, false, NOT NULL
+                'mysql_default'     => '1',//false -> NONE, outro -> default
+                'mysql_primary'     => false, // chave primaria
+                'mysql_estrangeira' => 'U.id|U.nome', // chave estrangeira     ligacao|apresentacao|condicao
+                'mysql_autoadd'     => false,
+                'mysql_comment'     => false,
+                'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
+                'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
+                'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
+                'linkextra'         => 'usuario/Admin/Usuarios_Add', //0 ninguem, 1 admin, 2 todos 
+                'edicao'            => Array(
+                    'Nome'              => 'Responsável da Senha',
+                    'valor_padrao'      => false,
+                    'readonly'          => false,
+                    'aviso'             => '',
+                    'formtipo'          => 'select',
+                    'select'             => array(
+                        'class'             => 'obrigatorio',
+                        'infonulo'          => 'Escolha um Responsável',
+                    )
+                )
+            ),
+            Array(
                 'mysql_titulo'      => 'categoria',
                 'mysql_tipovar'     => 'int', //varchar, int, 
                 'mysql_tamanho'     => 11,
@@ -63,7 +90,7 @@ final Class Seguranca_Senha_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => 'categoria/Admin/Categorias_Add/Seguranca', //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => 'categoria/Admin/Categorias_Add/Seguranca', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
                     'Nome'              => 'Tipo de Senha',
                     'valor_padrao'      => false,
@@ -88,7 +115,7 @@ final Class Seguranca_Senha_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', // //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '', // //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
                     'Nome'              => 'Url',
                     'valor_padrao'      => false,
@@ -113,7 +140,7 @@ final Class Seguranca_Senha_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', // //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '', // //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
                     'Nome'              => 'Login',
                     'valor_padrao'      => false,
@@ -138,7 +165,7 @@ final Class Seguranca_Senha_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', // //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '', // //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
                     'Nome'              => 'Senha',
                     'valor_padrao'      => false,

@@ -757,8 +757,8 @@ function Header(calendar, options) {
 							var button = $(
 								"<span class='fc-button fc-button-" + buttonName + " " + tm + "-state-default'>" +
 									(icon ?
-										"<span class='fc-icon-wrap'>" +
-											"<span class='ui-icon ui-icon-" + icon + "'/>" +
+										"<span class='fc-glyphicon-wrap'>" +
+											"<span class='ui-icon ui-glyphicon-" + icon + "'/>" +
 										"</span>" :
 										text
 										) +

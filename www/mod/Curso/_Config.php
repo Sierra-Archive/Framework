@@ -10,6 +10,14 @@ $config_Modulo = function (){
 };
 $config_Menu = function (){
     return Array(
+        'Turmas Abertas' => Array(
+            'Nome'                  => 'Turmas Abertas',
+            'Link'                  => 'Curso/Turma/Abertas',
+            'Gravidade'             => 90,
+            'Img'                   => '',
+            'Icon'                  => 'hdd',
+            'Filhos'                => false
+        ),
         'Cursos' => Array(
             'Nome'                  => 'Cursos',
             'Link'                  => '#',
@@ -94,6 +102,15 @@ $config_Permissoes = function (){
             'Metodo'                => 'Turmas',  // Metodos referentes separados por virgula
         ),
         Array(
+            'Nome'                  => 'Midia (Turmas) - Ver',
+            'Desc'                  => '',
+            'Chave'                 => 'Curso_Turma_Turmas_Ver', // CHave unica nunca repete, chave primaria
+            'End'                   => 'Curso/Turma/Turmas_Ver', // Endereco que deve conter a url para permitir acesso
+            'Modulo'                => 'Curso', // Modulo Referente
+            'SubModulo'             => 'Turma',   // Submodulo Referente
+            'Metodo'                => 'Turmas_Ver',  // Metodos referentes separados por virgula
+        ),
+        Array(
             'Nome'                  => 'Midia (Turmas) - Add',
             'Desc'                  => '',
             'Chave'                 => 'Curso_Turma_Turmas_Add', // CHave unica nunca repete, chave primaria
@@ -128,6 +145,37 @@ $config_Permissoes = function (){
             'Modulo'                => 'Curso', // Modulo Referente
             'SubModulo'             => 'Turma',   // Submodulo Referente
             'Metodo'                => 'Status',  // Metodos referentes separados por virgula
+        ),
+        
+        
+        
+        /// Inscrições
+        Array(
+            'Nome'                  => 'Midia (Turmas) - Abertas para Inscrição',
+            'Desc'                  => '',
+            'Chave'                 => 'Curso_Turma_Abertas',
+            'End'                   => 'Curso/Turma/Abertas', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
+            'Modulo'                => 'Curso', // Modulo Referente // Modulo Referente
+            'SubModulo'             => 'Turma',   // Submodulo Referente   // Submodulo Referente
+            'Metodo'                => 'Abertas',  // Metodos referentes separados por virgula
+        ),
+        Array(
+            'Nome'                  => 'Midia (Inscrições) - Se Inscrever',
+            'Desc'                  => '',
+            'Chave'                 => 'Curso_Turma_Inscricao_Fazer',
+            'End'                   => 'Curso/Turma/Inscricao_Fazer', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
+            'Modulo'                => 'Curso', // Modulo Referente // Modulo Referente
+            'SubModulo'             => 'Turma',   // Submodulo Referente   // Submodulo Referente
+            'Metodo'                => 'Inscricao_Fazer,Inscricao_Fazer2',  // Metodos referentes separados por virgula
+        ),
+        Array(
+            'Nome'                  => 'Midia (Inscrições) - Mover Inscrição',
+            'Desc'                  => '',
+            'Chave'                 => 'Curso_Turma_Inscricao_Mover',
+            'End'                   => 'Curso/Turma/Inscricao_Mover', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
+            'Modulo'                => 'Curso', // Modulo Referente // Modulo Referente
+            'SubModulo'             => 'Turma',   // Submodulo Referente   // Submodulo Referente
+            'Metodo'                => 'Inscricao_Mover,Inscricao_Mover2',  // Metodos referentes separados por virgula
         ),
     );
 };

@@ -21,7 +21,7 @@ class usuario_Principal implements PrincipalInterface
     * @version 2.0
     */
     static function Home(&$controle, &$modelo, &$Visual){
-        if(\Framework\App\Sistema_Funcoes::Perm_Modulos('Financeiro') && \Framework\App\Acl::Sistema_Modulos_Configs_Funcional('Financeiro_User_Saldo')){
+        if(\Framework\App\Sistema_Funcoes::Perm_Modulos('Financeiro') && \Framework\App\Acl::Sistema_Modulos_Configs_Funcional('Financeiro_User_Planos') && \Framework\App\Acl::Sistema_Modulos_Configs_Funcional('Financeiro_User_Saldo')){
             usuario_Controle::PlanoStatus($modelo, $Visual, \Framework\App\Acl::Usuario_GetID_Static());
         }
         self::Widgets();
@@ -31,7 +31,7 @@ class usuario_Principal implements PrincipalInterface
             $_Controle->Widget_Add('Superior',
             '<li class="dropdown mtop5">'.
                 '<a class="dropdown-toggle element lajax" acao="" data-placement="bottom" data-toggle="tooltip" href="'.URL_PATH.'usuario/Admin/Usuarios_Add/cliente" data-original-title="Novo Cliente">'.
-                    '<i class="icon-user"></i>'.
+                    '<i class="glyphicon-user"></i>'.
                 '</a>'.
             '</li>');
         }

@@ -11,7 +11,7 @@ ul.faq-list li a:hover, ul.faq-list li a.active{
     background: #7163b3;
 }
 
-#header.navbar-inverse .navbar-inner {
+#header.navbar-inverse{
     background-color: #7163b3;
     background-image: -moz-linear-gradient(top, #7163b3, #7163b3);
     background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#7163b3), to(#7163b3));

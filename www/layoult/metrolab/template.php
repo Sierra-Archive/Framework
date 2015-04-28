@@ -20,75 +20,84 @@
 <body class="fixed-top">
    <!-- BEGIN HEADER -->
    <div id="header" class="navbar navbar-inverse navbar-fixed-top">
-       <!-- BEGIN TOP NAVIGATION BAR -->
-       <div class="navbar-inner">
-           <div class="container-fluid">
-               <!--BEGIN SIDEBAR TOGGLE-->
-               <div class="sidebar-toggle-box hidden-phone">
-                   <div class="icon-reorder"></div>
-               </div>
-               <!--END SIDEBAR TOGGLE-->
-               <!-- BEGIN LOGO -->
-               <a class="brand" href="<?php echo URL_PATH; ?>">
-                   <img src="<?php echo ARQ_URL; ?>_Sistema/logo.png" alt="<?php echo SISTEMA_NOME; ?>" style="max-height: 40px;" />
-               </a>
-               <!-- END LOGO -->
-               <!-- BEGIN RESPONSIVE MENU TOGGLER -->
-               <a class="btn btn-navbar collapsed" id="main_menu_trigger" data-toggle="collapse" data-target=".nav-collapse">
-                   <span class="icon-bar"></span>
-                   <span class="icon-bar"></span>
-                   <span class="icon-bar"></span>
-                   <span class="arrow"></span>
-               </a>
-               <!-- END  NOTIFICATION -->
-               <div class="top-nav ">
-                   <ul class="nav pull-right top-menu" >
-                       <!-- BEGIN SUPPORT  -->
-                       <?php if(isset($params['widgets']['Superior'])){ 
-                            $total=count($params['widgets']['Superior']); 
-                            for($cont=0;$cont<$total; ++$cont) {  
-                                echo $params['widgets']['Superior'][$cont];
-                            } ?>
-                            <!-- END SUPPORT -->
-                            <!-- BEGIN USER LOGIN DROPDOWN -->
-                            <?php echo $params['template']['usuario']; 
-                        }?>
-                        <!-- END USER LOGIN DROPDOWN -->
-                   </ul>
-                   <!-- END TOP NAVIGATION MENU -->
-               </div>
-           </div>
-       </div>
-       <!-- END TOP NAVIGATION BAR -->
-   </div>
-   <!-- END HEADER -->         
-              
-   <!-- BEGIN CONTAINER -->
-   <div id="container" class="row-fluid">
-      <!-- BEGIN SIDEBAR -->
-      <div class="sidebar-scroll">
-          <div id="sidebar" class="nav-collapse collapse">
+        <div class="navbar-header">
+            <!--BEGIN SIDEBAR TOGGLE-->
+            <div class="sidebar-toggle-box hidden-xs">
+                <div class="glyphicon-reorder"></div>
+            </div>
+            <!--END SIDEBAR TOGGLE-->
 
-              <?php /*<!-- BEGIN RESPONSIVE QUICK SEARCH FORM -->
-              <div class="navbar-inverse">
-                  <form class="navbar-search visible-phone">
-                      <input type="text" class="search-query" placeholder="Buscar" />
-                  </form>
-              </div>
-              <!-- END RESPONSIVE QUICK SEARCH FORM -->
-              <!-- BEGIN SIDEBAR MENU --> */
-                  echo $params['template']['menu']; ?>
-              <!-- END SIDEBAR MENU -->
-          </div>
-      </div>
-      <!-- END SIDEBAR -->
-      <!-- BEGIN PAGE -->  
-      <div id="main-content">
-         <!-- BEGIN PAGE CONTAINER-->
-         <div class="container-fluid">
+            <!-- BEGIN TOP NAVIGATION BAR -->
+            <a class="navbar-brand" href="<?php echo URL_PATH; ?>">
+                <img src="<?php echo ARQ_URL; ?>_Sistema/logo.png" alt="<?php echo SISTEMA_NOME; ?>" style="max-height: 40px;">
+            </a>
+            <!-- BEGIN LOGO -->
+
+            <!-- END LOGO -->
+            <!-- BEGIN RESPONSIVE MENU TOGGLER -->
+
+            <button id="menuresponsivo_trocar" type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+        </div>
+        <!-- END  NOTIFICATION -->
+        <div class="navbar-header navbar-right">
+            <ul class="nav pull-right top-menu navbar-nav">
+                <!-- BEGIN SUPPORT  -->
+                <li class="dropdown mtop5"><a class="dropdown-toggle element lajax" acao="" data-placement="bottom" data-toggle="tooltip" href="<?php echo SISTEMA_URL.SISTEMA_DIR; ?>usuario/Admin/Usuarios_Add/cliente" data-original-title="Novo Cliente"><i class="glyphicon-user"></i></a></li>                            <!-- END SUPPORT -->
+                <!-- BEGIN USER LOGIN DROPDOWN -->
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <img src="<?php echo SISTEMA_URL.SISTEMA_DIR; ?>web/img/icons/clientes.png" width="30" height="30">
+                        <span class="username">ADMINISTRADOR</span>
+                        <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu extended logout">
+                    <?php if(isset($params['widgets']['Superior'])){ 
+                         $total=count($params['widgets']['Superior']); 
+                         for($cont=0;$cont<$total; ++$cont) {  
+                             echo $params['widgets']['Superior'][$cont];
+                         } ?>
+                         <!-- END SUPPORT -->
+                         <!-- BEGIN USER LOGIN DROPDOWN -->
+                         <?php echo $params['template']['usuario']; 
+                    }?>
+                    </ul>
+                </li>                        
+                <!-- END USER LOGIN DROPDOWN -->
+            </ul>
+            <!-- END TOP NAVIGATION MENU -->
+        </div>
+       <!-- END TOP NAVIGATION BAR -->
+    </div>
+    <!-- END HEADER -->         
+
+    <!-- BEGIN CONTAINER -->
+    <!-- BEGIN SIDEBAR -->
+    <div class="sidebar sidebar-scroll">
+        <div id="sidebar" class="nav nav-sidebar">
+            <?php /*<!-- BEGIN RESPONSIVE QUICK SEARCH FORM -->
+            <div class="navbar-inverse">
+                <form class="navbar-search visible-xs">
+                    <input type="text" class="search-query" placeholder="Buscar" />
+                </form>
+            </div>
+            <!-- END RESPONSIVE QUICK SEARCH FORM -->
+            <!-- BEGIN SIDEBAR MENU --> */
+                echo $params['template']['menu']; ?>
+            <!-- END SIDEBAR MENU -->
+        </div>
+    </div>
+    <!-- END SIDEBAR -->
+    <!-- BEGIN PAGE -->  
+    <div id="main-content">
+        <!-- BEGIN PAGE CONTAINER-->
+        <div class="container-fluid">
             <!-- BEGIN PAGE HEADER-->   
-            <div class="row-fluid">
-               <div class="span12">
+            <div class="row">
+                <div class="col-sm-12">
                     <!-- END THEME CUSTOMIZER-->
                     <!-- BEGIN PAGE TITLE & BREADCRUMB-->
                     <h3 class="page-title">
@@ -102,30 +111,28 @@
                     }
                     ?>
                     <!-- END PAGE TITLE & BREADCRUMB-->
-               </div>
+                </div>
             </div>
             <!-- END PAGE HEADER-->
             <!-- BEGIN PAGE CONTENT-->
-            <div class="row-fluid">
-                <div class="span12" id="blocounico"<?php if( $params['template']['Bloco_Unico']==''){ ?> style="display: none;"<?php } ?>>
+            <div class="row">
+                <div class="col-sm-12" id="blocounico"<?php if( $params['template']['Bloco_Unico']==''){ ?> style="display: none;"<?php } ?>>
                     <?php echo $params['template']['Bloco_Unico']; ?>
                 </div>
             </div>
-            <div class="row-fluid">
-                <div class="span8" id="blocomaior"<?php if( $params['template']['Bloco_Maior']==''){ ?> style="display: none;"<?php } ?>>
+            <div class="row">
+                <div class="col-sm-8" id="blocomaior"<?php if( $params['template']['Bloco_Maior']==''){ ?> style="display: none;"<?php } ?>>
                     <?php echo $params['template']['Bloco_Maior']; ?>
                 </div>
-                <div class="span4" id="blocomenor"<?php if( $params['template']['Bloco_Menor']==''){ ?> style="display: none;"<?php } ?>>
+                <div class="col-sm-4" id="blocomenor"<?php if( $params['template']['Bloco_Menor']==''){ ?> style="display: none;"<?php } ?>>
                     <?php echo $params['template']['Bloco_Menor']; ?>
                 </div>
             </div>
             <!-- END PAGE CONTENT-->         
-         </div>
-         <!-- END PAGE CONTAINER-->
-      </div>
-      <!-- END PAGE -->  
-   </div>
-   <!-- END CONTAINER -->
+        </div>
+        <!-- END PAGE CONTAINER-->
+    </div>
+    <!-- END PAGE -->
 
    <!-- BEGIN FOOTER -->
    <div id="footer">
