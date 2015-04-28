@@ -46,7 +46,7 @@ final Class Predial_Bloco_Apart_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', //0 ninguem, 1 admin, 2 todos,
+                'linkextra'         => '', //0 ninguem, 1 admin, 2 todos,
             ),Array(
                 'mysql_titulo'      => 'bloco',
                 'mysql_tipovar'     => 'int', //varchar, int, 
@@ -61,7 +61,7 @@ final Class Predial_Bloco_Apart_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => 'predial/Bloco/Blocos_Add',
+                'linkextra'         => 'predial/Bloco/Blocos_Add',
                 'edicao'            => Array(
                     'Nome'              => 'Bloco',
                     'valor_padrao'      => false,
@@ -83,7 +83,7 @@ final Class Predial_Bloco_Apart_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
                     'Nome'              => 'Número',
                     'Mascara'           => 'Numero',

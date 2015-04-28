@@ -55,7 +55,7 @@ final Class Social_Acao_Participante_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => 'social/Acao/Acoes_Add',
+                'linkextra'         => 'social/Acao/Acoes_Add',
                 'edicao'            => Array(
                     'Nome'              => 'Ação',
                     'valor_padrao'      => false,
@@ -77,7 +77,7 @@ final Class Social_Acao_Participante_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => 'usuario/Admin/Usuarios_Add/cliente', //0 ninguem, 1 admin, 2 todos
+                'linkextra'         => 'usuario/Admin/Usuarios_Add/cliente', //0 ninguem, 1 admin, 2 todos
                 'edicao'            => Array(
                     'Nome'              => 'Personagem',
                     'valor_padrao'      => false,

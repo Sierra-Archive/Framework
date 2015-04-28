@@ -49,7 +49,7 @@ final Class Usuario_Mensagem_Resposta_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '' ,//0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '' ,//0 ninguem, 1 admin, 2 todos 
             ),
             Array(
                 'mysql_titulo'      => 'id_mensagem',
@@ -64,7 +64,7 @@ final Class Usuario_Mensagem_Resposta_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
                     'Nome'              => 'Mensagem',
                     'valor_padrao'      => false,
@@ -90,7 +90,7 @@ final Class Usuario_Mensagem_Resposta_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
                     'Nome'              => 'De',
                     'valor_padrao'      => false,
@@ -127,7 +127,7 @@ final Class Usuario_Mensagem_Resposta_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos
-                'linkextra'          => '' ,//0 ninguem, 1 admin, 2 todos  2 todos 
+                'linkextra'         => '' ,//0 ninguem, 1 admin, 2 todos  2 todos 
             ),
             Array(
                 'mysql_titulo'      => 'resposta',
@@ -142,7 +142,7 @@ final Class Usuario_Mensagem_Resposta_DAO extends Framework\App\Dao
                 'mysql_inside'      => 'br2nl({valor})', // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => 'nl2br({valor})', // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
                     'Nome'              => 'Resposta da Mensagem',
                     'valor_padrao'      => false,
@@ -168,7 +168,7 @@ final Class Usuario_Mensagem_Resposta_DAO extends Framework\App\Dao
                 'mysql_inside'      => 'data_hora_brasil_eua({valor})', // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => 'data_hora_eua_brasil({valor})', // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', //0 ninguem, 1 admin, 2 todos
+                'linkextra'         => '', //0 ninguem, 1 admin, 2 todos
             )
         );
     }

@@ -45,7 +45,7 @@ final Class Predial_Bloco_Apart_Correio_Aviso_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', //0 ninguem, 1 admin, 2 todos,
+                'linkextra'         => '', //0 ninguem, 1 admin, 2 todos,
             ),Array(
                 'mysql_titulo'      => 'correio',
                 'mysql_tipovar'     => 'int', //varchar, int, 
@@ -59,7 +59,7 @@ final Class Predial_Bloco_Apart_Correio_Aviso_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => 'predial/Correio/Correios_Add',
+                'linkextra'         => 'predial/Correio/Correios_Add',
                 'edicao'            => Array(
                     'Nome'              => 'Correio',
                     'valor_padrao'      => false,
@@ -80,7 +80,7 @@ final Class Predial_Bloco_Apart_Correio_Aviso_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
                     'Nome'              => 'Mensagem',
                     'valor_padrao'      => false,

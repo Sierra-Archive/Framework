@@ -44,7 +44,7 @@ final Class Usuario_Veiculo_Equipamento_Modelo_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '' ,//0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '' ,//0 ninguem, 1 admin, 2 todos 
             ),Array(
                 'mysql_titulo'      => 'marca',
                 'mysql_tipovar'     => 'int', //varchar, int, 
@@ -58,7 +58,7 @@ final Class Usuario_Veiculo_Equipamento_Modelo_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => 'usuario_veiculo/Equipamento/Marcas_Add',
+                'linkextra'         => 'usuario_veiculo/Equipamento/Marcas_Add',
                 'edicao'            => Array(
                     'Nome'              => 'Marca do Modelo',
                     'valor_padrao'      => false,
@@ -78,7 +78,7 @@ final Class Usuario_Veiculo_Equipamento_Modelo_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', // //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '', // //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
                     'Nome'              => 'Nome do Modelo',
                     'valor_padrao'      => false,

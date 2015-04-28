@@ -45,7 +45,7 @@ final Class Comercio_Certificado_Auditoria_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '' ,//0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '' ,//0 ninguem, 1 admin, 2 todos 
             ),Array(
                 'mysql_titulo'      => 'idproduto',
                 'mysql_tipovar'     => 'int', //varchar, int, 
@@ -59,7 +59,7 @@ final Class Comercio_Certificado_Auditoria_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => 'comercio/Produto/Produtos_Add',
+                'linkextra'         => 'comercio/Produto/Produtos_Add',
                 'edicao'            => Array(
                     'Nome'              => 'Produto',
                     'valor_padrao'      => false,
@@ -79,7 +79,7 @@ final Class Comercio_Certificado_Auditoria_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => ''
+                'linkextra'         => ''
             ),Array(
                 'mysql_titulo'      => 'meses',
                 'mysql_tipovar'     => 'int', //varchar, int, 
@@ -93,7 +93,7 @@ final Class Comercio_Certificado_Auditoria_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', // //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '', // //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
                     'Nome'              => 'Meses',
                     'Mascara'           => 'Numero',

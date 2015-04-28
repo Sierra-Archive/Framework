@@ -49,7 +49,7 @@ final Class Predial_Bloco_Apart_Veiculo_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', //0 ninguem, 1 admin, 2 todos,
+                'linkextra'         => '', //0 ninguem, 1 admin, 2 todos,
             ),Array(
                 'mysql_titulo'      => 'bloco',
                 'mysql_tipovar'     => 'int', //varchar, int, 
@@ -64,7 +64,7 @@ final Class Predial_Bloco_Apart_Veiculo_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => 'predial/Bloco/Blocos_Add',
+                'linkextra'         => 'predial/Bloco/Blocos_Add',
                 'edicao'            => Array(
                     'Nome'              => 'Bloco',
                     'valor_padrao'      => false,
@@ -84,7 +84,7 @@ final Class Predial_Bloco_Apart_Veiculo_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => 'predial/Apart/Aparts_Add',
+                'linkextra'         => 'predial/Apart/Aparts_Add',
                 'edicao'            => Array(
                     'Nome'              => 'Apartamento',
                     'valor_padrao'      => false,
@@ -105,7 +105,7 @@ final Class Predial_Bloco_Apart_Veiculo_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => 'categoria/Admin/Categorias_Add/predial_Veiculo', //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => 'categoria/Admin/Categorias_Add/predial_Veiculo', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
                     'Nome'              => 'Tipo de Veiculo',
                     'valor_padrao'      => false,
@@ -131,7 +131,7 @@ final Class Predial_Bloco_Apart_Veiculo_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
                     'Nome'              => 'Marca',
                     'valor_padrao'      => false,
@@ -157,7 +157,7 @@ final Class Predial_Bloco_Apart_Veiculo_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
                     'Nome'              => 'Modelo',
                     'valor_padrao'      => false,
@@ -183,7 +183,7 @@ final Class Predial_Bloco_Apart_Veiculo_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', //0 ninguem, 1 admin, 2 todos
+                'linkextra'         => '', //0 ninguem, 1 admin, 2 todos
                 'edicao'            => Array(
                     'Nome'              => 'Cor',
                     'valor_padrao'      => false,
@@ -241,7 +241,7 @@ final Class Predial_Bloco_Apart_Veiculo_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
                     'Nome'              => 'Placa',
                     'valor_padrao'      => false,

@@ -533,6 +533,7 @@ class Curso_TurmaControle extends Curso_Controle
      * @version 2.0
      */
     protected static function Campos_Deletar_Inscricao(&$campos){
+        self::DAO_Campos_Retira($campos, 'usuario');
         self::DAO_Campos_Retira($campos, 'valor');
         self::DAO_Campos_Retira($campos, 'pago');
         self::DAO_Campos_Retira($campos, 'curso');
@@ -584,6 +585,20 @@ class Curso_TurmaControle extends Curso_Controle
             return false;
         }
         
+        // Inscricao Verifica se ja tem
+        $insc_registro = $this->_Modelo->db->Sql_Select('Curso_Turma_Inscricao','{sigla}usuario=\''.$usuarioid.'\' && {sigla}turma=\''.$turma_registro->curso.'\'',1);
+        if($insc_registro===false){
+            $mensagens = array(
+                "tipo"              => 'erro',
+                "mgs_principal"     => 'Erro',
+                "mgs_secundaria"    => 'Você já está matriculado nessa turma! :('
+            );
+            $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+            $this->_Visual->Json_Info_Update('Historico', false);
+            $this->layoult_zerar = false; 
+            return false;
+        }
+        
         
          // Carrega Config
         $titulo1    = 'Confirmar Inscrição';
@@ -602,28 +617,42 @@ class Curso_TurmaControle extends Curso_Controle
             throw new \Exception('Turma não existe:'. $id, 404);
         }
         $id         = (int) $id;
+        $usuarioid  = $this->_Acl->Usuario_GetID();
         
+        // Carrega Turma
+        $turma_registro = $this->_Modelo->db->Sql_Select('Curso_Turma','{sigla}id=\''.$id.'\'',1);
+        if($turma_registro===false){
+            throw new \Exception('Essa Curso não existe:', 404);
+        }
         
         if($curso!==false){
             $curso    = (int) $curso;
             self::Endereco_Aberta(true, $curso);
-            $turma_registro = $this->_Modelo->db->Sql_Select('Curso_Turma',Array('curso'=>$curso),1);
-            if($turma_registro===false){
-                throw new \Exception('Essa Turma não existe nesse Curso:', 404);
-            }
         }else{
             self::Endereco_Aberta(true, false);
-            $turma_registro = $this->_Modelo->db->Sql_Select('Curso_Turma',false,1);
-            if($turma_registro===false){
-                throw new \Exception('Essa Turma não existe:', 404);
-            }
         }
-        
-        
         $curso_registro = $this->_Modelo->db->Sql_Select('Curso','{sigla}id=\''.$turma_registro->curso.'\'',1);
         if($curso_registro===false){
-            throw new \Exception('Esse Curso não existe', 404);
+            throw new \Exception('Esse Turma não existe', 404);
         }
+        
+        
+        
+        // Inscricao Verifica se ja tem
+        $insc_registro = $this->_Modelo->db->Sql_Select('Curso_Turma_Inscricao','{sigla}usuario=\''.$usuarioid.'\' && {sigla}turma=\''.$turma_registro->curso.'\'',1);
+        if($insc_registro===false){
+            $mensagens = array(
+                "tipo"              => 'erro',
+                "mgs_principal"     => 'Erro',
+                "mgs_secundaria"    => 'Você já está matriculado nessa turma! :('
+            );
+            $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+            $this->_Visual->Json_Info_Update('Historico', false);
+            $this->layoult_zerar = false; 
+            return false;
+        }
+        
+        
         
         // Verifica Vagas
         if($turma_registro->qnt<=0){
@@ -633,9 +662,6 @@ class Curso_TurmaControle extends Curso_Controle
                 "mgs_secundaria"    => 'Não possui mais vagas nessa Turma! :('
             );
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
-            $this->_Visual->Javascript_Executar(
-                    '$("#'.$valor2.'").css(\'border\', \'2px solid #FFAEB0\').focus();'
-            );
             $this->_Visual->Json_Info_Update('Historico', false);
             $this->layoult_zerar = false; 
             return false;
@@ -648,13 +674,12 @@ class Curso_TurmaControle extends Curso_Controle
         $funcao     = false;
         $sucesso1   = 'Inscrição bem sucedida';
         $sucesso2   = 'Inscrição Confirmada com Sucesso';
-        $alterar    = Array('curso'=>$turma_registro->curso,'turma'=>$turma_registro->id);
+        $alterar    = Array('usuario'=>$usuarioid,'curso'=>$turma_registro->curso,'turma'=>$turma_registro->id);
         $sucesso = $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
         if($sucesso===true){
             $motivo = 'Curso';
             $identificador  = $this->_Modelo->db->Sql_Select('Curso_Turma_Inscricao', false,1,'id DESC');
             $identificador  = $identificador->id;
-            $usuarioid  = $this->_Acl->Usuario_GetID();
             
             // Diminui Vagas da Turma e Salva
             $turma_registro->qnt = $turma_registro->qnt-1;
@@ -668,10 +693,10 @@ class Curso_TurmaControle extends Curso_Controle
                 \anti_injection($_POST["condicao_pagar"]),    // Condição de Pagamento
                 $motivo,                                      // Motivo
                 $identificador,                               // MotivoID
-                'Servidor',                                   // Entrada_Motivo
-                SRV_NAME_SQL,                                 // Entrada_MotivoID
-                'Usuario',                                   // Saida_Motivo
-                $usuarioid,                                // Saida_MotivoID
+                'Usuario',                                    // Entrada_Motivo
+                $usuarioid,                                   // Entrada_MotivoID
+                'Servidor',                                   // Saida_Motivo
+                SRV_NAME_SQL,                                 // Saida_MotivoID
                 $curso_registro->valor,             // Valor
                 APP_DATA_BR // Data Inicial
                 //(int) $_POST["categoria"]                     // Categoria
