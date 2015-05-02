@@ -75,16 +75,16 @@ class Curso_TurmaControle extends Curso_Controle
             $_Controle->Tema_Endereco($titulo);
         }
     }
-    static function Turmas_Tabela(&$cursos,$curso=false){
+    static function Turmas_Tabela(&$turmas,$curso=false){
         if($curso==='false') $curso = false;
         $registro   = \Framework\App\Registro::getInstacia();
         $Modelo     = &$registro->_Modelo;
         $Visual     = &$registro->_Visual;
         $tabela = Array();
         $i = 0;
-        if(is_object($cursos)) $cursos = Array(0=>$cursos);
-        reset($cursos);
-        foreach ($cursos as &$valor) {
+        if(is_object($turmas)) $turmas = Array(0=>$turmas);
+        reset($turmas);
+        foreach ($turmas as &$valor) {
             if($curso===false || $curso==0){
                 
                 $tabela['Curso'][$i]   = $valor->curso2;
@@ -117,16 +117,16 @@ class Curso_TurmaControle extends Curso_Controle
         }
         return Array($tabela,$i);
     }
-    static function Abertas_Tabela(&$cursos,$curso=false,$inscrever=true){
+    static function Abertas_Tabela(&$turmas,$curso=false,$inscrever=true){
         if($curso==='false') $curso = false;
         $registro   = \Framework\App\Registro::getInstacia();
         $Modelo     = &$registro->_Modelo;
         $Visual     = &$registro->_Visual;
         $tabela = Array();
         $i = 0;
-        if(is_object($cursos)) $cursos = Array(0=>$cursos);
-        reset($cursos);
-        foreach ($cursos as &$valor) {
+        if(is_object($turmas)) $turmas = Array(0=>$turmas);
+        reset($turmas);
+        foreach ($turmas as &$valor) {
             if($curso===false || $curso==0){
                 
                 $tabela['Curso'][$i]   = $valor->curso2;
@@ -144,16 +144,15 @@ class Curso_TurmaControle extends Curso_Controle
         }
         return Array($tabela,$i);
     }
-    static function Inscricoes_Tabela(&$cursos){
-        if($curso==='false') $curso = false;
+    static function Inscricoes_Tabela(&$inscricoes){
         $registro   = \Framework\App\Registro::getInstacia();
         $Modelo     = &$registro->_Modelo;
         $Visual     = &$registro->_Visual;
         $tabela = Array();
         $i = 0;
-        if(is_object($cursos)) $cursos = Array(0=>$cursos);
-        reset($cursos);
-        foreach ($cursos as &$valor) {
+        if(is_object($inscricoes)) $inscricoes = Array(0=>$inscricoes);
+        reset($inscricoes);
+        foreach ($inscricoes as &$valor) {
             $tabela['Curso'][$i]            = $valor->curso2;
             $tabela['Turma'][$i]            = $valor->turma2;
             $tabela['Aluno'][$i]           = $valor->usuario2;
@@ -213,14 +212,14 @@ class Curso_TurmaControle extends Curso_Controle
                 'Link'      => 'Curso/Turma/Turmas'.$url_add,
             )
         )));
-        $cursos = $this->_Modelo->db->Sql_Select('Curso_Turma',$where);
+        $turmas = $this->_Modelo->db->Sql_Select('Curso_Turma',$where);
         if($curso!==false){
             $titulo = 'Listagem de Turmas: '.$curso_registro->nome;
         }else{
             $titulo = 'Listagem de Turmas em Todos os Cursos';
         }
-        if($cursos!==false && !empty($cursos)){
-            list($tabela,$i) = self::Turmas_Tabela($cursos,$curso);
+        if($turmas!==false && !empty($turmas)){
+            list($tabela,$i) = self::Turmas_Tabela($turmas,$curso);
             $titulo = $titulo.' ('.$i.')';
             if($export!==false){
                 self::Export_Todos($export,$tabela, $titulo);
@@ -294,14 +293,14 @@ class Curso_TurmaControle extends Curso_Controle
                 'Link'      => 'Curso/Turma/Turmas'.$url_add,
             )
         )));
-        $cursos = $this->_Modelo->db->Sql_Select('Curso_Turma',$where);
+        $turmas = $this->_Modelo->db->Sql_Select('Curso_Turma',$where);
         if($curso!==false){
             $titulo = 'Listagem de Turmas: '.$curso_registro->nome;
         }else{
             $titulo = 'Listagem de Turmas em Todos os Cursos';
         }
-        if($cursos!==false && !empty($cursos)){
-            list($tabela,$i) = self::Abertas_Tabela($cursos,$curso);
+        if($turmas!==false && !empty($turmas)){
+            list($tabela,$i) = self::Abertas_Tabela($turmas,$curso);
             $titulo = $titulo.' ('.$i.')';
             if($export!==false){
                 self::Export_Todos($export,$tabela, $titulo);
@@ -400,7 +399,7 @@ class Curso_TurmaControle extends Curso_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 2.0
      */
-    public function Turmas_Ver($id,$curso = false){
+    public function Turmas_Ver($id,$curso = false,$export=false){
         if($curso==='false') $curso = false;
         if($id===false){
             throw new \Exception('Turma não existe:'. $id, 404);

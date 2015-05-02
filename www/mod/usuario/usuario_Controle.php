@@ -139,8 +139,7 @@ class usuario_Controle extends \Framework\App\Controle
             //$tabela['Nivel de Admin'][$i]   = $niveladmin;
             // para MOdulos que contem banco
             if(\Framework\App\Sistema_Funcoes::Perm_Modulos('Financeiro') && $Financeiro_User_Saldo){
-                $saldo = Financeiro_Modelo::Carregar_Saldo($Modelo, $valor->id, true);
-                $tabela['Saldo'][$i]        = $saldo;
+                $tabela['Saldo'][$i]        = Financeiro_Modelo::Carregar_Saldo($Modelo, $valor->id, true);
             }
             // Funcoes
 
@@ -154,12 +153,18 @@ class usuario_Controle extends \Framework\App\Controle
             // Visualizar
             $funcoes_qnt = 1;
             $tabela['Funções'][$i]          = $Visual->Tema_Elementos_Btn('Visualizar'     ,Array('Visualizar '.$nomedisplay_sing        ,$url_ver.'/'.$valor->id.'/'.$linkextra    ,''),$perm_view);
+            
+
+
             // Financeiro Especifico
-            if(\Framework\App\Sistema_Funcoes::Perm_Modulos('Financeiro') && $Financeiro_User_Saldo){
+            /*if(\Framework\App\Sistema_Funcoes::Perm_Modulos('Financeiro') && $Financeiro_User_Saldo){
                 $tabela['Funções'][$i]     .=   '<a confirma="O '.$nomedisplay_sing.' realizou um deposito para a empresa?" title="Add quantia ao Saldo do '.$nomedisplay_sing.'" class="btn lajax explicar-titulo" acao="" href="'.URL_PATH.'Financeiro/Admin/financeiro_deposito/'.$valor->id.$linkextra.'"><img border="0" src="'.WEB_URL.'img/icons/cifrao_16x16.png" alt="Depositar"></a>'.
                                                 '<a confirma="O '.$nomedisplay_sing.' confirmou o saque?" title="Remover Quantia do Saldo do '.$nomedisplay_sing.'" class="btn lajax explicar-titulo" acao="" href="'.URL_PATH.'Financeiro/Admin/financeiro_retirar/'.$valor->id.$linkextra.'"><img border="0" src="'.WEB_URL.'img/icons/cifrao_16x16.png" alt="Retirar"></a>';
                 $funcoes_qnt = 3;
-            }
+            }*/
+            
+            
+            
             // Comentario de Usuario
             if(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Comentarios')){
                 if($funcoes_qnt>2){

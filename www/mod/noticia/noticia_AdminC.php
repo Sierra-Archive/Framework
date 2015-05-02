@@ -58,6 +58,22 @@ class noticia_AdminControle extends noticia_Controle
     }
     
     /**
+     * Deleta Campos de Propostas 
+     * @param type $campos
+     * @param type $tema
+     */
+    static function Campos_Deletar(&$campos){
+        // Retira Padroes
+        if(!(\Framework\App\Sistema_Funcoes::Perm_Modulos('Musica'))){
+             self::DAO_Campos_Retira($campos, 'Artistas');
+        }
+        
+        if(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('noticia_Categoria') === false){
+            self::DAO_Campos_Retira($campos, 'categoria');
+        }
+       
+    }
+    /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 2.0
@@ -127,8 +143,7 @@ class noticia_AdminControle extends noticia_Controle
         $formlink   = 'noticia/Admin/Noticias_Add2/';
         $campos = Noticia_DAO::Get_Colunas();
         
-        if(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('noticia_Categoria') === false) self::DAO_Campos_Retira($campos, 'categoria');
-        self::DAO_Campos_Retira($campos, 'Artistas');
+        self::Campos_Deletar($campos);
 
         \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos);
     }
@@ -164,6 +179,8 @@ class noticia_AdminControle extends noticia_Controle
         $formlink   = 'noticia/Admin/Noticias_Edit2/'.$id;
         $editar     = Array('Noticia',$id);
         $campos = Noticia_DAO::Get_Colunas();
+        
+        self::Campos_Deletar($campos);
         \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos,$editar);   
     }
     /**

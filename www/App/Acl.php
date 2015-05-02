@@ -50,7 +50,10 @@ class Acl{
             }
             
             
-            // Começa Teste Login
+            // Esqueci Minha Senha
+            if(isset($_POST['sistema_esquecisenha'])){
+                
+            }
             
             // verifica se foi pedido o logout
             if(isset($_GET['logout'])) $logout = 'sair';

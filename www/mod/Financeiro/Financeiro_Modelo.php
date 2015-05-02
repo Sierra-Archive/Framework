@@ -168,17 +168,17 @@ class Financeiro_Modelo extends \Framework\App\Modelo
             ORDER BY log_date_add
         ');*/
         $sql = $modelo->db->query('SELECT U.valor, U.log_date_add, U.positivo FROM (
-                SELECT G.valor, G.log_date_add, 1 as positivo
+                SELECT G.valor, G.log_date_add, 0 as positivo
                 FROM '.MYSQL_FINANCEIRO_MOV_INT.' as G
-                WHERE G.deletado!=1 AND G.entrada_motivo = \'Usuario\' AND G.entrada_motivoid = '.$usuarioid.'
+                WHERE G.deletado!=1 AND G.pago = \'0\' AND  G.entrada_motivo = \'Usuario\' AND G.entrada_motivoid = '.$usuarioid.'
             UNION ALL
-                SELECT P.valor, P.log_date_add, 0 as positivo
+                SELECT P.valor, P.log_date_add, 1 as positivo
                 FROM '.MYSQL_FINANCEIRO_MOV_INT.' as P
-                WHERE P.deletado!=1 AND P.saida_motivo = \'Usuario\' AND P.saida_motivoid = '.$usuarioid.'
+                WHERE P.deletado!=1 AND P.pago = \'0\' AND P.saida_motivo = \'Usuario\' AND P.saida_motivoid = '.$usuarioid.'
             ) as U ORDER BY log_date_add
         ');
         while($campo = $sql->fetch_object()){
-            if($campo->positivo==1){
+            if($campo->positivo=='1'){
                 $valor = $valor + $campo->valor;
             }else{
                 $valor = $valor - $campo->valor;
@@ -186,7 +186,7 @@ class Financeiro_Modelo extends \Framework\App\Modelo
         }
         if($completo===true){
             if($valor<0){
-                $valor = '- R$ '.number_format($valor, 2, ',', '.');
+                $valor = '<font color="red">- R$ '.number_format($valor*-1, 2, ',', '.').'</font>';
             }else{
                 $valor = 'R$ '.number_format($valor, 2, ',', '.');
             }

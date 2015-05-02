@@ -120,7 +120,7 @@ class Financeiro_UsuarioControle extends Financeiro_Controle
             'entrada_motivo'     => 'Usuario',
             'entrada_motivoid'   => $usuarioid,
         );
-        list($tabela,$i) = $this->Movimentacao_Interna($where,'Mini');
+        list($tabela,$i) = $this->Movimentacao_Interna($where,'Mini',false,'',false);
         $titulo = $titulo.' ('.$i.')';
         if($i==0){          
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhuma Conta à pagar</font></b></center>');
@@ -281,7 +281,30 @@ class Financeiro_UsuarioControle extends Financeiro_Controle
         $_Modelo->db->Sql_Update($string);
     }
     public function Financeiros_Pagar($id=false, $localizacao=false, $dataini=false,$datafin=false){
-        // Faz Protecao, e Linguagem apropriada
+        $html = '';
+        
+        
+        $html .= '<!-- INICIO FORMULARIO BOTAO PAGSEGURO -->
+        <form action="https://pagseguro.uol.com.br/checkout/v2/payment.html" method="post" onsubmit="PagSeguroLightbox(this); return false;">
+        <!-- NÃO EDITE OS COMANDOS DAS LINHAS ABAIXO -->
+        <input type="hidden" name="code" value="C4C306DAE9E9F3D7747E3FB32285EA9C" />
+        <input type="image" src="https://p.simg.uol.com.br/out/pagseguro/i/botoes/pagamentos/120x53-pagar.gif" name="submit" alt="Pague com PagSeguro - é rápido, grátis e seguro!" />
+        </form>
+        <script type="text/javascript" src="https://stc.pagseguro.uol.com.br/pagseguro/api/v2/checkout/pagseguro.lightbox.js"></script>
+        <!-- FINAL FORMULARIO BOTAO PAGSEGURO -->';
+        
+        
+        
+        
+        
+        $this->_Visual->Blocar($html);
+        
+        
+        $this->_Visual->Bloco_Unico_CriaJanela('Pagar');
+        
+        
+        
+        /*// Faz Protecao, e Linguagem apropriada
         if($id===false){
             throw new \Exception('Financeiro não especificado: '.$id,404);
         }
@@ -325,7 +348,7 @@ class Financeiro_UsuarioControle extends Financeiro_Controle
         $editar->valor_juros = $editar->valor;
         $editar->dt_pago = APP_DATA_BR;
         // Puxa controler
-        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos,$editar);
+        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos,$editar);*/
     }
     /**
      * 

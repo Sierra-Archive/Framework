@@ -110,8 +110,11 @@ class Financeiro_Controle extends \Framework\App\Controle
             if(is_object($financeiros)) $financeiros = Array(0=>$financeiros);
             reset($financeiros);
             $perm_editar = $this->_Registro->_Acl->Get_Permissao_Url('Financeiro/Pagamento/Financeiros_VencimentoEdit');
-            $perm_pagar = $this->_Registro->_Acl->Get_Permissao_Url('Financeiro/Pagamento/Financeiros_Pagar');
-            
+            if($pagamento){
+                $perm_pagar = $this->_Registro->_Acl->Get_Permissao_Url('Financeiro/Pagamento/Financeiros_Pagar');
+            }else{
+                $perm_pagar = $this->_Registro->_Acl->Get_Permissao_Url('Financeiro/Usuario/Financeiros_Pagar');
+            }
             
             foreach ($financeiros as &$valor) {
                 //$tabela['#Id'][$i]       = '#'.$valor->id;
@@ -134,7 +137,8 @@ class Financeiro_Controle extends \Framework\App\Controle
                     unset($tempo2);$tabela['Motivo'][$i]                   = $responsavel.' com '.$motivo;
                     $tabela['Valor'][$i]                    = $valor->valor;                    
                     
-                    $tabela['Funções'][$i]                  = //$this->_Visual->Tema_Elementos_Btn('Visualizar' ,Array('Visualizar'         ,'Financeiro/Pagamento/Financeiro_View/'.$valor->id.'/'    ,'')).
+                    if($pagamento){
+                        $tabela['Funções'][$i]              = //$this->_Visual->Tema_Elementos_Btn('Visualizar' ,Array('Visualizar'         ,'Financeiro/Pagamento/Financeiro_View/'.$valor->id.'/'    ,'')).
                                                               $this->_Visual->Tema_Elementos_Btn('Editar'          ,Array('Editar Vencimento'        ,'Financeiro/Pagamento/Financeiros_VencimentoEdit/'.$valor->id.'/'    ,''),$perm_editar).
                                                               $this->_Visual->Tema_Elementos_Btn(
                                                                 'Personalizado',
@@ -147,6 +151,20 @@ class Financeiro_Controle extends \Framework\App\Controle
                                                                 ),
                                                                 $perm_pagar
                                                             );
+                    }else{
+                        $tabela['Funções'][$i]              = //$this->_Visual->Tema_Elementos_Btn('Visualizar' ,Array('Visualizar'         ,'Financeiro/Pagamento/Financeiro_View/'.$valor->id.'/'    ,'')).
+                                                              $this->_Visual->Tema_Elementos_Btn(
+                                                                'Personalizado',
+                                                                Array(
+                                                                    'Pagar'        ,
+                                                                    'Financeiro/Usuario/Financeiros_Pagar/'.$valor->id.'/'.$endereco    ,
+                                                                    '',
+                                                                    'download',
+                                                                    'inverse',
+                                                                ),
+                                                                $perm_pagar
+                                                            );
+                    }
                     if($total!==false){
                         $total_qnt = $total_qnt + \Framework\App\Sistema_Funcoes::Tranf_Real_Float($valor->valor);
                     }
