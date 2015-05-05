@@ -1159,7 +1159,7 @@ class Visual
                 $params['site_titulo'] = $tipo_nome;
             }
             //Acrescenta ao Endereco, caso nao exista
-            if(preg_match('/<span class="divider">\/<\/span><\/li>$/', $params['widgets']['Navegacao_Endereco'])) {
+            if(isset($params['widgets']['Navegacao_Endereco']) && preg_match('/<span class="divider">\/<\/span><\/li>$/', $params['widgets']['Navegacao_Endereco'])) {
                 $params['widgets']['Navegacao_Endereco'] .= '<li class="active">'.$tipo_nome.'</li>';
             }
         }

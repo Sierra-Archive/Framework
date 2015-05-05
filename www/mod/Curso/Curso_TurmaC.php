@@ -786,7 +786,11 @@ class Curso_TurmaControle extends Curso_Controle
                 //(int) $_POST["categoria"]                     // Categoria
             );
         }
-        $this->Abertas($curso);
+        
+        
+        \Framework\App\Sistema_Funcoes::Redirect('Financeiro/Usuario/Pagar');
+        
+        //$this->Abertas($curso);
     }
     public function Inscricao_Mover($inscricao,$turma,$curso = false){
         if($curso==='false') $curso = false;

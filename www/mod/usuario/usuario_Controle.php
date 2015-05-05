@@ -36,13 +36,13 @@ class usuario_Controle extends \Framework\App\Controle
         $usuario_Admin_Grupo            = \Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Grupo_Mostrar');
 
         // Get Permissoes (Fora Do LOOPING por performace)
-        $perm_view = $registro->_Acl->Get_Permissao_Url($url_ver);
-        $perm_comentario = $registro->_Acl->Get_Permissao_Url('usuario/Admin/Usuarios_Comentario');
-        $perm_anexo = $registro->_Acl->Get_Permissao_Url('usuario/Anexo/Anexar');
-        $perm_email = $registro->_Acl->Get_Permissao_Url('usuario/Admin/Usuarios_Email');
-        $perm_status = $registro->_Acl->Get_Permissao_Url('usuario/Admin/Status');
-        $perm_editar = $registro->_Acl->Get_Permissao_Url($url_editar);
-        $perm_del = $registro->_Acl->Get_Permissao_Url($url_deletar);
+        $perm_view          = $registro->_Acl->Get_Permissao_Url($url_ver);
+        $perm_comentario    = $registro->_Acl->Get_Permissao_Url('usuario/Admin/Usuarios_Comentario');
+        $perm_anexo         = $registro->_Acl->Get_Permissao_Url('usuario/Anexo/Anexar');
+        $perm_email         = $registro->_Acl->Get_Permissao_Url('usuario/Admin/Usuarios_Email');
+        $perm_status        = $registro->_Acl->Get_Permissao_Url('usuario/Admin/Status');
+        $perm_editar        = $registro->_Acl->Get_Permissao_Url($url_editar);
+        $perm_del           = $registro->_Acl->Get_Permissao_Url($url_deletar);
         
         // Verifica Grupo
         $Ativado_Grupo = false;
@@ -232,7 +232,13 @@ class usuario_Controle extends \Framework\App\Controle
     * usuariolistar
     * 
     * @name usuariolistar
-    * @access public
+    * @access protected
+     * @param type $grupo 
+     * @param type $ativado 
+     * @param type $gravidade 
+     * @param type $inverter 
+     * @param type $export 
+     * @return type
     * 
     * @uses usuario_ListarModelo::$retorna_usuarios
     * @uses \Framework\App\Visual::$Show_Tabela_DataTable
@@ -243,7 +249,7 @@ class usuario_Controle extends \Framework\App\Controle
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 2.0
-    */
+     */
     protected function usuariolistar($grupo=false,$ativado=false,$gravidade=0,$inverter=false,$export=false){
         $i = 0;
         if($grupo===false){
@@ -371,6 +377,10 @@ class usuario_Controle extends \Framework\App\Controle
         }
         $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',$gravidade);
     }
+   /**
+    * Description
+    * @return type
+    */
     public function Show_ConhecaOsPlanos(){
         // Cria Tabela
         $tabela = new \Framework\Classes\Tabela();

@@ -98,10 +98,10 @@
             <div class="login-footer">
                 <div class="remember-hint pull-left">
                     <input type="checkbox" id=""> Lembrar Login
-                </div><!--
+                </div>
                 <div class="forgot-hint pull-right">
-                    <a id="forget-password" class="" href="javascript:;">Esqueceu sua senha?</a>
-                </div>-->
+                    <a id="forget-password" class="" href="<?php echo URL_PATH.SISTEMA_DIR_INT; ?>?sistema_esquecisenha=true">Esqueceu sua senha?</a>
+                </div>
             </div>
         </div>
     </form>

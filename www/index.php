@@ -1,5 +1,16 @@
 <?php
 /*
+ *face 
+ * 
+	https://www.facebook.com/dialog/oauth?type=web_server&client_id=316919218403687&redirect_uri=https%3A%2F%2Fwc.wolframalpha.com%2Fsocial%2Flogin.php%2Fwapro&response_type=code&scope=email+user_birthday+user_checkins+user_education_history+user_hometown+user_likes+user_location+user_photos+user_relationships+user_religion_politics+user_status+user_videos+friends_birthday+friends_education_history+friends_hometown+friends_location+friends_photos+friends_relationships+friends_religion_politics+friends_videos+read_friendlists+read_stream+offline_access+publish_stream+publish_actions#_=_
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ */
+/*
 $julio = '12312312318371287318732';
 define('JULIO', '12312312318371287318732');
 function var_global(){

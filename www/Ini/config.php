@@ -555,6 +555,9 @@ if(!defined('MYSQL_CAT')){
 } if(!defined('MYSQL_USUARIO_PERMISSAO')){
     define('MYSQL_USUARIO_PERMISSAO',                       'Usuario_Permissao');
 }
+if(!defined('MYSQL_SIS_LOGIN_ESQUECISENHA')){
+    define('MYSQL_SIS_LOGIN_ESQUECISENHA',                  'Sistema_Login_Esquecisenha');
+}
 
 // BASICOS
 if(!defined('MYSQL_USUARIOS')){

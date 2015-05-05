@@ -51,8 +51,151 @@ class Acl{
             
             
             // Esqueci Minha Senha
-            if(isset($_POST['sistema_esquecisenha'])){
-                
+            if(isset($_GET['sistema_esquecisenha'])){
+                $this->_Registro->_Visual = new \Framework\App\Visual();
+                $this->_Registro->_Visual->Json_Info_Update('Titulo', 'Esqueci Senha');
+                // Clicando no link do email
+                if(isset($_GET['sistema_esquecisenha_cod'])){
+                    $novasenha = Sistema_Funcoes::Gerar_Senha();
+                    $codPassado = Sistema_Funcoes::Gerar_Hash($_GET['sistema_esquecisenha_cod']);
+                    $inscricao = $this->_db->Sql_Select('Sistema_Login_Esquecisenha','{sigla}usado=\'0\' AND {sigla}chave=\''.$codPassado.'\'',1);
+                    if($inscricao===false){
+                        // MEnsagem de Erro
+                        $mensagens = array(
+                            "tipo"              => 'erro',
+                            "mgs_principal"     => 'Código Inválido',
+                            "mgs_secundaria"    => 'Verifique se a url foi digitada corretamente, ou se já foi usado ou expirada essa requisição.'
+                        );
+                        $this->_Registro->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+                        $this->_Registro->_Visual->renderizar();
+                        \Framework\App\Controle::Tema_Travar();
+                    }
+                    // Verifica se inscricao nao expiro
+                    if((time()-(60*60*24))>$inscricao->time){
+                        $inscricao->usado=2;
+                        $this->_db->Sql_Update($inscricao);
+                        // MEnsagem de Erro
+                        $mensagens = array(
+                            "tipo"              => 'erro',
+                            "mgs_principal"     => 'Código Expirado',
+                            "mgs_secundaria"    => 'Já faz mais de 24 hrs que esse código foi gerado.'
+                        );
+                        $this->_Registro->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+                        $this->_Registro->_Visual->renderizar();
+                        \Framework\App\Controle::Tema_Travar();
+                    }
+                    
+                    // Verifica se usuario existe
+                    $usuario = $this->_db->Sql_Select('Usuario','{sigla}login=\''.$inscricao->login.'\'',1);
+                    if($usuario===false){
+                        // MEnsagem de Erro
+                        $mensagens = array(
+                            "tipo"              => 'erro',
+                            "mgs_principal"     => 'Erro',
+                            "mgs_secundaria"    => 'Usuário não encontrado.'
+                        );
+                        $this->_Registro->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+                        $this->_Registro->_Visual->renderizar();
+                        \Framework\App\Controle::Tema_Travar();
+                    }
+                    $usuario->senha = $novasenha;
+                    $this->_db->Sql_Update($usuario);
+                    $inscricao->usado = '1';
+                    $this->_db->Sql_Update($inscricao);
+                    
+                    
+                    $this->_Registro->_Visual->Blocar('<b>Seu Login é:</b> '.$inscricao->login.'<br><b>Sua nova senha é:</b> '.$novasenha.'');
+                    $this->_Registro->_Visual->Bloco_Unico_CriaJanela('Senha Atualizada com Sucesso');
+                    $this->_Registro->_Visual->renderizar();
+                    \Framework\App\Controle::Tema_Travar();
+                    
+                }else
+                //Acabou de digitar o login
+                if(isset($_POST['sistema_esquecisenha_login'])){
+                    \Framework\App\Session::destroy(false);
+                    $this->logado           = false;
+                    $loginPassado = anti_injection($_POST['sistema_esquecisenha_login']);
+                    
+                    // Procura Login
+                    $usuario = $this->_db->Sql_Select('Usuario','{sigla}login=\''.$loginPassado.'\'',1);
+                    if($usuario===false){
+                        // MEnsagem de Erro
+                        $mensagens = array(
+                            "tipo"              => 'erro',
+                            "mgs_principal"     => 'Erro',
+                            "mgs_secundaria"    => 'Usuário não encontrado.'
+                        );
+                        $this->_Registro->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+                    
+                        $form = new \Framework\Classes\Form('FormEsqueciSenha',SISTEMA_DIR_INT.'?sistema_esquecisenha=true'/*,'formajax'*/); //formajax /'.SISTEMA_MODULO.'/'.SISTEMA_SUB.'/'.SISTEMA_MET
+                        $form->Input_Novo('Login','sistema_esquecisenha_login','','text', '',30, '');
+                        $this->_Registro->_Visual->Blocar($form->retorna_form('Trocar a Senha'));
+                        $this->_Registro->_Visual->Bloco_Unico_CriaJanela('Digite o Email');
+                        $this->_Registro->_Visual->renderizar();
+                        \Framework\App\Controle::Tema_Travar();
+                    }
+                    // SE ja tiver inscricao desvale ela
+                    $inscricao = $this->_db->Sql_Select('Sistema_Login_Esquecisenha','{sigla}usado=\'0\' AND {sigla}login=\''.$loginPassado.'\'',1);
+                    if($inscricao!==false){
+                        if((time()-(60*60*24))>$inscricao->time){
+                            $inscricao->usado=2;
+                            $this->_db->Sql_Update($inscricao);
+                        }else{
+                            // MEnsagem de Erro
+                            $mensagens = array(
+                                "tipo"              => 'erro',
+                                "mgs_principal"     => 'Erro',
+                                "mgs_secundaria"    => 'Vocẽ já fez sua requisição por uma nova senha. Verifique seu email.'
+                            );
+                            $this->_Registro->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+                            $this->_Registro->_Visual->renderizar();
+                            \Framework\App\Controle::Tema_Travar();
+                        }
+                    }
+                    
+                    $codPassado = Sistema_Funcoes::Gerar_Token();
+                    $inscricao = new \Sistema_Login_Esquecisenha_DAO();
+                    $inscricao->ip = $_SERVER['REMOTE_ADDR'];
+                    $inscricao->login = $loginPassado;
+                    $inscricao->usado = '0';
+                    $inscricao->time = time();
+                    $inscricao->chave = Sistema_Funcoes::Gerar_Hash($codPassado);
+                    $this->_db->Sql_Inserir($inscricao);
+                    
+                    
+                    // Criar Email
+                    $email = 'Clique no Link Abaixo para Gerar uma Nova senha para o seu Login'
+                            .'<a href="'.URL_PATH.SISTEMA_DIR_INT.'?sistema_esquecisenha=true&sistema_esquecisenha_cod='.$codPassado.'">Clique Aqui</a>';
+                    if(Controle::Enviar_Email($email, 'Alteração de Senha', $usuario->email, $usuario->nome)===false){
+                        // MEnsagem de Erro
+                        $mensagens = array(
+                            "tipo"              => 'erro',
+                            "mgs_principal"     => 'Erro',
+                            "mgs_secundaria"    => 'O email não pode ser enviado, contate o administrador do sistema.'
+                        );
+                        $this->_Registro->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+                        $this->_Registro->_Visual->renderizar();
+                        \Framework\App\Controle::Tema_Travar();
+                    }
+                    
+                    // Avisa na Tela
+                    $this->_Registro->_Visual->Blocar('Clique no Link enviado por Email.<br>Por favor verifique seu email.');
+                    $this->_Registro->_Visual->Bloco_Unico_CriaJanela('Enviado com Sucesso');
+                    $this->_Registro->_Visual->renderizar();
+                    \Framework\App\Controle::Tema_Travar();
+                }
+                // Criar Formulario
+                else{
+                    \Framework\App\Session::destroy(false);
+                    $this->logado           = false;
+                    
+                    $form = new \Framework\Classes\Form('FormEsqueciSenha',SISTEMA_DIR_INT.'?sistema_esquecisenha=true'/*,'formajax'*/); //formajax /'.SISTEMA_MODULO.'/'.SISTEMA_SUB.'/'.SISTEMA_MET
+                    $form->Input_Novo('Login','sistema_esquecisenha_login','','text', '',30, '');
+                    $this->_Registro->_Visual->Blocar($form->retorna_form('Trocar a Senha'));
+                    $this->_Registro->_Visual->Bloco_Unico_CriaJanela('Digite o Email');
+                    $this->_Registro->_Visual->renderizar();
+                    \Framework\App\Controle::Tema_Travar();
+                }
             }
             
             // verifica se foi pedido o logout

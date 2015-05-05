@@ -139,6 +139,19 @@ abstract class Controle
             }
         }
     }
+    
+    public static function Enviar_Email($texto,$assunto='Sem Assunto',$email=false,$nome=false){
+        require_once CLASS_PATH . 'Email'.DS.'Email'.'.php';
+        $mailer = new \Framework\Classes\Email();
+        $send	= $mailer->setTo($email, $nome)
+                    ->setSubject($assunto.' - '.SISTEMA_NOME)
+                    ->setFrom(SISTEMA_EMAIL, SISTEMA_NOME)
+                    ->addGenericHeader('X-Mailer', 'PHP/' . phpversion())
+                    ->addGenericHeader('Content-Type', 'text/html; charset="utf-8"')
+                    ->setMessage($texto)
+                    ->setWrap(78)->send();
+        return $send;
+    }
     /**
      * Trava o Código e para de Executar tudo
      * 
