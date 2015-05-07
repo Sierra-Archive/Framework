@@ -832,7 +832,10 @@ class Acl{
     }
     
     /**
-     * Ve o valor de algum Config Funcional
+     * Em cima de uma Chave, retorna o Valor desse Config nesse Servidor
+     * 
+     * @param varchar $chave
+     * @return boolean Se o Valor desse Config for um Array, Retornara um Array
      */
     public static function Sistema_Modulos_Configs_Funcional($chave=false){
         if($chave===false || $chave=='') return false;

@@ -1,5 +1,8 @@
 <?php
 namespace Framework\App;
+/**
+ * Class singleton, ela garante a existencia de apenas uma instancia de cada classe
+ */
 class Registro
 {
     private static $_instacia;

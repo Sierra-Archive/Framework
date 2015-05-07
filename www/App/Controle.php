@@ -6,6 +6,11 @@ namespace Framework\App;
 abstract class Controle
 {
     public static $ligado = false;
+    
+    /**
+     * Armazena a Classe Registro (Classe singleton, ela garante a existencia de apenas uma instancia de cada classe)
+     * @var Object 
+     */
     protected $_Registro;
     protected $_Cache;
     protected $_Modelo;
@@ -2189,17 +2194,6 @@ readfile($link);*/
      * 
      * @name __destruct
      * @access public
-     * 
-     * @uses $language
-     * @uses \Framework\Classes\Form::$Select_Novo
-     * @uses \Framework\Classes\Form::$Select_Fim
-     * @uses \Framework\App\Modelo::$Categorias_Retorna
-     * @uses \Framework\App\Visual::$menu
-     * @uses \Framework\App\Visual::$Json_Exist
-     * @uses \Framework\App\Visual::$Bloco_Menor_Retornar
-     * @uses \Framework\App\Visual::$Bloco_Maior_Retornar
-     * @uses \Framework\App\Visual::$Json_IncluiTipo
-     * @uses \Framework\App\Visual::$Json_Retorna
      * 
      * @return void
      * 

@@ -41,14 +41,41 @@ final class Conexao
     protected $senha                    =  '';
     protected $banco                    =  '';
     
+    /**
+     * Armazena a Classe Registro (Classe singleton, ela garante a existencia de apenas uma instancia de cada classe)
+     * @var Object 
+     */
     protected $_Registro                =  '';
     protected $_Cache                   =  '';
-    
+    /**
+     * Class MYSQLI
+     * @var Object 
+     */
     protected $mysqli;
+    /**
+     * Armazena na Memoria Ram todas as Classes DAO DO SISTEMA
+     * @var array 
+     */
     static    $tabelas;
+    /**
+     * Armazena na Memoria Ram todas as SIGLAS das Classes DAO DO SISTEMA
+     * @var array 
+     */
     static    $tabelas_siglas           = Array();
+    /**
+     * Armazena na Memoria Ram todas as conexoes com tabelas extrangeiras das Classes DAO DO SISTEMA
+     * @var array 
+     */
     static    $tabelas_ext              = Array();
+    /**
+     * Armazena na Memoria Ram todas os links entre tabelas das Classes DAO DO SISTEMA
+     * @var array 
+     */
     static    $tabelas_Links            = Array();
+    /**
+     * Armazena na Memoria Ram todas os links entre tabelas em ordem inversa das Classes DAO DO SISTEMA
+     * @var array 
+     */
     static    $tabelas_Links_Invertido  = Array();
     
     

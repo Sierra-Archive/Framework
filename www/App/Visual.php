@@ -7,26 +7,69 @@ namespace Framework\App;
 class Visual
 {
     // Registro e Classes do Framework
+    /**
+     * Armazena a Classe Registro (Classe singleton, ela garante a existencia de apenas uma instancia de cada classe)
+     * @var Object 
+     */
     protected $_Registro;
+    /**
+     * Classe de Controle de Acesso
+     * @var Object 
+     */
     protected $_Acl;
     
     // Config Visual
     private $head_js                    = '';
-    public $layoult                     = 'completo';
     
     // Staticas
+    /**
+     * Garante que os Ids das Abas e Divs nao irao se Repetir
+     * @var int 
+     */
     public static $layoult_idaleatorio      = 0;
+    /**
+     * Armazena o Arquivo de COnfiguracoes do Template dentro dela
+     * @var function 
+     */
     public static $config_template;
     
     // Lang
+    /**
+     * Linguagem que o sistema carregara (Ainda nao esta implementado em outra lingua)
+     * @var type 
+     */
     protected $sistema_linguagem        = 'ptBR';
+    /**
+     * Tipo de Layoult, Pode ser 0 Normal, 1 Ajax, ou 2 So COnteudo PURO
+     * @var type 
+     */
     protected $Layolt_Tipo              = 0;
 
     // Variaveis de Template
+    /**
+     * Nome do Tema, e o mesmo nome da pasta do tema dentro de /Layoult
+     * @var varchar 
+     */
     private $template_layoult           = TEMA_PADRAO;
+    /**
+     * Local de Armazenamento do Template atraves do HTTP, cliente
+     * @var varchar 
+     */
     private $template_url;
+    /**
+     * Local de Armazenamento do Template dentro do Servidor
+     * @var varchar 
+     */
     private $template_dir;
+    /**
+     * Local de Armazenamento do Config Template
+     * @var varchar 
+     */
     private $template_config_dir;
+    /**
+     * Diversos Widgets em Diferentes Formatos que serao usados pelo tema armazenado em /Layoult
+     * @var type 
+     */
     private $_widgets_params            = Array();
     
     // Minimiza
@@ -36,11 +79,24 @@ class Visual
     private $arquivos_css_dependencia   = Array();
     
     // Variaveis do Json
+    /**
+     * Se o Json do HTML esta sendo usado (Ele sempre sera usado, em todas as requisicoes)
+     * @var type 
+     */
     private $jsonativado                = false;
     private $json                       = array();
+    /**
+     * Quantidade de Tipos sendo Usados dentro do Json do HTML
+     * @var int 
+     */
     private $jsontipoqnt                = 0;
     
     // Manipulação dos Blocos
+    /**
+     * Somente e Usado se o Tipo de Layoult for 2
+     * Se for usado seu conteudo sera colado na tela
+     * @var varchar 
+     */
     private     $conteudo;
     protected   $blocos                 = Array();
     protected   $Layoult_BlocoUnico     = Array();
@@ -337,13 +393,15 @@ class Visual
         );
     }
     /**
+     * O Template do SIstema é Divididos em um bloco Unico, embaixo um maior e um menor lado a lado.
+     * Essa função Retorna os Dados desse Bloco em ordem de 'gravidade' e retorna o html
      * 
-     * @return type
+     * @return varchar
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.0.1
      */
-    public function Bloco_Maior_Retornar(){
+    private function Bloco_Maior_Retornar(){
         $html = '';
         orderMultiDimensionalArray($this->Layoult_BlocoMaior, 'gravidade', true);
         reset($this->Layoult_BlocoMaior);
@@ -355,31 +413,35 @@ class Visual
         return $html;
     }
     /**
-     * 
+     * Zera o Conteudo do Bloco Maior
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.0.1
      */
-    protected function Bloco_Maior_Zerar(){
+    private function Bloco_Maior_Zerar(){
         $this->Layoult_BlocoMaior = array();
     }
     /**
-    * Add Conteudo Com titulo ao lado da esquerda
-    * 
-    * @name Bloco_Maior_CriaJanela
-    * @access public
-    * 
-    * @param string $titulo
-    * @param string $url
-    * 
-    * @uses \Framework\App\Visual::$Layoult_BlocoMaior
-    * @uses \Framework\App\Visual::$blocos 
-    * 
-    * @return void
-    * 
-    * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.02
-    */
+     * Add Conteudo Com titulo no lado da esquerda
+     * NO bloco Maior
+     * 
+     * @name Bloco_Maior_CriaJanela
+     * @access public
+     * 
+     * 
+     * @param string $titulo Titulo Superior da Janela
+     * @param varchar $url Link de Url de Add (Caso nao senha deixar em branco ='')
+     * @param int $gravidade Ordem de PRioridade, quanto maior, mais em cima vai ficar
+     * @param mixed $botaoextra Se não tiver um botão extra, fica em false
+     * @param bolean $fechado Se esta aberto ou fechado
+     * @return void
+     * 
+     * @uses \Framework\App\Visual::$Layoult_BlocoMaior
+     * @uses \Framework\App\Visual::$blocos 
+     * 
+     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
+     * @version 0.02
+     */
     public function Bloco_Maior_CriaJanela($titulo,$url='', $gravidade=0,$botaoextra = false, $fechado=false) {
         if($url!='') $titulo = $titulo.'<a class="lajax-admin" href="'.$url.'" acao="">+</a>';
         list($tipo,$bloco) = $this->retornablocos();
@@ -403,19 +465,21 @@ class Visual
         );
     }
     /**
-    * Add Conteudo Sem titulo ao lado da direita
-    * 
-    * @name Bloco_Menor_CriaConteudo
-    * @access public
-    * 
-    * @uses \Framework\App\Visual::$Layoult_BlocoMenor
-    * @uses \Framework\App\Visual::$blocos 
-    * 
-    * @return void
-    * 
-    * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 2.0
-    */
+     * Add Conteudo Sem titulo ao lado da direita
+     * 
+     * @name Bloco_Menor_CriaConteudo
+     * @access public
+     * 
+     * @param int $gravidade Quanto Maior Mais em cima
+     * 
+     * @uses \Framework\App\Visual::$Layoult_BlocoMenor
+     * @uses \Framework\App\Visual::$blocos 
+     * 
+     * @return void
+     * 
+     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
+     * @version 2.0
+     */
     public function Bloco_Menor_CriaConteudo($gravidade=0) {
         list($tipo,$bloco) = $this->retornablocos();
         $this->Layoult_BlocoMenor[] = Array(
@@ -424,9 +488,9 @@ class Visual
         );
     }
     /**
-     * 
-     * @param string $titulo
-     * @param type $gravidade
+     * Cria um Titulo no Bloco Menor
+     * @param varchar $titulo
+     * @param int $gravidade Quanto Maior, mais prioridade, mais emcima.
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.0.1
@@ -452,13 +516,13 @@ class Visual
         );
     }
     /**
-     * 
+     * Retorna os blocos Menores
      * @return type
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.0.1
      */
-    public function Bloco_Menor_Retornar(){
+    private function Bloco_Menor_Retornar(){
         $html = '';
         orderMultiDimensionalArray($this->Layoult_BlocoMenor, 'gravidade', true);
         reset($this->Layoult_BlocoMenor);
@@ -469,16 +533,16 @@ class Visual
         return $html;
     }
     /**
-     * 
+     * Zera os Blocos Menores
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.0.1
      */
-    protected function Bloco_Menor_Zerar(){
+    private function Bloco_Menor_Zerar(){
         $this->Layoult_BlocoMenor = array();
     }
     /**
-     * 
+     * Criar Bloco no Lado direito, no bloco Menor
      * @param string $titulo
      * @param type $gravidade
      * 
@@ -507,8 +571,8 @@ class Visual
         );
     }
     /**
-     * 
-     * @param type $titulo
+     * Pega Um titulo e todo o conteudo armazenado nos blocos e add ao Conteudo
+     * @param varchar $titulo
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.0.1
@@ -518,9 +582,10 @@ class Visual
         $this->conteudo .= $titulo.'<br>'.$bloco.'';
     }
     /**
+     * Cria e Armazena um Conteudo HTML na memória do Sistema
      * 
-     * @param type $txt
-     * @param type $txt2
+     * @param type $txt Texto html ou titulo caso tenha o 2 parametro
+     * @param type $txt2 Texto html se o primeiro parametro for o titulo
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.0.1
@@ -535,7 +600,14 @@ class Visual
             );
         }
     }
-    // ARmazena Arquivos js
+    /**
+     * ARmazena dependencia de arquivo js por requerimento do sistema
+     * 
+     * @param type $endereco
+     * 
+     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
+     * @version 0.0.1
+     */
     private function Arquivos_Js($endereco){
         if(is_array($endereco)){
             $js = &$this->arquivos_js;
@@ -553,7 +625,14 @@ class Visual
             }
         }
     }
-    // ARmazena Arquivos js Por Requirimento de Modulo
+    /**
+     * ARmazena dependencia de arquivo js Por Requirimento de Modulo
+     * 
+     * @param type $endereco
+     * 
+     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
+     * @version 0.0.1
+     */
     public function Arquivos_Js_Dependencia($endereco){
         if(is_array($endereco)){
             $js = &$this->arquivos_js_dependencia;
@@ -571,7 +650,14 @@ class Visual
             }
         }
     }
-    // Cria Arquivo Unico
+    /**
+     * Cria Arquivo Unico
+     * 
+     * @return boolean
+     * 
+     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
+     * @version 0.0.1
+     */
     private function Arquivos_Js_Get(){
         $this->arquivos_js = array_merge($this->arquivos_js, $this->arquivos_js_dependencia);
         if(empty($this->arquivos_js)) return false;
@@ -583,14 +669,28 @@ class Visual
         
         return '<script type="text/javascript" src="'.WEB_URL.'min/?f='.implode(".js,",$this->arquivos_js).'.js"></script>';
     }
-    // Cria Arquivo Unico Dependente
+    /**
+     * Cria Arquivo Unico Dependente
+     * 
+     * @return boolean
+     * 
+     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
+     * @version 0.0.1
+     */
     private function Arquivos_Js_Get_Dependentes(){
         if(empty($this->arquivos_js_dependencia)) return false;
         //'<script type="text/javascript" src="'.WEB_URL.'"></script>'.
         return $this->arquivos_js_dependencia;
         //return WEB_URL.'min/?f='.implode(".js,",$this->arquivos_js_dependencia);
     }
-    // ARmazena Arquivos CSS
+    /**
+     * ARmazena Arquivos CSS
+     * 
+     * @param type $endereco
+     * 
+     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
+     * @version 0.0.1
+     */
     private function Arquivos_Css($endereco){
         if(is_array($endereco)){
             $css = &$this->arquivos_css;
@@ -608,7 +708,14 @@ class Visual
             }
         }
     }
-    // ARmazena Arquivos CSS Por Requirimento de Modulo
+    /**
+     * ARmazena Arquivos CSS Por Requirimento de Modulo
+     * 
+     * @param type $endereco
+     * 
+     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
+     * @version 0.0.1
+     */
     private function Arquivos_Css_Dependencia($endereco){
         if(is_array($endereco)){
             $css = &$this->arquivos_css_dependencia;
@@ -626,7 +733,14 @@ class Visual
             }
         }
     }
-    // Cria Arquivo Unico
+    /**
+     * Cria Arquivo Unico
+     * 
+     * @return boolean
+     * 
+     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
+     * @version 0.0.1
+     */
     private function Arquivos_Css_Get(){
         $this->arquivos_css = array_merge($this->arquivos_css, $this->arquivos_css_dependencia);
         if(empty($this->arquivos_css)) return false;
@@ -637,7 +751,14 @@ class Visual
         
         return '<link href="'.WEB_URL.'min/?f='.implode(".css,",$this->arquivos_css).'.css" rel="stylesheet" />';
     }
-    // Cria Arquivo Unico Dependente
+    /**
+     * Cria Arquivo Unico Dependente
+     * 
+     * @return boolean
+     * 
+     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
+     * @version 0.0.1
+     */
     private function Arquivos_Css_Get_Dependentes(){
         if(empty($this->arquivos_css_dependencia)) return false;
         //'<script type="text/javascript" src="'.WEB_URL.'"></script>'.
@@ -646,8 +767,9 @@ class Visual
     }
     
     /**
+     * Carrega Tudo que For Essencial para que o Sistema RODE PERFEITAMENTE
      * 
-     * @return string
+     * @return void
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.0.1
@@ -1092,26 +1214,40 @@ class Visual
         $temaconfig         = &self::$config_template['plugins']['abas_ativar'];
         return $temaconfig($numero);
     }
+    /**
+     * Widget UNICO
+     * @param type $endereco
+     * @param type $html
+     * @return boolean
+     * 
+     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
+     * @version 0.0.1
+     */
     public function Widget_Assimilar($endereco,$html){
         $this->_widgets_params[$endereco] = $html;
         return true;
     }
+    /**
+     * WIDGET MULTIPLO (VARIAS OPCOES)
+     * @param type $endereco
+     * @param type $html
+     * @return boolean
+     * 
+     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
+     * @version 0.0.1
+     */
     public function Widgets_Assimilar($endereco,$html){
         $this->_widgets_params[$endereco][] = $html;
         return true;
     }
     /**
-     * 
-     * @param type $calendario
-     * @param type $config_dia
-     * @param type $config_mes
-     * @param type $config_ano
-     * @param type $config_dataixi
+     * Renderiza Todo o Site, prepara tudo  e chama o Template, 
+     * principal arquivo php do tema dentro da pasta Layoult
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.0.1
      */
-    public function renderizar(&$calendario = 0,$config_dia = 0,$config_mes = 0,$config_ano = 0,$config_dataixi = 0) {
+    public function renderizar() {
         $imprimir = new \Framework\App\Tempo('Renderizar Json Visual - SEM SMARTY');
 	// logado =2 ajax
         $params = array(
@@ -1170,9 +1306,13 @@ class Visual
         $this->renderizar_Template('template',$params,false);
     }
     /**
+     * Carrega Uma Barra Superior cheia de botoes, ou apenas um botao simples com um link
+     * Se a permissao não for mencionada, então verifica a permissão do link, o que pode se tornar lento
+     * se for realiza dentro de um foreach por exemplo.
      * 
      * @param type $tipo
      * @param type $nome
+     * @param bolean $permissao Opcional, se nao for mencionada, verifica se o link tem permissao
      * @return type
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
@@ -1259,7 +1399,7 @@ class Visual
         }
     }
     /**
-     * 
+     * Renderiza Página de Login tanto inteira quanto via Ajax
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.0.1
@@ -1283,6 +1423,7 @@ class Visual
                 'url_img'       => $this->template_url.'img/',
                 'url_assets'    => $this->template_url.'assets/',
                 'menu'          => '',
+                'mensagem'          => '',
                 'sistema'       => array(
                     'css'           => $this->Sistema_Css(),
                     'extras'        => $this->Sistema_Extras()
@@ -1317,10 +1458,11 @@ class Visual
         }
     }
     /**
+     * Renderiza um Bloco de Conteudo,
      * 
-     * @param type $tpl
-     * @param type $params
-     * @return type
+     * @param type $tpl Nome do Arquivo
+     * @param type $params Parametros do Aqruivo
+     * @return string Html com os dados preenchidos
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.0.1
@@ -1330,6 +1472,18 @@ class Visual
         //$this->clear_cache($this->template_dir.$tpl.'.tpl');
         return $this->renderizar_Template($tpl,$params);
     }
+    /**
+     * Função Privada para Renderizar templates fornecendo os params do arquivo
+     * e o nome do arquivo dentro que esta dentro da pasta layoult no nome do tema
+     * 
+     * @param string $url
+     * @param type $params
+     * @param type $retorno
+     * @return boolean
+     * 
+     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
+     * @version 0.0.1
+     */
     private function renderizar_Template($url,$params,$retorno=true){
         $params = array_merge_recursive($params, array(
             'SOBRE_DIREITOS'    => SOBRE_DIREITOS,
@@ -1358,7 +1512,7 @@ class Visual
         }
     }
     /**
-     * 
+     * Altera o Tipo de Layoult que será exibido (normal, ajax)
      * @param type $alterar
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
@@ -1372,7 +1526,7 @@ class Visual
         }
     }
     /**
-     * 
+     * Gera Graficos em Forma de Pizza Usando uma lib interna
      * @param type $graficos
      * @return string
      * 
@@ -1400,12 +1554,18 @@ class Visual
      * Cria Tabela dinamica paginada, com busca, reordenação, tudo automatico
      * Enviar tabela em array
      * 
-     * Parametros: 2, tipo de tabela, relatorio, ou s� mostrar e tal, e o array da tabela
      * Funcionalidades: cria uma tabela no layoult
-     * Autor: Ricardo Rebello Sierra
-     * @Version 0.2
-     *      -> Removido Classes dentro e tablesorter
-     *      -> Add Table Table, paginação automatica, reordenação, etc.. tudo automatico sem precisar de esforço nenhum. E até busca.
+     * 
+     * @param array $tabela Array com a Tabela ja Prédefinida
+     * @param varchar $style Folha de Estilos Opcional
+     * @param bolean $blocar Se Add ou não ao bloco
+     * @param bolean $apagado1 Se Apaga ou nao a PRimeira coluna
+     * @param array $aaSorting Array com a Ordenacao da Tabela será passado ao Datatable
+     * @param bolean $ColunasOrd Se possue ordenação de colunas
+     * @return varchar
+     * 
+     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
+     * @Version 0.2.2
      */
     public function Show_Tabela_DataTable($tabela, $style='', $blocar=true, $apagado1=false, $aaSorting=Array(Array(0,'asc')), $ColunasOrd=false) {
         $aaSortingtxt = '';
@@ -1433,6 +1593,18 @@ class Visual
             return $this->renderizar_bloco('template_tabela',$config);
         }
     }
+    /**
+     * Criação de Data Table com Muitos Usuários
+     * 
+     * @param array $tabela Array com a Tabela ja Prédefinida
+     * @param varchar $url Url que estará os Dados do Modelo que retornará os Dados
+     * @param varchar $style Folha de Estilos Opcional
+     * @param bolean $blocar Se Add ou não ao bloco
+     * @param bolean $apagado1 Se Apaga ou nao a PRimeira coluna
+     * @param array $aaSorting Array com a Ordenacao da Tabela será passado ao Datatable
+     * @param bolean $ColunasOrd Se possue ordenação de colunas
+     * @return type
+     */
     public function Show_Tabela_DataTable_Massiva($tabela, $url=false, $style='', $blocar=true, $apagado1=false, $aaSorting=Array(Array(0,'asc')), $ColunasOrd=false) {
        if($url === false){
            $url = filter_input(INPUT_GET, 'url', FILTER_SANITIZE_URL);
@@ -1465,83 +1637,7 @@ class Visual
         }
     }
     /**
-     * 
-     * @param type $titulo
-     * @param type $conteudo
-     * @param type $calendario
-     * @param type $config_dia
-     * @param type $config_mes
-     * @param type $config_ano
-     * @param type $config_dataixi
-     * @return type
-     * 
-     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.0.1
-     */
-    private function janela_menu($titulo = 'calendario', $conteudo = 0,&$calendario,$config_dia,$config_mes,$config_ano,$config_dataixi) {
-	global $language;
-	if($titulo!=='calendario'){
-            $this->contmenu .= '<div class="menu_conteudo">
-              <div class="menu_conteudo_tit">'.$titulo.'</div>
-              <div class="menu_conteudo_con">
-                    '.$conteudo.'
-              </div>
-            </div>';
-        }else{
-            if($config_mes==11){
-                $proximomes = 1;
-                $proximoano = $config_ano+1;
-            }else{
-                $proximomes = $config_mes+1;
-                $proximoano = $config_ano;
-            }
-            if($config_mes==1){
-                $anteriormes = 11;
-                $anteriorano = $config_ano-1;
-            }else{
-                $anteriormes = $config_mes-1;
-                $anteriorano = $config_ano;
-            }
-            $this->contmenu .= '<div class="menu_conteudo"><div class="menu_conteudo_tit"><a href="'.SISTEMA_MODULO.'/'.SISTEMA_SUB.'/'.SISTEMA_MET.'&dia='.$config_dia.'&mes='.$anteriormes.'&ano='.$anteriorano.'"><<</a> '.$config_dataixi.' <a href="'.SISTEMA_MODULO.'/'.SISTEMA_SUB.'/'.SISTEMA_MET.'&dia='.$config_dia.'&mes='.$proximomes.'&ano='.$proximoano.'">>></a></div><div class="menu_conteudo_con"><br>
-                       <ul id="days">
-                            <li>
-                             <span title="'.$language['calendario']['semanas'][0].'">'.$language['calendario']['sem'][0].'</span> <span class="sep">|</span>
-
-                             <span title="'.$language['calendario']['semanas'][1].'">'.$language['calendario']['sem'][1].'</span> <span class="sep">|</span>
-                             <span title="'.$language['calendario']['semanas'][2].'">'.$language['calendario']['sem'][2].'</span> <span class="sep">|</span>
-                             <span title="'.$language['calendario']['semanas'][3].'">'.$language['calendario']['sem'][3].'</span> <span class="sep">|</span>
-                             <span title="'.$language['calendario']['semanas'][4].'">'.$language['calendario']['sem'][4].'</span> <span class="sep">|</span>
-
-                             <span title="'.$language['calendario']['semanas'][5].'">'.$language['calendario']['sem'][5].'</span> <span class="sep">|</span>
-                             <span title="'.$language['calendario']['semanas'][6].'">'.$language['calendario']['sem'][6].'</span>
-                            </li>
-                       </ul>';
-            for($i=0;$i<5;$i++){
-                $this->contmenu .= '<ul class="weeks"><li>';
-                for($j=0;$j<7;$j++){
-                    if($calendario[$i][$j]==NULL){
-                        $this->contmenu .= '<a class="nu" href="#" title="">';
-                        $this->contmenu .= '--';
-                    }else{
-                        if($calendario[$i][$j]==$config_dia)$this->contmenu .= '<a class="na" href="#" title="">';
-                        else  $this->contmenu .= '<a class="al" title="Active Date Link" href="'.SISTEMA_MODULO.'/'.SISTEMA_SUB.'/'.SISTEMA_MET.'&dia='.$calendario[$i][$j].'&mes='.$config_mes.'&ano='.$config_ano.'">';
-                        if($calendario[$i][$j]<10){
-                            $this->contmenu .= str_pad($calendario[$i][$j], 2, "0", STR_PAD_LEFT);
-                        }else{
-                            $this->contmenu .= $calendario[$i][$j];
-                        }
-                    }
-                    $this->contmenu .= '</a> <span class="sep">|</span>';
-                }
-                $this->contmenu .= '</li></ul>';
-            }
-            $this->contmenu .= '<br></div>';
-            $this->contmenu .= '</div>';
-        }
-	return $this->conteudo;
-    }
-    /**
-     * 
+     * Upload Inline de Imagens (Unico, um arquivo) 
      * @param type $modulo
      * @param type $sub
      * @param type $acao
@@ -1569,6 +1665,16 @@ class Visual
         $this->Javascript_Executar('Sierra.Modelo_Upload(\''.$modulo.'\',\''.$sub.'\',\''.$acao.'\',\''.$camada.'\',\''.$imagem.'\',\''.$diretorio.'\',\''.$id.'\',\''.$largura.'\',\''.$altura.'\',\''.$extensoes.'\',\''.$descricao.'\');');
         return $html;
     }
+    /**
+     * Upload Inline de Imagens (Multiplo, varios arquivo) 
+     * @param type $modulo
+     * @param type $sub
+     * @param type $acao
+     * @param type $id
+     * @param type $extensoes
+     * @param type $descricao
+     * @return string
+     */
     public function Upload_Janela($modulo,$sub,$acao,$id=false,$extensoes='*.png;*.jpg;*.gif',$descricao='Arquivos de imagens...'){
         $inicio = (int) TEMPO_COMECO;
         $atributo_id = (string) 'Drop'.$inicio.'zone'.rand();
@@ -1590,9 +1696,9 @@ class Visual
     *                                                   *
     \***************************************************/
     /**
-     * 
-     * @param type $idcalendar
-     * @param type $events
+     * Gerador de Calendário (JS+HTML)
+     * @param varchar $idcalendar
+     * @param array $events 'Id,'Titulo','DataInicial','DataFinal'
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.0.1
@@ -1656,9 +1762,9 @@ class Visual
     *                                                   *
     \***************************************************/
     /**
-     * 
-     * @param type $title
-     * @param type $historico
+     * Inicializa o Json, é usada pelo Visual e pelo Controle
+     * @param varchar $title Titulo da Página
+     * @param bolean $historico Se armazena ou não no histórico
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.0.1
@@ -1675,8 +1781,8 @@ class Visual
         }
     }
     /**
-     * 
-     * @return type
+     * Retorna Titulo da Página, Armazenada no Json
+     * @return varchar
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.0.1
@@ -1689,9 +1795,9 @@ class Visual
         }
     }
     /**
-     * 
-     * @param type $indice
-     * @param type $valor
+     * Atualiza um tipo no Json, Esses Tipos são criados tanto no php qnt no js.
+     * @param varchar $indice 'Tipo' -> Pode ser Titulo, Historico, Mensagens, ...
+     * @param type $valor Pode ser um boleano, varchar ou um array padronizado com o js
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.0.1
@@ -1703,7 +1809,7 @@ class Visual
         $this->json['Info'][$indice] = $valor;
     }
     /**
-     * 
+     * Verifica se Existe o Json do HTML
      * @return boolean
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
@@ -1717,7 +1823,7 @@ class Visual
         }
     }
     /**
-     * 
+     * Verifica se Existe esse Tipo no Json
      * @param type $tipo
      * @return boolean
      * 
@@ -1733,7 +1839,7 @@ class Visual
         
     }
     /**
-     * retira Algo Ultrapassado Do Json
+     * Retira eDeleta um Tipo dentro do Json do HTML do site
      * @param type $id
      * @return boolean
      */
@@ -1749,9 +1855,9 @@ class Visual
         return false;
     }
     /**
-     * 
-     * @param type $tipo
-     * @param type $array
+     * Adiciona ou Acrescenta em um tipo no Json, Esses Tipos são criados tanto no php qnt no js.
+     * @param varchar $tipo 'Tipo' -> Pode ser Titulo, Historico, Mensagens, ...
+     * @param array $array Pode ser um boleano, varchar ou um array padronizado com o js
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.0.1
@@ -1868,7 +1974,8 @@ class Visual
         return false;
     }
     /**
-     * 
+     * Prepara o Json pra Ser retornado pra tela, acrescenta js e css dependentes
+     * e retorna tudo.
      * @return type
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
@@ -1993,13 +2100,13 @@ class Visual
         return $this->Json_Codificar();
     }
     /**
-     * 
-     * @return type
+     * Codifica o Json pra Ser Enviado pro Cliente
+     * @return varchar
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.0.1
      */
-    public function Json_Codificar(){
+    private function Json_Codificar(){
         
         if (\Framework\App\Sistema_Funcoes::VersionPHP('5.3.10'))
         {
@@ -2190,6 +2297,11 @@ class Visual
           }
         return $i;
     }
+    /**
+     * Retorna os Temas de Links e Cores de acordo com o Bootstrap3.0
+     * @param varchar $complemento Usado antes das variaveis das cores, pode ser label ou outros
+     * @return Array
+     */
     static function Tema_Tipos($complemento){
          return Array(4,Array(
              $complemento.'-success',

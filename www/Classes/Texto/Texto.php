@@ -8,17 +8,52 @@ namespace Framework\Classes;
 *                                                                                                                       *
 *                                                                                                                       *
 ************************************************************************************************************************/
+/**
+ * Classe Utilizada para o Tratamento de Textos em Portugues
+ */
 class Texto
 {
+    /**
+     *Armazena o Texto quando é Iniciada a Classe e Desejamos trablahar com Todo o tempo
+     * @var type 
+     */
     private $texto = '';
     public function __construct($texto=false) {
         $this->texto = $texto;
     }
+    /**
+     * Pega um Texto no Plural e Transforma todo ele em singular
+     * @param type $nome
+     * @return type
+     * 
+     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
+     * @version 0.2
+     */
     public static function Transformar_Plural_Singular($nome){
         $nome = str_replace(Array('res ','s ','ões '), Array('r','','ão'), $nome.' ');
         return $nome;
     }
+    /**
+     * Verifica se Uma palavra está no masculino ou feminino
+     * @param varchar $palavra
+     * @return boolean
+     * 
+     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
+     * @version 0.2
+     */
     public static function Captura_Palavra_Masculina($palavra){
+        $palavra = (string) $palavra;
+        
+        $tam = strlen($palavra);
+        if($palavra[$tam-1]=='a'){
+            return false;
+        }else if($palavra[$tam-2]=='a' && $palavra[$tam-1]=='s'){
+            return false;
+        }else if($palavra[$tam-2]=='e' && $palavra[$tam-1]=='s'){
+            return false;
+        }
+        
+        return true;
         
     }
 }

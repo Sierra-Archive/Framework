@@ -5,6 +5,11 @@ namespace Framework\Classes;
 require_once  LIBS_PATH.'facebook.php';
 
 class SierraTec_Facebook {
+    
+    /**
+     * Armazena a Classe Registro (Classe singleton, ela garante a existencia de apenas uma instancia de cada classe)
+     * @var Object 
+     */
     protected $_Registro = false;
     protected $db = false;
     

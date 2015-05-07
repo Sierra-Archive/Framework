@@ -151,7 +151,6 @@ mod/
 								public function novatabela($tipo,&$tabela)
 								public function blocar($txt)
 								private function carrega_menu(&$calendario,$config_dia,$config_mes,$config_ano,$config_dataixi)
-								private function janela_menu($titulo = 'calendario', $conteudo = 0,&$calendario,$config_dia,$config_mes,$config_ano,$config_dataixi)
 								public function Json_Start($title='',$historico=true)
 								public function Json_IncluiTipo($tipo,&$array)
 								public function Json_Retorna()
