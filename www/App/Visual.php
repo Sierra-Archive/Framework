@@ -1295,6 +1295,22 @@ class Visual
                     'Bloco_Menor'   => $this->Bloco_Menor_Retornar()
                 )*/
             );
+            
+            // Pega Mensagens e Coloca na Tela
+            if($this->jsonativado!==false && isset($this->json['Info']) && array_search('Mensagens', $this->json['Info']['Tipo'])!==false){
+                foreach($this->json['Mensagens'] as &$valor){
+                    if($valor['tipo']==='erro'){
+                        $tipo_nome      = 'Erro';
+                        $tipo_reportar = 'error';
+                    }else{
+                        $tipo_nome      = 'Sucesso';
+                        $tipo_reportar = 'success';
+                    }
+                    $params['mensagem'] = '<div class="alert alert-block alert-'.$tipo_reportar.' fade in">'.
+                    '<button type="button" class="close" data-dismiss="alert">×</button>'.
+                    '<h4 class="alert-heading">'.$valor["mgs_principal"].'</h4><p style="text-align:center;">'.$valor["mgs_secundaria"].'</p></div>'.$params['template']['Bloco_Unico'];
+                }
+            }
 
             //$this->clear_cache($this->template_dir.'page_login.tpl');
             $this->renderizar_Template('page_login',$params,false);

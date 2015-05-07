@@ -264,7 +264,7 @@ class Acl{
                     \Framework\App\Session::destroy(SESSION_ADMIN_ID);
                     \Framework\App\Session::destroy(SESSION_ADMIN_LOG);
                     \Framework\App\Session::destroy(SESSION_ADMIN_SENHA);
-                    \Framework\App\Sistema_Funcoes::Erro('5051');
+                    $this->Fluxo_Senha_Invalida();
                 }else{
                     $this->_id = \Framework\App\Session::get(SESSION_ADMIN_ID);
                 }
@@ -278,7 +278,7 @@ class Acl{
                     \Framework\App\Session::destroy(SESSION_ADMIN_ID);
                     \Framework\App\Session::destroy(SESSION_ADMIN_LOG);
                     \Framework\App\Session::destroy(SESSION_ADMIN_SENHA);
-                    \Framework\App\Sistema_Funcoes::Erro('5051');
+                    $this->Fluxo_Senha_Invalida();
                 }
             }
             // SE A PAGINA FOR PROIBIDA PARA USUARIOS DESLOGADOS TRAVA
@@ -309,6 +309,16 @@ class Acl{
             }
         }
         return true;
+    }
+    private function Fluxo_Senha_Invalida(){
+        $_Registro = &Registro::getInstacia();
+        if(!$_Registro->Visual) $_Registro->Visual = new Visual ();
+        $mensagens = array(
+            "tipo"              => 'erro',
+            "mgs_principal"     => 'Senha Inválida',
+            "mgs_secundaria"    => 'Verifique se o Login ou a senha foram colocadas com sucesso.'
+        );
+        $_Registro->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
     }
     /**
      * 

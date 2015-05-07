@@ -13,7 +13,13 @@ Class Sistema_Funcoes {
      */
     public static function Redirect($url)
     {
-        if(LAYOULT_IMPRIMIR==='AJAX' && strpos($url, URL_PATH)!==false){
+        // acrescenta url 
+        if( strpos($url, URL_PATH)!==false && strpos($url, 'www.')===false && strpos($url, 'http://')===false){
+            $url = URL_PATH.$url;
+        }
+        
+        // Ou redireciona via php ou html
+        if(LAYOULT_IMPRIMIR==='AJAX'){
             $registro = Registro::getInstacia();
             $params = Array('Url'=>$url,'Tempo'=>10);
             if($registro->_Visual===false){
@@ -141,6 +147,7 @@ Class Sistema_Funcoes {
         }else{
             $url = URL_PATH.'ajax'.US.'_Sistema'.US.'erro'.US.'Main'.US.$codigo.US;
         }*/
+        
         $url = URL_PATH.'_Sistema'.US.'erro'.US.'Main'.US.$codigo.US;
         \Framework\App\Sistema_Funcoes::Redirect($url);
     }

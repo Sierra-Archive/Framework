@@ -706,7 +706,7 @@ class Curso_TurmaControle extends Curso_Controle
         // Carrega Turma
         $turma_registro = $this->_Modelo->db->Sql_Select('Curso_Turma','{sigla}id=\''.$id.'\'',1);
         if($turma_registro===false){
-            throw new \Exception('Essa Curso não existe:', 404);
+            throw new \Exception('Essa Turma não existe:', 404);
         }
         
         if($curso!==false){
@@ -717,13 +717,13 @@ class Curso_TurmaControle extends Curso_Controle
         }
         $curso_registro = $this->_Modelo->db->Sql_Select('Curso','{sigla}id=\''.$turma_registro->curso.'\'',1);
         if($curso_registro===false){
-            throw new \Exception('Esse Turma não existe', 404);
+            throw new \Exception('Esse Curso não existe', 404);
         }
         
         
         
         // Inscricao Verifica se ja tem
-        $insc_registro = $this->_Modelo->db->Sql_Select('Curso_Turma_Inscricao','{sigla}usuario=\''.$usuarioid.'\' && {sigla}turma=\''.$turma_registro->curso.'\'',1);
+        $insc_registro = $this->_Modelo->db->Sql_Select('Curso_Turma_Inscricao','{sigla}usuario=\''.$usuarioid.'\' && {sigla}turma=\''.$turma_registro->id.'\'',1);
         if($insc_registro!==false){
             $mensagens = array(
                 "tipo"              => 'erro',
@@ -758,7 +758,7 @@ class Curso_TurmaControle extends Curso_Controle
         $funcao     = false;
         $sucesso1   = 'Inscrição bem sucedida';
         $sucesso2   = 'Inscrição Confirmada com Sucesso';
-        $alterar    = Array('usuario'=>$usuarioid,'curso'=>$turma_registro->curso,'turma'=>$turma_registro->id);
+        $alterar    = Array('usuario'=>$usuarioid,'valor'=>$curso_registro->valor,'curso'=>$turma_registro->curso,'turma'=>$turma_registro->id);
         $sucesso = $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
         if($sucesso===true){
             $motivo = 'Curso';

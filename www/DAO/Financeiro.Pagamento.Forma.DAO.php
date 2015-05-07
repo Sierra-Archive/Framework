@@ -3,6 +3,7 @@ final Class Financeiro_Pagamento_Forma_DAO extends Framework\App\Dao
 {
     protected $id;
     protected $nome;
+    //protected $api;
     protected static $objetocarregado     = false;     protected static $mysql_colunas       = false;     protected static $mysql_outside       = Array();     protected static $mysql_inside        = Array(); public function __construct() {  parent::__construct(); } public static function Get_Nome(){
         return MYSQL_FINANCEIRO_FINANCEIRO_FORMA;
     }
@@ -33,7 +34,7 @@ final Class Financeiro_Pagamento_Forma_DAO extends Framework\App\Dao
             Array(
                 'mysql_titulo'      => 'id',
                 'mysql_tipovar'     => 'int', //varchar, int, 
-                'mysql_tamanho'     => 255,
+                'mysql_tamanho'     => 11,
                 'mysql_null'        => false,
                 'mysql_default'     => false,
                 'mysql_primary'     => true,
@@ -69,7 +70,42 @@ final Class Financeiro_Pagamento_Forma_DAO extends Framework\App\Dao
                         'class'             => 'obrigatorio'
                     )
                 )
-            )
+            )/*,
+            Array(
+                'mysql_titulo'      => 'api',
+                'mysql_tipovar'     => 'varchar', //varchar, int, 
+                'mysql_tamanho'     => 100,
+                'mysql_null'        => false,  // nulo ?
+                'mysql_default'     => 'Normal', // valor padrao
+                'mysql_primary'     => false,  // chave primaria
+                'mysql_estrangeira' => false, // chave estrangeira     ligacao|apresentacao|condicao
+                'mysql_autoadd'     => false,
+                'mysql_comment'     => false,
+                'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
+                'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
+                'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
+                'edicao'            => Array(
+                    'Nome'              => 'Api',
+                    'valor_padrao'      => false,
+                    'readonly'          => false,
+                    'aviso'             => '',
+                    'formtipo'          => 'select',
+                    'select'            => array(
+                        'class'             => 'obrigatorio',
+                        'infonulo'          => 'Escolha se é cliente ou Investidor',
+                        'opcoes'            => array(
+                            array(
+                                'value'         =>  'Normal',
+                                'nome'          => 'Declaração Normal'
+                            ),
+                            array(
+                                'value'         =>  'Pagseguro',
+                                'nome'          => 'PagSeguro'
+                            ),
+                        )
+                    )
+                )
+            )*/
         );
     }
 }
