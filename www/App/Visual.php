@@ -1053,8 +1053,8 @@ class Visual
         return Array($tipo,$html);
     }
     /**
-     * 
-     * @return type
+     * Retorna HTML do WIdget Usuario Logado, com link para edicao de perfil e Logout
+     * @return varchar Retorna HTML
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.0.1

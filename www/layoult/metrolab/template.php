@@ -46,27 +46,15 @@
         <div class="navbar-header navbar-right">
             <ul class="nav pull-right top-menu navbar-nav">
                 <!-- BEGIN SUPPORT  -->
-                <li class="dropdown mtop5"><a class="dropdown-toggle element lajax" acao="" data-placement="bottom" data-toggle="tooltip" href="<?php echo SISTEMA_URL.SISTEMA_DIR; ?>usuario/Admin/Usuarios_Add/cliente" data-original-title="Novo Cliente"><i class="glyphicon-user"></i></a></li>                            <!-- END SUPPORT -->
-                <!-- BEGIN USER LOGIN DROPDOWN -->
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <img src="<?php echo SISTEMA_URL.SISTEMA_DIR; ?>web/img/icons/clientes.png" width="30" height="30">
-                        <span class="username">ADMINISTRADOR</span>
-                        <b class="caret"></b>
-                    </a>
-                    <ul class="dropdown-menu extended logout">
-                    <?php if(isset($params['widgets']['Superior'])){ 
-                         $total=count($params['widgets']['Superior']); 
-                         for($cont=0;$cont<$total; ++$cont) {  
-                             echo $params['widgets']['Superior'][$cont];
-                         } ?>
-                         <!-- END SUPPORT -->
-                         <!-- BEGIN USER LOGIN DROPDOWN -->
-                         <?php echo $params['template']['usuario']; 
-                    }?>
-                    </ul>
-                </li>                        
-                <!-- END USER LOGIN DROPDOWN -->
+                <?php if(isset($params['widgets']['Superior'])){ 
+                     $total=count($params['widgets']['Superior']); 
+                     for($cont=0;$cont<$total; ++$cont) {  
+                         echo $params['widgets']['Superior'][$cont];
+                     } ?>
+                     <!-- END SUPPORT -->
+                     <!-- BEGIN USER LOGIN DROPDOWN -->
+                     <?php echo $params['template']['usuario']; 
+                }?>
             </ul>
             <!-- END TOP NAVIGATION MENU -->
         </div>
