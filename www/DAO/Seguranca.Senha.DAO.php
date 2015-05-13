@@ -108,7 +108,7 @@ final Class Seguranca_Senha_DAO extends Framework\App\Dao
                 'mysql_tamanho'     => 100,
                 'mysql_null'        => true,
                 'mysql_default'     => false,
-                'mysql_primary'     => true,
+                'mysql_primary'     => false,
                 'mysql_estrangeira' => false, // chave estrangeira
                 'mysql_autoadd'     => false,
                 'mysql_comment'     => false,
@@ -133,7 +133,7 @@ final Class Seguranca_Senha_DAO extends Framework\App\Dao
                 'mysql_tamanho'     => 100,
                 'mysql_null'        => true,
                 'mysql_default'     => false,
-                'mysql_primary'     => true,
+                'mysql_primary'     => false,
                 'mysql_estrangeira' => false, // chave estrangeira
                 'mysql_autoadd'     => false,
                 'mysql_comment'     => false,
@@ -158,7 +158,7 @@ final Class Seguranca_Senha_DAO extends Framework\App\Dao
                 'mysql_tamanho'     => 100,
                 'mysql_null'        => true,
                 'mysql_default'     => false,
-                'mysql_primary'     => true,
+                'mysql_primary'     => false,
                 'mysql_estrangeira' => false, // chave estrangeira
                 'mysql_autoadd'     => false,
                 'mysql_comment'     => false,

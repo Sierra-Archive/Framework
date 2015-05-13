@@ -4,7 +4,7 @@ final Class Usuario_DAO extends Framework\App\Dao
     protected $id;
     protected $indicado_por;
     protected $grupo;
-    protected $crm;
+    //protected $crm;
     protected $nome;
     protected $fisica;
     protected $perfil_nascimento;

@@ -25,5 +25,6 @@ interface DaoInterface
     function bd_get($nome,$resultado);
     
     function Get_Object_Vars();
+    function Get_Object_Vars_Public();
 }
 ?>

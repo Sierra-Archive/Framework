@@ -25,7 +25,7 @@
         </a>
         <!-- END LOGO -->
     </div>
-    <?php echo $params['mensagem']; ?>
+    <?php if(isset( $params['mensagem'] ) ){ echo $params['mensagem']; } ?>
             <form action="<?php echo URL_PATH.SISTEMA_DIR_INT; ?>" method="POST">
         <div class="login-wrap" style="max-width:480px;">
             <div class="metro single-size <?php echo CFG_LP_LOGINCOR1; ?>">

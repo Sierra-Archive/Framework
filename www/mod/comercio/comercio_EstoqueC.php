@@ -293,7 +293,7 @@ class comercio_EstoqueControle extends comercio_Controle
                 'Número','Documento','Fornecedor','Data','Valor','Funções'
             );
         //}
-        $this->_Visual->Show_Tabela_DataTable_Massiva($tabela);
+        $this->_Visual->Show_Tabela_DataTable_Massiva($tabela,'comercio/Estoque/Material_Entrada');
         /*
         }else{             
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhuma Entrada de NFE</font></b></center>');

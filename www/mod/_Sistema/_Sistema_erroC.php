@@ -122,6 +122,10 @@ Server Errors
         $error['5062']    = 'Esse Bloco não existe.';
         if($codigo==5063) $error['5063']    = 'Esse '.Framework\Classes\Texto::Transformar_Plural_Singular(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Cliente_nome')).' já está registrado';
         
+        // Códigos de SEgurança
+        $error['6010']    = 'Essa solicitação foi bloqueada por segurança.';
+        
+        
         // Erros de Template
         $error['7000']      = 'Erro no Tema';
         

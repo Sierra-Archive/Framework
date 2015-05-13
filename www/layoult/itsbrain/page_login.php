@@ -20,7 +20,7 @@
         <div class="loginLogo"><img alt="logo" style="max-height:120px; margin-top:-50px; margin-left:40px;" src="<?php echo ARQ_URL; ?>_Sistema/logo_login.<?php echo TEMA_LOGO; ?>" /></div>
         <div class="loginPanel">
             <div class="head"><h5 class="iUser">Login</h5></div>
-            <?php echo $params['mensagem']; ?>
+            <?php if(isset( $params['mensagem'] ) ){ echo $params['mensagem']; } ?>
             <form action="<?php echo URL_PATH.SISTEMA_DIR_INT; ?>" method="POST" id="valid" class="mainForm">
                 <fieldset>
                     <div class="loginRow noborder">

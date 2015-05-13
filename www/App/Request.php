@@ -26,6 +26,7 @@ class Request
             $url = array_filter($url);
         }else{
             $url = false;
+            $this->_url = '';
         }
         
         // Extrai primeiro elemento como Controlador
@@ -36,6 +37,7 @@ class Request
                 
                 if($this->_modulo =='Modelo'){
                     $this->_modulo = \anti_injection(array_shift($url)); 
+                    $this->_url = substr($this->_url, 7);
                     define('REQUISICAO_TIPO', 'MODELO');
                 }
             }else{
@@ -43,6 +45,10 @@ class Request
                 // mas não é ajax.
                 if($this->_modulo =='ajax'){
                     $this->_modulo = \anti_injection(array_shift($url));
+                }else if($this->_modulo =='Modelo'){
+                    // Se nao for Ajax, Remove E nao Coloca do Tipo Modelo
+                    $this->_modulo = \anti_injection(array_shift($url)); 
+                    $this->_url = substr($this->_url, 7);
                 }
                 define('LAYOULT_IMPRIMIR', 'COMPLETO');
             }

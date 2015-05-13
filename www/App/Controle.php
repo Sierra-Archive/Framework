@@ -1360,10 +1360,10 @@ readfile($link);*/
             // recupera Arquivo
             if($primaria!==false){
                 $identificador = \anti_injection($dao[1]);
-                $objeto = $this->_Modelo->db->Sql_Select($tab, Array($primaria[0]=>$identificador),1);
+                $objeto = $this->_Modelo->db->Sql_Select($tab, '{sigla}'.$primaria[0].'=\''.$identificador.'\'',1);
             }else{
                 $identificador  = (int) $dao[1];
-                $objeto = $this->_Modelo->db->Sql_Select($tab, Array('id'=>$identificador),1);
+                $objeto = $this->_Modelo->db->Sql_Select($tab, '{sigla}id=\''.$identificador.'\'',1);
             }
             if($objeto===false) throw new \Exception('Registro não existe: ID->'.$identificador,404);
         }else{
@@ -1389,8 +1389,10 @@ readfile($link);*/
                 next($colocar);
             }
         }
+        
         // Verifica Indices UNICOS
         $unicos = $objeto->Get_Indice_Unico();
+        
         // Começa
         if($unicos!==false){
             foreach($unicos as &$valor){
@@ -1460,7 +1462,6 @@ readfile($link);*/
                     }
                     
                     // Caso Exista o Mesmo o trata
-                    var_dump($get);
                     if(isset($get) && is_array($get)){
                         // Busca AS caracteristicas da tabela mandando a sigla como parametro
                         $nome_da_tab        = \Framework\App\Conexao::Tabelas_GetSiglas_Recolher($tabelalinkada['Tabela']);
@@ -1471,7 +1472,6 @@ readfile($link);*/
                         $where = Array($tabelalinkada['SelectMultiplo']['Linkar'] => $identificador);
                         $respostas  = $this->_Modelo->db->Sql_Select($nome_da_tab, $where);
                         // PEga essas opcoes e deleta a porra toda !
-                        var_dump($respostas);
                         if($respostas!==false){
                             if(!is_array($respostas)) $respostas = Array($respostas);
                             $this->_Modelo->db->Sql_Delete($respostas,true);
@@ -1951,7 +1951,7 @@ readfile($link);*/
             }
         }// Agora tbm funciona com objetos
         else{
-            $campos = $objeto->Get_Object_Vars();
+            $campos = $objeto->Get_Object_Vars_Public();
             foreach ($campos as $indice => &$value){
                 if($indice==$campomysql){
                     if($resultado!==false){
@@ -1991,11 +1991,9 @@ readfile($link);*/
         }else{
             $valor_tipo = 0;
         }
-        
         // Array, Formularios e Afins
         if(is_array($objeto)){
             foreach ($objeto as &$valor){
-                
                 
                 // TABELA LINKADA
                 if(isset($valor["TabelaLinkada"]) && $id!==false){
@@ -2071,51 +2069,62 @@ readfile($link);*/
                     }
                 }
             }
-        }// Agora tbm funciona com objetos
-        else if(is_object($objeto)){
-            $campos = $objeto->Get_Object_Vars();
+        }
+        else 
+        // Agora tbm funciona com objetos
+        if(is_object($objeto)){
+            $campos = $objeto->Get_Object_Vars_Public();
             $primarias = $objeto->Get_Primaria();
             foreach ($campos as $indice => $value){
                 if(!is_array($primarias)){
                     throw new \Exception('Primárias não é um Array: '.$primarias,3250);
                 }
-                if($objeto->$indice===NULL || $objeto->$indice===false || array_search($indice, $primarias)===false){
-                    if($valor_tipo===2){
-                        
-                        // Atualiza Valor
-                        if(isset($valores->$indice)){
-                            $objeto->$indice = $valores->$indice;
-                        }else{
-                            $objeto->$indice = NULL;
-                        }
-                    }else if($valor_tipo===1){
-                        
-                        // Atualiza Valor
-                        if(isset($valores[$indice])){
-                            $objeto->$indice = $valores[$indice];
-                        }else{
-                            $objeto->$indice = NULL;
-                        }
-                    }else{
-                        if(isset($_POST['upload_'.$indice]) && $_POST['upload_'.$indice]!=''){
-                        
+                // Verifica se Existe
+                if(isset($objeto->$indice)/*===NULL || $objeto->$indice===false*/){
+                    // SE for chave primaria bloqueia
+                    $is_primary = array_search($indice, $primarias);
+                    if($is_primary!==false && isset($valores->$indice)){
+                        throw new \Exception('Foi tentado alterar um campo primário: '.$indice,6010);
+                    }else if($is_primary===false){
+                        if($valor_tipo===2){
+
                             // Atualiza Valor
-                            $objeto->$indice = \anti_injection($_POST['upload_'.$indice]);
-                        }else if(isset($_POST[$indice])){
-                        
+                            if(isset($valores->$indice)){
+                                $objeto->$indice = $valores->$indice;
+                            }else{
+                                $objeto->$indice = NULL;
+                            }
+                        }else if($valor_tipo===1){
+
                             // Atualiza Valor
-                            //if(isset($_POST[$indice])){
-                                $objeto->$indice = \anti_injection($_POST[$indice]);
-                            /*}else{
+                            if(isset($valores[$indice])){
+                                $objeto->$indice = $valores[$indice];
+                            }else{
+                                $objeto->$indice = NULL;
+                            }
+                        }else{
+                            if(isset($_POST['upload_'.$indice]) && $_POST['upload_'.$indice]!=''){
+
+                                // Atualiza Valor
+                                $objeto->$indice = \anti_injection($_POST['upload_'.$indice]);
+                            }else if(isset($_POST[$indice])){
+
+                                // Atualiza Valor
+                                //if(isset($_POST[$indice])){
+                                    $objeto->$indice = \anti_injection($_POST[$indice]);
+                                /*}else{
+                                    $objeto->Atributo_Del($indice);
+                                }*/
+                            }else{
                                 $objeto->Atributo_Del($indice);
-                            }*/
-                        }else{
-                            $objeto->Atributo_Del($indice);
+                            }
                         }
                     }
                 }
             }
         }
+        //var_dump($objeto->Get_Object_Vars_Public(),$objeto,$_POST);
+        return true;
     }
     /**
      * 

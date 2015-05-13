@@ -7,8 +7,8 @@
 RewriteEngine On
 
 #Primeira Regra
-RewriteCond $0 !=images/favicon.ico
-RewriteRule ^([^/]+/)*favicon\.ico$ arq/favicon.ico [L]
+#RewriteCond $0 !=images/favicon.ico
+#RewriteRule ^([^/]+/)*favicon\.ico$ arq/favicon.ico [L]
 
 
 #RewriteCond %{REQUEST_FILENAME} !-d // Nao sao Diretorios, Agora Vai esconder os Diretorios

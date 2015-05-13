@@ -315,11 +315,29 @@ abstract class Dao implements \DaoInterface
         }
     }
     /**
-     * 
+     * Todas as Variaveis possiveis
      * @return type
      */
-    final public function Get_Object_Vars(){
+    final public function Get_Object_Vars(){        
         return get_object_vars($this);
+    }
+    /**
+     * Todas as Variaveis possiveis para Edicao
+     * @return type
+     */
+    final public function Get_Object_Vars_Public(){
+        $var = get_object_vars($this);
+        
+        // Retira os que não podem ser editados
+        unset($var['log_date_add']);
+        unset($var['log_date_edit']);
+        unset($var['log_date_del']);
+        unset($var['log_user_add']);
+        unset($var['log_user_edit']);
+        unset($var['log_user_del']);
+        unset($var['deletado']);
+        
+        return $var;
     }
     
     

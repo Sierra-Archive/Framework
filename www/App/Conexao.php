@@ -770,7 +770,7 @@ final class Conexao
         }else{
             foreach($objetos as &$Objeto){
                 $class_name = get_class($Objeto);
-                $valores = $Objeto->Get_Object_Vars();
+                //$valores = $Objeto->Get_Object_Vars();
                 $sql = 'DELETE FROM  '.self::$tabelas[$class_name]['nome'];
                 $primarias = $Objeto->Get_Primaria();
                 $contador = 0;
