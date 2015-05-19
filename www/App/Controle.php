@@ -2080,44 +2080,42 @@ readfile($link);*/
                     throw new \Exception('Primárias não é um Array: '.$primarias,3250);
                 }
                 // Verifica se Existe
-                if(isset($objeto->$indice)/*===NULL || $objeto->$indice===false*/){
-                    // SE for chave primaria bloqueia
-                    $is_primary = array_search($indice, $primarias);
-                    if($is_primary!==false && isset($valores->$indice)){
-                        throw new \Exception('Foi tentado alterar um campo primário: '.$indice,6010);
-                    }else if($is_primary===false){
-                        if($valor_tipo===2){
+                $is_primary = array_search($indice, $primarias);
+                // SE for chave primaria bloqueia
+                if($is_primary!==false && $valor_tipo===0 && isset($valores->$indice)){
+                    throw new \Exception('Foi tentado alterar um campo primário: '.$indice,6010);
+                }else if($objeto->$indice===NULL || $objeto->$indice===false || $is_primary===false){
+                    if($valor_tipo===2){
 
-                            // Atualiza Valor
-                            if(isset($valores->$indice)){
-                                $objeto->$indice = $valores->$indice;
-                            }else{
-                                $objeto->$indice = NULL;
-                            }
-                        }else if($valor_tipo===1){
-
-                            // Atualiza Valor
-                            if(isset($valores[$indice])){
-                                $objeto->$indice = $valores[$indice];
-                            }else{
-                                $objeto->$indice = NULL;
-                            }
+                        // Atualiza Valor
+                        if(isset($valores->$indice)){
+                            $objeto->$indice = $valores->$indice;
                         }else{
-                            if(isset($_POST['upload_'.$indice]) && $_POST['upload_'.$indice]!=''){
+                            $objeto->$indice = NULL;
+                        }
+                    }else if($valor_tipo===1){
 
-                                // Atualiza Valor
-                                $objeto->$indice = \anti_injection($_POST['upload_'.$indice]);
-                            }else if(isset($_POST[$indice])){
+                        // Atualiza Valor
+                        if(isset($valores[$indice])){
+                            $objeto->$indice = $valores[$indice];
+                        }else{
+                            $objeto->$indice = NULL;
+                        }
+                    }else{
+                        if(isset($_POST['upload_'.$indice]) && $_POST['upload_'.$indice]!=''){
 
-                                // Atualiza Valor
-                                //if(isset($_POST[$indice])){
-                                    $objeto->$indice = \anti_injection($_POST[$indice]);
-                                /*}else{
-                                    $objeto->Atributo_Del($indice);
-                                }*/
-                            }else{
+                            // Atualiza Valor
+                            $objeto->$indice = \anti_injection($_POST['upload_'.$indice]);
+                        }else if(isset($_POST[$indice])){
+
+                            // Atualiza Valor
+                            //if(isset($_POST[$indice])){
+                                $objeto->$indice = \anti_injection($_POST[$indice]);
+                            /*}else{
                                 $objeto->Atributo_Del($indice);
-                            }
+                            }*/
+                        }else{
+                            $objeto->Atributo_Del($indice);
                         }
                     }
                 }

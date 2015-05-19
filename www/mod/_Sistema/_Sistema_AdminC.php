@@ -501,7 +501,7 @@ class _Sistema_AdminControle extends _Sistema_Controle
         )));
         $grupos = $this->_Modelo->db->Sql_Select('Sistema_Grupo',$where);
         if($grupos==false){
-            _Sistema_AdminModelo::grupos_inserir();
+            \Framework\App\Acl::grupos_inserir();
             $grupos = $this->_Modelo->db->Sql_Select('Sistema_Grupo');
         }
         if(is_object($grupos)) $grupos = Array(0=>$grupos);

@@ -433,10 +433,10 @@ class Curso_TurmaControle extends Curso_Controle
             if($export!==false){
                 self::Export_Todos($export,$tabela, $titulo);
             }else{
-                $this->_Visual->Show_Tabela_DataTable(
+                $html = $this->_Visual->Show_Tabela_DataTable(
                     $tabela,     // Array Com a Tabela
                     '',          // style extra
-                    true,        // true -> Add ao Bloco, false => Retorna html
+                    false,        // true -> Add ao Bloco, false => Retorna html
                     false,        // Apagar primeira coluna ?
                     Array(       // Ordenacao
                         Array(
@@ -449,9 +449,40 @@ class Curso_TurmaControle extends Curso_Controle
         }else{
             $titulo = $titulo.' ('.$i.')';
             $erro = 'Nenhuma Inscrição nessa Turma';     
-            $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">'.$erro.'</font></b></center>');
+            $html = '<center><b><font color="#FF0000" size="5">'.$erro.'</font></b></center>';
         }
-        $this->_Visual->Bloco_Unico_CriaJanela($titulo);
+        
+        
+        // Identifica tipo e cria conteudo
+        if(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Propostas_Biblioteca')===true && \Framework\App\Sistema_Funcoes::Perm_Modulos('biblioteca')===true){
+
+            $this->_Visual->Bloco_Customizavel(Array(
+                Array(
+                    'span'      =>      5,
+                    'conteudo'  =>  Array(Array(
+                        'div_ext'   =>      false,
+                        'title_id'  =>      false,
+                        'title'     =>      $titulo.' #'.$turma_registro->id,
+                        'html'      =>      $html,
+                    ),),
+                ),
+                Array(
+                    'span'      =>      7,
+                    'conteudo'  =>  Array(Array(
+                        'div_ext'   =>      false,
+                        'title_id'  =>      false,
+                        'title'     =>      'Pasta da '.$titulo.' #'.$turma_registro->id.' na Biblioteca',
+                        'html'      =>      '<span id="Curso_Turma_'.$turma_registro->id.'">'.biblioteca_BibliotecaControle::Biblioteca_Dinamica('Curso_Turma',$turma_registro->id,'Curso_Turma_'.$turma_registro->id).'</span>',
+                    )),
+                )
+            ));
+        }else{
+            $this->_Visual->Blocar($html);
+            $this->_Visual->Bloco_Unico_CriaJanela($titulo);
+        }
+        
+        
+        
         
         //Carrega Json
         $this->_Visual->Json_Info_Update('Titulo',$titulo);

@@ -33,6 +33,24 @@ $config_Menu = function (){
                 'Filhos'                => false,
             ),),
         ),
+        'Financeiro' => Array(
+            'Nome'                  => 'Financeiro',
+            'Link'                  => '#',
+            'Gravidade'             => 20,
+            'Img'                   => 'money',
+            'Icon'                  => 'money',
+            'Filhos'                => Array('Entrada de NFE'=>Array(
+                'Nome'                  => 'Entrada de NFE',
+                'Link'                  => 'comercio/Estoque/Material_Entrada',
+                'Gravidade'             => 65,
+                'Img'                   => 'turboadmin/m-dashboard.png',
+                'Icon'                  => 'truck',
+                'Permissao_Func'        => Array(// Permissoes NEcessarias
+                    'comercio_Fornecedor' => true
+                ),
+                'Filhos'                => false,
+            ),),
+        ),
         'Comercial' => Array(
             'Nome'                  => 'Comercial',
             'Link'                  => '#',
@@ -47,16 +65,6 @@ $config_Menu = function (){
                 'Icon'                  => 'archive',
                 'Permissao_Func'        => Array(// Permissoes NEcessarias
                     'comercio_Visitas' => true
-                ),
-                'Filhos'                => false,
-            ),'Entrada de NFE'=>Array(
-                'Nome'                  => 'Entrada de NFE',
-                'Link'                  => 'comercio/Estoque/Material_Entrada',
-                'Gravidade'             => 65,
-                'Img'                   => 'turboadmin/m-dashboard.png',
-                'Icon'                  => 'truck',
-                'Permissao_Func'        => Array(// Permissoes NEcessarias
-                    'comercio_Fornecedor' => true
                 ),
                 'Filhos'                => false,
             ),'Propostas'=>Array(

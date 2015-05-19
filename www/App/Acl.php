@@ -310,9 +310,13 @@ class Acl{
         }
         return true;
     }
-    private function Fluxo_Senha_Invalida(){
+    
+    /**
+     * 
+     */
+    private function Fluxo_Senha_Invalida(){    
         $_Registro = &Registro::getInstacia();
-        if(!$_Registro->Visual) $_Registro->Visual = new Visual ();
+        if(!$_Registro->_Visual) $_Registro->_Visual = new \Framework\App\Visual();
         $mensagens = array(
             "tipo"              => 'erro',
             "mgs_principal"     => 'Senha Inválida',
@@ -321,12 +325,15 @@ class Acl{
         $_Registro->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
     }
     /**
-     * 
      * PERMISSOES DO SISTEMA
      * Serve pra Recuperar algum valor do objeto permissao que quiser
+     * 
      * @param type $chave
      * @param type $campo
      * @return type
+     * 
+     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
+     * @version 0.0.1
      */
     public function Get_Permissao_Nome($chave,$campo='Nome') {
         $array = &self::$Sis_Permissao;
@@ -344,12 +351,25 @@ class Acl{
     /**
      * Recupera Permissoes do Usuario
      * @return type
+     * 
+     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
+     * @version 0.0.1
      */
     public function getPermissao(){
         if(isset($this->_permissao) && count($this->_permissao)){
             return $this->_permissao;
         }
     }    
+    /**
+     * Retorna o valor de alguma chave de alguma Permissão de Modulo
+     * 
+     * @param string $chave Chave da Permissão
+     * @param string $campo Campo da Permissão, Opcional
+     * @return boolean
+     * 
+     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
+     * @version 0.0.1
+     */
     public function Get_Permissao_Chave($chave,$campo='Nome') {
         $array = $this->getPermissao();
         if(isset($array[$chave])){
@@ -359,9 +379,10 @@ class Acl{
         }
     }
     /**
-     * Permissoes de URL
-     * @param type $url
-     * @return boolean
+     * Retorna se o Usuario tem permissao de acesso a URL ou nao
+     * 
+     * @param string $url Url que irá conferir se tem acesso.
+     * @return boolean Verdadeiro ou Falso
      */
     public function Get_Permissao_Url($url) {
         // Economiza Tempo quando a URL é obvia que é permitida
@@ -413,6 +434,12 @@ class Acl{
         }
         return true;
     }
+    /**
+     * Compilar as Permissões, Junta as Permissoes de Usuario com as de Grupo
+     * 
+     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
+     * @version 0.0.1
+     */
     private function compilarAcl(){
         $usuario_perm = $this->getUsuarioPermissao();
         $this->_permissao = array_merge(
@@ -420,6 +447,14 @@ class Acl{
                 $usuario_perm
         );
     }
+    /**
+     * Retorna Grupos, se nao houver ele cria automaticamente
+     * 
+     * @return boolean
+     * 
+     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
+     * @version 0.0.1
+     */
     private function getGrupo(){
         $sql = $this->_db->query(
             'SELECT U.grupo,SG.categoria FROM '.MYSQL_USUARIOS.' U LEFT JOIN '.MYSQL_SIS_GRUPO.' SG '.
@@ -534,6 +569,14 @@ class Acl{
         }
         return $id;
     }*/
+    /**
+     * Retorna a Permissão do Grupo
+     * 
+     * @return boolean
+     * 
+     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
+     * @version 0.0.1
+     */
     private function getPermissaoGrupo(){
         $data = Array();
         $sql_permissoes = $this->_db->query(
@@ -562,8 +605,12 @@ class Acl{
         return $data;
     }
     /**
+     * Retorna as Permissoes de CErto usuario
      * #update
      * @return array
+     * 
+     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
+     * @version 0.0.1
      */
     private function getUsuarioPermissao(){
         $data = Array();
@@ -708,9 +755,7 @@ class Acl{
      * @name Usuario_GetLogado
      * @access public
      * 
-     * @uses \Framework\App\Controle::$logado
-     * 
-     * @return int 
+     * @return int Id de Usuario logado ou zero 
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 2.0.0
@@ -718,7 +763,15 @@ class Acl{
     public function Usuario_GetLogado(){
         return $this->logado;
     }
-    public function Usuario_GetLogado_Static(){
+    /**
+     * Retorna o Id do Usuario de uma forma Estatica
+     * 
+     * @return int Id de Usuario logado ou zero
+     * 
+     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
+     * @version 0.0.1
+     */
+    static public function Usuario_GetLogado_Static(){
         return \Framework\App\Registro::getInstacia()->_Acl->logado;
     }
     
@@ -733,8 +786,13 @@ class Acl{
     
     
     
-    
-    public function grupos_inserir(){
+    /**
+     * Inseri Novos Grupos (Grupos Basicos) no Sistema
+     * 
+     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
+     * @version 0.0.1
+     */
+    static function grupos_inserir(){
         
         // Caso Categoria Não existe, continua
         $sql = $this->_db->query(

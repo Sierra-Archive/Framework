@@ -451,13 +451,13 @@ else if ( jQuery ) {
 /*===========================================================================*/
 /*===========================================================================*/
 
-/* PORTUGUES E ORDENAÇÂO RICARDO SIERRA <SIERRA.CSI@GMAIL>COM */
+/* PORTUGUES E ORDENAÇÂO RICARDO SIERRA <CONTATO@RICARDOSIERRA.COM.BR> */
 
 /* Set the defaults for DataTables initialisation */
 $.extend( true, $.fn.dataTable.defaults, {
     "oLanguage": {
         "sEmptyTable":     "Nenhum registro encontrado na tabela",
-        "sInfo": "Mostrar _START_ até _END_ de _TOTAL_ registros<script>$('#DataTable_Contador').html('_TOTAL_');</script>",
+        "sInfo": "Mostrar _START_ até _END_ de _TOTAL_ registros<script>console.log('aqui',this);$('#DataTable_Contador').html('_TOTAL_');</script>",
         "sInfoEmpty": "Mostrar 0 até 0 de 0 Registros",
         "sInfoFiltered": "(Filtrar de _MAX_ total registros)",
         "sInfoPostFix":    "",

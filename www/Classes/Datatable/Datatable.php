@@ -261,6 +261,7 @@ class Datatable {
     static function complex ( $request, $conn, $table_class, $primaryKey, $columns, $whereResult=null, $whereAll=null )
     {
         if($whereAll==null) $whereAll = 'servidor=\''.\SRV_NAME_SQL.'\' AND deletado=\'0\'';
+        else $whereAll .= ' AND servidor=\''.\SRV_NAME_SQL.'\' AND deletado=\'0\'';
         $db = self::db( $conn );
         $bindings = array();
         $localWhereResult = array();
@@ -389,6 +390,7 @@ class Datatable {
             self::fatal( "An SQL error occurred: ".$e->getMessage() );
         }
         // Return all
+        //var_dump($stmt); exit;
         $res = $stmt->get_result();
         $resu = Array();
         while($row = $res->fetch_array(MYSQLI_ASSOC)) {
