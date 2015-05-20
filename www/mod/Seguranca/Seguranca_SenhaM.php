@@ -98,7 +98,7 @@ class Seguranca_SenhaModelo extends Seguranca_Modelo
                 'formatter' => function( $d, $row ) {
                     return '#'.$d;
                 }),
-            array( 'db' => 'categoria',     'dt' => 1 ),
+            array( 'db' => 'categoria2',    'dt' => 1 ),
             array( 'db' => 'url',           'dt' => 2 ),
             array( 'db' => 'login',         'dt' => 3 ),
             array( 'db' => 'senha',         'dt' => 4 ),
@@ -216,8 +216,8 @@ class Seguranca_SenhaModelo extends Seguranca_Modelo
                 'formatter' => function( $d, $row ) {
                     return '#'.$d;
                 }),
-            array( 'db' => 'usuario',       'dt' => 1 ),
-            array( 'db' => 'categoria',     'dt' => 2 ),
+            array( 'db' => 'usuario2',      'dt' => 1 ),
+            array( 'db' => 'categoria2',    'dt' => 2 ),
             array( 'db' => 'url',           'dt' => 3 ),
             array( 'db' => 'login',         'dt' => 4 ),
             array( 'db' => 'senha',         'dt' => 5 ),
@@ -335,7 +335,7 @@ class Seguranca_SenhaModelo extends Seguranca_Modelo
                 'formatter' => function( $d, $row ) {
                     return '#'.$d;
                 }),
-            array( 'db' => 'categoria',     'dt' => 1 ),
+            array( 'db' => 'categoria2',    'dt' => 1 ),
             array( 'db' => 'url',           'dt' => 2 ),
             array( 'db' => 'login',         'dt' => 3 ),
             array( 'db' => 'senha',         'dt' => 4 ),
@@ -453,8 +453,8 @@ class Seguranca_SenhaModelo extends Seguranca_Modelo
                 'formatter' => function( $d, $row ) {
                     return '#'.$d;
                 }),
-            array( 'db' => 'usuario',       'dt' => 1 ),
-            array( 'db' => 'categoria',     'dt' => 2 ),
+            array( 'db' => 'usuario2',      'dt' => 1 ),
+            array( 'db' => 'categoria2',    'dt' => 2 ),
             array( 'db' => 'url',           'dt' => 3 ),
             array( 'db' => 'login',         'dt' => 4 ),
             array( 'db' => 'senha',         'dt' => 5 ),

@@ -260,23 +260,33 @@ class Datatable {
     */
     static function complex ( $request, $conn, $table_class, $primaryKey, $columns, $whereResult=null, $whereAll=null )
     {
-        if($whereAll==null) $whereAll = 'servidor=\''.\SRV_NAME_SQL.'\' AND deletado=\'0\'';
-        else $whereAll .= ' AND servidor=\''.\SRV_NAME_SQL.'\' AND deletado=\'0\'';
+        // Inicia Variaveis Basicas
         $db = self::db( $conn );
         $bindings = array();
         $localWhereResult = array();
         $localWhereAll = array();
         
+        // Pega Colunas e Nome
         $table_class = $table_class.'_DAO';      
         $table = \Framework\App\Conexao::$tabelas[$table_class]['nome'];
         $colunas = \Framework\App\Conexao::$tabelas[$table_class]['colunas'];
+        list(
+            $sql,
+            $sql_tabela_sigla,
+            $sql_condicao,
+            $tabela_campos_valores,
+            $tabelas_usadas,$j
+        ) = $db->Sql_Select_Dados($table_class,implode(",", self::pluck($columns, 'db')),'');
 
+        // Add Condicao
+        if($whereAll==null) $whereAll = $sql_condicao;
+        else $whereAll = self::_flatten( $whereAll ). ' AND '. $sql_condicao;
+        
         // Build the SQL query string from the request
         $limit = self::limit( $request, $columns );
         $order = self::order( $request, $columns );
         $where = self::filter( $request, $columns, $bindings, $table_class );
         $whereResult = self::_flatten( $whereResult );
-        $whereAll = self::_flatten( $whereAll );
 
         if ( $whereResult ) {
             $where = $where ?
@@ -291,16 +301,16 @@ class Datatable {
         }else{
             $whereAllSql = '';
         }
+        
         // Main query to actually get the data
         $data = self::sql_exec( $db, $bindings,
-            "SELECT SQL_CALC_FOUND_ROWS `".implode("`, `", self::pluck($columns, 'db'))."`
-            FROM `$table`
-            $where
-            $order
-            $limit",
+            "SELECT SQL_CALC_FOUND_ROWS ".$sql.
+            //"FROM `$table`
+            ' '.$where.' '.$order.' '.$limit,
             $colunas,
             $table_class
         );
+        
         // Data set length after filtering
         $resFilterLength = self::sql_exec( $db,
             "SELECT FOUND_ROWS()"
@@ -309,7 +319,7 @@ class Datatable {
         // Total data set length
         $resTotalLength = self::sql_exec( $db,
             "SELECT COUNT(`{$primaryKey}`)
-            FROM `$table` ".
+            FROM `$table` AS ".$sql_tabela_sigla.' '.
             $whereAllSql
         );
         $recordsTotal = $resTotalLength[0]["COUNT(`{$primaryKey}`)"];
@@ -369,7 +379,10 @@ class Datatable {
             $sql = $bindings;
         }
         $stmt = $db->prepare( $sql );
-        if($stmt===false) exit;
+        //var_dump($stmt,$sql);
+        if($stmt===false){
+             throw new \Exception('Erro de Query'.$sql,2828);
+        }
         //echo $sql;
         // Bind parameters
         if ( is_array( $bindings ) && !empty($bindings) ) {

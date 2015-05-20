@@ -702,10 +702,10 @@ final class Conexao
             $Objeto->log_user_add = \Framework\App\Acl::Usuario_GetID_Static();
             $Objeto->deletado     = 0;
             // Pega Atributos
-            $valores = $Objeto->Get_Object_Vars();
+            $tabela_campos_valores = $Objeto->Get_Object_Vars();
             
             // Faz query com valores 
-            foreach ($valores as $indice =>&$valor){
+            foreach ($tabela_campos_valores as $indice =>&$valor){
                 if($valor!==false){
                     // Transforma pra pasar pra mysql
                     $valor_add = $Objeto->bd_set($indice);
@@ -770,7 +770,7 @@ final class Conexao
         }else{
             foreach($objetos as &$Objeto){
                 $class_name = get_class($Objeto);
-                //$valores = $Objeto->Get_Object_Vars();
+                //$tabela_campos_valores = $Objeto->Get_Object_Vars();
                 $sql = 'DELETE FROM  '.self::$tabelas[$class_name]['nome'];
                 $primarias = $Objeto->Get_Primaria();
                 $contador = 0;
@@ -829,15 +829,15 @@ final class Conexao
         }else if(is_object($Objeto)){
             $class_name = get_class($Objeto);
             // Captura Variaveis do Objeto e Primarias
-            $valores = $Objeto->Get_Object_Vars();
+            $tabela_campos_valores = $Objeto->Get_Object_Vars();
             $primarias = $Objeto->Get_Primaria();
             if(empty($primarias)) throw new \Exception('Não Existe chave primaria: '.self::$tabelas[$class_name]['nome'],3120);
             // Começa Query
             $sql    = '';
             $i      = 0;
             $j      = 0;
-            reset($valores);
-            while (list($indice,$valor) = each($valores)) {
+            reset($tabela_campos_valores);
+            while (list($indice,$valor) = each($tabela_campos_valores)) {
                 if($valor!==false && strpos($indice, '2')===false && (array_search($indice, $primarias)===false ||  array_search($indice, $primarias)===NULL)){
                     if($sql!=''){
                         $sql .=  ', ';
@@ -885,32 +885,69 @@ final class Conexao
             }
         }
     }
-    private function Sql_Select_Comeco($class_dao,$campos){
+    /**
+     * Recupera dados de de Uma Classe e seus Campos
+     * 
+     * Exemplo:
+     *   list(
+     *       $sql,
+     *       $sql_tabela_sigla,
+     *       $sql_condicao,
+     *       $tabela_campos_valores,
+     *       $tabelas_usadas,$j
+     *   ) = $this->Sql_Select_Dados($class_dao,$campos);
+     * 
+     * @param type $class_dao Classe Dao do Sistema ou Modulo
+     * @param type $campos Campos Correspondentes
+     * @return array list(
+     *       $sql,
+     *       $sql_tabela_sigla,
+     *       $sql_condicao,
+     *       $tabela_campos_valores,
+     *       $tabelas_usadas,$j
+     *   )
+     */
+    public function Sql_Select_Dados($class_dao,$campos,$sql='SELECT'){
+        // Carrega Cache
+        $Cache = $this->_Cache->Ler('Select-'.$class_dao.serialize($campos).$sql);
+        if (!$Cache) {
+            $Cache = $this->Sql_Select_Comeco($class_dao, $campos,$sql);
+            $this->_Cache->Salvar('Select-'.$class_dao.serialize($campos).$sql, $Cache);
+            return $Cache;
+        }else{
+            return $Cache;
+        }
+    }
+    /**
+     * Recupera dados de de Uma Classe e seus Campos
+     * 
+     * Exemplo:
+     *   list(
+     *       $sql,
+     *       $sql_tabela_sigla,
+     *       $sql_condicao,
+     *       $tabela_campos_valores,
+     *       $tabelas_usadas,$j
+     *   ) = $this->Sql_Select_Dados($class_dao,$campos);
+     * 
+     * @param type $class_dao Classe Dao do Sistema ou Modulo
+     * @param type $campos Campos Correspondentes
+     * @param type $sql Quase sempre sera SELECT ou SELECT SQL_CALC_FOUND_ROWS 
+     * @return array list(
+     *       $sql,
+     *       $sql_tabela_sigla,
+     *       $sql_condicao,
+     *       $tabela_campos_valores,
+     *       $tabelas_usadas,$j
+     *   )
+     * @throws \Exception
+     */
+    private function Sql_Select_Comeco($class_dao,$campos,$sql='SELECT'){
         $campos_todos = false;
         
         // Campos Usados da Principal e das Extrangeiras
         $principal = Array();
         $extrangeiras = Array();
-        
-        // Trata Campos se forem pedidos
-        if($campos!==false && $campos!==true && $campos!=='*'){
-            $campos = explode(',', $campos);
-            foreach($campos as $valor){
-                if($valor==='*'){
-                    $campos_todos = true;
-                }else if(strripos($valor, '.')===false){
-                    $principal[$valor] = true;
-                }else{
-                    $quebrado = explode('.', $valor);
-                    if(!isset($extrangeiras[$quebrado[0]])){
-                        $extrangeiras[$quebrado[0]] = Array();
-                    }
-                    $extrangeiras[$quebrado[0]][$quebrado[1]] = true;
-                }
-            }
-        }else{
-            $campos_todos = true;
-        }
         
         
         ///////////////////
@@ -920,9 +957,9 @@ final class Conexao
         //
                             
         // CArrega Variaveis Basicas
-        $sql            = (string) 'SELECT ';
         $sql_tabela     = (string) '';
         $sql_condicao   = (string) '';
+        $sql = $sql.' ';
         
         // Para extrangeiras
         $tabelas_extrangeiras = Array();
@@ -935,7 +972,8 @@ final class Conexao
         
         // Carrega Objeto e Asvariaveis dele
         $resultado_unico = new $class_dao;
-        $valores = $resultado_unico->Get_Object_Vars();
+        $tabela_campos_valores = $resultado_unico->Get_Object_Vars();
+        // PEga Todas as Extrangeiras
         $extrangeira    = $resultado_unico->Get_Extrangeiras();
         
         // Escolhe Tabela
@@ -945,14 +983,54 @@ final class Conexao
         $tabelas_usadas[$sql_tabela_sigla] = $sql_tabela_nome;
         
         
+        // Caso venha uma string *, ira puxar todos os campos,
+        // Se nao, só vai puxar os campos pedidos
+        $campos_string = '*';
+        if($campos!==false && is_string($campos) && $campos!=='*'){
+            
+            
+            // Explode CAmpos e Trata Eles
+            $campos_string = $campos;
+            $campos = explode(',', $campos);
+            foreach($campos as $valor){
+                if($valor==='*'){
+                    // Libera Todos os campos
+                    $campos_todos = true;
+                }else if(strripos($valor, '.')===false){
+                    // Adiciona Aos Principais
+                    $principal[$valor] = true;
+                }else{
+                    // Adiciona as Extrangeiras
+                    $quebrado = explode('.', $valor);
+                    if(!isset($extrangeiras[$quebrado[0]])){
+                        $extrangeiras[$quebrado[0]] = Array();
+                    }
+                    $extrangeiras[$quebrado[0]][$quebrado[1]] = true;
+                }
+            }
+        }else{
+            $campos_todos = true;
+        }
         
         // Trata os Campos das Extrangeiras da Tabela do Select        
-        if($extrangeira!==false && (!empty($extrangeiras) || $campos_todos===true)){
+        if($extrangeira!==false && (!empty($extrangeiras) || $campos_todos===true || !empty($principal))){
             foreach($extrangeira as &$valor){
                 if(strpos($valor['titulo'], '[]')===false ){
                     
-                    // Se nao tiver autorizado nem chama
-                    if($campos_todos===false && (empty($extrangeiras) || !isset($extrangeiras[$valor['titulo']]) || $extrangeiras[$valor['titulo']]===false || empty($extrangeiras[$valor['titulo']]))) continue;
+                    // Se não é pra exibir todos os campos e nao pediram essa extrangeiras em campos
+                    // e ( extrangeiras ta vazia ou nao existe em extrangeiras ou valor em extrangeiras 
+                    // é falso, ou extrangeiras esta vazio
+                    // )
+                    if($campos_todos===false && strripos($campos_string, $valor["titulo"].'2')===false 
+                        && (
+                            empty($extrangeiras) || 
+                            !isset($extrangeiras[$valor['titulo']]) || 
+                            $extrangeiras[$valor['titulo']]===false || 
+                            empty($extrangeiras[$valor['titulo']])
+                        )
+                    ){
+                        continue;
+                    }
 
                     // Faz Tratamento de Extrangeira
                     list($ligacao,$mostrar,$extcondicao) = $this->Extrangeiras_Quebra($valor['conect']);
@@ -1022,7 +1100,7 @@ final class Conexao
          */
         // Continua
         $i = 0;
-        while (list($indice,$valor) = each($valores)){    
+        while (list($indice,$valor) = each($tabela_campos_valores)){    
             
             // Se nao tiver que colocar nao coloca
             if($campos_todos===false && (empty($principal) || !isset($principal[$indice]) || $principal[$indice]===false)) continue;
@@ -1054,7 +1132,7 @@ final class Conexao
             $sql.= ', ';
         }
         $sql .= $ext_campos.' FROM '.$sql_tabela.$join;
-        return Array($sql,$sql_tabela_sigla,$sql_condicao,$valores,$tabelas_usadas,$j);
+        return Array($sql,$sql_tabela_sigla,$sql_condicao,$tabela_campos_valores,$tabelas_usadas,$j);
     }
     public function Sql_Contar($class_dao, $where = false){
         $tempo = new \Framework\App\Tempo('Conexao_Contar');   
@@ -1132,15 +1210,14 @@ final class Conexao
             $class_dao      = $class_dao.'_DAO';
         }
         
-        // Carrega Cache
-        $Cache = $this->_Cache->Ler('Select-'.$class_dao.$campos);
-        if (!$Cache) {
-            $Cache = $this->Sql_Select_Comeco($class_dao, $campos);
-            list($sql,$sql_tabela_sigla,$sql_condicao,$valores,$tabelas_usadas,$j) = $Cache;
-            $this->_Cache->Salvar('Select-'.$class_dao.$campos, $Cache);
-        }else{
-            list($sql,$sql_tabela_sigla,$sql_condicao,$valores,$tabelas_usadas,$j) = $Cache;
-        }
+        // Recupera Dados da Tabela
+        list(
+            $sql,
+            $sql_tabela_sigla,
+            $sql_condicao,
+            $tabela_campos_valores,
+            $tabelas_usadas,$j
+        ) = $this->Sql_Select_Dados($class_dao,$campos);
         
         // Roda todas as condicoes afim de nao trazer nada a mais..
         //if($tempo){
@@ -1240,6 +1317,9 @@ final class Conexao
                     if($i<=1)  throw new \Exception('Query Select contém apenas 1 campo em condição OR:'.$erro,3121);
                     $sql_condicao .= ' )';
                 }else
+                    
+                    
+                    
                 // SE nao for Array simples é usado AND
                 if((!empty($valor)|| $valor==0) && (!empty($indice)|| $indice==0)){
                     $indice = \anti_injection($indice);
@@ -1366,7 +1446,9 @@ final class Conexao
                 }
                 ++$j;
             }
-        }else if(strpos($condicao, '{sigla}')!==false){
+        }else 
+        // Se Tiver {sigla}, adiciona
+        if(strpos($condicao, '{sigla}')!==false){
             if($sql_condicao!='') $sql_condicao .= ' AND ';
             $sql_condicao .= str_replace('{sigla}', $sql_tabela_sigla.'.', $condicao);
         }else if($condicao!==false && $condicao!==''){
@@ -1411,7 +1493,7 @@ final class Conexao
         // Puxa Resultado a Resultado e o transforma em um objeto
         while ($campo = $query_result->fetch_object()) {
             $resultado[] = new $class_dao;
-            $this->Sql_Manipulacao_CarregarObjeto($resultado[$contador], $campo, $valores);
+            $this->Sql_Manipulacao_CarregarObjeto($resultado[$contador], $campo, $tabela_campos_valores);
             ++$contador;
         }
         //echo "\n<br>Usado:".(round((memory_get_usage() - $start_memory)/1024/1024,4)).'MB';
@@ -1432,9 +1514,9 @@ final class Conexao
      * toda hora, entao ja o vem por refenrencia
      * 
      */
-    private function Sql_Manipulacao_CarregarObjeto(&$objeto, &$campo, &$valores1){
+    private function Sql_Manipulacao_CarregarObjeto(&$objeto, &$campo, &$tabela_campos_valores1){
         // Carrega Variaveis
-        //$valores1 = $objeto->Get_Object_Vars();
+        //$tabela_campos_valores1 = $objeto->Get_Object_Vars();
         $valores2 = get_object_vars($campo);
         reset($valores2);
         while (key($valores2) !== null) {
