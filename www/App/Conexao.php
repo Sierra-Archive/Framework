@@ -169,7 +169,16 @@ final class Conexao
     }     
     /*Evita que a classe seja clonada*/
     private function __clone(){}
-
+    /**
+     * Pega as Colunas
+     * 
+     * @param string $nome Nome da Coluna
+     * @return array
+     * @throws \Exception
+     * 
+     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
+     * @version 0.0.1
+     */
     public static function &Dao_GetColunas($nome){
         if(isset(self::$tabelas[$nome.'_DAO']['colunas'])){
             return self::$tabelas[$nome.'_DAO']['colunas'];
@@ -180,13 +189,19 @@ final class Conexao
     }
     /**
      * Get Colunas Pelo NOme
+     * 
+     * @param string $nome  Nome da Coluna
+     * @return array
+     * @throws \Exception
+     * 
+     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
+     * @version 0.0.1
      */
     public static function &Dao_GetColunas_Nome($nome){
         $tabelas = &self::$tabelas;
         foreach($tabelas as $indice=>&$valor){
             if($valor['nome']===$nome){
-                if(isset(self::$tabelas[$nome.'_DAO']["colunas"])) return self::$tabelas[$nome.'_DAO']["colunas"];
-                return self::$tabelas[$nome]["colunas"];
+                return self::$tabelas[$valor['class']]["colunas"];
             }
         }
         throw new \Exception('Colunas com nome '.$nome.' nao Existe.',3251);
@@ -1218,7 +1233,14 @@ final class Conexao
             $tabela_campos_valores,
             $tabelas_usadas,$j
         ) = $this->Sql_Select_Dados($class_dao,$campos);
-        
+        /*echo "\n\n<br><br>";
+        var_dump(
+            $sql,
+            $sql_tabela_sigla,
+            $sql_condicao,
+            $tabela_campos_valores,
+            $tabelas_usadas,$j
+        );*/
         // Roda todas as condicoes afim de nao trazer nada a mais..
         //if($tempo){
             //$condicaotempo = new \Framework\App\Tempo('Select Condicao');
@@ -2007,7 +2029,6 @@ final class Conexao
         $tabelas_ext    = &self::$tabelas_ext;
         if(defined('TEMP_DEPENDENCIA_DAO')){
             $arquivos = unserialize(TEMP_DEPENDENCIA_DAO);
-            var_dump($arquivos);
             if(!empty($arquivos)){
                 foreach($arquivos as $arquivo){
                     $arquivo = $arquivo.'_DAO';

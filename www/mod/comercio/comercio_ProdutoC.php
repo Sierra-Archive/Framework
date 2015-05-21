@@ -57,6 +57,7 @@ class comercio_ProdutoControle extends comercio_Controle
         $comercio_Produto_Familia   = \Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Produto_Familia');
         $comercio_Estoque           = \Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Estoque');
         $comercio_Unidade           = \Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Unidade');
+        $comercio_marca             = \Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Marca');
         if($comercio_Produto_Cod)   $ordem = 1;
         if($comercio_Produto_Cod)   $ordem = $ordem+1;
         else                        $ordem = $ordem+2;
@@ -88,7 +89,7 @@ class comercio_ProdutoControle extends comercio_Controle
                 if($comercio_Produto_Cod){
                     $tabela['#Cod'][$i]      = '#'.$valor->cod;
                 }
-                if(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Marca')===true){
+                if($comercio_marca===true){
                     if($comercio_Produto_Familia=='Familia'){
                         $tabela['Familia'][$i]   = $valor->familia2;
                     }else{
