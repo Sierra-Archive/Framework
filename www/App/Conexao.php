@@ -197,7 +197,7 @@ final class Conexao
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.0.1
      */
-    public static function &Dao_GetColunas_Nome($nome){
+    private function &Dao_GetColunas_Nome($nome){
         $tabelas = &self::$tabelas;
         foreach($tabelas as $indice=>&$valor){
             if($valor['nome']===$nome){
@@ -476,7 +476,7 @@ final class Conexao
                 return $this->query('ALTER TABLE `'.$tabela.'` ADD `'.$campo.'`  INT( 11 ) NOT NULL AUTO_INCREMENT PRIMARY KEY COMMENT \'Chave Primária\';',false);
             }else{
                 
-                $colunas = &self::Dao_GetColunas_Nome($tabela);
+                $colunas = &$this->Dao_GetColunas_Nome($tabela);
                 $existe = false;
                 if(isset($colunas) && !empty($colunas)){
                     foreach($colunas as &$valor){
