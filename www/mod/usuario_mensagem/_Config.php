@@ -10,6 +10,16 @@ $config_Modulo = function (){
 };
 $config_Menu = function (){
     return Array(
+        'Relatório' => Array(
+            'Filhos'                => Array('Chamados'=>Array(
+                'Nome'                  => 'Chamados',
+                'Link'                  => 'usuario_mensagem/Relatorio/Relatorio',
+                'Gravidade'             => 5,
+                'Img'                   => 'envelope',
+                'Icon'                  => 'envelope',
+                'Filhos'                => false,
+            ),),
+        ),
         'Suporte' => Array(
             'Nome'                  => 'Suporte',
             'Link'                  => '#',

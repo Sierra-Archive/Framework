@@ -2,7 +2,6 @@
 final Class Usuario_Mensagem_DAO extends Framework\App\Dao 
 {
     protected $id               ;
-    protected $cliente          ;
     protected $origem           ;
     protected $escritor         ;
     protected $escritor_nome    ;
@@ -10,6 +9,7 @@ final Class Usuario_Mensagem_DAO extends Framework\App\Dao
     protected $para_nome        ;
     protected $setor            ;
     protected $assunto          ;
+    protected $cliente          ;
     protected $marca            ;
     protected $linha            ;
     protected $produto          ;

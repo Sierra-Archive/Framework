@@ -91,7 +91,7 @@ class Datatable {
                     $dir = $request['order'][$i]['dir'] === 'asc' ?
                     'ASC' :
                     'DESC';
-                    $orderBy[] = '`'.$column['db'].'` '.$dir;
+                    $orderBy[] = $column['db'].' '.$dir;//'`'.$column['db'].'` '.$dir;
                 }
                 if($cookie_ordenar!=='') $cookie_ordenar .= ',';
                 $cookie_ordenar .= '['.$columnIdx.',\''.$request['order'][$i]['dir'].'\']';
@@ -258,8 +258,11 @@ class Datatable {
     * @param string $whereAll WHERE condition to apply to all queries
     * @return array Server-side processing response array
     */
-    static function complex ( $request, $conn, $table_class, $primaryKey, $columns, $whereResult=null, $whereAll=null )
+    static function complex ( $request, $conn, $table_class, $primaryKey, $columns, $whereResult=null, $whereAll=null, $select_Extra = '', $innerjoin_Extra = '' )
     {
+        // Tratamento
+        if($innerjoin_Extra!=='') $innerjoin_Extra = ' '.$innerjoin_Extra;
+
         // Inicia Variaveis Basicas
         $db = self::db( $conn );
         $bindings = array();
@@ -280,7 +283,7 @@ class Datatable {
 
         // Add Condicao
         if($whereAll==null) $whereAll = $sql_condicao;
-        else $whereAll = self::_flatten( $whereAll ). ' AND '. $sql_condicao;
+        else $whereAll = $sql_condicao. ' AND '.self::_flatten( $whereAll );
         
         // Build the SQL query string from the request
         $limit = self::limit( $request, $columns );
@@ -297,14 +300,17 @@ class Datatable {
             $where = $where ?
             $where .' AND '.$whereAll :
             'WHERE '.$whereAll;
-            $whereAllSql = 'WHERE '.$whereAll;
+            $whereAllSql = ' WHERE '.$whereAll;
         }else{
             $whereAllSql = '';
         }
         
+        // Se Tiver select extra e tiver select automatico, coloca a virgula
+        if($select_Extra!=='' && substr(strtoupper(trim($sql)), 0,4)!=='FROM') $select_Extra .= ', ';
+        
         // Main query to actually get the data
         $data = self::sql_exec( $db, $bindings,
-            "SELECT SQL_CALC_FOUND_ROWS ".$sql.
+            "SELECT SQL_CALC_FOUND_ROWS ".$select_Extra.$sql.$innerjoin_Extra.
             //"FROM `$table`
             ' '.$where.' '.$order.' '.$limit,
             $colunas,
@@ -316,13 +322,27 @@ class Datatable {
             "SELECT FOUND_ROWS()"
         );
         $recordsFiltered = $resFilterLength[0]['FOUND_ROWS()'];
-        // Total data set length
+        
+        /*// Total data set length
         $resTotalLength = self::sql_exec( $db,
-            "SELECT COUNT(`{$primaryKey}`)
-            FROM `$table` AS ".$sql_tabela_sigla.' '.
+            "SELECT COUNT(*) ".$select_Extra.$sql.
             $whereAllSql
         );
-        $recordsTotal = $resTotalLength[0]["COUNT(`{$primaryKey}`)"];
+        $recordsTotal = $resTotalLength[0]["COUNT(*)"];*/
+        // Total funcionando com Grupos
+        self::sql_exec( $db, null,
+            "SELECT SQL_CALC_FOUND_ROWS ".$select_Extra.$sql.$innerjoin_Extra.
+            //"FROM `$table`
+            $whereAllSql,
+            $colunas,
+            $table_class
+        );
+        // Data set length after filtering
+        $resTotal = self::sql_exec( $db,
+            "SELECT FOUND_ROWS()"
+        );
+        $recordsTotal = $resTotal[0]['FOUND_ROWS()'];
+        
         /*
         * Output
         */
