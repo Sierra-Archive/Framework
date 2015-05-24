@@ -53,45 +53,14 @@ class comercio_LinhaControle extends comercio_Controle
      */
     public function Linhas($export=false){
         self::Endereco_Linha(false);
-        $i = 0;
-        // BOTAO IMPRIMIR / ADD
-        $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
-            Array(
-                'Adicionar Linha',
-                'comercio/Linha/Linhas_Add',
-                ''
-            ),
-            Array(
-                'Print'     => true,
-                'Pdf'       => true,
-                'Excel'     => true,
-                'Link'      => 'comercio/Linha/Linhas',
-            )
-        )));
-        // CONEXAO
-        $linhas = $this->_Modelo->db->Sql_Select('Comercio_Linha');
-        if($linhas!==false && !empty($linhas)){
-            if(is_object($linhas)) $linhas = Array(0=>$linhas);
-            reset($linhas);
-            foreach ($linhas as $indice=>&$valor) {
-                //$tabela['#Id'][$i]     = '#'.$valor->id;
-                $tabela['Marca'][$i]     = $valor->marca2;
-                $tabela['Nome'][$i]      = $valor->nome;
-                $tabela['Funções'][$i]   = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Linha'        ,'comercio/Linha/Linhas_Edit/'.$valor->id.'/'    ,'')).
-                                           $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Linha'       ,'comercio/Linha/Linhas_Del/'.$valor->id.'/'     ,'Deseja realmente deletar essa Linha ?'));
-                ++$i;
-            }
-            if($export!==false){
-                self::Export_Todos($export,$tabela, 'Comercio - Produtos (Linhas)');
-            }else{
-                $this->_Visual->Show_Tabela_DataTable($tabela);
-            }
-            unset($tabela);
-        }else{         
-            $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhuma Linha</font></b></center>');
-        }
-        $titulo = 'Listagem de Linhas ('.$i.')';
-        $this->_Visual->Bloco_Unico_CriaJanela($titulo);
+        
+        $tabela = Array(
+            'Id','Nome','Linha','Funções'
+        );
+        $this->_Visual->Show_Tabela_DataTable_Massiva($tabela,'comercio/Linha/Linhas');
+        $titulo = 'Listagem de Linhas (<span id="DataTable_Contador">0</span>)';  //
+        $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',10,Array("link"=>"comercio/Linha/Linhas_Add",'icon'=>'add','nome'=>'Adicionar Linha'));
+        
         
         //Carrega Json
         $this->_Visual->Json_Info_Update('Titulo','Administrar Linhas');

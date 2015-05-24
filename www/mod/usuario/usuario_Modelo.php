@@ -231,5 +231,465 @@ class usuario_Modelo extends \Framework\App\Modelo
         $text = 'CONFIG_CLI_'.$motivoid.'_NOME';
         return Array('Pagamento do Plano',$text);
     }
+    
+    
+    
+    
+    
+    
+    
+    
+    protected function Usuario_Listagem($grupo=false,$ativado=false,$gravidade=0,$inverter=false,$export=false){
+        $i = 0;
+        if($grupo===false){
+            $categoria = 0;
+            if($inverter){
+                $where = 'ativado!='.$ativado;
+            }else{
+                $where = 'ativado='.$ativado;
+            }
+            if($ativado===false){
+                $where = '';
+            }
+            $nomedisplay        = 'Usuários ';
+            $nomedisplay_sing   = 'Usuário ';
+            $nomedisplay_tipo   = 'Usuario';
+            // Link
+            $this->Tema_Endereco('Usuários');
+        }else{
+            $categoria = (int) $grupo[0];
+            
+            // Pega GRUPOS VALIDOS
+            $sql_grupos = $this->_Modelo->db->Sql_Select('Sistema_Grupo','categoria='.$categoria,0,'','id');
+            $grupos_id = Array();
+            if(is_object($sql_grupos)) $sql_grupos = Array(0=>$sql_grupos);
+            if($sql_grupos!==false && !empty($sql_grupos)){
+                foreach ($sql_grupos as &$valor) {
+                    $grupos_id[] = $valor->id;
+                }
+            }
+            
+            if(empty($grupos_id)) throw new \Exception('Grupos não existe', 404);
+            
+            // cria where de acordo com parametros
+            if($inverter){
+                $where = 'grupo NOT IN ('.implode(',',$grupos_id).') AND ativado='.$ativado;
+            }else{
+                $where = 'grupo IN ('.implode(',',$grupos_id).') AND ativado='.$ativado;
+            }
+            
+            if($ativado===false){
+                $where = explode(' AND ', $where);
+                $where = $where[0];
+            }
+        
+            $nomedisplay        = $grupo[1].' ';
+            $nomedisplay_sing   = Framework\Classes\Texto::Transformar_Plural_Singular($grupo[1]);
+            $nomedisplay_tipo   = Framework\Classes\Texto::Transformar_Plural_Singular($grupo[1]);
+            // Link
+            $this->Tema_Endereco($grupo[1]);
+        }
+        
+        $linkextra = '';
+        if($grupo!==false && $grupo[0]==CFG_TEC_CAT_ID_CLIENTES && $inverter===false){
+            $linkextra = '/cliente';
+            $link = 'usuario/Admin/ListarCliente';
+            $link_editar = 'usuario/Admin/Cliente_Edit';
+            $link_deletar = 'usuario/Admin/Cliente_Del';
+            $link_add = 'usuario/Admin/Cliente_Add/'.$categoria;
+        }
+        else if($grupo!==false && $grupo[0]==CFG_TEC_CAT_ID_FUNCIONARIOS && $inverter===false){
+            $linkextra = '/funcionario';
+            $link = 'usuario/Admin/ListarFuncionario';
+            $link_editar = 'usuario/Admin/Funcionario_Edit';
+            $link_deletar = 'usuario/Admin/Funcionario_Del';
+            $link_add = 'usuario/Admin/Funcionario_Add/'.$categoria;
+        }else{
+            $link = 'usuario/Admin/ListarUsuario';
+            $link_editar = 'usuario/Admin/Usuarios_Edit';
+            $link_deletar = 'usuario/Admin/Usuarios_Del';
+            $link_add = 'usuario/Admin/Usuarios_Add/'.$categoria;
+        }
+        
+        // add botao
+        $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
+            Array(
+                'Adicionar '.Framework\Classes\Texto::Transformar_Plural_Singular($nomedisplay),
+                $link_add,
+                ''
+            ),
+            Array(
+                'Print'     => true,
+                'Pdf'       => true,
+                'Excel'     => true,
+                'Link'      => $link,
+            )
+        )));
+        // Continua Resto
+        //$this->_Visual->Blocar('<a title="Adicionar " class="btn btn-success lajax explicar-titulo" acao="" href="'.URL_PATH.'usuario/Admin/Usuarios_Add'.$linkextra.'">Adicionar novo '.Framework\Classes\Texto::Transformar_Plural_Singular($nomedisplay).'</a><div class="space15"></div>');
+        $usuario = $this->_Modelo->db->Sql_Select('Usuario',$where,0,'','id,grupo,foto,nome,razao_social,email,email2,telefone,telefone2,celular,celular1,celular2,celular3,ativado,log_date_add');
+        if(is_object($usuario)){
+            $usuario = Array(0=>$usuario);
+        }
+        if($usuario!==false && !empty($usuario)){
+            
+            // Puxa Tabela e qnt de registro
+            $registro   = \Framework\App\Registro::getInstacia();
+            $Modelo     = &$registro->_Modelo;
+            $Visual     = &$registro->_Visual;
+            $tabela = Array();
+            $i = 0;
+            if(is_object($usuarios)){
+                $usuarios = Array(0=>$usuarios);
+            }
+            reset($usuarios);
+
+            // Permissoes (Fora Do LOOPING por performace)
+            $usuario_Admin_Ativado_Listar   = \Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Admin_Ativado_Listar');
+            $usuario_Admin_Foto             = \Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Admin_Foto');
+            $Financeiro_User_Saldo          = \Framework\App\Acl::Sistema_Modulos_Configs_Funcional('Financeiro_User_Saldo');
+            $usuario_mensagem_EmailSetor    = \Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_mensagem_EmailSetor');
+            $usuario_Admin_Grupo            = \Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Grupo_Mostrar');
+
+            // Get Permissoes (Fora Do LOOPING por performace)
+            $perm_view          = $registro->_Acl->Get_Permissao_Url($url_ver);
+            $perm_comentario    = $registro->_Acl->Get_Permissao_Url('usuario/Admin/Usuarios_Comentario');
+            $perm_anexo         = $registro->_Acl->Get_Permissao_Url('usuario/Anexo/Anexar');
+            $perm_email         = $registro->_Acl->Get_Permissao_Url('usuario/Admin/Usuarios_Email');
+            $perm_status        = $registro->_Acl->Get_Permissao_Url('usuario/Admin/Status');
+            $perm_editar        = $registro->_Acl->Get_Permissao_Url($url_editar);
+            $perm_del           = $registro->_Acl->Get_Permissao_Url($url_deletar);
+
+            // Verifica Grupo
+            $Ativado_Grupo = false;
+            if(is_array($usuario_Admin_Grupo)){
+                if($grupo===false || (is_array($grupo) && in_array($grupo[0], $usuario_Admin_Grupo))){
+                    $Ativado_Grupo = true;
+                }
+            }else{
+                if($usuario_Admin_Grupo===true){
+                    $Ativado_Grupo = true;
+                }
+            }
+
+            // Verifica foto
+            $Ativado_Foto = false;
+            if(is_array($usuario_Admin_Foto)){
+                if($grupo===false || (is_array($grupo) && in_array($grupo[0], $usuario_Admin_Foto))){
+                    $Ativado_Foto = true;
+                }
+            }else{
+                if($usuario_Admin_Foto===true){
+                    $Ativado_Foto = true;
+                }
+            }
+            // Faz Looping Escrevendo Tabelas
+            foreach ($usuarios as &$valor) {
+                $tabela['Id'][$i]         = $valor->id;
+                if($Ativado_Grupo===true){
+                    $tabela['Grupo'][$i]      = $valor->grupo2;
+                }
+                if($Ativado_Foto===true){
+                    if($valor->foto==='' || $valor->foto===false){
+                        $foto = WEB_URL.'img'.US.'icons'.US.'clientes.png';
+                    }else{
+                        $foto = $valor->foto;
+                    }
+                    $tabela['Foto'][$i]             = '<img src="'.$foto.'" style="max-width:100px;" />';
+                }
+                //$tabela['#Id'][$i]               = '#'.$valor->id;
+                $nome = '';
+                // Atualiza Nome
+                if($valor->nome!=''){
+                    $nome .= $valor->nome;
+                }
+                // Atualiza Razao Social
+                if($valor->razao_social!=''){
+                    if($nome!='') $nome .= '<br>';
+                    $nome .= $valor->razao_social;
+                }
+                // Se tiver Mensagens
+                if(\Framework\App\Sistema_Funcoes::Perm_Modulos('usuario_mensagem')){
+                    $nome = '<a href="'.URL_PATH.'usuario_mensagem/Suporte/Mostrar_Cliente/'.$valor->id.'/">'.$nome.' ('.usuario_mensagem_SuporteModelo::Suporte_MensagensCliente_Qnt($valor->id).')</a>';
+                }
+                // Mostra Nome
+                $tabela['Nome'][$i]             = $nome;
+                $telefone = '';
+                if($valor->telefone!=''){
+                    $telefone .= $valor->telefone;
+                }
+                if($valor->telefone2!=''){
+                    if($telefone!='') $telefone .= '<br>';
+                    $telefone .= $valor->telefone1;
+                }
+                if($valor->celular!=''){
+                    if($telefone!='') $telefone .= '<br>';
+                    $telefone .= $valor->celular;
+                }
+                if($valor->celular1!=''){
+                    if($telefone!='') $telefone .= '<br>';
+                    $telefone .= $valor->celular1;
+                }
+                if($valor->celular2!=''){
+                    if($telefone!='') $telefone .= '<br>';
+                    $telefone .= $valor->celular2;
+                }
+                if($valor->celular3!=''){
+                    if($telefone!='') $telefone .= '<br>';
+                    $telefone .= $valor->celular3;
+                }
+
+                $tabela['Contato'][$i]         = $telefone;
+                $email = '';
+                if($valor->email!=''){
+                    $email .= $valor->email;
+                }
+                if($valor->email2!=''){
+                    if($email!='') $email .= '<br>';
+                    $email .= $valor->email2;
+                }
+
+
+                $tabela['Email'][$i]      =  $email;
+                //$tabela['Nivel de Usuário'][$i] = $niveluser;
+                //$tabela['Nivel de Admin'][$i]   = $niveladmin;
+                // para MOdulos que contem banco
+                if(\Framework\App\Sistema_Funcoes::Perm_Modulos('Financeiro') && $Financeiro_User_Saldo){
+                    $tabela['Saldo'][$i]        = Financeiro_Modelo::Carregar_Saldo($Modelo, $valor->id, true);
+                }
+                // Funcoes
+
+                if(strpos($valor->log_date_add, APP_DATA_BR)!==false){
+                    $data_add = '<b>'.$valor->log_date_add.'</b>';
+                }else{
+                    $data_add = $valor->log_date_add;
+                }
+                $tabela['Data de Cadastro'][$i] = $data_add;
+
+                // Visualizar
+                $funcoes_qnt = 1;
+                $tabela['Funções'][$i]          = $Visual->Tema_Elementos_Btn('Visualizar'     ,Array('Visualizar '.$nomedisplay_sing        ,$url_ver.'/'.$valor->id.'/'.$linkextra    ,''),$perm_view);
+
+
+
+                // Financeiro Especifico
+                /*if(\Framework\App\Sistema_Funcoes::Perm_Modulos('Financeiro') && $Financeiro_User_Saldo){
+                    $tabela['Funções'][$i]     .=   '<a confirma="O '.$nomedisplay_sing.' realizou um deposito para a empresa?" title="Add quantia ao Saldo do '.$nomedisplay_sing.'" class="btn lajax explicar-titulo" acao="" href="'.URL_PATH.'Financeiro/Admin/financeiro_deposito/'.$valor->id.$linkextra.'"><img border="0" src="'.WEB_URL.'img/icons/cifrao_16x16.png" alt="Depositar"></a>'.
+                                                    '<a confirma="O '.$nomedisplay_sing.' confirmou o saque?" title="Remover Quantia do Saldo do '.$nomedisplay_sing.'" class="btn lajax explicar-titulo" acao="" href="'.URL_PATH.'Financeiro/Admin/financeiro_retirar/'.$valor->id.$linkextra.'"><img border="0" src="'.WEB_URL.'img/icons/cifrao_16x16.png" alt="Retirar"></a>';
+                    $funcoes_qnt = 3;
+                }*/
+
+
+
+                // Comentario de Usuario
+                if(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Comentarios')){
+                    if($funcoes_qnt>2){
+                        $tabela['Funções'][$i]     .=   '<br>';
+                        $funcoes_qnt = 0;
+                    }
+                    ++$funcoes_qnt;
+                    $tabela['Funções'][$i]     .=   $Visual->Tema_Elementos_Btn('Personalizado'   ,Array('Histórico'    ,'usuario/Admin/Usuarios_Comentario/'.$valor->id.$linkextra    ,'','file','inverse'),$perm_comentario);
+                }
+                // Anexo de Usuario
+                if(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Anexo')){
+                    if($funcoes_qnt>2){
+                        $tabela['Funções'][$i]     .=   '<br>';
+                        $funcoes_qnt = 0;
+                    }
+                    ++$funcoes_qnt;
+                    $tabela['Funções'][$i]     .=   $Visual->Tema_Elementos_Btn('Personalizado'   ,Array('Anexos'    ,'usuario/Anexo/Anexar/'.$valor->id.$linkextra    ,'','file','inverse'),$perm_anexo);
+                }
+                // Email para Usuario
+                if(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Admin_Email')){
+                    if($funcoes_qnt>2){
+                        $tabela['Funções'][$i]     .=   '<br>';
+                        $funcoes_qnt = 0;
+                    }
+                    ++$funcoes_qnt;
+                    $tabela['Funções'][$i]     .=   $Visual->Tema_Elementos_Btn('Email'      ,Array('Enviar email para '.$nomedisplay_sing        ,'usuario/Admin/Usuarios_Email/'.$valor->id.$linkextra    ,''),$perm_email);
+                }
+                // Email para Setor
+                if(\Framework\App\Sistema_Funcoes::Perm_Modulos('usuario_mensagem') && $usuario_mensagem_EmailSetor){
+                    if($funcoes_qnt>2){
+                        $tabela['Funções'][$i]     .=   '<br>';
+                        $funcoes_qnt = 0;
+                    }
+                    ++$funcoes_qnt;
+                    $tabela['Funções'][$i]     .=   $Visual->Tema_Elementos_Btn('Personalizado'   ,Array('Enviar email para Setor'    ,'usuario/Admin/Usuarios_Email/'.$valor->id.$linkextra.'/Setor/'    ,'','envelope','danger'),$perm_email);
+                }
+                // Verifica se Possue Status e Mostra
+                if($usuario_Admin_Ativado_Listar!==false){
+                    if($valor->ativado===1 || $valor->ativado==='1'){
+                        $texto = $usuario_Admin_Ativado_Listar[1];
+                        $valor->ativado='1';
+                    }else{
+                        $valor->ativado = '0';
+                        $texto = $usuario_Admin_Ativado_Listar[0];
+                    }
+                    if($funcoes_qnt>2){
+                        $tabela['Funções'][$i]     .=   '<br>';
+                        $funcoes_qnt = 0;
+                    }
+                    ++$funcoes_qnt;
+                    $tabela['Funções'][$i]     .=   '<span id="status'.$valor->id.'">'.$Visual->Tema_Elementos_Btn('Status'.$valor->ativado     ,Array($texto        ,'usuario/Admin/Status/'.$valor->id.'/'    ,''),$perm_status).'</span>';
+                }
+                if($funcoes_qnt>2){
+                    $tabela['Funções'][$i]     .=   '<br>';
+                    $funcoes_qnt = 0;
+                }
+                $funcoes_qnt = $funcoes_qnt+2;
+                $tabela['Funções'][$i]         .=   $Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar '.$nomedisplay_sing        ,$url_editar.'/'.$valor->id.$linkextra.'/'    ,''),$perm_editar).
+                                                    $Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar '.$nomedisplay_sing       ,$url_deletar.'/'.$valor->id.$linkextra     ,'Deseja realmente deletar esse '.$nomedisplay_sing.'?'),$perm_del);
+                ++$i;
+            }
+            
+            // SE tiver opcao de exportar, exporta e trava o sistema
+            if($export!==false){
+                self::Export_Todos($export,$tabela, $nomedisplay);
+            }else{
+                // Imprime a tabela
+                $this->_Visual->Show_Tabela_DataTable(
+                    $tabela,     // Array Com a Tabela
+                    '',          // style extra
+                    true,        // true -> Add ao Bloco, false => Retorna html
+                    true,        // Apagar primeira coluna ?
+                    Array(       // Ordenacao
+                        Array(
+                            0,'desc'
+                        )
+                    )
+                );
+            }
+            unset($tabela);
+        }else{          
+            $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum '.$nomedisplay_sing.'</font></b></center>');
+        }
+        if($ativado===false){
+            $titulo = 'Todos os '.$nomedisplay.' ('.$i.')';
+        }elseif($ativado==0){
+            $titulo = 'Todos os '.$nomedisplay.' Desativados ('.$i.')';
+        }else{
+            $titulo = 'Todos os '.$nomedisplay.' Ativados ('.$i.')';
+        }
+        $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',$gravidade);
+        
+        
+        // Table's primary key
+        $primaryKey = 'id';
+        
+        
+        $perm_editar = $this->_Registro->_Acl->Get_Permissao_Url('Seguranca/Senha/Senhas_Edit');
+        $perm_del = $this->_Registro->_Acl->Get_Permissao_Url('Seguranca/Senha/Senhas_Del');
+        $perm_status = $this->_Registro->_Acl->Get_Permissao_Url('Seguranca/Senha/Status');
+        $perm_destaque = $this->_Registro->_Acl->Get_Permissao_Url('Seguranca/Senha/Destaque');
+        
+        if($perm_editar && $perm_del){
+            $funcao = function( $d, $row ) {
+                return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Senha'        ,'Seguranca/Senha/Senhas_Edit/'.$d.'/'    ,''),true).
+                       Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Senha'       ,'Seguranca/Senha/Senhas_Del/'.$d.'/'     ,'Deseja realmente deletar essa Senha ?'),true);
+            };
+        }else if($perm_editar){
+            $funcao = function( $d, $row ) {
+                return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Senha'        ,'Seguranca/Senha/Senhas_Edit/'.$d.'/'    ,''),true);
+            };
+        }else if($perm_del){
+            $funcao = function( $d, $row ) {
+                return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Senha'       ,'Seguranca/Senha/Senhas_Del/'.$d.'/'     ,'Deseja realmente deletar essa Senha ?'),true);
+            };
+        }else{
+            $funcao = function( $d, $row ) {
+                return '';
+            };
+        }
+        
+        if($perm_status){
+            $funcao_status = function( $d, $row ) {
+                
+                if($d=='0'){
+                    $nometipo = 'Ultrapassada';
+                }
+                else{
+                    $nometipo = 'Em Uso';
+                }
+                return $nometipo;
+            };
+        }else{
+            $funcao_status = function( $d, $row ) {
+                
+                if($d=='0'){
+                    $nometipo = 'Ultrapassada';
+                }
+                else{
+                    $nometipo = 'Em Uso';
+                }
+                return $nometipo;
+            };
+        }
+        if($perm_destaque){
+            $funcao_destaque = function( $d, $row ) {
+                
+                if($d=='0'){
+                    $nometipo = 'Não Destaque';
+                }
+                else{
+                    $nometipo = 'Destaque';
+                }
+                return $nometipo;
+            };
+        }else{
+            $funcao_destaque = function( $d, $row ) {
+                
+                if($d=='0'){
+                    $nometipo = 'Não Destaque';
+                }
+                else{
+                    $nometipo = 'Destaque';
+                }
+                return $nometipo;
+            };
+        }
+
+        $columns = array(
+            array( 'db' => 'id', 'dt' => 0,
+                'formatter' => function( $d, $row ) {
+                    return '#'.$d;
+                }),
+            array( 'db' => 'categoria2',    'dt' => 1 ),
+            array( 'db' => 'url',           'dt' => 2 ),
+            array( 'db' => 'login',         'dt' => 3 ),
+            array( 'db' => 'senha',         'dt' => 4 ),
+            array( 'db' => 'destaque'    ,  'dt' => 5 ,
+                'formatter' => $funcao_destaque),
+            array( 'db' => 'status'      ,  'dt' => 6 ,
+                'formatter' => $funcao_status,
+                'search' => function( $search ) {
+                    if(strpos(strtolower($url), strtolower($objeto->end))!=false){
+                        
+                    }
+                    return '#'.$d;
+                }),
+            array( 'db' => 'log_date_add',  'dt' => 7 ),
+            array( 'db' => 'id',            'dt' => 8,
+                'formatter' => $funcao)
+            /*array(
+                'db'        => 'start_date',
+                'dt'        => 4,
+                'formatter' => function( $d, $row ) {
+                    return date( 'jS M y', strtotime($d));
+                }
+            ),
+            array(
+                'db'        => 'salary',
+                'dt'        => 5,
+                'formatter' => function( $d, $row ) {
+                    return '$'.number_format($d);
+                }
+            )*/
+        );
+
+        echo json_encode(
+            \Framework\Classes\Datatable::complex( $_GET, Framework\App\Registro::getInstacia()->_Conexao, 'Seguranca_Senha', $primaryKey, $columns, null,'status=1' )
+        );
+    }
 }
 ?>

@@ -69,7 +69,7 @@ class usuario_AnexoControle extends usuario_Controle
             $this->Tema_Endereco('Clientes','usuario/Admin/ListarCliente');
         }else if($tipo=='Funcionário'){
             $tipo2  = 'funcionario';
-            $this->Tema_Endereco('Funcionários','usuario/Admin/ListarFuncionarios');
+            $this->Tema_Endereco('Funcionários','usuario/Admin/ListarFuncionario');
         }else{
             $this->Tema_Endereco('Usuários','usuario/Admin/Main');
         }

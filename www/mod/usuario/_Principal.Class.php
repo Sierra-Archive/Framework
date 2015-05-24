@@ -114,7 +114,7 @@ class usuario_Principal implements PrincipalInterface
             // Adiciona Widget a Pagina Inicial
             \Framework\App\Visual::Layoult_Home_Widgets_Add(
                 'Funcionários', 
-                'usuario/Admin/ListarFuncionarios/', 
+                'usuario/Admin/ListarFuncionario/', 
                 'group', 
                 $funcionario_qnt, 
                 'light-brown', 
@@ -131,7 +131,7 @@ class usuario_Principal implements PrincipalInterface
             // Adiciona Widget a Pagina Inicial
             \Framework\App\Visual::Layoult_Home_Widgets_Add(
                 'Usuários',
-                'usuario/Admin/ListarOutros/',
+                'usuario/Admin/ListarUsuario/',
                 'unlock-alt',
                 $usuario_qnt,
                 'deep-gray',

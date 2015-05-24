@@ -94,5 +94,28 @@ class usuario_AdminModelo extends usuario_Modelo
         }
         return $i;
     }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    /**
+     * DATA TABLE MASSIVA
+     */
+    
+    public function ListarCliente($export=false){
+        $this->Usuario_Listagem(Array(CFG_TEC_CAT_ID_CLIENTES,\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Cliente_nome')),false,20,false,$export);
+        // ORGANIZA E MANDA CONTEUDO
+        $this->_Visual->Json_Info_Update('Titulo',\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Cliente_nome'));  
+    }
+    
 }
 ?>

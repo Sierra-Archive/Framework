@@ -68,9 +68,9 @@ class usuario_AdminControle extends usuario_Controle
         if($tipo==='cliente' || $tipo==='Cliente'){
             $funcao     = '$this->ListarCliente();';
         }else if($tipo==='funcionario' || $tipo==='Funcionario' || $tipo==='Funcionário' || $tipo==='Funcionrio'){
-            $funcao     = '$this->ListarFuncionarios();';
+            $funcao     = '$this->ListarFuncionario();';
         }else{
-            $funcao     = '$this->ListarOutros();';
+            $funcao     = '$this->ListarUsuario();';
         }
         $sucesso1   = 'Senha Alterada com Sucesso.';
         $sucesso2   = 'Guarde sua senha com carinho.';
@@ -78,16 +78,24 @@ class usuario_AdminControle extends usuario_Controle
         $sucesso = $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
     }
     public function ListarCliente($export=false){
-        $this->usuariolistar(Array(CFG_TEC_CAT_ID_CLIENTES,\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Cliente_nome')),false,20,false,$export);
+        $this->Usuario_Listagem(Array(CFG_TEC_CAT_ID_CLIENTES,\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Cliente_nome')),false,20,false,$export);
         // ORGANIZA E MANDA CONTEUDO
         $this->_Visual->Json_Info_Update('Titulo',\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Cliente_nome'));  
     }
     public function ListarFuncionarios($export=false){
-        $this->usuariolistar(Array(CFG_TEC_CAT_ID_FUNCIONARIOS,\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Funcionario_nome')),false,10,false,$export);
+        \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'usuario/Admin/ListarFuncionario');
+        return false;
+    }
+    public function ListarFuncionario($export=false){
+        $this->usuariolistar(Array(CFG_TEC_CAT_ID_FUNCIONARIOS,\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Funcionario_nome')),false,10,false,'Funcionario',$export);
         // ORGANIZA E MANDA CONTEUDO
         $this->_Visual->Json_Info_Update('Titulo',\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Funcionario_nome'));
     }
-    public function ListarOutros($export=false){
+    public function ListarOutros(){
+        \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'usuario/Admin/ListarUsuario');
+        return false;        
+    }
+    public function ListarUsuario($export=false){
         $this->usuariolistar(Array(CFG_TEC_CAT_ID_ADMIN,'Usuários'),false,10,false,$export);
         // ORGANIZA E MANDA CONTEUDO
         $this->_Visual->Json_Info_Update('Titulo','Usuários');  
@@ -141,14 +149,14 @@ class usuario_AdminControle extends usuario_Controle
             $tipo   = Framework\Classes\Texto::Transformar_Plural_Singular(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Funcionario_nome'));
             // Troca grupo
             self::DAO_Ext_ADD($campos,'grupo','SG.categoria='.CFG_TEC_CAT_ID_FUNCIONARIOS);
-            $this->Tema_Endereco('Funcionários','usuario/Admin/ListarFuncionarios');
+            $this->Tema_Endereco('Funcionários','usuario/Admin/ListarFuncionario');
             $metodo = 'Funcionario_Edit2'.'/'.$id.'/';
         }else{
             $tipo_pass  = CFG_TEC_CAT_ID_ADMIN;
             $tipo2  = 'usuario'; //id do tipo
             // Troca grupo
             self::DAO_Ext_ADD($campos,'grupo','SG.categoria='.CFG_TEC_CAT_ID_ADMIN);
-            $this->Tema_Endereco('Usuários','usuario/Admin/ListarOutros');
+            $this->Tema_Endereco('Usuários','usuario/Admin/ListarUsuario');
             $metodo = 'Usuarios_Edit2'.'/'.$id.'/'.$tipo2.'/';
         }
         
@@ -225,9 +233,9 @@ class usuario_AdminControle extends usuario_Controle
             if($tipo==='cliente' || $tipo==='Cliente'){
                 $this->ListarCliente();
             }else if($tipo==='funcionario' || $tipo==='Funcionario' || $tipo==='Funcionário' || $tipo==='Funcionrio'){
-                $this->ListarFuncionarios();
+                $this->ListarFuncionario();
             }else{
-                $this->ListarOutros();
+                $this->ListarUsuario();
             }
             
             $mensagens = array(
@@ -349,7 +357,7 @@ class usuario_AdminControle extends usuario_Controle
             $this->_Visual->Blocar($formulario);
             $this->_Visual->Bloco_Unico_CriaJanela('Cadastro de Funcionário');
             $this->_Visual->Json_Info_Update('Titulo','Adicionar Funcionário');
-            $this->Tema_Endereco('Funcionários','usuario/Admin/ListarFuncionarios');
+            $this->Tema_Endereco('Funcionários','usuario/Admin/ListarFuncionario');
         }else{
             self::Campos_Deletar(CFG_TEC_CAT_ID_ADMIN,$campos, $usuario);
             // Carrega formulario
@@ -359,7 +367,7 @@ class usuario_AdminControle extends usuario_Controle
             $this->_Visual->Blocar($formulario);
             $this->_Visual->Bloco_Unico_CriaJanela('Cadastro de Usuário');
             $this->_Visual->Json_Info_Update('Titulo','Adicionar Usuário');
-            $this->Tema_Endereco('Usuários','usuario/Admin/ListarOutros');
+            $this->Tema_Endereco('Usuários','usuario/Admin/ListarUsuario');
         }
         $this->Tema_Endereco('Adicionar');
     }
@@ -462,10 +470,10 @@ class usuario_AdminControle extends usuario_Controle
             self::mysql_AtualizaValor($usuario,'indicado_por', $_COOKIE['indicativo_id']);
 
             // Atualiza
-            // Recarrega ListarOutros
+            // Recarrega ListarUsuario
             if($tipo===false AND !(\Framework\App\Sistema_Funcoes::Perm_Modulos('usuario_mensagem'))){
                 $sucesso =  $this->_Modelo->db->Sql_Inserir($usuario);
-                $executar = 'ListarOutros';
+                $executar = 'ListarUsuario';
             }else if(\Framework\App\Sistema_Funcoes::Perm_Modulos('usuario_mensagem')){
                 $sucesso =  $this->_Modelo->db->Sql_Inserir($usuario);
                 if($sucesso){$identificador  = $this->_Modelo->db->Sql_Select('Usuario', Array(),1,'id DESC');
@@ -484,13 +492,13 @@ class usuario_AdminControle extends usuario_Controle
                     $usuario->grupo = CFG_TEC_IDFUNCIONARIO;
                 }
                 $sucesso =  $this->_Modelo->db->Sql_Inserir($usuario);
-                $executar = 'ListarFuncionarios';
+                $executar = 'ListarFuncionario';
             }else{
                 if(!isset($_GET['grupo'])){
                     $usuario->grupo = CFG_TEC_IDADMIN;
                 }
                 $sucesso =  $this->_Modelo->db->Sql_Inserir($usuario);
-                $executar = 'ListarOutros';
+                $executar = 'ListarUsuario';
             }
             // Caso seja Inserido mostra Mensagem
             if($sucesso===true){
@@ -586,9 +594,9 @@ class usuario_AdminControle extends usuario_Controle
         if($tipo==='cliente'){
             $this->ListarCliente();
         }else if($tipo==='funcionario'){
-            $this->ListarFuncionarios();
+            $this->ListarFuncionario();
         }else{
-            $this->ListarOutros();
+            $this->ListarUsuario();
         }
     }
     
@@ -731,12 +739,12 @@ class usuario_AdminControle extends usuario_Controle
             $nomedisplay        = 'Usuários';
             $nomedisplay_sing   = 'Usuário';
             $tipo               = 'funcionario';
-            $this->Tema_Endereco('Funcionários','usuario/Admin/ListarFuncionarios');
+            $this->Tema_Endereco('Funcionários','usuario/Admin/ListarFuncionario');
         }else{
             $nomedisplay        = 'Usuários ';
             $nomedisplay_sing   = 'Usuário ';
             $tipo               = 'usuario';
-            $this->Tema_Endereco('Usuários','usuario/Admin/ListarOutros');
+            $this->Tema_Endereco('Usuários','usuario/Admin/ListarUsuario');
         }
         $this->Tema_Endereco('Comentários');
         
@@ -805,12 +813,12 @@ class usuario_AdminControle extends usuario_Controle
             $nomedisplay        = 'Usuários';
             $nomedisplay_sing   = 'Usuário';
             $tipo               = 'funcionario';
-            $this->Tema_Endereco('Funcionários','usuario/Admin/ListarFuncionarios');
+            $this->Tema_Endereco('Funcionários','usuario/Admin/ListarFuncionario');
         }else{
             $nomedisplay        = 'Usuários';
             $nomedisplay_sing   = 'Usuário';
             $tipo               = 'usuario';
-            $this->Tema_Endereco('Usuários','usuario/Admin/ListarOutros');
+            $this->Tema_Endereco('Usuários','usuario/Admin/ListarUsuario');
         }
         $this->Tema_Endereco('Comentários', 'usuario/Admin/Usuarios_Comentario/'.$usuario_id.'/'.$tipo);
         
@@ -905,12 +913,12 @@ class usuario_AdminControle extends usuario_Controle
             $nomedisplay        = 'Usuários';
             $nomedisplay_sing   = 'Usuário';
             $tipo               = 'funcionario';
-            $this->Tema_Endereco('Funcionários','usuario/Admin/ListarFuncionarios');
+            $this->Tema_Endereco('Funcionários','usuario/Admin/ListarFuncionario');
         }else{
             $nomedisplay        = 'Usuários';
             $nomedisplay_sing   = 'Usuário';
             $tipo               = 'usuario';
-            $this->Tema_Endereco('Usuários','usuario/Admin/ListarOutros');
+            $this->Tema_Endereco('Usuários','usuario/Admin/ListarUsuario');
         }
         $this->Tema_Endereco('Comentários', 'usuario/Admin/Usuarios_Comentario/'.$usuario_id.'/'.$tipo);
         

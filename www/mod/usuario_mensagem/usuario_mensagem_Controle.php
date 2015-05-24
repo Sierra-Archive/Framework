@@ -137,8 +137,10 @@ class usuario_mensagem_Controle extends \Framework\App\Controle
             $tabela['Ultima Modificação'][$i]   = $valor->log_date_edit; //date_replace($valor->log_date_edit, "d/m/y | H:i");
             if($valor->tipo!='Finalizado'){
                 $tabela['Visualizar Mensagem'][$i]  = $Visual->Tema_Elementos_Btn('Personalizado' ,    Array('Finalizar Mensagem'         ,'usuario_mensagem/Suporte/Finalizar/'.$valor->id.'/'    ,'','download','inverse'));
+            }else{
+                $tabela['Visualizar Mensagem'][$i] = '';
             }
-            $tabela['Visualizar Mensagem'][$i]  .=$Visual->Tema_Elementos_Btn('Visualizar' ,    Array('Visualizar Mensagem'         ,'usuario_mensagem/Suporte/VisualizadordeMensagem/'.$valor->id.'/'    ,'')).
+            $tabela['Visualizar Mensagem'][$i]  .= $Visual->Tema_Elementos_Btn('Visualizar' ,    Array('Visualizar Mensagem'         ,'usuario_mensagem/Suporte/VisualizadordeMensagem/'.$valor->id.'/'    ,'')).
                                                   $Visual->Tema_Elementos_Btn('Editar'     ,    Array('Editar Mensagem'             ,'usuario_mensagem/Admin/Mensagem_Editar/'.$valor->id.'/'    ,'')).
                                                   $Visual->Tema_Elementos_Btn('Deletar'    ,    Array('Deletar Mensagem'            ,'usuario_mensagem/Admin/Mensagem_Del/'.$valor->id.'/'     ,'Deseja realmente deletar essa Mensagem ?'));
             ++$i;
@@ -471,5 +473,20 @@ class usuario_mensagem_Controle extends \Framework\App\Controle
             self::DAO_Campos_Retira($campos, 'fabricacao');
         }
     }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    /**
+     * 2015 - Funções mais Performaticas para Substituir as Anteriores
+     */
 }
 ?>

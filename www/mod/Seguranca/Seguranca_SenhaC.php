@@ -48,28 +48,6 @@ class Seguranca_SenhaControle extends Seguranca_Controle
     public function Main(){
         return false;
     }
-    static function Senhas_Tabela($Senhas){
-        $registro   = \Framework\App\Registro::getInstacia();
-        $Visual     = &$registro->_Visual;
-        $tabela = Array();
-        $i = 0;
-        if(is_object($Senhas)) $Senhas = Array(0=>$Senhas);
-        reset($Senhas);
-        foreach ($Senhas as $indice=>&$valor) {
-            $tabela['#Id'][$i]          =   '#'.$valor->id;
-            $tabela['Categoria'][$i]    =   $valor->categoria2;
-            $tabela['Url'][$i]          =   $valor->url;
-            $tabela['Login'][$i]        =   $valor->login;
-            $tabela['Senha'][$i]        =   $valor->senha;
-            $tabela['Destaque'][$i]     = '<span class="destaque'.$valor->id.'">'.self::Destaquelabel($valor).'</span>';
-            $tabela['Status'][$i]       = '<span class="status'.$valor->id.'">'.self::Statuslabel($valor).'</span>';
-            $tabela['Adicionada em'][$i]=   $valor->log_date_add;
-            $tabela['Funções'][$i]      =   $Visual->Tema_Elementos_Btn('Editar'          ,Array('Editar Senha'        ,'Seguranca/Senha/Senhas_Edit/'.$valor->id.'/'    ,'')).
-                                            $Visual->Tema_Elementos_Btn('Deletar'         ,Array('Deletar Senha'       ,'Seguranca/Senha/Senhas_Del/'.$valor->id.'/'     ,'Deseja realmente deletar essa Senha ?'));
-            ++$i;
-        }
-        return Array($tabela,$i);
-    }
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
@@ -78,43 +56,6 @@ class Seguranca_SenhaControle extends Seguranca_Controle
     public function Senhas($export=false){
         $this->Endereco_Senha(false);
         $i = 0;
-        // Add BOtao
-        /*$this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
-            Array(
-                'Adicionar Senha',
-                'Seguranca/Senha/Senhas_Add',
-                ''
-            ),
-            Array(
-                'Print'     => true,
-                'Pdf'       => true,
-                'Excel'     => true,
-                'Link'      => 'Seguranca/Senha/Senhas',
-            )
-        )));
-        // Query
-        $Senhas = $this->_Modelo->db->Sql_Select('Seguranca_Senha',false,0,''/*,'categoria,categoria2,id,url,login,senha,log_date_add'*//*);
-        if($Senhas!==false && !empty($Senhas)){
-            list($tabela,$i) = self::Senhas_Tabela($Senhas);
-            if($export!==false){
-                self::Export_Todos($export,$tabela, 'Senhas');
-            }else{
-                $this->_Visual->Show_Tabela_DataTable(
-                    $tabela,     // Array Com a Tabela
-                    '',          // style extra
-                    true,        // true -> Add ao Bloco, false => Retorna html
-                    true,        // Apagar primeira coluna ?
-                    Array(       // Ordenacao
-                        Array(
-                            0,'desc'
-                        )
-                    )
-                );
-            }
-            unset($tabela);
-        }else{    
-            $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhuma Senha</font></b></center>');
-        }*/
         
         // EM uso
         $tabela = Array(

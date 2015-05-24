@@ -325,5 +325,14 @@ class usuario_mensagem_Modelo extends \Framework\App\Modelo
         if(!is_array($array) || count($array)==0) return false;
         if($array->lido==0) return true;
     }
+    
+    
+    
+    
+    /**
+     * 2015 - Funções mais Performaticas para Substituir as Anteriores
+     */
+    
+    
 }
 ?>

@@ -24,8 +24,6 @@ class usuario_mensagem_AssuntoControle extends usuario_mensagem_Controle
     * @name Main
     * @access public
     * 
-    * @uses usuario_mensagem_Controle::$comercioPerfil
-    * 
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
@@ -39,7 +37,7 @@ class usuario_mensagem_AssuntoControle extends usuario_mensagem_Controle
         $registro = \Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
         $titulo = 'Assuntos';
-        $link = 'comercio/Assunto/Assuntos';
+        $link = 'usuario_mensagem/Assunto/Assuntos';
         if($true===true){
             $_Controle->Tema_Endereco($titulo,$link);
         }else{
@@ -53,44 +51,13 @@ class usuario_mensagem_AssuntoControle extends usuario_mensagem_Controle
      */
     public function Assuntos($export=false){
         self::Endereco_Assunto(false);
-        $i = 0;
-        $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
-            Array(
-                'Adicionar Assunto',
-                'usuario_mensagem/Assunto/Assuntos_Add',
-                ''
-            ),
-            Array(
-                'Print'     => true,
-                'Pdf'       => true,
-                'Excel'     => true,
-                'Link'      => 'usuario_mensagem/Assunto/Assuntos',
-            )
-        )));
-        $assuntos = $this->_Modelo->db->Sql_Select('Usuario_Mensagem_Assunto');
-        if($assuntos!==false && !empty($assuntos)){
-            if(is_object($assuntos)) $assuntos = Array(0=>$assuntos);
-            reset($assuntos);
-            foreach ($assuntos as $indice=>&$valor) {
-                //$tabela['#Id'][$i]                  = '#'.$valor->id;
-                $tabela['Setor'][$i]                = $valor->setor2;
-                $tabela['Nome'][$i]                 = $valor->nome;
-                $tabela['Tempo de Resposta'][$i]    = $valor->tempocli.' horas';
-                $tabela['Funções'][$i]              = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Assunto'        ,'usuario_mensagem/Assunto/Assuntos_Edit/'.$valor->id.'/'    ,'')).
-                                                      $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Assunto'       ,'usuario_mensagem/Assunto/Assuntos_Del/'.$valor->id.'/'     ,'Deseja realmente deletar esse Assunto ?'));
-                ++$i;
-            }
-            if($export!==false){
-                self::Export_Todos($export,$tabela, 'Suporte - Assuntos');
-            }else{
-                $this->_Visual->Show_Tabela_DataTable($tabela);
-            }
-            unset($tabela);
-        }else{  
-            $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Assunto</font></b></center>');
-        }
-        $titulo = 'Listagem de Assuntos ('.$i.')';
-        $this->_Visual->Bloco_Unico_CriaJanela($titulo);
+        
+        $tabela = Array(
+            'Setor','Nome','Tempo de Resposta','Funções'
+        );
+        $this->_Visual->Show_Tabela_DataTable_Massiva($tabela,'usuario_mensagem/Assunto/Assuntos');
+        $titulo = 'Listagem de Assuntos (<span id="DataTable_Contador">0</span>)';  //
+        $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',10,Array("link"=>"usuario_mensagem/Assunto/Assuntos_Add",'icon'=>'add','nome'=>'Adicionar Assunto'));
         
         //Carrega Json
         $this->_Visual->Json_Info_Update('Titulo','Administrar Assuntos');

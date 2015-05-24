@@ -24,14 +24,14 @@ $config_Menu = function (){
         'Administrar'=>Array(
             'Filhos'                => Array('Usuários'=>Array(
                 'Nome'                  => 'Usuários',
-                'Link'                  => 'usuario/Admin/ListarOutros',
+                'Link'                  => 'usuario/Admin/ListarUsuario',
                 'Gravidade'             => 9996,
                 'Img'                   => 'turboadmin/m-dashboard.png',
                 'Icon'                  => 'user',
                 'Filhos'                => false,
             ),\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Funcionario_nome')=>Array(
                 'Nome'                  => \Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Funcionario_nome'),
-                'Link'                  => 'usuario/Admin/ListarFuncionarios',
+                'Link'                  => 'usuario/Admin/ListarFuncionario',
                 'Gravidade'             => 9994,
                 'Img'                   => 'turboadmin/m-dashboard.png',
                 'Icon'                  => 'group',
@@ -84,11 +84,11 @@ $config_Permissoes = function (){
         Array(
             'Nome'                  => \Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Funcionario_nome').' - Listagem',
             'Desc'                  => '',
-            'Chave'                 => 'usuario_Admin_ListarFuncionarios', // CHave unica nunca repete, chave primaria
-            'End'                   => 'usuario/Admin/ListarFuncionarios', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
+            'Chave'                 => 'usuario_Admin_ListarFuncionario', // CHave unica nunca repete, chave primaria
+            'End'                   => 'usuario/Admin/ListarFuncionario', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
             'Modulo'                => 'usuario', // Modulo Referente
             'SubModulo'             => 'Admin',   // Submodulo Referente
-            'Metodo'                => 'ListarFuncionarios',  // Metodos referentes separados por virgula
+            'Metodo'                => 'ListarFuncionario',  // Metodos referentes separados por virgula
             'Permissao_Func'        => Array(// Permissoes NEcessarias
                 'usuario_Admin_Funcionario' => true
             ),
@@ -184,11 +184,11 @@ $config_Permissoes = function (){
         Array(
             'Nome'                  => 'Usuario - Listagem',
             'Desc'                  => '',
-            'Chave'                 => 'usuario_Admin_ListarOutros', // CHave unica nunca repete, chave primaria
-            'End'                   => 'usuario/Admin/ListarOutros', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
+            'Chave'                 => 'usuario_Admin_ListarUsuario', // CHave unica nunca repete, chave primaria
+            'End'                   => 'usuario/Admin/ListarUsuario', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
             'Modulo'                => 'usuario', // Modulo Referente
             'SubModulo'             => 'Admin',   // Submodulo Referente
-            'Metodo'                => 'ListarOutros',  // Metodos referentes separados por virgula
+            'Metodo'                => 'ListarUsuario',  // Metodos referentes separados por virgula
         ),
         Array(
             'Nome'                  => 'Usuario - Add',

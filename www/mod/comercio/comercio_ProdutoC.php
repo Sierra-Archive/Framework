@@ -58,82 +58,40 @@ class comercio_ProdutoControle extends comercio_Controle
         $comercio_Estoque           = \Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Estoque');
         $comercio_Unidade           = \Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Unidade');
         $comercio_marca             = \Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Marca');
-        if($comercio_Produto_Cod)   $ordem = 1;
-        if($comercio_Produto_Cod)   $ordem = $ordem+1;
-        else                        $ordem = $ordem+2;
-        // Add
-        // BOTAO IMPRIMIR / ADD
-        $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
-            Array(
-                'Adicionar Produto',
-                'comercio/Produto/Produtos_Add',
-                ''
-            ),
-            Array(
-                'Print'     => true,
-                'Pdf'       => true,
-                'Excel'     => true,
-                'Link'      => 'comercio/Produto/Produtos',
-            )
-        )));
-        $produto = $this->_Modelo->db->Sql_Select('Comercio_Produto');
-        if($produto!==false && !empty($produto)){
-            if(is_object($produto)) $produto = Array(0=>$produto);
-            reset($produto);
-            $perm_view = $this->_Registro->_Acl->Get_Permissao_Url('comercio/Estoque/Estoques');
-            $perm_reduzir = $this->_Registro->_Acl->Get_Permissao_Url('comercio/Produto/Estoque_Reduzir');
-            $perm_editar = $this->_Registro->_Acl->Get_Permissao_Url('comercio/Produto/Produtos_Edit');
-            $perm_del = $this->_Registro->_Acl->Get_Permissao_Url('comercio/Produto/Produtos_Del');
-            
-            foreach ($produto as &$valor) {
-                if($comercio_Produto_Cod){
-                    $tabela['#Cod'][$i]      = '#'.$valor->cod;
-                }
-                if($comercio_marca===true){
-                    if($comercio_Produto_Familia=='Familia'){
-                        $tabela['Familia'][$i]   = $valor->familia2;
-                    }else{
-                        $tabela['Marca'][$i]     = $valor->marca2;
-                        $tabela['Linha'][$i]     = $valor->linha2;
-                    }
-                }
-                $tabela['Nome'][$i]      = $valor->nome;
-        
-                // Coloca Preco
-                if(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Vendas')){
-                    $tabela['Preço'][$i]   = $valor->preco;
-                }
-                
-                if($comercio_Estoque){
-                    $tabela['Estoque'][$i]   = '<a class="lajax" acao="" href="'.URL_PATH.'comercio/Estoque/Estoques/'.$valor->id.'">'.comercio_EstoqueControle::Estoque_Retorna($valor->id);
-                    if($comercio_Unidade){
-                        $tabela['Estoque'][$i]   .= ' '.$valor->unidade2;
-                    }
-                    $tabela['Estoque'][$i] .= '</a>';
-                    $tabela['Funções'][$i]  = $this->_Visual->Tema_Elementos_Btn('Visualizar' ,Array('Visualizar Estoque'    ,'comercio/Estoque/Estoques/'.$valor->id.'/'    ,''),$perm_view).
-                                            $this->_Visual->Tema_Elementos_Btn('Personalizado'   ,Array('Reduzir Estoque'  ,'comercio/Produto/Estoque_Reduzir/'.$valor->id.'/'    ,'','long-arrow-down','inverse'),$perm_reduzir);
-                }else{
-                    if($comercio_Unidade){
-                        $tabela['Unidade'][$i]   = $valor->unidade2;
-                    }
-                    $tabela['Funções'][$i]   = '';
-                }
-                $tabela['Funções'][$i]   .= $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Produto'        ,'comercio/Produto/Produtos_Edit/'.$valor->id.'/'    ,''),$perm_editar).
-                                            $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Produto'       ,'comercio/Produto/Produtos_Del/'.$valor->id.'/'     ,'Deseja realmente deletar esse Produto ?'),$perm_del);
-                ++$i;
-            }
-            $ordem = Array($ordem,'asc');
-            if($export!==false){
-                self::Export_Todos($export,$tabela, 'Comercio - Produtos');
-            }else{
-                $this->_Visual->Show_Tabela_DataTable($tabela,'',true,false,Array($ordem));
-            }
-            unset($tabela);
-        }else{            
-            $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Produto</font></b></center>');
+
+        $tabela_colunas = Array();
+
+        if($comercio_Produto_Cod){
+            $tabela_colunas[] = '#Cod';
         }
-        $titulo = 'Listagem de Produtos ('.$i.')';
-        $this->_Visual->Bloco_Unico_CriaJanela($titulo);
+        if($comercio_marca===true){
+            if($comercio_Produto_Familia=='Familia'){
+                $tabela_colunas[] = 'Familia';
+            }else{
+                $tabela_colunas[] = 'Marca';
+                $tabela_colunas[] = 'Linha';
+            }
+        }
+        $tabela_colunas[] = 'Nome';
+
+        // Coloca Preco
+        if(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Vendas')){
+            $tabela_colunas[] = 'Preço';
+        }
+
+        if($comercio_Estoque){
+            $tabela_colunas[] = 'Estoque';
+        }else{
+            if($comercio_Unidade){
+                $tabela_colunas[] = 'Unidade';
+            }
+        }
+        $tabela_colunas[] = 'Funções';
+
+        $this->_Visual->Show_Tabela_DataTable_Massiva($tabela_colunas,'comercio/Produto/Produtos');
+        $titulo = 'Listagem de Produtos';  //(<span id="DataTable_Contador">0</span>)
+        $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',10,Array("link"=>"comercio/Produto/Produtos_Add",'icon'=>'add','nome'=>'Adicionar Senha'));
+        
         
         //Carrega Json
         $this->_Visual->Json_Info_Update('Titulo','Administrar Produtos');

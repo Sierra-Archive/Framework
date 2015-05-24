@@ -24,8 +24,6 @@ class usuario_mensagem_SetorControle extends usuario_mensagem_Controle
     * @name Main
     * @access public
     * 
-    * @uses usuario_mensagem_Controle::$comercioPerfil
-    * 
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
@@ -53,44 +51,13 @@ class usuario_mensagem_SetorControle extends usuario_mensagem_Controle
      */
     public function Setores($export=false){
         self::Endereco_Setor(false);
-        $i = 0;
-        $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
-            Array(
-                'Adicionar Setor',
-                'usuario_mensagem/Setor/Setores_Add',
-                ''
-            ),
-            Array(
-                'Print'     => true,
-                'Pdf'       => true,
-                'Excel'     => true,
-                'Link'      => 'usuario_mensagem/Setor/Setores',
-            )
-        )));
-        $setores = $this->_Modelo->db->Sql_Select('Usuario_Mensagem_Setor');
-        if($setores!==false && !empty($setores)){
-            if(is_object($setores)) $setores = Array(0=>$setores);
-            reset($setores);
-            foreach ($setores as $indice=>&$valor) {
-                //$tabela['#Id'][$i]            = '#'.$valor->id;
-                $tabela['Grupo'][$i]            = $valor->grupo2;
-                $tabela['Nome'][$i]             = $valor->nome;
-                $tabela['Email do Setor'][$i]   = $valor->email;
-                $tabela['Funções'][$i]          = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Setor'        ,'usuario_mensagem/Setor/Setores_Edit/'.$valor->id.'/'    ,'')).
-                                                  $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Setor'       ,'usuario_mensagem/Setor/Setores_Del/'.$valor->id.'/'     ,'Deseja realmente deletar esse Setor ?'));
-                ++$i;
-            }
-            if($export!==false){
-                self::Export_Todos($export,$tabela, 'Suporte - Setores');
-            }else{
-                $this->_Visual->Show_Tabela_DataTable($tabela);
-            }
-            unset($tabela);
-        }else{        
-            $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Setor</font></b></center>');
-        }
-        $titulo = 'Listagem de Setores ('.$i.')';
-        $this->_Visual->Bloco_Unico_CriaJanela($titulo);
+        
+        $tabela = Array(
+            'Grupo','Nome','Email do Setor','Funções'
+        );
+        $this->_Visual->Show_Tabela_DataTable_Massiva($tabela,'usuario_mensagem/Setor/Setores');
+        $titulo = 'Listagem de Setores (<span id="DataTable_Contador">0</span>)';  //
+        $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',10,Array("link"=>"usuario_mensagem/Setor/Setores_Add",'icon'=>'add','nome'=>'Adicionar Setor'));
         
         //Carrega Json
         $this->_Visual->Json_Info_Update('Titulo','Administrar Setores');
