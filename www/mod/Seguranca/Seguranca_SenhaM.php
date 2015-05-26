@@ -46,89 +46,73 @@ class Seguranca_SenhaModelo extends Seguranca_Modelo
             };
         }
         
-        if($perm_status){
-            $funcao_status = function( $d, $row ) {
-                
-                if($d=='0'){
-                    $nometipo = 'Ultrapassada';
-                }
-                else{
-                    $nometipo = 'Em Uso';
-                }
-                return $nometipo;
-            };
-        }else{
-            $funcao_status = function( $d, $row ) {
-                
-                if($d=='0'){
-                    $nometipo = 'Ultrapassada';
-                }
-                else{
-                    $nometipo = 'Em Uso';
-                }
-                return $nometipo;
-            };
-        }
-        if($perm_destaque){
-            $funcao_destaque = function( $d, $row ) {
-                
-                if($d=='0'){
-                    $nometipo = 'Não Destaque';
-                }
-                else{
-                    $nometipo = 'Destaque';
-                }
-                return $nometipo;
-            };
-        }else{
-            $funcao_destaque = function( $d, $row ) {
-                
-                if($d=='0'){
-                    $nometipo = 'Não Destaque';
-                }
-                else{
-                    $nometipo = 'Destaque';
-                }
-                return $nometipo;
-            };
-        }
-
+        // Colunas
         $columns = array(
             array( 'db' => 'id', 'dt' => 0,
                 'formatter' => function( $d, $row ) {
                     return '#'.$d;
                 }),
             array( 'db' => 'categoria2',    'dt' => 1 ),
-            array( 'db' => 'url',           'dt' => 2 ),
-            array( 'db' => 'login',         'dt' => 3 ),
-            array( 'db' => 'senha',         'dt' => 4 ),
-            array( 'db' => 'destaque'    ,  'dt' => 5 ,
-                'formatter' => $funcao_destaque),
-            array( 'db' => 'status'      ,  'dt' => 6 ,
-                'formatter' => $funcao_status,
-                'search' => function( $search ) {
-                    if(strpos(strtolower($url), strtolower($objeto->end))!=false){
-                        
-                    }
-                    return '#'.$d;
-                }),
-            array( 'db' => 'log_date_add',  'dt' => 7 ),
-            array( 'db' => 'id',            'dt' => 8,
-                'formatter' => $funcao)
-            /*array(
-                'db'        => 'start_date',
-                'dt'        => 4,
+            array( 'db' => 'url',           'dt' => 2,
                 'formatter' => function( $d, $row ) {
-                    return date( 'jS M y', strtotime($d));
+                    return '<a href=\'http://'.$d.'\' target="_BLANK">'.$d.'</a>';
                 }
             ),
-            array(
-                'db'        => 'salary',
-                'dt'        => 5,
-                'formatter' => function( $d, $row ) {
-                    return '$'.number_format($d);
+            array( 'db' => 'login',         'dt' => 3 ),
+            array( 'db' => 'senha',         'dt' => 4 )
+        );
+        // Destaque, somente se tiver permissao
+        $numero = 4;
+        if($perm_destaque){
+            ++$numero;
+            $columns[] = array( 'db' => 'destaque'    ,  'dt' => $numero ,
+                    'formatter' => function( $d, $row ) {
+
+                    if($d=='0'){
+                        $nometipo = 'Não Destaque';
+                    }
+                    else{
+                        $nometipo = 'Destaque';
+                    }
+                    return $nometipo;
+                },
+                'search' => function( $search ) {
+                    if(strpos(strtolower('Não Destaque'), strtolower($search))!=false){
+                        return '0';
+                    }else if(strpos(strtolower('Destaque'), strtolower($search))!=false){
+                        return '1';
+                    }
+                    return false;
                 }
-            )*/
+            );
+        }
+        if($perm_status){
+            ++$numero;
+            $columns[] = array( 'db' => 'status'      ,  'dt' => $numero ,
+                'formatter' => function( $d, $row ) {
+                    if($d=='0'){
+                        $nometipo = 'Ultrapassada';
+                    }
+                    else{
+                        $nometipo = 'Em Uso';
+                    }
+                    return $nometipo;
+                },
+                'search' => function( $search ) {
+                    if(strpos(strtolower('Ultrapassada'), strtolower($search))!==false){
+                        return '0';
+                    }else if(strpos(strtolower('Em Uso'), strtolower($search))!==false){
+                        return '1';
+                    }
+                    return false;
+                }
+            );
+        }
+        ++$numero;
+        $columns[] = array( 'db' => 'log_date_add',  'dt' => $numero );
+        ++$numero;
+        $columns[] = array( 'db' => 'id',            'dt' => $numero,
+                'formatter' => $funcao
         );
 
         echo json_encode(
@@ -164,53 +148,8 @@ class Seguranca_SenhaModelo extends Seguranca_Modelo
             };
         }
         
-        if($perm_status){
-            $funcao_status = function( $d, $row ) {
-                
-                if($d=='0'){
-                    $nometipo = 'Ultrapassada';
-                }
-                else{
-                    $nometipo = 'Em Uso';
-                }
-                return $nometipo;
-            };
-        }else{
-            $funcao_status = function( $d, $row ) {
-                
-                if($d=='0'){
-                    $nometipo = 'Ultrapassada';
-                }
-                else{
-                    $nometipo = 'Em Uso';
-                }
-                return $nometipo;
-            };
-        }
-        if($perm_destaque){
-            $funcao_destaque = function( $d, $row ) {
-                
-                if($d=='0'){
-                    $nometipo = 'Não Destaque';
-                }
-                else{
-                    $nometipo = 'Destaque';
-                }
-                return $nometipo;
-            };
-        }else{
-            $funcao_destaque = function( $d, $row ) {
-                
-                if($d=='0'){
-                    $nometipo = 'Não Destaque';
-                }
-                else{
-                    $nometipo = 'Destaque';
-                }
-                return $nometipo;
-            };
-        }
-
+        
+        //Colunas
         $columns = array(
             array( 'db' => 'id', 'dt' => 0,
                 'formatter' => function( $d, $row ) {
@@ -218,36 +157,66 @@ class Seguranca_SenhaModelo extends Seguranca_Modelo
                 }),
             array( 'db' => 'usuario2',      'dt' => 1 ),
             array( 'db' => 'categoria2',    'dt' => 2 ),
-            array( 'db' => 'url',           'dt' => 3 ),
-            array( 'db' => 'login',         'dt' => 4 ),
-            array( 'db' => 'senha',         'dt' => 5 ),
-            array( 'db' => 'destaque'    ,  'dt' => 6 ,
-                'formatter' => $funcao_destaque),
-            array( 'db' => 'status'      ,  'dt' => 7 ,
-                'formatter' => $funcao_status,
-                'search' => function( $search ) {
-                    if(strpos(strtolower($url), strtolower($objeto->end))!=false){
-                        
-                    }
-                    return '#'.$d;
-                }),
-            array( 'db' => 'log_date_add',  'dt' => 8 ),
-            array( 'db' => 'id',            'dt' => 9,
-                'formatter' => $funcao)
-            /*array(
-                'db'        => 'start_date',
-                'dt'        => 4,
+            array( 'db' => 'url',           'dt' => 3 ,
                 'formatter' => function( $d, $row ) {
-                    return date( 'jS M y', strtotime($d));
+                    return '<a href=\'http://'.$d.'\' target="_BLANK">'.$d.'</a>';
                 }
             ),
-            array(
-                'db'        => 'salary',
-                'dt'        => 5,
-                'formatter' => function( $d, $row ) {
-                    return '$'.number_format($d);
+            array( 'db' => 'login',         'dt' => 4 ),
+            array( 'db' => 'senha',         'dt' => 5 )
+        );
+        // Destaque, somente se tiver permissao
+        $numero = 5;
+        if($perm_destaque){
+            ++$numero;
+            $columns[] = array( 'db' => 'destaque'    ,  'dt' => $numero ,
+                    'formatter' => function( $d, $row ) {
+
+                    if($d=='0'){
+                        $nometipo = 'Não Destaque';
+                    }
+                    else{
+                        $nometipo = 'Destaque';
+                    }
+                    return $nometipo;
+                },
+                'search' => function( $search ) {
+                    if(strpos(strtolower('Destaque'), strtolower($search))!=false){
+                        return '0';
+                    }else if(strpos(strtolower('Não Destaque'), strtolower($search))!=false){
+                        return '1';
+                    }
+                    return false;
                 }
-            )*/
+            );
+        }
+        if($perm_status){
+            ++$numero;
+            $columns[] = array( 'db' => 'status'      ,  'dt' => $numero ,
+                'formatter' => function( $d, $row ) {
+                    if($d=='0'){
+                        $nometipo = 'Ultrapassada';
+                    }
+                    else{
+                        $nometipo = 'Em Uso';
+                    }
+                    return $nometipo;
+                },
+                'search' => function( $search ) {
+                    if(strpos(strtolower('Ultrapassada'), strtolower($search))!=false){
+                        return '0';
+                    }else if(strpos(strtolower('Em Uso'), strtolower($search))!=false){
+                        return '1';
+                    }
+                    return false;
+                }
+            );
+        }
+        ++$numero;
+        $columns[] = array( 'db' => 'log_date_add',  'dt' => $numero );
+        ++$numero;
+        $columns[] = array( 'db' => 'id',            'dt' => $numero,
+                'formatter' => $funcao
         );
 
         echo json_encode(
@@ -283,52 +252,6 @@ class Seguranca_SenhaModelo extends Seguranca_Modelo
             };
         }
         
-        if($perm_status){
-            $funcao_status = function( $d, $row ) {
-                
-                if($d=='0'){
-                    $nometipo = 'Ultrapassada';
-                }
-                else{
-                    $nometipo = 'Em Uso';
-                }
-                return $nometipo;
-            };
-        }else{
-            $funcao_status = function( $d, $row ) {
-                
-                if($d=='0'){
-                    $nometipo = 'Ultrapassada';
-                }
-                else{
-                    $nometipo = 'Em Uso';
-                }
-                return $nometipo;
-            };
-        }
-        if($perm_destaque){
-            $funcao_destaque = function( $d, $row ) {
-                
-                if($d=='0'){
-                    $nometipo = 'Não Destaque';
-                }
-                else{
-                    $nometipo = 'Destaque';
-                }
-                return $nometipo;
-            };
-        }else{
-            $funcao_destaque = function( $d, $row ) {
-                
-                if($d=='0'){
-                    $nometipo = 'Não Destaque';
-                }
-                else{
-                    $nometipo = 'Destaque';
-                }
-                return $nometipo;
-            };
-        }
 
         $columns = array(
             array( 'db' => 'id', 'dt' => 0,
@@ -336,36 +259,66 @@ class Seguranca_SenhaModelo extends Seguranca_Modelo
                     return '#'.$d;
                 }),
             array( 'db' => 'categoria2',    'dt' => 1 ),
-            array( 'db' => 'url',           'dt' => 2 ),
-            array( 'db' => 'login',         'dt' => 3 ),
-            array( 'db' => 'senha',         'dt' => 4 ),
-            array( 'db' => 'destaque'    ,  'dt' => 5 ,
-                'formatter' => $funcao_destaque),
-            array( 'db' => 'status'      ,  'dt' => 6 ,
-                'formatter' => $funcao_status,
-                'search' => function( $search ) {
-                    if(strpos(strtolower($url), strtolower($objeto->end))!=false){
-                        
-                    }
-                    return '#'.$d;
-                }),
-            array( 'db' => 'log_date_add',  'dt' => 7 ),
-            array( 'db' => 'id',            'dt' => 8,
-                'formatter' => $funcao)
-            /*array(
-                'db'        => 'start_date',
-                'dt'        => 4,
+            array( 'db' => 'url',           'dt' => 2 ,
                 'formatter' => function( $d, $row ) {
-                    return date( 'jS M y', strtotime($d));
+                    return '<a href=\'http://'.$d.'\' target="_BLANK">'.$d.'</a>';
                 }
             ),
-            array(
-                'db'        => 'salary',
-                'dt'        => 5,
-                'formatter' => function( $d, $row ) {
-                    return '$'.number_format($d);
+            array( 'db' => 'login',         'dt' => 3 ),
+            array( 'db' => 'senha',         'dt' => 4 )
+        );
+        // Destaque, somente se tiver permissao
+        $numero = 4;
+        if($perm_destaque){
+            ++$numero;
+            $columns[] = array( 'db' => 'destaque'    ,  'dt' => $numero ,
+                    'formatter' => function( $d, $row ) {
+
+                    if($d=='0'){
+                        $nometipo = 'Não Destaque';
+                    }
+                    else{
+                        $nometipo = 'Destaque';
+                    }
+                    return $nometipo;
+                },
+                'search' => function( $search ) {
+                    if(strpos(strtolower('Não Destaque'), strtolower($search))!=false){
+                        return '0';
+                    }else if(strpos(strtolower('Destaque'), strtolower($search))!=false){
+                        return '1';
+                    }
+                    return false;
                 }
-            )*/
+            );
+        }
+        if($perm_status){
+            ++$numero;
+            $columns[] = array( 'db' => 'status'      ,  'dt' => $numero ,
+                'formatter' => function( $d, $row ) {
+                    if($d=='0'){
+                        $nometipo = 'Ultrapassada';
+                    }
+                    else{
+                        $nometipo = 'Em Uso';
+                    }
+                    return $nometipo;
+                },
+                'search' => function( $search ) {
+                    if(strpos(strtolower('Ultrapassada'), strtolower($search))!=false){
+                        return '0';
+                    }else if(strpos(strtolower('Em Uso'), strtolower($search))!=false){
+                        return '1';
+                    }
+                    return false;
+                }
+            );
+        }
+        ++$numero;
+        $columns[] = array( 'db' => 'log_date_add',  'dt' => $numero );
+        ++$numero;
+        $columns[] = array( 'db' => 'id',            'dt' => $numero,
+                'formatter' => $funcao
         );
 
         echo json_encode(
@@ -401,53 +354,7 @@ class Seguranca_SenhaModelo extends Seguranca_Modelo
             };
         }
         
-        if($perm_status){
-            $funcao_status = function( $d, $row ) {
-                
-                if($d=='0'){
-                    $nometipo = 'Ultrapassada';
-                }
-                else{
-                    $nometipo = 'Em Uso';
-                }
-                return $nometipo;
-            };
-        }else{
-            $funcao_status = function( $d, $row ) {
-                
-                if($d=='0'){
-                    $nometipo = 'Ultrapassada';
-                }
-                else{
-                    $nometipo = 'Em Uso';
-                }
-                return $nometipo;
-            };
-        }
-        if($perm_destaque){
-            $funcao_destaque = function( $d, $row ) {
-                
-                if($d=='0'){
-                    $nometipo = 'Não Destaque';
-                }
-                else{
-                    $nometipo = 'Destaque';
-                }
-                return $nometipo;
-            };
-        }else{
-            $funcao_destaque = function( $d, $row ) {
-                
-                if($d=='0'){
-                    $nometipo = 'Não Destaque';
-                }
-                else{
-                    $nometipo = 'Destaque';
-                }
-                return $nometipo;
-            };
-        }
-
+        // Colunas
         $columns = array(
             array( 'db' => 'id', 'dt' => 0,
                 'formatter' => function( $d, $row ) {
@@ -455,36 +362,66 @@ class Seguranca_SenhaModelo extends Seguranca_Modelo
                 }),
             array( 'db' => 'usuario2',      'dt' => 1 ),
             array( 'db' => 'categoria2',    'dt' => 2 ),
-            array( 'db' => 'url',           'dt' => 3 ),
-            array( 'db' => 'login',         'dt' => 4 ),
-            array( 'db' => 'senha',         'dt' => 5 ),
-            array( 'db' => 'destaque'    ,  'dt' => 6 ,
-                'formatter' => $funcao_destaque),
-            array( 'db' => 'status'      ,  'dt' => 7 ,
-                'formatter' => $funcao_status,
-                'search' => function( $search ) {
-                    if(strpos(strtolower($url), strtolower($objeto->end))!=false){
-                        
-                    }
-                    return '#'.$d;
-                }),
-            array( 'db' => 'log_date_add',  'dt' => 8 ),
-            array( 'db' => 'id',            'dt' => 9,
-                'formatter' => $funcao)
-            /*array(
-                'db'        => 'start_date',
-                'dt'        => 4,
+            array( 'db' => 'url',           'dt' => 3 ,
                 'formatter' => function( $d, $row ) {
-                    return date( 'jS M y', strtotime($d));
+                    return '<a href=\'http://'.$d.'\' target="_BLANK">'.$d.'</a>';
                 }
             ),
-            array(
-                'db'        => 'salary',
-                'dt'        => 5,
-                'formatter' => function( $d, $row ) {
-                    return '$'.number_format($d);
+            array( 'db' => 'login',         'dt' => 4 ),
+            array( 'db' => 'senha',         'dt' => 5 )
+        );
+        // Destaque, somente se tiver permissao
+        $numero = 5;
+        if($perm_destaque){
+            ++$numero;
+            $columns[] = array( 'db' => 'destaque'    ,  'dt' => $numero ,
+                    'formatter' => function( $d, $row ) {
+
+                    if($d=='0'){
+                        $nometipo = 'Não Destaque';
+                    }
+                    else{
+                        $nometipo = 'Destaque';
+                    }
+                    return $nometipo;
+                },
+                'search' => function( $search ) {
+                    if(strpos(strtolower('Destaque'), strtolower($search))!=false){
+                        return '0';
+                    }else if(strpos(strtolower('Não Destaque'), strtolower($search))!=false){
+                        return '1';
+                    }
+                    return false;
                 }
-            )*/
+            );
+        }
+        if($perm_status){
+            ++$numero;
+            $columns[] = array( 'db' => 'status'      ,  'dt' => $numero ,
+                'formatter' => function( $d, $row ) {
+                    if($d=='0'){
+                        $nometipo = 'Ultrapassada';
+                    }
+                    else{
+                        $nometipo = 'Em Uso';
+                    }
+                    return $nometipo;
+                },
+                'search' => function( $search ) {
+                    if(strpos(strtolower('Ultrapassada'), strtolower($search))!=false){
+                        return '0';
+                    }else if(strpos(strtolower('Em Uso'), strtolower($search))!=false){
+                        return '1';
+                    }
+                    return false;
+                }
+            );
+        }
+        ++$numero;
+        $columns[] = array( 'db' => 'log_date_add',  'dt' => $numero );
+        ++$numero;
+        $columns[] = array( 'db' => 'id',            'dt' => $numero,
+                'formatter' => $funcao
         );
 
         echo json_encode(

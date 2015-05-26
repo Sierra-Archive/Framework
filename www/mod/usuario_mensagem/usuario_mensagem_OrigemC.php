@@ -53,41 +53,13 @@ class usuario_mensagem_OrigemControle extends usuario_mensagem_Controle
      */
     public function Origens($export=false){
         self::Endereco_Origem(false);
-        $i = 0;
-        $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
-            Array(
-                'Adicionar Origem',
-                'usuario_mensagem/Origem/Origens_Add',
-                ''
-            ),
-            Array(
-                'Print'     => true,
-                'Pdf'       => true,
-                'Excel'     => true,
-                'Link'      => 'usuario_mensagem/Origem/Origens',
-            )
-        )));
-        $origens = $this->_Modelo->db->Sql_Select('usuario_mensagem_Origem');
-        if($origens!==false && !empty($origens)){
-            if(is_object($origens)) $origens = Array(0=>$origens);
-            reset($origens);
-            foreach ($origens as $indice=>&$valor) {
-                $tabela['Nome'][$i]             = $valor->nome;
-                $tabela['Funções'][$i]          = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Origem'        ,'usuario_mensagem/Origem/Origens_Edit/'.$valor->id.'/'    ,'')).
-                                                  $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Origem'       ,'usuario_mensagem/Origem/Origens_Del/'.$valor->id.'/'     ,'Deseja realmente deletar esse Origem ?'));
-                ++$i;
-            }
-            if($export!==false){
-                self::Export_Todos($export,$tabela, 'Suporte - Origens');
-            }else{
-                $this->_Visual->Show_Tabela_DataTable($tabela);
-            }
-            unset($tabela);
-        }else{      
-            $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhuma Origem</font></b></center>');
-        }
-        $titulo = 'Listagem de Origens ('.$i.')';
-        $this->_Visual->Bloco_Unico_CriaJanela($titulo);
+       
+        $tabela = Array(
+            'Id','Nome','Funções'
+        );
+        $this->_Visual->Show_Tabela_DataTable_Massiva($tabela,'usuario_mensagem/Origem/Origens');
+        $titulo = 'Listagem de Origens (<span id="DataTable_Contador">0</span>)';  //
+        $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',10,Array("link"=>"usuario_mensagem/Origem/Origens_Add",'icon'=>'add','nome'=>'Adicionar Origem'));
         
         //Carrega Json
         $this->_Visual->Json_Info_Update('Titulo','Administrar Origens');

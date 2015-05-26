@@ -166,7 +166,7 @@ class usuario_mensagem_RelatorioControle extends usuario_mensagem_Controle
         $conteudo = array(
             'location' => '#relatorio_titulo',
             'js' => '',
-            'html' =>  $titulo
+            'html' =>  $titulo.' (<span id="DataTable_Contador">0</span>)'
         );
         $this->_Visual->Json_IncluiTipo('Conteudo',$conteudo);
         
@@ -234,7 +234,7 @@ class usuario_mensagem_RelatorioControle extends usuario_mensagem_Controle
      */
     public function Produto($datainicial, $datafinal){
         $tabela = Array(
-            'Marca','Linha','Produto','Data Criação','Data Ult. Mod.'/*,'Funções'*/
+            'Marca','Linha','Produto','Mensagem','Data Criação','Data Ult. Mod.'/*,'Funções'*/
         );
         return $this->_Visual->Show_Tabela_DataTable_Massiva($tabela,'usuario_mensagem/Relatorio/Produto/'.$datainicial.'/'.$datafinal,'',false);
         //$titulo = 'Listagem de Senhas';  //(<span id="DataTable_Contador">0</span>)

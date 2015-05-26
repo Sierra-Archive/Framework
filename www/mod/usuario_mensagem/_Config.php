@@ -2,9 +2,9 @@
 $config_Modulo = function (){
     return Array(
         'Nome'                      =>  'usuario_mensagem',
-        'Descrição'                 =>  '',
+        'Descrição'                 =>  'É um modulo para Atendimento telefonico de grandes empresas',
         'System_Require'            =>  '2.21.1',
-        'Version'                   =>  '0.0.1',
+        'Version'                   =>  '0.1.0',
         'Dependencias'              =>  false,
     );
 };

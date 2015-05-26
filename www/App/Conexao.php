@@ -209,7 +209,11 @@ final class Conexao
     
     public function prepare($sql,$autoreparo=true) 
     {
-        return $this->mysqli->prepare($sql);
+        $stmt = $this->mysqli->prepare($sql);
+        if($stmt===false){
+             throw new \Exception('Erro de Query'.$sql.'<br>Erro:'.$this->mysqli->error,3110);
+        }
+        return $stmt;
     }
     /**
      * Carrega Query
@@ -922,16 +926,18 @@ final class Conexao
      *       $tabelas_usadas,$j
      *   )
      */
-    public function Sql_Select_Dados($class_dao,$campos,$sql='SELECT'){
+    public function Sql_Select_Dados($class_dao,$campos,$sql='SELECT',$retornar_extrangeiras_usadas=false){
         // Carrega Cache
         $Cache = $this->_Cache->Ler('Select-'.$class_dao.serialize($campos).$sql);
         if (!$Cache) {
             $Cache = $this->Sql_Select_Comeco($class_dao, $campos,$sql);
             $this->_Cache->Salvar('Select-'.$class_dao.serialize($campos).$sql, $Cache);
-            return $Cache;
-        }else{
-            return $Cache;
         }
+        // Verifica se tira a ultima ou nao e depois retorna
+        if(!$retornar_extrangeiras_usadas){
+            unset($Cache[6]);
+        }
+        return $Cache;
     }
     /**
      * Recupera dados de de Uma Classe e seus Campos
@@ -963,6 +969,8 @@ final class Conexao
         // Campos Usados da Principal e das Extrangeiras
         $principal = Array();
         $extrangeiras = Array();
+        // Armazena Categorias Usadas para Usos Posteriores
+        $retornar_extrangeiras_usadas = Array();
         
         
         ///////////////////
@@ -1100,6 +1108,8 @@ final class Conexao
                          */
                     }else{
                         $ext_campos .= $sigla.'.'.$mostrar[1].' AS '.$valor['titulo'].'2';
+                        // Armazena pra usos posteriores
+                        $retornar_extrangeiras_usadas[$valor['titulo'].'2'] = $sigla.'.'.$mostrar[1];
                     }
                     // Escreve as Tabelas
                     $join .= ' LEFT JOIN '.$tabela['tabela'].' AS '.$sigla;
@@ -1147,7 +1157,7 @@ final class Conexao
             $sql.= ', ';
         }
         $sql .= $ext_campos.' FROM '.$sql_tabela.$join;
-        return Array($sql,$sql_tabela_sigla,$sql_condicao,$tabela_campos_valores,$tabelas_usadas,$j);
+        return Array($sql,$sql_tabela_sigla,$sql_condicao,$tabela_campos_valores,$tabelas_usadas,$j,$retornar_extrangeiras_usadas);
     }
     public function Sql_Contar($class_dao, $where = false){
         $tempo = new \Framework\App\Tempo('Conexao_Contar');   

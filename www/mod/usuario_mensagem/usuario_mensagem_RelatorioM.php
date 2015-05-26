@@ -183,8 +183,12 @@ class usuario_mensagem_RelatorioModelo extends usuario_mensagem_Modelo
             array( 'db' => 'marca2',        'dt' => 0 ),
             array( 'db' => 'linha2',        'dt' => 1 ),
             array( 'db' => 'produto2',      'dt' => 2 ),
-            array( 'db' => 'log_date_add',  'dt' => 3 ),
-            array( 'db' => 'log_date_edit', 'dt' => 4 )
+            array( 'db' => 'mensagem',      'dt' => 3 ,
+                'formatter' => function( $d, $row ) {
+                return str_replace ( array("\n", "\r", '<br />'), '', $d);
+            }),
+            array( 'db' => 'log_date_add',  'dt' => 4 ),
+            array( 'db' => 'log_date_edit', 'dt' => 5 )
         );
 
         echo json_encode(

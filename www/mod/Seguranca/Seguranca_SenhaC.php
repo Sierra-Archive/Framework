@@ -1,4 +1,5 @@
 <?php
+
 class Seguranca_SenhaControle extends Seguranca_Controle
 {
     /**
@@ -56,19 +57,29 @@ class Seguranca_SenhaControle extends Seguranca_Controle
     public function Senhas($export=false){
         $this->Endereco_Senha(false);
         $i = 0;
+        $perm_status = $this->_Registro->_Acl->Get_Permissao_Url('Seguranca/Senha/Status');
+        $perm_destaque = $this->_Registro->_Acl->Get_Permissao_Url('Seguranca/Senha/Destaque');
         
         // EM uso
         $tabela = Array(
-            'Id','Categoria','Url','Login','Senha','Destaque','Status','Adicionada em','Funções'
+            'Id','Categoria','Url','Login','Senha'
         );
+        if($perm_destaque)  $tabela[] = 'Destaque';
+        if($perm_status)    $tabela[] = 'Status';
+        $tabela[] = 'Adicionada em';
+        $tabela[] = 'Funções';
         $this->_Visual->Show_Tabela_DataTable_Massiva($tabela,'Seguranca/Senha/Senhas');
         $titulo = 'Listagem de Senhas';  //(<span id="DataTable_Contador">0</span>)
         $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',10,Array("link"=>"Seguranca/Senha/Senhas_Add",'icon'=>'add','nome'=>'Adicionar Senha'));
         
         // Antigas
         $tabela = Array(
-            'Id','Categoria','Url','Login','Senha','Destaque','Status','Adicionada em','Funções'
+            'Id','Categoria','Url','Login','Senha'
         );
+        if($perm_destaque)  $tabela[] = 'Destaque';
+        if($perm_status)    $tabela[] = 'Status';
+        $tabela[] = 'Adicionada em';
+        $tabela[] = 'Funções';
         $this->_Visual->Show_Tabela_DataTable_Massiva($tabela,'Seguranca/Senha/Senhas_Antigas');
         $titulo = 'Listagem de Senhas Antigas';  //(<span id="DataTable_Contador">0</span>)
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
@@ -356,48 +367,17 @@ class Seguranca_SenhaControle extends Seguranca_Controle
     public function Senhas_Todas($export=false){
         $this->Endereco_Senha_Todas(false);
         $i = 0;
-        // Add BOtao
-        /*$this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
-            Array(
-                'Adicionar Senha',
-                'Seguranca/Senha/Senhas_Todas_Add',
-                ''
-            ),
-            Array(
-                'Print'     => true,
-                'Pdf'       => true,
-                'Excel'     => true,
-                'Link'      => 'Seguranca/Senha/Senhas_Todas',
-            )
-        )));
-        // Query
-        $Senhas_Todas = $this->_Modelo->db->Sql_Select('Seguranca_Senha',false,0,''/*,'categoria,categoria2,id,url,login,senha,log_date_add'*//*);
-        if($Senhas_Todas!==false && !empty($Senhas_Todas)){
-            list($tabela,$i) = self::Senhas_Todas_Tabela($Senhas_Todas);
-            if($export!==false){
-                self::Export_Todos($export,$tabela, 'Senhas_Todas');
-            }else{
-                $this->_Visual->Show_Tabela_DataTable(
-                    $tabela,     // Array Com a Tabela
-                    '',          // style extra
-                    true,        // true -> Add ao Bloco, false => Retorna html
-                    true,        // Apagar primeira coluna ?
-                    Array(       // Ordenacao
-                        Array(
-                            0,'desc'
-                        )
-                    )
-                );
-            }
-            unset($tabela);
-        }else{    
-            $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhuma Senha</font></b></center>');
-        }*/
+        $perm_status = $this->_Registro->_Acl->Get_Permissao_Url('Seguranca/Senha/Status');
+        $perm_destaque = $this->_Registro->_Acl->Get_Permissao_Url('Seguranca/Senha/Destaque');
         
-        
+        // Usadas
         $tabela = Array(
-            'Id','Responsável','Categoria','Url','Login','Senha','Destaque','Status','Adicionada em','Funções'
+            'Id','Responsável','Categoria','Url','Login','Senha'
         );
+        if($perm_destaque)  $tabela[] = 'Destaque';
+        if($perm_status)    $tabela[] = 'Status';
+        $tabela[] = 'Adicionada em';
+        $tabela[] = 'Funções';
         $this->_Visual->Show_Tabela_DataTable_Massiva($tabela,'Seguranca/Senha/Senhas_Todas');
         
         $titulo = 'Listagem de Todas as Senhas';  //(<span id="DataTable_Contador">0</span>)
@@ -405,8 +385,12 @@ class Seguranca_SenhaControle extends Seguranca_Controle
         
         // Antigas
         $tabela = Array(
-            'Id','Categoria','Url','Login','Senha','Destaque','Status','Adicionada em','Funções'
+            'Id','Responsável','Categoria','Url','Login','Senha'
         );
+        if($perm_destaque)  $tabela[] = 'Destaque';
+        if($perm_status)    $tabela[] = 'Status';
+        $tabela[] = 'Adicionada em';
+        $tabela[] = 'Funções';
         $this->_Visual->Show_Tabela_DataTable_Massiva($tabela,'Seguranca/Senha/Senhas_Todas_Antigas');
         $titulo = 'Listagem de Senhas Antigas';  //(<span id="DataTable_Contador">0</span>)
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
@@ -667,3 +651,4 @@ class Seguranca_SenhaControle extends Seguranca_Controle
     
 }
 ?>
+  

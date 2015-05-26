@@ -45,12 +45,14 @@ class usuario_mensagem_SetorModelo extends usuario_mensagem_Modelo
         }
         
         $columns = array(
-            array( 'db' => 'id', 'dt' => 0,
+            /*array( 'db' => 'id', 'dt' => 0,
                 'formatter' => function( $d, $row ) {
                     return '#'.$d;
-                }),
-            array( 'db' => 'nome',    'dt' => 1 ),
-            array( 'db' => 'id',            'dt' => 2,
+                }),*/
+            array( 'db' => 'grupo2',        'dt' => 0 ),
+            array( 'db' => 'nome',          'dt' => 1 ),
+            array( 'db' => 'email',         'dt' => 2 ),
+            array( 'db' => 'id',            'dt' => 3,
                 'formatter' => $funcao)
         );
 
