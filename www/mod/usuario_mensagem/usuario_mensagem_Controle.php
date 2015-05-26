@@ -109,6 +109,7 @@ class usuario_mensagem_Controle extends \Framework\App\Controle
         $this->_Visual->Json_Info_Update('Titulo','Chamados não lidos');  
     }
     static function Mensagens_TabelaMostrar(&$Visual,&$mensagens,$admin=0){
+        $_Registro = \Framework\App\Registro::getInstacia();
         $label = function($nometipo){
             if($nometipo=='Chamado Novo')       $tipo = 'success';
             else if($nometipo=='Esgotado')      $tipo = 'important';
@@ -118,6 +119,12 @@ class usuario_mensagem_Controle extends \Framework\App\Controle
         };
         reset($mensagens);
         $i = 0;
+        
+        $perm_finalizar = $_Registro->_Acl->Get_Permissao_Url('usuario_mensagem/Suporte/Finalizar');
+        $perm_view = $_Registro->_Acl->Get_Permissao_Url('usuario_mensagem/Suporte/VisualizadordeMensagem');
+        $perm_editar = $_Registro->_Acl->Get_Permissao_Url('usuario_mensagem/Admin/Mensagem_Editar');
+        $perm_del = $_Registro->_Acl->Get_Permissao_Url('usuario_mensagem/Admin/Mensagem_Del');
+        
         foreach ($mensagens as &$valor) {
             if($valor->lido===false){
                 $valor->assunto2                = '<b>'.$valor->assunto2.'</b>';
@@ -136,13 +143,13 @@ class usuario_mensagem_Controle extends \Framework\App\Controle
             $tabela['Data de Criação'][$i]      = $valor->log_date_add; //date_replace($valor->log_date_add, "d/m/y | H:i");
             $tabela['Ultima Modificação'][$i]   = $valor->log_date_edit; //date_replace($valor->log_date_edit, "d/m/y | H:i");
             if($valor->tipo!='Finalizado'){
-                $tabela['Visualizar Mensagem'][$i]  = $Visual->Tema_Elementos_Btn('Personalizado' ,    Array('Finalizar Mensagem'         ,'usuario_mensagem/Suporte/Finalizar/'.$valor->id.'/'    ,'','download','inverse'));
+                $tabela['Visualizar Mensagem'][$i]  = $Visual->Tema_Elementos_Btn('Personalizado' ,    Array('Finalizar Mensagem'         ,'usuario_mensagem/Suporte/Finalizar/'.$valor->id.'/'    ,'','download','inverse'),$perm_finalizar);
             }else{
                 $tabela['Visualizar Mensagem'][$i] = '';
             }
-            $tabela['Visualizar Mensagem'][$i]  .= $Visual->Tema_Elementos_Btn('Visualizar' ,    Array('Visualizar Mensagem'         ,'usuario_mensagem/Suporte/VisualizadordeMensagem/'.$valor->id.'/'    ,'')).
-                                                  $Visual->Tema_Elementos_Btn('Editar'     ,    Array('Editar Mensagem'             ,'usuario_mensagem/Admin/Mensagem_Editar/'.$valor->id.'/'    ,'')).
-                                                  $Visual->Tema_Elementos_Btn('Deletar'    ,    Array('Deletar Mensagem'            ,'usuario_mensagem/Admin/Mensagem_Del/'.$valor->id.'/'     ,'Deseja realmente deletar essa Mensagem ?'));
+            $tabela['Visualizar Mensagem'][$i]  .= $Visual->Tema_Elementos_Btn('Visualizar' ,    Array('Visualizar Mensagem'         ,'usuario_mensagem/Suporte/VisualizadordeMensagem/'.$valor->id.'/'    ,''),$perm_view).
+                                                  $Visual->Tema_Elementos_Btn('Editar'     ,    Array('Editar Mensagem'             ,'usuario_mensagem/Admin/Mensagem_Editar/'.$valor->id.'/'    ,''), $perm_editar).
+                                                  $Visual->Tema_Elementos_Btn('Deletar'    ,    Array('Deletar Mensagem'            ,'usuario_mensagem/Admin/Mensagem_Del/'.$valor->id.'/'     ,'Deseja realmente deletar essa Mensagem ?'), $perm_del);
             ++$i;
         }
         $Visual->Show_Tabela_DataTable($tabela,'',true,false,Array(Array(1,'asc')));
