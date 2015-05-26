@@ -63,12 +63,21 @@ class usuario_mensagem_RelatorioModelo extends usuario_mensagem_Modelo
             }),
             array( 'db' => 'finalizado',    'dt' => 4 ,
                 'formatter' => function( $d, $row ) {
-                if($d=='1'){
-                    return 'Finalizado';
-                }else{
-                    return 'Novos Chamados';
-                }
-            }),
+                    if($d=='1'){
+                        return 'Finalizado';
+                    }else{
+                        return 'Novos Chamados';
+                    }
+                    return false;
+                },
+                'search' => function( $search ) {
+                    if(strpos(strtolower('Finalizado'), strtolower($search))!=false){
+                        return '1';
+                    }else if(strpos(strtolower('Novos Chamados'), strtolower($search))!=false){
+                        return '0';
+                    }
+                    return false;
+                }),
             array( 'db' => 'log_date_add',  'dt' => 5 ),
             array( 'db' => 'log_date_edit', 'dt' => 6 )/*,
             array( 'db' => 'id',            'dt' => 7,

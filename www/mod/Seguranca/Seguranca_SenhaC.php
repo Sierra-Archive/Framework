@@ -69,6 +69,8 @@ class Seguranca_SenhaControle extends Seguranca_Controle
         $tabela[] = 'Adicionada em';
         $tabela[] = 'Funções';
         $this->_Visual->Show_Tabela_DataTable_Massiva($tabela,'Seguranca/Senha/Senhas');
+        
+        
         $titulo = 'Listagem de Senhas';  //(<span id="DataTable_Contador">0</span>)
         $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',10,Array("link"=>"Seguranca/Senha/Senhas_Add",'icon'=>'add','nome'=>'Adicionar Senha'));
         
@@ -228,6 +230,8 @@ class Seguranca_SenhaControle extends Seguranca_Controle
                 "mgs_secundaria"    => 'Status Alterado com Sucesso.'
             );
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+            
+            // Conteudo
             $conteudo = array(
                 'location' => '.status'.$resultado->id,
                 'js' => '',

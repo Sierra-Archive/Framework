@@ -177,11 +177,15 @@ class usuario_mensagem_RelatorioControle extends usuario_mensagem_Controle
      * Chamados Abertos
      */
     public function Aberto($datainicial, $datafinal){
+        
+        
         $tabela = Array(
             'Protocolo','Cliente','Assunto','Mensagem','Data Criação','Data Ult. Mod.'/*,'Funções'*/
         );
         return $this->_Visual->Show_Tabela_DataTable_Massiva($tabela,'usuario_mensagem/Relatorio/Aberto/'.$datainicial.'/'.$datafinal,'',false);
-        //$titulo = 'Listagem de Senhas';  //(<span id="DataTable_Contador">0</span>)
+        
+
+//$titulo = 'Listagem de Senhas';  //(<span id="DataTable_Contador">0</span>)
         return false;
     }
     /**

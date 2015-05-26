@@ -26,7 +26,7 @@ class usuario_PerfilControle extends usuario_Controle
         // Verifica Permissao e Puxa Usuário
         $usuario = $this->_Modelo->db->Sql_Select('Usuario',Array('id'=>$usuarioid),1); // Banco DAO, Condicao e LIMITE
         // Resgata DAdos e Manda pra View
-        if($usuario===false)            throw new \Exception(404,'Usuario não Existe');
+        if($usuario===false)            throw new \Exception('Usuario não Existe',404);
         $id = $usuario->id;
         // Carrega Mensagens
         /*if(\Framework\App\Sistema_Funcoes::Perm_Modulos('usuario_mensagem')){

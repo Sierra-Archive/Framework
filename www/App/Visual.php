@@ -1594,7 +1594,8 @@ class Visual
         }
     }
     /**
-     * Criação de Data Table com Muitos Usuários
+     * Criação de Data Table com Muitos Dados
+     * Só Carrega o Necessário
      * 
      * @param array $tabela Array com a Tabela ja Prédefinida
      * @param varchar $url Url que estará os Dados do Modelo que retornará os Dados

@@ -1076,21 +1076,29 @@ final class Conexao
                         $ext_campos .= '('.
                         'CASE ';
                         reset($mostrar);
+                        $retornar_extrangeiras_usadas[$valor['titulo'].'2'] = 'CONCAT(';
+                        $cont_temp = 0;
                         while (key($mostrar) !== null) {
+                            if($cont_temp>0){
+                                $retornar_extrangeiras_usadas[$valor['titulo'].'2'] .= ', " ",';
+                            }
                             $current = current($mostrar);
                             $ext_campos .= 'WHEN '.$sigla.'.'.$current[1].' != \'\' THEN '.$sigla.'.'.$current[1].' ';
+                            
+                            $retornar_extrangeiras_usadas[$valor['titulo'].'2'] .= $sigla.'.'.$current[1];
+                            ++$cont_temp;
                             next($mostrar);
                         }
                         $ext_campos .= 'ELSE 1 END) AS '.$valor['titulo'].'2';
+                        $retornar_extrangeiras_usadas[$valor['titulo'].'2'] .= ')';
                         
-                        // Se pedir campo extra, acrescenta
+                        // Se pedir campo extra, acrescenta #update Nao lembro oq faz
                         if(isset($extrangeiras[$valor['titulo']])){
                             foreach($extrangeiras[$valor['titulo']] as $indice2=>$valor2){
                                 if($valor2===true){
                                     $ext_campos .= $sigla.'.'.$indice2;
                                 }
                             }
-                            
                         }
                         
                         
