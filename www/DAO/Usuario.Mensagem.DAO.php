@@ -436,7 +436,7 @@ final Class Usuario_Mensagem_DAO extends Framework\App\Dao
                     'readonly'          => false,
                     'aviso'             => 'Apenas letras',
                     'formtipo'          =>'textarea',
-                    'input'             => array(
+                    'textarea'          => array(
                         'tipo'              => 'text',
                         'class'             => 'obrigatorio'
                     )
