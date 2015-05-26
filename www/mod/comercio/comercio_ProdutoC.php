@@ -51,8 +51,6 @@ class comercio_ProdutoControle extends comercio_Controle
      */
     public function Produtos($export=false){
         self::Endereco_Produto(false);
-        $i = 0;
-        $ordem = 0;
         $comercio_Produto_Cod       = \Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Produto_Cod');
         $comercio_Produto_Familia   = \Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Produto_Familia');
         $comercio_Estoque           = \Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Estoque');
@@ -81,15 +79,14 @@ class comercio_ProdutoControle extends comercio_Controle
 
         if($comercio_Estoque){
             $tabela_colunas[] = 'Estoque';
-        }else{
-            if($comercio_Unidade){
-                $tabela_colunas[] = 'Unidade';
-            }
+        }
+        if($comercio_Unidade){
+            $tabela_colunas[] = 'Unidade';
         }
         $tabela_colunas[] = 'Funções';
 
         $this->_Visual->Show_Tabela_DataTable_Massiva($tabela_colunas,'comercio/Produto/Produtos');
-        $titulo = 'Listagem de Produtos';  //(<span id="DataTable_Contador">0</span>)
+        $titulo = 'Listagem de Produtos (<span id="DataTable_Contador">0</span>)';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',10,Array("link"=>"comercio/Produto/Produtos_Add",'icon'=>'add','nome'=>'Adicionar Senha'));
         
         
