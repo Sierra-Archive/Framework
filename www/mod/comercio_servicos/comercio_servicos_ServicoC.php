@@ -44,37 +44,6 @@ class comercio_servicos_ServicoControle extends comercio_servicos_Controle
             $_Controle->Tema_Endereco(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_servicos_Titulo'));
         }
     }
-    static function Servicos_Tabela(&$servicos){
-        $registro   = \Framework\App\Registro::getInstacia();
-        $Visual     = &$registro->_Visual;
-        // Titulos
-        $titulo             = \Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_servicos_Titulo');
-        $titulo2            = Framework\Classes\Texto::Transformar_Plural_Singular($titulo);
-        if(Framework\Classes\Texto::Captura_Palavra_Masculina($titulo2)===true){
-            $titulo_com_sexo    = 'o '.Framework\Classes\Texto::Transformar_Plural_Singular($titulo);
-        }else{
-            $titulo_com_sexo    = 'a '.Framework\Classes\Texto::Transformar_Plural_Singular($titulo);
-        }
-        // COmeça Array
-        $tabela = Array();
-        $i = 0;
-        if(is_object($servicos)) $servicos = Array(0=>$servicos);
-        reset($servicos);
-        foreach ($servicos as $indice=>&$valor) {
-            if(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_servicos_ServicoTipo')){
-                $tabela['Tipo d'.$titulo_com_sexo][$i]  = $valor->tipo2;
-            }
-            if(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_servicos_nome')){
-                $tabela['Nome'][$i]  = $valor->nome;
-            }
-            $tabela['Descriçao'][$i]        = $valor->descricao;
-            $tabela['Preço'][$i]            = $valor->preco;
-            $tabela['Funções'][$i]          = $Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar '.$titulo2        ,'comercio_servicos/Servico/Servicos_Edit/'.$valor->id.'/'    ,'')).
-                                              $Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar '.$titulo2       ,'comercio_servicos/Servico/Servicos_Del/'.$valor->id.'/'     ,'Deseja realmente deletar ess'.$titulo_com_sexo.' ?'));
-            ++$i;
-        }
-        return Array($tabela,$i);
-    }
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
@@ -82,8 +51,6 @@ class comercio_servicos_ServicoControle extends comercio_servicos_Controle
      */
     public function Servico($export=false){
         self::Endereco_Servico(false);
-        $i = 0;
-        $i = 0;
         $titulo = \Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_servicos_Titulo');
         $titulo2 = Framework\Classes\Texto::Transformar_Plural_Singular($titulo);
         if(Framework\Classes\Texto::Captura_Palavra_Masculina($titulo2)===true){
@@ -93,43 +60,23 @@ class comercio_servicos_ServicoControle extends comercio_servicos_Controle
             $titulo_com_sexo        = 'a '.Framework\Classes\Texto::Transformar_Plural_Singular($titulo);
             $titulo_com_sexo_mudo   = 'a '.Framework\Classes\Texto::Transformar_Plural_Singular($titulo);
         }
-        $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
-            Array(
-                'Adicionar nov'.$titulo_com_sexo,
-                'comercio_servicos/Servico/Servicos_Add',
-                ''
-            ),
-            Array(
-                'Print'     => true,
-                'Pdf'       => true,
-                'Excel'     => true,
-                'Link'      => 'comercio_servicos/Servico/Servico',
-            )
-        )));
-        $servicos = $this->_Modelo->db->Sql_Select('Comercio_Servicos_Servico');
-        if($servicos!==false && !empty($servicos)){
-            list($tabela,$i) = self::Servicos_Tabela($servicos);
-            if($export!==false){
-                self::Export_Todos($export,$tabela, 'Empreendimentos');
-            }else{
-                $this->_Visual->Show_Tabela_DataTable(
-                    $tabela,     // Array Com a Tabela
-                    '',          // style extra
-                    true,        // true -> Add ao Bloco, false => Retorna html
-                    false,        // Apagar primeira coluna ?
-                    Array(       // Ordenacao
-                        Array(
-                            0,'desc'
-                        )
-                    )
-                );
-            }
-            unset($tabela);
-        }else{            
-            $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum'.$titulo_com_sexo_mudo.'</font></b></center>');
+        
+        $tabela_colunas = Array();
+
+        if(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_servicos_ServicoTipo')){
+            $tabela_colunas[] = 'Tipo d'.$titulo_com_sexo;
         }
-        $titulo = 'Listagem de '.$titulo.' ('.$i.')';
-        $this->_Visual->Bloco_Unico_CriaJanela($titulo);
+        if(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_servicos_nome')){
+            $tabela_colunas[] = 'Nome';
+        }
+        
+        $tabela_colunas[] = 'Descriçao';
+        $tabela_colunas[] = 'Preço';
+        $tabela_colunas[] = 'Funções';
+
+        $this->_Visual->Show_Tabela_DataTable_Massiva($tabela_colunas,'comercio_servicos/Servico/Servico');
+        $titulo = 'Listagem de '.$titulo;
+        $this->_Visual->Bloco_Unico_CriaJanela($titulo.' (<span id="DataTable_Contador">0</span>)','',10,Array("link"=>"comercio_servicos/Servico/Servicos_Add",'icon'=>'add','nome'=>'Adicionar nov'.$titulo_com_sexo));
         
         //Carrega Json
         $this->_Visual->Json_Info_Update('Titulo','Administrar '.$titulo);

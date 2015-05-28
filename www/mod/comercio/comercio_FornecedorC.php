@@ -58,71 +58,23 @@ class comercio_FornecedorControle extends comercio_Controle
      */
     public function Fornecedores($export = false){
         self::Endereco_Fornecedor(false);
-        $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
-            Array(
-                'Adicionar Fornecedor',
-                'comercio/Fornecedor/Fornecedores_Add',
-                ''
-            ),
-            Array(
-                'Print'     => true,
-                'Pdf'       => true,
-                'Excel'     => true,
-                'Link'      => 'comercio/Fornecedor/Fornecedores',
-            )
-        )));
-        $i = 0;
-        $fornecedor = $this->_Modelo->db->Sql_Select('Comercio_Fornecedor');
-        if($fornecedor!==false && !empty($fornecedor)){
-            if(is_object($fornecedor)) $fornecedor = Array(0=>$fornecedor);
-            reset($fornecedor);
-            foreach ($fornecedor as $indice=>&$valor) {
-                $nome = '';
-                if($valor->nome!=''){
-                    $nome .= $valor->nome;
-                }
-                if($valor->razao_social!=''){
-                    $nome .= $valor->razao_social;
-                }
-                $tabela['Nome'][$i]                 = $nome;
-                if(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Fornecedor_Categoria')){
-                      $tabela['Tipo de Fornecimento'][$i] = $valor->categoria2;
-                }
-                $telefone = '';
-                if($valor->telefone!=''){
-                    $telefone .= $valor->telefone;
-                }
-                if($valor->telefone2!=''){
-                    if($telefone!='') $telefone .= '<br>';
-                    $telefone .= $valor->telefone2;
-                }
-                $tabela['Telefone'][$i]      =  $telefone;
-                $email = '';
-                if($valor->email!=''){
-                    $email .= $valor->email;
-                }
-                if($valor->email2!=''){
-                    if($email!='') $email .= '<br>';
-                    $email .= $valor->email2;
-                }
-                $tabela['Email'][$i]      =  $email;
-                $tabela['Funções'][$i]   =  /*$this->_Visual->Tema_Elementos_Btn('Visualizar' ,Array('Visualizar Fornecedor'        ,'comercio/Fornecedor/Fornecedores_Popup/'.$valor->id.'/'    ,'')).*/
-                                            $this->_Visual->Tema_Elementos_Btn('Zoom'       ,Array('Visualizar Comentários do Fornecedor'       ,'comercio/Fornecedor/Fornecedores_View/'.$valor->id.'/'    ,'')).
-                                            $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Fornecedor'                          ,'comercio/Fornecedor/Fornecedores_Edit/'.$valor->id.'/'    ,'')).
-                                            $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Fornecedor'                         ,'comercio/Fornecedor/Fornecedores_Del/'.$valor->id.'/'     ,'Deseja realmente deletar esse Fornecedor ? Isso irá afetar o sistema!'));
-                ++$i;
-            }
-            if($export!==false){
-                self::Export_Todos($export,$tabela, 'Fornecedores');
-            }else{
-                $this->_Visual->Show_Tabela_DataTable($tabela);
-            }
-            unset($tabela);
-        }else{           
-            $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Fornecedor</font></b></center>');
+        
+        $tabela_colunas = Array();
+
+        $tabela_colunas[] = 'Nome';
+        // Coloca Preco
+        if(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Fornecedor_Categoria')){
+            $tabela_colunas[] = 'Tipo de Fornecimento';
         }
-        $titulo = 'Listagem de Fornecedores ('.$i.')';
-        $this->_Visual->Bloco_Unico_CriaJanela($titulo);
+        
+        $tabela_colunas[] = 'Telefone';
+        $tabela_colunas[] = 'Email';
+        $tabela_colunas[] = 'Funções';
+
+        $this->_Visual->Show_Tabela_DataTable_Massiva($tabela_colunas,'comercio/Fornecedor/Fornecedores');
+        $titulo = 'Listagem de Fornecedores (<span id="DataTable_Contador">0</span>)';
+        $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',10,Array("link"=>"comercio/Fornecedor/Fornecedores_Add",'icon'=>'add','nome'=>'Adicionar Fornecedor'));
+        
         
         //Carrega Json
         $this->_Visual->Json_Info_Update('Titulo','Administrar Fornecedores');
