@@ -823,7 +823,7 @@ class Curso_TurmaControle extends Curso_Controle
             $texto =    'Nova Inscrição na Turma: '.$turma_registro->nome.'<br>'.
                         'Id do Aluno: #'.$usuarioid.'<br>';
                         'Nome do Aluno: '.$usuarionome.'<br>';
-                        'Email do Aluno: '.$turma_registro->nome.'<br>';
+                        'Email do Aluno: '.$usuarioemail.'<br>';
             self::Enviar_Email($texto, $sucesso2);
             // Envia Email pro Usuario
             $texto =    'Nova Inscrição na Turma '.$turma_registro->nome.' confirmada com sucesso.<br>'.

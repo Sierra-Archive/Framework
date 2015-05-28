@@ -62,6 +62,7 @@ class usuario_PerfilVisual extends usuario_Visual
         if($usuario->telefone2!='')  $html .= '<p><label style="width:150px;">Telefone Fixo 2</label>: '.$usuario->telefone2.'</p>';
         if($usuario->celular!='')  $html .= '<p><label style="width:150px;">Celular </label>: '.$usuario->celular.'</p>';
         if($usuario->fax!='')  $html .= '<p><label style="width:150px;">Fax </label>: '.$usuario->fax.'</p>';
+        if(isset($usuario->crm) && $usuario->crm!='')  $html .= '<p><label style="width:150px;">CRM </label>: '.$usuario->crm.'</p>';
         if($usuario->cpf!='')  $html .= '<p><label style="width:150px;">CPF </label>: '.$usuario->cpf.'</p>';
         if($usuario->cnpj!='')  $html .= '<p><label style="width:150px;">CNPJ </label>: '.$usuario->cnpj.'</p>';
         if($usuario->cnpj_insc!='')  $html .= '<p><label style="width:150px;">Insc. Estadual / Municipal </label>: '.$usuario->cnpj_insc.'</p>';
