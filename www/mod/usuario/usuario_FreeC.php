@@ -212,7 +212,7 @@ class usuario_FreeControle extends usuario_Controle
                     }else{
                         $this->Main();
                     }
-                    $email = Mail_Send($this->usuario->nome, $this->usuario->email,SISTEMA_EMAIL,SISTEMA_NOME.' - Cadastro Realizado com Sucesso',$mgm);
+                    $email = Mail_Send($this->_Acl->logado_usuario->nome, $this->_Acl->logado_usuario->email,SISTEMA_EMAIL,SISTEMA_NOME.' - Cadastro Realizado com Sucesso',$mgm);
                 }else{
                     $mensagens = array(
                         "tipo" => 'erro',

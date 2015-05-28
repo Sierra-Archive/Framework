@@ -224,7 +224,7 @@ class usuario_PerfilControle extends usuario_Controle
      */
     public function Plano_Alterar(){
         global $language;
-        if($_POST['nivel_usuario']<=$this->usuario->nivel_usuario || ($_POST['nivel_usuario']!=0 && $_POST['nivel_usuario']!=1 && $_POST['nivel_usuario']!=2 && $_POST['nivel_usuario']!=3 && $_POST['nivel_usuario']!=4)){
+        if($_POST['nivel_usuario']<=$this->_Acl->logado_usuario->nivel_usuario || ($_POST['nivel_usuario']!=0 && $_POST['nivel_usuario']!=1 && $_POST['nivel_usuario']!=2 && $_POST['nivel_usuario']!=3 && $_POST['nivel_usuario']!=4)){
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => 'Erro',
@@ -547,7 +547,7 @@ class usuario_PerfilControle extends usuario_Controle
      *//*
     public function Plano_Alterar(){
         global $language;
-        if($_POST['nivel_usuario']<=$this->usuario->nivel_usuario || ($_POST['nivel_usuario']!=0 && $_POST['nivel_usuario']!=1 && $_POST['nivel_usuario']!=2 && $_POST['nivel_usuario']!=3 && $_POST['nivel_usuario']!=4)){
+        if($_POST['nivel_usuario']<=$this->_Acl->logado_usuario->nivel_usuario || ($_POST['nivel_usuario']!=0 && $_POST['nivel_usuario']!=1 && $_POST['nivel_usuario']!=2 && $_POST['nivel_usuario']!=3 && $_POST['nivel_usuario']!=4)){
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => 'Erro',

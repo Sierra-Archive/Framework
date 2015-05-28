@@ -159,7 +159,7 @@ class usuario_mensagem_Modelo extends \Framework\App\Modelo
         $objeto = new usuario_mensagem_DAO;
         \Framework\App\Controle::mysql_AtualizaValores($objeto);
         $objeto->escritor      = \Framework\App\Acl::Usuario_GetID_Static();
-        $objeto->escritor_nome = $this->usuario->nome;
+        $objeto->escritor_nome = $this->_Acl->logado_usuario->nome;
         $objeto->para          = $para;
         $objeto->para_nome     = $para_nome;
         $objeto->assunto       = $assunto;
@@ -190,7 +190,7 @@ class usuario_mensagem_Modelo extends \Framework\App\Modelo
         $resposta = new \usuario_mensagem_Resposta_DAO();
         $resposta->id_mensagem      = $mensagem;
         $resposta->escritor         = \Framework\App\Acl::Usuario_GetID_Static();
-        $resposta->escritor_nome    = $this->usuario->nome;
+        $resposta->escritor_nome    = $this->_Acl->logado_usuario->nome;
         $resposta->ordem            = $ordem;
         $resposta->resposta         = $resposta_mgs;
         $sucesso =  $this->db->Sql_Inserir($resposta);

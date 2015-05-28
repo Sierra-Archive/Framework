@@ -211,7 +211,6 @@ class Modelo
         
         // Nao serao ixibidos categorias com subsessao qnd for cadastro
         if($cadastro==1) $extra = ' AND C.subtab=""';
-        /*.' AND user='.$this->usuario->id*/
         if($tipo==''){
             $sql = 'SELECT C.id, C.nome, C.subtab FROM '.MYSQL_CAT.' C WHERE C.deletado!=1 AND C.servidor=\''.SRV_NAME_SQL.'\' AND C.parent='.$parent.$extra. ' ORDER BY C.nome';
         }else{
@@ -291,7 +290,7 @@ class Modelo
         $array = array();
         $i = 0; 
         
-        $sql = $this->db->query('SELECT id, nome FROM '.$subtab.' WHERE servidor=\''.SRV_NAME_SQL.'\' AND deletado!=1'); // AND user='.$this->usuario->id
+        $sql = $this->db->query('SELECT id, nome FROM '.$subtab.' WHERE servidor=\''.SRV_NAME_SQL.'\' AND deletado!=1');
         while($campo = $sql->fetch_object()){
             $array[$i]['id'] = $categoria.'-'.$campo->id;
             $array[$i]['nome'] = $campo->nome;

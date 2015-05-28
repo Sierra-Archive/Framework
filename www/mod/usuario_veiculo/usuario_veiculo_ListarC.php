@@ -55,14 +55,14 @@ class usuario_veiculo_ListarControle extends usuario_veiculo_Controle
     }
     public function Popup_Agendar_veiculo($idveiculo,$datainicial,$datafinal,$nomeveiculo){
         if($this->_Acl->Usuario_GetLogado()){
-            if($this->usuario->foto_cnh==''){
+            if($this->_Acl->logado_usuario->foto_cnh==''){
                 $mensagens = array(
                     "tipo" => 'sucesso',
                     "mgs_principal" => 'Erro',
                     "mgs_secundaria" => 'É necessário fazer upload da CNH'
                 );
                 $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
-            }else if($this->usuario->foto_res==''){
+            }else if($this->_Acl->logado_usuario->foto_res==''){
                 $mensagens = array(
                     "tipo" => 'sucesso',
                     "mgs_principal" => 'Erro',

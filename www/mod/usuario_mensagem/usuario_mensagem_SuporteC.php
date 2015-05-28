@@ -73,7 +73,7 @@ class usuario_mensagem_SuporteControle extends usuario_mensagem_Controle
         $id = (int) $this->_Acl->Usuario_GetID();
         if($id>0){
             $this->Mensagenslistar();
-            if($this->usuario->grupo==CFG_TEC_IDADMIN){
+            if($this->_Acl->logado_usuario->grupo==CFG_TEC_IDADMIN){
                 $this->MensagensSetores(-1);
             }else{
                 $this->MensagensSetores();
@@ -101,9 +101,11 @@ class usuario_mensagem_SuporteControle extends usuario_mensagem_Controle
         $i = 0;
         $mensagens = Array();
         if($grupo==0){
-            $grupo = $this->usuario->grupo;
+            $grupo = $this->_Acl->logado_usuario->grupo;
+            $admin = 0;
         }else if($grupo==-1){
             $grupo = 0;
+            $admin = 1;
         }
         $this->_Modelo->Suporte_MensagensSetor($mensagens,$grupo);
         if(is_object($mensagens)){

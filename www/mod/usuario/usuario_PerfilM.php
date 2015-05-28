@@ -17,7 +17,7 @@ class usuario_PerfilModelo extends usuario_Modelo
     public function __construct(){
         parent::__construct();
         /*$i = 0;
-        while($i<=$this->usuario->nivel_usuario){
+        while($i<=$this->_Acl->logado_usuario->nivel_usuario){
             unset($this->campos[1]['select']['opcoes'][$i]);
             ++$i;
         }
@@ -25,7 +25,7 @@ class usuario_PerfilModelo extends usuario_Modelo
     }
     public function PlanoAlterar($plano){
         if(!is_int($plano)) $plano = (int) $plano;
-        if($plano<=$this->usuario->nivel_usuario) return 0;
+        if($plano<=$this->_Acl->logado_usuario->nivel_usuario) return 0;
         if($plano<0 || $plano>5) return 0;
         $id = (int) \Framework\App\Acl::Usuario_GetID_Static();
         eval('$valor = CONFIG_CLI_'.\anti_injection($_POST['nivel_usuario']).'_PRECO;');

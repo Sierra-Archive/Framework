@@ -245,14 +245,14 @@ class predial_SalaoControle extends predial_Controle
     }
     public function Popup_Agendar_reserva($idreserva,$datainicial,$datafinal,$nomereserva){
         if($this->get_logado()){
-            if($this->usuario->foto_cnh==''){
+            if($this->_Acl->logado_usuario->foto_cnh==''){
                 $mensagens = array(
                     "tipo" => 'sucesso',
                     "mgs_principal" => 'Erro',
                     "mgs_secundaria" => 'É necessário fazer upload da CNH'
                 );
                 $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
-            }else if($this->usuario->foto_res==''){
+            }else if($this->_Acl->logado_usuario->foto_res==''){
                 $mensagens = array(
                     "tipo" => 'sucesso',
                     "mgs_principal" => 'Erro',
