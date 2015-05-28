@@ -87,7 +87,7 @@ class usuario_AdminControle extends usuario_Controle
         return false;
     }
     public function ListarFuncionario($export=false){
-        $this->usuariolistar(Array(CFG_TEC_CAT_ID_FUNCIONARIOS,\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Funcionario_nome')),false,10,false,'Funcionario',$export);
+        $this->Usuario_Listagem(Array(CFG_TEC_CAT_ID_FUNCIONARIOS,\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Funcionario_nome')),false,10,false,'Funcionario',$export);
         // ORGANIZA E MANDA CONTEUDO
         $this->_Visual->Json_Info_Update('Titulo',\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Funcionario_nome'));
     }
@@ -96,7 +96,7 @@ class usuario_AdminControle extends usuario_Controle
         return false;        
     }
     public function ListarUsuario($export=false){
-        $this->usuariolistar(Array(CFG_TEC_CAT_ID_ADMIN,'Usuários'),false,10,false,$export);
+        $this->Usuario_Listagem(Array(CFG_TEC_CAT_ID_ADMIN,'Usuários'),false,10,false,$export);
         // ORGANIZA E MANDA CONTEUDO
         $this->_Visual->Json_Info_Update('Titulo','Usuários');  
     }

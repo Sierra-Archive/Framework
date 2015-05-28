@@ -1154,285 +1154,71 @@ class usuario_Controle extends \Framework\App\Controle
         if($grupo!==false && $grupo[0]==CFG_TEC_CAT_ID_CLIENTES && $inverter===false){
             $linkextra = '/cliente';
             $link = 'usuario/Admin/ListarCliente';
-            $link_editar = 'usuario/Admin/Cliente_Edit';
-            $link_deletar = 'usuario/Admin/Cliente_Del';
             $link_add = 'usuario/Admin/Cliente_Add/'.$categoria;
         }
         else if($grupo!==false && $grupo[0]==CFG_TEC_CAT_ID_FUNCIONARIOS && $inverter===false){
             $linkextra = '/funcionario';
             $link = 'usuario/Admin/ListarFuncionario';
-            $link_editar = 'usuario/Admin/Funcionario_Edit';
-            $link_deletar = 'usuario/Admin/Funcionario_Del';
             $link_add = 'usuario/Admin/Funcionario_Add/'.$categoria;
         }else{
             $link = 'usuario/Admin/ListarUsuario';
-            $link_editar = 'usuario/Admin/Usuarios_Edit';
-            $link_deletar = 'usuario/Admin/Usuarios_Del';
             $link_add = 'usuario/Admin/Usuarios_Add/'.$categoria;
         }
-        
-        // add botao
-        $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
-            Array(
-                'Adicionar '.Framework\Classes\Texto::Transformar_Plural_Singular($nomedisplay),
-                $link_add,
-                ''
-            ),
-            Array(
-                'Print'     => true,
-                'Pdf'       => true,
-                'Excel'     => true,
-                'Link'      => $link,
-            )
-        )));
-        // Continua Resto
-        //$this->_Visual->Blocar('<a title="Adicionar " class="btn btn-success lajax explicar-titulo" acao="" href="'.URL_PATH.'usuario/Admin/Usuarios_Add'.$linkextra.'">Adicionar novo '.Framework\Classes\Texto::Transformar_Plural_Singular($nomedisplay).'</a><div class="space15"></div>');
-        $usuario = $this->_Modelo->db->Sql_Select('Usuario',$where,0,'','id,grupo,foto,nome,razao_social,email,email2,telefone,telefone2,celular,celular1,celular2,celular3,ativado,log_date_add');
-        if(is_object($usuario)){
-            $usuario = Array(0=>$usuario);
+
+        // Permissoes (Fora Do LOOPING por performace)
+        $usuario_Admin_Foto             = \Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Admin_Foto');
+        $Financeiro_User_Saldo          = \Framework\App\Acl::Sistema_Modulos_Configs_Funcional('Financeiro_User_Saldo');
+        $usuario_Admin_Grupo            = \Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Grupo_Mostrar');
+
+
+        // Verifica Grupo
+        $Ativado_Grupo = false;
+        if(is_array($usuario_Admin_Grupo)){
+            if($grupo===false || (is_array($grupo) && in_array($grupo[0], $usuario_Admin_Grupo))){
+                $Ativado_Grupo = true;
+            }
+        }else{
+            if($usuario_Admin_Grupo===true){
+                $Ativado_Grupo = true;
+            }
         }
-        if($usuario!==false && !empty($usuario)){
-            
-            // Puxa Tabela e qnt de registro
-            $registro   = \Framework\App\Registro::getInstacia();
-            $Modelo     = &$registro->_Modelo;
-            $Visual     = &$registro->_Visual;
-            $tabela = Array();
-            $i = 0;
-            if(is_object($usuarios)){
-                $usuarios = Array(0=>$usuarios);
+
+        // Verifica foto
+        $Ativado_Foto = false;
+        if(is_array($usuario_Admin_Foto)){
+            if($grupo===false || (is_array($grupo) && in_array($grupo[0], $usuario_Admin_Foto))){
+                $Ativado_Foto = true;
             }
-            reset($usuarios);
-
-            // Permissoes (Fora Do LOOPING por performace)
-            $usuario_Admin_Ativado_Listar   = \Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Admin_Ativado_Listar');
-            $usuario_Admin_Foto             = \Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Admin_Foto');
-            $Financeiro_User_Saldo          = \Framework\App\Acl::Sistema_Modulos_Configs_Funcional('Financeiro_User_Saldo');
-            $usuario_mensagem_EmailSetor    = \Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_mensagem_EmailSetor');
-            $usuario_Admin_Grupo            = \Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Grupo_Mostrar');
-
-            // Get Permissoes (Fora Do LOOPING por performace)
-            $perm_view          = $registro->_Acl->Get_Permissao_Url($url_ver);
-            $perm_comentario    = $registro->_Acl->Get_Permissao_Url('usuario/Admin/Usuarios_Comentario');
-            $perm_anexo         = $registro->_Acl->Get_Permissao_Url('usuario/Anexo/Anexar');
-            $perm_email         = $registro->_Acl->Get_Permissao_Url('usuario/Admin/Usuarios_Email');
-            $perm_status        = $registro->_Acl->Get_Permissao_Url('usuario/Admin/Status');
-            $perm_editar        = $registro->_Acl->Get_Permissao_Url($url_editar);
-            $perm_del           = $registro->_Acl->Get_Permissao_Url($url_deletar);
-
-            // Verifica Grupo
-            $Ativado_Grupo = false;
-            if(is_array($usuario_Admin_Grupo)){
-                if($grupo===false || (is_array($grupo) && in_array($grupo[0], $usuario_Admin_Grupo))){
-                    $Ativado_Grupo = true;
-                }
-            }else{
-                if($usuario_Admin_Grupo===true){
-                    $Ativado_Grupo = true;
-                }
+        }else{
+            if($usuario_Admin_Foto===true){
+                $Ativado_Foto = true;
             }
-
-            // Verifica foto
-            $Ativado_Foto = false;
-            if(is_array($usuario_Admin_Foto)){
-                if($grupo===false || (is_array($grupo) && in_array($grupo[0], $usuario_Admin_Foto))){
-                    $Ativado_Foto = true;
-                }
-            }else{
-                if($usuario_Admin_Foto===true){
-                    $Ativado_Foto = true;
-                }
-            }
-            // Faz Looping Escrevendo Tabelas
-            foreach ($usuarios as &$valor) {
-                $tabela['Id'][$i]         = $valor->id;
-                if($Ativado_Grupo===true){
-                    $tabela['Grupo'][$i]      = $valor->grupo2;
-                }
-                if($Ativado_Foto===true){
-                    if($valor->foto==='' || $valor->foto===false){
-                        $foto = WEB_URL.'img'.US.'icons'.US.'clientes.png';
-                    }else{
-                        $foto = $valor->foto;
-                    }
-                    $tabela['Foto'][$i]             = '<img src="'.$foto.'" style="max-width:100px;" />';
-                }
-                //$tabela['#Id'][$i]               = '#'.$valor->id;
-                $nome = '';
-                // Atualiza Nome
-                if($valor->nome!=''){
-                    $nome .= $valor->nome;
-                }
-                // Atualiza Razao Social
-                if($valor->razao_social!=''){
-                    if($nome!='') $nome .= '<br>';
-                    $nome .= $valor->razao_social;
-                }
-                // Se tiver Mensagens
-                if(\Framework\App\Sistema_Funcoes::Perm_Modulos('usuario_mensagem')){
-                    $nome = '<a href="'.URL_PATH.'usuario_mensagem/Suporte/Mostrar_Cliente/'.$valor->id.'/">'.$nome.' ('.usuario_mensagem_SuporteModelo::Suporte_MensagensCliente_Qnt($valor->id).')</a>';
-                }
-                // Mostra Nome
-                $tabela['Nome'][$i]             = $nome;
-                $telefone = '';
-                if($valor->telefone!=''){
-                    $telefone .= $valor->telefone;
-                }
-                if($valor->telefone2!=''){
-                    if($telefone!='') $telefone .= '<br>';
-                    $telefone .= $valor->telefone1;
-                }
-                if($valor->celular!=''){
-                    if($telefone!='') $telefone .= '<br>';
-                    $telefone .= $valor->celular;
-                }
-                if($valor->celular1!=''){
-                    if($telefone!='') $telefone .= '<br>';
-                    $telefone .= $valor->celular1;
-                }
-                if($valor->celular2!=''){
-                    if($telefone!='') $telefone .= '<br>';
-                    $telefone .= $valor->celular2;
-                }
-                if($valor->celular3!=''){
-                    if($telefone!='') $telefone .= '<br>';
-                    $telefone .= $valor->celular3;
-                }
-
-                $tabela['Contato'][$i]         = $telefone;
-                $email = '';
-                if($valor->email!=''){
-                    $email .= $valor->email;
-                }
-                if($valor->email2!=''){
-                    if($email!='') $email .= '<br>';
-                    $email .= $valor->email2;
-                }
-
-
-                $tabela['Email'][$i]      =  $email;
-                //$tabela['Nivel de Usuário'][$i] = $niveluser;
-                //$tabela['Nivel de Admin'][$i]   = $niveladmin;
-                // para MOdulos que contem banco
-                if(\Framework\App\Sistema_Funcoes::Perm_Modulos('Financeiro') && $Financeiro_User_Saldo){
-                    $tabela['Saldo'][$i]        = Financeiro_Modelo::Carregar_Saldo($Modelo, $valor->id, true);
-                }
-                // Funcoes
-
-                if(strpos($valor->log_date_add, APP_DATA_BR)!==false){
-                    $data_add = '<b>'.$valor->log_date_add.'</b>';
-                }else{
-                    $data_add = $valor->log_date_add;
-                }
-                $tabela['Data de Cadastro'][$i] = $data_add;
-
-                // Visualizar
-                $funcoes_qnt = 1;
-                $tabela['Funções'][$i]          = $Visual->Tema_Elementos_Btn('Visualizar'     ,Array('Visualizar '.$nomedisplay_sing        ,$url_ver.'/'.$valor->id.'/'.$linkextra    ,''),$perm_view);
-
-
-
-                // Financeiro Especifico
-                /*if(\Framework\App\Sistema_Funcoes::Perm_Modulos('Financeiro') && $Financeiro_User_Saldo){
-                    $tabela['Funções'][$i]     .=   '<a confirma="O '.$nomedisplay_sing.' realizou um deposito para a empresa?" title="Add quantia ao Saldo do '.$nomedisplay_sing.'" class="btn lajax explicar-titulo" acao="" href="'.URL_PATH.'Financeiro/Admin/financeiro_deposito/'.$valor->id.$linkextra.'"><img border="0" src="'.WEB_URL.'img/icons/cifrao_16x16.png" alt="Depositar"></a>'.
-                                                    '<a confirma="O '.$nomedisplay_sing.' confirmou o saque?" title="Remover Quantia do Saldo do '.$nomedisplay_sing.'" class="btn lajax explicar-titulo" acao="" href="'.URL_PATH.'Financeiro/Admin/financeiro_retirar/'.$valor->id.$linkextra.'"><img border="0" src="'.WEB_URL.'img/icons/cifrao_16x16.png" alt="Retirar"></a>';
-                    $funcoes_qnt = 3;
-                }*/
-
-
-
-                // Comentario de Usuario
-                if(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Comentarios')){
-                    if($funcoes_qnt>2){
-                        $tabela['Funções'][$i]     .=   '<br>';
-                        $funcoes_qnt = 0;
-                    }
-                    ++$funcoes_qnt;
-                    $tabela['Funções'][$i]     .=   $Visual->Tema_Elementos_Btn('Personalizado'   ,Array('Histórico'    ,'usuario/Admin/Usuarios_Comentario/'.$valor->id.$linkextra    ,'','file','inverse'),$perm_comentario);
-                }
-                // Anexo de Usuario
-                if(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Anexo')){
-                    if($funcoes_qnt>2){
-                        $tabela['Funções'][$i]     .=   '<br>';
-                        $funcoes_qnt = 0;
-                    }
-                    ++$funcoes_qnt;
-                    $tabela['Funções'][$i]     .=   $Visual->Tema_Elementos_Btn('Personalizado'   ,Array('Anexos'    ,'usuario/Anexo/Anexar/'.$valor->id.$linkextra    ,'','file','inverse'),$perm_anexo);
-                }
-                // Email para Usuario
-                if(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Admin_Email')){
-                    if($funcoes_qnt>2){
-                        $tabela['Funções'][$i]     .=   '<br>';
-                        $funcoes_qnt = 0;
-                    }
-                    ++$funcoes_qnt;
-                    $tabela['Funções'][$i]     .=   $Visual->Tema_Elementos_Btn('Email'      ,Array('Enviar email para '.$nomedisplay_sing        ,'usuario/Admin/Usuarios_Email/'.$valor->id.$linkextra    ,''),$perm_email);
-                }
-                // Email para Setor
-                if(\Framework\App\Sistema_Funcoes::Perm_Modulos('usuario_mensagem') && $usuario_mensagem_EmailSetor){
-                    if($funcoes_qnt>2){
-                        $tabela['Funções'][$i]     .=   '<br>';
-                        $funcoes_qnt = 0;
-                    }
-                    ++$funcoes_qnt;
-                    $tabela['Funções'][$i]     .=   $Visual->Tema_Elementos_Btn('Personalizado'   ,Array('Enviar email para Setor'    ,'usuario/Admin/Usuarios_Email/'.$valor->id.$linkextra.'/Setor/'    ,'','envelope','danger'),$perm_email);
-                }
-                // Verifica se Possue Status e Mostra
-                if($usuario_Admin_Ativado_Listar!==false){
-                    if($valor->ativado===1 || $valor->ativado==='1'){
-                        $texto = $usuario_Admin_Ativado_Listar[1];
-                        $valor->ativado='1';
-                    }else{
-                        $valor->ativado = '0';
-                        $texto = $usuario_Admin_Ativado_Listar[0];
-                    }
-                    if($funcoes_qnt>2){
-                        $tabela['Funções'][$i]     .=   '<br>';
-                        $funcoes_qnt = 0;
-                    }
-                    ++$funcoes_qnt;
-                    $tabela['Funções'][$i]     .=   '<span id="status'.$valor->id.'">'.$Visual->Tema_Elementos_Btn('Status'.$valor->ativado     ,Array($texto        ,'usuario/Admin/Status/'.$valor->id.'/'    ,''),$perm_status).'</span>';
-                }
-                if($funcoes_qnt>2){
-                    $tabela['Funções'][$i]     .=   '<br>';
-                    $funcoes_qnt = 0;
-                }
-                $funcoes_qnt = $funcoes_qnt+2;
-                $tabela['Funções'][$i]         .=   $Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar '.$nomedisplay_sing        ,$url_editar.'/'.$valor->id.$linkextra.'/'    ,''),$perm_editar).
-                                                    $Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar '.$nomedisplay_sing       ,$url_deletar.'/'.$valor->id.$linkextra     ,'Deseja realmente deletar esse '.$nomedisplay_sing.'?'),$perm_del);
-                ++$i;
-            }
-            
+        }         
         
         $tabela_colunas = Array();
-
-        if($comercio_Produto_Cod){
-            $tabela_colunas[] = '#Cod';
+        $tabela_colunas[] = 'Id';
+        if($Ativado_Grupo===true){
+            $tabela_colunas[] = 'Grupo';
         }
-        if($comercio_marca===true){
-            if($comercio_Produto_Familia=='Familia'){
-                $tabela_colunas[] = 'Familia';
-            }else{
-                $tabela_colunas[] = 'Marca';
-                $tabela_colunas[] = 'Linha';
-            }
+        if($Ativado_Foto===true){
+            $tabela_colunas[] = 'Foto';
         }
+        // Mostra Nome
         $tabela_colunas[] = 'Nome';
 
-        // Coloca Preco
-        if(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Vendas')){
-            $tabela_colunas[] = 'Preço';
+        $tabela_colunas[] = 'Contato';
+
+        $tabela_colunas[] = 'Email';
+
+        // para MOdulos que contem banco
+        if(\Framework\App\Sistema_Funcoes::Perm_Modulos('Financeiro') && $Financeiro_User_Saldo){
+            $tabela_colunas[] = 'Saldo';
         }
 
-        if($comercio_Estoque){
-            $tabela_colunas[] = 'Estoque';
-        }
-        if($comercio_Unidade){
-            $tabela_colunas[] = 'Unidade';
-        }
+        $tabela_colunas[] = 'Data de Cadastro';
         $tabela_colunas[] = 'Funções';
 
-        $this->_Visual->Show_Tabela_DataTable_Massiva($tabela_colunas,'comercio/Produto/Produtos');
+        $this->_Visual->Show_Tabela_DataTable_Massiva($tabela_colunas,$link);
         
         if($ativado===false){
             $titulo = 'Todos os '.$nomedisplay.' (<span id="DataTable_Contador">0</span>)';
@@ -1441,7 +1227,8 @@ class usuario_Controle extends \Framework\App\Controle
         }else{
             $titulo = 'Todos os '.$nomedisplay.' Ativados (<span id="DataTable_Contador">0</span>)';
         }
-        $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',$gravidade,Array("link"=>"comercio/Produto/Produtos_Add",'icon'=>'add','nome'=>'Adicionar Senha'));
+                
+        $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',$gravidade,Array("link"=>$link_add,'icon'=>'add','nome'=>'Adicionar '.Framework\Classes\Texto::Transformar_Plural_Singular($nomedisplay)));
     }
 }
 ?>

@@ -87,7 +87,7 @@ class comercio_ProdutoControle extends comercio_Controle
 
         $this->_Visual->Show_Tabela_DataTable_Massiva($tabela_colunas,'comercio/Produto/Produtos');
         $titulo = 'Listagem de Produtos (<span id="DataTable_Contador">0</span>)';
-        $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',10,Array("link"=>"comercio/Produto/Produtos_Add",'icon'=>'add','nome'=>'Adicionar Senha'));
+        $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',10,Array("link"=>"comercio/Produto/Produtos_Add",'icon'=>'add','nome'=>'Adicionar Produto'));
         
         
         //Carrega Json
