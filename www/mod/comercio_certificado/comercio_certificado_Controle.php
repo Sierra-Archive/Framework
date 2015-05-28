@@ -175,22 +175,9 @@ class comercio_certificado_Controle extends \Framework\App\Controle
     /**
      * Inseri usuarios no Banco de dados
      * 
-     * @name usuarios_inserir
      * @access public static
      * 
      * @global Array $language
-     * 
-     * @post $_POST["categoria"]
-     * @post int $_POST["ano"]
-     * @post $_POST["modelo"]
-     * @post int $_POST["marca"]
-     * @post $_POST["cc"]
-     * @post $_POST["valor1"]
-     * @post $_POST["valor2"]
-     * @post $_POST["valor3"]
-     * @post $_POST["franquia"]
-     * 
-     * @uses usuarios_AdminControl::$usuarios_inserir
      * 
      * @return void
      * 

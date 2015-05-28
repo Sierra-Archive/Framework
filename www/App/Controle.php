@@ -144,9 +144,18 @@ abstract class Controle
             }
         }
     }
-    
+    /**
+     * Envia Email
+     * @param type $texto
+     * @param type $assunto
+     * @param type $email
+     * @param type $nome
+     * @return type
+     */
     public static function Enviar_Email($texto,$assunto='Sem Assunto',$email=false,$nome=false){
         require_once CLASS_PATH . 'Email'.DS.'Email'.'.php';
+        if($email===false) $email = SISTEMA_EMAIL_RECEBER;
+        if($nome===false) $nome = 'Administrador';
         $mailer = new \Framework\Classes\Email();
         $send	= $mailer->setTo($email, $nome)
                     ->setSubject($assunto.' - '.SISTEMA_NOME)
@@ -156,6 +165,104 @@ abstract class Controle
                     ->setMessage($texto)
                     ->setWrap(78)->send();
         return $send;
+    }
+    /**
+     * Envia Email com ANexo para um Usuario do SIstema
+     * 
+     * @param type $id
+     * @param type $arquivo
+     * @param type $nomearquivo
+     */
+    protected function Enviar_Email_Anexo($id,$arquivo,$nomearquivo){
+        $arquivo = \anti_injection($arquivo);
+        $nomearquivo = \anti_injection($nomearquivo);
+        // Envia Email
+        $usuario = $this->_Modelo->db->Sql_Select('Usuario',Array('id'=>$id),1);
+        $nome = $usuario->nome;
+        // Add Email normal e alternativo para enviar 
+        
+        
+        // NOVO SEND
+        $mail = new \Framework\Classes\Mailer();
+        $mail->isSMTP();                                      // Set mailer to use SMTP
+        $mail->Host         = SIS_EMAIL_SMTP_HOST;  // Specify main and backup server
+        $mail->SMTPAuth     = true;                               // Enable SMTP authentication
+        $mail->Username     = SIS_EMAIL_SMTP_USER;                            // SMTP username
+        $mail->Password     = SIS_EMAIL_SMTP_SENHA;                           // SMTP password
+        $mail->SMTPSecure   = 'tls';                            // Enable encryption, 'ssl' also accepted
+
+        $mail->From = SISTEMA_EMAIL;
+        $mail->FromName = SISTEMA_NOME;
+        
+        $enviar = '';
+        if($usuario->email!='' && \Framework\App\Sistema_Funcoes::Control_Layoult_Valida_Email($usuario->email)){
+            $enviar .= $usuario->email.'-';
+            $mail->addAddress($usuario->email, $nome);  // Add a recipient
+        }
+        if($usuario->email2!='' && \Framework\App\Sistema_Funcoes::Control_Layoult_Valida_Email($usuario->email2)){
+            $enviar .= $usuario->email2.'-';
+            $mail->addAddress($usuario->email2, $nome);  // Add a recipient
+        }
+        if($enviar==''){
+            $mensagens = array(
+                "tipo" => 'erro',
+                "mgs_principal" => 'Erro',
+                "mgs_secundaria" => 'Nenhum Email válido do cliente para enviar anexo !'
+            );
+            $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens); 
+            $this->_Visual->Json_Info_Update('Historico', false);
+            $this->Json_Definir_zerar(false);
+        }else{
+            $amensagem = '<strong><b>Arquivo em Anexo:</b> '.  $nomearquivo.'</strong>';
+            // Enviar Email 
+            
+            
+            // Continua Mandando
+            /*$mail->addReplyTo('info@example.com', 'Information');
+            $mail->addCC('cc@example.com');
+            $mail->addBCC('bcc@example.com');*/
+
+            $mail->WordWrap     = 50;                                 // Set word wrap to 50 characters
+            $mail->addAttachment(ARQ_PATH.$arquivo, $nomearquivo);    // Optional name
+            $mail->isHTML(true);                                  // Set email format to HTML
+
+            $mail->Subject      = 'Anexo de Chamado - '.SISTEMA_NOME;
+            $mail->Body         = $amensagem;
+            $mail->AltBody      = 'Arquivo em Anexo';
+            /*
+            if(!$mail->send()) {
+               echo 'Message could not be sent.';
+               echo 'Mailer Error: ' . $mail->ErrorInfo;
+               exit;
+            }
+            echo 'Message has been sent';
+            
+            
+            eval('$send	= $mailer'.$enviar.'->setSubject(\'\')'.
+            '->setFrom(SISTEMA_EMAIL, SISTEMA_NOME)'.
+            '->addGenericHeader(\'X-Mailer\', \'PHP/\' . phpversion())'.
+            '->addGenericHeader(\'Content-Type\', \'text/html; charset="utf-8"\')'.
+            '->addAttachment(\''.ARQ_PATH.$arquivo.'\',\''.$nomearquivo.'\')'.
+            '->setMessage(\''.$amensagem.'\')'.
+            '->setWrap(100)->send();');*/
+            if($mail->send()){
+                $mensagens = array(
+                    "tipo" => 'sucesso',
+                    "mgs_principal" => 'Anexo enviado com Sucesso',
+                    "mgs_secundaria" => 'Voce enviou um Anexo com sucesso.'
+                );
+                $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens); 
+                $this->_Visual->Json_Info_Update('Titulo','Enviado com Sucesso.');
+            }else{
+                $mensagens = array(
+                    "tipo" => 'erro',
+                    "mgs_principal" => 'Erro',
+                    "mgs_secundaria" => 'Email não foi enviado !'
+                );
+                $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens); 
+                $this->_Visual->Json_Info_Update('Titulo','Erro ao Enviar.');
+            }
+        }
     }
     /**
      * Trava o Código e para de Executar tudo

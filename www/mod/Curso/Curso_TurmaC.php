@@ -733,6 +733,8 @@ class Curso_TurmaControle extends Curso_Controle
         }
         $id         = (int) $id;
         $usuarioid  = $this->_Acl->Usuario_GetID();
+        $usuarionome  = $this->_Acl->Usuario_GetNome();
+        $usuarioemail  = $this->_Acl->Usuario_GetEmail();
         
         // Carrega Turma
         $turma_registro = $this->_Modelo->db->Sql_Select('Curso_Turma','{sigla}id=\''.$id.'\'',1);
@@ -816,6 +818,18 @@ class Curso_TurmaControle extends Curso_Controle
                 APP_DATA_BR // Data Inicial
                 //(int) $_POST["categoria"]                     // Categoria
             );
+            
+            // Envia Email pro Sistema
+            $texto =    'Nova Inscrição na Turma: '.$turma_registro->nome.'<br>'.
+                        'Id do Aluno: #'.$usuarioid.'<br>';
+                        'Nome do Aluno: '.$usuarionome.'<br>';
+                        'Email do Aluno: '.$turma_registro->nome.'<br>';
+            self::Enviar_Email($texto, $sucesso2);
+            // Envia Email pro Usuario
+            $texto =    'Nova Inscrição na Turma '.$turma_registro->nome.' confirmada com sucesso.<br>'.
+                        'Valor da Inscrição: '.$curso_registro->valor.'<br>'.
+                        '<a target="_BLANK" href="'.SISTEMA_URL.SISTEMA_DIR.'Financeiro/Usuario/Pagar">Clique para Acessar a área de pagamento.</a><br>';
+            self::Enviar_Email($texto, $sucesso2,$usuarioemail,$usuarionome);
         }
         
         

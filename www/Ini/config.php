@@ -65,6 +65,17 @@ if(!defined('SIS_EMAIL_SMTP_USER')){
 if(!defined('SIS_EMAIL_SMTP_SENHA')){
     define('SIS_EMAIL_SMTP_SENHA'           , 'rds123');
 }
+if(!defined('SISTEMA_EMAIL')){
+    define('SISTEMA_EMAIL'                  , 'contato@ricardosierra.com.br');
+}
+if(!defined('SISTEMA_EMAIL_RECEBER')){
+    define('SISTEMA_EMAIL_RECEBER'          , 'sierra.csi@gmail.com');
+}
+// Recebe os Erros do Sistema
+if(!defined('SISTEMA_EMAIL_ADMINISTRADOR')){
+    define('SISTEMA_EMAIL_ADMINISTRADOR'          , 'sierra.csi@gmail.com');
+}
+
 
 
 if(!defined('ROOT')){

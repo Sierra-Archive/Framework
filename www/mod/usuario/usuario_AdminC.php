@@ -374,7 +374,6 @@ class usuario_AdminControle extends usuario_Controle
     /**
      * Inseri usuarios no Banco de dados
      * 
-     * @name usuarios_inserir
      * @access public
      * 
      * @global Array $language
@@ -388,8 +387,6 @@ class usuario_AdminControle extends usuario_Controle
      * @post $_POST["valor2"]
      * @post $_POST["valor3"]
      * @post $_POST["franquia"]
-     * 
-     * @uses usuarios_AdminControl::$usuarios_inserir
      * 
      * @return void
      * 

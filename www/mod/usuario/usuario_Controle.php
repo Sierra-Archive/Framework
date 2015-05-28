@@ -1403,35 +1403,45 @@ class usuario_Controle extends \Framework\App\Controle
                 ++$i;
             }
             
-            // SE tiver opcao de exportar, exporta e trava o sistema
-            if($export!==false){
-                self::Export_Todos($export,$tabela, $nomedisplay);
+        
+        $tabela_colunas = Array();
+
+        if($comercio_Produto_Cod){
+            $tabela_colunas[] = '#Cod';
+        }
+        if($comercio_marca===true){
+            if($comercio_Produto_Familia=='Familia'){
+                $tabela_colunas[] = 'Familia';
             }else{
-                // Imprime a tabela
-                $this->_Visual->Show_Tabela_DataTable(
-                    $tabela,     // Array Com a Tabela
-                    '',          // style extra
-                    true,        // true -> Add ao Bloco, false => Retorna html
-                    true,        // Apagar primeira coluna ?
-                    Array(       // Ordenacao
-                        Array(
-                            0,'desc'
-                        )
-                    )
-                );
+                $tabela_colunas[] = 'Marca';
+                $tabela_colunas[] = 'Linha';
             }
-            unset($tabela);
-        }else{          
-            $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum '.$nomedisplay_sing.'</font></b></center>');
         }
+        $tabela_colunas[] = 'Nome';
+
+        // Coloca Preco
+        if(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Vendas')){
+            $tabela_colunas[] = 'Preço';
+        }
+
+        if($comercio_Estoque){
+            $tabela_colunas[] = 'Estoque';
+        }
+        if($comercio_Unidade){
+            $tabela_colunas[] = 'Unidade';
+        }
+        $tabela_colunas[] = 'Funções';
+
+        $this->_Visual->Show_Tabela_DataTable_Massiva($tabela_colunas,'comercio/Produto/Produtos');
+        
         if($ativado===false){
-            $titulo = 'Todos os '.$nomedisplay.' ('.$i.')';
+            $titulo = 'Todos os '.$nomedisplay.' (<span id="DataTable_Contador">0</span>)';
         }elseif($ativado==0){
-            $titulo = 'Todos os '.$nomedisplay.' Desativados ('.$i.')';
+            $titulo = 'Todos os '.$nomedisplay.' Desativados (<span id="DataTable_Contador">0</span>)';
         }else{
-            $titulo = 'Todos os '.$nomedisplay.' Ativados ('.$i.')';
+            $titulo = 'Todos os '.$nomedisplay.' Ativados (<span id="DataTable_Contador">0</span>)';
         }
-        $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',$gravidade);
+        $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',$gravidade,Array("link"=>"comercio/Produto/Produtos_Add",'icon'=>'add','nome'=>'Adicionar Senha'));
     }
 }
 ?>

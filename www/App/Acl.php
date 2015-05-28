@@ -668,6 +668,20 @@ class Acl{
         $id = (int) $this->logado_usuario->id;
         return $id;
     }
+    public function Usuario_GetNome(){
+        if(!isset($this->logado_usuario) || $this->logado===false){
+            return 0;
+        }
+        $nome = $this->logado_usuario->nome;
+        return $nome;
+    }
+    public function Usuario_GetEmail(){
+        if(!isset($this->logado_usuario) || $this->logado===false){
+            return 0;
+        }
+        $email = $this->logado_usuario->email;
+        return $email;
+    }
     
     /**
      * Retorna id do Usuario
