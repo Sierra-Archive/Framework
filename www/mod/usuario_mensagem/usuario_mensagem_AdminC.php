@@ -48,32 +48,27 @@ class usuario_mensagem_AdminControle extends usuario_mensagem_Controle
         self::Mensagem_Editar_Static($mensagem);
     }
     static function Mensagem_Editar_Static($mensagem){
-        GLOBAL $language;
-        $registro = &\Framework\App\Registro::getInstacia();
-        $Controle = $registro->_Controle;
-        $Modelo = $registro->_Modelo;
-        $Visual = $registro->_Visual;
         $mensagem = (int) $mensagem;
         usuario_mensagem_SuporteControle::Endereco_Suporte_Listar(true,$mensagem);
-        $Controle->Tema_Endereco('Editar Chamado');
+  
         // Carrega campos e retira os que nao precisam
-        $campos = usuario_mensagem_DAO::Get_Colunas();
-
+        $campos = Usuario_Mensagem_DAO::Get_Colunas();
         usuario_mensagem_Controle::Campos_deletar($campos);
         // Chama Objeto Mensagem
-        $objeto = $Modelo->db->Sql_Select('Usuario_Mensagem', Array('id'=>$mensagem));
+        $editar = $Modelo->db->Sql_Select('Usuario_Mensagem', 'id=\''.$mensagem.'\'');
         //Atualiza Nome para nao dar erro
-        if($objeto->para_nome=='') $objeto->para_nome='Suporte';
-        self::mysql_AtualizaValores($campos, $objeto);
-        // Carrega formulario
-        $form = new \Framework\Classes\Form('form_Usuario_Mensagem_Suporte', 'usuario_mensagem/Suporte/Mensagem_inserir/', 'formajax');
-        \Framework\App\Controle::Gerador_Formulario($campos, $form);
-        $formulario = $form->retorna_form('Editar');
-        $Visual->Blocar($formulario);
-        // Mostra Conteudo
-        $Visual->Bloco_Unico_CriaJanela('Edição de Ticket');
-        // Pagina Config
-        $Visual->Json_Info_Update('Titulo', 'Editar Ticket');
+        if($editar->para_nome=='') $editar->para_nome='Suporte';
+
+        
+        // Carrega Config
+        $titulo1    = 'Editar Ticket (#'.$id.')';
+        $titulo2    = 'Edição de Ticket';
+        $formid     = 'form_Usuario_Mensagem_Suporte';
+        $formbt     = 'Alterar Edição';
+        $formlink   = 'usuario_mensagem/Suporte/Mensagem_inserir';
+        $editar     = $editar;
+        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos,$editar);
+   
     }
     /**
      * 

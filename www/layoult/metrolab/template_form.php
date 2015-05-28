@@ -24,7 +24,7 @@
     </div>
     
 <?php }else if($params['Tipo']==='Input'){ ?>
-    <?php if(isset($params['Opcao']['Tipo']) && $params['Opcao']['Tipo']==='hidden'){ ?>
+    <?php if(isset($params['Opcao']['tipo']) && $params['Opcao']['tipo']==='hidden'){ ?>
         <input type="hidden"<?php if($params['Opcao']['max_caracteres']!==false && is_int($params['Opcao']['max_caracteres'])){ echo ' MAXLENGTH="'.$params['Opcao']['max_caracteres'].'"'; } ?> value="<?php echo $params['Opcao']['valor']; ?>" id="<?php echo $params['Opcao']['id']; ?>" name="<?php echo $params['Opcao']['nome']; ?>"<?php if($params['Opcao']['class']!=''){ if($params['Opcao']['somenteleitura']===false){ ?> class="<?php echo $params['Opcao']['class']; ?>"<?php }else{ ?> class="inactive <?php echo $params['Opcao']['class']; ?>"<?php } }else if($params['Opcao']['somenteleitura']===true){ ?> class="inactive" <?php } if($params['Opcao']['somenteleitura']===true){ ?> readonly=""<?php } ?>/>
     <?php }else{ ?>
         <div class="form-group"<?php if($params['Opcao']['escondido']!==false){ ?> id="<?php echo $params['Opcao']['id']; ?>_escondendo"<?php } if($params['Opcao']['escondido']==='apagado'){ ?> style="display: none;"<?php } ?>>

@@ -202,27 +202,22 @@ class usuario_mensagem_Controle extends \Framework\App\Controle
         }
     }
     static function Mensagem_formulario_Static($cliente=0){
-        GLOBAL $language;
-        $registro = &\Framework\App\Registro::getInstacia();
-        $Visual = $registro->_Visual;
         // Carrega campos e retira os que nao precisam
-        $campos = usuario_mensagem_DAO::Get_Colunas();
+        $campos = Usuario_Mensagem_DAO::Get_Colunas();
         self::Campos_deletar($campos);
         if($cliente!=0) self::mysql_AtualizaValor($campos, 'cliente',$cliente);
-        // Carrega formulario
-        $form = new \Framework\Classes\Form('form_Usuario_Mensagem_Suporte','usuario_mensagem/Suporte/Mensagem_inserir/','formajax');
-        \Framework\App\Controle::Gerador_Formulario($campos, $form);
-        $formulario = $form->retorna_form('Enviar');
-        $Visual->Blocar($formulario);
-        // Mostra Conteudo
-        $Visual->Bloco_Unico_CriaJanela('Cadastro de Ticket');
+        
         // Pagina Config
-        $Visual->Json_Info_Update('Titulo','Enviar Ticket');
+        $titulo1    = 'Cadastro de Ticket';
+        $titulo2    = 'Enviar Ticket';
+        $formid     = 'form_Usuario_Mensagem_Suporte';
+        $formbt     = 'Salvar';
+        $formlink   = 'usuario_mensagem/Suporte/Mensagem_inserir';
+        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos);
+    
     }
     public function Mensagem_formulario($cliente=0){
         usuario_mensagem_SuporteControle::Endereco_Suporte(true);
-        $this->Tema_Endereco('Abrir Chamado');
-        
         self::Mensagem_formulario_Static($cliente);
     }
     public function Resposta_formulario($mensagemid){
@@ -238,16 +233,23 @@ class usuario_mensagem_Controle extends \Framework\App\Controle
     }
     /**
      * Formulario Suporter - Inserir Mensagem de FOrmulario
-     * @global type $language
      */
     public function Mensagem_inserir(){
-        global $language;
         $paranome = \anti_injection($_POST["paranome"]);
         $paraid = (int) $_POST["paraid"];
         $assunto = \anti_injection($_POST["assunto"]);
-        $mensagem = \anti_injection($_POST["mensagem"]);
-        // Grava E Recupera
-        $sucesso    =  $this->_Modelo->Mensagem_inserir($paraid,$paranome,$assunto,$mensagem);
+        
+        
+        $sucesso =  $this->db->Sql_Inserir($objeto);
+        $titulo     = 'Mensagem inserida com Sucesso';
+        $dao        = 'Usuario_Mensagem';
+        $funcao     = false;
+        $sucesso1   = 'Mensagem inserida com Sucesso';
+        $sucesso2   = 'Solicitação de '.\anti_injection($_POST["paranome"]).' foi enviada com sucesso';
+        $alterar    = Array('escritor'=>\Framework\App\Acl::Usuario_GetID_Static(),'escritor_nome'=>$this->_Acl->logado_usuario->nome);
+        $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);  
+        
+        
         $identificador  = $this->_Modelo->db->Sql_Select('Usuario_Mensagem', Array(),1,'id DESC');
         // REcria Mensagem
         $mensagem = '<b>Cliente: </b>'.     $identificador->cliente2.
@@ -282,20 +284,6 @@ class usuario_mensagem_Controle extends \Framework\App\Controle
         '->addGenericHeader(\'Content-Type\', \'text/html; charset="utf-8"\')'.
         '->setMessage(\'<strong><b>Mensagem:</b> \'.$mensagem.\'</strong>\')'.
         '->setWrap(78)->send();');
-        if($sucesso===true && $send){
-            $mensagens = array(
-                "tipo" => 'sucesso',
-                "mgs_principal" => 'Mensagem inserida com Sucesso',
-                "mgs_secundaria" => $mensagem
-            );
-        }else{
-            $mensagens = array(
-                "tipo" => 'erro',
-                "mgs_principal" => $language['mens_erro']['erro'],
-                "mgs_secundaria" => $language['mens_erro']['erro']
-            );
-        }
-        $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
         //atualiza
         $this->VisualizadordeMensagem($identificador->id);
     }

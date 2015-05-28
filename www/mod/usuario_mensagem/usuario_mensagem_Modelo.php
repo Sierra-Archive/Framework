@@ -154,19 +154,6 @@ class usuario_mensagem_Modelo extends \Framework\App\Modelo
      * @param type $mensagem
      * @return int
     */
-    public function Mensagem_inserir($para,$para_nome,$assunto,$mensagem){
-        // Cria nova Mensagem
-        $objeto = new usuario_mensagem_DAO;
-        \Framework\App\Controle::mysql_AtualizaValores($objeto);
-        $objeto->escritor      = \Framework\App\Acl::Usuario_GetID_Static();
-        $objeto->escritor_nome = $this->_Acl->logado_usuario->nome;
-        $objeto->para          = $para;
-        $objeto->para_nome     = $para_nome;
-        $objeto->assunto       = $assunto;
-        $objeto->mensagem      = $mensagem;
-        $sucesso =  $this->db->Sql_Inserir($objeto);
-        return $sucesso;
-    }
     public function Mensagem_Resp_Inserir($mensagem,$resposta_mgs){
         // Quatnidade de respostas
         $ordem = 0;
