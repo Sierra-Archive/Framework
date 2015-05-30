@@ -49,7 +49,6 @@ class usuario_mensagem_RelatorioControle extends usuario_mensagem_Controle
         
         self::Endereco_Relatorio(false);
         
-        //Seguranca
         if($tipo_relatorio!='Aberto' && $tipo_relatorio!='Assunto' && $tipo_relatorio!='Esgotado' && $tipo_relatorio!='Finalizado' && $tipo_relatorio!='Origem' && $tipo_relatorio!='Produto' && $tipo_relatorio!='Qtd_Cidade' && $tipo_relatorio!='Qtd_Uf'){
             $tipo_relatorio='Aberto';
         }

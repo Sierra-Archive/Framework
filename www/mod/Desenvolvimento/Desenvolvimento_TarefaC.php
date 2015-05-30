@@ -1,5 +1,5 @@
 <?php
-class projeto_TarefaControle extends projeto_Controle
+class Desenvolvimento_TarefaControle extends Desenvolvimento_Controle
 {
     /**
     * Construtor
@@ -7,8 +7,8 @@ class projeto_TarefaControle extends projeto_Controle
     * @name __construct
     * @access public
     * 
-    * @uses projeto_ListarModelo Carrega projeto Modelo
-    * @uses projeto_ListarVisual Carrega projeto Visual
+    * @uses Desenvolvimento_ListarModelo Carrega projeto Modelo
+    * @uses Desenvolvimento_ListarVisual Carrega projeto Visual
     * 
     * @return void
     * 
@@ -20,7 +20,7 @@ class projeto_TarefaControle extends projeto_Controle
     }
     protected function Endereco_Tarefa($true=true){
         if($true===true){
-            $this->Tema_Endereco('Tarefas','projeto/Tarefa/Tarefas');
+            $this->Tema_Endereco('Tarefas','Desenvolvimento/Tarefa/Tarefas');
         }else{
             $this->Tema_Endereco('Tarefas');
         }
@@ -31,7 +31,7 @@ class projeto_TarefaControle extends projeto_Controle
     * @name Main
     * @access public
     * 
-    * @uses projeto_Controle::$projetoPerfil
+    * @uses Desenvolvimento_Controle::$projetoPerfil
     * 
     * @return void
     * 
@@ -57,8 +57,8 @@ class projeto_TarefaControle extends projeto_Controle
             $tabela['Fk - SubMód'][$i]  =   $valor->framework_submodulo;
             $tabela['Fk - Mét'][$i]     =   $valor->framework_metodo;
             $tabela['Descrição'][$i]    =   $valor->descricao;
-            $tabela['Funções'][$i]      =   $Visual->Tema_Elementos_Btn('Editar'          ,Array('Editar Tarefa'        ,'projeto/Tarefa/Tarefas_Edit/'.$valor->id.'/'    ,'')).
-                                            $Visual->Tema_Elementos_Btn('Deletar'         ,Array('Deletar Tarefa'       ,'projeto/Tarefa/Tarefas_Del/'.$valor->id.'/'     ,'Deseja realmente deletar esse Tarefa ?'));
+            $tabela['Funções'][$i]      =   $Visual->Tema_Elementos_Btn('Editar'          ,Array('Editar Tarefa'        ,'Desenvolvimento/Tarefa/Tarefas_Edit/'.$valor->id.'/'    ,'')).
+                                            $Visual->Tema_Elementos_Btn('Deletar'         ,Array('Deletar Tarefa'       ,'Desenvolvimento/Tarefa/Tarefas_Del/'.$valor->id.'/'     ,'Deseja realmente deletar esse Tarefa ?'));
             ++$i;
         }
         return Array($tabela,$i);
@@ -75,18 +75,18 @@ class projeto_TarefaControle extends projeto_Controle
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
             Array(
                 'Adicionar Tarefa',
-                'projeto/Tarefa/Tarefas_Add',
+                'Desenvolvimento/Tarefa/Tarefas_Add',
                 ''
             ),
             Array(
                 'Print'     => true,
                 'Pdf'       => true,
                 'Excel'     => true,
-                'Link'      => 'projeto/Tarefa/Tarefas',
+                'Link'      => 'Desenvolvimento/Tarefa/Tarefas',
             )
         )));
         // Query
-        $projetos = $this->_Modelo->db->Sql_Select('Projeto_Tarefa');
+        $projetos = $this->_Modelo->db->Sql_Select('Desenvolvimento_Projeto_Tarefa');
         if($projetos!==false && !empty($projetos)){
             list($tabela,$i) = self::Tarefas_Tabela($projetos);
             if($export!==false){
@@ -126,8 +126,8 @@ class projeto_TarefaControle extends projeto_Controle
         $titulo2    = 'Salvar Tarefa';
         $formid     = 'form_Sistema_Admin_Tarefas';
         $formbt     = 'Salvar';
-        $formlink   = 'projeto/Tarefa/Tarefas_Add2/';
-        $campos = Projeto_Tarefa_DAO::Get_Colunas();
+        $formlink   = 'Desenvolvimento/Tarefa/Tarefas_Add2/';
+        $campos = Desenvolvimento_Projeto_Tarefa_DAO::Get_Colunas();
         \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos);
     }
     /**
@@ -139,7 +139,7 @@ class projeto_TarefaControle extends projeto_Controle
      */
     public function Tarefas_Add2(){
         $titulo     = 'Tarefa Adicionada com Sucesso';
-        $dao        = 'Projeto_Tarefa';
+        $dao        = 'Desenvolvimento_Projeto_Tarefa';
         $funcao     = '$this->Tarefas();';
         $sucesso1   = 'Inserção bem sucedida';
         $sucesso2   = 'Tarefa cadastrada com sucesso.';
@@ -159,9 +159,9 @@ class projeto_TarefaControle extends projeto_Controle
         $titulo2    = 'Alteração de Tarefa';
         $formid     = 'form_Sistema_AdminC_TarefaEdit';
         $formbt     = 'Alterar Tarefa';
-        $formlink   = 'projeto/Tarefa/Tarefas_Edit2/'.$id;
-        $editar     = Array('Projeto_Tarefa',$id);
-        $campos = Projeto_Tarefa_DAO::Get_Colunas();
+        $formlink   = 'Desenvolvimento/Tarefa/Tarefas_Edit2/'.$id;
+        $editar     = Array('Desenvolvimento_Projeto_Tarefa',$id);
+        $campos = Desenvolvimento_Projeto_Tarefa_DAO::Get_Colunas();
         \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos,$editar);
     }
     /**
@@ -173,7 +173,7 @@ class projeto_TarefaControle extends projeto_Controle
      */
     public function Tarefas_Edit2($id){
         $titulo     = 'Tarefa Editada com Sucesso';
-        $dao        = Array('Projeto_Tarefa',$id);
+        $dao        = Array('Desenvolvimento_Projeto_Tarefa',$id);
         $funcao     = '$this->Tarefas();';
         $sucesso1   = 'Tarefa Alterada com Sucesso.';
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
@@ -192,7 +192,7 @@ class projeto_TarefaControle extends projeto_Controle
         
     	$id = (int) $id;
         // Puxa linha e deleta
-        $linha = $this->_Modelo->db->Sql_Select('Projeto_Tarefa', Array('id'=>$id));
+        $linha = $this->_Modelo->db->Sql_Select('Desenvolvimento_Projeto_Tarefa', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($linha);
         // Mensagem
     	if($sucesso===true){

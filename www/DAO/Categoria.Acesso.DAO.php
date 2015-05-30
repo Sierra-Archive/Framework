@@ -149,7 +149,7 @@ final Class Categoria_Acesso_DAO extends Framework\App\Dao
                 'chave_nome'=>  'Informátivos',              
                 'chave'     =>  'predial_Informativo',
              ),
-            'predial|Salao'           => Array(                
+            'predial|Salao'                 => Array(                
                 'nome'      =>  'Tipo de Local de Reserva',  
                 'chave_nome'=>  'Locais de Reserva',              
                 'chave'     =>  'predial_Salao',
@@ -160,15 +160,20 @@ final Class Categoria_Acesso_DAO extends Framework\App\Dao
                 'chave'     =>  'predial_Veiculo',
              ),
             // Modulos de Projetos
-            'projeto'                       => Array(                
+            'Desenvolvimento'               => Array(                
                 'nome'      =>  'Tipo de Projeto',   
                 'chave_nome'=>  'Projetos',             
                 'chave'     =>  'projeto',
              ),
-            'projeto|Tarefa'                       => Array(                
+            'Desenvolvimento|Tarefa'        => Array(                
                 'nome'      =>  'Tipo de Tarefas de Projetos',   
                 'chave_nome'=>  'Tarefas de Projetos',             
-                'chave'     =>  'projeto_Tarefa',
+                'chave'     =>  'Desenvolvimento_Tarefa',
+             ),
+            'Desenvolvimento|Senha'         => Array(                
+                'nome'      =>  'Tipo de Senhas',   
+                'chave_nome'=>  'Senhas',             
+                'chave'     =>  'Desenvolvimento_Senha',
              ),
             // Modulos de Usuario
             'usuario|grupo'       => Array(                
@@ -209,12 +214,6 @@ final Class Categoria_Acesso_DAO extends Framework\App\Dao
                 'nome'      =>  'Tipo de Fornecedor', 
                 'chave_nome'=>  'Fornecedores',               
                 'chave'     =>  'Transporte_Fornecedor',
-             ),
-            // Modulos de Noticias
-            'Seguranca'                       => Array(                
-                'nome'      =>  'Tipo de Segurança',   
-                'chave_nome'=>  'Segurança',             
-                'chave'     =>  'Seguranca',
              ),
         );
     }

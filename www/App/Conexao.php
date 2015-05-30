@@ -302,7 +302,6 @@ final class Conexao
      * Unknown column 'foto' in 'field list'
      * Unknown column 'login' in 'where clause'
      * Unknown column 'C.local' in 'on clause'
-     * Table 'Projeto_Framework.social' doesn't exist
      * <Exemplos> De erros sem Reparaçaão Automatica
      * You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'ANDD senha='e10adc3949ba59abbe56e057f20f883e' AND ativado='1'' at line 1
      * 

@@ -1,5 +1,6 @@
 <?php
-class projeto_Controle extends \Framework\App\Controle {
+class Desenvolvimento_Modelo extends \Framework\App\Modelo
+{
     public function __construct(){
         parent::__construct();
     } 

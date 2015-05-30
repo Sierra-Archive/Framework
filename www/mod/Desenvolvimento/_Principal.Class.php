@@ -1,5 +1,5 @@
 <?php
-class Seguranca_Principal implements PrincipalInterface
+class Desenvolvimento_Principal implements PrincipalInterface
 {
     /**
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>

@@ -1,6 +1,6 @@
 <?php
 
-final Class Projeto_Tarefa_DAO extends Framework\App\Dao 
+final Class Desenvolvimento_Projeto_Tarefa_DAO extends Framework\App\Dao 
 {
     protected $id;
     protected $categoria;
@@ -13,7 +13,7 @@ final Class Projeto_Tarefa_DAO extends Framework\App\Dao
 
 
     protected static $objetocarregado     = false;     protected static $mysql_colunas       = false;     protected static $mysql_outside       = Array();     protected static $mysql_inside        = Array(); public function __construct() {  parent::__construct(); } public static function Get_Nome(){
-        return MYSQL_PROJETO_TAREFA;
+        return MYSQL_DESENVOLVIMENTO_TAREFA;
     }
     /**
      * Fornece Permissão de Copia da tabela
@@ -23,7 +23,7 @@ final Class Projeto_Tarefa_DAO extends Framework\App\Dao
         return false;
     }
     public static function Get_Sigla(){
-        return 'PF';
+        return 'DPF';
     }
     public static function Get_Engine(){
         return 'InnoDB';
@@ -60,13 +60,13 @@ final Class Projeto_Tarefa_DAO extends Framework\App\Dao
                 'mysql_null'        => true, // true NULL, false, NOT NULL
                 'mysql_default'     => false,//false -> NONE, outro -> default
                 'mysql_primary'     => false, // chave primaria
-                'mysql_estrangeira' => 'C.id|C.nome|CA.mod_acc=projeto_Tarefa', // chave estrangeira     ligacao|apresentacao|condicao
+                'mysql_estrangeira' => 'C.id|C.nome|CA.mod_acc=Desenvolvimento_Tarefa', // chave estrangeira     ligacao|apresentacao|condicao
                 'mysql_autoadd'     => false,
                 'mysql_comment'     => false,
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'         => 'categoria/Admin/Categorias_Add/projeto_Tarefa', //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => 'categoria/Admin/Categorias_Add/Desenvolvimento_Tarefa', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
                     'Nome'              => 'Categoria da Tarefa',
                     'valor_padrao'      => false,

@@ -1,5 +1,5 @@
 <?php
-final Class Seguranca_Senha_DAO extends Framework\App\Dao 
+final Class Desenvolvimento_Senha_DAO extends Framework\App\Dao 
 {
     protected $id;
     protected $usuario;
@@ -11,7 +11,7 @@ final Class Seguranca_Senha_DAO extends Framework\App\Dao
     protected $status;
     protected $obs;
     protected static $objetocarregado     = false;     protected static $mysql_colunas       = false;     protected static $mysql_outside       = Array();     protected static $mysql_inside        = Array(); public function __construct() {  parent::__construct(); } public static function Get_Nome(){
-        return MYSQL_SEGURANCA_SENHA;
+        return MYSQL_DESENVOLVIMENTO_SENHA;
     }
     /**
      * Fornece Permissão de Copia da tabela
@@ -84,13 +84,13 @@ final Class Seguranca_Senha_DAO extends Framework\App\Dao
                 'mysql_null'        => true, // true NULL, false, NOT NULL
                 'mysql_default'     => false,//false -> NONE, outro -> default
                 'mysql_primary'     => false, // chave primaria
-                'mysql_estrangeira' => 'C.id|C.nome|CA.mod_acc=Seguranca', // chave estrangeira     ligacao|apresentacao|condicao
+                'mysql_estrangeira' => 'C.id|C.nome|CA.mod_acc=Desenvolvimento_Senha', // chave estrangeira     ligacao|apresentacao|condicao
                 'mysql_autoadd'     => false,
                 'mysql_comment'     => false,
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'         => 'categoria/Admin/Categorias_Add/Seguranca', //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => 'categoria/Admin/Categorias_Add/Desenvolvimento_Senha', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
                     'Nome'              => 'Tipo de Senha',
                     'valor_padrao'      => false,

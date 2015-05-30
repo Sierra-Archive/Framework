@@ -1,13 +1,13 @@
 <?php
 
-final Class Framework_Metodo_DAO extends Framework\App\Dao 
+final Class Desenvolvimento_Framework_Metodo_DAO extends Framework\App\Dao 
 {
     protected $id;
     protected $nome;
     protected $submodulo;
     
     protected static $objetocarregado     = false;     protected static $mysql_colunas       = false;     protected static $mysql_outside       = Array();     protected static $mysql_inside        = Array(); public function __construct() {  parent::__construct(); } public static function Get_Nome(){
-        return MYSQL_FRAMEWORK_METODO;
+        return MYSQL_DESENVOLVIMENTO_FRAMEWORK_METODO;
     }
     /**
      * Fornece Permissão de Copia da tabela

@@ -287,22 +287,6 @@ if(  !defined('MYSQL_UNIVERSAL_VIVO_CPF')){
     define('MYSQL_UNIVERSAL_VIVO_CPF'                       , 'Universal_Vivo_Cpf');
 }
 
-// PROJETOS
-if(  !defined('MYSQL_PROJETO_TAREFA')){
-    define('MYSQL_PROJETO_TAREFA'                       , 'Projeto_Tarefa');
-}
-if(  !defined('MYSQL_FRAMEWORK_MODULOS')){
-    define('MYSQL_FRAMEWORK_MODULOS'                    , 'Framework_Modulos');
-}
-if(  !defined('MYSQL_FRAMEWORK_SUBMODULO')){
-    define('MYSQL_FRAMEWORK_SUBMODULO'                  , 'Framework_SubModulos');
-}
-if(  !defined('MYSQL_FRAMEWORK_METODO')){
-    define('MYSQL_FRAMEWORK_METODO'                     , 'Framework_Metodos');
-}
-if(  !defined('MYSQL_FRAMEWORK_MODULO_CONFIG')){
-    define('MYSQL_FRAMEWORK_MODULO_CONFIG'              , 'Framework_Modulo_Config');
-}
 if(  !defined('MYSQL_LOG_FALHA')){
     define('MYSQL_LOG_LOGIN_FALHA'                      , 'Log_Login_Falha');
 }
@@ -643,12 +627,6 @@ if(!defined('MYSQL_USUARIO_AGENDA_PASTA')){
     define('MYSQL_USUARIO_AGENDA_PASTA',         'Agenda_Pasta');
 } if(!defined('MYSQL_USUARIO_AGENDA_PASTA_COR')){
     define('MYSQL_USUARIO_AGENDA_PASTA_COR',     'Agenda_Pasta_Cor');
-} if(!defined('MYSQL_PROJ')){
-    define('MYSQL_PROJ',                         'Projeto');
-} if(!defined('MYSQL_PROJETO_COMENTARIO')){
-    define('MYSQL_PROJETO_COMENTARIO',           'Projeto_Comentario');
-} if(!defined('MYSQL_PROJ_CONT')){
-    define('MYSQL_PROJ_CONT',                    'Projeto_Contas');
 } if(!defined('MYSQL_SOCIAL_TIPO')){
     define('MYSQL_SOCIAL_TIPO',          'Usuario_social_tipo');
 } if(!defined('MYSQL_SOCIAL_HIST_FACE')){
@@ -742,11 +720,31 @@ if(!defined('MYSQL_MUSICA_ALBUM_ARTISTA')){
 
 
 
-// MODULO SEGURANCA
-if(!defined('MYSQL_SEGURANCA_SENHA')){
-    define('MYSQL_SEGURANCA_SENHA'     , 'Seguranca_Senha');
+// MODULO DESENVOLVIMENTO
+if(!defined('MYSQL_DESENVOLVIMENTO_SENHA')){
+    define('MYSQL_DESENVOLVIMENTO_SENHA'     , 'Desenvolvimento_Senha');
+} if(!defined('MYSQL_PROJ')){
+    define('MYSQL_PROJ',                         'Desenvolvimento_Projeto');
+} if(!defined('MYSQL_DESENVOLVIMENTO_COMENTARIO')){
+    define('MYSQL_DESENVOLVIMENTO_COMENTARIO',           'Desenvolvimento_Projeto_Comentario');
+} if(!defined('MYSQL_PROJ_CONT')){
+    define('MYSQL_PROJ_CONT',                    'Desenvolvimento_Projeto_Contas');
 }
-
+if(  !defined('MYSQL_DESENVOLVIMENTO_TAREFA')){
+    define('MYSQL_DESENVOLVIMENTO_TAREFA'                       , 'Desenvolvimento_Projeto_Tarefa');
+}
+if(  !defined('MYSQL_DESENVOLVIMENTO_FRAMEWORK_MODULOS')){
+    define('MYSQL_DESENVOLVIMENTO_FRAMEWORK_MODULOS'                    , 'Desenvolvimento_Framework_Modulos');
+}
+if(  !defined('MYSQL_DESENVOLVIMENTO_FRAMEWORK_SUBMODULO')){
+    define('MYSQL_DESENVOLVIMENTO_FRAMEWORK_SUBMODULO'                  , 'Desenvolvimento_Framework_SubModulos');
+}
+if(  !defined('MYSQL_DESENVOLVIMENTO_FRAMEWORK_METODO')){
+    define('MYSQL_DESENVOLVIMENTO_FRAMEWORK_METODO'                     , 'Desenvolvimento_Framework_Metodos');
+}
+if(  !defined('MYSQL_DESENVOLVIMENTO_FRAMEWORK_MODULO_CONFIG')){
+    define('MYSQL_DESENVOLVIMENTO_FRAMEWORK_MODULO_CONFIG'              , 'Desenvolvimento_Framework_Modulo_Config');
+}
 
 
 

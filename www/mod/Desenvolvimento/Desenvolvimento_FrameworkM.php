@@ -1,6 +1,6 @@
 <?php
 
-class projeto_FrameworkModelo extends projeto_Modelo
+class Desenvolvimento_FrameworkModelo extends Desenvolvimento_Modelo
 {
     /**
      * __construct

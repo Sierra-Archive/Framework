@@ -1,6 +1,6 @@
 <?php
 
-class Seguranca_SenhaModelo extends Seguranca_Modelo
+class Desenvolvimento_SenhaModelo extends Desenvolvimento_Modelo
 {
     /**
      * __construct
@@ -22,23 +22,23 @@ class Seguranca_SenhaModelo extends Seguranca_Modelo
         $primaryKey = 'id';
         
         
-        $perm_editar = $this->_Registro->_Acl->Get_Permissao_Url('Seguranca/Senha/Senhas_Edit');
-        $perm_del = $this->_Registro->_Acl->Get_Permissao_Url('Seguranca/Senha/Senhas_Del');
-        $perm_status = $this->_Registro->_Acl->Get_Permissao_Url('Seguranca/Senha/Status');
-        $perm_destaque = $this->_Registro->_Acl->Get_Permissao_Url('Seguranca/Senha/Destaque');
+        $perm_editar = $this->_Registro->_Acl->Get_Permissao_Url('Desenvolvimento/Senha/Senhas_Edit');
+        $perm_del = $this->_Registro->_Acl->Get_Permissao_Url('Desenvolvimento/Senha/Senhas_Del');
+        $perm_status = $this->_Registro->_Acl->Get_Permissao_Url('Desenvolvimento/Senha/Status');
+        $perm_destaque = $this->_Registro->_Acl->Get_Permissao_Url('Desenvolvimento/Senha/Destaque');
         
         if($perm_editar && $perm_del){
             $funcao = function( $d, $row ) {
-                return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Senha'        ,'Seguranca/Senha/Senhas_Edit/'.$d.'/'    ,''),true).
-                       Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Senha'       ,'Seguranca/Senha/Senhas_Del/'.$d.'/'     ,'Deseja realmente deletar essa Senha ?'),true);
+                return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Senha'        ,'Desenvolvimento/Senha/Senhas_Edit/'.$d.'/'    ,''),true).
+                       Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Senha'       ,'Desenvolvimento/Senha/Senhas_Del/'.$d.'/'     ,'Deseja realmente deletar essa Senha ?'),true);
             };
         }else if($perm_editar){
             $funcao = function( $d, $row ) {
-                return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Senha'        ,'Seguranca/Senha/Senhas_Edit/'.$d.'/'    ,''),true);
+                return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Senha'        ,'Desenvolvimento/Senha/Senhas_Edit/'.$d.'/'    ,''),true);
             };
         }else if($perm_del){
             $funcao = function( $d, $row ) {
-                return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Senha'       ,'Seguranca/Senha/Senhas_Del/'.$d.'/'     ,'Deseja realmente deletar essa Senha ?'),true);
+                return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Senha'       ,'Desenvolvimento/Senha/Senhas_Del/'.$d.'/'     ,'Deseja realmente deletar essa Senha ?'),true);
             };
         }else{
             $funcao = function( $d, $row ) {
@@ -116,7 +116,7 @@ class Seguranca_SenhaModelo extends Seguranca_Modelo
         );
 
         echo json_encode(
-            \Framework\Classes\Datatable::complex( $_GET, Framework\App\Registro::getInstacia()->_Conexao, 'Seguranca_Senha', $primaryKey, $columns, null,'status=1' )
+            \Framework\Classes\Datatable::complex( $_GET, Framework\App\Registro::getInstacia()->_Conexao, 'Desenvolvimento_Senha', $primaryKey, $columns, null,'status=1' )
         );
     }
     public function Senhas_Todas(){
@@ -124,23 +124,23 @@ class Seguranca_SenhaModelo extends Seguranca_Modelo
         $primaryKey = 'id';
         
         
-        $perm_editar = $this->_Registro->_Acl->Get_Permissao_Url('Seguranca/Senha/Senhas_Todas_Edit');
-        $perm_del = $this->_Registro->_Acl->Get_Permissao_Url('Seguranca/Senha/Senhas_Todas_Del');
-        $perm_status = $this->_Registro->_Acl->Get_Permissao_Url('Seguranca/Senha/Status_Todas');
-        $perm_destaque = $this->_Registro->_Acl->Get_Permissao_Url('Seguranca/Senha/Destaque_Todas');
+        $perm_editar = $this->_Registro->_Acl->Get_Permissao_Url('Desenvolvimento/Senha/Senhas_Todas_Edit');
+        $perm_del = $this->_Registro->_Acl->Get_Permissao_Url('Desenvolvimento/Senha/Senhas_Todas_Del');
+        $perm_status = $this->_Registro->_Acl->Get_Permissao_Url('Desenvolvimento/Senha/Status_Todas');
+        $perm_destaque = $this->_Registro->_Acl->Get_Permissao_Url('Desenvolvimento/Senha/Destaque_Todas');
         
         if($perm_editar && $perm_del){
             $funcao = function( $d, $row ) {
-                return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Senha'        ,'Seguranca/Senha/Senhas_Todas_Edit/'.$d.'/'    ,''),true).
-                       Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Senha'       ,'Seguranca/Senha/Senhas_Todas_Del/'.$d.'/'     ,'Deseja realmente deletar essa Senha ?'),true);
+                return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Senha'        ,'Desenvolvimento/Senha/Senhas_Todas_Edit/'.$d.'/'    ,''),true).
+                       Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Senha'       ,'Desenvolvimento/Senha/Senhas_Todas_Del/'.$d.'/'     ,'Deseja realmente deletar essa Senha ?'),true);
             };
         }else if($perm_editar){
             $funcao = function( $d, $row ) {
-                return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Senha'        ,'Seguranca/Senha/Senhas_Todas_Edit/'.$d.'/'    ,''),true);
+                return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Senha'        ,'Desenvolvimento/Senha/Senhas_Todas_Edit/'.$d.'/'    ,''),true);
             };
         }else if($perm_del){
             $funcao = function( $d, $row ) {
-                return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Senha'       ,'Seguranca/Senha/Senhas_Todas_Del/'.$d.'/'     ,'Deseja realmente deletar essa Senha ?'),true);
+                return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Senha'       ,'Desenvolvimento/Senha/Senhas_Todas_Del/'.$d.'/'     ,'Deseja realmente deletar essa Senha ?'),true);
             };
         }else{
             $funcao = function( $d, $row ) {
@@ -220,7 +220,7 @@ class Seguranca_SenhaModelo extends Seguranca_Modelo
         );
 
         echo json_encode(
-            \Framework\Classes\Datatable::complex( $_GET, Framework\App\Registro::getInstacia()->_Conexao, 'Seguranca_Senha', $primaryKey, $columns, null,'status=1' )
+            \Framework\Classes\Datatable::complex( $_GET, Framework\App\Registro::getInstacia()->_Conexao, 'Desenvolvimento_Senha', $primaryKey, $columns, null,'status=1' )
         );
     }
     public function Senhas_Antigas(){
@@ -228,23 +228,23 @@ class Seguranca_SenhaModelo extends Seguranca_Modelo
         $primaryKey = 'id';
         
         
-        $perm_editar = $this->_Registro->_Acl->Get_Permissao_Url('Seguranca/Senha/Senhas_Edit');
-        $perm_del = $this->_Registro->_Acl->Get_Permissao_Url('Seguranca/Senha/Senhas_Del');
-        $perm_status = $this->_Registro->_Acl->Get_Permissao_Url('Seguranca/Senha/Status');
-        $perm_destaque = $this->_Registro->_Acl->Get_Permissao_Url('Seguranca/Senha/Destaque');
+        $perm_editar = $this->_Registro->_Acl->Get_Permissao_Url('Desenvolvimento/Senha/Senhas_Edit');
+        $perm_del = $this->_Registro->_Acl->Get_Permissao_Url('Desenvolvimento/Senha/Senhas_Del');
+        $perm_status = $this->_Registro->_Acl->Get_Permissao_Url('Desenvolvimento/Senha/Status');
+        $perm_destaque = $this->_Registro->_Acl->Get_Permissao_Url('Desenvolvimento/Senha/Destaque');
         
         if($perm_editar && $perm_del){
             $funcao = function( $d, $row ) {
-                return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Senha'        ,'Seguranca/Senha/Senhas_Edit/'.$d.'/'    ,''),true).
-                       Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Senha'       ,'Seguranca/Senha/Senhas_Del/'.$d.'/'     ,'Deseja realmente deletar essa Senha ?'),true);
+                return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Senha'        ,'Desenvolvimento/Senha/Senhas_Edit/'.$d.'/'    ,''),true).
+                       Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Senha'       ,'Desenvolvimento/Senha/Senhas_Del/'.$d.'/'     ,'Deseja realmente deletar essa Senha ?'),true);
             };
         }else if($perm_editar){
             $funcao = function( $d, $row ) {
-                return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Senha'        ,'Seguranca/Senha/Senhas_Edit/'.$d.'/'    ,''),true);
+                return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Senha'        ,'Desenvolvimento/Senha/Senhas_Edit/'.$d.'/'    ,''),true);
             };
         }else if($perm_del){
             $funcao = function( $d, $row ) {
-                return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Senha'       ,'Seguranca/Senha/Senhas_Del/'.$d.'/'     ,'Deseja realmente deletar essa Senha ?'),true);
+                return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Senha'       ,'Desenvolvimento/Senha/Senhas_Del/'.$d.'/'     ,'Deseja realmente deletar essa Senha ?'),true);
             };
         }else{
             $funcao = function( $d, $row ) {
@@ -322,7 +322,7 @@ class Seguranca_SenhaModelo extends Seguranca_Modelo
         );
 
         echo json_encode(
-            \Framework\Classes\Datatable::complex( $_GET, Framework\App\Registro::getInstacia()->_Conexao, 'Seguranca_Senha', $primaryKey, $columns, null,'status=0' )
+            \Framework\Classes\Datatable::complex( $_GET, Framework\App\Registro::getInstacia()->_Conexao, 'Desenvolvimento_Senha', $primaryKey, $columns, null,'status=0' )
         );
     }
     public function Senhas_Todas_Antigas(){
@@ -330,23 +330,23 @@ class Seguranca_SenhaModelo extends Seguranca_Modelo
         $primaryKey = 'id';
         
         
-        $perm_editar = $this->_Registro->_Acl->Get_Permissao_Url('Seguranca/Senha/Senhas_Todas_Edit');
-        $perm_del = $this->_Registro->_Acl->Get_Permissao_Url('Seguranca/Senha/Senhas_Todas_Del');
-        $perm_status = $this->_Registro->_Acl->Get_Permissao_Url('Seguranca/Senha/Status_Todas');
-        $perm_destaque = $this->_Registro->_Acl->Get_Permissao_Url('Seguranca/Senha/Destaque_Todas');
+        $perm_editar = $this->_Registro->_Acl->Get_Permissao_Url('Desenvolvimento/Senha/Senhas_Todas_Edit');
+        $perm_del = $this->_Registro->_Acl->Get_Permissao_Url('Desenvolvimento/Senha/Senhas_Todas_Del');
+        $perm_status = $this->_Registro->_Acl->Get_Permissao_Url('Desenvolvimento/Senha/Status_Todas');
+        $perm_destaque = $this->_Registro->_Acl->Get_Permissao_Url('Desenvolvimento/Senha/Destaque_Todas');
         
         if($perm_editar && $perm_del){
             $funcao = function( $d, $row ) {
-                return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Senha'        ,'Seguranca/Senha/Senhas_Todas_Edit/'.$d.'/'    ,''),true).
-                       Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Senha'       ,'Seguranca/Senha/Senhas_Todas_Del/'.$d.'/'     ,'Deseja realmente deletar essa Senha ?'),true);
+                return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Senha'        ,'Desenvolvimento/Senha/Senhas_Todas_Edit/'.$d.'/'    ,''),true).
+                       Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Senha'       ,'Desenvolvimento/Senha/Senhas_Todas_Del/'.$d.'/'     ,'Deseja realmente deletar essa Senha ?'),true);
             };
         }else if($perm_editar){
             $funcao = function( $d, $row ) {
-                return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Senha'        ,'Seguranca/Senha/Senhas_Todas_Edit/'.$d.'/'    ,''),true);
+                return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Senha'        ,'Desenvolvimento/Senha/Senhas_Todas_Edit/'.$d.'/'    ,''),true);
             };
         }else if($perm_del){
             $funcao = function( $d, $row ) {
-                return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Senha'       ,'Seguranca/Senha/Senhas_Todas_Del/'.$d.'/'     ,'Deseja realmente deletar essa Senha ?'),true);
+                return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Senha'       ,'Desenvolvimento/Senha/Senhas_Todas_Del/'.$d.'/'     ,'Deseja realmente deletar essa Senha ?'),true);
             };
         }else{
             $funcao = function( $d, $row ) {
@@ -425,7 +425,7 @@ class Seguranca_SenhaModelo extends Seguranca_Modelo
         );
 
         echo json_encode(
-            \Framework\Classes\Datatable::complex( $_GET, Framework\App\Registro::getInstacia()->_Conexao, 'Seguranca_Senha', $primaryKey, $columns, null,'status=0' )
+            \Framework\Classes\Datatable::complex( $_GET, Framework\App\Registro::getInstacia()->_Conexao, 'Desenvolvimento_Senha', $primaryKey, $columns, null,'status=0' )
         );
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-class projeto_TarefaModelo extends projeto_Modelo
+class Desenvolvimento_ProjetoModelo extends Desenvolvimento_Modelo
 {
     /**
      * __construct

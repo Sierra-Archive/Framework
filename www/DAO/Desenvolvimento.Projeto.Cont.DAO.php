@@ -2,7 +2,7 @@
 /**
  * Contas na web relativas a cada Projeto
  */
-final Class Projeto_Cont_DAO extends Framework\App\Dao 
+final Class Desenvolvimento_Projeto_Cont_DAO extends Framework\App\Dao 
 {
     protected $id;
     
@@ -18,7 +18,7 @@ final Class Projeto_Cont_DAO extends Framework\App\Dao
         return false;
     }
     public static function Get_Sigla(){
-        return 'PJ';
+        return 'DPJ';
     }
     public static function Get_Engine(){
         return 'InnoDB';

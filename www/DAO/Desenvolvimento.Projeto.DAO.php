@@ -1,5 +1,5 @@
 <?php
-final Class  Projeto_DAO extends Framework\App\Dao 
+final Class Desenvolvimento_Projeto_DAO extends Framework\App\Dao 
 {
     protected $id;
     protected $categoria;
@@ -23,7 +23,7 @@ final Class  Projeto_DAO extends Framework\App\Dao
         return false;
     }
     public static function Get_Sigla(){
-        return 'P';
+        return 'DP';
     }
     public static function Get_Engine(){
         return 'InnoDB';

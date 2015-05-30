@@ -1,6 +1,6 @@
 <?php
 
-class projeto_TarefaVisual extends projeto_Visual
+class Desenvolvimento_ProjetoVisual extends Desenvolvimento_Visual
 {
     /**
     * Construtor

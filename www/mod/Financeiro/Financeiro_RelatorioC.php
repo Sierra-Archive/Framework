@@ -66,7 +66,6 @@ class Financeiro_RelatorioControle extends Financeiro_Controle
         self::Endereco_Financeiro(false);
         
         if($categoria=='0') $categoria = false;
-        //Seguranca
         if($tipo_relatorio!='Pagar' && $tipo_relatorio!='Pago' && $tipo_relatorio!='Receber' && $tipo_relatorio!='Recebido'){
             $tipo_relatorio='Recebido';
         }
@@ -458,7 +457,6 @@ class Financeiro_RelatorioControle extends Financeiro_Controle
         self::Endereco_Grafico_Financeiro(false);
         
         if($categoria=='0') $categoria = false;
-        //Seguranca
         if($tipo_relatorio_Grafico!='Pagar' && $tipo_relatorio_Grafico!='Pago' && $tipo_relatorio_Grafico!='Receber' && $tipo_relatorio_Grafico!='Recebido'){
             $tipo_relatorio_Grafico='Recebido';
         }

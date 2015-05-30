@@ -246,7 +246,7 @@ mod/
 								statV.php
 					
 				
-				* projeto/
+				* Desenvolvimento/
 								Controle.php
 								Modelo.php
 								Visual.php

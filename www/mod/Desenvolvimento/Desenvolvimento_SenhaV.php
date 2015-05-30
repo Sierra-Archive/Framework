@@ -1,6 +1,6 @@
 <?php
 
-class Seguranca_SenhaVisual extends Seguranca_Visual
+class Desenvolvimento_SenhaVisual extends Desenvolvimento_Visual
 {
     /**
     * Construtor
