@@ -21,15 +21,7 @@ class noticia_Principal implements PrincipalInterface
     */
     static function Home(&$controle, &$modelo, &$Visual){
         // Noticias
-        $where = Array();
-        $noticia = $modelo->db->Sql_Select('Noticia',$where);
-        if(is_object($noticia)) $noticia = Array(0=>$noticia);
-        if($noticia!==false && !empty($noticia)){
-            reset($noticia);
-            $noticia_qnt = count($noticia);
-        }else{
-            $noticia_qnt = 0;
-        }
+        $noticia_qnt = $modelo->db->Sql_Contar('Noticia');
         // Adiciona Widget a Pagina Inicial
         \Framework\App\Visual::Layoult_Home_Widgets_Add(
             'Noticias', 

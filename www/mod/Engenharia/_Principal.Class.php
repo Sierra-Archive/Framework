@@ -149,14 +149,7 @@ class Engenharia_Principal implements PrincipalInterface
         $Visual = $Registro->_Visual;
         // Empreendimentos
         $where = Array();
-        $empreendimento = $modelo->db->Sql_Select('Engenharia_Empreendimento',$where);
-        if(is_object($empreendimento)) $empreendimento = Array(0=>$empreendimento);
-        if($empreendimento!==false && !empty($empreendimento)){
-            reset($empreendimento);
-            $empreendimento_qnt = count($empreendimento);
-        }else{
-            $empreendimento_qnt = 0;
-        }
+        $empreendimento_qnt = $modelo->db->Sql_Select('Engenharia_Empreendimento');
         // Adiciona Widget a Pagina Inicial
         \Framework\App\Visual::Layoult_Home_Widgets_Add(
             'Empreendimentos', 
@@ -169,14 +162,7 @@ class Engenharia_Principal implements PrincipalInterface
         );
         // Unidades
         $where = Array();
-        $unidade = $modelo->db->Sql_Select('Engenharia_Empreendimento_Unidade',$where);
-        if(is_object($unidade)) $unidade = Array(0=>$unidade);
-        if($unidade!==false && !empty($unidade)){
-            reset($unidade);
-            $unidade_qnt = count($unidade);
-        }else{
-            $unidade_qnt = 0;
-        }
+        $unidade_qnt = $modelo->db->Sql_Select('Engenharia_Empreendimento_Unidade');
         // Adiciona Widget a Pagina Inicial
         \Framework\App\Visual::Layoult_Home_Widgets_Add(
             'Unidades', 

@@ -108,9 +108,8 @@ class usuario_Principal implements PrincipalInterface
                 'EXTA.categoria'    =>  CFG_TEC_CAT_ID_FUNCIONARIOS,
                 'ativado'           =>  1
             );
-            $funcionario = $modelo->db->Sql_Select('Usuario',$where,0, '','id,grupo.categoria');
-            if(is_object($funcionario)) $funcionario = Array(0=>$funcionario);
-            if($funcionario!==false && !empty($funcionario)){reset($funcionario);$funcionario_qnt = count($funcionario);}else{$funcionario_qnt = 0;}
+            $inner_join = 'INNER JOIN '.MYSQL_SIS_GRUPO.' SG ON U.grupo=SG.id';
+            $funcionario_qnt = $modelo->db->Sql_Contar('Usuario', 'SG.categoria=\''.CFG_TEC_CAT_ID_FUNCIONARIOS.'\' AND ativado=\'1\'',$inner_join);
             // Adiciona Widget a Pagina Inicial
             \Framework\App\Visual::Layoult_Home_Widgets_Add(
                 'Funcionários', 
@@ -145,12 +144,8 @@ class usuario_Principal implements PrincipalInterface
         }
         if(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Admin_Cliente')){
             // Clientes
-            $where = Array(
-                'EXTA.categoria'    =>  CFG_TEC_CAT_ID_CLIENTES
-            );
-            $cliente = $modelo->db->Sql_Select('Usuario',$where,0, '','id,grupo.categoria');
-            if(is_object($cliente)) $cliente = Array(0=>$cliente);
-            if($cliente!==false && !empty($cliente)){reset($cliente);$cliente_qnt = count($cliente);}else{$cliente_qnt = 0;}
+            $inner_join = 'INNER JOIN '.MYSQL_SIS_GRUPO.' SG ON U.grupo=SG.id';
+            $cliente_qnt = $modelo->db->Sql_Contar('Usuario','SG.categoria=\''.CFG_TEC_CAT_ID_CLIENTES.'\'',$inner_join);
             // Adiciona Widget a Pagina Inicial
             \Framework\App\Visual::Layoult_Home_Widgets_Add(
                 \Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Cliente_nome'), 

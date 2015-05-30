@@ -356,7 +356,7 @@ class usuario_mensagem_Controle extends \Framework\App\Controle
         $where = false;
         $where = Array('escritor'=>$Registro->_Acl->Usuario_GetID(), 'para'=>0);
         
-        
+        #update -> Aqui tera que ser Sql_Contar (Mais performatico, aqui ta perdendo mt tempo de processamento)
         $array = $modelo->db->Sql_Select('Usuario_Mensagem',$where,0, '','assunto.tempocli,log_date_edit,log_date_add,finalizado');
         if(is_object($array)) $array = Array(0=>$array);
         if($array!==false && !empty($array)){
@@ -381,9 +381,7 @@ class usuario_mensagem_Controle extends \Framework\App\Controle
         
         $setor_qnt = $modelo->db->Sql_Contar('Usuario_Mensagem_Setor');
         
-        $assunto = $modelo->db->Sql_Select('Usuario_Mensagem_Assunto',false,0, '','id');
-        if(is_object($assunto)) $assunto = Array(0=>$assunto);
-        if($assunto!==false && !empty($assunto)){reset($assunto);$assunto_qnt = count($assunto);}else{$assunto_qnt = 0;}
+        $assunto_qnt = $modelo->db->Sql_Contar('Usuario_Mensagem_Assunto');
         // Adiciona Widget a Pagina Inicial
         // Adiciona Widget a Pagina Inicial
         \Framework\App\Visual::Layoult_Home_Widgets_Add(
@@ -428,7 +426,7 @@ class usuario_mensagem_Controle extends \Framework\App\Controle
         // Adiciona Widget a Pagina Inicial
         \Framework\App\Visual::Layoult_Home_Widgets_Add(
             'Todos os Chamados',
-            'usuario_mensagem/Suporte/Main/',
+            'usuario_mensagem/Suporte/Mensagens/',
             'ticket',
             $total,
             'light-blue',
@@ -438,7 +436,7 @@ class usuario_mensagem_Controle extends \Framework\App\Controle
         // Adiciona Widget a Pagina Inicial
         \Framework\App\Visual::Layoult_Home_Widgets_Add(
             'Setores',
-            'usuario_mensagem/Setor/Main/',
+            'usuario_mensagem/Setor/Setores/',
             'smile',
             $setor_qnt,
             'block-grey',
@@ -448,7 +446,7 @@ class usuario_mensagem_Controle extends \Framework\App\Controle
         // Adiciona Widget a Pagina Inicial
         \Framework\App\Visual::Layoult_Home_Widgets_Add(
             'Assuntos',
-            'usuario_mensagem/Assunto/Main/',
+            'usuario_mensagem/Assunto/Assuntos/',
             'comments-alt',
             $assunto_qnt,
             'block-red',

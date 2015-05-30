@@ -1,17 +1,9 @@
-<?php if( $params['Tipo']==='Entrada'){
-    if($params['Opcao']['class']!=''){
-        $class= $params['Opcao']['class'];
-    }else{
-        $class='';
-    }
-
-    if($params['Opcao']['end']!=''){ ?>
-        <form id="<?php echo $params['Opcao']['id']; ?>"<?php echo $c['a']['s']; ?> class="form-<?php echo $params['Opcao']['ColunaForm']; ?> <?php echo $params['Opcao']['class']; ?>" action="<?php echo $params['Opcao']['url']; echo $params['Opcao']['end']; ?>" method="post" enctype="multipart/form-data" autocomplete="<?php echo $params['Opcao']['AutoComplete']; ?>">
+<?php if( $params['Tipo']==='Entrada'){ ?>
+    <?php if($params['Opcao']['end']!=''){ ?>
+        <form id="<?php echo $params['Opcao']['id']; ?>" class="form-<?php echo $params['Opcao']['ColunaForm']; ?> <?php echo $params['Opcao']['class']; ?>" action="<?php echo $params['Opcao']['url']; echo $params['Opcao']['end']; ?>" method="post" enctype="multipart/form-data" autocomplete="<?php echo $params['Opcao']['AutoComplete']; ?>">
     <?php }else{ ?>
-        <form id="<?php echo $params['Opcao']['id']; ?>"<?php echo $c['a']['s']; ?> class="form-<?php echo $params['Opcao']['ColunaForm']; ?> <?php echo $params['Opcao']['class']; ?>" action="<?php echo $params['Opcao']['url']; ?>" method="post" enctype="multipart/form-data" autocomplete="<?php echo $params['Opcao']['AutoComplete']; ?>">
+        <form id="<?php echo $params['Opcao']['id']; ?>" class="form-<?php echo $params['Opcao']['ColunaForm']; ?> <?php echo $params['Opcao']['class']; ?>" action="<?php echo $params['Opcao']['url']; ?>" method="post" enctype="multipart/form-data" autocomplete="<?php echo $params['Opcao']['AutoComplete']; ?>">
     <?php } ?>
-    <?php if($params['Opcao']['layoult']==='full'){ ?><ul class="align-list"><?php } ?>
-
 
 <?php }else if($params['Tipo']==='SelectMultiplo'){ ?>
     <div class="form-group"<?php if($params['Opcao']['escondido']!==false){ ?> id="<?php echo $params['Opcao']['id']; ?>_escondendo"<?php } if($params['Opcao']['escondido']==='apagado'){ ?> style="display: none;"<?php } ?>>

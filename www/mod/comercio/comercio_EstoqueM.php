@@ -112,7 +112,7 @@ class comercio_EstoqueModelo extends comercio_Modelo
                         return 'Recibo';
                     }
                 }),
-            array( 'db' => 'fornecedor',   'dt' => 2 ),
+            array( 'db' => 'fornecedor2',   'dt' => 2 ),
             array( 'db' => 'data',     'dt' => 3 ),
             array( 'db' => 'valor',     'dt' => 4 ),
             array( 'db' => 'id',     'dt' => 5,

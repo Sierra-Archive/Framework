@@ -45,9 +45,7 @@ class usuario_veiculo_Principal implements PrincipalInterface
         // Widget Equipamento
         if(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_veiculo_Equipamento')){
             // Calcula Equipamento
-            $equipamento = $modelo->db->Sql_Select('Usuario_Veiculo_Equipamento',Array());
-            if(is_object($equipamento)) $equipamento = Array(0=>$equipamento);
-            if($equipamento!==false && !empty($equipamento)){reset($equipamento);$equipamento_qnt = count($equipamento);}else{$equipamento_qnt = 0;}
+            $equipamento_qnt = $modelo->db->Sql_Contar('Usuario_Veiculo_Equipamento');
             // Chama Widgets
             \Framework\App\Visual::Layoult_Home_Widgets_Add(
                'Equipamentos', 
@@ -60,9 +58,7 @@ class usuario_veiculo_Principal implements PrincipalInterface
             );
         }
         // Calcula Veiculo
-        $veiculo = $modelo->db->Sql_Select('Usuario_Veiculo',Array());
-        if(is_object($veiculo)) $veiculo = Array(0=>$veiculo);
-        if($veiculo!==false && !empty($veiculo)){reset($veiculo);$veiculo_qnt = count($veiculo);}else{$veiculo_qnt = 0;}
+        $veiculo_qnt = $modelo->db->Sql_Contar('Usuario_Veiculo');
         \Framework\App\Visual::Layoult_Home_Widgets_Add(
             'Veiculos', 
             'usuario_veiculo/Veiculo/Veiculos/', 

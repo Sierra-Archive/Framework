@@ -54,17 +54,7 @@ class predial_Principal implements PrincipalInterface
         
         if(\Framework\App\Registro::getInstacia()->_Acl->Get_Permissao_Url('predial/Correio/Correios')){
             // Correios
-            $where = Array(
-                'data_recebido'     =>      '0000-00-00 00:00:00'
-            );
-            $correio = $modelo->db->Sql_Select('Predial_Bloco_Apart_Correio',$where);
-            if(is_object($correio)) $correio = Array(0=>$correio);
-            if($correio!==false && !empty($correio)){
-                reset($correio);
-                $correio_qnt = count($correio);
-            }else{
-                $correio_qnt = 0;
-            }
+            $correio_qnt = $modelo->db->Sql_Contar('Predial_Bloco_Apart_Correio','data_recebido=\'0000-00-00 00:00:00\'');
             // Adiciona Widget a Pagina Inicial
             \Framework\App\Visual::Layoult_Home_Widgets_Add(
                 'Correios recebidos e não entregues', 

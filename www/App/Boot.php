@@ -129,7 +129,7 @@ class Boot {
         $registro->destruir('_Acl');
         $registro->destruir('_Request');
         // Imprimi Controle de Tempo se Pedido
-        //if(TEMPO_IMPRIMIR) \Framework\App\Tempo::Imprimir();
+        if(TEMPO_IMPRIMIR) \Framework\App\Tempo::Imprimir();
         if(TEMPO_IMPRIMIR){
             \Framework\App\Tempo::Salvar();
         }

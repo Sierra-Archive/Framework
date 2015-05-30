@@ -112,15 +112,7 @@ class Evento_Principal implements PrincipalInterface
         $modelo = $Registro->_Modelo;
         $Visual = $Registro->_Visual;
         // Eventos
-        $where = Array();
-        $evento = $modelo->db->Sql_Select('Evento',$where);
-        if(is_object($evento)) $evento = Array(0=>$evento);
-        if($evento!==false && !empty($evento)){
-            reset($evento);
-            $evento_qnt = count($evento);
-        }else{
-            $evento_qnt = 0;
-        }
+        $evento_qnt = $modelo->db->Sql_Contar('Evento');
         // Adiciona Widget a Pagina Inicial
         \Framework\App\Visual::Layoult_Home_Widgets_Add(
             'Eventos', 

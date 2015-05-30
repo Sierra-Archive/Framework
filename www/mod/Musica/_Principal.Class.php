@@ -177,15 +177,7 @@ class Musica_Principal implements PrincipalInterface
         $modelo = $Registro->_Modelo;
         $Visual = $Registro->_Visual;
         // Artistas
-        $where = Array();
-        $artista = $modelo->db->Sql_Select('Musica_Album_Artista',$where);
-        if(is_object($artista)) $artista = Array(0=>$artista);
-        if($artista!==false && !empty($artista)){
-            reset($artista);
-            $artista_qnt = count($artista);
-        }else{
-            $artista_qnt = 0;
-        }
+        $artista_qnt = $modelo->db->Sql_Contar('Musica_Album_Artista');
         // Adiciona Widget a Pagina Inicial
         \Framework\App\Visual::Layoult_Home_Widgets_Add(
             'Artistas', 
@@ -197,15 +189,7 @@ class Musica_Principal implements PrincipalInterface
             14
         );
         // Albuns
-        $where = Array();
-        $album = $modelo->db->Sql_Select('Musica_Album',$where);
-        if(is_object($album)) $album = Array(0=>$album);
-        if($album!==false && !empty($album)){
-            reset($album);
-            $album_qnt = count($album);
-        }else{
-            $album_qnt = 0;
-        }
+        $album_qnt = $modelo->db->Sql_Contar('Musica_Album');
         // Adiciona Widget a Pagina Inicial
         \Framework\App\Visual::Layoult_Home_Widgets_Add(
             'Albuns', 
@@ -217,15 +201,7 @@ class Musica_Principal implements PrincipalInterface
             16
         );
         // Musicas
-        $where = Array();
-        $musica = $modelo->db->Sql_Select('Musica',$where);
-        if(is_object($musica)) $musica = Array(0=>$musica);
-        if($musica!==false && !empty($musica)){
-            reset($musica);
-            $musica_qnt = count($musica);
-        }else{
-            $musica_qnt = 0;
-        }
+        $musica_qnt = $modelo->db->Sql_Contar('Musica');
         // Adiciona Widget a Pagina Inicial
         \Framework\App\Visual::Layoult_Home_Widgets_Add(
             'Musicas', 
@@ -237,15 +213,7 @@ class Musica_Principal implements PrincipalInterface
             18
         );
         // Videos
-        $where = Array();
-        $video = $modelo->db->Sql_Select('Musica_Video',$where);
-        if(is_object($video)) $video = Array(0=>$video);
-        if($video!==false && !empty($video)){
-            reset($video);
-            $video_qnt = count($video);
-        }else{
-            $video_qnt = 0;
-        }
+        $video_qnt = $modelo->db->Sql_Contar('Musica_Video');
         // Adiciona Widget a Pagina Inicial
         \Framework\App\Visual::Layoult_Home_Widgets_Add(
             'Videos', 

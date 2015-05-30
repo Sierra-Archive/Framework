@@ -50,15 +50,7 @@ class biblioteca_Principal implements PrincipalInterface
         $modelo = $Registro->_Modelo;
         $Visual = $Registro->_Visual;
         // Bibliotecas
-        $where = Array();
-        $biblioteca = $modelo->db->Sql_Select('Biblioteca',$where);
-        if(is_object($biblioteca)) $biblioteca = Array(0=>$biblioteca);
-        if($biblioteca!==false && !empty($biblioteca)){
-            reset($biblioteca);
-            $biblioteca_qnt = count($biblioteca);
-        }else{
-            $biblioteca_qnt = 0;
-        }
+        $biblioteca_qnt = $modelo->db->Sql_Contar('Biblioteca');
         // Adiciona Widget a Pagina Inicial
         \Framework\App\Visual::Layoult_Home_Widgets_Add(
             'Arquivos/Pastas', 

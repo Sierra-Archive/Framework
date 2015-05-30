@@ -230,6 +230,7 @@ class usuario_Modelo extends \Framework\App\Modelo
             $categoria = (int) $grupo[0];
             
             // Pega GRUPOS VALIDOS
+            //#update - Comer essa Query, nao há necessidade
             $sql_grupos = $this->db->Sql_Select('Sistema_Grupo','categoria='.$categoria,0,'','id');
             $grupos_id = Array();
             if(is_object($sql_grupos)) $sql_grupos = Array(0=>$sql_grupos);

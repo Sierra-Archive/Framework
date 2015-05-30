@@ -14,6 +14,7 @@ class _Sistema_PrincipalControle extends _Sistema_Controle
      * @version 0.0.1
      */
     public function Home(){
+        $tempo = new \Framework\App\Tempo('HOME');   
         $this->layoult_endereco_alterado = true;
         $this->layoult_endereco = Array(
             Array('Página Inicial',false)
@@ -21,6 +22,7 @@ class _Sistema_PrincipalControle extends _Sistema_Controle
         // Carrega Conteudo dos Modulos
         foreach($this->ModulosHome as $value){
             if($value!='_Sistema'){
+                $tempo = new \Framework\App\Tempo('HOME PRINCIPAL ->'.$value);   
                 eval($value.'_Principal::Home($this, $this->_Modelo, $this->_Visual);');
             }
         }

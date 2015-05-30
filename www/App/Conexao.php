@@ -1167,7 +1167,14 @@ final class Conexao
         $sql .= $ext_campos.' FROM '.$sql_tabela.$join;
         return Array($sql,$sql_tabela_sigla,$sql_condicao,$tabela_campos_valores,$tabelas_usadas,$j,$retornar_extrangeiras_usadas);
     }
-    public function Sql_Contar($class_dao, $where = false){
+    /**
+     * Conta os Resultados de na tabela de Cada DAO
+     * @param string $class_dao
+     * @param type $where
+     * @return type
+     * @throws \Exception
+     */
+    public function Sql_Contar($class_dao, $where = false, $inner_join = false){
         $tempo = new \Framework\App\Tempo('Conexao_Contar');   
         // Expections
         if($class_dao==''){
@@ -1176,12 +1183,13 @@ final class Conexao
             $class_dao = $class_dao.'_DAO';
         }
         // Captura Nome da Tabela
-        $sql_tabela_nome    = self::$tabelas[$class_dao]['nome'];
+        $sql_tabela_sigla   = self::$tabelas[$class_dao]['sigla'];
+        $sql_tabela_nome    = self::$tabelas[$class_dao]['nome'].' '.$sql_tabela_sigla;
         
         // Ve se tem servidor
         $condicao = '';
         if(self::$tabelas[$class_dao]['static']===false){
-            $condicao .= ' && servidor = \''.SRV_NAME_SQL.'\'';
+            $condicao .= ' && '.$sql_tabela_sigla.'.servidor = \''.SRV_NAME_SQL.'\'';
         }
         
         // Se pedir mais condicoes acrescenta
@@ -1190,7 +1198,8 @@ final class Conexao
         }
         
         // Faz Contas
-        $query_result = $this->query('SELECT COUNT(*) as total FROM '.$sql_tabela_nome.' WHERE deletado=0'.$condicao);
+        if($inner_join!==false) $sql_tabela_nome .= ' '.$inner_join;
+        $query_result = $this->query('SELECT COUNT(*) AS total FROM '.$sql_tabela_nome.' WHERE '.$sql_tabela_sigla.'.deletado=0'.$condicao);
         
         $row = $query_result->fetch_object();
         return $row->total;

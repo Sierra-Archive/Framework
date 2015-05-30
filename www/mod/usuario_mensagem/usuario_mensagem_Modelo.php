@@ -185,6 +185,9 @@ class usuario_mensagem_Modelo extends \Framework\App\Modelo
     }
     /**
      * Retorna se uma Mensagem tem resposta nova ou nao ! (Verdadeiro ou falso)
+     * 
+     * #update Terá que ser Substituido por uma query, está perdendo muito em performace
+     * 
      * @param type $mensagem
      * @return string {nov,lim,esg} ou false
      * @static

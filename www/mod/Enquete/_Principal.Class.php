@@ -51,15 +51,7 @@ class Enquete_Principal implements PrincipalInterface
         $modelo = $Registro->_Modelo;
         $Visual = $Registro->_Visual;
         // Enquetes
-        $where = Array();
-        $enquete = $modelo->db->Sql_Select('Enquete',$where);
-        if(is_object($enquete)) $enquete = Array(0=>$enquete);
-        if($enquete!==false && !empty($enquete)){
-            reset($enquete);
-            $enquete_qnt = count($enquete);
-        }else{
-            $enquete_qnt = 0;
-        }
+        $enquete_qnt = $modelo->db->Sql_Contar('Enquete');
         // Adiciona Widget a Pagina Inicial
         \Framework\App\Visual::Layoult_Home_Widgets_Add(
             'Enquetes', 

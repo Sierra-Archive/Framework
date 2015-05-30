@@ -120,15 +120,7 @@ class Curso_Principal implements PrincipalInterface
         $modelo = $Registro->_Modelo;
         $Visual = $Registro->_Visual;
         // Cursos
-        $where = Array();
-        $curso = $modelo->db->Sql_Select('Curso',$where);
-        if(is_object($curso)) $curso = Array(0=>$curso);
-        if($curso!==false && !empty($curso)){
-            reset($curso);
-            $curso_qnt = count($curso);
-        }else{
-            $curso_qnt = 0;
-        }
+        $curso_qnt = $modelo->db->Sql_Select('Curso');
         // Adiciona Widget a Pagina Inicial
         \Framework\App\Visual::Layoult_Home_Widgets_Add(
             'Cursos', 
@@ -140,21 +132,13 @@ class Curso_Principal implements PrincipalInterface
             14
         );
         // Turmas
-        $where = Array();
-        $album = $modelo->db->Sql_Select('Curso_Turma',$where);
-        if(is_object($album)) $album = Array(0=>$album);
-        if($album!==false && !empty($album)){
-            reset($album);
-            $album_qnt = count($album);
-        }else{
-            $album_qnt = 0;
-        }
+        $turma_qnt = $modelo->db->Sql_Select('Curso_Turma');
         // Adiciona Widget a Pagina Inicial
         \Framework\App\Visual::Layoult_Home_Widgets_Add(
             'Turmas', 
             'Curso/Turma/Turmas', 
             'hdd', 
-            $album_qnt, 
+            $turma_qnt, 
             'block-yellow', 
             false, 
             16
