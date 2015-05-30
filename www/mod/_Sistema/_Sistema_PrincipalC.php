@@ -22,7 +22,6 @@ class _Sistema_PrincipalControle extends _Sistema_Controle
         // Carrega Conteudo dos Modulos
         foreach($this->ModulosHome as $value){
             if($value!='_Sistema'){
-                $tempo = new \Framework\App\Tempo('HOME PRINCIPAL ->'.$value);   
                 eval($value.'_Principal::Home($this, $this->_Modelo, $this->_Visual);');
             }
         }

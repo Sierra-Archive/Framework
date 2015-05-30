@@ -216,5 +216,158 @@ class Financeiro_Modelo extends \Framework\App\Modelo
         if($i==0) return 'Erro';
         return Array('Transferencia',$nome);
     }
+    
+    
+    /**
+     * Metodos de DAtaTable Dinamica
+     */
+    
+    
+    public function Movimentacao_Interna($where=false,$tipo='Mini',$total=false,$endereco=''){
+        if(is_array($where)){
+            $where['pago']='1';
+        }else if($where!==''){
+            $where .= ' AND {sigla}pago = 1';
+        }else{
+            $where = '{sigla}pago = 1';
+        }
+        
+        // Valores Padroes
+        $i = 0;
+        $tabela = Array();
+        $total_qnt = 0;
+        
+        $financeiros = $this->_Modelo->db->Sql_Select('Financeiro_Pagamento_Interno',$where,0,'','id,dt_vencimento,motivo,motivoid,valor,num_parcela');
+        if($financeiros!==false && !empty($financeiros)){
+            if(is_object($financeiros)) $financeiros = Array(0=>$financeiros);
+            reset($financeiros);
+            $perm_visualizar = $this->_Registro->_Acl->Get_Permissao_Url('Financeiro/Pagamento/Financeiro_View');
+            $perm_naopagar = $this->_Registro->_Acl->Get_Permissao_Url('Financeiro/Pagamento/Financeiros_NaoPagar');
+            
+            foreach ($financeiros as &$valor) {
+                if($valor->motivo==='') continue;
+                //$tabela['#Id'][$i]       = '#'.$valor->id;
+                // Chamar
+                $chamar = $valor->motivo.'_Modelo';
+                if(!class_exists($chamar)){
+                    $chamar = $valor->motivo.'Modelo';
+                }
+                if(class_exists($chamar)){
+                    if($valor->num_parcela!='0' && $valor->num_parcela!=0){
+                        $parcela = $valor->num_parcela.'º parcela';
+                    }else{
+                        $parcela = 'Entrada/Unica';
+                    }
+                    $tabela['Parcela / Vencimento'][$i]     = $parcela. ' / '.$valor->dt_vencimento;
+                    list(
+                            $motivo,
+                            $responsavel
+                    )                                       = $chamar::Financeiro_Motivo_Exibir($valor->motivoid);
+                    $tabela['Motivo'][$i]                   = $responsavel.' com '.$motivo;
+                    $tabela['Valor'][$i]                    = $valor->valor;
+                    //$tabela['Data do Vencimento'][$i]       = '<a href="'.URL_PATH.'Financeiro/Pagamento/Financeiros_VencimentoEdit/'.$valor->id.'" class="lajax" acao=""><span id="financeirovenc'.$valor->id.'">'.$valor->dt_vencimento.'</span></a>';
+                    
+                    $tabela['Funções'][$i]                  = $this->_Visual->Tema_Elementos_Btn('Visualizar' ,Array('Visualizar'         ,'Financeiro/Pagamento/Financeiro_View/'.$valor->id.'/'    ,''),$perm_visualizar).
+                                                              $this->_Visual->Tema_Elementos_Btn(
+                                                                'Personalizado',
+                                                                Array(
+                                                                    'Desfazer Pagamento'        ,
+                                                                    'Financeiro/Pagamento/Financeiros_NaoPagar/'.$valor->id.'/'.$endereco    ,
+                                                                    '',
+                                                                    'download',
+                                                                    'default',
+                                                                ),
+                                                                $perm_naopagar
+                                                            );
+                    if($total!==false){
+                        $total_qnt = $total_qnt + \Framework\App\Sistema_Funcoes::Tranf_Real_Float($valor->valor);
+                    }
+                    ++$i;
+                }
+            }
+        }
+        // Table's primary key
+        $primaryKey = 'id';
+        $tabela = 'Comercio_Produto';
+        
+        
+        $perm_view = $this->_Registro->_Acl->Get_Permissao_Url('comercio/Estoque/Estoques');
+        $perm_reduzir = $this->_Registro->_Acl->Get_Permissao_Url('comercio/Produto/Estoque_Reduzir');
+        $perm_editar = $this->_Registro->_Acl->Get_Permissao_Url('comercio/Produto/Produtos_Edit');
+        $perm_del = $this->_Registro->_Acl->Get_Permissao_Url('comercio/Produto/Produtos_Del');
+        
+        $function = '';
+        if($perm_editar){
+            $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Editar\'     ,Array(\'Editar Produto\'        ,\'comercio/Produto/Produtos_Edit/\'.$d.\'/\'    ,\'\'),true);';
+        }
+        if($perm_del){
+            $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Deletar\'    ,Array(\'Deletar Produto\'       ,\'comercio/Produto/Produtos_Del/\'.$d.\'/\'     ,\'Deseja realmente deletar essa Produto ?\'),true);';
+        }
+
+        
+        $comercio_Produto_Cod       = \Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Produto_Cod');
+        $comercio_Produto_Familia   = \Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Produto_Familia');
+        $comercio_Estoque           = \Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Estoque');
+        $comercio_Unidade           = \Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Unidade');
+        $comercio_marca             = \Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Marca');
+
+        $columns = Array();
+        
+        $numero = -1;
+
+        if($comercio_Produto_Cod){
+            ++$numero;
+            $columns[] = array( 'db' => 'id', 'dt' => $numero,
+                'formatter' => function( $d, $row ) {
+                    return '#'.$d;
+                }); //'#Cod';
+        }
+        if($comercio_marca===true){
+            if($comercio_Produto_Familia=='Familia'){
+                ++$numero;
+                $columns[] = array( 'db' => 'familia2', 'dt' => $numero); //'Familia';
+            }else{
+                ++$numero;
+                $columns[] = array( 'db' => 'marca2', 'dt' => $numero); //'Marca';
+                ++$numero;
+                $columns[] = array( 'db' => 'linha2', 'dt' => $numero); //'Linha';
+            }
+        }
+        ++$numero;
+        $columns[] = array( 'db' => 'nome', 'dt' => $numero); //'Nome';
+
+        // Coloca Preco
+        if(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Vendas')){
+            ++$numero;
+            $columns[] = array( 'db' => 'preco', 'dt' => $numero); //'Preço';
+        }
+
+        if($comercio_Estoque){
+            ++$numero;
+            
+            $columns[] = array( 'db' => 'id', 'dt' => $numero,'formatter' => function( $d, $row ) { 
+                $html = ''; 
+                $html .= '<a class="lajax" acao="" href="'.URL_PATH.'comercio/Estoque/Estoques/'.$d.'">'.
+                       ''.comercio_EstoqueControle::Estoque_Retorna($valor->id); 
+                return $html; 
+            });  //'Estoque';
+            if($perm_view)      $function .= ' $html .= $this->_Visual->Tema_Elementos_Btn(\'Visualizar\' ,Array(\'Visualizar Estoque\'    ,\'comercio/Estoque/Estoques/\'.$valor->id.\'/\'    ,\'\'),true);';
+            if($perm_reduzir)   $function .= ' $html .= $this->_Visual->Tema_Elementos_Btn(\'Personalizado\'   ,Array(\'Reduzir Estoque\'  ,\'comercio/Produto/Estoque_Reduzir/\'.$valor->id.\'/\'    ,\'\',\'long-arrow-down\',\'inverse\'),true);';
+        }
+        if($comercio_Unidade){
+            ++$numero;
+            $columns[] = array( 'db' => 'unidade2', 'dt' => $numero);  //'Unidade';
+        }
+        
+        ++$numero;
+        eval('$function = function( $d, $row ) { $html = \'\'; '.$function.' return $html; };');       
+        $columns[] = array( 'db' => 'id',            'dt' => $numero,
+            'formatter' => $function
+        ); //'Funções';
+                
+        echo json_encode(
+            \Framework\Classes\Datatable::complex( $_GET, Framework\App\Registro::getInstacia()->_Conexao, $tabela, $primaryKey, $columns, null)
+        );
+    }
 }
 ?>

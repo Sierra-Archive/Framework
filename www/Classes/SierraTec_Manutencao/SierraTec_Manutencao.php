@@ -198,10 +198,10 @@ class SierraTec_Manutencao {
             $conteudo = file_get_contents($arq);
             // Caso valor seja falso, apenas retorna valor
             if($valor===false){
-                return $this->PHP_GetConstante($conteudo, $nome,$valor);
+                return $this->Cod_Atualiza_Constante($conteudo, $nome,$valor);
             }else{
                 // SE nao, pega o novo conteudo e altera no arquivo.
-                $conteudo = $this->PHP_GetConstante($conteudo, $nome,$valor);
+                $conteudo = $this->Cod_Atualiza_Constante($conteudo, $nome,$valor);
             }
             
             // Salvar
@@ -440,7 +440,7 @@ class SierraTec_Manutencao {
      * @param type $nome_Constante
      * @param type $alterarvalor
      */
-    private function PHP_GetConstante($codigo,$nome_Constante,$alterarvalor=false){
+    private function Cod_Atualiza_Constante($codigo,$nome_Constante,$alterarvalor=false){
         // Procura CONSTANTES DE BANCO DE DADOS
         $achado = Array();
         $resultado = preg_match_all(
@@ -527,6 +527,55 @@ class SierraTec_Manutencao {
     }
     private function PHP_GetFunction($codigo){
         
+    }
+    
+    
+    //#update, fazer
+    // BUsca Todas As Classes dentro de Um arquivo
+    public function Cod_Busca_Classes(){
+        $classes = Array();
+        foreach($classes as $valor){
+            $this->Cod_Busca_Classes_Metodos($valor);
+        }
+    }
+    /**
+     * Procura Pelos Metodos dentro de uma Classe
+     * @param type $cod
+     */
+    public function Cod_Busca_Classes_Metodos($cod){
+        $metodos = Array();
+        //Procura DAO SENDO USADO
+        foreach($metodos as $valor){
+            foreach($tabelas as $valor2){
+                $this->Cod_Busca_Valor($valor,$valor2);
+            }
+            $this->Cod_Busca_ClassesUsadas($valor);
+            $this->Cod_Busca_MetodosUsados($valor);
+        }
+    }
+    /**
+     * Busca Por uma string ou um numero, ou qlqr outra coisa
+     */
+    public function Cod_Busca_Valor($cod,$valor){
+        if(is_string($valor)){
+            $achado = Array();
+            $resultado = preg_match_all(
+                '/\$'.$variavel.'[ \t\n\r\f\v]*=[ \t\n\r\f\v]*([^ \t\n\r\f\v]*);/U', 
+                $codigo, 
+                $achado
+            );
+        }
+    }
+    /**
+     * Busca Por uma string ou um numero, ou qlqr outra coisa
+     */
+    public function Cod_Busca_ClassesUsadas($cod,$valor){
+        // new até ;
+    }
+    public function Cod_Busca_MetodosUsados($cod,$valor){
+        // Quando Tiver :: do começo da linha até o proximo ;
+        
+        // QUando Tiver -> dentro da expressao $ até ;
     }
     
     

@@ -129,39 +129,26 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
     /**
      * Contas a Pagar
      */
-    public function Pagar($export = false){
+    public function Pagar(){
         self::Endereco_Pagar(false);
-        
-        // Exportar
-        $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
-            false,
-            Array(
-                'Print'     => true,
-                'Pdf'       => true,
-                'Excel'     => true,
-                'Link'      => 'Financeiro/Pagamento/Pagar',
-            )
-        )));
         
         // Parametros
         $titulo = 'Listagem de Contas à pagar';
-        $where  = Array(
+        /*$where  = Array(
             'entrada_motivo'     => 'Servidor',
             'entrada_motivoid'   => SRV_NAME_SQL,
         );
-        list($tabela,$i) = $this->Movimentacao_Interna($where,'Mini');
-        $titulo = $titulo.' ('.$i.')';
-        if($i==0){          
-            $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhuma Conta à pagar</font></b></center>');
-        }else{
-            if($export!==false){
-                self::Export_Todos($export,$tabela, 'Contas à pagar');
-            }else{
-                $this->_Visual->Show_Tabela_DataTable($tabela);
-            }
-            unset($tabela);
-        }
-        $this->_Visual->Bloco_Unico_CriaJanela($titulo);
+        list($tabela,$i) = $this->Movimentacao_Interna($where,'Mini');*/
+        
+        $tabela = Array(
+            'Parcela / Vencimento','Motivo','Valor','Funções'
+        );
+        $this->_Visual->Show_Tabela_DataTable_Massiva($tabela,'Financeiro/Pagamento/Pagar');
+        $titulo = 'Listagem de Contas à pagar (<span id="DataTable_Contador">0</span>)';  //
+        $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',10);
+        
+        
+        //Carrega Json
         $this->_Visual->Json_Info_Update('Titulo',$titulo); 
     }
     /**
@@ -496,68 +483,20 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
         //
     }
     /**
-     * 
+     * Listagem de Formas de Pagamento
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 2.0
      */
-    public function Formas($export=false){
+    public function Formas(){
         self::Endereco_Forma(false);
-        $i = 0;
-        $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
-            Array(
-                'Adicionar Formas de Pagamento',
-                'Financeiro/Pagamento/Formas_Add',
-                ''
-            ),
-            Array(
-                'Print'     => true,
-                'Pdf'       => true,
-                'Excel'     => true,
-                'Link'      => 'Financeiro/Pagamento/Formas',
-            )
-        )));
-        $formas = $this->_Modelo->db->Sql_Select('Financeiro_Pagamento_Forma');
-        if($formas!==false && !empty($formas)){
-            if(is_object($formas)) $formas = Array(0=>$formas);
-            reset($formas);
-            $perm_condicoes = $this->_Registro->_Acl->Get_Permissao_Url('Financeiro/Pagamento/Condicoes');
-            $perm_editar = $this->_Registro->_Acl->Get_Permissao_Url('Financeiro/Pagamento/Formas_Edit');
-            $perm_del = $this->_Registro->_Acl->Get_Permissao_Url('Financeiro/Pagamento/Formas_Del');
-            
-            foreach ($formas as $indice=>&$valor) {
-                //$tabela['#Id'][$i]       = '#'.$valor->id;
-                $tabela['Nome'][$i]      = $valor->nome;
-                $tabela['Funções'][$i]   = $this->_Visual->Tema_Elementos_Btn('Visualizar'      ,Array('Visualizar Condições de Pagamento','Financeiro/Pagamento/Condicoes/'.$valor->id.'/'    ,''),$perm_condicoes).
-                                           $this->_Visual->Tema_Elementos_Btn('Editar'          ,Array('Editar Forma de Pagamento'        ,'Financeiro/Pagamento/Formas_Edit/'.$valor->id.'/'    ,''),$perm_editar).
-                                           $this->_Visual->Tema_Elementos_Btn('Deletar'         ,Array('Deletar Forma de Pagamento'       ,'Financeiro/Pagamento/Formas_Del/'.$valor->id.'/'     ,'Deseja realmente deletar essa Forma de Pagamento ?'),$perm_del);
-                ++$i;
-            }
-            if($export!==false){
-                self::Export_Todos($export,$tabela, 'Formas de Pagamento');
-            }else{
-                $this->_Visual->Show_Tabela_DataTable(
-                    $tabela,     // Array Com a Tabela
-                    '',          // style extra
-                    true,        // true -> Add ao Bloco, false => Retorna html
-                    false,        // Apagar primeira coluna ?
-                    Array(       // Ordenacao
-                        Array(
-                            0,'desc'
-                        )
-                    )
-                );
-            }
-            unset($tabela);
-        }else{ 
-            if($export!==false){
-                $mensagem = 'Nenhuma Forma de Pagamento para Exportar';
-            }else{
-                $mensagem = 'Nenhuma Forma de Pagamento Cadastrada';
-            }  
-            $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">'.$mensagem.'</font></b></center>');
-        }
-        $titulo = 'Listagem de  Formas de Pagamento ('.$i.')';
-        $this->_Visual->Bloco_Unico_CriaJanela($titulo);
+        
+        $tabela = Array(
+            'Nome','Funções'
+        );
+        $this->_Visual->Show_Tabela_DataTable_Massiva($tabela,'Financeiro/Pagamento/Formas');
+        $titulo = 'Listagem de Formas de Pagamento (<span id="DataTable_Contador">0</span>)';  //
+        $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',10,Array("link"=>"Financeiro/Pagamento/Formas_Add",'icon'=>'add','nome'=>'Adicionar Forma de Pagamento'));
+        
         
         //Carrega Json
         $this->_Visual->Json_Info_Update('Titulo','Administrar Formas de Pagamento');
@@ -668,17 +607,15 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 2.0
      */
-    public function Condicoes($forma=0,$export=false){
+    public function Condicoes($forma=0){
         $forma = (int) $forma;
         $i = 0;
         if($forma===0){
-            $where      = Array();
             $link_extra = '/0';
             $nenhum     = 'Nenhuma Condição de Pagamento';
             $titulo     = 'Condição de Pagamento';
             $titulo2    = 'Condições de Pagamento';
         }else{
-            $where      = Array('forma_pagar'=>$forma);
             $link_extra = '/'.$forma;
             $forma = $this->_Modelo->db->Sql_Select('Financeiro_Pagamento_Forma',Array('id'=>$forma),1);
             if($forma===false)                throw new \Exception('Forma de Pagamento não existe.'.$forma,404);
@@ -687,62 +624,13 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
             $titulo2    = 'Condições de Pagamento em '.$forma->nome;
         }
         self::Endereco_Forma_Condicao(false,$forma);
-        $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
-            Array(
-                'Adicionar '.$titulo,
-                'Financeiro/Pagamento/Condicoes_Add'.$link_extra,
-                ''
-            ),
-            Array(
-                'Print'     => true,
-                'Pdf'       => true,
-                'Excel'     => true,
-                'Link'      => 'Financeiro/Pagamento/Condicoes'.$link_extra,
-            )
-        )));
-        $condicoes = $this->_Modelo->db->Sql_Select('Financeiro_Pagamento_Forma_Condicao',$where);
-        if($condicoes!==false && !empty($condicoes)){
-            if(is_object($condicoes)) $condicoes = Array(0=>$condicoes);
-            reset($condicoes);
-            $perm_editar = $this->_Registro->_Acl->Get_Permissao_Url('Financeiro/Pagamento/Condicoes_Edit');
-            $perm_del = $this->_Registro->_Acl->Get_Permissao_Url('Financeiro/Pagamento/Condicoes_Del');
-            
-            
-            foreach ($condicoes as $indice=>&$valor) {
-                //$tabela['#Id'][$i]       = '#'.$valor->id;
-                $tabela['Forma de Pagamento'][$i]   = $valor->forma_pagar2;
-                $tabela['Nome'][$i]                 = $valor->nome;
-                $tabela['Entrada'][$i]              = $valor->entrada;
-                $tabela['N° de Parcelas'][$i]       = $valor->parcelas.' Parcelas';
-                $tabela['Funções'][$i]              = $this->_Visual->Tema_Elementos_Btn('Editar'          ,Array('Editar '.$titulo        ,'Financeiro/Pagamento/Condicoes_Edit/'.$valor->id.$link_extra    ,''),$perm_editar).
-                                                      $this->_Visual->Tema_Elementos_Btn('Deletar'         ,Array('Deletar '.$titulo       ,'Financeiro/Pagamento/Condicoes_Del/'.$valor->id.$link_extra     ,'Deseja realmente deletar essa '.$titulo.' ?'),$perm_del);
-                ++$i;
-            }
-            
-            if($export!==false){
-                self::Export_Todos($export,$tabela, 'Condições de Pagamento');
-            }else{
-                $this->_Visual->Show_Tabela_DataTable(
-                    $tabela,     // Array Com a Tabela
-                    '',          // style extra
-                    true,        // true -> Add ao Bloco, false => Retorna html
-                    false,        // Apagar primeira coluna ?
-                    Array(       // Ordenacao
-                        Array(
-                            0,'desc'
-                        )
-                    )
-                );
-            }
-            unset($tabela);
-        }else{ 
-            if($export!==false){
-                $nenhum = $nenhum.' para exportar';
-            }         
-            $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">'.$nenhum.'</font></b></center>');
-        }
-        $titulo = 'Listagem de '.$titulo2.' ('.$i.')';
-        $this->_Visual->Bloco_Unico_CriaJanela($titulo);
+        
+        $tabela = Array(
+            'Forma de Pagamento','Nome','Entrada','Qnt de Parcelas','Funções'
+        );
+        $this->_Visual->Show_Tabela_DataTable_Massiva($tabela,'Financeiro/Pagamento/Condicoes'.$link_extra);
+        $this->_Visual->Bloco_Unico_CriaJanela('Listagem de '.$titulo2.' (<span id="DataTable_Contador">0</span>)','',10,Array("link"=>"Financeiro/Pagamento/Condicoes_Add",'icon'=>'add','nome'=>'Adicionar '.$titulo.''));
+        
         
         //Carrega Json
         $this->_Visual->Json_Info_Update('Titulo','Administrar '.$titulo2);

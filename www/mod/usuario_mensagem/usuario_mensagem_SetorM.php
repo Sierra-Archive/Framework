@@ -27,16 +27,16 @@ class usuario_mensagem_SetorModelo extends usuario_mensagem_Modelo
         
         if($perm_editar && $perm_del){
             $funcao = function( $d, $row ) {
-                return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Senha'        ,'usuario_mensagem/Setor/Setores_Edit/'.$d.'/'    ,''),true).
-                       Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Senha'       ,'usuario_mensagem/Setor/Setores_Del/'.$d.'/'     ,'Deseja realmente deletar essa Setor ?'),true);
+                return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Setor'        ,'usuario_mensagem/Setor/Setores_Edit/'.$d.'/'    ,''),true).
+                       Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Setor'       ,'usuario_mensagem/Setor/Setores_Del/'.$d.'/'     ,'Deseja realmente deletar essa Setor ?'),true);
             };
         }else if($perm_editar){
             $funcao = function( $d, $row ) {
-                return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Senha'        ,'usuario_mensagem/Setor/Setores_Edit/'.$d.'/'    ,''),true);
+                return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Setor'        ,'usuario_mensagem/Setor/Setores_Edit/'.$d.'/'    ,''),true);
             };
         }else if($perm_del){
             $funcao = function( $d, $row ) {
-                return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Senha'       ,'usuario_mensagem/Setor/Setores_Del/'.$d.'/'     ,'Deseja realmente deletar essa Setor ?'),true);
+                return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Setor'       ,'usuario_mensagem/Setor/Setores_Del/'.$d.'/'     ,'Deseja realmente deletar essa Setor ?'),true);
             };
         }else{
             $funcao = function( $d, $row ) {
