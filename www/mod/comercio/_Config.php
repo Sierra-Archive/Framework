@@ -31,6 +31,50 @@ $config_Menu = function (){
                     'comercio_Proposta_Checklist' => true
                 ),
                 'Filhos'                => false,
+            ),'Marcas'=>Array(
+                'Nome'                  => 'Marcas',
+                'Link'                  => 'comercio/Marca/Marcas',
+                'Gravidade'             => 66,
+                'Img'                   => 'turboadmin/m-dashboard.png',
+                'Icon'                  => 'tag',
+                'Filhos'                => false,
+                'Permissao_Func'        => Array(// Permissoes NEcessarias
+                    'comercio_Produto' => true,
+                    'comercio_Marca' => true
+                ),
+            ),'Linhas'=>Array(
+                'Nome'                  => 'Linhas',
+                'Link'                  => 'comercio/Linha/Linhas',
+                'Gravidade'             => 65,
+                'Img'                   => 'turboadmin/m-dashboard.png',
+                'Icon'                  => 'tags',
+                'Permissao_Func'        => Array(// Permissoes NEcessarias
+                    'comercio_Produto' => true,
+                    'comercio_Marca' => true,
+                    'comercio_Produto_Familia' => 'Marca'
+                ),
+                'Filhos'                => false,
+            ),'Familias'=>Array(
+                'Nome'                  => 'Familias',
+                'Link'                  => 'comercio/Familia/Familias',
+                'Gravidade'             => 64,
+                'Img'                   => 'turboadmin/m-dashboard.png',
+                'Icon'                  => 'tags',
+                'Permissao_Func'        => Array(// Permissoes NEcessarias
+                    'comercio_Produto' => true,
+                    'comercio_Produto_Familia' => 'Familia'
+                ),
+                'Filhos'                => false,
+            ),'Produtos'=>Array(
+                'Nome'                  => 'Produtos',
+                'Link'                  => 'comercio/Produto/Produtos',
+                'Gravidade'             => 62,
+                'Img'                   => 'turboadmin/m-dashboard.png',
+                'Icon'                  => 'shopping-cart',
+                'Permissao_Func'        => Array(// Permissoes NEcessarias
+                    'comercio_Produto' => true
+                ),
+                'Filhos'                => false,
             ),),
         ),
         'Financeiro' => Array(
@@ -85,58 +129,6 @@ $config_Menu = function (){
                 'Icon'                  => 'archive',
                 'Permissao_Func'        => Array(// Permissoes NEcessarias
                     'comercio_Propostas' => true
-                ),
-                'Filhos'                => false,
-            ),),
-        ),
-        'Produtos' => Array(
-            'Nome'                  => 'Produtos',
-            'Link'                  => '#',
-            'Gravidade'             => 12,
-            'Img'                   => 'turboadmin/m-dashboard.png',
-            'Icon'                  => 'briefcase',
-            'Filhos'                => Array('Marcas'=>Array(
-                'Nome'                  => 'Marcas',
-                'Link'                  => 'comercio/Marca/Marcas',
-                'Gravidade'             => 66,
-                'Img'                   => 'turboadmin/m-dashboard.png',
-                'Icon'                  => 'tag',
-                'Filhos'                => false,
-                'Permissao_Func'        => Array(// Permissoes NEcessarias
-                    'comercio_Produto' => true,
-                    'comercio_Marca' => true
-                ),
-            ),'Linhas'=>Array(
-                'Nome'                  => 'Linhas',
-                'Link'                  => 'comercio/Linha/Linhas',
-                'Gravidade'             => 65,
-                'Img'                   => 'turboadmin/m-dashboard.png',
-                'Icon'                  => 'tags',
-                'Permissao_Func'        => Array(// Permissoes NEcessarias
-                    'comercio_Produto' => true,
-                    'comercio_Marca' => true,
-                    'comercio_Produto_Familia' => 'Marca'
-                ),
-                'Filhos'                => false,
-            ),'Familias'=>Array(
-                'Nome'                  => 'Familias',
-                'Link'                  => 'comercio/Familia/Familias',
-                'Gravidade'             => 64,
-                'Img'                   => 'turboadmin/m-dashboard.png',
-                'Icon'                  => 'tags',
-                'Permissao_Func'        => Array(// Permissoes NEcessarias
-                    'comercio_Produto' => true,
-                    'comercio_Produto_Familia' => 'Familia'
-                ),
-                'Filhos'                => false,
-            ),'Produtos'=>Array(
-                'Nome'                  => 'Produtos',
-                'Link'                  => 'comercio/Produto/Produtos',
-                'Gravidade'             => 62,
-                'Img'                   => 'turboadmin/m-dashboard.png',
-                'Icon'                  => 'shopping-cart',
-                'Permissao_Func'        => Array(// Permissoes NEcessarias
-                    'comercio_Produto' => true
                 ),
                 'Filhos'                => false,
             ),),

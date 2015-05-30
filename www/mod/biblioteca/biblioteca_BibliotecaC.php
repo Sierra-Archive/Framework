@@ -325,7 +325,7 @@ class biblioteca_BibliotecaControle extends biblioteca_Controle
         self::DAO_Campos_Retira($campos, 'end_virtual');
         self::DAO_Campos_Retira($campos, 'tipo');
         self::DAO_Campos_Retira($campos, 'arquivo');
-        self::DAO_Campos_Retira($campos, 'parent');
+        //self::DAO_Campos_Retira($campos, 'parent');
         self::DAO_Campos_Retira($campos, 'usuario');
         self::DAO_Campos_Retira($campos, 'grupo');
         self::DAO_Campos_Retira($campos, 'ext');

@@ -10,12 +10,17 @@ $config_Modulo = function (){
 };
 $config_Menu = function (){
     return Array(
-        'Segurança'=>Array(
-            'Nome'                  => 'Segurança',
+        'Dev'=>Array(
+            'Nome'                  => 'Dev',
+            'Link'                  => '#',
+            'Gravidade'             => 30,
+            'Img'                   => 'turboadmin/m-dashboard.png',
+            'Icon'                  => 'list-alt',
+            /*'Nome'                  => 'Segurança',
             'Link'                  => '#',
             'Gravidade'             => 50,
             'Img'                   => 'turboadmin/m-dashboard.png',
-            'Icon'                  => 'list-alt',
+            'Icon'                  => 'list-alt',*/
             'Filhos'                => Array('Senhas'=>Array(
                 'Nome'                  => 'M. Senhas',
                 'Link'                  => 'Seguranca/Senha/Senhas',
