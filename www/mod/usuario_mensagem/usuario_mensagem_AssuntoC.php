@@ -56,7 +56,7 @@ class usuario_mensagem_AssuntoControle extends usuario_mensagem_Controle
             'Setor','Nome','Tempo de Resposta','Funções'
         );
         $this->_Visual->Show_Tabela_DataTable_Massiva($tabela,'usuario_mensagem/Assunto/Assuntos');
-        $titulo = 'Listagem de Assuntos (<span id="DataTable_Contador">0</span>)';  //
+        $titulo = 'Listagem de Assuntos (<span id="DataTable_Contador">Carregando...</span>)';  //
         $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',10,Array("link"=>"usuario_mensagem/Assunto/Assuntos_Add",'icon'=>'add','nome'=>'Adicionar Assunto'));
         
         //Carrega Json

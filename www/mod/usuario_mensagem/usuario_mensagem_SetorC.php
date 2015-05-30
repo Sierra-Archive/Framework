@@ -56,7 +56,7 @@ class usuario_mensagem_SetorControle extends usuario_mensagem_Controle
             'Grupo','Nome','Email do Setor','Funções'
         );
         $this->_Visual->Show_Tabela_DataTable_Massiva($tabela,'usuario_mensagem/Setor/Setores');
-        $titulo = 'Listagem de Setores (<span id="DataTable_Contador">0</span>)';  //
+        $titulo = 'Listagem de Setores (<span id="DataTable_Contador">Carregando...</span>)';  //
         $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',10,Array("link"=>"usuario_mensagem/Setor/Setores_Add",'icon'=>'add','nome'=>'Adicionar Setor'));
         
         //Carrega Json

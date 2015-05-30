@@ -1221,11 +1221,11 @@ class usuario_Controle extends \Framework\App\Controle
         $this->_Visual->Show_Tabela_DataTable_Massiva($tabela_colunas,$link);
         
         if($ativado===false){
-            $titulo = 'Todos os '.$nomedisplay.' (<span id="DataTable_Contador">0</span>)';
+            $titulo = 'Todos os '.$nomedisplay.' (<span id="DataTable_Contador">Carregando...</span>)';
         }elseif($ativado==0){
-            $titulo = 'Todos os '.$nomedisplay.' Desativados (<span id="DataTable_Contador">0</span>)';
+            $titulo = 'Todos os '.$nomedisplay.' Desativados (<span id="DataTable_Contador">Carregando...</span>)';
         }else{
-            $titulo = 'Todos os '.$nomedisplay.' Ativados (<span id="DataTable_Contador">0</span>)';
+            $titulo = 'Todos os '.$nomedisplay.' Ativados (<span id="DataTable_Contador">Carregando...</span>)';
         }
                 
         $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',$gravidade,Array("link"=>$link_add,'icon'=>'add','nome'=>'Adicionar '.Framework\Classes\Texto::Transformar_Plural_Singular($nomedisplay)));

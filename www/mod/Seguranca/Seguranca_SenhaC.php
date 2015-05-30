@@ -71,7 +71,7 @@ class Seguranca_SenhaControle extends Seguranca_Controle
         $this->_Visual->Show_Tabela_DataTable_Massiva($tabela,'Seguranca/Senha/Senhas');
         
         
-        $titulo = 'Listagem de Senhas';  //(<span id="DataTable_Contador">0</span>)
+        $titulo = 'Listagem de Senhas';  //(<span id="DataTable_Contador">Carregando...</span>)
         $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',10,Array("link"=>"Seguranca/Senha/Senhas_Add",'icon'=>'add','nome'=>'Adicionar Senha'));
         
         // Antigas
@@ -83,7 +83,7 @@ class Seguranca_SenhaControle extends Seguranca_Controle
         $tabela[] = 'Adicionada em';
         $tabela[] = 'Funções';
         $this->_Visual->Show_Tabela_DataTable_Massiva($tabela,'Seguranca/Senha/Senhas_Antigas');
-        $titulo = 'Listagem de Senhas Antigas';  //(<span id="DataTable_Contador">0</span>)
+        $titulo = 'Listagem de Senhas Antigas';  //(<span id="DataTable_Contador">Carregando...</span>)
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         
         //Carrega Json
@@ -384,7 +384,7 @@ class Seguranca_SenhaControle extends Seguranca_Controle
         $tabela[] = 'Funções';
         $this->_Visual->Show_Tabela_DataTable_Massiva($tabela,'Seguranca/Senha/Senhas_Todas');
         
-        $titulo = 'Listagem de Todas as Senhas';  //(<span id="DataTable_Contador">0</span>)
+        $titulo = 'Listagem de Todas as Senhas';  //(<span id="DataTable_Contador">Carregando...</span>)
         $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',0,Array("link"=>"Seguranca/Senha/Senhas_Todas_Add",'icon'=>'add','nome'=>'Adicionar Senha'));
         
         // Antigas
@@ -396,7 +396,7 @@ class Seguranca_SenhaControle extends Seguranca_Controle
         $tabela[] = 'Adicionada em';
         $tabela[] = 'Funções';
         $this->_Visual->Show_Tabela_DataTable_Massiva($tabela,'Seguranca/Senha/Senhas_Todas_Antigas');
-        $titulo = 'Listagem de Senhas Antigas';  //(<span id="DataTable_Contador">0</span>)
+        $titulo = 'Listagem de Senhas Antigas';  //(<span id="DataTable_Contador">Carregando...</span>)
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         
         //Carrega Json

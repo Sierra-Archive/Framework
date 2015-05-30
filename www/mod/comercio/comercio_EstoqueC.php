@@ -298,7 +298,7 @@ class comercio_EstoqueControle extends comercio_Controle
         }else{             
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhuma Entrada de NFE</font></b></center>');
         }*/
-        $titulo = 'Listagem de Entrada de NFE (<span id="DataTable_Contador">0</span>)';
+        $titulo = 'Listagem de Entrada de NFE (<span id="DataTable_Contador">Carregando...</span>)';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',0,Array("link"=>"comercio/Estoque/Material_Entrada_Add",'icon'=>'add','nome'=>'Adicionar Entrada de NFE'));
         
         //Carrega Json

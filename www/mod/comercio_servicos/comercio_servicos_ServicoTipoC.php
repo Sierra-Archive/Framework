@@ -35,48 +35,31 @@ class comercio_servicos_ServicoTipoControle extends comercio_servicos_Controle
         \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'comercio_servicos/ServicoTipo/Servico_Tipo');
         return false;
     }
+    static function Endereco_Servico_Tipo($true=true){
+        $registro = \Framework\App\Registro::getInstacia();
+        $_Controle = $registro->_Controle;
+        if($true===true){
+            $_Controle->Tema_Endereco('Tipos de Serviços','comercio_servicos/Servico_Tipo/Servico_Tipo');
+        }else{
+            $_Controle->Tema_Endereco('Tipos de Serviços');
+        }
+    }
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 2.0
      */
-    public function Servico_Tipo($export = false){
-        $i = 0;
-        $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
-            Array(
-                'Adicionar Tipo de Serviço',
-                'comercio_servicos/ServicoTipo/Servico_Tipo_Add',
-                ''
-            ),
-            Array(
-                'Print'     => true,
-                'Pdf'       => true,
-                'Excel'     => true,
-                'Link'      => 'comercio_servicos/ServicoTipo/Servico_Tipo',
-            )
-        )));
-        $setores = $this->_Modelo->db->Sql_Select('Comercio_Servicos_Servico_Tipo');
-        if($setores!==false && !empty($setores)){
-            if(is_object($setores)) $setores = Array(0=>$setores);
-            reset($setores);
-            foreach ($setores as $indice=>&$valor) {
-                $tabela['Nome'][$i]             = $valor->nome;
-                $tabela['Funções'][$i]          = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Tipo de Serviço'        ,'comercio_servicos/ServicoTipo/Servico_Tipo_Edit/'.$valor->id.'/'    ,'')).
-                                                  $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Tipo de Serviço'       ,'comercio_servicos/ServicoTipo/Servico_Tipo_Del/'.$valor->id.'/'     ,'Deseja realmente deletar esse Tipo de Serviço ?'));
-                ++$i;
-            }
-            if($export!==false){
-                self::Export_Todos($export,$tabela, 'Tipo de Serviço');
-            }else{
-                $this->_Visual->Show_Tabela_DataTable($tabela);
-            }
-            unset($tabela);
-        }else{          
-            $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Tipo de Serviço</font></b></center>');
-        }
-        $titulo = 'Tipos de Serviços ('.$i.')';
-        $this->_Visual->Bloco_Unico_CriaJanela($titulo);
-        
+    public function Servico_Tipo(){
+        self::Endereco_Servico_Tipo(false);
+        $tabela_colunas = Array();
+
+        $tabela_colunas[] = 'Nome';
+        $tabela_colunas[] = 'Funções';
+
+        $this->_Visual->Show_Tabela_DataTable_Massiva($tabela_colunas,'comercio_servicos/ServicoTipo/Servico_Tipo');
+        $titulo = 'Listagem de Serviços';
+        $this->_Visual->Bloco_Unico_CriaJanela($titulo.' (<span id="DataTable_Contador">Carregando...</span>)','',10,Array("link"=>"comercio_servicos/ServicoTipo/Servico_Tipo_Add",'icon'=>'add','nome'=>'Adicionar Tipo de Serviço'));
+
         //Carrega Json
         $this->_Visual->Json_Info_Update('Titulo','Administrar Tipos de Serviços');
     }

@@ -85,46 +85,20 @@ class comercio_servicos_InstalacaoControle extends comercio_servicos_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 2.0
      */
-    public function Btu($export=false){
+    public function Btu(){
         self::Endereco_Btu(false);
-        $i = 0;
-        $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
-            Array(
-                'Adicionar Btu / Equipamento',
-                'comercio_servicos/Instalacao/Btu_Add',
-                ''
-            ),
-            Array(
-                'Print'     => true,
-                'Pdf'       => true,
-                'Excel'     => true,
-                'Link'      => 'comercio_servicos/Instalacao/Btu',
-            )
-        )));
-        $btus = $this->_Modelo->db->Sql_Select('Comercio_Servicos_Btu');
-        if($btus!==false && !empty($btus)){
-            if(is_object($btus)) $btus = Array(0=>$btus);
-            reset($btus);
-            foreach ($btus as $indice=>&$valor) {
-                $tabela['Nome'][$i]                 = $valor->nome;
-                $tabela['Valor Equipamento'][$i]    = $valor->valor_ar;
-                $tabela['Valor Add de Gás'][$i]     = $valor->valor_gas;
-                $tabela['Valor Add de Linha'][$i]   = $valor->valor_linha;
-                $tabela['Funções'][$i]              = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Btu / Equipamento'        ,'comercio_servicos/Instalacao/Btu_Edit/'.$valor->id.'/'    ,'')).
-                                                      $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Btu / Equipamento'       ,'comercio_servicos/Instalacao/Btu_Del/'.$valor->id.'/'     ,'Deseja realmente deletar esse Btu ?'));
-                ++$i;
-            }
-            if($export!==false){
-                self::Export_Todos($export,$tabela, 'Instalações - Btu / Equipamento');
-            }else{
-                $this->_Visual->Show_Tabela_DataTable($tabela);
-            }
-            unset($tabela);
-        }else{       
-            $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Btu / Equipamento</font></b></center>');
-        }
-        $titulo = 'Listagem de Btu / Equipamento ('.$i.')';
-        $this->_Visual->Bloco_Unico_CriaJanela($titulo);
+        
+        $tabela_colunas = Array();
+        
+        $tabela_colunas[] = 'Nome';
+        $tabela_colunas[] = 'Valor Equipamento';
+        $tabela_colunas[] = 'Valor Add de Gás';
+        $tabela_colunas[] = 'Valor Add de Linha';
+        $tabela_colunas[] = 'Funções';
+
+        $this->_Visual->Show_Tabela_DataTable_Massiva($tabela_colunas,'comercio_servicos/Instalacao/Btu');
+        $titulo = 'Listagem de Btu / Equipamento';
+        $this->_Visual->Bloco_Unico_CriaJanela($titulo.' (<span id="DataTable_Contador">Carregando...</span>)','',10,Array("link"=>"comercio_servicos/Instalacao/Btu_Add",'icon'=>'add','nome'=>'Adicionar Btu / Equipamento'));
         
         //Carrega Json
         $this->_Visual->Json_Info_Update('Titulo','Administrar Btu / Equipamento');
@@ -235,45 +209,17 @@ class comercio_servicos_InstalacaoControle extends comercio_servicos_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 2.0
      */
-    public function Suporte($export=false){
+    public function Suporte(){
         self::Endereco_Suporte(false);
-        $i = 0;
-        $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
-            Array(
-                'Adicionar Suporte',
-                'comercio_servicos/Instalacao/Suporte_Add',
-                ''
-            ),
-            Array(
-                'Print'     => true,
-                'Pdf'       => true,
-                'Excel'     => true,
-                'Link'      => 'comercio_servicos/Instalacao/Suporte',
-            )
-        )));
         
-        $suportes = $this->_Modelo->db->Sql_Select('Comercio_Servicos_Suporte');
-        if($suportes!==false && !empty($suportes)){
-            if(is_object($suportes)) $suportes = Array(0=>$suportes);
-            reset($suportes);
-            foreach ($suportes as $indice=>&$valor) {
-                $tabela['Tipo'][$i]             = $valor->nome;
-                $tabela['Valor'][$i]            = $valor->valor;
-                $tabela['Funções'][$i]          = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Suporte'        ,'comercio_servicos/Instalacao/Suporte_Edit/'.$valor->id.'/'    ,'')).
-                                                  $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Suporte'       ,'comercio_servicos/Instalacao/Suporte_Del/'.$valor->id.'/'     ,'Deseja realmente deletar esse Suporte ?'));
-                ++$i;
-            }
-            if($export!==false){
-                self::Export_Todos($export,$tabela, 'Instalações - Suportes');
-            }else{
-                $this->_Visual->Show_Tabela_DataTable($tabela);
-            }
-            unset($tabela);
-        }else{        
-            $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Suporte</font></b></center>');
-        }
-        $titulo = 'Listagem de Suportes ('.$i.')';
-        $this->_Visual->Bloco_Unico_CriaJanela($titulo);
+        $tabela_colunas = Array();
+        $tabela_colunas[] = 'Tipo';
+        $tabela_colunas[] = 'Valor';
+        $tabela_colunas[] = 'Funções';
+
+        $this->_Visual->Show_Tabela_DataTable_Massiva($tabela_colunas,'comercio_servicos/Instalacao/Suporte');
+        $titulo = 'Listagem de Suportes';
+        $this->_Visual->Bloco_Unico_CriaJanela($titulo.' (<span id="DataTable_Contador">Carregando...</span>)','',10,Array("link"=>"comercio_servicos/Instalacao/Suporte_Add",'icon'=>'add','nome'=>'Adicionar Suporte'));
         
         //Carrega Json
         $this->_Visual->Json_Info_Update('Titulo','Administrar Suportes');
