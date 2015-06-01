@@ -1,3 +1,4 @@
+**.sublime-**
 nbproject/*
 nbproject/private/
 www/arq/**/*
@@ -9,4 +10,4 @@ www/Ini/**/!config.php
 www/Ini/**/!.htaccess
 www/Ini/**/!.htaccess
 www/mod/social/*
-www/DAO/Usuario.Social.**/*
+www/DAO/Social.**/*
