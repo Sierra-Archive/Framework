@@ -126,7 +126,7 @@ catch(Exception $e){
         echo  '<br>Previus: '.$e->getPrevious().'<br>Traço: '.$e->getTraceAsString(); exit;
     }else{
         // Chama Erro
-        if($e->getCode()!=404){
+        if($e->getCode()!=404 && $e->getCode()!=403){
             Erro_Email($e->getCode(), $e->getMessage(), $e->getFile(), $e->getLine(), $e->getPrevious(), $e->getTraceAsString());
         }
         // Redireciona

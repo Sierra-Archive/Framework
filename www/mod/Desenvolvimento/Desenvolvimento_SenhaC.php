@@ -380,7 +380,7 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
         $this->_Visual->Show_Tabela_DataTable_Massiva($tabela,'Desenvolvimento/Senha/Senhas_Todas');
         
         $titulo = 'Listagem de Todas as Senhas';  //(<span id="DataTable_Contador">Carregando...</span>)
-        $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',0,Array("link"=>"Desenvolvimento/Senha/Senhas_Todas_Add",'icon'=>'add','nome'=>'Adicionar Senha'));
+        $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',10,Array("link"=>"Desenvolvimento/Senha/Senhas_Todas_Add",'icon'=>'add','nome'=>'Adicionar Senha'));
         
         // Antigas
         $tabela = Array(
