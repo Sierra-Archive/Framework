@@ -59,7 +59,7 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
      * @version 2.0
      */
     public function Modulos($export=false){
-        $this->Endereco_Modulos(false);
+        $this->Endereco_Modulo(false);
         $i = 0;
         // Add BOtao
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
@@ -237,7 +237,7 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
      * @version 2.0
      */
     public function Submodulos($export=false){
-        $this->Endereco_Submodulos(false);
+        $this->Endereco_Submodulo(false);
         $i = 0;
         // Add BOtao
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
@@ -414,7 +414,7 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
      * @version 2.0
      */
     public function Metodos($export=false){
-        $this->Endereco_Metodos(false);
+        $this->Endereco_Metodo(false);
         $i = 0;
         // Add BOtao
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
