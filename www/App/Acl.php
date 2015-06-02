@@ -227,6 +227,13 @@ class Acl{
                     // Verifica se Possui Modulo PRedial e corresponde a um Apartamento sem nenhum cadastro
                     if(\Framework\App\Sistema_Funcoes::Perm_Modulos('predial') && $senha == 'd41d8cd98f00b204e9800998ecf8427e' && strpos($login, '/')!==false){
                         $login = explode($login, '/');
+                        if(!isset($login[1])){
+                            // Deleta Sessoes e Puxa Erro
+                            \Framework\App\Session::destroy(SESSION_ADMIN_ID);
+                            \Framework\App\Session::destroy(SESSION_ADMIN_LOG);
+                            \Framework\App\Session::destroy(SESSION_ADMIN_SENHA);
+                            $this->Fluxo_Senha_Invalida();
+                        }
                         $where = Array(
                             'nome'             => $login[1],
                         );

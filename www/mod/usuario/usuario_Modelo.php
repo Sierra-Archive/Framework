@@ -506,7 +506,7 @@ class usuario_Modelo extends \Framework\App\Modelo
                 $funcoes_qnt = 0;
             }
             ++$funcoes_qnt;
-            $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Editar\'     ,Array(\'Enviar email para Setor\'        ,\'usuario/Admin/Usuarios_Email/\'.$row[\'id\'].\''.$linkextra.'/Setor/\'    ,\'\',\'envelope\',\'danger\'),true);';
+            $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Email\'     ,Array(\'Enviar email para Setor\'        ,\'usuario/Admin/Usuarios_Email/\'.$row[\'id\'].\''.$linkextra.'/Setor/\'    ,\'\',\'envelope\',\'danger\'),true);';
         }
         // Verifica se Possue Status e Mostra
         if($usuario_Admin_Ativado_Listar!==false && $perm_status){
