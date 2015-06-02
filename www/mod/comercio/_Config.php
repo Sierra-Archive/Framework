@@ -3,8 +3,8 @@ $config_Modulo = function (){
     return Array(
         'Nome'                      =>  'comercio',
         'Descrição'                 =>  '',
-        'System_Require'            =>  '2.21.1',
-        'Version'                   =>  '0.0.1',
+        'System_Require'            =>  '3.0.0',
+        'Version'                   =>  '3.0.1',
         'Dependencias'              =>  false,
     );
 };

@@ -35,7 +35,7 @@ class Modelo
      * @return boolean
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.0.1
+     * @version 3.0.1
      */
     public function Sistema_Menu($parent=0){
         $where = Array('parent'=>$parent, 'status'  =>    '1');
@@ -74,7 +74,7 @@ class Modelo
      * @param type $parent
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.0.1
+     * @version 3.0.1
      */
     protected function Sistema_Menu_Insere(&$menu,$modulo='_Sistema',$parent=0){
         $parent = (int) $parent;

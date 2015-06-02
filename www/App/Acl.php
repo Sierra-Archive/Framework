@@ -340,7 +340,7 @@ class Acl{
      * @return type
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.0.1
+     * @version 3.0.1
      */
     public function Get_Permissao_Nome($chave,$campo='Nome') {
         $array = &self::$Sis_Permissao;
@@ -360,7 +360,7 @@ class Acl{
      * @return type
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.0.1
+     * @version 3.0.1
      */
     public function getPermissao(){
         if(isset($this->_permissao) && count($this->_permissao)){
@@ -375,7 +375,7 @@ class Acl{
      * @return boolean
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.0.1
+     * @version 3.0.1
      */
     public function Get_Permissao_Chave($chave,$campo='Nome') {
         $array = $this->getPermissao();
@@ -445,7 +445,7 @@ class Acl{
      * Compilar as Permissões, Junta as Permissoes de Usuario com as de Grupo
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.0.1
+     * @version 3.0.1
      */
     private function compilarAcl(){
         $usuario_perm = $this->getUsuarioPermissao();
@@ -460,7 +460,7 @@ class Acl{
      * @return boolean
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.0.1
+     * @version 3.0.1
      */
     private function getGrupo(){
         $sql = $this->_db->query(
@@ -582,7 +582,7 @@ class Acl{
      * @return boolean
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.0.1
+     * @version 3.0.1
      */
     private function getPermissaoGrupo(){
         $data = Array();
@@ -617,7 +617,7 @@ class Acl{
      * @return array
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.0.1
+     * @version 3.0.1
      */
     private function getUsuarioPermissao(){
         $data = Array();
@@ -762,7 +762,7 @@ class Acl{
      * @return boolean
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.0.1
+     * @version 3.0.1
      */
     public function Usuario_Logar($login='',$senha='',$id=0){
         if($login!=='') \Framework\App\Session::set(SESSION_ADMIN_LOG,   $login);
@@ -790,7 +790,7 @@ class Acl{
      * @return int Id de Usuario logado ou zero
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.0.1
+     * @version 3.0.1
      */
     static public function Usuario_GetLogado_Static(){
         return \Framework\App\Registro::getInstacia()->_Acl->logado;
@@ -811,7 +811,7 @@ class Acl{
      * Inseri Novos Grupos (Grupos Basicos) no Sistema
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.0.1
+     * @version 3.0.1
      */
     static function grupos_inserir(){
         
@@ -1034,7 +1034,7 @@ class Acl{
      * 
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.0.1
+     * @version 3.0.1
      */
     private function Sistema_Permissoes_InserirPadrao(){
         $configPermissoes = self::Sistema_Modulos_Carregar_Permissoes();

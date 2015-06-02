@@ -102,7 +102,7 @@ abstract class Controle
      * @throws Exception
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.0.1
+     * @version 3.0.1
      */
     protected function getLibrary($lib){
         $url_livraria = ROOT.'libs'.DS.$lib.'.php';
@@ -1316,7 +1316,7 @@ readfile($link);*/
      * @throws Exception
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.0.1
+     * @version 3.0.1
      */
     static function Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,&$campos = false,$editar=false,$bloco='All',$janela=true){
         $registro = &\Framework\App\Registro::getInstacia();
@@ -1445,7 +1445,7 @@ readfile($link);*/
      * @param type $erro2
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.0.1
+     * @version 3.0.1
      */
     protected function Gerador_Formulario_Janela2($titulo,$dao,$funcao = '',$sucesso1,$sucesso2,$colocar=false,$erro1 = '',$erro2 = ''){
         global $language;
@@ -2271,7 +2271,7 @@ readfile($link);*/
      * 
      * #update
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.0.1
+     * @version 3.0.1
      */
     /*protected function _Permissao_Verificar($chave){
         $array = $this->_Acl->getPermissao();

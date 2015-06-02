@@ -23,7 +23,7 @@ class usuario_mensagem_SuporteModelo extends usuario_mensagem_Modelo
      * @return type
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.0.1
+     * @version 3.0.1
      */
     public function Suporte_MensagensSetor(&$array,$grupo=0){
         $array = Array();
@@ -87,7 +87,7 @@ class usuario_mensagem_SuporteModelo extends usuario_mensagem_Modelo
      * @return type
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.0.1
+     * @version 3.0.1
      */
     public static function Suporte_MensagensCliente(&$array,$cliente=0){
         $registro = &\Framework\App\Registro::getInstacia();

@@ -11,7 +11,7 @@ class _Sistema_PrincipalControle extends _Sistema_Controle
     /**
      * Home
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.0.1
+     * @version 3.0.1
      */
     public function Home(){
         $tempo = new \Framework\App\Tempo('HOME');   
@@ -35,7 +35,7 @@ class _Sistema_PrincipalControle extends _Sistema_Controle
     /**
      * Busca
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.0.1
+     * @version 3.0.1
      */
     public function Busca($busca=false){
         if($busca===false){

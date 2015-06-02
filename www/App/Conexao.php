@@ -95,7 +95,7 @@ final class Conexao
      * @return void
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.0.1
+     * @version 3.0.1
      */
     public function __construct()
     {
@@ -177,7 +177,7 @@ final class Conexao
      * @throws \Exception
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.0.1
+     * @version 3.0.1
      */
     public static function &Dao_GetColunas($nome){
         if(isset(self::$tabelas[$nome.'_DAO']['colunas'])){
@@ -195,7 +195,7 @@ final class Conexao
      * @throws \Exception
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.0.1
+     * @version 3.0.1
      */
     private function &Dao_GetColunas_Nome($nome){
         $tabelas = &self::$tabelas;
@@ -226,7 +226,7 @@ final class Conexao
      * @return Array $re
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.0.1
+     * @version 3.0.1
      */
     public function query($sql,$autoreparo=true) 
     {
@@ -286,7 +286,7 @@ final class Conexao
      * @param type $sql
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.0.1
+     * @version 3.0.1
      * 
      * 
      * #update ... Invez de fazxer varias conexoes, armazena tudo em uma variavel, e faz uma conexao só no final
@@ -309,7 +309,7 @@ final class Conexao
      * @param type $erro
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.0.1
+     * @version 3.0.1
      * @return bolean Verdadeiro se tiver consertado, falso caso contrario
      */
     public function autoreparo_query($query, $erro){
@@ -547,7 +547,7 @@ final class Conexao
      * @return type
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.0.1
+     * @version 3.0.1
      */
     public function Sql_Query($comando, &$tabela, $executar_query = true){
         // Declara Variaveis
@@ -695,7 +695,7 @@ final class Conexao
      * @return int
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.0.1
+     * @version 3.0.1
      */
     public function Sql_Inserir(&$Objeto,$tempo=true,$retorna=false){
         if($tempo){
@@ -773,7 +773,7 @@ final class Conexao
      * @throws Exception
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.0.1
+     * @version 3.0.1
      */
     public function Sql_Delete(&$objetos,$deletar=false){
         if($objetos===false)    return false;
@@ -822,7 +822,7 @@ final class Conexao
      * @throws Exception
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.0.1
+     * @version 3.0.1
      */
     public function Sql_Update(&$Objeto, $log=true,$tempo=true,$retornar=false){
         if($tempo){
@@ -917,6 +917,7 @@ final class Conexao
      * 
      * @param type $class_dao Classe Dao do Sistema ou Modulo
      * @param type $campos Campos Correspondentes
+     * @param type $deletados = Se False, não inclui os deletados, se TRUE, só mostra os deletados, para mostrar todos use string '*'
      * @return array list(
      *       $sql,
      *       $sql_tabela_sigla,
@@ -925,12 +926,19 @@ final class Conexao
      *       $tabelas_usadas,$j
      *   )
      */
-    public function Sql_Select_Dados($class_dao,$campos,$sql='SELECT',$retornar_extrangeiras_usadas=false){
+    public function Sql_Select_Dados($class_dao,$campos,$sql='SELECT',$retornar_extrangeiras_usadas=false,$deletados=false){
+        // Carrega Chave do Cache
+        $chave_cache = 'Select-'.$class_dao.serialize($campos).$sql;
+        if($deletados){
+            $chave_cache .= 'true';
+        }else{
+            $chave_cache .= 'false';
+        }
         // Carrega Cache
-        $Cache = $this->_Cache->Ler('Select-'.$class_dao.serialize($campos).$sql);
+        $Cache = $this->_Cache->Ler($chave_cache);
         if (!$Cache) {
-            $Cache = $this->Sql_Select_Comeco($class_dao, $campos,$sql);
-            $this->_Cache->Salvar('Select-'.$class_dao.serialize($campos).$sql, $Cache);
+            $Cache = $this->Sql_Select_Comeco($class_dao, $campos,$sql,$deletados);
+            $this->_Cache->Salvar($chave_cache, $Cache);
         }
         // Verifica se tira a ultima ou nao e depois retorna
         if(!$retornar_extrangeiras_usadas){
@@ -953,6 +961,8 @@ final class Conexao
      * @param type $class_dao Classe Dao do Sistema ou Modulo
      * @param type $campos Campos Correspondentes
      * @param type $sql Quase sempre sera SELECT ou SELECT SQL_CALC_FOUND_ROWS 
+     * @param type $deletados = Se False, não inclui os deletados, se TRUE, só mostra os deletados, para mostrar todos use string '*'
+     * 
      * @return array list(
      *       $sql,
      *       $sql_tabela_sigla,
@@ -962,7 +972,7 @@ final class Conexao
      *   )
      * @throws \Exception
      */
-    private function Sql_Select_Comeco($class_dao,$campos,$sql='SELECT'){
+    private function Sql_Select_Comeco($class_dao,$campos,$sql='SELECT',$deletados=false){
         $campos_todos = false;
         
         // Campos Usados da Principal e das Extrangeiras
@@ -1155,8 +1165,13 @@ final class Conexao
             ++$j;
         }
         // Nao deletado
-        if($j!=0) $sql_condicao .= ' AND ';
-        $sql_condicao .= $sql_tabela_sigla.'.deletado != \'1\'';
+        if($deletados===false){
+            if($j!=0) $sql_condicao .= ' AND ';
+            $sql_condicao .= $sql_tabela_sigla.'.deletado != \'1\'';
+        }else if($deletados===true){
+            if($j!=0) $sql_condicao .= ' AND ';
+            $sql_condicao .= $sql_tabela_sigla.'.deletado != \'0\'';
+        }
         ++$j;
         
         // Adiciona Virgula caso tenha variaiveis a buscar 
@@ -1210,9 +1225,10 @@ final class Conexao
      * @param type $limit
      * @param type $campos * todos ou campos separados por ,
      * @param type $tempo = Medicao de TEmpo
+     * @param type $deletados = Se False, não inclui os deletados, se TRUE, só mostra os deletados, para mostrar todos use string '*'
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.0.1
+     * @version 3.0.1
      * 
      * 
      * $condicao = Array(
@@ -1227,7 +1243,7 @@ final class Conexao
      *       and $indice2!=$valor2 and ($indice3=$valor3 OR $indice4!=$valor4);
      * 
      */
-    public function Sql_Select($class_dao,$condicao = false,$limit = 0, $order_by='', $campos = '*', $tempo = true){
+    public function Sql_Select($class_dao,$condicao = false,$limit = 0, $order_by='', $campos = '*', $tempo = true, $deletados = false){
         if($limit===false) $limit = 0;
         /*if($tempo){
             $temponome  = $class_dao.' - '.  serialize($condicao).$limit.$order_by;
@@ -1258,7 +1274,7 @@ final class Conexao
             $sql_condicao,
             $tabela_campos_valores,
             $tabelas_usadas,$j
-        ) = $this->Sql_Select_Dados($class_dao,$campos);
+        ) = $this->Sql_Select_Dados($class_dao,$campos,'SELECT',false,$deletados);
         /*echo "\n\n<br><br>";
         var_dump(
             $sql,
@@ -1535,16 +1551,12 @@ final class Conexao
         
         
         // Puxa Tudo de Uma vez Só
-        //var_dump($query_result->fetch_all(MYSQLI_ASSOC));
-        
-        $start_memory = memory_get_usage();
         // Puxa Resultado a Resultado e o transforma em um objeto
         while ($campo = $query_result->fetch_object()) {
             $resultado[] = new $class_dao;
             $this->Sql_Manipulacao_CarregarObjeto($resultado[$contador], $campo, $tabela_campos_valores);
             ++$contador;
         }
-        //echo "\n<br>Usado:".(round((memory_get_usage() - $start_memory)/1024/1024,4)).'MB';
         
         if($contador==0)        return false;
         else if($contador==1)   return $resultado[0];
@@ -1587,7 +1599,7 @@ final class Conexao
      * @return boolean
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.0.1
+     * @version 3.0.1
      * 
      * #UPDATE FAZER VALOR_PADRAO PARA PEGAR DE EDICAO
      */
@@ -1784,7 +1796,7 @@ final class Conexao
      * @return type
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.0.1
+     * @version 3.0.1
      */
     public function Tabelas_CapturaExtrangeiras(&$objeto){
         
@@ -1880,7 +1892,7 @@ final class Conexao
      * @return type
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.0.1
+     * @version 3.0.1
      */
     public function Extrangeiras_Quebra($extrangeiro){
         // Divide string e recupera valores importantes
@@ -1921,7 +1933,7 @@ final class Conexao
      * @return boolean
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.0.1
+     * @version 3.0.1
      */
     private static function Tabelas_Variaveis_Gerar(){
         $tempo = new \Framework\App\Tempo('Conexao - Processar Tabelas Gerar Variaveis');
@@ -1968,7 +1980,7 @@ final class Conexao
      * @return type
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.0.1
+     * @version 3.0.1
      */
     public static function &Tabelas_GetSiglas_Recolher($sigla){
         return self::$tabelas_siglas[$sigla];
@@ -1979,7 +1991,7 @@ final class Conexao
      * @return type
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.0.1
+     * @version 3.0.1
      */
     public static function &Tabelas_GetCampos_Recolher($sigla){
         $array = \Framework\App\Conexao::Tabelas_GetSiglas_Recolher($sigla);
@@ -2000,7 +2012,7 @@ final class Conexao
      * @return type
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.0.1
+     * @version 3.0.1
      */
     public static function Tabelas_GetLinks_Recolher($sigla,$invertido=false){
         if($invertido){
@@ -2020,7 +2032,7 @@ final class Conexao
      * @return type
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.0.1
+     * @version 3.0.1
      */
     public static function Load($class,$nome=false){
         if($nome===false){
@@ -2048,7 +2060,7 @@ final class Conexao
      * @return type
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.0.1
+     * @version 3.0.1
      */
     protected function Tabelas(){
         $tabelas        = &self::$tabelas;

@@ -95,7 +95,7 @@ class usuario_mensagem_SuporteControle extends usuario_mensagem_Controle
      * 
      * @param type $grupo  (-1 = Admin)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.0.1
+     * @version 3.0.1
      */
     public function MensagensSetores($grupo = 0){
         $i = 0;
@@ -138,7 +138,7 @@ class usuario_mensagem_SuporteControle extends usuario_mensagem_Controle
      * 
      * @param type $cliente
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.0.1
+     * @version 3.0.1
      */
     public static function MensagensdeCliente($cliente = 0,$retorno='Unico'){
         $registro = &\Framework\App\Registro::getInstacia();

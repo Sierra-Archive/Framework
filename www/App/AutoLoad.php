@@ -350,8 +350,8 @@ while($i<1000){
         return Array(
             'Nome'                      =>  'Agenda',
             'Descrição'                 =>  '',
-            'System_Require'            =>  '2.21.1',
-            'Version'                   =>  '0.0.1',
+            'System_Require'            =>  '3.0.0',
+            'Version'                   =>  '3.0.1',
             'Dependencias'              =>  false,
         );
     };
@@ -367,8 +367,8 @@ while($i<1000){
     $config_Modulo = Array(
         'Nome'                      =>  'Agenda',
         'Descrição'                 =>  '',
-        'System_Require'            =>  '2.21.1',
-        'Version'                   =>  '0.0.1',
+        'System_Require'            =>  '3.0.0',
+        'Version'                   =>  '3.0.1',
         'Dependencias'              =>  false,
     );
     ++$i;
@@ -382,8 +382,8 @@ $config = Array();
 while($i<1000){
     $config['Nome']= 'Agenda';
     $config['Descrição']                 =  '';
-     $config['System_Require']            =  '2.21.1';
-     $config['Version']                   =  '0.0.1';
+     $config['System_Require']            =  '3.0.0';
+     $config['Version']                   =  '3.0.1';
     $config['Dependencias']              =  false;
     ++$i;
 }

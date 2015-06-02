@@ -102,5 +102,36 @@ class biblioteca_Principal implements PrincipalInterface
         $Visual->Bloco_Unico_CriaJanela($titulo);
         return $i;
     }
+    /**
+     * Classe de Manutenção do Sistema
+     * #update Acabar de Fazer
+     * 
+     * @param Array $log Sempre será Adicionado Novos Arrays com Indice ['Nome'] e ['Descricao']
+     * 
+     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
+     * @version 2.0
+     */
+    public static function Manutencao(&$log){
+        $Registro = &\Framework\App\Registro::getInstacia();
+        $modelo = $Registro->_Modelo;
+        $Visual = $Registro->_Visual;
+        // Endereços dos arquivos $bibliotecas_chaves['endereco'] = 'ID';
+        $bibliotecas_chaves = Array();
+        
+        // Carrega Bibliotecas
+        $biblioteca = $modelo->db->Sql_Select('Biblioteca',false,0, '', '*', true, '*'); // Pega Todos os Dados de Bibliotecas -> Até os Deletados.
+        if(is_object($biblioteca))  $biblioteca = Array($biblioteca);
+        if($biblioteca===false)     $biblioteca = Array();
+        
+        // Verifica se Todos tem Download Válido
+        if(!empty($biblioteca)){
+            foreach($biblioteca as $valor){
+
+            }
+        }
+        
+        // Percorre Todos os Arquivos da Biblioteca no SERVIDOR.
+        //E verifica se Algum não está sendo usado.
+    }
 }
 ?>

@@ -22,7 +22,7 @@ class usuario_rede_ListarVisual extends usuario_rede_Visual
      * @param type $nivel
      * @return type
      * 
-     * @version 0.0.1
+     * @version 3.0.1
      */
     public function Show_RedeIndicadosNivel(&$array,$nivel = 1){
         $html = '';
