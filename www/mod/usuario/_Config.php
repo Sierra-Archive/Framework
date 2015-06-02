@@ -313,7 +313,7 @@ $config_Funcional = function (){
             'Nome'                  => 'Usuarios -> Login',
             'Desc'                  => 'Se possue login em Usuarios',
             'chave'                 => 'usuario_Login',
-            'Valor'                 => true,  // false, true, ou array com os grupos que pode
+            'Valor'                 => true,  // false, true, ou array com as categorias de grupos que podem
         ),
         'usuario_Anexo'  => Array(
             'Nome'                  => 'Usuarios -> Anexo',

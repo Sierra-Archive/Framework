@@ -77,11 +77,14 @@ exit;
  */
 // Cookies de sessão só devem ser acessados via HTTP
 ini_set('session.cookie_httponly', 1);
+// Muda Timezone para a Brasileira
 ini_set('date.timezone', 'America/Sao_Paulo');
 // COnexoes limite infinito
 ini_set('mysqli.max_links', -1);
-
-ini_set('max_execution_time', 300);
+// Podendo Usar Memória Infinita
+ini_set('memory_limit', '-1');
+// Tempo Maximo de Execução para Infinito
+ini_set('max_execution_time', 0);
 // Tipo de Linguagem
 header('Content-Type: text/html; charset=UTF-8');
 // Cache
