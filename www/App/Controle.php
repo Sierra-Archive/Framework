@@ -19,7 +19,7 @@ abstract class Controle
     
     protected $_Acl;
     
-    protected $sistema_linguagem = 'ptBR';
+    protected $sistema_linguagem = SISTEMA_LINGUAGEM;
     
     protected $layoult_zerar = 'naousado'; // 
     public static $config_template;

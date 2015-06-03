@@ -38,7 +38,7 @@ class Visual
      * Linguagem que o sistema carregara (Ainda nao esta implementado em outra lingua)
      * @var type 
      */
-    protected $sistema_linguagem        = 'ptBR';
+    protected $sistema_linguagem        = SISTEMA_LINGUAGEM;
     /**
      * Tipo de Layoult, Pode ser 0 Normal, 1 Ajax, ou 2 So COnteudo PURO
      * @var type 

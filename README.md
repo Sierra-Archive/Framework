@@ -23,7 +23,7 @@ hospedado, os arquivos de configuração devem ficar dentro dela.
     define('SISTEMA_DEBUG',         true);
     define('SRV_NAME_SQL',          'NOME_DO_PROJETO'); // PODE SER USADO O MESMO BANCO DE DADOS PARA VARIOS SISTEMAS, 
                                                         // ESSE NOME É USADO PARA NÂO HAVER CONFLITO ENTRE OS SISTEMAS
-    define('SISTEMA_LINGUAGEM',          'ptBR');
+    define('SISTEMA_LINGUAGEM',          'pt_BR');
 
     // CONFIGURACOES PHP
     define('SOBRE_DIREITOS',        'sierratecnologia');

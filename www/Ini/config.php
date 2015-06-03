@@ -31,7 +31,7 @@ if(!defined('SISTEMA_EXPORTAR_EXCEL')){
 
 // Linguagem Do Sistema
 if(!defined('SISTEMA_LINGUAGEM')){
-    define('SISTEMA_LINGUAGEM',        'ptBR'); 
+    define('SISTEMA_LINGUAGEM',        'pt_BR'); 
 }
 // Modulo, Submodulo, e Metodo da Pagina Inicial
 if(!defined('DEFAULT_MODULO')){
