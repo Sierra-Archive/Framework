@@ -1280,10 +1280,10 @@ class Visual
         if($this->jsonativado!==false && isset($this->json['Info']) && array_search('Mensagens', $this->json['Info']['Tipo'])!==false){
             foreach($this->json['Mensagens'] as &$valor){
                 if($valor['tipo']==='erro'){
-                    $tipo_nome      = 'Erro';
+                    $tipo_nome      = __('Erro');
                     $tipo_reportar = 'error';
                 }else{
-                    $tipo_nome      = 'Sucesso';
+                    $tipo_nome      = __('Sucesso');
                     $tipo_reportar = 'success';
                 }
                 $params['template']['Bloco_Unico'] = '<div class="alert alert-block alert-'.$tipo_reportar.' fade in">'.
@@ -1301,7 +1301,7 @@ class Visual
         }
             
         if($params['site_titulo']===false){
-            $params['site_titulo'] = 'Sistema';
+            $params['site_titulo'] = __('Sistema');
         }
         $this->renderizar_Template('template',$params,false);
     }
@@ -1441,10 +1441,10 @@ class Visual
             if($this->jsonativado!==false && isset($this->json['Info']) && array_search('Mensagens', $this->json['Info']['Tipo'])!==false){
                 foreach($this->json['Mensagens'] as &$valor){
                     if($valor['tipo']==='erro'){
-                        $tipo_nome      = 'Erro';
+                        $tipo_nome      = __('Erro');
                         $tipo_reportar = 'error';
                     }else{
-                        $tipo_nome      = 'Sucesso';
+                        $tipo_nome      = __('Sucesso');
                         $tipo_reportar = 'success';
                     }
                     $params['mensagem'] = '<div class="alert alert-block alert-'.$tipo_reportar.' fade in">'.

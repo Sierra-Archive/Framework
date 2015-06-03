@@ -2,7 +2,7 @@
 session_start(); // this MUST be called prior to any output including whitespaces and line breaks!
 
 $GLOBALS['ct_recipient']   = 'YOU@EXAMPLE.COM'; // Change to your email address!
-$GLOBALS['ct_msg_subject'] = 'Securimage Test Contact Form';
+$GLOBALS['ct_msg_subject'] = __('Securimage Test Contact Form');
 
 $GLOBALS['DEBUG_MODE'] = 1;
 // CHANGE TO 0 TO TURN OFF DEBUG MODE
@@ -145,20 +145,20 @@ function process_si_contact_form()
 
             if (strlen($name) < 3) {
                 // name too short, add error
-                $errors['name_error'] = 'Your name is required';
+                $errors['name_error'] = __('Your name is required');
             }
 
             if (strlen($email) == 0) {
                 // no email address given
-                $errors['email_error'] = 'Email address is required';
+                $errors['email_error'] = __('Email address is required');
             } else if ( !preg_match('/^(?:[\w\d]+\.?)+@(?:(?:[\w\d]\-?)+\.)+\w{2,4}$/i', $email)) {
                 // invalid email format
-                $errors['email_error'] = 'Email address entered is invalid';
+                $errors['email_error'] = __('Email address entered is invalid');
             }
 
             if (strlen($message) < 20) {
                 // message length too short
-                $errors['message_error'] = 'Please enter a message';
+                $errors['message_error'] = __('Please enter a message');
             }
         }
 
@@ -169,7 +169,7 @@ function process_si_contact_form()
             $securimage = new Securimage();
 
             if ($securimage->check($captcha) == false) {
-                $errors['captcha_error'] = 'Incorrect security code entered';
+                $errors['captcha_error'] = __('Incorrect security code entered');
             }
         }
 

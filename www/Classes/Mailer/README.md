@@ -60,7 +60,7 @@ $mail->Password = 'secret';                           // SMTP password
 $mail->SMTPSecure = 'tls';                            // Enable encryption, 'ssl' also accepted
 
 $mail->From = 'from@example.com';
-$mail->FromName = 'Mailer';
+$mail->FromName = __('Mailer');
 $mail->addAddress('josh@example.net', 'Josh Adams');  // Add a recipient
 $mail->addAddress('ellen@example.com');               // Name is optional
 $mail->addReplyTo('info@example.com', 'Information');
@@ -72,7 +72,7 @@ $mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
 $mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
 $mail->isHTML(true);                                  // Set email format to HTML
 
-$mail->Subject = 'Here is the subject';
+$mail->Subject = __('Here is the subject');
 $mail->Body    = 'This is the HTML message body <b>in bold!</b>';
 $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 

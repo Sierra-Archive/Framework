@@ -380,7 +380,7 @@ $tempo = new \Framework\App\Tempo('Teeste3');
 $i = 0;
 $config = Array();
 while($i<1000){
-    $config['Nome']= 'Agenda';
+    $config['Nome']= __('Agenda');
     $config['Descrição']                 =  '';
      $config['System_Require']            =  '3.1.0';
      $config['Version']                   =  '3.1.1';

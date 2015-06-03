@@ -874,14 +874,14 @@ class Acl{
             // Admin Master
             $grupo = new \Sistema_Grupo_DAO();
             //$grupo->id = 1;
-            $grupo->nome = 'Admin Master';
+            $grupo->nome = __('Admin Master');
             $grupo->categoria = $gerais_id;
             $this->_db->Sql_Inserir($grupo);
             
             // Admin
             $grupo = new \Sistema_Grupo_DAO();
             //$grupo->id = 2;
-            $grupo->nome = 'Admin';
+            $grupo->nome = __('Admin');
             $grupo->categoria = $gerais_id;
             $this->_db->Sql_Inserir($grupo);
             
@@ -895,14 +895,14 @@ class Acl{
             // Funcionario
             $grupo = new \Sistema_Grupo_DAO();
             //$grupo->id = 3;
-            $grupo->nome = 'Funcionário';
+            $grupo->nome = __('Funcionário');
             $grupo->categoria = $funcionarios_id;
             $this->_db->Sql_Inserir($grupo);
             
             // Newsletter
             $grupo = new \Sistema_Grupo_DAO();
             //$grupo->id = 4;
-            $grupo->nome = 'Newsletter';
+            $grupo->nome = __('Newsletter');
             $grupo->categoria = $funcionarios_id;
             $this->_db->Sql_Inserir($grupo);
         }

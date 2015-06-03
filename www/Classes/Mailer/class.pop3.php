@@ -290,7 +290,7 @@ class POP3
     public function login($username = '', $password = '')
     {
         if ($this->connected == false) {
-            $this->error = 'Not connected to POP3 server';
+            $this->error = __('Not connected to POP3 server');
 
             if ($this->do_debug >= 1) {
                 $this->displayErrors();

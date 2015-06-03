@@ -155,7 +155,7 @@ abstract class Controle
     public static function Enviar_Email($texto,$assunto='Sem Assunto',$email=false,$nome=false){
         require_once CLASS_PATH . 'Email'.DS.'Email'.'.php';
         if($email===false) $email = SISTEMA_EMAIL_RECEBER;
-        if($nome===false) $nome = 'Administrador';
+        if($nome===false) $nome = __('Administrador');
         $mailer = new \Framework\Classes\Email();
         $send	= $mailer->setTo($email, $nome)
                     ->setSubject($assunto.' - '.SISTEMA_NOME)
@@ -228,7 +228,7 @@ abstract class Controle
 
             $mail->Subject      = 'Anexo de Chamado - '.SISTEMA_NOME;
             $mail->Body         = $amensagem;
-            $mail->AltBody      = 'Arquivo em Anexo';
+            $mail->AltBody      = __('Arquivo em Anexo');
             if($mail->send()){
                 $mensagens = array(
                     "tipo" => 'sucesso',
@@ -951,7 +951,7 @@ readfile($link);*/
                     if(isset($tabelalinkada['selectmultiplo']['infonulo']) && $tabelalinkada['selectmultiplo']['infonulo']!='' && $tabelalinkada['selectmultiplo']['infonulo']!==false){
                         $select_infonulo = $tabelalinkada['SelectMultiplo']['infonulo'];
                     }else{
-                        $select_infonulo = 'Escolha uma Opção';
+                        $select_infonulo = __('Escolha uma Opção');
                     }
                     
                     // Puxa Selecionados, Resutados e Colunas
@@ -1075,7 +1075,7 @@ readfile($link);*/
                 if(isset($valor['edicao']['select']['infonulo']) && $valor['edicao']['select']['infonulo']!='' && $valor['edicao']['select']['infonulo']!==false){
                     $select_infonulo = $valor['edicao']['select']['infonulo'];
                 }else{
-                    $select_infonulo = 'Escolha uma Opção';
+                    $select_infonulo = __('Escolha uma Opção');
                 }
                 
                 // Multiplo select ou nao?
@@ -1237,7 +1237,7 @@ readfile($link);*/
                     if(isset($valor['edicao']['select']['infonulo']) && $valor['edicao']['select']['infonulo']!='' && $valor['edicao']['select']['infonulo']!==false){
                         $select_infonulo = $valor['edicao']['select']['infonulo'];
                     }else{
-                        $select_infonulo = 'Escolha uma Opção';
+                        $select_infonulo = __('Escolha uma Opção');
                     }
                     
                     $html .= $form->Select_Novo(
@@ -2332,7 +2332,7 @@ readfile($link);*/
             /*// carrega menu estatisticas se exister antes de encerrar tudo
             if(file_exists(MOD_PATH.''.\anti_injection(SISTEMA_MODULO).'/StatC.php')){
                 $this->_Visual->menu['SubMenu']['link'][] = URL_PATH.''.\anti_injection(SISTEMA_MODULO).'/Stat/Modulo';
-                $this->_Visual->menu['SubMenu']['nome'][] = 'Estatisticas';
+                $this->_Visual->menu['SubMenu']['nome'][] = __('Estatisticas');
                 if(SISTEMA_SUB=='Stat' && SISTEMA_MET=='Modulo') $this->_Visual->menu['SubMenu']['ativo'][] = 1;
                 else $this->_Visual->menu['SubMenu']['ativo'][] = 0;
             }*/

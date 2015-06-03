@@ -87,7 +87,7 @@ namespace Framework\Classes {
          * The From name of the message.
          * @type string
          */
-        public $FromName = 'Root User';
+        public $FromName = __('Root User');
 
         /**
          * The Sender email (Return-Path) of the message.

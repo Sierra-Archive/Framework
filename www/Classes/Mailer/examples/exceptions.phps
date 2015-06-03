@@ -19,7 +19,7 @@ try {
     //Set who the message is to be sent to
     $mail->addAddress('whoto@example.com', 'John Doe');
     //Set the subject line
-    $mail->Subject = 'PHPMailer Exceptions test';
+    $mail->Subject = __('PHPMailer Exceptions test');
     //Read an HTML message body from an external file, convert referenced images to embedded,
     //and convert the HTML into a basic plain-text alternative body
     $mail->msgHTML(file_get_contents('contents.html'), dirname(__FILE__));

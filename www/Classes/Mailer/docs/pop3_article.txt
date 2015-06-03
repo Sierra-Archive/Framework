@@ -13,9 +13,9 @@ $pop->authorise('pop3.example.com', 110, 30, 'mailer', 'password', 1);
 $mail = new PHPMailer(); $mail->SMTPDebug = 2; $mail->isSMTP();
 $mail->isHTML(false); $mail->Host = 'relay.example.com';
 $mail->From = 'mailer@example.com';
-$mail->FromName = 'Example Mailer';
-$mail->Subject = 'My subject';
-$mail->Body = 'Hello world';
+$mail->FromName = __('Example Mailer');
+$mail->Subject = __('My subject');
+$mail->Body = __('Hello world');
 $mail->addAddress('rich@corephp.co.uk', 'Richard Davey');
 if (!$mail->send()) {
     echo $mail->ErrorInfo;
