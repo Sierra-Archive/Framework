@@ -52,7 +52,7 @@ class usuario_rede_ListarControle extends usuario_rede_Controle
             usuario_rede_Controle::num_Indicados($this->_Modelo, $this->_Visual, $this->_Acl->Usuario_GetID());
 
             // ORGANIZA E MANDA CONTEUDO
-            $this->_Visual->Json_Info_Update('Titulo','Rede');
+            $this->_Visual->Json_Info_Update('Titulo', __('Rede'));
         }
     }
     public function Carrega_Indicados($id,$nivel){
@@ -65,7 +65,7 @@ class usuario_rede_ListarControle extends usuario_rede_Controle
         $redes = $this->_Modelo->Indicados_Retorna($usuarioid,$nivel);
         $html = $this->_Visual->Show_RedeIndicadosNivel($redes,$nivel);  
         // ORGANIZA E MANDA CONTEUDO
-        $this->_Visual->Json_Info_Update('Titulo','Rede'); 
+        $this->_Visual->Json_Info_Update('Titulo', __('Rede')); 
         $conteudo = array(
           'location' => "#".$div,
           'js' => '',

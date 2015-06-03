@@ -39,7 +39,7 @@ class usuario_mensagem_AdminControle extends usuario_mensagem_Controle
             $this->Mensagenslistar(1);
             //$this->Mensagem_formulario();
             // ORGANIZA E MANDA CONTEUDO
-            $this->_Visual->Json_Info_Update('Titulo','Tickets');  
+            $this->_Visual->Json_Info_Update('Titulo', __('Tickets'));  
         }
     }
     public function Mensagem_Editar($mensagem=0){
@@ -102,7 +102,7 @@ class usuario_mensagem_AdminControle extends usuario_mensagem_Controle
         
         $this->Mensagem();
         
-        $this->_Visual->Json_Info_Update('Titulo', 'Mensagem deletada com Sucesso');  
+        $this->_Visual->Json_Info_Update('Titulo', __('Mensagem deletada com Sucesso'));  
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
 }

@@ -57,7 +57,7 @@ class predial_CorreioControle extends predial_Controle
         $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
         // Recupera pagina atualiza
         $this->Correios();
-        $this->_Visual->Json_Info_Update('Titulo', 'Correio declarado Recebido com Sucesso');  
+        $this->_Visual->Json_Info_Update('Titulo', __('Correio declarado Recebido com Sucesso'));  
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
     static function Correios_Tabela(&$correios,$recebido=false){
@@ -127,7 +127,7 @@ class predial_CorreioControle extends predial_Controle
         $this->Correios_Bloco(false, 10);
         $this->Correios_Bloco(true);
         // ORGANIZA E MANDA CONTEUDO
-        $this->_Visual->Json_Info_Update('Titulo','Correios'); 
+        $this->_Visual->Json_Info_Update('Titulo', __('Correios')); 
     }
     /**
      * 
@@ -172,7 +172,7 @@ class predial_CorreioControle extends predial_Controle
         $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',$gravidade);
         
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Administrar '.$titulo);
+        $this->_Visual->Json_Info_Update('Titulo', __('Administrar ').$titulo);
     }
     /**
      * 
@@ -343,7 +343,7 @@ class predial_CorreioControle extends predial_Controle
         // Recupera pagina atualiza
         $this->Correios();
         
-        $this->_Visual->Json_Info_Update('Titulo', 'Correio deletado com Sucesso');  
+        $this->_Visual->Json_Info_Update('Titulo', __('Correio deletado com Sucesso'));  
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
     

@@ -46,7 +46,7 @@ class usuario_FreeControle extends usuario_Controle
         // carrega form de cadastro de usuarios
         $this->usuarios_carregajanelaadd($tipocadastro);
         // ORGANIZA E MANDA CONTEUDO
-        $this->_Visual->Json_Info_Update('Titulo','Usuários');        
+        $this->_Visual->Json_Info_Update('Titulo', __('Usuários'));        
     }
     /**
     * Cria Janela Do Formulario de Cadastro de usuarios

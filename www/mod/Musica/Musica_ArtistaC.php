@@ -112,7 +112,7 @@ class Musica_ArtistaControle extends Musica_Controle
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Administrar Artistas');
+        $this->_Visual->Json_Info_Update('Titulo', __('Administrar Artistas'));
     }
     /**
      * 
@@ -212,7 +212,7 @@ class Musica_ArtistaControle extends Musica_Controle
         
         $this->Artistas();
         
-        $this->_Visual->Json_Info_Update('Titulo', 'Artista deletado com Sucesso');
+        $this->_Visual->Json_Info_Update('Titulo', __('Artista deletado com Sucesso'));
         $this->_Visual->Json_Info_Update('Historico', false);
     }
     public function Status($id=false){
@@ -241,7 +241,7 @@ class Musica_ArtistaControle extends Musica_Controle
                 'html' =>  $this->_Visual->Tema_Elementos_Btn('Status'.$resultado->status     ,Array($texto        ,'Musica/Artista/Status/'.$resultado->id.'/'    ,''))
             );
             $this->_Visual->Json_IncluiTipo('Conteudo',$conteudo);
-            $this->_Visual->Json_Info_Update('Titulo','Status Alterado'); 
+            $this->_Visual->Json_Info_Update('Titulo', __('Status Alterado')); 
         }else{
             $mensagens = array(
                 "tipo"              => 'erro',
@@ -250,7 +250,7 @@ class Musica_ArtistaControle extends Musica_Controle
             );
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
 
-            $this->_Visual->Json_Info_Update('Titulo','Erro'); 
+            $this->_Visual->Json_Info_Update('Titulo', __('Erro')); 
         }
         $this->_Visual->Json_Info_Update('Historico', false);  
     }

@@ -34,7 +34,7 @@ class Agenda_CompromissoControle extends Agenda_Controle
     public function Main(){
         $this->Compromissos();
         // ORGANIZA E MANDA CONTEUDO
-        $this->_Visual->Json_Info_Update('Titulo','Compromissos'); 
+        $this->_Visual->Json_Info_Update('Titulo', __('Compromissos')); 
     }
     protected function Endereco_Compromisso($true=true){
         if($true===true){
@@ -110,7 +110,7 @@ class Agenda_CompromissoControle extends Agenda_Controle
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Compromissos');
+        $this->_Visual->Json_Info_Update('Titulo', __('Compromissos'));
     }
     /**
      * 
@@ -207,7 +207,7 @@ class Agenda_CompromissoControle extends Agenda_Controle
         
         $this->Compromissos();
         
-        $this->_Visual->Json_Info_Update('Titulo', 'Compromisso deletado com Sucesso');  
+        $this->_Visual->Json_Info_Update('Titulo', __('Compromisso deletado com Sucesso'));  
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
 }

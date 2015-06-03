@@ -102,7 +102,7 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Administrar Modulos');
+        $this->_Visual->Json_Info_Update('Titulo', __('Administrar Modulos'));
     }
     /**
      * 
@@ -202,7 +202,7 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
         
         $this->Modulos();
         
-        $this->_Visual->Json_Info_Update('Titulo', 'Modulo deletado com Sucesso');  
+        $this->_Visual->Json_Info_Update('Titulo', __('Modulo deletado com Sucesso'));  
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
     
@@ -280,7 +280,7 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Administrar Submodulos');
+        $this->_Visual->Json_Info_Update('Titulo', __('Administrar Submodulos'));
     }
     /**
      * 
@@ -380,7 +380,7 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
         
         $this->Submodulos();
         
-        $this->_Visual->Json_Info_Update('Titulo', 'Submodulo deletado com Sucesso');  
+        $this->_Visual->Json_Info_Update('Titulo', __('Submodulo deletado com Sucesso'));  
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
     
@@ -457,7 +457,7 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Administrar Metodos');
+        $this->_Visual->Json_Info_Update('Titulo', __('Administrar Metodos'));
     }
     /**
      * 
@@ -557,7 +557,7 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
         
         $this->Metodos();
         
-        $this->_Visual->Json_Info_Update('Titulo', 'Metodo deletado com Sucesso');  
+        $this->_Visual->Json_Info_Update('Titulo', __('Metodo deletado com Sucesso'));  
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
 }

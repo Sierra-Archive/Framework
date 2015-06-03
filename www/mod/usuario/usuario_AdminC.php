@@ -41,7 +41,7 @@ class usuario_AdminControle extends usuario_Controle
             $this->usuarios_pendentes('res');
         }
         // ORGANIZA E MANDA CONTEUDO
-        $this->_Visual->Json_Info_Update('Titulo','Todos os Usuários');         
+        $this->_Visual->Json_Info_Update('Titulo', __('Todos os Usuários'));         
     }
     static function usuarios_carregaAlterarSenha($id=false,$tipo=false){
         if($id===false){
@@ -98,7 +98,7 @@ class usuario_AdminControle extends usuario_Controle
     public function ListarUsuario($export=false){
         $this->Usuario_Listagem(Array(CFG_TEC_CAT_ID_ADMIN,'Usuários'),false,10,false,$export);
         // ORGANIZA E MANDA CONTEUDO
-        $this->_Visual->Json_Info_Update('Titulo','Usuários');  
+        $this->_Visual->Json_Info_Update('Titulo', __('Usuários'));  
     }
     public function Usuarios_Edit($id = 0,$tipo=false){
         if($id==0 || !isset($id)){
@@ -205,7 +205,7 @@ class usuario_AdminControle extends usuario_Controle
             if($encolher===true)$this->_Visual->Bloco_Maior_CriaJanela('Alteração de '.$tipo.'');
             else                $this->_Visual->Bloco_Unico_CriaJanela('Alteração de '.$tipo.'');
             
-            $this->_Visual->Json_Info_Update('Titulo', 'Editar '.$tipo.' (#'.$id.')');   
+            $this->_Visual->Json_Info_Update('Titulo', __('Editar ').$tipo.' (#'.$id.')');   
         }
     }
     /**
@@ -243,7 +243,7 @@ class usuario_AdminControle extends usuario_Controle
                 "mgs_principal" => 'Alteração bem sucedida',
                 "mgs_secundaria" => ''.$_POST["nome"].' foi alterado com sucesso.'
             );
-            $this->_Visual->Json_Info_Update('Titulo',''.$_POST["nome"].' foi alterado com sucesso.');
+            $this->_Visual->Json_Info_Update('Titulo', __('').$_POST["nome"].' foi alterado com sucesso.');
         }else{
             $mensagens = array(
                 "tipo" => 'erro',
@@ -346,7 +346,7 @@ class usuario_AdminControle extends usuario_Controle
             $formulario = $form->retorna_form('Cadastrar '.$func_nome);
             $this->_Visual->Blocar($formulario);
             $this->_Visual->Bloco_Unico_CriaJanela('Cadastro de '.$func_nome);
-            $this->_Visual->Json_Info_Update('Titulo','Adicionar '.$func_nome);
+            $this->_Visual->Json_Info_Update('Titulo', __('Adicionar ').$func_nome);
             
             $this->Tema_Endereco($func_nome_plural,'usuario/Admin/ListarCliente');
         }else if($tipo==='funcionario'){
@@ -356,7 +356,7 @@ class usuario_AdminControle extends usuario_Controle
             $formulario = $form->retorna_form('Cadastrar Funcionário');
             $this->_Visual->Blocar($formulario);
             $this->_Visual->Bloco_Unico_CriaJanela(__('Cadastro de Funcionário'));
-            $this->_Visual->Json_Info_Update('Titulo','Adicionar Funcionário');
+            $this->_Visual->Json_Info_Update('Titulo', __('Adicionar Funcionário'));
             $this->Tema_Endereco('Funcionários','usuario/Admin/ListarFuncionario');
         }else{
             self::Campos_Deletar(CFG_TEC_CAT_ID_ADMIN,$campos, $usuario);
@@ -366,7 +366,7 @@ class usuario_AdminControle extends usuario_Controle
             $formulario = $form->retorna_form('Cadastrar Usuário');
             $this->_Visual->Blocar($formulario);
             $this->_Visual->Bloco_Unico_CriaJanela(__('Cadastro de Usuário'));
-            $this->_Visual->Json_Info_Update('Titulo','Adicionar Usuário');
+            $this->_Visual->Json_Info_Update('Titulo', __('Adicionar Usuário'));
             $this->Tema_Endereco('Usuários','usuario/Admin/ListarUsuario');
         }
         $this->Tema_Endereco('Adicionar');
@@ -771,7 +771,7 @@ class usuario_AdminControle extends usuario_Controle
         $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',10);
         
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Administrar Comentários do '.$nomedisplay_sing.'');
+        $this->_Visual->Json_Info_Update('Titulo', __('Administrar Comentários do ').$nomedisplay_sing.'');
     }
     /**
      * 
@@ -1040,7 +1040,7 @@ class usuario_AdminControle extends usuario_Controle
         
         $this->Usuarios_Comentario($usuario_id,$tipo);
         
-        $this->_Visual->Json_Info_Update('Titulo', 'Comentário de '.$nomedisplay_sing.' deletado com Sucesso');  
+        $this->_Visual->Json_Info_Update('Titulo', __('Comentário de ').$nomedisplay_sing.' deletado com Sucesso');  
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
 }

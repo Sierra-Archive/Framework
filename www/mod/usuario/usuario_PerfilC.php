@@ -61,7 +61,7 @@ class usuario_PerfilControle extends usuario_Controle
             usuario_Controle::PlanoStatus($this->_Modelo, $this->_Visual, $this->_Acl->Usuario_GetID());
         }
         // ORGANIZA E MANDA CONTEUDO
-        $this->_Visual->Json_Info_Update('Titulo','Meu Perfil'); 
+        $this->_Visual->Json_Info_Update('Titulo', __('Meu Perfil')); 
     }
     public function PerfilFoto_UploadVer($camada,$id){
         $camada = (string) \anti_injection($camada);
@@ -390,7 +390,7 @@ class usuario_PerfilControle extends usuario_Controle
             usuario_Controle::PlanoStatus($this->_Modelo, $this->_Visual, $this->get_usuarioid());
         }
         // ORGANIZA E MANDA CONTEUDO
-        $this->_Visual->Json_Info_Update('Titulo','Meu Perfil'); 
+        $this->_Visual->Json_Info_Update('Titulo', __('Meu Perfil')); 
     }
     public function PerfilFoto_UploadVer($camada,$id){
         $camada = (string) \anti_injection($camada);

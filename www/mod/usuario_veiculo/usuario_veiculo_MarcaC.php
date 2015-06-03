@@ -78,7 +78,7 @@ class usuario_veiculo_MarcaControle extends usuario_veiculo_Controle
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Administrar Marcas');
+        $this->_Visual->Json_Info_Update('Titulo', __('Administrar Marcas'));
     }
     /**
      * 
@@ -178,7 +178,7 @@ class usuario_veiculo_MarcaControle extends usuario_veiculo_Controle
         
         $this->Main();
         
-        $this->_Visual->Json_Info_Update('Titulo', 'Marca deletada com Sucesso');  
+        $this->_Visual->Json_Info_Update('Titulo', __('Marca deletada com Sucesso'));  
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
 }

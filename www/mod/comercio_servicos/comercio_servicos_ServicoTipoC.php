@@ -61,7 +61,7 @@ class comercio_servicos_ServicoTipoControle extends comercio_servicos_Controle
         $this->_Visual->Bloco_Unico_CriaJanela($titulo.' (<span id="DataTable_Contador">Carregando...</span>)','',10,Array("link"=>"comercio_servicos/ServicoTipo/Servico_Tipo_Add",'icon'=>'add','nome'=>'Adicionar Tipo de Serviço'));
 
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Administrar Tipos de Serviços');
+        $this->_Visual->Json_Info_Update('Titulo', __('Administrar Tipos de Serviços'));
     }
     /**
      * 
@@ -159,7 +159,7 @@ class comercio_servicos_ServicoTipoControle extends comercio_servicos_Controle
         
         $this->Servico_Tipo();
         
-        $this->_Visual->Json_Info_Update('Titulo', 'Tipo de Serviço deletada com Sucesso');  
+        $this->_Visual->Json_Info_Update('Titulo', __('Tipo de Serviço deletada com Sucesso'));  
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
 }

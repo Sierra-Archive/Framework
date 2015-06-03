@@ -41,13 +41,13 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
         $this->_Visual->Bloco_Unico_CriaJanela(__('Clientes'));
         
         // ORGANIZA E MANDA CONTEUDO
-        $this->_Visual->Json_Info_Update('Titulo','Propostas');
+        $this->_Visual->Json_Info_Update('Titulo', __('Propostas'));
     }
     public function Propostas_DashBoard_Show($cliente=0){
         // Produtos
         \Framework\App\Visual::Layoult_Abas_Carregar('3',$this->Propostas_DashBoard($cliente));
         // Joga pro Json se nao for o caso de popup
-        $this->_Visual->Json_Info_Update('Titulo','Proposta Adicionada');
+        $this->_Visual->Json_Info_Update('Titulo', __('Proposta Adicionada'));
         $this->_Visual->Json_Info_Update('Historico', false);
     }
     public function Propostas_DashBoard($cliente=0){
@@ -148,7 +148,7 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
                 'html' =>  self::Propostas_Label($resultado)
             );
             $this->_Visual->Json_IncluiTipo('Conteudo',$conteudo);
-            $this->_Visual->Json_Info_Update('Titulo','Status Alterado'); 
+            $this->_Visual->Json_Info_Update('Titulo', __('Status Alterado')); 
         }else{
             $mensagens = array(
                 "tipo"              => 'erro',
@@ -157,7 +157,7 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
             );
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
 
-            $this->_Visual->Json_Info_Update('Titulo','Erro'); 
+            $this->_Visual->Json_Info_Update('Titulo', __('Erro')); 
         }
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
@@ -221,7 +221,7 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
                 'html'      =>  $formulario
             );
             $this->_Visual->Json_IncluiTipo('Conteudo',$conteudo);
-            $this->_Visual->Json_Info_Update('Titulo', 'Cadastrar Proposta');
+            $this->_Visual->Json_Info_Update('Titulo', __('Cadastrar Proposta'));
             $this->_Visual->Json_Info_Update('Historico', false);
         }
     }
@@ -258,7 +258,7 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
         );
         $this->_Visual->Json_IncluiTipo('Conteudo',$conteudo);
         
-        $this->_Visual->Json_Info_Update('Titulo', 'Editar Proposta');  
+        $this->_Visual->Json_Info_Update('Titulo', __('Editar Proposta'));  
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
     public static function RecarregaLocalizar(){
@@ -326,7 +326,7 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
         }
         $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens); 
         // Json
-        $this->_Visual->Json_Info_Update('Titulo', 'Proposta Adicionada com Sucesso');  
+        $this->_Visual->Json_Info_Update('Titulo', __('Proposta Adicionada com Sucesso'));  
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
     /**
@@ -385,7 +385,7 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
         }
         $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);  
         //Json
-        $this->_Visual->Json_Info_Update('Titulo', 'Proposta Editada com Sucesso');  
+        $this->_Visual->Json_Info_Update('Titulo', __('Proposta Editada com Sucesso'));  
         $this->_Visual->Json_Info_Update('Historico', false);    
     }
     /**
@@ -420,7 +420,7 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
         
         $this->Propostas_DashBoard_Show($cliente);
         
-        $this->_Visual->Json_Info_Update('Titulo', 'Proposta deletada com Sucesso');  
+        $this->_Visual->Json_Info_Update('Titulo', __('Proposta deletada com Sucesso'));  
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
     public function Show($propostaid){

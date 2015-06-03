@@ -142,7 +142,7 @@ class Enquete_RespostaControle extends Enquete_Controle
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Administrar Respostas');
+        $this->_Visual->Json_Info_Update('Titulo', __('Administrar Respostas'));
     }
     /**
      * 
@@ -278,7 +278,7 @@ class Enquete_RespostaControle extends Enquete_Controle
         // Recupera Respostas
         $this->Respostas($enquete);
         
-        $this->_Visual->Json_Info_Update('Titulo', 'Resposta deletada com Sucesso');
+        $this->_Visual->Json_Info_Update('Titulo', __('Resposta deletada com Sucesso'));
         $this->_Visual->Json_Info_Update('Historico', false);
     }
 }

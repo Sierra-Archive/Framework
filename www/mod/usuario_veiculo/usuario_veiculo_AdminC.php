@@ -62,7 +62,7 @@ class usuario_veiculo_AdminControle extends usuario_veiculo_Controle
         // carrega form de cadastro de veiculos
         $this->veiculos_carregajanelaadd();
         // ORGANIZA E MANDA CONTEUDO
-        $this->_Visual->Json_Info_Update('Titulo','Veiculos');         
+        $this->_Visual->Json_Info_Update('Titulo', __('Veiculos'));         
     }
     /**
     * Printa todos os Veiculos na tela

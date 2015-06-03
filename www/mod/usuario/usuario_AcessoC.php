@@ -37,12 +37,12 @@ class usuario_AcessoControle extends usuario_Controle
     public function Main(){
         $this->Usuarios();
         // ORGANIZA E MANDA CONTEUDO
-        $this->_Visual->Json_Info_Update('Titulo','Permissões de Usuários');         
+        $this->_Visual->Json_Info_Update('Titulo', __('Permissões de Usuários'));         
     }
     public function Listar_Clientesnao(){
         $this->Usuarios(Array(CFG_TEC_CAT_ID_CLIENTES,'Usuários'),false,100,true);
         // ORGANIZA E MANDA CONTEUDO
-        $this->_Visual->Json_Info_Update('Titulo','Permissões de Usuários');         
+        $this->_Visual->Json_Info_Update('Titulo', __('Permissões de Usuários'));         
     }
     
     public function Usuarios($grupo=false,$ativado=false,$gravidade=0,$inverter=false){
@@ -169,7 +169,7 @@ class usuario_AcessoControle extends usuario_Controle
         $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',60);
         
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Permissões de Usuarios');
+        $this->_Visual->Json_Info_Update('Titulo', __('Permissões de Usuarios'));
     }
     /**
      * 

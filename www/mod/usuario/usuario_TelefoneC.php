@@ -113,7 +113,7 @@ class usuario_TelefoneControle extends usuario_Controle
         $this->_Visual->Bloco_Unico_CriaJanela( 'Fazer Upload de Audio de Chamada'  ,'',8);
 
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Administrar Telefones');
+        $this->_Visual->Json_Info_Update('Titulo', __('Administrar Telefones'));
     }
     /**
      * 
@@ -213,7 +213,7 @@ class usuario_TelefoneControle extends usuario_Controle
         
         $this->Telefone();
         
-        $this->_Visual->Json_Info_Update('Titulo', 'Telefone deletada com Sucesso');  
+        $this->_Visual->Json_Info_Update('Titulo', __('Telefone deletada com Sucesso'));  
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
     public function Telefone_Upload($parent = 0){
@@ -226,10 +226,10 @@ class usuario_TelefoneControle extends usuario_Controle
         $ext = $this->Upload($dir,$fileTypes,false);
         $this->layoult_zerar = false;
         if($ext!==false){
-            $this->_Visual->Json_Info_Update('Titulo', 'Upload com Sucesso');
+            $this->_Visual->Json_Info_Update('Titulo', __('Upload com Sucesso'));
             $this->_Visual->Json_Info_Update('Historico', false);
         }else{
-            $this->_Visual->Json_Info_Update('Titulo', 'Erro com Upload');
+            $this->_Visual->Json_Info_Update('Titulo', __('Erro com Upload'));
             $this->_Visual->Json_Info_Update('Historico', false);
         }
     }

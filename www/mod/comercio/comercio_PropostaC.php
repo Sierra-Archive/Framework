@@ -393,7 +393,7 @@ class comercio_PropostaControle extends comercio_Controle
         $this->_Visual->Javascript_Executar($javascript_executar);
         
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Administrar '.$titulo);
+        $this->_Visual->Json_Info_Update('Titulo', __('Administrar ').$titulo);
     }
     /**
      * Outras Propostas/Os
@@ -2256,7 +2256,7 @@ class comercio_PropostaControle extends comercio_Controle
                                 "mgs_secundaria"    => 'Condição de Pagamento Inválido na Proposta.'
                             );
                             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
-                            $this->_Visual->Json_Info_Update('Titulo','Erro'); 
+                            $this->_Visual->Json_Info_Update('Titulo', __('Erro')); 
                             $this->_Visual->Json_Info_Update('Historico', false);
                             return false;
                         }
@@ -2399,7 +2399,7 @@ class comercio_PropostaControle extends comercio_Controle
         $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',10);
         
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Administrar Comentários da '.$titulo.'');
+        $this->_Visual->Json_Info_Update('Titulo', __('Administrar Comentários da ').$titulo.'');
     }
     /**
      * 
@@ -2569,7 +2569,7 @@ class comercio_PropostaControle extends comercio_Controle
         
         $this->Propostas_Comentario($proposta_id,$tema);
         
-        $this->_Visual->Json_Info_Update('Titulo', 'Comentário da '.$titulo.' deletada com Sucesso');  
+        $this->_Visual->Json_Info_Update('Titulo', __('Comentário da ').$titulo.' deletada com Sucesso');  
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
     /**
@@ -2645,7 +2645,7 @@ class comercio_PropostaControle extends comercio_Controle
         $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',10);
         
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Administrar Sub propostas da '.$titulo.'');
+        $this->_Visual->Json_Info_Update('Titulo', __('Administrar Sub propostas da ').$titulo.'');
     }
     /**
      * 
@@ -2815,7 +2815,7 @@ class comercio_PropostaControle extends comercio_Controle
         
         $this->Propostas_Sub($proposta_id,$tema);
         
-        $this->_Visual->Json_Info_Update('Titulo', 'Sub proposta da '.$titulo.' deletada com Sucesso');  
+        $this->_Visual->Json_Info_Update('Titulo', __('Sub proposta da ').$titulo.' deletada com Sucesso');  
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
     /**
@@ -2865,7 +2865,7 @@ class comercio_PropostaControle extends comercio_Controle
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Administrar Checklists');
+        $this->_Visual->Json_Info_Update('Titulo', __('Administrar Checklists'));
     }
     /**
      * 
@@ -3040,7 +3040,7 @@ class comercio_PropostaControle extends comercio_Controle
         
         $this->Checklists();
         
-        $this->_Visual->Json_Info_Update('Titulo', 'Checklist deletado com Sucesso');  
+        $this->_Visual->Json_Info_Update('Titulo', __('Checklist deletado com Sucesso'));  
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
     /**
@@ -3095,7 +3095,7 @@ class comercio_PropostaControle extends comercio_Controle
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Administrar Visitas');
+        $this->_Visual->Json_Info_Update('Titulo', __('Administrar Visitas'));
     }
     /**
      * 
@@ -3195,7 +3195,7 @@ class comercio_PropostaControle extends comercio_Controle
         
         $this->Visitas();
         
-        $this->_Visual->Json_Info_Update('Titulo', 'Agenda de Visita deletada com Sucesso');  
+        $this->_Visual->Json_Info_Update('Titulo', __('Agenda de Visita deletada com Sucesso'));  
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
     /**
@@ -3236,7 +3236,7 @@ class comercio_PropostaControle extends comercio_Controle
         $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',10);
         
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Administrar Comentários do Visita');
+        $this->_Visual->Json_Info_Update('Titulo', __('Administrar Comentários do Visita'));
     }
     /**
      * 
@@ -3356,7 +3356,7 @@ class comercio_PropostaControle extends comercio_Controle
         
         $this->Visitas_Comentario($visita_id);
         
-        $this->_Visual->Json_Info_Update('Titulo', 'Comentário de Visita deletado com Sucesso');  
+        $this->_Visual->Json_Info_Update('Titulo', __('Comentário de Visita deletado com Sucesso'));  
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
 }

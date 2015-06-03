@@ -106,7 +106,7 @@ class usuario_mensagem_Controle extends \Framework\App\Controle
             $Visual->Bloco_Unico_CriaJanela('Chamados não lidos ('.$i.')','',100);
         }
         // ORGANIZA E MANDA CONTEUDO
-        $this->_Visual->Json_Info_Update('Titulo','Chamados não lidos');  
+        $this->_Visual->Json_Info_Update('Titulo', __('Chamados não lidos'));  
     }
     static function Mensagens_TabelaMostrar(&$Visual,&$mensagens,$admin=0){
         $_Registro = \Framework\App\Registro::getInstacia();

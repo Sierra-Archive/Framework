@@ -91,7 +91,7 @@ class comercio_ProdutoControle extends comercio_Controle
         
         
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Administrar Produtos');
+        $this->_Visual->Json_Info_Update('Titulo', __('Administrar Produtos'));
     }
     public static function Retirar_Nao_necessarios(&$campos){
         // Os dois do Comercio_Certificado
@@ -229,7 +229,7 @@ class comercio_ProdutoControle extends comercio_Controle
         
         $this->Produtos();
         
-        $this->_Visual->Json_Info_Update('Titulo', 'Produto deletado com Sucesso');  
+        $this->_Visual->Json_Info_Update('Titulo', __('Produto deletado com Sucesso'));  
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
     public function Estoque_Reduzir($produto=false){

@@ -201,7 +201,7 @@ class comercio_servicos_InstalacaoControle extends comercio_servicos_Controle
         
         $this->Btu();
         
-        $this->_Visual->Json_Info_Update('Titulo', 'Btu deletado com Sucesso');  
+        $this->_Visual->Json_Info_Update('Titulo', __('Btu deletado com Sucesso'));  
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
     /**
@@ -222,7 +222,7 @@ class comercio_servicos_InstalacaoControle extends comercio_servicos_Controle
         $this->_Visual->Bloco_Unico_CriaJanela($titulo.' (<span id="DataTable_Contador">Carregando...</span>)','',10,Array("link"=>"comercio_servicos/Instalacao/Suporte_Add",'icon'=>'add','nome'=>'Adicionar Suporte'));
         
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Administrar Suportes');
+        $this->_Visual->Json_Info_Update('Titulo', __('Administrar Suportes'));
     }
     /**
      * 
@@ -322,7 +322,7 @@ class comercio_servicos_InstalacaoControle extends comercio_servicos_Controle
         
         $this->Suporte();
         
-        $this->_Visual->Json_Info_Update('Titulo', 'Suporte deletado com Sucesso');  
+        $this->_Visual->Json_Info_Update('Titulo', __('Suporte deletado com Sucesso'));  
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
 }

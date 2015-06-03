@@ -124,7 +124,7 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
     public function Main(){
         $this->Formas();
         // ORGANIZA E MANDA CONTEUDO
-        $this->_Visual->Json_Info_Update('Titulo','Formas de Pagamento'); 
+        $this->_Visual->Json_Info_Update('Titulo', __('Formas de Pagamento')); 
     }
     /**
      * Contas a Pagar
@@ -344,7 +344,7 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
                 "mgs_principal"     => 'Ocorreu um Erro',
                 "mgs_secundaria"    => 'Tente Novamente, algo deu errado.'
             );
-            $this->_Visual->Json_Info_Update('Titulo', 'Erro');
+            $this->_Visual->Json_Info_Update('Titulo', __('Erro'));
         }
         $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
         $this->_Visual->Json_Info_Update('Historico', false);
@@ -441,7 +441,7 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
                 "mgs_secundaria"    => 'O valor pago é inferior ao valor do Pagamento'
             );
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
-            $this->_Visual->Json_Info_Update('Titulo', 'Erro');
+            $this->_Visual->Json_Info_Update('Titulo', __('Erro'));
         }else{*/
             // Altera Valores Manualmente e grava
             $financeiros->pago = '1';
@@ -474,7 +474,7 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
                     "mgs_principal"     => 'Ocorreu um Erro',
                     "mgs_secundaria"    => 'Tente Novamente, algo deu errado.'
                 );
-                $this->_Visual->Json_Info_Update('Titulo', 'Erro');
+                $this->_Visual->Json_Info_Update('Titulo', __('Erro'));
             }
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
         //}
@@ -499,7 +499,7 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
         
         
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Administrar Formas de Pagamento');
+        $this->_Visual->Json_Info_Update('Titulo', __('Administrar Formas de Pagamento'));
     }
     /**
      * 
@@ -599,7 +599,7 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
         
         $this->Formas();
         
-        $this->_Visual->Json_Info_Update('Titulo', 'Forma de Pagamento deletada com Sucesso');  
+        $this->_Visual->Json_Info_Update('Titulo', __('Forma de Pagamento deletada com Sucesso'));  
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
     /**
@@ -633,7 +633,7 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
         
         
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Administrar '.$titulo2);
+        $this->_Visual->Json_Info_Update('Titulo', __('Administrar ').$titulo2);
     }
     /**
      * 
@@ -776,7 +776,7 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
         
         $this->Condicoes($forma);
         
-        $this->_Visual->Json_Info_Update('Titulo', 'Condição de Pagamento deletada com Sucesso');  
+        $this->_Visual->Json_Info_Update('Titulo', __('Condição de Pagamento deletada com Sucesso'));  
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
     /**
@@ -898,7 +898,7 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
                 "mgs_principal"     => 'Ocorreu um Erro',
                 "mgs_secundaria"    => 'Tente Novamente, algo deu errado.'
             );
-            $this->_Visual->Json_Info_Update('Titulo', 'Erro');
+            $this->_Visual->Json_Info_Update('Titulo', __('Erro'));
         }
         $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
         $this->_Visual->Json_Info_Update('Historico', false);

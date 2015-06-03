@@ -42,7 +42,7 @@ class banner_AdminControle extends banner_Controle
         // carrega form de cadastro de banners
         $this->Banners_Add();
         // ORGANIZA E MANDA CONTEUDO
-        $this->_Visual->Json_Info_Update('Titulo','Administração de Banners');         
+        $this->_Visual->Json_Info_Update('Titulo', __('Administração de Banners'));         
     }
     /**
     * @return void
@@ -198,7 +198,7 @@ class banner_AdminControle extends banner_Controle
         
         $this->Main();
         
-        $this->_Visual->Json_Info_Update('Titulo', 'Banner deletado com Sucesso');  
+        $this->_Visual->Json_Info_Update('Titulo', __('Banner deletado com Sucesso'));  
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
     /**

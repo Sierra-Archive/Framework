@@ -62,7 +62,7 @@ class usuario_mensagem_OrigemControle extends usuario_mensagem_Controle
         $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',10,Array("link"=>"usuario_mensagem/Origem/Origens_Add",'icon'=>'add','nome'=>'Adicionar Origem'));
         
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Administrar Origens');
+        $this->_Visual->Json_Info_Update('Titulo', __('Administrar Origens'));
     }
     /**
      * 
@@ -162,7 +162,7 @@ class usuario_mensagem_OrigemControle extends usuario_mensagem_Controle
         
         $this->Origens();
         
-        $this->_Visual->Json_Info_Update('Titulo', 'Origem deletada com Sucesso');  
+        $this->_Visual->Json_Info_Update('Titulo', __('Origem deletada com Sucesso'));  
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
 }

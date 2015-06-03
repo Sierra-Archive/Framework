@@ -181,7 +181,7 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
                 'html' =>  self::labelEquipamentos($resultado)
             );
             $this->_Visual->Json_IncluiTipo('Conteudo',$conteudo);
-            $this->_Visual->Json_Info_Update('Titulo','Status Alterado'); 
+            $this->_Visual->Json_Info_Update('Titulo', __('Status Alterado')); 
         }else{
             $mensagens = array(
                 "tipo"              => 'erro',
@@ -190,7 +190,7 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
             );
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
 
-            $this->_Visual->Json_Info_Update('Titulo','Erro'); 
+            $this->_Visual->Json_Info_Update('Titulo', __('Erro')); 
         }
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
@@ -373,7 +373,7 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Administrar Marcas');
+        $this->_Visual->Json_Info_Update('Titulo', __('Administrar Marcas'));
     }
     /**
      * 
@@ -473,7 +473,7 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
         
         $this->Marcas();
         
-        $this->_Visual->Json_Info_Update('Titulo', 'Marca deletada com Sucesso');  
+        $this->_Visual->Json_Info_Update('Titulo', __('Marca deletada com Sucesso'));  
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
     /**
@@ -522,7 +522,7 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Administrar Modelos');
+        $this->_Visual->Json_Info_Update('Titulo', __('Administrar Modelos'));
     }
     /**
      * 
@@ -622,7 +622,7 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
         
         $this->Modelos();
         
-        $this->_Visual->Json_Info_Update('Titulo', 'Modelo deletado com Sucesso');  
+        $this->_Visual->Json_Info_Update('Titulo', __('Modelo deletado com Sucesso'));  
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
 }

@@ -109,7 +109,7 @@ class Curso_CursoControle extends Curso_Controle
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Administrar Cursos');
+        $this->_Visual->Json_Info_Update('Titulo', __('Administrar Cursos'));
     }
     /**
      * 
@@ -209,7 +209,7 @@ class Curso_CursoControle extends Curso_Controle
         
         $this->Cursos();
         
-        $this->_Visual->Json_Info_Update('Titulo', 'Curso deletado com Sucesso');
+        $this->_Visual->Json_Info_Update('Titulo', __('Curso deletado com Sucesso'));
         $this->_Visual->Json_Info_Update('Historico', false);
     }
     public function Status($id=false){
@@ -238,7 +238,7 @@ class Curso_CursoControle extends Curso_Controle
                 'html' =>  $this->_Visual->Tema_Elementos_Btn('Status'.$resultado->status     ,Array($texto        ,'Curso/Curso/Status/'.$resultado->id.'/'    ,''))
             );
             $this->_Visual->Json_IncluiTipo('Conteudo',$conteudo);
-            $this->_Visual->Json_Info_Update('Titulo','Status Alterado'); 
+            $this->_Visual->Json_Info_Update('Titulo', __('Status Alterado')); 
         }else{
             $mensagens = array(
                 "tipo"              => 'erro',
@@ -247,7 +247,7 @@ class Curso_CursoControle extends Curso_Controle
             );
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
 
-            $this->_Visual->Json_Info_Update('Titulo','Erro'); 
+            $this->_Visual->Json_Info_Update('Titulo', __('Erro')); 
         }
         $this->_Visual->Json_Info_Update('Historico', false);  
     }

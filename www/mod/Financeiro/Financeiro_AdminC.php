@@ -36,7 +36,7 @@ class Financeiro_AdminControle extends Financeiro_Controle
         $this->usuarios_naodevendo();
         $this->usuarios_devendo();
         // ORGANIZA E MANDA CONTEUDO
-        $this->_Visual->Json_Info_Update('Titulo','Pagamentos');        
+        $this->_Visual->Json_Info_Update('Titulo', __('Pagamentos'));        
     }
     /**
     * Printa todos os financeiros na tela
@@ -274,14 +274,14 @@ class Financeiro_AdminControle extends Financeiro_Controle
                 "mgs_principal" => 'Depositado com Sucesso',
                 "mgs_secundaria" => 'Valor: '.$valor
             );
-            $this->_Visual->Json_Info_Update('Titulo','Depositado com Sucesso');
+            $this->_Visual->Json_Info_Update('Titulo', __('Depositado com Sucesso'));
         }else{
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => $language['mens_erro']['erro'],
                 "mgs_secundaria" => $language['mens_erro']['erro']
             );
-            $this->_Visual->Json_Info_Update('Titulo','Erro ao Depositar');
+            $this->_Visual->Json_Info_Update('Titulo', __('Erro ao Depositar'));
         }
         $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens); 
         // ORGANIZA E MANDA CONTEUDO
@@ -301,14 +301,14 @@ class Financeiro_AdminControle extends Financeiro_Controle
                 "mgs_principal" => 'Retirado com Sucesso',
                 "mgs_secundaria" => 'Valor: '.$valor
             );
-            $this->_Visual->Json_Info_Update('Titulo','Retirado com Sucesso');
+            $this->_Visual->Json_Info_Update('Titulo', __('Retirado com Sucesso'));
         }else{
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => $language['mens_erro']['erro'],
                 "mgs_secundaria" => $language['mens_erro']['erro']
             );
-            $this->_Visual->Json_Info_Update('Titulo','Erro ao Retirar');
+            $this->_Visual->Json_Info_Update('Titulo', __('Erro ao Retirar'));
         }
         $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens); 
         // ORGANIZA E MANDA CONTEUDO

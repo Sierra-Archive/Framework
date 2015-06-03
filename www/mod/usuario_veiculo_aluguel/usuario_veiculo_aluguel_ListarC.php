@@ -62,7 +62,7 @@ class usuario_veiculo_aluguel_ListarControle extends usuario_veiculo_aluguel_Con
             $this->_Visual->Bloco_Maior_CriaJanela('Todos os Alugueis (0)');
         }
         // ORGANIZA E MANDA CONTEUDO
-        $this->_Visual->Json_Info_Update('Titulo','Aluguel');
+        $this->_Visual->Json_Info_Update('Titulo', __('Aluguel'));
     }
 }
 ?>

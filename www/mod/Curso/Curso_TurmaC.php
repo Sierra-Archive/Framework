@@ -599,7 +599,7 @@ class Curso_TurmaControle extends Curso_Controle
             $this->Turmas();
         }
         
-        $this->_Visual->Json_Info_Update('Titulo', 'Turma deletada com Sucesso');
+        $this->_Visual->Json_Info_Update('Titulo', __('Turma deletada com Sucesso'));
         $this->_Visual->Json_Info_Update('Historico', false);
     }
     public function Status($id=false){
@@ -628,7 +628,7 @@ class Curso_TurmaControle extends Curso_Controle
                 'html' =>  $this->_Visual->Tema_Elementos_Btn('Status'.$resultado->status     ,Array($texto        ,'Curso/Turma/Status/'.$resultado->id.'/'    ,''))
             );
             $this->_Visual->Json_IncluiTipo('Conteudo',$conteudo);
-            $this->_Visual->Json_Info_Update('Titulo','Status Alterado'); 
+            $this->_Visual->Json_Info_Update('Titulo', __('Status Alterado')); 
         }else{
             $mensagens = array(
                 "tipo"              => 'erro',
@@ -637,7 +637,7 @@ class Curso_TurmaControle extends Curso_Controle
             );
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
 
-            $this->_Visual->Json_Info_Update('Titulo','Erro'); 
+            $this->_Visual->Json_Info_Update('Titulo', __('Erro')); 
         }
         $this->_Visual->Json_Info_Update('Historico', false);  
     }

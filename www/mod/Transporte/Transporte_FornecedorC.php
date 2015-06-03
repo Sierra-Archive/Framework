@@ -91,7 +91,7 @@ class Transporte_FornecedorControle extends Transporte_Controle
         $titulo = 'Listagem de Fornecedores ('.$i.')';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Listagem de Fornecedores');
+        $this->_Visual->Json_Info_Update('Titulo', __('Listagem de Fornecedores'));
     }
     /**
      * Painel Adminstrativo de Fornecedores

@@ -21,7 +21,7 @@ class categoria_AdminControle extends categoria_Controle
         $this->Categorias_ShowTab($modulo);
         //$this->Categorias_Add();
         // ORGANIZA E MANDA CONTEUDO
-        $this->_Visual->Json_Info_Update('Titulo','Categorias');
+        $this->_Visual->Json_Info_Update('Titulo', __('Categorias'));
     }
     /**
     * Mostra todas as Categorias
@@ -244,7 +244,7 @@ class categoria_AdminControle extends categoria_Controle
         
         $this->Categorias();
         
-        $this->_Visual->Json_Info_Update('Titulo', 'Deletado com Sucesso');  
+        $this->_Visual->Json_Info_Update('Titulo', __('Deletado com Sucesso'));  
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
 }

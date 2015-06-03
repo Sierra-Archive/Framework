@@ -74,7 +74,7 @@ class locais_locaisControle extends locais_Controle
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Administrar Locais');
+        $this->_Visual->Json_Info_Update('Titulo', __('Administrar Locais'));
     }
     /**
      * 
@@ -174,7 +174,7 @@ class locais_locaisControle extends locais_Controle
         
         $this->Locais();
         
-        $this->_Visual->Json_Info_Update('Titulo', 'Local deletado com Sucesso');  
+        $this->_Visual->Json_Info_Update('Titulo', __('Local deletado com Sucesso'));  
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
 }

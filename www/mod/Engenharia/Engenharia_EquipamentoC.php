@@ -88,7 +88,7 @@ class Engenharia_EquipamentoControle extends Engenharia_Controle
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Administrar Equipamentos');
+        $this->_Visual->Json_Info_Update('Titulo', __('Administrar Equipamentos'));
     }
     /**
      * 
@@ -186,7 +186,7 @@ class Engenharia_EquipamentoControle extends Engenharia_Controle
         
         $this->Equipamentos();
         
-        $this->_Visual->Json_Info_Update('Titulo', 'Equipamento deletado com Sucesso');  
+        $this->_Visual->Json_Info_Update('Titulo', __('Equipamento deletado com Sucesso'));  
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
 }

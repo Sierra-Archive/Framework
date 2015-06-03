@@ -114,7 +114,7 @@ class Enquete_EnqueteControle extends Enquete_Controle
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Administrar Enquetes');
+        $this->_Visual->Json_Info_Update('Titulo', __('Administrar Enquetes'));
     }
     /**
      * 
@@ -213,7 +213,7 @@ class Enquete_EnqueteControle extends Enquete_Controle
         
         $this->Enquetes();
         
-        $this->_Visual->Json_Info_Update('Titulo', 'Enquete deletada com Sucesso');
+        $this->_Visual->Json_Info_Update('Titulo', __('Enquete deletada com Sucesso'));
         $this->_Visual->Json_Info_Update('Historico', false);
     }
 }

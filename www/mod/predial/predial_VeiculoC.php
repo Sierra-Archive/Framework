@@ -84,7 +84,7 @@ class predial_VeiculoControle extends predial_Controle
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Administrar Veiculos');
+        $this->_Visual->Json_Info_Update('Titulo', __('Administrar Veiculos'));
     }
     /**
      * 
@@ -184,7 +184,7 @@ class predial_VeiculoControle extends predial_Controle
         
         $this->Veiculos();
         
-        $this->_Visual->Json_Info_Update('Titulo', 'Veiculo deletado com Sucesso');  
+        $this->_Visual->Json_Info_Update('Titulo', __('Veiculo deletado com Sucesso'));  
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
 }

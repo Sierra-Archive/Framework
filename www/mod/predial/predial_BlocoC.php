@@ -20,7 +20,7 @@ class predial_BlocoControle extends predial_Controle
     public function Main(){
         $this->Blocos();
         // ORGANIZA E MANDA CONTEUDO
-        $this->_Visual->Json_Info_Update('Titulo','Blocos');
+        $this->_Visual->Json_Info_Update('Titulo', __('Blocos'));
     }
     static function Endereco_Bloco($true=true){
         $registro = \Framework\App\Registro::getInstacia();
@@ -85,7 +85,7 @@ class predial_BlocoControle extends predial_Controle
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Administrar Blocos');
+        $this->_Visual->Json_Info_Update('Titulo', __('Administrar Blocos'));
     }
     /**
      * 
@@ -185,7 +185,7 @@ class predial_BlocoControle extends predial_Controle
         
         $this->Main();
         
-        $this->_Visual->Json_Info_Update('Titulo', 'Bloco deletado com Sucesso');  
+        $this->_Visual->Json_Info_Update('Titulo', __('Bloco deletado com Sucesso'));  
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
 }

@@ -132,7 +132,7 @@ class usuario_mensagem_SuporteControle extends usuario_mensagem_Controle
         $this->Tema_Endereco('Visualizar Chamados de Cliente');
         self::MensagensdeCliente($cliente,$retorno);
         // ORGANIZA E MANDA CONTEUDO
-        $this->_Visual->Json_Info_Update('Titulo','Visualizar Chamados de Cliente'); 
+        $this->_Visual->Json_Info_Update('Titulo', __('Visualizar Chamados de Cliente')); 
     }
     /**
      * 
@@ -174,7 +174,7 @@ class usuario_mensagem_SuporteControle extends usuario_mensagem_Controle
             $this->Resposta_formulario($mensagem);
             $this->Anexar($mensagem);
             // ORGANIZA E MANDA CONTEUDO
-            $this->_Visual->Json_Info_Update('Titulo','Visualizar Ticket'); 
+            $this->_Visual->Json_Info_Update('Titulo', __('Visualizar Ticket')); 
         }else{
             throw new \Exception('Id não Encontrado de Usuário: '.$id, 5050);
         }
@@ -199,7 +199,7 @@ class usuario_mensagem_SuporteControle extends usuario_mensagem_Controle
         $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',9);
         
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Listagem de Anexos');
+        $this->_Visual->Json_Info_Update('Titulo', __('Listagem de Anexos'));
     }
     public function VisualizadordeMensagem_Upload($mensagem = 0){
         $fileTypes = array(
@@ -219,7 +219,7 @@ class usuario_mensagem_SuporteControle extends usuario_mensagem_Controle
             $arquivo->endereco      = $ext[1];
             $arquivo->nome          = $ext[2];
             $this->_Modelo->db->Sql_Inserir($arquivo);
-            $this->_Visual->Json_Info_Update('Titulo', 'Upload com Sucesso');
+            $this->_Visual->Json_Info_Update('Titulo', __('Upload com Sucesso'));
             $this->_Visual->Json_Info_Update('Historico', false);
             // Tras de Volta e Atualiza via Json
             list($titulo,$html,$i) = $this->Anexos_Processar($mensagem);
@@ -236,7 +236,7 @@ class usuario_mensagem_SuporteControle extends usuario_mensagem_Controle
             );
             $this->_Visual->Json_IncluiTipo('Conteudo',$conteudo);
         }else{
-            $this->_Visual->Json_Info_Update('Titulo', 'Erro com Upload');
+            $this->_Visual->Json_Info_Update('Titulo', __('Erro com Upload'));
             $this->_Visual->Json_Info_Update('Historico', false);
         }
     }

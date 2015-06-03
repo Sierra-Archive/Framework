@@ -34,7 +34,7 @@ class usuario_veiculo_ModeloControle extends usuario_veiculo_Controle
     public function Main(){
         $this->Modelos();
         // ORGANIZA E MANDA CONTEUDO
-        $this->_Visual->Json_Info_Update('Titulo','Modelos'); 
+        $this->_Visual->Json_Info_Update('Titulo', __('Modelos')); 
     }
     static function Endereco_Veiculo_Modelo($true=true){
         $registro = \Framework\App\Registro::getInstacia();
@@ -80,7 +80,7 @@ class usuario_veiculo_ModeloControle extends usuario_veiculo_Controle
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Administrar Modelos');
+        $this->_Visual->Json_Info_Update('Titulo', __('Administrar Modelos'));
     }
     /**
      * 
@@ -180,7 +180,7 @@ class usuario_veiculo_ModeloControle extends usuario_veiculo_Controle
         
         $this->Main();
         
-        $this->_Visual->Json_Info_Update('Titulo', 'Modelo deletado com Sucesso');  
+        $this->_Visual->Json_Info_Update('Titulo', __('Modelo deletado com Sucesso'));  
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
 }

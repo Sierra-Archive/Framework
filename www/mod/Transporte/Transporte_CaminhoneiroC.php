@@ -92,7 +92,7 @@ class Transporte_CaminhoneiroControle extends Transporte_Controle
         $titulo = 'Listagem de Autonômos ('.$i.')';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Listagem de Autonômos');
+        $this->_Visual->Json_Info_Update('Titulo', __('Listagem de Autonômos'));
     }
     /**
      * Painel Adminstrativo de Caminhoneiros

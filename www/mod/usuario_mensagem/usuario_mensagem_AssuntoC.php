@@ -60,7 +60,7 @@ class usuario_mensagem_AssuntoControle extends usuario_mensagem_Controle
         $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',10,Array("link"=>"usuario_mensagem/Assunto/Assuntos_Add",'icon'=>'add','nome'=>'Adicionar Assunto'));
         
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Administrar Assuntos');
+        $this->_Visual->Json_Info_Update('Titulo', __('Administrar Assuntos'));
     }
     /**
      * 
@@ -151,7 +151,7 @@ class usuario_mensagem_AssuntoControle extends usuario_mensagem_Controle
         }
         $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);  
         //Json
-        $this->_Visual->Json_Info_Update('Titulo', 'Assunto Editado com Sucesso');  
+        $this->_Visual->Json_Info_Update('Titulo', __('Assunto Editado com Sucesso'));  
         $this->_Visual->Json_Info_Update('Historico', false);    
     }
     /**
@@ -186,7 +186,7 @@ class usuario_mensagem_AssuntoControle extends usuario_mensagem_Controle
         
         $this->Assuntos();
         
-        $this->_Visual->Json_Info_Update('Titulo', 'Assunto deletado com Sucesso');  
+        $this->_Visual->Json_Info_Update('Titulo', __('Assunto deletado com Sucesso'));  
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
 }

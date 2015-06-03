@@ -92,7 +92,7 @@ class Transporte_TransportadoraControle extends Transporte_Controle
         $titulo = 'Listagem de Transportadoras ('.$i.')';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Listagem de Transportadoras');
+        $this->_Visual->Json_Info_Update('Titulo', __('Listagem de Transportadoras'));
     }
     /**
      * Painel Adminstrativo de Transportadoras

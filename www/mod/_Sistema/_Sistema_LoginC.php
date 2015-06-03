@@ -18,7 +18,7 @@ class _Sistema_LoginControle extends _Sistema_Controle
             $this->_Visual->Bloco_Maior_CriaJanela('Erro '.$codigo);
         }
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Erro '.$codigo);
+        $this->_Visual->Json_Info_Update('Titulo', __('Erro ').$codigo);
     }
     private function _getError($codigo = false){
         if($codigo){

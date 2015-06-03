@@ -100,7 +100,7 @@ class Engenharia_EmpreendimentoControle extends Engenharia_Controle
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Administrar Empreendimentos');
+        $this->_Visual->Json_Info_Update('Titulo', __('Administrar Empreendimentos'));
     }
     /**
      * 
@@ -198,7 +198,7 @@ class Engenharia_EmpreendimentoControle extends Engenharia_Controle
         
         $this->Main();
         
-        $this->_Visual->Json_Info_Update('Titulo', 'Empreendimento deletado com Sucesso');
+        $this->_Visual->Json_Info_Update('Titulo', __('Empreendimento deletado com Sucesso'));
         $this->_Visual->Json_Info_Update('Historico', false);
     }
     

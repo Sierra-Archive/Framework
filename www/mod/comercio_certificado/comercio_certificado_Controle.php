@@ -27,7 +27,7 @@ class comercio_certificado_Controle extends \Framework\App\Controle
             \Framework\App\Visual::Layoult_Abas_Carregar('3',$this->_Visual->ErroShow()        ,false);
             \Framework\App\Visual::Layoult_Abas_Carregar('4',$this->_Visual->ErroShow()        ,false);
             \Framework\App\Visual::Layoult_Abas_Carregar('5',$this->_Visual->ErroShow()        ,false);
-            $this->_Visual->Json_Info_Update('Titulo','Listagem de Usuários');
+            $this->_Visual->Json_Info_Update('Titulo', __('Listagem de Usuários'));
             $this->_Visual->Json_Info_Update('Historico',0);
         }else{
             \Framework\App\Visual::Layoult_Abas_Carregar('2',self::Usuarios_Edit('cliente',$id),false);
@@ -36,7 +36,7 @@ class comercio_certificado_Controle extends \Framework\App\Controle
             // Editar Aba 5
             $this->Usuario_UpdateInfo($id);
             // Joga pro Json se nao for o caso de popup
-            $this->_Visual->Json_Info_Update('Titulo','Visualizar Usuário');
+            $this->_Visual->Json_Info_Update('Titulo', __('Visualizar Usuário'));
             $this->_Visual->Json_Info_Update('Historico',0);
         }
     }
@@ -51,7 +51,7 @@ class comercio_certificado_Controle extends \Framework\App\Controle
             \Framework\App\Visual::Layoult_Abas_Carregar('3',$this->_Visual->ErroShow()        ,false);
             \Framework\App\Visual::Layoult_Abas_Carregar('4',$this->_Visual->ErroShow()        ,false);
             \Framework\App\Visual::Layoult_Abas_Carregar('5',$this->_Visual->ErroShow()        ,false);
-            $this->_Visual->Json_Info_Update('Titulo','Listagem de Usuários');
+            $this->_Visual->Json_Info_Update('Titulo', __('Listagem de Usuários'));
         }else{
             \Framework\App\Visual::Layoult_Abas_Carregar('2',self::Usuarios_Edit('cliente',$id),true);
             \Framework\App\Visual::Layoult_Abas_Carregar('3',$this->Propostas_DashBoard($id)   ,false);
@@ -59,7 +59,7 @@ class comercio_certificado_Controle extends \Framework\App\Controle
             // Editar Aba 5
             $this->Usuario_UpdateInfo($id);
             // Titulo
-            $this->_Visual->Json_Info_Update('Titulo','Visualizar Usuário');
+            $this->_Visual->Json_Info_Update('Titulo', __('Visualizar Usuário'));
         }
         // Joga pro Json se nao for o caso de popup
         $this->_Visual->Json_Info_Update('Historico',0);

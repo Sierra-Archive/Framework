@@ -80,7 +80,7 @@ class Transporte_PedidoControle extends Transporte_Controle
             );
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
 
-            $this->_Visual->Json_Info_Update('Titulo','Erro'); 
+            $this->_Visual->Json_Info_Update('Titulo', __('Erro')); 
         }
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
@@ -160,7 +160,7 @@ class Transporte_PedidoControle extends Transporte_Controle
         
         $this->Pedidos();
         
-        $this->_Visual->Json_Info_Update('Titulo', 'Proposta Cancelada com Sucesso');  
+        $this->_Visual->Json_Info_Update('Titulo', __('Proposta Cancelada com Sucesso'));  
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
     /**
@@ -225,7 +225,7 @@ class Transporte_PedidoControle extends Transporte_Controle
         $titulo = 'Propostas Aceitas dos Meus Pedidos ('.$i.')';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Propostas Aceitas dos Meus Pedidos');
+        $this->_Visual->Json_Info_Update('Titulo', __('Propostas Aceitas dos Meus Pedidos'));
     }
     public function Arma_Ped_Novas($export=false){
         
@@ -284,7 +284,7 @@ class Transporte_PedidoControle extends Transporte_Controle
         $titulo = 'Novas Propostas dos Meus Pedidos ('.$i.')';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Novas Propostas dos Meus Pedidos');
+        $this->_Visual->Json_Info_Update('Titulo', __('Novas Propostas dos Meus Pedidos'));
     }
     public function Arma_Ped_Minhas($export=false){
         $i = 0;
@@ -346,7 +346,7 @@ class Transporte_PedidoControle extends Transporte_Controle
         $titulo = 'Listagem dos meus Pedidos ('.$i.')';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Meus Pedidos');
+        $this->_Visual->Json_Info_Update('Titulo', __('Meus Pedidos'));
     }
     public function Arma_Sol_Solicitacoes($export=false){
         $i = 0;
@@ -404,7 +404,7 @@ class Transporte_PedidoControle extends Transporte_Controle
         $titulo = 'Listagem dos Pedidos Pendentes ('.$i.')';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Pedidos Pendentes');
+        $this->_Visual->Json_Info_Update('Titulo', __('Pedidos Pendentes'));
     }
     
     
@@ -488,7 +488,7 @@ class Transporte_PedidoControle extends Transporte_Controle
         $titulo = 'Proposta Aceitas ('.$i.')';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Propostas Aceitas');
+        $this->_Visual->Json_Info_Update('Titulo', __('Propostas Aceitas'));
     }
     public function Arma_Sol_PedRecusados($export=false){
         
@@ -544,7 +544,7 @@ class Transporte_PedidoControle extends Transporte_Controle
         $titulo = 'Proposta Recusadas ('.$i.')';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Propostas Recusadas');
+        $this->_Visual->Json_Info_Update('Titulo', __('Propostas Recusadas'));
     }
     public function Arma_Sol_PedPendente($export=false){
         
@@ -602,7 +602,7 @@ class Transporte_PedidoControle extends Transporte_Controle
         $titulo = 'Proposta Pendentes ('.$i.')';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Propostas Pendentes');
+        $this->_Visual->Json_Info_Update('Titulo', __('Propostas Pendentes'));
     }
     
     
@@ -730,7 +730,7 @@ class Transporte_PedidoControle extends Transporte_Controle
         
         $this->Arma_Sol_Solicitacoes();
         
-        $this->_Visual->Json_Info_Update('Titulo', 'Proposta Cancelada com Sucesso');  
+        $this->_Visual->Json_Info_Update('Titulo', __('Proposta Cancelada com Sucesso'));  
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
     
@@ -805,7 +805,7 @@ class Transporte_PedidoControle extends Transporte_Controle
             );
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
 
-            $this->_Visual->Json_Info_Update('Titulo','Erro'); 
+            $this->_Visual->Json_Info_Update('Titulo', __('Erro')); 
         }
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
@@ -885,7 +885,7 @@ class Transporte_PedidoControle extends Transporte_Controle
         
         $this->Pedidos();
         
-        $this->_Visual->Json_Info_Update('Titulo', 'Proposta Cancelada com Sucesso');  
+        $this->_Visual->Json_Info_Update('Titulo', __('Proposta Cancelada com Sucesso'));  
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
     /**
@@ -950,7 +950,7 @@ class Transporte_PedidoControle extends Transporte_Controle
         $titulo = 'Propostas Aceitas dos Meus Pedidos ('.$i.')';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Propostas Aceitas dos Meus Pedidos');
+        $this->_Visual->Json_Info_Update('Titulo', __('Propostas Aceitas dos Meus Pedidos'));
     }
     public function Trans_Ped_Novas($export=false){
         
@@ -1009,7 +1009,7 @@ class Transporte_PedidoControle extends Transporte_Controle
         $titulo = 'Novas Propostas dos Meus Pedidos ('.$i.')';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Novas Propostas dos Meus Pedidos');
+        $this->_Visual->Json_Info_Update('Titulo', __('Novas Propostas dos Meus Pedidos'));
     }
     public function Trans_Ped_Minhas($export=false){
         $i = 0;
@@ -1071,7 +1071,7 @@ class Transporte_PedidoControle extends Transporte_Controle
         $titulo = 'Listagem dos meus Pedidos ('.$i.')';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Meus Pedidos');
+        $this->_Visual->Json_Info_Update('Titulo', __('Meus Pedidos'));
     }
     public function Trans_Sol_Solicitacoes($export=false){
         $i = 0;
@@ -1129,7 +1129,7 @@ class Transporte_PedidoControle extends Transporte_Controle
         $titulo = 'Listagem dos Pedidos Pendentes ('.$i.')';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Pedidos Pendentes');
+        $this->_Visual->Json_Info_Update('Titulo', __('Pedidos Pendentes'));
     }
     
     
@@ -1213,7 +1213,7 @@ class Transporte_PedidoControle extends Transporte_Controle
         $titulo = 'Proposta Aceitas ('.$i.')';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Propostas Aceitas');
+        $this->_Visual->Json_Info_Update('Titulo', __('Propostas Aceitas'));
     }
     public function Trans_Sol_PedRecusados($export=false){
         
@@ -1269,7 +1269,7 @@ class Transporte_PedidoControle extends Transporte_Controle
         $titulo = 'Proposta Recusadas ('.$i.')';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Propostas Recusadas');
+        $this->_Visual->Json_Info_Update('Titulo', __('Propostas Recusadas'));
     }
     public function Trans_Sol_PedPendente($export=false){
         
@@ -1327,7 +1327,7 @@ class Transporte_PedidoControle extends Transporte_Controle
         $titulo = 'Proposta Pendentes ('.$i.')';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Propostas Pendentes');
+        $this->_Visual->Json_Info_Update('Titulo', __('Propostas Pendentes'));
     }
     
     
@@ -1455,7 +1455,7 @@ class Transporte_PedidoControle extends Transporte_Controle
         
         $this->Trans_Sol_Solicitacoes();
         
-        $this->_Visual->Json_Info_Update('Titulo', 'Proposta Cancelada com Sucesso');  
+        $this->_Visual->Json_Info_Update('Titulo', __('Proposta Cancelada com Sucesso'));  
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
 
@@ -1526,7 +1526,7 @@ class Transporte_PedidoControle extends Transporte_Controle
             );
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
 
-            $this->_Visual->Json_Info_Update('Titulo','Erro'); 
+            $this->_Visual->Json_Info_Update('Titulo', __('Erro')); 
         }
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
@@ -1606,7 +1606,7 @@ class Transporte_PedidoControle extends Transporte_Controle
         
         $this->Pedidos();
         
-        $this->_Visual->Json_Info_Update('Titulo', 'Proposta Cancelada com Sucesso');  
+        $this->_Visual->Json_Info_Update('Titulo', __('Proposta Cancelada com Sucesso'));  
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
     /**
@@ -1671,7 +1671,7 @@ class Transporte_PedidoControle extends Transporte_Controle
         $titulo = 'Propostas Aceitas dos Meus Pedidos ('.$i.')';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Propostas Aceitas dos Meus Pedidos');
+        $this->_Visual->Json_Info_Update('Titulo', __('Propostas Aceitas dos Meus Pedidos'));
     }
     public function Caminho_Ped_Novas($export=false){
         
@@ -1730,7 +1730,7 @@ class Transporte_PedidoControle extends Transporte_Controle
         $titulo = 'Novas Propostas dos Meus Pedidos ('.$i.')';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Novas Propostas dos Meus Pedidos');
+        $this->_Visual->Json_Info_Update('Titulo', __('Novas Propostas dos Meus Pedidos'));
     }
     public function Caminho_Ped_Minhas($export=false){
         $i = 0;
@@ -1792,7 +1792,7 @@ class Transporte_PedidoControle extends Transporte_Controle
         $titulo = 'Listagem dos meus Pedidos ('.$i.')';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Meus Pedidos');
+        $this->_Visual->Json_Info_Update('Titulo', __('Meus Pedidos'));
     }
     public function Caminho_Sol_Solicitacoes($export=false){
         $i = 0;
@@ -1850,7 +1850,7 @@ class Transporte_PedidoControle extends Transporte_Controle
         $titulo = 'Listagem dos Pedidos Pendentes ('.$i.')';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Pedidos Pendentes');
+        $this->_Visual->Json_Info_Update('Titulo', __('Pedidos Pendentes'));
     }
     
     
@@ -1934,7 +1934,7 @@ class Transporte_PedidoControle extends Transporte_Controle
         $titulo = 'Proposta Aceitas ('.$i.')';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Propostas Aceitas');
+        $this->_Visual->Json_Info_Update('Titulo', __('Propostas Aceitas'));
     }
     public function Caminho_Sol_PedRecusados($export=false){
         
@@ -1990,7 +1990,7 @@ class Transporte_PedidoControle extends Transporte_Controle
         $titulo = 'Proposta Recusadas ('.$i.')';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Propostas Recusadas');
+        $this->_Visual->Json_Info_Update('Titulo', __('Propostas Recusadas'));
     }
     public function Caminho_Sol_PedPendente($export=false){
         
@@ -2048,7 +2048,7 @@ class Transporte_PedidoControle extends Transporte_Controle
         $titulo = 'Proposta Pendentes ('.$i.')';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Propostas Pendentes');
+        $this->_Visual->Json_Info_Update('Titulo', __('Propostas Pendentes'));
     }
     
     
@@ -2176,7 +2176,7 @@ class Transporte_PedidoControle extends Transporte_Controle
         
         $this->Caminho_Sol_Solicitacoes();
         
-        $this->_Visual->Json_Info_Update('Titulo', 'Proposta Cancelada com Sucesso');  
+        $this->_Visual->Json_Info_Update('Titulo', __('Proposta Cancelada com Sucesso'));  
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
 }

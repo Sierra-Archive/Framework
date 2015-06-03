@@ -53,7 +53,7 @@ class Acl{
             // Esqueci Minha Senha
             if(isset($_GET['sistema_esquecisenha'])){
                 $this->_Registro->_Visual = new \Framework\App\Visual();
-                $this->_Registro->_Visual->Json_Info_Update('Titulo', 'Esqueci Senha');
+                $this->_Registro->_Visual->Json_Info_Update('Titulo', __('Esqueci Senha'));
                 // Clicando no link do email
                 if(isset($_GET['sistema_esquecisenha_cod'])){
                     $novasenha = Sistema_Funcoes::Gerar_Senha();

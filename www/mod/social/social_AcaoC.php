@@ -51,7 +51,7 @@ class social_AcaoControle extends social_Controle
     public function Acao($persona_id=false,$export=false){
         self::Acao_Stat($persona_id,'Unico',$export=false);
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Administrar Ações');
+        $this->_Visual->Json_Info_Update('Titulo', __('Administrar Ações'));
     }
     public static function Acao_Stat($persona_id=false,$tipo='Unico',$export=false){
         $registro = \Framework\App\Registro::getInstacia();
@@ -231,7 +231,7 @@ class social_AcaoControle extends social_Controle
         
         $this->Acao($persona_id);
         
-        $this->_Visual->Json_Info_Update('Titulo', 'Ação deletada com Sucesso');  
+        $this->_Visual->Json_Info_Update('Titulo', __('Ação deletada com Sucesso'));  
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
 }

@@ -137,7 +137,7 @@ class comercio_EstoqueControle extends comercio_Controle
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Administrar Estoques');
+        $this->_Visual->Json_Info_Update('Titulo', __('Administrar Estoques'));
     }
     /**
      * 
@@ -302,7 +302,7 @@ class comercio_EstoqueControle extends comercio_Controle
         $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',0,Array("link"=>"comercio/Estoque/Material_Entrada_Add",'icon'=>'add','nome'=>'Adicionar Entrada de NFE'));
         
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Administrar Entrada de NFE');
+        $this->_Visual->Json_Info_Update('Titulo', __('Administrar Entrada de NFE'));
     }
     public function Material_Entrada_Add(){
         self::Endereco_Entrada_Material(true);
@@ -491,7 +491,7 @@ class comercio_EstoqueControle extends comercio_Controle
                 "mgs_principal" => 'Deletada',
                 "mgs_secundaria" => 'Entrada de NFE Deletada com sucesso'
             );
-            $this->_Visual->Json_Info_Update('Titulo', 'Entrada de NFE deletada com Sucesso');  
+            $this->_Visual->Json_Info_Update('Titulo', __('Entrada de NFE deletada com Sucesso'));  
     	}else{
             $mensagens = array(
                 "tipo" => 'erro',

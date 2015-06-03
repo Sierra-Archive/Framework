@@ -60,7 +60,7 @@ class usuario_mensagem_SetorControle extends usuario_mensagem_Controle
         $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',10,Array("link"=>"usuario_mensagem/Setor/Setores_Add",'icon'=>'add','nome'=>'Adicionar Setor'));
         
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Administrar Setores');
+        $this->_Visual->Json_Info_Update('Titulo', __('Administrar Setores'));
     }
     /**
      * 
@@ -151,7 +151,7 @@ class usuario_mensagem_SetorControle extends usuario_mensagem_Controle
         }
         $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);  
         //Json
-        $this->_Visual->Json_Info_Update('Titulo', 'Setor Editado com Sucesso');  
+        $this->_Visual->Json_Info_Update('Titulo', __('Setor Editado com Sucesso'));  
         $this->_Visual->Json_Info_Update('Historico', false);    
     }
     /**
@@ -186,7 +186,7 @@ class usuario_mensagem_SetorControle extends usuario_mensagem_Controle
         
         $this->Setores();
         
-        $this->_Visual->Json_Info_Update('Titulo', 'Setor deletado com Sucesso');  
+        $this->_Visual->Json_Info_Update('Titulo', __('Setor deletado com Sucesso'));  
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
 }

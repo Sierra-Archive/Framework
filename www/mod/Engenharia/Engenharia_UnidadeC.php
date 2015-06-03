@@ -560,7 +560,7 @@ class Engenharia_UnidadeControle extends Engenharia_Controle
             $this->Unidades();
         }
         
-        $this->_Visual->Json_Info_Update('Titulo', 'Unidade deletada com Sucesso');
+        $this->_Visual->Json_Info_Update('Titulo', __('Unidade deletada com Sucesso'));
         $this->_Visual->Json_Info_Update('Historico', false);
     }
 }

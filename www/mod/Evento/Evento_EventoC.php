@@ -126,7 +126,7 @@ class Evento_EventoControle extends Evento_Controle
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Administrar Eventos');
+        $this->_Visual->Json_Info_Update('Titulo', __('Administrar Eventos'));
     }
     /**
      * 
@@ -232,7 +232,7 @@ class Evento_EventoControle extends Evento_Controle
         
         $this->Eventos();
         // Titulo
-        $this->_Visual->Json_Info_Update('Titulo', 'Evento deletado com Sucesso');
+        $this->_Visual->Json_Info_Update('Titulo', __('Evento deletado com Sucesso'));
         // Bota pra nao gravar historico
         $this->_Visual->Json_Info_Update('Historico', false);
     }
@@ -270,7 +270,7 @@ class Evento_EventoControle extends Evento_Controle
             // MANDA CONTEUDO PRO USUARIO
             $this->_Visual->Json_IncluiTipo('Conteudo',$conteudo);
             // MUDA O TITULO
-            $this->_Visual->Json_Info_Update('Titulo','Status Alterado'); 
+            $this->_Visual->Json_Info_Update('Titulo', __('Status Alterado')); 
         }else{
             $mensagens = array(
                 "tipo"              => 'erro',
@@ -279,7 +279,7 @@ class Evento_EventoControle extends Evento_Controle
             );
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
 
-            $this->_Visual->Json_Info_Update('Titulo','Erro'); 
+            $this->_Visual->Json_Info_Update('Titulo', __('Erro')); 
         }
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
@@ -309,7 +309,7 @@ class Evento_EventoControle extends Evento_Controle
                 'html' =>  $this->_Visual->Tema_Elementos_Btn('Destaque'.$resultado->destaque     ,Array($texto        ,'Evento/Evento/Destaques/'.$resultado->id.'/'    ,''))
             );
             $this->_Visual->Json_IncluiTipo('Conteudo',$conteudo);
-            $this->_Visual->Json_Info_Update('Titulo','Destaque Alterado'); 
+            $this->_Visual->Json_Info_Update('Titulo', __('Destaque Alterado')); 
         }else{
             $mensagens = array(
                 "tipo"              => 'erro',
@@ -318,7 +318,7 @@ class Evento_EventoControle extends Evento_Controle
             );
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
 
-            $this->_Visual->Json_Info_Update('Titulo','Erro'); 
+            $this->_Visual->Json_Info_Update('Titulo', __('Erro')); 
         }
         $this->_Visual->Json_Info_Update('Historico', false);  
     }

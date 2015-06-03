@@ -113,7 +113,7 @@ class Transporte_EstradaControle extends Transporte_Controle
         $titulo = 'Listagem de Dicas de Estradas ('.$i.')';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Estradaistrar Estradas');
+        $this->_Visual->Json_Info_Update('Titulo', __('Estradaistrar Estradas'));
     }
     /**
      * 
@@ -214,7 +214,7 @@ class Transporte_EstradaControle extends Transporte_Controle
         
         $this->Estradas();
         
-        $this->_Visual->Json_Info_Update('Titulo', 'Dica de Estrada deletada com Sucesso');  
+        $this->_Visual->Json_Info_Update('Titulo', __('Dica de Estrada deletada com Sucesso'));  
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
     public function Status($id=false){
@@ -243,7 +243,7 @@ class Transporte_EstradaControle extends Transporte_Controle
                 'html' =>  $this->_Visual->Tema_Elementos_Btn('Status'.$resultado->status     ,Array($texto        ,'Transporte/Estrada/Status/'.$resultado->id.'/'    ,''))
             );
             $this->_Visual->Json_IncluiTipo('Conteudo',$conteudo);
-            $this->_Visual->Json_Info_Update('Titulo','Status Alterado'); 
+            $this->_Visual->Json_Info_Update('Titulo', __('Status Alterado')); 
         }else{
             $mensagens = array(
                 "tipo"              => 'erro',
@@ -252,7 +252,7 @@ class Transporte_EstradaControle extends Transporte_Controle
             );
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
 
-            $this->_Visual->Json_Info_Update('Titulo','Erro'); 
+            $this->_Visual->Json_Info_Update('Titulo', __('Erro')); 
         }
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
@@ -282,7 +282,7 @@ class Transporte_EstradaControle extends Transporte_Controle
                 'html' =>  $this->_Visual->Tema_Elementos_Btn('Destaque'.$resultado->destaque     ,Array($texto        ,'Transporte/Estrada/Destaques/'.$resultado->id.'/'    ,''))
             );
             $this->_Visual->Json_IncluiTipo('Conteudo',$conteudo);
-            $this->_Visual->Json_Info_Update('Titulo','Destaque Alterado'); 
+            $this->_Visual->Json_Info_Update('Titulo', __('Destaque Alterado')); 
         }else{
             $mensagens = array(
                 "tipo"              => 'erro',
@@ -291,7 +291,7 @@ class Transporte_EstradaControle extends Transporte_Controle
             );
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
 
-            $this->_Visual->Json_Info_Update('Titulo','Erro'); 
+            $this->_Visual->Json_Info_Update('Titulo', __('Erro')); 
         }
         $this->_Visual->Json_Info_Update('Historico', false);  
     }

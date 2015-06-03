@@ -26,7 +26,7 @@ class _Sistema_AdminControle extends _Sistema_Controle
         $this->Endereco_Admin(false);
         
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Administração Avançada');
+        $this->_Visual->Json_Info_Update('Titulo', __('Administração Avançada'));
     }
     public function AdminWidgets(){
         // Grupo
@@ -149,7 +149,7 @@ class _Sistema_AdminControle extends _Sistema_Controle
             $this->_Visual->Bloco_Menor_CriaJanela($titulo);
         }
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Administrar Menus');
+        $this->_Visual->Json_Info_Update('Titulo', __('Administrar Menus'));
     }
     public function Menu_Status($id=false){
         if($id===false){
@@ -177,7 +177,7 @@ class _Sistema_AdminControle extends _Sistema_Controle
                 'html' =>  $this->_Visual->Tema_Elementos_Btn('Status'.$resultado->status     ,Array($texto        ,'_Sistema/Admin/Menu_Status/'.$resultado->id.'/'    ,''))
             );
             $this->_Visual->Json_IncluiTipo('Conteudo',$conteudo);
-            $this->_Visual->Json_Info_Update('Titulo','Status Alterado'); 
+            $this->_Visual->Json_Info_Update('Titulo', __('Status Alterado')); 
         }else{
             $mensagens = array(
                 "tipo"              => 'erro',
@@ -186,7 +186,7 @@ class _Sistema_AdminControle extends _Sistema_Controle
             );
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
 
-            $this->_Visual->Json_Info_Update('Titulo','Erro'); 
+            $this->_Visual->Json_Info_Update('Titulo', __('Erro')); 
         }
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
@@ -289,7 +289,7 @@ class _Sistema_AdminControle extends _Sistema_Controle
         
         $this->Menus();
         
-        $this->_Visual->Json_Info_Update('Titulo', 'Menu deletado com Sucesso');  
+        $this->_Visual->Json_Info_Update('Titulo', __('Menu deletado com Sucesso'));  
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
     /**
@@ -363,7 +363,7 @@ class _Sistema_AdminControle extends _Sistema_Controle
             $this->_Visual->Bloco_Menor_CriaJanela($titulo);
         }
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Administrar Permissões');
+        $this->_Visual->Json_Info_Update('Titulo', __('Administrar Permissões'));
     }
     /**
      * 
@@ -465,7 +465,7 @@ class _Sistema_AdminControle extends _Sistema_Controle
         
         $this->Permissoes();
         
-        $this->_Visual->Json_Info_Update('Titulo', 'Permissão deletada com Sucesso');  
+        $this->_Visual->Json_Info_Update('Titulo', __('Permissão deletada com Sucesso'));  
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
     public function Grupos_Funcionarios(){
@@ -545,7 +545,7 @@ class _Sistema_AdminControle extends _Sistema_Controle
         }
         
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Administrar Grupos');
+        $this->_Visual->Json_Info_Update('Titulo', __('Administrar Grupos'));
     }
     /**
      * 
@@ -655,7 +655,7 @@ class _Sistema_AdminControle extends _Sistema_Controle
         
         $this->Grupos($grupocat);
         
-        $this->_Visual->Json_Info_Update('Titulo', 'Grupo deletado com Sucesso');  
+        $this->_Visual->Json_Info_Update('Titulo', __('Grupo deletado com Sucesso'));  
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
     /**
@@ -723,7 +723,7 @@ class _Sistema_AdminControle extends _Sistema_Controle
         }
         
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Administrar Permissões de Grupos');
+        $this->_Visual->Json_Info_Update('Titulo', __('Administrar Permissões de Grupos'));
     }
     /**
      * 
@@ -751,7 +751,7 @@ class _Sistema_AdminControle extends _Sistema_Controle
         // Mostra Conteudo
         $this->_Visual->Bloco_Unico_CriaJanela(__('Cadastro de Permissão de Grupo'));
         // Pagina Config
-        $this->_Visual->Json_Info_Update('Titulo','Adicionar Permissão de Grupo');
+        $this->_Visual->Json_Info_Update('Titulo', __('Adicionar Permissão de Grupo'));
     }
     /**
      * 
@@ -816,7 +816,7 @@ class _Sistema_AdminControle extends _Sistema_Controle
         }
         $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens); 
         // Json
-        $this->_Visual->Json_Info_Update('Titulo', 'Permissão de Grupo Adicionado com Sucesso');  
+        $this->_Visual->Json_Info_Update('Titulo', __('Permissão de Grupo Adicionado com Sucesso'));  
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
     /**
@@ -851,7 +851,7 @@ class _Sistema_AdminControle extends _Sistema_Controle
         }
         $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);  
         //Json
-        $this->_Visual->Json_Info_Update('Titulo', 'Permissão de Grupo Editado com Sucesso');  
+        $this->_Visual->Json_Info_Update('Titulo', __('Permissão de Grupo Editado com Sucesso'));  
         $this->_Visual->Json_Info_Update('Historico', false);    
     }
     /**
@@ -886,7 +886,7 @@ class _Sistema_AdminControle extends _Sistema_Controle
         
         $this->Grupo_Permissao();
         
-        $this->_Visual->Json_Info_Update('Titulo', 'Permissão de Grupo deletado com Sucesso');  
+        $this->_Visual->Json_Info_Update('Titulo', __('Permissão de Grupo deletado com Sucesso'));  
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
     public function Newsletter($export='Unico'){
@@ -961,7 +961,7 @@ class _Sistema_AdminControle extends _Sistema_Controle
         }
         
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Administrar Newsletters');
+        $this->_Visual->Json_Info_Update('Titulo', __('Administrar Newsletters'));
     }
     /**
      * 
@@ -981,7 +981,7 @@ class _Sistema_AdminControle extends _Sistema_Controle
         // Mostra Conteudo
         $this->_Visual->Bloco_Unico_CriaJanela(__('Cadastro de Newsletter'));
         // Pagina Config
-        $this->_Visual->Json_Info_Update('Titulo','Adicionar Newsletter');
+        $this->_Visual->Json_Info_Update('Titulo', __('Adicionar Newsletter'));
     }
     /**
      * 
@@ -1043,7 +1043,7 @@ class _Sistema_AdminControle extends _Sistema_Controle
         }
         $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
         // Json
-        $this->_Visual->Json_Info_Update('Titulo', 'Newsletter Adicionado com Sucesso');  
+        $this->_Visual->Json_Info_Update('Titulo', __('Newsletter Adicionado com Sucesso'));  
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
     /**
@@ -1078,7 +1078,7 @@ class _Sistema_AdminControle extends _Sistema_Controle
         }
         $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);  
         //Json
-        $this->_Visual->Json_Info_Update('Titulo', 'Newsletter Editado com Sucesso');  
+        $this->_Visual->Json_Info_Update('Titulo', __('Newsletter Editado com Sucesso'));  
         $this->_Visual->Json_Info_Update('Historico', false);    
     }
     /**
@@ -1113,7 +1113,7 @@ class _Sistema_AdminControle extends _Sistema_Controle
         
         $this->Newsletter();
         
-        $this->_Visual->Json_Info_Update('Titulo', 'Newsletter deletado com Sucesso');  
+        $this->_Visual->Json_Info_Update('Titulo', __('Newsletter deletado com Sucesso'));  
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
     

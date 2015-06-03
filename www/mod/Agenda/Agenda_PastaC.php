@@ -34,7 +34,7 @@ class Agenda_PastaControle extends Agenda_Controle
     public function Main(){
         $this->Pastas();
         // ORGANIZA E MANDA CONTEUDO
-        $this->_Visual->Json_Info_Update('Titulo','Pastas'); 
+        $this->_Visual->Json_Info_Update('Titulo', __('Pastas')); 
     }
     protected function Endereco_Pasta($true=true){
         if($true===true){
@@ -81,7 +81,7 @@ class Agenda_PastaControle extends Agenda_Controle
         self::Pastas_Listar($export,$this->_Modelo,$this->_Visual);
         
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Arquivo de Pastas');
+        $this->_Visual->Json_Info_Update('Titulo', __('Arquivo de Pastas'));
     }
     static function Pastas_Listar($export=false,&$Modelo,&$Visual,$tipo='Unico'){
         $i = 0;
@@ -223,7 +223,7 @@ class Agenda_PastaControle extends Agenda_Controle
         
         $this->Pastas();
         
-        $this->_Visual->Json_Info_Update('Titulo', 'Pasta deletado com Sucesso');  
+        $this->_Visual->Json_Info_Update('Titulo', __('Pasta deletado com Sucesso'));  
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
     /**
@@ -283,7 +283,7 @@ class Agenda_PastaControle extends Agenda_Controle
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Administrar Cores');
+        $this->_Visual->Json_Info_Update('Titulo', __('Administrar Cores'));
     }
     /**
      * 
@@ -380,7 +380,7 @@ class Agenda_PastaControle extends Agenda_Controle
         
         $this->Cores();
         
-        $this->_Visual->Json_Info_Update('Titulo', 'Cor deletada com Sucesso');  
+        $this->_Visual->Json_Info_Update('Titulo', __('Cor deletada com Sucesso'));  
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
 }

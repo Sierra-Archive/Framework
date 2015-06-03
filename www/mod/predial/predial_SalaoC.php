@@ -84,7 +84,7 @@ class predial_SalaoControle extends predial_Controle
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Administrar Locais de Reserva');
+        $this->_Visual->Json_Info_Update('Titulo', __('Administrar Locais de Reserva'));
     }
     /**
      * 
@@ -184,7 +184,7 @@ class predial_SalaoControle extends predial_Controle
         
         $this->Saloes();
         
-        $this->_Visual->Json_Info_Update('Titulo', 'Local de Reserva deletado com Sucesso');
+        $this->_Visual->Json_Info_Update('Titulo', __('Local de Reserva deletado com Sucesso'));
         $this->_Visual->Json_Info_Update('Historico', false);
     }
     
@@ -241,7 +241,7 @@ class predial_SalaoControle extends predial_Controle
         $this->_Visual->Bloco_Maior_CriaJanela(__('Datas Disponiveis'));
         // ORGANIZA E MANDA CONTEUDO
         
-        $this->_Visual->Json_Info_Update('Titulo','Reservas');        
+        $this->_Visual->Json_Info_Update('Titulo', __('Reservas'));        
     }
     public function Popup_Agendar_reserva($idreserva,$datainicial,$datafinal,$nomereserva){
         if($this->get_logado()){

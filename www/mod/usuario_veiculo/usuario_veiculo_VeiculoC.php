@@ -134,7 +134,7 @@ class usuario_veiculo_VeiculoControle extends usuario_veiculo_Controle
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Administrar Veiculos');
+        $this->_Visual->Json_Info_Update('Titulo', __('Administrar Veiculos'));
     }
     /**
      * 
@@ -236,7 +236,7 @@ class usuario_veiculo_VeiculoControle extends usuario_veiculo_Controle
         
         $this->Veiculos();
         
-        $this->_Visual->Json_Info_Update('Titulo', 'Veiculo deletado com Sucesso');  
+        $this->_Visual->Json_Info_Update('Titulo', __('Veiculo deletado com Sucesso'));  
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
     public function Veiculos_View($veiculo_id = false){
@@ -248,7 +248,7 @@ class usuario_veiculo_VeiculoControle extends usuario_veiculo_Controle
         if(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_veiculo_Evento')){
             $this->Veiculos_Evento( $veiculo_id          );
         }
-        $this->_Visual->Json_Info_Update('Titulo','Visualizar Comentários do Veiculo');
+        $this->_Visual->Json_Info_Update('Titulo', __('Visualizar Comentários do Veiculo'));
     }
     public function Veiculos_Popup($veiculo_id = false, $popup=true){
         if($veiculo_id===false || $veiculo_id==0 || !isset($veiculo_id)) throw new \Exception('Veiculo não informado',404);
@@ -304,7 +304,7 @@ class usuario_veiculo_VeiculoControle extends usuario_veiculo_Controle
         }else{
             $this->_Visual->Blocar('<div class="row">'.$html.'</div>');
             $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',20);
-            $this->_Visual->Json_Info_Update('Titulo','Visualizar Veiculo');
+            $this->_Visual->Json_Info_Update('Titulo', __('Visualizar Veiculo'));
         }
     }
     /**
@@ -361,7 +361,7 @@ class usuario_veiculo_VeiculoControle extends usuario_veiculo_Controle
         $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',10);
         
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Administrar Comentários do Veiculo');
+        $this->_Visual->Json_Info_Update('Titulo', __('Administrar Comentários do Veiculo'));
     }
     /**
      * 
@@ -470,7 +470,7 @@ class usuario_veiculo_VeiculoControle extends usuario_veiculo_Controle
         
         $this->Veiculos_View($veiculo_id);
         
-        $this->_Visual->Json_Info_Update('Titulo', 'Comentário de Veiculo deletado com Sucesso');  
+        $this->_Visual->Json_Info_Update('Titulo', __('Comentário de Veiculo deletado com Sucesso'));  
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
     /**
@@ -507,7 +507,7 @@ class usuario_veiculo_VeiculoControle extends usuario_veiculo_Controle
         $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',10);
         
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Administrar Eventos do Veiculo');
+        $this->_Visual->Json_Info_Update('Titulo', __('Administrar Eventos do Veiculo'));
     }
     /**
      * 
@@ -616,7 +616,7 @@ class usuario_veiculo_VeiculoControle extends usuario_veiculo_Controle
         
         $this->Veiculos_View($veiculo_id);
         
-        $this->_Visual->Json_Info_Update('Titulo', 'Evento de Veiculo deletado com Sucesso');  
+        $this->_Visual->Json_Info_Update('Titulo', __('Evento de Veiculo deletado com Sucesso'));  
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
 }

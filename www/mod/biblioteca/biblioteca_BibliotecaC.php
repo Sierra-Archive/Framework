@@ -168,7 +168,7 @@ class biblioteca_BibliotecaControle extends biblioteca_Controle
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Listagem de Biblíotecas');
+        $this->_Visual->Json_Info_Update('Titulo', __('Listagem de Biblíotecas'));
     }
     private function Bibliotecas_Processar($raiz = false, $export=false){
         return self::Bibliotecas_Processar_Static($raiz, $export);
@@ -405,7 +405,7 @@ class biblioteca_BibliotecaControle extends biblioteca_Controle
             $arquivo->tipo          = 2;
             $arquivo->usuario       = $this->_Acl->Usuario_GetID();
             $this->_Modelo->db->Sql_Inserir($arquivo);
-            $this->_Visual->Json_Info_Update('Titulo', 'Upload com Sucesso');
+            $this->_Visual->Json_Info_Update('Titulo', __('Upload com Sucesso'));
             $this->_Visual->Json_Info_Update('Historico', false);
             // Atualiza Parent
             if($parent!==0){
@@ -426,7 +426,7 @@ class biblioteca_BibliotecaControle extends biblioteca_Controle
             );
             $this->_Visual->Json_IncluiTipo('Conteudo',$conteudo);
         }else{
-            $this->_Visual->Json_Info_Update('Titulo', 'Erro com Upload');
+            $this->_Visual->Json_Info_Update('Titulo', __('Erro com Upload'));
             $this->_Visual->Json_Info_Update('Historico', false);
         }
     }

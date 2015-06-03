@@ -647,7 +647,7 @@ class usuario_Controle extends \Framework\App\Controle
         // Usuario ver emails
         usuario_Controle::Usuarios_Email_Ver($id, $tipo2,$tema);
         // Titulo
-        $this->_Visual->Json_Info_Update('Titulo','Enviar Email para Usuário');
+        $this->_Visual->Json_Info_Update('Titulo', __('Enviar Email para Usuário'));
     }
     public function Usuarios_Email2($id = 0,$tipo=false, $tema='Cliente'){
         if($id==0 || !isset($id)){

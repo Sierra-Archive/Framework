@@ -123,7 +123,7 @@ class Desenvolvimento_ProjetoControle extends Desenvolvimento_Controle
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Administrar Projetos');
+        $this->_Visual->Json_Info_Update('Titulo', __('Administrar Projetos'));
     }
     /**
      * 
@@ -223,7 +223,7 @@ class Desenvolvimento_ProjetoControle extends Desenvolvimento_Controle
         
         $this->Projetos();
         
-        $this->_Visual->Json_Info_Update('Titulo', 'Projeto deletado com Sucesso');  
+        $this->_Visual->Json_Info_Update('Titulo', __('Projeto deletado com Sucesso'));  
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
     
@@ -441,7 +441,7 @@ class Desenvolvimento_ProjetoControle extends Desenvolvimento_Controle
             $this->_Visual->Blocar($html2);
             $this->_Visual->Bloco_Unico_CriaJanela($titulo2,'',10);
         }
-        $this->_Visual->Json_Info_Update('Titulo','Visualizar Projeto Completo');
+        $this->_Visual->Json_Info_Update('Titulo', __('Visualizar Projeto Completo'));
     }
     /**
      * 
@@ -477,11 +477,11 @@ class Desenvolvimento_ProjetoControle extends Desenvolvimento_Controle
                 'html' => $html
             );
             $this->_Visual->Json_IncluiTipo('Popup',$conteudo);
-            $this->_Visual->Json_Info_Update('Titulo','Visualizar Projeto');
+            $this->_Visual->Json_Info_Update('Titulo', __('Visualizar Projeto'));
         }else{
             $this->_Visual->Blocar('<div class="row">'.$html.'</div>');
             $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',20);
-            $this->_Visual->Json_Info_Update('Titulo','Visualizar Projeto');
+            $this->_Visual->Json_Info_Update('Titulo', __('Visualizar Projeto'));
         }
     }
     /**
@@ -531,7 +531,7 @@ class Desenvolvimento_ProjetoControle extends Desenvolvimento_Controle
             $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',10);
         }
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Administrar Comentários do Projeto');
+        $this->_Visual->Json_Info_Update('Titulo', __('Administrar Comentários do Projeto'));
     }
     /**
      * 
@@ -651,7 +651,7 @@ class Desenvolvimento_ProjetoControle extends Desenvolvimento_Controle
         
         $this->Projetos_View($Desenvolvimento_id);
         
-        $this->_Visual->Json_Info_Update('Titulo', 'Comentário de Projeto deletado com Sucesso');  
+        $this->_Visual->Json_Info_Update('Titulo', __('Comentário de Projeto deletado com Sucesso'));  
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
 }

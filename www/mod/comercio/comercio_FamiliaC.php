@@ -93,7 +93,7 @@ class comercio_FamiliaControle extends comercio_Controle
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Administrar Familias');
+        $this->_Visual->Json_Info_Update('Titulo', __('Administrar Familias'));
     }
     /**
      * 
@@ -193,7 +193,7 @@ class comercio_FamiliaControle extends comercio_Controle
         
         $this->Familias();
         
-        $this->_Visual->Json_Info_Update('Titulo', 'Familia deletada com Sucesso');  
+        $this->_Visual->Json_Info_Update('Titulo', __('Familia deletada com Sucesso'));  
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
 }

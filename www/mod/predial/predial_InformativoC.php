@@ -85,7 +85,7 @@ class predial_InformativoControle extends predial_Controle
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Administrar Informativos');
+        $this->_Visual->Json_Info_Update('Titulo', __('Administrar Informativos'));
     }
     /**
      * 
@@ -260,7 +260,7 @@ class predial_InformativoControle extends predial_Controle
         
         $this->Informativos();
         
-        $this->_Visual->Json_Info_Update('Titulo', 'Informativo deletado com Sucesso');  
+        $this->_Visual->Json_Info_Update('Titulo', __('Informativo deletado com Sucesso'));  
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
 }

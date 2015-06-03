@@ -39,7 +39,7 @@ class categoria_categoriaControle extends categoria_Controle
         if(isset($status) AND $status!='') $status='salvar';
         else                               $status='';
         if($status=='salvar'){
-            $this->_Visual->Json_Info_Update('Titulo','Categorias');
+            $this->_Visual->Json_Info_Update('Titulo', __('Categorias'));
               
             // insere categoria e atualiza o select
             $this->Categorias_inserir();
@@ -62,7 +62,7 @@ class categoria_categoriaControle extends categoria_Controle
             $this->Categorias_formcadastro();
     
             // ORGANIZA E MANDA CONTEUDO
-            $this->_Visual->Json_Info_Update('Titulo','Categorias');
+            $this->_Visual->Json_Info_Update('Titulo', __('Categorias'));
 
         }
     }
@@ -80,7 +80,7 @@ class categoria_categoriaControle extends categoria_Controle
         $this->_Visual->Blocar($form->retorna_form($language['formularios']['editar']));
         $this->_Visual->Bloco_Menor_CriaJanela(__('Editar Categoria'));
         // ORGANIZA E MANDA CONTEUDO
-        $this->_Visual->Json_Info_Update('Titulo','Editar Categoria');
+        $this->_Visual->Json_Info_Update('Titulo', __('Editar Categoria'));
     }
     public function Categorias_alterar($id){
         global $language;
@@ -117,7 +117,7 @@ class categoria_categoriaControle extends categoria_Controle
         $this->Categorias_formcadastro();
         
         // ORGANIZA E MANDA CONTEUDO
-        $this->_Visual->Json_Info_Update('Titulo','Categoria alterada com Sucesso');
+        $this->_Visual->Json_Info_Update('Titulo', __('Categoria alterada com Sucesso'));
         $this->_Visual->Json_Info_Update('Historico', false);
     
     }
@@ -292,7 +292,7 @@ class categoria_categoriaControle extends categoria_Controle
             );
         }
         $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
-        $this->_Visual->Json_Info_Update('Titulo','Categoria inserida com Sucesso');
+        $this->_Visual->Json_Info_Update('Titulo', __('Categoria inserida com Sucesso'));
         $this->_Visual->Json_Info_Update('Historico', false);
     
     }

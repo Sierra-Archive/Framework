@@ -211,7 +211,7 @@ class locais_localidadesControle extends locais_Controle
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Administrar Paises');
+        $this->_Visual->Json_Info_Update('Titulo', __('Administrar Paises'));
     }
     /**
      * 
@@ -309,7 +309,7 @@ class locais_localidadesControle extends locais_Controle
         
         $this->Paises();
         
-        $this->_Visual->Json_Info_Update('Titulo', 'Pais deletado com Sucesso');  
+        $this->_Visual->Json_Info_Update('Titulo', __('Pais deletado com Sucesso'));  
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
     /**
@@ -339,7 +339,7 @@ class locais_localidadesControle extends locais_Controle
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Administrar Estados');
+        $this->_Visual->Json_Info_Update('Titulo', __('Administrar Estados'));
     }
     /**
      * 
@@ -437,7 +437,7 @@ class locais_localidadesControle extends locais_Controle
         
         $this->Estados();
         
-        $this->_Visual->Json_Info_Update('Titulo', 'Estado deletado com Sucesso');  
+        $this->_Visual->Json_Info_Update('Titulo', __('Estado deletado com Sucesso'));  
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
     /**
@@ -467,7 +467,7 @@ class locais_localidadesControle extends locais_Controle
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Administrar Cidades');
+        $this->_Visual->Json_Info_Update('Titulo', __('Administrar Cidades'));
     }
     /**
      * 
@@ -565,7 +565,7 @@ class locais_localidadesControle extends locais_Controle
         
         $this->Cidades();
         
-        $this->_Visual->Json_Info_Update('Titulo', 'Cidade deletada com Sucesso');  
+        $this->_Visual->Json_Info_Update('Titulo', __('Cidade deletada com Sucesso'));  
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
     /**
@@ -595,7 +595,7 @@ class locais_localidadesControle extends locais_Controle
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Administrar Bairros');
+        $this->_Visual->Json_Info_Update('Titulo', __('Administrar Bairros'));
     }
     /**
      * 
@@ -693,7 +693,7 @@ class locais_localidadesControle extends locais_Controle
         
         $this->Bairros();
         
-        $this->_Visual->Json_Info_Update('Titulo', 'Bairro deletado com Sucesso');  
+        $this->_Visual->Json_Info_Update('Titulo', __('Bairro deletado com Sucesso'));  
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
 }

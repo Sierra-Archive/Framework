@@ -20,7 +20,7 @@ class predial_AdvertenciaControle extends predial_Controle
     public function Main(){
         $this->Advertencias();
         // ORGANIZA E MANDA CONTEUDO
-        $this->_Visual->Json_Info_Update('Titulo','Advertências'); 
+        $this->_Visual->Json_Info_Update('Titulo', __('Advertências')); 
     }
     static function Endereco_Advertencia($true=true){
         $registro = \Framework\App\Registro::getInstacia();
@@ -88,7 +88,7 @@ class predial_AdvertenciaControle extends predial_Controle
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Administrar Advertências');
+        $this->_Visual->Json_Info_Update('Titulo', __('Administrar Advertências'));
     }
     /**
      * 
@@ -258,7 +258,7 @@ class predial_AdvertenciaControle extends predial_Controle
         
         $this->Main();
         
-        $this->_Visual->Json_Info_Update('Titulo', 'Advertência deletada com Sucesso');
+        $this->_Visual->Json_Info_Update('Titulo', __('Advertência deletada com Sucesso'));
         $this->_Visual->Json_Info_Update('Historico', false);
     }
     

@@ -75,7 +75,7 @@ class comercio_UnidadeControle extends comercio_Controle
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Administrar Unidades');
+        $this->_Visual->Json_Info_Update('Titulo', __('Administrar Unidades'));
     }
     /**
      * 
@@ -175,7 +175,7 @@ class comercio_UnidadeControle extends comercio_Controle
         
         $this->Unidades();
         
-        $this->_Visual->Json_Info_Update('Titulo', 'Unidade deletada com Sucesso');  
+        $this->_Visual->Json_Info_Update('Titulo', __('Unidade deletada com Sucesso'));  
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
 }

@@ -79,7 +79,7 @@ class comercio_servicos_ServicoControle extends comercio_servicos_Controle
         $this->_Visual->Bloco_Unico_CriaJanela($titulo.' (<span id="DataTable_Contador">Carregando...</span>)','',10,Array("link"=>"comercio_servicos/Servico/Servicos_Add",'icon'=>'add','nome'=>'Adicionar nov'.$titulo_com_sexo));
         
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Administrar '.$titulo);
+        $this->_Visual->Json_Info_Update('Titulo', __('Administrar ').$titulo);
     }
     /**
      * 
@@ -186,7 +186,7 @@ class comercio_servicos_ServicoControle extends comercio_servicos_Controle
         
         $this->Servico();
         
-        $this->_Visual->Json_Info_Update('Titulo', 'Deletado com Sucesso');  
+        $this->_Visual->Json_Info_Update('Titulo', __('Deletado com Sucesso'));  
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
     /**

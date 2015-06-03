@@ -34,7 +34,7 @@ class noticia_ListarControle extends noticia_Controle
     public function Main(){
         $this->Noticias_Listar();
         // ORGANIZA E MANDA CONTEUDO
-        $this->_Visual->Json_Info_Update('Titulo','Noticias'); 
+        $this->_Visual->Json_Info_Update('Titulo', __('Noticias')); 
     }
     /**
     * @return void

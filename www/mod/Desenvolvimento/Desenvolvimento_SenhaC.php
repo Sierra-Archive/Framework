@@ -82,7 +82,7 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Administrar Senhas');
+        $this->_Visual->Json_Info_Update('Titulo', __('Administrar Senhas'));
     }
     /**
      * 
@@ -182,7 +182,7 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
         
         $this->Senhas();
         
-        $this->_Visual->Json_Info_Update('Titulo', 'Senha deletada com Sucesso');  
+        $this->_Visual->Json_Info_Update('Titulo', __('Senha deletada com Sucesso'));  
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
     
@@ -395,7 +395,7 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Administrar Todas as Senhas');
+        $this->_Visual->Json_Info_Update('Titulo', __('Administrar Todas as Senhas'));
     }
     /**
      * 
@@ -495,7 +495,7 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
         
         $this->Senhas_Todas();
         
-        $this->_Visual->Json_Info_Update('Titulo', 'Senha deletada com Sucesso');  
+        $this->_Visual->Json_Info_Update('Titulo', __('Senha deletada com Sucesso'));  
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
     

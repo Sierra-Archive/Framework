@@ -140,7 +140,7 @@ class social_PersonaControle extends social_Controle
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Administrar Pessoas');
+        $this->_Visual->Json_Info_Update('Titulo', __('Administrar Pessoas'));
     }
     /**
      * 
@@ -240,7 +240,7 @@ class social_PersonaControle extends social_Controle
         
         $this->Personas();
         
-        $this->_Visual->Json_Info_Update('Titulo', 'Pessoa deletada com Sucesso');  
+        $this->_Visual->Json_Info_Update('Titulo', __('Pessoa deletada com Sucesso'));  
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
     public function Personas_View($persona_id = false){
@@ -264,7 +264,7 @@ class social_PersonaControle extends social_Controle
         $this->Ficou($persona_id,'Direita');
         social_AcaoControle::Acao_Stat($persona_id,'Esquerda');
         // Titulo
-        $this->_Visual->Json_Info_Update('Titulo','Visualizar Persona');
+        $this->_Visual->Json_Info_Update('Titulo', __('Visualizar Persona'));
 
     }
     
@@ -310,7 +310,7 @@ class social_PersonaControle extends social_Controle
         }
         
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Administrar Comentários do Persona');
+        $this->_Visual->Json_Info_Update('Titulo', __('Administrar Comentários do Persona'));
     }
     /**
      * 
@@ -430,7 +430,7 @@ class social_PersonaControle extends social_Controle
         
         $this->Personas_View($persona_id);
         
-        $this->_Visual->Json_Info_Update('Titulo', 'Comentário de Persona deletado com Sucesso');  
+        $this->_Visual->Json_Info_Update('Titulo', __('Comentário de Persona deletado com Sucesso'));  
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
     public function Ficou($persona_id=false,$tipo='Unico'){
@@ -477,7 +477,7 @@ class social_PersonaControle extends social_Controle
         }
         
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Administrar Ficada de Pessoas');
+        $this->_Visual->Json_Info_Update('Titulo', __('Administrar Ficada de Pessoas'));
     }
     /**
      * 
@@ -600,7 +600,7 @@ class social_PersonaControle extends social_Controle
             $this->Personas_View($persona_id);
         }
         
-        $this->_Visual->Json_Info_Update('Titulo', 'Pessoa deletada com Sucesso');  
+        $this->_Visual->Json_Info_Update('Titulo', __('Pessoa deletada com Sucesso'));  
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
     public function Ficou_View($ficada_id = false, $persona_id = false){
@@ -806,7 +806,7 @@ class social_PersonaControle extends social_Controle
         
         $this->Ficou_View($ficada_id);
         
-        $this->_Visual->Json_Info_Update('Titulo', 'Comentário de Ficada deletada com Sucesso');  
+        $this->_Visual->Json_Info_Update('Titulo', __('Comentário de Ficada deletada com Sucesso'));  
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
 }

@@ -112,7 +112,7 @@ class Desenvolvimento_TarefaControle extends Desenvolvimento_Controle
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Administrar Tarefas');
+        $this->_Visual->Json_Info_Update('Titulo', __('Administrar Tarefas'));
     }
     /**
      * 
@@ -212,7 +212,7 @@ class Desenvolvimento_TarefaControle extends Desenvolvimento_Controle
         
         $this->Tarefas();
         
-        $this->_Visual->Json_Info_Update('Titulo', 'Tarefa Deletada com Sucesso');  
+        $this->_Visual->Json_Info_Update('Titulo', __('Tarefa Deletada com Sucesso'));  
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
 }

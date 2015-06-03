@@ -63,7 +63,7 @@ class comercio_LinhaControle extends comercio_Controle
         
         
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Administrar Linhas');
+        $this->_Visual->Json_Info_Update('Titulo', __('Administrar Linhas'));
     }
     /**
      * 
@@ -163,7 +163,7 @@ class comercio_LinhaControle extends comercio_Controle
         
         $this->Linhas();
         
-        $this->_Visual->Json_Info_Update('Titulo', 'Linha deletada com Sucesso');  
+        $this->_Visual->Json_Info_Update('Titulo', __('Linha deletada com Sucesso'));  
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
 }

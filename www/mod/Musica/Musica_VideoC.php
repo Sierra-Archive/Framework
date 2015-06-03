@@ -543,7 +543,7 @@ class Musica_VideoControle extends Musica_Controle
             $this->Videos();
         }
         
-        $this->_Visual->Json_Info_Update('Titulo', 'Video deletado com Sucesso');
+        $this->_Visual->Json_Info_Update('Titulo', __('Video deletado com Sucesso'));
         $this->_Visual->Json_Info_Update('Historico', false);
     }
     public function Videos_Ver($video=false){
@@ -594,7 +594,7 @@ class Musica_VideoControle extends Musica_Controle
                 'html' =>  $this->_Visual->Tema_Elementos_Btn('Status'.$resultado->status     ,Array($texto        ,'Musica/Video/Status/'.$resultado->id.'/'    ,''))
             );
             $this->_Visual->Json_IncluiTipo('Conteudo',$conteudo);
-            $this->_Visual->Json_Info_Update('Titulo','Status Alterado'); 
+            $this->_Visual->Json_Info_Update('Titulo', __('Status Alterado')); 
         }else{
             $mensagens = array(
                 "tipo"              => 'erro',
@@ -603,7 +603,7 @@ class Musica_VideoControle extends Musica_Controle
             );
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
 
-            $this->_Visual->Json_Info_Update('Titulo','Erro'); 
+            $this->_Visual->Json_Info_Update('Titulo', __('Erro')); 
         }
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
@@ -633,7 +633,7 @@ class Musica_VideoControle extends Musica_Controle
                 'html' =>  $this->_Visual->Tema_Elementos_Btn('Destaque'.$resultado->destaque     ,Array($texto        ,'Musica/Video/Destaques/'.$resultado->id.'/'    ,''))
             );
             $this->_Visual->Json_IncluiTipo('Conteudo',$conteudo);
-            $this->_Visual->Json_Info_Update('Titulo','Destaque Alterado'); 
+            $this->_Visual->Json_Info_Update('Titulo', __('Destaque Alterado')); 
         }else{
             $mensagens = array(
                 "tipo"              => 'erro',
@@ -642,7 +642,7 @@ class Musica_VideoControle extends Musica_Controle
             );
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
 
-            $this->_Visual->Json_Info_Update('Titulo','Erro'); 
+            $this->_Visual->Json_Info_Update('Titulo', __('Erro')); 
         }
         $this->_Visual->Json_Info_Update('Historico', false);  
     }

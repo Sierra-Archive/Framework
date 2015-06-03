@@ -92,7 +92,7 @@ class Transporte_ArmazemControle extends Transporte_Controle
         $titulo = 'Listagem de Armazéns ('.$i.')';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Listagem de Armazéns');
+        $this->_Visual->Json_Info_Update('Titulo', __('Listagem de Armazéns'));
     }
     /**
      * Painel Adminstrativo de Armazens

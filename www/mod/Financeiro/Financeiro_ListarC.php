@@ -47,7 +47,7 @@ class Financeiro_ListarControle extends Financeiro_Controle
         $this->sacar_carregajanelaadd();
         $this->transferencia_carregajanelaadd();
         // ORGANIZA E MANDA CONTEUDO
-        $this->_Visual->Json_Info_Update('Titulo','Dividas a Pagar');
+        $this->_Visual->Json_Info_Update('Titulo', __('Dividas a Pagar'));
     }
     
     
@@ -201,8 +201,8 @@ class Financeiro_ListarControle extends Financeiro_Controle
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
         }
         $this->Main();
-        if($erro==0) $this->_Visual->Json_Info_Update('Titulo','Saque Realizado com Sucesso');
-        else         $this->_Visual->Json_Info_Update('Titulo','Erro ao Realizar Saque');
+        if($erro==0) $this->_Visual->Json_Info_Update('Titulo', __('Saque Realizado com Sucesso'));
+        else         $this->_Visual->Json_Info_Update('Titulo', __('Erro ao Realizar Saque'));
     }
     function transferencia_carregajanelaadd(){
         global $language;
@@ -279,8 +279,8 @@ class Financeiro_ListarControle extends Financeiro_Controle
         }
         
         $this->Main();
-        if($erro==0) $this->_Visual->Json_Info_Update('Titulo','Transferência Realizada com Sucesso');
-        else         $this->_Visual->Json_Info_Update('Titulo','Erro ao Realizar Transferência');
+        if($erro==0) $this->_Visual->Json_Info_Update('Titulo', __('Transferência Realizada com Sucesso'));
+        else         $this->_Visual->Json_Info_Update('Titulo', __('Erro ao Realizar Transferência'));
     }
 }
 ?>

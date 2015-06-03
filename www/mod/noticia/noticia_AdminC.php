@@ -126,7 +126,7 @@ class noticia_AdminControle extends noticia_Controle
         $titulo = 'Listagem de Noticias ('.$i.')';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Administrar Noticias');
+        $this->_Visual->Json_Info_Update('Titulo', __('Administrar Noticias'));
     }
     /**
      * 
@@ -232,7 +232,7 @@ class noticia_AdminControle extends noticia_Controle
         
         $this->Noticias();
         
-        $this->_Visual->Json_Info_Update('Titulo', 'Noticia deletada com Sucesso');  
+        $this->_Visual->Json_Info_Update('Titulo', __('Noticia deletada com Sucesso'));  
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
     public function Status($id=false){
@@ -261,7 +261,7 @@ class noticia_AdminControle extends noticia_Controle
                 'html' =>  $this->_Visual->Tema_Elementos_Btn('Status'.$resultado->status     ,Array($texto        ,'noticia/Admin/Status/'.$resultado->id.'/'    ,''))
             );
             $this->_Visual->Json_IncluiTipo('Conteudo',$conteudo);
-            $this->_Visual->Json_Info_Update('Titulo','Status Alterado'); 
+            $this->_Visual->Json_Info_Update('Titulo', __('Status Alterado')); 
         }else{
             $mensagens = array(
                 "tipo"              => 'erro',
@@ -270,7 +270,7 @@ class noticia_AdminControle extends noticia_Controle
             );
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
 
-            $this->_Visual->Json_Info_Update('Titulo','Erro'); 
+            $this->_Visual->Json_Info_Update('Titulo', __('Erro')); 
         }
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
@@ -300,7 +300,7 @@ class noticia_AdminControle extends noticia_Controle
                 'html' =>  $this->_Visual->Tema_Elementos_Btn('Destaque'.$resultado->destaque     ,Array($texto        ,'noticia/Admin/Destaques/'.$resultado->id.'/'    ,''))
             );
             $this->_Visual->Json_IncluiTipo('Conteudo',$conteudo);
-            $this->_Visual->Json_Info_Update('Titulo','Destaque Alterado'); 
+            $this->_Visual->Json_Info_Update('Titulo', __('Destaque Alterado')); 
         }else{
             $mensagens = array(
                 "tipo"              => 'erro',
@@ -309,7 +309,7 @@ class noticia_AdminControle extends noticia_Controle
             );
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
 
-            $this->_Visual->Json_Info_Update('Titulo','Erro'); 
+            $this->_Visual->Json_Info_Update('Titulo', __('Erro')); 
         }
         $this->_Visual->Json_Info_Update('Historico', false);  
     }

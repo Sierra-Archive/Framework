@@ -34,7 +34,7 @@ class banner_ListarControle extends banner_Controle
     public function Main(){
         $this->Banners_Listar();
         // ORGANIZA E MANDA CONTEUDO
-        $this->_Visual->Json_Info_Update('Titulo','Banners'); 
+        $this->_Visual->Json_Info_Update('Titulo', __('Banners')); 
     }
     public function Banner_Redirecionar($id = 0){
         $id = (int) $id;

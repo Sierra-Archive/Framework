@@ -103,7 +103,7 @@ class comercio_venda_CarrinhoControle extends comercio_venda_Controle
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Administrar Caixas');
+        $this->_Visual->Json_Info_Update('Titulo', __('Administrar Caixas'));
     }
     /**
      * 
@@ -235,7 +235,7 @@ class comercio_venda_CarrinhoControle extends comercio_venda_Controle
         
         $this->Carrinhos();
         
-        $this->_Visual->Json_Info_Update('Titulo', 'Caixa deletado com Sucesso');  
+        $this->_Visual->Json_Info_Update('Titulo', __('Caixa deletado com Sucesso'));  
         $this->_Visual->Json_Info_Update('Historico', false);  
     }   
     /**
@@ -573,7 +573,7 @@ class comercio_venda_CarrinhoControle extends comercio_venda_Controle
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Administrar Mesas');
+        $this->_Visual->Json_Info_Update('Titulo', __('Administrar Mesas'));
     }
     /**
      * 
@@ -673,7 +673,7 @@ class comercio_venda_CarrinhoControle extends comercio_venda_Controle
         
         $this->Mesas();
         
-        $this->_Visual->Json_Info_Update('Titulo', 'Mesa deletada com Sucesso');  
+        $this->_Visual->Json_Info_Update('Titulo', __('Mesa deletada com Sucesso'));  
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
 }

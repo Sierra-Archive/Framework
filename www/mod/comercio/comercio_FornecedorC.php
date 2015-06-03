@@ -77,7 +77,7 @@ class comercio_FornecedorControle extends comercio_Controle
         
         
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Administrar Fornecedores');
+        $this->_Visual->Json_Info_Update('Titulo', __('Administrar Fornecedores'));
     }
     /**
      * 
@@ -180,7 +180,7 @@ class comercio_FornecedorControle extends comercio_Controle
         
         $this->Fornecedores();
         
-        $this->_Visual->Json_Info_Update('Titulo', 'Fornecedor deletado com Sucesso');  
+        $this->_Visual->Json_Info_Update('Titulo', __('Fornecedor deletado com Sucesso'));  
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
     public function Fornecedores_View($fornecedor_id = false){
@@ -191,7 +191,7 @@ class comercio_FornecedorControle extends comercio_Controle
         // Chama Popup e COmentarios
         $this->Fornecedores_Popup(      $fornecedor_id, false);
         $this->Fornecedores_Comentario( $fornecedor_id);
-        $this->_Visual->Json_Info_Update('Titulo','Visualizar Comentários do Fornecedor');
+        $this->_Visual->Json_Info_Update('Titulo', __('Visualizar Comentários do Fornecedor'));
     }
     public function Fornecedores_Popup($fornecedor_id = false, $popup = true){
         if($fornecedor_id===false || $fornecedor_id==0 || !isset($fornecedor_id)) throw new \Exception('Fornecedor não informado',404);
@@ -245,7 +245,7 @@ class comercio_FornecedorControle extends comercio_Controle
         }else{
             $this->_Visual->Blocar('<div class="row">'.$html.'</div>');
             $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',20);
-            $this->_Visual->Json_Info_Update('Titulo','Visualizar Fornecedor');
+            $this->_Visual->Json_Info_Update('Titulo', __('Visualizar Fornecedor'));
         }
     }
     /**
@@ -311,7 +311,7 @@ class comercio_FornecedorControle extends comercio_Controle
             $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',10);
 
             //Carrega Json
-            $this->_Visual->Json_Info_Update('Titulo','Administrar Comentários do Fornecedor');
+            $this->_Visual->Json_Info_Update('Titulo', __('Administrar Comentários do Fornecedor'));
         }else{
             $mensagens = array(
                 "tipo" => 'erro',
@@ -428,7 +428,7 @@ class comercio_FornecedorControle extends comercio_Controle
         
         $this->Fornecedores_View($fornecedor_id);
         
-        $this->_Visual->Json_Info_Update('Titulo', 'Comentário de Fornecedor deletado com Sucesso');  
+        $this->_Visual->Json_Info_Update('Titulo', __('Comentário de Fornecedor deletado com Sucesso'));  
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
 }

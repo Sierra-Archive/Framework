@@ -86,7 +86,7 @@ class predial_ApartControle extends predial_Controle
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Administrar Apartamentos');
+        $this->_Visual->Json_Info_Update('Titulo', __('Administrar Apartamentos'));
     }
     /**
      * 
@@ -186,7 +186,7 @@ class predial_ApartControle extends predial_Controle
         
         $this->Aparts();
         
-        $this->_Visual->Json_Info_Update('Titulo', 'Apartamento deletado com Sucesso');  
+        $this->_Visual->Json_Info_Update('Titulo', __('Apartamento deletado com Sucesso'));  
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
 }

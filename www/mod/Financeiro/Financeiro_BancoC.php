@@ -77,7 +77,7 @@ class Financeiro_BancoControle extends Financeiro_Controle
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Administrar Bancos');
+        $this->_Visual->Json_Info_Update('Titulo', __('Administrar Bancos'));
     }
     /**
      * 
@@ -175,7 +175,7 @@ class Financeiro_BancoControle extends Financeiro_Controle
         
         $this->Main();
         
-        $this->_Visual->Json_Info_Update('Titulo', 'Banco deletado com Sucesso');  
+        $this->_Visual->Json_Info_Update('Titulo', __('Banco deletado com Sucesso'));  
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
 }

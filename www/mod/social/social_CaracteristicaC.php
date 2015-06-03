@@ -98,7 +98,7 @@ class social_CaracteristicaControle extends social_Controle
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Administrar Caracteristicas');
+        $this->_Visual->Json_Info_Update('Titulo', __('Administrar Caracteristicas'));
     }
     /**
      * 
@@ -198,7 +198,7 @@ class social_CaracteristicaControle extends social_Controle
         
         $this->Caracteristica();
         
-        $this->_Visual->Json_Info_Update('Titulo', 'Caracteristica deletada com Sucesso');  
+        $this->_Visual->Json_Info_Update('Titulo', __('Caracteristica deletada com Sucesso'));  
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
 }

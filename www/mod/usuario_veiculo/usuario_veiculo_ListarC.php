@@ -51,7 +51,7 @@ class usuario_veiculo_ListarControle extends usuario_veiculo_Controle
         $this->_Visual->Bloco_Maior_CriaJanela(__('Datas Disponiveis'));
         // ORGANIZA E MANDA CONTEUDO*/
         
-        $this->_Visual->Json_Info_Update('Titulo','Veiculos');        
+        $this->_Visual->Json_Info_Update('Titulo', __('Veiculos'));        
     }
     public function Popup_Agendar_veiculo($idveiculo,$datainicial,$datafinal,$nomeveiculo){
         if($this->_Acl->Usuario_GetLogado()){

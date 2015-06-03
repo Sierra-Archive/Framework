@@ -25,13 +25,13 @@ class _Sistema_erroControle extends _Sistema_Controle
             $this->_Visual->Bloco_Maior_CriaJanela('Erro '.$codigo);
         }
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Erro '.$codigo);
+        $this->_Visual->Json_Info_Update('Titulo', __('Erro ').$codigo);
     }
     static function Erro_Puro($codigo){
         $Visual = new \Framework\App\Visual(false);
         $Visual->Blocar(self::_getError($codigo));
         $Visual->Bloco_Unico_CriaJanela('Erro '.$codigo);
-        $Visual->Json_Info_Update('Titulo','Erro '.$codigo);
+        $Visual->Json_Info_Update('Titulo', __('Erro ').$codigo);
         $Visual->renderizar();echo $codigo;
         self::Tema_Travar();
     }
