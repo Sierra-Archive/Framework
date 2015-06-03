@@ -38,7 +38,7 @@ class usuario_veiculo_MarcaControle extends usuario_veiculo_Controle
     static function Endereco_Veiculo_Marca($true=true){
         $registro = \Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
-        $titulo = 'Marcas';
+        $titulo = __('Marcas');
         $link = 'usuario_veiculo/Marca/Marcas';
         // Chama Veiculo
         usuario_veiculo_VeiculoControle::Endereco_Veiculo(true);
@@ -88,10 +88,10 @@ class usuario_veiculo_MarcaControle extends usuario_veiculo_Controle
     public function Marcas_Add(){
         self::Endereco_Veiculo_Marca(true);
         // Carrega Config
-        $titulo1    = 'Adicionar Marca';
-        $titulo2    = 'Salvar Marca';
+        $titulo1    = __('Adicionar Marca');
+        $titulo2    = __('Salvar Marca');
         $formid     = 'form_Sistema_Admin_Marcas';
-        $formbt     = 'Salvar';
+        $formbt     = __('Salvar');
         $formlink   = 'usuario_veiculo/Marca/Marcas_Add2/';
         $campos = Usuario_Veiculo_Marca_DAO::Get_Colunas();
         \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos);
@@ -104,11 +104,11 @@ class usuario_veiculo_MarcaControle extends usuario_veiculo_Controle
      * @version 2.0
      */
     public function Marcas_Add2(){
-        $titulo     = 'Marca Adicionada com Sucesso';
+        $titulo     = __('Marca Adicionada com Sucesso');
         $dao        = 'Usuario_Veiculo_Marca';
         $funcao     = '$this->Main();';
-        $sucesso1   = 'Inserção bem sucedida';
-        $sucesso2   = 'Marca cadastrada com sucesso.';
+        $sucesso1   = __('Inserção bem sucedida');
+        $sucesso2   = __('Marca cadastrada com sucesso.');
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
     }
@@ -122,9 +122,9 @@ class usuario_veiculo_MarcaControle extends usuario_veiculo_Controle
         self::Endereco_Veiculo_Marca(true);
         // Carrega Config
         $titulo1    = 'Editar Marca (#'.$id.')';
-        $titulo2    = 'Alteração de Marca';
+        $titulo2    = __('Alteração de Marca');
         $formid     = 'form_Sistema_AdminC_MarcaEdit';
-        $formbt     = 'Alterar Marca';
+        $formbt     = __('Alterar Marca');
         $formlink   = 'usuario_veiculo/Marca/Marcas_Edit2/'.$id;
         $editar     = Array('Usuario_Veiculo_Marca',$id);
         $campos = Usuario_Veiculo_Marca_DAO::Get_Colunas();
@@ -138,10 +138,10 @@ class usuario_veiculo_MarcaControle extends usuario_veiculo_Controle
      * @version 2.0
      */
     public function Marcas_Edit2($id){
-        $titulo     = 'Marca Editada com Sucesso';
+        $titulo     = __('Marca Editada com Sucesso');
         $dao        = Array('Usuario_Veiculo_Marca',$id);
         $funcao     = '$this->Main();';
-        $sucesso1   = 'Marca Alterada com Sucesso.';
+        $sucesso1   = __('Marca Alterada com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);      

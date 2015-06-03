@@ -36,7 +36,7 @@ class usuario_mensagem_SetorControle extends usuario_mensagem_Controle
     static function Endereco_Setor($true=true){
         $registro = \Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
-        $titulo = 'Setores';
+        $titulo = __('Setores');
         $link = 'usuario_mensagem/Setor/Setores';
         if($true===true){
             $_Controle->Tema_Endereco($titulo,$link);
@@ -70,10 +70,10 @@ class usuario_mensagem_SetorControle extends usuario_mensagem_Controle
     public function Setores_Add(){
         self::Endereco_Setor(true);
         // Carrega Config
-        $titulo1    = 'Adicionar Setor';
-        $titulo2    = 'Salvar Setor';
+        $titulo1    = __('Adicionar Setor');
+        $titulo2    = __('Salvar Setor');
         $formid     = 'form_Sistema_Admin_Setores';
-        $formbt     = 'Salvar';
+        $formbt     = __('Salvar');
         $formlink   = 'usuario_mensagem/Setor/Setores_Add2/';
         $campos = usuario_mensagem_Setor_DAO::Get_Colunas();
         \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos);
@@ -111,11 +111,11 @@ class usuario_mensagem_SetorControle extends usuario_mensagem_Controle
      * @version 2.0
      */
     public function Setores_Add2(){
-        $titulo     = 'Setor Adicionado com Sucesso';
+        $titulo     = __('Setor Adicionado com Sucesso');
         $dao        = 'usuario_mensagem_Setor';
         $funcao     = '$this->Setores();';
-        $sucesso1   = 'Inserção bem sucedida';
-        $sucesso2   = 'Setor cadastrado com sucesso.';
+        $sucesso1   = __('Inserção bem sucedida');
+        $sucesso2   = __('Setor cadastrado com sucesso.');
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
     }

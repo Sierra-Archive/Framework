@@ -248,28 +248,28 @@ class usuario_mensagem_Modelo extends \Framework\App\Modelo
             list($valor->tipo,$valor->datapassada)  = usuario_mensagem_Modelo::Mensagem_TipoChamado($valor);
             if($valor->tipo=='nov'){
                 if($tipodemensagem===false || $tipodemensagem=='nov'){
-                    $valor->tipo = 'Chamado Novo';
+                    $valor->tipo = __('Chamado Novo');
                 }else{
                     unset($array[$indice]);
                 }
             }
             else if($valor->tipo=='fin'){
                 if($tipodemensagem===false || $tipodemensagem=='fin'){
-                    $valor->tipo = 'Finalizado';
+                    $valor->tipo = __('Finalizado');
                 }else{
                     unset($array[$indice]);
                 }
             }
             else if($valor->tipo=='lim'){
                 if($tipodemensagem===false || $tipodemensagem=='lim'){
-                    $valor->tipo = 'Tempo Limite';
+                    $valor->tipo = __('Tempo Limite');
                 }else{
                     unset($array[$indice]);
                 }
             }
             else if($valor->tipo=='esg'){
                 if($tipodemensagem===false || $tipodemensagem=='esg'){
-                    $valor->tipo = 'Esgotado';
+                    $valor->tipo = __('Esgotado');
                 }else{
                     unset($array[$indice]);
                 }

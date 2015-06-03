@@ -8,7 +8,7 @@ class Transporte_CaminhoneiroControle extends Transporte_Controle
     static function Endereco_Caminhoneiro($true=true){
         $registro = \Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
-        $titulo = 'Autonômos';
+        $titulo = __('Autonômos');
         $link = 'Transporte/Caminhoneiro/Caminhoneiros';
         if($true===true){
             $_Controle->Tema_Endereco($titulo,$link);
@@ -83,9 +83,9 @@ class Transporte_CaminhoneiroControle extends Transporte_Controle
             unset($tabela);
         }else{
             if($export!==false){
-                $mensagem = 'Nenhum Autonômo Cadastrado para exportar';
+                $mensagem = __('Nenhum Autonômo Cadastrado para exportar');
             }else{
-                $mensagem = 'Nenhum Autonômo Cadastrado';
+                $mensagem = __('Nenhum Autonômo Cadastrado');
             }
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">'.$mensagem.'</font></b></center>');
         }
@@ -116,7 +116,7 @@ class Transporte_CaminhoneiroControle extends Transporte_Controle
         if($existe===false){
             $html = '<b>Ainda faltam insformações sobre você</b><br>'.self::Painel_Caminhoneiro_Add($camada);
         }else{
-            $html = 'Painel';
+            $html = __('Painel');
         }
         
         if($retornar===true){
@@ -133,10 +133,10 @@ class Transporte_CaminhoneiroControle extends Transporte_Controle
     }
     static protected function Painel_Caminhoneiro_Add($camada){
         // Carrega Config
-        $titulo1    = 'Salvar Dados';
-        $titulo2    = 'Salvar Dados';
+        $titulo1    = __('Salvar Dados');
+        $titulo2    = __('Salvar Dados');
         $formid     = 'form_Transporte_Caminhoneiro_Add';
-        $formbt     = 'Salvar Dados';
+        $formbt     = __('Salvar Dados');
         $formlink   = 'Transporte/Caminhoneiro/Painel_Caminhoneiro_Add2/'.$camada;
         $campos = Transporte_Caminhoneiro_DAO::Get_Colunas();
         // Remove Essas Colunas
@@ -150,11 +150,11 @@ class Transporte_CaminhoneiroControle extends Transporte_Controle
             self::Painel_Caminhoneiro($camada,false);
             return true;
         }
-        $titulo     = 'Dados Atualizados com Sucesso';
+        $titulo     = __('Dados Atualizados com Sucesso');
         $dao        = 'Transporte_Caminhoneiro';
         $funcao     = 'Transporte_CaminhoneiroControle::Painel_Caminhoneiro(\''.$camada.'\',\'false\');';
-        $sucesso1   = 'Atualização bem sucedida';
-        $sucesso2   = 'Dados Atualizados com sucesso.';
+        $sucesso1   = __('Atualização bem sucedida');
+        $sucesso2   = __('Dados Atualizados com sucesso.');
         $alterar    = Array(
             'usuario'        =>  $this->_Acl->Usuario_GetID(),
         );

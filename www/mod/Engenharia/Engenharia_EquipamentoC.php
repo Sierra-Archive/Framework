@@ -98,10 +98,10 @@ class Engenharia_EquipamentoControle extends Engenharia_Controle
     public function Equipamentos_Add(){  
         $this->Endereco_Equipamento();      
         // Carrega Config
-        $titulo1    = 'Adicionar Equipamento';
-        $titulo2    = 'Salvar Equipamento';
+        $titulo1    = __('Adicionar Equipamento');
+        $titulo2    = __('Salvar Equipamento');
         $formid     = 'form_Sistema_Admin_Equipamentos';
-        $formbt     = 'Salvar';
+        $formbt     = __('Salvar');
         $formlink   = 'Engenharia/Equipamento/Equipamentos_Add2/';
         $campos = Engenharia_Equipamento_DAO::Get_Colunas();
         \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos);
@@ -113,11 +113,11 @@ class Engenharia_EquipamentoControle extends Engenharia_Controle
      * @version 2.0
      */
     public function Equipamentos_Add2(){
-        $titulo     = 'Equipamento Adicionado com Sucesso';
+        $titulo     = __('Equipamento Adicionado com Sucesso');
         $dao        = 'Engenharia_Equipamento';
         $funcao     = '$this->Equipamentos();';
-        $sucesso1   = 'Inserção bem sucedida';
-        $sucesso2   = 'Equipamento cadastrado com sucesso.';
+        $sucesso1   = __('Inserção bem sucedida');
+        $sucesso2   = __('Equipamento cadastrado com sucesso.');
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
     }
@@ -131,9 +131,9 @@ class Engenharia_EquipamentoControle extends Engenharia_Controle
         $this->Endereco_Equipamento();      
         // Carrega Config
         $titulo1    = 'Editar Equipamento (#'.$id.')';
-        $titulo2    = 'Alteração de Equipamento';
+        $titulo2    = __('Alteração de Equipamento');
         $formid     = 'form_Sistema_AdminC_EquipamentoEdit';
-        $formbt     = 'Alterar Equipamento';
+        $formbt     = __('Alterar Equipamento');
         $formlink   = 'Engenharia/Equipamento/Equipamentos_Edit2/'.$id;
         $editar     = Array('Engenharia_Equipamento',$id);
         $campos = Engenharia_Equipamento_DAO::Get_Colunas();
@@ -146,10 +146,10 @@ class Engenharia_EquipamentoControle extends Engenharia_Controle
      * @version 2.0
      */
     public function Equipamentos_Edit2($id){
-        $titulo     = 'Equipamento Editado com Sucesso';
+        $titulo     = __('Equipamento Editado com Sucesso');
         $dao        = Array('Engenharia_Equipamento',$id);
         $funcao     = '$this->Equipamentos();';
-        $sucesso1   = 'Equipamento Alterado com Sucesso.';
+        $sucesso1   = __('Equipamento Alterado com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);      

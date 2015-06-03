@@ -90,9 +90,9 @@ class Financeiro_AdminControle extends Financeiro_Controle
             elseif($usuarios[$indice]['nivel_usuario']==5) $niveluser = CONFIG_CLI_5_NOME;
             else                                           $niveluser = CONFIG_CLI_0_NOME;
 
-            if($usuarios[$indice]['nivel_admin']==0)     $niveladmin = 'Usuario';
-            elseif($usuarios[$indice]['nivel_admin']==1) $niveladmin = 'Admin';
-            else                                         $niveladmin = 'Admin GOD';
+            if($usuarios[$indice]['nivel_admin']==0)     $niveladmin = __('Usuario');
+            elseif($usuarios[$indice]['nivel_admin']==1) $niveladmin = __('Admin');
+            else                                         $niveladmin = __('Admin GOD');
 */
 
             $tabela['Id'][$i] = $usuarios[$indice]['id'];

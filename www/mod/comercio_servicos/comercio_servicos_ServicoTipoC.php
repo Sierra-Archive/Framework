@@ -53,11 +53,11 @@ class comercio_servicos_ServicoTipoControle extends comercio_servicos_Controle
         self::Endereco_Servico_Tipo(false);
         $tabela_colunas = Array();
 
-        $tabela_colunas[] = 'Nome';
-        $tabela_colunas[] = 'Funções';
+        $tabela_colunas[] = __('Nome');
+        $tabela_colunas[] = __('Funções');
 
         $this->_Visual->Show_Tabela_DataTable_Massiva($tabela_colunas,'comercio_servicos/ServicoTipo/Servico_Tipo');
-        $titulo = 'Listagem de Serviços';
+        $titulo = __('Listagem de Serviços');
         $this->_Visual->Bloco_Unico_CriaJanela($titulo.' (<span id="DataTable_Contador">Carregando...</span>)','',10,Array("link"=>"comercio_servicos/ServicoTipo/Servico_Tipo_Add",'icon'=>'add','nome'=>'Adicionar Tipo de Serviço'));
 
         //Carrega Json
@@ -70,10 +70,10 @@ class comercio_servicos_ServicoTipoControle extends comercio_servicos_Controle
      */
     public function Servico_Tipo_Add(){
         // Carrega Config
-        $titulo1    = 'Adicionar Tipo de Serviço';
-        $titulo2    = 'Salvar Tipo de Serviço';
+        $titulo1    = __('Adicionar Tipo de Serviço');
+        $titulo2    = __('Salvar Tipo de Serviço');
         $formid     = 'form_comercio_servicotipo';
-        $formbt     = 'Salvar';
+        $formbt     = __('Salvar');
         $formlink   = 'comercio_servicos/ServicoTipo/Servico_Tipo_Add2/';
         $campos = Comercio_Servicos_Servico_Tipo_DAO::Get_Colunas();
         \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos);
@@ -86,11 +86,11 @@ class comercio_servicos_ServicoTipoControle extends comercio_servicos_Controle
      * @version 2.0
      */
     public function Servico_Tipo_Add2(){
-        $titulo     = 'Tipo de Serviço adicionada com Sucesso';
+        $titulo     = __('Tipo de Serviço adicionada com Sucesso');
         $dao        = 'Comercio_Servicos_Servico_Tipo';
         $funcao     = '$this->Servico_Tipo();';
-        $sucesso1   = 'Inserção bem sucedida';
-        $sucesso2   = 'Tipo de Serviço cadastrada com sucesso.';
+        $sucesso1   = __('Inserção bem sucedida');
+        $sucesso2   = __('Tipo de Serviço cadastrada com sucesso.');
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
     }
@@ -103,9 +103,9 @@ class comercio_servicos_ServicoTipoControle extends comercio_servicos_Controle
     public function Servico_Tipo_Edit($id){
         // Carrega Config
         $titulo1    = 'Editar Tipo de Serviço (#'.$id.')';
-        $titulo2    = 'Alteração de Tipo de Serviço';
+        $titulo2    = __('Alteração de Tipo de Serviço');
         $formid     = 'form_Sistema_ServicoTipoC_Tipo de ServiçoEdit';
-        $formbt     = 'Alterar Tipo de Serviço';
+        $formbt     = __('Alterar Tipo de Serviço');
         $formlink   = 'comercio_servicos/ServicoTipo/Servico_Tipo_Edit2/'.$id;
         $editar     = Array('Comercio_Servicos_Servico_Tipo',$id);
         $campos = Comercio_Servicos_Servico_Tipo_DAO::Get_Colunas();
@@ -119,10 +119,10 @@ class comercio_servicos_ServicoTipoControle extends comercio_servicos_Controle
      * @version 2.0
      */
     public function Servico_Tipo_Edit2($id){
-        $titulo     = 'Tipo de Serviço editada com Sucesso';
+        $titulo     = __('Tipo de Serviço editada com Sucesso');
         $dao        = Array('Comercio_Servicos_Servico_Tipo',$id);
         $funcao     = '$this->Servico_Tipo();';
-        $sucesso1   = 'Tipo de Serviço Alterada com Sucesso.';
+        $sucesso1   = __('Tipo de Serviço Alterada com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);   

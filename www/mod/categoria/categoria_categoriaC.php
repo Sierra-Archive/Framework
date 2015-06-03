@@ -36,7 +36,7 @@ class categoria_categoriaControle extends categoria_Controle
      * 
      */
     public function Main($status=''){
-        if(isset($status) AND $status!='') $status='salvar';
+        if(isset($status) AND $status!='') $status=__('salvar');
         else                               $status='';
         if($status=='salvar'){
             $this->_Visual->Json_Info_Update('Titulo', __('Categorias'));
@@ -175,8 +175,8 @@ class categoria_categoriaControle extends categoria_Controle
         $form = new \Framework\Classes\Form('adminformcategoriasend',SISTEMA_MODULO.'/'.SISTEMA_SUB.'/Main/salvar/','formajax');
         
         $formbt = $language['formularios']['cadastrar'];
-        $titulo1 = 'Cadastrar Categoria';
-        $titulo2 = 'Cadastrar Categoria';
+        $titulo1 = __('Cadastrar Categoria');
+        $titulo2 = __('Cadastrar Categoria');
         // Puxa Form
         $this->Categorias_formulario($form);
         // Carrega formulario

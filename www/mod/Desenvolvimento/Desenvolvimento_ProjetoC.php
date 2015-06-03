@@ -133,10 +133,10 @@ class Desenvolvimento_ProjetoControle extends Desenvolvimento_Controle
     public function Projetos_Add(){
         $this->Endereco_Projeto();
         // Carrega Config
-        $titulo1    = 'Adicionar Projeto';
-        $titulo2    = 'Salvar Projeto';
+        $titulo1    = __('Adicionar Projeto');
+        $titulo2    = __('Salvar Projeto');
         $formid     = 'form_Sistema_Admin_Projetos';
-        $formbt     = 'Salvar';
+        $formbt     = __('Salvar');
         $formlink   = 'Desenvolvimento/Projeto/Projetos_Add2/';
         $campos = Desenvolvimento_Projeto_DAO::Get_Colunas();
         \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos);
@@ -149,11 +149,11 @@ class Desenvolvimento_ProjetoControle extends Desenvolvimento_Controle
      * @version 2.0
      */
     public function Projetos_Add2(){
-        $titulo     = 'Projeto Adicionado com Sucesso';
+        $titulo     = __('Projeto Adicionado com Sucesso');
         $dao        = 'Desenvolvimento_Projeto';
         $funcao     = '$this->Projetos();';
-        $sucesso1   = 'Inserção bem sucedida';
-        $sucesso2   = 'Projeto cadastrado com sucesso.';
+        $sucesso1   = __('Inserção bem sucedida');
+        $sucesso2   = __('Projeto cadastrado com sucesso.');
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
     }
@@ -167,9 +167,9 @@ class Desenvolvimento_ProjetoControle extends Desenvolvimento_Controle
         $this->Endereco_Projeto();
         // Carrega Config
         $titulo1    = 'Editar Projeto (#'.$id.')';
-        $titulo2    = 'Alteração de Projeto';
+        $titulo2    = __('Alteração de Projeto');
         $formid     = 'form_Sistema_AdminC_ProjetoEdit';
-        $formbt     = 'Alterar Projeto';
+        $formbt     = __('Alterar Projeto');
         $formlink   = 'Desenvolvimento/Projeto/Projetos_Edit2/'.$id;
         $editar     = Array('Desenvolvimento_Projeto',$id);
         $campos = Desenvolvimento_Projeto_DAO::Get_Colunas();
@@ -183,10 +183,10 @@ class Desenvolvimento_ProjetoControle extends Desenvolvimento_Controle
      * @version 2.0
      */
     public function Projetos_Edit2($id){
-        $titulo     = 'Projeto Editado com Sucesso';
+        $titulo     = __('Projeto Editado com Sucesso');
         $dao        = Array('Desenvolvimento_Projeto',$id);
         $funcao     = '$this->Projetos();';
-        $sucesso1   = 'Projeto Alterado com Sucesso.';
+        $sucesso1   = __('Projeto Alterado com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);      
@@ -293,23 +293,23 @@ class Desenvolvimento_ProjetoControle extends Desenvolvimento_Controle
         $id = $objeto->id;
         if($status=='0'){
             $tipo = 'warning';
-            $nometipo = 'Pendente';
+            $nometipo = __('Pendente');
         }
         else if($status=='1'){
             $tipo = 'success';
-            $nometipo = 'Aprovada';
+            $nometipo = __('Aprovada');
         }
         else if($status=='2'){
             $tipo = 'info';
-            $nometipo = 'Aprovada em Execução';
+            $nometipo = __('Aprovada em Execução');
         }
         else if($status=='3'){
             $tipo = 'inverse';
-            $nometipo = 'Finalizada';
+            $nometipo = __('Finalizada');
         }
         else{
             $tipo = 'important';
-            $nometipo = 'Recusada';
+            $nometipo = __('Recusada');
         }
         $html = '<span class="badge badge-'.$tipo.'">'.$nometipo.'</span>';
         if($link===true && \Framework\App\Registro::getInstacia()->_Acl->Get_Permissao_Url('Desenvolvimento/Projeto/Status')!==false){
@@ -376,10 +376,10 @@ class Desenvolvimento_ProjetoControle extends Desenvolvimento_Controle
         $id = $objeto->id;
         if($destaque=='0'){
             $tipo = 'important';
-            $nometipo = 'Não Destaque';
+            $nometipo = __('Não Destaque');
         }else{
             $tipo = 'success';
-            $nometipo = 'Destaque';
+            $nometipo = __('Destaque');
         }
         $html = '<span class="badge badge-'.$tipo.'">'.$nometipo.'</span>';
         if($link===true && \Framework\App\Registro::getInstacia()->_Acl->Get_Permissao_Url('Desenvolvimento/Projeto/Destaque')!==false){
@@ -547,10 +547,10 @@ class Desenvolvimento_ProjetoControle extends Desenvolvimento_Controle
         // Começo
         $Desenvolvimento_id = (int) $Desenvolvimento_id;
         // Carrega Config
-        $titulo1    = 'Adicionar Comentário de Projeto';
-        $titulo2    = 'Salvar Comentário de Projeto';
+        $titulo1    = __('Adicionar Comentário de Projeto');
+        $titulo2    = __('Salvar Comentário de Projeto');
         $formid     = 'form_Sistema_Admin_Projetos_Comentario';
-        $formbt     = 'Salvar';
+        $formbt     = __('Salvar');
         $formlink   = 'Desenvolvimento/Projeto/Projetos_Comentario_Add2/'.$Desenvolvimento_id;
         $campos = Desenvolvimento_Projeto_Comentario_DAO::Get_Colunas();
         self::DAO_Campos_Retira($campos, 'projeto');
@@ -565,11 +565,11 @@ class Desenvolvimento_ProjetoControle extends Desenvolvimento_Controle
      */
     public function Projetos_Comentario_Add2($Desenvolvimento_id = false){
         if($Desenvolvimento_id===false) throw new \Exception('Projeto não informado',404);
-        $titulo     = 'Comentário do Projeto Adicionado com Sucesso';
+        $titulo     = __('Comentário do Projeto Adicionado com Sucesso');
         $dao        = 'Desenvolvimento_Projeto_Comentario';
         $funcao     = '$this->Projetos_View('.$Desenvolvimento_id.');';
-        $sucesso1   = 'Inserção bem sucedida';
-        $sucesso2   = 'Comentário de Projeto cadastrado com sucesso.';
+        $sucesso1   = __('Inserção bem sucedida');
+        $sucesso2   = __('Comentário de Projeto cadastrado com sucesso.');
         $alterar    = Array('projeto'=>$Desenvolvimento_id);
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
     }
@@ -589,9 +589,9 @@ class Desenvolvimento_ProjetoControle extends Desenvolvimento_Controle
         // Começo
         // Carrega Config
         $titulo1    = 'Editar Comentário do Projeto (#'.$id.')';
-        $titulo2    = 'Alteração de Comentário do Projeto';
+        $titulo2    = __('Alteração de Comentário do Projeto');
         $formid     = 'form_Sistema_AdminC_ProjetoEdit';
-        $formbt     = 'Alterar Comentário de Projeto';
+        $formbt     = __('Alterar Comentário de Projeto');
         $formlink   = 'Desenvolvimento/Projeto/Projetos_Comentario_Edit2/'.$Desenvolvimento_id.'/'.$id;
         $editar     = Array('Desenvolvimento_Projeto_Comentario',$id);
         $campos = Desenvolvimento_Projeto_Comentario_DAO::Get_Colunas();
@@ -608,10 +608,10 @@ class Desenvolvimento_ProjetoControle extends Desenvolvimento_Controle
     public function Projetos_Comentario_Edit2($Desenvolvimento_id = false,$id = 0){
         if($Desenvolvimento_id===false) throw new \Exception('Projeto não informado',404);
         if($id         == 0   ) throw new \Exception('Comentário não informado',404);
-        $titulo     = 'Comentário de Projeto Editado com Sucesso';
+        $titulo     = __('Comentário de Projeto Editado com Sucesso');
         $dao        = Array('Desenvolvimento_Projeto_Comentario',$id);
         $funcao     = '$this->Projetos_View('.$Desenvolvimento_id.');';
-        $sucesso1   = 'Comentário de Projeto Alterado com Sucesso.';
+        $sucesso1   = __('Comentário de Projeto Alterado com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array('projeto'=>$Desenvolvimento_id);
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);      

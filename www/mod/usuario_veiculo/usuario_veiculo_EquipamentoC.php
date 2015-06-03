@@ -48,7 +48,7 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
     static function Endereco_Equipamento_Marca($true=true){
         $registro = \Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
-        $titulo = 'Marcas';
+        $titulo = __('Marcas');
         $link   = 'usuario_veiculo/Equipamento/Marcas';
         // Chama Equipamento
         self::Endereco_Equipamento(true);
@@ -61,7 +61,7 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
     static function Endereco_Equipamento_Modelo($true=true){
         $registro = \Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
-        $titulo = 'Modelos';
+        $titulo = __('Modelos');
         $link   = 'usuario_veiculo/Equipamento/Modelos';
         // Chama Equipamento
         self::Endereco_Equipamento_Marca(true);
@@ -79,7 +79,7 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
     public function Equipamentos($export=false){
         $i = 0;
         self::Endereco_Equipamento(false);
-        $titulo = 'Equipamentos';
+        $titulo = __('Equipamentos');
         $titulo2 = \Framework\Classes\Texto::Transformar_Plural_Singular($titulo);
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
             Array(
@@ -169,11 +169,11 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
         $sucesso = $this->_Modelo->db->Sql_Update($resultado);
         if($sucesso){
             if($resultado->status=='0'){
-                $texto = 'Ocupada';
+                $texto = __('Ocupada');
             }else if($resultado->status=='1'){
-                $texto = 'Livre';
+                $texto = __('Livre');
             }else{
-                $texto = 'Em uso';
+                $texto = __('Em uso');
             }
             $conteudo = array(
                 'location' => '.statusEquipamentos'.$resultado->id,
@@ -199,15 +199,15 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
         $id = $objeto->id;
         if($status=='0'){
             $tipo = 'warning';
-            $nometipo = 'Ocupada';
+            $nometipo = __('Ocupada');
         }
         else if($status=='1'){
             $tipo = 'success';
-            $nometipo = 'Livre';
+            $nometipo = __('Livre');
         }
         else {
             $tipo = 'info';
-            $nometipo = 'Em uso';
+            $nometipo = __('Em uso');
         }
         $html = '<span class="badge badge-'.$tipo.'">'.$nometipo.'</span>';
         if($link===true){
@@ -222,13 +222,13 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
      */
     public function Equipamentos_Add(){   
         self::Endereco_Equipamento(true);   
-        $titulo = 'Equipamentos';
+        $titulo = __('Equipamentos');
         $titulo_singular = \Framework\Classes\Texto::Transformar_Plural_Singular($titulo);  
         // Carrega Config
         $titulo1    = 'Adicionar '.$titulo_singular;
         $titulo2    = 'Salvar '.$titulo_singular;
         $formid     = 'form_Sistema_Admin_Equipamentos';
-        $formbt     = 'Salvar';
+        $formbt     = __('Salvar');
         $formlink   = 'usuario_veiculo/Equipamento/Equipamentos_Add2/';
         $campos = Usuario_Veiculo_Equipamento_DAO::Get_Colunas();
         self::Campos_Deletar($campos);
@@ -242,12 +242,12 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
      * @version 2.0
      */
     public function Equipamentos_Add2(){
-        $titulo_plural = 'Equipamentos';
+        $titulo_plural = __('Equipamentos');
         $titulo_singular = \Framework\Classes\Texto::Transformar_Plural_Singular($titulo_plural);  
         $titulo     = $titulo_singular.' Adicionado com Sucesso';
         $dao        = 'Usuario_Veiculo_Equipamento';
         $funcao     = '$this->Equipamentos();';
-        $sucesso1   = 'Inserção bem sucedida';
+        $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = $titulo_singular.' cadastrado com sucesso.';
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
@@ -259,7 +259,7 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
      * @version 2.0
      */
     public function Equipamentos_Edit($id){
-        $titulo_plural = 'Equipamentos';
+        $titulo_plural = __('Equipamentos');
         $titulo_singular = \Framework\Classes\Texto::Transformar_Plural_Singular($titulo_plural);  
         self::Endereco_Equipamento(true);     
         // Carrega Config
@@ -281,12 +281,12 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
      * @version 2.0
      */
     public function Equipamentos_Edit2($id){
-        $titulo_plural = 'Equipamentos';
+        $titulo_plural = __('Equipamentos');
         $titulo_singular = \Framework\Classes\Texto::Transformar_Plural_Singular($titulo_plural); 
         $titulo     = $titulo_singular.' Editado com Sucesso';
         $dao        = Array('Usuario_Veiculo_Equipamento',$id);
         $funcao     = '$this->Equipamentos();';
-        $sucesso1   = 'Equipamento Alterado com Sucesso.';
+        $sucesso1   = __('Equipamento Alterado com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);      
@@ -300,7 +300,7 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
      */
     public function Equipamentos_Del($id){
         global $language;
-        $titulo_plural = 'Equipamentos';
+        $titulo_plural = __('Equipamentos');
         $titulo_singular = \Framework\Classes\Texto::Transformar_Plural_Singular($titulo_plural); 
         
     	$id = (int) $id;
@@ -383,10 +383,10 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
     public function Marcas_Add(){
         self::Endereco_Equipamento_Marca(true);
         // Carrega Config
-        $titulo1    = 'Adicionar Marca';
-        $titulo2    = 'Salvar Marca';
+        $titulo1    = __('Adicionar Marca');
+        $titulo2    = __('Salvar Marca');
         $formid     = 'form_Sistema_Admin_Marcas';
-        $formbt     = 'Salvar';
+        $formbt     = __('Salvar');
         $formlink   = 'usuario_veiculo/Equipamento/Marcas_Add2/';
         $campos = Usuario_Veiculo_Equipamento_Marca_DAO::Get_Colunas();
         \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos);
@@ -399,11 +399,11 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
      * @version 2.0
      */
     public function Marcas_Add2(){
-        $titulo     = 'Marca Adicionada com Sucesso';
+        $titulo     = __('Marca Adicionada com Sucesso');
         $dao        = 'Usuario_Veiculo_Equipamento_Marca';
         $funcao     = '$this->Marcas();';
-        $sucesso1   = 'Inserção bem sucedida';
-        $sucesso2   = 'Marca cadastrada com sucesso.';
+        $sucesso1   = __('Inserção bem sucedida');
+        $sucesso2   = __('Marca cadastrada com sucesso.');
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
     }
@@ -417,9 +417,9 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
         self::Endereco_Equipamento_Marca(true);
         // Carrega Config
         $titulo1    = 'Editar Marca (#'.$id.')';
-        $titulo2    = 'Alteração de Marca';
+        $titulo2    = __('Alteração de Marca');
         $formid     = 'form_Sistema_AdminC_MarcaEdit';
-        $formbt     = 'Alterar Marca';
+        $formbt     = __('Alterar Marca');
         $formlink   = 'usuario_veiculo/Equipamento/Marcas_Edit2/'.$id;
         $editar     = Array('Usuario_Veiculo_Equipamento_Marca',$id);
         $campos = Usuario_Veiculo_Equipamento_Marca_DAO::Get_Colunas();
@@ -433,10 +433,10 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
      * @version 2.0
      */
     public function Marcas_Edit2($id){
-        $titulo     = 'Marca Editada com Sucesso';
+        $titulo     = __('Marca Editada com Sucesso');
         $dao        = Array('Usuario_Veiculo_Equipamento_Marca',$id);
         $funcao     = '$this->Marcas();';
-        $sucesso1   = 'Marca Alterada com Sucesso.';
+        $sucesso1   = __('Marca Alterada com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);      
@@ -532,10 +532,10 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
     public function Modelos_Add(){
         self::Endereco_Equipamento_Modelo(true);
         // Carrega Config
-        $titulo1    = 'Adicionar Modelo';
-        $titulo2    = 'Salvar Modelo';
+        $titulo1    = __('Adicionar Modelo');
+        $titulo2    = __('Salvar Modelo');
         $formid     = 'form_Sistema_Admin_Modelos';
-        $formbt     = 'Salvar';
+        $formbt     = __('Salvar');
         $formlink   = 'usuario_veiculo/Equipamento/Modelos_Add2/';
         $campos = Usuario_Veiculo_Equipamento_Modelo_DAO::Get_Colunas();
         \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos);
@@ -548,11 +548,11 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
      * @version 2.0
      */
     public function Modelos_Add2(){
-        $titulo     = 'Modelo Adicionado com Sucesso';
+        $titulo     = __('Modelo Adicionado com Sucesso');
         $dao        = 'Usuario_Veiculo_Equipamento_Modelo';
         $funcao     = '$this->Modelos();';
-        $sucesso1   = 'Inserção bem sucedida';
-        $sucesso2   = 'Modelo cadastrada com sucesso.';
+        $sucesso1   = __('Inserção bem sucedida');
+        $sucesso2   = __('Modelo cadastrada com sucesso.');
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
     }
@@ -566,9 +566,9 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
         self::Endereco_Equipamento_Modelo(true);
         // Carrega Config
         $titulo1    = 'Editar Modelo (#'.$id.')';
-        $titulo2    = 'Alteração de Modelo';
+        $titulo2    = __('Alteração de Modelo');
         $formid     = 'form_Sistema_AdminC_ModeloEdit';
-        $formbt     = 'Alterar Modelo';
+        $formbt     = __('Alterar Modelo');
         $formlink   = 'usuario_veiculo/Equipamento/Modelos_Edit2/'.$id;
         $editar     = Array('Usuario_Veiculo_Equipamento_Modelo',$id);
         $campos = Usuario_Veiculo_Equipamento_Modelo_DAO::Get_Colunas();
@@ -582,10 +582,10 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
      * @version 2.0
      */
     public function Modelos_Edit2($id){
-        $titulo     = 'Modelo Editada com Sucesso';
+        $titulo     = __('Modelo Editada com Sucesso');
         $dao        = Array('Usuario_Veiculo_Equipamento_Modelo',$id);
         $funcao     = '$this->Modelos();';
-        $sucesso1   = 'Modelo Alterada com Sucesso.';
+        $sucesso1   = __('Modelo Alterada com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);      

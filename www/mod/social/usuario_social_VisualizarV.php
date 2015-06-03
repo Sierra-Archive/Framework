@@ -28,8 +28,8 @@ class social_VisualizarVisual extends social_Visual
     public function exibe_persona(&$persona){
         $this->blocos .= '<a href="javascript:popup()"><a href="http://www.facebook.com/profile.php?id='.$persona['id_face'].'" target="_blank"><img src="http://graph.facebook.com/'.$persona['id_face'].'/picture"></a>';
         $this->blocos .= $persona['nome'];
-        if($persona['fis_sexo']==0) $this->blocos .= 'Feminino';
-        else $this->blocos .= 'Masculino';
+        if($persona['fis_sexo']==0) $this->blocos .= __('Feminino');
+        else $this->blocos .= __('Masculino');
         $this->blocos .= date_time($persona['nasc'], "d/m/Y");
         $this->blocos .= $persona['pontos'];
         $this->blocos .= '<p class="botao"><a onclick="return popup(\'Nova Ação do Usuário\',\social/acoes/newacaouser/'.$persona['id'].'\')" href="#">Adicionar A��o</a></p>';

@@ -38,7 +38,7 @@ class comercio_FamiliaControle extends comercio_Controle
     static function Endereco_Familia($true=true){
         $registro = \Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
-        $titulo = 'Familias';
+        $titulo = __('Familias');
         $link = 'comercio/Familia/Familias';
         if($true===true){
             $_Controle->Tema_Endereco($titulo,$link);
@@ -103,10 +103,10 @@ class comercio_FamiliaControle extends comercio_Controle
     public function Familias_Add(){
         self::Endereco_Familia(true);
         // Carrega Config
-        $titulo1    = 'Adicionar Familia';
-        $titulo2    = 'Salvar Familia';
+        $titulo1    = __('Adicionar Familia');
+        $titulo2    = __('Salvar Familia');
         $formid     = 'form_Sistema_Admin_Familias';
-        $formbt     = 'Salvar';
+        $formbt     = __('Salvar');
         $formlink   = 'comercio/Familia/Familias_Add2/';
         $campos = Comercio_Familia_DAO::Get_Colunas();
         \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos);
@@ -119,11 +119,11 @@ class comercio_FamiliaControle extends comercio_Controle
      * @version 2.0
      */
     public function Familias_Add2(){
-        $titulo     = 'Familia Adicionada com Sucesso';
+        $titulo     = __('Familia Adicionada com Sucesso');
         $dao        = 'Comercio_Familia';
         $funcao     = '$this->Familias();';
-        $sucesso1   = 'Inserção bem sucedida';
-        $sucesso2   = 'Familia cadastrada com sucesso.';
+        $sucesso1   = __('Inserção bem sucedida');
+        $sucesso2   = __('Familia cadastrada com sucesso.');
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
     }
@@ -137,9 +137,9 @@ class comercio_FamiliaControle extends comercio_Controle
         self::Endereco_Familia(true);
         // Carrega Config
         $titulo1    = 'Editar Familia (#'.$id.')';
-        $titulo2    = 'Alteração de Familia';
+        $titulo2    = __('Alteração de Familia');
         $formid     = 'form_Sistema_AdminC_FamiliaEdit';
-        $formbt     = 'Alterar Familia';
+        $formbt     = __('Alterar Familia');
         $formlink   = 'comercio/Familia/Familias_Edit2/'.$id;
         $editar     = Array('Comercio_Familia',$id);
         $campos = Comercio_Familia_DAO::Get_Colunas();
@@ -153,10 +153,10 @@ class comercio_FamiliaControle extends comercio_Controle
      * @version 2.0
      */
     public function Familias_Edit2($id){
-        $titulo     = 'Familia Editada com Sucesso';
+        $titulo     = __('Familia Editada com Sucesso');
         $dao        = Array('Comercio_Familia',$id);
         $funcao     = '$this->Familias();';
-        $sucesso1   = 'Familia Alterada com Sucesso.';
+        $sucesso1   = __('Familia Alterada com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);      

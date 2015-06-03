@@ -39,7 +39,7 @@ class usuario_veiculo_ModeloControle extends usuario_veiculo_Controle
     static function Endereco_Veiculo_Modelo($true=true){
         $registro = \Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
-        $titulo = 'Modelos';
+        $titulo = __('Modelos');
         $link = 'usuario_veiculo/Modelo/Modelos';
         // Chama Veiculo
         usuario_veiculo_MarcaControle::Endereco_Veiculo_Marca(true);
@@ -90,10 +90,10 @@ class usuario_veiculo_ModeloControle extends usuario_veiculo_Controle
     public function Modelos_Add(){
         self::Endereco_Veiculo_Modelo(true);
         // Carrega Config
-        $titulo1    = 'Adicionar Modelo';
-        $titulo2    = 'Salvar Modelo';
+        $titulo1    = __('Adicionar Modelo');
+        $titulo2    = __('Salvar Modelo');
         $formid     = 'form_Sistema_Admin_Modelos';
-        $formbt     = 'Salvar';
+        $formbt     = __('Salvar');
         $formlink   = 'usuario_veiculo/Modelo/Modelos_Add2/';
         $campos = Usuario_Veiculo_Modelo_DAO::Get_Colunas();
         \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos);
@@ -106,11 +106,11 @@ class usuario_veiculo_ModeloControle extends usuario_veiculo_Controle
      * @version 2.0
      */
     public function Modelos_Add2(){
-        $titulo     = 'Modelo Adicionada com Sucesso';
+        $titulo     = __('Modelo Adicionada com Sucesso');
         $dao        = 'Usuario_Veiculo_Modelo';
         $funcao     = '$this->Main();';
-        $sucesso1   = 'Inserção bem sucedida';
-        $sucesso2   = 'Modelo cadastrada com sucesso.';
+        $sucesso1   = __('Inserção bem sucedida');
+        $sucesso2   = __('Modelo cadastrada com sucesso.');
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
     }
@@ -124,9 +124,9 @@ class usuario_veiculo_ModeloControle extends usuario_veiculo_Controle
         self::Endereco_Veiculo_Modelo(true);
         // Carrega Config
         $titulo1    = 'Editar Modelo (#'.$id.')';
-        $titulo2    = 'Alteração de Modelo';
+        $titulo2    = __('Alteração de Modelo');
         $formid     = 'form_Sistema_AdminC_ModeloEdit';
-        $formbt     = 'Alterar Modelo';
+        $formbt     = __('Alterar Modelo');
         $formlink   = 'usuario_veiculo/Modelo/Modelos_Edit2/'.$id;
         $editar     = Array('Usuario_Veiculo_Modelo',$id);
         $campos = Usuario_Veiculo_Modelo::Get_Colunas();
@@ -140,10 +140,10 @@ class usuario_veiculo_ModeloControle extends usuario_veiculo_Controle
      * @version 2.0
      */
     public function Modelos_Edit2($id){
-        $titulo     = 'Modelo Editada com Sucesso';
+        $titulo     = __('Modelo Editada com Sucesso');
         $dao        = Array('Usuario_Veiculo_Modelo',$id);
         $funcao     = '$this->Main();';
-        $sucesso1   = 'Modelo Alterada com Sucesso.';
+        $sucesso1   = __('Modelo Alterada com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);      

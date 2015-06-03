@@ -46,10 +46,10 @@ class Curso_CursoControle extends Curso_Controle
             $status                                 = $valor->status;
             if($status!=1){
                 $status = 0;
-                $texto = 'Desativado';
+                $texto = __('Desativado');
             }else{
                 $status = 1;
-                $texto = 'Ativado';
+                $texto = __('Ativado');
             }
             $tabela['Status'][$i]                   = '<span id="status'.$valor->id.'">'.$Visual->Tema_Elementos_Btn('Status'.$status     ,Array($texto        ,'Curso/Curso/Status/'.$valor->id.'/'    ,'')).'</span>';
             $tabela['Funções'][$i]                  =   $Visual->Tema_Elementos_Btn('Visualizar' ,Array('Visualizar Turmas do Curso'    ,'Curso/Turma/Turmas/'.$valor->id.'/'    ,'')).
@@ -119,10 +119,10 @@ class Curso_CursoControle extends Curso_Controle
     public function Cursos_Add(){
         self::Endereco_Curso();
         // Carrega Config
-        $titulo1    = 'Adicionar Curso';
-        $titulo2    = 'Salvar Curso';
+        $titulo1    = __('Adicionar Curso');
+        $titulo2    = __('Salvar Curso');
         $formid     = 'form_Sistema_Admin_Cursos';
-        $formbt     = 'Salvar';
+        $formbt     = __('Salvar');
         $formlink   = 'Curso/Curso/Cursos_Add2/';
         $campos = Curso_DAO::Get_Colunas();
         \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos);
@@ -135,11 +135,11 @@ class Curso_CursoControle extends Curso_Controle
      * @version 2.0
      */
     public function Cursos_Add2(){
-        $titulo     = 'Curso Adicionado com Sucesso';
+        $titulo     = __('Curso Adicionado com Sucesso');
         $dao        = 'Curso';
         $funcao     = '$this->Cursos();';
-        $sucesso1   = 'Inserção bem sucedida';
-        $sucesso2   = 'Curso cadastrado com sucesso.';
+        $sucesso1   = __('Inserção bem sucedida');
+        $sucesso2   = __('Curso cadastrado com sucesso.');
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
     }
@@ -153,9 +153,9 @@ class Curso_CursoControle extends Curso_Controle
         self::Endereco_Curso();
         // Carrega Config
         $titulo1    = 'Editar Curso (#'.$id.')';
-        $titulo2    = 'Alteração de Curso';
+        $titulo2    = __('Alteração de Curso');
         $formid     = 'form_Sistema_AdminC_CursoEdit';
-        $formbt     = 'Alterar Curso';
+        $formbt     = __('Alterar Curso');
         $formlink   = 'Curso/Curso/Cursos_Edit2/'.$id;
         $editar     = Array('Curso',$id);
         $campos = Curso_DAO::Get_Colunas();
@@ -169,10 +169,10 @@ class Curso_CursoControle extends Curso_Controle
      * @version 2.0
      */
     public function Cursos_Edit2($id){
-        $titulo     = 'Curso Editado com Sucesso';
+        $titulo     = __('Curso Editado com Sucesso');
         $dao        = Array('Curso',$id);
         $funcao     = '$this->Cursos();';
-        $sucesso1   = 'Curso Alterado com Sucesso.';
+        $sucesso1   = __('Curso Alterado com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);   
@@ -228,9 +228,9 @@ class Curso_CursoControle extends Curso_Controle
         $sucesso = $this->_Modelo->db->Sql_Update($resultado);
         if($sucesso){
             if($resultado->status==1){
-                $texto = 'Ativado';
+                $texto = __('Ativado');
             }else{
-                $texto = 'Desativado';
+                $texto = __('Desativado');
             }
             $conteudo = array(
                 'location' => '#status'.$resultado->id,

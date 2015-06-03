@@ -52,8 +52,8 @@ class noticia_ListarControle extends noticia_Controle
         if($menu!==false && !empty($menu)){
             reset($menu);
             foreach ($menu as &$valor) {
-                if($valor->destaque==0)     $destaque = 'Não';
-                else                        $destaque = 'Sim';
+                if($valor->destaque==0)     $destaque = __('Não');
+                else                        $destaque = __('Sim');
                 
                 
                 $tabela['Id'][$i]           = $valor->id;

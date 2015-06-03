@@ -22,7 +22,7 @@ class usuario_PerfilControle extends usuario_Controle
     public function Perfil_Show($usuarioid,$tipo='Cliente'){
         // GAmbiarra Para Consertar erro de acento em url
         if($tipo=='Funcionrio' || $tipo=="Funcionario") $tipo = "Funcionário";
-        if($tipo=="Usurio" || $tipo=="Usuario")         $tipo = 'Usuário';
+        if($tipo=="Usurio" || $tipo=="Usuario")         $tipo = __('Usuário');
         // Verifica Permissao e Puxa Usuário
         $usuario = $this->_Modelo->db->Sql_Select('Usuario',Array('id'=>$usuarioid),1); // Banco DAO, Condicao e LIMITE
         // Resgata DAdos e Manda pra View
@@ -147,9 +147,9 @@ class usuario_PerfilControle extends usuario_Controle
         $id = \Framework\App\Acl::Usuario_GetID_Static();
         // Carrega Config
         $titulo1    = 'Alterar Senha (#'.$id.')';
-        $titulo2    = 'Alterar Senha';
+        $titulo2    = __('Alterar Senha');
         $formid     = 'form_perfil_senha';
-        $formbt     = 'Alterar Grupo';
+        $formbt     = __('Alterar Grupo');
         $formlink   = 'usuario/Perfil/usuarios_carregaAlterarSenha2/';
         $editar     = Array('Usuario',$id);
         $campos = Usuario_DAO::Get_Colunas();
@@ -158,11 +158,11 @@ class usuario_PerfilControle extends usuario_Controle
     }
     public function usuarios_carregaAlterarSenha2(){
         $id = (int) $this->_Acl->Usuario_GetID();
-        $titulo     = 'Senha editada com Sucesso';
+        $titulo     = __('Senha editada com Sucesso');
         $dao        = Array('Usuario',$id);
         $funcao     = '$this->Main();';
-        $sucesso1   = 'Senha Alterada com Sucesso.';
-        $sucesso2   = 'Guarde sua senha com carinho.';
+        $sucesso1   = __('Senha Alterada com Sucesso.');
+        $sucesso2   = __('Guarde sua senha com carinho.');
         $alterar    = Array();
         $sucesso = $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);   
         
@@ -199,7 +199,7 @@ class usuario_PerfilControle extends usuario_Controle
             );
             $this->_Visual->Json_IncluiTipo('Popup',$conteudo);
             //$this->_Visual->Json_IncluiTipo('JavascriptInterno',$this->_Visual->Javascript_Executar());
-            //$this->_Visual->Javascript_Executar() = '';
+            //$this->_Visual->Javascript_Executar() = __('');
         }else{
             $mensagens = array(
                 "tipo" => 'sucesso',
@@ -260,14 +260,14 @@ class usuario_PerfilControle extends usuario_Controle
         $usuario = $this->_Modelo->db->Sql_Select('Usuario', Array('id'=>$id));
         if($tipo===false){
             if($usuario->grupo==CFG_TEC_IDCLIENTE){
-                $tipo   = 'Cliente';
+                $tipo   = __('Cliente');
                 $tipo2  = 'cliente';
             }else if($usuario->grupo==CFG_TEC_IDFUNCIONARIO){
-                $tipo   = 'Funcionário';
+                $tipo   = __('Funcionário');
                 $tipo2  = 'funcionario';
             }else{
-                $tipo   = 'Usuário';
-                $tipo2  = 'usuario';
+                $tipo   = __('Usuário');
+                $tipo2  = __('usuario');
             }
         }else{
             // Primeira Letra Maiuscula
@@ -275,7 +275,7 @@ class usuario_PerfilControle extends usuario_Controle
         }
         // GAmbiarra Para Consertar erro de acento em url
         if($tipo=='Funcionrio' || $tipo=="Funcionario") $tipo = "Funcionário";
-        if($tipo=="Usurio" || $tipo=="Usuario")         $tipo = 'Usuário';
+        if($tipo=="Usurio" || $tipo=="Usuario")         $tipo = __('Usuário');
         // Cria Tipo 2:
         if($tipo=='Cliente'){
             $tipo2      = 'cliente';
@@ -288,10 +288,10 @@ class usuario_PerfilControle extends usuario_Controle
             $tipo_pass  = CFG_TEC_CAT_ID_ADMIN;
         }
         // Carrega Config
-        $titulo1    = 'Meu Perfil';
-        $titulo2    = 'Alterar meu Perfil';
+        $titulo1    = __('Meu Perfil');
+        $titulo2    = __('Alterar meu Perfil');
         $formid     = 'form_usuario_PerfilEdit';
-        $formbt     = 'Alterar meu Perfil';
+        $formbt     = __('Alterar meu Perfil');
         $formlink   = 'usuario/Perfil/Perfil_Edit2/'.$id;
         $editar     = Array('Usuario',$id);
         $campos = Usuario_DAO::Get_Colunas();
@@ -312,13 +312,13 @@ class usuario_PerfilControle extends usuario_Controle
         if(isset($_POST["nome"])){
             $nome = $_POST["nome"];
         }else{
-            $nome = 'Perfil';
+            $nome = __('Perfil');
         }
         $id = (int) $this->_Acl->Usuario_GetID();
-        $titulo     = 'Perfil Editado com Sucesso';
+        $titulo     = __('Perfil Editado com Sucesso');
         $dao        = Array('Usuario',$id);
         $funcao     = '$this->Perfil_Edit();';
-        $sucesso1   = 'Perfil Alterado com Sucesso.';
+        $sucesso1   = __('Perfil Alterado com Sucesso.');
         $sucesso2   = ''.$nome.' teve a alteração bem sucedida';
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);      
@@ -348,7 +348,7 @@ class usuario_PerfilControle extends usuario_Controle
     public function Perfil_Show($usuarioid,$tipo='Cliente'){
         // GAmbiarra Para Consertar erro de acento em url
         if($tipo=='Funcionrio' || $tipo=="Funcionario") $tipo = "Funcionário";
-        if($tipo=="Usurio" || $tipo=="Usuario")         $tipo = 'Usuário';
+        if($tipo=="Usurio" || $tipo=="Usuario")         $tipo = __('Usuário');
         // Verifica Permissao e Puxa Usuário
         $usuario = $this->_Modelo->db->Sql_Select('Usuario',Array('id'=>$usuarioid),1); // Banco DAO, Condicao e LIMITE
         // Resgata DAdos e Manda pra View
@@ -470,9 +470,9 @@ class usuario_PerfilControle extends usuario_Controle
         $id = \Framework\App\Acl::Usuario_GetID_Static();
         // Carrega Config
         $titulo1    = 'Alterar Senha (#'.$id.')';
-        $titulo2    = 'Alterar Senha';
+        $titulo2    = __('Alterar Senha');
         $formid     = 'form_perfil_senha';
-        $formbt     = 'Alterar Grupo';
+        $formbt     = __('Alterar Grupo');
         $formlink   = 'usuario/Perfil/usuarios_carregaAlterarSenha2/';
         $editar     = Array('Usuario',$id);
         $campos = Usuario_DAO::Get_Colunas();
@@ -481,11 +481,11 @@ class usuario_PerfilControle extends usuario_Controle
     }
     public function usuarios_carregaAlterarSenha2(){
         $id = (int) $this->get_usuarioid();
-        $titulo     = 'Senha editada com Sucesso';
+        $titulo     = __('Senha editada com Sucesso');
         $dao        = Array('Usuario',$id);
         $funcao     = '$this->Main();';
-        $sucesso1   = 'Senha Alterada com Sucesso.';
-        $sucesso2   = 'Guarde sua senha com carinho.';
+        $sucesso1   = __('Senha Alterada com Sucesso.');
+        $sucesso2   = __('Guarde sua senha com carinho.');
         $alterar    = Array();
         $sucesso = $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);   
         
@@ -522,7 +522,7 @@ class usuario_PerfilControle extends usuario_Controle
             );
             $this->_Visual->Json_IncluiTipo('Popup',$conteudo);
             //$this->_Visual->Json_IncluiTipo('JavascriptInterno',$this->_Visual->Javascript_Executar());
-            //$this->_Visual->Javascript_Executar() = '';
+            //$this->_Visual->Javascript_Executar() = __('');
         }else{
             $mensagens = array(
                 "tipo" => 'sucesso',
@@ -583,13 +583,13 @@ class usuario_PerfilControle extends usuario_Controle
         $usuario = $this->_Modelo->db->Sql_Select('Usuario', Array('id'=>$id));
         if($tipo===false){
             if($usuario->grupo==CFG_TEC_IDCLIENTE){
-                $tipo   = 'Cliente';
+                $tipo   = __('Cliente');
                 $tipo2  = 'cliente';
             }else if($usuario->grupo==CFG_TEC_IDFUNCIONARIO){
-                $tipo   = 'Funcionário';
+                $tipo   = __('Funcionário');
                 $tipo2  = 'funcionario';
             }else{
-                $tipo   = 'Usuário';
+                $tipo   = __('Usuário');
                 $tipo2  = 'usuario';
             }
         }else{
@@ -598,7 +598,7 @@ class usuario_PerfilControle extends usuario_Controle
         }
         // GAmbiarra Para Consertar erro de acento em url
         if($tipo=='Funcionrio' || $tipo=="Funcionario") $tipo = "Funcionário";
-        if($tipo=="Usurio" || $tipo=="Usuario")         $tipo = 'Usuário';
+        if($tipo=="Usurio" || $tipo=="Usuario")         $tipo = __('Usuário');
         // Cria Tipo 2:
         if($tipo=='Cliente'){
             $tipo2  = 'cliente';
@@ -607,10 +607,10 @@ class usuario_PerfilControle extends usuario_Controle
             $tipo2  = 'funcionario';
         }
         // Carrega Config
-        $titulo1    = 'Meu Perfil';
-        $titulo2    = 'Alterar meu Perfil';
+        $titulo1    = __('Meu Perfil');
+        $titulo2    = __('Alterar meu Perfil');
         $formid     = 'form_usuario_PerfilEdit';
-        $formbt     = 'Alterar meu Perfil';
+        $formbt     = __('Alterar meu Perfil');
         $formlink   = 'usuario/Perfil/Perfil_Edit2/'.$id;
         $editar     = Array('Usuario',$id);
         $campos = Usuario_DAO::Get_Colunas();
@@ -629,10 +629,10 @@ class usuario_PerfilControle extends usuario_Controle
      *//*
     public function Perfil_Edit2($tipo=false){
         $id = (int) $this->get_usuarioid();
-        $titulo     = 'Perfil Editado com Sucesso';
+        $titulo     = __('Perfil Editado com Sucesso');
         $dao        = Array('Usuario',$id);
         $funcao     = '$this->Perfil_Edit();';
-        $sucesso1   = 'Perfil Alterado com Sucesso.';
+        $sucesso1   = __('Perfil Alterado com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);      

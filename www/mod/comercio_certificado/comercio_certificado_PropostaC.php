@@ -166,15 +166,15 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
         $id         = $objeto->id;
         if($status==='0' || $status===0){
             $tipo = 'warning';
-            $nometipo = 'Pendente';
+            $nometipo = __('Pendente');
         }
         else if($status==='1' || $status===1){
             $tipo = 'success';
-            $nometipo = 'Aprovada';
+            $nometipo = __('Aprovada');
         }
         else{
             $tipo = 'important';
-            $nometipo = 'Reprovada';
+            $nometipo = __('Reprovada');
         }
         $html = '<span class="badge badge-'.$tipo.'">'.$nometipo.'</span>';
         if($link===true){
@@ -443,10 +443,10 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
         if($tipo===false){
             if($usuario->grupo==CFG_TEC_IDCLIENTE){
                 $tipo = 'cliente';
-                $tipo2 = 'Cliente';
+                $tipo2 = __('Cliente');
             }else if($usuario->grupo==CFG_TEC_IDFUNCIONARIO){
                 $tipo = 'funcionario';
-                $tipo2 = 'Funcionário';
+                $tipo2 = __('Funcionário');
             }
         }
         
@@ -561,9 +561,9 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
     public function Periodicas_Edit($id){
         // Carrega Config
         $titulo1    = 'Editar Periodica (#'.$id.')';
-        $titulo2    = 'Alteração de Periodica';
+        $titulo2    = __('Alteração de Periodica');
         $formid     = 'form_Sistema_AdminC_PeriodicaEdit';
-        $formbt     = 'Alterar Periodica';
+        $formbt     = __('Alterar Periodica');
         $formlink   = 'comercio_certificado/Proposta/Periodicas_Edit2/'.$id;
         $editar     = Array('Comercio_Certificado_AuditoriaPeriodica',$id);
         $campos = Comercio_Certificado_AuditoriaPeriodica_DAO::Get_Colunas();
@@ -595,10 +595,10 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
      */
     public function Periodicas_Edit2($id){
         $id = (int) $id;
-        $titulo     = 'Periodica Editada com Sucesso';
+        $titulo     = __('Periodica Editada com Sucesso');
         $dao        = Array('Comercio_Certificado_AuditoriaPeriodica',$id);
         $funcao     = false;
-        $sucesso1   = 'Periodica Alterada com Sucesso.';
+        $sucesso1   = __('Periodica Alterada com Sucesso.');
         $sucesso2   = ''.$_POST["autor"].' teve a alteração bem sucedida';
         $alterar    = Array();
         $sucesso = $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar); 

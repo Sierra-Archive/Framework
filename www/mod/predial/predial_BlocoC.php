@@ -25,7 +25,7 @@ class predial_BlocoControle extends predial_Controle
     static function Endereco_Bloco($true=true){
         $registro = \Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
-        $titulo = 'Blocos';
+        $titulo = __('Blocos');
         $link = 'predial/Bloco/Blocos';
         if($true===true){
             $_Controle->Tema_Endereco($titulo,$link);
@@ -95,10 +95,10 @@ class predial_BlocoControle extends predial_Controle
     public function Blocos_Add(){
         self::Endereco_Bloco();
         // Carrega Config
-        $titulo1    = 'Adicionar Bloco';
-        $titulo2    = 'Salvar Bloco';
+        $titulo1    = __('Adicionar Bloco');
+        $titulo2    = __('Salvar Bloco');
         $formid     = 'form_Sistema_Admin_Blocos';
-        $formbt     = 'Salvar';
+        $formbt     = __('Salvar');
         $formlink   = 'predial/Bloco/Blocos_Add2/';
         $campos = Predial_Bloco_DAO::Get_Colunas();
         \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos);
@@ -111,11 +111,11 @@ class predial_BlocoControle extends predial_Controle
      * @version 2.0
      */
     public function Blocos_Add2(){
-        $titulo     = 'Bloco Adicionado com Sucesso';
+        $titulo     = __('Bloco Adicionado com Sucesso');
         $dao        = 'Predial_Bloco';
         $funcao     = '$this->Main();';
-        $sucesso1   = 'Inserção bem sucedida';
-        $sucesso2   = 'Bloco cadastrado com sucesso.';
+        $sucesso1   = __('Inserção bem sucedida');
+        $sucesso2   = __('Bloco cadastrado com sucesso.');
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
     }
@@ -129,9 +129,9 @@ class predial_BlocoControle extends predial_Controle
         self::Endereco_Bloco();
         // Carrega Config
         $titulo1    = 'Editar Bloco (#'.$id.')';
-        $titulo2    = 'Alteração de Bloco';
+        $titulo2    = __('Alteração de Bloco');
         $formid     = 'form_Sistema_AdminC_BlocoEdit';
-        $formbt     = 'Alterar Bloco';
+        $formbt     = __('Alterar Bloco');
         $formlink   = 'predial/Bloco/Blocos_Edit2/'.$id;
         $editar     = Array('Predial_Bloco',$id);
         $campos = Predial_Bloco_DAO::Get_Colunas();
@@ -145,10 +145,10 @@ class predial_BlocoControle extends predial_Controle
      * @version 2.0
      */
     public function Blocos_Edit2($id){
-        $titulo     = 'Bloco Editado com Sucesso';
+        $titulo     = __('Bloco Editado com Sucesso');
         $dao        = Array('Predial_Bloco',$id);
         $funcao     = '$this->Main();';
-        $sucesso1   = 'Bloco Alterado com Sucesso.';
+        $sucesso1   = __('Bloco Alterado com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);   

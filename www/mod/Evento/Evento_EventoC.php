@@ -53,7 +53,7 @@ class Evento_EventoControle extends Evento_Controle
                 $texto = 'Ativado';
             }else{
                 $valor->status='0';
-                $texto = 'Desativado';
+                $texto = __('Desativado');
             }
             $destaque                                     = $valor->destaque;
             if($perm_status)    $tabela['Funções'][$i]                   =   '<span id="status'.$valor->id.'">'.$Visual->Tema_Elementos_Btn('Status'.$valor->status     ,Array($texto        ,'Evento/Evento/Status/'.$valor->id.'/'    ,'')).'</span>';
@@ -61,10 +61,10 @@ class Evento_EventoControle extends Evento_Controle
             
             if($destaque==1){
                 $destaque = 1;
-                $texto = 'Em Destaque';
+                $texto = __('Em Destaque');
             }else{
                 $destaque = 0;
-                $texto = 'Não está em destaque';
+                $texto = __('Não está em destaque');
             }
             $tabela['Funções'][$i]      .= '<span id="destaques'.$valor->id.'">'.$Visual->Tema_Elementos_Btn('Destaque'.$destaque   ,Array($texto   ,'Evento/Evento/Destaques/'.$valor->id.'/'    ,''),$perm_destaque).'</span>'.            
                                             $Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Evento'        ,'Evento/Evento/Eventos_Edit/'.$valor->id.'/'    ,''),$perm_editar).
@@ -116,9 +116,9 @@ class Evento_EventoControle extends Evento_Controle
             unset($tabela);
         }else{
             if($export!==false){
-                $mensagem = 'Nenhum Evento para exportar';
+                $mensagem = __('Nenhum Evento para exportar');
             }else{
-                $mensagem = 'Nenhum Evento';
+                $mensagem = __('Nenhum Evento');
             }     
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">'.$mensagem.'</font></b></center>');
         }
@@ -136,10 +136,10 @@ class Evento_EventoControle extends Evento_Controle
     public function Eventos_Add(){
         self::Endereco_Evento();
         // Carrega Config
-        $titulo1    = 'Adicionar Evento';
-        $titulo2    = 'Salvar Evento';
+        $titulo1    = __('Adicionar Evento');
+        $titulo2    = __('Salvar Evento');
         $formid     = 'form_Sistema_Admin_Eventos';
-        $formbt     = 'Salvar';
+        $formbt     = __('Salvar');
         $formlink   = 'Evento/Evento/Eventos_Add2/';
         $campos = Evento_DAO::Get_Colunas();
         \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos);
@@ -152,11 +152,11 @@ class Evento_EventoControle extends Evento_Controle
      * @version 2.0
      */
     public function Eventos_Add2(){
-        $titulo     = 'Evento Adicionado com Sucesso';
+        $titulo     = __('Evento Adicionado com Sucesso');
         $dao        = 'Evento';
         $funcao     = '$this->Main();';
-        $sucesso1   = 'Inserção bem sucedida';
-        $sucesso2   = 'Evento cadastrado com sucesso.';
+        $sucesso1   = __('Inserção bem sucedida');
+        $sucesso2   = __('Evento cadastrado com sucesso.');
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
     }
@@ -172,9 +172,9 @@ class Evento_EventoControle extends Evento_Controle
         
         // Carrega Variaveis de Config
         $titulo1    = 'Editar Evento (#'.$id.')';
-        $titulo2    = 'Alteração de Evento';
+        $titulo2    = __('Alteração de Evento');
         $formid     = 'form_Sistema_AdminC_EventoEdit';  // identificador do formulario
-        $formbt     = 'Alterar Evento'; // Nome do Botao
+        $formbt     = __('Alterar Evento'); // Nome do Botao
         $formlink   = 'Evento/Evento/Eventos_Edit2/'.$id; // Link de edicao
         $editar     = Array('Evento',$id); // Nome do DAO , $identificador
         // Chama COlunas Do Evento
@@ -190,10 +190,10 @@ class Evento_EventoControle extends Evento_Controle
      * @version 2.0
      */
     public function Eventos_Edit2($id){
-        $titulo     = 'Evento Editado com Sucesso';
+        $titulo     = __('Evento Editado com Sucesso');
         $dao        = Array('Evento',$id); // Nome do DAO , $identificador
         $funcao     = '$this->Eventos();'; // Funcao executada depois de editar e mandar mensagem pro usuario
-        $sucesso1   = 'Evento Alterado com Sucesso.';
+        $sucesso1   = __('Evento Alterado com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);   
@@ -257,9 +257,9 @@ class Evento_EventoControle extends Evento_Controle
         if($sucesso){
             // CASO TENHA SUCESSO EXIBE TEXTO E MANDA PRO USUARIO NOVO FORMATO
             if($resultado->status==1 || $resultado->status=='1'){
-                $texto = 'Ativado';
+                $texto = __('Ativado');
             }else{
-                $texto = 'Desativado';
+                $texto = __('Desativado');
             }
             // ARRAY COM CONTEUDO
             $conteudo = array(
@@ -299,9 +299,9 @@ class Evento_EventoControle extends Evento_Controle
         $sucesso = $this->_Modelo->db->Sql_Update($resultado);
         if($sucesso){
             if($resultado->destaque==1){
-                $texto = 'Em destaque';
+                $texto = __('Em destaque');
             }else{
-                $texto = 'Não está em destaque';
+                $texto = __('Não está em destaque');
             }
             $conteudo = array(
                 'location' => '#destaques'.$resultado->id,

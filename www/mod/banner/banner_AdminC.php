@@ -104,10 +104,10 @@ class banner_AdminControle extends banner_Controle
     */
     public function Banners_Add(){
         // Carrega Config
-        $titulo1    = 'Adicionar Banner';
-        $titulo2    = 'Salvar Banner';
+        $titulo1    = __('Adicionar Banner');
+        $titulo2    = __('Salvar Banner');
         $formid     = 'form_Sistema_Banner_Admin';
-        $formbt     = 'Salvar';
+        $formbt     = __('Salvar');
         $formlink   = 'banner/Admin/Banners_Add2/';
         $campos     = Banner_DAO::Get_Colunas();
         \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos,false,'right');
@@ -120,11 +120,11 @@ class banner_AdminControle extends banner_Controle
      * @version 2.0
      */
     public function Banners_Add2(){
-        $titulo     = 'Banner Adicionado com Sucesso';
+        $titulo     = __('Banner Adicionado com Sucesso');
         $dao        = 'Banner';
         $funcao     = '$this->Main();';
-        $sucesso1   = 'Inserção bem sucedida';
-        $sucesso2   = 'Banner cadastrada com sucesso.';
+        $sucesso1   = __('Inserção bem sucedida');
+        $sucesso2   = __('Banner cadastrada com sucesso.');
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
     }
@@ -137,9 +137,9 @@ class banner_AdminControle extends banner_Controle
     public function Banners_Edit($id){
         // Carrega Config
         $titulo1    = 'Editar Banner (#'.$id.')';
-        $titulo2    = 'Alteração de Banner';
+        $titulo2    = __('Alteração de Banner');
         $formid     = 'form_Sistema_AdminC_BannerEdit';
-        $formbt     = 'Alterar Banner';
+        $formbt     = __('Alterar Banner');
         $formlink   = 'predial/Banner/Banners_Edit2/'.$id;
         $editar     = Array('Banner',$id);
         $campos = Predial_Banner_DAO::Get_Colunas();
@@ -153,10 +153,10 @@ class banner_AdminControle extends banner_Controle
      * @version 2.0
      */
     public function Banners_Edit2($id){
-        $titulo     = 'Banner Editado com Sucesso';
+        $titulo     = __('Banner Editado com Sucesso');
         $dao        = Array('Banner',$id);
         $funcao     = '$this->Main();';
-        $sucesso1   = 'Banner Alterado com Sucesso.';
+        $sucesso1   = __('Banner Alterado com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);   

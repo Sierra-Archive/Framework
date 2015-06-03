@@ -122,10 +122,10 @@ class Desenvolvimento_TarefaControle extends Desenvolvimento_Controle
     public function Tarefas_Add(){
         $this->Endereco_Tarefa();
         // Carrega Config
-        $titulo1    = 'Adicionar Tarefa';
-        $titulo2    = 'Salvar Tarefa';
+        $titulo1    = __('Adicionar Tarefa');
+        $titulo2    = __('Salvar Tarefa');
         $formid     = 'form_Sistema_Admin_Tarefas';
-        $formbt     = 'Salvar';
+        $formbt     = __('Salvar');
         $formlink   = 'Desenvolvimento/Tarefa/Tarefas_Add2/';
         $campos = Desenvolvimento_Projeto_Tarefa_DAO::Get_Colunas();
         \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos);
@@ -138,11 +138,11 @@ class Desenvolvimento_TarefaControle extends Desenvolvimento_Controle
      * @version 2.0
      */
     public function Tarefas_Add2(){
-        $titulo     = 'Tarefa Adicionada com Sucesso';
+        $titulo     = __('Tarefa Adicionada com Sucesso');
         $dao        = 'Desenvolvimento_Projeto_Tarefa';
         $funcao     = '$this->Tarefas();';
-        $sucesso1   = 'Inserção bem sucedida';
-        $sucesso2   = 'Tarefa cadastrada com sucesso.';
+        $sucesso1   = __('Inserção bem sucedida');
+        $sucesso2   = __('Tarefa cadastrada com sucesso.');
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
     }
@@ -156,9 +156,9 @@ class Desenvolvimento_TarefaControle extends Desenvolvimento_Controle
         $this->Endereco_Tarefa();
         // Carrega Config
         $titulo1    = 'Editar Tarefa (#'.$id.')';
-        $titulo2    = 'Alteração de Tarefa';
+        $titulo2    = __('Alteração de Tarefa');
         $formid     = 'form_Sistema_AdminC_TarefaEdit';
-        $formbt     = 'Alterar Tarefa';
+        $formbt     = __('Alterar Tarefa');
         $formlink   = 'Desenvolvimento/Tarefa/Tarefas_Edit2/'.$id;
         $editar     = Array('Desenvolvimento_Projeto_Tarefa',$id);
         $campos = Desenvolvimento_Projeto_Tarefa_DAO::Get_Colunas();
@@ -172,10 +172,10 @@ class Desenvolvimento_TarefaControle extends Desenvolvimento_Controle
      * @version 2.0
      */
     public function Tarefas_Edit2($id){
-        $titulo     = 'Tarefa Editada com Sucesso';
+        $titulo     = __('Tarefa Editada com Sucesso');
         $dao        = Array('Desenvolvimento_Projeto_Tarefa',$id);
         $funcao     = '$this->Tarefas();';
-        $sucesso1   = 'Tarefa Alterada com Sucesso.';
+        $sucesso1   = __('Tarefa Alterada com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);      

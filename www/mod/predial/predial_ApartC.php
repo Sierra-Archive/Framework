@@ -22,7 +22,7 @@ class predial_ApartControle extends predial_Controle
     static function Endereco_Apart($true=true){
         $registro = \Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
-        $titulo = 'Apartamentos';
+        $titulo = __('Apartamentos');
         $link = 'predial/Apart/Aparts';
         if($true===true){
             $_Controle->Tema_Endereco($titulo,$link);
@@ -96,10 +96,10 @@ class predial_ApartControle extends predial_Controle
     public function Aparts_Add(){
         self::Endereco_Apart();
         // Carrega Config
-        $titulo1    = 'Adicionar Apartamento';
-        $titulo2    = 'Salvar Apartamento';
+        $titulo1    = __('Adicionar Apartamento');
+        $titulo2    = __('Salvar Apartamento');
         $formid     = 'form_Sistema_Admin_Aparts';
-        $formbt     = 'Salvar';
+        $formbt     = __('Salvar');
         $formlink   = 'predial/Apart/Aparts_Add2/';
         $campos = Predial_Bloco_Apart_DAO::Get_Colunas();
         \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos);
@@ -112,11 +112,11 @@ class predial_ApartControle extends predial_Controle
      * @version 2.0
      */
     public function Aparts_Add2(){
-        $titulo     = 'Apartamento Adicionado com Sucesso';
+        $titulo     = __('Apartamento Adicionado com Sucesso');
         $dao        = 'Predial_Bloco_Apart';
         $funcao     = '$this->Main();';
-        $sucesso1   = 'Inserção bem sucedida';
-        $sucesso2   = 'Apartamento cadastrado com sucesso.';
+        $sucesso1   = __('Inserção bem sucedida');
+        $sucesso2   = __('Apartamento cadastrado com sucesso.');
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
     }
@@ -130,9 +130,9 @@ class predial_ApartControle extends predial_Controle
         self::Endereco_Apart();
         // Carrega Config
         $titulo1    = 'Editar Apartamentoamento (#'.$id.')';
-        $titulo2    = 'Alteração de Apartamento';
+        $titulo2    = __('Alteração de Apartamento');
         $formid     = 'form_Sistema_AdminC_ApartEdit';
-        $formbt     = 'Alterar Apartamento';
+        $formbt     = __('Alterar Apartamento');
         $formlink   = 'predial/Apart/Aparts_Edit2/'.$id;
         $editar     = Array('Predial_Bloco_Apart',$id);
         $campos = Predial_Bloco_Apart_DAO::Get_Colunas();
@@ -146,10 +146,10 @@ class predial_ApartControle extends predial_Controle
      * @version 2.0
      */
     public function Aparts_Edit2($id){
-        $titulo     = 'Apartamento Editado com Sucesso';
+        $titulo     = __('Apartamento Editado com Sucesso');
         $dao        = Array('Predial_Bloco_Apart',$id);
         $funcao     = '$this->Aparts();';
-        $sucesso1   = 'Apartamento Alterado com Sucesso.';
+        $sucesso1   = __('Apartamento Alterado com Sucesso.');
         $sucesso2   = ''.$_POST["num"].' teve a alteração bem sucedida';
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);   

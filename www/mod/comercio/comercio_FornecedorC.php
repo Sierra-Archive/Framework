@@ -43,7 +43,7 @@ class comercio_FornecedorControle extends comercio_Controle
     static function Endereco_Fornecedor($true=true,$produto=false){
         $registro = \Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
-        $titulo = 'Fornecedores';
+        $titulo = __('Fornecedores');
         $link = 'comercio/Fornecedor/Fornecedores';
         if($true===true){
             $_Controle->Tema_Endereco($titulo,$link);
@@ -61,15 +61,15 @@ class comercio_FornecedorControle extends comercio_Controle
         
         $tabela_colunas = Array();
 
-        $tabela_colunas[] = 'Nome';
+        $tabela_colunas[] = __('Nome');
         // Coloca Preco
         if(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Fornecedor_Categoria')){
-            $tabela_colunas[] = 'Tipo de Fornecimento';
+            $tabela_colunas[] = __('Tipo de Fornecimento');
         }
         
-        $tabela_colunas[] = 'Telefone';
-        $tabela_colunas[] = 'Email';
-        $tabela_colunas[] = 'Funções';
+        $tabela_colunas[] = __('Telefone');
+        $tabela_colunas[] = __('Email');
+        $tabela_colunas[] = __('Funções');
 
         $this->_Visual->Show_Tabela_DataTable_Massiva($tabela_colunas,'comercio/Fornecedor/Fornecedores');
         $titulo = 'Listagem de Fornecedores (<span id="DataTable_Contador">Carregando...</span>)';
@@ -87,10 +87,10 @@ class comercio_FornecedorControle extends comercio_Controle
     public function Fornecedores_Add(){
         self::Endereco_Fornecedor(true);
         // Carrega Config
-        $titulo1    = 'Adicionar Fornecedor';
-        $titulo2    = 'Salvar Fornecedor';
+        $titulo1    = __('Adicionar Fornecedor');
+        $titulo2    = __('Salvar Fornecedor');
         $formid     = 'form_Sistema_Admin_Fornecedores';
-        $formbt     = 'Salvar';
+        $formbt     = __('Salvar');
         $formlink   = 'comercio/Fornecedor/Fornecedores_Add2/';
         $campos = Comercio_Fornecedor_DAO::Get_Colunas();
         self::Campos_Deletar($campos);
@@ -104,11 +104,11 @@ class comercio_FornecedorControle extends comercio_Controle
      * @version 2.0
      */
     public function Fornecedores_Add2(){
-        $titulo     = 'Fornecedor Adicionado com Sucesso';
+        $titulo     = __('Fornecedor Adicionado com Sucesso');
         $dao        = 'Comercio_Fornecedor';
         $funcao     = '$this->Fornecedores();';
-        $sucesso1   = 'Inserção bem sucedida';
-        $sucesso2   = 'Fornecedor cadastrado com sucesso.';
+        $sucesso1   = __('Inserção bem sucedida');
+        $sucesso2   = __('Fornecedor cadastrado com sucesso.');
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
      
@@ -123,9 +123,9 @@ class comercio_FornecedorControle extends comercio_Controle
         self::Endereco_Fornecedor(true);
         // Carrega Config
         $titulo1    = 'Editar Fornecedor (#'.$id.')';
-        $titulo2    = 'Alteração de Fornecedor';
+        $titulo2    = __('Alteração de Fornecedor');
         $formid     = 'form_Sistema_AdminC_FornecedorEdit';
-        $formbt     = 'Alterar Fornecedor';
+        $formbt     = __('Alterar Fornecedor');
         $formlink   = 'comercio/Fornecedor/Fornecedores_Edit2/'.$id;
         $editar     = Array('Comercio_Fornecedor',$id);
         $campos = Comercio_Fornecedor_DAO::Get_Colunas();
@@ -140,10 +140,10 @@ class comercio_FornecedorControle extends comercio_Controle
      * @version 2.0
      */
     public function Fornecedores_Edit2($id){
-        $titulo     = 'Fornecedor Editado com Sucesso';
+        $titulo     = __('Fornecedor Editado com Sucesso');
         $dao        = Array('Comercio_Fornecedor',$id);
         $funcao     = '$this->Fornecedores();';
-        $sucesso1   = 'Fornecedor Alterado com Sucesso.';
+        $sucesso1   = __('Fornecedor Alterado com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);      
@@ -301,7 +301,7 @@ class comercio_FornecedorControle extends comercio_Controle
             unset($tabela);
         }else{   
             if($export!==false){
-                $erro = 'Nenhum Comentário desse Fornecedor para Exportar';
+                $erro = __('Nenhum Comentário desse Fornecedor para Exportar');
             }else {
                 $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Comentário do Fornecedor</font></b></center>');
             }
@@ -329,10 +329,10 @@ class comercio_FornecedorControle extends comercio_Controle
     public function Fornecedores_Comentario_Add($fornecedor_id = false){
         if($fornecedor_id===false) throw new \Exception('Fornecedor não informado',404);
         // Carrega Config
-        $titulo1    = 'Adicionar Comentário do Fornecedor';
-        $titulo2    = 'Salvar Comentário do Fornecedor';
+        $titulo1    = __('Adicionar Comentário do Fornecedor');
+        $titulo2    = __('Salvar Comentário do Fornecedor');
         $formid     = 'form_Sistema_Admin_Fornecedores_Comentario';
-        $formbt     = 'Salvar';
+        $formbt     = __('Salvar');
         $formlink   = 'comercio/Fornecedor/Fornecedores_Comentario_Add2/'.$fornecedor_id.'/';
         $campos = Comercio_Fornecedor_Comentario_DAO::Get_Colunas();
         self::DAO_Campos_Retira($campos, 'fornecedor');
@@ -347,11 +347,11 @@ class comercio_FornecedorControle extends comercio_Controle
      */
     public function Fornecedores_Comentario_Add2($fornecedor_id = false){
         if($fornecedor_id===false) throw new \Exception('Fornecedor não informado',404);
-        $titulo     = 'Comentário do Fornecedor Adicionado com Sucesso';
+        $titulo     = __('Comentário do Fornecedor Adicionado com Sucesso');
         $dao        = 'Comercio_Fornecedor_Comentario';
         $funcao     = '$this->Fornecedores_View('.$fornecedor_id.');';
-        $sucesso1   = 'Inserção bem sucedida';
-        $sucesso2   = 'Comentário do Fornecedor cadastrado com sucesso.';
+        $sucesso1   = __('Inserção bem sucedida');
+        $sucesso2   = __('Comentário do Fornecedor cadastrado com sucesso.');
         $alterar    = Array('fornecedor'=>$fornecedor_id);
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
     }
@@ -366,9 +366,9 @@ class comercio_FornecedorControle extends comercio_Controle
         if($id            == 0   ) throw new \Exception('Comentário não informado',404);
         // Carrega Config
         $titulo1    = 'Editar Comentário do Fornecedor (#'.$id.')';
-        $titulo2    = 'Alteração de Comentário do Fornecedor';
+        $titulo2    = __('Alteração de Comentário do Fornecedor');
         $formid     = 'form_Sistema_AdminC_FornecedorEdit';
-        $formbt     = 'Alterar Comentário do Fornecedor';
+        $formbt     = __('Alterar Comentário do Fornecedor');
         $formlink   = 'comercio/Fornecedor/Fornecedores_Comentario_Edit2/'.$fornecedor_id.'/'.$id;
         $editar     = Array('Comercio_Fornecedor_Comentario',$id);
         $campos = Comercio_Fornecedor_Comentario_DAO::Get_Colunas();
@@ -385,10 +385,10 @@ class comercio_FornecedorControle extends comercio_Controle
     public function Fornecedores_Comentario_Edit2($fornecedor_id = false,$id = 0){
         if($fornecedor_id===false) throw new \Exception('Fornecedor não informado',404);
         if($id            == 0   ) throw new \Exception('Comentário não informado',404);
-        $titulo     = 'Comentário de Fornecedor Editado com Sucesso';
+        $titulo     = __('Comentário de Fornecedor Editado com Sucesso');
         $dao        = Array('Comercio_Fornecedor_Comentario',$id);
         $funcao     = '$this->Fornecedores_View('.$fornecedor_id.');';
-        $sucesso1   = 'Comentário de Fornecedor Alterado com Sucesso.';
+        $sucesso1   = __('Comentário de Fornecedor Alterado com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array('fornecedor'=>$fornecedor_id);
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);      

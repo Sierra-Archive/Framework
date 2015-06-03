@@ -22,7 +22,7 @@ class predial_SalaoControle extends predial_Controle
     static function Endereco_Salao($true=true){
         $registro = \Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
-        $titulo = 'Saloes';
+        $titulo = __('Saloes');
         $link = 'predial/Salao/Saloes';
         if($true===true){
             $_Controle->Tema_Endereco($titulo,$link);
@@ -94,10 +94,10 @@ class predial_SalaoControle extends predial_Controle
     public function Saloes_Add(){
         self::Endereco_Salao();
         // Carrega Config
-        $titulo1    = 'Adicionar Local de Reserva';
-        $titulo2    = 'Salvar Local de Reserva';
+        $titulo1    = __('Adicionar Local de Reserva');
+        $titulo2    = __('Salvar Local de Reserva');
         $formid     = 'form_Sistema_Admin_Saloes';
-        $formbt     = 'Salvar';
+        $formbt     = __('Salvar');
         $formlink   = 'predial/Salao/Saloes_Add2/';
         $campos = Predial_Salao_DAO::Get_Colunas();
         \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos);
@@ -110,11 +110,11 @@ class predial_SalaoControle extends predial_Controle
      * @version 2.0
      */
     public function Saloes_Add2(){
-        $titulo     = 'Local de Reserva Adicionado com Sucesso';
+        $titulo     = __('Local de Reserva Adicionado com Sucesso');
         $dao        = 'Predial_Salao';
         $funcao     = '$this->Saloes();';
-        $sucesso1   = 'Inserção bem sucedida';
-        $sucesso2   = 'Local de Reserva cadastrado com sucesso.';
+        $sucesso1   = __('Inserção bem sucedida');
+        $sucesso2   = __('Local de Reserva cadastrado com sucesso.');
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
     }
@@ -128,9 +128,9 @@ class predial_SalaoControle extends predial_Controle
         self::Endereco_Salao();
         // Carrega Config
         $titulo1    = 'Editar Local de Reserva (#'.$id.')';
-        $titulo2    = 'Alteração de Local de Reserva';
+        $titulo2    = __('Alteração de Local de Reserva');
         $formid     = 'form_Sistema_AdminC_SalaoEdit';
-        $formbt     = 'Alterar Local de Reserva';
+        $formbt     = __('Alterar Local de Reserva');
         $formlink   = 'predial/Salao/Saloes_Edit2/'.$id;
         $editar     = Array('Predial_Salao',$id);
         $campos = Predial_Salao_DAO::Get_Colunas();
@@ -144,10 +144,10 @@ class predial_SalaoControle extends predial_Controle
      * @version 2.0
      */
     public function Saloes_Edit2($id){
-        $titulo     = 'Local de Reserva Editado com Sucesso';
+        $titulo     = __('Local de Reserva Editado com Sucesso');
         $dao        = Array('Predial_Salao',$id);
         $funcao     = '$this->Saloes();';
-        $sucesso1   = 'Local de Reserva Alterada com Sucesso.';
+        $sucesso1   = __('Local de Reserva Alterada com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);   

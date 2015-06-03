@@ -59,26 +59,26 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
         $tabela = Array(
             'Id','Categoria','Url','Login','Senha'
         );
-        if($perm_destaque)  $tabela[] = 'Destaque';
-        if($perm_status)    $tabela[] = 'Status';
-        $tabela[] = 'Adicionada em';
-        $tabela[] = 'Funções';
+        if($perm_destaque)  $tabela[] = __('Destaque');
+        if($perm_status)    $tabela[] = __('Status');
+        $tabela[] = __('Adicionada em');
+        $tabela[] = __('Funções');
         $this->_Visual->Show_Tabela_DataTable_Massiva($tabela,'Desenvolvimento/Senha/Senhas');
         
         
-        $titulo = 'Listagem de Senhas';  //(<span id="DataTable_Contador">Carregando...</span>)
+        $titulo = __('Listagem de Senhas');  //(<span id="DataTable_Contador">Carregando...</span>)
         $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',10,Array("link"=>"Desenvolvimento/Senha/Senhas_Add",'icon'=>'add','nome'=>'Adicionar Senha'));
         
         // Antigas
         $tabela = Array(
             'Id','Categoria','Url','Login','Senha'
         );
-        if($perm_destaque)  $tabela[] = 'Destaque';
-        if($perm_status)    $tabela[] = 'Status';
-        $tabela[] = 'Adicionada em';
-        $tabela[] = 'Funções';
+        if($perm_destaque)  $tabela[] = __('Destaque');
+        if($perm_status)    $tabela[] = __('Status');
+        $tabela[] = __('Adicionada em');
+        $tabela[] = __('Funções');
         $this->_Visual->Show_Tabela_DataTable_Massiva($tabela,'Desenvolvimento/Senha/Senhas_Antigas');
-        $titulo = 'Listagem de Senhas Antigas';  //(<span id="DataTable_Contador">Carregando...</span>)
+        $titulo = __('Listagem de Senhas Antigas');  //(<span id="DataTable_Contador">Carregando...</span>)
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         
         //Carrega Json
@@ -92,10 +92,10 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
     public function Senhas_Add(){
         $this->Endereco_Senha();
         // Carrega Config
-        $titulo1    = 'Adicionar Senha';
-        $titulo2    = 'Salvar Senha';
+        $titulo1    = __('Adicionar Senha');
+        $titulo2    = __('Salvar Senha');
         $formid     = 'form_Sistema_Admin_Senhas';
-        $formbt     = 'Salvar';
+        $formbt     = __('Salvar');
         $formlink   = 'Desenvolvimento/Senha/Senhas_Add2/';
         $campos = Desenvolvimento_Senha_DAO::Get_Colunas();
         \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos);
@@ -108,11 +108,11 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
      * @version 2.0
      */
     public function Senhas_Add2(){
-        $titulo     = 'Senha Adicionada com Sucesso';
+        $titulo     = __('Senha Adicionada com Sucesso');
         $dao        = 'Desenvolvimento_Senha';
         $funcao     = '$this->Senhas();';
-        $sucesso1   = 'Inserção bem sucedida';
-        $sucesso2   = 'Senha cadastrada com sucesso.';
+        $sucesso1   = __('Inserção bem sucedida');
+        $sucesso2   = __('Senha cadastrada com sucesso.');
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
     }
@@ -126,9 +126,9 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
         $this->Endereco_Senha();
         // Carrega Config
         $titulo1    = 'Editar Senha (#'.$id.')';
-        $titulo2    = 'Alteração de Senha';
+        $titulo2    = __('Alteração de Senha');
         $formid     = 'form_Sistema_AdminC_SenhaEdit';
-        $formbt     = 'Alterar Senha';
+        $formbt     = __('Alterar Senha');
         $formlink   = 'Desenvolvimento/Senha/Senhas_Edit2/'.$id;
         $editar     = Array('Desenvolvimento_Senha',$id);
         $campos = Desenvolvimento_Senha_DAO::Get_Colunas();
@@ -142,11 +142,11 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
      * @version 2.0
      */
     public function Senhas_Edit2($id){
-        $titulo     = 'Senha Editada com Sucesso';
+        $titulo     = __('Senha Editada com Sucesso');
         $dao        = Array('Desenvolvimento_Senha',$id);
         $funcao     = '$this->Senhas();';
-        $sucesso1   = 'Senha Alterada com Sucesso.';
-        $sucesso2   = 'Senha teve a alteração bem sucedida';
+        $sucesso1   = __('Senha Alterada com Sucesso.');
+        $sucesso2   = __('Senha teve a alteração bem sucedida');
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);      
     }
@@ -254,11 +254,11 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
         $id = $objeto->id;
         if($status=='0'){
             $tipo = 'important';
-            $nometipo = 'Ultrapassada';
+            $nometipo = __('Ultrapassada');
         }
         else{
             $tipo = 'success';
-            $nometipo = 'Em Uso';
+            $nometipo = __('Em Uso');
         }
         $html = '<span class="badge badge-'.$tipo.'">'.$nometipo.'</span>';
         if($link===true && \Framework\App\Registro::getInstacia()->_Acl->Get_Permissao_Url('Desenvolvimento/Senha/Status')!==false){
@@ -325,10 +325,10 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
         $id = $objeto->id;
         if($destaque=='0'){
             $tipo = 'important';
-            $nometipo = 'Não Destaque';
+            $nometipo = __('Não Destaque');
         }else{
             $tipo = 'success';
-            $nometipo = 'Destaque';
+            $nometipo = __('Destaque');
         }
         $html = '<span class="badge badge-'.$tipo.'">'.$nometipo.'</span>';
         if($link===true && \Framework\App\Registro::getInstacia()->_Acl->Get_Permissao_Url('Desenvolvimento/Senha/Destaque')!==false){
@@ -373,25 +373,25 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
         $tabela = Array(
             'Id','Responsável','Categoria','Url','Login','Senha'
         );
-        if($perm_destaque)  $tabela[] = 'Destaque';
-        if($perm_status)    $tabela[] = 'Status';
-        $tabela[] = 'Adicionada em';
-        $tabela[] = 'Funções';
+        if($perm_destaque)  $tabela[] = __('Destaque');
+        if($perm_status)    $tabela[] = __('Status');
+        $tabela[] = __('Adicionada em');
+        $tabela[] = __('Funções');
         $this->_Visual->Show_Tabela_DataTable_Massiva($tabela,'Desenvolvimento/Senha/Senhas_Todas');
         
-        $titulo = 'Listagem de Todas as Senhas';  //(<span id="DataTable_Contador">Carregando...</span>)
+        $titulo = __('Listagem de Todas as Senhas');  //(<span id="DataTable_Contador">Carregando...</span>)
         $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',10,Array("link"=>"Desenvolvimento/Senha/Senhas_Todas_Add",'icon'=>'add','nome'=>'Adicionar Senha'));
         
         // Antigas
         $tabela = Array(
             'Id','Responsável','Categoria','Url','Login','Senha'
         );
-        if($perm_destaque)  $tabela[] = 'Destaque';
-        if($perm_status)    $tabela[] = 'Status';
-        $tabela[] = 'Adicionada em';
-        $tabela[] = 'Funções';
+        if($perm_destaque)  $tabela[] = __('Destaque');
+        if($perm_status)    $tabela[] = __('Status');
+        $tabela[] = __('Adicionada em');
+        $tabela[] = __('Funções');
         $this->_Visual->Show_Tabela_DataTable_Massiva($tabela,'Desenvolvimento/Senha/Senhas_Todas_Antigas');
-        $titulo = 'Listagem de Senhas Antigas';  //(<span id="DataTable_Contador">Carregando...</span>)
+        $titulo = __('Listagem de Senhas Antigas');  //(<span id="DataTable_Contador">Carregando...</span>)
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         
         //Carrega Json
@@ -405,10 +405,10 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
     public function Senhas_Todas_Add(){
         $this->Endereco_Senha_Todas();
         // Carrega Config
-        $titulo1    = 'Adicionar Senha';
-        $titulo2    = 'Salvar Senha';
+        $titulo1    = __('Adicionar Senha');
+        $titulo2    = __('Salvar Senha');
         $formid     = 'form_Sistema_Admin_Senhas_Todas';
-        $formbt     = 'Salvar';
+        $formbt     = __('Salvar');
         $formlink   = 'Desenvolvimento/Senha/Senhas_Todas_Add2/';
         $campos = Desenvolvimento_Senha_DAO::Get_Colunas();
         \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos);
@@ -421,11 +421,11 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
      * @version 2.0
      */
     public function Senhas_Todas_Add2(){
-        $titulo     = 'Senha Adicionada com Sucesso';
+        $titulo     = __('Senha Adicionada com Sucesso');
         $dao        = 'Desenvolvimento_Senha';
         $funcao     = '$this->Senhas_Todas();';
-        $sucesso1   = 'Inserção bem sucedida';
-        $sucesso2   = 'Senha cadastrada com sucesso.';
+        $sucesso1   = __('Inserção bem sucedida');
+        $sucesso2   = __('Senha cadastrada com sucesso.');
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
     }
@@ -439,9 +439,9 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
         $this->Endereco_Senha_Todas();
         // Carrega Config
         $titulo1    = 'Editar Senha (#'.$id.')';
-        $titulo2    = 'Alteração de Senha';
+        $titulo2    = __('Alteração de Senha');
         $formid     = 'form_Sistema_AdminC_SenhaEdit';
-        $formbt     = 'Alterar Senha';
+        $formbt     = __('Alterar Senha');
         $formlink   = 'Desenvolvimento/Senha/Senhas_Todas_Edit2/'.$id;
         $editar     = Array('Desenvolvimento_Senha',$id);
         $campos = Desenvolvimento_Senha_DAO::Get_Colunas();
@@ -455,11 +455,11 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
      * @version 2.0
      */
     public function Senhas_Todas_Edit2($id){
-        $titulo     = 'Senha Editada com Sucesso';
+        $titulo     = __('Senha Editada com Sucesso');
         $dao        = Array('Desenvolvimento_Senha',$id);
         $funcao     = '$this->Senhas_Todas();';
-        $sucesso1   = 'Senha Alterada com Sucesso.';
-        $sucesso2   = 'Senha teve a alteração bem sucedida';
+        $sucesso1   = __('Senha Alterada com Sucesso.');
+        $sucesso2   = __('Senha teve a alteração bem sucedida');
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);      
     }
@@ -565,11 +565,11 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
         $id = $objeto->id;
         if($status=='0'){
             $tipo = 'important';
-            $nometipo = 'Ultrapassada';
+            $nometipo = __('Ultrapassada');
         }
         else{
             $tipo = 'success';
-            $nometipo = 'Em Uso';
+            $nometipo = __('Em Uso');
         }
         $html = '<span class="badge badge-'.$tipo.'">'.$nometipo.'</span>';
         if($link===true && \Framework\App\Registro::getInstacia()->_Acl->Get_Permissao_Url('Desenvolvimento/Senha/Status')!==false){
@@ -636,10 +636,10 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
         $id = $objeto->id;
         if($destaque=='0'){
             $tipo = 'important';
-            $nometipo = 'Não Destaque';
+            $nometipo = __('Não Destaque');
         }else{
             $tipo = 'success';
-            $nometipo = 'Destaque';
+            $nometipo = __('Destaque');
         }
         $html = '<span class="badge badge-'.$tipo.'">'.$nometipo.'</span>';
         if($link===true && \Framework\App\Registro::getInstacia()->_Acl->Get_Permissao_Url('Desenvolvimento/Senha/Destaque')!==false){

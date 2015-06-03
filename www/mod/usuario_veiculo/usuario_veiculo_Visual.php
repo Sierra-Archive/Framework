@@ -48,7 +48,7 @@ class usuario_veiculo_Visual extends \Framework\App\Visual
      */
     static function Marcas_ShowSelectAjax(&$array){
     	global $language;
-    	$html = '';
+    	$html = __('');
     	$html .= \Framework\Classes\Form::Select_Opcao_Stat('Selecione uma Marca',0,0);
     	if(!empty($array)){
     		reset($array);

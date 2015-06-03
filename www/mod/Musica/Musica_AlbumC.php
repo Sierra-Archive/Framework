@@ -26,7 +26,7 @@ class Musica_AlbumControle extends Musica_Controle
         $registro = \Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
         if($artista===false){
-            $titulo = 'Todos os Albuns';
+            $titulo = __('Todos os Albuns');
             $link   = 'Musica/Album/Albuns';
         }else{
             Musica_ArtistaControle::Endereco_Artista();
@@ -70,10 +70,10 @@ class Musica_AlbumControle extends Musica_Controle
             $status                                 = $valor->status;
             if($status!=1){
                 $status = 0;
-                $texto = 'Desativado';
+                $texto = __('Desativado');
             }else{
                 $status = 1;
-                $texto = 'Ativado';
+                $texto = __('Ativado');
             }
             $tabela['Funções'][$i]          = $Visual->Tema_Elementos_Btn('Visualizar' ,Array('Visualizar Musicas do Album'    ,'Musica/Musica/Musicas/'.$valor->artista.'/'.$valor->id.'/'    ,'')).
                                               '<span id="status'.$valor->id.'">'.$Visual->Tema_Elementos_Btn('Status'.$status     ,Array($texto        ,'Musica/Album/Status/'.$valor->id.'/'    ,'')).'</span>'.
@@ -118,7 +118,7 @@ class Musica_AlbumControle extends Musica_Controle
             $url_add = '/'.$artista;
             $add_url = 'Musica/Album/Albuns_Add/'.$artista;
         }else{
-            $titulo_add = 'Adicionar novo Album';
+            $titulo_add = __('Adicionar novo Album');
             $url_add = '/false';
             $add_url    = 'Musica/Album/Albuns_Add';
         }
@@ -141,7 +141,7 @@ class Musica_AlbumControle extends Musica_Controle
         if($artista!==false){
             $titulo = 'Listagem de Albuns: '.$artista_registro->nome;
         }else{
-            $titulo = 'Listagem de Albuns em Todos os Artistas';
+            $titulo = __('Listagem de Albuns em Todos os Artistas');
         }
         if($albuns!==false && !empty($albuns)){
             list($tabela,$i) = self::Albuns_Tabela($albuns,$artista);
@@ -165,9 +165,9 @@ class Musica_AlbumControle extends Musica_Controle
         }else{
             $titulo = $titulo.' ('.$i.')';
             if($artista!==false){
-                $erro = 'Nenhuma Album nesse Artista';
+                $erro = __('Nenhuma Album nesse Artista');
             }else{
-                $erro = 'Nenhuma Album nos Artistas';
+                $erro = __('Nenhuma Album nos Artistas');
             }         
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">'.$erro.'</font></b></center>');
         }
@@ -185,12 +185,12 @@ class Musica_AlbumControle extends Musica_Controle
         if($artista==='false') $artista = false;
         // Carrega Config
         $formid     = 'form_Sistema_Admin_Albuns';
-        $formbt     = 'Salvar';
+        $formbt     = __('Salvar');
         $campos     = Musica_Album_DAO::Get_Colunas();
         if($artista===false){
             $formlink   = 'Musica/Album/Albuns_Add2';
-            $titulo1    = 'Adicionar Album';
-            $titulo2    = 'Salvar Album';
+            $titulo1    = __('Adicionar Album');
+            $titulo2    = __('Salvar Album');
             self::Endereco_Album(true, false);
         }else{
             $artista = (int) $artista;
@@ -223,10 +223,10 @@ class Musica_AlbumControle extends Musica_Controle
      */
     public function Albuns_Add2($artista=false){
         if($artista==='false') $artista = false;
-        $titulo     = 'Album Adicionada com Sucesso';
+        $titulo     = __('Album Adicionada com Sucesso');
         $dao        = 'Musica_Album';
-        $sucesso1   = 'Inserção bem sucedida';
-        $sucesso2   = 'Album cadastrada com sucesso.';
+        $sucesso1   = __('Inserção bem sucedida');
+        $sucesso2   = __('Album cadastrada com sucesso.');
         if($artista===false){
             $funcao     = '$this->Albuns(0);';
             $alterar    = Array();
@@ -254,9 +254,9 @@ class Musica_AlbumControle extends Musica_Controle
         }
         // Carrega Config
         $titulo1    = 'Editar Album (#'.$id.')';
-        $titulo2    = 'Alteração de Album';
+        $titulo2    = __('Alteração de Album');
         $formid     = 'form_Sistema_AdminC_AlbumEdit';
-        $formbt     = 'Alterar Album';
+        $formbt     = __('Alterar Album');
         $campos = Musica_Album_DAO::Get_Colunas();
         if($artista!==false){
             $artista_registro = $this->_Modelo->db->Sql_Select('Musica_Album_Artista',Array('id'=>$artista),1);
@@ -289,14 +289,14 @@ class Musica_AlbumControle extends Musica_Controle
         if($artista!==false){
             $artista    = (int) $artista;
         }
-        $titulo     = 'Album Editada com Sucesso';
+        $titulo     = __('Album Editada com Sucesso');
         $dao        = Array('Musica_Album',$id);
         if($artista!==false){
             $funcao     = '$this->Albuns('.$artista.');';
         }else{
             $funcao     = '$this->Albuns();';
         }
-        $sucesso1   = 'Album Alterada com Sucesso.';
+        $sucesso1   = __('Album Alterada com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);   
@@ -366,9 +366,9 @@ class Musica_AlbumControle extends Musica_Controle
         $sucesso = $this->_Modelo->db->Sql_Update($resultado);
         if($sucesso){
             if($resultado->status==1){
-                $texto = 'Ativado';
+                $texto = __('Ativado');
             }else{
-                $texto = 'Desativado';
+                $texto = __('Desativado');
             }
             $conteudo = array(
                 'location' => '#status'.$resultado->id,

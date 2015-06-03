@@ -8,7 +8,7 @@ class Transporte_EstradaControle extends Transporte_Controle
     static function Endereco_Noticia($true=true){
         $registro = \Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
-        $titulo = 'Estradas';
+        $titulo = __('Estradas');
         $link = 'Transporte/Estrada/Estradas';
         if($true===true){
             $_Controle->Tema_Endereco($titulo,$link);
@@ -40,17 +40,17 @@ class Transporte_EstradaControle extends Transporte_Controle
             $tabela['Foto'][$i]         = '<img src="'.$valor->foto.'" style="max-width:100px;" />';
             $tabela['Estrada'][$i]       = $valor->nome;
             if($valor->status==1 || $valor->status=='1'){
-                $texto = 'Ativado';
+                $texto = __('Ativado');
                 $valor->status='1';
             }else{
-                $texto = 'Desativado';
+                $texto = __('Desativado');
                 $valor->status='0';
             }
             $tabela['Funções'][$i]      = '<span id="status'.$valor->id.'">'.$Visual->Tema_Elementos_Btn('Status'.$valor->status     ,Array($texto        ,'Transporte/Estrada/Status/'.$valor->id.'/'    ,''),$perm_status).'</span>';
             if($valor->destaque==1){
-                $texto = 'Em Destaque';
+                $texto = __('Em Destaque');
             }else{
-                $texto = 'Não está em destaque';
+                $texto = __('Não está em destaque');
             }
             $tabela['Funções'][$i]      .= '<span id="destaques'.$valor->id.'">'.$Visual->Tema_Elementos_Btn('Destaque'.$valor->destaque   ,Array($texto   ,'Transporte/Estrada/Destaques/'.$valor->id.'/'    ,''),$perm_destaques).'</span>';
             $tabela['Funções'][$i]      .= $Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Dica de Estrada'        ,'Transporte/Estrada/Estradas_Edit/'.$valor->id.'/'    ,''),$perm_editar).
@@ -104,9 +104,9 @@ class Transporte_EstradaControle extends Transporte_Controle
             unset($tabela);
         }else{
             if($export!==false){
-                $mensagem = 'Nenhuma Dica de Estrada Cadastrada para exportar';
+                $mensagem = __('Nenhuma Dica de Estrada Cadastrada para exportar');
             }else{
-                $mensagem = 'Nenhuma Dica de Estrada Cadastrada';
+                $mensagem = __('Nenhuma Dica de Estrada Cadastrada');
             }
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">'.$mensagem.'</font></b></center>');
         }
@@ -123,10 +123,10 @@ class Transporte_EstradaControle extends Transporte_Controle
     public function Estradas_Add(){
         self::Endereco_Noticia(true);
         // Carrega Config
-        $titulo1    = 'Adicionar Dica de Estrada';
-        $titulo2    = 'Salvar Dica de Estrada';
+        $titulo1    = __('Adicionar Dica de Estrada');
+        $titulo2    = __('Salvar Dica de Estrada');
         $formid     = 'formTransporte_Estrada_Noticia';
-        $formbt     = 'Salvar';
+        $formbt     = __('Salvar');
         $formlink   = 'Transporte/Estrada/Estradas_Add2/';
         $campos = Transporte_Estrada_DAO::Get_Colunas();
         \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos);
@@ -139,11 +139,11 @@ class Transporte_EstradaControle extends Transporte_Controle
      * @version 2.0
      */
     public function Estradas_Add2(){
-        $titulo     = 'Dica de Estrada Adicionada com Sucesso';
+        $titulo     = __('Dica de Estrada Adicionada com Sucesso');
         $dao        = 'Transporte_Estrada';
         $funcao     = '$this->Estradas();';
-        $sucesso1   = 'Inserção bem sucedida';
-        $sucesso2   = 'Dica de Estrada cadastrada com sucesso.';
+        $sucesso1   = __('Inserção bem sucedida');
+        $sucesso2   = __('Dica de Estrada cadastrada com sucesso.');
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
     }
@@ -157,9 +157,9 @@ class Transporte_EstradaControle extends Transporte_Controle
         self::Endereco_Noticia(true);
         // Carrega Config
         $titulo1    = 'Editar Dica de Estrada (#'.$id.')';
-        $titulo2    = 'Alteração de Dica de Estrada';
+        $titulo2    = __('Alteração de Dica de Estrada');
         $formid     = 'formTransporte_EstradaC_NoticiaEdit';
-        $formbt     = 'Alterar Dica de Estrada';
+        $formbt     = __('Alterar Dica de Estrada');
         $formlink   = 'Transporte/Estrada/Estradas_Edit2/'.$id;
         $editar     = Array('Transporte_Estrada',$id);
         $campos = Transporte_Estrada_DAO::Get_Colunas();
@@ -174,10 +174,10 @@ class Transporte_EstradaControle extends Transporte_Controle
      */
     public function Estradas_Edit2($id){
         $id = (int) $id;
-        $titulo     = 'Dica de Estrada Alterada com Sucesso';
+        $titulo     = __('Dica de Estrada Alterada com Sucesso');
         $dao        = Array('Transporte_Estrada',$id);
         $funcao     = '$this->Estradas();';
-        $sucesso1   = 'Dica de Estrada Alterada com Sucesso';
+        $sucesso1   = __('Dica de Estrada Alterada com Sucesso');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
@@ -233,9 +233,9 @@ class Transporte_EstradaControle extends Transporte_Controle
         $sucesso = $this->_Modelo->db->Sql_Update($resultado);
         if($sucesso){
             if($resultado->status==1){
-                $texto = 'Ativado';
+                $texto = __('Ativado');
             }else{
-                $texto = 'Desativado';
+                $texto = __('Desativado');
             }
             $conteudo = array(
                 'location' => '#status'.$resultado->id,
@@ -272,9 +272,9 @@ class Transporte_EstradaControle extends Transporte_Controle
         $sucesso = $this->_Modelo->db->Sql_Update($resultado);
         if($sucesso){
             if($resultado->destaque==1){
-                $texto = 'Em destaque';
+                $texto = __('Em destaque');
             }else{
-                $texto = 'Não está em destaque';
+                $texto = __('Não está em destaque');
             }
             $conteudo = array(
                 'location' => '#destaques'.$resultado->id,

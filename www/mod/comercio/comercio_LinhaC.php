@@ -38,7 +38,7 @@ class comercio_LinhaControle extends comercio_Controle
     static function Endereco_Linha($true=true){
         $registro = \Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
-        $titulo = 'Linhas';
+        $titulo = __('Linhas');
         $link = 'comercio/Linha/Linhas';
         if($true===true){
             $_Controle->Tema_Endereco($titulo,$link);
@@ -73,10 +73,10 @@ class comercio_LinhaControle extends comercio_Controle
     public function Linhas_Add(){
         self::Endereco_Linha(true);
         // Carrega Config
-        $titulo1    = 'Adicionar Linha';
-        $titulo2    = 'Salvar Linha';
+        $titulo1    = __('Adicionar Linha');
+        $titulo2    = __('Salvar Linha');
         $formid     = 'form_Sistema_Admin_Linhas';
-        $formbt     = 'Salvar';
+        $formbt     = __('Salvar');
         $formlink   = 'comercio/Linha/Linhas_Add2/';
         $campos = Comercio_Linha_DAO::Get_Colunas();
         \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos);
@@ -89,11 +89,11 @@ class comercio_LinhaControle extends comercio_Controle
      * @version 2.0
      */
     public function Linhas_Add2(){
-        $titulo     = 'Linha Adicionada com Sucesso';
+        $titulo     = __('Linha Adicionada com Sucesso');
         $dao        = 'Comercio_Linha';
         $funcao     = '$this->Linhas();';
-        $sucesso1   = 'Inserção bem sucedida';
-        $sucesso2   = 'Linha cadastrada com sucesso.';
+        $sucesso1   = __('Inserção bem sucedida');
+        $sucesso2   = __('Linha cadastrada com sucesso.');
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
     }
@@ -107,9 +107,9 @@ class comercio_LinhaControle extends comercio_Controle
         self::Endereco_Linha(true);
         // Carrega Config
         $titulo1    = 'Editar Linha (#'.$id.')';
-        $titulo2    = 'Alteração de Linha';
+        $titulo2    = __('Alteração de Linha');
         $formid     = 'form_Sistema_AdminC_LinhaEdit';
-        $formbt     = 'Alterar Linha';
+        $formbt     = __('Alterar Linha');
         $formlink   = 'comercio/Linha/Linhas_Edit2/'.$id;
         $editar     = Array('Comercio_Linha',$id);
         $campos = Comercio_Linha_DAO::Get_Colunas();
@@ -123,10 +123,10 @@ class comercio_LinhaControle extends comercio_Controle
      * @version 2.0
      */
     public function Linhas_Edit2($id){
-        $titulo     = 'Linha Editada com Sucesso';
+        $titulo     = __('Linha Editada com Sucesso');
         $dao        = Array('Comercio_Linha',$id);
         $funcao     = '$this->Linhas();';
-        $sucesso1   = 'Linha Alterada com Sucesso.';
+        $sucesso1   = __('Linha Alterada com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);      

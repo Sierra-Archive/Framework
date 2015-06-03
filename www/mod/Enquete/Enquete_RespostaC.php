@@ -152,10 +152,10 @@ class Enquete_RespostaControle extends Enquete_Controle
     public function Respostas_Add($enquete = false){
         self::Endereco_Resposta($enquete);
         // Carrega Config
-        $titulo1    = 'Adicionar Resposta';
-        $titulo2    = 'Salvar Resposta';
+        $titulo1    = __('Adicionar Resposta');
+        $titulo2    = __('Salvar Resposta');
         $formid     = 'form_Sistema_Admin_Respostas';
-        $formbt     = 'Salvar';
+        $formbt     = __('Salvar');
         $campos     = Enquete_Resposta_DAO::Get_Colunas();
         if($enquete===false){
             $formlink   = 'Enquete/Resposta/Respostas_Add2';
@@ -174,10 +174,10 @@ class Enquete_RespostaControle extends Enquete_Controle
      * @version 2.0
      */
     public function Respostas_Add2($enquete=false){
-        $titulo     = 'Resposta Adicionada com Sucesso';
+        $titulo     = __('Resposta Adicionada com Sucesso');
         $dao        = 'Enquete_Resposta';
-        $sucesso1   = 'Inserção bem sucedida';
-        $sucesso2   = 'Resposta cadastrada com sucesso.';
+        $sucesso1   = __('Inserção bem sucedida');
+        $sucesso2   = __('Resposta cadastrada com sucesso.');
         if($enquete===false){
             $funcao     = '$this->Respostas(0);';
             $alterar    = Array();
@@ -206,9 +206,9 @@ class Enquete_RespostaControle extends Enquete_Controle
         $enquete    = (int) $enquete;
         // Carrega Config
         $titulo1    = 'Editar Resposta (#'.$id.')';
-        $titulo2    = 'Alteração de Resposta';
+        $titulo2    = __('Alteração de Resposta');
         $formid     = 'form_Sistema_AdminC_RespostaEdit';
-        $formbt     = 'Alterar Resposta';
+        $formbt     = __('Alterar Resposta');
         $formlink   = 'Enquete/Resposta/Respostas_Edit2/'.$enquete.'/'.$id;
         $editar     = Array('Enquete_Resposta',$id);
         $campos = Enquete_Resposta_DAO::Get_Colunas();
@@ -231,10 +231,10 @@ class Enquete_RespostaControle extends Enquete_Controle
         }
         $id         = (int) $id;
         $enquete    = (int) $enquete;
-        $titulo     = 'Resposta Editada com Sucesso';
+        $titulo     = __('Resposta Editada com Sucesso');
         $dao        = Array('Enquete_Resposta',$id);
         $funcao     = '$this->Respostas('.$enquete.');';
-        $sucesso1   = 'Resposta Alterada com Sucesso.';
+        $sucesso1   = __('Resposta Alterada com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);   

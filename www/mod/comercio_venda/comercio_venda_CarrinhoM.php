@@ -32,7 +32,7 @@ class comercio_venda_CarrinhoModelo extends comercio_vendaModelo
             return Array('Caixa Não existente','Não existe');
         }
         if($retirada->cliente2=='' || $retirada->cliente2==NULL){
-            $cliente = 'Não Cadastrado';
+            $cliente = __('Não Cadastrado');
         }else{
             $cliente = $retirada->cliente2;
         }

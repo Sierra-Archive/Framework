@@ -38,7 +38,7 @@ class comercio_MarcaControle extends comercio_Controle
     static function Endereco_Marca($true=true){
         $registro = \Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
-        $titulo = 'Marcas';
+        $titulo = __('Marcas');
         $link = 'comercio/Marca/Marcas';
         if($true===true){
             $_Controle->Tema_Endereco($titulo,$link);
@@ -72,10 +72,10 @@ class comercio_MarcaControle extends comercio_Controle
     public function Marcas_Add(){
         self::Endereco_Marca(true);
         // Carrega Config
-        $titulo1    = 'Adicionar Marca';
-        $titulo2    = 'Salvar Marca';
+        $titulo1    = __('Adicionar Marca');
+        $titulo2    = __('Salvar Marca');
         $formid     = 'form_Sistema_Admin_Marcas';
-        $formbt     = 'Salvar';
+        $formbt     = __('Salvar');
         $formlink   = 'comercio/Marca/Marcas_Add2/';
         $campos = Comercio_Marca_DAO::Get_Colunas();
         \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos);
@@ -88,11 +88,11 @@ class comercio_MarcaControle extends comercio_Controle
      * @version 2.0
      */
     public function Marcas_Add2(){
-        $titulo     = 'Marca Adicionada com Sucesso';
+        $titulo     = __('Marca Adicionada com Sucesso');
         $dao        = 'Comercio_Marca';
         $funcao     = '$this->Marcas();';
-        $sucesso1   = 'Inserção bem sucedida';
-        $sucesso2   = 'Marca cadastrada com sucesso.';
+        $sucesso1   = __('Inserção bem sucedida');
+        $sucesso2   = __('Marca cadastrada com sucesso.');
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
     }
@@ -106,9 +106,9 @@ class comercio_MarcaControle extends comercio_Controle
         self::Endereco_Marca(true);
         // Carrega Config
         $titulo1    = 'Editar Marca (#'.$id.')';
-        $titulo2    = 'Alteração de Marca';
+        $titulo2    = __('Alteração de Marca');
         $formid     = 'form_Sistema_AdminC_MarcaEdit';
-        $formbt     = 'Alterar Marca';
+        $formbt     = __('Alterar Marca');
         $formlink   = 'comercio/Marca/Marcas_Edit2/'.$id;
         $editar     = Array('Comercio_Marca',$id);
         $campos = Comercio_Marca_DAO::Get_Colunas();
@@ -122,10 +122,10 @@ class comercio_MarcaControle extends comercio_Controle
      * @version 2.0
      */
     public function Marcas_Edit2($id){
-        $titulo     = 'Marca Editada com Sucesso';
+        $titulo     = __('Marca Editada com Sucesso');
         $dao        = Array('Comercio_Marca',$id);
         $funcao     = '$this->Marcas();';
-        $sucesso1   = 'Marca Alterada com Sucesso.';
+        $sucesso1   = __('Marca Alterada com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);      

@@ -124,10 +124,10 @@ class Enquete_EnqueteControle extends Enquete_Controle
     public function Enquetes_Add(){
         self::Endereco_Enquete();
         // Carrega Config
-        $titulo1    = 'Adicionar Enquete';
-        $titulo2    = 'Salvar Enquete';
+        $titulo1    = __('Adicionar Enquete');
+        $titulo2    = __('Salvar Enquete');
         $formid     = 'form_Sistema_Admin_Enquetes';
-        $formbt     = 'Salvar';
+        $formbt     = __('Salvar');
         $formlink   = 'Enquete/Enquete/Enquetes_Add2/';
         $campos = Enquete_DAO::Get_Colunas();
         \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos);
@@ -139,11 +139,11 @@ class Enquete_EnqueteControle extends Enquete_Controle
      * @version 2.0
      */
     public function Enquetes_Add2(){
-        $titulo     = 'Enquete Adicionada com Sucesso';
+        $titulo     = __('Enquete Adicionada com Sucesso');
         $dao        = 'Enquete';
         $funcao     = '$this->Enquetes();';
-        $sucesso1   = 'Inserção bem sucedida';
-        $sucesso2   = 'Enquete cadastrada com sucesso.';
+        $sucesso1   = __('Inserção bem sucedida');
+        $sucesso2   = __('Enquete cadastrada com sucesso.');
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
     }
@@ -157,9 +157,9 @@ class Enquete_EnqueteControle extends Enquete_Controle
         self::Endereco_Enquete();
         // Carrega Config
         $titulo1    = 'Editar Enquete (#'.$id.')';
-        $titulo2    = 'Alteração de Enquete';
+        $titulo2    = __('Alteração de Enquete');
         $formid     = 'form_Sistema_AdminC_EnqueteEdit';
-        $formbt     = 'Alterar Enquete';
+        $formbt     = __('Alterar Enquete');
         $formlink   = 'Enquete/Enquete/Enquetes_Edit2/'.$id;
         $editar     = Array('Enquete',$id);
         $campos = Enquete_DAO::Get_Colunas();
@@ -173,10 +173,10 @@ class Enquete_EnqueteControle extends Enquete_Controle
      * @version 2.0
      */
     public function Enquetes_Edit2($id){
-        $titulo     = 'Enquete Editada com Sucesso';
+        $titulo     = __('Enquete Editada com Sucesso');
         $dao        = Array('Enquete',$id);
         $funcao     = '$this->Enquetes();';
-        $sucesso1   = 'Enquete Alterada com Sucesso.';
+        $sucesso1   = __('Enquete Alterada com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);   

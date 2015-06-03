@@ -123,10 +123,10 @@ class usuario_TelefoneControle extends usuario_Controle
     public function Telefones_Add(){
         self:;Endereco_Telefone();
         // Carrega Config
-        $titulo1    = 'Adicionar Telefone';
-        $titulo2    = 'Salvar Telefone';
+        $titulo1    = __('Adicionar Telefone');
+        $titulo2    = __('Salvar Telefone');
         $formid     = 'form_Sistema_Telefone_Telefones';
-        $formbt     = 'Salvar';
+        $formbt     = __('Salvar');
         $formlink   = 'usuario/Telefone/Telefones_Add2/';
         $campos = Usuario_Telefone_DAO::Get_Colunas();
         \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos);
@@ -139,11 +139,11 @@ class usuario_TelefoneControle extends usuario_Controle
      * @version 2.0
      */
     public function Telefones_Add2(){
-        $titulo     = 'Telefone adicionada com Sucesso';
+        $titulo     = __('Telefone adicionada com Sucesso');
         $dao        = 'Usuario_Telefone';
         $funcao     = '$this->Telefone();';
-        $sucesso1   = 'Inserção bem sucedida';
-        $sucesso2   = 'Telefone cadastrado com sucesso.';
+        $sucesso1   = __('Inserção bem sucedida');
+        $sucesso2   = __('Telefone cadastrado com sucesso.');
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
     }
@@ -157,9 +157,9 @@ class usuario_TelefoneControle extends usuario_Controle
         self:;Endereco_Telefone();
         // Carrega Config
         $titulo1    = 'Editar Telefone (#'.$id.')';
-        $titulo2    = 'Alteração de Telefone';
+        $titulo2    = __('Alteração de Telefone');
         $formid     = 'form_Sistema_TelefoneC_TelefoneEdit';
-        $formbt     = 'Alterar Telefone';
+        $formbt     = __('Alterar Telefone');
         $formlink   = 'usuario/Telefone/Telefones_Edit2/'.$id;
         $editar     = Array('Usuario_Telefone',$id);
         $campos = Usuario_Telefone_DAO::Get_Colunas();
@@ -173,10 +173,10 @@ class usuario_TelefoneControle extends usuario_Controle
      * @version 2.0
      */
     public function Telefones_Edit2($id){
-        $titulo     = 'Telefone editada com Sucesso';
+        $titulo     = __('Telefone editada com Sucesso');
         $dao        = Array('Usuario_Telefone',$id);
         $funcao     = '$this->Telefone();';
-        $sucesso1   = 'Telefone Alterado com Sucesso.';
+        $sucesso1   = __('Telefone Alterado com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);   

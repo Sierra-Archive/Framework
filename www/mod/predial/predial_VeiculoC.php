@@ -22,7 +22,7 @@ class predial_VeiculoControle extends predial_Controle
     static function Endereco_Veiculo($true=true){
         $registro = \Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
-        $titulo = 'Veiculos';
+        $titulo = __('Veiculos');
         $link = 'predial/Veiculo/Veiculos';
         if($true===true){
             $_Controle->Tema_Endereco($titulo,$link);
@@ -94,10 +94,10 @@ class predial_VeiculoControle extends predial_Controle
     public function Veiculos_Add(){
         self::Endereco_Veiculo();
         // Carrega Config
-        $titulo1    = 'Adicionar Veiculo';
-        $titulo2    = 'Salvar Veiculo';
+        $titulo1    = __('Adicionar Veiculo');
+        $titulo2    = __('Salvar Veiculo');
         $formid     = 'form_Sistema_Admin_Veiculos';
-        $formbt     = 'Salvar';
+        $formbt     = __('Salvar');
         $formlink   = 'predial/Veiculo/Veiculos_Add2/';
         $campos = Predial_Bloco_Apart_Veiculo_DAO::Get_Colunas();
         \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos);
@@ -110,11 +110,11 @@ class predial_VeiculoControle extends predial_Controle
      * @version 2.0
      */
     public function Veiculos_Add2(){
-        $titulo     = 'Veiculo Adicionado com Sucesso';
+        $titulo     = __('Veiculo Adicionado com Sucesso');
         $dao        = 'Predial_Bloco_Apart_Veiculo';
         $funcao     = '$this->Veiculos();';
-        $sucesso1   = 'Inserção bem sucedida';
-        $sucesso2   = 'Veiculo cadastrado com sucesso.';
+        $sucesso1   = __('Inserção bem sucedida');
+        $sucesso2   = __('Veiculo cadastrado com sucesso.');
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
     }
@@ -128,9 +128,9 @@ class predial_VeiculoControle extends predial_Controle
         self::Endereco_Veiculo();
         // Carrega Config
         $titulo1    = 'Editar Veiculo (#'.$id.')';
-        $titulo2    = 'Alteração de Veiculo';
+        $titulo2    = __('Alteração de Veiculo');
         $formid     = 'form_Sistema_AdminC_VeiculoEdit';
-        $formbt     = 'Alterar Veiculo';
+        $formbt     = __('Alterar Veiculo');
         $formlink   = 'predial/Veiculo/Veiculos_Edit2/'.$id;
         $editar     = Array('Predial_Bloco_Apart_Veiculo',$id);
         $campos = Predial_Bloco_Apart_Veiculo_DAO::Get_Colunas();
@@ -144,10 +144,10 @@ class predial_VeiculoControle extends predial_Controle
      * @version 2.0
      */
     public function Veiculos_Edit2($id){
-        $titulo     = 'Veiculo Editado com Sucesso';
+        $titulo     = __('Veiculo Editado com Sucesso');
         $dao        = Array('Predial_Bloco_Apart_Veiculo',$id);
         $funcao     = '$this->Veiculos();';
-        $sucesso1   = 'Veiculo Alterado com Sucesso.';
+        $sucesso1   = __('Veiculo Alterado com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);   

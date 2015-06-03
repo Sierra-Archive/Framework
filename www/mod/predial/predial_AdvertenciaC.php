@@ -25,7 +25,7 @@ class predial_AdvertenciaControle extends predial_Controle
     static function Endereco_Advertencia($true=true){
         $registro = \Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
-        $titulo = 'Advertencias';
+        $titulo = __('Advertencias');
         $link = 'predial/Advertencia/Advertencias';
         if($true===true){
             $_Controle->Tema_Endereco($titulo,$link);
@@ -98,10 +98,10 @@ class predial_AdvertenciaControle extends predial_Controle
     public function Advertencias_Add(){
         self::Endereco_Advertencia(false);
         // Carrega Config
-        $titulo1    = 'Adicionar Advertência';
-        $titulo2    = 'Salvar Advertência';
+        $titulo1    = __('Adicionar Advertência');
+        $titulo2    = __('Salvar Advertência');
         $formid     = 'form_Sistema_Admin_Advertencias';
-        $formbt     = 'Salvar';
+        $formbt     = __('Salvar');
         $formlink   = 'predial/Advertencia/Advertencias_Add2/';
         $campos = Predial_Bloco_Apart_Advertencia_DAO::Get_Colunas();
         \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos);
@@ -114,11 +114,11 @@ class predial_AdvertenciaControle extends predial_Controle
      * @version 2.0
      */
     public function Advertencias_Add2(){
-        $titulo     = 'Advertência Adicionada com Sucesso';
+        $titulo     = __('Advertência Adicionada com Sucesso');
         $dao        = 'Predial_Bloco_Apart_Advertencia';
         $funcao     = '$this->Main();';
-        $sucesso1   = 'Inserção bem sucedida';
-        $sucesso2   = 'Advertência cadastrada com sucesso.';
+        $sucesso1   = __('Inserção bem sucedida');
+        $sucesso2   = __('Advertência cadastrada com sucesso.');
         $alterar    = Array();
         $sucesso = $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
         if($sucesso===true){
@@ -144,7 +144,7 @@ class predial_AdvertenciaControle extends predial_Controle
                 );
                 if($usuario!==false){
                     $nome = $usuario->nome;
-                    $enviar = '';
+                    $enviar = __('');
                     if($usuario->email!='' && \Framework\App\Sistema_Funcoes::Control_Layoult_Valida_Email($usuario->email)){
                         $enviar .= '->setTo(\''.$usuario->email.'\', \''.$nome.'\')';
                     }
@@ -202,9 +202,9 @@ class predial_AdvertenciaControle extends predial_Controle
         self::Endereco_Advertencia(false);
         // Carrega Config
         $titulo1    = 'Editar Advertência (#'.$id.')';
-        $titulo2    = 'Alteração de Advertência';
+        $titulo2    = __('Alteração de Advertência');
         $formid     = 'form_Sistema_AdminC_AdvertenciaEdit';
-        $formbt     = 'Alterar Advertência';
+        $formbt     = __('Alterar Advertência');
         $formlink   = 'predial/Advertencia/Advertencias_Edit2/'.$id;
         $editar     = Array('Predial_Bloco_Apart_Advertencia',$id);
         $campos = Predial_Bloco_Apart_Advertencia_DAO::Get_Colunas();
@@ -218,10 +218,10 @@ class predial_AdvertenciaControle extends predial_Controle
      * @version 2.0
      */
     public function Advertencias_Edit2($id){
-        $titulo     = 'Advertência Editada com Sucesso';
+        $titulo     = __('Advertência Editada com Sucesso');
         $dao        = Array('Predial_Bloco_Apart_Advertencia',$id);
         $funcao     = '$this->Main();';
-        $sucesso1   = 'Advertência Alterada com Sucesso.';
+        $sucesso1   = __('Advertência Alterada com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);   

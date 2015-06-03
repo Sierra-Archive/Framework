@@ -39,7 +39,7 @@ class usuario_rede_Controle extends \Framework\App\Controle
         $Visual->Bloco_Menor_CriaConteudo(20);
         
         // Cria Grafico De Primarios SEcundarios terciarios
-        $graficos[0]['titulo'] = 'Medidor de amigos';
+        $graficos[0]['titulo'] = __('Medidor de amigos');
         $graficos[0]['alt'] = 400;
         $graficos[0]['larg'] = 500;
         $graficos[0]['headers'] = array('Nome','Valor');
@@ -48,7 +48,7 @@ class usuario_rede_Controle extends \Framework\App\Controle
         $graficos[0]['itens'][] = array('Terciarios',$valores['terciario']);
         
         // Cria Grafico niveis
-        $graficos[1]['titulo'] = 'Medidor de planos';
+        $graficos[1]['titulo'] = __('Medidor de planos');
         $graficos[1]['alt'] = 400;
         $graficos[1]['larg'] = 400;
         $graficos[1]['headers'] = array('Nome','Valor');

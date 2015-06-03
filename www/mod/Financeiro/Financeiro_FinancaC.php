@@ -85,10 +85,10 @@ class Financeiro_FinancaControle extends Financeiro_Controle
     public function Financas_Add(){
         self::Endereco_Financa();
         // Carrega Config
-        $titulo1    = 'Adicionar Finança';
-        $titulo2    = 'Salvar Finança';
+        $titulo1    = __('Adicionar Finança');
+        $titulo2    = __('Salvar Finança');
         $formid     = 'form_Financeiro_Financas';
-        $formbt     = 'Salvar';
+        $formbt     = __('Salvar');
         $formlink   = 'Financeiro/Financa/Financas_Add2/';
         $campos = Financeiro_Financa_DAO::Get_Colunas();
         \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos);
@@ -101,16 +101,16 @@ class Financeiro_FinancaControle extends Financeiro_Controle
      * @version 2.0
      */
     public function Financas_Add2(){
-        $titulo     = 'Finança Adicionada com Sucesso';
+        $titulo     = __('Finança Adicionada com Sucesso');
         $dao        = 'Financeiro_Financa';
         $funcao     = '$this->Main();';
-        $sucesso1   = 'Inserção bem sucedida';
-        $sucesso2   = 'Finança cadastrada com sucesso.';
+        $sucesso1   = __('Inserção bem sucedida');
+        $sucesso2   = __('Finança cadastrada com sucesso.');
         $alterar    = Array();
         $sucesso = $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
         // Cadastra no Financeiro
         if($sucesso){
-            $motivo = 'Financeiro_Financa';
+            $motivo = __('Financeiro_Financa');
             $identificador  = $this->_Modelo->db->Sql_Select('Financeiro_Financa', Array(),1,'id DESC');
             $parcela_data   = $identificador->data;
             $parcela_valor = $identificador->valor;
@@ -138,9 +138,9 @@ class Financeiro_FinancaControle extends Financeiro_Controle
         self::Endereco_Financa();
         // Carrega Config
         $titulo1    = 'Editar Finança (#'.$id.')';
-        $titulo2    = 'Alteração de Finança';
+        $titulo2    = __('Alteração de Finança');
         $formid     = 'form_Sistema_FinancaC_FinancaEdit';
-        $formbt     = 'Alterar Finança';
+        $formbt     = __('Alterar Finança');
         $formlink   = 'Financeiro/Financa/Financas_Edit2/'.$id;
         $editar     = Array('Financeiro_Financa',$id);
         $campos = Financeiro_Financa_DAO::Get_Colunas();
@@ -154,10 +154,10 @@ class Financeiro_FinancaControle extends Financeiro_Controle
      * @version 2.0
      */
     public function Financas_Edit2($id){
-        $titulo     = 'Finança Editada com Sucesso';
+        $titulo     = __('Finança Editada com Sucesso');
         $dao        = Array('Financeiro_Financa',$id);
         $funcao     = '$this->Main();';
-        $sucesso1   = 'Finança Alterada com Sucesso.';
+        $sucesso1   = __('Finança Alterada com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);   

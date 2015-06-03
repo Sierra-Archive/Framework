@@ -67,12 +67,12 @@ class comercio_servicos_ServicoControle extends comercio_servicos_Controle
             $tabela_colunas[] = 'Tipo d'.$titulo_com_sexo;
         }
         if(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_servicos_nome')){
-            $tabela_colunas[] = 'Nome';
+            $tabela_colunas[] = __('Nome');
         }
         
-        $tabela_colunas[] = 'Descriçao';
-        $tabela_colunas[] = 'Preço';
-        $tabela_colunas[] = 'Funções';
+        $tabela_colunas[] = __('Descriçao');
+        $tabela_colunas[] = __('Preço');
+        $tabela_colunas[] = __('Funções');
 
         $this->_Visual->Show_Tabela_DataTable_Massiva($tabela_colunas,'comercio_servicos/Servico/Servico');
         $titulo = 'Listagem de '.$titulo;
@@ -95,7 +95,7 @@ class comercio_servicos_ServicoControle extends comercio_servicos_Controle
         $titulo1    = 'Adicionar '.$titulo2;
         $titulo2    = 'Salvar '.$titulo2;
         $formid     = 'form_Sistema_Servico_Servicos';
-        $formbt     = 'Salvar';
+        $formbt     = __('Salvar');
         $formlink   = 'comercio_servicos/Servico/Servicos_Add2/';
         $campos = Comercio_Servicos_Servico_DAO::Get_Colunas();
         self::Campos_Deletar($campos);
@@ -109,11 +109,11 @@ class comercio_servicos_ServicoControle extends comercio_servicos_Controle
      * @version 2.0
      */
     public function Servicos_Add2(){
-        $titulo     = 'Adicionado com Sucesso';
+        $titulo     = __('Adicionado com Sucesso');
         $dao        = 'Comercio_Servicos_Servico';
         $funcao     = '$this->Servico();';
-        $sucesso1   = 'Inserção bem sucedida';
-        $sucesso2   = 'Cadastrado com sucesso.';
+        $sucesso1   = __('Inserção bem sucedida');
+        $sucesso2   = __('Cadastrado com sucesso.');
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
     }
@@ -147,10 +147,10 @@ class comercio_servicos_ServicoControle extends comercio_servicos_Controle
      * @version 2.0
      */
     public function Servicos_Edit2($id){
-        $titulo     = 'Editado com Sucesso';
+        $titulo     = __('Editado com Sucesso');
         $dao        = Array('Comercio_Servicos_Servico',$id);
         $funcao     = '$this->Servico();';
-        $sucesso1   = 'Alterado com Sucesso.';
+        $sucesso1   = __('Alterado com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);   

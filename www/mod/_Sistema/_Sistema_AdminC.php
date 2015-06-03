@@ -106,9 +106,9 @@ class _Sistema_AdminControle extends _Sistema_Controle
                 $tabela['Img'][$i]          = $valor->img;
                 $tabela['Icone'][$i]        = $valor->icon;
                 if($valor->status==1){
-                    $texto = 'Desativado';
+                    $texto = __('Desativado');
                 }else{
-                    $texto = 'Ativado';
+                    $texto = __('Ativado');
                 }
                 $tabela['Status'][$i]        = '<span id="status'.$valor->id.'">'.$this->_Visual->Tema_Elementos_Btn('Status'.$valor->status     ,Array($texto        ,'_Sistema/Admin/Menu_Status/'.$valor->id.'/'    ,''),$perm_status).'</span>';
             
@@ -134,9 +134,9 @@ class _Sistema_AdminControle extends _Sistema_Controle
             unset($tabela);
         }else{
             if($export!==false){
-                $mensagem = 'Nenhum Menu Cadastrado para exportar';
+                $mensagem = __('Nenhum Menu Cadastrado para exportar');
             }else{
-                $mensagem = 'Nenhum Menu Cadastrado';
+                $mensagem = __('Nenhum Menu Cadastrado');
             }          
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">'.$mensagem.'</font></b></center>');
         }
@@ -167,9 +167,9 @@ class _Sistema_AdminControle extends _Sistema_Controle
         $sucesso = $this->_Modelo->db->Sql_Update($resultado);
         if($sucesso){
             if($resultado->status==1 || $resultado->status=='1'){
-                $texto = 'Ativado';
+                $texto = __('Ativado');
             }else{
-                $texto = 'Desativado';
+                $texto = __('Desativado');
             }
             $conteudo = array(
                 'location' => '#status'.$resultado->id,
@@ -198,10 +198,10 @@ class _Sistema_AdminControle extends _Sistema_Controle
     public function Menus_Add(){
         $this->Endereco_Admin_Menu();
         // Carrega Config
-        $titulo1    = 'Adicionar Menu';
-        $titulo2    = 'Salvar Menu';
+        $titulo1    = __('Adicionar Menu');
+        $titulo2    = __('Salvar Menu');
         $formid     = 'form_Sistema_Admin_Menu';
-        $formbt     = 'Salvar';
+        $formbt     = __('Salvar');
         $formlink   = '_Sistema/Admin/Menus_Add2/';
         $campos = Sistema_Menu_DAO::Get_Colunas();
         \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos);
@@ -214,11 +214,11 @@ class _Sistema_AdminControle extends _Sistema_Controle
      * @version 2.0
      */
     public function Menus_Add2(){
-        $titulo     = 'Menu Adicionado com Sucesso';
+        $titulo     = __('Menu Adicionado com Sucesso');
         $dao        = 'Sistema_Menu';
         $funcao     = '$this->Menus();';
-        $sucesso1   = 'Inserção bem sucedida';
-        $sucesso2   = 'Menu cadastrado com sucesso.';
+        $sucesso1   = __('Inserção bem sucedida');
+        $sucesso2   = __('Menu cadastrado com sucesso.');
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
     }
@@ -232,9 +232,9 @@ class _Sistema_AdminControle extends _Sistema_Controle
         $this->Endereco_Admin_Menu();
         // Carrega Config
         $titulo1    = 'Editar Menu (#'.$id.')';
-        $titulo2    = 'Alteração de Menu';
+        $titulo2    = __('Alteração de Menu');
         $formid     = 'form_Sistema_AdminC_MenuEdit';
-        $formbt     = 'Alterar Menu';
+        $formbt     = __('Alterar Menu');
         $formlink   = '_Sistema/Admin/Menus_Edit2/'.$id;
         $editar     = Array('Sistema_Menu',$id);
         $campos = Sistema_Menu_DAO::Get_Colunas();
@@ -249,10 +249,10 @@ class _Sistema_AdminControle extends _Sistema_Controle
      */
     public function Menus_Edit2($id){
         $id = (int) $id;
-        $titulo     = 'Menu Alterado com Sucesso';
+        $titulo     = __('Menu Alterado com Sucesso');
         $dao        = Array('Sistema_Menu',$id);
         $funcao     = '$this->Menus();';
-        $sucesso1   = 'Menu Alterado com Sucesso';
+        $sucesso1   = __('Menu Alterado com Sucesso');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
@@ -348,9 +348,9 @@ class _Sistema_AdminControle extends _Sistema_Controle
             unset($tabela);
         }else{
             if($export!==false){
-                $mensagem = 'Nenhuma Permissão Cadastrada para exportar';
+                $mensagem = __('Nenhuma Permissão Cadastrada para exportar');
             }else{
-                $mensagem = 'Nenhuma Permissão Cadastrada';
+                $mensagem = __('Nenhuma Permissão Cadastrada');
             }   
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">'.$mensagem.'</font></b></center>');
         }
@@ -373,10 +373,10 @@ class _Sistema_AdminControle extends _Sistema_Controle
     public function Permissoes_Add(){
         $this->Endereco_Admin_Permissao();
         // Carrega Config
-        $titulo1    = 'Adicionar Permissão';
-        $titulo2    = 'Salvar Permissão';
+        $titulo1    = __('Adicionar Permissão');
+        $titulo2    = __('Salvar Permissão');
         $formid     = 'form_Sistema_Admin_Permissao';
-        $formbt     = 'Salvar';
+        $formbt     = __('Salvar');
         $formlink   = '_Sistema/Admin/Permissoes_Add2/';
         $campos = Sistema_Permissao_DAO::Get_Colunas();
         \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos);
@@ -389,11 +389,11 @@ class _Sistema_AdminControle extends _Sistema_Controle
      * @version 2.0
      */
     public function Permissoes_Add2(){
-        $titulo     = 'Permissão Adicionada com Sucesso';
+        $titulo     = __('Permissão Adicionada com Sucesso');
         $dao        = 'Sistema_Permissao';
         $funcao     = '$this->Permissoes();';
-        $sucesso1   = 'Inserção bem sucedida';
-        $sucesso2   = 'Permissão cadastrada com sucesso.';
+        $sucesso1   = __('Inserção bem sucedida');
+        $sucesso2   = __('Permissão cadastrada com sucesso.');
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
     }
@@ -408,9 +408,9 @@ class _Sistema_AdminControle extends _Sistema_Controle
         $this->Endereco_Admin_Permissao();
         // Carrega Config
         $titulo1    = 'Editar Permissao (#'.$id.')';
-        $titulo2    = 'Alteração de Permissao';
+        $titulo2    = __('Alteração de Permissao');
         $formid     = 'form_Sistema_AdminC_PermissaoEdit';
-        $formbt     = 'Alterar Permissao';
+        $formbt     = __('Alterar Permissao');
         $formlink   = '_Sistema/Admin/Permissoes_Edit2/'.$id;
         $editar     = Array('Sistema_Permissao',$id);
         $campos = Sistema_Permissao_DAO::Get_Colunas();
@@ -425,10 +425,10 @@ class _Sistema_AdminControle extends _Sistema_Controle
      */
     public function Permissoes_Edit2($id){
         $id         = \anti_injection($id);
-        $titulo     = 'Permissão Alterada com Sucesso';
+        $titulo     = __('Permissão Alterada com Sucesso');
         $dao        = Array('Sistema_Permissao',$id);
         $funcao     = '$this->Permissoes();';
-        $sucesso1   = 'Permissão Alterada com Sucesso';
+        $sucesso1   = __('Permissão Alterada com Sucesso');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
@@ -556,10 +556,10 @@ class _Sistema_AdminControle extends _Sistema_Controle
         $this->Endereco_Admin_Grupo();
         if($grupocat===false) $grupocat = 'false';
         // Carrega Config
-        $titulo1    = 'Adicionar Grupo';
-        $titulo2    = 'Salvar Grupo';
+        $titulo1    = __('Adicionar Grupo');
+        $titulo2    = __('Salvar Grupo');
         $formid     = 'form_Sistema_Admin_Grupos';
-        $formbt     = 'Salvar';
+        $formbt     = __('Salvar');
         $formlink   = '_Sistema/Admin/Grupos_Add2/'.$grupocat;
         $campos = Sistema_Grupo_DAO::Get_Colunas();
         self::DAO_Campos_Retira($campos, 'valor_mensalidade');
@@ -576,11 +576,11 @@ class _Sistema_AdminControle extends _Sistema_Controle
      */
     public function Grupos_Add2($grupocat = false){
         if($grupocat==='false') $grupocat = false;
-        $titulo     = 'Grupo Adicionado com Sucesso';
+        $titulo     = __('Grupo Adicionado com Sucesso');
         $dao        = 'Sistema_Grupo';
         $funcao     = '$this->Grupos();';
-        $sucesso1   = 'Inserção bem sucedida';
-        $sucesso2   = 'Grupo cadastrado com sucesso.';
+        $sucesso1   = __('Inserção bem sucedida');
+        $sucesso2   = __('Grupo cadastrado com sucesso.');
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
     }
@@ -595,9 +595,9 @@ class _Sistema_AdminControle extends _Sistema_Controle
         if($grupocat===false) $grupocat = 'false';
         // Carrega Config
         $titulo1    = 'Editar Grupo (#'.$id.')';
-        $titulo2    = 'Alteração de Grupo';
+        $titulo2    = __('Alteração de Grupo');
         $formid     = 'form_Sistema_AdminC_GrupoEdit';
-        $formbt     = 'Alterar Grupo';
+        $formbt     = __('Alterar Grupo');
         $formlink   = '_Sistema/Admin/Grupos_Edit2/'.$id.'/'.$grupocat;
         $editar     = Array('Sistema_Grupo',$id);
         $campos = Sistema_Grupo_DAO::Get_Colunas();
@@ -614,10 +614,10 @@ class _Sistema_AdminControle extends _Sistema_Controle
      */
     public function Grupos_Edit2($id,$grupocat = false){
         if($grupocat===false) $grupocat = 'false';
-        $titulo     = 'Grupo Editado com Sucesso';
+        $titulo     = __('Grupo Editado com Sucesso');
         $dao        = Array('Sistema_Grupo',$id);
         $funcao     = '$this->Grupos('.$grupocat.');';
-        $sucesso1   = 'Grupo Alterado com Sucesso.';
+        $sucesso1   = __('Grupo Alterado com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);   
@@ -666,13 +666,13 @@ class _Sistema_AdminControle extends _Sistema_Controle
     public function Grupo_Permissao($grupo=false){
         $i = 0;
         if($grupo===false){
-            $botao_titulo  = 'Adicionar Permissão de Grupo';
-            $aviso_nenhuma = 'Nenhuma permissão de Nenhum Grupo';
+            $botao_titulo  = __('Adicionar Permissão de Grupo');
+            $aviso_nenhuma = __('Nenhuma permissão de Nenhum Grupo');
             $botao_extra   = '';
             $where = Array();
         }else{
-            $botao_titulo  = 'Adicionar Permissão ao Grupo';
-            $aviso_nenhuma = 'Nenhuma permissão do Grupo';
+            $botao_titulo  = __('Adicionar Permissão ao Grupo');
+            $aviso_nenhuma = __('Nenhuma permissão do Grupo');
             $botao_extra   = '/'.$grupo;
             $where = Array('grupo'=>$grupo);
         }
@@ -915,11 +915,11 @@ class _Sistema_AdminControle extends _Sistema_Controle
                 $tabela['Nome'][$i]         = $valor->nome;
                 $tabela['Email'][$i]        = $valor->email;
                 if($valor->tipo==1){
-                    $tabela['Tipo'][$i]     = 'Newsletter';
+                    $tabela['Tipo'][$i]     = __('Newsletter');
                 }else if($valor->tipo==2){
-                    $tabela['Tipo'][$i]     = 'Contato';
+                    $tabela['Tipo'][$i]     = __('Contato');
                 }else if($valor->tipo==3){
-                    $tabela['Tipo'][$i]     = 'Trabalhe Conosco';                    
+                    $tabela['Tipo'][$i]     = __('Trabalhe Conosco');                    
                 }
                 $tabela['Estado'][$i]       = $valor->estado;
                 $tabela['Linguagem'][$i]    = $valor->lang;
@@ -945,9 +945,9 @@ class _Sistema_AdminControle extends _Sistema_Controle
             unset($tabela);
         }else{
             if($export!==false){
-                $mensagem = 'Nenhuma Newsletter para Exportar';
+                $mensagem = __('Nenhuma Newsletter para Exportar');
             }else{
-                $mensagem = 'Nenhuma Newsletter';
+                $mensagem = __('Nenhuma Newsletter');
             }            
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">'.$mensagem.'</font></b></center>');
         }
@@ -1118,7 +1118,7 @@ class _Sistema_AdminControle extends _Sistema_Controle
     }
     
     function Endereco_Admin($true=true){
-        $titulo = 'Administração Geral';
+        $titulo = __('Administração Geral');
         $link = '_Sistema/Admin/Main';
         if($true===true){
             $this->Tema_Endereco($titulo,$link);
@@ -1129,7 +1129,7 @@ class _Sistema_AdminControle extends _Sistema_Controle
     
     function Endereco_Admin_Permissao($true=true){
         self::Endereco_Admin();
-        $titulo = 'Permissões do Sistema';
+        $titulo = __('Permissões do Sistema');
         $link = '_Sistema/Admin/Permissoes';
         if($true===true){
             $this->Tema_Endereco($titulo,$link);
@@ -1139,7 +1139,7 @@ class _Sistema_AdminControle extends _Sistema_Controle
     }
     function Endereco_Admin_Menu($true=true){
         $this->Endereco_Admin();
-        $titulo = 'Menus do Sistema';
+        $titulo = __('Menus do Sistema');
         $link = '_Sistema/Admin/Menus';
         if($true===true){
             $this->Tema_Endereco($titulo,$link);
@@ -1149,7 +1149,7 @@ class _Sistema_AdminControle extends _Sistema_Controle
     }
     function Endereco_Admin_Grupo($true=true){
         $this->Endereco_Admin();
-        $titulo = 'Grupos do Sistema';
+        $titulo = __('Grupos do Sistema');
         $link = '_Sistema/Admin/Grupos';
         if($true===true){
             $this->Tema_Endereco($titulo,$link);

@@ -27,14 +27,14 @@ class usuario_rede_ListarVisual extends usuario_rede_Visual
     public function Show_RedeIndicadosNivel(&$array,$nivel = 1){
         $html = '';
         if($nivel==1){
-            $nome = 'Primario';
+            $nome = __('Primario');
             $link = '';
         }
         else if($nivel==2){
-            $nome = 'Secundário';
+            $nome = __('Secundário');
         }
         else{
-            $nome = 'Terciário';
+            $nome = __('Terciário');
         }
         // caso nao tenha nenhum indicado
         if($array==0){

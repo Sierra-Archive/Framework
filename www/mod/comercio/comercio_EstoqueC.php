@@ -39,7 +39,7 @@ class comercio_EstoqueControle extends comercio_Controle
         $registro = \Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
         if($produto===false){
-            $titulo = 'Histórico de Estoque';
+            $titulo = __('Histórico de Estoque');
             $link = 'comercio/Estoque/Estoques';
         }else{
             $titulo = 'Histórico de Estoque de '.$produto->nome;
@@ -55,7 +55,7 @@ class comercio_EstoqueControle extends comercio_Controle
     static function Endereco_Entrada_Material($true=true){
         $registro = \Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
-        $titulo = 'Entrada de Material';
+        $titulo = __('Entrada de Material');
         $link = 'comercio/Estoque/Material_Entrada';
         if($true===true){
             $_Controle->Tema_Endereco($titulo,$link);
@@ -270,11 +270,11 @@ class comercio_EstoqueControle extends comercio_Controle
                 reset($materiais);
                 foreach ($materiais as &$valor) {
                     if($valor->documento==0){
-                        $documento = 'Nfe';
+                        $documento = __('Nfe');
                     }else if($valor->documento==1){
-                        $documento = 'Boleto';
+                        $documento = __('Boleto');
                     }else{
-                        $documento = 'Recibo';
+                        $documento = __('Recibo');
                     }
                     $tabela['Número'][$i]           = $valor->numero;
                     $tabela['Documento'][$i]        = $documento;
@@ -307,10 +307,10 @@ class comercio_EstoqueControle extends comercio_Controle
     public function Material_Entrada_Add(){
         self::Endereco_Entrada_Material(true);
          // Carrega Config
-        $titulo1    = 'Adicionar Entrada de NFE';
-        $titulo2    = 'Salvar Entrada de NFE';
+        $titulo1    = __('Adicionar Entrada de NFE');
+        $titulo2    = __('Salvar Entrada de NFE');
         $formid     = 'form_comercio_Estoque_Entrada';
-        $formbt     = 'Salvar';
+        $formbt     = __('Salvar');
         $formlink   = 'comercio/Estoque/Material_Entrada_Add2/';
         $campos = Comercio_Fornecedor_Material_DAO::Get_Colunas();
         self::Campos_Deletar_Material($campos);
@@ -322,11 +322,11 @@ class comercio_EstoqueControle extends comercio_Controle
      * @version 2.0
      */
     public function Material_Entrada_Add2(){
-        $titulo     = 'Entrada de NFE Adicionada com Sucesso';
+        $titulo     = __('Entrada de NFE Adicionada com Sucesso');
         $dao        = 'Comercio_Fornecedor_Material';
         $funcao     = false;
-        $sucesso1   = 'Inserção bem sucedida';
-        $sucesso2   = 'Entrada de NFE cadastrada com sucesso.';
+        $sucesso1   = __('Inserção bem sucedida');
+        $sucesso2   = __('Entrada de NFE cadastrada com sucesso.');
         $alterar    = Array();
         $sucesso = $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
         if($sucesso===true){
@@ -384,9 +384,9 @@ class comercio_EstoqueControle extends comercio_Controle
         self::Endereco_Entrada_Material(true);
         // Carrega Config
         $titulo1    = 'Editar Entrada de NFE (#'.$id.')';
-        $titulo2    = 'Alteração de Entrada de NFE';
+        $titulo2    = __('Alteração de Entrada de NFE');
         $formid     = 'form_Sistema_AdminC_Entrada_MaterialEdit';
-        $formbt     = 'Alterar Entrada de NFE';
+        $formbt     = __('Alterar Entrada de NFE');
         $formlink   = 'comercio/Estoque/Material_Entrada_Edit2/'.$id;
         $editar     = Array('Comercio_Fornecedor_Material',$id);
         $campos = Comercio_Fornecedor_Material_DAO::Get_Colunas();
@@ -402,10 +402,10 @@ class comercio_EstoqueControle extends comercio_Controle
      */
     public function Material_Entrada_Edit2($id){
         $id = (int) $id;
-        $titulo     = 'Entrada de NFE Editada com Sucesso';
+        $titulo     = __('Entrada de NFE Editada com Sucesso');
         $dao        = Array('Comercio_Fornecedor_Material',$id);
         $funcao     = false;
-        $sucesso1   = 'Entrada de NFE Alterada com Sucesso.';
+        $sucesso1   = __('Entrada de NFE Alterada com Sucesso.');
         $sucesso2   = ''.$_POST["documento"].' teve a alteração bem sucedida';
         $alterar    = Array();
         $sucesso = $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);  

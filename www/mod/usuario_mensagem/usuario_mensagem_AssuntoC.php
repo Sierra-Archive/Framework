@@ -36,7 +36,7 @@ class usuario_mensagem_AssuntoControle extends usuario_mensagem_Controle
     static function Endereco_Assunto($true=true){
         $registro = \Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
-        $titulo = 'Assuntos';
+        $titulo = __('Assuntos');
         $link = 'usuario_mensagem/Assunto/Assuntos';
         if($true===true){
             $_Controle->Tema_Endereco($titulo,$link);
@@ -70,10 +70,10 @@ class usuario_mensagem_AssuntoControle extends usuario_mensagem_Controle
     public function Assuntos_Add(){
         self::Endereco_Assunto(true);
         // Carrega Config
-        $titulo1    = 'Adicionar Assunto';
-        $titulo2    = 'Salvar Assunto';
+        $titulo1    = __('Adicionar Assunto');
+        $titulo2    = __('Salvar Assunto');
         $formid     = 'form_Sistema_Admin_Assuntos';
-        $formbt     = 'Salvar';
+        $formbt     = __('Salvar');
         $formlink   = 'usuario_mensagem/Assunto/Assuntos_Add2/';
         $campos = usuario_mensagem_Assunto_DAO::Get_Colunas();
         \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos);
@@ -86,11 +86,11 @@ class usuario_mensagem_AssuntoControle extends usuario_mensagem_Controle
      * @version 2.0
      */
     public function Assuntos_Add2(){
-        $titulo     = 'Assunto Adicionado com Sucesso';
+        $titulo     = __('Assunto Adicionado com Sucesso');
         $dao        = 'usuario_mensagem_Assunto';
         $funcao     = '$this->Assuntos();';
-        $sucesso1   = 'Inserção bem sucedida';
-        $sucesso2   = 'Assunto cadastrado com sucesso.';
+        $sucesso1   = __('Inserção bem sucedida');
+        $sucesso2   = __('Assunto cadastrado com sucesso.');
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
     }

@@ -108,10 +108,10 @@ class social_CaracteristicaControle extends social_Controle
     public function Caracteristicas_Add(){
         self::Endereco_Caracteristica(true);
         // Carrega Config
-        $titulo1    = 'Adicionar Caracteristica';
-        $titulo2    = 'Salvar Caracteristica';
+        $titulo1    = __('Adicionar Caracteristica');
+        $titulo2    = __('Salvar Caracteristica');
         $formid     = 'form_Sistema_Caracteristica_Caracteristicas';
-        $formbt     = 'Salvar';
+        $formbt     = __('Salvar');
         $formlink   = 'social/Caracteristica/Caracteristicas_Add2/';
         $campos = Social_Caracteristica_DAO::Get_Colunas();
         \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos);
@@ -124,11 +124,11 @@ class social_CaracteristicaControle extends social_Controle
      * @version 2.0
      */
     public function Caracteristicas_Add2(){
-        $titulo     = 'Caracteristica adicionada com Sucesso';
+        $titulo     = __('Caracteristica adicionada com Sucesso');
         $dao        = 'Social_Caracteristica';
         $funcao     = '$this->Caracteristica();';
-        $sucesso1   = 'Inserção bem sucedida';
-        $sucesso2   = 'Caracteristica cadastrado com sucesso.';
+        $sucesso1   = __('Inserção bem sucedida');
+        $sucesso2   = __('Caracteristica cadastrado com sucesso.');
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
     }
@@ -142,9 +142,9 @@ class social_CaracteristicaControle extends social_Controle
         self::Endereco_Caracteristica(true);
         // Carrega Config
         $titulo1    = 'Editar Caracteristica (#'.$id.')';
-        $titulo2    = 'Alteração de Caracteristica';
+        $titulo2    = __('Alteração de Caracteristica');
         $formid     = 'form_Sistema_CaracteristicaC_CaracteristicaEdit';
-        $formbt     = 'Alterar Caracteristica';
+        $formbt     = __('Alterar Caracteristica');
         $formlink   = 'social/Caracteristica/Caracteristicas_Edit2/'.$id;
         $editar     = Array('Social_Caracteristica',$id);
         $campos = Social_Caracteristica_DAO::Get_Colunas();
@@ -158,10 +158,10 @@ class social_CaracteristicaControle extends social_Controle
      * @version 2.0
      */
     public function Caracteristicas_Edit2($id){
-        $titulo     = 'Caracteristica editada com Sucesso';
+        $titulo     = __('Caracteristica editada com Sucesso');
         $dao        = Array('Social_Caracteristica',$id);
         $funcao     = '$this->Caracteristica();';
-        $sucesso1   = 'Caracteristica Alterado com Sucesso.';
+        $sucesso1   = __('Caracteristica Alterado com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);   

@@ -22,7 +22,7 @@ class predial_CorreioControle extends predial_Controle
     static function Endereco_Correio($true=true){
         $registro = \Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
-        $titulo = 'Corrêios';
+        $titulo = __('Corrêios');
         $link = 'predial/Correio/Correios';
         if($true===true){
             $_Controle->Tema_Endereco($titulo,$link);
@@ -137,7 +137,7 @@ class predial_CorreioControle extends predial_Controle
     protected function Correios_Bloco($recebido=false,$gravidade=0){
         $i = 0;
         if($recebido===false){
-            $titulo = 'Correios recebidos e não entregues';
+            $titulo = __('Correios recebidos e não entregues');
             $where = Array(
                 'data_recebido' => '0000-00-00 00:00:00'
             );
@@ -156,7 +156,7 @@ class predial_CorreioControle extends predial_Controle
                 )
             )));
         }else{
-            $titulo = 'Histórico de Correios Entregues';
+            $titulo = __('Histórico de Correios Entregues');
             $where = Array(
                 '!data_recebido' => '0000-00-00 00:00:00'
             );
@@ -182,10 +182,10 @@ class predial_CorreioControle extends predial_Controle
     public function Correios_Add(){
         self::Endereco_Correio();
         // Carrega Config
-        $titulo1    = 'Adicionar Correio';
-        $titulo2    = 'Salvar Correio';
+        $titulo1    = __('Adicionar Correio');
+        $titulo2    = __('Salvar Correio');
         $formid     = 'form_Sistema_Admin_Correios';
-        $formbt     = 'Salvar';
+        $formbt     = __('Salvar');
         $formlink   = 'predial/Correio/Correios_Add2/';
         $campos = Predial_Bloco_Apart_Correio_DAO::Get_Colunas();
         self::DAO_Campos_Retira($campos, 'data_recebido');
@@ -200,11 +200,11 @@ class predial_CorreioControle extends predial_Controle
      */
     public function Correios_Add2(){
         //Validar_Email
-        $titulo     = 'Correio Adicionado com Sucesso';
+        $titulo     = __('Correio Adicionado com Sucesso');
         $dao        = 'Predial_Bloco_Apart_Correio';
         $funcao     = '$this->Correios();';
-        $sucesso1   = 'Inserção bem sucedida';
-        $sucesso2   = 'Correio cadastrado com sucesso.';
+        $sucesso1   = __('Inserção bem sucedida');
+        $sucesso2   = __('Correio cadastrado com sucesso.');
         $alterar    = Array();
         $sucesso = $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
         if($sucesso===true){
@@ -287,9 +287,9 @@ class predial_CorreioControle extends predial_Controle
         self::Endereco_Correio();
         // Carrega Config
         $titulo1    = 'Editar Correio (#'.$id.')';
-        $titulo2    = 'Alteração de Correio';
+        $titulo2    = __('Alteração de Correio');
         $formid     = 'form_Sistema_AdminC_CorreioEdit';
-        $formbt     = 'Alterar Correio';
+        $formbt     = __('Alterar Correio');
         $formlink   = 'predial/Correio/Correios_Edit2/'.$id;
         $editar     = Array('Predial_Bloco_Apart_Correio',$id);
         $campos = Predial_Bloco_Apart_Correio_DAO::Get_Colunas();
@@ -303,10 +303,10 @@ class predial_CorreioControle extends predial_Controle
      * @version 2.0
      */
     public function Correios_Edit2($id){
-        $titulo     = 'Correio Editado com Sucesso';
+        $titulo     = __('Correio Editado com Sucesso');
         $dao        = Array('Predial_Bloco_Apart_Correio',$id);
         $funcao     = '$this->Correios();';
-        $sucesso1   = 'Correio Alterado com Sucesso.';
+        $sucesso1   = __('Correio Alterado com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
@@ -389,7 +389,7 @@ class predial_CorreioControle extends predial_Controle
         $i = 0;
         $html = '';
         if($recebido===false){
-            $titulo = 'Correios recebidos e não entregues';
+            $titulo = __('Correios recebidos e não entregues');
             $where = Array(
                 'data_recebido' => '0000-00-00 00:00:00',
                 'apart'         => $apartamento
@@ -405,7 +405,7 @@ class predial_CorreioControle extends predial_Controle
                 )
             ));
         }else{
-            $titulo = 'Histórico de Correios Entregues';
+            $titulo = __('Histórico de Correios Entregues');
             $where = Array(
                 '!data_recebido' => '0000-00-00 00:00:00',
                 'apart'         => $apartamento

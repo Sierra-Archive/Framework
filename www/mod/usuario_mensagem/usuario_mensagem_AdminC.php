@@ -57,14 +57,14 @@ class usuario_mensagem_AdminControle extends usuario_mensagem_Controle
         // Chama Objeto Mensagem
         $editar = $Modelo->db->Sql_Select('Usuario_Mensagem', 'id=\''.$mensagem.'\'');
         //Atualiza Nome para nao dar erro
-        if($editar->para_nome=='') $editar->para_nome='Suporte';
+        if($editar->para_nome=='') $editar->para_nome=__('Suporte');
 
         
         // Carrega Config
         $titulo1    = 'Editar Ticket (#'.$id.')';
-        $titulo2    = 'Edição de Ticket';
+        $titulo2    = __('Edição de Ticket');
         $formid     = 'form_Usuario_Mensagem_Suporte';
-        $formbt     = 'Alterar Edição';
+        $formbt     = __('Alterar Edição');
         $formlink   = 'usuario_mensagem/Suporte/Mensagem_inserir';
         $editar     = $editar;
         \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos,$editar);

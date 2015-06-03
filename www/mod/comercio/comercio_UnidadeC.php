@@ -38,7 +38,7 @@ class comercio_UnidadeControle extends comercio_Controle
     static function Endereco_Unidade($true=true){
         $registro = \Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
-        $titulo = 'Unidades';
+        $titulo = __('Unidades');
         $link = 'comercio/Unidade/Unidades';
         if($true===true){
             $_Controle->Tema_Endereco($titulo,$link);
@@ -85,10 +85,10 @@ class comercio_UnidadeControle extends comercio_Controle
     public function Unidades_Add(){
         self::Endereco_Unidade(true);
         // Carrega Config
-        $titulo1    = 'Adicionar Unidade';
-        $titulo2    = 'Salvar Unidade';
+        $titulo1    = __('Adicionar Unidade');
+        $titulo2    = __('Salvar Unidade');
         $formid     = 'form_Sistema_Admin_Unidades';
-        $formbt     = 'Salvar';
+        $formbt     = __('Salvar');
         $formlink   = 'comercio/Unidade/Unidades_Add2/';
         $campos = Comercio_Unidade_DAO::Get_Colunas();
         \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos);
@@ -101,11 +101,11 @@ class comercio_UnidadeControle extends comercio_Controle
      * @version 2.0
      */
     public function Unidades_Add2(){
-        $titulo     = 'Unidade Adicionada com Sucesso';
+        $titulo     = __('Unidade Adicionada com Sucesso');
         $dao        = 'Comercio_Unidade';
         $funcao     = '$this->Unidades();';
-        $sucesso1   = 'Inserção bem sucedida';
-        $sucesso2   = 'Unidade cadastrada com sucesso.';
+        $sucesso1   = __('Inserção bem sucedida');
+        $sucesso2   = __('Unidade cadastrada com sucesso.');
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
     }
@@ -119,9 +119,9 @@ class comercio_UnidadeControle extends comercio_Controle
         self::Endereco_Unidade(true);
         // Carrega Config
         $titulo1    = 'Editar Unidade (#'.$id.')';
-        $titulo2    = 'Alteração de Unidade';
+        $titulo2    = __('Alteração de Unidade');
         $formid     = 'form_Sistema_AdminC_UnidadeEdit';
-        $formbt     = 'Alterar Unidade';
+        $formbt     = __('Alterar Unidade');
         $formlink   = 'comercio/Unidade/Unidades_Edit2/'.$id;
         $editar     = Array('Comercio_Unidade',$id);
         $campos = Comercio_Unidade_DAO::Get_Colunas();
@@ -135,10 +135,10 @@ class comercio_UnidadeControle extends comercio_Controle
      * @version 2.0
      */
     public function Unidades_Edit2($id){
-        $titulo     = 'Unidade Editada com Sucesso';
+        $titulo     = __('Unidade Editada com Sucesso');
         $dao        = Array('Comercio_Unidade',$id);
         $funcao     = '$this->Unidades();';
-        $sucesso1   = 'Unidade Alterada com Sucesso.';
+        $sucesso1   = __('Unidade Alterada com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);      

@@ -68,7 +68,7 @@ class usuario_mensagem_SuporteControle extends usuario_mensagem_Controle
         return false;
     }
     public function Mensagens(){
-        $nome = 'Tickets';
+        $nome = __('Tickets');
         self::Endereco_Suporte(false);
         $id = (int) $this->_Acl->Usuario_GetID();
         if($id>0){

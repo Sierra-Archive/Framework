@@ -30,7 +30,7 @@ class comercio_PropostaControle extends comercio_Controle
         $registro = \Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
         if($tema=='Propostas'){
-            $titulo = 'Propostas';
+            $titulo = __('Propostas');
             $link = 'comercio/Proposta/Propostas/'.$tema;
         }else{
             $titulo = CFG_TXT_COMERCIO_OS;
@@ -59,7 +59,7 @@ class comercio_PropostaControle extends comercio_Controle
         // Recupera Controle
         $registro = \Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
-        $titulo = 'Comentários';
+        $titulo = __('Comentários');
         $link = 'comercio/Proposta/Propostas_Comentario/'.$propostaid.'/'.$tema;
         if($true===true){
             $_Controle->Tema_Endereco($titulo,$link);
@@ -100,7 +100,7 @@ class comercio_PropostaControle extends comercio_Controle
         self::Endereco_Proposta();
         $registro = \Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
-        $titulo = 'Checklist';
+        $titulo = __('Checklist');
         $link = 'comercio/Proposta/Checklists';
         if($true===true){
             $_Controle->Tema_Endereco($titulo,$link);
@@ -116,7 +116,7 @@ class comercio_PropostaControle extends comercio_Controle
         self::Endereco_Proposta();
         $registro = \Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
-        $titulo = 'Folhas de Visitas';
+        $titulo = __('Folhas de Visitas');
         $link = 'comercio/Proposta/Visitas';
         if($true===true){
             $_Controle->Tema_Endereco($titulo,$link);
@@ -140,7 +140,7 @@ class comercio_PropostaControle extends comercio_Controle
         // Recupera Controle
         $registro = \Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
-        $titulo = 'Comentários';
+        $titulo = __('Comentários');
         $link = 'comercio/Proposta/Visitas_Comentario/'.$visitaid;
         if($true===true){
             $_Controle->Tema_Endereco($titulo,$link);
@@ -270,8 +270,8 @@ class comercio_PropostaControle extends comercio_Controle
             $where = Array(
                 'NOTINstatus' => Array(2,3,'2','3')
             );
-            $titulo             = 'Proposta';
-            $titulo_plural      = 'Propostas';
+            $titulo             = __('Proposta');
+            $titulo_plural      = __('Propostas');
             $adicionar = Array(
                 'Adicionar nova '.$titulo,
                 'comercio/Proposta/Propostas_Add/'.$tema.'',
@@ -307,15 +307,15 @@ class comercio_PropostaControle extends comercio_Controle
                 $tabela['Número'][$i]       =  '#'.$valor->id;
                 if($valor->propostatipo==1 || $valor->propostatipo=='1'){
                     if(SQL_MAIUSCULO===true){
-                        $propostatipo = 'INSTALAÇÃO';
+                        $propostatipo = __('INSTALAÇÃO');
                     }else{
-                        $propostatipo = 'Instalação';
+                        $propostatipo = __('Instalação');
                     }
                 }else{
                     if(SQL_MAIUSCULO===true){
-                        $propostatipo = 'SERVIÇO';
+                        $propostatipo = __('SERVIÇO');
                     }else{
-                        $propostatipo = 'Serviço';
+                        $propostatipo = __('Serviço');
                     }
                 } // Retira de Instalação
                 if(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_servicos_Instalacao') || !(\Framework\App\Sistema_Funcoes::Perm_Modulos('comercio_servicos'))){
@@ -412,8 +412,8 @@ class comercio_PropostaControle extends comercio_Controle
             $where = Array(
                 'INstatus' => Array(2,3,'2','3')
             );
-            $titulo             = 'Proposta';
-            $titulo_plural      = 'Propostas';
+            $titulo             = __('Proposta');
+            $titulo_plural      = __('Propostas');
         }
         //
         $i = 0;
@@ -425,15 +425,15 @@ class comercio_PropostaControle extends comercio_Controle
                 $tabela['Número'][$i]       =  '#'.$valor->id;
                 if($valor->propostatipo==1 || $valor->propostatipo=='1'){
                     if(SQL_MAIUSCULO===true){
-                        $propostatipo = 'INSTALAÇÃO';
+                        $propostatipo = __('INSTALAÇÃO');
                     }else{
-                        $propostatipo = 'Instalação';
+                        $propostatipo = __('Instalação');
                     }
                 }else{
                     if(SQL_MAIUSCULO===true){
-                        $propostatipo = 'SERVIÇO';
+                        $propostatipo = __('SERVIÇO');
                     }else{
-                        $propostatipo = 'Serviço';
+                        $propostatipo = __('Serviço');
                     }
                 } // Retira de Instalação
                 if(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_servicos_Instalacao') || !(\Framework\App\Sistema_Funcoes::Perm_Modulos('comercio_servicos'))){
@@ -511,8 +511,8 @@ class comercio_PropostaControle extends comercio_Controle
             $titulo_plural      = CFG_TXT_COMERCIO_OS_PLURAL;
             $titulo_unico       = 'ordemdeservico';
         }else{
-            $titulo             = 'Proposta';
-            $titulo_plural      = 'Propostas';
+            $titulo             = __('Proposta');
+            $titulo_plural      = __('Propostas');
             $titulo_unico       = 'propostas';
         }
         
@@ -589,9 +589,9 @@ class comercio_PropostaControle extends comercio_Controle
         $html .= '<h3>Dados Principais</h3>';
         // Tipo de Proposta
         if($identificador->propostatipo===1 || $identificador->propostatipo==='1'){
-            $propostatipo = 'Instalação';
+            $propostatipo = __('Instalação');
         }else{
-            $propostatipo = 'Serviço';
+            $propostatipo = __('Serviço');
         }
         $html .= '<p><label style="width:250px; float:left; margin-right:5px;">'.$titulo.':</label> '.$identificador->id.'</p>';
         $html .= '<p><label style="width:250px; float:left; margin-right:5px;">Tipo de '.$titulo.':</label> '.$propostatipo.'</p>';
@@ -696,33 +696,33 @@ class comercio_PropostaControle extends comercio_Controle
                     }
                     // Formata
                     if($valor->infra==0||$valor->infra=='0'){
-                        $infra = 'Não existente';
+                        $infra = __('Não existente');
                     }else{
-                        $infra = 'Existente';
+                        $infra = __('Existente');
                     }
                     
                     if($valor->tipocondensadora==0||$valor->tipocondensadora=='0'){
-                        $tipocondensadora = 'Vertical';
+                        $tipocondensadora = __('Vertical');
                     }else if($valor->tipocondensadora==1||$valor->tipocondensadora=='1'){
-                        $tipocondensadora = 'Horizontal';
+                        $tipocondensadora = __('Horizontal');
                     }else{
-                        $tipocondensadora = 'Janela';
+                        $tipocondensadora = __('Janela');
                     }
                     
                     if($valor->tipoevaporadora==0||$valor->tipoevaporadora=='0'){
-                        $tipoevaporadora = 'Hi Wall';
+                        $tipoevaporadora = __('Hi Wall');
                     }else if($valor->tipoevaporadora==1||$valor->tipoevaporadora=='1'){
-                        $tipoevaporadora = 'Piso Teto';
+                        $tipoevaporadora = __('Piso Teto');
                     }else{
-                        $tipoevaporadora = 'Cassete';
+                        $tipoevaporadora = __('Cassete');
                     }
                     
                     if($valor->tipodreno==0||$valor->tipodreno=='0'){
-                        $tipodreno = 'Tubulado';
+                        $tipodreno = __('Tubulado');
                     }else if($valor->tipodreno==1||$valor->tipodreno=='1'){
-                        $tipodreno = 'Livre';
+                        $tipodreno = __('Livre');
                     }else{
-                        $tipodreno = 'Mangueira';
+                        $tipodreno = __('Mangueira');
                     }
                     
                     // Exibe
@@ -981,11 +981,11 @@ class comercio_PropostaControle extends comercio_Controle
         if($tema!='Propostas'){
             $titulo             = CFG_TXT_COMERCIO_OS;
             $titulo_plural      = CFG_TXT_COMERCIO_OS_PLURAL;
-            $titulo_unico       = 'ordemdeservico';
+            $titulo_unico       = __('ordemdeservico');
         }else{
-            $titulo             = 'Proposta';
-            $titulo_plural      = 'Propostas';
-            $titulo_unico       = 'propostas';
+            $titulo             = __('Proposta');
+            $titulo_plural      = __('Propostas');
+            $titulo_unico       = __('propostas');
         }
         
         // Verifica Permissao e Puxa Usuário
@@ -1078,9 +1078,9 @@ class comercio_PropostaControle extends comercio_Controle
         $html .= '</table><table><tr><td colspan="12">&nbsp;</td></tr></table><table border="1"><tr><td colspan="12" bgcolor="#000000" style="color:#FFFFFF;text-align:center;"><b>DADOS DO CLIENTE</b></td></tr>';
         // Tipo de Proposta
         if($identificador->propostatipo===1 || $identificador->propostatipo==='1'){
-            $propostatipo = 'Instalação';
+            $propostatipo = __('Instalação');
         }else{
-            $propostatipo = 'Serviço';
+            $propostatipo = __('Serviço');
         }
         //$html .= '<tr><td colspan="12"><b>'.$titulo.':</b> '.$identificador->id.'</td></tr>';
         //$html .= '<tr><td colspan="12"><b>Tipo de '.$titulo.':</b> '.$propostatipo.'</td></tr>';
@@ -1194,33 +1194,33 @@ class comercio_PropostaControle extends comercio_Controle
                     }
                     // Formata
                     if($valor->infra==0||$valor->infra=='0'){
-                        $infra = 'Não existente';
+                        $infra = __('Não existente');
                     }else{
-                        $infra = 'Existente';
+                        $infra = __('Existente');
                     }
                     
                     if($valor->tipocondensadora==0||$valor->tipocondensadora=='0'){
-                        $tipocondensadora = 'Vertical';
+                        $tipocondensadora = __('Vertical');
                     }else if($valor->tipocondensadora==1||$valor->tipocondensadora=='1'){
-                        $tipocondensadora = 'Horizontal';
+                        $tipocondensadora = __('Horizontal');
                     }else{
-                        $tipocondensadora = 'Janela';
+                        $tipocondensadora = __('Janela');
                     }
                     
                     if($valor->tipoevaporadora==0||$valor->tipoevaporadora=='0'){
-                        $tipoevaporadora = 'Hi Wall';
+                        $tipoevaporadora = __('Hi Wall');
                     }else if($valor->tipoevaporadora==1||$valor->tipoevaporadora=='1'){
-                        $tipoevaporadora = 'Piso Teto';
+                        $tipoevaporadora = __('Piso Teto');
                     }else{
-                        $tipoevaporadora = 'Cassete';
+                        $tipoevaporadora = __('Cassete');
                     }
                     
                     if($valor->tipodreno==0||$valor->tipodreno=='0'){
-                        $tipodreno = 'Tubulado';
+                        $tipodreno = __('Tubulado');
                     }else if($valor->tipodreno==1||$valor->tipodreno=='1'){
-                        $tipodreno = 'Livre';
+                        $tipodreno = __('Livre');
                     }else{
-                        $tipodreno = 'Mangueira';
+                        $tipodreno = __('Mangueira');
                     }
                     
                     // add Equipamento
@@ -1386,7 +1386,7 @@ class comercio_PropostaControle extends comercio_Controle
                     $pagar = '';
                     if($identificador->condicao_pagar!='')  $pagar .= $identificador->condicao_pagar2;
                     if($identificador->forma_pagar!=''){
-                        if($identificador->condicao_pagar!='')  $pagar .= ' em ';
+                        if($identificador->condicao_pagar!='')  $pagar .= __(' em ');
                         $pagar .= $identificador->forma_pagar2;
                     }
 
@@ -1456,7 +1456,7 @@ class comercio_PropostaControle extends comercio_Controle
             $pagar = '';
             if($identificador->condicao_pagar!='')  $pagar .= $identificador->condicao_pagar2;
             if($identificador->forma_pagar!=''){
-                if($identificador->condicao_pagar!='')  $pagar .= ' em ';
+                if($identificador->condicao_pagar!='')  $pagar .= __(' em ');
                 $pagar .= $identificador->forma_pagar2;
             }
             // Calcula Valor de Custo
@@ -1520,15 +1520,15 @@ class comercio_PropostaControle extends comercio_Controle
             $titulo_plural      = CFG_TXT_COMERCIO_OS_PLURAL;
             $titulo_unico       = 'ordemdeservico';
         }else{
-            $titulo             = 'Proposta';
-            $titulo_plural      = 'Propostas';
+            $titulo             = __('Proposta');
+            $titulo_plural      = __('Propostas');
             $titulo_unico       = 'propostas';
         }
         // Carrega Config
         $titulo1    = 'Adicionar '.$titulo;
         $titulo2    = 'Salvar '.$titulo;
         $formid     = 'form_Sistema_Admin_'.$titulo_unico;
-        $formbt     = 'Salvar';
+        $formbt     = __('Salvar');
         $formlink   = 'comercio/Proposta/Propostas_Add2/'.$tema;
         $campos = Comercio_Proposta_DAO::Get_Colunas();
         self::Campos_Deletar($campos,$tema);
@@ -1558,14 +1558,14 @@ class comercio_PropostaControle extends comercio_Controle
             $titulo_plural      = CFG_TXT_COMERCIO_OS_PLURAL;
             $titulo_unico       = 'ordemdeservico';
         }else{
-            $titulo             = 'Proposta';
-            $titulo_plural      = 'Propostas';
+            $titulo             = __('Proposta');
+            $titulo_plural      = __('Propostas');
             $titulo_unico       = 'propostas';
         }
         $titulo     = $titulo.' Adicionada com Sucesso';
         $dao        = 'Comercio_Proposta';
         $funcao     = false;
-        $sucesso1   = 'Inserção bem sucedida';
+        $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = $titulo.' cadastrada com sucesso.';
         $alterar    = Array();
         $sucesso = $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
@@ -1598,8 +1598,8 @@ class comercio_PropostaControle extends comercio_Controle
             $titulo_plural      = CFG_TXT_COMERCIO_OS_PLURAL;
             $titulo_unico       = 'ordemdeservico';
         }else{
-            $titulo             = 'Proposta';
-            $titulo_plural      = 'Propostas';
+            $titulo             = __('Proposta');
+            $titulo_plural      = __('Propostas');
             $titulo_unico       = 'propostas';
         }
         // Carrega Config
@@ -1641,8 +1641,8 @@ class comercio_PropostaControle extends comercio_Controle
             $titulo_plural      = CFG_TXT_COMERCIO_OS_PLURAL;
             $titulo_unico       = 'ordemdeservico';
         }else{
-            $titulo             = 'Proposta';
-            $titulo_plural      = 'Propostas';
+            $titulo             = __('Proposta');
+            $titulo_plural      = __('Propostas');
             $titulo_unico       = 'propostas';
         }
         $titulo     = $titulo.' Editada com Sucesso';
@@ -1910,7 +1910,7 @@ class comercio_PropostaControle extends comercio_Controle
         if($recalcular===false){
             $valor ='R$ 0,00';
         }else{
-            $valor ='Calculando';
+            $valor =__('Calculando');
             $this->_Visual->Javascript_Executar('params'.$time.'=$(\'#'.$form_id.'\').serialize();'
                             . 'Sierra.Modelo_Ajax_Chamar(\'comercio/Proposta/Proposta_Atualizar_Valor_Dinamico/'.$time.'\',params'.$time.',\'POST\',true,false,false);');
         }
@@ -2144,8 +2144,8 @@ class comercio_PropostaControle extends comercio_Controle
             $titulo_plural      = CFG_TXT_COMERCIO_OS_PLURAL;
             $titulo_unico       = 'ordemdeservico';
         }else{
-            $titulo             = 'Proposta';
-            $titulo_plural      = 'Propostas';
+            $titulo             = __('Proposta');
+            $titulo_plural      = __('Propostas');
             $titulo_unico       = 'propostas';
         }
         // Puxa fornecedor e deleta
@@ -2303,15 +2303,15 @@ class comercio_PropostaControle extends comercio_Controle
         $id = $objeto->id;
         if($status=='0'){
             $tipo = 'warning';
-            $nometipo = 'Pendente';
+            $nometipo = __('Pendente');
         }
         else if($status=='1'){
             $tipo = 'success';
-            $nometipo = 'Aprovada';
+            $nometipo = __('Aprovada');
         }
         else if($status=='2'){
             $tipo = 'info';
-            $nometipo = 'Aprovada em Execução';
+            $nometipo = __('Aprovada em Execução');
         }
         else if($status=='3'){
             $tipo = 'inverse';
@@ -2319,7 +2319,7 @@ class comercio_PropostaControle extends comercio_Controle
         }
         else{
             $tipo = 'important';
-            $nometipo = 'Recusada';
+            $nometipo = __('Recusada');
         }
         $html = '<span class="badge badge-'.$tipo.'">'.$nometipo.'</span>';
         if(/*$status!='3' && */$objeto->condicao_pagar!=NULL && $link===true){
@@ -2340,8 +2340,8 @@ class comercio_PropostaControle extends comercio_Controle
             $titulo_plural      = CFG_TXT_COMERCIO_OS_PLURAL;
             $titulo_unico       = 'ordemdeservico';
         }else{
-            $titulo             = 'Proposta';
-            $titulo_plural      = 'Propostas';
+            $titulo             = __('Proposta');
+            $titulo_plural      = __('Propostas');
             $titulo_unico       = 'propostas';
         }
         if($proposta_id===false){
@@ -2418,8 +2418,8 @@ class comercio_PropostaControle extends comercio_Controle
             $titulo_plural      = CFG_TXT_COMERCIO_OS_PLURAL;
             $titulo_unico       = 'ordemdeservico';
         }else{
-            $titulo             = 'Proposta';
-            $titulo_plural      = 'Propostas';
+            $titulo             = __('Proposta');
+            $titulo_plural      = __('Propostas');
             $titulo_unico       = 'propostas';
         }
         // Começo
@@ -2428,7 +2428,7 @@ class comercio_PropostaControle extends comercio_Controle
         $titulo1    = 'Adicionar Comentário da '.$titulo;
         $titulo2    = 'Salvar Comentário da '.$titulo;
         $formid     = 'form_Sistema_Admin_Propostas_Comentario';
-        $formbt     = 'Salvar';
+        $formbt     = __('Salvar');
         $formlink   = 'comercio/Proposta/Propostas_Comentario_Add2/'.$proposta_id.'/'.$tema;
         $campos = Comercio_Proposta_Comentario_DAO::Get_Colunas();
         self::DAO_Campos_Retira($campos, 'proposta');
@@ -2449,15 +2449,15 @@ class comercio_PropostaControle extends comercio_Controle
             $titulo_plural      = CFG_TXT_COMERCIO_OS_PLURAL;
             $titulo_unico       = 'ordemdeservico';
         }else{
-            $titulo             = 'Proposta';
-            $titulo_plural      = 'Propostas';
+            $titulo             = __('Proposta');
+            $titulo_plural      = __('Propostas');
             $titulo_unico       = 'propostas';
         }
-        $titulo     = 'Comentário sobre a Proposta Adicionado com Sucesso';
+        $titulo     = __('Comentário sobre a Proposta Adicionado com Sucesso');
         $dao        = 'Comercio_Proposta_Comentario';
         $funcao     = '$this->Propostas_Comentario('.$proposta_id.',\''.$tema.'\');';
-        $sucesso1   = 'Inserção bem sucedida';
-        $sucesso2   = 'Comentário de Proposta cadastrado com sucesso.';
+        $sucesso1   = __('Inserção bem sucedida');
+        $sucesso2   = __('Comentário de Proposta cadastrado com sucesso.');
         $alterar    = Array('proposta'=>$proposta_id);
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
     }
@@ -2480,8 +2480,8 @@ class comercio_PropostaControle extends comercio_Controle
             $titulo_plural      = CFG_TXT_COMERCIO_OS_PLURAL;
             $titulo_unico       = 'ordemdeservico';
         }else{
-            $titulo             = 'Proposta';
-            $titulo_plural      = 'Propostas';
+            $titulo             = __('Proposta');
+            $titulo_plural      = __('Propostas');
             $titulo_unico       = 'propostas';
         }
         // Começo
@@ -2512,8 +2512,8 @@ class comercio_PropostaControle extends comercio_Controle
             $titulo_plural      = CFG_TXT_COMERCIO_OS_PLURAL;
             $titulo_unico       = 'ordemdeservico';
         }else{
-            $titulo             = 'Proposta';
-            $titulo_plural      = 'Propostas';
+            $titulo             = __('Proposta');
+            $titulo_plural      = __('Propostas');
             $titulo_unico       = 'propostas';
         }
         $titulo     = 'Comentário de '.$titulo.' Editada com Sucesso';
@@ -2547,8 +2547,8 @@ class comercio_PropostaControle extends comercio_Controle
             $titulo_plural      = CFG_TXT_COMERCIO_OS_PLURAL;
             $titulo_unico       = 'ordemdeservico';
         }else{
-            $titulo             = 'Proposta';
-            $titulo_plural      = 'Propostas';
+            $titulo             = __('Proposta');
+            $titulo_plural      = __('Propostas');
             $titulo_unico       = 'propostas';
         }
         // Mensagem
@@ -2585,8 +2585,8 @@ class comercio_PropostaControle extends comercio_Controle
             $titulo_plural      = CFG_TXT_COMERCIO_OS_PLURAL;
             $titulo_unico       = 'ordemdeservico';
         }else{
-            $titulo             = 'Proposta';
-            $titulo_plural      = 'Propostas';
+            $titulo             = __('Proposta');
+            $titulo_plural      = __('Propostas');
             $titulo_unico       = 'propostas';
         }
         if($proposta_id===false){
@@ -2664,8 +2664,8 @@ class comercio_PropostaControle extends comercio_Controle
             $titulo_plural      = CFG_TXT_COMERCIO_OS_PLURAL;
             $titulo_unico       = 'ordemdeservico';
         }else{
-            $titulo             = 'Proposta';
-            $titulo_plural      = 'Propostas';
+            $titulo             = __('Proposta');
+            $titulo_plural      = __('Propostas');
             $titulo_unico       = 'propostas';
         }
         // Começo
@@ -2674,7 +2674,7 @@ class comercio_PropostaControle extends comercio_Controle
         $titulo1    = 'Adicionar Sub proposta da '.$titulo;
         $titulo2    = 'Salvar Sub proposta da '.$titulo;
         $formid     = 'form_Sistema_Admin_Propostas_Sub';
-        $formbt     = 'Salvar';
+        $formbt     = __('Salvar');
         $formlink   = 'comercio/Proposta/Propostas_Sub_Add2/'.$proposta_id.'/'.$tema;
         $campos = Comercio_Proposta_Sub_DAO::Get_Colunas();
         self::DAO_Campos_Retira($campos, 'proposta');
@@ -2695,15 +2695,15 @@ class comercio_PropostaControle extends comercio_Controle
             $titulo_plural      = CFG_TXT_COMERCIO_OS_PLURAL;
             $titulo_unico       = 'ordemdeservico';
         }else{
-            $titulo             = 'Proposta';
-            $titulo_plural      = 'Propostas';
+            $titulo             = __('Proposta');
+            $titulo_plural      = __('Propostas');
             $titulo_unico       = 'propostas';
         }
-        $titulo     = 'Sub proposta sobre a Proposta Adicionado com Sucesso';
+        $titulo     = __('Sub proposta sobre a Proposta Adicionado com Sucesso');
         $dao        = 'Comercio_Proposta_Sub';
         $funcao     = '$this->Propostas_Sub('.$proposta_id.',\''.$tema.'\');';
-        $sucesso1   = 'Inserção bem sucedida';
-        $sucesso2   = 'Sub proposta de Proposta cadastrado com sucesso.';
+        $sucesso1   = __('Inserção bem sucedida');
+        $sucesso2   = __('Sub proposta de Proposta cadastrado com sucesso.');
         $alterar    = Array('proposta'=>$proposta_id);
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
     }
@@ -2726,8 +2726,8 @@ class comercio_PropostaControle extends comercio_Controle
             $titulo_plural      = CFG_TXT_COMERCIO_OS_PLURAL;
             $titulo_unico       = 'ordemdeservico';
         }else{
-            $titulo             = 'Proposta';
-            $titulo_plural      = 'Propostas';
+            $titulo             = __('Proposta');
+            $titulo_plural      = __('Propostas');
             $titulo_unico       = 'propostas';
         }
         // Começo
@@ -2758,8 +2758,8 @@ class comercio_PropostaControle extends comercio_Controle
             $titulo_plural      = CFG_TXT_COMERCIO_OS_PLURAL;
             $titulo_unico       = 'ordemdeservico';
         }else{
-            $titulo             = 'Proposta';
-            $titulo_plural      = 'Propostas';
+            $titulo             = __('Proposta');
+            $titulo_plural      = __('Propostas');
             $titulo_unico       = 'propostas';
         }
         $titulo     = 'Sub proposta de '.$titulo.' Editada com Sucesso';
@@ -2793,8 +2793,8 @@ class comercio_PropostaControle extends comercio_Controle
             $titulo_plural      = CFG_TXT_COMERCIO_OS_PLURAL;
             $titulo_unico       = 'ordemdeservico';
         }else{
-            $titulo             = 'Proposta';
-            $titulo_plural      = 'Propostas';
+            $titulo             = __('Proposta');
+            $titulo_plural      = __('Propostas');
             $titulo_unico       = 'propostas';
         }
         // Mensagem
@@ -2923,15 +2923,15 @@ class comercio_PropostaControle extends comercio_Controle
         $id = $objeto->id;
         if($status=='0'){
             $tipo = 'danger';
-            $nometipo = 'Descartado';
+            $nometipo = __('Descartado');
         }
         else if($status=='1'){
             $tipo = 'success';
-            $nometipo = 'Liberado';
+            $nometipo = __('Liberado');
         }
         else if($status=='2'){
             $tipo = 'info';
-            $nometipo = 'Em Uso';
+            $nometipo = __('Em Uso');
         }
         else {
             $tipo = 'important';
@@ -2949,10 +2949,10 @@ class comercio_PropostaControle extends comercio_Controle
     public function Checklists_Add(){
         self::Endereco_CheckList(true);
         // Carrega Config
-        $titulo1    = 'Adicionar Checklist';
-        $titulo2    = 'Salvar Checklist';
+        $titulo1    = __('Adicionar Checklist');
+        $titulo2    = __('Salvar Checklist');
         $formid     = 'form_Sistema_Admin_Checklists';
-        $formbt     = 'Salvar';
+        $formbt     = __('Salvar');
         $formlink   = 'comercio/Proposta/Checklists_Add2/';
         $campos = Comercio_Checklist_DAO::Get_Colunas();
         \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos);
@@ -2966,11 +2966,11 @@ class comercio_PropostaControle extends comercio_Controle
      * @version 2.0
      */
     public function Checklists_Add2(){
-        $titulo     = 'Checklist Adicionado com Sucesso';
+        $titulo     = __('Checklist Adicionado com Sucesso');
         $dao        = 'Comercio_Checklist';
         $funcao     = '$this->Checklists();';
-        $sucesso1   = 'Inserção bem sucedida';
-        $sucesso2   = 'Checklist cadastrado com sucesso.';
+        $sucesso1   = __('Inserção bem sucedida');
+        $sucesso2   = __('Checklist cadastrado com sucesso.');
         $alterar    = Array();
         $sucesso = $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
     }
@@ -2984,9 +2984,9 @@ class comercio_PropostaControle extends comercio_Controle
         self::Endereco_CheckList(true);
         // Carrega Config
         $titulo1    = 'Editar Checklist (#'.$id.')';
-        $titulo2    = 'Alteração de Checklist';
+        $titulo2    = __('Alteração de Checklist');
         $formid     = 'form_Sistema_AdminC_OsEdit';
-        $formbt     = 'Alterar Checklist';
+        $formbt     = __('Alterar Checklist');
         $formlink   = 'comercio/Proposta/Checklists_Edit2/'.$id;
         $editar     = Array('Comercio_Checklist',$id);
         $campos = Comercio_Checklist_DAO::Get_Colunas();
@@ -3000,10 +3000,10 @@ class comercio_PropostaControle extends comercio_Controle
      * @version 2.0
      */
     public function Checklists_Edit2($id){
-        $titulo     = 'Checklist Editado com Sucesso';
+        $titulo     = __('Checklist Editado com Sucesso');
         $dao        = Array('Comercio_Checklist',$id);
         $funcao     = '$this->Checklists();';
-        $sucesso1   = 'Checklist Alterado com Sucesso.';
+        $sucesso1   = __('Checklist Alterado com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);      
@@ -3103,10 +3103,10 @@ class comercio_PropostaControle extends comercio_Controle
     public function Visitas_Add(){
         self::Endereco_Visita(true);
         // Carrega Config
-        $titulo1    = 'Adicionar Agenda de Visita';
-        $titulo2    = 'Salvar Agenda de Visita';
+        $titulo1    = __('Adicionar Agenda de Visita');
+        $titulo2    = __('Salvar Agenda de Visita');
         $formid     = 'form_Sistema_Admin_Visitas';
-        $formbt     = 'Salvar';
+        $formbt     = __('Salvar');
         $formlink   = 'comercio/Proposta/Visitas_Add2/';
         $campos = Comercio_Visita_DAO::Get_Colunas();
         \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos);
@@ -3120,11 +3120,11 @@ class comercio_PropostaControle extends comercio_Controle
      * @version 2.0
      */
     public function Visitas_Add2(){
-        $titulo     = 'Agenda de Visita Adicionada com Sucesso';
+        $titulo     = __('Agenda de Visita Adicionada com Sucesso');
         $dao        = 'Comercio_Visita';
         $funcao     = '$this->Visitas();';
-        $sucesso1   = 'Inserção bem sucedida';
-        $sucesso2   = 'Agenda de Visita cadastrada com sucesso.';
+        $sucesso1   = __('Inserção bem sucedida');
+        $sucesso2   = __('Agenda de Visita cadastrada com sucesso.');
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
      
@@ -3139,9 +3139,9 @@ class comercio_PropostaControle extends comercio_Controle
         self::Endereco_Visita(true);
         // Carrega Config
         $titulo1    = 'Editar Agenda de Visita (#'.$id.')';
-        $titulo2    = 'Alteração de Agenda de Visita';
+        $titulo2    = __('Alteração de Agenda de Visita');
         $formid     = 'form_Sistema_AdminC_OsEdit';
-        $formbt     = 'Alterar Agenda de Visita';
+        $formbt     = __('Alterar Agenda de Visita');
         $formlink   = 'comercio/Proposta/Visitas_Edit2/'.$id;
         $editar     = Array('Comercio_Visita',$id);
         $campos = Comercio_Visita_DAO::Get_Colunas();
@@ -3155,11 +3155,11 @@ class comercio_PropostaControle extends comercio_Controle
      * @version 2.0
      */
     public function Visitas_Edit2($id){
-        $titulo     = 'Agenda de Visita Editada com Sucesso';
+        $titulo     = __('Agenda de Visita Editada com Sucesso');
         $dao        = Array('Comercio_Visita',$id);
         $funcao     = '$this->Visitas();';
-        $sucesso1   = 'Sucesso';
-        $sucesso2   = 'Agenda de Visita teve a alteração bem sucedida';
+        $sucesso1   = __('Sucesso');
+        $sucesso2   = __('Agenda de Visita teve a alteração bem sucedida');
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);      
     }
@@ -3252,10 +3252,10 @@ class comercio_PropostaControle extends comercio_Controle
         // Começo
         $visita_id = (int) $visita_id;
         // Carrega Config
-        $titulo1    = 'Adicionar Comentário de Visita';
-        $titulo2    = 'Salvar Comentário de Visita';
+        $titulo1    = __('Adicionar Comentário de Visita');
+        $titulo2    = __('Salvar Comentário de Visita');
         $formid     = 'form_Sistema_Admin_Visitas_Comentario';
-        $formbt     = 'Salvar';
+        $formbt     = __('Salvar');
         $formlink   = 'comercio/Proposta/Visitas_Comentario_Add2/'.$visita_id;
         $campos = Comercio_Visita_Comentario_DAO::Get_Colunas();
         self::DAO_Campos_Retira($campos, 'visita');
@@ -3270,11 +3270,11 @@ class comercio_PropostaControle extends comercio_Controle
      */
     public function Visitas_Comentario_Add2($visita_id = false){
         if($visita_id===false) throw new \Exception('Visita não informado',404);
-        $titulo     = 'Comentário sobre a Visita Adicionado com Sucesso';
+        $titulo     = __('Comentário sobre a Visita Adicionado com Sucesso');
         $dao        = 'Comercio_Visita_Comentario';
         $funcao     = '$this->Visitas_Comentario('.$visita_id.');';
-        $sucesso1   = 'Inserção bem sucedida';
-        $sucesso2   = 'Comentário de Visita cadastrado com sucesso.';
+        $sucesso1   = __('Inserção bem sucedida');
+        $sucesso2   = __('Comentário de Visita cadastrado com sucesso.');
         $alterar    = Array('visita'=>$visita_id);
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
     }
@@ -3294,9 +3294,9 @@ class comercio_PropostaControle extends comercio_Controle
         // Começo
         // Carrega Config
         $titulo1    = 'Editar Comentário sobre a Visita (#'.$id.')';
-        $titulo2    = 'Alteração de Comentário sobre a Visita';
-        $formid     = 'form_Sistema_AdminC_VisitaEdit';
-        $formbt     = 'Alterar Comentário de Visita';
+        $titulo2    = __('Alteração de Comentário sobre a Visita');
+        $formid     = __('form_Sistema_AdminC_VisitaEdit');
+        $formbt     = __('Alterar Comentário de Visita');
         $formlink   = 'comercio/Proposta/Visitas_Comentario_Edit2/'.$visita_id.'/'.$id;
         $editar     = Array('Comercio_Visita_Comentario',$id);
         $campos = Comercio_Visita_Comentario_DAO::Get_Colunas();
@@ -3313,10 +3313,10 @@ class comercio_PropostaControle extends comercio_Controle
     public function Visitas_Comentario_Edit2($visita_id = false,$id = 0){
         if($visita_id===false) throw new \Exception('Visita não informado',404);
         if($id         == 0   ) throw new \Exception('Comentário não informado',404);
-        $titulo     = 'Comentário de Visita Editado com Sucesso';
+        $titulo     = __('Comentário de Visita Editado com Sucesso');
         $dao        = Array('Comercio_Visita_Comentario',$id);
         $funcao     = '$this->Visitas_Comentario('.$visita_id.');';
-        $sucesso1   = 'Comentário de Visita Alterado com Sucesso.';
+        $sucesso1   = __('Comentário de Visita Alterado com Sucesso.');
         $sucesso2   = '#'.$visita_id.' teve a alteração bem sucedida';
         $alterar    = Array('visita'=>$visita_id);
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);      

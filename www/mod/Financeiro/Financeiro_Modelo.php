@@ -129,13 +129,13 @@ class Financeiro_Modelo extends \Framework\App\Modelo
             while($campo = $sql->fetch_object()){
                 if($campo->pago==1){
                     $valor = $valor-$campo->valor;
-                    $array[$i]['situacao'] = 'Pago';
+                    $array[$i]['situacao'] = __('Pago');
                     if($campo->dt_pago=='0000-00-00 00:00:00'){
                         $this->db->query('UPDATE '.MYSQL_FINANCEIRO_MOV_INT.' SET dt_pago=\''.APP_HORA.'\' WHERE id='.$campo->id);
                         eval($campo->motivo.'Modelo::Financeiro($this,$usuarioid,$campo->motivoid);');
                     }
                 }else{
-                    $array[$i]['situacao'] = 'Pendente';
+                    $array[$i]['situacao'] = __('Pendente');
                 }
                 eval('$array[$i][\'nome\'] = '.$campo->motivo.'Modelo::Financeiro_Motivo_Exibir($campo->motivoid);');
                 $array[$i]['valor'] = $campo->valor;

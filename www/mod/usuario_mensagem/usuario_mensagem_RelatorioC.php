@@ -22,7 +22,7 @@ class usuario_mensagem_RelatorioControle extends usuario_mensagem_Controle
     static function Endereco_Relatorio($true=true){
         $registro = \Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
-        $titulo = 'Relatório';
+        $titulo = __('Relatório');
         $link = 'Financeiro/Relatorio/Relatorio';
         if($true===true){
             $_Controle->Tema_Endereco($titulo,$link);
@@ -84,7 +84,7 @@ class usuario_mensagem_RelatorioControle extends usuario_mensagem_Controle
         // Cria Segunda Janela com Parametros pré selecionados
         $tipo_visual = false;
         $html = $this->$tipo_relatorio($data_inicial, $data_final);
-        $titulo = 'Relatório de Chamados';
+        $titulo = __('Relatório de Chamados');
         $this->_Visual->Blocar('<span id="relatorio_tabela">'.$html.'</span>');
         $this->_Visual->Bloco_Maior_CriaJanela('<span id="relatorio_titulo">'.$titulo.'</span>','', 0, false);
         
@@ -107,33 +107,33 @@ class usuario_mensagem_RelatorioControle extends usuario_mensagem_Controle
         if(isset($_POST['tipo_relatorio'])){
             $tipo_relatorio = \anti_injection($_POST['tipo_relatorio']);
             if($tipo_relatorio==='Aberto'){
-                $titulo = 'Relatório de Chamados Abertos';
+                $titulo = __('Relatório de Chamados Abertos');
                 $tipo_relatorio = 'Aberto';
             }else if($tipo_relatorio==='Assunto'){
-                $titulo = 'Relatório Agrupado por Assuntos';
+                $titulo = __('Relatório Agrupado por Assuntos');
                 $tipo_relatorio = 'Assunto';
             }else if($tipo_relatorio==='Esgotado'){
-                $titulo = 'Relatório de Esgotados';
+                $titulo = __('Relatório de Esgotados');
                 $tipo_relatorio = 'Esgotado';
             }else if($tipo_relatorio==='Finalizado'){
-                $titulo = 'Relatório de Finalizados';
-                $tipo_relatorio = 'Finalizado';
+                $titulo = __('Relatório de Finalizados');
+                $tipo_relatorio = __('Finalizado');
             }else if($tipo_relatorio==='Origem'){
-                $titulo = 'Relatório Agrupado por Origens';
-                $tipo_relatorio = 'Origem';
+                $titulo = __('Relatório Agrupado por Origens');
+                $tipo_relatorio = __('Origem');
             }else if($tipo_relatorio==='Produto'){
-                $titulo = 'Relatório Agrupado por Produtos';
+                $titulo = __('Relatório Agrupado por Produtos');
                 $tipo_relatorio = 'Produto';
             }else if($tipo_relatorio==='Qtd_Cidade'){
-                $titulo = 'Relatório de Chamados Quantitativos Agrupados por Cidade';
+                $titulo = __('Relatório de Chamados Quantitativos Agrupados por Cidade');
                 $tipo_relatorio = 'Qtd_Cidade';
             }else{
-                $titulo = 'Relatório de Chamados Quantitativos Agrupados por Estado';
+                $titulo = __('Relatório de Chamados Quantitativos Agrupados por Estado');
                 $tipo_relatorio = 'Qtd_Uf';
             }
         }else{
             $tipo_relatorio = 'Aberto';
-            $titulo = 'Relatório de Chamados Abertos';
+            $titulo = __('Relatório de Chamados Abertos');
         }
         /*if(isset($_POST['tipo_visual'])){
             $tipo_visual = \anti_injection($_POST['tipo_visual']);
@@ -184,7 +184,7 @@ class usuario_mensagem_RelatorioControle extends usuario_mensagem_Controle
         return $this->_Visual->Show_Tabela_DataTable_Massiva($tabela,'usuario_mensagem/Relatorio/Aberto/'.$datainicial.'/'.$datafinal,'',false);
         
 
-//$titulo = 'Listagem de Senhas';  //(<span id="DataTable_Contador">Carregando...</span>)
+//$titulo = __('Listagem de Senhas');  //(<span id="DataTable_Contador">Carregando...</span>)
         return false;
     }
     /**
@@ -195,7 +195,7 @@ class usuario_mensagem_RelatorioControle extends usuario_mensagem_Controle
             'Protocolo','Cliente','Assunto','Mensagem','Tipo','Data Criação','Data Ult. Mod.'/*,'Funções'*/
         );
         return $this->_Visual->Show_Tabela_DataTable_Massiva($tabela,'usuario_mensagem/Relatorio/Assunto/'.$datainicial.'/'.$datafinal,'',false);
-        //$titulo = 'Listagem de Senhas';  //(<span id="DataTable_Contador">Carregando...</span>)
+        //$titulo = __('Listagem de Senhas');  //(<span id="DataTable_Contador">Carregando...</span>)
         return false;
     }
     /**
@@ -206,7 +206,7 @@ class usuario_mensagem_RelatorioControle extends usuario_mensagem_Controle
             'Protocolo','Cliente','Assunto','Mensagem','Data Criação','Data Ult. Mod.'/*,'Funções'*/
         );
         return $this->_Visual->Show_Tabela_DataTable_Massiva($tabela,'usuario_mensagem/Relatorio/Esgotado/'.$datainicial.'/'.$datafinal,'',false);
-        //$titulo = 'Listagem de Senhas';  //(<span id="DataTable_Contador">Carregando...</span>)
+        //$titulo = __('Listagem de Senhas');  //(<span id="DataTable_Contador">Carregando...</span>)
         return false;
     }
     /**
@@ -217,7 +217,7 @@ class usuario_mensagem_RelatorioControle extends usuario_mensagem_Controle
             'Protocolo','Cliente','Assunto','Mensagem','Data Criação','Data Ult. Mod.'/*,'Funções'*/
         );
         return $this->_Visual->Show_Tabela_DataTable_Massiva($tabela,'usuario_mensagem/Relatorio/Finalizado/'.$datainicial.'/'.$datafinal,'',false);
-        //$titulo = 'Listagem de Senhas';  //(<span id="DataTable_Contador">Carregando...</span>)
+        //$titulo = __('Listagem de Senhas');  //(<span id="DataTable_Contador">Carregando...</span>)
         return false;
     }
     /**
@@ -229,7 +229,7 @@ class usuario_mensagem_RelatorioControle extends usuario_mensagem_Controle
             'Protocolo','Cliente','Assunto','Mensagem','Data Criação','Data Ult. Mod.'/*,'Funções'*/
         );
         return $this->_Visual->Show_Tabela_DataTable_Massiva($tabela,'usuario_mensagem/Relatorio/Origem/'.$datainicial.'/'.$datafinal,'',false);
-        //$titulo = 'Listagem de Senhas';  //(<span id="DataTable_Contador">Carregando...</span>)
+        //$titulo = __('Listagem de Senhas');  //(<span id="DataTable_Contador">Carregando...</span>)
         return false;
     }
     /**
@@ -240,7 +240,7 @@ class usuario_mensagem_RelatorioControle extends usuario_mensagem_Controle
             'Marca','Linha','Produto','Mensagem','Data Criação','Data Ult. Mod.'/*,'Funções'*/
         );
         return $this->_Visual->Show_Tabela_DataTable_Massiva($tabela,'usuario_mensagem/Relatorio/Produto/'.$datainicial.'/'.$datafinal,'',false);
-        //$titulo = 'Listagem de Senhas';  //(<span id="DataTable_Contador">Carregando...</span>)
+        //$titulo = __('Listagem de Senhas');  //(<span id="DataTable_Contador">Carregando...</span>)
         return false;
     }
     /**
@@ -251,7 +251,7 @@ class usuario_mensagem_RelatorioControle extends usuario_mensagem_Controle
             'Cidade / UF','No. de Chamados','Data Criação','Data Ult. Mod.'/*,'Funções'*/
         );
         return $this->_Visual->Show_Tabela_DataTable_Massiva($tabela,'usuario_mensagem/Relatorio/Qtd_Cidade/'.$datainicial.'/'.$datafinal,'',false);
-        //$titulo = 'Listagem de Senhas';  //(<span id="DataTable_Contador">Carregando...</span>)
+        //$titulo = __('Listagem de Senhas');  //(<span id="DataTable_Contador">Carregando...</span>)
         return false;
     }
     /**
@@ -262,7 +262,7 @@ class usuario_mensagem_RelatorioControle extends usuario_mensagem_Controle
             'Estado','No. de Chamados','Data Criação','Data Ult. Mod.'/*,'Funções'*/
         );
         return $this->_Visual->Show_Tabela_DataTable_Massiva($tabela,'usuario_mensagem/Relatorio/Qtd_Uf/'.$datainicial.'/'.$datafinal,'',false);
-        //$titulo = 'Listagem de Senhas';  //(<span id="DataTable_Contador">Carregando...</span>)
+        //$titulo = __('Listagem de Senhas');  //(<span id="DataTable_Contador">Carregando...</span>)
         return false;
     }
 }

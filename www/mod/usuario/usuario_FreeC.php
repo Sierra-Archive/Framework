@@ -74,22 +74,22 @@ class usuario_FreeControle extends usuario_Controle
         $formlink   = 'usuario/Free/usuarios_inserir/'.$tipocadastro;
         $campos = Usuario_DAO::Get_Colunas();
         if($tipocadastro===false){
-            $titulo1    = 'Se tornar Usuário';
-            $titulo2    = 'Salvar Usuário';
+            $titulo1    = __('Se tornar Usuário');
+            $titulo2    = __('Salvar Usuário');
             $formid     = 'form_free_cadastroUsuario';
-            $formbt     = 'Salvar Usuário';
+            $formbt     = __('Salvar Usuário');
             self::DAO_Campos_Retira($campos,'grupo');
         }elseif($tipocadastro=='cliente'){
-            $titulo1    = 'Se tornar Cliente';
-            $titulo2    = 'Salvar Cliente';
+            $titulo1    = __('Se tornar Cliente');
+            $titulo2    = __('Salvar Cliente');
             $formid     = 'form_free_cadastroCliente';
-            $formbt     = 'Salvar';
+            $formbt     = __('Salvar');
             self::DAO_Campos_Retira($campos,'grupo');
         }else{
-            $titulo1    = 'Se tornar Associado';
-            $titulo2    = 'Salvar Associado';
+            $titulo1    = __('Se tornar Associado');
+            $titulo2    = __('Salvar Associado');
             $formid     = 'form_free_cadastroAssociado';
-            $formbt     = 'Salvar Associado';
+            $formbt     = __('Salvar Associado');
         }
         \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos);
         

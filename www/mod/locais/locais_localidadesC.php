@@ -34,7 +34,7 @@ class locais_localidadesControle extends locais_Controle
             $cidade = 'falso';
         }
         if($bairro=='' || !isset($bairro)){
-            $bairro = 'falso';
+            $bairro = __('falso');
         }
         $imprimir = function(&$opcoes){
             $html = '';
@@ -220,10 +220,10 @@ class locais_localidadesControle extends locais_Controle
      */
     public function Paises_Add(){
         // Carrega Config
-        $titulo1    = 'Adicionar Pais';
-        $titulo2    = 'Salvar Pais';
+        $titulo1    = __('Adicionar Pais');
+        $titulo2    = __('Salvar Pais');
         $formid     = 'form_Sistema_Admin_Paises';
-        $formbt     = 'Salvar';
+        $formbt     = __('Salvar');
         $formlink   = 'locais/localidades/Paises_Add2/';
         $campos = Sistema_Local_Pais_DAO::Get_Colunas();
         \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos);
@@ -236,11 +236,11 @@ class locais_localidadesControle extends locais_Controle
      * @version 2.0
      */
     public function Paises_Add2(){
-        $titulo     = 'Pais Adicionado com Sucesso';
+        $titulo     = __('Pais Adicionado com Sucesso');
         $dao        = 'Sistema_Local_Pais';
         $funcao     = '$this->Paises();';
-        $sucesso1   = 'Inserção bem sucedida';
-        $sucesso2   = 'Pais cadastrado com sucesso.';
+        $sucesso1   = __('Inserção bem sucedida');
+        $sucesso2   = __('Pais cadastrado com sucesso.');
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
     }
@@ -253,9 +253,9 @@ class locais_localidadesControle extends locais_Controle
     public function Paises_Edit($id){
         // Carrega Config
         $titulo1    = 'Editar Pais (#'.$id.')';
-        $titulo2    = 'Alteração de Pais';
+        $titulo2    = __('Alteração de Pais');
         $formid     = 'form_Sistema_AdminC_PaisEdit';
-        $formbt     = 'Alterar Pais';
+        $formbt     = __('Alterar Pais');
         $formlink   = 'locais/localidades/Paises_Edit2/'.$id;
         $editar     = Array('Sistema_Local_Pais',$id);
         $campos = Pais_DAO::Get_Colunas();
@@ -269,10 +269,10 @@ class locais_localidadesControle extends locais_Controle
      * @version 2.0
      */
     public function Paises_Edit2($id){
-        $titulo     = 'Pais Editado com Sucesso';
+        $titulo     = __('Pais Editado com Sucesso');
         $dao        = Array('Sistema_Local_Pais',$id);
         $funcao     = '$this->Paises();';
-        $sucesso1   = 'Pais Alterado com Sucesso.';
+        $sucesso1   = __('Pais Alterado com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);   
@@ -348,10 +348,10 @@ class locais_localidadesControle extends locais_Controle
      */
     public function Estados_Add(){
         // Carrega Config
-        $titulo1    = 'Adicionar Estado';
-        $titulo2    = 'Salvar Estado';
+        $titulo1    = __('Adicionar Estado');
+        $titulo2    = __('Salvar Estado');
         $formid     = 'form_Sistema_Admin_Estados';
-        $formbt     = 'Salvar';
+        $formbt     = __('Salvar');
         $formlink   = 'locais/localidades/Estados_Add2/';
         $campos = Sistema_Local_Estado_DAO::Get_Colunas();
         \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos);
@@ -364,11 +364,11 @@ class locais_localidadesControle extends locais_Controle
      * @version 2.0
      */
     public function Estados_Add2(){
-        $titulo     = 'Estado Adicionado com Sucesso';
+        $titulo     = __('Estado Adicionado com Sucesso');
         $dao        = 'Sistema_Local_Estado';
         $funcao     = '$this->Estados();';
-        $sucesso1   = 'Inserção bem sucedida';
-        $sucesso2   = 'Estado cadastrado com sucesso.';
+        $sucesso1   = __('Inserção bem sucedida');
+        $sucesso2   = __('Estado cadastrado com sucesso.');
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
     }
@@ -381,9 +381,9 @@ class locais_localidadesControle extends locais_Controle
     public function Estados_Edit($id){
         // Carrega Config
         $titulo1    = 'Editar Estado (#'.$id.')';
-        $titulo2    = 'Alteração de Estado';
+        $titulo2    = __('Alteração de Estado');
         $formid     = 'form_Sistema_AdminC_EstadoEdit';
-        $formbt     = 'Alterar Estado';
+        $formbt     = __('Alterar Estado');
         $formlink   = 'locais/localidades/Estados_Edit2/'.$id;
         $editar     = Array('Sistema_Local_Estado',$id);
         $campos = Sistema_Local_Estado_DAO::Get_Colunas();
@@ -397,10 +397,10 @@ class locais_localidadesControle extends locais_Controle
      * @version 2.0
      */
     public function Estados_Edit2($id){
-        $titulo     = 'Estado Editado com Sucesso';
+        $titulo     = __('Estado Editado com Sucesso');
         $dao        = Array('Sistema_Local_Estado',$id);
         $funcao     = '$this->Estados();';
-        $sucesso1   = 'Estado Alterado com Sucesso.';
+        $sucesso1   = __('Estado Alterado com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);   
@@ -476,10 +476,10 @@ class locais_localidadesControle extends locais_Controle
      */
     public function Cidades_Add(){
         // Carrega Config
-        $titulo1    = 'Adicionar Cidade';
-        $titulo2    = 'Salvar Cidade';
+        $titulo1    = __('Adicionar Cidade');
+        $titulo2    = __('Salvar Cidade');
         $formid     = 'form_Sistema_Admin_Cidades';
-        $formbt     = 'Salvar';
+        $formbt     = __('Salvar');
         $formlink   = 'locais/localidades/Cidades_Add2/';
         $campos = Sistema_Local_Cidade_DAO::Get_Colunas();
         \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos);
@@ -492,11 +492,11 @@ class locais_localidadesControle extends locais_Controle
      * @version 2.0
      */
     public function Cidades_Add2(){
-        $titulo     = 'Cidade Adicionada com Sucesso';
+        $titulo     = __('Cidade Adicionada com Sucesso');
         $dao        = 'Sistema_Local_Cidade';
         $funcao     = '$this->Cidades();';
-        $sucesso1   = 'Inserção bem sucedida';
-        $sucesso2   = 'Cidade cadastrada com sucesso.';
+        $sucesso1   = __('Inserção bem sucedida');
+        $sucesso2   = __('Cidade cadastrada com sucesso.');
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
     }
@@ -509,9 +509,9 @@ class locais_localidadesControle extends locais_Controle
     public function Cidades_Edit($id){
         // Carrega Config
         $titulo1    = 'Editar Cidade (#'.$id.')';
-        $titulo2    = 'Alteração de Cidade';
+        $titulo2    = __('Alteração de Cidade');
         $formid     = 'form_Sistema_AdminC_CidadeEdit';
-        $formbt     = 'Alterar Cidade';
+        $formbt     = __('Alterar Cidade');
         $formlink   = 'locais/localidades/Cidades_Edit2/'.$id;
         $editar     = Array('Sistema_Local_Cidade',$id);
         $campos = Sistema_Local_Cidade_DAO::Get_Colunas();
@@ -525,10 +525,10 @@ class locais_localidadesControle extends locais_Controle
      * @version 2.0
      */
     public function Cidades_Edit2($id){
-        $titulo     = 'Cidade Editada com Sucesso';
+        $titulo     = __('Cidade Editada com Sucesso');
         $dao        = Array('Sistema_Local_Cidade',$id);
         $funcao     = '$this->Cidades();';
-        $sucesso1   = 'Cidade Alterada com Sucesso.';
+        $sucesso1   = __('Cidade Alterada com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);   
@@ -604,10 +604,10 @@ class locais_localidadesControle extends locais_Controle
      */
     public function Bairros_Add(){
         // Carrega Config
-        $titulo1    = 'Adicionar Bairro';
-        $titulo2    = 'Salvar Bairro';
+        $titulo1    = __('Adicionar Bairro');
+        $titulo2    = __('Salvar Bairro');
         $formid     = 'form_Sistema_Admin_Bairros';
-        $formbt     = 'Salvar';
+        $formbt     = __('Salvar');
         $formlink   = 'locais/localidades/Bairros_Add2/';
         $campos = Sistema_Local_Bairro_DAO::Get_Colunas();
         \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos);
@@ -620,11 +620,11 @@ class locais_localidadesControle extends locais_Controle
      * @version 2.0
      */
     public function Bairros_Add2(){
-        $titulo     = 'Bairro Adicionado com Sucesso';
+        $titulo     = __('Bairro Adicionado com Sucesso');
         $dao        = 'Sistema_Local_Bairro';
         $funcao     = '$this->Bairros();';
-        $sucesso1   = 'Inserção bem sucedida';
-        $sucesso2   = 'Bairro cadastrado com sucesso.';
+        $sucesso1   = __('Inserção bem sucedida');
+        $sucesso2   = __('Bairro cadastrado com sucesso.');
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
     }
@@ -637,9 +637,9 @@ class locais_localidadesControle extends locais_Controle
     public function Bairros_Edit($id){
         // Carrega Config
         $titulo1    = 'Editar Bairro (#'.$id.')';
-        $titulo2    = 'Alteração de Bairro';
+        $titulo2    = __('Alteração de Bairro');
         $formid     = 'form_Sistema_AdminC_BairroEdit';
-        $formbt     = 'Alterar Bairro';
+        $formbt     = __('Alterar Bairro');
         $formlink   = 'locais/localidades/Bairros_Edit2/'.$id;
         $editar     = Array('Sistema_Local_Bairro',$id);
         $campos = Sistema_Local_Bairro_DAO::Get_Colunas();
@@ -653,10 +653,10 @@ class locais_localidadesControle extends locais_Controle
      * @version 2.0
      */
     public function Bairros_Edit2($id){
-        $titulo     = 'Bairro Editado com Sucesso';
+        $titulo     = __('Bairro Editado com Sucesso');
         $dao        = Array('Sistema_Local_Bairro',$id);
         $funcao     = '$this->Bairros();';
-        $sucesso1   = 'Bairro Alterado com Sucesso.';
+        $sucesso1   = __('Bairro Alterado com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);   

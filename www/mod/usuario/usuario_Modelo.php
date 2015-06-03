@@ -150,7 +150,7 @@ class usuario_Modelo extends \Framework\App\Modelo
                 eval('$planostatus[\'plano\'] = CONFIG_CLI_'.$planopendente.'_NOME;');
                 $planostatus['alterar'] = '';
             }else{
-                $planostatus['status'] = 'Pago';
+                $planostatus['status'] = __('Pago');
                 eval('$planostatus[\'plano\'] = CONFIG_CLI_'.$acl->logado_usuario->nivel_usuario.'_NOME;');
                 if($acl->logado_usuario->nivel_usuario<4){
                     $planostatus['alterar'] = '<a confirma="Deseja realmente alterar o seu plano?" title="Alterar Plano de Associado" class="lajax explicar-titulo" href="'.URL_PATH.'usuario/Perfil/Plano_Popup/" acao="">Clique Aqui</a>';
@@ -223,9 +223,9 @@ class usuario_Modelo extends \Framework\App\Modelo
             if($ativado===false){
                 $where = '';
             }
-            $nomedisplay        = 'Usuários ';
-            $nomedisplay_sing   = 'Usuário ';
-            $nomedisplay_tipo   = 'Usuario';
+            $nomedisplay        = __('Usuários ');
+            $nomedisplay_sing   = __('Usuário ');
+            $nomedisplay_tipo   = __('Usuario');
         }else{
             $categoria = (int) $grupo[0];
             

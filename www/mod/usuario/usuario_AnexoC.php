@@ -49,10 +49,10 @@ class usuario_AnexoControle extends usuario_Controle
         $usuario = $this->_Modelo->db->Sql_Select('Usuario', Array('id'=>$id));
         if($tipo===false){
             if($usuario->grupo==CFG_TEC_IDCLIENTE){
-                $tipo   = 'Cliente';
+                $tipo   = __('Cliente');
                 $tipo2  = 'cliente';
             }else if($usuario->grupo==CFG_TEC_IDFUNCIONARIO){
-                $tipo   = 'Funcionário';
+                $tipo   = __('Funcionário');
                 $tipo2  = 'funcionario';
             }
         }else{
@@ -61,7 +61,7 @@ class usuario_AnexoControle extends usuario_Controle
         }
         // GAmbiarra Para Consertar erro de acento em url
         if($tipo=='Funcionrio' || $tipo=="Funcionario") $tipo = "Funcionário";
-        if($tipo=="Usurio" || $tipo=="Usuario")         $tipo = 'Usuário';
+        if($tipo=="Usurio" || $tipo=="Usuario")         $tipo = __('Usuário');
         // Cria Tipo 2:
         if($tipo=='Cliente'){
             $tipo2  = 'cliente';

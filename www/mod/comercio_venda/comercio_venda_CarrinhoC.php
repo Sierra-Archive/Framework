@@ -38,7 +38,7 @@ class comercio_venda_CarrinhoControle extends comercio_venda_Controle
     static function Endereco_Carrinho($true=true){
         $registro = \Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
-        $titulo = 'Caixas';
+        $titulo = __('Caixas');
         $link = 'comercio_venda/Carrinho/Carrinhos';
         if($true===true){
             $_Controle->Tema_Endereco($titulo,$link);
@@ -75,7 +75,7 @@ class comercio_venda_CarrinhoControle extends comercio_venda_Controle
             reset($carrinhos);
             foreach ($carrinhos as $indice=>&$valor) {
                 if($valor->mesa2==NULL){
-                    $mesa2 = 'Balcao';
+                    $mesa2 = __('Balcao');
                 }else{
                     $mesa2 = $valor->mesa2;
                 }
@@ -113,15 +113,15 @@ class comercio_venda_CarrinhoControle extends comercio_venda_Controle
     public function Carrinhos_Add(){
         self::Endereco_Carrinho(true);
         // Carrega Config
-        $titulo1    = 'Adicionar Caixa';
-        $titulo2    = 'Salvar Caixa';
+        $titulo1    = __('Adicionar Caixa');
+        $titulo2    = __('Salvar Caixa');
         $formid     = 'form_Sistema_Admin_Carrinhos';
-        $formbt     = 'Salvar';
+        $formbt     = __('Salvar');
         $formlink   = 'comercio_venda/Carrinho/Carrinhos_Add2/';
         $campos = Comercio_Venda_Carrinho_DAO::Get_Colunas();
         // Chama Janela de Calculo de Valor
         $this->Carrinho_Atualizar_Valor_Dinamico_Janela($formid);
-        $posicao = 'left';
+        $posicao = __('left');
         //Chama Funcao de Geracao
         \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos,false,$posicao);
     }
@@ -133,11 +133,11 @@ class comercio_venda_CarrinhoControle extends comercio_venda_Controle
      * @version 2.0
      */
     public function Carrinhos_Add2(){
-        $titulo     = 'Caixa Adicionado com Sucesso';
+        $titulo     = __('Caixa Adicionado com Sucesso');
         $dao        = 'Comercio_Venda_Carrinho';
         $funcao     = false;
-        $sucesso1   = 'Inserção bem sucedida';
-        $sucesso2   = 'Caixa cadastrado com sucesso.';
+        $sucesso1   = __('Inserção bem sucedida');
+        $sucesso2   = __('Caixa cadastrado com sucesso.');
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
         
@@ -158,9 +158,9 @@ class comercio_venda_CarrinhoControle extends comercio_venda_Controle
         self::Endereco_Carrinho(true);
         // Carrega Config
         $titulo1    = 'Editar Caixa (#'.$id.')';
-        $titulo2    = 'Alteração de Caixa';
+        $titulo2    = __('Alteração de Caixa');
         $formid     = 'form_Sistema_AdminC_CarrinhoEdit';
-        $formbt     = 'Alterar Caixa';
+        $formbt     = __('Alterar Caixa');
         $formlink   = 'comercio_venda/Carrinho/Carrinhos_Edit2/'.$id;
         $editar     = Array('Comercio_Venda_Carrinho',$id);
         $campos = Comercio_Venda_Carrinho_DAO::Get_Colunas();
@@ -180,10 +180,10 @@ class comercio_venda_CarrinhoControle extends comercio_venda_Controle
      * @version 2.0
      */
     public function Carrinhos_Edit2($id){
-        $titulo     = 'Caixa Editado com Sucesso';
+        $titulo     = __('Caixa Editado com Sucesso');
         $dao        = Array('Comercio_Venda_Carrinho',$id);
         $funcao     = false;
-        $sucesso1   = 'Caixa Alterado com Sucesso.';
+        $sucesso1   = __('Caixa Alterado com Sucesso.');
         $sucesso2   = ''.$_POST["mesa"].' teve a alteração bem sucedida';
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
@@ -394,7 +394,7 @@ class comercio_venda_CarrinhoControle extends comercio_venda_Controle
         if($recalcular===false){
             $valor ='R$ 0,00';
         }else{
-            $valor ='Calculando';
+            $valor =__('Calculando');
             $this->_Visual->Javascript_Executar('params'.$time.'=$(\'#'.$form_id.'\').serialize();'
                             . 'Sierra.Modelo_Ajax_Chamar(\'comercio_venda/Carrinho/Carrinho_Atualizar_Valor_Dinamico/'.$time.'\',params'.$time.',\'POST\',true,false,false);');
         }
@@ -491,11 +491,11 @@ class comercio_venda_CarrinhoControle extends comercio_venda_Controle
         $id = $objeto->id;
         if($pago=='0'){
             $tipo = 'important';
-            $nometipo = 'Não Pago';
+            $nometipo = __('Não Pago');
         }
         else{
             $tipo = 'success';
-            $nometipo = 'Pago';
+            $nometipo = __('Pago');
         }
         $html = '<span class="badge badge-'.$tipo.'">'.$nometipo.'</span>';
         if($link===true && \Framework\App\Registro::getInstacia()->_Acl->Get_Permissao_Url('comercio_venda/Carrinho/PagoCarrinhos')!==false){
@@ -515,7 +515,7 @@ class comercio_venda_CarrinhoControle extends comercio_venda_Controle
     static function Endereco_Mesa($true=true){
         $registro = \Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
-        $titulo = 'Mesas';
+        $titulo = __('Mesas');
         $link = 'comercio_venda/Carrinho/Mesas';
         if($true===true){
             $_Controle->Tema_Endereco($titulo,$link);
@@ -583,10 +583,10 @@ class comercio_venda_CarrinhoControle extends comercio_venda_Controle
     public function Mesas_Add(){
         self::Endereco_Mesa(true);
         // Carrega Config
-        $titulo1    = 'Adicionar Mesa';
-        $titulo2    = 'Salvar Mesa';
+        $titulo1    = __('Adicionar Mesa');
+        $titulo2    = __('Salvar Mesa');
         $formid     = 'form_Sistema_Admin_Mesas';
-        $formbt     = 'Salvar';
+        $formbt     = __('Salvar');
         $formlink   = 'comercio_venda/Carrinho/Mesas_Add2/';
         $campos = Comercio_Venda_Mesa_DAO::Get_Colunas();
         \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos);
@@ -599,11 +599,11 @@ class comercio_venda_CarrinhoControle extends comercio_venda_Controle
      * @version 2.0
      */
     public function Mesas_Add2(){
-        $titulo     = 'Mesa Adicionada com Sucesso';
+        $titulo     = __('Mesa Adicionada com Sucesso');
         $dao        = 'Comercio_Venda_Mesa';
         $funcao     = '$this->Mesas();';
-        $sucesso1   = 'Inserção bem sucedida';
-        $sucesso2   = 'Mesa cadastrada com sucesso.';
+        $sucesso1   = __('Inserção bem sucedida');
+        $sucesso2   = __('Mesa cadastrada com sucesso.');
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
     }
@@ -617,9 +617,9 @@ class comercio_venda_CarrinhoControle extends comercio_venda_Controle
         self::Endereco_Mesa(true);
         // Carrega Config
         $titulo1    = 'Editar Mesa (#'.$id.')';
-        $titulo2    = 'Alteração de Mesa';
+        $titulo2    = __('Alteração de Mesa');
         $formid     = 'form_Sistema_AdminC_MesaEdit';
-        $formbt     = 'Alterar Mesa';
+        $formbt     = __('Alterar Mesa');
         $formlink   = 'comercio_venda/Carrinho/Mesas_Edit2/'.$id;
         $editar     = Array('Comercio_Venda_Mesa',$id);
         $campos = Comercio_Venda_Mesa_DAO::Get_Colunas();
@@ -633,10 +633,10 @@ class comercio_venda_CarrinhoControle extends comercio_venda_Controle
      * @version 2.0
      */
     public function Mesas_Edit2($id){
-        $titulo     = 'Mesa Editada com Sucesso';
+        $titulo     = __('Mesa Editada com Sucesso');
         $dao        = Array('Comercio_Venda_Mesa',$id);
         $funcao     = '$this->Mesas();';
-        $sucesso1   = 'Mesa Alterada com Sucesso.';
+        $sucesso1   = __('Mesa Alterada com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);      
