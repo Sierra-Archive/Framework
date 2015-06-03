@@ -90,7 +90,7 @@ class usuario_AnexoControle extends usuario_Controle
                 'Arquivos de Imagem'
             )
         );
-        $this->_Visual->Bloco_Unico_CriaJanela( 'Fazer Upload de Anexo'  ,'',8);
+        $this->_Visual->Bloco_Unico_CriaJanela(__('Fazer Upload de Anexo')  ,'',8);
         
         // Processa Anexo
         list($titulo,$html,$i) = $this->Anexos_Processar($id);
@@ -155,8 +155,8 @@ class usuario_AnexoControle extends usuario_Controle
             
             $mensagens = array(
                 "tipo" => 'erro',
-                "mgs_principal" => 'Erro',
-                "mgs_secundaria" => 'Houve algum erro ao fazer upload do arquivo !'
+                "mgs_principal" => __('Erro'),
+                "mgs_secundaria" => __('Houve algum erro ao fazer upload do arquivo !')
             );
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens); 
             $this->_Visual->Json_Info_Update('Titulo', __('Erro com Upload'));

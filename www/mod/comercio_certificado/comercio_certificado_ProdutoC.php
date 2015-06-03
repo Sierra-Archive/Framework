@@ -194,8 +194,8 @@ class comercio_certificado_ProdutoControle extends comercio_certificado_Controle
         if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Inserção bem sucedida',
-                "mgs_secundaria" => 'Produto cadastrado com sucesso.'
+                "mgs_principal" => __('Inserção bem sucedida'),
+                "mgs_secundaria" => __('Produto cadastrado com sucesso.')
             ); 
         }else{
             $mensagens = array(
@@ -229,7 +229,7 @@ class comercio_certificado_ProdutoControle extends comercio_certificado_Controle
         if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Produto Alterado com Sucesso',
+                "mgs_principal" => __('Produto Alterado com Sucesso'),
                 "mgs_secundaria" => ''.$_POST["nome"].' teve a alteração bem sucedida'
             );
         }else{
@@ -264,8 +264,8 @@ class comercio_certificado_ProdutoControle extends comercio_certificado_Controle
     	if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Deletado',
-                "mgs_secundaria" => 'Produto Deletado com sucesso'
+                "mgs_principal" => __('Deletado'),
+                "mgs_secundaria" => __('Produto Deletado com sucesso')
             );
     	}else{
             $mensagens = array(
@@ -373,8 +373,8 @@ class comercio_certificado_ProdutoControle extends comercio_certificado_Controle
     	if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Modificado',
-                "mgs_secundaria" => 'Auditorias do Produto editados com sucesso'
+                "mgs_principal" => __('Modificado'),
+                "mgs_secundaria" => __('Auditorias do Produto editados com sucesso')
             );
     	}else{
             $mensagens = array(

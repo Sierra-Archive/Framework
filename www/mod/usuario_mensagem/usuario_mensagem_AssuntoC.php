@@ -139,7 +139,7 @@ class usuario_mensagem_AssuntoControle extends usuario_mensagem_Controle
         if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Assunto Alterado com Sucesso',
+                "mgs_principal" => __('Assunto Alterado com Sucesso'),
                 "mgs_secundaria" => ''.$_POST["nome"].' teve a alteração bem sucedida'
             );
         }else{
@@ -172,8 +172,8 @@ class usuario_mensagem_AssuntoControle extends usuario_mensagem_Controle
     	if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Deletado',
-                "mgs_secundaria" => 'Assunto Deletado com sucesso'
+                "mgs_principal" => __('Deletado'),
+                "mgs_secundaria" => __('Assunto Deletado com sucesso')
             );
     	}else{
             $mensagens = array(

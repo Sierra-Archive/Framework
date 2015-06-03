@@ -120,7 +120,7 @@ class usuario_FreeControle extends usuario_Controle
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => $language['mens_erro']['erro'],
-                "mgs_secundaria" => 'Preencha Login e Email'
+                "mgs_secundaria" => __('Preencha Login e Email')
             );
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens); 
             $this->_Visual->Javascript_Executar('$("#email").css(\'border\', \'2px solid #FFAEB0\').focus();$("#login").css(\'border\', \'2px solid #FFAEB0\');');
@@ -131,7 +131,7 @@ class usuario_FreeControle extends usuario_Controle
                 $mensagens = array(
                     "tipo" => 'erro',
                     "mgs_principal" => $language['mens_erro']['erro'],
-                    "mgs_secundaria" => 'Email Inválido'
+                    "mgs_secundaria" => __('Email Inválido')
                 );
                 $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens); 
                 $this->_Visual->Javascript_Executar('$("#email").css(\'border\', \'2px solid #FFAEB0\').focus();');
@@ -139,7 +139,7 @@ class usuario_FreeControle extends usuario_Controle
                 $mensagens = array(
                     "tipo" => 'erro',
                     "mgs_principal" => $language['mens_erro']['erro'],
-                    "mgs_secundaria" => 'Email Ja Existe'
+                    "mgs_secundaria" => __('Email Ja Existe')
                 );
                 $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens); 
                 $this->_Visual->Javascript_Executar('$("#email").css(\'border\', \'2px solid #FFAEB0\').focus();');
@@ -147,7 +147,7 @@ class usuario_FreeControle extends usuario_Controle
                 $mensagens = array(
                     "tipo" => 'erro',
                     "mgs_principal" => $language['mens_erro']['erro'],
-                    "mgs_secundaria" => 'Login ja existe'
+                    "mgs_secundaria" => __('Login ja existe')
                 );
                 $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens); 
                 $this->_Visual->Javascript_Executar('$("#login").css(\'border\', \'2px solid #FFAEB0\').focus();');
@@ -163,7 +163,7 @@ class usuario_FreeControle extends usuario_Controle
                     $mensagens = array(
                         "tipo" => 'erro',
                         "mgs_principal" => $language['mens_erro']['erro'],
-                        "mgs_secundaria" => 'Senha Inválida'
+                        "mgs_secundaria" => __('Senha Inválida')
                     );
                     $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
                     return;
@@ -179,8 +179,8 @@ class usuario_FreeControle extends usuario_Controle
                 if($sucesso===true){
                     $mensagens = array(
                         "tipo" => 'sucesso',
-                        "mgs_principal" => 'Inserção bem sucedida',
-                        "mgs_secundaria" => 'Voce foi cadastrado com sucesso.'
+                        "mgs_principal" => __('Inserção bem sucedida'),
+                        "mgs_secundaria" => __('Voce foi cadastrado com sucesso.')
                     );
                     // loga usuario
                     $this->_Modelo->Usuario_Logar(\anti_injection($_POST['login']), \Framework\App\Sistema_Funcoes::Form_Senha_Blindar($_POST['senha']));  

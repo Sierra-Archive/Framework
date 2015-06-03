@@ -148,8 +148,8 @@ class usuario_mensagem_OrigemControle extends usuario_mensagem_Controle
     	if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Deletado',
-                "mgs_secundaria" => 'Origem deletada com sucesso'
+                "mgs_principal" => __('Deletado'),
+                "mgs_secundaria" => __('Origem deletada com sucesso')
             );
     	}else{
             $mensagens = array(

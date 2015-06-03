@@ -221,8 +221,8 @@ class comercio_venda_CarrinhoControle extends comercio_venda_Controle
     	if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Deletada',
-                "mgs_secundaria" => 'Caixa Deletado com sucesso'
+                "mgs_principal" => __('Deletada'),
+                "mgs_secundaria" => __('Caixa Deletado com sucesso')
             );
     	}else{
             $mensagens = array(
@@ -444,8 +444,8 @@ class comercio_venda_CarrinhoControle extends comercio_venda_Controle
             );
             $mensagens = array(
                 "tipo"              => 'sucesso',
-                "mgs_principal"     => 'Sucesso',
-                "mgs_secundaria"    => 'Desfeito Pagamento com Sucesso.'
+                "mgs_principal"     => __('Sucesso'),
+                "mgs_secundaria"    => __('Desfeito Pagamento com Sucesso.')
             );
         }else{
             $resultado->pago='1';// De Não Pago para Pago
@@ -457,8 +457,8 @@ class comercio_venda_CarrinhoControle extends comercio_venda_Controle
             );
             $mensagens = array(
                 "tipo"              => 'sucesso',
-                "mgs_principal"     => 'Sucesso',
-                "mgs_secundaria"    => 'Pago com Sucesso.'
+                "mgs_principal"     => __('Sucesso'),
+                "mgs_secundaria"    => __('Pago com Sucesso.')
             );
         }
         $sucesso = $this->_Modelo->db->Sql_Update($resultado);
@@ -473,8 +473,8 @@ class comercio_venda_CarrinhoControle extends comercio_venda_Controle
         }else{
             $mensagens = array(
                 "tipo"              => 'erro',
-                "mgs_principal"     => 'Erro',
-                "mgs_secundaria"    => 'Ocorreu um Erro.'
+                "mgs_principal"     => __('Erro'),
+                "mgs_secundaria"    => __('Ocorreu um Erro.')
             );
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
         }
@@ -659,8 +659,8 @@ class comercio_venda_CarrinhoControle extends comercio_venda_Controle
     	if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Deletada',
-                "mgs_secundaria" => 'Mesa Deletada com sucesso'
+                "mgs_principal" => __('Deletada'),
+                "mgs_secundaria" => __('Mesa Deletada com sucesso')
             );
     	}else{
             $mensagens = array(

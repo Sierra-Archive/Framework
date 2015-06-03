@@ -264,8 +264,8 @@ class Enquete_RespostaControle extends Enquete_Controle
     	if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Deletado',
-                "mgs_secundaria" => 'Resposta deletada com sucesso'
+                "mgs_principal" => __('Deletado'),
+                "mgs_secundaria" => __('Resposta deletada com sucesso')
             );
     	}else{
             $mensagens = array(

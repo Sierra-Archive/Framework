@@ -151,7 +151,7 @@ class Financeiro_ListarControle extends Financeiro_Controle
         if($quantia<500){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Erro',
+                "mgs_principal" => __('Erro'),
                 "mgs_secundaria" => 'Saque Minimo: R$ 500,00'
             );
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens); 
@@ -159,8 +159,8 @@ class Financeiro_ListarControle extends Financeiro_Controle
         } else if($saldo<$quantia){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Erro',
-                "mgs_secundaria" => 'Saldo Insuficiente'
+                "mgs_principal" => __('Erro'),
+                "mgs_secundaria" => __('Saldo Insuficiente')
             );
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens); 
             $this->_Visual->Javascript_Executar('$("#quantia").css(\'border\', \'2px solid #FFAEB0\').focus();');
@@ -180,14 +180,14 @@ class Financeiro_ListarControle extends Financeiro_Controle
                 if($email==1){
                     $mensagens = array(
                         "tipo" => 'sucesso',
-                        "mgs_principal" => 'Saque realizado com sucesso.',
+                        "mgs_principal" => __('Saque realizado com sucesso.'),
                         "mgs_secundaria" => 'Espere a quantia entrar na sua conta: R$'.$quantia.',00.'
                     );
                     $erro=0;
                 }else{
                     $mensagens = array(
                         "tipo" => 'sucesso',
-                        "mgs_principal" => 'Informe a Administração',
+                        "mgs_principal" => __('Informe a Administração'),
                         "mgs_secundaria" => 'do sistema que houve um erro ao fazer o saque. R$'.$quantia.',00.'
                     );
                 }
@@ -237,7 +237,7 @@ class Financeiro_ListarControle extends Financeiro_Controle
         if($quantia<50){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Erro',
+                "mgs_principal" => __('Erro'),
                 "mgs_secundaria" => 'Transferência Minima: R$ 50,00'
             );
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens); 
@@ -245,16 +245,16 @@ class Financeiro_ListarControle extends Financeiro_Controle
         } else if($saldo<$quantia){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Erro',
-                "mgs_secundaria" => 'Saldo Insuficiente'
+                "mgs_principal" => __('Erro'),
+                "mgs_secundaria" => __('Saldo Insuficiente')
             );
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens); 
             $this->_Visual->Javascript_Executar('$("#quantia").css(\'border\', \'2px solid #FFAEB0\').focus();');
         } else if($existelogin===false){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Erro',
-                "mgs_secundaria" => 'Login não existe'
+                "mgs_principal" => __('Erro'),
+                "mgs_secundaria" => __('Login não existe')
             );
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens); 
             $this->_Visual->Javascript_Executar('$("#login").css(\'border\', \'2px solid #FFAEB0\').focus();');
@@ -264,7 +264,7 @@ class Financeiro_ListarControle extends Financeiro_Controle
             if($sucesso===true){
                 $mensagens = array(
                     "tipo" => 'sucesso',
-                    "mgs_principal" => 'Transferência Realizada',
+                    "mgs_principal" => __('Transferência Realizada'),
                     "mgs_secundaria" => ''.$quantia.' foi transferida com sucesso.'
                 );
                 $erro = 0;

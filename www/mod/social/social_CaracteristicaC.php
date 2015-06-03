@@ -184,8 +184,8 @@ class social_CaracteristicaControle extends social_Controle
     	if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Deletada',
-                "mgs_secundaria" => 'Caracteristica deletada com sucesso'
+                "mgs_principal" => __('Deletada'),
+                "mgs_secundaria" => __('Caracteristica deletada com sucesso')
             );
     	}else{
             $mensagens = array(

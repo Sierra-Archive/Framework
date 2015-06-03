@@ -110,7 +110,7 @@ class usuario_TelefoneControle extends usuario_Controle
                 'Arquivos de Audio'
             )
         );
-        $this->_Visual->Bloco_Unico_CriaJanela( 'Fazer Upload de Audio de Chamada'  ,'',8);
+        $this->_Visual->Bloco_Unico_CriaJanela(__('Fazer Upload de Audio de Chamada')  ,'',8);
 
         //Carrega Json
         $this->_Visual->Json_Info_Update('Titulo', __('Administrar Telefones'));
@@ -199,8 +199,8 @@ class usuario_TelefoneControle extends usuario_Controle
     	if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Deletada',
-                "mgs_secundaria" => 'Telefone deletada com sucesso'
+                "mgs_principal" => __('Deletada'),
+                "mgs_secundaria" => __('Telefone deletada com sucesso')
             );
     	}else{
             $mensagens = array(

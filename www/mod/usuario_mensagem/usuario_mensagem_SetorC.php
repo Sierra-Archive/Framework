@@ -139,7 +139,7 @@ class usuario_mensagem_SetorControle extends usuario_mensagem_Controle
         if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Setor Alterado com Sucesso',
+                "mgs_principal" => __('Setor Alterado com Sucesso'),
                 "mgs_secundaria" => ''.$_POST["nome"].' teve a alteração bem sucedida'
             );
         }else{
@@ -172,8 +172,8 @@ class usuario_mensagem_SetorControle extends usuario_mensagem_Controle
     	if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Deletado',
-                "mgs_secundaria" => 'Setor Deletado com sucesso'
+                "mgs_principal" => __('Deletado'),
+                "mgs_secundaria" => __('Setor Deletado com sucesso')
             );
     	}else{
             $mensagens = array(

@@ -185,8 +185,8 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
         }else{
             $mensagens = array(
                 "tipo"              => 'erro',
-                "mgs_principal"     => 'Erro',
-                "mgs_secundaria"    => 'Ocorreu um Erro.'
+                "mgs_principal"     => __('Erro'),
+                "mgs_secundaria"    => __('Ocorreu um Erro.')
             );
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
 
@@ -311,7 +311,7 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
     	if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Deletado',
+                "mgs_principal" => __('Deletado'),
                 "mgs_secundaria" => $titulo_singular.' Deletado com sucesso'
             );
     	}else{
@@ -459,8 +459,8 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
     	if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Deletada',
-                "mgs_secundaria" => 'Marca Deletada com sucesso'
+                "mgs_principal" => __('Deletada'),
+                "mgs_secundaria" => __('Marca Deletada com sucesso')
             );
     	}else{
             $mensagens = array(
@@ -608,8 +608,8 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
     	if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Deletado',
-                "mgs_secundaria" => 'Modelo Deletado com sucesso'
+                "mgs_principal" => __('Deletado'),
+                "mgs_secundaria" => __('Modelo Deletado com sucesso')
             );
     	}else{
             $mensagens = array(

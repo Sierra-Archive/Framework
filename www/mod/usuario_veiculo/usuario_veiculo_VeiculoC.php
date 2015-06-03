@@ -222,8 +222,8 @@ class usuario_veiculo_VeiculoControle extends usuario_veiculo_Controle
     	if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Deletado',
-                "mgs_secundaria" => 'Veiculo Deletado com sucesso'
+                "mgs_principal" => __('Deletado'),
+                "mgs_secundaria" => __('Veiculo Deletado com sucesso')
             );
     	}else{
             $mensagens = array(
@@ -456,8 +456,8 @@ class usuario_veiculo_VeiculoControle extends usuario_veiculo_Controle
     	if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Deletado',
-                "mgs_secundaria" => 'Comentário do Veiculo Deletado com sucesso'
+                "mgs_principal" => __('Deletado'),
+                "mgs_secundaria" => __('Comentário do Veiculo Deletado com sucesso')
             );
     	}else{
             $mensagens = array(
@@ -602,8 +602,8 @@ class usuario_veiculo_VeiculoControle extends usuario_veiculo_Controle
     	if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Deletado',
-                "mgs_secundaria" => 'Evento do Veiculo Deletado com sucesso'
+                "mgs_principal" => __('Deletado'),
+                "mgs_secundaria" => __('Evento do Veiculo Deletado com sucesso')
             );
     	}else{
             $mensagens = array(

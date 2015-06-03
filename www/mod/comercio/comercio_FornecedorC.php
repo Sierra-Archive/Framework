@@ -166,8 +166,8 @@ class comercio_FornecedorControle extends comercio_Controle
     	if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Deletado',
-                "mgs_secundaria" => 'Fornecedor Deletado com sucesso'
+                "mgs_principal" => __('Deletado'),
+                "mgs_secundaria" => __('Fornecedor Deletado com sucesso')
             );
     	}else{
             $mensagens = array(
@@ -414,8 +414,8 @@ class comercio_FornecedorControle extends comercio_Controle
     	if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Deletado',
-                "mgs_secundaria" => 'Comentário do Fornecedor Deletado com sucesso'
+                "mgs_principal" => __('Deletado'),
+                "mgs_secundaria" => __('Comentário do Fornecedor Deletado com sucesso')
             );
     	}else{
             $mensagens = array(

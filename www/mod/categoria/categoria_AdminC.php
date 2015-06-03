@@ -223,8 +223,8 @@ class categoria_AdminControle extends categoria_Controle
             if($sucesso===true){
                 $mensagens = array(
                     "tipo" => 'sucesso',
-                    "mgs_principal" => 'Deletado',
-                    "mgs_secundaria" => 'Deletado com sucesso'
+                    "mgs_principal" => __('Deletado'),
+                    "mgs_secundaria" => __('Deletado com sucesso')
                 );
             }else{
                 $mensagens = array(

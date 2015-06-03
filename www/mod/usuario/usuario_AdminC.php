@@ -240,7 +240,7 @@ class usuario_AdminControle extends usuario_Controle
             
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Alteração bem sucedida',
+                "mgs_principal" => __('Alteração bem sucedida'),
                 "mgs_secundaria" => ''.$_POST["nome"].' foi alterado com sucesso.'
             );
             $this->_Visual->Json_Info_Update('Titulo', __('').$_POST["nome"].' foi alterado com sucesso.');
@@ -283,15 +283,15 @@ class usuario_AdminControle extends usuario_Controle
             $this->_Visual->Json_IncluiTipo('Conteudo',$conteudo);
             $mensagens = array(
                 "tipo"              => 'sucesso',
-                "mgs_principal"     => 'Sucesso',
-                "mgs_secundaria"    => 'Status Alterado com Sucesso.'
+                "mgs_principal"     => __('Sucesso'),
+                "mgs_secundaria"    => __('Status Alterado com Sucesso.')
             );
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
         }else{
             $mensagens = array(
                 "tipo"              => 'erro',
-                "mgs_principal"     => 'Erro',
-                "mgs_secundaria"    => 'Ocorreu um Erro.'
+                "mgs_principal"     => __('Erro'),
+                "mgs_secundaria"    => __('Ocorreu um Erro.')
             );
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
         }
@@ -413,7 +413,7 @@ class usuario_AdminControle extends usuario_Controle
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => $language['mens_erro']['erro'],
-                "mgs_secundaria" => 'Email Inválido'
+                "mgs_secundaria" => __('Email Inválido')
             );
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens); 
             $this->layoult_zerar = false;
@@ -422,7 +422,7 @@ class usuario_AdminControle extends usuario_Controle
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => $language['mens_erro']['erro'],
-                "mgs_secundaria" => 'Email Ja Existe'
+                "mgs_secundaria" => __('Email Ja Existe')
             );
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
             $this->layoult_zerar = false; 
@@ -431,7 +431,7 @@ class usuario_AdminControle extends usuario_Controle
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => $language['mens_erro']['erro'],
-                "mgs_secundaria" => 'Login ja existe'
+                "mgs_secundaria" => __('Login ja existe')
             );
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens); 
             $this->layoult_zerar = false;
@@ -454,7 +454,7 @@ class usuario_AdminControle extends usuario_Controle
                     $mensagens = array(
                         "tipo" => 'erro',
                         "mgs_principal" => $language['mens_erro']['erro'],
-                        "mgs_secundaria" => 'Senha Inválida'
+                        "mgs_secundaria" => __('Senha Inválida')
                     );
                     $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
                     $this->layoult_zerar = false;
@@ -501,8 +501,8 @@ class usuario_AdminControle extends usuario_Controle
             if($sucesso===true){
                 $mensagens = array(
                     "tipo" => 'sucesso',
-                    "mgs_principal" => 'Inserção bem sucedida',
-                    "mgs_secundaria" => 'Voce foi cadastrado com sucesso.'
+                    "mgs_principal" => __('Inserção bem sucedida'),
+                    "mgs_secundaria" => __('Voce foi cadastrado com sucesso.')
                 );
                 // loga usuario
                 
@@ -682,13 +682,13 @@ class usuario_AdminControle extends usuario_Controle
             if($aprovar=='sim'){
                 $mensagens = array(
                     "tipo" => 'sucesso',
-                    "mgs_principal" => 'Aprovado com sucesso',
+                    "mgs_principal" => __('Aprovado com sucesso'),
                     "mgs_secundaria" => '#'.$id.' foi modificado.'
                 );
             }else {
                 $mensagens = array(
                     "tipo" => 'sucesso',
-                    "mgs_principal" => 'Negado com sucesso',
+                    "mgs_principal" => __('Negado com sucesso'),
                     "mgs_secundaria" => '#'.$id.' foi modificado.'
                 );
             }
@@ -1026,7 +1026,7 @@ class usuario_AdminControle extends usuario_Controle
     	if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Deletado',
+                "mgs_principal" => __('Deletado'),
                 "mgs_secundaria" => 'Comentário do '.$nomedisplay_sing.' Deletado com sucesso'
             );
     	}else{

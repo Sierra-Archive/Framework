@@ -187,8 +187,8 @@ class comercio_servicos_InstalacaoControle extends comercio_servicos_Controle
     	if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Deletado',
-                "mgs_secundaria" => 'Btu deletado com sucesso'
+                "mgs_principal" => __('Deletado'),
+                "mgs_secundaria" => __('Btu deletado com sucesso')
             );
     	}else{
             $mensagens = array(
@@ -308,8 +308,8 @@ class comercio_servicos_InstalacaoControle extends comercio_servicos_Controle
     	if($sucesso===true){
             $mensagens = array(
                 "tipo"              => 'sucesso',
-                "mgs_principal"     => 'Deletado',
-                "mgs_secundaria"    => 'Suporte deletado com sucesso'
+                "mgs_principal"     => __('Deletado'),
+                "mgs_secundaria"    => __('Suporte deletado com sucesso')
             );
     	}else{
             $mensagens = array(

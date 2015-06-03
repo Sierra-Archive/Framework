@@ -149,8 +149,8 @@ class comercio_LinhaControle extends comercio_Controle
     	if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Deletado',
-                "mgs_secundaria" => 'Linha Deletada com sucesso'
+                "mgs_principal" => __('Deletado'),
+                "mgs_secundaria" => __('Linha Deletada com sucesso')
             );
     	}else{
             $mensagens = array(

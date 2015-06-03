@@ -88,8 +88,8 @@ class usuario_mensagem_AdminControle extends usuario_mensagem_Controle
     	if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Deletado',
-                "mgs_secundaria" => 'Mensagem deletada com sucesso'
+                "mgs_principal" => __('Deletado'),
+                "mgs_secundaria" => __('Mensagem deletada com sucesso')
             );
     	}else{
             $mensagens = array(

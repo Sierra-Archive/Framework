@@ -193,8 +193,8 @@ class Agenda_CompromissoControle extends Agenda_Controle
     	if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Deletado',
-                "mgs_secundaria" => 'Compromisso Deletado com sucesso'
+                "mgs_principal" => __('Deletado'),
+                "mgs_secundaria" => __('Compromisso Deletado com sucesso')
             );
     	}else{
             $mensagens = array(

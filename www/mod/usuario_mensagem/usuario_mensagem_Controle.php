@@ -333,7 +333,7 @@ class usuario_mensagem_Controle extends \Framework\App\Controle
         if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Resposta inserida com Sucesso',
+                "mgs_principal" => __('Resposta inserida com Sucesso'),
                 "mgs_secundaria" => $resposta
             );
         }else{

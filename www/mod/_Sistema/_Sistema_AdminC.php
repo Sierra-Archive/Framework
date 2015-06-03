@@ -181,8 +181,8 @@ class _Sistema_AdminControle extends _Sistema_Controle
         }else{
             $mensagens = array(
                 "tipo"              => 'erro',
-                "mgs_principal"     => 'Erro',
-                "mgs_secundaria"    => 'Ocorreu um Erro.'
+                "mgs_principal"     => __('Erro'),
+                "mgs_secundaria"    => __('Ocorreu um Erro.')
             );
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
 
@@ -275,8 +275,8 @@ class _Sistema_AdminControle extends _Sistema_Controle
     	if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Deletado',
-                "mgs_secundaria" => 'Menu Deletado com sucesso'
+                "mgs_principal" => __('Deletado'),
+                "mgs_secundaria" => __('Menu Deletado com sucesso')
             );
     	}else{
             $mensagens = array(
@@ -451,8 +451,8 @@ class _Sistema_AdminControle extends _Sistema_Controle
     	if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Deletado',
-                "mgs_secundaria" => 'Permissão Deletada com sucesso'
+                "mgs_principal" => __('Deletado'),
+                "mgs_secundaria" => __('Permissão Deletada com sucesso')
             );
     	}else{
             $mensagens = array(
@@ -641,8 +641,8 @@ class _Sistema_AdminControle extends _Sistema_Controle
     	if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Deletado',
-                "mgs_secundaria" => 'Grupo Deletado com sucesso'
+                "mgs_principal" => __('Deletado'),
+                "mgs_secundaria" => __('Grupo Deletado com sucesso')
             );
     	}else{
             $mensagens = array(
@@ -804,8 +804,8 @@ class _Sistema_AdminControle extends _Sistema_Controle
         if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Inserção bem sucedida',
-                "mgs_secundaria" => 'Permissão de Grupo cadastrado com sucesso.'
+                "mgs_principal" => __('Inserção bem sucedida'),
+                "mgs_secundaria" => __('Permissão de Grupo cadastrado com sucesso.')
             ); 
         }else{
             $mensagens = array(
@@ -839,7 +839,7 @@ class _Sistema_AdminControle extends _Sistema_Controle
         if($sucesso===true){
             $mensagens = array(
                 "tipo"              => 'sucesso',
-                "mgs_principal"     => 'Permissão de Grupo Alterado com Sucesso',
+                "mgs_principal"     => __('Permissão de Grupo Alterado com Sucesso'),
                 "mgs_secundaria"    => ''.$_POST["nome"].' teve a alteração bem sucedida'
             );
         }else{
@@ -872,8 +872,8 @@ class _Sistema_AdminControle extends _Sistema_Controle
     	if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Deletado',
-                "mgs_secundaria" => 'Permissão de Grupo Deletado com sucesso'
+                "mgs_principal" => __('Deletado'),
+                "mgs_secundaria" => __('Permissão de Grupo Deletado com sucesso')
             );
     	}else{
             $mensagens = array(
@@ -1031,8 +1031,8 @@ class _Sistema_AdminControle extends _Sistema_Controle
         if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Inserção bem sucedida',
-                "mgs_secundaria" => 'Newsletter cadastrado com sucesso.'
+                "mgs_principal" => __('Inserção bem sucedida'),
+                "mgs_secundaria" => __('Newsletter cadastrado com sucesso.')
             ); 
         }else{
             $mensagens = array(
@@ -1066,7 +1066,7 @@ class _Sistema_AdminControle extends _Sistema_Controle
         if($sucesso===true){
             $mensagens = array(
                 "tipo"              => 'sucesso',
-                "mgs_principal"     => 'Newsletter Alterado com Sucesso',
+                "mgs_principal"     => __('Newsletter Alterado com Sucesso'),
                 "mgs_secundaria"    => ''.$_POST["nome"].' teve a alteração bem sucedida'
             );
         }else{
@@ -1099,8 +1099,8 @@ class _Sistema_AdminControle extends _Sistema_Controle
     	if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Deletado',
-                "mgs_secundaria" => 'Newsletter Deletado com sucesso'
+                "mgs_principal" => __('Deletado'),
+                "mgs_secundaria" => __('Newsletter Deletado com sucesso')
             );
     	}else{
             $mensagens = array(

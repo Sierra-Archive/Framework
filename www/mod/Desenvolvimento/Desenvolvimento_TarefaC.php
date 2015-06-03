@@ -198,8 +198,8 @@ class Desenvolvimento_TarefaControle extends Desenvolvimento_Controle
     	if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Deletado',
-                "mgs_secundaria" => 'Tarefa Deletada com sucesso'
+                "mgs_principal" => __('Deletado'),
+                "mgs_secundaria" => __('Tarefa Deletada com sucesso')
             );
     	}else{
             $mensagens = array(

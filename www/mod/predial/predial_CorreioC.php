@@ -44,8 +44,8 @@ class predial_CorreioControle extends predial_Controle
     	if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Sucesso',
-                "mgs_secundaria" => 'Correio declarado Recebido com sucesso'
+                "mgs_principal" => __('Sucesso'),
+                "mgs_secundaria" => __('Correio declarado Recebido com sucesso')
             );
     	}else{
             $mensagens = array(
@@ -243,8 +243,8 @@ class predial_CorreioControle extends predial_Controle
             if($enviar===false || $enviar==''){
                 $mensagens = array(
                     "tipo" => 'erro',
-                    "mgs_principal" => 'Aviso não Enviado',
-                    "mgs_secundaria" => 'Verifique se o Morador está registrado no sistema e com um email válido.'
+                    "mgs_principal" => __('Aviso não Enviado'),
+                    "mgs_secundaria" => __('Verifique se o Morador está registrado no sistema e com um email válido.')
                 );
                 $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
             }else{
@@ -269,8 +269,8 @@ class predial_CorreioControle extends predial_Controle
                 if(!$send){
                     $mensagens = array(
                         "tipo" => 'erro',
-                        "mgs_principal" => 'Aviso não Enviado',
-                        "mgs_secundaria" => 'Verifique se o Morador está registrado no sistema e com um email válido.'
+                        "mgs_principal" => __('Aviso não Enviado'),
+                        "mgs_secundaria" => __('Verifique se o Morador está registrado no sistema e com um email válido.')
                     );
                     $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
                 }
@@ -329,8 +329,8 @@ class predial_CorreioControle extends predial_Controle
     	if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Deletado',
-                "mgs_secundaria" => 'Correio deletado com sucesso'
+                "mgs_principal" => __('Deletado'),
+                "mgs_secundaria" => __('Correio deletado com sucesso')
             );
     	}else{
             $mensagens = array(

@@ -215,8 +215,8 @@ class comercio_ProdutoControle extends comercio_Controle
     	if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Deletado',
-                "mgs_secundaria" => 'Produto Deletado com sucesso'
+                "mgs_principal" => __('Deletado'),
+                "mgs_secundaria" => __('Produto Deletado com sucesso')
             );
     	}else{
             $mensagens = array(

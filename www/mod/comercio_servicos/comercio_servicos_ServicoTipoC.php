@@ -145,8 +145,8 @@ class comercio_servicos_ServicoTipoControle extends comercio_servicos_Controle
     	if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Deletado',
-                "mgs_secundaria" => 'Tipo de Serviço deletada com sucesso'
+                "mgs_principal" => __('Deletado'),
+                "mgs_secundaria" => __('Tipo de Serviço deletada com sucesso')
             );
     	}else{
             $mensagens = array(

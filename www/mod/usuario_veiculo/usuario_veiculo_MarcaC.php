@@ -164,8 +164,8 @@ class usuario_veiculo_MarcaControle extends usuario_veiculo_Controle
     	if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Deletada',
-                "mgs_secundaria" => 'Marca Deletada com sucesso'
+                "mgs_principal" => __('Deletada'),
+                "mgs_secundaria" => __('Marca Deletada com sucesso')
             );
     	}else{
             $mensagens = array(

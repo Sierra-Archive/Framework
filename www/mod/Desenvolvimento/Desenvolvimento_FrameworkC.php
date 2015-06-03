@@ -188,8 +188,8 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
     	if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Deletado',
-                "mgs_secundaria" => 'Modulo Deletado com sucesso'
+                "mgs_principal" => __('Deletado'),
+                "mgs_secundaria" => __('Modulo Deletado com sucesso')
             );
     	}else{
             $mensagens = array(
@@ -366,8 +366,8 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
     	if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Deletado',
-                "mgs_secundaria" => 'Submodulo Deletado com sucesso'
+                "mgs_principal" => __('Deletado'),
+                "mgs_secundaria" => __('Submodulo Deletado com sucesso')
             );
     	}else{
             $mensagens = array(
@@ -543,8 +543,8 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
     	if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Deletado',
-                "mgs_secundaria" => 'Metodo Deletado com sucesso'
+                "mgs_principal" => __('Deletado'),
+                "mgs_secundaria" => __('Metodo Deletado com sucesso')
             );
     	}else{
             $mensagens = array(

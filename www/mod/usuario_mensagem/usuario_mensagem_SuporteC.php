@@ -191,7 +191,7 @@ class usuario_mensagem_SuporteControle extends usuario_mensagem_Controle
                 'Arquivos de Imagem'
             )
         );
-        $this->_Visual->Bloco_Unico_CriaJanela( 'Fazer Upload de Anexo'  ,'',8);
+        $this->_Visual->Bloco_Unico_CriaJanela(__('Fazer Upload de Anexo')  ,'',8);
         
         // Processa Anexo
         list($titulo,$html,$i) = $this->Anexos_Processar($mensagem);

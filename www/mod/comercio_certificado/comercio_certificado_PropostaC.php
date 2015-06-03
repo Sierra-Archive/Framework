@@ -33,11 +33,11 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
     */
     public function Main(){
         ///$this->Propostas();
-        $this->_Visual->Blocar('Localizar',                 usuario_Controle::Static_usuariolistar(Array(CFG_TEC_CAT_ID_CLIENTES,'Clientes'),false,false));
-        $this->_Visual->Blocar('Cliente',                   comercio_certificado_Controle::Usuarios_Add('cliente'));
-        $this->_Visual->Blocar('Produto',                   $this->_Visual->ErroShow());
-        $this->_Visual->Blocar('Auditoria Periódica',       $this->_Visual->ErroShow());
-        $this->_Visual->Blocar('Observações',               $this->_Visual->ErroShow());
+        $this->_Visual->Blocar(__('Localizar'),                 usuario_Controle::Static_usuariolistar(Array(CFG_TEC_CAT_ID_CLIENTES,'Clientes'),false,false));
+        $this->_Visual->Blocar(__('Cliente'),                   comercio_certificado_Controle::Usuarios_Add('cliente'));
+        $this->_Visual->Blocar(__('Produto'),                   $this->_Visual->ErroShow());
+        $this->_Visual->Blocar(__('Auditoria Periódica'),       $this->_Visual->ErroShow());
+        $this->_Visual->Blocar(__('Observações'),               $this->_Visual->ErroShow());
         $this->_Visual->Bloco_Unico_CriaJanela(__('Clientes'));
         
         // ORGANIZA E MANDA CONTEUDO
@@ -152,8 +152,8 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
         }else{
             $mensagens = array(
                 "tipo"              => 'erro',
-                "mgs_principal"     => 'Erro',
-                "mgs_secundaria"    => 'Ocorreu um Erro.'
+                "mgs_principal"     => __('Erro'),
+                "mgs_secundaria"    => __('Ocorreu um Erro.')
             );
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
 
@@ -314,8 +314,8 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
             // Mensagem
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Inserção bem sucedida',
-                "mgs_secundaria" => 'Proposta cadastrada com sucesso.'
+                "mgs_principal" => __('Inserção bem sucedida'),
+                "mgs_secundaria" => __('Proposta cadastrada com sucesso.')
             ); 
         }else{
             $mensagens = array(
@@ -373,7 +373,7 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
         if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Proposta Alterada com Sucesso',
+                "mgs_principal" => __('Proposta Alterada com Sucesso'),
                 "mgs_secundaria" => ''.$_POST["nome"].' teve a alteração bem sucedida'
             );
         }else{
@@ -406,8 +406,8 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
     	if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Deletado',
-                "mgs_secundaria" => 'Proposta Deletada com sucesso'
+                "mgs_principal" => __('Deletado'),
+                "mgs_secundaria" => __('Proposta Deletada com sucesso')
             );
     	}else{
             $mensagens = array(

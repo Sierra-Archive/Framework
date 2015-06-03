@@ -168,8 +168,8 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
     	if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Deletado',
-                "mgs_secundaria" => 'Senha Deletada com sucesso'
+                "mgs_principal" => __('Deletado'),
+                "mgs_secundaria" => __('Senha Deletada com sucesso')
             );
     	}else{
             $mensagens = array(
@@ -221,8 +221,8 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
         if($sucesso){
             $mensagens = array(
                 "tipo"              => 'sucesso',
-                "mgs_principal"     => 'Sucesso',
-                "mgs_secundaria"    => 'Status Alterado com Sucesso.'
+                "mgs_principal"     => __('Sucesso'),
+                "mgs_secundaria"    => __('Status Alterado com Sucesso.')
             );
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
             
@@ -236,8 +236,8 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
         }else{
             $mensagens = array(
                 "tipo"              => 'erro',
-                "mgs_principal"     => 'Erro',
-                "mgs_secundaria"    => 'Ocorreu um Erro.'
+                "mgs_principal"     => __('Erro'),
+                "mgs_secundaria"    => __('Ocorreu um Erro.')
             );
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
         }
@@ -294,8 +294,8 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
         if($sucesso){
             $mensagens = array(
                 "tipo"              => 'sucesso',
-                "mgs_principal"     => 'Sucesso',
-                "mgs_secundaria"    => 'Destaque Alterado com Sucesso.'
+                "mgs_principal"     => __('Sucesso'),
+                "mgs_secundaria"    => __('Destaque Alterado com Sucesso.')
             );
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
             $conteudo = array(
@@ -307,8 +307,8 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
         }else{
             $mensagens = array(
                 "tipo"              => 'erro',
-                "mgs_principal"     => 'Erro',
-                "mgs_secundaria"    => 'Ocorreu um Erro.'
+                "mgs_principal"     => __('Erro'),
+                "mgs_secundaria"    => __('Ocorreu um Erro.')
             );
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
         }
@@ -481,8 +481,8 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
     	if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Deletado',
-                "mgs_secundaria" => 'Senha Deletada com sucesso'
+                "mgs_principal" => __('Deletado'),
+                "mgs_secundaria" => __('Senha Deletada com sucesso')
             );
     	}else{
             $mensagens = array(
@@ -534,8 +534,8 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
         if($sucesso){
             $mensagens = array(
                 "tipo"              => 'sucesso',
-                "mgs_principal"     => 'Sucesso',
-                "mgs_secundaria"    => 'Status Alterado com Sucesso.'
+                "mgs_principal"     => __('Sucesso'),
+                "mgs_secundaria"    => __('Status Alterado com Sucesso.')
             );
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
             $conteudo = array(
@@ -547,8 +547,8 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
         }else{
             $mensagens = array(
                 "tipo"              => 'erro',
-                "mgs_principal"     => 'Erro',
-                "mgs_secundaria"    => 'Ocorreu um Erro.'
+                "mgs_principal"     => __('Erro'),
+                "mgs_secundaria"    => __('Ocorreu um Erro.')
             );
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
         }
@@ -605,8 +605,8 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
         if($sucesso){
             $mensagens = array(
                 "tipo"              => 'sucesso',
-                "mgs_principal"     => 'Sucesso',
-                "mgs_secundaria"    => 'Destaque Alterado com Sucesso.'
+                "mgs_principal"     => __('Sucesso'),
+                "mgs_secundaria"    => __('Destaque Alterado com Sucesso.')
             );
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
             $conteudo = array(
@@ -618,8 +618,8 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
         }else{
             $mensagens = array(
                 "tipo"              => 'erro',
-                "mgs_principal"     => 'Erro',
-                "mgs_secundaria"    => 'Ocorreu um Erro.'
+                "mgs_principal"     => __('Erro'),
+                "mgs_secundaria"    => __('Ocorreu um Erro.')
             );
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
         }

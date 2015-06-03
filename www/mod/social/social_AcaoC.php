@@ -217,8 +217,8 @@ class social_AcaoControle extends social_Controle
     	if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Deletado',
-                "mgs_secundaria" => 'Ação deletada com sucesso'
+                "mgs_principal" => __('Deletado'),
+                "mgs_secundaria" => __('Ação deletada com sucesso')
             );
     	}else{
             $mensagens = array(

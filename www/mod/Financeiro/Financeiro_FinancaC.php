@@ -180,8 +180,8 @@ class Financeiro_FinancaControle extends Financeiro_Controle
     	if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Deletado',
-                "mgs_secundaria" => 'Finança deletada com sucesso'
+                "mgs_principal" => __('Deletado'),
+                "mgs_secundaria" => __('Finança deletada com sucesso')
             );
     	}else{
             $mensagens = array(

@@ -341,8 +341,8 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
         }else{
             $mensagens = array(
                 "tipo"              => 'erro',
-                "mgs_principal"     => 'Ocorreu um Erro',
-                "mgs_secundaria"    => 'Tente Novamente, algo deu errado.'
+                "mgs_principal"     => __('Ocorreu um Erro'),
+                "mgs_secundaria"    => __('Tente Novamente, algo deu errado.')
             );
             $this->_Visual->Json_Info_Update('Titulo', __('Erro'));
         }
@@ -437,8 +437,8 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
         /*if($financeiros->valor>$valor_juros){
             $mensagens = array(
                 "tipo"              => 'erro',
-                "mgs_principal"     => 'Valor Pago Incorreto',
-                "mgs_secundaria"    => 'O valor pago é inferior ao valor do Pagamento'
+                "mgs_principal"     => __('Valor Pago Incorreto'),
+                "mgs_secundaria"    => __('O valor pago é inferior ao valor do Pagamento')
             );
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
             $this->_Visual->Json_Info_Update('Titulo', __('Erro'));
@@ -471,8 +471,8 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
             }else{
                 $mensagens = array(
                     "tipo"              => 'erro',
-                    "mgs_principal"     => 'Ocorreu um Erro',
-                    "mgs_secundaria"    => 'Tente Novamente, algo deu errado.'
+                    "mgs_principal"     => __('Ocorreu um Erro'),
+                    "mgs_secundaria"    => __('Tente Novamente, algo deu errado.')
                 );
                 $this->_Visual->Json_Info_Update('Titulo', __('Erro'));
             }
@@ -585,8 +585,8 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
     	if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Deletado',
-                "mgs_secundaria" => 'Forma de Pagamento Deletada com sucesso'
+                "mgs_principal" => __('Deletado'),
+                "mgs_secundaria" => __('Forma de Pagamento Deletada com sucesso')
             );
     	}else{
             $mensagens = array(
@@ -762,8 +762,8 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
     	if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Deletado',
-                "mgs_secundaria" => 'Condição de Pagamento Deletada com sucesso'
+                "mgs_principal" => __('Deletado'),
+                "mgs_secundaria" => __('Condição de Pagamento Deletada com sucesso')
             );
     	}else{
             $mensagens = array(
@@ -895,8 +895,8 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
         }else{
             $mensagens = array(
                 "tipo"              => 'erro',
-                "mgs_principal"     => 'Ocorreu um Erro',
-                "mgs_secundaria"    => 'Tente Novamente, algo deu errado.'
+                "mgs_principal"     => __('Ocorreu um Erro'),
+                "mgs_secundaria"    => __('Tente Novamente, algo deu errado.')
             );
             $this->_Visual->Json_Info_Update('Titulo', __('Erro'));
         }

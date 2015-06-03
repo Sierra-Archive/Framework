@@ -488,8 +488,8 @@ class comercio_EstoqueControle extends comercio_Controle
     	if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Deletada',
-                "mgs_secundaria" => 'Entrada de NFE Deletada com sucesso'
+                "mgs_principal" => __('Deletada'),
+                "mgs_secundaria" => __('Entrada de NFE Deletada com sucesso')
             );
             $this->_Visual->Json_Info_Update('Titulo', __('Entrada de NFE deletada com Sucesso'));  
     	}else{

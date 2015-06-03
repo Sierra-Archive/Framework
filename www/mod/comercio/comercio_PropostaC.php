@@ -2157,7 +2157,7 @@ class comercio_PropostaControle extends comercio_Controle
     	if($sucesso1===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Deletado',
+                "mgs_principal" => __('Deletado'),
                 "mgs_secundaria" => $titulo.' Deletada com sucesso'
             );
     	}else{
@@ -2221,8 +2221,8 @@ class comercio_PropostaControle extends comercio_Controle
                 if(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Propostas_Biblioteca')===true && \Framework\App\Sistema_Funcoes::Perm_Modulos('biblioteca')===true){
                     $mensagens = array(
                         "tipo"              => 'erro',
-                        "mgs_principal"     => 'Erro',
-                        "mgs_secundaria"    => 'Essa OS não pode ser finalizada.'
+                        "mgs_principal"     => __('Erro'),
+                        "mgs_secundaria"    => __('Essa OS não pode ser finalizada.')
                     );
                     $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
 
@@ -2252,8 +2252,8 @@ class comercio_PropostaControle extends comercio_Controle
                         )){
                             $mensagens = array(
                                 "tipo"              => 'erro',
-                                "mgs_principal"     => 'Erro',
-                                "mgs_secundaria"    => 'Condição de Pagamento Inválido na Proposta.'
+                                "mgs_principal"     => __('Erro'),
+                                "mgs_secundaria"    => __('Condição de Pagamento Inválido na Proposta.')
                             );
                             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
                             $this->_Visual->Json_Info_Update('Titulo', __('Erro')); 
@@ -2271,8 +2271,8 @@ class comercio_PropostaControle extends comercio_Controle
         if($sucesso){
             $mensagens = array(
                 "tipo"              => 'sucesso',
-                "mgs_principal"     => 'Sucesso',
-                "mgs_secundaria"    => 'Status Alterado com Sucesso.'
+                "mgs_principal"     => __('Sucesso'),
+                "mgs_secundaria"    => __('Status Alterado com Sucesso.')
             );
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
             $conteudo = array(
@@ -2284,8 +2284,8 @@ class comercio_PropostaControle extends comercio_Controle
         }else{
             $mensagens = array(
                 "tipo"              => 'erro',
-                "mgs_principal"     => 'Erro',
-                "mgs_secundaria"    => 'Ocorreu um Erro.'
+                "mgs_principal"     => __('Erro'),
+                "mgs_secundaria"    => __('Ocorreu um Erro.')
             );
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
         }
@@ -2555,7 +2555,7 @@ class comercio_PropostaControle extends comercio_Controle
     	if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Deletado',
+                "mgs_principal" => __('Deletado'),
                 "mgs_secundaria" => 'Comentário sobre a '.$titulo.' Deletada com sucesso'
             );
     	}else{
@@ -2801,7 +2801,7 @@ class comercio_PropostaControle extends comercio_Controle
     	if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Deletado',
+                "mgs_principal" => __('Deletado'),
                 "mgs_secundaria" => 'Sub proposta sobre a '.$titulo.' Deletada com sucesso'
             );
     	}else{
@@ -2905,8 +2905,8 @@ class comercio_PropostaControle extends comercio_Controle
         }else{
             $mensagens = array(
                 "tipo"              => 'erro',
-                "mgs_principal"     => 'Erro',
-                "mgs_secundaria"    => 'Ocorreu um Erro.'
+                "mgs_principal"     => __('Erro'),
+                "mgs_secundaria"    => __('Ocorreu um Erro.')
             );
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
         }
@@ -3026,8 +3026,8 @@ class comercio_PropostaControle extends comercio_Controle
     	if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Deletado',
-                "mgs_secundaria" => 'Checklist Deletado com sucesso'
+                "mgs_principal" => __('Deletado'),
+                "mgs_secundaria" => __('Checklist Deletado com sucesso')
             );
     	}else{
             $mensagens = array(
@@ -3181,8 +3181,8 @@ class comercio_PropostaControle extends comercio_Controle
     	if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Deletado',
-                "mgs_secundaria" => 'Agenda de Visita Deletada com sucesso'
+                "mgs_principal" => __('Deletado'),
+                "mgs_secundaria" => __('Agenda de Visita Deletada com sucesso')
             );
     	}else{
             $mensagens = array(
@@ -3342,8 +3342,8 @@ class comercio_PropostaControle extends comercio_Controle
     	if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Deletado',
-                "mgs_secundaria" => 'Comentário sobre a Visita Deletado com sucesso'
+                "mgs_principal" => __('Deletado'),
+                "mgs_secundaria" => __('Comentário sobre a Visita Deletado com sucesso')
             );
     	}else{
             $mensagens = array(

@@ -226,8 +226,8 @@ class social_PersonaControle extends social_Controle
     	if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Deletado',
-                "mgs_secundaria" => 'Pessoa deletada com sucesso'
+                "mgs_principal" => __('Deletado'),
+                "mgs_secundaria" => __('Pessoa deletada com sucesso')
             );
     	}else{
             $mensagens = array(
@@ -416,8 +416,8 @@ class social_PersonaControle extends social_Controle
     	if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Deletado',
-                "mgs_secundaria" => 'Comentário do Persona Deletado com sucesso'
+                "mgs_principal" => __('Deletado'),
+                "mgs_secundaria" => __('Comentário do Persona Deletado com sucesso')
             );
     	}else{
             $mensagens = array(
@@ -582,8 +582,8 @@ class social_PersonaControle extends social_Controle
     	if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Deletado',
-                "mgs_secundaria" => 'Ficada de Pessoa deletada com sucesso'
+                "mgs_principal" => __('Deletado'),
+                "mgs_secundaria" => __('Ficada de Pessoa deletada com sucesso')
             );
     	}else{
             $mensagens = array(
@@ -792,8 +792,8 @@ class social_PersonaControle extends social_Controle
     	if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Deletado',
-                "mgs_secundaria" => 'Comentário do Ficada Deletada com sucesso'
+                "mgs_principal" => __('Deletado'),
+                "mgs_secundaria" => __('Comentário do Ficada Deletada com sucesso')
             );
     	}else{
             $mensagens = array(

@@ -138,8 +138,8 @@ class usuario_veiculo_AdminControle extends usuario_veiculo_Controle
     	if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Deletado',
-                "mgs_secundaria" => 'Deletado com sucesso.'
+                "mgs_principal" => __('Deletado'),
+                "mgs_secundaria" => __('Deletado com sucesso.')
             );
     	}else{
             $mensagens = array(
@@ -291,7 +291,7 @@ class usuario_veiculo_AdminControle extends usuario_veiculo_Controle
         if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Inserção bem sucedida',
+                "mgs_principal" => __('Inserção bem sucedida'),
                 "mgs_secundaria" => ''.$modelo.''.$ano.''.$marca.' foi inserido com sucesso.'
             );
         }else{
@@ -333,7 +333,7 @@ class usuario_veiculo_AdminControle extends usuario_veiculo_Controle
         if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Alteração bem sucedida',
+                "mgs_principal" => __('Alteração bem sucedida'),
                 "mgs_secundaria" => ''.$modelo.''.$ano.''.$marca.' foi alterado com sucesso.'
             );
         }else{
@@ -428,7 +428,7 @@ class usuario_veiculo_AdminControle extends usuario_veiculo_Controle
         if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Inserção bem sucedida',
+                "mgs_principal" => __('Inserção bem sucedida'),
                 "mgs_secundaria" => ''.$nome.' foi inserido com sucesso.'
             );
         }else{

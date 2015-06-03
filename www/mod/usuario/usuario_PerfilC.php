@@ -203,8 +203,8 @@ class usuario_PerfilControle extends usuario_Controle
         }else{
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Erro',
-                "mgs_secundaria" => 'É necessário se logar para continuar'
+                "mgs_principal" => __('Erro'),
+                "mgs_secundaria" => __('É necessário se logar para continuar')
             );
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
         }
@@ -227,8 +227,8 @@ class usuario_PerfilControle extends usuario_Controle
         if($_POST['nivel_usuario']<=$this->_Acl->logado_usuario->nivel_usuario || ($_POST['nivel_usuario']!=0 && $_POST['nivel_usuario']!=1 && $_POST['nivel_usuario']!=2 && $_POST['nivel_usuario']!=3 && $_POST['nivel_usuario']!=4)){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Erro',
-                "mgs_secundaria" => 'Tipo de Usuário Inválido'
+                "mgs_principal" => __('Erro'),
+                "mgs_secundaria" => __('Tipo de Usuário Inválido')
             );
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens); 
             $this->_Visual->Javascript_Executar('$("#nivel_usuario").css(\'border\', \'2px solid #FFAEB0\').focus();');
@@ -239,8 +239,8 @@ class usuario_PerfilControle extends usuario_Controle
             if($sucesso==1){
                 $mensagens = array(
                     "tipo" => 'sucesso',
-                    "mgs_principal" => 'Alteração bem sucedida',
-                    "mgs_secundaria" => 'Plano alterado com sucesso.'
+                    "mgs_principal" => __('Alteração bem sucedida'),
+                    "mgs_secundaria" => __('Plano alterado com sucesso.')
                 );
                 $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
                 // fecha popup e atualiza dados
@@ -526,8 +526,8 @@ class usuario_PerfilControle extends usuario_Controle
         }else{
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Erro',
-                "mgs_secundaria" => 'É necessário se logar para continuar'
+                "mgs_principal" => __('Erro'),
+                "mgs_secundaria" => __('É necessário se logar para continuar')
             );
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
         }
@@ -550,8 +550,8 @@ class usuario_PerfilControle extends usuario_Controle
         if($_POST['nivel_usuario']<=$this->_Acl->logado_usuario->nivel_usuario || ($_POST['nivel_usuario']!=0 && $_POST['nivel_usuario']!=1 && $_POST['nivel_usuario']!=2 && $_POST['nivel_usuario']!=3 && $_POST['nivel_usuario']!=4)){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Erro',
-                "mgs_secundaria" => 'Tipo de Usuário Inválido'
+                "mgs_principal" => __('Erro'),
+                "mgs_secundaria" => __('Tipo de Usuário Inválido')
             );
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens); 
             $this->_Visual->Javascript_Executar('$("#nivel_usuario").css(\'border\', \'2px solid #FFAEB0\').focus();');
@@ -562,8 +562,8 @@ class usuario_PerfilControle extends usuario_Controle
             if($sucesso===true){
                 $mensagens = array(
                     "tipo" => 'sucesso',
-                    "mgs_principal" => 'Alteração bem sucedida',
-                    "mgs_secundaria" => 'Plano alterado com sucesso.'
+                    "mgs_principal" => __('Alteração bem sucedida'),
+                    "mgs_secundaria" => __('Plano alterado com sucesso.')
                 );
                 $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
                 // fecha popup e atualiza dados

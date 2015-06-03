@@ -155,11 +155,11 @@ class biblioteca_BibliotecaControle extends biblioteca_Controle
                 'Todos os Arquivos'
             )
         );
-        $this->_Visual->Bloco_Maior_CriaJanela( 'Fazer Upload de Arquivo Nessa Pasta'  );
+        $this->_Visual->Bloco_Maior_CriaJanela(__('Fazer Upload de Arquivo Nessa Pasta')  );
         // Extensoes Permitidas
         $ext = $this->Upload_Ext();
         $this->_Visual->Blocar('.'.implode(', .',$ext));
-        $this->_Visual->Bloco_Menor_CriaJanela( 'Extensões Permitidas'  );
+        $this->_Visual->Bloco_Menor_CriaJanela(__('Extensões Permitidas')  );
         
         
         // Processa Biblioteca
@@ -369,7 +369,7 @@ class biblioteca_BibliotecaControle extends biblioteca_Controle
     	if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Deletado',
+                "mgs_principal" => __('Deletado'),
                 "mgs_secundaria" => 'Pasta/Arquivo deletado com sucesso'
             );
     	}else{

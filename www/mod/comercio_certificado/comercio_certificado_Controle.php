@@ -112,7 +112,7 @@ class comercio_certificado_Controle extends \Framework\App\Controle
         if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Alteração bem sucedida',
+                "mgs_principal" => __('Alteração bem sucedida'),
                 "mgs_secundaria" => $_POST["nome"].' foi alterado com sucesso.'
             );
         }else{
@@ -206,7 +206,7 @@ class comercio_certificado_Controle extends \Framework\App\Controle
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => $language['mens_erro']['erro'],
-                "mgs_secundaria" => 'Email Inválido'
+                "mgs_secundaria" => __('Email Inválido')
             );
             $Visual->Json_IncluiTipo('Mensagens',$mensagens);
             $this->layoult_zerar = false;
@@ -215,7 +215,7 @@ class comercio_certificado_Controle extends \Framework\App\Controle
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => $language['mens_erro']['erro'],
-                "mgs_secundaria" => 'Email Ja Existe'
+                "mgs_secundaria" => __('Email Ja Existe')
             );
             $Visual->Json_IncluiTipo('Mensagens',$mensagens); 
             $this->layoult_zerar = false;
@@ -224,7 +224,7 @@ class comercio_certificado_Controle extends \Framework\App\Controle
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => $language['mens_erro']['erro'],
-                "mgs_secundaria" => 'Login ja existe'
+                "mgs_secundaria" => __('Login ja existe')
             );
             $Visual->Json_IncluiTipo('Mensagens',$mensagens); 
             $this->layoult_zerar = false;
@@ -246,7 +246,7 @@ class comercio_certificado_Controle extends \Framework\App\Controle
                 $mensagens = array(
                     "tipo" => 'erro',
                     "mgs_principal" => $language['mens_erro']['erro'],
-                    "mgs_secundaria" => 'Senha Inválida'
+                    "mgs_secundaria" => __('Senha Inválida')
                 );
                 $Visual->Json_IncluiTipo('Mensagens',$mensagens);
                 $this->layoult_zerar = false;
@@ -269,8 +269,8 @@ class comercio_certificado_Controle extends \Framework\App\Controle
             if($sucesso===true){
                 $mensagens = array(
                     "tipo" => 'sucesso',
-                    "mgs_principal" => 'Inserção bem sucedida',
-                    "mgs_secundaria" => 'Voce foi cadastrado com sucesso.'
+                    "mgs_principal" => __('Inserção bem sucedida'),
+                    "mgs_secundaria" => __('Voce foi cadastrado com sucesso.')
                 );                
             }else{
                 $mensagens = array(
@@ -303,7 +303,7 @@ class comercio_certificado_Controle extends \Framework\App\Controle
         if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Alteração bem sucedida',
+                "mgs_principal" => __('Alteração bem sucedida'),
                 "mgs_secundaria" => $_POST["nome"].' foi alterado com sucesso.'
             );
         }else{

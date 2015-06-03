@@ -678,8 +678,8 @@ class usuario_Controle extends \Framework\App\Controle
         if($enviar==''){
             $mensagens = array(
                 "tipo" => 'erro',
-                "mgs_principal" => 'Erro',
-                "mgs_secundaria" => 'Nenhum Email válido para enviar !'
+                "mgs_principal" => __('Erro'),
+                "mgs_secundaria" => __('Nenhum Email válido para enviar !')
             );
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens); 
             $this->_Visual->Json_Info_Update('Historico', false);
@@ -706,15 +706,15 @@ class usuario_Controle extends \Framework\App\Controle
                 $this->_Modelo->db->Sql_Inserir($registro);
                 $mensagens = array(
                     "tipo" => 'sucesso',
-                    "mgs_principal" => 'Email enviado com Sucesso',
-                    "mgs_secundaria" => 'Voce enviou com sucesso.'
+                    "mgs_principal" => __('Email enviado com Sucesso'),
+                    "mgs_secundaria" => __('Voce enviou com sucesso.')
                 );
                 $this->_Visual->Json_Info_Update('Titulo','Enviado com Sucesso.');
             }else{
                 $mensagens = array(
                     "tipo" => 'erro',
-                    "mgs_principal" => 'Erro',
-                    "mgs_secundaria" => 'Email não foi enviado !'
+                    "mgs_principal" => __('Erro'),
+                    "mgs_secundaria" => __('Email não foi enviado !')
                 );
             }
             // Recarrega Main

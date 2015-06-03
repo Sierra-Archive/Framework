@@ -170,8 +170,8 @@ class predial_VeiculoControle extends predial_Controle
     	if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Deletado',
-                "mgs_secundaria" => 'Veiculo deletado com sucesso'
+                "mgs_principal" => __('Deletado'),
+                "mgs_secundaria" => __('Veiculo deletado com sucesso')
             );
     	}else{
             $mensagens = array(

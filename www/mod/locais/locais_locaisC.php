@@ -160,8 +160,8 @@ class locais_locaisControle extends locais_Controle
     	if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Deletado',
-                "mgs_secundaria" => 'Local deletado com sucesso'
+                "mgs_principal" => __('Deletado'),
+                "mgs_secundaria" => __('Local deletado com sucesso')
             );
     	}else{
             $mensagens = array(

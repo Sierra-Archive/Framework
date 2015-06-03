@@ -206,8 +206,8 @@ abstract class Controle
         if($enviar==''){
             $mensagens = array(
                 "tipo" => 'erro',
-                "mgs_principal" => 'Erro',
-                "mgs_secundaria" => 'Nenhum Email válido do cliente para enviar anexo !'
+                "mgs_principal" => __('Erro'),
+                "mgs_secundaria" => __('Nenhum Email válido do cliente para enviar anexo !')
             );
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens); 
             $this->_Visual->Json_Info_Update('Historico', false);
@@ -232,16 +232,16 @@ abstract class Controle
             if($mail->send()){
                 $mensagens = array(
                     "tipo" => 'sucesso',
-                    "mgs_principal" => 'Anexo enviado com Sucesso',
-                    "mgs_secundaria" => 'Voce enviou um Anexo com sucesso.'
+                    "mgs_principal" => __('Anexo enviado com Sucesso'),
+                    "mgs_secundaria" => __('Voce enviou um Anexo com sucesso.')
                 );
                 $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens); 
                 $this->_Visual->Json_Info_Update('Titulo','Enviado com Sucesso.');
             }else{
                 $mensagens = array(
                     "tipo" => 'erro',
-                    "mgs_principal" => 'Erro',
-                    "mgs_secundaria" => 'Email não foi enviado !'
+                    "mgs_principal" => __('Erro'),
+                    "mgs_secundaria" => __('Email não foi enviado !')
                 );
                 $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens); 
                 $this->_Visual->Json_Info_Update('Titulo','Erro ao Enviar.');
@@ -770,7 +770,7 @@ readfile($link);*/
             } else {
                 $mensagens = array(
                     "tipo"              => 'erro',
-                    "mgs_principal"     => 'Formato de Arquivo Inválido',
+                    "mgs_principal"     => __('Formato de Arquivo Inválido'),
                     "mgs_secundaria"    => 'Extensão '.$extensao.' não permitida.'
                 );
                 $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
@@ -1511,7 +1511,7 @@ readfile($link);*/
                 if($objeto_pesquisado!==false){
                     $mensagens = array(
                         "tipo"              => 'erro',
-                        "mgs_principal"     => 'Registro Duplicado',
+                        "mgs_principal"     => __('Registro Duplicado'),
                         "mgs_secundaria"    => 'Dados já registrados: '.$indice_campos.'.'
                     );
                     $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);

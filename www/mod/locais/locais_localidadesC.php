@@ -295,8 +295,8 @@ class locais_localidadesControle extends locais_Controle
     	if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Deletado',
-                "mgs_secundaria" => 'Pais deletado com sucesso'
+                "mgs_principal" => __('Deletado'),
+                "mgs_secundaria" => __('Pais deletado com sucesso')
             );
     	}else{
             $mensagens = array(
@@ -423,8 +423,8 @@ class locais_localidadesControle extends locais_Controle
     	if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Deletado',
-                "mgs_secundaria" => 'Estado deletado com sucesso'
+                "mgs_principal" => __('Deletado'),
+                "mgs_secundaria" => __('Estado deletado com sucesso')
             );
     	}else{
             $mensagens = array(
@@ -551,8 +551,8 @@ class locais_localidadesControle extends locais_Controle
     	if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Deletado',
-                "mgs_secundaria" => 'Cidade deletada com sucesso'
+                "mgs_principal" => __('Deletado'),
+                "mgs_secundaria" => __('Cidade deletada com sucesso')
             );
     	}else{
             $mensagens = array(
@@ -679,8 +679,8 @@ class locais_localidadesControle extends locais_Controle
     	if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Deletado',
-                "mgs_secundaria" => 'Bairro deletado com sucesso'
+                "mgs_principal" => __('Deletado'),
+                "mgs_secundaria" => __('Bairro deletado com sucesso')
             );
     	}else{
             $mensagens = array(

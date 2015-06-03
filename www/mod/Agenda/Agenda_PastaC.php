@@ -209,8 +209,8 @@ class Agenda_PastaControle extends Agenda_Controle
     	if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Deletado',
-                "mgs_secundaria" => 'Pasta Deletado com sucesso'
+                "mgs_principal" => __('Deletado'),
+                "mgs_secundaria" => __('Pasta Deletado com sucesso')
             );
     	}else{
             $mensagens = array(
@@ -366,8 +366,8 @@ class Agenda_PastaControle extends Agenda_Controle
     	if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Deletada',
-                "mgs_secundaria" => 'Cor Deletada com sucesso'
+                "mgs_principal" => __('Deletada'),
+                "mgs_secundaria" => __('Cor Deletada com sucesso')
             );
     	}else{
             $mensagens = array(

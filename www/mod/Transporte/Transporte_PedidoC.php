@@ -67,7 +67,7 @@ class Transporte_PedidoControle extends Transporte_Controle
             }
             $mensagens = array(
                 "tipo"              => 'sucesso',
-                "mgs_principal"     => 'Sucesso',
+                "mgs_principal"     => __('Sucesso'),
                 "mgs_secundaria"    => $texto.' com Sucesso'
             );
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
@@ -75,8 +75,8 @@ class Transporte_PedidoControle extends Transporte_Controle
         }else{
             $mensagens = array(
                 "tipo"              => 'erro',
-                "mgs_principal"     => 'Erro',
-                "mgs_secundaria"    => 'Ocorreu um Erro.'
+                "mgs_principal"     => __('Erro'),
+                "mgs_secundaria"    => __('Ocorreu um Erro.')
             );
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
 
@@ -130,8 +130,8 @@ class Transporte_PedidoControle extends Transporte_Controle
         if($pedido===false || $pedido->status!='0'){
             $mensagens = array(
                 "tipo" => 'erro',
-                "mgs_principal" => 'Erro',
-                "mgs_secundaria" => 'Você não pode deletar esse Pedido'
+                "mgs_principal" => __('Erro'),
+                "mgs_secundaria" => __('Você não pode deletar esse Pedido')
             );
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
             $this->_Visual->Json_Info_Update('Historico', false);  
@@ -143,8 +143,8 @@ class Transporte_PedidoControle extends Transporte_Controle
     	if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Deletado',
-                "mgs_secundaria" => 'Pedido Cancelado com Sucesso'
+                "mgs_principal" => __('Deletado'),
+                "mgs_secundaria" => __('Pedido Cancelado com Sucesso')
             );
             
             $pedidos    =  $this->_Modelo->db->Sql_Select('Transporte_Armazem_Pedido_Lance', '{sigla}pedido=\''.$id.'\'');
@@ -626,7 +626,7 @@ class Transporte_PedidoControle extends Transporte_Controle
                 $mensagens = array(
                     "tipo" => 'erro',
                     "mgs_principal" => $language['mens_erro']['erro'],
-                    "mgs_secundaria" => 'Você não pode Adicionar uma Solicitação a este pedido'
+                    "mgs_secundaria" => __('Você não pode Adicionar uma Solicitação a este pedido')
                 );
                 $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
                 return false;
@@ -662,7 +662,7 @@ class Transporte_PedidoControle extends Transporte_Controle
                 $mensagens = array(
                     "tipo" => 'erro',
                     "mgs_principal" => $language['mens_erro']['erro'],
-                    "mgs_secundaria" => 'Você não pode Adicionar uma Solicitação a este pedido'
+                    "mgs_secundaria" => __('Você não pode Adicionar uma Solicitação a este pedido')
                 );
                 $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
                 return false;
@@ -694,7 +694,7 @@ class Transporte_PedidoControle extends Transporte_Controle
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => $language['mens_erro']['erro'],
-                "mgs_secundaria" => 'Você não pode deletar'
+                "mgs_secundaria" => __('Você não pode deletar')
             );
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
             return false;
@@ -705,7 +705,7 @@ class Transporte_PedidoControle extends Transporte_Controle
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => $language['mens_erro']['erro'],
-                "mgs_secundaria" => 'Você não pode deletar'
+                "mgs_secundaria" => __('Você não pode deletar')
             );
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
             return false;
@@ -716,8 +716,8 @@ class Transporte_PedidoControle extends Transporte_Controle
     	if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Deletado',
-                "mgs_secundaria" => 'Proposta Cancelada com Sucesso'
+                "mgs_principal" => __('Deletado'),
+                "mgs_secundaria" => __('Proposta Cancelada com Sucesso')
             );
     	}else{
             $mensagens = array(
@@ -792,7 +792,7 @@ class Transporte_PedidoControle extends Transporte_Controle
             }
             $mensagens = array(
                 "tipo"              => 'sucesso',
-                "mgs_principal"     => 'Sucesso',
+                "mgs_principal"     => __('Sucesso'),
                 "mgs_secundaria"    => $texto.' com Sucesso'
             );
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
@@ -800,8 +800,8 @@ class Transporte_PedidoControle extends Transporte_Controle
         }else{
             $mensagens = array(
                 "tipo"              => 'erro',
-                "mgs_principal"     => 'Erro',
-                "mgs_secundaria"    => 'Ocorreu um Erro.'
+                "mgs_principal"     => __('Erro'),
+                "mgs_secundaria"    => __('Ocorreu um Erro.')
             );
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
 
@@ -855,8 +855,8 @@ class Transporte_PedidoControle extends Transporte_Controle
         if($pedido===false || $pedido->status!='0'){
             $mensagens = array(
                 "tipo" => 'erro',
-                "mgs_principal" => 'Erro',
-                "mgs_secundaria" => 'Você não pode deletar esse Pedido'
+                "mgs_principal" => __('Erro'),
+                "mgs_secundaria" => __('Você não pode deletar esse Pedido')
             );
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
             $this->_Visual->Json_Info_Update('Historico', false);  
@@ -868,8 +868,8 @@ class Transporte_PedidoControle extends Transporte_Controle
     	if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Deletado',
-                "mgs_secundaria" => 'Pedido Cancelado com Sucesso'
+                "mgs_principal" => __('Deletado'),
+                "mgs_secundaria" => __('Pedido Cancelado com Sucesso')
             );
             
             $pedidos    =  $this->_Modelo->db->Sql_Select('Transporte_Transportadora_Pedido_Lance', '{sigla}pedido=\''.$id.'\'');
@@ -1351,7 +1351,7 @@ class Transporte_PedidoControle extends Transporte_Controle
                 $mensagens = array(
                     "tipo" => 'erro',
                     "mgs_principal" => $language['mens_erro']['erro'],
-                    "mgs_secundaria" => 'Você não pode Adicionar uma Solicitação a este pedido'
+                    "mgs_secundaria" => __('Você não pode Adicionar uma Solicitação a este pedido')
                 );
                 $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
                 return false;
@@ -1387,7 +1387,7 @@ class Transporte_PedidoControle extends Transporte_Controle
                 $mensagens = array(
                     "tipo" => 'erro',
                     "mgs_principal" => $language['mens_erro']['erro'],
-                    "mgs_secundaria" => 'Você não pode Adicionar uma Solicitação a este pedido'
+                    "mgs_secundaria" => __('Você não pode Adicionar uma Solicitação a este pedido')
                 );
                 $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
                 return false;
@@ -1419,7 +1419,7 @@ class Transporte_PedidoControle extends Transporte_Controle
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => $language['mens_erro']['erro'],
-                "mgs_secundaria" => 'Você não pode deletar'
+                "mgs_secundaria" => __('Você não pode deletar')
             );
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
             return false;
@@ -1430,7 +1430,7 @@ class Transporte_PedidoControle extends Transporte_Controle
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => $language['mens_erro']['erro'],
-                "mgs_secundaria" => 'Você não pode deletar'
+                "mgs_secundaria" => __('Você não pode deletar')
             );
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
             return false;
@@ -1441,8 +1441,8 @@ class Transporte_PedidoControle extends Transporte_Controle
     	if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Deletado',
-                "mgs_secundaria" => 'Proposta Cancelada com Sucesso'
+                "mgs_principal" => __('Deletado'),
+                "mgs_secundaria" => __('Proposta Cancelada com Sucesso')
             );
     	}else{
             $mensagens = array(
@@ -1513,7 +1513,7 @@ class Transporte_PedidoControle extends Transporte_Controle
             }
             $mensagens = array(
                 "tipo"              => 'sucesso',
-                "mgs_principal"     => 'Sucesso',
+                "mgs_principal"     => __('Sucesso'),
                 "mgs_secundaria"    => $texto.' com Sucesso'
             );
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
@@ -1521,8 +1521,8 @@ class Transporte_PedidoControle extends Transporte_Controle
         }else{
             $mensagens = array(
                 "tipo"              => 'erro',
-                "mgs_principal"     => 'Erro',
-                "mgs_secundaria"    => 'Ocorreu um Erro.'
+                "mgs_principal"     => __('Erro'),
+                "mgs_secundaria"    => __('Ocorreu um Erro.')
             );
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
 
@@ -1576,8 +1576,8 @@ class Transporte_PedidoControle extends Transporte_Controle
         if($pedido===false || $pedido->status!='0'){
             $mensagens = array(
                 "tipo" => 'erro',
-                "mgs_principal" => 'Erro',
-                "mgs_secundaria" => 'Você não pode deletar esse Pedido'
+                "mgs_principal" => __('Erro'),
+                "mgs_secundaria" => __('Você não pode deletar esse Pedido')
             );
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
             $this->_Visual->Json_Info_Update('Historico', false);  
@@ -1589,8 +1589,8 @@ class Transporte_PedidoControle extends Transporte_Controle
     	if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Deletado',
-                "mgs_secundaria" => 'Pedido Cancelado com Sucesso'
+                "mgs_principal" => __('Deletado'),
+                "mgs_secundaria" => __('Pedido Cancelado com Sucesso')
             );
             
             $pedidos    =  $this->_Modelo->db->Sql_Select('Transporte_Caminhoneiro_Pedido_Lance', '{sigla}pedido=\''.$id.'\'');
@@ -2072,7 +2072,7 @@ class Transporte_PedidoControle extends Transporte_Controle
                 $mensagens = array(
                     "tipo" => 'erro',
                     "mgs_principal" => $language['mens_erro']['erro'],
-                    "mgs_secundaria" => 'Você não pode Adicionar uma Solicitação a este pedido'
+                    "mgs_secundaria" => __('Você não pode Adicionar uma Solicitação a este pedido')
                 );
                 $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
                 return false;
@@ -2108,7 +2108,7 @@ class Transporte_PedidoControle extends Transporte_Controle
                 $mensagens = array(
                     "tipo" => 'erro',
                     "mgs_principal" => $language['mens_erro']['erro'],
-                    "mgs_secundaria" => 'Você não pode Adicionar uma Solicitação a este pedido'
+                    "mgs_secundaria" => __('Você não pode Adicionar uma Solicitação a este pedido')
                 );
                 $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
                 return false;
@@ -2140,7 +2140,7 @@ class Transporte_PedidoControle extends Transporte_Controle
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => $language['mens_erro']['erro'],
-                "mgs_secundaria" => 'Você não pode deletar'
+                "mgs_secundaria" => __('Você não pode deletar')
             );
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
             return false;
@@ -2151,7 +2151,7 @@ class Transporte_PedidoControle extends Transporte_Controle
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => $language['mens_erro']['erro'],
-                "mgs_secundaria" => 'Você não pode deletar'
+                "mgs_secundaria" => __('Você não pode deletar')
             );
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
             return false;
@@ -2162,8 +2162,8 @@ class Transporte_PedidoControle extends Transporte_Controle
     	if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Deletado',
-                "mgs_secundaria" => 'Proposta Cancelada com Sucesso'
+                "mgs_principal" => __('Deletado'),
+                "mgs_secundaria" => __('Proposta Cancelada com Sucesso')
             );
     	}else{
             $mensagens = array(

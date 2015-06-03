@@ -9,7 +9,7 @@ class _Sistema_LoginControle extends _Sistema_Controle
         if(LAYOULT_IMPRIMIR=='AJAX'){
             $mensagens = array(
                 "tipo" => 'erro',
-                "mgs_principal" => 'Erro '.$codigo,
+                "mgs_principal" => __('Erro ').$codigo,
                 "mgs_secundaria" => $this->_getError($codigo)
             );
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);

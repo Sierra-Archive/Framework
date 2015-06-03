@@ -342,8 +342,8 @@ class Engenharia_UnidadeControle extends Engenharia_Controle
         }
         $mensagens = array(
             "tipo"              => 'sucesso',
-            "mgs_principal"     => 'Sucesso',
-            "mgs_secundaria"    => 'Unidades Cadastradas com Sucesso.'
+            "mgs_principal"     => __('Sucesso'),
+            "mgs_secundaria"    => __('Unidades Cadastradas com Sucesso.')
         );
         $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
         $this->_Visual->Json_Info_Update('Historico', false);  
@@ -542,8 +542,8 @@ class Engenharia_UnidadeControle extends Engenharia_Controle
     	if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Deletado',
-                "mgs_secundaria" => 'Unidade deletada com sucesso'
+                "mgs_principal" => __('Deletado'),
+                "mgs_secundaria" => __('Unidade deletada com sucesso')
             );
     	}else{
             $mensagens = array(

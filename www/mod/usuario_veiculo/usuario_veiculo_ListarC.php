@@ -58,43 +58,43 @@ class usuario_veiculo_ListarControle extends usuario_veiculo_Controle
             if($this->_Acl->logado_usuario->foto_cnh==''){
                 $mensagens = array(
                     "tipo" => 'sucesso',
-                    "mgs_principal" => 'Erro',
-                    "mgs_secundaria" => 'É necessário fazer upload da CNH'
+                    "mgs_principal" => __('Erro'),
+                    "mgs_secundaria" => __('É necessário fazer upload da CNH')
                 );
                 $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
             }else if($this->_Acl->logado_usuario->foto_res==''){
                 $mensagens = array(
                     "tipo" => 'sucesso',
-                    "mgs_principal" => 'Erro',
-                    "mgs_secundaria" => 'Falta upload do comprovante de residente'
+                    "mgs_principal" => __('Erro'),
+                    "mgs_secundaria" => __('Falta upload do comprovante de residente')
                 );
                 $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
             }else if($this->_Acl->logado_usuario->foto_cnh_apv==0){
                 $mensagens = array(
                     "tipo" => 'sucesso',
-                    "mgs_principal" => 'Erro',
-                    "mgs_secundaria" => 'Aguarde a aprovação de sua CNH'
+                    "mgs_principal" => __('Erro'),
+                    "mgs_secundaria" => __('Aguarde a aprovação de sua CNH')
                 );
                 $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
             }else if($this->_Acl->logado_usuario->foto_res_apv==0){
                 $mensagens = array(
                     "tipo" => 'sucesso',
-                    "mgs_principal" => 'Erro',
-                    "mgs_secundaria" => 'Aguarde a aprovação de sua residência'
+                    "mgs_principal" => __('Erro'),
+                    "mgs_secundaria" => __('Aguarde a aprovação de sua residência')
                 );
                 $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
             }else if($this->_Acl->logado_usuario->foto_cnh_apv==1){
                 $mensagens = array(
                     "tipo" => 'sucesso',
-                    "mgs_principal" => 'CNH Negada',
-                    "mgs_secundaria" => 'Suba uma CNH válida'
+                    "mgs_principal" => __('CNH Negada'),
+                    "mgs_secundaria" => __('Suba uma CNH válida')
                 );
                 $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
             }else if($this->_Acl->logado_usuario->foto_res_apv==1){
                 $mensagens = array(
                     "tipo" => 'sucesso',
-                    "mgs_principal" => 'Residência Negada',
-                    "mgs_secundaria" => 'Suba uma residência válida'
+                    "mgs_principal" => __('Residência Negada'),
+                    "mgs_secundaria" => __('Suba uma residência válida')
                 );
                 $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
             }else{
@@ -140,8 +140,8 @@ class usuario_veiculo_ListarControle extends usuario_veiculo_Controle
         }else{
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Erro',
-                "mgs_secundaria" => 'É necessário se logar para continuar'
+                "mgs_principal" => __('Erro'),
+                "mgs_secundaria" => __('É necessário se logar para continuar')
             );
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
         }
@@ -193,8 +193,8 @@ class usuario_veiculo_ListarControle extends usuario_veiculo_Controle
         if($sucesso==1){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Inserção bem sucedida',
-                "mgs_secundaria" => 'Moto Agendada com sucesso.'
+                "mgs_principal" => __('Inserção bem sucedida'),
+                "mgs_secundaria" => __('Moto Agendada com sucesso.')
             );
         }else{
             $mensagens = array(

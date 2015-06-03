@@ -166,8 +166,8 @@ class usuario_veiculo_ModeloControle extends usuario_veiculo_Controle
     	if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Deletado',
-                "mgs_secundaria" => 'Modelo Deletado com sucesso'
+                "mgs_principal" => __('Deletado'),
+                "mgs_secundaria" => __('Modelo Deletado com sucesso')
             );
     	}else{
             $mensagens = array(

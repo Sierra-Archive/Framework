@@ -161,8 +161,8 @@ class Financeiro_BancoControle extends Financeiro_Controle
     	if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Deletado',
-                "mgs_secundaria" => 'Banco Deletado com sucesso'
+                "mgs_principal" => __('Deletado'),
+                "mgs_secundaria" => __('Banco Deletado com sucesso')
             );
     	}else{
             $mensagens = array(

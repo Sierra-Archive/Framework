@@ -63,8 +63,8 @@ class Acl{
                         // MEnsagem de Erro
                         $mensagens = array(
                             "tipo"              => 'erro',
-                            "mgs_principal"     => 'Código Inválido',
-                            "mgs_secundaria"    => 'Verifique se a url foi digitada corretamente, ou se já foi usado ou expirada essa requisição.'
+                            "mgs_principal"     => __('Código Inválido'),
+                            "mgs_secundaria"    => __('Verifique se a url foi digitada corretamente, ou se já foi usado ou expirada essa requisição.')
                         );
                         $this->_Registro->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
                         $this->_Registro->_Visual->renderizar();
@@ -77,8 +77,8 @@ class Acl{
                         // MEnsagem de Erro
                         $mensagens = array(
                             "tipo"              => 'erro',
-                            "mgs_principal"     => 'Código Expirado',
-                            "mgs_secundaria"    => 'Já faz mais de 24 hrs que esse código foi gerado.'
+                            "mgs_principal"     => __('Código Expirado'),
+                            "mgs_secundaria"    => __('Já faz mais de 24 hrs que esse código foi gerado.')
                         );
                         $this->_Registro->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
                         $this->_Registro->_Visual->renderizar();
@@ -91,8 +91,8 @@ class Acl{
                         // MEnsagem de Erro
                         $mensagens = array(
                             "tipo"              => 'erro',
-                            "mgs_principal"     => 'Erro',
-                            "mgs_secundaria"    => 'Usuário não encontrado.'
+                            "mgs_principal"     => __('Erro'),
+                            "mgs_secundaria"    => __('Usuário não encontrado.')
                         );
                         $this->_Registro->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
                         $this->_Registro->_Visual->renderizar();
@@ -122,8 +122,8 @@ class Acl{
                         // MEnsagem de Erro
                         $mensagens = array(
                             "tipo"              => 'erro',
-                            "mgs_principal"     => 'Erro',
-                            "mgs_secundaria"    => 'Usuário não encontrado.'
+                            "mgs_principal"     => __('Erro'),
+                            "mgs_secundaria"    => __('Usuário não encontrado.')
                         );
                         $this->_Registro->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
                     
@@ -144,8 +144,8 @@ class Acl{
                             // MEnsagem de Erro
                             $mensagens = array(
                                 "tipo"              => 'erro',
-                                "mgs_principal"     => 'Erro',
-                                "mgs_secundaria"    => 'Vocẽ já fez sua requisição por uma nova senha. Verifique seu email.'
+                                "mgs_principal"     => __('Erro'),
+                                "mgs_secundaria"    => __('Vocẽ já fez sua requisição por uma nova senha. Verifique seu email.')
                             );
                             $this->_Registro->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
                             $this->_Registro->_Visual->renderizar();
@@ -170,8 +170,8 @@ class Acl{
                         // MEnsagem de Erro
                         $mensagens = array(
                             "tipo"              => 'erro',
-                            "mgs_principal"     => 'Erro',
-                            "mgs_secundaria"    => 'O email não pode ser enviado, contate o administrador do sistema.'
+                            "mgs_principal"     => __('Erro'),
+                            "mgs_secundaria"    => __('O email não pode ser enviado, contate o administrador do sistema.')
                         );
                         $this->_Registro->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
                         $this->_Registro->_Visual->renderizar();
@@ -326,8 +326,8 @@ class Acl{
         if(!$_Registro->_Visual) $_Registro->_Visual = new \Framework\App\Visual();
         $mensagens = array(
             "tipo"              => 'erro',
-            "mgs_principal"     => 'Senha Inválida',
-            "mgs_secundaria"    => 'Verifique se o Login ou a senha foram colocadas com sucesso.'
+            "mgs_principal"     => __('Senha Inválida'),
+            "mgs_secundaria"    => __('Verifique se o Login ou a senha foram colocadas com sucesso.')
         );
         $_Registro->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
     }

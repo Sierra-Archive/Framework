@@ -171,8 +171,8 @@ class predial_BlocoControle extends predial_Controle
     	if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Deletado',
-                "mgs_secundaria" => 'Bloco deletado com sucesso'
+                "mgs_principal" => __('Deletado'),
+                "mgs_secundaria" => __('Bloco deletado com sucesso')
             );
     	}else{
             $mensagens = array(

@@ -161,8 +161,8 @@ class comercio_UnidadeControle extends comercio_Controle
     	if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Deletada',
-                "mgs_secundaria" => 'Unidade Deletada com sucesso'
+                "mgs_principal" => __('Deletada'),
+                "mgs_secundaria" => __('Unidade Deletada com sucesso')
             );
     	}else{
             $mensagens = array(

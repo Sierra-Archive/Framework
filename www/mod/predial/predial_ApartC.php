@@ -172,8 +172,8 @@ class predial_ApartControle extends predial_Controle
     	if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Deletado',
-                "mgs_secundaria" => 'Apartamento deletado com sucesso'
+                "mgs_principal" => __('Deletado'),
+                "mgs_secundaria" => __('Apartamento deletado com sucesso')
             );
     	}else{
             $mensagens = array(

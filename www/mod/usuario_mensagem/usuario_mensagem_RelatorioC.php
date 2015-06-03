@@ -79,7 +79,7 @@ class usuario_mensagem_RelatorioControle extends usuario_mensagem_Controle
         $form->Select_Fim();*/
         // Bloca Conteudo e Cria Janela de COnfiguração
         $this->_Visual->Blocar($form->retorna_form('Atualizar')); // Relatório
-        $this->_Visual->Bloco_Menor_CriaJanela('Configuração do Relatório','', 0, false);
+        $this->_Visual->Bloco_Menor_CriaJanela(__('Configuração do Relatório'),'', 0, false);
         
         // Cria Segunda Janela com Parametros pré selecionados
         $tipo_visual = false;

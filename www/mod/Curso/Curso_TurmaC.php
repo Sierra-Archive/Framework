@@ -581,8 +581,8 @@ class Curso_TurmaControle extends Curso_Controle
     	if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Deletado',
-                "mgs_secundaria" => 'Turma deletada com sucesso'
+                "mgs_principal" => __('Deletado'),
+                "mgs_secundaria" => __('Turma deletada com sucesso')
             );
     	}else{
             $mensagens = array(
@@ -632,8 +632,8 @@ class Curso_TurmaControle extends Curso_Controle
         }else{
             $mensagens = array(
                 "tipo"              => 'erro',
-                "mgs_principal"     => 'Erro',
-                "mgs_secundaria"    => 'Ocorreu um Erro.'
+                "mgs_principal"     => __('Erro'),
+                "mgs_secundaria"    => __('Ocorreu um Erro.')
             );
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
 
@@ -690,7 +690,7 @@ class Curso_TurmaControle extends Curso_Controle
         if($turma_registro->qnt<=0){
             $mensagens = array(
                 "tipo"              => 'erro',
-                "mgs_principal"     => 'Sem Vagas',
+                "mgs_principal"     => __('Sem Vagas'),
                 "mgs_secundaria"    => 'Não possui mais vagas nessa Turma! :('
             );
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
@@ -705,7 +705,7 @@ class Curso_TurmaControle extends Curso_Controle
         if($insc_registro!==false){
             $mensagens = array(
                 "tipo"              => 'erro',
-                "mgs_principal"     => 'Erro',
+                "mgs_principal"     => __('Erro'),
                 "mgs_secundaria"    => 'Você já está matriculado nessa turma! :('
             );
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
@@ -760,7 +760,7 @@ class Curso_TurmaControle extends Curso_Controle
         if($insc_registro!==false){
             $mensagens = array(
                 "tipo"              => 'erro',
-                "mgs_principal"     => 'Erro',
+                "mgs_principal"     => __('Erro'),
                 "mgs_secundaria"    => 'Você já está matriculado nessa turma! :('
             );
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
@@ -775,7 +775,7 @@ class Curso_TurmaControle extends Curso_Controle
         if($turma_registro->qnt<=0){
             $mensagens = array(
                 "tipo"              => 'erro',
-                "mgs_principal"     => 'Sem Vagas',
+                "mgs_principal"     => __('Sem Vagas'),
                 "mgs_secundaria"    => 'Não possui mais vagas nessa Turma! :('
             );
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);

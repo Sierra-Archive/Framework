@@ -94,7 +94,7 @@ class categoria_categoriaControle extends categoria_Controle
             if($sucesso===true){
                 $mensagens = array(
                     "tipo" => 'sucesso',
-                    "mgs_principal" => 'Categoria alterada com Sucesso',
+                    "mgs_principal" => __('Categoria alterada com Sucesso'),
                     "mgs_secundaria" => ''.$nome.' foi alterado na base de dados...'
                 );
             }else{
@@ -281,13 +281,13 @@ class categoria_categoriaControle extends categoria_Controle
         if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Categoria inserida com Sucesso',
+                "mgs_principal" => __('Categoria inserida com Sucesso'),
                 "mgs_secundaria" => ''.$nome.' foi add a base de dados...'
             );
         }else{
             $mensagens = array(
                 "tipo" => 'erro',
-                "mgs_principal" => 'Erro',
+                "mgs_principal" => __('Erro'),
                 "mgs_secundaria" => $language['mens_erro']['erro']
             );
         }

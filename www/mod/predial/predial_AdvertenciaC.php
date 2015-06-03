@@ -157,8 +157,8 @@ class predial_AdvertenciaControle extends predial_Controle
             if($enviar===false || $enviar==''){
                 $mensagens = array(
                     "tipo" => 'erro',
-                    "mgs_principal" => 'Advertência não Enviada',
-                    "mgs_secundaria" => 'Verifique se o Morador está registrado no sistema e com um email válido.'
+                    "mgs_principal" => __('Advertência não Enviada'),
+                    "mgs_secundaria" => __('Verifique se o Morador está registrado no sistema e com um email válido.')
                 );
                 $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
             }else{
@@ -184,8 +184,8 @@ class predial_AdvertenciaControle extends predial_Controle
                 if(!$send){
                     $mensagens = array(
                         "tipo" => 'erro',
-                        "mgs_principal" => 'Advertência não Enviada',
-                        "mgs_secundaria" => 'Verifique se o Morador está registrado no sistema e com um email válido.'
+                        "mgs_principal" => __('Advertência não Enviada'),
+                        "mgs_secundaria" => __('Verifique se o Morador está registrado no sistema e com um email válido.')
                     );
                     $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
                 }
@@ -244,8 +244,8 @@ class predial_AdvertenciaControle extends predial_Controle
     	if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Deletado',
-                "mgs_secundaria" => 'Advertência deletada com sucesso'
+                "mgs_principal" => __('Deletado'),
+                "mgs_secundaria" => __('Advertência deletada com sucesso')
             );
     	}else{
             $mensagens = array(

@@ -199,8 +199,8 @@ class Enquete_EnqueteControle extends Enquete_Controle
     	if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Deletado',
-                "mgs_secundaria" => 'Enquete deletada com sucesso'
+                "mgs_principal" => __('Deletado'),
+                "mgs_secundaria" => __('Enquete deletada com sucesso')
             );
     	}else{
             $mensagens = array(

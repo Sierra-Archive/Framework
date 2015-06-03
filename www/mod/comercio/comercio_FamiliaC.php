@@ -179,8 +179,8 @@ class comercio_FamiliaControle extends comercio_Controle
     	if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Deletada',
-                "mgs_secundaria" => 'Familia Deletada com sucesso'
+                "mgs_principal" => __('Deletada'),
+                "mgs_secundaria" => __('Familia Deletada com sucesso')
             );
     	}else{
             $mensagens = array(

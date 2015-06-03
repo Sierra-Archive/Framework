@@ -184,8 +184,8 @@ class Engenharia_EmpreendimentoControle extends Engenharia_Controle
     	if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Deletado',
-                "mgs_secundaria" => 'Empreendimento deletado com sucesso'
+                "mgs_principal" => __('Deletado'),
+                "mgs_secundaria" => __('Empreendimento deletado com sucesso')
             );
     	}else{
             $mensagens = array(
@@ -237,7 +237,7 @@ class Engenharia_EmpreendimentoControle extends Engenharia_Controle
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => $language['mens_erro']['erro'],
-                "mgs_secundaria" => 'Quantidade não disponivel em Estoque'
+                "mgs_secundaria" => __('Quantidade não disponivel em Estoque')
             );
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens); 
             $this->layoult_zerar = false;
