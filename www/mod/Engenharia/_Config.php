@@ -3,7 +3,7 @@ $config_Modulo = function (){
     return Array(
         'Nome'                      =>  'Engenharia',
         'Descrição'                 =>  '',
-        'System_Require'            =>  '3.0.0',
+        'System_Require'            =>  '3.1.0',
         'Version'                   =>  '0.1.1',
         'Dependencias'              =>  false,
     );

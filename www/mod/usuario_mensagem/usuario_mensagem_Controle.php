@@ -229,7 +229,7 @@ class usuario_mensagem_Controle extends \Framework\App\Controle
         $form->Input_Novo('Mensagem','mensagem',$mensagemid,'hidden', false, 'obrigatorio');
         $form->TextArea_Novo('Responder','resposta','','','text', 10000, 'obrigatorio');
         $this->_Visual->Blocar($form->retorna_form($language['formularios']['enviar']));
-        $this->_Visual->Bloco_Unico_CriaJanela('Responder Ticket');
+        $this->_Visual->Bloco_Unico_CriaJanela(__('Responder Ticket'));
     }
     /**
      * Formulario Suporter - Inserir Mensagem de FOrmulario

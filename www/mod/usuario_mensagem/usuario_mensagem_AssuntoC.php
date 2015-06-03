@@ -114,7 +114,7 @@ class usuario_mensagem_AssuntoControle extends usuario_mensagem_Controle
         \Framework\App\Controle::Gerador_Formulario($campos, $form);
         $formulario = $form->retorna_form('Alterar Assunto');
         $this->_Visual->Blocar($formulario);
-        $this->_Visual->Bloco_Unico_CriaJanela('Alteração de Assunto');
+        $this->_Visual->Bloco_Unico_CriaJanela(__('Alteração de Assunto'));
         // Json
         $this->_Visual->Json_Info_Update('Titulo', 'Editar Assunto (#'.$id.')');
         

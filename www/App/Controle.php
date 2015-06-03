@@ -102,7 +102,7 @@ abstract class Controle
      * @throws Exception
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.0.1
+     * @version 3.1.1
      */
     protected function getLibrary($lib){
         $url_livraria = ROOT.'libs'.DS.$lib.'.php';
@@ -229,22 +229,6 @@ abstract class Controle
             $mail->Subject      = 'Anexo de Chamado - '.SISTEMA_NOME;
             $mail->Body         = $amensagem;
             $mail->AltBody      = 'Arquivo em Anexo';
-            /*
-            if(!$mail->send()) {
-               echo 'Message could not be sent.';
-               echo 'Mailer Error: ' . $mail->ErrorInfo;
-               exit;
-            }
-            echo 'Message has been sent';
-            
-            
-            eval('$send	= $mailer'.$enviar.'->setSubject(\'\')'.
-            '->setFrom(SISTEMA_EMAIL, SISTEMA_NOME)'.
-            '->addGenericHeader(\'X-Mailer\', \'PHP/\' . phpversion())'.
-            '->addGenericHeader(\'Content-Type\', \'text/html; charset="utf-8"\')'.
-            '->addAttachment(\''.ARQ_PATH.$arquivo.'\',\''.$nomearquivo.'\')'.
-            '->setMessage(\''.$amensagem.'\')'.
-            '->setWrap(100)->send();');*/
             if($mail->send()){
                 $mensagens = array(
                     "tipo" => 'sucesso',
@@ -1316,7 +1300,7 @@ readfile($link);*/
      * @throws Exception
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.0.1
+     * @version 3.1.1
      */
     static function Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,&$campos = false,$editar=false,$bloco='All',$janela=true){
         $registro = &\Framework\App\Registro::getInstacia();
@@ -1445,7 +1429,7 @@ readfile($link);*/
      * @param type $erro2
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.0.1
+     * @version 3.1.1
      */
     protected function Gerador_Formulario_Janela2($titulo,$dao,$funcao = '',$sucesso1,$sucesso2,$colocar=false,$erro1 = '',$erro2 = ''){
         global $language;
@@ -2271,7 +2255,7 @@ readfile($link);*/
      * 
      * #update
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.0.1
+     * @version 3.1.1
      */
     /*protected function _Permissao_Verificar($chave){
         $array = $this->_Acl->getPermissao();
@@ -2343,7 +2327,7 @@ readfile($link);*/
                 $form->Input_Novo('Login','sistema_login','','text', '',30, '');
                 $form->Input_Novo('Senha','sistema_senha','','password', 30, '','');
                 $this->_Visual->Blocar($form->retorna_form('Entrar'));
-                $this->_Visual->Bloco_Menor_CriaJanela('Login');
+                $this->_Visual->Bloco_Menor_CriaJanela(__('Login'));
             }
             /*// carrega menu estatisticas se exister antes de encerrar tudo
             if(file_exists(MOD_PATH.''.\anti_injection(SISTEMA_MODULO).'/StatC.php')){

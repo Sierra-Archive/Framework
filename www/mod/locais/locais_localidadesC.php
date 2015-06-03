@@ -136,7 +136,7 @@ class locais_localidadesControle extends locais_Controle
         }else{
             $formulario = $form->retorna_form($language['formularios']['cadastrar']);
             $this->_Visual->Blocar($formulario);
-            $this->_Visual->Bloco_Maior_CriaJanela('Cadastrar Bairro');
+            $this->_Visual->Bloco_Maior_CriaJanela(__('Cadastrar Bairro'));
             $this->_Visual->renderizar(1,$this->calendario,$this->config_dia,$this->config_mes,$this->config_ano,$this->config_dataixi);
         }	
     }

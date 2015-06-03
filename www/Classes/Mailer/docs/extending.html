@@ -119,11 +119,11 @@ $mail->addAttachment('c:/temp/11-10-00.zip', 'new_name.zip');  // optional name
 
 if(!$mail->send())
 {
-   echo 'There was an error sending the message';
+   echo __('There was an error sending the message');
    exit;
 }
 
-echo 'Message was sent successfully';
+echo __('Message was sent successfully');
 </pre>
 </body>
 </html>

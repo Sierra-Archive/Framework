@@ -198,8 +198,8 @@ class usuario_AdminControle extends usuario_Controle
         $formulario = $form->retorna_form('Alterar');
         $this->_Visual->Blocar($formulario);
         if($tipo===false){
-            if($encolher===true)$this->_Visual->Bloco_Maior_CriaJanela('Alteração de Usuário');
-            else                $this->_Visual->Bloco_Unico_CriaJanela('Alteração de Usuário');
+            if($encolher===true)$this->_Visual->Bloco_Maior_CriaJanela(__('Alteração de Usuário'));
+            else                $this->_Visual->Bloco_Unico_CriaJanela(__('Alteração de Usuário'));
             $this->_Visual->Json_Info_Update('Titulo', 'Editar Usuário (#'.$id.')');   
         }else{
             if($encolher===true)$this->_Visual->Bloco_Maior_CriaJanela('Alteração de '.$tipo.'');
@@ -355,7 +355,7 @@ class usuario_AdminControle extends usuario_Controle
             \Framework\App\Controle::Gerador_Formulario($campos, $form);
             $formulario = $form->retorna_form('Cadastrar Funcionário');
             $this->_Visual->Blocar($formulario);
-            $this->_Visual->Bloco_Unico_CriaJanela('Cadastro de Funcionário');
+            $this->_Visual->Bloco_Unico_CriaJanela(__('Cadastro de Funcionário'));
             $this->_Visual->Json_Info_Update('Titulo','Adicionar Funcionário');
             $this->Tema_Endereco('Funcionários','usuario/Admin/ListarFuncionario');
         }else{
@@ -365,7 +365,7 @@ class usuario_AdminControle extends usuario_Controle
             \Framework\App\Controle::Gerador_Formulario($campos, $form);
             $formulario = $form->retorna_form('Cadastrar Usuário');
             $this->_Visual->Blocar($formulario);
-            $this->_Visual->Bloco_Unico_CriaJanela('Cadastro de Usuário');
+            $this->_Visual->Bloco_Unico_CriaJanela(__('Cadastro de Usuário'));
             $this->_Visual->Json_Info_Update('Titulo','Adicionar Usuário');
             $this->Tema_Endereco('Usuários','usuario/Admin/ListarUsuario');
         }

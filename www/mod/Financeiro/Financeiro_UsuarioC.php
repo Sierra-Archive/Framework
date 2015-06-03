@@ -300,7 +300,7 @@ class Financeiro_UsuarioControle extends Financeiro_Controle
         $this->_Visual->Blocar($html);
         
         
-        $this->_Visual->Bloco_Unico_CriaJanela('Pagar');
+        $this->_Visual->Bloco_Unico_CriaJanela(__('Pagar'));
         
         
         

@@ -77,13 +77,13 @@ class social_personasControle extends social_Controle
             }
         }
         $this->_Visual->Show_Tabela_DataTable($impor);
-        $this->_Visual->Bloco_Maior_CriaJanela('Importantes');
+        $this->_Visual->Bloco_Maior_CriaJanela(__('Importantes'));
 
         $this->_Visual->Show_Tabela_DataTable($normal);
-        $this->_Visual->Bloco_Maior_CriaJanela('Principais');
+        $this->_Visual->Bloco_Maior_CriaJanela(__('Principais'));
 
         $this->_Visual->Show_Tabela_DataTable($proibido);
-        $this->_Visual->Bloco_Maior_CriaJanela('Lista Negra');
+        $this->_Visual->Bloco_Maior_CriaJanela(__('Lista Negra'));
 
         // ORGANIZA E MANDA CONTEUDO
         $this->_Visual->Json_Start('Usuario_social');
@@ -173,16 +173,16 @@ class social_personasControle extends social_Controle
         }
         echo 'Quantidades'.$j;
         $this->_Visual->Show_Tabela_DataTable($pegos);
-        $this->_Visual->Bloco_Maior_CriaJanela('Pegos');
+        $this->_Visual->Bloco_Maior_CriaJanela(__('Pegos'));
 
         $this->_Visual->Show_Tabela_DataTable($orgulho);
-        $this->_Visual->Bloco_Maior_CriaJanela('Orgulho Supremo');
+        $this->_Visual->Bloco_Maior_CriaJanela(__('Orgulho Supremo'));
 
         $this->_Visual->Show_Tabela_DataTable($queropega);
-        $this->_Visual->Bloco_Maior_CriaJanela('Quero Gape');
+        $this->_Visual->Bloco_Maior_CriaJanela(__('Quero Gape'));
 
         $this->_Visual->Show_Tabela_DataTable($ultimocaso);
-        $this->_Visual->Bloco_Maior_CriaJanela('Ultimo Caso');
+        $this->_Visual->Bloco_Maior_CriaJanela(__('Ultimo Caso'));
 
         $this->_Visual->renderizar(1,$this->calendario,$this->config_dia,$this->config_mes,$this->config_ano,$this->config_dataixi);
     }

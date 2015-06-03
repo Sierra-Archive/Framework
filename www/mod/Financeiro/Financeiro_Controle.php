@@ -46,7 +46,7 @@ class Financeiro_Controle extends \Framework\App\Controle
             }
             // Bloca Conteudo
             $Visual->Blocar($html);   
-            $Visual->Bloco_Maior_CriaJanela('Meus Dados Básicos','',80);
+            $Visual->Bloco_Maior_CriaJanela(__('Meus Dados Básicos'),'',80);
             unset($valores); // LIMPA MEM�RIA
         }
     }

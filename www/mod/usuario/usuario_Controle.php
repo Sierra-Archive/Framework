@@ -638,11 +638,11 @@ class usuario_Controle extends \Framework\App\Controle
         if($tema!='Setor'){
             $formulario = $form->retorna_form('Enviar Email para Usuário');
             $this->_Visual->Blocar($formulario);
-            $this->_Visual->Bloco_Unico_CriaJanela('Enviar Email para Usuário','',10);
+            $this->_Visual->Bloco_Unico_CriaJanela(__('Enviar Email para Usuário'),'',10);
         }else{
             $formulario = $form->retorna_form('Enviar Email para o Setor');
             $this->_Visual->Blocar($formulario);
-            $this->_Visual->Bloco_Unico_CriaJanela('Enviar Email para o Setor','',10);
+            $this->_Visual->Bloco_Unico_CriaJanela(__('Enviar Email para o Setor'),'',10);
         }
         // Usuario ver emails
         usuario_Controle::Usuarios_Email_Ver($id, $tipo2,$tema);

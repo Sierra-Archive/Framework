@@ -415,7 +415,7 @@ class comercio_venda_CarrinhoControle extends comercio_venda_Controle
             . '</script>'
             . */'<span id="carrinho_valortemporario'.$time.'"><b>Valor Total:</b> '.$valor.'</span>'
             . '<br>');
-        $this->_Visual->Bloco_Menor_CriaJanela('Informações Temporárias');
+        $this->_Visual->Bloco_Menor_CriaJanela(__('Informações Temporárias'));
     }
     /**
      * 

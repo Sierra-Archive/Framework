@@ -98,7 +98,7 @@ class usuario_mensagem_SetorControle extends usuario_mensagem_Controle
         \Framework\App\Controle::Gerador_Formulario($campos, $form);
         $formulario = $form->retorna_form('Alterar Setor');
         $this->_Visual->Blocar($formulario);
-        $this->_Visual->Bloco_Unico_CriaJanela('Alteração de Setor');
+        $this->_Visual->Bloco_Unico_CriaJanela(__('Alteração de Setor'));
         // Json
         $this->_Visual->Json_Info_Update('Titulo', 'Editar Setor (#'.$id.')');
         

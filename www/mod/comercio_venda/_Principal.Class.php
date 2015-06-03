@@ -130,7 +130,7 @@ class comercio_venda_Principal implements PrincipalInterface
         </div>';
         // Acrescenta na Tela
         $Visual->Blocar($html);
-        $Visual->Bloco_Maior_CriaJanela('Mesas');
+        $Visual->Bloco_Maior_CriaJanela(__('Mesas'));
         
         return true;
     }

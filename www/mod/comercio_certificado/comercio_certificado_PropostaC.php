@@ -38,7 +38,7 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
         $this->_Visual->Blocar('Produto',                   $this->_Visual->ErroShow());
         $this->_Visual->Blocar('Auditoria Periódica',       $this->_Visual->ErroShow());
         $this->_Visual->Blocar('Observações',               $this->_Visual->ErroShow());
-        $this->_Visual->Bloco_Unico_CriaJanela('Clientes');
+        $this->_Visual->Bloco_Unico_CriaJanela(__('Clientes'));
         
         // ORGANIZA E MANDA CONTEUDO
         $this->_Visual->Json_Info_Update('Titulo','Propostas');

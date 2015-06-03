@@ -21,7 +21,7 @@ if (isset($_GET['oc'])) {
         ? 'application/x-javascript'
         : "text/{$_GET['text']}";
     header("Content-Type: {$type}");
-    echo 'Hello';
+    echo __('Hello');
 
 } elseif (isset($_GET['docroot'])) {
     if (false === realpath($_SERVER['DOCUMENT_ROOT'])) {

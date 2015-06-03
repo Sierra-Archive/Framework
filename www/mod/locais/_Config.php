@@ -3,8 +3,8 @@ $config_Modulo = function (){
     return Array(
         'Nome'                      =>  'locais',
         'Descrição'                 =>  '',
-        'System_Require'            =>  '3.0.0',
-        'Version'                   =>  '3.0.1',
+        'System_Require'            =>  '3.1.0',
+        'Version'                   =>  '3.1.1',
         'Dependencias'              =>  false,
     );
 };

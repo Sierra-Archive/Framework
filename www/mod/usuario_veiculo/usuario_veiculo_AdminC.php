@@ -182,7 +182,7 @@ class usuario_veiculo_AdminControle extends usuario_veiculo_Controle
         usuario_veiculo_AdminControle::veiculos_form($this, $this->_Visual, $form, $marcas);
         $formulario = $form->retorna_form('Cadastrar');
         $this->_Visual->Blocar($formulario);
-        $this->_Visual->Bloco_Menor_CriaJanela('Cadastro de Veiculo');
+        $this->_Visual->Bloco_Menor_CriaJanela(__('Cadastro de Veiculo'));
         
     }
     public function veiculos_carregajanelaEdit($id){
@@ -197,7 +197,7 @@ class usuario_veiculo_AdminControle extends usuario_veiculo_Controle
         usuario_veiculo_AdminControle::veiculos_form($this, $this->_Visual, $form, $marcas, $veiculo['categoria'], $veiculo['ano'], $veiculo['modelo'], $veiculo['marcaid'], $veiculo['cc'], $veiculo['valor1'], $veiculo['valor2'], $veiculo['valor3'], $veiculo['franquia'], $veiculo['obs']);
         $formulario = $form->retorna_form('Alterar');
         $this->_Visual->Blocar($formulario);
-        $this->_Visual->Bloco_Menor_CriaJanela('Alteração de Veiculo');
+        $this->_Visual->Bloco_Menor_CriaJanela(__('Alteração de Veiculo'));
         $this->_Visual->Json_Info_Update('Titulo','Editar Veiculo (#'.$id.')');
         
     }
@@ -373,7 +373,7 @@ class usuario_veiculo_AdminControle extends usuario_veiculo_Controle
         // cadastro de marcas
         $formulario = usuario_veiculo_AdminControle::marcas_formcadastro();
         $this->_Visual->Blocar($formulario);
-        $this->_Visual->Bloco_Menor_CriaJanela('Cadastro de Marcas');
+        $this->_Visual->Bloco_Menor_CriaJanela(__('Cadastro de Marcas'));
         
     }
     /**

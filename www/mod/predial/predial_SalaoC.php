@@ -238,7 +238,7 @@ class predial_SalaoControle extends predial_Controle
         $datas = Array();
         $i = $this->_Modelo->retorna_Agendadatas($datas);
         $this->_Visual->Js_Calendar_Gerar('calendariodedatasdisponiveis',$datas);
-        $this->_Visual->Bloco_Maior_CriaJanela('Datas Disponiveis');
+        $this->_Visual->Bloco_Maior_CriaJanela(__('Datas Disponiveis'));
         // ORGANIZA E MANDA CONTEUDO
         
         $this->_Visual->Json_Info_Update('Titulo','Reservas');        

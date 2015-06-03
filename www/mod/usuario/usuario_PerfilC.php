@@ -110,7 +110,7 @@ class usuario_PerfilControle extends usuario_Controle
             else                                             $Visual->Blocar('<font color="#FF0000"><b>Negado</b></font><br>');
         }
         $Visual->Blocar($Visual->Show_Upload('usuario','Perfil','RESFoto','User_RES_Imagem'.$_Acl->logado_usuario->id,$_Acl->logado_usuario->foto_res,'usuario'.DS,$_Acl->logado_usuario->id));
-        $Visual->Bloco_Menor_CriaJanela('Fazer upload de Comprovante de Residência'); 
+        $Visual->Bloco_Menor_CriaJanela(__('Fazer upload de Comprovante de Residência')); 
     }
     /**
      * 
@@ -141,7 +141,7 @@ class usuario_PerfilControle extends usuario_Controle
             else                                             $Visual->Blocar('<font color="#FF0000"><b>CNH Negada</b></font><br>');
         }
         $Visual->Blocar($Visual->Show_Upload('usuario','Perfil','CNHFoto','User_CNH_Imagem'.$_Acl->logado_usuario->id,$_Acl->logado_usuario->foto_cnh,'usuario'.DS,$_Acl->logado_usuario->id));
-        $Visual->Bloco_Menor_CriaJanela('Fazer Upload da CNH'); 
+        $Visual->Bloco_Menor_CriaJanela(__('Fazer Upload da CNH')); 
     }
     static function usuarios_carregaAlterarSenha(&$controle,&$modelo,&$Visual,$campos){
         $id = \Framework\App\Acl::Usuario_GetID_Static();
@@ -435,7 +435,7 @@ class usuario_PerfilControle extends usuario_Controle
             else                                             $Visual->Blocar('<font color="#FF0000"><b>Negado</b></font><br>');
         }
         $Visual->Blocar($Visual->Show_Upload('usuario','Perfil','RESFoto','User_RES_Imagem'.$controle->usuario->id,$controle->usuario->foto_res,'usuario'.DS,$controle->usuario->id));
-        $Visual->Bloco_Menor_CriaJanela('Fazer upload de Comprovante de Residência'); 
+        $Visual->Bloco_Menor_CriaJanela(__('Fazer upload de Comprovante de Residência')); 
     }
     /**
      * 
@@ -464,7 +464,7 @@ class usuario_PerfilControle extends usuario_Controle
             else                                             $Visual->Blocar('<font color="#FF0000"><b>CNH Negada</b></font><br>');
         }
         $Visual->Blocar($Visual->Show_Upload('usuario','Perfil','CNHFoto','User_CNH_Imagem'.$controle->usuario->id,$controle->usuario->foto_cnh,'usuario'.DS,$controle->usuario->id));
-        $Visual->Bloco_Menor_CriaJanela('Fazer Upload da CNH'); 
+        $Visual->Bloco_Menor_CriaJanela(__('Fazer Upload da CNH')); 
     }
     static function usuarios_carregaAlterarSenha(&$controle,&$modelo,&$Visual,$campos){
         $id = \Framework\App\Acl::Usuario_GetID_Static();

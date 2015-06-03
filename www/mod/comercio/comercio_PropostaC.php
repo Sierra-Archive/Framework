@@ -1931,7 +1931,7 @@ class comercio_PropostaControle extends comercio_Controle
             . '</script>'
             . */'<span id="valortemporario'.$time.'"><b>Valor Total:</b> '.$valor.'</span>'
             . '<br>');
-        $this->_Visual->Bloco_Menor_CriaJanela('Informações Temporárias');
+        $this->_Visual->Bloco_Menor_CriaJanela(__('Informações Temporárias'));
     }
     /**
      * Pega uma Proposta/Os e Calcula o seu valor

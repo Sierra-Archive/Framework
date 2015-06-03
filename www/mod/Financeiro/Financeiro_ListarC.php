@@ -120,7 +120,7 @@ class Financeiro_ListarControle extends Financeiro_Controle
         // cadastro de marcas
         $formulario = Financeiro_ListarControle::sacar_formcadastro();
         $this->_Visual->Blocar($formulario);
-        $this->_Visual->Bloco_Menor_CriaJanela('Realizar Saque');
+        $this->_Visual->Bloco_Menor_CriaJanela(__('Realizar Saque'));
         
     }
     static function sacar_formcadastro(){
@@ -210,7 +210,7 @@ class Financeiro_ListarControle extends Financeiro_Controle
         // cadastro de marcas
         $formulario = Financeiro_ListarControle::transferencia_formcadastro();
         $this->_Visual->Blocar($formulario);
-        $this->_Visual->Bloco_Menor_CriaJanela('Transferir Quantia');
+        $this->_Visual->Bloco_Menor_CriaJanela(__('Transferir Quantia'));
         
     }
     static function transferencia_formcadastro(){

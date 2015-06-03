@@ -82,7 +82,7 @@ if(!$mail->send()) {
    exit;
 }
 
-echo 'Message has been sent';
+echo __('Message has been sent');
 ```
 
 You'll find plenty more to play with in the [examples](examples/) folder.

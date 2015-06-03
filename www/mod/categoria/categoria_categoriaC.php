@@ -78,7 +78,7 @@ class categoria_categoriaControle extends categoria_Controle
         $form = new \Framework\Classes\Form('adminformcategoriasend', SISTEMA_MODULO.'/'.SISTEMA_SUB.'/Categorias_alterar/'.$id.'/','formajax');
         $this->Categorias_formulario($form,$tipo,$categoria['nome'],$categoria['parent']);
         $this->_Visual->Blocar($form->retorna_form($language['formularios']['editar']));
-        $this->_Visual->Bloco_Menor_CriaJanela('Editar Categoria');
+        $this->_Visual->Bloco_Menor_CriaJanela(__('Editar Categoria'));
         // ORGANIZA E MANDA CONTEUDO
         $this->_Visual->Json_Info_Update('Titulo','Editar Categoria');
     }
@@ -148,7 +148,7 @@ class categoria_categoriaControle extends categoria_Controle
         $tabela->addcabecario(array('Id','Nome', 'Acesso','Editar'));        
         $this->_Visual->Categorias_ShowTab($array,$tabela);
         $this->_Visual->Blocar($tabela->retornatabela());
-        $this->_Visual->Bloco_Maior_CriaJanela('Categorias');
+        $this->_Visual->Bloco_Maior_CriaJanela(__('Categorias'));
         unset($tabela);        
     }
     /**

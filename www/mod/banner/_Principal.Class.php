@@ -21,7 +21,7 @@ class banner_Principal implements PrincipalInterface
     */
     static function Home(&$controle, &$modelo, &$Visual){
         $Visual->Blocar(banner_Controle::Banners_Mostrar($modelo,7));
-        $Visual->Bloco_Menor_CriaJanela('Publicidade');
+        $Visual->Bloco_Menor_CriaJanela(__('Publicidade'));
     }
     static function Busca(&$controle, &$modelo, &$Visual,$busca){
         return false;

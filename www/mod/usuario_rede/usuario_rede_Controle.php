@@ -60,7 +60,7 @@ class usuario_rede_Controle extends \Framework\App\Controle
         unset($valores); // LIMPA MEM�RIA
         // Cria conteudo html no layoult e add numa noja janela
         $Visual->Blocar($Visual->grafico_gerar($graficos));
-        $Visual->Bloco_Unico_CriaJanela('Gráficos');
+        $Visual->Bloco_Unico_CriaJanela(__('Gráficos'));
     }
     static function Ranking_listar(&$modelo, &$Visual){
         $ranking = Array();
@@ -74,7 +74,7 @@ class usuario_rede_Controle extends \Framework\App\Controle
                 ++$i;
             }
             $Visual->Show_Tabela_DataTable($tabela);
-            $Visual->Bloco_Maior_CriaJanela('Ranking','',10);
+            $Visual->Bloco_Maior_CriaJanela(__('Ranking'),'',10);
             unset($tabela);
         }
     }

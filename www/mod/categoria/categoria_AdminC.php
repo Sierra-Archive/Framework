@@ -67,7 +67,7 @@ class categoria_AdminControle extends categoria_Controle
         // Conexao
         $this->_Visual->Categorias_ShowTab($array,$tabela);
         $this->_Visual->Blocar($tabela->retornatabela());
-        $this->_Visual->Bloco_Unico_CriaJanela('Categorias');
+        $this->_Visual->Bloco_Unico_CriaJanela(__('Categorias'));
         unset($tabela);        
     }
     /**

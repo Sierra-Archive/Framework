@@ -104,17 +104,17 @@ namespace Framework\Classes;
  - Add static methods for creating and validating captcha by ID
  - Automatic clearing of old codes from SQLite database
 
- 3.0.3Beta
+ 3.1.3Beta
  - Add improved mixing function to WavFile class (Paul Voegler)
  - Improve performance and security of captcha audio (Paul Voegler, Drew Phillips)
  - Add option to use random file as background noise in captcha audio
  - Add new securimage options for audio files
 
- 3.0.2Beta
+ 3.1.2Beta
  - Fix issue with session variables when upgrading from 2.0 - 3.0
  - Improve audio captcha, switch to use WavFile class, make mathematical captcha audio work
 
- 3.0.1
+ 3.1.1
  - Bugfix: removed use of deprecated variable in addSignature method that would cause errors with display_errors on
 
  3.0
@@ -645,7 +645,7 @@ class Securimage
      *
      * Default: securimage/audio/noise
      *
-     * @since 3.0.3
+     * @since 3.1.3
      * @see Securimage::$audio_noise_path audio_noise_path property
      * @var bool true = mix, false = no
      */
@@ -676,7 +676,7 @@ class Securimage
      *     The threshold above which amplitudes are comressed linearly.
      *     e.g. -0.6 to leave amplitudes up to 60% "as is" and compress above.
      *
-     * @since 3.0.4
+     * @since 3.1.4
      * @var float
      */
     public $audio_mix_normalization = 0.8;
@@ -689,7 +689,7 @@ class Securimage
      *
      * Default: true
      *
-     * @since 3.0.3
+     * @since 3.1.3
      * @var bool
      */
     public $degrade_audio;
@@ -697,7 +697,7 @@ class Securimage
     /**
      * Minimum delay to insert between captcha audio letters in milliseconds
      *
-     * @since 3.0.3
+     * @since 3.1.3
      * @var float
      */
     public $audio_gap_min = 0;
@@ -705,7 +705,7 @@ class Securimage
     /**
      * Maximum delay to insert between captcha audio letters in milliseconds
      *
-     * @since 3.0.3
+     * @since 3.1.3
      * @var float
      */
     public $audio_gap_max = 3000;

@@ -82,13 +82,13 @@ ini_set('date.timezone', 'America/Sao_Paulo');
 // COnexoes limite infinito
 ini_set('mysqli.max_links', -1);
 // Podendo Usar Memória Infinita
-ini_set('memory_limit', '-1');
+ini_set('memory_limit', -1);
 //Upload 10 GB
-ini_set('post_max_size','10485760000');
+ini_set('post_max_size',10485760000); 
 //Upload 10 GB
-ini_set('upload_max_filesize','10485760000');
+ini_set('upload_max_filesize',10485760000);
 // Input Time para Infinito
-ini_set('max_input_time','-1');
+ini_set('max_input_time',-1);
 // Tempo Maximo de Execução para Infinito
 ini_set('max_execution_time', 0);
 // Tipo de Linguagem

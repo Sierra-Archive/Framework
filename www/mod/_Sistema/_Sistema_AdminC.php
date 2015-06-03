@@ -749,7 +749,7 @@ class _Sistema_AdminControle extends _Sistema_Controle
         $formulario = $form->retorna_form('Cadastrar');
         $this->_Visual->Blocar($formulario);
         // Mostra Conteudo
-        $this->_Visual->Bloco_Unico_CriaJanela('Cadastro de Permissão de Grupo');
+        $this->_Visual->Bloco_Unico_CriaJanela(__('Cadastro de Permissão de Grupo'));
         // Pagina Config
         $this->_Visual->Json_Info_Update('Titulo','Adicionar Permissão de Grupo');
     }
@@ -776,7 +776,7 @@ class _Sistema_AdminControle extends _Sistema_Controle
         \Framework\App\Controle::Gerador_Formulario($campos, $form);
         $formulario = $form->retorna_form('Alterar Permissão de Grupo');
         $this->_Visual->Blocar($formulario);
-        $this->_Visual->Bloco_Unico_CriaJanela('Alteração de Permissão de Grupo');
+        $this->_Visual->Bloco_Unico_CriaJanela(__('Alteração de Permissão de Grupo'));
         // Json
         $this->_Visual->Json_Info_Update('Titulo', 'Editar Permissão de Grupo (#'.$id.')');
         
@@ -979,7 +979,7 @@ class _Sistema_AdminControle extends _Sistema_Controle
         $formulario = $form->retorna_form('Cadastrar');
         $this->_Visual->Blocar($formulario);
         // Mostra Conteudo
-        $this->_Visual->Bloco_Unico_CriaJanela('Cadastro de Newsletter');
+        $this->_Visual->Bloco_Unico_CriaJanela(__('Cadastro de Newsletter'));
         // Pagina Config
         $this->_Visual->Json_Info_Update('Titulo','Adicionar Newsletter');
     }
@@ -1004,7 +1004,7 @@ class _Sistema_AdminControle extends _Sistema_Controle
         \Framework\App\Controle::Gerador_Formulario($campos, $form);
         $formulario = $form->retorna_form('Alterar Newsletter');
         $this->_Visual->Blocar($formulario);
-        $this->_Visual->Bloco_Unico_CriaJanela('Alteração de Newsletter');
+        $this->_Visual->Bloco_Unico_CriaJanela(__('Alteração de Newsletter'));
         // Json
         $this->_Visual->Json_Info_Update('Titulo', 'Editar Newsletter (#'.$id.')');
         
