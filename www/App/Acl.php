@@ -53,7 +53,7 @@ class Acl{
             // Esqueci Minha Senha
             if(isset($_GET['sistema_esquecisenha'])){
                 $this->_Registro->_Visual = new \Framework\App\Visual();
-                $this->_Registro->_Visual->Json_Info_Update('Titulo', 'Esqueci Senha');
+                $this->_Registro->_Visual->Json_Info_Update('Titulo', __('Esqueci Senha'));
                 // Clicando no link do email
                 if(isset($_GET['sistema_esquecisenha_cod'])){
                     $novasenha = Sistema_Funcoes::Gerar_Senha();
@@ -63,8 +63,8 @@ class Acl{
                         // MEnsagem de Erro
                         $mensagens = array(
                             "tipo"              => 'erro',
-                            "mgs_principal"     => 'Código Inválido',
-                            "mgs_secundaria"    => 'Verifique se a url foi digitada corretamente, ou se já foi usado ou expirada essa requisição.'
+                            "mgs_principal"     => __('Código Inválido'),
+                            "mgs_secundaria"    => __('Verifique se a url foi digitada corretamente, ou se já foi usado ou expirada essa requisição.')
                         );
                         $this->_Registro->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
                         $this->_Registro->_Visual->renderizar();
@@ -77,8 +77,8 @@ class Acl{
                         // MEnsagem de Erro
                         $mensagens = array(
                             "tipo"              => 'erro',
-                            "mgs_principal"     => 'Código Expirado',
-                            "mgs_secundaria"    => 'Já faz mais de 24 hrs que esse código foi gerado.'
+                            "mgs_principal"     => __('Código Expirado'),
+                            "mgs_secundaria"    => __('Já faz mais de 24 hrs que esse código foi gerado.')
                         );
                         $this->_Registro->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
                         $this->_Registro->_Visual->renderizar();
@@ -91,8 +91,8 @@ class Acl{
                         // MEnsagem de Erro
                         $mensagens = array(
                             "tipo"              => 'erro',
-                            "mgs_principal"     => 'Erro',
-                            "mgs_secundaria"    => 'Usuário não encontrado.'
+                            "mgs_principal"     => __('Erro'),
+                            "mgs_secundaria"    => __('Usuário não encontrado.')
                         );
                         $this->_Registro->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
                         $this->_Registro->_Visual->renderizar();
@@ -105,7 +105,7 @@ class Acl{
                     
                     
                     $this->_Registro->_Visual->Blocar('<b>Seu Login é:</b> '.$inscricao->login.'<br><b>Sua nova senha é:</b> '.$novasenha.'');
-                    $this->_Registro->_Visual->Bloco_Unico_CriaJanela('Senha Atualizada com Sucesso');
+                    $this->_Registro->_Visual->Bloco_Unico_CriaJanela(__('Senha Atualizada com Sucesso'));
                     $this->_Registro->_Visual->renderizar();
                     \Framework\App\Controle::Tema_Travar();
                     
@@ -122,15 +122,15 @@ class Acl{
                         // MEnsagem de Erro
                         $mensagens = array(
                             "tipo"              => 'erro',
-                            "mgs_principal"     => 'Erro',
-                            "mgs_secundaria"    => 'Usuário não encontrado.'
+                            "mgs_principal"     => __('Erro'),
+                            "mgs_secundaria"    => __('Usuário não encontrado.')
                         );
                         $this->_Registro->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
                     
                         $form = new \Framework\Classes\Form('FormEsqueciSenha',SISTEMA_DIR_INT.'?sistema_esquecisenha=true'/*,'formajax'*/); //formajax /'.SISTEMA_MODULO.'/'.SISTEMA_SUB.'/'.SISTEMA_MET
                         $form->Input_Novo('Login','sistema_esquecisenha_login','','text', '',30, '');
                         $this->_Registro->_Visual->Blocar($form->retorna_form('Trocar a Senha'));
-                        $this->_Registro->_Visual->Bloco_Unico_CriaJanela('Digite o Email');
+                        $this->_Registro->_Visual->Bloco_Unico_CriaJanela(__('Digite o Email'));
                         $this->_Registro->_Visual->renderizar();
                         \Framework\App\Controle::Tema_Travar();
                     }
@@ -144,8 +144,8 @@ class Acl{
                             // MEnsagem de Erro
                             $mensagens = array(
                                 "tipo"              => 'erro',
-                                "mgs_principal"     => 'Erro',
-                                "mgs_secundaria"    => 'Vocẽ já fez sua requisição por uma nova senha. Verifique seu email.'
+                                "mgs_principal"     => __('Erro'),
+                                "mgs_secundaria"    => __('Vocẽ já fez sua requisição por uma nova senha. Verifique seu email.')
                             );
                             $this->_Registro->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
                             $this->_Registro->_Visual->renderizar();
@@ -170,8 +170,8 @@ class Acl{
                         // MEnsagem de Erro
                         $mensagens = array(
                             "tipo"              => 'erro',
-                            "mgs_principal"     => 'Erro',
-                            "mgs_secundaria"    => 'O email não pode ser enviado, contate o administrador do sistema.'
+                            "mgs_principal"     => __('Erro'),
+                            "mgs_secundaria"    => __('O email não pode ser enviado, contate o administrador do sistema.')
                         );
                         $this->_Registro->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
                         $this->_Registro->_Visual->renderizar();
@@ -180,7 +180,7 @@ class Acl{
                     
                     // Avisa na Tela
                     $this->_Registro->_Visual->Blocar('Clique no Link enviado por Email.<br>Por favor verifique seu email.');
-                    $this->_Registro->_Visual->Bloco_Unico_CriaJanela('Enviado com Sucesso');
+                    $this->_Registro->_Visual->Bloco_Unico_CriaJanela(__('Enviado com Sucesso'));
                     $this->_Registro->_Visual->renderizar();
                     \Framework\App\Controle::Tema_Travar();
                 }
@@ -192,7 +192,7 @@ class Acl{
                     $form = new \Framework\Classes\Form('FormEsqueciSenha',SISTEMA_DIR_INT.'?sistema_esquecisenha=true'/*,'formajax'*/); //formajax /'.SISTEMA_MODULO.'/'.SISTEMA_SUB.'/'.SISTEMA_MET
                     $form->Input_Novo('Login','sistema_esquecisenha_login','','text', '',30, '');
                     $this->_Registro->_Visual->Blocar($form->retorna_form('Trocar a Senha'));
-                    $this->_Registro->_Visual->Bloco_Unico_CriaJanela('Digite o Email');
+                    $this->_Registro->_Visual->Bloco_Unico_CriaJanela(__('Digite o Email'));
                     $this->_Registro->_Visual->renderizar();
                     \Framework\App\Controle::Tema_Travar();
                 }
@@ -326,8 +326,8 @@ class Acl{
         if(!$_Registro->_Visual) $_Registro->_Visual = new \Framework\App\Visual();
         $mensagens = array(
             "tipo"              => 'erro',
-            "mgs_principal"     => 'Senha Inválida',
-            "mgs_secundaria"    => 'Verifique se o Login ou a senha foram colocadas com sucesso.'
+            "mgs_principal"     => __('Senha Inválida'),
+            "mgs_secundaria"    => __('Verifique se o Login ou a senha foram colocadas com sucesso.')
         );
         $_Registro->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
     }
@@ -340,7 +340,7 @@ class Acl{
      * @return type
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.0.1
+     * @version 3.1.1
      */
     public function Get_Permissao_Nome($chave,$campo='Nome') {
         $array = &self::$Sis_Permissao;
@@ -360,7 +360,7 @@ class Acl{
      * @return type
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.0.1
+     * @version 3.1.1
      */
     public function getPermissao(){
         if(isset($this->_permissao) && count($this->_permissao)){
@@ -375,7 +375,7 @@ class Acl{
      * @return boolean
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.0.1
+     * @version 3.1.1
      */
     public function Get_Permissao_Chave($chave,$campo='Nome') {
         $array = $this->getPermissao();
@@ -445,7 +445,7 @@ class Acl{
      * Compilar as Permissões, Junta as Permissoes de Usuario com as de Grupo
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.0.1
+     * @version 3.1.1
      */
     private function compilarAcl(){
         $usuario_perm = $this->getUsuarioPermissao();
@@ -460,7 +460,7 @@ class Acl{
      * @return boolean
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.0.1
+     * @version 3.1.1
      */
     private function getGrupo(){
         $sql = $this->_db->query(
@@ -582,7 +582,7 @@ class Acl{
      * @return boolean
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.0.1
+     * @version 3.1.1
      */
     private function getPermissaoGrupo(){
         $data = Array();
@@ -617,7 +617,7 @@ class Acl{
      * @return array
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.0.1
+     * @version 3.1.1
      */
     private function getUsuarioPermissao(){
         $data = Array();
@@ -762,7 +762,7 @@ class Acl{
      * @return boolean
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.0.1
+     * @version 3.1.1
      */
     public function Usuario_Logar($login='',$senha='',$id=0){
         if($login!=='') \Framework\App\Session::set(SESSION_ADMIN_LOG,   $login);
@@ -790,7 +790,7 @@ class Acl{
      * @return int Id de Usuario logado ou zero
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.0.1
+     * @version 3.1.1
      */
     static public function Usuario_GetLogado_Static(){
         return \Framework\App\Registro::getInstacia()->_Acl->logado;
@@ -811,7 +811,7 @@ class Acl{
      * Inseri Novos Grupos (Grupos Basicos) no Sistema
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.0.1
+     * @version 3.1.1
      */
     static function grupos_inserir(){
         
@@ -874,14 +874,14 @@ class Acl{
             // Admin Master
             $grupo = new \Sistema_Grupo_DAO();
             //$grupo->id = 1;
-            $grupo->nome = 'Admin Master';
+            $grupo->nome = __('Admin Master');
             $grupo->categoria = $gerais_id;
             $this->_db->Sql_Inserir($grupo);
             
             // Admin
             $grupo = new \Sistema_Grupo_DAO();
             //$grupo->id = 2;
-            $grupo->nome = 'Admin';
+            $grupo->nome = __('Admin');
             $grupo->categoria = $gerais_id;
             $this->_db->Sql_Inserir($grupo);
             
@@ -895,14 +895,14 @@ class Acl{
             // Funcionario
             $grupo = new \Sistema_Grupo_DAO();
             //$grupo->id = 3;
-            $grupo->nome = 'Funcionário';
+            $grupo->nome = __('Funcionário');
             $grupo->categoria = $funcionarios_id;
             $this->_db->Sql_Inserir($grupo);
             
             // Newsletter
             $grupo = new \Sistema_Grupo_DAO();
             //$grupo->id = 4;
-            $grupo->nome = 'Newsletter';
+            $grupo->nome = __('Newsletter');
             $grupo->categoria = $funcionarios_id;
             $this->_db->Sql_Inserir($grupo);
         }
@@ -1034,7 +1034,7 @@ class Acl{
      * 
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.0.1
+     * @version 3.1.1
      */
     private function Sistema_Permissoes_InserirPadrao(){
         $configPermissoes = self::Sistema_Modulos_Carregar_Permissoes();

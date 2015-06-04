@@ -25,7 +25,7 @@ class Engenharia_UnidadeControle extends Engenharia_Controle
         $registro = \Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
         if($empreendimento===false){
-            $titulo = 'Todas as Unidades';
+            $titulo = __('Todas as Unidades');
             $link   = 'Engenharia/Unidade/Unidades';
         }else{
             Engenharia_EmpreendimentoControle::Endereco_Empreendimento();
@@ -104,8 +104,8 @@ class Engenharia_UnidadeControle extends Engenharia_Controle
             $add_url    = 'Engenharia/Unidade/Unidades_Add/'.$empreendimento;
             $proprio    = 'Engenharia/Unidade/Unidades/'.$empreendimento;
         }else{
-            $titulo = 'Listagem de Unidades em Todos os Empreendimentos';
-            $titulo_add = 'Adicionar nova Unidade';
+            $titulo = __('Listagem de Unidades em Todos os Empreendimentos');
+            $titulo_add = __('Adicionar nova Unidade');
             $add_url    = 'Engenharia/Unidade/Unidades_Add/falso';
             $proprio    = 'Engenharia/Unidade/Unidades/falso';
         }
@@ -146,9 +146,9 @@ class Engenharia_UnidadeControle extends Engenharia_Controle
             unset($tabela);
         }else{
             if($empreendimento!==false){
-                $erro = 'Nenhuma Unidade nesse Empreendimento';
+                $erro = __('Nenhuma Unidade nesse Empreendimento');
             }else{
-                $erro = 'Nenhuma Unidade nos Empreendimentos';
+                $erro = __('Nenhuma Unidade nos Empreendimentos');
             }            
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">'.$erro.'</font></b></center>');
         }
@@ -168,12 +168,12 @@ class Engenharia_UnidadeControle extends Engenharia_Controle
         if($empreendimento=='falso') $empreendimento = false;
         // Carrega Config
         $formid     = 'form_Sistema_Admin_Unidades';
-        $formbt     = 'Salvar';
+        $formbt     = __('Salvar');
         $campos     = Engenharia_Empreendimento_Unidade_DAO::Get_Colunas();
         if($empreendimento===false){
             $formlink   = 'Engenharia/Unidade/Unidades_Add2/falso';
-            $titulo1    = 'Adicionar Unidade';
-            $titulo2    = 'Salvar Unidade';
+            $titulo1    = __('Adicionar Unidade');
+            $titulo2    = __('Salvar Unidade');
             self::Endereco_Unidade(true, false);
         }else{
             $empreendimento = (int) $empreendimento;
@@ -219,13 +219,13 @@ class Engenharia_UnidadeControle extends Engenharia_Controle
         if($empreendimento=='falso') $empreendimento = false;
         $dao        = 'Engenharia_Empreendimento_Unidade';
         if($lote===false){
-            $titulo     = 'Unidade Adicionada com Sucesso';
-            $sucesso1   = 'Inserção bem sucedida';
-            $sucesso2   = 'Unidade cadastrada com sucesso.';
+            $titulo     = __('Unidade Adicionada com Sucesso');
+            $sucesso1   = __('Inserção bem sucedida');
+            $sucesso2   = __('Unidade cadastrada com sucesso.');
         }else{
-            $titulo     = 'Unidades Adicionadas com Sucesso';
-            $sucesso1   = 'Inserções bem sucedidas';
-            $sucesso2   = 'Unidades cadastradas com sucesso.';
+            $titulo     = __('Unidades Adicionadas com Sucesso');
+            $sucesso1   = __('Inserções bem sucedidas');
+            $sucesso2   = __('Unidades cadastradas com sucesso.');
         }
         if($empreendimento===false){
             $funcao     = '$this->Unidades(0);';
@@ -244,9 +244,9 @@ class Engenharia_UnidadeControle extends Engenharia_Controle
     private function Magica_Add2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$colocar=false,$erro1 = '',$erro2 = ''){
         $unidade1 = intval($_POST['unidade1']);
         $unidade2 = intval($_POST['unidade2']);
-        $erro1 = 'Algo Errado';
+        $erro1 = __('Algo Errado');
         if($unidade1>=$unidade2){
-            $erro2 = 'Unidade Minima maior que a máxima';
+            $erro2 = __('Unidade Minima maior que a máxima');
             $mensagens = array(
                 "tipo"              => 'erro',
                 "mgs_principal"     => $erro1,
@@ -257,7 +257,7 @@ class Engenharia_UnidadeControle extends Engenharia_Controle
             $this->layoult_zerar = false;
             return false;
         }else if($unidade1<=100){
-            $erro2 = 'Unidades Minima menor ou igual a 100';
+            $erro2 = __('Unidades Minima menor ou igual a 100');
             $mensagens = array(
                 "tipo"              => 'erro',
                 "mgs_principal"     => $erro1,
@@ -268,7 +268,7 @@ class Engenharia_UnidadeControle extends Engenharia_Controle
             $this->layoult_zerar = false;
             return false;
         }else if($unidade2>=3500){
-            $erro2 = 'Nenhum prédio é tão alto';
+            $erro2 = __('Nenhum prédio é tão alto');
             $mensagens = array(
                 "tipo"              => 'erro',
                 "mgs_principal"     => $erro1,
@@ -284,7 +284,7 @@ class Engenharia_UnidadeControle extends Engenharia_Controle
             $apartamento_inicio = ($unidade1-(100*$andar_inicio));
             $apartamento_final  = ($unidade2-(100*$andar_final));
             if($apartamento_inicio>$apartamento_final){
-                $erro2 = 'Apartamento inicial não pode ser maior que o final';
+                $erro2 = __('Apartamento inicial não pode ser maior que o final');
                 $mensagens = array(
                     "tipo"              => 'erro',
                     "mgs_principal"     => $erro1,
@@ -300,7 +300,7 @@ class Engenharia_UnidadeControle extends Engenharia_Controle
                 // 
                 // Variaveis
                 $camponovo = false;
-                $tipo           = 'add';
+                $tipo           = __('add');
                 $tab            = \anti_injection($dao);
                 $identificador  = 0;
                 // Cria novo Origem
@@ -342,8 +342,8 @@ class Engenharia_UnidadeControle extends Engenharia_Controle
         }
         $mensagens = array(
             "tipo"              => 'sucesso',
-            "mgs_principal"     => 'Sucesso',
-            "mgs_secundaria"    => 'Unidades Cadastradas com Sucesso.'
+            "mgs_principal"     => __('Sucesso'),
+            "mgs_secundaria"    => __('Unidades Cadastradas com Sucesso.')
         );
         $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
         $this->_Visual->Json_Info_Update('Historico', false);  
@@ -470,9 +470,9 @@ class Engenharia_UnidadeControle extends Engenharia_Controle
         }
         // Carrega Config
         $titulo1    = 'Editar Unidade (#'.$id.')';
-        $titulo2    = 'Alteração de Unidade';
+        $titulo2    = __('Alteração de Unidade');
         $formid     = 'form_Sistema_AdminC_UnidadeEdit';
-        $formbt     = 'Alterar Unidade';
+        $formbt     = __('Alterar Unidade');
         $campos = Engenharia_Empreendimento_Unidade_DAO::Get_Colunas();
         if($empreendimento!==false){
             $empreendimento_registro = $this->_Modelo->db->Sql_Select('Engenharia_Empreendimento',Array('id'=>$empreendimento),1);
@@ -503,14 +503,14 @@ class Engenharia_UnidadeControle extends Engenharia_Controle
         if($empreendimento!==false){
             $empreendimento    = (int) $empreendimento;
         }
-        $titulo     = 'Unidade Editada com Sucesso';
+        $titulo     = __('Unidade Editada com Sucesso');
         $dao        = Array('Engenharia_Empreendimento_Unidade',$id);
         if($empreendimento!==false){
             $funcao     = '$this->Unidades('.$empreendimento.');';
         }else{
             $funcao     = '$this->Unidades();';
         }
-        $sucesso1   = 'Unidade Alterada com Sucesso.';
+        $sucesso1   = __('Unidade Alterada com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);   
@@ -542,8 +542,8 @@ class Engenharia_UnidadeControle extends Engenharia_Controle
     	if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Deletado',
-                "mgs_secundaria" => 'Unidade deletada com sucesso'
+                "mgs_principal" => __('Deletado'),
+                "mgs_secundaria" => __('Unidade deletada com sucesso')
             );
     	}else{
             $mensagens = array(
@@ -560,7 +560,7 @@ class Engenharia_UnidadeControle extends Engenharia_Controle
             $this->Unidades();
         }
         
-        $this->_Visual->Json_Info_Update('Titulo', 'Unidade deletada com Sucesso');
+        $this->_Visual->Json_Info_Update('Titulo', __('Unidade deletada com Sucesso'));
         $this->_Visual->Json_Info_Update('Historico', false);
     }
 }

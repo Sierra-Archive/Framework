@@ -26,7 +26,7 @@ class Curso_TurmaControle extends Curso_Controle
         $registro = \Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
         if($curso===false){
-            $titulo = 'Todas as Turmas';
+            $titulo = __('Todas as Turmas');
             $link   = 'Curso/Turma/Turmas';
         }else{
             Curso_CursoControle::Endereco_Curso();
@@ -62,7 +62,7 @@ class Curso_TurmaControle extends Curso_Controle
         $registro = \Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
         if($curso===false){
-            $titulo = 'Todas as Turmas';
+            $titulo = __('Todas as Turmas');
             $link   = 'Curso/Turma/Abertas';
         }else{
             Curso_CursoControle::Endereco_Curso();
@@ -104,10 +104,10 @@ class Curso_TurmaControle extends Curso_Controle
             $status                                 = $valor->status;
             if($status!=1){
                 $status = 0;
-                $texto = 'Desativado';
+                $texto = __('Desativado');
             }else{
                 $status = 1;
-                $texto = 'Ativado';
+                $texto = __('Ativado');
             }
             $tabela['Funções'][$i]          = $Visual->Tema_Elementos_Btn('Visualizar' ,Array('Ver Turma'        ,$ver_url    ,'')).
                                               '<span id="status'.$valor->id.'">'.$Visual->Tema_Elementos_Btn('Status'.$status     ,Array($texto        ,'Curso/Turma/Status/'.$valor->id.'/'    ,'')).'</span>'.
@@ -193,7 +193,7 @@ class Curso_TurmaControle extends Curso_Controle
             $url_add = '/'.$curso;
             $add_url = 'Curso/Turma/Turmas_Add/'.$curso;
         }else{
-            $titulo_add = 'Adicionar nova Turma';
+            $titulo_add = __('Adicionar nova Turma');
             $url_add = '/false';
             $add_url    = 'Curso/Turma/Turmas_Add';
         }
@@ -216,7 +216,7 @@ class Curso_TurmaControle extends Curso_Controle
         if($curso!==false){
             $titulo = 'Listagem de Turmas: '.$curso_registro->nome;
         }else{
-            $titulo = 'Listagem de Turmas em Todos os Cursos';
+            $titulo = __('Listagem de Turmas em Todos os Cursos');
         }
         if($turmas!==false && !empty($turmas)){
             list($tabela,$i) = self::Turmas_Tabela($turmas,$curso);
@@ -240,9 +240,9 @@ class Curso_TurmaControle extends Curso_Controle
         }else{
             $titulo = $titulo.' ('.$i.')';
             if($curso!==false){
-                $erro = 'Nenhuma Turma nesse Curso';
+                $erro = __('Nenhuma Turma nesse Curso');
             }else{
-                $erro = 'Nenhuma Turma nos Cursos';
+                $erro = __('Nenhuma Turma nos Cursos');
             }         
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">'.$erro.'</font></b></center>');
         }
@@ -297,7 +297,7 @@ class Curso_TurmaControle extends Curso_Controle
         if($curso!==false){
             $titulo = 'Listagem de Turmas: '.$curso_registro->nome;
         }else{
-            $titulo = 'Listagem de Turmas em Todos os Cursos';
+            $titulo = __('Listagem de Turmas em Todos os Cursos');
         }
         if($turmas!==false && !empty($turmas)){
             list($tabela,$i) = self::Abertas_Tabela($turmas,$curso);
@@ -321,9 +321,9 @@ class Curso_TurmaControle extends Curso_Controle
         }else{
             $titulo = $titulo.' ('.$i.')';
             if($curso!==false){
-                $erro = 'Nenhuma Turma com inscrição aberta nesse Curso';
+                $erro = __('Nenhuma Turma com inscrição aberta nesse Curso');
             }else{
-                $erro = 'Nenhuma Turma com inscrição aberta';
+                $erro = __('Nenhuma Turma com inscrição aberta');
             }         
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">'.$erro.'</font></b></center>');
         }
@@ -341,12 +341,12 @@ class Curso_TurmaControle extends Curso_Controle
         if($curso==='false') $curso = false;
         // Carrega Config
         $formid     = 'form_Sistema_Admin_Turmas';
-        $formbt     = 'Salvar';
+        $formbt     = __('Salvar');
         $campos     = Curso_Turma_DAO::Get_Colunas();
         if($curso===false){
             $formlink   = 'Curso/Turma/Turmas_Add2';
-            $titulo1    = 'Adicionar Turma';
-            $titulo2    = 'Salvar Turma';
+            $titulo1    = __('Adicionar Turma');
+            $titulo2    = __('Salvar Turma');
             self::Endereco_Turma(true, false);
         }else{
             $curso = (int) $curso;
@@ -379,10 +379,10 @@ class Curso_TurmaControle extends Curso_Controle
      */
     public function Turmas_Add2($curso=false){
         if($curso==='false') $curso = false;
-        $titulo     = 'Turma Adicionada com Sucesso';
+        $titulo     = __('Turma Adicionada com Sucesso');
         $dao        = 'Curso_Turma';
-        $sucesso1   = 'Inserção bem sucedida';
-        $sucesso2   = 'Turma cadastrada com sucesso.';
+        $sucesso1   = __('Inserção bem sucedida');
+        $sucesso2   = __('Turma cadastrada com sucesso.');
         if($curso===false){
             $funcao     = '$this->Turmas(0);';
             $alterar    = Array();
@@ -448,7 +448,7 @@ class Curso_TurmaControle extends Curso_Controle
             unset($tabela);
         }else{
             $titulo = $titulo.' ('.$i.')';
-            $erro = 'Nenhuma Inscrição nessa Turma';     
+            $erro = __('Nenhuma Inscrição nessa Turma');     
             $html = '<center><b><font color="#FF0000" size="5">'.$erro.'</font></b></center>';
         }
         
@@ -506,9 +506,9 @@ class Curso_TurmaControle extends Curso_Controle
         }
         // Carrega Config
         $titulo1    = 'Editar Turma (#'.$id.')';
-        $titulo2    = 'Alteração de Turma';
+        $titulo2    = __('Alteração de Turma');
         $formid     = 'form_Sistema_AdminC_TurmaEdit';
-        $formbt     = 'Alterar Turma';
+        $formbt     = __('Alterar Turma');
         $campos = Curso_Turma_DAO::Get_Colunas();
         if($curso!==false){
             $curso_registro = $this->_Modelo->db->Sql_Select('Curso',Array('id'=>$curso),1);
@@ -541,14 +541,14 @@ class Curso_TurmaControle extends Curso_Controle
         if($curso!==false){
             $curso    = (int) $curso;
         }
-        $titulo     = 'Turma Editada com Sucesso';
+        $titulo     = __('Turma Editada com Sucesso');
         $dao        = Array('Curso_Turma',$id);
         if($curso!==false){
             $funcao     = '$this->Turmas('.$curso.');';
         }else{
             $funcao     = '$this->Turmas();';
         }
-        $sucesso1   = 'Turma Alterada com Sucesso.';
+        $sucesso1   = __('Turma Alterada com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);   
@@ -581,8 +581,8 @@ class Curso_TurmaControle extends Curso_Controle
     	if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Deletado',
-                "mgs_secundaria" => 'Turma deletada com sucesso'
+                "mgs_principal" => __('Deletado'),
+                "mgs_secundaria" => __('Turma deletada com sucesso')
             );
     	}else{
             $mensagens = array(
@@ -599,7 +599,7 @@ class Curso_TurmaControle extends Curso_Controle
             $this->Turmas();
         }
         
-        $this->_Visual->Json_Info_Update('Titulo', 'Turma deletada com Sucesso');
+        $this->_Visual->Json_Info_Update('Titulo', __('Turma deletada com Sucesso'));
         $this->_Visual->Json_Info_Update('Historico', false);
     }
     public function Status($id=false){
@@ -618,9 +618,9 @@ class Curso_TurmaControle extends Curso_Controle
         $sucesso = $this->_Modelo->db->Sql_Update($resultado);
         if($sucesso){
             if($resultado->status==1){
-                $texto = 'Ativado';
+                $texto = __('Ativado');
             }else{
-                $texto = 'Desativado';
+                $texto = __('Desativado');
             }
             $conteudo = array(
                 'location' => '#status'.$resultado->id,
@@ -628,16 +628,16 @@ class Curso_TurmaControle extends Curso_Controle
                 'html' =>  $this->_Visual->Tema_Elementos_Btn('Status'.$resultado->status     ,Array($texto        ,'Curso/Turma/Status/'.$resultado->id.'/'    ,''))
             );
             $this->_Visual->Json_IncluiTipo('Conteudo',$conteudo);
-            $this->_Visual->Json_Info_Update('Titulo','Status Alterado'); 
+            $this->_Visual->Json_Info_Update('Titulo', __('Status Alterado')); 
         }else{
             $mensagens = array(
                 "tipo"              => 'erro',
-                "mgs_principal"     => 'Erro',
-                "mgs_secundaria"    => 'Ocorreu um Erro.'
+                "mgs_principal"     => __('Erro'),
+                "mgs_secundaria"    => __('Ocorreu um Erro.')
             );
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
 
-            $this->_Visual->Json_Info_Update('Titulo','Erro'); 
+            $this->_Visual->Json_Info_Update('Titulo', __('Erro')); 
         }
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
@@ -690,7 +690,7 @@ class Curso_TurmaControle extends Curso_Controle
         if($turma_registro->qnt<=0){
             $mensagens = array(
                 "tipo"              => 'erro',
-                "mgs_principal"     => 'Sem Vagas',
+                "mgs_principal"     => __('Sem Vagas'),
                 "mgs_secundaria"    => 'Não possui mais vagas nessa Turma! :('
             );
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
@@ -705,7 +705,7 @@ class Curso_TurmaControle extends Curso_Controle
         if($insc_registro!==false){
             $mensagens = array(
                 "tipo"              => 'erro',
-                "mgs_principal"     => 'Erro',
+                "mgs_principal"     => __('Erro'),
                 "mgs_secundaria"    => 'Você já está matriculado nessa turma! :('
             );
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
@@ -716,10 +716,10 @@ class Curso_TurmaControle extends Curso_Controle
         
         
          // Carrega Config
-        $titulo1    = 'Confirmar Inscrição';
-        $titulo2    = 'Confirmar Inscrição';
+        $titulo1    = __('Confirmar Inscrição');
+        $titulo2    = __('Confirmar Inscrição');
         $formid     = 'form_Curso_Turma_Incricao_Fazer';
-        $formbt     = 'Confirmar Inscrição';
+        $formbt     = __('Confirmar Inscrição');
         $campos = Curso_Turma_Inscricao_DAO::Get_Colunas();
         self::Campos_Deletar_Inscricao($campos);
         \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos);
@@ -760,7 +760,7 @@ class Curso_TurmaControle extends Curso_Controle
         if($insc_registro!==false){
             $mensagens = array(
                 "tipo"              => 'erro',
-                "mgs_principal"     => 'Erro',
+                "mgs_principal"     => __('Erro'),
                 "mgs_secundaria"    => 'Você já está matriculado nessa turma! :('
             );
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
@@ -775,7 +775,7 @@ class Curso_TurmaControle extends Curso_Controle
         if($turma_registro->qnt<=0){
             $mensagens = array(
                 "tipo"              => 'erro',
-                "mgs_principal"     => 'Sem Vagas',
+                "mgs_principal"     => __('Sem Vagas'),
                 "mgs_secundaria"    => 'Não possui mais vagas nessa Turma! :('
             );
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
@@ -786,11 +786,11 @@ class Curso_TurmaControle extends Curso_Controle
         
         
         
-        $titulo     = 'Inscrição Confirmada com Sucesso';
+        $titulo     = __('Inscrição Confirmada com Sucesso');
         $dao        = 'Curso_Turma_Inscricao';
         $funcao     = false;
-        $sucesso1   = 'Inscrição bem sucedida';
-        $sucesso2   = 'Inscrição Confirmada com Sucesso';
+        $sucesso1   = __('Inscrição bem sucedida');
+        $sucesso2   = __('Inscrição Confirmada com Sucesso');
         $alterar    = Array('usuario'=>$usuarioid,'valor'=>$curso_registro->valor,'curso'=>$turma_registro->curso,'turma'=>$turma_registro->id);
         $sucesso = $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
         if($sucesso===true){

@@ -37,7 +37,7 @@ class usuario_AnexoControle extends usuario_Controle
     public function Main($id=false,$tipo='Usuarios'){
         $this->Anexar($id,$tipo);
         // ORGANIZA E MANDA CONTEUDO
-        $this->_Visual->Json_Info_Update('Titulo','Todos os tipos de Usuários');         
+        $this->_Visual->Json_Info_Update('Titulo', __('Todos os tipos de Usuários'));         
     }
     public function Anexar($id=false,$tipo='Usuarios'){
         // PEga usuario
@@ -49,10 +49,10 @@ class usuario_AnexoControle extends usuario_Controle
         $usuario = $this->_Modelo->db->Sql_Select('Usuario', Array('id'=>$id));
         if($tipo===false){
             if($usuario->grupo==CFG_TEC_IDCLIENTE){
-                $tipo   = 'Cliente';
+                $tipo   = __('Cliente');
                 $tipo2  = 'cliente';
             }else if($usuario->grupo==CFG_TEC_IDFUNCIONARIO){
-                $tipo   = 'Funcionário';
+                $tipo   = __('Funcionário');
                 $tipo2  = 'funcionario';
             }
         }else{
@@ -61,7 +61,7 @@ class usuario_AnexoControle extends usuario_Controle
         }
         // GAmbiarra Para Consertar erro de acento em url
         if($tipo=='Funcionrio' || $tipo=="Funcionario") $tipo = "Funcionário";
-        if($tipo=="Usurio" || $tipo=="Usuario")         $tipo = 'Usuário';
+        if($tipo=="Usurio" || $tipo=="Usuario")         $tipo = __('Usuário');
         // Cria Tipo 2:
         if($tipo=='Cliente'){
             $tipo2  = 'cliente';
@@ -90,7 +90,7 @@ class usuario_AnexoControle extends usuario_Controle
                 'Arquivos de Imagem'
             )
         );
-        $this->_Visual->Bloco_Unico_CriaJanela( 'Fazer Upload de Anexo'  ,'',8);
+        $this->_Visual->Bloco_Unico_CriaJanela(__('Fazer Upload de Anexo')  ,'',8);
         
         // Processa Anexo
         list($titulo,$html,$i) = $this->Anexos_Processar($id);
@@ -98,7 +98,7 @@ class usuario_AnexoControle extends usuario_Controle
         $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',9);
         
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Listagem de Anexos');
+        $this->_Visual->Json_Info_Update('Titulo', __('Listagem de Anexos'));
     }
     public function VisualizadordeUsuario_Upload($usuario = 0){
         if($usuario!==false && $usuario!=0){
@@ -130,7 +130,7 @@ class usuario_AnexoControle extends usuario_Controle
             $arquivo->endereco      = $ext[1];
             $arquivo->nome          = $ext[2];
             $this->_Modelo->db->Sql_Inserir($arquivo);
-            $this->_Visual->Json_Info_Update('Titulo', 'Upload com Sucesso');
+            $this->_Visual->Json_Info_Update('Titulo', __('Upload com Sucesso'));
             $this->_Visual->Json_Info_Update('Historico', false);
             // Tras de Volta e Atualiza via Json
             list($titulo,$html,$i) = $this->Anexos_Processar($usuario);
@@ -155,11 +155,11 @@ class usuario_AnexoControle extends usuario_Controle
             
             $mensagens = array(
                 "tipo" => 'erro',
-                "mgs_principal" => 'Erro',
-                "mgs_secundaria" => 'Houve algum erro ao fazer upload do arquivo !'
+                "mgs_principal" => __('Erro'),
+                "mgs_secundaria" => __('Houve algum erro ao fazer upload do arquivo !')
             );
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens); 
-            $this->_Visual->Json_Info_Update('Titulo', 'Erro com Upload');
+            $this->_Visual->Json_Info_Update('Titulo', __('Erro com Upload'));
             $this->_Visual->Json_Info_Update('Historico', false);
         }
     }

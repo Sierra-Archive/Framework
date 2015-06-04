@@ -460,26 +460,26 @@ else if ( jQuery ) {
 /* Set the defaults for DataTables initialisation */
 $.extend( true, $.fn.dataTable.defaults, {
     "oLanguage": {
-        "sEmptyTable":     "Nenhum registro encontrado na tabela",
-        "sInfo": "Mostrar _START_ até _END_ de _TOTAL_ registros<script>console.log('aqui',this);$('#DataTable_Contador').html('_TOTAL_');</script>",
-        "sInfoEmpty": "Mostrar 0 até 0 de 0 Registros",
-        "sInfoFiltered": "(Filtrar de _MAX_ total registros)",
+        "sEmptyTable":     Linguagem['DataTable']['Sem_Resultado'],
+        "sInfo": Linguagem['Paginacao']['Mostrando']+"<script>console.log('aqui',this);$('#DataTable_Contador').html('_TOTAL_');</script>",
+        "sInfoEmpty": Linguagem['DataTable']['Vazio'],
+        "sInfoFiltered": Linguagem['DataTable']['Filtro'],
         "sInfoPostFix":    "",
         "sInfoThousands":  ".",
-        "sLengthMenu": "Mostrar _MENU_ registros por pagina",
-        "sLoadingRecords": "Carregando...",
-        "sProcessing":     "Processando...",
-        "sZeroRecords": "Nenhum registro encontrado",
-        "sSearch": "Pesquisar",
+        "sLengthMenu": Linguagem['Paginacao']['MostrandoporPagina'],
+        "sLoadingRecords": Linguagem['Botoes']['Carregando'],
+        "sProcessing":     Linguagem['Botoes']['Processando'],
+        "sZeroRecords": Linguagem['DataTable']['Sem_Resultado'],
+        "sSearch": Linguagem['DataTable']['Procurar'],
         "oPaginate": {
-            "sNext": "Proximo",
-            "sPrevious": "Anterior",
-            "sFirst": "Primeiro",
-            "sLast":"Ultimo"
+            "sNext": Linguagem['Paginacao']['Proximo'],
+            "sPrevious": Linguagem['Paginacao']['Anterior'],
+            "sFirst": Linguagem['Paginacao']['Primeiro'],
+            "sLast": Linguagem['Paginacao']['Ultimo']
         },
         "oAria": {
-            "sSortAscending":  ": Ordenar colunas de forma ascendente",
-            "sSortDescending": ": Ordenar colunas de forma descendente"
+            "sSortAscending":  Linguagem['DataTable']['Ordenar_Asc'],
+            "sSortDescending": Linguagem['DataTable']['Ordenar_Desc']
         }
     },
     responsive: true

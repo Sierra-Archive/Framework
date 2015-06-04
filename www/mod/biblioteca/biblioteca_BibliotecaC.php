@@ -25,9 +25,9 @@ class biblioteca_BibliotecaControle extends biblioteca_Controle
         $registro = \Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
         if($true===true){
-            $_Controle->Tema_Endereco('Biblioteca','biblioteca/Biblioteca/Bibliotecas');
+            $_Controle->Tema_Endereco(__('Biblioteca'),'biblioteca/Biblioteca/Bibliotecas');
         }else{
-            $_Controle->Tema_Endereco('Biblioteca');
+            $_Controle->Tema_Endereco(__('Biblioteca'));
         }
     }
     public function Download($id,$raiz=false){
@@ -155,11 +155,11 @@ class biblioteca_BibliotecaControle extends biblioteca_Controle
                 'Todos os Arquivos'
             )
         );
-        $this->_Visual->Bloco_Maior_CriaJanela( 'Fazer Upload de Arquivo Nessa Pasta'  );
+        $this->_Visual->Bloco_Maior_CriaJanela(__('Fazer Upload de Arquivo Nessa Pasta')  );
         // Extensoes Permitidas
         $ext = $this->Upload_Ext();
         $this->_Visual->Blocar('.'.implode(', .',$ext));
-        $this->_Visual->Bloco_Menor_CriaJanela( 'Extensões Permitidas'  );
+        $this->_Visual->Bloco_Menor_CriaJanela(__('Extensões Permitidas')  );
         
         
         // Processa Biblioteca
@@ -168,7 +168,7 @@ class biblioteca_BibliotecaControle extends biblioteca_Controle
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Listagem de Biblíotecas');
+        $this->_Visual->Json_Info_Update('Titulo', __('Listagem de Biblíotecas'));
     }
     private function Bibliotecas_Processar($raiz = false, $export=false){
         return self::Bibliotecas_Processar_Static($raiz, $export);
@@ -258,10 +258,10 @@ class biblioteca_BibliotecaControle extends biblioteca_Controle
     public function Bibliotecas_Add($raiz = 0){
         self::Endereco_Biblioteca();
         // Carrega Config
-        $titulo1    = 'Adicionar Pasta à Biblíoteca de Arquivos';
-        $titulo2    = 'Salvar Pastas';
+        $titulo1    = __('Adicionar Pasta à Biblíoteca de Arquivos');
+        $titulo2    = __('Salvar Pastas');
         $formid     = 'form_Sistema_Admin_Bibliotecas';
-        $formbt     = 'Salvar Pasta';
+        $formbt     = __('Salvar Pasta');
         $formlink   = 'biblioteca/Biblioteca/Bibliotecas_Add2/'.$raiz;
         $campos = Biblioteca_DAO::Get_Colunas();
         // Retira Endereço Virtual
@@ -284,11 +284,11 @@ class biblioteca_BibliotecaControle extends biblioteca_Controle
      * @version 2.0
      */
     public function Bibliotecas_Add2($raiz = 0){
-        $titulo     = 'Pasta Adicionada com Sucesso';
+        $titulo     = __('Pasta Adicionada com Sucesso');
         $dao        = 'Biblioteca';
         $funcao     = '$this->Bibliotecas('.$raiz.');';
-        $sucesso1   = 'Inserção bem sucedida';
-        $sucesso2   = 'Pasta cadastrada com sucesso.';
+        $sucesso1   = __('Inserção bem sucedida');
+        $sucesso2   = __('Pasta cadastrada com sucesso.');
         $alterar    = Array(
             'tipo'      =>  1,
             'usuario'   =>  $this->_Acl->Usuario_GetID(),
@@ -314,9 +314,9 @@ class biblioteca_BibliotecaControle extends biblioteca_Controle
         }
         // Carrega Config
         $titulo1    = 'Editar Biblíoteca (#'.$id.')';
-        $titulo2    = 'Alteração de Biblíoteca';
+        $titulo2    = __('Alteração de Biblíoteca');
         $formid     = 'form_Sistema_AdminC_BibliotecaEdit';
-        $formbt     = 'Alterar Biblíoteca';
+        $formbt     = __('Alterar Biblíoteca');
         $formlink   = 'biblioteca/Biblioteca/Bibliotecas_Edit2/'.$id.'/'.$raiz;
         $editar     = Array('Biblioteca',$id);
         $campos = Biblioteca_DAO::Get_Colunas();
@@ -343,7 +343,7 @@ class biblioteca_BibliotecaControle extends biblioteca_Controle
      * @version 2.0
      */
     public function Bibliotecas_Edit2($id,$raiz=0){
-        $titulo     = 'Editado com Sucesso';
+        $titulo     = __('Editado com Sucesso');
         $dao        = Array('Biblioteca',$id);
         $funcao     = '$this->Bibliotecas('.$raiz.');';
         $sucesso1   = 'Arquivo/Pasta Alterado com Sucesso.';
@@ -369,7 +369,7 @@ class biblioteca_BibliotecaControle extends biblioteca_Controle
     	if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Deletado',
+                "mgs_principal" => __('Deletado'),
                 "mgs_secundaria" => 'Pasta/Arquivo deletado com sucesso'
             );
     	}else{
@@ -405,7 +405,7 @@ class biblioteca_BibliotecaControle extends biblioteca_Controle
             $arquivo->tipo          = 2;
             $arquivo->usuario       = $this->_Acl->Usuario_GetID();
             $this->_Modelo->db->Sql_Inserir($arquivo);
-            $this->_Visual->Json_Info_Update('Titulo', 'Upload com Sucesso');
+            $this->_Visual->Json_Info_Update('Titulo', __('Upload com Sucesso'));
             $this->_Visual->Json_Info_Update('Historico', false);
             // Atualiza Parent
             if($parent!==0){
@@ -426,7 +426,7 @@ class biblioteca_BibliotecaControle extends biblioteca_Controle
             );
             $this->_Visual->Json_IncluiTipo('Conteudo',$conteudo);
         }else{
-            $this->_Visual->Json_Info_Update('Titulo', 'Erro com Upload');
+            $this->_Visual->Json_Info_Update('Titulo', __('Erro com Upload'));
             $this->_Visual->Json_Info_Update('Historico', false);
         }
     }
@@ -517,10 +517,10 @@ class biblioteca_BibliotecaControle extends biblioteca_Controle
     }
     static protected function Biblioteca_Dinamica_Add($motivo,$motivoid,$camada){
         // Carrega Config
-        $titulo1    = 'Criar Conexão com Biblioteca';
-        $titulo2    = 'Salvar Conexão';
+        $titulo1    = __('Criar Conexão com Biblioteca');
+        $titulo2    = __('Salvar Conexão');
         $formid     = 'form_Sistema_Admin_BibliotecasDinamica';
-        $formbt     = 'Salvar Conexão';
+        $formbt     = __('Salvar Conexão');
         $formlink   = 'biblioteca/Biblioteca/Biblioteca_Dinamica_Add2/'.$motivo.'/'.$motivoid.'/'.$camada;
         $campos = Biblioteca_Acesso_DAO::Get_Colunas();
         // Remove Essas Colunas
@@ -535,11 +535,11 @@ class biblioteca_BibliotecaControle extends biblioteca_Controle
             biblioteca_BibliotecaControle::Biblioteca_Dinamica($motivo,$motivoid,$camada,false);
             return true;
         }
-        $titulo     = 'Conexão de Pasta Feita com Sucesso';
+        $titulo     = __('Conexão de Pasta Feita com Sucesso');
         $dao        = 'Biblioteca_Acesso';
         $funcao     = 'biblioteca_BibliotecaControle::Biblioteca_Dinamica(\''.$motivo.'\',\''.$motivoid.'\',\''.$camada.'\',\'false\');';
-        $sucesso1   = 'Inserção bem sucedida';
-        $sucesso2   = 'Conexão cadastrada com sucesso.';
+        $sucesso1   = __('Inserção bem sucedida');
+        $sucesso2   = __('Conexão cadastrada com sucesso.');
         $alterar    = Array(
             'motivo'        =>  $motivo,
             'motivoid'      =>  $motivoid

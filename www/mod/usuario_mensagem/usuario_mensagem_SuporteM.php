@@ -23,7 +23,7 @@ class usuario_mensagem_SuporteModelo extends usuario_mensagem_Modelo
      * @return type
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.0.1
+     * @version 3.1.1
      */
     public function Suporte_MensagensSetor(&$array,$grupo=0){
         $array = Array();
@@ -87,7 +87,7 @@ class usuario_mensagem_SuporteModelo extends usuario_mensagem_Modelo
      * @return type
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.0.1
+     * @version 3.1.1
      */
     public static function Suporte_MensagensCliente(&$array,$cliente=0){
         $registro = &\Framework\App\Registro::getInstacia();
@@ -111,10 +111,10 @@ class usuario_mensagem_SuporteModelo extends usuario_mensagem_Modelo
             foreach($array as &$valor){
                 $valor->lido = self::Mensagem_RespNova($valor->id,$valor->escritor);
                 list($valor->tipo,$valor->tempopassado) = usuario_mensagem_Modelo::Mensagem_TipoChamado($valor);
-                if($valor->tipo=='nov') $valor->tipo = 'Chamado Novo';
-                if($valor->tipo=='lim') $valor->tipo = 'Tempo Limite';
-                if($valor->tipo=='esg') $valor->tipo = 'Esgotado';
-                if($valor->tipo=='fin') $valor->tipo = 'Finalizado';
+                if($valor->tipo=='nov') $valor->tipo = __('Chamado Novo');
+                if($valor->tipo=='lim') $valor->tipo = __('Tempo Limite');
+                if($valor->tipo=='esg') $valor->tipo = __('Esgotado');
+                if($valor->tipo=='fin') $valor->tipo = __('Finalizado');
             }
         }
         return count($array); 

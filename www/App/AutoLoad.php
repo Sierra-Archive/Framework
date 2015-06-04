@@ -279,7 +279,7 @@ define('LIBS_PATH',         ROOT.'libs'.DS);
 define('ARQ_URL',           URL_PATH.'arq'.US.SRV_NAME_SQL.US);
 define('ARQ_PATH',          ROOT.'arq'.DS.SRV_NAME_SQL.DS);
 define('CACHE_PATH',        ROOT.'Cache'.DS.SRV_NAME_SQL.DS);
-define('LANG_PATH',         ROOT.'lang'.DS.SISTEMA_LINGUAGEM.DS);
+define('LANG_PATH',         ROOT.'i18n'.DS);
 
 define('TEMP_PATH',         ROOT.'Temp'.DS.SRV_NAME_SQL.DS);
 define('TEMP_URL',          URL_PATH.'Temp'.US.SRV_NAME_SQL.US);
@@ -302,16 +302,14 @@ if(!is_dir(TEMP_PATH)){
     mkdir (TEMP_PATH, 0777 );
 }
 
-// Linguagem e Pacote de Funcoes
+
+
+/**
+ * Linguagem e Pacote de Funcoes
+ */
 require_once    APP_PATH . 'Funcao.php';
   
 define('SERVER_URL',           $_SERVER['REQUEST_URI']);
-
-
-
-
-
-
 
 // SE TIVER CONFIGURACAO GERADA PELO FRAMEWORK ABRE
 if(file_exists(INI_PATH.SRV_NAME.DS.'_temp.php')){
@@ -321,19 +319,31 @@ if(file_exists(INI_PATH.SRV_NAME.DS.'_temp.php')){
 
 
 
-
-
-
-
-
-
 unset($tempo);
 
 
-
-
-
-
+/**
+ * Carrega Funções de Internaciolização
+ */
+$textdomain = "Framework";
+if (isset($_GET['locale']) && !empty($_GET['locale'])){
+    define('SISTEMA_LINGUAGEM', anti_injection($_GET['locale']));
+}else{
+    define('SISTEMA_LINGUAGEM', SISTEMA_LINGUAGEM_PADRAO);
+}
+putenv('LANGUAGE=' . SISTEMA_LINGUAGEM);
+putenv('LANG=' . SISTEMA_LINGUAGEM);
+putenv('LC_ALL=' . SISTEMA_LINGUAGEM);
+putenv('LC_MESSAGES=' . SISTEMA_LINGUAGEM);
+require_once(LIB_PATH.'i18n'.DS.'gettext.inc');
+_setlocale(LC_ALL, SISTEMA_LINGUAGEM);
+_setlocale(LC_CTYPE, SISTEMA_LINGUAGEM);
+_bindtextdomain($textdomain, LANG_PATH);
+_bind_textdomain_codeset($textdomain, 'UTF-8');
+_textdomain($textdomain);
+function _e($string) {
+  echo __($string);
+}
 
 
 
@@ -350,8 +360,8 @@ while($i<1000){
         return Array(
             'Nome'                      =>  'Agenda',
             'Descrição'                 =>  '',
-            'System_Require'            =>  '3.0.0',
-            'Version'                   =>  '3.0.1',
+            'System_Require'            =>  '3.1.0',
+            'Version'                   =>  '3.1.1',
             'Dependencias'              =>  false,
         );
     };
@@ -367,8 +377,8 @@ while($i<1000){
     $config_Modulo = Array(
         'Nome'                      =>  'Agenda',
         'Descrição'                 =>  '',
-        'System_Require'            =>  '3.0.0',
-        'Version'                   =>  '3.0.1',
+        'System_Require'            =>  '3.1.0',
+        'Version'                   =>  '3.1.1',
         'Dependencias'              =>  false,
     );
     ++$i;
@@ -380,10 +390,10 @@ $tempo = new \Framework\App\Tempo('Teeste3');
 $i = 0;
 $config = Array();
 while($i<1000){
-    $config['Nome']= 'Agenda';
+    $config['Nome']= __('Agenda');
     $config['Descrição']                 =  '';
-     $config['System_Require']            =  '3.0.0';
-     $config['Version']                   =  '3.0.1';
+     $config['System_Require']            =  '3.1.0';
+     $config['Version']                   =  '3.1.1';
     $config['Dependencias']              =  false;
     ++$i;
 }

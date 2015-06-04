@@ -42,7 +42,7 @@ try {
     $mail->addAddress('another@example.com', 'John Doe');
     $mail->Subject = 'PHPMailer Lite Test Subject via mail()';
     // optional - msgHTML will create an alternate automatically
-    $mail->AltBody = 'To view the message, please use an HTML compatible email viewer!';
+    $mail->AltBody = __('To view the message, please use an HTML compatible email viewer!');
     $mail->msgHTML(file_get_contents('../examples/contents.html'));
     $mail->addAttachment('../examples/images/phpmailer.png'); // attachment
     $mail->addAttachment('../examples/images/phpmailer_mini.gif'); // attachment

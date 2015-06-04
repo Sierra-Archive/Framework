@@ -38,7 +38,7 @@ class usuario_mensagem_OrigemControle extends usuario_mensagem_Controle
     static function Endereco_Origem($true=true){
         $registro = \Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
-        $titulo = 'Origens';
+        $titulo = __('Origens');
         $link = 'usuario_mensagem/Origem/Origens';
         if($true===true){
             $_Controle->Tema_Endereco($titulo,$link);
@@ -62,7 +62,7 @@ class usuario_mensagem_OrigemControle extends usuario_mensagem_Controle
         $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',10,Array("link"=>"usuario_mensagem/Origem/Origens_Add",'icon'=>'add','nome'=>'Adicionar Origem'));
         
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Administrar Origens');
+        $this->_Visual->Json_Info_Update('Titulo', __('Administrar Origens'));
     }
     /**
      * 
@@ -72,10 +72,10 @@ class usuario_mensagem_OrigemControle extends usuario_mensagem_Controle
     public function Origens_Add(){
         self::Endereco_Origem(true);
         // Carrega Config
-        $titulo1    = 'Adicionar Origem';
-        $titulo2    = 'Salvar Origem';
+        $titulo1    = __('Adicionar Origem');
+        $titulo2    = __('Salvar Origem');
         $formid     = 'form_Sistema_Admin_Origens';
-        $formbt     = 'Salvar';
+        $formbt     = __('Salvar');
         $formlink   = 'usuario_mensagem/Origem/Origens_Add2/';
         $campos = usuario_mensagem_Origem_DAO::Get_Colunas();
         \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos);
@@ -88,11 +88,11 @@ class usuario_mensagem_OrigemControle extends usuario_mensagem_Controle
      * @version 2.0
      */
     public function Origens_Add2(){
-        $titulo     = 'Origem Adicionada com Sucesso';
+        $titulo     = __('Origem Adicionada com Sucesso');
         $dao        = 'usuario_mensagem_Origem';
         $funcao     = '$this->Origens();';
-        $sucesso1   = 'Inserção bem sucedida';
-        $sucesso2   = 'Origem cadastrada com sucesso.';
+        $sucesso1   = __('Inserção bem sucedida');
+        $sucesso2   = __('Origem cadastrada com sucesso.');
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
     }
@@ -106,9 +106,9 @@ class usuario_mensagem_OrigemControle extends usuario_mensagem_Controle
         self::Endereco_Origem(true);
         // Carrega Config
         $titulo1    = 'Editar Origem (#'.$id.')';
-        $titulo2    = 'Alteração de Origem';
+        $titulo2    = __('Alteração de Origem');
         $formid     = 'form_Sistema_AdminC_OrigemEdit';
-        $formbt     = 'Alterar Origem';
+        $formbt     = __('Alterar Origem');
         $formlink   = 'usuario_mensagem/Origem/Origens_Edit2/'.$id;
         $editar     = Array('usuario_mensagem_Origem',$id);
         $campos = usuario_mensagem_Origem_DAO::Get_Colunas();
@@ -122,10 +122,10 @@ class usuario_mensagem_OrigemControle extends usuario_mensagem_Controle
      * @version 2.0
      */
     public function Origens_Edit2($id){
-        $titulo     = 'Origem Editada com Sucesso';
+        $titulo     = __('Origem Editada com Sucesso');
         $dao        = Array('usuario_mensagem_Origem',$id);
         $funcao     = '$this->Origens();';
-        $sucesso1   = 'Origem Alterado com Sucesso.';
+        $sucesso1   = __('Origem Alterado com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);   
@@ -148,8 +148,8 @@ class usuario_mensagem_OrigemControle extends usuario_mensagem_Controle
     	if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Deletado',
-                "mgs_secundaria" => 'Origem deletada com sucesso'
+                "mgs_principal" => __('Deletado'),
+                "mgs_secundaria" => __('Origem deletada com sucesso')
             );
     	}else{
             $mensagens = array(
@@ -162,7 +162,7 @@ class usuario_mensagem_OrigemControle extends usuario_mensagem_Controle
         
         $this->Origens();
         
-        $this->_Visual->Json_Info_Update('Titulo', 'Origem deletada com Sucesso');  
+        $this->_Visual->Json_Info_Update('Titulo', __('Origem deletada com Sucesso'));  
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
 }

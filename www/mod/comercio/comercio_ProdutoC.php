@@ -64,26 +64,26 @@ class comercio_ProdutoControle extends comercio_Controle
         }
         if($comercio_marca===true){
             if($comercio_Produto_Familia=='Familia'){
-                $tabela_colunas[] = 'Familia';
+                $tabela_colunas[] = __('Familia');
             }else{
-                $tabela_colunas[] = 'Marca';
-                $tabela_colunas[] = 'Linha';
+                $tabela_colunas[] = __('Marca');
+                $tabela_colunas[] = __('Linha');
             }
         }
-        $tabela_colunas[] = 'Nome';
+        $tabela_colunas[] = __('Nome');
 
         // Coloca Preco
         if(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Vendas')){
-            $tabela_colunas[] = 'Preço';
+            $tabela_colunas[] = __('Preço');
         }
 
         if($comercio_Estoque){
-            $tabela_colunas[] = 'Estoque';
+            $tabela_colunas[] = __('Estoque');
         }
         if($comercio_Unidade){
-            $tabela_colunas[] = 'Unidade';
+            $tabela_colunas[] = __('Unidade');
         }
-        $tabela_colunas[] = 'Funções';
+        $tabela_colunas[] = __('Funções');
 
         $this->_Visual->Show_Tabela_DataTable_Massiva($tabela_colunas,'comercio/Produto/Produtos');
         $titulo = 'Listagem de Produtos (<span id="DataTable_Contador">Carregando...</span>)';
@@ -91,7 +91,7 @@ class comercio_ProdutoControle extends comercio_Controle
         
         
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Administrar Produtos');
+        $this->_Visual->Json_Info_Update('Titulo', __('Administrar Produtos'));
     }
     public static function Retirar_Nao_necessarios(&$campos){
         // Os dois do Comercio_Certificado
@@ -136,10 +136,10 @@ class comercio_ProdutoControle extends comercio_Controle
     public function Produtos_Add(){
         self::Endereco_Produto();
         // Carrega Config
-        $titulo1    = 'Adicionar Produto';
-        $titulo2    = 'Salvar Produto';
+        $titulo1    = __('Adicionar Produto');
+        $titulo2    = __('Salvar Produto');
         $formid     = 'form_Sistema_Admin_Produtos';
-        $formbt     = 'Salvar';
+        $formbt     = __('Salvar');
         $formlink   = 'comercio/Produto/Produtos_Add2/';
         $campos = Comercio_Produto_DAO::Get_Colunas();
         self::Retirar_Nao_necessarios($campos);
@@ -153,11 +153,11 @@ class comercio_ProdutoControle extends comercio_Controle
      * @version 2.0
      */
     public function Produtos_Add2(){
-        $titulo     = 'Produto Adicionado com Sucesso';
+        $titulo     = __('Produto Adicionado com Sucesso');
         $dao        = 'Comercio_Produto';
         $funcao     = '$this->Produtos();';
-        $sucesso1   = 'Inserção bem sucedida';
-        $sucesso2   = 'Produto cadastrado com sucesso.';
+        $sucesso1   = __('Inserção bem sucedida');
+        $sucesso2   = __('Produto cadastrado com sucesso.');
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
      
@@ -172,9 +172,9 @@ class comercio_ProdutoControle extends comercio_Controle
         self::Endereco_Produto();
         // Carrega Config
         $titulo1    = 'Editar Produto (#'.$id.')';
-        $titulo2    = 'Alteração de Produto';
+        $titulo2    = __('Alteração de Produto');
         $formid     = 'form_Sistema_AdminC_ProdutoEdit';
-        $formbt     = 'Alterar Produto';
+        $formbt     = __('Alterar Produto');
         $formlink   = 'comercio/Produto/Produtos_Edit2/'.$id;
         $editar     = Array('Comercio_Produto',$id);
         $campos = comercio_Produto_DAO::Get_Colunas();
@@ -189,10 +189,10 @@ class comercio_ProdutoControle extends comercio_Controle
      * @version 2.0
      */
     public function Produtos_Edit2($id){
-        $titulo     = 'Produto Editado com Sucesso';
+        $titulo     = __('Produto Editado com Sucesso');
         $dao        = Array('Comercio_Produto',$id);
         $funcao     = '$this->Produtos();';
-        $sucesso1   = 'Produto Alterado com Sucesso.';
+        $sucesso1   = __('Produto Alterado com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);      
@@ -215,8 +215,8 @@ class comercio_ProdutoControle extends comercio_Controle
     	if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Deletado',
-                "mgs_secundaria" => 'Produto Deletado com sucesso'
+                "mgs_principal" => __('Deletado'),
+                "mgs_secundaria" => __('Produto Deletado com sucesso')
             );
     	}else{
             $mensagens = array(
@@ -229,7 +229,7 @@ class comercio_ProdutoControle extends comercio_Controle
         
         $this->Produtos();
         
-        $this->_Visual->Json_Info_Update('Titulo', 'Produto deletado com Sucesso');  
+        $this->_Visual->Json_Info_Update('Titulo', __('Produto deletado com Sucesso'));  
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
     public function Estoque_Reduzir($produto=false){
@@ -244,10 +244,10 @@ class comercio_ProdutoControle extends comercio_Controle
         
         self::Endereco_Produto(true);
          // Carrega Config
-        $titulo1    = 'Reduzir Estoque de Produto';
-        $titulo2    = 'Salvar Redução de Estoque';
+        $titulo1    = __('Reduzir Estoque de Produto');
+        $titulo2    = __('Salvar Redução de Estoque');
         $formid     = 'form_comercio_Estoque_Entrada';
-        $formbt     = 'Salvar';
+        $formbt     = __('Salvar');
         $formlink   = 'comercio/Produto/Estoque_Reduzir2/'.$produto;
         \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos);
     }
@@ -257,10 +257,10 @@ class comercio_ProdutoControle extends comercio_Controle
      * @version 2.0
      */
     public function Estoque_Reduzir2($produto=false){        
-        $titulo     = 'Estoque Reduzido com Sucesso';
+        $titulo     = __('Estoque Reduzido com Sucesso');
         $dao        = 'Comercio_Produto_Estoque_Reduzir';
-        $sucesso1   = 'Sucesso';
-        $sucesso2   = 'Redução Finalizada com Sucesso';
+        $sucesso1   = __('Sucesso');
+        $sucesso2   = __('Redução Finalizada com Sucesso');
         if($produto===false || $produto==0){
             //$funcao     = '$this->Produtos(0);';
             $alterar    = Array();

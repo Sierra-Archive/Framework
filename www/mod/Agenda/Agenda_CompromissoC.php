@@ -34,7 +34,7 @@ class Agenda_CompromissoControle extends Agenda_Controle
     public function Main(){
         $this->Compromissos();
         // ORGANIZA E MANDA CONTEUDO
-        $this->_Visual->Json_Info_Update('Titulo','Compromissos'); 
+        $this->_Visual->Json_Info_Update('Titulo', __('Compromissos')); 
     }
     protected function Endereco_Compromisso($true=true){
         if($true===true){
@@ -110,7 +110,7 @@ class Agenda_CompromissoControle extends Agenda_Controle
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Compromissos');
+        $this->_Visual->Json_Info_Update('Titulo', __('Compromissos'));
     }
     /**
      * 
@@ -120,10 +120,10 @@ class Agenda_CompromissoControle extends Agenda_Controle
     public function Compromissos_Add(){ 
         $this->Endereco_Compromisso();  
         // Carrega Config
-        $titulo1    = 'Adicionar Compromisso';
-        $titulo2    = 'Salvar Compromisso';
+        $titulo1    = __('Adicionar Compromisso');
+        $titulo2    = __('Salvar Compromisso');
         $formid     = 'form_Sistema_Admin_Compromissos';
-        $formbt     = 'Salvar';
+        $formbt     = __('Salvar');
         $formlink   = 'Agenda/Compromisso/Compromissos_Add2/';
         $campos = Agenda_Compromisso_DAO::Get_Colunas();
         \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos);
@@ -135,11 +135,11 @@ class Agenda_CompromissoControle extends Agenda_Controle
      * @version 2.0
      */
     public function Compromissos_Add2(){
-        $titulo     = 'Compromisso Adicionada com Sucesso';
+        $titulo     = __('Compromisso Adicionada com Sucesso');
         $dao        = 'Agenda_Compromisso';
         $funcao     = '$this->Compromissos();';
-        $sucesso1   = 'Inserção bem sucedida';
-        $sucesso2   = 'Compromisso cadastrado com sucesso.';
+        $sucesso1   = __('Inserção bem sucedida');
+        $sucesso2   = __('Compromisso cadastrado com sucesso.');
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
     }
@@ -153,9 +153,9 @@ class Agenda_CompromissoControle extends Agenda_Controle
         $this->Endereco_Compromisso();
         // Carrega Config
         $titulo1    = 'Editar Compromisso (#'.$id.')';
-        $titulo2    = 'Alteração de Compromisso';
+        $titulo2    = __('Alteração de Compromisso');
         $formid     = 'form_Sistema_AdminC_CompromissoEdit';
-        $formbt     = 'Alterar Compromisso';
+        $formbt     = __('Alterar Compromisso');
         $formlink   = 'Agenda/Compromisso/Compromissos_Edit2/'.$id;
         $editar     = Array('Agenda_Compromisso',$id);
         $campos = Agenda_Compromisso_DAO::Get_Colunas();
@@ -168,10 +168,10 @@ class Agenda_CompromissoControle extends Agenda_Controle
      * @version 2.0
      */
     public function Compromissos_Edit2($id){
-        $titulo     = 'Compromisso Editada com Sucesso';
+        $titulo     = __('Compromisso Editada com Sucesso');
         $dao        = Array('Agenda_Compromisso',$id);
         $funcao     = '$this->Compromissos();';
-        $sucesso1   = 'Compromisso Alterada com Sucesso.';
+        $sucesso1   = __('Compromisso Alterada com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);      
@@ -193,8 +193,8 @@ class Agenda_CompromissoControle extends Agenda_Controle
     	if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Deletado',
-                "mgs_secundaria" => 'Compromisso Deletado com sucesso'
+                "mgs_principal" => __('Deletado'),
+                "mgs_secundaria" => __('Compromisso Deletado com sucesso')
             );
     	}else{
             $mensagens = array(
@@ -207,7 +207,7 @@ class Agenda_CompromissoControle extends Agenda_Controle
         
         $this->Compromissos();
         
-        $this->_Visual->Json_Info_Update('Titulo', 'Compromisso deletado com Sucesso');  
+        $this->_Visual->Json_Info_Update('Titulo', __('Compromisso deletado com Sucesso'));  
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
 }

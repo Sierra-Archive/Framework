@@ -6,7 +6,7 @@ $GLOBALS['DEBUG_MODE'] = 1;
 // IN DEBUG MODE, ONLY THE CAPTCHA CODE IS VALIDATED, AND NO EMAIL IS SENT
 
 $GLOBALS['ct_recipient']   = 'YOU@EXAMPLE.COM'; // Change to your email address!  Make sure DEBUG_MODE above is 0 for mail to send!
-$GLOBALS['ct_msg_subject'] = 'Securimage Test Contact Form';
+$GLOBALS['ct_msg_subject'] = __('Securimage Test Contact Form');
 
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -132,20 +132,20 @@ function process_si_contact_form()
 
       if (strlen($name) < 3) {
         // name too short, add error
-        $errors['name_error'] = 'Your name is required';
+        $errors['name_error'] = __('Your name is required');
       }
 
       if (strlen($email) == 0) {
         // no email address given
-        $errors['email_error'] = 'Email address is required';
+        $errors['email_error'] = __('Email address is required');
       } else if ( !preg_match('/^(?:[\w\d]+\.?)+@(?:(?:[\w\d]\-?)+\.)+\w{2,4}$/i', $email)) {
         // invalid email format
-        $errors['email_error'] = 'Email address entered is invalid';
+        $errors['email_error'] = __('Email address entered is invalid');
       }
 
       if (strlen($message) < 20) {
         // message length too short
-        $errors['message_error'] = 'Your message must be longer than 20 characters';
+        $errors['message_error'] = __('Your message must be longer than 20 characters');
       }
     }
 

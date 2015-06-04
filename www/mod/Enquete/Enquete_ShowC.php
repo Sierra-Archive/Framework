@@ -19,7 +19,7 @@ class Enquete_ShowControle extends Enquete_Controle
     */
     public function Main(){
         // ORGANIZA E MANDA CONTEUDO
-        $this->_Visual->Json_Info_Update('Titulo','Enquetes'); 
+        $this->_Visual->Json_Info_Update('Titulo', __('Enquetes')); 
     }
     static function Show($bloco='right',$id_min=0){
         // Verifica Permissao
@@ -183,7 +183,7 @@ class Enquete_ShowControle extends Enquete_Controle
         );
         $this->_Visual->Json_IncluiTipo('Conteudo',$conteudo);
         $this->_Visual->Json_Info_Update('Historico', false);
-        $this->_Visual->Json_Info_Update('Titulo','Voto computado com Sucesso');
+        $this->_Visual->Json_Info_Update('Titulo', __('Voto computado com Sucesso'));
     }
 }
 ?>

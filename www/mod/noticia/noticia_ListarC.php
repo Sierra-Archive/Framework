@@ -34,7 +34,7 @@ class noticia_ListarControle extends noticia_Controle
     public function Main(){
         $this->Noticias_Listar();
         // ORGANIZA E MANDA CONTEUDO
-        $this->_Visual->Json_Info_Update('Titulo','Noticias'); 
+        $this->_Visual->Json_Info_Update('Titulo', __('Noticias')); 
     }
     /**
     * @return void
@@ -52,8 +52,8 @@ class noticia_ListarControle extends noticia_Controle
         if($menu!==false && !empty($menu)){
             reset($menu);
             foreach ($menu as &$valor) {
-                if($valor->destaque==0)     $destaque = 'Não';
-                else                        $destaque = 'Sim';
+                if($valor->destaque==0)     $destaque = __('Não');
+                else                        $destaque = __('Sim');
                 
                 
                 $tabela['Id'][$i]           = $valor->id;

@@ -26,13 +26,13 @@ class social_personasControle extends social_Controle
                     if($social[$indice]['id_face']!=0){
                         $impor['Face'][$i] = '<a href="http://www.facebook.com/profile.php?id='.$social[$indice]['id_face'].'" target="_blank"><img src="http://graph.facebook.com/'.$social[$indice]['id_face'].'/picture"></a>';
                     }else{
-                        $impor['Face'][$i] = 'Sem foto';
+                        $impor['Face'][$i] = __('Sem foto');
                     }
                     $impor['Persona'][$i] = '<a href="'.URL_PATH.'social/Visualizar/Main/'.$social[$indice]['id'].'/">'.$social[$indice]['nome'].'</a>';
                     if($social[$indice]['fis_sexo']!=0){
-                        $impor['Sexo'][$i] = 'Masculino';
+                        $impor['Sexo'][$i] = __('Masculino');
                     }else{
-                        $impor['Sexo'][$i] = 'Feminino';
+                        $impor['Sexo'][$i] = __('Feminino');
                     }
                     $impor['Celular'][$i] = $social[$indice]['celular'];
                     $impor['Email'][$i] = $social[$indice]['email'];
@@ -43,13 +43,13 @@ class social_personasControle extends social_Controle
                     if($social[$indice]['id_face']!=0){
                         $normal['Face'][$j] = '<a href="http://www.facebook.com/profile.php?id='.$social[$indice]['id_face'].'" target="_blank"><img src="http://graph.facebook.com/'.$social[$indice]['id_face'].'/picture"></a>';
                     }else{
-                        $normal['Face'][$j] = 'Sem foto';
+                        $normal['Face'][$j] = __('Sem foto');
                     }
                     $normal['Persona'][$j] = '<a href="'.URL_PATH.'social/Visualizar/Main/'.$social[$indice]['id'].'/">'.$social[$indice]['nome'].'</a>';
                     if($social[$indice]['fis_sexo']!=0){
-                        $normal['Sexo'][$j] = 'Masculino';
+                        $normal['Sexo'][$j] = __('Masculino');
                     }else{
-                        $normal['Sexo'][$j] = 'Feminino';
+                        $normal['Sexo'][$j] = __('Feminino');
                     }
                     $normal['Celular'][$j] = $social[$indice]['celular'];
                     $normal['Email'][$j] = $social[$indice]['email'];
@@ -60,13 +60,13 @@ class social_personasControle extends social_Controle
                     //if($social[$indice]['id_face']!=0){
                     //	$proibido['Face'][$z] = '<a href="http://www.facebook.com/profile.php?id='.$social[$indice]['id_face'].'" target="_blank"><img src="http://graph.facebook.com/'.$social[$indice]['id_face'].'/picture"></a>';
                     //}else{
-                            $proibido['Face'][$z] = 'Sem foto';
+                            $proibido['Face'][$z] = __('Sem foto');
                     //}
                     $proibido['Persona'][$z] = '<a href="'.URL_PATH.'social/Visualizar/Main/'.$social[$indice]['id'].'/">'.$social[$indice]['nome'].'</a>';
                     if($social[$indice]['fis_sexo']!=0){
-                        $proibido['Sexo'][$z] = 'Masculino';
+                        $proibido['Sexo'][$z] = __('Masculino');
                     }else{
-                        $proibido['Sexo'][$z] = 'Feminino';
+                        $proibido['Sexo'][$z] = __('Feminino');
                     }
                     $proibido['Celular'][$z] = $social[$indice]['celular'];
                     $proibido['Email'][$z] = $social[$indice]['email'];
@@ -77,13 +77,13 @@ class social_personasControle extends social_Controle
             }
         }
         $this->_Visual->Show_Tabela_DataTable($impor);
-        $this->_Visual->Bloco_Maior_CriaJanela('Importantes');
+        $this->_Visual->Bloco_Maior_CriaJanela(__('Importantes'));
 
         $this->_Visual->Show_Tabela_DataTable($normal);
-        $this->_Visual->Bloco_Maior_CriaJanela('Principais');
+        $this->_Visual->Bloco_Maior_CriaJanela(__('Principais'));
 
         $this->_Visual->Show_Tabela_DataTable($proibido);
-        $this->_Visual->Bloco_Maior_CriaJanela('Lista Negra');
+        $this->_Visual->Bloco_Maior_CriaJanela(__('Lista Negra'));
 
         // ORGANIZA E MANDA CONTEUDO
         $this->_Visual->Json_Start('Usuario_social');
@@ -104,13 +104,13 @@ class social_personasControle extends social_Controle
                     if($social[$indice]['id_face']!=0){
                         $orgulho['Face'][$i] = '<a href="http://www.facebook.com/profile.php?id='.$social[$indice]['id_face'].'" target="_blank"><img src="http://graph.facebook.com/'.$social[$indice]['id_face'].'/picture"></a>';
                     }else{
-                        $orgulho['Face'][$i] = 'Sem foto';
+                        $orgulho['Face'][$i] = __('Sem foto');
                     }
                     $orgulho['Persona'][$i] = '<a href="'.URL_PATH.'social/Visualizar/Main/'.$social[$indice]['id'].'/">'.$social[$indice]['nome'].'</a>';
                     if($social[$indice]['fis_sexo']!=0){
-                        $orgulho['Sexo'][$i] = 'Masculino';
+                        $orgulho['Sexo'][$i] = __('Masculino');
                     }else{
-                        $orgulho['Sexo'][$i] = 'Feminino';
+                        $orgulho['Sexo'][$i] = __('Feminino');
                     }
                     $orgulho['Celular'][$i] = $social[$indice]['celular'];
                     $orgulho['Email'][$i] = $social[$indice]['email'];
@@ -121,13 +121,13 @@ class social_personasControle extends social_Controle
                     if($social[$indice]['id_face']!=0){
                         $pegos['Face'][$j] = '<a href="http://www.facebook.com/profile.php?id='.$social[$indice]['id_face'].'" target="_blank"><img src="http://graph.facebook.com/'.$social[$indice]['id_face'].'/picture"></a>';
                     }else{
-                        $pegos['Face'][$j] = 'Sem foto';
+                        $pegos['Face'][$j] = __('Sem foto');
                     }
                     $pegos['Persona'][$j] = '<a href="'.URL_PATH.'social/Visualizar/Main/'.$social[$indice]['id'].'/">'.$social[$indice]['nome'].'</a>';
                     if($social[$indice]['fis_sexo']!=0){
-                        $pegos['Sexo'][$j] = 'Masculino';
+                        $pegos['Sexo'][$j] = __('Masculino');
                     }else{
-                        $pegos['Sexo'][$j] = 'Feminino';
+                        $pegos['Sexo'][$j] = __('Feminino');
                     }
                     $pegos['Celular'][$j] = $social[$indice]['celular'];
                     $pegos['Pontos'][$j] = $social[$indice]['pontos'];
@@ -138,13 +138,13 @@ class social_personasControle extends social_Controle
                     if($social[$indice]['id_face']!=0){
                         $queropega['Face'][$z] = '<a href="http://www.facebook.com/profile.php?id='.$social[$indice]['id_face'].'" target="_blank"><img src="http://graph.facebook.com/'.$social[$indice]['id_face'].'/picture"></a>';
                     }else{
-                        $queropega['Face'][$z] = 'Sem foto';
+                        $queropega['Face'][$z] = __('Sem foto');
                     }
                     $queropega['Persona'][$z] = '<a href="'.URL_PATH.'social/Visualizar/Main/'.$social[$indice]['id'].'/">'.$social[$indice]['nome'].'</a>';
                     if($social[$indice]['fis_sexo']!=0){
-                        $queropega['Sexo'][$z] = 'Masculino';
+                        $queropega['Sexo'][$z] = __('Masculino');
                     }else{
-                        $queropega['Sexo'][$z] = 'Feminino';
+                        $queropega['Sexo'][$z] = __('Feminino');
                     }
                     $queropega['Celular'][$z] = $social[$indice]['celular'];
                     $queropega['Email'][$z] = $social[$indice]['email'];
@@ -155,13 +155,13 @@ class social_personasControle extends social_Controle
                     if($social[$indice]['id_face']!=0){
                         $ultimocaso['Face'][$y] = '<a href="http://www.facebook.com/profile.php?id='.$social[$indice]['id_face'].'" target="_blank"><img src="http://graph.facebook.com/'.$social[$indice]['id_face'].'/picture"></a>';
                     }else{
-                        $ultimocaso['Face'][$y] = 'Sem foto';
+                        $ultimocaso['Face'][$y] = __('Sem foto');
                     }
                     $ultimocaso['Persona'][$y] = '<a href="'.URL_PATH.'social/Visualizar/Main/'.$social[$indice]['id'].'/">'.$social[$indice]['nome'].'</a>';
                     if($social[$indice]['fis_sexo']!=0){
-                        $ultimocaso['Sexo'][$y] = 'Masculino';
+                        $ultimocaso['Sexo'][$y] = __('Masculino');
                     }else{
-                        $ultimocaso['Sexo'][$y] = 'Feminino';
+                        $ultimocaso['Sexo'][$y] = __('Feminino');
                     }
                     $ultimocaso['Celular'][$y] = $social[$indice]['celular'];
                     $ultimocaso['Email'][$y] = $social[$indice]['email'];
@@ -173,16 +173,16 @@ class social_personasControle extends social_Controle
         }
         echo 'Quantidades'.$j;
         $this->_Visual->Show_Tabela_DataTable($pegos);
-        $this->_Visual->Bloco_Maior_CriaJanela('Pegos');
+        $this->_Visual->Bloco_Maior_CriaJanela(__('Pegos'));
 
         $this->_Visual->Show_Tabela_DataTable($orgulho);
-        $this->_Visual->Bloco_Maior_CriaJanela('Orgulho Supremo');
+        $this->_Visual->Bloco_Maior_CriaJanela(__('Orgulho Supremo'));
 
         $this->_Visual->Show_Tabela_DataTable($queropega);
-        $this->_Visual->Bloco_Maior_CriaJanela('Quero Gape');
+        $this->_Visual->Bloco_Maior_CriaJanela(__('Quero Gape'));
 
         $this->_Visual->Show_Tabela_DataTable($ultimocaso);
-        $this->_Visual->Bloco_Maior_CriaJanela('Ultimo Caso');
+        $this->_Visual->Bloco_Maior_CriaJanela(__('Ultimo Caso'));
 
         $this->_Visual->renderizar(1,$this->calendario,$this->config_dia,$this->config_mes,$this->config_ano,$this->config_dataixi);
     }

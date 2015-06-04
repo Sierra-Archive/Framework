@@ -33,21 +33,21 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
     */
     public function Main(){
         ///$this->Propostas();
-        $this->_Visual->Blocar('Localizar',                 usuario_Controle::Static_usuariolistar(Array(CFG_TEC_CAT_ID_CLIENTES,'Clientes'),false,false));
-        $this->_Visual->Blocar('Cliente',                   comercio_certificado_Controle::Usuarios_Add('cliente'));
-        $this->_Visual->Blocar('Produto',                   $this->_Visual->ErroShow());
-        $this->_Visual->Blocar('Auditoria Periódica',       $this->_Visual->ErroShow());
-        $this->_Visual->Blocar('Observações',               $this->_Visual->ErroShow());
-        $this->_Visual->Bloco_Unico_CriaJanela('Clientes');
+        $this->_Visual->Blocar(__('Localizar'),                 usuario_Controle::Static_usuariolistar(Array(CFG_TEC_CAT_ID_CLIENTES,'Clientes'),false,false));
+        $this->_Visual->Blocar(__('Cliente'),                   comercio_certificado_Controle::Usuarios_Add('cliente'));
+        $this->_Visual->Blocar(__('Produto'),                   $this->_Visual->ErroShow());
+        $this->_Visual->Blocar(__('Auditoria Periódica'),       $this->_Visual->ErroShow());
+        $this->_Visual->Blocar(__('Observações'),               $this->_Visual->ErroShow());
+        $this->_Visual->Bloco_Unico_CriaJanela(__('Clientes'));
         
         // ORGANIZA E MANDA CONTEUDO
-        $this->_Visual->Json_Info_Update('Titulo','Propostas');
+        $this->_Visual->Json_Info_Update('Titulo', __('Propostas'));
     }
     public function Propostas_DashBoard_Show($cliente=0){
         // Produtos
         \Framework\App\Visual::Layoult_Abas_Carregar('3',$this->Propostas_DashBoard($cliente));
         // Joga pro Json se nao for o caso de popup
-        $this->_Visual->Json_Info_Update('Titulo','Proposta Adicionada');
+        $this->_Visual->Json_Info_Update('Titulo', __('Proposta Adicionada'));
         $this->_Visual->Json_Info_Update('Historico', false);
     }
     public function Propostas_DashBoard($cliente=0){
@@ -148,16 +148,16 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
                 'html' =>  self::Propostas_Label($resultado)
             );
             $this->_Visual->Json_IncluiTipo('Conteudo',$conteudo);
-            $this->_Visual->Json_Info_Update('Titulo','Status Alterado'); 
+            $this->_Visual->Json_Info_Update('Titulo', __('Status Alterado')); 
         }else{
             $mensagens = array(
                 "tipo"              => 'erro',
-                "mgs_principal"     => 'Erro',
-                "mgs_secundaria"    => 'Ocorreu um Erro.'
+                "mgs_principal"     => __('Erro'),
+                "mgs_secundaria"    => __('Ocorreu um Erro.')
             );
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
 
-            $this->_Visual->Json_Info_Update('Titulo','Erro'); 
+            $this->_Visual->Json_Info_Update('Titulo', __('Erro')); 
         }
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
@@ -166,15 +166,15 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
         $id         = $objeto->id;
         if($status==='0' || $status===0){
             $tipo = 'warning';
-            $nometipo = 'Pendente';
+            $nometipo = __('Pendente');
         }
         else if($status==='1' || $status===1){
             $tipo = 'success';
-            $nometipo = 'Aprovada';
+            $nometipo = __('Aprovada');
         }
         else{
             $tipo = 'important';
-            $nometipo = 'Reprovada';
+            $nometipo = __('Reprovada');
         }
         $html = '<span class="badge badge-'.$tipo.'">'.$nometipo.'</span>';
         if($link===true){
@@ -221,7 +221,7 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
                 'html'      =>  $formulario
             );
             $this->_Visual->Json_IncluiTipo('Conteudo',$conteudo);
-            $this->_Visual->Json_Info_Update('Titulo', 'Cadastrar Proposta');
+            $this->_Visual->Json_Info_Update('Titulo', __('Cadastrar Proposta'));
             $this->_Visual->Json_Info_Update('Historico', false);
         }
     }
@@ -258,7 +258,7 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
         );
         $this->_Visual->Json_IncluiTipo('Conteudo',$conteudo);
         
-        $this->_Visual->Json_Info_Update('Titulo', 'Editar Proposta');  
+        $this->_Visual->Json_Info_Update('Titulo', __('Editar Proposta'));  
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
     public static function RecarregaLocalizar(){
@@ -314,8 +314,8 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
             // Mensagem
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Inserção bem sucedida',
-                "mgs_secundaria" => 'Proposta cadastrada com sucesso.'
+                "mgs_principal" => __('Inserção bem sucedida'),
+                "mgs_secundaria" => __('Proposta cadastrada com sucesso.')
             ); 
         }else{
             $mensagens = array(
@@ -326,7 +326,7 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
         }
         $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens); 
         // Json
-        $this->_Visual->Json_Info_Update('Titulo', 'Proposta Adicionada com Sucesso');  
+        $this->_Visual->Json_Info_Update('Titulo', __('Proposta Adicionada com Sucesso'));  
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
     /**
@@ -373,7 +373,7 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
         if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Proposta Alterada com Sucesso',
+                "mgs_principal" => __('Proposta Alterada com Sucesso'),
                 "mgs_secundaria" => ''.$_POST["nome"].' teve a alteração bem sucedida'
             );
         }else{
@@ -385,7 +385,7 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
         }
         $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);  
         //Json
-        $this->_Visual->Json_Info_Update('Titulo', 'Proposta Editada com Sucesso');  
+        $this->_Visual->Json_Info_Update('Titulo', __('Proposta Editada com Sucesso'));  
         $this->_Visual->Json_Info_Update('Historico', false);    
     }
     /**
@@ -406,8 +406,8 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
     	if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Deletado',
-                "mgs_secundaria" => 'Proposta Deletada com sucesso'
+                "mgs_principal" => __('Deletado'),
+                "mgs_secundaria" => __('Proposta Deletada com sucesso')
             );
     	}else{
             $mensagens = array(
@@ -420,7 +420,7 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
         
         $this->Propostas_DashBoard_Show($cliente);
         
-        $this->_Visual->Json_Info_Update('Titulo', 'Proposta deletada com Sucesso');  
+        $this->_Visual->Json_Info_Update('Titulo', __('Proposta deletada com Sucesso'));  
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
     public function Show($propostaid){
@@ -443,10 +443,10 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
         if($tipo===false){
             if($usuario->grupo==CFG_TEC_IDCLIENTE){
                 $tipo = 'cliente';
-                $tipo2 = 'Cliente';
+                $tipo2 = __('Cliente');
             }else if($usuario->grupo==CFG_TEC_IDFUNCIONARIO){
                 $tipo = 'funcionario';
-                $tipo2 = 'Funcionário';
+                $tipo2 = __('Funcionário');
             }
         }
         
@@ -561,9 +561,9 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
     public function Periodicas_Edit($id){
         // Carrega Config
         $titulo1    = 'Editar Periodica (#'.$id.')';
-        $titulo2    = 'Alteração de Periodica';
+        $titulo2    = __('Alteração de Periodica');
         $formid     = 'form_Sistema_AdminC_PeriodicaEdit';
-        $formbt     = 'Alterar Periodica';
+        $formbt     = __('Alterar Periodica');
         $formlink   = 'comercio_certificado/Proposta/Periodicas_Edit2/'.$id;
         $editar     = Array('Comercio_Certificado_AuditoriaPeriodica',$id);
         $campos = Comercio_Certificado_AuditoriaPeriodica_DAO::Get_Colunas();
@@ -595,10 +595,10 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
      */
     public function Periodicas_Edit2($id){
         $id = (int) $id;
-        $titulo     = 'Periodica Editada com Sucesso';
+        $titulo     = __('Periodica Editada com Sucesso');
         $dao        = Array('Comercio_Certificado_AuditoriaPeriodica',$id);
         $funcao     = false;
-        $sucesso1   = 'Periodica Alterada com Sucesso.';
+        $sucesso1   = __('Periodica Alterada com Sucesso.');
         $sucesso2   = ''.$_POST["autor"].' teve a alteração bem sucedida';
         $alterar    = Array();
         $sucesso = $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar); 

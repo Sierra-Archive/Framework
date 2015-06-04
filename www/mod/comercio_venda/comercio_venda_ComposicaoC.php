@@ -38,7 +38,7 @@ class comercio_venda_ComposicaoControle extends comercio_venda_Controle
     static function Endereco_Composicao($true=true){
         $registro = \Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
-        $titulo = 'Cardápios';
+        $titulo = __('Cardápios');
         $link = 'comercio_venda/Composicao/Composicoes';
         if($true===true){
             $_Controle->Tema_Endereco($titulo,$link);
@@ -117,7 +117,7 @@ class comercio_venda_ComposicaoControle extends comercio_venda_Controle
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Administrar Cardápios');
+        $this->_Visual->Json_Info_Update('Titulo', __('Administrar Cardápios'));
     }
     /**
      * 
@@ -127,10 +127,10 @@ class comercio_venda_ComposicaoControle extends comercio_venda_Controle
     public function Composicoes_Add(){
         self::Endereco_Composicao(true);
         // Carrega Config
-        $titulo1    = 'Adicionar Cardápio';
-        $titulo2    = 'Salvar Cardápio';
+        $titulo1    = __('Adicionar Cardápio');
+        $titulo2    = __('Salvar Cardápio');
         $formid     = 'form_Sistema_Admin_Composicoes';
-        $formbt     = 'Salvar';
+        $formbt     = __('Salvar');
         $formlink   = 'comercio_venda/Composicao/Composicoes_Add2/';
         
         $campos = Comercio_Venda_Composicao_DAO::Get_Colunas();
@@ -144,11 +144,11 @@ class comercio_venda_ComposicaoControle extends comercio_venda_Controle
      * @version 2.0
      */
     public function Composicoes_Add2(){
-        $titulo     = 'Cardápio Adicionado com Sucesso';
+        $titulo     = __('Cardápio Adicionado com Sucesso');
         $dao        = 'Comercio_Venda_Composicao';
         $funcao     = '$this->Composicoes();';
-        $sucesso1   = 'Inserção bem sucedida';
-        $sucesso2   = 'Cardápio cadastrado com sucesso.';
+        $sucesso1   = __('Inserção bem sucedida');
+        $sucesso2   = __('Cardápio cadastrado com sucesso.');
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
     }
@@ -162,9 +162,9 @@ class comercio_venda_ComposicaoControle extends comercio_venda_Controle
         self::Endereco_Composicao(true);
         // Carrega Config
         $titulo1    = 'Editar Cardápio (#'.$id.')';
-        $titulo2    = 'Alteração de Cardápio';
+        $titulo2    = __('Alteração de Cardápio');
         $formid     = 'form_Sistema_AdminC_ComposicaoEdit';
-        $formbt     = 'Alterar Cardápio';
+        $formbt     = __('Alterar Cardápio');
         $formlink   = 'comercio_venda/Composicao/Composicoes_Edit2/'.$id;
         $editar     = Array('Comercio_Venda_Composicao',$id);
         $campos = Comercio_Venda_Composicao_DAO::Get_Colunas();
@@ -178,10 +178,10 @@ class comercio_venda_ComposicaoControle extends comercio_venda_Controle
      * @version 2.0
      */
     public function Composicoes_Edit2($id){
-        $titulo     = 'Cardápio Editado com Sucesso';
+        $titulo     = __('Cardápio Editado com Sucesso');
         $dao        = Array('Comercio_Venda_Composicao',$id);
         $funcao     = '$this->Composicoes();';
-        $sucesso1   = 'Cardápio Alterado com Sucesso.';
+        $sucesso1   = __('Cardápio Alterado com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);      
@@ -204,8 +204,8 @@ class comercio_venda_ComposicaoControle extends comercio_venda_Controle
     	if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Deletada',
-                "mgs_secundaria" => 'Cardápio Deletado com sucesso'
+                "mgs_principal" => __('Deletada'),
+                "mgs_secundaria" => __('Cardápio Deletado com sucesso')
             );
     	}else{
             $mensagens = array(
@@ -218,7 +218,7 @@ class comercio_venda_ComposicaoControle extends comercio_venda_Controle
         
         $this->Composicoes();
         
-        $this->_Visual->Json_Info_Update('Titulo', 'Cardápio deletado com Sucesso');  
+        $this->_Visual->Json_Info_Update('Titulo', __('Cardápio deletado com Sucesso'));  
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
 }

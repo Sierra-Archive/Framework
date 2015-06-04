@@ -39,7 +39,7 @@ class usuario_mensagem_AdminControle extends usuario_mensagem_Controle
             $this->Mensagenslistar(1);
             //$this->Mensagem_formulario();
             // ORGANIZA E MANDA CONTEUDO
-            $this->_Visual->Json_Info_Update('Titulo','Tickets');  
+            $this->_Visual->Json_Info_Update('Titulo', __('Tickets'));  
         }
     }
     public function Mensagem_Editar($mensagem=0){
@@ -57,14 +57,14 @@ class usuario_mensagem_AdminControle extends usuario_mensagem_Controle
         // Chama Objeto Mensagem
         $editar = $Modelo->db->Sql_Select('Usuario_Mensagem', 'id=\''.$mensagem.'\'');
         //Atualiza Nome para nao dar erro
-        if($editar->para_nome=='') $editar->para_nome='Suporte';
+        if($editar->para_nome=='') $editar->para_nome=__('Suporte');
 
         
         // Carrega Config
         $titulo1    = 'Editar Ticket (#'.$id.')';
-        $titulo2    = 'Edição de Ticket';
+        $titulo2    = __('Edição de Ticket');
         $formid     = 'form_Usuario_Mensagem_Suporte';
-        $formbt     = 'Alterar Edição';
+        $formbt     = __('Alterar Edição');
         $formlink   = 'usuario_mensagem/Suporte/Mensagem_inserir';
         $editar     = $editar;
         \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos,$editar);
@@ -88,8 +88,8 @@ class usuario_mensagem_AdminControle extends usuario_mensagem_Controle
     	if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Deletado',
-                "mgs_secundaria" => 'Mensagem deletada com sucesso'
+                "mgs_principal" => __('Deletado'),
+                "mgs_secundaria" => __('Mensagem deletada com sucesso')
             );
     	}else{
             $mensagens = array(
@@ -102,7 +102,7 @@ class usuario_mensagem_AdminControle extends usuario_mensagem_Controle
         
         $this->Mensagem();
         
-        $this->_Visual->Json_Info_Update('Titulo', 'Mensagem deletada com Sucesso');  
+        $this->_Visual->Json_Info_Update('Titulo', __('Mensagem deletada com Sucesso'));  
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
 }

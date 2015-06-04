@@ -19,7 +19,7 @@ $mail->addReplyTo('replyto@example.com', 'First Last');
 //Set who the message is to be sent to
 $mail->addAddress('whoto@example.com', 'John Doe');
 //Set the subject line
-$mail->Subject = 'PHPMailer sendmail test';
+$mail->Subject = __('PHPMailer sendmail test');
 //Read an HTML message body from an external file, convert referenced images to embedded,
 //convert HTML into a basic plain-text alternative body
 $mail->msgHTML(file_get_contents('contents.html'), dirname(__FILE__));

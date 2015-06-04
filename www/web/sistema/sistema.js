@@ -586,7 +586,7 @@ var Sierra = (function () {
     /**
      * FAZ SEMPRE QUE SE USA AJAX
      * @returns {undefined}
-     * @version 3.0.1 // Mudado a fim da reaproveitacao de código, aqui repetia o conteudo de mascaras
+     * @version 3.1.1 // Mudado a fim da reaproveitacao de código, aqui repetia o conteudo de mascaras
      */
     function Control_Layoult_Recarrega () {
         // Layoult/Js/Extra.js; Cada Layoult tem o seu
@@ -1118,7 +1118,8 @@ var Sierra = (function () {
                         "aButtons": [
                             {
                                 "sExtends": "copy",
-                                "mColumns": colunas_imprimir
+                                "mColumns": colunas_imprimir,
+                                "sButtonText": Linguagem["Mensagens"]['Copiar']
                             },
                             {
                                 "sExtends": "csv",
@@ -1135,6 +1136,7 @@ var Sierra = (function () {
                             {
                                 "sExtends": "print",
                                 "mColumns": colunas_imprimir,
+                                "sButtonText": Linguagem["Mensagens"]['Imprimir'],
                                 /*"fnClick": function (nButton, oConfig, oFlash) {
                                     oTable.fnSetColumnVis(j, false);
                                     $('div.dataTables_scrollHead').show();
@@ -1848,7 +1850,7 @@ var Sierra = (function () {
      * @returns {Boolean}
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.0.1
+     * @version 3.1.1
      */
     function Control_Layoult_Valida_CNPJ (cnpj) {
         var tamanho = 0, numeros = 0, digitos = 0, soma = 0, pos = 0, resultado = 0, i=0;

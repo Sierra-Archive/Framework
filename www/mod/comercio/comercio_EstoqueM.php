@@ -86,11 +86,11 @@ class comercio_EstoqueModelo extends comercio_Modelo
         // parameter represents the DataTables column identifier. In this case simple
         // indexes
               /*  if($valor->documento==0){
-                    $documento = 'Nfe';
+                    $documento = __('Nfe');
                 }else if($valor->documento==1){
-                    $documento = 'Boleto';
+                    $documento = __('Boleto');
                 }else{
-                    $documento = 'Recibo';
+                    $documento = __('Recibo');
                 }
                 $tabela['Número'][$i]           = $valor->numero;
                 $tabela['Documento'][$i]        = $documento;

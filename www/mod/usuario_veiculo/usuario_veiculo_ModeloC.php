@@ -34,12 +34,12 @@ class usuario_veiculo_ModeloControle extends usuario_veiculo_Controle
     public function Main(){
         $this->Modelos();
         // ORGANIZA E MANDA CONTEUDO
-        $this->_Visual->Json_Info_Update('Titulo','Modelos'); 
+        $this->_Visual->Json_Info_Update('Titulo', __('Modelos')); 
     }
     static function Endereco_Veiculo_Modelo($true=true){
         $registro = \Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
-        $titulo = 'Modelos';
+        $titulo = __('Modelos');
         $link = 'usuario_veiculo/Modelo/Modelos';
         // Chama Veiculo
         usuario_veiculo_MarcaControle::Endereco_Veiculo_Marca(true);
@@ -80,7 +80,7 @@ class usuario_veiculo_ModeloControle extends usuario_veiculo_Controle
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Administrar Modelos');
+        $this->_Visual->Json_Info_Update('Titulo', __('Administrar Modelos'));
     }
     /**
      * 
@@ -90,10 +90,10 @@ class usuario_veiculo_ModeloControle extends usuario_veiculo_Controle
     public function Modelos_Add(){
         self::Endereco_Veiculo_Modelo(true);
         // Carrega Config
-        $titulo1    = 'Adicionar Modelo';
-        $titulo2    = 'Salvar Modelo';
+        $titulo1    = __('Adicionar Modelo');
+        $titulo2    = __('Salvar Modelo');
         $formid     = 'form_Sistema_Admin_Modelos';
-        $formbt     = 'Salvar';
+        $formbt     = __('Salvar');
         $formlink   = 'usuario_veiculo/Modelo/Modelos_Add2/';
         $campos = Usuario_Veiculo_Modelo_DAO::Get_Colunas();
         \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos);
@@ -106,11 +106,11 @@ class usuario_veiculo_ModeloControle extends usuario_veiculo_Controle
      * @version 2.0
      */
     public function Modelos_Add2(){
-        $titulo     = 'Modelo Adicionada com Sucesso';
+        $titulo     = __('Modelo Adicionada com Sucesso');
         $dao        = 'Usuario_Veiculo_Modelo';
         $funcao     = '$this->Main();';
-        $sucesso1   = 'Inserção bem sucedida';
-        $sucesso2   = 'Modelo cadastrada com sucesso.';
+        $sucesso1   = __('Inserção bem sucedida');
+        $sucesso2   = __('Modelo cadastrada com sucesso.');
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
     }
@@ -124,9 +124,9 @@ class usuario_veiculo_ModeloControle extends usuario_veiculo_Controle
         self::Endereco_Veiculo_Modelo(true);
         // Carrega Config
         $titulo1    = 'Editar Modelo (#'.$id.')';
-        $titulo2    = 'Alteração de Modelo';
+        $titulo2    = __('Alteração de Modelo');
         $formid     = 'form_Sistema_AdminC_ModeloEdit';
-        $formbt     = 'Alterar Modelo';
+        $formbt     = __('Alterar Modelo');
         $formlink   = 'usuario_veiculo/Modelo/Modelos_Edit2/'.$id;
         $editar     = Array('Usuario_Veiculo_Modelo',$id);
         $campos = Usuario_Veiculo_Modelo::Get_Colunas();
@@ -140,10 +140,10 @@ class usuario_veiculo_ModeloControle extends usuario_veiculo_Controle
      * @version 2.0
      */
     public function Modelos_Edit2($id){
-        $titulo     = 'Modelo Editada com Sucesso';
+        $titulo     = __('Modelo Editada com Sucesso');
         $dao        = Array('Usuario_Veiculo_Modelo',$id);
         $funcao     = '$this->Main();';
-        $sucesso1   = 'Modelo Alterada com Sucesso.';
+        $sucesso1   = __('Modelo Alterada com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);      
@@ -166,8 +166,8 @@ class usuario_veiculo_ModeloControle extends usuario_veiculo_Controle
     	if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Deletado',
-                "mgs_secundaria" => 'Modelo Deletado com sucesso'
+                "mgs_principal" => __('Deletado'),
+                "mgs_secundaria" => __('Modelo Deletado com sucesso')
             );
     	}else{
             $mensagens = array(
@@ -180,7 +180,7 @@ class usuario_veiculo_ModeloControle extends usuario_veiculo_Controle
         
         $this->Main();
         
-        $this->_Visual->Json_Info_Update('Titulo', 'Modelo deletado com Sucesso');  
+        $this->_Visual->Json_Info_Update('Titulo', __('Modelo deletado com Sucesso'));  
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
 }

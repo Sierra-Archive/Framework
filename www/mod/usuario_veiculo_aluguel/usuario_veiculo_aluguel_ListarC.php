@@ -48,7 +48,7 @@ class usuario_veiculo_aluguel_ListarControle extends usuario_veiculo_aluguel_Con
                 $tabela['Data Final'][$i] = date_replace($aluguel[$indice]['data_final'], "d/m/Y");
                 $tabela['Valor'][$i] = 'R$ '.number_format($aluguel[$indice]['valor'], 2, ',', '.');
                 if($aluguel[$indice]['pago']==1){
-                    $tabela['Status'][$i] = 'Confirmado';
+                    $tabela['Status'][$i] = __('Confirmado');
                 }else{
                     $tabela['Status'][$i] = '<font color="#FF0000">Pendente</font>';
                 }
@@ -62,7 +62,7 @@ class usuario_veiculo_aluguel_ListarControle extends usuario_veiculo_aluguel_Con
             $this->_Visual->Bloco_Maior_CriaJanela('Todos os Alugueis (0)');
         }
         // ORGANIZA E MANDA CONTEUDO
-        $this->_Visual->Json_Info_Update('Titulo','Aluguel');
+        $this->_Visual->Json_Info_Update('Titulo', __('Aluguel'));
     }
 }
 ?>

@@ -100,7 +100,7 @@ class Engenharia_EmpreendimentoControle extends Engenharia_Controle
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Administrar Empreendimentos');
+        $this->_Visual->Json_Info_Update('Titulo', __('Administrar Empreendimentos'));
     }
     /**
      * 
@@ -110,10 +110,10 @@ class Engenharia_EmpreendimentoControle extends Engenharia_Controle
     public function Empreendimentos_Add(){
         self::Endereco_Empreendimento();
         // Carrega Config
-        $titulo1    = 'Adicionar Empreendimento';
-        $titulo2    = 'Salvar Empreendimento';
+        $titulo1    = __('Adicionar Empreendimento');
+        $titulo2    = __('Salvar Empreendimento');
         $formid     = 'form_Sistema_Admin_Empreendimentos';
-        $formbt     = 'Salvar';
+        $formbt     = __('Salvar');
         $formlink   = 'Engenharia/Empreendimento/Empreendimentos_Add2/';
         $campos = Engenharia_Empreendimento_DAO::Get_Colunas();
         \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos);
@@ -125,11 +125,11 @@ class Engenharia_EmpreendimentoControle extends Engenharia_Controle
      * @version 2.0
      */
     public function Empreendimentos_Add2(){
-        $titulo     = 'Empreendimento Adicionado com Sucesso';
+        $titulo     = __('Empreendimento Adicionado com Sucesso');
         $dao        = 'Engenharia_Empreendimento';
         $funcao     = '$this->Main();';
-        $sucesso1   = 'Inserção bem sucedida';
-        $sucesso2   = 'Empreendimento cadastrado com sucesso.';
+        $sucesso1   = __('Inserção bem sucedida');
+        $sucesso2   = __('Empreendimento cadastrado com sucesso.');
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
     }
@@ -143,9 +143,9 @@ class Engenharia_EmpreendimentoControle extends Engenharia_Controle
         self::Endereco_Empreendimento();
         // Carrega Config
         $titulo1    = 'Editar Empreendimento (#'.$id.')';
-        $titulo2    = 'Alteração de Empreendimento';
+        $titulo2    = __('Alteração de Empreendimento');
         $formid     = 'form_Sistema_AdminC_EmpreendimentoEdit';
-        $formbt     = 'Alterar Empreendimento';
+        $formbt     = __('Alterar Empreendimento');
         $formlink   = 'Engenharia/Empreendimento/Empreendimentos_Edit2/'.$id;
         $editar     = Array('Engenharia_Empreendimento',$id);
         $campos = Engenharia_Empreendimento_DAO::Get_Colunas();
@@ -158,10 +158,10 @@ class Engenharia_EmpreendimentoControle extends Engenharia_Controle
      * @version 2.0
      */
     public function Empreendimentos_Edit2($id){
-        $titulo     = 'Empreendimento Editado com Sucesso';
+        $titulo     = __('Empreendimento Editado com Sucesso');
         $dao        = Array('Engenharia_Empreendimento',$id);
         $funcao     = '$this->Main();';
-        $sucesso1   = 'Empreendimento Alterado com Sucesso.';
+        $sucesso1   = __('Empreendimento Alterado com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);   
@@ -184,8 +184,8 @@ class Engenharia_EmpreendimentoControle extends Engenharia_Controle
     	if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Deletado',
-                "mgs_secundaria" => 'Empreendimento deletado com sucesso'
+                "mgs_principal" => __('Deletado'),
+                "mgs_secundaria" => __('Empreendimento deletado com sucesso')
             );
     	}else{
             $mensagens = array(
@@ -198,7 +198,7 @@ class Engenharia_EmpreendimentoControle extends Engenharia_Controle
         
         $this->Main();
         
-        $this->_Visual->Json_Info_Update('Titulo', 'Empreendimento deletado com Sucesso');
+        $this->_Visual->Json_Info_Update('Titulo', __('Empreendimento deletado com Sucesso'));
         $this->_Visual->Json_Info_Update('Historico', false);
     }
     
@@ -215,10 +215,10 @@ class Engenharia_EmpreendimentoControle extends Engenharia_Controle
     public function Estoque_Retirar(){
         
         // Carrega Config
-        $titulo1    = 'Retirar Produto do Estoque';
-        $titulo2    = 'Retirar Produto do Estoque';
+        $titulo1    = __('Retirar Produto do Estoque');
+        $titulo2    = __('Retirar Produto do Estoque');
         $formid     = 'Form_Eng_Estoque_Retirar';
-        $formbt     = 'Retirar Estoque';
+        $formbt     = __('Retirar Estoque');
         $formlink   = 'Engenharia/Empreendimento/Estoque_Retirar2/';
         $campos = Engenharia_Estoque_Retirada_DAO::Get_Colunas();
         \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos);
@@ -237,17 +237,17 @@ class Engenharia_EmpreendimentoControle extends Engenharia_Controle
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => $language['mens_erro']['erro'],
-                "mgs_secundaria" => 'Quantidade não disponivel em Estoque'
+                "mgs_secundaria" => __('Quantidade não disponivel em Estoque')
             );
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens); 
             $this->layoult_zerar = false;
             $this->_Visual->Javascript_Executar('$("#qnt").css(\'border\', \'2px solid #FFAEB0\').focus();');
         }else{
-            $titulo     = 'Produto retirado do estoque com Sucesso';
+            $titulo     = __('Produto retirado do estoque com Sucesso');
             $dao        = 'Engenharia_Estoque_Retirada';
             $funcao     = '$this->Estoque_Retirar();';
-            $sucesso1   = 'Retirada bem sucedida';
-            $sucesso2   = 'Produto retirado do estoque com sucesso.';
+            $sucesso1   = __('Retirada bem sucedida');
+            $sucesso2   = __('Produto retirado do estoque com sucesso.');
             $alterar    = Array();
             $sucesso = $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
             if($sucesso){
@@ -269,10 +269,10 @@ class Engenharia_EmpreendimentoControle extends Engenharia_Controle
     public function Empreendimento_Receber(){
         
         // Carrega Config
-        $titulo1    = 'Adicionar Conta a Receber';
-        $titulo2    = 'Salvar Conta a Receber';
+        $titulo1    = __('Adicionar Conta a Receber');
+        $titulo2    = __('Salvar Conta a Receber');
         $formid     = 'form_Eng_Conta_Receber';
-        $formbt     = 'Adicionar à Contas a Receber';
+        $formbt     = __('Adicionar à Contas a Receber');
         $formlink   = 'Engenharia/Empreendimento/Empreendimento_Receber2/';
         $campos = Engenharia_Empreendimento_Custo_DAO::Get_Colunas();
         \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos);
@@ -284,15 +284,15 @@ class Engenharia_EmpreendimentoControle extends Engenharia_Controle
      */
     public function Empreendimento_Receber2(){
         
-        $titulo     = 'Conta a Receber Adicionada com Sucesso';
+        $titulo     = __('Conta a Receber Adicionada com Sucesso');
         $dao        = 'Engenharia_Empreendimento_Custo';
         $funcao     = '$this->Empreendimento_Receber();';
-        $sucesso1   = 'Inserção bem sucedida';
-        $sucesso2   = 'Conta a Receber cadastrada com sucesso.';
+        $sucesso1   = __('Inserção bem sucedida');
+        $sucesso2   = __('Conta a Receber cadastrada com sucesso.');
         $alterar    = Array();
         $sucesso = $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
         if($sucesso){
-            $motivo = 'Engenharia';
+            $motivo = __('Engenharia');
             $identificador  = $this->_Modelo->db->Sql_Select('Engenharia_Empreendimento_Custo', Array(),1,'id DESC');
             $idempreendimento  = $identificador->empreendimento;
             $parcela_data   = $identificador->data_pag_prevista;

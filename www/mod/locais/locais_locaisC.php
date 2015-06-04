@@ -74,7 +74,7 @@ class locais_locaisControle extends locais_Controle
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Administrar Locais');
+        $this->_Visual->Json_Info_Update('Titulo', __('Administrar Locais'));
     }
     /**
      * 
@@ -84,10 +84,10 @@ class locais_locaisControle extends locais_Controle
     public function Locais_Add(){
         self::Endereco_Local(true);
         // Carrega Config
-        $titulo1    = 'Adicionar Local';
-        $titulo2    = 'Salvar Local';
+        $titulo1    = __('Adicionar Local');
+        $titulo2    = __('Salvar Local');
         $formid     = 'form_Sistema_Admin_Locais';
-        $formbt     = 'Salvar';
+        $formbt     = __('Salvar');
         $formlink   = 'locais/locais/Locais_Add2/';
         $campos = Local_DAO::Get_Colunas();
         \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos);
@@ -100,11 +100,11 @@ class locais_locaisControle extends locais_Controle
      * @version 2.0
      */
     public function Locais_Add2(){
-        $titulo     = 'Local Adicionado com Sucesso';
+        $titulo     = __('Local Adicionado com Sucesso');
         $dao        = 'Local';
         $funcao     = '$this->Locais();';
-        $sucesso1   = 'Inserção bem sucedida';
-        $sucesso2   = 'Local cadastrado com sucesso.';
+        $sucesso1   = __('Inserção bem sucedida');
+        $sucesso2   = __('Local cadastrado com sucesso.');
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
     }
@@ -118,9 +118,9 @@ class locais_locaisControle extends locais_Controle
         self::Endereco_Local(true);
         // Carrega Config
         $titulo1    = 'Editar Local (#'.$id.')';
-        $titulo2    = 'Alteração de Local';
+        $titulo2    = __('Alteração de Local');
         $formid     = 'form_Sistema_AdminC_LocalEdit';
-        $formbt     = 'Alterar Local';
+        $formbt     = __('Alterar Local');
         $formlink   = 'locais/locais/Locais_Edit2/'.$id;
         $editar     = Array('Local',$id);
         $campos = Local_DAO::Get_Colunas();
@@ -134,10 +134,10 @@ class locais_locaisControle extends locais_Controle
      * @version 2.0
      */
     public function Locais_Edit2($id){
-        $titulo     = 'Local Editado com Sucesso';
+        $titulo     = __('Local Editado com Sucesso');
         $dao        = Array('Local',$id);
         $funcao     = '$this->Locais();';
-        $sucesso1   = 'Local Alterado com Sucesso.';
+        $sucesso1   = __('Local Alterado com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);   
@@ -160,8 +160,8 @@ class locais_locaisControle extends locais_Controle
     	if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Deletado',
-                "mgs_secundaria" => 'Local deletado com sucesso'
+                "mgs_principal" => __('Deletado'),
+                "mgs_secundaria" => __('Local deletado com sucesso')
             );
     	}else{
             $mensagens = array(
@@ -174,7 +174,7 @@ class locais_locaisControle extends locais_Controle
         
         $this->Locais();
         
-        $this->_Visual->Json_Info_Update('Titulo', 'Local deletado com Sucesso');  
+        $this->_Visual->Json_Info_Update('Titulo', __('Local deletado com Sucesso'));  
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
 }

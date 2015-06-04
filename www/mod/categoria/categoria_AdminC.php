@@ -21,7 +21,7 @@ class categoria_AdminControle extends categoria_Controle
         $this->Categorias_ShowTab($modulo);
         //$this->Categorias_Add();
         // ORGANIZA E MANDA CONTEUDO
-        $this->_Visual->Json_Info_Update('Titulo','Categorias');
+        $this->_Visual->Json_Info_Update('Titulo', __('Categorias'));
     }
     /**
     * Mostra todas as Categorias
@@ -67,7 +67,7 @@ class categoria_AdminControle extends categoria_Controle
         // Conexao
         $this->_Visual->Categorias_ShowTab($array,$tabela);
         $this->_Visual->Blocar($tabela->retornatabela());
-        $this->_Visual->Bloco_Unico_CriaJanela('Categorias');
+        $this->_Visual->Bloco_Unico_CriaJanela(__('Categorias'));
         unset($tabela);        
     }
     /**
@@ -79,15 +79,15 @@ class categoria_AdminControle extends categoria_Controle
         self::Endereco_Categoria(true);
         // Carrega Config
         if($modulo===false){
-            $titulo1    = 'Adicionar Categoria';
-            $titulo2    = 'Salvar Categoria';
+            $titulo1    = __('Adicionar Categoria');
+            $titulo2    = __('Salvar Categoria');
         }else{
             $dados_modulo = Categoria_Acesso_DAO::Mod_Acesso_Get($modulo);
             $titulo1    = 'Adicionar '.$dados_modulo['nome'];
             $titulo2    = 'Adicionar '.$dados_modulo['nome'];            
         }
         $formid     = 'form_categoria_Admin_Categorias';
-        $formbt     = 'Salvar';
+        $formbt     = __('Salvar');
         $formlink   = 'categoria/Admin/Categorias_Add2/';
         $campos     = Categoria_DAO::Get_Colunas();
         if($modulo!==false){
@@ -107,11 +107,11 @@ class categoria_AdminControle extends categoria_Controle
      * @version 2.0
      */
     public function Categorias_Add2($modulo=false){
-        $titulo     = 'Adicionado com Sucesso';
+        $titulo     = __('Adicionado com Sucesso');
         $dao        = 'Categoria';
         $funcao     = '$this->Categorias();';
-        $sucesso1   = 'Inserção bem sucedida';
-        $sucesso2   = 'Cadastrado com sucesso.';
+        $sucesso1   = __('Inserção bem sucedida');
+        $sucesso2   = __('Cadastrado com sucesso.');
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
         // Cadastra o modulo
@@ -169,7 +169,7 @@ class categoria_AdminControle extends categoria_Controle
             $titulo2      = 'Editar '.$dados_modulo['nome'].' (#'.$id.')';    
         }
         $formid     = 'form_categoria_Admin_Categorias_Edit';
-        $formbt     = 'Alterar Categoria';
+        $formbt     = __('Alterar Categoria');
         $formlink   = 'categoria/Admin/Categorias_Edit2/';
         $editar     = Array('Categoria',$id);
         if($modulo!==false){
@@ -195,10 +195,10 @@ class categoria_AdminControle extends categoria_Controle
      * @version 2.0
      */
     public function Categorias_Edit2($id,$modulo=false){
-        $titulo     = 'Editado com Sucesso';
+        $titulo     = __('Editado com Sucesso');
         $dao        = Array('Categoria',$id);
         $funcao     = '$this->Categorias();';
-        $sucesso1   = 'Alterado com Sucesso.';
+        $sucesso1   = __('Alterado com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);   
@@ -223,8 +223,8 @@ class categoria_AdminControle extends categoria_Controle
             if($sucesso===true){
                 $mensagens = array(
                     "tipo" => 'sucesso',
-                    "mgs_principal" => 'Deletado',
-                    "mgs_secundaria" => 'Deletado com sucesso'
+                    "mgs_principal" => __('Deletado'),
+                    "mgs_secundaria" => __('Deletado com sucesso')
                 );
             }else{
                 $mensagens = array(
@@ -244,7 +244,7 @@ class categoria_AdminControle extends categoria_Controle
         
         $this->Categorias();
         
-        $this->_Visual->Json_Info_Update('Titulo', 'Deletado com Sucesso');  
+        $this->_Visual->Json_Info_Update('Titulo', __('Deletado com Sucesso'));  
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
 }

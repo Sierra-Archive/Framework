@@ -28,7 +28,7 @@ class Musica_VideoControle extends Musica_Controle
         $registro = \Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
         if($artista===false){
-            $titulo = 'Todos os Videos';
+            $titulo = __('Todos os Videos');
             $link   = 'Musica/Video/Videos';
         }else{
             if($album!==false){
@@ -100,19 +100,19 @@ class Musica_VideoControle extends Musica_Controle
             $destaque                                     = $valor->destaque;
             if($status!=1){
                 $status = 0;
-                $texto = 'Desativado';
+                $texto = __('Desativado');
             }else{
                 $status = 1;
-                $texto = 'Ativado';
+                $texto = __('Ativado');
             }
             $tabela['Funções'][$i]          = $Visual->Tema_Elementos_Btn('Personalizado'   ,Array('Visualizar Video'    ,'Musica/Video/Videos_Ver/'.$valor->id    ,'','youtube','inverse')).
                                             '<span id="status'.$valor->id.'">'.$Visual->Tema_Elementos_Btn('Status'.$status     ,Array($texto        ,'Musica/Video/Status/'.$valor->id.'/'    ,'')).'</span>';
             if($destaque==1){
                 $destaque = 1;
-                $texto = 'Em Destaque';
+                $texto = __('Em Destaque');
             }else{
                 $destaque = 0;
-                $texto = 'Não está em destaque';
+                $texto = __('Não está em destaque');
             }
             $tabela['Funções'][$i]      .= '<span id="destaques'.$valor->id.'">'.$Visual->Tema_Elementos_Btn('Destaque'.$destaque   ,Array($texto   ,'Musica/Video/Destaques/'.$valor->id.'/'    ,'')).'</span>'.            
                                             $Visual->Tema_Elementos_Btn('Editar'          ,Array('Editar Video'        ,$edit_url    ,'')).
@@ -181,28 +181,28 @@ class Musica_VideoControle extends Musica_Controle
                     $where['musica'] = $musica;
                     $titulo_add = 'Adicionar novo Video a musica '.$musica_registro->nome;
                     $url_add = '/'.$artista.'/'.$album.'/'.$musica;
-                    $erro = 'Nenhum Video dessa Musica';
+                    $erro = __('Nenhum Video dessa Musica');
                     $titulo = 'Listagem de Videos: '.$artista_registro->nome;
                     self::Endereco_Video(false, $artista_registro, $album_registro, $musica_registro);
                 }else{
                     $titulo_add = 'Adicionar novo Video ao album '.$album_registro->nome;
                     $url_add = '/'.$artista.'/'.$album.'/false';
-                    $erro = 'Nenhum Video desse Album';
+                    $erro = __('Nenhum Video desse Album');
                     $titulo = 'Listagem de Videos: '.$artista_registro->nome;
                     self::Endereco_Video(false, $artista_registro, $album_registro, false);
                 }
             }else{
                 $titulo_add = 'Adicionar novo Video a '.$artista_registro->nome;
                 $url_add = '/'.$artista.'/false/false';
-                $erro = 'Nenhum Video nesse Artista';
+                $erro = __('Nenhum Video nesse Artista');
                 $titulo = 'Listagem de Videos: '.$artista_registro->nome;
                 self::Endereco_Video(false, $artista_registro, false, false);
             }
         }else{
-            $titulo_add = 'Adicionar novo Video';
+            $titulo_add = __('Adicionar novo Video');
             $url_add = '/false/false/false';
-            $erro = 'Nenhum Video de nenhum Artista';
-            $titulo = 'Listagem de Videos em Todos os Artistas';
+            $erro = __('Nenhum Video de nenhum Artista');
+            $titulo = __('Listagem de Videos em Todos os Artistas');
             $where = Array();
             self::Endereco_Video(false, false, false, false);
         }
@@ -261,12 +261,12 @@ class Musica_VideoControle extends Musica_Controle
         if($musica ==='false' || $musica ===0) $musica     = false;
         // Carrega Config
         $formid     = 'form_Sistema_Admin_Videos';
-        $formbt     = 'Salvar';
+        $formbt     = __('Salvar');
         $campos     = Musica_Video_DAO::Get_Colunas();
         if($artista===false){
             $formlink   = 'Musica/Video/Videos_Add2';
-            $titulo1    = 'Adicionar Video';
-            $titulo2    = 'Salvar Video';
+            $titulo1    = __('Adicionar Video');
+            $titulo2    = __('Salvar Video');
             self::Endereco_Video(true, false);
         }else{
             $artista = (int) $artista;
@@ -343,10 +343,10 @@ class Musica_VideoControle extends Musica_Controle
         if($artista ==='false' || $artista ===0)  $artista    = false;
         if($album ==='false' || $album ===0)  $album      = false;
         if($musica ==='false' || $musica ===0) $musica     = false;
-        $titulo     = 'Video Adicionada com Sucesso';
+        $titulo     = __('Video Adicionada com Sucesso');
         $dao        = 'Musica_Video';
-        $sucesso1   = 'Inserção bem sucedida';
-        $sucesso2   = 'Video cadastrada com sucesso.';
+        $sucesso1   = __('Inserção bem sucedida');
+        $sucesso2   = __('Video cadastrada com sucesso.');
         if($artista!==false){
             $artista = (int) $artista;
             $alterar    = Array('artista'=>$artista);
@@ -388,7 +388,7 @@ class Musica_VideoControle extends Musica_Controle
         }
         // Carrega Config
         $formid     = 'form_Sistema_AdminC_VideoEdit';
-        $formbt     = 'Alterar Video';
+        $formbt     = __('Alterar Video');
         $campos = Musica_Video_DAO::Get_Colunas();
         
         
@@ -452,7 +452,7 @@ class Musica_VideoControle extends Musica_Controle
             throw new \Exception('Video não existe:'. $id, 404);
         }
         $id         = (int) $id;
-        $titulo     = 'Video Editado com Sucesso';
+        $titulo     = __('Video Editado com Sucesso');
         $dao        = Array('Musica_Video',$id);
         if($artista!==false){
             $artista = (int) $artista;
@@ -474,7 +474,7 @@ class Musica_VideoControle extends Musica_Controle
             $funcao     = '$this->Videos(0,0,0);';
             $alterar    = Array();
         }
-        $sucesso1   = 'Video Alterado com Sucesso.';
+        $sucesso1   = __('Video Alterado com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);   
@@ -517,8 +517,8 @@ class Musica_VideoControle extends Musica_Controle
     	if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Deletado',
-                "mgs_secundaria" => 'Video deletado com sucesso'
+                "mgs_principal" => __('Deletado'),
+                "mgs_secundaria" => __('Video deletado com sucesso')
             );
     	}else{
             $mensagens = array(
@@ -543,7 +543,7 @@ class Musica_VideoControle extends Musica_Controle
             $this->Videos();
         }
         
-        $this->_Visual->Json_Info_Update('Titulo', 'Video deletado com Sucesso');
+        $this->_Visual->Json_Info_Update('Titulo', __('Video deletado com Sucesso'));
         $this->_Visual->Json_Info_Update('Historico', false);
     }
     public function Videos_Ver($video=false){
@@ -584,9 +584,9 @@ class Musica_VideoControle extends Musica_Controle
         $sucesso = $this->_Modelo->db->Sql_Update($resultado);
         if($sucesso){
             if($resultado->status==1){
-                $texto = 'Ativado';
+                $texto = __('Ativado');
             }else{
-                $texto = 'Desativado';
+                $texto = __('Desativado');
             }
             $conteudo = array(
                 'location' => '#status'.$resultado->id,
@@ -594,16 +594,16 @@ class Musica_VideoControle extends Musica_Controle
                 'html' =>  $this->_Visual->Tema_Elementos_Btn('Status'.$resultado->status     ,Array($texto        ,'Musica/Video/Status/'.$resultado->id.'/'    ,''))
             );
             $this->_Visual->Json_IncluiTipo('Conteudo',$conteudo);
-            $this->_Visual->Json_Info_Update('Titulo','Status Alterado'); 
+            $this->_Visual->Json_Info_Update('Titulo', __('Status Alterado')); 
         }else{
             $mensagens = array(
                 "tipo"              => 'erro',
-                "mgs_principal"     => 'Erro',
-                "mgs_secundaria"    => 'Ocorreu um Erro.'
+                "mgs_principal"     => __('Erro'),
+                "mgs_secundaria"    => __('Ocorreu um Erro.')
             );
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
 
-            $this->_Visual->Json_Info_Update('Titulo','Erro'); 
+            $this->_Visual->Json_Info_Update('Titulo', __('Erro')); 
         }
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
@@ -623,9 +623,9 @@ class Musica_VideoControle extends Musica_Controle
         $sucesso = $this->_Modelo->db->Sql_Update($resultado);
         if($sucesso){
             if($resultado->destaque==1){
-                $texto = 'Em destaque';
+                $texto = __('Em destaque');
             }else{
-                $texto = 'Não está em destaque';
+                $texto = __('Não está em destaque');
             }
             $conteudo = array(
                 'location' => '#destaques'.$resultado->id,
@@ -633,16 +633,16 @@ class Musica_VideoControle extends Musica_Controle
                 'html' =>  $this->_Visual->Tema_Elementos_Btn('Destaque'.$resultado->destaque     ,Array($texto        ,'Musica/Video/Destaques/'.$resultado->id.'/'    ,''))
             );
             $this->_Visual->Json_IncluiTipo('Conteudo',$conteudo);
-            $this->_Visual->Json_Info_Update('Titulo','Destaque Alterado'); 
+            $this->_Visual->Json_Info_Update('Titulo', __('Destaque Alterado')); 
         }else{
             $mensagens = array(
                 "tipo"              => 'erro',
-                "mgs_principal"     => 'Erro',
-                "mgs_secundaria"    => 'Ocorreu um Erro.'
+                "mgs_principal"     => __('Erro'),
+                "mgs_secundaria"    => __('Ocorreu um Erro.')
             );
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
 
-            $this->_Visual->Json_Info_Update('Titulo','Erro'); 
+            $this->_Visual->Json_Info_Update('Titulo', __('Erro')); 
         }
         $this->_Visual->Json_Info_Update('Historico', false);  
     }

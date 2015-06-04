@@ -36,7 +36,7 @@ class usuario_mensagem_AssuntoControle extends usuario_mensagem_Controle
     static function Endereco_Assunto($true=true){
         $registro = \Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
-        $titulo = 'Assuntos';
+        $titulo = __('Assuntos');
         $link = 'usuario_mensagem/Assunto/Assuntos';
         if($true===true){
             $_Controle->Tema_Endereco($titulo,$link);
@@ -60,7 +60,7 @@ class usuario_mensagem_AssuntoControle extends usuario_mensagem_Controle
         $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',10,Array("link"=>"usuario_mensagem/Assunto/Assuntos_Add",'icon'=>'add','nome'=>'Adicionar Assunto'));
         
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Administrar Assuntos');
+        $this->_Visual->Json_Info_Update('Titulo', __('Administrar Assuntos'));
     }
     /**
      * 
@@ -70,10 +70,10 @@ class usuario_mensagem_AssuntoControle extends usuario_mensagem_Controle
     public function Assuntos_Add(){
         self::Endereco_Assunto(true);
         // Carrega Config
-        $titulo1    = 'Adicionar Assunto';
-        $titulo2    = 'Salvar Assunto';
+        $titulo1    = __('Adicionar Assunto');
+        $titulo2    = __('Salvar Assunto');
         $formid     = 'form_Sistema_Admin_Assuntos';
-        $formbt     = 'Salvar';
+        $formbt     = __('Salvar');
         $formlink   = 'usuario_mensagem/Assunto/Assuntos_Add2/';
         $campos = usuario_mensagem_Assunto_DAO::Get_Colunas();
         \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos);
@@ -86,11 +86,11 @@ class usuario_mensagem_AssuntoControle extends usuario_mensagem_Controle
      * @version 2.0
      */
     public function Assuntos_Add2(){
-        $titulo     = 'Assunto Adicionado com Sucesso';
+        $titulo     = __('Assunto Adicionado com Sucesso');
         $dao        = 'usuario_mensagem_Assunto';
         $funcao     = '$this->Assuntos();';
-        $sucesso1   = 'Inserção bem sucedida';
-        $sucesso2   = 'Assunto cadastrado com sucesso.';
+        $sucesso1   = __('Inserção bem sucedida');
+        $sucesso2   = __('Assunto cadastrado com sucesso.');
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
     }
@@ -114,7 +114,7 @@ class usuario_mensagem_AssuntoControle extends usuario_mensagem_Controle
         \Framework\App\Controle::Gerador_Formulario($campos, $form);
         $formulario = $form->retorna_form('Alterar Assunto');
         $this->_Visual->Blocar($formulario);
-        $this->_Visual->Bloco_Unico_CriaJanela('Alteração de Assunto');
+        $this->_Visual->Bloco_Unico_CriaJanela(__('Alteração de Assunto'));
         // Json
         $this->_Visual->Json_Info_Update('Titulo', 'Editar Assunto (#'.$id.')');
         
@@ -139,7 +139,7 @@ class usuario_mensagem_AssuntoControle extends usuario_mensagem_Controle
         if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Assunto Alterado com Sucesso',
+                "mgs_principal" => __('Assunto Alterado com Sucesso'),
                 "mgs_secundaria" => ''.$_POST["nome"].' teve a alteração bem sucedida'
             );
         }else{
@@ -151,7 +151,7 @@ class usuario_mensagem_AssuntoControle extends usuario_mensagem_Controle
         }
         $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);  
         //Json
-        $this->_Visual->Json_Info_Update('Titulo', 'Assunto Editado com Sucesso');  
+        $this->_Visual->Json_Info_Update('Titulo', __('Assunto Editado com Sucesso'));  
         $this->_Visual->Json_Info_Update('Historico', false);    
     }
     /**
@@ -172,8 +172,8 @@ class usuario_mensagem_AssuntoControle extends usuario_mensagem_Controle
     	if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Deletado',
-                "mgs_secundaria" => 'Assunto Deletado com sucesso'
+                "mgs_principal" => __('Deletado'),
+                "mgs_secundaria" => __('Assunto Deletado com sucesso')
             );
     	}else{
             $mensagens = array(
@@ -186,7 +186,7 @@ class usuario_mensagem_AssuntoControle extends usuario_mensagem_Controle
         
         $this->Assuntos();
         
-        $this->_Visual->Json_Info_Update('Titulo', 'Assunto deletado com Sucesso');  
+        $this->_Visual->Json_Info_Update('Titulo', __('Assunto deletado com Sucesso'));  
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
 }

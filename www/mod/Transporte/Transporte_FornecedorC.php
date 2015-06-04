@@ -8,7 +8,7 @@ class Transporte_FornecedorControle extends Transporte_Controle
     static function Endereco_Fornecedor($true=true){
         $registro = \Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
-        $titulo = 'Fornecedores';
+        $titulo = __('Fornecedores');
         $link = 'Transporte/Fornecedor/Fornecedores';
         if($true===true){
             $_Controle->Tema_Endereco($titulo,$link);
@@ -82,16 +82,16 @@ class Transporte_FornecedorControle extends Transporte_Controle
             unset($tabela);
         }else{
             if($export!==false){
-                $mensagem = 'Nenhum Fornecedor Cadastrado para exportar';
+                $mensagem = __('Nenhum Fornecedor Cadastrado para exportar');
             }else{
-                $mensagem = 'Nenhum Fornecedor Cadastrado';
+                $mensagem = __('Nenhum Fornecedor Cadastrado');
             }
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">'.$mensagem.'</font></b></center>');
         }
         $titulo = 'Listagem de Fornecedores ('.$i.')';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Listagem de Fornecedores');
+        $this->_Visual->Json_Info_Update('Titulo', __('Listagem de Fornecedores'));
     }
     /**
      * Painel Adminstrativo de Fornecedores
@@ -115,7 +115,7 @@ class Transporte_FornecedorControle extends Transporte_Controle
         if($existe===false){
             $html = '<b>Ainda faltam insformações sobre o seu Fornecedor</b><br>'.self::Painel_Fornecedor_Add($camada);
         }else{
-            $html = 'Painel';
+            $html = __('Painel');
         }
         
         if($retornar===true){
@@ -158,10 +158,10 @@ class Transporte_FornecedorControle extends Transporte_Controle
     }
     static protected function Painel_Fornecedor_Add($camada){
         // Carrega Config
-        $titulo1    = 'Salvar Dados';
-        $titulo2    = 'Salvar Dados';
+        $titulo1    = __('Salvar Dados');
+        $titulo2    = __('Salvar Dados');
         $formid     = 'form_Transporte_Fornecedor_Add';
-        $formbt     = 'Salvar Dados';
+        $formbt     = __('Salvar Dados');
         $formlink   = 'Transporte/Fornecedor/Painel_Fornecedor_Add2/'.$camada;
         $campos = Transporte_Fornecedor_DAO::Get_Colunas();
         // Remove Essas Colunas
@@ -175,11 +175,11 @@ class Transporte_FornecedorControle extends Transporte_Controle
             self::Painel_Fornecedor($camada,false);
             return true;
         }
-        $titulo     = 'Dados Atualizados com Sucesso';
+        $titulo     = __('Dados Atualizados com Sucesso');
         $dao        = 'Transporte_Fornecedor';
         $funcao     = 'Transporte_FornecedorControle::Painel_Fornecedor(\''.$camada.'\',\'false\');';
-        $sucesso1   = 'Atualização bem sucedida';
-        $sucesso2   = 'Dados Atualizados com sucesso.';
+        $sucesso1   = __('Atualização bem sucedida');
+        $sucesso2   = __('Dados Atualizados com sucesso.');
         $alterar    = Array(
             'usuario'        =>  $this->_Acl->Usuario_GetID(),
         );

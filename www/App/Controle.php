@@ -19,7 +19,7 @@ abstract class Controle
     
     protected $_Acl;
     
-    protected $sistema_linguagem = 'ptBR';
+    protected $sistema_linguagem = SISTEMA_LINGUAGEM;
     
     protected $layoult_zerar = 'naousado'; // 
     public static $config_template;
@@ -102,7 +102,7 @@ abstract class Controle
      * @throws Exception
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.0.1
+     * @version 3.1.1
      */
     protected function getLibrary($lib){
         $url_livraria = ROOT.'libs'.DS.$lib.'.php';
@@ -155,7 +155,7 @@ abstract class Controle
     public static function Enviar_Email($texto,$assunto='Sem Assunto',$email=false,$nome=false){
         require_once CLASS_PATH . 'Email'.DS.'Email'.'.php';
         if($email===false) $email = SISTEMA_EMAIL_RECEBER;
-        if($nome===false) $nome = 'Administrador';
+        if($nome===false) $nome = __('Administrador');
         $mailer = new \Framework\Classes\Email();
         $send	= $mailer->setTo($email, $nome)
                     ->setSubject($assunto.' - '.SISTEMA_NOME)
@@ -206,8 +206,8 @@ abstract class Controle
         if($enviar==''){
             $mensagens = array(
                 "tipo" => 'erro',
-                "mgs_principal" => 'Erro',
-                "mgs_secundaria" => 'Nenhum Email válido do cliente para enviar anexo !'
+                "mgs_principal" => __('Erro'),
+                "mgs_secundaria" => __('Nenhum Email válido do cliente para enviar anexo !')
             );
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens); 
             $this->_Visual->Json_Info_Update('Historico', false);
@@ -228,36 +228,20 @@ abstract class Controle
 
             $mail->Subject      = 'Anexo de Chamado - '.SISTEMA_NOME;
             $mail->Body         = $amensagem;
-            $mail->AltBody      = 'Arquivo em Anexo';
-            /*
-            if(!$mail->send()) {
-               echo 'Message could not be sent.';
-               echo 'Mailer Error: ' . $mail->ErrorInfo;
-               exit;
-            }
-            echo 'Message has been sent';
-            
-            
-            eval('$send	= $mailer'.$enviar.'->setSubject(\'\')'.
-            '->setFrom(SISTEMA_EMAIL, SISTEMA_NOME)'.
-            '->addGenericHeader(\'X-Mailer\', \'PHP/\' . phpversion())'.
-            '->addGenericHeader(\'Content-Type\', \'text/html; charset="utf-8"\')'.
-            '->addAttachment(\''.ARQ_PATH.$arquivo.'\',\''.$nomearquivo.'\')'.
-            '->setMessage(\''.$amensagem.'\')'.
-            '->setWrap(100)->send();');*/
+            $mail->AltBody      = __('Arquivo em Anexo');
             if($mail->send()){
                 $mensagens = array(
                     "tipo" => 'sucesso',
-                    "mgs_principal" => 'Anexo enviado com Sucesso',
-                    "mgs_secundaria" => 'Voce enviou um Anexo com sucesso.'
+                    "mgs_principal" => __('Anexo enviado com Sucesso'),
+                    "mgs_secundaria" => __('Voce enviou um Anexo com sucesso.')
                 );
                 $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens); 
                 $this->_Visual->Json_Info_Update('Titulo','Enviado com Sucesso.');
             }else{
                 $mensagens = array(
                     "tipo" => 'erro',
-                    "mgs_principal" => 'Erro',
-                    "mgs_secundaria" => 'Email não foi enviado !'
+                    "mgs_principal" => __('Erro'),
+                    "mgs_secundaria" => __('Email não foi enviado !')
                 );
                 $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens); 
                 $this->_Visual->Json_Info_Update('Titulo','Erro ao Enviar.');
@@ -786,7 +770,7 @@ readfile($link);*/
             } else {
                 $mensagens = array(
                     "tipo"              => 'erro',
-                    "mgs_principal"     => 'Formato de Arquivo Inválido',
+                    "mgs_principal"     => __('Formato de Arquivo Inválido'),
                     "mgs_secundaria"    => 'Extensão '.$extensao.' não permitida.'
                 );
                 $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
@@ -967,7 +951,7 @@ readfile($link);*/
                     if(isset($tabelalinkada['selectmultiplo']['infonulo']) && $tabelalinkada['selectmultiplo']['infonulo']!='' && $tabelalinkada['selectmultiplo']['infonulo']!==false){
                         $select_infonulo = $tabelalinkada['SelectMultiplo']['infonulo'];
                     }else{
-                        $select_infonulo = 'Escolha uma Opção';
+                        $select_infonulo = __('Escolha uma Opção');
                     }
                     
                     // Puxa Selecionados, Resutados e Colunas
@@ -1091,7 +1075,7 @@ readfile($link);*/
                 if(isset($valor['edicao']['select']['infonulo']) && $valor['edicao']['select']['infonulo']!='' && $valor['edicao']['select']['infonulo']!==false){
                     $select_infonulo = $valor['edicao']['select']['infonulo'];
                 }else{
-                    $select_infonulo = 'Escolha uma Opção';
+                    $select_infonulo = __('Escolha uma Opção');
                 }
                 
                 // Multiplo select ou nao?
@@ -1253,7 +1237,7 @@ readfile($link);*/
                     if(isset($valor['edicao']['select']['infonulo']) && $valor['edicao']['select']['infonulo']!='' && $valor['edicao']['select']['infonulo']!==false){
                         $select_infonulo = $valor['edicao']['select']['infonulo'];
                     }else{
-                        $select_infonulo = 'Escolha uma Opção';
+                        $select_infonulo = __('Escolha uma Opção');
                     }
                     
                     $html .= $form->Select_Novo(
@@ -1316,7 +1300,7 @@ readfile($link);*/
      * @throws Exception
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.0.1
+     * @version 3.1.1
      */
     static function Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,&$campos = false,$editar=false,$bloco='All',$janela=true){
         $registro = &\Framework\App\Registro::getInstacia();
@@ -1445,7 +1429,7 @@ readfile($link);*/
      * @param type $erro2
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.0.1
+     * @version 3.1.1
      */
     protected function Gerador_Formulario_Janela2($titulo,$dao,$funcao = '',$sucesso1,$sucesso2,$colocar=false,$erro1 = '',$erro2 = ''){
         global $language;
@@ -1527,7 +1511,7 @@ readfile($link);*/
                 if($objeto_pesquisado!==false){
                     $mensagens = array(
                         "tipo"              => 'erro',
-                        "mgs_principal"     => 'Registro Duplicado',
+                        "mgs_principal"     => __('Registro Duplicado'),
                         "mgs_secundaria"    => 'Dados já registrados: '.$indice_campos.'.'
                     );
                     $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
@@ -2271,7 +2255,7 @@ readfile($link);*/
      * 
      * #update
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.0.1
+     * @version 3.1.1
      */
     /*protected function _Permissao_Verificar($chave){
         $array = $this->_Acl->getPermissao();
@@ -2343,12 +2327,12 @@ readfile($link);*/
                 $form->Input_Novo('Login','sistema_login','','text', '',30, '');
                 $form->Input_Novo('Senha','sistema_senha','','password', 30, '','');
                 $this->_Visual->Blocar($form->retorna_form('Entrar'));
-                $this->_Visual->Bloco_Menor_CriaJanela('Login');
+                $this->_Visual->Bloco_Menor_CriaJanela(__('Login'));
             }
             /*// carrega menu estatisticas se exister antes de encerrar tudo
             if(file_exists(MOD_PATH.''.\anti_injection(SISTEMA_MODULO).'/StatC.php')){
                 $this->_Visual->menu['SubMenu']['link'][] = URL_PATH.''.\anti_injection(SISTEMA_MODULO).'/Stat/Modulo';
-                $this->_Visual->menu['SubMenu']['nome'][] = 'Estatisticas';
+                $this->_Visual->menu['SubMenu']['nome'][] = __('Estatisticas');
                 if(SISTEMA_SUB=='Stat' && SISTEMA_MET=='Modulo') $this->_Visual->menu['SubMenu']['ativo'][] = 1;
                 else $this->_Visual->menu['SubMenu']['ativo'][] = 0;
             }*/

@@ -4,7 +4,7 @@
 <!--[if !IE]><!--> <html lang="pt-br"> <!--<![endif]-->
 <!-- BEGIN HEAD -->
 <head>
-    <title><?php echo SISTEMA_NOME; ?> - <?php if($params['site_titulo']==''){ echo 'Sem Titulo'; }else{ echo $params['site_titulo']; } ?></title>
+    <title><?php echo SISTEMA_NOME; ?> - <?php if($params['site_titulo']==''){ echo __('Sem Titulo'); }else{ echo $params['site_titulo']; } ?></title>
     <meta charset="<?php echo CONFIG_PADRAO_TECLADO; ?>">
     <link rel="icon" type="image/png" href="<?php echo ARQ_URL; ?>favicon.ico"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">

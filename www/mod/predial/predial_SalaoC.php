@@ -22,7 +22,7 @@ class predial_SalaoControle extends predial_Controle
     static function Endereco_Salao($true=true){
         $registro = \Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
-        $titulo = 'Saloes';
+        $titulo = __('Saloes');
         $link = 'predial/Salao/Saloes';
         if($true===true){
             $_Controle->Tema_Endereco($titulo,$link);
@@ -84,7 +84,7 @@ class predial_SalaoControle extends predial_Controle
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Administrar Locais de Reserva');
+        $this->_Visual->Json_Info_Update('Titulo', __('Administrar Locais de Reserva'));
     }
     /**
      * 
@@ -94,10 +94,10 @@ class predial_SalaoControle extends predial_Controle
     public function Saloes_Add(){
         self::Endereco_Salao();
         // Carrega Config
-        $titulo1    = 'Adicionar Local de Reserva';
-        $titulo2    = 'Salvar Local de Reserva';
+        $titulo1    = __('Adicionar Local de Reserva');
+        $titulo2    = __('Salvar Local de Reserva');
         $formid     = 'form_Sistema_Admin_Saloes';
-        $formbt     = 'Salvar';
+        $formbt     = __('Salvar');
         $formlink   = 'predial/Salao/Saloes_Add2/';
         $campos = Predial_Salao_DAO::Get_Colunas();
         \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos);
@@ -110,11 +110,11 @@ class predial_SalaoControle extends predial_Controle
      * @version 2.0
      */
     public function Saloes_Add2(){
-        $titulo     = 'Local de Reserva Adicionado com Sucesso';
+        $titulo     = __('Local de Reserva Adicionado com Sucesso');
         $dao        = 'Predial_Salao';
         $funcao     = '$this->Saloes();';
-        $sucesso1   = 'Inserção bem sucedida';
-        $sucesso2   = 'Local de Reserva cadastrado com sucesso.';
+        $sucesso1   = __('Inserção bem sucedida');
+        $sucesso2   = __('Local de Reserva cadastrado com sucesso.');
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
     }
@@ -128,9 +128,9 @@ class predial_SalaoControle extends predial_Controle
         self::Endereco_Salao();
         // Carrega Config
         $titulo1    = 'Editar Local de Reserva (#'.$id.')';
-        $titulo2    = 'Alteração de Local de Reserva';
+        $titulo2    = __('Alteração de Local de Reserva');
         $formid     = 'form_Sistema_AdminC_SalaoEdit';
-        $formbt     = 'Alterar Local de Reserva';
+        $formbt     = __('Alterar Local de Reserva');
         $formlink   = 'predial/Salao/Saloes_Edit2/'.$id;
         $editar     = Array('Predial_Salao',$id);
         $campos = Predial_Salao_DAO::Get_Colunas();
@@ -144,10 +144,10 @@ class predial_SalaoControle extends predial_Controle
      * @version 2.0
      */
     public function Saloes_Edit2($id){
-        $titulo     = 'Local de Reserva Editado com Sucesso';
+        $titulo     = __('Local de Reserva Editado com Sucesso');
         $dao        = Array('Predial_Salao',$id);
         $funcao     = '$this->Saloes();';
-        $sucesso1   = 'Local de Reserva Alterada com Sucesso.';
+        $sucesso1   = __('Local de Reserva Alterada com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);   
@@ -170,8 +170,8 @@ class predial_SalaoControle extends predial_Controle
     	if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Deletado',
-                "mgs_secundaria" => 'Local de Reserva deletado com sucesso'
+                "mgs_principal" => __('Deletado'),
+                "mgs_secundaria" => __('Local de Reserva deletado com sucesso')
             );
     	}else{
             $mensagens = array(
@@ -184,7 +184,7 @@ class predial_SalaoControle extends predial_Controle
         
         $this->Saloes();
         
-        $this->_Visual->Json_Info_Update('Titulo', 'Local de Reserva deletado com Sucesso');
+        $this->_Visual->Json_Info_Update('Titulo', __('Local de Reserva deletado com Sucesso'));
         $this->_Visual->Json_Info_Update('Historico', false);
     }
     
@@ -238,53 +238,53 @@ class predial_SalaoControle extends predial_Controle
         $datas = Array();
         $i = $this->_Modelo->retorna_Agendadatas($datas);
         $this->_Visual->Js_Calendar_Gerar('calendariodedatasdisponiveis',$datas);
-        $this->_Visual->Bloco_Maior_CriaJanela('Datas Disponiveis');
+        $this->_Visual->Bloco_Maior_CriaJanela(__('Datas Disponiveis'));
         // ORGANIZA E MANDA CONTEUDO
         
-        $this->_Visual->Json_Info_Update('Titulo','Reservas');        
+        $this->_Visual->Json_Info_Update('Titulo', __('Reservas'));        
     }
     public function Popup_Agendar_reserva($idreserva,$datainicial,$datafinal,$nomereserva){
         if($this->get_logado()){
             if($this->_Acl->logado_usuario->foto_cnh==''){
                 $mensagens = array(
                     "tipo" => 'sucesso',
-                    "mgs_principal" => 'Erro',
-                    "mgs_secundaria" => 'É necessário fazer upload da CNH'
+                    "mgs_principal" => __('Erro'),
+                    "mgs_secundaria" => __('É necessário fazer upload da CNH')
                 );
                 $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
             }else if($this->_Acl->logado_usuario->foto_res==''){
                 $mensagens = array(
                     "tipo" => 'sucesso',
-                    "mgs_principal" => 'Erro',
-                    "mgs_secundaria" => 'Falta upload do comprovante de residente'
+                    "mgs_principal" => __('Erro'),
+                    "mgs_secundaria" => __('Falta upload do comprovante de residente')
                 );
                 $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
             }else if($controle->usuario->foto_cnh_apv==0){
                 $mensagens = array(
                     "tipo" => 'sucesso',
-                    "mgs_principal" => 'Erro',
-                    "mgs_secundaria" => 'Aguarde a aprovação de sua CNH'
+                    "mgs_principal" => __('Erro'),
+                    "mgs_secundaria" => __('Aguarde a aprovação de sua CNH')
                 );
                 $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
             }else if($controle->usuario->foto_res_apv==0){
                 $mensagens = array(
                     "tipo" => 'sucesso',
-                    "mgs_principal" => 'Erro',
-                    "mgs_secundaria" => 'Aguarde a aprovação de sua residência'
+                    "mgs_principal" => __('Erro'),
+                    "mgs_secundaria" => __('Aguarde a aprovação de sua residência')
                 );
                 $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
             }else if($controle->usuario->foto_cnh_apv==1){
                 $mensagens = array(
                     "tipo" => 'sucesso',
-                    "mgs_principal" => 'CNH Negada',
-                    "mgs_secundaria" => 'Suba uma CNH válida'
+                    "mgs_principal" => __('CNH Negada'),
+                    "mgs_secundaria" => __('Suba uma CNH válida')
                 );
                 $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
             }else if($controle->usuario->foto_res_apv==1){
                 $mensagens = array(
                     "tipo" => 'sucesso',
-                    "mgs_principal" => 'Residência Negada',
-                    "mgs_secundaria" => 'Suba uma residência válida'
+                    "mgs_principal" => __('Residência Negada'),
+                    "mgs_secundaria" => __('Suba uma residência válida')
                 );
                 $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
             }else{
@@ -328,8 +328,8 @@ class predial_SalaoControle extends predial_Controle
         }else{
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Erro',
-                "mgs_secundaria" => 'É necessário se logar para continuar'
+                "mgs_principal" => __('Erro'),
+                "mgs_secundaria" => __('É necessário se logar para continuar')
             );
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
         }
@@ -381,8 +381,8 @@ class predial_SalaoControle extends predial_Controle
         if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Inserção bem sucedida',
-                "mgs_secundaria" => 'Agendado com sucesso.'
+                "mgs_principal" => __('Inserção bem sucedida'),
+                "mgs_secundaria" => __('Agendado com sucesso.')
             );
         }else{
             $mensagens = array(

@@ -227,7 +227,7 @@ Class Sistema_Funcoes {
      * @param type $modulo
      * @return boolean
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.0.1
+     * @version 3.1.1
      */
     public static function Perm_Modulos($modulo,$submodulo=false){
         if($submodulo=='' || !isset($submodulo)) $submodulo = false;
@@ -273,7 +273,7 @@ Class Sistema_Funcoes {
      * @param type $cnpj
      * @return boolean
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.0.1
+     * @version 3.1.1
      */
     public static function Control_Layoult_Valida_Cep($cnpj){
         //Etapa 1: Cria um array com apenas os digitos numéricos, isso permite receber o cnpj em diferentes formatos como "00.000.000/0000-00", "00000000000000", "00 000 000 0000 00" etc...

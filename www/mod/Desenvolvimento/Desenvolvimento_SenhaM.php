@@ -69,10 +69,10 @@ class Desenvolvimento_SenhaModelo extends Desenvolvimento_Modelo
                     'formatter' => function( $d, $row ) {
 
                     if($d=='0'){
-                        $nometipo = 'Não Destaque';
+                        $nometipo = __('Não Destaque');
                     }
                     else{
-                        $nometipo = 'Destaque';
+                        $nometipo = __('Destaque');
                     }
                     return $nometipo;
                 },
@@ -91,10 +91,10 @@ class Desenvolvimento_SenhaModelo extends Desenvolvimento_Modelo
             $columns[] = array( 'db' => 'status'      ,  'dt' => $numero ,
                 'formatter' => function( $d, $row ) {
                     if($d=='0'){
-                        $nometipo = 'Ultrapassada';
+                        $nometipo = __('Ultrapassada');
                     }
                     else{
-                        $nometipo = 'Em Uso';
+                        $nometipo = __('Em Uso');
                     }
                     return $nometipo;
                 },
@@ -173,10 +173,10 @@ class Desenvolvimento_SenhaModelo extends Desenvolvimento_Modelo
                     'formatter' => function( $d, $row ) {
 
                     if($d=='0'){
-                        $nometipo = 'Não Destaque';
+                        $nometipo = __('Não Destaque');
                     }
                     else{
-                        $nometipo = 'Destaque';
+                        $nometipo = __('Destaque');
                     }
                     return $nometipo;
                 },
@@ -195,10 +195,10 @@ class Desenvolvimento_SenhaModelo extends Desenvolvimento_Modelo
             $columns[] = array( 'db' => 'status'      ,  'dt' => $numero ,
                 'formatter' => function( $d, $row ) {
                     if($d=='0'){
-                        $nometipo = 'Ultrapassada';
+                        $nometipo = __('Ultrapassada');
                     }
                     else{
-                        $nometipo = 'Em Uso';
+                        $nometipo = __('Em Uso');
                     }
                     return $nometipo;
                 },
@@ -275,10 +275,10 @@ class Desenvolvimento_SenhaModelo extends Desenvolvimento_Modelo
                     'formatter' => function( $d, $row ) {
 
                     if($d=='0'){
-                        $nometipo = 'Não Destaque';
+                        $nometipo = __('Não Destaque');
                     }
                     else{
-                        $nometipo = 'Destaque';
+                        $nometipo = __('Destaque');
                     }
                     return $nometipo;
                 },
@@ -297,10 +297,10 @@ class Desenvolvimento_SenhaModelo extends Desenvolvimento_Modelo
             $columns[] = array( 'db' => 'status'      ,  'dt' => $numero ,
                 'formatter' => function( $d, $row ) {
                     if($d=='0'){
-                        $nometipo = 'Ultrapassada';
+                        $nometipo = __('Ultrapassada');
                     }
                     else{
-                        $nometipo = 'Em Uso';
+                        $nometipo = __('Em Uso');
                     }
                     return $nometipo;
                 },
@@ -378,10 +378,10 @@ class Desenvolvimento_SenhaModelo extends Desenvolvimento_Modelo
                     'formatter' => function( $d, $row ) {
 
                     if($d=='0'){
-                        $nometipo = 'Não Destaque';
+                        $nometipo = __('Não Destaque');
                     }
                     else{
-                        $nometipo = 'Destaque';
+                        $nometipo = __('Destaque');
                     }
                     return $nometipo;
                 },
@@ -400,10 +400,10 @@ class Desenvolvimento_SenhaModelo extends Desenvolvimento_Modelo
             $columns[] = array( 'db' => 'status'      ,  'dt' => $numero ,
                 'formatter' => function( $d, $row ) {
                     if($d=='0'){
-                        $nometipo = 'Ultrapassada';
+                        $nometipo = __('Ultrapassada');
                     }
                     else{
-                        $nometipo = 'Em Uso';
+                        $nometipo = __('Em Uso');
                     }
                     return $nometipo;
                 },

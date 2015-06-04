@@ -80,9 +80,9 @@ class PHPMailerTest extends PHPUnit_Framework_TestCase
         } else {
             $this->Mail->From = 'unit_test@phpmailer.example.com';
         }
-        $this->Mail->FromName = 'Unit Tester';
+        $this->Mail->FromName = __('Unit Tester');
         $this->Mail->Sender = '';
-        $this->Mail->Subject = 'Unit Test';
+        $this->Mail->Subject = __('Unit Test');
         $this->Mail->Body = '';
         $this->Mail->AltBody = '';
         $this->Mail->WordWrap = 0;
@@ -304,7 +304,7 @@ class PHPMailerTest extends PHPUnit_Framework_TestCase
         $this->Mail->AuthType = 'CRAM-MD5';
         $this->Mail->Username = 'username';
         $this->Mail->Password = 'password';
-        $this->Mail->Body = 'Test body';
+        $this->Mail->Body = __('Test body');
         $this->Mail->Subject .= ': Auth CRAM-MD5';
         $this->Mail->From = 'from@example.com';
         $this->Mail->Sender = 'from@example.com';
@@ -672,7 +672,7 @@ class PHPMailerTest extends PHPUnit_Framework_TestCase
      */
     public function testMultiplePlainFileAttachment()
     {
-        $this->Mail->Body = 'Here is the text body';
+        $this->Mail->Body = __('Here is the text body');
         $this->Mail->Subject .= ': Plain + Multiple FileAttachments';
 
         if (!$this->Mail->addAttachment('../examples/images/phpmailer.png')) {
@@ -694,7 +694,7 @@ class PHPMailerTest extends PHPUnit_Framework_TestCase
      */
     public function testPlainStringAttachment()
     {
-        $this->Mail->Body = 'Here is the text body';
+        $this->Mail->Body = __('Here is the text body');
         $this->Mail->Subject .= ': Plain + StringAttachment';
 
         $sAttachment = 'These characters are the content of the ' .
@@ -712,7 +712,7 @@ class PHPMailerTest extends PHPUnit_Framework_TestCase
      */
     public function testQuotedPrintable()
     {
-        $this->Mail->Body = 'Here is the main body';
+        $this->Mail->Body = __('Here is the main body');
         $this->Mail->Subject .= ': Plain + Quoted-printable';
         $this->Mail->Encoding = 'quoted-printable';
 
@@ -888,7 +888,7 @@ EOT;
     public function testAltBodyAttachment()
     {
         $this->Mail->Body = 'This is the <strong>HTML</strong> part of the email.';
-        $this->Mail->AltBody = 'This is the text part of the email.';
+        $this->Mail->AltBody = __('This is the text part of the email.');
         $this->Mail->Subject .= ': AltBody + Attachment';
         $this->Mail->isHTML(true);
 
@@ -912,7 +912,7 @@ EOT;
     public function testIcal()
     {
         $this->Mail->Body = 'This is the <strong>HTML</strong> part of the email.';
-        $this->Mail->AltBody = 'This is the text part of the email.';
+        $this->Mail->AltBody = __('This is the text part of the email.');
         $this->Mail->Subject .= ': iCal';
         $this->Mail->isHTML(true);
         $this->buildBody();
@@ -929,7 +929,7 @@ EOT;
         $this->assertTrue($this->Mail->send(), $this->Mail->ErrorInfo);
         $this->Mail->Body = 'Embedded Image: <img alt="phpmailer" src="cid:my-attach">' .
             'Here is an image!</a>.';
-        $this->Mail->AltBody = 'This is the text part of the email.';
+        $this->Mail->AltBody = __('This is the text part of the email.');
         $this->Mail->Subject .= ': iCal + inline';
         $this->Mail->isHTML(true);
         $this->Mail->addEmbeddedImage(
@@ -948,7 +948,7 @@ EOT;
      */
     public function testMultipleSend()
     {
-        $this->Mail->Body = 'Sending two messages without keepalive';
+        $this->Mail->Body = __('Sending two messages without keepalive');
         $this->buildBody();
         $subject = $this->Mail->Subject;
 
@@ -965,7 +965,7 @@ EOT;
      */
     public function testSendmailSend()
     {
-        $this->Mail->Body = 'Sending via sendmail';
+        $this->Mail->Body = __('Sending via sendmail');
         $this->buildBody();
         $subject = $this->Mail->Subject;
 
@@ -981,7 +981,7 @@ EOT;
     {
         //Only run if we have qmail installed
         if (file_exists('/var/qmail/bin/qmail-inject')) {
-            $this->Mail->Body = 'Sending via qmail';
+            $this->Mail->Body = __('Sending via qmail');
             $this->BuildBody();
             $subject = $this->Mail->Subject;
 
@@ -1073,7 +1073,7 @@ EOT;
      */
     public function testDenialOfServiceAttack()
     {
-        $this->Mail->Body = 'This should no longer cause a denial of service.';
+        $this->Mail->Body = __('This should no longer cause a denial of service.');
         $this->buildBody();
 
         $this->Mail->Subject = substr(str_repeat('0123456789', 100), 0, 998);
@@ -1148,7 +1148,7 @@ EOT;
         $this->Mail->Subject .= ': Address escaping';
         $this->Mail->clearAddresses();
         $this->Mail->addAddress('foo@example.com', 'Tim "The Book" O\'Reilly');
-        $this->Mail->Body = 'Test correct escaping of quotes in addresses.';
+        $this->Mail->Body = __('Test correct escaping of quotes in addresses.');
         $this->buildBody();
         $this->Mail->preSend();
         $b = $this->Mail->getSentMIMEMessage();
@@ -1260,7 +1260,7 @@ EOT;
     public function testDKIM()
     {
         $this->Mail->Subject .= ': DKIM signing';
-        $this->Mail->Body = 'This message is DKIM signed.';
+        $this->Mail->Body = __('This message is DKIM signed.');
         $this->buildBody();
         //$this->Mail->SMTPDebug = 2;
         $privatekeyfile = 'dkim_private.key';
@@ -1345,7 +1345,7 @@ EOT;
      */
     public function testMessageID()
     {
-        $this->Mail->Body = 'Test message ID.';
+        $this->Mail->Body = __('Test message ID.');
         $id = md5(12345);
         $this->Mail->MessageID = $id;
         $this->buildBody();

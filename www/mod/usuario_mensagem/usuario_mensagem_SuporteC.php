@@ -68,7 +68,7 @@ class usuario_mensagem_SuporteControle extends usuario_mensagem_Controle
         return false;
     }
     public function Mensagens(){
-        $nome = 'Tickets';
+        $nome = __('Tickets');
         self::Endereco_Suporte(false);
         $id = (int) $this->_Acl->Usuario_GetID();
         if($id>0){
@@ -95,7 +95,7 @@ class usuario_mensagem_SuporteControle extends usuario_mensagem_Controle
      * 
      * @param type $grupo  (-1 = Admin)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.0.1
+     * @version 3.1.1
      */
     public function MensagensSetores($grupo = 0){
         $i = 0;
@@ -132,13 +132,13 @@ class usuario_mensagem_SuporteControle extends usuario_mensagem_Controle
         $this->Tema_Endereco('Visualizar Chamados de Cliente');
         self::MensagensdeCliente($cliente,$retorno);
         // ORGANIZA E MANDA CONTEUDO
-        $this->_Visual->Json_Info_Update('Titulo','Visualizar Chamados de Cliente'); 
+        $this->_Visual->Json_Info_Update('Titulo', __('Visualizar Chamados de Cliente')); 
     }
     /**
      * 
      * @param type $cliente
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.0.1
+     * @version 3.1.1
      */
     public static function MensagensdeCliente($cliente = 0,$retorno='Unico'){
         $registro = &\Framework\App\Registro::getInstacia();
@@ -174,7 +174,7 @@ class usuario_mensagem_SuporteControle extends usuario_mensagem_Controle
             $this->Resposta_formulario($mensagem);
             $this->Anexar($mensagem);
             // ORGANIZA E MANDA CONTEUDO
-            $this->_Visual->Json_Info_Update('Titulo','Visualizar Ticket'); 
+            $this->_Visual->Json_Info_Update('Titulo', __('Visualizar Ticket')); 
         }else{
             throw new \Exception('Id não Encontrado de Usuário: '.$id, 5050);
         }
@@ -191,7 +191,7 @@ class usuario_mensagem_SuporteControle extends usuario_mensagem_Controle
                 'Arquivos de Imagem'
             )
         );
-        $this->_Visual->Bloco_Unico_CriaJanela( 'Fazer Upload de Anexo'  ,'',8);
+        $this->_Visual->Bloco_Unico_CriaJanela(__('Fazer Upload de Anexo')  ,'',8);
         
         // Processa Anexo
         list($titulo,$html,$i) = $this->Anexos_Processar($mensagem);
@@ -199,7 +199,7 @@ class usuario_mensagem_SuporteControle extends usuario_mensagem_Controle
         $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',9);
         
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Listagem de Anexos');
+        $this->_Visual->Json_Info_Update('Titulo', __('Listagem de Anexos'));
     }
     public function VisualizadordeMensagem_Upload($mensagem = 0){
         $fileTypes = array(
@@ -219,7 +219,7 @@ class usuario_mensagem_SuporteControle extends usuario_mensagem_Controle
             $arquivo->endereco      = $ext[1];
             $arquivo->nome          = $ext[2];
             $this->_Modelo->db->Sql_Inserir($arquivo);
-            $this->_Visual->Json_Info_Update('Titulo', 'Upload com Sucesso');
+            $this->_Visual->Json_Info_Update('Titulo', __('Upload com Sucesso'));
             $this->_Visual->Json_Info_Update('Historico', false);
             // Tras de Volta e Atualiza via Json
             list($titulo,$html,$i) = $this->Anexos_Processar($mensagem);
@@ -236,7 +236,7 @@ class usuario_mensagem_SuporteControle extends usuario_mensagem_Controle
             );
             $this->_Visual->Json_IncluiTipo('Conteudo',$conteudo);
         }else{
-            $this->_Visual->Json_Info_Update('Titulo', 'Erro com Upload');
+            $this->_Visual->Json_Info_Update('Titulo', __('Erro com Upload'));
             $this->_Visual->Json_Info_Update('Historico', false);
         }
     }

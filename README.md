@@ -23,7 +23,7 @@ hospedado, os arquivos de configuração devem ficar dentro dela.
     define('SISTEMA_DEBUG',         true);
     define('SRV_NAME_SQL',          'NOME_DO_PROJETO'); // PODE SER USADO O MESMO BANCO DE DADOS PARA VARIOS SISTEMAS, 
                                                         // ESSE NOME É USADO PARA NÂO HAVER CONFLITO ENTRE OS SISTEMAS
-    define('SISTEMA_LINGUAGEM',          'ptBR');
+    define('SISTEMA_LINGUAGEM_PADRAO',          'pt_BR');
 
     // CONFIGURACOES PHP
     define('SOBRE_DIREITOS',        'sierratecnologia');
@@ -80,7 +80,7 @@ Estrutura
 * Interface/ `Interface das Classes Principais do Framework`
 * Temp/ `usado para criação de imagens`
 * arq/ `Destinado aos arquivos de upload e do sistema`
-* lang/
+* i18n/ `Arquivos de Internacionalização`
 * layoult/ `Temas do Framework`
 * layoult/nome_do_layoult/ `Temas (xN)`
 * layoult/nome_do_layoult/ config/

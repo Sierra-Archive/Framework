@@ -37,12 +37,12 @@ class usuario_AcessoControle extends usuario_Controle
     public function Main(){
         $this->Usuarios();
         // ORGANIZA E MANDA CONTEUDO
-        $this->_Visual->Json_Info_Update('Titulo','Permissões de Usuários');         
+        $this->_Visual->Json_Info_Update('Titulo', __('Permissões de Usuários'));         
     }
     public function Listar_Clientesnao(){
         $this->Usuarios(Array(CFG_TEC_CAT_ID_CLIENTES,'Usuários'),false,100,true);
         // ORGANIZA E MANDA CONTEUDO
-        $this->_Visual->Json_Info_Update('Titulo','Permissões de Usuários');         
+        $this->_Visual->Json_Info_Update('Titulo', __('Permissões de Usuários'));         
     }
     
     public function Usuarios($grupo=false,$ativado=false,$gravidade=0,$inverter=false){
@@ -65,9 +65,9 @@ class usuario_AcessoControle extends usuario_Controle
                     'ativado'=>$ativado
                 );
             }
-            $nomedisplay        = 'Usuários ';
-            $nomedisplay_sing   = 'Usuário ';
-            $nomedisplay_tipo   = 'Usuario';
+            $nomedisplay        = __('Usuários ');
+            $nomedisplay_sing   = __('Usuário ');
+            $nomedisplay_tipo   = __('Usuario');
             // Link
             $this->Tema_Endereco('Permissôes de Usuários');
         }else{
@@ -153,7 +153,7 @@ class usuario_AcessoControle extends usuario_Controle
                         }
                     }
                 }else{
-                    $permissoes = 'Sem Nenhuma Permissão';
+                    $permissoes = __('Sem Nenhuma Permissão');
                 }
                 $tabela['Acesso'][$i]    = $permissoes;
                 // Funcoes
@@ -169,7 +169,7 @@ class usuario_AcessoControle extends usuario_Controle
         $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',60);
         
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Permissões de Usuarios');
+        $this->_Visual->Json_Info_Update('Titulo', __('Permissões de Usuarios'));
     }
     /**
      * 
@@ -180,9 +180,9 @@ class usuario_AcessoControle extends usuario_Controle
     public function UsuariosAcesso_Edit($id,$tipo='usuario'){
         // Carrega Config
         $titulo1    = 'Editar Usuario (#'.$id.')';
-        $titulo2    = 'Alteração de Usuario';
+        $titulo2    = __('Alteração de Usuario');
         $formid     = 'formusuario_AcessoC_UsuarioEdit';
-        $formbt     = 'Salvar Acesso';
+        $formbt     = __('Salvar Acesso');
         $formlink   = 'usuario/Acesso/UsuariosAcesso_Edit2/'.$id.'/'.$tipo;
         $editar     = Array('Usuario',$id);
         $campos = Usuario_DAO::Get_Colunas();
@@ -202,14 +202,14 @@ class usuario_AcessoControle extends usuario_Controle
         }else{
             $nome   = '';
         }
-        $titulo     = 'Usuario Editado com Sucesso';
+        $titulo     = __('Usuario Editado com Sucesso');
         $dao        = Array('Usuario',$id);
         if($tipo=='naocliente'){
             $funcao     = '$this->Listar_Clientesnao();';
         }else /*if($tipo=='usuario')*/{
             $funcao     = '$this->Usuarios();';
         }
-        $sucesso1   = 'Acesso Alterado com Sucesso.';
+        $sucesso1   = __('Acesso Alterado com Sucesso.');
         $sucesso2   = $nome.' teve a alteração bem sucedida';
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);   

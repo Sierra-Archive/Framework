@@ -30,8 +30,8 @@ if(!defined('SISTEMA_EXPORTAR_EXCEL')){
 
 
 // Linguagem Do Sistema
-if(!defined('SISTEMA_LINGUAGEM')){
-    define('SISTEMA_LINGUAGEM',        'ptBR'); 
+if(!defined('SISTEMA_LINGUAGEM_PADRAO')){
+    define('SISTEMA_LINGUAGEM_PADRAO',        'pt_BR'); 
 }
 // Modulo, Submodulo, e Metodo da Pagina Inicial
 if(!defined('DEFAULT_MODULO')){

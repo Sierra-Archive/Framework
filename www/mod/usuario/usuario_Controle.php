@@ -264,9 +264,9 @@ class usuario_Controle extends \Framework\App\Controle
             if($ativado===false){
                 $where = '';
             }
-            $nomedisplay        = 'Usuários ';
-            $nomedisplay_sing   = 'Usuário ';
-            $nomedisplay_tipo   = 'Usuario';
+            $nomedisplay        = __('Usuários ');
+            $nomedisplay_sing   = __('Usuário ');
+            $nomedisplay_tipo   = __('Usuario');
             // Link
             $this->Tema_Endereco('Usuários');
         }else{
@@ -443,19 +443,19 @@ class usuario_Controle extends \Framework\App\Controle
         // Pega Tipo
         if($tipo===false){
             if($usuario->grupo==CFG_TEC_CAT_ID_CLIENTES){
-                $tipo   = 'Cliente';
+                $tipo   = __('Cliente');
                 $tipo2  = 'cliente';
             }else if($usuario->grupo==CFG_TEC_CAT_ID_FUNCIONARIOS){
-                $tipo   = 'Funcionário';
+                $tipo   = __('Funcionário');
                 $tipo2  = 'funcionario';
             }else{
-                $tipo   = 'Usuário';
+                $tipo   = __('Usuário');
                 $tipo2  = 'usuario';
             }
         }
         // GAmbiarra Para Consertar erro de acento em url
         if($tipo=='Funcionrio' || $tipo=="Funcionario") $tipo = "Funcionário";
-        if($tipo=="Usurio" || $tipo=="Usuario")         $tipo = 'Usuário';
+        if($tipo=="Usurio" || $tipo=="Usuario")         $tipo = __('Usuário');
         // Cria Tipo 2:
         if($tipo=='Cliente' || $tipo=='cliente'){
             $tipo2  = 'cliente';
@@ -463,9 +463,9 @@ class usuario_Controle extends \Framework\App\Controle
             $tipo2  = 'funcionario';
         }
         if($tipo2=='usuario'){
-            $nomedisplay        = 'Usuários ';
-            $nomedisplay_sing   = 'Usuário ';
-            $nomedisplay_tipo   = 'Usuario';
+            $nomedisplay        = __('Usuários ');
+            $nomedisplay_sing   = __('Usuário ');
+            $nomedisplay_tipo   = __('Usuario');
         }else if($tipo2=='funcionario'){
             $nome = \Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Funcionario_nome');
             $nomedisplay        = $nome.' ';
@@ -535,7 +535,7 @@ class usuario_Controle extends \Framework\App\Controle
         }
         if($tipo===false){
             if($usuario->grupo==CFG_TEC_IDCLIENTE){
-                $tipo   = 'Cliente';
+                $tipo   = __('Cliente');
                 $tipo2  = 'cliente';
             }else if($usuario->grupo==CFG_TEC_IDFUNCIONARIO){
                 $tipo   = 'Funcionário';
@@ -544,7 +544,7 @@ class usuario_Controle extends \Framework\App\Controle
         }
         // GAmbiarra Para Consertar erro de acento em url
         if($tipo=='Funcionrio' || $tipo=="Funcionario") $tipo = "Funcionário";
-        if($tipo=="Usurio" || $tipo=="Usuario")         $tipo = 'Usuário';
+        if($tipo=="Usurio" || $tipo=="Usuario")         $tipo = __('Usuário');
         // Cria Tipo 2:
         if($tipo=='Cliente' || $tipo=='cliente'){
             $tipo2  = 'cliente';
@@ -638,16 +638,16 @@ class usuario_Controle extends \Framework\App\Controle
         if($tema!='Setor'){
             $formulario = $form->retorna_form('Enviar Email para Usuário');
             $this->_Visual->Blocar($formulario);
-            $this->_Visual->Bloco_Unico_CriaJanela('Enviar Email para Usuário','',10);
+            $this->_Visual->Bloco_Unico_CriaJanela(__('Enviar Email para Usuário'),'',10);
         }else{
             $formulario = $form->retorna_form('Enviar Email para o Setor');
             $this->_Visual->Blocar($formulario);
-            $this->_Visual->Bloco_Unico_CriaJanela('Enviar Email para o Setor','',10);
+            $this->_Visual->Bloco_Unico_CriaJanela(__('Enviar Email para o Setor'),'',10);
         }
         // Usuario ver emails
         usuario_Controle::Usuarios_Email_Ver($id, $tipo2,$tema);
         // Titulo
-        $this->_Visual->Json_Info_Update('Titulo','Enviar Email para Usuário');
+        $this->_Visual->Json_Info_Update('Titulo', __('Enviar Email para Usuário'));
     }
     public function Usuarios_Email2($id = 0,$tipo=false, $tema='Cliente'){
         if($id==0 || !isset($id)){
@@ -678,8 +678,8 @@ class usuario_Controle extends \Framework\App\Controle
         if($enviar==''){
             $mensagens = array(
                 "tipo" => 'erro',
-                "mgs_principal" => 'Erro',
-                "mgs_secundaria" => 'Nenhum Email válido para enviar !'
+                "mgs_principal" => __('Erro'),
+                "mgs_secundaria" => __('Nenhum Email válido para enviar !')
             );
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens); 
             $this->_Visual->Json_Info_Update('Historico', false);
@@ -706,15 +706,15 @@ class usuario_Controle extends \Framework\App\Controle
                 $this->_Modelo->db->Sql_Inserir($registro);
                 $mensagens = array(
                     "tipo" => 'sucesso',
-                    "mgs_principal" => 'Email enviado com Sucesso',
-                    "mgs_secundaria" => 'Voce enviou com sucesso.'
+                    "mgs_principal" => __('Email enviado com Sucesso'),
+                    "mgs_secundaria" => __('Voce enviou com sucesso.')
                 );
                 $this->_Visual->Json_Info_Update('Titulo','Enviado com Sucesso.');
             }else{
                 $mensagens = array(
                     "tipo" => 'erro',
-                    "mgs_principal" => 'Erro',
-                    "mgs_secundaria" => 'Email não foi enviado !'
+                    "mgs_principal" => __('Erro'),
+                    "mgs_secundaria" => __('Email não foi enviado !')
                 );
             }
             // Recarrega Main
@@ -761,9 +761,9 @@ class usuario_Controle extends \Framework\App\Controle
             if($ativado===false){
                 $where = '';
             }
-            $nomedisplay        = 'Usuários ';
-            $nomedisplay_sing   = 'Usuário ';
-            $nomedisplay_tipo   = 'Usuario';
+            $nomedisplay        = __('Usuários ');
+            $nomedisplay_sing   = __('Usuário ');
+            $nomedisplay_tipo   = __('Usuario');
             // Link
             $Controle->Tema_Endereco('Usuários');
         }else{
@@ -1111,9 +1111,9 @@ class usuario_Controle extends \Framework\App\Controle
             if($ativado===false){
                 $where = '';
             }
-            $nomedisplay        = 'Usuários ';
-            $nomedisplay_sing   = 'Usuário ';
-            $nomedisplay_tipo   = 'Usuario';
+            $nomedisplay        = __('Usuários ');
+            $nomedisplay_sing   = __('Usuário ');
+            $nomedisplay_tipo   = __('Usuario');
             // Link
             $this->Tema_Endereco('Usuários');
         }else{
@@ -1196,27 +1196,27 @@ class usuario_Controle extends \Framework\App\Controle
         }         
         
         $tabela_colunas = Array();
-        $tabela_colunas[] = 'Id';
+        $tabela_colunas[] = __('Id');
         if($Ativado_Grupo===true){
-            $tabela_colunas[] = 'Grupo';
+            $tabela_colunas[] = __('Grupo');
         }
         if($Ativado_Foto===true){
-            $tabela_colunas[] = 'Foto';
+            $tabela_colunas[] = __('Foto');
         }
         // Mostra Nome
-        $tabela_colunas[] = 'Nome';
+        $tabela_colunas[] = __('Nome');
 
-        $tabela_colunas[] = 'Contato';
+        $tabela_colunas[] = __('Contato');
 
-        $tabela_colunas[] = 'Email';
+        $tabela_colunas[] = __('Email');
 
         // para MOdulos que contem banco
         if(\Framework\App\Sistema_Funcoes::Perm_Modulos('Financeiro') && $Financeiro_User_Saldo){
-            $tabela_colunas[] = 'Saldo';
+            $tabela_colunas[] = __('Saldo');
         }
 
-        $tabela_colunas[] = 'Data de Cadastro';
-        $tabela_colunas[] = 'Funções';
+        $tabela_colunas[] = __('Data de Cadastro');
+        $tabela_colunas[] = __('Funções');
 
         $this->_Visual->Show_Tabela_DataTable_Massiva($tabela_colunas,$link);
         

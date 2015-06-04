@@ -62,7 +62,7 @@ class usuario_veiculo_AdminControle extends usuario_veiculo_Controle
         // carrega form de cadastro de veiculos
         $this->veiculos_carregajanelaadd();
         // ORGANIZA E MANDA CONTEUDO
-        $this->_Visual->Json_Info_Update('Titulo','Veiculos');         
+        $this->_Visual->Json_Info_Update('Titulo', __('Veiculos'));         
     }
     /**
     * Printa todos os Veiculos na tela
@@ -138,8 +138,8 @@ class usuario_veiculo_AdminControle extends usuario_veiculo_Controle
     	if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Deletado',
-                "mgs_secundaria" => 'Deletado com sucesso.'
+                "mgs_principal" => __('Deletado'),
+                "mgs_secundaria" => __('Deletado com sucesso.')
             );
     	}else{
             $mensagens = array(
@@ -182,7 +182,7 @@ class usuario_veiculo_AdminControle extends usuario_veiculo_Controle
         usuario_veiculo_AdminControle::veiculos_form($this, $this->_Visual, $form, $marcas);
         $formulario = $form->retorna_form('Cadastrar');
         $this->_Visual->Blocar($formulario);
-        $this->_Visual->Bloco_Menor_CriaJanela('Cadastro de Veiculo');
+        $this->_Visual->Bloco_Menor_CriaJanela(__('Cadastro de Veiculo'));
         
     }
     public function veiculos_carregajanelaEdit($id){
@@ -197,7 +197,7 @@ class usuario_veiculo_AdminControle extends usuario_veiculo_Controle
         usuario_veiculo_AdminControle::veiculos_form($this, $this->_Visual, $form, $marcas, $veiculo['categoria'], $veiculo['ano'], $veiculo['modelo'], $veiculo['marcaid'], $veiculo['cc'], $veiculo['valor1'], $veiculo['valor2'], $veiculo['valor3'], $veiculo['franquia'], $veiculo['obs']);
         $formulario = $form->retorna_form('Alterar');
         $this->_Visual->Blocar($formulario);
-        $this->_Visual->Bloco_Menor_CriaJanela('Alteração de Veiculo');
+        $this->_Visual->Bloco_Menor_CriaJanela(__('Alteração de Veiculo'));
         $this->_Visual->Json_Info_Update('Titulo','Editar Veiculo (#'.$id.')');
         
     }
@@ -291,7 +291,7 @@ class usuario_veiculo_AdminControle extends usuario_veiculo_Controle
         if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Inserção bem sucedida',
+                "mgs_principal" => __('Inserção bem sucedida'),
                 "mgs_secundaria" => ''.$modelo.''.$ano.''.$marca.' foi inserido com sucesso.'
             );
         }else{
@@ -333,7 +333,7 @@ class usuario_veiculo_AdminControle extends usuario_veiculo_Controle
         if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Alteração bem sucedida',
+                "mgs_principal" => __('Alteração bem sucedida'),
                 "mgs_secundaria" => ''.$modelo.''.$ano.''.$marca.' foi alterado com sucesso.'
             );
         }else{
@@ -373,7 +373,7 @@ class usuario_veiculo_AdminControle extends usuario_veiculo_Controle
         // cadastro de marcas
         $formulario = usuario_veiculo_AdminControle::marcas_formcadastro();
         $this->_Visual->Blocar($formulario);
-        $this->_Visual->Bloco_Menor_CriaJanela('Cadastro de Marcas');
+        $this->_Visual->Bloco_Menor_CriaJanela(__('Cadastro de Marcas'));
         
     }
     /**
@@ -428,7 +428,7 @@ class usuario_veiculo_AdminControle extends usuario_veiculo_Controle
         if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Inserção bem sucedida',
+                "mgs_principal" => __('Inserção bem sucedida'),
                 "mgs_secundaria" => ''.$nome.' foi inserido com sucesso.'
             );
         }else{

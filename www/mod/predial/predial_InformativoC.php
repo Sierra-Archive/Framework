@@ -22,7 +22,7 @@ class predial_InformativoControle extends predial_Controle
     static function Endereco_Informativo($true=true){
         $registro = \Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
-        $titulo = 'Informativos';
+        $titulo = __('Informativos');
         $link = 'predial/Informativo/Informativos';
         if($true===true){
             $_Controle->Tema_Endereco($titulo,$link);
@@ -85,7 +85,7 @@ class predial_InformativoControle extends predial_Controle
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Administrar Informativos');
+        $this->_Visual->Json_Info_Update('Titulo', __('Administrar Informativos'));
     }
     /**
      * 
@@ -98,10 +98,10 @@ class predial_InformativoControle extends predial_Controle
         $this->_Visual->Javascript_Executar('Sierra.Control_Layoult_CalendarioHorario_Intervalo(\'#data_inicio\',\'#data_fim\',\''.APP_HORA_BR.'\',\''.APP_HORA_BR.'\');');
 
         // Carrega Config
-        $titulo1    = 'Adicionar Informativo';
-        $titulo2    = 'Salvar Informativo';
+        $titulo1    = __('Adicionar Informativo');
+        $titulo2    = __('Salvar Informativo');
         $formid     = 'form_Sistema_Admin_Informativos';
-        $formbt     = 'Salvar';
+        $formbt     = __('Salvar');
         $formlink   = 'predial/Informativo/Informativos_Add2/';
         $campos = Predial_Bloco_Apart_Informativo_DAO::Get_Colunas();
         \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos);
@@ -114,11 +114,11 @@ class predial_InformativoControle extends predial_Controle
      * @version 2.0
      */
     public function Informativos_Add2(){
-        $titulo     = 'Informativo Adicionado com Sucesso';
+        $titulo     = __('Informativo Adicionado com Sucesso');
         $dao        = 'Predial_Bloco_Apart_Informativo';
         $funcao     = '$this->Informativos();';
-        $sucesso1   = 'Inserção bem sucedida';
-        $sucesso2   = 'Informativo cadastrado com sucesso.';
+        $sucesso1   = __('Inserção bem sucedida');
+        $sucesso2   = __('Informativo cadastrado com sucesso.');
         $alterar    = Array();
         $sucesso = $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
         if($sucesso===true){
@@ -157,8 +157,8 @@ class predial_InformativoControle extends predial_Controle
             if($enviar===false || $enviar==''){
                 $mensagens = array(
                     "tipo" => 'erro',
-                    "mgs_principal" => 'Informativo não Enviado',
-                    "mgs_secundaria" => 'Verifique se o Morador está registrado no sistema e com um email válido.'
+                    "mgs_principal" => __('Informativo não Enviado'),
+                    "mgs_secundaria" => __('Verifique se o Morador está registrado no sistema e com um email válido.')
                 );
                 $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
             }else{
@@ -181,8 +181,8 @@ class predial_InformativoControle extends predial_Controle
                 if(!$send){
                     $mensagens = array(
                         "tipo" => 'erro',
-                        "mgs_principal" => 'Informativo não Enviado',
-                        "mgs_secundaria" => 'Verifique se o Morador está registrado no sistema e com um email válido.'
+                        "mgs_principal" => __('Informativo não Enviado'),
+                        "mgs_secundaria" => __('Verifique se o Morador está registrado no sistema e com um email válido.')
                     );
                     $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
                 }
@@ -204,9 +204,9 @@ class predial_InformativoControle extends predial_Controle
 
         // Carrega Config
         $titulo1    = 'Editar Informativo (#'.$id.')';
-        $titulo2    = 'Alteração de Informativo';
+        $titulo2    = __('Alteração de Informativo');
         $formid     = 'form_Sistema_AdminC_InformativoEdit';
-        $formbt     = 'Alterar Informativo';
+        $formbt     = __('Alterar Informativo');
         $formlink   = 'predial/Informativo/Informativos_Edit2/'.$id;
         $editar     = Array('Predial_Bloco_Apart_Informativo',$id);
         $campos = Predial_Bloco_Apart_Informativo_DAO::Get_Colunas();
@@ -220,10 +220,10 @@ class predial_InformativoControle extends predial_Controle
      * @version 2.0
      */
     public function Informativos_Edit2($id){
-        $titulo     = 'Informativo Editado com Sucesso';
+        $titulo     = __('Informativo Editado com Sucesso');
         $dao        = Array('Predial_Bloco_Apart_Informativo',$id);
         $funcao     = '$this->Informativos();';
-        $sucesso1   = 'Informativo Alterado com Sucesso.';
+        $sucesso1   = __('Informativo Alterado com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);   
@@ -246,8 +246,8 @@ class predial_InformativoControle extends predial_Controle
     	if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Deletado',
-                "mgs_secundaria" => 'Informativo deletado com sucesso'
+                "mgs_principal" => __('Deletado'),
+                "mgs_secundaria" => __('Informativo deletado com sucesso')
             );
     	}else{
             $mensagens = array(
@@ -260,7 +260,7 @@ class predial_InformativoControle extends predial_Controle
         
         $this->Informativos();
         
-        $this->_Visual->Json_Info_Update('Titulo', 'Informativo deletado com Sucesso');  
+        $this->_Visual->Json_Info_Update('Titulo', __('Informativo deletado com Sucesso'));  
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
 }

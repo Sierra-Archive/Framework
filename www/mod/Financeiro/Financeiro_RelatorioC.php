@@ -24,7 +24,7 @@ class Financeiro_RelatorioControle extends Financeiro_Controle
     static function Endereco_Financeiro($true=true){
         $registro = \Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
-        $titulo = 'Relatório Financeiro';
+        $titulo = __('Relatório Financeiro');
         $link = 'Financeiro/Relatorio/Relatorio';
         if($true===true){
             $_Controle->Tema_Endereco($titulo,$link);
@@ -35,7 +35,7 @@ class Financeiro_RelatorioControle extends Financeiro_Controle
     static function Endereco_Grafico_Financeiro($true=true){
         $registro = \Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
-        $titulo = 'Relatório Gráfico Financeiro';
+        $titulo = __('Relatório Gráfico Financeiro');
         $link = 'Financeiro/Relatorio/Grafico_Relatorio';
         if($true===true){
             $_Controle->Tema_Endereco($titulo,$link);
@@ -67,7 +67,7 @@ class Financeiro_RelatorioControle extends Financeiro_Controle
         
         if($categoria=='0') $categoria = false;
         if($tipo_relatorio!='Pagar' && $tipo_relatorio!='Pago' && $tipo_relatorio!='Receber' && $tipo_relatorio!='Recebido'){
-            $tipo_relatorio='Recebido';
+            $tipo_relatorio=__('Recebido');
         }
         
         // Começa e Cria Formulario
@@ -103,12 +103,12 @@ class Financeiro_RelatorioControle extends Financeiro_Controle
         $form->Select_Fim();*/
         // Bloca Conteudo e Cria Janela de COnfiguração
         $this->_Visual->Blocar($form->retorna_form('Atualizar')); // Relatório
-        $this->_Visual->Bloco_Menor_CriaJanela('Configuração do Relatório','', 0, false);
+        $this->_Visual->Bloco_Menor_CriaJanela(__('Configuração do Relatório'),'', 0, false);
         
         // Cria Segunda Janela com Parametros pré selecionados
         $tipo_visual = false;
         $html = $this->$tipo_relatorio($data_inicial, $data_final,$categoria, $tipo_visual);
-        $titulo = 'Relatório de Contas à Pagar';
+        $titulo = __('Relatório de Contas à Pagar');
         $this->_Visual->Blocar('<span id="relatorio_tabela">'.$html.'</span>');
         $this->_Visual->Bloco_Maior_CriaJanela('<span id="relatorio_titulo">'.$titulo.'</span>','', 0, false);
         
@@ -137,21 +137,21 @@ class Financeiro_RelatorioControle extends Financeiro_Controle
         if(isset($_POST['tipo_relatorio'])){
             $tipo_relatorio = \anti_injection($_POST['tipo_relatorio']);
             if($tipo_relatorio==='recebido'){
-                $titulo = 'Relatório de Contas Recebidas';
+                $titulo = __('Relatório de Contas Recebidas');
                 $tipo_relatorio = 'Recebido';
             }else if($tipo_relatorio==='receber'){
-                $titulo = 'Relatório de Contas à Receber';
+                $titulo = __('Relatório de Contas à Receber');
                 $tipo_relatorio = 'Receber';
             }else if($tipo_relatorio==='pago'){
-                $titulo = 'Relatório de Contas Pagas';
+                $titulo = __('Relatório de Contas Pagas');
                 $tipo_relatorio = 'Pago';
             }else{
-                $titulo = 'Relatório de Contas à Pagar';
+                $titulo = __('Relatório de Contas à Pagar');
                 $tipo_relatorio = 'Pagar';
             }
         }else{
             $tipo_relatorio = 'Pagar';
-            $titulo = 'Relatório de Contas à Pagar';
+            $titulo = __('Relatório de Contas à Pagar');
         }
         if(isset($_POST['tipo_visual'])){
             $tipo_visual = \anti_injection($_POST['tipo_visual']);
@@ -502,7 +502,7 @@ class Financeiro_RelatorioControle extends Financeiro_Controle
         
         // Bloca Conteudo e Cria Janela de COnfiguração
         $this->_Visual->Blocar($form->retorna_form('Atualizar')); // Relatório
-        $this->_Visual->Bloco_Menor_CriaJanela('Configuração do Relatório','', 0, false);
+        $this->_Visual->Bloco_Menor_CriaJanela(__('Configuração do Relatório'),'', 0, false);
         
         // Cria Segunda Janela com Parametros pré selecionados
         $tipo_visual = false;
@@ -510,7 +510,7 @@ class Financeiro_RelatorioControle extends Financeiro_Controle
         // Chama Funcao
         $tipo_relatorio_Grafico = 'Grafico_'.$tipo_relatorio_Grafico;
         $html = $this->$tipo_relatorio_Grafico($data_inicial, $data_final,$categoria, $tipo_grafico, $tipo_visual);
-        $titulo = 'Relatório de Contas à Pagar';
+        $titulo = __('Relatório de Contas à Pagar');
         $this->_Visual->Blocar('<span id="Grafico_relatorio_tabela">'.$html.'</span>');
         $this->_Visual->Bloco_Maior_CriaJanela('<span id="Grafico_relatorio_titulo">'.$titulo.'</span>','', 0, false);
         
@@ -539,21 +539,21 @@ class Financeiro_RelatorioControle extends Financeiro_Controle
         if(isset($_POST['tipo_relatorio_Grafico'])){
             $tipo_relatorio_Grafico = \anti_injection($_POST['tipo_relatorio_Grafico']);
             if($tipo_relatorio_Grafico==='recebido'){
-                $titulo = 'Relatório de Contas Recebidas';
+                $titulo = __('Relatório de Contas Recebidas');
                 $tipo_relatorio_Grafico = 'Recebido';
             }else if($tipo_relatorio_Grafico==='receber'){
-                $titulo = 'Relatório de Contas à Receber';
+                $titulo = __('Relatório de Contas à Receber');
                 $tipo_relatorio_Grafico = 'Receber';
             }else if($tipo_relatorio_Grafico==='pago'){
-                $titulo = 'Relatório de Contas Pagas';
+                $titulo = __('Relatório de Contas Pagas');
                 $tipo_relatorio_Grafico = 'Pago';
             }else{
-                $titulo = 'Relatório de Contas à Pagar';
+                $titulo = __('Relatório de Contas à Pagar');
                 $tipo_relatorio_Grafico = 'Pagar';
             }
         }else{
             $tipo_relatorio_Grafico = 'Pagar';
-            $titulo = 'Relatório de Contas à Pagar';
+            $titulo = __('Relatório de Contas à Pagar');
         }
         if(isset($_POST['tipo_grafico'])){
             $tipo_grafico = \anti_injection($_POST['tipo_grafico']);

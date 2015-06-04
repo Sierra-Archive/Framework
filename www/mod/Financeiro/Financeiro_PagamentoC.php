@@ -24,7 +24,7 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
     static function Endereco_Financeiro($true=true){
         $registro = \Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
-        $titulo = 'Financeiro';
+        $titulo = __('Financeiro');
         $link = '_Sistema/Principal/Home';
         if($true===true){
             $_Controle->Tema_Endereco($titulo,$link);
@@ -36,7 +36,7 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
         self::Endereco_Financeiro();
         $registro = \Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
-        $titulo = 'À Pagar';
+        $titulo = __('À Pagar');
         $link = 'Financeiro/Pagamento/Pagar';
         if($true===true){
             $_Controle->Tema_Endereco($titulo,$link);
@@ -48,7 +48,7 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
         self::Endereco_Financeiro();
         $registro = \Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
-        $titulo = 'À Receber';
+        $titulo = __('À Receber');
         $link = 'Financeiro/Pagamento/Receber';
         if($true===true){
             $_Controle->Tema_Endereco($titulo,$link);
@@ -60,7 +60,7 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
         self::Endereco_Financeiro();
         $registro = \Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
-        $titulo = 'Pagas';
+        $titulo = __('Pagas');
         $link = 'Financeiro/Pagamento/Pago';
         if($true===true){
             $_Controle->Tema_Endereco($titulo,$link);
@@ -72,7 +72,7 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
         self::Endereco_Financeiro();
         $registro = \Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
-        $titulo = 'Recebidos';
+        $titulo = __('Recebidos');
         $link = 'Financeiro/Pagamento/Recebido';
         if($true===true){
             $_Controle->Tema_Endereco($titulo,$link);
@@ -84,7 +84,7 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
         self::Endereco_Financeiro();
         $registro = \Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
-        $titulo = 'Forma de Pagamento';
+        $titulo = __('Forma de Pagamento');
         $link = 'Financeiro/Pagamento/Formas';
         if($true===true){
             $_Controle->Tema_Endereco($titulo,$link);
@@ -96,7 +96,7 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
         self::Endereco_Forma();
         $registro = \Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
-        $titulo = 'Condições de Pagamento';
+        $titulo = __('Condições de Pagamento');
         $link = 'Financeiro/Pagamento/Condicoes';
         if(is_object($forma)){
             $titulo = $titulo.' em '.$forma->nome;
@@ -124,7 +124,7 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
     public function Main(){
         $this->Formas();
         // ORGANIZA E MANDA CONTEUDO
-        $this->_Visual->Json_Info_Update('Titulo','Formas de Pagamento'); 
+        $this->_Visual->Json_Info_Update('Titulo', __('Formas de Pagamento')); 
     }
     /**
      * Contas a Pagar
@@ -133,7 +133,7 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
         self::Endereco_Pagar(false);
         
         // Parametros
-        $titulo = 'Listagem de Contas à pagar';
+        $titulo = __('Listagem de Contas à pagar');
         /*$where  = Array(
             'entrada_motivo'     => 'Servidor',
             'entrada_motivoid'   => SRV_NAME_SQL,
@@ -168,7 +168,7 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
             )
         )));
         
-        $titulo = 'Listagem de Contas à Receber';
+        $titulo = __('Listagem de Contas à Receber');
         $where  = Array(
             'saida_motivo'     => 'Servidor',
             'saida_motivoid'   => SRV_NAME_SQL,
@@ -204,7 +204,7 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
         )));
         
         // Parametros
-        $titulo = 'Listagem de Contas Pagas';
+        $titulo = __('Listagem de Contas Pagas');
         $where  = Array(
             'entrada_motivo'     => 'Servidor',
             'entrada_motivoid'   => SRV_NAME_SQL,
@@ -241,7 +241,7 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
             )
         )));
         
-        $titulo = 'Listagem de Contas Recebidas';
+        $titulo = __('Listagem de Contas Recebidas');
         $where  = Array(
             'saida_motivo'     => 'Servidor',
             'saida_motivoid'   => SRV_NAME_SQL,
@@ -304,9 +304,9 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
             throw new \Exception('Financeiro não existe: '.$id,404);
         }
         if($financeiros->saida_motivo==='Servidor' && $financeiros->saida_motivoid===SRV_NAME_SQL){
-            $pago = 'Recebido';
+            $pago = __('Recebido');
         }else{
-            $pago = 'Pago';
+            $pago = __('Pago');
         }
         // Captura Valores
         //$valor_juros    = \Framework\App\Sistema_Funcoes::Tranf_Real_Float(\anti_injection($_POST['valor_juros']));
@@ -317,7 +317,7 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
         $titulo     = 'Declarado não '.$pago.' com Sucesso';
         $dao        = Array('Financeiro_Pagamento_Interno',$id);
         $sucesso1   = $titulo;
-        $sucesso2   = 'Voltou a não estar pago com sucesso.';
+        $sucesso2   = __('Voltou a não estar pago com sucesso.');
         // Altera Valores Manualmente e grava
         $financeiros->valor = \Framework\App\Sistema_Funcoes::Tranf_Float_Real(\Framework\App\Sistema_Funcoes::Tranf_Real_Float($financeiros->valor)-\Framework\App\Sistema_Funcoes::Tranf_Real_Float($financeiros->valor_juros));
         $financeiros->pago = '0';
@@ -341,10 +341,10 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
         }else{
             $mensagens = array(
                 "tipo"              => 'erro',
-                "mgs_principal"     => 'Ocorreu um Erro',
-                "mgs_secundaria"    => 'Tente Novamente, algo deu errado.'
+                "mgs_principal"     => __('Ocorreu um Erro'),
+                "mgs_secundaria"    => __('Tente Novamente, algo deu errado.')
             );
-            $this->_Visual->Json_Info_Update('Titulo', 'Erro');
+            $this->_Visual->Json_Info_Update('Titulo', __('Erro'));
         }
         $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
         $this->_Visual->Json_Info_Update('Historico', false);
@@ -363,13 +363,13 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
         if($localizacao!==false){
             Financeiro_RelatorioControle::Endereco_Financeiro();
             if($editar->saida_motivo==='Servidor' && $editar->saida_motivoid===SRV_NAME_SQL){
-                $pago = 'Recebido';
+                $pago = __('Recebido');
             }else{
-                $pago = 'Pago';
+                $pago = __('Pago');
             }
             $link_extra = '/'.$localizacao.'/'.$dataini.'/'.$datafin;
         }else if($editar->saida_motivo==='Servidor' && $editar->saida_motivoid===SRV_NAME_SQL){
-            $pago = 'Recebido';
+            $pago = __('Recebido');
             self::Endereco_Receber();
             $link_extra = '';
         }else{
@@ -388,7 +388,7 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
         self::Financeiros_Campos_Retirar($campos);
         // Modifica Resultados
         if($editar->num_parcela=='0' || $editar->num_parcela==0){
-            $editar->num_parcela = 'Parcela Unica';
+            $editar->num_parcela = __('Parcela Unica');
         }else{
             $editar->num_parcela = $editar->num_parcela.'º Parcela';
         }
@@ -415,9 +415,9 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
             throw new \Exception('Financeiro não existe: '.$id,404);
         }
         if($financeiros->saida_motivo==='Servidor' && $financeiros->saida_motivoid===SRV_NAME_SQL){
-            $pago = 'Recebido';
+            $pago = __('Recebido');
         }else{
-            $pago = 'Pago';
+            $pago = __('Pago');
         }
         if(!isset($_POST['valor_juros']) || !isset($_POST['dt_pago'])|| !isset($_POST['obs'])){
             throw new \Exception('Campos Imcompletos: ',404);
@@ -437,11 +437,11 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
         /*if($financeiros->valor>$valor_juros){
             $mensagens = array(
                 "tipo"              => 'erro',
-                "mgs_principal"     => 'Valor Pago Incorreto',
-                "mgs_secundaria"    => 'O valor pago é inferior ao valor do Pagamento'
+                "mgs_principal"     => __('Valor Pago Incorreto'),
+                "mgs_secundaria"    => __('O valor pago é inferior ao valor do Pagamento')
             );
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
-            $this->_Visual->Json_Info_Update('Titulo', 'Erro');
+            $this->_Visual->Json_Info_Update('Titulo', __('Erro'));
         }else{*/
             // Altera Valores Manualmente e grava
             $financeiros->pago = '1';
@@ -471,10 +471,10 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
             }else{
                 $mensagens = array(
                     "tipo"              => 'erro',
-                    "mgs_principal"     => 'Ocorreu um Erro',
-                    "mgs_secundaria"    => 'Tente Novamente, algo deu errado.'
+                    "mgs_principal"     => __('Ocorreu um Erro'),
+                    "mgs_secundaria"    => __('Tente Novamente, algo deu errado.')
                 );
-                $this->_Visual->Json_Info_Update('Titulo', 'Erro');
+                $this->_Visual->Json_Info_Update('Titulo', __('Erro'));
             }
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
         //}
@@ -499,7 +499,7 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
         
         
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Administrar Formas de Pagamento');
+        $this->_Visual->Json_Info_Update('Titulo', __('Administrar Formas de Pagamento'));
     }
     /**
      * 
@@ -509,10 +509,10 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
     public function Formas_Add(){
         self::Endereco_Forma();
         // Carrega Config
-        $titulo1    = 'Adicionar Forma de Pagamento';
-        $titulo2    = 'Salvar Forma de Pagamento';
+        $titulo1    = __('Adicionar Forma de Pagamento');
+        $titulo2    = __('Salvar Forma de Pagamento');
         $formid     = 'form_Sistema_Admin_Forma_Pagamentos';
-        $formbt     = 'Salvar';
+        $formbt     = __('Salvar');
         $formlink   = 'Financeiro/Pagamento/Formas_Add2/';
         $campos = Financeiro_Pagamento_Forma_DAO::Get_Colunas();
         \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos);
@@ -525,11 +525,11 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
      * @version 2.0
      */
     public function Formas_Add2(){
-        $titulo     = 'Forma de Pagamento Adicionada com Sucesso';
+        $titulo     = __('Forma de Pagamento Adicionada com Sucesso');
         $dao        = 'Financeiro_Pagamento_Forma';
         $funcao     = '$this->Formas();';
-        $sucesso1   = 'Inserção bem sucedida';
-        $sucesso2   = 'Forma de Pagamento cadastrada com sucesso.';
+        $sucesso1   = __('Inserção bem sucedida');
+        $sucesso2   = __('Forma de Pagamento cadastrada com sucesso.');
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
     }
@@ -543,9 +543,9 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
         self::Endereco_Forma();
         // Carrega Config
         $titulo1    = 'Editar Forma de Pagamento (#'.$id.')';
-        $titulo2    = 'Alteração de Forma de Pagamento';
+        $titulo2    = __('Alteração de Forma de Pagamento');
         $formid     = 'form_Sistema_AdminC_PagamentoEdit';
-        $formbt     = 'Alterar Forma de Pagamento';
+        $formbt     = __('Alterar Forma de Pagamento');
         $formlink   = 'Financeiro/Pagamento/Formas_Edit2/'.$id;
         $editar     = Array('Financeiro_Pagamento_Forma',$id);
         $campos = Financeiro_Pagamento_Forma_DAO::Get_Colunas();
@@ -559,10 +559,10 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
      * @version 2.0
      */
     public function Formas_Edit2($id){
-        $titulo     = 'Forma de Pagamento Editada com Sucesso';
+        $titulo     = __('Forma de Pagamento Editada com Sucesso');
         $dao        = Array('Financeiro_Pagamento_Forma',$id);
         $funcao     = '$this->Formas();';
-        $sucesso1   = 'Forma de Pagamento Alterado com Sucesso.';
+        $sucesso1   = __('Forma de Pagamento Alterado com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);      
@@ -585,8 +585,8 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
     	if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Deletado',
-                "mgs_secundaria" => 'Forma de Pagamento Deletada com sucesso'
+                "mgs_principal" => __('Deletado'),
+                "mgs_secundaria" => __('Forma de Pagamento Deletada com sucesso')
             );
     	}else{
             $mensagens = array(
@@ -599,7 +599,7 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
         
         $this->Formas();
         
-        $this->_Visual->Json_Info_Update('Titulo', 'Forma de Pagamento deletada com Sucesso');  
+        $this->_Visual->Json_Info_Update('Titulo', __('Forma de Pagamento deletada com Sucesso'));  
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
     /**
@@ -612,9 +612,9 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
         $i = 0;
         if($forma===0){
             $link_extra = '/0';
-            $nenhum     = 'Nenhuma Condição de Pagamento';
-            $titulo     = 'Condição de Pagamento';
-            $titulo2    = 'Condições de Pagamento';
+            $nenhum     = __('Nenhuma Condição de Pagamento');
+            $titulo     = __('Condição de Pagamento');
+            $titulo2    = __('Condições de Pagamento');
         }else{
             $link_extra = '/'.$forma;
             $forma = $this->_Modelo->db->Sql_Select('Financeiro_Pagamento_Forma',Array('id'=>$forma),1);
@@ -633,7 +633,7 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
         
         
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Administrar '.$titulo2);
+        $this->_Visual->Json_Info_Update('Titulo', __('Administrar ').$titulo2);
     }
     /**
      * 
@@ -651,10 +651,10 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
         }
         self::Endereco_Forma_Condicao(true,$forma);
         // Carrega Config
-        $titulo1    = 'Adicionar Condição de Pagamento';
-        $titulo2    = 'Salvar Condição de Pagamento';
+        $titulo1    = __('Adicionar Condição de Pagamento');
+        $titulo2    = __('Salvar Condição de Pagamento');
         $formid     = 'form_Sistema_Admin_Condicao_Pagamentos';
-        $formbt     = 'Salvar';
+        $formbt     = __('Salvar');
         $formlink   = 'Financeiro/Pagamento/Condicoes_Add2/'.$formaid;
         $campos = Financeiro_Pagamento_Forma_Condicao_DAO::Get_Colunas();
         if(is_object($forma)){
@@ -678,10 +678,10 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
         }else{
             $formaid = 0;
         }
-        $titulo     = 'Condição de Pagamento Adicionada com Sucesso';
+        $titulo     = __('Condição de Pagamento Adicionada com Sucesso');
         $dao        = 'Financeiro_Pagamento_Forma_Condicao';
-        $sucesso1   = 'Inserção bem sucedida';
-        $sucesso2   = 'Condição de Pagamento cadastrada com sucesso.';
+        $sucesso1   = __('Inserção bem sucedida');
+        $sucesso2   = __('Condição de Pagamento cadastrada com sucesso.');
         if($formaid===0){
             $alterar    = Array();
         }else{
@@ -708,9 +708,9 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
         self::Endereco_Forma_Condicao(true,$forma);
         // Carrega Config
         $titulo1    = 'Editar Condição de Pagamento (#'.$id.')';
-        $titulo2    = 'Alteração de Condição de Pagamento';
+        $titulo2    = __('Alteração de Condição de Pagamento');
         $formid     = 'form_Sistema_AdminC_PagamentoEdit';
-        $formbt     = 'Alterar Condicao de Pagamento';
+        $formbt     = __('Alterar Condicao de Pagamento');
         $formlink   = 'Financeiro/Pagamento/Condicoes_Edit2/'.$id.'/'.$formaid;
         $editar     = Array('Financeiro_Pagamento_Forma_Condicao',$id);
         $campos = Financeiro_Pagamento_Forma_Condicao_DAO::Get_Colunas();
@@ -735,10 +735,10 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
         }else{
             $formaid = 0;
         }
-        $titulo     = 'Condição de Pagamento Editada com Sucesso';
+        $titulo     = __('Condição de Pagamento Editada com Sucesso');
         $dao        = Array('Financeiro_Pagamento_Forma_Condicao',$id);
         $funcao     = '$this->Condicoes('.$formaid.');';
-        $sucesso1   = 'Condicao de Pagamento Alterado com Sucesso.';
+        $sucesso1   = __('Condicao de Pagamento Alterado com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);      
@@ -762,8 +762,8 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
     	if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Deletado',
-                "mgs_secundaria" => 'Condição de Pagamento Deletada com sucesso'
+                "mgs_principal" => __('Deletado'),
+                "mgs_secundaria" => __('Condição de Pagamento Deletada com sucesso')
             );
     	}else{
             $mensagens = array(
@@ -776,7 +776,7 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
         
         $this->Condicoes($forma);
         
-        $this->_Visual->Json_Info_Update('Titulo', 'Condição de Pagamento deletada com Sucesso');  
+        $this->_Visual->Json_Info_Update('Titulo', __('Condição de Pagamento deletada com Sucesso'));  
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
     /**
@@ -870,7 +870,7 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
             throw new \Exception('Financeiro não existe: '.$id,404);
         }
         // Mensagens
-        $titulo     = 'Vencimento alterado com Sucesso';
+        $titulo     = __('Vencimento alterado com Sucesso');
         $dao        = Array('Financeiro_Pagamento_Interno',$id);
         $sucesso1   = $titulo;
         $sucesso2   = $titulo;
@@ -895,10 +895,10 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
         }else{
             $mensagens = array(
                 "tipo"              => 'erro',
-                "mgs_principal"     => 'Ocorreu um Erro',
-                "mgs_secundaria"    => 'Tente Novamente, algo deu errado.'
+                "mgs_principal"     => __('Ocorreu um Erro'),
+                "mgs_secundaria"    => __('Tente Novamente, algo deu errado.')
             );
-            $this->_Visual->Json_Info_Update('Titulo', 'Erro');
+            $this->_Visual->Json_Info_Update('Titulo', __('Erro'));
         }
         $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
         $this->_Visual->Json_Info_Update('Historico', false);
@@ -941,21 +941,21 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
         
         // Nomes
         if($tema==='Pagar'){
-            $titulo             = 'Conta a Pagar';
-            $titulo_plural      = 'Contas a Pagar';
+            $titulo             = __('Conta a Pagar');
+            $titulo_plural      = __('Contas a Pagar');
             $titulo_unico       = 'contasapagar';
         }else if($tema==='Pago'){
-            $titulo             = 'Conta Paga';
-            $titulo_plural      = 'Contas Pagas';
+            $titulo             = __('Conta Paga');
+            $titulo_plural      = __('Contas Pagas');
             $titulo_unico       = 'contaspagas';
         }else if($tema==='Receber'){
-            $titulo             = 'Conta a Pagar';
-            $titulo_plural      = 'Contas a Pagar';
+            $titulo             = __('Conta a Pagar');
+            $titulo_plural      = __('Contas a Pagar');
             $titulo_unico       = 'contasareceber';
         }else{
             $tema               = 'Recebido';
-            $titulo             = 'Conta Recebida';
-            $titulo_plural      = 'Contas Recebidas';
+            $titulo             = __('Conta Recebida');
+            $titulo_plural      = __('Contas Recebidas');
             $titulo_unico       = 'contasrecebidas';
         }
         

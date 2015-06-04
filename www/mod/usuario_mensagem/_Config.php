@@ -3,7 +3,7 @@ $config_Modulo = function (){
     return Array(
         'Nome'                      =>  'usuario_mensagem',
         'Descrição'                 =>  'É um modulo para Atendimento telefonico de grandes empresas',
-        'System_Require'            =>  '3.0.0',
+        'System_Require'            =>  '3.1.0',
         'Version'                   =>  '0.1.0',
         'Dependencias'              =>  false,
     );

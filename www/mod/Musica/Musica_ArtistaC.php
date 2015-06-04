@@ -51,10 +51,10 @@ class Musica_ArtistaControle extends Musica_Controle
             $status                                 = $valor->status;
             if($status!=1){
                 $status = 0;
-                $texto = 'Desativado';
+                $texto = __('Desativado');
             }else{
                 $status = 1;
-                $texto = 'Ativado';
+                $texto = __('Ativado');
             }
             $tabela['Status'][$i]                   = '<span id="status'.$valor->id.'">'.$Visual->Tema_Elementos_Btn('Status'.$status     ,Array($texto        ,'Musica/Artista/Status/'.$valor->id.'/'    ,'')).'</span>';
             $tabela['Funções'][$i]                  =   $Visual->Tema_Elementos_Btn('Visualizar' ,Array('Visualizar Albuns do Artista'    ,'Musica/Album/Albuns/'.$valor->id.'/'    ,'')).
@@ -112,7 +112,7 @@ class Musica_ArtistaControle extends Musica_Controle
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Administrar Artistas');
+        $this->_Visual->Json_Info_Update('Titulo', __('Administrar Artistas'));
     }
     /**
      * 
@@ -122,10 +122,10 @@ class Musica_ArtistaControle extends Musica_Controle
     public function Artistas_Add(){
         self::Endereco_Artista();
         // Carrega Config
-        $titulo1    = 'Adicionar Artista';
-        $titulo2    = 'Salvar Artista';
+        $titulo1    = __('Adicionar Artista');
+        $titulo2    = __('Salvar Artista');
         $formid     = 'form_Sistema_Admin_Artistas';
-        $formbt     = 'Salvar';
+        $formbt     = __('Salvar');
         $formlink   = 'Musica/Artista/Artistas_Add2/';
         $campos = Musica_Album_Artista_DAO::Get_Colunas();
         \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos);
@@ -138,11 +138,11 @@ class Musica_ArtistaControle extends Musica_Controle
      * @version 2.0
      */
     public function Artistas_Add2(){
-        $titulo     = 'Artista Adicionado com Sucesso';
+        $titulo     = __('Artista Adicionado com Sucesso');
         $dao        = 'Musica_Album_Artista';
         $funcao     = '$this->Artistas();';
-        $sucesso1   = 'Inserção bem sucedida';
-        $sucesso2   = 'Artista cadastrado com sucesso.';
+        $sucesso1   = __('Inserção bem sucedida');
+        $sucesso2   = __('Artista cadastrado com sucesso.');
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
     }
@@ -156,9 +156,9 @@ class Musica_ArtistaControle extends Musica_Controle
         self::Endereco_Artista();
         // Carrega Config
         $titulo1    = 'Editar Artista (#'.$id.')';
-        $titulo2    = 'Alteração de Artista';
+        $titulo2    = __('Alteração de Artista');
         $formid     = 'form_Sistema_AdminC_ArtistaEdit';
-        $formbt     = 'Alterar Artista';
+        $formbt     = __('Alterar Artista');
         $formlink   = 'Musica/Artista/Artistas_Edit2/'.$id;
         $editar     = Array('Musica_Album_Artista',$id);
         $campos = Musica_Album_Artista_DAO::Get_Colunas();
@@ -172,10 +172,10 @@ class Musica_ArtistaControle extends Musica_Controle
      * @version 2.0
      */
     public function Artistas_Edit2($id){
-        $titulo     = 'Artista Editado com Sucesso';
+        $titulo     = __('Artista Editado com Sucesso');
         $dao        = Array('Musica_Album_Artista',$id);
         $funcao     = '$this->Artistas();';
-        $sucesso1   = 'Artista Alterado com Sucesso.';
+        $sucesso1   = __('Artista Alterado com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);   
@@ -198,8 +198,8 @@ class Musica_ArtistaControle extends Musica_Controle
     	if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Deletado',
-                "mgs_secundaria" => 'Artista deletado com sucesso'
+                "mgs_principal" => __('Deletado'),
+                "mgs_secundaria" => __('Artista deletado com sucesso')
             );
     	}else{
             $mensagens = array(
@@ -212,7 +212,7 @@ class Musica_ArtistaControle extends Musica_Controle
         
         $this->Artistas();
         
-        $this->_Visual->Json_Info_Update('Titulo', 'Artista deletado com Sucesso');
+        $this->_Visual->Json_Info_Update('Titulo', __('Artista deletado com Sucesso'));
         $this->_Visual->Json_Info_Update('Historico', false);
     }
     public function Status($id=false){
@@ -231,9 +231,9 @@ class Musica_ArtistaControle extends Musica_Controle
         $sucesso = $this->_Modelo->db->Sql_Update($resultado);
         if($sucesso){
             if($resultado->status==1){
-                $texto = 'Ativado';
+                $texto = __('Ativado');
             }else{
-                $texto = 'Desativado';
+                $texto = __('Desativado');
             }
             $conteudo = array(
                 'location' => '#status'.$resultado->id,
@@ -241,16 +241,16 @@ class Musica_ArtistaControle extends Musica_Controle
                 'html' =>  $this->_Visual->Tema_Elementos_Btn('Status'.$resultado->status     ,Array($texto        ,'Musica/Artista/Status/'.$resultado->id.'/'    ,''))
             );
             $this->_Visual->Json_IncluiTipo('Conteudo',$conteudo);
-            $this->_Visual->Json_Info_Update('Titulo','Status Alterado'); 
+            $this->_Visual->Json_Info_Update('Titulo', __('Status Alterado')); 
         }else{
             $mensagens = array(
                 "tipo"              => 'erro',
-                "mgs_principal"     => 'Erro',
-                "mgs_secundaria"    => 'Ocorreu um Erro.'
+                "mgs_principal"     => __('Erro'),
+                "mgs_secundaria"    => __('Ocorreu um Erro.')
             );
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
 
-            $this->_Visual->Json_Info_Update('Titulo','Erro'); 
+            $this->_Visual->Json_Info_Update('Titulo', __('Erro')); 
         }
         $this->_Visual->Json_Info_Update('Historico', false);  
     }

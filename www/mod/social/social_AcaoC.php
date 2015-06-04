@@ -51,7 +51,7 @@ class social_AcaoControle extends social_Controle
     public function Acao($persona_id=false,$export=false){
         self::Acao_Stat($persona_id,'Unico',$export=false);
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Administrar Ações');
+        $this->_Visual->Json_Info_Update('Titulo', __('Administrar Ações'));
     }
     public static function Acao_Stat($persona_id=false,$tipo='Unico',$export=false){
         $registro = \Framework\App\Registro::getInstacia();
@@ -134,10 +134,10 @@ class social_AcaoControle extends social_Controle
      */
     public function Acoes_Add($persona_id=false){
         // Carrega Config
-        $titulo1    = 'Adicionar Ação';
-        $titulo2    = 'Salvar Ação';
+        $titulo1    = __('Adicionar Ação');
+        $titulo2    = __('Salvar Ação');
         $formid     = 'form_Sistema_Acao_Acoes';
-        $formbt     = 'Salvar';
+        $formbt     = __('Salvar');
         $formlink   = 'social/Acao/Acoes_Add2/';
         $campos = Social_Acao_DAO::Get_Colunas();
         \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos);
@@ -150,11 +150,11 @@ class social_AcaoControle extends social_Controle
      * @version 2.0
      */
     public function Acoes_Add2($persona_id=false){
-        $titulo     = 'Ação adicionada com Sucesso';
+        $titulo     = __('Ação adicionada com Sucesso');
         $dao        = 'Social_Acao';
         $funcao     = '$this->Acao('.$persona_id.');';
-        $sucesso1   = 'Inserção bem sucedida';
-        $sucesso2   = 'Ação cadastrado com sucesso.';
+        $sucesso1   = __('Inserção bem sucedida');
+        $sucesso2   = __('Ação cadastrado com sucesso.');
        if($artista===false){
             $funcao     = '$this->Acao(0);';
             $alterar    = Array();
@@ -175,9 +175,9 @@ class social_AcaoControle extends social_Controle
     public function Acoes_Edit($id){
         // Carrega Config
         $titulo1    = 'Editar Ação (#'.$id.')';
-        $titulo2    = 'Alteração de Ação';
+        $titulo2    = __('Alteração de Ação');
         $formid     = 'form_Sistema_AcaoC_AçãoEdit';
-        $formbt     = 'Alterar Ação';
+        $formbt     = __('Alterar Ação');
         $formlink   = 'social/Acao/Acoes_Edit2/'.$id;
         $editar     = Array('Social_Acao',$id);
         $campos = Social_Acao_DAO::Get_Colunas();
@@ -191,10 +191,10 @@ class social_AcaoControle extends social_Controle
      * @version 2.0
      */
     public function Acoes_Edit2($id){
-        $titulo     = 'Ação editado com Sucesso';
+        $titulo     = __('Ação editado com Sucesso');
         $dao        = Array('Social_Acao',$id);
         $funcao     = '$this->Acao();';
-        $sucesso1   = 'Ação Alterado com Sucesso.';
+        $sucesso1   = __('Ação Alterado com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);   
@@ -217,8 +217,8 @@ class social_AcaoControle extends social_Controle
     	if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Deletado',
-                "mgs_secundaria" => 'Ação deletada com sucesso'
+                "mgs_principal" => __('Deletado'),
+                "mgs_secundaria" => __('Ação deletada com sucesso')
             );
     	}else{
             $mensagens = array(
@@ -231,7 +231,7 @@ class social_AcaoControle extends social_Controle
         
         $this->Acao($persona_id);
         
-        $this->_Visual->Json_Info_Update('Titulo', 'Ação deletada com Sucesso');  
+        $this->_Visual->Json_Info_Update('Titulo', __('Ação deletada com Sucesso'));  
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
 }

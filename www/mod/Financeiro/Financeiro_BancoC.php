@@ -77,7 +77,7 @@ class Financeiro_BancoControle extends Financeiro_Controle
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Administrar Bancos');
+        $this->_Visual->Json_Info_Update('Titulo', __('Administrar Bancos'));
     }
     /**
      * 
@@ -86,10 +86,10 @@ class Financeiro_BancoControle extends Financeiro_Controle
      */
     public function Bancos_Add(){
         // Carrega Config
-        $titulo1    = 'Adicionar Banco';
-        $titulo2    = 'Salvar Banco';
+        $titulo1    = __('Adicionar Banco');
+        $titulo2    = __('Salvar Banco');
         $formid     = 'form_Sistema_Admin_Bancos';
-        $formbt     = 'Salvar';
+        $formbt     = __('Salvar');
         $formlink   = 'Financeiro/Banco/Bancos_Add2/';
         $campos = Financeiro_Banco_DAO::Get_Colunas();
         \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos);
@@ -102,11 +102,11 @@ class Financeiro_BancoControle extends Financeiro_Controle
      * @version 2.0
      */
     public function Bancos_Add2(){
-        $titulo     = 'Banco Adicionado com Sucesso';
+        $titulo     = __('Banco Adicionado com Sucesso');
         $dao        = 'Financeiro_Banco';
         $funcao     = '$this->Main();';
-        $sucesso1   = 'Inserção bem sucedida';
-        $sucesso2   = 'Banco cadastrado com sucesso.';
+        $sucesso1   = __('Inserção bem sucedida');
+        $sucesso2   = __('Banco cadastrado com sucesso.');
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
     }
@@ -119,9 +119,9 @@ class Financeiro_BancoControle extends Financeiro_Controle
     public function Bancos_Edit($id){
         // Carrega Config
         $titulo1    = 'Editar Banco (#'.$id.')';
-        $titulo2    = 'Alteração de Banco';
-        $formid     = 'form_Sistema_AdminC_BancoEdit';
-        $formbt     = 'Alterar Banco';
+        $titulo2    = __('Alteração de Banco');
+        $formid     = __('form_Sistema_AdminC_BancoEdit');
+        $formbt     = __('Alterar Banco');
         $formlink   = 'Financeiro/Banco/Bancos_Edit2/'.$id;
         $editar     = Array('Financeiro_Banco',$id);
         $campos = Financeiro_Banco_DAO::Get_Colunas();
@@ -135,10 +135,10 @@ class Financeiro_BancoControle extends Financeiro_Controle
      * @version 2.0
      */
     public function Bancos_Edit2($id){
-        $titulo     = 'Banco Editado com Sucesso';
+        $titulo     = __('Banco Editado com Sucesso');
         $dao        = Array('Financeiro_Banco',$id);
         $funcao     = '$this->Main();';
-        $sucesso1   = 'Banco Alterado com Sucesso.';
+        $sucesso1   = __('Banco Alterado com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);      
@@ -161,8 +161,8 @@ class Financeiro_BancoControle extends Financeiro_Controle
     	if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Deletado',
-                "mgs_secundaria" => 'Banco Deletado com sucesso'
+                "mgs_principal" => __('Deletado'),
+                "mgs_secundaria" => __('Banco Deletado com sucesso')
             );
     	}else{
             $mensagens = array(
@@ -175,7 +175,7 @@ class Financeiro_BancoControle extends Financeiro_Controle
         
         $this->Main();
         
-        $this->_Visual->Json_Info_Update('Titulo', 'Banco deletado com Sucesso');  
+        $this->_Visual->Json_Info_Update('Titulo', __('Banco deletado com Sucesso'));  
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
 }

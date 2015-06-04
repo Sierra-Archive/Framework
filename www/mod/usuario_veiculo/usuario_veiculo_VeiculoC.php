@@ -70,7 +70,7 @@ class usuario_veiculo_VeiculoControle extends usuario_veiculo_Controle
     static function Endereco_Veiculo($true=true){
         $registro = \Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
-        $titulo = 'Veiculos';
+        $titulo = __('Veiculos');
         $link   = 'usuario_veiculo/Veiculo/Veiculos';
         if($true===true){
             $_Controle->Tema_Endereco($titulo,$link);
@@ -134,7 +134,7 @@ class usuario_veiculo_VeiculoControle extends usuario_veiculo_Controle
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Administrar Veiculos');
+        $this->_Visual->Json_Info_Update('Titulo', __('Administrar Veiculos'));
     }
     /**
      * 
@@ -144,10 +144,10 @@ class usuario_veiculo_VeiculoControle extends usuario_veiculo_Controle
     public function Veiculos_Add(){
         self::Endereco_Veiculo(true);
         // Carrega Config
-        $titulo1    = 'Adicionar Veiculo';
-        $titulo2    = 'Salvar Veiculo';
+        $titulo1    = __('Adicionar Veiculo');
+        $titulo2    = __('Salvar Veiculo');
         $formid     = 'form_Sistema_Admin_Veiculos';
-        $formbt     = 'Salvar';
+        $formbt     = __('Salvar');
         $formlink   = 'usuario_veiculo/Veiculo/Veiculos_Add2/';
         $campos = Usuario_Veiculo_DAO::Get_Colunas();
         self::Campos_Deletar($campos);
@@ -161,11 +161,11 @@ class usuario_veiculo_VeiculoControle extends usuario_veiculo_Controle
      * @version 2.0
      */
     public function Veiculos_Add2(){
-        $titulo     = 'Veiculo Adicionado com Sucesso';
+        $titulo     = __('Veiculo Adicionado com Sucesso');
         $dao        = 'Usuario_Veiculo';
         $funcao     = '$this->Veiculos();';
-        $sucesso1   = 'Inserção bem sucedida';
-        $sucesso2   = 'Veiculo cadastrado com sucesso.';
+        $sucesso1   = __('Inserção bem sucedida');
+        $sucesso2   = __('Veiculo cadastrado com sucesso.');
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
     }
@@ -179,9 +179,9 @@ class usuario_veiculo_VeiculoControle extends usuario_veiculo_Controle
         self::Endereco_Veiculo(true);
         // Carrega Config
         $titulo1    = 'Editar Veiculo (#'.$id.')';
-        $titulo2    = 'Alteração de Veiculo';
+        $titulo2    = __('Alteração de Veiculo');
         $formid     = 'form_Sistema_AdminC_VeiculoEdit';
-        $formbt     = 'Alterar Veiculo';
+        $formbt     = __('Alterar Veiculo');
         $formlink   = 'usuario_veiculo/Veiculo/Veiculos_Edit2/'.$id;
         $editar     = Array('Usuario_Veiculo',$id);
         $campos = Usuario_Veiculo_DAO::Get_Colunas();
@@ -196,10 +196,10 @@ class usuario_veiculo_VeiculoControle extends usuario_veiculo_Controle
      * @version 2.0
      */
     public function Veiculos_Edit2($id){
-        $titulo     = 'Veiculo Editado com Sucesso';
+        $titulo     = __('Veiculo Editado com Sucesso');
         $dao        = Array('Usuario_Veiculo',$id);
         $funcao     = '$this->Veiculos();';
-        $sucesso1   = 'Veiculo Alterado com Sucesso.';
+        $sucesso1   = __('Veiculo Alterado com Sucesso.');
         $sucesso2   = ''.$_POST["placa"].' teve a alteração bem sucedida';
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);      
@@ -222,8 +222,8 @@ class usuario_veiculo_VeiculoControle extends usuario_veiculo_Controle
     	if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Deletado',
-                "mgs_secundaria" => 'Veiculo Deletado com sucesso'
+                "mgs_principal" => __('Deletado'),
+                "mgs_secundaria" => __('Veiculo Deletado com sucesso')
             );
     	}else{
             $mensagens = array(
@@ -236,7 +236,7 @@ class usuario_veiculo_VeiculoControle extends usuario_veiculo_Controle
         
         $this->Veiculos();
         
-        $this->_Visual->Json_Info_Update('Titulo', 'Veiculo deletado com Sucesso');  
+        $this->_Visual->Json_Info_Update('Titulo', __('Veiculo deletado com Sucesso'));  
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
     public function Veiculos_View($veiculo_id = false){
@@ -248,7 +248,7 @@ class usuario_veiculo_VeiculoControle extends usuario_veiculo_Controle
         if(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_veiculo_Evento')){
             $this->Veiculos_Evento( $veiculo_id          );
         }
-        $this->_Visual->Json_Info_Update('Titulo','Visualizar Comentários do Veiculo');
+        $this->_Visual->Json_Info_Update('Titulo', __('Visualizar Comentários do Veiculo'));
     }
     public function Veiculos_Popup($veiculo_id = false, $popup=true){
         if($veiculo_id===false || $veiculo_id==0 || !isset($veiculo_id)) throw new \Exception('Veiculo não informado',404);
@@ -287,7 +287,7 @@ class usuario_veiculo_VeiculoControle extends usuario_veiculo_Controle
         
         
         $html .= '</div>';    
-        $titulo = 'Informações do Veiculo';
+        $titulo = __('Informações do Veiculo');
         if($popup){
             $conteudo = array(
                 'id' => 'popup',
@@ -304,7 +304,7 @@ class usuario_veiculo_VeiculoControle extends usuario_veiculo_Controle
         }else{
             $this->_Visual->Blocar('<div class="row">'.$html.'</div>');
             $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',20);
-            $this->_Visual->Json_Info_Update('Titulo','Visualizar Veiculo');
+            $this->_Visual->Json_Info_Update('Titulo', __('Visualizar Veiculo'));
         }
     }
     /**
@@ -361,7 +361,7 @@ class usuario_veiculo_VeiculoControle extends usuario_veiculo_Controle
         $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',10);
         
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Administrar Comentários do Veiculo');
+        $this->_Visual->Json_Info_Update('Titulo', __('Administrar Comentários do Veiculo'));
     }
     /**
      * 
@@ -371,10 +371,10 @@ class usuario_veiculo_VeiculoControle extends usuario_veiculo_Controle
     public function Veiculos_Comentario_Add($veiculo_id = false){
         if($veiculo_id===false) throw new \Exception('Veiculo não informado',404);
         // Carrega Config
-        $titulo1    = 'Adicionar Comentário de Veiculo';
-        $titulo2    = 'Salvar Comentário de Veiculo';
+        $titulo1    = __('Adicionar Comentário de Veiculo');
+        $titulo2    = __('Salvar Comentário de Veiculo');
         $formid     = 'form_Sistema_Admin_Veiculos_Comentario';
-        $formbt     = 'Salvar';
+        $formbt     = __('Salvar');
         $formlink   = 'usuario_veiculo/Veiculo/Veiculos_Comentario_Add2/'.$veiculo_id.'/';
         $campos = Usuario_Veiculo_Comentario_DAO::Get_Colunas();
         self::DAO_Campos_Retira($campos, 'veiculo');
@@ -389,11 +389,11 @@ class usuario_veiculo_VeiculoControle extends usuario_veiculo_Controle
      */
     public function Veiculos_Comentario_Add2($veiculo_id = false){
         if($veiculo_id===false) throw new \Exception('Veiculo não informado',404);
-        $titulo     = 'Comentário do Veiculo Adicionado com Sucesso';
+        $titulo     = __('Comentário do Veiculo Adicionado com Sucesso');
         $dao        = 'Usuario_Veiculo_Comentario';
         $funcao     = '$this->Veiculos_View('.$veiculo_id.');';
-        $sucesso1   = 'Inserção bem sucedida';
-        $sucesso2   = 'Comentário de Veiculo cadastrado com sucesso.';
+        $sucesso1   = __('Inserção bem sucedida');
+        $sucesso2   = __('Comentário de Veiculo cadastrado com sucesso.');
         $alterar    = Array('veiculo'=>$veiculo_id);
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
     }
@@ -408,9 +408,9 @@ class usuario_veiculo_VeiculoControle extends usuario_veiculo_Controle
         if($id         == 0   ) throw new \Exception('Comentário não informado',404);
         // Carrega Config
         $titulo1    = 'Editar Comentário do Veiculo (#'.$id.')';
-        $titulo2    = 'Alteração de Comentário do Veiculo';
+        $titulo2    = __('Alteração de Comentário do Veiculo');
         $formid     = 'form_Sistema_AdminC_VeiculoEdit';
-        $formbt     = 'Alterar Comentário de Veiculo';
+        $formbt     = __('Alterar Comentário de Veiculo');
         $formlink   = 'usuario_veiculo/Veiculo/Veiculos_Comentario_Edit2/'.$veiculo_id.'/'.$id;
         $editar     = Array('Usuario_Veiculo_Comentario',$id);
         $campos = Usuario_Veiculo_Comentario_DAO::Get_Colunas();
@@ -427,10 +427,10 @@ class usuario_veiculo_VeiculoControle extends usuario_veiculo_Controle
     public function Veiculos_Comentario_Edit2($veiculo_id = false,$id = 0){
         if($veiculo_id===false) throw new \Exception('Veiculo não informado',404);
         if($id         == 0   ) throw new \Exception('Comentário não informado',404);
-        $titulo     = 'Comentário de Veiculo Editado com Sucesso';
+        $titulo     = __('Comentário de Veiculo Editado com Sucesso');
         $dao        = Array('Usuario_Veiculo_Comentario',$id);
         $funcao     = '$this->Veiculos_View('.$veiculo_id.');';
-        $sucesso1   = 'Comentário de Veiculo Alterado com Sucesso.';
+        $sucesso1   = __('Comentário de Veiculo Alterado com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array('veiculo'=>$veiculo_id);
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);      
@@ -456,8 +456,8 @@ class usuario_veiculo_VeiculoControle extends usuario_veiculo_Controle
     	if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Deletado',
-                "mgs_secundaria" => 'Comentário do Veiculo Deletado com sucesso'
+                "mgs_principal" => __('Deletado'),
+                "mgs_secundaria" => __('Comentário do Veiculo Deletado com sucesso')
             );
     	}else{
             $mensagens = array(
@@ -470,7 +470,7 @@ class usuario_veiculo_VeiculoControle extends usuario_veiculo_Controle
         
         $this->Veiculos_View($veiculo_id);
         
-        $this->_Visual->Json_Info_Update('Titulo', 'Comentário de Veiculo deletado com Sucesso');  
+        $this->_Visual->Json_Info_Update('Titulo', __('Comentário de Veiculo deletado com Sucesso'));  
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
     /**
@@ -507,7 +507,7 @@ class usuario_veiculo_VeiculoControle extends usuario_veiculo_Controle
         $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',10);
         
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Administrar Eventos do Veiculo');
+        $this->_Visual->Json_Info_Update('Titulo', __('Administrar Eventos do Veiculo'));
     }
     /**
      * 
@@ -517,10 +517,10 @@ class usuario_veiculo_VeiculoControle extends usuario_veiculo_Controle
     public function Veiculos_Evento_Add($veiculo_id = false){
         if($veiculo_id===false) throw new \Exception('Veiculo não informado',404);
         // Carrega Config
-        $titulo1    = 'Adicionar Evento de Veiculo';
-        $titulo2    = 'Salvar Evento de Veiculo';
+        $titulo1    = __('Adicionar Evento de Veiculo');
+        $titulo2    = __('Salvar Evento de Veiculo');
         $formid     = 'form_Sistema_Admin_Veiculos_Evento';
-        $formbt     = 'Salvar';
+        $formbt     = __('Salvar');
         $formlink   = 'usuario_veiculo/Veiculo/Veiculos_Evento_Add2/'.$veiculo_id.'/';
         $campos = Usuario_Veiculo_Evento_DAO::Get_Colunas();
         self::DAO_Campos_Retira($campos, 'veiculo');
@@ -535,11 +535,11 @@ class usuario_veiculo_VeiculoControle extends usuario_veiculo_Controle
      */
     public function Veiculos_Evento_Add2($veiculo_id = false){
         if($veiculo_id===false) throw new \Exception('Veiculo não informado',404);
-        $titulo     = 'Evento do Veiculo Adicionado com Sucesso';
+        $titulo     = __('Evento do Veiculo Adicionado com Sucesso');
         $dao        = 'Usuario_Veiculo_Evento';
         $funcao     = '$this->Veiculos_View('.$veiculo_id.');';
-        $sucesso1   = 'Inserção bem sucedida';
-        $sucesso2   = 'Evento de Veiculo cadastrado com sucesso.';
+        $sucesso1   = __('Inserção bem sucedida');
+        $sucesso2   = __('Evento de Veiculo cadastrado com sucesso.');
         $alterar    = Array('veiculo'=>$veiculo_id);
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
     }
@@ -554,9 +554,9 @@ class usuario_veiculo_VeiculoControle extends usuario_veiculo_Controle
         if($id         == 0   ) throw new \Exception('Evento não informado',404);
         // Carrega Config
         $titulo1    = 'Editar Evento do Veiculo (#'.$id.')';
-        $titulo2    = 'Alteração de Evento do Veiculo';
+        $titulo2    = __('Alteração de Evento do Veiculo');
         $formid     = 'form_Sistema_AdminC_VeiculoEdit';
-        $formbt     = 'Alterar Evento de Veiculo';
+        $formbt     = __('Alterar Evento de Veiculo');
         $formlink   = 'usuario_veiculo/Veiculo/Veiculos_Evento_Edit2/'.$veiculo_id.'/'.$id;
         $editar     = Array('Usuario_Veiculo_Evento',$id);
         $campos = Usuario_Veiculo_Evento_DAO::Get_Colunas();
@@ -573,10 +573,10 @@ class usuario_veiculo_VeiculoControle extends usuario_veiculo_Controle
     public function Veiculos_Evento_Edit2($veiculo_id = false,$id = 0){
         if($veiculo_id===false) throw new \Exception('Veiculo não informado',404);
         if($id         == 0   ) throw new \Exception('Evento não informado',404);
-        $titulo     = 'Evento de Veiculo Editado com Sucesso';
+        $titulo     = __('Evento de Veiculo Editado com Sucesso');
         $dao        = Array('Usuario_Veiculo_Evento',$id);
         $funcao     = '$this->Veiculos_View('.$veiculo_id.');';
-        $sucesso1   = 'Evento de Veiculo Alterado com Sucesso.';
+        $sucesso1   = __('Evento de Veiculo Alterado com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array('veiculo'=>$veiculo_id);
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);      
@@ -602,8 +602,8 @@ class usuario_veiculo_VeiculoControle extends usuario_veiculo_Controle
     	if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Deletado',
-                "mgs_secundaria" => 'Evento do Veiculo Deletado com sucesso'
+                "mgs_principal" => __('Deletado'),
+                "mgs_secundaria" => __('Evento do Veiculo Deletado com sucesso')
             );
     	}else{
             $mensagens = array(
@@ -616,7 +616,7 @@ class usuario_veiculo_VeiculoControle extends usuario_veiculo_Controle
         
         $this->Veiculos_View($veiculo_id);
         
-        $this->_Visual->Json_Info_Update('Titulo', 'Evento de Veiculo deletado com Sucesso');  
+        $this->_Visual->Json_Info_Update('Titulo', __('Evento de Veiculo deletado com Sucesso'));  
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
 }

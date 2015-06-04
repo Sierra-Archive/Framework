@@ -36,10 +36,10 @@ class categoria_categoriaControle extends categoria_Controle
      * 
      */
     public function Main($status=''){
-        if(isset($status) AND $status!='') $status='salvar';
+        if(isset($status) AND $status!='') $status=__('salvar');
         else                               $status='';
         if($status=='salvar'){
-            $this->_Visual->Json_Info_Update('Titulo','Categorias');
+            $this->_Visual->Json_Info_Update('Titulo', __('Categorias'));
               
             // insere categoria e atualiza o select
             $this->Categorias_inserir();
@@ -62,7 +62,7 @@ class categoria_categoriaControle extends categoria_Controle
             $this->Categorias_formcadastro();
     
             // ORGANIZA E MANDA CONTEUDO
-            $this->_Visual->Json_Info_Update('Titulo','Categorias');
+            $this->_Visual->Json_Info_Update('Titulo', __('Categorias'));
 
         }
     }
@@ -78,9 +78,9 @@ class categoria_categoriaControle extends categoria_Controle
         $form = new \Framework\Classes\Form('adminformcategoriasend', SISTEMA_MODULO.'/'.SISTEMA_SUB.'/Categorias_alterar/'.$id.'/','formajax');
         $this->Categorias_formulario($form,$tipo,$categoria['nome'],$categoria['parent']);
         $this->_Visual->Blocar($form->retorna_form($language['formularios']['editar']));
-        $this->_Visual->Bloco_Menor_CriaJanela('Editar Categoria');
+        $this->_Visual->Bloco_Menor_CriaJanela(__('Editar Categoria'));
         // ORGANIZA E MANDA CONTEUDO
-        $this->_Visual->Json_Info_Update('Titulo','Editar Categoria');
+        $this->_Visual->Json_Info_Update('Titulo', __('Editar Categoria'));
     }
     public function Categorias_alterar($id){
         global $language;
@@ -94,7 +94,7 @@ class categoria_categoriaControle extends categoria_Controle
             if($sucesso===true){
                 $mensagens = array(
                     "tipo" => 'sucesso',
-                    "mgs_principal" => 'Categoria alterada com Sucesso',
+                    "mgs_principal" => __('Categoria alterada com Sucesso'),
                     "mgs_secundaria" => ''.$nome.' foi alterado na base de dados...'
                 );
             }else{
@@ -117,7 +117,7 @@ class categoria_categoriaControle extends categoria_Controle
         $this->Categorias_formcadastro();
         
         // ORGANIZA E MANDA CONTEUDO
-        $this->_Visual->Json_Info_Update('Titulo','Categoria alterada com Sucesso');
+        $this->_Visual->Json_Info_Update('Titulo', __('Categoria alterada com Sucesso'));
         $this->_Visual->Json_Info_Update('Historico', false);
     
     }
@@ -148,7 +148,7 @@ class categoria_categoriaControle extends categoria_Controle
         $tabela->addcabecario(array('Id','Nome', 'Acesso','Editar'));        
         $this->_Visual->Categorias_ShowTab($array,$tabela);
         $this->_Visual->Blocar($tabela->retornatabela());
-        $this->_Visual->Bloco_Maior_CriaJanela('Categorias');
+        $this->_Visual->Bloco_Maior_CriaJanela(__('Categorias'));
         unset($tabela);        
     }
     /**
@@ -175,8 +175,8 @@ class categoria_categoriaControle extends categoria_Controle
         $form = new \Framework\Classes\Form('adminformcategoriasend',SISTEMA_MODULO.'/'.SISTEMA_SUB.'/Main/salvar/','formajax');
         
         $formbt = $language['formularios']['cadastrar'];
-        $titulo1 = 'Cadastrar Categoria';
-        $titulo2 = 'Cadastrar Categoria';
+        $titulo1 = __('Cadastrar Categoria');
+        $titulo2 = __('Cadastrar Categoria');
         // Puxa Form
         $this->Categorias_formulario($form);
         // Carrega formulario
@@ -281,18 +281,18 @@ class categoria_categoriaControle extends categoria_Controle
         if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Categoria inserida com Sucesso',
+                "mgs_principal" => __('Categoria inserida com Sucesso'),
                 "mgs_secundaria" => ''.$nome.' foi add a base de dados...'
             );
         }else{
             $mensagens = array(
                 "tipo" => 'erro',
-                "mgs_principal" => 'Erro',
+                "mgs_principal" => __('Erro'),
                 "mgs_secundaria" => $language['mens_erro']['erro']
             );
         }
         $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
-        $this->_Visual->Json_Info_Update('Titulo','Categoria inserida com Sucesso');
+        $this->_Visual->Json_Info_Update('Titulo', __('Categoria inserida com Sucesso'));
         $this->_Visual->Json_Info_Update('Historico', false);
     
     }

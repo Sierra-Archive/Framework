@@ -8,7 +8,7 @@ class noticia_AdminControle extends noticia_Controle
     static function Endereco_Noticia($true=true){
         $registro = \Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
-        $titulo = 'Noticias';
+        $titulo = __('Noticias');
         $link = 'noticia/Admin/Noticias';
         if($true===true){
             $_Controle->Tema_Endereco($titulo,$link);
@@ -37,17 +37,17 @@ class noticia_AdminControle extends noticia_Controle
             $tabela['Foto'][$i]         = '<img src="'.$valor->foto.'" style="max-width:100px;" />';
             $tabela['Titulo'][$i]       = $valor->nome;
             if($valor->status==1 || $valor->status=='1'){
-                $texto = 'Ativado';
+                $texto = __('Ativado');
                 $valor->status='1';
             }else{
-                $texto = 'Desativado';
+                $texto = __('Desativado');
                 $valor->status='0';
             }
             $tabela['Funções'][$i]      = '<span id="status'.$valor->id.'">'.$Visual->Tema_Elementos_Btn('Status'.$valor->status     ,Array($texto        ,'noticia/Admin/Status/'.$valor->id.'/'    ,'')).'</span>';
             if($valor->destaque==1){
-                $texto = 'Em Destaque';
+                $texto = __('Em Destaque');
             }else{
-                $texto = 'Não está em destaque';
+                $texto = __('Não está em destaque');
             }
             $tabela['Funções'][$i]      .= '<span id="destaques'.$valor->id.'">'.$Visual->Tema_Elementos_Btn('Destaque'.$valor->destaque   ,Array($texto   ,'noticia/Admin/Destaques/'.$valor->id.'/'    ,'')).'</span>';
             $tabela['Funções'][$i]      .= $Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Noticia'        ,'noticia/Admin/Noticias_Edit/'.$valor->id.'/'    ,'')).
@@ -117,16 +117,16 @@ class noticia_AdminControle extends noticia_Controle
             unset($tabela);
         }else{
             if($export!==false){
-                $mensagem = 'Nenhuma Noticia Cadastrada para exportar';
+                $mensagem = __('Nenhuma Noticia Cadastrada para exportar');
             }else{
-                $mensagem = 'Nenhuma Noticia Cadastrada';
+                $mensagem = __('Nenhuma Noticia Cadastrada');
             }
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">'.$mensagem.'</font></b></center>');
         }
         $titulo = 'Listagem de Noticias ('.$i.')';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Administrar Noticias');
+        $this->_Visual->Json_Info_Update('Titulo', __('Administrar Noticias'));
     }
     /**
      * 
@@ -136,10 +136,10 @@ class noticia_AdminControle extends noticia_Controle
     public function Noticias_Add(){
         self::Endereco_Noticia(true);
         // Carrega Config
-        $titulo1    = 'Adicionar Noticia';
-        $titulo2    = 'Salvar Noticia';
+        $titulo1    = __('Adicionar Noticia');
+        $titulo2    = __('Salvar Noticia');
         $formid     = 'formnoticia_Admin_Noticia';
-        $formbt     = 'Salvar';
+        $formbt     = __('Salvar');
         $formlink   = 'noticia/Admin/Noticias_Add2/';
         $campos = Noticia_DAO::Get_Colunas();
         
@@ -155,11 +155,11 @@ class noticia_AdminControle extends noticia_Controle
      * @version 2.0
      */
     public function Noticias_Add2(){
-        $titulo     = 'Noticia Adicionada com Sucesso';
+        $titulo     = __('Noticia Adicionada com Sucesso');
         $dao        = 'Noticia';
         $funcao     = '$this->Noticias();';
-        $sucesso1   = 'Inserção bem sucedida';
-        $sucesso2   = 'Noticia cadastrada com sucesso.';
+        $sucesso1   = __('Inserção bem sucedida');
+        $sucesso2   = __('Noticia cadastrada com sucesso.');
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
     }
@@ -173,9 +173,9 @@ class noticia_AdminControle extends noticia_Controle
         self::Endereco_Noticia(true);
         // Carrega Config
         $titulo1    = 'Editar Noticia (#'.$id.')';
-        $titulo2    = 'Alteração de Noticia';
+        $titulo2    = __('Alteração de Noticia');
         $formid     = 'formnoticia_AdminC_NoticiaEdit';
-        $formbt     = 'Alterar Noticia';
+        $formbt     = __('Alterar Noticia');
         $formlink   = 'noticia/Admin/Noticias_Edit2/'.$id;
         $editar     = Array('Noticia',$id);
         $campos = Noticia_DAO::Get_Colunas();
@@ -192,10 +192,10 @@ class noticia_AdminControle extends noticia_Controle
      */
     public function Noticias_Edit2($id){
         $id = (int) $id;
-        $titulo     = 'Noticia Alterada com Sucesso';
+        $titulo     = __('Noticia Alterada com Sucesso');
         $dao        = Array('Noticia',$id);
         $funcao     = '$this->Noticias();';
-        $sucesso1   = 'Noticia Alterada com Sucesso';
+        $sucesso1   = __('Noticia Alterada com Sucesso');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
@@ -218,8 +218,8 @@ class noticia_AdminControle extends noticia_Controle
     	if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Deletado',
-                "mgs_secundaria" => 'Noticia Deletada com sucesso'
+                "mgs_principal" => __('Deletado'),
+                "mgs_secundaria" => __('Noticia Deletada com sucesso')
             );
     	}else{
             $mensagens = array(
@@ -232,7 +232,7 @@ class noticia_AdminControle extends noticia_Controle
         
         $this->Noticias();
         
-        $this->_Visual->Json_Info_Update('Titulo', 'Noticia deletada com Sucesso');  
+        $this->_Visual->Json_Info_Update('Titulo', __('Noticia deletada com Sucesso'));  
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
     public function Status($id=false){
@@ -251,9 +251,9 @@ class noticia_AdminControle extends noticia_Controle
         $sucesso = $this->_Modelo->db->Sql_Update($resultado);
         if($sucesso){
             if($resultado->status==1){
-                $texto = 'Ativado';
+                $texto = __('Ativado');
             }else{
-                $texto = 'Desativado';
+                $texto = __('Desativado');
             }
             $conteudo = array(
                 'location' => '#status'.$resultado->id,
@@ -261,16 +261,16 @@ class noticia_AdminControle extends noticia_Controle
                 'html' =>  $this->_Visual->Tema_Elementos_Btn('Status'.$resultado->status     ,Array($texto        ,'noticia/Admin/Status/'.$resultado->id.'/'    ,''))
             );
             $this->_Visual->Json_IncluiTipo('Conteudo',$conteudo);
-            $this->_Visual->Json_Info_Update('Titulo','Status Alterado'); 
+            $this->_Visual->Json_Info_Update('Titulo', __('Status Alterado')); 
         }else{
             $mensagens = array(
                 "tipo"              => 'erro',
-                "mgs_principal"     => 'Erro',
-                "mgs_secundaria"    => 'Ocorreu um Erro.'
+                "mgs_principal"     => __('Erro'),
+                "mgs_secundaria"    => __('Ocorreu um Erro.')
             );
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
 
-            $this->_Visual->Json_Info_Update('Titulo','Erro'); 
+            $this->_Visual->Json_Info_Update('Titulo', __('Erro')); 
         }
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
@@ -290,9 +290,9 @@ class noticia_AdminControle extends noticia_Controle
         $sucesso = $this->_Modelo->db->Sql_Update($resultado);
         if($sucesso){
             if($resultado->destaque==1){
-                $texto = 'Em destaque';
+                $texto = __('Em destaque');
             }else{
-                $texto = 'Não está em destaque';
+                $texto = __('Não está em destaque');
             }
             $conteudo = array(
                 'location' => '#destaques'.$resultado->id,
@@ -300,16 +300,16 @@ class noticia_AdminControle extends noticia_Controle
                 'html' =>  $this->_Visual->Tema_Elementos_Btn('Destaque'.$resultado->destaque     ,Array($texto        ,'noticia/Admin/Destaques/'.$resultado->id.'/'    ,''))
             );
             $this->_Visual->Json_IncluiTipo('Conteudo',$conteudo);
-            $this->_Visual->Json_Info_Update('Titulo','Destaque Alterado'); 
+            $this->_Visual->Json_Info_Update('Titulo', __('Destaque Alterado')); 
         }else{
             $mensagens = array(
                 "tipo"              => 'erro',
-                "mgs_principal"     => 'Erro',
-                "mgs_secundaria"    => 'Ocorreu um Erro.'
+                "mgs_principal"     => __('Erro'),
+                "mgs_secundaria"    => __('Ocorreu um Erro.')
             );
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
 
-            $this->_Visual->Json_Info_Update('Titulo','Erro'); 
+            $this->_Visual->Json_Info_Update('Titulo', __('Erro')); 
         }
         $this->_Visual->Json_Info_Update('Historico', false);  
     }

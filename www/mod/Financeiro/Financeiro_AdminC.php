@@ -36,7 +36,7 @@ class Financeiro_AdminControle extends Financeiro_Controle
         $this->usuarios_naodevendo();
         $this->usuarios_devendo();
         // ORGANIZA E MANDA CONTEUDO
-        $this->_Visual->Json_Info_Update('Titulo','Pagamentos');        
+        $this->_Visual->Json_Info_Update('Titulo', __('Pagamentos'));        
     }
     /**
     * Printa todos os financeiros na tela
@@ -90,9 +90,9 @@ class Financeiro_AdminControle extends Financeiro_Controle
             elseif($usuarios[$indice]['nivel_usuario']==5) $niveluser = CONFIG_CLI_5_NOME;
             else                                           $niveluser = CONFIG_CLI_0_NOME;
 
-            if($usuarios[$indice]['nivel_admin']==0)     $niveladmin = 'Usuario';
-            elseif($usuarios[$indice]['nivel_admin']==1) $niveladmin = 'Admin';
-            else                                         $niveladmin = 'Admin GOD';
+            if($usuarios[$indice]['nivel_admin']==0)     $niveladmin = __('Usuario');
+            elseif($usuarios[$indice]['nivel_admin']==1) $niveladmin = __('Admin');
+            else                                         $niveladmin = __('Admin GOD');
 */
 
             $tabela['Id'][$i] = $usuarios[$indice]['id'];
@@ -134,8 +134,8 @@ class Financeiro_AdminControle extends Financeiro_Controle
     	if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Deletado',
-                "mgs_secundaria" => 'Deletado com sucesso'
+                "mgs_principal" => __('Deletado'),
+                "mgs_secundaria" => __('Deletado com sucesso')
             );
     	}else{
             $mensagens = array(
@@ -271,17 +271,17 @@ class Financeiro_AdminControle extends Financeiro_Controle
         if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Depositado com Sucesso',
+                "mgs_principal" => __('Depositado com Sucesso'),
                 "mgs_secundaria" => 'Valor: '.$valor
             );
-            $this->_Visual->Json_Info_Update('Titulo','Depositado com Sucesso');
+            $this->_Visual->Json_Info_Update('Titulo', __('Depositado com Sucesso'));
         }else{
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => $language['mens_erro']['erro'],
                 "mgs_secundaria" => $language['mens_erro']['erro']
             );
-            $this->_Visual->Json_Info_Update('Titulo','Erro ao Depositar');
+            $this->_Visual->Json_Info_Update('Titulo', __('Erro ao Depositar'));
         }
         $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens); 
         // ORGANIZA E MANDA CONTEUDO
@@ -298,17 +298,17 @@ class Financeiro_AdminControle extends Financeiro_Controle
         if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Retirado com Sucesso',
+                "mgs_principal" => __('Retirado com Sucesso'),
                 "mgs_secundaria" => 'Valor: '.$valor
             );
-            $this->_Visual->Json_Info_Update('Titulo','Retirado com Sucesso');
+            $this->_Visual->Json_Info_Update('Titulo', __('Retirado com Sucesso'));
         }else{
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => $language['mens_erro']['erro'],
                 "mgs_secundaria" => $language['mens_erro']['erro']
             );
-            $this->_Visual->Json_Info_Update('Titulo','Erro ao Retirar');
+            $this->_Visual->Json_Info_Update('Titulo', __('Erro ao Retirar'));
         }
         $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens); 
         // ORGANIZA E MANDA CONTEUDO

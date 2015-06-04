@@ -24,7 +24,7 @@ class Financeiro_UsuarioControle extends Financeiro_Controle
     static function Endereco_Financeiro($true=true){
         $registro = \Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
-        $titulo = 'Financeiro';
+        $titulo = __('Financeiro');
         $link = '_Sistema/Principal/Home';
         if($true===true){
             $_Controle->Tema_Endereco($titulo,$link);
@@ -36,7 +36,7 @@ class Financeiro_UsuarioControle extends Financeiro_Controle
         self::Endereco_Financeiro();
         $registro = \Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
-        $titulo = 'À Pagar';
+        $titulo = __('À Pagar');
         $link = 'Financeiro/Usuario/Pagar';
         if($true===true){
             $_Controle->Tema_Endereco($titulo,$link);
@@ -48,7 +48,7 @@ class Financeiro_UsuarioControle extends Financeiro_Controle
         self::Endereco_Financeiro();
         $registro = \Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
-        $titulo = 'À Receber';
+        $titulo = __('À Receber');
         $link = 'Financeiro/Usuario/Receber';
         if($true===true){
             $_Controle->Tema_Endereco($titulo,$link);
@@ -60,7 +60,7 @@ class Financeiro_UsuarioControle extends Financeiro_Controle
         self::Endereco_Financeiro();
         $registro = \Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
-        $titulo = 'Pagas';
+        $titulo = __('Pagas');
         $link = 'Financeiro/Usuario/Pago';
         if($true===true){
             $_Controle->Tema_Endereco($titulo,$link);
@@ -72,7 +72,7 @@ class Financeiro_UsuarioControle extends Financeiro_Controle
         self::Endereco_Financeiro();
         $registro = \Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
-        $titulo = 'Recebidos';
+        $titulo = __('Recebidos');
         $link = 'Financeiro/Usuario/Recebido';
         if($true===true){
             $_Controle->Tema_Endereco($titulo,$link);
@@ -115,7 +115,7 @@ class Financeiro_UsuarioControle extends Financeiro_Controle
         $usuarioid  = $this->_Acl->Usuario_GetID();
         
         // Parametros
-        $titulo = 'Listagem de Contas à pagar';
+        $titulo = __('Listagem de Contas à pagar');
         $where  = Array(
             'entrada_motivo'     => 'Usuario',
             'entrada_motivoid'   => $usuarioid,
@@ -153,7 +153,7 @@ class Financeiro_UsuarioControle extends Financeiro_Controle
         )));
         $usuarioid  = $this->_Acl->Usuario_GetID();
         
-        $titulo = 'Listagem de Contas à Receber';
+        $titulo = __('Listagem de Contas à Receber');
         $where  = Array(
             'saida_motivo'     => 'Usuario',
             'saida_motivoid'   => $usuarioid,
@@ -190,7 +190,7 @@ class Financeiro_UsuarioControle extends Financeiro_Controle
         $usuarioid  = $this->_Acl->Usuario_GetID();
         
         // Parametros
-        $titulo = 'Listagem de Contas Pagas';
+        $titulo = __('Listagem de Contas Pagas');
         $where  = Array(
             'entrada_motivo'     => 'Usuario',
             'entrada_motivoid'   => $usuarioid,
@@ -228,7 +228,7 @@ class Financeiro_UsuarioControle extends Financeiro_Controle
         )));
         $usuarioid  = $this->_Acl->Usuario_GetID();
         
-        $titulo = 'Listagem de Contas Recebidas';
+        $titulo = __('Listagem de Contas Recebidas');
         $where  = Array(
             'saida_motivo'     => 'Usuario',
             'saida_motivoid'   => $usuarioid,
@@ -300,7 +300,7 @@ class Financeiro_UsuarioControle extends Financeiro_Controle
         $this->_Visual->Blocar($html);
         
         
-        $this->_Visual->Bloco_Unico_CriaJanela('Pagar');
+        $this->_Visual->Bloco_Unico_CriaJanela(__('Pagar'));
         
         
         
@@ -375,21 +375,21 @@ class Financeiro_UsuarioControle extends Financeiro_Controle
         
         // Nomes
         if($tema==='Pagar'){
-            $titulo             = 'Conta a Pagar';
-            $titulo_plural      = 'Contas a Pagar';
+            $titulo             = __('Conta a Pagar');
+            $titulo_plural      = __('Contas a Pagar');
             $titulo_unico       = 'contasapagar';
         }else if($tema==='Pago'){
-            $titulo             = 'Conta Paga';
-            $titulo_plural      = 'Contas Pagas';
+            $titulo             = __('Conta Paga');
+            $titulo_plural      = __('Contas Pagas');
             $titulo_unico       = 'contaspagas';
         }else if($tema==='Receber'){
-            $titulo             = 'Conta a Pagar';
-            $titulo_plural      = 'Contas a Pagar';
+            $titulo             = __('Conta a Pagar');
+            $titulo_plural      = __('Contas a Pagar');
             $titulo_unico       = 'contasareceber';
         }else{
             $tema               = 'Recebido';
-            $titulo             = 'Conta Recebida';
-            $titulo_plural      = 'Contas Recebidas';
+            $titulo             = __('Conta Recebida');
+            $titulo_plural      = __('Contas Recebidas');
             $titulo_unico       = 'contasrecebidas';
         }
         

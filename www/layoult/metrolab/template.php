@@ -4,7 +4,7 @@
 <!--[if !IE]><!--> <html lang="pt-br"> <!--<![endif]-->
 <!-- BEGIN HEAD -->
 <head>
-    <title><?php echo SISTEMA_NOME; ?> - <?php if($params['site_titulo']==''){ echo 'Sem Titulo'; }else{ echo $params['site_titulo']; } ?></title>
+    <title><?php echo SISTEMA_NOME; ?> - <?php if($params['site_titulo']==''){ echo __('Sem Titulo'); }else{ echo $params['site_titulo']; } ?></title>
     <meta charset="<?php echo CONFIG_PADRAO_TECLADO; ?>">
     <link rel="icon" type="image/png" href="<?php echo ARQ_URL; ?>favicon.ico"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,7 +13,7 @@
     <?php echo $params['sistema']['css']; ?>
     <link href="<?php echo $params['url_css']; ?>style.css" rel="stylesheet" />
     <link href="<?php echo $params['url_css']; ?>style-responsive.css" rel="stylesheet" />
-    <link href="<?php echo $params['url_css']; ?>style-<?php if(TEMA_COLOR==''){ echo 'blue'; }else{ echo TEMA_COLOR; }?>.css" rel="stylesheet" id="style_color" />
+    <link href="<?php echo $params['url_css']; ?>style-<?php if(TEMA_COLOR==''){ echo __('blue'); }else{ echo TEMA_COLOR; }?>.css" rel="stylesheet" id="style_color" />
 </head>     
        
 <!-- END HEAD -->
@@ -90,7 +90,7 @@
                     <!-- END THEME CUSTOMIZER-->
                     <!-- BEGIN PAGE TITLE & BREADCRUMB-->
                     <h3 class="page-title">
-                      <span id="Framework_Titulo"><?php if($params['site_titulo']==''){ echo 'Sem Titulo'; }else{ echo $params['site_titulo']; } ?></span>
+                      <span id="Framework_Titulo"><?php if($params['site_titulo']==''){ echo __('Sem Titulo'); }else{ echo $params['site_titulo']; } ?></span>
                     </h3>
                     <?php 
                     if(isset($params['widgets']) && isset($params['widgets']['Navegacao_Endereco'])){

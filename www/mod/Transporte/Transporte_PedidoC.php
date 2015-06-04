@@ -40,7 +40,7 @@ class Transporte_PedidoControle extends Transporte_Controle
         $sucesso = $this->_Modelo->db->Sql_Update($resultado);
         if($sucesso){
             if($resultado->status==1){
-                $texto = 'Aceito';
+                $texto = __('Aceito');
                 $pedido = $resultado->pedido;
                 
                 // Caso Aceita o Resto ele Recusa
@@ -63,11 +63,11 @@ class Transporte_PedidoControle extends Transporte_Controle
                 }
                 
             }else{
-                $texto = 'Recusado';
+                $texto = __('Recusado');
             }
             $mensagens = array(
                 "tipo"              => 'sucesso',
-                "mgs_principal"     => 'Sucesso',
+                "mgs_principal"     => __('Sucesso'),
                 "mgs_secundaria"    => $texto.' com Sucesso'
             );
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
@@ -75,12 +75,12 @@ class Transporte_PedidoControle extends Transporte_Controle
         }else{
             $mensagens = array(
                 "tipo"              => 'erro',
-                "mgs_principal"     => 'Erro',
-                "mgs_secundaria"    => 'Ocorreu um Erro.'
+                "mgs_principal"     => __('Erro'),
+                "mgs_secundaria"    => __('Ocorreu um Erro.')
             );
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
 
-            $this->_Visual->Json_Info_Update('Titulo','Erro'); 
+            $this->_Visual->Json_Info_Update('Titulo', __('Erro')); 
         }
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
@@ -90,10 +90,10 @@ class Transporte_PedidoControle extends Transporte_Controle
     public function Arma_Ped_Add(){
         //self::Endereco_Noticia(true);
         // Carrega Config
-        $titulo1    = 'Adicionar Pedido';
-        $titulo2    = 'Salvar Pedido';
+        $titulo1    = __('Adicionar Pedido');
+        $titulo2    = __('Salvar Pedido');
         $formid     = 'formTransporte_Armazem_PEdido';
-        $formbt     = 'Salvar';
+        $formbt     = __('Salvar');
         $formlink   = 'Transporte/Pedido/Arma_Ped_Add2/';
         $campos = Transporte_Armazem_Pedido_DAO::Get_Colunas();
         \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos);
@@ -106,11 +106,11 @@ class Transporte_PedidoControle extends Transporte_Controle
      * @version 2.0
      */
     public function Arma_Ped_Add2(){
-        $titulo     = 'Pedido enviado com Sucesso';
+        $titulo     = __('Pedido enviado com Sucesso');
         $dao        = 'Transporte_Armazem_Pedido';
         $funcao     = '$this->Arma_Ped_Novas();';
-        $sucesso1   = 'Proposta enviada com Sucesso';
-        $sucesso2   = 'Aguarde uma Resposta.';
+        $sucesso1   = __('Proposta enviada com Sucesso');
+        $sucesso2   = __('Aguarde uma Resposta.');
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
     }
@@ -130,8 +130,8 @@ class Transporte_PedidoControle extends Transporte_Controle
         if($pedido===false || $pedido->status!='0'){
             $mensagens = array(
                 "tipo" => 'erro',
-                "mgs_principal" => 'Erro',
-                "mgs_secundaria" => 'Você não pode deletar esse Pedido'
+                "mgs_principal" => __('Erro'),
+                "mgs_secundaria" => __('Você não pode deletar esse Pedido')
             );
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
             $this->_Visual->Json_Info_Update('Historico', false);  
@@ -143,8 +143,8 @@ class Transporte_PedidoControle extends Transporte_Controle
     	if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Deletado',
-                "mgs_secundaria" => 'Pedido Cancelado com Sucesso'
+                "mgs_principal" => __('Deletado'),
+                "mgs_secundaria" => __('Pedido Cancelado com Sucesso')
             );
             
             $pedidos    =  $this->_Modelo->db->Sql_Select('Transporte_Armazem_Pedido_Lance', '{sigla}pedido=\''.$id.'\'');
@@ -160,7 +160,7 @@ class Transporte_PedidoControle extends Transporte_Controle
         
         $this->Pedidos();
         
-        $this->_Visual->Json_Info_Update('Titulo', 'Proposta Cancelada com Sucesso');  
+        $this->_Visual->Json_Info_Update('Titulo', __('Proposta Cancelada com Sucesso'));  
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
     /**
@@ -216,16 +216,16 @@ class Transporte_PedidoControle extends Transporte_Controle
             unset($tabela);
         }else{
             if($export!==false){
-                $mensagem = 'Nenhuma Proposta Aceita para exportar';
+                $mensagem = __('Nenhuma Proposta Aceita para exportar');
             }else{
-                $mensagem = 'Nenhuma Proposta Aceita';
+                $mensagem = __('Nenhuma Proposta Aceita');
             }
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">'.$mensagem.'</font></b></center>');
         }
         $titulo = 'Propostas Aceitas dos Meus Pedidos ('.$i.')';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Propostas Aceitas dos Meus Pedidos');
+        $this->_Visual->Json_Info_Update('Titulo', __('Propostas Aceitas dos Meus Pedidos'));
     }
     public function Arma_Ped_Novas($export=false){
         
@@ -275,16 +275,16 @@ class Transporte_PedidoControle extends Transporte_Controle
             unset($tabela);
         }else{
             if($export!==false){
-                $mensagem = 'Nenhuma nova Proposta para exportar';
+                $mensagem = __('Nenhuma nova Proposta para exportar');
             }else{
-                $mensagem = 'Nenhuma nova Proposta';
+                $mensagem = __('Nenhuma nova Proposta');
             }
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">'.$mensagem.'</font></b></center>');
         }
         $titulo = 'Novas Propostas dos Meus Pedidos ('.$i.')';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Novas Propostas dos Meus Pedidos');
+        $this->_Visual->Json_Info_Update('Titulo', __('Novas Propostas dos Meus Pedidos'));
     }
     public function Arma_Ped_Minhas($export=false){
         $i = 0;
@@ -337,16 +337,16 @@ class Transporte_PedidoControle extends Transporte_Controle
             unset($tabela);
         }else{
             if($export!==false){
-                $mensagem = 'Nenhum Pedido Cadastrado para exportar';
+                $mensagem = __('Nenhum Pedido Cadastrado para exportar');
             }else{
-                $mensagem = 'Nenhum Pedido Cadastrado';
+                $mensagem = __('Nenhum Pedido Cadastrado');
             }
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">'.$mensagem.'</font></b></center>');
         }
         $titulo = 'Listagem dos meus Pedidos ('.$i.')';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Meus Pedidos');
+        $this->_Visual->Json_Info_Update('Titulo', __('Meus Pedidos'));
     }
     public function Arma_Sol_Solicitacoes($export=false){
         $i = 0;
@@ -395,16 +395,16 @@ class Transporte_PedidoControle extends Transporte_Controle
             unset($tabela);
         }else{
             if($export!==false){
-                $mensagem = 'Nenhum Pedido pendente para exportar';
+                $mensagem = __('Nenhum Pedido pendente para exportar');
             }else{
-                $mensagem = 'Nenhum Pedido Pendente';
+                $mensagem = __('Nenhum Pedido Pendente');
             }
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">'.$mensagem.'</font></b></center>');
         }
         $titulo = 'Listagem dos Pedidos Pendentes ('.$i.')';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Pedidos Pendentes');
+        $this->_Visual->Json_Info_Update('Titulo', __('Pedidos Pendentes'));
     }
     
     
@@ -479,16 +479,16 @@ class Transporte_PedidoControle extends Transporte_Controle
             unset($tabela);
         }else{
             if($export!==false){
-                $mensagem = 'Nenhuma Proposta Aceita para exportar';
+                $mensagem = __('Nenhuma Proposta Aceita para exportar');
             }else{
-                $mensagem = 'Nenhuma Proposta Aceita';
+                $mensagem = __('Nenhuma Proposta Aceita');
             }
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">'.$mensagem.'</font></b></center>');
         }
         $titulo = 'Proposta Aceitas ('.$i.')';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Propostas Aceitas');
+        $this->_Visual->Json_Info_Update('Titulo', __('Propostas Aceitas'));
     }
     public function Arma_Sol_PedRecusados($export=false){
         
@@ -535,16 +535,16 @@ class Transporte_PedidoControle extends Transporte_Controle
             unset($tabela);
         }else{
             if($export!==false){
-                $mensagem = 'Nenhuma Proposta Recusada para exportar';
+                $mensagem = __('Nenhuma Proposta Recusada para exportar');
             }else{
-                $mensagem = 'Nenhuma Proposta Recusada';
+                $mensagem = __('Nenhuma Proposta Recusada');
             }
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">'.$mensagem.'</font></b></center>');
         }
         $titulo = 'Proposta Recusadas ('.$i.')';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Propostas Recusadas');
+        $this->_Visual->Json_Info_Update('Titulo', __('Propostas Recusadas'));
     }
     public function Arma_Sol_PedPendente($export=false){
         
@@ -593,16 +593,16 @@ class Transporte_PedidoControle extends Transporte_Controle
             unset($tabela);
         }else{
             if($export!==false){
-                $mensagem = 'Nenhuma Proposta Pendente para exportar';
+                $mensagem = __('Nenhuma Proposta Pendente para exportar');
             }else{
-                $mensagem = 'Nenhuma Proposta Pendente';
+                $mensagem = __('Nenhuma Proposta Pendente');
             }
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">'.$mensagem.'</font></b></center>');
         }
         $titulo = 'Proposta Pendentes ('.$i.')';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Propostas Pendentes');
+        $this->_Visual->Json_Info_Update('Titulo', __('Propostas Pendentes'));
     }
     
     
@@ -626,7 +626,7 @@ class Transporte_PedidoControle extends Transporte_Controle
                 $mensagens = array(
                     "tipo" => 'erro',
                     "mgs_principal" => $language['mens_erro']['erro'],
-                    "mgs_secundaria" => 'Você não pode Adicionar uma Solicitação a este pedido'
+                    "mgs_secundaria" => __('Você não pode Adicionar uma Solicitação a este pedido')
                 );
                 $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
                 return false;
@@ -634,10 +634,10 @@ class Transporte_PedidoControle extends Transporte_Controle
         }
         //self::Endereco_Noticia(true);
         // Carrega Config
-        $titulo1    = 'Adicionar Proposta de Pedido';
-        $titulo2    = 'Salvar Proposta de Pedido';
+        $titulo1    = __('Adicionar Proposta de Pedido');
+        $titulo2    = __('Salvar Proposta de Pedido');
         $formid     = 'formTransporte_Pedido_Arma_Sol_Add';
-        $formbt     = 'Salvar';
+        $formbt     = __('Salvar');
         $formlink   = 'Transporte/Pedido/Arma_Sol_Add2/'.$pedido;
         $campos = Transporte_Armazem_Pedido_Lance_DAO::Get_Colunas();
         self::DAO_Campos_Retira($campos,'pedido');
@@ -662,17 +662,17 @@ class Transporte_PedidoControle extends Transporte_Controle
                 $mensagens = array(
                     "tipo" => 'erro',
                     "mgs_principal" => $language['mens_erro']['erro'],
-                    "mgs_secundaria" => 'Você não pode Adicionar uma Solicitação a este pedido'
+                    "mgs_secundaria" => __('Você não pode Adicionar uma Solicitação a este pedido')
                 );
                 $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
                 return false;
             }
         }
-        $titulo     = 'Proposta enviada com Sucesso';
+        $titulo     = __('Proposta enviada com Sucesso');
         $dao        = 'Transporte_Armazem_Pedido_Lance';
         $funcao     = '$this->Arma_Sol_Solicitacoes();';
-        $sucesso1   = 'Proposta enviada com Sucesso';
-        $sucesso2   = 'Aguarde uma Resposta.';
+        $sucesso1   = __('Proposta enviada com Sucesso');
+        $sucesso2   = __('Aguarde uma Resposta.');
         $alterar    = Array('status'=>'0','fornecedor'=>$pedido->log_user_add,'pedido'=>$pedido->id);
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
     }
@@ -694,7 +694,7 @@ class Transporte_PedidoControle extends Transporte_Controle
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => $language['mens_erro']['erro'],
-                "mgs_secundaria" => 'Você não pode deletar'
+                "mgs_secundaria" => __('Você não pode deletar')
             );
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
             return false;
@@ -705,7 +705,7 @@ class Transporte_PedidoControle extends Transporte_Controle
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => $language['mens_erro']['erro'],
-                "mgs_secundaria" => 'Você não pode deletar'
+                "mgs_secundaria" => __('Você não pode deletar')
             );
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
             return false;
@@ -716,8 +716,8 @@ class Transporte_PedidoControle extends Transporte_Controle
     	if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Deletado',
-                "mgs_secundaria" => 'Proposta Cancelada com Sucesso'
+                "mgs_principal" => __('Deletado'),
+                "mgs_secundaria" => __('Proposta Cancelada com Sucesso')
             );
     	}else{
             $mensagens = array(
@@ -730,7 +730,7 @@ class Transporte_PedidoControle extends Transporte_Controle
         
         $this->Arma_Sol_Solicitacoes();
         
-        $this->_Visual->Json_Info_Update('Titulo', 'Proposta Cancelada com Sucesso');  
+        $this->_Visual->Json_Info_Update('Titulo', __('Proposta Cancelada com Sucesso'));  
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
     
@@ -765,7 +765,7 @@ class Transporte_PedidoControle extends Transporte_Controle
         $sucesso = $this->_Modelo->db->Sql_Update($resultado);
         if($sucesso){
             if($resultado->status==1){
-                $texto = 'Aceito';
+                $texto = __('Aceito');
                 $pedido = $resultado->pedido;
                 
                 // Caso Aceita o Resto ele Recusa
@@ -788,11 +788,11 @@ class Transporte_PedidoControle extends Transporte_Controle
                 }
                 
             }else{
-                $texto = 'Recusado';
+                $texto = __('Recusado');
             }
             $mensagens = array(
                 "tipo"              => 'sucesso',
-                "mgs_principal"     => 'Sucesso',
+                "mgs_principal"     => __('Sucesso'),
                 "mgs_secundaria"    => $texto.' com Sucesso'
             );
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
@@ -800,12 +800,12 @@ class Transporte_PedidoControle extends Transporte_Controle
         }else{
             $mensagens = array(
                 "tipo"              => 'erro',
-                "mgs_principal"     => 'Erro',
-                "mgs_secundaria"    => 'Ocorreu um Erro.'
+                "mgs_principal"     => __('Erro'),
+                "mgs_secundaria"    => __('Ocorreu um Erro.')
             );
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
 
-            $this->_Visual->Json_Info_Update('Titulo','Erro'); 
+            $this->_Visual->Json_Info_Update('Titulo', __('Erro')); 
         }
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
@@ -815,10 +815,10 @@ class Transporte_PedidoControle extends Transporte_Controle
     public function Trans_Ped_Add(){
         //self::Endereco_Noticia(true);
         // Carrega Config
-        $titulo1    = 'Adicionar Pedido';
-        $titulo2    = 'Salvar Pedido';
+        $titulo1    = __('Adicionar Pedido');
+        $titulo2    = __('Salvar Pedido');
         $formid     = 'formTransporte_Transportadora_PEdido';
-        $formbt     = 'Salvar';
+        $formbt     = __('Salvar');
         $formlink   = 'Transporte/Pedido/Trans_Ped_Add2/';
         $campos = Transporte_Transportadora_Pedido_DAO::Get_Colunas();
         \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos);
@@ -831,11 +831,11 @@ class Transporte_PedidoControle extends Transporte_Controle
      * @version 2.0
      */
     public function Trans_Ped_Add2(){
-        $titulo     = 'Pedido enviado com Sucesso';
+        $titulo     = __('Pedido enviado com Sucesso');
         $dao        = 'Transporte_Transportadora_Pedido';
         $funcao     = '$this->Trans_Ped_Novas();';
-        $sucesso1   = 'Proposta enviada com Sucesso';
-        $sucesso2   = 'Aguarde uma Resposta.';
+        $sucesso1   = __('Proposta enviada com Sucesso');
+        $sucesso2   = __('Aguarde uma Resposta.');
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
     }
@@ -855,8 +855,8 @@ class Transporte_PedidoControle extends Transporte_Controle
         if($pedido===false || $pedido->status!='0'){
             $mensagens = array(
                 "tipo" => 'erro',
-                "mgs_principal" => 'Erro',
-                "mgs_secundaria" => 'Você não pode deletar esse Pedido'
+                "mgs_principal" => __('Erro'),
+                "mgs_secundaria" => __('Você não pode deletar esse Pedido')
             );
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
             $this->_Visual->Json_Info_Update('Historico', false);  
@@ -868,8 +868,8 @@ class Transporte_PedidoControle extends Transporte_Controle
     	if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Deletado',
-                "mgs_secundaria" => 'Pedido Cancelado com Sucesso'
+                "mgs_principal" => __('Deletado'),
+                "mgs_secundaria" => __('Pedido Cancelado com Sucesso')
             );
             
             $pedidos    =  $this->_Modelo->db->Sql_Select('Transporte_Transportadora_Pedido_Lance', '{sigla}pedido=\''.$id.'\'');
@@ -885,7 +885,7 @@ class Transporte_PedidoControle extends Transporte_Controle
         
         $this->Pedidos();
         
-        $this->_Visual->Json_Info_Update('Titulo', 'Proposta Cancelada com Sucesso');  
+        $this->_Visual->Json_Info_Update('Titulo', __('Proposta Cancelada com Sucesso'));  
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
     /**
@@ -941,16 +941,16 @@ class Transporte_PedidoControle extends Transporte_Controle
             unset($tabela);
         }else{
             if($export!==false){
-                $mensagem = 'Nenhuma Proposta Aceita para exportar';
+                $mensagem = __('Nenhuma Proposta Aceita para exportar');
             }else{
-                $mensagem = 'Nenhuma Proposta Aceita';
+                $mensagem = __('Nenhuma Proposta Aceita');
             }
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">'.$mensagem.'</font></b></center>');
         }
         $titulo = 'Propostas Aceitas dos Meus Pedidos ('.$i.')';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Propostas Aceitas dos Meus Pedidos');
+        $this->_Visual->Json_Info_Update('Titulo', __('Propostas Aceitas dos Meus Pedidos'));
     }
     public function Trans_Ped_Novas($export=false){
         
@@ -1000,16 +1000,16 @@ class Transporte_PedidoControle extends Transporte_Controle
             unset($tabela);
         }else{
             if($export!==false){
-                $mensagem = 'Nenhuma nova Proposta para exportar';
+                $mensagem = __('Nenhuma nova Proposta para exportar');
             }else{
-                $mensagem = 'Nenhuma nova Proposta';
+                $mensagem = __('Nenhuma nova Proposta');
             }
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">'.$mensagem.'</font></b></center>');
         }
         $titulo = 'Novas Propostas dos Meus Pedidos ('.$i.')';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Novas Propostas dos Meus Pedidos');
+        $this->_Visual->Json_Info_Update('Titulo', __('Novas Propostas dos Meus Pedidos'));
     }
     public function Trans_Ped_Minhas($export=false){
         $i = 0;
@@ -1062,16 +1062,16 @@ class Transporte_PedidoControle extends Transporte_Controle
             unset($tabela);
         }else{
             if($export!==false){
-                $mensagem = 'Nenhum Pedido Cadastrado para exportar';
+                $mensagem = __('Nenhum Pedido Cadastrado para exportar');
             }else{
-                $mensagem = 'Nenhum Pedido Cadastrado';
+                $mensagem = __('Nenhum Pedido Cadastrado');
             }
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">'.$mensagem.'</font></b></center>');
         }
         $titulo = 'Listagem dos meus Pedidos ('.$i.')';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Meus Pedidos');
+        $this->_Visual->Json_Info_Update('Titulo', __('Meus Pedidos'));
     }
     public function Trans_Sol_Solicitacoes($export=false){
         $i = 0;
@@ -1120,16 +1120,16 @@ class Transporte_PedidoControle extends Transporte_Controle
             unset($tabela);
         }else{
             if($export!==false){
-                $mensagem = 'Nenhum Pedido pendente para exportar';
+                $mensagem = __('Nenhum Pedido pendente para exportar');
             }else{
-                $mensagem = 'Nenhum Pedido Pendente';
+                $mensagem = __('Nenhum Pedido Pendente');
             }
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">'.$mensagem.'</font></b></center>');
         }
         $titulo = 'Listagem dos Pedidos Pendentes ('.$i.')';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Pedidos Pendentes');
+        $this->_Visual->Json_Info_Update('Titulo', __('Pedidos Pendentes'));
     }
     
     
@@ -1204,16 +1204,16 @@ class Transporte_PedidoControle extends Transporte_Controle
             unset($tabela);
         }else{
             if($export!==false){
-                $mensagem = 'Nenhuma Proposta Aceita para exportar';
+                $mensagem = __('Nenhuma Proposta Aceita para exportar');
             }else{
-                $mensagem = 'Nenhuma Proposta Aceita';
+                $mensagem = __('Nenhuma Proposta Aceita');
             }
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">'.$mensagem.'</font></b></center>');
         }
         $titulo = 'Proposta Aceitas ('.$i.')';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Propostas Aceitas');
+        $this->_Visual->Json_Info_Update('Titulo', __('Propostas Aceitas'));
     }
     public function Trans_Sol_PedRecusados($export=false){
         
@@ -1260,16 +1260,16 @@ class Transporte_PedidoControle extends Transporte_Controle
             unset($tabela);
         }else{
             if($export!==false){
-                $mensagem = 'Nenhuma Proposta Recusada para exportar';
+                $mensagem = __('Nenhuma Proposta Recusada para exportar');
             }else{
-                $mensagem = 'Nenhuma Proposta Recusada';
+                $mensagem = __('Nenhuma Proposta Recusada');
             }
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">'.$mensagem.'</font></b></center>');
         }
         $titulo = 'Proposta Recusadas ('.$i.')';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Propostas Recusadas');
+        $this->_Visual->Json_Info_Update('Titulo', __('Propostas Recusadas'));
     }
     public function Trans_Sol_PedPendente($export=false){
         
@@ -1318,16 +1318,16 @@ class Transporte_PedidoControle extends Transporte_Controle
             unset($tabela);
         }else{
             if($export!==false){
-                $mensagem = 'Nenhuma Proposta Pendente para exportar';
+                $mensagem = __('Nenhuma Proposta Pendente para exportar');
             }else{
-                $mensagem = 'Nenhuma Proposta Pendente';
+                $mensagem = __('Nenhuma Proposta Pendente');
             }
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">'.$mensagem.'</font></b></center>');
         }
         $titulo = 'Proposta Pendentes ('.$i.')';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Propostas Pendentes');
+        $this->_Visual->Json_Info_Update('Titulo', __('Propostas Pendentes'));
     }
     
     
@@ -1351,7 +1351,7 @@ class Transporte_PedidoControle extends Transporte_Controle
                 $mensagens = array(
                     "tipo" => 'erro',
                     "mgs_principal" => $language['mens_erro']['erro'],
-                    "mgs_secundaria" => 'Você não pode Adicionar uma Solicitação a este pedido'
+                    "mgs_secundaria" => __('Você não pode Adicionar uma Solicitação a este pedido')
                 );
                 $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
                 return false;
@@ -1359,10 +1359,10 @@ class Transporte_PedidoControle extends Transporte_Controle
         }
         //self::Endereco_Noticia(true);
         // Carrega Config
-        $titulo1    = 'Adicionar Proposta de Pedido';
-        $titulo2    = 'Salvar Proposta de Pedido';
+        $titulo1    = __('Adicionar Proposta de Pedido');
+        $titulo2    = __('Salvar Proposta de Pedido');
         $formid     = 'formTransporte_Pedido_Trans_Sol_Add';
-        $formbt     = 'Salvar';
+        $formbt     = __('Salvar');
         $formlink   = 'Transporte/Pedido/Trans_Sol_Add2/'.$pedido;
         $campos = Transporte_Transportadora_Pedido_Lance_DAO::Get_Colunas();
         self::DAO_Campos_Retira($campos,'pedido');
@@ -1387,17 +1387,17 @@ class Transporte_PedidoControle extends Transporte_Controle
                 $mensagens = array(
                     "tipo" => 'erro',
                     "mgs_principal" => $language['mens_erro']['erro'],
-                    "mgs_secundaria" => 'Você não pode Adicionar uma Solicitação a este pedido'
+                    "mgs_secundaria" => __('Você não pode Adicionar uma Solicitação a este pedido')
                 );
                 $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
                 return false;
             }
         }
-        $titulo     = 'Proposta enviada com Sucesso';
+        $titulo     = __('Proposta enviada com Sucesso');
         $dao        = 'Transporte_Transportadora_Pedido_Lance';
         $funcao     = '$this->Trans_Sol_Solicitacoes();';
-        $sucesso1   = 'Proposta enviada com Sucesso';
-        $sucesso2   = 'Aguarde uma Resposta.';
+        $sucesso1   = __('Proposta enviada com Sucesso');
+        $sucesso2   = __('Aguarde uma Resposta.');
         $alterar    = Array('status'=>'0','fornecedor'=>$pedido->log_user_add,'pedido'=>$pedido->id);
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
     }
@@ -1419,7 +1419,7 @@ class Transporte_PedidoControle extends Transporte_Controle
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => $language['mens_erro']['erro'],
-                "mgs_secundaria" => 'Você não pode deletar'
+                "mgs_secundaria" => __('Você não pode deletar')
             );
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
             return false;
@@ -1430,7 +1430,7 @@ class Transporte_PedidoControle extends Transporte_Controle
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => $language['mens_erro']['erro'],
-                "mgs_secundaria" => 'Você não pode deletar'
+                "mgs_secundaria" => __('Você não pode deletar')
             );
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
             return false;
@@ -1441,8 +1441,8 @@ class Transporte_PedidoControle extends Transporte_Controle
     	if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Deletado',
-                "mgs_secundaria" => 'Proposta Cancelada com Sucesso'
+                "mgs_principal" => __('Deletado'),
+                "mgs_secundaria" => __('Proposta Cancelada com Sucesso')
             );
     	}else{
             $mensagens = array(
@@ -1455,7 +1455,7 @@ class Transporte_PedidoControle extends Transporte_Controle
         
         $this->Trans_Sol_Solicitacoes();
         
-        $this->_Visual->Json_Info_Update('Titulo', 'Proposta Cancelada com Sucesso');  
+        $this->_Visual->Json_Info_Update('Titulo', __('Proposta Cancelada com Sucesso'));  
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
 
@@ -1486,7 +1486,7 @@ class Transporte_PedidoControle extends Transporte_Controle
         $sucesso = $this->_Modelo->db->Sql_Update($resultado);
         if($sucesso){
             if($resultado->status==1){
-                $texto = 'Aceito';
+                $texto = __('Aceito');
                 $pedido = $resultado->pedido;
                 
                 // Caso Aceita o Resto ele Recusa
@@ -1509,11 +1509,11 @@ class Transporte_PedidoControle extends Transporte_Controle
                 }
                 
             }else{
-                $texto = 'Recusado';
+                $texto = __('Recusado');
             }
             $mensagens = array(
                 "tipo"              => 'sucesso',
-                "mgs_principal"     => 'Sucesso',
+                "mgs_principal"     => __('Sucesso'),
                 "mgs_secundaria"    => $texto.' com Sucesso'
             );
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
@@ -1521,12 +1521,12 @@ class Transporte_PedidoControle extends Transporte_Controle
         }else{
             $mensagens = array(
                 "tipo"              => 'erro',
-                "mgs_principal"     => 'Erro',
-                "mgs_secundaria"    => 'Ocorreu um Erro.'
+                "mgs_principal"     => __('Erro'),
+                "mgs_secundaria"    => __('Ocorreu um Erro.')
             );
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
 
-            $this->_Visual->Json_Info_Update('Titulo','Erro'); 
+            $this->_Visual->Json_Info_Update('Titulo', __('Erro')); 
         }
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
@@ -1536,10 +1536,10 @@ class Transporte_PedidoControle extends Transporte_Controle
     public function Caminho_Ped_Add(){
         //self::Endereco_Noticia(true);
         // Carrega Config
-        $titulo1    = 'Adicionar Pedido';
-        $titulo2    = 'Salvar Pedido';
+        $titulo1    = __('Adicionar Pedido');
+        $titulo2    = __('Salvar Pedido');
         $formid     = 'formTransporte_Caminhoneiro_PEdido';
-        $formbt     = 'Salvar';
+        $formbt     = __('Salvar');
         $formlink   = 'Transporte/Pedido/Caminho_Ped_Add2/';
         $campos = Transporte_Caminhoneiro_Pedido_DAO::Get_Colunas();
         \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos);
@@ -1552,11 +1552,11 @@ class Transporte_PedidoControle extends Transporte_Controle
      * @version 2.0
      */
     public function Caminho_Ped_Add2(){
-        $titulo     = 'Pedido enviado com Sucesso';
+        $titulo     = __('Pedido enviado com Sucesso');
         $dao        = 'Transporte_Caminhoneiro_Pedido';
         $funcao     = '$this->Caminho_Ped_Novas();';
-        $sucesso1   = 'Proposta enviada com Sucesso';
-        $sucesso2   = 'Aguarde uma Resposta.';
+        $sucesso1   = __('Proposta enviada com Sucesso');
+        $sucesso2   = __('Aguarde uma Resposta.');
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
     }
@@ -1576,8 +1576,8 @@ class Transporte_PedidoControle extends Transporte_Controle
         if($pedido===false || $pedido->status!='0'){
             $mensagens = array(
                 "tipo" => 'erro',
-                "mgs_principal" => 'Erro',
-                "mgs_secundaria" => 'Você não pode deletar esse Pedido'
+                "mgs_principal" => __('Erro'),
+                "mgs_secundaria" => __('Você não pode deletar esse Pedido')
             );
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
             $this->_Visual->Json_Info_Update('Historico', false);  
@@ -1589,8 +1589,8 @@ class Transporte_PedidoControle extends Transporte_Controle
     	if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Deletado',
-                "mgs_secundaria" => 'Pedido Cancelado com Sucesso'
+                "mgs_principal" => __('Deletado'),
+                "mgs_secundaria" => __('Pedido Cancelado com Sucesso')
             );
             
             $pedidos    =  $this->_Modelo->db->Sql_Select('Transporte_Caminhoneiro_Pedido_Lance', '{sigla}pedido=\''.$id.'\'');
@@ -1606,7 +1606,7 @@ class Transporte_PedidoControle extends Transporte_Controle
         
         $this->Pedidos();
         
-        $this->_Visual->Json_Info_Update('Titulo', 'Proposta Cancelada com Sucesso');  
+        $this->_Visual->Json_Info_Update('Titulo', __('Proposta Cancelada com Sucesso'));  
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
     /**
@@ -1662,16 +1662,16 @@ class Transporte_PedidoControle extends Transporte_Controle
             unset($tabela);
         }else{
             if($export!==false){
-                $mensagem = 'Nenhuma Proposta Aceita para exportar';
+                $mensagem = __('Nenhuma Proposta Aceita para exportar');
             }else{
-                $mensagem = 'Nenhuma Proposta Aceita';
+                $mensagem = __('Nenhuma Proposta Aceita');
             }
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">'.$mensagem.'</font></b></center>');
         }
         $titulo = 'Propostas Aceitas dos Meus Pedidos ('.$i.')';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Propostas Aceitas dos Meus Pedidos');
+        $this->_Visual->Json_Info_Update('Titulo', __('Propostas Aceitas dos Meus Pedidos'));
     }
     public function Caminho_Ped_Novas($export=false){
         
@@ -1721,16 +1721,16 @@ class Transporte_PedidoControle extends Transporte_Controle
             unset($tabela);
         }else{
             if($export!==false){
-                $mensagem = 'Nenhuma nova Proposta para exportar';
+                $mensagem = __('Nenhuma nova Proposta para exportar');
             }else{
-                $mensagem = 'Nenhuma nova Proposta';
+                $mensagem = __('Nenhuma nova Proposta');
             }
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">'.$mensagem.'</font></b></center>');
         }
         $titulo = 'Novas Propostas dos Meus Pedidos ('.$i.')';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Novas Propostas dos Meus Pedidos');
+        $this->_Visual->Json_Info_Update('Titulo', __('Novas Propostas dos Meus Pedidos'));
     }
     public function Caminho_Ped_Minhas($export=false){
         $i = 0;
@@ -1783,16 +1783,16 @@ class Transporte_PedidoControle extends Transporte_Controle
             unset($tabela);
         }else{
             if($export!==false){
-                $mensagem = 'Nenhum Pedido Cadastrado para exportar';
+                $mensagem = __('Nenhum Pedido Cadastrado para exportar');
             }else{
-                $mensagem = 'Nenhum Pedido Cadastrado';
+                $mensagem = __('Nenhum Pedido Cadastrado');
             }
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">'.$mensagem.'</font></b></center>');
         }
         $titulo = 'Listagem dos meus Pedidos ('.$i.')';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Meus Pedidos');
+        $this->_Visual->Json_Info_Update('Titulo', __('Meus Pedidos'));
     }
     public function Caminho_Sol_Solicitacoes($export=false){
         $i = 0;
@@ -1841,16 +1841,16 @@ class Transporte_PedidoControle extends Transporte_Controle
             unset($tabela);
         }else{
             if($export!==false){
-                $mensagem = 'Nenhum Pedido pendente para exportar';
+                $mensagem = __('Nenhum Pedido pendente para exportar');
             }else{
-                $mensagem = 'Nenhum Pedido Pendente';
+                $mensagem = __('Nenhum Pedido Pendente');
             }
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">'.$mensagem.'</font></b></center>');
         }
         $titulo = 'Listagem dos Pedidos Pendentes ('.$i.')';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Pedidos Pendentes');
+        $this->_Visual->Json_Info_Update('Titulo', __('Pedidos Pendentes'));
     }
     
     
@@ -1925,16 +1925,16 @@ class Transporte_PedidoControle extends Transporte_Controle
             unset($tabela);
         }else{
             if($export!==false){
-                $mensagem = 'Nenhuma Proposta Aceita para exportar';
+                $mensagem = __('Nenhuma Proposta Aceita para exportar');
             }else{
-                $mensagem = 'Nenhuma Proposta Aceita';
+                $mensagem = __('Nenhuma Proposta Aceita');
             }
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">'.$mensagem.'</font></b></center>');
         }
         $titulo = 'Proposta Aceitas ('.$i.')';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Propostas Aceitas');
+        $this->_Visual->Json_Info_Update('Titulo', __('Propostas Aceitas'));
     }
     public function Caminho_Sol_PedRecusados($export=false){
         
@@ -1981,16 +1981,16 @@ class Transporte_PedidoControle extends Transporte_Controle
             unset($tabela);
         }else{
             if($export!==false){
-                $mensagem = 'Nenhuma Proposta Recusada para exportar';
+                $mensagem = __('Nenhuma Proposta Recusada para exportar');
             }else{
-                $mensagem = 'Nenhuma Proposta Recusada';
+                $mensagem = __('Nenhuma Proposta Recusada');
             }
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">'.$mensagem.'</font></b></center>');
         }
         $titulo = 'Proposta Recusadas ('.$i.')';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Propostas Recusadas');
+        $this->_Visual->Json_Info_Update('Titulo', __('Propostas Recusadas'));
     }
     public function Caminho_Sol_PedPendente($export=false){
         
@@ -2039,16 +2039,16 @@ class Transporte_PedidoControle extends Transporte_Controle
             unset($tabela);
         }else{
             if($export!==false){
-                $mensagem = 'Nenhuma Proposta Pendente para exportar';
+                $mensagem = __('Nenhuma Proposta Pendente para exportar');
             }else{
-                $mensagem = 'Nenhuma Proposta Pendente';
+                $mensagem = __('Nenhuma Proposta Pendente');
             }
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">'.$mensagem.'</font></b></center>');
         }
         $titulo = 'Proposta Pendentes ('.$i.')';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Propostas Pendentes');
+        $this->_Visual->Json_Info_Update('Titulo', __('Propostas Pendentes'));
     }
     
     
@@ -2072,7 +2072,7 @@ class Transporte_PedidoControle extends Transporte_Controle
                 $mensagens = array(
                     "tipo" => 'erro',
                     "mgs_principal" => $language['mens_erro']['erro'],
-                    "mgs_secundaria" => 'Você não pode Adicionar uma Solicitação a este pedido'
+                    "mgs_secundaria" => __('Você não pode Adicionar uma Solicitação a este pedido')
                 );
                 $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
                 return false;
@@ -2080,10 +2080,10 @@ class Transporte_PedidoControle extends Transporte_Controle
         }
         //self::Endereco_Noticia(true);
         // Carrega Config
-        $titulo1    = 'Adicionar Proposta de Pedido';
-        $titulo2    = 'Salvar Proposta de Pedido';
+        $titulo1    = __('Adicionar Proposta de Pedido');
+        $titulo2    = __('Salvar Proposta de Pedido');
         $formid     = 'formTransporte_Pedido_Caminho_Sol_Add';
-        $formbt     = 'Salvar';
+        $formbt     = __('Salvar');
         $formlink   = 'Transporte/Pedido/Caminho_Sol_Add2/'.$pedido;
         $campos = Transporte_Caminhoneiro_Pedido_Lance_DAO::Get_Colunas();
         self::DAO_Campos_Retira($campos,'pedido');
@@ -2108,17 +2108,17 @@ class Transporte_PedidoControle extends Transporte_Controle
                 $mensagens = array(
                     "tipo" => 'erro',
                     "mgs_principal" => $language['mens_erro']['erro'],
-                    "mgs_secundaria" => 'Você não pode Adicionar uma Solicitação a este pedido'
+                    "mgs_secundaria" => __('Você não pode Adicionar uma Solicitação a este pedido')
                 );
                 $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
                 return false;
             }
         }
-        $titulo     = 'Proposta enviada com Sucesso';
+        $titulo     = __('Proposta enviada com Sucesso');
         $dao        = 'Transporte_Caminhoneiro_Pedido_Lance';
         $funcao     = '$this->Caminho_Sol_Solicitacoes();';
-        $sucesso1   = 'Proposta enviada com Sucesso';
-        $sucesso2   = 'Aguarde uma Resposta.';
+        $sucesso1   = __('Proposta enviada com Sucesso');
+        $sucesso2   = __('Aguarde uma Resposta.');
         $alterar    = Array('status'=>'0','transportadora'=>$pedido->log_user_add,'pedido'=>$pedido->id);
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
     }
@@ -2140,7 +2140,7 @@ class Transporte_PedidoControle extends Transporte_Controle
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => $language['mens_erro']['erro'],
-                "mgs_secundaria" => 'Você não pode deletar'
+                "mgs_secundaria" => __('Você não pode deletar')
             );
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
             return false;
@@ -2151,7 +2151,7 @@ class Transporte_PedidoControle extends Transporte_Controle
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => $language['mens_erro']['erro'],
-                "mgs_secundaria" => 'Você não pode deletar'
+                "mgs_secundaria" => __('Você não pode deletar')
             );
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
             return false;
@@ -2162,8 +2162,8 @@ class Transporte_PedidoControle extends Transporte_Controle
     	if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Deletado',
-                "mgs_secundaria" => 'Proposta Cancelada com Sucesso'
+                "mgs_principal" => __('Deletado'),
+                "mgs_secundaria" => __('Proposta Cancelada com Sucesso')
             );
     	}else{
             $mensagens = array(
@@ -2176,7 +2176,7 @@ class Transporte_PedidoControle extends Transporte_Controle
         
         $this->Caminho_Sol_Solicitacoes();
         
-        $this->_Visual->Json_Info_Update('Titulo', 'Proposta Cancelada com Sucesso');  
+        $this->_Visual->Json_Info_Update('Titulo', __('Proposta Cancelada com Sucesso'));  
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
 }

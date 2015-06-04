@@ -193,7 +193,7 @@ class usuario_mensagem_Modelo extends \Framework\App\Modelo
      * @static
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.0.1
+     * @version 3.1.1
      */
     public static function Mensagem_TipoChamado(&$mensagem){
         $tipo = false;
@@ -248,28 +248,28 @@ class usuario_mensagem_Modelo extends \Framework\App\Modelo
             list($valor->tipo,$valor->datapassada)  = usuario_mensagem_Modelo::Mensagem_TipoChamado($valor);
             if($valor->tipo=='nov'){
                 if($tipodemensagem===false || $tipodemensagem=='nov'){
-                    $valor->tipo = 'Chamado Novo';
+                    $valor->tipo = __('Chamado Novo');
                 }else{
                     unset($array[$indice]);
                 }
             }
             else if($valor->tipo=='fin'){
                 if($tipodemensagem===false || $tipodemensagem=='fin'){
-                    $valor->tipo = 'Finalizado';
+                    $valor->tipo = __('Finalizado');
                 }else{
                     unset($array[$indice]);
                 }
             }
             else if($valor->tipo=='lim'){
                 if($tipodemensagem===false || $tipodemensagem=='lim'){
-                    $valor->tipo = 'Tempo Limite';
+                    $valor->tipo = __('Tempo Limite');
                 }else{
                     unset($array[$indice]);
                 }
             }
             else if($valor->tipo=='esg'){
                 if($tipodemensagem===false || $tipodemensagem=='esg'){
-                    $valor->tipo = 'Esgotado';
+                    $valor->tipo = __('Esgotado');
                 }else{
                     unset($array[$indice]);
                 }
@@ -283,7 +283,7 @@ class usuario_mensagem_Modelo extends \Framework\App\Modelo
      * @return boolean
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.0.1
+     * @version 3.1.1
      */
     protected static function Mensagem_RespNova($mensagem=0,$escritor=0){
         $registro = \Framework\App\Registro::getInstacia();

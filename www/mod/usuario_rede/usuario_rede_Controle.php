@@ -39,7 +39,7 @@ class usuario_rede_Controle extends \Framework\App\Controle
         $Visual->Bloco_Menor_CriaConteudo(20);
         
         // Cria Grafico De Primarios SEcundarios terciarios
-        $graficos[0]['titulo'] = 'Medidor de amigos';
+        $graficos[0]['titulo'] = __('Medidor de amigos');
         $graficos[0]['alt'] = 400;
         $graficos[0]['larg'] = 500;
         $graficos[0]['headers'] = array('Nome','Valor');
@@ -48,7 +48,7 @@ class usuario_rede_Controle extends \Framework\App\Controle
         $graficos[0]['itens'][] = array('Terciarios',$valores['terciario']);
         
         // Cria Grafico niveis
-        $graficos[1]['titulo'] = 'Medidor de planos';
+        $graficos[1]['titulo'] = __('Medidor de planos');
         $graficos[1]['alt'] = 400;
         $graficos[1]['larg'] = 400;
         $graficos[1]['headers'] = array('Nome','Valor');
@@ -60,7 +60,7 @@ class usuario_rede_Controle extends \Framework\App\Controle
         unset($valores); // LIMPA MEM�RIA
         // Cria conteudo html no layoult e add numa noja janela
         $Visual->Blocar($Visual->grafico_gerar($graficos));
-        $Visual->Bloco_Unico_CriaJanela('Gráficos');
+        $Visual->Bloco_Unico_CriaJanela(__('Gráficos'));
     }
     static function Ranking_listar(&$modelo, &$Visual){
         $ranking = Array();
@@ -74,7 +74,7 @@ class usuario_rede_Controle extends \Framework\App\Controle
                 ++$i;
             }
             $Visual->Show_Tabela_DataTable($tabela);
-            $Visual->Bloco_Maior_CriaJanela('Ranking','',10);
+            $Visual->Bloco_Maior_CriaJanela(__('Ranking'),'',10);
             unset($tabela);
         }
     }

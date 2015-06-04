@@ -25,7 +25,7 @@ class Musica_MusicaControle extends Musica_Controle
         $registro = \Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
         if($artista===false){
-            $titulo = 'Todas as Musicas';
+            $titulo = __('Todas as Musicas');
             $link   = 'Musica/Musica/Musicas';
         }else{
             $titulo = $artista->nome;
@@ -77,10 +77,10 @@ class Musica_MusicaControle extends Musica_Controle
             $status                                 = $valor->status;
             if($status!=1){
                 $status = 0;
-                $texto = 'Desativado';
+                $texto = __('Desativado');
             }else{
                 $status = 1;
-                $texto = 'Ativado';
+                $texto = __('Ativado');
             }
             $tabela['Funções'][$i]          = $Visual->Tema_Elementos_Btn('Visualizar' ,Array('Visualizar Videos da Musica'    ,$view_url    ,'')).
                                               '<span id="status'.$valor->id.'">'.$Visual->Tema_Elementos_Btn('Status'.$status     ,Array($texto        ,'Musica/Musica/Status/'.$valor->id.'/'    ,'')).'</span>'.
@@ -139,25 +139,25 @@ class Musica_MusicaControle extends Musica_Controle
                 }
                 $where['album'] = $album;
                 self::Endereco_Musica(false, $artista_registro, $album_registro);
-                $titulo_add = 'Adicionar nova Musica desse Album';
+                $titulo_add = __('Adicionar nova Musica desse Album');
                 $url_add = '/'.$artista.'/'.$album;
                 $titulo = 'Listagem de Musicas do Album '.$album_registro->nome;
-                $erro = 'Nenhuma Musica nesse Album';
+                $erro = __('Nenhuma Musica nesse Album');
             }else{
                 $where = Array();
                 self::Endereco_Musica(false, $artista_registro, false);
                 $titulo_add = 'Adicionar nova Musica ao Artista: '.$artista_registro->nome;
                 $url_add = '/'.$artista.'/false';
                 $titulo = 'Listagem de Musicas: '.$artista_registro->nome;
-                $erro = 'Nenhuma Musica desse Artista';
+                $erro = __('Nenhuma Musica desse Artista');
             }
         }else{
             $where = Array();
             self::Endereco_Musica(false, false, false);
-            $titulo_add = 'Adicionar nova Musica';
+            $titulo_add = __('Adicionar nova Musica');
             $url_add = '/false/false';
-            $titulo = 'Listagem de Musicas em Todos os Artistas';
-            $erro = 'Nenhuma Musica nos Artistas';
+            $titulo = __('Listagem de Musicas em Todos os Artistas');
+            $erro = __('Nenhuma Musica nos Artistas');
         }
         $add_url = 'Musica/Musica/Musicas_Add'.$url_add;
         $i = 0;
@@ -214,12 +214,12 @@ class Musica_MusicaControle extends Musica_Controle
         
         // Carrega Config
         $formid     = 'form_Sistema_Admin_Musicas';
-        $formbt     = 'Salvar';
+        $formbt     = __('Salvar');
         $campos     = Musica_DAO::Get_Colunas();
         if($artista===false){
             $formlink   = 'Musica/Musica/Musicas_Add2';
-            $titulo1    = 'Adicionar Musica';
-            $titulo2    = 'Salvar Musica';
+            $titulo1    = __('Adicionar Musica');
+            $titulo2    = __('Salvar Musica');
             self::Endereco_Musica(true, false, false);
         }else{
             $artista = (int) $artista;
@@ -284,10 +284,10 @@ class Musica_MusicaControle extends Musica_Controle
         if($artista==='false') $artista = false;
         if($album==='false') $album = false;
         
-        $titulo     = 'Musica Adicionada com Sucesso';
+        $titulo     = __('Musica Adicionada com Sucesso');
         $dao        = 'Musica';
-        $sucesso1   = 'Inserção bem sucedida';
-        $sucesso2   = 'Musica cadastrada com sucesso.';
+        $sucesso1   = __('Inserção bem sucedida');
+        $sucesso2   = __('Musica cadastrada com sucesso.');
         // Recupera Musicas
         if($artista!==false){
             $artista = (int) $artista;
@@ -323,9 +323,9 @@ class Musica_MusicaControle extends Musica_Controle
         }
         // Carrega Config
         $titulo1    = 'Editar Musica (#'.$id.')';
-        $titulo2    = 'Alteração de Musica';
+        $titulo2    = __('Alteração de Musica');
         $formid     = 'form_Sistema_AdminC_MusicaEdit';
-        $formbt     = 'Alterar Musica';
+        $formbt     = __('Alterar Musica');
         $campos = Musica_DAO::Get_Colunas();
         if($artista!==false){
             $artista_registro = $this->_Modelo->db->Sql_Select('Musica_Album_Artista',Array('id'=>$artista),1);
@@ -374,7 +374,7 @@ class Musica_MusicaControle extends Musica_Controle
         if($album!==false){
             $album    = (int) $album;
         }
-        $titulo     = 'Musica Editada com Sucesso';
+        $titulo     = __('Musica Editada com Sucesso');
         $dao        = Array('Musica',$id);
         // Recupera Musicas
         if($artista!==false){
@@ -386,7 +386,7 @@ class Musica_MusicaControle extends Musica_Controle
         }else{
             $funcao     = '$this->Musicas();';
         }
-        $sucesso1   = 'Musica Alterada com Sucesso.';
+        $sucesso1   = __('Musica Alterada com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);   
@@ -420,8 +420,8 @@ class Musica_MusicaControle extends Musica_Controle
     	if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Deletado',
-                "mgs_secundaria" => 'Musica deletada com sucesso'
+                "mgs_principal" => __('Deletado'),
+                "mgs_secundaria" => __('Musica deletada com sucesso')
             );
     	}else{
             $mensagens = array(
@@ -442,7 +442,7 @@ class Musica_MusicaControle extends Musica_Controle
             $this->Musicas();
         }
         
-        $this->_Visual->Json_Info_Update('Titulo', 'Musica deletada com Sucesso');
+        $this->_Visual->Json_Info_Update('Titulo', __('Musica deletada com Sucesso'));
         $this->_Visual->Json_Info_Update('Historico', false);
     }
     public function Status($id=false){
@@ -461,9 +461,9 @@ class Musica_MusicaControle extends Musica_Controle
         $sucesso = $this->_Modelo->db->Sql_Update($resultado);
         if($sucesso){
             if($resultado->status==1){
-                $texto = 'Ativado';
+                $texto = __('Ativado');
             }else{
-                $texto = 'Desativado';
+                $texto = __('Desativado');
             }
             $conteudo = array(
                 'location' => '#status'.$resultado->id,
@@ -471,16 +471,16 @@ class Musica_MusicaControle extends Musica_Controle
                 'html' =>  $this->_Visual->Tema_Elementos_Btn('Status'.$resultado->status     ,Array($texto        ,'Musica/Musica/Status/'.$resultado->id.'/'    ,''))
             );
             $this->_Visual->Json_IncluiTipo('Conteudo',$conteudo);
-            $this->_Visual->Json_Info_Update('Titulo','Status Alterado'); 
+            $this->_Visual->Json_Info_Update('Titulo', __('Status Alterado')); 
         }else{
             $mensagens = array(
                 "tipo"              => 'erro',
-                "mgs_principal"     => 'Erro',
-                "mgs_secundaria"    => 'Ocorreu um Erro.'
+                "mgs_principal"     => __('Erro'),
+                "mgs_secundaria"    => __('Ocorreu um Erro.')
             );
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
 
-            $this->_Visual->Json_Info_Update('Titulo','Erro'); 
+            $this->_Visual->Json_Info_Update('Titulo', __('Erro')); 
         }
         $this->_Visual->Json_Info_Update('Historico', false);  
     }

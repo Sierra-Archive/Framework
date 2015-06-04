@@ -34,7 +34,7 @@ class Agenda_PastaControle extends Agenda_Controle
     public function Main(){
         $this->Pastas();
         // ORGANIZA E MANDA CONTEUDO
-        $this->_Visual->Json_Info_Update('Titulo','Pastas'); 
+        $this->_Visual->Json_Info_Update('Titulo', __('Pastas')); 
     }
     protected function Endereco_Pasta($true=true){
         if($true===true){
@@ -81,7 +81,7 @@ class Agenda_PastaControle extends Agenda_Controle
         self::Pastas_Listar($export,$this->_Modelo,$this->_Visual);
         
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Arquivo de Pastas');
+        $this->_Visual->Json_Info_Update('Titulo', __('Arquivo de Pastas'));
     }
     static function Pastas_Listar($export=false,&$Modelo,&$Visual,$tipo='Unico'){
         $i = 0;
@@ -136,10 +136,10 @@ class Agenda_PastaControle extends Agenda_Controle
     public function Pastas_Add(){ 
         $this->Endereco_Pasta();  
         // Carrega Config
-        $titulo1    = 'Adicionar Pasta';
-        $titulo2    = 'Salvar Pasta';
+        $titulo1    = __('Adicionar Pasta');
+        $titulo2    = __('Salvar Pasta');
         $formid     = 'form_Sistema_Admin_Pastas';
-        $formbt     = 'Salvar';
+        $formbt     = __('Salvar');
         $formlink   = 'Agenda/Pasta/Pastas_Add2/';
         $campos = Usuario_Agenda_Pasta_DAO::Get_Colunas();
         \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos);
@@ -151,11 +151,11 @@ class Agenda_PastaControle extends Agenda_Controle
      * @version 2.0
      */
     public function Pastas_Add2(){
-        $titulo     = 'Pasta Adicionado com Sucesso';
+        $titulo     = __('Pasta Adicionado com Sucesso');
         $dao        = 'Usuario_Agenda_Pasta';
         $funcao     = '$this->Pastas();';
-        $sucesso1   = 'Inserção bem sucedida';
-        $sucesso2   = 'Pasta cadastrado com sucesso.';
+        $sucesso1   = __('Inserção bem sucedida');
+        $sucesso2   = __('Pasta cadastrado com sucesso.');
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
     }
@@ -169,9 +169,9 @@ class Agenda_PastaControle extends Agenda_Controle
         $this->Endereco_Pasta();
         // Carrega Config
         $titulo1    = 'Editar Pasta (#'.$id.')';
-        $titulo2    = 'Alteração de Pasta';
+        $titulo2    = __('Alteração de Pasta');
         $formid     = 'form_Sistema_AdminC_PastaEdit';
-        $formbt     = 'Alterar Pasta';
+        $formbt     = __('Alterar Pasta');
         $formlink   = 'Agenda/Pasta/Pastas_Edit2/'.$id;
         $editar     = Array('Usuario_Agenda_Pasta',$id);
         $campos = Usuario_Agenda_Pasta_DAO::Get_Colunas();
@@ -184,10 +184,10 @@ class Agenda_PastaControle extends Agenda_Controle
      * @version 2.0
      */
     public function Pastas_Edit2($id){
-        $titulo     = 'Pasta Editado com Sucesso';
+        $titulo     = __('Pasta Editado com Sucesso');
         $dao        = Array('Usuario_Agenda_Pasta',$id);
         $funcao     = '$this->Pastas();';
-        $sucesso1   = 'Pasta Alterado com Sucesso.';
+        $sucesso1   = __('Pasta Alterado com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);      
@@ -209,8 +209,8 @@ class Agenda_PastaControle extends Agenda_Controle
     	if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Deletado',
-                "mgs_secundaria" => 'Pasta Deletado com sucesso'
+                "mgs_principal" => __('Deletado'),
+                "mgs_secundaria" => __('Pasta Deletado com sucesso')
             );
     	}else{
             $mensagens = array(
@@ -223,7 +223,7 @@ class Agenda_PastaControle extends Agenda_Controle
         
         $this->Pastas();
         
-        $this->_Visual->Json_Info_Update('Titulo', 'Pasta deletado com Sucesso');  
+        $this->_Visual->Json_Info_Update('Titulo', __('Pasta deletado com Sucesso'));  
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
     /**
@@ -283,7 +283,7 @@ class Agenda_PastaControle extends Agenda_Controle
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Administrar Cores');
+        $this->_Visual->Json_Info_Update('Titulo', __('Administrar Cores'));
     }
     /**
      * 
@@ -293,10 +293,10 @@ class Agenda_PastaControle extends Agenda_Controle
     public function Cores_Add(){
         $this->Endereco_Cor();
         // Carrega Config
-        $titulo1    = 'Adicionar Cor';
-        $titulo2    = 'Salvar Cor';
+        $titulo1    = __('Adicionar Cor');
+        $titulo2    = __('Salvar Cor');
         $formid     = 'form_Sistema_Admin_Cores';
-        $formbt     = 'Salvar';
+        $formbt     = __('Salvar');
         $formlink   = 'Agenda/Pasta/Cores_Add2/';
         $campos = Usuario_Agenda_Pasta_Cor_DAO::Get_Colunas();
         \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos);
@@ -308,11 +308,11 @@ class Agenda_PastaControle extends Agenda_Controle
      * @version 2.0
      */
     public function Cores_Add2(){
-        $titulo     = 'Cor Adicionada com Sucesso';
+        $titulo     = __('Cor Adicionada com Sucesso');
         $dao        = 'Usuario_Agenda_Pasta_Cor';
         $funcao     = '$this->Cores();';
-        $sucesso1   = 'Inserção bem sucedida';
-        $sucesso2   = 'Cor cadastrada com sucesso.';
+        $sucesso1   = __('Inserção bem sucedida');
+        $sucesso2   = __('Cor cadastrada com sucesso.');
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
     }
@@ -326,9 +326,9 @@ class Agenda_PastaControle extends Agenda_Controle
         $this->Endereco_Cor();
         // Carrega Config
         $titulo1    = 'Editar Cor (#'.$id.')';
-        $titulo2    = 'Alteração de Cor';
+        $titulo2    = __('Alteração de Cor');
         $formid     = 'form_Sistema_AdminC_CorEdit';
-        $formbt     = 'Alterar Cor';
+        $formbt     = __('Alterar Cor');
         $formlink   = 'Agenda/Pasta/Cores_Edit2/'.$id;
         $editar     = Array('Usuario_Agenda_Pasta_Cor',$id);
         $campos = Usuario_Agenda_Pasta_Cor_DAO::Get_Colunas();
@@ -341,10 +341,10 @@ class Agenda_PastaControle extends Agenda_Controle
      * @version 2.0
      */
     public function Cores_Edit2($id){
-        $titulo     = 'Cor Editada com Sucesso';
+        $titulo     = __('Cor Editada com Sucesso');
         $dao        = Array('Usuario_Agenda_Pasta_Cor',$id);
         $funcao     = '$this->Cores();';
-        $sucesso1   = 'Cor Alterada com Sucesso.';
+        $sucesso1   = __('Cor Alterada com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);      
@@ -366,8 +366,8 @@ class Agenda_PastaControle extends Agenda_Controle
     	if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Deletada',
-                "mgs_secundaria" => 'Cor Deletada com sucesso'
+                "mgs_principal" => __('Deletada'),
+                "mgs_secundaria" => __('Cor Deletada com sucesso')
             );
     	}else{
             $mensagens = array(
@@ -380,7 +380,7 @@ class Agenda_PastaControle extends Agenda_Controle
         
         $this->Cores();
         
-        $this->_Visual->Json_Info_Update('Titulo', 'Cor deletada com Sucesso');  
+        $this->_Visual->Json_Info_Update('Titulo', __('Cor deletada com Sucesso'));  
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
 }

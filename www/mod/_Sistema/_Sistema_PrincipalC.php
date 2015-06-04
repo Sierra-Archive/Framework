@@ -11,7 +11,7 @@ class _Sistema_PrincipalControle extends _Sistema_Controle
     /**
      * Home
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.0.1
+     * @version 3.1.1
      */
     public function Home(){
         $tempo = new \Framework\App\Tempo('HOME');   
@@ -30,12 +30,12 @@ class _Sistema_PrincipalControle extends _Sistema_Controle
         }*/
         \Framework\App\Visual::Layoult_Home_Widgets_Show();
         //Carrega Json
-       $this->_Visual->Json_Info_Update('Titulo','Página Principal');
+       $this->_Visual->Json_Info_Update('Titulo', __('Página Principal'));
     }
     /**
      * Busca
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.0.1
+     * @version 3.1.1
      */
     public function Busca($busca=false){
         if($busca===false){
@@ -62,7 +62,7 @@ class _Sistema_PrincipalControle extends _Sistema_Controle
             $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         }
         //Carrega Json
-       $this->_Visual->Json_Info_Update('Titulo','Busca');
+       $this->_Visual->Json_Info_Update('Titulo', __('Busca'));
     }
     public function Relatorio($busca=false){
         if($busca==false){
@@ -85,7 +85,7 @@ class _Sistema_PrincipalControle extends _Sistema_Controle
             $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         }
         //Carrega Json
-       $this->_Visual->Json_Info_Update('Titulo','Busca');
+       $this->_Visual->Json_Info_Update('Titulo', __('Busca'));
     }
     public function Estatistica($busca=false){
         if($busca==false){
@@ -108,7 +108,7 @@ class _Sistema_PrincipalControle extends _Sistema_Controle
             $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         }
         //Carrega Json
-       $this->_Visual->Json_Info_Update('Titulo','Busca');
+       $this->_Visual->Json_Info_Update('Titulo', __('Busca'));
     }
 }
 ?>

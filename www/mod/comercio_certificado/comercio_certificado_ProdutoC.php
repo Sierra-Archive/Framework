@@ -60,7 +60,7 @@ class comercio_certificado_ProdutoControle extends comercio_certificado_Controle
         ));
         
         // ORGANIZA E MANDA CONTEUDO
-        $this->_Visual->Json_Info_Update('Titulo','Propostas');
+        $this->_Visual->Json_Info_Update('Titulo', __('Propostas'));
     }
     /**
      * 
@@ -125,7 +125,7 @@ class comercio_certificado_ProdutoControle extends comercio_certificado_Controle
                 'html'      =>  $formulario
             );
             $this->_Visual->Json_IncluiTipo('Conteudo',$conteudo);
-            $this->_Visual->Json_Info_Update('Titulo', 'Cadastrar Produto');
+            $this->_Visual->Json_Info_Update('Titulo', __('Cadastrar Produto'));
             $this->_Visual->Json_Info_Update('Historico', false);
         }
     }
@@ -194,8 +194,8 @@ class comercio_certificado_ProdutoControle extends comercio_certificado_Controle
         if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Inserção bem sucedida',
-                "mgs_secundaria" => 'Produto cadastrado com sucesso.'
+                "mgs_principal" => __('Inserção bem sucedida'),
+                "mgs_secundaria" => __('Produto cadastrado com sucesso.')
             ); 
         }else{
             $mensagens = array(
@@ -206,7 +206,7 @@ class comercio_certificado_ProdutoControle extends comercio_certificado_Controle
         }
         $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens); 
         // Json
-        $this->_Visual->Json_Info_Update('Titulo', 'Produto Adicionado com Sucesso');  
+        $this->_Visual->Json_Info_Update('Titulo', __('Produto Adicionado com Sucesso'));  
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
     /**
@@ -229,7 +229,7 @@ class comercio_certificado_ProdutoControle extends comercio_certificado_Controle
         if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Produto Alterado com Sucesso',
+                "mgs_principal" => __('Produto Alterado com Sucesso'),
                 "mgs_secundaria" => ''.$_POST["nome"].' teve a alteração bem sucedida'
             );
         }else{
@@ -243,7 +243,7 @@ class comercio_certificado_ProdutoControle extends comercio_certificado_Controle
         
         
         //Json
-        $this->_Visual->Json_Info_Update('Titulo', 'Produto Editado com Sucesso');  
+        $this->_Visual->Json_Info_Update('Titulo', __('Produto Editado com Sucesso'));  
         $this->_Visual->Json_Info_Update('Historico', false);    
     }
     /**
@@ -264,8 +264,8 @@ class comercio_certificado_ProdutoControle extends comercio_certificado_Controle
     	if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Deletado',
-                "mgs_secundaria" => 'Produto Deletado com sucesso'
+                "mgs_principal" => __('Deletado'),
+                "mgs_secundaria" => __('Produto Deletado com sucesso')
             );
     	}else{
             $mensagens = array(
@@ -278,7 +278,7 @@ class comercio_certificado_ProdutoControle extends comercio_certificado_Controle
         
         $this->Main();
         
-        $this->_Visual->Json_Info_Update('Titulo', 'Produto deletado com Sucesso');  
+        $this->_Visual->Json_Info_Update('Titulo', __('Produto deletado com Sucesso'));  
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
     public function Auditorias($produtos=0){
@@ -373,8 +373,8 @@ class comercio_certificado_ProdutoControle extends comercio_certificado_Controle
     	if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Modificado',
-                "mgs_secundaria" => 'Auditorias do Produto editados com sucesso'
+                "mgs_principal" => __('Modificado'),
+                "mgs_secundaria" => __('Auditorias do Produto editados com sucesso')
             );
     	}else{
             $mensagens = array(
@@ -392,7 +392,7 @@ class comercio_certificado_ProdutoControle extends comercio_certificado_Controle
         );
         $this->_Visual->Json_IncluiTipo('Conteudo',$conteudo);
         // Titulo da Pagina
-        $this->_Visual->Json_Info_Update('Titulo', 'Auditoria editada com Sucesso');  
+        $this->_Visual->Json_Info_Update('Titulo', __('Auditoria editada com Sucesso'));  
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
 }

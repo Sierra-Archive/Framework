@@ -19,7 +19,7 @@ require 'PHPMailerAutoload.php';
 $mail = new PHPMailer();
 
 $mail->From     = 'list@example.com';
-$mail->FromName = 'List manager';
+$mail->FromName = __('List manager');
 $mail->Host     = 'smtp1.example.com;smtp2.example.com';
 $mail->Mailer   = 'smtp';
 
@@ -40,7 +40,7 @@ while ($row = mysqli_fetch_assoc($result))
     $text_body  = 'Hello ' . $row['full_name'] . ", \n\n";
     $text_body .= "Your personal photograph to this message.\n\n";
     $text_body .= "Sincerely, \n";
-    $text_body .= 'phpmailer List manager';
+    $text_body .= __('phpmailer List manager');
 
     $mail->Body    = $body;
     $mail->AltBody = $text_body;
@@ -77,7 +77,7 @@ require 'PHPMailerAutoload.php';
 class my_phpmailer extends PHPMailer {
     // Set default variables for all new objects
     public $From     = 'from@example.com';
-    public $FromName = 'Mailer';
+    public $FromName = __('Mailer');
     public $Host     = 'smtp1.example.com;smtp2.example.com';
     public $Mailer   = 'smtp';                         // Alternative to isSMTP()
     public $WordWrap = 75;
@@ -113,17 +113,17 @@ $mail = new my_phpmailer;
 
 // Now you only need to add the necessary stuff
 $mail->addAddress('josh@example.com', 'Josh Adams');
-$mail->Subject = 'Here is the subject';
-$mail->Body    = 'This is the message body';
+$mail->Subject = __('Here is the subject');
+$mail->Body    = __('This is the message body');
 $mail->addAttachment('c:/temp/11-10-00.zip', 'new_name.zip');  // optional name
 
 if(!$mail->send())
 {
-   echo 'There was an error sending the message';
+   echo __('There was an error sending the message');
    exit;
 }
 
-echo 'Message was sent successfully';
+echo __('Message was sent successfully');
 </pre>
 </body>
 </html>

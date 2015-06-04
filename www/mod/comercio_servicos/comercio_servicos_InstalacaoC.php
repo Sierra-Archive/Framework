@@ -90,11 +90,11 @@ class comercio_servicos_InstalacaoControle extends comercio_servicos_Controle
         
         $tabela_colunas = Array();
         
-        $tabela_colunas[] = 'Nome';
-        $tabela_colunas[] = 'Valor Equipamento';
-        $tabela_colunas[] = 'Valor Add de Gás';
-        $tabela_colunas[] = 'Valor Add de Linha';
-        $tabela_colunas[] = 'Funções';
+        $tabela_colunas[] = __('Nome');
+        $tabela_colunas[] = __('Valor Equipamento');
+        $tabela_colunas[] = __('Valor Add de Gás');
+        $tabela_colunas[] = __('Valor Add de Linha');
+        $tabela_colunas[] = __('Funções');
 
         $this->_Visual->Show_Tabela_DataTable_Massiva($tabela_colunas,'comercio_servicos/Instalacao/Btu');
         $titulo = 'Listagem de Btu / Equipamento';
@@ -111,10 +111,10 @@ class comercio_servicos_InstalacaoControle extends comercio_servicos_Controle
     public function Btu_Add(){
         self::Endereco_Btu();
         // Carrega Config
-        $titulo1    = 'Adicionar Btu';
-        $titulo2    = 'Salvar Btu';
+        $titulo1    = __('Adicionar Btu');
+        $titulo2    = __('Salvar Btu');
         $formid     = 'form_Sistema_Instalacao_Btu';
-        $formbt     = 'Salvar';
+        $formbt     = __('Salvar');
         $formlink   = 'comercio_servicos/Instalacao/Btu_Add2/';
         $campos = Comercio_Servicos_Btu_DAO::Get_Colunas();
         \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos);
@@ -127,11 +127,11 @@ class comercio_servicos_InstalacaoControle extends comercio_servicos_Controle
      * @version 2.0
      */
     public function Btu_Add2(){
-        $titulo     = 'Btu adicionado com Sucesso';
+        $titulo     = __('Btu adicionado com Sucesso');
         $dao        = 'Comercio_Servicos_Btu';
         $funcao     = '$this->Btu();';
-        $sucesso1   = 'Inserção bem sucedida';
-        $sucesso2   = 'Btu cadastrado com sucesso.';
+        $sucesso1   = __('Inserção bem sucedida');
+        $sucesso2   = __('Btu cadastrado com sucesso.');
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
     }
@@ -145,9 +145,9 @@ class comercio_servicos_InstalacaoControle extends comercio_servicos_Controle
         self::Endereco_Btu();
         // Carrega Config
         $titulo1    = 'Editar Btu (#'.$id.')';
-        $titulo2    = 'Alteração de Btu';
+        $titulo2    = __('Alteração de Btu');
         $formid     = 'form_Sistema_AdminC_BtuEdit';
-        $formbt     = 'Alterar Btu';
+        $formbt     = __('Alterar Btu');
         $formlink   = 'comercio_servicos/Instalacao/Btu_Edit2/'.$id;
         $editar     = Array('Comercio_Servicos_Btu',$id);
         $campos = Comercio_Servicos_Btu_DAO::Get_Colunas();
@@ -161,10 +161,10 @@ class comercio_servicos_InstalacaoControle extends comercio_servicos_Controle
      * @version 2.0
      */
     public function Btu_Edit2($id){
-        $titulo     = 'Btu editado com Sucesso';
+        $titulo     = __('Btu editado com Sucesso');
         $dao        = Array('Comercio_Servicos_Btu',$id);
         $funcao     = '$this->Btu();';
-        $sucesso1   = 'Btu Alterado com Sucesso.';
+        $sucesso1   = __('Btu Alterado com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);   
@@ -187,8 +187,8 @@ class comercio_servicos_InstalacaoControle extends comercio_servicos_Controle
     	if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Deletado',
-                "mgs_secundaria" => 'Btu deletado com sucesso'
+                "mgs_principal" => __('Deletado'),
+                "mgs_secundaria" => __('Btu deletado com sucesso')
             );
     	}else{
             $mensagens = array(
@@ -201,7 +201,7 @@ class comercio_servicos_InstalacaoControle extends comercio_servicos_Controle
         
         $this->Btu();
         
-        $this->_Visual->Json_Info_Update('Titulo', 'Btu deletado com Sucesso');  
+        $this->_Visual->Json_Info_Update('Titulo', __('Btu deletado com Sucesso'));  
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
     /**
@@ -213,16 +213,16 @@ class comercio_servicos_InstalacaoControle extends comercio_servicos_Controle
         self::Endereco_Suporte(false);
         
         $tabela_colunas = Array();
-        $tabela_colunas[] = 'Tipo';
-        $tabela_colunas[] = 'Valor';
-        $tabela_colunas[] = 'Funções';
+        $tabela_colunas[] = __('Tipo');
+        $tabela_colunas[] = __('Valor');
+        $tabela_colunas[] = __('Funções');
 
         $this->_Visual->Show_Tabela_DataTable_Massiva($tabela_colunas,'comercio_servicos/Instalacao/Suporte');
-        $titulo = 'Listagem de Suportes';
+        $titulo = __('Listagem de Suportes');
         $this->_Visual->Bloco_Unico_CriaJanela($titulo.' (<span id="DataTable_Contador">Carregando...</span>)','',10,Array("link"=>"comercio_servicos/Instalacao/Suporte_Add",'icon'=>'add','nome'=>'Adicionar Suporte'));
         
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Administrar Suportes');
+        $this->_Visual->Json_Info_Update('Titulo', __('Administrar Suportes'));
     }
     /**
      * 
@@ -232,10 +232,10 @@ class comercio_servicos_InstalacaoControle extends comercio_servicos_Controle
     public function Suporte_Add(){
         self::Endereco_Suporte();
         // Carrega Config
-        $titulo1    = 'Adicionar Suporte';
-        $titulo2    = 'Salvar Suporte';
+        $titulo1    = __('Adicionar Suporte');
+        $titulo2    = __('Salvar Suporte');
         $formid     = 'form_Sistema_Instalacao_Suporte';
-        $formbt     = 'Salvar';
+        $formbt     = __('Salvar');
         $formlink   = 'comercio_servicos/Instalacao/Suporte_Add2/';
         $campos = Comercio_Servicos_Suporte_DAO::Get_Colunas();
         \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos);
@@ -248,11 +248,11 @@ class comercio_servicos_InstalacaoControle extends comercio_servicos_Controle
      * @version 2.0
      */
     public function Suporte_Add2(){
-        $titulo     = 'Suporte adicionado com Sucesso';
+        $titulo     = __('Suporte adicionado com Sucesso');
         $dao        = 'Comercio_Servicos_Suporte';
         $funcao     = '$this->Suporte();';
-        $sucesso1   = 'Inserção bem sucedida';
-        $sucesso2   = 'Suporte cadastrado com sucesso.';
+        $sucesso1   = __('Inserção bem sucedida');
+        $sucesso2   = __('Suporte cadastrado com sucesso.');
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
     }
@@ -266,9 +266,9 @@ class comercio_servicos_InstalacaoControle extends comercio_servicos_Controle
         self::Endereco_Suporte();
         // Carrega Config
         $titulo1    = 'Editar Suporte (#'.$id.')';
-        $titulo2    = 'Alteração de Suporte';
+        $titulo2    = __('Alteração de Suporte');
         $formid     = 'form_Sistema_AdminC_SuporteEdit';
-        $formbt     = 'Alterar Suporte';
+        $formbt     = __('Alterar Suporte');
         $formlink   = 'comercio_servicos/Instalacao/Suporte_Edit2/'.$id;
         $editar     = Array('Comercio_Servicos_Suporte',$id);
         $campos = Comercio_Servicos_Suporte_DAO::Get_Colunas();
@@ -282,10 +282,10 @@ class comercio_servicos_InstalacaoControle extends comercio_servicos_Controle
      * @version 2.0
      */
     public function Suporte_Edit2($id){
-        $titulo     = 'Suporte editado com Sucesso';
+        $titulo     = __('Suporte editado com Sucesso');
         $dao        = Array('Comercio_Servicos_Suporte',$id);
         $funcao     = '$this->Suporte();';
-        $sucesso1   = 'Suporte alterado com Sucesso.';
+        $sucesso1   = __('Suporte alterado com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);   
@@ -308,8 +308,8 @@ class comercio_servicos_InstalacaoControle extends comercio_servicos_Controle
     	if($sucesso===true){
             $mensagens = array(
                 "tipo"              => 'sucesso',
-                "mgs_principal"     => 'Deletado',
-                "mgs_secundaria"    => 'Suporte deletado com sucesso'
+                "mgs_principal"     => __('Deletado'),
+                "mgs_secundaria"    => __('Suporte deletado com sucesso')
             );
     	}else{
             $mensagens = array(
@@ -322,7 +322,7 @@ class comercio_servicos_InstalacaoControle extends comercio_servicos_Controle
         
         $this->Suporte();
         
-        $this->_Visual->Json_Info_Update('Titulo', 'Suporte deletado com Sucesso');  
+        $this->_Visual->Json_Info_Update('Titulo', __('Suporte deletado com Sucesso'));  
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
 }

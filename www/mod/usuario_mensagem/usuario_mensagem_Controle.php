@@ -39,27 +39,27 @@ class usuario_mensagem_Controle extends \Framework\App\Controle
         }else{
             if($admin==0){
                 if($tipodemensagem===false){
-                    $texto_vazio = 'Você não possui nenhum chamado.';
+                    $texto_vazio = __('Você não possui nenhum chamado.');
                 }else if($tipodemensagem=='nov'){
-                    $texto_vazio = 'Você não possui chamados novos.';
+                    $texto_vazio = __('Você não possui chamados novos.');
                 }else if($tipodemensagem=='fin'){
-                    $texto_vazio = 'Você não possui nenhum chamados finalizados.';
+                    $texto_vazio = __('Você não possui nenhum chamados finalizados.');
                 }else if($tipodemensagem=='lim'){
-                    $texto_vazio = 'Você não possui nenhum chamados em tempo limite.';
+                    $texto_vazio = __('Você não possui nenhum chamados em tempo limite.');
                 }else if($tipodemensagem=='esg'){
-                    $texto_vazio = 'Você não possui nenhum chamados Esgotado.';
+                    $texto_vazio = __('Você não possui nenhum chamados Esgotado.');
                 }
             }else{
                 if($tipodemensagem===false){
-                    $texto_vazio = 'O sistema não possui nenhum chamado.';
+                    $texto_vazio = __('O sistema não possui nenhum chamado.');
                 }else if($tipodemensagem=='nov'){
-                    $texto_vazio = 'O sistema não possui nenhum chamados novos.';
+                    $texto_vazio = __('O sistema não possui nenhum chamados novos.');
                 }else if($tipodemensagem=='fin'){
-                    $texto_vazio = 'O sistema não possui nenhum chamados finalizados.';
+                    $texto_vazio = __('O sistema não possui nenhum chamados finalizados.');
                 }else if($tipodemensagem=='lim'){
-                    $texto_vazio = 'O sistema não possui nenhum chamados em tempo limite.';
+                    $texto_vazio = __('O sistema não possui nenhum chamados em tempo limite.');
                 }else if($tipodemensagem=='esg'){
-                    $texto_vazio = 'O sistema não possui nenhum chamados Esgotado.';
+                    $texto_vazio = __('O sistema não possui nenhum chamados Esgotado.');
                 }
             }
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">'.$texto_vazio.'</font></b></center>');
@@ -68,27 +68,27 @@ class usuario_mensagem_Controle extends \Framework\App\Controle
         // Titulos
         if($admin==0){
             if($tipodemensagem===false){
-                $titulo  = 'Todos os seus Chamados';
+                $titulo  = __('Todos os seus Chamados');
             }else if($tipodemensagem=='nov'){
-                $titulo  = 'Todos seus novos Chamados';
+                $titulo  = __('Todos seus novos Chamados');
             }else if($tipodemensagem=='fin'){
-                $titulo  = 'Todos seus Chamados Finalizados';
+                $titulo  = __('Todos seus Chamados Finalizados');
             }else if($tipodemensagem=='lim'){
-                $titulo  = 'Todos seus Chamados em tempo limite';
+                $titulo  = __('Todos seus Chamados em tempo limite');
             }else if($tipodemensagem=='esg'){
-                $titulo  = 'Todos seus Chamados em tempo Esgotado';
+                $titulo  = __('Todos seus Chamados em tempo Esgotado');
             }
         }else{
             if($tipodemensagem===false){
-                $titulo  = 'Todos os Chamados do Sistema';
+                $titulo  = __('Todos os Chamados do Sistema');
             }else if($tipodemensagem=='nov'){
-                $titulo  = 'Todos novos Chamados do Sistema';
+                $titulo  = __('Todos novos Chamados do Sistema');
             }else if($tipodemensagem=='fin'){
-                $titulo  = 'Todos Chamados Finalizados do Sistema';
+                $titulo  = __('Todos Chamados Finalizados do Sistema');
             }else if($tipodemensagem=='lim'){
-                $titulo  = 'Todos Chamados em Tempo lLimite do Sistema';
+                $titulo  = __('Todos Chamados em Tempo lLimite do Sistema');
             }else if($tipodemensagem=='esg'){
-                $titulo  = 'Todos Chamados em Tempo Esgotado do Sistema';
+                $titulo  = __('Todos Chamados em Tempo Esgotado do Sistema');
             }
         }
         $titulo  = $titulo.' ('.$i.')';
@@ -106,7 +106,7 @@ class usuario_mensagem_Controle extends \Framework\App\Controle
             $Visual->Bloco_Unico_CriaJanela('Chamados não lidos ('.$i.')','',100);
         }
         // ORGANIZA E MANDA CONTEUDO
-        $this->_Visual->Json_Info_Update('Titulo','Chamados não lidos');  
+        $this->_Visual->Json_Info_Update('Titulo', __('Chamados não lidos'));  
     }
     static function Mensagens_TabelaMostrar(&$Visual,&$mensagens,$admin=0){
         $_Registro = \Framework\App\Registro::getInstacia();
@@ -164,7 +164,7 @@ class usuario_mensagem_Controle extends \Framework\App\Controle
         $amensagem = $this->_Modelo->Mensagem_Retorna($mensagens, $id, 1);
         usuario_mensagem_SuporteControle::Endereco_Suporte_Listar(false,$id);
         $titulo = $amensagem->assunto2;
-        if($titulo=='' || $titulo==NULL) $titulo = 'Conversa sem Assunto';
+        if($titulo=='' || $titulo==NULL) $titulo = __('Conversa sem Assunto');
         // Se tiver config maluco da skafe mostra
         if(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_mensagem_Obs')){
             $where = Array('id'=>$amensagem->cliente);
@@ -208,10 +208,10 @@ class usuario_mensagem_Controle extends \Framework\App\Controle
         if($cliente!=0) self::mysql_AtualizaValor($campos, 'cliente',$cliente);
         
         // Pagina Config
-        $titulo1    = 'Cadastro de Ticket';
-        $titulo2    = 'Enviar Ticket';
+        $titulo1    = __('Cadastro de Ticket');
+        $titulo2    = __('Enviar Ticket');
         $formid     = 'form_Usuario_Mensagem_Suporte';
-        $formbt     = 'Salvar';
+        $formbt     = __('Salvar');
         $formlink   = 'usuario_mensagem/Suporte/Mensagem_inserir';
         \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos);
     
@@ -229,7 +229,7 @@ class usuario_mensagem_Controle extends \Framework\App\Controle
         $form->Input_Novo('Mensagem','mensagem',$mensagemid,'hidden', false, 'obrigatorio');
         $form->TextArea_Novo('Responder','resposta','','','text', 10000, 'obrigatorio');
         $this->_Visual->Blocar($form->retorna_form($language['formularios']['enviar']));
-        $this->_Visual->Bloco_Unico_CriaJanela('Responder Ticket');
+        $this->_Visual->Bloco_Unico_CriaJanela(__('Responder Ticket'));
     }
     /**
      * Formulario Suporter - Inserir Mensagem de FOrmulario
@@ -241,10 +241,10 @@ class usuario_mensagem_Controle extends \Framework\App\Controle
         
         
         $sucesso =  $this->db->Sql_Inserir($objeto);
-        $titulo     = 'Mensagem inserida com Sucesso';
+        $titulo     = __('Mensagem inserida com Sucesso');
         $dao        = 'Usuario_Mensagem';
         $funcao     = false;
-        $sucesso1   = 'Mensagem inserida com Sucesso';
+        $sucesso1   = __('Mensagem inserida com Sucesso');
         $sucesso2   = 'Solicitação de '.\anti_injection($_POST["paranome"]).' foi enviada com sucesso';
         $alterar    = Array('escritor'=>\Framework\App\Acl::Usuario_GetID_Static(),'escritor_nome'=>$this->_Acl->logado_usuario->nome);
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);  
@@ -333,7 +333,7 @@ class usuario_mensagem_Controle extends \Framework\App\Controle
         if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Resposta inserida com Sucesso',
+                "mgs_principal" => __('Resposta inserida com Sucesso'),
                 "mgs_secundaria" => $resposta
             );
         }else{

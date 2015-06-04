@@ -27,7 +27,7 @@ class comercio_certificado_Controle extends \Framework\App\Controle
             \Framework\App\Visual::Layoult_Abas_Carregar('3',$this->_Visual->ErroShow()        ,false);
             \Framework\App\Visual::Layoult_Abas_Carregar('4',$this->_Visual->ErroShow()        ,false);
             \Framework\App\Visual::Layoult_Abas_Carregar('5',$this->_Visual->ErroShow()        ,false);
-            $this->_Visual->Json_Info_Update('Titulo','Listagem de Usuários');
+            $this->_Visual->Json_Info_Update('Titulo', __('Listagem de Usuários'));
             $this->_Visual->Json_Info_Update('Historico',0);
         }else{
             \Framework\App\Visual::Layoult_Abas_Carregar('2',self::Usuarios_Edit('cliente',$id),false);
@@ -36,7 +36,7 @@ class comercio_certificado_Controle extends \Framework\App\Controle
             // Editar Aba 5
             $this->Usuario_UpdateInfo($id);
             // Joga pro Json se nao for o caso de popup
-            $this->_Visual->Json_Info_Update('Titulo','Visualizar Usuário');
+            $this->_Visual->Json_Info_Update('Titulo', __('Visualizar Usuário'));
             $this->_Visual->Json_Info_Update('Historico',0);
         }
     }
@@ -51,7 +51,7 @@ class comercio_certificado_Controle extends \Framework\App\Controle
             \Framework\App\Visual::Layoult_Abas_Carregar('3',$this->_Visual->ErroShow()        ,false);
             \Framework\App\Visual::Layoult_Abas_Carregar('4',$this->_Visual->ErroShow()        ,false);
             \Framework\App\Visual::Layoult_Abas_Carregar('5',$this->_Visual->ErroShow()        ,false);
-            $this->_Visual->Json_Info_Update('Titulo','Listagem de Usuários');
+            $this->_Visual->Json_Info_Update('Titulo', __('Listagem de Usuários'));
         }else{
             \Framework\App\Visual::Layoult_Abas_Carregar('2',self::Usuarios_Edit('cliente',$id),true);
             \Framework\App\Visual::Layoult_Abas_Carregar('3',$this->Propostas_DashBoard($id)   ,false);
@@ -59,7 +59,7 @@ class comercio_certificado_Controle extends \Framework\App\Controle
             // Editar Aba 5
             $this->Usuario_UpdateInfo($id);
             // Titulo
-            $this->_Visual->Json_Info_Update('Titulo','Visualizar Usuário');
+            $this->_Visual->Json_Info_Update('Titulo', __('Visualizar Usuário'));
         }
         // Joga pro Json se nao for o caso de popup
         $this->_Visual->Json_Info_Update('Historico',0);
@@ -112,7 +112,7 @@ class comercio_certificado_Controle extends \Framework\App\Controle
         if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Alteração bem sucedida',
+                "mgs_principal" => __('Alteração bem sucedida'),
                 "mgs_secundaria" => $_POST["nome"].' foi alterado com sucesso.'
             );
         }else{
@@ -206,7 +206,7 @@ class comercio_certificado_Controle extends \Framework\App\Controle
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => $language['mens_erro']['erro'],
-                "mgs_secundaria" => 'Email Inválido'
+                "mgs_secundaria" => __('Email Inválido')
             );
             $Visual->Json_IncluiTipo('Mensagens',$mensagens);
             $this->layoult_zerar = false;
@@ -215,7 +215,7 @@ class comercio_certificado_Controle extends \Framework\App\Controle
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => $language['mens_erro']['erro'],
-                "mgs_secundaria" => 'Email Ja Existe'
+                "mgs_secundaria" => __('Email Ja Existe')
             );
             $Visual->Json_IncluiTipo('Mensagens',$mensagens); 
             $this->layoult_zerar = false;
@@ -224,7 +224,7 @@ class comercio_certificado_Controle extends \Framework\App\Controle
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => $language['mens_erro']['erro'],
-                "mgs_secundaria" => 'Login ja existe'
+                "mgs_secundaria" => __('Login ja existe')
             );
             $Visual->Json_IncluiTipo('Mensagens',$mensagens); 
             $this->layoult_zerar = false;
@@ -246,7 +246,7 @@ class comercio_certificado_Controle extends \Framework\App\Controle
                 $mensagens = array(
                     "tipo" => 'erro',
                     "mgs_principal" => $language['mens_erro']['erro'],
-                    "mgs_secundaria" => 'Senha Inválida'
+                    "mgs_secundaria" => __('Senha Inválida')
                 );
                 $Visual->Json_IncluiTipo('Mensagens',$mensagens);
                 $this->layoult_zerar = false;
@@ -269,8 +269,8 @@ class comercio_certificado_Controle extends \Framework\App\Controle
             if($sucesso===true){
                 $mensagens = array(
                     "tipo" => 'sucesso',
-                    "mgs_principal" => 'Inserção bem sucedida',
-                    "mgs_secundaria" => 'Voce foi cadastrado com sucesso.'
+                    "mgs_principal" => __('Inserção bem sucedida'),
+                    "mgs_secundaria" => __('Voce foi cadastrado com sucesso.')
                 );                
             }else{
                 $mensagens = array(
@@ -303,7 +303,7 @@ class comercio_certificado_Controle extends \Framework\App\Controle
         if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Alteração bem sucedida',
+                "mgs_principal" => __('Alteração bem sucedida'),
                 "mgs_secundaria" => $_POST["nome"].' foi alterado com sucesso.'
             );
         }else{
