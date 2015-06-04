@@ -5,7 +5,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: 3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-06-04 16:38-0300\n"
 "PO-Revision-Date: 2015-06-04 16:38-0300\n"
@@ -100,7 +100,7 @@ msgstr "Erro"
 #: mod/Desenvolvimento/Desenvolvimento_ProjetoC.php:265
 #: mod/Desenvolvimento/Desenvolvimento_ProjetoC.php:348
 msgid "Sucesso"
-msgstr "Sucesso"
+msgstr "Success"
 
 #: App/Visual.php:1304
 msgid "Sistema"
@@ -404,7 +404,7 @@ msgstr "Nenhum Video nesse Artista"
 
 #: mod/Musica/Musica_VideoC.php:202
 msgid "Adicionar novo Video"
-msgstr "Adicionar novo Video"
+msgstr "Add novo Video"
 
 #: mod/Musica/Musica_VideoC.php:204
 msgid "Nenhum Video de nenhum Artista"
@@ -497,7 +497,7 @@ msgstr "Salvar"
 
 #: mod/Musica/Musica_VideoC.php:268
 msgid "Adicionar Video"
-msgstr "Adicionar Video"
+msgstr "Add Video"
 
 #: mod/Musica/Musica_VideoC.php:269
 msgid "Salvar Video"
@@ -591,7 +591,7 @@ msgstr "Video Adicionada com Sucesso"
 #: mod/Desenvolvimento/Desenvolvimento_FrameworkC.php:489
 #: mod/Curso/Curso_CursoC.php:141 mod/Curso/Curso_TurmaC.php:384
 msgid "Inserção bem sucedida"
-msgstr "Inserção bem sucedida"
+msgstr "Successful Integration"
 
 #: mod/Musica/Musica_VideoC.php:349
 msgid "Video cadastrada com sucesso."
@@ -607,7 +607,7 @@ msgstr "Video Editado com Sucesso"
 
 #: mod/Musica/Musica_VideoC.php:477
 msgid "Video Alterado com Sucesso."
-msgstr "Video Alterado com Sucesso."
+msgstr "Video Changed with Success."
 
 #: mod/Musica/Musica_VideoC.php:520 mod/Musica/Musica_MusicaC.php:423
 #: mod/Musica/Musica_AlbumC.php:332 mod/Musica/Musica_ArtistaC.php:201
@@ -683,7 +683,7 @@ msgstr "Video Alterado com Sucesso."
 #: mod/Desenvolvimento/Desenvolvimento_FrameworkC.php:546
 #: mod/Curso/Curso_CursoC.php:198 mod/Curso/Curso_TurmaC.php:584
 msgid "Deletado"
-msgstr "Deletado"
+msgstr "Deleted"
 
 #: mod/Musica/Musica_VideoC.php:521
 msgid "Video deletado com sucesso"
@@ -702,7 +702,7 @@ msgstr "Video deletado com Sucesso"
 #: mod/usuario_veiculo/usuario_veiculo_EquipamentoC.php:184
 #: mod/Curso/Curso_CursoC.php:241 mod/Curso/Curso_TurmaC.php:631
 msgid "Status Alterado"
-msgstr "Status Alterado"
+msgstr "Status Changed"
 
 #: mod/Musica/Musica_VideoC.php:602 mod/Musica/Musica_VideoC.php:641
 #: mod/Musica/Musica_MusicaC.php:479 mod/Musica/Musica_AlbumC.php:384
@@ -740,7 +740,7 @@ msgstr "Em destaque"
 #: mod/Transporte/Transporte_EstradaC.php:285
 #: mod/Evento/Evento_EventoC.php:312
 msgid "Destaque Alterado"
-msgstr "Destaque Alterado"
+msgstr "Destaque Changed"
 
 #: mod/Musica/Musica_MusicaC.php:28
 msgid "Todas as Musicas"
@@ -748,7 +748,7 @@ msgstr "Todas as Musicas"
 
 #: mod/Musica/Musica_MusicaC.php:142
 msgid "Adicionar nova Musica desse Album"
-msgstr "Adicionar nova Musica desse Album"
+msgstr "Add nova Musica desse Album"
 
 #: mod/Musica/Musica_MusicaC.php:145
 msgid "Nenhuma Musica nesse Album"
@@ -760,7 +760,7 @@ msgstr "Nenhuma Musica desse Artista"
 
 #: mod/Musica/Musica_MusicaC.php:157
 msgid "Adicionar nova Musica"
-msgstr "Adicionar nova Musica"
+msgstr "Add nova Musica"
 
 #: mod/Musica/Musica_MusicaC.php:159
 msgid "Listagem de Musicas em Todos os Artistas"
@@ -772,7 +772,7 @@ msgstr "Nenhuma Musica nos Artistas"
 
 #: mod/Musica/Musica_MusicaC.php:221
 msgid "Adicionar Musica"
-msgstr "Adicionar Musica"
+msgstr "Add Musica"
 
 #: mod/Musica/Musica_MusicaC.php:222
 msgid "Salvar Musica"
@@ -816,7 +816,7 @@ msgstr "Todos os Albuns"
 
 #: mod/Musica/Musica_AlbumC.php:121
 msgid "Adicionar novo Album"
-msgstr "Adicionar novo Album"
+msgstr "Add novo Album"
 
 #: mod/Musica/Musica_AlbumC.php:144
 msgid "Listagem de Albuns em Todos os Artistas"
@@ -832,7 +832,7 @@ msgstr "Nenhuma Album nos Artistas"
 
 #: mod/Musica/Musica_AlbumC.php:192
 msgid "Adicionar Album"
-msgstr "Adicionar Album"
+msgstr "Add Album"
 
 #: mod/Musica/Musica_AlbumC.php:193
 msgid "Salvar Album"
@@ -876,7 +876,7 @@ msgstr "Administrar Artistas"
 
 #: mod/Musica/Musica_ArtistaC.php:125
 msgid "Adicionar Artista"
-msgstr "Adicionar Artista"
+msgstr "Add Artista"
 
 #: mod/Musica/Musica_ArtistaC.php:126
 msgid "Salvar Artista"
@@ -884,11 +884,11 @@ msgstr "Salvar Artista"
 
 #: mod/Musica/Musica_ArtistaC.php:141
 msgid "Artista Adicionado com Sucesso"
-msgstr "Artista Adicionado com Sucesso"
+msgstr "Artista Added Successfully"
 
 #: mod/Musica/Musica_ArtistaC.php:145
 msgid "Artista cadastrado com sucesso."
-msgstr "Artista cadastrado com sucesso."
+msgstr "Artista successfully registered."
 
 #: mod/Musica/Musica_ArtistaC.php:159
 msgid "Alteração de Artista"
@@ -904,7 +904,7 @@ msgstr "Artista Editado com Sucesso"
 
 #: mod/Musica/Musica_ArtistaC.php:178
 msgid "Artista Alterado com Sucesso."
-msgstr "Artista Alterado com Sucesso."
+msgstr "Artista Changed com Sucesso."
 
 #: mod/Musica/Musica_ArtistaC.php:202
 msgid "Artista deletado com sucesso"
@@ -1052,16 +1052,16 @@ msgstr "Cadastrar Produto"
 #: mod/comercio_certificado/comercio_certificado_ProdutoC.php:198
 #: mod/comercio/comercio_ProdutoC.php:160
 msgid "Produto cadastrado com sucesso."
-msgstr "Produto cadastrado com sucesso."
+msgstr "Produto successfully registered."
 
 #: mod/comercio_certificado/comercio_certificado_ProdutoC.php:209
 #: mod/comercio/comercio_ProdutoC.php:156
 msgid "Produto Adicionado com Sucesso"
-msgstr "Produto Adicionado com Sucesso"
+msgstr "Produto Added Successfully"
 
 #: mod/comercio_certificado/comercio_certificado_ProdutoC.php:232
 msgid "Produto Alterado com Sucesso"
-msgstr "Produto Alterado com Sucesso"
+msgstr "Produto Changed com Sucesso"
 
 #: mod/comercio_certificado/comercio_certificado_ProdutoC.php:246
 #: mod/comercio/comercio_ProdutoC.php:192
@@ -1125,7 +1125,7 @@ msgstr "Login ja existe"
 #: mod/comercio_certificado/comercio_certificado_Controle.php:273
 #: mod/usuario/usuario_FreeC.php:183 mod/usuario/usuario_AdminC.php:505
 msgid "Voce foi cadastrado com sucesso."
-msgstr "Voce foi cadastrado com sucesso."
+msgstr "Voce foi successfully registered."
 
 #: mod/usuario_rede/usuario_rede_ListarC.php:44
 msgid "Meus Primários"
@@ -1186,7 +1186,7 @@ msgstr "Administração de Banners"
 
 #: mod/banner/banner_AdminC.php:107
 msgid "Adicionar Banner"
-msgstr "Adicionar Banner"
+msgstr "Add Banner"
 
 #: mod/banner/banner_AdminC.php:108
 msgid "Salvar Banner"
@@ -1194,7 +1194,7 @@ msgstr "Salvar Banner"
 
 #: mod/banner/banner_AdminC.php:123
 msgid "Banner Adicionado com Sucesso"
-msgstr "Banner Adicionado com Sucesso"
+msgstr "Banner Added Successfully"
 
 #: mod/banner/banner_AdminC.php:127
 msgid "Banner cadastrada com sucesso."
@@ -1214,7 +1214,7 @@ msgstr "Banner Editado com Sucesso"
 
 #: mod/banner/banner_AdminC.php:159
 msgid "Banner Alterado com Sucesso."
-msgstr "Banner Alterado com Sucesso."
+msgstr "Banner Changed with Success."
 
 #: mod/banner/banner_AdminC.php:188
 #: mod/comercio_servicos/comercio_servicos_ServicoC.php:176
@@ -1234,7 +1234,7 @@ msgstr "Compromissos"
 
 #: mod/Agenda/Agenda_CompromissoC.php:123
 msgid "Adicionar Compromisso"
-msgstr "Adicionar Compromisso"
+msgstr "Add Compromisso"
 
 #: mod/Agenda/Agenda_CompromissoC.php:124
 msgid "Salvar Compromisso"
@@ -1246,7 +1246,7 @@ msgstr "Compromisso Adicionada com Sucesso"
 
 #: mod/Agenda/Agenda_CompromissoC.php:142
 msgid "Compromisso cadastrado com sucesso."
-msgstr "Compromisso cadastrado com sucesso."
+msgstr "Compromisso successfully registered."
 
 #: mod/Agenda/Agenda_CompromissoC.php:156
 msgid "Alteração de Compromisso"
@@ -1282,20 +1282,20 @@ msgstr "Arquivo de Pastas"
 
 #: mod/Agenda/Agenda_PastaC.php:139
 msgid "Adicionar Pasta"
-msgstr "Adicionar Pasta"
+msgstr "Add Pasta"
 
 #: mod/Agenda/Agenda_PastaC.php:140
 #: mod/biblioteca/biblioteca_BibliotecaC.php:264
 msgid "Salvar Pasta"
-msgstr "Salvar Pasta"
+msgstr "Salve Folder"
 
 #: mod/Agenda/Agenda_PastaC.php:154
 msgid "Pasta Adicionado com Sucesso"
-msgstr "Pasta Adicionado com Sucesso"
+msgstr "Pasta Added Successfully"
 
 #: mod/Agenda/Agenda_PastaC.php:158
 msgid "Pasta cadastrado com sucesso."
-msgstr "Pasta cadastrado com sucesso."
+msgstr "Pasta successfully registered."
 
 #: mod/Agenda/Agenda_PastaC.php:172
 msgid "Alteração de Pasta"
@@ -1311,7 +1311,7 @@ msgstr "Pasta Editado com Sucesso"
 
 #: mod/Agenda/Agenda_PastaC.php:190
 msgid "Pasta Alterado com Sucesso."
-msgstr "Pasta Alterado com Sucesso."
+msgstr "Pasta Changed with Success."
 
 #: mod/Agenda/Agenda_PastaC.php:213
 msgid "Pasta Deletado com sucesso"
@@ -1327,7 +1327,7 @@ msgstr "Administrar Cores"
 
 #: mod/Agenda/Agenda_PastaC.php:296
 msgid "Adicionar Cor"
-msgstr "Adicionar Cor"
+msgstr "Add Cor"
 
 #: mod/Agenda/Agenda_PastaC.php:297
 msgid "Salvar Cor"
@@ -1394,7 +1394,7 @@ msgstr "Administrar Cardápios"
 
 #: mod/comercio_venda/comercio_venda_ComposicaoC.php:130
 msgid "Adicionar Cardápio"
-msgstr "Adicionar Cardápio"
+msgstr "Add Cardápio"
 
 #: mod/comercio_venda/comercio_venda_ComposicaoC.php:131
 msgid "Salvar Cardápio"
@@ -1402,11 +1402,11 @@ msgstr "Salvar Cardápio"
 
 #: mod/comercio_venda/comercio_venda_ComposicaoC.php:147
 msgid "Cardápio Adicionado com Sucesso"
-msgstr "Cardápio Adicionado com Sucesso"
+msgstr "Cardápio Added Successfully"
 
 #: mod/comercio_venda/comercio_venda_ComposicaoC.php:151
 msgid "Cardápio cadastrado com sucesso."
-msgstr "Cardápio cadastrado com sucesso."
+msgstr "Cardápio successfully registered."
 
 #: mod/comercio_venda/comercio_venda_ComposicaoC.php:165
 msgid "Alteração de Cardápio"
@@ -1422,7 +1422,7 @@ msgstr "Cardápio Editado com Sucesso"
 
 #: mod/comercio_venda/comercio_venda_ComposicaoC.php:184
 msgid "Cardápio Alterado com Sucesso."
-msgstr "Cardápio Alterado com Sucesso."
+msgstr "Cardápio Changed with Success."
 
 #: mod/comercio_venda/comercio_venda_ComposicaoC.php:208
 msgid "Cardápio Deletado com sucesso"
@@ -1446,7 +1446,7 @@ msgstr "Administrar Caixas"
 
 #: mod/comercio_venda/comercio_venda_CarrinhoC.php:116
 msgid "Adicionar Caixa"
-msgstr "Adicionar Caixa"
+msgstr "Add Caixa"
 
 #: mod/comercio_venda/comercio_venda_CarrinhoC.php:117
 msgid "Salvar Caixa"
@@ -1458,11 +1458,11 @@ msgstr "left"
 
 #: mod/comercio_venda/comercio_venda_CarrinhoC.php:136
 msgid "Caixa Adicionado com Sucesso"
-msgstr "Caixa Adicionado com Sucesso"
+msgstr "Caixa Added Successfully"
 
 #: mod/comercio_venda/comercio_venda_CarrinhoC.php:140
 msgid "Caixa cadastrado com sucesso."
-msgstr "Caixa cadastrado com sucesso."
+msgstr "Caixa successfully registered."
 
 #: mod/comercio_venda/comercio_venda_CarrinhoC.php:161
 msgid "Alteração de Caixa"
@@ -1478,7 +1478,7 @@ msgstr "Caixa Editado com Sucesso"
 
 #: mod/comercio_venda/comercio_venda_CarrinhoC.php:186
 msgid "Caixa Alterado com Sucesso."
-msgstr "Caixa Alterado com Sucesso."
+msgstr "Caixa Changed with Success."
 
 #: mod/comercio_venda/comercio_venda_CarrinhoC.php:225
 msgid "Caixa Deletado com sucesso"
@@ -1524,7 +1524,7 @@ msgstr "Administrar Mesas"
 
 #: mod/comercio_venda/comercio_venda_CarrinhoC.php:586
 msgid "Adicionar Mesa"
-msgstr "Adicionar Mesa"
+msgstr "Add Mesa"
 
 #: mod/comercio_venda/comercio_venda_CarrinhoC.php:587
 msgid "Salvar Mesa"
@@ -1576,7 +1576,7 @@ msgstr "Administrar Paises"
 
 #: mod/locais/locais_localidadesC.php:223
 msgid "Adicionar Pais"
-msgstr "Adicionar Pais"
+msgstr "Add Pais"
 
 #: mod/locais/locais_localidadesC.php:224
 msgid "Salvar Pais"
@@ -1584,11 +1584,11 @@ msgstr "Salvar Pais"
 
 #: mod/locais/locais_localidadesC.php:239
 msgid "Pais Adicionado com Sucesso"
-msgstr "Pais Adicionado com Sucesso"
+msgstr "Pais Added Successfully"
 
 #: mod/locais/locais_localidadesC.php:243
 msgid "Pais cadastrado com sucesso."
-msgstr "Pais cadastrado com sucesso."
+msgstr "Pais successfully registered."
 
 #: mod/locais/locais_localidadesC.php:256
 msgid "Alteração de Pais"
@@ -1604,7 +1604,7 @@ msgstr "Pais Editado com Sucesso"
 
 #: mod/locais/locais_localidadesC.php:275
 msgid "Pais Alterado com Sucesso."
-msgstr "Pais Alterado com Sucesso."
+msgstr "Pais Changed with Success."
 
 #: mod/locais/locais_localidadesC.php:299
 msgid "Pais deletado com sucesso"
@@ -1620,7 +1620,7 @@ msgstr "Administrar Estados"
 
 #: mod/locais/locais_localidadesC.php:351
 msgid "Adicionar Estado"
-msgstr "Adicionar Estado"
+msgstr "Add Estado"
 
 #: mod/locais/locais_localidadesC.php:352
 msgid "Salvar Estado"
@@ -1628,11 +1628,11 @@ msgstr "Salvar Estado"
 
 #: mod/locais/locais_localidadesC.php:367
 msgid "Estado Adicionado com Sucesso"
-msgstr "Estado Adicionado com Sucesso"
+msgstr "Estado Added Successfully"
 
 #: mod/locais/locais_localidadesC.php:371
 msgid "Estado cadastrado com sucesso."
-msgstr "Estado cadastrado com sucesso."
+msgstr "Estado successfully registered."
 
 #: mod/locais/locais_localidadesC.php:384
 msgid "Alteração de Estado"
@@ -1648,7 +1648,7 @@ msgstr "Estado Editado com Sucesso"
 
 #: mod/locais/locais_localidadesC.php:403
 msgid "Estado Alterado com Sucesso."
-msgstr "Estado Alterado com Sucesso."
+msgstr "Estado Changed with Success."
 
 #: mod/locais/locais_localidadesC.php:427
 msgid "Estado deletado com sucesso"
@@ -1664,7 +1664,7 @@ msgstr "Administrar Cidades"
 
 #: mod/locais/locais_localidadesC.php:479
 msgid "Adicionar Cidade"
-msgstr "Adicionar Cidade"
+msgstr "Add Cidade"
 
 #: mod/locais/locais_localidadesC.php:480
 msgid "Salvar Cidade"
@@ -1708,7 +1708,7 @@ msgstr "Administrar Bairros"
 
 #: mod/locais/locais_localidadesC.php:607
 msgid "Adicionar Bairro"
-msgstr "Adicionar Bairro"
+msgstr "Add Bairro"
 
 #: mod/locais/locais_localidadesC.php:608
 msgid "Salvar Bairro"
@@ -1716,11 +1716,11 @@ msgstr "Salvar Bairro"
 
 #: mod/locais/locais_localidadesC.php:623
 msgid "Bairro Adicionado com Sucesso"
-msgstr "Bairro Adicionado com Sucesso"
+msgstr "Bairro Added Successfully"
 
 #: mod/locais/locais_localidadesC.php:627
 msgid "Bairro cadastrado com sucesso."
-msgstr "Bairro cadastrado com sucesso."
+msgstr "Bairro successfully registered."
 
 #: mod/locais/locais_localidadesC.php:640
 msgid "Alteração de Bairro"
@@ -1736,7 +1736,7 @@ msgstr "Bairro Editado com Sucesso"
 
 #: mod/locais/locais_localidadesC.php:659
 msgid "Bairro Alterado com Sucesso."
-msgstr "Bairro Alterado com Sucesso."
+msgstr "Bairro Changed with Success."
 
 #: mod/locais/locais_localidadesC.php:683
 msgid "Bairro deletado com sucesso"
@@ -1752,7 +1752,7 @@ msgstr "Administrar Locais"
 
 #: mod/locais/locais_locaisC.php:87
 msgid "Adicionar Local"
-msgstr "Adicionar Local"
+msgstr "Add Local"
 
 #: mod/locais/locais_locaisC.php:88
 msgid "Salvar Local"
@@ -1760,11 +1760,11 @@ msgstr "Salvar Local"
 
 #: mod/locais/locais_locaisC.php:103
 msgid "Local Adicionado com Sucesso"
-msgstr "Local Adicionado com Sucesso"
+msgstr "Local Added Successfully"
 
 #: mod/locais/locais_locaisC.php:107
 msgid "Local cadastrado com sucesso."
-msgstr "Local cadastrado com sucesso."
+msgstr "Local successfully registered."
 
 #: mod/locais/locais_locaisC.php:121
 msgid "Alteração de Local"
@@ -1780,7 +1780,7 @@ msgstr "Local Editado com Sucesso"
 
 #: mod/locais/locais_locaisC.php:140
 msgid "Local Alterado com Sucesso."
-msgstr "Local Alterado com Sucesso."
+msgstr "Local Changed with Success."
 
 #: mod/locais/locais_locaisC.php:164
 msgid "Local deletado com sucesso"
@@ -1796,7 +1796,7 @@ msgstr "Administrar Ações"
 
 #: mod/social/social_AcaoC.php:137
 msgid "Adicionar Ação"
-msgstr "Adicionar Ação"
+msgstr "Add Ação"
 
 #: mod/social/social_AcaoC.php:138
 msgid "Salvar Ação"
@@ -1808,7 +1808,7 @@ msgstr "Ação adicionada com Sucesso"
 
 #: mod/social/social_AcaoC.php:157
 msgid "Ação cadastrado com sucesso."
-msgstr "Ação cadastrado com sucesso."
+msgstr "Ação successfully registered."
 
 #: mod/social/social_AcaoC.php:178
 msgid "Alteração de Ação"
@@ -1824,7 +1824,7 @@ msgstr "Ação editado com Sucesso"
 
 #: mod/social/social_AcaoC.php:197
 msgid "Ação Alterado com Sucesso."
-msgstr "Ação Alterado com Sucesso."
+msgstr "Ação Changed with Success."
 
 #: mod/social/social_AcaoC.php:221
 msgid "Ação deletada com sucesso"
@@ -1875,7 +1875,7 @@ msgstr "Administrar Pessoas"
 
 #: mod/social/usuario_social_PersonaC.php:153
 msgid "Adicionar Pessoa"
-msgstr "Adicionar Pessoa"
+msgstr "Add Pessoa"
 
 #: mod/social/usuario_social_PersonaC.php:154
 msgid "Salvar Pessoa"
@@ -1925,7 +1925,7 @@ msgstr "Administrar Comentários do Persona"
 
 #: mod/social/usuario_social_PersonaC.php:329
 msgid "Adicionar Comentário de Persona"
-msgstr "Adicionar Comentário de Persona"
+msgstr "Add Comentário de Persona"
 
 #: mod/social/usuario_social_PersonaC.php:330
 msgid "Salvar Comentário de Persona"
@@ -1933,11 +1933,11 @@ msgstr "Salvar Comentário de Persona"
 
 #: mod/social/usuario_social_PersonaC.php:347
 msgid "Comentário do Persona Adicionado com Sucesso"
-msgstr "Comentário do Persona Adicionado com Sucesso"
+msgstr "Comentário do Persona Added Successfully"
 
 #: mod/social/usuario_social_PersonaC.php:351
 msgid "Comentário de Persona cadastrado com sucesso."
-msgstr "Comentário de Persona cadastrado com sucesso."
+msgstr "Comentário de Persona successfully registered."
 
 #: mod/social/usuario_social_PersonaC.php:371
 msgid "Alteração de Comentário do Persona"
@@ -1953,7 +1953,7 @@ msgstr "Comentário de Persona Editado com Sucesso"
 
 #: mod/social/usuario_social_PersonaC.php:393
 msgid "Comentário de Persona Alterado com Sucesso."
-msgstr "Comentário de Persona Alterado com Sucesso."
+msgstr "Comentário de Persona Changed with Success."
 
 #: mod/social/usuario_social_PersonaC.php:420
 msgid "Comentário do Persona Deletado com sucesso"
@@ -1969,7 +1969,7 @@ msgstr "Administrar Ficada de Pessoas"
 
 #: mod/social/usuario_social_PersonaC.php:490
 msgid "Adicionar Ficada de Pessoa"
-msgstr "Adicionar Ficada de Pessoa"
+msgstr "Add Ficada de Pessoa"
 
 #: mod/social/usuario_social_PersonaC.php:491
 msgid "Salvar Ficada de Pessoa"
@@ -2001,7 +2001,7 @@ msgstr "Ficada de Pessoa deletada com sucesso"
 
 #: mod/social/usuario_social_PersonaC.php:705
 msgid "Adicionar Comentário de Ficada"
-msgstr "Adicionar Comentário de Ficada"
+msgstr "Add Comentário de Ficada"
 
 #: mod/social/usuario_social_PersonaC.php:706
 msgid "Salvar Comentário de Ficada"
@@ -2073,7 +2073,7 @@ msgstr "Administrar Caracteristicas"
 
 #: mod/social/social_CaracteristicaC.php:111
 msgid "Adicionar Caracteristica"
-msgstr "Adicionar Caracteristica"
+msgstr "Add Caracteristica"
 
 #: mod/social/social_CaracteristicaC.php:112
 msgid "Salvar Caracteristica"
@@ -2085,7 +2085,7 @@ msgstr "Caracteristica adicionada com Sucesso"
 
 #: mod/social/social_CaracteristicaC.php:131
 msgid "Caracteristica cadastrado com sucesso."
-msgstr "Caracteristica cadastrado com sucesso."
+msgstr "Caracteristica successfully registered."
 
 #: mod/social/social_CaracteristicaC.php:145
 msgid "Alteração de Caracteristica"
@@ -2101,7 +2101,7 @@ msgstr "Caracteristica editada com Sucesso"
 
 #: mod/social/social_CaracteristicaC.php:164
 msgid "Caracteristica Alterado com Sucesso."
-msgstr "Caracteristica Alterado com Sucesso."
+msgstr "Caracteristica Changed with Success."
 
 #: mod/social/social_CaracteristicaC.php:188
 msgid "Caracteristica deletada com sucesso"
@@ -2138,13 +2138,13 @@ msgstr "Listagem de Anexos"
 #: mod/biblioteca/biblioteca_BibliotecaC.php:408
 #: mod/usuario/usuario_TelefoneC.php:229 mod/usuario/usuario_AnexoC.php:133
 msgid "Upload com Sucesso"
-msgstr "Upload com Sucesso"
+msgstr "Upload Successful"
 
 #: mod/usuario_mensagem/usuario_mensagem_SuporteC.php:239
 #: mod/biblioteca/biblioteca_BibliotecaC.php:429
 #: mod/usuario/usuario_TelefoneC.php:232 mod/usuario/usuario_AnexoC.php:162
 msgid "Erro com Upload"
-msgstr "Erro com Upload"
+msgstr "Error with Upload"
 
 #: mod/usuario_mensagem/usuario_mensagem_OrigemC.php:41
 msgid "Origens"
@@ -2156,7 +2156,7 @@ msgstr "Administrar Origens"
 
 #: mod/usuario_mensagem/usuario_mensagem_OrigemC.php:75
 msgid "Adicionar Origem"
-msgstr "Adicionar Origem"
+msgstr "Add Origem"
 
 #: mod/usuario_mensagem/usuario_mensagem_OrigemC.php:76
 msgid "Salvar Origem"
@@ -2184,7 +2184,7 @@ msgstr "Origem Editada com Sucesso"
 
 #: mod/usuario_mensagem/usuario_mensagem_OrigemC.php:128
 msgid "Origem Alterado com Sucesso."
-msgstr "Origem Alterado com Sucesso."
+msgstr "Origem Changed with Success."
 
 #: mod/usuario_mensagem/usuario_mensagem_OrigemC.php:152
 msgid "Origem deletada com sucesso"
@@ -2386,7 +2386,7 @@ msgstr "Administrar Setores"
 
 #: mod/usuario_mensagem/usuario_mensagem_SetorC.php:73
 msgid "Adicionar Setor"
-msgstr "Adicionar Setor"
+msgstr "Add Setor"
 
 #: mod/usuario_mensagem/usuario_mensagem_SetorC.php:74
 msgid "Salvar Setor"
@@ -2398,15 +2398,15 @@ msgstr "Alteração de Setor"
 
 #: mod/usuario_mensagem/usuario_mensagem_SetorC.php:114
 msgid "Setor Adicionado com Sucesso"
-msgstr "Setor Adicionado com Sucesso"
+msgstr "Setor Added Successfully"
 
 #: mod/usuario_mensagem/usuario_mensagem_SetorC.php:118
 msgid "Setor cadastrado com sucesso."
-msgstr "Setor cadastrado com sucesso."
+msgstr "Setor successfully registered."
 
 #: mod/usuario_mensagem/usuario_mensagem_SetorC.php:142
 msgid "Setor Alterado com Sucesso"
-msgstr "Setor Alterado com Sucesso"
+msgstr "Setor Changed with Success"
 
 #: mod/usuario_mensagem/usuario_mensagem_SetorC.php:154
 msgid "Setor Editado com Sucesso"
@@ -2430,7 +2430,7 @@ msgstr "Administrar Assuntos"
 
 #: mod/usuario_mensagem/usuario_mensagem_AssuntoC.php:73
 msgid "Adicionar Assunto"
-msgstr "Adicionar Assunto"
+msgstr "Add Assunto"
 
 #: mod/usuario_mensagem/usuario_mensagem_AssuntoC.php:74
 msgid "Salvar Assunto"
@@ -2438,11 +2438,11 @@ msgstr "Salvar Assunto"
 
 #: mod/usuario_mensagem/usuario_mensagem_AssuntoC.php:89
 msgid "Assunto Adicionado com Sucesso"
-msgstr "Assunto Adicionado com Sucesso"
+msgstr "Assunto Added Successfully"
 
 #: mod/usuario_mensagem/usuario_mensagem_AssuntoC.php:93
 msgid "Assunto cadastrado com sucesso."
-msgstr "Assunto cadastrado com sucesso."
+msgstr "Assunto successfully registered."
 
 #: mod/usuario_mensagem/usuario_mensagem_AssuntoC.php:117
 msgid "Alteração de Assunto"
@@ -2450,7 +2450,7 @@ msgstr "Alteração de Assunto"
 
 #: mod/usuario_mensagem/usuario_mensagem_AssuntoC.php:142
 msgid "Assunto Alterado com Sucesso"
-msgstr "Assunto Alterado com Sucesso"
+msgstr "Assunto Changed with Success"
 
 #: mod/usuario_mensagem/usuario_mensagem_AssuntoC.php:154
 msgid "Assunto Editado com Sucesso"
@@ -2526,7 +2526,7 @@ msgstr "Administrar "
 #: mod/comercio_servicos/comercio_servicos_ServicoC.php:112
 #: mod/categoria/categoria_AdminC.php:110
 msgid "Adicionado com Sucesso"
-msgstr "Adicionado com Sucesso"
+msgstr "Added Successfully"
 
 #: mod/comercio_servicos/comercio_servicos_ServicoC.php:116
 #: mod/categoria/categoria_AdminC.php:114
@@ -2537,12 +2537,12 @@ msgstr "Cadastrado com sucesso."
 #: mod/biblioteca/biblioteca_BibliotecaC.php:346
 #: mod/categoria/categoria_AdminC.php:198
 msgid "Editado com Sucesso"
-msgstr "Editado com Sucesso"
+msgstr "Edited with Success"
 
 #: mod/comercio_servicos/comercio_servicos_ServicoC.php:153
 #: mod/categoria/categoria_AdminC.php:201
 msgid "Alterado com Sucesso."
-msgstr "Alterado com Sucesso."
+msgstr "Changed with Success."
 
 #: mod/comercio_servicos/comercio_servicos_ServicoC.php:189
 #: mod/categoria/categoria_AdminC.php:247
@@ -2551,19 +2551,19 @@ msgstr "Deletado com Sucesso"
 
 #: mod/comercio_servicos/comercio_servicos_InstalacaoC.php:94
 msgid "Valor Equipamento"
-msgstr "Valor Equipamento"
+msgstr "Value Equipamento"
 
 #: mod/comercio_servicos/comercio_servicos_InstalacaoC.php:95
 msgid "Valor Add de Gás"
-msgstr "Valor Add de Gás"
+msgstr "Value Add de Gás"
 
 #: mod/comercio_servicos/comercio_servicos_InstalacaoC.php:96
 msgid "Valor Add de Linha"
-msgstr "Valor Add de Linha"
+msgstr "Value Add de Linha"
 
 #: mod/comercio_servicos/comercio_servicos_InstalacaoC.php:114
 msgid "Adicionar Btu"
-msgstr "Adicionar Btu"
+msgstr "Add Btu"
 
 #: mod/comercio_servicos/comercio_servicos_InstalacaoC.php:115
 msgid "Salvar Btu"
@@ -2575,7 +2575,7 @@ msgstr "Btu adicionado com Sucesso"
 
 #: mod/comercio_servicos/comercio_servicos_InstalacaoC.php:134
 msgid "Btu cadastrado com sucesso."
-msgstr "Btu cadastrado com sucesso."
+msgstr "Btu successfully registered."
 
 #: mod/comercio_servicos/comercio_servicos_InstalacaoC.php:148
 msgid "Alteração de Btu"
@@ -2591,7 +2591,7 @@ msgstr "Btu editado com Sucesso"
 
 #: mod/comercio_servicos/comercio_servicos_InstalacaoC.php:167
 msgid "Btu Alterado com Sucesso."
-msgstr "Btu Alterado com Sucesso."
+msgstr "Btu Changed with Success."
 
 #: mod/comercio_servicos/comercio_servicos_InstalacaoC.php:191
 msgid "Btu deletado com sucesso"
@@ -2603,11 +2603,11 @@ msgstr "Btu deletado com Sucesso"
 
 #: mod/comercio_servicos/comercio_servicos_InstalacaoC.php:216
 msgid "Tipo"
-msgstr "Tipo"
+msgstr "Type"
 
 #: mod/comercio_servicos/comercio_servicos_InstalacaoC.php:217
 msgid "Valor"
-msgstr "Valor"
+msgstr "Value"
 
 #: mod/comercio_servicos/comercio_servicos_InstalacaoC.php:221
 msgid "Listagem de Suportes"
@@ -2619,7 +2619,7 @@ msgstr "Administrar Suportes"
 
 #: mod/comercio_servicos/comercio_servicos_InstalacaoC.php:235
 msgid "Adicionar Suporte"
-msgstr "Adicionar Suporte"
+msgstr "Add Suporte"
 
 #: mod/comercio_servicos/comercio_servicos_InstalacaoC.php:236
 msgid "Salvar Suporte"
@@ -2631,7 +2631,7 @@ msgstr "Suporte adicionado com Sucesso"
 
 #: mod/comercio_servicos/comercio_servicos_InstalacaoC.php:255
 msgid "Suporte cadastrado com sucesso."
-msgstr "Suporte cadastrado com sucesso."
+msgstr "Suporte successfully registered."
 
 #: mod/comercio_servicos/comercio_servicos_InstalacaoC.php:269
 msgid "Alteração de Suporte"
@@ -2663,47 +2663,47 @@ msgstr "Listagem de Serviços"
 
 #: mod/comercio_servicos/comercio_servicos_ServicoTipoC.php:64
 msgid "Administrar Tipos de Serviços"
-msgstr "Administrar Tipos de Serviços"
+msgstr "Administrar Types de Serviços"
 
 #: mod/comercio_servicos/comercio_servicos_ServicoTipoC.php:73
 msgid "Adicionar Tipo de Serviço"
-msgstr "Adicionar Tipo de Serviço"
+msgstr "Add Type de Serviço"
 
 #: mod/comercio_servicos/comercio_servicos_ServicoTipoC.php:74
 msgid "Salvar Tipo de Serviço"
-msgstr "Salvar Tipo de Serviço"
+msgstr "Salvar Type de Serviço"
 
 #: mod/comercio_servicos/comercio_servicos_ServicoTipoC.php:89
 msgid "Tipo de Serviço adicionada com Sucesso"
-msgstr "Tipo de Serviço adicionada com Sucesso"
+msgstr "Type de Serviço adicionada com Sucesso"
 
 #: mod/comercio_servicos/comercio_servicos_ServicoTipoC.php:93
 msgid "Tipo de Serviço cadastrada com sucesso."
-msgstr "Tipo de Serviço cadastrada com sucesso."
+msgstr "Type de Serviço cadastrada com sucesso."
 
 #: mod/comercio_servicos/comercio_servicos_ServicoTipoC.php:106
 msgid "Alteração de Tipo de Serviço"
-msgstr "Alteração de Tipo de Serviço"
+msgstr "Alteração de Type de Serviço"
 
 #: mod/comercio_servicos/comercio_servicos_ServicoTipoC.php:108
 msgid "Alterar Tipo de Serviço"
-msgstr "Alterar Tipo de Serviço"
+msgstr "Alterar Type de Serviço"
 
 #: mod/comercio_servicos/comercio_servicos_ServicoTipoC.php:122
 msgid "Tipo de Serviço editada com Sucesso"
-msgstr "Tipo de Serviço editada com Sucesso"
+msgstr "Type de Serviço editada com Sucesso"
 
 #: mod/comercio_servicos/comercio_servicos_ServicoTipoC.php:125
 msgid "Tipo de Serviço Alterada com Sucesso."
-msgstr "Tipo de Serviço Alterada com Sucesso."
+msgstr "Type de Serviço Alterada com Sucesso."
 
 #: mod/comercio_servicos/comercio_servicos_ServicoTipoC.php:149
 msgid "Tipo de Serviço deletada com sucesso"
-msgstr "Tipo de Serviço deletada com sucesso"
+msgstr "Type de Serviço deletada com sucesso"
 
 #: mod/comercio_servicos/comercio_servicos_ServicoTipoC.php:162
 msgid "Tipo de Serviço deletada com Sucesso"
-msgstr "Tipo de Serviço deletada com Sucesso"
+msgstr "Type de Serviço deletada com Sucesso"
 
 #: mod/_Sistema/_Sistema_erroC.php:12 mod/_Sistema/_Sistema_erroC.php:28
 #: mod/_Sistema/_Sistema_erroC.php:34 mod/_Sistema/_Sistema_LoginC.php:12
@@ -2881,7 +2881,7 @@ msgstr "Administrar Menus"
 
 #: mod/_Sistema/_Sistema_AdminC.php:201
 msgid "Adicionar Menu"
-msgstr "Adicionar Menu"
+msgstr "Add Menu"
 
 #: mod/_Sistema/_Sistema_AdminC.php:202
 msgid "Salvar Menu"
@@ -2889,11 +2889,11 @@ msgstr "Salvar Menu"
 
 #: mod/_Sistema/_Sistema_AdminC.php:217
 msgid "Menu Adicionado com Sucesso"
-msgstr "Menu Adicionado com Sucesso"
+msgstr "Menu Added Successfully"
 
 #: mod/_Sistema/_Sistema_AdminC.php:221
 msgid "Menu cadastrado com sucesso."
-msgstr "Menu cadastrado com sucesso."
+msgstr "Menu successfully registered."
 
 #: mod/_Sistema/_Sistema_AdminC.php:235
 msgid "Alteração de Menu"
@@ -2905,7 +2905,7 @@ msgstr "Alterar Menu"
 
 #: mod/_Sistema/_Sistema_AdminC.php:252 mod/_Sistema/_Sistema_AdminC.php:255
 msgid "Menu Alterado com Sucesso"
-msgstr "Menu Alterado com Sucesso"
+msgstr "Menu Changed with Success"
 
 #: mod/_Sistema/_Sistema_AdminC.php:279
 msgid "Menu Deletado com sucesso"
@@ -2929,7 +2929,7 @@ msgstr "Administrar Permissões"
 
 #: mod/_Sistema/_Sistema_AdminC.php:376
 msgid "Adicionar Permissão"
-msgstr "Adicionar Permissão"
+msgstr "Add Permissão"
 
 #: mod/_Sistema/_Sistema_AdminC.php:377
 msgid "Salvar Permissão"
@@ -2969,7 +2969,7 @@ msgstr "Administrar Grupos"
 
 #: mod/_Sistema/_Sistema_AdminC.php:559
 msgid "Adicionar Grupo"
-msgstr "Adicionar Grupo"
+msgstr "Add Grupo"
 
 #: mod/_Sistema/_Sistema_AdminC.php:560
 msgid "Salvar Grupo"
@@ -2977,11 +2977,11 @@ msgstr "Salvar Grupo"
 
 #: mod/_Sistema/_Sistema_AdminC.php:579
 msgid "Grupo Adicionado com Sucesso"
-msgstr "Grupo Adicionado com Sucesso"
+msgstr "Grupo Added Successfully"
 
 #: mod/_Sistema/_Sistema_AdminC.php:583
 msgid "Grupo cadastrado com sucesso."
-msgstr "Grupo cadastrado com sucesso."
+msgstr "Grupo successfully registered."
 
 #: mod/_Sistema/_Sistema_AdminC.php:598
 msgid "Alteração de Grupo"
@@ -2997,7 +2997,7 @@ msgstr "Grupo Editado com Sucesso"
 
 #: mod/_Sistema/_Sistema_AdminC.php:620
 msgid "Grupo Alterado com Sucesso."
-msgstr "Grupo Alterado com Sucesso."
+msgstr "Grupo Changed with Success."
 
 #: mod/_Sistema/_Sistema_AdminC.php:645
 msgid "Grupo Deletado com sucesso"
@@ -3009,7 +3009,7 @@ msgstr "Grupo deletado com Sucesso"
 
 #: mod/_Sistema/_Sistema_AdminC.php:669 mod/_Sistema/_Sistema_AdminC.php:754
 msgid "Adicionar Permissão de Grupo"
-msgstr "Adicionar Permissão de Grupo"
+msgstr "Add Permissão de Grupo"
 
 #: mod/_Sistema/_Sistema_AdminC.php:670
 msgid "Nenhuma permissão de Nenhum Grupo"
@@ -3017,7 +3017,7 @@ msgstr "Nenhuma permissão de Nenhum Grupo"
 
 #: mod/_Sistema/_Sistema_AdminC.php:674
 msgid "Adicionar Permissão ao Grupo"
-msgstr "Adicionar Permissão ao Grupo"
+msgstr "Add Permissão ao Grupo"
 
 #: mod/_Sistema/_Sistema_AdminC.php:675
 msgid "Nenhuma permissão do Grupo"
@@ -3037,15 +3037,15 @@ msgstr "Alteração de Permissão de Grupo"
 
 #: mod/_Sistema/_Sistema_AdminC.php:808
 msgid "Permissão de Grupo cadastrado com sucesso."
-msgstr "Permissão de Grupo cadastrado com sucesso."
+msgstr "Permissão de Grupo successfully registered."
 
 #: mod/_Sistema/_Sistema_AdminC.php:819
 msgid "Permissão de Grupo Adicionado com Sucesso"
-msgstr "Permissão de Grupo Adicionado com Sucesso"
+msgstr "Permissão de Grupo Added Successfully"
 
 #: mod/_Sistema/_Sistema_AdminC.php:842
 msgid "Permissão de Grupo Alterado com Sucesso"
-msgstr "Permissão de Grupo Alterado com Sucesso"
+msgstr "Permissão de Grupo Changed with Success"
 
 #: mod/_Sistema/_Sistema_AdminC.php:854
 msgid "Permissão de Grupo Editado com Sucesso"
@@ -3085,7 +3085,7 @@ msgstr "Cadastro de Newsletter"
 
 #: mod/_Sistema/_Sistema_AdminC.php:984
 msgid "Adicionar Newsletter"
-msgstr "Adicionar Newsletter"
+msgstr "Add Newsletter"
 
 #: mod/_Sistema/_Sistema_AdminC.php:1007
 msgid "Alteração de Newsletter"
@@ -3093,15 +3093,15 @@ msgstr "Alteração de Newsletter"
 
 #: mod/_Sistema/_Sistema_AdminC.php:1035
 msgid "Newsletter cadastrado com sucesso."
-msgstr "Newsletter cadastrado com sucesso."
+msgstr "Newsletter successfully registered."
 
 #: mod/_Sistema/_Sistema_AdminC.php:1046
 msgid "Newsletter Adicionado com Sucesso"
-msgstr "Newsletter Adicionado com Sucesso"
+msgstr "Newsletter Added Successfully"
 
 #: mod/_Sistema/_Sistema_AdminC.php:1069
 msgid "Newsletter Alterado com Sucesso"
-msgstr "Newsletter Alterado com Sucesso"
+msgstr "Newsletter Changed with Success"
 
 #: mod/_Sistema/_Sistema_AdminC.php:1081
 msgid "Newsletter Editado com Sucesso"
@@ -3133,60 +3133,60 @@ msgstr "Grupos do Sistema"
 
 #: mod/biblioteca/biblioteca_BibliotecaC.php:158
 msgid "Fazer Upload de Arquivo Nessa Pasta"
-msgstr "Fazer Upload de Arquivo Nessa Pasta"
+msgstr "Make this Folder File Upload"
 
 #: mod/biblioteca/biblioteca_BibliotecaC.php:162
 msgid "Extensões Permitidas"
-msgstr "Extensões Permitidas"
+msgstr "Allowed extensions"
 
 #: mod/biblioteca/biblioteca_BibliotecaC.php:171
 msgid "Listagem de Biblíotecas"
-msgstr "Listagem de Biblíotecas"
+msgstr "List of Libraries"
 
 #: mod/biblioteca/biblioteca_BibliotecaC.php:261
 msgid "Adicionar Pasta à Biblíoteca de Arquivos"
-msgstr "Adicionar Pasta à Biblíoteca de Arquivos"
+msgstr "Add Folder to Library Files"
 
 #: mod/biblioteca/biblioteca_BibliotecaC.php:262
 msgid "Salvar Pastas"
-msgstr "Salvar Pastas"
+msgstr "Save Folder"
 
 #: mod/biblioteca/biblioteca_BibliotecaC.php:287
 msgid "Pasta Adicionada com Sucesso"
-msgstr "Pasta Adicionada com Sucesso"
+msgstr "Added folder with Success"
 
 #: mod/biblioteca/biblioteca_BibliotecaC.php:291
 msgid "Pasta cadastrada com sucesso."
-msgstr "Pasta cadastrada com sucesso."
+msgstr "Registered folder successfully."
 
 #: mod/biblioteca/biblioteca_BibliotecaC.php:317
 msgid "Alteração de Biblíoteca"
-msgstr "Alteração de Biblíoteca"
+msgstr "Changing library"
 
 #: mod/biblioteca/biblioteca_BibliotecaC.php:319
 msgid "Alterar Biblíoteca"
-msgstr "Alterar Biblíoteca"
+msgstr "Change library"
 
 #: mod/biblioteca/biblioteca_BibliotecaC.php:520
 msgid "Criar Conexão com Biblioteca"
-msgstr "Criar Conexão com Biblioteca"
+msgstr "Create Connection Library"
 
 #: mod/biblioteca/biblioteca_BibliotecaC.php:521
 #: mod/biblioteca/biblioteca_BibliotecaC.php:523
 msgid "Salvar Conexão"
-msgstr "Salvar Conexão"
+msgstr "Save Connection"
 
 #: mod/biblioteca/biblioteca_BibliotecaC.php:538
 msgid "Conexão de Pasta Feita com Sucesso"
-msgstr "Conexão de Pasta Feita com Sucesso"
+msgstr "Pasta Connection Made with Success"
 
 #: mod/biblioteca/biblioteca_BibliotecaC.php:542
 msgid "Conexão cadastrada com sucesso."
-msgstr "Conexão cadastrada com sucesso."
+msgstr "Registered connection successfully."
 
 #: mod/categoria/categoria_categoriaC.php:39
 msgid "salvar"
-msgstr "salvar"
+msgstr "save"
 
 #: mod/categoria/categoria_categoriaC.php:42
 #: mod/categoria/categoria_categoriaC.php:65
@@ -3217,7 +3217,7 @@ msgstr "Categoria inserida com Sucesso"
 
 #: mod/categoria/categoria_AdminC.php:82
 msgid "Adicionar Categoria"
-msgstr "Adicionar Categoria"
+msgstr "Add Categoria"
 
 #: mod/categoria/categoria_AdminC.php:83
 msgid "Salvar Categoria"
@@ -3233,7 +3233,7 @@ msgstr "Administrar Finanças"
 
 #: mod/Financeiro/Financeiro_FinancaC.php:88
 msgid "Adicionar Finança"
-msgstr "Adicionar Finança"
+msgstr "Add Finança"
 
 #: mod/Financeiro/Financeiro_FinancaC.php:89
 msgid "Salvar Finança"
@@ -3479,7 +3479,7 @@ msgstr "Administrar Bancos"
 
 #: mod/Financeiro/Financeiro_BancoC.php:89
 msgid "Adicionar Banco"
-msgstr "Adicionar Banco"
+msgstr "Add Banco"
 
 #: mod/Financeiro/Financeiro_BancoC.php:90
 msgid "Salvar Banco"
@@ -3487,11 +3487,11 @@ msgstr "Salvar Banco"
 
 #: mod/Financeiro/Financeiro_BancoC.php:105
 msgid "Banco Adicionado com Sucesso"
-msgstr "Banco Adicionado com Sucesso"
+msgstr "Banco Added Successfully"
 
 #: mod/Financeiro/Financeiro_BancoC.php:109
 msgid "Banco cadastrado com sucesso."
-msgstr "Banco cadastrado com sucesso."
+msgstr "Banco successfully registered."
 
 #: mod/Financeiro/Financeiro_BancoC.php:122
 msgid "Alteração de Banco"
@@ -3511,7 +3511,7 @@ msgstr "Banco Editado com Sucesso"
 
 #: mod/Financeiro/Financeiro_BancoC.php:141
 msgid "Banco Alterado com Sucesso."
-msgstr "Banco Alterado com Sucesso."
+msgstr "Banco Changed with Success."
 
 #: mod/Financeiro/Financeiro_BancoC.php:165
 msgid "Banco Deletado com sucesso"
@@ -3560,7 +3560,7 @@ msgstr "Administrar Formas de Pagamento"
 
 #: mod/Financeiro/Financeiro_PagamentoC.php:512
 msgid "Adicionar Forma de Pagamento"
-msgstr "Adicionar Forma de Pagamento"
+msgstr "Add Forma de Pagamento"
 
 #: mod/Financeiro/Financeiro_PagamentoC.php:513
 msgid "Salvar Forma de Pagamento"
@@ -3588,7 +3588,7 @@ msgstr "Forma de Pagamento Editada com Sucesso"
 
 #: mod/Financeiro/Financeiro_PagamentoC.php:565
 msgid "Forma de Pagamento Alterado com Sucesso."
-msgstr "Forma de Pagamento Alterado com Sucesso."
+msgstr "Forma de Pagamento Changed with Success."
 
 #: mod/Financeiro/Financeiro_PagamentoC.php:589
 msgid "Forma de Pagamento Deletada com sucesso"
@@ -3608,7 +3608,7 @@ msgstr "Condição de Pagamento"
 
 #: mod/Financeiro/Financeiro_PagamentoC.php:654
 msgid "Adicionar Condição de Pagamento"
-msgstr "Adicionar Condição de Pagamento"
+msgstr "Add Condição de Pagamento"
 
 #: mod/Financeiro/Financeiro_PagamentoC.php:655
 msgid "Salvar Condição de Pagamento"
@@ -3636,7 +3636,7 @@ msgstr "Condição de Pagamento Editada com Sucesso"
 
 #: mod/Financeiro/Financeiro_PagamentoC.php:741
 msgid "Condicao de Pagamento Alterado com Sucesso."
-msgstr "Condicao de Pagamento Alterado com Sucesso."
+msgstr "Condicao de Pagamento Changed with Success."
 
 #: mod/Financeiro/Financeiro_PagamentoC.php:766
 msgid "Condição de Pagamento Deletada com sucesso"
@@ -3684,7 +3684,7 @@ msgstr "Histórico de Correios Entregues"
 
 #: mod/predial/predial_CorreioC.php:185
 msgid "Adicionar Correio"
-msgstr "Adicionar Correio"
+msgstr "Add Correio"
 
 #: mod/predial/predial_CorreioC.php:186
 msgid "Salvar Correio"
@@ -3692,11 +3692,11 @@ msgstr "Salvar Correio"
 
 #: mod/predial/predial_CorreioC.php:203
 msgid "Correio Adicionado com Sucesso"
-msgstr "Correio Adicionado com Sucesso"
+msgstr "Correio Added Successfully"
 
 #: mod/predial/predial_CorreioC.php:207
 msgid "Correio cadastrado com sucesso."
-msgstr "Correio cadastrado com sucesso."
+msgstr "Correio successfully registered."
 
 #: mod/predial/predial_CorreioC.php:246 mod/predial/predial_CorreioC.php:272
 msgid "Aviso não Enviado"
@@ -3724,7 +3724,7 @@ msgstr "Correio Editado com Sucesso"
 
 #: mod/predial/predial_CorreioC.php:309
 msgid "Correio Alterado com Sucesso."
-msgstr "Correio Alterado com Sucesso."
+msgstr "Correio Changed with Success."
 
 #: mod/predial/predial_CorreioC.php:333
 msgid "Correio deletado com sucesso"
@@ -3744,7 +3744,7 @@ msgstr "Administrar Informativos"
 
 #: mod/predial/predial_InformativoC.php:101
 msgid "Adicionar Informativo"
-msgstr "Adicionar Informativo"
+msgstr "Add Informativo"
 
 #: mod/predial/predial_InformativoC.php:102
 msgid "Salvar Informativo"
@@ -3752,11 +3752,11 @@ msgstr "Salvar Informativo"
 
 #: mod/predial/predial_InformativoC.php:117
 msgid "Informativo Adicionado com Sucesso"
-msgstr "Informativo Adicionado com Sucesso"
+msgstr "Informativo Added Successfully"
 
 #: mod/predial/predial_InformativoC.php:121
 msgid "Informativo cadastrado com sucesso."
-msgstr "Informativo cadastrado com sucesso."
+msgstr "Informativo successfully registered."
 
 #: mod/predial/predial_InformativoC.php:160
 #: mod/predial/predial_InformativoC.php:184
@@ -3777,7 +3777,7 @@ msgstr "Informativo Editado com Sucesso"
 
 #: mod/predial/predial_InformativoC.php:226
 msgid "Informativo Alterado com Sucesso."
-msgstr "Informativo Alterado com Sucesso."
+msgstr "Informativo Changed with Success."
 
 #: mod/predial/predial_InformativoC.php:250
 msgid "Informativo deletado com sucesso"
@@ -3801,7 +3801,7 @@ msgstr "Administrar Advertências"
 
 #: mod/predial/predial_AdvertenciaC.php:101
 msgid "Adicionar Advertência"
-msgstr "Adicionar Advertência"
+msgstr "Add Advertência"
 
 #: mod/predial/predial_AdvertenciaC.php:102
 msgid "Salvar Advertência"
@@ -3854,7 +3854,7 @@ msgstr "Administrar Locais de Reserva"
 
 #: mod/predial/predial_SalaoC.php:97
 msgid "Adicionar Local de Reserva"
-msgstr "Adicionar Local de Reserva"
+msgstr "Add Local de Reserva"
 
 #: mod/predial/predial_SalaoC.php:98
 msgid "Salvar Local de Reserva"
@@ -3862,11 +3862,11 @@ msgstr "Salvar Local de Reserva"
 
 #: mod/predial/predial_SalaoC.php:113
 msgid "Local de Reserva Adicionado com Sucesso"
-msgstr "Local de Reserva Adicionado com Sucesso"
+msgstr "Local de Reserva Added Successfully"
 
 #: mod/predial/predial_SalaoC.php:117
 msgid "Local de Reserva cadastrado com sucesso."
-msgstr "Local de Reserva cadastrado com sucesso."
+msgstr "Local de Reserva successfully registered."
 
 #: mod/predial/predial_SalaoC.php:131
 msgid "Alteração de Local de Reserva"
@@ -3959,7 +3959,7 @@ msgstr "Administrar Apartamentos"
 
 #: mod/predial/predial_ApartC.php:99
 msgid "Adicionar Apartamento"
-msgstr "Adicionar Apartamento"
+msgstr "Add Apartamento"
 
 #: mod/predial/predial_ApartC.php:100
 msgid "Salvar Apartamento"
@@ -3967,11 +3967,11 @@ msgstr "Salvar Apartamento"
 
 #: mod/predial/predial_ApartC.php:115
 msgid "Apartamento Adicionado com Sucesso"
-msgstr "Apartamento Adicionado com Sucesso"
+msgstr "Apartamento Added Successfully"
 
 #: mod/predial/predial_ApartC.php:119
 msgid "Apartamento cadastrado com sucesso."
-msgstr "Apartamento cadastrado com sucesso."
+msgstr "Apartamento successfully registered."
 
 #: mod/predial/predial_ApartC.php:133
 msgid "Alteração de Apartamento"
@@ -3987,7 +3987,7 @@ msgstr "Apartamento Editado com Sucesso"
 
 #: mod/predial/predial_ApartC.php:152
 msgid "Apartamento Alterado com Sucesso."
-msgstr "Apartamento Alterado com Sucesso."
+msgstr "Apartamento Changed with Success."
 
 #: mod/predial/predial_ApartC.php:176
 msgid "Apartamento deletado com sucesso"
@@ -4007,7 +4007,7 @@ msgstr "Administrar Animais"
 
 #: mod/predial/predial_AnimalC.php:98
 msgid "Adicionar Animal"
-msgstr "Adicionar Animal"
+msgstr "Add Animal"
 
 #: mod/predial/predial_AnimalC.php:99
 msgid "Salvar Animal"
@@ -4015,11 +4015,11 @@ msgstr "Salvar Animal"
 
 #: mod/predial/predial_AnimalC.php:114
 msgid "Animal Adicionado com Sucesso"
-msgstr "Animal Adicionado com Sucesso"
+msgstr "Animal Added Successfully"
 
 #: mod/predial/predial_AnimalC.php:118
 msgid "Animal cadastrado com sucesso."
-msgstr "Animal cadastrado com sucesso."
+msgstr "Animal successfully registered."
 
 #: mod/predial/predial_AnimalC.php:132
 msgid "Alteração de Animal"
@@ -4035,7 +4035,7 @@ msgstr "Animal Editado com Sucesso"
 
 #: mod/predial/predial_AnimalC.php:151
 msgid "Animal Alterado com Sucesso."
-msgstr "Animal Alterado com Sucesso."
+msgstr "Animal Changed with Success."
 
 #: mod/predial/predial_AnimalC.php:175
 msgid "Animal deletado com sucesso"
@@ -4055,7 +4055,7 @@ msgstr "Administrar Blocos"
 
 #: mod/predial/predial_BlocoC.php:98
 msgid "Adicionar Bloco"
-msgstr "Adicionar Bloco"
+msgstr "Add Bloco"
 
 #: mod/predial/predial_BlocoC.php:99
 msgid "Salvar Bloco"
@@ -4063,11 +4063,11 @@ msgstr "Salvar Bloco"
 
 #: mod/predial/predial_BlocoC.php:114
 msgid "Bloco Adicionado com Sucesso"
-msgstr "Bloco Adicionado com Sucesso"
+msgstr "Bloco Added Successfully"
 
 #: mod/predial/predial_BlocoC.php:118
 msgid "Bloco cadastrado com sucesso."
-msgstr "Bloco cadastrado com sucesso."
+msgstr "Bloco successfully registered."
 
 #: mod/predial/predial_BlocoC.php:132
 msgid "Alteração de Bloco"
@@ -4083,7 +4083,7 @@ msgstr "Bloco Editado com Sucesso"
 
 #: mod/predial/predial_BlocoC.php:151
 msgid "Bloco Alterado com Sucesso."
-msgstr "Bloco Alterado com Sucesso."
+msgstr "Bloco Changed with Success."
 
 #: mod/predial/predial_BlocoC.php:175
 msgid "Bloco deletado com sucesso"
@@ -4108,7 +4108,7 @@ msgstr "Administrar Veiculos"
 #: mod/predial/predial_VeiculoC.php:97
 #: mod/usuario_veiculo/usuario_veiculo_VeiculoC.php:147
 msgid "Adicionar Veiculo"
-msgstr "Adicionar Veiculo"
+msgstr "Add Veiculo"
 
 #: mod/predial/predial_VeiculoC.php:98
 #: mod/usuario_veiculo/usuario_veiculo_VeiculoC.php:148
@@ -4118,12 +4118,12 @@ msgstr "Salvar Veiculo"
 #: mod/predial/predial_VeiculoC.php:113
 #: mod/usuario_veiculo/usuario_veiculo_VeiculoC.php:164
 msgid "Veiculo Adicionado com Sucesso"
-msgstr "Veiculo Adicionado com Sucesso"
+msgstr "Veiculo Added Successfully"
 
 #: mod/predial/predial_VeiculoC.php:117
 #: mod/usuario_veiculo/usuario_veiculo_VeiculoC.php:168
 msgid "Veiculo cadastrado com sucesso."
-msgstr "Veiculo cadastrado com sucesso."
+msgstr "Veiculo successfully registered."
 
 #: mod/predial/predial_VeiculoC.php:131
 #: mod/usuario_veiculo/usuario_veiculo_AdminC.php:200
@@ -4144,7 +4144,7 @@ msgstr "Veiculo Editado com Sucesso"
 #: mod/predial/predial_VeiculoC.php:150
 #: mod/usuario_veiculo/usuario_veiculo_VeiculoC.php:202
 msgid "Veiculo Alterado com Sucesso."
-msgstr "Veiculo Alterado com Sucesso."
+msgstr "Veiculo Changed with Success."
 
 #: mod/predial/predial_VeiculoC.php:174
 msgid "Veiculo deletado com sucesso"
@@ -4165,7 +4165,7 @@ msgstr "Administrar Telefones"
 
 #: mod/usuario/usuario_TelefoneC.php:126
 msgid "Adicionar Telefone"
-msgstr "Adicionar Telefone"
+msgstr "Add Telefone"
 
 #: mod/usuario/usuario_TelefoneC.php:127
 msgid "Salvar Telefone"
@@ -4177,7 +4177,7 @@ msgstr "Telefone adicionada com Sucesso"
 
 #: mod/usuario/usuario_TelefoneC.php:146
 msgid "Telefone cadastrado com sucesso."
-msgstr "Telefone cadastrado com sucesso."
+msgstr "Telefone successfully registered."
 
 #: mod/usuario/usuario_TelefoneC.php:160
 msgid "Alteração de Telefone"
@@ -4193,7 +4193,7 @@ msgstr "Telefone editada com Sucesso"
 
 #: mod/usuario/usuario_TelefoneC.php:179
 msgid "Telefone Alterado com Sucesso."
-msgstr "Telefone Alterado com Sucesso."
+msgstr "Telefone Changed with Success."
 
 #: mod/usuario/usuario_TelefoneC.php:203
 msgid "Telefone deletada com sucesso"
@@ -4308,7 +4308,7 @@ msgstr "Usuario Editado com Sucesso"
 
 #: mod/usuario/usuario_AcessoC.php:212
 msgid "Acesso Alterado com Sucesso."
-msgstr "Acesso Alterado com Sucesso."
+msgstr "Acesso Changed with Success."
 
 #: mod/usuario/usuario_FreeC.php:49 mod/usuario/usuario_AdminC.php:101
 #: mod/usuario/usuario_AdminC.php:736 mod/usuario/usuario_AdminC.php:810
@@ -4390,11 +4390,11 @@ msgstr "Em Andamento"
 #: mod/Desenvolvimento/Desenvolvimento_SenhaC.php:538
 #: mod/Desenvolvimento/Desenvolvimento_ProjetoC.php:266
 msgid "Status Alterado com Sucesso."
-msgstr "Status Alterado com Sucesso."
+msgstr "Status Changed with Success."
 
 #: mod/usuario/usuario_AdminC.php:349
 msgid "Adicionar "
-msgstr "Adicionar "
+msgstr "Add "
 
 #: mod/usuario/usuario_AdminC.php:358
 msgid "Cadastro de Funcionário"
@@ -4402,7 +4402,7 @@ msgstr "Cadastro de Funcionário"
 
 #: mod/usuario/usuario_AdminC.php:359
 msgid "Adicionar Funcionário"
-msgstr "Adicionar Funcionário"
+msgstr "Add Funcionário"
 
 #: mod/usuario/usuario_AdminC.php:368
 msgid "Cadastro de Usuário"
@@ -4410,7 +4410,7 @@ msgstr "Cadastro de Usuário"
 
 #: mod/usuario/usuario_AdminC.php:369
 msgid "Adicionar Usuário"
-msgstr "Adicionar Usuário"
+msgstr "Add Usuário"
 
 #: mod/usuario/usuario_AdminC.php:649
 msgid "Admin GOD"
@@ -4442,7 +4442,7 @@ msgstr "Comentário de "
 
 #: mod/usuario/usuario_AnexoC.php:40
 msgid "Todos os tipos de Usuários"
-msgstr "Todos os tipos de Usuários"
+msgstr "All kinds of Usuários"
 
 #: mod/usuario/usuario_AnexoC.php:159
 msgid "Houve algum erro ao fazer upload do arquivo !"
@@ -4450,7 +4450,7 @@ msgstr "Houve algum erro ao fazer upload do arquivo !"
 
 #: mod/usuario/usuario_PerfilC.php:64 mod/usuario/usuario_PerfilC.php:291
 msgid "Meu Perfil"
-msgstr "Meu Perfil"
+msgstr "My Profile"
 
 #: mod/usuario/usuario_PerfilC.php:113
 msgid "Fazer upload de Comprovante de Residência"
@@ -4462,7 +4462,7 @@ msgstr "Fazer Upload da CNH"
 
 #: mod/usuario/usuario_PerfilC.php:231
 msgid "Tipo de Usuário Inválido"
-msgstr "Tipo de Usuário Inválido"
+msgstr "Type de Usuário Inválido"
 
 #: mod/usuario/usuario_PerfilC.php:243
 msgid "Plano alterado com sucesso."
@@ -4486,7 +4486,7 @@ msgstr "Perfil Editado com Sucesso"
 
 #: mod/usuario/usuario_PerfilC.php:321
 msgid "Perfil Alterado com Sucesso."
-msgstr "Perfil Alterado com Sucesso."
+msgstr "Perfil Changed with Success."
 
 #: mod/noticia/noticia_ListarC.php:37 mod/noticia/noticia_AdminC.php:11
 msgid "Noticias"
@@ -4514,7 +4514,7 @@ msgstr "Administrar Noticias"
 
 #: mod/noticia/noticia_AdminC.php:139
 msgid "Adicionar Noticia"
-msgstr "Adicionar Noticia"
+msgstr "Add Noticia"
 
 #: mod/noticia/noticia_AdminC.php:140
 msgid "Salvar Noticia"
@@ -4656,7 +4656,7 @@ msgstr "Recusado"
 #: mod/Transporte/Transporte_PedidoC.php:818
 #: mod/Transporte/Transporte_PedidoC.php:1539
 msgid "Adicionar Pedido"
-msgstr "Adicionar Pedido"
+msgstr "Add Pedido"
 
 #: mod/Transporte/Transporte_PedidoC.php:94
 #: mod/Transporte/Transporte_PedidoC.php:819
@@ -4842,13 +4842,13 @@ msgstr "Propostas Pendentes"
 #: mod/Transporte/Transporte_PedidoC.php:2075
 #: mod/Transporte/Transporte_PedidoC.php:2111
 msgid "Você não pode Adicionar uma Solicitação a este pedido"
-msgstr "Você não pode Adicionar uma Solicitação a este pedido"
+msgstr "Você não pode Add uma Solicitação a este pedido"
 
 #: mod/Transporte/Transporte_PedidoC.php:637
 #: mod/Transporte/Transporte_PedidoC.php:1362
 #: mod/Transporte/Transporte_PedidoC.php:2083
 msgid "Adicionar Proposta de Pedido"
-msgstr "Adicionar Proposta de Pedido"
+msgstr "Add Proposta de Pedido"
 
 #: mod/Transporte/Transporte_PedidoC.php:638
 #: mod/Transporte/Transporte_PedidoC.php:1363
@@ -4883,7 +4883,7 @@ msgstr "Estradaistrar Estradas"
 
 #: mod/Transporte/Transporte_EstradaC.php:126
 msgid "Adicionar Dica de Estrada"
-msgstr "Adicionar Dica de Estrada"
+msgstr "Add Dica de Estrada"
 
 #: mod/Transporte/Transporte_EstradaC.php:127
 msgid "Salvar Dica de Estrada"
@@ -4957,7 +4957,7 @@ msgstr "Administrar Eventos"
 
 #: mod/Evento/Evento_EventoC.php:139
 msgid "Adicionar Evento"
-msgstr "Adicionar Evento"
+msgstr "Add Evento"
 
 #: mod/Evento/Evento_EventoC.php:140
 msgid "Salvar Evento"
@@ -4965,11 +4965,11 @@ msgstr "Salvar Evento"
 
 #: mod/Evento/Evento_EventoC.php:155
 msgid "Evento Adicionado com Sucesso"
-msgstr "Evento Adicionado com Sucesso"
+msgstr "Evento Added Successfully"
 
 #: mod/Evento/Evento_EventoC.php:159
 msgid "Evento cadastrado com sucesso."
-msgstr "Evento cadastrado com sucesso."
+msgstr "Evento successfully registered."
 
 #: mod/Evento/Evento_EventoC.php:175
 msgid "Alteração de Evento"
@@ -4985,7 +4985,7 @@ msgstr "Evento Editado com Sucesso"
 
 #: mod/Evento/Evento_EventoC.php:196
 msgid "Evento Alterado com Sucesso."
-msgstr "Evento Alterado com Sucesso."
+msgstr "Evento Changed with Success."
 
 #: mod/Evento/Evento_EventoC.php:222
 msgid "Evento deletado com sucesso"
@@ -5006,7 +5006,7 @@ msgstr "Administrar Unidades"
 #: mod/comercio/comercio_UnidadeC.php:88
 #: mod/Engenharia/Engenharia_UnidadeC.php:175
 msgid "Adicionar Unidade"
-msgstr "Adicionar Unidade"
+msgstr "Add Unidade"
 
 #: mod/comercio/comercio_UnidadeC.php:89
 #: mod/Engenharia/Engenharia_UnidadeC.php:176
@@ -5068,7 +5068,7 @@ msgstr "Administrar Marcas"
 #: mod/usuario_veiculo/usuario_veiculo_EquipamentoC.php:386
 #: mod/usuario_veiculo/usuario_veiculo_MarcaC.php:91
 msgid "Adicionar Marca"
-msgstr "Adicionar Marca"
+msgstr "Add Marca"
 
 #: mod/comercio/comercio_MarcaC.php:76
 #: mod/usuario_veiculo/usuario_veiculo_EquipamentoC.php:387
@@ -5126,7 +5126,7 @@ msgstr "Marca deletada com Sucesso"
 
 #: mod/comercio/comercio_FornecedorC.php:67
 msgid "Tipo de Fornecimento"
-msgstr "Tipo de Fornecimento"
+msgstr "Type de Fornecimento"
 
 #: mod/comercio/comercio_FornecedorC.php:70
 msgid "Telefone"
@@ -5138,7 +5138,7 @@ msgstr "Administrar Fornecedores"
 
 #: mod/comercio/comercio_FornecedorC.php:90
 msgid "Adicionar Fornecedor"
-msgstr "Adicionar Fornecedor"
+msgstr "Add Fornecedor"
 
 #: mod/comercio/comercio_FornecedorC.php:91
 msgid "Salvar Fornecedor"
@@ -5146,11 +5146,11 @@ msgstr "Salvar Fornecedor"
 
 #: mod/comercio/comercio_FornecedorC.php:107
 msgid "Fornecedor Adicionado com Sucesso"
-msgstr "Fornecedor Adicionado com Sucesso"
+msgstr "Fornecedor Added Successfully"
 
 #: mod/comercio/comercio_FornecedorC.php:111
 msgid "Fornecedor cadastrado com sucesso."
-msgstr "Fornecedor cadastrado com sucesso."
+msgstr "Fornecedor successfully registered."
 
 #: mod/comercio/comercio_FornecedorC.php:126
 msgid "Alteração de Fornecedor"
@@ -5166,7 +5166,7 @@ msgstr "Fornecedor Editado com Sucesso"
 
 #: mod/comercio/comercio_FornecedorC.php:146
 msgid "Fornecedor Alterado com Sucesso."
-msgstr "Fornecedor Alterado com Sucesso."
+msgstr "Fornecedor Changed with Success."
 
 #: mod/comercio/comercio_FornecedorC.php:170
 msgid "Fornecedor Deletado com sucesso"
@@ -5194,7 +5194,7 @@ msgstr "Administrar Comentários do Fornecedor"
 
 #: mod/comercio/comercio_FornecedorC.php:332
 msgid "Adicionar Comentário do Fornecedor"
-msgstr "Adicionar Comentário do Fornecedor"
+msgstr "Add Comentário do Fornecedor"
 
 #: mod/comercio/comercio_FornecedorC.php:333
 msgid "Salvar Comentário do Fornecedor"
@@ -5202,11 +5202,11 @@ msgstr "Salvar Comentário do Fornecedor"
 
 #: mod/comercio/comercio_FornecedorC.php:350
 msgid "Comentário do Fornecedor Adicionado com Sucesso"
-msgstr "Comentário do Fornecedor Adicionado com Sucesso"
+msgstr "Comentário do Fornecedor Added Successfully"
 
 #: mod/comercio/comercio_FornecedorC.php:354
 msgid "Comentário do Fornecedor cadastrado com sucesso."
-msgstr "Comentário do Fornecedor cadastrado com sucesso."
+msgstr "Comentário do Fornecedor successfully registered."
 
 #: mod/comercio/comercio_FornecedorC.php:369
 msgid "Alteração de Comentário do Fornecedor"
@@ -5222,7 +5222,7 @@ msgstr "Comentário de Fornecedor Editado com Sucesso"
 
 #: mod/comercio/comercio_FornecedorC.php:391
 msgid "Comentário de Fornecedor Alterado com Sucesso."
-msgstr "Comentário de Fornecedor Alterado com Sucesso."
+msgstr "Comentário de Fornecedor Changed with Success."
 
 #: mod/comercio/comercio_FornecedorC.php:418
 msgid "Comentário do Fornecedor Deletado com sucesso"
@@ -5250,7 +5250,7 @@ msgstr "Administrar Entrada de NFE"
 
 #: mod/comercio/comercio_EstoqueC.php:310
 msgid "Adicionar Entrada de NFE"
-msgstr "Adicionar Entrada de NFE"
+msgstr "Add Entrada de NFE"
 
 #: mod/comercio/comercio_EstoqueC.php:311
 msgid "Salvar Entrada de NFE"
@@ -5298,7 +5298,7 @@ msgstr "Administrar Linhas"
 
 #: mod/comercio/comercio_LinhaC.php:76
 msgid "Adicionar Linha"
-msgstr "Adicionar Linha"
+msgstr "Add Linha"
 
 #: mod/comercio/comercio_LinhaC.php:77
 msgid "Salvar Linha"
@@ -5362,7 +5362,7 @@ msgstr "Administrar Produtos"
 
 #: mod/comercio/comercio_ProdutoC.php:139
 msgid "Adicionar Produto"
-msgstr "Adicionar Produto"
+msgstr "Add Produto"
 
 #: mod/comercio/comercio_ProdutoC.php:140
 msgid "Salvar Produto"
@@ -5378,7 +5378,7 @@ msgstr "Alterar Produto"
 
 #: mod/comercio/comercio_ProdutoC.php:195
 msgid "Produto Alterado com Sucesso."
-msgstr "Produto Alterado com Sucesso."
+msgstr "Produto Changed with Success."
 
 #: mod/comercio/comercio_ProdutoC.php:247
 msgid "Reduzir Estoque de Produto"
@@ -5547,11 +5547,11 @@ msgstr "Administrar Comentários da "
 
 #: mod/comercio/comercio_PropostaC.php:2456
 msgid "Comentário sobre a Proposta Adicionado com Sucesso"
-msgstr "Comentário sobre a Proposta Adicionado com Sucesso"
+msgstr "Comentário sobre a Proposta Added Successfully"
 
 #: mod/comercio/comercio_PropostaC.php:2460
 msgid "Comentário de Proposta cadastrado com sucesso."
-msgstr "Comentário de Proposta cadastrado com sucesso."
+msgstr "Comentário de Proposta successfully registered."
 
 #: mod/comercio/comercio_PropostaC.php:2572
 msgid "Comentário da "
@@ -5563,11 +5563,11 @@ msgstr "Administrar Sub propostas da "
 
 #: mod/comercio/comercio_PropostaC.php:2702
 msgid "Sub proposta sobre a Proposta Adicionado com Sucesso"
-msgstr "Sub proposta sobre a Proposta Adicionado com Sucesso"
+msgstr "Sub proposta sobre a Proposta Added Successfully"
 
 #: mod/comercio/comercio_PropostaC.php:2706
 msgid "Sub proposta de Proposta cadastrado com sucesso."
-msgstr "Sub proposta de Proposta cadastrado com sucesso."
+msgstr "Sub proposta de Proposta successfully registered."
 
 #: mod/comercio/comercio_PropostaC.php:2818
 msgid "Sub proposta da "
@@ -5597,7 +5597,7 @@ msgstr "Em Uso"
 
 #: mod/comercio/comercio_PropostaC.php:2952
 msgid "Adicionar Checklist"
-msgstr "Adicionar Checklist"
+msgstr "Add Checklist"
 
 #: mod/comercio/comercio_PropostaC.php:2953
 msgid "Salvar Checklist"
@@ -5605,11 +5605,11 @@ msgstr "Salvar Checklist"
 
 #: mod/comercio/comercio_PropostaC.php:2969
 msgid "Checklist Adicionado com Sucesso"
-msgstr "Checklist Adicionado com Sucesso"
+msgstr "Checklist Added Successfully"
 
 #: mod/comercio/comercio_PropostaC.php:2973
 msgid "Checklist cadastrado com sucesso."
-msgstr "Checklist cadastrado com sucesso."
+msgstr "Checklist successfully registered."
 
 #: mod/comercio/comercio_PropostaC.php:2987
 msgid "Alteração de Checklist"
@@ -5625,7 +5625,7 @@ msgstr "Checklist Editado com Sucesso"
 
 #: mod/comercio/comercio_PropostaC.php:3006
 msgid "Checklist Alterado com Sucesso."
-msgstr "Checklist Alterado com Sucesso."
+msgstr "Checklist Changed with Success."
 
 #: mod/comercio/comercio_PropostaC.php:3030
 msgid "Checklist Deletado com sucesso"
@@ -5641,7 +5641,7 @@ msgstr "Administrar Visitas"
 
 #: mod/comercio/comercio_PropostaC.php:3106
 msgid "Adicionar Agenda de Visita"
-msgstr "Adicionar Agenda de Visita"
+msgstr "Add Agenda de Visita"
 
 #: mod/comercio/comercio_PropostaC.php:3107
 msgid "Salvar Agenda de Visita"
@@ -5685,7 +5685,7 @@ msgstr "Administrar Comentários do Visita"
 
 #: mod/comercio/comercio_PropostaC.php:3255
 msgid "Adicionar Comentário de Visita"
-msgstr "Adicionar Comentário de Visita"
+msgstr "Add Comentário de Visita"
 
 #: mod/comercio/comercio_PropostaC.php:3256
 msgid "Salvar Comentário de Visita"
@@ -5693,11 +5693,11 @@ msgstr "Salvar Comentário de Visita"
 
 #: mod/comercio/comercio_PropostaC.php:3273
 msgid "Comentário sobre a Visita Adicionado com Sucesso"
-msgstr "Comentário sobre a Visita Adicionado com Sucesso"
+msgstr "Comentário sobre a Visita Added Successfully"
 
 #: mod/comercio/comercio_PropostaC.php:3277
 msgid "Comentário de Visita cadastrado com sucesso."
-msgstr "Comentário de Visita cadastrado com sucesso."
+msgstr "Comentário de Visita successfully registered."
 
 #: mod/comercio/comercio_PropostaC.php:3297
 msgid "Alteração de Comentário sobre a Visita"
@@ -5717,7 +5717,7 @@ msgstr "Comentário de Visita Editado com Sucesso"
 
 #: mod/comercio/comercio_PropostaC.php:3319
 msgid "Comentário de Visita Alterado com Sucesso."
-msgstr "Comentário de Visita Alterado com Sucesso."
+msgstr "Comentário de Visita Changed with Success."
 
 #: mod/comercio/comercio_PropostaC.php:3346
 msgid "Comentário sobre a Visita Deletado com sucesso"
@@ -5737,7 +5737,7 @@ msgstr "Administrar Familias"
 
 #: mod/comercio/comercio_FamiliaC.php:106
 msgid "Adicionar Familia"
-msgstr "Adicionar Familia"
+msgstr "Add Familia"
 
 #: mod/comercio/comercio_FamiliaC.php:107
 msgid "Salvar Familia"
@@ -5789,7 +5789,7 @@ msgstr "Administrar Enquetes"
 
 #: mod/Enquete/Enquete_EnqueteC.php:127
 msgid "Adicionar Enquete"
-msgstr "Adicionar Enquete"
+msgstr "Add Enquete"
 
 #: mod/Enquete/Enquete_EnqueteC.php:128
 msgid "Salvar Enquete"
@@ -5833,7 +5833,7 @@ msgstr "Administrar Respostas"
 
 #: mod/Enquete/Enquete_RespostaC.php:155
 msgid "Adicionar Resposta"
-msgstr "Adicionar Resposta"
+msgstr "Add Resposta"
 
 #: mod/Enquete/Enquete_RespostaC.php:156
 msgid "Salvar Resposta"
@@ -5877,7 +5877,7 @@ msgstr "Administrar Empreendimentos"
 
 #: mod/Engenharia/Engenharia_EmpreendimentoC.php:113
 msgid "Adicionar Empreendimento"
-msgstr "Adicionar Empreendimento"
+msgstr "Add Empreendimento"
 
 #: mod/Engenharia/Engenharia_EmpreendimentoC.php:114
 msgid "Salvar Empreendimento"
@@ -5885,11 +5885,11 @@ msgstr "Salvar Empreendimento"
 
 #: mod/Engenharia/Engenharia_EmpreendimentoC.php:128
 msgid "Empreendimento Adicionado com Sucesso"
-msgstr "Empreendimento Adicionado com Sucesso"
+msgstr "Empreendimento Added Successfully"
 
 #: mod/Engenharia/Engenharia_EmpreendimentoC.php:132
 msgid "Empreendimento cadastrado com sucesso."
-msgstr "Empreendimento cadastrado com sucesso."
+msgstr "Empreendimento successfully registered."
 
 #: mod/Engenharia/Engenharia_EmpreendimentoC.php:146
 msgid "Alteração de Empreendimento"
@@ -5905,7 +5905,7 @@ msgstr "Empreendimento Editado com Sucesso"
 
 #: mod/Engenharia/Engenharia_EmpreendimentoC.php:164
 msgid "Empreendimento Alterado com Sucesso."
-msgstr "Empreendimento Alterado com Sucesso."
+msgstr "Empreendimento Changed with Success."
 
 #: mod/Engenharia/Engenharia_EmpreendimentoC.php:188
 msgid "Empreendimento deletado com sucesso"
@@ -5942,7 +5942,7 @@ msgstr "Produto retirado do estoque com sucesso."
 
 #: mod/Engenharia/Engenharia_EmpreendimentoC.php:272
 msgid "Adicionar Conta a Receber"
-msgstr "Adicionar Conta a Receber"
+msgstr "Add Conta a Receber"
 
 #: mod/Engenharia/Engenharia_EmpreendimentoC.php:273
 msgid "Salvar Conta a Receber"
@@ -5950,7 +5950,7 @@ msgstr "Salvar Conta a Receber"
 
 #: mod/Engenharia/Engenharia_EmpreendimentoC.php:275
 msgid "Adicionar à Contas a Receber"
-msgstr "Adicionar à Contas a Receber"
+msgstr "Add à Contas a Receber"
 
 #: mod/Engenharia/Engenharia_EmpreendimentoC.php:287
 msgid "Conta a Receber Adicionada com Sucesso"
@@ -5974,7 +5974,7 @@ msgstr "Listagem de Unidades em Todos os Empreendimentos"
 
 #: mod/Engenharia/Engenharia_UnidadeC.php:108
 msgid "Adicionar nova Unidade"
-msgstr "Adicionar nova Unidade"
+msgstr "Add nova Unidade"
 
 #: mod/Engenharia/Engenharia_UnidadeC.php:149
 msgid "Nenhuma Unidade nesse Empreendimento"
@@ -6034,7 +6034,7 @@ msgstr "Administrar Equipamentos"
 
 #: mod/Engenharia/Engenharia_EquipamentoC.php:101
 msgid "Adicionar Equipamento"
-msgstr "Adicionar Equipamento"
+msgstr "Add Equipamento"
 
 #: mod/Engenharia/Engenharia_EquipamentoC.php:102
 msgid "Salvar Equipamento"
@@ -6042,11 +6042,11 @@ msgstr "Salvar Equipamento"
 
 #: mod/Engenharia/Engenharia_EquipamentoC.php:116
 msgid "Equipamento Adicionado com Sucesso"
-msgstr "Equipamento Adicionado com Sucesso"
+msgstr "Equipamento Added Successfully"
 
 #: mod/Engenharia/Engenharia_EquipamentoC.php:120
 msgid "Equipamento cadastrado com sucesso."
-msgstr "Equipamento cadastrado com sucesso."
+msgstr "Equipamento successfully registered."
 
 #: mod/Engenharia/Engenharia_EquipamentoC.php:134
 msgid "Alteração de Equipamento"
@@ -6063,7 +6063,7 @@ msgstr "Equipamento Editado com Sucesso"
 #: mod/Engenharia/Engenharia_EquipamentoC.php:152
 #: mod/usuario_veiculo/usuario_veiculo_EquipamentoC.php:289
 msgid "Equipamento Alterado com Sucesso."
-msgstr "Equipamento Alterado com Sucesso."
+msgstr "Equipamento Changed with Success."
 
 #: mod/Engenharia/Engenharia_EquipamentoC.php:176
 msgid "Equipamento Deletado com sucesso"
@@ -6110,7 +6110,7 @@ msgstr "Administrar Modelos"
 #: mod/usuario_veiculo/usuario_veiculo_EquipamentoC.php:535
 #: mod/usuario_veiculo/usuario_veiculo_ModeloC.php:93
 msgid "Adicionar Modelo"
-msgstr "Adicionar Modelo"
+msgstr "Add Modelo"
 
 #: mod/usuario_veiculo/usuario_veiculo_EquipamentoC.php:536
 #: mod/usuario_veiculo/usuario_veiculo_ModeloC.php:94
@@ -6119,7 +6119,7 @@ msgstr "Salvar Modelo"
 
 #: mod/usuario_veiculo/usuario_veiculo_EquipamentoC.php:551
 msgid "Modelo Adicionado com Sucesso"
-msgstr "Modelo Adicionado com Sucesso"
+msgstr "Modelo Added Successfully"
 
 #: mod/usuario_veiculo/usuario_veiculo_EquipamentoC.php:555
 #: mod/usuario_veiculo/usuario_veiculo_ModeloC.php:113
@@ -6194,7 +6194,7 @@ msgstr "Administrar Comentários do Veiculo"
 
 #: mod/usuario_veiculo/usuario_veiculo_VeiculoC.php:374
 msgid "Adicionar Comentário de Veiculo"
-msgstr "Adicionar Comentário de Veiculo"
+msgstr "Add Comentário de Veiculo"
 
 #: mod/usuario_veiculo/usuario_veiculo_VeiculoC.php:375
 msgid "Salvar Comentário de Veiculo"
@@ -6202,11 +6202,11 @@ msgstr "Salvar Comentário de Veiculo"
 
 #: mod/usuario_veiculo/usuario_veiculo_VeiculoC.php:392
 msgid "Comentário do Veiculo Adicionado com Sucesso"
-msgstr "Comentário do Veiculo Adicionado com Sucesso"
+msgstr "Comentário do Veiculo Added Successfully"
 
 #: mod/usuario_veiculo/usuario_veiculo_VeiculoC.php:396
 msgid "Comentário de Veiculo cadastrado com sucesso."
-msgstr "Comentário de Veiculo cadastrado com sucesso."
+msgstr "Comentário de Veiculo successfully registered."
 
 #: mod/usuario_veiculo/usuario_veiculo_VeiculoC.php:411
 msgid "Alteração de Comentário do Veiculo"
@@ -6222,7 +6222,7 @@ msgstr "Comentário de Veiculo Editado com Sucesso"
 
 #: mod/usuario_veiculo/usuario_veiculo_VeiculoC.php:433
 msgid "Comentário de Veiculo Alterado com Sucesso."
-msgstr "Comentário de Veiculo Alterado com Sucesso."
+msgstr "Comentário de Veiculo Changed with Success."
 
 #: mod/usuario_veiculo/usuario_veiculo_VeiculoC.php:460
 msgid "Comentário do Veiculo Deletado com sucesso"
@@ -6238,7 +6238,7 @@ msgstr "Administrar Eventos do Veiculo"
 
 #: mod/usuario_veiculo/usuario_veiculo_VeiculoC.php:520
 msgid "Adicionar Evento de Veiculo"
-msgstr "Adicionar Evento de Veiculo"
+msgstr "Add Evento de Veiculo"
 
 #: mod/usuario_veiculo/usuario_veiculo_VeiculoC.php:521
 msgid "Salvar Evento de Veiculo"
@@ -6246,11 +6246,11 @@ msgstr "Salvar Evento de Veiculo"
 
 #: mod/usuario_veiculo/usuario_veiculo_VeiculoC.php:538
 msgid "Evento do Veiculo Adicionado com Sucesso"
-msgstr "Evento do Veiculo Adicionado com Sucesso"
+msgstr "Evento do Veiculo Added Successfully"
 
 #: mod/usuario_veiculo/usuario_veiculo_VeiculoC.php:542
 msgid "Evento de Veiculo cadastrado com sucesso."
-msgstr "Evento de Veiculo cadastrado com sucesso."
+msgstr "Evento de Veiculo successfully registered."
 
 #: mod/usuario_veiculo/usuario_veiculo_VeiculoC.php:557
 msgid "Alteração de Evento do Veiculo"
@@ -6266,7 +6266,7 @@ msgstr "Evento de Veiculo Editado com Sucesso"
 
 #: mod/usuario_veiculo/usuario_veiculo_VeiculoC.php:579
 msgid "Evento de Veiculo Alterado com Sucesso."
-msgstr "Evento de Veiculo Alterado com Sucesso."
+msgstr "Evento de Veiculo Changed with Success."
 
 #: mod/usuario_veiculo/usuario_veiculo_VeiculoC.php:606
 msgid "Evento do Veiculo Deletado com sucesso"
@@ -6282,7 +6282,7 @@ msgstr "Administrar Tarefas"
 
 #: mod/Desenvolvimento/Desenvolvimento_TarefaC.php:125
 msgid "Adicionar Tarefa"
-msgstr "Adicionar Tarefa"
+msgstr "Add Tarefa"
 
 #: mod/Desenvolvimento/Desenvolvimento_TarefaC.php:126
 msgid "Salvar Tarefa"
@@ -6364,7 +6364,7 @@ msgstr "Administrar Senhas"
 #: mod/Desenvolvimento/Desenvolvimento_SenhaC.php:95
 #: mod/Desenvolvimento/Desenvolvimento_SenhaC.php:408
 msgid "Adicionar Senha"
-msgstr "Adicionar Senha"
+msgstr "Add Senha"
 
 #: mod/Desenvolvimento/Desenvolvimento_SenhaC.php:96
 #: mod/Desenvolvimento/Desenvolvimento_SenhaC.php:409
@@ -6419,7 +6419,7 @@ msgstr "Ultrapassada"
 #: mod/Desenvolvimento/Desenvolvimento_SenhaC.php:609
 #: mod/Desenvolvimento/Desenvolvimento_ProjetoC.php:349
 msgid "Destaque Alterado com Sucesso."
-msgstr "Destaque Alterado com Sucesso."
+msgstr "Destaque Changed with Success."
 
 #: mod/Desenvolvimento/Desenvolvimento_SenhaC.php:328
 #: mod/Desenvolvimento/Desenvolvimento_SenhaC.php:639
@@ -6445,7 +6445,7 @@ msgstr "Administrar Projetos"
 
 #: mod/Desenvolvimento/Desenvolvimento_ProjetoC.php:136
 msgid "Adicionar Projeto"
-msgstr "Adicionar Projeto"
+msgstr "Add Projeto"
 
 #: mod/Desenvolvimento/Desenvolvimento_ProjetoC.php:137
 msgid "Salvar Projeto"
@@ -6453,11 +6453,11 @@ msgstr "Salvar Projeto"
 
 #: mod/Desenvolvimento/Desenvolvimento_ProjetoC.php:152
 msgid "Projeto Adicionado com Sucesso"
-msgstr "Projeto Adicionado com Sucesso"
+msgstr "Projeto Added Successfully"
 
 #: mod/Desenvolvimento/Desenvolvimento_ProjetoC.php:156
 msgid "Projeto cadastrado com sucesso."
-msgstr "Projeto cadastrado com sucesso."
+msgstr "Projeto successfully registered."
 
 #: mod/Desenvolvimento/Desenvolvimento_ProjetoC.php:170
 msgid "Alteração de Projeto"
@@ -6473,7 +6473,7 @@ msgstr "Projeto Editado com Sucesso"
 
 #: mod/Desenvolvimento/Desenvolvimento_ProjetoC.php:189
 msgid "Projeto Alterado com Sucesso."
-msgstr "Projeto Alterado com Sucesso."
+msgstr "Projeto Changed with Success."
 
 #: mod/Desenvolvimento/Desenvolvimento_ProjetoC.php:213
 msgid "Projeto Deletado com sucesso"
@@ -6502,7 +6502,7 @@ msgstr "Administrar Comentários do Projeto"
 
 #: mod/Desenvolvimento/Desenvolvimento_ProjetoC.php:550
 msgid "Adicionar Comentário de Projeto"
-msgstr "Adicionar Comentário de Projeto"
+msgstr "Add Comentário de Projeto"
 
 #: mod/Desenvolvimento/Desenvolvimento_ProjetoC.php:551
 msgid "Salvar Comentário de Projeto"
@@ -6510,11 +6510,11 @@ msgstr "Salvar Comentário de Projeto"
 
 #: mod/Desenvolvimento/Desenvolvimento_ProjetoC.php:568
 msgid "Comentário do Projeto Adicionado com Sucesso"
-msgstr "Comentário do Projeto Adicionado com Sucesso"
+msgstr "Comentário do Projeto Added Successfully"
 
 #: mod/Desenvolvimento/Desenvolvimento_ProjetoC.php:572
 msgid "Comentário de Projeto cadastrado com sucesso."
-msgstr "Comentário de Projeto cadastrado com sucesso."
+msgstr "Comentário de Projeto successfully registered."
 
 #: mod/Desenvolvimento/Desenvolvimento_ProjetoC.php:592
 msgid "Alteração de Comentário do Projeto"
@@ -6530,7 +6530,7 @@ msgstr "Comentário de Projeto Editado com Sucesso"
 
 #: mod/Desenvolvimento/Desenvolvimento_ProjetoC.php:614
 msgid "Comentário de Projeto Alterado com Sucesso."
-msgstr "Comentário de Projeto Alterado com Sucesso."
+msgstr "Comentário de Projeto Changed with Success."
 
 #: mod/Desenvolvimento/Desenvolvimento_ProjetoC.php:641
 msgid "Comentário do Projeto Deletado com sucesso"
@@ -6546,7 +6546,7 @@ msgstr "Administrar Modulos"
 
 #: mod/Desenvolvimento/Desenvolvimento_FrameworkC.php:115
 msgid "Adicionar Modulo"
-msgstr "Adicionar Modulo"
+msgstr "Add Modulo"
 
 #: mod/Desenvolvimento/Desenvolvimento_FrameworkC.php:116
 msgid "Salvar Modulo"
@@ -6554,11 +6554,11 @@ msgstr "Salvar Modulo"
 
 #: mod/Desenvolvimento/Desenvolvimento_FrameworkC.php:131
 msgid "Modulo Adicionado com Sucesso"
-msgstr "Modulo Adicionado com Sucesso"
+msgstr "Modulo Added Successfully"
 
 #: mod/Desenvolvimento/Desenvolvimento_FrameworkC.php:135
 msgid "Modulo cadastrado com sucesso."
-msgstr "Modulo cadastrado com sucesso."
+msgstr "Modulo successfully registered."
 
 #: mod/Desenvolvimento/Desenvolvimento_FrameworkC.php:149
 msgid "Alteração de Modulo"
@@ -6574,7 +6574,7 @@ msgstr "Modulo Editado com Sucesso"
 
 #: mod/Desenvolvimento/Desenvolvimento_FrameworkC.php:168
 msgid "Modulo Alterado com Sucesso."
-msgstr "Modulo Alterado com Sucesso."
+msgstr "Modulo Changed with Success."
 
 #: mod/Desenvolvimento/Desenvolvimento_FrameworkC.php:192
 msgid "Modulo Deletado com sucesso"
@@ -6590,7 +6590,7 @@ msgstr "Administrar Submodulos"
 
 #: mod/Desenvolvimento/Desenvolvimento_FrameworkC.php:293
 msgid "Adicionar Submodulo"
-msgstr "Adicionar Submodulo"
+msgstr "Add Submodulo"
 
 #: mod/Desenvolvimento/Desenvolvimento_FrameworkC.php:294
 msgid "Salvar Submodulo"
@@ -6598,11 +6598,11 @@ msgstr "Salvar Submodulo"
 
 #: mod/Desenvolvimento/Desenvolvimento_FrameworkC.php:309
 msgid "Submodulo Adicionado com Sucesso"
-msgstr "Submodulo Adicionado com Sucesso"
+msgstr "Submodulo Added Successfully"
 
 #: mod/Desenvolvimento/Desenvolvimento_FrameworkC.php:313
 msgid "Submodulo cadastrado com sucesso."
-msgstr "Submodulo cadastrado com sucesso."
+msgstr "Submodulo successfully registered."
 
 #: mod/Desenvolvimento/Desenvolvimento_FrameworkC.php:327
 msgid "Alteração de Submodulo"
@@ -6618,7 +6618,7 @@ msgstr "Submodulo Editado com Sucesso"
 
 #: mod/Desenvolvimento/Desenvolvimento_FrameworkC.php:346
 msgid "Submodulo Alterado com Sucesso."
-msgstr "Submodulo Alterado com Sucesso."
+msgstr "Submodulo Changed with Success."
 
 #: mod/Desenvolvimento/Desenvolvimento_FrameworkC.php:370
 msgid "Submodulo Deletado com sucesso"
@@ -6634,7 +6634,7 @@ msgstr "Administrar Metodos"
 
 #: mod/Desenvolvimento/Desenvolvimento_FrameworkC.php:470
 msgid "Adicionar Metodo"
-msgstr "Adicionar Metodo"
+msgstr "Add Metodo"
 
 #: mod/Desenvolvimento/Desenvolvimento_FrameworkC.php:471
 msgid "Salvar Metodo"
@@ -6642,11 +6642,11 @@ msgstr "Salvar Metodo"
 
 #: mod/Desenvolvimento/Desenvolvimento_FrameworkC.php:486
 msgid "Metodo Adicionado com Sucesso"
-msgstr "Metodo Adicionado com Sucesso"
+msgstr "Metodo Added Successfully"
 
 #: mod/Desenvolvimento/Desenvolvimento_FrameworkC.php:490
 msgid "Metodo cadastrado com sucesso."
-msgstr "Metodo cadastrado com sucesso."
+msgstr "Metodo successfully registered."
 
 #: mod/Desenvolvimento/Desenvolvimento_FrameworkC.php:504
 msgid "Alteração de Metodo"
@@ -6662,7 +6662,7 @@ msgstr "Metodo Editado com Sucesso"
 
 #: mod/Desenvolvimento/Desenvolvimento_FrameworkC.php:523
 msgid "Metodo Alterado com Sucesso."
-msgstr "Metodo Alterado com Sucesso."
+msgstr "Metodo Changed with Success."
 
 #: mod/Desenvolvimento/Desenvolvimento_FrameworkC.php:547
 msgid "Metodo Deletado com sucesso"
@@ -6678,7 +6678,7 @@ msgstr "Administrar Cursos"
 
 #: mod/Curso/Curso_CursoC.php:122
 msgid "Adicionar Curso"
-msgstr "Adicionar Curso"
+msgstr "Add Curso"
 
 #: mod/Curso/Curso_CursoC.php:123
 msgid "Salvar Curso"
@@ -6686,11 +6686,11 @@ msgstr "Salvar Curso"
 
 #: mod/Curso/Curso_CursoC.php:138
 msgid "Curso Adicionado com Sucesso"
-msgstr "Curso Adicionado com Sucesso"
+msgstr "Curso Added Successfully"
 
 #: mod/Curso/Curso_CursoC.php:142
 msgid "Curso cadastrado com sucesso."
-msgstr "Curso cadastrado com sucesso."
+msgstr "Curso successfully registered."
 
 #: mod/Curso/Curso_CursoC.php:156
 msgid "Alteração de Curso"
@@ -6706,7 +6706,7 @@ msgstr "Curso Editado com Sucesso"
 
 #: mod/Curso/Curso_CursoC.php:175
 msgid "Curso Alterado com Sucesso."
-msgstr "Curso Alterado com Sucesso."
+msgstr "Curso Changed with Success."
 
 #: mod/Curso/Curso_CursoC.php:199
 msgid "Curso deletado com sucesso"
@@ -6722,7 +6722,7 @@ msgstr "Todas as Turmas"
 
 #: mod/Curso/Curso_TurmaC.php:196
 msgid "Adicionar nova Turma"
-msgstr "Adicionar nova Turma"
+msgstr "Add nova Turma"
 
 #: mod/Curso/Curso_TurmaC.php:219 mod/Curso/Curso_TurmaC.php:300
 msgid "Listagem de Turmas em Todos os Cursos"
@@ -6746,7 +6746,7 @@ msgstr "Nenhuma Turma com inscrição aberta"
 
 #: mod/Curso/Curso_TurmaC.php:348
 msgid "Adicionar Turma"
-msgstr "Adicionar Turma"
+msgstr "Add Turma"
 
 #: mod/Curso/Curso_TurmaC.php:349
 msgid "Salvar Turma"

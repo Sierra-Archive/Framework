@@ -25,9 +25,9 @@ class biblioteca_BibliotecaControle extends biblioteca_Controle
         $registro = \Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
         if($true===true){
-            $_Controle->Tema_Endereco('Biblioteca','biblioteca/Biblioteca/Bibliotecas');
+            $_Controle->Tema_Endereco(__('Biblioteca'),'biblioteca/Biblioteca/Bibliotecas');
         }else{
-            $_Controle->Tema_Endereco('Biblioteca');
+            $_Controle->Tema_Endereco(__('Biblioteca'));
         }
     }
     public function Download($id,$raiz=false){
