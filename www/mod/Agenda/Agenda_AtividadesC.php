@@ -75,7 +75,7 @@ class Agenda_AtividadesControle extends Agenda_Controle
         }else{           
             $Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhuma Atividade Aberta</font></b></center>');
         }
-        $titulo = 'Arquivo de Pastas ('.$i.')';
+        $titulo = __('Arquivo de Pastas').' ('.$i.')';
         if($tipo==='Unico'){
             $Visual->Bloco_Unico_CriaJanela($titulo);
         }else{

@@ -81,7 +81,7 @@ class predial_AnimalControle extends predial_Controle
         }else{          
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Animal</font></b></center>');
         }
-        $titulo = 'Listagem de Animais ('.$i.')';
+        $titulo = __('Listagem de Animais').' ('.$i.')';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         
         //Carrega Json

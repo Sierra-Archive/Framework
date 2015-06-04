@@ -81,7 +81,7 @@ class predial_BlocoControle extends predial_Controle
         }else{         
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Bloco</font></b></center>');
         }
-        $titulo = 'Listagem de Blocos ('.$i.')';
+        $titulo = __('Listagem de Blocos').' ('.$i.')';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         
         //Carrega Json

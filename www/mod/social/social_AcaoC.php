@@ -38,9 +38,9 @@ class social_AcaoControle extends social_Controle
         $registro = \Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
         if($true===true){
-            $_Controle->Tema_Endereco('Açoes','social/Acao/Acoes');
+            $_Controle->Tema_Endereco(__('Açoes'),'social/Acao/Acoes');
         }else{
-            $_Controle->Tema_Endereco('Açoes');
+            $_Controle->Tema_Endereco(__('Açoes'));
         }
     }
     /**
@@ -97,7 +97,7 @@ class social_AcaoControle extends social_Controle
                                                   $Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Ação'       ,'social/Acao/Acoes_Del/'.$valor->id.'/'.$persona_id     ,'Deseja realmente deletar essa Ação ?'));
                 ++$i;
             }
-            $titulo = 'Listagem de Ações ('.$i.')';
+            $titulo = __('Listagem de Ações').' ('.$i.')';
             if($export!==false){
                 self::Export_Todos($export,$tabela, $titulo);
             }else{
@@ -115,7 +115,7 @@ class social_AcaoControle extends social_Controle
             }
             unset($tabela);
         }else{        
-        $titulo = 'Listagem de Ações ('.$i.')'; 
+        $titulo = __('Listagem de Ações').' ('.$i.')'; 
             $Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhuma Ação</font></b></center>');
         }
         if($tipo=='Unico'){

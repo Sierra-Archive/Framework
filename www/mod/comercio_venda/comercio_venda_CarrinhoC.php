@@ -99,7 +99,7 @@ class comercio_venda_CarrinhoControle extends comercio_venda_Controle
         }else{          
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Caixa</font></b></center>');
         }
-        $titulo = 'Listagem de Caixas ('.$i.')';
+        $titulo = __('Listagem de Caixas').' ('.$i.')';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         
         //Carrega Json
@@ -569,7 +569,7 @@ class comercio_venda_CarrinhoControle extends comercio_venda_Controle
         }else{          
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhuma Mesa</font></b></center>');
         }
-        $titulo = 'Listagem de Mesas ('.$i.')';
+        $titulo = __('Listagem de Mesas').' ('.$i.')';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         
         //Carrega Json

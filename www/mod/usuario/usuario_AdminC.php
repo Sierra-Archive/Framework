@@ -141,7 +141,7 @@ class usuario_AdminControle extends usuario_Controle
             self::DAO_Ext_ADD($campos,'grupo','SG.categoria='.CFG_TEC_CAT_ID_CLIENTES);
              //Aparece na Tela
             $tipo   = Framework\Classes\Texto::Transformar_Plural_Singular(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Cliente_nome'));
-            $this->Tema_Endereco('Clientes','usuario/Admin/ListarCliente');
+            $this->Tema_Endereco(__('Clientes'),'usuario/Admin/ListarCliente');
             $metodo = 'Cliente_Edit2'.'/'.$id.'/';
         }else if($tipo==='Funcionário' || $tipo===\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Funcionario_nome')){
             $tipo_pass  = CFG_TEC_CAT_ID_FUNCIONARIOS;
@@ -149,14 +149,14 @@ class usuario_AdminControle extends usuario_Controle
             $tipo   = Framework\Classes\Texto::Transformar_Plural_Singular(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Funcionario_nome'));
             // Troca grupo
             self::DAO_Ext_ADD($campos,'grupo','SG.categoria='.CFG_TEC_CAT_ID_FUNCIONARIOS);
-            $this->Tema_Endereco('Funcionários','usuario/Admin/ListarFuncionario');
+            $this->Tema_Endereco(__('Funcionários'),'usuario/Admin/ListarFuncionario');
             $metodo = 'Funcionario_Edit2'.'/'.$id.'/';
         }else{
             $tipo_pass  = CFG_TEC_CAT_ID_ADMIN;
             $tipo2  = 'usuario'; //id do tipo
             // Troca grupo
             self::DAO_Ext_ADD($campos,'grupo','SG.categoria='.CFG_TEC_CAT_ID_ADMIN);
-            $this->Tema_Endereco('Usuários','usuario/Admin/ListarUsuario');
+            $this->Tema_Endereco(__('Usuários'),'usuario/Admin/ListarUsuario');
             $metodo = 'Usuarios_Edit2'.'/'.$id.'/'.$tipo2.'/';
         }
         
@@ -182,7 +182,7 @@ class usuario_AdminControle extends usuario_Controle
         
         
         // Bota Endereço
-        $this->Tema_Endereco('Editar');
+        $this->Tema_Endereco(__('Editar'));
         // cadastro de usuario
         $form = new \Framework\Classes\Form('form_Sistema_AdminC_UsuarioEdit','usuario/Admin/'.$metodo,'formajax');
         // Deleta Campos Responsaveis
@@ -357,7 +357,7 @@ class usuario_AdminControle extends usuario_Controle
             $this->_Visual->Blocar($formulario);
             $this->_Visual->Bloco_Unico_CriaJanela(__('Cadastro de Funcionário'));
             $this->_Visual->Json_Info_Update('Titulo', __('Adicionar Funcionário'));
-            $this->Tema_Endereco('Funcionários','usuario/Admin/ListarFuncionario');
+            $this->Tema_Endereco(__('Funcionários'),'usuario/Admin/ListarFuncionario');
         }else{
             self::Campos_Deletar(CFG_TEC_CAT_ID_ADMIN,$campos, $usuario);
             // Carrega formulario
@@ -367,9 +367,9 @@ class usuario_AdminControle extends usuario_Controle
             $this->_Visual->Blocar($formulario);
             $this->_Visual->Bloco_Unico_CriaJanela(__('Cadastro de Usuário'));
             $this->_Visual->Json_Info_Update('Titulo', __('Adicionar Usuário'));
-            $this->Tema_Endereco('Usuários','usuario/Admin/ListarUsuario');
+            $this->Tema_Endereco(__('Usuários'),'usuario/Admin/ListarUsuario');
         }
-        $this->Tema_Endereco('Adicionar');
+        $this->Tema_Endereco(__('Adicionar'));
     }
     /**
      * Inseri usuarios no Banco de dados
@@ -662,8 +662,8 @@ class usuario_AdminControle extends usuario_Controle
                 ++$i;
             }
             $this->_Visual->Show_Tabela_DataTable($tabela);
-            if($tipo=='cnh') $titulo = 'CNH Pendentes ('.$i.')';
-            else             $titulo = 'Comprovantes de Residencia Pendentes ('.$i.')';
+            if($tipo=='cnh') $titulo = __('CNH Pendentes').' ('.$i.')';
+            else             $titulo = __('Comprovantes de Residencia Pendentes').' ('.$i.')';
             $this->_Visual->Bloco_Maior_CriaJanela($titulo);
             unset($tabela);
         }
@@ -731,19 +731,19 @@ class usuario_AdminControle extends usuario_Controle
             $nomedisplay        = __('Clientes');
             $nomedisplay_sing   = __('Cliente');
             $tipo               = 'cliente';
-            $this->Tema_Endereco('Clientes','usuario/Admin/ListarCliente');
+            $this->Tema_Endereco(__('Clientes'),'usuario/Admin/ListarCliente');
         }else if($tipo=='funcionario'){
             $nomedisplay        = __('Usuários');
             $nomedisplay_sing   = __('Usuário');
             $tipo               = 'funcionario';
-            $this->Tema_Endereco('Funcionários','usuario/Admin/ListarFuncionario');
+            $this->Tema_Endereco(__('Funcionários'),'usuario/Admin/ListarFuncionario');
         }else{
             $nomedisplay        = __('Usuários ');
             $nomedisplay_sing   = __('Usuário ');
             $tipo               = 'usuario';
-            $this->Tema_Endereco('Usuários','usuario/Admin/ListarUsuario');
+            $this->Tema_Endereco(__('Usuários'),'usuario/Admin/ListarUsuario');
         }
-        $this->Tema_Endereco('Comentários');
+        $this->Tema_Endereco(__('Comentários'));
         
         
         $i = 0;
@@ -805,19 +805,19 @@ class usuario_AdminControle extends usuario_Controle
             $nomedisplay        = __('Clientes');
             $nomedisplay_sing   = __('Cliente');
             $tipo               = 'cliente';
-            $this->Tema_Endereco('Clientes','usuario/Admin/ListarCliente');
+            $this->Tema_Endereco(__('Clientes'),'usuario/Admin/ListarCliente');
         }else if($tipo=='funcionario'){
             $nomedisplay        = __('Usuários');
             $nomedisplay_sing   = __('Usuário');
             $tipo               = 'funcionario';
-            $this->Tema_Endereco('Funcionários','usuario/Admin/ListarFuncionario');
+            $this->Tema_Endereco(__('Funcionários'),'usuario/Admin/ListarFuncionario');
         }else{
             $nomedisplay        = __('Usuários');
             $nomedisplay_sing   = __('Usuário');
             $tipo               = 'usuario';
-            $this->Tema_Endereco('Usuários','usuario/Admin/ListarUsuario');
+            $this->Tema_Endereco(__('Usuários'),'usuario/Admin/ListarUsuario');
         }
-        $this->Tema_Endereco('Comentários', 'usuario/Admin/Usuarios_Comentario/'.$usuario_id.'/'.$tipo);
+        $this->Tema_Endereco(__('Comentários'), 'usuario/Admin/Usuarios_Comentario/'.$usuario_id.'/'.$tipo);
         
         
         
@@ -905,19 +905,19 @@ class usuario_AdminControle extends usuario_Controle
             $nomedisplay        = __('Clientes');
             $nomedisplay_sing   = __('Cliente');
             $tipo               = 'cliente';
-            $this->Tema_Endereco('Clientes','usuario/Admin/ListarCliente');
+            $this->Tema_Endereco(__('Clientes'),'usuario/Admin/ListarCliente');
         }else if($tipo==='funcionario'){
             $nomedisplay        = __('Usuários');
             $nomedisplay_sing   = __('Usuário');
             $tipo               = 'funcionario';
-            $this->Tema_Endereco('Funcionários','usuario/Admin/ListarFuncionario');
+            $this->Tema_Endereco(__('Funcionários'),'usuario/Admin/ListarFuncionario');
         }else{
             $nomedisplay        = __('Usuários');
             $nomedisplay_sing   = __('Usuário');
             $tipo               = 'usuario';
-            $this->Tema_Endereco('Usuários','usuario/Admin/ListarUsuario');
+            $this->Tema_Endereco(__('Usuários'),'usuario/Admin/ListarUsuario');
         }
-        $this->Tema_Endereco('Comentários', 'usuario/Admin/Usuarios_Comentario/'.$usuario_id.'/'.$tipo);
+        $this->Tema_Endereco(__('Comentários'), 'usuario/Admin/Usuarios_Comentario/'.$usuario_id.'/'.$tipo);
         
         // Começo
         // Carrega Config

@@ -81,7 +81,7 @@ class predial_InformativoControle extends predial_Controle
         }else{          
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Informativo</font></b></center>');
         }
-        $titulo = 'Listagem de Informativos ('.$i.')';
+        $titulo = __('Listagem de Informativos').' ('.$i.')';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         
         //Carrega Json

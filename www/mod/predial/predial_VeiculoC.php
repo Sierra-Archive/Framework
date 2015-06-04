@@ -80,7 +80,7 @@ class predial_VeiculoControle extends predial_Controle
         }else{       
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Veiculo</font></b></center>');
         }
-        $titulo = 'Listagem de Veiculos ('.$i.')';
+        $titulo = __('Listagem de Veiculos').' ('.$i.')';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         
         //Carrega Json

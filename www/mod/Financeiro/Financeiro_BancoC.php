@@ -73,7 +73,7 @@ class Financeiro_BancoControle extends Financeiro_Controle
         }else{         
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Banco</font></b></center>');
         }
-        $titulo = 'Listagem de Bancos ('.$i.')';
+        $titulo = __('Listagem de Bancos').' ('.$i.')';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         
         //Carrega Json

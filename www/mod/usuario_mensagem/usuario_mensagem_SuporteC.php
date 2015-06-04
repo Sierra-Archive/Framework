@@ -23,9 +23,9 @@ class usuario_mensagem_SuporteControle extends usuario_mensagem_Controle
         $registro = \Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
         if($true===true){
-            $_Controle->Tema_Endereco('Chamados','usuario_mensagem/Suporte/Mensagens/');
+            $_Controle->Tema_Endereco(__('Chamados'),'usuario_mensagem/Suporte/Mensagens/');
         }else{
-            $_Controle->Tema_Endereco('Chamados');
+            $_Controle->Tema_Endereco(__('Chamados'));
         }
     }
     static function Endereco_Suporte_Listar($true=true,$id){
@@ -33,9 +33,9 @@ class usuario_mensagem_SuporteControle extends usuario_mensagem_Controle
         $registro = \Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
         if($true===true){
-            $_Controle->Tema_Endereco('Visualizar Chamado','usuario_mensagem/Suporte/VisualizadordeMensagem/'.$id);
+            $_Controle->Tema_Endereco(__('Visualizar Chamado'),'usuario_mensagem/Suporte/VisualizadordeMensagem/'.$id);
         }else{
-            $_Controle->Tema_Endereco('Visualizar Chamado');
+            $_Controle->Tema_Endereco(__('Visualizar Chamado'));
         }
     }
     public function Finalizar($id){
@@ -121,15 +121,15 @@ class usuario_mensagem_SuporteControle extends usuario_mensagem_Controle
             }
         }
         if($grupo==0){
-            $titulo  = 'Todos os Chamados de todos os Setores ('.$i.')';
+            $titulo  = __('Todos os Chamados de todos os Setores').' ('.$i.')';
         }else{
-            $titulo  = 'Todos os Chamados do Setor ('.$i.')';
+            $titulo  = __('Todos os Chamados do Setor').' ('.$i.')';
         }
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
     }
     public function Mostrar_Cliente($cliente = 0,$retorno='Unico'){
         self::Endereco_Suporte(true);
-        $this->Tema_Endereco('Visualizar Chamados de Cliente');
+        $this->Tema_Endereco(__('Visualizar Chamados de Cliente'));
         self::MensagensdeCliente($cliente,$retorno);
         // ORGANIZA E MANDA CONTEUDO
         $this->_Visual->Json_Info_Update('Titulo', __('Visualizar Chamados de Cliente')); 
@@ -158,7 +158,7 @@ class usuario_mensagem_SuporteControle extends usuario_mensagem_Controle
         }else{
             $Visual->Blocar('<center><b><font color="#FF0000" size="5">Não possui chamados.</font></b></center>');
         }
-        $titulo  = 'Todos os chamados do Cliente ('.$i.')';
+        $titulo  = __('Todos os chamados do Cliente').' ('.$i.')';
         if($retorno=='Unico'){
             $Visual->Bloco_Unico_CriaJanela($titulo);
         }else{

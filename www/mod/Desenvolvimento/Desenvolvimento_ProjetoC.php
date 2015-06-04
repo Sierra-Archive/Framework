@@ -20,9 +20,9 @@ class Desenvolvimento_ProjetoControle extends Desenvolvimento_Controle
     }
     protected function Endereco_Projeto($true=true){
         if($true===true){
-            $this->Tema_Endereco('Projetos','Desenvolvimento/Projeto/Projetos');
+            $this->Tema_Endereco(__('Projetos'),'Desenvolvimento/Projeto/Projetos');
         }else{
-            $this->Tema_Endereco('Projetos');
+            $this->Tema_Endereco(__('Projetos'));
         }
     }
     protected function Endereco_Projeto_Ver($projeto,$true=true){
@@ -119,7 +119,7 @@ class Desenvolvimento_ProjetoControle extends Desenvolvimento_Controle
         }else{    
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Projeto</font></b></center>');
         }
-        $titulo = 'Listagem de Projetos ('.$i.')';
+        $titulo = __('Listagem de Projetos').' ('.$i.')';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         
         //Carrega Json
@@ -523,7 +523,7 @@ class Desenvolvimento_ProjetoControle extends Desenvolvimento_Controle
             $html .= '<center><b><font color="#FF0000" size="5">Nenhum Comentário do Projeto</font></b></center>';
         }
         
-        $titulo = 'Comentários do Projeto ('.$i.')';
+        $titulo = __('Comentários do Projeto').' ('.$i.')';
         if($return){
             return Array($titulo,$html);
         }else{

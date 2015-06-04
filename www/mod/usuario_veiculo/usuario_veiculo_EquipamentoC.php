@@ -40,9 +40,9 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
         $_Controle = $registro->_Controle;
         $link   = 'usuario_veiculo/Equipamento/Equipamentos';
         if($true===true){
-            $_Controle->Tema_Endereco('Equipamentos',$link);
+            $_Controle->Tema_Endereco(__('Equipamentos'),$link);
         }else{
-            $_Controle->Tema_Endereco('Equipamentos');
+            $_Controle->Tema_Endereco(__('Equipamentos'));
         }
     }
     static function Endereco_Equipamento_Marca($true=true){
@@ -369,7 +369,7 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
         }else{        
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhuma Marca</font></b></center>');
         }
-        $titulo = 'Listagem de Marcas ('.$i.')';
+        $titulo = __('Listagem de Marcas').' ('.$i.')';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         
         //Carrega Json
@@ -518,7 +518,7 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
         }else{       
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Modelo</font></b></center>');
         }
-        $titulo = 'Listagem de Modelos ('.$i.')';
+        $titulo = __('Listagem de Modelos').' ('.$i.')';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         
         //Carrega Json

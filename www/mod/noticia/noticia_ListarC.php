@@ -68,9 +68,9 @@ class noticia_ListarControle extends noticia_Controle
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhuma Noticia</font></b></center>');
         }
         if($status==0){
-            $titulo = 'Todas as Noticias Desativadas ('.$i.')';
+            $titulo = __('Todas as Noticias Desativadas').' ('.$i.')';
         }else{
-            $titulo = 'Todas as Noticias Ativadas ('.$i.')';
+            $titulo = __('Todas as Noticias Ativadas').' ('.$i.')';
         }
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
     }

@@ -25,9 +25,9 @@ class Financeiro_FinancaControle extends Financeiro_Controle
         $registro = \Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
         if($true===true){
-            $_Controle->Tema_Endereco('Finanças','Financeiro/Financa/Financas');
+            $_Controle->Tema_Endereco(__('Finanças'),'Financeiro/Financa/Financas');
         }else{
-            $_Controle->Tema_Endereco('Finanças');
+            $_Controle->Tema_Endereco(__('Finanças'));
         }
     }
     /**
@@ -71,7 +71,7 @@ class Financeiro_FinancaControle extends Financeiro_Controle
         }else{     
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhuma Finança</font></b></center>');
         }
-        $titulo = 'Listagem de Finanças ('.$i.')';
+        $titulo = __('Listagem de Finanças').' ('.$i.')';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         
         //Carrega Json

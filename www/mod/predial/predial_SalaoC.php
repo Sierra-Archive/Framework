@@ -80,7 +80,7 @@ class predial_SalaoControle extends predial_Controle
         }else{            
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Local de Reserva</font></b></center>');
         }
-        $titulo = 'Listagem de Locais de Reserva ('.$i.')';
+        $titulo = __('Listagem de Locais de Reserva').' ('.$i.')';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         
         //Carrega Json

@@ -133,7 +133,7 @@ class comercio_EstoqueControle extends comercio_Controle
         if($i==0){       
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhuma Movimentação de Estoque</font></b></center>');
         }
-        $titulo = 'Histórico de Movimentação de Estoque ('.$i.')';
+        $titulo = __('Histórico de Movimentação de Estoque').' ('.$i.')';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         
         //Carrega Json

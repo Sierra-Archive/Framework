@@ -307,7 +307,7 @@ class comercio_FornecedorControle extends comercio_Controle
             }
         }
         if($erro===false){
-            $titulo = 'Comentários do Fornecedor ('.$i.')';
+            $titulo = __('Comentários do Fornecedor').' ('.$i.')';
             $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',10);
 
             //Carrega Json

@@ -84,7 +84,7 @@ class predial_AdvertenciaControle extends predial_Controle
         }else{            
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhuma Advertência</font></b></center>');
         }
-        $titulo = 'Listagem de Advertências ('.$i.')';
+        $titulo = __('Listagem de Advertências').' ('.$i.')';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         
         //Carrega Json
@@ -314,7 +314,7 @@ class predial_AdvertenciaControle extends predial_Controle
         }else{            
             $html .= '<center><b><font color="#FF0000" size="3">Nenhuma Advertência para seu Apartamento</font></b></center>';
         }
-        $titulo = 'Listagem de Advertências ('.$i.')';
+        $titulo = __('Listagem de Advertências').' ('.$i.')';
         return Array($titulo,$html);
     }
 }

@@ -123,7 +123,7 @@ class noticia_AdminControle extends noticia_Controle
             }
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">'.$mensagem.'</font></b></center>');
         }
-        $titulo = 'Listagem de Noticias ('.$i.')';
+        $titulo = __('Listagem de Noticias').' ('.$i.')';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         //Carrega Json
         $this->_Visual->Json_Info_Update('Titulo', __('Administrar Noticias'));

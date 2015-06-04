@@ -18,16 +18,16 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
     }
     protected function Endereco_Senha($true=true){
         if($true===true){
-            $this->Tema_Endereco('Senhas','Desenvolvimento/Senha/Senhas');
+            $this->Tema_Endereco(__('Senhas'),'Desenvolvimento/Senha/Senhas');
         }else{
-            $this->Tema_Endereco('Senhas');
+            $this->Tema_Endereco(__('Senhas'));
         }
     }
     protected function Endereco_Senha_Todas($true=true){
         if($true===true){
-            $this->Tema_Endereco('Todas as Senhas','Desenvolvimento/Senha/Senhas_Todas');
+            $this->Tema_Endereco(__('Todas as Senhas'),'Desenvolvimento/Senha/Senhas_Todas');
         }else{
-            $this->Tema_Endereco('Todas as Senhas');
+            $this->Tema_Endereco(__('Todas as Senhas'));
         }
     }
     /**

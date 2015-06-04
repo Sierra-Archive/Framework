@@ -207,7 +207,7 @@ class locais_localidadesControle extends locais_Controle
         }else{       
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Pais</font></b></center>');
         }
-        $titulo = 'Listagem de Paises ('.$i.')';
+        $titulo = __('Listagem de Paises').' ('.$i.')';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         
         //Carrega Json
@@ -335,7 +335,7 @@ class locais_localidadesControle extends locais_Controle
         }else{
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Estado</font></b></center>');
         }
-        $titulo = 'Listagem de Estados ('.$i.')';
+        $titulo = __('Listagem de Estados').' ('.$i.')';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         
         //Carrega Json
@@ -463,7 +463,7 @@ class locais_localidadesControle extends locais_Controle
         }else{
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhuma Cidade</font></b></center>');
         }
-        $titulo = 'Listagem de Cidades ('.$i.')';
+        $titulo = __('Listagem de Cidades').' ('.$i.')';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         
         //Carrega Json
@@ -591,7 +591,7 @@ class locais_localidadesControle extends locais_Controle
         }else{
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Bairro</font></b></center>');
         }
-        $titulo = 'Listagem de Bairros ('.$i.')';
+        $titulo = __('Listagem de Bairros').' ('.$i.')';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         
         //Carrega Json

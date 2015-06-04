@@ -74,7 +74,7 @@ class usuario_veiculo_MarcaControle extends usuario_veiculo_Controle
         }else{           
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhuma Marca</font></b></center>');
         }
-        $titulo = 'Listagem de Marcas ('.$i.')';
+        $titulo = __('Listagem de Marcas').' ('.$i.')';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         
         //Carrega Json

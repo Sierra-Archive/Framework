@@ -8,9 +8,9 @@ class Evento_EventoControle extends Evento_Controle
         $registro = \Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
         if($true===true){
-            $_Controle->Tema_Endereco('Eventos','Evento/Evento/Eventos');
+            $_Controle->Tema_Endereco(__('Eventos'),'Evento/Evento/Eventos');
         }else{
-            $_Controle->Tema_Endereco('Eventos');
+            $_Controle->Tema_Endereco(__('Eventos'));
         }
     }
     /**
@@ -122,7 +122,7 @@ class Evento_EventoControle extends Evento_Controle
             }     
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">'.$mensagem.'</font></b></center>');
         }
-        $titulo = 'Listagem de Eventos ('.$i.')';
+        $titulo = __('Listagem de Eventos').' ('.$i.')';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         
         //Carrega Json

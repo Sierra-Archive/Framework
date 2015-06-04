@@ -2861,7 +2861,7 @@ class comercio_PropostaControle extends comercio_Controle
         }else{           
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Checklist</font></b></center>');
         }
-        $titulo = 'Listagem de Checklists ('.$i.')';
+        $titulo = __('Listagem de Checklists').' ('.$i.')';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         
         //Carrega Json
@@ -3091,7 +3091,7 @@ class comercio_PropostaControle extends comercio_Controle
         }else{           
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhuma Agenda de Visita</font></b></center>');
         }
-        $titulo = 'Listagem de Visitas ('.$i.')';
+        $titulo = __('Listagem de Visitas').' ('.$i.')';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         
         //Carrega Json
@@ -3232,7 +3232,7 @@ class comercio_PropostaControle extends comercio_Controle
         }else{            
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Comentário sobre a Visita</font></b></center>');
         }
-        $titulo = 'Comentários do Visita ('.$i.')';
+        $titulo = __('Comentários do Visita').' ('.$i.')';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',10);
         
         //Carrega Json

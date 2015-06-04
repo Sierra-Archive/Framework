@@ -110,7 +110,7 @@ class Transporte_EstradaControle extends Transporte_Controle
             }
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">'.$mensagem.'</font></b></center>');
         }
-        $titulo = 'Listagem de Dicas de Estradas ('.$i.')';
+        $titulo = __('Listagem de Dicas de Estradas').' ('.$i.')';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         //Carrega Json
         $this->_Visual->Json_Info_Update('Titulo', __('Estradaistrar Estradas'));

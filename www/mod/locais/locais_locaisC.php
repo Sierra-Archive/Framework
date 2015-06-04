@@ -12,9 +12,9 @@ class locais_locaisControle extends locais_Controle
         $registro = \Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
         if($true===true){
-            $_Controle->Tema_Endereco('Locais','locais/locais/Locais');
+            $_Controle->Tema_Endereco(__('Locais'),'locais/locais/Locais');
         }else{
-            $_Controle->Tema_Endereco('Locais');
+            $_Controle->Tema_Endereco(__('Locais'));
         }
     }
     /**
@@ -70,7 +70,7 @@ class locais_locaisControle extends locais_Controle
         }else{        
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Local</font></b></center>');
         }
-        $titulo = 'Listagem de Locais ('.$i.')';
+        $titulo = __('Listagem de Locais').' ('.$i.')';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         
         //Carrega Json

@@ -20,9 +20,9 @@ class Desenvolvimento_TarefaControle extends Desenvolvimento_Controle
     }
     protected function Endereco_Tarefa($true=true){
         if($true===true){
-            $this->Tema_Endereco('Tarefas','Desenvolvimento/Tarefa/Tarefas');
+            $this->Tema_Endereco(__('Tarefas'),'Desenvolvimento/Tarefa/Tarefas');
         }else{
-            $this->Tema_Endereco('Tarefas');
+            $this->Tema_Endereco(__('Tarefas'));
         }
     }
     /**
@@ -108,7 +108,7 @@ class Desenvolvimento_TarefaControle extends Desenvolvimento_Controle
         }else{    
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhuma Tarefa</font></b></center>');
         }
-        $titulo = 'Listagem de Tarefas ('.$i.')';
+        $titulo = __('Listagem de Tarefas').' ('.$i.')';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         
         //Carrega Json

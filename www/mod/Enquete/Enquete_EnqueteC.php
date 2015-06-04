@@ -25,9 +25,9 @@ class Enquete_EnqueteControle extends Enquete_Controle
         $registro = \Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
         if($true===true){
-            $_Controle->Tema_Endereco('Enquetes','Enquete/Enquete/Enquetes');
+            $_Controle->Tema_Endereco(__('Enquetes'),'Enquete/Enquete/Enquetes');
         }else{
-            $_Controle->Tema_Endereco('Enquetes');
+            $_Controle->Tema_Endereco(__('Enquetes'));
         }
     }
     static function Enquetes_Tabela(&$enquetes){
@@ -110,7 +110,7 @@ class Enquete_EnqueteControle extends Enquete_Controle
         }else{            
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhuma Enquete</font></b></center>');
         }
-        $titulo = 'Listagem de Enquetes ('.$i.')';
+        $titulo = __('Listagem de Enquetes').' ('.$i.')';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         
         //Carrega Json

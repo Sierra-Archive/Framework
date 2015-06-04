@@ -222,7 +222,7 @@ class Transporte_PedidoControle extends Transporte_Controle
             }
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">'.$mensagem.'</font></b></center>');
         }
-        $titulo = 'Propostas Aceitas dos Meus Pedidos ('.$i.')';
+        $titulo = __('Propostas Aceitas dos Meus Pedidos').' ('.$i.')';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         //Carrega Json
         $this->_Visual->Json_Info_Update('Titulo', __('Propostas Aceitas dos Meus Pedidos'));
@@ -281,7 +281,7 @@ class Transporte_PedidoControle extends Transporte_Controle
             }
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">'.$mensagem.'</font></b></center>');
         }
-        $titulo = 'Novas Propostas dos Meus Pedidos ('.$i.')';
+        $titulo = __('Novas Propostas dos Meus Pedidos').' ('.$i.')';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         //Carrega Json
         $this->_Visual->Json_Info_Update('Titulo', __('Novas Propostas dos Meus Pedidos'));
@@ -343,7 +343,7 @@ class Transporte_PedidoControle extends Transporte_Controle
             }
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">'.$mensagem.'</font></b></center>');
         }
-        $titulo = 'Listagem dos meus Pedidos ('.$i.')';
+        $titulo = __('Listagem dos meus Pedidos').' ('.$i.')';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         //Carrega Json
         $this->_Visual->Json_Info_Update('Titulo', __('Meus Pedidos'));
@@ -401,7 +401,7 @@ class Transporte_PedidoControle extends Transporte_Controle
             }
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">'.$mensagem.'</font></b></center>');
         }
-        $titulo = 'Listagem dos Pedidos Pendentes ('.$i.')';
+        $titulo = __('Listagem dos Pedidos Pendentes').' ('.$i.')';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         //Carrega Json
         $this->_Visual->Json_Info_Update('Titulo', __('Pedidos Pendentes'));
@@ -485,7 +485,7 @@ class Transporte_PedidoControle extends Transporte_Controle
             }
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">'.$mensagem.'</font></b></center>');
         }
-        $titulo = 'Proposta Aceitas ('.$i.')';
+        $titulo = __('Proposta Aceitas').' ('.$i.')';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         //Carrega Json
         $this->_Visual->Json_Info_Update('Titulo', __('Propostas Aceitas'));
@@ -541,7 +541,7 @@ class Transporte_PedidoControle extends Transporte_Controle
             }
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">'.$mensagem.'</font></b></center>');
         }
-        $titulo = 'Proposta Recusadas ('.$i.')';
+        $titulo = __('Proposta Recusadas').' ('.$i.')';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         //Carrega Json
         $this->_Visual->Json_Info_Update('Titulo', __('Propostas Recusadas'));
@@ -599,7 +599,7 @@ class Transporte_PedidoControle extends Transporte_Controle
             }
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">'.$mensagem.'</font></b></center>');
         }
-        $titulo = 'Proposta Pendentes ('.$i.')';
+        $titulo = __('Proposta Pendentes').' ('.$i.')';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         //Carrega Json
         $this->_Visual->Json_Info_Update('Titulo', __('Propostas Pendentes'));
@@ -947,7 +947,7 @@ class Transporte_PedidoControle extends Transporte_Controle
             }
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">'.$mensagem.'</font></b></center>');
         }
-        $titulo = 'Propostas Aceitas dos Meus Pedidos ('.$i.')';
+        $titulo = __('Propostas Aceitas dos Meus Pedidos').' ('.$i.')';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         //Carrega Json
         $this->_Visual->Json_Info_Update('Titulo', __('Propostas Aceitas dos Meus Pedidos'));
@@ -1006,7 +1006,7 @@ class Transporte_PedidoControle extends Transporte_Controle
             }
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">'.$mensagem.'</font></b></center>');
         }
-        $titulo = 'Novas Propostas dos Meus Pedidos ('.$i.')';
+        $titulo = __('Novas Propostas dos Meus Pedidos').' ('.$i.')';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         //Carrega Json
         $this->_Visual->Json_Info_Update('Titulo', __('Novas Propostas dos Meus Pedidos'));
@@ -1068,7 +1068,7 @@ class Transporte_PedidoControle extends Transporte_Controle
             }
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">'.$mensagem.'</font></b></center>');
         }
-        $titulo = 'Listagem dos meus Pedidos ('.$i.')';
+        $titulo = __('Listagem dos meus Pedidos').' ('.$i.')';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         //Carrega Json
         $this->_Visual->Json_Info_Update('Titulo', __('Meus Pedidos'));
@@ -1126,7 +1126,7 @@ class Transporte_PedidoControle extends Transporte_Controle
             }
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">'.$mensagem.'</font></b></center>');
         }
-        $titulo = 'Listagem dos Pedidos Pendentes ('.$i.')';
+        $titulo = __('Listagem dos Pedidos Pendentes').' ('.$i.')';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         //Carrega Json
         $this->_Visual->Json_Info_Update('Titulo', __('Pedidos Pendentes'));
@@ -1210,7 +1210,7 @@ class Transporte_PedidoControle extends Transporte_Controle
             }
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">'.$mensagem.'</font></b></center>');
         }
-        $titulo = 'Proposta Aceitas ('.$i.')';
+        $titulo = __('Proposta Aceitas').' ('.$i.')';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         //Carrega Json
         $this->_Visual->Json_Info_Update('Titulo', __('Propostas Aceitas'));
@@ -1266,7 +1266,7 @@ class Transporte_PedidoControle extends Transporte_Controle
             }
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">'.$mensagem.'</font></b></center>');
         }
-        $titulo = 'Proposta Recusadas ('.$i.')';
+        $titulo = __('Proposta Recusadas').' ('.$i.')';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         //Carrega Json
         $this->_Visual->Json_Info_Update('Titulo', __('Propostas Recusadas'));
@@ -1324,7 +1324,7 @@ class Transporte_PedidoControle extends Transporte_Controle
             }
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">'.$mensagem.'</font></b></center>');
         }
-        $titulo = 'Proposta Pendentes ('.$i.')';
+        $titulo = __('Proposta Pendentes').' ('.$i.')';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         //Carrega Json
         $this->_Visual->Json_Info_Update('Titulo', __('Propostas Pendentes'));
@@ -1668,7 +1668,7 @@ class Transporte_PedidoControle extends Transporte_Controle
             }
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">'.$mensagem.'</font></b></center>');
         }
-        $titulo = 'Propostas Aceitas dos Meus Pedidos ('.$i.')';
+        $titulo = __('Propostas Aceitas dos Meus Pedidos').' ('.$i.')';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         //Carrega Json
         $this->_Visual->Json_Info_Update('Titulo', __('Propostas Aceitas dos Meus Pedidos'));
@@ -1727,7 +1727,7 @@ class Transporte_PedidoControle extends Transporte_Controle
             }
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">'.$mensagem.'</font></b></center>');
         }
-        $titulo = 'Novas Propostas dos Meus Pedidos ('.$i.')';
+        $titulo = __('Novas Propostas dos Meus Pedidos').' ('.$i.')';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         //Carrega Json
         $this->_Visual->Json_Info_Update('Titulo', __('Novas Propostas dos Meus Pedidos'));
@@ -1789,7 +1789,7 @@ class Transporte_PedidoControle extends Transporte_Controle
             }
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">'.$mensagem.'</font></b></center>');
         }
-        $titulo = 'Listagem dos meus Pedidos ('.$i.')';
+        $titulo = __('Listagem dos meus Pedidos').' ('.$i.')';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         //Carrega Json
         $this->_Visual->Json_Info_Update('Titulo', __('Meus Pedidos'));
@@ -1847,7 +1847,7 @@ class Transporte_PedidoControle extends Transporte_Controle
             }
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">'.$mensagem.'</font></b></center>');
         }
-        $titulo = 'Listagem dos Pedidos Pendentes ('.$i.')';
+        $titulo = __('Listagem dos Pedidos Pendentes').' ('.$i.')';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         //Carrega Json
         $this->_Visual->Json_Info_Update('Titulo', __('Pedidos Pendentes'));
@@ -1931,7 +1931,7 @@ class Transporte_PedidoControle extends Transporte_Controle
             }
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">'.$mensagem.'</font></b></center>');
         }
-        $titulo = 'Proposta Aceitas ('.$i.')';
+        $titulo = __('Proposta Aceitas').' ('.$i.')';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         //Carrega Json
         $this->_Visual->Json_Info_Update('Titulo', __('Propostas Aceitas'));
@@ -1987,7 +1987,7 @@ class Transporte_PedidoControle extends Transporte_Controle
             }
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">'.$mensagem.'</font></b></center>');
         }
-        $titulo = 'Proposta Recusadas ('.$i.')';
+        $titulo = __('Proposta Recusadas').' ('.$i.')';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         //Carrega Json
         $this->_Visual->Json_Info_Update('Titulo', __('Propostas Recusadas'));
@@ -2045,7 +2045,7 @@ class Transporte_PedidoControle extends Transporte_Controle
             }
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">'.$mensagem.'</font></b></center>');
         }
-        $titulo = 'Proposta Pendentes ('.$i.')';
+        $titulo = __('Proposta Pendentes').' ('.$i.')';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         //Carrega Json
         $this->_Visual->Json_Info_Update('Titulo', __('Propostas Pendentes'));

@@ -63,7 +63,7 @@ class Financeiro_AdminControle extends Financeiro_Controle
         }else{         
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Usuário com Saldo Negativo</font></b></center>');
         }
-        $titulo = 'Usuarios Devendo ('.$i.')';
+        $titulo = __('Usuarios Devendo').' ('.$i.')';
         $this->_Visual->Bloco_Maior_CriaJanela($titulo);
     }
     public function usuarios_naodevendo(){
@@ -75,7 +75,7 @@ class Financeiro_AdminControle extends Financeiro_Controle
         }else{
             $html .= '<center><b><font color="#FF0000" size="5">Nenhum Usuário com Saldo Positivo</font></b></center>';
         }
-        $titulo = 'Usuarios com Dinheiro ('.$i.')';
+        $titulo = __('Usuarios com Dinheiro').' ('.$i.')';
         $this->_Visual->Bloco_Maior_CriaJanela($titulo);
     }
     public function usuario_formatab(&$usuarios){

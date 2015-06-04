@@ -113,7 +113,7 @@ class comercio_venda_ComposicaoControle extends comercio_venda_Controle
         }else{          
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Cardápio</font></b></center>');
         }
-        $titulo = 'Listagem de Cardápios ('.$i.')';
+        $titulo = __('Listagem de Cardápios').' ('.$i.')';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         
         //Carrega Json

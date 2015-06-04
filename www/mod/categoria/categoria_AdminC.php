@@ -6,9 +6,9 @@ class categoria_AdminControle extends categoria_Controle
     }
     protected function Endereco_Categoria($true=true){
         if($true===true){
-            $this->Tema_Endereco('Categorias','categoria/Admin/Categorias');
+            $this->Tema_Endereco(__('Categorias'),'categoria/Admin/Categorias');
         }else{
-            $this->Tema_Endereco('Categorias');
+            $this->Tema_Endereco(__('Categorias'));
         }
     }
     /**

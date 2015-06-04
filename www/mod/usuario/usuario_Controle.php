@@ -268,7 +268,7 @@ class usuario_Controle extends \Framework\App\Controle
             $nomedisplay_sing   = __('Usuário ');
             $nomedisplay_tipo   = __('Usuario');
             // Link
-            $this->Tema_Endereco('Usuários');
+            $this->Tema_Endereco(__('Usuários'));
         }else{
             $categoria = (int) $grupo[0];
             
@@ -518,9 +518,9 @@ class usuario_Controle extends \Framework\App\Controle
             }
         }
         if($tema=='Setor'){
-            $titulo = 'Histórico de Envio de Email para Setor ('.$i.')';
+            $titulo = __('Histórico de Envio de Email para Setor').' ('.$i.')';
         }else{
-            $titulo = 'Histórico de Envio de Email para Cliente ('.$i.')';
+            $titulo = __('Histórico de Envio de Email para Cliente').' ('.$i.')';
         }
         $Visual->Bloco_Unico_CriaJanela($titulo);
         
@@ -548,17 +548,17 @@ class usuario_Controle extends \Framework\App\Controle
         // Cria Tipo 2:
         if($tipo=='Cliente' || $tipo=='cliente'){
             $tipo2  = 'cliente';
-            $this->Tema_Endereco('Clientes','usuario/Admin/ListarCliente');
+            $this->Tema_Endereco(__('Clientes'),'usuario/Admin/ListarCliente');
         }else if($tipo=='Funcionário' || $tipo=='Funcionario' || $tipo=='funcionário' || $tipo=='funcionario'){
             $tipo2  = 'funcionario';
-            $this->Tema_Endereco('Funcionários','usuario/Admin/ListarFuncionario');
+            $this->Tema_Endereco(__('Funcionários'),'usuario/Admin/ListarFuncionario');
         }else{
-            $this->Tema_Endereco('Usuários','usuario/Admin/Main');
+            $this->Tema_Endereco(__('Usuários'),'usuario/Admin/Main');
         }
         if($tema=='Setor'){
-            $this->Tema_Endereco('Enviar Email para Setor');
+            $this->Tema_Endereco(__('Enviar Email para Setor'));
         }else{
-            $this->Tema_Endereco('Enviar Email');
+            $this->Tema_Endereco(__('Enviar Email'));
         }
         // Retira os de clientes
         $linkextra = '';
@@ -765,7 +765,7 @@ class usuario_Controle extends \Framework\App\Controle
             $nomedisplay_sing   = __('Usuário ');
             $nomedisplay_tipo   = __('Usuario');
             // Link
-            $Controle->Tema_Endereco('Usuários');
+            $Controle->Tema_Endereco(__('Usuários'));
         }else{
             $categoria = (int) $grupo[0];
             
@@ -1115,7 +1115,7 @@ class usuario_Controle extends \Framework\App\Controle
             $nomedisplay_sing   = __('Usuário ');
             $nomedisplay_tipo   = __('Usuario');
             // Link
-            $this->Tema_Endereco('Usuários');
+            $this->Tema_Endereco(__('Usuários'));
         }else{
             $categoria = (int) $grupo[0];
             

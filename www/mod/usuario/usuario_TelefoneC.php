@@ -38,9 +38,9 @@ class usuario_TelefoneControle extends usuario_Controle
         $registro = \Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
         if($true===true){
-            $_Controle->Tema_Endereco('Telefone','usuario/Telefone/Telefone');
+            $_Controle->Tema_Endereco(__('Telefone'),'usuario/Telefone/Telefone');
         }else{
-            $_Controle->Tema_Endereco('Telefone');
+            $_Controle->Tema_Endereco(__('Telefone'));
         }
     }
     /**
@@ -96,7 +96,7 @@ class usuario_TelefoneControle extends usuario_Controle
         }else{        
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Telefone</font></b></center>');
         }
-        $titulo = 'Listagem de Telefones ('.$i.')';
+        $titulo = __('Listagem de Telefones').' ('.$i.')';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',10);
         
         // Upload de Chamadas

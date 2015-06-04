@@ -25,9 +25,9 @@ class Musica_ArtistaControle extends Musica_Controle
         $registro = \Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
         if($true===true){
-            $_Controle->Tema_Endereco('Artistas','Musica/Artista/Artistas');
+            $_Controle->Tema_Endereco(__('Artistas'),'Musica/Artista/Artistas');
         }else{
-            $_Controle->Tema_Endereco('Artistas');
+            $_Controle->Tema_Endereco(__('Artistas'));
         }
     }
     static function Artistas_Tabela(&$artistas){
@@ -108,7 +108,7 @@ class Musica_ArtistaControle extends Musica_Controle
         }else{            
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Artista</font></b></center>');
         }
-        $titulo = 'Listagem de Artistas ('.$i.')';
+        $titulo = __('Listagem de Artistas').' ('.$i.')';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         
         //Carrega Json

@@ -140,7 +140,7 @@ class _Sistema_AdminControle extends _Sistema_Controle
             }          
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">'.$mensagem.'</font></b></center>');
         }
-        $titulo = 'Listagem de Menus ('.$i.')';
+        $titulo = __('Listagem de Menus').' ('.$i.')';
         if($export==='Unico'){
             $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         }else if($export==='Maior'){
@@ -354,7 +354,7 @@ class _Sistema_AdminControle extends _Sistema_Controle
             }   
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">'.$mensagem.'</font></b></center>');
         }
-        $titulo = 'Listagem de Permissões ('.$i.')';
+        $titulo = __('Listagem de Permissões').' ('.$i.')';
         if($export==='Unico'){
             $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         }else if($export==='Maior'){
@@ -535,7 +535,7 @@ class _Sistema_AdminControle extends _Sistema_Controle
         }else{            
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Grupo</font></b></center>');
         }
-        $titulo = 'Listagem de Grupos ('.$i.')';
+        $titulo = __('Listagem de Grupos').' ('.$i.')';
         if($export==='Unico'){
             $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',60);
         }else if($export==='Maior'){
@@ -713,7 +713,7 @@ class _Sistema_AdminControle extends _Sistema_Controle
         }else{ 
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">'.$aviso_nenhuma.'</font></b></center>');
         }
-        $titulo = 'Listagem de Permissão de Grupo ('.$i.')';
+        $titulo = __('Listagem de Permissão de Grupo').' ('.$i.')';
         if($export==='Unico'){
             $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',50);
         }else if($export==='Maior'){
@@ -951,7 +951,7 @@ class _Sistema_AdminControle extends _Sistema_Controle
             }            
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">'.$mensagem.'</font></b></center>');
         }
-        $titulo = 'Listagem de Newsletter ('.$i.')';
+        $titulo = __('Listagem de Newsletter').' ('.$i.')';
         if($export==='Unico'){
             $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',40);
         }else if($export==='Maior'){

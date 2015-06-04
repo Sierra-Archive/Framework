@@ -39,45 +39,45 @@ class comercio_servicos_InstalacaoControle extends comercio_servicos_Controle
         $registro = \Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
         if($true===true){
-            $_Controle->Tema_Endereco('Adicional de Ar','comercio_servicos/Instalacao/Ar');
+            $_Controle->Tema_Endereco(__('Adicional de Ar'),'comercio_servicos/Instalacao/Ar');
         }else{
-            $_Controle->Tema_Endereco('Adicional de Ar');
+            $_Controle->Tema_Endereco(__('Adicional de Ar'));
         }
     }
     static function Endereco_Gas($true=true){
         $registro = \Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
         if($true===true){
-            $_Controle->Tema_Endereco('Adicional de Gás','comercio_servicos/Instalacao/Gas');
+            $_Controle->Tema_Endereco(__('Adicional de Gás'),'comercio_servicos/Instalacao/Gas');
         }else{
-            $_Controle->Tema_Endereco('Adicional de Gás');
+            $_Controle->Tema_Endereco(__('Adicional de Gás'));
         }
     }
     static function Endereco_Linha($true=true){
         $registro = \Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
         if($true===true){
-            $_Controle->Tema_Endereco('Adicional de Linha','comercio_servicos/Instalacao/Linha');
+            $_Controle->Tema_Endereco(__('Adicional de Linha'),'comercio_servicos/Instalacao/Linha');
         }else{
-            $_Controle->Tema_Endereco('Adicional de Linha');
+            $_Controle->Tema_Endereco(__('Adicional de Linha'));
         }
     }*/
     static function Endereco_Btu($true=true){
         $registro = \Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
         if($true===true){
-            $_Controle->Tema_Endereco('Btu','comercio_servicos/Instalacao/Btu');
+            $_Controle->Tema_Endereco(__('Btu'),'comercio_servicos/Instalacao/Btu');
         }else{
-            $_Controle->Tema_Endereco('Btu');
+            $_Controle->Tema_Endereco(__('Btu'));
         }
     }
     static function Endereco_Suporte($true=true){
         $registro = \Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
         if($true===true){
-            $_Controle->Tema_Endereco('Suporte','comercio_servicos/Instalacao/Suporte');
+            $_Controle->Tema_Endereco(__('Suporte'),'comercio_servicos/Instalacao/Suporte');
         }else{
-            $_Controle->Tema_Endereco('Suporte');
+            $_Controle->Tema_Endereco(__('Suporte'));
         }
     }
     /**

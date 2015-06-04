@@ -31,9 +31,9 @@ class Enquete_RespostaControle extends Enquete_Controle
         }
         
         if($true===true){
-            $_Controle->Tema_Endereco('Respostas','Enquete/Resposta/Respostas'.$link_extra);
+            $_Controle->Tema_Endereco(__('Respostas'),'Enquete/Resposta/Respostas'.$link_extra);
         }else{
-            $_Controle->Tema_Endereco('Respostas');
+            $_Controle->Tema_Endereco(__('Respostas'));
         }
     }
     static function Respostas_Tabela(&$respostas){

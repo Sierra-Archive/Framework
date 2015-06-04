@@ -38,9 +38,9 @@ class social_PersonaControle extends social_Controle
         $registro = \Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
         if($true===true){
-            $_Controle->Tema_Endereco('Personas','social/Persona/Personas');
+            $_Controle->Tema_Endereco(__('Personas'),'social/Persona/Personas');
         }else{
-            $_Controle->Tema_Endereco('Personas');
+            $_Controle->Tema_Endereco(__('Personas'));
         }
     }
     protected static function Endereco_Persona_Ver($persona,$true=true){
@@ -136,7 +136,7 @@ class social_PersonaControle extends social_Controle
         }else{          
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhuma Pessoa</font></b></center>');
         }
-        $titulo = 'Listagem de Pessoas ('.$i.')';
+        $titulo = __('Listagem de Pessoas').' ('.$i.')';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         
         //Carrega Json
@@ -300,7 +300,7 @@ class social_PersonaControle extends social_Controle
         }else{          
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Comentário do Persona</font></b></center>');
         }
-        $titulo = 'Comentários do Persona ('.$i.')';
+        $titulo = __('Comentários do Persona').' ('.$i.')';
         if($tipo=='Unico'){
             $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',10);
         }else if($tipo=='Esquerda'){
@@ -467,7 +467,7 @@ class social_PersonaControle extends social_Controle
         }else{          
             $this->_Visual->Blocar('<center><b><p class="text-error">Nenhuma Ficada de Pessoa</p></b></center>');
         }
-        $titulo = 'Listagem de Ficada de Pessoas ('.$i.')';
+        $titulo = __('Listagem de Ficada de Pessoas').' ('.$i.')';
         if($tipo=='Unico'){
             $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         }else if($tipo=='Esquerda'){
@@ -683,7 +683,7 @@ class social_PersonaControle extends social_Controle
         }else{           
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Comentário</font></b></center>');
         }
-        $titulo = 'Comentários ('.$i.')';
+        $titulo = __('Comentários').' ('.$i.')';
         $this->_Visual->Bloco_Menor_CriaJanela($titulo,'',10);
         
         //Carrega Json

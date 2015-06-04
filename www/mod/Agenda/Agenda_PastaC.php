@@ -38,17 +38,17 @@ class Agenda_PastaControle extends Agenda_Controle
     }
     protected function Endereco_Pasta($true=true){
         if($true===true){
-            $this->Tema_Endereco('Pastas','Agenda/Pasta/Pastas');
+            $this->Tema_Endereco(__('Pastas'),'Agenda/Pasta/Pastas');
         }else{
-            $this->Tema_Endereco('Pastas');
+            $this->Tema_Endereco(__('Pastas'));
         }
     }
     protected function Endereco_Cor($true=true){
         $this->Endereco_Pasta();
         if($true===true){
-            $this->Tema_Endereco('Cores','Agenda/Pasta/Cores');
+            $this->Tema_Endereco(__('Cores'),'Agenda/Pasta/Cores');
         }else{
-            $this->Tema_Endereco('Cores');
+            $this->Tema_Endereco(__('Cores'));
         }
     }
     static function Pastas_Tabela($pastas){
@@ -121,7 +121,7 @@ class Agenda_PastaControle extends Agenda_Controle
         }else{           
             $Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhuma Pasta no Arquivo de Pastas</font></b></center>');
         }
-        $titulo = 'Arquivo de Pastas ('.$i.')';
+        $titulo = __('Arquivo de Pastas').' ('.$i.')';
         if($tipo==='Unico'){
             $Visual->Bloco_Unico_CriaJanela($titulo);
         }else{
@@ -279,7 +279,7 @@ class Agenda_PastaControle extends Agenda_Controle
         }else{ 
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhuma Cor</font></b></center>');
         }
-        $titulo = 'Listagem de Cores ('.$i.')';
+        $titulo = __('Listagem de Cores').' ('.$i.')';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         
         //Carrega Json

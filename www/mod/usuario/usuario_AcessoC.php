@@ -69,7 +69,7 @@ class usuario_AcessoControle extends usuario_Controle
             $nomedisplay_sing   = __('Usuário ');
             $nomedisplay_tipo   = __('Usuario');
             // Link
-            $this->Tema_Endereco('Permissôes de Usuários');
+            $this->Tema_Endereco(__('Permissôes de Usuários'));
         }else{
             $categoria = (int) $grupo[0];
             
@@ -165,7 +165,7 @@ class usuario_AcessoControle extends usuario_Controle
         }else{           
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Usuário</font></b></center>');
         }
-        $titulo = 'Listagem de Permissões de Usuários ('.$i.')';
+        $titulo = __('Listagem de Permissões de Usuários').' ('.$i.')';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',60);
         
         //Carrega Json

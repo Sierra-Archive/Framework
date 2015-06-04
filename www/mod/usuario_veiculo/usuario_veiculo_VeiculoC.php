@@ -130,7 +130,7 @@ class usuario_veiculo_VeiculoControle extends usuario_veiculo_Controle
         }else{     
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Veiculo</font></b></center>');
         }
-        $titulo = 'Listagem de Veiculos ('.$i.')';
+        $titulo = __('Listagem de Veiculos').' ('.$i.')';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         
         //Carrega Json
@@ -357,7 +357,7 @@ class usuario_veiculo_VeiculoControle extends usuario_veiculo_Controle
         }else{          
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Comentário do Veiculo</font></b></center>');
         }
-        $titulo = 'Comentários do Veiculo ('.$i.')';
+        $titulo = __('Comentários do Veiculo').' ('.$i.')';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',10);
         
         //Carrega Json
@@ -503,7 +503,7 @@ class usuario_veiculo_VeiculoControle extends usuario_veiculo_Controle
         }else{          
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Evento do Veiculo</font></b></center>');
         }
-        $titulo = 'Eventos do Veiculo ('.$i.')';
+        $titulo = __('Eventos do Veiculo').' ('.$i.')';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',10);
         
         //Carrega Json

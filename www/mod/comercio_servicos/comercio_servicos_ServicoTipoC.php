@@ -39,9 +39,9 @@ class comercio_servicos_ServicoTipoControle extends comercio_servicos_Controle
         $registro = \Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
         if($true===true){
-            $_Controle->Tema_Endereco('Tipos de Serviços','comercio_servicos/Servico_Tipo/Servico_Tipo');
+            $_Controle->Tema_Endereco(__('Tipos de Serviços'),'comercio_servicos/Servico_Tipo/Servico_Tipo');
         }else{
-            $_Controle->Tema_Endereco('Tipos de Serviços');
+            $_Controle->Tema_Endereco(__('Tipos de Serviços'));
         }
     }
     /**

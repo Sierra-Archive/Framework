@@ -8,9 +8,9 @@ class Engenharia_EmpreendimentoControle extends Engenharia_Controle
         $registro = \Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
         if($true===true){
-            $_Controle->Tema_Endereco('Empreendimentos','Engenharia/Empreendimento/Main');
+            $_Controle->Tema_Endereco(__('Empreendimentos'),'Engenharia/Empreendimento/Main');
         }else{
-            $_Controle->Tema_Endereco('Empreendimentos');
+            $_Controle->Tema_Endereco(__('Empreendimentos'));
         }
     }
     /**
@@ -96,7 +96,7 @@ class Engenharia_EmpreendimentoControle extends Engenharia_Controle
         }else{           
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Empreendimento</font></b></center>');
         }
-        $titulo = 'Listagem de Empreendimentos ('.$i.')';
+        $titulo = __('Listagem de Empreendimentos').' ('.$i.')';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         
         //Carrega Json

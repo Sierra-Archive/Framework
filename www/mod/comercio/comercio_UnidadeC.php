@@ -71,7 +71,7 @@ class comercio_UnidadeControle extends comercio_Controle
         }else{            
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhuma Unidade</font></b></center>');
         }
-        $titulo = 'Listagem de Unidades ('.$i.')';
+        $titulo = __('Listagem de Unidades').' ('.$i.')';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         
         //Carrega Json

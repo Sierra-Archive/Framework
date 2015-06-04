@@ -25,9 +25,9 @@ class Curso_CursoControle extends Curso_Controle
         $registro = \Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
         if($true===true){
-            $_Controle->Tema_Endereco('Cursos','Curso/Curso/Cursos');
+            $_Controle->Tema_Endereco(__('Cursos'),'Curso/Curso/Cursos');
         }else{
-            $_Controle->Tema_Endereco('Cursos');
+            $_Controle->Tema_Endereco(__('Cursos'));
         }
     }
     static function Cursos_Tabela(&$cursos){
@@ -105,7 +105,7 @@ class Curso_CursoControle extends Curso_Controle
         }else{            
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Curso</font></b></center>');
         }
-        $titulo = 'Listagem de Cursos ('.$i.')';
+        $titulo = __('Listagem de Cursos').' ('.$i.')';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         
         //Carrega Json

@@ -38,9 +38,9 @@ class social_CaracteristicaControle extends social_Controle
         $registro = \Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
         if($true===true){
-            $_Controle->Tema_Endereco('Caracteristicas','social/Caracteristica/Caracteristica');
+            $_Controle->Tema_Endereco(__('Caracteristicas'),'social/Caracteristica/Caracteristica');
         }else{
-            $_Controle->Tema_Endereco('Caracteristicas');
+            $_Controle->Tema_Endereco(__('Caracteristicas'));
         }
     }
     /**
@@ -94,7 +94,7 @@ class social_CaracteristicaControle extends social_Controle
         }else{           
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhuma Caracteristica</font></b></center>');
         }
-        $titulo = 'Listagem de Caracteristicas ('.$i.')';
+        $titulo = __('Listagem de Caracteristicas').' ('.$i.')';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         
         //Carrega Json

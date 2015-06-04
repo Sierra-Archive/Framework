@@ -31,9 +31,9 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
     }
     protected function Endereco_Modulo($true=true){
         if($true===true){
-            $this->Tema_Endereco('Modulos','Desenvolvimento/Framework/Modulos');
+            $this->Tema_Endereco(__('Modulos'),'Desenvolvimento/Framework/Modulos');
         }else{
-            $this->Tema_Endereco('Modulos');
+            $this->Tema_Endereco(__('Modulos'));
         }
     }
     static function Modulos_Tabela($modulos){
@@ -98,7 +98,7 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
         }else{    
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Modulo</font></b></center>');
         }
-        $titulo = 'Listagem de Modulos ('.$i.')';
+        $titulo = __('Listagem de Modulos').' ('.$i.')';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         
         //Carrega Json
@@ -209,9 +209,9 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
     
     protected function Endereco_Submodulo($true=true){
         if($true===true){
-            $this->Tema_Endereco('Submodulos','Desenvolvimento/Framework/Submodulos');
+            $this->Tema_Endereco(__('Submodulos'),'Desenvolvimento/Framework/Submodulos');
         }else{
-            $this->Tema_Endereco('Submodulos');
+            $this->Tema_Endereco(__('Submodulos'));
         }
     }
     static function Submodulos_Tabela($submodulos){
@@ -276,7 +276,7 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
         }else{    
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Submodulo</font></b></center>');
         }
-        $titulo = 'Listagem de Submodulos ('.$i.')';
+        $titulo = __('Listagem de Submodulos').' ('.$i.')';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         
         //Carrega Json
@@ -387,9 +387,9 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
     
     protected function Endereco_Metodo($true=true){
         if($true===true){
-            $this->Tema_Endereco('Metodos','Desenvolvimento/Framework/Metodos');
+            $this->Tema_Endereco(__('Metodos'),'Desenvolvimento/Framework/Metodos');
         }else{
-            $this->Tema_Endereco('Metodos');
+            $this->Tema_Endereco(__('Metodos'));
         }
     }
     static function Metodos_Tabela($metodos){
@@ -453,7 +453,7 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
         }else{    
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Metodo</font></b></center>');
         }
-        $titulo = 'Listagem de Metodos ('.$i.')';
+        $titulo = __('Listagem de Metodos').' ('.$i.')';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         
         //Carrega Json

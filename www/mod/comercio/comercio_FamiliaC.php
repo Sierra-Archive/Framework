@@ -89,7 +89,7 @@ class comercio_FamiliaControle extends comercio_Controle
         }else{          
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhuma Familia</font></b></center>');
         }
-        $titulo = 'Listagem de Familias ('.$i.')';
+        $titulo = __('Listagem de Familias').' ('.$i.')';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         
         //Carrega Json

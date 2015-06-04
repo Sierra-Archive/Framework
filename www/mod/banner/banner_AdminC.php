@@ -75,9 +75,9 @@ class banner_AdminControle extends banner_Controle
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Banner</font></b></center>');
         }
         if($ativado==0){
-            $titulo = 'Todos os Banners Desativados ('.$i.')';
+            $titulo = __('Todos os Banners Desativados').' ('.$i.')';
         }else{
-            $titulo = 'Todos os Banners Ativados ('.$i.')';
+            $titulo = __('Todos os Banners Ativados').' ('.$i.')';
         }
         $this->_Visual->Bloco_Maior_CriaJanela($titulo);
     }

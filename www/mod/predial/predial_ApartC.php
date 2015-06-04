@@ -82,7 +82,7 @@ class predial_ApartControle extends predial_Controle
         }else{           
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Apartamento</font></b></center>');
         }
-        $titulo = 'Listagem de Apartamentos ('.$i.')';
+        $titulo = __('Listagem de Apartamentos').' ('.$i.')';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         
         //Carrega Json

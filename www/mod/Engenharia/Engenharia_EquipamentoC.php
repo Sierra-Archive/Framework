@@ -37,9 +37,9 @@ class Engenharia_EquipamentoControle extends Engenharia_Controle
     }
     protected function Endereco_Equipamento($true=true){
         if($true===true){
-            $this->Tema_Endereco('Equipamentos','Engenharia/Equipamento/Equipamentos');
+            $this->Tema_Endereco(__('Equipamentos'),'Engenharia/Equipamento/Equipamentos');
         }else{
-            $this->Tema_Endereco('Equipamentos');
+            $this->Tema_Endereco(__('Equipamentos'));
         }
     }
     /**
@@ -84,7 +84,7 @@ class Engenharia_EquipamentoControle extends Engenharia_Controle
         }else{           
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Equipamento</font></b></center>');
         }
-        $titulo = 'Listagem de Equipamentos ('.$i.')';
+        $titulo = __('Listagem de Equipamentos').' ('.$i.')';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         
         //Carrega Json

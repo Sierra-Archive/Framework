@@ -38,9 +38,9 @@ class Agenda_CompromissoControle extends Agenda_Controle
     }
     protected function Endereco_Compromisso($true=true){
         if($true===true){
-            $this->Tema_Endereco('Compromissos','Agenda/Compromisso/Compromissos');
+            $this->Tema_Endereco(__('Compromissos'),'Agenda/Compromisso/Compromissos');
         }else{
-            $this->Tema_Endereco('Compromissos');
+            $this->Tema_Endereco(__('Compromissos'));
         }
     }
     static function Compromissos_Tabela($compromissos){
@@ -106,7 +106,7 @@ class Agenda_CompromissoControle extends Agenda_Controle
         }else{           
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Compromisso no Compromissos</font></b></center>');
         }
-        $titulo = 'Compromissos ('.$i.')';
+        $titulo = __('Compromissos').' ('.$i.')';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         
         //Carrega Json
