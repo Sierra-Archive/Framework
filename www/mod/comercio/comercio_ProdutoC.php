@@ -86,7 +86,7 @@ class comercio_ProdutoControle extends comercio_Controle
         $tabela_colunas[] = __('Funções');
 
         $this->_Visual->Show_Tabela_DataTable_Massiva($tabela_colunas,'comercio/Produto/Produtos');
-        $titulo = 'Listagem de Produtos (<span id="DataTable_Contador">Carregando...</span>)';
+        $titulo = __('Listagem de Produtos').' (<span id="DataTable_Contador">'.__('Carregando...').'</span>)';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',10,Array("link"=>"comercio/Produto/Produtos_Add",'icon'=>'add','nome'=>'Adicionar Produto'));
         
         

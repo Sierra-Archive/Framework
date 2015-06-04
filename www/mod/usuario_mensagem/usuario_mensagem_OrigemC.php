@@ -58,7 +58,7 @@ class usuario_mensagem_OrigemControle extends usuario_mensagem_Controle
             'Id','Nome','Funções'
         );
         $this->_Visual->Show_Tabela_DataTable_Massiva($tabela,'usuario_mensagem/Origem/Origens');
-        $titulo = 'Listagem de Origens (<span id="DataTable_Contador">Carregando...</span>)';  //
+        $titulo = __('Listagem de Origens').' (<span id="DataTable_Contador">'.__('Carregando...').'</span>)';  //
         $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',10,Array("link"=>"usuario_mensagem/Origem/Origens_Add",'icon'=>'add','nome'=>'Adicionar Origem'));
         
         //Carrega Json

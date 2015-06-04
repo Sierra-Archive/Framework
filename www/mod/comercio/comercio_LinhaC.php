@@ -58,7 +58,7 @@ class comercio_LinhaControle extends comercio_Controle
             'Id','Nome','Linha','Funções'
         );
         $this->_Visual->Show_Tabela_DataTable_Massiva($tabela,'comercio/Linha/Linhas');
-        $titulo = 'Listagem de Linhas (<span id="DataTable_Contador">Carregando...</span>)';  //
+        $titulo = __('Listagem de Linhas').' (<span id="DataTable_Contador">'.__('Carregando...').'</span>)';  //
         $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',10,Array("link"=>"comercio/Linha/Linhas_Add",'icon'=>'add','nome'=>'Adicionar Linha'));
         
         
