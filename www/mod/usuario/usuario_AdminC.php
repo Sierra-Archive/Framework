@@ -247,10 +247,10 @@ class usuario_AdminControle extends usuario_Controle
         }else{
             $mensagens = array(
                 "tipo" => 'erro',
-                "mgs_principal" => $language['mens_erro']['erro'],
-                "mgs_secundaria" => $language['mens_erro']['erro']
+                "mgs_principal" => __('Erro'),
+                "mgs_secundaria" => __('Erro')
             );
-            $this->_Visual->Json_Info_Update('Titulo',$language['mens_erro']['erro']);
+            $this->_Visual->Json_Info_Update('Titulo',__('Erro'));
         }
         $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);   
         $this->_Visual->Json_Info_Update('Historico', false); 
@@ -412,7 +412,7 @@ class usuario_AdminControle extends usuario_Controle
         if(\Framework\App\Sistema_Funcoes::Control_Layoult_Valida_Email($email)===false && $tipo!='cliente' && \Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Admin_EmailUnico')){
             $mensagens = array(
                 "tipo" => 'erro',
-                "mgs_principal" => $language['mens_erro']['erro'],
+                "mgs_principal" => __('Erro'),
                 "mgs_secundaria" => __('Email Inválido')
             );
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens); 
@@ -421,7 +421,7 @@ class usuario_AdminControle extends usuario_Controle
          }else if($existeemail===true && ($tipo!=='cliente' || $email!='') && \Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Admin_EmailUnico')){
             $mensagens = array(
                 "tipo" => 'erro',
-                "mgs_principal" => $language['mens_erro']['erro'],
+                "mgs_principal" => __('Erro'),
                 "mgs_secundaria" => __('Email Ja Existe')
             );
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
@@ -430,7 +430,7 @@ class usuario_AdminControle extends usuario_Controle
         }else if($existelogin===true && $tipo!=='cliente'){
             $mensagens = array(
                 "tipo" => 'erro',
-                "mgs_principal" => $language['mens_erro']['erro'],
+                "mgs_principal" => __('Erro'),
                 "mgs_secundaria" => __('Login ja existe')
             );
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens); 
@@ -453,7 +453,7 @@ class usuario_AdminControle extends usuario_Controle
                 if($_POST['senha']==''){
                     $mensagens = array(
                         "tipo" => 'erro',
-                        "mgs_principal" => $language['mens_erro']['erro'],
+                        "mgs_principal" => __('Erro'),
                         "mgs_secundaria" => __('Senha Inválida')
                     );
                     $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
@@ -517,8 +517,8 @@ class usuario_AdminControle extends usuario_Controle
             }else{
                 $mensagens = array(
                     "tipo" => 'erro',
-                    "mgs_principal" => $language['mens_erro']['erro'],
-                    "mgs_secundaria" => $language['mens_erro']['erro']
+                    "mgs_principal" => __('Erro'),
+                    "mgs_secundaria" => __('Erro')
                 );
             }
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens); 
@@ -582,8 +582,8 @@ class usuario_AdminControle extends usuario_Controle
             }else{
                 $mensagens = array(
                     "tipo" => 'erro',
-                    "mgs_principal" => $language['mens_erro']['erro'],
-                    "mgs_secundaria" => $language['mens_erro']['erro']
+                    "mgs_principal" => __('Erro'),
+                    "mgs_secundaria" => __('Erro')
                 );
             }
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
@@ -695,8 +695,8 @@ class usuario_AdminControle extends usuario_Controle
         }else{
             $mensagens = array(
                 "tipo" => 'erro',
-                "mgs_principal" => $language['mens_erro']['erro'],
-                "mgs_secundaria" => $language['mens_erro']['erro']
+                "mgs_principal" => __('Erro'),
+                "mgs_secundaria" => __('Erro')
             );
         }
         $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens); 
@@ -1032,8 +1032,8 @@ class usuario_AdminControle extends usuario_Controle
     	}else{
             $mensagens = array(
                 "tipo" => 'erro',
-                "mgs_principal" => $language['mens_erro']['erro'],
-                "mgs_secundaria" => $language['mens_erro']['erro']
+                "mgs_principal" => __('Erro'),
+                "mgs_secundaria" => __('Erro')
             );
         }
         $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);

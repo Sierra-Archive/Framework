@@ -118,8 +118,8 @@ class comercio_certificado_Controle extends \Framework\App\Controle
         }else{
             $mensagens = array(
                 "tipo" => 'erro',
-                "mgs_principal" => $language['mens_erro']['erro'],
-                "mgs_secundaria" => $language['mens_erro']['erro']
+                "mgs_principal" => __('Erro'),
+                "mgs_secundaria" => __('Erro')
             );
         }
         $Controle->Json_Definir_zerar(false);
@@ -205,7 +205,7 @@ class comercio_certificado_Controle extends \Framework\App\Controle
         if(\Framework\App\Sistema_Funcoes::Control_Layoult_Valida_Email($email)===false && $tipo!='cliente'){
             $mensagens = array(
                 "tipo" => 'erro',
-                "mgs_principal" => $language['mens_erro']['erro'],
+                "mgs_principal" => __('Erro'),
                 "mgs_secundaria" => __('Email Inválido')
             );
             $Visual->Json_IncluiTipo('Mensagens',$mensagens);
@@ -214,7 +214,7 @@ class comercio_certificado_Controle extends \Framework\App\Controle
          }else if($existeemail===true && ($tipo!='cliente' || $email!='')){
             $mensagens = array(
                 "tipo" => 'erro',
-                "mgs_principal" => $language['mens_erro']['erro'],
+                "mgs_principal" => __('Erro'),
                 "mgs_secundaria" => __('Email Ja Existe')
             );
             $Visual->Json_IncluiTipo('Mensagens',$mensagens); 
@@ -223,7 +223,7 @@ class comercio_certificado_Controle extends \Framework\App\Controle
         }else if($existelogin===true && $tipo!='cliente'){
             $mensagens = array(
                 "tipo" => 'erro',
-                "mgs_principal" => $language['mens_erro']['erro'],
+                "mgs_principal" => __('Erro'),
                 "mgs_secundaria" => __('Login ja existe')
             );
             $Visual->Json_IncluiTipo('Mensagens',$mensagens); 
@@ -245,7 +245,7 @@ class comercio_certificado_Controle extends \Framework\App\Controle
             if($_POST['senha']=='' && $tipousuario!='cliente'){
                 $mensagens = array(
                     "tipo" => 'erro',
-                    "mgs_principal" => $language['mens_erro']['erro'],
+                    "mgs_principal" => __('Erro'),
                     "mgs_secundaria" => __('Senha Inválida')
                 );
                 $Visual->Json_IncluiTipo('Mensagens',$mensagens);
@@ -275,8 +275,8 @@ class comercio_certificado_Controle extends \Framework\App\Controle
             }else{
                 $mensagens = array(
                     "tipo" => 'erro',
-                    "mgs_principal" => $language['mens_erro']['erro'],
-                    "mgs_secundaria" => $language['mens_erro']['erro']
+                    "mgs_principal" => __('Erro'),
+                    "mgs_secundaria" => __('Erro')
                 );
             }
             $Visual->Json_IncluiTipo('Mensagens',$mensagens); 
@@ -309,8 +309,8 @@ class comercio_certificado_Controle extends \Framework\App\Controle
         }else{
             $mensagens = array(
                 "tipo" => 'erro',
-                "mgs_principal" => $language['mens_erro']['erro'],
-                "mgs_secundaria" => $language['mens_erro']['erro']
+                "mgs_principal" => __('Erro'),
+                "mgs_secundaria" => __('Erro')
             );
         }
         $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);    

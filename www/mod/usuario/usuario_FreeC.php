@@ -119,7 +119,7 @@ class usuario_FreeControle extends usuario_Controle
             
             $mensagens = array(
                 "tipo" => 'erro',
-                "mgs_principal" => $language['mens_erro']['erro'],
+                "mgs_principal" => __('Erro'),
                 "mgs_secundaria" => __('Preencha Login e Email')
             );
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens); 
@@ -130,7 +130,7 @@ class usuario_FreeControle extends usuario_Controle
             if(\Framework\App\Sistema_Funcoes::Control_Layoult_Valida_Email(\anti_injection($_POST['email']))===false){
                 $mensagens = array(
                     "tipo" => 'erro',
-                    "mgs_principal" => $language['mens_erro']['erro'],
+                    "mgs_principal" => __('Erro'),
                     "mgs_secundaria" => __('Email Inválido')
                 );
                 $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens); 
@@ -138,7 +138,7 @@ class usuario_FreeControle extends usuario_Controle
              }else if($existeemail===true){
                 $mensagens = array(
                     "tipo" => 'erro',
-                    "mgs_principal" => $language['mens_erro']['erro'],
+                    "mgs_principal" => __('Erro'),
                     "mgs_secundaria" => __('Email Ja Existe')
                 );
                 $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens); 
@@ -146,7 +146,7 @@ class usuario_FreeControle extends usuario_Controle
             }else if($existelogin===true){
                 $mensagens = array(
                     "tipo" => 'erro',
-                    "mgs_principal" => $language['mens_erro']['erro'],
+                    "mgs_principal" => __('Erro'),
                     "mgs_secundaria" => __('Login ja existe')
                 );
                 $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens); 
@@ -162,7 +162,7 @@ class usuario_FreeControle extends usuario_Controle
                 if($_POST['senha']==''){
                     $mensagens = array(
                         "tipo" => 'erro',
-                        "mgs_principal" => $language['mens_erro']['erro'],
+                        "mgs_principal" => __('Erro'),
                         "mgs_secundaria" => __('Senha Inválida')
                     );
                     $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
@@ -216,8 +216,8 @@ class usuario_FreeControle extends usuario_Controle
                 }else{
                     $mensagens = array(
                         "tipo" => 'erro',
-                        "mgs_principal" => $language['mens_erro']['erro'],
-                        "mgs_secundaria" => $language['mens_erro']['erro']
+                        "mgs_principal" => __('Erro'),
+                        "mgs_secundaria" => __('Erro')
                     );
                 }
                 $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens); 

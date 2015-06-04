@@ -152,7 +152,7 @@ class biblioteca_BibliotecaControle extends biblioteca_Controle
                 'Bibliotecas',
                 $raiz,
                 '*.*',
-                'Todos os Arquivos'
+                __('Todos os Arquivos')
             )
         );
         $this->_Visual->Bloco_Maior_CriaJanela(__('Fazer Upload de Arquivo Nessa Pasta')  );
@@ -245,7 +245,7 @@ class biblioteca_BibliotecaControle extends biblioteca_Controle
             }
             unset($tabela);
         }else{
-            $html .= '<center><b><font color="#FF0000" size="5">Nenhum Arquivo/Pasta</font></b></center>';            
+            $html .= '<center><b><font color="#FF0000" size="5">'.__('Nenhum Arquivo/Pasta').'</font></b></center>';            
         }
         $titulo = $endereco.' (<span id="biblioteca_arquivos_num">'.$i.'</span>)';
         return Array($titulo,$html,$i);
@@ -278,7 +278,6 @@ class biblioteca_BibliotecaControle extends biblioteca_Controle
     }
     /**
      * ADD SOMENTE PASTA
-     * @global Array $language
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 2.0
@@ -337,7 +336,6 @@ class biblioteca_BibliotecaControle extends biblioteca_Controle
     }
     /**
      * 
-     * @global Array $language
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 2.0
@@ -353,14 +351,11 @@ class biblioteca_BibliotecaControle extends biblioteca_Controle
     }
     /**
      * 
-     * @global Array $language
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 2.0
      */
     public function Bibliotecas_Del($id,$raiz=0){
-        global $language;
-        
     	$id = (int) $id;
         // Puxa biblioteca e deleta
         $biblioteca = $this->_Modelo->db->Sql_Select('Biblioteca', Array('id'=>$id));
@@ -370,13 +365,13 @@ class biblioteca_BibliotecaControle extends biblioteca_Controle
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
-                "mgs_secundaria" => 'Pasta/Arquivo deletado com sucesso'
+                "mgs_secundaria" => __('Pasta/Arquivo deletado com sucesso')
             );
     	}else{
             $mensagens = array(
                 "tipo" => 'erro',
-                "mgs_principal" => $language['mens_erro']['erro'],
-                "mgs_secundaria" => $language['mens_erro']['erro']
+                "mgs_principal" => __('Erro'),
+                "mgs_secundaria" => __('Erro')
             );
         }
         $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
@@ -498,7 +493,7 @@ class biblioteca_BibliotecaControle extends biblioteca_Controle
                         'Bibliotecas',
                         $resultado->biblioteca,
                         '*.*',
-                        'Todos os Arquivos'
+                        __('Todos os Arquivos')
                     );
             /*$this->_Visual->Blocar('<span id="biblioteca_arquivos_mostrar">'.$html.'</span>');
             $this->_Visual->Bloco_Unico_CriaJanela($titulo);*/

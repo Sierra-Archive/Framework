@@ -1675,8 +1675,8 @@ readfile($link);*/
         }
         }
         // Termina de Tratar as LINKADAS
-        if($erro1=='') $erro1 = $language['mens_erro']['erro'];
-        if($erro2=='') $erro2 = $language['mens_erro']['erro'];
+        if($erro1=='') $erro1 = __('Erro');
+        if($erro2=='') $erro2 = __('Erro');
         
         // Mostra Mensagem de Sucesso
         if($sucesso===true){

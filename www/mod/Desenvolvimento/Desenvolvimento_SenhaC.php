@@ -174,8 +174,8 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
     	}else{
             $mensagens = array(
                 "tipo" => 'erro',
-                "mgs_principal" => $language['mens_erro']['erro'],
-                "mgs_secundaria" => $language['mens_erro']['erro']
+                "mgs_principal" => __('Erro'),
+                "mgs_secundaria" => __('Erro')
             );
         }
         $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
@@ -487,8 +487,8 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
     	}else{
             $mensagens = array(
                 "tipo" => 'erro',
-                "mgs_principal" => $language['mens_erro']['erro'],
-                "mgs_secundaria" => $language['mens_erro']['erro']
+                "mgs_principal" => __('Erro'),
+                "mgs_secundaria" => __('Erro')
             );
         }
         $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);

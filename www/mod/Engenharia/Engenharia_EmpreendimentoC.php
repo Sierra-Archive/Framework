@@ -190,8 +190,8 @@ class Engenharia_EmpreendimentoControle extends Engenharia_Controle
     	}else{
             $mensagens = array(
                 "tipo" => 'erro',
-                "mgs_principal" => $language['mens_erro']['erro'],
-                "mgs_secundaria" => $language['mens_erro']['erro']
+                "mgs_principal" => __('Erro'),
+                "mgs_secundaria" => __('Erro')
             );
         }
         $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
@@ -236,7 +236,7 @@ class Engenharia_EmpreendimentoControle extends Engenharia_Controle
         if(comercio_EstoqueControle::Estoque_Retorna($idproduto)<$qnt){
             $mensagens = array(
                 "tipo" => 'erro',
-                "mgs_principal" => $language['mens_erro']['erro'],
+                "mgs_principal" => __('Erro'),
                 "mgs_secundaria" => __('Quantidade não disponivel em Estoque')
             );
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens); 

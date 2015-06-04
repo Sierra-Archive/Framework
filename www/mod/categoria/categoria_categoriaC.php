@@ -100,14 +100,14 @@ class categoria_categoriaControle extends categoria_Controle
             }else{
                 $mensagens = array(
                     "tipo" => 'erro',
-                    "mgs_principal" => $language['mens_erro']['erro'],
-                    "mgs_secundaria" => $language['mens_erro']['erro']
+                    "mgs_principal" => __('Erro'),
+                    "mgs_secundaria" => __('Erro')
                 );
             }
         }else{
             $mensagens = array(
                 "tipo" => 'erro',
-                "mgs_principal" => $language['mens_erro']['erro'],
+                "mgs_principal" => __('Erro'),
                 "mgs_secundaria" => ''.$nome.' não pode estar dentro dele mesmo.'
             );
         }
@@ -288,7 +288,7 @@ class categoria_categoriaControle extends categoria_Controle
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),
-                "mgs_secundaria" => $language['mens_erro']['erro']
+                "mgs_secundaria" => __('Erro')
             );
         }
         $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
