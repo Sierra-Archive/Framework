@@ -1118,7 +1118,8 @@ var Sierra = (function () {
                         "aButtons": [
                             {
                                 "sExtends": "copy",
-                                "mColumns": colunas_imprimir
+                                "mColumns": colunas_imprimir,
+                                "sButtonText": Linguagem["Mensagens"]['Copiar']
                             },
                             {
                                 "sExtends": "csv",
@@ -1135,6 +1136,7 @@ var Sierra = (function () {
                             {
                                 "sExtends": "print",
                                 "mColumns": colunas_imprimir,
+                                "sButtonText": Linguagem["Mensagens"]['Imprimir'],
                                 /*"fnClick": function (nButton, oConfig, oFlash) {
                                     oTable.fnSetColumnVis(j, false);
                                     $('div.dataTables_scrollHead').show();
