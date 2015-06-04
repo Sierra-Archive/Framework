@@ -144,7 +144,7 @@ class predial_AdvertenciaControle extends predial_Controle
                 );
                 if($usuario!==false){
                     $nome = $usuario->nome;
-                    $enviar = __('');
+                    $enviar = '';
                     if($usuario->email!='' && \Framework\App\Sistema_Funcoes::Control_Layoult_Valida_Email($usuario->email)){
                         $enviar .= '->setTo(\''.$usuario->email.'\', \''.$nome.'\')';
                     }

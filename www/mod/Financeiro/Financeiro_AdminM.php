@@ -28,7 +28,7 @@ class Financeiro_AdminModelo extends Financeiro_Modelo
     }
     public function Usuarios_devendo(&$usuarios){
         $i = 0;
-        $mysqlwhere = __('');
+        // Query
         $sql = $this->db->query('SELECT id,nome,email
         FROM '.MYSQL_USUARIOS.' WHERE deletado=0 ORDER BY nome'); //P.categoria
         while ($campo = $sql->fetch_object()) {
@@ -47,7 +47,7 @@ class Financeiro_AdminModelo extends Financeiro_Modelo
     }
     public function Usuarios_naodevendo(&$usuarios){
         $i = 0;
-        $mysqlwhere = __('');
+        // Query
         $sql = $this->db->query('SELECT id,nome,email,nivel_usuario,nivel_admin
         FROM '.MYSQL_USUARIOS.' WHERE deletado=0 ORDER BY nome'); //P.categoria
         while ($campo = $sql->fetch_object()) {

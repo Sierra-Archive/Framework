@@ -781,7 +781,7 @@ class Visual
         // Carrega Javascripts
         $array_js = Array(
             // Linguagem
-            'lang/'.$this->sistema_linguagem.'/Linguagem',
+            'i18n/'.$this->sistema_linguagem.'/Linguagem',
             // Identifica Oq cada Broser Suporta
             'sistema/modernizr/modernizr',
             // Jquery

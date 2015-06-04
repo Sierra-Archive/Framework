@@ -145,7 +145,7 @@ class usuario_mensagem_Controle extends \Framework\App\Controle
             if($valor->tipo!='Finalizado'){
                 $tabela['Visualizar Mensagem'][$i]  = $Visual->Tema_Elementos_Btn('Personalizado' ,    Array('Finalizar Mensagem'         ,'usuario_mensagem/Suporte/Finalizar/'.$valor->id.'/'    ,'','download','inverse'),$perm_finalizar);
             }else{
-                $tabela['Visualizar Mensagem'][$i] = __('');
+                $tabela['Visualizar Mensagem'][$i] = '';
             }
             $tabela['Visualizar Mensagem'][$i]  .= $Visual->Tema_Elementos_Btn('Visualizar' ,    Array('Visualizar Mensagem'         ,'usuario_mensagem/Suporte/VisualizadordeMensagem/'.$valor->id.'/'    ,''),$perm_view).
                                                   $Visual->Tema_Elementos_Btn('Editar'     ,    Array('Editar Mensagem'             ,'usuario_mensagem/Admin/Mensagem_Editar/'.$valor->id.'/'    ,''), $perm_editar).

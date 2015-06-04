@@ -44,7 +44,7 @@ Estrutura:
                         Assim como identifica se o layoult retorna em html ou json (ajax)
         Funcao.php -> Responsavel pelas funcoes exenciais ao sistema
     arq/* -> Fica todos os arquivos que subiram por upload de acordo com o modulo
-    lang/* -> Fica todos os arquivos de linguagem do sistema
+    i18n/* -> Fica todos os arquivos de linguagem do sistema
     layoult/* -> Fica todos os layoults do sistema
     libs/* -> Fica todas as Bibliotecas do Sistema
     mod/* -> Ficam todos os modulos do sistema

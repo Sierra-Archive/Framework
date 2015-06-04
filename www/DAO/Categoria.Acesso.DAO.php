@@ -163,7 +163,7 @@ final Class Categoria_Acesso_DAO extends Framework\App\Dao
             'Desenvolvimento'               => Array(                
                 'nome'      =>  'Tipo de Projeto',   
                 'chave_nome'=>  'Projetos',             
-                'chave'     =>  'projeto',
+                'chave'     =>  'Desenvolvimento',
              ),
             'Desenvolvimento|Tarefa'        => Array(                
                 'nome'      =>  'Tipo de Tarefas de Projetos',   

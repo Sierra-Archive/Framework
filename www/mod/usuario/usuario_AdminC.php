@@ -243,7 +243,7 @@ class usuario_AdminControle extends usuario_Controle
                 "mgs_principal" => __('Alteração bem sucedida'),
                 "mgs_secundaria" => ''.$_POST["nome"].' foi alterado com sucesso.'
             );
-            $this->_Visual->Json_Info_Update('Titulo', __('').$_POST["nome"].' foi alterado com sucesso.');
+            $this->_Visual->Json_Info_Update('Titulo', ''.$_POST["nome"].' foi alterado com sucesso.');
         }else{
             $mensagens = array(
                 "tipo" => 'erro',

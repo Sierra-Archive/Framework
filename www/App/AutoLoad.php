@@ -279,7 +279,7 @@ define('LIBS_PATH',         ROOT.'libs'.DS);
 define('ARQ_URL',           URL_PATH.'arq'.US.SRV_NAME_SQL.US);
 define('ARQ_PATH',          ROOT.'arq'.DS.SRV_NAME_SQL.DS);
 define('CACHE_PATH',        ROOT.'Cache'.DS.SRV_NAME_SQL.DS);
-define('LANG_PATH',         ROOT.'lang'.DS.SISTEMA_LINGUAGEM.DS);
+define('LANG_PATH',         ROOT.'i18n'.DS);
 
 define('TEMP_PATH',         ROOT.'Temp'.DS.SRV_NAME_SQL.DS);
 define('TEMP_URL',          URL_PATH.'Temp'.US.SRV_NAME_SQL.US);
@@ -302,16 +302,37 @@ if(!is_dir(TEMP_PATH)){
     mkdir (TEMP_PATH, 0777 );
 }
 
-// Linguagem e Pacote de Funcoes
+/**
+ * Carrega Funções de Internaciolização
+ */
+$textdomain = "Framework";
+if (isset($_GET['locale']) && !empty($_GET['locale'])){
+    define('SISTEMA_LINGUAGEM', anti_injection($_GET['locale']));
+}else{
+    define('SISTEMA_LINGUAGEM', SISTEMA_LINGUAGEM_PADRAO);
+}
+
+putenv('LANGUAGE=' . SISTEMA_LINGUAGEM);
+putenv('LANG=' . SISTEMA_LINGUAGEM);
+putenv('LC_ALL=' . SISTEMA_LINGUAGEM);
+putenv('LC_MESSAGES=' . SISTEMA_LINGUAGEM);
+require_once(LIB_PATH.'i18n'.DS.'gettext.inc');
+_setlocale(LC_ALL, SISTEMA_LINGUAGEM);
+_setlocale(LC_CTYPE, SISTEMA_LINGUAGEM);
+_bindtextdomain($textdomain, LANG_PATH);
+_bind_textdomain_codeset($textdomain, 'UTF-8');
+_textdomain($textdomain);
+function _e($string) {
+  echo __($string);
+}
+
+
+/**
+ * Linguagem e Pacote de Funcoes
+ */
 require_once    APP_PATH . 'Funcao.php';
   
 define('SERVER_URL',           $_SERVER['REQUEST_URI']);
-
-
-
-
-
-
 
 // SE TIVER CONFIGURACAO GERADA PELO FRAMEWORK ABRE
 if(file_exists(INI_PATH.SRV_NAME.DS.'_temp.php')){
@@ -321,17 +342,7 @@ if(file_exists(INI_PATH.SRV_NAME.DS.'_temp.php')){
 
 
 
-
-
-
-
-
-
 unset($tempo);
-
-
-
-
 
 
 

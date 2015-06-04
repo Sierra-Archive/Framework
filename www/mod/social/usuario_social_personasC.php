@@ -9,7 +9,7 @@ class social_personasControle extends social_Controle
         parent::__construct();
     }
     public function social(){
-        $social =__('');
+        $social ='';
 
         // carrega camada de addpersona
         $this->social_carregajanelaadd();

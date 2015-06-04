@@ -199,7 +199,7 @@ class usuario_PerfilControle extends usuario_Controle
             );
             $this->_Visual->Json_IncluiTipo('Popup',$conteudo);
             //$this->_Visual->Json_IncluiTipo('JavascriptInterno',$this->_Visual->Javascript_Executar());
-            //$this->_Visual->Javascript_Executar() = __('');
+            //$this->_Visual->Javascript_Executar() = '';
         }else{
             $mensagens = array(
                 "tipo" => 'sucesso',
@@ -522,7 +522,7 @@ class usuario_PerfilControle extends usuario_Controle
             );
             $this->_Visual->Json_IncluiTipo('Popup',$conteudo);
             //$this->_Visual->Json_IncluiTipo('JavascriptInterno',$this->_Visual->Javascript_Executar());
-            //$this->_Visual->Javascript_Executar() = __('');
+            //$this->_Visual->Javascript_Executar() = '';
         }else{
             $mensagens = array(
                 "tipo" => 'sucesso',
