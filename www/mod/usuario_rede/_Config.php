@@ -12,7 +12,7 @@ $config_Menu = function (){
     return Array(
         'Perfil'=>Array(
             'Filhos'                => Array('Rede'=>Array(
-                'Nome'                  => 'Rede',
+                'Nome'                  => __('Rede'),
                 'Link'                  => 'usuario_rede/Listar/Main',
                 'Gravidade'             => 9,
                 'Img'                   => 'menusuperior/rede.png',
@@ -25,7 +25,7 @@ $config_Menu = function (){
 $config_Permissoes = function (){
     return Array(
         Array(
-            'Nome'                  => 'Visualizar Rede',
+            'Nome'                  => __('Visualizar Rede'),
             'Desc'                  => '',
             'Chave'                 => 'usuario_rede_Listar',
             'End'                   => 'usuario_rede/Listar', // Endereco que deve conter a url para permitir acesso

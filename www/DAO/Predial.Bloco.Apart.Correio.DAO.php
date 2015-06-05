@@ -68,7 +68,7 @@ final Class Predial_Bloco_Apart_Correio_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => 'predial/Bloco/Blocos_Add',
                 'edicao'            => Array(
-                    'Nome'              => 'Bloco',
+                    'Nome'              => __('Bloco'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => ''
@@ -88,7 +88,7 @@ final Class Predial_Bloco_Apart_Correio_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => 'predial/Apart/Aparts_Add',
                 'edicao'            => Array(
-                    'Nome'              => 'Apartamento',
+                    'Nome'              => __('Apartamento'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => ''
@@ -109,7 +109,7 @@ final Class Predial_Bloco_Apart_Correio_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => 'categoria/Admin/Categorias_Add/predial_Correio', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Tipo do Correio',
+                    'Nome'              => __('Tipo do Correio'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',
@@ -135,10 +135,10 @@ final Class Predial_Bloco_Apart_Correio_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Destinatário',
+                    'Nome'              => __('Destinatário'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
-                    'aviso'             => 'Apenas letras',
+                    'aviso'             => __('Apenas letras'),
                     'formtipo'          => 'input',
                     'input'             => array(
                         'tipo'              => 'text',
@@ -161,7 +161,7 @@ final Class Predial_Bloco_Apart_Correio_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Data Recebida Adm/Portaria',
+                    'Nome'              => __('Data Recebida Adm/Portaria'),
                     'valor_padrao'      => APP_HORA_BR,
                     'readonly'          => false,
                     'aviso'             => '',
@@ -188,7 +188,7 @@ final Class Predial_Bloco_Apart_Correio_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Data Entregue ao Morador',
+                    'Nome'              => __('Data Entregue ao Morador'),
                     'valor_padrao'      => APP_HORA_BR,
                     'readonly'          => false,
                     'aviso'             => '',
@@ -215,7 +215,7 @@ final Class Predial_Bloco_Apart_Correio_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Quantidade',
+                    'Nome'              => __('Quantidade'),
                     'Mascara'           => 'Numero',
                     'valor_padrao'      => '1',
                     'readonly'          => false,
@@ -242,7 +242,7 @@ final Class Predial_Bloco_Apart_Correio_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Observação',
+                    'Nome'              => __('Observação'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',

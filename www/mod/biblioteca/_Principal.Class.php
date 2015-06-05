@@ -140,7 +140,7 @@ class biblioteca_Principal implements PrincipalInterface
                         $tamanho = (int) $valor->tamanho;
                         if($tamanho === 0){
                             if($valor->tipo==1){
-                                $tamanho = $Controle->Bibliotecas_AtualizaTamanho_Pai($valor);
+                                $tamanho = biblioteca_Controle::Bibliotecas_AtualizaTamanho_Pai($valor);
                             }else{
                                 $tamanho = filesize($endereco);
                                 $Modelo->db->Sql_Update($valor);

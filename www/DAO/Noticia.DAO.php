@@ -66,7 +66,7 @@ final Class Noticia_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo
                 'linkextra'         => 'categoria/Admin/Categorias_Add/noticia', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Tipo da Noticia',
+                    'Nome'              => __('Tipo da Noticia'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',
@@ -91,7 +91,7 @@ final Class Noticia_DAO extends Framework\App\Dao
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Titulo da Noticia',
+                    'Nome'              => __('Titulo da Noticia'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',
@@ -110,7 +110,7 @@ final Class Noticia_DAO extends Framework\App\Dao
                         'tabela'            => 'Musica_Album_Artista', // Campo e Resultado
                     ),
                     'valor_padrao'      => false, // id do pai
-                    'Nome'              => 'Artistas', // Nome no FOrmulario
+                    'Nome'              => __('Artistas'), // Nome no FOrmulario
                     'Class'             => 'obrigatorio', // Classe no formulario
                     'aviso'             => '', // Aviso no formulario
                     'formtipo'          => 'SelectMultiplo',  // Tipo de formulario
@@ -138,7 +138,7 @@ final Class Noticia_DAO extends Framework\App\Dao
                 'mysql_outside'     => 'data_eua_brasil({valor})', // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Data da Noticia',
+                    'Nome'              => __('Data da Noticia'),
                     'Mascara'           => 'Data',
                     'valor_padrao'      => APP_DATA_BR,
                     'readonly'          => false,
@@ -165,7 +165,7 @@ final Class Noticia_DAO extends Framework\App\Dao
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Texto da Noticia',
+                    'Nome'              => __('Texto da Noticia'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',
@@ -190,7 +190,7 @@ final Class Noticia_DAO extends Framework\App\Dao
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Destaque',
+                    'Nome'              => __('Destaque'),
                     'valor_padrao'      => 0,
                     'readonly'          => false,
                     'aviso'             => '',
@@ -225,7 +225,7 @@ final Class Noticia_DAO extends Framework\App\Dao
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Ativado',
+                    'Nome'              => __('Ativado'),
                     'valor_padrao'      => 1,
                     'readonly'          => false,
                     'aviso'             => '',
@@ -260,10 +260,10 @@ final Class Noticia_DAO extends Framework\App\Dao
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Foto da Capa',
+                    'Nome'              => __('Foto da Capa'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
-                    'aviso'             => 'Imagens somente do tipo GIF ou JPG',
+                    'aviso'             => __('Imagens somente do tipo GIF ou JPG'),
                     'aviso_titulo'      => 'Importante',
                     'formtipo'          => 'upload',
                     'upload'            => array(

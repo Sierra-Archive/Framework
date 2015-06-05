@@ -11,27 +11,27 @@ $config_Modulo = function (){
 $config_Menu = function (){
     return Array(
         'Social'=>Array(
-            'Nome'                  => 'Social',
+            'Nome'                  => __('Social'),
             'Link'                  => '#',
             'Gravidade'             => 80,
             'Img'                   => 'turboadmin/m-dashboard.png',
             'Icon'                  => 'male',
             'Filhos'                => Array('Pessoas'=>Array(
-                'Nome'                  => 'Pessoas',
+                'Nome'                  => __('Pessoas'),
                 'Link'                  => 'social/Persona/Personas',
                 'Gravidade'             => 9,
                 'Img'                   => 'turboadmin/m-users.png',
                 'Icon'                  => 'male',
                 'Filhos'                => false,
             ),'Ações'=>Array(
-                'Nome'                  => 'Ações',
+                'Nome'                  => __('Ações'),
                 'Link'                  => 'social/Acao/Acao',
                 'Gravidade'             => 9,
                 'Img'                   => 'turboadmin/m-users.png',
                 'Icon'                  => 'eye-close',
                 'Filhos'                => false,
             ),'Midias'=>Array(
-                'Nome'                  => 'Midias',
+                'Nome'                  => __('Midias'),
                 'Link'                  => 'social/Midia/Midias',
                 'Gravidade'             => 9,
                 'Img'                   => 'turboadmin/m-users.png',
@@ -41,7 +41,7 @@ $config_Menu = function (){
         ),
         'Administrar'=>Array(
             'Caracteristicas'=>Array(
-                'Nome'                  => 'Caracteristicas',
+                'Nome'                  => __('Caracteristicas'),
                 'Link'                  => 'social/Caracteristica/Caracteristicas',
                 'Gravidade'             => 9,
                 'Img'                   => 'turboadmin/m-users.png',
@@ -49,21 +49,21 @@ $config_Menu = function (){
                 'Filhos'                => false,
             ),
             'Tarefas'=>Array(
-                'Nome'                  => 'Tarefas',
+                'Nome'                  => __('Tarefas'),
                 'Link'                  => 'social/Tarefa/Tarefas',
                 'Gravidade'             => 9,
                 'Img'                   => 'turboadmin/m-users.png',
                 'Icon'                  => 'wrench',
                 'Filhos'                => false,
             ),'Atributos'=>Array(
-                'Nome'                  => 'Atributos',
+                'Nome'                  => __('Atributos'),
                 'Link'                  => 'social/Atributo/Atributos',
                 'Gravidade'             => 9,
                 'Img'                   => 'turboadmin/m-users.png',
                 'Icon'                  => 'briefcase',
                 'Filhos'                => false,
             ),'Gosto'=>Array(
-                'Nome'                  => 'Gostos',
+                'Nome'                  => __('Gostos'),
                 'Link'                  => 'social/Gosto/Gostos',
                 'Gravidade'             => 9,
                 'Img'                   => 'turboadmin/m-users.png',
@@ -76,7 +76,7 @@ $config_Menu = function (){
 $config_Permissoes = function (){
     return Array(
         Array(
-            'Nome'                  => 'Social (Pessoas) - Listagem',
+            'Nome'                  => __('Social (Pessoas) - Listagem'),
             'Desc'                  => '',
             'Chave'                 => 'social_Persona_Personas',
             'End'                   => 'social/Persona/Personas', // Endereco que deve conter a url para permitir acesso
@@ -85,7 +85,7 @@ $config_Permissoes = function (){
             'Metodo'                => 'Personas',  // Metodos referentes separados por virgula
         ),
         Array(
-            'Nome'                  => 'Social (Pessoas) - Add',
+            'Nome'                  => __('Social (Pessoas) - Add'),
             'Desc'                  => '',
             'Chave'                 => 'social_Persona_Personas_Add', // CHave unica nunca repete, chave primaria
             'End'                   => 'social/Persona/Personas_Add', // Endereco que deve conter a url para permitir acesso
@@ -94,7 +94,7 @@ $config_Permissoes = function (){
             'Metodo'                => 'Personas_Add,Personas_Add2',  // Metodos referentes separados por virgula
         ),
         Array(
-            'Nome'                  => 'Social (Pessoas) - Editar',
+            'Nome'                  => __('Social (Pessoas) - Editar'),
             'Desc'                  => '',
             'Chave'                 => 'social_Persona_Personas_Edit', // CHave unica nunca repete, chave primaria
             'End'                   => 'social/Persona/Personas_Edit', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
@@ -103,7 +103,7 @@ $config_Permissoes = function (){
             'Metodo'                => 'Personas_Edit,Personas_Edit2',  // Metodos referentes separados por virgula
         ),
         Array(
-            'Nome'                  => 'Social (Pessoas) - Deletar',
+            'Nome'                  => __('Social (Pessoas) - Deletar'),
             'Desc'                  => '',
             'Chave'                 => 'social_Persona_Personas_Del', // CHave unica nunca repete, chave primaria
             'End'                   => 'social/Persona/Personas_Del', // Endereco que deve conter a url para permitir acesso
@@ -113,7 +113,7 @@ $config_Permissoes = function (){
         ),
         
         Array(
-            'Nome'                  => 'Social (Caracteristicas) - Administrar',
+            'Nome'                  => __('Social (Caracteristicas) - Administrar'),
             'Desc'                  => '',
             'Chave'                 => 'social_Caracteristica_Caracteristicas',
             'End'                   => 'social/Caracteristica/Caracteristicas', // Endereco que deve conter a url para permitir acesso
@@ -122,7 +122,7 @@ $config_Permissoes = function (){
             'Metodo'                => 'Caracteristicas',  // Metodos referentes separados por virgula
         ),
         Array(
-            'Nome'                  => 'Social (Caracteristicas) - Add',
+            'Nome'                  => __('Social (Caracteristicas) - Add'),
             'Desc'                  => '',
             'Chave'                 => 'social_Caracteristica_Caracteristicas_Add', // CHave unica nunca repete, chave primaria
             'End'                   => 'social/Caracteristica/Caracteristicas_Add', // Endereco que deve conter a url para permitir acesso
@@ -131,7 +131,7 @@ $config_Permissoes = function (){
             'Metodo'                => 'Caracteristicas_Add,Caracteristicas_Add2',  // Metodos referentes separados por virgula
         ),
         Array(
-            'Nome'                  => 'Social (Caracteristicas) - Editar',
+            'Nome'                  => __('Social (Caracteristicas) - Editar'),
             'Desc'                  => '',
             'Chave'                 => 'social_Caracteristica_Caracteristicas_Edit', // CHave unica nunca repete, chave primaria
             'End'                   => 'social/Caracteristica/Caracteristicas_Edit', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
@@ -140,7 +140,7 @@ $config_Permissoes = function (){
             'Metodo'                => 'Caracteristicas_Edit,Caracteristicas_Edit2',  // Metodos referentes separados por virgula
         ),
         Array(
-            'Nome'                  => 'Social (Caracteristicas) - Deletar',
+            'Nome'                  => __('Social (Caracteristicas) - Deletar'),
             'Desc'                  => '',
             'Chave'                 => 'social_Caracteristica_Caracteristicas_Del', // CHave unica nunca repete, chave primaria
             'End'                   => 'social/Caracteristica/Caracteristicas_Del', // Endereco que deve conter a url para permitir acesso
@@ -150,7 +150,7 @@ $config_Permissoes = function (){
         ),
         
         Array(
-            'Nome'                  => 'Social (Ações) - Administrar',
+            'Nome'                  => __('Social (Ações) - Administrar'),
             'Desc'                  => '',
             'Chave'                 => 'social_Acao_Acao',
             'End'                   => 'social/Acao/Acao', // Endereco que deve conter a url para permitir acesso
@@ -159,7 +159,7 @@ $config_Permissoes = function (){
             'Metodo'                => 'Acao',  // Metodos referentes separados por virgula
         ),
         Array(
-            'Nome'                  => 'Social (Ações) - Add',
+            'Nome'                  => __('Social (Ações) - Add'),
             'Desc'                  => '',
             'Chave'                 => 'social_Acao_Acoes_Add', // CHave unica nunca repete, chave primaria
             'End'                   => 'social/Acao/Acoes_Add', // Endereco que deve conter a url para permitir acesso
@@ -168,7 +168,7 @@ $config_Permissoes = function (){
             'Metodo'                => 'Acoes_Add,Acoes_Add2',  // Metodos referentes separados por virgula
         ),
         Array(
-            'Nome'                  => 'Social (Ações) - Editar',
+            'Nome'                  => __('Social (Ações) - Editar'),
             'Desc'                  => '',
             'Chave'                 => 'social_Acao_Acoes_Edit', // CHave unica nunca repete, chave primaria
             'End'                   => 'social/Acao/Acoes_Edit', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
@@ -177,7 +177,7 @@ $config_Permissoes = function (){
             'Metodo'                => 'Acoes_Edit,Acoes_Edit2',  // Metodos referentes separados por virgula
         ),
         Array(
-            'Nome'                  => 'Social (Ações) - Deletar',
+            'Nome'                  => __('Social (Ações) - Deletar'),
             'Desc'                  => '',
             'Chave'                 => 'social_Acao_Acoes_Del', // CHave unica nunca repete, chave primaria
             'End'                   => 'social/Acao/Acoes_Del', // Endereco que deve conter a url para permitir acesso
@@ -187,7 +187,7 @@ $config_Permissoes = function (){
         ),
         
         Array(
-            'Nome'                  => 'Social (Midias) - Administrar',
+            'Nome'                  => __('Social (Midias) - Administrar'),
             'Desc'                  => '',
             'Chave'                 => 'social_Midia_Midias',
             'End'                   => 'social/Midia/Midias', // Endereco que deve conter a url para permitir acesso
@@ -196,7 +196,7 @@ $config_Permissoes = function (){
             'Metodo'                => 'Midias',  // Metodos referentes separados por virgula
         ),
         Array(
-            'Nome'                  => 'Social (Midias) - Add',
+            'Nome'                  => __('Social (Midias) - Add'),
             'Desc'                  => '',
             'Chave'                 => 'social_Midia_Midias_Add', // CHave unica nunca repete, chave primaria
             'End'                   => 'social/Midia/Midias_Add', // Endereco que deve conter a url para permitir acesso
@@ -205,7 +205,7 @@ $config_Permissoes = function (){
             'Metodo'                => 'Midias_Add,Midias_Add2',  // Metodos referentes separados por virgula
         ),
         Array(
-            'Nome'                  => 'Social (Midias) - Editar',
+            'Nome'                  => __('Social (Midias) - Editar'),
             'Desc'                  => '',
             'Chave'                 => 'social_Midia_Midias_Edit', // CHave unica nunca repete, chave primaria
             'End'                   => 'social/Midia/Midias_Edit', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
@@ -214,7 +214,7 @@ $config_Permissoes = function (){
             'Metodo'                => 'Midias_Edit,Midias_Edit2',  // Metodos referentes separados por virgula
         ),
         Array(
-            'Nome'                  => 'Social (Midias) - Deletar',
+            'Nome'                  => __('Social (Midias) - Deletar'),
             'Desc'                  => '',
             'Chave'                 => 'social_Midia_Midias_Del', // CHave unica nunca repete, chave primaria
             'End'                   => 'social/Midia/Midias_Del', // Endereco que deve conter a url para permitir acesso

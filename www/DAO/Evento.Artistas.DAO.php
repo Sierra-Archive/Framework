@@ -52,7 +52,7 @@ final Class Evento_Artistas_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => 'Evento/Evento/Eventos_Add',
                 'edicao'            => Array(
-                    'Nome'              => 'Evento',
+                    'Nome'              => __('Evento'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',
@@ -78,7 +78,7 @@ final Class Evento_Artistas_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => 'Musica/Artista/Artistas_Add',
                 'edicao'            => Array(
-                    'Nome'              => 'Artista',
+                    'Nome'              => __('Artista'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',
@@ -107,7 +107,7 @@ final Class Evento_Artistas_DAO extends Framework\App\Dao
                     'Mascara'           => 'Real',
                     'valor_padrao'      => false,
                     'readonly'          => false,
-                    'aviso'             => 'Somente Números',
+                    'aviso'             => __('Somente Números'),
                     'formtipo'          => 'input',
                     'input'             => array(
                         'tipo'              => 'text',

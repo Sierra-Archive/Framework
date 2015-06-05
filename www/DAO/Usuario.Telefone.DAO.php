@@ -65,7 +65,7 @@ final Class Usuario_Telefone_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => 'social/Persona/Personas_Add',
                 'edicao'            => Array(
-                    'Nome'              => 'Persona',
+                    'Nome'              => __('Persona'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => ''
@@ -86,7 +86,7 @@ final Class Usuario_Telefone_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Celular',
+                    'Nome'              => __('Celular'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',
@@ -113,7 +113,7 @@ final Class Usuario_Telefone_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Pais',
+                    'Nome'              => __('Pais'),
                     'valor_padrao'      => 1,
                     'readonly'          => false,
                     'aviso'             => ''
@@ -135,7 +135,7 @@ final Class Usuario_Telefone_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Estado',
+                    'Nome'              => __('Estado'),
                     'valor_padrao'      => 19,
                     'readonly'          => false,
                     'aviso'             => ''
@@ -156,7 +156,7 @@ final Class Usuario_Telefone_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Cidade',
+                    'Nome'              => __('Cidade'),
                     'valor_padrao'      => 7043,
                     'readonly'          => false,
                     'aviso'             => ''
@@ -177,7 +177,7 @@ final Class Usuario_Telefone_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Observação',
+                    'Nome'              => __('Observação'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',

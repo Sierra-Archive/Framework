@@ -13,27 +13,27 @@ $config_Modulo = function (){
 $config_Menu = function (){
     return Array(
         'Agenda'=>Array(
-            'Nome'                  => 'Agenda',
+            'Nome'                  => __('Agenda'),
             'Link'                  => '#',
             'Gravidade'             => 90,
             'Img'                   => 'turboadmin/m-dashboard.png',
             'Icon'                  => 'time',
             'Filhos'                => Array('Pastas'=>Array(
-                'Nome'                  => 'Pastas',
+                'Nome'                  => __('Pastas'),
                 'Link'                  => 'Agenda/Pasta/Pastas',
                 'Gravidade'             => 10,
                 'Img'                   => 'turboadmin/m-dashboard.png',
                 'Icon'                  => 'calendar',
                 'Filhos'                => false,
             ),'Compromissos'=>Array(
-                'Nome'                  => 'Compromissos',
+                'Nome'                  => __('Compromissos'),
                 'Link'                  => 'Agenda/Compromisso/Compromissos',
                 'Gravidade'             => 7,
                 'Img'                   => 'turboadmin/m-dashboard.png',
                 'Icon'                  => 'calendar',
                 'Filhos'                => false,
             ),'Atividades'=>Array(
-                'Nome'                  => 'Atividades',
+                'Nome'                  => __('Atividades'),
                 'Link'                  => 'Agenda/Atividades/Atividades',
                 'Gravidade'             => 5,
                 'Img'                   => 'turboadmin/m-dashboard.png',
@@ -43,7 +43,7 @@ $config_Menu = function (){
         ),
         'Administrar'=>Array(
             'Filhos'                => Array('Pastas Cores'=>Array(
-                'Nome'                  => 'Pastas Cores',
+                'Nome'                  => __('Pastas Cores'),
                 'Link'                  => 'Agenda/Pasta/Cores',
                 'Gravidade'             => 10,
                 'Img'                   => 'turboadmin/m-dashboard.png',
@@ -56,7 +56,7 @@ $config_Menu = function (){
 $config_Permissoes = function (){
     return Array(
         Array(
-            'Nome'                  => 'Agenda (Compromissos) - Listagem',
+            'Nome'                  => __('Agenda (Compromissos) - Listagem'),
             'Desc'                  => '',
             'Chave'                 => 'Agenda_Compromisso',
             'End'                   => 'Agenda/Compromisso', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
@@ -65,7 +65,7 @@ $config_Permissoes = function (){
             'Metodo'                => 'Compromissos',  // Metodos referentes separados por virgula
         ),
         Array(
-            'Nome'                  => 'Agenda (Compromissos) - Add Compromissos',
+            'Nome'                  => __('Agenda (Compromissos) - Add Compromissos'),
             'Desc'                  => '',
             'Chave'                 => 'Agenda_Compromissos_Add', // CHave unica nunca repete, chave primaria
             'End'                   => 'Agenda/Compromisso/Compromissos_Add', // Endereco que deve conter a url para permitir acesso
@@ -74,7 +74,7 @@ $config_Permissoes = function (){
             'Metodo'                => 'Compromissos_Add,Compromissos_Add2',  // Metodos referentes separados por virgula
         ),
         Array(
-            'Nome'                  => 'Agenda (Compromissos) - Editar Compromissos',
+            'Nome'                  => __('Agenda (Compromissos) - Editar Compromissos'),
             'Desc'                  => '',
             'Chave'                 => 'Agenda_Edit', // CHave unica nunca repete, chave primaria
             'End'                   => 'Agenda/Compromisso/Compromissos_Edit', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
@@ -83,7 +83,7 @@ $config_Permissoes = function (){
             'Metodo'                => 'Compromissos_Edit,Compromissos_Edit2',  // Metodos referentes separados por virgula
         ),
         Array(
-            'Nome'                  => 'Agenda (Compromissos) - Deletar Compromissos',
+            'Nome'                  => __('Agenda (Compromissos) - Deletar Compromissos'),
             'Desc'                  => '',
             'Chave'                 => 'Agenda_Del', // CHave unica nunca repete, chave primaria
             'End'                   => 'Agenda/Compromisso/Compromissos_Del', // Endereco que deve conter a url para permitir acesso
@@ -96,7 +96,7 @@ $config_Permissoes = function (){
         
         
         Array(
-            'Nome'                  => 'Agenda (Pastas) - Listagem',
+            'Nome'                  => __('Agenda (Pastas) - Listagem'),
             'Desc'                  => '',
             'Chave'                 => 'Agenda_Pasta',
             'End'                   => 'Agenda/Pasta', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
@@ -105,7 +105,7 @@ $config_Permissoes = function (){
             'Metodo'                => 'Pastas',  // Metodos referentes separados por virgula
         ),
         Array(
-            'Nome'                  => 'Agenda (Pastas) - Add',
+            'Nome'                  => __('Agenda (Pastas) - Add'),
             'Desc'                  => '',
             'Chave'                 => 'Agenda_Pasta_Pastas_Add', // CHave unica nunca repete, chave primaria
             'End'                   => 'Agenda/Pasta/Pastas_Add', // Endereco que deve conter a url para permitir acesso
@@ -114,7 +114,7 @@ $config_Permissoes = function (){
             'Metodo'                => 'Pastas_Add,Pastas_Add2',  // Metodos referentes separados por virgula
         ),
         Array(
-            'Nome'                  => 'Agenda (Pastas) - Editar',
+            'Nome'                  => __('Agenda (Pastas) - Editar'),
             'Desc'                  => '',
             'Chave'                 => 'Agenda_Pasta_Pastas_Edit', // CHave unica nunca repete, chave primaria
             'End'                   => 'Agenda/Pasta/Pastas_Edit', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
@@ -123,7 +123,7 @@ $config_Permissoes = function (){
             'Metodo'                => 'Pastas_Edit,Pastas_Edit2',  // Metodos referentes separados por virgula
         ),
         Array(
-            'Nome'                  => 'Agenda (Pastas) - Deletar',
+            'Nome'                  => __('Agenda (Pastas) - Deletar'),
             'Desc'                  => '',
             'Chave'                 => 'Agenda_Pasta_Pastas_Del', // CHave unica nunca repete, chave primaria
             'End'                   => 'Agenda/Pasta/Pastas_Del', // Endereco que deve conter a url para permitir acesso
@@ -132,7 +132,7 @@ $config_Permissoes = function (){
             'Metodo'                => 'Pastas_Del',  // Metodos referentes separados por virgula
         ),
         Array(
-            'Nome'                  => 'Agenda (Pasta - Cores) - Listagem',
+            'Nome'                  => __('Agenda (Pasta - Cores) - Listagem'),
             'Desc'                  => '',
             'Chave'                 => 'Agenda_Pasta',
             'End'                   => 'Agenda/Pasta', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
@@ -141,7 +141,7 @@ $config_Permissoes = function (){
             'Metodo'                => 'Cores',  // Metodos referentes separados por virgula
         ),
         Array(
-            'Nome'                  => 'Agenda (Pasta - Cores) - Add',
+            'Nome'                  => __('Agenda (Pasta - Cores) - Add'),
             'Desc'                  => '',
             'Chave'                 => 'Agenda_Pasta_Cores_Add', // CHave unica nunca repete, chave primaria
             'End'                   => 'Agenda/Pasta/Cores_Add', // Endereco que deve conter a url para permitir acesso
@@ -150,7 +150,7 @@ $config_Permissoes = function (){
             'Metodo'                => 'Cores_Add,Cores_Add2',  // Metodos referentes separados por virgula
         ),
         Array(
-            'Nome'                  => 'Agenda (Pasta - Cores) - Editar',
+            'Nome'                  => __('Agenda (Pasta - Cores) - Editar'),
             'Desc'                  => '',
             'Chave'                 => 'Agenda_Pasta_Cores_Edit', // CHave unica nunca repete, chave primaria
             'End'                   => 'Agenda/Pasta/Cores_Edit', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
@@ -159,7 +159,7 @@ $config_Permissoes = function (){
             'Metodo'                => 'Cores_Edit,Cores_Edit2',  // Metodos referentes separados por virgula
         ),
         Array(
-            'Nome'                  => 'Agenda (Pasta - Cores) - Deletar',
+            'Nome'                  => __('Agenda (Pasta - Cores) - Deletar'),
             'Desc'                  => '',
             'Chave'                 => 'Agenda_Pasta_Cores_Del', // CHave unica nunca repete, chave primaria
             'End'                   => 'Agenda/Pasta/Cores_Del', // Endereco que deve conter a url para permitir acesso

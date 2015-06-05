@@ -358,7 +358,7 @@ $config = Array();
 while($i<1000){
     $config_Modulo = function (){
         return Array(
-            'Nome'                      =>  'Agenda',
+            'Nome'                      => __('Agenda'),
             'Descrição'                 =>  '',
             'System_Require'            =>  '3.1.0',
             'Version'                   =>  '3.1.1',
@@ -375,7 +375,7 @@ $i = 0;
 $config = Array();
 while($i<1000){
     $config_Modulo = Array(
-        'Nome'                      =>  'Agenda',
+        'Nome'                      => __('Agenda'),
         'Descrição'                 =>  '',
         'System_Require'            =>  '3.1.0',
         'Version'                   =>  '3.1.1',

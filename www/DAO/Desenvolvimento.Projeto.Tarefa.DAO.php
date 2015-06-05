@@ -68,7 +68,7 @@ final Class Desenvolvimento_Projeto_Tarefa_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => 'categoria/Admin/Categorias_Add/Desenvolvimento_Tarefa', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Categoria da Tarefa',
+                    'Nome'              => __('Categoria da Tarefa'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',
@@ -94,10 +94,10 @@ final Class Desenvolvimento_Projeto_Tarefa_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => false, //'usuario/Admin/Usuarios_Add/cliente',
                 'edicao'            => Array(
-                    'Nome'              => 'Projeto',
+                    'Nome'              => __('Projeto'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
-                    'aviso'             => 'obrigatorio',
+                    'aviso'             => __('obrigatorio'),
                     'formtipo'          => 'select',
                     'select'             => array(
                         'class'             => 'obrigatorio',
@@ -126,7 +126,7 @@ final Class Desenvolvimento_Projeto_Tarefa_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Framework',
+                    'Nome'              => __('Framework'),
                     'valor_padrao'      => 1,
                     'readonly'          => false,
                     'aviso'             => '',
@@ -163,7 +163,7 @@ final Class Desenvolvimento_Projeto_Tarefa_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Framework - Módulo',
+                    'Nome'              => __('Framework - Módulo'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',
@@ -197,7 +197,7 @@ final Class Desenvolvimento_Projeto_Tarefa_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Framework - SubMódulo',
+                    'Nome'              => __('Framework - SubMódulo'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',
@@ -225,7 +225,7 @@ final Class Desenvolvimento_Projeto_Tarefa_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Framework - Método',
+                    'Nome'              => __('Framework - Método'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',
@@ -252,7 +252,7 @@ final Class Desenvolvimento_Projeto_Tarefa_DAO extends Framework\App\Dao
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Descricao',
+                    'Nome'              => __('Descricao'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',

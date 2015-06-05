@@ -61,7 +61,7 @@ final Class Desenvolvimento_Framework_Modulo_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo
                 'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Nome',
+                    'Nome'              => __('Nome'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',

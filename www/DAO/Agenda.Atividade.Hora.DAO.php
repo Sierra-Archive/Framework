@@ -73,10 +73,10 @@ final Class Agenda_Atividade_Hora_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => false, //'usuario/Admin/Usuarios_Add/cliente',
                 'edicao'            => Array(
-                    'Nome'              => 'Atividade',
+                    'Nome'              => __('Atividade'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
-                    'aviso'             => 'obrigatorio',
+                    'aviso'             => __('obrigatorio'),
                     'formtipo'          => 'select',
                     'select'             => array(
                         'class'             => 'obrigatorio',
@@ -98,7 +98,7 @@ final Class Agenda_Atividade_Hora_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => '', // //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Data do Vencimento',
+                    'Nome'              => __('Data do Vencimento'),
                     'Mascara'           => 'DataHora',
                     'valor_padrao'      => false,
                     'readonly'          => false,
@@ -125,7 +125,7 @@ final Class Agenda_Atividade_Hora_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => '', // //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Data do Vencimento',
+                    'Nome'              => __('Data do Vencimento'),
                     'Mascara'           => 'DataHora',
                     'valor_padrao'      => false,
                     'readonly'          => false,

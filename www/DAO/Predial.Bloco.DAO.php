@@ -62,10 +62,10 @@ final Class Predial_Bloco_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Nome do Bloco',
+                    'Nome'              => __('Nome do Bloco'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
-                    'aviso'             => 'Minimo 1 caracter',
+                    'aviso'             => __('Minimo 1 caracter'),
                     'formtipo'          => 'input',
                     'input'             => array(
                         'tipo'              => 'text',

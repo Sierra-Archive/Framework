@@ -65,7 +65,7 @@ final Class  Engenharia_Empreendimento_Custo_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => 'Engenharia/Empreendimento/Empreendimentos_Add',
                 'edicao'            => Array(
-                    'Nome'              => 'Empreendimento',
+                    'Nome'              => __('Empreendimento'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',
@@ -89,7 +89,7 @@ final Class  Engenharia_Empreendimento_Custo_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => 'Engenharia/Unidade/Unidades_Add',
                 'edicao'            => Array(
-                    'Nome'              => 'Unidade do Empreendimento',
+                    'Nome'              => __('Unidade do Empreendimento'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',
@@ -114,10 +114,10 @@ final Class  Engenharia_Empreendimento_Custo_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'          => false, //'usuario/Admin/Usuarios_Add/cliente',
                 'edicao'            => Array(
-                    'Nome'              => 'Cliente / Investidor',
+                    'Nome'              => __('Cliente / Investidor'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
-                    'aviso'             => 'obrigatorio',
+                    'aviso'             => __('obrigatorio'),
                     'select'             => array(
                         'class'             => 'obrigatorio',
                         'infonulo'          => 'Escolha um Cliente/Investidor',
@@ -138,7 +138,7 @@ final Class  Engenharia_Empreendimento_Custo_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => '', // //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Valor',
+                    'Nome'              => __('Valor'),
                     'Mascara'           => 'Real',
                     'valor_padrao'      => false,
                     'readonly'          => false,
@@ -165,7 +165,7 @@ final Class  Engenharia_Empreendimento_Custo_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Data Prevista do Pagamento',
+                    'Nome'              => __('Data Prevista do Pagamento'),
                     'Mascara'           => 'Data',
                     'valor_padrao'      => false,
                     'readonly'          => false,
@@ -193,7 +193,7 @@ final Class  Engenharia_Empreendimento_Custo_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => 'Financeiro/Banco/Bancos_Add', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Banco Financiador',
+                    'Nome'              => __('Banco Financiador'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',

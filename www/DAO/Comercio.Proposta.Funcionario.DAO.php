@@ -52,7 +52,7 @@ final Class Comercio_Proposta_Funcionario_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => '',
                 'edicao'            => Array(
-                    'Nome'              => 'Ordem de Serviço',
+                    'Nome'              => __('Ordem de Serviço'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',
@@ -78,7 +78,7 @@ final Class Comercio_Proposta_Funcionario_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => 'usuario/Admin/Usuarios_Add/cliente',
                 'edicao'            => Array(
-                    'Nome'              => 'Cliente',
+                    'Nome'              => __('Cliente'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',
@@ -106,7 +106,7 @@ final Class Comercio_Proposta_Funcionario_DAO extends Framework\App\Dao
                     'Nome'              => 'Dias de {nome}',
                     'valor_padrao'      => false,
                     'readonly'          => false,
-                    'aviso'             => 'Minimo 3 caracteres',
+                    'aviso'             => __('Minimo 3 caracteres'),
                     'formtipo'          => 'input',
                     'input'             => array(
                         'tipo'              => 'text',

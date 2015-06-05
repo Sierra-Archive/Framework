@@ -66,7 +66,7 @@ final Class Predial_Bloco_Apart_Animal_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => 'predial/Bloco/Blocos_Add',
                 'edicao'            => Array(
-                    'Nome'              => 'Bloco',
+                    'Nome'              => __('Bloco'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => ''
@@ -86,7 +86,7 @@ final Class Predial_Bloco_Apart_Animal_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => 'predial/Apart/Aparts_Add',
                 'edicao'            => Array(
-                    'Nome'              => 'Apartamento',
+                    'Nome'              => __('Apartamento'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => ''
@@ -107,7 +107,7 @@ final Class Predial_Bloco_Apart_Animal_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => 'categoria/Admin/Categorias_Add/predial_Animal', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Tipo do Animal',
+                    'Nome'              => __('Tipo do Animal'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',
@@ -133,7 +133,7 @@ final Class Predial_Bloco_Apart_Animal_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Nome do Animal',
+                    'Nome'              => __('Nome do Animal'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',
@@ -159,7 +159,7 @@ final Class Predial_Bloco_Apart_Animal_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Peso (GRAMAS)',
+                    'Nome'              => __('Peso (GRAMAS)'),
                     'Mascara'           => 'Numero',
                     'valor_padrao'      => false,
                     'readonly'          => false,
@@ -186,7 +186,7 @@ final Class Predial_Bloco_Apart_Animal_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => '', //0 ninguem, 1 admin, 2 todos
                 'edicao'            => Array(
-                    'Nome'              => 'Cor',
+                    'Nome'              => __('Cor'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',

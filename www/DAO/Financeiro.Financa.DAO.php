@@ -63,7 +63,7 @@ final Class Financeiro_Financa_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => 'categoria/Admin/Categorias_Add/Financeiro_Financa',
                 'edicao'            => Array(
-                    'Nome'              => 'Tipo de Conta',
+                    'Nome'              => __('Tipo de Conta'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',
@@ -89,7 +89,7 @@ final Class Financeiro_Financa_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Valor',
+                    'Nome'              => __('Valor'),
                     'Mascara'           => 'Real',
                     'valor_padrao'      => false,
                     'readonly'          => false,
@@ -116,7 +116,7 @@ final Class Financeiro_Financa_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => '', // //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Data do Pagamento',
+                    'Nome'              => __('Data do Pagamento'),
                     'Mascara'           => 'Data',
                     'valor_padrao'      => APP_DATA_BR,
                     'readonly'          => false,
@@ -144,7 +144,7 @@ final Class Financeiro_Financa_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Observação',
+                    'Nome'              => __('Observação'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',

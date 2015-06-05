@@ -66,7 +66,7 @@ final Class Comercio_Proposta_Checklist_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo
                 'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Proposta',
+                    'Nome'              => __('Proposta'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',
@@ -92,7 +92,7 @@ final Class Comercio_Proposta_Checklist_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo
                 'linkextra'         => 'comercio/Proposta/Checklist_Add', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Checklist',
+                    'Nome'              => __('Checklist'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',

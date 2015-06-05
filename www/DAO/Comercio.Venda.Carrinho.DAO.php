@@ -68,7 +68,7 @@ final Class Comercio_Venda_Carrinho_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => 'comercio_venda/Carrinho/Mesas_Add',
                 'edicao'            => Array(
-                    'Nome'              => 'Mesa',
+                    'Nome'              => __('Mesa'),
                     'valor_padrao'      => 0,
                     'readonly'          => false,
                     'aviso'             => '',
@@ -99,10 +99,10 @@ final Class Comercio_Venda_Carrinho_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => '', // //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Cliente',
+                    'Nome'              => __('Cliente'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
-                    'aviso'             => 'Minimo 3 caracteres',
+                    'aviso'             => __('Minimo 3 caracteres'),
                     'formtipo'          => 'input',
                     'input'             => array(
                         'tipo'              => 'text',
@@ -131,7 +131,7 @@ final Class Comercio_Venda_Carrinho_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Data Aberta',
+                    'Nome'              => __('Data Aberta'),
                     'valor_padrao'      => APP_HORA_BR,
                     'readonly'          => false,
                     'aviso'             => '',
@@ -158,7 +158,7 @@ final Class Comercio_Venda_Carrinho_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Data Fechada',
+                    'Nome'              => __('Data Fechada'),
                     'valor_padrao'      => APP_HORA_BR,
                     'readonly'          => false,
                     'aviso'             => '',
@@ -185,7 +185,7 @@ final Class Comercio_Venda_Carrinho_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Pago',
+                    'Nome'              => __('Pago'),
                     'valor_padrao'      => 0,
                     'readonly'          => false,
                     'aviso'             => '',
@@ -224,7 +224,7 @@ final Class Comercio_Venda_Carrinho_DAO extends Framework\App\Dao
                     'Pai'               => 'CVCa', // TABELA que vai manipular a conexao
                     'Tabela'            => 'CVCC', // TABELA de LINK A SER CONECTADA
                     'valor_padrao'      => false, // id do pai
-                    'Nome'              => 'Itens do Cardápio', // Nome no FOrmulario
+                    'Nome'              => __('Itens do Cardápio'), // Nome no FOrmulario
                     'Class'             => 'obrigatorio', // Classe no formulario
                     'aviso'             => '', // Aviso no formulario
                     'formtipo'          => 'SelectMultiplo',  // Tipo de formulario
@@ -256,7 +256,7 @@ final Class Comercio_Venda_Carrinho_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => 'Financeiro/Pagamento/Formas_Add/', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Forma de Pagamento',
+                    'Nome'              => __('Forma de Pagamento'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',
@@ -282,7 +282,7 @@ final Class Comercio_Venda_Carrinho_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => 'Financeiro/Pagamento/Condicoes_Add/', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Condição de Pagamento',
+                    'Nome'              => __('Condição de Pagamento'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',
@@ -308,7 +308,7 @@ final Class Comercio_Venda_Carrinho_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Observação sobre o Contato',
+                    'Nome'              => __('Observação sobre o Contato'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',

@@ -95,7 +95,7 @@ class biblioteca_BibliotecaControle extends biblioteca_Controle
                     $tamanho = (int) $valor->tamanho;
                     if($tamanho === 0){
                         if($valor->tipo==1){
-                            $tamanho = $Controle->Bibliotecas_AtualizaTamanho_Pai($valor);
+                            $tamanho = self::Bibliotecas_AtualizaTamanho_Pai($valor);
                         }else{
                             $tamanho = filesize($endereco);
                             $Modelo->db->Sql_Update($valor);
@@ -142,7 +142,7 @@ class biblioteca_BibliotecaControle extends biblioteca_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 2.0
      */
-    public function Bibliotecas($raiz = false, $export=false){
+    public function Bibliotecas($raiz = false){
         self::Endereco_Biblioteca(false);
         // Bloca o Upload
         $this->_Visual->Blocar(
@@ -163,17 +163,17 @@ class biblioteca_BibliotecaControle extends biblioteca_Controle
         
         
         // Processa Biblioteca
-        list($titulo,$html,$i) = $this->Bibliotecas_Processar($raiz,$export);
+        list($titulo,$html,$i) = $this->Bibliotecas_Processar($raiz);
         $this->_Visual->Blocar('<span id="biblioteca_arquivos_mostrar">'.$html.'</span>');
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         
         //Carrega Json
         $this->_Visual->Json_Info_Update('Titulo', __('Listagem de Biblíotecas'));
     }
-    private function Bibliotecas_Processar($raiz = false, $export=false){
+    private function Bibliotecas_Processar($raiz = false){
         return self::Bibliotecas_Processar_Static($raiz, $export);
     }
-    private static function Bibliotecas_Processar_Static($raiz = false, $export=false){
+    private static function Bibliotecas_Processar_Static($raiz = false){
         $registro = \Framework\App\Registro::getInstacia();
         $_Modelo = $registro->_Modelo;
         $_Visual = $registro->_Visual;
@@ -404,7 +404,7 @@ class biblioteca_BibliotecaControle extends biblioteca_Controle
             $this->_Visual->Json_Info_Update('Historico', false);
             // Atualiza Parent
             if($parent!==0){
-                $this->Bibliotecas_AtualizaTamanho_Pai($parent);
+                self::Bibliotecas_AtualizaTamanho_Pai($parent);
             }
             // Tras de Volta e Atualiza via Json
             list($titulo,$html,$i) = $this->Bibliotecas_Processar($parent);
@@ -424,44 +424,6 @@ class biblioteca_BibliotecaControle extends biblioteca_Controle
             $this->_Visual->Json_Info_Update('Titulo', __('Erro com Upload'));
             $this->_Visual->Json_Info_Update('Historico', false);
         }
-    }
-    public function Bibliotecas_AtualizaTamanho_Pai($parent=false){
-        if($parent===false) return false;
-        if(!is_object($parent)){
-            $parent = (int) $parent;
-            if($parent<=0) return false;
-
-            $pai = $this->_Modelo->db->Sql_Select('Biblioteca', '{sigla}id = '.$parent, 1);
-            if($pai===false) return false;
-        }else{
-            $pai = $parent;
-            $parent = (int) $pai->id;
-        }
-        
-        // Tamanho inicial de bytes eh o tamanho da pasta
-        $tamanho = strlen($pai->nome);
-        
-        // Soma Tamanho dos Filhos
-        $biblioteca = $this->_Modelo->db->Sql_Select('Biblioteca', '{sigla}parent = '.$parent);
-        if($biblioteca!==false){
-            if(is_object($biblioteca)){
-                $biblioteca = Array($biblioteca);
-            }
-            foreach($biblioteca as $valor){
-                // Faz Recursividade com os Filhos
-                if($valor->tipo==1){
-                    $tamanho = $tamanho + $this->Bibliotecas_AtualizaTamanho_Pai($valor->id);
-                }
-                $tamanho = $tamanho + $valor->tamanho;
-            }
-        }        
-        
-        // Atualiza Pai
-        $pai->tamanho = $tamanho;
-        $this->_Modelo->db->Sql_Update($pai);
-        
-        return $tamanho;
-        // Atualiza Biblioteca
     }
     /**
      * Adicionar Biblioteca Dinamica a Item de Outro Modulo

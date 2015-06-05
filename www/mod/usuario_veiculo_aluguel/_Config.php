@@ -11,20 +11,20 @@ $config_Modulo = function (){
 $config_Menu = function (){
     return Array(
         'Alugueis'=>Array(
-            'Nome'                  => 'Alugueis',
+            'Nome'                  => __('Alugueis'),
             'Link'                  => '#',
             'Gravidade'             => 5,
             'Img'                   => 'menusuperior/alugueis-locar.png',
             'Icon'                  => '',
             'Filhos'                => Array('Veiculos'=>Array(
-                'Nome'                  => 'Meus Aluguéis',
+                'Nome'                  => __('Meus Aluguéis'),
                 'Link'                  => 'usuario_veiculo_aluguel/Listar/Main',
                 'Gravidade'             => 80,
                 'Img'                   => 'menusuperior/alugueis-locar.png',
                 'Icon'                  => 'truck',
                 'Filhos'                => false,
             ),'Veiculos'=>Array(
-                'Nome'                  => 'Veiculos',
+                'Nome'                  => __('Veiculos'),
                 'Link'                  => 'usuario_veiculo/Listar/Main',
                 'Gravidade'             => 10,
                 'Img'                   => 'menusuperior/alugueis-locar.png',
@@ -37,7 +37,7 @@ $config_Menu = function (){
 $config_Permissoes = function (){
     return Array(
         Array(
-            'Nome'                  => 'Veiculo (Alugueis) - Visualizar',
+            'Nome'                  => __('Veiculo (Alugueis) - Visualizar'),
             'Desc'                  => '',
             'Chave'                 => 'usuario_veiculo_aluguel_Listar',
             'End'                   => 'usuario_veiculo_aluguel/Listar', // Endereco que deve conter a url para permitir acesso

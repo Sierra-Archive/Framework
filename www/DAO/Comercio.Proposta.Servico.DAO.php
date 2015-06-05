@@ -53,7 +53,7 @@ final Class Comercio_Proposta_Servico_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => '',
                 'edicao'            => Array(
-                    'Nome'              => 'Ação',
+                    'Nome'              => __('Ação'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => ''
@@ -75,7 +75,7 @@ final Class Comercio_Proposta_Servico_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => '', //0 ninguem, 1 admin, 2 todos
                 'edicao'            => Array(
-                    'Nome'              => 'Serviço',
+                    'Nome'              => __('Serviço'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => ''

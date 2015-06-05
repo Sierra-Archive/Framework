@@ -62,10 +62,10 @@ final Class Comercio_Venda_Composicao_DAO extends Framework\App\Dao
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Foto',
+                    'Nome'              => __('Foto'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
-                    'aviso'             => 'Imagens somente do tipo GIF ou JPG',
+                    'aviso'             => __('Imagens somente do tipo GIF ou JPG'),
                     'aviso_titulo'      => 'Importante',
                     'formtipo'          => 'upload',
                     'upload'            => array(
@@ -89,7 +89,7 @@ final Class Comercio_Venda_Composicao_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Nome',
+                    'Nome'              => __('Nome'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',
@@ -115,7 +115,7 @@ final Class Comercio_Venda_Composicao_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Descrição',
+                    'Nome'              => __('Descrição'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',
@@ -140,11 +140,11 @@ final Class Comercio_Venda_Composicao_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => '', // //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Preço',
+                    'Nome'              => __('Preço'),
                     'Mascara'           => 'Real',
                     'valor_padrao'      => false,
                     'readonly'          => false,
-                    'aviso'             => 'Minimo 3 caracteres',
+                    'aviso'             => __('Minimo 3 caracteres'),
                     'formtipo'          => 'input',
                     'input'             => array(
                         'tipo'              => 'text',
@@ -158,7 +158,7 @@ final Class Comercio_Venda_Composicao_DAO extends Framework\App\Dao
                     'Pai'               => 'CVCo', // TABELA que vai manipular a conexao
                     'Tabela'            => 'CVCP', // TABELA de LINK A SER CONECTADA
                     'valor_padrao'      => false, // id do pai
-                    'Nome'              => 'Produtos', // Nome no FOrmulario
+                    'Nome'              => __('Produtos'), // Nome no FOrmulario
                     'Class'             => 'obrigatorio', // Classe no formulario
                     'aviso'             => '', // Aviso no formulario
                     'formtipo'          => 'SelectMultiplo',  // Tipo de formulario

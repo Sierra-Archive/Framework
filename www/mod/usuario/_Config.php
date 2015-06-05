@@ -11,7 +11,7 @@ $config_Modulo = function (){
 $config_Menu = function (){
     return Array(
         'Lista Telefonica' => Array(
-            'Nome'                  => 'Lista Telefonica',
+            'Nome'                  => __('Lista Telefonica'),
             'Link'                  => 'usuario/Telefone/Telefones',
             'Gravidade'             => 100,
             'Img'                   => 'turboadmin/m-users.png',
@@ -23,7 +23,7 @@ $config_Menu = function (){
         ),
         'Administrar'=>Array(
             'Filhos'                => Array('Usuários'=>Array(
-                'Nome'                  => 'Usuários',
+                'Nome'                  => __('Usuários'),
                 'Link'                  => 'usuario/Admin/ListarUsuario',
                 'Gravidade'             => 9996,
                 'Img'                   => 'turboadmin/m-dashboard.png',
@@ -51,9 +51,9 @@ $config_Menu = function (){
                 'Filhos'                => false,
             )),
         ),'Configurações' => Array(
-            'Nome'                  => 'Configurações',
+            'Nome'                  => __('Configurações'),
             'Filhos'                => Array('A. de Usuários'=>Array(
-                'Nome'                  => 'A. de Usuários',
+                'Nome'                  => __('A. de Usuários'),
                 'Link'                  => 'usuario/Acesso/Listar_Clientesnao',
                 'Gravidade'             => 1,
                 'Img'                   => 'turboadmin/m-dashboard.png',
@@ -69,7 +69,7 @@ $config_Permissoes = function (){
         
         // Grupos
         Array(
-            'Nome'                  => 'Sistema - Controle Grupos - Listagem',
+            'Nome'                  => __('Sistema - Controle Grupos - Listagem'),
             'Desc'                  => '',
             'Chave'                 => 'usuario_grupo', // CHave unica nunca repete, chave primaria
             'End'                   => 'usuario/grupo', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
@@ -182,7 +182,7 @@ $config_Permissoes = function (){
         
         
         Array(
-            'Nome'                  => 'Usuario - Listagem',
+            'Nome'                  => __('Usuario - Listagem'),
             'Desc'                  => '',
             'Chave'                 => 'usuario_Admin_ListarUsuario', // CHave unica nunca repete, chave primaria
             'End'                   => 'usuario/Admin/ListarUsuario', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
@@ -191,7 +191,7 @@ $config_Permissoes = function (){
             'Metodo'                => 'ListarUsuario',  // Metodos referentes separados por virgula
         ),
         Array(
-            'Nome'                  => 'Usuario - Add',
+            'Nome'                  => __('Usuario - Add'),
             'Desc'                  => '',
             'Chave'                 => 'usuario_Admin_Usuarios_Add', // CHave unica nunca repete, chave primaria
             'End'                   => 'usuario/Admin/Usuarios_Add', // Endereco que deve conter a url para permitir acesso
@@ -200,7 +200,7 @@ $config_Permissoes = function (){
             'Metodo'                => 'Usuarios_Add,Usuarios_Add2',  // Metodos referentes separados por virgula
         ),
         Array(
-            'Nome'                  => 'Usuario - Editar',
+            'Nome'                  => __('Usuario - Editar'),
             'Desc'                  => '',
             'Chave'                 => 'usuario_Admin_Usuarios_Edit', // CHave unica nunca repete, chave primaria
             'End'                   => 'usuario/Admin/Usuarios_Edit', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
@@ -209,7 +209,7 @@ $config_Permissoes = function (){
             'Metodo'                => 'Usuarios_Edit,Usuarios_Edit2',  // Metodos referentes separados por virgula
         ),
         Array(
-            'Nome'                  => 'Usuario - Deletar',
+            'Nome'                  => __('Usuario - Deletar'),
             'Desc'                  => '',
             'Chave'                 => 'usuario_Admin_Usuarios_Del', // CHave unica nunca repete, chave primaria
             'End'                   => 'usuario/Admin/Usuarios_Del', // Endereco que deve conter a url para permitir acesso
@@ -220,7 +220,7 @@ $config_Permissoes = function (){
         
         // PERMISSOES DE USUARIO
         Array(
-            'Nome'                  => 'Permissões (Usuário) - Listagem',
+            'Nome'                  => __('Permissões (Usuário) - Listagem'),
             'Desc'                  => '',
             'Chave'                 => 'usuario_Acesso', // CHave unica nunca repete, chave primaria
             'End'                   => 'usuario/Acesso', // Endereco que deve conter a url para permitir acesso
@@ -232,7 +232,7 @@ $config_Permissoes = function (){
         
         
         Array(
-            'Nome'                  => 'Telefone - Listagem',
+            'Nome'                  => __('Telefone - Listagem'),
             'Desc'                  => '',
             'Chave'                 => 'usuario_Telefone_Telefones', // CHave unica nunca repete, chave primaria
             'End'                   => 'usuario/Telefone/Telefones', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
@@ -244,7 +244,7 @@ $config_Permissoes = function (){
             ),
         ),
         Array(
-            'Nome'                  => 'Telefone - Add',
+            'Nome'                  => __('Telefone - Add'),
             'Desc'                  => '',
             'Chave'                 => 'usuario_Telefone_Telefones_Add', // CHave unica nunca repete, chave primaria
             'End'                   => 'usuario/Telefone/Telefones_Add', // Endereco que deve conter a url para permitir acesso
@@ -256,7 +256,7 @@ $config_Permissoes = function (){
             ),
         ),
         Array(
-            'Nome'                  => 'Telefone - Editar',
+            'Nome'                  => __('Telefone - Editar'),
             'Desc'                  => '',
             'Chave'                 => 'usuario_Telefone_Telefones_Edit', // CHave unica nunca repete, chave primaria
             'End'                   => 'usuario/Telefone/Telefones_Edit', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
@@ -268,7 +268,7 @@ $config_Permissoes = function (){
             ),
         ),
         Array(
-            'Nome'                  => 'Telefone - Deletar',
+            'Nome'                  => __('Telefone - Deletar'),
             'Desc'                  => '',
             'Chave'                 => 'usuario_Telefone_Telefones_Del', // CHave unica nunca repete, chave primaria
             'End'                   => 'usuario/Telefone/Telefones_Del', // Endereco que deve conter a url para permitir acesso
@@ -292,74 +292,74 @@ $config_Funcional = function (){
     return Array(
         'usuario_grupo'  => Array(
             'Nome'                  => 'Grupos -> Se Mostra Opções de Grupos',
-            'Desc'                  => 'Se Mostra Opções de Grupos',
+            'Desc'                  => __('Se Mostra Opções de Grupos'),
             'chave'                 => 'usuario_grupo',
             'Valor'                 => false,  // false, true, ou array com os grupos que pode
         ),
         'usuario_usuarios_showconfig'  => Array(
             'Nome'                  => 'Usuarios -> Ocultar Grupos',
-            'Desc'                  => 'Se verdadeiro mostra so os clientes ativos',
+            'Desc'                  => __('Se verdadeiro mostra so os clientes ativos'),
             'chave'                 => 'usuario_usuarios_showconfig',
             'Valor'                 => false,  // false, true, ou array com os grupos que pode
         ),
         'usuario_Grupo_Mostrar'  => Array(
             'Nome'                  => 'Usuarios -> Ocultar Grupos',
-            'Desc'                  => 'Aonde mostra adição de grupos',
+            'Desc'                  => __('Aonde mostra adição de grupos'),
             'chave'                 => 'usuario_Grupo_Mostrar',
             'Valor'                 => true,  // false, true, ou array com os grupos que pode
         ),
         // Grupos que tem login/senha
         'usuario_Login'  => Array(
             'Nome'                  => 'Usuarios -> Login',
-            'Desc'                  => 'Se possue login em Usuarios',
+            'Desc'                  => __('Se possue login em Usuarios'),
             'chave'                 => 'usuario_Login',
             'Valor'                 => true,  // false, true, ou array com as categorias de grupos que podem
         ),
         'usuario_Anexo'  => Array(
             'Nome'                  => 'Usuarios -> Anexo',
-            'Desc'                  => 'Se possue Anexo em Usuarios',
+            'Desc'                  => __('Se possue Anexo em Usuarios'),
             'chave'                 => 'usuario_Anexo',
             'Valor'                 => false,
         ),
         'usuario_Admin_Site'  => Array(
             'Nome'                  => 'Usuarios -> Site',
-            'Desc'                  => 'Se possue Site em Usuarios',
+            'Desc'                  => __('Se possue Site em Usuarios'),
             'chave'                 => 'usuario_Admin_Site',
             'Valor'                 => true,
         ),
         'usuario_Admin_Ativado'  => Array(
             'Nome'                  => 'Usuarios -> Status',
-            'Desc'                  => 'Se possue Status em Usuarios (Ativado)',
+            'Desc'                  => __('Se possue Status em Usuarios (Ativado)'),
             'chave'                 => 'usuario_Admin_Ativado',
             'Valor'                 => true,
         ),
         'usuario_Admin_Ativado_Listar'  => Array(
             'Nome'                  => 'Usuarios -> Status Listagem',
-            'Desc'                  => 'Se mostra na listagem o Status',
+            'Desc'                  => __('Se mostra na listagem o Status'),
             'chave'                 => 'usuario_Admin_Ativado_Listar',
             'Valor'                 => false,
         ),
         'usuario_Admin_Foto'  => Array(
             'Nome'                  => 'Usuarios -> Foto',
-            'Desc'                  => 'Se possue Foto em Usuarios',
+            'Desc'                  => __('Se possue Foto em Usuarios'),
             'chave'                 => 'usuario_Admin_Foto',
             'Valor'                 => true,  // false, true, ou array com os grupos que pode
         ),
         'usuario_Admin_Email'  => Array(
             'Nome'                  => 'Usuarios -> Email',
-            'Desc'                  => 'Enviar Email Direto Entre Usuarios',
+            'Desc'                  => __('Enviar Email Direto Entre Usuarios'),
             'chave'                 => 'usuario_Admin_Email',
             'Valor'                 => false,
         ),
         'usuario_Admin_EmailUnico'  => Array(
             'Nome'                  => 'Usuarios -> Email Unico',
-            'Desc'                  => 'Se email nao puder repetir, vem como true',
+            'Desc'                  => __('Se email nao puder repetir, vem como true'),
             'chave'                 => 'usuario_Admin_EmailUnico',
             'Valor'                 => true,
         ),
         'usuario_Principal_Widgets'  => Array(
             'Nome'                  => 'Usuarios -> Se mostra widget',
-            'Desc'                  => 'Se mostra widgetna pagina inicial',
+            'Desc'                  => __('Se mostra widgetna pagina inicial'),
             'chave'                 => 'usuario_Principal_Widgets',
             'Valor'                 => true,
         ),
@@ -367,13 +367,13 @@ $config_Funcional = function (){
         // Funcionario
         'usuario_Admin_Funcionario'  => Array(
             'Nome'                  => 'Usuarios -> Funcionarios',
-            'Desc'                  => 'Se possui Funcionarios',
+            'Desc'                  => __('Se possui Funcionarios'),
             'chave'                 => 'usuario_Admin_Funcionario',
             'Valor'                 => true,
         ),
         'usuario_Funcionario_nome'  => Array(
             'Nome'                  => 'Usuarios -> Funcionarios',
-            'Desc'                  => 'Nome Funcionarios',
+            'Desc'                  => __('Nome Funcionarios'),
             'chave'                 => 'usuario_Funcionario_nome',
             'Valor'                 => 'Funcionários',
         ),
@@ -381,31 +381,31 @@ $config_Funcional = function (){
         // Cliente
         'usuario_Admin_Cliente'  => Array(
             'Nome'                  => 'Usuarios -> Funcionarios',
-            'Desc'                  => 'Se possui Clientes',
+            'Desc'                  => __('Se possui Clientes'),
             'chave'                 => 'usuario_Admin_Cliente',
             'Valor'                 => true,
         ),
         'usuario_Cliente_nome'  => Array(
             'Nome'                  => 'Usuarios -> Nome do Cliente',
-            'Desc'                  => 'Nome do Cliente',
+            'Desc'                  => __('Nome do Cliente'),
             'chave'                 => 'usuario_Cliente_nome',
             'Valor'                 => 'Clientes',
         ),
         'usuario_Cliente_PrecoDiferenciado'  => Array(
             'Nome'                  => 'Usuarios Cliente -> PrecoDiferenciado',
-            'Desc'                  => 'Opcao preço normal ou diferenciado',
+            'Desc'                  => __('Opcao preço normal ou diferenciado'),
             'chave'                 => 'usuario_Cliente_PrecoDiferenciado',
             'Valor'                 => false,
         ),
         'usuario_Comentarios'  => Array(
             'Nome'                  => 'Usuarios -> Comentarios',
-            'Desc'                  => 'Se tem historico de comentarios em usuarios',
+            'Desc'                  => __('Se tem historico de comentarios em usuarios'),
             'chave'                 => 'usuario_Comentarios',
             'Valor'                 => false,
         ),
         'usuario_Telefone_Lista'  => Array(
             'Nome'                  => 'Telefone -> Listagem',
-            'Desc'                  => 'Se possui listagem de telefones',
+            'Desc'                  => __('Se possui listagem de telefones'),
             'chave'                 => 'usuario_Telefone_Lista',
             'Valor'                 => false,
         ),

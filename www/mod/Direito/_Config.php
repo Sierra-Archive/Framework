@@ -12,7 +12,7 @@ $config_Menu = function (){
     return Array(
         'Relatório'=>Array(
             'Filhos'                => Array('Processos'=>Array(
-                'Nome'                  => 'Processos',
+                'Nome'                  => __('Processos'),
                 'Link'                  => 'Direito/Relatorio/Main',
                 'Gravidade'             => 70,
                 'Img'                   => 'menusuperior/varas.png',
@@ -25,7 +25,7 @@ $config_Menu = function (){
 $config_Permissoes = function (){
     return Array(
         Array(
-            'Nome'                  => 'Visualizar Relatórios',
+            'Nome'                  => __('Visualizar Relatórios'),
             'Desc'                  => '',
             'Chave'                 => 'Direito_Relatorio',
             'End'                   => 'Direito/Relatorio',

@@ -63,10 +63,10 @@ final Class log_login_janela_DAO extends Framework\App\Dao
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Login',
+                    'Nome'              => __('Login'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
-                    'aviso'             => 'Se logará com ele.',
+                    'aviso'             => __('Se logará com ele.'),
                     'formtipo'          => 'input',
                     'input'             => array(
                         'tipo'              => 'text',
@@ -88,7 +88,7 @@ final Class log_login_janela_DAO extends Framework\App\Dao
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'janela',
+                    'Nome'              => __('janela'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => false,

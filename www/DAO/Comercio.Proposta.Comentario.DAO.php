@@ -62,7 +62,7 @@ final Class Comercio_Proposta_Comentario_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => 'comercio/Proposta/Propostas_Add', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Proposta',
+                    'Nome'              => __('Proposta'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',
@@ -83,7 +83,7 @@ final Class Comercio_Proposta_Comentario_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => '', // //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Comentário',
+                    'Nome'              => __('Comentário'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',

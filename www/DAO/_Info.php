@@ -65,7 +65,7 @@ final Class Predial_Bloco_Apart_DAO extends Framework\App\Dao
                 'linkextra'         => 'comercio/Produto/Produtos_Add',
                 // Edicao sao as Partes Visuais do Formulario
                 'edicao'            => Array(
-                    'Nome'              => 'Produto',
+                    'Nome'              => __('Produto'),
                     'Mascara'           => 'Numero', // MAscara, pode ser false, ou Real, Numero, Porc, etc...
                     'valor_padrao'      => false,
                     'change'            => '',
@@ -106,7 +106,7 @@ final Class Predial_Bloco_Apart_DAO extends Framework\App\Dao
                         'tabela'            => 'Musica_Album_Artista', // Campo e Resultado
                     ),
                     'valor_padrao'      => false, // ID do pai, usada para edicao, sempre false por padrao
-                    'Nome'              => 'Artistas', // Nome no FOrmulario
+                    'Nome'              => __('Artistas'), // Nome no FOrmulario
                     'Class'             => 'obrigatorio', // Classe no formulario
                     'aviso'             => '', // Aviso no formulario
                     'formtipo'          => 'SelectMultiplo',  // Tipo de formulario

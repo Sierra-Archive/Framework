@@ -12,14 +12,14 @@ $config_Menu = function (){
     return Array(
         'Administrar' => Array(
             'Filhos'                => Array('Veiculos'=>Array(
-                'Nome'                  => 'Veiculos',
+                'Nome'                  => __('Veiculos'),
                 'Link'                  => 'usuario_veiculo/Veiculo/Veiculos',
                 'Gravidade'             => 70,
                 'Img'                   => '',
                 'Icon'                  => 'road',
                 'Filhos'                => false,
             ),'Equipamentos'=>Array(
-                'Nome'                  => 'Equipamentos',
+                'Nome'                  => __('Equipamentos'),
                 'Link'                  => 'usuario_veiculo/Equipamento/Equipamentos',
                 'Gravidade'             => 60,
                 'Img'                   => '',
@@ -37,7 +37,7 @@ $config_Permissoes = function (){
         
         //Veiculos
         Array(
-            'Nome'                  => 'Veiculos - Listagem',
+            'Nome'                  => __('Veiculos - Listagem'),
             'Desc'                  => '',
             'Chave'                 => 'usuario_veiculo_Veiculo_Veiculos',
             'End'                   => 'usuario_veiculo/Veiculo/Veiculos', // Endereco que deve conter a url para permitir acesso
@@ -46,7 +46,7 @@ $config_Permissoes = function (){
             'Metodo'                => 'Veiculos',  // Metodos referentes separados por virgula
         ),
         Array(
-            'Nome'                  => 'Veiculos - Adicionar',
+            'Nome'                  => __('Veiculos - Adicionar'),
             'Desc'                  => '',
             'Chave'                 => 'usuario_veiculo_Veiculo_Veiculos_Add',
             'End'                   => 'usuario_veiculo/Veiculo/Veiculos_Add', // Endereco que deve conter a url para permitir acesso
@@ -55,7 +55,7 @@ $config_Permissoes = function (){
             'Metodo'                => 'Veiculos_Add,Veiculos_Add2',  // Metodos referentes separados por virgula
         ),
         Array(
-            'Nome'                  => 'Veiculos - Editar',
+            'Nome'                  => __('Veiculos - Editar'),
             'Desc'                  => '',
             'Chave'                 => 'usuario_veiculo_Veiculo_Veiculos_Edit',
             'End'                   => 'usuario_veiculo/Veiculo/Veiculos_Edit', // Endereco que deve conter a url para permitir acesso
@@ -64,7 +64,7 @@ $config_Permissoes = function (){
             'Metodo'                => 'Veiculos_Edit,Veiculos_Edit2',  // Metodos referentes separados por virgula
         ),
         Array(
-            'Nome'                  => 'Veiculos - Deletar',
+            'Nome'                  => __('Veiculos - Deletar'),
             'Desc'                  => '',
             'Chave'                 => 'usuario_veiculo_Veiculo_Veiculos_Del',
             'End'                   => 'usuario_veiculo/Veiculo/Veiculos_Del', // Endereco que deve conter a url para permitir acesso
@@ -75,7 +75,7 @@ $config_Permissoes = function (){
         
         //Veiculos_Comentario
         Array(
-            'Nome'                  => 'Veiculos (Comentarios) - Listagem',
+            'Nome'                  => __('Veiculos (Comentarios) - Listagem'),
             'Desc'                  => '',
             'Chave'                 => 'usuario_veiculo_Veiculo_Veiculos_Comentario',
             'End'                   => 'usuario_veiculo/Veiculo/Veiculos_Comentario', // Endereco que deve conter a url para permitir acesso
@@ -87,7 +87,7 @@ $config_Permissoes = function (){
             ),
         ),
         Array(
-            'Nome'                  => 'Veiculos (Comentarios) - Adicionar',
+            'Nome'                  => __('Veiculos (Comentarios) - Adicionar'),
             'Desc'                  => '',
             'Chave'                 => 'usuario_veiculo_Veiculo_Veiculos_Comentario_Add',
             'End'                   => 'usuario_veiculo/Veiculo/Veiculos_Comentario_Add', // Endereco que deve conter a url para permitir acesso
@@ -99,7 +99,7 @@ $config_Permissoes = function (){
             ),
         ),
         Array(
-            'Nome'                  => 'Veiculos (Comentarios) - Editar Comentarios',
+            'Nome'                  => __('Veiculos (Comentarios) - Editar Comentarios'),
             'Desc'                  => '',
             'Chave'                 => 'usuario_veiculo_Veiculo_Veiculos_Comentario_Edit',
             'End'                   => 'usuario_veiculo/Veiculo/Veiculos_Comentario_Edit', // Endereco que deve conter a url para permitir acesso
@@ -111,7 +111,7 @@ $config_Permissoes = function (){
             ),
         ),
         Array(
-            'Nome'                  => 'Veiculos (Comentarios) - Deletar Comentarios',
+            'Nome'                  => __('Veiculos (Comentarios) - Deletar Comentarios'),
             'Desc'                  => '',
             'Chave'                 => 'usuario_veiculo_Veiculo_Veiculos_Comentario_Del',
             'End'                   => 'usuario_veiculo/Veiculo/Veiculos_Comentario_Del', // Endereco que deve conter a url para permitir acesso
@@ -125,7 +125,7 @@ $config_Permissoes = function (){
         
         // Equipamentos
         Array(
-            'Nome'                  => 'Equipamentos - Listagem',
+            'Nome'                  => __('Equipamentos - Listagem'),
             'Desc'                  => '',
             'Chave'                 => 'usuario_veiculo_Equipamento',
             'End'                   => 'usuario_veiculo/Equipamento', // Endereco que deve conter a url para permitir acesso
@@ -137,7 +137,7 @@ $config_Permissoes = function (){
             ),
         ),
         Array(
-            'Nome'                  => 'Equipamentos - Adicionar Equipamentos',
+            'Nome'                  => __('Equipamentos - Adicionar Equipamentos'),
             'Desc'                  => '',
             'Chave'                 => 'usuario_veiculo_Equipamento_Equipamentos_Add',
             'End'                   => 'usuario_veiculo/Equipamento/Equipamentos_Add', // Endereco que deve conter a url para permitir acesso
@@ -149,7 +149,7 @@ $config_Permissoes = function (){
             ),
         ),
         Array(
-            'Nome'                  => 'Equipamentos - Editar Equipamentos',
+            'Nome'                  => __('Equipamentos - Editar Equipamentos'),
             'Desc'                  => '',
             'Chave'                 => 'usuario_veiculo_Equipamento_Equipamentos_Edit',
             'End'                   => 'usuario_veiculo/Equipamento/Equipamentos_Edit', // Endereco que deve conter a url para permitir acesso
@@ -161,7 +161,7 @@ $config_Permissoes = function (){
             ),
         ),
         Array(
-            'Nome'                  => 'Equipamentos - Deletar Equipamentos',
+            'Nome'                  => __('Equipamentos - Deletar Equipamentos'),
             'Desc'                  => '',
             'Chave'                 => 'usuario_veiculo_Equipamento_Equipamentos_Del',
             'End'                   => 'usuario_veiculo/Equipamento/Equipamentos_Del', // Endereco que deve conter a url para permitir acesso
@@ -185,73 +185,73 @@ $config_Funcional = function (){
         'usuario_veiculo_VeiculoIPVA'       => Array(
             'Nome'                  => 'Veiculos -> IPVA',
             'chave'                 => 'usuario_veiculo_VeiculoIPVA',
-            'Desc'                  => 'Se existe IPVA no cadastro de Veiculo',
+            'Desc'                  => __('Se existe IPVA no cadastro de Veiculo'),
             'Valor'                 => true,
         ),
         'usuario_veiculo_VeiculoREVISAO'     => Array(
             'Nome'                  => 'Veiculos -> REVISAO',
             'chave'                 => 'usuario_veiculo_VeiculoREVISAO',
-            'Desc'                  => 'Se existe REVISAO no cadastro de Veiculo',
+            'Desc'                  => __('Se existe REVISAO no cadastro de Veiculo'),
             'Valor'                 => true,
         ),
         'usuario_veiculo_VeiculoVALOR'      => Array(
             'Nome'                  => 'Veiculos -> VALOR',
             'chave'                 => 'usuario_veiculo_VeiculoVALOR',
-            'Desc'                  => 'Se existe VALOR no cadastro de Veiculo',
+            'Desc'                  => __('Se existe VALOR no cadastro de Veiculo'),
             'Valor'                 => true,
         ),
         'usuario_veiculo_VeiculoVISTORIA'      => Array(
             'Nome'                  => 'Veiculos -> VISTORIA',
             'chave'                 => 'usuario_veiculo_VeiculoVISTORIA',
-            'Desc'                  => 'Se existe VISTORIA no cadastro de Veiculo',
+            'Desc'                  => __('Se existe VISTORIA no cadastro de Veiculo'),
             'Valor'                 => false,
         ),
         'usuario_veiculo_VeiculoRENAVAN'      => Array(
             'Nome'                  => 'Veiculos -> RENAVAN',
             'chave'                 => 'usuario_veiculo_VeiculoRENAVAN',
-            'Desc'                  => 'Se existe RENAVAN no cadastro de Veiculo',
+            'Desc'                  => __('Se existe RENAVAN no cadastro de Veiculo'),
             'Valor'                 => false,
         ),
         'usuario_veiculo_VeiculoOBS'      => Array(
             'Nome'                  => 'Veiculos -> OBS',
             'chave'                 => 'usuario_veiculo_VeiculoOBS',
-            'Desc'                  => 'Se existe OBS no cadastro de Veiculo',
+            'Desc'                  => __('Se existe OBS no cadastro de Veiculo'),
             'Valor'                 => true,
         ),
         'usuario_veiculo_Comentario'       => Array(
-            'Nome'                  => 'Comentário',
+            'Nome'                  => __('Comentário'),
             'chave'                 => 'usuario_veiculo_Comentario',
-            'Desc'                  => 'Se existe Comentários',
+            'Desc'                  => __('Se existe Comentários'),
             'Valor'                 => true,
         ),
         'usuario_veiculo_Evento'       => Array(
-            'Nome'                  => 'Evento',
+            'Nome'                  => __('Evento'),
             'chave'                 => 'usuario_veiculo_Evento',
-            'Desc'                  => 'Se existe Evento',
+            'Desc'                  => __('Se existe Evento'),
             'Valor'                 => false,
         ),
         'usuario_veiculo_Equipamento'       => Array(
-            'Nome'                  => 'Equipamentos',
+            'Nome'                  => __('Equipamentos'),
             'chave'                 => 'usuario_veiculo_Equipamento',
-            'Desc'                  => 'Se existe Equipamentos',
+            'Desc'                  => __('Se existe Equipamentos'),
             'Valor'                 => true,
         ),
         'usuario_veiculo_Status'       => Array(
-            'Nome'                  => 'Status de Equipamentos',
+            'Nome'                  => __('Status de Equipamentos'),
             'chave'                 => 'usuario_veiculo_Status',
-            'Desc'                  => 'Se existe Status em Equipamentos',
+            'Desc'                  => __('Se existe Status em Equipamentos'),
             'Valor'                 => true,
         ),
         'usuario_veiculo_Equipamento_Marca' => Array(
             'Nome'                  => 'Equipamentos -> Marca e Modelo',
             'chave'                 => 'usuario_veiculo_Equipamento_Marca',
-            'Desc'                  => 'Se exibe opção de marca e modelo pra equipamentos',
+            'Desc'                  => __('Se exibe opção de marca e modelo pra equipamentos'),
             'Valor'                 => false,
         ),
         'usuario_veiculo_VeiculoAVALIACAO' => Array(
             'Nome'                  => 'VEiculos -> data Avaliacao',
             'chave'                 => 'usuario_veiculo_VeiculoAVALIACAO',
-            'Desc'                  => 'Se exibe opção de avaliacao para carros',
+            'Desc'                  => __('Se exibe opção de avaliacao para carros'),
             'Valor'                 => false,
         ),
     );

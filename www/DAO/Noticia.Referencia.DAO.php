@@ -52,7 +52,7 @@ final Class Noticia_Referencia_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => 'noticia/Admin/Noticias_Add',
                 'edicao'            => Array(
-                    'Nome'              => 'Noticia',
+                    'Nome'              => __('Noticia'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',
@@ -78,7 +78,7 @@ final Class Noticia_Referencia_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => false,
                 'edicao'            => Array(
-                    'Nome'              => 'Artista',
+                    'Nome'              => __('Artista'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',
@@ -104,7 +104,7 @@ final Class Noticia_Referencia_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => false,
                 'edicao'            => Array(
-                    'Nome'              => 'Artista',
+                    'Nome'              => __('Artista'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',

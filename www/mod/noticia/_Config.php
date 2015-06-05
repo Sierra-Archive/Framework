@@ -11,7 +11,7 @@ $config_Modulo = function (){
 $config_Menu = function (){
     return Array(
         /*'Noticias'=>Array(
-            'Nome'                  => 'Noticias',
+            'Nome'                  => __('Noticias'),
             'Link'                  => 'noticia/Listar/Main',
             'Gravidade'             => 75,
             'Img'                   => 'turboadmin/m-dashboard.png',
@@ -19,7 +19,7 @@ $config_Menu = function (){
             'Filhos'                => false,
         ),*/'Administrar'=>Array(
             'Filhos'                => Array('Noticias'=>Array(
-                'Nome'                  => 'Noticias',
+                'Nome'                  => __('Noticias'),
                 'Link'                  => 'noticia/Admin/Noticias',
                 'Gravidade'             => 75,
                 'Img'                   => 'turboadmin/m-dashboard.png',
@@ -32,7 +32,7 @@ $config_Menu = function (){
 $config_Permissoes = function (){
     return Array(
         Array(
-            'Nome'                  => 'Noticias - Administrar Noticias',
+            'Nome'                  => __('Noticias - Administrar Noticias'),
             'Desc'                  => '',
             'Chave'                 => 'noticia_Admin_Noticias',
             'End'                   => 'noticia/Admin/Noticias', // Endereco que deve conter a url para permitir acesso
@@ -41,7 +41,7 @@ $config_Permissoes = function (){
             'Metodo'                => '*',  // Metodos referentes separados por virgula
         ),
         Array(
-            'Nome'                  => 'Noticias - Add Noticias',
+            'Nome'                  => __('Noticias - Add Noticias'),
             'Desc'                  => '',
             'Chave'                 => 'noticia_Admin_Noticias_Add', // CHave unica nunca repete, chave primaria
             'End'                   => 'noticia/Admin/Noticias_Add', // Endereco que deve conter a url para permitir acesso
@@ -50,7 +50,7 @@ $config_Permissoes = function (){
             'Metodo'                => 'Noticias_Add,Noticias_Add2',  // Metodos referentes separados por virgula
         ),
         Array(
-            'Nome'                  => 'Noticias - Editar Noticias',
+            'Nome'                  => __('Noticias - Editar Noticias'),
             'Desc'                  => '',
             'Chave'                 => 'noticia_Admin_Noticias_Edit', // CHave unica nunca repete, chave primaria
             'End'                   => 'noticia/Admin/Noticias_Edit', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
@@ -59,7 +59,7 @@ $config_Permissoes = function (){
             'Metodo'                => 'Noticias_Edit,Noticias_Edit2',  // Metodos referentes separados por virgula
         ),
         Array(
-            'Nome'                  => 'Noticias - Deletar Noticias',
+            'Nome'                  => __('Noticias - Deletar Noticias'),
             'Desc'                  => '',
             'Chave'                 => 'noticia_Admin_Noticias_Del', // CHave unica nunca repete, chave primaria
             'End'                   => 'noticia/Admin/Noticias_Del', // Endereco que deve conter a url para permitir acesso
@@ -78,8 +78,8 @@ $config_Permissoes = function (){
 $config_Funcional = function (){
     return Array(
         'noticia_Categoria'  => Array(
-            'Nome'                  => 'Se possui categoria em noticias',
-            'Desc'                  => 'Se possui categoria em noticias',
+            'Nome'                  => __('Se possui categoria em noticias'),
+            'Desc'                  => __('Se possui categoria em noticias'),
             'chave'                 => 'noticia_Categoria',
             'Valor'                 => true,
         )

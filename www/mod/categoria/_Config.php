@@ -12,7 +12,7 @@ $config_Menu = function (){
     return Array(
         'Administrar' => Array(
             'Filhos'                => Array('Categorias' =>Array(
-                'Nome'                  => 'Categorias',
+                'Nome'                  => __('Categorias'),
                 'Link'                  => 'categoria/Admin/Categorias',
                 'Gravidade'             => 10,
                 'Img'                   => 'turboadmin/m-dashboard.png',
@@ -28,7 +28,7 @@ $config_Menu = function (){
 $config_Permissoes = function (){
     return Array(
         Array(
-            'Nome'                  => 'Categorias - Listagem',
+            'Nome'                  => __('Categorias - Listagem'),
             'Desc'                  => '',
             'Chave'                 => 'categoria_Admin_Categorias',
             'End'                   => 'categoria/Admin/Categorias', // Endereco que deve conter a url para permitir acesso
@@ -40,7 +40,7 @@ $config_Permissoes = function (){
             ),
         ),
         Array(
-            'Nome'                  => 'Categorias - Add',
+            'Nome'                  => __('Categorias - Add'),
             'Desc'                  => '',
             'Chave'                 => 'categoria_Admin_Categorias_Add', // CHave unica nunca repete, chave primaria
             'End'                   => 'categoria/Admin/Categorias_Add', // Endereco que deve conter a url para permitir acesso
@@ -52,7 +52,7 @@ $config_Permissoes = function (){
             ),
         ),
         Array(
-            'Nome'                  => 'Categorias - Editar',
+            'Nome'                  => __('Categorias - Editar'),
             'Desc'                  => '',
             'Chave'                 => 'categoria_Admin_Categorias_Edit', // CHave unica nunca repete, chave primaria
             'End'                   => 'categoria/Admin/Categorias_Edit', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
@@ -64,7 +64,7 @@ $config_Permissoes = function (){
             ),
         ),
         Array(
-            'Nome'                  => 'Categorias - Deletar',
+            'Nome'                  => __('Categorias - Deletar'),
             'Desc'                  => '',
             'Chave'                 => 'categoria_Admin_Categorias_Del', // CHave unica nunca repete, chave primaria
             'End'                   => 'categoria/Admin/Categorias_Del', // Endereco que deve conter a url para permitir acesso
@@ -86,13 +86,13 @@ $config_Permissoes = function (){
 $config_Funcional = function (){
     return Array(
         'categoria_visualizar'    => Array(
-            'Nome'                      => 'Se Pagina de Categoria Pode Ser Vista pelo Usuario',
+            'Nome'                      => __('Se Pagina de Categoria Pode Ser Vista pelo Usuario'),
             'Desc'                      => '',
             'chave'                     => 'categoria_visualizar',
             'Valor'                     => false,
         ),
         'categoria_parent_extra'    => Array(
-            'Nome'                      => 'Categoria Pai para Cadastros Externos',
+            'Nome'                      => __('Categoria Pai para Cadastros Externos'),
             'Desc'                      => '',
             'chave'                     => 'categoria_parent_extra',
             'Valor'                     => false,

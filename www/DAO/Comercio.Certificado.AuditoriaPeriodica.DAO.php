@@ -66,7 +66,7 @@ final Class Comercio_Certificado_AuditoriaPeriodica_DAO extends Framework\App\Da
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => '',
                 'edicao'            => Array(
-                    'Nome'              => 'Cliente',
+                    'Nome'              => __('Cliente'),
                     'valor_padrao'      => false,
                     'readonly'          => true,
                     'aviso'             => '',
@@ -91,7 +91,7 @@ final Class Comercio_Certificado_AuditoriaPeriodica_DAO extends Framework\App\Da
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => '',
                 'edicao'            => Array(
-                    'Nome'              => 'Produto',
+                    'Nome'              => __('Produto'),
                     'valor_padrao'      => false,
                     'readonly'          => true,
                     'aviso'             => '',
@@ -116,7 +116,7 @@ final Class Comercio_Certificado_AuditoriaPeriodica_DAO extends Framework\App\Da
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => '',
                 'edicao'            => Array(
-                    'Nome'              => 'Proposta',
+                    'Nome'              => __('Proposta'),
                     'valor_padrao'      => false,
                     'readonly'          => true,
                     'aviso'             => '',
@@ -141,7 +141,7 @@ final Class Comercio_Certificado_AuditoriaPeriodica_DAO extends Framework\App\Da
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => '', // //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Data Prevista',
+                    'Nome'              => __('Data Prevista'),
                     'Mascara'           => 'Data',
                     'valor_padrao'      => false,
                     'readonly'          => true,
@@ -168,7 +168,7 @@ final Class Comercio_Certificado_AuditoriaPeriodica_DAO extends Framework\App\Da
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => '', // //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Data Realizada',
+                    'Nome'              => __('Data Realizada'),
                     'Mascara'           => 'Data',
                     'valor_padrao'      => false,
                     'readonly'          => false,
@@ -195,7 +195,7 @@ final Class Comercio_Certificado_AuditoriaPeriodica_DAO extends Framework\App\Da
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => '',
                 'edicao'            => Array(
-                    'Nome'              => 'Periodica Finalizada',
+                    'Nome'              => __('Periodica Finalizada'),
                     'valor_padrao'      => 0,
                     'readonly'          => false,
                     'aviso'             => '',
@@ -230,10 +230,10 @@ final Class Comercio_Certificado_AuditoriaPeriodica_DAO extends Framework\App\Da
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => '',
                 'edicao'            => Array(
-                    'Nome'              => 'Auditor',
+                    'Nome'              => __('Auditor'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
-                    'aviso'             => 'Minimo 3 caracteres',
+                    'aviso'             => __('Minimo 3 caracteres'),
                     'formtipo'          => 'input',
                     'input'             => array(
                         'tipo'              => 'text',

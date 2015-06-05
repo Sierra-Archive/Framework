@@ -61,7 +61,7 @@ final Class Usuario_Mensagem_Assunto_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => 'usuario_mensagem/Setor/Setores_Add',
                 'edicao'            => Array(
-                    'Nome'              => 'Setor',
+                    'Nome'              => __('Setor'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',
@@ -86,10 +86,10 @@ final Class Usuario_Mensagem_Assunto_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Nome do Assunto',
+                    'Nome'              => __('Nome do Assunto'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
-                    'aviso'             => 'Minimo 3 caracteres',
+                    'aviso'             => __('Minimo 3 caracteres'),
                     'formtipo'          => 'input',
                     'input'             => array(
                         'tipo'              => 'text',
@@ -111,11 +111,11 @@ final Class Usuario_Mensagem_Assunto_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Tempo de Resposta',
+                    'Nome'              => __('Tempo de Resposta'),
                     'Mascara'           => 'Numero',
                     'valor_padrao'      => false,
                     'readonly'          => false,
-                    'aviso'             => 'Em horas',
+                    'aviso'             => __('Em horas'),
                     'formtipo'          => 'input',
                     'input'             => array(
                         'tipo'              => 'text',

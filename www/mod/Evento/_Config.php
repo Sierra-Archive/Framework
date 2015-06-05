@@ -11,13 +11,13 @@ $config_Modulo = function (){
 $config_Menu = function (){
     return Array(
         'Administrar' => Array(
-            'Nome'                  => 'Administrar',
+            'Nome'                  => __('Administrar'),
             'Link'                  => '#',
             'Gravidade'             => 80,
             'Img'                   => '',
             'Icon'                  => 'building',
             'Filhos'                => Array('Eventos'=>Array(
-                'Nome'                  => 'Eventos',
+                'Nome'                  => __('Eventos'),
                 'Link'                  => 'Evento/Evento/Main',
                 'Gravidade'             => 90,
                 'Img'                   => '',
@@ -30,7 +30,7 @@ $config_Menu = function (){
 $config_Permissoes = function (){
     return Array(
         Array(
-            'Nome'                  => 'Eventos - Listagem',
+            'Nome'                  => __('Eventos - Listagem'),
             'Desc'                  => '',
             'Chave'                 => 'Evento_Evento',
             'End'                   => 'Evento/Evento', // Endereco que deve conter a url para permitir acesso
@@ -39,7 +39,7 @@ $config_Permissoes = function (){
             'Metodo'                => '*',  // Metodos referentes separados por virgula // Endereco que deve conter a url para permitir acesso
         ),
         Array(
-            'Nome'                  => 'Eventos - Add',
+            'Nome'                  => __('Eventos - Add'),
             'Desc'                  => '',
             'Chave'                 => 'Evento_Evento_Eventos_Add', // CHave unica nunca repete, chave primaria
             'End'                   => 'Evento/Evento/Eventos_Add', // Endereco que deve conter a url para permitir acesso
@@ -48,7 +48,7 @@ $config_Permissoes = function (){
             'Metodo'                => 'Eventos_Add,Eventos_Add2',  // Metodos referentes separados por virgula
         ),
         Array(
-            'Nome'                  => 'Eventos - Editar',
+            'Nome'                  => __('Eventos - Editar'),
             'Desc'                  => '',
             'Chave'                 => 'Evento_Evento_Eventos_Edit', // CHave unica nunca repete, chave primaria
             'End'                   => 'Evento/Evento/Eventos_Edit', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
@@ -57,7 +57,7 @@ $config_Permissoes = function (){
             'Metodo'                => 'Eventos_Edit,Eventos_Edit2',  // Metodos referentes separados por virgula
         ),
         Array(
-            'Nome'                  => 'Eventos - Deletar',
+            'Nome'                  => __('Eventos - Deletar'),
             'Desc'                  => '',
             'Chave'                 => 'Evento_Evento_Eventos_Del', // CHave unica nunca repete, chave primaria
             'End'                   => 'Evento/Evento/Eventos_Del', // Endereco que deve conter a url para permitir acesso

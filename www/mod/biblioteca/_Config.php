@@ -11,7 +11,7 @@ $config_Modulo = function (){
 $config_Menu = function (){
     return Array(
         'Biblioteca'=>Array(
-            'Nome'                  => 'Biblioteca',
+            'Nome'                  => __('Biblioteca'),
             'Link'                  => 'biblioteca/Biblioteca/Bibliotecas',
             'Gravidade'             => 90,
             'Img'                   => '',
@@ -23,7 +23,7 @@ $config_Menu = function (){
 $config_Permissoes = function (){
     return Array(
         Array(
-            'Nome'                  => 'Biblioteca - Listagem',
+            'Nome'                  => __('Biblioteca - Listagem'),
             'Desc'                  => '',
             'Chave'                 => 'biblioteca_Biblioteca_Bibliotecas',
             'End'                   => 'biblioteca/Biblioteca/Bibliotecas', // Endereco que deve conter a url para permitir acesso
@@ -32,7 +32,7 @@ $config_Permissoes = function (){
             'Metodo'                => 'Bibliotecas',  // Metodos referentes separados por virgula
         ),
         Array(
-            'Nome'                  => 'Biblioteca - Add',
+            'Nome'                  => __('Biblioteca - Add'),
             'Desc'                  => '',
             'Chave'                 => 'biblioteca_Biblioteca_Bibliotecas_Add', // CHave unica nunca repete, chave primaria
             'End'                   => 'biblioteca/Biblioteca/Bibliotecas_Add', // Endereco que deve conter a url para permitir acesso
@@ -41,7 +41,7 @@ $config_Permissoes = function (){
             'Metodo'                => 'Bibliotecas_Add,Bibliotecas_Add2',  // Metodos referentes separados por virgula
         ),
         Array(
-            'Nome'                  => 'Biblioteca - Editar',
+            'Nome'                  => __('Biblioteca - Editar'),
             'Desc'                  => '',
             'Chave'                 => 'biblioteca_Biblioteca_Bibliotecas_Edit', // CHave unica nunca repete, chave primaria
             'End'                   => 'biblioteca/Biblioteca/Bibliotecas_Edit', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
@@ -50,7 +50,7 @@ $config_Permissoes = function (){
             'Metodo'                => 'Bibliotecas_Edit,Bibliotecas_Edit2',  // Metodos referentes separados por virgula
         ),
         Array(
-            'Nome'                  => 'Biblioteca - Deletar',
+            'Nome'                  => __('Biblioteca - Deletar'),
             'Desc'                  => '',
             'Chave'                 => 'biblioteca_Biblioteca_Bibliotecas_Del', // CHave unica nunca repete, chave primaria
             'End'                   => 'biblioteca/Biblioteca/Bibliotecas_Del', // Endereco que deve conter a url para permitir acesso

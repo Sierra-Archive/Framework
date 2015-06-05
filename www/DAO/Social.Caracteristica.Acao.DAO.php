@@ -57,7 +57,7 @@ final Class Social_Caracteristica_Acao_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => '',
                 'edicao'            => Array(
-                    'Nome'              => 'Grupo',
+                    'Nome'              => __('Grupo'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => ''
@@ -78,7 +78,7 @@ final Class Social_Caracteristica_Acao_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => 'social/Acao/Acoes_Add', //0 ninguem, 1 admin, 2 todos
                 'edicao'            => Array(
-                    'Nome'              => 'Ação',
+                    'Nome'              => __('Ação'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => ''

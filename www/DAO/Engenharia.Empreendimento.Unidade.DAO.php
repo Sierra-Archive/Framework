@@ -65,7 +65,7 @@ final Class Engenharia_Empreendimento_Unidade_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => 'Engenharia/Empreendimento/Empreendimentos_Add',
                 'edicao'            => Array(
-                    'Nome'              => 'Empreendimento',
+                    'Nome'              => __('Empreendimento'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',
@@ -90,7 +90,7 @@ final Class Engenharia_Empreendimento_Unidade_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => '',
                 'edicao'            => Array(
-                    'Nome'              => 'Cliente',
+                    'Nome'              => __('Cliente'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',
@@ -115,7 +115,7 @@ final Class Engenharia_Empreendimento_Unidade_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => '',
                 'edicao'            => Array(
-                    'Nome'              => 'Investidor',
+                    'Nome'              => __('Investidor'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',
@@ -141,7 +141,7 @@ final Class Engenharia_Empreendimento_Unidade_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Unidade',
+                    'Nome'              => __('Unidade'),
                     'Mascara'           => 'Numero',
                     'valor_padrao'      => false,
                     'readonly'          => false,
@@ -195,7 +195,7 @@ final Class Engenharia_Empreendimento_Unidade_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Quartos',
+                    'Nome'              => __('Quartos'),
                     'Mascara'           => 'Numero',
                     'valor_padrao'      => '0',
                     'readonly'          => false,
@@ -222,7 +222,7 @@ final Class Engenharia_Empreendimento_Unidade_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Banheiros',
+                    'Nome'              => __('Banheiros'),
                     'Mascara'           => 'Numero',
                     'valor_padrao'      => '0',
                     'readonly'          => false,

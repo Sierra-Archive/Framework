@@ -465,7 +465,7 @@ class social_PersonaControle extends social_Controle
             $this->_Visual->Show_Tabela_DataTable($tabela);
             unset($tabela);
         }else{          
-            $this->_Visual->Blocar('<center><b><p class="text-error">Nenhuma Ficada de Pessoa</p></b></center>');
+            $this->_Visual->Blocar('<center><b><p class="text-error">'.__('Nenhuma Ficada de Pessoa').'</p></b></center>');
         }
         $titulo = __('Listagem de Ficada de Pessoas').' ('.$i.')';
         if($tipo=='Unico'){

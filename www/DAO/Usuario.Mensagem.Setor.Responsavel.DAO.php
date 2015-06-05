@@ -59,7 +59,7 @@ final Class Usuario_Mensagem_Setor_Responsavel_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => 'usuario_mensagem/Setor/Setores_Add', //0 ninguem, 1 admin, 2 todos
                 'edicao'            => Array(
-                    'Nome'              => 'Setores',
+                    'Nome'              => __('Setores'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',

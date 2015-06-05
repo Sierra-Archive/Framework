@@ -66,7 +66,7 @@ final Class Predial_Bloco_Apart_Veiculo_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => 'predial/Bloco/Blocos_Add',
                 'edicao'            => Array(
-                    'Nome'              => 'Bloco',
+                    'Nome'              => __('Bloco'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => ''
@@ -86,7 +86,7 @@ final Class Predial_Bloco_Apart_Veiculo_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => 'predial/Apart/Aparts_Add',
                 'edicao'            => Array(
-                    'Nome'              => 'Apartamento',
+                    'Nome'              => __('Apartamento'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => ''
@@ -107,7 +107,7 @@ final Class Predial_Bloco_Apart_Veiculo_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => 'categoria/Admin/Categorias_Add/predial_Veiculo', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Tipo de Veiculo',
+                    'Nome'              => __('Tipo de Veiculo'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',
@@ -133,7 +133,7 @@ final Class Predial_Bloco_Apart_Veiculo_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Marca',
+                    'Nome'              => __('Marca'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',
@@ -159,7 +159,7 @@ final Class Predial_Bloco_Apart_Veiculo_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Modelo',
+                    'Nome'              => __('Modelo'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',
@@ -185,7 +185,7 @@ final Class Predial_Bloco_Apart_Veiculo_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => '', //0 ninguem, 1 admin, 2 todos
                 'edicao'            => Array(
-                    'Nome'              => 'Cor',
+                    'Nome'              => __('Cor'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',
@@ -243,7 +243,7 @@ final Class Predial_Bloco_Apart_Veiculo_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Placa',
+                    'Nome'              => __('Placa'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',

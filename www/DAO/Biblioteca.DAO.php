@@ -71,7 +71,7 @@ final Class  Biblioteca_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos
                 'linkextra'         => '' ,//0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Pasta Pai',
+                    'Nome'              => __('Pasta Pai'),
                     'valor_padrao'      => '0',
                     'readonly'          => false,
                     'aviso'             => '',
@@ -92,7 +92,7 @@ final Class  Biblioteca_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => '', // //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Titulo',
+                    'Nome'              => __('Titulo'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',
@@ -117,7 +117,7 @@ final Class  Biblioteca_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => '', // //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Endereço Virtual',
+                    'Nome'              => __('Endereço Virtual'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',
@@ -143,7 +143,7 @@ final Class  Biblioteca_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Tipo',
+                    'Nome'              => __('Tipo'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',
@@ -176,7 +176,7 @@ final Class  Biblioteca_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => '', // //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Nome do Arquivo',
+                    'Nome'              => __('Nome do Arquivo'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',
@@ -201,7 +201,7 @@ final Class  Biblioteca_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => '', // //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Extensao do Arquivo',
+                    'Nome'              => __('Extensao do Arquivo'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',
@@ -226,7 +226,7 @@ final Class  Biblioteca_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => '', // //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Tamanho',
+                    'Nome'              => __('Tamanho'),
                     'Mascara'           => 'Numero',
                     'valor_padrao'      => 0,
                     'readonly'          => false,
@@ -253,7 +253,7 @@ final Class  Biblioteca_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Descrição',
+                    'Nome'              => __('Descrição'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',
@@ -278,7 +278,7 @@ final Class  Biblioteca_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => 'usuario/Admin/Usuarios_Add',
                 'edicao'            => Array(
-                    'Nome'              => 'Cliente',
+                    'Nome'              => __('Cliente'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => ''
@@ -298,7 +298,7 @@ final Class  Biblioteca_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos
                 'linkextra'         => '' ,//0 ninguem, 1 admin, 2 todos  2 todos
                 'edicao'            => Array(
-                    'Nome'              => 'Grupo',
+                    'Nome'              => __('Grupo'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => ''

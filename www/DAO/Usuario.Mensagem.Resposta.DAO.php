@@ -66,7 +66,7 @@ final Class Usuario_Mensagem_Resposta_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Mensagem',
+                    'Nome'              => __('Mensagem'),
                     'valor_padrao'      => false,
                     'readonly'         => true,
                     'aviso'             => '',
@@ -92,7 +92,7 @@ final Class Usuario_Mensagem_Resposta_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'De',
+                    'Nome'              => __('De'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => ''
@@ -144,7 +144,7 @@ final Class Usuario_Mensagem_Resposta_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Resposta da Mensagem',
+                    'Nome'              => __('Resposta da Mensagem'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',

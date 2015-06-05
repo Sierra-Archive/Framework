@@ -62,7 +62,7 @@ final Class Social_Ficou_Comentario_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => 'social/Persona/Ficou_Add', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Ficada',
+                    'Nome'              => __('Ficada'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',
@@ -83,7 +83,7 @@ final Class Social_Ficou_Comentario_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => '', // //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Comentário',
+                    'Nome'              => __('Comentário'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',

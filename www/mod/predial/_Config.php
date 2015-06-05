@@ -11,62 +11,62 @@ $config_Modulo = function (){
 $config_Menu = function (){
     return Array(
         'Predial' => Array(
-            'Nome'                  => 'Predial',
+            'Nome'                  => __('Predial'),
             'Link'                  => '#',
             'Gravidade'             => 400,
             'Img'                   => 'turboadmin/m-dashboard.png',
             'Icon'                  => 'building',
             'Filhos'                => Array('Blocos'=>Array(
-                'Nome'                  => 'Blocos',
+                'Nome'                  => __('Blocos'),
                 'Link'                  => 'predial/Bloco/Blocos',
                 'Gravidade'             => 90,
                 'Img'                   => '',
                 'Icon'                  => 'building',
                 'Filhos'                => false,
             ),'Apartamentos'=>Array(
-                'Nome'                  => 'Apartamentos',
+                'Nome'                  => __('Apartamentos'),
                 'Link'                  => 'predial/Apart/Aparts',
                 'Gravidade'             => 80,
                 'Img'                   => '',
                 'Icon'                  => 'building',
                 'Filhos'                => false,
             ),'Veiculos'=>Array(
-                'Nome'                  => 'Veiculos',
+                'Nome'                  => __('Veiculos'),
                 'Link'                  => 'predial/Veiculo/Veiculos',
                 'Gravidade'             => 70,
                 'Img'                   => '',
                 'Icon'                  => 'plane',
                 'Filhos'                => false,
             ),'Animais'=>Array(
-                'Nome'                  => 'Animais',
+                'Nome'                  => __('Animais'),
                 'Link'                  => 'predial/Animal/Animais',
                 'Gravidade'             => 60,
                 'Img'                   => '',
                 'Icon'                  => 'bug',
                 'Filhos'                => false,
             ),'Correios'=>Array(
-                'Nome'                  => 'Correios',
+                'Nome'                  => __('Correios'),
                 'Link'                  => 'predial/Correio/Correios',
                 'Gravidade'             => 50,
                 'Img'                   => '',
                 'Icon'                  => 'envelope-alt',
                 'Filhos'                => false,
             ),'Advertências'=>Array(
-                'Nome'                  => 'Advertências',
+                'Nome'                  => __('Advertências'),
                 'Link'                  => 'predial/Advertencia/Advertencias',
                 'Gravidade'             => 40,
                 'Img'                   => '',
                 'Icon'                  => 'book',
                 'Filhos'                => false,
             ),'Advertências'=>Array(
-                'Nome'                  => 'Locais de Reserva',
+                'Nome'                  => __('Locais de Reserva'),
                 'Link'                  => 'predial/Salao/Saloes',
                 'Gravidade'             => 40,
                 'Img'                   => '',
                 'Icon'                  => 'book',
                 'Filhos'                => false,
             ),'Informativos'=>Array(
-                'Nome'                  => 'Informativos',
+                'Nome'                  => __('Informativos'),
                 'Link'                  => 'predial/Informativo/Informativos',
                 'Gravidade'             => 30,
                 'Img'                   => '',
@@ -80,7 +80,7 @@ $config_Permissoes = function (){
     return Array(
         // BLOCOS
         Array(
-            'Nome'                  => 'Predial (Blocos) - Listagem',
+            'Nome'                  => __('Predial (Blocos) - Listagem'),
             'Desc'                  => '',
             'Chave'                 => 'predial_Bloco_Blocos',
             'End'                   => 'predial/Bloco/Blocos',
@@ -89,7 +89,7 @@ $config_Permissoes = function (){
             'Metodo'                => 'Blocos',  // Metodos referentes separados por virgula// Endereco que deve conter a url para permitir acesso
         ),
         Array(
-            'Nome'                  => 'Predial (Blocos) - Add',
+            'Nome'                  => __('Predial (Blocos) - Add'),
             'Desc'                  => '',
             'Chave'                 => 'predial_Bloco_Blocos_Add', // CHave unica nunca repete, chave primaria
             'End'                   => 'predial/Bloco/Blocos_Add', // Endereco que deve conter a url para permitir acesso
@@ -98,7 +98,7 @@ $config_Permissoes = function (){
             'Metodo'                => 'Blocos_Add,Blocos_Add2',  // Metodos referentes separados por virgula
         ),
         Array(
-            'Nome'                  => 'Predial (Blocos) - Editar',
+            'Nome'                  => __('Predial (Blocos) - Editar'),
             'Desc'                  => '',
             'Chave'                 => 'predial_Bloco_Blocos_Edit', // CHave unica nunca repete, chave primaria
             'End'                   => 'predial/Bloco/Blocos_Edit', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
@@ -107,7 +107,7 @@ $config_Permissoes = function (){
             'Metodo'                => 'Blocos_Edit,Blocos_Edit2',  // Metodos referentes separados por virgula
         ),
         Array(
-            'Nome'                  => 'Predial (Blocos) - Deletar',
+            'Nome'                  => __('Predial (Blocos) - Deletar'),
             'Desc'                  => '',
             'Chave'                 => 'predial_Bloco_Blocos_Del', // CHave unica nunca repete, chave primaria
             'End'                   => 'predial/Bloco/Blocos_Del', // Endereco que deve conter a url para permitir acesso
@@ -118,7 +118,7 @@ $config_Permissoes = function (){
         
         // APARTAMENTOS
         Array(
-            'Nome'                  => 'Predial (Apartamentos) - Listagem',
+            'Nome'                  => __('Predial (Apartamentos) - Listagem'),
             'Desc'                  => '',
             'Chave'                 => 'predial_Apart_Aparts',
             'End'                   => 'predial/Apart/Aparts', // Endereco que deve conter a url para permitir acesso
@@ -127,7 +127,7 @@ $config_Permissoes = function (){
             'Metodo'                => 'Aparts',  // Metodos referentes separados por virgula
         ),
         Array(
-            'Nome'                  => 'Predial (Apartamentos) - Add',
+            'Nome'                  => __('Predial (Apartamentos) - Add'),
             'Desc'                  => '',
             'Chave'                 => 'predial_Apart_Aparts_Add', // CHave unica nunca repete, chave primaria
             'End'                   => 'predial/Apart/Aparts_Add', // Endereco que deve conter a url para permitir acesso
@@ -136,7 +136,7 @@ $config_Permissoes = function (){
             'Metodo'                => 'Aparts_Add,Aparts_Add2',  // Metodos referentes separados por virgula
         ),
         Array(
-            'Nome'                  => 'Predial (Apartamentos) - Editar',
+            'Nome'                  => __('Predial (Apartamentos) - Editar'),
             'Desc'                  => '',
             'Chave'                 => 'predial_Apart_Aparts_Edit', // CHave unica nunca repete, chave primaria
             'End'                   => 'predial/Apart/Aparts_Edit', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
@@ -145,7 +145,7 @@ $config_Permissoes = function (){
             'Metodo'                => 'Aparts_Edit,Aparts_Edit2',  // Metodos referentes separados por virgula
         ),
         Array(
-            'Nome'                  => 'Predial (Apartamentos) - Deletar',
+            'Nome'                  => __('Predial (Apartamentos) - Deletar'),
             'Desc'                  => '',
             'Chave'                 => 'predial_Apart_Aparts_Del', // CHave unica nunca repete, chave primaria
             'End'                   => 'predial/Apart/Aparts_Del', // Endereco que deve conter a url para permitir acesso
@@ -157,7 +157,7 @@ $config_Permissoes = function (){
         
         // ADVERTENCIA
         Array(
-            'Nome'                  => 'Predial (Advertências) - Listagem',
+            'Nome'                  => __('Predial (Advertências) - Listagem'),
             'Desc'                  => '',
             'Chave'                 => 'predial_Advertencia_Advertencia',
             'End'                   => 'predial/Advertencia/Advertencias', // Endereco que deve conter a url para permitir acesso
@@ -166,7 +166,7 @@ $config_Permissoes = function (){
             'Metodo'                => 'Advertencia',  // Metodos referentes separados por virgula
         ),
         Array(
-            'Nome'                  => 'Predial (Advertências) - Add',
+            'Nome'                  => __('Predial (Advertências) - Add'),
             'Desc'                  => '',
             'Chave'                 => 'predial_Advertencia_Advertencias_Add', // CHave unica nunca repete, chave primaria
             'End'                   => 'predial/Advertencia/Advertencias_Add', // Endereco que deve conter a url para permitir acesso
@@ -175,7 +175,7 @@ $config_Permissoes = function (){
             'Metodo'                => 'Advertencias_Add,Advertencias_Add2',  // Metodos referentes separados por virgula
         ),
         Array(
-            'Nome'                  => 'Predial (Advertências) - Editar',
+            'Nome'                  => __('Predial (Advertências) - Editar'),
             'Desc'                  => '',
             'Chave'                 => 'predial_Advertencia_Advertencias_Edit', // CHave unica nunca repete, chave primaria
             'End'                   => 'predial/Advertencia/Advertencias_Edit', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
@@ -184,7 +184,7 @@ $config_Permissoes = function (){
             'Metodo'                => 'Advertencias_Edit,Advertencias_Edit2',  // Metodos referentes separados por virgula
         ),
         Array(
-            'Nome'                  => 'Predial (Advertências) - Deletar',
+            'Nome'                  => __('Predial (Advertências) - Deletar'),
             'Desc'                  => '',
             'Chave'                 => 'predial_Advertencia_Advertencias_Del', // CHave unica nunca repete, chave primaria
             'End'                   => 'predial/Advertencia/Advertencias_Del', // Endereco que deve conter a url para permitir acesso
@@ -196,7 +196,7 @@ $config_Permissoes = function (){
         
         // ANIMAL
         Array(
-            'Nome'                  => 'Predial (Animais) - Listagem',
+            'Nome'                  => __('Predial (Animais) - Listagem'),
             'Desc'                  => '',
             'Chave'                 => 'predial_Animal_Animais',
             'End'                   => 'predial/Animal/Animais', // Endereco que deve conter a url para permitir acesso
@@ -205,7 +205,7 @@ $config_Permissoes = function (){
             'Metodo'                => 'Animais',  // Metodos referentes separados por virgula
         ),
         Array(
-            'Nome'                  => 'Predial (Animais) - Add',
+            'Nome'                  => __('Predial (Animais) - Add'),
             'Desc'                  => '',
             'Chave'                 => 'predial_Animal_Animais_Add', // CHave unica nunca repete, chave primaria
             'End'                   => 'predial/Animal/Animais_Add', // Endereco que deve conter a url para permitir acesso
@@ -214,7 +214,7 @@ $config_Permissoes = function (){
             'Metodo'                => 'Animais_Add,Animais_Add2',  // Metodos referentes separados por virgula
         ),
         Array(
-            'Nome'                  => 'Predial (Animais) - Editar',
+            'Nome'                  => __('Predial (Animais) - Editar'),
             'Desc'                  => '',
             'Chave'                 => 'predial_Animal_Animais_Edit', // CHave unica nunca repete, chave primaria
             'End'                   => 'predial/Animal/Animais_Edit', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
@@ -223,7 +223,7 @@ $config_Permissoes = function (){
             'Metodo'                => 'Animais_Edit,Animais_Edit2',  // Metodos referentes separados por virgula
         ),
         Array(
-            'Nome'                  => 'Predial (Animais) - Deletar',
+            'Nome'                  => __('Predial (Animais) - Deletar'),
             'Desc'                  => '',
             'Chave'                 => 'predial_Animal_Animais_Del', // CHave unica nunca repete, chave primaria
             'End'                   => 'predial/Animal/Animais_Del', // Endereco que deve conter a url para permitir acesso
@@ -235,7 +235,7 @@ $config_Permissoes = function (){
         
         // CORREIO
         Array(
-            'Nome'                  => 'Predial (Correios) - Listagem',
+            'Nome'                  => __('Predial (Correios) - Listagem'),
             'Desc'                  => '',
             'Chave'                 => 'predial_Correio_Correios',
             'End'                   => 'predial/Correio/Correios', // Endereco que deve conter a url para permitir acesso
@@ -244,7 +244,7 @@ $config_Permissoes = function (){
             'Metodo'                => 'Correios',  // Metodos referentes separados por virgula
         ),
         Array(
-            'Nome'                  => 'Predial (Correios) - Add',
+            'Nome'                  => __('Predial (Correios) - Add'),
             'Desc'                  => '',
             'Chave'                 => 'predial_Correio_Correios_Add', // CHave unica nunca repete, chave primaria
             'End'                   => 'predial/Correio/Correios_Add', // Endereco que deve conter a url para permitir acesso
@@ -253,7 +253,7 @@ $config_Permissoes = function (){
             'Metodo'                => 'Correios_Add,Correios_Add2',  // Metodos referentes separados por virgula
         ),
         Array(
-            'Nome'                  => 'Predial (Correios) - Editar',
+            'Nome'                  => __('Predial (Correios) - Editar'),
             'Desc'                  => '',
             'Chave'                 => 'predial_Correio_Correios_Edit', // CHave unica nunca repete, chave primaria
             'End'                   => 'predial/Correio/Correios_Edit', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
@@ -262,7 +262,7 @@ $config_Permissoes = function (){
             'Metodo'                => 'Correios_Edit,Correios_Edit2',  // Metodos referentes separados por virgula
         ),
         Array(
-            'Nome'                  => 'Predial (Correios) - Deletar',
+            'Nome'                  => __('Predial (Correios) - Deletar'),
             'Desc'                  => '',
             'Chave'                 => 'predial_Correio_Correios_Del', // CHave unica nunca repete, chave primaria
             'End'                   => 'predial/Correio/Correios_Del', // Endereco que deve conter a url para permitir acesso
@@ -274,7 +274,7 @@ $config_Permissoes = function (){
         
         // INFORMATIVO
         Array(
-            'Nome'                  => 'Predial (Informativos) - Listagem',
+            'Nome'                  => __('Predial (Informativos) - Listagem'),
             'Desc'                  => '',
             'Chave'                 => 'predial_Informativo_Informativos',
             'End'                   => 'predial/Informativo/Informativos', // Endereco que deve conter a url para permitir acesso
@@ -283,7 +283,7 @@ $config_Permissoes = function (){
             'Metodo'                => 'Informativo',  // Metodos referentes separados por virgula
         ),
         Array(
-            'Nome'                  => 'Predial (Informativos) - Add',
+            'Nome'                  => __('Predial (Informativos) - Add'),
             'Desc'                  => '',
             'Chave'                 => 'predial_Informativo_Informativos_Add', // CHave unica nunca repete, chave primaria
             'End'                   => 'predial/Informativo/Informativos_Add', // Endereco que deve conter a url para permitir acesso
@@ -292,7 +292,7 @@ $config_Permissoes = function (){
             'Metodo'                => 'Informativos_Add,Informativos_Add2',  // Metodos referentes separados por virgula
         ),
         Array(
-            'Nome'                  => 'Predial (Informativos) - Editar',
+            'Nome'                  => __('Predial (Informativos) - Editar'),
             'Desc'                  => '',
             'Chave'                 => 'predial_Informativo_Informativos_Edit', // CHave unica nunca repete, chave primaria
             'End'                   => 'predial/Informativo/Informativos_Edit', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
@@ -301,7 +301,7 @@ $config_Permissoes = function (){
             'Metodo'                => 'Informativos_Edit,Informativos_Edit2',  // Metodos referentes separados por virgula
         ),
         Array(
-            'Nome'                  => 'Predial (Informativos) - Deletar',
+            'Nome'                  => __('Predial (Informativos) - Deletar'),
             'Desc'                  => '',
             'Chave'                 => 'predial_Informativo_Informativos_Del', // CHave unica nunca repete, chave primaria
             'End'                   => 'predial/Informativo/Informativos_Del', // Endereco que deve conter a url para permitir acesso
@@ -313,7 +313,7 @@ $config_Permissoes = function (){
         
         // SALAO
         Array(
-            'Nome'                  => 'Predial (Salões) - Listagem',
+            'Nome'                  => __('Predial (Salões) - Listagem'),
             'Desc'                  => '',
             'Chave'                 => 'predial_Salao_Saloes',
             'End'                   => 'predial/Salao/Saloes', // Endereco que deve conter a url para permitir acesso
@@ -322,7 +322,7 @@ $config_Permissoes = function (){
             'Metodo'                => 'Saloes',  // Metodos referentes separados por virgula
         ),
         Array(
-            'Nome'                  => 'Predial (Salões) - Add',
+            'Nome'                  => __('Predial (Salões) - Add'),
             'Desc'                  => '',
             'Chave'                 => 'predial_Salao_Saloes_Add', // CHave unica nunca repete, chave primaria
             'End'                   => 'predial/Salao/Saloes_Add', // Endereco que deve conter a url para permitir acesso
@@ -331,7 +331,7 @@ $config_Permissoes = function (){
             'Metodo'                => 'Saloes_Add,Saloes_Add2',  // Metodos referentes separados por virgula
         ),
         Array(
-            'Nome'                  => 'Predial (Salões) - Editar',
+            'Nome'                  => __('Predial (Salões) - Editar'),
             'Desc'                  => '',
             'Chave'                 => 'predial_Salao_Saloes_Edit', // CHave unica nunca repete, chave primaria
             'End'                   => 'predial/Salao/Saloes_Edit', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
@@ -340,7 +340,7 @@ $config_Permissoes = function (){
             'Metodo'                => 'Saloes_Edit,Saloes_Edit2',  // Metodos referentes separados por virgula
         ),
         Array(
-            'Nome'                  => 'Predial (Salões) - Deletar',
+            'Nome'                  => __('Predial (Salões) - Deletar'),
             'Desc'                  => '',
             'Chave'                 => 'predial_Salao_Saloes_Del', // CHave unica nunca repete, chave primaria
             'End'                   => 'predial/Salao/Saloes_Del', // Endereco que deve conter a url para permitir acesso
@@ -352,7 +352,7 @@ $config_Permissoes = function (){
         
         // VEICULO
         Array(
-            'Nome'                  => 'Predial (Veiculos) - Listagem',
+            'Nome'                  => __('Predial (Veiculos) - Listagem'),
             'Desc'                  => '',
             'Chave'                 => 'predial_Veiculo_Veiculos',
             'End'                   => 'predial/Veiculo/Veiculos', // Endereco que deve conter a url para permitir acesso
@@ -361,7 +361,7 @@ $config_Permissoes = function (){
             'Metodo'                => 'Veiculos',  // Metodos referentes separados por virgula
         ),
         Array(
-            'Nome'                  => 'Predial (Veiculos) - Add',
+            'Nome'                  => __('Predial (Veiculos) - Add'),
             'Desc'                  => '',
             'Chave'                 => 'predial_Veiculo_Veiculos_Add', // CHave unica nunca repete, chave primaria
             'End'                   => 'predial/Veiculo/Veiculos_Add', // Endereco que deve conter a url para permitir acesso
@@ -370,7 +370,7 @@ $config_Permissoes = function (){
             'Metodo'                => 'Veiculos_Add,Veiculos_Add2',  // Metodos referentes separados por virgula
         ),
         Array(
-            'Nome'                  => 'Predial (Veiculos) - Editar',
+            'Nome'                  => __('Predial (Veiculos) - Editar'),
             'Desc'                  => '',
             'Chave'                 => 'predial_Veiculo_Veiculos_Edit', // CHave unica nunca repete, chave primaria
             'End'                   => 'predial/Veiculo/Veiculos_Edit', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
@@ -379,7 +379,7 @@ $config_Permissoes = function (){
             'Metodo'                => 'Veiculos_Edit,Veiculos_Edit2',  // Metodos referentes separados por virgula
         ),
         Array(
-            'Nome'                  => 'Predial (Veiculos) - Deletar',
+            'Nome'                  => __('Predial (Veiculos) - Deletar'),
             'Desc'                  => '',
             'Chave'                 => 'predial_Veiculo_Veiculos_Del', // CHave unica nunca repete, chave primaria
             'End'                   => 'predial/Veiculo/Veiculos_Del', // Endereco que deve conter a url para permitir acesso

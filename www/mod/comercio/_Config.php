@@ -12,7 +12,7 @@ $config_Menu = function (){
     return Array(
         'Administrar' => Array(
             'Filhos'                => Array('Fornecedores'=>Array(
-                'Nome'                  => 'Fornecedores',
+                'Nome'                  => __('Fornecedores'),
                 'Link'                  => 'comercio/Fornecedor/Fornecedores',
                 'Gravidade'             => 65,
                 'Img'                   => 'turboadmin/m-dashboard.png',
@@ -22,7 +22,7 @@ $config_Menu = function (){
                 ),
                 'Filhos'                => false,
             ),'Checklists'=>Array(
-                'Nome'                  => 'Checklists',
+                'Nome'                  => __('Checklists'),
                 'Link'                  => 'comercio/Proposta/Checklists',
                 'Gravidade'             => 63,
                 'Img'                   => 'turboadmin/m-dashboard.png',
@@ -32,7 +32,7 @@ $config_Menu = function (){
                 ),
                 'Filhos'                => false,
             ),'Marcas'=>Array(
-                'Nome'                  => 'Marcas',
+                'Nome'                  => __('Marcas'),
                 'Link'                  => 'comercio/Marca/Marcas',
                 'Gravidade'             => 66,
                 'Img'                   => 'turboadmin/m-dashboard.png',
@@ -43,7 +43,7 @@ $config_Menu = function (){
                     'comercio_Marca' => true
                 ),
             ),'Linhas'=>Array(
-                'Nome'                  => 'Linhas',
+                'Nome'                  => __('Linhas'),
                 'Link'                  => 'comercio/Linha/Linhas',
                 'Gravidade'             => 65,
                 'Img'                   => 'turboadmin/m-dashboard.png',
@@ -55,7 +55,7 @@ $config_Menu = function (){
                 ),
                 'Filhos'                => false,
             ),'Familias'=>Array(
-                'Nome'                  => 'Familias',
+                'Nome'                  => __('Familias'),
                 'Link'                  => 'comercio/Familia/Familias',
                 'Gravidade'             => 64,
                 'Img'                   => 'turboadmin/m-dashboard.png',
@@ -66,7 +66,7 @@ $config_Menu = function (){
                 ),
                 'Filhos'                => false,
             ),'Produtos'=>Array(
-                'Nome'                  => 'Produtos',
+                'Nome'                  => __('Produtos'),
                 'Link'                  => 'comercio/Produto/Produtos',
                 'Gravidade'             => 62,
                 'Img'                   => 'turboadmin/m-dashboard.png',
@@ -78,13 +78,13 @@ $config_Menu = function (){
             ),),
         ),
         'Financeiro' => Array(
-            'Nome'                  => 'Financeiro',
+            'Nome'                  => __('Financeiro'),
             'Link'                  => '#',
             'Gravidade'             => 20,
             'Img'                   => 'money',
             'Icon'                  => 'money',
             'Filhos'                => Array('Entrada de NFE'=>Array(
-                'Nome'                  => 'Entrada de NFE',
+                'Nome'                  => __('Entrada de NFE'),
                 'Link'                  => 'comercio/Estoque/Material_Entrada',
                 'Gravidade'             => 65,
                 'Img'                   => 'turboadmin/m-dashboard.png',
@@ -96,13 +96,13 @@ $config_Menu = function (){
             ),),
         ),
         'Comercial' => Array(
-            'Nome'                  => 'Comercial',
+            'Nome'                  => __('Comercial'),
             'Link'                  => '#',
             'Gravidade'             => 9999,
             'Img'                   => 'turboadmin/m-dashboard.png',
             'Icon'                  => 'tag',
             'Filhos'                => Array('Agenda de Visitas'=>Array(
-                'Nome'                  => 'Agenda de Visitas',
+                'Nome'                  => __('Agenda de Visitas'),
                 'Link'                  => 'comercio/Proposta/Visitas',
                 'Gravidade'             => 80,
                 'Img'                   => 'turboadmin/m-dashboard.png',
@@ -112,7 +112,7 @@ $config_Menu = function (){
                 ),
                 'Filhos'                => false,
             ),'Propostas'=>Array(
-                'Nome'                  => 'Propostas',
+                'Nome'                  => __('Propostas'),
                 'Link'                  => 'comercio/Proposta/Propostas/Propostas',
                 'Gravidade'             => 64,
                 'Img'                   => 'turboadmin/m-dashboard.png',
@@ -135,7 +135,7 @@ $config_Menu = function (){
         ),
         'Relatório' => Array(
             'Filhos'                => Array('Estoque'=>Array(
-                'Nome'                  => 'Estoque',
+                'Nome'                  => __('Estoque'),
                 'Link'                  => 'comercio/Estoque/Estoques',
                 'Gravidade'             => 63,
                 'Img'                   => 'turboadmin/m-dashboard.png',
@@ -156,7 +156,7 @@ $config_Permissoes = function (){
         
         // FOLHAS DE VISITA
         Array(
-            'Nome'                  => 'Comercio (Agenda de Visita) - Listagem',
+            'Nome'                  => __('Comercio (Agenda de Visita) - Listagem'),
             'Desc'                  => '',
             'Chave'                 => 'comercio_Proposta_Visitas',
             'End'                   => 'comercio/Proposta/Visitas',
@@ -168,7 +168,7 @@ $config_Permissoes = function (){
             ),
         ),
         Array(
-            'Nome'                  => 'Comercio (Agenda de Visita) - Adicionar',
+            'Nome'                  => __('Comercio (Agenda de Visita) - Adicionar'),
             'Desc'                  => '',
             'Chave'                 => 'comercio_Proposta_Visitas_Add',
             'End'                   => 'comercio/Proposta/Visitas_Add',
@@ -180,7 +180,7 @@ $config_Permissoes = function (){
             ),
         ),
         Array(
-            'Nome'                  => 'Comercio (Agenda de Visita) - Editar',
+            'Nome'                  => __('Comercio (Agenda de Visita) - Editar'),
             'Desc'                  => '',
             'Chave'                 => 'comercio_Proposta_Visitas_Edit',
             'End'                   => 'comercio/Proposta/Visitas_Edit',
@@ -192,7 +192,7 @@ $config_Permissoes = function (){
             ),
         ),
         Array(
-            'Nome'                  => 'Comercio (Agenda de Visita) - Deletar',
+            'Nome'                  => __('Comercio (Agenda de Visita) - Deletar'),
             'Desc'                  => '',
             'Chave'                 => 'comercio_Proposta_Visitas_Del',
             'End'                   => 'comercio/Proposta/Visitas_Del',
@@ -204,7 +204,7 @@ $config_Permissoes = function (){
             ),
         ),
         Array(
-            'Nome'                  => 'Comercio (Agenda de Visita) - Histórico',
+            'Nome'                  => __('Comercio (Agenda de Visita) - Histórico'),
             'Desc'                  => '',
             'Chave'                 => 'comercio_Proposta_Visitas_Comentario',
             'End'                   => 'comercio/Proposta/Visitas_Comentario',
@@ -216,7 +216,7 @@ $config_Permissoes = function (){
             ),
         ),
         Array(
-            'Nome'                  => 'Comercio (Agenda de Visita) - Histórico Add',
+            'Nome'                  => __('Comercio (Agenda de Visita) - Histórico Add'),
             'Desc'                  => '',
             'Chave'                 => 'comercio_Proposta_Visitas_Comentario_Add', // CHave unica nunca repete, chave primaria
             'End'                   => 'comercio/Proposta/Visitas_Comentario_Add', // Endereco que deve conter a url para permitir acesso
@@ -228,7 +228,7 @@ $config_Permissoes = function (){
             ),
         ),
         Array(
-            'Nome'                  => 'Comercio (Agenda de Visita) - Histórico Editar',
+            'Nome'                  => __('Comercio (Agenda de Visita) - Histórico Editar'),
             'Desc'                  => '',
             'Chave'                 => 'comercio_Proposta_Visitas_Comentario_Edit', // CHave unica nunca repete, chave primaria
             'End'                   => 'comercio/Proposta/Visitas_Comentario_Edit', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
@@ -240,7 +240,7 @@ $config_Permissoes = function (){
             ),
         ),
         Array(
-            'Nome'                  => 'Comercio (Agenda de Visita) - Histórico Deletar',
+            'Nome'                  => __('Comercio (Agenda de Visita) - Histórico Deletar'),
             'Desc'                  => '',
             'Chave'                 => 'comercio_Proposta_Visitas_Comentario_Del', // CHave unica nunca repete, chave primaria
             'End'                   => 'comercio/Proposta/Visitas_Comentario_Del', // Endereco que deve conter a url para permitir acesso
@@ -254,7 +254,7 @@ $config_Permissoes = function (){
         
         // Checklist
         Array(
-            'Nome'                  => 'Comercio (Checklists) - Listagem',
+            'Nome'                  => __('Comercio (Checklists) - Listagem'),
             'Desc'                  => '',
             'Chave'                 => 'comercio_Proposta_Checklists',
             'End'                   => 'comercio/Proposta/Checklists',
@@ -266,7 +266,7 @@ $config_Permissoes = function (){
             ),
         ),
         Array(
-            'Nome'                  => 'Comercio (Checklists) - Adicionar',
+            'Nome'                  => __('Comercio (Checklists) - Adicionar'),
             'Desc'                  => '',
             'Chave'                 => 'comercio_Proposta_Checklists_Add',
             'End'                   => 'comercio/Proposta/Checklists_Add',
@@ -278,7 +278,7 @@ $config_Permissoes = function (){
             ),
         ),
         Array(
-            'Nome'                  => 'Comercio (Checklists) - Editar',
+            'Nome'                  => __('Comercio (Checklists) - Editar'),
             'Desc'                  => '',
             'Chave'                 => 'comercio_Proposta_Checklists_Edit',
             'End'                   => 'comercio/Proposta/Checklists_Edit',
@@ -290,7 +290,7 @@ $config_Permissoes = function (){
             ),
         ),
         Array(
-            'Nome'                  => 'Comercio (Checklists) - Deletar',
+            'Nome'                  => __('Comercio (Checklists) - Deletar'),
             'Desc'                  => '',
             'Chave'                 => 'comercio_Proposta_Checklists_Del',
             'End'                   => 'comercio/Proposta/Checklists_Del',
@@ -302,7 +302,7 @@ $config_Permissoes = function (){
             ),
         ),
         Array(
-            'Nome'                  => 'Comercio (Checklists) - Status',
+            'Nome'                  => __('Comercio (Checklists) - Status'),
             'Desc'                  => '',
             'Chave'                 => 'comercio_Proposta_StatusChecklists',
             'End'                   => 'comercio/Proposta/StatusChecklists',
@@ -317,7 +317,7 @@ $config_Permissoes = function (){
         
         // PROPOSTAS
         Array(
-            'Nome'                  => 'Comercio (Proposta) - Listagem',
+            'Nome'                  => __('Comercio (Proposta) - Listagem'),
             'Desc'                  => '',
             'Chave'                 => 'comercio_Proposta_Propostas_Propostas',
             'End'                   => 'comercio/Proposta/Propostas/Propostas',
@@ -329,7 +329,7 @@ $config_Permissoes = function (){
             ),
         ),
         Array(
-            'Nome'                  => 'Comercio (Proposta) - Adicionar',
+            'Nome'                  => __('Comercio (Proposta) - Adicionar'),
             'Desc'                  => '',
             'Chave'                 => 'comercio_Proposta_Propostas_Add',
             'End'                   => 'comercio/Proposta/Propostas_Add',
@@ -509,7 +509,7 @@ $config_Permissoes = function (){
         
         // CONTROLE DE MATERIAL
         Array(
-            'Nome'                  => 'Comercio (Estoque) - Visualizar',
+            'Nome'                  => __('Comercio (Estoque) - Visualizar'),
             'Desc'                  => '',
             'Chave'                 => 'comercio_Estoque_Estoques',
             'End'                   => 'comercio/Estoque/Estoques',
@@ -521,7 +521,7 @@ $config_Permissoes = function (){
             ),
         ),
         Array(
-            'Nome'                  => 'Comercio (Entrada de Material) - Listagem',
+            'Nome'                  => __('Comercio (Entrada de Material) - Listagem'),
             'Desc'                  => '',
             'Chave'                 => 'comercio_Estoque_Material_Entrada',
             'End'                   => 'comercio/Estoque/Material_Entrada',
@@ -533,7 +533,7 @@ $config_Permissoes = function (){
             ),
         ),
         Array(
-            'Nome'                  => 'Comercio (Entrada de Material) - Adicionar',
+            'Nome'                  => __('Comercio (Entrada de Material) - Adicionar'),
             'Desc'                  => '',
             'Chave'                 => 'comercio_Estoque_Material_Entrada_Add',
             'End'                   => 'comercio/Estoque/Material_Entrada_Add',
@@ -545,7 +545,7 @@ $config_Permissoes = function (){
             ),
         ),
         Array(
-            'Nome'                  => 'Comercio (Entrada de Material) - Editar',
+            'Nome'                  => __('Comercio (Entrada de Material) - Editar'),
             'Desc'                  => '',
             'Chave'                 => 'comercio_Estoque_Material_Entrada_Edit',
             'End'                   => 'comercio/Estoque/Material_Entrada_Edit',
@@ -557,7 +557,7 @@ $config_Permissoes = function (){
             ),
         ),
         Array(
-            'Nome'                  => 'Comercio (Entrada de Material) - Deletar',
+            'Nome'                  => __('Comercio (Entrada de Material) - Deletar'),
             'Desc'                  => '',
             'Chave'                 => 'comercio_Estoque_Material_Entrada_Del',
             'End'                   => 'comercio/Estoque/Material_Entrada_Del',
@@ -572,7 +572,7 @@ $config_Permissoes = function (){
         
         // MARCAS
         Array(
-            'Nome'                  => 'Comercio (Marcas) - Listagem',
+            'Nome'                  => __('Comercio (Marcas) - Listagem'),
             'Desc'                  => '',
             'Chave'                 => 'comercio_Marca',
             'End'                   => 'comercio/Marca',
@@ -585,7 +585,7 @@ $config_Permissoes = function (){
             ),
         ),
         Array(
-            'Nome'                  => 'Comercio (Marcas) - Add',
+            'Nome'                  => __('Comercio (Marcas) - Add'),
             'Desc'                  => '',
             'Chave'                 => 'comercio_Marca_Marcas_Add', // CHave unica nunca repete, chave primaria
             'End'                   => 'comercio/Marca/Marcas_Add', // Endereco que deve conter a url para permitir acesso
@@ -598,7 +598,7 @@ $config_Permissoes = function (){
             ),
         ),
         Array(
-            'Nome'                  => 'Comercio (Marcas) - Editar',
+            'Nome'                  => __('Comercio (Marcas) - Editar'),
             'Desc'                  => '',
             'Chave'                 => 'comercio_Marca_Marcas_Edit', // CHave unica nunca repete, chave primaria
             'End'                   => 'comercio/Marca/Marcas_Edit', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
@@ -611,7 +611,7 @@ $config_Permissoes = function (){
             ),
         ),
         Array(
-            'Nome'                  => 'Comercio (Marcas) - Deletar',
+            'Nome'                  => __('Comercio (Marcas) - Deletar'),
             'Desc'                  => '',
             'Chave'                 => 'comercio_Marca_Marcas_Del', // CHave unica nunca repete, chave primaria
             'End'                   => 'comercio/Marca/Marcas_Del', // Endereco que deve conter a url para permitir acesso
@@ -628,7 +628,7 @@ $config_Permissoes = function (){
         
         // LINHAS
         Array(
-            'Nome'                  => 'Comercio (Linhas) - Listagem',
+            'Nome'                  => __('Comercio (Linhas) - Listagem'),
             'Desc'                  => '',
             'Chave'                 => 'comercio_Linha',
             'End'                   => 'comercio/Linha', 
@@ -642,7 +642,7 @@ $config_Permissoes = function (){
             ),
         ),
         Array(
-            'Nome'                  => 'Comercio (Linhas) - Add',
+            'Nome'                  => __('Comercio (Linhas) - Add'),
             'Desc'                  => '',
             'Chave'                 => 'comercio_Admin_Linhas_Add', // CHave unica nunca repete, chave primaria
             'End'                   => 'comercio/Linha/Linhas_Add', // Endereco que deve conter a url para permitir acesso
@@ -656,7 +656,7 @@ $config_Permissoes = function (){
             ),
         ),
         Array(
-            'Nome'                  => 'Comercio (Linhas) - Editar',
+            'Nome'                  => __('Comercio (Linhas) - Editar'),
             'Desc'                  => '',
             'Chave'                 => 'comercio_Admin_Linhas_Edit', // CHave unica nunca repete, chave primaria
             'End'                   => 'comercio/Admin/Linhas_Edit', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
@@ -670,7 +670,7 @@ $config_Permissoes = function (){
             ),
         ),
         Array(
-            'Nome'                  => 'Comercio (Linhas) - Deletar',
+            'Nome'                  => __('Comercio (Linhas) - Deletar'),
             'Desc'                  => '',
             'Chave'                 => 'comercio_Admin_Linhas_Del', // CHave unica nunca repete, chave primaria
             'End'                   => 'comercio/Admin/Linhas_Del', // Endereco que deve conter a url para permitir acesso
@@ -688,7 +688,7 @@ $config_Permissoes = function (){
         
         // FAMILIA
         Array(
-            'Nome'                  => 'Comercio (Familia) - Listagem',
+            'Nome'                  => __('Comercio (Familia) - Listagem'),
             'Desc'                  => '',
             'Chave'                 => 'comercio_Familia',
             'End'                   => 'comercio/Familia',
@@ -701,7 +701,7 @@ $config_Permissoes = function (){
             ),
         ),
         Array(
-            'Nome'                  => 'Comercio (Familia) - Add',
+            'Nome'                  => __('Comercio (Familia) - Add'),
             'Desc'                  => '',
             'Chave'                 => 'comercio_Familia_Familias_Add', // CHave unica nunca repete, chave primaria
             'End'                   => 'comercio/Familia/Familias_Add', // Endereco que deve conter a url para permitir acesso
@@ -714,7 +714,7 @@ $config_Permissoes = function (){
             ),
         ),
         Array(
-            'Nome'                  => 'Comercio (Familia) - Editar',
+            'Nome'                  => __('Comercio (Familia) - Editar'),
             'Desc'                  => '',
             'Chave'                 => 'comercio_Familia_Familias_Edit', // CHave unica nunca repete, chave primaria
             'End'                   => 'comercio/Familia/Familias_Edit', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
@@ -727,7 +727,7 @@ $config_Permissoes = function (){
             ),
         ),
         Array(
-            'Nome'                  => 'Comercio (Familia) - Deletar',
+            'Nome'                  => __('Comercio (Familia) - Deletar'),
             'Desc'                  => '',
             'Chave'                 => 'comercio_Familia_Familias_Del', // CHave unica nunca repete, chave primaria
             'End'                   => 'comercio/Familia/Familias_Del', // Endereco que deve conter a url para permitir acesso
@@ -743,7 +743,7 @@ $config_Permissoes = function (){
         
         // PRODUTOS
         Array(
-            'Nome'                  => 'Comercio (Produtos) - Listagem',
+            'Nome'                  => __('Comercio (Produtos) - Listagem'),
             'Desc'                  => '',
             'Chave'                 => 'comercio_Produto',
             'End'                   => 'comercio/Produto',
@@ -755,7 +755,7 @@ $config_Permissoes = function (){
             ),
         ),       
         Array(
-            'Nome'                  => 'Comercio (Produtos) - Add',
+            'Nome'                  => __('Comercio (Produtos) - Add'),
             'Desc'                  => '',
             'Chave'                 => 'comercio_Produto_Produtos_Add', // CHave unica nunca repete, chave primaria
             'End'                   => 'comercio/Produto/Produtos_Add', // Endereco que deve conter a url para permitir acesso
@@ -767,7 +767,7 @@ $config_Permissoes = function (){
             ),
         ),
         Array(
-            'Nome'                  => 'Comercio (Produtos) - Editar',
+            'Nome'                  => __('Comercio (Produtos) - Editar'),
             'Desc'                  => '',
             'Chave'                 => 'comercio_Produto_Produtos_Edit', // CHave unica nunca repete, chave primaria
             'End'                   => 'comercio/Produto/Produtos_Edit', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
@@ -779,7 +779,7 @@ $config_Permissoes = function (){
             ),
         ),
         Array(
-            'Nome'                  => 'Comercio (Produtos) - Deletar',
+            'Nome'                  => __('Comercio (Produtos) - Deletar'),
             'Desc'                  => '',
             'Chave'                 => 'comercio_Produto_Produtos_Del', // CHave unica nunca repete, chave primaria
             'End'                   => 'comercio/Produto/Produtos_Del', // Endereco que deve conter a url para permitir acesso
@@ -794,7 +794,7 @@ $config_Permissoes = function (){
         
         // FORNECEDORES
         Array(
-            'Nome'                  => 'Comercio (Fornecedores) - Listagem',
+            'Nome'                  => __('Comercio (Fornecedores) - Listagem'),
             'Desc'                  => '',
             'Chave'                 => 'comercio_Fornecedor',
             'End'                   => 'comercio/Fornecedor',
@@ -806,7 +806,7 @@ $config_Permissoes = function (){
             ),
         ),       
         Array(
-            'Nome'                  => 'Comercio (Fornecedores) - Add',
+            'Nome'                  => __('Comercio (Fornecedores) - Add'),
             'Desc'                  => '',
             'Chave'                 => 'comercio_Fornecedor_Fornecedores_Add', // CHave unica nunca repete, chave primaria
             'End'                   => 'comercio/Fornecedor/Fornecedores_Add', // Endereco que deve conter a url para permitir acesso
@@ -818,7 +818,7 @@ $config_Permissoes = function (){
             ),
         ),
         Array(
-            'Nome'                  => 'Comercio (Fornecedores) - Editar',
+            'Nome'                  => __('Comercio (Fornecedores) - Editar'),
             'Desc'                  => '',
             'Chave'                 => 'comercio_Fornecedor_Fornecedores_Edit', // CHave unica nunca repete, chave primaria
             'End'                   => 'comercio/Fornecedor/Fornecedores_Edit', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
@@ -830,7 +830,7 @@ $config_Permissoes = function (){
             ),
         ),
         Array(
-            'Nome'                  => 'Comercio (Fornecedores) - Deletar',
+            'Nome'                  => __('Comercio (Fornecedores) - Deletar'),
             'Desc'                  => '',
             'Chave'                 => 'comercio_Fornecedor_Fornecedores_Del', // CHave unica nunca repete, chave primaria
             'End'                   => 'comercio/Fornecedor/Fornecedores_Del', // Endereco que deve conter a url para permitir acesso
@@ -852,75 +852,75 @@ $config_Permissoes = function (){
 $config_Funcional = function (){
     return Array(
         'comercio_Produto_Obs'  => Array(
-            'Nome'                  => 'Observação?',
-            'Desc'                  => 'Se  produtos vao ter campo observacao',
+            'Nome'                  => __('Observação?'),
+            'Desc'                  => __('Se  produtos vao ter campo observacao'),
             'chave'                 => 'comercio_Produto_Obs',
             'Valor'                 => false
         ),
         'comercio_Produto_Cod'  => Array(
-            'Nome'                  => 'Cod?',
-            'Desc'                  => 'Se produtos vao ter campo Codigo',
+            'Nome'                  => __('Cod?'),
+            'Desc'                  => __('Se produtos vao ter campo Codigo'),
             'chave'                 => 'comercio_Produto_Cod',
             'Valor'                 => false
         ),
         'comercio_Produto'  => Array(
-            'Nome'                  => 'Se Produtos estao ativados ou nao.',
-            'Desc'                  => 'Se esta ativado os produtos ou nao no sistema',
+            'Nome'                  => __('Se Produtos estao ativados ou nao.'),
+            'Desc'                  => __('Se esta ativado os produtos ou nao no sistema'),
             'chave'                 => 'comercio_Produto',
             'Valor'                 => true,
         ),
         'comercio_Vendas'  => Array(
-            'Nome'                  => 'Se Produtos estao sendo vendidos.',
-            'Desc'                  => 'Se Produtos estao sendo vendidos',
+            'Nome'                  => __('Se Produtos estao sendo vendidos.'),
+            'Desc'                  => __('Se Produtos estao sendo vendidos'),
             'chave'                 => 'comercio_Vendas',
             'Valor'                 => false,
         ),
         'comercio_Marca'    => Array(
-            'Nome'                  => 'Marca',
-            'Desc'                  => 'Possui cadastro de Marcas em Produtos ?',
+            'Nome'                  => __('Marca'),
+            'Desc'                  => __('Possui cadastro de Marcas em Produtos ?'),
             'chave'                 => 'comercio_Marca',
             'Valor'                 => true,
         ),
         'comercio_Produto_Familia'  => Array(
-            'Nome'                  => 'Marca com LInha ou Familia?',
-            'Desc'                  => 'Se exibe Marca e Linha ou vai ter Familia',
+            'Nome'                  => __('Marca com LInha ou Familia?'),
+            'Desc'                  => __('Se exibe Marca e Linha ou vai ter Familia'),
             'chave'                 => 'comercio_Produto_Familia',
             'Valor'                 => 'Marca', // Marca OU Familia
         ),
         'comercio_Unidade'  => Array(
-            'Nome'                  => 'Unidade?',
-            'Desc'                  => 'Se vai ter Unidades',
+            'Nome'                  => __('Unidade?'),
+            'Desc'                  => __('Se vai ter Unidades'),
             'chave'                 => 'comercio_Unidade',
             'Valor'                 => false
         ),
         'comercio_Estoque'  => Array(
-            'Nome'                  => 'Estoque',
-            'Desc'                  => 'Ativado ou não sistema de Estoque.',
+            'Nome'                  => __('Estoque'),
+            'Desc'                  => __('Ativado ou não sistema de Estoque.'),
             'chave'                 => 'comercio_Estoque',
             'Valor'                 => false,
         ),
         'comercio_Estoque_EntradaCategoria'  => Array(
-            'Nome'                  => 'EntradaCategoria',
-            'Desc'                  => 'Ativado ou não centro de custo em entrada de Nota Fiscal.',
+            'Nome'                  => __('EntradaCategoria'),
+            'Desc'                  => __('Ativado ou não centro de custo em entrada de Nota Fiscal.'),
             'chave'                 => 'comercio_Fornecedor',
             'Valor'                 => true,
         ),
         
         'comercio_Linha_Widget'  => Array(
-            'Nome'                  => 'Widget de Linhas',
-            'Desc'                  => 'Widget na Home',
+            'Nome'                  => __('Widget de Linhas'),
+            'Desc'                  => __('Widget na Home'),
             'chave'                 => 'comercio_Linha_Widget',
             'Valor'                 => true,
         ),
         'comercio_Fornecedor'  => Array(
-            'Nome'                  => 'Fornecedor',
-            'Desc'                  => 'Ativado ou não sistema modulo de Fornecedores.',
+            'Nome'                  => __('Fornecedor'),
+            'Desc'                  => __('Ativado ou não sistema modulo de Fornecedores.'),
             'chave'                 => 'comercio_Fornecedor',
             'Valor'                 => true,
         ),
         'comercio_Fornecedor_Categoria'  => Array(
-            'Nome'                  => 'Tipo de Fornecedor',
-            'Desc'                  => 'Ativado ou não tipo de Fornecedores.',
+            'Nome'                  => __('Tipo de Fornecedor'),
+            'Desc'                  => __('Ativado ou não tipo de Fornecedores.'),
             'chave'                 => 'comercio_Fornecedor_Categoria',
             'Valor'                 => true,
         ),
@@ -928,26 +928,26 @@ $config_Funcional = function (){
         
         // Propostas
         'comercio_Propostas'  => Array(
-            'Nome'                  => 'Se possui Propostas',
-            'Desc'                  => 'Se possui Propostas',
+            'Nome'                  => __('Se possui Propostas'),
+            'Desc'                  => __('Se possui Propostas'),
             'chave'                 => 'comercio_Propostas',
             'Valor'                 => true,
         ),
         'comercio_Propostas_Sub'  => Array(
-            'Nome'                  => 'Se possui SubPropostas',
-            'Desc'                  => 'Se possui SubPropostas',
+            'Nome'                  => __('Se possui SubPropostas'),
+            'Desc'                  => __('Se possui SubPropostas'),
             'chave'                 => 'comercio_Propostas_Sub',
             'Valor'                 => false,
         ),
         'comercio_Propostas_Biblioteca'  => Array(
-            'Nome'                  => 'Se possui Biblioteca em Propostas',
-            'Desc'                  => 'Se possui Biblioteca em Propostas',
+            'Nome'                  => __('Se possui Biblioteca em Propostas'),
+            'Desc'                  => __('Se possui Biblioteca em Propostas'),
             'chave'                 => 'comercio_Propostas_Biblioteca',
             'Valor'                 => false,
         ),
         'comercio_Propostas_Biblioteca_Automatico'  => Array(
-            'Nome'                  => 'Se cria Biblioteca automaticamente em Propostas',
-            'Desc'                  => 'Se cria Biblioteca automaticamente  em Propostas',
+            'Nome'                  => __('Se cria Biblioteca automaticamente em Propostas'),
+            'Desc'                  => __('Se cria Biblioteca automaticamente  em Propostas'),
             'chave'                 => 'comercio_Propostas_Biblioteca_Automatico',
             'Valor'                 => false,
         ),
@@ -955,14 +955,14 @@ $config_Funcional = function (){
          * Se Carrega Com Si Custo de Mao de Obra
          */
         'comercio_Propostas_MaodeObra'  => Array(
-            'Nome'                  => 'Se possui Mao de Obra em Propostas',
-            'Desc'                  => 'Se possui Mao de Obra em Propostas',
+            'Nome'                  => __('Se possui Mao de Obra em Propostas'),
+            'Desc'                  => __('Se possui Mao de Obra em Propostas'),
             'chave'                 => 'comercio_Propostas_MaodeObra',
             'Valor'                 => false,
         ),
         'comercio_Propostas_Imposto'  => Array(
             'Nome'                  => 'Proposta -> Imposto',
-            'Desc'                  => 'Se possui Imposto em Proposta',
+            'Desc'                  => __('Se possui Imposto em Proposta'),
             'chave'                 => 'comercio_Propostas_Imposto',
             'Valor'                 => false,
         ),
@@ -972,57 +972,57 @@ $config_Funcional = function (){
          */
         'comercio_Proposta_ValorFinal'  => Array(
             'Nome'                  => 'Propostas -> Valor Final',
-            'Desc'                  => 'Se possui Valor Final',
+            'Desc'                  => __('Se possui Valor Final'),
             'chave'                 => 'comercio_Proposta_ValorFinal',
             'Valor'                 => false,
         ),
         'comercio_Proposta_ValorExtra'  => Array(
             'Nome'                  => 'Propostas -> Se possui Valor Extra a ser somado ao custo',
-            'Desc'                  => 'Se possui Valor Extra a ser somado ao custo',
+            'Desc'                  => __('Se possui Valor Extra a ser somado ao custo'),
             'chave'                 => 'comercio_Proposta_ValorExtra',
             'Valor'                 => false,
         ),
         'comercio_Proposta_Comissao'  => Array(
             'Nome'                  => 'Propostas -> Se possui Comissao Extra',
-            'Desc'                  => 'Se possui Comissao Extra',
+            'Desc'                  => __('Se possui Comissao Extra'),
             'chave'                 => 'comercio_Proposta_Comissao',
             'Valor'                 => false,
         ),
         'comercio_Proposta_Lucro'  => Array(
             'Nome'                  => 'Propostas -> % de Lucro',
-            'Desc'                  => 'Se possui Percentual de Lucro.',
+            'Desc'                  => __('Se possui Percentual de Lucro.'),
             'chave'                 => 'comercio_Proposta_Lucro',
             'Valor'                 => true,
         ),
         'comercio_Proposta_Desconto'  => Array(
             'Nome'                  => 'Propostas -> % de Desconto',
-            'Desc'                  => 'Se possui Percentual de Desconto.',
+            'Desc'                  => __('Se possui Percentual de Desconto.'),
             'chave'                 => 'comercio_Proposta_Desconto',
             'Valor'                 => true,
         ),
         'comercio_Proposta_Referencia'  => Array(
             'Nome'                  => 'Propostas -> Campo Referencia',
-            'Desc'                  => 'Se possui campo referencia em Propostas.',
+            'Desc'                  => __('Se possui campo referencia em Propostas.'),
             'chave'                 => 'comercio_Proposta_Referencia',
             'Valor'                 => false,
         ),
         'comercio_Proposta_Telefone'  => Array(
             'Nome'                  => 'Propostas -> Campo Telefone',
-            'Desc'                  => 'Se possui campo Telefone em Propostas',
+            'Desc'                  => __('Se possui campo Telefone em Propostas'),
             'chave'                 => 'comercio_Proposta_Telefone',
             'Valor'                 => false,
         ),
         'comercio_Proposta_Checklist'  => Array(
             'Nome'                  => 'Propostas -> Campo Checklist',
-            'Desc'                  => 'Se possui campo Checklist em Propostas',
+            'Desc'                  => __('Se possui campo Checklist em Propostas'),
             'chave'                 => 'comercio_Proposta_Checklist',
             'Valor'                 => false,
         ),
         
         // VISITAS
         'comercio_Visitas'  => Array(
-            'Nome'                  => 'Se possui Folha de Visitas',
-            'Desc'                  => 'Se possui Folha de Visitas',
+            'Nome'                  => __('Se possui Folha de Visitas'),
+            'Desc'                  => __('Se possui Folha de Visitas'),
             'chave'                 => 'comercio_Visitas',
             'Valor'                 => true,
         ),

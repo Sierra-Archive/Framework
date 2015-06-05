@@ -11,39 +11,39 @@ $config_Modulo = function (){
 $config_Menu = function (){
     return Array(
         'Página Inicial' => Array(
-            'Nome'                  => 'Página Inicial',
+            'Nome'                  => __('Página Inicial'),
             'Link'                  => '_Sistema/Principal/Home',
             'Gravidade'             => 10000,
             'Img'                   => 'turboadmin/m-dashboard.png',
             'Icon'                  => 'dashboard',
             'Filhos'                => false,
         ),'Cadastros' => Array(
-            'Nome'                  => 'Cadastros',
+            'Nome'                  => __('Cadastros'),
             'Link'                  => '#',
             'Gravidade'             => 10,
             'Img'                   => 'turboadmin/m-dashboard.png',
             'Icon'                  => 'cog',
         ),'Administrar' => Array(
-            'Nome'                  => 'Administrar',
+            'Nome'                  => __('Administrar'),
             'Link'                  => '#',
             'Gravidade'             => 8,
             'Img'                   => '',
             'Icon'                  => 'building',
         ),'Configurações' => Array(
-            'Nome'                  => 'Configurações',
+            'Nome'                  => __('Configurações'),
             'Link'                  => '#',
             'Gravidade'             => 6,
             'Img'                   => 'turboadmin/m-dashboard.png',
             'Icon'                  => 'wrench',
             'Filhos'                => Array('Grupos'=>Array(
-                'Nome'                  => 'Grupos',
+                'Nome'                  => __('Grupos'),
                 'Link'                  => '_Sistema/Admin/Grupos',
                 'Gravidade'             => 1,
                 'Img'                   => 'turboadmin/m-dashboard.png',
                 'Icon'                  => 'group',
                 'Filhos'                => false,
             ),'Menu'=>Array(
-                'Nome'                  => 'Menu',
+                'Nome'                  => __('Menu'),
                 'Link'                  => '_Sistema/Admin/Menus',
                 'Gravidade'             => 1,
                 'Img'                   => 'turboadmin/m-dashboard.png',
@@ -54,13 +54,13 @@ $config_Menu = function (){
                 'Filhos'                => false,
             ))
         ),'Relatório' => Array(
-            'Nome'                  => 'Relatório',
+            'Nome'                  => __('Relatório'),
             'Link'                  => '#',
             'Gravidade'             => 4,
             'Img'                   => 'turboadmin/m-dashboard.png',
             'Icon'                  => 'book',
         ),'Gráfico' => Array(
-            'Nome'                  => 'Gráfico',
+            'Nome'                  => __('Gráfico'),
             'Link'                  => '#',
             'Gravidade'             => 3,
             'Img'                   => 'turboadmin/m-dashboard.png',
@@ -71,7 +71,7 @@ $config_Menu = function (){
 $config_Permissoes = function (){
     return Array(
         Array(
-            'Nome'                  => 'Sistema - Administração Avançada',
+            'Nome'                  => __('Sistema - Administração Avançada'),
             'Desc'                  => '',
             'Chave'                 => '_Sistema_Admin',
             'End'                   => '_Sistema/Admin', // Endereco que deve conter a url para permitir acesso
@@ -85,7 +85,7 @@ $config_Permissoes = function (){
         
         // Menu
         Array(
-            'Nome'                  => 'Sistema (Menu) - Listagem',
+            'Nome'                  => __('Sistema (Menu) - Listagem'),
             'Desc'                  => '',
             'Chave'                 => '_Sistema_Admin_Menus',
             'End'                   => '_Sistema/Admin/Menus', // Endereco que deve conter a url para permitir acesso
@@ -97,7 +97,7 @@ $config_Permissoes = function (){
             ),
         ),
         Array(
-            'Nome'                  => 'Sistema (Menu) - Add',
+            'Nome'                  => __('Sistema (Menu) - Add'),
             'Desc'                  => '',
             'Chave'                 => '_Sistema_Admin_Menus_Add', // CHave unica nunca repete, chave primaria
             'End'                   => '_Sistema/Admin/Menus_Add', // Endereco que deve conter a url para permitir acesso
@@ -109,7 +109,7 @@ $config_Permissoes = function (){
             ),
         ),
         Array(
-            'Nome'                  => 'Sistema (Menu) - Editar',
+            'Nome'                  => __('Sistema (Menu) - Editar'),
             'Desc'                  => '',
             'Chave'                 => '_Sistema_Admin_Menus_Edit', // CHave unica nunca repete, chave primaria
             'End'                   => '_Sistema/Admin/Menus_Edit', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
@@ -121,7 +121,7 @@ $config_Permissoes = function (){
             ),
         ),
         Array(
-            'Nome'                  => 'Sistema (Menu) - Deletar',
+            'Nome'                  => __('Sistema (Menu) - Deletar'),
             'Desc'                  => '',
             'Chave'                 => '_Sistema_Admin_Menus_Del', // CHave unica nunca repete, chave primaria
             'End'                   => '_Sistema/Admin/Menus_Del', // Endereco que deve conter a url para permitir acesso
@@ -135,7 +135,7 @@ $config_Permissoes = function (){
         
         // Newsletter
         Array(
-            'Nome'                  => 'Newsletter - Listagem',
+            'Nome'                  => __('Newsletter - Listagem'),
             'Desc'                  => '',
             'Chave'                 => '_Sistema_Admin_Newsletter',
             'End'                   => '_Sistema/Admin/Newsletter', // Endereco que deve conter a url para permitir acesso
@@ -147,7 +147,7 @@ $config_Permissoes = function (){
             ),
         ),
         Array(
-            'Nome'                  => 'Newsletter - Add',
+            'Nome'                  => __('Newsletter - Add'),
             'Desc'                  => '',
             'Chave'                 => '_Sistema_Admin_Newsletter_Add', // CHave unica nunca repete, chave primaria
             'End'                   => '_Sistema/Admin/Newsletter_Add', // Endereco que deve conter a url para permitir acesso
@@ -159,7 +159,7 @@ $config_Permissoes = function (){
             ),
         ),
         Array(
-            'Nome'                  => 'Newsletter - Editar',
+            'Nome'                  => __('Newsletter - Editar'),
             'Desc'                  => '',
             'Chave'                 => '_Sistema_Admin_Newsletter_Edit', // CHave unica nunca repete, chave primaria
             'End'                   => '_Sistema/Admin/Newsletter_Edit', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
@@ -171,7 +171,7 @@ $config_Permissoes = function (){
             ),
         ),
         Array(
-            'Nome'                  => 'Newsletter - Deletar',
+            'Nome'                  => __('Newsletter - Deletar'),
             'Desc'                  => '',
             'Chave'                 => '_Sistema_Admin_Newsletter_Del', // CHave unica nunca repete, chave primaria
             'End'                   => '_Sistema/Admin/Newsletter_Del', // Endereco que deve conter a url para permitir acesso
@@ -187,7 +187,7 @@ $config_Permissoes = function (){
         // Grupos
         
         Array(
-            'Nome'                  => 'Sistema (Grupos) - Listagem',
+            'Nome'                  => __('Sistema (Grupos) - Listagem'),
             'Desc'                  => '',
             'Chave'                 => '_Sistema_Admin_Grupos',
             'End'                   => '_Sistema/Admin/Grupos', // Endereco que deve conter a url para permitir acesso
@@ -196,7 +196,7 @@ $config_Permissoes = function (){
             'Metodo'                => '*',  // Metodos referentes separados por virgula
         ),
         Array(
-            'Nome'                  => 'Sistema (Grupos) - Add',
+            'Nome'                  => __('Sistema (Grupos) - Add'),
             'Desc'                  => '',
             'Chave'                 => '_Sistema_Admin_Grupos_Add', // CHave unica nunca repete, chave primaria
             'End'                   => '_Sistema/Admin/Grupos_Add', // Endereco que deve conter a url para permitir acesso
@@ -205,7 +205,7 @@ $config_Permissoes = function (){
             'Metodo'                => 'Grupos_Add,Grupos_Add2',  // Metodos referentes separados por virgula
         ),
         Array(
-            'Nome'                  => 'Sistema (Grupos) - Editar',
+            'Nome'                  => __('Sistema (Grupos) - Editar'),
             'Desc'                  => '',
             'Chave'                 => '_Sistema_Admin_Grupos_Edit', // CHave unica nunca repete, chave primaria
             'End'                   => '_Sistema/Admin/Grupos_Edit', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
@@ -214,7 +214,7 @@ $config_Permissoes = function (){
             'Metodo'                => 'Grupos_Edit,Grupos_Edit2',  // Metodos referentes separados por virgula
         ),
         Array(
-            'Nome'                  => 'Sistema (Grupos) - Deletar',
+            'Nome'                  => __('Sistema (Grupos) - Deletar'),
             'Desc'                  => '',
             'Chave'                 => '_Sistema_Admin_Grupos_Del', // CHave unica nunca repete, chave primaria
             'End'                   => '_Sistema/Admin/Grupos_Del', // Endereco que deve conter a url para permitir acesso
@@ -224,7 +224,7 @@ $config_Permissoes = function (){
         ),
         // PERMISSOES DE GRUPO
         Array(
-            'Nome'                  => 'Permissões (Grupo) - Listagem',
+            'Nome'                  => __('Permissões (Grupo) - Listagem'),
             'Desc'                  => '',
             'Chave'                 => '_Sistema_Admin_Grupos', // CHave unica nunca repete, chave primaria
             'End'                   => '_Sistema/Admin/Grupos', // Endereco que deve conter a url para permitir acesso
@@ -244,13 +244,13 @@ $config_Funcional = function (){
     return Array(
         '_Sistema_Newsletter'  => Array(
             'Nome'                  => 'Sistema -> Newsletter',
-            'Desc'                  => 'Se possue Newsletter',
+            'Desc'                  => __('Se possue Newsletter'),
             'chave'                 => '_Sistema_Newsletter',
             'Valor'                 => false,  // false, true, ou array com os grupos que pode
         ),
         '_Sistema_Avancado'  => Array(
             'Nome'                  => 'Sistema -> Avancado',
-            'Desc'                  => 'Se possue acesso a parte Avancada do Sistema',
+            'Desc'                  => __('Se possue acesso a parte Avancada do Sistema'),
             'chave'                 => '_Sistema_Avancado',
             'Valor'                 => false,  // false, true, ou array com os grupos que pode
         ),

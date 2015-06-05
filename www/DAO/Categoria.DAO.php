@@ -62,7 +62,7 @@ final Class Categoria_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => '',
                 'edicao'            => Array(
-                    'Nome'              => 'Pai',
+                    'Nome'              => __('Pai'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',
@@ -107,7 +107,7 @@ final Class Categoria_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => '',
                 'edicao'            => Array(
-                    'Nome'              => 'Nome',
+                    'Nome'              => __('Nome'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',
@@ -123,7 +123,7 @@ final Class Categoria_DAO extends Framework\App\Dao
                     'Pai'               => 'C', // TABELA que vai manipular a conexao
                     'Tabela'            => 'CA', // TABELA de LINK A SER CONECTADA
                     'valor_padrao'      => false, // ID DO PAI
-                    'Nome'              => 'Modulos Liberados', // Nome no FOrmulario
+                    'Nome'              => __('Modulos Liberados'), // Nome no FOrmulario
                     'Class'             => '', // Classe no formulario
                     'aviso'             => '', // Aviso no formulario
                     'formtipo'          => 'BoleanoMultiplo',  // Tipo de formulario
@@ -150,7 +150,7 @@ final Class Categoria_DAO extends Framework\App\Dao
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Observação',
+                    'Nome'              => __('Observação'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',

@@ -70,7 +70,7 @@ final Class Sistema_Grupo_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => '',//categoria/Admin/Categorias_Add/usuario_grupo', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Tipo de Grupo',
+                    'Nome'              => __('Tipo de Grupo'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',
@@ -96,10 +96,10 @@ final Class Sistema_Grupo_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Nome do Grupo',
+                    'Nome'              => __('Nome do Grupo'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
-                    'aviso'             => 'Minimo 3 caracteres',
+                    'aviso'             => __('Minimo 3 caracteres'),
                     'formtipo'          => 'input',
                     'input'             => array(
                         'tipo'              => 'text',
@@ -166,7 +166,7 @@ final Class Sistema_Grupo_DAO extends Framework\App\Dao
                     'Pai'               => 'SG', // TABELA que vai manipular a conexao
                     'Tabela'            => 'SGP', // TABELA de LINK A SER CONECTADA
                     'valor_padrao'      => false, // ID DO PAI
-                    'Nome'              => 'Permissões do Grupo', // Nome no FOrmulario
+                    'Nome'              => __('Permissões do Grupo'), // Nome no FOrmulario
                     'Class'             => '', // Classe no formulario
                     'aviso'             => '', // Aviso no formulario
                     'formtipo'          => 'BoleanoMultiplo',  // Tipo de formulario
@@ -194,7 +194,7 @@ final Class Sistema_Grupo_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Observação',
+                    'Nome'              => __('Observação'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',

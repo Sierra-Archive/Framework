@@ -12,7 +12,7 @@ $config_Menu = function (){
     return Array(
         'Administrar'=>Array(
             'Filhos'                => Array('Banners'=>Array(
-                'Nome'                  => 'Banners',
+                'Nome'                  => __('Banners'),
                 'Link'                  => 'banner/Admin/Main/',
                 'Gravidade'             => 3,
                 'Img'                   => 'turboadmin/m-dashboard.png',
@@ -25,7 +25,7 @@ $config_Menu = function (){
 $config_Permissoes = function (){
     return Array(
         Array(
-            'Nome'                  => 'Banners - Listagem',
+            'Nome'                  => __('Banners - Listagem'),
             'Desc'                  => '',
             'Chave'                 => 'banner_Admin',
             'End'                   => 'banner/Admin', // Endereco que deve conter a url para permitir acesso
@@ -34,7 +34,7 @@ $config_Permissoes = function (){
             'Metodo'                => '*',  // Metodos referentes separados por virgula
         ),
         Array(
-            'Nome'                  => 'Banners - Add',
+            'Nome'                  => __('Banners - Add'),
             'Desc'                  => '',
             'Chave'                 => 'banner_Admin_Banners_Add', // CHave unica nunca repete, chave primaria
             'End'                   => 'banner/Admin/banners_Add', // Endereco que deve conter a url para permitir acesso
@@ -43,7 +43,7 @@ $config_Permissoes = function (){
             'Metodo'                => 'banners_Add,banners_Add2',  // Metodos referentes separados por virgula
         ),
         Array(
-            'Nome'                  => 'Banners - Editar',
+            'Nome'                  => __('Banners - Editar'),
             'Desc'                  => '',
             'Chave'                 => 'banner_Admin_Banners_Edit', // CHave unica nunca repete, chave primaria
             'End'                   => 'banner/Admin/banners_Edit', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
@@ -52,7 +52,7 @@ $config_Permissoes = function (){
             'Metodo'                => 'banners_Edit,banners_Edit2',  // Metodos referentes separados por virgula
         ),
         Array(
-            'Nome'                  => 'Banners - Deletar',
+            'Nome'                  => __('Banners - Deletar'),
             'Desc'                  => '',
             'Chave'                 => 'banner_Admin_Banners_Del', // CHave unica nunca repete, chave primaria
             'End'                   => 'banner/Admin/Banners_Del', // Endereco que deve conter a url para permitir acesso

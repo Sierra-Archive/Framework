@@ -63,7 +63,7 @@ final Class Enquete_Voto_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => 'Enquete/Enquete/Enquetes_Add', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Enquete',
+                    'Nome'              => __('Enquete'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',
@@ -85,7 +85,7 @@ final Class Enquete_Voto_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => 'usuario/Admin/Usuarios_Add/Cliente',
                 'edicao'            => Array(
-                    'Nome'              => 'Usuário',
+                    'Nome'              => __('Usuário'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => ''
@@ -105,7 +105,7 @@ final Class Enquete_Voto_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => '', // //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Resposta',
+                    'Nome'              => __('Resposta'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',

@@ -412,7 +412,7 @@ readfile($link);*/
         $plot->SetCallback('draw_graph', 'draw_data_table', $settings);
         $plot->DrawGraph();
     }
-    protected function Export_Todos($tipo,&$conteudo,$arquivo_nome='Relatorio'){
+    protected static function Export_Todos($tipo,&$conteudo,$arquivo_nome='Relatorio'){
         $tipo = (string) 'Export_'.$tipo;
         if(is_callable(array($this,$tipo))){
             self::$tipo($conteudo,$arquivo_nome);

@@ -63,7 +63,7 @@ final Class Predial_Bloco_Apart_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => 'predial/Bloco/Blocos_Add',
                 'edicao'            => Array(
-                    'Nome'              => 'Bloco',
+                    'Nome'              => __('Bloco'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => ''
@@ -85,7 +85,7 @@ final Class Predial_Bloco_Apart_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Número',
+                    'Nome'              => __('Número'),
                     'Mascara'           => 'Numero',
                     'valor_padrao'      => false,
                     'readonly'          => false,
@@ -112,7 +112,7 @@ final Class Predial_Bloco_Apart_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'          => false, //'usuario/Admin/Usuarios_Add/cliente',
                 'edicao'            => Array(
-                    'Nome'              => 'Morador Responsável',
+                    'Nome'              => __('Morador Responsável'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',

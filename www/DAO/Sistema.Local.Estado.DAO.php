@@ -60,7 +60,7 @@ final Class Sistema_Local_Estado_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Pais',
+                    'Nome'              => __('Pais'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => ''
@@ -96,10 +96,10 @@ final Class Sistema_Local_Estado_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Nome do Estado',
+                    'Nome'              => __('Nome do Estado'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
-                    'aviso'             => 'Apenas letras.',
+                    'aviso'             => __('Apenas letras.'),
                     'formtipo'          => 'input',
                     'input'             => array(
                         'tipo'              => 'text',

@@ -65,7 +65,7 @@ final Class Predial_Bloco_Apart_Advertencia_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => 'predial/Bloco/Blocos_Add',
                 'edicao'            => Array(
-                    'Nome'              => 'Bloco',
+                    'Nome'              => __('Bloco'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => ''
@@ -85,7 +85,7 @@ final Class Predial_Bloco_Apart_Advertencia_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => 'predial/Apart/Aparts_Add',
                 'edicao'            => Array(
-                    'Nome'              => 'Apartamento',
+                    'Nome'              => __('Apartamento'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => ''
@@ -106,7 +106,7 @@ final Class Predial_Bloco_Apart_Advertencia_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => 'categoria/Admin/Categorias_Add/predial_Advertencia', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Tipo da Advertência',
+                    'Nome'              => __('Tipo da Advertência'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',
@@ -132,7 +132,7 @@ final Class Predial_Bloco_Apart_Advertencia_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Data do Acontecido',
+                    'Nome'              => __('Data do Acontecido'),
                     'valor_padrao'      => APP_HORA_BR,
                     'readonly'          => false,
                     'aviso'             => '',
@@ -159,7 +159,7 @@ final Class Predial_Bloco_Apart_Advertencia_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Nome',
+                    'Nome'              => __('Nome'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',
@@ -185,7 +185,7 @@ final Class Predial_Bloco_Apart_Advertencia_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Descrição',
+                    'Nome'              => __('Descrição'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',

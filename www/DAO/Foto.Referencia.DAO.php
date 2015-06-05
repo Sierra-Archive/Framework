@@ -52,7 +52,7 @@ final Class Foto_Referencia_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => false,
                 'edicao'            => Array(
-                    'Nome'              => 'Foto',
+                    'Nome'              => __('Foto'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',

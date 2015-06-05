@@ -70,7 +70,7 @@ final Class Usuario_Agenda_Compromisso_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              =>  'Titulo',
+                    'Nome'              => __('Titulo'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',
@@ -96,7 +96,7 @@ final Class Usuario_Agenda_Compromisso_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => '', // //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Data Inicio',
+                    'Nome'              => __('Data Inicio'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',
@@ -123,7 +123,7 @@ final Class Usuario_Agenda_Compromisso_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => '', // //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Data Fim',
+                    'Nome'              => __('Data Fim'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',
@@ -150,7 +150,7 @@ final Class Usuario_Agenda_Compromisso_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Observação',
+                    'Nome'              => __('Observação'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',
@@ -175,7 +175,7 @@ final Class Usuario_Agenda_Compromisso_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'          => false,//'comercio/Marca/Marcas_Add',
                 'edicao'            => Array(
-                    'Nome'              => 'Local',
+                    'Nome'              => __('Local'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => ''

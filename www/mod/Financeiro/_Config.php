@@ -14,7 +14,7 @@ $config_Menu = function (){
     return Array(
         'Relatório' => Array(
             'Filhos'                => Array('Financeiro'=>Array(
-                'Nome'                  => 'Financeiro',
+                'Nome'                  => __('Financeiro'),
                 'Link'                  => 'Financeiro/Relatorio/Relatorio',
                 'Gravidade'             => 3,
                 'Img'                   => 'money',
@@ -24,7 +24,7 @@ $config_Menu = function (){
         ),
         'Gráfico' => Array(
             'Filhos'                => Array('Gráfico'=>Array(
-                'Nome'                  => 'Financeiro',
+                'Nome'                  => __('Financeiro'),
                 'Link'                  => 'Financeiro/Relatorio/Grafico_Relatorio',
                 'Gravidade'             => 2,
                 'Img'                   => 'money',
@@ -33,55 +33,55 @@ $config_Menu = function (){
             ),),
         ),
         'Financeiro' => Array(
-            'Nome'                  => 'Financeiro',
+            'Nome'                  => __('Financeiro'),
             'Link'                  => '#',
             'Gravidade'             => 20,
             'Img'                   => 'money',
             'Icon'                  => 'money',
             'Filhos'                => Array('Formas de Pagamento'=>Array(
-                'Nome'                  => 'Formas de Pagamento',
+                'Nome'                  => __('Formas de Pagamento'),
                 'Link'                  => 'Financeiro/Pagamento/Formas',
                 'Gravidade'             => 2,
                 'Img'                   => 'money',
                 'Icon'                  => 'money',
                 'Filhos'                => false,
             ),'Condições de Pagamento'=>Array(
-                'Nome'                  => 'Condições de Pagamento',
+                'Nome'                  => __('Condições de Pagamento'),
                 'Link'                  => 'Financeiro/Pagamento/Condicoes',
                 'Gravidade'             => 1,
                 'Img'                   => 'money',
                 'Icon'                  => 'money',
                 'Filhos'                => false,
             ),'Contas à Pagar'=>Array(
-                'Nome'                  => 'Contas à Pagar',
+                'Nome'                  => __('Contas à Pagar'),
                 'Link'                  => 'Financeiro/Pagamento/Pagar',
                 'Gravidade'             => 10,
                 'Img'                   => 'money',
                 'Icon'                  => 'money',
                 'Filhos'                => false,
             ),'Contas Pagas'=>Array(
-                'Nome'                  => 'Contas Pagas',
+                'Nome'                  => __('Contas Pagas'),
                 'Link'                  => 'Financeiro/Pagamento/Pago',
                 'Gravidade'             => 9,
                 'Img'                   => 'money',
                 'Icon'                  => 'money',
                 'Filhos'                => false,
             ),'Contas à Receber'=>Array(
-                'Nome'                  => 'Contas à Receber',
+                'Nome'                  => __('Contas à Receber'),
                 'Link'                  => 'Financeiro/Pagamento/Receber',
                 'Gravidade'             => 8,
                 'Img'                   => 'money',
                 'Icon'                  => 'money',
                 'Filhos'                => false,
             ),'Contas Recebidas'=>Array(
-                'Nome'                  => 'Contas Recebidas',
+                'Nome'                  => __('Contas Recebidas'),
                 'Link'                  => 'Financeiro/Pagamento/Recebido',
                 'Gravidade'             => 7,
                 'Img'                   => 'money',
                 'Icon'                  => 'money',
                 'Filhos'                => false,
             ),'Finanças'=>Array(
-                'Nome'                  => 'Finanças',
+                'Nome'                  => __('Finanças'),
                 'Link'                  => 'Financeiro/Financa/Financas',
                 'Gravidade'             => 6,
                 'Img'                   => 'money',
@@ -94,7 +94,7 @@ $config_Menu = function (){
                 
             //Contas de Usuarios
             'Minhas Contas à Pagar'=>Array(
-                'Nome'                  => 'Minhas Contas à Pagar',
+                'Nome'                  => __('Minhas Contas à Pagar'),
                 'Link'                  => 'Financeiro/Usuario/Pagar',
                 'Gravidade'             => 20,
                 'Img'                   => 'money',
@@ -104,7 +104,7 @@ $config_Menu = function (){
                 ),
                 'Filhos'                => false,
             ),'Minhas Contas Pagas'=>Array(
-                'Nome'                  => 'Minhas Contas Pagas',
+                'Nome'                  => __('Minhas Contas Pagas'),
                 'Link'                  => 'Financeiro/Usuario/Pago',
                 'Gravidade'             => 19,
                 'Img'                   => 'money',
@@ -114,7 +114,7 @@ $config_Menu = function (){
                 ),
                 'Filhos'                => false,
             ),'Minhas Contas à Receber'=>Array(
-                'Nome'                  => 'Minhas Contas à Receber',
+                'Nome'                  => __('Minhas Contas à Receber'),
                 'Link'                  => 'Financeiro/Usuario/Receber',
                 'Gravidade'             => 18,
                 'Img'                   => 'money',
@@ -124,7 +124,7 @@ $config_Menu = function (){
                 ),
                 'Filhos'                => false,
             ),'Minhas Contas Recebidas'=>Array(
-                'Nome'                  => 'Minhas Contas Recebidas',
+                'Nome'                  => __('Minhas Contas Recebidas'),
                 'Link'                  => 'Financeiro/Usuario/Recebido',
                 'Gravidade'             => 17,
                 'Img'                   => 'money',
@@ -140,8 +140,8 @@ $config_Menu = function (){
 $config_Permissoes = function (){
     return Array(
         /*Array(
-            'Nome'                  => 'Visualizar Financeiro',
-            'Desc'                  => 'Financeiro De cada Usuario, Tambem se tiver em Funcional',
+            'Nome'                  => __('Visualizar Financeiro'),
+            'Desc'                  => __('Financeiro De cada Usuario, Tambem se tiver em Funcional'),
             'Chave'                 => 'Financeiro_Listar',
             'End'                   => 'Financeiro/Listar', // Endereco que deve conter a url para permitir acesso
             'Modulo'                => 'Financeiro', // Modulo Referente
@@ -151,7 +151,7 @@ $config_Permissoes = function (){
         
         // Condições de Pagamento
         Array(
-            'Nome'                  => 'Financeiro (Condições de Pagamento) - Listagem',
+            'Nome'                  => __('Financeiro (Condições de Pagamento) - Listagem'),
             'Desc'                  => '',
             'Chave'                 => 'Financeiro_Pagamento_Condicoes',
             'End'                   => 'Financeiro/Pagamento/Condicoes', // Endereco que deve conter a url para permitir acesso
@@ -160,7 +160,7 @@ $config_Permissoes = function (){
             'Metodo'                => 'Condicoes',  // Metodos referentes separados por virgula // Endereco que deve conter a url para permitir acesso
         ),
         Array(
-            'Nome'                  => 'Financeiro (Condições de Pagamento) - Add',
+            'Nome'                  => __('Financeiro (Condições de Pagamento) - Add'),
             'Desc'                  => '',
             'Chave'                 => 'Financeiro_Pagamento_Condicoes_Add', // CHave unica nunca repete, chave primaria
             'End'                   => 'Financeiro/Pagamento/Condicoes_Add', // Endereco que deve conter a url para permitir acesso
@@ -169,7 +169,7 @@ $config_Permissoes = function (){
             'Metodo'                => 'Condicoes_Add,Condicoes_Add2',  // Metodos referentes separados por virgula
         ),
         Array(
-            'Nome'                  => 'Financeiro (Condições de Pagamento) - Editar',
+            'Nome'                  => __('Financeiro (Condições de Pagamento) - Editar'),
             'Desc'                  => '',
             'Chave'                 => 'Financeiro_Pagamento_Condicoes_Edit', // CHave unica nunca repete, chave primaria
             'End'                   => 'Financeiro/Pagamento/Condicoes_Edit', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
@@ -178,7 +178,7 @@ $config_Permissoes = function (){
             'Metodo'                => 'Condicoes_Edit,Condicoes_Edit2',  // Metodos referentes separados por virgula
         ),
         Array(
-            'Nome'                  => 'Financeiro (Condições de Pagamento) - Deletar',
+            'Nome'                  => __('Financeiro (Condições de Pagamento) - Deletar'),
             'Desc'                  => '',
             'Chave'                 => 'Financeiro_Pagamento_Condicoes_Del', // CHave unica nunca repete, chave primaria
             'End'                   => 'Financeiro/Pagamento/Condicoes_Del', // Endereco que deve conter a url para permitir acesso
@@ -190,7 +190,7 @@ $config_Permissoes = function (){
         
         // Formas de Pagamento
         Array(
-            'Nome'                  => 'Financeiro (Formas de Pagamento) - Listagem',
+            'Nome'                  => __('Financeiro (Formas de Pagamento) - Listagem'),
             'Desc'                  => '',
             'Chave'                 => 'Financeiro_Pagamento_Formas',
             'End'                   => 'Financeiro/Pagamento/Formas', // Endereco que deve conter a url para permitir acesso
@@ -199,7 +199,7 @@ $config_Permissoes = function (){
             'Metodo'                => 'Formas',  // Metodos referentes separados por virgula // Endereco que deve conter a url para permitir acesso
         ),
         Array(
-            'Nome'                  => 'Financeiro (Formas de Pagamento) - Add',
+            'Nome'                  => __('Financeiro (Formas de Pagamento) - Add'),
             'Desc'                  => '',
             'Chave'                 => 'FFinanceiro_Pagamento_Formas_Add', // CHave unica nunca repete, chave primaria
             'End'                   => 'Financeiro/Pagamento/Formas_Add', // Endereco que deve conter a url para permitir acesso
@@ -208,7 +208,7 @@ $config_Permissoes = function (){
             'Metodo'                => 'Formas_Add,Formas_Add2',  // Metodos referentes separados por virgula
         ),
         Array(
-            'Nome'                  => 'Financeiro (Formas de Pagamento) - Editar',
+            'Nome'                  => __('Financeiro (Formas de Pagamento) - Editar'),
             'Desc'                  => '',
             'Chave'                 => 'Financeiro_Pagamento_Formas_Edit', // CHave unica nunca repete, chave primaria
             'End'                   => 'Financeiro/Pagamento/Formas_Edit', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
@@ -217,7 +217,7 @@ $config_Permissoes = function (){
             'Metodo'                => 'Formas_Edit,Formas_Edit2',  // Metodos referentes separados por virgula
         ),
         Array(
-            'Nome'                  => 'Financeiro (Formas de Pagamento) - Deletar',
+            'Nome'                  => __('Financeiro (Formas de Pagamento) - Deletar'),
             'Desc'                  => '',
             'Chave'                 => 'Financeiro_Pagamento_Formas_Del', // CHave unica nunca repete, chave primaria
             'End'                   => 'Financeiro/Pagamento/Formas_Del', // Endereco que deve conter a url para permitir acesso
@@ -230,7 +230,7 @@ $config_Permissoes = function (){
         
         // COntas a Receber e Recebida
         Array(
-            'Nome'                  => 'Financeiro (Contas a Receber) - Listagem',
+            'Nome'                  => __('Financeiro (Contas a Receber) - Listagem'),
             'Desc'                  => '',
             'Chave'                 => 'Financeiro_Pagamento_Receber',
             'End'                   => 'Financeiro/Pagamento/Receber', // Endereco que deve conter a url para permitir acesso
@@ -239,7 +239,7 @@ $config_Permissoes = function (){
             'Metodo'                => 'Receber',  // Metodos referentes separados por virgula
         ),
         Array(
-            'Nome'                  => 'Financeiro (Contas Recebidas) - Listagem',
+            'Nome'                  => __('Financeiro (Contas Recebidas) - Listagem'),
             'Desc'                  => '',
             'Chave'                 => 'Financeiro_Pagamento_Recebido',
             'End'                   => 'Financeiro/Pagamento/Recebido', // Endereco que deve conter a url para permitir acesso
@@ -250,7 +250,7 @@ $config_Permissoes = function (){
         
         // Contas a Pagar e Pagas
         Array(
-            'Nome'                  => 'Financeiro (Contas a Pagar) - Listagem',
+            'Nome'                  => __('Financeiro (Contas a Pagar) - Listagem'),
             'Desc'                  => '',
             'Chave'                 => 'Financeiro_Pagamento_Pagar',
             'End'                   => 'Financeiro/Pagamento/Pagar', // Endereco que deve conter a url para permitir acesso
@@ -259,7 +259,7 @@ $config_Permissoes = function (){
             'Metodo'                => 'Pagar',  // Metodos referentes separados por virgula
         ),
         Array(
-            'Nome'                  => 'Financeiro (Contas Pagas) - Listagem',
+            'Nome'                  => __('Financeiro (Contas Pagas) - Listagem'),
             'Desc'                  => '',
             'Chave'                 => 'Financeiro_Pagamento_Pago',
             'End'                   => 'Financeiro/Pagamento/Pago', // Endereco que deve conter a url para permitir acesso
@@ -270,7 +270,7 @@ $config_Permissoes = function (){
         
         // Pagar Receber
         Array(
-            'Nome'                  => 'Financeiro (Contas a Receber/a Pagar) - Declarar Pago',
+            'Nome'                  => __('Financeiro (Contas a Receber/a Pagar) - Declarar Pago'),
             'Desc'                  => '',
             'Chave'                 => 'Financeiro_Pagamento_Financeiros_Pagar',
             'End'                   => 'Financeiro/Pagamento/Financeiros_Pagar', // Endereco que deve conter a url para permitir acesso
@@ -279,7 +279,7 @@ $config_Permissoes = function (){
             'Metodo'                => 'Financeiros_Pagar',  // Metodos referentes separados por virgula
         ),
         Array(
-            'Nome'                  => 'Financeiro (Contas a Receber/a Pagar) - Alterar Vencimento',
+            'Nome'                  => __('Financeiro (Contas a Receber/a Pagar) - Alterar Vencimento'),
             'Desc'                  => '',
             'Chave'                 => 'Financeiro_Pagamento_Financeiros_VencimentoEdit',
             'End'                   => 'Financeiro/Pagamento/Financeiros_VencimentoEdit', // Endereco que deve conter a url para permitir acesso
@@ -288,7 +288,7 @@ $config_Permissoes = function (){
             'Metodo'                => 'Financeiros_VencimentoEdit',  // Metodos referentes separados por virgula
         ),
         Array(
-            'Nome'                  => 'Financeiro (Contas Recebidas/Pagas) - Desfazer Pagamento',
+            'Nome'                  => __('Financeiro (Contas Recebidas/Pagas) - Desfazer Pagamento'),
             'Desc'                  => '',
             'Chave'                 => 'Financeiro_Pagamento_Financeiros_NaoPagar',
             'End'                   => 'Financeiro/Pagamento/Financeiros_NaoPagar', // Endereco que deve conter a url para permitir acesso
@@ -299,7 +299,7 @@ $config_Permissoes = function (){
         
         // Relatorios
         Array(
-            'Nome'                  => 'Financeiro (Relatório) -  Visualizar',
+            'Nome'                  => __('Financeiro (Relatório) -  Visualizar'),
             'Desc'                  => '',
             'Chave'                 => 'Financeiro_Relatorio_Relatorio',
             'End'                   => 'Financeiro/Relatorio/Relatorio', // Endereco que deve conter a url para permitir acesso
@@ -308,7 +308,7 @@ $config_Permissoes = function (){
             'Metodo'                => 'Relatorio',  // Metodos referentes separados por virgula
         ),
         Array(
-            'Nome'                  => 'Financeiro (Gráfico) -  Visualizar',
+            'Nome'                  => __('Financeiro (Gráfico) -  Visualizar'),
             'Desc'                  => '',
             'Chave'                 => 'Financeiro_Relatorio_Grafico_Relatorio',
             'End'                   => 'Financeiro/Relatorio/Grafico_Relatorio', // Endereco que deve conter a url para permitir acesso
@@ -319,7 +319,7 @@ $config_Permissoes = function (){
         
         // Financas
         Array(
-            'Nome'                  => 'Financeiro (Finanças) -  Listagem',
+            'Nome'                  => __('Financeiro (Finanças) -  Listagem'),
             'Desc'                  => '',
             'Chave'                 => 'Financeiro_Financa_Financas',
             'End'                   => 'Financeiro/Financa/Financas', // Endereco que deve conter a url para permitir acesso
@@ -331,7 +331,7 @@ $config_Permissoes = function (){
             ),
         ),
         Array(
-            'Nome'                  => 'Financeiro (Finanças) - Add',
+            'Nome'                  => __('Financeiro (Finanças) - Add'),
             'Desc'                  => '',
             'Chave'                 => 'Financeiro_Financa_Financas_Add', // CHave unica nunca repete, chave primaria
             'End'                   => 'Financeiro/Financa/Financas_Add', // Endereco que deve conter a url para permitir acesso
@@ -343,7 +343,7 @@ $config_Permissoes = function (){
             ),
         ),
         Array(
-            'Nome'                  => 'Financeiro (Finanças) - Editar',
+            'Nome'                  => __('Financeiro (Finanças) - Editar'),
             'Desc'                  => '',
             'Chave'                 => 'Financeiro_Financa_Financas_Edit', // CHave unica nunca repete, chave primaria
             'End'                   => 'Financeiro/Financa/Financas_Edit', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
@@ -355,7 +355,7 @@ $config_Permissoes = function (){
             ),
         ),
         Array(
-            'Nome'                  => 'Financeiro (Finanças) - Deletar',
+            'Nome'                  => __('Financeiro (Finanças) - Deletar'),
             'Desc'                  => '',
             'Chave'                 => 'Financeiro_Financa_Financas_Del', // CHave unica nunca repete, chave primaria
             'End'                   => 'Financeiro/Financa/Financas_Del', // Endereco que deve conter a url para permitir acesso
@@ -371,7 +371,7 @@ $config_Permissoes = function (){
         
         // Pagamento de Usuario
         Array(
-            'Nome'                  => 'Financeiro de Usuários (Contas a Receber) - Listagem',
+            'Nome'                  => __('Financeiro de Usuários (Contas a Receber) - Listagem'),
             'Desc'                  => '',
             'Chave'                 => 'Financeiro_Usuario_Receber',
             'End'                   => 'Financeiro/Usuario/Receber', // Endereco que deve conter a url para permitir acesso
@@ -383,7 +383,7 @@ $config_Permissoes = function (){
             ),
         ),
         Array(
-            'Nome'                  => 'Financeiro de Usuários (Contas Recebidas) - Listagem',
+            'Nome'                  => __('Financeiro de Usuários (Contas Recebidas) - Listagem'),
             'Desc'                  => '',
             'Chave'                 => 'Financeiro_Usuario_Recebido',
             'End'                   => 'Financeiro/Usuario/Recebido', // Endereco que deve conter a url para permitir acesso
@@ -395,7 +395,7 @@ $config_Permissoes = function (){
             ),
         ),
         Array(
-            'Nome'                  => 'Financeiro de Usuários (Contas a Pagar) - Listagem',
+            'Nome'                  => __('Financeiro de Usuários (Contas a Pagar) - Listagem'),
             'Desc'                  => '',
             'Chave'                 => 'Financeiro_Usuario_Pagar',
             'End'                   => 'Financeiro/Usuario/Pagar', // Endereco que deve conter a url para permitir acesso
@@ -407,7 +407,7 @@ $config_Permissoes = function (){
             ),
         ),
         Array(
-            'Nome'                  => 'Financeiro de Usuários (Contas Pagas) - Listagem',
+            'Nome'                  => __('Financeiro de Usuários (Contas Pagas) - Listagem'),
             'Desc'                  => '',
             'Chave'                 => 'Financeiro_Usuario_Pago',
             'End'                   => 'Financeiro/Usuario/Pago', // Endereco que deve conter a url para permitir acesso
@@ -421,7 +421,7 @@ $config_Permissoes = function (){
         
         // Pagar Receber
         Array(
-            'Nome'                  => 'Financeiro de Usuários (Contas a Receber/a Pagar) - Declarar Pago/Pagar',
+            'Nome'                  => __('Financeiro de Usuários (Contas a Receber/a Pagar) - Declarar Pago/Pagar'),
             'Desc'                  => '',
             'Chave'                 => 'Financeiro_Usuario_Financeiros_Pagar',
             'End'                   => 'Financeiro/Usuario/Financeiros_Pagar', // Endereco que deve conter a url para permitir acesso
@@ -444,19 +444,19 @@ $config_Funcional = function (){
     return Array(
         'Financeiro_Financa'  => Array(
             'Nome'                  => 'Usuarios -> Financas',
-            'Desc'                  => 'Se tem Cadastro de Financas',
+            'Desc'                  => __('Se tem Cadastro de Financas'),
             'chave'                 => 'Financeiro_Financa',
             'Valor'                 => false,
         ),
         'Financeiro_User_Saldo'  => Array(
             'Nome'                  => 'Usuarios -> Saldo',
-            'Desc'                  => 'Se usuarios terão saldo próprio dentro do sistema',
+            'Desc'                  => __('Se usuarios terão saldo próprio dentro do sistema'),
             'chave'                 => 'Financeiro_User_Saldo',
             'Valor'                 => false,
         ),
         'Financeiro_User_Planos'  => Array(
             'Nome'                  => 'Usuarios -> Planos',
-            'Desc'                  => 'Se usuarios terão acesso a diferentes planos dentro do sistema',
+            'Desc'                  => __('Se usuarios terão acesso a diferentes planos dentro do sistema'),
             'chave'                 => 'Financeiro_User_Planos',
             'Valor'                 => false,
         )

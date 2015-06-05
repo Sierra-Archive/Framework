@@ -69,7 +69,7 @@ final Class Social_Acao_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => 'usuario/Admin/Usuarios_Add/cliente',
                 'edicao'            => Array(
-                    'Nome'              => 'Vitima',
+                    'Nome'              => __('Vitima'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => ''
@@ -90,7 +90,7 @@ final Class Social_Acao_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => 'usuario/Admin/Usuarios_Add/cliente',
                 'edicao'            => Array(
-                    'Nome'              => 'Alvo',
+                    'Nome'              => __('Alvo'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => ''
@@ -101,7 +101,7 @@ final Class Social_Acao_DAO extends Framework\App\Dao
                     'Pai'               => 'SA', // TABELA que vai manipular a conexao
                     'Tabela'            => 'SAP', // TABELA de LINK A SER CONECTADA
                     'valor_padrao'      => false, // id do pai
-                    'Nome'              => 'Participantes', // Nome no FOrmulario
+                    'Nome'              => __('Participantes'), // Nome no FOrmulario
                     'Class'             => '', // Classe no formulario
                     'aviso'             => '', // Aviso no formulario
                     'formtipo'          => 'SelectMultiplo',  // Tipo de formulario
@@ -120,7 +120,7 @@ final Class Social_Acao_DAO extends Framework\App\Dao
                     'Pai'               => 'SA', // TABELA que vai manipular a conexao
                     'Tabela'            => 'SAPP', // TABELA de LINK A SER CONECTADA
                     'valor_padrao'      => false, // id do pai
-                    'Nome'              => 'Presentes', // Nome no FOrmulario
+                    'Nome'              => __('Presentes'), // Nome no FOrmulario
                     'Class'             => '', // Classe no formulario
                     'aviso'             => '', // Aviso no formulario
                     'formtipo'          => 'SelectMultiplo',  // Tipo de formulario
@@ -139,7 +139,7 @@ final Class Social_Acao_DAO extends Framework\App\Dao
                     'Pai'               => 'SA', // TABELA que vai manipular a conexao
                     'Tabela'            => 'SCA', // TABELA de LINK A SER CONECTADA
                     'valor_padrao'      => false, // id do pai
-                    'Nome'              => 'Caracteristicas', // Nome no FOrmulario
+                    'Nome'              => __('Caracteristicas'), // Nome no FOrmulario
                     'Class'             => 'obrigatorio', // Classe no formulario
                     'aviso'             => '', // Aviso no formulario
                     'formtipo'          => 'SelectMultiplo',  // Tipo de formulario
@@ -170,7 +170,7 @@ final Class Social_Acao_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Data do Acontecido',
+                    'Nome'              => __('Data do Acontecido'),
                     'Mascara'           => 'Data',
                     'valor_padrao'      => APP_DATA_BR,
                     'readonly'          => false,
@@ -198,10 +198,10 @@ final Class Social_Acao_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Assunto da Ação',
+                    'Nome'              => __('Assunto da Ação'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
-                    'aviso'             => 'Minimo 3 caracteres',
+                    'aviso'             => __('Minimo 3 caracteres'),
                     'formtipo'          => 'input',
                     'input'             => array(
                         'tipo'              => 'text',
@@ -224,7 +224,7 @@ final Class Social_Acao_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Descrição do Ocorrido',
+                    'Nome'              => __('Descrição do Ocorrido'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',

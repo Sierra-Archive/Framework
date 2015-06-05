@@ -62,7 +62,7 @@ final Class Desenvolvimento_Framework_Submodulo_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo
                 'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Nome',
+                    'Nome'              => __('Nome'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',
@@ -87,7 +87,7 @@ final Class Desenvolvimento_Framework_Submodulo_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => 'usuario_mensagem/Setor/Setores_Add', //0 ninguem, 1 admin, 2 todos
                 'edicao'            => Array(
-                    'Nome'              => 'Módulo',
+                    'Nome'              => __('Módulo'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',

@@ -11,7 +11,7 @@ $config_Modulo = function (){
 $config_Menu = function (){
     return Array(
         'Turmas Abertas' => Array(
-            'Nome'                  => 'Turmas Abertas',
+            'Nome'                  => __('Turmas Abertas'),
             'Link'                  => 'Curso/Turma/Abertas',
             'Gravidade'             => 90,
             'Img'                   => '',
@@ -19,20 +19,20 @@ $config_Menu = function (){
             'Filhos'                => false
         ),
         'Cursos' => Array(
-            'Nome'                  => 'Cursos',
+            'Nome'                  => __('Cursos'),
             'Link'                  => '#',
             'Gravidade'             => 55,
             'Img'                   => '',
             'Icon'                  => 'building',
             'Filhos'                => Array('Cursos'=>Array(
-                'Nome'                  => 'Cursos',
+                'Nome'                  => __('Cursos'),
                 'Link'                  => 'Curso/Curso/Cursos',
                 'Gravidade'             => 90,
                 'Img'                   => '',
                 'Icon'                  => 'group',
                 'Filhos'                => false,
             ),'Turmas'=>Array(
-                'Nome'                  => 'Turmas',
+                'Nome'                  => __('Turmas'),
                 'Link'                  => 'Curso/Turma/Turmas',
                 'Gravidade'             => 80,
                 'Img'                   => '',
@@ -46,7 +46,7 @@ $config_Permissoes = function (){
     return Array(
         // Curso
         Array(
-            'Nome'                  => 'Midia (Cursos) - Listagem',
+            'Nome'                  => __('Midia (Cursos) - Listagem'),
             'Desc'                  => '',
             'Chave'                 => 'Curso_Curso_Cursos',
             'End'                   => 'Curso/Curso/Cursos', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
@@ -55,7 +55,7 @@ $config_Permissoes = function (){
             'Metodo'                => 'Cursos',  // Metodos referentes separados por virgula
         ),
         Array(
-            'Nome'                  => 'Midia (Cursos) - Add',
+            'Nome'                  => __('Midia (Cursos) - Add'),
             'Desc'                  => '',
             'Chave'                 => 'Curso_Curso_Cursos_Add', // CHave unica nunca repete, chave primaria
             'End'                   => 'Curso/Curso/Cursos_Add', // Endereco que deve conter a url para permitir acesso
@@ -64,7 +64,7 @@ $config_Permissoes = function (){
             'Metodo'                => 'Cursos_Add,Cursos_Add2',  // Metodos referentes separados por virgula
         ),
         Array(
-            'Nome'                  => 'Midia (Cursos) - Editar',
+            'Nome'                  => __('Midia (Cursos) - Editar'),
             'Desc'                  => '',
             'Chave'                 => 'Curso_Curso_Cursos_Edit', // CHave unica nunca repete, chave primaria
             'End'                   => 'Curso/Curso/Cursos_Edit', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
@@ -73,7 +73,7 @@ $config_Permissoes = function (){
             'Metodo'                => 'Cursos_Edit,Cursos_Edit2',  // Metodos referentes separados por virgula
         ),
         Array(
-            'Nome'                  => 'Midia (Cursos) - Deletar',
+            'Nome'                  => __('Midia (Cursos) - Deletar'),
             'Desc'                  => '',
             'Chave'                 => 'Curso_Curso_Cursos_Del', // CHave unica nunca repete, chave primaria
             'End'                   => 'Curso/Curso/Cursos_Del', // Endereco que deve conter a url para permitir acesso
@@ -82,7 +82,7 @@ $config_Permissoes = function (){
             'Metodo'                => 'Cursos_Del',  // Metodos referentes separados por virgula
         ),
         Array(
-            'Nome'                  => 'Midia (Cursos) - Status Alterar',
+            'Nome'                  => __('Midia (Cursos) - Status Alterar'),
             'Desc'                  => '',
             'Chave'                 => 'Curso_Cursos_Status', // CHave unica nunca repete, chave primaria
             'End'                   => 'Curso/Cursos/Status', // Endereco que deve conter a url para permitir acesso
@@ -93,7 +93,7 @@ $config_Permissoes = function (){
         
         // Turma
         Array(
-            'Nome'                  => 'Midia (Turmas) - Listagem',
+            'Nome'                  => __('Midia (Turmas) - Listagem'),
             'Desc'                  => '',
             'Chave'                 => 'Curso_Turma_Turmas',
             'End'                   => 'Curso/Turma/Turmas', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
@@ -102,7 +102,7 @@ $config_Permissoes = function (){
             'Metodo'                => 'Turmas',  // Metodos referentes separados por virgula
         ),
         Array(
-            'Nome'                  => 'Midia (Turmas) - Ver',
+            'Nome'                  => __('Midia (Turmas) - Ver'),
             'Desc'                  => '',
             'Chave'                 => 'Curso_Turma_Turmas_Ver', // CHave unica nunca repete, chave primaria
             'End'                   => 'Curso/Turma/Turmas_Ver', // Endereco que deve conter a url para permitir acesso
@@ -111,7 +111,7 @@ $config_Permissoes = function (){
             'Metodo'                => 'Turmas_Ver',  // Metodos referentes separados por virgula
         ),
         Array(
-            'Nome'                  => 'Midia (Turmas) - Add',
+            'Nome'                  => __('Midia (Turmas) - Add'),
             'Desc'                  => '',
             'Chave'                 => 'Curso_Turma_Turmas_Add', // CHave unica nunca repete, chave primaria
             'End'                   => 'Curso/Turma/Turmas_Add', // Endereco que deve conter a url para permitir acesso
@@ -120,7 +120,7 @@ $config_Permissoes = function (){
             'Metodo'                => 'Turmas_Add,Turmas_Add2',  // Metodos referentes separados por virgula
         ),
         Array(
-            'Nome'                  => 'Midia (Turmas) - Editar',
+            'Nome'                  => __('Midia (Turmas) - Editar'),
             'Desc'                  => '',
             'Chave'                 => 'Curso_Turma_Turmas_Edit', // CHave unica nunca repete, chave primaria
             'End'                   => 'Curso/Turma/Turmas_Edit', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
@@ -129,7 +129,7 @@ $config_Permissoes = function (){
             'Metodo'                => 'Turmas_Edit,Turmas_Edit2',  // Metodos referentes separados por virgula
         ),
         Array(
-            'Nome'                  => 'Midia (Turmas) - Deletar',
+            'Nome'                  => __('Midia (Turmas) - Deletar'),
             'Desc'                  => '',
             'Chave'                 => 'Curso_Turma_Turmas_Del', // CHave unica nunca repete, chave primaria
             'End'                   => 'Curso/Turma/Turmas_Del', // Endereco que deve conter a url para permitir acesso
@@ -138,7 +138,7 @@ $config_Permissoes = function (){
             'Metodo'                => 'Turmas_Del',  // Metodos referentes separados por virgula
         ),
         Array(
-            'Nome'                  => 'Midia (Turmas) - Status Alterar',
+            'Nome'                  => __('Midia (Turmas) - Status Alterar'),
             'Desc'                  => '',
             'Chave'                 => 'Curso_Turma_Status', // CHave unica nunca repete, chave primaria
             'End'                   => 'Curso/Turma/Status', // Endereco que deve conter a url para permitir acesso
@@ -151,7 +151,7 @@ $config_Permissoes = function (){
         
         /// Inscrições
         Array(
-            'Nome'                  => 'Midia (Turmas) - Abertas para Inscrição',
+            'Nome'                  => __('Midia (Turmas) - Abertas para Inscrição'),
             'Desc'                  => '',
             'Chave'                 => 'Curso_Turma_Abertas',
             'End'                   => 'Curso/Turma/Abertas', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
@@ -160,7 +160,7 @@ $config_Permissoes = function (){
             'Metodo'                => 'Abertas',  // Metodos referentes separados por virgula
         ),
         Array(
-            'Nome'                  => 'Midia (Inscrições) - Se Inscrever',
+            'Nome'                  => __('Midia (Inscrições) - Se Inscrever'),
             'Desc'                  => '',
             'Chave'                 => 'Curso_Turma_Inscricao_Fazer',
             'End'                   => 'Curso/Turma/Inscricao_Fazer', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
@@ -169,7 +169,7 @@ $config_Permissoes = function (){
             'Metodo'                => 'Inscricao_Fazer,Inscricao_Fazer2',  // Metodos referentes separados por virgula
         ),
         Array(
-            'Nome'                  => 'Midia (Inscrições) - Mover Inscrição',
+            'Nome'                  => __('Midia (Inscrições) - Mover Inscrição'),
             'Desc'                  => '',
             'Chave'                 => 'Curso_Turma_Inscricao_Mover',
             'End'                   => 'Curso/Turma/Inscricao_Mover', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso

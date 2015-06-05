@@ -59,7 +59,7 @@ final Class Gramatica_DAO extends Framework\App\Dao
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Titulo da Noticia',
+                    'Nome'              => __('Titulo da Noticia'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',

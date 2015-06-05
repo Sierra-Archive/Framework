@@ -72,7 +72,7 @@ final Class Usuario_Permissao_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => 'usuario/Admin/Usuarios_Add',
                 'edicao'            => Array(
-                    'Nome'              => 'Usuário',
+                    'Nome'              => __('Usuário'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => ''
@@ -93,10 +93,10 @@ final Class Usuario_Permissao_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => '', //0 ninguem, 1 admin, 2 todos
                 'edicao'            => Array(
-                    'Nome'              => 'Valor',
+                    'Nome'              => __('Valor'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
-                    'aviso'             => 'Ativado ou não',
+                    'aviso'             => __('Ativado ou não'),
                     'formtipo'          => 'select',
                     'select'            => array(
                         'opcoes'            => array(
