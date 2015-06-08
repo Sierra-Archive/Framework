@@ -327,7 +327,7 @@ unset($tempo);
  */
 $textdomain = "Framework";
 if (isset($_GET['locale']) && !empty($_GET['locale'])){
-    define('SISTEMA_LINGUAGEM', anti_injection($_GET['locale']));
+    define('SISTEMA_LINGUAGEM', \anti_injection($_GET['locale']));
 }else{
     define('SISTEMA_LINGUAGEM', SISTEMA_LINGUAGEM_PADRAO);
 }

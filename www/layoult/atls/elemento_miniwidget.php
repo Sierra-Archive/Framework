@@ -1,5 +1,6 @@
 <?php $cont=0;
 foreach($params['widgets'] as $v){
+    var_dump($v);
     if( isset($v['duplo']) && $v['duplo']===true){
         $duplo=' double';
     }else{

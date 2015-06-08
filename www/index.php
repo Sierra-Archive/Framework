@@ -1,4 +1,6 @@
 <?php
+
+
 /*
  *face 
  * 
@@ -125,6 +127,7 @@ try{
 
     // Chama arquivo Autoload
     require_once APP_PATH . 'AutoLoad.php';
+
     \Framework\App\Boot::Iniciar();
     \Framework\App\Boot::Desligar();
 }

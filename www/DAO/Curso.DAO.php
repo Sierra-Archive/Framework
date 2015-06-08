@@ -4,10 +4,10 @@ final Class Curso_DAO extends Framework\App\Dao
     protected $id;
     //Upload
     protected $nome;
+    protected $valor;
     protected $status;
     protected $requisito;
     protected $descricao;
-    protected $valor;
     //protected $obs;
     protected static $objetocarregado     = false;     protected static $mysql_colunas       = false;     protected static $mysql_outside       = Array();     protected static $mysql_inside        = Array(); public function __construct() {  parent::__construct(); } public static function Get_Nome(){
         return MYSQL_CURSO;

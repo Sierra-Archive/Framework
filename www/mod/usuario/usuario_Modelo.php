@@ -353,7 +353,7 @@ class usuario_Modelo extends \Framework\App\Modelo
                     if($d==='' || $d===false){
                         $foto = WEB_URL.'img'.US.'icons'.US.'clientes.png';
                     }else{
-                        $foto = $valor->foto;
+                        $foto = $d;
                     }
                     return '<img src="'.$foto.'" style="max-width:100px;" />';
                 }
@@ -431,15 +431,9 @@ class usuario_Modelo extends \Framework\App\Modelo
         // para MOdulos que contem banco
         if(\Framework\App\Sistema_Funcoes::Perm_Modulos('Financeiro') && $Financeiro_User_Saldo){
             ++$numero;
-            $tabela['Saldo'][$i]        = Financeiro_Modelo::Carregar_Saldo($Modelo, $valor->id, true);
             $columns[] = array( 'db' => 'id', 'dt' => $numero,
                 'formatter' => function($d,$row){
-                    if($d==='' || $d===false){
-                        $foto = WEB_URL.'img'.US.'icons'.US.'clientes.png';
-                    }else{
-                        $foto = $valor->foto;
-                    }
-                    return '<img src="'.$foto.'" style="max-width:100px;" />';
+                    return Financeiro_Modelo::Carregar_Saldo(Framework\App\Registro::getInstacia()->_Modelo, $d, true);
                 }
             ); //'Saldo';
         }

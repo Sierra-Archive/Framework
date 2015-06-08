@@ -120,7 +120,7 @@ class Curso_Principal implements PrincipalInterface
         $modelo = $Registro->_Modelo;
         $Visual = $Registro->_Visual;
         // Cursos
-        $curso_qnt = $modelo->db->Sql_Select('Curso');
+        $curso_qnt = $modelo->db->Sql_Contar('Curso');
         // Adiciona Widget a Pagina Inicial
         \Framework\App\Visual::Layoult_Home_Widgets_Add(
             'Cursos', 
@@ -132,7 +132,7 @@ class Curso_Principal implements PrincipalInterface
             14
         );
         // Turmas
-        $turma_qnt = $modelo->db->Sql_Select('Curso_Turma');
+        $turma_qnt = $modelo->db->Sql_Contar('Curso_Turma');
         // Adiciona Widget a Pagina Inicial
         \Framework\App\Visual::Layoult_Home_Widgets_Add(
             'Turmas', 

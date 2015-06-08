@@ -192,7 +192,7 @@ Class Sistema_Funcoes {
      * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
     public static function VersionPHP($versao){
-        if (strnatcmp(SIS_PHPVERSION,$versao) >= 0) return TRUE;
+        if (strnatcmp(phpversion(),$versao) >= 0) return TRUE;
         else                                        return FALSE;
     }
     /**
@@ -737,19 +737,31 @@ Class Sistema_Funcoes {
     }
     
     static public function Gerar_Senha($tamanho=8, $forca=6) {
-        $vogais = 'aeuy';
-        $consoantes = 'bdghjmnpqrstvz';
+        $vogais             = 'aeiouy';
+        $consoantes         = 'bcdfghjklmnpqrstvwxz';
         if ($forca >= 1) {
-            $consoantes .= 'BDGHJLMNPQRSTVWXZ';
+            $consoantes    .= 'BCDFGHJKLMNPQRSTVWXZ';
         }
         if ($forca >= 2) {
-            $vogais .= "AEUY";
+            $vogais        .= "AEIOUY";
         }
         if ($forca >= 4) {
-            $consoantes .= '23456789';
+            $consoantes .= '123456789';
+        }
+        if ($forca >= 6) {
+            $vogais .= '0';
+        }
+        if ($forca >= 7 ) {
+            $vogais .= '*@';
         }
         if ($forca >= 8 ) {
-            $vogais .= '@#$%';
+            $vogais .= '-!#%$';
+        }
+        if ($forca >= 9 ) {
+            $consoantes .= 'çÇ';
+        }
+        if ($forca >= 10 ) {
+            $vogais .= 'áÁ';
         }
 
         $senha = '';
