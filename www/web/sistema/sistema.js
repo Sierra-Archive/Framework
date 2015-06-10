@@ -111,7 +111,6 @@ var Sierra = (function () {
     function Cache_Gravar(nome,valor) {
         if (Modernizr.localstorage) {
             try { 
-                console.log(window.localStorage.length);
                 window.localStorage.setObject('SierraTec_'+nome, valor);
             } catch(e) {
                 console.log(e);
@@ -161,7 +160,6 @@ var Sierra = (function () {
         var strNomeIgual = strCookie + "=";
         var arrCookies = document.cookie.split(';');
 
-                console.log(arrCookies);
         for(var i = 0; i < arrCookies.length; i++)
         {
             var strValorCookie = arrCookies[i];
@@ -171,7 +169,6 @@ var Sierra = (function () {
             }
             if(strValorCookie.indexOf(strNomeIgual) == 0)
             {
-                console.log(strValorCookie.substring(strNomeIgual.length, strValorCookie.length));
                 return strValorCookie.substring(strNomeIgual.length, strValorCookie.length);
             }
         }
@@ -409,7 +406,6 @@ var Sierra = (function () {
         } else {
             DataTable_Selected.splice( index, 1 );
         }
-        console.log(DataTable_Selected);
         $(this).toggleClass('selected');
     } );
     /**
@@ -528,7 +524,6 @@ var Sierra = (function () {
             }
             // Se tiver atr de min verifica
             if (atr_min !== undefined){
-                console.log(valor,atr_min);
                 if(parseInt(valor)<parseInt(atr_min)){
                     Control_PopMgs_Abrir('erro','Número Inválido',valor+' é menor que '+atr_min);
                     elemento.addClass('obrigatoriomarcado').focus();
@@ -979,7 +974,6 @@ var Sierra = (function () {
             // Chama os Tipos de Json
             tam = Object.keys(data['Info']['Tipo']).length;
             for(;i<tam;++i){
-                console.log(data['Info']['Tipo'][i],'data[\''+data['Info']['Tipo'][i]+'\']');
                 cod += 'Control_Ajax_'+data['Info']['Tipo'][i]+'(data[\''+data['Info']['Tipo'][i]+'\']);';
             }
             eval(cod);
@@ -1003,7 +997,6 @@ var Sierra = (function () {
         console.time('Acao_LINK');
         var retorno = false;
         //retorno = Cache_Ler(url);
-        console.log('Retorno',retorno);
         if(retorno!==false){
             Modelo_Ajax_JsonTratar(url,retorno,historico);
         }else{
@@ -1188,6 +1181,7 @@ var Sierra = (function () {
                 for(;cont<j;++cont){
                     colunas_imprimir.push(cont);
                 }
+                console.log('Aqui',ConfigArquivoPadrao+atual.attr('url'));
                 atual.DataTable({          
                     "processing": true,
                     "serverSide": true,
@@ -1353,7 +1347,8 @@ var Sierra = (function () {
     function Control_Layoult_Mascaras ()
     {   
         // Datas
-        $(".masc_data_hora") .mask("99/99/9999 99:99:99"             ); // Mascara para
+        $(".masc_data") .mask("99/99/9999"                           ); // Mascara para Data
+        $(".masc_data_hora") .mask("99/99/9999 99:99:99"             ); // Mascara para DataHora
         $(".masc_hora")      .mask("99:99"                           ); // Mascara para  hora
         // Telefones
         $(".masc_fone")      .mask("(99) 9999-9999"                  ); // Mascara para tel

@@ -115,12 +115,12 @@ class biblioteca_BibliotecaControle extends biblioteca_Controle
                     $tabela['Data'][$i]             = $valor->log_date_add;
                     
                     if($valor->tipo==1){
-                        $tabela['Funções'][$i]          = $Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Pasta'        ,'biblioteca/Biblioteca/Bibliotecas_Edit/'.$valor->id.'/'.$raiz    ,''),$perm_editar).
-                                                          $Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Pasta'       ,'biblioteca/Biblioteca/Bibliotecas_Del/'.$valor->id.'/'.$raiz     ,'Deseja realmente deletar essa pasta ?'),$perm_del);
+                        $tabela['Funções'][$i]          = $Visual->Tema_Elementos_Btn('Editar'     ,Array(__('Editar Pasta')        ,'biblioteca/Biblioteca/Bibliotecas_Edit/'.$valor->id.'/'.$raiz    ,''),$perm_editar).
+                                                          $Visual->Tema_Elementos_Btn('Deletar'    ,Array(__('Deletar Pasta')       ,'biblioteca/Biblioteca/Bibliotecas_Del/'.$valor->id.'/'.$raiz     ,__('Deseja realmente deletar essa pasta ?')),$perm_del);
                     }else{
-                        $tabela['Funções'][$i]          = $Visual->Tema_Elementos_Btn('Baixar'     ,Array('Download de Arquivo'   ,'biblioteca/Biblioteca/Download/'.$valor->id    ,''),$perm_download).
-                                                          $Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Arquivo'        ,'biblioteca/Biblioteca/Bibliotecas_Edit/'.$valor->id.'/'.$raiz    ,''),$perm_editar).
-                                                          $Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Arquivo'       ,'biblioteca/Biblioteca/Bibliotecas_Del/'.$valor->id.'/'.$raiz     ,'Deseja realmente deletar esse arquivo ?'),$perm_del);
+                        $tabela['Funções'][$i]          = $Visual->Tema_Elementos_Btn('Baixar'     ,Array(__('Download de Arquivo')   ,'biblioteca/Biblioteca/Download/'.$valor->id    ,''),$perm_download).
+                                                          $Visual->Tema_Elementos_Btn('Editar'     ,Array(__('Editar Arquivo')        ,'biblioteca/Biblioteca/Bibliotecas_Edit/'.$valor->id.'/'.$raiz    ,''),$perm_editar).
+                                                          $Visual->Tema_Elementos_Btn('Deletar'    ,Array(__('Deletar Arquivo')       ,'biblioteca/Biblioteca/Bibliotecas_Del/'.$valor->id.'/'.$raiz     ,__('Deseja realmente deletar esse arquivo ?')),$perm_del);
                     }
                     $funcao .= $tabela['Funções'][$i];
                     ++$i;
@@ -225,7 +225,7 @@ class biblioteca_BibliotecaControle extends biblioteca_Controle
                 'Link'      => 'biblioteca/Biblioteca/Bibliotecas/'.$raiz,
             )
         )));
-        $bibliotecas = $_Modelo->db->Sql_Select('Biblioteca',$where);
+        /*$bibliotecas = $_Modelo->db->Sql_Select('Biblioteca',$where);
         if($bibliotecas!==false && !empty($bibliotecas) || $raiz!==false){
             list($tabela,$i) = self::Bibliotecas_Tabela($bibliotecas,$raiz);
             if($export!==false){
@@ -246,8 +246,23 @@ class biblioteca_BibliotecaControle extends biblioteca_Controle
             unset($tabela);
         }else{
             $html .= '<center><b><font color="#FF0000" size="5">'.__('Nenhum Arquivo/Pasta').'</font></b></center>';            
-        }
-        $titulo = $endereco.' (<span id="biblioteca_arquivos_num">'.$i.'</span>)';
+        }*/
+        
+        $tabela_colunas = Array();
+
+        $tabela_colunas[] = __('Tipo');
+        $tabela_colunas[] = __('Nome');
+        $tabela_colunas[] = __('Descrição');
+        $tabela_colunas[] = __('Tamanho');
+        $tabela_colunas[] = __('Criador');
+        $tabela_colunas[] = __('Data');
+        $tabela_colunas[] = __('Funções');
+
+        $this->_Visual->Show_Tabela_DataTable_Massiva($tabela_colunas,'biblioteca/Biblioteca/Bibliotecas');
+        $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',10,Array("link"=>"biblioteca/Biblioteca/Bibliotecas",'icon'=>'add','nome'=>__('Adicionar Pasta')));
+        
+        
+        $titulo = $endereco.' (<span id="DataTable_Contador">'.__('Carregando...').'</span>)';
         return Array($titulo,$html,$i);
     }
     /**
