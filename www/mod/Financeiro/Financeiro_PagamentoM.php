@@ -76,7 +76,7 @@ class Financeiro_PagamentoModelo extends Financeiro_Modelo
         );
 
         echo json_encode(
-            \Framework\Classes\Datatable::complex( $_GET, Framework\App\Registro::getInstacia()->_Conexao, $tabela, $primaryKey, $columns, $where )
+            \Framework\Classes\Datatable::complex( $_GET, Framework\App\Registro::getInstacia()->_Conexao, $tabela, $primaryKey, $columns, null, $where )
         );
     }
     public function Formas(){
