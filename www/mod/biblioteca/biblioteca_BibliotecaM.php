@@ -20,6 +20,10 @@ class biblioteca_BibliotecaModelo extends biblioteca_Modelo
         // Table's primary key
         $primaryKey = 'id';
         $tabela = 'Biblioteca';
+        if($raiz===false){
+            $raiz = 0;
+        }
+        $where = 'parent=\''.$raiz.'\'';
         
     
         $perm_baixar = $this->_Registro->_Acl->Get_Permissao_Url('biblioteca/Biblioteca/Download');
@@ -28,12 +32,12 @@ class biblioteca_BibliotecaModelo extends biblioteca_Modelo
         
         $function = '';
         $function .= ' if($row[\'tipo\']==1){ ';
-            if($perm_editar) $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Editar\'     ,Array(__(\'Editar Pasta\')        ,\'biblioteca/Biblioteca/Bibliotecas_Edit/\'.$d.\'/\'.$raiz    ,\'\'),true)';
-            if($perm_del) $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Deletar\'    ,Array(__(\'Deletar Pasta\')       ,\'biblioteca/Biblioteca/Bibliotecas_Del/\'.$d.\'/\'.$raiz     ,__(\'Deseja realmente deletar essa pasta ?\')),true)';
+            if($perm_editar) $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Editar\'     ,Array(__(\'Editar Pasta\')        ,\'biblioteca/Biblioteca/Bibliotecas_Edit/\'.$d.\'/'.$raiz.'\'    ,\'\'),true);';
+            if($perm_del) $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Deletar\'    ,Array(__(\'Deletar Pasta\')       ,\'biblioteca/Biblioteca/Bibliotecas_Del/\'.$d.\'/'.$raiz.'\'     ,__(\'Deseja realmente deletar essa pasta ?\')),true);';
         $function .= ' }else{ ';
-            if($perm_baixar) $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Baixar\'     ,Array(__(\'Download de Arquivo\')   ,\'biblioteca/Biblioteca/Download/\'.$d    ,\'\'),true)';
-            if($perm_editar) $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Editar\'     ,Array(__(\'Editar Arquivo\')        ,\'biblioteca/Biblioteca/Bibliotecas_Edit/\'.$d.\'/\'.$raiz    ,\'\'),true)';
-            if($perm_del) $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Deletar\'    ,Array(__(\'Deletar Arquivo\')       ,\'biblioteca/Biblioteca/Bibliotecas_Del/\'.$d.\'/\'.$raiz     ,__(\'Deseja realmente deletar esse arquivo ?\')),true)';
+            if($perm_baixar) $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Baixar\'     ,Array(__(\'Download de Arquivo\')   ,\'biblioteca/Biblioteca/Download/\'.$d    ,\'\'),true);';
+            if($perm_editar) $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Editar\'     ,Array(__(\'Editar Arquivo\')        ,\'biblioteca/Biblioteca/Bibliotecas_Edit/\'.$d.\'/'.$raiz.'\'    ,\'\'),true);';
+            if($perm_del) $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Deletar\'    ,Array(__(\'Deletar Arquivo\')       ,\'biblioteca/Biblioteca/Bibliotecas_Del/\'.$d.\'/'.$raiz.'\'     ,__(\'Deseja realmente deletar esse arquivo ?\')),true);';
         $function .= ' } ';
         $columns = Array();
         
@@ -47,7 +51,7 @@ class biblioteca_BibliotecaModelo extends biblioteca_Modelo
                 if($d==1){
                     $tipo       =   'pasta';
                     $foto = WEB_URL.'img'.US.'arquivos'.US.$tipo.'.png';
-                    return '<a href="'.URL_PATH.'biblioteca/Biblioteca/Bibliotecas/'.$valor->id.'/" border="1" class="lajax" acao=""><img src="'.$foto.'" alt="1" /></a>';
+                    return '<a href="'.URL_PATH.'biblioteca/Biblioteca/Bibliotecas/'.$row['id'].'/" border="1" class="lajax" acao=""><img src="'.$foto.'" alt="1" /></a>';
                 }else{
                     $tipo  = \Framework\App\Sistema_Funcoes::Control_Arq_Ext($row['ext']);
                     $endereco = ARQ_PATH.'bibliotecas'.DS.strtolower($row['arquivo']).'.'.$tipo;
@@ -83,7 +87,7 @@ class biblioteca_BibliotecaModelo extends biblioteca_Modelo
 
         
         // Tamanho
-        ++$tamanho;
+        ++$numero;
         $columns[] = array( 'db' => 'tamanho', 'dt' => $numero,
             'formatter' => function( $d, $row ) {
                 // Tamanho
@@ -112,7 +116,7 @@ class biblioteca_BibliotecaModelo extends biblioteca_Modelo
         ); //'Funções';
                 
         echo json_encode(
-            \Framework\Classes\Datatable::complex( $_GET, Framework\App\Registro::getInstacia()->_Conexao, $tabela, $primaryKey, $columns, null)
+            \Framework\Classes\Datatable::complex( $_GET, Framework\App\Registro::getInstacia()->_Conexao, $tabela, $primaryKey, $columns, $where)
         );
     }
 }

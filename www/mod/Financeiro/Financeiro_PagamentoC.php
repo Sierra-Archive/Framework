@@ -144,7 +144,7 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
             'Parcela / Vencimento','Motivo','Valor','Funções'
         );
         $this->_Visual->Show_Tabela_DataTable_Massiva($tabela,'Financeiro/Pagamento/Pagar');
-        $titulo = __('Listagem de Contas à pagar').' (<span id="DataTable_Contador">'.__('Carregando...').'</span>)';  //
+        $titulo = __('Listagem de Contas à pagar').' (<span id="DataTable_Contador">0</span>)';  //
         $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',10);
         
         
@@ -494,7 +494,7 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
             'Nome','Funções'
         );
         $this->_Visual->Show_Tabela_DataTable_Massiva($tabela,'Financeiro/Pagamento/Formas');
-        $titulo = __('Listagem de Formas de Pagamento').' (<span id="DataTable_Contador">'.__('Carregando...').'</span>)';  //
+        $titulo = __('Listagem de Formas de Pagamento').' (<span id="DataTable_Contador">0</span>)';  //
         $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',10,Array("link"=>"Financeiro/Pagamento/Formas_Add",'icon'=>'add','nome'=>'Adicionar Forma de Pagamento'));
         
         

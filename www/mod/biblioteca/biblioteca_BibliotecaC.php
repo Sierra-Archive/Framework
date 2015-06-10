@@ -165,13 +165,13 @@ class biblioteca_BibliotecaControle extends biblioteca_Controle
         // Processa Biblioteca
         list($titulo,$html,$i) = $this->Bibliotecas_Processar($raiz);
         $this->_Visual->Blocar('<span id="biblioteca_arquivos_mostrar">'.$html.'</span>');
-        $this->_Visual->Bloco_Unico_CriaJanela($titulo);
+        $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',10,Array("link"=>"biblioteca/Biblioteca/Bibliotecas_Add",'icon'=>'add','nome'=>__('Adicionar Pasta')));
         
         //Carrega Json
         $this->_Visual->Json_Info_Update('Titulo', __('Listagem de Biblíotecas'));
     }
     private function Bibliotecas_Processar($raiz = false){
-        return self::Bibliotecas_Processar_Static($raiz, $export);
+        return self::Bibliotecas_Processar_Static($raiz);
     }
     private static function Bibliotecas_Processar_Static($raiz = false){
         $registro = \Framework\App\Registro::getInstacia();
@@ -181,7 +181,7 @@ class biblioteca_BibliotecaControle extends biblioteca_Controle
         $endereco = (string) '';
         $html     = (string) '';
         if($raiz!==false && $raiz!=='0' && $raiz!==0){
-            $resultado_pasta = $_Modelo->db->Sql_Select('Biblioteca', Array('id'=>$raiz),1);
+            $resultado_pasta = $_Modelo->db->Sql_Select('Biblioteca', 'Bi.id=\''.$raiz.'\'',1);
             if($resultado_pasta===false){
                 throw new \Exception('Essa Pasta não existe:'. $raiz, 404);
             }else if($resultado_pasta->tipo!=1){
@@ -192,7 +192,7 @@ class biblioteca_BibliotecaControle extends biblioteca_Controle
             $endereco =    '<a href="'.URL_PATH.'biblioteca/Biblioteca/Bibliotecas/'.$enderecopai.'" border="1" class="lajax link_titulo" acao="">'.
                             $resultado_pasta->nome.'</a> / '.$endereco;
             while(is_int($enderecopai) && $enderecopai!=0){
-                $resultado_pasta2 = $_Modelo->db->Sql_Select('Biblioteca', Array('id'=>$enderecopai),1);
+                $resultado_pasta2 = $_Modelo->db->Sql_Select('Biblioteca', 'Bi.id=\''.$enderecopai.'\'',1);
                 if($resultado_pasta2===false){
                     throw new \Exception('Pasta Pai não existe:'. $enderecopai, 404);
                 }else if($resultado_pasta->tipo!=1){
@@ -203,18 +203,18 @@ class biblioteca_BibliotecaControle extends biblioteca_Controle
                                 $resultado_pasta2->nome.'</a> / '.$endereco;
             }
             // Condicao de Query
-            $where = Array('parent'=>$raiz);
+            //$where = Array('parent'=>$raiz);
         }else{
             $raiz = 0;
-            $where = Array('parent'=>0);
+            //$where = Array('parent'=>0);
         }
-        $endereco = 'Biblíoteca / '.$endereco;
+        $endereco = __('Biblíoteca').' / '.$endereco;
         $i = 0;
         // COntinua
         // add botao
-        $_Visual->Blocar($_Visual->Tema_Elementos_Btn('Superior'     ,Array(
+        /*$_Visual->Blocar($_Visual->Tema_Elementos_Btn('Superior'     ,Array(
             Array(
-                'Adicionar Pasta',
+                __('Adicionar Pasta'),
                 'biblioteca/Biblioteca/Bibliotecas_Add/'.$raiz,
                 ''
             ),
@@ -225,7 +225,7 @@ class biblioteca_BibliotecaControle extends biblioteca_Controle
                 'Link'      => 'biblioteca/Biblioteca/Bibliotecas/'.$raiz,
             )
         )));
-        /*$bibliotecas = $_Modelo->db->Sql_Select('Biblioteca',$where);
+        $bibliotecas = $_Modelo->db->Sql_Select('Biblioteca',$where);
         if($bibliotecas!==false && !empty($bibliotecas) || $raiz!==false){
             list($tabela,$i) = self::Bibliotecas_Tabela($bibliotecas,$raiz);
             if($export!==false){
@@ -258,11 +258,9 @@ class biblioteca_BibliotecaControle extends biblioteca_Controle
         $tabela_colunas[] = __('Data');
         $tabela_colunas[] = __('Funções');
 
-        $this->_Visual->Show_Tabela_DataTable_Massiva($tabela_colunas,'biblioteca/Biblioteca/Bibliotecas');
-        $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',10,Array("link"=>"biblioteca/Biblioteca/Bibliotecas",'icon'=>'add','nome'=>__('Adicionar Pasta')));
+        $_Visual->Show_Tabela_DataTable_Massiva($tabela_colunas,'biblioteca/Biblioteca/Bibliotecas/'.$raiz);
         
-        
-        $titulo = $endereco.' (<span id="DataTable_Contador">'.__('Carregando...').'</span>)';
+        $titulo = $endereco.' (<span id="DataTable_Contador">0</span>)';
         return Array($titulo,$html,$i);
     }
     /**

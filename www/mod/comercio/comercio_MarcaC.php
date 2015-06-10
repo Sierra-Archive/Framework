@@ -58,7 +58,7 @@ class comercio_MarcaControle extends comercio_Controle
             'Id','Nome','Funções'
         );
         $this->_Visual->Show_Tabela_DataTable_Massiva($tabela,'comercio/Marca/Marcas');
-        $titulo = __('Listagem de Marcas').' (<span id="DataTable_Contador">'.__('Carregando...').'</span>)';  //
+        $titulo = __('Listagem de Marcas').' (<span id="DataTable_Contador">0</span>)';  //
         $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',10,Array("link"=>"comercio/Marca/Marcas_Add",'icon'=>'add','nome'=>'Adicionar Marca'));
         
         //Carrega Json

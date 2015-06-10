@@ -49,7 +49,7 @@ class comercio_ProdutoControle extends comercio_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 2.0
      */
-    public function Produtos($export=false){
+    public function Produtos(){
         self::Endereco_Produto(false);
         $comercio_Produto_Cod       = \Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Produto_Cod');
         $comercio_Produto_Familia   = \Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Produto_Familia');
@@ -86,7 +86,7 @@ class comercio_ProdutoControle extends comercio_Controle
         $tabela_colunas[] = __('Funções');
 
         $this->_Visual->Show_Tabela_DataTable_Massiva($tabela_colunas,'comercio/Produto/Produtos');
-        $titulo = __('Listagem de Produtos').' (<span id="DataTable_Contador">'.__('Carregando...').'</span>)';
+        $titulo = __('Listagem de Produtos').' (<span id="DataTable_Contador">0</span>)';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',10,Array("link"=>"comercio/Produto/Produtos_Add",'icon'=>'add','nome'=>__('Adicionar Produto')));
         
         

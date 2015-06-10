@@ -241,7 +241,7 @@ final class Conexao
             if($passar && $autoreparo){
                 $passar = $this->autoreparo_query($sql, $erro);
             }else{
-                throw new \Exception('Erro de Query: '.$erro."\n<br>".'Query: '.$query,3110);
+                throw new \Exception('Erro de Query: '.$erro."\n<br>".'Query: '.$sql,3110);
             }
         }
         //var_dump($sql,'final',$re);
