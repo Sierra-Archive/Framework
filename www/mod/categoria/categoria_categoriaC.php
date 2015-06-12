@@ -211,7 +211,7 @@ class categoria_categoriaControle extends categoria_Controle
    }
     /**
      *
-     * @uses $language
+     * 
     * @uses Form Carrega novo Formulario
     * @uses \Framework\Classes\Form::$Input_Novo
     * @uses \Framework\Classes\Form::$Select_Novo
@@ -221,7 +221,7 @@ class categoria_categoriaControle extends categoria_Controle
     * @uses \Framework\App\Modelo::$Categorias_Retorna
     * @uses \Framework\App\Visual::$Categorias_ShowSelect
 
-     * @global type $language
+     * 
      * @param type $tipo
      * @return void
      * 
@@ -261,7 +261,7 @@ class categoria_categoriaControle extends categoria_Controle
      * @name Categorias_inserir
      * @access public
      * 
-     * @uses $language
+     * 
      * @uses \Framework\App\Modelo::$Categorias_inserir
      * @uses \Framework\App\Visual::$Json_IncluiTipo
      * 

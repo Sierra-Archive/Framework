@@ -104,7 +104,7 @@ class locais_localidadesControle extends locais_Controle
         
         // CADASTRA EVENTOS
         $form = new \Framework\Classes\Form('popcadastrarbairro','locais/localidades/bairro_inserir/','formajax');
-        $form->Input_Novo($language['usuarios']['form']['nome'],'nome','','text', 30);	
+        $form->Input_Novo(__('Nome'),'nome','','text', 30);	
         $form->Select_Novo('Zona do Bairro','zona');
         $form->Select_Opcao('Norte','norte',0);
         $form->Select_Opcao('Leste','leste',0);

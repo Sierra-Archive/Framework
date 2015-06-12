@@ -211,7 +211,7 @@ class usuario_veiculo_AdminControle extends usuario_veiculo_Controle
      * @param Class &$Visual Visual Passado por Ponteiro
      * @param Array &$selectmarcas
      * 
-     * @uses $language
+     * 
      * @uses Form Carrega Novo Formulário
      * @uses \Framework\Classes\Form::$Input_Novo Coloca os Novos Inputs
      * @uses \Framework\Classes\Form::$Select_Novo Add Novo Select
@@ -355,7 +355,7 @@ class usuario_veiculo_AdminControle extends usuario_veiculo_Controle
     * @param Class &$modelo Modelo Passado por Ponteiro
     * @param Class &$Visual Visual Passado por Ponteiro
     * 
-    * @uses $language
+    * 
     * @uses social_Modelo Carrega Persona Modelo
     * @uses social_Modelo::$retorna_social Retorna Pessoas
     * @uses financeiroControle::$marcas_formcadastro retorna Formulario de Cadastro de Marcas
@@ -382,7 +382,7 @@ class usuario_veiculo_AdminControle extends usuario_veiculo_Controle
     * @name marcas_formcadastro
     * @access public
     * 
-    * @uses $language
+    * 
     * @uses Form Carrega Novo Formulário
     * @uses \Framework\Classes\Form::$Input_Novo Coloca os Novos Inputs
     * @uses \Framework\Classes\Form::$retorna_form Retorna Formulario

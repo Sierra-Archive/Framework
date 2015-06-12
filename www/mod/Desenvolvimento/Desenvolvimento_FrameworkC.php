@@ -182,7 +182,7 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
         
     	$id = (int) $id;
         // Puxa linha e deleta
-        $modulos = $this->_Modelo->db->Sql_Select('Desenvolvimento_Framework_Modulo', Array('id'=>$id));
+        $modulos = $this->_Modelo->db->Sql_Select('Desenvolvimento_Framework_Modulo', '{sigla}id=\''.$id.'\'');
         $sucesso =  $this->_Modelo->db->Sql_Delete($modulos);
         // Mensagem
     	if($sucesso===true){

@@ -196,7 +196,7 @@ class social_personasControle extends social_Controle
 
         $formulario = $this->social_formcadastro();
         $this->_Visual->Blocar($formulario);
-        $this->_Visual->Bloco_Menor_CriaJanela($language['social']['cadastro']);
+        $this->_Visual->Bloco_Menor_CriaJanela(__('Cadastro de Pessoas'));
 
         $this->_Visual->Javascript_Executar(false);
         
@@ -206,8 +206,8 @@ class social_personasControle extends social_Controle
         
        
         $form = new \Framework\Classes\Form('adminformsocialend','social/social/social_inserir/','formajax');
-        $form->Input_Novo($language['social']['form_idface'],'idface','','text', 21,'obrigatorio'); 
-        $form->Input_Novo($language['social']['form_nome'],'nome','','text', 30, 'obrigatorio'); 
+        $form->Input_Novo(__('Face Id'),'idface','','text', 21,'obrigatorio'); 
+        $form->Input_Novo(__('Nome'),'nome','','text', 30, 'obrigatorio'); 
               
         $formulario = $form->retorna_form(__('Salvar'));
         
@@ -224,8 +224,8 @@ class social_personasControle extends social_Controle
         if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => $language['financas']['formsucesso1'],
-                "mgs_secundaria" => preg_replace(array('/{valor}/'), array($valor), $language['financas']['formsucesso2'])
+                "mgs_principal" => __('Financeiro Inserido com Sucesso'),
+                "mgs_secundaria" => preg_replace(array('/{valor}/'), array($valor), __('O valor de {valor} foi add a base de dados...'))
             );
         }else{
             $mensagens = array(

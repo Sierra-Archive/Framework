@@ -168,7 +168,7 @@ class Financeiro_AdminControle extends Financeiro_Controle
     * @param Class &$modelo Modelo Passado por Ponteiro
     * @param Class &$Visual Visual Passado por Ponteiro
     * 
-    * @uses $language
+    * 
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
@@ -200,7 +200,7 @@ class Financeiro_AdminControle extends Financeiro_Controle
     * @param Class &$modelo Modelo Passado por Ponteiro
     * @param Class &$Visual Visual Passado por Ponteiro
     * 
-    * @uses $language
+    * 
     * @uses social_Visual::$Usuario_social_ShowSelect Exibe Select de Usuario_social
     * @uses Form Carrega Novo Formulário
     * @uses \Framework\Classes\Form::$Input_Novo Coloca os Novos Inputs
@@ -250,7 +250,7 @@ class Financeiro_AdminControle extends Financeiro_Controle
     * @post $_POST["valor"]
     * @post int $_POST["positivo"]
     * 
-    * @uses $language
+    * 
     * @uses financeiroControl::$financas Mostra Novas Financas na Tela
     * @uses financeiroModelo::$financas_inserir Inserir Financas
     * @uses financeiroVisual::$Json_IncluiTipo Mostra Novas Financas na Tela

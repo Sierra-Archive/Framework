@@ -18,7 +18,7 @@ class usuario_veiculo_Visual extends \Framework\App\Visual
     /**
      * @name Marcas_ShowSelect
      * 
-     * @global type $language
+     * 
      * @param type $array
      * @param type $form
      * @return type
@@ -42,7 +42,7 @@ class usuario_veiculo_Visual extends \Framework\App\Visual
     }
     /**
      * 
-     * @global type $language
+     * 
      * @param type $array
      * @return type
      */

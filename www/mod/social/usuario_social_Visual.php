@@ -7,7 +7,7 @@ class social_Visual extends \Framework\App\Visual
     static function Usuario_social_ShowSelect(&$array,&$form){
     	
     	
-    	$form->Select_Opcao($language['social']['form'],0,0);
+    	$form->Select_Opcao(__('Não Relacionado a Ninguém'),0,0);
     	if(!empty($array)){
             reset($array);
             foreach ($array as $indice=>&$valor) {
