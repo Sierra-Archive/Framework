@@ -55,13 +55,13 @@ class usuario_mensagem_AdminControle extends usuario_mensagem_Controle
         $campos = Usuario_Mensagem_DAO::Get_Colunas();
         usuario_mensagem_Controle::Campos_deletar($campos);
         // Chama Objeto Mensagem
-        $editar = $Modelo->db->Sql_Select('Usuario_Mensagem', 'id=\''.$mensagem.'\'');
+        $editar = Framework\App\Registro::getInstacia()->_Modelo->db->Sql_Select('Usuario_Mensagem', '{sigla}id=\''.$mensagem.'\'');
         //Atualiza Nome para nao dar erro
         if($editar->para_nome=='') $editar->para_nome=__('Suporte');
 
         
         // Carrega Config
-        $titulo1    = 'Editar Ticket (#'.$id.')';
+        $titulo1    = 'Editar Ticket (#'.$mensagem.')';
         $titulo2    = __('Edição de Ticket');
         $formid     = 'form_Usuario_Mensagem_Suporte';
         $formbt     = __('Alterar Edição');

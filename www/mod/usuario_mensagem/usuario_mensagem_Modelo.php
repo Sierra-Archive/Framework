@@ -120,7 +120,7 @@ class usuario_mensagem_Modelo extends \Framework\App\Modelo
         }
         ++$i;
         // Captura Respostas
-        $respostas = $this->db->Sql_Select('usuario_mensagem_Resposta',Array('id_mensagem'=>$mensagemid),0,'log_date_add');
+        $respostas = $this->db->Sql_Select('Usuario_Mensagem_Resposta',Array('id_mensagem'=>$mensagemid),0,'log_date_add');
         $sql = $this->db->query('SELECT id, escritor, escritor_nome, resposta, log_date_add FROM '.MYSQL_USUARIOS_MENS_RESP.' WHERE deletado!=1 AND id_mensagem='.$mensagemid.' ORDER BY log_date_add');
         
         if(is_object($respostas)) $respostas = Array(0=>$respostas);
@@ -157,7 +157,7 @@ class usuario_mensagem_Modelo extends \Framework\App\Modelo
     public function Mensagem_Resp_Inserir($mensagem,$resposta_mgs){
         // Quatnidade de respostas
         $ordem = 0;
-        $quantidade = $this->db->Sql_Select('usuario_mensagem_Resposta',Array('id_mensagem'=>$mensagem),0,'ordem');
+        $quantidade = $this->db->Sql_Select('Usuario_Mensagem_Resposta',Array('id_mensagem'=>$mensagem),0,'ordem');
         if(is_object($quantidade)) $ordem = 1;
         else $ordem = count($quantidade);
         
@@ -174,7 +174,7 @@ class usuario_mensagem_Modelo extends \Framework\App\Modelo
         $this->db->Sql_Update($objeto);
         
         // Cria nova resposta 
-        $resposta = new \usuario_mensagem_Resposta_DAO();
+        $resposta = new \Usuario_Mensagem_Resposta_DAO();
         $resposta->id_mensagem      = $mensagem;
         $resposta->escritor         = \Framework\App\Acl::Usuario_GetID_Static();
         $resposta->escritor_nome    = $this->_Acl->logado_usuario->nome;

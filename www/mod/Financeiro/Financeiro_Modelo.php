@@ -237,7 +237,7 @@ class Financeiro_Modelo extends \Framework\App\Modelo
         $tabela = Array();
         $total_qnt = 0;
         
-        $financeiros = $this->_Modelo->db->Sql_Select('Financeiro_Pagamento_Interno',$where,0,'','id,dt_vencimento,motivo,motivoid,valor,num_parcela');
+        $financeiros = $this->db->Sql_Select('Financeiro_Pagamento_Interno',$where,0,'','id,dt_vencimento,motivo,motivoid,valor,num_parcela');
         if($financeiros!==false && !empty($financeiros)){
             if(is_object($financeiros)) $financeiros = Array(0=>$financeiros);
             reset($financeiros);
