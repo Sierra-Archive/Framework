@@ -127,7 +127,7 @@ class usuario_mensagem_AssuntoControle extends usuario_mensagem_Controle
      * @version 2.0
      */
     public function Assuntos_Edit2($id){
-        global $language;
+        
         $id = (int) $id;
         // Puxa o assunto, e altera seus valores, depois salva novamente
         $assunto = $this->_Modelo->db->Sql_Select('Usuario_Mensagem_Assunto', Array('id'=>$id));
@@ -162,7 +162,7 @@ class usuario_mensagem_AssuntoControle extends usuario_mensagem_Controle
      * @version 2.0
      */
     public function Assuntos_Del($id){
-        global $language;
+        
         
     	$id = (int) $id;
         // Puxa assunto e deleta

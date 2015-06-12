@@ -208,7 +208,7 @@ class noticia_AdminControle extends noticia_Controle
      * @version 2.0
      */
     public function Noticias_Del($id){
-        global $language;
+        
         
     	$id = (int) $id;
         // Puxa noticia e deleta

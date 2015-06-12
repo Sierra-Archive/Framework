@@ -236,7 +236,7 @@ class predial_InformativoControle extends predial_Controle
      * @version 2.0
      */
     public function Informativos_Del($id){
-        global $language;
+        
         
     	$id = (int) $id;
         // Puxa informativo e deleta

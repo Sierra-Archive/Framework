@@ -203,7 +203,7 @@ class comercio_venda_CarrinhoControle extends comercio_venda_Controle
      * @version 2.0
      */
     public function Carrinhos_Del($id){
-        global $language;
+        
         
     	$id = (int) $id;
         // Puxa linha e deleta
@@ -649,7 +649,7 @@ class comercio_venda_CarrinhoControle extends comercio_venda_Controle
      * @version 2.0
      */
     public function Mesas_Del($id){
-        global $language;
+        
         
     	$id = (int) $id;
         // Puxa linha e deleta

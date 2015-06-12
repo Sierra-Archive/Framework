@@ -216,7 +216,7 @@ class social_PersonaControle extends social_Controle
      * @version 2.0
      */
     public function Personas_Del($id){
-        global $language;
+        
         
     	$id = (int) $id;
         // Puxa setor e deleta
@@ -405,7 +405,7 @@ class social_PersonaControle extends social_Controle
     public function Personas_Comentario_Del($persona_id = false,$id = 0){
         if($persona_id===false) throw new \Exception('Persona não informado',404);
         if($id         == 0   ) throw new \Exception('Comentário não informado',404);
-        global $language;
+        
         
     	$id = (int) $id;
         // Puxa linha e deleta
@@ -572,7 +572,7 @@ class social_PersonaControle extends social_Controle
      * @version 2.0
      */
     public function Ficou_Del($id,$persona_id=false){
-        global $language;
+        
         
     	$id = (int) $id;
         // Puxa setor e deleta
@@ -782,7 +782,7 @@ class social_PersonaControle extends social_Controle
     public function Ficou_Comentario_Del($ficada_id = false,$id = 0){
         if($ficada_id===false)  throw new \Exception('Ficada não informada',404);
         if($id         == 0   ) throw new \Exception('Comentário não informado',404);
-        global $language;
+        
     	$id = (int) $id;
         // Puxa linha e deleta
         $where = Array('id'=>$id);

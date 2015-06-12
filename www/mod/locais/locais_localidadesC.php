@@ -101,7 +101,7 @@ class locais_localidadesControle extends locais_Controle
         $this->_Visual->Json_Info_Update('Historico', false);
     }/*
     public function bairro_popup(){
-        global $language;
+        
         // CADASTRA EVENTOS
         $form = new \Framework\Classes\Form('popcadastrarbairro','locais/localidades/bairro_inserir/','formajax');
         $form->Input_Novo($language['usuarios']['form']['nome'],'nome','','text', 30);	
@@ -407,7 +407,7 @@ class locais_localidadesControle extends locais_Controle
      * @version 2.0
      */
     public function Estados_Del($id){
-        global $language;
+        
         
     	$id = (int) $id;
         // Puxa setor e deleta
@@ -535,7 +535,7 @@ class locais_localidadesControle extends locais_Controle
      * @version 2.0
      */
     public function Cidades_Del($id){
-        global $language;
+        
         
     	$id = (int) $id;
         // Puxa setor e deleta
@@ -663,7 +663,7 @@ class locais_localidadesControle extends locais_Controle
      * @version 2.0
      */
     public function Bairros_Del($id){
-        global $language;
+        
         
     	$id = (int) $id;
         // Puxa setor e deleta

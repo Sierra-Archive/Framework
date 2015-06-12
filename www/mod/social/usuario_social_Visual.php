@@ -5,7 +5,7 @@ class social_Visual extends \Framework\App\Visual
         parent::__construct();
     } 
     static function Usuario_social_ShowSelect(&$array,&$form){
-    	global $language;
+    	
     	
     	$form->Select_Opcao($language['social']['form'],0,0);
     	if(!empty($array)){

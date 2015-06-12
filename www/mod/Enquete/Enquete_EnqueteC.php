@@ -189,7 +189,7 @@ class Enquete_EnqueteControle extends Enquete_Controle
      * @version 2.0
      */
     public function Enquetes_Del($id){
-        global $language;
+        
         
     	$id = (int) $id;
         // Puxa enquete e deleta

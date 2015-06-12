@@ -205,7 +205,7 @@ class comercio_ProdutoControle extends comercio_Controle
      * @version 2.0
      */
     public function Produtos_Del($id){
-        global $language;
+        
         
     	$id = (int) $id;
         // Puxa produto e deleta

@@ -194,7 +194,7 @@ class comercio_venda_ComposicaoControle extends comercio_venda_Controle
      * @version 2.0
      */
     public function Composicoes_Del($id){
-        global $language;
+        
         
     	$id = (int) $id;
         // Puxa linha e deleta

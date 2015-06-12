@@ -282,7 +282,7 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
      * @version 2.0
      */
     public function Propostas_Add2($cliente=0){
-        global $language;
+        
         $data_aceita = $_POST['data_comissao'];
         // Cria nova Proposta
         $proposta = new \Comercio_Certificado_Proposta_DAO();
@@ -337,7 +337,7 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
      * @version 2.0
      */
     public function Propostas_Edit2($id,$cliente=0){
-        global $language;
+        
         $id = (int) $id;
         $data_aceita = $_POST['data_comissao'];
         $novoregistro = 0;
@@ -396,7 +396,7 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
      * @version 2.0
      */
     public function Propostas_Del($id,$cliente){
-        global $language;
+        
         
     	$id = (int) $id;
         // Puxa proposta e deleta
@@ -432,7 +432,7 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
         $this->_Visual->Show_Perfil($proposta);
     }
     public function Usuarios_Del($id,$tipo=false){
-        global $language;
+        
     	$id = (int) $id;
         // Regula Tipo
         if($tipo==='falso'){

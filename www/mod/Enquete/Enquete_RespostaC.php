@@ -247,7 +247,7 @@ class Enquete_RespostaControle extends Enquete_Controle
      * @version 2.0
      */
     public function Respostas_Del($enquete=false,$id = false){
-        global $language;
+        
         if($enquete===false){
             throw new \Exception('Enquete não existe:'. $enquete, 404);
         }

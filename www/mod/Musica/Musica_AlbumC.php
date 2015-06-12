@@ -310,7 +310,7 @@ class Musica_AlbumControle extends Musica_Controle
      */
     public function Albuns_Del($id = false,$artista=false){
         if($artista==='false') $artista = false;
-        global $language;
+        
         if($id===false){
             throw new \Exception('Album não existe:'. $id, 404);
         }

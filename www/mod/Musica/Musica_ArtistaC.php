@@ -188,7 +188,7 @@ class Musica_ArtistaControle extends Musica_Controle
      * @version 2.0
      */
     public function Artistas_Del($id){
-        global $language;
+        
         
     	$id = (int) $id;
         // Puxa artista e deleta

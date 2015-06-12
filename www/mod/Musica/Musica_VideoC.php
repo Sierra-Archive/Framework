@@ -490,7 +490,7 @@ class Musica_VideoControle extends Musica_Controle
         if($artista ==='false' || $artista ===0)  $artista    = false;
         if($album ==='false' || $album ===0)  $album      = false;
         if($musica ==='false' || $musica ===0) $musica     = false;
-        global $language;
+        
         if($id===false){
             throw new \Exception('Video não existe:'. $id, 404);
         }

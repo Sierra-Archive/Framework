@@ -127,7 +127,7 @@ class usuario_mensagem_SetorControle extends usuario_mensagem_Controle
      * @version 2.0
      */
     public function Setores_Edit2($id){
-        global $language;
+        
         $id = (int) $id;
         // Puxa o setor, e altera seus valores, depois salva novamente
         $setor = $this->_Modelo->db->Sql_Select('Usuario_Mensagem_Setor', Array('id'=>$id));
@@ -162,7 +162,7 @@ class usuario_mensagem_SetorControle extends usuario_mensagem_Controle
      * @version 2.0
      */
     public function Setores_Del($id){
-        global $language;
+        
         
     	$id = (int) $id;
         // Puxa setor e deleta

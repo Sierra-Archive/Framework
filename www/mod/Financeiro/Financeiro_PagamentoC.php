@@ -575,7 +575,7 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
      * @version 2.0
      */
     public function Formas_Del($id){
-        global $language;
+        
         
     	$id = (int) $id;
         // Puxa forma e deleta
@@ -751,7 +751,7 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
      * @version 2.0
      */
     public function Condicoes_Del($id,$forma=0){
-        global $language;
+        
         $forma      = (int)$forma;
         
     	$id = (int) $id;

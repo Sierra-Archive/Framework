@@ -211,7 +211,7 @@ class categoria_AdminControle extends categoria_Controle
      * @version 2.0
      */
     public function Categorias_Del($id){
-        global $language;
+        
     	$id = (int) $id;
         // Puxa Categoria e Acessos
         $categorias = $this->_Modelo->db->Sql_Select('Categoria', Array('id'=>$id));

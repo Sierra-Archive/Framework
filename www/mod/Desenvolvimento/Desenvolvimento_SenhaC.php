@@ -158,7 +158,7 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
      * @version 2.0
      */
     public function Senhas_Del($id){
-        global $language;
+        
         
     	$id = (int) $id;
         // Puxa senha e deleta
@@ -471,7 +471,7 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
      * @version 2.0
      */
     public function Senhas_Todas_Del($id){
-        global $language;
+        
         
     	$id = (int) $id;
         // Puxa senha e deleta

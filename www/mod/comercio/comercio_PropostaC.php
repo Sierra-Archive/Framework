@@ -2135,7 +2135,7 @@ class comercio_PropostaControle extends comercio_Controle
      * @version 2.0
      */
     public function Propostas_Del($id,$tema='Propostas'){
-        global $language;
+        
         
     	$id = (int) $id;
         // Nomes
@@ -2534,7 +2534,7 @@ class comercio_PropostaControle extends comercio_Controle
     public function Propostas_Comentario_Del($proposta_id = false,$id = 0,$tema='Propostas'){
         if($proposta_id===false) throw new \Exception('Proposta não informada',404);
         if($id         == 0   ) throw new \Exception('Comentário não informado',404);
-        global $language;
+        
         
     	$id = (int) $id;
         // Puxa linha e deleta
@@ -2780,7 +2780,7 @@ class comercio_PropostaControle extends comercio_Controle
     public function Propostas_Sub_Del($proposta_id = false,$id = 0,$tema='Propostas'){
         if($proposta_id===false) throw new \Exception('Proposta não informada',404);
         if($id         == 0   ) throw new \Exception('Sub proposta não informado',404);
-        global $language;
+        
         
     	$id = (int) $id;
         // Puxa linha e deleta
@@ -3016,7 +3016,7 @@ class comercio_PropostaControle extends comercio_Controle
      * @version 2.0
      */
     public function Checklists_Del($id){
-        global $language;
+        
         
     	$id = (int) $id;
         // Puxa fornecedor e deleta
@@ -3171,7 +3171,7 @@ class comercio_PropostaControle extends comercio_Controle
      * @version 2.0
      */
     public function Visitas_Del($id){
-        global $language;
+        
         
     	$id = (int) $id;
         // Puxa fornecedor e deleta
@@ -3331,7 +3331,7 @@ class comercio_PropostaControle extends comercio_Controle
     public function Visitas_Comentario_Del($visita_id = false,$id = 0){
         if($visita_id===false) throw new \Exception('Visita não informado',404);
         if($id         == 0   ) throw new \Exception('Comentário não informado',404);
-        global $language;
+        
         
     	$id = (int) $id;
         // Puxa linha e deleta

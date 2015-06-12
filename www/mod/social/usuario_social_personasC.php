@@ -192,7 +192,7 @@ class social_personasControle extends social_Controle
     *
     *************************************/
     public function social_carregajanelaadd(){
-        global $language;
+        
 
         $formulario = $this->social_formcadastro();
         $this->_Visual->Blocar($formulario);
@@ -202,7 +202,7 @@ class social_personasControle extends social_Controle
         
     }
     public function social_formcadastro(){
-        global $language;
+        
         
        
         $form = new \Framework\Classes\Form('adminformsocialend','social/social/social_inserir/','formajax');
@@ -214,7 +214,7 @@ class social_personasControle extends social_Controle
         return $formulario;
     }
     public function social_inserir(){
-        global $language;
+        
         //data_hora_brasil_eua()
         $nome = \anti_injection($_POST["nome"]);
         $idface = (int) $_POST["idface"];

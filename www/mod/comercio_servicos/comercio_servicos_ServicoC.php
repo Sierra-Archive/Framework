@@ -163,7 +163,7 @@ class comercio_servicos_ServicoControle extends comercio_servicos_Controle
      * @version 2.0
      */
     public function Servicos_Del($id){
-        global $language;
+        
     	$id = (int) $id;
         // Puxa setor e deleta
         $setor = $this->_Modelo->db->Sql_Select('Comercio_Servicos_Servico', Array('id'=>$id));

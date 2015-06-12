@@ -138,7 +138,7 @@ class usuario_mensagem_OrigemControle extends usuario_mensagem_Controle
      * @version 2.0
      */
     public function Origens_Del($id){
-        global $language;
+        
         
     	$id = (int) $id;
         // Puxa setor e deleta

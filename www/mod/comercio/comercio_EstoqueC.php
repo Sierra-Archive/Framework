@@ -467,7 +467,7 @@ class comercio_EstoqueControle extends comercio_Controle
      * @version 2.0
      */
     public function Material_Entrada_Del($id){
-        global $language;
+        
         
     	$id = (int) $id;
         $motivo = 'comercio_Estoque';

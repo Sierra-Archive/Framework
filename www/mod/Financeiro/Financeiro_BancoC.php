@@ -151,7 +151,7 @@ class Financeiro_BancoControle extends Financeiro_Controle
      * @version 2.0
      */
     public function Bancos_Del($id){
-        global $language;
+        
         
     	$id = (int) $id;
         // Puxa linha e deleta

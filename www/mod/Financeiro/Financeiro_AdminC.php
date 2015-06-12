@@ -127,7 +127,7 @@ class Financeiro_AdminControle extends Financeiro_Controle
     * @version 2.0
     */
     public function pagamentos_Del($id){
-        global $language;
+        
         
     	$id = (int) $id;
     	$sucesso = $this->_Modelo->pagamentos_Del($id);
@@ -175,7 +175,7 @@ class Financeiro_AdminControle extends Financeiro_Controle
     * @version 2.0
     */
     static function financas_carregajanelaadd(&$controle, &$modelo, &$Visual, $usuario=0){
-        global $language;
+        
         if($usuario==0 || !is_int($usuario)) return 0;
        // cadastro de financas
         $formulario = Financeiro_AdminControle::financas_formcadastro($controle, $modelo, $Visual, $usuario);
@@ -183,7 +183,7 @@ class Financeiro_AdminControle extends Financeiro_Controle
         $Visual->Bloco_Menor_CriaJanela('Depositar para Usuário #'.$usuario);        
     }
     static function financas_carregajanelaretirar(&$controle, &$modelo, &$Visual, $usuario=0){
-        global $language;
+        
         if($usuario==0 || !is_int($usuario)) return 0;
        // cadastro de financas
         $formulario = Financeiro_AdminControle::financas_formretirar($controle, $modelo, $Visual, $usuario);
@@ -215,7 +215,7 @@ class Financeiro_AdminControle extends Financeiro_Controle
     * @version 2.0
     */
     static function financas_formcadastro(&$controle, &$modelo, &$Visual,$user){
-        global $language;
+        
        
         $form = new \Framework\Classes\Form('adminfinanceiroinserir','Financeiro/Admin/financas_inserir/','formajax');
         $form->Input_Novo('user','user',$user,'hidden', false, 'obrigatorio'); 
@@ -228,7 +228,7 @@ class Financeiro_AdminControle extends Financeiro_Controle
         return $formulario;
     }
     static function financas_formretirar(&$controle, &$modelo, &$Visual,$user){
-        global $language;
+        
        
         $form = new \Framework\Classes\Form('adminfinanceiroinserir','Financeiro/Admin/financas_retirar/','formajax');
         $form->Input_Novo('user','user',$user,'hidden', false, 'obrigatorio'); 
@@ -261,7 +261,7 @@ class Financeiro_AdminControle extends Financeiro_Controle
     * @version 2.0
     */
     public function financas_inserir(){
-        global $language;
+        
         //data_hora_brasil_eua()
         $valor = \anti_injection($_POST["valor"]);
         $user = (int) $_POST["user"];
@@ -288,7 +288,7 @@ class Financeiro_AdminControle extends Financeiro_Controle
         $this->_Visual->Json_Info_Update('Historico',0);    
     }
     public function financas_retirar(){
-        global $language;
+        
         //data_hora_brasil_eua()
         $valor = \anti_injection($_POST["valor"]);
         $user = (int) $_POST["user"];

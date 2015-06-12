@@ -174,7 +174,7 @@ class Engenharia_EmpreendimentoControle extends Engenharia_Controle
      * @version 2.0
      */
     public function Empreendimentos_Del($id){
-        global $language;
+        
         
     	$id = (int) $id;
         // Puxa empreendimento e deleta
@@ -230,7 +230,7 @@ class Engenharia_EmpreendimentoControle extends Engenharia_Controle
      * @version 2.0
      */
     public function Estoque_Retirar2(){
-        GLOBAL $language;
+        
         $idproduto  = (int) $_POST['idproduto'];
         $qnt        = (int) $_POST['qnt'];
         if(comercio_EstoqueControle::Estoque_Retorna($idproduto)<$qnt){

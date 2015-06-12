@@ -265,7 +265,7 @@ class _Sistema_AdminControle extends _Sistema_Controle
      * @version 2.0
      */
     public function Menus_Del($id){
-        global $language;
+        
         
     	$id = (int) $id;
         // Puxa menu e deleta
@@ -441,7 +441,7 @@ class _Sistema_AdminControle extends _Sistema_Controle
      * @version 2.0
      */
     public function Permissoes_Del($id){
-        global $language;
+        
         $id         = \anti_injection($id);
         
         // Puxa permissao e deleta
@@ -630,7 +630,7 @@ class _Sistema_AdminControle extends _Sistema_Controle
      * @version 2.0
      */
     public function Grupos_Del($id,$grupocat = false){
-        global $language;
+        
         if($grupocat==='false') $grupocat = false;
         
     	$id = (int) $id;
@@ -789,7 +789,7 @@ class _Sistema_AdminControle extends _Sistema_Controle
      * @version 2.0
      */
     public function Grupo_Permissao_Add2($grupo=false){
-        global $language;
+        
         
         // Cria novo Grupo
         $grupopermissao = new Sistema_Grupo_Permissao_DAO;
@@ -827,7 +827,7 @@ class _Sistema_AdminControle extends _Sistema_Controle
      * @version 2.0
      */
     public function Grupo_Permissao_Edit2($id,$grupo=false){
-        global $language;
+        
         $id = (int) $id;
         // Puxa o grupo, e altera seus valores, depois salva novamente
         $grupopermissao = $this->_Modelo->db->Sql_Select('Sistema_Grupo_Permissao', Array('id'=>$id));
@@ -862,7 +862,7 @@ class _Sistema_AdminControle extends _Sistema_Controle
      * @version 2.0
      */
     public function Grupo_Permissao_Del($id){
-        global $language;
+        
         
     	$id = (int) $id;
         // Puxa grupo e deleta
@@ -1017,7 +1017,7 @@ class _Sistema_AdminControle extends _Sistema_Controle
      * @version 2.0
      */
     public function Newsletter_Add2(){
-        global $language;
+        
         
         // Cria novo Grupo
         $grupopermissao = new Sistema_Newsletter_DAO;
@@ -1054,7 +1054,7 @@ class _Sistema_AdminControle extends _Sistema_Controle
      * @version 2.0
      */
     public function Newsletter_Edit2($id){
-        global $language;
+        
         $id = (int) $id;
         // Puxa o grupo, e altera seus valores, depois salva novamente
         $grupopermissao = $this->_Modelo->db->Sql_Select('Sistema_Newsletter', Array('id'=>$id));
@@ -1089,7 +1089,7 @@ class _Sistema_AdminControle extends _Sistema_Controle
      * @version 2.0
      */
     public function Newsletter_Del($id){
-        global $language;
+        
         
     	$id = (int) $id;
         // Puxa grupo e deleta

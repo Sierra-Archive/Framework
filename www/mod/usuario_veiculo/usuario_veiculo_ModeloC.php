@@ -156,7 +156,7 @@ class usuario_veiculo_ModeloControle extends usuario_veiculo_Controle
      * @version 2.0
      */
     public function Modelos_Del($id){
-        global $language;
+        
         
     	$id = (int) $id;
         // Puxa modelo e deleta

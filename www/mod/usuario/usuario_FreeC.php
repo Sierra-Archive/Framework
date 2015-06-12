@@ -113,7 +113,7 @@ class usuario_FreeControle extends usuario_Controle
      * @version 2.0
      */
     public function usuarios_inserir($tipo = 'cliente'){
-        global $language;
+        
         
         if(!isset($_POST['email']) || !isset($_POST['login'])){
             

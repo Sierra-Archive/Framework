@@ -162,7 +162,7 @@ class Engenharia_EquipamentoControle extends Engenharia_Controle
      * @version 2.0
      */
     public function Equipamentos_Del($id){
-        global $language;
+        
         
     	$id = (int) $id;
         // Puxa linha e deleta

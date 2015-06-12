@@ -122,7 +122,7 @@ class Transporte_PedidoControle extends Transporte_Controle
      * @version 2.0
      */
     public function Arma_Ped_Del($id){
-        global $language;
+        
         
     	$id = (int) $id;
         // Puxa Transporte e deleta
@@ -684,7 +684,7 @@ class Transporte_PedidoControle extends Transporte_Controle
      * @version 2.0
      */
     public function Arma_Sol_Del($id){
-        global $language;
+        
         
     	$id = (int) $id;
         // Puxa Transporte e deleta
@@ -847,7 +847,7 @@ class Transporte_PedidoControle extends Transporte_Controle
      * @version 2.0
      */
     public function Trans_Ped_Del($id){
-        global $language;
+        
         
     	$id = (int) $id;
         // Puxa Transporte e deleta
@@ -1409,7 +1409,7 @@ class Transporte_PedidoControle extends Transporte_Controle
      * @version 2.0
      */
     public function Trans_Sol_Del($id){
-        global $language;
+        
         
     	$id = (int) $id;
         // Puxa Transporte e deleta
@@ -1568,7 +1568,7 @@ class Transporte_PedidoControle extends Transporte_Controle
      * @version 2.0
      */
     public function Caminho_Ped_Del($id){
-        global $language;
+        
         
     	$id = (int) $id;
         // Puxa Transporte e deleta
@@ -2130,7 +2130,7 @@ class Transporte_PedidoControle extends Transporte_Controle
      * @version 2.0
      */
     public function Caminho_Sol_Del($id){
-        global $language;
+        
         
     	$id = (int) $id;
         // Puxa Transporte e deleta

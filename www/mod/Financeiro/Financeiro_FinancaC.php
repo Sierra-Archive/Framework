@@ -170,7 +170,7 @@ class Financeiro_FinancaControle extends Financeiro_Controle
      * @version 2.0
      */
     public function Financas_Del($id){
-        global $language;
+        
         
     	$id = (int) $id;
         // Puxa setor e deleta

@@ -160,7 +160,7 @@ class predial_SalaoControle extends predial_Controle
      * @version 2.0
      */
     public function Saloes_Del($id){
-        global $language;
+        
         
     	$id = (int) $id;
         // Puxa salao e deleta
@@ -335,7 +335,7 @@ class predial_SalaoControle extends predial_Controle
         }
     }
     static function agendamento_form(&$controle, &$Visual, &$form, &$idreserva,$nomereserva,$datainicial = '',$datafinal = '',$franquia=0, $valor=0){
-        global $language;
+        
        
        // select de pessoas
         $form->Select_Novo('Reserva','selectreservas','selectreservas');
@@ -360,7 +360,7 @@ class predial_SalaoControle extends predial_Controle
      * @version 2.0
      */
     public function agendamento_inserir(){
-        global $language;
+        
         $reservaid = (int) \anti_injection($_POST["selectreservas"]);
         $valor = \anti_injection($_POST["valor"]);
         $data_inicial = \anti_injection($_POST["data_inicial"]);

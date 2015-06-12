@@ -207,7 +207,7 @@ class social_AcaoControle extends social_Controle
      * @version 2.0
      */
     public function Acoes_Del($id,$persona_id=false){
-        global $language;
+        
         
     	$id = (int) $id;
         // Puxa setor e deleta

@@ -161,7 +161,7 @@ class predial_BlocoControle extends predial_Controle
      * @version 2.0
      */
     public function Blocos_Del($id){
-        global $language;
+        
         
     	$id = (int) $id;
         // Puxa bloco e deleta

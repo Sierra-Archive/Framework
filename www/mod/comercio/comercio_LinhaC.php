@@ -139,7 +139,7 @@ class comercio_LinhaControle extends comercio_Controle
      * @version 2.0
      */
     public function Linhas_Del($id){
-        global $language;
+        
         
     	$id = (int) $id;
         // Puxa linha e deleta

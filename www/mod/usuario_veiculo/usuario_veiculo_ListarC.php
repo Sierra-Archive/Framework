@@ -147,7 +147,7 @@ class usuario_veiculo_ListarControle extends usuario_veiculo_Controle
         }
     }
     static function agendamento_form(&$controle, &$Visual, &$form, &$idveiculo,$nomeveiculo,$datainicial = '',$datafinal = '',$franquia=0, $valor=0){
-        global $language;
+        
        
        // select de pessoas
         $form->Select_Novo('Veiculo','selectveiculos','selectveiculos');
@@ -172,7 +172,7 @@ class usuario_veiculo_ListarControle extends usuario_veiculo_Controle
      * @version 2.0
      */
     public function agendamento_inserir(){
-        global $language;
+        
         $veiculoid = (int) \anti_injection($_POST["selectveiculos"]);
         $valor = \anti_injection($_POST["valor"]);
         $data_inicial = \anti_injection($_POST["data_inicial"]);

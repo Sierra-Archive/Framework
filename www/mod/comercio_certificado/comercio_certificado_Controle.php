@@ -98,7 +98,7 @@ class comercio_certificado_Controle extends \Framework\App\Controle
     }
     
     public static function Usuario_UpdateInfo2($id){
-        global $language;
+        
         $registro   = &\Framework\App\Registro::getInstacia();
         $Controle   = $registro->_Controle;
         $Modelo     = $registro->_Modelo;
@@ -185,7 +185,7 @@ class comercio_certificado_Controle extends \Framework\App\Controle
      * @version 2.0
      */
     public function Usuarios_Add2($tipo=false){
-        global $language;
+        
         $registro   = &\Framework\App\Registro::getInstacia();
         $Modelo     = $registro->_Modelo;
         $Visual     = $registro->_Visual;
@@ -235,7 +235,7 @@ class comercio_certificado_Controle extends \Framework\App\Controle
             // atualiza todos os valores por get, retirando o nivel admin
             //self::mysql_AtualizaValores($usuario);
 
-            global $language;
+            
 
             // Cria novo Usuario
             $usuario = new Usuario_DAO;
@@ -290,7 +290,7 @@ class comercio_certificado_Controle extends \Framework\App\Controle
      * @version 2.0
      */
     public function Usuarios_Edit2($tipo='usuario',$id){
-        global $language;
+        
         $id = (int) $id;
         // Puxa o usuario, e altera seus valores, depois salva novamente
         $usuario = $this->_Modelo->db->Sql_Select('Usuario', Array('id'=>$id));

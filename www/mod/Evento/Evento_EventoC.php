@@ -206,7 +206,7 @@ class Evento_EventoControle extends Evento_Controle
      * @version 2.0
      */
     public function Eventos_Del($id){
-        global $language;
+        
         
     	$id = (int) $id;
         

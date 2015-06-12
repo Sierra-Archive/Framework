@@ -401,7 +401,7 @@ class Musica_MusicaControle extends Musica_Controle
     public function Musicas_Del($id = false,$artista=false,$album=false){
         if($artista==='false') $artista = false;
         if($album==='false') $album = false;
-        global $language;
+        
         if($id===false){
             throw new \Exception('Musica não existe:'. $id, 404);
         }

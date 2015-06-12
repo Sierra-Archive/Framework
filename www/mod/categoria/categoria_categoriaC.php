@@ -71,7 +71,7 @@ class categoria_categoriaControle extends categoria_Controle
      * @param type $tipo
      */
     public function Categorias_formeditar($id){
-        global $language;
+        
         $id = (int) $id;
         $categoria = $this->_Modelo->Categoria_Retorna($id);
         
@@ -83,7 +83,7 @@ class categoria_categoriaControle extends categoria_Controle
         $this->_Visual->Json_Info_Update('Titulo', __('Editar Categoria'));
     }
     public function Categorias_alterar($id){
-        global $language;
+        
         $id = (int) $id;
         $nome = \anti_injection($_POST["nome"]);
         $parent = (int) $_POST["parent"];
@@ -171,7 +171,7 @@ class categoria_categoriaControle extends categoria_Controle
     * @version 2.0
     */
     public function Categorias_formcadastro($modulo=false){
-        global $language;
+        
         $form = new \Framework\Classes\Form('adminformcategoriasend',SISTEMA_MODULO.'/'.SISTEMA_SUB.'/Main/salvar/','formajax');
         
         $formbt = __('Salvar');
@@ -271,7 +271,7 @@ class categoria_categoriaControle extends categoria_Controle
      * @version 2.0
      */
     public function Categorias_inserir(){
-        global $language;
+        
         $nome = \anti_injection($_POST["nome"]);
         $parent = (int) $_POST["parent"];
         $mod_acc = \anti_injection($_POST["mod_acc"]);

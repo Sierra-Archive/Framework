@@ -299,7 +299,7 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
      * @version 2.0
      */
     public function Equipamentos_Del($id){
-        global $language;
+        
         $titulo_plural = __('Equipamentos');
         $titulo_singular = \Framework\Classes\Texto::Transformar_Plural_Singular($titulo_plural); 
         
@@ -449,7 +449,7 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
      * @version 2.0
      */
     public function Marcas_Del($id){
-        global $language;
+        
         
     	$id = (int) $id;
         // Puxa marca e deleta
@@ -598,7 +598,7 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
      * @version 2.0
      */
     public function Modelos_Del($id){
-        global $language;
+        
         
     	$id = (int) $id;
         // Puxa modelo e deleta

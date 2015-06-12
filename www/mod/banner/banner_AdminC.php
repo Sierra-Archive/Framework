@@ -177,7 +177,7 @@ class banner_AdminControle extends banner_Controle
     * @version 2.0
     */
     public function Banners_Del($id){
-        global $language;
+        
         
     	$id = (int) $id;
     	$sucesso = $this->_Modelo->Banners_Del($id);

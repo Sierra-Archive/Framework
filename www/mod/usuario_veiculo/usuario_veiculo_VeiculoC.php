@@ -212,7 +212,7 @@ class usuario_veiculo_VeiculoControle extends usuario_veiculo_Controle
      * @version 2.0
      */
     public function Veiculos_Del($id){
-        global $language;
+        
         
     	$id = (int) $id;
         // Puxa linha e deleta
@@ -445,7 +445,7 @@ class usuario_veiculo_VeiculoControle extends usuario_veiculo_Controle
     public function Veiculos_Comentario_Del($veiculo_id = false,$id = 0){
         if($veiculo_id===false) throw new \Exception('Veiculo não informado',404);
         if($id         == 0   ) throw new \Exception('Comentário não informado',404);
-        global $language;
+        
         
     	$id = (int) $id;
         // Puxa linha e deleta
@@ -591,7 +591,7 @@ class usuario_veiculo_VeiculoControle extends usuario_veiculo_Controle
     public function Veiculos_Evento_Del($veiculo_id = false,$id = 0){
         if($veiculo_id===false) throw new \Exception('Veiculo não informado',404);
         if($id         == 0   ) throw new \Exception('Evento não informado',404);
-        global $language;
+        
         
     	$id = (int) $id;
         // Puxa linha e deleta

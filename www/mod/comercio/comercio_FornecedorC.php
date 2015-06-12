@@ -156,7 +156,7 @@ class comercio_FornecedorControle extends comercio_Controle
      * @version 2.0
      */
     public function Fornecedores_Del($id){
-        global $language;
+        
         
     	$id = (int) $id;
         // Puxa fornecedor e deleta
@@ -258,7 +258,7 @@ class comercio_FornecedorControle extends comercio_Controle
      * @version 2.0
      */
     public function Fornecedores_Comentario($fornecedor_id = false, $export = false){
-        global $language;
+        
         $erro = false;
         if($fornecedor_id===false){
             $where = Array();
@@ -403,7 +403,7 @@ class comercio_FornecedorControle extends comercio_Controle
     public function Fornecedores_Comentario_Del($fornecedor_id = false,$id = 0){
         if($fornecedor_id===false) throw new \Exception('Fornecedor não informado',404);
         if($id            == 0   ) throw new \Exception('Comentário não informado',404);
-        global $language;
+        
         
     	$id = (int) $id;
         // Puxa linha e deleta

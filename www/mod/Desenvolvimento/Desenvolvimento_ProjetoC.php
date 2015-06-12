@@ -199,7 +199,7 @@ class Desenvolvimento_ProjetoControle extends Desenvolvimento_Controle
      * @version 2.0
      */
     public function Projetos_Del($id){
-        global $language;
+        
         
     	$id = (int) $id;
         // Puxa linha e deleta
@@ -626,7 +626,7 @@ class Desenvolvimento_ProjetoControle extends Desenvolvimento_Controle
     public function Projetos_Comentario_Del($Desenvolvimento_id = false,$id = 0){
         if($Desenvolvimento_id===false) throw new \Exception('Projeto não informado',404);
         if($id         == 0   ) throw new \Exception('Comentário não informado',404);
-        global $language;
+        
         
     	$id = (int) $id;
         // Puxa linha e deleta

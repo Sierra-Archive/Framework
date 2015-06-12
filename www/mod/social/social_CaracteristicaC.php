@@ -174,7 +174,7 @@ class social_CaracteristicaControle extends social_Controle
      * @version 2.0
      */
     public function Caracteristicas_Del($id){
-        global $language;
+        
         
     	$id = (int) $id;
         // Puxa setor e deleta

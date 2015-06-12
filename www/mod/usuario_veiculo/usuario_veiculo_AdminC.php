@@ -131,7 +131,7 @@ class usuario_veiculo_AdminControle extends usuario_veiculo_Controle
     * @version 2.0
     */
     public function veiculos_Del($id){
-        global $language;
+        
         
     	$id = (int) $id;
     	$sucesso = $this->_Modelo->veiculos_Del($id);
@@ -225,7 +225,7 @@ class usuario_veiculo_AdminControle extends usuario_veiculo_Controle
      * @version 2.0
     */
     static function veiculos_form(&$controle, &$Visual, &$form, &$selectmarcas,$categoria = 0,$ano = '',$modelo = '',$marca = '',$cc = '',$valor1 = '',$valor2 = '',$valor3 = '',$franquia = '',$obs = ''){
-        global $language;
+        
        
 
 	// select de categorias
@@ -272,7 +272,7 @@ class usuario_veiculo_AdminControle extends usuario_veiculo_Controle
      * @version 2.0
      */
     public function veiculos_inserir(){
-        global $language;
+        
         $categoria = \anti_injection($_POST["categoria"]);
         $ano = (int) $_POST["ano"];
         $modelo = \anti_injection($_POST["modelo"]);
@@ -311,7 +311,7 @@ class usuario_veiculo_AdminControle extends usuario_veiculo_Controle
      * @version 2.0
      */
     public function veiculos_alterar($id){
-        global $language;
+        
         
         $id = (int) $id;
         
@@ -368,7 +368,7 @@ class usuario_veiculo_AdminControle extends usuario_veiculo_Controle
     * @version 2.0
     */
     public function marcas_carregajanelaadd(){
-        global $language;
+        
         
         // cadastro de marcas
         $formulario = usuario_veiculo_AdminControle::marcas_formcadastro();
@@ -393,7 +393,7 @@ class usuario_veiculo_AdminControle extends usuario_veiculo_Controle
     * @version 2.0
     */
     static function marcas_formcadastro(){
-        global $language;
+        
        
         $form = new \Framework\Classes\Form('adminformmarcassend','usuario_veiculo/Admin/marcas_inserir/','formajax');
         $form->Input_Novo('Nome da Marca','nome','','text', 30, 'obrigatorio'); 
@@ -411,7 +411,7 @@ class usuario_veiculo_AdminControle extends usuario_veiculo_Controle
      * 
      */
     public function marcas_inserir(){
-        global $language;
+        
         $nome = \anti_injection($_POST["nome"]);
         $sucesso =  $this->_Modelo->marcas_inserir($nome);
         // atualiza marcas

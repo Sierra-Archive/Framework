@@ -523,7 +523,7 @@ class Engenharia_UnidadeControle extends Engenharia_Controle
      * @version 2.0
      */
     public function Unidades_Del($id = false,$empreendimento=false){
-        global $language;
+        
         if($id===false){
             throw new \Exception('Unidade não existe:'. $id, 404);
         }

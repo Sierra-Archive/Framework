@@ -178,7 +178,7 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
      * @version 2.0
      */
     public function Modulos_Del($id){
-        global $language;
+        
         
     	$id = (int) $id;
         // Puxa linha e deleta
@@ -356,7 +356,7 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
      * @version 2.0
      */
     public function Submodulos_Del($id){
-        global $language;
+        
         
     	$id = (int) $id;
         // Puxa linha e deleta
@@ -533,7 +533,7 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
      * @version 2.0
      */
     public function Metodos_Del($id){
-        global $language;
+        
         
     	$id = (int) $id;
         // Puxa linha e deleta

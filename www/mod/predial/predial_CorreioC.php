@@ -31,7 +31,7 @@ class predial_CorreioControle extends predial_Controle
         }
     }
     public function Correios_Baixar($correio=false){
-        GLOBAl $language;
+        
         self::Endereco_Correio();
         if($correio===false || $correio == 0) return false;
         $correio = (int) $correio;
@@ -319,7 +319,7 @@ class predial_CorreioControle extends predial_Controle
      * @version 2.0
      */
     public function Correios_Del($id){
-        global $language;
+        
         
     	$id = (int) $id;
         // Puxa setor e deleta

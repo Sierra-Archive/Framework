@@ -160,7 +160,7 @@ class predial_VeiculoControle extends predial_Controle
      * @version 2.0
      */
     public function Veiculos_Del($id){
-        global $language;
+        
         
     	$id = (int) $id;
         // Puxa veiculo e deleta

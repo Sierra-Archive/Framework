@@ -188,7 +188,7 @@ class Desenvolvimento_TarefaControle extends Desenvolvimento_Controle
      * @version 2.0
      */
     public function Tarefas_Del($id){
-        global $language;
+        
         
     	$id = (int) $id;
         // Puxa linha e deleta

@@ -78,7 +78,7 @@ class usuario_mensagem_AdminControle extends usuario_mensagem_Controle
      * @version 2.0
      */
     public function Mensagem_Del($id){
-        global $language;
+        
         
     	$id = (int) $id;
         // Puxa setor e deleta

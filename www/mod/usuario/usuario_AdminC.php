@@ -216,7 +216,7 @@ class usuario_AdminControle extends usuario_Controle
      * @version 2.0
      */
     public function Usuarios_Edit2($id,$tipo=false){
-        global $language;
+        
         
         
         $id = (int) $id;
@@ -394,7 +394,7 @@ class usuario_AdminControle extends usuario_Controle
      * @version 2.0
      */
     public function Usuarios_Add2($tipo=false){
-        global $language;
+        
         $this->_Visual->Json_Info_Update('Titulo','Usuário.');
         
         if(isset($_POST['email'])){
@@ -442,7 +442,7 @@ class usuario_AdminControle extends usuario_Controle
             // atualiza todos os valores por get, retirando o nivel admin
             //self::mysql_AtualizaValores($usuario);
 
-            global $language;
+            
 
             // Cria novo Usuario
             $usuario = new Usuario_DAO;
@@ -541,7 +541,7 @@ class usuario_AdminControle extends usuario_Controle
     * @version 2.0
     */
     public function Usuarios_Del($id,$tipo=false){
-        global $language;
+        
     	$id = (int) $id;
         // Regula Tipo
         if($tipo==='falso'){
@@ -669,7 +669,7 @@ class usuario_AdminControle extends usuario_Controle
         }
     }
     public function usuarios_pendente_aprovar($id, $tipo='cnh',$aprovar='sim'){
-        GLOBAL $language;
+        
         
         $id = (int) $id;
         
@@ -989,7 +989,7 @@ class usuario_AdminControle extends usuario_Controle
     	$id = (int) $id;
         if($usuario_id===false) throw new \Exception('Usuario não informado',404);
         if($id         == 0   ) throw new \Exception('Comentário não informado',404);
-        global $language;
+        
         
         /**
          * Endereço, Diferenciacao etc..

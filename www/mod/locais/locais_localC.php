@@ -8,7 +8,7 @@ class locais_localControle extends locais_Controle
         parent::__construct();
     }
     public function select_estados($id){
-        global $language;
+        
 
         $pais = (int) $id;
         $select = array();
@@ -25,7 +25,7 @@ class locais_localControle extends locais_Controle
         }
     }
     public function select_cidades($id){
-        global $language;
+        
 
         $estado = (int) $id;
         $select = array();
@@ -44,7 +44,7 @@ class locais_localControle extends locais_Controle
         }*/
     }
     public function select_bairros($id){
-        global $language;
+        
 
         $cidade = (int) $id;
         $select = array();

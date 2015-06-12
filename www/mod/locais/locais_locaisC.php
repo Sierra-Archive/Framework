@@ -150,7 +150,7 @@ class locais_locaisControle extends locais_Controle
      * @version 2.0
      */
     public function Locais_Del($id){
-        global $language;
+        
         
     	$id = (int) $id;
         // Puxa setor e deleta

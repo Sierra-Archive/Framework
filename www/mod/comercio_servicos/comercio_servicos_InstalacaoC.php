@@ -177,7 +177,7 @@ class comercio_servicos_InstalacaoControle extends comercio_servicos_Controle
      * @version 2.0
      */
     public function Btu_Del($id){
-        global $language;
+        
         
     	$id = (int) $id;
         // Puxa setor e deleta
@@ -298,7 +298,7 @@ class comercio_servicos_InstalacaoControle extends comercio_servicos_Controle
      * @version 2.0
      */
     public function Suporte_Del($id){
-        global $language;
+        
         
     	$id = (int) $id;
         // Puxa setor e deleta

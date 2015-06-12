@@ -180,7 +180,7 @@ class comercio_certificado_ProdutoControle extends comercio_certificado_Controle
      * @version 2.0
      */
     public function Produtos_Add2(){
-        global $language;
+        
         
         // Cria novo Produto
         $produto = new Comercio_Produto_DAO;
@@ -217,7 +217,7 @@ class comercio_certificado_ProdutoControle extends comercio_certificado_Controle
      * @version 2.0
      */
     public function Produtos_Edit2($id){
-        global $language;
+        
         $id = (int) $id;
         // Puxa o produto, e altera seus valores, depois salva novamente
         $produto = $this->_Modelo->db->Sql_Select('Comercio_Produto', Array('id'=>$id));
@@ -254,7 +254,7 @@ class comercio_certificado_ProdutoControle extends comercio_certificado_Controle
      * @version 2.0
      */
     public function Produtos_Del($id){
-        global $language;
+        
         
     	$id = (int) $id;
         // Puxa produto e deleta
@@ -324,7 +324,7 @@ class comercio_certificado_ProdutoControle extends comercio_certificado_Controle
         return $html;
     }
     public function Auditorias_Modificar($produtos=0){
-        GLOBAL $language;
+        
         if($produtos==0) return false;
         #update
         $auditorias_post = \anti_injection($_POST['auditoria']);
