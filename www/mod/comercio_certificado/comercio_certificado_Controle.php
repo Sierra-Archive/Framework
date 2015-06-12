@@ -177,7 +177,7 @@ class comercio_certificado_Controle extends \Framework\App\Controle
      * 
      * @access public static
      * 
-     * @global Array $language
+     * 
      * 
      * @return void
      * 
@@ -284,7 +284,7 @@ class comercio_certificado_Controle extends \Framework\App\Controle
     }
     /**
      * 
-     * @global Array $language
+     * 
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 2.0

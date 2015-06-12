@@ -183,8 +183,6 @@ class Agenda_CompromissoControle extends Agenda_Controle
      * @version 2.0
      */
     public function Compromissos_Del($id){
-        global $language;
-        
     	$id = (int) $id;
         // Puxa compromisso e deleta
         $compromisso = $this->_Modelo->db->Sql_Select('Agenda_Compromisso', Array('id'=>$id));

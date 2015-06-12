@@ -221,14 +221,13 @@ class usuario_mensagem_Controle extends \Framework\App\Controle
         self::Mensagem_formulario_Static($cliente);
     }
     public function Resposta_formulario($mensagemid){
-        global $language;
         $mensagemid = (int)$mensagemid;
         
         $form = new \Framework\Classes\Form('mensagem_resposta',SISTEMA_MODULO.'/'.SISTEMA_SUB.'/Resposta_inserir/'.$mensagemid.'/','formajax','full');
         // CADASTRA
         $form->Input_Novo('Mensagem','mensagem',$mensagemid,'hidden', false, 'obrigatorio');
         $form->TextArea_Novo('Responder','resposta','','','text', 10000, 'obrigatorio');
-        $this->_Visual->Blocar($form->retorna_form($language['formularios']['enviar']));
+        $this->_Visual->Blocar($form->retorna_form(__('Enviar')));
         $this->_Visual->Bloco_Unico_CriaJanela(__('Responder Ticket'));
     }
     /**
@@ -288,7 +287,6 @@ class usuario_mensagem_Controle extends \Framework\App\Controle
         $this->VisualizadordeMensagem($identificador->id);
     }
     public function Resposta_inserir(){
-        global $language;
         $mensagem = (int) $_POST["mensagem"];
         $resposta = \anti_injection($_POST['resposta']);
         if(!is_int($mensagem) || $mensagem==0) return false;

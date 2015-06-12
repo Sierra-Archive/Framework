@@ -199,7 +199,6 @@ class Agenda_PastaControle extends Agenda_Controle
      * @version 2.0
      */
     public function Pastas_Del($id){
-        global $language;
         
     	$id = (int) $id;
         // Puxa pasta e deleta
@@ -356,8 +355,6 @@ class Agenda_PastaControle extends Agenda_Controle
      * @version 2.0
      */
     public function Cores_Del($id){
-        global $language;
-        
     	$id = (int) $id;
         // Puxa pasta e deleta
         $pasta = $this->_Modelo->db->Sql_Select('Usuario_Agenda_Pasta_Cor', Array('id'=>$id));

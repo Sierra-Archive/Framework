@@ -115,8 +115,6 @@ class Financeiro_ListarControle extends Financeiro_Controle
     }
     
     function sacar_carregajanelaadd(){
-        global $language;
-        
         // cadastro de marcas
         $formulario = Financeiro_ListarControle::sacar_formcadastro();
         $this->_Visual->Blocar($formulario);
@@ -124,24 +122,21 @@ class Financeiro_ListarControle extends Financeiro_Controle
         
     }
     static function sacar_formcadastro(){
-        global $language;
-       
         $form = new \Framework\Classes\Form('financeiro_sacar_form','Financeiro/Listar/sacar_inserir/','formajax');
-        $form->Input_Novo('Quantia a Sacar (Em Reais)','sacar_quantia','','text', 30, 'obrigatorio', '', false,'','','Numero','', false);
+        $form->Input_Novo(__('Quantia a Sacar (Em Reais)'),'sacar_quantia','','text', 30, 'obrigatorio', '', false,'','','Numero','', false);
         
         $formulario = $form->retorna_form('Realizar Saque');
 
         return $formulario;
     }
     /**
-     * 
-     * @global type $language
+     * Inserir Saque
      * @global type $config
      * 
      * #update
      */
     public function sacar_inserir(){
-        global $language, $config;
+        global $config;
         // Para verificar erro
         $erro = 1;
         // Carrega quantia e saldo do usuario
@@ -205,8 +200,6 @@ class Financeiro_ListarControle extends Financeiro_Controle
         else         $this->_Visual->Json_Info_Update('Titulo', __('Erro ao Realizar Saque'));
     }
     function transferencia_carregajanelaadd(){
-        global $language;
-        
         // cadastro de marcas
         $formulario = Financeiro_ListarControle::transferencia_formcadastro();
         $this->_Visual->Blocar($formulario);
@@ -214,8 +207,6 @@ class Financeiro_ListarControle extends Financeiro_Controle
         
     }
     static function transferencia_formcadastro(){
-        global $language;
-       
         $form = new \Framework\Classes\Form('financeiro_transferencia_form','Financeiro/Listar/transferencia_inserir/','formajax');
         $form->Input_Novo('Login do Usuario','login','','text', 30, 'obrigatorio');
         $form->Input_Novo('Quantia a Transferir (Em Reais)','transferir_quantia','','text', 30, 'obrigatorio', '', false,'','','Numero','', false);
@@ -225,7 +216,6 @@ class Financeiro_ListarControle extends Financeiro_Controle
         return $formulario;
     }
     public function transferencia_inserir(){
-        global $language;
         $erro = 1;
         // captura variaveis
         $login = \anti_injection($_POST["login"]);

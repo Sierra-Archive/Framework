@@ -371,8 +371,7 @@ class Curso_TurmaControle extends Curso_Controle
         \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos);
     }
     /**
-     * 
-     * @global Array $language
+     * Retorno de Add Turma
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 2.0
@@ -526,8 +525,7 @@ class Curso_TurmaControle extends Curso_Controle
         \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos,$editar);
     }
     /**
-     * 
-     * @global Array $language
+     * Retorno de Editar Turma
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 2.0
@@ -554,15 +552,13 @@ class Curso_TurmaControle extends Curso_Controle
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);   
     }
     /**
-     * 
-     * @global Array $language
+     * Deletar Turma
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 2.0
      */
     public function Turmas_Del($id = false,$curso=false){
         if($curso==='false') $curso = false;
-        global $language;
         if($id===false){
             throw new \Exception('Turma não existe:'. $id, 404);
         }

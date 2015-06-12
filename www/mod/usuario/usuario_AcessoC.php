@@ -191,7 +191,7 @@ class usuario_AcessoControle extends usuario_Controle
     }
     /**
      * 
-     * @global Array $language
+     * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 2.0

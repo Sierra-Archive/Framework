@@ -276,7 +276,7 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
             
     /**
      * 
-     * @global Array $language
+     * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 2.0
@@ -331,7 +331,7 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
     }
     /**
      * 
-     * @global Array $language
+     * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 2.0
@@ -390,7 +390,7 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
     }
     /**
      * 
-     * @global Array $language
+     * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 2.0
@@ -588,7 +588,7 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
     }
     /**
      * 
-     * @global Array $language
+     * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 2.0

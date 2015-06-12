@@ -108,7 +108,7 @@ class predial_AdvertenciaControle extends predial_Controle
     }
     /**
      * 
-     * @global Array $language
+     * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 2.0
@@ -212,7 +212,7 @@ class predial_AdvertenciaControle extends predial_Controle
     }
     /**
      * 
-     * @global Array $language
+     * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 2.0
@@ -228,7 +228,7 @@ class predial_AdvertenciaControle extends predial_Controle
     }
     /**
      * 
-     * @global Array $language
+     * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 2.0

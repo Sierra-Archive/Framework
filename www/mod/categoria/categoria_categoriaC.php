@@ -77,7 +77,7 @@ class categoria_categoriaControle extends categoria_Controle
         
         $form = new \Framework\Classes\Form('adminformcategoriasend', SISTEMA_MODULO.'/'.SISTEMA_SUB.'/Categorias_alterar/'.$id.'/','formajax');
         $this->Categorias_formulario($form,$tipo,$categoria['nome'],$categoria['parent']);
-        $this->_Visual->Blocar($form->retorna_form($language['formularios']['editar']));
+        $this->_Visual->Blocar($form->retorna_form(__('Editar')));
         $this->_Visual->Bloco_Menor_CriaJanela(__('Editar Categoria'));
         // ORGANIZA E MANDA CONTEUDO
         $this->_Visual->Json_Info_Update('Titulo', __('Editar Categoria'));
@@ -174,7 +174,7 @@ class categoria_categoriaControle extends categoria_Controle
         global $language;
         $form = new \Framework\Classes\Form('adminformcategoriasend',SISTEMA_MODULO.'/'.SISTEMA_SUB.'/Main/salvar/','formajax');
         
-        $formbt = $language['formularios']['cadastrar'];
+        $formbt = __('Salvar');
         $titulo1 = __('Cadastrar Categoria');
         $titulo2 = __('Cadastrar Categoria');
         // Puxa Form

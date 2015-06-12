@@ -105,7 +105,7 @@ class usuario_FreeControle extends usuario_Controle
      * @name usuarios_inserir
      * @access public
      * 
-     * @global Array $language
+     * 
      * 
      * @return void
      * 

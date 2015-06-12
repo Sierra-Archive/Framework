@@ -267,7 +267,7 @@ class Financeiro_UsuarioControle extends Financeiro_Controle
     }
     /**
      * Altera Usuario pra Pago ou pra Nao pago !
-     * @global Array $language
+     * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 2.0

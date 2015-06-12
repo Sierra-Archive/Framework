@@ -244,7 +244,7 @@ class usuario_veiculo_AdminControle extends usuario_veiculo_Controle
         $form->Input_Novo('Valor da Franquia','franquia',$franquia,'text', 30, 'obrigatorio', '', false,'','','Numero','', false); 
 
 
-        $form->Input_Novo($language['formularios']['obs'],'obs',$obs,'text', 1000);
+        $form->Input_Novo(__('Observação'),'obs',$obs,'text', 1000);
     }
     /**
      * Inseri Veiculos no Banco de dados
@@ -252,7 +252,7 @@ class usuario_veiculo_AdminControle extends usuario_veiculo_Controle
      * @name veiculos_inserir
      * @access public
      * 
-     * @global Array $language
+     * 
      * 
      * @post $_POST["categoria"]
      * @post int $_POST["ano"]
@@ -305,7 +305,7 @@ class usuario_veiculo_AdminControle extends usuario_veiculo_Controle
     }
     /**
      * 
-     * @global Array $language
+     * 
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 2.0
@@ -398,7 +398,7 @@ class usuario_veiculo_AdminControle extends usuario_veiculo_Controle
         $form = new \Framework\Classes\Form('adminformmarcassend','usuario_veiculo/Admin/marcas_inserir/','formajax');
         $form->Input_Novo('Nome da Marca','nome','','text', 30, 'obrigatorio'); 
         
-        $formulario = $form->retorna_form($language['formularios']['cadastrar']);
+        $formulario = $form->retorna_form(__('Salvar'));
 
         return $formulario;
     }
@@ -408,7 +408,7 @@ class usuario_veiculo_AdminControle extends usuario_veiculo_Controle
      * @name marcas_inserir
      * @access public
      * 
-     * @global Array $language
+     * 
      */
     public function marcas_inserir(){
         global $language;

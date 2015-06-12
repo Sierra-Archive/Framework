@@ -209,7 +209,7 @@ class social_personasControle extends social_Controle
         $form->Input_Novo($language['social']['form_idface'],'idface','','text', 21,'obrigatorio'); 
         $form->Input_Novo($language['social']['form_nome'],'nome','','text', 30, 'obrigatorio'); 
               
-        $formulario = $form->retorna_form($language['formularios']['cadastrar']);
+        $formulario = $form->retorna_form(__('Salvar'));
         
         return $formulario;
     }

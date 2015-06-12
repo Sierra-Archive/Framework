@@ -121,11 +121,11 @@ class locais_localidadesControle extends locais_Controle
                 'title' => 'Cadastrar Bairro',
                 'botoes' => array(
                     '0' => array(
-                        'text' => $language['formularios']['cadastrar'],
+                        'text' => __('Salvar'),
                         'clique' =>  'var params = $("#popcadastrarbairro").serialize();  Control_PopMgs_Carregando(\'total\');  Modelo_Ajax_Chamar(\'locais/localidades/bairro_inserir\',params,\'POST\',true);$(this).dialog(\'close\');'
                     ),
                     '1' => array(
-                        'text' => $language['formularios']['cancelar'],
+                        'text' => __('Cancelar'),
                         'clique' => '$(this).dialog(\'close\');'
                     )
                 ),
@@ -134,14 +134,13 @@ class locais_localidadesControle extends locais_Controle
             $this->_Visual->Json_IncluiTipo('Popup',$popup);
             echo $this->_Visual->Json_Retorna();
         }else{
-            $formulario = $form->retorna_form($language['formularios']['cadastrar']);
+            $formulario = $form->retorna_form(__('Salvar'));
             $this->_Visual->Blocar($formulario);
             $this->_Visual->Bloco_Maior_CriaJanela(__('Cadastrar Bairro'));
             $this->_Visual->renderizar(1,$this->calendario,$this->config_dia,$this->config_mes,$this->config_ano,$this->config_dataixi);
         }	
     }
     public function bairro_inserir(){
-        global $language;
         // CARREGA VARIAIVES DO FORMULARIO E VARIAVIES PADROES
         $nome = \anti_injection($_POST["nome"]);
         $zona = \anti_injection($_POST["zona"]);
@@ -157,8 +156,8 @@ class locais_localidadesControle extends locais_Controle
         if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'erro',
-                "mgs_principal" => $language['usuarios']['cadastro']['sucesso1'],
-                "mgs_secundaria" => $language['usuarios']['cadastro']['sucesso2']
+                "mgs_principal" => __('Cadastro realizado com sucesso'),
+                "mgs_secundaria" => __('Confira seu email para pegar sua senha.')
             );
             $tamanho = sizeof($bairros);
             for($i=0;$i<$tamanho;++$i){
@@ -229,8 +228,7 @@ class locais_localidadesControle extends locais_Controle
         \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos);
     }
     /**
-     * 
-     * @global Array $language
+     * Retorno de Add Paises
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 2.0
@@ -262,8 +260,7 @@ class locais_localidadesControle extends locais_Controle
         \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos,$editar);
     }
     /**
-     * 
-     * @global Array $language
+     * Retorno de Editar Paises
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 2.0
@@ -278,15 +275,12 @@ class locais_localidadesControle extends locais_Controle
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);   
     }
     /**
-     * 
-     * @global Array $language
+     * Deletar Paises
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 2.0
      */
     public function Paises_Del($id){
-        global $language;
-        
     	$id = (int) $id;
         // Puxa setor e deleta
         $setor = $this->_Modelo->db->Sql_Select('Sistema_Local_Pais', Array('id'=>$id));
@@ -358,7 +352,7 @@ class locais_localidadesControle extends locais_Controle
     }
     /**
      * 
-     * @global Array $language
+     * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 2.0
@@ -391,7 +385,7 @@ class locais_localidadesControle extends locais_Controle
     }
     /**
      * 
-     * @global Array $language
+     * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 2.0
@@ -407,7 +401,7 @@ class locais_localidadesControle extends locais_Controle
     }
     /**
      * 
-     * @global Array $language
+     * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 2.0
@@ -486,7 +480,7 @@ class locais_localidadesControle extends locais_Controle
     }
     /**
      * 
-     * @global Array $language
+     * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 2.0
@@ -519,7 +513,7 @@ class locais_localidadesControle extends locais_Controle
     }
     /**
      * 
-     * @global Array $language
+     * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 2.0
@@ -535,7 +529,7 @@ class locais_localidadesControle extends locais_Controle
     }
     /**
      * 
-     * @global Array $language
+     * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 2.0
@@ -614,7 +608,7 @@ class locais_localidadesControle extends locais_Controle
     }
     /**
      * 
-     * @global Array $language
+     * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 2.0
@@ -647,7 +641,7 @@ class locais_localidadesControle extends locais_Controle
     }
     /**
      * 
-     * @global Array $language
+     * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 2.0
@@ -663,7 +657,7 @@ class locais_localidadesControle extends locais_Controle
     }
     /**
      * 
-     * @global Array $language
+     * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 2.0

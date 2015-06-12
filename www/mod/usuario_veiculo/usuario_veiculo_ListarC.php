@@ -164,7 +164,7 @@ class usuario_veiculo_ListarControle extends usuario_veiculo_Controle
      * @name agendamento_inserir
      * @access public
      * 
-     * @global Array $language
+     * 
      * 
      * @return void
      * 

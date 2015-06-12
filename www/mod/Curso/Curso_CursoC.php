@@ -128,8 +128,7 @@ class Curso_CursoControle extends Curso_Controle
         \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos);
     }
     /**
-     * 
-     * @global Array $language
+     * Retorno de Adicionar Cursos
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 2.0
@@ -162,8 +161,8 @@ class Curso_CursoControle extends Curso_Controle
         \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos,$editar);
     }
     /**
+     * Retorno de Editar Cursos
      * 
-     * @global Array $language
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 2.0
@@ -178,15 +177,12 @@ class Curso_CursoControle extends Curso_Controle
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);   
     }
     /**
-     * 
-     * @global Array $language
+     * Deletar Cursos
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 2.0
      */
-    public function Cursos_Del($id){
-        global $language;
-        
+    public function Cursos_Del($id){        
     	$id = (int) $id;
         // Puxa curso e deleta
         $curso = $this->_Modelo->db->Sql_Select('Curso', Array('id'=>$id));

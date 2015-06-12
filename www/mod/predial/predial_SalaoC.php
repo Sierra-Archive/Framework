@@ -104,7 +104,7 @@ class predial_SalaoControle extends predial_Controle
     }
     /**
      * 
-     * @global Array $language
+     * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 2.0
@@ -138,7 +138,7 @@ class predial_SalaoControle extends predial_Controle
     }
     /**
      * 
-     * @global Array $language
+     * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 2.0
@@ -154,7 +154,7 @@ class predial_SalaoControle extends predial_Controle
     }
     /**
      * 
-     * @global Array $language
+     * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 2.0
@@ -352,7 +352,7 @@ class predial_SalaoControle extends predial_Controle
      * @name agendamento_inserir
      * @access public
      * 
-     * @global Array $language
+     * 
      * 
      * @return void
      * 

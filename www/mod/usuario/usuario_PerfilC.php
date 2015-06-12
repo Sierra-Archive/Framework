@@ -215,7 +215,7 @@ class usuario_PerfilControle extends usuario_Controle
      * @name agendamento_inserir
      * @access public
      * 
-     * @global Array $language
+     * 
      * 
      * @return void
      * 
@@ -303,7 +303,7 @@ class usuario_PerfilControle extends usuario_Controle
     }
     /**
      * 
-     * @global Array $language
+     * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 2.0
@@ -538,7 +538,7 @@ class usuario_PerfilControle extends usuario_Controle
      * @name agendamento_inserir
      * @access public
      * 
-     * @global Array $language
+     * 
      * 
      * @return void
      * 
@@ -622,7 +622,7 @@ class usuario_PerfilControle extends usuario_Controle
     }
     /**
      * 
-     * @global Array $language
+     * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 2.0

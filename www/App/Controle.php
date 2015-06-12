@@ -562,7 +562,6 @@ readfile($link);*/
      * @param Class $form Carrega Formulario por ponteiro
      * @param string $tipo Carrega Tipo de Categoria
      * 
-     * @uses $language
      * @uses \Framework\Classes\Form::$Select_Novo
      * @uses \Framework\Classes\Form::$Select_Fim
      * @uses \Framework\App\Modelo::$Categorias_Retorna
@@ -574,9 +573,8 @@ readfile($link);*/
      * @version 2.0
      */
     protected function Categorias_ShowSelect(&$form,$tipo='',$padrao=0){
-        global $language;
     	$array = $this->_Modelo->Categorias_Retorna($tipo);
-    	$form->Select_Novo($language['palavras']['cat'],'categoria','categoria');
+    	$form->Select_Novo(__('Categoria'),'categoria','categoria');
     	$this->_Visual->Categorias_ShowSelect($array,$form,$padrao);
     	$form->Select_Fim();
     }
@@ -1417,8 +1415,8 @@ readfile($link);*/
         }
     }
     /**
+     * Gera o Retorno dos Formularios
      * 
-     * @global type $language
      * @param type $titulo
      * @param type $dao
      * @param type $funcao
@@ -1432,7 +1430,6 @@ readfile($link);*/
      * @version 3.1.1
      */
     protected function Gerador_Formulario_Janela2($titulo,$dao,$funcao = '',$sucesso1,$sucesso2,$colocar=false,$erro1 = '',$erro2 = ''){
-        global $language;
         $tempo = new \Framework\App\Tempo('Controle Gerador Form Janela2');
         // Variaveis
         $camponovo = false;

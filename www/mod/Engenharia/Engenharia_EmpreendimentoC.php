@@ -168,7 +168,7 @@ class Engenharia_EmpreendimentoControle extends Engenharia_Controle
     }
     /**
      * 
-     * @global Array $language
+     * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 2.0

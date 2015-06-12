@@ -72,7 +72,7 @@ class usuario_mensagem_AdminControle extends usuario_mensagem_Controle
     }
     /**
      * 
-     * @global Array $language
+     * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 2.0

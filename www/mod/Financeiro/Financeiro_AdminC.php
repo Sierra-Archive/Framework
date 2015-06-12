@@ -219,9 +219,9 @@ class Financeiro_AdminControle extends Financeiro_Controle
        
         $form = new \Framework\Classes\Form('adminfinanceiroinserir','Financeiro/Admin/financas_inserir/','formajax');
         $form->Input_Novo('user','user',$user,'hidden', false, 'obrigatorio'); 
-        $form->Input_Novo($language['formularios']['valor'],'valor','','text', 30, 'obrigatorio'); 
+        $form->Input_Novo(__('Valor'),'valor','','text', 30, 'obrigatorio'); 
 
-        $form->Input_Novo($language['formularios']['obs'],'obs','','text', 255);
+        $form->Input_Novo(__('Observação'),'obs','','text', 255);
         
         $formulario = $form->retorna_form('Depositar para Usuário');
 
@@ -232,9 +232,9 @@ class Financeiro_AdminControle extends Financeiro_Controle
        
         $form = new \Framework\Classes\Form('adminfinanceiroinserir','Financeiro/Admin/financas_retirar/','formajax');
         $form->Input_Novo('user','user',$user,'hidden', false, 'obrigatorio'); 
-        $form->Input_Novo($language['formularios']['valor'],'valor','','text', 30, 'obrigatorio'); 
+        $form->Input_Novo(__('Valor'),'valor','','text', 30, 'obrigatorio'); 
 
-        $form->Input_Novo($language['formularios']['obs'],'obs','','text', 255);
+        $form->Input_Novo(__('Observação'),'obs','','text', 255);
         
         $formulario = $form->retorna_form('Retirar de Usuário');
 
