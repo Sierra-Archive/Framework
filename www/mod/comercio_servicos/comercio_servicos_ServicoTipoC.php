@@ -58,7 +58,7 @@ class comercio_servicos_ServicoTipoControle extends comercio_servicos_Controle
 
         $this->_Visual->Show_Tabela_DataTable_Massiva($tabela_colunas,'comercio_servicos/ServicoTipo/Servico_Tipo');
         $titulo = __('Listagem de Serviços');
-        $this->_Visual->Bloco_Unico_CriaJanela($titulo.' (<span id="DataTable_Contador">Carregando...</span>)','',10,Array("link"=>"comercio_servicos/ServicoTipo/Servico_Tipo_Add",'icon'=>'add','nome'=>'Adicionar Tipo de Serviço'));
+        $this->_Visual->Bloco_Unico_CriaJanela($titulo.' (<span id="DataTable_Contador">0</span>)','',10,Array("link"=>"comercio_servicos/ServicoTipo/Servico_Tipo_Add",'icon'=>'add','nome'=>'Adicionar Tipo de Serviço'));
 
         //Carrega Json
         $this->_Visual->Json_Info_Update('Titulo', __('Administrar Tipos de Serviços'));

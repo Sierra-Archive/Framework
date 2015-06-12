@@ -66,7 +66,7 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
         $this->_Visual->Show_Tabela_DataTable_Massiva($tabela,'Desenvolvimento/Senha/Senhas');
         
         
-        $titulo = __('Listagem de Senhas');  //(<span id="DataTable_Contador">Carregando...</span>)
+        $titulo = __('Listagem de Senhas');  //(<span id="DataTable_Contador">0</span>)
         $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',10,Array("link"=>"Desenvolvimento/Senha/Senhas_Add",'icon'=>'add','nome'=>'Adicionar Senha'));
         
         // Antigas
@@ -78,7 +78,7 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
         $tabela[] = __('Adicionada em');
         $tabela[] = __('Funções');
         $this->_Visual->Show_Tabela_DataTable_Massiva($tabela,'Desenvolvimento/Senha/Senhas_Antigas');
-        $titulo = __('Listagem de Senhas Antigas');  //(<span id="DataTable_Contador">Carregando...</span>)
+        $titulo = __('Listagem de Senhas Antigas');  //(<span id="DataTable_Contador">0</span>)
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         
         //Carrega Json
@@ -379,7 +379,7 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
         $tabela[] = __('Funções');
         $this->_Visual->Show_Tabela_DataTable_Massiva($tabela,'Desenvolvimento/Senha/Senhas_Todas');
         
-        $titulo = __('Listagem de Todas as Senhas');  //(<span id="DataTable_Contador">Carregando...</span>)
+        $titulo = __('Listagem de Todas as Senhas');  //(<span id="DataTable_Contador">0</span>)
         $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',10,Array("link"=>"Desenvolvimento/Senha/Senhas_Todas_Add",'icon'=>'add','nome'=>'Adicionar Senha'));
         
         // Antigas
@@ -391,7 +391,7 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
         $tabela[] = __('Adicionada em');
         $tabela[] = __('Funções');
         $this->_Visual->Show_Tabela_DataTable_Massiva($tabela,'Desenvolvimento/Senha/Senhas_Todas_Antigas');
-        $titulo = __('Listagem de Senhas Antigas');  //(<span id="DataTable_Contador">Carregando...</span>)
+        $titulo = __('Listagem de Senhas Antigas');  //(<span id="DataTable_Contador">0</span>)
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         
         //Carrega Json

@@ -629,7 +629,7 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
             'Forma de Pagamento','Nome','Entrada','Qnt de Parcelas','Funções'
         );
         $this->_Visual->Show_Tabela_DataTable_Massiva($tabela,'Financeiro/Pagamento/Condicoes'.$link_extra);
-        $this->_Visual->Bloco_Unico_CriaJanela('Listagem de '.$titulo2.' (<span id="DataTable_Contador">Carregando...</span>)','',10,Array("link"=>"Financeiro/Pagamento/Condicoes_Add",'icon'=>'add','nome'=>'Adicionar '.$titulo.''));
+        $this->_Visual->Bloco_Unico_CriaJanela('Listagem de '.$titulo2.' (<span id="DataTable_Contador">0</span>)','',10,Array("link"=>"Financeiro/Pagamento/Condicoes_Add",'icon'=>'add','nome'=>'Adicionar '.$titulo.''));
         
         
         //Carrega Json
