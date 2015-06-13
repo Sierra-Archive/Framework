@@ -1630,14 +1630,14 @@ final Class Usuario_DAO extends Framework\App\Dao
             Array(
                 'mysql_titulo'      => 'senha',
                 'mysql_tipovar'     => 'varchar', //varchar, int, 
-                'mysql_tamanho'     => 200,
+                'mysql_tamanho'     => 80,
                 'mysql_null'        => true,  // nulo ?
-                'mysql_default'     => 'e10adc3949ba59abbe56e057f20f883e', // 123456 em MD5
+                'mysql_default'     => \Framework\App\Sistema_Funcoes::Form_Senha_Blindar('123456',true),
                 'mysql_primary'     => false,  // chave primaria
                 'mysql_estrangeira' => false, // chave estrangeira     ligacao|apresentacao|condicao
                 'mysql_autoadd'     => false,
                 'mysql_comment'     => false,
-                'mysql_inside'      => 'Framework\App\Sistema_Funcoes::Form_Senha_Blindar({valor})', // Funcao Executada quando o dado for inserido no banco de dados
+                'mysql_inside'      => 'Framework\App\Sistema_Funcoes::Form_Senha_Blindar({valor},true)', // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'edicao'            => Array(

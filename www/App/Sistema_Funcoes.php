@@ -247,8 +247,41 @@ Class Sistema_Funcoes {
     /**
      * Formularios
      */
-    public static function Form_Senha_Blindar($senha){
-        return md5(\anti_injection($senha));
+    public static function Form_Senha_Blindar($senha,$protecao_extra = false,$datetime = false){
+        $senha = \anti_injection($senha);
+        if($protecao_extra){
+            if($datetime===false) $datetime = time();
+            // Já que Existe um Super Banco de Dados na Internet, que processa
+            // ŧodos os MD5 e SHA1, e arruma senha que funcionem através de 
+            // engenharia reversa. Então Aqui a gente Dificulta e muito esse tipo
+            // de ação. Teria que criar uma base usando o mesmo algoritmo que o
+            // abaixo, além de precisar saber o algoritmo, e ter acesso as senhas
+            // criptografadas. Um processo lento, custoso e complicado.
+            $senha = '\?SiTec\?'.$datetime.'\?'.sha1(sha1('SierraTecnologia_'.date('dmY', $datetime).'_'.SRV_NAME_SQL.'_'.$datetime).sha1($senha)); // 51 Caracteres
+        }else{
+            $senha = md5($senha);
+        }
+        return $senha;
+    }
+    
+    /********************************
+     * FUNCOES PARA SEGURANCA
+     */
+    /**
+     * Gera um Token em cima do IP, navegador e outros do Usuario pra ver se é ele mesmo !
+     * @return type
+     */
+    public static function Seguranca_Usuario_Validar(){
+        // #update Precisa FAzer AINDA ESSA FUNCAO
+        $time = time();
+        $token = '123456';
+        return $token;
+    }
+    static public function Seguranca_Gerar_Hash($texto){
+        return sha1('SierraTecnologia'.$texto);
+    }
+    static public function Seguranca_Gerar_Token(){
+        return md5(uniqid(rand(), true));
     }
     
     /********************************
@@ -735,33 +768,36 @@ Class Sistema_Funcoes {
         
         return false;
     }
-    
+    /**
+     * Geradores
+     * Gera Senha Automaticamente
+     * 
+     * @param type $tamanho
+     * @param type $forca
+     * @return string
+     */
     static public function Gerar_Senha($tamanho=8, $forca=6) {
-        $vogais             = 'aeiouy';
-        $consoantes         = 'bcdfghjklmnpqrstvwxz';
-        if ($forca >= 1) {
+    
+        $vogais             = '2357';
+        $consoantes         = '014689';
+        
+        if ($forca >= 2) {
+            $consoantes .= 'bcdfghjklmnpqrstvwxz';
+        }
+        if ($forca >= 3) {
+            $vogais .= 'aeiouy';
+        }
+        if ($forca >= 5) {
             $consoantes    .= 'BCDFGHJKLMNPQRSTVWXZ';
         }
-        if ($forca >= 2) {
+        if ($forca >= 6) {
             $vogais        .= "AEIOUY";
         }
-        if ($forca >= 4) {
-            $consoantes .= '123456789';
-        }
-        if ($forca >= 6) {
-            $vogais .= '0';
-        }
-        if ($forca >= 7 ) {
+        if ($forca >= 8 ) {
             $vogais .= '*@';
         }
-        if ($forca >= 8 ) {
-            $vogais .= '-!#%$';
-        }
-        if ($forca >= 9 ) {
-            $consoantes .= 'çÇ';
-        }
         if ($forca >= 10 ) {
-            $vogais .= 'áÁ';
+            $vogais .= '-!#%$';
         }
 
         $senha = '';
@@ -776,12 +812,6 @@ Class Sistema_Funcoes {
             }
         }
         return $senha;
-    }
-    static public function Gerar_Hash($texto){
-        return sha1('SierraTecnologia'.$texto);
-    }
-    static public function Gerar_Token(){
-        return md5(uniqid(rand(), true));
     }
 }
 

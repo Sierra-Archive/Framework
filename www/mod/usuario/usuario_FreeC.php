@@ -183,7 +183,7 @@ class usuario_FreeControle extends usuario_Controle
                         "mgs_secundaria" => __('Voce foi cadastrado com sucesso.')
                     );
                     // loga usuario
-                    $this->_Modelo->Usuario_Logar(\anti_injection($_POST['login']), \Framework\App\Sistema_Funcoes::Form_Senha_Blindar($_POST['senha']));  
+                    $this->_Modelo->Usuario_Logar(\anti_injection($_POST['login']), \Framework\App\Sistema_Funcoes::Form_Senha_Blindar($_POST['senha'],true));  
                     // boleto
                     // Mensagem Para nao Associados
                     $mgm = '<br>Seja bem vindo a Locaway.'.

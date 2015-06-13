@@ -506,8 +506,9 @@ class usuario_AdminControle extends usuario_Controle
                 );
                 // loga usuario
                 
+                //#update Invez de tipo !=cliente tem que ser de acordo com as opcoes do sistema
                 if($tipo!='cliente' && !$this->_Acl->Usuario_GetLogado()){
-                    $this->_Modelo->Usuario_Logar($login, \Framework\App\Sistema_Funcoes::Form_Senha_Blindar($_POST['senha']));  
+                    $this->_Modelo->Usuario_Logar($login, \Framework\App\Sistema_Funcoes::Form_Senha_Blindar($_POST['senha'],true));  
                 }
                 $this->_Visual->Json_Info_Update('Titulo','Adicionado com Sucesso.');
                 

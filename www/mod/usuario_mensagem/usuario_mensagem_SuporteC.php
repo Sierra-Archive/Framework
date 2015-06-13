@@ -115,9 +115,9 @@ class usuario_mensagem_SuporteControle extends usuario_mensagem_Controle
             $i = usuario_mensagem_Controle::Mensagens_TabelaMostrar($this->_Visual, $mensagens,$admin);
         }else{
             if($grupo==0){
-                $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Os setores não possuem chamados.</font></b></center>');  
+                $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">'.__('Os setores não possuem chamados.').'</font></b></center>');  
             }else{
-                $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">O setor não possui chamados.</font></b></center>');  
+                $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">'.__('O setor não possui chamados.').'</font></b></center>');  
             }
         }
         if($grupo==0){
@@ -156,7 +156,7 @@ class usuario_mensagem_SuporteControle extends usuario_mensagem_Controle
         if(!empty($mensagens) && $mensagens!==false){
             $i = usuario_mensagem_Controle::Mensagens_TabelaMostrar($Visual, $mensagens,$admin);
         }else{
-            $Visual->Blocar('<center><b><font color="#FF0000" size="5">Não possui chamados.</font></b></center>');
+            $Visual->Blocar('<center><b><font color="#FF0000" size="5">'.__('Não possui chamados.').'</font></b></center>');
         }
         $titulo  = __('Todos os chamados do Cliente').' ('.$i.')';
         if($retorno=='Unico'){
