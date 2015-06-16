@@ -738,7 +738,7 @@ class Acl{
             $senha = $_POST['sistema_senha'];
         }
         
-        $query = $this->_db->query('SELECT id,grupo,nome,foto,email,cpf,telefone,celular,endereco,numero,complemento,'.
+        $query = $this->_db->query('SELECT id,senha,grupo,nome,foto,email,cpf,telefone,celular,endereco,numero,complemento,'.
                 'cidade,bairro,cep,foto_cnh,foto_res,foto_cnh_apv,foto_res_apv'
                 . ' FROM '.MYSQL_USUARIOS.' WHERE servidor=\''.SRV_NAME_SQL.'\' AND (login=\''.$email.'\' OR email=\''.$email.'\') AND ativado=1 AND deletado=0 LIMIT 1');
         

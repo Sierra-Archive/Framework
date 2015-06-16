@@ -29,7 +29,7 @@
                     </div><!-- #main-content-left -->
                 </div><!-- #content -->
                 <div id="footer" class="radius-bottom">
-                    Copyright &copy; 2011, <strong><?php echo SISTEMA_NOME; ?></strong> Direitos <strong><?php echo SOBRE_DIREITOS; ?></strong>
+                    Copyright &copy; <?php echo date("Y"); ?>, <strong><?php echo SISTEMA_NOME; ?></strong> Direitos <strong><?php echo SOBRE_DIREITOS; ?></strong>
                 </div><!-- #footer .radius-bottom -->
             </div>
         </div>

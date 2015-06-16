@@ -71,7 +71,7 @@
     <!-- Footer -->
     <div id="footer">
 	<div class="wrapper">
-            <span>Copyright &copy; 2013 <strong><?php echo SISTEMA_NOME; ?></strong> Direitos <strong><?php echo SOBRE_DIREITOS; ?></strong></span>
+            <span>Copyright &copy; <?php echo date("Y"); ?> <strong><?php echo SISTEMA_NOME; ?></strong> Direitos <strong><?php echo SOBRE_DIREITOS; ?></strong></span>
         </div>
     </div>
    <!-- BEGIN JAVASCRIPTS -->

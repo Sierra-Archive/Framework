@@ -46,7 +46,7 @@
     <!-- Footer -->
     <div id="footer">
         <div class="wrapper">
-            <span>&copy; Copyright 2014. Todos os Direitos Reservados.</span>
+            <span>&copy; Copyright <?php echo date("Y"); ?>. Todos os Direitos Reservados.</span>
         </div>
     </div>
 </body>

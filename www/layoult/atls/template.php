@@ -149,7 +149,7 @@
                   <li><a href="faq.php" title="Faq">FAQ</a></li>
                   <li><a href="contato.php" title="Contato">CONTATO</a></li>
                 </ul>-->
-                <p class="copyright-block">© 2015 <?php echo SISTEMA_NOME; ?> - Direitos <?php echo SOBRE_DIREITOS; ?>.</p>
+                <p class="copyright-block">© <?php echo date("Y"); ?> <?php echo SISTEMA_NOME; ?> - Direitos <?php echo SOBRE_DIREITOS; ?>.</p>
             </div>
         </footer>
     </section>
