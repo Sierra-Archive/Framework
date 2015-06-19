@@ -267,10 +267,10 @@ class usuario_mensagem_SuporteControle extends usuario_mensagem_Controle
                     if(file_exists($endereco)){
                         $tamanho    =   round(filesize($endereco)/1024);
                         $tipo       =   $valor->ext;
-                        $tabela['Nome'][$i]             = '<a href="'.URL_PATH.'usuario_mensagem/Suporte/Download/'.$valor->id.'/" border="1" class="lajax" acao="">'.$valor->nome.'</a>';
-                        $tabela['Tamanho'][$i]          = $tamanho.' KB';
-                        $tabela['Data'][$i]             = $valor->log_date_add;
-                        $tabela['Download'][$i]          = $this->_Visual->Tema_Elementos_Btn('Baixar'     ,Array('Download de Arquivo'   ,'usuario_mensagem/Suporte/Download/'.$valor->id    ,''));
+                        $tabela[__('Nome')][$i]             = '<a href="'.URL_PATH.'usuario_mensagem/Suporte/Download/'.$valor->id.'/" border="1" class="lajax" acao="">'.$valor->nome.'</a>';
+                        $tabela[__('Tamanho')][$i]          = $tamanho.' KB';
+                        $tabela[__('Data')][$i]             = $valor->log_date_add;
+                        $tabela[__('Download')][$i]          = $this->_Visual->Tema_Elementos_Btn('Baixar'     ,Array(__('Download de Arquivo')  ,'usuario_mensagem/Suporte/Download/'.$valor->id    ,''));
                         ++$i;
                     }
                 }
@@ -278,13 +278,13 @@ class usuario_mensagem_SuporteControle extends usuario_mensagem_Controle
             $html .= $this->_Visual->Show_Tabela_DataTable($tabela,'',false);
             unset($tabela);
         }else{
-            $html .= '<center><b><font color="#FF0000" size="5">Nenhum Anexo</font></b></center>';            
+            $html .= '<center><b><font color="#FF0000" size="5">'.__('Nenhum Anexo').'</font></b></center>';            
         }
-        $titulo = 'Anexos (<span id="anexo_arquivos_num">'.$i.'</span>)';
+        $titulo = __('Anexos').' (<span id="anexo_arquivos_num">'.$i.'</span>)';
         return Array($titulo,$html,$i);
     }
     public function Download($anexo,$mensagem=false){
-        $resultado_arquivo = $this->_Modelo->db->Sql_Select('Usuario_Mensagem_Anexo', Array('id'=>$anexo),1);
+        $resultado_arquivo = $this->_Modelo->db->Sql_Select('Usuario_Mensagem_Anexo', '{sigla}id=\''.$anexo.'\'',1);
         if($resultado_arquivo===false || !is_object($resultado_arquivo)){
             throw new \Exception('Esse anexo não existe:'. $anexo, 404);
         }

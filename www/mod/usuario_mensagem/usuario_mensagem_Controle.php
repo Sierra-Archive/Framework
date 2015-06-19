@@ -234,37 +234,72 @@ class usuario_mensagem_Controle extends \Framework\App\Controle
      * Formulario Suporter - Inserir Mensagem de FOrmulario
      */
     public function Mensagem_inserir(){
-        $paranome = \anti_injection($_POST["paranome"]);
-        $paraid = (int) $_POST["paraid"];
+        
+        $cliente = false;
+        if(isset($_POST["cliente"])){
+            $clienteid = (int) $_POST["cliente"];
+            $cliente  = $this->_Modelo->db->Sql_Select('Usuario', '{sigla}id=\''.$clienteid.'\'',1,'id DESC');
+        }
+        
+        if($cliente===false){
+            $mensagens = array(
+                "tipo" => 'erro',
+                "mgs_principal" => __('Erro'),
+                "mgs_secundaria" => __('Esse Cliente não Existe')
+            );
+            $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens); 
+            $this->_Visual->Json_Info_Update('Historico', false);
+            return false;
+        }
+        
+        // Nao sei daonde Vem esse Paranome, foi feito isso pra consertar o erro
+        if(isset($_POST["paranome"])){
+            $paranome = \anti_injection($_POST["paranome"]);
+        }else{
+            if($cliente->razao_social!==''){
+                $paranome = $cliente->razao_social;
+            }else{
+                $paranome = $cliente->nome;
+            }
+        }
+        
+        // Pega para id , mesmo problema;
+        if(isset($_POST["paraid"])){
+            $paraid = (int) $_POST["paraid"];
+        }else{
+            $paraid = $clienteid;
+        }
+        
+        // Assunto
         $assunto = \anti_injection($_POST["assunto"]);
         
         
-        $sucesso =  $this->db->Sql_Inserir($objeto);
+        $sucesso =  $this->_Modelo->db->Sql_Inserir($objeto);
         $titulo     = __('Mensagem inserida com Sucesso');
         $dao        = 'Usuario_Mensagem';
         $funcao     = false;
         $sucesso1   = __('Mensagem inserida com Sucesso');
-        $sucesso2   = 'Solicitação de '.\anti_injection($_POST["paranome"]).' foi enviada com sucesso';
+        $sucesso2   = 'Solicitação de '.$paranome.' foi enviada com sucesso';
         $alterar    = Array('escritor'=>\Framework\App\Acl::Usuario_GetID_Static(),'escritor_nome'=>$this->_Acl->logado_usuario->nome);
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);  
         
         
-        $identificador  = $this->_Modelo->db->Sql_Select('Usuario_Mensagem', Array(),1,'id DESC');
+        $identificador  = $this->_Modelo->db->Sql_Select('Usuario_Mensagem', '',1,'id DESC');
         // REcria Mensagem
-        $mensagem = '<b>Cliente: </b>'.     $identificador->cliente2.
-                    '<br><b>Setor: </b>'.       $identificador->setor2.
-                    '<br><b>Assunto: </b>'.     $identificador->assunto2.
-                    '<br><b>Origem: </b>'.      $identificador->origem2.
-                    '<br><b>Marca: </b>'.       $identificador->marca2.
-                    '<br><b>Linha: </b>'.       $identificador->linha2.
-                    '<br><b>Produto: </b>'.     $identificador->produto2.
-                    '<br><b>Lote: </b>'.        $identificador->lote.
-                    '<br><b>Validade: </b>'.    $identificador->validade.
-                    '<br><b>Fabricação: </b>'.  $identificador->fabricacao.
-                    '<br><b>Mensagem: </b>' . nl2br($mensagem);
+        $mensagem = '<b>'.__('Cliente:').' </b>'.     $identificador->cliente2.
+                    '<br><b>'.__('Setor:').' </b>'.       $identificador->setor2.
+                    '<br><b>'.__('Assunto:').' </b>'.     $identificador->assunto2.
+                    '<br><b>'.__('Origem:').' </b>'.      $identificador->origem2.
+                    '<br><b>'.__('Marca:').' </b>'.       $identificador->marca2.
+                    '<br><b>'.__('Linha:').' </b>'.       $identificador->linha2.
+                    '<br><b>'.__('Produto:').' </b>'.     $identificador->produto2.
+                    '<br><b>'.__('Lote:').' </b>'.        $identificador->lote.
+                    '<br><b>'.__('Validade:').' </b>'.    $identificador->validade.
+                    '<br><b>'.__('Fabricação:').' </b>'.  $identificador->fabricacao.
+                    '<br><b>'.__('Mensagem:').' </b>' . nl2br($identificador->mensagem);
         // Recupera Email e Dados do Setor
-        $assunto    = $this->_Modelo->db->Sql_Select('Usuario_Mensagem_Assunto',Array('id'=>$assunto));
-        $setor      = $this->_Modelo->db->Sql_Select('Usuario_Mensagem_Setor',Array('id'=>$assunto->setor));
+        $assunto    = $this->_Modelo->db->Sql_Select('Usuario_Mensagem_Assunto','{sigla}id=\''.$assunto.'\'');
+        $setor      = $this->_Modelo->db->Sql_Select('Usuario_Mensagem_Setor','{sigla}id=\''.$assunto->setor.'\'');
         // Enviar Email
         $mailer = new \Framework\Classes\Email();
         $enviar = '';
@@ -277,7 +312,7 @@ class usuario_mensagem_Controle extends \Framework\App\Controle
                 $enviar .= '->setTo(\''.$valor.'\', \''.$setor->nome.'\')';
             }
         }
-        eval('$send	= $mailer'.$enviar.'->setSubject(\'NOVA MENSAGEM SAQUE - '.SISTEMA_NOME.'\')'.
+        eval('$send	= $mailer'.$enviar.'->setSubject(\''.__('NOVA MENSAGEM SAQUE').' - '.SISTEMA_NOME.'\')'.
         '->setFrom(SISTEMA_EMAIL, SISTEMA_NOME)'.
         '->addGenericHeader(\'X-Mailer\', \'PHP/\' . phpversion())'.
         '->addGenericHeader(\'Content-Type\', \'text/html; charset="utf-8"\')'.
@@ -285,31 +320,36 @@ class usuario_mensagem_Controle extends \Framework\App\Controle
         '->setWrap(78)->send();');
         //atualiza
         $this->VisualizadordeMensagem($identificador->id);
+        $this->_Visual->Json_Info_Update('Historico', false); 
     }
     public function Resposta_inserir(){
+        if(!isset($_POST["mensagem"]) || !isset($_POST['resposta'])){
+            throw new \Exception('Página não Encontrada',404);
+        }
         $mensagem = (int) $_POST["mensagem"];
-        $resposta = \anti_injection($_POST['resposta']);
-        if(!is_int($mensagem) || $mensagem==0) return false;
+        if(!is_int($mensagem) || $mensagem==0){
+            throw new \Exception('Página não Encontrada',404);
+        }
         $resposta = \anti_injection($_POST["resposta"]);
         $sucesso =  $this->_Modelo->Mensagem_Resp_Inserir($mensagem,$resposta);
-        $amensagem =  $this->_Modelo->db->Sql_Select('usuario_Mensagem',Array('id'=>$mensagem));
+        $amensagem =  $this->_Modelo->db->Sql_Select('Usuario_Mensagem','{sigla}id=\''.$mensagem.'\'');
         // Recupera Email e Dados do Setor
-        $assunto    = $this->_Modelo->db->Sql_Select('Usuario_Mensagem_Assunto',Array('id'=>$amensagem->assunto));
-        $setor      = $this->_Modelo->db->Sql_Select('Usuario_Mensagem_Setor',Array('id'=>$assunto->setor));
+        $assunto    = $this->_Modelo->db->Sql_Select('Usuario_Mensagem_Assunto','{sigla}id=\''.$amensagem->assunto.'\'');
+        $setor      = $this->_Modelo->db->Sql_Select('Usuario_Mensagem_Setor','{sigla}id=\''.$assunto->setor.'\'');
         
         // REcria Mensagem
-        $resposta = '<b>Cliente: </b>'.     $amensagem->cliente2.
-                    '<br><b>Setor: </b>'.       $amensagem->setor2.
-                    '<br><b>Assunto: </b>'.     $amensagem->assunto2.
-                    '<br><b>Origem: </b>'.      $amensagem->origem2.
-                    '<br><b>Marca: </b>'.       $amensagem->marca2.
-                    '<br><b>Linha: </b>'.       $amensagem->linha2.
-                    '<br><b>Produto: </b>'.     $amensagem->produto2.
-                    '<br><b>Lote: </b>'.        $amensagem->lote.
-                    '<br><b>Validade: </b>'.    $amensagem->validade.
-                    '<br><b>Fabricação: </b>'.  $amensagem->fabricacao.
-                    '<br><b>Mensagem: </b>'.    $amensagem->mensagem.
-                    '<br><b>Resposta: </b>'.    $resposta;
+        $resposta = '<b>'.__('Cliente:').' </b>'.     $amensagem->cliente2.
+                    '<br><b>'.__('Setor:').' </b>'.       $amensagem->setor2.
+                    '<br><b>'.__('Assunto:').' </b>'.     $amensagem->assunto2.
+                    '<br><b>'.__('Origem:').' </b>'.      $amensagem->origem2.
+                    '<br><b>'.__('Marca:').' </b>'.       $amensagem->marca2.
+                    '<br><b>'.__('Linha:').' </b>'.       $amensagem->linha2.
+                    '<br><b>'.__('Produto:').' </b>'.     $amensagem->produto2.
+                    '<br><b>'.__('Lote:').' </b>'.        $amensagem->lote.
+                    '<br><b>'.__('Validade:').' </b>'.    $amensagem->validade.
+                    '<br><b>'.__('Fabricação:').' </b>'.  $amensagem->fabricacao.
+                    '<br><b>'.__('Mensagem:').' </b>'.    $amensagem->mensagem.
+                    '<br><b>'.__('Resposta:').' </b>'.    $resposta;
         // Envia Email
         $mailer = new \Framework\Classes\Email();
         $enviar = '';
@@ -322,7 +362,7 @@ class usuario_mensagem_Controle extends \Framework\App\Controle
                 $enviar .= '->setTo(\''.$valor.'\', \''.$setor->nome.'\')';
             }
         }
-        eval('$send	= $mailer'.$enviar.'->setSubject(\'NOVA RESPOSTA SAQUE - '.SISTEMA_NOME.'\')'.
+        eval('$send	= $mailer'.$enviar.'->setSubject(\''.__('NOVA RESPOSTA SAQUE').' - '.SISTEMA_NOME.'\')'.
         '->setFrom(SISTEMA_EMAIL, SISTEMA_NOME)'.
         '->addGenericHeader(\'X-Mailer\', \'PHP/\' . phpversion())'.
         '->addGenericHeader(\'Content-Type\', \'text/html; charset="utf-8"\')'.
@@ -343,6 +383,7 @@ class usuario_mensagem_Controle extends \Framework\App\Controle
         }
         $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
         $this->VisualizadordeMensagem($mensagem);
+        $this->_Visual->Json_Info_Update('Historico', false); 
     }
     public static function MensagensWidgets(){
         $Registro = &\Framework\App\Registro::getInstacia();
@@ -383,7 +424,7 @@ class usuario_mensagem_Controle extends \Framework\App\Controle
         // Adiciona Widget a Pagina Inicial
         // Adiciona Widget a Pagina Inicial
         \Framework\App\Visual::Layoult_Home_Widgets_Add(
-            'Chamados Abertos', 
+            __('Chamados Abertos'), 
             'usuario_mensagem/Suporte/Mensagens_Mostrar/nov', 
             'envelope', 
             '+'.$novos, 
@@ -393,7 +434,7 @@ class usuario_mensagem_Controle extends \Framework\App\Controle
         );
         // Adiciona Widget a Pagina Inicial
         \Framework\App\Visual::Layoult_Home_Widgets_Add(
-            'Chamados à Vencer', 
+            __('Chamados à Vencer'), 
             'usuario_mensagem/Suporte/Mensagens_Mostrar/lim', 
             'thumbs-down', 
             '+'.$espera, 
@@ -403,7 +444,7 @@ class usuario_mensagem_Controle extends \Framework\App\Controle
         );
         // Adiciona Widget a Pagina Inicial
         \Framework\App\Visual::Layoult_Home_Widgets_Add(
-            'Chamados Vencidos', 
+            __('Chamados Vencidos'), 
             'usuario_mensagem/Suporte/Mensagens_Mostrar/esg', 
             'time', 
             '+'.$esgotado, 
@@ -413,7 +454,7 @@ class usuario_mensagem_Controle extends \Framework\App\Controle
         );
         // Adiciona Widget a Pagina Inicial
         \Framework\App\Visual::Layoult_Home_Widgets_Add(
-            'Chamados Finalizados', 
+            __('Chamados Finalizados'), 
             'usuario_mensagem/Suporte/Mensagens_Mostrar/fin', 
             'thumbs-up', 
             '+'.$esgotado, 
@@ -423,7 +464,7 @@ class usuario_mensagem_Controle extends \Framework\App\Controle
         );
         // Adiciona Widget a Pagina Inicial
         \Framework\App\Visual::Layoult_Home_Widgets_Add(
-            'Todos os Chamados',
+            __('Todos os Chamados'),
             'usuario_mensagem/Suporte/Mensagens/',
             'ticket',
             $total,
@@ -433,7 +474,7 @@ class usuario_mensagem_Controle extends \Framework\App\Controle
         );
         // Adiciona Widget a Pagina Inicial
         \Framework\App\Visual::Layoult_Home_Widgets_Add(
-            'Setores',
+            __('Setores'),
             'usuario_mensagem/Setor/Setores/',
             'smile',
             $setor_qnt,
@@ -443,7 +484,7 @@ class usuario_mensagem_Controle extends \Framework\App\Controle
         );
         // Adiciona Widget a Pagina Inicial
         \Framework\App\Visual::Layoult_Home_Widgets_Add(
-            'Assuntos',
+            __('Assuntos'),
             'usuario_mensagem/Assunto/Assuntos/',
             'comments-alt',
             $assunto_qnt,

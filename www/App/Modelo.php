@@ -9,6 +9,9 @@ class Modelo
     public              $usuario;
     public              $_Registro;
     public              $db;    
+    public              $_request;    
+    public              $_Cache;    
+    public              $_Acl;    
     public      static  $config = false;    
     /**
     * Construtor
@@ -26,6 +29,9 @@ class Modelo
     public function __construct(){
         $this->_Registro = &\Framework\App\Registro::getInstacia();
         $this->db = &$this->_Registro->_Conexao;
+        $this->_request     = &$this->_Registro->_Request;
+        $this->_Cache       = &$this->_Registro->_Cache;
+        $this->_Acl         = &$this->_Registro->_Acl;
         
         return 0;
     }

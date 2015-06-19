@@ -1379,7 +1379,7 @@ class Visual
                 $cor    = 'primary';
                 $icone  = 'envelope';                
             }else if($tipo==='Baixar'){
-                $cor    = 'inverse';
+                $cor    = 'inverse" target="_BLANK';
                 $icone  = 'download';                
             }else if($tipo==='Visualizar'){
                 $cor    = 'success';
