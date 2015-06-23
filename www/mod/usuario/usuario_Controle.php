@@ -1218,7 +1218,7 @@ class usuario_Controle extends \Framework\App\Controle
         $tabela_colunas[] = __('Data de Cadastro');
         $tabela_colunas[] = __('Funções');
 
-        $this->_Visual->Show_Tabela_DataTable_Massiva($tabela_colunas,$link);
+        $this->_Visual->Show_Tabela_DataTable_Massiva($tabela_colunas,$link,'',true,false,Array(Array(0,'desc')));
         
         if($ativado===false){
             $titulo = 'Todos os '.$nomedisplay.' (<span id="DataTable_Contador">0</span>)';
