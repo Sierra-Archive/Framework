@@ -250,17 +250,17 @@ class biblioteca_BibliotecaControle extends biblioteca_Controle
         
         $tabela_colunas = Array();
 
-        $tabela_colunas[] = __('Arquivo');
         $tabela_colunas[] = __('Tipo');
+        $tabela_colunas[] = __('Extensão');
         $tabela_colunas[] = __('Nome');
         $tabela_colunas[] = __('Descrição');
         $tabela_colunas[] = __('Tamanho');
-        $tabela_colunas[] = __('Extensão');
         $tabela_colunas[] = __('Criador');
         $tabela_colunas[] = __('Data');
+        $tabela_colunas[] = __('End. do Arquivo');
         $tabela_colunas[] = __('Funções');
 
-        $html = $_Visual->Show_Tabela_DataTable_Massiva($tabela_colunas,'biblioteca/Biblioteca/Bibliotecas/'.$raiz,'',false,true);
+        $html = $_Visual->Show_Tabela_DataTable_Massiva($tabela_colunas,'biblioteca/Biblioteca/Bibliotecas/'.$raiz,'',false,false);
         
         $titulo = $endereco.' (<span id="DataTable_Contador">0</span>)';
         return Array($titulo,$html,$i);

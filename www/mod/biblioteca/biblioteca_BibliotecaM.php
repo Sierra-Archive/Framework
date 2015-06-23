@@ -43,10 +43,6 @@ class biblioteca_BibliotecaModelo extends biblioteca_Modelo
         
         $numero = -1;
         
-        
-        //'Arquivo'; // Nao aparece          
-        ++$numero;
-        $columns[] = array( 'db' => 'arquivo', 'dt' => $numero); 
 
         //'#Tipo';
         ++$numero;
@@ -72,6 +68,18 @@ class biblioteca_BibliotecaModelo extends biblioteca_Modelo
             }
         );
         
+        //'ext';
+        ++$numero;
+        $columns[] = array( 'db' => 'ext', 'dt' => $numero,
+            'formatter' => function( $d, $row ) {
+                if($row['tipo']==1){
+                    return 'Pasta';
+                }else{
+                    return \Framework\App\Sistema_Funcoes::Control_Arq_Ext($d);
+                }
+            }
+        );
+        
         // Nome
         ++$numero;
         $columns[] = array( 'db' => 'nome', 'dt' => $numero,
@@ -90,6 +98,9 @@ class biblioteca_BibliotecaModelo extends biblioteca_Modelo
         $columns[] = array( 'db' => 'obs', 'dt' => $numero); //'DEscricao';
 
         
+        
+        
+        
         // Tamanho
         ++$numero;
         $columns[] = array( 'db' => 'tamanho', 'dt' => $numero,
@@ -98,7 +109,7 @@ class biblioteca_BibliotecaModelo extends biblioteca_Modelo
                 $tamanho = (int) $d;
                 if($tamanho === 0){
                     if($row['tipo']==1){
-                        $tamanho = $Controle->Bibliotecas_AtualizaTamanho_Pai($valor);
+                        $tamanho = $this->_Registro->_Controle->Bibliotecas_AtualizaTamanho_Pai($valor);
                     }else{
                         $endereco = ARQ_PATH.'bibliotecas'.DS.strtolower($row['arquivo']).'.'.\Framework\App\Sistema_Funcoes::Control_Arq_Ext($row['ext']);
                         if(!file_exists($endereco)){
@@ -112,22 +123,23 @@ class biblioteca_BibliotecaModelo extends biblioteca_Modelo
             }
         );
         
-        //'ext';
-        ++$numero;
-        $columns[] = array( 'db' => 'ext', 'dt' => $numero,
-            'formatter' => function( $d, $row ) {
-                if($row['tipo']==1){
-                    return 'Pasta';
-                }else{
-                    return \Framework\App\Sistema_Funcoes::Control_Arq_Ext($d);
-                }
-            }
-        );
-        
         ++$numero;
         $columns[] = array( 'db' => 'usuario2', 'dt' => $numero); //'Criador';
+        
         ++$numero;
         $columns[] = array( 'db' => 'log_date_add', 'dt' => $numero); //'Data';
+        
+        //'Arquivo'; 
+        ++$numero;
+        $columns[] = array( 'db' => 'arquivo', 'dt' => $numero,
+            'formatter' => function( $d, $row ) {
+                if($row['tipo']==1){
+                    return __('Diretório');
+                }else{
+                    return $d.'.'.$row['ext'];
+                }
+            }
+        ); 
         
         
         ++$numero;
