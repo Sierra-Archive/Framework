@@ -1,5 +1,5 @@
 <?php
-class categoria_Principal implements PrincipalInterface
+class categoria_Principal implements \Framework\PrincipalInterface
 {
     /**
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>

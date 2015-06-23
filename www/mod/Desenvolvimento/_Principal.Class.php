@@ -1,5 +1,5 @@
 <?php
-class Desenvolvimento_Principal implements PrincipalInterface
+class Desenvolvimento_Principal implements \Framework\PrincipalInterface
 {
     /**
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>

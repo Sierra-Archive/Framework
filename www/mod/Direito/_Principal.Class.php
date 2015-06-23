@@ -1,6 +1,6 @@
 <?php
 
-class advogado_Principal implements PrincipalInterface
+class advogado_Principal implements \Framework\PrincipalInterface
 {
     /**
     * Função Home para o modulo advogado aparecer na pagina HOME

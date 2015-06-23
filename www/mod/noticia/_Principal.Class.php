@@ -1,5 +1,5 @@
 <?php
-class noticia_Principal implements PrincipalInterface
+class noticia_Principal implements \Framework\PrincipalInterface
 {
     /**
     * Função Home para o modulo noticia aparecer na pagina HOME

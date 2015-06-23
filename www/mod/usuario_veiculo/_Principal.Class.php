@@ -1,5 +1,5 @@
 <?php
-class usuario_veiculo_Principal implements PrincipalInterface
+class usuario_veiculo_Principal implements \Framework\PrincipalInterface
 {
     /**
     * Função Home para o modulo usuario_veiculo aparecer na pagina HOME

@@ -1,5 +1,5 @@
 <?php
-class usuario_veiculo_aluguel_Principal implements PrincipalInterface
+class usuario_veiculo_aluguel_Principal implements \Framework\PrincipalInterface
 {
     /**
     * Função Home para o modulo aluguel aparecer na pagina HOME

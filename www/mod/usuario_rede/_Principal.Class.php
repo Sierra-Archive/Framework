@@ -1,5 +1,5 @@
 <?php
-class usuario_rede_Principal implements PrincipalInterface
+class usuario_rede_Principal implements \Framework\PrincipalInterface
 {
     /**
     * Função Home para o modulo rede aparecer na pagina HOME

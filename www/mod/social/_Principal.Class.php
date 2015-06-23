@@ -1,5 +1,5 @@
 <?php
-class social_Principal implements PrincipalInterface
+class social_Principal implements \Framework\PrincipalInterface
 {
     /**
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>

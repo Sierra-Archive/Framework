@@ -18,7 +18,7 @@ function __autoload($class){
         if( file_exists  (DAO_PATH . $class.'.php')){
             require_once (DAO_PATH . $class.'.php');
         }else{
-            throw new \Exception('Classe Dao não encontrada'.$class, 2802);
+            throw new \Exception('Classe Dao não encontrada'.$class."\n\n<br><Br>Original: ".$original, 2802);
             return true;
         }
     }
@@ -45,7 +45,7 @@ function __autoload($class){
             require_once (CLASS_PATH . $class.DS.$class.'.php');
             return true;
         }else{
-            throw new \Exception('Classe não encontrada'.CLASS_PATH . $class.DS.$class.'.php'.$class, 2802);
+            throw new \Exception('Classe não encontrada'.CLASS_PATH . $class.DS.$class.'.php'.$class."\n\n<br><Br>Original: ".$original, 2802);
         }
     }
     
@@ -56,18 +56,19 @@ function __autoload($class){
             require_once(MOD_PATH.$class.DS.'_Principal.Class.php');
             return true;
         }else{
-            throw new \Exception('Classe Principal não encontrada: '.$class, 2802);
+            throw new \Exception('Classe Principal não encontrada: '.$class."\n\n<br><Br>Original: ".$original, 2802);
         }
     }
 
     // Interface
-    if(strpos($class, 'Interface')!==false){
+    if(strpos($class, 'Framework\\')!==false && strpos($class, 'Interface')!==false){
+        $class = str_replace(Array('Framework\\'), Array(''), $class);
         $class = str_replace(Array('Interface'), Array(''), $class);
         if( file_exists  (INTER_PATH.$class.'.Interface.php')){
             require_once (INTER_PATH.$class.'.Interface.php');
             return true;
         }else{
-            throw new \Exception('Interface não encontrada: '.$class, 2802);
+            throw new \Exception('Interface não encontrada: '.$class."\n\n<br><Br>Original: ".$original, 2802);
         }
     }
     
@@ -110,7 +111,7 @@ function __autoload($class){
         }
         require_once (MOD_PATH . $modulo.DS.$modulo.'_'.$tipo.'.php');
     }/*else{
-        throw new \Exception('Classe Modulo não encontrada'.$class, 2802);
+        throw new \Exception('Classe Modulo não encontrada'.$class."\n\n<br><Br>Original: ".$original, 2802);
     }*/
     if($submodulo!=''){
         if( file_exists  (MOD_PATH . $modulo.DS.$modulo.'_'.$submodulo.$tipo[0].'.php')){
@@ -118,9 +119,11 @@ function __autoload($class){
         }else if( file_exists  (MOD_PATH . $modulo.DS.$modulo.'_'.ucwords($submodulo).$tipo[0].'.php')){
             require_once (MOD_PATH . $modulo.DS.$modulo.'_'.ucwords($submodulo).$tipo[0].'.php');
         }else{
-            throw new \Exception('Classe Submodulo não encontrada: '.MOD_PATH . $modulo.DS.$modulo.'_'.$submodulo.$tipo[0].'.php', 2802);
+            throw new \Exception('Classe Submodulo não encontrada: '.MOD_PATH . $modulo.DS.$modulo.'_'.$submodulo.$tipo[0].'.php'."\n\n<br><Br>Original: ".$original, 2802);
         }
     }
+    
+    return false;
 }
 
 // Carrega Autoloads

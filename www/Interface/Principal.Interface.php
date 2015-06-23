@@ -1,4 +1,5 @@
 <?php
+namespace Framework;
 #update -> Implementar COnfig, Relatorio, Estatistica e Manutencao no MOdulo _Sistema
 interface PrincipalInterface
 {

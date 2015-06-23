@@ -181,7 +181,7 @@ class biblioteca_BibliotecaControle extends biblioteca_Controle
         $endereco = (string) '';
         $html     = (string) '';
         if($raiz!==false && $raiz!=='0' && $raiz!==0){
-            $resultado_pasta = $_Modelo->db->Sql_Select('Biblioteca', 'Bi.id=\''.$raiz.'\'',1);
+            $resultado_pasta = $_Modelo->db->Sql_Select('Biblioteca', '{sigla}id=\''.$raiz.'\'',1);
             if($resultado_pasta===false){
                 throw new \Exception('Essa Pasta não existe:'. $raiz, 404);
             }else if($resultado_pasta->tipo!=1){
@@ -192,7 +192,7 @@ class biblioteca_BibliotecaControle extends biblioteca_Controle
             $endereco =    '<a href="'.URL_PATH.'biblioteca/Biblioteca/Bibliotecas/'.$enderecopai.'" border="1" class="lajax link_titulo" acao="">'.
                             $resultado_pasta->nome.'</a> / '.$endereco;
             while(is_int($enderecopai) && $enderecopai!=0){
-                $resultado_pasta2 = $_Modelo->db->Sql_Select('Biblioteca', 'Bi.id=\''.$enderecopai.'\'',1);
+                $resultado_pasta2 = $_Modelo->db->Sql_Select('Biblioteca', '{sigla}id=\''.$enderecopai.'\'',1);
                 if($resultado_pasta2===false){
                     throw new \Exception('Pasta Pai não existe:'. $enderecopai, 404);
                 }else if($resultado_pasta->tipo!=1){
@@ -250,15 +250,17 @@ class biblioteca_BibliotecaControle extends biblioteca_Controle
         
         $tabela_colunas = Array();
 
+        $tabela_colunas[] = __('Arquivo');
         $tabela_colunas[] = __('Tipo');
         $tabela_colunas[] = __('Nome');
         $tabela_colunas[] = __('Descrição');
         $tabela_colunas[] = __('Tamanho');
+        $tabela_colunas[] = __('Extensão');
         $tabela_colunas[] = __('Criador');
         $tabela_colunas[] = __('Data');
         $tabela_colunas[] = __('Funções');
 
-        $_Visual->Show_Tabela_DataTable_Massiva($tabela_colunas,'biblioteca/Biblioteca/Bibliotecas/'.$raiz,'',true,true);
+        $html = $_Visual->Show_Tabela_DataTable_Massiva($tabela_colunas,'biblioteca/Biblioteca/Bibliotecas/'.$raiz,'',false,true);
         
         $titulo = $endereco.' (<span id="DataTable_Contador">0</span>)';
         return Array($titulo,$html,$i);
@@ -320,8 +322,8 @@ class biblioteca_BibliotecaControle extends biblioteca_Controle
     public function Bibliotecas_Edit($id,$raiz=0){
         self::Endereco_Biblioteca();
         // Recupera Arquivo
-        $resultado_pasta = $this->_Modelo->db->Sql_Select('Biblioteca', Array('id'=>$id),1);
-        if($resultado_pasta===false){
+        $resultado = $this->_Modelo->db->Sql_Select('Biblioteca', '{sigla}id=\''.$id.'\'',1);
+        if($resultado===false){
             throw new \Exception('Esse arquivo/pasta não existe:'. $raiz, 404);
         }
         // Carrega Config
@@ -330,7 +332,7 @@ class biblioteca_BibliotecaControle extends biblioteca_Controle
         $formid     = 'form_Sistema_AdminC_BibliotecaEdit';
         $formbt     = __('Alterar Biblíoteca');
         $formlink   = 'biblioteca/Biblioteca/Bibliotecas_Edit2/'.$id.'/'.$raiz;
-        $editar     = Array('Biblioteca',$id);
+        $editar     = $resultado;
         $campos = Biblioteca_DAO::Get_Colunas();
         // SE É PASTA
         // Retira Endereço Virtual
@@ -342,10 +344,107 @@ class biblioteca_BibliotecaControle extends biblioteca_Controle
         self::DAO_Campos_Retira($campos, 'grupo');
         self::DAO_Campos_Retira($campos, 'ext');
         self::DAO_Campos_Retira($campos, 'tamanho');
-        /*if($resultado_pasta->tipo==1){
+        /*if($resultado->tipo==1){
             self::DAO_Campos_Retira($campos, $campomysql);
         }*/
-        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos,$editar);
+        $this->_Visual->Blocar(\Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos,$editar,'html'));
+        
+        $this->Tema_Endereco($titulo1);
+        $this->_Visual->Json_Info_Update('Historico', true);
+        $this->_Visual->Json_Info_Update('Titulo',$titulo1);
+        $this->_Visual->Bloco_Unico_CriaJanela($titulo2,'',10,'Sierra.Control_Form_Tratar($(\'#'.$formid.'\')[0]);');
+        
+        $extensao = Framework\App\Sistema_Funcoes::Control_Arq_Ext($resultado->ext);
+        
+        // Edita PDF, DOCX, ODT, RTF, HTML
+        if($resultado->tipo!=1 && ($extensao==='pdf' || $extensao==='docx' || $extensao==='odt' || $extensao==='rtf' || $extensao==='html')){
+            
+            $writers = array(
+                'docx' => 'Word2007', 
+                'odt' => 'ODText', 
+                'rtf' => 'RTF', 
+                'html' => 'HTML', 
+                'pdf' => 'PDF'
+            );
+            require_once CLASS_PATH . 'PhpWord'.DS.'Autoloader.php';
+
+            date_default_timezone_set('UTC');
+            /**
+             * Header file
+             */
+            \PhpOffice\PhpWord\Autoloader::register();
+            \PhpOffice\PhpWord\Settings::loadConfig();
+            $endereco = ARQ_PATH.'bibliotecas'.DS.strtolower($resultado->arquivo.'.'.$extensao);
+            $phpWord = \PhpOffice\PhpWord\IOFactory::load($endereco, $writers[$extensao]);
+            ob_start();
+            $writer = \PhpOffice\PhpWord\IOFactory::createWriter($phpWord, 'HTML');
+            $writer->save('php://output');
+            $saida = ob_get_contents();
+            ob_end_clean();
+            
+            $this->_Visual->Blocar($saida);
+            $this->_Visual->Bloco_Unico_CriaJanela(__('Visualizando Documento'),'',0);
+        }else
+        // Se for arquivo de Imagem como Gif, JPG, JPEG, PNG, TIFF
+        if($resultado->tipo!=1 && ($extensao==='gif' || $extensao==='jpg' || $extensao==='jpeg' || $extensao==='png' || $extensao==='tiff')){
+            $endereco = 'bibliotecas'.DS.strtolower($resultado->arquivo.'.'.$extensao);
+            $this->_Visual->Blocar('<img width="100%" src="'.ARQ_URL.$endereco.'" \>');
+            $this->_Visual->Bloco_Maior_CriaJanela(__('Visualizando Imagem'),'',0);
+            
+            // Informacoes
+            $imnfo = getimagesize(ARQ_PATH.$endereco);
+            $html =  '<b>'.__('Largura').'</b>: '.$imnfo[0].' px<br>';	  // largura
+            $html .= '<b>'.__('Altura').'</b>: '.$imnfo[1].' px<br>';	  // altura
+            //$html .= '<b>'.__('Extensão').'</b>: '.$imnfo[2].'<br>';	  // extensão
+            $html .= '<b>'.__('Mime').'</b>: '.$imnfo['mime'].'<br>'; // mime-type
+            
+            // Caso seja JPG, JPEG ou TIFF, le os Dados EXIF
+            if($extensao==='jpg' || $extensao==='jpeg' || $extensao==='tiff'){
+                $exif = exif_read_data(ARQ_PATH.$endereco);
+                
+                //$html .= '<br><br><b>'.__('Informações do Exif').'</b><br>';
+                if(isset($exif["DateTimeOriginal"])){
+                    $html .= '<b>'.__('Horário da Foto').'</b>: '.$exif["DateTimeOriginal"].'<br>';
+                }
+                if(isset($exif["Model"])){
+                    $html .= '<b>'.__('Modelo da Camera').'</b>: '.$exif["Model"].'<br>';
+                }
+                if(isset($exif["Make"])){
+                    $html .= '<b>'.__('Fabricante da Camera').'</b>: '.$exif["Make"].'<br>';
+                }
+                if(isset($exif["Software"])){
+                    $html .= '<b>'.__('Programa que Manipulou o Arquivo').'</b>: '.$exif["Software"].'<br>';
+                }
+                if(isset($exif["Flash"])){
+                    $html .= '<b>'.__('Flash').'</b>: '.$exif["Flash"].'<br>';
+                }
+                if(isset($exif["FNumber"])){
+                    $html .= '<b>'.__('Abertura Relativa da Lente').'</b>: '.$exif["FNumber"].'<br>';
+                }
+                if(isset($exif["ExposureTime"])){
+                    $html .= '<b>'.__('Tempo para Foto').'</b>: '.$exif["ExposureTime"].'<br>';
+                }
+                if(isset($exif["FocalLength"])){
+                    $html .= '<b>'.__('Tamanho Focal').'</b>: '.$exif["FocalLength"].'<br>';
+                }
+                
+                // Localizacao da Foto
+                if(array_key_exists('GPSLongitude', $exif) && array_key_exists('GPSLatitude', $exif)) {
+                    $lng = Framework\App\Sistema_Funcoes::Get_Gps($exif["GPSLongitude"], $exif['GPSLongitudeRef']);
+                    $lat = Framework\App\Sistema_Funcoes::Get_Gps($exif["GPSLatitude"], $exif['GPSLatitudeRef']);
+                    $html .= '<b>'.__('Latitude da Foto').'</b>: '.$lng.'<br>';
+                    $html .= '<b>'.__('Longitude da Foto').'</b>: '.$lat.'<br>';
+                }else{
+                    $html .= '<br><b><font color="red">'.__('Essa Foto não Possui Informações do local aonde ela foi tirada.').'</font></b>';
+                }
+            }
+            
+            $this->_Visual->Blocar($html);
+            $this->_Visual->Bloco_Menor_CriaJanela(__('Informações da Imagem'),'',0);
+            
+            
+
+        }
     }
     /**
      * 
@@ -421,12 +520,6 @@ class biblioteca_BibliotecaControle extends biblioteca_Controle
             }
             // Tras de Volta e Atualiza via Json
             list($titulo,$html,$i) = $this->Bibliotecas_Processar($parent);
-            $conteudo = array(
-                'location'  => '#biblioteca_arquivos_num',
-                'js'        => '',
-                'html'      => $i
-            );
-            $this->_Visual->Json_IncluiTipo('Conteudo',$conteudo);
             $conteudo = array(
                 'location'  => '#biblioteca_arquivos_mostrar',
                 'js'        => '',

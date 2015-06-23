@@ -294,29 +294,8 @@ header('Content-Disposition: attachment; filename="'.$titulo_novo.'"');
 
 readfile($link);*/
         $ext = strtolower(substr(strrchr(basename($arquivoLocal),"."),1));
-        if($ext==='pdf'){ // verifica a extensão do arquivo para pegar o tipo
-            $tipo="application/pdf";
-        }else if($ext==='exe'){ // verifica a extensão do arquivo para pegar o tipo
-            $tipo="application/octet-stream";
-        }else if($ext==='zip'){ // verifica a extensão do arquivo para pegar o tipo
-            $tipo="application/zip";
-        }else if($ext==='doc'){ // verifica a extensão do arquivo para pegar o tipo
-            $tipo="application/msword";
-        }else if($ext==='xls'){ // verifica a extensão do arquivo para pegar o tipo
-            $tipo="application/vnd.ms-excel";
-        }else if($ext==='ppt'){ // verifica a extensão do arquivo para pegar o tipo
-            $tipo="application/vnd.ms-powerpoint";
-        }else if($ext==='gif'){ // verifica a extensão do arquivo para pegar o tipo
-            $tipo="image/gif";
-        }else if($ext==='png'){ // verifica a extensão do arquivo para pegar o tipo
-            $tipo="image/png";
-        }else if($ext==='jpg'){ // verifica a extensão do arquivo para pegar o tipo
-            $tipo="image/jpg";
-        }else if($ext==='mp3'){ // verifica a extensão do arquivo para pegar o tipo
-            $tipo="audio/mpeg";
-        }else{
-            $tipo = 'application/octet-stream';
-        }
+        $mimes = $this->Upload_Ext_Mime();
+        $tipos = $mimes[$ext];
         
         // Remove Zipagem de Arquivo
         ob_end_clean();
@@ -631,14 +610,18 @@ readfile($link);*/
      * @param type $padrao
      * @return type
      */
-    protected function Upload_Ext($padrao='Imagem,Audio,Video,Zipado,Documento,Grafico,BD'){
+    protected function Upload_Ext($padrao='Imagem,Audio,Video,Zipado,Documento,Email,Grafico,BD'){
         // Imagem
         $Imagem = Array(
+            'ai', // Adobe Ilustrator
             'bmp',
+            'eps', //Imagem Vetorial
             'jpg',
             'jpeg',    // 'jpe', // Bug de Banco de Dados com 3 varchar
             'gif',
             'png',
+            'psd',
+            'tiff',
         );
         // Audio
         $Audio = Array(
@@ -675,13 +658,20 @@ readfile($link);*/
         // Documento
         $Documento = Array(
             'txt',
+            'html',
             'doc',
             'docx',
-            'xls',
-            'xlsx',
             'ppt',
             'pdf',
+            'xls',
+            'xlsx',
+            'rtf',
+            'rss',
             'odt',
+        );
+        // Email
+        $Email = Array(
+            'eml', // Arquivos de Configuracoes de Email
         );
         // Graficos
         $Grafico = Array(
@@ -701,13 +691,57 @@ readfile($link);*/
         $Desenvolvimento = Array(
             'asp',
             'c','cpp',
-            'html','js','css',
+            'js','css',
             'php','php3','php4',
             'jar',
             'kml',
         );
         $Executavel = Array(
             'exe','dll','bin',
+        );
+        
+        // Pega Tipos e Preenche Ext
+        $ext = Array();
+        $padrao = explode(',',$padrao);
+        foreach($padrao as $valor){
+            if(isset($$valor)){
+                $ext = array_merge($ext, $$valor);
+            }
+        }
+        
+        return $ext;
+    }
+    protected function Upload_Ext_Mime($padrao='Imagem,Audio,Video,Zipado,Documento,Grafico,BD'){
+        
+        // Imagem
+        $Imagem = Array(
+            'gif'  =>"image/gif",
+            'png'  =>"image/png",
+            'jpg'  =>"image/jpg",
+        );
+        // Documento
+        $Documento = Array(
+            'html' =>'text/html',
+            'doc'  =>'application/msword', //Word
+            'docx' =>'application/vnd.openxmlformats-officedocument.wordprocessingml.document', //Word2007
+            'ppt'  =>'application/vnd.ms-powerpoint',
+            'pdf'  =>'application/pdf',
+            'rtf'  =>'application/rtf',
+            'odt'  =>'application/vnd.oasis.opendocument.text',
+            'xls'  =>'application/vnd.ms-excel',
+        );
+        
+        // Video
+        $Audio = Array(
+            'mp3'  =>"audio/mpeg"
+        );
+        // Zipado
+        $Zipado = Array(
+            'zip' =>"application/zip",
+        );
+        
+        $Executavel = Array(
+            'exe'  =>"application/octet-stream"
         );
         
         // Pega Tipos e Preenche Ext

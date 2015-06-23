@@ -1,5 +1,5 @@
 <?php
-class Engenharia_Principal implements PrincipalInterface
+class Engenharia_Principal implements \Framework\PrincipalInterface
 {
     /**
      * Função Home para o modulo mensagem aparecer na pagina HOME

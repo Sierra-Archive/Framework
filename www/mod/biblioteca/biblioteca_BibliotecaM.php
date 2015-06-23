@@ -100,6 +100,10 @@ class biblioteca_BibliotecaModelo extends biblioteca_Modelo
                     if($row['tipo']==1){
                         $tamanho = $Controle->Bibliotecas_AtualizaTamanho_Pai($valor);
                     }else{
+                        $endereco = ARQ_PATH.'bibliotecas'.DS.strtolower($row['arquivo']).'.'.\Framework\App\Sistema_Funcoes::Control_Arq_Ext($row['ext']);
+                        if(!file_exists($endereco)){
+                            return 'X';
+                        }
                         $tamanho = filesize($endereco);
                         \Framework\App\Registro::getInstacia()->_Modelo->db->Sql_Update($valor);
                     }
@@ -107,6 +111,19 @@ class biblioteca_BibliotecaModelo extends biblioteca_Modelo
                 return \Framework\App\Sistema_Funcoes::Tranf_Byte_Otimizado($tamanho);
             }
         );
+        
+        //'ext';
+        ++$numero;
+        $columns[] = array( 'db' => 'ext', 'dt' => $numero,
+            'formatter' => function( $d, $row ) {
+                if($row['tipo']==1){
+                    return 'Pasta';
+                }else{
+                    return \Framework\App\Sistema_Funcoes::Control_Arq_Ext($d);
+                }
+            }
+        );
+        
         ++$numero;
         $columns[] = array( 'db' => 'usuario2', 'dt' => $numero); //'Criador';
         ++$numero;

@@ -1,5 +1,5 @@
 <?php
-class usuario_mensagem_Principal implements PrincipalInterface
+class usuario_mensagem_Principal implements \Framework\PrincipalInterface
 {
     /**
     * Função Home para o modulo mensagem aparecer na pagina HOME

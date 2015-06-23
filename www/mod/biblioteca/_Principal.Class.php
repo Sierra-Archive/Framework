@@ -1,5 +1,5 @@
 <?php
-class biblioteca_Principal implements PrincipalInterface
+class biblioteca_Principal implements \Framework\PrincipalInterface
 {
     /**
      * Função Home para o modulo mensagem aparecer na pagina HOME

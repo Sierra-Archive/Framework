@@ -1,5 +1,5 @@
 <?php
-class banner_Principal implements PrincipalInterface
+class banner_Principal implements \Framework\PrincipalInterface
 {
     /**
     * Função Home para o modulo banner aparecer na pagina HOME

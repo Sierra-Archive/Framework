@@ -1,6 +1,6 @@
 <?php
 namespace Framework\App;
-abstract class Dao implements \DaoInterface
+abstract class Dao implements \Framework\DaoInterface
 {
     // Controle de MYSQL
     protected static $objetocarregado     = false;

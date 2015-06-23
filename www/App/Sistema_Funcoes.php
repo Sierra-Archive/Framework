@@ -36,6 +36,13 @@ Class Sistema_Funcoes {
         }
         exit;
     }
+    /**
+     * Trata Extensoes de Arquvo para Corrigir Extensoes
+     * 
+     * @param type $ext Extensao
+     * 
+     * @return string Extensao com Apenas 3 caracteres, retorna com 4, por exemplo jpeg
+     */
     public static function Control_Arq_Ext($ext){
         $ext = strtolower($ext);
         if($ext==='jpe'){
@@ -43,6 +50,9 @@ Class Sistema_Funcoes {
         }
         if($ext==='mpe'){
             $ext = 'mpeg';
+        }
+        if($ext==='tif'){
+            $ext = 'tiff';
         }
         return $ext;
     }
@@ -817,9 +827,9 @@ Class Sistema_Funcoes {
     {
         if(!isset($_SERVER['HTTP_USER_AGENT']) || empty($_SERVER['HTTP_USER_AGENT'])) {
             return array(
-                'name' => 'unrecognized',
-                'version' => 'unknown',
-                'platform' => 'unrecognized',
+                'name' => 'Desconhecido',
+                'version' => 'Desconhecido',
+                'platform' => 'Desconhecido',
                 'userAgent' => ''
             );
         }
@@ -838,14 +848,14 @@ Class Sistema_Funcoes {
             $name = 'mozilla';
         }
         else {
-            $name = 'unrecognized';
+            $name = 'Desconhecido';
         }
 
         if (preg_match('/.+(?:rv|it|ra|ie)[\/: ]([\d.]+)/', $userAgent, $matches)) {
             $version = $matches[1];
         }
         else {
-            $version = 'unknown';
+            $version = 'Desconhecido';
         }
 
         if (preg_match('/linux/', $userAgent)) {
@@ -867,6 +877,22 @@ Class Sistema_Funcoes {
             'Plataforma'    => $platform,
             'UserAgent'     => $userAgent
         );
+    }
+    public static function Get_Gps($exifCoord, $hemi) {
+        $degrees = count($exifCoord) > 0 ? self::Trans_Gps_Number($exifCoord[0]) : 0;
+        $minutes = count($exifCoord) > 1 ? self::Trans_Gps_Number($exifCoord[1]) : 0;
+        $seconds = count($exifCoord) > 2 ? self::Trans_Gps_Number($exifCoord[2]) : 0;
+        $flip = ($hemi == 'W' or $hemi == 'S') ? -1 : 1;
+        return $flip * ($degrees + $minutes / 60 + $seconds / 3600);
+    }
+
+    public static function Trans_Gps_Number($coordPart) {
+        $parts = explode('/', $coordPart);
+        if (count($parts) <= 0)
+            return 0;
+        if (count($parts) == 1)
+            return $parts[0];
+        return floatval($parts[0]) / floatval($parts[1]);
     }
 }
 

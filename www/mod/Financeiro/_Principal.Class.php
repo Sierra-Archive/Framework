@@ -1,5 +1,5 @@
 <?php
-class Financeiro_Principal implements PrincipalInterface
+class Financeiro_Principal implements \Framework\PrincipalInterface
 {
     /**
     * Função Home para o modulo financeiro aparecer na pagina HOME

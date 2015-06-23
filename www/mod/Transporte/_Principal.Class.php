@@ -1,5 +1,5 @@
 <?php
-class Transporte_Principal implements PrincipalInterface
+class Transporte_Principal implements \Framework\PrincipalInterface
 {
     /**
     * Função Home para o modulo Transporte aparecer na pagina HOME

@@ -1,6 +1,6 @@
 <?php
 
-class comercio_venda_Principal implements PrincipalInterface
+class comercio_venda_Principal implements \Framework\PrincipalInterface
 {
     /**
     * Função Home para o modulo comercio_venda aparecer na pagina HOME

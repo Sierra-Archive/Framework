@@ -1,5 +1,5 @@
 <?php
-class locais_Principal implements PrincipalInterface
+class locais_Principal implements \Framework\PrincipalInterface
 {
     /**
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>

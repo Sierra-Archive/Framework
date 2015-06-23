@@ -1,5 +1,5 @@
 <?php
-class Evento_Principal implements PrincipalInterface
+class Evento_Principal implements \Framework\PrincipalInterface
 {
     /**
      * Função Home para o modulo mensagem aparecer na pagina HOME

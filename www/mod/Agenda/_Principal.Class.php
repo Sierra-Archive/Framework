@@ -1,5 +1,5 @@
 <?php
-class Agenda_Principal implements PrincipalInterface
+class Agenda_Principal implements \Framework\PrincipalInterface
 {
     /**
     * Função Home

@@ -1,5 +1,5 @@
 <?php
-class Musica_Principal implements PrincipalInterface
+class Musica_Principal implements \Framework\PrincipalInterface
 {
     /**
      * Função Home para o modulo mensagem aparecer na pagina HOME

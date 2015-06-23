@@ -1,5 +1,5 @@
 <?php
-class comercio_certificado_Principal implements PrincipalInterface
+class comercio_certificado_Principal implements \Framework\PrincipalInterface
 {
     /**
     * Função Home

@@ -1,6 +1,6 @@
 <?php
 
-class usuario_Principal implements PrincipalInterface
+class usuario_Principal implements \Framework\PrincipalInterface
 {
     /**
     * Função Home para o modulo usuario aparecer na pagina HOME
