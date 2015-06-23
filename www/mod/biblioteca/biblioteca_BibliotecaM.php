@@ -44,6 +44,10 @@ class biblioteca_BibliotecaModelo extends biblioteca_Modelo
         $numero = -1;
         
         
+        //'Arquivo'; // Nao aparece          
+        ++$numero;
+        $columns[] = array( 'db' => 'arquivo', 'dt' => $numero); 
+
         //'#Tipo';
         ++$numero;
         $columns[] = array( 'db' => 'tipo', 'dt' => $numero,

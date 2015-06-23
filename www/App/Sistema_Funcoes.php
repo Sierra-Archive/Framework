@@ -813,6 +813,61 @@ Class Sistema_Funcoes {
         }
         return $senha;
     }
+    public static function Detectar_Navegador()
+    {
+        if(!isset($_SERVER['HTTP_USER_AGENT']) || empty($_SERVER['HTTP_USER_AGENT'])) {
+            return array(
+                'name' => 'unrecognized',
+                'version' => 'unknown',
+                'platform' => 'unrecognized',
+                'userAgent' => ''
+            );
+        }
+        $userAgent = strtolower($_SERVER['HTTP_USER_AGENT']);
+
+        if (preg_match('/opera/', $userAgent)) {
+            $name = 'opera';
+        }
+        elseif (preg_match('/webkit/', $userAgent)) {
+            $name = 'safari';
+        }
+        elseif (preg_match('/msie/', $userAgent)) {
+            $name = 'msie';
+        }
+        elseif (preg_match('/mozilla/', $userAgent) && !preg_match('/compatible/', $userAgent)) {
+            $name = 'mozilla';
+        }
+        else {
+            $name = 'unrecognized';
+        }
+
+        if (preg_match('/.+(?:rv|it|ra|ie)[\/: ]([\d.]+)/', $userAgent, $matches)) {
+            $version = $matches[1];
+        }
+        else {
+            $version = 'unknown';
+        }
+
+        if (preg_match('/linux/', $userAgent)) {
+            $platform = 'linux';
+        }
+        elseif (preg_match('/macintosh|mac os x/', $userAgent)) {
+            $platform = 'mac';
+        }
+        elseif (preg_match('/windows|win32/', $userAgent)) {
+            $platform = 'windows';
+        }
+        else {
+            $platform = 'unrecognized';
+        }
+
+        return array(
+            'Nome'          => $name,
+            'Versão'        => $version,
+            'Plataforma'    => $platform,
+            'UserAgent'     => $userAgent
+        );
+    }
 }
 
 

@@ -258,7 +258,7 @@ class biblioteca_BibliotecaControle extends biblioteca_Controle
         $tabela_colunas[] = __('Data');
         $tabela_colunas[] = __('Funções');
 
-        $_Visual->Show_Tabela_DataTable_Massiva($tabela_colunas,'biblioteca/Biblioteca/Bibliotecas/'.$raiz);
+        $_Visual->Show_Tabela_DataTable_Massiva($tabela_colunas,'biblioteca/Biblioteca/Bibliotecas/'.$raiz,'',true,true);
         
         $titulo = $endereco.' (<span id="DataTable_Contador">0</span>)';
         return Array($titulo,$html,$i);
@@ -357,7 +357,7 @@ class biblioteca_BibliotecaControle extends biblioteca_Controle
         $titulo     = __('Editado com Sucesso');
         $dao        = Array('Biblioteca',$id);
         $funcao     = '$this->Bibliotecas('.$raiz.');';
-        $sucesso1   = 'Arquivo/Pasta Alterado com Sucesso.';
+        $sucesso1   = __('Arquivo/Pasta Alterado com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);   
