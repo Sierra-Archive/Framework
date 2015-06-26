@@ -395,6 +395,10 @@ class Acl{
         if($url===SISTEMA_URL.SISTEMA_DIR.'#' || $url===SISTEMA_URL.SISTEMA_DIR.'#/'){
             return true;
         }
+        // Começa Tratamento
+        $tempo = new \Framework\App\Tempo('Acl Get Permissao');
+        
+        
         // Faz Controle de Excesso de Permissao, para Performace
         ++static::$log_qnt_get_permissao;
         //var_dump($url);echo "<br><br>\n\n";
@@ -402,8 +406,8 @@ class Acl{
             throw new \Exception('Permissão Requisitada mais de 60 vezes em uma mesma pagina.',2808);
         }
         
-        // Começa Tratamento
-        $tempo = new \Framework\App\Tempo('Acl Get Permissao');
+        echo "\n\n<br><br>".$url;
+        
         $permissoes_quepossuem = Array();
         $array = &self::$Sis_Permissao;
         reset($array);

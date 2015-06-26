@@ -83,45 +83,26 @@ class Agenda_PastaControle extends Agenda_Controle
         //Carrega Json
         $this->_Visual->Json_Info_Update('Titulo', __('Arquivo de Pastas'));
     }
+    /**
+     * Responsavel pela Listagem de Pastas
+     * @param type $export
+     * @param type $Modelo
+     * @param type $Visual
+     * @param type $tipo
+     */
     static function Pastas_Listar($export=false,&$Modelo,&$Visual,$tipo='Unico'){
-        $i = 0;
-        // Botao Add
-        $Visual->Blocar($Visual->Tema_Elementos_Btn('Superior'     ,Array(
-            Array(
-                'Adicionar Pasta',
-                'Agenda/Pasta/Pastas_Add',
-                ''
-            ),
-            Array(
-                'Print'     => true,
-                'Pdf'       => true,
-                'Excel'     => true,
-                'Link'      => 'Agenda/Pasta/Pastas',
-            )
-        )));
-        $pastas = $Modelo->db->Sql_Select('Usuario_Agenda_Pasta');
-        if($pastas!==false && !empty($pastas)){
-            list($tabela,$i) = self::Pastas_Tabela($pastas);
-            if($export!==false){
-                self::Export_Todos($export,$tabela, 'Pastas');
-            }else{
-                $Visual->Show_Tabela_DataTable(
-                    $tabela,     // Array Com a Tabela
-                    '',          // style extra
-                    true,        // true -> Add ao Bloco, false => Retorna html
-                    true,        // Apagar primeira coluna ?
-                    Array(       // Ordenacao
-                        Array(
-                            0,'desc'
-                        )
-                    )
-                );
-            }
-            unset($tabela);
-        }else{           
-            $Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhuma Pasta no Arquivo de Pastas</font></b></center>');
-        }
-        $titulo = __('Arquivo de Pastas').' ('.$i.')';
+        $tabela_colunas = Array();
+
+        $tabela_colunas[] = __('Categoria');
+        $tabela_colunas[] = __('Cor');
+        $tabela_colunas[] = __('Numero');
+        $tabela_colunas[] = __('Nome');
+        $tabela_colunas[] = __('Obs');
+        $tabela_colunas[] = __('Funções');
+
+        $Visual->Show_Tabela_DataTable_Massiva($tabela_colunas,'Agenda/Pasta/Pastas/','',true,false);
+        
+        $titulo = __('Arquivo de Pastas').' (<span id="DataTable_Contador">0</span>)';
         if($tipo==='Unico'){
             $Visual->Bloco_Unico_CriaJanela($titulo);
         }else{

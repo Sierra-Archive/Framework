@@ -109,7 +109,7 @@ class biblioteca_BibliotecaModelo extends biblioteca_Modelo
                 $tamanho = (int) $d;
                 if($tamanho === 0){
                     if($row['tipo']==1){
-                        $tamanho = $this->_Registro->_Controle->Bibliotecas_AtualizaTamanho_Pai($valor);
+                        $tamanho = \Framework\App\Registro::getInstacia()->_Controle->Bibliotecas_AtualizaTamanho_Pai($valor);
                     }else{
                         $endereco = ARQ_PATH.'bibliotecas'.DS.strtolower($row['arquivo']).'.'.\Framework\App\Sistema_Funcoes::Control_Arq_Ext($row['ext']);
                         if(!file_exists($endereco)){
