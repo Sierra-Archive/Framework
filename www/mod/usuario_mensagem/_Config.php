@@ -36,14 +36,14 @@ $config_Menu = function (){
                 'Filhos'                => false,
             ),'Setores'=>Array(
                 'Nome'                  => __('Setores'),
-                'Link'                  => 'usuario_mensagem/Setor/Main',
+                'Link'                  => 'usuario_mensagem/Setor/Setores',
                 'Gravidade'             => 68,
                 'Img'                   => 'turboadmin/m-dashboard.png',
                 'Icon'                  => 'smile',
                 'Filhos'                => false,
             ),'Assuntos'=>Array(
                 'Nome'                  => __('Assuntos'),
-                'Link'                  => 'usuario_mensagem/Assunto/Mensagens',
+                'Link'                  => 'usuario_mensagem/Assunto/Assuntos',
                 'Gravidade'             => 67,
                 'Img'                   => 'turboadmin/m-dashboard.png',
                 'Icon'                  => 'shopping-cart',
@@ -54,6 +54,15 @@ $config_Menu = function (){
 };
 $config_Permissoes = function (){
     return Array(        
+        Array(
+            'Nome'                  => __('Mensagens (Suporte) - Relatorio'),
+            'Desc'                  => '',
+            'Chave'                 => 'usuario_mensagem_Relatorio_Relatorio',
+            'End'                   => 'usuario_mensagem/Relatorio/Relatorio', // Endereco que deve conter a url para permitir acesso
+            'Modulo'                => 'usuario_mensagem', // Modulo Referente
+            'SubModulo'             => 'Relatorio',   // Submodulo Referente
+            'Metodo'                => 'Relatorio',  // Metodos referentes separados por virgula
+        ),
         Array(
             'Nome'                  => __('Mensagens (Suporte) - Listagem'),
             'Desc'                  => '',

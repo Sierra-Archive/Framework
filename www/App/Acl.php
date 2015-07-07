@@ -406,7 +406,7 @@ class Acl{
             throw new \Exception('Permissão Requisitada mais de 60 vezes em uma mesma pagina.',2808);
         }
         
-        echo "\n\n<br><br>".$url;
+        //echo "\n\n<br><br>".$url;
         
         $permissoes_quepossuem = Array();
         $array = &self::$Sis_Permissao;
