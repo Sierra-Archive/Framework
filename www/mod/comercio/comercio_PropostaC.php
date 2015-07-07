@@ -352,6 +352,8 @@ class comercio_PropostaControle extends comercio_Controle
                     $tabela['Valor Total'][$i]                  =  $valor->valor;
                 }
                 if($perm_status) $tabela['Status'][$i]                       = '<span class="status'.$valor->id.'">'.self::label($valor,$tema).'</span>';
+                $tabela['Criado'][$i]                       = $valor->log_date_add;
+                $tabela['Ult. Alteração'][$i]                       = $valor->log_date_edit;
                 $tabela['Funções'][$i]   =  $this->_Visual->Tema_Elementos_Btn('Visualizar' ,Array('Visualizar '.$titulo         ,'comercio/Proposta/Propostas_View/'.$valor->id.'/'.$tema.'/'    ,''),$perm_view).
                                             $this->_Visual->Tema_Elementos_Btn('Personalizado'    ,Array('Sub '.$titulo    ,'comercio/Proposta/Propostas_Sub/'.$valor->id.'/'.$tema.'/'    ,'','collapse','warning'),$perm_sub).
                                             $this->_Visual->Tema_Elementos_Btn('Personalizado'    ,Array('Histórico da '.$titulo    ,'comercio/Proposta/Propostas_Comentario/'.$valor->id.'/'.$tema.'/'    ,'','file','inverse'),$perm_comentario).
@@ -457,6 +459,8 @@ class comercio_PropostaControle extends comercio_Controle
                     $tabela['Valor Total'][$i]                  =  $valor->valor;
                 }
                 $tabela['Status'][$i]                       =  '<span class="status'.$valor->id.'">'.self::label($valor,$tema,($tema!='Propostas' && $valor->status=='3'?true:false)).'</span>';
+                $tabela['Criado'][$i]                       = $valor->log_date_add;
+                $tabela['Ult. Alteração'][$i]                       = $valor->log_date_edit;
                 $tabela['Funções'][$i]   =  $this->_Visual->Tema_Elementos_Btn('Visualizar' ,Array('Visualizar '.$titulo         ,'comercio/Proposta/Propostas_View/'.$valor->id.'/'.$tema.'/'    ,'')).
                                             $this->_Visual->Tema_Elementos_Btn('Personalizado'    ,Array('Histórico da '.$titulo    ,'comercio/Proposta/Propostas_Comentario/'.$valor->id.'/'.$tema.'/'    ,'','file','inverse'));
                 ++$i;

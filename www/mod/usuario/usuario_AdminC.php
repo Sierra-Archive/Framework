@@ -560,12 +560,18 @@ class usuario_AdminControle extends usuario_Controle
                 }else if($usuario->grupo==CFG_TEC_IDFUNCIONARIO){
                     $tipo = 'funcionario';
                     $tipo2 = __('Funcionário');
+                }else{
+                    $tipo = 'usuario';
+                    $tipo2 = __('Usuário');
                 }
             }else{
                 if($tipo==='cliente'){
                     $tipo2 = __('Cliente');
                 }else if($tipo==='funcionario'){
                     $tipo2 = __('Funcionário');
+                }else{
+                    $tipo = 'usuario';
+                    $tipo2 = __('Usuário');
                 }
             }
 
