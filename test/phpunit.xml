@@ -1,0 +1,27 @@
+<phpunit 
+    convertErrorsToExceptions="true" 
+    convertNoticesToExceptions="true"
+    convertWarningsToExceptions="true"
+    colors="true"
+    bootstrap="bootstrap.php"
+>
+    <testsuite name="Testes">
+        <directory>./</directory>
+    </testsuite>
+    <filter>
+        <whitelist>
+            <directory suffix=".php">../</directory>
+        </whitelist>
+    </filter>
+    <logging>
+        <log type="testdox-text" target="data/testdox.txt" />
+        <log 
+        type="coverage-html" 
+        target="data/coverage" 
+        charset="UTF-8" 
+        yui="true" 
+        highlight="true"
+        lowUpperBound="35"
+        highUpperBound="70" />
+    </logging>
+</phpunit>

@@ -5,6 +5,9 @@ namespace Framework\App;
  * 
  * E controle de Configuracoes, e suas permissoes de acesso
  *
+ * 
+ * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
+ * @version 3.1.1
  */
 class Acl{
     // Informacoes de Login
@@ -28,9 +31,21 @@ class Acl{
     // Configuracoes
     public      static  $config = false;   
     
-    
+    /**
+     *
+     * @var type 
+     */
     public static $log_qnt_get_permissao = 0;
     
+    /**
+     * 
+     * @param type $id
+     * @return boolean
+     * @throws \Exception
+     * 
+     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
+     * @version 3.1.1
+     */
     public function __construct($id = false) {
         $tempo = new \Framework\App\Tempo('ACl');   
         
@@ -709,6 +724,13 @@ class Acl{
         $id = (int) $this->logado_usuario->id;
         return $id;
     }
+    /**
+     * 
+     * @return int
+     * 
+     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
+     * @version 3.1.1
+     */
     public function Usuario_GetNome(){
         if(!isset($this->logado_usuario) || $this->logado===false){
             return 0;
@@ -716,6 +738,13 @@ class Acl{
         $nome = $this->logado_usuario->nome;
         return $nome;
     }
+    /**
+     * 
+     * @return int
+     * 
+     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
+     * @version 3.1.1
+     */
     public function Usuario_GetEmail(){
         if(!isset($this->logado_usuario) || $this->logado===false){
             return 0;
@@ -1012,10 +1041,14 @@ class Acl{
      */
     public static function Sistema_Modulos_Configs_Publico($chave=false){
         if($chave===false || $chave=='') return false;
-        if(self::$config===false){
-            self::$config     = &self::Sistema_Modulos_Carregar_Publico();
+        if(self::$Sis_Config_Publico===false){
+            self::$Sis_Config_Publico = $this->_db->Sql_Select('Sistema_Config');
+            if(self::$Sis_Config_Publico===false){
+                $this->Sistema_Config_Publico_InserirPadrao();
+                self::$Sis_Config_Publico = $this->_db->Sql_Select('Sistema_Config');
+            }
         }
-        $percorrer  = &self::$config[$chave]['Valor'];
+        $percorrer  = &self::$Sis_Config_Publico[$chave]['Valor'];
         
         // Percorre Publico
         /*if(empty($percorrer)) return false;
@@ -1031,6 +1064,9 @@ class Acl{
     /**
      * 
      * @return type
+     * 
+     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
+     * @version 3.1.1
      */
     public static function &Sistema_Modulos_Carregar_Menu(){
         $tempo = new \Framework\App\Tempo('\Framework\App\Acl::Sistema_Modulos_Configs->Menu');
@@ -1056,6 +1092,13 @@ class Acl{
         }
         return $config;
     }
+    /**
+     * 
+     * @return type
+     * 
+     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
+     * @version 3.1.1
+     */
     public static function &Sistema_Modulos_Carregar_Permissoes(){
         $tempo = new \Framework\App\Tempo('\Framework\App\Acl::Sistema_Modulos_Configs->Permissoes');
         // Le todos arquivos Menus dos modulos permitidos
@@ -1083,6 +1126,9 @@ class Acl{
     /**
      * 
      * @return type
+     * 
+     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
+     * @version 3.1.1
      */
     public static function &Sistema_Modulos_Carregar_Funcional(){
         $tempo = new \Framework\App\Tempo('\Framework\App\Acl::Sistema_Modulos_Configs->Funcional');
@@ -1103,21 +1149,25 @@ class Acl{
                     if(file_exists(MOD_PATH.''.$current.'/_Config.php')){
                         // Puxa
                         include MOD_PATH.''.$current.'/_Config.php';
-                        // Merge Com Config Funcional se Existir
+                        // Merge Com Config Funcional DO SERVIDOR se Existir
                         if(file_exists(INI_PATH.SRV_NAME.'/'.$current.'.php')){
                             include INI_PATH.SRV_NAME.'/'.$current.'.php';
-                            // Pega Arrays com configs
-                            $config_funciona = $config_Funcional();
-                            $config_Funcional = $Funcional;
+                            if(isset($Funcional)){
+                                // Pega Arrays com configs
+                                $config_funciona = $config_Funcional();
+                                $config_Funcional = $Funcional;
 
-                            // Merge só valor
-                            reset($config_Funcional);
-                            while (key($config_Funcional) !== null) {
-                                $current2 = current($config_Funcional);
-                                if(isset($current2['Valor'])){
-                                    $config_funciona[key($config_Funcional)]['Valor'] = $current2['Valor'];
+                                // Merge só valor
+                                reset($config_Funcional);
+                                while (key($config_Funcional) !== null) {
+                                    $current2 = current($config_Funcional);
+                                    if(isset($current2['Valor'])){
+                                        $config_funciona[key($config_Funcional)]['Valor'] = $current2['Valor'];
+                                    }
+                                    next($config_Funcional);
                                 }
-                                next($config_Funcional);
+                            }else{
+                                $config_funciona = $config_Funcional();
                             }
                         }else{
                             $config_funciona = $config_Funcional();
@@ -1133,31 +1183,33 @@ class Acl{
         return $funcional;
     }
     /**
-     * 
+     * Carrega os COnfig Publicos Padroes para poder Inserir no Banco de Dados para futura alteracao !
      * @return type
+     * 
+     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
+     * @version 3.1.1
      */
     public static function &Sistema_Modulos_Carregar_Publico(){
         $tempo = new \Framework\App\Tempo('\Framework\App\Acl::Sistema_Modulos_Configs->Publico');
         // ordena na ordem correta
         $registro = \Framework\App\Registro::getInstacia();
-        $publico = $registro->_Cache->Ler('Config_Publico');
-        if (!$publico) {
-            $ponteiro   = Array('_Sistema' => '_Sistema');
-            if(function_exists('config_modulos')){
-                $ponteiro   = array_merge($ponteiro,config_modulos());
-            }
-            $publico     = Array();
-            reset($ponteiro);
-            while (key($ponteiro) !== null) {
-                $current = current($ponteiro);
-                if (is_dir(MOD_PATH.''.$current)) {
-                    // SE existe arquivo config
-                    if(file_exists(MOD_PATH.''.$current.'/_Config.php')){
-                        // Puxa
-                        include MOD_PATH.''.$current.'/_Config.php';
-                        // Merge Com Config Publico se Existir
-                        if(file_exists(INI_PATH.SRV_NAME.'/'.$current.'.php')){
-                            include INI_PATH.SRV_NAME.'/'.$current.'.php';
+        $ponteiro   = Array('_Sistema' => '_Sistema');
+        if(function_exists('config_modulos')){
+            $ponteiro   = array_merge($ponteiro,config_modulos());
+        }
+        $publico     = Array();
+        reset($ponteiro);
+        while (key($ponteiro) !== null) {
+            $current = current($ponteiro);
+            if (is_dir(MOD_PATH.''.$current)) {
+                // SE existe arquivo config
+                if(file_exists(MOD_PATH.''.$current.'/_Config.php')){
+                    // Puxa
+                    include MOD_PATH.''.$current.'/_Config.php';
+                    // Merge Com Config Publico DO SERVIDOR se Existir
+                    if(file_exists(INI_PATH.SRV_NAME.'/'.$current.'.php')){
+                        include INI_PATH.SRV_NAME.'/'.$current.'.php';
+                        if(isset($Publico)){
                             // Pega Arrays com configs
                             $config_publico_temp = $config_Publico();
                             $config_Publico = $Publico;
@@ -1174,18 +1226,20 @@ class Acl{
                         }else{
                             $config_publico_temp = $config_Publico();
                         }
-                        // Realiza Merge para Indexir Configuracoes
-                        $publico    = array_merge_recursive($publico,$config_publico_temp       );
-                    } 
-                }
-                next($ponteiro);
+                    }else{
+                        $config_publico_temp = $config_Publico();
+                    }
+                    // Realiza Merge para Indexir Configuracoes
+                    $publico    = array_merge_recursive($publico,$config_publico_temp       );
+                } 
             }
-            $registro->_Cache->Salvar('Config_Publico', $publico);
+            next($ponteiro);
         }
         return $publico;
     }
     /**
      * 
+     * VErifica se Nao existe realmente no banco de dados e se for verdade insere o padrao
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 3.1.1
@@ -1209,6 +1263,7 @@ class Acl{
                             foreach($valor['Permissao_Func'] as $indicepermfunc=>&$permfunc){
                                 if(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional($indicepermfunc)!==$permfunc){
                                     $trava = true;
+                                    continue;
                                 }
                             }
                         }
@@ -1236,18 +1291,18 @@ class Acl{
         }
     }
     /**
-     * 
+     * VErifica se Nao existe realmente no banco de dados e se for verdade insere o padrao
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 3.1.1
      */
     private function Sistema_Config_Publico_InserirPadrao(){
-        $configPermissoes = self::Sistema_Modulos_Carregar_Publico();
-        if(!empty($configPermissoes)){
-            foreach($configPermissoes as &$valor){
-                if($valor['Chave']!=''){
+        $configPublicos = self::Sistema_Modulos_Carregar_Publico();
+        if(!empty($configPublicos)){
+            foreach($configPublicos as &$valor){
+                if($valor['chave']!=''){
                     // Verifica se ja existe
-                    $where = '{sigla}chave=\''.$valor['Chave'].'\'';
+                    $where = '{sigla}chave=\''.$valor['chave'].'\'';
                     $retorno = $this->_db->Sql_Select('Sistema_Config',$where);
                     if($retorno===false){
                         
@@ -1258,19 +1313,12 @@ class Acl{
                             foreach($valor['Permissao_Func'] as $indicepermfunc=>&$permfunc){
                                 if(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional($indicepermfunc)!==$permfunc){
                                     $trava = true;
+                                    continue;
                                 }
                             }
                         }
                         if($trava) continue;
-                        
-                        // Faz as Paradas Cria Permissao e Grava no Banco
-                        $endereco   = explode('/',$valor['End']);
-                        $modulo     = $endereco[0];
-                        if(isset($endereco[1])){
-                            $submodulo  = $endereco[1];
-                        }else{
-                            $submodulo  = '*';
-                        }
+                        // Grava no Banco
                         $inserir = new \Sistema_Config_DAO();
                         $inserir->nome        = $valor['Nome'];
                         $inserir->descricao   = $valor['Desc'];
