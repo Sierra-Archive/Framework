@@ -284,4 +284,20 @@ $config_Funcional = function (){
         ),
     );
 };
+/**
+ * Configurações que podem ser Alteradas por Admin ou outros usuarios do Sistema
+ * @return type
+ * 
+ * @author Ricardo Sierra <web@ricardosierra.com.br>
+ */
+$config_Publico = function (){
+    return Array(
+        /*'{chave}'  => Array(
+            'Nome'                  => 'Nome',
+            'Desc'                  => __('Descricao'),
+            'chave'                 => '{chave}',
+            'Valor'                 => 'valor_padrao'
+        )*/
+    );
+};
 ?>

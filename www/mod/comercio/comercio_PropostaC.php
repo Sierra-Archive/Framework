@@ -2222,6 +2222,7 @@ class comercio_PropostaControle extends comercio_Controle
                 );
             }else if($resultado->status=='2'){ // de Aprovada em Execução para Finalizada
                 
+                /* #update, colocar pra nao deixar finalizar quando nao tiver arquivo na biblioteca
                 if(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Propostas_Biblioteca')===true && \Framework\App\Sistema_Funcoes::Perm_Modulos('biblioteca')===true){
                     $mensagens = array(
                         "tipo"              => 'erro',
@@ -2234,6 +2235,7 @@ class comercio_PropostaControle extends comercio_Controle
                     return true;
                     
                 }
+                */
                 
                 // Se
                 $resultado->status='3';

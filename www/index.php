@@ -11,16 +11,21 @@
  * 
  * 
  * 
- */
-/*
+ *//*
 $julio = '12312312318371287318732';
 define('JULIO', '12312312318371287318732');
+function __($arg){
+    return $arg;
+}
 function var_global(){
     GLOBAL $julio;
     echo $julio;
 }
 function var_constante(){
     echo JULIO;
+}
+function var_function(){
+    echo __('Julio');
 }
 
 $timecomeco = microtime(true);
@@ -36,6 +41,13 @@ for(;$i<10000;++$i){
     var_constante();
 }
 var_dump('CONSTANTE',number_format(microtime(true)-$timecomeco, 10));
+
+$timecomeco = microtime(true);
+$i = 0;
+for(;$i<10000;++$i){
+    var_function();
+}
+var_dump('FUNCTION',number_format(microtime(true)-$timecomeco, 10));
 
 //facedetection();
 exit;

@@ -18,6 +18,7 @@ class Acl{
     
     // Permissoes do Sistema
     public static $Sis_Permissao = false;
+    private static $Sis_Config_Publico = false;
     
     // Registro e banco de dados
     private $_Registro;
@@ -296,9 +297,15 @@ class Acl{
         }
         self::$Sis_Permissao = $this->_db->Sql_Select('Sistema_Permissao');
         if(self::$Sis_Permissao===false){
-            $this->Sistema_Permissoes_InserirPadrao();
+            $this->Sistema_Config_Permissoes_InserirPadrao();
             self::$Sis_Permissao = $this->_db->Sql_Select('Sistema_Permissao');
         }
+        self::$Sis_Config_Publico = $this->_db->Sql_Select('Sistema_Config');
+        if(self::$Sis_Config_Publico===false){
+            $this->Sistema_Config_Publico_InserirPadrao();
+            self::$Sis_Config_Publico = $this->_db->Sql_Select('Sistema_Config');
+        }
+        
         if($this->_id!==0){
             $this->_grupo       = $this->getGrupo();
             if($this->_grupo!==false){
@@ -329,6 +336,30 @@ class Acl{
             "mgs_secundaria"    => __('Verifique se o Login ou a senha foram colocadas com sucesso.')
         );
         $_Registro->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+    }
+    /**
+     * CONFIG PUBLICAS DO SISTEMA
+     * Serve pra Recuperar algum valor de acordo com a chave
+     * 
+     * @param type $chave
+     * @param type $campo
+     * @return type
+     * 
+     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
+     * @version 3.1.1
+     */
+    public function Get_Config_Publico($chave,$campo='valor') {
+        $array = &self::$Sis_Config_Publico;
+        reset($array);
+        while(key($array)!==NULL){
+            $objeto = current($array);
+            if($objeto->chave===$chave){
+                return $objeto->$campo;
+                
+            }
+            next($array);
+        }
+        return $chave;
     }
     /**
      * PERMISSOES DO SISTEMA
@@ -948,6 +979,9 @@ class Acl{
      * 
      * @param varchar $chave
      * @return boolean Se o Valor desse Config for um Array, Retornara um Array
+     * 
+     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
+     * @version 3.1.1
      */
     public static function Sistema_Modulos_Configs_Funcional($chave=false){
         if($chave===false || $chave=='') return false;
@@ -967,6 +1001,37 @@ class Acl{
             return $percorrer;
         return false;
     }
+    /**
+     * Em cima de uma Chave, retorna o Valor desse Config nesse Servidor
+     * 
+     * @param varchar $chave
+     * @return boolean Se o Valor desse Config for um Array, Retornara um Array
+     * 
+     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
+     * @version 3.1.1
+     */
+    public static function Sistema_Modulos_Configs_Publico($chave=false){
+        if($chave===false || $chave=='') return false;
+        if(self::$config===false){
+            self::$config     = &self::Sistema_Modulos_Carregar_Publico();
+        }
+        $percorrer  = &self::$config[$chave]['Valor'];
+        
+        // Percorre Publico
+        /*if(empty($percorrer)) return false;
+        foreach($percorrer as &$valor){
+            if($valor['chave']==$chave){
+                return $valor['Valor'];
+            }
+        }*/
+        if(isset($percorrer))
+            return $percorrer;
+        return false;
+    }
+    /**
+     * 
+     * @return type
+     */
     public static function &Sistema_Modulos_Carregar_Menu(){
         $tempo = new \Framework\App\Tempo('\Framework\App\Acl::Sistema_Modulos_Configs->Menu');
         // Le todos arquivos Menus dos modulos permitidos
@@ -1015,6 +1080,10 @@ class Acl{
         }
         return $config;
     }
+    /**
+     * 
+     * @return type
+     */
     public static function &Sistema_Modulos_Carregar_Funcional(){
         $tempo = new \Framework\App\Tempo('\Framework\App\Acl::Sistema_Modulos_Configs->Funcional');
         // ordena na ordem correta
@@ -1065,11 +1134,63 @@ class Acl{
     }
     /**
      * 
+     * @return type
+     */
+    public static function &Sistema_Modulos_Carregar_Publico(){
+        $tempo = new \Framework\App\Tempo('\Framework\App\Acl::Sistema_Modulos_Configs->Publico');
+        // ordena na ordem correta
+        $registro = \Framework\App\Registro::getInstacia();
+        $publico = $registro->_Cache->Ler('Config_Publico');
+        if (!$publico) {
+            $ponteiro   = Array('_Sistema' => '_Sistema');
+            if(function_exists('config_modulos')){
+                $ponteiro   = array_merge($ponteiro,config_modulos());
+            }
+            $publico     = Array();
+            reset($ponteiro);
+            while (key($ponteiro) !== null) {
+                $current = current($ponteiro);
+                if (is_dir(MOD_PATH.''.$current)) {
+                    // SE existe arquivo config
+                    if(file_exists(MOD_PATH.''.$current.'/_Config.php')){
+                        // Puxa
+                        include MOD_PATH.''.$current.'/_Config.php';
+                        // Merge Com Config Publico se Existir
+                        if(file_exists(INI_PATH.SRV_NAME.'/'.$current.'.php')){
+                            include INI_PATH.SRV_NAME.'/'.$current.'.php';
+                            // Pega Arrays com configs
+                            $config_publico_temp = $config_Publico();
+                            $config_Publico = $Publico;
+
+                            // Merge só valor
+                            reset($config_Publico);
+                            while (key($config_Publico) !== null) {
+                                $current2 = current($config_Publico);
+                                if(isset($current2['Valor'])){
+                                    $config_publico_temp[key($config_Publico)]['Valor'] = $current2['Valor'];
+                                }
+                                next($config_Publico);
+                            }
+                        }else{
+                            $config_publico_temp = $config_Publico();
+                        }
+                        // Realiza Merge para Indexir Configuracoes
+                        $publico    = array_merge_recursive($publico,$config_publico_temp       );
+                    } 
+                }
+                next($ponteiro);
+            }
+            $registro->_Cache->Salvar('Config_Publico', $publico);
+        }
+        return $publico;
+    }
+    /**
+     * 
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 3.1.1
      */
-    private function Sistema_Permissoes_InserirPadrao(){
+    private function Sistema_Config_Permissoes_InserirPadrao(){
         $configPermissoes = self::Sistema_Modulos_Carregar_Permissoes();
         if(!empty($configPermissoes)){
             foreach($configPermissoes as &$valor){
@@ -1108,6 +1229,53 @@ class Acl{
                         $inserir->submodulo   = $submodulo;
                         $inserir->end         = $valor['End'];
                         $inserir->chave       = $valor['Chave'];
+                        $this->_db->Sql_Inserir($inserir);
+                    }
+                }
+            }
+        }
+    }
+    /**
+     * 
+     * 
+     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
+     * @version 3.1.1
+     */
+    private function Sistema_Config_Publico_InserirPadrao(){
+        $configPermissoes = self::Sistema_Modulos_Carregar_Publico();
+        if(!empty($configPermissoes)){
+            foreach($configPermissoes as &$valor){
+                if($valor['Chave']!=''){
+                    // Verifica se ja existe
+                    $where = '{sigla}chave=\''.$valor['Chave'].'\'';
+                    $retorno = $this->_db->Sql_Select('Sistema_Config',$where);
+                    if($retorno===false){
+                        
+                        
+                        // Se nao tiver Permissao funcional requerida, entao passa direto
+                        $trava = false;
+                        if(isset($valor['Permissao_Func']) && is_array($valor['Permissao_Func'])){
+                            foreach($valor['Permissao_Func'] as $indicepermfunc=>&$permfunc){
+                                if(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional($indicepermfunc)!==$permfunc){
+                                    $trava = true;
+                                }
+                            }
+                        }
+                        if($trava) continue;
+                        
+                        // Faz as Paradas Cria Permissao e Grava no Banco
+                        $endereco   = explode('/',$valor['End']);
+                        $modulo     = $endereco[0];
+                        if(isset($endereco[1])){
+                            $submodulo  = $endereco[1];
+                        }else{
+                            $submodulo  = '*';
+                        }
+                        $inserir = new \Sistema_Config_DAO();
+                        $inserir->nome        = $valor['Nome'];
+                        $inserir->descricao   = $valor['Desc'];
+                        $inserir->chave       = $valor['Chave'];
+                        $inserir->valor       = $valor['Valor'];
                         $this->_db->Sql_Inserir($inserir);
                     }
                 }

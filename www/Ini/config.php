@@ -541,6 +541,8 @@ if(!defined('MYSQL_CAT')){
     define('MYSQL_LOGURL',                                  'log_url');
 } if(!defined('MYSQL_LOG_SQL')){
     define('MYSQL_LOG_SQL',                                 'log_sql');
+} if(!defined('MYSQL_SIS_CONFIG')){
+    define('MYSQL_SIS_CONFIG',                              'Sistema_Config');
 } if(!defined('MYSQL_SIS_GRUPO')){
     define('MYSQL_SIS_GRUPO',                               'Sistema_Grupo');
 } if(!defined('MYSQL_SIS_GRUPO_PERMISSAO')){
