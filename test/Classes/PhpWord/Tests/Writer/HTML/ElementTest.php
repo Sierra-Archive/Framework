@@ -14,14 +14,14 @@
  * @copyright   2010-2014 PHPWord contributors
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
-namespace PhpOffice\PhpWord\Tests\Writer\HTML;
+namespace Framework\Classes\PhpWord\Tests\Writer\HTML;
 
-use PhpOffice\PhpWord\Element\Text as TextElement;
-use PhpOffice\PhpWord\Writer\HTML;
-use PhpOffice\PhpWord\Writer\HTML\Element\Text;
+use Framework\Classes\PhpWord\Element\Text as TextElement;
+use Framework\Classes\PhpWord\Writer\HTML;
+use Framework\Classes\PhpWord\Writer\HTML\Element\Text;
 
 /**
- * Test class for PhpOffice\PhpWord\Writer\HTML\Element subnamespace
+ * Test class for Framework\Classes\PhpWord\Writer\HTML\Element subnamespace
  */
 class ElementTest extends \PHPUnit_Framework_TestCase
 {
@@ -32,9 +32,9 @@ class ElementTest extends \PHPUnit_Framework_TestCase
     {
         $elements = array('Container', 'Footnote', 'Image', 'Link', 'ListItem', 'Table', 'Title');
         foreach ($elements as $element) {
-            $objectClass = 'PhpOffice\\PhpWord\\Writer\\HTML\\Element\\' . $element;
+            $objectClass = 'Framework\Classes\\PhpWord\\Writer\\HTML\\Element\\' . $element;
             $parentWriter = new HTML();
-            $newElement = new \PhpOffice\PhpWord\Element\PageBreak();
+            $newElement = new \Framework\Classes\PhpWord\Element\PageBreak();
             $object = new $objectClass($parentWriter, $newElement);
 
             $this->assertEquals('', $object->write());

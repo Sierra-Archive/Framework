@@ -48,7 +48,7 @@ abstract class Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 2.0.1
+    * @version 3.1.1
     */
     
     public function __construct(){
@@ -252,7 +252,7 @@ abstract class Controle
      * Trava o Código e para de Executar tudo
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public static function Tema_Travar(){
         self::$sistema_travado = true;
@@ -263,7 +263,7 @@ abstract class Controle
      * Retorna se o Layoult está travado de retornar HTML ou nao !
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public static function &Tema_Travar_GET(){
         return self::$sistema_travado;
@@ -489,7 +489,7 @@ readfile($link);*/
      * @param string $arquivo_nome
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     private static function Export_Excel(&$tabela,$arquivo_nome='Relatorio'){
         // Retira Funcoes Caso Exista
@@ -549,7 +549,7 @@ readfile($link);*/
      * @return void
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     protected function Categorias_ShowSelect(&$form,$tipo='',$padrao=0){
     	$array = $this->_Modelo->Categorias_Retorna($tipo);
@@ -565,7 +565,7 @@ readfile($link);*/
      * @return string
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0.0
+     * @version 3.1.1
      */
     /*public function Upload($dir = '', $fileTypes = Array(), $nomearquivo = ''){
         $targetPath = ARQ_PATH.$dir;
@@ -1949,7 +1949,7 @@ readfile($link);*/
      * @param type $leitura
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0.2 (Agora funciona com Objetos DAO)
+     * @version 3.1.1 (Agora funciona com Objetos DAO)
      * 
      * #update OBJETOS AINDA NAO FUNCIONAM
      */
@@ -2055,7 +2055,7 @@ readfile($link);*/
      * @param type $valor
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0.3 (Agora funciona com Objetos DAO, -1bug)
+     * @version 3.1.1 (Agora funciona com Objetos DAO, -1bug)
      */
     static function mysql_AtualizaValor(&$objeto,$campomysql,$resultado=false){
         // Ainda funciona com array
@@ -2092,7 +2092,7 @@ readfile($link);*/
      * @param type $valores
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0.2 (Agora funciona com Objetos DAO)
+     * @version 3.1.1 (Agora funciona com Objetos DAO)
      */
     static function mysql_AtualizaValores(&$objeto,&$valores='',$id=false){
         // TRATA ID
@@ -2253,7 +2253,7 @@ readfile($link);*/
      * @param type $exceto
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0.0
+     * @version 3.1.1
      */
     static function DAO_Campos_Retira(&$campos,$campomysql,$exceto=0){
         if(empty($campos)) throw new \Exception('Campos da DAO não existe', 3030); //

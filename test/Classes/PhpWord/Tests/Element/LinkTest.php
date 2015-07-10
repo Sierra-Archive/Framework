@@ -15,15 +15,15 @@
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
-namespace PhpOffice\PhpWord\Tests\Element;
+namespace Framework\Classes\PhpWord\Tests\Element;
 
-use PhpOffice\PhpWord\Element\Link;
-use PhpOffice\PhpWord\Style\Font;
+use Framework\Classes\PhpWord\Element\Link;
+use Framework\Classes\PhpWord\Style\Font;
 
 /**
- * Test class for PhpOffice\PhpWord\Element\Link
+ * Test class for Framework\Classes\PhpWord\Element\Link
  *
- * @coversDefaultClass \PhpOffice\PhpWord\Element\Link
+ * @coversDefaultClass \Framework\Classes\PhpWord\Element\Link
  * @runTestsInSeparateProcesses
  */
 class LinkTest extends \PHPUnit_Framework_TestCase
@@ -35,7 +35,7 @@ class LinkTest extends \PHPUnit_Framework_TestCase
     {
         $oLink = new Link('http://www.google.com');
 
-        $this->assertInstanceOf('PhpOffice\\PhpWord\\Element\\Link', $oLink);
+        $this->assertInstanceOf('Framework\Classes\\PhpWord\\Element\\Link', $oLink);
         $this->assertEquals($oLink->getSource(), 'http://www.google.com');
         $this->assertEquals($oLink->getText(), $oLink->getSource());
         $this->assertEquals($oLink->getFontStyle(), null);
@@ -54,11 +54,11 @@ class LinkTest extends \PHPUnit_Framework_TestCase
             array('marginLeft' => 600, 'marginRight' => 600, 'marginTop' => 600, 'marginBottom' => 600)
         );
 
-        $this->assertInstanceOf('PhpOffice\\PhpWord\\Element\\Link', $oLink);
+        $this->assertInstanceOf('Framework\Classes\\PhpWord\\Element\\Link', $oLink);
         $this->assertEquals($oLink->getSource(), 'http://www.google.com');
         $this->assertEquals($oLink->getText(), 'Search Engine');
-        $this->assertInstanceOf('PhpOffice\\PhpWord\\Style\\Font', $oLink->getFontStyle());
-        $this->assertInstanceOf('PhpOffice\\PhpWord\\Style\\Paragraph', $oLink->getParagraphStyle());
+        $this->assertInstanceOf('Framework\Classes\\PhpWord\\Style\\Font', $oLink->getFontStyle());
+        $this->assertInstanceOf('Framework\Classes\\PhpWord\\Style\\Paragraph', $oLink->getParagraphStyle());
     }
 
     /**

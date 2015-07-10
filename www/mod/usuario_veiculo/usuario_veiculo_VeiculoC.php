@@ -13,7 +13,7 @@ class usuario_veiculo_VeiculoControle extends usuario_veiculo_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 2.0
+    * @version 3.1.1
     */
     public function __construct(){
         parent::__construct();
@@ -62,7 +62,7 @@ class usuario_veiculo_VeiculoControle extends usuario_veiculo_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 2.0
+    * @version 3.1.1
     */
     public function Main(){
         return false; 
@@ -81,7 +81,7 @@ class usuario_veiculo_VeiculoControle extends usuario_veiculo_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Veiculos($export=false){
         self::Endereco_Veiculo(false);
@@ -139,7 +139,7 @@ class usuario_veiculo_VeiculoControle extends usuario_veiculo_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Veiculos_Add(){
         self::Endereco_Veiculo(true);
@@ -158,7 +158,7 @@ class usuario_veiculo_VeiculoControle extends usuario_veiculo_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Veiculos_Add2(){
         $titulo     = __('Veiculo Adicionado com Sucesso');
@@ -173,7 +173,7 @@ class usuario_veiculo_VeiculoControle extends usuario_veiculo_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Veiculos_Edit($id){
         self::Endereco_Veiculo(true);
@@ -193,7 +193,7 @@ class usuario_veiculo_VeiculoControle extends usuario_veiculo_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Veiculos_Edit2($id){
         $titulo     = __('Veiculo Editado com Sucesso');
@@ -209,7 +209,7 @@ class usuario_veiculo_VeiculoControle extends usuario_veiculo_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Veiculos_Del($id){
         
@@ -314,7 +314,7 @@ class usuario_veiculo_VeiculoControle extends usuario_veiculo_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Veiculos_Comentario($veiculo_id = false, $export=false){
         $i = 0;
@@ -366,7 +366,7 @@ class usuario_veiculo_VeiculoControle extends usuario_veiculo_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Veiculos_Comentario_Add($veiculo_id = false){
         if($veiculo_id===false) throw new \Exception('Veiculo não informado',404);
@@ -385,7 +385,7 @@ class usuario_veiculo_VeiculoControle extends usuario_veiculo_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Veiculos_Comentario_Add2($veiculo_id = false){
         if($veiculo_id===false) throw new \Exception('Veiculo não informado',404);
@@ -401,7 +401,7 @@ class usuario_veiculo_VeiculoControle extends usuario_veiculo_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Veiculos_Comentario_Edit($veiculo_id = false,$id = 0){
         if($veiculo_id===false) throw new \Exception('Veiculo não informado',404);
@@ -422,7 +422,7 @@ class usuario_veiculo_VeiculoControle extends usuario_veiculo_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Veiculos_Comentario_Edit2($veiculo_id = false,$id = 0){
         if($veiculo_id===false) throw new \Exception('Veiculo não informado',404);
@@ -440,7 +440,7 @@ class usuario_veiculo_VeiculoControle extends usuario_veiculo_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Veiculos_Comentario_Del($veiculo_id = false,$id = 0){
         if($veiculo_id===false) throw new \Exception('Veiculo não informado',404);
@@ -476,7 +476,7 @@ class usuario_veiculo_VeiculoControle extends usuario_veiculo_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Veiculos_Evento($veiculo_id = false){
         if($veiculo_id===false){
@@ -512,7 +512,7 @@ class usuario_veiculo_VeiculoControle extends usuario_veiculo_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Veiculos_Evento_Add($veiculo_id = false){
         if($veiculo_id===false) throw new \Exception('Veiculo não informado',404);
@@ -531,7 +531,7 @@ class usuario_veiculo_VeiculoControle extends usuario_veiculo_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Veiculos_Evento_Add2($veiculo_id = false){
         if($veiculo_id===false) throw new \Exception('Veiculo não informado',404);
@@ -547,7 +547,7 @@ class usuario_veiculo_VeiculoControle extends usuario_veiculo_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Veiculos_Evento_Edit($veiculo_id = false,$id = 0){
         if($veiculo_id===false) throw new \Exception('Veiculo não informado',404);
@@ -568,7 +568,7 @@ class usuario_veiculo_VeiculoControle extends usuario_veiculo_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Veiculos_Evento_Edit2($veiculo_id = false,$id = 0){
         if($veiculo_id===false) throw new \Exception('Veiculo não informado',404);
@@ -586,7 +586,7 @@ class usuario_veiculo_VeiculoControle extends usuario_veiculo_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Veiculos_Evento_Del($veiculo_id = false,$id = 0){
         if($veiculo_id===false) throw new \Exception('Veiculo não informado',404);

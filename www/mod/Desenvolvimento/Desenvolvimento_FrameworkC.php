@@ -10,7 +10,7 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 2.0
+    * @version 3.1.1
     */
     public function __construct(){
         parent::__construct();
@@ -24,7 +24,7 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 2.0
+    * @version 3.1.1
     */
     public function Main(){
         return false;
@@ -56,7 +56,7 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Modulos($export=false){
         $this->Endereco_Modulo(false);
@@ -107,7 +107,7 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Modulos_Add(){
         $this->Endereco_Modulo();
@@ -125,7 +125,7 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Modulos_Add2(){
         $titulo     = __('Modulo Adicionado com Sucesso');
@@ -140,7 +140,7 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Modulos_Edit($id){
         $this->Endereco_Modulo();
@@ -159,7 +159,7 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Modulos_Edit2($id){
         $titulo     = __('Modulo Editado com Sucesso');
@@ -175,7 +175,7 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Modulos_Del($id){
         
@@ -234,7 +234,7 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Submodulos($export=false){
         $this->Endereco_Submodulo(false);
@@ -285,7 +285,7 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Submodulos_Add(){
         $this->Endereco_Submodulo();
@@ -303,7 +303,7 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Submodulos_Add2(){
         $titulo     = __('Submodulo Adicionado com Sucesso');
@@ -318,7 +318,7 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Submodulos_Edit($id){
         $this->Endereco_Submodulo();
@@ -337,7 +337,7 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Submodulos_Edit2($id){
         $titulo     = __('Submodulo Editado com Sucesso');
@@ -353,7 +353,7 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Submodulos_Del($id){
         
@@ -411,7 +411,7 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Metodos($export=false){
         $this->Endereco_Metodo(false);
@@ -462,7 +462,7 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Metodos_Add(){
         $this->Endereco_Metodo();
@@ -480,7 +480,7 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Metodos_Add2(){
         $titulo     = __('Metodo Adicionado com Sucesso');
@@ -495,7 +495,7 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Metodos_Edit($id){
         $this->Endereco_Metodo();
@@ -514,7 +514,7 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Metodos_Edit2($id){
         $titulo     = __('Metodo Editado com Sucesso');
@@ -530,7 +530,7 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Metodos_Del($id){
         

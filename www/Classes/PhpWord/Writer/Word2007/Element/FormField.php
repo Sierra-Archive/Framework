@@ -15,10 +15,10 @@
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
-namespace PhpOffice\PhpWord\Writer\Word2007\Element;
+namespace Framework\Classes\PhpWord\Writer\Word2007\Element;
 
-use PhpOffice\PhpWord\Element\FormField as FormFieldElement;
-use PhpOffice\PhpWord\Shared\XMLWriter;
+use Framework\Classes\PhpWord\Element\FormField as FormFieldElement;
+use Framework\Classes\PhpWord\Shared\XMLWriter;
 
 /**
  * FormField element writer
@@ -107,8 +107,8 @@ class FormField extends Text
      * Write textinput.
      *
      * @link http://www.datypic.com/sc/ooxml/t-w_CT_FFTextInput.html
-     * @param \PhpOffice\PhpWord\Shared\XMLWriter $xmlWriter
-     * @param \PhpOffice\PhpWord\Element\FormField $element
+     * @param \Framework\Classes\PhpWord\Shared\XMLWriter $xmlWriter
+     * @param \Framework\Classes\PhpWord\Element\FormField $element
      * @return void
      */
     private function writeTextInput(XMLWriter $xmlWriter, FormFieldElement $element)
@@ -124,8 +124,8 @@ class FormField extends Text
      * Write checkbox.
      *
      * @link http://www.datypic.com/sc/ooxml/t-w_CT_FFCheckBox.html
-     * @param \PhpOffice\PhpWord\Shared\XMLWriter $xmlWriter
-     * @param \PhpOffice\PhpWord\Element\FormField $element
+     * @param \Framework\Classes\PhpWord\Shared\XMLWriter $xmlWriter
+     * @param \Framework\Classes\PhpWord\Element\FormField $element
      * @return void
      */
     private function writeCheckBox(XMLWriter $xmlWriter, FormFieldElement $element)
@@ -148,8 +148,8 @@ class FormField extends Text
      * Write dropdown.
      *
      * @link http://www.datypic.com/sc/ooxml/t-w_CT_FFDDList.html
-     * @param \PhpOffice\PhpWord\Shared\XMLWriter $xmlWriter
-     * @param \PhpOffice\PhpWord\Element\FormField $element
+     * @param \Framework\Classes\PhpWord\Shared\XMLWriter $xmlWriter
+     * @param \Framework\Classes\PhpWord\Element\FormField $element
      * @return void
      */
     private function writeDropDown(XMLWriter $xmlWriter, FormFieldElement $element)

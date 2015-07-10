@@ -15,14 +15,14 @@
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
-namespace PhpOffice\PhpWord\Tests\Style;
+namespace Framework\Classes\PhpWord\Tests\Style;
 
-use PhpOffice\PhpWord\Style\Section;
+use Framework\Classes\PhpWord\Style\Section;
 
 /**
- * Test class for PhpOffice\PhpWord\Style\Section
+ * Test class for Framework\Classes\PhpWord\Style\Section
  *
- * @coversDefaultClass \PhpOffice\PhpWord\Element\Section
+ * @coversDefaultClass \Framework\Classes\PhpWord\Element\Section
  * @runTestsInSeparateProcesses
  */
 class SettingsTest extends \PHPUnit_Framework_TestCase
@@ -66,7 +66,7 @@ class SettingsTest extends \PHPUnit_Framework_TestCase
         $oSettings->setSettingValue('lineNumbering', array());
         $oSettings->setSettingValue('lineNumbering', array('start' => 1, 'increment' => 1,
             'distance' => 240, 'restart' => 'newPage'));
-        $this->assertInstanceOf('PhpOffice\\PhpWord\\Style\\LineNumbering', $oSettings->getLineNumbering());
+        $this->assertInstanceOf('Framework\Classes\\PhpWord\\Style\\LineNumbering', $oSettings->getLineNumbering());
 
         $oSettings->setSettingValue('lineNumbering', null);
         $this->assertNull($oSettings->getLineNumbering());
@@ -300,10 +300,10 @@ class SettingsTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(720, $oSettings->getColsSpace());
 
         $iVal = rand(1, 1000);
-        $this->assertInstanceOf('PhpOffice\\PhpWord\\Style\\Section', $oSettings->setColsSpace($iVal));
+        $this->assertInstanceOf('Framework\Classes\\PhpWord\\Style\\Section', $oSettings->setColsSpace($iVal));
         $this->assertEquals($iVal, $oSettings->getColsSpace());
 
-        $this->assertInstanceOf('PhpOffice\\PhpWord\\Style\\Section', $oSettings->setColsSpace());
+        $this->assertInstanceOf('Framework\Classes\\PhpWord\\Style\\Section', $oSettings->setColsSpace());
         $this->assertEquals(720, $oSettings->getColsSpace());
     }
 

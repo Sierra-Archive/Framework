@@ -13,7 +13,7 @@ class Agenda_PastaControle extends Agenda_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 2.0
+    * @version 3.1.1
     */
     public function __construct(){
         parent::__construct();
@@ -29,7 +29,7 @@ class Agenda_PastaControle extends Agenda_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 2.0
+    * @version 3.1.1
     */
     public function Main(){
         $this->Pastas();
@@ -74,7 +74,7 @@ class Agenda_PastaControle extends Agenda_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Pastas($export=false){
         $this->Endereco_Pasta(false);
@@ -112,7 +112,7 @@ class Agenda_PastaControle extends Agenda_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Pastas_Add(){ 
         $this->Endereco_Pasta();  
@@ -129,7 +129,7 @@ class Agenda_PastaControle extends Agenda_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Pastas_Add2(){
         $titulo     = __('Pasta Adicionado com Sucesso');
@@ -144,7 +144,7 @@ class Agenda_PastaControle extends Agenda_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Pastas_Edit($id){
         $this->Endereco_Pasta();
@@ -162,7 +162,7 @@ class Agenda_PastaControle extends Agenda_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Pastas_Edit2($id){
         $titulo     = __('Pasta Editado com Sucesso');
@@ -177,7 +177,7 @@ class Agenda_PastaControle extends Agenda_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Pastas_Del($id){
         
@@ -209,7 +209,7 @@ class Agenda_PastaControle extends Agenda_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Cores($export=false){
         $this->Endereco_Cor(false);
@@ -268,7 +268,7 @@ class Agenda_PastaControle extends Agenda_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Cores_Add(){
         $this->Endereco_Cor();
@@ -285,7 +285,7 @@ class Agenda_PastaControle extends Agenda_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Cores_Add2(){
         $titulo     = __('Cor Adicionada com Sucesso');
@@ -300,7 +300,7 @@ class Agenda_PastaControle extends Agenda_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Cores_Edit($id){
         $this->Endereco_Cor();
@@ -318,7 +318,7 @@ class Agenda_PastaControle extends Agenda_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Cores_Edit2($id){
         $titulo     = __('Cor Editada com Sucesso');
@@ -333,7 +333,7 @@ class Agenda_PastaControle extends Agenda_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Cores_Del($id){
     	$id = (int) $id;

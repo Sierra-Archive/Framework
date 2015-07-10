@@ -13,7 +13,7 @@ class usuario_mensagem_SetorControle extends usuario_mensagem_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 2.0
+    * @version 3.1.1
     */
     public function __construct(){
         parent::__construct();
@@ -27,7 +27,7 @@ class usuario_mensagem_SetorControle extends usuario_mensagem_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 2.0
+    * @version 3.1.1
     */
     public function Main(){
         \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'usuario_mensagem/Setor/Setores/');
@@ -47,7 +47,7 @@ class usuario_mensagem_SetorControle extends usuario_mensagem_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Setores($export=false){
         self::Endereco_Setor(false);
@@ -65,7 +65,7 @@ class usuario_mensagem_SetorControle extends usuario_mensagem_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Setores_Add(){
         self::Endereco_Setor(true);
@@ -82,7 +82,7 @@ class usuario_mensagem_SetorControle extends usuario_mensagem_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Setores_Edit($id){
         self::Endereco_Setor(true);
@@ -108,7 +108,7 @@ class usuario_mensagem_SetorControle extends usuario_mensagem_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Setores_Add2(){
         $titulo     = __('Setor Adicionado com Sucesso');
@@ -124,7 +124,7 @@ class usuario_mensagem_SetorControle extends usuario_mensagem_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Setores_Edit2($id){
         
@@ -159,7 +159,7 @@ class usuario_mensagem_SetorControle extends usuario_mensagem_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Setores_Del($id){
         

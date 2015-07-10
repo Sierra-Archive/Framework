@@ -15,7 +15,7 @@ class predial_CorreioControle extends predial_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 2.0
+    * @version 3.1.1
     */
     public function Main(){
     }
@@ -132,7 +132,7 @@ class predial_CorreioControle extends predial_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     protected function Correios_Bloco($recebido=false,$gravidade=0){
         $i = 0;
@@ -177,7 +177,7 @@ class predial_CorreioControle extends predial_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Correios_Add(){
         self::Endereco_Correio();
@@ -196,7 +196,7 @@ class predial_CorreioControle extends predial_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Correios_Add2(){
         //Validar_Email
@@ -281,7 +281,7 @@ class predial_CorreioControle extends predial_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Correios_Edit($id){
         self::Endereco_Correio();
@@ -300,7 +300,7 @@ class predial_CorreioControle extends predial_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Correios_Edit2($id){
         $titulo     = __('Correio Editado com Sucesso');
@@ -316,7 +316,7 @@ class predial_CorreioControle extends predial_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Correios_Del($id){
         
@@ -382,7 +382,7 @@ class predial_CorreioControle extends predial_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     static function Personalizados($apartamento,$recebido=false,$gravidade=0,$adicionar=true){
         $registro = \Framework\App\Registro::getInstacia();

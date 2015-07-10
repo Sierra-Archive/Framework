@@ -15,14 +15,14 @@
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
-namespace PhpOffice\PhpWord\Tests\Style;
+namespace Framework\Classes\PhpWord\Tests\Style;
 
-use PhpOffice\PhpWord\Style\Spacing;
+use Framework\Classes\PhpWord\Style\Spacing;
 
 /**
- * Test class for PhpOffice\PhpWord\Style\Spacing
+ * Test class for Framework\Classes\PhpWord\Style\Spacing
  *
- * @coversDefaultClass \PhpOffice\PhpWord\Style\Spacing
+ * @coversDefaultClass \Framework\Classes\PhpWord\Style\Spacing
  */
 class SpacingTest extends \PHPUnit_Framework_TestCase
 {

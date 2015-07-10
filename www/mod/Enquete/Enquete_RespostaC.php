@@ -15,7 +15,7 @@ class Enquete_RespostaControle extends Enquete_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 2.0
+    * @version 3.1.1
     */
     public function Main($enquete = false){
         return false; 
@@ -76,7 +76,7 @@ class Enquete_RespostaControle extends Enquete_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Respostas($enquete=false, $export=false){
         if($enquete===false){
@@ -147,7 +147,7 @@ class Enquete_RespostaControle extends Enquete_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Respostas_Add($enquete = false){
         self::Endereco_Resposta($enquete);
@@ -171,7 +171,7 @@ class Enquete_RespostaControle extends Enquete_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Respostas_Add2($enquete=false){
         $titulo     = __('Resposta Adicionada com Sucesso');
@@ -192,7 +192,7 @@ class Enquete_RespostaControle extends Enquete_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Respostas_Edit($enquete = false,$id){
         if($enquete===false){
@@ -220,7 +220,7 @@ class Enquete_RespostaControle extends Enquete_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Respostas_Edit2($enquete = false,$id){
         if($enquete===false){
@@ -244,7 +244,7 @@ class Enquete_RespostaControle extends Enquete_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Respostas_Del($enquete=false,$id = false){
         

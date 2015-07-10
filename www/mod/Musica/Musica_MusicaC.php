@@ -15,7 +15,7 @@ class Musica_MusicaControle extends Musica_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 2.0
+    * @version 3.1.1
     */
     public function Main($artista = false,$album=false){
         \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'Musica/Musica/Musicas');
@@ -93,7 +93,7 @@ class Musica_MusicaControle extends Musica_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Musicas($artista=false,$album=false,$export=false){
         if($artista ==='false' || $artista ===0)  $artista    = false;
@@ -206,7 +206,7 @@ class Musica_MusicaControle extends Musica_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Musicas_Add($artista = false,$album=false){
         if($artista==='false') $artista = false;
@@ -278,7 +278,7 @@ class Musica_MusicaControle extends Musica_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Musicas_Add2($artista=false,$album=false){
         if($artista==='false') $artista = false;
@@ -309,7 +309,7 @@ class Musica_MusicaControle extends Musica_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Musicas_Edit($id,$artista = false,$album=false){
         if($artista==='false') $artista = false;
@@ -359,7 +359,7 @@ class Musica_MusicaControle extends Musica_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Musicas_Edit2($id,$artista = false,$album=false){
         if($artista==='false') $artista = false;
@@ -396,7 +396,7 @@ class Musica_MusicaControle extends Musica_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Musicas_Del($id = false,$artista=false,$album=false){
         if($artista==='false') $artista = false;

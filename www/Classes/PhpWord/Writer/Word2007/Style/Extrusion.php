@@ -15,7 +15,7 @@
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
-namespace PhpOffice\PhpWord\Writer\Word2007\Style;
+namespace Framework\Classes\PhpWord\Writer\Word2007\Style;
 
 /**
  * 3D extrusion style writer
@@ -32,7 +32,7 @@ class Extrusion extends AbstractStyle
     public function write()
     {
         $style = $this->getStyle();
-        if (!$style instanceof \PhpOffice\PhpWord\Style\Extrusion) {
+        if (!$style instanceof \Framework\Classes\PhpWord\Style\Extrusion) {
             return;
         }
         $xmlWriter = $this->getXmlWriter();

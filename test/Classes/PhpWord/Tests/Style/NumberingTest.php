@@ -15,14 +15,14 @@
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
-namespace PhpOffice\PhpWord\Tests\Style;
+namespace Framework\Classes\PhpWord\Tests\Style;
 
-use PhpOffice\PhpWord\Style\Numbering;
+use Framework\Classes\PhpWord\Style\Numbering;
 
 /**
- * Test class for PhpOffice\PhpWord\Style\Numbering
+ * Test class for Framework\Classes\PhpWord\Style\Numbering
  *
- * @coversDefaultClass \PhpOffice\PhpWord\Style\Numbering
+ * @coversDefaultClass \Framework\Classes\PhpWord\Style\Numbering
  */
 class NumberingTest extends \PHPUnit_Framework_TestCase
 {

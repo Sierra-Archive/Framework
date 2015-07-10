@@ -11,7 +11,7 @@ class usuario_PerfilModelo extends usuario_Modelo
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 2.0
+    * @version 3.1.1
     */
     //#update
     public function __construct(){

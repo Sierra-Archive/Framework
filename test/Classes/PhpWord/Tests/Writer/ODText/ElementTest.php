@@ -14,12 +14,12 @@
  * @copyright   2010-2014 PHPWord contributors
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
-namespace PhpOffice\PhpWord\Tests\Writer\ODText;
+namespace Framework\Classes\PhpWord\Tests\Writer\ODText;
 
-use PhpOffice\PhpWord\Shared\XMLWriter;
+use Framework\Classes\PhpWord\Shared\XMLWriter;
 
 /**
- * Test class for PhpOffice\PhpWord\Writer\ODText\Element subnamespace
+ * Test class for Framework\Classes\PhpWord\Writer\ODText\Element subnamespace
  */
 class ElementTest extends \PHPUnit_Framework_TestCase
 {
@@ -30,9 +30,9 @@ class ElementTest extends \PHPUnit_Framework_TestCase
     {
         $elements = array('Image', 'Link', 'Table', 'Text', 'Title');
         foreach ($elements as $element) {
-            $objectClass = 'PhpOffice\\PhpWord\\Writer\\ODText\\Element\\' . $element;
+            $objectClass = 'Framework\Classes\\PhpWord\\Writer\\ODText\\Element\\' . $element;
             $xmlWriter = new XMLWriter();
-            $newElement = new \PhpOffice\PhpWord\Element\PageBreak();
+            $newElement = new \Framework\Classes\PhpWord\Element\PageBreak();
             $object = new $objectClass($xmlWriter, $newElement);
             $object->write();
 

@@ -15,11 +15,11 @@
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
-namespace PhpOffice\PhpWord\Reader\Word2007;
+namespace Framework\Classes\PhpWord\Reader\Word2007;
 
-use PhpOffice\PhpWord\Element\Section;
-use PhpOffice\PhpWord\PhpWord;
-use PhpOffice\PhpWord\Shared\XMLReader;
+use Framework\Classes\PhpWord\Element\Section;
+use Framework\Classes\PhpWord\PhpWord;
+use Framework\Classes\PhpWord\Shared\XMLReader;
 
 /**
  * Document reader
@@ -32,14 +32,14 @@ class Document extends AbstractPart
     /**
      * PhpWord object
      *
-     * @var \PhpOffice\PhpWord\PhpWord
+     * @var \Framework\Classes\PhpWord\PhpWord
      */
     private $phpWord;
 
     /**
      * Read document.xml.
      *
-     * @param \PhpOffice\PhpWord\PhpWord $phpWord
+     * @param \Framework\Classes\PhpWord\PhpWord $phpWord
      * @return void
      */
     public function read(PhpWord $phpWord)
@@ -65,7 +65,7 @@ class Document extends AbstractPart
      * Read header footer.
      *
      * @param array $settings
-     * @param \PhpOffice\PhpWord\Element\Section &$section
+     * @param \Framework\Classes\PhpWord\Element\Section &$section
      * @return void
      */
     private function readHeaderFooter($settings, Section &$section)
@@ -99,7 +99,7 @@ class Document extends AbstractPart
     /**
      * Read w:sectPr
      *
-     * @param \PhpOffice\PhpWord\Shared\XMLReader $xmlReader
+     * @param \Framework\Classes\PhpWord\Shared\XMLReader $xmlReader
      * @param \DOMElement $domNode
      * @ignoreScrutinizerPatch
      * @return array
@@ -142,9 +142,9 @@ class Document extends AbstractPart
     /**
      * Read w:p node.
      *
-     * @param \PhpOffice\PhpWord\Shared\XMLReader $xmlReader
+     * @param \Framework\Classes\PhpWord\Shared\XMLReader $xmlReader
      * @param \DOMElement $node
-     * @param \PhpOffice\PhpWord\Element\Section &$section
+     * @param \Framework\Classes\PhpWord\Element\Section &$section
      * @return void
      *
      * @todo <w:lastRenderedPageBreak>
@@ -172,9 +172,9 @@ class Document extends AbstractPart
     /**
      * Read w:sectPr node.
      *
-     * @param \PhpOffice\PhpWord\Shared\XMLReader $xmlReader
+     * @param \Framework\Classes\PhpWord\Shared\XMLReader $xmlReader
      * @param \DOMElement $node
-     * @param \PhpOffice\PhpWord\Element\Section &$section
+     * @param \Framework\Classes\PhpWord\Element\Section &$section
      * @return void
      */
     private function readWSectPrNode(XMLReader $xmlReader, \DOMElement $node, Section &$section)

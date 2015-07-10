@@ -15,9 +15,9 @@
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
-namespace PhpOffice\PhpWord\Writer\PDF;
+namespace Framework\Classes\PhpWord\Writer\PDF;
 
-use PhpOffice\PhpWord\Writer\WriterInterface;
+use Framework\Classes\PhpWord\Writer\WriterInterface;
 
 /**
  * TCPDF writer

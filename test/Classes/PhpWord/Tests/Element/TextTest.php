@@ -15,13 +15,13 @@
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
-namespace PhpOffice\PhpWord\Tests\Element;
+namespace Framework\Classes\PhpWord\Tests\Element;
 
-use PhpOffice\PhpWord\Element\Text;
-use PhpOffice\PhpWord\Style\Font;
+use Framework\Classes\PhpWord\Element\Text;
+use Framework\Classes\PhpWord\Style\Font;
 
 /**
- * Test class for PhpOffice\PhpWord\Element\Text
+ * Test class for Framework\Classes\PhpWord\Element\Text
  *
  * @runTestsInSeparateProcesses
  */
@@ -34,10 +34,10 @@ class TextTest extends \PHPUnit_Framework_TestCase
     {
         $oText = new Text();
 
-        $this->assertInstanceOf('PhpOffice\\PhpWord\\Element\\Text', $oText);
+        $this->assertInstanceOf('Framework\Classes\\PhpWord\\Element\\Text', $oText);
         $this->assertEquals(null, $oText->getText());
-        $this->assertInstanceOf('PhpOffice\\PhpWord\\Style\\Font', $oText->getFontStyle());
-        $this->assertInstanceOf('PhpOffice\\PhpWord\\Style\\Paragraph', $oText->getParagraphStyle());
+        $this->assertInstanceOf('Framework\Classes\\PhpWord\\Style\\Font', $oText->getFontStyle());
+        $this->assertInstanceOf('Framework\Classes\\PhpWord\\Style\\Paragraph', $oText->getParagraphStyle());
     }
 
     /**
@@ -59,7 +59,7 @@ class TextTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($oText->getFontStyle(), 'fontStyle');
 
         $oText->setFontStyle(array('bold' => true, 'italic' => true, 'size' => 16));
-        $this->assertInstanceOf('PhpOffice\\PhpWord\\Style\\Font', $oText->getFontStyle());
+        $this->assertInstanceOf('Framework\Classes\\PhpWord\\Style\\Font', $oText->getFontStyle());
     }
 
     /**
@@ -81,6 +81,6 @@ class TextTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($oText->getParagraphStyle(), 'paragraphStyle');
 
         $oText->setParagraphStyle(array('align' => 'center', 'spaceAfter' => 100));
-        $this->assertInstanceOf('PhpOffice\\PhpWord\\Style\\Paragraph', $oText->getParagraphStyle());
+        $this->assertInstanceOf('Framework\Classes\\PhpWord\\Style\\Paragraph', $oText->getParagraphStyle());
     }
 }

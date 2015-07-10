@@ -13,7 +13,7 @@ class usuario_mensagem_AssuntoControle extends usuario_mensagem_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 2.0
+    * @version 3.1.1
     */
     public function __construct(){
         parent::__construct();
@@ -27,7 +27,7 @@ class usuario_mensagem_AssuntoControle extends usuario_mensagem_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 2.0
+    * @version 3.1.1
     */
     public function Main(){
         \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'usuario_mensagem/Assunto/Assuntos/');
@@ -47,7 +47,7 @@ class usuario_mensagem_AssuntoControle extends usuario_mensagem_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Assuntos($export=false){
         self::Endereco_Assunto(false);
@@ -65,7 +65,7 @@ class usuario_mensagem_AssuntoControle extends usuario_mensagem_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Assuntos_Add(){
         self::Endereco_Assunto(true);
@@ -83,7 +83,7 @@ class usuario_mensagem_AssuntoControle extends usuario_mensagem_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Assuntos_Add2(){
         $titulo     = __('Assunto Adicionado com Sucesso');
@@ -98,7 +98,7 @@ class usuario_mensagem_AssuntoControle extends usuario_mensagem_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Assuntos_Edit($id){
         self::Endereco_Assunto(true);
@@ -124,7 +124,7 @@ class usuario_mensagem_AssuntoControle extends usuario_mensagem_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Assuntos_Edit2($id){
         
@@ -159,7 +159,7 @@ class usuario_mensagem_AssuntoControle extends usuario_mensagem_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Assuntos_Del($id){
         

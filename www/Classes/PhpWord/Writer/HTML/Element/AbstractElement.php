@@ -15,10 +15,10 @@
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
-namespace PhpOffice\PhpWord\Writer\HTML\Element;
+namespace Framework\Classes\PhpWord\Writer\HTML\Element;
 
-use PhpOffice\PhpWord\Element\AbstractElement as Element;
-use PhpOffice\PhpWord\Writer\AbstractWriter;
+use Framework\Classes\PhpWord\Element\AbstractElement as Element;
+use Framework\Classes\PhpWord\Writer\AbstractWriter;
 
 /**
  * Abstract HTML element writer
@@ -30,14 +30,14 @@ abstract class AbstractElement
     /**
      * Parent writer
      *
-     * @var \PhpOffice\PhpWord\Writer\AbstractWriter
+     * @var \Framework\Classes\PhpWord\Writer\AbstractWriter
      */
     protected $parentWriter;
 
     /**
      * Element
      *
-     * @var \PhpOffice\PhpWord\Element\AbstractElement
+     * @var \Framework\Classes\PhpWord\Element\AbstractElement
      */
     protected $element;
 
@@ -56,8 +56,8 @@ abstract class AbstractElement
     /**
      * Create new instance
      *
-     * @param \PhpOffice\PhpWord\Writer\AbstractWriter $parentWriter
-     * @param \PhpOffice\PhpWord\Element\AbstractElement $element
+     * @param \Framework\Classes\PhpWord\Writer\AbstractWriter $parentWriter
+     * @param \Framework\Classes\PhpWord\Element\AbstractElement $element
      * @param bool $withoutP
      */
     public function __construct(AbstractWriter $parentWriter, Element $element, $withoutP = false)

@@ -15,7 +15,7 @@ class predial_AnimalControle extends predial_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 2.0
+    * @version 3.1.1
     */
     public function Main(){
         $this->Animais();
@@ -53,7 +53,7 @@ class predial_AnimalControle extends predial_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Animais(){
         self::Endereco_Animal(false);
@@ -90,7 +90,7 @@ class predial_AnimalControle extends predial_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Animais_Add(){
         self::Endereco_Animal();
@@ -108,7 +108,7 @@ class predial_AnimalControle extends predial_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Animais_Add2(){
         $titulo     = __('Animal Adicionado com Sucesso');
@@ -123,7 +123,7 @@ class predial_AnimalControle extends predial_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Animais_Edit($id){
         self::Endereco_Animal();
@@ -142,7 +142,7 @@ class predial_AnimalControle extends predial_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Animais_Edit2($id){
         $titulo     = __('Animal Editado com Sucesso');
@@ -158,7 +158,7 @@ class predial_AnimalControle extends predial_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Animais_Del($id){
         

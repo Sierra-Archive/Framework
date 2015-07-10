@@ -15,14 +15,14 @@
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
-namespace PhpOffice\PhpWord\Tests\Element;
+namespace Framework\Classes\PhpWord\Tests\Element;
 
-use PhpOffice\PhpWord\Element\Title;
+use Framework\Classes\PhpWord\Element\Title;
 
 /**
- * Test class for PhpOffice\PhpWord\Element\Title
+ * Test class for Framework\Classes\PhpWord\Element\Title
  *
- * @coversDefaultClass \PhpOffice\PhpWord\Element\Title
+ * @coversDefaultClass \Framework\Classes\PhpWord\Element\Title
  * @runTestsInSeparateProcesses
  */
 class TitleTest extends \PHPUnit_Framework_TestCase
@@ -34,7 +34,7 @@ class TitleTest extends \PHPUnit_Framework_TestCase
     {
         $oTitle = new Title('text');
 
-        $this->assertInstanceOf('PhpOffice\\PhpWord\\Element\\Title', $oTitle);
+        $this->assertInstanceOf('Framework\Classes\\PhpWord\\Element\\Title', $oTitle);
         $this->assertEquals($oTitle->getText(), 'text');
     }
 

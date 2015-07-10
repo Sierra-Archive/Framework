@@ -8,7 +8,7 @@ class _Sistema_AdminControle extends _Sistema_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Main(){
         // Chama Widgets
@@ -73,7 +73,7 @@ class _Sistema_AdminControle extends _Sistema_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Menus($export='Unico'){
         $this->Endereco_Admin_Menu(false);
@@ -193,7 +193,7 @@ class _Sistema_AdminControle extends _Sistema_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Menus_Add(){
         $this->Endereco_Admin_Menu();
@@ -211,7 +211,7 @@ class _Sistema_AdminControle extends _Sistema_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Menus_Add2(){
         $titulo     = __('Menu Adicionado com Sucesso');
@@ -226,7 +226,7 @@ class _Sistema_AdminControle extends _Sistema_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Menus_Edit($id){
         $this->Endereco_Admin_Menu();
@@ -245,7 +245,7 @@ class _Sistema_AdminControle extends _Sistema_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Menus_Edit2($id){
         $id = (int) $id;
@@ -262,7 +262,7 @@ class _Sistema_AdminControle extends _Sistema_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Menus_Del($id){
         
@@ -295,7 +295,7 @@ class _Sistema_AdminControle extends _Sistema_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Permissoes($export='Unico'){
         $this->Endereco_Admin_Permissao(false);
@@ -368,7 +368,7 @@ class _Sistema_AdminControle extends _Sistema_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Permissoes_Add(){
         $this->Endereco_Admin_Permissao();
@@ -386,7 +386,7 @@ class _Sistema_AdminControle extends _Sistema_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Permissoes_Add2(){
         $titulo     = __('Permissão Adicionada com Sucesso');
@@ -401,7 +401,7 @@ class _Sistema_AdminControle extends _Sistema_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Permissoes_Edit($id){
         $id         = \anti_injection($id);
@@ -421,7 +421,7 @@ class _Sistema_AdminControle extends _Sistema_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Permissoes_Edit2($id){
         $id         = \anti_injection($id);
@@ -438,7 +438,7 @@ class _Sistema_AdminControle extends _Sistema_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Permissoes_Del($id){
         
@@ -474,7 +474,7 @@ class _Sistema_AdminControle extends _Sistema_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Grupos($grupocat = false,$export='Unico'){
         $this->Endereco_Admin_Grupo(false);
@@ -550,7 +550,7 @@ class _Sistema_AdminControle extends _Sistema_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Grupos_Add($grupocat = false){
         $this->Endereco_Admin_Grupo();
@@ -572,7 +572,7 @@ class _Sistema_AdminControle extends _Sistema_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Grupos_Add2($grupocat = false){
         if($grupocat==='false') $grupocat = false;
@@ -588,7 +588,7 @@ class _Sistema_AdminControle extends _Sistema_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Grupos_Edit($id,$grupocat = false){
         $this->Endereco_Admin_Grupo();
@@ -610,7 +610,7 @@ class _Sistema_AdminControle extends _Sistema_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Grupos_Edit2($id,$grupocat = false){
         if($grupocat===false) $grupocat = 'false';
@@ -627,7 +627,7 @@ class _Sistema_AdminControle extends _Sistema_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Grupos_Del($id,$grupocat = false){
         
@@ -661,7 +661,7 @@ class _Sistema_AdminControle extends _Sistema_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Grupo_Permissao($grupo=false){
         $i = 0;
@@ -728,7 +728,7 @@ class _Sistema_AdminControle extends _Sistema_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Grupo_Permissao_Add($grupo=false){
         // Carrega campos 
@@ -757,7 +757,7 @@ class _Sistema_AdminControle extends _Sistema_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Grupo_Permissao_Edit($id,$grupo=false){
         $id = (int) $id;
@@ -786,7 +786,7 @@ class _Sistema_AdminControle extends _Sistema_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Grupo_Permissao_Add2($grupo=false){
         
@@ -824,7 +824,7 @@ class _Sistema_AdminControle extends _Sistema_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Grupo_Permissao_Edit2($id,$grupo=false){
         
@@ -859,7 +859,7 @@ class _Sistema_AdminControle extends _Sistema_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Grupo_Permissao_Del($id){
         
@@ -966,7 +966,7 @@ class _Sistema_AdminControle extends _Sistema_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Newsletter_Add(){
         // Carrega campos e retira os que nao precisam
@@ -987,7 +987,7 @@ class _Sistema_AdminControle extends _Sistema_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Newsletter_Edit($id){
         $id = (int) $id;
@@ -1014,7 +1014,7 @@ class _Sistema_AdminControle extends _Sistema_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Newsletter_Add2(){
         
@@ -1051,7 +1051,7 @@ class _Sistema_AdminControle extends _Sistema_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Newsletter_Edit2($id){
         
@@ -1086,7 +1086,7 @@ class _Sistema_AdminControle extends _Sistema_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Newsletter_Del($id){
         

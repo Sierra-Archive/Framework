@@ -22,7 +22,7 @@ if (!defined('PHPWORD_TESTS_BASE_DIR')) {
     define('PHPWORD_TESTS_BASE_DIR', realpath(__DIR__));
 }
 
-$vendor = realpath(__DIR__ . '/../vendor');
+$vendor = realpath(__DIR__ . '/../www/Classes/PhpWord');
 if (file_exists($vendor . '/autoload.php')) {
     require $vendor . '/autoload.php';
 } else {
@@ -31,7 +31,7 @@ if (file_exists($vendor . '/autoload.php')) {
 
 spl_autoload_register(function ($class) {
     $class = ltrim($class, '\\');
-    $prefix = 'PhpOffice\\PhpWord\\Tests';
+    $prefix = 'Framework\\Classes\\PhpWord\\Tests';
     if (strpos($class, $prefix) === 0) {
         $class = str_replace('\\', DIRECTORY_SEPARATOR, $class);
         $class = join(DIRECTORY_SEPARATOR, array('PhpWord', 'Tests', '_includes')) .
@@ -44,4 +44,4 @@ spl_autoload_register(function ($class) {
 });
 
 require_once __DIR__ . '/../src/PhpWord/Autoloader.php';
-\PhpOffice\PhpWord\Autoloader::register();
+\Framework\Classes\PhpWord\Autoloader::register();

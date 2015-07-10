@@ -15,14 +15,14 @@
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
-namespace PhpOffice\PhpWord\Tests\Reader;
+namespace Framework\Classes\PhpWord\Tests\Reader;
 
-use PhpOffice\PhpWord\IOFactory;
+use Framework\Classes\PhpWord\IOFactory;
 
 /**
- * Test class for PhpOffice\PhpWord\Reader\RTF
+ * Test class for Framework\Classes\PhpWord\Reader\RTF
  *
- * @coversDefaultClass \PhpOffice\PhpWord\Reader\RTF
+ * @coversDefaultClass \Framework\Classes\PhpWord\Reader\RTF
  * @runTestsInSeparateProcesses
  */
 class RTFTest extends \PHPUnit_Framework_TestCase
@@ -34,7 +34,7 @@ class RTFTest extends \PHPUnit_Framework_TestCase
     {
         $filename = __DIR__ . '/../_files/documents/reader.rtf';
         $phpWord = IOFactory::load($filename, 'RTF');
-        $this->assertInstanceOf('PhpOffice\\PhpWord\\PhpWord', $phpWord);
+        $this->assertInstanceOf('Framework\Classes\\PhpWord\\PhpWord', $phpWord);
     }
 
     /**

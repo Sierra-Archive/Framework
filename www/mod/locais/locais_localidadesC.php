@@ -186,7 +186,7 @@ class locais_localidadesControle extends locais_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Paises(){
         $i = 0;
@@ -215,7 +215,7 @@ class locais_localidadesControle extends locais_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Paises_Add(){
         // Carrega Config
@@ -231,7 +231,7 @@ class locais_localidadesControle extends locais_Controle
      * Retorno de Add Paises
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Paises_Add2(){
         $titulo     = __('Pais Adicionado com Sucesso');
@@ -246,7 +246,7 @@ class locais_localidadesControle extends locais_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Paises_Edit($id){
         // Carrega Config
@@ -263,7 +263,7 @@ class locais_localidadesControle extends locais_Controle
      * Retorno de Editar Paises
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Paises_Edit2($id){
         $titulo     = __('Pais Editado com Sucesso');
@@ -278,7 +278,7 @@ class locais_localidadesControle extends locais_Controle
      * Deletar Paises
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Paises_Del($id){
     	$id = (int) $id;
@@ -309,7 +309,7 @@ class locais_localidadesControle extends locais_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Estados(){
         $i = 0;
@@ -338,7 +338,7 @@ class locais_localidadesControle extends locais_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Estados_Add(){
         // Carrega Config
@@ -355,7 +355,7 @@ class locais_localidadesControle extends locais_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Estados_Add2(){
         $titulo     = __('Estado Adicionado com Sucesso');
@@ -370,7 +370,7 @@ class locais_localidadesControle extends locais_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Estados_Edit($id){
         // Carrega Config
@@ -388,7 +388,7 @@ class locais_localidadesControle extends locais_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Estados_Edit2($id){
         $titulo     = __('Estado Editado com Sucesso');
@@ -404,7 +404,7 @@ class locais_localidadesControle extends locais_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Estados_Del($id){
         
@@ -437,7 +437,7 @@ class locais_localidadesControle extends locais_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Cidades(){
         $i = 0;
@@ -466,7 +466,7 @@ class locais_localidadesControle extends locais_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Cidades_Add(){
         // Carrega Config
@@ -483,7 +483,7 @@ class locais_localidadesControle extends locais_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Cidades_Add2(){
         $titulo     = __('Cidade Adicionada com Sucesso');
@@ -498,7 +498,7 @@ class locais_localidadesControle extends locais_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Cidades_Edit($id){
         // Carrega Config
@@ -516,7 +516,7 @@ class locais_localidadesControle extends locais_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Cidades_Edit2($id){
         $titulo     = __('Cidade Editada com Sucesso');
@@ -532,7 +532,7 @@ class locais_localidadesControle extends locais_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Cidades_Del($id){
         
@@ -565,7 +565,7 @@ class locais_localidadesControle extends locais_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Bairros(){
         $i = 0;
@@ -594,7 +594,7 @@ class locais_localidadesControle extends locais_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Bairros_Add(){
         // Carrega Config
@@ -611,7 +611,7 @@ class locais_localidadesControle extends locais_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Bairros_Add2(){
         $titulo     = __('Bairro Adicionado com Sucesso');
@@ -626,7 +626,7 @@ class locais_localidadesControle extends locais_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Bairros_Edit($id){
         // Carrega Config
@@ -644,7 +644,7 @@ class locais_localidadesControle extends locais_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Bairros_Edit2($id){
         $titulo     = __('Bairro Editado com Sucesso');
@@ -660,7 +660,7 @@ class locais_localidadesControle extends locais_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Bairros_Del($id){
         

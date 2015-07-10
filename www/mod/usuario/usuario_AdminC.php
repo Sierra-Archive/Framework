@@ -13,7 +13,7 @@ class usuario_AdminControle extends usuario_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 2.0
+    * @version 3.1.1
     */
     public function __construct(){
         // construct
@@ -32,7 +32,7 @@ class usuario_AdminControle extends usuario_Controle
     * @return void 
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 2.0
+    * @version 3.1.1
     */
     public function Main($export=false){
         $this->usuariolistar(false,false,0,false,$export);
@@ -213,7 +213,7 @@ class usuario_AdminControle extends usuario_Controle
      * 
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Usuarios_Edit2($id,$tipo=false){
         
@@ -316,7 +316,7 @@ class usuario_AdminControle extends usuario_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 2.0
+    * @version 3.1.1
     */
     public function Usuarios_Add($categoria = 0,$tipo=false){
         $usuario = new \Usuario_DAO();
@@ -391,7 +391,7 @@ class usuario_AdminControle extends usuario_Controle
      * @return void
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Usuarios_Add2($tipo=false){
         
@@ -539,7 +539,7 @@ class usuario_AdminControle extends usuario_Controle
     * @return void 
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 2.0
+    * @version 3.1.1
     */
     public function Usuarios_Del($id,$tipo=false){
         
@@ -711,7 +711,7 @@ class usuario_AdminControle extends usuario_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Usuarios_Comentario($usuario_id = false,$tipo='usuario'){
         if($usuario_id===false){
@@ -783,7 +783,7 @@ class usuario_AdminControle extends usuario_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Usuarios_Comentario_Add($usuario_id = false,$tipo='usuario'){
         // Começo
@@ -843,7 +843,7 @@ class usuario_AdminControle extends usuario_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Usuarios_Comentario_Add2($usuario_id = false,$tipo='usuario'){
         if($usuario_id===false) throw new \Exception('Usuario não informado',404);
@@ -886,7 +886,7 @@ class usuario_AdminControle extends usuario_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Usuarios_Comentario_Edit($usuario_id = false,$id = 0,$tipo='usuario'){
         if($usuario_id===false) throw new \Exception('Usuario não informado',404);
@@ -943,7 +943,7 @@ class usuario_AdminControle extends usuario_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Usuarios_Comentario_Edit2($usuario_id = false,$id = 0,$tipo='usuario'){
         if($usuario_id===false) throw new \Exception('Usuario não informado',404);
@@ -990,7 +990,7 @@ class usuario_AdminControle extends usuario_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Usuarios_Comentario_Del($usuario_id = false,$id = 0,$tipo='usuario'){
     	$id = (int) $id;

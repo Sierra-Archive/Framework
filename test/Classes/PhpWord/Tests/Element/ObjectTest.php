@@ -15,14 +15,14 @@
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
-namespace PhpOffice\PhpWord\Tests\Element;
+namespace Framework\Classes\PhpWord\Tests\Element;
 
-use PhpOffice\PhpWord\Element\Object;
+use Framework\Classes\PhpWord\Element\Object;
 
 /**
- * Test class for PhpOffice\PhpWord\Element\Object
+ * Test class for Framework\Classes\PhpWord\Element\Object
  *
- * @coversDefaultClass \PhpOffice\PhpWord\Element\Object
+ * @coversDefaultClass \Framework\Classes\PhpWord\Element\Object
  * @runTestsInSeparateProcesses
  */
 class ObjectTest extends \PHPUnit_Framework_TestCase
@@ -35,15 +35,15 @@ class ObjectTest extends \PHPUnit_Framework_TestCase
         $src = __DIR__ . "/../_files/documents/sheet.xls";
         $oObject = new Object($src);
 
-        $this->assertInstanceOf('PhpOffice\\PhpWord\\Element\\Object', $oObject);
-        $this->assertInstanceOf('PhpOffice\\PhpWord\\Style\\Image', $oObject->getStyle());
+        $this->assertInstanceOf('Framework\Classes\\PhpWord\\Element\\Object', $oObject);
+        $this->assertInstanceOf('Framework\Classes\\PhpWord\\Style\\Image', $oObject->getStyle());
         $this->assertEquals($oObject->getSource(), $src);
     }
 
     /**
      * Create new instance with non-supported files
      *
-     * @expectedException \PhpOffice\PhpWord\Exception\InvalidObjectException
+     * @expectedException \Framework\Classes\PhpWord\Exception\InvalidObjectException
      */
     public function testConstructWithNotSupportedFiles()
     {
@@ -60,8 +60,8 @@ class ObjectTest extends \PHPUnit_Framework_TestCase
         $src = __DIR__ . "/../_files/documents/sheet.xls";
         $oObject = new Object($src, array('width' => '230px'));
 
-        $this->assertInstanceOf('PhpOffice\\PhpWord\\Element\\Object', $oObject);
-        $this->assertInstanceOf('PhpOffice\\PhpWord\\Style\\Image', $oObject->getStyle());
+        $this->assertInstanceOf('Framework\Classes\\PhpWord\\Element\\Object', $oObject);
+        $this->assertInstanceOf('Framework\Classes\\PhpWord\\Style\\Image', $oObject->getStyle());
         $this->assertEquals($oObject->getSource(), $src);
     }
 

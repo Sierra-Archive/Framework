@@ -15,10 +15,10 @@
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
-namespace PhpOffice\PhpWord\Element;
+namespace Framework\Classes\PhpWord\Element;
 
-use PhpOffice\PhpWord\Exception\InvalidObjectException;
-use PhpOffice\PhpWord\Style\Image as ImageStyle;
+use Framework\Classes\PhpWord\Exception\InvalidObjectException;
+use Framework\Classes\PhpWord\Style\Image as ImageStyle;
 
 /**
  * Object element
@@ -35,7 +35,7 @@ class Object extends AbstractElement
     /**
      * Image Style
      *
-     * @var \PhpOffice\PhpWord\Style\Image
+     * @var \Framework\Classes\PhpWord\Style\Image
      */
     private $style;
 
@@ -65,7 +65,7 @@ class Object extends AbstractElement
      *
      * @param string $source
      * @param mixed $style
-     * @throws \PhpOffice\PhpWord\Exception\InvalidObjectException
+     * @throws \Framework\Classes\PhpWord\Exception\InvalidObjectException
      */
     public function __construct($source, $style = null)
     {
@@ -101,7 +101,7 @@ class Object extends AbstractElement
     /**
      * Get object style
      *
-     * @return \PhpOffice\PhpWord\Style\Image
+     * @return \Framework\Classes\PhpWord\Style\Image
      */
     public function getStyle()
     {

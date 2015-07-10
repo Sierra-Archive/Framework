@@ -15,7 +15,7 @@
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
-namespace PhpOffice\PhpWord\Writer\HTML\Element;
+namespace Framework\Classes\PhpWord\Writer\HTML\Element;
 
 /**
  * PageBreak element HTML writer
@@ -33,7 +33,7 @@ class PageBreak extends TextBreak
      */
     public function write()
     {
-        /** @var \PhpOffice\PhpWord\Writer\HTML $parentWriter Type hint */
+        /** @var \Framework\Classes\PhpWord\Writer\HTML $parentWriter Type hint */
         $parentWriter = $this->parentWriter;
         if ($parentWriter->isPdf()) {
             return '<pagebreak style="page-break-before: always;" pagebreak="true"></pagebreak>';

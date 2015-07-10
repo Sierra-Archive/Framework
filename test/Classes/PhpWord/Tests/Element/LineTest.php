@@ -15,14 +15,14 @@
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
-namespace PhpOffice\PhpWord\Tests\Element;
+namespace Framework\Classes\PhpWord\Tests\Element;
 
-use PhpOffice\PhpWord\Element\Line;
+use Framework\Classes\PhpWord\Element\Line;
 
 /**
- * Test class for PhpOffice\PhpWord\Element\Line
+ * Test class for Framework\Classes\PhpWord\Element\Line
  *
- * @coversDefaultClass \PhpOffice\PhpWord\Element\Line
+ * @coversDefaultClass \Framework\Classes\PhpWord\Element\Line
  * @runTestsInSeparateProcesses
  */
 class LineTest extends \PHPUnit_Framework_TestCase
@@ -34,7 +34,7 @@ class LineTest extends \PHPUnit_Framework_TestCase
     {
         $oLine = new Line();
 
-        $this->assertInstanceOf('PhpOffice\\PhpWord\\Element\\Line', $oLine);
+        $this->assertInstanceOf('Framework\Classes\\PhpWord\\Element\\Line', $oLine);
         $this->assertEquals($oLine->getStyle(), null);
     }
 
@@ -55,22 +55,22 @@ class LineTest extends \PHPUnit_Framework_TestCase
     {
         $oLine = new Line(
             array(
-                'width' => \PhpOffice\PhpWord\Shared\Converter::cmToPixel(14),
-                'height' => \PhpOffice\PhpWord\Shared\Converter::cmToPixel(4),
+                'width' => \Framework\Classes\PhpWord\Shared\Converter::cmToPixel(14),
+                'height' => \Framework\Classes\PhpWord\Shared\Converter::cmToPixel(4),
                 'positioning' => 'absolute',
                 'posHorizontalRel' => 'page',
                 'posVerticalRel' => 'page',
                 'flip' => true,
-                'marginLeft' => \PhpOffice\PhpWord\Shared\Converter::cmToPixel(5),
-                'marginTop' => \PhpOffice\PhpWord\Shared\Converter::cmToPixel(3),
-                'wrappingStyle' => \PhpOffice\PhpWord\Style\Image::WRAPPING_STYLE_SQUARE,
-                'beginArrow' => \PhpOffice\PhpWord\Style\Line::ARROW_STYLE_BLOCK,
-                'endArrow' => \PhpOffice\PhpWord\Style\Line::ARROW_STYLE_OVAL,
-                'dash' => \PhpOffice\PhpWord\Style\Line::DASH_STYLE_LONG_DASH_DOT_DOT,
+                'marginLeft' => \Framework\Classes\PhpWord\Shared\Converter::cmToPixel(5),
+                'marginTop' => \Framework\Classes\PhpWord\Shared\Converter::cmToPixel(3),
+                'wrappingStyle' => \Framework\Classes\PhpWord\Style\Image::WRAPPING_STYLE_SQUARE,
+                'beginArrow' => \Framework\Classes\PhpWord\Style\Line::ARROW_STYLE_BLOCK,
+                'endArrow' => \Framework\Classes\PhpWord\Style\Line::ARROW_STYLE_OVAL,
+                'dash' => \Framework\Classes\PhpWord\Style\Line::DASH_STYLE_LONG_DASH_DOT_DOT,
                 'weight' => 10
             )
         );
 
-        $this->assertInstanceOf('PhpOffice\\PhpWord\\Style\\Line', $oLine->getStyle());
+        $this->assertInstanceOf('Framework\Classes\\PhpWord\\Style\\Line', $oLine->getStyle());
     }
 }

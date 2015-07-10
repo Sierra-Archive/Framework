@@ -15,7 +15,7 @@ class Musica_ArtistaControle extends Musica_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 2.0
+    * @version 3.1.1
     */
     public function Main(){
         \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'Musica/Artista/Artistas');
@@ -67,7 +67,7 @@ class Musica_ArtistaControle extends Musica_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Artistas($export=false){
         self::Endereco_Artista(false);
@@ -117,7 +117,7 @@ class Musica_ArtistaControle extends Musica_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Artistas_Add(){
         self::Endereco_Artista();
@@ -135,7 +135,7 @@ class Musica_ArtistaControle extends Musica_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Artistas_Add2(){
         $titulo     = __('Artista Adicionado com Sucesso');
@@ -150,7 +150,7 @@ class Musica_ArtistaControle extends Musica_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Artistas_Edit($id){
         self::Endereco_Artista();
@@ -169,7 +169,7 @@ class Musica_ArtistaControle extends Musica_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Artistas_Edit2($id){
         $titulo     = __('Artista Editado com Sucesso');
@@ -185,7 +185,7 @@ class Musica_ArtistaControle extends Musica_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Artistas_Del($id){
         

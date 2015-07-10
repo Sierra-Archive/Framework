@@ -15,12 +15,12 @@
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
-namespace PhpOffice\PhpWord\Tests;
+namespace Framework\Classes\PhpWord\Tests;
 
-use PhpOffice\PhpWord\Exception\CreateTemporaryFileException;
-use PhpOffice\PhpWord\IOFactory;
-use PhpOffice\PhpWord\PhpWord;
-use PhpOffice\PhpWord\Settings;
+use Framework\Classes\PhpWord\Exception\CreateTemporaryFileException;
+use Framework\Classes\PhpWord\IOFactory;
+use Framework\Classes\PhpWord\PhpWord;
+use Framework\Classes\PhpWord\Settings;
 
 /**
  * Test helper class
@@ -39,10 +39,10 @@ class TestHelperDOCX
      *
      * @since 0.12.0 Throws CreateTemporaryFileException.
      *
-     * @param \PhpOffice\PhpWord\PhpWord $phpWord
+     * @param \Framework\Classes\PhpWord\PhpWord $phpWord
      * @param string $writerName
-     * @return \PhpOffice\PhpWord\Tests\XmlDocument
-     * @throws \PhpOffice\PhpWord\Exception\CreateTemporaryFileException
+     * @return \Framework\Classes\PhpWord\Tests\XmlDocument
+     * @throws \Framework\Classes\PhpWord\Exception\CreateTemporaryFileException
      */
     public static function getDocument(PhpWord $phpWord, $writerName = 'Word2007')
     {

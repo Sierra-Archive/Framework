@@ -14,14 +14,14 @@
  * @copyright   2010-2014 PHPWord contributors
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
-namespace PhpOffice\PhpWord\Tests\Writer\Word2007;
+namespace Framework\Classes\PhpWord\Tests\Writer\Word2007;
 
-use PhpOffice\PhpWord\PhpWord;
-use PhpOffice\PhpWord\Shared\XMLWriter;
-use PhpOffice\PhpWord\Tests\TestHelperDOCX;
+use Framework\Classes\PhpWord\PhpWord;
+use Framework\Classes\PhpWord\Shared\XMLWriter;
+use Framework\Classes\PhpWord\Tests\TestHelperDOCX;
 
 /**
- * Test class for PhpOffice\PhpWord\Writer\Word2007\Element subnamespace
+ * Test class for Framework\Classes\PhpWord\Writer\Word2007\Element subnamespace
  */
 class ElementTest extends \PHPUnit_Framework_TestCase
 {
@@ -44,9 +44,9 @@ class ElementTest extends \PHPUnit_Framework_TestCase
             'Field', 'Line', 'Shape', 'Chart', 'FormField', 'SDT'
         );
         foreach ($elements as $element) {
-            $objectClass = 'PhpOffice\\PhpWord\\Writer\\Word2007\\Element\\' . $element;
+            $objectClass = 'Framework\Classes\\PhpWord\\Writer\\Word2007\\Element\\' . $element;
             $xmlWriter = new XMLWriter();
-            $newElement = new \PhpOffice\PhpWord\Element\PageBreak();
+            $newElement = new \Framework\Classes\PhpWord\Element\PageBreak();
             $object = new $objectClass($xmlWriter, $newElement);
             $object->write();
 

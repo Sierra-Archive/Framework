@@ -15,10 +15,10 @@
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
-namespace PhpOffice\PhpWord\Writer\Word2007\Part;
+namespace Framework\Classes\PhpWord\Writer\Word2007\Part;
 
-use PhpOffice\PhpWord\Exception\Exception;
-use PhpOffice\PhpWord\Shared\XMLWriter;
+use Framework\Classes\PhpWord\Exception\Exception;
+use Framework\Classes\PhpWord\Shared\XMLWriter;
 
 /**
  * Word2007 main relationship writer: _rels/.rels
@@ -49,7 +49,7 @@ class Rels extends AbstractPart
     /**
      * Write relationships.
      *
-     * @param \PhpOffice\PhpWord\Shared\XMLWriter $xmlWriter
+     * @param \Framework\Classes\PhpWord\Shared\XMLWriter $xmlWriter
      * @param array $xmlRels
      * @param array $mediaRels
      * @param int $relId
@@ -77,7 +77,7 @@ class Rels extends AbstractPart
     /**
      * Write media relationships.
      *
-     * @param \PhpOffice\PhpWord\Shared\XMLWriter $xmlWriter
+     * @param \Framework\Classes\PhpWord\Shared\XMLWriter $xmlWriter
      * @param int $relId
      * @param array $mediaRel
      * @return void
@@ -103,13 +103,13 @@ class Rels extends AbstractPart
      * Format:
      * <Relationship Id="rId..." Type="http://..." Target="....xml" TargetMode="..." />
      *
-     * @param \PhpOffice\PhpWord\Shared\XMLWriter $xmlWriter
+     * @param \Framework\Classes\PhpWord\Shared\XMLWriter $xmlWriter
      * @param int $relId Relationship ID
      * @param string $type Relationship type
      * @param string $target Relationship target
      * @param string $targetMode Relationship target mode
      * @return void
-     * @throws \PhpOffice\PhpWord\Exception\Exception
+     * @throws \Framework\Classes\PhpWord\Exception\Exception
      */
     private function writeRel(XMLWriter $xmlWriter, $relId, $type, $target, $targetMode = '')
     {

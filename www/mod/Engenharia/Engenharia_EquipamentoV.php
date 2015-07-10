@@ -11,7 +11,7 @@ class Engenharia_EquipamentoVisual extends Engenharia_Visual
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 2.0
+    * @version 3.1.1
     */
     public function __construct(){
       parent::__construct();

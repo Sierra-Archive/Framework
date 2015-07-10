@@ -15,7 +15,7 @@
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
-namespace PhpOffice\PhpWord\Writer\RTF\Element;
+namespace Framework\Classes\PhpWord\Writer\RTF\Element;
 
 /**
  * Link element RTF writer
@@ -31,7 +31,7 @@ class Link extends AbstractElement
      */
     public function write()
     {
-        if (!$this->element instanceof \PhpOffice\PhpWord\Element\Link) {
+        if (!$this->element instanceof \Framework\Classes\PhpWord\Element\Link) {
             return '';
         }
 

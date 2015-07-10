@@ -14,15 +14,15 @@
  * @copyright   2010-2014 PHPWord contributors
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
-namespace PhpOffice\PhpWord\Tests\Writer\Word2007\Part;
+namespace Framework\Classes\PhpWord\Tests\Writer\Word2007\Part;
 
-use PhpOffice\PhpWord\PhpWord;
-use PhpOffice\PhpWord\Tests\TestHelperDOCX;
+use Framework\Classes\PhpWord\PhpWord;
+use Framework\Classes\PhpWord\Tests\TestHelperDOCX;
 
 /**
- * Test class for PhpOffice\PhpWord\Writer\Word2007\Part\Numbering
+ * Test class for Framework\Classes\PhpWord\Writer\Word2007\Part\Numbering
  *
- * @coversDefaultClass \PhpOffice\PhpWord\Writer\Word2007\Part\Numbering
+ * @coversDefaultClass \Framework\Classes\PhpWord\Writer\Word2007\Part\Numbering
  * @runTestsInSeparateProcesses
  * @since 0.10.0
  */

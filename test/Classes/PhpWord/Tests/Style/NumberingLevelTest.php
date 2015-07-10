@@ -15,12 +15,12 @@
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
-namespace PhpOffice\PhpWord\Tests\Style;
+namespace Framework\Classes\PhpWord\Tests\Style;
 
-use PhpOffice\PhpWord\Style\NumberingLevel;
+use Framework\Classes\PhpWord\Style\NumberingLevel;
 
 /**
- * Test class for PhpOffice\PhpWord\Style\NumberingLevel
+ * Test class for Framework\Classes\PhpWord\Style\NumberingLevel
  *
  * @runTestsInSeparateProcesses
  */

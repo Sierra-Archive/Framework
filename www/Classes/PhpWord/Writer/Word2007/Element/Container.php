@@ -15,12 +15,12 @@
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
-namespace PhpOffice\PhpWord\Writer\Word2007\Element;
+namespace Framework\Classes\PhpWord\Writer\Word2007\Element;
 
-use PhpOffice\PhpWord\Element\AbstractContainer as ContainerElement;
-use PhpOffice\PhpWord\Element\AbstractElement as Element;
-use PhpOffice\PhpWord\Element\TextBreak as TextBreakElement;
-use PhpOffice\PhpWord\Shared\XMLWriter;
+use Framework\Classes\PhpWord\Element\AbstractContainer as ContainerElement;
+use Framework\Classes\PhpWord\Element\AbstractElement as Element;
+use Framework\Classes\PhpWord\Element\TextBreak as TextBreakElement;
+use Framework\Classes\PhpWord\Shared\XMLWriter;
 
 /**
  * Container element writer (section, textrun, header, footnote, cell, etc.)
@@ -34,7 +34,7 @@ class Container extends AbstractElement
      *
      * @var string
      */
-    protected $namespace = 'PhpOffice\\PhpWord\\Writer\\Word2007\\Element';
+    protected $namespace = 'Framework\Classes\\PhpWord\\Writer\\Word2007\\Element';
 
     /**
      * Write element.
@@ -64,7 +64,7 @@ class Container extends AbstractElement
         $writeLastTextBreak = ($containerClass == 'Cell') && ($elementClass == '' || $elementClass == 'Table');
         if ($writeLastTextBreak) {
             $writerClass = $this->namespace . '\\TextBreak';
-            /** @var \PhpOffice\PhpWord\Writer\Word2007\Element\AbstractElement $writer Type hint */
+            /** @var \Framework\Classes\PhpWord\Writer\Word2007\Element\AbstractElement $writer Type hint */
             $writer = new $writerClass($xmlWriter, new TextBreakElement(), $withoutP);
             $writer->write();
         }
@@ -73,8 +73,8 @@ class Container extends AbstractElement
     /**
      * Write individual element
      *
-     * @param \PhpOffice\PhpWord\Shared\XMLWriter $xmlWriter
-     * @param \PhpOffice\PhpWord\Element\AbstractElement $element
+     * @param \Framework\Classes\PhpWord\Shared\XMLWriter $xmlWriter
+     * @param \Framework\Classes\PhpWord\Element\AbstractElement $element
      * @param bool $withoutP
      * @return string
      */
@@ -84,7 +84,7 @@ class Container extends AbstractElement
         $writerClass = $this->namespace . '\\' . $elementClass;
 
         if (class_exists($writerClass)) {
-            /** @var \PhpOffice\PhpWord\Writer\Word2007\Element\AbstractElement $writer Type hint */
+            /** @var \Framework\Classes\PhpWord\Writer\Word2007\Element\AbstractElement $writer Type hint */
             $writer = new $writerClass($xmlWriter, $element, $withoutP);
             $writer->write();
         }

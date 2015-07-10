@@ -15,7 +15,7 @@
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
-namespace PhpOffice\PhpWord;
+namespace Framework\Classes\PhpWord;
 
 /**
  * Autoloader
@@ -23,7 +23,7 @@ namespace PhpOffice\PhpWord;
 class Autoloader
 {
     /** @const string */
-    const NAMESPACE_PREFIX = 'PhpOffice\\PhpWord\\';
+    const NAMESPACE_PREFIX = 'Framework\Classes\\PhpWord\\';
 
     /**
      * Register

@@ -15,14 +15,14 @@
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
-namespace PhpOffice\PhpWord\Tests\Style;
+namespace Framework\Classes\PhpWord\Tests\Style;
 
-use PhpOffice\PhpWord\Style\Cell;
+use Framework\Classes\PhpWord\Style\Cell;
 
 /**
- * Test class for PhpOffice\PhpWord\Style\Cell
+ * Test class for Framework\Classes\PhpWord\Style\Cell
  *
- * @coversDefaultClass \PhpOffice\PhpWord\Style\Cell
+ * @coversDefaultClass \Framework\Classes\PhpWord\Style\Cell
  * @runTestsInSeparateProcesses
  */
 class CellTest extends \PHPUnit_Framework_TestCase

@@ -15,9 +15,9 @@
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
-namespace PhpOffice\PhpWord\Reader;
+namespace Framework\Classes\PhpWord\Reader;
 
-use PhpOffice\PhpWord\Exception\Exception;
+use Framework\Classes\PhpWord\Exception\Exception;
 
 /**
  * Reader abstract class
@@ -69,7 +69,7 @@ abstract class AbstractReader implements ReaderInterface
      *
      * @param string $filename
      * @return resource
-     * @throws \PhpOffice\PhpWord\Exception\Exception
+     * @throws \Framework\Classes\PhpWord\Exception\Exception
      */
     protected function openFile($filename)
     {

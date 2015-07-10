@@ -19,7 +19,7 @@ class Transporte_FornecedorControle extends Transporte_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Main(){
         \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'Transporte/Fornecedor/Fornecedores');
@@ -54,7 +54,7 @@ class Transporte_FornecedorControle extends Transporte_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Fornecedores($export=false){
         $i = 0;
@@ -96,7 +96,7 @@ class Transporte_FornecedorControle extends Transporte_Controle
     /**
      * Painel Adminstrativo de Fornecedores
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Painel(){
         return true;

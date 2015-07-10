@@ -14,12 +14,12 @@
  * @copyright   2010-2014 PHPWord contributors
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
-namespace PhpOffice\PhpWord\Tests\Writer\RTF;
+namespace Framework\Classes\PhpWord\Tests\Writer\RTF;
 
-use PhpOffice\PhpWord\Shared\XMLWriter;
+use Framework\Classes\PhpWord\Shared\XMLWriter;
 
 /**
- * Test class for PhpOffice\PhpWord\Writer\RTF\Style subnamespace
+ * Test class for Framework\Classes\PhpWord\Writer\RTF\Style subnamespace
  */
 class StyleTest extends \PHPUnit_Framework_TestCase
 {
@@ -30,7 +30,7 @@ class StyleTest extends \PHPUnit_Framework_TestCase
     {
         $styles = array('Font', 'Paragraph', 'Section');
         foreach ($styles as $style) {
-            $objectClass = 'PhpOffice\\PhpWord\\Writer\\RTF\\Style\\' . $style;
+            $objectClass = 'Framework\Classes\\PhpWord\\Writer\\RTF\\Style\\' . $style;
             $object = new $objectClass();
 
             $this->assertEquals('', $object->write());

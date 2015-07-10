@@ -118,7 +118,7 @@ class Request
      * @return type
      * 
      * @author Ricardo Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function getArgs($indice = -1){
         if($indice == -1)

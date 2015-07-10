@@ -15,14 +15,14 @@
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
-namespace PhpOffice\PhpWord\Tests\Shared;
+namespace Framework\Classes\PhpWord\Tests\Shared;
 
-use PhpOffice\PhpWord\Shared\Converter;
+use Framework\Classes\PhpWord\Shared\Converter;
 
 /**
- * Test class for PhpOffice\PhpWord\Shared\Converter
+ * Test class for Framework\Classes\PhpWord\Shared\Converter
  *
- * @coversDefaultClass \PhpOffice\PhpWord\Shared\Converter
+ * @coversDefaultClass \Framework\Classes\PhpWord\Shared\Converter
  */
 class ConverterTest extends \PHPUnit_Framework_TestCase
 {

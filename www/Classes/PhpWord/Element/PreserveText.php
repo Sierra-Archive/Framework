@@ -15,11 +15,11 @@
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
-namespace PhpOffice\PhpWord\Element;
+namespace Framework\Classes\PhpWord\Element;
 
-use PhpOffice\PhpWord\Shared\String;
-use PhpOffice\PhpWord\Style\Font;
-use PhpOffice\PhpWord\Style\Paragraph;
+use Framework\Classes\PhpWord\Shared\String;
+use Framework\Classes\PhpWord\Style\Font;
+use Framework\Classes\PhpWord\Style\Paragraph;
 
 /**
  * Preserve text/field element
@@ -36,14 +36,14 @@ class PreserveText extends AbstractElement
     /**
      * Text style
      *
-     * @var string|\PhpOffice\PhpWord\Style\Font
+     * @var string|\Framework\Classes\PhpWord\Style\Font
      */
     private $fontStyle;
 
     /**
      * Paragraph style
      *
-     * @var string|\PhpOffice\PhpWord\Style\Paragraph
+     * @var string|\Framework\Classes\PhpWord\Style\Paragraph
      */
     private $paragraphStyle;
 
@@ -73,7 +73,7 @@ class PreserveText extends AbstractElement
     /**
      * Get Text style
      *
-     * @return string|\PhpOffice\PhpWord\Style\Font
+     * @return string|\Framework\Classes\PhpWord\Style\Font
      */
     public function getFontStyle()
     {
@@ -83,7 +83,7 @@ class PreserveText extends AbstractElement
     /**
      * Get Paragraph style
      *
-     * @return string|\PhpOffice\PhpWord\Style\Paragraph
+     * @return string|\Framework\Classes\PhpWord\Style\Paragraph
      */
     public function getParagraphStyle()
     {

@@ -15,7 +15,7 @@
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
-namespace PhpOffice\PhpWord\Style;
+namespace Framework\Classes\PhpWord\Style;
 
 /**
  * Table style
@@ -39,7 +39,7 @@ class Table extends Border
     /**
      * Style for first row
      *
-     * @var \PhpOffice\PhpWord\Style\Table
+     * @var \Framework\Classes\PhpWord\Style\Table
      */
     private $firstRowStyle;
 
@@ -102,12 +102,12 @@ class Table extends Border
     /**
      * Shading
      *
-     * @var \PhpOffice\PhpWord\Style\Shading
+     * @var \Framework\Classes\PhpWord\Style\Shading
      */
     private $shading;
 
     /**
-     * @var \PhpOffice\PhpWord\Style\Alignment Alignment
+     * @var \Framework\Classes\PhpWord\Style\Alignment Alignment
      */
     private $alignment;
 
@@ -155,7 +155,7 @@ class Table extends Border
     /**
      * Set first row
      *
-     * @return \PhpOffice\PhpWord\Style\Table
+     * @return \Framework\Classes\PhpWord\Style\Table
      */
     public function getFirstRow()
     {
@@ -473,7 +473,7 @@ class Table extends Border
     /**
      * Get shading
      *
-     * @return \PhpOffice\PhpWord\Style\Shading
+     * @return \Framework\Classes\PhpWord\Style\Shading
      */
     public function getShading()
     {

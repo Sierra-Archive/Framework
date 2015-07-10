@@ -15,14 +15,14 @@
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
-namespace PhpOffice\PhpWord\Tests\Element;
+namespace Framework\Classes\PhpWord\Tests\Element;
 
-use PhpOffice\PhpWord\Element\Row;
+use Framework\Classes\PhpWord\Element\Row;
 
 /**
- * Test class for PhpOffice\PhpWord\Element\Row
+ * Test class for Framework\Classes\PhpWord\Element\Row
  *
- * @coversDefaultClass \PhpOffice\PhpWord\Element\Row
+ * @coversDefaultClass \Framework\Classes\PhpWord\Element\Row
  * @runTestsInSeparateProcesses
  */
 class RowTest extends \PHPUnit_Framework_TestCase
@@ -34,11 +34,11 @@ class RowTest extends \PHPUnit_Framework_TestCase
     {
         $oRow = new Row();
 
-        $this->assertInstanceOf('PhpOffice\\PhpWord\\Element\\Row', $oRow);
+        $this->assertInstanceOf('Framework\Classes\\PhpWord\\Element\\Row', $oRow);
         $this->assertEquals($oRow->getHeight(), null);
         $this->assertInternalType('array', $oRow->getCells());
         $this->assertCount(0, $oRow->getCells());
-        $this->assertInstanceOf('PhpOffice\\PhpWord\\Style\\Row', $oRow->getStyle());
+        $this->assertInstanceOf('Framework\Classes\\PhpWord\\Style\\Row', $oRow->getStyle());
     }
 
     /**
@@ -50,7 +50,7 @@ class RowTest extends \PHPUnit_Framework_TestCase
         $oRow = new Row($iVal, array('borderBottomSize' => 18, 'borderBottomColor' => '0000FF', 'bgColor' => '66BBFF'));
 
         $this->assertEquals($oRow->getHeight(), $iVal);
-        $this->assertInstanceOf('PhpOffice\\PhpWord\\Style\\Row', $oRow->getStyle());
+        $this->assertInstanceOf('Framework\Classes\\PhpWord\\Style\\Row', $oRow->getStyle());
     }
 
     /**
@@ -61,7 +61,7 @@ class RowTest extends \PHPUnit_Framework_TestCase
         $oRow = new Row();
         $element = $oRow->addCell();
 
-        $this->assertInstanceOf('PhpOffice\\PhpWord\\Element\\Cell', $element);
+        $this->assertInstanceOf('Framework\Classes\\PhpWord\\Element\\Cell', $element);
         $this->assertCount(1, $oRow->getCells());
     }
 }

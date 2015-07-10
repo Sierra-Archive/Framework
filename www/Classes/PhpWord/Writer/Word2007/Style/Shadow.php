@@ -15,7 +15,7 @@
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
-namespace PhpOffice\PhpWord\Writer\Word2007\Style;
+namespace Framework\Classes\PhpWord\Writer\Word2007\Style;
 
 /**
  * Shadow style writer
@@ -32,7 +32,7 @@ class Shadow extends AbstractStyle
     public function write()
     {
         $style = $this->getStyle();
-        if (!$style instanceof \PhpOffice\PhpWord\Style\Shadow) {
+        if (!$style instanceof \Framework\Classes\PhpWord\Style\Shadow) {
             return;
         }
         $xmlWriter = $this->getXmlWriter();

@@ -13,7 +13,7 @@ class comercio_servicos_InstalacaoControle extends comercio_servicos_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 2.0
+    * @version 3.1.1
     */
     public function __construct(){
         parent::__construct();
@@ -29,7 +29,7 @@ class comercio_servicos_InstalacaoControle extends comercio_servicos_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 2.0
+    * @version 3.1.1
     */
     public function Main(){
         \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'comercio_servicos/Instalacao/Btu/');
@@ -83,7 +83,7 @@ class comercio_servicos_InstalacaoControle extends comercio_servicos_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Btu(){
         self::Endereco_Btu(false);
@@ -106,7 +106,7 @@ class comercio_servicos_InstalacaoControle extends comercio_servicos_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Btu_Add(){
         self::Endereco_Btu();
@@ -124,7 +124,7 @@ class comercio_servicos_InstalacaoControle extends comercio_servicos_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Btu_Add2(){
         $titulo     = __('Btu adicionado com Sucesso');
@@ -139,7 +139,7 @@ class comercio_servicos_InstalacaoControle extends comercio_servicos_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Btu_Edit($id){
         self::Endereco_Btu();
@@ -158,7 +158,7 @@ class comercio_servicos_InstalacaoControle extends comercio_servicos_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Btu_Edit2($id){
         $titulo     = __('Btu editado com Sucesso');
@@ -174,7 +174,7 @@ class comercio_servicos_InstalacaoControle extends comercio_servicos_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Btu_Del($id){
         
@@ -207,7 +207,7 @@ class comercio_servicos_InstalacaoControle extends comercio_servicos_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Suporte(){
         self::Endereco_Suporte(false);
@@ -227,7 +227,7 @@ class comercio_servicos_InstalacaoControle extends comercio_servicos_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Suporte_Add(){
         self::Endereco_Suporte();
@@ -245,7 +245,7 @@ class comercio_servicos_InstalacaoControle extends comercio_servicos_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Suporte_Add2(){
         $titulo     = __('Suporte adicionado com Sucesso');
@@ -260,7 +260,7 @@ class comercio_servicos_InstalacaoControle extends comercio_servicos_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Suporte_Edit($id){
         self::Endereco_Suporte();
@@ -279,7 +279,7 @@ class comercio_servicos_InstalacaoControle extends comercio_servicos_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Suporte_Edit2($id){
         $titulo     = __('Suporte editado com Sucesso');
@@ -295,7 +295,7 @@ class comercio_servicos_InstalacaoControle extends comercio_servicos_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Suporte_Del($id){
         

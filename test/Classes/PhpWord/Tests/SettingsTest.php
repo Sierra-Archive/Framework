@@ -15,14 +15,14 @@
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
-namespace PhpOffice\PhpWord\Tests;
+namespace Framework\Classes\PhpWord\Tests;
 
-use PhpOffice\PhpWord\Settings;
+use Framework\Classes\PhpWord\Settings;
 
 /**
- * Test class for PhpOffice\PhpWord\Settings
+ * Test class for Framework\Classes\PhpWord\Settings
  *
- * @coversDefaultClass \PhpOffice\PhpWord\Settings
+ * @coversDefaultClass \Framework\Classes\PhpWord\Settings
  * @runTestsInSeparateProcesses
  */
 class SettingsTest extends \PHPUnit_Framework_TestCase

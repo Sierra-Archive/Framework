@@ -126,7 +126,7 @@ class Visual
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 2.0
+    * @version 3.1.1
     */
     public function __construct($naozerado=true) {
         $imprimir = new \Framework\App\Tempo('Construcao Visual - SEM SMARTY');
@@ -227,7 +227,7 @@ class Visual
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 2.0
+    * @version 3.1.1
     */
     public function Bloco_Unico_CriaConteudo($gravidade=0) {
         list($tipo,$bloco) = $this->retornablocos();
@@ -355,7 +355,7 @@ class Visual
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 2.0
+    * @version 3.1.1
     */
     public function Bloco_Maior_CriaConteudo($gravidade=0) {
         list($tipo,$bloco) = $this->retornablocos();
@@ -478,7 +478,7 @@ class Visual
      * @return void
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Bloco_Menor_CriaConteudo($gravidade=0) {
         list($tipo,$bloco) = $this->retornablocos();

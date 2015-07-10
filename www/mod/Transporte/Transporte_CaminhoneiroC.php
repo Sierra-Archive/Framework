@@ -19,7 +19,7 @@ class Transporte_CaminhoneiroControle extends Transporte_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Main(){
         \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'Transporte/Caminhoneiro/Caminhoneiros');
@@ -55,7 +55,7 @@ class Transporte_CaminhoneiroControle extends Transporte_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Caminhoneiros($export=false){
         $i = 0;
@@ -97,7 +97,7 @@ class Transporte_CaminhoneiroControle extends Transporte_Controle
     /**
      * Painel Adminstrativo de Caminhoneiros
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Painel(){
         return true;

@@ -15,11 +15,11 @@
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
-namespace PhpOffice\PhpWord\Writer\Word2007\Element;
+namespace Framework\Classes\PhpWord\Writer\Word2007\Element;
 
-use PhpOffice\PhpWord\Element\Image as ImageElement;
-use PhpOffice\PhpWord\Shared\XMLWriter;
-use PhpOffice\PhpWord\Writer\Word2007\Style\Image as ImageStyleWriter;
+use Framework\Classes\PhpWord\Element\Image as ImageElement;
+use Framework\Classes\PhpWord\Shared\XMLWriter;
+use Framework\Classes\PhpWord\Writer\Word2007\Style\Image as ImageStyleWriter;
 
 /**
  * Image element writer

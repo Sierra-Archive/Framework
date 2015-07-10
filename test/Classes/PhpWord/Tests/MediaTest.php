@@ -15,13 +15,13 @@
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
-namespace PhpOffice\PhpWord\Tests;
+namespace Framework\Classes\PhpWord\Tests;
 
-use PhpOffice\PhpWord\Element\Image;
-use PhpOffice\PhpWord\Media;
+use Framework\Classes\PhpWord\Element\Image;
+use Framework\Classes\PhpWord\Media;
 
 /**
- * Test class for PhpOffice\PhpWord\Media
+ * Test class for Framework\Classes\PhpWord\Media
  *
  * @runTestsInSeparateProcesses
  */

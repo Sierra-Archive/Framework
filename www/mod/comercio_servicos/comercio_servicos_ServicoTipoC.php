@@ -13,7 +13,7 @@ class comercio_servicos_ServicoTipoControle extends comercio_servicos_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 2.0
+    * @version 3.1.1
     */
     public function __construct(){
         parent::__construct();
@@ -29,7 +29,7 @@ class comercio_servicos_ServicoTipoControle extends comercio_servicos_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 2.0
+    * @version 3.1.1
     */
     public function Main(){
         \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'comercio_servicos/ServicoTipo/Servico_Tipo');
@@ -47,7 +47,7 @@ class comercio_servicos_ServicoTipoControle extends comercio_servicos_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Servico_Tipo(){
         self::Endereco_Servico_Tipo(false);
@@ -66,7 +66,7 @@ class comercio_servicos_ServicoTipoControle extends comercio_servicos_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Servico_Tipo_Add(){
         // Carrega Config
@@ -83,7 +83,7 @@ class comercio_servicos_ServicoTipoControle extends comercio_servicos_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Servico_Tipo_Add2(){
         $titulo     = __('Tipo de Serviço adicionada com Sucesso');
@@ -98,7 +98,7 @@ class comercio_servicos_ServicoTipoControle extends comercio_servicos_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Servico_Tipo_Edit($id){
         // Carrega Config
@@ -116,7 +116,7 @@ class comercio_servicos_ServicoTipoControle extends comercio_servicos_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Servico_Tipo_Edit2($id){
         $titulo     = __('Tipo de Serviço editada com Sucesso');
@@ -132,7 +132,7 @@ class comercio_servicos_ServicoTipoControle extends comercio_servicos_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Servico_Tipo_Del($id){
         

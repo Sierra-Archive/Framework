@@ -13,7 +13,7 @@ class usuario_veiculo_AdminControle extends usuario_veiculo_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 2.0
+    * @version 3.1.1
     */
     public function __construct(){
         parent::__construct();
@@ -52,7 +52,7 @@ class usuario_veiculo_AdminControle extends usuario_veiculo_Controle
     * @return void 
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 2.0
+    * @version 3.1.1
     */
     public function Main(){
         // carrega lista de veiculos
@@ -78,7 +78,7 @@ class usuario_veiculo_AdminControle extends usuario_veiculo_Controle
     * @return void 
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 2.0
+    * @version 3.1.1
     */
     public function veiculos_lista(){
         $veiculos = Array();
@@ -128,7 +128,7 @@ class usuario_veiculo_AdminControle extends usuario_veiculo_Controle
     * @return void 
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 2.0
+    * @version 3.1.1
     */
     public function veiculos_Del($id){
         
@@ -171,7 +171,7 @@ class usuario_veiculo_AdminControle extends usuario_veiculo_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 2.0
+    * @version 3.1.1
     */
     public function veiculos_carregajanelaadd(){
         // carrega marcas
@@ -222,7 +222,7 @@ class usuario_veiculo_AdminControle extends usuario_veiculo_Controle
      * @return void
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
     */
     static function veiculos_form(&$controle, &$Visual, &$form, &$selectmarcas,$categoria = 0,$ano = '',$modelo = '',$marca = '',$cc = '',$valor1 = '',$valor2 = '',$valor3 = '',$franquia = '',$obs = ''){
         
@@ -269,7 +269,7 @@ class usuario_veiculo_AdminControle extends usuario_veiculo_Controle
      * @return void
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function veiculos_inserir(){
         
@@ -308,7 +308,7 @@ class usuario_veiculo_AdminControle extends usuario_veiculo_Controle
      * 
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function veiculos_alterar($id){
         
@@ -365,7 +365,7 @@ class usuario_veiculo_AdminControle extends usuario_veiculo_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 2.0
+    * @version 3.1.1
     */
     public function marcas_carregajanelaadd(){
         
@@ -390,7 +390,7 @@ class usuario_veiculo_AdminControle extends usuario_veiculo_Controle
     * @return int $i Quantidades de Registros Retornada
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 2.0
+    * @version 3.1.1
     */
     static function marcas_formcadastro(){
         

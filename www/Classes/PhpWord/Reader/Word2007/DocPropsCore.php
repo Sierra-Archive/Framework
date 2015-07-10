@@ -15,10 +15,10 @@
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
-namespace PhpOffice\PhpWord\Reader\Word2007;
+namespace Framework\Classes\PhpWord\Reader\Word2007;
 
-use PhpOffice\PhpWord\PhpWord;
-use PhpOffice\PhpWord\Shared\XMLReader;
+use Framework\Classes\PhpWord\PhpWord;
+use Framework\Classes\PhpWord\Shared\XMLReader;
 
 /**
  * Core properties reader
@@ -54,7 +54,7 @@ class DocPropsCore extends AbstractPart
     /**
      * Read core/extended document properties.
      *
-     * @param \PhpOffice\PhpWord\PhpWord $phpWord
+     * @param \Framework\Classes\PhpWord\PhpWord $phpWord
      * @return void
      */
     public function read(PhpWord $phpWord)

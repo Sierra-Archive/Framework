@@ -11,7 +11,7 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 2.0
+    * @version 3.1.1
     */
     public function __construct(){
         parent::__construct();
@@ -39,7 +39,7 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 2.0
+    * @version 3.1.1
     */
     public function Main(){
         return false;
@@ -47,7 +47,7 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Senhas($export=false){
         $this->Endereco_Senha(false);
@@ -87,7 +87,7 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Senhas_Add(){
         $this->Endereco_Senha();
@@ -105,7 +105,7 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Senhas_Add2(){
         $titulo     = __('Senha Adicionada com Sucesso');
@@ -120,7 +120,7 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Senhas_Edit($id){
         $this->Endereco_Senha();
@@ -139,7 +139,7 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Senhas_Edit2($id){
         $titulo     = __('Senha Editada com Sucesso');
@@ -155,7 +155,7 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Senhas_Del($id){
         
@@ -361,7 +361,7 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Senhas_Todas($export=false){
         $this->Endereco_Senha_Todas(false);
@@ -400,7 +400,7 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Senhas_Todas_Add(){
         $this->Endereco_Senha_Todas();
@@ -418,7 +418,7 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Senhas_Todas_Add2(){
         $titulo     = __('Senha Adicionada com Sucesso');
@@ -433,7 +433,7 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Senhas_Todas_Edit($id){
         $this->Endereco_Senha_Todas();
@@ -452,7 +452,7 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Senhas_Todas_Edit2($id){
         $titulo     = __('Senha Editada com Sucesso');
@@ -468,7 +468,7 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Senhas_Todas_Del($id){
         

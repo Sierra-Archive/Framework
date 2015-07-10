@@ -15,12 +15,12 @@
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
-namespace PhpOffice\PhpWord\Tests\Element;
+namespace Framework\Classes\PhpWord\Tests\Element;
 
-use PhpOffice\PhpWord\Element\Image;
+use Framework\Classes\PhpWord\Element\Image;
 
 /**
- * Test class for PhpOffice\PhpWord\Element\Image
+ * Test class for Framework\Classes\PhpWord\Element\Image
  *
  * @runTestsInSeparateProcesses
  */
@@ -34,12 +34,12 @@ class ImageTest extends \PHPUnit_Framework_TestCase
         $src = __DIR__ . "/../_files/images/firefox.png";
         $oImage = new Image($src);
 
-        $this->assertInstanceOf('PhpOffice\\PhpWord\\Element\\Image', $oImage);
+        $this->assertInstanceOf('Framework\Classes\\PhpWord\\Element\\Image', $oImage);
         $this->assertEquals($oImage->getSource(), $src);
         $this->assertEquals($oImage->getMediaId(), md5($src));
         $this->assertEquals($oImage->isWatermark(), false);
         $this->assertEquals($oImage->getSourceType(), Image::SOURCE_LOCAL);
-        $this->assertInstanceOf('PhpOffice\\PhpWord\\Style\\Image', $oImage->getStyle());
+        $this->assertInstanceOf('Framework\Classes\\PhpWord\\Style\\Image', $oImage->getStyle());
     }
 
     /**
@@ -51,10 +51,10 @@ class ImageTest extends \PHPUnit_Framework_TestCase
         $oImage = new Image(
             $src,
             array('width' => 210, 'height' => 210, 'align' => 'center',
-                'wrappingStyle' => \PhpOffice\PhpWord\Style\Image::WRAPPING_STYLE_BEHIND)
+                'wrappingStyle' => \Framework\Classes\PhpWord\Style\Image::WRAPPING_STYLE_BEHIND)
         );
 
-        $this->assertInstanceOf('PhpOffice\\PhpWord\\Style\\Image', $oImage->getStyle());
+        $this->assertInstanceOf('Framework\Classes\\PhpWord\\Style\\Image', $oImage->getStyle());
     }
 
     /**
@@ -74,7 +74,7 @@ class ImageTest extends \PHPUnit_Framework_TestCase
             list($source, $type, $extension, $createFunction, $imageFunction) = $imageData;
             $source = __DIR__ . "/../_files/images/" . $source;
             $image = new Image($source);
-            $this->assertInstanceOf('PhpOffice\\PhpWord\\Element\\Image', $image);
+            $this->assertInstanceOf('Framework\Classes\\PhpWord\\Element\\Image', $image);
             $this->assertEquals($image->getSource(), $source);
             $this->assertEquals($image->getMediaId(), md5($source));
             $this->assertEquals($image->getImageType(), $type);
@@ -95,13 +95,13 @@ class ImageTest extends \PHPUnit_Framework_TestCase
             array('height' => 210, 'align' => 'center')
         );
 
-        $this->assertInstanceOf('PhpOffice\\PhpWord\\Style\\Image', $oImage->getStyle());
+        $this->assertInstanceOf('Framework\Classes\\PhpWord\\Style\\Image', $oImage->getStyle());
     }
 
     /**
      * Test invalid local image
      *
-     * @expectedException \PhpOffice\PhpWord\Exception\InvalidImageException
+     * @expectedException \Framework\Classes\PhpWord\Exception\InvalidImageException
      */
     public function testInvalidImageLocal()
     {
@@ -111,7 +111,7 @@ class ImageTest extends \PHPUnit_Framework_TestCase
     /**
      * Test invalid PHP Image
      *
-     * @expectedException \PhpOffice\PhpWord\Exception\InvalidImageException
+     * @expectedException \Framework\Classes\PhpWord\Exception\InvalidImageException
      */
     public function testInvalidImagePhp()
     {
@@ -122,7 +122,7 @@ class ImageTest extends \PHPUnit_Framework_TestCase
     /**
      * Test unsupported image
      *
-     * @expectedException \PhpOffice\PhpWord\Exception\UnsupportedImageTypeException
+     * @expectedException \Framework\Classes\PhpWord\Exception\UnsupportedImageTypeException
      */
     public function testUnsupportedImage()
     {

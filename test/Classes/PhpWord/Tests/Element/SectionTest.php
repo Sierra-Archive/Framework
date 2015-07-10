@@ -15,16 +15,16 @@
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
-namespace PhpOffice\PhpWord\Tests\Element;
+namespace Framework\Classes\PhpWord\Tests\Element;
 
-use PhpOffice\PhpWord\Element\Header;
-use PhpOffice\PhpWord\Element\Section;
-use PhpOffice\PhpWord\Exception\Exception;
-use PhpOffice\PhpWord\PhpWord;
-use PhpOffice\PhpWord\Style;
+use Framework\Classes\PhpWord\Element\Header;
+use Framework\Classes\PhpWord\Element\Section;
+use Framework\Classes\PhpWord\Exception\Exception;
+use Framework\Classes\PhpWord\PhpWord;
+use Framework\Classes\PhpWord\Style;
 
 /**
- * Test class for PhpOffice\PhpWord\Element\Section
+ * Test class for Framework\Classes\PhpWord\Element\Section
  *
  * @runTestsInSeparateProcesses
  */
@@ -108,7 +108,7 @@ class SectionTest extends \PHPUnit_Framework_TestCase
             'Title', 'TextRun', 'Footnote', 'CheckBox', 'TOC');
         $elmCount = 0;
         foreach ($elementTypes as $elementType) {
-            $this->assertInstanceOf("PhpOffice\\PhpWord\\Element\\{$elementType}", $elementCollection[$elmCount]);
+            $this->assertInstanceOf("Framework\Classes\\PhpWord\\Element\\{$elementType}", $elementCollection[$elmCount]);
             $elmCount++;
         }
     }
@@ -116,7 +116,7 @@ class SectionTest extends \PHPUnit_Framework_TestCase
     /**
      * Test add object exception
      *
-     * @expectedException \PhpOffice\PhpWord\Exception\InvalidObjectException
+     * @expectedException \Framework\Classes\PhpWord\Exception\InvalidObjectException
      */
     public function testAddObjectException()
     {
@@ -136,7 +136,7 @@ class SectionTest extends \PHPUnit_Framework_TestCase
         $section->addTitle('Test', 1);
         $elementCollection = $section->getElements();
 
-        $this->assertInstanceOf("PhpOffice\\PhpWord\\Element\\Title", $elementCollection[0]);
+        $this->assertInstanceOf("Framework\Classes\\PhpWord\\Element\\Title", $elementCollection[0]);
     }
 
     /**
@@ -149,7 +149,7 @@ class SectionTest extends \PHPUnit_Framework_TestCase
 
         foreach ($elements as $element) {
             $method = "create{$element}";
-            $this->assertInstanceOf("PhpOffice\\PhpWord\\Element\\{$element}", $object->$method());
+            $this->assertInstanceOf("Framework\Classes\\PhpWord\\Element\\{$element}", $object->$method());
         }
         $this->assertFalse($object->hasDifferentFirstPage());
     }

@@ -2136,7 +2136,7 @@ final class Conexao
     * @return Array $array
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 2.0
+    * @version 3.1.1
     */
     private function logurl(){
         global $_SERVER;
@@ -2160,7 +2160,7 @@ final class Conexao
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 2.0
+    * @version 3.1.1
     */
     public function __destruct()
     {

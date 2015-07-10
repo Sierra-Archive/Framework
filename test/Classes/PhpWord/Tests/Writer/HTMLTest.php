@@ -14,13 +14,13 @@
  * @copyright   2010-2014 PHPWord contributors
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
-namespace PhpOffice\PhpWord\Tests\Writer;
+namespace Framework\Classes\PhpWord\Tests\Writer;
 
-use PhpOffice\PhpWord\PhpWord;
-use PhpOffice\PhpWord\Writer\HTML;
+use Framework\Classes\PhpWord\PhpWord;
+use Framework\Classes\PhpWord\Writer\HTML;
 
 /**
- * Test class for PhpOffice\PhpWord\Writer\HTML
+ * Test class for Framework\Classes\PhpWord\Writer\HTML
  *
  * @runTestsInSeparateProcesses
  */
@@ -33,13 +33,13 @@ class HTMLTest extends \PHPUnit_Framework_TestCase
     {
         $object = new HTML(new PhpWord);
 
-        $this->assertInstanceOf('PhpOffice\\PhpWord\\PhpWord', $object->getPhpWord());
+        $this->assertInstanceOf('Framework\Classes\\PhpWord\\PhpWord', $object->getPhpWord());
     }
 
     /**
      * Construct with null
      *
-     * @expectedException \PhpOffice\PhpWord\Exception\Exception
+     * @expectedException \Framework\Classes\PhpWord\Exception\Exception
      * @expectedExceptionMessage No PhpWord assigned.
      */
     public function testConstructWithNull()

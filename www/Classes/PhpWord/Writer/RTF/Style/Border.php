@@ -15,7 +15,7 @@
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
-namespace PhpOffice\PhpWord\Writer\RTF\Style;
+namespace Framework\Classes\PhpWord\Writer\RTF\Style;
 
 /**
  * Border style writer
@@ -77,7 +77,7 @@ class Border extends AbstractStyle
      */
     private function writeSide($side, $width, $color = '')
     {
-        /** @var \PhpOffice\PhpWord\Writer\RTF $rtfWriter */
+        /** @var \Framework\Classes\PhpWord\Writer\RTF $rtfWriter */
         $rtfWriter = $this->getParentWriter();
         $colorIndex = 0;
         if ($rtfWriter !== null) {

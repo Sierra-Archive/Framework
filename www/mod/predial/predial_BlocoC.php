@@ -15,7 +15,7 @@ class predial_BlocoControle extends predial_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 2.0
+    * @version 3.1.1
     */
     public function Main(){
         $this->Blocos();
@@ -51,7 +51,7 @@ class predial_BlocoControle extends predial_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Blocos($export=false){
         self::Endereco_Bloco(false);
@@ -90,7 +90,7 @@ class predial_BlocoControle extends predial_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Blocos_Add(){
         self::Endereco_Bloco();
@@ -108,7 +108,7 @@ class predial_BlocoControle extends predial_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Blocos_Add2(){
         $titulo     = __('Bloco Adicionado com Sucesso');
@@ -123,7 +123,7 @@ class predial_BlocoControle extends predial_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Blocos_Edit($id){
         self::Endereco_Bloco();
@@ -142,7 +142,7 @@ class predial_BlocoControle extends predial_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Blocos_Edit2($id){
         $titulo     = __('Bloco Editado com Sucesso');
@@ -158,7 +158,7 @@ class predial_BlocoControle extends predial_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Blocos_Del($id){
         

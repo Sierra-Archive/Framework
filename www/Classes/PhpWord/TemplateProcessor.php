@@ -15,13 +15,13 @@
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
-namespace PhpOffice\PhpWord;
+namespace Framework\Classes\PhpWord;
 
-use PhpOffice\PhpWord\Exception\CopyFileException;
-use PhpOffice\PhpWord\Exception\CreateTemporaryFileException;
-use PhpOffice\PhpWord\Exception\Exception;
-use PhpOffice\PhpWord\Shared\String;
-use PhpOffice\PhpWord\Shared\ZipArchive;
+use Framework\Classes\PhpWord\Exception\CopyFileException;
+use Framework\Classes\PhpWord\Exception\CreateTemporaryFileException;
+use Framework\Classes\PhpWord\Exception\Exception;
+use Framework\Classes\PhpWord\Shared\String;
+use Framework\Classes\PhpWord\Shared\ZipArchive;
 
 class TemplateProcessor
 {
@@ -62,8 +62,8 @@ class TemplateProcessor
      * @since 0.12.0 Throws CreateTemporaryFileException and CopyFileException instead of Exception.
      *
      * @param string $documentTemplate The fully qualified template filename.
-     * @throws \PhpOffice\PhpWord\Exception\CreateTemporaryFileException
-     * @throws \PhpOffice\PhpWord\Exception\CopyFileException
+     * @throws \Framework\Classes\PhpWord\Exception\CreateTemporaryFileException
+     * @throws \Framework\Classes\PhpWord\Exception\CopyFileException
      */
     public function __construct($documentTemplate)
     {
@@ -101,7 +101,7 @@ class TemplateProcessor
      * @param array $xslOptions
      * @param string $xslOptionsURI
      * @return void
-     * @throws \PhpOffice\PhpWord\Exception\Exception
+     * @throws \Framework\Classes\PhpWord\Exception\Exception
      */
     public function applyXslStyleSheet($xslDOMDocument, $xslOptions = array(), $xslOptionsURI = '')
     {
@@ -171,7 +171,7 @@ class TemplateProcessor
      * @param string $search
      * @param integer $numberOfClones
      * @return void
-     * @throws \PhpOffice\PhpWord\Exception\Exception
+     * @throws \Framework\Classes\PhpWord\Exception\Exception
      */
     public function cloneRow($search, $numberOfClones)
     {
@@ -297,7 +297,7 @@ class TemplateProcessor
      * Saves the result document.
      *
      * @return string
-     * @throws \PhpOffice\PhpWord\Exception\Exception
+     * @throws \Framework\Classes\PhpWord\Exception\Exception
      */
     public function save()
     {
@@ -410,7 +410,7 @@ class TemplateProcessor
      *
      * @param integer $offset
      * @return integer
-     * @throws \PhpOffice\PhpWord\Exception\Exception
+     * @throws \Framework\Classes\PhpWord\Exception\Exception
      */
     private function findRowStart($offset)
     {

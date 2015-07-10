@@ -11,7 +11,7 @@ class Agenda_AtividadesModelo extends Agenda_Modelo
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 2.0
+    * @version 3.1.1
     */
     public function __construct(){
       parent::__construct();
@@ -34,7 +34,7 @@ class Agenda_AtividadesModelo extends Agenda_Modelo
     * @return int $id Retorna id da Atividade Inserida
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 2.0
+    * @version 3.1.1
     */
     public function Atividade_inserir($dt_inicio,$dt_fim,$obs,$local,$categoria){
         global $config;
@@ -70,7 +70,7 @@ class Agenda_AtividadesModelo extends Agenda_Modelo
     * @return int $i Quantidades de Registros Retornada
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 2.0
+    * @version 3.1.1
     */
     public function Atividades_retorna(&$Atividades, $data_inicial, $data_final){
         $i = 0;

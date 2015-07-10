@@ -15,7 +15,7 @@
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
-namespace PhpOffice\PhpWord\Writer\Word2007\Style;
+namespace Framework\Classes\PhpWord\Writer\Word2007\Style;
 
 /**
  * Font style writer
@@ -60,7 +60,7 @@ class Font extends AbstractStyle
     private function writeStyle()
     {
         $style = $this->getStyle();
-        if (!$style instanceof \PhpOffice\PhpWord\Style\Font) {
+        if (!$style instanceof \Framework\Classes\PhpWord\Style\Font) {
             return;
         }
         $xmlWriter = $this->getXmlWriter();

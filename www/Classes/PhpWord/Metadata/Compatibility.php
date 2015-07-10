@@ -15,7 +15,7 @@
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
-namespace PhpOffice\PhpWord\Metadata;
+namespace Framework\Classes\PhpWord\Metadata;
 
 /**
  * Compatibility setting class

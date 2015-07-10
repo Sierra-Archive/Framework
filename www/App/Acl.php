@@ -715,7 +715,7 @@ class Acl{
      * @return int 
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0.1
+     * @version 3.1.1
      */
     public function Usuario_GetID(){
         if(!isset($this->logado_usuario) || !is_numeric($this->logado_usuario->id) || $this->logado===false){
@@ -764,7 +764,7 @@ class Acl{
      * @return int 
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0.1
+     * @version 3.1.1
      */
     public static function Usuario_GetID_Static(){
         $registro = \Framework\App\Registro::getInstacia();
@@ -789,7 +789,7 @@ class Acl{
     * @return int 1
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 2.0.1 
+    * @version 3.1.1 
     * Revisão:
     *  - 0.1.1 2013-05-13 Sessao Automatizada por Constante
     */
@@ -872,7 +872,7 @@ class Acl{
      * @return int Id de Usuario logado ou zero 
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0.0
+     * @version 3.1.1
      */
     public function Usuario_GetLogado(){
         return $this->logado;

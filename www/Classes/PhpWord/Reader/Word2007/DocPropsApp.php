@@ -15,7 +15,7 @@
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
-namespace PhpOffice\PhpWord\Reader\Word2007;
+namespace Framework\Classes\PhpWord\Reader\Word2007;
 
 /**
  * Extended properties reader

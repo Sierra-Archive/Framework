@@ -24,7 +24,7 @@ class Modelo
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 2.0
+    * @version 3.1.1
     */
     public function __construct(){
         $this->_Registro = &\Framework\App\Registro::getInstacia();
@@ -207,7 +207,7 @@ class Modelo
     * @return Array $array
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 2.0
+    * @version 3.1.1
     */
     public function Categorias_Retorna($tipo='',$parent=0, $cadastro=0)
     {
@@ -258,7 +258,7 @@ class Modelo
     * @return Array $array
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 2.0
+    * @version 3.1.1
     */
     public function Categorias_Permissoes($categoria='')
     {
@@ -289,7 +289,7 @@ class Modelo
     * @return Array $array
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 2.0
+    * @version 3.1.1
     */
     public function Categorias_RetornaSub($categoria, $subtab, $acesso)
     {

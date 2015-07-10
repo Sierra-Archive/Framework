@@ -15,9 +15,9 @@
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
-namespace PhpOffice\PhpWord\Shared;
+namespace Framework\Classes\PhpWord\Shared;
 
-use PhpOffice\PhpWord\Exception\Exception;
+use Framework\Classes\PhpWord\Exception\Exception;
 
 /**
  * XML Reader wrapper
@@ -46,7 +46,7 @@ class XMLReader
      * @param string $zipFile
      * @param string $xmlFile
      * @return \DOMDocument|false
-     * @throws \PhpOffice\PhpWord\Exception\Exception
+     * @throws \Framework\Classes\PhpWord\Exception\Exception
      */
     public function getDomFromZip($zipFile, $xmlFile)
     {

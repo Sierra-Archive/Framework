@@ -15,7 +15,7 @@
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
-namespace PhpOffice\PhpWord\Writer\Word2007\Style;
+namespace Framework\Classes\PhpWord\Writer\Word2007\Style;
 
 /**
  * Line numbering style writer
@@ -32,7 +32,7 @@ class Tab extends AbstractStyle
     public function write()
     {
         $style = $this->getStyle();
-        if (!$style instanceof \PhpOffice\PhpWord\Style\Tab) {
+        if (!$style instanceof \Framework\Classes\PhpWord\Style\Tab) {
             return;
         }
         $xmlWriter = $this->getXmlWriter();

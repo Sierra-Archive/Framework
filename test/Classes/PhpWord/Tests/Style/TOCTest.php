@@ -15,14 +15,14 @@
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
-namespace PhpOffice\PhpWord\Tests\Style;
+namespace Framework\Classes\PhpWord\Tests\Style;
 
-use PhpOffice\PhpWord\Style\TOC;
+use Framework\Classes\PhpWord\Style\TOC;
 
 /**
- * Test class for PhpOffice\PhpWord\Style\TOC
+ * Test class for Framework\Classes\PhpWord\Style\TOC
  *
- * @coversDefaultClass \PhpOffice\PhpWord\Style\TOC
+ * @coversDefaultClass \Framework\Classes\PhpWord\Style\TOC
  */
 class TOCTest extends \PHPUnit_Framework_TestCase
 {

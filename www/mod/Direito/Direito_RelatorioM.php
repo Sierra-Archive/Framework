@@ -11,7 +11,7 @@ class Direito_RelatorioModelo extends DireitoModelo
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 2.0
+    * @version 3.1.1
     */
     public function __construct(){
         parent::__construct();
@@ -22,7 +22,7 @@ class Direito_RelatorioModelo extends DireitoModelo
      * @return int
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Relatorio_Audiencia(&$resultado,$inicial=0,$final=0){
         $i = $this->Relatorio(
@@ -39,7 +39,7 @@ class Direito_RelatorioModelo extends DireitoModelo
      * @return INT
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Relatorio_Fase(&$resultado,$id = 0){
         $i = $this->Relatorio(
@@ -56,7 +56,7 @@ class Direito_RelatorioModelo extends DireitoModelo
      * @return INT
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Relatorio_Comarca(&$resultado,$id = 0){
         $i = $this->Relatorio(
@@ -73,7 +73,7 @@ class Direito_RelatorioModelo extends DireitoModelo
      * @return INT
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Relatorio_Vara(&$resultado,$id = 0){
         $i = $this->Relatorio(
@@ -91,7 +91,7 @@ class Direito_RelatorioModelo extends DireitoModelo
      * @return INT
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Relatorio_Vara_Comarca(&$resultado,$idvara = 0,$idcomarca = 0){
         if($idvara==0 || $idcomarca==0) $id = 0;
@@ -110,7 +110,7 @@ class Direito_RelatorioModelo extends DireitoModelo
      * @return INT
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Relatorio_SemAlt(&$resultado){
         $i = $this->Relatorio(
@@ -131,7 +131,7 @@ class Direito_RelatorioModelo extends DireitoModelo
      * @param INT $id
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Relatorio(&$resultado,$id=0,$FROM,$WHERE,$EXTRA = ''){
         $i = 0;

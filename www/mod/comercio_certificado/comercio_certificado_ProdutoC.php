@@ -13,7 +13,7 @@ class comercio_certificado_ProdutoControle extends comercio_certificado_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 2.0
+    * @version 3.1.1
     */
     public function __construct(){
         parent::__construct();
@@ -29,7 +29,7 @@ class comercio_certificado_ProdutoControle extends comercio_certificado_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 2.0
+    * @version 3.1.1
     */
     public function Main(){
         ///$this->Propostas();
@@ -65,7 +65,7 @@ class comercio_certificado_ProdutoControle extends comercio_certificado_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Produtos(){
         $i = 0;
@@ -99,7 +99,7 @@ class comercio_certificado_ProdutoControle extends comercio_certificado_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Produtos_Add($direto=false){
         // Carrega campos e retira os que nao precisam
@@ -133,7 +133,7 @@ class comercio_certificado_ProdutoControle extends comercio_certificado_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Produtos_Edit($id){
         $id = (int) $id;
@@ -177,7 +177,7 @@ class comercio_certificado_ProdutoControle extends comercio_certificado_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Produtos_Add2(){
         
@@ -214,7 +214,7 @@ class comercio_certificado_ProdutoControle extends comercio_certificado_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Produtos_Edit2($id){
         
@@ -251,7 +251,7 @@ class comercio_certificado_ProdutoControle extends comercio_certificado_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Produtos_Del($id){
         

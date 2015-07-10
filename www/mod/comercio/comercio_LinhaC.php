@@ -13,7 +13,7 @@ class comercio_LinhaControle extends comercio_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 2.0
+    * @version 3.1.1
     */
     public function __construct(){
         parent::__construct();
@@ -29,7 +29,7 @@ class comercio_LinhaControle extends comercio_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 2.0
+    * @version 3.1.1
     */
     public function Main(){
         \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'comercio/Linha/Linhas');
@@ -49,7 +49,7 @@ class comercio_LinhaControle extends comercio_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Linhas($export=false){
         self::Endereco_Linha(false);
@@ -68,7 +68,7 @@ class comercio_LinhaControle extends comercio_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Linhas_Add(){
         self::Endereco_Linha(true);
@@ -86,7 +86,7 @@ class comercio_LinhaControle extends comercio_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Linhas_Add2(){
         $titulo     = __('Linha Adicionada com Sucesso');
@@ -101,7 +101,7 @@ class comercio_LinhaControle extends comercio_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Linhas_Edit($id){
         self::Endereco_Linha(true);
@@ -120,7 +120,7 @@ class comercio_LinhaControle extends comercio_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Linhas_Edit2($id){
         $titulo     = __('Linha Editada com Sucesso');
@@ -136,7 +136,7 @@ class comercio_LinhaControle extends comercio_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Linhas_Del($id){
         

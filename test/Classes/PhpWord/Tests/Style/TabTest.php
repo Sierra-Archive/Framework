@@ -15,14 +15,14 @@
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
-namespace PhpOffice\PhpWord\Tests\Style;
+namespace Framework\Classes\PhpWord\Tests\Style;
 
-use PhpOffice\PhpWord\Style\Tab;
+use Framework\Classes\PhpWord\Style\Tab;
 
 /**
- * Test class for PhpOffice\PhpWord\Style\Tab
+ * Test class for Framework\Classes\PhpWord\Style\Tab
  *
- * @coversDefaultClass \PhpOffice\PhpWord\Style\Tab
+ * @coversDefaultClass \Framework\Classes\PhpWord\Style\Tab
  */
 class TabTest extends \PHPUnit_Framework_TestCase
 {

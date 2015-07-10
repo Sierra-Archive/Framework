@@ -16,7 +16,7 @@ class Financeiro_UsuarioControle extends Financeiro_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 2.0
+    * @version 3.1.1
     */
     public function __construct(){
         parent::__construct();
@@ -91,7 +91,7 @@ class Financeiro_UsuarioControle extends Financeiro_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 2.0
+    * @version 3.1.1
     */
     public function Main(){
         return false;
@@ -270,7 +270,7 @@ class Financeiro_UsuarioControle extends Financeiro_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     static function Financeiro_Usuario($motivo,$motivo_id,$pago){
         // Carrega Modelo

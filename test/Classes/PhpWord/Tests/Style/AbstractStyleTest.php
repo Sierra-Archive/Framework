@@ -15,10 +15,10 @@
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
-namespace PhpOffice\PhpWord\Tests\Style;
+namespace Framework\Classes\PhpWord\Tests\Style;
 
 /**
- * Test class for PhpOffice\PhpWord\Style\AbstractStyle
+ * Test class for Framework\Classes\PhpWord\Style\AbstractStyle
  *
  * @runTestsInSeparateProcesses
  */
@@ -29,7 +29,7 @@ class AbstractStyleTest extends \PHPUnit_Framework_TestCase
      */
     public function testSetStyleByArray()
     {
-        $stub = $this->getMockForAbstractClass('\PhpOffice\PhpWord\Style\AbstractStyle');
+        $stub = $this->getMockForAbstractClass('\Framework\Classes\PhpWord\Style\AbstractStyle');
         $stub->setStyleByArray(array('index' => 1));
 
         $this->assertEquals(1, $stub->getIndex());
@@ -40,7 +40,7 @@ class AbstractStyleTest extends \PHPUnit_Framework_TestCase
      */
     public function testSetValNormal()
     {
-        $stub = $this->getMockForAbstractClass('\PhpOffice\PhpWord\Style\AbstractStyle');
+        $stub = $this->getMockForAbstractClass('\Framework\Classes\PhpWord\Style\AbstractStyle');
 
         $this->assertEquals(true, self::callProtectedMethod($stub, 'setBoolVal', array(true, false)));
         $this->assertEquals(12, self::callProtectedMethod($stub, 'setIntVal', array(12, 200)));
@@ -54,7 +54,7 @@ class AbstractStyleTest extends \PHPUnit_Framework_TestCase
      */
     public function testSetValDefault()
     {
-        $stub = $this->getMockForAbstractClass('\PhpOffice\PhpWord\Style\AbstractStyle');
+        $stub = $this->getMockForAbstractClass('\Framework\Classes\PhpWord\Style\AbstractStyle');
 
         $this->assertEquals(false, self::callProtectedMethod($stub, 'setBoolVal', array('a', false)));
         $this->assertEquals(200, self::callProtectedMethod($stub, 'setIntVal', array('foo', 200)));
@@ -69,7 +69,7 @@ class AbstractStyleTest extends \PHPUnit_Framework_TestCase
      */
     public function testSetValEnumException()
     {
-        $stub = $this->getMockForAbstractClass('\PhpOffice\PhpWord\Style\AbstractStyle');
+        $stub = $this->getMockForAbstractClass('\Framework\Classes\PhpWord\Style\AbstractStyle');
 
         $this->assertEquals('b', self::callProtectedMethod($stub, 'setEnumVal', array('z', array('a', 'b'), 'b')));
     }

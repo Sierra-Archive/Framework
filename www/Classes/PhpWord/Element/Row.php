@@ -15,9 +15,9 @@
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
-namespace PhpOffice\PhpWord\Element;
+namespace Framework\Classes\PhpWord\Element;
 
-use PhpOffice\PhpWord\Style\Row as RowStyle;
+use Framework\Classes\PhpWord\Style\Row as RowStyle;
 
 /**
  * Table row element
@@ -36,14 +36,14 @@ class Row extends AbstractElement
     /**
      * Row style
      *
-     * @var \PhpOffice\PhpWord\Style\Row
+     * @var \Framework\Classes\PhpWord\Style\Row
      */
     private $style;
 
     /**
      * Row cells
      *
-     * @var \PhpOffice\PhpWord\Element\Cell[]
+     * @var \Framework\Classes\PhpWord\Element\Cell[]
      */
     private $cells = array();
 
@@ -64,7 +64,7 @@ class Row extends AbstractElement
      *
      * @param int $width
      * @param mixed $style
-     * @return \PhpOffice\PhpWord\Element\Cell
+     * @return \Framework\Classes\PhpWord\Element\Cell
      */
     public function addCell($width = null, $style = null)
     {
@@ -78,7 +78,7 @@ class Row extends AbstractElement
     /**
      * Get all cells
      *
-     * @return \PhpOffice\PhpWord\Element\Cell[]
+     * @return \Framework\Classes\PhpWord\Element\Cell[]
      */
     public function getCells()
     {
@@ -88,7 +88,7 @@ class Row extends AbstractElement
     /**
      * Get row style
      *
-     * @return \PhpOffice\PhpWord\Style\Row
+     * @return \Framework\Classes\PhpWord\Style\Row
      */
     public function getStyle()
     {

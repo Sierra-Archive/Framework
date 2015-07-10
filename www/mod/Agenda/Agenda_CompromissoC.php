@@ -13,7 +13,7 @@ class Agenda_CompromissoControle extends Agenda_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 2.0
+    * @version 3.1.1
     */
     public function __construct(){
         parent::__construct();
@@ -29,7 +29,7 @@ class Agenda_CompromissoControle extends Agenda_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 2.0
+    * @version 3.1.1
     */
     public function Main(){
         $this->Compromissos();
@@ -65,7 +65,7 @@ class Agenda_CompromissoControle extends Agenda_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Compromissos($export=false){
         $i = 0;
@@ -115,7 +115,7 @@ class Agenda_CompromissoControle extends Agenda_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Compromissos_Add(){ 
         $this->Endereco_Compromisso();  
@@ -132,7 +132,7 @@ class Agenda_CompromissoControle extends Agenda_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Compromissos_Add2(){
         $titulo     = __('Compromisso Adicionada com Sucesso');
@@ -147,7 +147,7 @@ class Agenda_CompromissoControle extends Agenda_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Compromissos_Edit($id){
         $this->Endereco_Compromisso();
@@ -165,7 +165,7 @@ class Agenda_CompromissoControle extends Agenda_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Compromissos_Edit2($id){
         $titulo     = __('Compromisso Editada com Sucesso');
@@ -180,7 +180,7 @@ class Agenda_CompromissoControle extends Agenda_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Compromissos_Del($id){
     	$id = (int) $id;

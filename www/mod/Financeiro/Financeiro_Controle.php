@@ -10,7 +10,7 @@ class Financeiro_Controle extends \Framework\App\Controle
     * @uses \Framework\App\Visual::$menu
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 2.0
+    * @version 3.1.1
     */
     public function __construct(){
         // construct

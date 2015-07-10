@@ -15,13 +15,13 @@
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
-namespace PhpOffice\PhpWord\Tests\Element;
+namespace Framework\Classes\PhpWord\Tests\Element;
 
-use PhpOffice\PhpWord\Element\CheckBox;
-use PhpOffice\PhpWord\Style\Font;
+use Framework\Classes\PhpWord\Element\CheckBox;
+use Framework\Classes\PhpWord\Style\Font;
 
 /**
- * Test class for PhpOffice\PhpWord\Element\CheckBox
+ * Test class for Framework\Classes\PhpWord\Element\CheckBox
  *
  * @runTestsInSeparateProcesses
  */
@@ -34,10 +34,10 @@ class CheckBoxTest extends \PHPUnit_Framework_TestCase
     {
         $oCheckBox = new CheckBox();
 
-        $this->assertInstanceOf('PhpOffice\\PhpWord\\Element\\CheckBox', $oCheckBox);
+        $this->assertInstanceOf('Framework\Classes\\PhpWord\\Element\\CheckBox', $oCheckBox);
         $this->assertEquals(null, $oCheckBox->getText());
-        $this->assertInstanceOf('PhpOffice\\PhpWord\\Style\\Font', $oCheckBox->getFontStyle());
-        $this->assertInstanceOf('PhpOffice\\PhpWord\\Style\\Paragraph', $oCheckBox->getParagraphStyle());
+        $this->assertInstanceOf('Framework\Classes\\PhpWord\\Style\\Font', $oCheckBox->getFontStyle());
+        $this->assertInstanceOf('Framework\Classes\\PhpWord\\Style\\Paragraph', $oCheckBox->getParagraphStyle());
     }
 
     /**
@@ -60,7 +60,7 @@ class CheckBoxTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($oCheckBox->getFontStyle(), 'fontStyle');
 
         $oCheckBox->setFontStyle(array('bold' => true, 'italic' => true, 'size' => 16));
-        $this->assertInstanceOf('PhpOffice\\PhpWord\\Style\\Font', $oCheckBox->getFontStyle());
+        $this->assertInstanceOf('Framework\Classes\\PhpWord\\Style\\Font', $oCheckBox->getFontStyle());
     }
 
     /**
@@ -82,6 +82,6 @@ class CheckBoxTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($oCheckBox->getParagraphStyle(), 'paragraphStyle');
 
         $oCheckBox->setParagraphStyle(array('align' => 'center', 'spaceAfter' => 100));
-        $this->assertInstanceOf('PhpOffice\\PhpWord\\Style\\Paragraph', $oCheckBox->getParagraphStyle());
+        $this->assertInstanceOf('Framework\Classes\\PhpWord\\Style\\Paragraph', $oCheckBox->getParagraphStyle());
     }
 }

@@ -15,9 +15,9 @@
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
-namespace PhpOffice\PhpWord\Writer\RTF\Style;
+namespace Framework\Classes\PhpWord\Writer\RTF\Style;
 
-use PhpOffice\PhpWord\Style\Alignment;
+use Framework\Classes\PhpWord\Style\Alignment;
 
 /**
  * RTF paragraph style writer
@@ -44,7 +44,7 @@ class Paragraph extends AbstractStyle
     public function write()
     {
         $style = $this->getStyle();
-        if (!$style instanceof \PhpOffice\PhpWord\Style\Paragraph) {
+        if (!$style instanceof \Framework\Classes\PhpWord\Style\Paragraph) {
             return '';
         }
 

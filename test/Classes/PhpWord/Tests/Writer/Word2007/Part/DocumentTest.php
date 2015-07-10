@@ -14,15 +14,15 @@
  * @copyright   2010-2014 PHPWord contributors
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
-namespace PhpOffice\PhpWord\Tests\Writer\Word2007\Part;
+namespace Framework\Classes\PhpWord\Tests\Writer\Word2007\Part;
 
-use PhpOffice\PhpWord\PhpWord;
-use PhpOffice\PhpWord\Style\Font;
-use PhpOffice\PhpWord\Tests\TestHelperDOCX;
-use PhpOffice\PhpWord\Writer\Word2007\Part\Document;
+use Framework\Classes\PhpWord\PhpWord;
+use Framework\Classes\PhpWord\Style\Font;
+use Framework\Classes\PhpWord\Tests\TestHelperDOCX;
+use Framework\Classes\PhpWord\Writer\Word2007\Part\Document;
 
 /**
- * Test class for PhpOffice\PhpWord\Writer\Word2007\Part\Document
+ * Test class for Framework\Classes\PhpWord\Writer\Word2007\Part\Document
  *
  * @runTestsInSeparateProcesses
  */
@@ -133,7 +133,7 @@ class DocumentTest extends \PHPUnit_Framework_TestCase
     {
         $objectSrc = __DIR__ . "/../../../_files/documents/sheet.xls";
 
-        $tabs = array(new \PhpOffice\PhpWord\Style\Tab('right', 9090));
+        $tabs = array(new \Framework\Classes\PhpWord\Style\Tab('right', 9090));
         $phpWord = new PhpWord();
         $phpWord->addParagraphStyle('pStyle', array(
             'align' => 'center',

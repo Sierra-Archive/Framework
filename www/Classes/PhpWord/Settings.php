@@ -15,7 +15,7 @@
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
-namespace PhpOffice\PhpWord;
+namespace Framework\Classes\PhpWord;
 
 /**
  * PHPWord settings class
@@ -31,7 +31,7 @@ class Settings
      */
     const ZIPARCHIVE = 'ZipArchive';
     const PCLZIP     = 'PclZip';
-    const OLD_LIB    = 'PhpOffice\\PhpWord\\Shared\\ZipArchive'; // @deprecated 0.11
+    const OLD_LIB    = 'Framework\Classes\\PhpWord\\Shared\\ZipArchive'; // @deprecated 0.11
 
     /**
      * PDF rendering libraries

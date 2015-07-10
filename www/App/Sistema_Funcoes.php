@@ -9,7 +9,7 @@ Class Sistema_Funcoes {
      * @return void
      * 
      * @author Ricardo Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public static function Redirect($url)
     {
@@ -147,7 +147,7 @@ Class Sistema_Funcoes {
      * 
      * @param type $codigo
      * 
-     * @version 2.0
+     * @version 3.1.1
      * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
     public static function Erro($codigo)
@@ -166,7 +166,7 @@ Class Sistema_Funcoes {
      * @param type $dir
      * 
      * 
-     * @version 2.0
+     * @version 3.1.1
      * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
     public static function DirReplace($dir = false){
@@ -183,7 +183,7 @@ Class Sistema_Funcoes {
      * @param type $url
      * @return type
      * 
-     * @version 2.0
+     * @version 3.1.1
      * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
     public static function Url_Limpeza($url){
@@ -198,7 +198,7 @@ Class Sistema_Funcoes {
      * @param type $versao
      * @return boolean
      * 
-     * @version 2.0
+     * @version 3.1.1
      * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
     public static function VersionPHP($versao){
@@ -207,7 +207,7 @@ Class Sistema_Funcoes {
     }
     /**
      *  Transforma Objetos em Variaveis
-     * @version 2.0
+     * @version 3.1.1
      * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
     public static function Transf_Object_Array(&$objetos){

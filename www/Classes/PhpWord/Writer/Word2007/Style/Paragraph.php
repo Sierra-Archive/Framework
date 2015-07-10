@@ -15,12 +15,12 @@
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
-namespace PhpOffice\PhpWord\Writer\Word2007\Style;
+namespace Framework\Classes\PhpWord\Writer\Word2007\Style;
 
-use PhpOffice\PhpWord\Shared\XMLWriter;
-use PhpOffice\PhpWord\Style\Alignment as AlignmentStyle;
-use PhpOffice\PhpWord\Style\Paragraph as ParagraphStyle;
-use PhpOffice\PhpWord\Style;
+use Framework\Classes\PhpWord\Shared\XMLWriter;
+use Framework\Classes\PhpWord\Style\Alignment as AlignmentStyle;
+use Framework\Classes\PhpWord\Style\Paragraph as ParagraphStyle;
+use Framework\Classes\PhpWord\Style;
 
 /**
  * Paragraph style writer
@@ -132,8 +132,8 @@ class Paragraph extends AbstractStyle
     /**
      * Write tabs.
      *
-     * @param \PhpOffice\PhpWord\Shared\XMLWriter $xmlWriter
-     * @param \PhpOffice\PhpWord\Style\Tab[] $tabs
+     * @param \Framework\Classes\PhpWord\Shared\XMLWriter $xmlWriter
+     * @param \Framework\Classes\PhpWord\Style\Tab[] $tabs
      * @return void
      */
     private function writeTabs(XMLWriter $xmlWriter, $tabs)
@@ -151,7 +151,7 @@ class Paragraph extends AbstractStyle
     /**
      * Write numbering.
      *
-     * @param \PhpOffice\PhpWord\Shared\XMLWriter $xmlWriter
+     * @param \Framework\Classes\PhpWord\Shared\XMLWriter $xmlWriter
      * @param array $numbering
      * @return void
      */
@@ -160,7 +160,7 @@ class Paragraph extends AbstractStyle
         $numStyle = $numbering['style'];
         $numLevel = $numbering['level'];
 
-        /** @var \PhpOffice\PhpWord\Style\Numbering $numbering */
+        /** @var \Framework\Classes\PhpWord\Style\Numbering $numbering */
         $numbering = Style::getStyle($numStyle);
         if ($numStyle !== null && $numbering !== null) {
             $xmlWriter->startElement('w:numPr');

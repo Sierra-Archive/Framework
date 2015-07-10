@@ -15,12 +15,12 @@
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
-namespace PhpOffice\PhpWord\Tests\Element;
+namespace Framework\Classes\PhpWord\Tests\Element;
 
-use PhpOffice\PhpWord\Element\PreserveText;
+use Framework\Classes\PhpWord\Element\PreserveText;
 
 /**
- * Test class for PhpOffice\PhpWord\Element\PreserveText
+ * Test class for Framework\Classes\PhpWord\Element\PreserveText
  *
  * @runTestsInSeparateProcesses
  */
@@ -33,7 +33,7 @@ class PreserveTextTest extends \PHPUnit_Framework_TestCase
     {
         $oPreserveText = new PreserveText();
 
-        $this->assertInstanceOf('PhpOffice\\PhpWord\\Element\\PreserveText', $oPreserveText);
+        $this->assertInstanceOf('Framework\Classes\\PhpWord\\Element\\PreserveText', $oPreserveText);
         $this->assertEquals($oPreserveText->getText(), null);
         $this->assertEquals($oPreserveText->getFontStyle(), null);
         $this->assertEquals($oPreserveText->getParagraphStyle(), null);
@@ -60,9 +60,9 @@ class PreserveTextTest extends \PHPUnit_Framework_TestCase
             array('align' => 'center'),
             array('marginLeft' => 600, 'marginRight' => 600, 'marginTop' => 600, 'marginBottom' => 600)
         );
-        $this->assertInstanceOf('PhpOffice\\PhpWord\\Style\\Font', $oPreserveText->getFontStyle());
+        $this->assertInstanceOf('Framework\Classes\\PhpWord\\Style\\Font', $oPreserveText->getFontStyle());
         $this->assertInstanceOf(
-            'PhpOffice\\PhpWord\\Style\\Paragraph',
+            'Framework\Classes\\PhpWord\\Style\\Paragraph',
             $oPreserveText->getParagraphStyle()
         );
     }

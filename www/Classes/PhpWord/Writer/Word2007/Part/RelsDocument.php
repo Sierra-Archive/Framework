@@ -15,7 +15,7 @@
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
-namespace PhpOffice\PhpWord\Writer\Word2007\Part;
+namespace Framework\Classes\PhpWord\Writer\Word2007\Part;
 
 /**
  * Word2007 document relationship writer: word/_rels/document.xml.rels
@@ -41,7 +41,7 @@ class RelsDocument extends Rels
         );
         $xmlWriter = $this->getXmlWriter();
 
-        /** @var \PhpOffice\PhpWord\Writer\Word2007 $parentWriter Type hint */
+        /** @var \Framework\Classes\PhpWord\Writer\Word2007 $parentWriter Type hint */
         $parentWriter = $this->getParentWriter();
         $this->writeRels($xmlWriter, $xmlRels, $parentWriter->getRelationships());
 

@@ -14,16 +14,16 @@
  * @copyright   2010-2014 PHPWord contributors
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
-namespace PhpOffice\PhpWord\Tests\Writer\ODText\Part;
+namespace Framework\Classes\PhpWord\Tests\Writer\ODText\Part;
 
-use PhpOffice\PhpWord\PhpWord;
-use PhpOffice\PhpWord\Tests\TestHelperDOCX;
-use PhpOffice\PhpWord\Writer\ODText\Part\Content;
+use Framework\Classes\PhpWord\PhpWord;
+use Framework\Classes\PhpWord\Tests\TestHelperDOCX;
+use Framework\Classes\PhpWord\Writer\ODText\Part\Content;
 
 /**
- * Test class for PhpOffice\PhpWord\Writer\ODText\Part\Content
+ * Test class for Framework\Classes\PhpWord\Writer\ODText\Part\Content
  *
- * @coversDefaultClass \PhpOffice\PhpWord\Writer\ODText\Part\Content
+ * @coversDefaultClass \Framework\Classes\PhpWord\Writer\ODText\Part\Content
  * @runTestsInSeparateProcesses
  */
 class ContentTest extends \PHPUnit_Framework_TestCase

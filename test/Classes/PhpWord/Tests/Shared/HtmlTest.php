@@ -15,13 +15,13 @@
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
-namespace PhpOffice\PhpWord\Tests\Shared;
+namespace Framework\Classes\PhpWord\Tests\Shared;
 
-use PhpOffice\PhpWord\Element\Section;
-use PhpOffice\PhpWord\Shared\Html;
+use Framework\Classes\PhpWord\Element\Section;
+use Framework\Classes\PhpWord\Shared\Html;
 
 /**
- * Test class for PhpOffice\PhpWord\Shared\Html
+ * Test class for Framework\Classes\PhpWord\Shared\Html
  */
 class HtmlTest extends \PHPUnit_Framework_TestCase
 {

@@ -14,14 +14,14 @@
  * @copyright   2010-2014 PHPWord contributors
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
-namespace PhpOffice\PhpWord\Tests\Writer;
+namespace Framework\Classes\PhpWord\Tests\Writer;
 
-use PhpOffice\PhpWord\PhpWord;
-use PhpOffice\PhpWord\Tests\TestHelperDOCX;
-use PhpOffice\PhpWord\Writer\Word2007;
+use Framework\Classes\PhpWord\PhpWord;
+use Framework\Classes\PhpWord\Tests\TestHelperDOCX;
+use Framework\Classes\PhpWord\Writer\Word2007;
 
 /**
- * Test class for PhpOffice\PhpWord\Writer\Word2007
+ * Test class for Framework\Classes\PhpWord\Writer\Word2007
  *
  * @runTestsInSeparateProcesses
  */
@@ -58,11 +58,11 @@ class Word2007Test extends \PHPUnit_Framework_TestCase
         );
         foreach ($writerParts as $part => $type) {
             $this->assertInstanceOf(
-                "PhpOffice\\PhpWord\\Writer\\Word2007\\Part\\{$type}",
+                "Framework\Classes\\PhpWord\\Writer\\Word2007\\Part\\{$type}",
                 $object->getWriterPart($part)
             );
             $this->assertInstanceOf(
-                'PhpOffice\\PhpWord\\Writer\\Word2007',
+                'Framework\Classes\\PhpWord\\Writer\\Word2007',
                 $object->getWriterPart($part)->getParentWriter()
             );
         }
@@ -179,7 +179,7 @@ class Word2007Test extends \PHPUnit_Framework_TestCase
     /**
      * Use disk caching exception
      *
-     * @expectedException \PhpOffice\PhpWord\Exception\Exception
+     * @expectedException \Framework\Classes\PhpWord\Exception\Exception
      */
     public function testSetUseDiskCachingException()
     {

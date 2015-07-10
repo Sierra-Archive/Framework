@@ -10,7 +10,7 @@ class banner_AdminModelo extends banner_Modelo
      * @return void
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      * 
      */
     public function __construct(){
@@ -22,7 +22,7 @@ class banner_AdminModelo extends banner_Modelo
      * @return int
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     /*public function banners_Del($id){
         $this->db->query('UPDATE '.MYSQL_BANNERS.' SET deletado=1, status=0 WHERE id='.$id);
@@ -39,7 +39,7 @@ class banner_AdminModelo extends banner_Modelo
      * @return int
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     /*public function banners_inserir(){
         GLOBAL $config;
@@ -63,7 +63,7 @@ class banner_AdminModelo extends banner_Modelo
      * @return int
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     /*public function banners_alterar($id){
         $id = (int) $id;

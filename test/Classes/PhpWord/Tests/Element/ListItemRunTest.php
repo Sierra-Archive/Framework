@@ -15,13 +15,13 @@
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
-namespace PhpOffice\PhpWord\Tests\Element;
+namespace Framework\Classes\PhpWord\Tests\Element;
 
-use PhpOffice\PhpWord\Element\ListItemRun;
-use PhpOffice\PhpWord\PhpWord;
+use Framework\Classes\PhpWord\Element\ListItemRun;
+use Framework\Classes\PhpWord\PhpWord;
 
 /**
- * Test class for PhpOffice\PhpWord\Element\ListItemRun
+ * Test class for Framework\Classes\PhpWord\Element\ListItemRun
  *
  * @runTestsInSeparateProcesses
  */
@@ -34,7 +34,7 @@ class ListItemRunTest extends \PHPUnit_Framework_TestCase
     {
         $oListItemRun = new ListItemRun();
 
-        $this->assertInstanceOf('PhpOffice\\PhpWord\\Element\\ListItemRun', $oListItemRun);
+        $this->assertInstanceOf('Framework\Classes\\PhpWord\\Element\\ListItemRun', $oListItemRun);
         $this->assertCount(0, $oListItemRun->getElements());
         $this->assertEquals($oListItemRun->getParagraphStyle(), null);
     }
@@ -46,7 +46,7 @@ class ListItemRunTest extends \PHPUnit_Framework_TestCase
     {
         $oListItemRun = new ListItemRun(0, null, 'pStyle');
 
-        $this->assertInstanceOf('PhpOffice\\PhpWord\\Element\\ListItemRun', $oListItemRun);
+        $this->assertInstanceOf('Framework\Classes\\PhpWord\\Element\\ListItemRun', $oListItemRun);
         $this->assertCount(0, $oListItemRun->getElements());
         $this->assertEquals($oListItemRun->getParagraphStyle(), 'pStyle');
     }
@@ -58,7 +58,7 @@ class ListItemRunTest extends \PHPUnit_Framework_TestCase
     {
         $oListItemRun = new ListItemRun(0, 'numberingStyle');
 
-        $this->assertInstanceOf('PhpOffice\\PhpWord\\Element\\ListItemRun', $oListItemRun);
+        $this->assertInstanceOf('Framework\Classes\\PhpWord\\Element\\ListItemRun', $oListItemRun);
         $this->assertCount(0, $oListItemRun->getElements());
     }
 
@@ -69,9 +69,9 @@ class ListItemRunTest extends \PHPUnit_Framework_TestCase
     {
         $oListItemRun = new ListItemRun(0, null, array('spacing' => 100));
 
-        $this->assertInstanceOf('PhpOffice\\PhpWord\\Element\\ListItemRun', $oListItemRun);
+        $this->assertInstanceOf('Framework\Classes\\PhpWord\\Element\\ListItemRun', $oListItemRun);
         $this->assertCount(0, $oListItemRun->getElements());
-        $this->assertInstanceOf('PhpOffice\\PhpWord\\Style\\Paragraph', $oListItemRun->getParagraphStyle());
+        $this->assertInstanceOf('Framework\Classes\\PhpWord\\Style\\Paragraph', $oListItemRun->getParagraphStyle());
     }
 
     /**
@@ -79,10 +79,10 @@ class ListItemRunTest extends \PHPUnit_Framework_TestCase
      */
     public function testStyle()
     {
-        $oListItemRun = new ListItemRun(1, array('listType' => \PhpOffice\PhpWord\Style\ListItem::TYPE_NUMBER));
+        $oListItemRun = new ListItemRun(1, array('listType' => \Framework\Classes\PhpWord\Style\ListItem::TYPE_NUMBER));
 
-        $this->assertInstanceOf('PhpOffice\\PhpWord\\Style\\ListItem', $oListItemRun->getStyle());
-        $this->assertEquals($oListItemRun->getStyle()->getListType(), \PhpOffice\PhpWord\Style\ListItem::TYPE_NUMBER);
+        $this->assertInstanceOf('Framework\Classes\\PhpWord\\Style\\ListItem', $oListItemRun->getStyle());
+        $this->assertEquals($oListItemRun->getStyle()->getListType(), \Framework\Classes\PhpWord\Style\ListItem::TYPE_NUMBER);
     }
     /**
      * getDepth
@@ -103,7 +103,7 @@ class ListItemRunTest extends \PHPUnit_Framework_TestCase
         $oListItemRun = new ListItemRun();
         $element = $oListItemRun->addText('text');
 
-        $this->assertInstanceOf('PhpOffice\\PhpWord\\Element\\Text', $element);
+        $this->assertInstanceOf('Framework\Classes\\PhpWord\\Element\\Text', $element);
         $this->assertCount(1, $oListItemRun->getElements());
         $this->assertEquals($element->getText(), 'text');
     }
@@ -116,7 +116,7 @@ class ListItemRunTest extends \PHPUnit_Framework_TestCase
         $oListItemRun = new ListItemRun();
         $element = $oListItemRun->addText(utf8_decode('ééé'));
 
-        $this->assertInstanceOf('PhpOffice\\PhpWord\\Element\\Text', $element);
+        $this->assertInstanceOf('Framework\Classes\\PhpWord\\Element\\Text', $element);
         $this->assertCount(1, $oListItemRun->getElements());
         $this->assertEquals($element->getText(), 'ééé');
     }
@@ -129,7 +129,7 @@ class ListItemRunTest extends \PHPUnit_Framework_TestCase
         $oListItemRun = new ListItemRun();
         $element = $oListItemRun->addLink('http://www.google.fr');
 
-        $this->assertInstanceOf('PhpOffice\\PhpWord\\Element\\Link', $element);
+        $this->assertInstanceOf('Framework\Classes\\PhpWord\\Element\\Link', $element);
         $this->assertCount(1, $oListItemRun->getElements());
         $this->assertEquals($element->getSource(), 'http://www.google.fr');
     }
@@ -142,7 +142,7 @@ class ListItemRunTest extends \PHPUnit_Framework_TestCase
         $oListItemRun = new ListItemRun();
         $element = $oListItemRun->addLink('http://www.google.fr', utf8_decode('ééé'));
 
-        $this->assertInstanceOf('PhpOffice\\PhpWord\\Element\\Link', $element);
+        $this->assertInstanceOf('Framework\Classes\\PhpWord\\Element\\Link', $element);
         $this->assertCount(1, $oListItemRun->getElements());
         $this->assertEquals($element->getSource(), 'http://www.google.fr');
         $this->assertEquals($element->getText(), 'ééé');
@@ -169,7 +169,7 @@ class ListItemRunTest extends \PHPUnit_Framework_TestCase
         $oListItemRun = new ListItemRun();
         $element = $oListItemRun->addImage($src);
 
-        $this->assertInstanceOf('PhpOffice\\PhpWord\\Element\\Image', $element);
+        $this->assertInstanceOf('Framework\Classes\\PhpWord\\Element\\Image', $element);
         $this->assertCount(1, $oListItemRun->getElements());
     }
 }

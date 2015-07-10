@@ -15,12 +15,12 @@
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
-namespace PhpOffice\PhpWord\Writer\Word2007\Part;
+namespace Framework\Classes\PhpWord\Writer\Word2007\Part;
 
-use PhpOffice\PhpWord\Element\Footnote;
-use PhpOffice\PhpWord\Shared\XMLWriter;
-use PhpOffice\PhpWord\Writer\Word2007\Element\Container;
-use PhpOffice\PhpWord\Writer\Word2007\Style\Paragraph as ParagraphStyleWriter;
+use Framework\Classes\PhpWord\Element\Footnote;
+use Framework\Classes\PhpWord\Shared\XMLWriter;
+use Framework\Classes\PhpWord\Writer\Word2007\Element\Container;
+use Framework\Classes\PhpWord\Writer\Word2007\Style\Paragraph as ParagraphStyleWriter;
 
 /**
  * Word2007 footnotes part writer: word/(footnotes|endnotes).xml
@@ -58,7 +58,7 @@ class Footnotes extends AbstractPart
     /**
      * Footnotes/endnotes collection to be written
      *
-     * @var \PhpOffice\PhpWord\Collection\Footnotes|\PhpOffice\PhpWord\Collection\Endnotes
+     * @var \Framework\Classes\PhpWord\Collection\Footnotes|\Framework\Classes\PhpWord\Collection\Endnotes
      */
     protected $elements;
 
@@ -122,7 +122,7 @@ class Footnotes extends AbstractPart
     /**
      * Set element
      *
-     * @param \PhpOffice\PhpWord\Collection\Footnotes|\PhpOffice\PhpWord\Collection\Endnotes $elements
+     * @param \Framework\Classes\PhpWord\Collection\Footnotes|\Framework\Classes\PhpWord\Collection\Endnotes $elements
      * @return self
      */
     public function setElements($elements)
@@ -135,8 +135,8 @@ class Footnotes extends AbstractPart
     /**
      * Write note item.
      *
-     * @param \PhpOffice\PhpWord\Shared\XMLWriter $xmlWriter
-     * @param \PhpOffice\PhpWord\Element\Footnote|\PhpOffice\PhpWord\Element\Endnote $element
+     * @param \Framework\Classes\PhpWord\Shared\XMLWriter $xmlWriter
+     * @param \Framework\Classes\PhpWord\Element\Footnote|\Framework\Classes\PhpWord\Element\Endnote $element
      * @return void
      */
     protected function writeNote(XMLWriter $xmlWriter, $element)

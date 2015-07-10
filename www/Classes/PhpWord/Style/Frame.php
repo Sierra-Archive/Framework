@@ -15,7 +15,7 @@
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
-namespace PhpOffice\PhpWord\Style;
+namespace Framework\Classes\PhpWord\Style;
 
 /**
  * Frame defines the size and position of an object
@@ -90,7 +90,7 @@ class Frame extends AbstractStyle
     /**
      * Alignment
      *
-     * @var \PhpOffice\PhpWord\Style\Alignment
+     * @var \Framework\Classes\PhpWord\Style\Alignment
      */
     private $alignment;
 

@@ -19,7 +19,7 @@ class noticia_AdminControle extends noticia_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Main(){
         \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'noticia/Admin/Noticias');
@@ -76,7 +76,7 @@ class noticia_AdminControle extends noticia_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Noticias($export=false){
         $i = 0;
@@ -131,7 +131,7 @@ class noticia_AdminControle extends noticia_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Noticias_Add(){
         self::Endereco_Noticia(true);
@@ -152,7 +152,7 @@ class noticia_AdminControle extends noticia_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Noticias_Add2(){
         $titulo     = __('Noticia Adicionada com Sucesso');
@@ -167,7 +167,7 @@ class noticia_AdminControle extends noticia_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Noticias_Edit($id){
         self::Endereco_Noticia(true);
@@ -188,7 +188,7 @@ class noticia_AdminControle extends noticia_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Noticias_Edit2($id){
         $id = (int) $id;
@@ -205,7 +205,7 @@ class noticia_AdminControle extends noticia_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Noticias_Del($id){
         

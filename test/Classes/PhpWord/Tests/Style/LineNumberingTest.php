@@ -15,14 +15,14 @@
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
-namespace PhpOffice\PhpWord\Tests\Style;
+namespace Framework\Classes\PhpWord\Tests\Style;
 
-use PhpOffice\PhpWord\Style\LineNumbering;
+use Framework\Classes\PhpWord\Style\LineNumbering;
 
 /**
- * Test class for PhpOffice\PhpWord\Style\LineNumbering
+ * Test class for Framework\Classes\PhpWord\Style\LineNumbering
  *
- * @coversDefaultClass \PhpOffice\PhpWord\Style\LineNumbering
+ * @coversDefaultClass \Framework\Classes\PhpWord\Style\LineNumbering
  */
 class LineNumberingTest extends \PHPUnit_Framework_TestCase
 {

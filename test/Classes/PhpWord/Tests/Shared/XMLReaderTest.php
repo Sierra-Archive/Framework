@@ -15,12 +15,12 @@
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
-namespace PhpOffice\PhpWord\Tests\Shared;
+namespace Framework\Classes\PhpWord\Tests\Shared;
 
-use PhpOffice\PhpWord\Shared\XMLReader;
+use Framework\Classes\PhpWord\Shared\XMLReader;
 
 /**
- * Test class for PhpOffice\PhpWord\Shared\XMLReader
+ * Test class for Framework\Classes\PhpWord\Shared\XMLReader
  *
  * @runTestsInSeparateProcesses
  * @since 0.10.0
@@ -30,7 +30,7 @@ class XMLReaderTest extends \PHPUnit_Framework_TestCase
     /**
      * Test get DOMDocument from ZipArchive exception
      *
-     * @expectedException \PhpOffice\PhpWord\Exception\Exception
+     * @expectedException \Framework\Classes\PhpWord\Exception\Exception
      * @expectedExceptionMessage Cannot find archive file.
      */
     public function testGetDomFromZipException()

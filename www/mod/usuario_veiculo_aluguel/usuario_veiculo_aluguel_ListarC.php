@@ -13,7 +13,7 @@ class usuario_veiculo_aluguel_ListarControle extends usuario_veiculo_aluguel_Con
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 2.0
+    * @version 3.1.1
     */
     public function __construct(){
         // construct
@@ -33,7 +33,7 @@ class usuario_veiculo_aluguel_ListarControle extends usuario_veiculo_aluguel_Con
     * @return void 
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 2.0
+    * @version 3.1.1
     */
     public function Main(){
         $aluguel = Array();

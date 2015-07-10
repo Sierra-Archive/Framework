@@ -13,7 +13,7 @@ class usuario_mensagem_AdminControle extends usuario_mensagem_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 2.0
+    * @version 3.1.1
     */
     public function __construct(){
         // construct
@@ -28,7 +28,7 @@ class usuario_mensagem_AdminControle extends usuario_mensagem_Controle
     * @return void 
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 2.0
+    * @version 3.1.1
     */
     public function Main(){
         \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'usuario_mensagem/Admin/Mensagem/');
@@ -75,7 +75,7 @@ class usuario_mensagem_AdminControle extends usuario_mensagem_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Mensagem_Del($id){
         

@@ -13,7 +13,7 @@ class usuario_AcessoControle extends usuario_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 2.0
+    * @version 3.1.1
     */
     public function __construct(){
         // construct
@@ -32,7 +32,7 @@ class usuario_AcessoControle extends usuario_Controle
     * @return void 
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 2.0
+    * @version 3.1.1
     */
     public function Main(){
         $this->Usuarios();
@@ -175,7 +175,7 @@ class usuario_AcessoControle extends usuario_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function UsuariosAcesso_Edit($id,$tipo='usuario'){
         // Carrega Config
@@ -194,7 +194,7 @@ class usuario_AcessoControle extends usuario_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function UsuariosAcesso_Edit2($id,$tipo='usuario'){
         if(isset($_POST["nome"])){

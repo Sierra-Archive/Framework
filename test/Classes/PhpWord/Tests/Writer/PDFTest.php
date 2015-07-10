@@ -14,14 +14,14 @@
  * @copyright   2010-2014 PHPWord contributors
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
-namespace PhpOffice\PhpWord\Tests\Writer;
+namespace Framework\Classes\PhpWord\Tests\Writer;
 
-use PhpOffice\PhpWord\PhpWord;
-use PhpOffice\PhpWord\Settings;
-use PhpOffice\PhpWord\Writer\PDF;
+use Framework\Classes\PhpWord\PhpWord;
+use Framework\Classes\PhpWord\Settings;
+use Framework\Classes\PhpWord\Writer\PDF;
 
 /**
- * Test class for PhpOffice\PhpWord\Writer\PDF
+ * Test class for Framework\Classes\PhpWord\Writer\PDF
  *
  * @runTestsInSeparateProcesses
  */
@@ -49,7 +49,7 @@ class PDFTest extends \PHPUnit_Framework_TestCase
     /**
      * Test construct exception
      *
-     * @expectedException \PhpOffice\PhpWord\Exception\Exception
+     * @expectedException \Framework\Classes\PhpWord\Exception\Exception
      * @expectedExceptionMessage PDF rendering library or library path has not been defined.
      */
     public function testConstructException()

@@ -15,14 +15,14 @@
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
-namespace PhpOffice\PhpWord\Tests\Element;
+namespace Framework\Classes\PhpWord\Tests\Element;
 
-use PhpOffice\PhpWord\Element\SDT;
+use Framework\Classes\PhpWord\Element\SDT;
 
 /**
- * Test class for PhpOffice\PhpWord\Element\SDT
+ * Test class for Framework\Classes\PhpWord\Element\SDT
  *
- * @coversDefaultClass \PhpOffice\PhpWord\Element\SDT
+ * @coversDefaultClass \Framework\Classes\PhpWord\Element\SDT
  */
 class SDTTest extends \PHPUnit_Framework_TestCase
 {
@@ -38,7 +38,7 @@ class SDTTest extends \PHPUnit_Framework_TestCase
         $object->setValue($value);
         $object->setListItems($types);
 
-        $this->assertInstanceOf('PhpOffice\\PhpWord\\Element\\SDT', $object);
+        $this->assertInstanceOf('Framework\Classes\\PhpWord\\Element\\SDT', $object);
         $this->assertEquals($type, $object->getType());
         $this->assertEquals($types, $object->getListItems());
         $this->assertEquals($value, $object->getValue());

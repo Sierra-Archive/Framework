@@ -15,9 +15,9 @@
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
-namespace PhpOffice\PhpWord\Shared;
+namespace Framework\Classes\PhpWord\Shared;
 
-use PhpOffice\PhpWord\Element\AbstractContainer;
+use Framework\Classes\PhpWord\Element\AbstractContainer;
 
 /**
  * Common Html functions
@@ -31,7 +31,7 @@ class Html
      *
      * Note: $stylesheet parameter is removed to avoid PHPMD error for unused parameter
      *
-     * @param \PhpOffice\PhpWord\Element\AbstractContainer $element Where the parts need to be added
+     * @param \Framework\Classes\PhpWord\Element\AbstractContainer $element Where the parts need to be added
      * @param string $html The code to parse
      * @param bool $fullHTML If it's a full HTML, no need to add 'body' tag
      * @return void
@@ -92,7 +92,7 @@ class Html
      * Parse a node and add a corresponding element to the parent element.
      *
      * @param \DOMNode $node node to parse
-     * @param \PhpOffice\PhpWord\Element\AbstractContainer $element object to add an element corresponding with the node
+     * @param \Framework\Classes\PhpWord\Element\AbstractContainer $element object to add an element corresponding with the node
      * @param array $styles Array with all styles
      * @param array $data Array to transport data to a next level in the DOM tree, for example level of listitems
      * @return void
@@ -145,7 +145,7 @@ class Html
                 }
             }
             $method = "parse{$method}";
-            $newElement = call_user_func_array(array('PhpOffice\PhpWord\Shared\Html', $method), $arguments);
+            $newElement = call_user_func_array(array('Framework\Classes\PhpWord\Shared\Html', $method), $arguments);
 
             // Retrieve back variables from arguments
             foreach ($keys as $key) {
@@ -166,7 +166,7 @@ class Html
      * Parse child nodes.
      *
      * @param \DOMNode $node
-     * @param \PhpOffice\PhpWord\Element\AbstractContainer $element
+     * @param \Framework\Classes\PhpWord\Element\AbstractContainer $element
      * @param array $styles
      * @param array $data
      * @return void
@@ -189,9 +189,9 @@ class Html
      * Parse paragraph node
      *
      * @param \DOMNode $node
-     * @param \PhpOffice\PhpWord\Element\AbstractContainer $element
+     * @param \Framework\Classes\PhpWord\Element\AbstractContainer $element
      * @param array &$styles
-     * @return \PhpOffice\PhpWord\Element\TextRun
+     * @return \Framework\Classes\PhpWord\Element\TextRun
      */
     private static function parseParagraph($node, $element, &$styles)
     {
@@ -204,10 +204,10 @@ class Html
     /**
      * Parse heading node
      *
-     * @param \PhpOffice\PhpWord\Element\AbstractContainer $element
+     * @param \Framework\Classes\PhpWord\Element\AbstractContainer $element
      * @param array &$styles
      * @param string $argument1 Name of heading style
-     * @return \PhpOffice\PhpWord\Element\TextRun
+     * @return \Framework\Classes\PhpWord\Element\TextRun
      *
      * @todo Think of a clever way of defining header styles, now it is only based on the assumption, that
      * Heading1 - Heading6 are already defined somewhere
@@ -224,7 +224,7 @@ class Html
      * Parse text node
      *
      * @param \DOMNode $node
-     * @param \PhpOffice\PhpWord\Element\AbstractContainer $element
+     * @param \Framework\Classes\PhpWord\Element\AbstractContainer $element
      * @param array &$styles
      * @return null
      */
@@ -260,10 +260,10 @@ class Html
      * Parse table node
      *
      * @param \DOMNode $node
-     * @param \PhpOffice\PhpWord\Element\AbstractContainer $element
+     * @param \Framework\Classes\PhpWord\Element\AbstractContainer $element
      * @param array &$styles
      * @param string $argument1 Method name
-     * @return \PhpOffice\PhpWord\Element\AbstractContainer $element
+     * @return \Framework\Classes\PhpWord\Element\AbstractContainer $element
      *
      * @todo As soon as TableItem, RowItem and CellItem support relative width and height
      */
@@ -312,7 +312,7 @@ class Html
      * Parse list item node
      *
      * @param \DOMNode $node
-     * @param \PhpOffice\PhpWord\Element\AbstractContainer $element
+     * @param \Framework\Classes\PhpWord\Element\AbstractContainer $element
      * @param array &$styles
      * @param array $data
      * @return null

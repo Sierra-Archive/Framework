@@ -15,12 +15,12 @@
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
-namespace PhpOffice\PhpWord\Tests;
+namespace Framework\Classes\PhpWord\Tests;
 
-use PhpOffice\PhpWord\Autoloader;
+use Framework\Classes\PhpWord\Autoloader;
 
 /**
- * Test class for PhpOffice\PhpWord\Autoloader
+ * Test class for Framework\Classes\PhpWord\Autoloader
  *
  * @runTestsInSeparateProcesses
  */
@@ -33,7 +33,7 @@ class AutoloaderTest extends \PHPUnit_Framework_TestCase
     {
         Autoloader::register();
         $this->assertContains(
-            array('PhpOffice\\PhpWord\\Autoloader', 'autoload'),
+            array('Framework\\Classes\\PhpWord\\Autoloader', 'autoload'),
             spl_autoload_functions()
         );
     }
@@ -48,15 +48,15 @@ class AutoloaderTest extends \PHPUnit_Framework_TestCase
         $this->assertCount(
             $declaredCount,
             get_declared_classes(),
-            'PhpOffice\\PhpWord\\Autoloader::autoload() is trying to load ' .
-            'classes outside of the PhpOffice\\PhpWord namespace'
+            'Framework\\Classes\\PhpWord\\Autoloader::autoload() is trying to load ' .
+            'classes outside of the Framework\Classes\\PhpWord namespace'
         );
         // TODO change this class to the main PhpWord class when it is namespaced
-        Autoloader::autoload('PhpOffice\\PhpWord\\Exception\\InvalidStyleException');
+        Autoloader::autoload('Framework\\Classes\\PhpWord\\Exception\\InvalidStyleException');
         $this->assertTrue(
-            in_array('PhpOffice\\PhpWord\\Exception\\InvalidStyleException', get_declared_classes()),
-            'PhpOffice\\PhpWord\\Autoloader::autoload() failed to autoload the ' .
-            'PhpOffice\\PhpWord\\Exception\\InvalidStyleException class'
+            in_array('Framework\\Classes\\PhpWord\\Exception\\InvalidStyleException', get_declared_classes()),
+            'Framework\\Classes\\PhpWord\\Autoloader::autoload() failed to autoload the ' .
+            'Framework\\Classes\\PhpWord\\Exception\\InvalidStyleException class'
         );
     }
 }

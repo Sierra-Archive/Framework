@@ -13,7 +13,7 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 2.0
+    * @version 3.1.1
     */
     public function __construct(){
         parent::__construct();
@@ -29,7 +29,7 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 2.0
+    * @version 3.1.1
     */
     public function Main(){
         \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'usuario_veiculo/Equipamento/Equipamentos');
@@ -74,7 +74,7 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Equipamentos($export=false){
         $i = 0;
@@ -218,7 +218,7 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Equipamentos_Add(){   
         self::Endereco_Equipamento(true);   
@@ -239,7 +239,7 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Equipamentos_Add2(){
         $titulo_plural = __('Equipamentos');
@@ -256,7 +256,7 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Equipamentos_Edit($id){
         $titulo_plural = __('Equipamentos');
@@ -278,7 +278,7 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Equipamentos_Edit2($id){
         $titulo_plural = __('Equipamentos');
@@ -296,7 +296,7 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Equipamentos_Del($id){
         
@@ -331,7 +331,7 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Marcas($export=false){
         self::Endereco_Equipamento_Marca(false);
@@ -378,7 +378,7 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Marcas_Add(){
         self::Endereco_Equipamento_Marca(true);
@@ -396,7 +396,7 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Marcas_Add2(){
         $titulo     = __('Marca Adicionada com Sucesso');
@@ -411,7 +411,7 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Marcas_Edit($id){
         self::Endereco_Equipamento_Marca(true);
@@ -430,7 +430,7 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Marcas_Edit2($id){
         $titulo     = __('Marca Editada com Sucesso');
@@ -446,7 +446,7 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Marcas_Del($id){
         
@@ -479,7 +479,7 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Modelos($export=false){
         $i = 0;
@@ -527,7 +527,7 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Modelos_Add(){
         self::Endereco_Equipamento_Modelo(true);
@@ -545,7 +545,7 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Modelos_Add2(){
         $titulo     = __('Modelo Adicionado com Sucesso');
@@ -560,7 +560,7 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Modelos_Edit($id){
         self::Endereco_Equipamento_Modelo(true);
@@ -579,7 +579,7 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Modelos_Edit2($id){
         $titulo     = __('Modelo Editada com Sucesso');
@@ -595,7 +595,7 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Modelos_Del($id){
         

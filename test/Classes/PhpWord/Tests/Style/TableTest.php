@@ -15,12 +15,12 @@
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
-namespace PhpOffice\PhpWord\Tests\Style;
+namespace Framework\Classes\PhpWord\Tests\Style;
 
-use PhpOffice\PhpWord\Style\Table;
+use Framework\Classes\PhpWord\Style\Table;
 
 /**
- * Test class for PhpOffice\PhpWord\Style\Table
+ * Test class for Framework\Classes\PhpWord\Style\Table
  *
  * @runTestsInSeparateProcesses
  */
@@ -45,7 +45,7 @@ class TableTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('FF0000', $object->getBgColor());
 
         $firstRow = $object->getFirstRow();
-        $this->assertInstanceOf('PhpOffice\\PhpWord\\Style\\Table', $firstRow);
+        $this->assertInstanceOf('Framework\Classes\\PhpWord\\Style\\Table', $firstRow);
         $this->assertEquals(3, $firstRow->getBorderBottomSize());
     }
 

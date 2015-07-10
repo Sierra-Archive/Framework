@@ -15,7 +15,7 @@
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
-namespace PhpOffice\PhpWord\Tests;
+namespace Framework\Classes\PhpWord\Tests;
 
 /**
  * DOM wrapper class

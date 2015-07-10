@@ -13,7 +13,7 @@ class comercio_UnidadeControle extends comercio_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 2.0
+    * @version 3.1.1
     */
     public function __construct(){
         parent::__construct();
@@ -29,7 +29,7 @@ class comercio_UnidadeControle extends comercio_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 2.0
+    * @version 3.1.1
     */
     public function Main(){
         \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'comercio/Unidade/Unidades/');
@@ -49,7 +49,7 @@ class comercio_UnidadeControle extends comercio_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Unidades(){
         self::Endereco_Unidade(false);
@@ -80,7 +80,7 @@ class comercio_UnidadeControle extends comercio_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Unidades_Add(){
         self::Endereco_Unidade(true);
@@ -98,7 +98,7 @@ class comercio_UnidadeControle extends comercio_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Unidades_Add2(){
         $titulo     = __('Unidade Adicionada com Sucesso');
@@ -113,7 +113,7 @@ class comercio_UnidadeControle extends comercio_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Unidades_Edit($id){
         self::Endereco_Unidade(true);
@@ -132,7 +132,7 @@ class comercio_UnidadeControle extends comercio_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Unidades_Edit2($id){
         $titulo     = __('Unidade Editada com Sucesso');
@@ -148,7 +148,7 @@ class comercio_UnidadeControle extends comercio_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Unidades_Del($id){
         

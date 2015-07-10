@@ -15,9 +15,9 @@
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
-namespace PhpOffice\PhpWord\Writer\Word2007\Style;
+namespace Framework\Classes\PhpWord\Writer\Word2007\Style;
 
-use PhpOffice\PhpWord\Shared\XMLWriter;
+use Framework\Classes\PhpWord\Shared\XMLWriter;
 
 /**
  * Margin border style writer
@@ -72,7 +72,7 @@ class MarginBorder extends AbstractStyle
     /**
      * Write side.
      *
-     * @param \PhpOffice\PhpWord\Shared\XMLWriter $xmlWriter
+     * @param \Framework\Classes\PhpWord\Shared\XMLWriter $xmlWriter
      * @param string $side
      * @param int $width
      * @param string $color

@@ -14,19 +14,19 @@
  * @copyright   2010-2014 PHPWord contributors
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
-namespace PhpOffice\PhpWord\Tests\Writer\HTML;
+namespace Framework\Classes\PhpWord\Tests\Writer\HTML;
 
-use PhpOffice\PhpWord\Writer\HTML\Part\Body;
+use Framework\Classes\PhpWord\Writer\HTML\Part\Body;
 
 /**
- * Test class for PhpOffice\PhpWord\Writer\HTML\Part subnamespace
+ * Test class for Framework\Classes\PhpWord\Writer\HTML\Part subnamespace
  */
 class PartTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * Test get parent writer exception
      *
-     * @expectedException \PhpOffice\PhpWord\Exception\Exception
+     * @expectedException \Framework\Classes\PhpWord\Exception\Exception
      */
     public function testGetParentWriterException()
     {

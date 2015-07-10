@@ -15,9 +15,9 @@
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
-namespace PhpOffice\PhpWord\Writer\Word2007\Element;
+namespace Framework\Classes\PhpWord\Writer\Word2007\Element;
 
-use PhpOffice\PhpWord\Writer\Word2007\Style\Image as ImageStyleWriter;
+use Framework\Classes\PhpWord\Writer\Word2007\Style\Image as ImageStyleWriter;
 
 /**
  * Object element writer
@@ -35,7 +35,7 @@ class Object extends AbstractElement
     {
         $xmlWriter = $this->getXmlWriter();
         $element = $this->getElement();
-        if (!$element instanceof \PhpOffice\PhpWord\Element\Object) {
+        if (!$element instanceof \Framework\Classes\PhpWord\Element\Object) {
             return;
         }
 

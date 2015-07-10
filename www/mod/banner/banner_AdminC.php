@@ -13,7 +13,7 @@ class banner_AdminControle extends banner_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 2.0
+    * @version 3.1.1
     */
     public function __construct(){
         // construct
@@ -32,7 +32,7 @@ class banner_AdminControle extends banner_Controle
     * @return void 
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 2.0
+    * @version 3.1.1
     */
     public function Main(){
         // carrega lista de banners
@@ -48,7 +48,7 @@ class banner_AdminControle extends banner_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 2.0
+    * @version 3.1.1
     */
     public function Banners_Listar($categoria=0,$ativado=1){
         $banners = Array();
@@ -100,7 +100,7 @@ class banner_AdminControle extends banner_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 2.0
+    * @version 3.1.1
     */
     public function Banners_Add(){
         // Carrega Config
@@ -117,7 +117,7 @@ class banner_AdminControle extends banner_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Banners_Add2(){
         $titulo     = __('Banner Adicionado com Sucesso');
@@ -132,7 +132,7 @@ class banner_AdminControle extends banner_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Banners_Edit($id){
         // Carrega Config
@@ -150,7 +150,7 @@ class banner_AdminControle extends banner_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Banners_Edit2($id){
         $titulo     = __('Banner Editado com Sucesso');
@@ -174,7 +174,7 @@ class banner_AdminControle extends banner_Controle
     * @return void 
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 2.0
+    * @version 3.1.1
     */
     public function Banners_Del($id){
         

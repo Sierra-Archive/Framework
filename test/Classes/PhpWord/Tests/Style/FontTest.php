@@ -15,15 +15,15 @@
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
-namespace PhpOffice\PhpWord\Tests\Style;
+namespace Framework\Classes\PhpWord\Tests\Style;
 
-use PhpOffice\PhpWord\PhpWord;
-use PhpOffice\PhpWord\Settings;
-use PhpOffice\PhpWord\Style\Font;
-use PhpOffice\PhpWord\Tests\TestHelperDOCX;
+use Framework\Classes\PhpWord\PhpWord;
+use Framework\Classes\PhpWord\Settings;
+use Framework\Classes\PhpWord\Style\Font;
+use Framework\Classes\PhpWord\Tests\TestHelperDOCX;
 
 /**
- * Test class for PhpOffice\PhpWord\Style\Font
+ * Test class for Framework\Classes\PhpWord\Style\Font
  *
  * @runTestsInSeparateProcesses
  */
@@ -45,7 +45,7 @@ class FontTest extends \PHPUnit_Framework_TestCase
         $object = new Font('text', array('align' => 'both'));
 
         $this->assertEquals('text', $object->getStyleType());
-        $this->assertInstanceOf('PhpOffice\\PhpWord\\Style\\Paragraph', $object->getParagraphStyle());
+        $this->assertInstanceOf('Framework\Classes\\PhpWord\\Style\\Paragraph', $object->getParagraphStyle());
         $this->assertTrue(is_array($object->getStyleValues()));
     }
 
@@ -168,7 +168,7 @@ class FontTest extends \PHPUnit_Framework_TestCase
     /**
      * Test line height exception by using nonnumeric value
      *
-     * @expectedException \PhpOffice\PhpWord\Exception\InvalidStyleException
+     * @expectedException \Framework\Classes\PhpWord\Exception\InvalidStyleException
      */
     public function testLineHeightException()
     {

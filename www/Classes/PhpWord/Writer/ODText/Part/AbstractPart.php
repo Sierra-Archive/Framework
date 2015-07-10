@@ -15,13 +15,13 @@
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
-namespace PhpOffice\PhpWord\Writer\ODText\Part;
+namespace Framework\Classes\PhpWord\Writer\ODText\Part;
 
-use PhpOffice\PhpWord\Settings;
-use PhpOffice\PhpWord\Shared\XMLWriter;
-use PhpOffice\PhpWord\Style;
-use PhpOffice\PhpWord\Style\Font;
-use PhpOffice\PhpWord\Writer\Word2007\Part\AbstractPart as Word2007AbstractPart;
+use Framework\Classes\PhpWord\Settings;
+use Framework\Classes\PhpWord\Shared\XMLWriter;
+use Framework\Classes\PhpWord\Style;
+use Framework\Classes\PhpWord\Style\Font;
+use Framework\Classes\PhpWord\Writer\Word2007\Part\AbstractPart as Word2007AbstractPart;
 
 /**
  * ODText writer part abstract
@@ -36,7 +36,7 @@ abstract class AbstractPart extends Word2007AbstractPart
     /**
      * Write common root attributes.
      *
-     * @param \PhpOffice\PhpWord\Shared\XMLWriter $xmlWriter
+     * @param \Framework\Classes\PhpWord\Shared\XMLWriter $xmlWriter
      * @return void
      */
     protected function writeCommonRootAttributes(XMLWriter $xmlWriter)
@@ -73,7 +73,7 @@ abstract class AbstractPart extends Word2007AbstractPart
     /**
      * Write font faces declaration.
      *
-     * @param \PhpOffice\PhpWord\Shared\XMLWriter $xmlWriter
+     * @param \Framework\Classes\PhpWord\Shared\XMLWriter $xmlWriter
      * @return void
      */
     protected function writeFontFaces(XMLWriter $xmlWriter)

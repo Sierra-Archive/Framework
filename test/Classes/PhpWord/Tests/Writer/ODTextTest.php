@@ -14,13 +14,13 @@
  * @copyright   2010-2014 PHPWord contributors
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
-namespace PhpOffice\PhpWord\Tests\Writer;
+namespace Framework\Classes\PhpWord\Tests\Writer;
 
-use PhpOffice\PhpWord\PhpWord;
-use PhpOffice\PhpWord\Writer\ODText;
+use Framework\Classes\PhpWord\PhpWord;
+use Framework\Classes\PhpWord\Writer\ODText;
 
 /**
- * Test class for PhpOffice\PhpWord\Writer\ODText
+ * Test class for Framework\Classes\PhpWord\Writer\ODText
  *
  * @runTestsInSeparateProcesses
  */
@@ -33,16 +33,16 @@ class ODTextTest extends \PHPUnit_Framework_TestCase
     {
         $object = new ODText(new PhpWord());
 
-        $this->assertInstanceOf('PhpOffice\\PhpWord\\PhpWord', $object->getPhpWord());
+        $this->assertInstanceOf('Framework\Classes\\PhpWord\\PhpWord', $object->getPhpWord());
 
         $this->assertEquals('./', $object->getDiskCachingDirectory());
         foreach (array('Content', 'Manifest', 'Meta', 'Mimetype', 'Styles') as $part) {
             $this->assertInstanceOf(
-                "PhpOffice\\PhpWord\\Writer\\ODText\\Part\\{$part}",
+                "Framework\Classes\\PhpWord\\Writer\\ODText\\Part\\{$part}",
                 $object->getWriterPart($part)
             );
             $this->assertInstanceOf(
-                'PhpOffice\\PhpWord\\Writer\\ODText',
+                'Framework\Classes\\PhpWord\\Writer\\ODText',
                 $object->getWriterPart($part)->getParentWriter()
             );
         }
@@ -51,7 +51,7 @@ class ODTextTest extends \PHPUnit_Framework_TestCase
     /**
      * Construct with null
      *
-     * @expectedException \PhpOffice\PhpWord\Exception\Exception
+     * @expectedException \Framework\Classes\PhpWord\Exception\Exception
      * @expectedExceptionMessage No PhpWord assigned.
      */
     public function testConstructWithNull()
@@ -132,7 +132,7 @@ class ODTextTest extends \PHPUnit_Framework_TestCase
     /**
      * Use disk caching exception
      *
-     * @expectedException \PhpOffice\PhpWord\Exception\Exception
+     * @expectedException \Framework\Classes\PhpWord\Exception\Exception
      */
     public function testSetUseDiskCachingException()
     {

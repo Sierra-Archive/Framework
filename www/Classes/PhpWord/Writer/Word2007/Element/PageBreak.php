@@ -15,7 +15,7 @@
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
-namespace PhpOffice\PhpWord\Writer\Word2007\Element;
+namespace Framework\Classes\PhpWord\Writer\Word2007\Element;
 
 /**
  * PageBreak element writer
@@ -27,7 +27,7 @@ class PageBreak extends AbstractElement
     /**
      * Write element.
      *
-     * @usedby \PhpOffice\PhpWord\Writer\Word2007\Element\AbstractElement::startElementP()
+     * @usedby \Framework\Classes\PhpWord\Writer\Word2007\Element\AbstractElement::startElementP()
      * @return void
      */
     public function write()

@@ -15,7 +15,7 @@ class Curso_CursoControle extends Curso_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 2.0
+    * @version 3.1.1
     */
     public function Main(){
         \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'Curso/Curso/Cursos');
@@ -62,7 +62,7 @@ class Curso_CursoControle extends Curso_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Cursos($export=false){
         self::Endereco_Curso(false);
@@ -114,7 +114,7 @@ class Curso_CursoControle extends Curso_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Cursos_Add(){
         self::Endereco_Curso();
@@ -131,7 +131,7 @@ class Curso_CursoControle extends Curso_Controle
      * Retorno de Adicionar Cursos
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Cursos_Add2(){
         $titulo     = __('Curso Adicionado com Sucesso');
@@ -146,7 +146,7 @@ class Curso_CursoControle extends Curso_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Cursos_Edit($id){
         self::Endereco_Curso();
@@ -165,7 +165,7 @@ class Curso_CursoControle extends Curso_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Cursos_Edit2($id){
         $titulo     = __('Curso Editado com Sucesso');
@@ -180,7 +180,7 @@ class Curso_CursoControle extends Curso_Controle
      * Deletar Cursos
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Cursos_Del($id){        
     	$id = (int) $id;

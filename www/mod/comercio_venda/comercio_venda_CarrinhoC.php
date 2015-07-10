@@ -13,7 +13,7 @@ class comercio_venda_CarrinhoControle extends comercio_venda_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 2.0
+    * @version 3.1.1
     */
     public function __construct(){
         parent::__construct();
@@ -30,7 +30,7 @@ class comercio_venda_CarrinhoControle extends comercio_venda_Controle
      * @return void
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Main(){
         return false;
@@ -49,7 +49,7 @@ class comercio_venda_CarrinhoControle extends comercio_venda_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Carrinhos($export=false){
         self::Endereco_Carrinho(false);
@@ -108,7 +108,7 @@ class comercio_venda_CarrinhoControle extends comercio_venda_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Carrinhos_Add(){
         self::Endereco_Carrinho(true);
@@ -130,7 +130,7 @@ class comercio_venda_CarrinhoControle extends comercio_venda_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Carrinhos_Add2(){
         $titulo     = __('Caixa Adicionado com Sucesso');
@@ -152,7 +152,7 @@ class comercio_venda_CarrinhoControle extends comercio_venda_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Carrinhos_Edit($id){
         self::Endereco_Carrinho(true);
@@ -177,7 +177,7 @@ class comercio_venda_CarrinhoControle extends comercio_venda_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Carrinhos_Edit2($id){
         $titulo     = __('Caixa Editado com Sucesso');
@@ -200,7 +200,7 @@ class comercio_venda_CarrinhoControle extends comercio_venda_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Carrinhos_Del($id){
         
@@ -526,7 +526,7 @@ class comercio_venda_CarrinhoControle extends comercio_venda_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Mesas($export=false){
         self::Endereco_Mesa(false);
@@ -578,7 +578,7 @@ class comercio_venda_CarrinhoControle extends comercio_venda_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Mesas_Add(){
         self::Endereco_Mesa(true);
@@ -596,7 +596,7 @@ class comercio_venda_CarrinhoControle extends comercio_venda_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Mesas_Add2(){
         $titulo     = __('Mesa Adicionada com Sucesso');
@@ -611,7 +611,7 @@ class comercio_venda_CarrinhoControle extends comercio_venda_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Mesas_Edit($id){
         self::Endereco_Mesa(true);
@@ -630,7 +630,7 @@ class comercio_venda_CarrinhoControle extends comercio_venda_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Mesas_Edit2($id){
         $titulo     = __('Mesa Editada com Sucesso');
@@ -646,7 +646,7 @@ class comercio_venda_CarrinhoControle extends comercio_venda_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Mesas_Del($id){
         

@@ -7,11 +7,11 @@
  * @license     http://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt LGPL
  */
 
-namespace PhpOffice\PhpWord;
+namespace Framework\Classes\PhpWord;
 
-use PhpOffice\PhpWord\Exception\Exception;
-use PhpOffice\PhpWord\Reader\ReaderInterface;
-use PhpOffice\PhpWord\Writer\WriterInterface;
+use Framework\Classes\PhpWord\Exception\Exception;
+use Framework\Classes\PhpWord\Reader\ReaderInterface;
+use Framework\Classes\PhpWord\Writer\WriterInterface;
 
 abstract class IOFactory
 {
@@ -21,7 +21,7 @@ abstract class IOFactory
      * @param PhpWord $phpWord
      * @param string $name
      * @return WriterInterface
-     * @throws \PhpOffice\PhpWord\Exception\Exception
+     * @throws \Framework\Classes\PhpWord\Exception\Exception
      */
     public static function createWriter(PhpWord $phpWord, $name = 'Word2007')
     {
@@ -29,7 +29,7 @@ abstract class IOFactory
             throw new Exception("\"{$name}\" is not a valid writer.");
         }
 
-        $fqName = "PhpOffice\\PhpWord\\Writer\\{$name}";
+        $fqName = "Framework\Classes\\PhpWord\\Writer\\{$name}";
 
         return new $fqName($phpWord);
     }
@@ -51,13 +51,13 @@ abstract class IOFactory
      *
      * @param string $type
      * @param string $name
-     * @param \PhpOffice\PhpWord\PhpWord $phpWord
-     * @return \PhpOffice\PhpWord\Writer\WriterInterface|\PhpOffice\PhpWord\Reader\ReaderInterface
-     * @throws \PhpOffice\PhpWord\Exception\Exception
+     * @param \Framework\Classes\PhpWord\PhpWord $phpWord
+     * @return \Framework\Classes\PhpWord\Writer\WriterInterface|\Framework\Classes\PhpWord\Reader\ReaderInterface
+     * @throws \Framework\Classes\PhpWord\Exception\Exception
      */
     private static function createObject($type, $name, $phpWord = null)
     {
-        $class = "PhpOffice\\PhpWord\\{$type}\\{$name}";
+        $class = "Framework\Classes\\PhpWord\\{$type}\\{$name}";
         if (class_exists($class) && self::isConcreteClass($class)) {
             return new $class($phpWord);
         } else {
@@ -69,11 +69,11 @@ abstract class IOFactory
      *
      * @param string $filename The name of the file
      * @param string $readerName
-     * @return \PhpOffice\PhpWord\PhpWord $phpWord
+     * @return \Framework\Classes\PhpWord\PhpWord $phpWord
      */
     public static function load($filename, $readerName = 'Word2007')
     {
-        /** @var \PhpOffice\PhpWord\Reader\ReaderInterface $reader */
+        /** @var \Framework\Classes\PhpWord\Reader\ReaderInterface $reader */
         $reader = self::createReader($readerName);
         return $reader->load($filename);
     }

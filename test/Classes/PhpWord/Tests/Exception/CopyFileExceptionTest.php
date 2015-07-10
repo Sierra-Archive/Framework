@@ -15,13 +15,13 @@
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
-namespace PhpOffice\PhpWord\Tests\Exception;
+namespace Framework\Classes\PhpWord\Tests\Exception;
 
-use PhpOffice\PhpWord\Exception\CopyFileException;
+use Framework\Classes\PhpWord\Exception\CopyFileException;
 
 /**
- * @covers \PhpOffice\PhpWord\Exception\CopyFileException
- * @coversDefaultClass \PhpOffice\PhpWord\Exception\CopyFileException
+ * @covers \Framework\Classes\PhpWord\Exception\CopyFileException
+ * @coversDefaultClass \Framework\Classes\PhpWord\Exception\CopyFileException
  */
 class CopyFileExceptionTest extends \PHPUnit_Framework_TestCase
 {
@@ -29,7 +29,7 @@ class CopyFileExceptionTest extends \PHPUnit_Framework_TestCase
      * CopyFileException can be thrown.
      *
      * @covers            ::__construct()
-     * @expectedException \PhpOffice\PhpWord\Exception\CopyFileException
+     * @expectedException \Framework\Classes\PhpWord\Exception\CopyFileException
      * @test
      */
     public function testCopyFileExceptionCanBeThrown()

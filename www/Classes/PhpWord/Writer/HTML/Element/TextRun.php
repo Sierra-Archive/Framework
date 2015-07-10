@@ -15,7 +15,7 @@
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
-namespace PhpOffice\PhpWord\Writer\HTML\Element;
+namespace Framework\Classes\PhpWord\Writer\HTML\Element;
 
 /**
  * TextRun element HTML writer

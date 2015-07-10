@@ -15,7 +15,7 @@
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
-namespace PhpOffice\PhpWord\Style;
+namespace Framework\Classes\PhpWord\Style;
 
 /**
  * Font style
@@ -211,14 +211,14 @@ class Font extends AbstractStyle
     /**
      * Paragraph style
      *
-     * @var \PhpOffice\PhpWord\Style\Paragraph
+     * @var \Framework\Classes\PhpWord\Style\Paragraph
      */
     private $paragraph;
 
     /**
      * Shading
      *
-     * @var \PhpOffice\PhpWord\Style\Shading
+     * @var \Framework\Classes\PhpWord\Style\Shading
      */
     private $shading;
 
@@ -615,7 +615,7 @@ class Font extends AbstractStyle
      * Set background
      *
      * @param string $value
-     * @return \PhpOffice\PhpWord\Style\Table
+     * @return \Framework\Classes\PhpWord\Style\Table
      */
     public function setBgColor($value = null)
     {
@@ -717,7 +717,7 @@ class Font extends AbstractStyle
     /**
      * Get paragraph style
      *
-     * @return \PhpOffice\PhpWord\Style\Paragraph
+     * @return \Framework\Classes\PhpWord\Style\Paragraph
      */
     public function getParagraph()
     {
@@ -763,7 +763,7 @@ class Font extends AbstractStyle
     /**
      * Get shading
      *
-     * @return \PhpOffice\PhpWord\Style\Shading
+     * @return \Framework\Classes\PhpWord\Style\Shading
      */
     public function getShading()
     {

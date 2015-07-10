@@ -7,12 +7,12 @@
  * @license     http://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt LGPL
  */
 
-namespace PhpOffice\PhpWord\Reader;
+namespace Framework\Classes\PhpWord\Reader;
 
-use PhpOffice\PhpWord\PhpWord;
-use PhpOffice\PhpWord\Shared\Drawing;
-use PhpOffice\PhpWord\Shared\OLERead;
-use PhpOffice\PhpWord\Style;
+use Framework\Classes\PhpWord\PhpWord;
+use Framework\Classes\PhpWord\Shared\Drawing;
+use Framework\Classes\PhpWord\Shared\OLERead;
+use Framework\Classes\PhpWord\Style;
 
 /**
  * Reader for Word97

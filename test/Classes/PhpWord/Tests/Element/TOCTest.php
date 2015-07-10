@@ -15,14 +15,14 @@
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
-namespace PhpOffice\PhpWord\Tests\Element;
+namespace Framework\Classes\PhpWord\Tests\Element;
 
-use PhpOffice\PhpWord\Element\Title;
-use PhpOffice\PhpWord\Element\TOC;
-use PhpOffice\PhpWord\PhpWord;
+use Framework\Classes\PhpWord\Element\Title;
+use Framework\Classes\PhpWord\Element\TOC;
+use Framework\Classes\PhpWord\PhpWord;
 
 /**
- * Test class for PhpOffice\PhpWord\Element\TOC
+ * Test class for Framework\Classes\PhpWord\Element\TOC
  *
  * @runTestsInSeparateProcesses
  */
@@ -35,14 +35,14 @@ class TOCTest extends \PHPUnit_Framework_TestCase
     {
         $expected = array(
             'position'    => 9062,
-            'leader' => \PhpOffice\PhpWord\Style\Tab::TAB_LEADER_DOT,
+            'leader' => \Framework\Classes\PhpWord\Style\Tab::TAB_LEADER_DOT,
             'indent'    => 200,
         );
         $object = new TOC(array('size' => 11), array('position' => $expected['position']));
         $tocStyle = $object->getStyleTOC();
 
-        $this->assertInstanceOf('PhpOffice\\PhpWord\\Style\\TOC', $tocStyle);
-        $this->assertInstanceOf('PhpOffice\\PhpWord\\Style\\Font', $object->getStyleFont());
+        $this->assertInstanceOf('Framework\Classes\\PhpWord\\Style\\TOC', $tocStyle);
+        $this->assertInstanceOf('Framework\Classes\\PhpWord\\Style\\Font', $object->getStyleFont());
 
         foreach ($expected as $key => $value) {
             $method = "get{$key}";

@@ -15,10 +15,10 @@
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
-namespace PhpOffice\PhpWord\Writer\HTML\Element;
+namespace Framework\Classes\PhpWord\Writer\HTML\Element;
 
-use PhpOffice\PhpWord\Element\Image as ImageElement;
-use PhpOffice\PhpWord\Writer\HTML\Style\Image as ImageStyleWriter;
+use Framework\Classes\PhpWord\Element\Image as ImageElement;
+use Framework\Classes\PhpWord\Writer\HTML\Style\Image as ImageStyleWriter;
 
 /**
  * Image element HTML writer
@@ -37,7 +37,7 @@ class Image extends Text
         if (!$this->element instanceof ImageElement) {
             return '';
         }
-        /** @var \PhpOffice\PhpWord\Writer\HTML $parentWriter Type hint */
+        /** @var \Framework\Classes\PhpWord\Writer\HTML $parentWriter Type hint */
         $parentWriter = $this->parentWriter;
 
         $content = '';

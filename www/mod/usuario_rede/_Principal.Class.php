@@ -18,7 +18,7 @@ class usuario_rede_Principal implements \Framework\PrincipalInterface
     * @return void 
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 2.0
+    * @version 3.1.1
     */
     static function Home(&$controle, &$modelo, &$Visual){
         if(\Framework\App\Acl::Usuario_GetLogado_Static()!==false){

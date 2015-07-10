@@ -15,7 +15,7 @@ class predial_VeiculoControle extends predial_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 2.0
+    * @version 3.1.1
     */
     public function Main(){
     }
@@ -52,7 +52,7 @@ class predial_VeiculoControle extends predial_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Veiculos(){
         self::Endereco_Veiculo(false);
@@ -89,7 +89,7 @@ class predial_VeiculoControle extends predial_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Veiculos_Add(){
         self::Endereco_Veiculo();
@@ -107,7 +107,7 @@ class predial_VeiculoControle extends predial_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Veiculos_Add2(){
         $titulo     = __('Veiculo Adicionado com Sucesso');
@@ -122,7 +122,7 @@ class predial_VeiculoControle extends predial_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Veiculos_Edit($id){
         self::Endereco_Veiculo();
@@ -141,7 +141,7 @@ class predial_VeiculoControle extends predial_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Veiculos_Edit2($id){
         $titulo     = __('Veiculo Editado com Sucesso');
@@ -157,7 +157,7 @@ class predial_VeiculoControle extends predial_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Veiculos_Del($id){
         

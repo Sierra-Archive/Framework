@@ -14,16 +14,16 @@
  * @copyright   2010-2014 PHPWord contributors
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
-namespace PhpOffice\PhpWord\Tests\Writer\Word2007\Part;
+namespace Framework\Classes\PhpWord\Tests\Writer\Word2007\Part;
 
-use PhpOffice\PhpWord\Writer\Word2007\Part\AbstractWriterPart;
-use PhpOffice\PhpWord\Writer\Word2007;
+use Framework\Classes\PhpWord\Writer\Word2007\Part\AbstractWriterPart;
+use Framework\Classes\PhpWord\Writer\Word2007;
 use PhpWord\Tests\TestHelperDOCX;
 
 /**
- * Test class for PhpOffice\PhpWord\Writer\Word2007\Part\AbstractWriterPart
+ * Test class for Framework\Classes\PhpWord\Writer\Word2007\Part\AbstractWriterPart
  *
- * @coversDefaultClass \PhpOffice\PhpWord\Writer\Word2007\Part\AbstractWriterPart
+ * @coversDefaultClass \Framework\Classes\PhpWord\Writer\Word2007\Part\AbstractWriterPart
  * @runTestsInSeparateProcesses
  */
 class AbstractWriterPartTest extends \PHPUnit_Framework_TestCase
@@ -35,7 +35,7 @@ class AbstractWriterPartTest extends \PHPUnit_Framework_TestCase
     public function testSetGetParentWriter()
     {
         $object = $this->getMockForAbstractClass(
-            'PhpOffice\\PhpWord\\Writer\\Word2007\\Part\\AbstractPart'
+            'Framework\Classes\\PhpWord\\Writer\\Word2007\\Part\\AbstractPart'
         );
         $object->setParentWriter(new Word2007());
         $this->assertEquals(
@@ -52,7 +52,7 @@ class AbstractWriterPartTest extends \PHPUnit_Framework_TestCase
     public function testSetGetParentWriterNull()
     {
         $object = $this->getMockForAbstractClass(
-            'PhpOffice\\PhpWord\\Writer\\Word2007\\Part\\AbstractPart'
+            'Framework\Classes\\PhpWord\\Writer\\Word2007\\Part\\AbstractPart'
         );
         $object->getParentWriter();
     }

@@ -15,9 +15,9 @@
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
-namespace PhpOffice\PhpWord\Writer\RTF\Style;
+namespace Framework\Classes\PhpWord\Writer\RTF\Style;
 
-use PhpOffice\PhpWord\Writer\HTML\Style\AbstractStyle as HTMLAbstractStyle;
+use Framework\Classes\PhpWord\Writer\HTML\Style\AbstractStyle as HTMLAbstractStyle;
 
 /**
  * Abstract RTF style writer

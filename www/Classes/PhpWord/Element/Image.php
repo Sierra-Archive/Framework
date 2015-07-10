@@ -15,14 +15,14 @@
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
-namespace PhpOffice\PhpWord\Element;
+namespace Framework\Classes\PhpWord\Element;
 
-use PhpOffice\PhpWord\Exception\CreateTemporaryFileException;
-use PhpOffice\PhpWord\Exception\InvalidImageException;
-use PhpOffice\PhpWord\Exception\UnsupportedImageTypeException;
-use PhpOffice\PhpWord\Settings;
-use PhpOffice\PhpWord\Shared\ZipArchive;
-use PhpOffice\PhpWord\Style\Image as ImageStyle;
+use Framework\Classes\PhpWord\Exception\CreateTemporaryFileException;
+use Framework\Classes\PhpWord\Exception\InvalidImageException;
+use Framework\Classes\PhpWord\Exception\UnsupportedImageTypeException;
+use Framework\Classes\PhpWord\Settings;
+use Framework\Classes\PhpWord\Shared\ZipArchive;
+use Framework\Classes\PhpWord\Style\Image as ImageStyle;
 
 /**
  * Image element
@@ -126,8 +126,8 @@ class Image extends AbstractElement
      * @param string $source
      * @param mixed $style
      * @param boolean $watermark
-     * @throws \PhpOffice\PhpWord\Exception\InvalidImageException
-     * @throws \PhpOffice\PhpWord\Exception\UnsupportedImageTypeException
+     * @throws \Framework\Classes\PhpWord\Exception\InvalidImageException
+     * @throws \Framework\Classes\PhpWord\Exception\UnsupportedImageTypeException
      */
     public function __construct($source, $style = null, $watermark = false)
     {
@@ -366,8 +366,8 @@ class Image extends AbstractElement
      *
      * @param string $source
      * @return void
-     * @throws \PhpOffice\PhpWord\Exception\InvalidImageException
-     * @throws \PhpOffice\PhpWord\Exception\UnsupportedImageTypeException
+     * @throws \Framework\Classes\PhpWord\Exception\InvalidImageException
+     * @throws \Framework\Classes\PhpWord\Exception\UnsupportedImageTypeException
      */
     private function checkImage($source)
     {
@@ -426,7 +426,7 @@ class Image extends AbstractElement
      *
      * @param string $source
      * @return array|null
-     * @throws \PhpOffice\PhpWord\Exception\CreateTemporaryFileException
+     * @throws \Framework\Classes\PhpWord\Exception\CreateTemporaryFileException
      */
     private function getArchiveImageSize($source)
     {

@@ -15,12 +15,12 @@
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
-namespace PhpOffice\PhpWord\Tests\Element;
+namespace Framework\Classes\PhpWord\Tests\Element;
 
-use PhpOffice\PhpWord\Element\Footer;
+use Framework\Classes\PhpWord\Element\Footer;
 
 /**
- * Test class for PhpOffice\PhpWord\Element\Footer
+ * Test class for Framework\Classes\PhpWord\Element\Footer
  *
  * @runTestsInSeparateProcesses
  */
@@ -34,7 +34,7 @@ class FooterTest extends \PHPUnit_Framework_TestCase
         $iVal = rand(1, 1000);
         $oFooter = new Footer($iVal);
 
-        $this->assertInstanceOf('PhpOffice\\PhpWord\\Element\\Footer', $oFooter);
+        $this->assertInstanceOf('Framework\Classes\\PhpWord\\Element\\Footer', $oFooter);
         $this->assertEquals($oFooter->getSectionId(), $iVal);
     }
 
@@ -47,7 +47,7 @@ class FooterTest extends \PHPUnit_Framework_TestCase
         $element = $oFooter->addText('text');
 
         $this->assertCount(1, $oFooter->getElements());
-        $this->assertInstanceOf('PhpOffice\\PhpWord\\Element\\Text', $element);
+        $this->assertInstanceOf('Framework\Classes\\PhpWord\\Element\\Text', $element);
     }
 
     /**
@@ -59,7 +59,7 @@ class FooterTest extends \PHPUnit_Framework_TestCase
         $element = $oFooter->addText(utf8_decode('ééé'));
 
         $this->assertCount(1, $oFooter->getElements());
-        $this->assertInstanceOf('PhpOffice\\PhpWord\\Element\\Text', $element);
+        $this->assertInstanceOf('Framework\Classes\\PhpWord\\Element\\Text', $element);
         $this->assertEquals($element->getText(), 'ééé');
     }
 
@@ -84,7 +84,7 @@ class FooterTest extends \PHPUnit_Framework_TestCase
         $element = $oFooter->addTextRun();
 
         $this->assertCount(1, $oFooter->getElements());
-        $this->assertInstanceOf('PhpOffice\\PhpWord\\Element\\TextRun', $element);
+        $this->assertInstanceOf('Framework\Classes\\PhpWord\\Element\\TextRun', $element);
     }
 
     /**
@@ -96,7 +96,7 @@ class FooterTest extends \PHPUnit_Framework_TestCase
         $element = $oFooter->addTable();
 
         $this->assertCount(1, $oFooter->getElements());
-        $this->assertInstanceOf('PhpOffice\\PhpWord\\Element\\Table', $element);
+        $this->assertInstanceOf('Framework\Classes\\PhpWord\\Element\\Table', $element);
     }
 
     /**
@@ -109,7 +109,7 @@ class FooterTest extends \PHPUnit_Framework_TestCase
         $element = $oFooter->addImage($src);
 
         $this->assertCount(1, $oFooter->getElements());
-        $this->assertInstanceOf('PhpOffice\\PhpWord\\Element\\Image', $element);
+        $this->assertInstanceOf('Framework\Classes\\PhpWord\\Element\\Image', $element);
     }
 
     /**
@@ -123,7 +123,7 @@ class FooterTest extends \PHPUnit_Framework_TestCase
         );
 
         $this->assertCount(1, $oFooter->getElements());
-        $this->assertInstanceOf('PhpOffice\\PhpWord\\Element\\Image', $element);
+        $this->assertInstanceOf('Framework\Classes\\PhpWord\\Element\\Image', $element);
     }
 
     /**
@@ -135,7 +135,7 @@ class FooterTest extends \PHPUnit_Framework_TestCase
         $element = $oFooter->addPreserveText('text');
 
         $this->assertCount(1, $oFooter->getElements());
-        $this->assertInstanceOf('PhpOffice\\PhpWord\\Element\\PreserveText', $element);
+        $this->assertInstanceOf('Framework\Classes\\PhpWord\\Element\\PreserveText', $element);
     }
 
     /**
@@ -147,7 +147,7 @@ class FooterTest extends \PHPUnit_Framework_TestCase
         $element = $oFooter->addPreserveText(utf8_decode('ééé'));
 
         $this->assertCount(1, $oFooter->getElements());
-        $this->assertInstanceOf('PhpOffice\\PhpWord\\Element\\PreserveText', $element);
+        $this->assertInstanceOf('Framework\Classes\\PhpWord\\Element\\PreserveText', $element);
         $this->assertEquals($element->getText(), array('ééé'));
     }
 

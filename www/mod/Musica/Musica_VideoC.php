@@ -15,7 +15,7 @@ class Musica_VideoControle extends Musica_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 2.0
+    * @version 3.1.1
     */
     public function Main(){
         \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'Musica/Video/Videos');
@@ -124,7 +124,7 @@ class Musica_VideoControle extends Musica_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Videos($artista=false,$album=false,$musica=false,$export=false){
         if($artista ==='false' || $artista ===0)  $artista    = false;
@@ -253,7 +253,7 @@ class Musica_VideoControle extends Musica_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Videos_Add($artista = false,$album=false,$musica=false){
         if($artista ==='false' || $artista ===0)  $artista    = false;
@@ -337,7 +337,7 @@ class Musica_VideoControle extends Musica_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Videos_Add2($artista=false,$album=false,$musica=false){
         if($artista ==='false' || $artista ===0)  $artista    = false;
@@ -373,7 +373,7 @@ class Musica_VideoControle extends Musica_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Videos_Edit($id,$artista = false,$album=false,$musica=false){
         if($artista ==='false' || $artista ===0)  $artista    = false;
@@ -442,7 +442,7 @@ class Musica_VideoControle extends Musica_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Videos_Edit2($id,$artista = false,$album=false,$musica=false){
         if($artista ==='false' || $artista ===0)  $artista    = false;
@@ -484,7 +484,7 @@ class Musica_VideoControle extends Musica_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Videos_Del($id = false,$artista=false,$album=false,$musica=false){
         if($artista ==='false' || $artista ===0)  $artista    = false;

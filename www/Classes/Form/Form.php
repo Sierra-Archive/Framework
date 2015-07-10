@@ -39,7 +39,7 @@ class Form
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 2.0
+    * @version 3.1.1
     */
     public function __construct($id = 'formulario',$endereco = '', $classe='', $layoult="mini",$ColunaForm='horizontal',$autocomplete='on') { //layoult pode ser comprimido, completo, ajax
         // Puxa Registro
@@ -87,7 +87,7 @@ class Form
      * @param type $escondido
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function BoleanoMultiplo($titulo='',$col1 = 'Não Permitido',$col2 = 'Permitido',$id='padrao',$class='',$nao_selecionado = Array(),$selecionado = Array(), $escondido=false){
         // Aumenta o id e Add javascript no Visual
@@ -150,7 +150,7 @@ class Form
      * @param type $escondido
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function SelectMultiplo($titulo='',$opcoes = Array(),$id=false,$url='',$campos=false, $javascript_campos = false, $condicao=false, $escondido = false, $class='', $infonulo='Escolha uma opção'){
         //Aumenta o id e Add javascript no Visual
@@ -258,7 +258,7 @@ class Form
      * @return string
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     static function Select_Opcao_Stat($titulo,$value,$selected = 0){        
         $_Registro = &\Framework\App\Registro::getInstacia();
@@ -323,7 +323,7 @@ class Form
      * @return type
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Input_Novo($titulo,$name,$value,$type = 'text', $max_caracteres = false, $class='', $info='', $somenteleitura=false,$urlextra='',$change='',$mascara=false,$valida='', $escondido = false){
   
@@ -386,7 +386,7 @@ class Form
      * @return type
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function TextArea_Novo($titulo,$name,$id = '',$value = '',$type = 'text', $max_caracteres = false, $class='', $info='', $somenteleitura=false,$urlextra='', $escondido = false){
         
@@ -433,7 +433,7 @@ class Form
      * @return boolean
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Radio_Novo($titulo,$name,$id='',$url='',$change='', $js = '', $condicao=false, $escondido = false){
         // Verifica se é obrigatorio
@@ -482,7 +482,7 @@ class Form
      * @return boolean
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Radio_Opcao($titulo,$value,$selected = 0){
         ++self::$tab_index;
@@ -513,7 +513,7 @@ class Form
      * @return boolean
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Radio_Fim(){
         $config = Array(
@@ -582,7 +582,7 @@ class Form
      * @return boolean
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Checkbox_Opcao($titulo,$value,$selected = 0){
         ++self::$tab_index;
@@ -607,7 +607,7 @@ class Form
      * @return boolean
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Checkbox_Fim(){
         $config = Array(
@@ -696,7 +696,7 @@ class Form
      * @return boolean
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Select_Opcao($titulo,$value,$selected = 0){
         $config = Array(
@@ -718,7 +718,7 @@ class Form
      * @return boolean
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Select_Fim(){
         $config = Array(
@@ -751,7 +751,7 @@ class Form
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 2.0
+    * @version 3.1.1
     */
     public function addtexto($texto){
         $this->form .= $texto;
@@ -769,7 +769,7 @@ class Form
     * @return string
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 2.0
+    * @version 3.1.1
     */
     public function retorna_form($botao=''){
         ++self::$tab_index;

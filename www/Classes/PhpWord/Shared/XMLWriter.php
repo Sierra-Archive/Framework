@@ -15,9 +15,9 @@
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
-namespace PhpOffice\PhpWord\Shared;
+namespace Framework\Classes\PhpWord\Shared;
 
-use PhpOffice\PhpWord\Settings;
+use Framework\Classes\PhpWord\Settings;
 
 /**
  * XMLWriter wrapper

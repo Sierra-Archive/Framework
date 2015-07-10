@@ -15,7 +15,7 @@ class predial_SalaoControle extends predial_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 2.0
+    * @version 3.1.1
     */
     public function Main(){
     }
@@ -52,7 +52,7 @@ class predial_SalaoControle extends predial_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Saloes(){
         self::Endereco_Salao(false);
@@ -89,7 +89,7 @@ class predial_SalaoControle extends predial_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Saloes_Add(){
         self::Endereco_Salao();
@@ -107,7 +107,7 @@ class predial_SalaoControle extends predial_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Saloes_Add2(){
         $titulo     = __('Local de Reserva Adicionado com Sucesso');
@@ -122,7 +122,7 @@ class predial_SalaoControle extends predial_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Saloes_Edit($id){
         self::Endereco_Salao();
@@ -141,7 +141,7 @@ class predial_SalaoControle extends predial_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Saloes_Edit2($id){
         $titulo     = __('Local de Reserva Editado com Sucesso');
@@ -157,7 +157,7 @@ class predial_SalaoControle extends predial_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Saloes_Del($id){
         
@@ -357,7 +357,7 @@ class predial_SalaoControle extends predial_Controle
      * @return void
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function agendamento_inserir(){
         

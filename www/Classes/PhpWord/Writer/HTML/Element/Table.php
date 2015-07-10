@@ -15,7 +15,7 @@
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
-namespace PhpOffice\PhpWord\Writer\HTML\Element;
+namespace Framework\Classes\PhpWord\Writer\HTML\Element;
 
 /**
  * Table element HTML writer
@@ -31,7 +31,7 @@ class Table extends AbstractElement
      */
     public function write()
     {
-        if (!$this->element instanceof \PhpOffice\PhpWord\Element\Table) {
+        if (!$this->element instanceof \Framework\Classes\PhpWord\Element\Table) {
             return '';
         }
 
@@ -41,7 +41,7 @@ class Table extends AbstractElement
         if ($rowCount > 0) {
             $content .= '<table>' . PHP_EOL;
             foreach ($rows as $row) {
-                /** @var $row \PhpOffice\PhpWord\Element\Row Type hint */
+                /** @var $row \Framework\Classes\PhpWord\Element\Row Type hint */
                 $rowStyle = $row->getStyle();
                 // $height = $row->getHeight();
                 $tblHeader = $rowStyle->isTblHeader();

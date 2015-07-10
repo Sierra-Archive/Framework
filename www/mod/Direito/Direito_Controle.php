@@ -10,7 +10,7 @@ class Direito_Controle extends \Framework\App\Controle
     * @uses View::$menu
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 2.0
+    * @version 3.1.1
     */
     public function __construct(){
         // construct
@@ -20,7 +20,7 @@ class Direito_Controle extends \Framework\App\Controle
      * Listagem Generica para Todos os Processos
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Listar_Processos(&$processos, $titulo = '', $imprimir = 'false'){
         $i = 0;
@@ -75,7 +75,7 @@ class Direito_Controle extends \Framework\App\Controle
      * IMPRIME NUMEROS DO SISTEMA A DIREITA DA TELA
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Meus_Numeros(){
         // Chama NUmero de Processos, Reus e Autores e Manda pro VIEW imprimir

@@ -15,14 +15,14 @@
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
-namespace PhpOffice\PhpWord\Tests\Element;
+namespace Framework\Classes\PhpWord\Tests\Element;
 
-use PhpOffice\PhpWord\Element\Table;
+use Framework\Classes\PhpWord\Element\Table;
 
 /**
- * Test class for PhpOffice\PhpWord\Element\Table
+ * Test class for Framework\Classes\PhpWord\Element\Table
  *
- * @coversDefaultClass \PhpOffice\PhpWord\Element\Table
+ * @coversDefaultClass \Framework\Classes\PhpWord\Element\Table
  * @runTestsInSeparateProcesses
  */
 class TableTest extends \PHPUnit_Framework_TestCase
@@ -34,7 +34,7 @@ class TableTest extends \PHPUnit_Framework_TestCase
     {
         $oTable = new Table();
 
-        $this->assertInstanceOf('PhpOffice\\PhpWord\\Element\\Table', $oTable);
+        $this->assertInstanceOf('Framework\Classes\\PhpWord\\Element\\Table', $oTable);
         $this->assertEquals($oTable->getStyle(), null);
         $this->assertEquals($oTable->getWidth(), null);
         $this->assertEquals($oTable->getRows(), array());
@@ -62,7 +62,7 @@ class TableTest extends \PHPUnit_Framework_TestCase
             'cellMargin' => 80
         ));
 
-        $this->assertInstanceOf('PhpOffice\\PhpWord\\Style\\Table', $oTable->getStyle());
+        $this->assertInstanceOf('Framework\Classes\\PhpWord\\Style\\Table', $oTable->getStyle());
     }
 
     /**
@@ -83,7 +83,7 @@ class TableTest extends \PHPUnit_Framework_TestCase
     {
         $oTable  = new Table();
         $element = $oTable->addRow();
-        $this->assertInstanceOf('PhpOffice\\PhpWord\\Element\\Row', $element);
+        $this->assertInstanceOf('Framework\Classes\\PhpWord\\Element\\Row', $element);
         $this->assertCount(1, $oTable->getRows());
     }
 
@@ -95,7 +95,7 @@ class TableTest extends \PHPUnit_Framework_TestCase
         $oTable = new Table();
         $oTable->addRow();
         $element = $oTable->addCell();
-        $this->assertInstanceOf('PhpOffice\\PhpWord\\Element\\Cell', $element);
+        $this->assertInstanceOf('Framework\Classes\\PhpWord\\Element\\Cell', $element);
     }
 
     /**

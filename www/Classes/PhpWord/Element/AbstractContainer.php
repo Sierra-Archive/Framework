@@ -15,7 +15,7 @@
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
-namespace PhpOffice\PhpWord\Element;
+namespace Framework\Classes\PhpWord\Element;
 
 /**
  * Container abstract class
@@ -74,7 +74,7 @@ abstract class AbstractContainer extends AbstractElement
      *
      * @param mixed $function
      * @param mixed $args
-     * @return \PhpOffice\PhpWord\Element\AbstractElement
+     * @return \Framework\Classes\PhpWord\Element\AbstractElement
      */
     public function __call($function, $args)
     {
@@ -122,7 +122,7 @@ abstract class AbstractContainer extends AbstractElement
      * Each element has different number of parameters passed
      *
      * @param string $elementName
-     * @return \PhpOffice\PhpWord\Element\AbstractElement
+     * @return \Framework\Classes\PhpWord\Element\AbstractElement
      */
     protected function addElement($elementName)
     {
@@ -141,7 +141,7 @@ abstract class AbstractContainer extends AbstractElement
         $elementArgs = $args;
         array_shift($elementArgs); // Shift the $elementName off the beginning of array
 
-        /** @var \PhpOffice\PhpWord\Element\AbstractElement $element Type hint */
+        /** @var \Framework\Classes\PhpWord\Element\AbstractElement $element Type hint */
         $element = $reflection->newInstanceArgs($elementArgs);
 
         // Set parent container
@@ -249,7 +249,7 @@ abstract class AbstractContainer extends AbstractElement
      *
      * @param string $src
      * @param mixed $style
-     * @return \PhpOffice\PhpWord\Element\Image
+     * @return \Framework\Classes\PhpWord\Element\Image
      * @deprecated 0.9.0
      * @codeCoverageIgnore
      */
@@ -262,7 +262,7 @@ abstract class AbstractContainer extends AbstractElement
      * Create textrun element
      *
      * @param mixed $paragraphStyle
-     * @return \PhpOffice\PhpWord\Element\TextRun
+     * @return \Framework\Classes\PhpWord\Element\TextRun
      * @deprecated 0.10.0
      * @codeCoverageIgnore
      */
@@ -275,7 +275,7 @@ abstract class AbstractContainer extends AbstractElement
      * Create footnote element
      *
      * @param mixed $paragraphStyle
-     * @return \PhpOffice\PhpWord\Element\Footnote
+     * @return \Framework\Classes\PhpWord\Element\Footnote
      * @deprecated 0.10.0
      * @codeCoverageIgnore
      */

@@ -31,7 +31,7 @@ class Tabela
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 2.0
+    * @version 3.1.1
     */
     public function addcabecario($array){
         $config = Array(
@@ -55,7 +55,7 @@ class Tabela
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 2.0
+    * @version 3.1.1
     */
     public function addcorpo($array){
         if(!is_array($array)){
@@ -91,7 +91,7 @@ class Tabela
     * @return string Retorna Toda a Tabela
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 2.0
+    * @version 3.1.1
     */
     public function retornatabela(){
         $config = Array(

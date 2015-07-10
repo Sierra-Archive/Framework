@@ -13,7 +13,7 @@ class usuario_mensagem_OrigemControle extends usuario_mensagem_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 2.0
+    * @version 3.1.1
     */
     public function __construct(){
         parent::__construct();
@@ -29,7 +29,7 @@ class usuario_mensagem_OrigemControle extends usuario_mensagem_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 2.0
+    * @version 3.1.1
     */
     public function Main(){
         \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'usuario_mensagem/Origem/Origens/');
@@ -49,7 +49,7 @@ class usuario_mensagem_OrigemControle extends usuario_mensagem_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Origens($export=false){
         self::Endereco_Origem(false);
@@ -67,7 +67,7 @@ class usuario_mensagem_OrigemControle extends usuario_mensagem_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Origens_Add(){
         self::Endereco_Origem(true);
@@ -85,7 +85,7 @@ class usuario_mensagem_OrigemControle extends usuario_mensagem_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Origens_Add2(){
         $titulo     = __('Origem Adicionada com Sucesso');
@@ -100,7 +100,7 @@ class usuario_mensagem_OrigemControle extends usuario_mensagem_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Origens_Edit($id){
         self::Endereco_Origem(true);
@@ -119,7 +119,7 @@ class usuario_mensagem_OrigemControle extends usuario_mensagem_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Origens_Edit2($id){
         $titulo     = __('Origem Editada com Sucesso');
@@ -135,7 +135,7 @@ class usuario_mensagem_OrigemControle extends usuario_mensagem_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Origens_Del($id){
         

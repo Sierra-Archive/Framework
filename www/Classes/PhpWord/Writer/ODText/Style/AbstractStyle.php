@@ -15,9 +15,9 @@
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
-namespace PhpOffice\PhpWord\Writer\ODText\Style;
+namespace Framework\Classes\PhpWord\Writer\ODText\Style;
 
-use PhpOffice\PhpWord\Writer\Word2007\Style\AbstractStyle as Word2007AbstractStyle;
+use Framework\Classes\PhpWord\Writer\Word2007\Style\AbstractStyle as Word2007AbstractStyle;
 
 /**
  * Style writer

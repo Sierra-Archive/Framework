@@ -15,9 +15,9 @@
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
-namespace PhpOffice\PhpWord\Element;
+namespace Framework\Classes\PhpWord\Element;
 
-use PhpOffice\PhpWord\Style\Table as TableStyle;
+use Framework\Classes\PhpWord\Style\Table as TableStyle;
 
 /**
  * Table element
@@ -27,14 +27,14 @@ class Table extends AbstractElement
     /**
      * Table style
      *
-     * @var \PhpOffice\PhpWord\Style\Table
+     * @var \Framework\Classes\PhpWord\Style\Table
      */
     private $style;
 
     /**
      * Table rows
      *
-     * @var \PhpOffice\PhpWord\Element\Row[]
+     * @var \Framework\Classes\PhpWord\Element\Row[]
      */
     private $rows = array();
 
@@ -60,7 +60,7 @@ class Table extends AbstractElement
      *
      * @param int $height
      * @param mixed $style
-     * @return \PhpOffice\PhpWord\Element\Row
+     * @return \Framework\Classes\PhpWord\Element\Row
      */
     public function addRow($height = null, $style = null)
     {
@@ -76,7 +76,7 @@ class Table extends AbstractElement
      *
      * @param int $width
      * @param mixed $style
-     * @return \PhpOffice\PhpWord\Element\Cell
+     * @return \Framework\Classes\PhpWord\Element\Cell
      */
     public function addCell($width = null, $style = null)
     {
@@ -90,7 +90,7 @@ class Table extends AbstractElement
     /**
      * Get all rows
      *
-     * @return \PhpOffice\PhpWord\Element\Row[]
+     * @return \Framework\Classes\PhpWord\Element\Row[]
      */
     public function getRows()
     {
@@ -100,7 +100,7 @@ class Table extends AbstractElement
     /**
      * Get table style
      *
-     * @return \PhpOffice\PhpWord\Style\Table
+     * @return \Framework\Classes\PhpWord\Style\Table
      */
     public function getStyle()
     {
@@ -139,7 +139,7 @@ class Table extends AbstractElement
         if (is_array($this->rows)) {
             $rowCount = count($this->rows);
             for ($i = 0; $i < $rowCount; $i++) {
-                /** @var \PhpOffice\PhpWord\Element\Row $row Type hint */
+                /** @var \Framework\Classes\PhpWord\Element\Row $row Type hint */
                 $row = $this->rows[$i];
                 $cellCount = count($row->getCells());
                 if ($columnCount < $cellCount) {

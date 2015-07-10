@@ -15,9 +15,9 @@
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
-namespace PhpOffice\PhpWord\Style;
+namespace Framework\Classes\PhpWord\Style;
 
-use PhpOffice\PhpWord\Style;
+use Framework\Classes\PhpWord\Style;
 
 /**
  * List item style

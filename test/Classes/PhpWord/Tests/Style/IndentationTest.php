@@ -15,14 +15,14 @@
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
-namespace PhpOffice\PhpWord\Tests\Style;
+namespace Framework\Classes\PhpWord\Tests\Style;
 
-use PhpOffice\PhpWord\Style\Indentation;
+use Framework\Classes\PhpWord\Style\Indentation;
 
 /**
- * Test class for PhpOffice\PhpWord\Style\Indentation
+ * Test class for Framework\Classes\PhpWord\Style\Indentation
  *
- * @coversDefaultClass \PhpOffice\PhpWord\Style\Indentation
+ * @coversDefaultClass \Framework\Classes\PhpWord\Style\Indentation
  */
 class IndentationTest extends \PHPUnit_Framework_TestCase
 {

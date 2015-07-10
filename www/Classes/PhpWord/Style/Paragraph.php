@@ -15,10 +15,10 @@
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
-namespace PhpOffice\PhpWord\Style;
+namespace Framework\Classes\PhpWord\Style;
 
-use PhpOffice\PhpWord\Exception\InvalidStyleException;
-use PhpOffice\PhpWord\Shared\String;
+use Framework\Classes\PhpWord\Exception\InvalidStyleException;
+use Framework\Classes\PhpWord\Shared\String;
 
 /**
  * Paragraph style
@@ -78,21 +78,21 @@ class Paragraph extends Border
     /**
      * Alignment
      *
-     * @var \PhpOffice\PhpWord\Style\Alignment
+     * @var \Framework\Classes\PhpWord\Style\Alignment
      */
     private $alignment;
 
     /**
      * Indentation
      *
-     * @var \PhpOffice\PhpWord\Style\Indentation
+     * @var \Framework\Classes\PhpWord\Style\Indentation
      */
     private $indentation;
 
     /**
      * Spacing
      *
-     * @var \PhpOffice\PhpWord\Style\Spacing
+     * @var \Framework\Classes\PhpWord\Style\Spacing
      */
     private $spacing;
 
@@ -148,14 +148,14 @@ class Paragraph extends Border
     /**
      * Set of Custom Tab Stops
      *
-     * @var \PhpOffice\PhpWord\Style\Tab[]
+     * @var \Framework\Classes\PhpWord\Style\Tab[]
      */
     private $tabs = array();
 
     /**
      * Shading
      *
-     * @var \PhpOffice\PhpWord\Style\Shading
+     * @var \Framework\Classes\PhpWord\Style\Shading
      */
     private $shading;
 
@@ -294,7 +294,7 @@ class Paragraph extends Border
     /**
      * Get shading
      *
-     * @return \PhpOffice\PhpWord\Style\Indentation
+     * @return \Framework\Classes\PhpWord\Style\Indentation
      */
     public function getIndentation()
     {
@@ -359,7 +359,7 @@ class Paragraph extends Border
     /**
      * Get spacing
      *
-     * @return \PhpOffice\PhpWord\Style\Spacing
+     * @return \Framework\Classes\PhpWord\Style\Spacing
      * @todo Rename to getSpacing in 1.0
      */
     public function getSpace()
@@ -459,7 +459,7 @@ class Paragraph extends Border
      *
      * @param int|float|string $lineHeight
      * @return self
-     * @throws \PhpOffice\PhpWord\Exception\InvalidStyleException
+     * @throws \Framework\Classes\PhpWord\Exception\InvalidStyleException
      */
     public function setLineHeight($lineHeight)
     {
@@ -617,7 +617,7 @@ class Paragraph extends Border
     /**
      * Get tabs
      *
-     * @return \PhpOffice\PhpWord\Style\Tab[]
+     * @return \Framework\Classes\PhpWord\Style\Tab[]
      */
     public function getTabs()
     {
@@ -686,7 +686,7 @@ class Paragraph extends Border
     /**
      * Get shading
      *
-     * @return \PhpOffice\PhpWord\Style\Shading
+     * @return \Framework\Classes\PhpWord\Style\Shading
      */
     public function getShading()
     {

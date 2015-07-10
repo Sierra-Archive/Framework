@@ -15,9 +15,9 @@
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
-namespace PhpOffice\PhpWord\Element;
+namespace Framework\Classes\PhpWord\Element;
 
-use PhpOffice\PhpWord\Style\Paragraph;
+use Framework\Classes\PhpWord\Style\Paragraph;
 
 /**
  * Footnote element
@@ -32,7 +32,7 @@ class Footnote extends AbstractContainer
     /**
      * Paragraph style
      *
-     * @var string|\PhpOffice\PhpWord\Style\Paragraph
+     * @var string|\Framework\Classes\PhpWord\Style\Paragraph
      */
     protected $paragraphStyle;
 
@@ -46,7 +46,7 @@ class Footnote extends AbstractContainer
     /**
      * Create new instance
      *
-     * @param string|array|\PhpOffice\PhpWord\Style\Paragraph $paragraphStyle
+     * @param string|array|\Framework\Classes\PhpWord\Style\Paragraph $paragraphStyle
      */
     public function __construct($paragraphStyle = null)
     {
@@ -57,7 +57,7 @@ class Footnote extends AbstractContainer
     /**
      * Get paragraph style
      *
-     * @return string|\PhpOffice\PhpWord\Style\Paragraph
+     * @return string|\Framework\Classes\PhpWord\Style\Paragraph
      */
     public function getParagraphStyle()
     {

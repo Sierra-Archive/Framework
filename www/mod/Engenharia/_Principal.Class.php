@@ -17,7 +17,7 @@ class Engenharia_Principal implements \Framework\PrincipalInterface
      * @return void 
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     static function Home(&$controle, &$modelo, &$Visual){
         self::Widgets();
@@ -27,7 +27,7 @@ class Engenharia_Principal implements \Framework\PrincipalInterface
      * 
      * @return boolean
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     static function Config(){
         return false;
@@ -141,7 +141,7 @@ class Engenharia_Principal implements \Framework\PrincipalInterface
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public static function Widgets(){
         $Registro = &\Framework\App\Registro::getInstacia();

@@ -15,7 +15,7 @@
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
-namespace PhpOffice\PhpWord\Writer\ODText\Part;
+namespace Framework\Classes\PhpWord\Writer\ODText\Part;
 
 /**
  * ODText mimetype part writer: mimetype

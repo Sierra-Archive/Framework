@@ -14,16 +14,16 @@
  * @copyright   2010-2014 PHPWord contributors
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
-namespace PhpOffice\PhpWord\Tests\Writer\Word2007\Part;
+namespace Framework\Classes\PhpWord\Tests\Writer\Word2007\Part;
 
-use PhpOffice\PhpWord\Tests\TestHelperDOCX;
-use PhpOffice\PhpWord\Writer\Word2007;
-use PhpOffice\PhpWord\Writer\Word2007\Style\Font;
+use Framework\Classes\PhpWord\Tests\TestHelperDOCX;
+use Framework\Classes\PhpWord\Writer\Word2007;
+use Framework\Classes\PhpWord\Writer\Word2007\Style\Font;
 
 /**
- * Test class for PhpOffice\PhpWord\Writer\Word2007\Style\Font
+ * Test class for Framework\Classes\PhpWord\Writer\Word2007\Style\Font
  *
- * @coversDefaultClass \PhpOffice\PhpWord\Writer\Word2007\Style\Font
+ * @coversDefaultClass \Framework\Classes\PhpWord\Writer\Word2007\Style\Font
  * @runTestsInSeparateProcesses
  */
 class FontTest extends \PHPUnit_Framework_TestCase
@@ -41,7 +41,7 @@ class FontTest extends \PHPUnit_Framework_TestCase
      */
     public function testFontRTL()
     {
-        $phpWord = new \PhpOffice\PhpWord\PhpWord();
+        $phpWord = new \Framework\Classes\PhpWord\PhpWord();
         $section = $phpWord->addSection();
         $textrun = $section->addTextRun();
         $textrun->addText('سلام این یک پاراگراف راست به چپ است', array('rtl' => true));

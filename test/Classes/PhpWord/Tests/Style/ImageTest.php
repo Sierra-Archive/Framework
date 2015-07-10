@@ -15,14 +15,14 @@
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
-namespace PhpOffice\PhpWord\Tests\Style;
+namespace Framework\Classes\PhpWord\Tests\Style;
 
-use PhpOffice\PhpWord\Style\Image;
+use Framework\Classes\PhpWord\Style\Image;
 
 /**
- * Test class for PhpOffice\PhpWord\Style\Image
+ * Test class for Framework\Classes\PhpWord\Style\Image
  *
- * @coversDefaultClass \PhpOffice\PhpWord\Style\Image
+ * @coversDefaultClass \Framework\Classes\PhpWord\Style\Image
  * @runTestsInSeparateProcesses
  */
 class ImageTest extends \PHPUnit_Framework_TestCase
@@ -63,11 +63,11 @@ class ImageTest extends \PHPUnit_Framework_TestCase
             'align' => 'left',
             'marginTop' => 240,
             'marginLeft' => 240,
-            'positioning' => \PhpOffice\PhpWord\Style\Image::POSITION_ABSOLUTE,
-            'posHorizontal' => \PhpOffice\PhpWord\Style\Image::POSITION_HORIZONTAL_CENTER,
-            'posVertical' => \PhpOffice\PhpWord\Style\Image::POSITION_VERTICAL_TOP,
-            'posHorizontalRel' => \PhpOffice\PhpWord\Style\Image::POSITION_RELATIVE_TO_COLUMN,
-            'posVerticalRel' => \PhpOffice\PhpWord\Style\Image::POSITION_RELATIVE_TO_IMARGIN
+            'positioning' => \Framework\Classes\PhpWord\Style\Image::POSITION_ABSOLUTE,
+            'posHorizontal' => \Framework\Classes\PhpWord\Style\Image::POSITION_HORIZONTAL_CENTER,
+            'posVertical' => \Framework\Classes\PhpWord\Style\Image::POSITION_VERTICAL_TOP,
+            'posHorizontalRel' => \Framework\Classes\PhpWord\Style\Image::POSITION_RELATIVE_TO_COLUMN,
+            'posVerticalRel' => \Framework\Classes\PhpWord\Style\Image::POSITION_RELATIVE_TO_IMARGIN
         );
         foreach ($properties as $key => $value) {
             $get = "get{$key}";

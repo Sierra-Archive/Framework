@@ -15,14 +15,14 @@
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
-namespace PhpOffice\PhpWord\Tests\Style;
+namespace Framework\Classes\PhpWord\Tests\Style;
 
-use PhpOffice\PhpWord\Style\ListItem;
+use Framework\Classes\PhpWord\Style\ListItem;
 
 /**
- * Test class for PhpOffice\PhpWord\Style\ListItem
+ * Test class for Framework\Classes\PhpWord\Style\ListItem
  *
- * @coversDefaultClass \PhpOffice\PhpWord\Style\ListItem
+ * @coversDefaultClass \Framework\Classes\PhpWord\Style\ListItem
  * @runTestsInSeparateProcesses
  */
 class ListItemTest extends \PHPUnit_Framework_TestCase

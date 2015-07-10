@@ -14,14 +14,14 @@
  * @copyright   2010-2014 PHPWord contributors
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
-namespace PhpOffice\PhpWord\Tests\Writer\PDF;
+namespace Framework\Classes\PhpWord\Tests\Writer\PDF;
 
-use PhpOffice\PhpWord\PhpWord;
-use PhpOffice\PhpWord\Settings;
-use PhpOffice\PhpWord\Writer\PDF;
+use Framework\Classes\PhpWord\PhpWord;
+use Framework\Classes\PhpWord\Settings;
+use Framework\Classes\PhpWord\Writer\PDF;
 
 /**
- * Test class for PhpOffice\PhpWord\Writer\PDF\MPDF
+ * Test class for Framework\Classes\PhpWord\Writer\PDF\MPDF
  *
  * @runTestsInSeparateProcesses
  */

@@ -15,10 +15,10 @@
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
-namespace PhpOffice\PhpWord\Shared;
+namespace Framework\Classes\PhpWord\Shared;
 
-use PhpOffice\PhpWord\Exception\Exception;
-use PhpOffice\PhpWord\Settings;
+use Framework\Classes\PhpWord\Exception\Exception;
+use Framework\Classes\PhpWord\Settings;
 
 /**
  * ZipArchive wrapper
@@ -151,7 +151,7 @@ class ZipArchive
      * Close the active archive
      *
      * @return bool
-     * @throws \PhpOffice\PhpWord\Exception\Exception
+     * @throws \Framework\Classes\PhpWord\Exception\Exception
      * @codeCoverageIgnore Can't find any test case. Uncomment when found.
      */
     public function close()

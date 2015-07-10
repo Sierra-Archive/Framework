@@ -15,7 +15,7 @@
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
-namespace PhpOffice\PhpWord\Writer\Word2007\Part;
+namespace Framework\Classes\PhpWord\Writer\Word2007\Part;
 
 /**
  * Word2007 settings part writer: word/settings.xml
@@ -64,7 +64,7 @@ class Settings extends AbstractPart
     /**
      * Write indivual setting, recursive to any child settings.
      *
-     * @param \PhpOffice\PhpWord\Shared\XMLWriter $xmlWriter
+     * @param \Framework\Classes\PhpWord\Shared\XMLWriter $xmlWriter
      * @param string $settingKey
      * @param array|string $settingValue
      * @return void

@@ -15,15 +15,15 @@
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
-namespace PhpOffice\PhpWord\Tests\Style;
+namespace Framework\Classes\PhpWord\Tests\Style;
 
-use PhpOffice\PhpWord\PhpWord;
-use PhpOffice\PhpWord\Style\Paragraph;
-use PhpOffice\PhpWord\Style\Tab;
-use PhpOffice\PhpWord\Tests\TestHelperDOCX;
+use Framework\Classes\PhpWord\PhpWord;
+use Framework\Classes\PhpWord\Style\Paragraph;
+use Framework\Classes\PhpWord\Style\Tab;
+use Framework\Classes\PhpWord\Tests\TestHelperDOCX;
 
 /**
- * Test class for PhpOffice\PhpWord\Style\Paragraph
+ * Test class for Framework\Classes\PhpWord\Style\Paragraph
  *
  * @runTestsInSeparateProcesses
  */
@@ -169,7 +169,7 @@ class ParagraphTest extends \PHPUnit_Framework_TestCase
     /**
      * Test line height exception by using nonnumeric value
      *
-     * @expectedException \PhpOffice\PhpWord\Exception\InvalidStyleException
+     * @expectedException \Framework\Classes\PhpWord\Exception\InvalidStyleException
      */
     public function testLineHeightException()
     {

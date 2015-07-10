@@ -15,10 +15,10 @@
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
-namespace PhpOffice\PhpWord;
+namespace Framework\Classes\PhpWord;
 
-use PhpOffice\PhpWord\Element\Section;
-use PhpOffice\PhpWord\Exception\Exception;
+use Framework\Classes\PhpWord\Element\Section;
+use Framework\Classes\PhpWord\Exception\Exception;
 
 /**
  * PHPWord main class
@@ -56,7 +56,7 @@ class PhpWord
     /**
      * Collection of sections
      *
-     * @var \PhpOffice\PhpWord\Element\Section[]
+     * @var \Framework\Classes\PhpWord\Element\Section[]
      */
     private $sections = array();
 
@@ -85,14 +85,14 @@ class PhpWord
         // Collection
         $collections = array('Bookmarks', 'Titles', 'Footnotes', 'Endnotes', 'Charts');
         foreach ($collections as $collection) {
-            $class = 'PhpOffice\\PhpWord\\Collection\\' . $collection;
+            $class = 'Framework\Classes\\PhpWord\\Collection\\' . $collection;
             $this->collections[$collection] = new $class();
         }
 
         // Metadata
         $metadata = array('DocInfo', 'Protection', 'Compatibility');
         foreach ($metadata as $meta) {
-            $class = 'PhpOffice\\PhpWord\\Metadata\\' . $meta;
+            $class = 'Framework\Classes\\PhpWord\\Metadata\\' . $meta;
             $this->metadata[$meta] = new $class();
         }
     }
@@ -136,7 +136,7 @@ class PhpWord
         if (in_array($function, $addCollection)) {
             $key = ucfirst(str_replace('add', '', $function) . 's');
 
-            /** @var \PhpOffice\PhpWord\Collection\AbstractCollection $collectionObject */
+            /** @var \Framework\Classes\PhpWord\Collection\AbstractCollection $collectionObject */
             $collectionObject = $this->collections[$key];
 
             return $collectionObject->addItem(isset($args[0]) ? $args[0] : null);
@@ -144,7 +144,7 @@ class PhpWord
 
         // Run add style method
         if (in_array($function, $addStyle)) {
-            return forward_static_call_array(array('PhpOffice\\PhpWord\\Style', $function), $args);
+            return forward_static_call_array(array('Framework\Classes\\PhpWord\\Style', $function), $args);
         }
 
         // Exception
@@ -154,7 +154,7 @@ class PhpWord
     /**
      * Get document properties object
      *
-     * @return \PhpOffice\PhpWord\Metadata\DocInfo
+     * @return \Framework\Classes\PhpWord\Metadata\DocInfo
      */
     public function getDocInfo()
     {
@@ -164,7 +164,7 @@ class PhpWord
     /**
      * Get protection
      *
-     * @return \PhpOffice\PhpWord\Metadata\Protection
+     * @return \Framework\Classes\PhpWord\Metadata\Protection
      * @since 0.12.0
      */
     public function getProtection()
@@ -175,7 +175,7 @@ class PhpWord
     /**
      * Get compatibility
      *
-     * @return \PhpOffice\PhpWord\Metadata\Compatibility
+     * @return \Framework\Classes\PhpWord\Metadata\Compatibility
      * @since 0.12.0
      */
     public function getCompatibility()
@@ -186,7 +186,7 @@ class PhpWord
     /**
      * Get all sections
      *
-     * @return \PhpOffice\PhpWord\Element\Section[]
+     * @return \Framework\Classes\PhpWord\Element\Section[]
      */
     public function getSections()
     {
@@ -197,7 +197,7 @@ class PhpWord
      * Create new section
      *
      * @param array $style
-     * @return \PhpOffice\PhpWord\Element\Section
+     * @return \Framework\Classes\PhpWord\Element\Section
      */
     public function addSection($style = null)
     {
@@ -254,7 +254,7 @@ class PhpWord
      * Set default paragraph style definition to styles.xml
      *
      * @param array $styles Paragraph style definition
-     * @return \PhpOffice\PhpWord\Style\Paragraph
+     * @return \Framework\Classes\PhpWord\Style\Paragraph
      */
     public function setDefaultParagraphStyle($styles)
     {
@@ -268,7 +268,7 @@ class PhpWord
      *
      * @param  string $filename Fully qualified filename.
      * @return TemplateProcessor
-     * @throws \PhpOffice\PhpWord\Exception\Exception
+     * @throws \Framework\Classes\PhpWord\Exception\Exception
      */
     public function loadTemplate($filename)
     {
@@ -320,7 +320,7 @@ class PhpWord
      * Create new section
      *
      * @param array $settings
-     * @return \PhpOffice\PhpWord\Element\Section
+     * @return \Framework\Classes\PhpWord\Element\Section
      * @deprecated 0.10.0
      * @codeCoverageIgnore
      */
@@ -332,7 +332,7 @@ class PhpWord
     /**
      * Get document properties object
      *
-     * @return \PhpOffice\PhpWord\Metadata\DocInfo
+     * @return \Framework\Classes\PhpWord\Metadata\DocInfo
      * @deprecated 0.12.0
      * @codeCoverageIgnore
      */
@@ -344,7 +344,7 @@ class PhpWord
     /**
      * Set document properties object
      *
-     * @param \PhpOffice\PhpWord\Metadata\DocInfo $documentProperties
+     * @param \Framework\Classes\PhpWord\Metadata\DocInfo $documentProperties
      * @return self
      * @deprecated 0.12.0
      * @codeCoverageIgnore

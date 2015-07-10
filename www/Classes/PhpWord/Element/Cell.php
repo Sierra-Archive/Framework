@@ -15,9 +15,9 @@
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
-namespace PhpOffice\PhpWord\Element;
+namespace Framework\Classes\PhpWord\Element;
 
-use PhpOffice\PhpWord\Style\Cell as CellStyle;
+use Framework\Classes\PhpWord\Style\Cell as CellStyle;
 
 /**
  * Table cell element
@@ -39,7 +39,7 @@ class Cell extends AbstractContainer
     /**
      * Cell style
      *
-     * @var \PhpOffice\PhpWord\Style\Cell
+     * @var \Framework\Classes\PhpWord\Style\Cell
      */
     private $style;
 
@@ -47,7 +47,7 @@ class Cell extends AbstractContainer
      * Create new instance
      *
      * @param int $width
-     * @param array|\PhpOffice\PhpWord\Style\Cell $style
+     * @param array|\Framework\Classes\PhpWord\Style\Cell $style
      */
     public function __construct($width = null, $style = null)
     {
@@ -58,7 +58,7 @@ class Cell extends AbstractContainer
     /**
      * Get cell style
      *
-     * @return \PhpOffice\PhpWord\Style\Cell
+     * @return \Framework\Classes\PhpWord\Style\Cell
      */
     public function getStyle()
     {

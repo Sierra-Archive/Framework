@@ -15,12 +15,12 @@
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
-namespace PhpOffice\PhpWord\Tests\Element;
+namespace Framework\Classes\PhpWord\Tests\Element;
 
-use PhpOffice\PhpWord\Element\Header;
+use Framework\Classes\PhpWord\Element\Header;
 
 /**
- * Test class for PhpOffice\PhpWord\Element\Header
+ * Test class for Framework\Classes\PhpWord\Element\Header
  *
  * @runTestsInSeparateProcesses
  */
@@ -34,7 +34,7 @@ class HeaderTest extends \PHPUnit_Framework_TestCase
         $iVal = rand(1, 1000);
         $oHeader = new Header($iVal);
 
-        $this->assertInstanceOf('PhpOffice\\PhpWord\\Element\\Header', $oHeader);
+        $this->assertInstanceOf('Framework\Classes\\PhpWord\\Element\\Header', $oHeader);
         $this->assertEquals($oHeader->getSectionId(), $iVal);
         $this->assertEquals($oHeader->getType(), Header::AUTO);
     }
@@ -47,7 +47,7 @@ class HeaderTest extends \PHPUnit_Framework_TestCase
         $oHeader = new Header(1);
         $element = $oHeader->addText('text');
 
-        $this->assertInstanceOf('PhpOffice\\PhpWord\\Element\\Text', $element);
+        $this->assertInstanceOf('Framework\Classes\\PhpWord\\Element\\Text', $element);
         $this->assertCount(1, $oHeader->getElements());
         $this->assertEquals($element->getText(), 'text');
     }
@@ -60,7 +60,7 @@ class HeaderTest extends \PHPUnit_Framework_TestCase
         $oHeader = new Header(1);
         $element = $oHeader->addText(utf8_decode('ééé'));
 
-        $this->assertInstanceOf('PhpOffice\\PhpWord\\Element\\Text', $element);
+        $this->assertInstanceOf('Framework\Classes\\PhpWord\\Element\\Text', $element);
         $this->assertCount(1, $oHeader->getElements());
         $this->assertEquals($element->getText(), 'ééé');
     }
@@ -93,7 +93,7 @@ class HeaderTest extends \PHPUnit_Framework_TestCase
     {
         $oHeader = new Header(1);
         $element = $oHeader->addTextRun();
-        $this->assertInstanceOf('PhpOffice\\PhpWord\\Element\\TextRun', $element);
+        $this->assertInstanceOf('Framework\Classes\\PhpWord\\Element\\TextRun', $element);
         $this->assertCount(1, $oHeader->getElements());
     }
 
@@ -104,7 +104,7 @@ class HeaderTest extends \PHPUnit_Framework_TestCase
     {
         $oHeader = new Header(1);
         $element = $oHeader->addTable();
-        $this->assertInstanceOf('PhpOffice\\PhpWord\\Element\\Table', $element);
+        $this->assertInstanceOf('Framework\Classes\\PhpWord\\Element\\Table', $element);
         $this->assertCount(1, $oHeader->getElements());
     }
 
@@ -118,7 +118,7 @@ class HeaderTest extends \PHPUnit_Framework_TestCase
         $element = $oHeader->addImage($src);
 
         $this->assertCount(1, $oHeader->getElements());
-        $this->assertInstanceOf('PhpOffice\\PhpWord\\Element\\Image', $element);
+        $this->assertInstanceOf('Framework\Classes\\PhpWord\\Element\\Image', $element);
     }
 
     /**
@@ -132,7 +132,7 @@ class HeaderTest extends \PHPUnit_Framework_TestCase
         );
 
         $this->assertCount(1, $oHeader->getElements());
-        $this->assertInstanceOf('PhpOffice\\PhpWord\\Element\\Image', $element);
+        $this->assertInstanceOf('Framework\Classes\\PhpWord\\Element\\Image', $element);
     }
 
     /**
@@ -144,7 +144,7 @@ class HeaderTest extends \PHPUnit_Framework_TestCase
         $element = $oHeader->addPreserveText('text');
 
         $this->assertCount(1, $oHeader->getElements());
-        $this->assertInstanceOf('PhpOffice\\PhpWord\\Element\\PreserveText', $element);
+        $this->assertInstanceOf('Framework\Classes\\PhpWord\\Element\\PreserveText', $element);
     }
 
     /**
@@ -156,7 +156,7 @@ class HeaderTest extends \PHPUnit_Framework_TestCase
         $element = $oHeader->addPreserveText(utf8_decode('ééé'));
 
         $this->assertCount(1, $oHeader->getElements());
-        $this->assertInstanceOf('PhpOffice\\PhpWord\\Element\\PreserveText', $element);
+        $this->assertInstanceOf('Framework\Classes\\PhpWord\\Element\\PreserveText', $element);
         $this->assertEquals($element->getText(), array('ééé'));
     }
 
@@ -170,7 +170,7 @@ class HeaderTest extends \PHPUnit_Framework_TestCase
         $element = $oHeader->addWatermark($src);
 
         $this->assertCount(1, $oHeader->getElements());
-        $this->assertInstanceOf('PhpOffice\\PhpWord\\Element\\Image', $element);
+        $this->assertInstanceOf('Framework\Classes\\PhpWord\\Element\\Image', $element);
     }
 
     /**

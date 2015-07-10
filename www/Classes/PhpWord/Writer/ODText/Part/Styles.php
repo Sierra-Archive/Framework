@@ -15,11 +15,11 @@
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
-namespace PhpOffice\PhpWord\Writer\ODText\Part;
+namespace Framework\Classes\PhpWord\Writer\ODText\Part;
 
-use PhpOffice\PhpWord\Settings;
-use PhpOffice\PhpWord\Shared\XMLWriter;
-use PhpOffice\PhpWord\Style;
+use Framework\Classes\PhpWord\Settings;
+use Framework\Classes\PhpWord\Shared\XMLWriter;
+use Framework\Classes\PhpWord\Style;
 
 /**
  * ODText styles part writer: styles.xml
@@ -63,7 +63,7 @@ class Styles extends AbstractPart
     /**
      * Write default styles.
      *
-     * @param \PhpOffice\PhpWord\Shared\XMLWriter $xmlWriter
+     * @param \Framework\Classes\PhpWord\Shared\XMLWriter $xmlWriter
      * @return void
      */
     private function writeDefault(XMLWriter $xmlWriter)
@@ -108,7 +108,7 @@ class Styles extends AbstractPart
     /**
      * Write named styles.
      *
-     * @param \PhpOffice\PhpWord\Shared\XMLWriter $xmlWriter
+     * @param \Framework\Classes\PhpWord\Shared\XMLWriter $xmlWriter
      * @return void
      */
     private function writeNamed(XMLWriter $xmlWriter)
@@ -119,7 +119,7 @@ class Styles extends AbstractPart
                 if ($style->isAuto() === false) {
                     $styleClass = str_replace('\\Style\\', '\\Writer\\ODText\\Style\\', get_class($style));
                     if (class_exists($styleClass)) {
-                        /** @var $styleWriter \PhpOffice\PhpWord\Writer\ODText\Style\AbstractStyle Type hint */
+                        /** @var $styleWriter \Framework\Classes\PhpWord\Writer\ODText\Style\AbstractStyle Type hint */
                         $styleWriter = new $styleClass($xmlWriter, $style);
                         $styleWriter->write();
                     }
@@ -130,7 +130,7 @@ class Styles extends AbstractPart
     /**
      * Write page layout styles.
      *
-     * @param \PhpOffice\PhpWord\Shared\XMLWriter $xmlWriter
+     * @param \Framework\Classes\PhpWord\Shared\XMLWriter $xmlWriter
      * @return void
      */
     private function writePageLayout(XMLWriter $xmlWriter)
@@ -183,7 +183,7 @@ class Styles extends AbstractPart
     /**
      * Write master style.
      *
-     * @param \PhpOffice\PhpWord\Shared\XMLWriter $xmlWriter
+     * @param \Framework\Classes\PhpWord\Shared\XMLWriter $xmlWriter
      * @return void
      */
     private function writeMaster(XMLWriter $xmlWriter)

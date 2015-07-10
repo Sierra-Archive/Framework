@@ -15,13 +15,13 @@
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
-namespace PhpOffice\PhpWord\Tests\Element;
+namespace Framework\Classes\PhpWord\Tests\Element;
 
-use PhpOffice\PhpWord\Element\TextRun;
-use PhpOffice\PhpWord\PhpWord;
+use Framework\Classes\PhpWord\Element\TextRun;
+use Framework\Classes\PhpWord\PhpWord;
 
 /**
- * Test class for PhpOffice\PhpWord\Element\TextRun
+ * Test class for Framework\Classes\PhpWord\Element\TextRun
  *
  * @runTestsInSeparateProcesses
  */
@@ -34,7 +34,7 @@ class TextRunTest extends \PHPUnit_Framework_TestCase
     {
         $oTextRun = new TextRun();
 
-        $this->assertInstanceOf('PhpOffice\\PhpWord\\Element\\TextRun', $oTextRun);
+        $this->assertInstanceOf('Framework\Classes\\PhpWord\\Element\\TextRun', $oTextRun);
         $this->assertCount(0, $oTextRun->getElements());
         $this->assertEquals($oTextRun->getParagraphStyle(), null);
     }
@@ -46,7 +46,7 @@ class TextRunTest extends \PHPUnit_Framework_TestCase
     {
         $oTextRun = new TextRun('pStyle');
 
-        $this->assertInstanceOf('PhpOffice\\PhpWord\\Element\\TextRun', $oTextRun);
+        $this->assertInstanceOf('Framework\Classes\\PhpWord\\Element\\TextRun', $oTextRun);
         $this->assertCount(0, $oTextRun->getElements());
         $this->assertEquals($oTextRun->getParagraphStyle(), 'pStyle');
     }
@@ -58,9 +58,9 @@ class TextRunTest extends \PHPUnit_Framework_TestCase
     {
         $oTextRun = new TextRun(array('spacing' => 100));
 
-        $this->assertInstanceOf('PhpOffice\\PhpWord\\Element\\TextRun', $oTextRun);
+        $this->assertInstanceOf('Framework\Classes\\PhpWord\\Element\\TextRun', $oTextRun);
         $this->assertCount(0, $oTextRun->getElements());
-        $this->assertInstanceOf('PhpOffice\\PhpWord\\Style\\Paragraph', $oTextRun->getParagraphStyle());
+        $this->assertInstanceOf('Framework\Classes\\PhpWord\\Style\\Paragraph', $oTextRun->getParagraphStyle());
     }
 
     /**
@@ -71,7 +71,7 @@ class TextRunTest extends \PHPUnit_Framework_TestCase
         $oTextRun = new TextRun();
         $element = $oTextRun->addText('text');
 
-        $this->assertInstanceOf('PhpOffice\\PhpWord\\Element\\Text', $element);
+        $this->assertInstanceOf('Framework\Classes\\PhpWord\\Element\\Text', $element);
         $this->assertCount(1, $oTextRun->getElements());
         $this->assertEquals($element->getText(), 'text');
     }
@@ -84,7 +84,7 @@ class TextRunTest extends \PHPUnit_Framework_TestCase
         $oTextRun = new TextRun();
         $element = $oTextRun->addText(utf8_decode('ééé'));
 
-        $this->assertInstanceOf('PhpOffice\\PhpWord\\Element\\Text', $element);
+        $this->assertInstanceOf('Framework\Classes\\PhpWord\\Element\\Text', $element);
         $this->assertCount(1, $oTextRun->getElements());
         $this->assertEquals($element->getText(), 'ééé');
     }
@@ -97,7 +97,7 @@ class TextRunTest extends \PHPUnit_Framework_TestCase
         $oTextRun = new TextRun();
         $element = $oTextRun->addLink('http://www.google.fr');
 
-        $this->assertInstanceOf('PhpOffice\\PhpWord\\Element\\Link', $element);
+        $this->assertInstanceOf('Framework\Classes\\PhpWord\\Element\\Link', $element);
         $this->assertCount(1, $oTextRun->getElements());
         $this->assertEquals($element->getSource(), 'http://www.google.fr');
     }
@@ -110,7 +110,7 @@ class TextRunTest extends \PHPUnit_Framework_TestCase
         $oTextRun = new TextRun();
         $element = $oTextRun->addLink('http://www.google.fr', utf8_decode('ééé'));
 
-        $this->assertInstanceOf('PhpOffice\\PhpWord\\Element\\Link', $element);
+        $this->assertInstanceOf('Framework\Classes\\PhpWord\\Element\\Link', $element);
         $this->assertCount(1, $oTextRun->getElements());
         $this->assertEquals($element->getSource(), 'http://www.google.fr');
         $this->assertEquals($element->getText(), 'ééé');
@@ -137,7 +137,7 @@ class TextRunTest extends \PHPUnit_Framework_TestCase
         $oTextRun = new TextRun();
         $element = $oTextRun->addImage($src);
 
-        $this->assertInstanceOf('PhpOffice\\PhpWord\\Element\\Image', $element);
+        $this->assertInstanceOf('Framework\Classes\\PhpWord\\Element\\Image', $element);
         $this->assertCount(1, $oTextRun->getElements());
     }
 
@@ -150,7 +150,7 @@ class TextRunTest extends \PHPUnit_Framework_TestCase
         $oTextRun->setPhpWord(new PhpWord());
         $element = $oTextRun->addFootnote();
 
-        $this->assertInstanceOf('PhpOffice\\PhpWord\\Element\\Footnote', $element);
+        $this->assertInstanceOf('Framework\Classes\\PhpWord\\Element\\Footnote', $element);
         $this->assertCount(1, $oTextRun->getElements());
     }
 }

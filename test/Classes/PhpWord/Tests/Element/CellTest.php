@@ -15,12 +15,12 @@
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
-namespace PhpOffice\PhpWord\Tests\Element;
+namespace Framework\Classes\PhpWord\Tests\Element;
 
-use PhpOffice\PhpWord\Element\Cell;
+use Framework\Classes\PhpWord\Element\Cell;
 
 /**
- * Test class for PhpOffice\PhpWord\Element\Cell
+ * Test class for Framework\Classes\PhpWord\Element\Cell
  *
  * @runTestsInSeparateProcesses
  */
@@ -33,7 +33,7 @@ class CellTest extends \PHPUnit_Framework_TestCase
     {
         $oCell = new Cell();
 
-        $this->assertInstanceOf('PhpOffice\\PhpWord\\Element\\Cell', $oCell);
+        $this->assertInstanceOf('Framework\Classes\\PhpWord\\Element\\Cell', $oCell);
         $this->assertEquals($oCell->getWidth(), null);
     }
 
@@ -44,7 +44,7 @@ class CellTest extends \PHPUnit_Framework_TestCase
     {
         $oCell = new Cell(null, array('valign' => 'center'));
 
-        $this->assertInstanceOf('PhpOffice\\PhpWord\\Style\\Cell', $oCell->getStyle());
+        $this->assertInstanceOf('Framework\Classes\\PhpWord\\Style\\Cell', $oCell->getStyle());
         $this->assertEquals($oCell->getWidth(), null);
     }
 
@@ -57,7 +57,7 @@ class CellTest extends \PHPUnit_Framework_TestCase
         $element = $oCell->addText('text');
 
         $this->assertCount(1, $oCell->getElements());
-        $this->assertInstanceOf('PhpOffice\\PhpWord\\Element\\Text', $element);
+        $this->assertInstanceOf('Framework\Classes\\PhpWord\\Element\\Text', $element);
     }
 
     /**
@@ -69,7 +69,7 @@ class CellTest extends \PHPUnit_Framework_TestCase
         $element = $oCell->addText(utf8_decode('ééé'));
 
         $this->assertCount(1, $oCell->getElements());
-        $this->assertInstanceOf('PhpOffice\\PhpWord\\Element\\Text', $element);
+        $this->assertInstanceOf('Framework\Classes\\PhpWord\\Element\\Text', $element);
         $this->assertEquals($element->getText(), 'ééé');
     }
 
@@ -82,7 +82,7 @@ class CellTest extends \PHPUnit_Framework_TestCase
         $element = $oCell->addLink(utf8_decode('ééé'), utf8_decode('ééé'));
 
         $this->assertCount(1, $oCell->getElements());
-        $this->assertInstanceOf('PhpOffice\\PhpWord\\Element\\Link', $element);
+        $this->assertInstanceOf('Framework\Classes\\PhpWord\\Element\\Link', $element);
     }
 
     /**
@@ -105,7 +105,7 @@ class CellTest extends \PHPUnit_Framework_TestCase
         $element = $oCell->addListItem('text');
 
         $this->assertCount(1, $oCell->getElements());
-        $this->assertInstanceOf('PhpOffice\\PhpWord\\Element\\ListItem', $element);
+        $this->assertInstanceOf('Framework\Classes\\PhpWord\\Element\\ListItem', $element);
         $this->assertEquals($element->getTextObject()->getText(), 'text');
     }
 
@@ -118,7 +118,7 @@ class CellTest extends \PHPUnit_Framework_TestCase
         $element = $oCell->addListItem(utf8_decode('ééé'));
 
         $this->assertCount(1, $oCell->getElements());
-        $this->assertInstanceOf('PhpOffice\\PhpWord\\Element\\ListItem', $element);
+        $this->assertInstanceOf('Framework\Classes\\PhpWord\\Element\\ListItem', $element);
         $this->assertEquals($element->getTextObject()->getText(), 'ééé');
     }
 
@@ -132,7 +132,7 @@ class CellTest extends \PHPUnit_Framework_TestCase
         $element = $oCell->addImage($src);
 
         $this->assertCount(1, $oCell->getElements());
-        $this->assertInstanceOf('PhpOffice\\PhpWord\\Element\\Image', $element);
+        $this->assertInstanceOf('Framework\Classes\\PhpWord\\Element\\Image', $element);
     }
 
     /**
@@ -145,7 +145,7 @@ class CellTest extends \PHPUnit_Framework_TestCase
         $element = $oCell->addImage($src);
 
         $this->assertCount(1, $oCell->getElements());
-        $this->assertInstanceOf('PhpOffice\\PhpWord\\Element\\Image', $element);
+        $this->assertInstanceOf('Framework\Classes\\PhpWord\\Element\\Image', $element);
     }
 
     /**
@@ -158,7 +158,7 @@ class CellTest extends \PHPUnit_Framework_TestCase
         $element = $oCell->addImage($src);
 
         $this->assertCount(1, $oCell->getElements());
-        $this->assertInstanceOf('PhpOffice\\PhpWord\\Element\\Image', $element);
+        $this->assertInstanceOf('Framework\Classes\\PhpWord\\Element\\Image', $element);
     }
 
     /**
@@ -172,7 +172,7 @@ class CellTest extends \PHPUnit_Framework_TestCase
         );
 
         $this->assertCount(1, $oCell->getElements());
-        $this->assertInstanceOf('PhpOffice\\PhpWord\\Element\\Image', $element);
+        $this->assertInstanceOf('Framework\Classes\\PhpWord\\Element\\Image', $element);
     }
 
     /**
@@ -185,13 +185,13 @@ class CellTest extends \PHPUnit_Framework_TestCase
         $element = $oCell->addObject($src);
 
         $this->assertCount(1, $oCell->getElements());
-        $this->assertInstanceOf('PhpOffice\\PhpWord\\Element\\Object', $element);
+        $this->assertInstanceOf('Framework\Classes\\PhpWord\\Element\\Object', $element);
     }
 
     /**
      * Test add object exception
      *
-     * @expectedException \PhpOffice\PhpWord\Exception\InvalidObjectException
+     * @expectedException \Framework\Classes\PhpWord\Exception\InvalidObjectException
      */
     public function testAddObjectException()
     {
@@ -210,7 +210,7 @@ class CellTest extends \PHPUnit_Framework_TestCase
         $element = $oCell->addPreserveText('text');
 
         $this->assertCount(1, $oCell->getElements());
-        $this->assertInstanceOf('PhpOffice\\PhpWord\\Element\\PreserveText', $element);
+        $this->assertInstanceOf('Framework\Classes\\PhpWord\\Element\\PreserveText', $element);
     }
 
     /**
@@ -223,7 +223,7 @@ class CellTest extends \PHPUnit_Framework_TestCase
         $element = $oCell->addPreserveText(utf8_decode('ééé'));
 
         $this->assertCount(1, $oCell->getElements());
-        $this->assertInstanceOf('PhpOffice\\PhpWord\\Element\\PreserveText', $element);
+        $this->assertInstanceOf('Framework\Classes\\PhpWord\\Element\\PreserveText', $element);
         $this->assertEquals($element->getText(), array('ééé'));
     }
 
@@ -248,7 +248,7 @@ class CellTest extends \PHPUnit_Framework_TestCase
         $element = $oCell->addTextRun();
 
         $this->assertCount(1, $oCell->getElements());
-        $this->assertInstanceOf('PhpOffice\\PhpWord\\Element\\TextRun', $element);
+        $this->assertInstanceOf('Framework\Classes\\PhpWord\\Element\\TextRun', $element);
     }
 
     /**
@@ -260,7 +260,7 @@ class CellTest extends \PHPUnit_Framework_TestCase
         $element = $oCell->addCheckBox(utf8_decode('ééé'), utf8_decode('ééé'));
 
         $this->assertCount(1, $oCell->getElements());
-        $this->assertInstanceOf('PhpOffice\\PhpWord\\Element\\CheckBox', $element);
+        $this->assertInstanceOf('Framework\Classes\\PhpWord\\Element\\CheckBox', $element);
     }
 
     /**

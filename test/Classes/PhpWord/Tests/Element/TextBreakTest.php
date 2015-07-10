@@ -15,16 +15,16 @@
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
-namespace PhpOffice\PhpWord\Tests\Element;
+namespace Framework\Classes\PhpWord\Tests\Element;
 
-use PhpOffice\PhpWord\Element\TextBreak;
-use PhpOffice\PhpWord\Style\Font;
-use PhpOffice\PhpWord\Style\Paragraph;
+use Framework\Classes\PhpWord\Element\TextBreak;
+use Framework\Classes\PhpWord\Style\Font;
+use Framework\Classes\PhpWord\Style\Paragraph;
 
 /**
- * Test class for PhpOffice\PhpWord\Element\TextBreak
+ * Test class for Framework\Classes\PhpWord\Element\TextBreak
  *
- * @coversDefaultClass \PhpOffice\PhpWord\Element\TextBreak
+ * @coversDefaultClass \Framework\Classes\PhpWord\Element\TextBreak
  * @runTestsInSeparateProcesses
  */
 class TextBreakTest extends \PHPUnit_Framework_TestCase
@@ -59,8 +59,8 @@ class TextBreakTest extends \PHPUnit_Framework_TestCase
         $fStyle = array('size' => 12);
         $pStyle = array('spacing' => 240);
         $object = new TextBreak($fStyle, $pStyle);
-        $this->assertInstanceOf('PhpOffice\\PhpWord\\Style\\Font', $object->getFontStyle());
-        $this->assertInstanceOf('PhpOffice\\PhpWord\\Style\\Paragraph', $object->getParagraphStyle());
+        $this->assertInstanceOf('Framework\Classes\\PhpWord\\Style\\Font', $object->getFontStyle());
+        $this->assertInstanceOf('Framework\Classes\\PhpWord\\Style\\Paragraph', $object->getParagraphStyle());
     }
 
     /**

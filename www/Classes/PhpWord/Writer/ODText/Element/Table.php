@@ -15,7 +15,7 @@
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
-namespace PhpOffice\PhpWord\Writer\ODText\Element;
+namespace Framework\Classes\PhpWord\Writer\ODText\Element;
 
 /**
  * Table element writer
@@ -31,7 +31,7 @@ class Table extends AbstractElement
     {
         $xmlWriter = $this->getXmlWriter();
         $element = $this->getElement();
-        if (!$element instanceof \PhpOffice\PhpWord\Element\Table) {
+        if (!$element instanceof \Framework\Classes\PhpWord\Element\Table) {
             return;
         }
         $rows = $element->getRows();
@@ -49,7 +49,7 @@ class Table extends AbstractElement
 
             foreach ($rows as $row) {
                 $xmlWriter->startElement('table:table-row');
-                /** @var $row \PhpOffice\PhpWord\Element\Row Type hint */
+                /** @var $row \Framework\Classes\PhpWord\Element\Row Type hint */
                 foreach ($row->getCells() as $cell) {
                     $xmlWriter->startElement('table:table-cell');
                     $xmlWriter->writeAttribute('office:value-type', 'string');

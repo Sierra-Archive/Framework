@@ -1,0 +1,204 @@
+Framework\Classes\PhpWord\Tests\Autoloader
+ [ ] Register
+ [ ] Autoload
+
+Framework\Classes\PhpWord\Tests\IOFactory
+ [ ] Existing writer can be created
+ [ ] Nonexistent writer can not be created
+ [ ] Existing reader can be created
+ [ ] Nonexistent reader can not be created
+ [ ] Load
+
+Framework\Classes\PhpWord\Tests\Media
+ [ ] Get section media elements with null
+ [ ] Count section media elements with null
+ [ ] Add section media element
+ [ ] Add section link element
+ [ ] Add header media element
+ [ ] Add footer media element
+ [ ] Add element image exception
+
+Framework\Classes\PhpWord\Tests\PhpWord
+ [ ] Construct
+ [ ] Create get sections
+ [ ] Set get default font name
+ [ ] Set get default font size
+ [ ] Set default paragraph style
+ [ ] Add styles
+ [ ] Add title style
+ [ ] Load template
+ [ ] Load template exception
+ [ ] Save
+ [ ] Call undefined method
+
+Framework\Classes\PhpWord\Tests\Settings
+ [ ] Set get compatibility
+ [ ] Set get zip class
+ [ ] Set get pdf renderer
+ [ ] Set get measurement unit
+ [ ] Php temp dir is used by default
+ [ ] Set get default font name
+ [ ] Set get default font size
+ [ ] Load config
+
+Framework\Classes\PhpWord\Tests\Style
+ [ ] Styles
+ [ ] Default paragraph style
+
+Framework\Classes\PhpWord\Tests\TemplateProcessor
+ [ ] Template can be saved in temporary location
+ [ ] Xsl style sheet can not be applied on failure of setting parameter value
+ [ ] Xsl style sheet can not be applied on failure of loading xml from template
+ [ ] Clone row
+ [ ] Variables can be replaced in header and footer
+ [ ] Clone delete block
+
+Framework\Classes\PhpWord\Tests\Element\AbstractElement
+ [ ] Element index
+ [ ] Element id
+
+Framework\Classes\PhpWord\Tests\Element\Cell
+ [ ] Construct
+ [ ] Construct with style array
+ [ ] Add text
+ [ ] Add text not u t f 8
+ [ ] Add link
+ [ ] Add text break
+ [ ] Add list item
+ [ ] Add list item not u t f 8
+ [ ] Add image section
+ [ ] Add image header
+ [ ] Add image footer
+ [ ] Add image section by url
+ [ ] Add object x l s
+ [ ] Add object exception
+ [ ] Add preserve text
+ [ ] Add preserve text not u t f 8
+ [ ] Add preserve text exception
+ [ ] Create text run
+ [ ] Add check box
+ [ ] Get elements
+
+Framework\Classes\PhpWord\Tests\Element\CheckBox
+ [ ] Construct
+ [ ] Check box
+ [ ] Font
+ [ ] Font object
+ [ ] Paragraph
+
+Framework\Classes\PhpWord\Tests\Element\Field
+ [ ] Construct null
+ [ ] Construct with type
+ [ ] Construct with type properties
+ [ ] Construct with type properties options
+ [ ] Set type exception
+ [ ] Set properties exception
+ [ ] Set options exception
+
+Framework\Classes\PhpWord\Tests\Element\Footer
+ [ ] Construct
+ [ ] Add text
+ [ ] Add text not u t f 8
+ [ ] Add text break
+ [ ] Create text run
+ [ ] Add table
+ [ ] Add image
+ [ ] Add image by url
+ [ ] Add preserve text
+ [ ] Add preserve text not u t f 8
+ [ ] Get elements
+ [ ] Relation i d
+
+Framework\Classes\PhpWord\Tests\Element\Footnote
+ [ ] Construct
+ [ ] Construct string
+ [ ] Construct array
+ [ ] Add text
+ [ ] Add text break
+ [ ] Add link
+ [ ] Reference id
+ [ ] Get elements
+
+Framework\Classes\PhpWord\Tests\Element\Header
+ [ ] Construct default
+ [ ] Add text
+ [ ] Add text not u t f 8
+ [ ] Add text break
+ [ ] Add text break with params
+ [ ] Create text run
+ [ ] Add table
+ [ ] Add image
+ [ ] Add image by url
+ [ ] Add preserve text
+ [ ] Add preserve text not u t f 8
+ [ ] Add watermark
+ [ ] Get elements
+ [ ] Relation id
+ [ ] Reset type
+ [ ] First page
+ [ ] Even page
+ [ ] Add footnote exception
+ [ ] Set get type
+
+Framework\Classes\PhpWord\Tests\Element\Image
+ [ ] Construct
+ [ ] Construct with style
+ [ ] Images
+ [ ] Style
+ [ ] Invalid image local
+ [ ] Invalid image php
+ [ ] Unsupported image
+ [ ] Relation i d
+ [ ] Archived image
+
+Framework\Classes\PhpWord\Tests\Element\Line
+ [ ] Construct
+ [ ] Style text
+ [ ] Style array
+
+Framework\Classes\PhpWord\Tests\Element\Link
+ [ ] Construct default
+ [ ] Construct with params array
+ [ ] Construct with params string
+ [ ] Relation id
+
+Framework\Classes\PhpWord\Tests\Element\ListItemRun
+ [ ] Construct null
+ [ ] Construct string
+ [ ] Construct list string
+ [ ] Construct array
+ [ ] Style
+ [ ] Depth
+ [ ] Add text
+ [ ] Add text not u t f 8
+ [ ] Add link
+ [ ] Add link with name
+ [ ] Add text break
+ [ ] Add image
+
+Framework\Classes\PhpWord\Tests\Element\ListItem
+ [ ] Text
+ [ ] Style
+ [ ] Depth
+
+Framework\Classes\PhpWord\Tests\Element\Object
+ [ ] Construct with supported files
+ [ ] Construct with not supported files
+ [ ] Construct with supported files and style
+ [ ] Relation id
+ [ ] Image relation id
+
+Framework\Classes\PhpWord\Tests\Element\PageBreak
+ [ ] Construct
+
+Framework\Classes\PhpWord\Tests\Element\PreserveText
+ [ ] Construct
+ [ ] Construct with string
+ [ ] Construct with array
+
+Framework\Classes\PhpWord\Tests\Element\Row
+ [ ] Construct
+ [ ] Construct with params
+ [ ] Add cell
+
+Framework\Classes\PhpWord\Tests\Element\SDT

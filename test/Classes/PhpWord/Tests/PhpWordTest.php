@@ -15,15 +15,15 @@
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
-namespace PhpOffice\PhpWord\Tests;
+namespace Framework\Classes\PhpWord\Tests;
 
-use PhpOffice\PhpWord\Metadata\DocInfo;
-use PhpOffice\PhpWord\PhpWord;
-use PhpOffice\PhpWord\Settings;
-use PhpOffice\PhpWord\Style;
+use Framework\Classes\PhpWord\Metadata\DocInfo;
+use Framework\Classes\PhpWord\PhpWord;
+use Framework\Classes\PhpWord\Settings;
+use Framework\Classes\PhpWord\Style;
 
 /**
- * Test class for PhpOffice\PhpWord\PhpWord
+ * Test class for Framework\Classes\PhpWord\PhpWord
  *
  * @runTestsInSeparateProcesses
  */
@@ -81,7 +81,7 @@ class PhpWordTest extends \PHPUnit_Framework_TestCase
     {
         $phpWord = new PhpWord();
         $phpWord->setDefaultParagraphStyle(array());
-        $this->assertInstanceOf('PhpOffice\\PhpWord\\Style\\Paragraph', Style::getStyle('Normal'));
+        $this->assertInstanceOf('Framework\Classes\\PhpWord\\Style\\Paragraph', Style::getStyle('Normal'));
     }
 
     /**
@@ -100,7 +100,7 @@ class PhpWordTest extends \PHPUnit_Framework_TestCase
             $method = "add{$key}Style";
             $styleId = "{$key} Style";
             $phpWord->$method($styleId, array());
-            $this->assertInstanceOf("PhpOffice\\PhpWord\\Style\\{$value}", Style::getStyle($styleId));
+            $this->assertInstanceOf("Framework\Classes\\PhpWord\\Style\\{$value}", Style::getStyle($styleId));
         }
 
     }
@@ -114,7 +114,7 @@ class PhpWordTest extends \PHPUnit_Framework_TestCase
         $titleLevel = 1;
         $titleName = "Heading_{$titleLevel}";
         $phpWord->addTitleStyle($titleLevel, array());
-        $this->assertInstanceOf('PhpOffice\\PhpWord\\Style\\Font', Style::getStyle($titleName));
+        $this->assertInstanceOf('Framework\Classes\\PhpWord\\Style\\Font', Style::getStyle($titleName));
     }
 
     /**
@@ -128,7 +128,7 @@ class PhpWordTest extends \PHPUnit_Framework_TestCase
 
         $phpWord = new PhpWord();
         $this->assertInstanceOf(
-            'PhpOffice\\PhpWord\\TemplateProcessor',
+            'Framework\Classes\\PhpWord\\TemplateProcessor',
             $phpWord->loadTemplate($templateFqfn)
         );
     }
@@ -138,7 +138,7 @@ class PhpWordTest extends \PHPUnit_Framework_TestCase
      *
      * @deprecated 0.12.0
      *
-     * @expectedException \PhpOffice\PhpWord\Exception\Exception
+     * @expectedException \Framework\Classes\PhpWord\Exception\Exception
      */
     public function testLoadTemplateException()
     {

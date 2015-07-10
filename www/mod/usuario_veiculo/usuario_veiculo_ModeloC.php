@@ -13,7 +13,7 @@ class usuario_veiculo_ModeloControle extends usuario_veiculo_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 2.0
+    * @version 3.1.1
     */
     public function __construct(){
         parent::__construct();
@@ -29,7 +29,7 @@ class usuario_veiculo_ModeloControle extends usuario_veiculo_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 2.0
+    * @version 3.1.1
     */
     public function Main(){
         $this->Modelos();
@@ -53,7 +53,7 @@ class usuario_veiculo_ModeloControle extends usuario_veiculo_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Modelos(){
         self::Endereco_Veiculo_Modelo(false);
@@ -85,7 +85,7 @@ class usuario_veiculo_ModeloControle extends usuario_veiculo_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Modelos_Add(){
         self::Endereco_Veiculo_Modelo(true);
@@ -103,7 +103,7 @@ class usuario_veiculo_ModeloControle extends usuario_veiculo_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Modelos_Add2(){
         $titulo     = __('Modelo Adicionada com Sucesso');
@@ -118,7 +118,7 @@ class usuario_veiculo_ModeloControle extends usuario_veiculo_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Modelos_Edit($id){
         self::Endereco_Veiculo_Modelo(true);
@@ -137,7 +137,7 @@ class usuario_veiculo_ModeloControle extends usuario_veiculo_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Modelos_Edit2($id){
         $titulo     = __('Modelo Editada com Sucesso');
@@ -153,7 +153,7 @@ class usuario_veiculo_ModeloControle extends usuario_veiculo_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Modelos_Del($id){
         

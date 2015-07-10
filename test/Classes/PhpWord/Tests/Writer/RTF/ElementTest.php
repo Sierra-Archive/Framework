@@ -14,12 +14,12 @@
  * @copyright   2010-2014 PHPWord contributors
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
-namespace PhpOffice\PhpWord\Tests\Writer\RTF;
+namespace Framework\Classes\PhpWord\Tests\Writer\RTF;
 
-use PhpOffice\PhpWord\Writer\RTF;
+use Framework\Classes\PhpWord\Writer\RTF;
 
 /**
- * Test class for PhpOffice\PhpWord\Writer\RTF\Element subnamespace
+ * Test class for Framework\Classes\PhpWord\Writer\RTF\Element subnamespace
  */
 class ElementTest extends \PHPUnit_Framework_TestCase
 {
@@ -30,9 +30,9 @@ class ElementTest extends \PHPUnit_Framework_TestCase
     {
         $elements = array('Container', 'Text', 'Title', 'Link', 'Image', 'Table');
         foreach ($elements as $element) {
-            $objectClass = 'PhpOffice\\PhpWord\\Writer\\RTF\\Element\\' . $element;
+            $objectClass = 'Framework\Classes\\PhpWord\\Writer\\RTF\\Element\\' . $element;
             $parentWriter = new RTF();
-            $newElement = new \PhpOffice\PhpWord\Element\PageBreak();
+            $newElement = new \Framework\Classes\PhpWord\Element\PageBreak();
             $object = new $objectClass($parentWriter, $newElement);
 
             $this->assertEquals('', $object->write());

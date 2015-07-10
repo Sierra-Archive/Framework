@@ -15,7 +15,7 @@
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
-namespace PhpOffice\PhpWord\Writer\HTML\Style;
+namespace Framework\Classes\PhpWord\Writer\HTML\Style;
 
 /**
  * Paragraph style HTML writer
@@ -32,7 +32,7 @@ class Image extends AbstractStyle
     public function write()
     {
         $style = $this->getStyle();
-        if (!$style instanceof \PhpOffice\PhpWord\Style\Image) {
+        if (!$style instanceof \Framework\Classes\PhpWord\Style\Image) {
             return '';
         }
         $css = array();

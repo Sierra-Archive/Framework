@@ -15,11 +15,11 @@
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
-namespace PhpOffice\PhpWord\Element;
+namespace Framework\Classes\PhpWord\Element;
 
-use PhpOffice\PhpWord\Media;
-use PhpOffice\PhpWord\PhpWord;
-use PhpOffice\PhpWord\Style;
+use Framework\Classes\PhpWord\Media;
+use Framework\Classes\PhpWord\PhpWord;
+use Framework\Classes\PhpWord\Style;
 
 /**
  * Element abstract class
@@ -31,7 +31,7 @@ abstract class AbstractElement
     /**
      * PhpWord object
      *
-     * @var \PhpOffice\PhpWord\PhpWord
+     * @var \Framework\Classes\PhpWord\PhpWord
      */
     protected $phpWord;
 
@@ -118,7 +118,7 @@ abstract class AbstractElement
     /**
      * Get PhpWord
      *
-     * @return \PhpOffice\PhpWord\PhpWord
+     * @return \Framework\Classes\PhpWord\PhpWord
      */
     public function getPhpWord()
     {
@@ -128,7 +128,7 @@ abstract class AbstractElement
     /**
      * Set PhpWord as reference.
      *
-     * @param \PhpOffice\PhpWord\PhpWord $phpWord
+     * @param \Framework\Classes\PhpWord\PhpWord $phpWord
      * @return void
      */
     public function setPhpWord(PhpWord $phpWord = null)
@@ -271,7 +271,7 @@ abstract class AbstractElement
      *
      * Passed parameter should be a container, except for Table (contain Row) and Row (contain Cell)
      *
-     * @param \PhpOffice\PhpWord\Element\AbstractElement $container
+     * @param \Framework\Classes\PhpWord\Element\AbstractElement $container
      * @return void
      */
     public function setParentContainer(AbstractElement $container)

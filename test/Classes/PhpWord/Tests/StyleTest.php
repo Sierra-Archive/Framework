@@ -15,14 +15,14 @@
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
-namespace PhpOffice\PhpWord\Tests;
+namespace Framework\Classes\PhpWord\Tests;
 
-use PhpOffice\PhpWord\Style;
+use Framework\Classes\PhpWord\Style;
 
 /**
- * Test class for PhpOffice\PhpWord\Style
+ * Test class for Framework\Classes\PhpWord\Style
  *
- * @coversDefaultClass \PhpOffice\PhpWord\Style
+ * @coversDefaultClass \Framework\Classes\PhpWord\Style
  * @runTestsInSeparateProcesses
  */
 class StyleTest extends \PHPUnit_Framework_TestCase
@@ -66,7 +66,7 @@ class StyleTest extends \PHPUnit_Framework_TestCase
 
         $this->assertCount(count($styles), Style::getStyles());
         foreach ($styles as $name => $style) {
-            $this->assertInstanceOf("PhpOffice\\PhpWord\\Style\\{$style}", Style::getStyle($name));
+            $this->assertInstanceOf("Framework\Classes\\PhpWord\\Style\\{$style}", Style::getStyle($name));
         }
         $this->assertNull(Style::getStyle('Unknown'));
 
@@ -86,6 +86,6 @@ class StyleTest extends \PHPUnit_Framework_TestCase
 
         Style::setDefaultParagraphStyle($paragraph);
 
-        $this->assertInstanceOf("PhpOffice\\PhpWord\\Style\\Paragraph", Style::getStyle('Normal'));
+        $this->assertInstanceOf("Framework\Classes\\PhpWord\\Style\\Paragraph", Style::getStyle('Normal'));
     }
 }

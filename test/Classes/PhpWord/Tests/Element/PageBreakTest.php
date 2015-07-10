@@ -15,14 +15,14 @@
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
-namespace PhpOffice\PhpWord\Tests\Element;
+namespace Framework\Classes\PhpWord\Tests\Element;
 
-use PhpOffice\PhpWord\Element\PageBreak;
+use Framework\Classes\PhpWord\Element\PageBreak;
 
 /**
- * Test class for PhpOffice\PhpWord\Element\PageBreak
+ * Test class for Framework\Classes\PhpWord\Element\PageBreak
  *
- * @coversDefaultClass \PhpOffice\PhpWord\Element\PageBreak
+ * @coversDefaultClass \Framework\Classes\PhpWord\Element\PageBreak
  * @runTestsInSeparateProcesses
  */
 class PageBreakTest extends \PHPUnit_Framework_TestCase
@@ -34,6 +34,6 @@ class PageBreakTest extends \PHPUnit_Framework_TestCase
     {
         $oPageBreak = new PageBreak();
 
-        $this->assertInstanceOf('PhpOffice\\PhpWord\\Element\\PageBreak', $oPageBreak);
+        $this->assertInstanceOf('Framework\Classes\\PhpWord\\Element\\PageBreak', $oPageBreak);
     }
 }

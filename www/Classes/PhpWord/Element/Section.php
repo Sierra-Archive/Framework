@@ -15,10 +15,10 @@
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
-namespace PhpOffice\PhpWord\Element;
+namespace Framework\Classes\PhpWord\Element;
 
-use PhpOffice\PhpWord\Exception\Exception;
-use PhpOffice\PhpWord\Style\Section as SectionStyle;
+use Framework\Classes\PhpWord\Exception\Exception;
+use Framework\Classes\PhpWord\Style\Section as SectionStyle;
 
 /**
  * Section
@@ -33,7 +33,7 @@ class Section extends AbstractContainer
     /**
      * Section style
      *
-     * @var \PhpOffice\PhpWord\Style\Section
+     * @var \Framework\Classes\PhpWord\Style\Section
      */
     private $style;
 
@@ -81,7 +81,7 @@ class Section extends AbstractContainer
     /**
      * Get section style
      *
-     * @return \PhpOffice\PhpWord\Style\Section
+     * @return \Framework\Classes\PhpWord\Style\Section
      */
     public function getStyle()
     {
@@ -156,7 +156,7 @@ class Section extends AbstractContainer
      * @param string $type
      * @param boolean $header
      * @return Header|Footer
-     * @throws \PhpOffice\PhpWord\Exception\Exception
+     * @throws \Framework\Classes\PhpWord\Exception\Exception
      * @since 0.10.0
      */
     private function addHeaderFooter($type = Header::AUTO, $header = true)
@@ -168,7 +168,7 @@ class Section extends AbstractContainer
 
         if (in_array($type, array(Header::AUTO, Header::FIRST, Header::EVEN))) {
             $index = count($collection);
-            /** @var \PhpOffice\PhpWord\Element\AbstractContainer $container Type hint */
+            /** @var \Framework\Classes\PhpWord\Element\AbstractContainer $container Type hint */
             $container = new $containerClass($this->sectionId, ++$index, $type);
             $container->setPhpWord($this->phpWord);
 
@@ -195,7 +195,7 @@ class Section extends AbstractContainer
     /**
      * Get section style
      *
-     * @return \PhpOffice\PhpWord\Style\Section
+     * @return \Framework\Classes\PhpWord\Style\Section
      * @deprecated 0.12.0
      * @codeCoverageIgnore
      */

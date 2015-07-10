@@ -15,10 +15,10 @@
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
-namespace PhpOffice\PhpWord\Tests\Element;
+namespace Framework\Classes\PhpWord\Tests\Element;
 
 /**
- * Test class for PhpOffice\PhpWord\Element\AbstractElement
+ * Test class for Framework\Classes\PhpWord\Element\AbstractElement
  */
 class AbstractElementTest extends \PHPUnit_Framework_TestCase
 {
@@ -27,7 +27,7 @@ class AbstractElementTest extends \PHPUnit_Framework_TestCase
      */
     public function testElementIndex()
     {
-        $stub = $this->getMockForAbstractClass('\PhpOffice\PhpWord\Element\AbstractElement');
+        $stub = $this->getMockForAbstractClass('\Framework\Classes\PhpWord\Element\AbstractElement');
         $ival = rand(0, 100);
         $stub->setElementIndex($ival);
         $this->assertEquals($stub->getElementIndex(), $ival);
@@ -38,7 +38,7 @@ class AbstractElementTest extends \PHPUnit_Framework_TestCase
      */
     public function testElementId()
     {
-        $stub = $this->getMockForAbstractClass('\PhpOffice\PhpWord\Element\AbstractElement');
+        $stub = $this->getMockForAbstractClass('\Framework\Classes\PhpWord\Element\AbstractElement');
         $stub->setElementId();
         $this->assertEquals(strlen($stub->getElementId()), 6);
     }

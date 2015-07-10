@@ -13,7 +13,7 @@ class social_PersonaControle extends social_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 2.0
+    * @version 3.1.1
     */
     public function __construct(){
         parent::__construct();
@@ -29,7 +29,7 @@ class social_PersonaControle extends social_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 2.0
+    * @version 3.1.1
     */
     public function Main(){
         return false;
@@ -76,7 +76,7 @@ class social_PersonaControle extends social_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Personas($export=false){
         self::Endereco_Persona(false);
@@ -145,7 +145,7 @@ class social_PersonaControle extends social_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Personas_Add(){
         self::Endereco_Persona();
@@ -163,7 +163,7 @@ class social_PersonaControle extends social_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Personas_Add2(){
         $titulo     = __('Pessoa adicionada com Sucesso');
@@ -178,7 +178,7 @@ class social_PersonaControle extends social_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Personas_Edit($id){
         self::Endereco_Persona();
@@ -197,7 +197,7 @@ class social_PersonaControle extends social_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Personas_Edit2($id){
         $titulo     = __('Pessoa editada com Sucesso');
@@ -213,7 +213,7 @@ class social_PersonaControle extends social_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Personas_Del($id){
         
@@ -271,7 +271,7 @@ class social_PersonaControle extends social_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Personas_Comentario($persona_id = false,$tipo='Unico'){
         
@@ -315,7 +315,7 @@ class social_PersonaControle extends social_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Personas_Comentario_Add($persona_id = false){
         // Proteção E chama Endereço
@@ -340,7 +340,7 @@ class social_PersonaControle extends social_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Personas_Comentario_Add2($persona_id = false){
         if($persona_id===false) throw new \Exception('Persona não informado',404);
@@ -356,7 +356,7 @@ class social_PersonaControle extends social_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Personas_Comentario_Edit($persona_id = false,$id = 0){
         if($persona_id===false) throw new \Exception('Persona não informado',404);
@@ -382,7 +382,7 @@ class social_PersonaControle extends social_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Personas_Comentario_Edit2($persona_id = false,$id = 0){
         if($persona_id===false) throw new \Exception('Persona não informado',404);
@@ -400,7 +400,7 @@ class social_PersonaControle extends social_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Personas_Comentario_Del($persona_id = false,$id = 0){
         if($persona_id===false) throw new \Exception('Persona não informado',404);
@@ -482,7 +482,7 @@ class social_PersonaControle extends social_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Ficou_Add($persona_id=false){
         self::Endereco_Persona();
@@ -505,7 +505,7 @@ class social_PersonaControle extends social_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Ficou_Add2($persona_id=false){        
         $persona_id = (int) $persona_id;
@@ -526,7 +526,7 @@ class social_PersonaControle extends social_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Ficou_Edit($id,$persona_id=false){
         self::Endereco_Persona();
@@ -549,7 +549,7 @@ class social_PersonaControle extends social_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Ficou_Edit2($id,$persona_id=false){
         $titulo     = __('Ficada de Pessoa editada com Sucesso');
@@ -569,7 +569,7 @@ class social_PersonaControle extends social_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Ficou_Del($id,$persona_id=false){
         
@@ -638,7 +638,7 @@ class social_PersonaControle extends social_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Ficou_Comentario($ficada_id = false, $export = false){
         if($ficada_id===false){
@@ -691,7 +691,7 @@ class social_PersonaControle extends social_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Ficou_Comentario_Add($ficada_id = false){
         // Proteção E chama Endereço
@@ -716,7 +716,7 @@ class social_PersonaControle extends social_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Ficou_Comentario_Add2($ficada_id = false){
         if($ficada_id===false) throw new \Exception('Ficada não informada',404);
@@ -732,7 +732,7 @@ class social_PersonaControle extends social_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Ficou_Comentario_Edit($ficada_id = false,$id = 0){
         if($ficada_id===false) throw new \Exception('Ficada não informada',404);
@@ -759,7 +759,7 @@ class social_PersonaControle extends social_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Ficou_Comentario_Edit2($ficada_id = false,$id = 0){
         if($ficada_id===false)  throw new \Exception('Ficada não informada',404);
@@ -777,7 +777,7 @@ class social_PersonaControle extends social_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Ficou_Comentario_Del($ficada_id = false,$id = 0){
         if($ficada_id===false)  throw new \Exception('Ficada não informada',404);

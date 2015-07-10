@@ -15,20 +15,20 @@
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
-namespace PhpOffice\PhpWord\Writer\ODText\Part;
+namespace Framework\Classes\PhpWord\Writer\ODText\Part;
 
-use PhpOffice\PhpWord\Element\Image;
-use PhpOffice\PhpWord\Element\Table;
-use PhpOffice\PhpWord\Element\Text;
-use PhpOffice\PhpWord\Element\TextRun;
-use PhpOffice\PhpWord\PhpWord;
-use PhpOffice\PhpWord\Shared\XMLWriter;
-use PhpOffice\PhpWord\Style;
-use PhpOffice\PhpWord\Style\Font;
-use PhpOffice\PhpWord\Style\Paragraph;
-use PhpOffice\PhpWord\Style\Table as TableStyle;
-use PhpOffice\PhpWord\Writer\ODText\Element\Container;
-use PhpOffice\PhpWord\Writer\ODText\Style\Paragraph as ParagraphStyleWriter;
+use Framework\Classes\PhpWord\Element\Image;
+use Framework\Classes\PhpWord\Element\Table;
+use Framework\Classes\PhpWord\Element\Text;
+use Framework\Classes\PhpWord\Element\TextRun;
+use Framework\Classes\PhpWord\PhpWord;
+use Framework\Classes\PhpWord\Shared\XMLWriter;
+use Framework\Classes\PhpWord\Style;
+use Framework\Classes\PhpWord\Style\Font;
+use Framework\Classes\PhpWord\Style\Paragraph;
+use Framework\Classes\PhpWord\Style\Table as TableStyle;
+use Framework\Classes\PhpWord\Writer\ODText\Element\Container;
+use Framework\Classes\PhpWord\Writer\ODText\Style\Paragraph as ParagraphStyleWriter;
 
 /**
  * ODText content part writer: content.xml
@@ -110,7 +110,7 @@ class Content extends AbstractPart
      *
      * @since 0.11.0
      *
-     * @param \PhpOffice\PhpWord\Shared\XMLWriter $xmlWriter
+     * @param \Framework\Classes\PhpWord\Shared\XMLWriter $xmlWriter
      * @return void
      */
     private function writeAutoStyles(XMLWriter $xmlWriter)
@@ -119,10 +119,10 @@ class Content extends AbstractPart
 
         $this->writeTextStyles($xmlWriter);
         foreach ($this->autoStyles as $element => $styles) {
-            $writerClass = 'PhpOffice\\PhpWord\\Writer\\ODText\\Style\\' . $element;
+            $writerClass = 'Framework\Classes\\PhpWord\\Writer\\ODText\\Style\\' . $element;
             foreach ($styles as $style) {
 
-                /** @var \PhpOffice\PhpWord\Writer\ODText\Style\AbstractStyle $styleWriter Type hint */
+                /** @var \Framework\Classes\PhpWord\Writer\ODText\Style\AbstractStyle $styleWriter Type hint */
                 $styleWriter = new $writerClass($xmlWriter, $style);
                 $styleWriter->write();
             }
@@ -134,7 +134,7 @@ class Content extends AbstractPart
     /**
      * Write automatic styles.
      *
-     * @param \PhpOffice\PhpWord\Shared\XMLWriter $xmlWriter
+     * @param \Framework\Classes\PhpWord\Shared\XMLWriter $xmlWriter
      * @return void
      */
     private function writeTextStyles(XMLWriter $xmlWriter)
@@ -146,7 +146,7 @@ class Content extends AbstractPart
                 if ($style->isAuto() === true) {
                     $styleClass = str_replace('\\Style\\', '\\Writer\\ODText\\Style\\', get_class($style));
                     if (class_exists($styleClass)) {
-                        /** @var \PhpOffice\PhpWord\Writer\ODText\Style\AbstractStyle $styleWriter Type hint */
+                        /** @var \Framework\Classes\PhpWord\Writer\ODText\Style\AbstractStyle $styleWriter Type hint */
                         $styleWriter = new $styleClass($xmlWriter, $style);
                         $styleWriter->write();
                     }
@@ -168,7 +168,7 @@ class Content extends AbstractPart
     /**
      * Get automatic styles.
      *
-     * @param \PhpOffice\PhpWord\PhpWord $phpWord
+     * @param \Framework\Classes\PhpWord\PhpWord $phpWord
      * @return void
      */
     private function getAutoStyles(PhpWord $phpWord)
@@ -189,7 +189,7 @@ class Content extends AbstractPart
      *
      * Table style can be null or string of the style name
      *
-     * @param \PhpOffice\PhpWord\Element\AbstractContainer $container
+     * @param \Framework\Classes\PhpWord\Element\AbstractContainer $container
      * @param int &$paragraphStyleCount
      * @param int &$fontStyleCount
      * @return void
@@ -223,7 +223,7 @@ class Content extends AbstractPart
     /**
      * Get style of individual element
      *
-     * @param \PhpOffice\PhpWord\Element\Text &$element
+     * @param \Framework\Classes\PhpWord\Element\Text &$element
      * @param int &$paragraphStyleCount
      * @param int &$fontStyleCount
      * @return void

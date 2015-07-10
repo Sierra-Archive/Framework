@@ -15,12 +15,12 @@
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
-namespace PhpOffice\PhpWord\Writer\RTF\Part;
+namespace Framework\Classes\PhpWord\Writer\RTF\Part;
 
-use PhpOffice\PhpWord\Settings;
-use PhpOffice\PhpWord\Shared\Converter;
-use PhpOffice\PhpWord\Style;
-use PhpOffice\PhpWord\Style\Font;
+use Framework\Classes\PhpWord\Settings;
+use Framework\Classes\PhpWord\Shared\Converter;
+use Framework\Classes\PhpWord\Style;
+use Framework\Classes\PhpWord\Style\Font;
 
 /**
  * RTF header part writer
@@ -212,7 +212,7 @@ class Header extends AbstractPart
     /**
      * Register border colors.
      *
-     * @param \PhpOffice\PhpWord\Style\Border $style
+     * @param \Framework\Classes\PhpWord\Style\Border $style
      * @return void
      */
     private function registerBorderColor($style)
@@ -228,7 +228,7 @@ class Header extends AbstractPart
     /**
      * Register fonts and colors.
      *
-     * @param \PhpOffice\PhpWord\Style\AbstractStyle $style
+     * @param \Framework\Classes\PhpWord\Style\AbstractStyle $style
      * @return void
      */
     private function registerFontItems($style)

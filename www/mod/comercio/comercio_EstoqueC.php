@@ -13,7 +13,7 @@ class comercio_EstoqueControle extends comercio_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 2.0
+    * @version 3.1.1
     */
     public function __construct(){
         parent::__construct();
@@ -29,7 +29,7 @@ class comercio_EstoqueControle extends comercio_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 2.0
+    * @version 3.1.1
     */
     public function Main(){
         \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'comercio/Estoque/Estoques');
@@ -66,7 +66,7 @@ class comercio_EstoqueControle extends comercio_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Estoques($produto=false){
         $i = 0;
@@ -145,7 +145,7 @@ class comercio_EstoqueControle extends comercio_Controle
      * @return type
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     static function Estoque_Retorna($produto=false){
         $produto = (int) $produto;
@@ -179,7 +179,7 @@ class comercio_EstoqueControle extends comercio_Controle
      * @return boolean
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     static function Estoque_Inserir($motivo,$motivoid,$produto,$qnt,$data=false){
         $registro = \Framework\App\Registro::getInstacia();
@@ -206,7 +206,7 @@ class comercio_EstoqueControle extends comercio_Controle
      * @return boolean
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     static function Estoque_Remover($motivo,$motivoid,$produto,$qnt,$data=false){
         $registro = \Framework\App\Registro::getInstacia();
@@ -227,7 +227,7 @@ class comercio_EstoqueControle extends comercio_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     protected static function Campos_Deletar_Material(&$campos){
         if(!(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Produto') && \Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Estoque'))){
@@ -319,7 +319,7 @@ class comercio_EstoqueControle extends comercio_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Material_Entrada_Add2(){
         $titulo     = __('Entrada de NFE Adicionada com Sucesso');
@@ -378,7 +378,7 @@ class comercio_EstoqueControle extends comercio_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Material_Entrada_Edit($id){
         self::Endereco_Entrada_Material(true);
@@ -398,7 +398,7 @@ class comercio_EstoqueControle extends comercio_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Material_Entrada_Edit2($id){
         $id = (int) $id;
@@ -464,7 +464,7 @@ class comercio_EstoqueControle extends comercio_Controle
      * 
      * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Material_Entrada_Del($id){
         

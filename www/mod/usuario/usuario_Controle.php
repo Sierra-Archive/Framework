@@ -10,7 +10,7 @@ class usuario_Controle extends \Framework\App\Controle
     * @uses \Framework\App\Visual::$usuario
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 2.0
+    * @version 3.1.1
     */
     public function __construct(){
         // construct
@@ -250,7 +250,7 @@ class usuario_Controle extends \Framework\App\Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 2.0
+    * @version 3.1.1
      */
     protected function usuariolistar($grupo=false,$ativado=false,$gravidade=0,$inverter=false,$export=false){
         $i = 0;

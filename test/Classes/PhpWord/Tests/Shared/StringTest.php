@@ -15,14 +15,14 @@
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
-namespace PhpOffice\PhpWord\Tests\Shared;
+namespace Framework\Classes\PhpWord\Tests\Shared;
 
-use PhpOffice\PhpWord\Shared\String;
+use Framework\Classes\PhpWord\Shared\String;
 
 /**
- * Test class for PhpOffice\PhpWord\Shared\String
+ * Test class for Framework\Classes\PhpWord\Shared\String
  *
- * @coversDefaultClass \PhpOffice\PhpWord\Shared\String
+ * @coversDefaultClass \Framework\Classes\PhpWord\Shared\String
  * @runTestsInSeparateProcesses
  */
 class StringTest extends \PHPUnit_Framework_TestCase

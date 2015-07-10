@@ -15,9 +15,9 @@
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
-namespace PhpOffice\PhpWord\Writer\ODText\Element;
+namespace Framework\Classes\PhpWord\Writer\ODText\Element;
 
-use PhpOffice\PhpWord\Exception\Exception;
+use Framework\Classes\PhpWord\Exception\Exception;
 
 /**
  * Text element writer
@@ -33,7 +33,7 @@ class Text extends AbstractElement
     {
         $xmlWriter = $this->getXmlWriter();
         $element = $this->getElement();
-        if (!$element instanceof \PhpOffice\PhpWord\Element\Text) {
+        if (!$element instanceof \Framework\Classes\PhpWord\Element\Text) {
             return;
         }
         $fontStyle = $element->getFontStyle();

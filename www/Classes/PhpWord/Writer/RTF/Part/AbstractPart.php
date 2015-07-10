@@ -15,9 +15,9 @@
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
-namespace PhpOffice\PhpWord\Writer\RTF\Part;
+namespace Framework\Classes\PhpWord\Writer\RTF\Part;
 
-use PhpOffice\PhpWord\Writer\HTML\Part\AbstractPart as HTMLAbstractPart;
+use Framework\Classes\PhpWord\Writer\HTML\Part\AbstractPart as HTMLAbstractPart;
 
 /**
  * Abstract RTF part writer

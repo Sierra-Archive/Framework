@@ -15,7 +15,7 @@
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
-namespace PhpOffice\PhpWord\Writer\Word2007\Element;
+namespace Framework\Classes\PhpWord\Writer\Word2007\Element;
 
 /**
  * Footnote element writer
@@ -40,7 +40,7 @@ class Footnote extends Text
     {
         $xmlWriter = $this->getXmlWriter();
         $element = $this->getElement();
-        if (!$element instanceof \PhpOffice\PhpWord\Element\Footnote) {
+        if (!$element instanceof \Framework\Classes\PhpWord\Element\Footnote) {
             return;
         }
 

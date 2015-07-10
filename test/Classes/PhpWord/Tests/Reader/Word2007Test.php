@@ -15,15 +15,15 @@
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
 
-namespace PhpOffice\PhpWord\Tests\Reader;
+namespace Framework\Classes\PhpWord\Tests\Reader;
 
-use PhpOffice\PhpWord\IOFactory;
-use PhpOffice\PhpWord\Reader\Word2007;
+use Framework\Classes\PhpWord\IOFactory;
+use Framework\Classes\PhpWord\Reader\Word2007;
 
 /**
- * Test class for PhpOffice\PhpWord\Reader\Word2007
+ * Test class for Framework\Classes\PhpWord\Reader\Word2007
  *
- * @coversDefaultClass \PhpOffice\PhpWord\Reader\Word2007
+ * @coversDefaultClass \Framework\Classes\PhpWord\Reader\Word2007
  * @runTestsInSeparateProcesses
  */
 class Word2007Test extends \PHPUnit_Framework_TestCase
@@ -55,6 +55,6 @@ class Word2007Test extends \PHPUnit_Framework_TestCase
     {
         $filename = __DIR__ . '/../_files/documents/reader.docx';
         $phpWord = IOFactory::load($filename);
-        $this->assertInstanceOf('PhpOffice\\PhpWord\\PhpWord', $phpWord);
+        $this->assertInstanceOf('Framework\Classes\\PhpWord\\PhpWord', $phpWord);
     }
 }
