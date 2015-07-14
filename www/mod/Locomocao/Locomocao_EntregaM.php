@@ -8,7 +8,7 @@ class Locomocao_EntregaModelo extends Locomocao_Modelo
     public function Entregas(){
         // Table's primary key
         $primaryKey = 'id';
-        $tabela = 'Comercio_Entrega';
+        $tabela = 'Locomocao_Entrega';
         
         
         $perm_editar = $this->_Registro->_Acl->Get_Permissao_Url('Locomocao/Entrega/Entregas_Edit');

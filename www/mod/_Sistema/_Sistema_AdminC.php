@@ -311,7 +311,7 @@ class _Sistema_AdminControle extends _Sistema_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 3.1.1
      */
-    public function Configs(){
+    public function Configs($tipobloco='Unico'){
         $this->Endereco_Admin_Config(false);
         
         $tabela_colunas[] = __('Chave');
@@ -322,9 +322,9 @@ class _Sistema_AdminControle extends _Sistema_Controle
         $this->_Visual->Show_Tabela_DataTable_Massiva($tabela_colunas,'_Sistema/Admin/Configs');
 
         $titulo = __('Listagem de Configurações').' (<span id="DataTable_Contador">0</span>)';
-        if($export==='Unico'){
+        if($tipobloco==='Unico'){
             $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',10);
-        }else if($export==='Maior'){
+        }else if($tipobloco==='Maior'){
             $this->_Visual->Bloco_Maior_CriaJanela($titulo,'',10);
         }else{
             $this->_Visual->Bloco_Menor_CriaJanela($titulo,'',10);

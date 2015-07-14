@@ -2,7 +2,7 @@
 $config_Modulo = function (){
     return Array(
         'Nome'                      =>  'Transporte',
-        'Descrição'                 =>  '',
+        'Descrição'                 =>  'Módulo Feito para o Transporte de Caminhoneiros, cadastro de Transportadoras, armazéns e empresas associadas.',
         'System_Require'            =>  '3.1.0',
         'Version'                   =>  '3.1.1',
         'Dependencias'              =>  false,

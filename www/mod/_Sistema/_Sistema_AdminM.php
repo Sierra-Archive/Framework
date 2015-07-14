@@ -8,7 +8,7 @@ class _Sistema_AdminModelo extends _Sistema_Modelo
     public function Configs(){
         // Table's primary key
         $primaryKey = 'chave';
-        $tabela = 'Comercio_Config';
+        $tabela = 'Sistema_Config';
         
         
         $perm_editar = $this->_Registro->_Acl->Get_Permissao_Url('_Sistema/Admin/Configs_Edit');
@@ -36,7 +36,7 @@ class _Sistema_AdminModelo extends _Sistema_Modelo
         
         ++$numero;
         eval('$function = function( $d, $row ) { $html = \'\'; '.$function.' return $html; };');       
-        $columns[] = array( 'db' => 'id',            'dt' => $numero,
+        $columns[] = array( 'db' => 'chave',            'dt' => $numero,
             'formatter' => $function
         ); //'Funções';
                 

@@ -230,6 +230,13 @@ if(  !defined('MYSQL_COMERCIO_VENDA_CARRINHO_COMPOSICOES')){
     define('MYSQL_COMERCIO_VENDA_CARRINHO_COMPOSICOES'  , 'Comercio_Venda_Carrinho_Composicoes');
 }
 
+// LOCOMOCAO
+if(  !defined('MYSQL_LOCOMOCAO_ENTREGA')){
+    define('MYSQL_LOCOMOCAO_ENTREGA'                    , 'Locomocao_Entrega');
+}
+if(  !defined('MYSQL_LOCOMOCAO_ENTREGA_PONTO')){
+    define('MYSQL_LOCOMOCAO_ENTREGA_PONTO'             , 'Locomocao_Entrega_Ponto');
+}
 // TRANSPORTE
 if(  !defined('MYSQL_TRANSPORTE_ARMAZEM')){
     define('MYSQL_TRANSPORTE_ARMAZEM'                  , 'Transporte_Armazem');
