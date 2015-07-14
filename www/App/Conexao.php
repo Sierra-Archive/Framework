@@ -210,8 +210,21 @@ final class Conexao
     public function prepare($sql,$autoreparo=true) 
     {
         $stmt = $this->mysqli->prepare($sql);
+        $passar = true;
         if($stmt===false){
-             throw new \Exception('Erro de Query'.$sql.'<br>Erro:'.$this->mysqli->error,3110);
+            $erro = $this->mysqli->error;
+            if(SISTEMA_DEBUG===true){
+                echo '#QUERY:'.$sql.'n\n<br \>ERRO:'.$erro."\n\n<br \><br \>";
+            }
+            if($passar && $autoreparo){
+                $passar = $this->autoreparo_query($sql, $erro);
+                $stmt = $this->mysqli->prepare($sql);
+                if($stmt===false){
+                    throw new \Exception('Erro de Query: '.$erro."\n<br>".'Query: '.$sql,3110);
+                }
+            }else{
+                throw new \Exception('Erro de Query: '.$erro."\n<br>".'Query: '.$sql,3110);
+            }
         }
         return $stmt;
     }

@@ -4,7 +4,7 @@ final Class Locomocao_Entrega_Ponto_DAO extends Framework\App\Dao
     protected $id;
     protected $motoboy;
     protected $endereco_saida;
-    protected $endereco_chegada;
+    protected $endereco_destino;
     protected $tempo;
     protected $distancia;
     
@@ -103,7 +103,7 @@ final Class Locomocao_Entrega_Ponto_DAO extends Framework\App\Dao
                     )
                 )
             ),Array(
-                'mysql_titulo'      => 'endereco_saida',
+                'mysql_titulo'      => 'endereco_destino',
                 'mysql_tipovar'     => 'varchar', //varchar, int, 
                 'mysql_tamanho'     => 100,
                 'mysql_null'        => true,

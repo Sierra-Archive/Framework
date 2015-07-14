@@ -70,7 +70,29 @@ final Class Locomocao_Entrega_DAO extends Framework\App\Dao
                         'class'             => 'obrigatorio'
                     )
                 )
-            )
+            ),
+            Array(
+                'TabelaLinkada'     => Array(
+                    'Pai'               => 'LE', // TABELA que vai manipular a conexao
+                    'Tabela'            => 'LEP', // TABELA de LINK A SER CONECTADA
+                    'Preencher'         => Array( // CAso exista e != de false, preenche automaticamente esses campos
+                        'tabela'            => 'Musica_Album_Artista', // Campo e Resultado
+                    ),
+                    'valor_padrao'      => false, // id do pai
+                    'Nome'              => __('Pontos de Entrega'), // Nome no FOrmulario
+                    'Class'             => 'obrigatorio', // Classe no formulario
+                    'aviso'             => '', // Aviso no formulario
+                    'formtipo'          => 'SelectMultiplo',  // Tipo de formulario
+                    'SelectMultiplo'   => Array(
+                        'Extrangeira'       => 'MAA.id|MAA.nome',
+                        'Linkar'            => 'noticia', // CAmpo a ser encaixado id do pai
+                        'Linkado'           => 'tabelaid',// CAmpo a ser encaixado id do link
+                        'Campos'            => false,
+                        'infonulo'          => 'Escolha pelo menos um Artista',
+                      'linkextra'         => false
+                    ), // Campo Boleano da tabela LINK, caso false apaga os que nao forem puxados
+                )
+            ),
         );
     }
 }
