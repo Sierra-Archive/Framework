@@ -52,7 +52,7 @@ final Class Locomocao_Entrega_DAO extends Framework\App\Dao
                 'mysql_null'        => true,
                 'mysql_default'     => false,
                 'mysql_primary'     => false,
-                'mysql_estrangeira' => 'U.id|U.nome-U.razao_social', //|U.ativado=1-EXTB.categoria='.CFG_TEC_CAT_ID_CLIENTES// chave estrangeira
+                'mysql_estrangeira' => 'U.id|U.nome-U.razao_social' ,//|U.ativado=1-EXTB.categoria='.CFG_TEC_CAT_ID_CLIENTES// chave estrangeira
                 'mysql_autoadd'     => false,
                 'mysql_comment'     => false,
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados

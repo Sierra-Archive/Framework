@@ -1120,8 +1120,17 @@ readfile($link);*/
                     // Atualiza id
                     $colunas_temporaria = $colunas;
                     $nome = $tabelalinkada['ExternoInsercao']['Linkado'].'2';
+                    
+                    // So coloca os Campos Requisitados
+                    $Ext_Campos = $tabelalinkada['ExternoInsercao']['Campos'];
+                    foreach($colunas_temporaria as $indice_col_temp=>&$valor_col_temp){
+                        if(array_search($valor_col_temp["mysql_titulo"],$Ext_Campos)===false){
+                            unset($colunas_temporaria[$indice_col_temp]);
+                        }
+                    }
+                    
                     // Separa os Span
-                    $html .= $form->addtexto('</span><span id="'.$tabelalinkada['ExternoInsercao']['Linkado'].'controlador_0">');
+                    $html .= $form->addtexto('</fieldset></span><span id="'.$tabelalinkada['ExternoInsercao']['Linkado'].'controlador_0"><fieldset><legend>1º Ponto de Entrega</legend>');
                     // PEga os CAmpos Extrangeiros
                     self::Gerador_Formulario($colunas_temporaria, $form,false);
                     
