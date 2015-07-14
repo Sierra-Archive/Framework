@@ -980,7 +980,7 @@ readfile($link);*/
                 }else if($tabelalinkada['formtipo']==='SelectMultiplo'){
                     
                     // Carrega Informação que aparecera na tela quando nada for escrito
-                    if(isset($tabelalinkada['selectmultiplo']['infonulo']) && $tabelalinkada['selectmultiplo']['infonulo']!='' && $tabelalinkada['selectmultiplo']['infonulo']!==false){
+                    if(isset($tabelalinkada['SelectMultiplo']['infonulo']) && $tabelalinkada['SelectMultiplo']['infonulo']!='' && $tabelalinkada['SelectMultiplo']['infonulo']!==false){
                         $select_infonulo = $tabelalinkada['SelectMultiplo']['infonulo'];
                     }else{
                         $select_infonulo = __('Escolha uma Opção');
@@ -1054,6 +1054,103 @@ readfile($link);*/
                             self::DAO_Campos_TrocaNOME($colunas_temporaria,$objeto_novo->$nome);
                             // Separa os Span
                             $html .= $form->addtexto('</span><span id="'.$tabelalinkada['SelectMultiplo']['Linkado'].'controlador_'.$valor2.'">');
+                            // PEga os CAmpos Extrangeiros
+                            self::Gerador_Formulario($colunas_temporaria, $form,false);
+                        }
+                    }
+                }else if($tabelalinkada['formtipo']==='ExternoInsercao'){
+                    
+                    // Carrega Informação que aparecera na tela quando nada for escrito
+                    if(isset($tabelalinkada['ExternoInsercao']['infonulo']) && $tabelalinkada['ExternoInsercao']['infonulo']!='' && $tabelalinkada['ExternoInsercao']['infonulo']!==false){
+                        $select_infonulo = $tabelalinkada['ExternoInsercao']['infonulo'];
+                    }else{
+                        $select_infonulo = __('Escolha uma Opção');
+                    }
+                    
+                    // Puxa Selecionados, Resutados e Colunas
+                    $resultado_tabcapturados = $Modelo->db->Tabelas_CapturaLinkadas($tabelalinkada);
+                    if($resultado_tabcapturados===false) return false;
+                    list($selecionados,$resultado, $colunas) = $resultado_tabcapturados;
+                    // Configura Array
+                    $opcoes = Array();
+                    if($resultado!==false){
+                        // Captura Selects da Chave Extrangeira
+                        foreach ($resultado as $indice_cha_ext=>$valor_cha_ext){
+                            $selecionado = 0;
+                            if(in_array($indice_cha_ext, $selecionados)){
+                                $selecionado = 1;
+                            }
+                            $opcoes[] = Array(
+                                'titulo'    => $valor_cha_ext,
+                                'valor'     => $indice_cha_ext,
+                                'selected'  => $selecionado,
+                            );
+                        }
+                    }
+                    // Coloca {id} que sera substituido pelo id
+                    if($colunas!==false){
+                        $colunas_temporaria = $colunas;
+                        self::DAO_Campos_TrocaID($colunas_temporaria,'{id}');
+                        // Puxa CAmpos Javascript
+                        $form_js = new \Framework\Classes\Form();
+                        $javascript_campos = self::Gerador_Formulario($colunas_temporaria, $form_js,false);
+                        $javascript_campos = str_replace(Array('"','\n','\r','    '), Array('\"','','',''), $javascript_campos);
+                        $javascript_campos = preg_replace('/\s/',' ',trim($javascript_campos));
+                    }else{
+                        $javascript_campos = '';
+                    }
+                    // Puxa Select
+                    /*$html .= $form->ExternoInsercao(
+                        $tabelalinkada['Nome'],     //Nome
+                        $opcoes,          // Opcões do Slect
+                        $tabelalinkada['ExternoInsercao']['Linkado'], // ID
+                        $tabelalinkada['ExternoInsercao']['linkextra'],   // url
+                        $tabelalinkada['ExternoInsercao']['Campos'],   // url
+                        $javascript_campos, // js
+                        false,    // condicao
+                        $escondido,             // Se esta Escondido ou nao
+                        $tabelalinkada['Class'],           // Class
+                        $select_infonulo   // Informacao quando vazio             
+                    );*/
+                    
+                    
+                    // Insere Campos Vazios
+                    // Chama TAbela
+                    $tabela_link = \Framework\App\Conexao::Tabelas_GetSiglas_Recolher($tabelalinkada['Tabela']);
+                    // Atualiza id
+                    $colunas_temporaria = $colunas;
+                    $nome = $tabelalinkada['ExternoInsercao']['Linkado'].'2';
+                    // Separa os Span
+                    $html .= $form->addtexto('</span><span id="'.$tabelalinkada['ExternoInsercao']['Linkado'].'controlador_0">');
+                    // PEga os CAmpos Extrangeiros
+                    self::Gerador_Formulario($colunas_temporaria, $form,false);
+                    
+                    
+                    // Se tiver selecionado coloca as colunas extras extras 
+                    if($selecionados!==false && !empty($selecionados) && $colunas!==false){
+                        foreach ($selecionados as &$valor2){
+                            // Chama TAbela
+                            $tabela_link = \Framework\App\Conexao::Tabelas_GetSiglas_Recolher($tabelalinkada['Tabela']);
+                            // Condicao
+                            $where = Array(
+                                $tabelalinkada['ExternoInsercao']['Linkar'] =>$tabelalinkada['valor_padrao'],
+                                $tabelalinkada['ExternoInsercao']['Linkado']=>$valor2
+                            );
+                            $objeto_novo = $Modelo->db->Sql_Select($tabela_link['classe'], $where,1);
+                            if($objeto_novo===false) throw new \Exception('Registro não existe: ID->'.$id,404);
+                            // Atualiza Valores
+                            self::mysql_AtualizaValores($colunas, $objeto_novo, $objeto_novo->id);
+                            // Atualiza id
+                            $colunas_temporaria = $colunas;
+                            self::DAO_Campos_TrocaID($colunas_temporaria,$valor2);
+                            $nome = $tabelalinkada['ExternoInsercao']['Linkado'].'2';
+                            // caso nao exista
+                            if($objeto_novo->$nome===NULL){
+                                CONTINUE;
+                            }
+                            self::DAO_Campos_TrocaNOME($colunas_temporaria,$objeto_novo->$nome);
+                            // Separa os Span
+                            $html .= $form->addtexto('</span><span id="'.$tabelalinkada['ExternoInsercao']['Linkado'].'controlador_'.$valor2.'">');
                             // PEga os CAmpos Extrangeiros
                             self::Gerador_Formulario($colunas_temporaria, $form,false);
                         }

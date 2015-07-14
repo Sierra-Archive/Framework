@@ -1698,8 +1698,8 @@ final class Conexao
          *  Boleanos Multiplos
          */
         // zera opcoes
-        $opcoes = false;
         if($objeto['formtipo']=='BoleanoMultiplo'){
+            $opcoes = false;
             $boleanomultiplo    = &$objeto['BoleanoMultiplo'];
             $ovalor             = &$boleanomultiplo['Valor'];
             // Pega Tabela LINK
@@ -1796,6 +1796,73 @@ final class Conexao
             $nao_selecionado = array_diff($nao_selecionado, $selecionado);
             // Retorna Array Selecionado e Nao
             return Array($selecionado,$nao_selecionado);
+        }else 
+            
+            
+        /**
+         *  Boleanos Multiplos
+         */
+        // zera opcoes
+        if($objeto['formtipo']=='ExternoInsercao'){
+            $opcoes = false;
+            $select = &$objeto['ExternoInsercao'];
+            
+            // Captura REsultado da Extrangeira
+            $resultado = $this->Tabelas_CapturaExtrangeiras($select['Extrangeira']);
+            
+            // Pega Tabela LINK
+            $tabela_link = self::Tabelas_GetSiglas_Recolher($objeto['Tabela']);
+            
+            // Captura Colunas da tabela
+            $class_Executar = $tabela_link['classe'];
+            // Escolhe os Selecionados
+            $selecionado    = Array();
+            $where          = Array();
+            
+            // PEga Colunas
+            $colunas = $class_Executar::Gerar_Colunas();
+            $colunas_retirar = Array();
+            
+            // VErifica se tem Preencehr
+            if(isset($objeto['Preencher']) && $objeto['Preencher']!==false){
+                foreach($objeto['Preencher'] as $indice3=>&$valor3){
+                    // Acrescenta ao SElect
+                    $where[$indice3] = $valor3;
+                    // Remove de Colunas Extras
+                    $colunas_retirar[] = $indice3;
+                }
+            }
+            
+            foreach ($colunas as $indice=>&$valor){
+                if($valor["mysql_titulo"]==$select["Linkar"] || $valor["mysql_titulo"]==$select["Linkado"] || in_array($valor["mysql_titulo"], $colunas_retirar)){
+                    unset($colunas[$indice]);
+                }
+            }
+            
+            
+            // SE tiver vazio é false
+            if(empty($colunas)){
+                $colunas = false;
+            }
+            
+            // BUsca Selecionados
+            if(is_numeric($objeto['valor_padrao'])){
+                // Condicao
+                $where[$select['Linkar']] = $objeto['valor_padrao'];
+                $opcoes = $this->Sql_Select($tabela_link['classe'], $where);
+                if(is_object($opcoes)) $opcoes = Array($opcoes);
+            }else{
+                $opcoes = false;
+            }
+            // Caso tenha resultado
+            if($opcoes!==false){
+                // Captura Selects da Chave Extrangeira
+                foreach ($opcoes as &$valor){
+                        $selecionado[] = $valor->$select['Linkado'];
+                }
+            }
+            // Retorna Array Todos, Selecionados e COlunas a mais
+            return Array($selecionado,$resultado, $colunas);
         }
         return false;
     }

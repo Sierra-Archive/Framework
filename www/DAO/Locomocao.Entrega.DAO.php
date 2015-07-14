@@ -64,6 +64,32 @@ final Class Locomocao_Entrega_DAO extends Framework\App\Dao
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => __('Minimo 3 caracteres'),
+                    'formtipo'          => 'select',
+                    'select'             => array(
+                        'class'             => 'obrigatorio',
+                        'infonulo'          => 'Escolha uma Entrega',
+                    )
+                )
+            ),
+            Array(
+                'mysql_titulo'      => 'nome',
+                'mysql_tipovar'     => 'varchar', //varchar, int, 
+                'mysql_tamanho'     => 10,
+                'mysql_null'        => false,
+                'mysql_default'     => false,
+                'mysql_primary'     => false,
+                'mysql_estrangeira' => false, // chave estrangeira
+                'mysql_autoadd'     => false,
+                'mysql_comment'     => false,
+                'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
+                'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
+                'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
+                'linkextra'         => '' ,//0 ninguem, 1 admin, 2 todos 
+                'edicao'            => Array(
+                    'Nome'              => __('Nome da Entrega'),
+                    'valor_padrao'      => false,
+                    'readonly'          => false,
+                    'aviso'             => __('Minimo 3 caracteres'),
                     'formtipo'          => 'input',
                     'input'             => array(
                         'tipo'              => 'text',
@@ -76,19 +102,19 @@ final Class Locomocao_Entrega_DAO extends Framework\App\Dao
                     'Pai'               => 'LE', // TABELA que vai manipular a conexao
                     'Tabela'            => 'LEP', // TABELA de LINK A SER CONECTADA
                     'Preencher'         => Array( // CAso exista e != de false, preenche automaticamente esses campos
-                        'tabela'            => 'Musica_Album_Artista', // Campo e Resultado
+                        'tabela'            => 'Locomocao_Entrega_Ponto', // Campo e Resultado
                     ),
                     'valor_padrao'      => false, // id do pai
                     'Nome'              => __('Pontos de Entrega'), // Nome no FOrmulario
                     'Class'             => 'obrigatorio', // Classe no formulario
                     'aviso'             => '', // Aviso no formulario
-                    'formtipo'          => 'SelectMultiplo',  // Tipo de formulario
-                    'SelectMultiplo'   => Array(
-                        'Extrangeira'       => 'MAA.id|MAA.nome',
-                        'Linkar'            => 'noticia', // CAmpo a ser encaixado id do pai
-                        'Linkado'           => 'tabelaid',// CAmpo a ser encaixado id do link
-                        'Campos'            => false,
-                        'infonulo'          => 'Escolha pelo menos um Artista',
+                    'formtipo'          => 'ExternoInsercao',  // Tipo de formulario
+                    'ExternoInsercao'   => Array(
+                        'Extrangeira'       => 'LEP.id|LEP.id',
+                        'Linkar'            => 'entrega', // CAmpo a ser encaixado id do pai
+                        'Linkado'           => 'entrega',// CAmpo a ser encaixado id do link
+                        'Campos'            => Array('endereco_saida','endereco_destino'),
+                        'infonulo'          => 'Escolha pelo menos um Ponto',
                       'linkextra'         => false
                     ), // Campo Boleano da tabela LINK, caso false apaga os que nao forem puxados
                 )

@@ -2,6 +2,7 @@
 final Class Locomocao_Entrega_Ponto_DAO extends Framework\App\Dao 
 {
     protected $id;
+    protected $entrega;
     protected $motoboy;
     protected $endereco_saida;
     protected $endereco_destino;
@@ -51,6 +52,32 @@ final Class Locomocao_Entrega_Ponto_DAO extends Framework\App\Dao
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => '' ,//0 ninguem, 1 admin, 2 todos 
+            ),
+            Array(
+                'mysql_titulo'      => 'entrega',
+                'mysql_tipovar'     => 'int', //varchar, int, 
+                'mysql_tamanho'     => 11,
+                'mysql_null'        => true, // true NULL, false, NOT NULL
+                'mysql_default'     => false,//false -> NONE, outro -> default
+                'mysql_primary'     => false, // chave primaria
+                'mysql_estrangeira' => 'LE.id|LE.nome', //|CA.mod_acc=Locomocao_Caminhao chave estrangeira     ligacao|apresentacao|condicao
+                'mysql_autoadd'     => false,
+                'mysql_comment'     => false,
+                'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
+                'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
+                'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
+                'linkextra'         => false, //'categoria/Admin/Categorias_Add/Locomocao_Caminhao', //0 ninguem, 1 admin, 2 todos 
+                'edicao'            => Array(
+                    'Nome'              => __('Entrega'),
+                    'valor_padrao'      => false,
+                    'readonly'          => false,
+                    'aviso'             => '',
+                    'formtipo'          => 'select',
+                    'select'             => array(
+                        'class'             => 'obrigatorio',
+                        'infonulo'          => 'Escolha uma Entrega',
+                    )
+                )
             ),
             Array(
                 'mysql_titulo'      => 'motoboy',
