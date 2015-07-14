@@ -5,6 +5,8 @@ final Class Sistema_Config_DAO extends Framework\App\Dao
     protected $nome;
     protected $descricao;
     protected $valor;
+    protected $mascara;
+    protected $max;
     
     protected static $objetocarregado     = false;     
     protected static $mysql_colunas       = false;     
@@ -119,8 +121,8 @@ final Class Sistema_Config_DAO extends Framework\App\Dao
             ),
             Array(
                 'mysql_titulo'      => 'valor',
-                'mysql_tipovar'     => 'int', //varchar, int, 
-                'mysql_tamanho'     => 3,
+                'mysql_tipovar'     => 'varchar', //varchar, int, 
+                'mysql_tamanho'     => 100,
                 'mysql_null'        => true,  // nulo ?
                 'mysql_default'     => 0, // valor padrao
                 'mysql_primary'     => false,  // chave primaria
@@ -135,21 +137,43 @@ final Class Sistema_Config_DAO extends Framework\App\Dao
                     'Nome'              => __('Valor'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
-                    'aviso'             => __('Ativado ou não'),
-                    'formtipo'          => 'select',
-                    'select'            => array(
-                        'opcoes'            => array(
-                            array(
-                                'value'         =>  '0',
-                                'nome'          => 'Desativado'
-                            ),
-                            array(
-                                'value'         =>  '1',
-                                'nome'          => 'Ativado'
-                            )
-                        )
+                    'aviso'             => '',
+                    'formtipo'          => 'input',
+                    'input'             => array(
+                        'tipo'              => 'text',
+                        'class'             => 'obrigatorio'
                     )
                 )
+            ),
+            Array(
+                'mysql_titulo'      => 'mascara',
+                'mysql_tipovar'     => 'varchar', //varchar, int, 
+                'mysql_tamanho'     => 30,
+                'mysql_null'        => true,  // nulo ?
+                'mysql_default'     => '', // valor padrao
+                'mysql_primary'     => false,  // chave primaria
+                'mysql_estrangeira' => false, // chave estrangeira     ligacao|apresentacao|condicao
+                'mysql_autoadd'     => false,
+                'mysql_comment'     => false,
+                'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
+                'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
+                'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
+                'linkextra'         => '', //0 ninguem, 1 admin, 2 todos
+            ),
+            Array(
+                'mysql_titulo'      => 'max',
+                'mysql_tipovar'     => 'int', //varchar, int, 
+                'mysql_tamanho'     => 11,
+                'mysql_null'        => true,  // nulo ?
+                'mysql_default'     => 100, // valor padrao
+                'mysql_primary'     => false,  // chave primaria
+                'mysql_estrangeira' => false, // chave estrangeira     ligacao|apresentacao|condicao
+                'mysql_autoadd'     => false,
+                'mysql_comment'     => false,
+                'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
+                'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
+                'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
+                'linkextra'         => '', //0 ninguem, 1 admin, 2 todos
             )
         );
     }

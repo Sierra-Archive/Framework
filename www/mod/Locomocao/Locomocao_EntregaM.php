@@ -1,17 +1,18 @@
 <?php
 
-class _Sistema_AdminModelo extends _Sistema_Modelo
+class Locomocao_EntregaModelo extends Locomocao_Modelo
 {
     public function __construct(){
         parent::__construct();
     }
-    public function Configs(){
+    public function Entregas(){
         // Table's primary key
-        $primaryKey = 'chave';
-        $tabela = 'Comercio_Config';
+        $primaryKey = 'id';
+        $tabela = 'Comercio_Entrega';
         
         
-        $perm_editar = $this->_Registro->_Acl->Get_Permissao_Url('_Sistema/Admin/Configs_Edit');
+        $perm_editar = $this->_Registro->_Acl->Get_Permissao_Url('Locomocao/Entrega/Entregas_Edit');
+        $perm_del = $this->_Registro->_Acl->Get_Permissao_Url('Locomocao/Entrega/Entregas_Del');
         
 
 
@@ -22,7 +23,7 @@ class _Sistema_AdminModelo extends _Sistema_Modelo
         $numero = -1;
 
         ++$numero;
-        $columns[] = array( 'db' => 'chave', 'dt' => $numero); //'Chave';
+        $columns[] = array( 'db' => 'id', 'dt' => $numero); //'Chave';
         ++$numero;
         $columns[] = array( 'db' => 'descricao', 'dt' => $numero); //'Descrição';
         ++$numero;
@@ -31,7 +32,10 @@ class _Sistema_AdminModelo extends _Sistema_Modelo
 
         $function = '';
         if($perm_editar){
-            $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Editar\'     ,Array(__(\'Editar Configuração\')        ,\'_Sistema/Admin/Configs_Edit/\'.$d.\'/\'    ,\'\'),true);';
+            $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Editar\'     ,Array(__(\'Editar Entrega\')        ,\'Locomocao/Entrega/Entregas_Edit/\'.$d.\'/\'    ,\'\'),true);';
+        }
+        if($perm_del){
+            $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Deletar\'    ,Array(__(\'Deletar Entrega\')       ,\'Locomocao/Entrega/Entregas_Del/\'.$d.\'/\'     ,__(\'Deseja realmente deletar essa Entrega ?\')),true);';
         }
         
         ++$numero;

@@ -1,7 +1,7 @@
 <?php
 $config_Modulo = function (){
     return Array(
-        'Nome'                      =>  '_Sistema',
+        'Nome'                      =>  'Locomocao',
         'Descrição'                 =>  '',
         'System_Require'            =>  '3.1.0',
         'Version'                   =>  '3.1.1',
@@ -12,7 +12,7 @@ $config_Menu = function (){
     return Array(
         'Página Inicial' => Array(
             'Nome'                  => __('Página Inicial'),
-            'Link'                  => '_Sistema/Principal/Home',
+            'Link'                  => 'Locomocao/Principal/Home',
             'Gravidade'             => 10000,
             'Img'                   => 'turboadmin/m-dashboard.png',
             'Icon'                  => 'dashboard',
@@ -37,29 +37,29 @@ $config_Menu = function (){
             'Icon'                  => 'wrench',
             'Filhos'                => Array('Grupos'=>Array(
                 'Nome'                  => __('Grupos'),
-                'Link'                  => '_Sistema/Admin/Grupos',
+                'Link'                  => 'Locomocao/Admin/Grupos',
                 'Gravidade'             => 5,
                 'Img'                   => 'turboadmin/m-dashboard.png',
                 'Icon'                  => 'group',
                 'Filhos'                => false,
             ),'Menus'=>Array(
                 'Nome'                  => __('Menus'),
-                'Link'                  => '_Sistema/Admin/Menus',
+                'Link'                  => 'Locomocao/Admin/Menus',
                 'Gravidade'             => 3,
                 'Img'                   => 'turboadmin/m-dashboard.png',
                 'Icon'                  => 'dashboard',
                 'Permissao_Func'        => Array(// Permissoes NEcessarias
-                    '_Sistema_Avancado' => true
+                    'Locomocao_Avancado' => true
                 ),
                 'Filhos'                => false,
             ),'Configurações'=>Array(
                 'Nome'                  => __('Configurações'),
-                'Link'                  => '_Sistema/Admin/Configs',
+                'Link'                  => 'Locomocao/Admin/Configs',
                 'Gravidade'             => 1,
                 'Img'                   => 'turboadmin/m-dashboard.png',
                 'Icon'                  => 'dashboard',
                 'Permissao_Func'        => Array(// Permissoes NEcessarias
-                    '_Sistema_Avancado' => true
+                    'Locomocao_Avancado' => true
                 ),
                 'Filhos'                => false,
             ))
@@ -83,13 +83,13 @@ $config_Permissoes = function (){
         Array(
             'Nome'                  => __('Sistema - Administração Avançada'),
             'Desc'                  => '',
-            'Chave'                 => '_Sistema_Admin',
-            'End'                   => '_Sistema/Admin', // Endereco que deve conter a url para permitir acesso
-            'Modulo'                => '_Sistema', // Modulo Referente
+            'Chave'                 => 'Locomocao_Admin',
+            'End'                   => 'Locomocao/Admin', // Endereco que deve conter a url para permitir acesso
+            'Modulo'                => 'Locomocao', // Modulo Referente
             'SubModulo'             => 'Admin',   // Submodulo Referente
             'Metodo'                => '*',  // Metodos referentes separados por virgula
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                '_Sistema_Avancado' => true
+                'Locomocao_Avancado' => true
             ),
         ),
         
@@ -97,61 +97,61 @@ $config_Permissoes = function (){
         Array(
             'Nome'                  => __('Sistema (Menu) - Listagem'),
             'Desc'                  => '',
-            'Chave'                 => '_Sistema_Admin_Menus',
-            'End'                   => '_Sistema/Admin/Menus', // Endereco que deve conter a url para permitir acesso
-            'Modulo'                => '_Sistema', // Modulo Referente
+            'Chave'                 => 'Locomocao_Admin_Menus',
+            'End'                   => 'Locomocao/Admin/Menus', // Endereco que deve conter a url para permitir acesso
+            'Modulo'                => 'Locomocao', // Modulo Referente
             'SubModulo'             => 'Admin',   // Submodulo Referente
             'Metodo'                => 'Menus',  // Metodos referentes separados por virgula
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                '_Sistema_Avancado' => true
+                'Locomocao_Avancado' => true
             ),
         ),
         Array(
             'Nome'                  => __('Sistema (Menu) - Add'),
             'Desc'                  => '',
-            'Chave'                 => '_Sistema_Admin_Menus_Add', // CHave unica nunca repete, chave primaria
-            'End'                   => '_Sistema/Admin/Menus_Add', // Endereco que deve conter a url para permitir acesso
-            'Modulo'                => '_Sistema', // Modulo Referente
+            'Chave'                 => 'Locomocao_Admin_Menus_Add', // CHave unica nunca repete, chave primaria
+            'End'                   => 'Locomocao/Admin/Menus_Add', // Endereco que deve conter a url para permitir acesso
+            'Modulo'                => 'Locomocao', // Modulo Referente
             'SubModulo'             => 'Admin',   // Submodulo Referente
             'Metodo'                => 'Menus_Add,Menus_Add2',  // Metodos referentes separados por virgula
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                '_Sistema_Avancado' => true
+                'Locomocao_Avancado' => true
             ),
         ), 
         Array(
             'Nome'                  => __('Sistema (Menu) - Add'),
             'Desc'                  => '',
-            'Chave'                 => '_Sistema_Admin_Menus_Add', // CHave unica nunca repete, chave primaria
-            'End'                   => '_Sistema/Admin/Menus_Add', // Endereco que deve conter a url para permitir acesso
-            'Modulo'                => '_Sistema', // Modulo Referente
+            'Chave'                 => 'Locomocao_Admin_Menus_Add', // CHave unica nunca repete, chave primaria
+            'End'                   => 'Locomocao/Admin/Menus_Add', // Endereco que deve conter a url para permitir acesso
+            'Modulo'                => 'Locomocao', // Modulo Referente
             'SubModulo'             => 'Admin',   // Submodulo Referente
             'Metodo'                => 'Menus_Add,Menus_Add2',  // Metodos referentes separados por virgula
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                '_Sistema_Avancado' => true
+                'Locomocao_Avancado' => true
             ),
         ),
         Array(
             'Nome'                  => __('Sistema (Menu) - Editar'),
             'Desc'                  => '',
-            'Chave'                 => '_Sistema_Admin_Menus_Edit', // CHave unica nunca repete, chave primaria
-            'End'                   => '_Sistema/Admin/Menus_Edit', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
-            'Modulo'                => '_Sistema', // Modulo Referente // Modulo Referente
+            'Chave'                 => 'Locomocao_Admin_Menus_Edit', // CHave unica nunca repete, chave primaria
+            'End'                   => 'Locomocao/Admin/Menus_Edit', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
+            'Modulo'                => 'Locomocao', // Modulo Referente // Modulo Referente
             'SubModulo'             => 'Admin',   // Submodulo Referente   // Submodulo Referente
             'Metodo'                => 'Menus_Edit,Menus_Edit2',  // Metodos referentes separados por virgula
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                '_Sistema_Avancado' => true
+                'Locomocao_Avancado' => true
             ),
         ),
         Array(
             'Nome'                  => __('Sistema (Menu) - Deletar'),
             'Desc'                  => '',
-            'Chave'                 => '_Sistema_Admin_Menus_Del', // CHave unica nunca repete, chave primaria
-            'End'                   => '_Sistema/Admin/Menus_Del', // Endereco que deve conter a url para permitir acesso
-            'Modulo'                => '_Sistema', // Modulo Referente
+            'Chave'                 => 'Locomocao_Admin_Menus_Del', // CHave unica nunca repete, chave primaria
+            'End'                   => 'Locomocao/Admin/Menus_Del', // Endereco que deve conter a url para permitir acesso
+            'Modulo'                => 'Locomocao', // Modulo Referente
             'SubModulo'             => 'Admin',   // Submodulo Referente
             'Metodo'                => 'Menus_Del',  // Metodos referentes separados por virgula
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                '_Sistema_Avancado' => true
+                'Locomocao_Avancado' => true
             ),
         ),
         
@@ -159,25 +159,25 @@ $config_Permissoes = function (){
         Array(
             'Nome'                  => __('Sistema (Configuração) - Listagem'),
             'Desc'                  => '',
-            'Chave'                 => '_Sistema_Admin_Configs',
-            'End'                   => '_Sistema/Admin/Configs', // Endereco que deve conter a url para permitir acesso
-            'Modulo'                => '_Sistema', // Modulo Referente
+            'Chave'                 => 'Locomocao_Admin_Configs',
+            'End'                   => 'Locomocao/Admin/Configs', // Endereco que deve conter a url para permitir acesso
+            'Modulo'                => 'Locomocao', // Modulo Referente
             'SubModulo'             => 'Admin',   // Submodulo Referente
             'Metodo'                => 'Configs',  // Metodos referentes separados por virgula
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                '_Sistema_Avancado' => true
+                'Locomocao_Avancado' => true
             ),
         ),
         Array(
             'Nome'                  => __('Sistema (Configuração) - Editar'),
             'Desc'                  => '',
-            'Chave'                 => '_Sistema_Admin_Configs_Edit', // CHave unica nunca repete, chave primaria
-            'End'                   => '_Sistema/Admin/Configs_Edit', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
-            'Modulo'                => '_Sistema', // Modulo Referente // Modulo Referente
+            'Chave'                 => 'Locomocao_Admin_Configs_Edit', // CHave unica nunca repete, chave primaria
+            'End'                   => 'Locomocao/Admin/Configs_Edit', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
+            'Modulo'                => 'Locomocao', // Modulo Referente // Modulo Referente
             'SubModulo'             => 'Admin',   // Submodulo Referente   // Submodulo Referente
             'Metodo'                => 'Configs_Edit,Configs_Edit2',  // Metodos referentes separados por virgula
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                '_Sistema_Avancado' => true
+                'Locomocao_Avancado' => true
             ),
         ),
         
@@ -185,49 +185,49 @@ $config_Permissoes = function (){
         Array(
             'Nome'                  => __('Newsletter - Listagem'),
             'Desc'                  => '',
-            'Chave'                 => '_Sistema_Admin_Newsletter',
-            'End'                   => '_Sistema/Admin/Newsletter', // Endereco que deve conter a url para permitir acesso
-            'Modulo'                => '_Sistema', // Modulo Referente
+            'Chave'                 => 'Locomocao_Admin_Newsletter',
+            'End'                   => 'Locomocao/Admin/Newsletter', // Endereco que deve conter a url para permitir acesso
+            'Modulo'                => 'Locomocao', // Modulo Referente
             'SubModulo'             => 'Admin',   // Submodulo Referente
             'Metodo'                => 'Newsletter',  // Metodos referentes separados por virgula
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                '_Sistema_Newsletter' => true
+                'Locomocao_Newsletter' => true
             ),
         ),
         Array(
             'Nome'                  => __('Newsletter - Add'),
             'Desc'                  => '',
-            'Chave'                 => '_Sistema_Admin_Newsletter_Add', // CHave unica nunca repete, chave primaria
-            'End'                   => '_Sistema/Admin/Newsletter_Add', // Endereco que deve conter a url para permitir acesso
-            'Modulo'                => '_Sistema', // Modulo Referente
+            'Chave'                 => 'Locomocao_Admin_Newsletter_Add', // CHave unica nunca repete, chave primaria
+            'End'                   => 'Locomocao/Admin/Newsletter_Add', // Endereco que deve conter a url para permitir acesso
+            'Modulo'                => 'Locomocao', // Modulo Referente
             'SubModulo'             => 'Admin',   // Submodulo Referente
             'Metodo'                => 'Newsletter_Add,Newsletter_Add2',  // Metodos referentes separados por virgula
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                '_Sistema_Newsletter' => true
+                'Locomocao_Newsletter' => true
             ),
         ),
         Array(
             'Nome'                  => __('Newsletter - Editar'),
             'Desc'                  => '',
-            'Chave'                 => '_Sistema_Admin_Newsletter_Edit', // CHave unica nunca repete, chave primaria
-            'End'                   => '_Sistema/Admin/Newsletter_Edit', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
-            'Modulo'                => '_Sistema', // Modulo Referente // Modulo Referente
+            'Chave'                 => 'Locomocao_Admin_Newsletter_Edit', // CHave unica nunca repete, chave primaria
+            'End'                   => 'Locomocao/Admin/Newsletter_Edit', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
+            'Modulo'                => 'Locomocao', // Modulo Referente // Modulo Referente
             'SubModulo'             => 'Admin',   // Submodulo Referente   // Submodulo Referente
             'Metodo'                => 'Newsletter_Edit,Newsletter_Edit2',  // Metodos referentes separados por virgula
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                '_Sistema_Newsletter' => true
+                'Locomocao_Newsletter' => true
             ),
         ),
         Array(
             'Nome'                  => __('Newsletter - Deletar'),
             'Desc'                  => '',
-            'Chave'                 => '_Sistema_Admin_Newsletter_Del', // CHave unica nunca repete, chave primaria
-            'End'                   => '_Sistema/Admin/Newsletter_Del', // Endereco que deve conter a url para permitir acesso
-            'Modulo'                => '_Sistema', // Modulo Referente
+            'Chave'                 => 'Locomocao_Admin_Newsletter_Del', // CHave unica nunca repete, chave primaria
+            'End'                   => 'Locomocao/Admin/Newsletter_Del', // Endereco que deve conter a url para permitir acesso
+            'Modulo'                => 'Locomocao', // Modulo Referente
             'SubModulo'             => 'Admin',   // Submodulo Referente
             'Metodo'                => 'Newsletter_Del',  // Metodos referentes separados por virgula
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                '_Sistema_Newsletter' => true
+                'Locomocao_Newsletter' => true
             ),
         ),
         
@@ -237,36 +237,36 @@ $config_Permissoes = function (){
         Array(
             'Nome'                  => __('Sistema (Grupos) - Listagem'),
             'Desc'                  => '',
-            'Chave'                 => '_Sistema_Admin_Grupos',
-            'End'                   => '_Sistema/Admin/Grupos', // Endereco que deve conter a url para permitir acesso
-            'Modulo'                => '_Sistema', // Modulo Referente
+            'Chave'                 => 'Locomocao_Admin_Grupos',
+            'End'                   => 'Locomocao/Admin/Grupos', // Endereco que deve conter a url para permitir acesso
+            'Modulo'                => 'Locomocao', // Modulo Referente
             'SubModulo'             => 'Admin',   // Submodulo Referente
             'Metodo'                => 'Grupos',  // Metodos referentes separados por virgula
         ),
         Array(
             'Nome'                  => __('Sistema (Grupos) - Add'),
             'Desc'                  => '',
-            'Chave'                 => '_Sistema_Admin_Grupos_Add', // CHave unica nunca repete, chave primaria
-            'End'                   => '_Sistema/Admin/Grupos_Add', // Endereco que deve conter a url para permitir acesso
-            'Modulo'                => '_Sistema', // Modulo Referente
+            'Chave'                 => 'Locomocao_Admin_Grupos_Add', // CHave unica nunca repete, chave primaria
+            'End'                   => 'Locomocao/Admin/Grupos_Add', // Endereco que deve conter a url para permitir acesso
+            'Modulo'                => 'Locomocao', // Modulo Referente
             'SubModulo'             => 'Admin',   // Submodulo Referente
             'Metodo'                => 'Grupos_Add,Grupos_Add2',  // Metodos referentes separados por virgula
         ),
         Array(
             'Nome'                  => __('Sistema (Grupos) - Editar'),
             'Desc'                  => '',
-            'Chave'                 => '_Sistema_Admin_Grupos_Edit', // CHave unica nunca repete, chave primaria
-            'End'                   => '_Sistema/Admin/Grupos_Edit', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
-            'Modulo'                => '_Sistema', // Modulo Referente // Modulo Referente
+            'Chave'                 => 'Locomocao_Admin_Grupos_Edit', // CHave unica nunca repete, chave primaria
+            'End'                   => 'Locomocao/Admin/Grupos_Edit', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
+            'Modulo'                => 'Locomocao', // Modulo Referente // Modulo Referente
             'SubModulo'             => 'Admin',   // Submodulo Referente   // Submodulo Referente
             'Metodo'                => 'Grupos_Edit,Grupos_Edit2',  // Metodos referentes separados por virgula
         ),
         Array(
             'Nome'                  => __('Sistema (Grupos) - Deletar'),
             'Desc'                  => '',
-            'Chave'                 => '_Sistema_Admin_Grupos_Del', // CHave unica nunca repete, chave primaria
-            'End'                   => '_Sistema/Admin/Grupos_Del', // Endereco que deve conter a url para permitir acesso
-            'Modulo'                => '_Sistema', // Modulo Referente
+            'Chave'                 => 'Locomocao_Admin_Grupos_Del', // CHave unica nunca repete, chave primaria
+            'End'                   => 'Locomocao/Admin/Grupos_Del', // Endereco que deve conter a url para permitir acesso
+            'Modulo'                => 'Locomocao', // Modulo Referente
             'SubModulo'             => 'Admin',   // Submodulo Referente
             'Metodo'                => 'Grupos_Del',  // Metodos referentes separados por virgula
         ),
@@ -274,9 +274,9 @@ $config_Permissoes = function (){
         Array(
             'Nome'                  => __('Permissões (Grupo) - Listagem'),
             'Desc'                  => '',
-            'Chave'                 => '_Sistema_Admin_Grupos', // CHave unica nunca repete, chave primaria
-            'End'                   => '_Sistema/Admin/Grupos', // Endereco que deve conter a url para permitir acesso
-            'Modulo'                => '_Sistema', // Modulo Referente
+            'Chave'                 => 'Locomocao_Admin_Grupos', // CHave unica nunca repete, chave primaria
+            'End'                   => 'Locomocao/Admin/Grupos', // Endereco que deve conter a url para permitir acesso
+            'Modulo'                => 'Locomocao', // Modulo Referente
             'SubModulo'             => 'Admin',   // Submodulo Referente
             'Metodo'                => 'Grupos',  // Metodos referentes separados por virgula
         ),
@@ -290,16 +290,16 @@ $config_Permissoes = function (){
  */
 $config_Funcional = function (){
     return Array(
-        '_Sistema_Newsletter'  => Array(
+        'Locomocao_Newsletter'  => Array(
             'Nome'                  => 'Sistema -> Newsletter',
             'Desc'                  => __('Se possue Newsletter'),
-            'chave'                 => '_Sistema_Newsletter',
+            'chave'                 => 'Locomocao_Newsletter',
             'Valor'                 => false,  // false, true, ou array com os grupos que pode
         ),
-        '_Sistema_Avancado'  => Array(
+        'Locomocao_Avancado'  => Array(
             'Nome'                  => 'Sistema -> Avancado',
             'Desc'                  => __('Se Carrega ou nao Permissao em Avancado e se aparece no menu'),
-            'chave'                 => '_Sistema_Avancado',
+            'chave'                 => 'Locomocao_Avancado',
             'Valor'                 => true,  // false, true, ou array com os grupos que pode
         ),
     );

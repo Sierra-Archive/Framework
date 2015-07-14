@@ -15,8 +15,9 @@ class _Sistema_AdminControle extends _Sistema_Controle
         $this->AdminWidgets();
         \Framework\App\Visual::Layoult_Home_Widgets_Show();
         
-        // Grupo, Permissoes e Menuys
+        // Grupo, Configs, Permissoes e Menuys
         $this->Grupos(false,'Menor');
+        $this->Configs(false,'Menor');
         $this->Permissoes('Maior');
         $this->Menus('Maior');
         
@@ -35,6 +36,10 @@ class _Sistema_AdminControle extends _Sistema_Controle
         if($grupo!==false && !empty($grupo)){reset($grupo);$grupo_qnt = count($grupo);}else{$grupo_qnt = 0;}
         // Menu
         $menu = $this->_Modelo->db->Sql_Select('Sistema_Menu',Array());
+        if(is_object($menu)) $menu = Array(0=>$menu);
+        if($menu!==false && !empty($menu)){reset($menu);$menu_qnt = count($menu);}else{$menu = 0;}
+        // Config
+        $config = $this->_Modelo->db->Sql_Select('Sistema_Config',Array());
         if(is_object($menu)) $menu = Array(0=>$menu);
         if($menu!==false && !empty($menu)){reset($menu);$menu_qnt = count($menu);}else{$menu = 0;}
         // Permissao
@@ -61,6 +66,15 @@ class _Sistema_AdminControle extends _Sistema_Controle
             10
         );
         \Framework\App\Visual::Layoult_Home_Widgets_Add(
+            'Configurações', 
+            '_Sistema/Admin/Configuracoes', 
+            'tag', 
+            $config_qnt, 
+            'block-green', 
+            false, 
+            10
+        );
+        \Framework\App\Visual::Layoult_Home_Widgets_Add(
             'Permissões', 
             '_Sistema/Admin/Permissao', 
             'tag', 
@@ -80,7 +94,7 @@ class _Sistema_AdminControle extends _Sistema_Controle
         $i = 0;
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
             Array(
-                'Adicionar Menu',
+                __('Adicionar Menu'),
                 '_Sistema/Admin/Menus_Add',
                 ''
             ),
@@ -297,12 +311,73 @@ class _Sistema_AdminControle extends _Sistema_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 3.1.1
      */
+    public function Configs(){
+        $this->Endereco_Admin_Config(false);
+        
+        $tabela_colunas[] = __('Chave');
+        $tabela_colunas[] = __('Descrição');
+        $tabela_colunas[] = __('Valor');
+        $tabela_colunas[] = __('Funções');
+
+        $this->_Visual->Show_Tabela_DataTable_Massiva($tabela_colunas,'_Sistema/Admin/Configs');
+
+        $titulo = __('Listagem de Configurações').' (<span id="DataTable_Contador">0</span>)';
+        if($export==='Unico'){
+            $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',10);
+        }else if($export==='Maior'){
+            $this->_Visual->Bloco_Maior_CriaJanela($titulo,'',10);
+        }else{
+            $this->_Visual->Bloco_Menor_CriaJanela($titulo,'',10);
+        }
+        //Carrega Json
+        $this->_Visual->Json_Info_Update('Titulo', __('Administrar Configurações'));
+    }
+    /**
+     * 
+     * @param type $id
+     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
+     * @version 3.1.1
+     */
+    public function Configs_Edit($id){
+        $this->Endereco_Admin_Config();
+        // Carrega Config
+        $titulo1    = __('Editar Configuração').' (#'.$id.')';
+        $titulo2    = __('Alteração de Configuração');
+        $formid     = 'form_Sistema_AdminC_ConfigEdit';
+        $formbt     = __('Alterar Configuração');
+        $formlink   = '_Sistema/Admin/Configs_Edit2/'.$id;
+        $editar     = Array('Sistema_Config',$id);
+        $campos = Sistema_Config_DAO::Get_Colunas();
+        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos,$editar);   
+    }
+    /**
+     * 
+     * 
+     * @param type $id
+     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
+     * @version 3.1.1
+     */
+    public function Configs_Edit2($id){
+        $id = (int) $id;
+        $titulo     = __('Configuração Alterada com Sucesso');
+        $dao        = Array('Sistema_Config',$id);
+        $funcao     = '$this->Configs();';
+        $sucesso1   = __('Configuração Alterada com Sucesso');
+        $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
+        $alterar    = Array();
+        $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
+    }
+    /**
+     * 
+     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
+     * @version 3.1.1
+     */
     public function Permissoes($export='Unico'){
         $this->Endereco_Admin_Permissao(false);
         $i = 0;
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
             Array(
-                'Adicionar Permissao',
+                __('Adicionar Permissao'),
                 '_Sistema/Admin/Permissoes_Add',
                 ''
             ),
@@ -488,7 +563,7 @@ class _Sistema_AdminControle extends _Sistema_Controle
         $i = 0;
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
             Array(
-                'Adicionar Grupo',
+                __('Adicionar Grupo'),
                 '_Sistema/Admin/Grupos_Add/'.$grupocat,
                 ''
             ),
@@ -893,7 +968,7 @@ class _Sistema_AdminControle extends _Sistema_Controle
         $i = 0;
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
             Array(
-                'Adicionar Newsletter',
+                __('Adicionar Newsletter'),
                 '_Sistema/Admin/Newsletter_Add',
                 ''
             ),
@@ -1116,7 +1191,13 @@ class _Sistema_AdminControle extends _Sistema_Controle
         $this->_Visual->Json_Info_Update('Titulo', __('Newsletter deletado com Sucesso'));  
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
-    
+    /**
+     * 
+     * @param type $true
+     * 
+     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
+     * @version 3.1.1
+     */
     function Endereco_Admin($true=true){
         $titulo = __('Administração Geral');
         $link = '_Sistema/Admin/Main';
@@ -1126,7 +1207,13 @@ class _Sistema_AdminControle extends _Sistema_Controle
             $this->Tema_Endereco($titulo);
         }
     }
-    
+    /**
+     * 
+     * @param type $true
+     * 
+     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
+     * @version 3.1.1
+     */
     function Endereco_Admin_Permissao($true=true){
         self::Endereco_Admin();
         $titulo = __('Permissões do Sistema');
@@ -1137,6 +1224,30 @@ class _Sistema_AdminControle extends _Sistema_Controle
             $this->Tema_Endereco($titulo);
         }
     }
+    /**
+     * Configura as Configuracoes Publicas
+     * @param type $true
+     * 
+     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
+     * @version 3.1.1
+     */
+    function Endereco_Admin_Config($true=true){
+        self::Endereco_Admin();
+        $titulo = __('Permissões do Sistema');
+        $link = '_Sistema/Admin/Permissoes';
+        if($true===true){
+            $this->Tema_Endereco($titulo,$link);
+        }else{
+            $this->Tema_Endereco($titulo);
+        }
+    }
+    /**
+     * 
+     * @param type $true
+     * 
+     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
+     * @version 3.1.1
+     */
     function Endereco_Admin_Menu($true=true){
         $this->Endereco_Admin();
         $titulo = __('Menus do Sistema');
@@ -1147,6 +1258,13 @@ class _Sistema_AdminControle extends _Sistema_Controle
             $this->Tema_Endereco($titulo);
         }
     }
+    /**
+     * 
+     * @param type $true
+     * 
+     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
+     * @version 3.1.1
+     */
     function Endereco_Admin_Grupo($true=true){
         $this->Endereco_Admin();
         $titulo = __('Grupos do Sistema');

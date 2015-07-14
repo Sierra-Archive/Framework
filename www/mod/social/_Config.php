@@ -234,7 +234,7 @@ $config_Funcional = function (){
     return Array();
 };
 /**
- * Configurações que podem ser Alteradas por Admin ou outros usuarios do Sistema
+ * Configurações que podem ser Alteradas por Admin ou outros usuarios do Sistema (Parametros Opcionais: Mascara e Max
  * @return type
  * 
  * @author Ricardo Sierra <web@ricardosierra.com.br>

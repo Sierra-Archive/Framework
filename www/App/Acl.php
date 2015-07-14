@@ -1324,6 +1324,16 @@ class Acl{
                         $inserir->descricao   = $valor['Desc'];
                         $inserir->chave       = $valor['Chave'];
                         $inserir->valor       = $valor['Valor'];
+                        if(isset($valor['Mascara'])){
+                            $inserir->mascara       = $valor['Mascara'];
+                        }else{
+                            $inserir->mascara       = '';
+                        }
+                        if(isset($valor['Max'])){
+                            $inserir->max       = $valor['Max'];
+                        }else{
+                            $inserir->max       = '100';
+                        }
                         $this->_db->Sql_Inserir($inserir);
                     }
                 }
