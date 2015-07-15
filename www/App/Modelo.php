@@ -91,6 +91,7 @@ class Modelo
             $inserir                = new \Sistema_Menu_DAO();
             // Se nao existir cria erro
             if(!isset($valor['Link'])){
+                var_dump($menu);
                 throw new \Exception('Erro no Código: '.  serialize($valor),2800);
             }
             // SE for Duplo, pega só um 
