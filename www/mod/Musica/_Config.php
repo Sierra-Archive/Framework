@@ -218,7 +218,7 @@ $config_Publico = function (){
         /*'{chave}'  => Array(
             'Nome'                  => 'Nome',
             'Desc'                  => __('Descricao'),
-            'chave'                 => '{chave}',
+            'Chave'                 => '{chave}',
             'Valor'                 => 'valor_padrao'
         )*/
     );
