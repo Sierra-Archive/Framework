@@ -268,7 +268,7 @@ class Locomocao_EntregaControle extends Locomocao_Controle
      * @return boolean
      */
     public function Entrega_Atualizar_Valor_Dinamico($time){
-        if(!isset($_POST['status'])) return false;
+        //if(!isset($_POST['status'])) return false;
         
         $html = '';
         

@@ -3,6 +3,8 @@ final Class Locomocao_Entrega_DAO extends Framework\App\Dao
 {
     protected $id;
     protected $motoboy;
+    protected $filial_saida;
+    protected $filial_chegada;
     protected static $objetocarregado     = false;     protected static $mysql_colunas       = false;     protected static $mysql_outside       = Array();     protected static $mysql_inside        = Array(); public function __construct() {  parent::__construct(); } public static function Get_Nome(){
         return MYSQL_LOCOMOCAO_ENTREGA;
     }
@@ -96,6 +98,56 @@ final Class Locomocao_Entrega_DAO extends Framework\App\Dao
                         'class'             => 'obrigatorio'
                     )
                 )
+            ),Array(
+                'mysql_titulo'      => 'filial_saida',
+                'mysql_tipovar'     => 'int', //varchar, int, 
+                'mysql_tamanho'     => 11,
+                'mysql_null'        => true,
+                'mysql_default'     => false,
+                'mysql_primary'     => false,
+                'mysql_estrangeira' => 'SFi.id|SFi.nome' ,//|U.ativado=1-EXTB.categoria='.CFG_TEC_CAT_ID_CLIENTES// chave estrangeira
+                'mysql_autoadd'     => false,
+                'mysql_comment'     => false,
+                'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
+                'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
+                'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
+                'linkextra'         => '', // //0 ninguem, 1 admin, 2 todos 
+                'edicao'            => Array(
+                    'Nome'              => __('Filial de Saida'),
+                    'valor_padrao'      => false,
+                    'readonly'          => false,
+                    'aviso'             => __('Minimo 3 caracteres'),
+                    'formtipo'          => 'select',
+                    'select'             => array(
+                        'class'             => 'obrigatorio',
+                        'infonulo'          => 'Escolha uma Filial',
+                    )
+                )
+            ),Array(
+                'mysql_titulo'      => 'filial_chegada',
+                'mysql_tipovar'     => 'int', //varchar, int, 
+                'mysql_tamanho'     => 11,
+                'mysql_null'        => true,
+                'mysql_default'     => false,
+                'mysql_primary'     => false,
+                'mysql_estrangeira' => 'SFi.id|SFi.nome' ,//|U.ativado=1-EXTB.categoria='.CFG_TEC_CAT_ID_CLIENTES// chave estrangeira
+                'mysql_autoadd'     => false,
+                'mysql_comment'     => false,
+                'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
+                'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
+                'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
+                'linkextra'         => '', // //0 ninguem, 1 admin, 2 todos 
+                'edicao'            => Array(
+                    'Nome'              => __('Filial de Chegada'),
+                    'valor_padrao'      => false,
+                    'readonly'          => false,
+                    'aviso'             => __('Minimo 3 caracteres'),
+                    'formtipo'          => 'select',
+                    'select'             => array(
+                        'class'             => 'obrigatorio',
+                        'infonulo'          => 'Escolha uma Filial',
+                    )
+                )
             ),
             Array(
                 'TabelaLinkada'     => Array(
@@ -113,7 +165,7 @@ final Class Locomocao_Entrega_DAO extends Framework\App\Dao
                         'Extrangeira'       => 'LEP.id|LEP.id',
                         'Linkar'            => 'entrega', // CAmpo a ser encaixado id do pai
                         'Linkado'           => 'entrega',// CAmpo a ser encaixado id do link
-                        'Campos'            => Array('endereco_saida','endereco_destino'),
+                        'Campos'            => Array('pais','estado','cidade','bairro','endereco'),
                         'infonulo'          => 'Escolha pelo menos um Ponto',
                       'linkextra'         => false
                     ), // Campo Boleano da tabela LINK, caso false apaga os que nao forem puxados

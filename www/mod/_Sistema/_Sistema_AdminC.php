@@ -67,7 +67,7 @@ class _Sistema_AdminControle extends _Sistema_Controle
         );
         \Framework\App\Visual::Layoult_Home_Widgets_Add(
             'Configurações', 
-            '_Sistema/Admin/Configuracoes', 
+            '_Sistema/Admin/Configs', 
             'tag', 
             $config_qnt, 
             'block-green', 

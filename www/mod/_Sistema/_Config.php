@@ -62,6 +62,16 @@ $config_Menu = function (){
                     '_Sistema_Avancado' => true
                 ),
                 'Filhos'                => false,
+            ),'Filiais'=>Array(
+                'Nome'                  => __('Filiais'),
+                'Link'                  => '_Sistema/Filial/Filiais',
+                'Gravidade'             => 1,
+                'Img'                   => 'turboadmin/m-dashboard.png',
+                'Icon'                  => 'dashboard',
+                'Permissao_Func'        => Array(// Permissoes NEcessarias
+                    '_Sistema_Filial' => true
+                ),
+                'Filhos'                => false,
             ))
         ),'Relatório' => Array(
             'Nome'                  => __('Relatório'),
@@ -280,6 +290,56 @@ $config_Permissoes = function (){
             'SubModulo'             => 'Admin',   // Submodulo Referente
             'Metodo'                => 'Grupos',  // Metodos referentes separados por virgula
         ),
+        
+        // Filial
+        Array(
+            'Nome'                  => __('Sistema (Filiais) - Listagem'),
+            'Desc'                  => '',
+            'Chave'                 => '_Sistema_Filial_Filial',
+            'End'                   => '_Sistema/Filial/Filial', // Endereco que deve conter a url para permitir acesso
+            'Modulo'                => '_Sistema', // Modulo Referente
+            'SubModulo'             => 'Filial',   // Submodulo Referente
+            'Metodo'                => 'Filial',  // Metodos referentes separados por virgula
+            'Permissao_Func'        => Array(// Permissoes NEcessarias
+                '_Sistema_Filial' => true
+            ),
+        ),
+        Array(
+            'Nome'                  => __('Sistema (Filiais) - Add'),
+            'Desc'                  => '',
+            'Chave'                 => '_Sistema_Filial_Filial_Add', // CHave unica nunca repete, chave primaria
+            'End'                   => '_Sistema/Filial/Filial_Add', // Endereco que deve conter a url para permitir acesso
+            'Modulo'                => '_Sistema', // Modulo Referente
+            'SubModulo'             => 'Filial',   // Submodulo Referente
+            'Metodo'                => 'Filial_Add,Filial_Add2',  // Metodos referentes separados por virgula
+            'Permissao_Func'        => Array(// Permissoes NEcessarias
+                '_Sistema_Filial' => true
+            ),
+        ),
+        Array(
+            'Nome'                  => __('Sistema (Filiais) - Editar'),
+            'Desc'                  => '',
+            'Chave'                 => '_Sistema_Filial_Filial_Edit', // CHave unica nunca repete, chave primaria
+            'End'                   => '_Sistema/Filial/Filial_Edit', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
+            'Modulo'                => '_Sistema', // Modulo Referente // Modulo Referente
+            'SubModulo'             => 'Filial',   // Submodulo Referente   // Submodulo Referente
+            'Metodo'                => 'Filial_Edit,Filial_Edit2',  // Metodos referentes separados por virgula
+            'Permissao_Func'        => Array(// Permissoes NEcessarias
+                '_Sistema_Filial' => true
+            ),
+        ),
+        Array(
+            'Nome'                  => __('Sistema (Filiais) - Deletar'),
+            'Desc'                  => '',
+            'Chave'                 => '_Sistema_Filial_Filial_Del', // CHave unica nunca repete, chave primaria
+            'End'                   => '_Sistema/Filial/Filial_Del', // Endereco que deve conter a url para permitir acesso
+            'Modulo'                => '_Sistema', // Modulo Referente
+            'SubModulo'             => 'Filial',   // Submodulo Referente
+            'Metodo'                => 'Filial_Del',  // Metodos referentes separados por virgula
+            'Permissao_Func'        => Array(// Permissoes NEcessarias
+                '_Sistema_Filial' => true
+            ),
+        ),
     );
 };
 /**
@@ -301,6 +361,12 @@ $config_Funcional = function (){
             'Desc'                  => __('Se Carrega ou nao Permissao em Avancado e se aparece no menu'),
             'chave'                 => '_Sistema_Avancado',
             'Valor'                 => true,  // false, true, ou array com os grupos que pode
+        ),
+        '_Sistema_Filial'  => Array(
+            'Nome'                  => 'Sistema -> Avancado',
+            'Desc'                  => __('Se Carrega ou nao as Filiais'),
+            'chave'                 => '_Sistema_Filial',
+            'Valor'                 => false,  // false, true, ou array com os grupos que pode
         ),
     );
 };

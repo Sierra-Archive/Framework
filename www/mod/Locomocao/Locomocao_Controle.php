@@ -23,6 +23,7 @@ class Locomocao_Controle extends \Framework\App\Controle
     public static function Retorna_Distancia($origem,$destino,$mode = 'CAR',$language = 'PT',$sensor = false){
         $xml = simplexml_load_file("http://maps.googleapis.com/maps/api/distancematrix/xml?origins=''".$origem."''|&destinations=''".$destino."''|&mode=''".$mode."''|&language=''".$language."''|&sensor=false");
         // Se nao Existir Retorna Falso
+        //var_dump($xml);
         if($xml->row->element->status!='OK'){
             return false;
         }
