@@ -58,7 +58,7 @@ final Class Sistema_Config_DAO extends Framework\App\Dao
                 'edicao'            => Array(
                     'Nome'              => __('Chave'),
                     'valor_padrao'      => false,
-                    'readonly'          => false,
+                    'readonly'          => true,
                     'aviso'             => __('Minimo 3 caracteres'),
                     'formtipo'          => 'input',
                     'input'             => array(

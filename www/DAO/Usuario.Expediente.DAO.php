@@ -1,16 +1,15 @@
 <?php
-final Class Curso_DAO extends Framework\App\Dao 
+final Class Usuario_Expediente_DAO extends Framework\App\Dao 
 {
     protected $id;
-    //Upload
-    protected $nome;
-    protected $valor;
+    protected $usuario;
+    protected $qnt;
+    protected $inicio;
+    protected $fim;
     protected $status;
-    protected $requisito;
-    protected $descricao;
-    //protected $obs;
+    protected $obs;
     protected static $objetocarregado     = false;     protected static $mysql_colunas       = false;     protected static $mysql_outside       = Array();     protected static $mysql_inside        = Array(); public function __construct() {  parent::__construct(); } public static function Get_Nome(){
-        return MYSQL_CURSO;
+        return MYSQL_USUARIO_EXPEDIENTE;
     }
     /**
      * Fornece Permissão de Copia da tabela
@@ -20,7 +19,7 @@ final Class Curso_DAO extends Framework\App\Dao
         return false;
     }
     public static function Get_Sigla(){
-        return 'Cu';
+        return 'UE';
     }
     public static function Get_Engine(){
         return 'InnoDB';
@@ -50,56 +49,107 @@ final Class Curso_DAO extends Framework\App\Dao
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => '' ,//0 ninguem, 1 admin, 2 todos 
-            ),Array(
-                'mysql_titulo'      => 'nome',
-                'mysql_tipovar'     => 'varchar', //varchar, int, 
-                'mysql_tamanho'     => 100,
-                'mysql_null'        => true,
-                'mysql_default'     => false,
-                'mysql_primary'     => false,
-                'mysql_estrangeira' => false, // chave estrangeira
+            ),
+            Array(
+                'mysql_titulo'      => 'usuario',
+                'mysql_tipovar'     => 'int', //varchar, int, 
+                'mysql_tamanho'     => 11,
+                'mysql_null'        => true,  // nulo ?
+                'mysql_default'     => 0, // valor padrao
+                'mysql_primary'     => false,  // chave primaria
+                'mysql_estrangeira' => 'U.id|U.nome-U.razao_social', // chave estrangeira     ligacao|apresentacao|condicao
                 'mysql_autoadd'     => false,
                 'mysql_comment'     => false,
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'         => '', // //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => 'usuario/Admin/Usuarios_Add', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => __('Nome'),
+                    'Nome'              => __('Usuário'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',
-                    'formtipo'          => 'input',
-                    'input'             => array(
-                        'tipo'              => 'text',
-                        'class'             => 'obrigatorio'
+                    'formtipo'          => 'select',
+                    'select'             => array(
+                        'class'             => 'obrigatorio',
+                        'infonulo'          => 'Escolha um Usuário',
                     )
                 )
             ),
             Array(
-                'mysql_titulo'      => 'valor',
-                'mysql_tipovar'     => 'float', //varchar, int, 
-                'mysql_tamanho'     => 30,
-                'mysql_null'        => true,
-                'mysql_default'     => false,
-                'mysql_primary'     => false,
-                'mysql_estrangeira' => false, // chave estrangeira
+                'mysql_titulo'      => 'qnt',
+                'mysql_tipovar'     => 'int', //varchar, int, 
+                'mysql_tamanho'     => 11,
+                'mysql_null'        => false,  // nulo ?
+                'mysql_default'     => false, // valor padrao
+                'mysql_primary'     => false,  // chave primaria
+                'mysql_estrangeira' => false, // chave estrangeira     ligacao|apresentacao|condicao
                 'mysql_autoadd'     => false,
                 'mysql_comment'     => false,
-                'mysql_inside'      => '\Framework\App\Sistema_Funcoes::Tranf_Real_Float({valor})', // Funcao Executada quando o dado for inserido no banco de dados
-                'mysql_outside'     => '\Framework\App\Sistema_Funcoes::Tranf_Float_Real({valor})', // Funcao Executada quando o dado for retirado no banco de dados
+                'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
+                'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'         => '', // //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => __('Valor'),
-                    'Mascara'           => 'Real',
-                    'valor_padrao'      => false,
+                    'Nome'              => __('Tempo Total'),
+                    'Mascara'           => 'Numero',
+                    'valor_padrao'      => 30,
                     'readonly'          => false,
                     'aviso'             => '',
                     'formtipo'          => 'input',
                     'input'             => array(
                         'tipo'              => 'text',
                         'class'             => ''
+                    )
+                )
+            ),Array(
+                'mysql_titulo'      => 'inicio',
+                'mysql_tipovar'     => 'datetime', //varchar, int, 
+                'mysql_tamanho'     => 19,
+                'mysql_null'        => true,
+                'mysql_default'     => '0000-00-00 00:00:00', // valor padrao
+                'mysql_primary'     => false,
+                'mysql_estrangeira' => false, // chave estrangeira
+                'mysql_autoadd'     => false,
+                'mysql_comment'     => false,
+                'mysql_inside'      => 'data_hora_brasil_eua({valor})', // Funcao Executada quando o dado for inserido no banco de dados
+                'mysql_outside'     => 'data_hora_eua_brasil({valor})', // Funcao Executada quando o dado for retirado no banco de dados
+                'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
+                'linkextra'         => '', // //0 ninguem, 1 admin, 2 todos 
+                'edicao'            => Array(
+                    'Nome'              => __('Data Inicial'),
+                    'valor_padrao'      => false,
+                    'readonly'          => false,
+                    'aviso'             => '',
+                    'formtipo'          => 'input',
+                    'input'             => array(
+                        'tipo'              => 'text',
+                        'class'             => 'obrigatorio masc_data_hora'
+                    )
+                )
+            ),Array(
+                'mysql_titulo'      => 'fim',
+                'mysql_tipovar'     => 'datetime', //varchar, int, 
+                'mysql_tamanho'     => 19,
+                'mysql_null'        => true,
+                'mysql_default'     => '0000-00-00 00:00:00', // valor padrao
+                'mysql_primary'     => false,
+                'mysql_estrangeira' => false, // chave estrangeira
+                'mysql_autoadd'     => false,
+                'mysql_comment'     => false,
+                'mysql_inside'      => 'data_hora_brasil_eua({valor})', // Funcao Executada quando o dado for inserido no banco de dados
+                'mysql_outside'     => 'data_hora_eua_brasil({valor})', // Funcao Executada quando o dado for retirado no banco de dados
+                'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
+                'linkextra'         => '', // //0 ninguem, 1 admin, 2 todos 
+                'edicao'            => Array(
+                    'Nome'              => __('Data Final'),
+                    'valor_padrao'      => false,
+                    'readonly'          => false,
+                    'aviso'             => '',
+                    'formtipo'          => 'input',
+                    'input'             => array(
+                        'tipo'              => 'text',
+                        'class'             => 'obrigatorio masc_data_hora'
                     )
                 )
             ),
@@ -138,58 +188,6 @@ final Class Curso_DAO extends Framework\App\Dao
                 )
             ),
             Array(
-                'mysql_titulo'      => 'requisito',
-                'mysql_tipovar'     => 'longtext', //varchar, int, 
-                'mysql_tamanho'     => 10000,
-                'mysql_null'        => false,  // nulo ?
-                'mysql_default'     => false, // valor padrao
-                'mysql_primary'     => false,  // chave primaria
-                'mysql_estrangeira' => false, // chave estrangeira     ligacao|apresentacao|condicao
-                'mysql_autoadd'     => false,
-                'mysql_comment'     => false,
-                'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
-                'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
-                'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
-                'edicao'            => Array(
-                    'Nome'              => __('Pré Requisitos'),
-                    'valor_padrao'      => false,
-                    'readonly'          => false,
-                    'aviso'             => '',
-                    'formtipo'          =>'textarea',
-                   'textarea'             => array(
-                        'tipo'              => 'text',
-                        'class'             => ''
-                    )
-                )
-            ),
-            Array(
-                'mysql_titulo'      => 'descricao',
-                'mysql_tipovar'     => 'longtext', //varchar, int, 
-                'mysql_tamanho'     => 10000,
-                'mysql_null'        => false,  // nulo ?
-                'mysql_default'     => false, // valor padrao
-                'mysql_primary'     => false,  // chave primaria
-                'mysql_estrangeira' => false, // chave estrangeira     ligacao|apresentacao|condicao
-                'mysql_autoadd'     => false,
-                'mysql_comment'     => false,
-                'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
-                'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
-                'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
-                'edicao'            => Array(
-                    'Nome'              => __('Descrição do Curso'),
-                    'valor_padrao'      => false,
-                    'readonly'          => false,
-                    'aviso'             => '',
-                    'formtipo'          =>'textarea',
-                   'textarea'             => array(
-                        'tipo'              => 'text',
-                        'class'             => ''
-                    )
-                )
-            ),/*
-            Array(
                 'mysql_titulo'      => 'obs',
                 'mysql_tipovar'     => 'longtext', //varchar, int, 
                 'mysql_tamanho'     => 10000,
@@ -214,7 +212,7 @@ final Class Curso_DAO extends Framework\App\Dao
                         'class'             => ''
                     )
                 )
-            )*/
+            )
         );
     }
 }

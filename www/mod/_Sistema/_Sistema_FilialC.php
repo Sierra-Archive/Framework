@@ -38,20 +38,21 @@ class _Sistema_FilialControle extends _Sistema_Controle
     public function Filiais($tipobloco='Unico'){
         $this->Endereco_Filial(false);
         
-        $tabela_colunas[] = __('Chave');
-        $tabela_colunas[] = __('Descrição');
-        $tabela_colunas[] = __('Valor');
+        $tabela_colunas[] = __('Id');
+        $tabela_colunas[] = __('Nome');
+        $tabela_colunas[] = __('Bairro');
+        $tabela_colunas[] = __('Endereço');
         $tabela_colunas[] = __('Funções');
 
         $this->_Visual->Show_Tabela_DataTable_Massiva($tabela_colunas,'_Sistema/Filial/Filiais');
 
         $titulo = __('Listagem de Filiais').' (<span id="DataTable_Contador">0</span>)';
         if($tipobloco==='Unico'){
-            $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',10);
+            $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',10,Array("link"=>"_Sistema/Filial/Filiais_Add",'icon'=>'add','nome'=>__('Adicionar Filial')));
         }else if($tipobloco==='Maior'){
-            $this->_Visual->Bloco_Maior_CriaJanela($titulo,'',10);
+            $this->_Visual->Bloco_Maior_CriaJanela($titulo,'',10,Array("link"=>"_Sistema/Filial/Filiais_Add",'icon'=>'add','nome'=>__('Adicionar Filial')));
         }else{
-            $this->_Visual->Bloco_Menor_CriaJanela($titulo,'',10);
+            $this->_Visual->Bloco_Menor_CriaJanela($titulo,'',10,Array("link"=>"_Sistema/Filial/Filiais_Add",'icon'=>'add','nome'=>__('Adicionar Filial')));
         }
         //Carrega Json
         $this->_Visual->Json_Info_Update('Titulo', __('Administrar Filiais'));

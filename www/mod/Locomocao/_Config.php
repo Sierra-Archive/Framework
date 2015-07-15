@@ -104,7 +104,7 @@ $config_Publico = function (){
     return Array(
         'Locomocao_Entrega_Kmminbase'  => Array(
             'Nome'                  => __('Km Min Ret. Base'),
-            'Desc'                  => __(''),
+            'Desc'                  => __('Km Min Ret. Base'),
             'Chave'                 => 'Locomocao_Entrega_Kmminbase',
             'Valor'                 => '12',
             'Mascara'               => 'Numero',
@@ -112,7 +112,7 @@ $config_Publico = function (){
         ),
         'Locomocao_Entrega_Kmminponto'  => Array(
             'Nome'                  => __('Km Min Ponto'),
-            'Desc'                  => __(''),
+            'Desc'                  => __('Km Min Ponto'),
             'Chave'                 => 'Locomocao_Entrega_Kmminponto',
             'Valor'                 => '12',
             'Mascara'               => 'Numero',
@@ -120,7 +120,7 @@ $config_Publico = function (){
         ),
         'Locomocao_Entrega_MinMin'  => Array(
             'Nome'                  => __('Minutos Minimos'),
-            'Desc'                  => __(''),
+            'Desc'                  => __('Minutos Minimos'),
             'Chave'                 => 'Locomocao_Entrega_MinMin',
             'Valor'                 => '60',
             'Mascara'               => 'Numero',
@@ -128,7 +128,7 @@ $config_Publico = function (){
         ),
         'Locomocao_Entrega_Kmmintotal'  => Array(
             'Nome'                  => __('Km Min Total'),
-            'Desc'                  => __(''),
+            'Desc'                  => __('Km Min Total'),
             'Chave'                 => 'Locomocao_Entrega_Kmmintotal',
             'Valor'                 => '36',
             'Mascara'               => 'Numero',
@@ -136,7 +136,7 @@ $config_Publico = function (){
         ),
         'Locomocao_Entrega_Preco49'  => Array(
             'Nome'                  => __('Preço por Km (Até 49)'),
-            'Desc'                  => __(''),
+            'Desc'                  => __('Preço por Km (Até 49)'),
             'Chave'                 => 'Locomocao_Entrega_Preco49',
             'Valor'                 => '0.8',
             'Mascara'               => 'Real',
@@ -144,7 +144,7 @@ $config_Publico = function (){
         ),
         'Locomocao_Entrega_Preco89'  => Array(
             'Nome'                  => __('Preço por Km (Até 89)'),
-            'Desc'                  => __(''),
+            'Desc'                  => __('Preço por Km (Até 89)'),
             'Chave'                 => 'Locomocao_Entrega_Preco89',
             'Valor'                 => '0.8',
             'Mascara'               => 'Real',
@@ -152,7 +152,7 @@ $config_Publico = function (){
         ),
         'Locomocao_Entrega_Preco169'  => Array(
             'Nome'                  => __('Preço por Km (Até 169)'),
-            'Desc'                  => __(''),
+            'Desc'                  => __('Preço por Km (Até 169)'),
             'Chave'                 => 'Locomocao_Entrega_Preco169',
             'Valor'                 => '0.85',
             'Mascara'               => 'Real',
@@ -160,7 +160,7 @@ $config_Publico = function (){
         ),
         'Locomocao_Entrega_Preco170'  => Array(
             'Nome'                  => __('Preço por Km (+170)'),
-            'Desc'                  => __(''),
+            'Desc'                  => __('Preço por Km (+170)'),
             'Chave'                 => 'Locomocao_Entrega_Preco170',
             'Valor'                 => '1.25',
             'Mascara'               => 'Real',

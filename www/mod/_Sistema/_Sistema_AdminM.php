@@ -24,7 +24,7 @@ class _Sistema_AdminModelo extends _Sistema_Modelo
         ++$numero;
         $columns[] = array( 'db' => 'chave', 'dt' => $numero); //'Chave';
         ++$numero;
-        $columns[] = array( 'db' => 'descricao', 'dt' => $numero); //'Descrição';
+        $columns[] = array( 'db' => 'nome', 'dt' => $numero); //'Descrição';
         ++$numero;
         $columns[] = array( 'db' => 'valor', 'dt' => $numero); //'Valor';
 

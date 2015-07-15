@@ -23,7 +23,7 @@ $config_Menu = function (){
             ),),
         ),
         'Gráfico' => Array(
-            'Filhos'                => Array('Gráfico'=>Array(
+            'Filhos'                => Array('Financeiro'=>Array(
                 'Nome'                  => __('Financeiro'),
                 'Link'                  => 'Financeiro/Relatorio/Grafico_Relatorio',
                 'Gravidade'             => 2,
@@ -38,102 +38,104 @@ $config_Menu = function (){
             'Gravidade'             => 20,
             'Img'                   => 'money',
             'Icon'                  => 'money',
-            'Filhos'                => Array('Formas de Pagamento'=>Array(
-                'Nome'                  => __('Formas de Pagamento'),
-                'Link'                  => 'Financeiro/Pagamento/Formas',
-                'Gravidade'             => 2,
-                'Img'                   => 'money',
-                'Icon'                  => 'money',
-                'Filhos'                => false,
-            ),'Condições de Pagamento'=>Array(
-                'Nome'                  => __('Condições de Pagamento'),
-                'Link'                  => 'Financeiro/Pagamento/Condicoes',
-                'Gravidade'             => 1,
-                'Img'                   => 'money',
-                'Icon'                  => 'money',
-                'Filhos'                => false,
-            ),'Contas à Pagar'=>Array(
-                'Nome'                  => __('Contas à Pagar'),
-                'Link'                  => 'Financeiro/Pagamento/Pagar',
-                'Gravidade'             => 10,
-                'Img'                   => 'money',
-                'Icon'                  => 'money',
-                'Filhos'                => false,
-            ),'Contas Pagas'=>Array(
-                'Nome'                  => __('Contas Pagas'),
-                'Link'                  => 'Financeiro/Pagamento/Pago',
-                'Gravidade'             => 9,
-                'Img'                   => 'money',
-                'Icon'                  => 'money',
-                'Filhos'                => false,
-            ),'Contas à Receber'=>Array(
-                'Nome'                  => __('Contas à Receber'),
-                'Link'                  => 'Financeiro/Pagamento/Receber',
-                'Gravidade'             => 8,
-                'Img'                   => 'money',
-                'Icon'                  => 'money',
-                'Filhos'                => false,
-            ),'Contas Recebidas'=>Array(
-                'Nome'                  => __('Contas Recebidas'),
-                'Link'                  => 'Financeiro/Pagamento/Recebido',
-                'Gravidade'             => 7,
-                'Img'                   => 'money',
-                'Icon'                  => 'money',
-                'Filhos'                => false,
-            ),'Finanças'=>Array(
-                'Nome'                  => __('Finanças'),
-                'Link'                  => 'Financeiro/Financa/Financas',
-                'Gravidade'             => 6,
-                'Img'                   => 'money',
-                'Icon'                  => 'money',
-                'Permissao_Func'        => Array(// Permissoes NEcessarias
-                    'Financeiro_Financa' => true
+            'Filhos'                => Array(
+                'Formas de Pagamento'=>Array(
+                    'Nome'                  => __('Formas de Pagamento'),
+                    'Link'                  => 'Financeiro/Pagamento/Formas',
+                    'Gravidade'             => 2,
+                    'Img'                   => 'money',
+                    'Icon'                  => 'money',
+                    'Filhos'                => false,
+                ),'Condições de Pagamento'=>Array(
+                    'Nome'                  => __('Condições de Pagamento'),
+                    'Link'                  => 'Financeiro/Pagamento/Condicoes',
+                    'Gravidade'             => 1,
+                    'Img'                   => 'money',
+                    'Icon'                  => 'money',
+                    'Filhos'                => false,
+                ),'Contas à Pagar'=>Array(
+                    'Nome'                  => __('Contas à Pagar'),
+                    'Link'                  => 'Financeiro/Pagamento/Pagar',
+                    'Gravidade'             => 10,
+                    'Img'                   => 'money',
+                    'Icon'                  => 'money',
+                    'Filhos'                => false,
+                ),'Contas Pagas'=>Array(
+                    'Nome'                  => __('Contas Pagas'),
+                    'Link'                  => 'Financeiro/Pagamento/Pago',
+                    'Gravidade'             => 9,
+                    'Img'                   => 'money',
+                    'Icon'                  => 'money',
+                    'Filhos'                => false,
+                ),'Contas à Receber'=>Array(
+                    'Nome'                  => __('Contas à Receber'),
+                    'Link'                  => 'Financeiro/Pagamento/Receber',
+                    'Gravidade'             => 8,
+                    'Img'                   => 'money',
+                    'Icon'                  => 'money',
+                    'Filhos'                => false,
+                ),'Contas Recebidas'=>Array(
+                    'Nome'                  => __('Contas Recebidas'),
+                    'Link'                  => 'Financeiro/Pagamento/Recebido',
+                    'Gravidade'             => 7,
+                    'Img'                   => 'money',
+                    'Icon'                  => 'money',
+                    'Filhos'                => false,
+                ),'Finanças'=>Array(
+                    'Nome'                  => __('Finanças'),
+                    'Link'                  => 'Financeiro/Financa/Financas',
+                    'Gravidade'             => 6,
+                    'Img'                   => 'money',
+                    'Icon'                  => 'money',
+                    'Permissao_Func'        => Array(// Permissoes NEcessarias
+                        'Financeiro_Financa' => true
+                    ),
+                    'Filhos'                => false,
                 ),
-                'Filhos'                => false,
+
+                //Contas de Usuarios
+                'Minhas Contas à Pagar'=>Array(
+                    'Nome'                  => __('Minhas Contas à Pagar'),
+                    'Link'                  => 'Financeiro/Usuario/Pagar',
+                    'Gravidade'             => 20,
+                    'Img'                   => 'money',
+                    'Icon'                  => 'money',
+                    'Permissao_Func'        => Array(// Permissoes NEcessarias
+                        'Financeiro_User_Saldo' => true
+                    ),
+                    'Filhos'                => false,
+                ),'Minhas Contas Pagas'=>Array(
+                    'Nome'                  => __('Minhas Contas Pagas'),
+                    'Link'                  => 'Financeiro/Usuario/Pago',
+                    'Gravidade'             => 19,
+                    'Img'                   => 'money',
+                    'Icon'                  => 'money',
+                    'Permissao_Func'        => Array(// Permissoes NEcessarias
+                        'Financeiro_User_Saldo' => true
+                    ),
+                    'Filhos'                => false,
+                ),'Minhas Contas à Receber'=>Array(
+                    'Nome'                  => __('Minhas Contas à Receber'),
+                    'Link'                  => 'Financeiro/Usuario/Receber',
+                    'Gravidade'             => 18,
+                    'Img'                   => 'money',
+                    'Icon'                  => 'money',
+                    'Permissao_Func'        => Array(// Permissoes NEcessarias
+                        'Financeiro_User_Saldo' => true
+                    ),
+                    'Filhos'                => false,
+                ),'Minhas Contas Recebidas'=>Array(
+                    'Nome'                  => __('Minhas Contas Recebidas'),
+                    'Link'                  => 'Financeiro/Usuario/Recebido',
+                    'Gravidade'             => 17,
+                    'Img'                   => 'money',
+                    'Icon'                  => 'money',
+                    'Permissao_Func'        => Array(// Permissoes NEcessarias
+                        'Financeiro_User_Saldo' => true
+                    ),
+                    'Filhos'                => false,
+                )
             ),
-                
-            //Contas de Usuarios
-            'Minhas Contas à Pagar'=>Array(
-                'Nome'                  => __('Minhas Contas à Pagar'),
-                'Link'                  => 'Financeiro/Usuario/Pagar',
-                'Gravidade'             => 20,
-                'Img'                   => 'money',
-                'Icon'                  => 'money',
-                'Permissao_Func'        => Array(// Permissoes NEcessarias
-                    'Financeiro_User_Saldo' => true
-                ),
-                'Filhos'                => false,
-            ),'Minhas Contas Pagas'=>Array(
-                'Nome'                  => __('Minhas Contas Pagas'),
-                'Link'                  => 'Financeiro/Usuario/Pago',
-                'Gravidade'             => 19,
-                'Img'                   => 'money',
-                'Icon'                  => 'money',
-                'Permissao_Func'        => Array(// Permissoes NEcessarias
-                    'Financeiro_User_Saldo' => true
-                ),
-                'Filhos'                => false,
-            ),'Minhas Contas à Receber'=>Array(
-                'Nome'                  => __('Minhas Contas à Receber'),
-                'Link'                  => 'Financeiro/Usuario/Receber',
-                'Gravidade'             => 18,
-                'Img'                   => 'money',
-                'Icon'                  => 'money',
-                'Permissao_Func'        => Array(// Permissoes NEcessarias
-                    'Financeiro_User_Saldo' => true
-                ),
-                'Filhos'                => false,
-            ),'Minhas Contas Recebidas'=>Array(
-                'Nome'                  => __('Minhas Contas Recebidas'),
-                'Link'                  => 'Financeiro/Usuario/Recebido',
-                'Gravidade'             => 17,
-                'Img'                   => 'money',
-                'Icon'                  => 'money',
-                'Permissao_Func'        => Array(// Permissoes NEcessarias
-                    'Financeiro_User_Saldo' => true
-                ),
-                'Filhos'                => false,
-            )),
         ),
     );
 };

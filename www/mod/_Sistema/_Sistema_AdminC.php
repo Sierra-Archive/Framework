@@ -315,7 +315,7 @@ class _Sistema_AdminControle extends _Sistema_Controle
         $this->Endereco_Admin_Config(false);
         
         $tabela_colunas[] = __('Chave');
-        $tabela_colunas[] = __('Descrição');
+        $tabela_colunas[] = __('Nome');
         $tabela_colunas[] = __('Valor');
         $tabela_colunas[] = __('Funções');
 

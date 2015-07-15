@@ -1018,7 +1018,6 @@ class Acl{
             self::$config     = &self::Sistema_Modulos_Carregar_Funcional();
         }
         $percorrer  = &self::$config[$chave]['Valor'];
-        
         // Percorre Funcional
         /*if(empty($percorrer)) return false;
         foreach($percorrer as &$valor){
@@ -1155,16 +1154,16 @@ class Acl{
                             if(isset($Funcional)){
                                 // Pega Arrays com configs
                                 $config_funciona = $config_Funcional();
-                                $config_Funcional = $Funcional;
-
-                                // Merge só valor
-                                reset($config_Funcional);
-                                while (key($config_Funcional) !== null) {
-                                    $current2 = current($config_Funcional);
+                                
+                                // variavel $Funcional vem do Include do Config de cada servidor
+                                // Substitui o valor
+                                reset($Funcional);
+                                while (key($Funcional) !== null) {
+                                    $current2 = current($Funcional);
                                     if(isset($current2['Valor'])){
-                                        $config_funciona[key($config_Funcional)]['Valor'] = $current2['Valor'];
+                                        $config_funciona[key($Funcional)]['Valor'] = $current2['Valor'];
                                     }
-                                    next($config_Funcional);
+                                    next($Funcional);
                                 }
                             }else{
                                 $config_funciona = $config_Funcional();
@@ -1334,6 +1333,7 @@ class Acl{
                         }else{
                             $inserir->max       = '100';
                         }
+                        
                         $this->_db->Sql_Inserir($inserir);
                     }
                 }

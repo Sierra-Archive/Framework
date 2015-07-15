@@ -458,6 +458,9 @@ if(!defined('MYSQL_COMERCIO_SERVICO_SUPORTE')){
     define('MYSQL_COMERCIO_SERVICO_SUPORTE'             , 'Comercio_Servico_Suporte'); 
 }
 // MODULO USUARIOS
+if(!defined('MYSQL_USUARIO_EXPEDIENTE')){
+    define('MYSQL_USUARIO_EXPEDIENTE'                   , 'Usuario_Expediente');
+}
 if(!defined('MYSQL_USUARIO_ANEXO')){
     define('MYSQL_USUARIO_ANEXO'                        , 'Usuario_Anexo');
 }

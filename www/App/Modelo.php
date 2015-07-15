@@ -100,6 +100,9 @@ class Modelo
             if(is_array($valor['Img']))          $valor['Img']          = $valor['Img'][0];
             if(is_array($valor['Icon']))         $valor['Icon']         = $valor['Icon'][0];
             if(is_array($valor['Gravidade']))    $valor['Gravidade']    = $valor['Gravidade'][0];
+            if(isset($valor['Filhos']) && is_array($valor['Filhos']) && isset($valor['Filhos'][0]) && $valor['Filhos'][0]===false){
+                $valor['Filhos']     = false;
+            }
             
             
             // Trata Link
@@ -144,6 +147,7 @@ class Modelo
             if(isset($valor['Filhos']) && $valor['Filhos']!==false && is_array($valor['Filhos'])) {
                 $identificador  = $this->db->Sql_Select('Sistema_Menu', Array(),1,'id DESC');
                 $identificador  = $identificador->id;
+                
                 $this->Sistema_Menu_Insere($valor['Filhos'],$modulo,$identificador);
             }
         }

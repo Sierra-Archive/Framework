@@ -40,7 +40,7 @@ final Class Curso_Turma_Inscricao_DAO extends Framework\App\Dao
             Array(
                 'mysql_titulo'      => 'id',
                 'mysql_tipovar'     => 'int', //varchar, int, 
-                'mysql_tamanho'     => 255,
+                'mysql_tamanho'     => 11,
                 'mysql_null'        => false,
                 'mysql_default'     => false,
                 'mysql_primary'     => true,

@@ -12,6 +12,7 @@ class _Sistema_FilialModelo extends _Sistema_Modelo
         
         
         $perm_editar = $this->_Registro->_Acl->Get_Permissao_Url('_Sistema/Filial/Filiais_Edit');
+        $perm_deletar = $this->_Registro->_Acl->Get_Permissao_Url('_Sistema/Filial/Filiais_Del');
         
 
 
@@ -24,14 +25,19 @@ class _Sistema_FilialModelo extends _Sistema_Modelo
         ++$numero;
         $columns[] = array( 'db' => 'id', 'dt' => $numero); //'Chave';
         ++$numero;
-        $columns[] = array( 'db' => 'descricao', 'dt' => $numero); //'Descrição';
+        $columns[] = array( 'db' => 'nome', 'dt' => $numero); //'Descrição';
         ++$numero;
-        $columns[] = array( 'db' => 'valor', 'dt' => $numero); //'Valor';
+        $columns[] = array( 'db' => 'bairro2', 'dt' => $numero); //'Valor';
+        ++$numero;
+        $columns[] = array( 'db' => 'endereco', 'dt' => $numero); //'Valor';
 
 
         $function = '';
         if($perm_editar){
             $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Editar\'     ,Array(__(\'Editar Filial\')        ,\'_Sistema/Filial/Filiais_Edit/\'.$d.\'/\'    ,\'\'),true);';
+        }
+        if($perm_deletar){
+            $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Deletar\'     ,Array(__(\'Deletar Filial\')        ,\'_Sistema/Filial/Filiais_Del/\'.$d.\'/\'    ,\'\'),true);';
         }
         
         ++$numero;
