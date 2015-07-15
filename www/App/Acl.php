@@ -1300,9 +1300,9 @@ class Acl{
         $configPublicos = self::Sistema_Modulos_Carregar_Publico();
         if(!empty($configPublicos)){
             foreach($configPublicos as &$valor){
-                if($valor['chave']!=''){
+                if($valor['Chave']!=''){
                     // Verifica se ja existe
-                    $where = '{sigla}chave=\''.$valor['chave'].'\'';
+                    $where = '{sigla}chave=\''.$valor['Chave'].'\'';
                     $retorno = $this->_db->Sql_Select('Sistema_Config',$where);
                     if($retorno===false){
                         
