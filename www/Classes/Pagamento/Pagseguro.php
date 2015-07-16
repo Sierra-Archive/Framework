@@ -1,7 +1,7 @@
 <?php
 namespace Framework\Classes\Pagamento;
 
-require_once LIB_PATH.'PagSeguroLibrary'.DS.'PagSeguroLibrary.php';
+require_once LIBS_PATH.'PagSeguroLibrary'.DS.'PagSeguroLibrary.php';
 
 
 /**

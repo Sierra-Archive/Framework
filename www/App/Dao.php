@@ -1,26 +1,88 @@
 <?php
 namespace Framework\App;
+/**
+ * Classe Abstrata do Dao, Responsável pelas Tabelas do Banco de Dados
+ * 
+ * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
+ * @version 3.1.1
+ */
 abstract class Dao implements \Framework\DaoInterface
 {
     // Controle de MYSQL
+    /**
+     *
+     * @var type 
+     */
     protected static $objetocarregado     = false;
+    /**
+     *
+     * @var type 
+     */
     protected static $mysql_colunas       = false;
+    /**
+     *
+     * @var type 
+     */
     protected static $mysql_outside       = false;
+    /**
+     *
+     * @var type 
+     */
     protected static $mysql_inside        = false;
     
-    // SE aceita ou nao configuracoes do usuario
+    /**
+     * SE aceita ou nao configuracoes do usuario
+     * @var type 
+     */
     protected static $aceita_config       = true;
-    // SE aceita ou nao configuracoes do usuario NOS CAMPOS
+    
+    /**
+     * SE aceita ou nao configuracoes do usuario NOS CAMPOS
+     * @var type 
+     */
     protected static $campos_naoaceita_config  = false;
     
-    // Colunas Default
+    /**
+     *
+     * @var type 
+     */
     protected        $log_date_add        = '';
+    /**
+     *
+     * @var type 
+     */
     protected        $log_user_add        = '';
+    /**
+     *
+     * @var type 
+     */
     protected        $log_date_edit       = '';
+    /**
+     *
+     * @var type 
+     */
     protected        $log_user_edit       = '';
+    /**
+     *
+     * @var type 
+     */
     protected        $log_date_del        = '';
+    /**
+     *
+     * @var type 
+     */
     protected        $log_user_del        = '';
+    /**
+     *
+     * @var type 
+     */
     protected        $deletado            = 0;
+    /**
+     * 
+     * 
+     * @version 3.1.1
+     * @author Ricardo Sierra <web@ricardosierra.com.br>
+     */
     public function __construct() {
         if(static::$objetocarregado===false){
             $this->Get_CarregaMYSQL();
@@ -29,17 +91,32 @@ abstract class Dao implements \Framework\DaoInterface
         }
     }
     
-    // Triggers
+    /**
+     * Triggers
+     * @return type
+     * 
+     * @version 3.1.1
+     * @author Ricardo Sierra <web@ricardosierra.com.br>
+     */
     public static function Get_Trigger(){
         return Array();
     }
-    
+    /**
+     * 
+     * @return string
+     * 
+     * @version 3.1.1
+     * @author Ricardo Sierra <web@ricardosierra.com.br>
+     */
     public static function Get_Engine(){
         return 'InnoDB';
     }
     /**
      * 
      * @return string
+     * 
+     * @version 3.1.1
+     * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
     public static function Get_Charset(){
         return 'latin1';
@@ -47,13 +124,19 @@ abstract class Dao implements \Framework\DaoInterface
     /**
      * 
      * @return int
+     * 
+     * @version 3.1.1
+     * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
     public static function Get_Autoadd(){
         return 1;
     }
     /**
-     * 
+     * Colunas da Tabela
      * @return type
+     * 
+     * @version 3.1.1
+     * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
     final public static function Get_Colunas(){
         if(static::$mysql_colunas===false){
@@ -70,6 +153,9 @@ abstract class Dao implements \Framework\DaoInterface
      *      [...]
      * )
      * @return boleano or Array
+     * 
+     * @version 3.1.1
+     * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
     public static function Get_LinkTable(){
         return false;
@@ -79,10 +165,21 @@ abstract class Dao implements \Framework\DaoInterface
      * Se é estatica, nao terá 'servidor', todos os registros serao abertos por 
      * todas as configuracoes de servidor
      * @return boleano
+     * 
+     * @version 3.1.1
+     * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
     public static function Get_StaticTable(){
         return false;
     }
+    /**
+     * Deletar Atributo 
+     * @param type $atributo
+     * @return boolean
+     * 
+     * @version 3.1.1
+     * @author Ricardo Sierra <web@ricardosierra.com.br>
+     */
     public function Atributo_Del($atributo){
         if(isset($this->$atributo)){
             unset($this->$atributo);
@@ -93,6 +190,9 @@ abstract class Dao implements \Framework\DaoInterface
     /**
      * 
      * @return boolean
+     * 
+     * @version 3.1.1
+     * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
     final public function Get_CarregaMYSQL(){
         $campos         = $this->Get_Colunas();
@@ -139,6 +239,9 @@ abstract class Dao implements \Framework\DaoInterface
     /**
      * 
      * @return boolean
+     * 
+     * @version 3.1.1
+     * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
     final public function Get_Primaria(){
         $campos = $this->Get_Colunas();
@@ -153,6 +256,13 @@ abstract class Dao implements \Framework\DaoInterface
         if($contador==0) return false;
         else             return $primarias;
     }
+    /**
+     * 
+     * @return boolean|string
+     * 
+     * @version 3.1.1
+     * @author Ricardo Sierra <web@ricardosierra.com.br>
+     */
     final public function Get_Indice_Unico(){
         $campos = $this->Get_Colunas();
         $indice_unico   = Array(); 
@@ -180,6 +290,9 @@ abstract class Dao implements \Framework\DaoInterface
     /**
      * 
      * @return boolean
+     * 
+     * @version 3.1.1
+     * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
     final public function Get_Extrangeiras(){
         $campos = $this->Get_Colunas();
@@ -201,6 +314,9 @@ abstract class Dao implements \Framework\DaoInterface
     /**
      * MESMA FUNCAO ACIMA MAS COM A SIGLA SEPARADO
      * @return boolean
+     * 
+     * @version 3.1.1
+     * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
     final public function Get_Extrangeiras_ComExterna(){
         $campos = $this->Get_Colunas();
@@ -216,13 +332,37 @@ abstract class Dao implements \Framework\DaoInterface
         if(empty($extrangeiras)) return false;
         else             return $extrangeiras;
     }
+    /**
+     * 
+     * @param type $name
+     * @return type
+     * 
+     * @version 3.1.1
+     * @author Ricardo Sierra <web@ricardosierra.com.br>
+     */
     final public function __isset($name)
     {
         return isset($this->$name);
     }
+    /**
+     * 
+     * @param type $nome
+     * @param type $resultado
+     * 
+     * @version 3.1.1
+     * @author Ricardo Sierra <web@ricardosierra.com.br>
+     */
     final public function __set($nome,$resultado){
         $this->$nome = $resultado;
     }
+    /**
+     * 
+     * @param type $nome
+     * @return boolean
+     * 
+     * @version 3.1.1
+     * @author Ricardo Sierra <web@ricardosierra.com.br>
+     */
     final public function __get($nome){
         if(!isset($this->$nome)){
             return false;
@@ -238,6 +378,9 @@ abstract class Dao implements \Framework\DaoInterface
      * @param type $nome
      * @param type $resultado
      * @return type
+     * 
+     * @version 3.1.1
+     * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
     final public function bd_get($nome,$resultado){
         // Pega as variaveis static
@@ -273,6 +416,9 @@ abstract class Dao implements \Framework\DaoInterface
      * Antigo nome: __get
      * @param type $nome
      * @return boolean
+     * 
+     * @version 3.1.1
+     * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
     final public function bd_set($nome, $novo_valor=''){
         // Pega as variaveis static
@@ -317,6 +463,9 @@ abstract class Dao implements \Framework\DaoInterface
     /**
      * Todas as Variaveis possiveis
      * @return type
+     * 
+     * @version 3.1.1
+     * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
     final public function Get_Object_Vars(){        
         return get_object_vars($this);
@@ -324,6 +473,9 @@ abstract class Dao implements \Framework\DaoInterface
     /**
      * Todas as Variaveis possiveis para Edicao
      * @return type
+     * 
+     * @version 3.1.1
+     * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
     final public function Get_Object_Vars_Public(){
         $var = get_object_vars($this);
@@ -340,8 +492,12 @@ abstract class Dao implements \Framework\DaoInterface
         return $var;
     }
     
-    
-    // Certifica da Limpeza da Memoria
+    /**
+     * Certifica da Limpeza da Memoria
+     * 
+     * @version 3.1.1
+     * @author Ricardo Sierra <web@ricardosierra.com.br>
+     */
     function __destruct() {
         foreach ($this as $index => $value) unset($this->$index);
     }

@@ -281,7 +281,7 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
     /**
      * Altera Pagamento pra Pago ou pra Nao pago !
      * 
-     * @param type $id
+     * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 3.1.1
      */
@@ -400,7 +400,7 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
     /**
      * 
      * 
-     * @param type $id
+     * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 3.1.1
      */
@@ -535,7 +535,7 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
     }
     /**
      * 
-     * @param type $id
+     * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 3.1.1
      */
@@ -554,7 +554,7 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
     /**
      * 
      * 
-     * @param type $id
+     * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 3.1.1
      */
@@ -570,7 +570,7 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
     /**
      * 
      * 
-     * @param type $id
+     * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 3.1.1
      */
@@ -692,7 +692,7 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
     }
     /**
      * 
-     * @param type $id
+     * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 3.1.1
      */
@@ -722,7 +722,7 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
     /**
      * 
      * 
-     * @param type $id
+     * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 3.1.1
      */
@@ -746,7 +746,7 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
     /**
      * 
      * 
-     * @param type $id
+     * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 3.1.1
      */
@@ -854,7 +854,7 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
     /**
      * 
      * 
-     * @param type $id
+     * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 3.1.1
      */
@@ -907,7 +907,7 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
     }
     /**
      * 
-     * @param type $id
+     * @param int $id Chave Primária (Id do Registro)
      * @param type $tema (Pagar,Pago,Receber,Recebido)
      * @param type $layoult
      * @throws Exception

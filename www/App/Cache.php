@@ -2,11 +2,26 @@
 namespace Framework\App;
 /**
  * Sistema de cache
+ * 
+ * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
+ * @version 3.1.1
  */
 class Cache {
 
+    /**
+     *
+     * @var type 
+     */
     private static $tipo = NULL;
+    /**
+     *
+     * @var type 
+     */
     private static $tipo_performace = 'lento';
+    /**
+     *
+     * @var type 
+     */
     private static $cache = NULL;
 
     /**
@@ -25,7 +40,9 @@ class Cache {
      */
     private $folder;
 
-    //memcache
+    /**
+     * memcache
+     */
     private $memcache_tempo = 60; // ainda nao implementado 
     
     /**
@@ -40,6 +57,9 @@ class Cache {
      * @param string $folder Local para salvar os arquivos de cache (opcional)
      *
      * @return void
+     * 
+     * @version 3.1.1
+     * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
     public function __construct($folder = null) {
         // Tenta Conectar Memcache, se nao faz pelo hd mesmo
@@ -79,6 +99,9 @@ class Cache {
      * Gera Id para Memoria RAm (SHMOD) e Nome de arquivo para Cache
      * @param type $name
      * @return int
+     * 
+     * @version 3.1.1
+     * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
     protected function Cache_Cod($name) {
         // maintain list of caches here
@@ -89,7 +112,16 @@ class Cache {
 
         return $id[$name];
     }
-    // Salvar e Ler
+    /**
+     * Salvar e Ler
+     * 
+     * @param type $key
+     * @param type $ram
+     * @return boolean
+     * 
+     * @version 3.1.1
+     * @author Ricardo Sierra <web@ricardosierra.com.br>
+     */
     public function Ler($key,$ram=false){
         // SE for pra DEBUG nao salva
         if(SISTEMA_DEBUG===TRUE){
@@ -130,6 +162,17 @@ class Cache {
         // SE nao Faz de Arquivo (MAIS LENTA)
         return $this->Arquivos_Leitura($key);
     }
+    /**
+     * 
+     * @param type $key
+     * @param type $content
+     * @param type $time
+     * @param type $ram
+     * @return type
+     * 
+     * @version 3.1.1
+     * @author Ricardo Sierra <web@ricardosierra.com.br>
+     */
     public function Salvar($key, &$content, $time = null, $ram=false){
         if(self::$tipo==='Memcache'){
             $retorno = self::$cache->set(sha1($key), serialize($content));
@@ -146,6 +189,14 @@ class Cache {
         }
         return $this->Arquivos_Salvar($key, $content, $time);
     }
+    /**
+     * 
+     * @param type $key
+     * @return boolean
+     * 
+     * @version 3.1.1
+     * @author Ricardo Sierra <web@ricardosierra.com.br>
+     */
     public function Deletar($key = null){
         if(self::$tipo==='Memcache'){
             if($key!==null){
@@ -193,6 +244,9 @@ class Cache {
      * @param string $folder Local para salvar os arquivos de cache (opcional)
      *
      * @return void
+     * 
+     * @version 3.1.1
+     * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
     protected function Arquivos_Pasta($folder) {
         if(!file_exists($folder))
@@ -213,6 +267,9 @@ class Cache {
      * @param string $key Uma chave para identificar o arquivo
      *
      * @return string Local do arquivo de cache
+     * 
+     * @version 3.1.1
+     * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
     protected function Arquivos_GerarEndereco($key) {
         return $this->folder . DS . sha1($key) . '.tmp';
@@ -228,6 +285,9 @@ class Cache {
      * @param string $time Quanto tempo até o cache expirar (opcional)
      *
      * @return boolean Se o cache foi salvo
+     * 
+     * @version 3.1.1
+     * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
     protected function Arquivos_Salvar($key, &$content, $time = null) {
         $tempo = new \Framework\App\Tempo('Cache - Salvar '.$key);
@@ -251,6 +311,9 @@ class Cache {
      * @param string $key Uma chave para identificar o valor cacheado
      *
      * @return mixed Se o cache foi encontrado retorna o seu valor, caso contrário retorna NULL
+     * 
+     * @version 3.1.1
+     * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
     protected function Arquivos_Leitura($key) {
         $tempo = new \Framework\App\Tempo('Cache - Leitura '.$key);
@@ -264,6 +327,9 @@ class Cache {
      * APAGA ARQUIVO DE CACHE
      * @param type $key
      * @return boolean
+     * 
+     * @version 3.1.1
+     * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
     protected function Arquivos_Apaga($key) {
         $filename = $this->Arquivos_GerarEndereco($key);
@@ -285,7 +351,17 @@ class Cache {
 
 
 
-    // TIPO SHMOD
+    /**
+     * TIPO SHMOD
+     * 
+     * @param type $name
+     * @param type $data
+     * @param type $timeout
+     * @return boolean
+     * 
+     * @version 3.1.1
+     * @author Ricardo Sierra <web@ricardosierra.com.br>
+     */
     protected function Shmop_Salvar($name, &$data, $timeout) {
         $tempo = new \Framework\App\Tempo('CacheRAM - Salvar '.$name);
         // delete cache
@@ -303,7 +379,14 @@ class Cache {
         }
         else return false;
     }
-
+    /**
+     * 
+     * @param type $name
+     * @return boolean
+     * 
+     * @version 3.1.1
+     * @author Ricardo Sierra <web@ricardosierra.com.br>
+     */
     protected function Shmop_Leitura($name) {
         $tempo = new \Framework\App\Tempo('CacheRAM - Leitura '.$name);
         if (!$this->Shmop_Expirar_Checar($name)) {
@@ -320,7 +403,14 @@ class Cache {
         }
         else return false;              // data was expired
     }
-
+    /**
+     * 
+     * @param type $name
+     * @param type $int
+     * 
+     * @version 3.1.1
+     * @author Ricardo Sierra <web@ricardosierra.com.br>
+     */
     protected function Shmop_Expirar_Setar($name, $int) {
         $timeout=new DateTime(date('Y-m-d H:i:s'));
         date_add($timeout, date_interval_create_from_date_string("$int seconds"));
@@ -336,7 +426,14 @@ class Cache {
         $id=shmop_open(1000, "c", 0644, strlen(serialize($tl)));
         shmop_write($id, serialize($tl), 0);
     }
-
+    /**
+     * 
+     * @param type $name
+     * @return boolean
+     * 
+     * @version 3.1.1
+     * @author Ricardo Sierra <web@ricardosierra.com.br>
+     */
     protected function Shmop_Expirar_Checar($name) {
         $now=new DateTime(date('Y-m-d H:i:s'));
         $now=date_format($now, 'YmdHis');

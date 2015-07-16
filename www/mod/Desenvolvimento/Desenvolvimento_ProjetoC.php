@@ -159,7 +159,7 @@ class Desenvolvimento_ProjetoControle extends Desenvolvimento_Controle
     }
     /**
      * 
-     * @param type $id
+     * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 3.1.1
      */
@@ -178,7 +178,7 @@ class Desenvolvimento_ProjetoControle extends Desenvolvimento_Controle
     /**
      * 
      * 
-     * @param type $id
+     * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 3.1.1
      */
@@ -194,7 +194,7 @@ class Desenvolvimento_ProjetoControle extends Desenvolvimento_Controle
     /**
      * 
      * 
-     * @param type $id
+     * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 3.1.1
      */
@@ -230,7 +230,7 @@ class Desenvolvimento_ProjetoControle extends Desenvolvimento_Controle
     
     /**
      * 
-     * @param type $id
+     * @param int $id Chave Primária (Id do Registro)
      * @throws Exception
      */
     public function Status($id=false){
@@ -319,7 +319,7 @@ class Desenvolvimento_ProjetoControle extends Desenvolvimento_Controle
     }
     /**
      * 
-     * @param type $id
+     * @param int $id Chave Primária (Id do Registro)
      * @throws Exception
      */
     public function Destaque($id=false){
@@ -575,7 +575,7 @@ class Desenvolvimento_ProjetoControle extends Desenvolvimento_Controle
     }
     /**
      * 
-     * @param type $id
+     * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 3.1.1
      */
@@ -601,7 +601,7 @@ class Desenvolvimento_ProjetoControle extends Desenvolvimento_Controle
     /**
      * 
      * 
-     * @param type $id
+     * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 3.1.1
      */
@@ -619,7 +619,7 @@ class Desenvolvimento_ProjetoControle extends Desenvolvimento_Controle
     /**
      * 
      * 
-     * @param type $id
+     * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 3.1.1
      */

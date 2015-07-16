@@ -15,7 +15,7 @@ class _Sistema_RecursoControle extends _Sistema_Controle
      * @param type $dominiosigla -> Tabela que contem o select extrangeiro alterado
      * @param type $alterado -> Tabela que se refere o select extrangeiro alterado
      * @param type $campo_alterado -> Campo da Tabela do Formulario que foi alterado
-     * @param type $id
+     * @param int $id Chave Primária (Id do Registro)
      * @return booleanReferenceError: inArray is not defined
 	
 

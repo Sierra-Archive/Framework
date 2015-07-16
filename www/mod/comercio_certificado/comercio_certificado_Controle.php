@@ -19,7 +19,7 @@ class comercio_certificado_Controle extends \Framework\App\Controle
     /**
      * 3º ABA (produtos)
      * Mostra o Editar ou Add Usuario em Tab
-     * @param type $id
+     * @param int $id Chave Primária (Id do Registro)
      */
     public function Usuarios_Produtos($id = 0){
         if($id==0){
@@ -43,7 +43,7 @@ class comercio_certificado_Controle extends \Framework\App\Controle
     /**
      * 2 ABA CLIENTE
      * Mostra o Editar ou Add Usuario em Tab
-     * @param type $id
+     * @param int $id Chave Primária (Id do Registro)
      */
     public function Usuarios_Mostrar($id = 0){
         if($id==0){

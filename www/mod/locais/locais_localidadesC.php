@@ -244,7 +244,7 @@ class locais_localidadesControle extends locais_Controle
     }
     /**
      * 
-     * @param type $id
+     * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 3.1.1
      */
@@ -261,7 +261,7 @@ class locais_localidadesControle extends locais_Controle
     }
     /**
      * Retorno de Editar Paises
-     * @param type $id
+     * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 3.1.1
      */
@@ -276,7 +276,7 @@ class locais_localidadesControle extends locais_Controle
     }
     /**
      * Deletar Paises
-     * @param type $id
+     * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 3.1.1
      */
@@ -368,7 +368,7 @@ class locais_localidadesControle extends locais_Controle
     }
     /**
      * 
-     * @param type $id
+     * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 3.1.1
      */
@@ -386,7 +386,7 @@ class locais_localidadesControle extends locais_Controle
     /**
      * 
      * 
-     * @param type $id
+     * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 3.1.1
      */
@@ -402,7 +402,7 @@ class locais_localidadesControle extends locais_Controle
     /**
      * 
      * 
-     * @param type $id
+     * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 3.1.1
      */
@@ -496,7 +496,7 @@ class locais_localidadesControle extends locais_Controle
     }
     /**
      * 
-     * @param type $id
+     * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 3.1.1
      */
@@ -514,7 +514,7 @@ class locais_localidadesControle extends locais_Controle
     /**
      * 
      * 
-     * @param type $id
+     * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 3.1.1
      */
@@ -530,7 +530,7 @@ class locais_localidadesControle extends locais_Controle
     /**
      * 
      * 
-     * @param type $id
+     * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 3.1.1
      */
@@ -624,7 +624,7 @@ class locais_localidadesControle extends locais_Controle
     }
     /**
      * 
-     * @param type $id
+     * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 3.1.1
      */
@@ -642,7 +642,7 @@ class locais_localidadesControle extends locais_Controle
     /**
      * 
      * 
-     * @param type $id
+     * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 3.1.1
      */
@@ -658,7 +658,7 @@ class locais_localidadesControle extends locais_Controle
     /**
      * 
      * 
-     * @param type $id
+     * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 3.1.1
      */

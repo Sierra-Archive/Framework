@@ -1,8 +1,10 @@
 <?php
 namespace Framework\App;
 /**
+ * Class Pai dos Modelos, Responsavél pelo tratamento e exibicoes dos Dados do Sistema
  * 
- * \Framework\App\Modelo::
+ * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
+ * @version 3.1.1
  */
 class Modelo
 {

@@ -130,7 +130,7 @@ class banner_AdminControle extends banner_Controle
     }
     /**
      * 
-     * @param type $id
+     * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 3.1.1
      */
@@ -148,7 +148,7 @@ class banner_AdminControle extends banner_Controle
     /**
      * 
      * 
-     * @param type $id
+     * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 3.1.1
      */

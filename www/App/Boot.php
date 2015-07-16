@@ -1,7 +1,26 @@
 <?php
 namespace Framework\App;
+/**
+ * Boot do Sistema, Responsável por Iniciar todo o Sistema em toda Requisição
+ * 
+ * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
+ * @version 3.1.1
+ */
 class Boot {
+    /**
+     * Armazena Url que foi Acessado o Sistema
+     * @var string 
+     */
     static $url = false;
+    /**
+     * Inicia o Sistema
+     * 
+     * @return boolean
+     * @throws \Exception
+     * 
+     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
+     * @version 3.1.1
+     */
     public static function Iniciar(){  
         // Pega Instancia e Inicia Cache
         $registro = &\Framework\App\Registro::getInstacia();
@@ -119,6 +138,12 @@ class Boot {
         
         return true;
     }
+    /**
+     * Desliga o Sistema, Fecha Todas as Classes e Instancias
+     * 
+     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
+     * @version 3.1.1
+     */
     public static function Desligar(){
         $tempo = new \Framework\App\Tempo('BOOT Desligar');  
         // Destroi A PORRA TODA

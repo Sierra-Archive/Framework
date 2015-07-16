@@ -169,7 +169,7 @@ abstract class Controle
     /**
      * Envia Email com ANexo para um Usuario do SIstema
      * 
-     * @param type $id
+     * @param int $id Chave Primária (Id do Registro)
      * @param type $arquivo
      * @param type $nomearquivo
      */
@@ -1917,8 +1917,11 @@ readfile($link);*/
      * Usado Pelo Select MUltiplo, adiciona _id no final pra poder funcionar o input id
      * 
      * @param type $objeto
-     * @param type $id
+     * @param int $id Chave Primária (Id do Registro)
      * @return boolean
+     * 
+     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
+     * @version 3.1.1
      */
     static function DAO_Campos_TrocaID(&$objeto,$id=false){
         // Ainda funciona com array
@@ -1939,6 +1942,9 @@ readfile($link);*/
      * @param type $objeto
      * @param type $nome
      * @return boolean
+     * 
+     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
+     * @version 3.1.1
      */
     static function DAO_Campos_TrocaNOME(&$objeto,$alterar=false){
         // Ainda funciona com array
@@ -1959,6 +1965,9 @@ readfile($link);*/
      * @param type $objeto
      * @param type $campomysql
      * @return boolean
+     * 
+     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
+     * @version 3.1.1
      */
     static function DAO_Campos_RetiraAlternados(&$objeto,$campomysql=false){
         // Ainda funciona com array
@@ -1984,6 +1993,9 @@ readfile($link);*/
      * @param type $objeto
      * @param type $campomysql
      * @return boolean
+     * 
+     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
+     * @version 3.1.1
      */
     static function DAO_Campos_TrocaAlternados(&$objeto,$campomysql=false){
         // Ainda funciona com array
@@ -2022,6 +2034,15 @@ readfile($link);*/
         }
         return true;
     }
+    /**
+     * 
+     * @param type $objeto
+     * @param type $campomysql
+     * @return boolean
+     * 
+     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
+     * @version 3.1.1
+     */
     static function DAO_Campos_AlternadosDesabilitados(&$objeto,$campomysql=false){
         // Ainda funciona com array
         if(is_array($objeto)){
@@ -2093,6 +2114,9 @@ readfile($link);*/
      * @param type $objeto
      * @param type $campomysql
      * @return boolean
+     * 
+     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
+     * @version 3.1.1
      */
     static function DAO_RemoveLinkExtra(&$objeto,$campomysql){
         // Ainda funciona com array
@@ -2124,6 +2148,9 @@ readfile($link);*/
      * @param type $campomysql
      * @param type $alterar
      * @return boolean
+     * 
+     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
+     * @version 3.1.1
      */
     static function DAO_Ext_Alterar(&$objeto,$campomysql,$alterar){
         // Ainda funciona com array
@@ -2353,10 +2380,11 @@ readfile($link);*/
         return true;
     }
     /**
+     * Retira Campos de Um Array vindo do Dao::Colunas
      * 
-     * @param type $campos
-     * @param type $campomysql
-     * @param type $exceto
+     * @param Array $campos Array que vem do Dao::Colunas
+     * @param string $campomysql Campo a ser removido
+     * @param int $exceto 0 ou 1, 0 Remove o Campo Escolhido, 1 Remove todos e deixa só esse campo
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 3.1.1
@@ -2383,17 +2411,6 @@ readfile($link);*/
             }
         }
     }
-    /**
-     * 
-     * @param type $nome
-     * @param type $chave
-     * @param type $modulo
-     * @param type $submodulo
-     * 
-     * #update
-     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
-     */
     /*protected function _Permissao_Verificar($chave){
         $array = $this->_Acl->getPermissao();
         // #update, nao ta limitando paginas
@@ -2403,6 +2420,15 @@ readfile($link);*/
             \Framework\App\Sistema_Funcoes::Erro('5050');
         }
     }*/
+    /**
+     * 
+     * @param type $modulo
+     * @param type $sub
+     * @return boolean
+     * 
+     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
+     * @version 3.1.1
+     */
     protected function _Permissao_Verificar_Modulo($modulo,$sub = ''){
         $array = $this->_Acl->getPermissao();
         $var = false;

@@ -1,8 +1,11 @@
 <?php 
 namespace Framework\App;
 /**
+ * Classe de Manipulação de Visual do Framework
+ * Cria Json e Manipula Blocos e Outros
  * 
- * \Framework\App\Visual::
+ * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
+ * @version 3.1.1
  */
 class Visual
 {
@@ -1130,7 +1133,7 @@ class Visual
      */
     /**
      * 
-     * @param type $id
+     * @param int $id Chave Primária (Id do Registro)
      * @param type $html
      * @param type $ativar
      * @return type
@@ -1604,7 +1607,7 @@ class Visual
      * @param bolean $apagado1 Se Apaga ou nao a PRimeira coluna
      * @param array $aaSorting Array com a Ordenacao da Tabela será passado ao Datatable
      * @param bolean $ColunasOrd Se possue ordenação de colunas
-     * @return type
+     * @return string Retorna HTML ou se Blocar, um true
      */
     public function Show_Tabela_DataTable_Massiva($tabela, $url=false, $style='', $blocar=true, $apagado1=false, $aaSorting=Array(Array(0,'asc')), $ColunasOrd=false) {
        if($url === false){
@@ -1633,6 +1636,7 @@ class Visual
         );
         if($blocar===true){
             $this->Blocar($this->renderizar_bloco('template_tabela',$config));
+            return true;
         }else{
             return $this->renderizar_bloco('template_tabela',$config);
         }
@@ -1645,7 +1649,7 @@ class Visual
      * @param type $camada
      * @param type $imagem
      * @param type $diretorio
-     * @param type $id
+     * @param int $id Chave Primária (Id do Registro)
      * @param type $add
      * @param type $largura
      * @param type $altura
@@ -1671,7 +1675,7 @@ class Visual
      * @param type $modulo
      * @param type $sub
      * @param type $acao
-     * @param type $id
+     * @param int $id Chave Primária (Id do Registro)
      * @param type $extensoes
      * @param type $descricao
      * @return string
@@ -1841,7 +1845,7 @@ class Visual
     }
     /**
      * Retira eDeleta um Tipo dentro do Json do HTML do site
-     * @param type $id
+     * @param int $id Chave Primária (Id do Registro)
      * @return boolean
      */
     public function Json_RetiraTipo($id){

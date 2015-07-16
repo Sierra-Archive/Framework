@@ -16,23 +16,19 @@ class usuario_ExpedienteModelo extends usuario_Modelo
     public function __construct(){
         parent::__construct();
     }
-    public function Expedientes(){
+    public function Expedientes($status=0){
         // Table's primary key
         $primaryKey = 'id';
         $tabela = 'Usuario_Expediente';
+        $where = 'status=\''.$status.'\'';
         
         
-        $perm_view = $this->_Registro->_Acl->Get_Permissao_Url('usuario/Estoque/Estoques');
-        $perm_reduzir = $this->_Registro->_Acl->Get_Permissao_Url('usuario/Expediente/Estoque_Reduzir');
-        $perm_editar = $this->_Registro->_Acl->Get_Permissao_Url('usuario/Expediente/Expedientes_Edit');
-        $perm_del = $this->_Registro->_Acl->Get_Permissao_Url('usuario/Expediente/Expedientes_Del');
+        $perm_statusalterar = $this->_Registro->_Acl->Get_Permissao_Url('usuario/Expediente/Expedientes_StatusAlterar');
         
         $function = '';
-        if($perm_editar){
-            $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Editar\'     ,Array(__(\'Editar Expediente\')        ,\'usuario/Expediente/Expedientes_Edit/\'.$d.\'/\'    ,\'\'),true);';
-        }
-        if($perm_del){
-            $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Deletar\'    ,Array(__(\'Deletar Expediente\')       ,\'usuario/Expediente/Expedientes_Del/\'.$d.\'/\'     ,\'Deseja realmente deletar essa Expediente ?\'),true);';
+        if($perm_statusalterar){
+            $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Personalizado\'     ,Array(__(\'Colocar em Almoço\')        ,\'usuario/Expediente/Expedientes_StatusAlterar/\'.$d.\'/1/\'    ,\'\',\'file\',\'inverse\'),true);';
+            $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Personalizado\'     ,Array(__(\'Finalizar\')        ,\'usuario/Expediente/Expedientes_StatusAlterar/\'.$d.\'/2/\'    ,\'\',\'file\',\'inverse\'),true);';
         }
 
         $columns = Array();
@@ -52,17 +48,22 @@ class usuario_ExpedienteModelo extends usuario_Modelo
         ++$numero;
         $columns[] = array( 
             'db' => 'usuario2', 
-            'dt' => $numero); //'Nome';
+            'dt' => $numero); //'Funcionário';
         
         ++$numero;
         $columns[] = array( 
             'db' => 'inicio', 
-            'dt' => $numero); //'Nome';
+            'dt' => $numero); //'Inicio';
         
         ++$numero;
         $columns[] = array( 
             'db' => 'fim', 
-            'dt' => $numero); //'Nome';
+            'dt' => $numero); //'Fim';
+        
+        ++$numero;
+        $columns[] = array( 
+            'db' => 'status', 
+            'dt' => $numero); //'Status';
         
         ++$numero;
         eval('$function = function( $d, $row ) { $html = \'\'; '.$function.' return $html; };');       
@@ -71,7 +72,7 @@ class usuario_ExpedienteModelo extends usuario_Modelo
         ); //'Funções';
                 
         echo json_encode(
-            \Framework\Classes\Datatable::complex( $_GET, Framework\App\Registro::getInstacia()->_Conexao, $tabela, $primaryKey, $columns, null)
+            \Framework\Classes\Datatable::complex( $_GET, Framework\App\Registro::getInstacia()->_Conexao, $tabela, $primaryKey, $columns, null,$where)
         );
     }
 }

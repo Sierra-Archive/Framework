@@ -1,5 +1,11 @@
 <?php
 namespace Framework\App;
+/**
+ * Funções Exenciais para o Sistema
+ * 
+ * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
+ * @version 3.1.1
+ */
 Class Sistema_Funcoes {
     /**
      * Redireciona a Pagina
@@ -42,6 +48,9 @@ Class Sistema_Funcoes {
      * @param type $ext Extensao
      * 
      * @return string Extensao com Apenas 3 caracteres, retorna com 4, por exemplo jpeg
+     * 
+     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
+     * @version 3.1.1
      */
     public static function Control_Arq_Ext($ext){
         $ext = strtolower($ext);
@@ -56,10 +65,29 @@ Class Sistema_Funcoes {
         }
         return $ext;
     }
+    /**
+     * Recebe um NUmero e Devolve a Letra Associada
+     * 
+     * @param int $numero
+     * @return string Uma Letra
+     * 
+     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
+     * @version 3.1.1
+     */
     public static function Letra_Aleatoria($numero){
         $string = 'ABCDEFGHIJKLMNOPQUVYXWZ';
         return $string[$numero];
     }
+    /**
+     * Decodifica Link Decode
+     * 
+     * @param type $texto
+     * @param type $inverso
+     * @return type
+     * 
+     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
+     * @version 3.1.1
+     */
     public static function Letra_LinkDecode($texto,$inverso=false){
         $letras = Array(
             'À',
@@ -144,6 +172,7 @@ Class Sistema_Funcoes {
         return $texto;
     }
     /**
+     * Redireciona para um Pagina de Erro
      * 
      * @param type $codigo
      * 
@@ -162,6 +191,7 @@ Class Sistema_Funcoes {
         \Framework\App\Sistema_Funcoes::Redirect($url);
     }
     /**
+     * Transforma Traço em Barra e vice versa em endereço de Diretorios
      * 
      * @param type $dir
      * 
@@ -179,6 +209,7 @@ Class Sistema_Funcoes {
         }
     }
     /**
+     * Faz uma Limpeza em uma URL
      * 
      * @param type $url
      * @return type
@@ -207,6 +238,7 @@ Class Sistema_Funcoes {
     }
     /**
      *  Transforma Objetos em Variaveis
+     * 
      * @version 3.1.1
      * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
@@ -236,6 +268,7 @@ Class Sistema_Funcoes {
      * Verifica se um Modulo é permitido ou nao no sistema
      * @param type $modulo
      * @return boolean
+     * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 3.1.1
      */
@@ -255,7 +288,15 @@ Class Sistema_Funcoes {
         }
     }
     /**
-     * Formularios
+     * Criptografa Senha de Formularios
+     * 
+     * @param type $senha
+     * @param type $protecao_extra
+     * @param type $datetime
+     * @return type
+     * 
+     * @version 3.1.1
+     * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
     public static function Form_Senha_Blindar($senha,$protecao_extra = false,$datetime = false){
         $senha = \anti_injection($senha);
@@ -280,6 +321,9 @@ Class Sistema_Funcoes {
     /**
      * Gera um Token em cima do IP, navegador e outros do Usuario pra ver se é ele mesmo !
      * @return type
+     * 
+     * @version 3.1.1
+     * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
     public static function Seguranca_Usuario_Validar(){
         // #update Precisa FAzer AINDA ESSA FUNCAO
@@ -287,15 +331,38 @@ Class Sistema_Funcoes {
         $token = '123456';
         return $token;
     }
+    /**
+     * 
+     * @param type $texto
+     * @return type
+     * 
+     * @version 3.1.1
+     * @author Ricardo Sierra <web@ricardosierra.com.br>
+     */
     static public function Seguranca_Gerar_Hash($texto){
         return sha1('SierraTecnologia'.$texto);
     }
+    /**
+     * 
+     * @return type
+     * 
+     * @version 3.1.1
+     * @author Ricardo Sierra <web@ricardosierra.com.br>
+     */
     static public function Seguranca_Gerar_Token(){
         return md5(uniqid(rand(), true));
     }
     
     /********************************
      * FUNCOES PARA PERFOMARCE
+     */
+    /**
+     * 
+     * @param type $html
+     * @return type
+     * 
+     * @version 3.1.1
+     * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
     public static function HTML_min($html){
         $html          = explode('>',trim($html));
@@ -313,8 +380,11 @@ Class Sistema_Funcoes {
      */
 
     /**
+     * Valida CEP
+     * 
      * @param type $cnpj
      * @return boolean
+     * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 3.1.1
      */
@@ -420,7 +490,16 @@ Class Sistema_Funcoes {
         return true;
     }
 
-    // FUNCAO QUE VERIFICA SE UM EMAIL EH VALIDO, retorna 0 se nao for
+    /**
+     * Valida um Email
+     * FUNCAO QUE VERIFICA SE UM EMAIL EH VALIDO, retorna 0 se nao for
+     * 
+     * @param type $email
+     * @return int
+     * 
+     * @version 3.1.1
+     * @author Ricardo Sierra <web@ricardosierra.com.br>
+     */
     public static function Control_Layoult_Valida_Email($email){
         $mail_correcto = 0; 
         //verifico umas coisas
@@ -447,6 +526,15 @@ Class Sistema_Funcoes {
         else
            return 0;
     }
+    /**
+     * Transforma Bytes Valor em Texto
+     * 
+     * @param type $tamanho
+     * @return string
+     * 
+     * @version 3.1.1
+     * @author Ricardo Sierra <web@ricardosierra.com.br>
+     */
     public static function Tranf_Byte_Otimizado($tamanho){
         $tamanho = (int) $tamanho;
         if($tamanho>1099511627776){
@@ -463,6 +551,15 @@ Class Sistema_Funcoes {
         return $tamanho;
         //return round($real,2);
     }
+    /**
+     * Transforma Bytes Texto em Valor
+     * 
+     * @param type $float
+     * @return type
+     * 
+     * @version 3.1.1
+     * @author Ricardo Sierra <web@ricardosierra.com.br>
+     */
     public static function Tranf_Otimizado_Byte($float){
         $tamanho = (float) $float;
         if(strpos($float, 'TB')!==false){
@@ -479,6 +576,14 @@ Class Sistema_Funcoes {
         }
         return $tamanho;
     }
+    /**
+     * 
+     * @param type $real
+     * @return real
+     * 
+     * @version 3.1.1
+     * @author Ricardo Sierra <web@ricardosierra.com.br>
+     */
     public static function Tranf_Real_Float($real){
         if($real==='') return 0.0;
         if(is_float($real)) return round($real,2);
@@ -487,11 +592,27 @@ Class Sistema_Funcoes {
         $real = (float) $real;
         return round($real,2);
     }
+    /**
+     * 
+     * @param type $float
+     * @return type
+     * 
+     * @version 3.1.1
+     * @author Ricardo Sierra <web@ricardosierra.com.br>
+     */
     public static function Tranf_Float_Real($float){
         if(strpos($float, 'R$')!==false) return $float;
         $float = (float) $float;
         return ($float>=0?'R$'.number_format($float, 2, ',', '.'):'<span class="text-error">- R$ '.number_format($float*-1, 2, ',', '.').'</span>');
     }
+    /**
+     * 
+     * @param type $porc
+     * @return real
+     * 
+     * @version 3.1.1
+     * @author Ricardo Sierra <web@ricardosierra.com.br>
+     */
     public static function Tranf_Porc_Float($porc){
         if($porc==='') return 0.0;
         if(is_float($porc)) return $porc;
@@ -500,6 +621,14 @@ Class Sistema_Funcoes {
         $porc = (float) $porc;
         return round($porc/100,4);
     }
+    /**
+     * 
+     * @param type $float
+     * @return type
+     * 
+     * @version 3.1.1
+     * @author Ricardo Sierra <web@ricardosierra.com.br>
+     */
     public static function Tranf_Float_Porc($float){
         if(strpos($float, ' %')!==false) $float = self::Tranf_Porc_Float($float);
         $float = (float) $float;
@@ -509,6 +638,20 @@ Class Sistema_Funcoes {
         }
         return $float.' %';
     }
+    /**
+     * 
+     * @param type $data
+     * @param type $ano
+     * @param type $mes
+     * @param type $dia
+     * @param type $hora
+     * @param type $minuto
+     * @param type $segundos
+     * @return type
+     * 
+     * @version 3.1.1
+     * @author Ricardo Sierra <web@ricardosierra.com.br>
+     */
     public static function Modelo_Data_Soma($data,$ano=0,$mes=0,$dia=0,$hora=0,$minuto=0,$segundos=0) {
         $data = trim($data);
         // Formato: 23/09/2013 00:00:00 ou 2013-09-23 00:00:00
@@ -755,6 +898,9 @@ Class Sistema_Funcoes {
      * 
      * @param type $info (mes, ano, dia, semana, etc...
      * @param type $data
+     * 
+     * @version 3.1.1
+     * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
     static public function Get_Info_Data($info, $data){
         if($info=='mes_nome'){
@@ -785,6 +931,9 @@ Class Sistema_Funcoes {
      * @param type $tamanho
      * @param type $forca
      * @return string
+     * 
+     * @version 3.1.1
+     * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
     static public function Gerar_Senha($tamanho=8, $forca=6) {
     
@@ -823,6 +972,14 @@ Class Sistema_Funcoes {
         }
         return $senha;
     }
+    /**
+     * Detecta Navegador
+     * 
+     * @return type
+     * 
+     * @version 3.1.1
+     * @author Ricardo Sierra <web@ricardosierra.com.br>
+     */
     public static function Detectar_Navegador()
     {
         if(!isset($_SERVER['HTTP_USER_AGENT']) || empty($_SERVER['HTTP_USER_AGENT'])) {
@@ -878,6 +1035,16 @@ Class Sistema_Funcoes {
             'UserAgent'     => $userAgent
         );
     }
+    /**
+     * Captura GPS
+     * 
+     * @param type $exifCoord
+     * @param type $hemi
+     * @return type
+     * 
+     * @version 3.1.1
+     * @author Ricardo Sierra <web@ricardosierra.com.br>
+     */
     public static function Get_Gps($exifCoord, $hemi) {
         $degrees = count($exifCoord) > 0 ? self::Trans_Gps_Number($exifCoord[0]) : 0;
         $minutes = count($exifCoord) > 1 ? self::Trans_Gps_Number($exifCoord[1]) : 0;
@@ -885,7 +1052,15 @@ Class Sistema_Funcoes {
         $flip = ($hemi == 'W' or $hemi == 'S') ? -1 : 1;
         return $flip * ($degrees + $minutes / 60 + $seconds / 3600);
     }
-
+    /**
+     * Trata GPS
+     * 
+     * @param type $coordPart
+     * @return int
+     * 
+     * @version 3.1.1
+     * @author Ricardo Sierra <web@ricardosierra.com.br>
+     */
     public static function Trans_Gps_Number($coordPart) {
         $parts = explode('/', $coordPart);
         if (count($parts) <= 0)

@@ -148,7 +148,7 @@ class Musica_ArtistaControle extends Musica_Controle
     }
     /**
      * 
-     * @param type $id
+     * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 3.1.1
      */
@@ -167,7 +167,7 @@ class Musica_ArtistaControle extends Musica_Controle
     /**
      * 
      * 
-     * @param type $id
+     * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 3.1.1
      */
@@ -183,7 +183,7 @@ class Musica_ArtistaControle extends Musica_Controle
     /**
      * 
      * 
-     * @param type $id
+     * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 3.1.1
      */

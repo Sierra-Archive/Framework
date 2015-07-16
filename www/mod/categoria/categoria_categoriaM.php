@@ -12,7 +12,7 @@ class categoria_categoriaModelo extends categoria_Modelo
      * @access public
      * 
      * @global type $tabsql
-     * @param type $id
+     * @param int $id Chave Primária (Id do Registro)
      * @param type $nome
      * @param type $categoria
      * @return int
@@ -35,7 +35,7 @@ class categoria_categoriaModelo extends categoria_Modelo
     /**
      * 
      * @global type $tabsql
-     * @param type $id
+     * @param int $id Chave Primária (Id do Registro)
      * @return int
      */
     public function Categoria_Retorna($id)

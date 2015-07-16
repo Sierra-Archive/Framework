@@ -39,7 +39,7 @@ class Acl{
     
     /**
      * 
-     * @param type $id
+     * @param int $id Chave Primária (Id do Registro)
      * @return boolean
      * @throws \Exception
      * 
@@ -849,7 +849,7 @@ class Acl{
      * 
      * @param type $login
      * @param type $senha
-     * @param type $id
+     * @param int $id Chave Primária (Id do Registro)
      * @return boolean
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>

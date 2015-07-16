@@ -1,5 +1,11 @@
 <?php
 namespace Framework\App;
+/**
+ * Pega a Requisição, pega todos os Dados e Prepara para Executar os Metodos
+ * 
+ * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
+ * @version 3.1.1
+ */
 class Request
 {
     private $_modulo;

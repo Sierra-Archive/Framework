@@ -394,7 +394,7 @@ class Curso_TurmaControle extends Curso_Controle
     }
     /**
      * 
-     * @param type $id
+     * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 3.1.1
      */
@@ -490,7 +490,7 @@ class Curso_TurmaControle extends Curso_Controle
     }
     /**
      * 
-     * @param type $id
+     * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 3.1.1
      */
@@ -526,7 +526,7 @@ class Curso_TurmaControle extends Curso_Controle
     }
     /**
      * Retorno de Editar Turma
-     * @param type $id
+     * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 3.1.1
      */
@@ -553,7 +553,7 @@ class Curso_TurmaControle extends Curso_Controle
     }
     /**
      * Deletar Turma
-     * @param type $id
+     * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 3.1.1
      */

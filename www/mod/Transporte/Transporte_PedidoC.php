@@ -16,7 +16,7 @@ class Transporte_PedidoControle extends Transporte_Controle
     }
     /**
      * Aceita um Pedido (->)
-     * @param type $id
+     * @param int $id Chave Primária (Id do Registro)
      * @param type $status
      * @throws \Exception
      */
@@ -117,7 +117,7 @@ class Transporte_PedidoControle extends Transporte_Controle
     /**
      * 
      * 
-     * @param type $id
+     * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 3.1.1
      */
@@ -679,7 +679,7 @@ class Transporte_PedidoControle extends Transporte_Controle
     /**
      * 
      * 
-     * @param type $id
+     * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 3.1.1
      */
@@ -741,7 +741,7 @@ class Transporte_PedidoControle extends Transporte_Controle
     
     /**
      * Aceita um Pedido (->)
-     * @param type $id
+     * @param int $id Chave Primária (Id do Registro)
      * @param type $status
      * @throws \Exception
      */
@@ -842,7 +842,7 @@ class Transporte_PedidoControle extends Transporte_Controle
     /**
      * 
      * 
-     * @param type $id
+     * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 3.1.1
      */
@@ -1404,7 +1404,7 @@ class Transporte_PedidoControle extends Transporte_Controle
     /**
      * 
      * 
-     * @param type $id
+     * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 3.1.1
      */
@@ -1462,7 +1462,7 @@ class Transporte_PedidoControle extends Transporte_Controle
 
     /**
      * Aceita um Pedido (->)
-     * @param type $id
+     * @param int $id Chave Primária (Id do Registro)
      * @param type $status
      * @throws \Exception
      */
@@ -1563,7 +1563,7 @@ class Transporte_PedidoControle extends Transporte_Controle
     /**
      * 
      * 
-     * @param type $id
+     * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 3.1.1
      */
@@ -2125,7 +2125,7 @@ class Transporte_PedidoControle extends Transporte_Controle
     /**
      * 
      * 
-     * @param type $id
+     * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 3.1.1
      */

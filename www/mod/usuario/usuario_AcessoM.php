@@ -18,7 +18,7 @@ class usuario_AcessoModelo extends usuario_Modelo
     }
     /**
      * @name usuarios_Del
-     * @param type $id
+     * @param int $id Chave Primária (Id do Registro)
      * @return int
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>

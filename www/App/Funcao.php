@@ -9,7 +9,9 @@
  * @param type $sql
  * @return type
  * 
- * @version 0.2 -> Alterado para caso receba um Array, usar recursao para fazer antiinfection em todos
+ * 
+ * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
+ * @version 3.1.1
  */
 function anti_injection($sql,$tags=false){
      if(is_array($sql)){
@@ -31,11 +33,22 @@ function anti_injection($sql,$tags=false){
  * Criptografia Fraca
  * @param type $x
  * @return type
+ * 
+ * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
+ * @version 3.1.1
  */
 function B ($x)
 {
     return base64_decode($x);
 }
+/**
+ * 
+ * @param type $x
+ * @return type
+ * 
+ * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
+ * @version 3.1.1
+ */
 function B2 ($x)
 {
     return base64_encode($x);
@@ -46,8 +59,10 @@ function B2 ($x)
  * @param type $a
  * @param type $b
  * @return int
+ * 
+ * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
+ * @version 3.1.1
  */
-// FUNCAO DE ORDENA��O DE ARRAY
 function ordenar($a, $b, $seguir = 'pontos')
 {   
     if ($a[$seguir] == $b[$seguir]) {
@@ -64,6 +79,9 @@ function ordenar($a, $b, $seguir = 'pontos')
  * @param type $outroarray_i
  * @param type $outroarray_f
  * @return string
+ * 
+ * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
+ * @version 3.1.1
  */
 function desfazer_array($array, $comeco=0,  $separador=" | " ,  $separando=" -> " ,  $outroarray_i=" { " ,  $outroarray_f=" } " )
 {
@@ -91,8 +109,10 @@ function desfazer_array($array, $comeco=0,  $separador=" | " ,  $separando=" -> 
  * REMOVER ACENTOS
  * @param type $string
  * @return type
+ * 
+ * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
+ * @version 3.1.1
  */
-#REMOVER ACENTOS
 function remover_acentos($string)
 { 
      // Converte todos os caracteres para minusculo 
@@ -118,8 +138,10 @@ function remover_acentos($string)
  * @param type $toOrderArray
  * @param type $field
  * @param type $inverse
+ * 
+ * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
+ * @version 3.1.1
  */
-// ordena array multi dimensionais
 function orderMultiDimensionalArray(&$toOrderArray, $field, $inverse = false) { 
     if(empty($toOrderArray)) return false;
     $position = array();  
@@ -143,11 +165,14 @@ function orderMultiDimensionalArray(&$toOrderArray, $field, $inverse = false) {
 
 
 /**
+ * Cria uma função que retorna o timestamp de uma data
  * 
  * @param type $data
  * @return type
+ * 
+ * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
+ * @version 3.1.1
  */
-// Cria uma função que retorna o timestamp de uma data
 function Data_geraTimestamp($data,$quebra=true) {
     $data = trim($data);
     // Formato: 23/09/2013 00:00:00 ou 2013-09-23 00:00:00
@@ -196,10 +221,14 @@ function Data_geraTimestamp($data,$quebra=true) {
     return false;
 }
 /**
+ * Calcula a Diferença entre Duas Datas
  * 
  * @param type $data_inicial
  * @param type $data_Final
  * @return type
+ * 
+ * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
+ * @version 3.1.1
  */
 function Data_CalculaDiferenca($data_inicial,$data_final){
     // Usa a função criada e pega o timestamp das duas datas:
@@ -212,6 +241,16 @@ function Data_CalculaDiferenca($data_inicial,$data_final){
     $dias = (int)floor( $diferenca / (60 * 60));
     return $dias;
 }
+/**
+ * Calculada a Diferença entre Duas Datas em Segundos
+ * 
+ * @param type $data_inicial
+ * @param type $data_final
+ * @return type
+ * 
+ * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
+ * @version 3.1.1
+ */
 function Data_CalculaDiferenca_Em_Segundos($data_inicial,$data_final){
     // Usa a função criada e pega o timestamp das duas datas:
     $time_inicial = Data_geraTimestamp($data_inicial);
@@ -224,11 +263,13 @@ function Data_CalculaDiferenca_Em_Segundos($data_inicial,$data_final){
     return $dias;
 }
 /**
- * 
+ * Converte DATA BRASIL EUA
  * @param type $data
  * @return type
+ * 
+ * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
+ * @version 3.1.1
  */
-#DATA BRASIL EUA
 function data_brasil_eua($data)
 {
     $array = explode("/",$data);
@@ -248,11 +289,13 @@ function data_brasil_eua($data)
     return $array[2].'-'.$array[1].'-'.$array[0];
 }
 /**
- * 
+ * Converte DATA EUA BRASIL
  * @param type $data
  * @return type
+ * 
+ * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
+ * @version 3.1.1
  */
-#DATA EUA BRASIL
 function data_eua_brasil($data)
 {
     $array = explode("-",$data);
@@ -262,11 +305,14 @@ function data_eua_brasil($data)
     return $array[2].'/'.$array[1].'/'.$array[0];
 }
 /**
+ * DATA E HORA EUA tranforma pra BRASIL
  * 
  * @param type $data
  * @return type
+ * 
+ * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
+ * @version 3.1.1
  */
-#DATA E HORA EUA tranforma pra BRASIL
 function data_hora_eua_brasil($data)
 {
     // Caso seja vazio retorna vazio
@@ -284,11 +330,14 @@ function data_hora_eua_brasil($data)
     return $array2[2].'/'.$array2[1].'/'.$array2[0].' '.$hora;
 }
 /**
+ * DATA E HORA EUA BRASIL
  * 
  * @param type $data1
  * @return type
+ * 
+ * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
+ * @version 3.1.1
  */
-#DATA E HORA EUA BRASIL
 function data_hora_brasil_eua($data)
 {
     // Caso seja vazio retorna vazio
@@ -311,11 +360,15 @@ function data_hora_brasil_eua($data)
     return $data_quebrada[2].'-'.$data_quebrada[1].'-'.$data_quebrada[0].' '.$hora;
 }
 /**
+ * Tratatamento de Data
  * 
  * @param type $date_time
  * @param type $output_string
  * @param type $utilizar_funcao_date
  * @return boolean
+ * 
+ * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
+ * @version 3.1.1
  */
 function date_replace($date_time, $output_string, $utilizar_funcao_date = false) {
      // Verifica se a string est� num formato v�lido de data ("aaaa-mm-dd" ou "aaaa-mm-dd hh:mm:ss")
@@ -351,7 +404,19 @@ function date_replace($date_time, $output_string, $utilizar_funcao_date = false)
 
     return $output_string;
 }
-
+/**
+ * Envia Email
+ * 
+ * @param type $nome_remetente
+ * @param type $email_remetente
+ * @param type $email_destinatario
+ * @param type $assunto
+ * @param type $mgm
+ * @return int
+ * 
+ * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
+ * @version 3.1.1
+ */
 function Mail_Send($nome_remetente, $email_remetente,$email_destinatario,$assunto,$mgm){
     $mensagem = "Locaway<br />";
     $mensagem .= $mgm;
@@ -364,8 +429,12 @@ function Mail_Send($nome_remetente, $email_remetente,$email_destinatario,$assunt
 }
 /**
  * Inverso de nl2br
+ * 
  * @param type $string
  * @return type
+ * 
+ * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
+ * @version 3.1.1
  */
 function br2nl($string)
 {

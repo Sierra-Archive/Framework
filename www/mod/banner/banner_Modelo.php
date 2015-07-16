@@ -49,7 +49,7 @@ class banner_Modelo extends \Framework\App\Modelo
     }
     /**
      * 
-     * @param type $id
+     * @param int $id Chave Primária (Id do Registro)
      * @return string
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>

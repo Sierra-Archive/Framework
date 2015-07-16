@@ -227,7 +227,7 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
     }
     /**
      * 
-     * @param type $id
+     * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 3.1.1
      */
@@ -332,7 +332,7 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
     /**
      * 
      * 
-     * @param type $id
+     * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 3.1.1
      */
@@ -391,7 +391,7 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
     /**
      * 
      * 
-     * @param type $id
+     * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 3.1.1
      */
@@ -554,7 +554,7 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
     }
     /**
      * 
-     * @param type $id
+     * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 3.1.1
      */
@@ -589,7 +589,7 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
     /**
      * 
      * 
-     * @param type $id
+     * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 3.1.1
      */

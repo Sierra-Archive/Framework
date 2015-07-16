@@ -1,13 +1,43 @@
 <?php
 namespace Framework\App;
+/**
+ * Classe para Idenfiticar e Armazenar Tempos de Execucao
+ * 
+ * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
+ * @version 3.1.1
+ */
 class Tempo{
+    /**
+     * Nome do Armazenamento de Tempo
+     * @var type 
+     */
     private $nome = '';
+    /**
+     *
+     * @var type 
+     */
     private $comeco = '';
     static private $log = Array();
+    /**
+     * Construtor, Começa a medir o tempo
+     * 
+     * @param type $nome
+     * 
+     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
+     * @version 3.1.1
+     */
     public function __construct($nome) {
         $this->nome = $nome.' S.M.';
         $this->comeco = microtime(true);
     }
+    /**
+     * Fechar Logs
+     * 
+     * @param type $fechar
+     * 
+     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
+     * @version 3.1.1
+     */
     public function Fechar($fechar=true){
         $tempofinal = number_format((microtime(true)-$this->comeco)*1000, 10);
         self::$log[] = Array(
@@ -21,9 +51,21 @@ class Tempo{
             unset($this);
         }
     }
+    /**
+     * Destruidor da Classe
+     * 
+     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
+     * @version 3.1.1
+     */
     public function __destruct(){
         $this->Fechar(false);
     }
+    /**
+     * Pega Tempo da Página
+     * 
+     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
+     * @version 3.1.1
+     */
     private static function Tempo_Pagina(){
         $tempofinal = number_format((microtime(true)-TEMPO_COMECO)*1000, 10);
         self::$log[] = Array(
@@ -35,6 +77,14 @@ class Tempo{
         );
         
     }
+    /**
+     * Salvar os Logs de Tempos
+     * 
+     * @return boolean
+     * 
+     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
+     * @version 3.1.1
+     */
     static function Salvar(){
         $comeco = microtime(true);
         self::Tempo_Pagina();
@@ -133,6 +183,12 @@ class Tempo{
             $db->Sql_Inserir($registro_mysql[$chave],false);
         }
     }
+    /**
+     * IMprimir o Relatório dos Tempos
+     * 
+     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
+     * @version 3.1.1
+     */
     static function Imprimir(){
         var_dump(self::$log);
     }

@@ -25,22 +25,23 @@ class Form
     static  $controle_duallist      = 0;
     static  $tab_index           = 1;
     /**
-    * Construtor de Formul�rio
-    * 
-    * @name __construct
-    * @access public
-    * 
-    * @param string $id Atributo id do Formulario
-    * @param string $endereco Atributo url do Formulario
-    * @param string $class Atributo class do Formulario
-    * 
-    * @uses \Framework\Classes\Form::$form
-    * 
-    * @return void
-    * 
-    * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 3.1.1
-    */
+     * Construtor de Formulário
+     * 
+     * @name __construct
+     * 
+     * @param string $id Atributo id do Formulario
+     * @param string $endereco Atributo url do Formulario
+     * @param string $class Atributo class do Formulario
+     * @param string $layoult Tipo de Layoult (Padrão 'mini')
+     * @param string $ColunaForm Tipo de Formulario (Padrão 'horizontal')
+     * @param string $autocomplete Se Possui AutoComplete(Padrao: 'on')
+     * @throws \Exception
+     * 
+     * @return void
+     * 
+     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
+     * @version 3.1.1
+     */
     public function __construct($id = 'formulario',$endereco = '', $classe='', $layoult="mini",$ColunaForm='horizontal',$autocomplete='on') { //layoult pode ser comprimido, completo, ajax
         // Puxa Registro
         $this->_Registro = &\Framework\App\Registro::getInstacia();
@@ -375,7 +376,7 @@ class Form
      * 
      * @param string $titulo
      * @param type $name
-     * @param type $id
+     * @param int $id Chave Primária (Id do Registro)
      * @param type $value
      * @param type $type
      * @param type $class
@@ -424,7 +425,7 @@ class Form
      * 
      * @param string $titulo
      * @param type $name
-     * @param type $id
+     * @param int $id Chave Primária (Id do Registro)
      * @param type $url
      * @param type $change
      * @param type $js
@@ -535,6 +536,21 @@ class Form
         $this->form             .= $html;
         return                  $html;
     }
+    /**
+     * 
+     * @param string $titulo
+     * @param type $name
+     * @param type $id
+     * @param type $url
+     * @param type $change
+     * @param type $js
+     * @param type $condicao
+     * @param type $escondido
+     * @return type
+     * 
+     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
+     * @version 3.1.1
+     */
     public function Checkbox_Novo($titulo,$name,$id='',$url='',$change='', $js = '', $condicao=false, $escondido = false){
         // Verifica se é obrigatorio
         if(strpos($class, 'obrigatorio')!==false){
@@ -631,18 +647,23 @@ class Form
     }
     /**
      * Cria um NOvo Select dentro de um FOrmulario
+     * 
      * @param string $titulo
-     * @param type $name
-     * @param type $id
-     * @param type $url
-     * @param type $change
-     * @param type $js
+     * @param string $name
+     * @param int $id Chave Primária (Id do Registro)
+     * @param string $url Caso Tenha um Link a direita no select
+     * @param string $change Função que será executada quando trocar os dados (String Vazia não executa nada)
+     * @param string $js Javascript a ser executado
      * @param type $condicao
-     * @param type $escondido
-     * @param type $class
-     * @param type $infonulo
-     * @param type $multiplo
-     * @return type
+     * @param bollean $escondido Se Está Escondido ou não
+     * @param string $class string com as classes do Select
+     * @param string $infonulo String com Informações quando nao tiver nada preenchido
+     * @param bollean $multiplo Se é um Select que pode Selecionar Multiplos Dados ou nao
+     * 
+     * @return string Retorna Html
+     * 
+     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
+     * @version 3.1.1
      */
     public function Select_Novo($titulo,$name,$id='',$url='',$change='', $js = '', $condicao=false, $escondido = false, $class='', $infonulo='Escolha uma opção',$multiplo=false){
         ++self::$tab_index;

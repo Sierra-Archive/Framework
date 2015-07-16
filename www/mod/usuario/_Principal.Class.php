@@ -25,6 +25,10 @@ class usuario_Principal implements \Framework\PrincipalInterface
             usuario_Controle::PlanoStatus($modelo, $Visual, \Framework\App\Acl::Usuario_GetID_Static());
         }
         self::Widgets();
+        // Carrega Expedientes
+        if(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Expediente')){
+            usuario_ExpedienteControle::Disponivel('Maior');
+        }
     }
     static function Widget(&$_Controle){
         if(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Admin_Cliente')){
@@ -34,9 +38,6 @@ class usuario_Principal implements \Framework\PrincipalInterface
                     '<i class="glyphicon-user"></i>'.
                 '</a>'.
             '</li>');
-        }
-        if(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Expediente')){
-            usuario_ExpedienteControle::Disponivel('Maior');
         }
         return true;
     }             

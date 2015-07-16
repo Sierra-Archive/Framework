@@ -2,24 +2,53 @@
 namespace Framework\App;
 /**
  * Class singleton, ela garante a existencia de apenas uma instancia de cada classe
+ * 
+ * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
+ * @version 3.1.1
  */
 class Registro
 {
+    /**
+     *
+     * @var type 
+     */
     private static $_instacia;
+    /**
+     *
+     * @var type 
+     */
     private $_data;
     
-    // Para ninguem poder acessar a classe
+    /**
+     * Para ninguem poder acessar a classe
+     * 
+     * @version 3.1.1
+     * @author Ricardo Sierra <web@ricardosierra.com.br>
+     */
     private function __construct(){
         
     }
     
-    // singleton
+    /**
+     * singleton
+     * @return type
+     * 
+     * @version 3.1.1
+     * @author Ricardo Sierra <web@ricardosierra.com.br>
+     */
     public static function &getInstacia(){
         if(!self::$_instacia instanceof self){
             self::$_instacia = new Registro();
         }
         return self::$_instacia;
     }
+    /**
+     * 
+     * @param type $sessao
+     * 
+     * @version 3.1.1
+     * @author Ricardo Sierra <web@ricardosierra.com.br>
+     */
     public function destruir($sessao){
         if(isset($this->_data[$sessao])){
             $this->_data[$sessao] = '';
@@ -28,9 +57,25 @@ class Registro
             echo $sessao;
         }*/
     }
+    /**
+     * 
+     * @param type $nome
+     * @param type $valor
+     * 
+     * @version 3.1.1
+     * @author Ricardo Sierra <web@ricardosierra.com.br>
+     */
     public function __set($nome,$valor){
         $this->_data[$nome] = $valor;
     }
+    /**
+     * 
+     * @param type $nome
+     * @return type
+     * 
+     * @version 3.1.1
+     * @author Ricardo Sierra <web@ricardosierra.com.br>
+     */
     public function &__get($nome){
         if(isset($this->_data[$nome])){
             return $this->_data[$nome];

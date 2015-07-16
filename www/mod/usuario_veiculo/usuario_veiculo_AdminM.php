@@ -19,7 +19,7 @@ class usuario_veiculo_AdminModelo extends usuario_veiculo_Modelo
     }
     /**
      * @name veiculos_Del
-     * @param type $id
+     * @param int $id Chave Primária (Id do Registro)
      * @return int
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
@@ -71,7 +71,7 @@ class usuario_veiculo_AdminModelo extends usuario_veiculo_Modelo
     /**
      * 
      * @global type $config
-     * @param type $id
+     * @param int $id Chave Primária (Id do Registro)
      * @param type $categoria
      * @param type $ano
      * @param type $modelo

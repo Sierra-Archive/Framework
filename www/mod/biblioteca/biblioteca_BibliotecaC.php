@@ -315,7 +315,7 @@ class biblioteca_BibliotecaControle extends biblioteca_Controle
     }
     /**
      * 
-     * @param type $id
+     * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 3.1.1
      */
@@ -448,7 +448,7 @@ class biblioteca_BibliotecaControle extends biblioteca_Controle
     }
     /**
      * 
-     * @param type $id
+     * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 3.1.1
      */
@@ -463,7 +463,7 @@ class biblioteca_BibliotecaControle extends biblioteca_Controle
     }
     /**
      * 
-     * @param type $id
+     * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 3.1.1
      */
@@ -495,7 +495,7 @@ class biblioteca_BibliotecaControle extends biblioteca_Controle
     }
     /**
      * 
-     * @param type $id
+     * @param int $id Chave Primária (Id do Registro)
      */
     public function Bibliotecas_Upload($parent = 0){
         $parent = (int) $parent;

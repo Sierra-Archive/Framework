@@ -18,7 +18,7 @@ class banner_AdminModelo extends banner_Modelo
     }
     /**
      * @name banners_Del
-     * @param type $id
+     * @param int $id Chave Primária (Id do Registro)
      * @return int
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
@@ -59,7 +59,7 @@ class banner_AdminModelo extends banner_Modelo
     }
     /**
      * 
-     * @param type $id
+     * @param int $id Chave Primária (Id do Registro)
      * @return int
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>

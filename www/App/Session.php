@@ -1,7 +1,24 @@
 <?php
 namespace Framework\App;
+/**
+ * Tratamento de Sessão
+ * 
+ * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
+ * @version 3.1.1
+ */
 final Class Session {
+    /**
+     *
+     * @var type 
+     */
     private static $Iniciado = false;
+    /**
+     * 
+     * @return boolean
+     * 
+     * @version 3.1.1
+     * @author Ricardo Sierra <web@ricardosierra.com.br>
+     */
     public static function init(){
         if(self::$Iniciado===true){
             return true;
@@ -10,6 +27,13 @@ final Class Session {
         
         session_start();
     }
+    /**
+     * 
+     * @param type $clave
+     * 
+     * @version 3.1.1
+     * @author Ricardo Sierra <web@ricardosierra.com.br>
+     */
     public static function destroy($clave=false){
         if(self::$Iniciado!==true){
             self::init();
@@ -31,6 +55,15 @@ final Class Session {
             }
         }
     }
+    /**
+     * 
+     * @param type $clave
+     * @param type $valor
+     * @return boolean
+     * 
+     * @version 3.1.1
+     * @author Ricardo Sierra <web@ricardosierra.com.br>
+     */
     public static function set($clave,$valor){
         if(self::$Iniciado!==true){
             self::init();
@@ -40,6 +73,14 @@ final Class Session {
         }
         return false;
     }
+    /**
+     * 
+     * @param type $clave
+     * @return boolean
+     * 
+     * @version 3.1.1
+     * @author Ricardo Sierra <web@ricardosierra.com.br>
+     */
     public static function get($clave){
         if(self::$Iniciado!==true){
             self::init();

@@ -19,21 +19,27 @@ class usuario_ExpedienteControle extends usuario_Controle
         parent::__construct();
     }
     /**
-    * Main
-    * 
-    * @name Main
-    * @access public
-    * 
-    * @uses usuario_Controle::$acoesPerfil
-    * 
-    * @return void
-    * 
-    * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 3.1.1
-    */
+     * Main
+     * 
+     * @name Main
+     * @access public
+     * 
+     * @return void
+     * 
+     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
+     * @version 3.1.1
+     */
     public function Main(){
         return false; 
     }
+    /**
+     * Escreve Link de Auxilio para o Usuário
+     * 
+     * @param bollean $true Se Adiciona Link ou nao ao Endereço
+     * 
+     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
+     * @version 3.1.1
+     */
     static function Endereco_Expediente($true=true){
         $registro = \Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
@@ -44,6 +50,7 @@ class usuario_ExpedienteControle extends usuario_Controle
         }
     }
     /**
+     * LIstagem de Todos os Expedientes
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 3.1.1
@@ -107,6 +114,7 @@ class usuario_ExpedienteControle extends usuario_Controle
         self::DAO_Campos_Retira($campos, 'status');
     }
     /**
+     * Retorna Formulário para Cadastro de Expediente
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 3.1.1
@@ -124,7 +132,7 @@ class usuario_ExpedienteControle extends usuario_Controle
         \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos);
     }
     /**
-     * 
+     * Cadastra Expediente no Banco de Dados, usado dados vindos do Formulário
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
@@ -140,8 +148,9 @@ class usuario_ExpedienteControle extends usuario_Controle
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
     }
     /**
+     * Retorna Formulário para Edição de Expediente
      * 
-     * @param type $id
+     * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 3.1.1
      */
@@ -161,7 +170,8 @@ class usuario_ExpedienteControle extends usuario_Controle
     /**
      * 
      * 
-     * @param type $id
+     * @param int $id Chave Primária (Id do Registro)
+     * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 3.1.1
      */
@@ -175,9 +185,10 @@ class usuario_ExpedienteControle extends usuario_Controle
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);   
     }
     /**
+     * Deleta Expediente
      * 
+     * @param int $id Registro do Expediente
      * 
-     * @param type $id
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 3.1.1
      */
@@ -210,6 +221,9 @@ class usuario_ExpedienteControle extends usuario_Controle
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
     /**
+     * Lista todos os Funcionários Disponiveis
+     * @param type $tipobloco
+     * @return boolean
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 3.1.1
@@ -217,25 +231,47 @@ class usuario_ExpedienteControle extends usuario_Controle
     public static function Disponivel($tipobloco='Unico'){
         $Registro = Framework\App\Registro::getInstacia();
 
+        
+        // Inserir Expediente
+        $registros_usuario = $Registro->_Modelo->db->Sql_Select('Usuario');
+        //$registros_expediente = $Registro->_Modelo->db->Sql_Select('Usuario_Expediente','');
+        $form = new \Framework\Classes\Form('usuarioform_expediente_add','usuario/Expediente/Expediente_Add_Rapido','formajax',"mini",'horizontal','off');
+        $form->Select_Novo(
+            'Funcionário para Entrar no Expediente',
+            'usuario',
+            'usuario',
+            '',
+            '',
+            '',
+            false,
+            false,
+            'obrigatorio',
+            __('Escolha um Funcionário')
+        );
+        /*if($valor['edicao']['valor_padrao']===false){
+            $html .= $form->Select_Opcao('','',1);
+        }else{
+            $html .= $form->Select_Opcao('','',0);
+        }*/
+        if(is_array($registros_usuario)){
+            foreach ($registros_usuario as &$valor){
+                $form->Select_Opcao($valor->nome,$valor->id,0);
+            }
+        }
+        $form->Select_Fim();
+        $html = $form->retorna_form('Abrir Expediente');
+        $Registro->_Visual->Blocar($html.'<br><br>');
+        
+        // Carrega Tabela
         $tabela_colunas = Array();
-
         $tabela_colunas[] = __('Id');
         $tabela_colunas[] = __('Funcionário');
         $tabela_colunas[] = __('Inicio');
         $tabela_colunas[] = __('Fim');
         $tabela_colunas[] = __('Status');
         $tabela_colunas[] = __('Funções');
-
-        
-        // Inserir Expediente
-        $html = '';
-        $Registro->_Modelo->db->Sql_Select('Usuario');
-        $Registro->_Modelo->db->Sql_Select('Usuario_Expediente','');
-        $Registro->_Visual->Blocar($tabela_colunas,$html);
-        
-        
-        
-        $Registro->_Visual->Show_Tabela_DataTable_Massiva($tabela_colunas,'usuario/Expediente/Expedientes');
+        $html = '<span id="usuario_Expediente_Disponiveis">'.$Registro->_Visual->Show_Tabela_DataTable_Massiva($tabela_colunas,'usuario/Expediente/Expedientes','',false).'</span>';
+        $Registro->_Visual->Blocar($html);
         $titulo = __('Disponiveis').' (<span id="DataTable_Contador">0</span>)';        
         if($tipobloco==='Unico'){
             $Registro->_Visual->Bloco_Unico_CriaJanela($titulo,'',100,Array("link"=>"usuario/Expediente/Expedientes_Add",'icon'=>'add','nome'=>__('Adicionar Expediente')));
@@ -244,8 +280,53 @@ class usuario_ExpedienteControle extends usuario_Controle
         }else{
             $Registro->_Visual->Bloco_Menor_CriaJanela($titulo,'',100,Array("link"=>"usuario/Expediente/Expedientes_Add",'icon'=>'add','nome'=>__('Adicionar Expediente')));
         }
-        
         return true;
+    }
+    /**
+     * Pega um Usuario qualquer e Abre um Expediente Rapidamente pra Ele
+     * 
+     * @param int $usuario Id do Usuario
+     * 
+     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
+     * @version 3.1.1
+     */
+    public function Expediente_Add_Rapido($usuario=false){
+        if($usuario===false){
+            $usuario = (int) $_POST['usuario'];
+        }else{
+            $usuario = (int) $usuario;
+        }
+        $expediente = new Usuario_Expediente_DAO();
+        $expediente->usuario = $usuario;
+        $expediente->inicio = APP_HORA_BR;
+        
+        $sucesso =  $this->_Modelo->db->Sql_Inserir($expediente);
+    	if($sucesso===true){
+            $mensagens = array(
+                "tipo" => 'sucesso',
+                "mgs_principal" => __('Iniciado'),
+                "mgs_secundaria" => __('Expediente Iniciado com sucesso')
+            );
+    	}else{
+            $mensagens = array(
+                "tipo" => 'erro',
+                "mgs_principal" => __('Erro'),
+                "mgs_secundaria" => __('Erro')
+            );
+        }
+        $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+        
+        // Recarrega
+        $tabela_colunas = Array(__('Id'),__('Funcionário'),__('Inicio'),__('Fim'),__('Status'),__('Funções'));
+        $conteudo = array(
+            'location'  =>  '#usuario_Expediente_Disponiveis',
+            'js'        =>  '',
+            'html'      =>  $this->_Visual->Show_Tabela_DataTable_Massiva($tabela_colunas,'usuario/Expediente/Expedientes','',false)
+        );
+        $this->_Visual->Json_IncluiTipo('Conteudo',$conteudo);
+        
+        $this->_Visual->Json_Info_Update('Titulo', __('Expediente Iniciado com Sucesso'));  
+        $this->_Visual->Json_Info_Update('Historico', false);  
     }
 }
 ?>

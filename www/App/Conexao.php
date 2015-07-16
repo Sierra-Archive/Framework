@@ -31,7 +31,7 @@ DELIMITER ;
  * assim como detectar erro e repara-los automaticamente
  * 
  * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
- * @version 0.22
+ * @version 3.1.1
  */
 final class Conexao
 {
@@ -46,6 +46,10 @@ final class Conexao
      * @var Object 
      */
     protected $_Registro                =  '';
+    /**
+     *
+     * @var type 
+     */
     protected $_Cache                   =  '';
     /**
      * Class MYSQLI
@@ -167,7 +171,9 @@ final class Conexao
         
         return true;
     }     
-    /*Evita que a classe seja clonada*/
+    /**
+     * Evita que a classe seja clonada
+     */
     private function __clone(){}
     /**
      * Pega as Colunas
@@ -206,7 +212,16 @@ final class Conexao
         }
         throw new \Exception('Colunas com nome '.$nome.' nao Existe.',3251);
     }
-    
+    /**
+     * 
+     * @param type $sql
+     * @param type $autoreparo
+     * @return type
+     * @throws \Exception
+     * 
+     * @version 3.1.1
+     * @author Ricardo Sierra <web@ricardosierra.com.br>
+     */
     public function prepare($sql,$autoreparo=true) 
     {
         $stmt = $this->mysqli->prepare($sql);
@@ -260,6 +275,16 @@ final class Conexao
         //var_dump($sql,'final',$re);
         return $re;
     }
+    /**
+     * 
+     * @param type $sql
+     * @param type $autoreparo
+     * @return boolean
+     * @throws \Exception
+     * 
+     * @version 3.1.1
+     * @author Ricardo Sierra <web@ricardosierra.com.br>
+     */
     public function multi_query($sql,$autoreparo=true) 
     {
         $tempo = new \Framework\App\Tempo('Conexao MultiQuery');
@@ -291,6 +316,13 @@ final class Conexao
         return true;
         
     }
+    /**
+     * 
+     * @return type
+     * 
+     * @version 3.1.1
+     * @author Ricardo Sierra <web@ricardosierra.com.br>
+     */
     public function ultimo_id(){
         return $this->mysqli->insert_id;
     }
@@ -938,6 +970,9 @@ final class Conexao
      *       $tabela_campos_valores,
      *       $tabelas_usadas,$j
      *   )
+     * 
+     * @version 3.1.1
+     * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
     public function Sql_Select_Dados($class_dao,$campos,$sql='SELECT',$retornar_extrangeiras_usadas=false,$deletados=false){
         // Carrega Chave do Cache
@@ -984,6 +1019,9 @@ final class Conexao
      *       $tabelas_usadas,$j
      *   )
      * @throws \Exception
+     * 
+     * @version 3.1.1
+     * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
     private function Sql_Select_Comeco($class_dao,$campos,$sql='SELECT',$deletados=false){
         $campos_todos = false;
@@ -1200,6 +1238,9 @@ final class Conexao
      * @param type $where
      * @return type
      * @throws \Exception
+     * 
+     * @version 3.1.1
+     * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
     public function Sql_Contar($class_dao, $where = false, $inner_join = false){
         $tempo = new \Framework\App\Tempo('Conexao_Contar');   
@@ -1580,8 +1621,8 @@ final class Conexao
      * @param type $objeto
      * @param type $campo
      * 
-     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.0.2
+     * @version 3.1.1
+     * @author Ricardo Sierra <web@ricardosierra.com.br>
      * 
      * Como é usado dentro de varios looping, nao faz sentido executar $objeto->Get_Object_Vars()
      * toda hora, entao ja o vem por refenrencia
@@ -2131,6 +2172,14 @@ final class Conexao
         );
         return $tab;
     }
+    /**
+     * 
+     * @param type $classe
+     * @return type
+     * 
+     * @version 3.1.1
+     * @author Ricardo Sierra <web@ricardosierra.com.br>
+     */
     static function GetSigla($classe){
         $tabelas        = &self::$tabelas;
         return $tabelas[$classe]['sigla'];
