@@ -1233,12 +1233,12 @@ final class Conexao
     }
     /**
      * 
-     * @param type $class_dao
-     * @param type $condicao
-     * @param type $limit
-     * @param type $campos * todos ou campos separados por ,
-     * @param type $tempo = Medicao de TEmpo
-     * @param type $deletados = Se False, não inclui os deletados, se TRUE, só mostra os deletados, para mostrar todos use string '*'
+     * @param string $class_dao Nome da Classe Dao Relativa ao Banco de Dados
+     * @param string $condicao false ou string, usado {sigla}antes da coluna pra ser usado a sigla da coluna
+     * @param int $limit Limite de Registros no Retorno
+     * @param string $campos * todos ou campos separados por ,
+     * @param int $tempo = Medicao de TEmpo
+     * @param bolean $deletados = Se False, não inclui os deletados, se TRUE, só mostra os deletados, para mostrar todos use string '*'
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 3.1.1

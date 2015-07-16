@@ -27,9 +27,6 @@ class Locomocao_Principal implements \Framework\PrincipalInterface
         
         // Bloca Conteudo
         $Visual->Blocar($html);   
-        $Visual->Bloco_Maior_CriaJanela(__('Disponiveis'),'',100);
-        // Bloca Conteudo
-        $Visual->Blocar($html);   
         $Visual->Bloco_Maior_CriaJanela(__('Em Almoço'),'',80);
         // Bloca Conteudo
         $Visual->Blocar($html);   

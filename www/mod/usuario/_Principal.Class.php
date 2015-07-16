@@ -35,6 +35,9 @@ class usuario_Principal implements \Framework\PrincipalInterface
                 '</a>'.
             '</li>');
         }
+        if(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Expediente')){
+            usuario_ExpedienteControle::Disponivel('Maior');
+        }
         return true;
     }             
     static function Busca(&$controle, &$modelo, &$Visual,$busca){

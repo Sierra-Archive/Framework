@@ -10,6 +10,17 @@ $config_Modulo = function (){
 };
 $config_Menu = function (){
     return Array(
+        'Comercial' => Array(
+            'Nome'                  => __('Comercial'),
+            'Link'                  => 'usuario/Expediente/Expediente',
+            'Gravidade'             => 100,
+            'Img'                   => 'turboadmin/m-users.png',
+            'Icon'                  => 'time',
+            'Permissao_Func'        => Array(// Permissoes NEcessarias
+                'usuario_Expediente' => true
+            ),
+            'Filhos'                => false,
+        ),
         'Lista Telefonica' => Array(
             'Nome'                  => __('Lista Telefonica'),
             'Link'                  => 'usuario/Telefone/Telefones',
@@ -376,6 +387,12 @@ $config_Funcional = function (){
             'Desc'                  => __('Nome Funcionarios'),
             'chave'                 => 'usuario_Funcionario_nome',
             'Valor'                 => 'Funcionários',
+        ),
+        'usuario_Expediente'  => Array(
+            'Nome'                  => 'Usuarios -> Expediente',
+            'Desc'                  => __('Se possui Expediente de Usuários'),
+            'chave'                 => 'usuario_Expediente',
+            'Valor'                 => false,
         ),
         
         // Cliente

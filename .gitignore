@@ -1,6 +1,7 @@
 **.sublime-**
 nbproject/*
 nbproject/private/
+docs/**
 www/arq/**/*
 www/arq/**/!.htaccess
 www/Cache/**/*
