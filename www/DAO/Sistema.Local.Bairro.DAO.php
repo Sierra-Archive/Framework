@@ -75,7 +75,7 @@ final Class Sistema_Local_Bairro_DAO extends Framework\App\Dao
                 'mysql_null'        => true, // true NULL, false, NOT NULL
                 'mysql_default'     => false,//false -> NONE, outro -> default
                 'mysql_primary'     => false, // chave primaria
-                'mysql_estrangeira' => 'SLE.id|SLE.nome|SLE.pais={pais}', // chave estrangeira
+                'mysql_estrangeira' => 'SLE.id|SLE.sigla|SLE.pais={pais}', // chave estrangeira
                 'form_change'       => 'SLB', // CHANGE PARA EXTRANGEIRAS -> Sigla Tabela Pai / Sigla Tabela Atual ou false
                 'mysql_autoadd'     => false,
                 'mysql_comment'     => false,

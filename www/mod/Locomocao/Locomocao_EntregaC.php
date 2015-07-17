@@ -279,7 +279,7 @@ class Locomocao_EntregaControle extends Locomocao_Controle
         $distanciatotal = 0.0;
         $tempototal = 0.0;
         
-        if(!isset($_POST['filial_saida']) || $_POST['filial_saida']!==''){
+        if(isset($_POST['filial_saida']) && $_POST['filial_saida']!==''){
             $filial_saida = (int) $_POST['filial_saida'];
             $filial_saida_registro = $this->_Modelo->db->Sql_Select('Sistema_Filial','{sigla}id=\''.$filial_saida.'\'',1);
             if($filial_saida_registro===false){
@@ -305,14 +305,14 @@ class Locomocao_EntregaControle extends Locomocao_Controle
             return true;
         }
         
-        if(!isset($_POST['filial_entrada']) || $_POST['filial_entrada']!==''){
-            $filial_entrada = (int) $_POST['filial_entrada'];
-            if($filial_saida===$filial_entrada){
-                $filial_entrada_registro = &$filial_saida_registro;
+        if(isset($_POST['filial_chegada']) && $_POST['filial_chegada']!==''){
+            $filial_chegada = (int) $_POST['filial_chegada'];
+            if($filial_saida===$filial_chegada){
+                $filial_chegada_registro = &$filial_saida_registro;
             }else{
-                $filial_entrada_registro = $this->_Modelo->db->Sql_Select('Sistema_Filial','{sigla}id=\''.$filial_saida.'\'',1);
+                $filial_chegada_registro = $this->_Modelo->db->Sql_Select('Sistema_Filial','{sigla}id=\''.$filial_saida.'\'',1);
             }
-            if($filial_entrada_registro===false){
+            if($filial_chegada_registro===false){
                 // Json
                 $conteudo = array(
                     'location'  =>  '#valortemporario'.$time,
@@ -337,35 +337,69 @@ class Locomocao_EntregaControle extends Locomocao_Controle
         $etapa = 1;
         
 
-        if(!isset($_POST['pais']) || !isset($_POST['estado']) || !isset($_POST['cidade']) || !isset($_POST['bairro']) || !isset($_POST['endereco'])){
+        if(!isset($_POST['pais']) || !isset($_POST['estado']) || !isset($_POST['cidade']) || !isset($_POST['bairro']) || !isset($_POST['endereco']) ||
+                $_POST['pais']=='' || $_POST['estado']=='' || $_POST['cidade']=='' || $_POST['bairro']==''){
             $html = 'Insira Pelo Menos um Ponto de Parada';
         }else{
+            // Inicia Para Primeiro Ponto
             $ponto_bairro = (int) $_POST['bairro'];
             $ponto_bairro_registro = $this->_Modelo->db->Sql_Select('Sistema_Local_Bairro','{sigla}id=\''.$ponto_bairro.'\'',1);
             $dados = Locomocao_Controle::Retorna_Distancia(
-                    $filial_saida->pais2,
-                    $filial_saida->estado2,
-                    $filial_saida->cidade2,
-                    $filial_saida->bairro2,
-                    $filial_saida->endereco,
-                    $ponto_bairro->pais2,
-                    $ponto_bairro->estado2,
-                    $ponto_bairro->cidade2,
-                    $ponto_bairro->nome,
+                    $filial_saida_registro->pais2,
+                    $filial_saida_registro->estado2,
+                    $filial_saida_registro->cidade2,
+                    $filial_saida_registro->bairro2,
+                    $filial_saida_registro->endereco,
+                    $ponto_bairro_registro->pais2,
+                    $ponto_bairro_registro->estado2,
+                    $ponto_bairro_registro->cidade2,
+                    $ponto_bairro_registro->nome,
                     $_POST['endereco']
             );
             if($dados===false){
                 $html = 'Erro: Endereço não Localizado pelo Google.';
             }else{
-                $html .= '<br><br><b>Distância Parcial ('.$etapa.'º Etapa):</b> '.$dados['Distancia']['Texto'].'<br>';
-                $html .= '<b>Tempo ('.$etapa.'º Etapa):</b> '.$dados['Tempo']['Texto'].'<br>';
+                $distanciatotal += $dados['Distancia']['Valor'];
+                $tempototal += $dados['Tempo']['Valor'];
+                $html .= '<b>Distância Parcial ('.$etapa.'º Etapa):</b> '.$dados['Distancia']['Texto'].'<br>';
+                $html .= '<b>Tempo Parcial ('.$etapa.'º Etapa):</b> '.$dados['Tempo']['Texto'].'<br>';
+                $html .= '<b>Valor Parcial ('.$etapa.'º Etapa):</b> R$ 0,00<br>';
             }
+            ++$etapa;
+            
+            
+            // Primeiro Ponto para Final
+            $ponto_bairro = (int) $_POST['bairro'];
+            $ponto_bairro_registro = $this->_Modelo->db->Sql_Select('Sistema_Local_Bairro','{sigla}id=\''.$ponto_bairro.'\'',1);
+            $dados = Locomocao_Controle::Retorna_Distancia(
+                    $ponto_bairro_registro->pais2,
+                    $ponto_bairro_registro->estado2,
+                    $ponto_bairro_registro->cidade2,
+                    $ponto_bairro_registro->nome,
+                    $_POST['endereco'],
+                    $filial_saida_registro->pais2,
+                    $filial_saida_registro->estado2,
+                    $filial_saida_registro->cidade2,
+                    $filial_saida_registro->bairro2,
+                    $filial_saida_registro->endereco
+            );
+            if($dados===false){
+                $html = 'Erro: Endereço não Localizado pelo Google.';
+            }else{
+                $distanciatotal += $dados['Distancia']['Valor'];
+                $tempototal += $dados['Tempo']['Valor'];
+                $html .= '<br><br><b>Distância Parcial ('.$etapa.'º Etapa):</b> '.$dados['Distancia']['Texto'].'<br>';
+                $html .= '<b>Tempo Parcial ('.$etapa.'º Etapa):</b> '.$dados['Tempo']['Texto'].'<br>';
+                $html .= '<b>Valor Parcial ('.$etapa.'º Etapa):</b> R$ 0,00<br>';
+            }
+            ++$etapa;
         }
           
         
         
-        $html .= '<br><br><b>Distância Parcial ('.$etapa.'º Etapa):</b> '.$dados['Distancia']['Texto'].'<br>';
-        $html .= '<b>Tempo ('.$etapa.'º Etapa):</b> '.$dados['Tempo']['Texto'].'<br>';
+        $html .= '<br><br><b>Distância Total:</b> '.\Framework\App\Sistema_Funcoes::Tranf_Distancia_Otimizado($distanciatotal).'<br>';
+        $html .= '<b>Tempo Total:</b> '.\Framework\App\Sistema_Funcoes::Tranf_Segundo_Tempo($tempototal).'<br>';
+        $html .= '<b>Valor Total:</b> '.\Framework\App\Sistema_Funcoes::Tranf_Float_Real($valortotal).'<br>';
         // Json
         $conteudo = array(
             'location'  =>  '#valortemporario'.$time,

@@ -577,9 +577,132 @@ Class Sistema_Funcoes {
         return $tamanho;
     }
     /**
+     * Transforma Segundos para Tempo
      * 
-     * @param type $real
-     * @return real
+     * @param int $tamanho
+     * @return string
+     * 
+     * @version 3.1.1
+     * @author Ricardo Sierra <web@ricardosierra.com.br>
+     */
+    public static function Tranf_Segundo_Tempo($tamanho,$termina_em='minutos'){
+        $tamanho = (int) $tamanho;
+        $valor_final = '';
+        $espaço = '';
+        // Anos
+        if($tamanho>31556926){
+            $valor_temp = (int) ($tamanho/31556926) ;
+            $valor_final    .= (string) ($valor_temp.' anos');
+            $tamanho = $tamanho - ($valor_temp*31556926);
+            $espaço = ' ';
+        }
+        if($termina_em==='anos') return ($valor_final===''?'0 anos':$valor_final);
+        // Dias
+        if($tamanho>86400){
+            $valor_temp = (int) ($tamanho/86400) ;
+            $valor_final    .= (string) ($espaço.$valor_temp.' dias');
+            $tamanho = $tamanho - ($valor_temp*86400);
+            $espaço = ' ';
+        }
+        if($termina_em==='dias') return ($valor_final===''?'0 dias':$valor_final);
+        // Horas
+        if($tamanho>3600){
+            $valor_temp = (int) ($tamanho/3600) ;
+            $valor_final    .= (string) ($espaço.$valor_temp.' horas');
+            $tamanho = $tamanho - ($valor_temp*3600);
+            $espaço = ' ';
+        }
+        if($termina_em==='horas') return ($valor_final===''?'0 horas':$valor_final);
+        // Minutos
+        if($tamanho>60){
+            $valor_temp = (int) ($tamanho/60) ;
+            $valor_final    .= (string) ($espaço.$valor_temp.' minutos');
+            $tamanho = $tamanho - ($valor_temp*60);
+            $espaço = ' ';
+        }
+        if($termina_em==='minutos') return ($valor_final===''?'0 minutos':$valor_final);
+        return $valor_final;
+    }
+    /**
+     * Transforma Tempo para Segundos
+     * 
+     * @param string $float
+     * @return int
+     * 
+     * @version 3.1.1
+     * @author Ricardo Sierra <web@ricardosierra.com.br>
+     */
+    public static function Tranf_Tempo_Segundo($float){
+        $float = strtolower($float);
+        $valor_final = 0;
+        if(strpos($float, 'anos')!==false){
+            $float = explode('anos',$float);
+            $tamanho = (float) $float[0];
+            $float = $float[1];
+            $valor_final += $tamanho*31556926;
+        }
+        if(strpos($float, 'dias')!==false){
+            $float = explode('dias',$float);
+            $tamanho = (float) $float[0];
+            $float = $float[1];
+            $valor_final += $tamanho*86400;
+        }
+        if(strpos($float, 'horas')!==false){
+            $float = explode('horas',$float);
+            $tamanho = (float) $float[0];
+            $float = $float[1];
+            $valor_final += $tamanho*3600;
+        }
+        if(strpos($float, 'minutos')!==false){
+            $float = explode('minutos',$float);
+            $tamanho = (float) $float[0];
+            $float = $float[1];
+            $valor_final += $tamanho*60;
+        }
+        return $valor_final;
+    }
+    /**
+     * Transforma Distancia para Otimizado
+     * 
+     * @param float $tamanho
+     * @return string
+     * 
+     * @version 3.1.1
+     * @author Ricardo Sierra <web@ricardosierra.com.br>
+     */
+    public static function Tranf_Distancia_Otimizado($tamanho){
+        $tamanho = (float) $tamanho;
+        if($tamanho>100){
+            $tamanho    =   ((string) round($tamanho/1000,1).' km');
+        }else{
+            $tamanho    =   ((string) round($tamanho).' m');
+        }
+        return $tamanho;
+        //return round($real,2);
+    }
+    /**
+     * Transforma Otimizado em Distancia
+     * 
+     * @param string $float
+     * @return float
+     * 
+     * @version 3.1.1
+     * @author Ricardo Sierra <web@ricardosierra.com.br>
+     */
+    public static function Tranf_Otimizado_Distancia($float){
+        $float = strtolower($float);
+        $valor_final = 0;
+        $tamanho = (float) $float;
+        if(strpos($float, 'km')!==false){
+            return $tamanho*1000;
+        }
+        return $tamanho;
+    }
+    /**
+     * Transpor Real em Decimal
+     * 
+     * @param string $real
+     * @return float
      * 
      * @version 3.1.1
      * @author Ricardo Sierra <web@ricardosierra.com.br>
@@ -593,9 +716,10 @@ Class Sistema_Funcoes {
         return round($real,2);
     }
     /**
+     * Transforma Decimal em Real
      * 
-     * @param type $float
-     * @return type
+     * @param float $float
+     * @return string
      * 
      * @version 3.1.1
      * @author Ricardo Sierra <web@ricardosierra.com.br>
@@ -606,9 +730,10 @@ Class Sistema_Funcoes {
         return ($float>=0?'R$'.number_format($float, 2, ',', '.'):'<span class="text-error">- R$ '.number_format($float*-1, 2, ',', '.').'</span>');
     }
     /**
+     * Transforma Porcentagem em Decimal
      * 
-     * @param type $porc
-     * @return real
+     * @param float $porc
+     * @return string
      * 
      * @version 3.1.1
      * @author Ricardo Sierra <web@ricardosierra.com.br>
@@ -622,9 +747,10 @@ Class Sistema_Funcoes {
         return round($porc/100,4);
     }
     /**
+     * Transforma Decimal em Porcentagem
      * 
-     * @param type $float
-     * @return type
+     * @param float $float
+     * @return string
      * 
      * @version 3.1.1
      * @author Ricardo Sierra <web@ricardosierra.com.br>
