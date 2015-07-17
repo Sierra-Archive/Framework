@@ -91,7 +91,7 @@ var Script = function () {
     });
 
     //    sidebar toggle
-    $('.glyphicon-reorder,#menuresponsivo_trocar').click(Template_TrocarMenu);
+    $('.fa-reorder,#menuresponsivo_trocar').click(Template_TrocarMenu);
 
 // custom scrollbar
     $(".sidebar-scroll").niceScroll({styler:"fb",cursorcolor:"#4A8BC2", cursorwidth: '5', cursorborderradius: '0px', background: '#404040', cursorborder: ''});

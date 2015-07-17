@@ -5,7 +5,7 @@ function config_template(){
             <form class="hidden-xs formajax"  id="form_Sistema_Busca" action="'.URL_PATH.'_Sistema/Principal/Busca">
                 <div class="input-append search-input-area">
                     <input type="text" id="busca" class="">
-                    <button type="button" class="btn"><i class="glyphicon-search"></i> </button>
+                    <button type="button" class="btn"><i class="fa fa-search"></i> </button>
                 </div>
             </form>
         </li>',

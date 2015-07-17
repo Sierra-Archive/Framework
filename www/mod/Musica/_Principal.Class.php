@@ -27,7 +27,7 @@ class Musica_Principal implements \Framework\PrincipalInterface
         $_Controle->Widget_Add('Superior',
         '<li class="dropdown mtop5">'.
             '<a class="dropdown-toggle element lajax" acao="" data-placement="bottom" data-toggle="tooltip" href="'.URL_PATH.'Musica/Musica/Musicas_Add" data-original-title="Nova Musica">'.
-                '<i class="glyphicon-music"></i>'.
+                '<i class="fa fa-music"></i>'.
             '</a>'.
         '</li>');
         return true;

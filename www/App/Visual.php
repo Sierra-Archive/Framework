@@ -861,7 +861,7 @@ class Visual
             '</div>'.
         '</div>'.
         //'<div id="dialog-confirm" title="Deletar Proposta?">'.
-        //'<p><span class="ui-icon ui-glyphicon-alert" style="float:left; margin:0 7px 20px 0;"></span>Essa ação não pode ser revertida. Você esta certo disso?</p>'.
+        //'<p><span class="ui-icon ui-fa fa-alert" style="float:left; margin:0 7px 20px 0;"></span>Essa ação não pode ser revertida. Você esta certo disso?</p>'.
         //'</div>'.
         // Arquivo JS
         $this->Arquivos_Js_Get().
@@ -1361,7 +1361,7 @@ class Visual
             if($permissao==='_') $permissao = $this->_Registro->_Acl->Get_Permissao_Url($nome[1]);
             if($permissao===false) return '';
             //'onclick'           => $nome[2]
-            return     '<a href="'.URL_PATH.$nome[1].'" class="btn btn-'.$nome[4].' lajax explicar-titulo" title="'.$nome[0].'" acao=""><i class="glyphicon-'.$nome[3].'"></i></a>';  
+            return     '<a href="'.URL_PATH.$nome[1].'" class="btn btn-'.$nome[4].' lajax explicar-titulo" title="'.$nome[0].'" acao=""><i class="fa fa-'.$nome[3].'"></i></a>';  
         }else{
             if($permissao==='_') $permissao = $this->_Registro->_Acl->Get_Permissao_Url($nome[1]);
             if($permissao===false) return '';
@@ -1398,7 +1398,7 @@ class Visual
                 $icone  = 'trash';                
             }
             return '<a href="'.URL_PATH.$nome[1].'" class="btn lajax explicar-titulo btn-'.$cor.'" title="'.$nome[0].'" acao="">
-        <i class="glyphicon-'.$icone.'"></i></a>';
+        <i class="fa fa-'.$icone.'"></i></a>';
         }
     }
     /**

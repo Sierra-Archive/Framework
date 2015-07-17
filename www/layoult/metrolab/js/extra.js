@@ -18,18 +18,18 @@ function Control_Atualizacao(){
 // widget tools
 function Control_Layoult_Botoes()
 {
-    jQuery('.widget .tools .glyphicon-chevron-down, .widget .tools .glyphicon-chevron-up').click(function () {
+    jQuery('.widget .tools .fa-chevron-down, .widget .tools .fa-chevron-up').click(function () {
         var elemento    = jQuery(this);
             el          = elemento.parents(".widget").children(".widget-body");
-        if (elemento.hasClass("glyphicon-chevron-down")) {
-            elemento.removeClass("glyphicon-chevron-down").addClass("glyphicon-chevron-up");
+        if (elemento.hasClass("fa-chevron-down")) {
+            elemento.removeClass("fa-chevron-down").addClass("fa-chevron-up");
             el.slideUp(200);
         } else {
-            elemento.removeClass("glyphicon-chevron-up").addClass("glyphicon-chevron-down");
+            elemento.removeClass("fa-chevron-up").addClass("fa-chevron-down");
             el.slideDown(200);
         }
     });
-    jQuery('.widget .tools .glyphicon-remove').click(function () {
+    jQuery('.widget .tools .fa-remove').click(function () {
         jQuery(this).parents(".widget").parent().remove();
     });
 }

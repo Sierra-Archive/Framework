@@ -8,8 +8,8 @@
     //Botoes
     if(isset($params['Id'])){ ?>
         <span class="tools">
-            <a id="<?php echo $params['Id']; ?>_max" class="glyphicon-chevron-<?php if(isset($params['opc_fechada']) && $params['opc_fechada']===true) echo 'up'; else echo 'down'; ?>" href="javascript:;"></a>
-            <!--<a class="glyphicon-remove" href="javascript:;"></a>-->
+            <a id="<?php echo $params['Id']; ?>_max" class="fa fa-chevron-<?php if(isset($params['opc_fechada']) && $params['opc_fechada']===true) echo 'up'; else echo 'down'; ?>" href="javascript:;"></a>
+            <!--<a class="fa fa-remove" href="javascript:;"></a>-->
         </span>
         <?php 
     }
@@ -17,11 +17,11 @@
     if($params['btn_extra']!==false){ ?>
         <?php if(is_array($params['btn_extra'])){ ?>
             <div class="update-btn">
-                <a class="btn btn-default lajax" href="<?php echo $params['btn_extra']['link']; ?>" class="lajax" acao=""><i class="glyphicon-<?php echo $params['btn_extra']['icon']; ?>"></i> <?php echo $params['btn_extra']['nome']; ?></a>
+                <a class="btn btn-default lajax" href="<?php echo $params['btn_extra']['link']; ?>" class="lajax" acao=""><i class="fa fa-<?php echo $params['btn_extra']['icon']; ?>"></i> <?php echo $params['btn_extra']['nome']; ?></a>
             </div>
         <?php }else{ ?>
             <div class="update-btn">
-                <a class="btn btn-default" href="#" onClick="<?php echo $params['btn_extra']; ?>" class="lajax" acao=""><i class="glyphicon-repeat"></i> Salvar</a>
+                <a class="btn btn-default" href="#" onClick="<?php echo $params['btn_extra']; ?>" class="lajax" acao=""><i class="fa fa-repeat"></i> Salvar</a>
             </div>
         <?php }
     } 

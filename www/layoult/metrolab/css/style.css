@@ -435,7 +435,7 @@ a,a:focus, a:hover, a:active {
     padding: 0 30px;
 }
 
-.sidebar-toggle-box .glyphicon-reorder {
+.sidebar-toggle-box .fa-reorder {
     cursor: pointer;
     display: inline-block;
     font-size: 20px;
@@ -456,7 +456,7 @@ a,a:focus, a:hover, a:active {
 
 /* sidebar menu */
 
-[class^="glyphicon-"], [class*=" glyphicon-"] {
+[class^="fa-"], [class*=" fa-"] {
     margin-top: 0;
 }
 
@@ -1026,7 +1026,7 @@ form legend {
 }
 
 /* icon buttons */
-.glyphicon-btn {
+.fa-btn {
     height: 70px;
     width: 50px;
     margin: 10px 0px 10px 0px;
@@ -1046,11 +1046,11 @@ form legend {
     transition: all 0.3s ease !important;
 }
 
-.ie8 .glyphicon-btn:hover {
+.ie8 .fa-btn:hover {
     filter: none !important;
 }
 
-.glyphicon-btn:hover {
+.fa-btn:hover {
     border: 1px solid #404040;
     background: #fff !important;
     text-decoration: none !important;
@@ -1063,19 +1063,19 @@ form legend {
     transition: all 0.3s ease !important;
 }
 
-.glyphicon-btn i {
+.fa-btn i {
     font-size: 20px;
     color: #777 !important;
 }
 
-.glyphicon-btn div {
+.fa-btn div {
     margin-top: 5px;
     margin-bottom: 20px;
     font-size: 12px !important;
     font-family: Arial;
 }
 
-.glyphicon-btn .badge {
+.fa-btn .badge {
     position: absolute;
     font-size: 10px !important;
     top: 26px;
@@ -1090,7 +1090,7 @@ form legend {
     font-family: Arial;
 }
 
-.glyphicon-btn:hover .badge {
+.fa-btn:hover .badge {
     -webkit-transition: all 0.3s ease !important;
     -moz-transition: all 0.3s ease !important;
     -ms-transition: all 0.3s ease !important;
@@ -1098,14 +1098,14 @@ form legend {
     transition: all 0.3s ease !important;
 }
 
-.glyphicon-btn i {
+.fa-btn i {
     -webkit-transition: all .5s ease-in-out;
     -moz-transition: all .5s ease-in-out;
     -o-transition: all .5s ease-in-out;
     -ms-transition: all .5s ease-in-out;
 }
 
-.glyphicon-btn:hover i {
+.fa-btn:hover i {
     -webkit-transform: rotate(360deg);
     -moz-transform: rotate(360deg);
     -o-transform: rotate(360deg);
@@ -1254,13 +1254,13 @@ form legend {
 
 /*fontawesome*/
 
-.fontawesome-glyphicon-list .col-3{
+.fontawesome-fa-list .col-3{
     margin-left: 0;
 }
-.fontawesome-glyphicon-list .col-3 i{
+.fontawesome-fa-list .col-3 i{
     font-size: 16px;
 }
-.fontawesome-glyphicon-list .col-3 a{
+.fontawesome-fa-list .col-3 a{
     color: #888888;
 }
 
@@ -1372,7 +1372,7 @@ form legend {
 }
 
 /* font awesome icon classes */
-[class^="glyphicon-"], [class*=" glyphicon-"],[class^="glyphicon-"]:hover, [class*=" glyphicon-"]:hover {
+[class^="fa-"], [class*=" fa-"],[class^="fa-"]:hover, [class*=" fa-"]:hover {
     background: none !important;
 }
 
@@ -2099,7 +2099,7 @@ table.sliders tr td {
 
 /*font awesome icon style*/
 
-.glyphicon-style-list ul.list-unstyled li {
+.fa-style-list ul.list-unstyled li {
     /*border: 1px solid #EAEAEA;*/
     font-family: arial;
     line-height: 30px;
@@ -2112,12 +2112,12 @@ table.sliders tr td {
     -webkit-border-radius: 3px;
 }
 
-.glyphicon-style-list ul.list-unstyled li i {
+.fa-style-list ul.list-unstyled li i {
     font-size: 16px;
     padding-right: 5px;
 }
 
-.glyphicon-style-list h3, .glyphicon-style-list h4 {
+.fa-style-list h3, .fa-style-list h4 {
     font-family: Arial;
 }
 
@@ -2424,7 +2424,7 @@ a.social-link i {
 
 }
 
-.square-state .glyphicon-btn {
+.square-state .fa-btn {
     margin-top: 0;
     margin-bottom: 20px;
 }

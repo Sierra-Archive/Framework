@@ -24,7 +24,7 @@
         <div class="navbar-header">
             <!--BEGIN SIDEBAR TOGGLE-->
             <div class="sidebar-toggle-box hidden-xs">
-                <div class="glyphicon-reorder"></div>
+                <div class="fa fa-reorder"></div>
             </div>
             <!--END SIDEBAR TOGGLE-->
 

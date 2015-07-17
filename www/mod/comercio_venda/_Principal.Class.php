@@ -46,8 +46,8 @@ class comercio_venda_Principal implements \Framework\PrincipalInterface
                     $numero = $valor->valor;
                     $html .= '<a data-original-title="Novo Caixa" 
                         href="'.SISTEMA_URL.SISTEMA_DIR.'comercio_venda/Carrinho/Carrinhos_Add?popup=true" 
-                        data-toggle="tooltip" data-placement="bottom" acao="" class="glyphicon-btn col-3 lajax">
-                        <i class="glyphicon-food"></i>
+                        data-toggle="tooltip" data-placement="bottom" acao="" class="fa fa-btn col-3 lajax">
+                        <i class="fa fa-food"></i>
                         <div>Balcão '.$i.'</div>
                         <span class="badge badge-'.$cor.'">'.$numero.'</span>
                     </a>';
@@ -81,8 +81,8 @@ class comercio_venda_Principal implements \Framework\PrincipalInterface
                 // Faz o Html da Parada
                 $html .= '<a data-original-title="Novo Caixa" 
                         href="'.SISTEMA_URL.SISTEMA_DIR.'comercio_venda/Carrinho/Carrinhos_Add?popup=true" 
-                        data-toggle="tooltip" data-placement="bottom" acao="" class="glyphicon-btn col-3 lajax">
-                        <i class="glyphicon-food"></i>
+                        data-toggle="tooltip" data-placement="bottom" acao="" class="fa fa-btn col-3 lajax">
+                        <i class="fa fa-food"></i>
                     <div>'.$valor->nome.'</div>
                     <span class="badge badge-'.$cor.'">'.$numero.'</span>
                 </a>';
@@ -101,26 +101,26 @@ class comercio_venda_Principal implements \Framework\PrincipalInterface
             return false;
         }
         
-        /*<a href="#" class="glyphicon-btn col-2">
-                <i class="glyphicon-barcode"></i>
+        /*<a href="#" class="fa fa-btn col-2">
+                <i class="fa fa-barcode"></i>
                 <div>Products</div>
                 <span class="badge badge-success">4</span>
             </a>
-            <a href="#" class="glyphicon-btn col-2">
-                <i class="glyphicon-reorder"></i>
+            <a href="#" class="fa fa-btn col-2">
+                <i class="fa fa-reorder"></i>
                 <div>Reports</div>
             </a>
-            <a href="#" class="glyphicon-btn col-2">
-                <i class="glyphicon-sitemap"></i>
+            <a href="#" class="fa fa-btn col-2">
+                <i class="fa fa-sitemap"></i>
                 <div>Categories</div>
             </a>
-            <a href="#" class="glyphicon-btn col-2">
-                <i class="glyphicon-calendar"></i>
+            <a href="#" class="fa fa-btn col-2">
+                <i class="fa fa-calendar"></i>
                 <div>Calendar</div>
                 <span class="badge badge-success">4</span>
             </a>
-            <a href="#" class="glyphicon-btn col-2">
-                <i class="glyphicon-envelope"></i>
+            <a href="#" class="fa fa-btn col-2">
+                <i class="fa fa-envelope"></i>
                 <div>Inbox</div>
                 <span class="badge badge-info">12</span>
             </a>*/
@@ -138,7 +138,7 @@ class comercio_venda_Principal implements \Framework\PrincipalInterface
         $_Controle->Widget_Add('Superior',
         '<li class="dropdown mtop5">'.
             '<a class="dropdown-toggle element lajax" acao="" data-placement="bottom" data-toggle="tooltip" href="'.URL_PATH.'comercio_venda/Carrinho/Carrinhos_Add" data-original-title="Novo Caixa">'.
-                '<i class="glyphicon-shopping-cart"></i>'.
+                '<i class="fa fa-shopping-cart"></i>'.
             '</a>'.
         '</li>');
     }

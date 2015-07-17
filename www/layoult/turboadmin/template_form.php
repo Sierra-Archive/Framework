@@ -124,7 +124,7 @@
                 <?php }else{ ?>
                     <div class="input-append">
                         <div class="uneditable-input">
-                            <i class="glyphicon-file fileupload-exists"></i>
+                            <i class="fa fa-file fileupload-exists"></i>
                             <span class="fileupload-preview"></span>
                         </div>
                 <?php } ?>

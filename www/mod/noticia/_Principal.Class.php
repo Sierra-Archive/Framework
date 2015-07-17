@@ -38,7 +38,7 @@ class noticia_Principal implements \Framework\PrincipalInterface
         $_Controle->Widget_Add('Superior',
         '<li class="dropdown mtop5">'.
             '<a class="dropdown-toggle element lajax" acao="" data-placement="bottom" data-toggle="tooltip" href="'.URL_PATH.'noticia/Admin/Noticias_Add" data-original-title="Nova Noticia">'.
-                '<i class="glyphicon-rss"></i>'.
+                '<i class="fa fa-rss"></i>'.
             '</a>'.
         '</li>');
         return true;
