@@ -85,6 +85,7 @@ class Modelo
      * @version 3.1.1
      */
     protected function Sistema_Menu_Insere(&$menu,$modulo='_Sistema',$parent=0){
+        
         $parent = (int) $parent;
         if(!is_int($parent)) $parent = 0;
         if(!is_array($menu) || empty($menu)) return false;

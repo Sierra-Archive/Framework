@@ -16,7 +16,15 @@ class usuario_ExpedienteModelo extends usuario_Modelo
     public function __construct(){
         parent::__construct();
     }
-    public function Expedientes($status=0){
+    /**
+     * Listagem de Expedientes 
+     * @param type $status
+     * @param type $almoco
+     * 
+     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
+     * @version 3.1.1
+     */
+    public function Expedientes($status=0,$almoco=false){
         // Table's primary key
         $primaryKey = 'id';
         $tabela = 'Usuario_Expediente';
@@ -27,8 +35,12 @@ class usuario_ExpedienteModelo extends usuario_Modelo
         
         $function = '';
         if($perm_statusalterar){
-            $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Personalizado\'     ,Array(__(\'Colocar em Almoço\')        ,\'usuario/Expediente/Expedientes_StatusAlterar/\'.$d.\'/1/\'    ,\'\',\'file\',\'inverse\'),true);';
-            $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Personalizado\'     ,Array(__(\'Finalizar\')        ,\'usuario/Expediente/Expedientes_StatusAlterar/\'.$d.\'/2/\'    ,\'\',\'file\',\'inverse\'),true);';
+            if($status==0){
+                $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Personalizado\'     ,Array(__(\'Colocar em Almoço\')        ,\'usuario/Expediente/Expedientes_StatusAlterar/\'.$d.\'/1/\'    ,\'\',\'cutlery\',\'success\'),true);';
+                $function .= ' $html .= \' \'.Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Personalizado\'     ,Array(__(\'Finalizar\')        ,\'usuario/Expediente/Expedientes_StatusAlterar/\'.$d.\'/2/\'    ,\'\',\'home\',\'warning\'),true);';
+            }else{
+                $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Personalizado\'     ,Array(__(\'Sair do Almoço\')        ,\'usuario/Expediente/Expedientes_StatusAlterar/\'.$d.\'/0/\'    ,\'\',\'random\',\'primary\'),true);';
+            }
         }
 
         $columns = Array();
@@ -50,20 +62,23 @@ class usuario_ExpedienteModelo extends usuario_Modelo
             'db' => 'usuario2', 
             'dt' => $numero); //'Funcionário';
         
-        ++$numero;
-        $columns[] = array( 
-            'db' => 'inicio', 
-            'dt' => $numero); //'Inicio';
         
-        ++$numero;
-        $columns[] = array( 
-            'db' => 'fim', 
-            'dt' => $numero); //'Fim';
-        
-        ++$numero;
-        $columns[] = array( 
-            'db' => 'status', 
-            'dt' => $numero); //'Status';
+        if($almoco!==false){
+            ++$numero;
+            $columns[] = array( 
+                'db' => 'log_date_edit', 
+                'dt' => $numero); //'ULt Alteracao';
+        }else{            
+            ++$numero;
+            $columns[] = array( 
+                'db' => 'inicio', 
+                'dt' => $numero); //'Inicio';
+
+            ++$numero;
+            $columns[] = array( 
+                'db' => 'fim', 
+                'dt' => $numero); //'Fim';
+        }
         
         ++$numero;
         eval('$function = function( $d, $row ) { $html = \'\'; '.$function.' return $html; };');       

@@ -2,22 +2,22 @@
 $config_Modulo = function (){
     return Array(
         'Nome'                      =>  'Locomocao',
-        'Descrição'                 =>  'Módulo Criado para o Calculo de Locomocao assim como cadsatro de motoboys e entrega por emcomenda.',
+        'Descrição'                 =>  'Módulo Criado para o Calculo de Locomocao assim como cadastro de motoboys e entrega por emcomenda.',
         'System_Require'            =>  '3.1.0',
         'Version'                   =>  '3.1.1',
         'Dependencias'              =>  false,
     );
 };
-$config_Entrega = function (){
+$config_Menu = function (){
     return Array(
         'Entregas' => Array(
-            'Nome'                  => 'Entregas',
+            'Nome'                  => __('Entregas'),
             'Link'                  => '#',
             'Gravidade'             => 6,
             'Img'                   => 'turboadmin/m-dashboard.png',
             'Icon'                  => 'truck',
             'Filhos'                => Array('Todas as Entregas'=>Array(
-                'Nome'                  => 'Todas as Entregas',
+                'Nome'                  => __('Todas as Entregas'),
                 'Link'                  => 'Locomocao/Entrega/Entregas',
                 'Gravidade'             => 5,
                 'Img'                   => 'turboadmin/m-dashboard.png',
