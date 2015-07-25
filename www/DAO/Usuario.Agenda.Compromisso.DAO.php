@@ -1,5 +1,5 @@
 <?php
-final Class Usuario_Agenda_Compromisso_DAO extends Framework\App\Dao 
+final Class Usuario_Agenda_DAO extends Framework\App\Dao 
 {
     protected $id;
     protected $nome;
@@ -14,7 +14,7 @@ final Class Usuario_Agenda_Compromisso_DAO extends Framework\App\Dao
     protected static $mysql_inside        = Array(); 
     public function __construct() {  parent::__construct(); } 
     public static function Get_Nome(){
-        return MYSQL_USUARIO_AGENDA_COMPROMISSOS;
+        return MYSQL_USUARIO_AGENDAS;
     }
     /**
      * Fornece Permissão de Copia da tabela

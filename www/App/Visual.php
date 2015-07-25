@@ -819,6 +819,9 @@ class Visual
             // FORMULARIOS
             //'assets/uniform/jquery.uniform.min',
             'sistema/chosen/chosen.jquery',
+            
+            // Calendario
+            'sistema/fullcalendar/fullcalendar.min',
         
         
             //'assets/jquery-tags-input/jquery.tagsinput.min',
@@ -881,8 +884,6 @@ class Visual
      * 
      * 
         // calendario
-        'css/plugins/jquery.fullcalendar',
-        'css/plugins/jquery.fullcalendar.print', // media="print"
         'assets/jquery-tags-input/jquery.tagsinput',
         // DAta
         'assets/bootstrap-datepicker/css/datepicker',
@@ -900,8 +901,6 @@ class Visual
      * 
             'js/jquery/jquery.limit',
             'assets/bootstrap-colorpicker/js/bootstrap-colorpicker',
-            // Calendario Jquert
-            'js/jquery/jquery.fullcalendar',
         // Imagem
         'js/jquery/jquery.lightbox-0.5';
              Popup
@@ -990,6 +989,10 @@ class Visual
                 
             // DATATABLE
             'sistema/data-tables/DT_bootstrap',
+            
+            // Calendário
+            'sistema/fullcalendar/fullcalendar',
+            'sistema/fullcalendar/fullcalendar.print',
             
             // Sistema
             'sistema/sistema'

@@ -416,7 +416,7 @@ msgstr "Listagem de Videos em Todos os Artistas"
 
 #: mod/Musica/Musica_VideoC.php:264 mod/Musica/Musica_MusicaC.php:217
 #: mod/Musica/Musica_AlbumC.php:188 mod/Musica/Musica_ArtistaC.php:128
-#: mod/banner/banner_AdminC.php:110 mod/Agenda/Agenda_CompromissoC.php:126
+#: mod/banner/banner_AdminC.php:110 mod/Agenda/AgendaC.php:126
 #: mod/Agenda/Agenda_PastaC.php:142 mod/Agenda/Agenda_PastaC.php:299
 #: mod/comercio_venda/comercio_venda_ComposicaoC.php:133
 #: mod/comercio_venda/comercio_venda_CarrinhoC.php:119
@@ -512,7 +512,7 @@ msgstr "Video Adicionada com Sucesso"
 #: mod/comercio_certificado/comercio_certificado_PropostaC.php:317
 #: mod/comercio_certificado/comercio_certificado_ProdutoC.php:197
 #: mod/comercio_certificado/comercio_certificado_Controle.php:272
-#: mod/banner/banner_AdminC.php:126 mod/Agenda/Agenda_CompromissoC.php:141
+#: mod/banner/banner_AdminC.php:126 mod/Agenda/AgendaC.php:141
 #: mod/Agenda/Agenda_PastaC.php:157 mod/Agenda/Agenda_PastaC.php:314
 #: mod/comercio_venda/comercio_venda_ComposicaoC.php:150
 #: mod/comercio_venda/comercio_venda_CarrinhoC.php:139
@@ -613,7 +613,7 @@ msgstr "Video Changed with Success."
 #: mod/Musica/Musica_AlbumC.php:332 mod/Musica/Musica_ArtistaC.php:201
 #: mod/comercio_certificado/comercio_certificado_PropostaC.php:409
 #: mod/comercio_certificado/comercio_certificado_ProdutoC.php:267
-#: mod/banner/banner_AdminC.php:187 mod/Agenda/Agenda_CompromissoC.php:196
+#: mod/banner/banner_AdminC.php:187 mod/Agenda/AgendaC.php:196
 #: mod/Agenda/Agenda_PastaC.php:212 mod/locais/locais_localidadesC.php:298
 #: mod/locais/locais_localidadesC.php:426
 #: mod/locais/locais_localidadesC.php:554
@@ -1227,48 +1227,48 @@ msgstr "Deletado com sucesso"
 msgid "Banner deletado com Sucesso"
 msgstr "Banner deletado com Sucesso"
 
-#: mod/Agenda/Agenda_CompromissoC.php:37
-#: mod/Agenda/Agenda_CompromissoC.php:113
+#: mod/Agenda/AgendaC.php:37
+#: mod/Agenda/AgendaC.php:113
 msgid "Compromissos"
 msgstr "Compromissos"
 
-#: mod/Agenda/Agenda_CompromissoC.php:123
+#: mod/Agenda/AgendaC.php:123
 msgid "Adicionar Compromisso"
 msgstr "Add Compromisso"
 
-#: mod/Agenda/Agenda_CompromissoC.php:124
+#: mod/Agenda/AgendaC.php:124
 msgid "Salvar Compromisso"
 msgstr "Salvar Compromisso"
 
-#: mod/Agenda/Agenda_CompromissoC.php:138
+#: mod/Agenda/AgendaC.php:138
 msgid "Compromisso Adicionada com Sucesso"
 msgstr "Compromisso Adicionada com Sucesso"
 
-#: mod/Agenda/Agenda_CompromissoC.php:142
+#: mod/Agenda/AgendaC.php:142
 msgid "Compromisso cadastrado com sucesso."
 msgstr "Compromisso successfully registered."
 
-#: mod/Agenda/Agenda_CompromissoC.php:156
+#: mod/Agenda/AgendaC.php:156
 msgid "Alteração de Compromisso"
 msgstr "Alteração de Compromisso"
 
-#: mod/Agenda/Agenda_CompromissoC.php:158
+#: mod/Agenda/AgendaC.php:158
 msgid "Alterar Compromisso"
 msgstr "Alterar Compromisso"
 
-#: mod/Agenda/Agenda_CompromissoC.php:171
+#: mod/Agenda/AgendaC.php:171
 msgid "Compromisso Editada com Sucesso"
 msgstr "Compromisso Editada com Sucesso"
 
-#: mod/Agenda/Agenda_CompromissoC.php:174
+#: mod/Agenda/AgendaC.php:174
 msgid "Compromisso Alterada com Sucesso."
 msgstr "Compromisso Alterada com Sucesso."
 
-#: mod/Agenda/Agenda_CompromissoC.php:197
+#: mod/Agenda/AgendaC.php:197
 msgid "Compromisso Deletado com sucesso"
 msgstr "Compromisso Deletado com sucesso"
 
-#: mod/Agenda/Agenda_CompromissoC.php:210
+#: mod/Agenda/AgendaC.php:210
 msgid "Compromisso deletado com Sucesso"
 msgstr "Compromisso deletado com Sucesso"
 

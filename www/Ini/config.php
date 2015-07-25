@@ -316,8 +316,8 @@ if(  !defined('MYSQL_EVENTO_MANIFESTACAO_TERRITORIAL')){
 
 
 // AGENDA
-if(  !defined('MYSQL_AGENDA_COMPROMISSO')){
-    define('MYSQL_AGENDA_COMPROMISSO'                   , 'Agenda_Compromisso');
+if(  !defined('MYSQL_AGENDA')){
+    define('MYSQL_AGENDA'                   , 'Agenda');
 }
 if(  !defined('MYSQL_AGENDA_ATIVIDADE_HORA')){
     define('MYSQL_AGENDA_ATIVIDADE'                     , 'Agenda_Atividade');
@@ -649,8 +649,8 @@ if(!defined('MYSQL_USUARIO_AGENDA_PASTA')){
     define('MYSQL_SOCIAL_HIST_FACE_MGS', 'Usuario_social_Historico_Face_Mensagens');
 } if(!defined('MYSQL_SOCIAL_RELACOES')){
     define('MYSQL_SOCIAL_RELACOES',      'Usuario_social_Relacoes');
-} if(!defined('MYSQL_USUARIO_AGENDA_COMPROMISSOS')){
-    define('MYSQL_USUARIO_AGENDA_COMPROMISSOS',  'agenda_compromissos');
+} if(!defined('MYSQL_USUARIO_AGENDAS')){
+    define('MYSQL_USUARIO_AGENDAS',  'agenda_compromissos');
 } if(!defined('MYSQL_USUARIO_AGENDA_ATIVIDADES')){
     define('MYSQL_USUARIO_AGENDA_ATIVIDADES',    'Agenda_Atividades');
 }
