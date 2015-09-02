@@ -1,4 +1,6 @@
 **.sublime-**
+composer.lock
+vendor/**
 nbproject/*
 nbproject/private/
 docs/**

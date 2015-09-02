@@ -320,7 +320,7 @@ register_shutdown_function( "Erro_Get_Fatal" );
 /**
  * Carrega Config de Maniputação de Layoult
  */
-define('LAY_CONF', ROOT_PADRAO.'layoult'.DS.TEMA_PADRAO.DS.'config'.DS);
+define('LAY_CONF', ROOT_PADRAO.'templates'.DS.TEMA_PADRAO.DS.'config'.DS);
 if( file_exists  (LAY_CONF.'config.php')){
     require_once (LAY_CONF.'config.php');
 }else{
@@ -335,11 +335,11 @@ define('URL_PATH',          SISTEMA_URL.SISTEMA_DIR);
 /**
  * Endereço da Pasta Web para o Cliente
  */
-define('WEB_URL',           URL_PATH.'web'.US);
+define('WEB_URL',           URL_PATH.'static'.US);
 /**
  * Endereço de Pasta Web no Servidor
  */
-define('WEB_PATH',          ROOT.'web'.US);
+define('WEB_PATH',          ROOT.'static'.US);
 /**
  * Endereço da Bibliotecas Web para o Cliente
  */
@@ -351,11 +351,11 @@ define('LIBS_PATH',         ROOT.'libs'.DS);
 /**
  * Endereço de Pasta de Arquivos desse Servidor para o Cliente
  */
-define('ARQ_URL',           URL_PATH.'arq'.US.SRV_NAME_SQL.US);
+define('ARQ_URL',           URL_PATH.'media'.US.SRV_NAME_SQL.US);
 /**
  * Endereço de Pasta de Arquivos desse Servidor no Servidor
  */
-define('ARQ_PATH',          ROOT.'arq'.DS.SRV_NAME_SQL.DS);
+define('ARQ_PATH',          ROOT.'media'.DS.SRV_NAME_SQL.DS);
 /**
  * Endereço de Pasta de Cache desse Servidor no Servidor
  */
@@ -385,7 +385,7 @@ if(!is_dir(ROOT.'Temp'.DS)){
 if(!is_dir(ARQ_PATH)){
     mkdir (ARQ_PATH, 0777 );
 }
-if(!is_dir(CACHE_PATH)){
+if(!is_dir(CACHE_PATH)){ var_dump(CACHE_PATH);
     mkdir (CACHE_PATH, 0777 );
 }
 if(!is_dir(TEMP_PATH)){

@@ -1,5 +1,5 @@
 <?php
-final Class Agenda_DAO extends Framework\App\Dao 
+final Class Agenda_Atividade_DAO extends Framework\App\Dao 
 {
     protected $id;
     protected $nome;

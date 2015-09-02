@@ -139,8 +139,8 @@ class Visual
             $this->_Acl             = &$this->_Registro->_Acl;
         }
         
-        $this->template_url        = URL_PATH.'layoult'.US.$this->template_layoult.US;
-        $this->template_dir        = ROOT.'layoult'.DS.$this->template_layoult.DS;
+        $this->template_url        = URL_PATH.'templates'.US.$this->template_layoult.US;
+        $this->template_dir        = ROOT.'templates'.DS.$this->template_layoult.DS;
     }
     /**
      * 
