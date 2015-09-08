@@ -8,7 +8,7 @@
 APPENV=local
 DBHOST=localhost
 DBNAME=dbname
-DBUSER=root
+DBUSER=dbuser
 DBPASSWD=test123
 
 echo -e "\n--- Mkay, installing now... ---\n"
