@@ -705,6 +705,23 @@ if(!defined('MYSQL_SIS_LOCALIZACAO_PAIZES')){
     define('MYSQL_SIS_LOCAIS_TIPOS',             'local_tipos');
 }
 
+//Simuladores
+if(!defined('MYSQL_SIMULADOR')){
+    define('MYSQL_SIMULADOR',              'Simulador'); 
+}
+if(!defined('MYSQL_SIMULADOR_TAG')){
+    define('MYSQL_SIMULADOR_TAG',          'Simulador_Tag'); 
+}
+if(!defined('MYSQL_SIMULADOR_TAG_CONEXAO')){
+    define('MYSQL_SIMULADOR_TAG_CONEXAO',  'Simulador_Tag_Conexao'); 
+}
+if(!defined('MYSQL_SIMULADOR_PERGUNTA')){
+    define('MYSQL_SIMULADOR_PERGUNTA',     'Simulador_Pergunta'); 
+}
+if(!defined('MYSQL_SIMULADOR_PERGUNTA_RESPOSTA')){
+    define('MYSQL_SIMULADOR_PERGUNTA_RESPOSTA',     'Simulador_Pergunta_Resposta'); 
+}
+
 // MIDIAS, EVENTOS, NOTICIAS 
 if(!defined('MYSQL_NOTICIAS')){
     define('MYSQL_NOTICIAS'           , 'Noticia');

@@ -1,12 +1,14 @@
 <?php
-final Class Simulador_Pergunta_Reposta_DAO extends Framework\App\Dao 
+final Class Simulador_Pergunta_Resposta_DAO extends Framework\App\Dao 
 {
     protected $id;
-    protected $album;
-    protected $artista;
+    protected $pergunta;
+    protected $simulador;
+    protected $tag;
     protected $nome;
-    protected $compra;
     protected $status;
+    protected $filtro_valor;
+    protected $filtro_tipo;
     protected $obs;
     protected static $objetocarregado     = false;     protected static $mysql_colunas       = false;     protected static $mysql_outside       = Array();     protected static $mysql_inside        = Array(); public function __construct() {  parent::__construct(); } public static function Get_Nome(){
         return MYSQL_SIMULADOR_PERGUNTA_RESPOSTA;
@@ -19,7 +21,7 @@ final Class Simulador_Pergunta_Reposta_DAO extends Framework\App\Dao
         return false;
     }
     public static function Get_Sigla(){
-        return 'M';
+        return 'Si';
     }
     public static function Get_Engine(){
         return 'InnoDB';
@@ -51,55 +53,82 @@ final Class Simulador_Pergunta_Reposta_DAO extends Framework\App\Dao
                 'linkextra'         => '' ,//0 ninguem, 1 admin, 2 todos 
             ),
             Array(
-                'mysql_titulo'      => 'artista',
+                'mysql_titulo'      => 'simulador',
                 'mysql_tipovar'     => 'int', //varchar, int, 
                 'mysql_tamanho'     => 11,
                 'mysql_null'        => true,  // nulo ?
                 'mysql_default'     => 0, // valor padrao
                 'mysql_primary'     => false,  // chave primaria
-                'mysql_estrangeira' => 'MAA.id|MAA.nome', // chave estrangeira     ligacao|apresentacao|condicao
-                'form_change'       => 'M', // CHANGE PARA EXTRANGEIRAS -> Sigla Tabela Pai / Sigla Tabela Atual ou false
+                'mysql_estrangeira' => 'Si.id|Si.nome', // chave estrangeira     ligacao|apresentacao|condicao
+                'form_change'       => 'Si', // CHANGE PARA EXTRANGEIRAS -> Sigla Tabela Pai / Sigla Tabela Atual ou false
                 'mysql_autoadd'     => false,
                 'mysql_comment'     => false,
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'         => 'Musica/Artista/Artistas_Add', //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => 'Simulador/Simulador/Simuladores_Add', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => __('Artista'),
+                    'Nome'              => __('Simulador'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',
                     'formtipo'          => 'select',
                     'select'             => array(
                         'class'             => 'obrigatorio',
-                        'infonulo'          => 'Escolha um Artista',
+                        'infonulo'          => 'Escolha um Simulador',
                     )
                 )
             ),
             Array(
-                'mysql_titulo'      => 'album',
+                'mysql_titulo'      => 'pergunta',
                 'mysql_tipovar'     => 'int', //varchar, int, 
                 'mysql_tamanho'     => 11,
                 'mysql_null'        => true,  // nulo ?
                 'mysql_default'     => 0, // valor padrao
                 'mysql_primary'     => false,  // chave primaria
-                'mysql_estrangeira' => 'MA.id|MA.nome|MA.artista={artista}', // chave estrangeira     ligacao|apresentacao|condicao
+                'mysql_estrangeira' => 'SiP.id|SiP.nome|SiP.simulador={simulador}', // chave estrangeira     ligacao|apresentacao|condicao
                 'mysql_autoadd'     => false,
                 'mysql_comment'     => false,
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'         => 'Musica/Album/Albuns_Add', //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => 'Simulador/Pergunta/Perguntas_Add', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => __('Album'),
+                    'Nome'              => __('Pergunta'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',
                     'formtipo'          => 'select',
                     'select'             => array(
                         'class'             => 'obrigatorio',
-                        'infonulo'          => 'Escolha um Album',
+                        'infonulo'          => 'Escolha uma Pergunta',
+                    )
+                )
+            ),
+            Array(
+                'mysql_titulo'      => 'tag',
+                'mysql_tipovar'     => 'int', //varchar, int, 
+                'mysql_tamanho'     => 11,
+                'mysql_null'        => true,  // nulo ?
+                'mysql_default'     => 0, // valor padrao
+                'mysql_primary'     => false,  // chave primaria
+                'mysql_estrangeira' => 'SiT.id|SiT.nome', // chave estrangeira     ligacao|apresentacao|condicao
+                'form_change'       => 'SiT', // CHANGE PARA EXTRANGEIRAS -> Sigla Tabela Pai / Sigla Tabela Atual ou false
+                'mysql_autoadd'     => false,
+                'mysql_comment'     => false,
+                'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
+                'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
+                'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
+                'linkextra'         => 'Simulador/Tag/Tags_Add', //0 ninguem, 1 admin, 2 todos 
+                'edicao'            => Array(
+                    'Nome'              => __('Caracteristica Associada'),
+                    'valor_padrao'      => false,
+                    'readonly'          => false,
+                    'aviso'             => '',
+                    'formtipo'          => 'select',
+                    'select'             => array(
+                        'class'             => 'obrigatorio',
+                        'infonulo'          => 'Escolha uma Caracteristica',
                     )
                 )
             ),Array(
@@ -117,7 +146,7 @@ final Class Simulador_Pergunta_Reposta_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => '', // //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => __('Nome da Musica'),
+                    'Nome'              => __('Nome do Simulador'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',
@@ -125,31 +154,6 @@ final Class Simulador_Pergunta_Reposta_DAO extends Framework\App\Dao
                     'input'             => array(
                         'tipo'              => 'text',
                         'class'             => 'obrigatorio'
-                    )
-                )
-            ),Array(
-                'mysql_titulo'      => 'compra',
-                'mysql_tipovar'     => 'varchar', //varchar, int, 
-                'mysql_tamanho'     => 100,
-                'mysql_null'        => true,
-                'mysql_default'     => false,
-                'mysql_primary'     => false,
-                'mysql_estrangeira' => false, // chave estrangeira
-                'mysql_autoadd'     => false,
-                'mysql_comment'     => false,
-                'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
-                'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
-                'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'         => '', // //0 ninguem, 1 admin, 2 todos 
-                'edicao'            => Array(
-                    'Nome'              => __('Apple Store'),
-                    'valor_padrao'      => false,
-                    'readonly'          => false,
-                    'aviso'             => '',
-                    'formtipo'          => 'input',
-                    'input'             => array(
-                        'tipo'              => 'text',
-                        'class'             => ''
                     )
                 )
             ),

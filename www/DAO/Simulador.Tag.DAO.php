@@ -2,12 +2,11 @@
 final Class Simulador_Tag_DAO extends Framework\App\Dao 
 {
     protected $id;
-    protected $parent;
-    protected $subtab;
     protected $nome;
+    protected $resultado_tipo;
     protected $obs;
     protected static $objetocarregado     = false;     protected static $mysql_colunas       = false;     protected static $mysql_outside       = Array();     protected static $mysql_inside        = Array(); public function __construct() {  parent::__construct(); } public static function Get_Nome(){
-        return MYSQL_CAT;
+        return MYSQL_SIMULADOR_TAG;
     }
     /**
      * Fornece Permissão de Copia da tabela
@@ -17,7 +16,7 @@ final Class Simulador_Tag_DAO extends Framework\App\Dao
         return false;
     }
     public static function Get_Sigla(){
-        return 'ST';
+        return 'SiT';
     }
     public static function Get_Engine(){
         return 'InnoDB';
@@ -48,37 +47,6 @@ final Class Simulador_Tag_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos
             ),
             Array(
-                'mysql_titulo'      => 'parent',
-                'mysql_tipovar'     => 'int', //varchar, int, 
-                'mysql_tamanho'     => 11,
-                'mysql_null'        => false,
-                'mysql_default'     => '0',
-                'mysql_primary'     => false,
-                'mysql_estrangeira' => 'ST.id|ST.nome', // chave estrangeira
-                'mysql_autoadd'     => false,
-                'mysql_comment'     => false,
-                'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
-                'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
-                'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'         => '',
-                'edicao'            => Array(
-                    'Nome'              => __('Pai'),
-                    'valor_padrao'      => false,
-                    'readonly'          => false,
-                    'aviso'             => '',
-                    'select'             => array(
-                        'class'             => 'obrigatorio',
-                        'infonulo'          => 'Escolha um Pai para a Caracteristica',
-                        'opcoes'            => array(
-                            array(
-                                'value'         =>  '0',
-                                'nome'          => 'Raiz'
-                            ),
-                        )
-                    )
-                )
-            ),
-            Array(
                 'mysql_titulo'      => 'nome',
                 'mysql_tipovar'     => 'varchar', //varchar, int, 
                 'mysql_tamanho'     => 100,
@@ -105,6 +73,40 @@ final Class Simulador_Tag_DAO extends Framework\App\Dao
                 )
             ),
             Array(
+                'mysql_titulo'      => 'resultado_tipo',
+                'mysql_tipovar'     => 'varchar', //varchar, int, 
+                'mysql_tamanho'     => 30,
+                'mysql_null'        => false,  // nulo ?
+                'mysql_default'     => 1, // valor padrao
+                'mysql_primary'     => false,  // chave primaria
+                'mysql_estrangeira' => false, // chave estrangeira     ligacao|apresentacao|condicao
+                'mysql_autoadd'     => false,
+                'mysql_comment'     => false,
+                'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
+                'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
+                'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
+                'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
+                'edicao'            => Array(
+                    'Nome'              => __('Tipo de Resultado Aceito'),
+                    'valor_padrao'      => 1,
+                    'readonly'          => false,
+                    'aviso'             => '',
+                    'formtipo'          => 'select',
+                    'select'            => array(
+                        'opcoes'            => array(
+                            array(
+                                'value'         =>  'Texto',
+                                'nome'          => 'Texto'
+                            ),
+                            array(
+                                'value'         =>  'Inteiro',
+                                'nome'          => 'Inteiro'
+                            ),
+                        )
+                    )
+                )
+            ),
+            /*Array(
                 'TabelaLinkada'     => Array(
                     'Pai'               => 'C', // TABELA que vai manipular a conexao
                     'Tabela'            => 'CA', // TABELA de LINK A SER CONECTADA
@@ -121,7 +123,7 @@ final Class Simulador_Tag_DAO extends Framework\App\Dao
                         'Valor'             => false
                     ), // Campo Boleano da tabela LINK, caso false apaga os que nao forem puxados
                 )
-            ),
+            ),*/
             Array(
                 'mysql_titulo'      => 'obs',
                 'mysql_tipovar'     => 'longtext', //varchar, int, 

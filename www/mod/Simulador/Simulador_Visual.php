@@ -1,5 +1,5 @@
 <?php
-class biblioteca_Visual extends \Framework\App\Visual
+class Simulador_Visual extends \Framework\App\Visual
 {
     /**
     * Construtor

@@ -1,5 +1,6 @@
 <?php
-class Simulador_Modelo extends \Framework\App\Modelo
+
+class Simulador_RespostaVisual extends Simulador_Visual
 {
     /**
     * Construtor
@@ -13,7 +14,7 @@ class Simulador_Modelo extends \Framework\App\Modelo
     * @version 3.1.1
     */
     public function __construct(){
-        parent::__construct();
+      parent::__construct();
     }
 }
 ?>

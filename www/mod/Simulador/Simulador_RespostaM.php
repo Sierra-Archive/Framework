@@ -1,5 +1,6 @@
 <?php
-class Simulador_Modelo extends \Framework\App\Modelo
+
+class Simulador_RepostaModelo extends Simulador_Modelo
 {
     /**
     * Construtor

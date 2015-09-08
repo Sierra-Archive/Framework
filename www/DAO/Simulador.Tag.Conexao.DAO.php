@@ -2,10 +2,11 @@
 final Class Simulador_Tag_Conexao_DAO extends Framework\App\Dao 
 {
     protected $tag;
-    protected $mod_acc;
-    protected $user_criacao;
+    protected $motivo;
+    protected $motivoid;
+    protected $valor;
     protected static $objetocarregado     = false;     protected static $mysql_colunas       = false;     protected static $mysql_outside       = Array();     protected static $mysql_inside        = Array(); public function __construct() {  parent::__construct(); } public static function Get_Nome(){
-        return MYSQL_CAT_ACESSO;
+        return MYSQL_SIMULADOR_TAG_CONEXAO;
     }
     /**
      * Fornece Permissão de Copia da tabela
@@ -15,11 +16,11 @@ final Class Simulador_Tag_Conexao_DAO extends Framework\App\Dao
         return false;
     }
     public static function Get_Sigla(){
-        return 'STC';
+        return 'SiTC';
     }
     public static function Get_LinkTable(){
         return Array(
-            'ST'         =>  'tag',
+            'SiT'         =>  'tag',
             // Quando Indice = 'Array', Nao tem 3 tabela, e Resultado é outro array com nome do campo e seus valores
             'Array'   =>  Array(
                 'mod_acc',
@@ -48,18 +49,17 @@ final Class Simulador_Tag_Conexao_DAO extends Framework\App\Dao
                 'mysql_null'        => false,
                 'mysql_default'     => false,
                 'mysql_primary'     => true,
-                'mysql_estrangeira' => 'C.id|C.nome', // chave estrangeira
+                'mysql_estrangeira' => 'SiT.id|SiT.nome', // chave estrangeira
                 'mysql_autoadd'     => false,
                 'mysql_comment'     => false,
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-            ),
-            Array(
-                'mysql_titulo'      => 'mod_acc',
+            ),Array(
+                'mysql_titulo'      => 'motivo',
                 'mysql_tipovar'     => 'varchar', //varchar, int, 
-                'mysql_tamanho'     => 255,
-                'mysql_null'        => false,
+                'mysql_tamanho'     => 100,
+                'mysql_null'        => true,
                 'mysql_default'     => false,
                 'mysql_primary'     => true,
                 'mysql_estrangeira' => false, // chave estrangeira
@@ -68,20 +68,69 @@ final Class Simulador_Tag_Conexao_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-            ),
-            Array(
-                'mysql_titulo'      => 'user_criacao',
-                'mysql_tipovar'     => 'int', //varchar, int, 
-                'mysql_tamanho'     => 11,
+                'linkextra'         => '', // //0 ninguem, 1 admin, 2 todos 
+                'edicao'            => Array(
+                    'Nome'              => __('Motivo'),
+                    'valor_padrao'      => false,
+                    'readonly'          => false,
+                    'aviso'             => __('Minimo 3 caracteres'),
+                    'formtipo'          => 'input',
+                    'input'             => array(
+                        'tipo'              => 'text',
+                        'class'             => 'obrigatorio'
+                    )
+                )
+            ),Array(
+                'mysql_titulo'      => 'motivoid',
+                'mysql_tipovar'     => 'varchar', //varchar, int, 
+                'mysql_tamanho'     => 30,
                 'mysql_null'        => true,
                 'mysql_default'     => false,
-                'mysql_primary'     => false,
-                'mysql_estrangeira' => 'U.id|U.nome-U.razao_social', // chave estrangeira
+                'mysql_primary'     => true,
+                'mysql_estrangeira' => false, // chave estrangeira
                 'mysql_autoadd'     => false,
                 'mysql_comment'     => false,
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
+                'linkextra'         => '', // //0 ninguem, 1 admin, 2 todos 
+                'edicao'            => Array(
+                    'Nome'              => __('Id do Motivo'),
+                    'Mascara'           => 'Numero',
+                    'valor_padrao'      => false,
+                    'readonly'          => false,
+                    'aviso'             => __('Minimo 3 caracteres'),
+                    'formtipo'          => 'input',
+                    'input'             => array(
+                        'tipo'              => 'text',
+                        'class'             => 'obrigatorio'
+                    )
+                )
+            ),Array(
+                'mysql_titulo'      => 'valor',
+                'mysql_tipovar'     => 'varchar', //varchar, int, 
+                'mysql_tamanho'     => 100,
+                'mysql_null'        => true,
+                'mysql_default'     => false,
+                'mysql_primary'     => false,
+                'mysql_estrangeira' => false, // chave estrangeira
+                'mysql_autoadd'     => false,
+                'mysql_comment'     => false,
+                'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
+                'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
+                'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
+                'linkextra'         => '', // //0 ninguem, 1 admin, 2 todos 
+                'edicao'            => Array(
+                    'Nome'              => __('Valor da Associação'),
+                    'valor_padrao'      => false,
+                    'readonly'          => false,
+                    'aviso'             => '',
+                    'formtipo'          => 'input',
+                    'input'             => array(
+                        'tipo'              => 'text',
+                        'class'             => 'obrigatorio'
+                    )
+                )
             )
         );
     }
@@ -108,7 +157,7 @@ final Class Simulador_Tag_Conexao_DAO extends Framework\App\Dao
             foreach($percorrer as &$value){
                 if(strtoupper($tipo)===strtoupper($value['chave'])) return $value;
             }
-            throw new \Exception('Simulador_Tag de Conexao não encontrado. Tipo:'.$tipo,404);
+            throw new \Exception('Tag de Conexão não encontrado. Tipo:'.$tipo,404);
         }else{
             $array = Array();
             // Percorre os modulos que aceitam tags
@@ -139,7 +188,7 @@ final Class Simulador_Tag_Conexao_DAO extends Framework\App\Dao
                 return $value['nome'];
             }
         }
-        throw new \Exception('Simulador_Tag de Conexao não encontrado. '.$chave,404);
+        throw new \Exception('Tag de Conexão não encontrado. '.$chave,404);
     }
     public static function Mod_Conexao_Get_Chave(){
         $repassar = self::Mod_Conexao_Get();

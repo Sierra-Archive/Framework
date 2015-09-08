@@ -2,11 +2,8 @@
 final Class Simulador_Pergunta_DAO extends Framework\App\Dao 
 {
     protected $id;
-    protected $artista;
+    protected $simulador;
     protected $nome;
-    protected $compra;
-    protected $lancamento;
-    protected $foto;
     protected $status;
     protected $obs;
     protected static $objetocarregado     = false;     protected static $mysql_colunas       = false;     protected static $mysql_outside       = Array();     protected static $mysql_inside        = Array(); public function __construct() {  parent::__construct(); } public static function Get_Nome(){
@@ -20,7 +17,7 @@ final Class Simulador_Pergunta_DAO extends Framework\App\Dao
         return false;
     }
     public static function Get_Sigla(){
-        return 'MA';
+        return 'SiP';
     }
     public static function Get_Engine(){
         return 'InnoDB';
@@ -52,28 +49,28 @@ final Class Simulador_Pergunta_DAO extends Framework\App\Dao
                 'linkextra'         => '' ,//0 ninguem, 1 admin, 2 todos 
             ),
             Array(
-                'mysql_titulo'      => 'artista',
+                'mysql_titulo'      => 'simulador',
                 'mysql_tipovar'     => 'int', //varchar, int, 
                 'mysql_tamanho'     => 11,
                 'mysql_null'        => true,  // nulo ?
                 'mysql_default'     => 0, // valor padrao
                 'mysql_primary'     => false,  // chave primaria
-                'mysql_estrangeira' => 'MAA.id|MAA.nome', // chave estrangeira     ligacao|apresentacao|condicao
+                'mysql_estrangeira' => 'Si.id|Si.nome', // chave estrangeira     ligacao|apresentacao|condicao
                 'mysql_autoadd'     => false,
                 'mysql_comment'     => false,
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'         => 'Musica/Artista/Artistas_Add', //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => 'Simulador/Simulador/Simuladores_Add', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => __('Artista'),
+                    'Nome'              => __('Simulador'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',
                     'formtipo'          => 'select',
                     'select'             => array(
                         'class'             => 'obrigatorio',
-                        'infonulo'          => 'Escolha um Artista',
+                        'infonulo'          => 'Escolha um Simulador',
                     )
                 )
             ),Array(
@@ -91,7 +88,7 @@ final Class Simulador_Pergunta_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => '', // //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => __('Nome do Album'),
+                    'Nome'              => __('Nome da Pergunta'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => __('Minimo 3 caracteres'),
@@ -99,84 +96,6 @@ final Class Simulador_Pergunta_DAO extends Framework\App\Dao
                     'input'             => array(
                         'tipo'              => 'text',
                         'class'             => 'obrigatorio'
-                    )
-                )
-            ),Array(
-                'mysql_titulo'      => 'compra',
-                'mysql_tipovar'     => 'varchar', //varchar, int, 
-                'mysql_tamanho'     => 100,
-                'mysql_null'        => true,
-                'mysql_default'     => false,
-                'mysql_primary'     => false,
-                'mysql_estrangeira' => false, // chave estrangeira
-                'mysql_autoadd'     => false,
-                'mysql_comment'     => false,
-                'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
-                'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
-                'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'         => '', // //0 ninguem, 1 admin, 2 todos 
-                'edicao'            => Array(
-                    'Nome'              => __('Apple Store'),
-                    'valor_padrao'      => false,
-                    'readonly'          => false,
-                    'aviso'             => '',
-                    'formtipo'          => 'input',
-                    'input'             => array(
-                        'tipo'              => 'text',
-                        'class'             => ''
-                    )
-                )
-            ),Array(
-                'mysql_titulo'      => 'lancamento',
-                'mysql_tipovar'     => 'date', //varchar, int, 
-                'mysql_tamanho'     => 10,
-                'mysql_null'        => true,
-                'mysql_default'     => '0000-00-00', // valor padrao
-                'mysql_primary'     => false,
-                'mysql_estrangeira' => false, // chave estrangeira
-                'mysql_autoadd'     => false,
-                'mysql_comment'     => false,
-                'mysql_inside'      => 'data_brasil_eua({valor})', // Funcao Executada quando o dado for inserido no banco de dados
-                'mysql_outside'     => 'data_eua_brasil({valor})', // Funcao Executada quando o dado for retirado no banco de dados
-                'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'         => '', // //0 ninguem, 1 admin, 2 todos 
-                'edicao'            => Array(
-                    'Nome'              => __('Lançamento'),
-                    'Mascara'           => 'Data',
-                    'valor_padrao'      => false,
-                    'readonly'          => false,
-                    'aviso'             => '',
-                    'formtipo'          => 'input',
-                    'input'             => array(
-                        'tipo'              => 'text',
-                        'class'             => 'obrigatorio'
-                    )
-                )
-            ),
-            Array(
-                'mysql_titulo'      => 'foto',
-                'mysql_tipovar'     => 'longtext', //varchar, int, 
-                'mysql_tamanho'     => 10000,
-                'mysql_null'        => true,  // nulo ?
-                'mysql_default'     => '', // valor padrao
-                'mysql_primary'     => false,  // chave primaria
-                'mysql_estrangeira' => false, // chave estrangeira     ligacao|apresentacao|condicao
-                'mysql_autoadd'     => false,
-                'mysql_comment'     => false,
-                'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
-                'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
-                'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
-                'edicao'            => Array(
-                    'Nome'              => __('Upload de Foto'),
-                    'valor_padrao'      => false,
-                    'readonly'          => false,
-                    'aviso'             => __('Imagens somente do tipo GIF ou JPG'),
-                    'aviso_titulo'      => 'Importante',
-                    'formtipo'          => 'upload',
-                    'upload'            => array(
-                        'tipo'              => 'Imagem',
-                        'class'             => ''
                     )
                 )
             ),
