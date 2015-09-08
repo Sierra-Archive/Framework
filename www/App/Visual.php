@@ -131,8 +131,11 @@ class Visual
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 3.1.1
     */
-    public function __construct($naozerado=true) {
+    public function __construct($naozerado=true,$template=false) {
         $imprimir = new \Framework\App\Tempo('Construcao Visual - SEM SMARTY');
+        
+        if($template!==false) $this->template_layoult = $template;
+        
         if($naozerado){
             self::$config_template    = config_template();
             $this->_Registro        = &\Framework\App\Registro::getInstacia();
@@ -821,6 +824,7 @@ class Visual
             'sistema/chosen/chosen.jquery',
             
             // Calendario
+            'sistema/moment/moment',
             'sistema/fullcalendar/fullcalendar.min',
         
         
@@ -1076,7 +1080,7 @@ class Visual
             $config = Array(
                 "url_path"      => URL_PATH,
                 'user_name'     => $this->_Acl->logado_usuario->nome,
-                'upload_foto'   => ($this->_Acl->logado_usuario->foto)?$this->_Acl->logado_usuario->foto:SISTEMA_URL.SISTEMA_DIR.'web/img/icons/clientes.png'/*$this->Show_Upload('usuario','Perfil','PerfilFoto','PerfilFoto',$foto,'usuario'.DS,$this->_Acl->logado_usuario->id,'','36','36')*/
+                'upload_foto'   => ($this->_Acl->logado_usuario->foto)?$this->_Acl->logado_usuario->foto:SISTEMA_URL.SISTEMA_DIR.'static/img/icons/clientes.png'/*$this->Show_Upload('usuario','Perfil','PerfilFoto','PerfilFoto',$foto,'usuario'.DS,$this->_Acl->logado_usuario->id,'','36','36')*/
             );
             $html = $this->renderizar_bloco('widget_usuario',$config);
         }

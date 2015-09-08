@@ -17,7 +17,20 @@ class VisualTest extends \PHPUnit_Framework_TestCase {
      * This method is called before a test is executed.
      */
     protected function setUp() {
-        $this->object = new Visual;
+        $this->object = Array();
+        
+        $diretorio = dir(ROOT_PADRAO.'templates'.DS);
+        // PRocura Arqiuvos e Anota valores usados
+        while($valor = $diretorio -> read()){
+            // Ignora Propria Pasta, pasta anterior e Arquivo Autoload
+            if($valor!='..' && $valor!='.'){
+                $lay_CONF = ROOT_PADRAO.'templates'.DS.$valor.DS.'config'.DS;
+                $this->assertTrue(file_exists($lay_CONF.'config.php'));
+                require_once ($lay_CONF.'config.php');
+                $this->object[] = new Visual(true,$valor);
+            }
+        }
+        
     }
 
     /**
@@ -33,6 +46,7 @@ class VisualTest extends \PHPUnit_Framework_TestCase {
      * @todo   Implement testJavascript_Executar().
      */
     public function testJavascript_Executar() {
+        $this->assertTrue(false);
         // Remove the following lines when you implement this test.
         $this->markTestIncomplete(
                 'This test has not been implemented yet.'

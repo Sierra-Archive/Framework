@@ -871,7 +871,7 @@ var Sierra = (function () {
             // Salva Cache
             Sessao_Gravar('Dependencias_Css',cache.join('|'));
             
-            $('head').append('<link href="'+ConfigArquivoPadrao+'web/min/?f='+script+'" rel="stylesheet" />');
+            $('head').append('<link href="'+ConfigArquivoPadrao+'static/min/?f='+script+'" rel="stylesheet" />');
         }
     };
     /**
@@ -923,7 +923,7 @@ var Sierra = (function () {
             // Salva Cache
             Sessao_Gravar('Dependencias_Js',cache.join('|'));
 
-            $('head').append('<script type="text/javascript" src="'+ConfigArquivoPadrao+'web/min/?f='+script+'"></script>');
+            $('head').append('<script type="text/javascript" src="'+ConfigArquivoPadrao+'static/min/?f='+script+'"></script>');
         }
         //eval(cod);
     };
@@ -1234,7 +1234,7 @@ var Sierra = (function () {
                                 "sButtonText": "Imprimir"
                             }
                         ],*/
-                        "sSwfPath": ConfigArquivoPadrao+"web/sistema/data-tables/swf/copy_csv_xls_pdf.swf",
+                        "sSwfPath": ConfigArquivoPadrao+"static/sistema/data-tables/swf/copy_csv_xls_pdf.swf",
                         "aButtons": [
                             {
                                 "sExtends": "copy",
@@ -2510,9 +2510,9 @@ var Sierra = (function () {
         Modelo_Upload: function (modulo, sub, acao, camada, img, dir, id, width, height, fileExt, fileDesc)
         {
             $(document.getElementById(camada)).uploadify({
-                'uploader' 		: ConfigArquivoPadrao+'web/swf/uploadify.swf',
+                'uploader' 		: ConfigArquivoPadrao+'static/swf/uploadify.swf',
                 'script'   		: ConfigArquivoPadrao+modulo+'/'+sub+'/'+acao+'_Upload/'+id,
-                'cancelImg'		: ConfigArquivoPadrao+'web/img/upload/cancel.png',
+                'cancelImg'		: ConfigArquivoPadrao+'static/img/upload/cancel.png',
                 'folder'   		: dir,
                 'fileExt'  		: fileExt,
                 'fileDesc' 		: fileDesc,

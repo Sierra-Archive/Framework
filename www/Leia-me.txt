@@ -49,7 +49,7 @@ Estrutura:
     libs/* -> Fica todas as Bibliotecas do Sistema
     mod/* -> Ficam todos os modulos do sistema
         _Sistema -> Modulo Nativo do Sistema (Não pode ser deletado)
-    web/* -> Ficam todos os js, img, css e flashs requeridos em todo o sistema
+    static/* -> Ficam todos os js, img, css e flashs requeridos em todo o sistema
 
 
 /***************************************************************************************\
@@ -276,7 +276,7 @@ mod/
 				
 				usuarios/
 				
-web/
+static/
 				css/
 				img/
 				js/

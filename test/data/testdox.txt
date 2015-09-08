@@ -1,0 +1,215 @@
+Navegador
+ [ ] Title
+
+Framework\App\Acl
+ [ ] testGet Config Publico
+ [ ] testGet Permissao Nome
+ [ ] Get permissao
+ [ ] testGet Permissao Chave
+ [ ] testGet Permissao Url
+ [ ] testUsuario GetID
+ [ ] testUsuario GetNome
+ [ ] testUsuario GetEmail
+ [ ] testUsuario GetID Static
+ [ ] testUsuario Senha Verificar
+ [ ] testUsuario Logar
+ [ ] testUsuario GetLogado
+ [ ] testUsuario GetLogado Static
+ [ ] testGrupos inserir
+ [ ] testSistema Modulos Configs Funcional
+ [ ] testSistema Modulos Configs Publico
+ [ ] testSistema Modulos Carregar Menu
+ [ ] testSistema Modulos Carregar Permissoes
+ [ ] testSistema Modulos Carregar Funcional
+ [ ] testSistema Modulos Carregar Publico
+
+Framework\App\Boot
+ [ ] Iniciar
+ [ ] Desligar
+
+Framework\App\Cache
+ [ ] Ler
+ [ ] Salvar
+ [ ] Deletar
+
+Framework\App\Conexao
+ [ ] testDao GetColunas
+ [ ] Prepare
+ [ ] Query
+ [ ] testMulti query
+ [ ] testUltimo id
+ [ ] testAutoreparo query
+ [ ] testSql Query
+ [ ] testSql Inserir
+ [ ] testSql Delete
+ [ ] testSql Update
+ [ ] testSql Select Dados
+ [ ] testSql Contar
+ [ ] testSql Select
+ [ ] testTabelas CapturaLinkadas
+ [ ] testTabelas CapturaExtrangeiras
+ [ ] testExtrangeiras Quebra
+ [ ] testTabelas GetSiglas Recolher
+ [ ] testTabelas GetCampos Recolher
+ [ ] testTabelas GetLinks Recolher
+ [ ] Load
+ [ ] Get sigla
+ [ ] test  destruct
+
+Framework\App\Controle
+ [ ] testJson Definir zerar
+ [ ] testTema Endereco
+ [ ] testEnviar Email
+ [ ] testTema Travar
+ [ ] testTema Travar GET
+ [ ] testExport Download
+ [ ] testGerador Visualizar Unidade
+ [ ] testGerador Formulario
+ [ ] testGerador Formulario Janela
+ [ ] testDAO Campos TrocaID
+ [ ] testDAO Campos TrocaNOME
+ [ ] testDAO Campos RetiraAlternados
+ [ ] testDAO Campos TrocaAlternados
+ [ ] testDAO Campos AlternadosDesabilitados
+ [ ] testMysql MudaLeitura
+ [ ] testDAO RemoveLinkExtra
+ [ ] testDAO Ext Alterar
+ [ ] testDAO Ext ADD
+ [ ] testMysql AtualizaValor
+ [ ] testMysql AtualizaValores
+ [ ] testDAO Campos Retira
+ [ ] test  destruct
+ [ ] testWidget Add
+
+Framework\App\Modelo
+ [ ] testSistema Menu
+ [ ] testCategorias Carrega Opcoes
+ [ ] testCategorias Retorna
+ [ ] testCategorias Permissoes
+ [ ] testCategorias RetornaSub
+
+Framework\App\Registro
+ [ ] Get instacia
+ [ ] Destruir
+ [ ] test  set
+ [ ] test  get
+
+Framework\App\Request
+ [ ] Get u r l
+ [ ] Get modulo
+ [ ] Get sub modulo
+ [ ] Get metodo
+ [ ] Get args
+ [ ] Is ajax
+
+Framework\App\Session
+ [ ] Init
+ [ ] Destroy
+ [ ] Set
+ [ ] Get
+
+Framework\App\Sistema_Funcoes
+ [ ] Redirect
+ [ ] testControl Arq Ext
+ [ ] testLetra Aleatoria
+ [ ] testLetra LinkDecode
+ [ ] Erro
+ [ ] Dir replace
+ [ ] testUrl Limpeza
+ [ ] Version p h p
+ [ ] testTransf Object Array
+ [ ] testPerm Modulos
+ [ ] testForm Senha Blindar
+ [ ] testSeguranca Usuario Validar
+ [ ] testSeguranca Gerar Hash
+ [ ] testSeguranca Gerar Token
+ [ ] testHTML min
+ [ ] testControl Layoult Valida Cep
+ [ ] testControl Layoult Valida Email
+ [ ] testTranf Byte Otimizado
+ [ ] testTranf Otimizado Byte
+ [ ] testTranf Segundo Tempo
+ [ ] testTranf Tempo Segundo
+ [ ] testTranf Distancia Otimizado
+ [ ] testTranf Otimizado Distancia
+ [ ] testTranf Real Float
+ [ ] testTranf Float Real
+ [ ] testTranf Porc Float
+ [ ] testTranf Float Porc
+ [ ] testModelo Data Soma
+ [ ] testGet Info Data
+ [ ] testGerar Senha
+ [ ] testDetectar Navegador
+ [ ] testGet Gps
+ [ ] testTrans Gps Number
+
+Framework\App\Tempo
+ [ ] Fechar
+ [ ] test  destruct
+ [ ] Salvar
+ [ ] Imprimir
+
+Framework\App\Visual
+ [ ] testJavascript Executar
+ [ ] testBloco Customizavel
+ [ ] testBloco Unico CriaConteudo
+ [ ] testBloco Unico CriaTitulo
+ [ ] testBloco Unico Retornar
+ [ ] testBloco Unico CriaJanela
+ [ ] testBloco Maior CriaConteudo
+ [ ] testBloco Maior CriaTitulo
+ [ ] testBloco Maior CriaJanela
+ [ ] testBloco Menor CriaConteudo
+ [ ] testBloco Menor CriaTitulo
+ [ ] testBloco Menor CriaJanela
+ [ ] Janelaajax
+ [ ] Blocar
+ [ ] testArquivos Js Dependencia
+ [ ] testLayoult Abas Carregar
+ [ ] testLayoult Home Widgets Add
+ [ ] testLayoult Home Widgets Show
+ [ ] testLayoult Abas Ativar JS
+ [ ] testWidget Assimilar
+ [ ] testWidgets Assimilar
+ [ ] Renderizar
+ [ ] testTema Elementos Btn
+ [ ] testRenderizar login
+ [ ] testRenderizar bloco
+ [ ] testLayolt Tipo
+ [ ] testGrafico gerar
+ [ ] testShow Tabela DataTable
+ [ ] testShow Tabela DataTable Massiva
+ [ ] testShow Upload
+ [ ] testUpload Janela
+ [ ] testJs Calendar Gerar
+ [ ] testJson Start
+ [ ] testJson Info Update
+ [ ] testJson Exist
+ [ ] testJson ExisteTipo
+ [ ] testJson RetiraTipo
+ [ ] testJson IncluiTipo
+ [ ] testJson Retorna
+ [ ] testCategorias ShowTab
+ [ ] testCategorias ShowSelect
+ [ ] testCategorias ShowSelect AJAX
+ [ ] testTema Tipos
+
+Framework\Classes\Form
+ [ ] Boleano multiplo
+ [ ] Select multiplo
+ [ ] testSelect Opcao Stat
+ [ ] Upload
+ [ ] testInput Novo
+ [ ] testTextArea Novo
+ [ ] testRadio Novo
+ [ ] testRadio Opcao
+ [ ] testRadio Fim
+ [ ] testCheckbox Novo
+ [ ] testCheckbox Opcao
+ [ ] testCheckbox Fim
+ [ ] testSelect Novo
+ [ ] testSelect Opcao
+ [ ] testSelect Fim
+ [ ] Addtexto
+ [ ] testRetorna form
+
