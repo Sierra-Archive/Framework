@@ -1393,7 +1393,7 @@ class Visual
                 $icone  = 'download';                
             }else if($tipo==='Visualizar'){
                 $cor    = 'success';
-                $icone  = 'eye-open';                
+                $icone  = 'eye';                
             }else if($tipo==='Zoom'){
                 $cor    = 'info';
                 $icone  = 'zoom-in';                

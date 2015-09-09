@@ -62,7 +62,7 @@
     </a>
 <?php }else if($params['Tipo']=='Visualizar'){ ?>
     <a href="<?php echo URL_PATH; echo $params['btn_add']['url']; ?>" class="btn btn-success lajax explicar-titulo" title="<?php echo $params['btn_add']['nome']; ?>" acao="">
-        <i class="fa fa-eye-open"></i>
+        <i class="fa fa-eye"></i>
     </a>
 <?php }else if($params['Tipo']=='Zoom'){ ?>
     <a href="<?php echo URL_PATH; echo $params['btn_add']['url']; ?>" class="btn btn-info lajax explicar-titulo" title="<?php echo $params['btn_add']['nome']; ?>" acao="">

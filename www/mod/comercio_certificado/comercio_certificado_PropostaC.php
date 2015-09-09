@@ -265,11 +265,11 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
         $registro = \Framework\App\Registro::getInstacia();
         $Visual = $registro->_Visual;
         // Localizar
-        $abas_id    = &Visual::$config_template['plugins']['abas_id'];
+        $abas_id    = &\Framework\App\Visual::$config_template['plugins']['abas_id'];
         $conteudo = array(
             'location'  =>  '#'.$abas_id.'1',
             'js'        =>  '',
-            'html'      =>  usuario_Controle::Static_usuariolistar(Array(4,'Clientes'),false,false)
+            'html'      =>  usuario_Controle::Static_usuariolistar(Array(CFG_TEC_CAT_ID_CLIENTES,'Clientes'),false,false)
         );
         $Visual->Json_IncluiTipo('Conteudo',$conteudo);
     }
@@ -295,7 +295,7 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
         }else{
             $proposta_num = $proposta_num->id.'/'.date('y');
         }
-        if($data_aceita==='0000-00-00 00:00:00' || $data_aceita==='0000-00-00'){
+        if($data_aceita==='0000-00-00 00:00:00' || $data_aceita==='0000-00-00' || $data_aceita===''){
             $proposta_num = $proposta_num.' - 1';
         }
         self::mysql_AtualizaValor($proposta, 'num_proposta', $proposta_num);
@@ -345,7 +345,7 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
         $proposta = $this->_Modelo->db->Sql_Select('Comercio_Certificado_Proposta', Array('id'=>$id));
         // Atualiza Proposta de Numero denovo só por segurança
         $proposta_num = explode(' - ',$proposta->num_proposta);
-        if($data_aceita==='0000-00-00 00:00:00' || $data_aceita==='0000-00-00'){
+        if($data_aceita==='0000-00-00 00:00:00' || $data_aceita==='0000-00-00' || $data_aceita===''){
             $proposta_num[1] = $proposta_num[1]+1;
             $proposta_num = $proposta_num[0].' - '.$proposta_num[1];
             $novoregistro = 1;
@@ -469,7 +469,7 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
         $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
         Comercio_Certificado_PropostaControle::RecarregaLocalizar();
     }
-    public function Periodicas_Add($cliente,$produto,$proposta,$data){
+    protected function Periodicas_Add($cliente,$produto,$proposta,$data){
         $produto    = (int) $produto;
         $cliente    = (int) $cliente;
         $proposta   = (int) $proposta;
@@ -480,16 +480,21 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
         $data = explode('/',$data);
         if(is_array($periodicas) && !empty($periodicas)){
             foreach($periodicas as &$valor){
-                $data[1] = $data[1]+$valor->meses;
-                if($data[1]>12){
-                    $data[1] = $data[1]-12;
-                    $data[2] = $data[2]+1;
-                }
+                
                 $objeto = new \Comercio_Certificado_AuditoriaPeriodica_DAO();
                 $objeto->idcliente  = $cliente;
                 $objeto->idproduto  = $produto;
                 $objeto->idproposta = $proposta;
-                $objeto->data = $data[0].'/'.$data[1].'/'.$data[2];
+                if(isset($data[2])){
+                    $data[1] = $data[1]+$valor->meses;
+                    if($data[1]>12){
+                        $data[1] = $data[1]-12;
+                        $data[2] = $data[2]+1;
+                    }
+                    $objeto->data = $data[0].'/'.$data[1].'/'.$data[2];
+                }else{
+                    $objeto->data = '00/00/0000';
+                }
                 $this->_Modelo->db->Sql_Inserir($objeto);
             }
         }
