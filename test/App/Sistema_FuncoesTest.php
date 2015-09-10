@@ -44,10 +44,9 @@ class Sistema_FuncoesTest extends \PHPUnit_Framework_TestCase {
      * @todo   Implement testControl_Arq_Ext().
      */
     public function testControl_Arq_Ext() {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-                'This test has not been implemented yet.'
-        );
+        $this->assertEquals('jpeg', Sistema_Funcoes::Control_Arq_Ext('jpe'));
+        $this->assertEquals('mpeg', Sistema_Funcoes::Control_Arq_Ext('mpe'));
+        $this->assertEquals('tiff', Sistema_Funcoes::Control_Arq_Ext('tif'));
     }
 
     /**
@@ -56,9 +55,11 @@ class Sistema_FuncoesTest extends \PHPUnit_Framework_TestCase {
      */
     public function testLetra_Aleatoria() {
         // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-                'This test has not been implemented yet.'
-        );
+        $this->assertFalse(is_numeric(Sistema_Funcoes::Letra_Aleatoria(rand())));
+        $this->assertFalse(is_null(Sistema_Funcoes::Letra_Aleatoria(rand())));
+        $this->assertFalse(is_array(Sistema_Funcoes::Letra_Aleatoria(rand())));
+        $this->assertTrue(is_string(Sistema_Funcoes::Letra_Aleatoria(rand())));
+        $this->assertEquals(1, strlen(Sistema_Funcoes::Letra_Aleatoria(rand())));
     }
 
     /**
@@ -66,10 +67,12 @@ class Sistema_FuncoesTest extends \PHPUnit_Framework_TestCase {
      * @todo   Implement testLetra_LinkDecode().
      */
     public function testLetra_LinkDecode() {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-                'This test has not been implemented yet.'
-        );
+        $this->assertEquals('À', Sistema_Funcoes::Letra_Aleatoria('%C3%80'));
+        $this->assertEquals('Á', Sistema_Funcoes::Letra_Aleatoria('%C3%81'));
+        $this->assertEquals('ó', Sistema_Funcoes::Letra_Aleatoria('%C3%B3'));
+        $this->assertEquals('%C3%80', Sistema_Funcoes::Letra_Aleatoria('À',true));
+        $this->assertEquals('%C3%81', Sistema_Funcoes::Letra_Aleatoria('Á',true));
+        $this->assertEquals('%C3%B3', Sistema_Funcoes::Letra_Aleatoria('ó',true));
     }
 
     /**
@@ -88,10 +91,8 @@ class Sistema_FuncoesTest extends \PHPUnit_Framework_TestCase {
      * @todo   Implement testDirReplace().
      */
     public function testDirReplace() {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-                'This test has not been implemented yet.'
-        );
+        $this->assertEquals('pasta/pasta/pasta', Sistema_Funcoes::DirReplace('pasta-pasta-pasta'));
+        $this->assertEquals('pasta-pasta-pasta', Sistema_Funcoes::DirReplace('pasta/pasta/pasta'));
     }
 
     /**
@@ -99,10 +100,8 @@ class Sistema_FuncoesTest extends \PHPUnit_Framework_TestCase {
      * @todo   Implement testUrl_Limpeza().
      */
     public function testUrl_Limpeza() {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-                'This test has not been implemented yet.'
-        );
+        $this->assertEquals('php.net/manual/pt_BR/function.rand.php', Sistema_Funcoes::DirReplace('http://php.net/manual/pt_BR/function.rand.php'));
+        $this->assertEquals('ricardosierra.com.br', Sistema_Funcoes::DirReplace('http://www.ricardosierra.com.br'));
     }
 
     /**

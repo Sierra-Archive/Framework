@@ -22,7 +22,7 @@ abstract class Controle
     protected $sistema_linguagem = SISTEMA_LINGUAGEM;
     
     protected $layoult_zerar = 'naousado'; // 
-    public static $config_template;
+    public $config_template;
     
     // Endereco
     protected $layoult_endereco_alterado = false; // 
@@ -2481,8 +2481,8 @@ readfile($link);*/
 
             }
             // Caso Configurado Colocar Busca
-            if(TEMA_BUSCAR===true && isset(self::$config_template['Buscar'])){
-                $endereco_html .= self::$config_template['Buscar'];
+            if(TEMA_BUSCAR===true && isset($this->config_template['Buscar'])){
+                $endereco_html .= $this->config_template['Buscar'];
             }
             // cria form se nao tiver logado
             if(TEMA_LOGIN===false && $this->_Acl->logado===false && $this->_request->getSubModulo()!=='erro' && $this->_request->getSubModulo()!=='Recurso' && $this->_request->getSubModulo()!=='localidades'){

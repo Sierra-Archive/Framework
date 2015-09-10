@@ -18,7 +18,6 @@ class AutoLoader {
                 // save the class name / path of a .php file found
                 $className = substr($file->getFilename(), 0, -4);
                 AutoLoader::registerClass($className, $file->getPathname());
-                var_dump($className, $file->getPathname());
             }
         }
     }

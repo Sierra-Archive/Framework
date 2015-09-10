@@ -1,5 +1,5 @@
 <?php
-function config_template(){
+function atls_config(){
     return Array(
         'Buscar'           => '<li class="pull-right search-wrap">
             <form class="hidden-xs formajax"  id="form_Sistema_Busca" action="'.URL_PATH.'_Sistema/Principal/Busca">

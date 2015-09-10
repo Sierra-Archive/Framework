@@ -11,13 +11,20 @@ class BootTest extends \PHPUnit_Framework_TestCase {
      * @var Boot
      */
     protected $object;
+    protected $_Registro;
 
     /**
      * Sets up the fixture, for example, opens a network connection.
      * This method is called before a test is executed.
      */
     protected function setUp() {
-        $this->object = new Boot;
+        $this->_Registro    = &\Framework\App\Registro::getInstacia();
+        $this->object     = &$this->_Registro->_Boot;
+        
+        // Inicializa Classes caso ainda nao tenham sido
+        if($this->object===false){
+            $this->_Registro->_Boot = new Boot();
+        }
     }
 
     /**

@@ -34,7 +34,7 @@ class Visual
      * Armazena o Arquivo de COnfiguracoes do Template dentro dela
      * @var function 
      */
-    public static $config_template;
+    public $config_template = false;
     
     // Lang
     /**
@@ -137,7 +137,8 @@ class Visual
         if($template!==false) $this->template_layoult = $template;
         
         if($naozerado){
-            self::$config_template    = config_template();
+            $configtemplate = $this->template_layoult.'_config';
+            $this->config_template    = $configtemplate();
             $this->_Registro        = &\Framework\App\Registro::getInstacia();
             $this->_Acl             = &$this->_Registro->_Acl;
         }
@@ -783,7 +784,7 @@ class Visual
     private function Sistema_Extras(){
         
         // Pega Config
-        $temaconfig         = &self::$config_template['links_js'];
+        $temaconfig         = &$this->config_template['links_js'];
         // Carrega Javascripts
         $array_js = Array(
             // Linguagem
@@ -1013,7 +1014,7 @@ class Visual
      * @version 3.1.1
      */
     private function retornablocos() {
-        $temaconfig = &self::$config_template['plugins'];
+        $temaconfig = &$this->config_template['plugins'];
         $tipo       = 'simples';
         $html       = '';
         $html1      = '';
@@ -1107,7 +1108,7 @@ class Visual
      * @version 3.1.1
      */
     private function js_local (){
-        $temaconfig = &self::$config_template['javascript'];
+        $temaconfig = &$this->config_template['javascript'];
         // Traduz pra js
         if(SQL_MAIUSCULO===true){
             $maiusculo = 'true';
@@ -1149,9 +1150,9 @@ class Visual
      * @version 3.1.1
      */
     public static function Layoult_Abas_Carregar($id,$html='',$ativar=true){
-        $abas_id            = &self::$config_template['plugins']['abas_id'];
         $registro           = &\Framework\App\Registro::getInstacia();
         $Visual             = $registro->_Visual;
+        $abas_id            = &$Visual->config_template['plugins']['abas_id'];
         if($html!='' && isset($html)){
             $js = ($ativar)?Visual::Layoult_Abas_Ativar_JS($id):'';
             
@@ -1221,7 +1222,8 @@ class Visual
      * @version 3.1.1
      */
     public static function Layoult_Abas_Ativar_JS($numero){
-        $temaconfig         = &self::$config_template['plugins']['abas_ativar'];
+        $Visual             = $registro->_Visual;
+        $temaconfig         = &$Visual->config_template['plugins']['abas_ativar'];
         return $temaconfig($numero);
     }
     /**
@@ -2002,15 +2004,8 @@ class Visual
             $this->Json_Start();
         }
         
-        
-        
-        
-        
-        
-        
-                        
         // Pega Conteudo Alocado e Coloca Aqui
-        $configuracao_layoult = config_template();
+        $configuracao_layoult = &$this->config_template;
 
         if($configuracao_layoult['camada_unica']!==false){
             $html = $this->Bloco_Unico_Retornar();

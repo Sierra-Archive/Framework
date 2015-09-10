@@ -68,7 +68,7 @@ class comercio_certificado_Controle extends \Framework\App\Controle
         $registro   = &\Framework\App\Registro::getInstacia();
         $Modelo     = $registro->_Modelo;
         $Visual     = $registro->_Visual;
-        $abas_id    = &\Framework\App\Visual::$config_template['plugins']['abas_id'];
+        $abas_id    = &$Visual->config_template['plugins']['abas_id'];
         if($id==0 || !isset($id)){
             $id = (int) $this->_Acl->Usuario_GetID();
         }else{

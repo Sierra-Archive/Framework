@@ -1,5 +1,5 @@
 <?php
-function config_template(){
+function turboadmin_config(){
     return Array(
         'plugins'           => Array(
             'abas_inverter'         => true,

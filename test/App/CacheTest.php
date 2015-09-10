@@ -11,13 +11,20 @@ class CacheTest extends \PHPUnit_Framework_TestCase {
      * @var Cache
      */
     protected $object;
+    protected $_Registro;
 
     /**
      * Sets up the fixture, for example, opens a network connection.
      * This method is called before a test is executed.
      */
     protected function setUp() {
-        $this->object = new Cache;
+        $this->_Registro    = &\Framework\App\Registro::getInstacia();
+        $this->object     = &$this->_Registro->_Cache;
+        
+        // Inicializa Classes caso ainda nao tenham sido
+        if($this->object===false){
+            $this->_Registro->_Cache = new Cache();
+        }
     }
 
     /**

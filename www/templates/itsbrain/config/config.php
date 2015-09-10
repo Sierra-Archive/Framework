@@ -1,5 +1,5 @@
 <?php
-function config_template(){
+function itsbrain_config(){
     return Array(
         'plugins'           => Array(
             'abas_inverter'         => false,

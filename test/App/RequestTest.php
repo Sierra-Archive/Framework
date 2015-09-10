@@ -11,13 +11,20 @@ class RequestTest extends \PHPUnit_Framework_TestCase {
      * @var Request
      */
     protected $object;
+    protected $_Registro;
 
     /**
      * Sets up the fixture, for example, opens a network connection.
      * This method is called before a test is executed.
      */
     protected function setUp() {
-        $this->object = new Request;
+        $this->_Registro    = &\Framework\App\Registro::getInstacia();
+        $this->object     = &$this->_Registro->_Request;
+        
+        // Inicializa Classes caso ainda nao tenham sido
+        if($this->object===false){
+            $this->_Registro->_Conexao = new Request();
+        }
     }
 
     /**

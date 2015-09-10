@@ -76,6 +76,11 @@ Class Sistema_Funcoes {
      */
     public static function Letra_Aleatoria($numero){
         $string = 'ABCDEFGHIJKLMNOPQUVYXWZ';
+        $tam = strlen($string);
+        
+        // Se for maior que as Ocorrencias, Retorna ao começo
+        while($tam>$numero) $numero = $numero - $tam;
+        
         return $string[$numero];
     }
     /**
