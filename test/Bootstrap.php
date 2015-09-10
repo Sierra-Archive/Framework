@@ -1,8 +1,5 @@
 <?php
 error_reporting(-1);
-include_once('AutoLoader.php');
-// Register the directory to your include files
-AutoLoader::registerDirectory('../www');
 
 define('DS',DIRECTORY_SEPARATOR);
 define('US', '/'); // Divisor de URL
@@ -13,3 +10,7 @@ define("APP_DATA"       , date("Y-m-d"));
 define("APP_HORA"       , date("Y-m-d H:i:s"));
 define("APP_DATA_BR"    , date("d/m/Y"));
 define("APP_HORA_BR"    , date("d/m/Y H:i:s"));
+
+include_once('AutoLoader.php');
+// Register the directory to your include files
+AutoLoader::registerDirectory('../www');

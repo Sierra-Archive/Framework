@@ -793,6 +793,7 @@ class Form
     * @version 3.1.1
     */
     public function retorna_form($botao=''){
+        // Salvar
         ++self::$tab_index;
         $config = Array(
             'Tipo'      => 'Final',
@@ -803,6 +804,7 @@ class Form
             )
         );
         $this->form .= $this->_Visual->renderizar_bloco('template_form',$config);
+        
         return $this->form;
     }
 }

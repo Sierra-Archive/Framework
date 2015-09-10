@@ -27,6 +27,7 @@ class Acl{
     private $_Registro;
     private $_db;
     private $_Request;
+    private $_Cache;
     
     // Configuracoes
     public      static  $config = false;   
@@ -47,13 +48,25 @@ class Acl{
      * @version 3.1.1
      */
     public function __construct($id = false) {
-        $tempo = new \Framework\App\Tempo('ACl');   
+        $tempo = new \Framework\App\Tempo('Acl - Construct');   
         
         // Recupera Registro
         $this->_Registro    = &\Framework\App\Registro::getInstacia();
         $this->_db          = &$this->_Registro->_Conexao;
         $this->_Request     = &$this->_Registro->_Request;
-        $tempo = new \Framework\App\Tempo('Acl - Construct');
+        $this->_Cache     = &$this->_Registro->_Cache;
+        
+        // Inicializa Classes caso ainda nao tenham sido
+        if($this->_db===false){
+            $this->_Registro->_Conexao = new \Framework\App\Conexao();
+        }
+        if($this->_Request===false){
+            $this->_Registro->_Request = new \Framework\App\Request();
+        }
+        if($this->_Cache===false){
+            $this->_Registro->_Cache = new \Framework\App\Cache();
+        }
+        
         if($id!==false){
             // Caso esteja carregando de outro usuario
             $this->_id = (int) $id;
@@ -907,9 +920,9 @@ class Acl{
      * @version 3.1.1
      */
     static function grupos_inserir(){
-        
+        $db          = &$this->_Registro->_Conexao;
         // Caso Categoria Não existe, continua
-        $sql = $this->_db->query(
+        $sql = $db->query(
             'SELECT * FROM '.MYSQL_CAT.' C LEFT JOIN '.MYSQL_CAT_ACESSO.' CA '.
             'ON C.id WHERE CA.mod_acc=\'usuario_grupo\''
         ,true);
@@ -919,36 +932,36 @@ class Acl{
             $manutencao = new \Framework\Classes\SierraTec_Manutencao();
             
             // Gerais
-            $this->_db->query(
+            $db->query(
                 'INSERT INTO '.MYSQL_CAT.' (log_date_add,servidor,parent,nome,deletado)
                 VALUES (\''.APP_HORA.'\',\''.SRV_NAME_SQL.'\',0,\'Gerais\',0);'
             ,true);
-            $gerais_id = (int) $this->_db->ultimo_id();
-            $cadastrar = $this->_db->query(
+            $gerais_id = (int) $db->ultimo_id();
+            $cadastrar = $db->query(
                 'INSERT INTO '.MYSQL_CAT_ACESSO.' (log_date_add,servidor,categoria,mod_acc)
                 VALUES (\''.APP_HORA.'\',\''.SRV_NAME_SQL.'\','.$gerais_id.',\'usuario_grupo\');'
             ,true);
             $manutencao->Alterar_Config('CFG_TEC_CAT_ID_ADMIN',$gerais_id);
             
             // Clientes
-            $this->_db->query(
+            $db->query(
                 'INSERT INTO '.MYSQL_CAT.' (log_date_add,servidor,parent,nome,deletado)
                 VALUES (\''.APP_HORA.'\',\''.SRV_NAME_SQL.'\',0,\'Clientes\',0);'
             ,true);
-            $clientes_id = (int) $this->_db->ultimo_id();
-            $cadastrar = $this->_db->query(
+            $clientes_id = (int) $db->ultimo_id();
+            $cadastrar = $db->query(
                 'INSERT INTO '.MYSQL_CAT_ACESSO.' (log_date_add,servidor,categoria,mod_acc)
                 VALUES (\''.APP_HORA.'\',\''.SRV_NAME_SQL.'\','.$clientes_id.',\'usuario_grupo\');'
             ,true);
             $manutencao->Alterar_Config('CFG_TEC_CAT_ID_CLIENTES',$clientes_id);
             
             // Funcionarios
-            $this->_db->query(
+            $db->query(
                 'INSERT INTO '.MYSQL_CAT.' (log_date_add,servidor,parent,nome,deletado)
                 VALUES (\''.APP_HORA.'\',\''.SRV_NAME_SQL.'\',0,\'Funcionários\',0);'
             ,true);
-            $funcionarios_id = (int) $this->_db->ultimo_id();
-            $cadastrar = $this->_db->query(
+            $funcionarios_id = (int) $db->ultimo_id();
+            $cadastrar = $db->query(
                 'INSERT INTO '.MYSQL_CAT_ACESSO.' (log_date_add,servidor,categoria,mod_acc)
                 VALUES (\''.APP_HORA.'\',\''.SRV_NAME_SQL.'\','.$funcionarios_id.',\'usuario_grupo\');'
             ,true);
@@ -961,7 +974,7 @@ class Acl{
         }
         
         
-        $grupos = $this->_db->Sql_Select('Sistema_Grupo');
+        $grupos = $db->Sql_Select('Sistema_Grupo');
         if($grupos===false){
             
             // Admin Master
@@ -969,35 +982,35 @@ class Acl{
             //$grupo->id = 1;
             $grupo->nome = __('Admin Master');
             $grupo->categoria = $gerais_id;
-            $this->_db->Sql_Inserir($grupo);
+            $db->Sql_Inserir($grupo);
             
             // Admin
             $grupo = new \Sistema_Grupo_DAO();
             //$grupo->id = 2;
             $grupo->nome = __('Admin');
             $grupo->categoria = $gerais_id;
-            $this->_db->Sql_Inserir($grupo);
+            $db->Sql_Inserir($grupo);
             
             // Cliente
             $grupo = new \Sistema_Grupo_DAO();
             //$grupo->id = 3;
             $grupo->nome = \Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Cliente_nome');
             $grupo->categoria = $clientes_id;
-            $this->_db->Sql_Inserir($grupo);
+            $db->Sql_Inserir($grupo);
             
             // Funcionario
             $grupo = new \Sistema_Grupo_DAO();
             //$grupo->id = 3;
             $grupo->nome = __('Funcionário');
             $grupo->categoria = $funcionarios_id;
-            $this->_db->Sql_Inserir($grupo);
+            $db->Sql_Inserir($grupo);
             
             // Newsletter
             $grupo = new \Sistema_Grupo_DAO();
             //$grupo->id = 4;
             $grupo->nome = __('Newsletter');
             $grupo->categoria = $funcionarios_id;
-            $this->_db->Sql_Inserir($grupo);
+            $db->Sql_Inserir($grupo);
         }
         
         
@@ -1040,11 +1053,12 @@ class Acl{
      */
     public static function Sistema_Modulos_Configs_Publico($chave=false){
         if($chave===false || $chave=='') return false;
+        $db          = &$this->_Registro->_Conexao;
         if(self::$Sis_Config_Publico===false){
-            self::$Sis_Config_Publico = $this->_db->Sql_Select('Sistema_Config');
+            self::$Sis_Config_Publico = $db->Sql_Select('Sistema_Config');
             if(self::$Sis_Config_Publico===false){
                 $this->Sistema_Config_Publico_InserirPadrao();
-                self::$Sis_Config_Publico = $this->_db->Sql_Select('Sistema_Config');
+                self::$Sis_Config_Publico = $db->Sql_Select('Sistema_Config');
             }
         }
         $percorrer  = &self::$Sis_Config_Publico[$chave]['Valor'];
@@ -1133,6 +1147,11 @@ class Acl{
         $tempo = new \Framework\App\Tempo('\Framework\App\Acl::Sistema_Modulos_Configs->Funcional');
         // ordena na ordem correta
         $registro = \Framework\App\Registro::getInstacia();
+        // Inicializa Caso nao Tenha Sido
+        if($registro->_Cache===false){
+            $registro->_Cache = new \Framework\App\Cache();
+        }
+        // Verifica se Tem Cache
         $funcional = $registro->_Cache->Ler('Config_Funcional');
         if (!$funcional) {
             $ponteiro   = Array('_Sistema' => '_Sistema');

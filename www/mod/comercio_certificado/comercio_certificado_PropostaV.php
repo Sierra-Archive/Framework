@@ -27,24 +27,60 @@ class comercio_certificado_PropostaVisual extends comercio_certificado_Visual
         }
         $html .= '<h2>Dados da Proposta</h2>';
     
-        if($proposta->idcliente2!=='')  $html .= '<p><label style="width:150px;">Cliente</label>: '.$proposta->idcliente2.'</p>';
-        if($proposta->idproduto2!=='')  $html .= '<p><label style="width:150px;">Produto</label>: '.$proposta->idproduto2.'</p>';
-        if($proposta->num_proposta!=='')  $html .= '<p><label style="width:150px;">Número da Proposta</label>: '.$proposta->num_proposta.'</p>';
-        if($proposta->num_contrato!=='')  $html .= '<p><label style="width:150px;">Número do Contrato</label>: '.$proposta->num_contrato.'</p>';
-        if($proposta->num_certificado!=='')  $html .= '<p><label style="width:150px;">Número do Certificado</label>: '.$proposta->num_certificado.'</p>';
-        if($proposta->validade!=='')  $html .= '<p><label style="width:150px;">Data de Validade</label>: '.$proposta->validade.'</p>';
-        if($proposta->data_aceita_proposta!=='')  $html .= '<p><label style="width:150px;">Data de Aceitação da Proposta</label>: '.$proposta->data_aceita_proposta.'</p>';
-        if($proposta->data_certificado!=='')  $html .= '<p><label style="width:150px;">Data de Certificação</label>: '.$proposta->data_certificado.'</p>';
-        if($proposta->data_envio_contrato!='')  $html .= '<p><label style="width:150px;">Data da Assinatura do Contrato</label>: '.$proposta->data_envio_contrato.'</p>';
-        if($proposta->data_dev_contrato!=='')  $html .= '<p><label style="width:150px;">Envio ao Cliente</label>: '.$proposta->data_dev_contrato.'</p>';
-        if($proposta->data_envio_cert!=='')  $html .= '<p><label style="width:150px;">Data de Envio do Certificado</label>: '.$proposta->data_envio_cert.'</p>';
-        if($proposta->data_imetro!=='')  $html .= '<p><label style="width:150px;">Data Imetro</label>: '.$proposta->data_imetro.'</p>';
-        if($proposta->data_comissao!=='')  $html .= '<p><label style="width:150px;">Data da Comissão</label>: '.$proposta->data_comissao.'</p>';
-        if(isset($proposta->produto_valor_contrato) && $proposta->produto_valor_contrato!=='')  $html .= '<p><label style="width:150px;">Valor do Contrato do Produto</label>: '.$proposta->$produto_valor_contrato.'</p>';
-        if($proposta->produto_valor_entrada!=='')  $html .= '<p><label style="width:150px;">Valor de Entrada do Produto</label>: '.$proposta->produto_valor_entrada.'</p>';
-        if($proposta->produto_num_parcelas!=='')  $html .= '<p><label style="width:150px;">Números de Parcelas do Produto</label>: '.$proposta->produto_num_parcelas.'</p>';
-        if($proposta->produto_dia_faturamento!=='')  $html .= '<p><label style="width:150px;">Dia do Faturamento</label>: '.$proposta->produto_dia_faturamento.'</p>';
-        if($proposta->valor_mensal!=='')  $html .= '<p><label style="width:150px;">Valor Mensal </label>: '.$proposta->valor_mensal.'</p>';
+        if($proposta->idcliente2!==''){
+            $html .= '<p><label style="width:150px;">Cliente</label>: '.$proposta->idcliente2.'</p>';
+        }
+        if($proposta->idproduto2!==''){
+            $html .= '<p><label style="width:150px;">Produto</label>: '.$proposta->idproduto2.'</p>';
+        }
+        if($proposta->num_proposta!==''){
+            $html .= '<p><label style="width:150px;">Número da Proposta</label>: '.$proposta->num_proposta.'</p>';
+        }
+        if($proposta->num_contrato!==''){
+            $html .= '<p><label style="width:150px;">Número do Contrato</label>: '.$proposta->num_contrato.'</p>';
+        }
+        if($proposta->num_certificado!==''){
+            $html .= '<p><label style="width:150px;">Número do Certificado</label>: '.$proposta->num_certificado.'</p>';
+        }
+        if($proposta->validade!==''){
+            $html .= '<p><label style="width:150px;">Data de Validade</label>: '.$proposta->validade.'</p>';
+        }
+        if($proposta->data_aceita_proposta!==''){
+            $html .= '<p><label style="width:150px;">Data de Aceitação da Proposta</label>: '.$proposta->data_aceita_proposta.'</p>';
+        }
+        if($proposta->data_certificado!==''){
+            $html .= '<p><label style="width:150px;">Data de Certificação</label>: '.$proposta->data_certificado.'</p>';
+        }
+        if($proposta->data_envio_contrato!=''){
+            $html .= '<p><label style="width:150px;">Data da Assinatura do Contrato</label>: '.$proposta->data_envio_contrato.'</p>';
+        }
+        if($proposta->data_dev_contrato!==''){
+            $html .= '<p><label style="width:150px;">Envio ao Cliente</label>: '.$proposta->data_dev_contrato.'</p>';
+        }
+        if($proposta->data_envio_cert!==''){
+            $html .= '<p><label style="width:150px;">Data de Envio do Certificado</label>: '.$proposta->data_envio_cert.'</p>';
+        }
+        if($proposta->data_imetro!==''){
+            $html .= '<p><label style="width:150px;">Data Imetro</label>: '.$proposta->data_imetro.'</p>';
+        }
+        if($proposta->data_comissao!==''){
+            $html .= '<p><label style="width:150px;">Data da Comissão</label>: '.$proposta->data_comissao.'</p>';
+        }
+        if(isset($proposta->produto_valor_contrato) && $proposta->produto_valor_contrato!==''){
+            $html .= '<p><label style="width:150px;">Valor do Contrato do Produto</label>: '.$proposta->produto_valor_contrato.'</p>';
+        }
+        if($proposta->produto_valor_entrada!==''){
+            $html .= '<p><label style="width:150px;">Valor de Entrada do Produto</label>: '.$proposta->produto_valor_entrada.'</p>';
+        }
+        if($proposta->produto_num_parcelas!==''){
+            $html .= '<p><label style="width:150px;">Números de Parcelas do Produto</label>: '.$proposta->produto_num_parcelas.'</p>';
+        }
+        if($proposta->produto_dia_faturamento!==''){
+            $html .= '<p><label style="width:150px;">Dia do Faturamento</label>: '.$proposta->produto_dia_faturamento.'</p>';
+        }
+        if($proposta->valor_mensal!==''){
+            $html .= '<p><label style="width:150px;">Valor Mensal </label>: '.$proposta->valor_mensal.'</p>';
+        }
         
         '<div class="space15"></div>';
         /*if($proposta->obs!=''){

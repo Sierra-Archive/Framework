@@ -139,7 +139,11 @@ spl_autoload_register('__autoload'      );
 
 
 // Continua Configurações
-define('SRV_NAME', \Framework\App\Sistema_Funcoes::Url_Limpeza($_SERVER['SERVER_NAME']));
+if(isset($_SERVER['SERVER_NAME'])){
+    define('SRV_NAME', \Framework\App\Sistema_Funcoes::Url_Limpeza($_SERVER['SERVER_NAME']));
+}else{
+    define('SRV_NAME', 'localhost');
+}
 // CArrega Config
 if(
         file_exists(INI_PATH_TEMP.SRV_NAME.'/config.php') &&
@@ -401,7 +405,11 @@ require_once    APP_PATH . 'Funcao.php';
 /**
  * URL DO SERVIDOR
  */
-define('SERVER_URL',           $_SERVER['REQUEST_URI']);
+if(isset($_SERVER['REQUEST_URI'])){
+    define('SERVER_URL',           $_SERVER['REQUEST_URI']);
+}else{
+    define('SERVER_URL',           'localhost');
+}
 
 // SE TIVER CONFIGURACAO GERADA PELO FRAMEWORK ABRE
 if(file_exists(INI_PATH.SRV_NAME.DS.'_temp.php')){
