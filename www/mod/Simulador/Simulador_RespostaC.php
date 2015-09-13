@@ -63,11 +63,11 @@ class Simulador_RespostaControle extends Simulador_Controle
             }else{
                 if($pergunta===false || $pergunta==0){
                     $tabela['Pergunta'][$i]   = $valor->pergunta2;
-                    $view_url   = 'Simulador/Video/Videos/'.$valor->simulador.'/'.$valor->pergunta.'/';
+                    //$view_url   = 'Simulador/Video/Videos/'.$valor->simulador.'/'.$valor->pergunta.'/';
                     $edit_url   = 'Simulador/Resposta/Respostas_Edit/'.$valor->id.'/'.$valor->simulador.'/';
                     $del_url    = 'Simulador/Resposta/Respostas_Del/'.$valor->id.'/'.$valor->simulador.'/';
                 }else{
-                    $view_url   = 'Simulador/Video/Videos/'.$valor->simulador.'/'.$valor->pergunta.'/'.$valor->id.'/';
+                    //$view_url   = 'Simulador/Video/Videos/'.$valor->simulador.'/'.$valor->pergunta.'/'.$valor->id.'/';
                     $edit_url   = 'Simulador/Resposta/Respostas_Edit/'.$valor->id.'/'.$valor->simulador.'/'.$valor->pergunta.'/';
                     $del_url    = 'Simulador/Resposta/Respostas_Del/'.$valor->id.'/'.$valor->simulador.'/'.$valor->pergunta.'/'.$valor->i.'/';
                 }
@@ -82,7 +82,7 @@ class Simulador_RespostaControle extends Simulador_Controle
                 $status = 1;
                 $texto = __('Ativado');
             }
-            $tabela['Funções'][$i]          = $Visual->Tema_Elementos_Btn('Visualizar' ,Array('Visualizar Videos da Resposta'    ,$view_url    ,'')).
+            $tabela['Funções'][$i]          = //$Visual->Tema_Elementos_Btn('Visualizar' ,Array('Visualizar Videos da Resposta'    ,$view_url    ,'')).
                                               '<span id="status'.$valor->id.'">'.$Visual->Tema_Elementos_Btn('Status'.$status     ,Array($texto        ,'Simulador/Resposta/Status/'.$valor->id.'/'    ,'')).'</span>'.
                                               $Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Resposta'        ,$edit_url    ,'')).
                                               $Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Resposta'       ,$del_url     ,'Deseja realmente deletar essa Resposta ?'));
@@ -122,17 +122,17 @@ class Simulador_RespostaControle extends Simulador_Controle
             if($pergunta!==false){
                 $pergunta = (int) $pergunta;
                 if($pergunta==0){
-                    $resposta_registro = $this->_Modelo->db->Sql_Select('Simulador_Pergunta_Reposta',Array(),1,'id DESC');
+                    $resposta_registro = $this->_Modelo->db->Sql_Select('Simulador_Pergunta_Resposta',Array(),1,'id DESC');
                     if($resposta_registro===false){
                         throw new \Exception('Essa Resposta não existe', 404);
                     }
-                    $pergunta_registro = $this->_Modelo->db->Sql_Select('Pergunta',Array('id'=>$resposta_registro->pergunta,'simulador'=>$simulador),1);
+                    $pergunta_registro = $this->_Modelo->db->Sql_Select('Simulador_Pergunta',Array('id'=>$resposta_registro->pergunta,'simulador'=>$simulador),1);
                     if($pergunta_registro===false){
                         throw new \Exception('Não existe nenhum pergunta com esse id nesse Simulador', 404);
                     }
                     $pergunta = $pergunta_registro->id;
                 }else{
-                    $pergunta_registro = $this->_Modelo->db->Sql_Select('Pergunta',Array('id'=>$pergunta,'simulador'=>$simulador),1);
+                    $pergunta_registro = $this->_Modelo->db->Sql_Select('Simulador_Pergunta',Array('id'=>$pergunta,'simulador'=>$simulador),1);
                     if($pergunta_registro===false){
                         throw new \Exception('Esse Pergunta não existe.', 404);
                     }
@@ -174,7 +174,7 @@ class Simulador_RespostaControle extends Simulador_Controle
                 'Link'      => 'Simulador/Resposta/Respostas'.$url_add,
             )
         )));
-        $respostas = $this->_Modelo->db->Sql_Select('Simulador_Pergunta_Reposta',$where);
+        $respostas = $this->_Modelo->db->Sql_Select('Simulador_Pergunta_Resposta',$where);
         if($respostas!==false && !empty($respostas)){
             list($tabela,$i) = self::Respostas_Tabela($respostas,$simulador,$pergunta);
             $titulo = $titulo.' ('.$i.')';
@@ -215,7 +215,7 @@ class Simulador_RespostaControle extends Simulador_Controle
         // Carrega Config
         $formid     = 'form_Simulador_Resposta_Respostas';
         $formbt     = __('Salvar');
-        $campos     = Simulador_Pergunta_Reposta_DAO::Get_Colunas();
+        $campos     = Simulador_Pergunta_Resposta_DAO::Get_Colunas();
         if($simulador===false){
             $formlink   = 'Simulador/Resposta/Respostas_Add2';
             $titulo1    = __('Adicionar Resposta');
@@ -224,7 +224,7 @@ class Simulador_RespostaControle extends Simulador_Controle
         }else{
             $simulador = (int) $simulador;
             if($simulador==0){
-                $resposta_registro = $this->_Modelo->db->Sql_Select('Simulador_Pergunta_Reposta',Array(),1,'id DESC');
+                $resposta_registro = $this->_Modelo->db->Sql_Select('Simulador_Pergunta_Resposta',Array(),1,'id DESC');
                 if($resposta_registro===false){
                     throw new \Exception('Essa resposta não existe', 404);
                 }
@@ -249,25 +249,25 @@ class Simulador_RespostaControle extends Simulador_Controle
             }else{
                 $pergunta = (int) $pergunta;
                 if($pergunta==0){
-                    $resposta_registro = $this->_Modelo->db->Sql_Select('Simulador_Pergunta_Reposta',Array(),1,'id DESC');
+                    $resposta_registro = $this->_Modelo->db->Sql_Select('Simulador_Pergunta_Resposta',Array(),1,'id DESC');
                     if($resposta_registro===false){
                         throw new \Exception('Essa resposta não existe', 404);
                     }
-                    $pergunta_registro = $this->_Modelo->db->Sql_Select('Pergunta',Array('id'=>$resposta_registro->pergunta,'simulador'=>$simulador),1);
+                    $pergunta_registro = $this->_Modelo->db->Sql_Select('Simulador_Pergunta',Array('id'=>$resposta_registro->pergunta,'simulador'=>$simulador),1);
                     if($pergunta_registro===false){
                         throw new \Exception('Não existe nenhum Pergunta:', 404);
                     }
                     $pergunta = $pergunta_registro->id;
                 }else{
-                    $pergunta_registro = $this->_Modelo->db->Sql_Select('Pergunta',Array('id'=>$pergunta,'simulador'=>$simulador),1);
+                    $pergunta_registro = $this->_Modelo->db->Sql_Select('Simulador_Pergunta',Array('id'=>$pergunta,'simulador'=>$simulador),1);
                     if($pergunta_registro===false){
                         throw new \Exception('Esse Pergunta não existe:', 404);
                     }
                 }
                 $formlink   = 'Simulador/Resposta/Respostas_Add2/'.$simulador.'/'.$pergunta;
                 self::DAO_Campos_Retira($campos,'pergunta');
-                $titulo1    = 'Adicionar Resposta ao Pergunta '.$pergunta_registro->nome ;
-                $titulo2    = 'Salvar Resposta ao Pergunta '.$pergunta_registro->nome ;
+                $titulo1    = 'Adicionar Resposta para a Pergunta '.$pergunta_registro->nome ;
+                $titulo2    = 'Salvar Resposta para a Pergunta '.$pergunta_registro->nome ;
                 self::Endereco_Resposta(true, $simulador_registro, $pergunta_registro);
             }
         }
@@ -285,7 +285,7 @@ class Simulador_RespostaControle extends Simulador_Controle
         if($pergunta==='false') $pergunta = false;
         
         $titulo     = __('Resposta Adicionada com Sucesso');
-        $dao        = 'Simulador_Pergunta_Reposta';
+        $dao        = 'Simulador_Pergunta_Resposta';
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = __('Resposta cadastrada com sucesso.');
         // Recupera Respostas
@@ -326,14 +326,14 @@ class Simulador_RespostaControle extends Simulador_Controle
         $titulo2    = __('Alteração de Resposta');
         $formid     = 'form_Simulador_RespostaC_RespostaEdit';
         $formbt     = __('Alterar Resposta');
-        $campos = Simulador_Pergunta_Reposta_DAO::Get_Colunas();
+        $campos = Simulador_Pergunta_Resposta_DAO::Get_Colunas();
         if($simulador!==false){
             $simulador_registro = $this->_Modelo->db->Sql_Select('Simulador',Array('id'=>$simulador),1);
             if($simulador_registro===false){
                 throw new \Exception('Esse Simulador não existe:', 404);
             }
             if($pergunta!==false){
-                $pergunta_registro = $this->_Modelo->db->Sql_Select('Pergunta',Array('id'=>$simulador,'simulador'=>$simulador_registro->id),1);
+                $pergunta_registro = $this->_Modelo->db->Sql_Select('Simulador_Pergunta',Array('id'=>$simulador,'simulador'=>$simulador_registro->id),1);
                 if($pergunta_registro===false){
                     throw new \Exception('Esse Simulador não existe:', 404);
                 }
@@ -351,7 +351,7 @@ class Simulador_RespostaControle extends Simulador_Controle
             $formlink   = 'Simulador/Resposta/Respostas_Edit2/'.$id;
             self::Endereco_Resposta(true, false);
         }
-        $editar     = Array('Resposta',$id);
+        $editar     = Array('Simulador_Pergunta_Resposta',$id);
         \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos,$editar);
     }
     /**
@@ -375,7 +375,7 @@ class Simulador_RespostaControle extends Simulador_Controle
             $pergunta    = (int) $pergunta;
         }
         $titulo     = __('Resposta Editada com Sucesso');
-        $dao        = Array('Simulador_Pergunta_Reposta',$id);
+        $dao        = Array('Simulador_Pergunta_Resposta',$id);
         // Recupera Respostas
         if($simulador!==false){
             if($pergunta!==false){
@@ -414,7 +414,7 @@ class Simulador_RespostaControle extends Simulador_Controle
             $where = Array('id'=>$id);
         }
         // Puxa resposta e deleta
-        $resposta = $this->_Modelo->db->Sql_Select('Simulador_Pergunta_Reposta', $where);
+        $resposta = $this->_Modelo->db->Sql_Select('Simulador_Pergunta_Resposta', $where);
         $sucesso =  $this->_Modelo->db->Sql_Delete($resposta);
         // Mensagem
     	if($sucesso===true){
@@ -449,7 +449,7 @@ class Simulador_RespostaControle extends Simulador_Controle
         if($id===false){
             throw new \Exception('Registro não informado:'. $raiz, 404);
         }
-        $resultado = $this->_Modelo->db->Sql_Select('Simulador_Pergunta_Reposta', Array('id'=>$id),1);
+        $resultado = $this->_Modelo->db->Sql_Select('Simulador_Pergunta_Resposta', Array('id'=>$id),1);
         if($resultado===false || !is_object($resultado)){
             throw new \Exception('Esse registro não existe:'. $raiz, 404);
         }

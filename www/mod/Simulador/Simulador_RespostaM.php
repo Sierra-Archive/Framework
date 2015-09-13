@@ -1,6 +1,6 @@
 <?php
 
-class Simulador_RepostaModelo extends Simulador_Modelo
+class Simulador_RespostaModelo extends Simulador_Modelo
 {
     /**
     * Construtor

@@ -21,7 +21,7 @@ final Class Simulador_Pergunta_Resposta_DAO extends Framework\App\Dao
         return false;
     }
     public static function Get_Sigla(){
-        return 'Si';
+        return 'SiPR';
     }
     public static function Get_Engine(){
         return 'InnoDB';
@@ -40,7 +40,7 @@ final Class Simulador_Pergunta_Resposta_DAO extends Framework\App\Dao
             Array(
                 'mysql_titulo'      => 'id',
                 'mysql_tipovar'     => 'int', //varchar, int, 
-                'mysql_tamanho'     => 255,
+                'mysql_tamanho'     => 11,
                 'mysql_null'        => false,
                 'mysql_default'     => false,
                 'mysql_primary'     => true,
@@ -146,7 +146,7 @@ final Class Simulador_Pergunta_Resposta_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => '', // //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => __('Nome do Simulador'),
+                    'Nome'              => __('Nome da Resposta'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',
@@ -186,6 +186,70 @@ final Class Simulador_Pergunta_Resposta_DAO extends Framework\App\Dao
                             array(
                                 'value'         =>  '0',
                                 'nome'          => 'Desativado'
+                            ),
+                        )
+                    )
+                )
+            ),
+            Array(
+                'mysql_titulo'      => 'filtro_valor',
+                'mysql_tipovar'     => 'varchar', //varchar, int, 
+                'mysql_tamanho'     => 60,
+                'mysql_null'        => false,  // nulo ?
+                'mysql_default'     => 1, // valor padrao
+                'mysql_primary'     => false,  // chave primaria
+                'mysql_estrangeira' => false, // chave estrangeira     ligacao|apresentacao|condicao
+                'mysql_autoadd'     => false,
+                'mysql_comment'     => false,
+                'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
+                'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
+                'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
+                'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
+                'edicao'            => Array(
+                    'Nome'              => __('Filtro de Resultado'),
+                    'valor_padrao'      => false,
+                    'readonly'          => false,
+                    'aviso'             => '',
+                    'formtipo'          => 'input',
+                    'input'             => array(
+                        'tipo'              => 'text',
+                        'class'             => 'obrigatorio'
+                    )
+                )
+            ),
+            Array(
+                'mysql_titulo'      => 'filtro_tipo',
+                'mysql_tipovar'     => 'int', //varchar, int, 
+                'mysql_tamanho'     => 3,
+                'mysql_null'        => false,  // nulo ?
+                'mysql_default'     => 1, // valor padrao
+                'mysql_primary'     => false,  // chave primaria
+                'mysql_estrangeira' => false, // chave estrangeira     ligacao|apresentacao|condicao
+                'mysql_autoadd'     => false,
+                'mysql_comment'     => false,
+                'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
+                'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
+                'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
+                'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
+                'edicao'            => Array(
+                    'Nome'              => __('Tipo do Filtro de Resultado'),
+                    'valor_padrao'      => 1,
+                    'readonly'          => false,
+                    'aviso'             => '',
+                    'formtipo'          => 'select',
+                    'select'            => array(
+                        'opcoes'            => array(
+                            array(
+                                'value'         =>  '0',
+                                'nome'          => 'Menor'
+                            ),
+                            array(
+                                'value'         =>  '1',
+                                'nome'          => 'Igual'
+                            ),
+                            array(
+                                'value'         =>  '2',
+                                'nome'          => 'Maior'
                             ),
                         )
                     )

@@ -1572,10 +1572,10 @@ final class Conexao
             }
         }else 
         // Se Tiver {sigla}, adiciona
-        if(strpos($condicao, '{sigla}')!==false){
+        if(is_string($condicao) && strpos($condicao, '{sigla}')!==false){
             if($sql_condicao!='') $sql_condicao .= ' AND ';
             $sql_condicao .= str_replace('{sigla}', $sql_tabela_sigla.'.', $condicao);
-        }else if($condicao!==false && $condicao!==''){
+        }else if($condicao!==false && is_string($condicao) && $condicao!==''){
             if($sql_condicao!='') $sql_condicao .= ' AND ';
             $sql_condicao .= (string) $condicao;
         }    

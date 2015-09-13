@@ -44,6 +44,9 @@ $('#produtocontrolador1 select').attr('id','produto1');
         $alterado = new $alterado();
         // PRimeiro Foreach
         $alterado = $alterado->Get_Extrangeiras_ComExterna();
+        
+        if($alterado===false) return true;
+        
         foreach($alterado as $indice=>&$valor){
             if($indice!==$campo_alterado){
                 $achado         = Array();

@@ -69,7 +69,7 @@ class Simulador_PerguntaControle extends Simulador_Controle
                 $status = 1;
                 $texto = __('Ativado');
             }
-            $tabela['Funções'][$i]          = $Visual->Tema_Elementos_Btn('Visualizar' ,Array('Visualizar Simuladores da Pergunta'    ,'Simulador/Simulador/Simuladores/'.$valor->simulador.'/'.$valor->id.'/'    ,'')).
+            $tabela['Funções'][$i]          = $Visual->Tema_Elementos_Btn('Visualizar' ,Array('Visualizar Simuladores da Pergunta'    ,'Simulador/Resposta/Respostas/'.$valor->simulador.'/'.$valor->id.'/'    ,'')).
                                               '<span id="status'.$valor->id.'">'.$Visual->Tema_Elementos_Btn('Status'.$status     ,Array($texto        ,'Simulador/Pergunta/Status/'.$valor->id.'/'    ,'')).'</span>'.
                                               $Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Pergunta'        ,$edit_url    ,'')).
                                               $Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Pergunta'       ,$del_url     ,'Deseja realmente deletar esse Pergunta ?'));
