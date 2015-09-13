@@ -88,7 +88,7 @@ class Tempo{
     static function Salvar(){
         $comeco = microtime(true);
         self::Tempo_Pagina();
-        $registro   = &\Framework\App\Registro::getInstacia();$db     = &$registro->_Conexao; $log = self::$log;
+        $Registro   = &\Framework\App\Registro::getInstacia();$db     = &$Registro->_Conexao; $log = self::$log;
         
         // Se nao tiver Carregado Conexao, aborta
         if($db===false){
@@ -96,12 +96,12 @@ class Tempo{
         }
         
         // Busca Performaces e Da Forach
-        $registro_mysql     = Array();
-        $registros_mysql    = $db->Sql_Select('Sistema_Log_Performace',  false,0,'', 'chave,nome,ocorrencia,tempo_total,tempo_minimo,tempo_media,tempo_maximo', false);
-        if(is_object($registros_mysql))$registros_mysql = Array($registros_mysql);
-        if(!empty($registros_mysql)){
-            foreach($registros_mysql as &$valor){
-                $registro_mysql[$valor->chave] = $valor;
+        $Registro_mysql     = Array();
+        $Registros_mysql    = $db->Sql_Select('Sistema_Log_Performace',  false,0,'', 'chave,nome,ocorrencia,tempo_total,tempo_minimo,tempo_media,tempo_maximo', false);
+        if(is_object($Registros_mysql))$Registros_mysql = Array($Registros_mysql);
+        if(!empty($Registros_mysql)){
+            foreach($Registros_mysql as &$valor){
+                $Registro_mysql[$valor->chave] = $valor;
             }
         }
         $inserir = Array();
@@ -109,8 +109,8 @@ class Tempo{
         if(!empty($log)){
             foreach($log as &$valor){
                 $chave = sha1($valor[0]);
-                if(isset($registro_mysql[$chave])){
-                    $log_sql = &$registro_mysql[$chave];
+                if(isset($Registro_mysql[$chave])){
+                    $log_sql = &$Registro_mysql[$chave];
                     $log_sql->tempo_total = $log_sql->tempo_total+$valor[1];
                     ++$log_sql->ocorrencia;
                     if($valor[1]<$log_sql->tempo_minimo){
@@ -125,10 +125,10 @@ class Tempo{
                         $log_sql->tempo_media = ($log_sql->tempo_total/$log_sql->ocorrencia);
                     }
                     // Guarda pra Atualizar
-                    $atualizar[] = $registro_mysql[$chave];
+                    $atualizar[] = $Registro_mysql[$chave];
                 }else{
-                    $registro_mysql[$chave] = new \Sistema_Log_Performace_DAO();
-                    $log_sql = &$registro_mysql[$chave];
+                    $Registro_mysql[$chave] = new \Sistema_Log_Performace_DAO();
+                    $log_sql = &$Registro_mysql[$chave];
                     $log_sql->chave         = $chave;
                     $log_sql->nome          = $valor[0];
                     $log_sql->tempo_total   = $valor[1];
@@ -140,7 +140,7 @@ class Tempo{
                     // Guarda pra Inserir
                     $inserir[] = $log_sql;
                     // Atualiza Memoria Ram
-                    $registro_mysql[$chave] = $registro_mysql[$chave];
+                    $Registro_mysql[$chave] = $Registro_mysql[$chave];
                 }
             }
         }
@@ -154,8 +154,8 @@ class Tempo{
         $nome   = 'Log Salvar S.M';
         $tempo  = number_format((microtime(true)-$comeco)*1000, 10);
         $chave  = sha1($nome);
-        if(isset($registro_mysql[$chave])){
-            $log_sql = &$registro_mysql[$chave];
+        if(isset($Registro_mysql[$chave])){
+            $log_sql = &$Registro_mysql[$chave];
             $log_sql->tempo_total = $log_sql->tempo_total+$tempo;
             ++$log_sql->ocorrencia;
             if($tempo<$log_sql->tempo_minimo){
@@ -169,10 +169,10 @@ class Tempo{
             }else{
                 $log_sql->tempo_media = ($log_sql->tempo_total/$log_sql->ocorrencia);
             }
-            $db->Sql_Update($registro_mysql[$chave],false);
+            $db->Sql_Update($Registro_mysql[$chave],false);
         }else{
-            $registro_mysql[$chave] = new \Sistema_Log_Performace_DAO();
-            $log_sql = &$registro_mysql[$chave];
+            $Registro_mysql[$chave] = new \Sistema_Log_Performace_DAO();
+            $log_sql = &$Registro_mysql[$chave];
             $log_sql->chave         = $chave;
             $log_sql->nome          = $nome;
             $log_sql->tempo_total   = $tempo;
@@ -180,7 +180,7 @@ class Tempo{
             $log_sql->tempo_maximo  = $tempo;
             $log_sql->tempo_media   = $tempo;
             $log_sql->ocorrencia = 1;
-            $db->Sql_Inserir($registro_mysql[$chave],false);
+            $db->Sql_Inserir($Registro_mysql[$chave],false);
         }
     }
     /**

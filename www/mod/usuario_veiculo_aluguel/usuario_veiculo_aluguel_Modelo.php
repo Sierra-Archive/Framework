@@ -20,16 +20,16 @@ class usuario_veiculo_aluguel_Modelo extends \Framework\App\Modelo
         if(!isset($usuarioid) || !is_int($usuarioid) || $usuarioid==0) return 0;
         $motivoid = (int) $motivoid;
         if(!isset($motivoid)  || !is_int($motivoid)  || $motivoid==0 ) return 0;
-        $modelo->db->query('UPDATE '.MYSQL_USUARIO_VEICULO_ALUGUEL.' SET pago=1 WHERE id='.$motivoid);
+        $Modelo->db->query('UPDATE '.MYSQL_USUARIO_VEICULO_ALUGUEL.' SET pago=1 WHERE id='.$motivoid);
         // BUSCA VALOR DO ALUGUEL
-        $sql = $modelo->db->query('SELECT valor
+        $sql = $Modelo->db->query('SELECT valor
         FROM '.MYSQL_USUARIO_VEICULO_ALUGUEL.' WHERE deletado!=1 AND id='.$motivoid.' LIMIT 1'); //P.categoria
         while ($campo = $sql->fetch_object()) {
             $valor = $valor;
         }
         // ACRESCENTA PORCENTAGENS PARA AMIGOS DE NIVEL 1
         $i = 0;
-        $sql = $modelo->db->query('SELECT nivel_usuario
+        $sql = $Modelo->db->query('SELECT nivel_usuario
         FROM '.MYSQL_USUARIOS.'
         WHERE deletado!=1 AND indicado_por='.$usuarioid.' LIMIT 1'); //P.categoria
         while ($campo = $sql->fetch_object()) {
@@ -44,7 +44,7 @@ class usuario_veiculo_aluguel_Modelo extends \Framework\App\Modelo
         if($i>0){
             // ACRESCENTA PORCENTAGENS PARA AMIGOS DE NIVEL 2
             $i = 0;
-            $sql = $modelo->db->query('SELECT nivel_usuario
+            $sql = $Modelo->db->query('SELECT nivel_usuario
             FROM '.MYSQL_USUARIOS.'
             WHERE deletado!=1 AND indicado_por='.$idindicado.' LIMIT 1'); //P.categoria
             while ($campo = $sql->fetch_object()) {
@@ -60,7 +60,7 @@ class usuario_veiculo_aluguel_Modelo extends \Framework\App\Modelo
         if($i>0){
             // ACRESCENTA PORCENTAGENS PARA AMIGOS DE NIVEL 3
             $i = 0;
-            $sql = $modelo->db->query('SELECT nivel_usuario
+            $sql = $Modelo->db->query('SELECT nivel_usuario
             FROM '.MYSQL_USUARIOS.'
             WHERE deletado!=1 AND indicado_por='.$idindicado.' LIMIT 1'); //P.categoria
             while ($campo = $sql->fetch_object()) {
@@ -75,10 +75,10 @@ class usuario_veiculo_aluguel_Modelo extends \Framework\App\Modelo
         return 1;
     }
     static function Financeiro_Motivo_Exibir($motivoid){
-        $registro = &\Framework\App\Registro::getInstacia();
-        $Modelo = &$registro->_Modelo;
+        $Registro = &\Framework\App\Registro::getInstacia();
+        $Modelo = &$Registro->_Modelo;
         $i = 0;
-        $sql = $modelo->db->query(' SELECT C.nome AS CATEGORIA, V.id, V.foto, V.ano, V.modelo, M.nome as MARCA, V.cc, V.valor1, V.valor2, V.valor3, V.franquia
+        $sql = $Modelo->db->query(' SELECT C.nome AS CATEGORIA, V.id, V.foto, V.ano, V.modelo, M.nome as MARCA, V.cc, V.valor1, V.valor2, V.valor3, V.franquia
         FROM '.MYSQL_USUARIO_VEICULO.' V, '.MYSQL_CAT.' C, '.MYSQL_USUARIO_VEICULO_MARCAS.' M, '.MYSQL_USUARIO_VEICULO_ALUGUEL.' AL
         WHERE AL.id='.$motivoid.' && AL.veiculo=V.id && V.categoria=C.id && V.marca=M.id ORDER BY V.cc LIMIT 1'); //P.categoria
         while ($campo = $sql->fetch_object()) {

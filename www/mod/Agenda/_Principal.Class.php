@@ -9,7 +9,7 @@ class Agenda_Principal implements \Framework\PrincipalInterface
     * @static
     * 
     * @param Class &$controle Classe Controle Atual passada por Ponteiro
-    * @param Class &$modelo Modelo Passado por Ponteiro
+    * @param Class &$Modelo Modelo Passado por Ponteiro
     * @param Class &$Visual Visual Passado por Ponteiro
     *
     * @uses agenda_compromissoControle::$compromisso_formcadastro
@@ -58,7 +58,7 @@ class Agenda_Principal implements \Framework\PrincipalInterface
           'obs'                     => '%'.$busca.'%'
         ));
         $i = 0;
-        $pastas = $modelo->db->Sql_Select('Usuario_Agenda_Pasta',$where);
+        $pastas = $Modelo->db->Sql_Select('Usuario_Agenda_Pasta',$where);
         if($pastas===false) return false;
         // Botao Add
         $Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(

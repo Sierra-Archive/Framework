@@ -5,7 +5,7 @@ class SierraTec_Manutencao {
     
     
     protected $log;
-    protected $registro;
+    protected $Registro;
     protected $_Conexao;
     public function __construct() {
         $this->registro = &\Framework\App\Registro::getInstacia();

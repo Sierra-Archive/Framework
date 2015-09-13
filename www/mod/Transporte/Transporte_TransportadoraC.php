@@ -6,8 +6,8 @@ class Transporte_TransportadoraControle extends Transporte_Controle
         parent::__construct();
     }
     static function Endereco_Transportadora($true=true){
-        $registro = &\Framework\App\Registro::getInstacia();
-        $_Controle = $registro->_Controle;
+        $Registro = &\Framework\App\Registro::getInstacia();
+        $_Controle = $Registro->_Controle;
         $titulo = __('Transportadoras');
         $link = 'Transporte/Transportadora/Transportadoras';
         if($true===true){
@@ -26,12 +26,12 @@ class Transporte_TransportadoraControle extends Transporte_Controle
         return false;
     }
     static function Transportadoras_Tabela(&$transportadora){
-        $registro   = &\Framework\App\Registro::getInstacia();
-        $Visual     = &$registro->_Visual;
+        $Registro   = &\Framework\App\Registro::getInstacia();
+        $Visual     = &$Registro->_Visual;
         $tabela = Array();
         $i = 0;
         if(is_object($transportadora)) $transportadora = Array(0=>$transportadora);reset($transportadora);
-        $perm_view = $registro->_Acl->Get_Permissao_Url('Transporte/Transportadora/Visualizar');
+        $perm_view = $Registro->_Acl->Get_Permissao_Url('Transporte/Transportadora/Visualizar');
         foreach ($transportadora as &$valor) {                
             $tabela['Id'][$i]           = '#'.$valor->id;
             $tabela['Razão Social'][$i] = $valor->usuario2;
@@ -106,8 +106,8 @@ class Transporte_TransportadoraControle extends Transporte_Controle
         $existe = false;
         if($retornar==='false') $retornar = false;
         // Verifica se Existe Conexao, se nao tiver abre o adicionar conexao, se nao, abre a pasta!
-        $registro = &\Framework\App\Registro::getInstacia();
-        $resultado = $registro->_Modelo->db->Sql_Select('Transporte_Transportadora','{sigla}usuario=\''.$registro->_Acl->Usuario_GetID().'\'',1);
+        $Registro = &\Framework\App\Registro::getInstacia();
+        $resultado = $Registro->_Modelo->db->Sql_Select('Transporte_Transportadora','{sigla}usuario=\''.$Registro->_Acl->Usuario_GetID().'\'',1);
         if(is_object($resultado)){
             $existe = true;
         }
@@ -127,7 +127,7 @@ class Transporte_TransportadoraControle extends Transporte_Controle
                 'js'        =>  '',
                 'html'      =>  $html
             );
-            $registro->_Visual->Json_IncluiTipo('Conteudo',$conteudo);
+            $Registro->_Visual->Json_IncluiTipo('Conteudo',$conteudo);
         }
         /*
                 $this->_Visual->Bloco_Customizavel(Array(

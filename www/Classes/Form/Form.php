@@ -97,8 +97,8 @@ class Form
         ++self::$tab_index;
         
         $id = $id.'[]';
-        $registro   = &\Framework\App\Registro::getInstacia();
-        $Visual     = $registro->_Visual;
+        $Registro   = &\Framework\App\Registro::getInstacia();
+        $Visual     = $Registro->_Visual;
         $Visual->Javascript_Executar('var form_duallist'.$controle_duallist.' = $(\'.form_duallist'.$controle_duallist.'\').bootstrapDualListbox('.
             '{bootstrap2compatible: true,'.
             'nonselectedlistlabel: \''.$col1.'\','.
@@ -159,8 +159,8 @@ class Form
         if($id!==false){
             $id = \anti_injection($id);
         }
-        $registro   = &\Framework\App\Registro::getInstacia();
-        $Visual     = $registro->_Visual;
+        $Registro   = &\Framework\App\Registro::getInstacia();
+        $Visual     = $Registro->_Visual;
         // Zera VAriaveis
         $change = '';
         if($campos!==false && $javascript_campos!==false){

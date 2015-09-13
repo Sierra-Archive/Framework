@@ -23,8 +23,8 @@ class usuario_veiculo_ListarVisual extends usuario_veiculo_Visual
      */
     static function Show_Veiculos(&$array){
         GLOBAL $config;
-        $registro = &\Framework\App\Registro::getInstacia();
-        $Visual = $registro->_Visual;
+        $Registro = &\Framework\App\Registro::getInstacia();
+        $Visual = &$Registro->_Visual;
         $html = '<div class="megaexamples">
                                 <!--  FILTER STYLED  -->
                                 <div class="filter_padder" >

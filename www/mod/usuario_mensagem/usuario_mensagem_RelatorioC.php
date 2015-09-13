@@ -20,8 +20,8 @@ class usuario_mensagem_RelatorioControle extends usuario_mensagem_Controle
         parent::__construct();
     }
     static function Endereco_Relatorio($true=true){
-        $registro = &\Framework\App\Registro::getInstacia();
-        $_Controle = $registro->_Controle;
+        $Registro = &\Framework\App\Registro::getInstacia();
+        $_Controle = $Registro->_Controle;
         $titulo = __('Relatório');
         $link = 'Financeiro/Relatorio/Relatorio';
         if($true===true){

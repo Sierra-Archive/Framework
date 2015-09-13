@@ -1150,8 +1150,8 @@ class Visual
      * @version 3.1.1
      */
     public static function Layoult_Abas_Carregar($id,$html='',$ativar=true){
-        $registro           = &\Framework\App\Registro::getInstacia();
-        $Visual             = $registro->_Visual;
+        $Registro           = &\Framework\App\Registro::getInstacia();
+        $Visual             = $Registro->_Visual;
         $abas_id            = &$Visual->config_template['plugins']['abas_id'];
         if($html!='' && isset($html)){
             $js = ($ativar)?Visual::Layoult_Abas_Ativar_JS($id):'';
@@ -1205,8 +1205,8 @@ class Visual
      * @version 3.1.1
      */
     public static function Layoult_Home_Widgets_Show($gravidade=10000){
-        $registro = &\Framework\App\Registro::getInstacia();
-        $Visual   = &$registro->_Visual;
+        $Registro = &\Framework\App\Registro::getInstacia();
+        $Visual   = &$Registro->_Visual;
         $widgets = &self::$widgets_inline;
         orderMultiDimensionalArray($widgets, 'gravidade', true);
         $Visual->Blocar($Visual->renderizar_bloco('elemento_miniwidget',Array('widgets'=>$widgets)));
@@ -1222,7 +1222,7 @@ class Visual
      * @version 3.1.1
      */
     public static function Layoult_Abas_Ativar_JS($numero){
-        $Visual             = $registro->_Visual;
+        $Visual             = $Registro->_Visual;
         $temaconfig         = &$Visual->config_template['plugins']['abas_ativar'];
         return $temaconfig($numero);
     }

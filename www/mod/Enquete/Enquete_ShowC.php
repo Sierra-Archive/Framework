@@ -25,9 +25,9 @@ class Enquete_ShowControle extends Enquete_Controle
         // Verifica Permissao
         if(\Framework\App\Registro::getInstacia()->_Acl->Get_Permissao_Chave('Enquete_Show')===false) return false;
         
-        $registro = &\Framework\App\Registro::getInstacia();
-        $Modelo = &$registro->_Modelo;
-        $Visual = $registro->_Visual;
+        $Registro = &\Framework\App\Registro::getInstacia();
+        $Modelo = &$Registro->_Modelo;
+        $Visual = &$Registro->_Visual;
         // Procura Uma enquete aleatória se nao
         $enquetes = $Modelo->db->Sql_Select('Enquete',
                 Array('>id'=>$id_min),
@@ -87,8 +87,8 @@ class Enquete_ShowControle extends Enquete_Controle
         // Pagina Config
     }
     static function Show_Resposta(&$enquete,&$respostas){
-        $registro = &\Framework\App\Registro::getInstacia();
-        $Modelo = &$registro->_Modelo;
+        $Registro = &\Framework\App\Registro::getInstacia();
+        $Modelo = &$Registro->_Modelo;
         
         $id = (int) $enquete->id;
         $votos = $Modelo->db->Sql_Select('Enquete_Voto',Array(

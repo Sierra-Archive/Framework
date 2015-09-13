@@ -36,8 +36,8 @@ class comercio_servicos_ServicoControle extends comercio_servicos_Controle
         return false;
     }
     static function Endereco_Servico($true=true){
-        $registro = &\Framework\App\Registro::getInstacia();
-        $_Controle = $registro->_Controle;
+        $Registro = &\Framework\App\Registro::getInstacia();
+        $_Controle = $Registro->_Controle;
         if($true===true){
             $_Controle->Tema_Endereco(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_servicos_Titulo'),'comercio_servicos/Servico/Servico');
         }else{

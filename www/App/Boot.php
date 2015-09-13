@@ -23,8 +23,8 @@ class Boot {
      */
     public static function Iniciar(){  
         // Pega Instancia e Inicia Cache
-        $registro = &\Framework\App\Registro::getInstacia();
-        $registro->_Cache   = new \Framework\App\Cache(CACHE_PATH);   
+        $Registro = &\Framework\App\Registro::getInstacia();
+        $Registro->_Cache   = new \Framework\App\Cache(CACHE_PATH);   
         
         // Verifica SE EXISTE CACHE
         if(SISTEMA_CACHE_PAGINAS){
@@ -33,7 +33,7 @@ class Boot {
             }else{
                 self::$url = md5('index');
             }
-            $Cache = $registro->_Cache->Ler('Pagina_'.self::$url);
+            $Cache = $Registro->_Cache->Ler('Pagina_'.self::$url);
             if ($Cache) {
                 echo $Cache;
                 return false;
@@ -46,15 +46,15 @@ class Boot {
         $tempo = new \Framework\App\Tempo('BOOT Inicial');   
         // Inicia SEssao e Classes PARTE 1
         \Framework\App\Session::init();
-        $registro->_Conexao = new \Framework\App\Conexao();
-        $registro->_Request = new \Framework\App\Request();
+        $Registro->_Conexao = new \Framework\App\Conexao();
+        $Registro->_Request = new \Framework\App\Request();
         
         // Recupera pra evitar multiplas solicitacoes
-        $getmetodo          = $registro->_Request->getMetodo();
-        $getmodulo          = $registro->_Request->getModulo();
-        $getsubmodulo       = $registro->_Request->getSubModulo();
-        $getargs            = $registro->_Request->getArgs();
-        $geturl             = $registro->_Request->getURL();
+        $getmetodo          = $Registro->_Request->getMetodo();
+        $getmodulo          = $Registro->_Request->getModulo();
+        $getsubmodulo       = $Registro->_Request->getSubModulo();
+        $getargs            = $Registro->_Request->getArgs();
+        $geturl             = $Registro->_Request->getURL();
         
         // Controle de Erros
         /*if(SISTEMA_DEBUG===true){
@@ -84,10 +84,10 @@ class Boot {
         
         
         // Inicia SEssao e Classes PARTE 2
-        $registro->_Acl     = new \Framework\App\Acl();
+        $Registro->_Acl     = new \Framework\App\Acl();
         
         // Verifica Permissão da URL
-        $permissao = $registro->_Acl->Get_Permissao_Url($geturl);
+        $permissao = $Registro->_Acl->Get_Permissao_Url($geturl);
 
         if($permissao===false){
             throw new \Exception('Sem Permissão: '.$geturl, 403); 
@@ -99,33 +99,33 @@ class Boot {
         if(is_readable($modulo_rotaC) && is_readable($modulo_rotaM) && is_readable($modulo_rotaV)){
             if(is_readable($submodulo_rotaC) && is_readable($submodulo_rotaM) && is_readable($submodulo_rotaV)){
                 // Chama Controle, Modelo, e Visual
-                $registro->_Modelo  = new $modelo_Executar;
-                $registro->_Visual  = new $visual_Executar;
-                $registro->_Controle = new $controle_Executar;
+                $Registro->_Modelo  = new $modelo_Executar;
+                $Registro->_Visual  = new $visual_Executar;
+                $Registro->_Controle = new $controle_Executar;
                 
                 if(REQUISICAO_TIPO=='MODELO'){
-                    if(is_callable(array($registro->_Modelo,$metodo))){
+                    if(is_callable(array($Registro->_Modelo,$metodo))){
                         $metodo = $getmetodo;
                     }else{
                         $metodo = 'Main';
                     }
                     if(count($getargs)>0){
-                        call_user_func_array(array($registro->_Modelo,$metodo), $getargs);
+                        call_user_func_array(array($Registro->_Modelo,$metodo), $getargs);
                     }else{
-                        call_user_func(array($registro->_Modelo,$metodo));
+                        call_user_func(array($Registro->_Modelo,$metodo));
                     }
                     // Impede Retorno do Json do Controle
                     \Framework\App\Controle::Tema_Travar();
                 }else{
-                    if(is_callable(array($registro->_Controle,$metodo))){
+                    if(is_callable(array($Registro->_Controle,$metodo))){
                         $metodo = $getmetodo;
                     }else{
                         $metodo = 'Main';
                     }
                     if(count($getargs)>0){
-                        call_user_func_array(array($registro->_Controle,$metodo), $getargs);
+                        call_user_func_array(array($Registro->_Controle,$metodo), $getargs);
                     }else{
-                        call_user_func(array($registro->_Controle,$metodo));
+                        call_user_func(array($Registro->_Controle,$metodo));
                     }
                     
                 }
@@ -147,24 +147,24 @@ class Boot {
     public static function Desligar(){
         $tempo = new \Framework\App\Tempo('BOOT Desligar');  
         // Destroi A PORRA TODA
-        $registro = &\Framework\App\Registro::getInstacia();
-        $registro->destruir('_Controle');
-        $registro->destruir('_Visual');
-        $registro->destruir('_Modelo');
-        $registro->destruir('_Acl');
-        $registro->destruir('_Request');
+        $Registro = &\Framework\App\Registro::getInstacia();
+        $Registro->destruir('_Controle');
+        $Registro->destruir('_Visual');
+        $Registro->destruir('_Modelo');
+        $Registro->destruir('_Acl');
+        $Registro->destruir('_Request');
         // Imprimi Controle de Tempo se Pedido
         //if(TEMPO_IMPRIMIR) \Framework\App\Tempo::Imprimir();
         if(TEMPO_IMPRIMIR){
             \Framework\App\Tempo::Salvar();
         }
         // Fecha Conexao
-        $registro->destruir('_Conexao');
+        $Registro->destruir('_Conexao');
         
         // Salvar Cache e Da exite
         if(SISTEMA_CACHE_PAGINAS){
             $conteudo = ob_get_contents();
-            $registro->_Cache->Salvar('Pagina_'.self::$url,$conteudo);
+            $Registro->_Cache->Salvar('Pagina_'.self::$url,$conteudo);
         }
         
         // Da Exit

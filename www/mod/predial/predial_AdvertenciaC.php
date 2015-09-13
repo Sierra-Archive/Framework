@@ -23,8 +23,8 @@ class predial_AdvertenciaControle extends predial_Controle
         $this->_Visual->Json_Info_Update('Titulo', __('Advertências')); 
     }
     static function Endereco_Advertencia($true=true){
-        $registro = &\Framework\App\Registro::getInstacia();
-        $_Controle = $registro->_Controle;
+        $Registro = &\Framework\App\Registro::getInstacia();
+        $_Controle = $Registro->_Controle;
         $titulo = __('Advertencias');
         $link = 'predial/Advertencia/Advertencias';
         if($true===true){
@@ -34,8 +34,8 @@ class predial_AdvertenciaControle extends predial_Controle
         }
     }
     static function Advertencias_Tabela(&$advertencias){
-        $registro   = &\Framework\App\Registro::getInstacia();
-        $Visual     = &$registro->_Visual;
+        $Registro   = &\Framework\App\Registro::getInstacia();
+        $Visual     = &$Registro->_Visual;
         $tabela = Array();
         $i = 0;
         if(is_object($advertencias)) $advertencias = Array(0=>$advertencias);
@@ -269,8 +269,8 @@ class predial_AdvertenciaControle extends predial_Controle
     
     
     static function Personalizados_Tabela(&$advertencias){
-        $registro   = &\Framework\App\Registro::getInstacia();
-        $Visual     = &$registro->_Visual;
+        $Registro   = &\Framework\App\Registro::getInstacia();
+        $Visual     = &$Registro->_Visual;
         $tabela = Array();
         $i = 0;
         if(is_object($advertencias)) $advertencias = Array(0=>$advertencias);
@@ -290,10 +290,10 @@ class predial_AdvertenciaControle extends predial_Controle
      * @version 3.1.1
      */
     static function Personalizados($apartamento){
-        $registro = &\Framework\App\Registro::getInstacia();
+        $Registro = &\Framework\App\Registro::getInstacia();
         $i = 0;
         // Botao Add
-        $html = $registro->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
+        $html = $Registro->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
             false,
             Array(
                 'Print'     => true,
@@ -306,10 +306,10 @@ class predial_AdvertenciaControle extends predial_Controle
         $where = Array(
             'apart' =>   (int) $apartamento
         );
-        $advertencias = $registro->_Modelo->db->Sql_Select('Predial_Bloco_Apart_Advertencia',$where);
+        $advertencias = $Registro->_Modelo->db->Sql_Select('Predial_Bloco_Apart_Advertencia',$where);
         if($advertencias!==false && !empty($advertencias)){
             list($tabela,$i) = self::Personalizados_Tabela($advertencias);
-            $html .= $registro->_Visual->Show_Tabela_DataTable($tabela,'',false);
+            $html .= $Registro->_Visual->Show_Tabela_DataTable($tabela,'',false);
             unset($tabela);
         }else{            
             $html .= '<center><b><font color="#FF0000" size="3">Nenhuma Advertência para seu Apartamento</font></b></center>';

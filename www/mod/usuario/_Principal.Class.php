@@ -10,7 +10,7 @@ class usuario_Principal implements \Framework\PrincipalInterface
     * @static
     * 
     * @param Class &$controle Classe Controle Atual passada por Ponteiro
-    * @param Class &$modelo Modelo Passado por Ponteiro
+    * @param Class &$Modelo Modelo Passado por Ponteiro
     * @param Class &$Visual Visual Passado por Ponteiro
     *
     * @uses \Framework\App\Controle::$usuario
@@ -55,7 +55,7 @@ class usuario_Principal implements \Framework\PrincipalInterface
         ));
         $i = 0;
         // add botao
-        $usuario = $modelo->db->Sql_Select('Usuario',$where,0,'',true);
+        $usuario = $Modelo->db->Sql_Select('Usuario',$where,0,'',true);
         if($usuario===false) return false;
         $Visual->Blocar('<a title="Adicionar Usuário" class="btn btn-success lajax explicar-titulo" acao="" href="'.URL_PATH.'usuario/Admin/Usuarios_Add">Adicionar novo Usuário</a><div class="space15"></div>');
         if(is_object($usuario)) $usuario = Array(0=>$usuario);
@@ -105,8 +105,8 @@ class usuario_Principal implements \Framework\PrincipalInterface
     
     public static function Widgets(){
         $Registro = &\Framework\App\Registro::getInstacia();
-        $Modelo = &$registro->_Modelo;
-        $Visual = $Registro->_Visual;
+        $Modelo = &$Registro->_Modelo;
+        $Visual = &$Registro->_Visual;
         //if(!\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Principal_Widgets')) return false;
         if(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Admin_Funcionario')){
             $where = Array(
@@ -114,7 +114,7 @@ class usuario_Principal implements \Framework\PrincipalInterface
                 'ativado'           =>  1
             );
             $inner_join = 'INNER JOIN '.MYSQL_SIS_GRUPO.' SG ON U.grupo=SG.id';
-            $funcionario_qnt = $modelo->db->Sql_Contar('Usuario', 'SG.categoria=\''.CFG_TEC_CAT_ID_FUNCIONARIOS.'\' AND ativado=\'1\'',$inner_join);
+            $funcionario_qnt = $Modelo->db->Sql_Contar('Usuario', 'SG.categoria=\''.CFG_TEC_CAT_ID_FUNCIONARIOS.'\' AND ativado=\'1\'',$inner_join);
             // Adiciona Widget a Pagina Inicial
             \Framework\App\Visual::Layoult_Home_Widgets_Add(
                 'Funcionários', 
@@ -130,7 +130,7 @@ class usuario_Principal implements \Framework\PrincipalInterface
             
             
             
-            $usuario_qnt = $modelo->db->Sql_Contar('Usuario','grupo!=4 AND ativado=1');
+            $usuario_qnt = $Modelo->db->Sql_Contar('Usuario','grupo!=4 AND ativado=1');
             
             // Adiciona Widget a Pagina Inicial
             \Framework\App\Visual::Layoult_Home_Widgets_Add(
@@ -150,7 +150,7 @@ class usuario_Principal implements \Framework\PrincipalInterface
         if(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Admin_Cliente')){
             // Clientes
             $inner_join = 'INNER JOIN '.MYSQL_SIS_GRUPO.' SG ON U.grupo=SG.id';
-            $cliente_qnt = $modelo->db->Sql_Contar('Usuario','SG.categoria=\''.CFG_TEC_CAT_ID_CLIENTES.'\'',$inner_join);
+            $cliente_qnt = $Modelo->db->Sql_Contar('Usuario','SG.categoria=\''.CFG_TEC_CAT_ID_CLIENTES.'\'',$inner_join);
             // Adiciona Widget a Pagina Inicial
             \Framework\App\Visual::Layoult_Home_Widgets_Add(
                 \Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Cliente_nome'), 

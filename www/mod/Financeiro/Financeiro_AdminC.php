@@ -165,7 +165,7 @@ class Financeiro_AdminControle extends Financeiro_Controle
     * @access public
     * 
     * @param Class &$controle Classe Controle Atual passada por Ponteiro
-    * @param Class &$modelo Modelo Passado por Ponteiro
+    * @param Class &$Modelo Modelo Passado por Ponteiro
     * @param Class &$Visual Visual Passado por Ponteiro
     * 
     * 
@@ -197,7 +197,7 @@ class Financeiro_AdminControle extends Financeiro_Controle
     * @access public
     * 
     * @param Class &$controle Classe Controle Atual passada por Ponteiro
-    * @param Class &$modelo Modelo Passado por Ponteiro
+    * @param Class &$Modelo Modelo Passado por Ponteiro
     * @param Class &$Visual Visual Passado por Ponteiro
     * 
     * 

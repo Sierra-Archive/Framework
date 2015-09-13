@@ -23,8 +23,8 @@ class predial_BlocoControle extends predial_Controle
         $this->_Visual->Json_Info_Update('Titulo', __('Blocos'));
     }
     static function Endereco_Bloco($true=true){
-        $registro = &\Framework\App\Registro::getInstacia();
-        $_Controle = $registro->_Controle;
+        $Registro = &\Framework\App\Registro::getInstacia();
+        $_Controle = $Registro->_Controle;
         $titulo = __('Blocos');
         $link = 'predial/Bloco/Blocos';
         if($true===true){
@@ -34,8 +34,8 @@ class predial_BlocoControle extends predial_Controle
         }
     }
     static function Blocos_Tabela(&$blocos){
-        $registro   = &\Framework\App\Registro::getInstacia();
-        $Visual     = &$registro->_Visual;
+        $Registro   = &\Framework\App\Registro::getInstacia();
+        $Visual     = &$Registro->_Visual;
         $tabela = Array();
         $i = 0;
         if(is_object($blocos)) $blocos = Array(0=>$blocos);

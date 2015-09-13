@@ -32,13 +32,13 @@ class comercio_servicos_Principal implements \Framework\PrincipalInterface
     }
     public static function Widgets(){
         $Registro = &\Framework\App\Registro::getInstacia();
-        $Modelo = &$registro->_Modelo;
-        $Visual = $Registro->_Visual;
+        $Modelo = &$Registro->_Modelo;
+        $Visual = &$Registro->_Visual;
         // Titulos
         $titulo             = \Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_servicos_Titulo');
         $titulo2            = Framework\Classes\Texto::Transformar_Plural_Singular($titulo);
         // Calcula Serviço
-        $servico_qnt = $modelo->db->Sql_Contar('Comercio_Servicos_Servico');
+        $servico_qnt = $Modelo->db->Sql_Contar('Comercio_Servicos_Servico');
         // Chama Widgets
         \Framework\App\Visual::Layoult_Home_Widgets_Add(
             $titulo, 
@@ -53,7 +53,7 @@ class comercio_servicos_Principal implements \Framework\PrincipalInterface
         
         if(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_servicos_ServicoTipo')===true){
             // Calcula Tipo de Serviço
-            $tiposervico_qnt = $modelo->db->Sql_Contar('Comercio_Servicos_Servico_Tipo');
+            $tiposervico_qnt = $Modelo->db->Sql_Contar('Comercio_Servicos_Servico_Tipo');
 
             \Framework\App\Visual::Layoult_Home_Widgets_Add(
                 'Tipos de Serviços', 

@@ -6,8 +6,8 @@ class Transporte_CaminhoneiroControle extends Transporte_Controle
         parent::__construct();
     }
     static function Endereco_Caminhoneiro($true=true){
-        $registro = &\Framework\App\Registro::getInstacia();
-        $_Controle = $registro->_Controle;
+        $Registro = &\Framework\App\Registro::getInstacia();
+        $_Controle = $Registro->_Controle;
         $titulo = __('Autonômos');
         $link = 'Transporte/Caminhoneiro/Caminhoneiros';
         if($true===true){
@@ -26,12 +26,12 @@ class Transporte_CaminhoneiroControle extends Transporte_Controle
         return false;
     }
     static function Caminhoneiros_Tabela(&$caminhoneiro){
-        $registro   = &\Framework\App\Registro::getInstacia();
-        $Visual     = &$registro->_Visual;
+        $Registro   = &\Framework\App\Registro::getInstacia();
+        $Visual     = &$Registro->_Visual;
         $tabela = Array();
         $i = 0;
         if(is_object($caminhoneiro)) $caminhoneiro = Array(0=>$caminhoneiro);reset($caminhoneiro);
-        $perm_view = $registro->_Acl->Get_Permissao_Url('Transporte/Caminhoneiro/Visualizar');
+        $perm_view = $Registro->_Acl->Get_Permissao_Url('Transporte/Caminhoneiro/Visualizar');
         foreach ($caminhoneiro as &$valor) {                
             $tabela['Id'][$i]           = '#'.$valor->id;
             $tabela['Categoria'][$i]    = $valor->categoria2;
@@ -106,8 +106,8 @@ class Transporte_CaminhoneiroControle extends Transporte_Controle
         $existe = false;
         if($retornar==='false') $retornar = false;
         // Verifica se Existe Conexao, se nao tiver abre o adicionar conexao, se nao, abre a pasta!
-        $registro = &\Framework\App\Registro::getInstacia();
-        $resultado = $registro->_Modelo->db->Sql_Select('Transporte_Caminhoneiro','{sigla}usuario=\''.$registro->_Acl->Usuario_GetID().'\'',1);
+        $Registro = &\Framework\App\Registro::getInstacia();
+        $resultado = $Registro->_Modelo->db->Sql_Select('Transporte_Caminhoneiro','{sigla}usuario=\''.$Registro->_Acl->Usuario_GetID().'\'',1);
         if(is_object($resultado)){
             $existe = true;
         }
@@ -127,7 +127,7 @@ class Transporte_CaminhoneiroControle extends Transporte_Controle
                 'js'        =>  '',
                 'html'      =>  $html
             );
-            $registro->_Visual->Json_IncluiTipo('Conteudo',$conteudo);
+            $Registro->_Visual->Json_IncluiTipo('Conteudo',$conteudo);
         }
         return true;
     }

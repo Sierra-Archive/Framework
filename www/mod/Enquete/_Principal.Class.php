@@ -9,7 +9,7 @@ class Enquete_Principal implements \Framework\PrincipalInterface
      * @static
      * 
      * @param Class &$controle Classe Controle Atual passada por Ponteiro
-     * @param Class &$modelo Modelo Passado por Ponteiro
+     * @param Class &$Modelo Modelo Passado por Ponteiro
      * @param Class &$Visual Visual Passado por Ponteiro
      *
      * @uses Enquete_Controle::$num_Indicados
@@ -48,10 +48,10 @@ class Enquete_Principal implements \Framework\PrincipalInterface
      */
     public static function Widgets(){
         $Registro = &\Framework\App\Registro::getInstacia();
-        $Modelo = &$registro->_Modelo;
-        $Visual = $Registro->_Visual;
+        $Modelo = &$Registro->_Modelo;
+        $Visual = &$Registro->_Visual;
         // Enquetes
-        $enquete_qnt = $modelo->db->Sql_Contar('Enquete');
+        $enquete_qnt = $Modelo->db->Sql_Contar('Enquete');
         // Adiciona Widget a Pagina Inicial
         \Framework\App\Visual::Layoult_Home_Widgets_Add(
             'Enquetes', 
@@ -93,7 +93,7 @@ class Enquete_Principal implements \Framework\PrincipalInterface
           'obs'                     => '%'.$busca.'%'
         ));
         $i = 0;
-        $enquetes = $modelo->db->Sql_Select('Enquete',$where);
+        $enquetes = $Modelo->db->Sql_Select('Enquete',$where);
         if($enquetes===false) return false;
         // add botao
         $Visual->Blocar($Visual->Tema_Elementos_Btn('Superior'     ,Array(
@@ -125,7 +125,7 @@ class Enquete_Principal implements \Framework\PrincipalInterface
           'nome'                    => '%'.$busca.'%'
         );
         $i = 0;
-        $enquetes = $modelo->db->Sql_Select('Enquete_Resposta',$where);
+        $enquetes = $Modelo->db->Sql_Select('Enquete_Resposta',$where);
         if($enquetes===false) return false;
         // add botao
         $Visual->Blocar($Visual->Tema_Elementos_Btn('Superior'     ,Array(

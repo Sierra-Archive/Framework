@@ -25,8 +25,8 @@ class comercio_EstoqueModelo extends comercio_Modelo
     static function Estoque_Exibir($produtoid,$motivoid){
         $produtoid = (int) $produtoid;
         $motivoid = (int) $motivoid;
-        $registro = &\Framework\App\Registro::getInstacia();
-        $_Modelo = &$registro->_Modelo;
+        $Registro = &\Framework\App\Registro::getInstacia();
+        $_Modelo = &$Registro->_Modelo;
         $retirada = $_Modelo->db->Sql_Select('Comercio_Fornecedor_Material',Array('id'=>$motivoid),1);
         if($retirada===false){
             return Array('Entrada Não existente','Não existe');
@@ -44,8 +44,8 @@ class comercio_EstoqueModelo extends comercio_Modelo
         if($motivoid===0){
             return Array('Compra não existe no banco de dados.','Não existe');
         }
-        $registro = &\Framework\App\Registro::getInstacia();
-        $_Modelo = &$registro->_Modelo;
+        $Registro = &\Framework\App\Registro::getInstacia();
+        $_Modelo = &$Registro->_Modelo;
         $material = $_Modelo->db->Sql_Select('Comercio_Fornecedor_Material',Array('id'=>$motivoid),1);
         if($material===false){
             return Array('Compra não existe no banco de dados.','Não existe');

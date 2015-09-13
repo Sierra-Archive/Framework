@@ -105,7 +105,7 @@ class usuario_Modelo extends \Framework\App\Modelo
      * @return int
      */
     static function VerificaExtEmail(&$modelo, $email){
-        $sql = $modelo->db->query(' SELECT id
+        $sql = $Modelo->db->query(' SELECT id
         FROM '.MYSQL_USUARIOS.'
         WHERE deletado!=1 AND email=\''.$email.'\''); //P.categoria
         while ($campo = $sql->fetch_object()) {
@@ -120,7 +120,7 @@ class usuario_Modelo extends \Framework\App\Modelo
      * @return int
      */
     static function VerificaExtLogin(&$modelo, $login){
-        $sql = $modelo->db->query(' SELECT id
+        $sql = $Modelo->db->query(' SELECT id
         FROM '.MYSQL_USUARIOS.'
         WHERE deletado!=1 AND login=\''.$login.'\''); //P.categoria
         while ($campo = $sql->fetch_object()) {
@@ -136,8 +136,8 @@ class usuario_Modelo extends \Framework\App\Modelo
      */
     static function PlanoStatus($modelo, $user){
         // Carrega e Inicializa Variavies
-        $registro = &\Framework\App\Registro::getInstacia();
-        $acl = $registro->_Acl;
+        $Registro = &\Framework\App\Registro::getInstacia();
+        $acl = $Registro->_Acl;
         $usuarioid = $acl->Usuario_GetID();
         $planostatus = Array();
         
@@ -172,10 +172,10 @@ class usuario_Modelo extends \Framework\App\Modelo
      */
     static function Financeiro($usuarioid,$motivoid){
         $usuarioid = (int) $usuarioid;
-        $registro = &\Framework\App\Registro::getInstacia();
-        $Modelo = &$registro->_Modelo;
+        $Registro = &\Framework\App\Registro::getInstacia();
+        $Modelo = &$Registro->_Modelo;
         if(!isset($usuarioid) || !is_int($usuarioid) || $usuarioid==0) return 0;
-        $modelo->db->query('UPDATE '.MYSQL_USUARIOS.' SET nivel_usuario_pago=1 WHERE deletado!=1 AND id='.$usuarioid);
+        $Modelo->db->query('UPDATE '.MYSQL_USUARIOS.' SET nivel_usuario_pago=1 WHERE deletado!=1 AND id='.$usuarioid);
         return 1;
     }
     /**
@@ -185,8 +185,8 @@ class usuario_Modelo extends \Framework\App\Modelo
      * @param type $motivoid
      */
     static function Financeiro_Motivo_Exibir($motivoid){
-        $registro = &\Framework\App\Registro::getInstacia();
-        $Modelo = &$registro->_Modelo;
+        $Registro = &\Framework\App\Registro::getInstacia();
+        $Modelo = &$Registro->_Modelo;
         $text = 'CONFIG_CLI_'.$motivoid.'_NOME';
         return Array('Pagamento do Plano',$text);
     }

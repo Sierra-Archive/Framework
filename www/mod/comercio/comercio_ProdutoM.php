@@ -25,8 +25,8 @@ class comercio_ProdutoModelo extends comercio_Modelo
     static function Estoque_Exibir($produtoid,$motivoid){
         $produtoid = (int) $produtoid;
         $motivoid = (int) $motivoid;
-        $registro = &\Framework\App\Registro::getInstacia();
-        $_Modelo = &$registro->_Modelo;
+        $Registro = &\Framework\App\Registro::getInstacia();
+        $_Modelo = &$Registro->_Modelo;
         $retirada = $_Modelo->db->Sql_Select('Comercio_Produto_Estoque_Reduzir',Array('id'=>$motivoid),1);
         if($retirada===false){
             return Array('Redução Não existente','Não existe');

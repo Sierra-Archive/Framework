@@ -9,7 +9,7 @@ class Engenharia_Principal implements \Framework\PrincipalInterface
      * @static
      * 
      * @param Class &$controle Classe Controle Atual passada por Ponteiro
-     * @param Class &$modelo Modelo Passado por Ponteiro
+     * @param Class &$Modelo Modelo Passado por Ponteiro
      * @param Class &$Visual Visual Passado por Ponteiro
      *
      * @uses Engenharia_Controle::$num_Indicados
@@ -76,7 +76,7 @@ class Engenharia_Principal implements \Framework\PrincipalInterface
             
         ));
         $i = 0;
-        $empreendimentos = $modelo->db->Sql_Select('Engenharia_Empreendimento',$where);
+        $empreendimentos = $Modelo->db->Sql_Select('Engenharia_Empreendimento',$where);
         if($empreendimentos===false) return false;
         // Botao Add
         $Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
@@ -111,7 +111,7 @@ class Engenharia_Principal implements \Framework\PrincipalInterface
           'banheiros'               => '%'.$busca.'%'
         ));
         $i = 0;
-        $unidades = $modelo->db->Sql_Select('Engenharia_Empreendimento_Unidade',$where);
+        $unidades = $Modelo->db->Sql_Select('Engenharia_Empreendimento_Unidade',$where);
         if($unidades===false) return false;
         // Botao Add
         $Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
@@ -145,11 +145,11 @@ class Engenharia_Principal implements \Framework\PrincipalInterface
      */
     public static function Widgets(){
         $Registro = &\Framework\App\Registro::getInstacia();
-        $Modelo = &$registro->_Modelo;
-        $Visual = $Registro->_Visual;
+        $Modelo = &$Registro->_Modelo;
+        $Visual = &$Registro->_Visual;
         // Empreendimentos
         $where = Array();
-        $empreendimento_qnt = $modelo->db->Sql_Select('Engenharia_Empreendimento');
+        $empreendimento_qnt = $Modelo->db->Sql_Select('Engenharia_Empreendimento');
         // Adiciona Widget a Pagina Inicial
         \Framework\App\Visual::Layoult_Home_Widgets_Add(
             'Empreendimentos', 
@@ -162,7 +162,7 @@ class Engenharia_Principal implements \Framework\PrincipalInterface
         );
         // Unidades
         $where = Array();
-        $unidade_qnt = $modelo->db->Sql_Select('Engenharia_Empreendimento_Unidade');
+        $unidade_qnt = $Modelo->db->Sql_Select('Engenharia_Empreendimento_Unidade');
         // Adiciona Widget a Pagina Inicial
         \Framework\App\Visual::Layoult_Home_Widgets_Add(
             'Unidades', 

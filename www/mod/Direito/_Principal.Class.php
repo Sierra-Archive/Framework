@@ -10,7 +10,7 @@ class advogado_Principal implements \Framework\PrincipalInterface
     * @static
     * 
     * @param Class &$controle Classe Controle Atual passada por Ponteiro
-    * @param Class &$modelo Modelo Passado por Ponteiro
+    * @param Class &$Modelo Modelo Passado por Ponteiro
     * @param Class &$Visual Visual Passado por Ponteiro
     *
     * @uses \Framework\App\Controle::$advogado

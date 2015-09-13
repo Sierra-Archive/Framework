@@ -36,8 +36,8 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
         return false;
     }
     static function Endereco_Equipamento($true=true){
-        $registro = &\Framework\App\Registro::getInstacia();
-        $_Controle = $registro->_Controle;
+        $Registro = &\Framework\App\Registro::getInstacia();
+        $_Controle = $Registro->_Controle;
         $link   = 'usuario_veiculo/Equipamento/Equipamentos';
         if($true===true){
             $_Controle->Tema_Endereco(__('Equipamentos'),$link);
@@ -46,8 +46,8 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
         }
     }
     static function Endereco_Equipamento_Marca($true=true){
-        $registro = &\Framework\App\Registro::getInstacia();
-        $_Controle = $registro->_Controle;
+        $Registro = &\Framework\App\Registro::getInstacia();
+        $_Controle = $Registro->_Controle;
         $titulo = __('Marcas');
         $link   = 'usuario_veiculo/Equipamento/Marcas';
         // Chama Equipamento
@@ -59,8 +59,8 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
         }
     }
     static function Endereco_Equipamento_Modelo($true=true){
-        $registro = &\Framework\App\Registro::getInstacia();
-        $_Controle = $registro->_Controle;
+        $Registro = &\Framework\App\Registro::getInstacia();
+        $_Controle = $Registro->_Controle;
         $titulo = __('Modelos');
         $link   = 'usuario_veiculo/Equipamento/Modelos';
         // Chama Equipamento
@@ -602,7 +602,7 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
         
     	$id = (int) $id;
         // Puxa modelo e deleta
-        $modelo = $this->_Modelo->db->Sql_Select('Usuario_Veiculo_Equipamento_Modelo', Array('id'=>$id));
+        $Modelo = $this->_Modelo->db->Sql_Select('Usuario_Veiculo_Equipamento_Modelo', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($modelo);
         // Mensagem
     	if($sucesso===true){

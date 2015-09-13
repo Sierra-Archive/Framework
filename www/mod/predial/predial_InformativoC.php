@@ -20,8 +20,8 @@ class predial_InformativoControle extends predial_Controle
     public function Main(){
     }
     static function Endereco_Informativo($true=true){
-        $registro = &\Framework\App\Registro::getInstacia();
-        $_Controle = $registro->_Controle;
+        $Registro = &\Framework\App\Registro::getInstacia();
+        $_Controle = $Registro->_Controle;
         $titulo = __('Informativos');
         $link = 'predial/Informativo/Informativos';
         if($true===true){
@@ -31,8 +31,8 @@ class predial_InformativoControle extends predial_Controle
         }
     }
     static function Informativos_Tabela(&$informativos){
-        $registro   = &\Framework\App\Registro::getInstacia();
-        $Visual     = &$registro->_Visual;
+        $Registro   = &\Framework\App\Registro::getInstacia();
+        $Visual     = &$Registro->_Visual;
         $tabela = Array();
         $i = 0;
         if(is_object($informativos)) $informativos = Array(0=>$informativos);

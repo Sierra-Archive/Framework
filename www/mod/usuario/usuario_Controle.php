@@ -18,9 +18,9 @@ class usuario_Controle extends \Framework\App\Controle
     }
     
     static function Usuarios_Tabela(&$usuarios,$nomedisplay_sing,$linkextra, $grupo=false, $url_ver='usuario/Perfil/Perfil_Show', $url_editar='usuario/Admin/Usuarios_Edit', $url_deletar='usuario/Admin/Usuarios_Del'){
-        $registro   = &\Framework\App\Registro::getInstacia();
-        $Modelo     = &$registro->_Modelo;
-        $Visual     = &$registro->_Visual;
+        $Registro   = &\Framework\App\Registro::getInstacia();
+        $Modelo     = &$Registro->_Modelo;
+        $Visual     = &$Registro->_Visual;
         $tabela = Array();
         $i = 0;
         if(is_object($usuarios)){
@@ -36,13 +36,13 @@ class usuario_Controle extends \Framework\App\Controle
         $usuario_Admin_Grupo            = \Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Grupo_Mostrar');
 
         // Get Permissoes (Fora Do LOOPING por performace)
-        $perm_view          = $registro->_Acl->Get_Permissao_Url($url_ver);
-        $perm_comentario    = $registro->_Acl->Get_Permissao_Url('usuario/Admin/Usuarios_Comentario');
-        $perm_anexo         = $registro->_Acl->Get_Permissao_Url('usuario/Anexo/Anexar');
-        $perm_email         = $registro->_Acl->Get_Permissao_Url('usuario/Admin/Usuarios_Email');
-        $perm_status        = $registro->_Acl->Get_Permissao_Url('usuario/Admin/Status');
-        $perm_editar        = $registro->_Acl->Get_Permissao_Url($url_editar);
-        $perm_del           = $registro->_Acl->Get_Permissao_Url($url_deletar);
+        $perm_view          = $Registro->_Acl->Get_Permissao_Url($url_ver);
+        $perm_comentario    = $Registro->_Acl->Get_Permissao_Url('usuario/Admin/Usuarios_Comentario');
+        $perm_anexo         = $Registro->_Acl->Get_Permissao_Url('usuario/Anexo/Anexar');
+        $perm_email         = $Registro->_Acl->Get_Permissao_Url('usuario/Admin/Usuarios_Email');
+        $perm_status        = $Registro->_Acl->Get_Permissao_Url('usuario/Admin/Status');
+        $perm_editar        = $Registro->_Acl->Get_Permissao_Url($url_editar);
+        $perm_del           = $Registro->_Acl->Get_Permissao_Url($url_deletar);
         
         // Verifica Grupo
         $Ativado_Grupo = false;
@@ -422,11 +422,11 @@ class usuario_Controle extends \Framework\App\Controle
         return $tabela->retornatabela();
     }
     static function Usuarios_Email_Ver($id = 0,$tipo=false, $tema='Cliente'){
-        $registro   = &\Framework\App\Registro::getInstacia();
-        $Controle   = $registro->_Controle;
-        $Acl   = $registro->_Acl;
-        $Modelo     = $registro->_Modelo;
-        $Visual     = $registro->_Visual;
+        $Registro   = &\Framework\App\Registro::getInstacia();
+        $Controle   = $Registro->_Controle;
+        $Acl   = $Registro->_Acl;
+        $Modelo     = $Registro->_Modelo;
+        $Visual     = $Registro->_Visual;
         $id = (int) $id;
         $i = 0;
         // Puxa Usuario
@@ -694,16 +694,16 @@ class usuario_Controle extends \Framework\App\Controle
             '->setMessage(\''.$amensagem.'\')'.
             '->setWrap(78)->send();');
             if($send){
-                $registro = new \Usuario_Historico_Email_DAO();
-                $registro->cliente          = $id;
-                $registro->titulo           = \anti_injection($_POST['titulo']);
-                $registro->email_opcional   = $email_opcional;
-                $registro->nome_opcional    = $nome_opcional;
-                $registro->mensagem         = \anti_injection($_POST['mensagem']);
-                $registro->email_usuario    = $usuario->email;
-                $registro->email_usuario2   = $usuario->email2;
-                $registro->nome_usuario     = $nome;
-                $this->_Modelo->db->Sql_Inserir($registro);
+                $Registro = new \Usuario_Historico_Email_DAO();
+                $Registro->cliente          = $id;
+                $Registro->titulo           = \anti_injection($_POST['titulo']);
+                $Registro->email_opcional   = $email_opcional;
+                $Registro->nome_opcional    = $nome_opcional;
+                $Registro->mensagem         = \anti_injection($_POST['mensagem']);
+                $Registro->email_usuario    = $usuario->email;
+                $Registro->email_usuario2   = $usuario->email2;
+                $Registro->nome_usuario     = $nome;
+                $this->_Modelo->db->Sql_Inserir($Registro);
                 $mensagens = array(
                     "tipo" => 'sucesso',
                     "mgs_principal" => __('Email enviado com Sucesso'),
@@ -739,10 +739,10 @@ class usuario_Controle extends \Framework\App\Controle
     static function Static_usuariolistar($grupo=false,$ativado=false,$inverter=false, $export=false){
         
         
-        $registro   = &\Framework\App\Registro::getInstacia();
-        $Controle   = $registro->_Controle;
-        $Modelo     = $registro->_Modelo;
-        $Visual     = $registro->_Visual;
+        $Registro   = &\Framework\App\Registro::getInstacia();
+        $Controle   = $Registro->_Controle;
+        $Modelo     = $Registro->_Modelo;
+        $Visual     = $Registro->_Visual;
         $i          = 0;
         
         
@@ -923,8 +923,8 @@ class usuario_Controle extends \Framework\App\Controle
      */
     public static function Campos_Deletar($tipo = false, &$campos,&$usuario = false){
         // Captura Instancias e 
-        $registro = &\Framework\App\Registro::getInstacia();
-        $_Modelo  = &$registro->_Modelo;
+        $Registro = &\Framework\App\Registro::getInstacia();
+        $_Modelo  = &$Registro->_Modelo;
         
         if($usuario!==false && isset($usuario->grupo)){
             $sql_grupo = $_Modelo->db->Sql_Select('Sistema_Grupo',Array('id'=>$usuario->grupo),1);

@@ -52,8 +52,8 @@ class Agenda_PastaControle extends Agenda_Controle
         }
     }
     static function Pastas_Tabela($pastas){
-        $registro   = &\Framework\App\Registro::getInstacia();
-        $Visual     = &$registro->_Visual;
+        $Registro   = &\Framework\App\Registro::getInstacia();
+        $Visual     = &$Registro->_Visual;
         $tabela = Array();
         $i = 0;
         if(is_object($pastas)) $pastas = Array(0=>$pastas);

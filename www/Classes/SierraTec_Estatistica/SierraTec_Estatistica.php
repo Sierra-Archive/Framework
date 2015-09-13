@@ -29,7 +29,7 @@ class SierraTec_Estatistica {
             $resultado = 'qurey';
             
             // Para Cada Resultado faz Estatica com o filho
-            foreach($resultado as $registro){
+            foreach($resultado as $Registro){
                 if($tipo=='int'){
                     $query = $coluna.'='.$resultado;
                 }else if($tipo=='float'){

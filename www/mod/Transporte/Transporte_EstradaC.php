@@ -6,8 +6,8 @@ class Transporte_EstradaControle extends Transporte_Controle
         parent::__construct();
     }
     static function Endereco_Noticia($true=true){
-        $registro = &\Framework\App\Registro::getInstacia();
-        $_Controle = $registro->_Controle;
+        $Registro = &\Framework\App\Registro::getInstacia();
+        $_Controle = $Registro->_Controle;
         $titulo = __('Estradas');
         $link = 'Transporte/Estrada/Estradas';
         if($true===true){
@@ -26,15 +26,15 @@ class Transporte_EstradaControle extends Transporte_Controle
         return false;
     }
     static function Estradas_Tabela(&$estrada){
-        $registro   = &\Framework\App\Registro::getInstacia();
-        $Visual     = &$registro->_Visual;
+        $Registro   = &\Framework\App\Registro::getInstacia();
+        $Visual     = &$Registro->_Visual;
         $tabela = Array();
         $i = 0;
         if(is_object($estrada)) $estrada = Array(0=>$estrada);reset($estrada);
-        $perm_status = $registro->_Acl->Get_Permissao_Url('Transporte/Estrada/Status');
-        $perm_destaque = $registro->_Acl->Get_Permissao_Url('Transporte/Estrada/Destaques');
-        $perm_editar = $registro->_Acl->Get_Permissao_Url('Transporte/Estrada/Estradas_Edit');
-        $perm_del = $registro->_Acl->Get_Permissao_Url('Transporte/Estrada/Estradas_Del');
+        $perm_status = $Registro->_Acl->Get_Permissao_Url('Transporte/Estrada/Status');
+        $perm_destaque = $Registro->_Acl->Get_Permissao_Url('Transporte/Estrada/Destaques');
+        $perm_editar = $Registro->_Acl->Get_Permissao_Url('Transporte/Estrada/Estradas_Edit');
+        $perm_del = $Registro->_Acl->Get_Permissao_Url('Transporte/Estrada/Estradas_Del');
         foreach ($estrada as &$valor) {                
             $tabela['Id'][$i]           = '#'.$valor->id;
             $tabela['Foto'][$i]         = '<img src="'.$valor->foto.'" style="max-width:100px;" />';

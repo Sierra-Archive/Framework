@@ -37,8 +37,8 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
         }
     }
     static function Modulos_Tabela($modulos){
-        $registro   = &\Framework\App\Registro::getInstacia();
-        $Visual     = &$registro->_Visual;
+        $Registro   = &\Framework\App\Registro::getInstacia();
+        $Visual     = &$Registro->_Visual;
         $tabela = Array();
         $i = 0;
         if(is_object($modulos)) $modulos = Array(0=>$modulos);
@@ -215,8 +215,8 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
         }
     }
     static function Submodulos_Tabela($submodulos){
-        $registro   = &\Framework\App\Registro::getInstacia();
-        $Visual     = &$registro->_Visual;
+        $Registro   = &\Framework\App\Registro::getInstacia();
+        $Visual     = &$Registro->_Visual;
         $tabela = Array();
         $i = 0;
         if(is_object($submodulos)) $submodulos = Array(0=>$submodulos);
@@ -393,8 +393,8 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
         }
     }
     static function Metodos_Tabela($metodos){
-        $registro   = &\Framework\App\Registro::getInstacia();
-        $Visual     = &$registro->_Visual;
+        $Registro   = &\Framework\App\Registro::getInstacia();
+        $Visual     = &$Registro->_Visual;
         $tabela = Array();
         $i = 0;
         if(is_object($metodos)) $metodos = Array(0=>$metodos);

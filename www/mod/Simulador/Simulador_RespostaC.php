@@ -22,8 +22,8 @@ class Simulador_RespostaControle extends Simulador_Controle
         return false;
     }
     static function Endereco_Resposta($true=true,$simulador=false, $pergunta=false){
-        $registro = &\Framework\App\Registro::getInstacia();
-        $_Controle = $registro->_Controle;
+        $Registro = &\Framework\App\Registro::getInstacia();
+        $_Controle = $Registro->_Controle;
         if($simulador===false){
             $titulo = __('Todas as Respostas');
             $link   = 'Simulador/Resposta/Respostas';
@@ -46,9 +46,9 @@ class Simulador_RespostaControle extends Simulador_Controle
         }
     }
     static function Respostas_Tabela(&$respostas,$simulador=false,$pergunta=false){
-        $registro   = &\Framework\App\Registro::getInstacia();
-        $Modelo     = &$registro->_Modelo;
-        $Visual     = &$registro->_Visual;
+        $Registro   = &\Framework\App\Registro::getInstacia();
+        $Modelo     = &$Registro->_Modelo;
+        $Visual     = &$Registro->_Visual;
         $tabela = Array();
         $i = 0;
         if(is_object($respostas)) $respostas = Array(0=>$respostas);

@@ -22,8 +22,8 @@ class Financeiro_FinancaControle extends Financeiro_Controle
         return false;
     }
     static function Endereco_Financa($true=true){
-        $registro = &\Framework\App\Registro::getInstacia();
-        $_Controle = $registro->_Controle;
+        $Registro = &\Framework\App\Registro::getInstacia();
+        $_Controle = $Registro->_Controle;
         if($true===true){
             $_Controle->Tema_Endereco(__('Finanças'),'Financeiro/Financa/Financas');
         }else{

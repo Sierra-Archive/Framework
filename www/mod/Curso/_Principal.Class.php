@@ -9,7 +9,7 @@ class Curso_Principal implements \Framework\PrincipalInterface
      * @static
      * 
      * @param Class &$controle Classe Controle Atual passada por Ponteiro
-     * @param Class &$modelo Modelo Passado por Ponteiro
+     * @param Class &$Modelo Modelo Passado por Ponteiro
      * @param Class &$Visual Visual Passado por Ponteiro
      *
      * @uses Curso_Controle::$num_Indicados
@@ -74,7 +74,7 @@ class Curso_Principal implements \Framework\PrincipalInterface
           'obs'                     => '%'.$busca.'%',
         ));
         $i = 0;
-        $cursos = $modelo->db->Sql_Select('Curso',$where);
+        $cursos = $Modelo->db->Sql_Select('Curso',$where);
         if($cursos===false) return false;
         // add botao
         $Visual->Blocar('<a title="Adicionar Curso" class="btn btn-success lajax explicar-titulo" acao="" href="'.URL_PATH.'Curso/Curso/Cursos_Add">Adicionar novo Curso</a><div class="space15"></div>');
@@ -95,7 +95,7 @@ class Curso_Principal implements \Framework\PrincipalInterface
           'obs'                     => '%'.$busca.'%',
         ));
         $i = 0;
-        $albuns = $modelo->db->Sql_Select('Curso_Turma',$where);
+        $albuns = $Modelo->db->Sql_Select('Curso_Turma',$where);
         if($albuns===false) return false;
         // add botao
         $Visual->Blocar('<a title="Adicionar Turma" class="btn btn-success lajax explicar-titulo" acao="" href="'.URL_PATH.'Curso/Turma/Turmas_Add">Adicionar nova Turma</a><div class="space15"></div>');
@@ -117,10 +117,10 @@ class Curso_Principal implements \Framework\PrincipalInterface
      */
     public static function Widgets(){
         $Registro = &\Framework\App\Registro::getInstacia();
-        $Modelo = &$registro->_Modelo;
-        $Visual = $Registro->_Visual;
+        $Modelo = &$Registro->_Modelo;
+        $Visual = &$Registro->_Visual;
         // Cursos
-        $curso_qnt = $modelo->db->Sql_Contar('Curso');
+        $curso_qnt = $Modelo->db->Sql_Contar('Curso');
         // Adiciona Widget a Pagina Inicial
         \Framework\App\Visual::Layoult_Home_Widgets_Add(
             'Cursos', 
@@ -132,7 +132,7 @@ class Curso_Principal implements \Framework\PrincipalInterface
             14
         );
         // Turmas
-        $turma_qnt = $modelo->db->Sql_Contar('Curso_Turma');
+        $turma_qnt = $Modelo->db->Sql_Contar('Curso_Turma');
         // Adiciona Widget a Pagina Inicial
         \Framework\App\Visual::Layoult_Home_Widgets_Add(
             'Turmas', 

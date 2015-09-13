@@ -20,8 +20,8 @@ class predial_ApartControle extends predial_Controle
     public function Main(){
     }
     static function Endereco_Apart($true=true){
-        $registro = &\Framework\App\Registro::getInstacia();
-        $_Controle = $registro->_Controle;
+        $Registro = &\Framework\App\Registro::getInstacia();
+        $_Controle = $Registro->_Controle;
         $titulo = __('Apartamentos');
         $link = 'predial/Apart/Aparts';
         if($true===true){
@@ -31,8 +31,8 @@ class predial_ApartControle extends predial_Controle
         }
     }
     static function Aparts_Tabela(&$apartamentos){
-        $registro   = &\Framework\App\Registro::getInstacia();
-        $Visual     = &$registro->_Visual;
+        $Registro   = &\Framework\App\Registro::getInstacia();
+        $Visual     = &$Registro->_Visual;
         $tabela = Array();
         $i = 0;
         if(is_object($apartamentos)) $apartamentos = Array(0=>$apartamentos);

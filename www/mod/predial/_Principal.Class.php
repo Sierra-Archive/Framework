@@ -9,7 +9,7 @@ class predial_Principal implements \Framework\PrincipalInterface
      * @static
      * 
      * @param Class &$controle Classe Controle Atual passada por Ponteiro
-     * @param Class &$modelo Modelo Passado por Ponteiro
+     * @param Class &$Modelo Modelo Passado por Ponteiro
      * @param Class &$Visual Visual Passado por Ponteiro
      *
      * @uses predial_Controle::$num_Indicados
@@ -47,14 +47,14 @@ class predial_Principal implements \Framework\PrincipalInterface
      */
     public static function Widgets(){
         $Registro = &\Framework\App\Registro::getInstacia();
-        $Modelo = &$registro->_Modelo;
-        $Visual = $Registro->_Visual;
+        $Modelo = &$Registro->_Modelo;
+        $Visual = &$Registro->_Visual;
         
         
         
         if(\Framework\App\Registro::getInstacia()->_Acl->Get_Permissao_Url('predial/Correio/Correios')){
             // Correios
-            $correio_qnt = $modelo->db->Sql_Contar('Predial_Bloco_Apart_Correio','data_recebido=\'0000-00-00 00:00:00\'');
+            $correio_qnt = $Modelo->db->Sql_Contar('Predial_Bloco_Apart_Correio','data_recebido=\'0000-00-00 00:00:00\'');
             // Adiciona Widget a Pagina Inicial
             \Framework\App\Visual::Layoult_Home_Widgets_Add(
                 'Correios recebidos e não entregues', 
@@ -76,7 +76,7 @@ class predial_Principal implements \Framework\PrincipalInterface
             $where = Array(
                 'morador'     => $id
             );
-            $apartamentos = $modelo->db->Sql_Select('Predial_Bloco_Apart',$where);
+            $apartamentos = $Modelo->db->Sql_Select('Predial_Bloco_Apart',$where);
             if(is_object($apartamentos)) $apartamentos = Array(0=>$apartamentos);
             if($apartamentos!==false && !empty($apartamentos)){
                 foreach ($apartamentos as $valor){
@@ -180,7 +180,7 @@ class predial_Principal implements \Framework\PrincipalInterface
           'data_acontecimento'      => '%'.$busca.'%'
         ));
         $i = 0;
-        $advertencias = $modelo->db->Sql_Select('Predial_Bloco_Apart_Advertencia',$where);
+        $advertencias = $Modelo->db->Sql_Select('Predial_Bloco_Apart_Advertencia',$where);
         if($advertencias===false) return false;
         // add botao
         $Visual->Blocar('<a title="Adicionar Advertência" class="btn btn-success lajax explicar-titulo" acao="" href="'.URL_PATH.'predial/Advertencia/Advertencias_Add">Adicionar nova Advertência</a><div class="space15"></div>');
@@ -200,7 +200,7 @@ class predial_Principal implements \Framework\PrincipalInterface
           'nome'                    => '%'.$busca.'%'
         );
         $i = 0;
-        $animais = $modelo->db->Sql_Select('Predial_Bloco_Apart_Animal',$where);
+        $animais = $Modelo->db->Sql_Select('Predial_Bloco_Apart_Animal',$where);
         if($animais===false) return false;
         // add botao
         $Visual->Blocar('<a title="Adicionar Animal" class="btn btn-success lajax explicar-titulo" acao="" href="'.URL_PATH.'predial/Correio/Animais_Add">Adicionar novo Animal</a><div class="space15"></div>');
@@ -220,7 +220,7 @@ class predial_Principal implements \Framework\PrincipalInterface
           'num'                     => '%'.$busca.'%'
         );
         $i = 0;
-        $apartamentos = $modelo->db->Sql_Select('Predial_Bloco_Apart',$where);
+        $apartamentos = $Modelo->db->Sql_Select('Predial_Bloco_Apart',$where);
         if($apartamentos===false) return false;
         // add botao
         $Visual->Blocar('<a title="Adicionar Apartamento" class="btn btn-success lajax explicar-titulo" acao="" href="'.URL_PATH.'predial/Apart/Aparts_Add">Adicionar novo Apartamento</a><div class="space15"></div>');
@@ -240,7 +240,7 @@ class predial_Principal implements \Framework\PrincipalInterface
           'nome'                    => '%'.$busca.'%'
         );
         $i = 0;
-        $blocos = $modelo->db->Sql_Select('Predial_Bloco',$where);
+        $blocos = $Modelo->db->Sql_Select('Predial_Bloco',$where);
         if($blocos===false) return false;
         // add botao
         $Visual->Blocar('<a title="Adicionar Bloco" class="btn btn-success lajax explicar-titulo" acao="" href="'.URL_PATH.'predial/Bloco/Blocos_Add">Adicionar novo Bloco</a><div class="space15"></div>');
@@ -264,7 +264,7 @@ class predial_Principal implements \Framework\PrincipalInterface
           'data_recebido'           => '%'.$busca.'%'
         ));
         $i = 0;
-        $correios = $modelo->db->Sql_Select('Predial_Bloco_Apart_Correio',$where);
+        $correios = $Modelo->db->Sql_Select('Predial_Bloco_Apart_Correio',$where);
         if($correios===false) return false;
         // add botao
         $Visual->Blocar('<a title="Adicionar Correio" class="btn btn-success lajax explicar-titulo" acao="" href="'.URL_PATH.'predial/Correio/Correios_Add">Adicionar novo Correio</a><div class="space15"></div>');
@@ -289,7 +289,7 @@ class predial_Principal implements \Framework\PrincipalInterface
           'data_fim'                => '%'.$busca.'%'
         ));
         $i = 0;
-        $informativos = $modelo->db->Sql_Select('Predial_Bloco_Apart_Informativo',$where);
+        $informativos = $Modelo->db->Sql_Select('Predial_Bloco_Apart_Informativo',$where);
         if($informativos===false) return false;
         // add botao
         $Visual->Blocar('<a title="Adicionar Informativo" class="btn btn-success lajax explicar-titulo" acao="" href="'.URL_PATH.'predial/Informativo/Informativos_Add">Adicionar novo Informativo</a><div class="space15"></div>');
@@ -312,7 +312,7 @@ class predial_Principal implements \Framework\PrincipalInterface
           'placa'                   => '%'.$busca.'%'
         ));
         $i = 0;
-        $veiculos = $modelo->db->Sql_Select('Predial_Bloco_Apart_Veiculo',$where);
+        $veiculos = $Modelo->db->Sql_Select('Predial_Bloco_Apart_Veiculo',$where);
         if($veiculos===false) return false;
         // add botao
         $Visual->Blocar('<a title="Adicionar Veiculo" class="btn btn-success lajax explicar-titulo" acao="" href="'.URL_PATH.'predial/Correio/Veiculos_Add">Adicionar novo Veiculo</a><div class="space15"></div>');

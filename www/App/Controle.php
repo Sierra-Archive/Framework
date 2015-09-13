@@ -1441,10 +1441,10 @@ readfile($link);*/
      * @version 3.1.1
      */
     static function Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,&$campos = false,$editar=false,$bloco='All',$janela=true){
-        $registro = &\Framework\App\Registro::getInstacia();
-        $Controle = &$registro->_Controle;
-        $Modelo = &$registro->_Modelo;
-        $Visual = &$registro->_Visual;
+        $Registro = &\Framework\App\Registro::getInstacia();
+        $Controle = &$Registro->_Controle;
+        $Modelo = &$Registro->_Modelo;
+        $Visual = &$Registro->_Visual;
         $tempo = new \Framework\App\Tempo('Controle Gerador Form Janela');
         
         // Define Popup

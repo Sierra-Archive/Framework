@@ -780,8 +780,8 @@ class Acl{
      * @version 3.1.1
      */
     public static function Usuario_GetID_Static(){
-        $registro = &\Framework\App\Registro::getInstacia();
-        $Acl = $registro->_Acl;
+        $Registro = &\Framework\App\Registro::getInstacia();
+        $Acl = $Registro->_Acl;
         return ($Acl)?$Acl->Usuario_GetID():0;
     }
     /**
@@ -1146,13 +1146,13 @@ class Acl{
     public static function &Sistema_Modulos_Carregar_Funcional(){
         $tempo = new \Framework\App\Tempo('\Framework\App\Acl::Sistema_Modulos_Configs->Funcional');
         // ordena na ordem correta
-        $registro = &\Framework\App\Registro::getInstacia();
+        $Registro = &\Framework\App\Registro::getInstacia();
         // Inicializa Caso nao Tenha Sido
-        if($registro->_Cache===false){
-            $registro->_Cache = new \Framework\App\Cache();
+        if($Registro->_Cache===false){
+            $Registro->_Cache = new \Framework\App\Cache();
         }
         // Verifica se Tem Cache
-        $funcional = $registro->_Cache->Ler('Config_Funcional');
+        $funcional = $Registro->_Cache->Ler('Config_Funcional');
         if (!$funcional) {
             $ponteiro   = Array('_Sistema' => '_Sistema');
             if(function_exists('config_modulos')){
@@ -1196,7 +1196,7 @@ class Acl{
                 }
                 next($ponteiro);
             }
-            $registro->_Cache->Salvar('Config_Funcional', $funcional);
+            $Registro->_Cache->Salvar('Config_Funcional', $funcional);
         }
         return $funcional;
     }

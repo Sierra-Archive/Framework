@@ -36,8 +36,8 @@ class comercio_LinhaControle extends comercio_Controle
         return false;
     }
     static function Endereco_Linha($true=true){
-        $registro = &\Framework\App\Registro::getInstacia();
-        $_Controle = $registro->_Controle;
+        $Registro = &\Framework\App\Registro::getInstacia();
+        $_Controle = $Registro->_Controle;
         $titulo = __('Linhas');
         $link = 'comercio/Linha/Linhas';
         if($true===true){

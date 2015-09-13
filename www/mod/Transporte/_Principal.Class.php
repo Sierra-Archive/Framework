@@ -8,10 +8,10 @@ class Transporte_Principal implements \Framework\PrincipalInterface
     * @version 3.1.1
     */
     static function Home(&$controle, &$modelo, &$Visual){
-        $registro = Framework\App\Registro::getInstacia();
+        $Registro = Framework\App\Registro::getInstacia();
         
         // Se for Armazem Libera Painel de Armazem
-        if($registro->_Acl->Get_Permissao_Url('Transporte/Armazem/Painel')){
+        if($Registro->_Acl->Get_Permissao_Url('Transporte/Armazem/Painel')){
                 $Visual->Bloco_Customizavel(Array(
                     Array(
                         'span'      =>      12,
@@ -31,7 +31,7 @@ class Transporte_Principal implements \Framework\PrincipalInterface
         }
         
         // Se for Caminhoneiro Libera Painel de Caminhoneiro
-        if($registro->_Acl->Get_Permissao_Url('Transporte/Caminhoneiro/Painel')){
+        if($Registro->_Acl->Get_Permissao_Url('Transporte/Caminhoneiro/Painel')){
                 $Visual->Bloco_Customizavel(Array(
                     Array(
                         'span'      =>      12,
@@ -51,7 +51,7 @@ class Transporte_Principal implements \Framework\PrincipalInterface
         }
         
         // Se for Transportadora Libera Painel de Transportadora
-        if($registro->_Acl->Get_Permissao_Url('Transporte/Transportadora/Painel')){
+        if($Registro->_Acl->Get_Permissao_Url('Transporte/Transportadora/Painel')){
                 $Visual->Bloco_Customizavel(Array(
                     Array(
                         'span'      =>      12,
@@ -71,7 +71,7 @@ class Transporte_Principal implements \Framework\PrincipalInterface
         }
         
         // Se for Fornecedor Libera Painel de Fornecedor
-        if($registro->_Acl->Get_Permissao_Url('Transporte/Fornecedor/Painel')){
+        if($Registro->_Acl->Get_Permissao_Url('Transporte/Fornecedor/Painel')){
                 $Visual->Bloco_Customizavel(Array(
                     Array(
                         'span'      =>      12,
@@ -130,7 +130,7 @@ class Transporte_Principal implements \Framework\PrincipalInterface
           //'texto'                   => '%'.$busca.'%',
         ));
         $i = 0;
-        $armazens = $modelo->db->Sql_Select('Transporte_Armazem',$where);
+        $armazens = $Modelo->db->Sql_Select('Transporte_Armazem',$where);
         if($armazens===false) return false;
         // add botao
         $Visual->Blocar('<a title="Adicionar Armazem" class="btn btn-success lajax explicar-titulo" acao="" href="'.URL_PATH.'Transporte/Armazem/Armazens_Add">Adicionar novo Armazem</a><div class="space15"></div>');

@@ -18,8 +18,8 @@ class Financeiro_Controle extends \Framework\App\Controle
     } 
     
     static function Saldo_Carregar(&$modelo, &$Visual, $usuarioid){
-        $registro = &\Framework\App\Registro::getInstacia();
-        $acl = $registro->_Acl;
+        $Registro = &\Framework\App\Registro::getInstacia();
+        $acl = $Registro->_Acl;
         $html = '';
         if($usuarioid!=0 && $usuarioid!='' && isset($usuarioid)){
             // Mostra a Porrra Toda
@@ -61,8 +61,8 @@ class Financeiro_Controle extends \Framework\App\Controle
      * @return boolean
      */
     public static function FinanceiroInt($motivo,$motivoid,$entrada_motivo,$entrada_motivoid,$saida_motivo,$saida_motivoid,$valor,$vencimento,$parcela='0',$categoria=0,$forma=0,$condicao=0,$pago=0){
-        $registro = &\Framework\App\Registro::getInstacia();
-        $_Modelo = &$registro->_Modelo;
+        $Registro = &\Framework\App\Registro::getInstacia();
+        $_Modelo = &$Registro->_Modelo;
         $financeiro = new \Financeiro_Pagamento_Interno_DAO();
         $financeiro->categoria          = $categoria;
         $financeiro->motivo             = $motivo;

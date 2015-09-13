@@ -22,8 +22,8 @@ class Enquete_RespostaControle extends Enquete_Controle
     }
     static function Endereco_Resposta($enquete=false,$true=true){
         Enquete_EnqueteControle::Endereco_Enquete();
-        $registro = &\Framework\App\Registro::getInstacia();
-        $_Controle = $registro->_Controle;
+        $Registro = &\Framework\App\Registro::getInstacia();
+        $_Controle = $Registro->_Controle;
         
         $link_extra = '';
         if($enquete!==false){
@@ -37,16 +37,16 @@ class Enquete_RespostaControle extends Enquete_Controle
         }
     }
     static function Respostas_Tabela(&$respostas){
-        $registro   = &\Framework\App\Registro::getInstacia();
-        $Modelo     = &$registro->_Modelo;
-        $Visual     = &$registro->_Visual;
+        $Registro   = &\Framework\App\Registro::getInstacia();
+        $Modelo     = &$Registro->_Modelo;
+        $Visual     = &$Registro->_Visual;
         $tabela = Array();
         $i = 0;
         if(is_object($respostas)) $respostas = Array(0=>$respostas);
         reset($respostas);
         $qnt_votos_totais = 0;
-        $perm_editar = $registro->_Acl->Get_Permissao_Url('Enquete/Resposta/Respostas_Edit');
-        $perm_del = $registro->_Acl->Get_Permissao_Url('Enquete/Resposta/Respostas_Del');
+        $perm_editar = $Registro->_Acl->Get_Permissao_Url('Enquete/Resposta/Respostas_Edit');
+        $perm_del = $Registro->_Acl->Get_Permissao_Url('Enquete/Resposta/Respostas_Del');
 
         foreach ($respostas as &$valor) {
             $resp_votos = $Modelo->db->Sql_Select('Enquete_Voto',Array(

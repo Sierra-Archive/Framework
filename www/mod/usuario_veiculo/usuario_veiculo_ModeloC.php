@@ -37,8 +37,8 @@ class usuario_veiculo_ModeloControle extends usuario_veiculo_Controle
         $this->_Visual->Json_Info_Update('Titulo', __('Modelos')); 
     }
     static function Endereco_Veiculo_Modelo($true=true){
-        $registro = &\Framework\App\Registro::getInstacia();
-        $_Controle = $registro->_Controle;
+        $Registro = &\Framework\App\Registro::getInstacia();
+        $_Controle = $Registro->_Controle;
         $titulo = __('Modelos');
         $link = 'usuario_veiculo/Modelo/Modelos';
         // Chama Veiculo
@@ -160,7 +160,7 @@ class usuario_veiculo_ModeloControle extends usuario_veiculo_Controle
         
     	$id = (int) $id;
         // Puxa modelo e deleta
-        $modelo = $this->_Modelo->db->Sql_Select('Usuario_Veiculo_Modelo', Array('id'=>$id));
+        $Modelo = $this->_Modelo->db->Sql_Select('Usuario_Veiculo_Modelo', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($modelo);
         // Mensagem
     	if($sucesso===true){

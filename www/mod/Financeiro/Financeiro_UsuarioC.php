@@ -22,8 +22,8 @@ class Financeiro_UsuarioControle extends Financeiro_Controle
         parent::__construct();
     }
     static function Endereco_Financeiro($true=true){
-        $registro = &\Framework\App\Registro::getInstacia();
-        $_Controle = $registro->_Controle;
+        $Registro = &\Framework\App\Registro::getInstacia();
+        $_Controle = $Registro->_Controle;
         $titulo = __('Financeiro');
         $link = '_Sistema/Principal/Home';
         if($true===true){
@@ -34,8 +34,8 @@ class Financeiro_UsuarioControle extends Financeiro_Controle
     }
     static function Endereco_Pagar($true=true){
         self::Endereco_Financeiro();
-        $registro = &\Framework\App\Registro::getInstacia();
-        $_Controle = $registro->_Controle;
+        $Registro = &\Framework\App\Registro::getInstacia();
+        $_Controle = $Registro->_Controle;
         $titulo = __('À Pagar');
         $link = 'Financeiro/Usuario/Pagar';
         if($true===true){
@@ -46,8 +46,8 @@ class Financeiro_UsuarioControle extends Financeiro_Controle
     }
     static function Endereco_Receber($true=true){
         self::Endereco_Financeiro();
-        $registro = &\Framework\App\Registro::getInstacia();
-        $_Controle = $registro->_Controle;
+        $Registro = &\Framework\App\Registro::getInstacia();
+        $_Controle = $Registro->_Controle;
         $titulo = __('À Receber');
         $link = 'Financeiro/Usuario/Receber';
         if($true===true){
@@ -58,8 +58,8 @@ class Financeiro_UsuarioControle extends Financeiro_Controle
     }
     static function Endereco_Pago($true=true){
         self::Endereco_Financeiro();
-        $registro = &\Framework\App\Registro::getInstacia();
-        $_Controle = $registro->_Controle;
+        $Registro = &\Framework\App\Registro::getInstacia();
+        $_Controle = $Registro->_Controle;
         $titulo = __('Pagas');
         $link = 'Financeiro/Usuario/Pago';
         if($true===true){
@@ -70,8 +70,8 @@ class Financeiro_UsuarioControle extends Financeiro_Controle
     }
     static function Endereco_Recebido($true=true){
         self::Endereco_Financeiro();
-        $registro = &\Framework\App\Registro::getInstacia();
-        $_Controle = $registro->_Controle;
+        $Registro = &\Framework\App\Registro::getInstacia();
+        $_Controle = $Registro->_Controle;
         $titulo = __('Recebidos');
         $link = 'Financeiro/Usuario/Recebido';
         if($true===true){
@@ -274,8 +274,8 @@ class Financeiro_UsuarioControle extends Financeiro_Controle
      */
     static function Financeiro_Usuario($motivo,$motivo_id,$pago){
         // Carrega Modelo
-        $registro = &\Framework\App\Registro::getInstacia();
-        $_Modelo = &$registro->_Modelo;
+        $Registro = &\Framework\App\Registro::getInstacia();
+        $_Modelo = &$Registro->_Modelo;
         // Prepara Update ClasseDAO|SET|WHERE
         $string = 'Financeiro_Pagamento_Interno|pago=\''.$pago.'\'| motivo=\''.$motivo.'\' AND motivoid=\''.$motivo_id.'\'';
         $_Modelo->db->Sql_Update($string);

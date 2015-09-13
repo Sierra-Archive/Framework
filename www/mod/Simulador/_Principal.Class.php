@@ -9,7 +9,7 @@ class Simulador_Principal implements \Framework\PrincipalInterface
      * @static
      * 
      * @param Class &$controle Classe Controle Atual passada por Ponteiro
-     * @param Class &$modelo Modelo Passado por Ponteiro
+     * @param Class &$Modelo Modelo Passado por Ponteiro
      * @param Class &$Visual Visual Passado por Ponteiro
      *
      * @uses tag_Controle::$num_Indicados
@@ -47,10 +47,10 @@ class Simulador_Principal implements \Framework\PrincipalInterface
      */
     public static function Widgets(){
         $Registro = &\Framework\App\Registro::getInstacia();
-        $Modelo = &$registro->_Modelo;
-        $Visual = $Registro->_Visual;
+        $Modelo = &$Registro->_Modelo;
+        $Visual = &$Registro->_Visual;
         // Tags
-        $tag_qnt = $modelo->db->Sql_Contar('Simulador_Tag');
+        $tag_qnt = $Modelo->db->Sql_Contar('Simulador_Tag');
         // Adiciona Widget a Pagina Inicial
         \Framework\App\Visual::Layoult_Home_Widgets_Add(
             'Tags/Caracteristicas', 
@@ -87,7 +87,7 @@ class Simulador_Principal implements \Framework\PrincipalInterface
           'arquivo'                 => '%'.$busca.'%'
         ));
         $i = 0;
-        $tags = $modelo->db->Sql_Select('Simulador_Tag',$where);
+        $tags = $Modelo->db->Sql_Select('Simulador_Tag',$where);
         if($tags===false) return false;
         // add botao
         $Visual->Blocar('<a title="Adicionar Tag" class="btn btn-success lajax explicar-titulo" acao="" href="'.URL_PATH.'Simulador/Tag/Tags_Add">Adicionar nova Tag</a><div class="space15"></div>');
@@ -186,8 +186,8 @@ class Simulador_Principal implements \Framework\PrincipalInterface
      */
     public static function Manutencao(&$log){
         $Registro = &\Framework\App\Registro::getInstacia();
-        $Modelo = &$registro->_Modelo;
-        $Visual = $Registro->_Visual;
+        $Modelo = &$Registro->_Modelo;
+        $Visual = &$Registro->_Visual;
         // Endereços dos arquivos $tags_chaves['endereco'] = 'ID';
         return true;
     }

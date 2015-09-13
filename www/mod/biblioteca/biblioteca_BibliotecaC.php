@@ -22,8 +22,8 @@ class biblioteca_BibliotecaControle extends biblioteca_Controle
         return false;
     }
     static function Endereco_Biblioteca($true=true){
-        $registro = &\Framework\App\Registro::getInstacia();
-        $_Controle = $registro->_Controle;
+        $Registro = &\Framework\App\Registro::getInstacia();
+        $_Controle = $Registro->_Controle;
         if($true===true){
             $_Controle->Tema_Endereco(__('Biblioteca'),'biblioteca/Biblioteca/Bibliotecas');
         }else{
@@ -45,10 +45,10 @@ class biblioteca_BibliotecaControle extends biblioteca_Controle
     }
     static function Bibliotecas_Tabela(&$bibliotecas,$raiz=0){
         $funcao = '';
-        $registro   = &\Framework\App\Registro::getInstacia();
-        $Controle     = &$registro->_Controle;
-        $Modelo     = &$registro->_Modelo;
-        $Visual     = &$registro->_Visual;
+        $Registro   = &\Framework\App\Registro::getInstacia();
+        $Controle     = &$Registro->_Controle;
+        $Modelo     = &$Registro->_Modelo;
+        $Visual     = &$Registro->_Visual;
         $tabela = Array();
         $i = 0;
         if($raiz!==false && $raiz!=0){
@@ -174,9 +174,9 @@ class biblioteca_BibliotecaControle extends biblioteca_Controle
         return self::Bibliotecas_Processar_Static($raiz);
     }
     private static function Bibliotecas_Processar_Static($raiz = false){
-        $registro = &\Framework\App\Registro::getInstacia();
-        $_Modelo = &$registro->_Modelo;
-        $_Visual = $registro->_Visual;
+        $Registro = &\Framework\App\Registro::getInstacia();
+        $_Modelo = &$Registro->_Modelo;
+        $_Visual = &$Registro->_Visual;
         // Biblioteca
         $endereco = (string) '';
         $html     = (string) '';
@@ -543,8 +543,8 @@ class biblioteca_BibliotecaControle extends biblioteca_Controle
         $existe = false;
         if($retornar==='false') $retornar = false;
         // Verifica se Existe Conexao, se nao tiver abre o adicionar conexao, se nao, abre a pasta!
-        $registro = &\Framework\App\Registro::getInstacia();
-        $resultado = $registro->_Modelo->db->Sql_Select('Biblioteca_Acesso','{sigla}motivo=\''.$motivo.'\' AND {sigla}motivoid=\''.$motivoid.'\'',1);
+        $Registro = &\Framework\App\Registro::getInstacia();
+        $resultado = $Registro->_Modelo->db->Sql_Select('Biblioteca_Acesso','{sigla}motivo=\''.$motivo.'\' AND {sigla}motivoid=\''.$motivoid.'\'',1);
         if(is_object($resultado)){
             $existe = true;
         }
@@ -555,7 +555,7 @@ class biblioteca_BibliotecaControle extends biblioteca_Controle
         }else{
             /*list($titulo,$html,$i)*/$html = self::Bibliotecas_Processar_Static($resultado->biblioteca, false);
             $html = '<span id="biblioteca_arquivos_mostrar">'.$html[1].'</span>'.
-                    $registro->_Visual->Upload_Janela(
+                    $Registro->_Visual->Upload_Janela(
                         'biblioteca',
                         'Biblioteca',
                         'Bibliotecas',
@@ -575,7 +575,7 @@ class biblioteca_BibliotecaControle extends biblioteca_Controle
                 'js'        =>  '',
                 'html'      =>  $html
             );
-            $registro->_Visual->Json_IncluiTipo('Conteudo',$conteudo);
+            $Registro->_Visual->Json_IncluiTipo('Conteudo',$conteudo);
         }
     }
     static protected function Biblioteca_Dinamica_Add($motivo,$motivoid,$camada){

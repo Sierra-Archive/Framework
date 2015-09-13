@@ -23,7 +23,7 @@ class usuario_rede_Controle extends \Framework\App\Controle
     * @access public
     * @static
     * 
-    * @param Class $modelo Carrega Class Modelo
+    * @param Class $Modelo Carrega Class Modelo
     * @param Class $Visual Carrega Class Visual
     * @param int $usuario id do usuario
     *

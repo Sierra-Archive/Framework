@@ -50,8 +50,8 @@ class Desenvolvimento_ProjetoControle extends Desenvolvimento_Controle
         return false;
     }
     static function Projetos_Tabela($projetos){
-        $registro   = &\Framework\App\Registro::getInstacia();
-        $Visual     = &$registro->_Visual;
+        $Registro   = &\Framework\App\Registro::getInstacia();
+        $Visual     = &$Registro->_Visual;
         $tabela = Array();
         $i = 0;
         if(is_object($projetos)) $projetos = Array(0=>$projetos);

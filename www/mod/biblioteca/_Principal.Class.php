@@ -9,7 +9,7 @@ class biblioteca_Principal implements \Framework\PrincipalInterface
      * @static
      * 
      * @param Class &$controle Classe Controle Atual passada por Ponteiro
-     * @param Class &$modelo Modelo Passado por Ponteiro
+     * @param Class &$Modelo Modelo Passado por Ponteiro
      * @param Class &$Visual Visual Passado por Ponteiro
      *
      * @uses biblioteca_Controle::$num_Indicados
@@ -47,10 +47,10 @@ class biblioteca_Principal implements \Framework\PrincipalInterface
      */
     public static function Widgets(){
         $Registro = &\Framework\App\Registro::getInstacia();
-        $Modelo = &$registro->_Modelo;
-        $Visual = $Registro->_Visual;
+        $Modelo = &$Registro->_Modelo;
+        $Visual = &$Registro->_Visual;
         // Bibliotecas
-        $biblioteca_qnt = $modelo->db->Sql_Contar('Biblioteca');
+        $biblioteca_qnt = $Modelo->db->Sql_Contar('Biblioteca');
         // Adiciona Widget a Pagina Inicial
         \Framework\App\Visual::Layoult_Home_Widgets_Add(
             'Arquivos/Pastas', 
@@ -87,7 +87,7 @@ class biblioteca_Principal implements \Framework\PrincipalInterface
           'arquivo'                 => '%'.$busca.'%'
         ));
         $i = 0;
-        $bibliotecas = $modelo->db->Sql_Select('Biblioteca',$where);
+        $bibliotecas = $Modelo->db->Sql_Select('Biblioteca',$where);
         if($bibliotecas===false) return false;
         // add botao
         $Visual->Blocar('<a title="Adicionar Pasta a Biblíoteca" class="btn btn-success lajax explicar-titulo" acao="" href="'.URL_PATH.'biblioteca/Biblioteca/Bibliotecas_Add">Adicionar nova Biblíoteca</a><div class="space15"></div>');
@@ -199,13 +199,13 @@ class biblioteca_Principal implements \Framework\PrincipalInterface
      */
     public static function Manutencao(&$log){
         $Registro = &\Framework\App\Registro::getInstacia();
-        $Modelo = &$registro->_Modelo;
-        $Visual = $Registro->_Visual;
+        $Modelo = &$Registro->_Modelo;
+        $Visual = &$Registro->_Visual;
         // Endereços dos arquivos $bibliotecas_chaves['endereco'] = 'ID';
         $bibliotecas_chaves = Array();
         
         // Carrega Bibliotecas
-        $biblioteca = $modelo->db->Sql_Select('Biblioteca',false,0, '', '*', true, '*'); // Pega Todos os Dados de Bibliotecas -> Até os Deletados.
+        $biblioteca = $Modelo->db->Sql_Select('Biblioteca',false,0, '', '*', true, '*'); // Pega Todos os Dados de Bibliotecas -> Até os Deletados.
         if(is_object($biblioteca))  $biblioteca = Array($biblioteca);
         if($biblioteca===false)     $biblioteca = Array();
         

@@ -68,8 +68,8 @@ class usuario_veiculo_VeiculoControle extends usuario_veiculo_Controle
         return false; 
     }
     static function Endereco_Veiculo($true=true){
-        $registro = &\Framework\App\Registro::getInstacia();
-        $_Controle = $registro->_Controle;
+        $Registro = &\Framework\App\Registro::getInstacia();
+        $_Controle = $Registro->_Controle;
         $titulo = __('Veiculos');
         $link   = 'usuario_veiculo/Veiculo/Veiculos';
         if($true===true){

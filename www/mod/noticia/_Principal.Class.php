@@ -9,7 +9,7 @@ class noticia_Principal implements \Framework\PrincipalInterface
     * @static
     * 
     * @param Class &$controle Classe Controle Atual passada por Ponteiro
-    * @param Class &$modelo Modelo Passado por Ponteiro
+    * @param Class &$Modelo Modelo Passado por Ponteiro
     * @param Class &$Visual Visual Passado por Ponteiro
     *
     * @uses \Framework\App\Controle::$noticia
@@ -21,7 +21,7 @@ class noticia_Principal implements \Framework\PrincipalInterface
     */
     static function Home(&$controle, &$modelo, &$Visual){
         // Noticias
-        $noticia_qnt = $modelo->db->Sql_Contar('Noticia');
+        $noticia_qnt = $Modelo->db->Sql_Contar('Noticia');
         // Adiciona Widget a Pagina Inicial
         \Framework\App\Visual::Layoult_Home_Widgets_Add(
             'Noticias', 
@@ -78,7 +78,7 @@ class noticia_Principal implements \Framework\PrincipalInterface
           'texto'                   => '%'.$busca.'%',
         ));
         $i = 0;
-        $noticias = $modelo->db->Sql_Select('Noticia',$where);
+        $noticias = $Modelo->db->Sql_Select('Noticia',$where);
         if($noticias===false) return false;
         // add botao
         $Visual->Blocar('<a title="Adicionar Noticia" class="btn btn-success lajax explicar-titulo" acao="" href="'.URL_PATH.'Noticia/Admin/Noticias_Add">Adicionar novo Noticia</a><div class="space15"></div>');

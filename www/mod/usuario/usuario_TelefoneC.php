@@ -35,8 +35,8 @@ class usuario_TelefoneControle extends usuario_Controle
         return false; 
     }
     static function Endereco_Telefone($true=true){
-        $registro = &\Framework\App\Registro::getInstacia();
-        $_Controle = $registro->_Controle;
+        $Registro = &\Framework\App\Registro::getInstacia();
+        $_Controle = $Registro->_Controle;
         if($true===true){
             $_Controle->Tema_Endereco(__('Telefone'),'usuario/Telefone/Telefone');
         }else{

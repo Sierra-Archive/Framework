@@ -35,8 +35,8 @@ class social_PersonaControle extends social_Controle
         return false;
     }
     protected static function Endereco_Persona($true=true){
-        $registro = &\Framework\App\Registro::getInstacia();
-        $_Controle = $registro->_Controle;
+        $Registro = &\Framework\App\Registro::getInstacia();
+        $_Controle = $Registro->_Controle;
         if($true===true){
             $_Controle->Tema_Endereco(__('Personas'),'social/Persona/Personas');
         }else{
@@ -44,8 +44,8 @@ class social_PersonaControle extends social_Controle
         }
     }
     protected static function Endereco_Persona_Ver($persona,$true=true){
-        $registro = &\Framework\App\Registro::getInstacia();
-        $_Controle = $registro->_Controle;
+        $Registro = &\Framework\App\Registro::getInstacia();
+        $_Controle = $Registro->_Controle;
         self::Endereco_Persona();
         if($true===true){
             $_Controle->Tema_Endereco($persona->nome,'social/Persona/Personas_View/'.$persona->id);
@@ -54,8 +54,8 @@ class social_PersonaControle extends social_Controle
         }
     }
     protected static function Endereco_Persona_Ver_Ficar($persona,$true=true){
-        $registro = &\Framework\App\Registro::getInstacia();
-        $_Controle = $registro->_Controle;
+        $Registro = &\Framework\App\Registro::getInstacia();
+        $_Controle = $Registro->_Controle;
         self::Endereco_Persona_Ver($persona);
         if($true===true){
             $_Controle->Tema_Endereco($persona->nome,'social/Persona/Personas_View/'.$persona->id);
@@ -64,8 +64,8 @@ class social_PersonaControle extends social_Controle
         }
     }
     protected static function Endereco_Persona_Ver_Ficar_Ver($persona,$ficada,$true=true){
-        $registro = &\Framework\App\Registro::getInstacia();
-        $_Controle = $registro->_Controle;
+        $Registro = &\Framework\App\Registro::getInstacia();
+        $_Controle = $Registro->_Controle;
         self::Endereco_Persona_Ver_Ficar($persona);
         if($true===true){
             $_Controle->Tema_Endereco($ficada->nome,'social/Persona/Personas_View/'.$persona->id);

@@ -159,7 +159,7 @@ class usuario_veiculo_AdminControle extends usuario_veiculo_Controle
     * @access public
     * 
     * @param Class &$controle Classe Controle Atual passada por Ponteiro
-    * @param Class &$modelo Modelo Passado por Ponteiro
+    * @param Class &$Modelo Modelo Passado por Ponteiro
     * @param Class &$Visual Visual Passado por Ponteiro
     * 
     * @uses social_Modelo Carrega Persona Modelo
@@ -224,7 +224,7 @@ class usuario_veiculo_AdminControle extends usuario_veiculo_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 3.1.1
     */
-    static function veiculos_form(&$controle, &$Visual, &$form, &$selectmarcas,$categoria = 0,$ano = '',$modelo = '',$marca = '',$cc = '',$valor1 = '',$valor2 = '',$valor3 = '',$franquia = '',$obs = ''){
+    static function veiculos_form(&$controle, &$Visual, &$form, &$selectmarcas,$categoria = 0,$ano = '',$Modelo = '',$marca = '',$cc = '',$valor1 = '',$valor2 = '',$valor3 = '',$franquia = '',$obs = ''){
         
        
 
@@ -275,7 +275,7 @@ class usuario_veiculo_AdminControle extends usuario_veiculo_Controle
         
         $categoria = \anti_injection($_POST["categoria"]);
         $ano = (int) $_POST["ano"];
-        $modelo = \anti_injection($_POST["modelo"]);
+        $Modelo = \anti_injection($_POST["modelo"]);
         $marca = (int) $_POST["selectmarcas"];
         $cc = \anti_injection($_POST["cc"]);
         $valor1 = \anti_injection($_POST["valor1"]);
@@ -317,7 +317,7 @@ class usuario_veiculo_AdminControle extends usuario_veiculo_Controle
         
         $categoria = \anti_injection($_POST["categoria"]);
         $ano = (int) $_POST["ano"];
-        $modelo = \anti_injection($_POST["modelo"]);
+        $Modelo = \anti_injection($_POST["modelo"]);
         $marca = (int) $_POST["selectmarcas"];
         $cc = \anti_injection($_POST["cc"]);
         $valor1 = \anti_injection($_POST["valor1"]);
@@ -352,7 +352,7 @@ class usuario_veiculo_AdminControle extends usuario_veiculo_Controle
     * @access public
     * 
     * @param Class &$controle Classe Controle Atual passada por Ponteiro
-    * @param Class &$modelo Modelo Passado por Ponteiro
+    * @param Class &$Modelo Modelo Passado por Ponteiro
     * @param Class &$Visual Visual Passado por Ponteiro
     * 
     * 

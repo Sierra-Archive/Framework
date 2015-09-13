@@ -20,8 +20,8 @@ class predial_CorreioControle extends predial_Controle
     public function Main(){
     }
     static function Endereco_Correio($true=true){
-        $registro = &\Framework\App\Registro::getInstacia();
-        $_Controle = $registro->_Controle;
+        $Registro = &\Framework\App\Registro::getInstacia();
+        $_Controle = $Registro->_Controle;
         $titulo = __('Corrêios');
         $link = 'predial/Correio/Correios';
         if($true===true){
@@ -61,9 +61,9 @@ class predial_CorreioControle extends predial_Controle
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
     static function Correios_Tabela(&$correios,$recebido=false){
-        $registro   = &\Framework\App\Registro::getInstacia();
-        $Modelo     = &$registro->_Modelo;
-        $Visual     = &$registro->_Visual;
+        $Registro   = &\Framework\App\Registro::getInstacia();
+        $Modelo     = &$Registro->_Modelo;
+        $Visual     = &$Registro->_Visual;
         $tabela = Array();
         $i = 0;
         if(is_object($correios)) $correios = Array(0=>$correios);
@@ -361,9 +361,9 @@ class predial_CorreioControle extends predial_Controle
     
     
     static function Personalizados_Tabela(&$correios,$recebido=false){
-        $registro   = &\Framework\App\Registro::getInstacia();
-        $Modelo     = &$registro->_Modelo;
-        $Visual     = &$registro->_Visual;
+        $Registro   = &\Framework\App\Registro::getInstacia();
+        $Modelo     = &$Registro->_Modelo;
+        $Visual     = &$Registro->_Visual;
         $tabela = Array();
         $i = 0;
         if(is_object($correios)) $correios = Array(0=>$correios);
@@ -385,7 +385,7 @@ class predial_CorreioControle extends predial_Controle
      * @version 3.1.1
      */
     static function Personalizados($apartamento,$recebido=false,$gravidade=0,$adicionar=true){
-        $registro = &\Framework\App\Registro::getInstacia();
+        $Registro = &\Framework\App\Registro::getInstacia();
         $i = 0;
         $html = '';
         if($recebido===false){
@@ -395,7 +395,7 @@ class predial_CorreioControle extends predial_Controle
                 'apart'         => $apartamento
             );
             // Botao Add
-            $html .= $registro->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
+            $html .= $Registro->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
                 false,
                 Array(
                     'Print'     => true,
@@ -411,10 +411,10 @@ class predial_CorreioControle extends predial_Controle
                 'apart'         => $apartamento
             );
         }
-        $correios = $registro->_Modelo->db->Sql_Select('Predial_Bloco_Apart_Correio',$where);
+        $correios = $Registro->_Modelo->db->Sql_Select('Predial_Bloco_Apart_Correio',$where);
         if($correios!==false && !empty($correios)){
             list($tabela,$i) = self::Correios_Tabela($correios,$recebido);
-            $html .= $registro->_Visual->Show_Tabela_DataTable($tabela,'',false);
+            $html .= $Registro->_Visual->Show_Tabela_DataTable($tabela,'',false);
         }else{     
             $html .= '<center><b><font color="#FF0000" size="3">Nenhum Correio para Você</font></b></center>';
         }

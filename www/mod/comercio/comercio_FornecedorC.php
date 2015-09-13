@@ -41,8 +41,8 @@ class comercio_FornecedorControle extends comercio_Controle
         return false;
     }
     static function Endereco_Fornecedor($true=true,$produto=false){
-        $registro = &\Framework\App\Registro::getInstacia();
-        $_Controle = $registro->_Controle;
+        $Registro = &\Framework\App\Registro::getInstacia();
+        $_Controle = $Registro->_Controle;
         $titulo = __('Fornecedores');
         $link = 'comercio/Fornecedor/Fornecedores';
         if($true===true){

@@ -20,8 +20,8 @@ class usuario_mensagem_SuporteControle extends usuario_mensagem_Controle
         parent::__construct();
     }
     static function Endereco_Suporte($true=true){
-        $registro = &\Framework\App\Registro::getInstacia();
-        $_Controle = $registro->_Controle;
+        $Registro = &\Framework\App\Registro::getInstacia();
+        $_Controle = $Registro->_Controle;
         if($true===true){
             $_Controle->Tema_Endereco(__('Chamados'),'usuario_mensagem/Suporte/Mensagens/');
         }else{
@@ -30,8 +30,8 @@ class usuario_mensagem_SuporteControle extends usuario_mensagem_Controle
     }
     static function Endereco_Suporte_Listar($true=true,$id){
         self::Endereco_Suporte();
-        $registro = &\Framework\App\Registro::getInstacia();
-        $_Controle = $registro->_Controle;
+        $Registro = &\Framework\App\Registro::getInstacia();
+        $_Controle = $Registro->_Controle;
         if($true===true){
             $_Controle->Tema_Endereco(__('Visualizar Chamado'),'usuario_mensagem/Suporte/VisualizadordeMensagem/'.$id);
         }else{
@@ -141,9 +141,9 @@ class usuario_mensagem_SuporteControle extends usuario_mensagem_Controle
      * @version 3.1.1
      */
     public static function MensagensdeCliente($cliente = 0,$retorno='Unico'){
-        $registro = &\Framework\App\Registro::getInstacia();
-        $Modelo = &$registro->_Modelo;
-        $Visual = $registro->_Visual;
+        $Registro = &\Framework\App\Registro::getInstacia();
+        $Modelo = &$Registro->_Modelo;
+        $Visual = &$Registro->_Visual;
         $i = 0;
         $mensagens = Array();
         if($cliente==0){

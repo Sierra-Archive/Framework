@@ -22,8 +22,8 @@ class Enquete_EnqueteControle extends Enquete_Controle
         return false;
     }
     static function Endereco_Enquete($true=true){
-        $registro = &\Framework\App\Registro::getInstacia();
-        $_Controle = $registro->_Controle;
+        $Registro = &\Framework\App\Registro::getInstacia();
+        $_Controle = $Registro->_Controle;
         if($true===true){
             $_Controle->Tema_Endereco(__('Enquetes'),'Enquete/Enquete/Enquetes');
         }else{
@@ -31,16 +31,16 @@ class Enquete_EnqueteControle extends Enquete_Controle
         }
     }
     static function Enquetes_Tabela(&$enquetes){
-        $registro   = &\Framework\App\Registro::getInstacia();
-        $Modelo     = &$registro->_Modelo;
-        $Visual     = &$registro->_Visual;
+        $Registro   = &\Framework\App\Registro::getInstacia();
+        $Modelo     = &$Registro->_Modelo;
+        $Visual     = &$Registro->_Visual;
         $tabela = Array();
         $i = 0;
         if(is_object($enquetes)) $enquetes = Array(0=>$enquetes);
         reset($enquetes);
-        $perm_view = $registro->_Acl->Get_Permissao_Url('Enquete/Resposta/Respostas');
-        $perm_editar = $registro->_Acl->Get_Permissao_Url('Enquete/Enquete/Enquetes_Edit');
-        $perm_del = $registro->_Acl->Get_Permissao_Url('Enquete/Enquete/Enquetes_Del');
+        $perm_view = $Registro->_Acl->Get_Permissao_Url('Enquete/Resposta/Respostas');
+        $perm_editar = $Registro->_Acl->Get_Permissao_Url('Enquete/Enquete/Enquetes_Edit');
+        $perm_del = $Registro->_Acl->Get_Permissao_Url('Enquete/Enquete/Enquetes_Del');
 
         foreach ($enquetes as &$valor) {
             $resp_votos = $Modelo->db->Sql_Select('Enquete_Voto',Array(

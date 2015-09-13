@@ -35,8 +35,8 @@ class social_AcaoControle extends social_Controle
         return false; 
     }
     protected static function Endereco_Acao($true=true){
-        $registro = &\Framework\App\Registro::getInstacia();
-        $_Controle = $registro->_Controle;
+        $Registro = &\Framework\App\Registro::getInstacia();
+        $_Controle = $Registro->_Controle;
         if($true===true){
             $_Controle->Tema_Endereco(__('Açoes'),'social/Acao/Acoes');
         }else{
@@ -54,9 +54,9 @@ class social_AcaoControle extends social_Controle
         $this->_Visual->Json_Info_Update('Titulo', __('Administrar Ações'));
     }
     public static function Acao_Stat($persona_id=false,$tipo='Unico',$export=false){
-        $registro = &\Framework\App\Registro::getInstacia();
-        $Modelo = &$registro->_Modelo;
-        $Visual = $registro->_Visual;
+        $Registro = &\Framework\App\Registro::getInstacia();
+        $Modelo = &$Registro->_Modelo;
+        $Visual = &$Registro->_Visual;
         $i = 0;
         if($persona_id==0) $persona_id = false;
         if($persona_id===false){

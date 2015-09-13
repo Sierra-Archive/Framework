@@ -27,8 +27,8 @@ class comercio_PropostaControle extends comercio_Controle
      * @param type $tema
      */
     static function Endereco_Proposta($true=true,$tema='Propostas'){
-        $registro = &\Framework\App\Registro::getInstacia();
-        $_Controle = $registro->_Controle;
+        $Registro = &\Framework\App\Registro::getInstacia();
+        $_Controle = $Registro->_Controle;
         if($tema=='Propostas'){
             $titulo = __('Propostas');
             $link = 'comercio/Proposta/Propostas/'.$tema;
@@ -57,8 +57,8 @@ class comercio_PropostaControle extends comercio_Controle
             $propostaid = $proposta;
         }
         // Recupera Controle
-        $registro = &\Framework\App\Registro::getInstacia();
-        $_Controle = $registro->_Controle;
+        $Registro = &\Framework\App\Registro::getInstacia();
+        $_Controle = $Registro->_Controle;
         $titulo = __('Comentários');
         $link = 'comercio/Proposta/Propostas_Comentario/'.$propostaid.'/'.$tema;
         if($true===true){
@@ -82,8 +82,8 @@ class comercio_PropostaControle extends comercio_Controle
             $propostaid = $proposta;
         }
         // Recupera Controle
-        $registro = &\Framework\App\Registro::getInstacia();
-        $_Controle = $registro->_Controle;
+        $Registro = &\Framework\App\Registro::getInstacia();
+        $_Controle = $Registro->_Controle;
         $titulo = 'Sub '.$tema;
         $link = 'comercio/Proposta/Propostas_Sub/'.$propostaid.'/'.$tema;
         if($true===true){
@@ -98,8 +98,8 @@ class comercio_PropostaControle extends comercio_Controle
      */
     static function Endereco_CheckList($true=true){
         self::Endereco_Proposta();
-        $registro = &\Framework\App\Registro::getInstacia();
-        $_Controle = $registro->_Controle;
+        $Registro = &\Framework\App\Registro::getInstacia();
+        $_Controle = $Registro->_Controle;
         $titulo = __('Checklist');
         $link = 'comercio/Proposta/Checklists';
         if($true===true){
@@ -114,8 +114,8 @@ class comercio_PropostaControle extends comercio_Controle
      */
     static function Endereco_Visita($true=true){
         self::Endereco_Proposta();
-        $registro = &\Framework\App\Registro::getInstacia();
-        $_Controle = $registro->_Controle;
+        $Registro = &\Framework\App\Registro::getInstacia();
+        $_Controle = $Registro->_Controle;
         $titulo = __('Folhas de Visitas');
         $link = 'comercio/Proposta/Visitas';
         if($true===true){
@@ -138,8 +138,8 @@ class comercio_PropostaControle extends comercio_Controle
             $visitaid = $visita;
         }
         // Recupera Controle
-        $registro = &\Framework\App\Registro::getInstacia();
-        $_Controle = $registro->_Controle;
+        $Registro = &\Framework\App\Registro::getInstacia();
+        $_Controle = $Registro->_Controle;
         $titulo = __('Comentários');
         $link = 'comercio/Proposta/Visitas_Comentario/'.$visitaid;
         if($true===true){

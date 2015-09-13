@@ -10,7 +10,7 @@ class comercio_venda_Principal implements \Framework\PrincipalInterface
     * @static
     * 
     * @param Class &$controle Classe Controle Atual passada por Ponteiro
-    * @param Class &$modelo Modelo Passado por Ponteiro
+    * @param Class &$Modelo Modelo Passado por Ponteiro
     * @param Class &$Visual Visual Passado por Ponteiro
     *
     * @uses \Framework\App\Controle::$comercio_venda
@@ -30,7 +30,7 @@ class comercio_venda_Principal implements \Framework\PrincipalInterface
         
         // Faz Busca Por Carrinhos Abertos
         $where = '(data_fechada=\'0000-00-00 00:00:00\' || data_fechada=\'\')';
-        $carrinhos = $modelo->db->Sql_Select('Comercio_Venda_Carrinho');
+        $carrinhos = $Modelo->db->Sql_Select('Comercio_Venda_Carrinho');
         if(is_object($carrinhos)) $carrinhos = Array($carrinhos);
         if($carrinhos!==false && !empty($carrinhos)){
             foreach($carrinhos as &$valor){
@@ -64,7 +64,7 @@ class comercio_venda_Principal implements \Framework\PrincipalInterface
         }
         
         // FAz BUsca Por Todas as Mesas
-        $mesas = $modelo->db->Sql_Select('Comercio_Venda_Mesa');
+        $mesas = $Modelo->db->Sql_Select('Comercio_Venda_Mesa');
         if(is_object($mesas)) $mesas = Array($mesas);
         if($mesas!==false && !empty($mesas)){
             foreach($mesas as &$valor){

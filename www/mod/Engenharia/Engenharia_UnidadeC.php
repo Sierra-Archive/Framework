@@ -22,8 +22,8 @@ class Engenharia_UnidadeControle extends Engenharia_Controle
         return false;
     }
     static function Endereco_Unidade($true=true,$empreendimento=false){
-        $registro = &\Framework\App\Registro::getInstacia();
-        $_Controle = $registro->_Controle;
+        $Registro = &\Framework\App\Registro::getInstacia();
+        $_Controle = $Registro->_Controle;
         if($empreendimento===false){
             $titulo = __('Todas as Unidades');
             $link   = 'Engenharia/Unidade/Unidades';
@@ -39,9 +39,9 @@ class Engenharia_UnidadeControle extends Engenharia_Controle
         }
     }
     static function Unidades_Tabela(&$unidades,$empreendimento=false){
-        $registro   = &\Framework\App\Registro::getInstacia();
-        $Modelo     = &$registro->_Modelo;
-        $Visual     = &$registro->_Visual;
+        $Registro   = &\Framework\App\Registro::getInstacia();
+        $Modelo     = &$Registro->_Modelo;
+        $Visual     = &$Registro->_Visual;
         $tabela = Array();
         $i = 0;
         if(is_object($unidades)) $unidades = Array(0=>$unidades);
@@ -325,13 +325,13 @@ class Engenharia_UnidadeControle extends Engenharia_Controle
                     while($j<=$apartamento_final){
                         // Cadastra cada Apartamento do andar
                         // Pesquisa pra ver se ja existe
-                        $registros_cadastrado = $objeto;
-                        $registros_cadastrado->unidade = intval(($i*100)+$j);
-                        $where['unidade'] = $registros_cadastrado->unidade;
+                        $Registros_cadastrado = $objeto;
+                        $Registros_cadastrado->unidade = intval(($i*100)+$j);
+                        $where['unidade'] = $Registros_cadastrado->unidade;
                         $objeto_pesquisado  = $this->_Modelo->db->Sql_Select($tab,$where);
                         // Se for Encontrado outro Objeto Trava Funcao e Retorna Erro
                         if($objeto_pesquisado===false){
-                            $this->_Modelo->db->Sql_Inserir($registros_cadastrado);
+                            $this->_Modelo->db->Sql_Inserir($Registros_cadastrado);
                             ++$cont;
                         }
                         ++$j;

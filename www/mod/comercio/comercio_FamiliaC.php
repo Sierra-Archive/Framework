@@ -36,8 +36,8 @@ class comercio_FamiliaControle extends comercio_Controle
         return false;
     }
     static function Endereco_Familia($true=true){
-        $registro = &\Framework\App\Registro::getInstacia();
-        $_Controle = $registro->_Controle;
+        $Registro = &\Framework\App\Registro::getInstacia();
+        $_Controle = $Registro->_Controle;
         $titulo = __('Familias');
         $link = 'comercio/Familia/Familias';
         if($true===true){

@@ -9,7 +9,7 @@ class Evento_Principal implements \Framework\PrincipalInterface
      * @static
      * 
      * @param Class &$controle Classe Controle Atual passada por Ponteiro
-     * @param Class &$modelo Modelo Passado por Ponteiro
+     * @param Class &$Modelo Modelo Passado por Ponteiro
      * @param Class &$Visual Visual Passado por Ponteiro
      *
      * @uses Evento_Controle::$num_Indicados
@@ -75,7 +75,7 @@ class Evento_Principal implements \Framework\PrincipalInterface
           'data_fim'                => '%'.$busca.'%',
         ));
         $i = 0;
-        $eventos = $modelo->db->Sql_Select('Evento',$where);
+        $eventos = $Modelo->db->Sql_Select('Evento',$where);
         if($eventos===false) return false;
         // add botao
         $Visual->Blocar($Visual->Tema_Elementos_Btn('Superior'     ,Array(
@@ -109,10 +109,10 @@ class Evento_Principal implements \Framework\PrincipalInterface
      */
     public static function Widgets(){
         $Registro = &\Framework\App\Registro::getInstacia();
-        $Modelo = &$registro->_Modelo;
-        $Visual = $Registro->_Visual;
+        $Modelo = &$Registro->_Modelo;
+        $Visual = &$Registro->_Visual;
         // Eventos
-        $evento_qnt = $modelo->db->Sql_Contar('Evento');
+        $evento_qnt = $Modelo->db->Sql_Contar('Evento');
         // Adiciona Widget a Pagina Inicial
         \Framework\App\Visual::Layoult_Home_Widgets_Add(
             'Eventos', 

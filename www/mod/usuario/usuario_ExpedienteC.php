@@ -41,8 +41,8 @@ class usuario_ExpedienteControle extends usuario_Controle
      * @version 3.1.1
      */
     static function Endereco_Expediente($true=true){
-        $registro = &\Framework\App\Registro::getInstacia();
-        $_Controle = $registro->_Controle;
+        $Registro = &\Framework\App\Registro::getInstacia();
+        $_Controle = $Registro->_Controle;
         if($true===true){
             $_Controle->Tema_Endereco(__('Expediente'),'usuario/Expediente/Expediente');
         }else{
@@ -239,12 +239,12 @@ class usuario_ExpedienteControle extends usuario_Controle
         }
         
         // Inserir Expediente
-        $registros_usuario = $Registro->_Modelo->db->Sql_Select('Usuario');
-        $registros_expediente = $Registro->_Modelo->db->Sql_Select('Usuario_Expediente','{sigla}fim=\'0000-00-00 00:00:00\'');
+        $Registros_usuario = $Registro->_Modelo->db->Sql_Select('Usuario');
+        $Registros_expediente = $Registro->_Modelo->db->Sql_Select('Usuario_Expediente','{sigla}fim=\'0000-00-00 00:00:00\'');
         $usuarios_nao_podem = Array();
-        if(is_object($registros_expediente))$registros_expediente = Array($registros_expediente);
-        if(is_array($registros_expediente)){
-            foreach ($registros_expediente as &$valor){
+        if(is_object($Registros_expediente))$Registros_expediente = Array($Registros_expediente);
+        if(is_array($Registros_expediente)){
+            foreach ($Registros_expediente as &$valor){
                 $usuarios_nao_podem[] = $valor->usuario;
             }
         }
@@ -266,8 +266,8 @@ class usuario_ExpedienteControle extends usuario_Controle
         }else{
             $html .= $form->Select_Opcao('','',0);
         }*/
-        if(is_array($registros_usuario)){
-            foreach ($registros_usuario as &$valor){
+        if(is_array($Registros_usuario)){
+            foreach ($Registros_usuario as &$valor){
                 if(array_search($valor->id, $usuarios_nao_podem)===false){
                     $form->Select_Opcao($valor->nome,$valor->id,0);
                 }

@@ -6,8 +6,8 @@ class noticia_AdminControle extends noticia_Controle
         parent::__construct();
     }
     static function Endereco_Noticia($true=true){
-        $registro = &\Framework\App\Registro::getInstacia();
-        $_Controle = $registro->_Controle;
+        $Registro = &\Framework\App\Registro::getInstacia();
+        $_Controle = $Registro->_Controle;
         $titulo = __('Noticias');
         $link = 'noticia/Admin/Noticias';
         if($true===true){
@@ -26,8 +26,8 @@ class noticia_AdminControle extends noticia_Controle
         return false;
     }
     static function Noticias_Tabela(&$noticia){
-        $registro   = &\Framework\App\Registro::getInstacia();
-        $Visual     = &$registro->_Visual;
+        $Registro   = &\Framework\App\Registro::getInstacia();
+        $Visual     = &$Registro->_Visual;
         $tabela = Array();
         $i = 0;
         if(is_object($noticia)) $noticia = Array(0=>$noticia);reset($noticia);

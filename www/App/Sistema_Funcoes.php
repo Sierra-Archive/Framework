@@ -26,14 +26,14 @@ Class Sistema_Funcoes {
         
         // Ou redireciona via php ou html
         if(LAYOULT_IMPRIMIR==='AJAX'){
-            $registro = Registro::getInstacia();
+            $Registro = Registro::getInstacia();
             $params = Array('Url'=>$url,'Tempo'=>10);
-            if($registro->_Visual===false){
-                $registro->_Visual = new \Framework\App\Visual();
+            if($Registro->_Visual===false){
+                $Registro->_Visual = new \Framework\App\Visual();
             }
-            $registro->_Visual->Json_IncluiTipo('Redirect',$params);
+            $Registro->_Visual->Json_IncluiTipo('Redirect',$params);
             if(\Framework\App\Controle::$ligado===false){
-                $registro->_Visual->renderizar();
+                $Registro->_Visual->renderizar();
                 \Framework\App\Controle::Tema_Travar();
             }
             return true;

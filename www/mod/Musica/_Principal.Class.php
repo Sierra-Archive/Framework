@@ -9,7 +9,7 @@ class Musica_Principal implements \Framework\PrincipalInterface
      * @static
      * 
      * @param Class &$controle Classe Controle Atual passada por Ponteiro
-     * @param Class &$modelo Modelo Passado por Ponteiro
+     * @param Class &$Modelo Modelo Passado por Ponteiro
      * @param Class &$Visual Visual Passado por Ponteiro
      *
      * @uses Musica_Controle::$num_Indicados
@@ -89,7 +89,7 @@ class Musica_Principal implements \Framework\PrincipalInterface
           'obs'                     => '%'.$busca.'%',
         ));
         $i = 0;
-        $artistas = $modelo->db->Sql_Select('Musica_Album_Artista',$where);
+        $artistas = $Modelo->db->Sql_Select('Musica_Album_Artista',$where);
         if($artistas===false) return false;
         // add botao
         $Visual->Blocar('<a title="Adicionar Artista" class="btn btn-success lajax explicar-titulo" acao="" href="'.URL_PATH.'Musica/Artista/Artistas_Add">Adicionar novo Artista</a><div class="space15"></div>');
@@ -110,7 +110,7 @@ class Musica_Principal implements \Framework\PrincipalInterface
           'obs'                     => '%'.$busca.'%',
         ));
         $i = 0;
-        $albuns = $modelo->db->Sql_Select('Musica_Album',$where);
+        $albuns = $Modelo->db->Sql_Select('Musica_Album',$where);
         if($albuns===false) return false;
         // add botao
         $Visual->Blocar('<a title="Adicionar Album" class="btn btn-success lajax explicar-titulo" acao="" href="'.URL_PATH.'Musica/Album/Albuns_Add">Adicionar novo Album</a><div class="space15"></div>');
@@ -131,7 +131,7 @@ class Musica_Principal implements \Framework\PrincipalInterface
           'obs'                     => '%'.$busca.'%',
         ));
         $i = 0;
-        $albuns = $modelo->db->Sql_Select('Musica',$where);
+        $albuns = $Modelo->db->Sql_Select('Musica',$where);
         if($albuns===false) return false;
         // add botao
         $Visual->Blocar('<a title="Adicionar Musica" class="btn btn-success lajax explicar-titulo" acao="" href="'.URL_PATH.'Musica/Musica/Musicas_Add">Adicionar nova Musica</a><div class="space15"></div>');
@@ -152,7 +152,7 @@ class Musica_Principal implements \Framework\PrincipalInterface
           'obs'                     => '%'.$busca.'%',
         ));
         $i = 0;
-        $albuns = $modelo->db->Sql_Select('Musica_Video',$where);
+        $albuns = $Modelo->db->Sql_Select('Musica_Video',$where);
         if($albuns===false) return false;
         // add botao
         $Visual->Blocar('<a title="Adicionar Video" class="btn btn-success lajax explicar-titulo" acao="" href="'.URL_PATH.'Musica/Video/Videos_Add">Adicionar novo Video</a><div class="space15"></div>');
@@ -174,10 +174,10 @@ class Musica_Principal implements \Framework\PrincipalInterface
      */
     public static function Widgets(){
         $Registro = &\Framework\App\Registro::getInstacia();
-        $Modelo = &$registro->_Modelo;
-        $Visual = $Registro->_Visual;
+        $Modelo = &$Registro->_Modelo;
+        $Visual = &$Registro->_Visual;
         // Artistas
-        $artista_qnt = $modelo->db->Sql_Contar('Musica_Album_Artista');
+        $artista_qnt = $Modelo->db->Sql_Contar('Musica_Album_Artista');
         // Adiciona Widget a Pagina Inicial
         \Framework\App\Visual::Layoult_Home_Widgets_Add(
             'Artistas', 
@@ -189,7 +189,7 @@ class Musica_Principal implements \Framework\PrincipalInterface
             14
         );
         // Albuns
-        $album_qnt = $modelo->db->Sql_Contar('Musica_Album');
+        $album_qnt = $Modelo->db->Sql_Contar('Musica_Album');
         // Adiciona Widget a Pagina Inicial
         \Framework\App\Visual::Layoult_Home_Widgets_Add(
             'Albuns', 
@@ -201,7 +201,7 @@ class Musica_Principal implements \Framework\PrincipalInterface
             16
         );
         // Musicas
-        $musica_qnt = $modelo->db->Sql_Contar('Musica');
+        $musica_qnt = $Modelo->db->Sql_Contar('Musica');
         // Adiciona Widget a Pagina Inicial
         \Framework\App\Visual::Layoult_Home_Widgets_Add(
             'Musicas', 
@@ -213,7 +213,7 @@ class Musica_Principal implements \Framework\PrincipalInterface
             18
         );
         // Videos
-        $video_qnt = $modelo->db->Sql_Contar('Musica_Video');
+        $video_qnt = $Modelo->db->Sql_Contar('Musica_Video');
         // Adiciona Widget a Pagina Inicial
         \Framework\App\Visual::Layoult_Home_Widgets_Add(
             'Videos', 

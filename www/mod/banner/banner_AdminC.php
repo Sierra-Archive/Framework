@@ -88,7 +88,7 @@ class banner_AdminControle extends banner_Controle
     * @access public
     * 
     * @param Class &$controle Classe Controle Atual passada por Ponteiro
-    * @param Class &$modelo Modelo Passado por Ponteiro
+    * @param Class &$Modelo Modelo Passado por Ponteiro
     * @param Class &$Visual Visual Passado por Ponteiro
     * 
     * @uses banner_socialModelo Carrega Persona Modelo

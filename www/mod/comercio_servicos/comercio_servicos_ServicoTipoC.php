@@ -36,8 +36,8 @@ class comercio_servicos_ServicoTipoControle extends comercio_servicos_Controle
         return false;
     }
     static function Endereco_Servico_Tipo($true=true){
-        $registro = &\Framework\App\Registro::getInstacia();
-        $_Controle = $registro->_Controle;
+        $Registro = &\Framework\App\Registro::getInstacia();
+        $_Controle = $Registro->_Controle;
         if($true===true){
             $_Controle->Tema_Endereco(__('Tipos de Serviços'),'comercio_servicos/Servico_Tipo/Servico_Tipo');
         }else{

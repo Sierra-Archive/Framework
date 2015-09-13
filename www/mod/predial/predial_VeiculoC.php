@@ -20,8 +20,8 @@ class predial_VeiculoControle extends predial_Controle
     public function Main(){
     }
     static function Endereco_Veiculo($true=true){
-        $registro = &\Framework\App\Registro::getInstacia();
-        $_Controle = $registro->_Controle;
+        $Registro = &\Framework\App\Registro::getInstacia();
+        $_Controle = $Registro->_Controle;
         $titulo = __('Veiculos');
         $link = 'predial/Veiculo/Veiculos';
         if($true===true){
@@ -31,8 +31,8 @@ class predial_VeiculoControle extends predial_Controle
         }
     }
     static function Veiculos_Tabela(&$veiculos){
-        $registro   = &\Framework\App\Registro::getInstacia();
-        $Visual     = &$registro->_Visual;
+        $Registro   = &\Framework\App\Registro::getInstacia();
+        $Visual     = &$Registro->_Visual;
         $tabela = Array();
         $i = 0;
         if(is_object($veiculos)) $veiculos = Array(0=>$veiculos);

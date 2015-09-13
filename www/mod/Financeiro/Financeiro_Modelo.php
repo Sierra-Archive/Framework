@@ -29,9 +29,9 @@ class Financeiro_Modelo extends \Framework\App\Modelo
     static function MovInt_Inserir(&$modelo,$user,$valor,$positivo,$motivo,$motivoid,$dt_vencimento,$dt_pago='0000-00-00 00:00:00'){
         GLOBAL $config;
         if($positivo==1){
-            $modelo->db->query('INSERT INTO '.MYSQL_FINANCEIRO_MOV_INT.' (saida_motivo,saida_motivoid,entrada_motivo,entrada_motivoid,valor,positivo,motivo,motivoid,dt_vencimento,log_date_add,dt_pago) VALUES (\'Servidor\',\''.SRV_NAME_SQL.'\',\'Usuario\',\''.$user.'\',\''.$valor.'\',\''.$positivo.'\',\''.$motivo.'\',\''.$motivoid.'\',\''.$dt_vencimento.'\',\''.APP_HORA.'\',\''.$dt_pago.'\')');
+            $Modelo->db->query('INSERT INTO '.MYSQL_FINANCEIRO_MOV_INT.' (saida_motivo,saida_motivoid,entrada_motivo,entrada_motivoid,valor,positivo,motivo,motivoid,dt_vencimento,log_date_add,dt_pago) VALUES (\'Servidor\',\''.SRV_NAME_SQL.'\',\'Usuario\',\''.$user.'\',\''.$valor.'\',\''.$positivo.'\',\''.$motivo.'\',\''.$motivoid.'\',\''.$dt_vencimento.'\',\''.APP_HORA.'\',\''.$dt_pago.'\')');
         }else{
-            $modelo->db->query('INSERT INTO '.MYSQL_FINANCEIRO_MOV_INT.' (entrada_motivo,entrada_motivoid,saida_motivo,saida_motivoid,valor,positivo,motivo,motivoid,dt_vencimento,log_date_add,dt_pago) VALUES (\'Servidor\',\''.SRV_NAME_SQL.'\',\'Usuario\',\''.$user.'\',\''.$valor.'\',\''.$positivo.'\',\''.$motivo.'\',\''.$motivoid.'\',\''.$dt_vencimento.'\',\''.APP_HORA.'\',\''.$dt_pago.'\')');
+            $Modelo->db->query('INSERT INTO '.MYSQL_FINANCEIRO_MOV_INT.' (entrada_motivo,entrada_motivoid,saida_motivo,saida_motivoid,valor,positivo,motivo,motivoid,dt_vencimento,log_date_add,dt_pago) VALUES (\'Servidor\',\''.SRV_NAME_SQL.'\',\'Usuario\',\''.$user.'\',\''.$valor.'\',\''.$positivo.'\',\''.$motivo.'\',\''.$motivoid.'\',\''.$dt_vencimento.'\',\''.APP_HORA.'\',\''.$dt_pago.'\')');
         }
     }
     /**
@@ -42,7 +42,7 @@ class Financeiro_Modelo extends \Framework\App\Modelo
      */
     static function MovInt_VerificaDebito(&$modelo,$usuarioid,$motivo){
         $i=0;
-        $sql = $modelo->db->query('
+        $sql = $Modelo->db->query('
                 SELECT motivoid
                 FROM '.MYSQL_FINANCEIRO_MOV_INT.'
                 WHERE deletado!=1 AND motivo = \''.$motivo.'\' AND saida_motivo = \'Usuario\' AND saida_motivoid = '.$usuarioid.' AND pago = 0 ORDER BY log_date_add DESC LIMIT 1');
@@ -156,7 +156,7 @@ class Financeiro_Modelo extends \Framework\App\Modelo
         if(!is_int($usuarioid)) $usuarioid = (int) $usuarioid;
         $valor = 0;
         // CONSULTA EXTERNOS E GANHOS EM CIMA DE OUTROS USUARIOS
-        /*$sql = $modelo->db->query('SELECT * FROM (
+        /*$sql = $Modelo->db->query('SELECT * FROM (
                 SELECT valor, log_date_add
                 FROM '.MYSQL_FINANCEIRO_MOV_EXT.'
                 WHERE deletado!=1 AND entrada_motivoid = '.$usuarioid.'
@@ -167,7 +167,7 @@ class Financeiro_Modelo extends \Framework\App\Modelo
             ) as U
             ORDER BY log_date_add
         ');*/
-        $sql = $modelo->db->query('SELECT U.valor, U.log_date_add, U.positivo FROM (
+        $sql = $Modelo->db->query('SELECT U.valor, U.log_date_add, U.positivo FROM (
                 SELECT G.valor, G.log_date_add, 0 as positivo
                 FROM '.MYSQL_FINANCEIRO_MOV_INT.' as G
                 WHERE G.deletado!=1 AND G.pago = \'0\' AND  G.entrada_motivo = \'Usuario\' AND G.entrada_motivoid = '.$usuarioid.'
@@ -198,16 +198,16 @@ class Financeiro_Modelo extends \Framework\App\Modelo
     static function Financeiro(&$modelo,$usuarioid,$motivoid){
         /*$usuarioid = (int) $usuarioid;
         if(!isset($usuarioid) || !is_int($usuarioid) || $usuarioid==0) return 0;
-        $modelo->db->query('UPDATE '.MYSQL_USUARIOS.' SET nivel_usuario_pago=1 WHERE id='.$usuarioid);
+        $Modelo->db->query('UPDATE '.MYSQL_USUARIOS.' SET nivel_usuario_pago=1 WHERE id='.$usuarioid);
         */return 1;
     }
     static function Financeiro_Motivo_Exibir($motivoid){
         /*$usuarioid = (int) $usuarioid;
         if(!isset($usuarioid) || !is_int($usuarioid) || $usuarioid==0) return 0;
-        $modelo->db->query('UPDATE '.MYSQL_USUARIOS.' SET nivel_usuario_pago=1 WHERE id='.$usuarioid);
+        $Modelo->db->query('UPDATE '.MYSQL_USUARIOS.' SET nivel_usuario_pago=1 WHERE id='.$usuarioid);
         */
         $i = 0;
-        $sql = $modelo->db->query('SELECT nome
+        $sql = $Modelo->db->query('SELECT nome
         FROM '.MYSQL_USUARIOS.' WHERE deletado!=1 AND id='.$motivoid.' ORDER BY nome limit 1'); //P.categoria
         while ($campo = $sql->fetch_object()) {
             $nome = $campo->nome;

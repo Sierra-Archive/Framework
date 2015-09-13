@@ -6,8 +6,8 @@ class Transporte_FornecedorControle extends Transporte_Controle
         parent::__construct();
     }
     static function Endereco_Fornecedor($true=true){
-        $registro = &\Framework\App\Registro::getInstacia();
-        $_Controle = $registro->_Controle;
+        $Registro = &\Framework\App\Registro::getInstacia();
+        $_Controle = $Registro->_Controle;
         $titulo = __('Fornecedores');
         $link = 'Transporte/Fornecedor/Fornecedores';
         if($true===true){
@@ -26,8 +26,8 @@ class Transporte_FornecedorControle extends Transporte_Controle
         return false;
     }
     static function Fornecedores_Tabela(&$fornecedor){
-        $registro   = &\Framework\App\Registro::getInstacia();
-        $Visual     = &$registro->_Visual;
+        $Registro   = &\Framework\App\Registro::getInstacia();
+        $Visual     = &$Registro->_Visual;
         $tabela = Array();
         $i = 0;
         if(is_object($fornecedor)) $fornecedor = Array(0=>$fornecedor);reset($fornecedor);
@@ -105,8 +105,8 @@ class Transporte_FornecedorControle extends Transporte_Controle
         $existe = false;
         if($retornar==='false') $retornar = false;
         // Verifica se Existe Conexao, se nao tiver abre o adicionar conexao, se nao, abre a pasta!
-        $registro = &\Framework\App\Registro::getInstacia();
-        $resultado = $registro->_Modelo->db->Sql_Select('Transporte_Fornecedor','{sigla}usuario=\''.$registro->_Acl->Usuario_GetID().'\'',1);
+        $Registro = &\Framework\App\Registro::getInstacia();
+        $resultado = $Registro->_Modelo->db->Sql_Select('Transporte_Fornecedor','{sigla}usuario=\''.$Registro->_Acl->Usuario_GetID().'\'',1);
         if(is_object($resultado)){
             $existe = true;
         }
@@ -126,7 +126,7 @@ class Transporte_FornecedorControle extends Transporte_Controle
                 'js'        =>  '',
                 'html'      =>  $html
             );
-            $registro->_Visual->Json_IncluiTipo('Conteudo',$conteudo);
+            $Registro->_Visual->Json_IncluiTipo('Conteudo',$conteudo);
         }
         /*
                 $this->_Visual->Bloco_Customizavel(Array(

@@ -387,8 +387,8 @@ class usuario_mensagem_Controle extends \Framework\App\Controle
     }
     public static function MensagensWidgets(){
         $Registro = &\Framework\App\Registro::getInstacia();
-        $Modelo = &$registro->_Modelo;
-        $Visual = $Registro->_Visual;
+        $Modelo = &$Registro->_Modelo;
+        $Visual = &$Registro->_Visual;
         $total = 0; $novos = 0; $espera = 0; $esgotado = 0; $finalizado = 0;
         
         // PEga só as deles 
@@ -396,7 +396,7 @@ class usuario_mensagem_Controle extends \Framework\App\Controle
         $where = Array('escritor'=>$Registro->_Acl->Usuario_GetID(), 'para'=>0);
         
         #update -> Aqui tera que ser Sql_Contar (Mais performatico, aqui ta perdendo mt tempo de processamento)
-        $array = $modelo->db->Sql_Select('Usuario_Mensagem',$where,0, '','assunto.tempocli,log_date_edit,log_date_add,finalizado');
+        $array = $Modelo->db->Sql_Select('Usuario_Mensagem',$where,0, '','assunto.tempocli,log_date_edit,log_date_add,finalizado');
         if(is_object($array)) $array = Array(0=>$array);
         if($array!==false && !empty($array)){
             reset($array);
@@ -418,9 +418,9 @@ class usuario_mensagem_Controle extends \Framework\App\Controle
         }
         // Quantidades de Setores e Assuntos
         
-        $setor_qnt = $modelo->db->Sql_Contar('Usuario_Mensagem_Setor');
+        $setor_qnt = $Modelo->db->Sql_Contar('Usuario_Mensagem_Setor');
         
-        $assunto_qnt = $modelo->db->Sql_Contar('Usuario_Mensagem_Assunto');
+        $assunto_qnt = $Modelo->db->Sql_Contar('Usuario_Mensagem_Assunto');
         // Adiciona Widget a Pagina Inicial
         // Adiciona Widget a Pagina Inicial
         \Framework\App\Visual::Layoult_Home_Widgets_Add(

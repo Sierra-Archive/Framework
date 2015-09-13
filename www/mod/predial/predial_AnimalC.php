@@ -23,8 +23,8 @@ class predial_AnimalControle extends predial_Controle
         $this->_Visual->Json_Info_Update('Titulo', __('Animais')); 
     }
     static function Endereco_Animal($true=true){
-        $registro = &\Framework\App\Registro::getInstacia();
-        $_Controle = $registro->_Controle;
+        $Registro = &\Framework\App\Registro::getInstacia();
+        $_Controle = $Registro->_Controle;
         $titulo = __('Animais');
         $link = 'predial/Animal/Animais';
         if($true===true){
@@ -34,8 +34,8 @@ class predial_AnimalControle extends predial_Controle
         }
     }
     static function Animais_Tabela(&$animais){
-        $registro   = &\Framework\App\Registro::getInstacia();
-        $Visual     = &$registro->_Visual;
+        $Registro   = &\Framework\App\Registro::getInstacia();
+        $Visual     = &$Registro->_Visual;
         $tabela = Array();
         $i = 0;
         if(is_object($animais)) $animais = Array(0=>$animais);

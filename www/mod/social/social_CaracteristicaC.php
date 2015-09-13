@@ -35,8 +35,8 @@ class social_CaracteristicaControle extends social_Controle
         return false; 
     }
     static function Endereco_Caracteristica($true=true){
-        $registro = &\Framework\App\Registro::getInstacia();
-        $_Controle = $registro->_Controle;
+        $Registro = &\Framework\App\Registro::getInstacia();
+        $_Controle = $Registro->_Controle;
         if($true===true){
             $_Controle->Tema_Endereco(__('Caracteristicas'),'social/Caracteristica/Caracteristica');
         }else{

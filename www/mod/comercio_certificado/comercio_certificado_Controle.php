@@ -65,9 +65,9 @@ class comercio_certificado_Controle extends \Framework\App\Controle
         $this->_Visual->Json_Info_Update('Historico',0);
     }
     public static function Usuario_UpdateInfo($id = 0){
-        $registro   = &\Framework\App\Registro::getInstacia();
-        $Modelo     = $registro->_Modelo;
-        $Visual     = $registro->_Visual;
+        $Registro   = &\Framework\App\Registro::getInstacia();
+        $Modelo     = $Registro->_Modelo;
+        $Visual     = $Registro->_Visual;
         $abas_id    = &$Visual->config_template['plugins']['abas_id'];
         if($id==0 || !isset($id)){
             $id = (int) $this->_Acl->Usuario_GetID();
@@ -99,10 +99,10 @@ class comercio_certificado_Controle extends \Framework\App\Controle
     
     public static function Usuario_UpdateInfo2($id){
         
-        $registro   = &\Framework\App\Registro::getInstacia();
-        $Controle   = $registro->_Controle;
-        $Modelo     = $registro->_Modelo;
-        $Visual     = $registro->_Visual;
+        $Registro   = &\Framework\App\Registro::getInstacia();
+        $Controle   = $Registro->_Controle;
+        $Modelo     = $Registro->_Modelo;
+        $Visual     = $Registro->_Visual;
         $id = (int) $id;
         // Puxa o usuario, e altera seus valores, depois salva novamente
         $usuario = $Modelo->db->Sql_Select('Usuario', Array('id'=>$id));
@@ -148,8 +148,8 @@ class comercio_certificado_Controle extends \Framework\App\Controle
         return $formulario;
     }
     public static function Usuarios_Edit($tipo='usuario',$id = 0){
-        $registro   = &\Framework\App\Registro::getInstacia();
-        $Modelo     = $registro->_Modelo;
+        $Registro   = &\Framework\App\Registro::getInstacia();
+        $Modelo     = $Registro->_Modelo;
         if($id==0 || !isset($id)){
             $id = (int) $this->_Acl->Usuario_GetID();
         }else{
@@ -186,9 +186,9 @@ class comercio_certificado_Controle extends \Framework\App\Controle
      */
     public function Usuarios_Add2($tipo=false){
         
-        $registro   = &\Framework\App\Registro::getInstacia();
-        $Modelo     = $registro->_Modelo;
-        $Visual     = $registro->_Visual;
+        $Registro   = &\Framework\App\Registro::getInstacia();
+        $Modelo     = $Registro->_Modelo;
+        $Visual     = $Registro->_Visual;
        
         if(isset($_POST['email'])){
             $email = \anti_injection($_POST['email']);

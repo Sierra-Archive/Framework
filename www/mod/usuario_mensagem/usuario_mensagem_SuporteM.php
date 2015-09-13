@@ -90,8 +90,8 @@ class usuario_mensagem_SuporteModelo extends usuario_mensagem_Modelo
      * @version 3.1.1
      */
     public static function Suporte_MensagensCliente(&$array,$cliente=0){
-        $registro = &\Framework\App\Registro::getInstacia();
-        $Modelo = &$registro->_Modelo;
+        $Registro = &\Framework\App\Registro::getInstacia();
+        $Modelo = &$Registro->_Modelo;
         // Carrega Mensagens de Acordo com os assuntos acima 
         $i =0;
         $array = Array();
@@ -105,7 +105,7 @@ class usuario_mensagem_SuporteModelo extends usuario_mensagem_Modelo
             $where = Array();
         }
         // Puxa Banco de Dados
-        $array = $modelo->db->Sql_Select('Usuario_Mensagem',$where);
+        $array = $Modelo->db->Sql_Select('Usuario_Mensagem',$where);
         if($array!==false){
             if(is_object($array)) $array = Array($array);
             foreach($array as &$valor){
@@ -120,8 +120,8 @@ class usuario_mensagem_SuporteModelo extends usuario_mensagem_Modelo
         return count($array); 
     }
     public static function Suporte_MensagensCliente_Qnt($cliente=0){
-        $registro = &\Framework\App\Registro::getInstacia();
-        $Modelo = &$registro->_Modelo;
+        $Registro = &\Framework\App\Registro::getInstacia();
+        $Modelo = &$Registro->_Modelo;
         // Carrega Mensagens de Acordo com os assuntos acima 
         $i =0;
         $array = Array();
@@ -133,7 +133,7 @@ class usuario_mensagem_SuporteModelo extends usuario_mensagem_Modelo
             $where = false;
         }
         // Puxa Banco de Dados
-        return $modelo->db->Sql_Contar('Usuario_Mensagem',$where);
+        return $Modelo->db->Sql_Contar('Usuario_Mensagem',$where);
     }
 }
 ?>

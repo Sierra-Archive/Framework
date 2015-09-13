@@ -23,7 +23,7 @@ class locais_locaisModelo extends locais_Modelo
     * @access public
     * @static
     * 
-    * @param Class &$modelo Ponteiro do Modelo
+    * @param Class &$Modelo Ponteiro do Modelo
     * @param Array &$array Array Vazio Para Preenchimento via Ponteiro
     * 
     * @uses $tabsql
@@ -35,7 +35,7 @@ class locais_locaisModelo extends locais_Modelo
     static function local_retorna(&$modelo, &$array){
         global $tabsql;
         $i = 0;
-        $sql = $modelo->db->query('SELECT id, nome FROM '.MYSQL_SIS_LOCAIS.' WHERE deletado!=1');
+        $sql = $Modelo->db->query('SELECT id, nome FROM '.MYSQL_SIS_LOCAIS.' WHERE deletado!=1');
         while($campo = $sql->fetch_object()){
             $array[$i]['id'] = $campo->id;
             $array[$i]['nome'] = $campo->nome;

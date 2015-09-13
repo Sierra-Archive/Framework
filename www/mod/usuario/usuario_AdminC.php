@@ -304,7 +304,7 @@ class usuario_AdminControle extends usuario_Controle
     * @access public
     * 
     * @param Class &$controle Classe Controle Atual passada por Ponteiro
-    * @param Class &$modelo Modelo Passado por Ponteiro
+    * @param Class &$Modelo Modelo Passado por Ponteiro
     * @param Class &$Visual Visual Passado por Ponteiro
     * 
     * @uses social_Modelo Carrega Persona Modelo

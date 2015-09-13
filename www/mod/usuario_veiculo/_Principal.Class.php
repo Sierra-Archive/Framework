@@ -9,7 +9,7 @@ class usuario_veiculo_Principal implements \Framework\PrincipalInterface
     * @static
     * 
     * @param Class &$controle Classe Controle Atual passada por Ponteiro
-    * @param Class &$modelo Modelo Passado por Ponteiro
+    * @param Class &$Modelo Modelo Passado por Ponteiro
     * @param Class &$Visual Visual Passado por Ponteiro
     *
     * @uses \Framework\App\Controle::$usuario
@@ -40,12 +40,12 @@ class usuario_veiculo_Principal implements \Framework\PrincipalInterface
     }
     public static function Widgets(){
         $Registro = &\Framework\App\Registro::getInstacia();
-        $Modelo = &$registro->_Modelo;
-        $Visual = $Registro->_Visual;
+        $Modelo = &$Registro->_Modelo;
+        $Visual = &$Registro->_Visual;
         // Widget Equipamento
         if(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_veiculo_Equipamento')){
             // Calcula Equipamento
-            $equipamento_qnt = $modelo->db->Sql_Contar('Usuario_Veiculo_Equipamento');
+            $equipamento_qnt = $Modelo->db->Sql_Contar('Usuario_Veiculo_Equipamento');
             // Chama Widgets
             \Framework\App\Visual::Layoult_Home_Widgets_Add(
                'Equipamentos', 
@@ -58,7 +58,7 @@ class usuario_veiculo_Principal implements \Framework\PrincipalInterface
             );
         }
         // Calcula Veiculo
-        $veiculo_qnt = $modelo->db->Sql_Contar('Usuario_Veiculo');
+        $veiculo_qnt = $Modelo->db->Sql_Contar('Usuario_Veiculo');
         \Framework\App\Visual::Layoult_Home_Widgets_Add(
             'Veiculos', 
             'usuario_veiculo/Veiculo/Veiculos/', 
