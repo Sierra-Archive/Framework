@@ -709,6 +709,9 @@ if(!defined('MYSQL_SIS_LOCALIZACAO_PAIZES')){
 if(!defined('MYSQL_SIMULADOR')){
     define('MYSQL_SIMULADOR',              'Simulador'); 
 }
+if(!defined('MYSQL_SIMULADOR_ASSISTIR')){
+    define('MYSQL_SIMULADOR_ASSISTIR',     'Simulador_Assistir'); 
+}
 if(!defined('MYSQL_SIMULADOR_TAG')){
     define('MYSQL_SIMULADOR_TAG',          'Simulador_Tag'); 
 }

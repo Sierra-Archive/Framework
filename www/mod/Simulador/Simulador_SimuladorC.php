@@ -51,9 +51,10 @@ class Simulador_SimuladorControle extends Simulador_Controle
                 $texto = __('Ativado');
             }
             $tabela['Status'][$i]                   = '<span id="status'.$valor->id.'">'.$Visual->Tema_Elementos_Btn('Status'.$status     ,Array($texto        ,'Simulador/Simulador/Status/'.$valor->id.'/'    ,'')).'</span>';
-            $tabela['Funções'][$i]                  =   $Visual->Tema_Elementos_Btn('Visualizar' ,Array('Visualizar Perguntas do Simulador'    ,'Simulador/Pergunta/Perguntas/'.$valor->id.'/'    ,'')).
-                                                        $Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Simulador'        ,'Simulador/Simulador/Simuladores_Edit/'.$valor->id.'/'    ,'')).
-                                                        $Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Simulador'       ,'Simulador/Simulador/Simuladores_Del/'.$valor->id.'/'     ,'Deseja realmente deletar esse Simulador ?'));
+            $tabela['Funções'][$i]                  =   $Visual->Tema_Elementos_Btn('Personalizado' ,Array('Testar Simulador'    ,'Simulador/Simulador/Simuladores_Assistir/'.$valor->id.'/'    ,'','play','success')).
+                                                        $Visual->Tema_Elementos_Btn('Visualizar'    ,Array('Visualizar Perguntas do Simulador'    ,'Simulador/Pergunta/Perguntas/'.$valor->id.'/'    ,'')).
+                                                        $Visual->Tema_Elementos_Btn('Editar'        ,Array('Editar Simulador'        ,'Simulador/Simulador/Simuladores_Edit/'.$valor->id.'/'    ,'')).
+                                                        $Visual->Tema_Elementos_Btn('Deletar'       ,Array('Deletar Simulador'       ,'Simulador/Simulador/Simuladores_Del/'.$valor->id.'/'     ,'Deseja realmente deletar esse Simulador ?'));
             ++$i;
         }
         return Array($tabela,$i);
@@ -118,7 +119,7 @@ class Simulador_SimuladorControle extends Simulador_Controle
         // Carrega Config
         $titulo1    = __('Adicionar Simulador');
         $titulo2    = __('Salvar Simulador');
-        $formid     = 'form_Sistema_Admin_Simuladores';
+        $formid     = 'form_Simulador_Simulado_Simuladores';
         $formbt     = __('Salvar');
         $formlink   = 'Simulador/Simulador/Simuladores_Add2/';
         $campos = Simulador_DAO::Get_Colunas();
@@ -151,7 +152,7 @@ class Simulador_SimuladorControle extends Simulador_Controle
         // Carrega Config
         $titulo1    = 'Editar Simulador (#'.$id.')';
         $titulo2    = __('Alteração de Simulador');
-        $formid     = 'form_Sistema_AdminC_SimuladorEdit';
+        $formid     = 'form_Simulador_SimuladoC_SimuladorEdit';
         $formbt     = __('Alterar Simulador');
         $formlink   = 'Simulador/Simulador/Simuladores_Edit2/'.$id;
         $editar     = Array('Simulador',$id);
@@ -211,11 +212,11 @@ class Simulador_SimuladorControle extends Simulador_Controle
     }
     public function Status($id=false){
         if($id===false){
-            throw new \Exception('Registro não informado:'. $raiz, 404);
+            throw new \Exception('Registro não informado:'. $id, 404);
         }
         $resultado = $this->_Modelo->db->Sql_Select('Simulador', Array('id'=>$id),1);
         if($resultado===false || !is_object($resultado)){
-            throw new \Exception('Esse registro não existe:'. $raiz, 404);
+            throw new \Exception('Esse registro não existe:'. $id, 404);
         }
         if($resultado->status=='1'){
             $resultado->status='0';
@@ -247,6 +248,120 @@ class Simulador_SimuladorControle extends Simulador_Controle
             $this->_Visual->Json_Info_Update('Titulo', __('Erro')); 
         }
         $this->_Visual->Json_Info_Update('Historico', false);  
+    }
+    public function Simuladores_Assistir($simulador,$token=false,$pergunta=false){
+        // Verifica Token, se nao vier cria
+        if($token===false){
+            $token = Framework\App\Sistema_Funcoes::Seguranca_Gerar_Token();
+        }else{
+            $token = anti_injection($token);
+        }
+        
+        // Inicializa Variavies
+        $simulador = (int) $simulador;
+        $respondidas_perguntas = Array();
+        $respondidas_respostas = Array();
+        
+        //Procura Simulador
+        $simulador_registro = $this->_Modelo->db->Sql_Select('Simulador', '{sigla}id=\''.$simulador.'\'',1);
+        if($simulador_registro===false || !is_object($simulador_registro)){
+            throw new \Exception('Simulador não existe:'. $simulador, 404);
+        }
+        
+        // Procura as Respostas Ja Respondidas
+        $respondidas = $this->_Modelo->db->Sql_Select('Simulador_Assistir', '{sigla}token=\''.$token.'\'');
+        if(is_object($respondidas)){
+            $respondidas = Array($respondidas);
+        }
+        if($respondidas!==false){
+            foreach($respondidas as &$valor){
+                $respondidas_perguntas[] = $valor->pergunta;
+                $respondidas_respostas[] = $valor->resposta;
+            }
+        }
+        
+        // Se tiver POST, cadastra a resposta
+        if($pergunta!==false && isset($_POST['resposta'])){
+            $pergunta = (int) $pergunta;
+                
+                
+                
+        
+            $titulo     = __('Pergunta Respondida com Sucesso');
+            $dao        = 'Simulador_Assistir';
+            $funcao     = false;
+            $sucesso1   = __('Pergunta Respondida com Sucesso');
+            $sucesso2   = __('Pergunta Respondida com Sucesso');
+            $alterar    = Array(
+                'token'     => $token,
+                'simulador' => $simulador,
+                'pergunta'  => $pergunta
+            );
+            $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
+            
+            $respondidas_perguntas[] = $pergunta;
+            $respondidas_respostas[] = (int) $_POST['resposta'];
+        }
+        
+        // PRocura Proxima Resposta
+        $where = Array(
+            'simulador'     => $simulador,
+            'NOTINid'       => $respondidas_perguntas
+        );
+        $pergunta_proxima = $this->_Modelo->db->Sql_Select('Simulador_Pergunta', $where, 1);
+        
+        // Escolhe a próxima Página
+        if($pergunta_proxima===false){
+            //IMprimi Resultado
+            $caracteristicas = Array();
+            // PRocura Resultados
+            $where = Array(
+                'simulador'     => $simulador,
+                'INid'          => $respondidas_respostas
+            );
+            $assistir_respostas = $this->_Modelo->db->Sql_Select('Simulador_Pergunta_Resposta', $where);
+            if(is_object($assistir_respostas)){
+                $assistir_respostas = Array($assistir_respostas);
+            }
+            if($assistir_respostas!==false){var_dump($assistir_respostas);
+                foreach($assistir_respostas as &$valor){
+                    $caracteristicas[] = Array(
+                        'Tag'       => $valor->tag,
+                        'Resposta'  => $valor->filtro_valor,
+                        'Tipo'      => $valor->filtro_tipo
+                    );
+                }
+            }
+            var_dump($caracteristicas);
+        }else{
+            //Procura as Respostas
+            /*$where = Array(
+                'simulador'     => $simulador,
+                'pergunta'      => $pergunta_proxima->id
+            );
+            $pergunta_respostas = $this->_Modelo->db->Sql_Select('Simulador_Pergunta_Resposta', $where);
+            if(is_object($pergunta_respostas)){
+                $pergunta_respostas = Array($pergunta_respostas);
+            }
+            if($pergunta_respostas!==false){
+                foreach($pergunta_respostas as &$valor){
+                    $respondidas_perguntas[] = $valor->pergunta;
+                    $respondidas_respostas[] = $valor->resposta;
+                }
+            }*/
+            // Carrega Config
+            $titulo1    = __($pergunta_proxima->nome);
+            $titulo2    = __($pergunta_proxima->nome);
+            $formid     = 'form_Simulador_Simulado_Simuladores_Assistir';
+            $formbt     = __('Próxima');
+            $formlink   = 'Simulador/Simulador/Simuladores_Assistir/'.$simulador.'/'.$token.'/'.$pergunta_proxima->id;
+            $campos = Simulador_Assistir_DAO::Get_Colunas();
+            self::DAO_Campos_Retira($campos, 'simulador');
+            self::DAO_Campos_Retira($campos, 'pergunta');
+            self::DAO_Ext_Alterar($campos,'resposta',$pergunta_proxima->id);
+            \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos);
+
+        }
     }
 }
 ?>

@@ -43,6 +43,7 @@ $('#produtocontrolador1 select').attr('id','produto1');
         $alterado = $dominio['classe'];
         $alterado = new $alterado();
         // PRimeiro Foreach
+        //var_dump($alterado,$alterado->Get_Extrangeiras_ComExterna());
         $alterado = $alterado->Get_Extrangeiras_ComExterna();
         
         if($alterado===false) return true;
