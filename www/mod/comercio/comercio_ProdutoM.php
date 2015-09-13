@@ -111,8 +111,7 @@ class comercio_ProdutoModelo extends comercio_Modelo
         $columns[] = array( 'db' => 'id',            'dt' => $numero,
             'formatter' => $function
         ); //'Funções';
-                
-        echo 'fo2dasse'; exit;
+
         echo json_encode(
             \Framework\Classes\Datatable::complex( $_GET, Framework\App\Registro::getInstacia()->_Conexao, $tabela, $primaryKey, $columns, null)
         );

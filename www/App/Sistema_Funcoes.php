@@ -79,7 +79,7 @@ Class Sistema_Funcoes {
         $tam = strlen($string);
         
         // Se for maior que as Ocorrencias, Retorna ao começo
-        while($tam>$numero) $numero = $numero - $tam;
+        while($tam<$numero) $numero = $numero - $tam;
         
         return $string[$numero];
     }

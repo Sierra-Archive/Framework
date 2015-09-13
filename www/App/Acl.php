@@ -57,7 +57,7 @@ class Acl{
         $this->_Cache     = &$this->_Registro->_Cache;
         
         // Inicializa Classes caso ainda nao tenham sido
-        /*if($this->_db===false){
+        if($this->_db===false){
             $this->_Registro->_Conexao = new \Framework\App\Conexao();
         }
         if($this->_Request===false){
@@ -65,7 +65,7 @@ class Acl{
         }
         if($this->_Cache===false){
             $this->_Registro->_Cache = new \Framework\App\Cache();
-        }*/
+        }
         
         if($id!==false){
             // Caso esteja carregando de outro usuario

@@ -986,6 +986,7 @@ final class Conexao
         $Cache = $this->_Cache->Ler($chave_cache);
         if (!$Cache) {
             $Cache = $this->Sql_Select_Comeco($class_dao, $campos,$sql,$deletados);
+        
             $this->_Cache->Salvar($chave_cache, $Cache);
         }
         // Verifica se tira a ultima ou nao e depois retorna
@@ -1094,9 +1095,9 @@ final class Conexao
         }else{
             $campos_todos = true;
         }
-        
         // Trata os Campos das Extrangeiras da Tabela do Select        
         if($extrangeira!==false && (!empty($extrangeiras) || $campos_todos===true || !empty($principal))){
+        
             foreach($extrangeira as &$valor){
                 if(strpos($valor['titulo'], '[]')===false ){
                     
@@ -1114,14 +1115,13 @@ final class Conexao
                     ){
                         continue;
                     }
-
                     // Faz Tratamento de Extrangeira
                     list($ligacao,$mostrar,$extcondicao) = $this->Extrangeiras_Quebra($valor['conect']);
+
                     
                     // Lista Sigla a ser usada e a tabela
                     $tabela = self::Tabelas_GetSiglas_Recolher($ligacao[0]);
                     $sigla = 'EXT'.\Framework\App\Sistema_Funcoes::Letra_Aleatoria($cont);
-                    
                     // SE tabela for vazio retorna erro
                     if(!is_array($tabela)) throw new \Exception('Tabela nao retornou nada: '.$ligacao[0],3250);
                     
@@ -2022,6 +2022,7 @@ final class Conexao
      */
     public function Extrangeiras_Quebra($extrangeiro){
         // Divide string e recupera valores importantes
+        $cu = $extrangeiro;
         $extrangeiro    = explode('|', $extrangeiro);
         $ligacao        = explode('.', $extrangeiro[0]);
         $mostrar        = Array();

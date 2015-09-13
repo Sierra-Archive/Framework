@@ -291,13 +291,17 @@ class Datatable {
     * @param string $whereAll WHERE condition to apply to all queries
     * @return array Server-side processing response array
     */
-    static function complex ( $request, $conn, $table_class, $primaryKey, $columns, $whereResult=null, $whereAll=null, $select_Extra = '', $innerjoin_Extra = '' )
-    {
+    static function complex ( $request, &$conn, $table_class, $primaryKey, $columns, $whereResult=null, $whereAll=null, $select_Extra = '', $innerjoin_Extra = '' )
+    {   
         // Tratamento
         if($innerjoin_Extra!=='') $innerjoin_Extra = ' '.$innerjoin_Extra;
 
         // Inicia Variaveis Basicas
-        $db = self::db( $conn );
+        if ( is_array( $conn ) ) {
+            $db = self::db( $conn );//
+        }else{
+            $db = &$conn;
+        }
         $bindings = array();
         $localWhereResult = array();
         $localWhereAll = array();
@@ -306,6 +310,8 @@ class Datatable {
         $table_class = $table_class.'_DAO';      
         $table = \Framework\App\Conexao::$tabelas[$table_class]['nome'];
         $colunas = \Framework\App\Conexao::$tabelas[$table_class]['colunas'];
+        $db->Sql_Select_Dados($table_class,implode(",", self::pluck($columns, 'db')),'',true);
+
         list(
             $sql,
             $sql_tabela_sigla,
@@ -314,7 +320,7 @@ class Datatable {
             $tabelas_usadas,$j,
             $retornar_extrangeiras_usadas
         ) = $db->Sql_Select_Dados($table_class,implode(",", self::pluck($columns, 'db')),'',true);
-
+        
         // Add Condicao
         if($whereAll==null) $whereAll = $sql_condicao;
         else $whereAll = $sql_condicao. ' AND '.self::_flatten( $whereAll );
