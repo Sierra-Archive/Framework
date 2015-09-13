@@ -160,14 +160,14 @@ class comercio_PropostaControle extends comercio_Controle
             self::DAO_Campos_Retira($campos, 'Serviços'); // Tipo de Servico
         }else{
             if(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_servicos_ServicoTipo')){
-                self::DAO_Campos_Retira($campos, 'Serviço');
+                self::DAO_Campos_Retira($campos, __('Serviço'));
             }else{
-                self::DAO_Campos_Retira($campos, 'Serviços'); // Tipo de Servico
+                self::DAO_Campos_Retira($campos, __('Serviços')); // Tipo de Servico
             }
         }
         
         if(!\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Propostas_MaodeObra')){
-            self::DAO_Campos_Retira($campos, 'Mão de Obra');
+            self::DAO_Campos_Retira($campos, __('Mão de Obra'));
         }
         
         
@@ -181,7 +181,7 @@ class comercio_PropostaControle extends comercio_Controle
             // Retira Tipo de Proposta
             self::DAO_Campos_Retira($campos, 'propostatipo');
             self::DAO_Campos_RetiraAlternados($campos);
-            self::DAO_Campos_Retira($campos, 'Btus');
+            self::DAO_Campos_Retira($campos, __('Btus'));
         }
         // Caso Contrario Bota Instalacao como Padrao
         else {
@@ -200,8 +200,8 @@ class comercio_PropostaControle extends comercio_Controle
         
         // Retira se nao for OS
         if($tema=='Propostas'){
-            self::DAO_Campos_Retira($campos, 'Funcionários');
-            self::DAO_Campos_Retira($campos, 'Checklist');
+            self::DAO_Campos_Retira($campos, __('Funcionários'));
+            self::DAO_Campos_Retira($campos, __('Checklist'));
  
             if(!\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Proposta_Lucro')){
                 self::DAO_Campos_Retira($campos, 'pagar_lucro');
@@ -228,7 +228,7 @@ class comercio_PropostaControle extends comercio_Controle
             self::DAO_Campos_Retira($campos, 'pagar_desconto');
             self::DAO_Campos_Retira($campos, 'status');
             if(!\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Proposta_Checklist')){
-                self::DAO_Campos_Retira($campos, 'Checklist');
+                self::DAO_Campos_Retira($campos, __('Checklist'));
             }
             self::DAO_Campos_Retira($campos, 'valor_fixo');
             self::DAO_Campos_Retira($campos, 'comissao');

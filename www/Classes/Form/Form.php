@@ -163,6 +163,7 @@ class Form
         $Visual     = $Registro->_Visual;
         // Zera VAriaveis
         $change = '';
+        
         if($campos!==false && $javascript_campos!==false){
             // Javascript
             $js = '<script LANGUAGE="JavaScript" TYPE="text/javascript">';
@@ -187,19 +188,21 @@ class Form
                     
                     
                         // Puxa Nome, E troca calculado pra 1 caso exista
-                        'var nome = $("#'.$id.' option[value="+valores_usados[i]+"]").html();'.
-                        'if(nome!=\'\'){'.
-                            'if($("#'.$id.'controlador_"+valores_usados[i]+"").size()!=1){'.
-                                'var java_campos = "'.$javascript_campos.'";'.
-                                'java_campos = java_campos.replace(/{id}/g, valores_usados[i]);'.
-                                'java_campos = java_campos.replace(/{nome}/g, Sierra.Visual_Tratamento_Maiusculo_Primeira(nome,true));'.
-                                '$( "#'.$id.'controlador" ).append("<span id=\"'.$id.'controlador_"+valores_usados[i]+"\" calculado=\"1\">'.
-                                    '"+java_campos+"'.
-                                    //'<hr>'.
-                                    '</span>"'.
-                                ');'.
-                            '}else{'.
-                                '$("#'.$id.'controlador_"+valores_usados[i]+"").attr("calculado",1);'.
+                        'if(valores_usados[i]!=\'\'){'.
+                            'var nome = $("#'.$id.' option[value="+valores_usados[i]+"]").html();'.
+                            'if(nome!=\'\'){'.
+                                'if($("#'.$id.'controlador_"+valores_usados[i]+"").size()!=1){'.
+                                    'var java_campos = "'.$javascript_campos.'";'.
+                                    'java_campos = java_campos.replace(/{id}/g, valores_usados[i]);'.
+                                    'java_campos = java_campos.replace(/{nome}/g, Sierra.Visual_Tratamento_Maiusculo_Primeira(nome,true));'.
+                                    '$( "#'.$id.'controlador" ).append("<span id=\"'.$id.'controlador_"+valores_usados[i]+"\" calculado=\"1\">'.
+                                        '"+java_campos+"'.
+                                        //'<hr>'.
+                                        '</span>"'.
+                                    ');'.
+                                '}else{'.
+                                    '$("#'.$id.'controlador_"+valores_usados[i]+"").attr("calculado",1);'.
+                                '}'.
                             '}'.
                         '}'.
                     '}'.

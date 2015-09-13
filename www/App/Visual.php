@@ -1120,7 +1120,7 @@ class Visual
         'ConfigArquivoPadrao = \''.SISTEMA_URL.SISTEMA_DIR.'\';'.
         'Config_Form_Maiusculo = '.$maiusculo.';'.
         'UserLogado = ';
-            if($this->_Acl===false || $this->_Acl->logado===false || !isset($this->_Acl->logado_usuario->id) || $this->_Acl->logado_usuario->id==''){
+            if(!is_object($this->_Acl) || $this->_Acl->logado===false || !is_object($this->_Acl->logado_usuario) || !isset($this->_Acl->logado_usuario->id) || $this->_Acl->logado_usuario->id==''){
                 $html .= '0';
             }
             else{

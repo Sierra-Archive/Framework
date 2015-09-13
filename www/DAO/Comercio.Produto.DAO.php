@@ -248,7 +248,7 @@ final Class Comercio_Produto_DAO extends Framework\App\Dao
                         'Linkar'            => 'motivoid', // CAmpo a ser encaixado id do pai
                         'Linkado'           => 'caracteristica',// CAmpo a ser encaixado id do link
                         'Campos'            => Array(
-                            'v2alor'
+                            'valor'
                         ),
                         'infonulo'          => 'Escolha pelo menos uma Caracteristica',
                         'linkextra'         => false

@@ -64,7 +64,7 @@ final Class Simulador_Tag_Conexao_DAO extends Framework\App\Dao
                 'mysql_tipovar'     => 'varchar', //varchar, int, 
                 'mysql_tamanho'     => 100,
                 'mysql_null'        => true,
-                'mysql_default'     => false,
+                'mysql_default'     => 'Comercio_Produto',
                 'mysql_primary'     => true,
                 'mysql_estrangeira' => false, // chave estrangeira
                 'mysql_autoadd'     => false,
@@ -73,7 +73,7 @@ final Class Simulador_Tag_Conexao_DAO extends Framework\App\Dao
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => '', // //0 ninguem, 1 admin, 2 todos 
-                'edicao'            => Array(
+                /*'edicao'            => Array(
                     'Nome'              => __('Motivo'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
@@ -83,7 +83,7 @@ final Class Simulador_Tag_Conexao_DAO extends Framework\App\Dao
                         'tipo'              => 'text',
                         'class'             => 'obrigatorio'
                     )
-                )
+                )*/
             ),Array(
                 'mysql_titulo'      => 'motivoid',
                 'mysql_tipovar'     => 'varchar', //varchar, int, 

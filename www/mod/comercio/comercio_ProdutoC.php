@@ -98,6 +98,11 @@ class comercio_ProdutoControle extends comercio_Controle
         self::DAO_Campos_Retira($campos,'sigla',0);
         self::DAO_Campos_Retira($campos,'referencia',0);
         
+        // Se nao Tiver Modulo Simulador Retira Campo
+        if(!(\Framework\App\Sistema_Funcoes::Perm_Modulos('Simulador'))){
+            self::DAO_Campos_Retira($campos, __('Caracteristicas'));
+        }
+         
         // Outros
         if(!\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Produto_Obs')){
             self::DAO_Campos_Retira($campos,'obs',0);

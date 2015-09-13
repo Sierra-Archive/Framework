@@ -988,6 +988,7 @@ readfile($link);*/
                     
                     // Puxa Selecionados, Resutados e Colunas
                     list($selecionados,$resultado, $colunas) = $Modelo->db->Tabelas_CapturaLinkadas($tabelalinkada);
+                    //var_dump($selecionados,$resultado, $colunas);
                     // Configura Array
                     $opcoes = Array();
                     if($resultado!==false){
@@ -1008,11 +1009,13 @@ readfile($link);*/
                     if($colunas!==false){
                         $colunas_temporaria = $colunas;
                         self::DAO_Campos_TrocaID($colunas_temporaria,'{id}');
+                        
                         // Puxa CAmpos Javascript
                         $form_js = new \Framework\Classes\Form();
                         $javascript_campos = self::Gerador_Formulario($colunas_temporaria, $form_js,false);
                         $javascript_campos = str_replace(Array('"','\n','\r','    '), Array('\"','','',''), $javascript_campos);
                         $javascript_campos = preg_replace('/\s/',' ',trim($javascript_campos));
+                        
                     }else{
                         $javascript_campos = '';
                     }
@@ -1323,6 +1326,7 @@ readfile($link);*/
                     else{
                         $mascara = false;
                     }
+                    
                     $html .= $form->Input_Novo(
                         $valor['edicao']['Nome'],
                         $valor['mysql_titulo'],
@@ -1420,6 +1424,7 @@ readfile($link);*/
                 $gerar_span = false;
             }
         }
+        
         return $html;
     }
     /**
