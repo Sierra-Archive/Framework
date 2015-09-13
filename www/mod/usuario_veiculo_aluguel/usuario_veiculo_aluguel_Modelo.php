@@ -75,8 +75,8 @@ class usuario_veiculo_aluguel_Modelo extends \Framework\App\Modelo
         return 1;
     }
     static function Financeiro_Motivo_Exibir($motivoid){
-        $registro = \Framework\App\Registro::getInstacia();
-        $modelo = $registro->_Modelo;
+        $registro = &\Framework\App\Registro::getInstacia();
+        $Modelo = &$registro->_Modelo;
         $i = 0;
         $sql = $modelo->db->query(' SELECT C.nome AS CATEGORIA, V.id, V.foto, V.ano, V.modelo, M.nome as MARCA, V.cc, V.valor1, V.valor2, V.valor3, V.franquia
         FROM '.MYSQL_USUARIO_VEICULO.' V, '.MYSQL_CAT.' C, '.MYSQL_USUARIO_VEICULO_MARCAS.' M, '.MYSQL_USUARIO_VEICULO_ALUGUEL.' AL

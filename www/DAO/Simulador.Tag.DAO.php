@@ -93,6 +93,7 @@ final Class Simulador_Tag_DAO extends Framework\App\Dao
                     'aviso'             => '',
                     'formtipo'          => 'select',
                     'select'            => array(
+                        'class'             => 'obrigatorio',
                         'opcoes'            => array(
                             array(
                                 'value'         =>  'Texto',
@@ -143,7 +144,7 @@ final Class Simulador_Tag_DAO extends Framework\App\Dao
                     'readonly'          => false,
                     'aviso'             => '',
                     'formtipo'          =>'textarea',
-                   'textarea'             => array(
+                    'textarea'             => array(
                         'tipo'              => 'text',
                         'class'             => ''
                     )

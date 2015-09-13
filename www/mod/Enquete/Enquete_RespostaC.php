@@ -22,7 +22,7 @@ class Enquete_RespostaControle extends Enquete_Controle
     }
     static function Endereco_Resposta($enquete=false,$true=true){
         Enquete_EnqueteControle::Endereco_Enquete();
-        $registro = \Framework\App\Registro::getInstacia();
+        $registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
         
         $link_extra = '';
@@ -37,7 +37,7 @@ class Enquete_RespostaControle extends Enquete_Controle
         }
     }
     static function Respostas_Tabela(&$respostas){
-        $registro   = \Framework\App\Registro::getInstacia();
+        $registro   = &\Framework\App\Registro::getInstacia();
         $Modelo     = &$registro->_Modelo;
         $Visual     = &$registro->_Visual;
         $tabela = Array();

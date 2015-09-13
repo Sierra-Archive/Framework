@@ -41,7 +41,7 @@ class usuario_ExpedienteControle extends usuario_Controle
      * @version 3.1.1
      */
     static function Endereco_Expediente($true=true){
-        $registro = \Framework\App\Registro::getInstacia();
+        $registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
         if($true===true){
             $_Controle->Tema_Endereco(__('Expediente'),'usuario/Expediente/Expediente');

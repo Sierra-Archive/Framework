@@ -36,7 +36,7 @@ class comercio_servicos_InstalacaoControle extends comercio_servicos_Controle
         return false;
     }/*
     static function Endereco_Ar($true=true){
-        $registro = \Framework\App\Registro::getInstacia();
+        $registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
         if($true===true){
             $_Controle->Tema_Endereco(__('Adicional de Ar'),'comercio_servicos/Instalacao/Ar');
@@ -45,7 +45,7 @@ class comercio_servicos_InstalacaoControle extends comercio_servicos_Controle
         }
     }
     static function Endereco_Gas($true=true){
-        $registro = \Framework\App\Registro::getInstacia();
+        $registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
         if($true===true){
             $_Controle->Tema_Endereco(__('Adicional de Gás'),'comercio_servicos/Instalacao/Gas');
@@ -54,7 +54,7 @@ class comercio_servicos_InstalacaoControle extends comercio_servicos_Controle
         }
     }
     static function Endereco_Linha($true=true){
-        $registro = \Framework\App\Registro::getInstacia();
+        $registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
         if($true===true){
             $_Controle->Tema_Endereco(__('Adicional de Linha'),'comercio_servicos/Instalacao/Linha');
@@ -63,7 +63,7 @@ class comercio_servicos_InstalacaoControle extends comercio_servicos_Controle
         }
     }*/
     static function Endereco_Btu($true=true){
-        $registro = \Framework\App\Registro::getInstacia();
+        $registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
         if($true===true){
             $_Controle->Tema_Endereco(__('Btu'),'comercio_servicos/Instalacao/Btu');
@@ -72,7 +72,7 @@ class comercio_servicos_InstalacaoControle extends comercio_servicos_Controle
         }
     }
     static function Endereco_Suporte($true=true){
-        $registro = \Framework\App\Registro::getInstacia();
+        $registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
         if($true===true){
             $_Controle->Tema_Endereco(__('Suporte'),'comercio_servicos/Instalacao/Suporte');

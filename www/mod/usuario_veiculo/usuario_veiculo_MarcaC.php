@@ -36,7 +36,7 @@ class usuario_veiculo_MarcaControle extends usuario_veiculo_Controle
         return false;
     }
     static function Endereco_Veiculo_Marca($true=true){
-        $registro = \Framework\App\Registro::getInstacia();
+        $registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
         $titulo = __('Marcas');
         $link = 'usuario_veiculo/Marca/Marcas';

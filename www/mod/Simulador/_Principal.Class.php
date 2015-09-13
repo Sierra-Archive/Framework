@@ -47,7 +47,7 @@ class Simulador_Principal implements \Framework\PrincipalInterface
      */
     public static function Widgets(){
         $Registro = &\Framework\App\Registro::getInstacia();
-        $modelo = $Registro->_Modelo;
+        $Modelo = &$registro->_Modelo;
         $Visual = $Registro->_Visual;
         // Tags
         $tag_qnt = $modelo->db->Sql_Contar('Simulador_Tag');
@@ -186,7 +186,7 @@ class Simulador_Principal implements \Framework\PrincipalInterface
      */
     public static function Manutencao(&$log){
         $Registro = &\Framework\App\Registro::getInstacia();
-        $modelo = $Registro->_Modelo;
+        $Modelo = &$registro->_Modelo;
         $Visual = $Registro->_Visual;
         // Endereços dos arquivos $tags_chaves['endereco'] = 'ID';
         return true;

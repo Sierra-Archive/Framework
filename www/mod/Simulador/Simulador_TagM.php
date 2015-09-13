@@ -27,27 +27,18 @@ class Simulador_TagModelo extends Simulador_Modelo
         $perm_del = $this->_Registro->_Acl->Get_Permissao_Url('Simulador/Tag/Tags_Del');
         
         $function = '';
-        $function .= ' if($row[\'tipo\']==1){ ';
-            if($perm_editar) $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Editar\'     ,Array(__(\'Editar Pasta\')        ,\'Simulador/Tag/Tags_Edit/\'.$d.\'/'.$raiz.'\'    ,\'\'),true);';
-            if($perm_del) $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Deletar\'    ,Array(__(\'Deletar Pasta\')       ,\'Simulador/Tag/Tags_Del/\'.$d.\'/'.$raiz.'\'     ,__(\'Deseja realmente deletar essa pasta ?\')),true);';
-        $function .= ' }else{ ';
-            if($perm_baixar) $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Baixar\'     ,Array(__(\'Download de Arquivo\')   ,\'Simulador/Tag/Download/\'.$d    ,\'\'),true);';
-            if($perm_editar) $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Editar\'     ,Array(__(\'Editar Arquivo\')        ,\'Simulador/Tag/Tags_Edit/\'.$d.\'/'.$raiz.'\'    ,\'\'),true);';
-            if($perm_del) $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Deletar\'    ,Array(__(\'Deletar Arquivo\')       ,\'Simulador/Tag/Tags_Del/\'.$d.\'/'.$raiz.'\'     ,__(\'Deseja realmente deletar esse arquivo ?\')),true);';
-        $function .= ' } ';
+        if($perm_editar) $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Editar\'     ,Array(__(\'Editar Pasta\')        ,\'Simulador/Tag/Tags_Edit/\'.$d    ,\'\'),true);';
+        if($perm_del) $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Deletar\'    ,Array(__(\'Deletar Pasta\')       ,\'Simulador/Tag/Tags_Del/\'.$d     ,__(\'Deseja realmente deletar essa Caracteristica ?\')),true);';
+
         $columns = Array();
         
         $numero = -1;
         
-        //'ext';
+        //'Id';
         ++$numero;
-        $columns[] = array( 'db' => 'ext', 'dt' => $numero,
+        $columns[] = array( 'db' => 'id', 'dt' => $numero,
             'formatter' => function( $d, $row ) {
-                if($row['tipo']==1){
-                    return 'Pasta';
-                }else{
-                    return \Framework\App\Sistema_Funcoes::Control_Arq_Ext($d);
-                }
+                return '#'.$d;
             }
         );
         
@@ -56,34 +47,15 @@ class Simulador_TagModelo extends Simulador_Modelo
         $columns[] = array( 'db' => 'nome', 'dt' => $numero
         );
         
+        // Resultado Tipo
+        ++$numero;
+        $columns[] = array( 'db' => 'resultado_tipo', 'dt' => $numero);
                 
-                        
+        // Obs
         ++$numero;
-        $columns[] = array( 'db' => 'obs', 'dt' => $numero); //'DEscricao';
-
+        $columns[] = array( 'db' => 'obs', 'dt' => $numero);        
         
-        
-        
-        
-        ++$numero;
-        $columns[] = array( 'db' => 'usuario2', 'dt' => $numero); //'Criador';
-        
-        ++$numero;
-        $columns[] = array( 'db' => 'log_date_add', 'dt' => $numero); //'Data';
-        
-        //'Arquivo'; 
-        ++$numero;
-        $columns[] = array( 'db' => 'arquivo', 'dt' => $numero,
-            'formatter' => function( $d, $row ) {
-                if($row['tipo']==1){
-                    return __('Diretório');
-                }else{
-                    return $d.'.'.$row['ext'];
-                }
-            }
-        ); 
-        
-        
+        // Funcoes
         ++$numero;
         eval('$function = function( $d, $row ) { $html = \'\'; '.$function.' return $html; };');       
         $columns[] = array( 'db' => 'id',            'dt' => $numero,

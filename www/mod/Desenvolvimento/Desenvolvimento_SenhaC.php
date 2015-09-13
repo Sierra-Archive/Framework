@@ -337,7 +337,7 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
         return $html;
     }
     static function Senhas_Todas_Tabela($Senhas_Todas){
-        $registro   = \Framework\App\Registro::getInstacia();
+        $registro   = &\Framework\App\Registro::getInstacia();
         $Visual     = &$registro->_Visual;
         $tabela = Array();
         $i = 0;

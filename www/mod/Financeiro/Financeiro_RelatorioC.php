@@ -22,7 +22,7 @@ class Financeiro_RelatorioControle extends Financeiro_Controle
         parent::__construct();
     }
     static function Endereco_Financeiro($true=true){
-        $registro = \Framework\App\Registro::getInstacia();
+        $registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
         $titulo = __('Relatório Financeiro');
         $link = 'Financeiro/Relatorio/Relatorio';
@@ -33,7 +33,7 @@ class Financeiro_RelatorioControle extends Financeiro_Controle
         }
     }
     static function Endereco_Grafico_Financeiro($true=true){
-        $registro = \Framework\App\Registro::getInstacia();
+        $registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
         $titulo = __('Relatório Gráfico Financeiro');
         $link = 'Financeiro/Relatorio/Grafico_Relatorio';

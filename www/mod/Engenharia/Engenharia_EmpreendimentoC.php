@@ -5,7 +5,7 @@ class Engenharia_EmpreendimentoControle extends Engenharia_Controle
         parent::__construct();
     }
     static function Endereco_Empreendimento($true=true){
-        $registro = \Framework\App\Registro::getInstacia();
+        $registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
         if($true===true){
             $_Controle->Tema_Endereco(__('Empreendimentos'),'Engenharia/Empreendimento/Main');
@@ -31,7 +31,7 @@ class Engenharia_EmpreendimentoControle extends Engenharia_Controle
         return false;
     }
     static function Empreendimentos_Tabela(&$empreendimentos){
-        $registro   = \Framework\App\Registro::getInstacia();
+        $registro   = &\Framework\App\Registro::getInstacia();
         $Visual     = &$registro->_Visual;
         $tabela = Array();
         $i = 0;

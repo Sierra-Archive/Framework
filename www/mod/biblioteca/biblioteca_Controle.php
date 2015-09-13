@@ -17,7 +17,7 @@ class biblioteca_Controle extends \Framework\App\Controle
         parent::__construct();
     }
     static function Bibliotecas_AtualizaTamanho_Pai($parent=false){
-        $Registro = \Framework\App\Registro::getInstacia();
+        $Registro = &\Framework\App\Registro::getInstacia();
         if($parent===false) return false;
         if(!is_object($parent)){
             $parent = (int) $parent;

@@ -18,7 +18,7 @@ class usuario_Controle extends \Framework\App\Controle
     }
     
     static function Usuarios_Tabela(&$usuarios,$nomedisplay_sing,$linkextra, $grupo=false, $url_ver='usuario/Perfil/Perfil_Show', $url_editar='usuario/Admin/Usuarios_Edit', $url_deletar='usuario/Admin/Usuarios_Del'){
-        $registro   = \Framework\App\Registro::getInstacia();
+        $registro   = &\Framework\App\Registro::getInstacia();
         $Modelo     = &$registro->_Modelo;
         $Visual     = &$registro->_Visual;
         $tabela = Array();
@@ -422,7 +422,7 @@ class usuario_Controle extends \Framework\App\Controle
         return $tabela->retornatabela();
     }
     static function Usuarios_Email_Ver($id = 0,$tipo=false, $tema='Cliente'){
-        $registro   = \Framework\App\Registro::getInstacia();
+        $registro   = &\Framework\App\Registro::getInstacia();
         $Controle   = $registro->_Controle;
         $Acl   = $registro->_Acl;
         $Modelo     = $registro->_Modelo;

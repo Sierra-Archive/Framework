@@ -5,7 +5,7 @@ class Evento_EventoControle extends Evento_Controle
         parent::__construct();
     }
     static function Endereco_Evento($true=true){
-        $registro = \Framework\App\Registro::getInstacia();
+        $registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
         if($true===true){
             $_Controle->Tema_Endereco(__('Eventos'),'Evento/Evento/Eventos');
@@ -31,7 +31,7 @@ class Evento_EventoControle extends Evento_Controle
         return false;
     }
     static function Eventos_Tabela(&$eventos){
-        $registro   = \Framework\App\Registro::getInstacia();
+        $registro   = &\Framework\App\Registro::getInstacia();
         $Visual     = &$registro->_Visual;
         $tabela = Array();
         $i = 0;

@@ -22,7 +22,7 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
         parent::__construct();
     }
     static function Endereco_Financeiro($true=true){
-        $registro = \Framework\App\Registro::getInstacia();
+        $registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
         $titulo = __('Financeiro');
         $link = '_Sistema/Principal/Home';
@@ -34,7 +34,7 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
     }
     static function Endereco_Pagar($true=true){
         self::Endereco_Financeiro();
-        $registro = \Framework\App\Registro::getInstacia();
+        $registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
         $titulo = __('À Pagar');
         $link = 'Financeiro/Pagamento/Pagar';
@@ -46,7 +46,7 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
     }
     static function Endereco_Receber($true=true){
         self::Endereco_Financeiro();
-        $registro = \Framework\App\Registro::getInstacia();
+        $registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
         $titulo = __('À Receber');
         $link = 'Financeiro/Pagamento/Receber';
@@ -58,7 +58,7 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
     }
     static function Endereco_Pago($true=true){
         self::Endereco_Financeiro();
-        $registro = \Framework\App\Registro::getInstacia();
+        $registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
         $titulo = __('Pagas');
         $link = 'Financeiro/Pagamento/Pago';
@@ -70,7 +70,7 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
     }
     static function Endereco_Recebido($true=true){
         self::Endereco_Financeiro();
-        $registro = \Framework\App\Registro::getInstacia();
+        $registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
         $titulo = __('Recebidos');
         $link = 'Financeiro/Pagamento/Recebido';
@@ -82,7 +82,7 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
     }
     static function Endereco_Forma($true=true){
         self::Endereco_Financeiro();
-        $registro = \Framework\App\Registro::getInstacia();
+        $registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
         $titulo = __('Forma de Pagamento');
         $link = 'Financeiro/Pagamento/Formas';
@@ -94,7 +94,7 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
     }
     static function Endereco_Forma_Condicao($true=true, $forma = 0){
         self::Endereco_Forma();
-        $registro = \Framework\App\Registro::getInstacia();
+        $registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
         $titulo = __('Condições de Pagamento');
         $link = 'Financeiro/Pagamento/Condicoes';
@@ -287,8 +287,8 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
      */
     static function Financeiro_Pagamento($motivo,$motivo_id,$pago){
         // Carrega Modelo
-        $registro = \Framework\App\Registro::getInstacia();
-        $_Modelo = $registro->_Modelo;
+        $registro = &\Framework\App\Registro::getInstacia();
+        $_Modelo = &$registro->_Modelo;
         // Prepara Update ClasseDAO|SET|WHERE
         $string = 'Financeiro_Pagamento_Interno|pago=\''.$pago.'\'| motivo=\''.$motivo.'\' AND motivoid=\''.$motivo_id.'\'';
         $_Modelo->db->Sql_Update($string);
@@ -793,8 +793,8 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
      * @param type $data
      */
     static function Condicao_GerarPagamento($condicaoid,$motivo,$motivoid,$entrada_motivo,$entrada_motivoid,$saida_motivo,$saida_motivoid, $valor, $data = false,$categoria=0,$pago=0){
-        $registro = \Framework\App\Registro::getInstacia();
-        $_Modelo = $registro->_Modelo;
+        $registro = &\Framework\App\Registro::getInstacia();
+        $_Modelo = &$registro->_Modelo;
         //Valores Iniciais
         $num            = 1; // Parcelas
         $condicaoid     = (int) $condicaoid; // AntiInjection

@@ -36,7 +36,7 @@ class comercio_ProdutoControle extends comercio_Controle
         return false;
     }
     static function Endereco_Produto($true=true){
-        $registro = \Framework\App\Registro::getInstacia();
+        $registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
         if($true===true){
             $_Controle->Tema_Endereco(__('Produtos'),'comercio/Produto/Produtos');

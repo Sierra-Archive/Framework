@@ -25,8 +25,8 @@ class comercio_ProdutoModelo extends comercio_Modelo
     static function Estoque_Exibir($produtoid,$motivoid){
         $produtoid = (int) $produtoid;
         $motivoid = (int) $motivoid;
-        $registro = \Framework\App\Registro::getInstacia();
-        $_Modelo = $registro->_Modelo;
+        $registro = &\Framework\App\Registro::getInstacia();
+        $_Modelo = &$registro->_Modelo;
         $retirada = $_Modelo->db->Sql_Select('Comercio_Produto_Estoque_Reduzir',Array('id'=>$motivoid),1);
         if($retirada===false){
             return Array('Redução Não existente','Não existe');
@@ -37,7 +37,6 @@ class comercio_ProdutoModelo extends comercio_Modelo
         // Table's primary key
         $primaryKey = 'id';
         $tabela = 'Comercio_Produto';
-        
         
         $perm_view = $this->_Registro->_Acl->Get_Permissao_Url('comercio/Estoque/Estoques');
         $perm_reduzir = $this->_Registro->_Acl->Get_Permissao_Url('comercio/Produto/Estoque_Reduzir');
@@ -113,6 +112,7 @@ class comercio_ProdutoModelo extends comercio_Modelo
             'formatter' => $function
         ); //'Funções';
                 
+        echo 'fo2dasse'; exit;
         echo json_encode(
             \Framework\Classes\Datatable::complex( $_GET, Framework\App\Registro::getInstacia()->_Conexao, $tabela, $primaryKey, $columns, null)
         );

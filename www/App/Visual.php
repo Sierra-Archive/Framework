@@ -1205,8 +1205,8 @@ class Visual
      * @version 3.1.1
      */
     public static function Layoult_Home_Widgets_Show($gravidade=10000){
-        $registro = \Framework\App\Registro::getInstacia();
-        $Visual   = $registro->_Visual;
+        $registro = &\Framework\App\Registro::getInstacia();
+        $Visual   = &$registro->_Visual;
         $widgets = &self::$widgets_inline;
         orderMultiDimensionalArray($widgets, 'gravidade', true);
         $Visual->Blocar($Visual->renderizar_bloco('elemento_miniwidget',Array('widgets'=>$widgets)));

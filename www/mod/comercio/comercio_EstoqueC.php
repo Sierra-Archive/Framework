@@ -36,7 +36,7 @@ class comercio_EstoqueControle extends comercio_Controle
         return false;
     }
     static function Endereco_Estoque($true=true,$produto=false){
-        $registro = \Framework\App\Registro::getInstacia();
+        $registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
         if($produto===false){
             $titulo = __('Histórico de Estoque');
@@ -53,7 +53,7 @@ class comercio_EstoqueControle extends comercio_Controle
         }
     }
     static function Endereco_Entrada_Material($true=true){
-        $registro = \Framework\App\Registro::getInstacia();
+        $registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
         $titulo = __('Entrada de Material');
         $link = 'comercio/Estoque/Material_Entrada';
@@ -149,8 +149,8 @@ class comercio_EstoqueControle extends comercio_Controle
      */
     static function Estoque_Retorna($produto=false){
         $produto = (int) $produto;
-        $registro = \Framework\App\Registro::getInstacia();
-        $_Modelo = $registro->_Modelo;
+        $registro = &\Framework\App\Registro::getInstacia();
+        $_Modelo = &$registro->_Modelo;
         $quantidade = 0;
         $estoques = $_Modelo->db->Sql_Select(
             'Comercio_Produto_Estoque',
@@ -182,8 +182,8 @@ class comercio_EstoqueControle extends comercio_Controle
      * @version 3.1.1
      */
     static function Estoque_Inserir($motivo,$motivoid,$produto,$qnt,$data=false){
-        $registro = \Framework\App\Registro::getInstacia();
-        $_Modelo = $registro->_Modelo;
+        $registro = &\Framework\App\Registro::getInstacia();
+        $_Modelo = &$registro->_Modelo;
         if($data===false){
             $data = APP_DATA;
         }
@@ -209,8 +209,8 @@ class comercio_EstoqueControle extends comercio_Controle
      * @version 3.1.1
      */
     static function Estoque_Remover($motivo,$motivoid,$produto,$qnt,$data=false){
-        $registro = \Framework\App\Registro::getInstacia();
-        $_Modelo = $registro->_Modelo;
+        $registro = &\Framework\App\Registro::getInstacia();
+        $_Modelo = &$registro->_Modelo;
         if($data===false){
             $data = APP_DATA;
         }

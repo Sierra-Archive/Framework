@@ -23,7 +23,7 @@ class Curso_TurmaControle extends Curso_Controle
     }
     static function Endereco_Turma($true=true,$curso=false){
         if($curso==='false') $curso = false;
-        $registro = \Framework\App\Registro::getInstacia();
+        $registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
         if($curso===false){
             $titulo = __('Todas as Turmas');
@@ -42,7 +42,7 @@ class Curso_TurmaControle extends Curso_Controle
     static function Endereco_Turma_Ver($true=true,$turma,$curso=false){
         if($turma==='false') $turma = false;
         if($curso==='false') $curso = false;
-        $registro = \Framework\App\Registro::getInstacia();
+        $registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
         self::Endereco_Turma(true,$curso);
         $titulo = 'Visualizar Turma: '.$turma->nome;
@@ -59,7 +59,7 @@ class Curso_TurmaControle extends Curso_Controle
     }
     static function Endereco_Aberta($true=true,$curso=false){
         if($curso==='false') $curso = false;
-        $registro = \Framework\App\Registro::getInstacia();
+        $registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
         if($curso===false){
             $titulo = __('Todas as Turmas');
@@ -77,7 +77,7 @@ class Curso_TurmaControle extends Curso_Controle
     }
     static function Turmas_Tabela(&$turmas,$curso=false){
         if($curso==='false') $curso = false;
-        $registro   = \Framework\App\Registro::getInstacia();
+        $registro   = &\Framework\App\Registro::getInstacia();
         $Modelo     = &$registro->_Modelo;
         $Visual     = &$registro->_Visual;
         $tabela = Array();
@@ -119,7 +119,7 @@ class Curso_TurmaControle extends Curso_Controle
     }
     static function Abertas_Tabela(&$turmas,$curso=false,$inscrever=true){
         if($curso==='false') $curso = false;
-        $registro   = \Framework\App\Registro::getInstacia();
+        $registro   = &\Framework\App\Registro::getInstacia();
         $Modelo     = &$registro->_Modelo;
         $Visual     = &$registro->_Visual;
         $tabela = Array();
@@ -145,7 +145,7 @@ class Curso_TurmaControle extends Curso_Controle
         return Array($tabela,$i);
     }
     static function Inscricoes_Tabela(&$inscricoes){
-        $registro   = \Framework\App\Registro::getInstacia();
+        $registro   = &\Framework\App\Registro::getInstacia();
         $Modelo     = &$registro->_Modelo;
         $Visual     = &$registro->_Visual;
         $tabela = Array();

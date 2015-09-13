@@ -22,7 +22,7 @@ class Musica_MusicaControle extends Musica_Controle
         return false;
     }
     static function Endereco_Musica($true=true,$artista=false, $album=false){
-        $registro = \Framework\App\Registro::getInstacia();
+        $registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
         if($artista===false){
             $titulo = __('Todas as Musicas');
@@ -46,7 +46,7 @@ class Musica_MusicaControle extends Musica_Controle
         }
     }
     static function Musicas_Tabela(&$musicas,$artista=false,$album=false){
-        $registro   = \Framework\App\Registro::getInstacia();
+        $registro   = &\Framework\App\Registro::getInstacia();
         $Modelo     = &$registro->_Modelo;
         $Visual     = &$registro->_Visual;
         $tabela = Array();

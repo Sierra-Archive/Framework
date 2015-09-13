@@ -26,6 +26,8 @@ final Class Session {
         self::$Iniciado = true;
         
         session_start();
+        
+        return true;
     }
     /**
      * 

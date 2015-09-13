@@ -36,7 +36,7 @@ class comercio_UnidadeControle extends comercio_Controle
         return false;
     }
     static function Endereco_Unidade($true=true){
-        $registro = \Framework\App\Registro::getInstacia();
+        $registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
         $titulo = __('Unidades');
         $link = 'comercio/Unidade/Unidades';

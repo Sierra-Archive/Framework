@@ -24,8 +24,8 @@ class comercio_PropostaModelo extends comercio_Modelo
      */
     static function Financeiro_Motivo_Exibir($motivoid){
         $motivoid = (int) $motivoid;
-        $registro = \Framework\App\Registro::getInstacia();
-        $_Modelo = $registro->_Modelo;
+        $registro = &\Framework\App\Registro::getInstacia();
+        $_Modelo = &$registro->_Modelo;
         $proposta = $_Modelo->db->Sql_Select('Comercio_Proposta',Array('id'=>$motivoid),1);
         if($proposta===false) return 'Proposta não Encontrada';
         return Array('Proposta: #'.$motivoid,$proposta->cliente2);

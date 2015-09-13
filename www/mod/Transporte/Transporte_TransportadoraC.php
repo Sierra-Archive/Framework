@@ -6,7 +6,7 @@ class Transporte_TransportadoraControle extends Transporte_Controle
         parent::__construct();
     }
     static function Endereco_Transportadora($true=true){
-        $registro = \Framework\App\Registro::getInstacia();
+        $registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
         $titulo = __('Transportadoras');
         $link = 'Transporte/Transportadora/Transportadoras';
@@ -26,7 +26,7 @@ class Transporte_TransportadoraControle extends Transporte_Controle
         return false;
     }
     static function Transportadoras_Tabela(&$transportadora){
-        $registro   = \Framework\App\Registro::getInstacia();
+        $registro   = &\Framework\App\Registro::getInstacia();
         $Visual     = &$registro->_Visual;
         $tabela = Array();
         $i = 0;
@@ -106,7 +106,7 @@ class Transporte_TransportadoraControle extends Transporte_Controle
         $existe = false;
         if($retornar==='false') $retornar = false;
         // Verifica se Existe Conexao, se nao tiver abre o adicionar conexao, se nao, abre a pasta!
-        $registro = \Framework\App\Registro::getInstacia();
+        $registro = &\Framework\App\Registro::getInstacia();
         $resultado = $registro->_Modelo->db->Sql_Select('Transporte_Transportadora','{sigla}usuario=\''.$registro->_Acl->Usuario_GetID().'\'',1);
         if(is_object($resultado)){
             $existe = true;

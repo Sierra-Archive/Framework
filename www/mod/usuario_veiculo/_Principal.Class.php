@@ -40,7 +40,7 @@ class usuario_veiculo_Principal implements \Framework\PrincipalInterface
     }
     public static function Widgets(){
         $Registro = &\Framework\App\Registro::getInstacia();
-        $modelo = $Registro->_Modelo;
+        $Modelo = &$registro->_Modelo;
         $Visual = $Registro->_Visual;
         // Widget Equipamento
         if(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_veiculo_Equipamento')){

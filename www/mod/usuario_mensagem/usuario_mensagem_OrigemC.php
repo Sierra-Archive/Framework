@@ -36,7 +36,7 @@ class usuario_mensagem_OrigemControle extends usuario_mensagem_Controle
         return false;
     }
     static function Endereco_Origem($true=true){
-        $registro = \Framework\App\Registro::getInstacia();
+        $registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
         $titulo = __('Origens');
         $link = 'usuario_mensagem/Origem/Origens';

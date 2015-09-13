@@ -22,7 +22,7 @@ class Engenharia_UnidadeControle extends Engenharia_Controle
         return false;
     }
     static function Endereco_Unidade($true=true,$empreendimento=false){
-        $registro = \Framework\App\Registro::getInstacia();
+        $registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
         if($empreendimento===false){
             $titulo = __('Todas as Unidades');
@@ -39,7 +39,7 @@ class Engenharia_UnidadeControle extends Engenharia_Controle
         }
     }
     static function Unidades_Tabela(&$unidades,$empreendimento=false){
-        $registro   = \Framework\App\Registro::getInstacia();
+        $registro   = &\Framework\App\Registro::getInstacia();
         $Modelo     = &$registro->_Modelo;
         $Visual     = &$registro->_Visual;
         $tabela = Array();

@@ -22,7 +22,7 @@ class Simulador_SimuladorControle extends Simulador_Controle
         return false;
     }
     static function Endereco_Simulador($true=true){
-        $registro = \Framework\App\Registro::getInstacia();
+        $registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
         if($true===true){
             $_Controle->Tema_Endereco(__('Simuladores'),'Simulador/Simulador/Simuladores');
@@ -31,7 +31,7 @@ class Simulador_SimuladorControle extends Simulador_Controle
         }
     }
     static function Simuladores_Tabela(&$simuladores){
-        $registro   = \Framework\App\Registro::getInstacia();
+        $registro   = &\Framework\App\Registro::getInstacia();
         $Visual     = &$registro->_Visual;
         
         $tabela = Array();

@@ -22,7 +22,7 @@ class Enquete_EnqueteControle extends Enquete_Controle
         return false;
     }
     static function Endereco_Enquete($true=true){
-        $registro = \Framework\App\Registro::getInstacia();
+        $registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
         if($true===true){
             $_Controle->Tema_Endereco(__('Enquetes'),'Enquete/Enquete/Enquetes');
@@ -31,7 +31,7 @@ class Enquete_EnqueteControle extends Enquete_Controle
         }
     }
     static function Enquetes_Tabela(&$enquetes){
-        $registro   = \Framework\App\Registro::getInstacia();
+        $registro   = &\Framework\App\Registro::getInstacia();
         $Modelo     = &$registro->_Modelo;
         $Visual     = &$registro->_Visual;
         $tabela = Array();

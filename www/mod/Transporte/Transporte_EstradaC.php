@@ -6,7 +6,7 @@ class Transporte_EstradaControle extends Transporte_Controle
         parent::__construct();
     }
     static function Endereco_Noticia($true=true){
-        $registro = \Framework\App\Registro::getInstacia();
+        $registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
         $titulo = __('Estradas');
         $link = 'Transporte/Estrada/Estradas';
@@ -26,7 +26,7 @@ class Transporte_EstradaControle extends Transporte_Controle
         return false;
     }
     static function Estradas_Tabela(&$estrada){
-        $registro   = \Framework\App\Registro::getInstacia();
+        $registro   = &\Framework\App\Registro::getInstacia();
         $Visual     = &$registro->_Visual;
         $tabela = Array();
         $i = 0;

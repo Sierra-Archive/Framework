@@ -36,7 +36,7 @@ class comercio_MarcaControle extends comercio_Controle
         return false;
     }
     static function Endereco_Marca($true=true){
-        $registro = \Framework\App\Registro::getInstacia();
+        $registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
         $titulo = __('Marcas');
         $link = 'comercio/Marca/Marcas';

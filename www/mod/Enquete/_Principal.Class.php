@@ -48,7 +48,7 @@ class Enquete_Principal implements \Framework\PrincipalInterface
      */
     public static function Widgets(){
         $Registro = &\Framework\App\Registro::getInstacia();
-        $modelo = $Registro->_Modelo;
+        $Modelo = &$registro->_Modelo;
         $Visual = $Registro->_Visual;
         // Enquetes
         $enquete_qnt = $modelo->db->Sql_Contar('Enquete');

@@ -36,7 +36,7 @@ class comercio_venda_ComposicaoControle extends comercio_venda_Controle
         return false;
     }
     static function Endereco_Composicao($true=true){
-        $registro = \Framework\App\Registro::getInstacia();
+        $registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
         $titulo = __('Cardápios');
         $link = 'comercio_venda/Composicao/Composicoes';

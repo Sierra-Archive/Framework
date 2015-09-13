@@ -32,7 +32,7 @@ class comercio_servicos_Principal implements \Framework\PrincipalInterface
     }
     public static function Widgets(){
         $Registro = &\Framework\App\Registro::getInstacia();
-        $modelo = $Registro->_Modelo;
+        $Modelo = &$registro->_Modelo;
         $Visual = $Registro->_Visual;
         // Titulos
         $titulo             = \Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_servicos_Titulo');

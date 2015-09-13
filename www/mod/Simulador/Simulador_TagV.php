@@ -1,6 +1,6 @@
 <?php
 
-class Simulador_BibliotecaVisual extends Simulador_Visual
+class Simulador_TagVisual extends Simulador_Visual
 {
     /**
     * Construtor

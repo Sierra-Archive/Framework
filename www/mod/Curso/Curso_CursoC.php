@@ -22,7 +22,7 @@ class Curso_CursoControle extends Curso_Controle
         return false;
     }
     static function Endereco_Curso($true=true){
-        $registro = \Framework\App\Registro::getInstacia();
+        $registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
         if($true===true){
             $_Controle->Tema_Endereco(__('Cursos'),'Curso/Curso/Cursos');
@@ -31,7 +31,7 @@ class Curso_CursoControle extends Curso_Controle
         }
     }
     static function Cursos_Tabela(&$cursos){
-        $registro   = \Framework\App\Registro::getInstacia();
+        $registro   = &\Framework\App\Registro::getInstacia();
         $Visual     = &$registro->_Visual;
         
         $tabela = Array();

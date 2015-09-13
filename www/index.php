@@ -1,6 +1,5 @@
 <?php
 
-
 /*
  *face 
  * 
@@ -104,7 +103,7 @@ ini_set('upload_max_filesize',10485760000);
 // Input Time para Infinito
 ini_set('max_input_time',-1);
 // Tempo Maximo de Execução para Infinito
-ini_set('max_execution_time', 0);
+ini_set('max_execution_time', 300);
 // Tipo de Linguagem
 header('Content-Type: text/html; charset=UTF-8');
 // Cache

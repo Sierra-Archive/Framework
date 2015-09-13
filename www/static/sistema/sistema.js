@@ -1167,10 +1167,10 @@ var Sierra = (function () {
                 ordenar,
                 atual = $(this),
                 colunas_imprimir = [],
-                cont = 0,
-                j  = atual.children('thead').children('tr').children('th').length-1;
+                cont = 0;
+            //var j  = atual.children('thead').children('tr').children('th').length-1;
             if (!atual.hasClass('dataTable')) {
-                ordenar = Cookie_Ler('TabelaOrdenar_'+atual.attr('url'));
+                //ordenar = Cookie_Ler('TabelaOrdenar_'+atual.attr('url'));
                 if(ordenar===false){
                     eval('ordenar = '+atual.attr('ordenar')+';');
                 }
@@ -1178,96 +1178,17 @@ var Sierra = (function () {
                     apagar = false;
                 }
                 
-                for(;cont<j;++cont){
+                /*for(;cont<j;++cont){
                     colunas_imprimir.push(cont);
-                }
-                console.log('Aqui',ConfigArquivoPadrao+atual.attr('url'));
+                }*/
                 atual.DataTable({          
                     "processing": true,
                     "serverSide": true,
-                    "ajax": $.fn.dataTable.pipeline( {
+                    "ajax": ConfigArquivoPadrao+atual.attr('url'),
+                    /*"ajax": $.fn.dataTable.pipeline( {
                         url: ConfigArquivoPadrao+atual.attr('url'),
                         pages: 5 // number of pages to cache
-                    } ),
-                    "bProcessing"       : true,  // Mensagem de Processando
-                    "bDeferRender"      : true,  // Ajudar no Carregamento 
-                    "iDisplayLength"    : 10,   // Quantidade por pagina
-                    "aoColumnDefs"      : [{ 
-                        "bSearchable"       : true, 
-                        "bVisible"          : apagar, 
-                        "aTargets"          : [0] 
-                    }],
-                    "aaSorting"         : ordenar,
-                    "bLengthChange"     :true,
-                    "bFilter"           :true,
-                    "bSort"             :true, // Usuario pode Multi-Ordenacao ?
-                    "bInfo"             :true,
-                    "rowCallback": function( row, data ) {
-                        if ( $.inArray(data.DT_RowId, DataTable_Selected) !== -1 ) {
-                            $(row).addClass('selected');
-                        }
-                    },
-                    //"dom": '<"top"lT<"clear">if><"clear">rt<"bottom"ip<"clear">>',
-                    "dom": '<"top"Tf><"clear">rt<"bottom"ip<"clear">>',
-                    "tableTools": {  
-                        /*"aButtons": [
-                            {
-                                "sExtends": "copy",
-                                "sButtonText": "Copiar"
-                            },
-                            {
-                                "sExtends": "csv",
-                                "sButtonText": "Salvar para CSV"
-                            },
-                            {
-                                "sExtends": "xls",
-                                "oSelectorOpts": {
-                                    page: 'current'
-                                }
-                            },
-                            {
-                                "sExtends": "pdf",
-                                "sButtonText": "Salvar para PDF"
-                            },
-                            {
-                                "sExtends": "print",
-                                "sButtonText": "Imprimir"
-                            }
-                        ],*/
-                        "sSwfPath": ConfigArquivoPadrao+"static/sistema/data-tables/swf/copy_csv_xls_pdf.swf",
-                        "aButtons": [
-                            {
-                                "sExtends": "copy",
-                                "mColumns": colunas_imprimir,
-                                "sButtonText": Linguagem["Mensagens"]['Copiar']
-                            },
-                            {
-                                "sExtends": "csv",
-                                "mColumns": colunas_imprimir
-                            },
-                            {
-                                "sExtends": "xls",
-                                "mColumns": colunas_imprimir
-                            },
-                            {
-                                "sExtends": "pdf",
-                                "mColumns": colunas_imprimir
-                            },
-                            {
-                                "sExtends": "print",
-                                "mColumns": colunas_imprimir,
-                                "sButtonText": Linguagem["Mensagens"]['Imprimir'],
-                                /*"fnClick": function (nButton, oConfig, oFlash) {
-                                    oTable.fnSetColumnVis(j, false);
-                                    $('div.dataTables_scrollHead').show();
-                                    $(window).keyup(function(){
-                                          oTable.fnSetColumnVis(j, true);
-                                    });
-                                },*/
-                                "sMessage": 'Clique em Imprimir ou Cancele <button>Imprimir</button>'
-                            },
-                        ]
-                    }
+                    } ),*/
                 });
                 i = i+1;
             }

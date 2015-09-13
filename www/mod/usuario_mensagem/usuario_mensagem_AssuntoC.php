@@ -34,7 +34,7 @@ class usuario_mensagem_AssuntoControle extends usuario_mensagem_Controle
         return false;
     }
     static function Endereco_Assunto($true=true){
-        $registro = \Framework\App\Registro::getInstacia();
+        $registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
         $titulo = __('Assuntos');
         $link = 'usuario_mensagem/Assunto/Assuntos';

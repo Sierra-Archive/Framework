@@ -22,7 +22,7 @@ class Simulador_RespostaControle extends Simulador_Controle
         return false;
     }
     static function Endereco_Resposta($true=true,$simulador=false, $pergunta=false){
-        $registro = \Framework\App\Registro::getInstacia();
+        $registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
         if($simulador===false){
             $titulo = __('Todas as Respostas');
@@ -46,7 +46,7 @@ class Simulador_RespostaControle extends Simulador_Controle
         }
     }
     static function Respostas_Tabela(&$respostas,$simulador=false,$pergunta=false){
-        $registro   = \Framework\App\Registro::getInstacia();
+        $registro   = &\Framework\App\Registro::getInstacia();
         $Modelo     = &$registro->_Modelo;
         $Visual     = &$registro->_Visual;
         $tabela = Array();

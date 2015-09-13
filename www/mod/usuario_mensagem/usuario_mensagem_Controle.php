@@ -109,7 +109,7 @@ class usuario_mensagem_Controle extends \Framework\App\Controle
         $this->_Visual->Json_Info_Update('Titulo', __('Chamados não lidos'));  
     }
     static function Mensagens_TabelaMostrar(&$Visual,&$mensagens,$admin=0){
-        $_Registro = \Framework\App\Registro::getInstacia();
+        $_Registro = &\Framework\App\Registro::getInstacia();
         $label = function($nometipo){
             if($nometipo=='Chamado Novo')       $tipo = 'success';
             else if($nometipo=='Esgotado')      $tipo = 'important';
@@ -387,7 +387,7 @@ class usuario_mensagem_Controle extends \Framework\App\Controle
     }
     public static function MensagensWidgets(){
         $Registro = &\Framework\App\Registro::getInstacia();
-        $modelo = $Registro->_Modelo;
+        $Modelo = &$registro->_Modelo;
         $Visual = $Registro->_Visual;
         $total = 0; $novos = 0; $espera = 0; $esgotado = 0; $finalizado = 0;
         

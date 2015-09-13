@@ -262,7 +262,7 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
     public static function RecarregaLocalizar(){
-        $registro = \Framework\App\Registro::getInstacia();
+        $registro = &\Framework\App\Registro::getInstacia();
         $Visual = $registro->_Visual;
         // Localizar
         $abas_id    = &$Visual->config_template['plugins']['abas_id'];
@@ -502,7 +502,7 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
         $this->_Visual->Json_Info_Update('Historico', false);
     }
     static function Periodicas_Tabela(&$periodicas){
-        $registro   = \Framework\App\Registro::getInstacia();
+        $registro   = &\Framework\App\Registro::getInstacia();
         $Visual     = &$registro->_Visual;
         $tabela = Array();
         $i = 0;

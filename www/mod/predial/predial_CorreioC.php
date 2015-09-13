@@ -20,7 +20,7 @@ class predial_CorreioControle extends predial_Controle
     public function Main(){
     }
     static function Endereco_Correio($true=true){
-        $registro = \Framework\App\Registro::getInstacia();
+        $registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
         $titulo = __('Corrêios');
         $link = 'predial/Correio/Correios';
@@ -61,7 +61,7 @@ class predial_CorreioControle extends predial_Controle
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
     static function Correios_Tabela(&$correios,$recebido=false){
-        $registro   = \Framework\App\Registro::getInstacia();
+        $registro   = &\Framework\App\Registro::getInstacia();
         $Modelo     = &$registro->_Modelo;
         $Visual     = &$registro->_Visual;
         $tabela = Array();
@@ -361,7 +361,7 @@ class predial_CorreioControle extends predial_Controle
     
     
     static function Personalizados_Tabela(&$correios,$recebido=false){
-        $registro   = \Framework\App\Registro::getInstacia();
+        $registro   = &\Framework\App\Registro::getInstacia();
         $Modelo     = &$registro->_Modelo;
         $Visual     = &$registro->_Visual;
         $tabela = Array();
@@ -385,7 +385,7 @@ class predial_CorreioControle extends predial_Controle
      * @version 3.1.1
      */
     static function Personalizados($apartamento,$recebido=false,$gravidade=0,$adicionar=true){
-        $registro = \Framework\App\Registro::getInstacia();
+        $registro = &\Framework\App\Registro::getInstacia();
         $i = 0;
         $html = '';
         if($recebido===false){

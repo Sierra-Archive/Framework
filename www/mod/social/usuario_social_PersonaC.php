@@ -35,7 +35,7 @@ class social_PersonaControle extends social_Controle
         return false;
     }
     protected static function Endereco_Persona($true=true){
-        $registro = \Framework\App\Registro::getInstacia();
+        $registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
         if($true===true){
             $_Controle->Tema_Endereco(__('Personas'),'social/Persona/Personas');
@@ -44,7 +44,7 @@ class social_PersonaControle extends social_Controle
         }
     }
     protected static function Endereco_Persona_Ver($persona,$true=true){
-        $registro = \Framework\App\Registro::getInstacia();
+        $registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
         self::Endereco_Persona();
         if($true===true){
@@ -54,7 +54,7 @@ class social_PersonaControle extends social_Controle
         }
     }
     protected static function Endereco_Persona_Ver_Ficar($persona,$true=true){
-        $registro = \Framework\App\Registro::getInstacia();
+        $registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
         self::Endereco_Persona_Ver($persona);
         if($true===true){
@@ -64,7 +64,7 @@ class social_PersonaControle extends social_Controle
         }
     }
     protected static function Endereco_Persona_Ver_Ficar_Ver($persona,$ficada,$true=true){
-        $registro = \Framework\App\Registro::getInstacia();
+        $registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
         self::Endereco_Persona_Ver_Ficar($persona);
         if($true===true){

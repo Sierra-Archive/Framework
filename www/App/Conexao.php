@@ -1304,10 +1304,10 @@ final class Conexao
             $tempo2   = new \Framework\App\Tempo('Select Completo');
         }*/
         //echo "\n\n\n".$class_dao;
-        $tempo_total = new \Framework\App\Tempo('Conexao_Select');   
+        $tempo_total = new \Framework\App\Tempo('Conexao_Select');  
         // Expections
         if($class_dao==''){
-            throw new \Exception('Dao não existe: '.$class_dao,3251);
+            throw new \Exception('Dao Vazia',3251);
         }
         $j = 0;
         // CArrega Variaveis FIXAS
@@ -1317,9 +1317,15 @@ final class Conexao
         $menorigual = ' <= ';
         
         // Se nao Colocarem o _DAO, ele coloca
-        if(strpos($class_dao, '_DAO')===false){
-            $class_dao      = $class_dao.'_DAO';
-        }
+        /*if($class_dao=='Simulador_Pergunta'){
+            $class_dao2      = 'Simulador_Pergunta_DAO';
+            if($class_dao=='Simulador_Pergunta'){ echo 'oi8iiii';  exit;} 
+        }else{*/
+            if(strpos($class_dao, '_DAO')===false){
+                $class_dao      = $class_dao.'_DAO';
+            }
+        //}
+        
         
         // Recupera Dados da Tabela
         list(
@@ -1341,7 +1347,7 @@ final class Conexao
         //if($tempo){
             //$condicaotempo = new \Framework\App\Tempo('Select Condicao');
         //}
-        if(is_array($condicao)){
+        if(is_array($condicao) && !empty($condicao)){
             foreach($condicao as $indice => &$valor){
                 // SE for array dentro de array entro usa OR
                 if(is_array($valor) && strpos($indice, 'IN')===false && strpos($indice, 'NOTIN')===false && (!empty($indice)|| $indice==0)){
@@ -1572,7 +1578,7 @@ final class Conexao
         }else if($condicao!==false && $condicao!==''){
             if($sql_condicao!='') $sql_condicao .= ' AND ';
             $sql_condicao .= (string) $condicao;
-        }        
+        }    
         
         // CHAMA TABELA E MONTA A QUERY
         if($sql_condicao!=''){
@@ -1611,7 +1617,6 @@ final class Conexao
             $this->Sql_Manipulacao_CarregarObjeto($resultado[$contador], $campo, $tabela_campos_valores);
             ++$contador;
         }
-        
         if($contador==0)        return false;
         else if($contador==1)   return $resultado[0];
         else                    return $resultado;

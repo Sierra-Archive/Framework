@@ -36,7 +36,7 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
         return false;
     }
     static function Endereco_Equipamento($true=true){
-        $registro = \Framework\App\Registro::getInstacia();
+        $registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
         $link   = 'usuario_veiculo/Equipamento/Equipamentos';
         if($true===true){
@@ -46,7 +46,7 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
         }
     }
     static function Endereco_Equipamento_Marca($true=true){
-        $registro = \Framework\App\Registro::getInstacia();
+        $registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
         $titulo = __('Marcas');
         $link   = 'usuario_veiculo/Equipamento/Marcas';
@@ -59,7 +59,7 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
         }
     }
     static function Endereco_Equipamento_Modelo($true=true){
-        $registro = \Framework\App\Registro::getInstacia();
+        $registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
         $titulo = __('Modelos');
         $link   = 'usuario_veiculo/Equipamento/Modelos';

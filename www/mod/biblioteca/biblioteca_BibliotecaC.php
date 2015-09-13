@@ -22,7 +22,7 @@ class biblioteca_BibliotecaControle extends biblioteca_Controle
         return false;
     }
     static function Endereco_Biblioteca($true=true){
-        $registro = \Framework\App\Registro::getInstacia();
+        $registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
         if($true===true){
             $_Controle->Tema_Endereco(__('Biblioteca'),'biblioteca/Biblioteca/Bibliotecas');
@@ -45,7 +45,7 @@ class biblioteca_BibliotecaControle extends biblioteca_Controle
     }
     static function Bibliotecas_Tabela(&$bibliotecas,$raiz=0){
         $funcao = '';
-        $registro   = \Framework\App\Registro::getInstacia();
+        $registro   = &\Framework\App\Registro::getInstacia();
         $Controle     = &$registro->_Controle;
         $Modelo     = &$registro->_Modelo;
         $Visual     = &$registro->_Visual;
@@ -174,8 +174,8 @@ class biblioteca_BibliotecaControle extends biblioteca_Controle
         return self::Bibliotecas_Processar_Static($raiz);
     }
     private static function Bibliotecas_Processar_Static($raiz = false){
-        $registro = \Framework\App\Registro::getInstacia();
-        $_Modelo = $registro->_Modelo;
+        $registro = &\Framework\App\Registro::getInstacia();
+        $_Modelo = &$registro->_Modelo;
         $_Visual = $registro->_Visual;
         // Biblioteca
         $endereco = (string) '';
@@ -543,7 +543,7 @@ class biblioteca_BibliotecaControle extends biblioteca_Controle
         $existe = false;
         if($retornar==='false') $retornar = false;
         // Verifica se Existe Conexao, se nao tiver abre o adicionar conexao, se nao, abre a pasta!
-        $registro = \Framework\App\Registro::getInstacia();
+        $registro = &\Framework\App\Registro::getInstacia();
         $resultado = $registro->_Modelo->db->Sql_Select('Biblioteca_Acesso','{sigla}motivo=\''.$motivo.'\' AND {sigla}motivoid=\''.$motivoid.'\'',1);
         if(is_object($resultado)){
             $existe = true;

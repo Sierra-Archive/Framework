@@ -22,7 +22,7 @@ class Musica_ArtistaControle extends Musica_Controle
         return false;
     }
     static function Endereco_Artista($true=true){
-        $registro = \Framework\App\Registro::getInstacia();
+        $registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
         if($true===true){
             $_Controle->Tema_Endereco(__('Artistas'),'Musica/Artista/Artistas');
@@ -31,7 +31,7 @@ class Musica_ArtistaControle extends Musica_Controle
         }
     }
     static function Artistas_Tabela(&$artistas){
-        $registro   = \Framework\App\Registro::getInstacia();
+        $registro   = &\Framework\App\Registro::getInstacia();
         $Visual     = &$registro->_Visual;
         
         $tabela = Array();

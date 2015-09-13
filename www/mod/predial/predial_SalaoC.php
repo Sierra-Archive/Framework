@@ -20,7 +20,7 @@ class predial_SalaoControle extends predial_Controle
     public function Main(){
     }
     static function Endereco_Salao($true=true){
-        $registro = \Framework\App\Registro::getInstacia();
+        $registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
         $titulo = __('Saloes');
         $link = 'predial/Salao/Saloes';
@@ -31,7 +31,7 @@ class predial_SalaoControle extends predial_Controle
         }
     }
     static function Saloes_Tabela(&$saloes){
-        $registro   = \Framework\App\Registro::getInstacia();
+        $registro   = &\Framework\App\Registro::getInstacia();
         $Visual     = &$registro->_Visual;
         $tabela = Array();
         $i = 0;

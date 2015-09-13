@@ -37,7 +37,7 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
         }
     }
     static function Modulos_Tabela($modulos){
-        $registro   = \Framework\App\Registro::getInstacia();
+        $registro   = &\Framework\App\Registro::getInstacia();
         $Visual     = &$registro->_Visual;
         $tabela = Array();
         $i = 0;
@@ -215,7 +215,7 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
         }
     }
     static function Submodulos_Tabela($submodulos){
-        $registro   = \Framework\App\Registro::getInstacia();
+        $registro   = &\Framework\App\Registro::getInstacia();
         $Visual     = &$registro->_Visual;
         $tabela = Array();
         $i = 0;
@@ -393,7 +393,7 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
         }
     }
     static function Metodos_Tabela($metodos){
-        $registro   = \Framework\App\Registro::getInstacia();
+        $registro   = &\Framework\App\Registro::getInstacia();
         $Visual     = &$registro->_Visual;
         $tabela = Array();
         $i = 0;

@@ -36,7 +36,7 @@ class comercio_venda_CarrinhoControle extends comercio_venda_Controle
         return false;
     }
     static function Endereco_Carrinho($true=true){
-        $registro = \Framework\App\Registro::getInstacia();
+        $registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
         $titulo = __('Caixas');
         $link = 'comercio_venda/Carrinho/Carrinhos';
@@ -513,7 +513,7 @@ class comercio_venda_CarrinhoControle extends comercio_venda_Controle
     
     
     static function Endereco_Mesa($true=true){
-        $registro = \Framework\App\Registro::getInstacia();
+        $registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
         $titulo = __('Mesas');
         $link = 'comercio_venda/Carrinho/Mesas';

@@ -57,7 +57,7 @@ class Acl{
         $this->_Cache     = &$this->_Registro->_Cache;
         
         // Inicializa Classes caso ainda nao tenham sido
-        if($this->_db===false){
+        /*if($this->_db===false){
             $this->_Registro->_Conexao = new \Framework\App\Conexao();
         }
         if($this->_Request===false){
@@ -65,7 +65,7 @@ class Acl{
         }
         if($this->_Cache===false){
             $this->_Registro->_Cache = new \Framework\App\Cache();
-        }
+        }*/
         
         if($id!==false){
             // Caso esteja carregando de outro usuario
@@ -780,7 +780,7 @@ class Acl{
      * @version 3.1.1
      */
     public static function Usuario_GetID_Static(){
-        $registro = \Framework\App\Registro::getInstacia();
+        $registro = &\Framework\App\Registro::getInstacia();
         $Acl = $registro->_Acl;
         return ($Acl)?$Acl->Usuario_GetID():0;
     }
@@ -1146,7 +1146,7 @@ class Acl{
     public static function &Sistema_Modulos_Carregar_Funcional(){
         $tempo = new \Framework\App\Tempo('\Framework\App\Acl::Sistema_Modulos_Configs->Funcional');
         // ordena na ordem correta
-        $registro = \Framework\App\Registro::getInstacia();
+        $registro = &\Framework\App\Registro::getInstacia();
         // Inicializa Caso nao Tenha Sido
         if($registro->_Cache===false){
             $registro->_Cache = new \Framework\App\Cache();
@@ -1210,7 +1210,6 @@ class Acl{
     public static function &Sistema_Modulos_Carregar_Publico(){
         $tempo = new \Framework\App\Tempo('\Framework\App\Acl::Sistema_Modulos_Configs->Publico');
         // ordena na ordem correta
-        $registro = \Framework\App\Registro::getInstacia();
         $ponteiro   = Array('_Sistema' => '_Sistema');
         if(function_exists('config_modulos')){
             $ponteiro   = array_merge($ponteiro,config_modulos());

@@ -8,7 +8,7 @@ class SierraTec_Manutencao {
     protected $registro;
     protected $_Conexao;
     public function __construct() {
-        $this->registro = \Framework\App\Registro::getInstacia();
+        $this->registro = &\Framework\App\Registro::getInstacia();
         $this->_Conexao = $this->registro->_Conexao;
     }
     /***********************************

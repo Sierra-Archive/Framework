@@ -105,7 +105,7 @@ class usuario_Principal implements \Framework\PrincipalInterface
     
     public static function Widgets(){
         $Registro = &\Framework\App\Registro::getInstacia();
-        $modelo = $Registro->_Modelo;
+        $Modelo = &$registro->_Modelo;
         $Visual = $Registro->_Visual;
         //if(!\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Principal_Widgets')) return false;
         if(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Admin_Funcionario')){

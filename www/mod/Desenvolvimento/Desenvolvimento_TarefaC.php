@@ -42,7 +42,7 @@ class Desenvolvimento_TarefaControle extends Desenvolvimento_Controle
         return false;
     }
     static function Tarefas_Tabela($projetos){
-        $registro   = \Framework\App\Registro::getInstacia();
+        $registro   = &\Framework\App\Registro::getInstacia();
         $Visual     = &$registro->_Visual;
         $tabela = Array();
         $i = 0;

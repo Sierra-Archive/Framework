@@ -98,7 +98,7 @@ class Datatable {
             }
             // Grava Cookie
             $url = filter_input(INPUT_GET, 'url', FILTER_SANITIZE_URL);
-            \setcookie('TabelaOrdenar_'.$url, $cookie_ordenar, (time() + (70 * 24 * 3600)));
+            //\setcookie('TabelaOrdenar_'.$url, $cookie_ordenar, (time() + (70 * 24 * 3600)));
             //print_r($_COOKIE);
 
             $order = 'ORDER BY '.implode(', ', $orderBy);

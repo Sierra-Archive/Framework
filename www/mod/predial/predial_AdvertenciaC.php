@@ -23,7 +23,7 @@ class predial_AdvertenciaControle extends predial_Controle
         $this->_Visual->Json_Info_Update('Titulo', __('Advertências')); 
     }
     static function Endereco_Advertencia($true=true){
-        $registro = \Framework\App\Registro::getInstacia();
+        $registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
         $titulo = __('Advertencias');
         $link = 'predial/Advertencia/Advertencias';
@@ -34,7 +34,7 @@ class predial_AdvertenciaControle extends predial_Controle
         }
     }
     static function Advertencias_Tabela(&$advertencias){
-        $registro   = \Framework\App\Registro::getInstacia();
+        $registro   = &\Framework\App\Registro::getInstacia();
         $Visual     = &$registro->_Visual;
         $tabela = Array();
         $i = 0;
@@ -269,7 +269,7 @@ class predial_AdvertenciaControle extends predial_Controle
     
     
     static function Personalizados_Tabela(&$advertencias){
-        $registro   = \Framework\App\Registro::getInstacia();
+        $registro   = &\Framework\App\Registro::getInstacia();
         $Visual     = &$registro->_Visual;
         $tabela = Array();
         $i = 0;
@@ -290,7 +290,7 @@ class predial_AdvertenciaControle extends predial_Controle
      * @version 3.1.1
      */
     static function Personalizados($apartamento){
-        $registro = \Framework\App\Registro::getInstacia();
+        $registro = &\Framework\App\Registro::getInstacia();
         $i = 0;
         // Botao Add
         $html = $registro->_Visual->Tema_Elementos_Btn('Superior'     ,Array(

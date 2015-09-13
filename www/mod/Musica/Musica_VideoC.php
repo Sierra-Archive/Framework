@@ -25,7 +25,7 @@ class Musica_VideoControle extends Musica_Controle
         if($artista ==='false' || $artista ===0)  $artista    = false;
         if($album ==='false' || $album ===0)  $album      = false;
         if($musica ==='false' || $musica ===0) $musica     = false;
-        $registro = \Framework\App\Registro::getInstacia();
+        $registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
         if($artista===false){
             $titulo = __('Todos os Videos');
@@ -57,7 +57,7 @@ class Musica_VideoControle extends Musica_Controle
         if($artista ==='false' || $artista ===0)  $artista    = false;
         if($album ==='false' || $album ===0)  $album      = false;
         if($musica ==='false' || $musica ===0) $musica     = false;
-        $registro   = \Framework\App\Registro::getInstacia();
+        $registro   = &\Framework\App\Registro::getInstacia();
         $Modelo     = &$registro->_Modelo;
         $Visual     = &$registro->_Visual;
         $tabela = Array();

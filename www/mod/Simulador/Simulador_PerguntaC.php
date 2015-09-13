@@ -23,7 +23,7 @@ class Simulador_PerguntaControle extends Simulador_Controle
     }
     static function Endereco_Pergunta($true=true,$simulador=false){
         if($simulador==='false') $simulador = false;
-        $registro = \Framework\App\Registro::getInstacia();
+        $registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
         if($simulador===false){
             $titulo = __('Todos os Perguntas');
@@ -41,7 +41,7 @@ class Simulador_PerguntaControle extends Simulador_Controle
     }
     static function Perguntas_Tabela(&$perguntas,$simulador=false){
         if($simulador==='false') $simulador = false;
-        $registro   = \Framework\App\Registro::getInstacia();
+        $registro   = &\Framework\App\Registro::getInstacia();
         $Modelo     = &$registro->_Modelo;
         $Visual     = &$registro->_Visual;
         $tabela = Array();
@@ -132,6 +132,7 @@ class Simulador_PerguntaControle extends Simulador_Controle
             )
         )));
         $perguntas = $this->_Modelo->db->Sql_Select('Simulador_Pergunta',$where);
+           
         if($simulador!==false){
             $titulo = 'Listagem de Perguntas: '.$simulador_registro->nome;
         }else{

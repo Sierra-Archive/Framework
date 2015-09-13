@@ -100,7 +100,7 @@ class usuario_PerfilControle extends usuario_Controle
         
     }
     static function usuarios_Upload_Residencia(&$controle,&$modelo,&$Visual){
-        $registro = \Framework\App\Registro::getInstacia();
+        $registro = &\Framework\App\Registro::getInstacia();
         $_Acl = $registro->_Acl();
         if($_Acl->logado_usuario->foto_res==''){
             $Visual->Blocar('<font color="#FF0000"><b>Você ainda não subiu seu comprovante de Residencia</b></font><br>');
@@ -131,7 +131,7 @@ class usuario_PerfilControle extends usuario_Controle
         
     }
     static function usuarios_Upload_Cnh(&$controle,&$modelo,&$Visual){
-        $registro = \Framework\App\Registro::getInstacia();
+        $registro = &\Framework\App\Registro::getInstacia();
         $_Acl = $registro->_Acl();
         if($_Acl->logado_usuario->foto_cnh==''){
             $Visual->Blocar('<font color="#FF0000"><b>Você ainda não subiu sua CNH</b></font><br>');

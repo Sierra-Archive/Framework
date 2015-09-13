@@ -23,7 +23,7 @@ class Musica_AlbumControle extends Musica_Controle
     }
     static function Endereco_Album($true=true,$artista=false){
         if($artista==='false') $artista = false;
-        $registro = \Framework\App\Registro::getInstacia();
+        $registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
         if($artista===false){
             $titulo = __('Todos os Albuns');
@@ -41,7 +41,7 @@ class Musica_AlbumControle extends Musica_Controle
     }
     static function Albuns_Tabela(&$albuns,$artista=false){
         if($artista==='false') $artista = false;
-        $registro   = \Framework\App\Registro::getInstacia();
+        $registro   = &\Framework\App\Registro::getInstacia();
         $Modelo     = &$registro->_Modelo;
         $Visual     = &$registro->_Visual;
         $tabela = Array();

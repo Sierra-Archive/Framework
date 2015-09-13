@@ -198,7 +198,7 @@ class usuario_mensagem_Modelo extends \Framework\App\Modelo
     public static function Mensagem_TipoChamado(&$mensagem){
         $tipo = false;
         $registro = &\Framework\App\Registro::getInstacia();
-        $Modelo = $registro->_Modelo;
+        $Modelo = &$registro->_Modelo;
         // Proteção contra erros
         if(!is_object($mensagem)) return false;
         // Captura Assunto
@@ -286,8 +286,8 @@ class usuario_mensagem_Modelo extends \Framework\App\Modelo
      * @version 3.1.1
      */
     protected static function Mensagem_RespNova($mensagem=0,$escritor=0){
-        $registro = \Framework\App\Registro::getInstacia();
-        $Modelo = $registro->_Modelo;
+        $registro = &\Framework\App\Registro::getInstacia();
+        $Modelo = &$registro->_Modelo;
         $acl = $registro->_Acl;
         $usuarioid = $acl->Usuario_GetID();
         // Proteção contra erros
@@ -296,7 +296,7 @@ class usuario_mensagem_Modelo extends \Framework\App\Modelo
         if($mensagem==0 || !is_int($mensagem) || $escritor==0 || !is_int($escritor)) return;
         
         $registro = &\Framework\App\Registro::getInstacia();
-        $Modelo = $registro->_Modelo;
+        $Modelo = &$registro->_Modelo;
         // Carrega Mensagens de Acordo com os assuntos acima 
         $i =0;
         $array = Array();

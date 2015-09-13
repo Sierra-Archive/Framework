@@ -37,7 +37,7 @@ class usuario_veiculo_ModeloControle extends usuario_veiculo_Controle
         $this->_Visual->Json_Info_Update('Titulo', __('Modelos')); 
     }
     static function Endereco_Veiculo_Modelo($true=true){
-        $registro = \Framework\App\Registro::getInstacia();
+        $registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $registro->_Controle;
         $titulo = __('Modelos');
         $link = 'usuario_veiculo/Modelo/Modelos';

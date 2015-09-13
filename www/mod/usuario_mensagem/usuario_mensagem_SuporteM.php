@@ -91,7 +91,7 @@ class usuario_mensagem_SuporteModelo extends usuario_mensagem_Modelo
      */
     public static function Suporte_MensagensCliente(&$array,$cliente=0){
         $registro = &\Framework\App\Registro::getInstacia();
-        $modelo = $registro->_Modelo;
+        $Modelo = &$registro->_Modelo;
         // Carrega Mensagens de Acordo com os assuntos acima 
         $i =0;
         $array = Array();
@@ -121,7 +121,7 @@ class usuario_mensagem_SuporteModelo extends usuario_mensagem_Modelo
     }
     public static function Suporte_MensagensCliente_Qnt($cliente=0){
         $registro = &\Framework\App\Registro::getInstacia();
-        $modelo = $registro->_Modelo;
+        $Modelo = &$registro->_Modelo;
         // Carrega Mensagens de Acordo com os assuntos acima 
         $i =0;
         $array = Array();
