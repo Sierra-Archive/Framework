@@ -230,6 +230,30 @@ final Class Comercio_Produto_DAO extends Framework\App\Dao
                         'class'             => 'obrigatorio'
                     )
                 )
+            ),
+            /**
+             * Instacao
+             */
+            Array(
+                'TabelaLinkada'     => Array(
+                    'Pai'               => 'CP', // TABELA que vai manipular a conexao
+                    'Tabela'            => 'SiTC', // TABELA de LINK A SER CONECTADA
+                    'valor_padrao'      => false, // id do pai
+                    'Nome'              => __('Caracteristicas'), // Nome no FOrmulario
+                    'Class'             => 'obrigatorio', // Classe no formulario
+                    'aviso'             => '', // Aviso no formulario
+                    'formtipo'          => 'SelectMultiplo',  // Tipo de formulario
+                    'SelectMultiplo'   => Array(
+                        'Extrangeira'       => 'SiT.id|SiT.nome',
+                        'Linkar'            => 'motivoid', // CAmpo a ser encaixado id do pai
+                        'Linkado'           => 'caracteristica',// CAmpo a ser encaixado id do link
+                        'Campos'            => Array(
+                            'v2alor'
+                        ),
+                        'infonulo'          => 'Escolha pelo menos uma Caracteristica',
+                        'linkextra'         => false
+                    ), // Campo Boleano da tabela LINK, caso false apaga os que nao forem puxados
+                )
             ),Array(
                 'mysql_titulo'      => 'obs',
                 'mysql_tipovar'     => 'text', //varchar, int, 

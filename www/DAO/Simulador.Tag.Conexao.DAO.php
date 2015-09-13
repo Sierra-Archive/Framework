@@ -20,13 +20,17 @@ final Class Simulador_Tag_Conexao_DAO extends Framework\App\Dao
     }
     public static function Get_LinkTable(){
         return Array(
-            'SiT'         =>  'tag',
-            // Quando Indice = 'Array', Nao tem 3 tabela, e Resultado é outro array com nome do campo e seus valores
-            'Array'   =>  Array(
-                'mod_acc',
-                self::Mod_Conexao_Get_Chave()
-            ),
+            'SiT'      =>'tag',
+            'CP'       =>'motivoid',
         );
+        $links = self::Mod_Conexao_Get_Siglas();
+        $array = Array('SiT'         =>  'tag');
+        if(!empty($links)){
+            foreach($links as &$valor){
+                $array[$valor] = 'motivoid';
+            }
+        }
+        return $array;
     }
     public static function Get_Engine(){
         return 'InnoDB';
@@ -121,7 +125,7 @@ final Class Simulador_Tag_Conexao_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => '', // //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => __('Valor da Associação'),
+                    'Nome'              => __('Valor para {nome}'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',
@@ -139,7 +143,8 @@ final Class Simulador_Tag_Conexao_DAO extends Framework\App\Dao
             'comercio|Produto'                  => Array(                
                 'nome'      =>  'Caracteristica de Produtos',   
                 'chave_nome'=>  'Produtos',             
-                'chave'     =>  'comercio_Produto',
+                'chave'     =>  'comercio_Produto',  
+                'sigla'     =>  'CP',
              ),
         );
     }
@@ -194,6 +199,13 @@ final Class Simulador_Tag_Conexao_DAO extends Framework\App\Dao
         $repassar = self::Mod_Conexao_Get();
         foreach($repassar AS &$valor){
             $valor = $valor['chave'];
+        }
+        return $repassar;
+    }
+    public static function Mod_Conexao_Get_Siglas(){
+        $repassar = self::Mod_Conexao_Get();
+        foreach($repassar AS &$valor){
+            $valor = $valor['sigla'];
         }
         return $repassar;
     }
