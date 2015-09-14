@@ -2251,7 +2251,7 @@ var Sierra = (function () {
                         form_estado     = $(document.getElementById('estado')).find('option'),
                         form_cidade     = $(document.getElementById('cidade')).find('option'),
                         form_bairro     = $(document.getElementById('bairro')).find('option');
-                    if (resultadoCEP["resultado"] !== 0) {
+                    if (resultadoCEP["resultado"] !== 0 && resultadoCEP["resultado"] !== '0') {
                         form_pais.each(function () {
                             if ($(this).text() === pais) {
                                 ++pais_achado;
@@ -2313,6 +2313,7 @@ var Sierra = (function () {
                             Modelo_Ajax_Chamar('locais/localidades/cep',link,'POST',true,false,false);
                         }
                     }else{
+                        Control_PopMgs_Abrir('erro','Cep Inválido','Esse cep não foi reconhecido pelos Corrêios');
                         $(document.getElementById('endereco')).focus();
                     }
                 });				

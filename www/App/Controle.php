@@ -116,6 +116,9 @@ abstract class Controle
      * 
      * @param type $nome
      * @param type $endereco
+     * 
+     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
+     * @version 3.1.1
      */
     public function Tema_Endereco($nome,$endereco=false){
         //if(!$this->layoult_endereco_travar){
@@ -129,6 +132,9 @@ abstract class Controle
     /**
      * 
      * @param type $ultimo (false = todos, ou numero de vezes que vai tirar
+     * 
+     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
+     * @version 3.1.1
      */
     protected function Tema_Endereco_Zerar($ultimo = false){
         if($ultimo===false){
@@ -151,6 +157,9 @@ abstract class Controle
      * @param type $email
      * @param type $nome
      * @return type
+     * 
+     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
+     * @version 3.1.1
      */
     public static function Enviar_Email($texto,$assunto='Sem Assunto',$email=false,$nome=false){
         require_once CLASS_PATH . 'Email'.DS.'Email'.'.php';
@@ -167,11 +176,25 @@ abstract class Controle
         return $send;
     }
     /**
+     * Enviar Log
+     * @param type $mensagem
+     * @param type $tipo (Informações,Aviso,Erro,Falha de Auditoria,Auditoria bem-sucesida)
+     * 
+     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
+     * @version 3.1.1
+     */
+    public static function log($mensagem,$tipo){
+        self::Enviar_Email($mensagem,'Log - Tipo:'.$tipo);
+    }
+    /**
      * Envia Email com ANexo para um Usuario do SIstema
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @param type $arquivo
      * @param type $nomearquivo
+     * 
+     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
+     * @version 3.1.1
      */
     protected function Enviar_Email_Anexo($id,$arquivo,$nomearquivo){
         $arquivo = \anti_injection($arquivo);

@@ -10,6 +10,11 @@ class locais_localidadesControle extends locais_Controle
     }
     public function cep(){
         // Controla
+        if(isset($_POST['pais'])){
+            $pais = \anti_injection($_POST['pais']);
+        }else{
+            $pais = '1'; // Brasil
+        }
         if(isset($_POST['estado'])){
             $estado = \anti_injection($_POST['estado']);
         }else{
@@ -34,7 +39,7 @@ class locais_localidadesControle extends locais_Controle
             $cidade = 'falso';
         }
         if($bairro=='' || !isset($bairro)){
-            $bairro = __('falso');
+            $bairro = 'falso';
         }
         $imprimir = function(&$opcoes){
             $html = '';
@@ -50,11 +55,26 @@ class locais_localidadesControle extends locais_Controle
         };
         // Estado
         if($estado!='falso'){
-            $where      =   Array('sigla'=>$estado);
+            $where      =   Array('sigla'=>$estado,'pais'=>$pais);
             $opcoes     =   $this->_Modelo->db->Sql_Select('Sistema_Local_Estado', $where, 1);
-            $id_estado = $opcoes->id;
-            $where      =   Array('!sigla'=>$estado,'!id'=>$id_estado,'pais'=>$opcoes->pais);
+            $where      =   Array('!sigla'=>$estado);
+            // Verifica Se Estado Escolhido Existe
+            if(is_object($opcoes)){
+                $id_estado = $opcoes->id;
+                $where['pais'] = $opcoes->pais;
+                $where['!id'] = $id_estado;
+            }else{
+                $mensagem .= 'Estado não Existe '."\n";
+                $mensagem .= 'Estado: '.$estado."\n";
+                $mensagem .= 'Cidade: '.$cidade."\n";
+                $mensagem .= 'Bairro: '.$bairro;
+                self::log($mensagem, 'Informações');
+                $id_estado = false;
+                $where['pais'] = $pais;
+                $cidade = 'falso';
+            }
             $html       =   $imprimir($opcoes,1);
+            // Procura as outras opcoes
             $opcoes     =   $this->_Modelo->db->Sql_Select('Sistema_Local_Estado', $where);
             $html       .=  $imprimir($opcoes);
             // Json
@@ -68,8 +88,21 @@ class locais_localidadesControle extends locais_Controle
             if($cidade!='falso'){
                 $where      =   Array('estado'=>$id_estado,'nome'=>$cidade);
                 $opcoes     =   $this->_Modelo->db->Sql_Select('Sistema_Local_Cidade', $where, 1);
-                $id_cidade = $opcoes->id;
-                $where      =   Array('!nome'=>$cidade,'!id'=>$id_cidade,'estado'=>$id_estado);
+                $where      =   Array('estado'=>$id_estado);
+                // Verifica Se Estado Escolhido Existe
+                if(is_object($opcoes)){
+                    $id_cidade = $opcoes->id;
+                    $where['!nome'] = $cidade;
+                    $where['!id'] = $id_cidade;
+                }else{
+                    $mensagem .= 'Cidade não Existe '."\n";
+                    $mensagem .= 'Estado: '.$estado."\n";
+                    $mensagem .= 'Cidade: '.$cidade."\n";
+                    $mensagem .= 'Bairro: '.$bairro;
+                    self::log($mensagem, 'Informações');
+                    $id_cidade = false;
+                    $bairro = 'falso';
+                }
                 $html       =   $imprimir($opcoes,1);
                 $opcoes     =   $this->_Modelo->db->Sql_Select('Sistema_Local_Cidade', $where);
                 $html       .=  $imprimir($opcoes);
@@ -82,10 +115,21 @@ class locais_localidadesControle extends locais_Controle
                 $this->_Visual->Json_IncluiTipo('Conteudo',$conteudo);
                 // Bairro
                 if($bairro!='falso'){
+                    // Procura Selecionado
                     $where      =   Array('cidade'=>$id_cidade,'nome'=>$bairro);
                     $opcoes     =   $this->_Modelo->db->Sql_Select('Sistema_Local_Bairro', $where, 1);
-                    $where      =   Array('!nome'=>$bairro,'!id'=>$opcoes->id,'cidade'=>$id_cidade);
+                    $where      =   Array('!nome'=>$bairro,'cidade'=>$id_cidade);
+                    if(is_object($opcoes)){
+                        $where['!id'] = $opcoes->id;
+                    }else{
+                        $mensagem .= 'Bairro não Existe '."\n";
+                        $mensagem .= 'Estado: '.$estado."\n";
+                        $mensagem .= 'Cidade: '.$cidade."\n";
+                        $mensagem .= 'Bairro: '.$bairro;
+                        self::log($mensagem, 'Informações');
+                    }
                     $html       =   $imprimir($opcoes,1);
+                    // Procura Outros Resultados e Imprimi
                     $opcoes     =   $this->_Modelo->db->Sql_Select('Sistema_Local_Bairro', $where);
                     $html       .=  $imprimir($opcoes);
                     // Json
@@ -97,6 +141,20 @@ class locais_localidadesControle extends locais_Controle
                     $this->_Visual->Json_IncluiTipo('Conteudo',$conteudo);
                 }
             }
+        }else{
+            //Cep Não Reconhecido
+            $mensagens = array(
+                "tipo"              => 'erro',
+                "mgs_principal"     => __('Cep Inválido'),
+                "mgs_secundaria"    => __('Cep não Reconhecido pelos Corrêios')
+            );
+            $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+            $this->_Visual->Javascript_Executar(
+                    '$("#'.$valor2.'").css(\'border\', \'2px solid #FFAEB0\').focus();'
+            );
+            $this->_Visual->Json_Info_Update('Historico', false);
+            $this->layoult_zerar = false; 
+            return false;
         }
         $this->_Visual->Json_Info_Update('Historico', false);
     }/*
