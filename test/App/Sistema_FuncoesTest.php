@@ -67,12 +67,12 @@ class Sistema_FuncoesTest extends \PHPUnit_Framework_TestCase {
      * @todo   Implement testLetra_LinkDecode().
      */
     public function testLetra_LinkDecode() {
-        $this->assertEquals('À', Sistema_Funcoes::Letra_Aleatoria('%C3%80'));
-        $this->assertEquals('Á', Sistema_Funcoes::Letra_Aleatoria('%C3%81'));
-        $this->assertEquals('ó', Sistema_Funcoes::Letra_Aleatoria('%C3%B3'));
-        $this->assertEquals('%C3%80', Sistema_Funcoes::Letra_Aleatoria('À',true));
-        $this->assertEquals('%C3%81', Sistema_Funcoes::Letra_Aleatoria('Á',true));
-        $this->assertEquals('%C3%B3', Sistema_Funcoes::Letra_Aleatoria('ó',true));
+        $this->assertEquals('À', Sistema_Funcoes::Letra_LinkDecode('%C3%80'));
+        $this->assertEquals('Á', Sistema_Funcoes::Letra_LinkDecode('%C3%81'));
+        $this->assertEquals('ó', Sistema_Funcoes::Letra_LinkDecode('%C3%B3'));
+        $this->assertEquals('%C3%80', Sistema_Funcoes::Letra_LinkDecode('À',true));
+        $this->assertEquals('%C3%81', Sistema_Funcoes::Letra_LinkDecode('Á',true));
+        $this->assertEquals('%C3%B3', Sistema_Funcoes::Letra_LinkDecode('ó',true));
     }
 
     /**
@@ -100,8 +100,8 @@ class Sistema_FuncoesTest extends \PHPUnit_Framework_TestCase {
      * @todo   Implement testUrl_Limpeza().
      */
     public function testUrl_Limpeza() {
-        $this->assertEquals('php.net/manual/pt_BR/function.rand.php', Sistema_Funcoes::DirReplace('http://php.net/manual/pt_BR/function.rand.php'));
-        $this->assertEquals('ricardosierra.com.br', Sistema_Funcoes::DirReplace('http://www.ricardosierra.com.br'));
+        $this->assertEquals('php.net/manual/pt_BR/function.rand.php', Sistema_Funcoes::Url_Limpeza('http://php.net/manual/pt_BR/function.rand.php'));
+        $this->assertEquals('ricardosierra.com.br', Sistema_Funcoes::Url_Limpeza('http://www.ricardosierra.com.br'));
     }
 
     /**
@@ -109,10 +109,17 @@ class Sistema_FuncoesTest extends \PHPUnit_Framework_TestCase {
      * @todo   Implement testVersionPHP().
      */
     public function testVersionPHP() {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-                'This test has not been implemented yet.'
-        );
+        // Teste 1
+        $versao = '5.4.6';
+        if (strnatcmp(phpversion(),$versao) >= 0) $resultado = TRUE;
+        else                                      $resultado = FALSE;
+        $this->assertEquals($resultado, Sistema_Funcoes::VersionPHP($versao));
+        // TEste 2
+        $versao = '6.4.6';
+        if (strnatcmp(phpversion(),$versao) >= 0) $resultado = TRUE;
+        else                                      $resultado = FALSE;
+        $this->assertEquals($resultado, Sistema_Funcoes::VersionPHP($versao));
+        
     }
 
     /**

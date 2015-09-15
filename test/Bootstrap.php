@@ -1,4 +1,8 @@
 <?php
+/*
+//$this->assertArrayHasKey('foo', array('bar' => 'baz'));
+ * 
+ */
 error_reporting(-1);
 
 /**

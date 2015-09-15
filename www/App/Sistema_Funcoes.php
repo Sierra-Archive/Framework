@@ -78,6 +78,12 @@ Class Sistema_Funcoes {
         $string = 'ABCDEFGHIJKLMNOPQUVYXWZ';
         $tam = strlen($string);
         
+        if(!is_numeric($numero)){
+            throw new \Exception('Parametro não Numerico'.$numero, 3030);
+        }else{
+            $numero = (int) $numero;
+        }
+        
         // Se for maior que as Ocorrencias, Retorna ao começo
         while($tam<$numero) $numero = $numero - $tam;
         
@@ -211,7 +217,9 @@ Class Sistema_Funcoes {
             }else{
                 $dir = str_replace(Array('/'), Array('-'), $dir);
             }
+            return $dir;
         }
+        return false;
     }
     /**
      * Faz uma Limpeza em uma URL

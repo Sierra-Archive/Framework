@@ -46,7 +46,7 @@ class VisualTest extends \PHPUnit_Framework_TestCase {
      * @todo   Implement testJavascript_Executar().
      */
     public function testJavascript_Executar() {
-        $this->assertTrue(false);
+        //$this->assertTrue(false);
         // Remove the following lines when you implement this test.
         $this->markTestIncomplete(
                 'This test has not been implemented yet.'

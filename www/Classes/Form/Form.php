@@ -72,7 +72,7 @@ class Form
             )
         );
         if($this->_Visual===false){
-            throw new \Exception('Visual não foi Carregado no Construtor de Formulário.',2828);
+            $this->_Registro->_Visual = new \Framework\App\Visual();
         }
         $this->form = $this->_Visual->renderizar_bloco('template_form',$config);
     }
