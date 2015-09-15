@@ -79,7 +79,7 @@ class Acl{
 
                 // Esqueci Minha Senha
                 if(isset($_GET['sistema_esquecisenha'])){
-                    $this->_Registro->_Visual = new \Framework\App\Visual();
+                    if($this->_Registro->_Visual===false) $this->_Registro->_Visual = new \Framework\App\Visual();
                     $this->_Registro->_Visual->Json_Info_Update('Titulo', __('Esqueci Senha'));
                     // Clicando no link do email
                     if(isset($_GET['sistema_esquecisenha_cod'])){
@@ -920,12 +920,13 @@ class Acl{
      * @version 3.1.1
      */
     static function grupos_inserir(){
-        $db          = &$this->_Registro->_Conexao;
+        $Registro   = &Registro::getInstacia();
+        $db         = &$Registro->_Conexao;
         // Caso Categoria Não existe, continua
         $sql = $db->query(
             'SELECT * FROM '.MYSQL_CAT.' C LEFT JOIN '.MYSQL_CAT_ACESSO.' CA '.
-            'ON C.id WHERE CA.mod_acc=\'usuario_grupo\''
-        ,true);
+            'ON C.id WHERE CA.mod_acc=\'usuario_grupo\'' 
+       ,true);
         $categoria = $sql->fetch_object();
         // Caso nao Exista, cria as categorias
         if($categoria===NULL){

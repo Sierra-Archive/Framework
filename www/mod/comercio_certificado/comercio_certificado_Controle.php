@@ -242,15 +242,17 @@ class comercio_certificado_Controle extends \Framework\App\Controle
             self::mysql_AtualizaValores($usuario);
         
             // confere senha
-            if($_POST['senha']=='' && $tipousuario!='cliente'){
-                $mensagens = array(
-                    "tipo" => 'erro',
-                    "mgs_principal" => __('Erro'),
-                    "mgs_secundaria" => __('Senha Inválida')
-                );
-                $Visual->Json_IncluiTipo('Mensagens',$mensagens);
-                $this->layoult_zerar = false;
-                return;
+            if(isset($_POST['senha'])){
+                if($_POST['senha']==''){
+                    $mensagens = array(
+                        "tipo" => 'erro',
+                        "mgs_principal" => __('Erro'),
+                        "mgs_secundaria" => __('Senha Inválida')
+                    );
+                    $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+                    $this->layoult_zerar = false;
+                    return;
+                }
             }
 
             // captura indicado;

@@ -395,7 +395,7 @@ class usuario_AdminControle extends usuario_Controle
      */
     public function Usuarios_Add2($tipo=false){
         
-        $this->_Visual->Json_Info_Update('Titulo','Usuário.');
+        $this->_Visual->Json_Info_Update('Titulo','Usuários');
         
         if(isset($_POST['email'])){
             $email = \anti_injection($_POST['email']);
