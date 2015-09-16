@@ -1222,7 +1222,9 @@ class Visual
      * @version 3.1.1
      */
     public static function Layoult_Abas_Ativar_JS($numero){
-        $Visual             = $Registro->_Visual;
+        $Registro           = &Registro::getInstacia();
+        $Visual             = &$Registro->_Visual;
+        if($Visual===false) $Registro->_Visual = new Visual();
         $temaconfig         = &$Visual->config_template['plugins']['abas_ativar'];
         return $temaconfig($numero);
     }

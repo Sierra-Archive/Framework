@@ -43,9 +43,9 @@ Estrutura:
                         Ele carrega o Visual e o Modelo tambem.
                         Assim como identifica se o layoult retorna em html ou json (ajax)
         Funcao.php -> Responsavel pelas funcoes exenciais ao sistema
-    arq/* -> Fica todos os arquivos que subiram por upload de acordo com o modulo
+    media/* -> Fica todos os arquivos que subiram por upload de acordo com o modulo
     i18n/* -> Fica todos os arquivos de linguagem do sistema
-    layoult/* -> Fica todos os layoults do sistema
+    templates/* -> Fica todos os layoults do sistema
     libs/* -> Fica todas as Bibliotecas do Sistema
     mod/* -> Ficam todos os modulos do sistema
         _Sistema -> Modulo Nativo do Sistema (Não pode ser deletado)

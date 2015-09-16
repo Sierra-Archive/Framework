@@ -482,20 +482,20 @@ msgstr ""
 msgid "nao preparo"
 msgstr ""
 
-#: layoult/metrolab/template.php:7 layoult/metrolab/template.php:93
-#: layoult/metrolab/page_login.php:7 layoult/turboadmin/template.php:2
-#: layoult/turboadmin/page_login.php:7 layoult/itsbrain/template.php:4
-#: layoult/itsbrain/template.php:56 layoult/itsbrain/page_login.php:4
-#: layoult/atls/template.php:7 layoult/atls/template.php:74
-#: layoult/atls/page_login.php:7
+#: templates/metrolab/template.php:7 templates/metrolab/template.php:93
+#: templates/metrolab/page_login.php:7 templates/turboadmin/template.php:2
+#: templates/turboadmin/page_login.php:7 templates/itsbrain/template.php:4
+#: templates/itsbrain/template.php:56 templates/itsbrain/page_login.php:4
+#: templates/atls/template.php:7 templates/atls/template.php:74
+#: templates/atls/page_login.php:7
 msgid "Sem Titulo"
 msgstr ""
 
-#: layoult/metrolab/template.php:16
+#: templates/metrolab/template.php:16
 msgid "blue"
 msgstr ""
 
-#: layoult/atls/widget_menu.php:5 layoult/atls/widget_menu.php:35
+#: templates/atls/widget_menu.php:5 templates/atls/widget_menu.php:35
 msgid " parent"
 msgstr ""
 

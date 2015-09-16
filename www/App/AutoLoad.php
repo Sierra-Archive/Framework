@@ -378,13 +378,13 @@ define('TEMP_PATH',         ROOT.'Temp'.DS.SRV_NAME_SQL.DS);
  */
 define('TEMP_URL',          URL_PATH.'Temp'.US.SRV_NAME_SQL.US);
 // Cria e da Permissao na Pasta de Arquivos principal
-if(!is_dir(ROOT.'arq'.DS)){
-    mkdir (ROOT.'arq'.DS, 0777 );
+if(!is_dir(ROOT.'media'.DS)){
+    mkdir (ROOT.'media'.DS, 0777 );
 }
 if(!is_dir(ROOT.'Temp'.DS)){
     mkdir (ROOT.'Temp'.DS, 0777 );
 }
-//chmod (URL_PATH.'arq'.DS, 0777 );
+//chmod (URL_PATH.'media'.DS, 0777 );
 // Permissao de Pasta do Servidor
 if(!is_dir(ARQ_PATH)){
     mkdir (ARQ_PATH, 0777 );
