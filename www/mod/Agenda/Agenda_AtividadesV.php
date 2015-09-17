@@ -47,7 +47,7 @@ class Agenda_AtividadesVisual extends Agenda_Visual
                 array("nome" => '<a class="lajax-mesup active" href="'.URL_PATH.'Agenda/compromisso/compromisso/'.$array[$i]['id'].'/" acao="">'.$array[$i]['nome'].'</a><br><br>'.$array[$i]['local']),
                 array("nome" => $array[$i]['dt_inicio'].'<br>ás<br>'.$array[$i]['dt_fim']),
                 array("nome" => $array[$i]['descricao']),
-                array("nome" => '<img width="24" height="24" border="0" src="'.WEB_URL.'img/icons/editar.png"> <img width="24" height="24" border="0" src="'.WEB_URL.'img/icons/del.png">')
+                array("nome" => '<img width="24" height="24" alt="Editar Compromisso" src="'.WEB_URL.'img/icons/editar.png"> <img alt="Deletar Compromisso" width="24" height="24" src="'.WEB_URL.'img/icons/del.png">')
             ));
         }
         return $tabela->retornatabela();

@@ -75,11 +75,11 @@ class usuario_Principal implements \Framework\PrincipalInterface
                 if(\Framework\App\Sistema_Funcoes::Perm_Modulos('Financeiro')) $tabela['Saldo'][$i]            = $valor->saldo;
                 $tabela['Funções'][$i]          = '';
                 if(\Framework\App\Sistema_Funcoes::Perm_Modulos('Financeiro')){
-                    $tabela['Funções'][$i]     .= '<a confirma="O cliente realizou um deposito para a empresa?" title="Add quantia ao Saldo do Usuário" class="lajax explicar-titulo" acao="" href="'.URL_PATH.'Financeiro/Admin/financeiro_deposito/'.$valor->id.'/"><img border="0" src="'.WEB_URL.'img/icons/cifrao_16x16.png"></a>'.
-                    '<a confirma="O cliente confirmou o saque?" title="Remover Quantia do Saldo do Usuário" class="lajax explicar-titulo" acao="" href="'.URL_PATH.'Financeiro/Admin/financeiro_retirar/'.$valor->id.'/"><img border="0" src="'.WEB_URL.'img/icons/cifrao_16x16.png"></a>';
+                    $tabela['Funções'][$i]     .= '<a confirma="O cliente realizou um deposito para a empresa?" title="Add quantia ao Saldo do Usuário" class="lajax explicar-titulo" acao="" href="'.URL_PATH.'Financeiro/Admin/financeiro_deposito/'.$valor->id.'/"><img alt="'.__('Armazenar Depósito').' src="'.WEB_URL.'img/icons/cifrao_16x16.png"></a>'.
+                    '<a confirma="O cliente confirmou o saque?" title="Remover Quantia do Saldo do Usuário" class="lajax explicar-titulo" acao="" href="'.URL_PATH.'Financeiro/Admin/financeiro_retirar/'.$valor->id.'/"><img alt="'.__('Armazenar Retirada').' src="'.WEB_URL.'img/icons/cifrao_16x16.png"></a>';
                 }
-                $tabela['Funções'][$i]         .= '<a title="Editar Usuário" class="lajax explicar-titulo" acao="" href="'.URL_PATH.'usuario/Admin/Usuarios_Edit/'.$valor->id.'/"><img border="0" src="'.WEB_URL.'img/icons/icon_edit.png"></a> '.
-                '<a confirma="Deseja realmente deletar esse usuário?" title="Deletar Usuário" class="lajax explicar-titulo" acao="" href="'.URL_PATH.'usuario/Admin/usuarios_Del/'.$valor->id.'/"><img border="0" src="'.WEB_URL.'img/icons/icon_bad.png"></a>';
+                $tabela['Funções'][$i]         .= '<a title="Editar Usuário" class="lajax explicar-titulo" acao="" href="'.URL_PATH.'usuario/Admin/Usuarios_Edit/'.$valor->id.'/"><img alt="'.__('Editar Usuário').' src="'.WEB_URL.'img/icons/icon_edit.png"></a> '.
+                '<a confirma="Deseja realmente deletar esse usuário?" title="Deletar Usuário" class="lajax explicar-titulo" acao="" href="'.URL_PATH.'usuario/Admin/usuarios_Del/'.$valor->id.'/"><img alt="'.__('Deletar Usuário').' src="'.WEB_URL.'img/icons/icon_bad.png"></a>';
                 ++$i;
             }
             $Visual->Show_Tabela_DataTable($tabela);;

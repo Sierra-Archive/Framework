@@ -217,7 +217,7 @@ class Direito_RelatorioControle extends Direito_Controle
         if($imprimir=='false'){
             $this->Impressao(0,data_eua_brasil($inicial),data_eua_brasil($final));
             if($i!=0 && $inicial!=0 && $final!=0){
-                $this->_Visual->Blocar('<a href="#" onclick="window.open(\''.URL_PATH.SISTEMA_MODULO.'/'.SISTEMA_SUB.'/'.SISTEMA_MET.'/'.data_eua_brasil($inicial).'/'.data_eua_brasil($final).'/imprimir/\',\'Janela\',\'toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=no,width=800,height=550\'); return false;"><img src="'.WEB_URL.'img/icons/imprimir.gif" width="121" height="34" border="0"></a>');
+                $this->_Visual->Blocar('<a href="#" onclick="window.open(\''.URL_PATH.SISTEMA_MODULO.'/'.SISTEMA_SUB.'/'.SISTEMA_MET.'/'.data_eua_brasil($inicial).'/'.data_eua_brasil($final).'/imprimir/\',\'Janela\',\'toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=no,width=800,height=550\'); return false;"><img src="'.WEB_URL.'img/icons/imprimir.gif" width="121" height="34"></a>');
                 $this->_Visual->Bloco_Maior_CriaJanela(__('Imprimir Dados Acima?'),'',40);
             }
         }
@@ -244,7 +244,7 @@ class Direito_RelatorioControle extends Direito_Controle
         if($imprimir=='false'){
             $this->Impressao(1,$id);
             if($i!=0 && $id!=0){
-                $this->_Visual->Blocar('<a href="#" onclick="window.open(\''.URL_PATH.SISTEMA_MODULO.'/'.SISTEMA_SUB.'/'.SISTEMA_MET.'/'.$id.'/imprimir/\',\'Janela\',\'toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=no,width=800,height=550\'); return false;"><img src="'.WEB_URL.'img/icons/imprimir.gif" width="121" height="34" border="0"></a>');
+                $this->_Visual->Blocar('<a href="#" onclick="window.open(\''.URL_PATH.SISTEMA_MODULO.'/'.SISTEMA_SUB.'/'.SISTEMA_MET.'/'.$id.'/imprimir/\',\'Janela\',\'toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=no,width=800,height=550\'); return false;"><img src="'.WEB_URL.'img/icons/imprimir.gif" width="121" height="34"></a>');
                 $this->_Visual->Bloco_Maior_CriaJanela(__('Imprimir Dados Acima?'),'',40);
             }
         }
@@ -270,7 +270,7 @@ class Direito_RelatorioControle extends Direito_Controle
         if($imprimir=='false'){
             $this->Impressao(2,$id);
             if($i!=0 && $id!=0){
-                $this->_Visual->Blocar('<a href="#" onclick="window.open(\''.URL_PATH.SISTEMA_MODULO.'/'.SISTEMA_SUB.'/'.SISTEMA_MET.'/'.$id.'/imprimir/\',\'Janela\',\'toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=no,width=800,height=550\'); return false;"><img src="'.WEB_URL.'img/icons/imprimir.gif" width="121" height="34" border="0"></a>');
+                $this->_Visual->Blocar('<a href="#" onclick="window.open(\''.URL_PATH.SISTEMA_MODULO.'/'.SISTEMA_SUB.'/'.SISTEMA_MET.'/'.$id.'/imprimir/\',\'Janela\',\'toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=no,width=800,height=550\'); return false;"><img src="'.WEB_URL.'img/icons/imprimir.gif" width="121" height="34"></a>');
                 $this->_Visual->Bloco_Maior_CriaJanela(__('Imprimir Dados Acima?'),'',40);
             }
         }
@@ -296,7 +296,7 @@ class Direito_RelatorioControle extends Direito_Controle
         if($imprimir=='false'){
             $this->Impressao(3,$id);
             if($i!=0 && $id!=0){            
-                $this->_Visual->Blocar('<a href="#" onclick="window.open(\''.URL_PATH.SISTEMA_MODULO.'/'.SISTEMA_SUB.'/'.SISTEMA_MET.'/'.$id.'/imprimir/\',\'Janela\',\'toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=no,width=800,height=550\'); return false;"><img src="'.WEB_URL.'img/icons/imprimir.gif" width="121" height="34" border="0"></a>');
+                $this->_Visual->Blocar('<a href="#" onclick="window.open(\''.URL_PATH.SISTEMA_MODULO.'/'.SISTEMA_SUB.'/'.SISTEMA_MET.'/'.$id.'/imprimir/\',\'Janela\',\'toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=no,width=800,height=550\'); return false;"><img src="'.WEB_URL.'img/icons/imprimir.gif" width="121" height="34"></a>');
                 $this->_Visual->Bloco_Maior_CriaJanela(__('Imprimir Dados Acima?'),'',40);
             }
         }
@@ -326,7 +326,7 @@ class Direito_RelatorioControle extends Direito_Controle
         if($imprimir=='false'){
             $this->Impressao(4,$idvara,$idcomarca);
             if($i!=0 && $idvara!=0 && $idcomarca!=0){
-                $this->_Visual->Blocar('<a href="#" onclick="window.open(\''.URL_PATH.SISTEMA_MODULO.'/'.SISTEMA_SUB.'/'.SISTEMA_MET.'/'.$idvara.'/'.$idcomarca.'/imprimir/\',\'Janela\',\'toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=no,width=800,height=550\'); return false;"><img src="'.WEB_URL.'img/icons/imprimir.gif" width="121" height="34" border="0"></a>');
+                $this->_Visual->Blocar('<a href="#" onclick="window.open(\''.URL_PATH.SISTEMA_MODULO.'/'.SISTEMA_SUB.'/'.SISTEMA_MET.'/'.$idvara.'/'.$idcomarca.'/imprimir/\',\'Janela\',\'toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=no,width=800,height=550\'); return false;"><img src="'.WEB_URL.'img/icons/imprimir.gif" width="121" height="34"></a>');
                 $this->_Visual->Bloco_Maior_CriaJanela(__('Imprimir Dados Acima?'),'',40);
             }
         }
@@ -347,7 +347,7 @@ class Direito_RelatorioControle extends Direito_Controle
         $i = $this->_Modelo->Relatorio_SemAlt($processos);
         if($imprimir=='false'){
             if($i!=0){
-                $this->_Visual->Blocar('<a href="#" onclick="window.open(\''.URL_PATH.SISTEMA_MODULO.'/'.SISTEMA_SUB.'/Relatorio_SemAlt/imprimir/\',\'Janela\',\'toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=no,width=800,height=550\'); return false;"><img src="'.WEB_URL.'img/icons/imprimir.gif" width="121" height="34" border="0"></a>');
+                $this->_Visual->Blocar('<a href="#" onclick="window.open(\''.URL_PATH.SISTEMA_MODULO.'/'.SISTEMA_SUB.'/Relatorio_SemAlt/imprimir/\',\'Janela\',\'toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=no,width=800,height=550\'); return false;"><img src="'.WEB_URL.'img/icons/imprimir.gif" width="121" height="34"></a>');
                 $this->_Visual->Bloco_Maior_CriaJanela(__('Imprimir Dados Acima?'),'',40);
             }
             // Imprimi Numeros a Direita

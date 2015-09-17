@@ -47,7 +47,7 @@ class usuario_rede_ListarVisual extends usuario_rede_Visual
                   foreach ($array as $indice=>&$valor) {
                     $html .= '<div style="float:left; width:150px; text-align:center;">';
                         if($nivel!=3) $html .= '<a class="lajax" href="'.URL_PATH.'usuario_rede/Listar/Carrega_Indicados/'.$array[$indice]['id'].'/'.($nivel+1).'/" acao="">';
-                        $html .= '<img width="50" src="'.WEB_URL.'img/icons/nivel_cliente'.$array[$indice]['nivel_usuario'].'.jpg">';
+                        $html .= '<img width="50" src="'.WEB_URL.'img/icons/nivel_cliente'.$array[$indice]['nivel_usuario'].'.jpg" alt="'.__('Nivel de Indicação').'">';
                         if($nivel!=3) $html .= '</a>';
                         $html .= '<br>';
                         if($nivel!=3) $html .= '<a class="lajax" href="'.URL_PATH.'usuario_rede/Listar/Carrega_Indicados/'.$array[$indice]['id'].'/'.($nivel+1).'/" acao="">';
@@ -124,7 +124,7 @@ class usuario_rede_ListarVisual extends usuario_rede_Visual
                 
                 $tabela->addcorpo(array(
                     array("nome" => '#'.$array[$indice]['id']),
-                    array("nome" => $prenome.$array[$indice]['nome'].' <img width="15" src="'.WEB_URL.'img/icons/nivel_cliente'.$array[$indice]['nivel_usuario'].'.jpg">', "class" => $class),
+                    array("nome" => $prenome.$array[$indice]['nome'].' <img alt="'.__('Nivel da Indicação').' width="15" src="'.WEB_URL.'img/icons/nivel_cliente'.$array[$indice]['nivel_usuario'].'.jpg">', "class" => $class),
                 ));
                 ++$i;
                 if(!empty($array[$j]['indicados'])){

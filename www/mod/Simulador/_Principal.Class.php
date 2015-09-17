@@ -101,7 +101,7 @@ class Simulador_Principal implements \Framework\PrincipalInterface
                 if($resultado_pasta===false){
                     throw new \Exception('Essa Pasta não existe:'. $raiz, 404);
                 }
-                $tabela['Tipo'][$i]             = '<a href="'.URL_PATH.'tag/Tag/Tags/'.$resultado_pasta->parent.'" border="1" class="lajax" acao=""><img src="'.WEB_URL.'img'.US.'arquivos'.US.'pastavoltar.png" alt="0" /></a>';
+                $tabela['Tipo'][$i]             = '<a href="'.URL_PATH.'tag/Tag/Tags/'.$resultado_pasta->parent.'" border="1" class="lajax" acao=""><img alt="'.__('Voltar para o Diretório Anterior').' src="'.WEB_URL.'img'.US.'arquivos'.US.'pastavoltar.png" alt="0" /></a>';
                 $tabela['Nome'][$i]             = '<a href="'.URL_PATH.'tag/Tag/Tags/'.$resultado_pasta->parent.'" border="1" class="lajax" acao="">Voltar para a Pasta Anterior</a>';
                 $tabela['Descrição'][$i]        = '';
                 $tabela['Tamanho'][$i]          = '';

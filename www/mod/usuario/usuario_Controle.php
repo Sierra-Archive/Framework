@@ -158,8 +158,8 @@ class usuario_Controle extends \Framework\App\Controle
 
             // Financeiro Especifico
             /*if(\Framework\App\Sistema_Funcoes::Perm_Modulos('Financeiro') && $Financeiro_User_Saldo){
-                $tabela['Funções'][$i]     .=   '<a confirma="O '.$nomedisplay_sing.' realizou um deposito para a empresa?" title="Add quantia ao Saldo do '.$nomedisplay_sing.'" class="btn lajax explicar-titulo" acao="" href="'.URL_PATH.'Financeiro/Admin/financeiro_deposito/'.$valor->id.$linkextra.'"><img border="0" src="'.WEB_URL.'img/icons/cifrao_16x16.png" alt="Depositar"></a>'.
-                                                '<a confirma="O '.$nomedisplay_sing.' confirmou o saque?" title="Remover Quantia do Saldo do '.$nomedisplay_sing.'" class="btn lajax explicar-titulo" acao="" href="'.URL_PATH.'Financeiro/Admin/financeiro_retirar/'.$valor->id.$linkextra.'"><img border="0" src="'.WEB_URL.'img/icons/cifrao_16x16.png" alt="Retirar"></a>';
+                $tabela['Funções'][$i]     .=   '<a confirma="O '.$nomedisplay_sing.' realizou um deposito para a empresa?" title="Add quantia ao Saldo do '.$nomedisplay_sing.'" class="btn lajax explicar-titulo" acao="" href="'.URL_PATH.'Financeiro/Admin/financeiro_deposito/'.$valor->id.$linkextra.'"><img src="'.WEB_URL.'img/icons/cifrao_16x16.png" alt="Depositar"></a>'.
+                                                '<a confirma="O '.$nomedisplay_sing.' confirmou o saque?" title="Remover Quantia do Saldo do '.$nomedisplay_sing.'" class="btn lajax explicar-titulo" acao="" href="'.URL_PATH.'Financeiro/Admin/financeiro_retirar/'.$valor->id.$linkextra.'"><img src="'.WEB_URL.'img/icons/cifrao_16x16.png" alt="Retirar"></a>';
                 $funcoes_qnt = 3;
             }*/
             

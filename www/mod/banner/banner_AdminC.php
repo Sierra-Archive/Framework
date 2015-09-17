@@ -65,8 +65,8 @@ class banner_AdminControle extends banner_Controle
                 $tabela['Url'][$i]       = $valor['url'];
                 $tabela['Ixibições'][$i] = $valor['ixi'].' / '.$valor['limite_ixi'];
                 $tabela['Cliques'][$i]   = $valor['cliq'].' / '.$valor['limite_cliq'];
-                $tabela['Funções'][$i]   = '<a title="Editar Banner" class="lajax explicar-titulo" acao="" href="'.URL_PATH.'banner/Admin/Banners_Edit/'.$valor['id'].'/"><img border="0" src="'.WEB_URL.'img/icons/icon_edit.png"></a> '.
-                '<a confirma="Deseja realmente deletar esse banner?" title="Deletar Banner" class="lajax explicar-titulo" acao="" href="'.URL_PATH.'banner/Admin/Banners_Del/'.$valor['id'].'/"><img border="0" src="'.WEB_URL.'img/icons/icon_bad.png"></a>';
+                $tabela['Funções'][$i]   = '<a title="Editar Banner" class="lajax explicar-titulo" acao="" href="'.URL_PATH.'banner/Admin/Banners_Edit/'.$valor['id'].'/"><img alt'.__('Editar Banner').' src="'.WEB_URL.'img/icons/icon_edit.png"></a> '.
+                '<a confirma="Deseja realmente deletar esse banner?" title="Deletar Banner" class="lajax explicar-titulo" acao="" href="'.URL_PATH.'banner/Admin/Banners_Del/'.$valor['id'].'/"><img alt'.__('Deletar Banner').'  src="'.WEB_URL.'img/icons/icon_bad.png"></a>';
                 ++$i;
             }
             $this->_Visual->Show_Tabela_DataTable($tabela);

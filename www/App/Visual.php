@@ -1558,7 +1558,7 @@ class Visual
               $alt = $valor['alt'];
               $larg = $valor['larg'];
               if(count($valor['itens'])>1){
-                 $html .= '<img src=\''.LIBS_URL.'phplot/graf_pizza.php?data='.serialize($valor['itens']).'&titulo='.$valor['titulo'].'&larg='.$valor['larg'].'&alt='.$valor['alt'].'&settings='.serialize($settings).'\' />';
+                 $html .= '<img src=\''.LIBS_URL.'phplot/graf_pizza.php?data='.serialize($valor['itens']).'&titulo='.$valor['titulo'].'&larg='.$valor['larg'].'&alt='.$valor['alt'].'&settings='.serialize($settings).'\' alt=\''.$valor['alt'].'\' />';
               }
         }
         return $html;

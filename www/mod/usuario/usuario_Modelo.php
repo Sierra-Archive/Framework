@@ -355,7 +355,7 @@ class usuario_Modelo extends \Framework\App\Modelo
                     }else{
                         $foto = $d;
                     }
-                    return '<img src="'.$foto.'" style="max-width:100px;" />';
+                    return '<img src="'.$foto.'" style="max-width:100px;" alt="'.__('Foto de Usuário').' />';
                 }
             ); //'Foto';
         }

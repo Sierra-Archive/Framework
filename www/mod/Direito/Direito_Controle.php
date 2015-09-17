@@ -54,7 +54,7 @@ class Direito_Controle extends \Framework\App\Controle
             }
             if($imprimir!='false'){
                 $this->_Visual->Blocar($tabela->retornatabela());
-                $this->_Visual->Blocar('<br><center><a href="#" onClick="window.print();" ><img width="121" height="34" border="0" src="'.WEB_URL.'img/icons/imprimir.gif"></a></center>');
+                $this->_Visual->Blocar('<br><center><a href="#" onClick="window.print();" ><img width="121" height="34" src="'.WEB_URL.'img/icons/imprimir.gif"></a></center>');
             }else{
                 $this->_Visual->Show_Tabela_DataTable($tabela);
                 

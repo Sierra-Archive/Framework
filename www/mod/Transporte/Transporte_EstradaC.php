@@ -37,7 +37,7 @@ class Transporte_EstradaControle extends Transporte_Controle
         $perm_del = $Registro->_Acl->Get_Permissao_Url('Transporte/Estrada/Estradas_Del');
         foreach ($estrada as &$valor) {                
             $tabela['Id'][$i]           = '#'.$valor->id;
-            $tabela['Foto'][$i]         = '<img src="'.$valor->foto.'" style="max-width:100px;" />';
+            $tabela['Foto'][$i]         = '<img alt="'.__('Foto da Dica de Estrada').' src="'.$valor->foto.'" style="max-width:100px;" />';
             $tabela['Estrada'][$i]       = $valor->nome;
             if($valor->status==1 || $valor->status=='1'){
                 $texto = __('Ativado');

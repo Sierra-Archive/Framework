@@ -386,7 +386,7 @@ class Financeiro_Controle extends \Framework\App\Controle
             }
         }
         
-        $html = '<img src="'.$this->Gerador_Grafico_Padrao($titulo, 'Mês', 'Valor (R$)', $dados).'" />';
+        $html = '<img alt="'.__('Gráfico de Movimentação Interna').' src="'.$this->Gerador_Grafico_Padrao($titulo, 'Mês', 'Valor (R$)', $dados).'" />';
         
         
         if($total!==false){
@@ -534,7 +534,7 @@ class Financeiro_Controle extends \Framework\App\Controle
                 $dados[] = array($indice, $valor);
             }
         }
-        $html = '<img src="'.$this->Gerador_Grafico_Padrao($titulo, 'Mês', 'Valor (R$)', $dados).'" />';
+        $html = '<img alt="'.__('Gráfico de Movimentação Interna').' src="'.$this->Gerador_Grafico_Padrao($titulo, 'Mês', 'Valor (R$)', $dados).'" />';
         
         
         if($total!==false){

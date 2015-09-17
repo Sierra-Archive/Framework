@@ -101,7 +101,7 @@ class biblioteca_Principal implements \Framework\PrincipalInterface
                 if($resultado_pasta===false){
                     throw new \Exception('Essa Pasta não existe:'. $raiz, 404);
                 }
-                $tabela['Tipo'][$i]             = '<a href="'.URL_PATH.'biblioteca/Biblioteca/Bibliotecas/'.$resultado_pasta->parent.'" border="1" class="lajax" acao=""><img src="'.WEB_URL.'img'.US.'arquivos'.US.'pastavoltar.png" alt="0" /></a>';
+                $tabela['Tipo'][$i]             = '<a href="'.URL_PATH.'biblioteca/Biblioteca/Bibliotecas/'.$resultado_pasta->parent.'" border="1" class="lajax" acao=""><img alt'.__('Voltar para Diretório Anterior').' src="'.WEB_URL.'img'.US.'arquivos'.US.'pastavoltar.png" alt="0" /></a>';
                 $tabela['Nome'][$i]             = '<a href="'.URL_PATH.'biblioteca/Biblioteca/Bibliotecas/'.$resultado_pasta->parent.'" border="1" class="lajax" acao="">Voltar para a Pasta Anterior</a>';
                 $tabela['Descrição'][$i]        = '';
                 $tabela['Tamanho'][$i]          = '';
@@ -148,10 +148,10 @@ class biblioteca_Principal implements \Framework\PrincipalInterface
                         }
 
                         if($valor->tipo==1){
-                            $tabela['Tipo'][$i]             = '<a href="'.URL_PATH.'biblioteca/Biblioteca/Bibliotecas/'.$valor->id.'/" border="1" class="lajax" acao=""><img src="'.$foto.'" alt="1" /></a>';
+                            $tabela['Tipo'][$i]             = '<a href="'.URL_PATH.'biblioteca/Biblioteca/Bibliotecas/'.$valor->id.'/" border="1" class="lajax" acao=""><img src="'.$foto.'" alt="'.__('Abrir Diretório').'" /></a>';
                             $tabela['Nome'][$i]             = '<a href="'.URL_PATH.'biblioteca/Biblioteca/Bibliotecas/'.$valor->id.'/" border="1" class="lajax" acao="">'.$valor->nome.'</a>';
                         }else{
-                            $tabela['Tipo'][$i]             = '<a href="'.URL_PATH.'biblioteca/Biblioteca/Download/'.$valor->id.'/" border="1" target="_BLANK"><img src="'.$foto.'" alt="'.$tipo.'" /></a>';
+                            $tabela['Tipo'][$i]             = '<a href="'.URL_PATH.'biblioteca/Biblioteca/Download/'.$valor->id.'/" border="1" target="_BLANK"><img src="'.$foto.'" alt="'.__('Fazer Download de Arquivo ').$tipo.'" /></a>';
                             $tabela['Nome'][$i]             = '<a href="'.URL_PATH.'biblioteca/Biblioteca/Download/'.$valor->id.'/" border="1" target="_BLANK">'.$valor->nome.'</a>';
                         }
                         $tabela['Descrição'][$i]        = $valor->obs;

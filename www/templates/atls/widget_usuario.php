@@ -11,7 +11,7 @@
 
 
     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-        <img src="<?php echo $params['upload_foto']; ?>" width="30" height="30"/>
+        <img src="<?php echo $params['upload_foto']; ?>" alt="<?php _e('Foto de Perfil'); ?>" width="30" height="30"/>
         <span class="username"><?php echo $params['user_name']; ?></span>
         <b class="caret"></b>
     </a>

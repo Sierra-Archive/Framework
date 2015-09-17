@@ -24,7 +24,7 @@ class social_personasControle extends social_Controle
             foreach ($social as $indice=>&$valor) {
                 if($social[$indice]['posicao']==3){
                     if($social[$indice]['id_face']!=0){
-                        $impor['Face'][$i] = '<a href="http://www.facebook.com/profile.php?id='.$social[$indice]['id_face'].'" target="_blank"><img src="http://graph.facebook.com/'.$social[$indice]['id_face'].'/picture"></a>';
+                        $impor['Face'][$i] = '<a href="http://www.facebook.com/profile.php?id='.$social[$indice]['id_face'].'" target="_blank"><img  alt="'.__('Foto de Perfil').' src="http://graph.facebook.com/'.$social[$indice]['id_face'].'/picture"></a>';
                     }else{
                         $impor['Face'][$i] = __('Sem foto');
                     }
@@ -41,7 +41,7 @@ class social_personasControle extends social_Controle
                     ++$i;
                 }elseif($social[$indice]['posicao']==0){
                     if($social[$indice]['id_face']!=0){
-                        $normal['Face'][$j] = '<a href="http://www.facebook.com/profile.php?id='.$social[$indice]['id_face'].'" target="_blank"><img src="http://graph.facebook.com/'.$social[$indice]['id_face'].'/picture"></a>';
+                        $normal['Face'][$j] = '<a href="http://www.facebook.com/profile.php?id='.$social[$indice]['id_face'].'" target="_blank"><img  alt="'.__('Foto de Perfil').' src="http://graph.facebook.com/'.$social[$indice]['id_face'].'/picture"></a>';
                     }else{
                         $normal['Face'][$j] = __('Sem foto');
                     }
@@ -58,7 +58,7 @@ class social_personasControle extends social_Controle
                     ++$j;
                 }else{
                     //if($social[$indice]['id_face']!=0){
-                    //	$proibido['Face'][$z] = '<a href="http://www.facebook.com/profile.php?id='.$social[$indice]['id_face'].'" target="_blank"><img src="http://graph.facebook.com/'.$social[$indice]['id_face'].'/picture"></a>';
+                    //	$proibido['Face'][$z] = '<a href="http://www.facebook.com/profile.php?id='.$social[$indice]['id_face'].'" target="_blank"><img  alt="'.__('Foto de Perfil').' src="http://graph.facebook.com/'.$social[$indice]['id_face'].'/picture"></a>';
                     //}else{
                             $proibido['Face'][$z] = __('Sem foto');
                     //}
@@ -102,7 +102,7 @@ class social_personasControle extends social_Controle
             foreach ($social as $indice=>&$valor) {
                 if($social[$indice]['situacao']==4 && $social[$indice]['posicao']!=1){
                     if($social[$indice]['id_face']!=0){
-                        $orgulho['Face'][$i] = '<a href="http://www.facebook.com/profile.php?id='.$social[$indice]['id_face'].'" target="_blank"><img src="http://graph.facebook.com/'.$social[$indice]['id_face'].'/picture"></a>';
+                        $orgulho['Face'][$i] = '<a href="http://www.facebook.com/profile.php?id='.$social[$indice]['id_face'].'" target="_blank"><img  alt="'.__('Foto de Perfil').' src="http://graph.facebook.com/'.$social[$indice]['id_face'].'/picture"></a>';
                     }else{
                         $orgulho['Face'][$i] = __('Sem foto');
                     }
@@ -119,7 +119,7 @@ class social_personasControle extends social_Controle
                     ++$i;
                 }elseif($social[$indice]['situacao']==1 && $social[$indice]['posicao']!=1){
                     if($social[$indice]['id_face']!=0){
-                        $pegos['Face'][$j] = '<a href="http://www.facebook.com/profile.php?id='.$social[$indice]['id_face'].'" target="_blank"><img src="http://graph.facebook.com/'.$social[$indice]['id_face'].'/picture"></a>';
+                        $pegos['Face'][$j] = '<a href="http://www.facebook.com/profile.php?id='.$social[$indice]['id_face'].'" target="_blank"><img  alt="'.__('Foto de Perfil').' src="http://graph.facebook.com/'.$social[$indice]['id_face'].'/picture"></a>';
                     }else{
                         $pegos['Face'][$j] = __('Sem foto');
                     }
@@ -136,7 +136,7 @@ class social_personasControle extends social_Controle
                     $pegos['Nascimento'][$j] = $social[$indice]['nasc'];
                 }elseif($social[$indice]['situacao']==2 && $social[$indice]['posicao']!=1){
                     if($social[$indice]['id_face']!=0){
-                        $queropega['Face'][$z] = '<a href="http://www.facebook.com/profile.php?id='.$social[$indice]['id_face'].'" target="_blank"><img src="http://graph.facebook.com/'.$social[$indice]['id_face'].'/picture"></a>';
+                        $queropega['Face'][$z] = '<a href="http://www.facebook.com/profile.php?id='.$social[$indice]['id_face'].'" target="_blank"><img  alt="'.__('Foto de Perfil').' src="http://graph.facebook.com/'.$social[$indice]['id_face'].'/picture"></a>';
                     }else{
                         $queropega['Face'][$z] = __('Sem foto');
                     }
@@ -153,7 +153,7 @@ class social_personasControle extends social_Controle
                     ++$z;
                 }elseif($social[$indice]['situacao']==3 && $social[$y]['posicao']!=1){
                     if($social[$indice]['id_face']!=0){
-                        $ultimocaso['Face'][$y] = '<a href="http://www.facebook.com/profile.php?id='.$social[$indice]['id_face'].'" target="_blank"><img src="http://graph.facebook.com/'.$social[$indice]['id_face'].'/picture"></a>';
+                        $ultimocaso['Face'][$y] = '<a href="http://www.facebook.com/profile.php?id='.$social[$indice]['id_face'].'" target="_blank"><img alt="'.__('Foto de Perfil').' src="http://graph.facebook.com/'.$social[$indice]['id_face'].'/picture"></a>';
                     }else{
                         $ultimocaso['Face'][$y] = __('Sem foto');
                     }

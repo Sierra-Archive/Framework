@@ -63,7 +63,7 @@ class Musica_AlbumControle extends Musica_Controle
             }else{
                 $foto = $valor->foto;
             }
-            $tabela['Foto'][$i]             = '<img src="'.$foto.'" style="max-width:100px;" />';
+            $tabela['Foto'][$i]             = '<img alt="'.__('Foto de Album').' src="'.$foto.'" style="max-width:100px;" />';
             $tabela['Nome'][$i]             = $valor->nome;
             $tabela['Lançamento'][$i]       = $valor->lancamento;
             $tabela['Data Registrada no Sistema'][$i]  = $valor->log_date_add;

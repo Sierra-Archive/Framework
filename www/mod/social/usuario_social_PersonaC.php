@@ -100,7 +100,7 @@ class social_PersonaControle extends social_Controle
             reset($personas);
             foreach ($personas as $indice=>&$valor) {
                     if($valor->id_face!=0){
-                        $face = '<a href="http://www.facebook.com/profile.php?id='.$valor->id_face.'" target="_blank" alt="'.$valor->id_face.'"><img src="http://graph.facebook.com/'.$valor->id_face.'/picture"></a>';
+                        $face = '<a href="http://www.facebook.com/profile.php?id='.$valor->id_face.'" target="_blank" alt="'.$valor->id_face.'"><img alt="'.__('Foto de Perfil').' src="http://graph.facebook.com/'.$valor->id_face.'/picture"></a>';
                     }else{
                         $face = __('Sem foto');
                     }

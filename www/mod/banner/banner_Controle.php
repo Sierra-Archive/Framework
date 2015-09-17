@@ -27,7 +27,7 @@ class banner_Controle extends \Framework\App\Controle
         $banner->ixi = $banner->ixi + 1;*/
         //$banner = banner_Modelo::retorna_banner_aleatorio($model,$categoria);
         //banner_Modelo::banner_contabiliza_ixi($model,$id,$banner['ixi']+1);
-        return '<a href="'.URL_PATH.'banner'.US.'Listar'.US.'Banner_Redirecionar'.US.$banner['id'].'/"><img src="'.ARQ_URL.'banner'.US.$banner['id'].'.'.$banner['foto'].'"></a>';
+        return '<a href="'.URL_PATH.'banner'.US.'Listar'.US.'Banner_Redirecionar'.US.$banner['id'].'/"><img alt'.__('Visualizar Banner').' src="'.ARQ_URL.'banner'.US.$banner['id'].'.'.$banner['foto'].'"></a>';
     }
 }
 ?>

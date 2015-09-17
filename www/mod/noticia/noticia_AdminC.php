@@ -34,7 +34,7 @@ class noticia_AdminControle extends noticia_Controle
         foreach ($noticia as &$valor) {                
             $tabela['Id'][$i]           = '#'.$valor->id;
             $tabela['Categoria'][$i]    = $valor->categoria2;
-            $tabela['Foto'][$i]         = '<img src="'.$valor->foto.'" style="max-width:100px;" />';
+            $tabela['Foto'][$i]         = '<img alt="'.__('Foto da Noticia').' src="'.$valor->foto.'" style="max-width:100px;" />';
             $tabela['Titulo'][$i]       = $valor->nome;
             if($valor->status==1 || $valor->status=='1'){
                 $texto = __('Ativado');

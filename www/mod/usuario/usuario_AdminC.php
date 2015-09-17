@@ -662,10 +662,10 @@ class usuario_AdminControle extends usuario_Controle
                 $tabela['Nivel de Usuário'][$i] = $niveluser;
                 $tabela['Nivel de Admin'][$i] = $niveladmin;
                 $tabela['Saldo'][$i] = $usuarios[$indice]['saldo'];
-                $tabela['Funções'][$i] = '<a confirma="Deseja Realmente Aprovar?" title="Aprovar" class="lajax explicar-titulo" acao="" href="'.URL_PATH.'usuario/Admin/usuarios_pendente_aprovar/'.$usuarios[$indice]['id'].'/'.$tipo.'/sim/"><img border="0" src="'.WEB_URL.'img/icons/status1.png"></a>'.
-                '<a confirma="Deseja Realmente Desaprovar?" title="Desaprovar" class="lajax explicar-titulo" acao="" href="'.URL_PATH.'usuario/Admin/usuarios_pendente_aprovar/'.$usuarios[$indice]['id'].'/'.$tipo.'/nao/"><img border="0" src="'.WEB_URL.'img/icons/status2.png"></a>'.
-                '<a title="Editar Usuário" class="lajax explicar-titulo" acao="" href="'.URL_PATH.'usuario/Admin/Usuarios_Edit/'.$usuarios[$indice]['id'].'/"><img border="0" src="'.WEB_URL.'img/icons/icon_edit.png"></a> '.
-                '<a confirma="Deseja realmente deletar esse usuário?" title="Deletar Usuário" class="lajax explicar-titulo" acao="" href="'.URL_PATH.'usuario/Admin/usuarios_Del/'.$usuarios[$indice]['id'].'/"><img border="0" src="'.WEB_URL.'img/icons/icon_bad.png"></a>';
+                $tabela['Funções'][$i] = '<a alt="'.__('Aprovar Usuário').' confirma="Deseja Realmente Aprovar?" title="Aprovar" class="lajax explicar-titulo" acao="" href="'.URL_PATH.'usuario/Admin/usuarios_pendente_aprovar/'.$usuarios[$indice]['id'].'/'.$tipo.'/sim/"><img src="'.WEB_URL.'img/icons/status1.png"></a>'.
+                '<a alt="'.__('Desaprovar Usuário').' confirma="Deseja Realmente Desaprovar?" title="Desaprovar" class="lajax explicar-titulo" acao="" href="'.URL_PATH.'usuario/Admin/usuarios_pendente_aprovar/'.$usuarios[$indice]['id'].'/'.$tipo.'/nao/"><img src="'.WEB_URL.'img/icons/status2.png"></a>'.
+                '<a alt="'.__('Editar Usuário').' title="Editar Usuário" class="lajax explicar-titulo" acao="" href="'.URL_PATH.'usuario/Admin/Usuarios_Edit/'.$usuarios[$indice]['id'].'/"><img src="'.WEB_URL.'img/icons/icon_edit.png"></a> '.
+                '<a alt="'.__('Deletar Usuário').' confirma="Deseja realmente deletar esse usuário?" title="Deletar Usuário" class="lajax explicar-titulo" acao="" href="'.URL_PATH.'usuario/Admin/usuarios_Del/'.$usuarios[$indice]['id'].'/"><img src="'.WEB_URL.'img/icons/icon_bad.png"></a>';
                 ++$i;
             }
             $this->_Visual->Show_Tabela_DataTable($tabela);

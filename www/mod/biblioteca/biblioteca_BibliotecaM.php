@@ -51,7 +51,7 @@ class biblioteca_BibliotecaModelo extends biblioteca_Modelo
                 if($d==1){
                     $tipo       =   'pasta';
                     $foto = WEB_URL.'img'.US.'arquivos'.US.$tipo.'.png';
-                    return '<a href="'.URL_PATH.'biblioteca/Biblioteca/Bibliotecas/'.$row['id'].'/" border="1" class="lajax" acao=""><img src="'.$foto.'" alt="1" /></a>';
+                    return '<a href="'.URL_PATH.'biblioteca/Biblioteca/Bibliotecas/'.$row['id'].'/" border="1" class="lajax" acao=""><img src="'.$foto.'" alt="'.__('Abrir Diretório').' /></a>';
                 }else{
                     $tipo  = \Framework\App\Sistema_Funcoes::Control_Arq_Ext($row['ext']);
                     $endereco = ARQ_PATH.'bibliotecas'.DS.strtolower($row['arquivo']).'.'.$tipo;
@@ -63,7 +63,7 @@ class biblioteca_BibliotecaModelo extends biblioteca_Modelo
                     }else{
                         $foto = WEB_URL.'img'.US.'arquivos'.US.'desconhecido.png';
                     }
-                    return '<a href="'.URL_PATH.'biblioteca/Biblioteca/Download/'.$row['id'].'/" border="1" target="_BLANK"><img src="'.$foto.'" alt="'.$tipo.'" /></a>';
+                    return '<a href="'.URL_PATH.'biblioteca/Biblioteca/Download/'.$row['id'].'/" border="1" target="_BLANK"><img src="'.$foto.'" alt="'.__('Fazer Download de Extensão: ').$tipo.'" /></a>';
                 }
             }
         );
