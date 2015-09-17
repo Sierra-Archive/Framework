@@ -389,7 +389,7 @@ if(!is_dir(ROOT.'Temp'.DS)){
 if(!is_dir(ARQ_PATH)){
     mkdir (ARQ_PATH, 0777 );
 }
-if(!is_dir(CACHE_PATH)){ var_dump(CACHE_PATH);
+if(!is_dir(CACHE_PATH)){
     mkdir (CACHE_PATH, 0777 );
 }
 if(!is_dir(TEMP_PATH)){

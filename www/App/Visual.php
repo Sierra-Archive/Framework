@@ -815,7 +815,7 @@ class Visual
             //'sistema/jquery-ui/jquery-ui.min',
         
             'sistema/bootstrap/js/bootstrap',
-            'sistema/bootstrap/js/bootstrap-fileupload',
+            //'sistema/bootstrap/js/bootstrap-fileupload',
         
             // DATATABLE
             'sistema/data-tables/jquery.dataTables',
@@ -968,7 +968,7 @@ class Visual
             'sistema/jquery-ui/jquery-ui.min',
             'sistema/bootstrap/css/bootstrap',
             'sistema/bootstrap/css/bootstrap-theme',
-            'sistema/bootstrap/css/bootstrap-fileupload',
+            //'sistema/bootstrap/css/bootstrap-fileupload',
             // Carregamento igual Google
             'sistema/nprogress/nprogress',
             // Sistema de Mensagens

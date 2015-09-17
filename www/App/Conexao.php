@@ -102,8 +102,7 @@ final class Conexao
      * @version 3.1.1
      */
     public function __construct()
-    {
-        $imprimir = new \Framework\App\Tempo('Conexao');
+    {        $imprimir = new \Framework\App\Tempo('Conexao');
         $this->host     =   SIS_SERVER;
         $this->usuario  =   SIS_USUARIO;
         $this->senha    =   SIS_SENHA;
