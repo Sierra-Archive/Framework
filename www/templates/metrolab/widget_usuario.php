@@ -5,7 +5,7 @@
         <b class="caret"></b>
     </a>
     <ul class="dropdown-menu extended logout">
-        <li><a href="<?php echo URL_PATH; ?>usuario/Perfil/Perfil_Edit/" acao="" class="lajax"><i class="fa fa-user"></i> Editar Perfil</a></li>
-        <li><a href="<?php echo URL_PATH; ?>?logout=sair"><i class="fa fa-key"></i> Sair do Sistema</a></li>
+        <li><a href="<?php echo URL_PATH; ?>usuario/Perfil/Perfil_Edit/" acao="" class="lajax"><i class="fa fa-user"></i> <?php _e('Editar Perfil'); ?></a></li>
+        <li><a href="<?php echo URL_PATH; ?>?logout=sair"><i class="fa fa-key"></i> <?php _e('Sair do Sistema'); ?></a></li>
     </ul>
 </li>

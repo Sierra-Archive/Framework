@@ -27,9 +27,7 @@ abstract class Controle
     // Endereco
     protected $layoult_endereco_alterado = false; // 
     protected $layoult_endereco_travar = false; //
-    protected $layoult_endereco = Array(
-        Array(__('Página Inicial'),'_Sistema/Principal/Home')
-    ); // 
+    protected $layoult_endereco = false;
     
     // BLOQUEIO DE LAYOULT E SE O SISTEMA TA PARA USUARIO LOGADO OU NAO
     protected static $sistema_travado = false;
@@ -54,6 +52,11 @@ abstract class Controle
     public function __construct(){
         $imprimir = new \Framework\App\Tempo('Construcao Controle');
         self::$ligado = true;
+      
+        //Inicializa Endereço
+        $this->layoult_endereco = Array(
+            Array(__('Página Inicial'),'_Sistema/Principal/Home')
+        );
         
         $this->_Registro    = &\Framework\App\Registro::getInstacia();
         $this->_request     = &$this->_Registro->_Request;

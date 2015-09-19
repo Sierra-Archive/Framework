@@ -1169,7 +1169,7 @@ class Visual
     }
     /**
      * 
-     * @param type $nome
+     * @param type $nome Ja Inclui a Internacionalização
      * @param type $link
      * @param type $icon
      * @param type $numero
@@ -1189,7 +1189,7 @@ class Visual
             }
         }
         self::$widgets_inline[] = Array(
-            'nome'          => $nome,
+            'nome'          => __($nome),
             'link'          => URL_PATH.$link,
             'icon'          => $icon,
             'numero'        => $numero,

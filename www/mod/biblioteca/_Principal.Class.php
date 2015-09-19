@@ -53,7 +53,7 @@ class biblioteca_Principal implements \Framework\PrincipalInterface
         $biblioteca_qnt = $Modelo->db->Sql_Contar('Biblioteca');
         // Adiciona Widget a Pagina Inicial
         \Framework\App\Visual::Layoult_Home_Widgets_Add(
-            'Arquivos/Pastas', 
+            'Biblíoteca', 
             'biblioteca/Biblioteca/Bibliotecas', 
             'folder-open',
             $biblioteca_qnt, 
