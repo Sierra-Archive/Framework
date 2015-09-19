@@ -98,13 +98,13 @@ final Class Sistema_Filial_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo
                 'linkextra'         => 'locais/localidades/Paises_Add', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => __('Pais'),
+                    'Nome'              => __('País'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',
                     'select'             => array(
                         'class'             => 'obrigatorio',
-                        'infonulo'          => 'Escolha um Pais',
+                        'infonulo'          => 'Escolha um País',
                     )
                 ) 
             ),

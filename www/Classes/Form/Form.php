@@ -242,7 +242,7 @@ class Form
                 'condicao'          => $condicao,
                 'escondido'         => $escondido,
                 'class'             => $class,
-                'infonulo'          => $infonulo,
+                'infonulo'          => __($infonulo),
                 'Option'            => $opcoes,  
                 // Outros
                 'layoult'           => $this->layoult,

@@ -62,7 +62,7 @@ final Class Sistema_Local_Bairro_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => __('Pais'),
+                    'Nome'              => __('País'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => ''

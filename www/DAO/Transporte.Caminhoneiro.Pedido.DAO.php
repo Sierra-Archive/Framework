@@ -377,7 +377,7 @@ final Class Transporte_Caminhoneiro_Pedido_DAO extends Framework\App\Dao
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => __('Pais de Saida'),
+                    'Nome'              => __('País de Saida'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => ''
@@ -460,7 +460,7 @@ final Class Transporte_Caminhoneiro_Pedido_DAO extends Framework\App\Dao
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => __('Pais de Chegada'),
+                    'Nome'              => __('País de Chegada'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => ''

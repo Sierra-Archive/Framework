@@ -80,7 +80,7 @@ class usuario_AdminControle extends usuario_Controle
     public function ListarCliente($export=false){
         $this->Usuario_Listagem(Array(CFG_TEC_CAT_ID_CLIENTES,\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Cliente_nome')),false,20,false,$export);
         // ORGANIZA E MANDA CONTEUDO
-        $this->_Visual->Json_Info_Update('Titulo',\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Cliente_nome'));  
+        $this->_Visual->Json_Info_Update('Titulo',__(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Cliente_nome')));  
     }
     public function ListarFuncionarios($export=false){
         \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'usuario/Admin/ListarFuncionario');
@@ -89,14 +89,14 @@ class usuario_AdminControle extends usuario_Controle
     public function ListarFuncionario($export=false){
         $this->Usuario_Listagem(Array(CFG_TEC_CAT_ID_FUNCIONARIOS,\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Funcionario_nome')),false,10,false,'Funcionario',$export);
         // ORGANIZA E MANDA CONTEUDO
-        $this->_Visual->Json_Info_Update('Titulo',\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Funcionario_nome'));
+        $this->_Visual->Json_Info_Update('Titulo',__(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Funcionario_nome')));
     }
     public function ListarOutros(){
         \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'usuario/Admin/ListarUsuario');
         return false;        
     }
     public function ListarUsuario($export=false){
-        $this->Usuario_Listagem(Array(CFG_TEC_CAT_ID_ADMIN,'Usuários'),false,10,false,$export);
+        $this->Usuario_Listagem(Array(CFG_TEC_CAT_ID_ADMIN,__('Usuários')),false,10,false,$export);
         // ORGANIZA E MANDA CONTEUDO
         $this->_Visual->Json_Info_Update('Titulo', __('Usuários'));  
     }

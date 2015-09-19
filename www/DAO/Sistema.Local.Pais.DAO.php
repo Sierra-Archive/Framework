@@ -74,7 +74,7 @@ final Class Sistema_Local_Pais_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => __('Nome do Pais'),
+                    'Nome'              => __('Nome do País'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => __('Apenas letras.'),

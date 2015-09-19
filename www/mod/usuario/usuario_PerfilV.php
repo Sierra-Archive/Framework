@@ -76,7 +76,7 @@ class usuario_PerfilVisual extends usuario_Visual
         if($usuario->site!='' && $usuario->site!='http://')  $html .= '<p><label style="width:150px;">'.__('Site').' </label>: '.$usuario->site.'</p>';
         if($usuario->perfil_nascimento!=='' && $usuario->perfil_nascimento!=='//' && $usuario->perfil_nascimento!=='0000/00/00' && $usuario->perfil_nascimento!='00/00/0000')  $html .= '<p><label style="width:150px;">'.__('Nascimento').' </label>: '.$usuario->perfil_nascimento.'</p>';
         if($usuario->cep!='')  $html .= '<p><label style="width:150px;">'.__('Cep').' </label>: '.$usuario->cep.'</p>';
-        if($usuario->pais2!='')  $html .= '<p><label style="width:150px;">'.__('Pais').' </label>: '.$usuario->pais2.'</p>';
+        if($usuario->pais2!='')  $html .= '<p><label style="width:150px;">'.__('País').' </label>: '.$usuario->pais2.'</p>';
         if($usuario->estado2!='')  $html .= '<p><label style="width:150px;">'.__('Estado').' </label>: '.$usuario->estado2.'</p>';
         if($usuario->cidade2!='')  $html .= '<p><label style="width:150px;">'.__('Cidade').' </label>: '.$usuario->cidade2.'</p>';
         if($usuario->bairro2!='')  $html .= '<p><label style="width:150px;">'.__('Bairro').' </label>: '.$usuario->bairro2.'</p>';

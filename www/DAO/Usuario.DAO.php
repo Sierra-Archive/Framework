@@ -812,13 +812,13 @@ final Class Usuario_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo
                 'linkextra'         => 'locais/localidades/Paises_Add', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => __('Pais'),
+                    'Nome'              => __('País'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',
                     'select'             => array(
                         'class'             => 'obrigatorio',
-                        'infonulo'          => 'Escolha um Pais',
+                        'infonulo'          => 'Escolha um País',
                     )
                 ) 
             ),
@@ -1043,7 +1043,7 @@ final Class Usuario_DAO extends Framework\App\Dao
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => __('Pais de Correspondência'),
+                    'Nome'              => __('País de Correspondência'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => ''

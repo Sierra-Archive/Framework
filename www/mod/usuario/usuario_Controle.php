@@ -297,10 +297,10 @@ class usuario_Controle extends \Framework\App\Controle
             }
         
             $nomedisplay        = $grupo[1].' ';
-            $nomedisplay_sing   = Framework\Classes\Texto::Transformar_Plural_Singular($grupo[1]);
-            $nomedisplay_tipo   = Framework\Classes\Texto::Transformar_Plural_Singular($grupo[1]);
+            $nomedisplay_sing   = Framework\Classes\Texto::Transformar_Plural_Singular(__($grupo[1]));
+            $nomedisplay_tipo   = Framework\Classes\Texto::Transformar_Plural_Singular(__($grupo[1]));
             // Link
-            $this->Tema_Endereco($grupo[1]);
+            $this->Tema_Endereco(__($grupo[1]));
         }
         
         $linkextra = '';
@@ -454,30 +454,30 @@ class usuario_Controle extends \Framework\App\Controle
             }
         }
         // GAmbiarra Para Consertar erro de acento em url
-        if($tipo=='Funcionrio' || $tipo=="Funcionario") $tipo = "Funcionário";
+        if($tipo=='Funcionrio' || $tipo=="Funcionario") $tipo = __("Funcionário");
         if($tipo=="Usurio" || $tipo=="Usuario")         $tipo = __('Usuário');
         // Cria Tipo 2:
-        if($tipo=='Cliente' || $tipo=='cliente'){
+        if($tipo==__('Cliente') || $tipo==__('cliente')){
             $tipo2  = 'cliente';
-        }else if($tipo=='Funcionário' || $tipo=='funcionário' || $tipo=='Funcionario' || $tipo=='funcionario'){
+        }else if($tipo==__('Funcionário') || $tipo==__('funcionário') || $tipo=='Funcionario' || $tipo=='funcionario'){
             $tipo2  = 'funcionario';
         }
         if($tipo2=='usuario'){
-            $nomedisplay        = __('Usuários ');
-            $nomedisplay_sing   = __('Usuário ');
+            $nomedisplay        = __('Usuários').' ';
+            $nomedisplay_sing   = __('Usuário').' ';
             $nomedisplay_tipo   = __('Usuario');
         }else if($tipo2=='funcionario'){
             $nome = \Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Funcionario_nome');
-            $nomedisplay        = $nome.' ';
-            $nomedisplay_sing   = Framework\Classes\Texto::Transformar_Plural_Singular($nome);
-            $nomedisplay_tipo   = Framework\Classes\Texto::Transformar_Plural_Singular($nome);
+            $nomedisplay        = __($nome).' ';
+            $nomedisplay_sing   = Framework\Classes\Texto::Transformar_Plural_Singular(__($nome));
+            $nomedisplay_tipo   = Framework\Classes\Texto::Transformar_Plural_Singular(__($nome));
             $linkextra = '/funcionario';
         }else{
             $linkextra = '/cliente';
             $nome = \Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Cliente_nome');
-            $nomedisplay        = $nome.' ';
-            $nomedisplay_sing   = Framework\Classes\Texto::Transformar_Plural_Singular($nome);
-            $nomedisplay_tipo   = Framework\Classes\Texto::Transformar_Plural_Singular($nome);
+            $nomedisplay        = __($nome).' ';
+            $nomedisplay_sing   = Framework\Classes\Texto::Transformar_Plural_Singular(__($nome));
+            $nomedisplay_tipo   = Framework\Classes\Texto::Transformar_Plural_Singular(__($nome));
         }
         // Enviar Email
         //$Visual->Blocar('<a title="Enviar email para '.$nomedisplay_sing.'" class="btn btn-success lajax explicar-titulo" acao="" href="'.URL_PATH.'usuario/Admin/Usuarios_Email/'.$id.$linkextra.'">Enviar email para '.$nomedisplay_sing.'</a><div class="space15"></div>');
@@ -512,9 +512,9 @@ class usuario_Controle extends \Framework\App\Controle
             unset($tabela);
         }else{
             if($tema=='Setor'){
-                $Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Email enviado para o Setor</font></b></center>');            
+                $Visual->Blocar('<center><b><font color="#FF0000" size="5">'.__('Nenhum Email enviado para o Setor').'</font></b></center>');            
             }else{
-                $Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Email enviado para o Usuário</font></b></center>');            
+                $Visual->Blocar('<center><b><font color="#FF0000" size="5">'.__('Nenhum Email enviado para o Usuário').'</font></b></center>');            
             }
         }
         if($tema=='Setor'){
@@ -1113,8 +1113,8 @@ class usuario_Controle extends \Framework\App\Controle
             if($ativado===false){
                 $where = '';
             }
-            $nomedisplay        = __('Usuários ');
-            $nomedisplay_sing   = __('Usuário ');
+            $nomedisplay        = __('Usuários').' ';
+            $nomedisplay_sing   = __('Usuário').' ';
             $nomedisplay_tipo   = __('Usuario');
             // Link
             $this->Tema_Endereco(__('Usuários'));
@@ -1145,11 +1145,11 @@ class usuario_Controle extends \Framework\App\Controle
                 $where = $where[0];
             }
         
-            $nomedisplay        = $grupo[1].' ';
-            $nomedisplay_sing   = Framework\Classes\Texto::Transformar_Plural_Singular($grupo[1]);
-            $nomedisplay_tipo   = Framework\Classes\Texto::Transformar_Plural_Singular($grupo[1]);
+            $nomedisplay        = __($grupo[1]).' ';
+            $nomedisplay_sing   = Framework\Classes\Texto::Transformar_Plural_Singular(__($grupo[1]));
+            $nomedisplay_tipo   = Framework\Classes\Texto::Transformar_Plural_Singular(__($grupo[1]));
             // Link
-            $this->Tema_Endereco($grupo[1]);
+            $this->Tema_Endereco(__($grupo[1]));
         }
         
         $linkextra = '';

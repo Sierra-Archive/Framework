@@ -176,14 +176,14 @@ final Class Local_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => __('Pais'),
+                    'Nome'              => __('País'),
                     'valor_padrao'      => 1,
                     'readonly'          => false,
                     'aviso'             => '',
                     'formtipo'          => 'select',
                     'select'             => array(
                         'class'             => 'obrigatorio',
-                        'infonulo'          => 'Escolha um Pais',
+                        'infonulo'          => 'Escolha um País',
                     )
                 ) 
             ),

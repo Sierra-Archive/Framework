@@ -146,14 +146,14 @@ final Class Evento_Manifestacao_Territorial_DAO extends Framework\App\Dao
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => __('Pais'),
+                    'Nome'              => __('País'),
                     'valor_padrao'      => 1,
                     'readonly'          => false,
                     'aviso'             => '',
                     'formtipo'          => 'select',
                     'select'             => array(
                         'class'             => 'obrigatorio',
-                        'infonulo'          => 'Escolha um Pais',
+                        'infonulo'          => 'Escolha um País',
                     )
                 ) 
             ),

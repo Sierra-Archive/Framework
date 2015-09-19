@@ -2173,7 +2173,7 @@ readfile($link);*/
     }
     /**
      * Usado pelas tabelas extrangeiras, altera o valor {campo} usado, quando se tem
-     * mts varios niveis de select tipo Pais, Estado, Cidade
+     * mts varios niveis de select tipo País, Estado, Cidade
      * 
      * @param type $objeto
      * @param type $campomysql

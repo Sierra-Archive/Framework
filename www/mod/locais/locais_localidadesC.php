@@ -246,29 +246,29 @@ class locais_localidadesControle extends locais_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 3.1.1
      */
-    public function Paises(){
+    public function Países(){
         $i = 0;
-        $this->_Visual->Blocar('<a title="Adicionar Pais" class="btn btn-success lajax explicar-titulo" acao="" href="'.URL_PATH.'locais/localidades/Paises_Add">Adicionar novo Pais</a><div class="space15"></div>');
+        $this->_Visual->Blocar('<a title="Adicionar País" class="btn btn-success lajax explicar-titulo" acao="" href="'.URL_PATH.'locais/localidades/Paises_Add">Adicionar novo País</a><div class="space15"></div>');
         $setores = $this->_Modelo->db->Sql_Select('Sistema_Local_Pais');
         if($setores!==false && !empty($setores)){
             if(is_object($setores)) $setores = Array(0=>$setores);
             reset($setores);
             foreach ($setores as $indice=>&$valor) {
                 $tabela['Nome'][$i]             = $valor->nome;
-                $tabela['Funções'][$i]          = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Pais'        ,'locais/localidades/Paises_Edit/'.$valor->id.'/'    ,'')).
-                                                  $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Pais'       ,'locais/localidades/Paises_Del/'.$valor->id.'/'     ,'Deseja realmente deletar esse Pais ?'));
+                $tabela['Funções'][$i]          = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar País'        ,'locais/localidades/Paises_Edit/'.$valor->id.'/'    ,'')).
+                                                  $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar País'       ,'locais/localidades/Paises_Del/'.$valor->id.'/'     ,'Deseja realmente deletar esse País ?'));
                 ++$i;
             }
             $this->_Visual->Show_Tabela_DataTable($tabela);
             unset($tabela);
         }else{       
-            $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Pais</font></b></center>');
+            $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum País</font></b></center>');
         }
         $titulo = __('Listagem de Paises').' ('.$i.')';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo', __('Administrar Paises'));
+        $this->_Visual->Json_Info_Update('Titulo', __('Administrar Países'));
     }
     /**
      * 
@@ -277,8 +277,8 @@ class locais_localidadesControle extends locais_Controle
      */
     public function Paises_Add(){
         // Carrega Config
-        $titulo1    = __('Adicionar Pais');
-        $titulo2    = __('Salvar Pais');
+        $titulo1    = __('Adicionar País');
+        $titulo2    = __('Salvar País');
         $formid     = 'form_Sistema_Admin_Paises';
         $formbt     = __('Salvar');
         $formlink   = 'locais/localidades/Paises_Add2/';
@@ -292,11 +292,11 @@ class locais_localidadesControle extends locais_Controle
      * @version 3.1.1
      */
     public function Paises_Add2(){
-        $titulo     = __('Pais Adicionado com Sucesso');
+        $titulo     = __('País Adicionado com Sucesso');
         $dao        = 'Sistema_Local_Pais';
         $funcao     = '$this->Paises();';
         $sucesso1   = __('Inserção bem sucedida');
-        $sucesso2   = __('Pais cadastrado com sucesso.');
+        $sucesso2   = __('País cadastrado com sucesso.');
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
     }
@@ -308,10 +308,10 @@ class locais_localidadesControle extends locais_Controle
      */
     public function Paises_Edit($id){
         // Carrega Config
-        $titulo1    = 'Editar Pais (#'.$id.')';
-        $titulo2    = __('Alteração de Pais');
+        $titulo1    = 'Editar País (#'.$id.')';
+        $titulo2    = __('Alteração de País');
         $formid     = 'form_Sistema_AdminC_PaisEdit';
-        $formbt     = __('Alterar Pais');
+        $formbt     = __('Alterar País');
         $formlink   = 'locais/localidades/Paises_Edit2/'.$id;
         $editar     = Array('Sistema_Local_Pais',$id);
         $campos = Pais_DAO::Get_Colunas();
@@ -324,10 +324,10 @@ class locais_localidadesControle extends locais_Controle
      * @version 3.1.1
      */
     public function Paises_Edit2($id){
-        $titulo     = __('Pais Editado com Sucesso');
+        $titulo     = __('País Editado com Sucesso');
         $dao        = Array('Sistema_Local_Pais',$id);
         $funcao     = '$this->Paises();';
-        $sucesso1   = __('Pais Alterado com Sucesso.');
+        $sucesso1   = __('País Alterado com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);   
@@ -348,7 +348,7 @@ class locais_localidadesControle extends locais_Controle
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
-                "mgs_secundaria" => __('Pais deletado com sucesso')
+                "mgs_secundaria" => __('País deletado com sucesso')
             );
     	}else{
             $mensagens = array(
@@ -361,7 +361,7 @@ class locais_localidadesControle extends locais_Controle
         
         $this->Paises();
         
-        $this->_Visual->Json_Info_Update('Titulo', __('Pais deletado com Sucesso'));  
+        $this->_Visual->Json_Info_Update('Titulo', __('País deletado com Sucesso'));  
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
     /**
