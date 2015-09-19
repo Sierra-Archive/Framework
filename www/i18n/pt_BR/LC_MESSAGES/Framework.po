@@ -5,10 +5,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 3.1.0\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-06-04 22:16-0300\n"
-"PO-Revision-Date: 2015-06-04 22:16-0300\n"
+"POT-Creation-Date: 2015-09-18 20:56-0300\n"
+"PO-Revision-Date: 2015-09-18 20:56-0300\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: pt_BR\n"
@@ -17,9 +17,48 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: App/Visual.php:1283 App/Visual.php:1444 App/Controle.php:209
-#: App/Controle.php:243 App/Controle.php:1678 App/Controle.php:1679
-#: App/Acl.php:94 App/Acl.php:125 App/Acl.php:147 App/Acl.php:173
+#: templates/metrolab/template.php:7 templates/metrolab/template.php:93
+#: templates/metrolab/page_login.php:7 templates/turboadmin/template.php:2
+#: templates/turboadmin/page_login.php:7 templates/itsbrain/template.php:4
+#: templates/itsbrain/template.php:56 templates/itsbrain/page_login.php:4
+#: templates/atls/template.php:7 templates/atls/template.php:74
+#: templates/atls/page_login.php:7
+msgid "Sem Titulo"
+msgstr ""
+
+#: templates/metrolab/template.php:16
+msgid "blue"
+msgstr ""
+
+#: templates/metrolab/widget_usuario.php:3
+#: templates/turboadmin/widget_usuario.php:3
+#: templates/itsbrain/widget_usuario.php:3
+#: templates/atls/widget_usuario.php:14
+#: mod/social/usuario_social_PersonaC.php:103
+#: mod/social/usuario_social_VisualizarV.php:29
+#: mod/social/usuario_social_personasC.php:27
+#: mod/social/usuario_social_personasC.php:44
+#: mod/social/usuario_social_personasC.php:105
+#: mod/social/usuario_social_personasC.php:122
+#: mod/social/usuario_social_personasC.php:139
+#: mod/social/usuario_social_personasC.php:156
+msgid "Foto de Perfil"
+msgstr ""
+
+#: templates/metrolab/template_form.php:137
+#: templates/turboadmin/template_form.php:120
+#: templates/itsbrain/template_form.php:143
+#: templates/atls/template_form.php:138
+msgid "Miniatura da Imagem de Upload"
+msgstr ""
+
+#: templates/atls/widget_menu.php:5 templates/atls/widget_menu.php:35
+msgid " parent"
+msgstr ""
+
+#: App/Visual.php:1297 App/Visual.php:1458 App/Controle.php:232
+#: App/Controle.php:266 App/Controle.php:1843 App/Controle.php:1844
+#: App/Acl.php:121 App/Acl.php:152 App/Acl.php:174 App/Acl.php:200
 #: mod/Musica/Musica_VideoC.php:526 mod/Musica/Musica_VideoC.php:527
 #: mod/Musica/Musica_VideoC.php:601 mod/Musica/Musica_VideoC.php:606
 #: mod/Musica/Musica_VideoC.php:640 mod/Musica/Musica_VideoC.php:645
@@ -52,16 +91,15 @@ msgstr ""
 #: mod/comercio_certificado/comercio_certificado_Controle.php:208
 #: mod/comercio_certificado/comercio_certificado_Controle.php:217
 #: mod/comercio_certificado/comercio_certificado_Controle.php:226
-#: mod/comercio_certificado/comercio_certificado_Controle.php:248
-#: mod/comercio_certificado/comercio_certificado_Controle.php:278
-#: mod/comercio_certificado/comercio_certificado_Controle.php:279
-#: mod/comercio_certificado/comercio_certificado_Controle.php:312
-#: mod/comercio_certificado/comercio_certificado_Controle.php:313
+#: mod/comercio_certificado/comercio_certificado_Controle.php:249
+#: mod/comercio_certificado/comercio_certificado_Controle.php:280
+#: mod/comercio_certificado/comercio_certificado_Controle.php:281
+#: mod/comercio_certificado/comercio_certificado_Controle.php:314
+#: mod/comercio_certificado/comercio_certificado_Controle.php:315
 #: mod/banner/banner_AdminC.php:193 mod/banner/banner_AdminC.php:194
-#: mod/Agenda/AgendaC.php:202
-#: mod/Agenda/AgendaC.php:203 mod/Agenda/Agenda_PastaC.php:218
-#: mod/Agenda/Agenda_PastaC.php:219 mod/Agenda/Agenda_PastaC.php:375
-#: mod/Agenda/Agenda_PastaC.php:376
+#: mod/Agenda/Agenda_PastaC.php:198 mod/Agenda/Agenda_PastaC.php:199
+#: mod/Agenda/Agenda_PastaC.php:353 mod/Agenda/Agenda_PastaC.php:354
+#: mod/Agenda/Agenda_AgendaC.php:161 mod/Agenda/Agenda_AgendaC.php:162
 #: mod/comercio_venda/comercio_venda_ComposicaoC.php:213
 #: mod/comercio_venda/comercio_venda_ComposicaoC.php:214
 #: mod/comercio_venda/comercio_venda_CarrinhoC.php:230
@@ -69,14 +107,14 @@ msgstr ""
 #: mod/comercio_venda/comercio_venda_CarrinhoC.php:476
 #: mod/comercio_venda/comercio_venda_CarrinhoC.php:668
 #: mod/comercio_venda/comercio_venda_CarrinhoC.php:669
-#: mod/locais/locais_localidadesC.php:304
-#: mod/locais/locais_localidadesC.php:305
-#: mod/locais/locais_localidadesC.php:432
-#: mod/locais/locais_localidadesC.php:433
-#: mod/locais/locais_localidadesC.php:560
-#: mod/locais/locais_localidadesC.php:561
-#: mod/locais/locais_localidadesC.php:688
-#: mod/locais/locais_localidadesC.php:689 mod/locais/locais_locaisC.php:169
+#: mod/locais/locais_localidadesC.php:356
+#: mod/locais/locais_localidadesC.php:357
+#: mod/locais/locais_localidadesC.php:484
+#: mod/locais/locais_localidadesC.php:485
+#: mod/locais/locais_localidadesC.php:612
+#: mod/locais/locais_localidadesC.php:613
+#: mod/locais/locais_localidadesC.php:740
+#: mod/locais/locais_localidadesC.php:741 mod/locais/locais_locaisC.php:169
 #: mod/locais/locais_locaisC.php:170 mod/social/social_AcaoC.php:226
 #: mod/social/social_AcaoC.php:227 mod/social/usuario_social_PersonaC.php:235
 #: mod/social/usuario_social_PersonaC.php:236
@@ -90,10 +128,24 @@ msgstr ""
 #: mod/social/usuario_social_personasC.php:234
 #: mod/social/social_CaracteristicaC.php:193
 #: mod/social/social_CaracteristicaC.php:194
+#: mod/Simulador/Simulador_PerguntaC.php:333
+#: mod/Simulador/Simulador_PerguntaC.php:334
+#: mod/Simulador/Simulador_PerguntaC.php:378
+#: mod/Simulador/Simulador_PerguntaC.php:383
+#: mod/Simulador/Simulador_RespostaC.php:429
+#: mod/Simulador/Simulador_RespostaC.php:430
+#: mod/Simulador/Simulador_RespostaC.php:478
+#: mod/Simulador/Simulador_RespostaC.php:483
+#: mod/Simulador/Simulador_SimuladorC.php:202
+#: mod/Simulador/Simulador_SimuladorC.php:203
+#: mod/Simulador/Simulador_SimuladorC.php:243
+#: mod/Simulador/Simulador_SimuladorC.php:248
+#: mod/Simulador/Simulador_TagC.php:225 mod/Simulador/Simulador_TagC.php:226
 #: mod/usuario_mensagem/usuario_mensagem_OrigemC.php:157
 #: mod/usuario_mensagem/usuario_mensagem_OrigemC.php:158
-#: mod/usuario_mensagem/usuario_mensagem_Controle.php:342
-#: mod/usuario_mensagem/usuario_mensagem_Controle.php:343
+#: mod/usuario_mensagem/usuario_mensagem_Controle.php:247
+#: mod/usuario_mensagem/usuario_mensagem_Controle.php:380
+#: mod/usuario_mensagem/usuario_mensagem_Controle.php:381
 #: mod/usuario_mensagem/usuario_mensagem_SetorC.php:148
 #: mod/usuario_mensagem/usuario_mensagem_SetorC.php:149
 #: mod/usuario_mensagem/usuario_mensagem_SetorC.php:181
@@ -112,18 +164,19 @@ msgstr ""
 #: mod/comercio_servicos/comercio_servicos_InstalacaoC.php:318
 #: mod/comercio_servicos/comercio_servicos_ServicoTipoC.php:154
 #: mod/comercio_servicos/comercio_servicos_ServicoTipoC.php:155
-#: mod/_Sistema/_Sistema_AdminC.php:184 mod/_Sistema/_Sistema_AdminC.php:189
-#: mod/_Sistema/_Sistema_AdminC.php:284 mod/_Sistema/_Sistema_AdminC.php:285
-#: mod/_Sistema/_Sistema_AdminC.php:460 mod/_Sistema/_Sistema_AdminC.php:461
-#: mod/_Sistema/_Sistema_AdminC.php:650 mod/_Sistema/_Sistema_AdminC.php:651
-#: mod/_Sistema/_Sistema_AdminC.php:813 mod/_Sistema/_Sistema_AdminC.php:814
-#: mod/_Sistema/_Sistema_AdminC.php:848 mod/_Sistema/_Sistema_AdminC.php:849
-#: mod/_Sistema/_Sistema_AdminC.php:881 mod/_Sistema/_Sistema_AdminC.php:882
-#: mod/_Sistema/_Sistema_AdminC.php:1040 mod/_Sistema/_Sistema_AdminC.php:1041
-#: mod/_Sistema/_Sistema_AdminC.php:1075 mod/_Sistema/_Sistema_AdminC.php:1076
-#: mod/_Sistema/_Sistema_AdminC.php:1108 mod/_Sistema/_Sistema_AdminC.php:1109
-#: mod/biblioteca/biblioteca_BibliotecaC.php:373
-#: mod/biblioteca/biblioteca_BibliotecaC.php:374
+#: mod/_Sistema/_Sistema_FilialC.php:151 mod/_Sistema/_Sistema_FilialC.php:152
+#: mod/_Sistema/_Sistema_AdminC.php:198 mod/_Sistema/_Sistema_AdminC.php:203
+#: mod/_Sistema/_Sistema_AdminC.php:298 mod/_Sistema/_Sistema_AdminC.php:299
+#: mod/_Sistema/_Sistema_AdminC.php:535 mod/_Sistema/_Sistema_AdminC.php:536
+#: mod/_Sistema/_Sistema_AdminC.php:725 mod/_Sistema/_Sistema_AdminC.php:726
+#: mod/_Sistema/_Sistema_AdminC.php:888 mod/_Sistema/_Sistema_AdminC.php:889
+#: mod/_Sistema/_Sistema_AdminC.php:923 mod/_Sistema/_Sistema_AdminC.php:924
+#: mod/_Sistema/_Sistema_AdminC.php:956 mod/_Sistema/_Sistema_AdminC.php:957
+#: mod/_Sistema/_Sistema_AdminC.php:1115 mod/_Sistema/_Sistema_AdminC.php:1116
+#: mod/_Sistema/_Sistema_AdminC.php:1150 mod/_Sistema/_Sistema_AdminC.php:1151
+#: mod/_Sistema/_Sistema_AdminC.php:1183 mod/_Sistema/_Sistema_AdminC.php:1184
+#: mod/biblioteca/biblioteca_BibliotecaC.php:485
+#: mod/biblioteca/biblioteca_BibliotecaC.php:486
 #: mod/categoria/categoria_categoriaC.php:103
 #: mod/categoria/categoria_categoriaC.php:104
 #: mod/categoria/categoria_categoriaC.php:110
@@ -141,15 +194,15 @@ msgstr ""
 #: mod/Financeiro/Financeiro_AdminC.php:282
 #: mod/Financeiro/Financeiro_AdminC.php:308
 #: mod/Financeiro/Financeiro_AdminC.php:309
-#: mod/Financeiro/Financeiro_ListarC.php:154
-#: mod/Financeiro/Financeiro_ListarC.php:162
-#: mod/Financeiro/Financeiro_ListarC.php:197
-#: mod/Financeiro/Financeiro_ListarC.php:198
-#: mod/Financeiro/Financeiro_ListarC.php:240
-#: mod/Financeiro/Financeiro_ListarC.php:248
-#: mod/Financeiro/Financeiro_ListarC.php:256
-#: mod/Financeiro/Financeiro_ListarC.php:274
-#: mod/Financeiro/Financeiro_ListarC.php:275
+#: mod/Financeiro/Financeiro_ListarC.php:149
+#: mod/Financeiro/Financeiro_ListarC.php:157
+#: mod/Financeiro/Financeiro_ListarC.php:192
+#: mod/Financeiro/Financeiro_ListarC.php:193
+#: mod/Financeiro/Financeiro_ListarC.php:230
+#: mod/Financeiro/Financeiro_ListarC.php:238
+#: mod/Financeiro/Financeiro_ListarC.php:246
+#: mod/Financeiro/Financeiro_ListarC.php:264
+#: mod/Financeiro/Financeiro_ListarC.php:265
 #: mod/Financeiro/Financeiro_BancoC.php:170
 #: mod/Financeiro/Financeiro_BancoC.php:171
 #: mod/Financeiro/Financeiro_PagamentoC.php:347
@@ -173,6 +226,12 @@ msgstr ""
 #: mod/predial/predial_AnimalC.php:180 mod/predial/predial_AnimalC.php:181
 #: mod/predial/predial_BlocoC.php:180 mod/predial/predial_BlocoC.php:181
 #: mod/predial/predial_VeiculoC.php:179 mod/predial/predial_VeiculoC.php:180
+#: mod/usuario/usuario_ExpedienteC.php:212
+#: mod/usuario/usuario_ExpedienteC.php:213
+#: mod/usuario/usuario_ExpedienteC.php:382
+#: mod/usuario/usuario_ExpedienteC.php:383
+#: mod/usuario/usuario_ExpedienteC.php:469
+#: mod/usuario/usuario_ExpedienteC.php:470
 #: mod/usuario/usuario_TelefoneC.php:208 mod/usuario/usuario_TelefoneC.php:209
 #: mod/usuario/usuario_Controle.php:681 mod/usuario/usuario_Controle.php:716
 #: mod/usuario/usuario_FreeC.php:122 mod/usuario/usuario_FreeC.php:133
@@ -182,17 +241,20 @@ msgstr ""
 #: mod/usuario/usuario_AdminC.php:251 mod/usuario/usuario_AdminC.php:253
 #: mod/usuario/usuario_AdminC.php:293 mod/usuario/usuario_AdminC.php:415
 #: mod/usuario/usuario_AdminC.php:424 mod/usuario/usuario_AdminC.php:433
-#: mod/usuario/usuario_AdminC.php:456 mod/usuario/usuario_AdminC.php:520
-#: mod/usuario/usuario_AdminC.php:521 mod/usuario/usuario_AdminC.php:585
-#: mod/usuario/usuario_AdminC.php:586 mod/usuario/usuario_AdminC.php:698
-#: mod/usuario/usuario_AdminC.php:699 mod/usuario/usuario_AdminC.php:1035
-#: mod/usuario/usuario_AdminC.php:1036 mod/usuario/usuario_AnexoC.php:158
+#: mod/usuario/usuario_AdminC.php:456 mod/usuario/usuario_AdminC.php:521
+#: mod/usuario/usuario_AdminC.php:522 mod/usuario/usuario_AdminC.php:592
+#: mod/usuario/usuario_AdminC.php:593 mod/usuario/usuario_AdminC.php:705
+#: mod/usuario/usuario_AdminC.php:706 mod/usuario/usuario_AdminC.php:1042
+#: mod/usuario/usuario_AdminC.php:1043 mod/usuario/usuario_AnexoC.php:158
 #: mod/usuario/usuario_PerfilC.php:206 mod/usuario/usuario_PerfilC.php:230
 #: mod/usuario/usuario_PerfilC.php:251 mod/usuario/usuario_PerfilC.php:252
-#: mod/noticia/noticia_AdminC.php:227 mod/noticia/noticia_AdminC.php:228
-#: mod/noticia/noticia_AdminC.php:268 mod/noticia/noticia_AdminC.php:273
-#: mod/noticia/noticia_AdminC.php:307 mod/noticia/noticia_AdminC.php:312
-#: mod/Transporte/Transporte_PedidoC.php:78
+#: mod/Locomocao/Locomocao_EntregaC.php:569
+#: mod/Locomocao/Locomocao_EntregaC.php:570
+#: mod/Locomocao/Locomocao_EntregaC.php:618
+#: mod/Locomocao/Locomocao_EntregaC.php:623 mod/noticia/noticia_AdminC.php:227
+#: mod/noticia/noticia_AdminC.php:228 mod/noticia/noticia_AdminC.php:268
+#: mod/noticia/noticia_AdminC.php:273 mod/noticia/noticia_AdminC.php:307
+#: mod/noticia/noticia_AdminC.php:312 mod/Transporte/Transporte_PedidoC.php:78
 #: mod/Transporte/Transporte_PedidoC.php:83
 #: mod/Transporte/Transporte_PedidoC.php:133
 #: mod/Transporte/Transporte_PedidoC.php:155
@@ -245,23 +307,22 @@ msgstr ""
 #: mod/comercio/comercio_EstoqueC.php:498
 #: mod/comercio/comercio_EstoqueC.php:499
 #: mod/comercio/comercio_EstoqueC.php:501 mod/comercio/comercio_LinhaC.php:158
-#: mod/comercio/comercio_LinhaC.php:159 mod/comercio/comercio_ProdutoC.php:224
-#: mod/comercio/comercio_ProdutoC.php:225
-#: mod/comercio/comercio_PropostaC.php:2166
-#: mod/comercio/comercio_PropostaC.php:2167
-#: mod/comercio/comercio_PropostaC.php:2224
-#: mod/comercio/comercio_PropostaC.php:2287
-#: mod/comercio/comercio_PropostaC.php:2564
-#: mod/comercio/comercio_PropostaC.php:2565
-#: mod/comercio/comercio_PropostaC.php:2810
-#: mod/comercio/comercio_PropostaC.php:2811
-#: mod/comercio/comercio_PropostaC.php:2908
-#: mod/comercio/comercio_PropostaC.php:3035
-#: mod/comercio/comercio_PropostaC.php:3036
-#: mod/comercio/comercio_PropostaC.php:3190
-#: mod/comercio/comercio_PropostaC.php:3191
-#: mod/comercio/comercio_PropostaC.php:3351
-#: mod/comercio/comercio_PropostaC.php:3352
+#: mod/comercio/comercio_LinhaC.php:159 mod/comercio/comercio_ProdutoC.php:229
+#: mod/comercio/comercio_ProdutoC.php:230
+#: mod/comercio/comercio_PropostaC.php:2170
+#: mod/comercio/comercio_PropostaC.php:2171
+#: mod/comercio/comercio_PropostaC.php:2293
+#: mod/comercio/comercio_PropostaC.php:2570
+#: mod/comercio/comercio_PropostaC.php:2571
+#: mod/comercio/comercio_PropostaC.php:2816
+#: mod/comercio/comercio_PropostaC.php:2817
+#: mod/comercio/comercio_PropostaC.php:2914
+#: mod/comercio/comercio_PropostaC.php:3041
+#: mod/comercio/comercio_PropostaC.php:3042
+#: mod/comercio/comercio_PropostaC.php:3196
+#: mod/comercio/comercio_PropostaC.php:3197
+#: mod/comercio/comercio_PropostaC.php:3357
+#: mod/comercio/comercio_PropostaC.php:3358
 #: mod/comercio/comercio_FamiliaC.php:188
 #: mod/comercio/comercio_FamiliaC.php:189 mod/Enquete/Enquete_EnqueteC.php:208
 #: mod/Enquete/Enquete_EnqueteC.php:209 mod/Enquete/Enquete_RespostaC.php:273
@@ -328,24 +389,24 @@ msgstr ""
 #: mod/Desenvolvimento/Desenvolvimento_FrameworkC.php:376
 #: mod/Desenvolvimento/Desenvolvimento_FrameworkC.php:552
 #: mod/Desenvolvimento/Desenvolvimento_FrameworkC.php:553
-#: mod/Curso/Curso_CursoC.php:204 mod/Curso/Curso_CursoC.php:205
-#: mod/Curso/Curso_CursoC.php:245 mod/Curso/Curso_CursoC.php:250
-#: mod/Curso/Curso_TurmaC.php:590 mod/Curso/Curso_TurmaC.php:591
-#: mod/Curso/Curso_TurmaC.php:635 mod/Curso/Curso_TurmaC.php:640
-#: mod/Curso/Curso_TurmaC.php:708 mod/Curso/Curso_TurmaC.php:763
+#: mod/Curso/Curso_CursoC.php:200 mod/Curso/Curso_CursoC.php:201
+#: mod/Curso/Curso_CursoC.php:241 mod/Curso/Curso_CursoC.php:246
+#: mod/Curso/Curso_TurmaC.php:586 mod/Curso/Curso_TurmaC.php:587
+#: mod/Curso/Curso_TurmaC.php:631 mod/Curso/Curso_TurmaC.php:636
+#: mod/Curso/Curso_TurmaC.php:704 mod/Curso/Curso_TurmaC.php:759
 msgid "Erro"
 msgstr ""
 
-#: App/Visual.php:1286 App/Visual.php:1447
+#: App/Visual.php:1300 App/Visual.php:1461
 #: mod/comercio_venda/comercio_venda_CarrinhoC.php:447
 #: mod/comercio_venda/comercio_venda_CarrinhoC.php:460
 #: mod/predial/predial_CorreioC.php:47 mod/usuario/usuario_AdminC.php:286
 #: mod/Transporte/Transporte_PedidoC.php:70
 #: mod/Transporte/Transporte_PedidoC.php:795
 #: mod/Transporte/Transporte_PedidoC.php:1516
-#: mod/comercio/comercio_ProdutoC.php:262
-#: mod/comercio/comercio_PropostaC.php:2274
-#: mod/comercio/comercio_PropostaC.php:3161
+#: mod/comercio/comercio_ProdutoC.php:267
+#: mod/comercio/comercio_PropostaC.php:2280
+#: mod/comercio/comercio_PropostaC.php:3167
 #: mod/Engenharia/Engenharia_UnidadeC.php:345
 #: mod/Desenvolvimento/Desenvolvimento_SenhaC.php:224
 #: mod/Desenvolvimento/Desenvolvimento_SenhaC.php:297
@@ -356,147 +417,155 @@ msgstr ""
 msgid "Sucesso"
 msgstr ""
 
-#: App/Visual.php:1304
+#: App/Visual.php:1318
 msgid "Sistema"
 msgstr ""
 
-#: App/Visual.php:1413 App/Controle.php:2330 DAO/Usuario.DAO.php:1619
+#: App/Visual.php:1427 App/Controle.php:2521 DAO/Usuario.DAO.php:1619
 #: DAO/Log.Login.DAO.php:67 DAO/Log.Login.DAO.php:166
 #: DAO/Log.Login.Falha.DAO.php:141 DAO/Desenvolvimento.Senha.DAO.php:145
 #: DAO/Log.Login.Janela.DAO.php:66
 msgid "Login"
 msgstr ""
 
-#: App/Controle.php:158
+#: App/Controle.php:167
 msgid "Administrador"
 msgstr ""
 
-#: App/Controle.php:210
+#: App/Controle.php:233
 msgid "Nenhum Email válido do cliente para enviar anexo !"
 msgstr ""
 
-#: App/Controle.php:231
+#: App/Controle.php:254
 msgid "Arquivo em Anexo"
 msgstr ""
 
-#: App/Controle.php:235
+#: App/Controle.php:258
 msgid "Anexo enviado com Sucesso"
 msgstr ""
 
-#: App/Controle.php:236
+#: App/Controle.php:259
 msgid "Voce enviou um Anexo com sucesso."
 msgstr ""
 
-#: App/Controle.php:244 mod/usuario/usuario_Controle.php:717
+#: App/Controle.php:267 mod/usuario/usuario_Controle.php:717
 msgid "Email não foi enviado !"
 msgstr ""
 
-#: App/Controle.php:773
+#: App/Controle.php:579 mod/Agenda/Agenda_PastaC.php:96
+#: DAO/Financeiro.Pagamento.Interno.DAO.php:71
+msgid "Categoria"
+msgstr ""
+
+#: App/Controle.php:828
 msgid "Formato de Arquivo Inválido"
 msgstr ""
 
-#: App/Controle.php:954 App/Controle.php:1078 App/Controle.php:1240
+#: App/Controle.php:1009 App/Controle.php:1093 App/Controle.php:1242
+#: App/Controle.php:1405
 msgid "Escolha uma Opção"
 msgstr ""
 
-#: App/Controle.php:1514
+#: App/Controle.php:1679
 msgid "Registro Duplicado"
 msgstr ""
 
-#: App/Acl.php:56
+#: App/Acl.php:83
 msgid "Esqueci Senha"
 msgstr ""
 
-#: App/Acl.php:66
+#: App/Acl.php:93
 msgid "Código Inválido"
 msgstr ""
 
-#: App/Acl.php:67
+#: App/Acl.php:94
 msgid "Verifique se a url foi digitada corretamente, ou se já foi usado ou expirada essa requisição."
 msgstr ""
 
-#: App/Acl.php:80
+#: App/Acl.php:107
 msgid "Código Expirado"
 msgstr ""
 
-#: App/Acl.php:81
+#: App/Acl.php:108
 msgid "Já faz mais de 24 hrs que esse código foi gerado."
 msgstr ""
 
-#: App/Acl.php:95 App/Acl.php:126
+#: App/Acl.php:122 App/Acl.php:153
 msgid "Usuário não encontrado."
 msgstr ""
 
-#: App/Acl.php:108
+#: App/Acl.php:134
+msgid "Seu Login é:"
+msgstr ""
+
+#: App/Acl.php:134
+msgid "Sua nova senha é:"
+msgstr ""
+
+#: App/Acl.php:135
 msgid "Senha Atualizada com Sucesso"
 msgstr ""
 
-#: App/Acl.php:133 App/Acl.php:195
+#: App/Acl.php:160 App/Acl.php:222
 msgid "Digite o Email"
 msgstr ""
 
-#: App/Acl.php:148
+#: App/Acl.php:175
 msgid "Vocẽ já fez sua requisição por uma nova senha. Verifique seu email."
 msgstr ""
 
-#: App/Acl.php:174
+#: App/Acl.php:194
+msgid "Clique no Link Abaixo para Gerar uma Nova senha para o seu Login"
+msgstr ""
+
+#: App/Acl.php:195
+msgid "Clique Aqui"
+msgstr ""
+
+#: App/Acl.php:201
 msgid "O email não pode ser enviado, contate o administrador do sistema."
 msgstr ""
 
-#: App/Acl.php:183
+#: App/Acl.php:210
 msgid "Enviado com Sucesso"
 msgstr ""
 
-#: App/Acl.php:329
-#: mod/comercio_certificado/comercio_certificado_Controle.php:249
+#: App/Acl.php:363
+#: mod/comercio_certificado/comercio_certificado_Controle.php:250
 #: mod/usuario/usuario_FreeC.php:166 mod/usuario/usuario_AdminC.php:457
 msgid "Senha Inválida"
 msgstr ""
 
-#: App/Acl.php:330
+#: App/Acl.php:364
 msgid "Verifique se o Login ou a senha foram colocadas com sucesso."
 msgstr ""
 
-#: App/Acl.php:877
+#: App/Acl.php:984
 msgid "Admin Master"
 msgstr ""
 
-#: App/Acl.php:884 mod/usuario/usuario_AdminC.php:648
+#: App/Acl.php:991 mod/usuario/usuario_AdminC.php:655
 msgid "Admin"
 msgstr ""
 
-#: App/Acl.php:898
+#: App/Acl.php:1005
 #: mod/comercio_certificado/comercio_certificado_PropostaC.php:449
+#: mod/usuario/usuario_ExpedienteC.php:282
+#: mod/usuario/usuario_ExpedienteC.php:330
+#: mod/usuario/usuario_ExpedienteC.php:389
 #: mod/usuario/usuario_Controle.php:449 mod/usuario/usuario_AdminC.php:119
-#: mod/usuario/usuario_AdminC.php:125 mod/usuario/usuario_AdminC.php:561
-#: mod/usuario/usuario_AdminC.php:567 mod/usuario/usuario_AnexoC.php:55
+#: mod/usuario/usuario_AdminC.php:125 mod/usuario/usuario_AdminC.php:562
+#: mod/usuario/usuario_AdminC.php:571 mod/usuario/usuario_AnexoC.php:55
 #: mod/usuario/usuario_PerfilC.php:266
 msgid "Funcionário"
 msgstr ""
 
-#: App/Acl.php:905 mod/_Sistema/_Sistema_AdminC.php:918
+#: App/Acl.php:1012 mod/_Sistema/_Sistema_AdminC.php:993
 msgid "Newsletter"
 msgstr ""
 
 #: teste.php:41
 msgid "nao preparo"
-msgstr ""
-
-#: templates/metrolab/template.php:7 templates/metrolab/template.php:93
-#: templates/metrolab/page_login.php:7 templates/turboadmin/template.php:2
-#: templates/turboadmin/page_login.php:7 templates/itsbrain/template.php:4
-#: templates/itsbrain/template.php:56 templates/itsbrain/page_login.php:4
-#: templates/atls/template.php:7 templates/atls/template.php:74
-#: templates/atls/page_login.php:7
-msgid "Sem Titulo"
-msgstr ""
-
-#: templates/metrolab/template.php:16
-msgid "blue"
-msgstr ""
-
-#: templates/atls/widget_menu.php:5 templates/atls/widget_menu.php:35
-msgid " parent"
 msgstr ""
 
 #: Classes/Mailer/class.pop3.php:293
@@ -606,17 +675,28 @@ msgstr ""
 msgid "Todos os Videos"
 msgstr ""
 
+#: mod/Musica/Musica_VideoC.php:96
+msgid "Foto de Video"
+msgstr ""
+
 #: mod/Musica/Musica_VideoC.php:103 mod/Musica/Musica_VideoC.php:589
 #: mod/Musica/Musica_MusicaC.php:80 mod/Musica/Musica_MusicaC.php:466
 #: mod/Musica/Musica_AlbumC.php:73 mod/Musica/Musica_AlbumC.php:371
 #: mod/Musica/Musica_ArtistaC.php:54 mod/Musica/Musica_ArtistaC.php:236
-#: mod/_Sistema/_Sistema_AdminC.php:109 mod/_Sistema/_Sistema_AdminC.php:172
-#: mod/noticia/noticia_AdminC.php:43 mod/noticia/noticia_AdminC.php:256
+#: mod/Simulador/Simulador_PerguntaC.php:67
+#: mod/Simulador/Simulador_PerguntaC.php:366
+#: mod/Simulador/Simulador_RespostaC.php:80
+#: mod/Simulador/Simulador_RespostaC.php:466
+#: mod/Simulador/Simulador_SimuladorC.php:48
+#: mod/Simulador/Simulador_SimuladorC.php:231
+#: mod/_Sistema/_Sistema_AdminC.php:123 mod/_Sistema/_Sistema_AdminC.php:186
+#: mod/Locomocao/Locomocao_EntregaC.php:606 mod/noticia/noticia_AdminC.php:43
+#: mod/noticia/noticia_AdminC.php:256
 #: mod/Transporte/Transporte_EstradaC.php:46
 #: mod/Transporte/Transporte_EstradaC.php:238 mod/Evento/Evento_EventoC.php:56
 #: mod/Evento/Evento_EventoC.php:262 mod/Curso/Curso_CursoC.php:49
-#: mod/Curso/Curso_CursoC.php:233 mod/Curso/Curso_TurmaC.php:107
-#: mod/Curso/Curso_TurmaC.php:623
+#: mod/Curso/Curso_CursoC.php:229 mod/Curso/Curso_TurmaC.php:107
+#: mod/Curso/Curso_TurmaC.php:619
 msgid "Desativado"
 msgstr ""
 
@@ -624,13 +704,20 @@ msgstr ""
 #: mod/Musica/Musica_MusicaC.php:83 mod/Musica/Musica_MusicaC.php:464
 #: mod/Musica/Musica_AlbumC.php:76 mod/Musica/Musica_AlbumC.php:369
 #: mod/Musica/Musica_ArtistaC.php:57 mod/Musica/Musica_ArtistaC.php:234
-#: mod/_Sistema/_Sistema_AdminC.php:111 mod/_Sistema/_Sistema_AdminC.php:170
-#: mod/noticia/noticia_AdminC.php:40 mod/noticia/noticia_AdminC.php:254
+#: mod/Simulador/Simulador_PerguntaC.php:70
+#: mod/Simulador/Simulador_PerguntaC.php:364
+#: mod/Simulador/Simulador_RespostaC.php:83
+#: mod/Simulador/Simulador_RespostaC.php:464
+#: mod/Simulador/Simulador_SimuladorC.php:51
+#: mod/Simulador/Simulador_SimuladorC.php:229
+#: mod/_Sistema/_Sistema_AdminC.php:125 mod/_Sistema/_Sistema_AdminC.php:184
+#: mod/Locomocao/Locomocao_EntregaC.php:604 mod/noticia/noticia_AdminC.php:40
+#: mod/noticia/noticia_AdminC.php:254
 #: mod/Transporte/Transporte_EstradaC.php:43
 #: mod/Transporte/Transporte_EstradaC.php:236
 #: mod/Evento/Evento_EventoC.php:260 mod/Curso/Curso_CursoC.php:52
-#: mod/Curso/Curso_CursoC.php:231 mod/Curso/Curso_TurmaC.php:110
-#: mod/Curso/Curso_TurmaC.php:621 DAO/Evento.DAO.php:221
+#: mod/Curso/Curso_CursoC.php:227 mod/Curso/Curso_TurmaC.php:110
+#: mod/Curso/Curso_TurmaC.php:617 DAO/Evento.DAO.php:221
 #: DAO/Noticia.DAO.php:228 DAO/Comercio.Venda.Mesa.DAO.php:119
 #: DAO/Transporte.Estrada.DAO.php:179 DAO/Desenvolvimento.Senha.DAO.php:230
 msgid "Ativado"
@@ -675,20 +762,24 @@ msgstr ""
 
 #: mod/Musica/Musica_VideoC.php:264 mod/Musica/Musica_MusicaC.php:217
 #: mod/Musica/Musica_AlbumC.php:188 mod/Musica/Musica_ArtistaC.php:128
-#: mod/banner/banner_AdminC.php:110 mod/Agenda/AgendaC.php:126
-#: mod/Agenda/Agenda_PastaC.php:142 mod/Agenda/Agenda_PastaC.php:299
+#: mod/banner/banner_AdminC.php:110 mod/Agenda/Agenda_PastaC.php:123
+#: mod/Agenda/Agenda_PastaC.php:279 mod/Agenda/Agenda_AgendaC.php:87
 #: mod/comercio_venda/comercio_venda_ComposicaoC.php:133
 #: mod/comercio_venda/comercio_venda_CarrinhoC.php:119
 #: mod/comercio_venda/comercio_venda_CarrinhoC.php:589
-#: mod/locais/locais_localidadesC.php:226
-#: mod/locais/locais_localidadesC.php:354
-#: mod/locais/locais_localidadesC.php:482
-#: mod/locais/locais_localidadesC.php:610 mod/locais/locais_locaisC.php:90
+#: mod/locais/locais_localidadesC.php:283
+#: mod/locais/locais_localidadesC.php:406
+#: mod/locais/locais_localidadesC.php:534
+#: mod/locais/locais_localidadesC.php:662 mod/locais/locais_locaisC.php:90
 #: mod/social/social_AcaoC.php:140 mod/social/usuario_social_PersonaC.php:156
 #: mod/social/usuario_social_PersonaC.php:332
 #: mod/social/usuario_social_PersonaC.php:493
 #: mod/social/usuario_social_PersonaC.php:708
+#: mod/social/usuario_social_personasC.php:212
 #: mod/social/social_CaracteristicaC.php:114
+#: mod/Simulador/Simulador_PerguntaC.php:183
+#: mod/Simulador/Simulador_RespostaC.php:217
+#: mod/Simulador/Simulador_SimuladorC.php:123
 #: mod/usuario_mensagem/usuario_mensagem_OrigemC.php:78
 #: mod/usuario_mensagem/usuario_mensagem_Controle.php:214
 #: mod/usuario_mensagem/usuario_mensagem_SetorC.php:76
@@ -697,8 +788,10 @@ msgstr ""
 #: mod/comercio_servicos/comercio_servicos_InstalacaoC.php:117
 #: mod/comercio_servicos/comercio_servicos_InstalacaoC.php:238
 #: mod/comercio_servicos/comercio_servicos_ServicoTipoC.php:76
-#: mod/_Sistema/_Sistema_AdminC.php:204 mod/_Sistema/_Sistema_AdminC.php:379
-#: mod/_Sistema/_Sistema_AdminC.php:562 mod/categoria/categoria_AdminC.php:90
+#: mod/_Sistema/_Sistema_FilialC.php:71 mod/_Sistema/_Sistema_AdminC.php:218
+#: mod/_Sistema/_Sistema_AdminC.php:454 mod/_Sistema/_Sistema_AdminC.php:637
+#: mod/categoria/categoria_categoriaC.php:177
+#: mod/categoria/categoria_AdminC.php:90
 #: mod/Financeiro/Financeiro_FinancaC.php:91
 #: mod/Financeiro/Financeiro_BancoC.php:92
 #: mod/Financeiro/Financeiro_PagamentoC.php:515
@@ -708,8 +801,10 @@ msgstr ""
 #: mod/predial/predial_AdvertenciaC.php:104 mod/predial/predial_SalaoC.php:100
 #: mod/predial/predial_ApartC.php:102 mod/predial/predial_AnimalC.php:101
 #: mod/predial/predial_BlocoC.php:101 mod/predial/predial_VeiculoC.php:100
+#: mod/usuario/usuario_ExpedienteC.php:128
 #: mod/usuario/usuario_TelefoneC.php:129 mod/usuario/usuario_FreeC.php:86
-#: mod/noticia/noticia_AdminC.php:142 mod/Transporte/Transporte_PedidoC.php:96
+#: mod/Locomocao/Locomocao_EntregaC.php:59 mod/noticia/noticia_AdminC.php:142
+#: mod/Transporte/Transporte_PedidoC.php:96
 #: mod/Transporte/Transporte_PedidoC.php:640
 #: mod/Transporte/Transporte_PedidoC.php:821
 #: mod/Transporte/Transporte_PedidoC.php:1365
@@ -721,14 +816,14 @@ msgstr ""
 #: mod/comercio/comercio_FornecedorC.php:93
 #: mod/comercio/comercio_FornecedorC.php:335
 #: mod/comercio/comercio_EstoqueC.php:313 mod/comercio/comercio_LinhaC.php:79
-#: mod/comercio/comercio_ProdutoC.php:142
-#: mod/comercio/comercio_ProdutoC.php:250
-#: mod/comercio/comercio_PropostaC.php:1531
-#: mod/comercio/comercio_PropostaC.php:2431
-#: mod/comercio/comercio_PropostaC.php:2677
-#: mod/comercio/comercio_PropostaC.php:2955
-#: mod/comercio/comercio_PropostaC.php:3109
-#: mod/comercio/comercio_PropostaC.php:3258
+#: mod/comercio/comercio_ProdutoC.php:147
+#: mod/comercio/comercio_ProdutoC.php:255
+#: mod/comercio/comercio_PropostaC.php:1535
+#: mod/comercio/comercio_PropostaC.php:2437
+#: mod/comercio/comercio_PropostaC.php:2683
+#: mod/comercio/comercio_PropostaC.php:2961
+#: mod/comercio/comercio_PropostaC.php:3115
+#: mod/comercio/comercio_PropostaC.php:3264
 #: mod/comercio/comercio_FamiliaC.php:109 mod/Enquete/Enquete_EnqueteC.php:130
 #: mod/Enquete/Enquete_RespostaC.php:158
 #: mod/Engenharia/Engenharia_EmpreendimentoC.php:116
@@ -739,6 +834,7 @@ msgstr ""
 #: mod/usuario_veiculo/usuario_veiculo_EquipamentoC.php:538
 #: mod/usuario_veiculo/usuario_veiculo_ModeloC.php:96
 #: mod/usuario_veiculo/usuario_veiculo_MarcaC.php:94
+#: mod/usuario_veiculo/usuario_veiculo_AdminC.php:401
 #: mod/usuario_veiculo/usuario_veiculo_VeiculoC.php:150
 #: mod/usuario_veiculo/usuario_veiculo_VeiculoC.php:377
 #: mod/usuario_veiculo/usuario_veiculo_VeiculoC.php:523
@@ -770,21 +866,25 @@ msgstr ""
 #: mod/Musica/Musica_AlbumC.php:228 mod/Musica/Musica_ArtistaC.php:144
 #: mod/comercio_certificado/comercio_certificado_PropostaC.php:317
 #: mod/comercio_certificado/comercio_certificado_ProdutoC.php:197
-#: mod/comercio_certificado/comercio_certificado_Controle.php:272
-#: mod/banner/banner_AdminC.php:126 mod/Agenda/AgendaC.php:141
-#: mod/Agenda/Agenda_PastaC.php:157 mod/Agenda/Agenda_PastaC.php:314
+#: mod/comercio_certificado/comercio_certificado_Controle.php:274
+#: mod/banner/banner_AdminC.php:126 mod/Agenda/Agenda_PastaC.php:138
+#: mod/Agenda/Agenda_PastaC.php:294 mod/Agenda/Agenda_AgendaC.php:102
 #: mod/comercio_venda/comercio_venda_ComposicaoC.php:150
 #: mod/comercio_venda/comercio_venda_CarrinhoC.php:139
 #: mod/comercio_venda/comercio_venda_CarrinhoC.php:605
-#: mod/locais/locais_localidadesC.php:242
-#: mod/locais/locais_localidadesC.php:370
-#: mod/locais/locais_localidadesC.php:498
-#: mod/locais/locais_localidadesC.php:626 mod/locais/locais_locaisC.php:106
+#: mod/locais/locais_localidadesC.php:298
+#: mod/locais/locais_localidadesC.php:422
+#: mod/locais/locais_localidadesC.php:550
+#: mod/locais/locais_localidadesC.php:678 mod/locais/locais_locaisC.php:106
 #: mod/social/social_AcaoC.php:156 mod/social/usuario_social_PersonaC.php:172
 #: mod/social/usuario_social_PersonaC.php:350
 #: mod/social/usuario_social_PersonaC.php:521
 #: mod/social/usuario_social_PersonaC.php:726
 #: mod/social/social_CaracteristicaC.php:130
+#: mod/Simulador/Simulador_PerguntaC.php:223
+#: mod/Simulador/Simulador_RespostaC.php:289
+#: mod/Simulador/Simulador_SimuladorC.php:139
+#: mod/Simulador/Simulador_TagC.php:141 mod/Simulador/Simulador_TagC.php:306
 #: mod/usuario_mensagem/usuario_mensagem_OrigemC.php:94
 #: mod/usuario_mensagem/usuario_mensagem_SetorC.php:117
 #: mod/usuario_mensagem/usuario_mensagem_AssuntoC.php:92
@@ -792,11 +892,11 @@ msgstr ""
 #: mod/comercio_servicos/comercio_servicos_InstalacaoC.php:133
 #: mod/comercio_servicos/comercio_servicos_InstalacaoC.php:254
 #: mod/comercio_servicos/comercio_servicos_ServicoTipoC.php:92
-#: mod/_Sistema/_Sistema_AdminC.php:220 mod/_Sistema/_Sistema_AdminC.php:395
-#: mod/_Sistema/_Sistema_AdminC.php:582 mod/_Sistema/_Sistema_AdminC.php:807
-#: mod/_Sistema/_Sistema_AdminC.php:1034
-#: mod/biblioteca/biblioteca_BibliotecaC.php:289
-#: mod/biblioteca/biblioteca_BibliotecaC.php:498
+#: mod/_Sistema/_Sistema_FilialC.php:87 mod/_Sistema/_Sistema_AdminC.php:234
+#: mod/_Sistema/_Sistema_AdminC.php:470 mod/_Sistema/_Sistema_AdminC.php:657
+#: mod/_Sistema/_Sistema_AdminC.php:882 mod/_Sistema/_Sistema_AdminC.php:1109
+#: mod/biblioteca/biblioteca_BibliotecaC.php:304
+#: mod/biblioteca/biblioteca_BibliotecaC.php:604
 #: mod/categoria/categoria_AdminC.php:113
 #: mod/Financeiro/Financeiro_FinancaC.php:107
 #: mod/Financeiro/Financeiro_BancoC.php:108
@@ -807,22 +907,24 @@ msgstr ""
 #: mod/predial/predial_AdvertenciaC.php:120 mod/predial/predial_SalaoC.php:116
 #: mod/predial/predial_SalaoC.php:384 mod/predial/predial_ApartC.php:118
 #: mod/predial/predial_AnimalC.php:117 mod/predial/predial_BlocoC.php:117
-#: mod/predial/predial_VeiculoC.php:116 mod/usuario/usuario_TelefoneC.php:145
-#: mod/usuario/usuario_FreeC.php:182 mod/usuario/usuario_AdminC.php:504
-#: mod/usuario/usuario_AdminC.php:873 mod/noticia/noticia_AdminC.php:161
+#: mod/predial/predial_VeiculoC.php:116
+#: mod/usuario/usuario_ExpedienteC.php:145
+#: mod/usuario/usuario_TelefoneC.php:145 mod/usuario/usuario_FreeC.php:182
+#: mod/usuario/usuario_AdminC.php:504 mod/usuario/usuario_AdminC.php:880
+#: mod/Locomocao/Locomocao_EntregaC.php:471 mod/noticia/noticia_AdminC.php:161
 #: mod/Transporte/Transporte_EstradaC.php:145
 #: mod/Evento/Evento_EventoC.php:158 mod/comercio/comercio_UnidadeC.php:107
 #: mod/comercio/comercio_MarcaC.php:94
 #: mod/comercio/comercio_FornecedorC.php:110
 #: mod/comercio/comercio_FornecedorC.php:353
 #: mod/comercio/comercio_EstoqueC.php:328 mod/comercio/comercio_LinhaC.php:95
-#: mod/comercio/comercio_ProdutoC.php:159
-#: mod/comercio/comercio_PropostaC.php:1568
-#: mod/comercio/comercio_PropostaC.php:2459
-#: mod/comercio/comercio_PropostaC.php:2705
-#: mod/comercio/comercio_PropostaC.php:2972
-#: mod/comercio/comercio_PropostaC.php:3126
-#: mod/comercio/comercio_PropostaC.php:3276
+#: mod/comercio/comercio_ProdutoC.php:164
+#: mod/comercio/comercio_PropostaC.php:1572
+#: mod/comercio/comercio_PropostaC.php:2465
+#: mod/comercio/comercio_PropostaC.php:2711
+#: mod/comercio/comercio_PropostaC.php:2978
+#: mod/comercio/comercio_PropostaC.php:3132
+#: mod/comercio/comercio_PropostaC.php:3282
 #: mod/comercio/comercio_FamiliaC.php:125 mod/Enquete/Enquete_EnqueteC.php:145
 #: mod/Enquete/Enquete_RespostaC.php:179
 #: mod/Engenharia/Engenharia_EmpreendimentoC.php:131
@@ -848,7 +950,7 @@ msgstr ""
 #: mod/Desenvolvimento/Desenvolvimento_FrameworkC.php:134
 #: mod/Desenvolvimento/Desenvolvimento_FrameworkC.php:312
 #: mod/Desenvolvimento/Desenvolvimento_FrameworkC.php:489
-#: mod/Curso/Curso_CursoC.php:141 mod/Curso/Curso_TurmaC.php:384
+#: mod/Curso/Curso_CursoC.php:140 mod/Curso/Curso_TurmaC.php:383
 msgid "Inserção bem sucedida"
 msgstr ""
 
@@ -872,15 +974,19 @@ msgstr ""
 #: mod/Musica/Musica_AlbumC.php:332 mod/Musica/Musica_ArtistaC.php:201
 #: mod/comercio_certificado/comercio_certificado_PropostaC.php:409
 #: mod/comercio_certificado/comercio_certificado_ProdutoC.php:267
-#: mod/banner/banner_AdminC.php:187 mod/Agenda/AgendaC.php:196
-#: mod/Agenda/Agenda_PastaC.php:212 mod/locais/locais_localidadesC.php:298
-#: mod/locais/locais_localidadesC.php:426
-#: mod/locais/locais_localidadesC.php:554
-#: mod/locais/locais_localidadesC.php:682 mod/locais/locais_locaisC.php:163
+#: mod/banner/banner_AdminC.php:187 mod/Agenda/Agenda_PastaC.php:192
+#: mod/Agenda/Agenda_AgendaC.php:155 mod/locais/locais_localidadesC.php:350
+#: mod/locais/locais_localidadesC.php:478
+#: mod/locais/locais_localidadesC.php:606
+#: mod/locais/locais_localidadesC.php:734 mod/locais/locais_locaisC.php:163
 #: mod/social/social_AcaoC.php:220 mod/social/usuario_social_PersonaC.php:229
 #: mod/social/usuario_social_PersonaC.php:419
 #: mod/social/usuario_social_PersonaC.php:585
 #: mod/social/usuario_social_PersonaC.php:795
+#: mod/Simulador/Simulador_PerguntaC.php:327
+#: mod/Simulador/Simulador_RespostaC.php:423
+#: mod/Simulador/Simulador_SimuladorC.php:196
+#: mod/Simulador/Simulador_TagC.php:219
 #: mod/usuario_mensagem/usuario_mensagem_OrigemC.php:151
 #: mod/usuario_mensagem/usuario_mensagem_SetorC.php:175
 #: mod/usuario_mensagem/usuario_mensagem_AssuntoC.php:175
@@ -889,10 +995,10 @@ msgstr ""
 #: mod/comercio_servicos/comercio_servicos_InstalacaoC.php:190
 #: mod/comercio_servicos/comercio_servicos_InstalacaoC.php:311
 #: mod/comercio_servicos/comercio_servicos_ServicoTipoC.php:148
-#: mod/_Sistema/_Sistema_AdminC.php:278 mod/_Sistema/_Sistema_AdminC.php:454
-#: mod/_Sistema/_Sistema_AdminC.php:644 mod/_Sistema/_Sistema_AdminC.php:875
-#: mod/_Sistema/_Sistema_AdminC.php:1102
-#: mod/biblioteca/biblioteca_BibliotecaC.php:367
+#: mod/_Sistema/_Sistema_FilialC.php:145 mod/_Sistema/_Sistema_AdminC.php:292
+#: mod/_Sistema/_Sistema_AdminC.php:529 mod/_Sistema/_Sistema_AdminC.php:719
+#: mod/_Sistema/_Sistema_AdminC.php:950 mod/_Sistema/_Sistema_AdminC.php:1177
+#: mod/biblioteca/biblioteca_BibliotecaC.php:479
 #: mod/categoria/categoria_AdminC.php:226
 #: mod/Financeiro/Financeiro_FinancaC.php:183
 #: mod/Financeiro/Financeiro_AdminC.php:137
@@ -904,7 +1010,8 @@ msgstr ""
 #: mod/predial/predial_AdvertenciaC.php:247 mod/predial/predial_SalaoC.php:173
 #: mod/predial/predial_ApartC.php:175 mod/predial/predial_AnimalC.php:174
 #: mod/predial/predial_BlocoC.php:174 mod/predial/predial_VeiculoC.php:173
-#: mod/usuario/usuario_AdminC.php:1029 mod/noticia/noticia_AdminC.php:221
+#: mod/usuario/usuario_AdminC.php:1036
+#: mod/Locomocao/Locomocao_EntregaC.php:563 mod/noticia/noticia_AdminC.php:221
 #: mod/Transporte/Transporte_PedidoC.php:146
 #: mod/Transporte/Transporte_PedidoC.php:719
 #: mod/Transporte/Transporte_PedidoC.php:871
@@ -914,13 +1021,13 @@ msgstr ""
 #: mod/Transporte/Transporte_EstradaC.php:203
 #: mod/Evento/Evento_EventoC.php:221 mod/comercio/comercio_FornecedorC.php:169
 #: mod/comercio/comercio_FornecedorC.php:417
-#: mod/comercio/comercio_LinhaC.php:152 mod/comercio/comercio_ProdutoC.php:218
-#: mod/comercio/comercio_PropostaC.php:2160
-#: mod/comercio/comercio_PropostaC.php:2558
-#: mod/comercio/comercio_PropostaC.php:2804
-#: mod/comercio/comercio_PropostaC.php:3029
-#: mod/comercio/comercio_PropostaC.php:3184
-#: mod/comercio/comercio_PropostaC.php:3345
+#: mod/comercio/comercio_LinhaC.php:152 mod/comercio/comercio_ProdutoC.php:223
+#: mod/comercio/comercio_PropostaC.php:2164
+#: mod/comercio/comercio_PropostaC.php:2564
+#: mod/comercio/comercio_PropostaC.php:2810
+#: mod/comercio/comercio_PropostaC.php:3035
+#: mod/comercio/comercio_PropostaC.php:3190
+#: mod/comercio/comercio_PropostaC.php:3351
 #: mod/Enquete/Enquete_EnqueteC.php:202 mod/Enquete/Enquete_RespostaC.php:267
 #: mod/Engenharia/Engenharia_EmpreendimentoC.php:187
 #: mod/Engenharia/Engenharia_UnidadeC.php:545
@@ -940,7 +1047,7 @@ msgstr ""
 #: mod/Desenvolvimento/Desenvolvimento_FrameworkC.php:191
 #: mod/Desenvolvimento/Desenvolvimento_FrameworkC.php:369
 #: mod/Desenvolvimento/Desenvolvimento_FrameworkC.php:546
-#: mod/Curso/Curso_CursoC.php:198 mod/Curso/Curso_TurmaC.php:584
+#: mod/Curso/Curso_CursoC.php:194 mod/Curso/Curso_TurmaC.php:580
 msgid "Deletado"
 msgstr ""
 
@@ -955,11 +1062,15 @@ msgstr ""
 #: mod/Musica/Musica_VideoC.php:597 mod/Musica/Musica_MusicaC.php:474
 #: mod/Musica/Musica_AlbumC.php:379 mod/Musica/Musica_ArtistaC.php:244
 #: mod/comercio_certificado/comercio_certificado_PropostaC.php:151
-#: mod/_Sistema/_Sistema_AdminC.php:180 mod/noticia/noticia_AdminC.php:264
+#: mod/Simulador/Simulador_PerguntaC.php:374
+#: mod/Simulador/Simulador_RespostaC.php:474
+#: mod/Simulador/Simulador_SimuladorC.php:239
+#: mod/_Sistema/_Sistema_AdminC.php:194
+#: mod/Locomocao/Locomocao_EntregaC.php:614 mod/noticia/noticia_AdminC.php:264
 #: mod/Transporte/Transporte_EstradaC.php:246
 #: mod/Evento/Evento_EventoC.php:273
 #: mod/usuario_veiculo/usuario_veiculo_EquipamentoC.php:184
-#: mod/Curso/Curso_CursoC.php:241 mod/Curso/Curso_TurmaC.php:631
+#: mod/Curso/Curso_CursoC.php:237 mod/Curso/Curso_TurmaC.php:627
 msgid "Status Alterado"
 msgstr ""
 
@@ -968,16 +1079,19 @@ msgstr ""
 #: mod/Musica/Musica_ArtistaC.php:249
 #: mod/comercio_certificado/comercio_certificado_PropostaC.php:156
 #: mod/comercio_venda/comercio_venda_CarrinhoC.php:477
-#: mod/_Sistema/_Sistema_AdminC.php:185 mod/usuario/usuario_AdminC.php:294
-#: mod/noticia/noticia_AdminC.php:269 mod/noticia/noticia_AdminC.php:308
-#: mod/Transporte/Transporte_PedidoC.php:79
+#: mod/Simulador/Simulador_PerguntaC.php:379
+#: mod/Simulador/Simulador_RespostaC.php:479
+#: mod/Simulador/Simulador_SimuladorC.php:244
+#: mod/_Sistema/_Sistema_AdminC.php:199 mod/usuario/usuario_AdminC.php:294
+#: mod/Locomocao/Locomocao_EntregaC.php:619 mod/noticia/noticia_AdminC.php:269
+#: mod/noticia/noticia_AdminC.php:308 mod/Transporte/Transporte_PedidoC.php:79
 #: mod/Transporte/Transporte_PedidoC.php:804
 #: mod/Transporte/Transporte_PedidoC.php:1525
 #: mod/Transporte/Transporte_EstradaC.php:251
 #: mod/Transporte/Transporte_EstradaC.php:290
 #: mod/Evento/Evento_EventoC.php:278 mod/Evento/Evento_EventoC.php:317
-#: mod/comercio/comercio_PropostaC.php:2288
-#: mod/comercio/comercio_PropostaC.php:2909
+#: mod/comercio/comercio_PropostaC.php:2294
+#: mod/comercio/comercio_PropostaC.php:2915
 #: mod/usuario_veiculo/usuario_veiculo_EquipamentoC.php:189
 #: mod/Desenvolvimento/Desenvolvimento_SenhaC.php:240
 #: mod/Desenvolvimento/Desenvolvimento_SenhaC.php:311
@@ -985,7 +1099,7 @@ msgstr ""
 #: mod/Desenvolvimento/Desenvolvimento_SenhaC.php:622
 #: mod/Desenvolvimento/Desenvolvimento_ProjetoC.php:279
 #: mod/Desenvolvimento/Desenvolvimento_ProjetoC.php:362
-#: mod/Curso/Curso_CursoC.php:246 mod/Curso/Curso_TurmaC.php:636
+#: mod/Curso/Curso_CursoC.php:242 mod/Curso/Curso_TurmaC.php:632
 msgid "Ocorreu um Erro."
 msgstr ""
 
@@ -1159,6 +1273,10 @@ msgstr ""
 msgid "Todos os Albuns"
 msgstr ""
 
+#: mod/Musica/Musica_AlbumC.php:66
+msgid "Foto de Album"
+msgstr ""
+
 #: mod/Musica/Musica_AlbumC.php:121
 msgid "Adicionar novo Album"
 msgstr ""
@@ -1213,6 +1331,10 @@ msgstr ""
 
 #: mod/Musica/Musica_AlbumC.php:350
 msgid "Album deletada com Sucesso"
+msgstr ""
+
+#: mod/Musica/Musica_ArtistaC.php:49
+msgid "Foto de Artista"
 msgstr ""
 
 #: mod/Musica/Musica_ArtistaC.php:111
@@ -1270,11 +1392,11 @@ msgstr ""
 #: mod/comercio_certificado/_Config.php:22
 #: mod/comercio_certificado/comercio_certificado_PropostaC.php:41
 #: mod/usuario/usuario_Controle.php:551 mod/usuario/usuario_AdminC.php:144
-#: mod/usuario/usuario_AdminC.php:731 mod/usuario/usuario_AdminC.php:734
-#: mod/usuario/usuario_AdminC.php:805 mod/usuario/usuario_AdminC.php:808
-#: mod/usuario/usuario_AdminC.php:857 mod/usuario/usuario_AdminC.php:905
-#: mod/usuario/usuario_AdminC.php:908 mod/usuario/usuario_AdminC.php:960
-#: mod/usuario/usuario_AdminC.php:1008 mod/usuario/usuario_AnexoC.php:69
+#: mod/usuario/usuario_AdminC.php:738 mod/usuario/usuario_AdminC.php:741
+#: mod/usuario/usuario_AdminC.php:812 mod/usuario/usuario_AdminC.php:815
+#: mod/usuario/usuario_AdminC.php:864 mod/usuario/usuario_AdminC.php:912
+#: mod/usuario/usuario_AdminC.php:915 mod/usuario/usuario_AdminC.php:967
+#: mod/usuario/usuario_AdminC.php:1015 mod/usuario/usuario_AnexoC.php:69
 msgid "Clientes"
 msgstr ""
 
@@ -1285,7 +1407,7 @@ msgstr ""
 #: mod/comercio_certificado/_Config.php:36
 #: mod/comercio_certificado/_Config.php:71
 #: mod/usuario_mensagem/usuario_mensagem_RelatorioC.php:25
-#: mod/_Sistema/_Config.php:57
+#: mod/_Sistema/_Config.php:77
 msgid "Relatório"
 msgstr ""
 
@@ -1301,11 +1423,11 @@ msgstr ""
 #: mod/comercio_certificado/comercio_certificado_PropostaC.php:37
 #: mod/comercio_certificado/comercio_certificado_PropostaC.php:446
 #: mod/usuario/usuario_Controle.php:446 mod/usuario/usuario_Controle.php:538
-#: mod/usuario/usuario_AdminC.php:122 mod/usuario/usuario_AdminC.php:558
-#: mod/usuario/usuario_AdminC.php:565 mod/usuario/usuario_AdminC.php:732
-#: mod/usuario/usuario_AdminC.php:806 mod/usuario/usuario_AdminC.php:858
-#: mod/usuario/usuario_AdminC.php:906 mod/usuario/usuario_AdminC.php:961
-#: mod/usuario/usuario_AdminC.php:1009 mod/usuario/usuario_AnexoC.php:52
+#: mod/usuario/usuario_AdminC.php:122 mod/usuario/usuario_AdminC.php:559
+#: mod/usuario/usuario_AdminC.php:569 mod/usuario/usuario_AdminC.php:739
+#: mod/usuario/usuario_AdminC.php:813 mod/usuario/usuario_AdminC.php:865
+#: mod/usuario/usuario_AdminC.php:913 mod/usuario/usuario_AdminC.php:968
+#: mod/usuario/usuario_AdminC.php:1016 mod/usuario/usuario_AnexoC.php:52
 #: mod/usuario/usuario_PerfilC.php:263 DAO/Usuario.Historico.Email.DAO.php:74
 #: DAO/Comercio.Visita.DAO.php:77 DAO/Desenvolvimento.Projeto.DAO.php:97
 #: DAO/Comercio.Venda.Carrinho.DAO.php:102 DAO/Usuario.Mensagem.DAO.php:222
@@ -1387,26 +1509,26 @@ msgstr ""
 #: mod/comercio_certificado/comercio_certificado_ProdutoC.php:63
 #: mod/comercio/_Config.php:115 mod/comercio/comercio_PropostaC.php:33
 #: mod/comercio/comercio_PropostaC.php:274
-#: mod/comercio/comercio_PropostaC.php:416
-#: mod/comercio/comercio_PropostaC.php:515
-#: mod/comercio/comercio_PropostaC.php:987
-#: mod/comercio/comercio_PropostaC.php:1524
-#: mod/comercio/comercio_PropostaC.php:1562
-#: mod/comercio/comercio_PropostaC.php:1602
-#: mod/comercio/comercio_PropostaC.php:1645
-#: mod/comercio/comercio_PropostaC.php:2148
-#: mod/comercio/comercio_PropostaC.php:2344
-#: mod/comercio/comercio_PropostaC.php:2422
-#: mod/comercio/comercio_PropostaC.php:2453
-#: mod/comercio/comercio_PropostaC.php:2484
-#: mod/comercio/comercio_PropostaC.php:2516
-#: mod/comercio/comercio_PropostaC.php:2551
-#: mod/comercio/comercio_PropostaC.php:2589
-#: mod/comercio/comercio_PropostaC.php:2668
-#: mod/comercio/comercio_PropostaC.php:2699
-#: mod/comercio/comercio_PropostaC.php:2730
-#: mod/comercio/comercio_PropostaC.php:2762
-#: mod/comercio/comercio_PropostaC.php:2797
+#: mod/comercio/comercio_PropostaC.php:418
+#: mod/comercio/comercio_PropostaC.php:519
+#: mod/comercio/comercio_PropostaC.php:991
+#: mod/comercio/comercio_PropostaC.php:1528
+#: mod/comercio/comercio_PropostaC.php:1566
+#: mod/comercio/comercio_PropostaC.php:1606
+#: mod/comercio/comercio_PropostaC.php:1649
+#: mod/comercio/comercio_PropostaC.php:2152
+#: mod/comercio/comercio_PropostaC.php:2350
+#: mod/comercio/comercio_PropostaC.php:2428
+#: mod/comercio/comercio_PropostaC.php:2459
+#: mod/comercio/comercio_PropostaC.php:2490
+#: mod/comercio/comercio_PropostaC.php:2522
+#: mod/comercio/comercio_PropostaC.php:2557
+#: mod/comercio/comercio_PropostaC.php:2595
+#: mod/comercio/comercio_PropostaC.php:2674
+#: mod/comercio/comercio_PropostaC.php:2705
+#: mod/comercio/comercio_PropostaC.php:2736
+#: mod/comercio/comercio_PropostaC.php:2768
+#: mod/comercio/comercio_PropostaC.php:2803
 msgid "Propostas"
 msgstr ""
 
@@ -1416,13 +1538,13 @@ msgstr ""
 
 #: mod/comercio_certificado/comercio_certificado_PropostaC.php:169
 #: mod/Financeiro/Financeiro_Modelo.php:138
-#: mod/comercio/comercio_PropostaC.php:2306
+#: mod/comercio/comercio_PropostaC.php:2312
 #: mod/Desenvolvimento/Desenvolvimento_ProjetoC.php:296
 msgid "Pendente"
 msgstr ""
 
 #: mod/comercio_certificado/comercio_certificado_PropostaC.php:173
-#: mod/comercio/comercio_PropostaC.php:2310
+#: mod/comercio/comercio_PropostaC.php:2316
 #: mod/Desenvolvimento/Desenvolvimento_ProjetoC.php:300
 msgid "Aprovada"
 msgstr ""
@@ -1463,19 +1585,19 @@ msgstr ""
 msgid "Proposta deletada com Sucesso"
 msgstr ""
 
-#: mod/comercio_certificado/comercio_certificado_PropostaC.php:564
+#: mod/comercio_certificado/comercio_certificado_PropostaC.php:569
 msgid "Alteração de Periodica"
 msgstr ""
 
-#: mod/comercio_certificado/comercio_certificado_PropostaC.php:566
+#: mod/comercio_certificado/comercio_certificado_PropostaC.php:571
 msgid "Alterar Periodica"
 msgstr ""
 
-#: mod/comercio_certificado/comercio_certificado_PropostaC.php:598
+#: mod/comercio_certificado/comercio_certificado_PropostaC.php:603
 msgid "Periodica Editada com Sucesso"
 msgstr ""
 
-#: mod/comercio_certificado/comercio_certificado_PropostaC.php:601
+#: mod/comercio_certificado/comercio_certificado_PropostaC.php:606
 msgid "Periodica Alterada com Sucesso."
 msgstr ""
 
@@ -1484,12 +1606,12 @@ msgid "Cadastrar Produto"
 msgstr ""
 
 #: mod/comercio_certificado/comercio_certificado_ProdutoC.php:198
-#: mod/comercio/comercio_ProdutoC.php:160
+#: mod/comercio/comercio_ProdutoC.php:165
 msgid "Produto cadastrado com sucesso."
 msgstr ""
 
 #: mod/comercio_certificado/comercio_certificado_ProdutoC.php:209
-#: mod/comercio/comercio_ProdutoC.php:156
+#: mod/comercio/comercio_ProdutoC.php:161
 msgid "Produto Adicionado com Sucesso"
 msgstr ""
 
@@ -1498,17 +1620,17 @@ msgid "Produto Alterado com Sucesso"
 msgstr ""
 
 #: mod/comercio_certificado/comercio_certificado_ProdutoC.php:246
-#: mod/comercio/comercio_ProdutoC.php:192
+#: mod/comercio/comercio_ProdutoC.php:197
 msgid "Produto Editado com Sucesso"
 msgstr ""
 
 #: mod/comercio_certificado/comercio_certificado_ProdutoC.php:268
-#: mod/comercio/comercio_ProdutoC.php:219
+#: mod/comercio/comercio_ProdutoC.php:224
 msgid "Produto Deletado com sucesso"
 msgstr ""
 
 #: mod/comercio_certificado/comercio_certificado_ProdutoC.php:281
-#: mod/comercio/comercio_ProdutoC.php:232
+#: mod/comercio/comercio_ProdutoC.php:237
 msgid "Produto deletado com Sucesso"
 msgstr ""
 
@@ -1535,7 +1657,7 @@ msgid "Visualizar Usuário"
 msgstr ""
 
 #: mod/comercio_certificado/comercio_certificado_Controle.php:115
-#: mod/comercio_certificado/comercio_certificado_Controle.php:306
+#: mod/comercio_certificado/comercio_certificado_Controle.php:308
 #: mod/usuario/usuario_AdminC.php:243 mod/usuario/usuario_PerfilC.php:242
 #: mod/usuario_veiculo/usuario_veiculo_AdminC.php:336
 msgid "Alteração bem sucedida"
@@ -1556,7 +1678,7 @@ msgstr ""
 msgid "Login ja existe"
 msgstr ""
 
-#: mod/comercio_certificado/comercio_certificado_Controle.php:273
+#: mod/comercio_certificado/comercio_certificado_Controle.php:275
 #: mod/usuario/usuario_FreeC.php:183 mod/usuario/usuario_AdminC.php:505
 msgid "Voce foi cadastrado com sucesso."
 msgstr ""
@@ -1589,6 +1711,14 @@ msgstr ""
 
 #: mod/usuario_rede/usuario_rede_ListarV.php:37
 msgid "Terciário"
+msgstr ""
+
+#: mod/usuario_rede/usuario_rede_ListarV.php:50
+msgid "Nivel de Indicação"
+msgstr ""
+
+#: mod/usuario_rede/usuario_rede_ListarV.php:127
+msgid "Nivel da Indicação"
 msgstr ""
 
 #: mod/usuario_rede/usuario_rede_Controle.php:42
@@ -1647,6 +1777,14 @@ msgstr ""
 msgid "Administração de Banners"
 msgstr ""
 
+#: mod/banner/banner_AdminC.php:68
+msgid "Editar Banner"
+msgstr ""
+
+#: mod/banner/banner_AdminC.php:69
+msgid "Deletar Banner"
+msgstr ""
+
 #: mod/banner/banner_AdminC.php:107
 msgid "Adicionar Banner"
 msgstr ""
@@ -1690,51 +1828,8 @@ msgstr ""
 msgid "Banner deletado com Sucesso"
 msgstr ""
 
-#: mod/Agenda/AgendaC.php:37 mod/Agenda/AgendaC.php:41
-#: mod/Agenda/AgendaC.php:43
-#: mod/Agenda/AgendaC.php:109
-#: mod/Agenda/AgendaC.php:113 mod/Agenda/_Config.php:29
-msgid "Compromissos"
-msgstr ""
-
-#: mod/Agenda/AgendaC.php:123
-msgid "Adicionar Compromisso"
-msgstr ""
-
-#: mod/Agenda/AgendaC.php:124
-msgid "Salvar Compromisso"
-msgstr ""
-
-#: mod/Agenda/AgendaC.php:138
-msgid "Compromisso Adicionada com Sucesso"
-msgstr ""
-
-#: mod/Agenda/AgendaC.php:142
-msgid "Compromisso cadastrado com sucesso."
-msgstr ""
-
-#: mod/Agenda/AgendaC.php:156
-msgid "Alteração de Compromisso"
-msgstr ""
-
-#: mod/Agenda/AgendaC.php:158
-msgid "Alterar Compromisso"
-msgstr ""
-
-#: mod/Agenda/AgendaC.php:171
-msgid "Compromisso Editada com Sucesso"
-msgstr ""
-
-#: mod/Agenda/AgendaC.php:174
-msgid "Compromisso Alterada com Sucesso."
-msgstr ""
-
-#: mod/Agenda/AgendaC.php:197
-msgid "Compromisso Deletado com sucesso"
-msgstr ""
-
-#: mod/Agenda/AgendaC.php:210
-msgid "Compromisso deletado com Sucesso"
+#: mod/banner/banner_Controle.php:30
+msgid "Visualizar Banner"
 msgstr ""
 
 #: mod/Agenda/Agenda_PastaC.php:37 mod/Agenda/Agenda_PastaC.php:41
@@ -1746,97 +1841,167 @@ msgstr ""
 msgid "Cores"
 msgstr ""
 
-#: mod/Agenda/Agenda_PastaC.php:84 mod/Agenda/Agenda_PastaC.php:124
+#: mod/Agenda/Agenda_PastaC.php:84 mod/Agenda/Agenda_PastaC.php:105
 #: mod/Agenda/Agenda_AtividadesC.php:78
 msgid "Arquivo de Pastas"
 msgstr ""
 
-#: mod/Agenda/Agenda_PastaC.php:139
+#: mod/Agenda/Agenda_PastaC.php:97 DAO/Predial.Bloco.Apart.Animal.DAO.php:189
+#: DAO/Predial.Bloco.Apart.Veiculo.DAO.php:188
+msgid "Cor"
+msgstr ""
+
+#: mod/Agenda/Agenda_PastaC.php:98 DAO/Universal.Vivo.Cnpj.DAO.php:125
+#: DAO/Usuario.Agenda.Pasta.DAO.php:114 DAO/Gramatica.Substantivo.DAO.php:184
+msgid "Numero"
+msgstr ""
+
+#: mod/Agenda/Agenda_PastaC.php:99 mod/social/usuario_social_personasC.php:210
+#: mod/Simulador/Simulador_TagC.php:103
+#: mod/usuario_mensagem/usuario_mensagem_SuporteC.php:270
+#: mod/comercio_servicos/comercio_servicos_ServicoC.php:70
+#: mod/comercio_servicos/comercio_servicos_InstalacaoC.php:93
+#: mod/comercio_servicos/comercio_servicos_ServicoTipoC.php:56
+#: mod/_Sistema/_Sistema_FilialC.php:42 mod/_Sistema/_Sistema_AdminC.php:318
+#: mod/biblioteca/biblioteca_BibliotecaC.php:255
+#: mod/usuario/usuario_Controle.php:1209
+#: mod/comercio/comercio_FornecedorC.php:64
+#: mod/comercio/comercio_ProdutoC.php:73
+#: DAO/Desenvolvimento.Framework.Modulo.DAO.php:64
+#: DAO/Desenvolvimento.Framework.Modulo.Config.DAO.php:91
+#: DAO/Desenvolvimento.Projeto.DAO.php:117 DAO/Sistema.Filial.DAO.php:74
+#: DAO/Musica.Album.Artista.DAO.php:94
+#: DAO/Evento.Manifestacao.Territorial.DAO.php:71
+#: DAO/Predial.Bloco.Apart.Advertencia.DAO.php:162
+#: DAO/Comercio.Venda.Mesa.DAO.php:67 DAO/Social.Caracteristica.DAO.php:65
+#: DAO/Comercio.Servicos.Servico.Tipo.DAO.php:63
+#: DAO/Transporte.Caminhoneiro.DAO.php:76 DAO/Usuario.Agenda.Pasta.DAO.php:140
+#: DAO/Transporte.Armazem.DAO.php:82
+#: DAO/Desenvolvimento.Framework.Metodo.DAO.php:65
+#: DAO/Transporte.Transportadora.DAO.php:81
+#: DAO/Comercio.Venda.Composicao.DAO.php:92 DAO/Agenda.DAO.php:120
+#: DAO/Simulador.Tag.DAO.php:64
+#: DAO/Predial.Bloco.Apart.Informativo.DAO.php:152
+#: DAO/Transporte.Fornecedor.DAO.php:80 DAO/Universal.Vivo.Cpf.DAO.php:88
+#: DAO/Desenvolvimento.Framework.Submodulo.DAO.php:65
+#: DAO/Categoria.DAO.php:110 DAO/Simulador.DAO.php:64 DAO/Curso.DAO.php:68
+msgid "Nome"
+msgstr ""
+
+#: mod/Agenda/Agenda_PastaC.php:100
+msgid "Obs"
+msgstr ""
+
+#: mod/Agenda/Agenda_PastaC.php:101 mod/Agenda/Agenda_AgendaC.php:66
+#: mod/Simulador/Simulador_TagC.php:106
+#: mod/comercio_servicos/comercio_servicos_ServicoC.php:75
+#: mod/comercio_servicos/comercio_servicos_InstalacaoC.php:97
+#: mod/comercio_servicos/comercio_servicos_InstalacaoC.php:218
+#: mod/comercio_servicos/comercio_servicos_ServicoTipoC.php:57
+#: mod/_Sistema/_Sistema_FilialC.php:45 mod/_Sistema/_Sistema_AdminC.php:320
+#: mod/biblioteca/biblioteca_BibliotecaC.php:261
+#: mod/usuario/usuario_ExpedienteC.php:285
+#: mod/usuario/usuario_ExpedienteC.php:332
+#: mod/usuario/usuario_ExpedienteC.php:389
+#: mod/usuario/usuario_Controle.php:1221
+#: mod/Locomocao/Locomocao_EntregaC.php:26
+#: mod/comercio/comercio_FornecedorC.php:72
+#: mod/comercio/comercio_ProdutoC.php:86
+#: mod/Desenvolvimento/Desenvolvimento_SenhaC.php:65
+#: mod/Desenvolvimento/Desenvolvimento_SenhaC.php:79
+#: mod/Desenvolvimento/Desenvolvimento_SenhaC.php:379
+#: mod/Desenvolvimento/Desenvolvimento_SenhaC.php:392
+msgid "Funções"
+msgstr ""
+
+#: mod/Agenda/Agenda_PastaC.php:120
+#: mod/biblioteca/biblioteca_BibliotecaC.php:168
 msgid "Adicionar Pasta"
 msgstr ""
 
-#: mod/Agenda/Agenda_PastaC.php:140
-#: mod/biblioteca/biblioteca_BibliotecaC.php:264
+#: mod/Agenda/Agenda_PastaC.php:121
+#: mod/biblioteca/biblioteca_BibliotecaC.php:279
 msgid "Salvar Pasta"
 msgstr ""
 
-#: mod/Agenda/Agenda_PastaC.php:154
+#: mod/Agenda/Agenda_PastaC.php:135
 msgid "Pasta Adicionado com Sucesso"
 msgstr ""
 
-#: mod/Agenda/Agenda_PastaC.php:158
+#: mod/Agenda/Agenda_PastaC.php:139
 msgid "Pasta cadastrado com sucesso."
 msgstr ""
 
-#: mod/Agenda/Agenda_PastaC.php:172
+#: mod/Agenda/Agenda_PastaC.php:153
 msgid "Alteração de Pasta"
 msgstr ""
 
-#: mod/Agenda/Agenda_PastaC.php:174
+#: mod/Agenda/Agenda_PastaC.php:155
 msgid "Alterar Pasta"
 msgstr ""
 
-#: mod/Agenda/Agenda_PastaC.php:187
+#: mod/Agenda/Agenda_PastaC.php:168
 msgid "Pasta Editado com Sucesso"
 msgstr ""
 
-#: mod/Agenda/Agenda_PastaC.php:190
+#: mod/Agenda/Agenda_PastaC.php:171
 msgid "Pasta Alterado com Sucesso."
 msgstr ""
 
-#: mod/Agenda/Agenda_PastaC.php:213
+#: mod/Agenda/Agenda_PastaC.php:193
 msgid "Pasta Deletado com sucesso"
 msgstr ""
 
-#: mod/Agenda/Agenda_PastaC.php:226
+#: mod/Agenda/Agenda_PastaC.php:206
 msgid "Pasta deletado com Sucesso"
 msgstr ""
 
-#: mod/Agenda/Agenda_PastaC.php:282
+#: mod/Agenda/Agenda_PastaC.php:262
 msgid "Listagem de Cores"
 msgstr ""
 
-#: mod/Agenda/Agenda_PastaC.php:286
+#: mod/Agenda/Agenda_PastaC.php:266
 msgid "Administrar Cores"
 msgstr ""
 
-#: mod/Agenda/Agenda_PastaC.php:296
+#: mod/Agenda/Agenda_PastaC.php:276
 msgid "Adicionar Cor"
 msgstr ""
 
-#: mod/Agenda/Agenda_PastaC.php:297
+#: mod/Agenda/Agenda_PastaC.php:277
 msgid "Salvar Cor"
 msgstr ""
 
-#: mod/Agenda/Agenda_PastaC.php:311
+#: mod/Agenda/Agenda_PastaC.php:291
 msgid "Cor Adicionada com Sucesso"
 msgstr ""
 
-#: mod/Agenda/Agenda_PastaC.php:315
+#: mod/Agenda/Agenda_PastaC.php:295
 msgid "Cor cadastrada com sucesso."
 msgstr ""
 
-#: mod/Agenda/Agenda_PastaC.php:329
+#: mod/Agenda/Agenda_PastaC.php:309
 msgid "Alteração de Cor"
 msgstr ""
 
-#: mod/Agenda/Agenda_PastaC.php:331
+#: mod/Agenda/Agenda_PastaC.php:311
 msgid "Alterar Cor"
 msgstr ""
 
-#: mod/Agenda/Agenda_PastaC.php:344
+#: mod/Agenda/Agenda_PastaC.php:324
 msgid "Cor Editada com Sucesso"
 msgstr ""
 
-#: mod/Agenda/Agenda_PastaC.php:347
+#: mod/Agenda/Agenda_PastaC.php:327
 msgid "Cor Alterada com Sucesso."
 msgstr ""
 
-#: mod/Agenda/Agenda_PastaC.php:369
+#: mod/Agenda/Agenda_PastaC.php:347
 #: mod/comercio_venda/comercio_venda_ComposicaoC.php:207
 #: mod/comercio_venda/comercio_venda_CarrinhoC.php:224
 #: mod/comercio_venda/comercio_venda_CarrinhoC.php:662
 #: mod/social/social_CaracteristicaC.php:187
+#: mod/usuario/usuario_ExpedienteC.php:206
 #: mod/usuario/usuario_TelefoneC.php:202
 #: mod/comercio/comercio_UnidadeC.php:164 mod/comercio/comercio_MarcaC.php:151
 #: mod/comercio/comercio_EstoqueC.php:491
@@ -1846,15 +2011,15 @@ msgstr ""
 msgid "Deletada"
 msgstr ""
 
-#: mod/Agenda/Agenda_PastaC.php:370
+#: mod/Agenda/Agenda_PastaC.php:348
 msgid "Cor Deletada com sucesso"
 msgstr ""
 
-#: mod/Agenda/Agenda_PastaC.php:383
+#: mod/Agenda/Agenda_PastaC.php:361
 msgid "Cor deletada com Sucesso"
 msgstr ""
 
-#: mod/Agenda/_Config.php:16
+#: mod/Agenda/_Config.php:16 mod/Agenda/_Config.php:29
 msgid "Agenda"
 msgstr ""
 
@@ -1914,6 +2079,86 @@ msgstr ""
 msgid "Agenda (Pasta - Cores) - Deletar"
 msgstr ""
 
+#: mod/Agenda/Agenda_AgendaC.php:37 mod/Agenda/Agenda_AgendaC.php:41
+#: mod/Agenda/Agenda_AgendaC.php:43 mod/Agenda/Agenda_AgendaC.php:74
+msgid "Agendas"
+msgstr ""
+
+#: mod/Agenda/Agenda_AgendaC.php:61 mod/Simulador/Simulador_TagC.php:102
+#: mod/_Sistema/_Sistema_FilialC.php:41
+#: mod/usuario/usuario_ExpedienteC.php:281
+#: mod/usuario/usuario_ExpedienteC.php:329
+#: mod/usuario/usuario_ExpedienteC.php:389
+#: mod/usuario/usuario_Controle.php:1201
+#: mod/Locomocao/Locomocao_EntregaC.php:24
+msgid "Id"
+msgstr ""
+
+#: mod/Agenda/Agenda_AgendaC.php:62
+#: DAO/Financeiro.Pagamento.Externo.DAO.php:110
+#: DAO/Biblioteca.Acesso.DAO.php:70 DAO/Agenda.Atividade.DAO.php:92
+#: DAO/Comercio.Produto.Estoque.DAO.php:147 DAO/Agenda.DAO.php:69
+#: DAO/Financeiro.Pagamento.Interno.DAO.php:96
+#: DAO/Financeiro.Pagamento.Interno.DAO.php:197
+msgid "Motivo"
+msgstr ""
+
+#: mod/Agenda/Agenda_AgendaC.php:63
+msgid "Motivo ID"
+msgstr ""
+
+#: mod/Agenda/Agenda_AgendaC.php:64 DAO/Usuario.Agenda.DAO.php:99
+msgid "Data Inicio"
+msgstr ""
+
+#: mod/Agenda/Agenda_AgendaC.php:65 DAO/Usuario.Agenda.DAO.php:126
+msgid "Data Fim"
+msgstr ""
+
+#: mod/Agenda/Agenda_AgendaC.php:69
+msgid "Listagem de Agendas"
+msgstr ""
+
+#: mod/Agenda/Agenda_AgendaC.php:70 mod/Agenda/Agenda_AgendaC.php:84
+msgid "Adicionar Agenda"
+msgstr ""
+
+#: mod/Agenda/Agenda_AgendaC.php:85
+msgid "Salvar Agenda"
+msgstr ""
+
+#: mod/Agenda/Agenda_AgendaC.php:99
+msgid "Agenda Adicionada com Sucesso"
+msgstr ""
+
+#: mod/Agenda/Agenda_AgendaC.php:103
+msgid "Agenda cadastrado com sucesso."
+msgstr ""
+
+#: mod/Agenda/Agenda_AgendaC.php:117
+msgid "Alteração de Agenda"
+msgstr ""
+
+#: mod/Agenda/Agenda_AgendaC.php:119
+msgid "Alterar Agenda"
+msgstr ""
+
+#: mod/Agenda/Agenda_AgendaC.php:132
+msgid "Agenda Editada com Sucesso"
+msgstr ""
+
+#: mod/Agenda/Agenda_AgendaC.php:135
+msgid "Agenda Alterada com Sucesso."
+msgstr ""
+
+#: mod/Agenda/Agenda_AgendaC.php:156
+msgid "Agenda Deletado com sucesso"
+msgstr ""
+
+#: mod/Agenda/Agenda_AgendaC.php:169
+msgid "Agenda deletado com Sucesso"
+msgstr ""
+
 #: mod/comercio_venda/_Principal.Class.php:133
 #: mod/comercio_venda/comercio_venda_CarrinhoC.php:518
 #: mod/comercio_venda/_Config.php:20
@@ -1922,6 +2167,10 @@ msgstr ""
 
 #: mod/comercio_venda/comercio_venda_ComposicaoC.php:41
 msgid "Cardápios"
+msgstr ""
+
+#: mod/comercio_venda/comercio_venda_ComposicaoC.php:98
+msgid "Foto da Composição"
 msgstr ""
 
 #: mod/comercio_venda/comercio_venda_ComposicaoC.php:116
@@ -2033,12 +2282,16 @@ msgid "Caixa deletado com Sucesso"
 msgstr ""
 
 #: mod/comercio_venda/comercio_venda_CarrinhoC.php:397
-#: mod/comercio/comercio_PropostaC.php:1913
+#: mod/Locomocao/Locomocao_EntregaC.php:425
+#: mod/Locomocao/Locomocao_EntregaC.php:426
+#: mod/Locomocao/Locomocao_EntregaC.php:427
+#: mod/comercio/comercio_PropostaC.php:1917
 msgid "Calculando"
 msgstr ""
 
 #: mod/comercio_venda/comercio_venda_CarrinhoC.php:418
-#: mod/comercio/comercio_PropostaC.php:1934
+#: mod/Locomocao/Locomocao_EntregaC.php:454
+#: mod/comercio/comercio_PropostaC.php:1938
 msgid "Informações Temporárias"
 msgstr ""
 
@@ -2189,199 +2442,203 @@ msgstr ""
 msgid "Não Cadastrado"
 msgstr ""
 
-#: mod/locais/locais_localidadesC.php:37
-msgid "falso"
+#: mod/locais/locais_localidadesC.php:148
+msgid "Cep Inválido"
 msgstr ""
 
-#: mod/locais/locais_localidadesC.php:210
+#: mod/locais/locais_localidadesC.php:149
+msgid "Cep não Reconhecido pelos Corrêios"
+msgstr ""
+
+#: mod/locais/locais_localidadesC.php:267
 msgid "Listagem de Paises"
 msgstr ""
 
-#: mod/locais/locais_localidadesC.php:214
+#: mod/locais/locais_localidadesC.php:271
 msgid "Administrar Paises"
 msgstr ""
 
-#: mod/locais/locais_localidadesC.php:223
+#: mod/locais/locais_localidadesC.php:280
 msgid "Adicionar Pais"
 msgstr ""
 
-#: mod/locais/locais_localidadesC.php:224
+#: mod/locais/locais_localidadesC.php:281
 msgid "Salvar Pais"
 msgstr ""
 
-#: mod/locais/locais_localidadesC.php:239
+#: mod/locais/locais_localidadesC.php:295
 msgid "Pais Adicionado com Sucesso"
 msgstr ""
 
-#: mod/locais/locais_localidadesC.php:243
+#: mod/locais/locais_localidadesC.php:299
 msgid "Pais cadastrado com sucesso."
 msgstr ""
 
-#: mod/locais/locais_localidadesC.php:256
+#: mod/locais/locais_localidadesC.php:312
 msgid "Alteração de Pais"
 msgstr ""
 
-#: mod/locais/locais_localidadesC.php:258
+#: mod/locais/locais_localidadesC.php:314
 msgid "Alterar Pais"
 msgstr ""
 
-#: mod/locais/locais_localidadesC.php:272
+#: mod/locais/locais_localidadesC.php:327
 msgid "Pais Editado com Sucesso"
 msgstr ""
 
-#: mod/locais/locais_localidadesC.php:275
+#: mod/locais/locais_localidadesC.php:330
 msgid "Pais Alterado com Sucesso."
 msgstr ""
 
-#: mod/locais/locais_localidadesC.php:299
+#: mod/locais/locais_localidadesC.php:351
 msgid "Pais deletado com sucesso"
 msgstr ""
 
-#: mod/locais/locais_localidadesC.php:312
+#: mod/locais/locais_localidadesC.php:364
 msgid "Pais deletado com Sucesso"
 msgstr ""
 
-#: mod/locais/locais_localidadesC.php:338
+#: mod/locais/locais_localidadesC.php:390
 msgid "Listagem de Estados"
 msgstr ""
 
-#: mod/locais/locais_localidadesC.php:342
+#: mod/locais/locais_localidadesC.php:394
 msgid "Administrar Estados"
 msgstr ""
 
-#: mod/locais/locais_localidadesC.php:351
+#: mod/locais/locais_localidadesC.php:403
 msgid "Adicionar Estado"
 msgstr ""
 
-#: mod/locais/locais_localidadesC.php:352
+#: mod/locais/locais_localidadesC.php:404
 msgid "Salvar Estado"
 msgstr ""
 
-#: mod/locais/locais_localidadesC.php:367
+#: mod/locais/locais_localidadesC.php:419
 msgid "Estado Adicionado com Sucesso"
 msgstr ""
 
-#: mod/locais/locais_localidadesC.php:371
+#: mod/locais/locais_localidadesC.php:423
 msgid "Estado cadastrado com sucesso."
 msgstr ""
 
-#: mod/locais/locais_localidadesC.php:384
+#: mod/locais/locais_localidadesC.php:436
 msgid "Alteração de Estado"
 msgstr ""
 
-#: mod/locais/locais_localidadesC.php:386
+#: mod/locais/locais_localidadesC.php:438
 msgid "Alterar Estado"
 msgstr ""
 
-#: mod/locais/locais_localidadesC.php:400
+#: mod/locais/locais_localidadesC.php:452
 msgid "Estado Editado com Sucesso"
 msgstr ""
 
-#: mod/locais/locais_localidadesC.php:403
+#: mod/locais/locais_localidadesC.php:455
 msgid "Estado Alterado com Sucesso."
 msgstr ""
 
-#: mod/locais/locais_localidadesC.php:427
+#: mod/locais/locais_localidadesC.php:479
 msgid "Estado deletado com sucesso"
 msgstr ""
 
-#: mod/locais/locais_localidadesC.php:440
+#: mod/locais/locais_localidadesC.php:492
 msgid "Estado deletado com Sucesso"
 msgstr ""
 
-#: mod/locais/locais_localidadesC.php:466
+#: mod/locais/locais_localidadesC.php:518
 msgid "Listagem de Cidades"
 msgstr ""
 
-#: mod/locais/locais_localidadesC.php:470
+#: mod/locais/locais_localidadesC.php:522
 msgid "Administrar Cidades"
 msgstr ""
 
-#: mod/locais/locais_localidadesC.php:479
+#: mod/locais/locais_localidadesC.php:531
 msgid "Adicionar Cidade"
 msgstr ""
 
-#: mod/locais/locais_localidadesC.php:480
+#: mod/locais/locais_localidadesC.php:532
 msgid "Salvar Cidade"
 msgstr ""
 
-#: mod/locais/locais_localidadesC.php:495
+#: mod/locais/locais_localidadesC.php:547
 msgid "Cidade Adicionada com Sucesso"
 msgstr ""
 
-#: mod/locais/locais_localidadesC.php:499
+#: mod/locais/locais_localidadesC.php:551
 msgid "Cidade cadastrada com sucesso."
 msgstr ""
 
-#: mod/locais/locais_localidadesC.php:512
+#: mod/locais/locais_localidadesC.php:564
 msgid "Alteração de Cidade"
 msgstr ""
 
-#: mod/locais/locais_localidadesC.php:514
+#: mod/locais/locais_localidadesC.php:566
 msgid "Alterar Cidade"
 msgstr ""
 
-#: mod/locais/locais_localidadesC.php:528
+#: mod/locais/locais_localidadesC.php:580
 msgid "Cidade Editada com Sucesso"
 msgstr ""
 
-#: mod/locais/locais_localidadesC.php:531
+#: mod/locais/locais_localidadesC.php:583
 msgid "Cidade Alterada com Sucesso."
 msgstr ""
 
-#: mod/locais/locais_localidadesC.php:555
+#: mod/locais/locais_localidadesC.php:607
 msgid "Cidade deletada com sucesso"
 msgstr ""
 
-#: mod/locais/locais_localidadesC.php:568
+#: mod/locais/locais_localidadesC.php:620
 msgid "Cidade deletada com Sucesso"
 msgstr ""
 
-#: mod/locais/locais_localidadesC.php:594
+#: mod/locais/locais_localidadesC.php:646
 msgid "Listagem de Bairros"
 msgstr ""
 
-#: mod/locais/locais_localidadesC.php:598
+#: mod/locais/locais_localidadesC.php:650
 msgid "Administrar Bairros"
 msgstr ""
 
-#: mod/locais/locais_localidadesC.php:607
+#: mod/locais/locais_localidadesC.php:659
 msgid "Adicionar Bairro"
 msgstr ""
 
-#: mod/locais/locais_localidadesC.php:608
+#: mod/locais/locais_localidadesC.php:660
 msgid "Salvar Bairro"
 msgstr ""
 
-#: mod/locais/locais_localidadesC.php:623
+#: mod/locais/locais_localidadesC.php:675
 msgid "Bairro Adicionado com Sucesso"
 msgstr ""
 
-#: mod/locais/locais_localidadesC.php:627
+#: mod/locais/locais_localidadesC.php:679
 msgid "Bairro cadastrado com sucesso."
 msgstr ""
 
-#: mod/locais/locais_localidadesC.php:640
+#: mod/locais/locais_localidadesC.php:692
 msgid "Alteração de Bairro"
 msgstr ""
 
-#: mod/locais/locais_localidadesC.php:642
+#: mod/locais/locais_localidadesC.php:694
 msgid "Alterar Bairro"
 msgstr ""
 
-#: mod/locais/locais_localidadesC.php:656
+#: mod/locais/locais_localidadesC.php:708
 msgid "Bairro Editado com Sucesso"
 msgstr ""
 
-#: mod/locais/locais_localidadesC.php:659
+#: mod/locais/locais_localidadesC.php:711
 msgid "Bairro Alterado com Sucesso."
 msgstr ""
 
-#: mod/locais/locais_localidadesC.php:683
+#: mod/locais/locais_localidadesC.php:735
 msgid "Bairro deletado com sucesso"
 msgstr ""
 
-#: mod/locais/locais_localidadesC.php:696
+#: mod/locais/locais_localidadesC.php:748
 msgid "Bairro deletado com Sucesso"
 msgstr ""
 
@@ -2471,6 +2728,7 @@ msgid "Listagem de Ações"
 msgstr ""
 
 #: mod/social/social_AcaoC.php:137
+#: mod/social/usuario_social_VisualizarV.php:35
 msgid "Adicionar Ação"
 msgstr ""
 
@@ -2697,8 +2955,8 @@ msgid "Ficada de Pessoa deletada com sucesso"
 msgstr ""
 
 #: mod/social/usuario_social_PersonaC.php:686
-#: mod/usuario/usuario_AdminC.php:746 mod/usuario/usuario_AdminC.php:820
-#: mod/usuario/usuario_AdminC.php:920 mod/comercio/comercio_PropostaC.php:62
+#: mod/usuario/usuario_AdminC.php:753 mod/usuario/usuario_AdminC.php:827
+#: mod/usuario/usuario_AdminC.php:927 mod/comercio/comercio_PropostaC.php:62
 #: mod/comercio/comercio_PropostaC.php:143
 msgid "Comentários"
 msgstr ""
@@ -2743,6 +3001,27 @@ msgstr ""
 msgid "Comentário de Ficada deletada com Sucesso"
 msgstr ""
 
+#: mod/social/usuario_social_VisualizarV.php:35
+#: mod/social/usuario_social_VisualizarV.php:36
+msgid "Nova Ação do Usuário"
+msgstr ""
+
+#: mod/social/usuario_social_VisualizarV.php:36
+msgid "Subir Fotos"
+msgstr ""
+
+#: mod/social/usuario_social_VisualizarV.php:37
+msgid "Chance de Estar Falando a Verdade: "
+msgstr ""
+
+#: mod/social/usuario_social_VisualizarV.php:38
+msgid "Chance de Ficar: "
+msgstr ""
+
+#: mod/social/usuario_social_VisualizarV.php:39
+msgid "Vontade de Passar tempo Junto: "
+msgstr ""
+
 #: mod/social/usuario_social_personasC.php:80
 msgid "Importantes"
 msgstr ""
@@ -2771,13 +3050,31 @@ msgstr ""
 msgid "Ultimo Caso"
 msgstr ""
 
+#: mod/social/usuario_social_personasC.php:199
+msgid "Cadastro de Pessoas"
+msgstr ""
+
+#: mod/social/usuario_social_personasC.php:209
+msgid "Face Id"
+msgstr ""
+
+#: mod/social/usuario_social_personasC.php:227
+msgid "Financeiro Inserido com Sucesso"
+msgstr ""
+
+#: mod/social/usuario_social_personasC.php:228
+msgid "O valor de {valor} foi add a base de dados..."
+msgstr ""
+
 #: mod/social/social_CaracteristicaC.php:41
 #: mod/social/social_CaracteristicaC.php:43 mod/social/_Config.php:44
-#: DAO/Social.Acao.DAO.php:142
+#: mod/comercio/comercio_ProdutoC.php:103 DAO/Social.Acao.DAO.php:142
+#: DAO/Comercio.Produto.DAO.php:242
 msgid "Caracteristicas"
 msgstr ""
 
 #: mod/social/social_CaracteristicaC.php:97
+#: mod/Simulador/Simulador_TagC.php:87
 msgid "Listagem de Caracteristicas"
 msgstr ""
 
@@ -2786,10 +3083,12 @@ msgid "Administrar Caracteristicas"
 msgstr ""
 
 #: mod/social/social_CaracteristicaC.php:111
+#: mod/Simulador/Simulador_TagC.php:84 mod/Simulador/Simulador_TagC.php:121
 msgid "Adicionar Caracteristica"
 msgstr ""
 
 #: mod/social/social_CaracteristicaC.php:112
+#: mod/Simulador/Simulador_TagC.php:124
 msgid "Salvar Caracteristica"
 msgstr ""
 
@@ -2802,10 +3101,12 @@ msgid "Caracteristica cadastrado com sucesso."
 msgstr ""
 
 #: mod/social/social_CaracteristicaC.php:145
+#: mod/Simulador/Simulador_TagC.php:161
 msgid "Alteração de Caracteristica"
 msgstr ""
 
 #: mod/social/social_CaracteristicaC.php:147
+#: mod/Simulador/Simulador_TagC.php:163
 msgid "Alterar Caracteristica"
 msgstr ""
 
@@ -2920,6 +3221,404 @@ msgstr ""
 msgid "Social (Midias) - Deletar"
 msgstr ""
 
+#: mod/social/usuario_social_Visual.php:10
+msgid "Não Relacionado a Ninguém"
+msgstr ""
+
+#: mod/Simulador/_Principal.Class.php:104
+msgid "Voltar para o Diretório Anterior"
+msgstr ""
+
+#: mod/Simulador/Simulador_PerguntaC.php:29
+msgid "Todos os Perguntas"
+msgstr ""
+
+#: mod/Simulador/Simulador_PerguntaC.php:115
+msgid "Adicionar nova Pergunta"
+msgstr ""
+
+#: mod/Simulador/Simulador_PerguntaC.php:139
+msgid "Listagem de Perguntas em Todos os Simuladores"
+msgstr ""
+
+#: mod/Simulador/Simulador_PerguntaC.php:163
+msgid "Nenhuma Pergunta nesse Simulador"
+msgstr ""
+
+#: mod/Simulador/Simulador_PerguntaC.php:165
+msgid "Nenhuma Pergunta nos Simuladores"
+msgstr ""
+
+#: mod/Simulador/Simulador_PerguntaC.php:187
+msgid "Adicionar Pergunta"
+msgstr ""
+
+#: mod/Simulador/Simulador_PerguntaC.php:188
+msgid "Salvar Pergunta"
+msgstr ""
+
+#: mod/Simulador/Simulador_PerguntaC.php:221
+msgid "Pergunta Adicionada com Sucesso"
+msgstr ""
+
+#: mod/Simulador/Simulador_PerguntaC.php:224
+msgid "Pergunta cadastrada com sucesso."
+msgstr ""
+
+#: mod/Simulador/Simulador_PerguntaC.php:252
+msgid "Alteração de Pergunta"
+msgstr ""
+
+#: mod/Simulador/Simulador_PerguntaC.php:254
+msgid "Alterar Pergunta"
+msgstr ""
+
+#: mod/Simulador/Simulador_PerguntaC.php:287
+msgid "Pergunta Editada com Sucesso"
+msgstr ""
+
+#: mod/Simulador/Simulador_PerguntaC.php:294
+msgid "Pergunta Alterada com Sucesso."
+msgstr ""
+
+#: mod/Simulador/Simulador_PerguntaC.php:328
+msgid "Pergunta deletada com sucesso"
+msgstr ""
+
+#: mod/Simulador/Simulador_PerguntaC.php:345
+msgid "Pergunta deletada com Sucesso"
+msgstr ""
+
+#: mod/Simulador/Simulador_RespostaC.php:28
+msgid "Todas as Respostas"
+msgstr ""
+
+#: mod/Simulador/Simulador_RespostaC.php:142
+msgid "Adicionar nova Resposta desse Pergunta"
+msgstr ""
+
+#: mod/Simulador/Simulador_RespostaC.php:145
+msgid "Nenhuma Resposta nesse Pergunta"
+msgstr ""
+
+#: mod/Simulador/Simulador_RespostaC.php:152
+msgid "Nenhuma Resposta desse Simulador"
+msgstr ""
+
+#: mod/Simulador/Simulador_RespostaC.php:157
+msgid "Adicionar nova Resposta"
+msgstr ""
+
+#: mod/Simulador/Simulador_RespostaC.php:159
+msgid "Listagem de Respostas em Todos os Simuladores"
+msgstr ""
+
+#: mod/Simulador/Simulador_RespostaC.php:160
+msgid "Nenhuma Resposta nos Simuladores"
+msgstr ""
+
+#: mod/Simulador/Simulador_RespostaC.php:221
+#: mod/Enquete/Enquete_RespostaC.php:155
+msgid "Adicionar Resposta"
+msgstr ""
+
+#: mod/Simulador/Simulador_RespostaC.php:222
+#: mod/Enquete/Enquete_RespostaC.php:156
+msgid "Salvar Resposta"
+msgstr ""
+
+#: mod/Simulador/Simulador_RespostaC.php:287
+#: mod/Enquete/Enquete_RespostaC.php:177
+msgid "Resposta Adicionada com Sucesso"
+msgstr ""
+
+#: mod/Simulador/Simulador_RespostaC.php:290
+#: mod/Enquete/Enquete_RespostaC.php:180
+msgid "Resposta cadastrada com sucesso."
+msgstr ""
+
+#: mod/Simulador/Simulador_RespostaC.php:326
+#: mod/Enquete/Enquete_RespostaC.php:209
+msgid "Alteração de Resposta"
+msgstr ""
+
+#: mod/Simulador/Simulador_RespostaC.php:328
+#: mod/Enquete/Enquete_RespostaC.php:211
+msgid "Alterar Resposta"
+msgstr ""
+
+#: mod/Simulador/Simulador_RespostaC.php:377
+#: mod/Enquete/Enquete_RespostaC.php:234
+msgid "Resposta Editada com Sucesso"
+msgstr ""
+
+#: mod/Simulador/Simulador_RespostaC.php:389
+#: mod/Enquete/Enquete_RespostaC.php:237
+msgid "Resposta Alterada com Sucesso."
+msgstr ""
+
+#: mod/Simulador/Simulador_RespostaC.php:424
+#: mod/Enquete/Enquete_RespostaC.php:268
+msgid "Resposta deletada com sucesso"
+msgstr ""
+
+#: mod/Simulador/Simulador_RespostaC.php:445
+#: mod/Enquete/Enquete_RespostaC.php:281
+msgid "Resposta deletada com Sucesso"
+msgstr ""
+
+#: mod/Simulador/_Config.php:14 mod/Simulador/_Config.php:21
+#: mod/Simulador/Simulador_SimuladorC.php:28
+#: mod/Simulador/Simulador_SimuladorC.php:30
+msgid "Simuladores"
+msgstr ""
+
+#: mod/Simulador/_Config.php:28
+msgid "Perguntas"
+msgstr ""
+
+#: mod/Simulador/_Config.php:35 mod/Enquete/Enquete_RespostaC.php:34
+#: mod/Enquete/Enquete_RespostaC.php:36
+msgid "Respostas"
+msgstr ""
+
+#: mod/Simulador/_Config.php:42 mod/Simulador/Simulador_TagC.php:97
+msgid "Caracteristica"
+msgstr ""
+
+#: mod/Simulador/_Config.php:56
+msgid "Caracteristica - Listagem"
+msgstr ""
+
+#: mod/Simulador/_Config.php:65
+msgid "Caracteristica - Add"
+msgstr ""
+
+#: mod/Simulador/_Config.php:74
+msgid "Caracteristica - Editar"
+msgstr ""
+
+#: mod/Simulador/_Config.php:83
+msgid "Caracteristica - Deletar"
+msgstr ""
+
+#: mod/Simulador/_Config.php:95
+msgid "Simulador - Listagem"
+msgstr ""
+
+#: mod/Simulador/_Config.php:104
+msgid "Simulador - Add"
+msgstr ""
+
+#: mod/Simulador/_Config.php:113
+msgid "Simulador - Editar"
+msgstr ""
+
+#: mod/Simulador/_Config.php:122
+msgid "Simulador - Deletar"
+msgstr ""
+
+#: mod/Simulador/_Config.php:133
+msgid "Pergunta - Listagem"
+msgstr ""
+
+#: mod/Simulador/_Config.php:142
+msgid "Pergunta - Add"
+msgstr ""
+
+#: mod/Simulador/_Config.php:151
+msgid "Pergunta - Editar"
+msgstr ""
+
+#: mod/Simulador/_Config.php:160
+msgid "Pergunta - Deletar"
+msgstr ""
+
+#: mod/Simulador/_Config.php:171
+msgid "Resposta - Listagem"
+msgstr ""
+
+#: mod/Simulador/_Config.php:180
+msgid "Resposta - Add"
+msgstr ""
+
+#: mod/Simulador/_Config.php:189
+msgid "Resposta - Editar"
+msgstr ""
+
+#: mod/Simulador/_Config.php:198
+msgid "Resposta - Deletar"
+msgstr ""
+
+#: mod/Simulador/Simulador_SimuladorC.php:106
+msgid "Listagem de Simuladores"
+msgstr ""
+
+#: mod/Simulador/Simulador_SimuladorC.php:110
+msgid "Administrar Simuladores"
+msgstr ""
+
+#: mod/Simulador/Simulador_SimuladorC.php:120
+msgid "Adicionar Simulador"
+msgstr ""
+
+#: mod/Simulador/Simulador_SimuladorC.php:121
+msgid "Salvar Simulador"
+msgstr ""
+
+#: mod/Simulador/Simulador_SimuladorC.php:136
+msgid "Simulador Adicionado com Sucesso"
+msgstr ""
+
+#: mod/Simulador/Simulador_SimuladorC.php:140
+msgid "Simulador cadastrado com sucesso."
+msgstr ""
+
+#: mod/Simulador/Simulador_SimuladorC.php:154
+msgid "Alteração de Simulador"
+msgstr ""
+
+#: mod/Simulador/Simulador_SimuladorC.php:156
+msgid "Alterar Simulador"
+msgstr ""
+
+#: mod/Simulador/Simulador_SimuladorC.php:170
+msgid "Simulador Editado com Sucesso"
+msgstr ""
+
+#: mod/Simulador/Simulador_SimuladorC.php:173
+msgid "Simulador Alterado com Sucesso."
+msgstr ""
+
+#: mod/Simulador/Simulador_SimuladorC.php:197
+msgid "Simulador deletado com sucesso"
+msgstr ""
+
+#: mod/Simulador/Simulador_SimuladorC.php:210
+msgid "Simulador deletado com Sucesso"
+msgstr ""
+
+#: mod/Simulador/Simulador_SimuladorC.php:290
+#: mod/Simulador/Simulador_SimuladorC.php:293
+#: mod/Simulador/Simulador_SimuladorC.php:294
+msgid "Pergunta Respondida com Sucesso"
+msgstr ""
+
+#: mod/Simulador/Simulador_SimuladorC.php:356
+msgid "Próxima"
+msgstr ""
+
+#: mod/Simulador/Simulador_TagC.php:28 mod/Simulador/Simulador_TagC.php:30
+msgid "Tag"
+msgstr ""
+
+#: mod/Simulador/Simulador_TagC.php:55
+msgid "Editar Caracteristica"
+msgstr ""
+
+#: mod/Simulador/Simulador_TagC.php:56
+msgid "Deletar Caracteristica"
+msgstr ""
+
+#: mod/Simulador/Simulador_TagC.php:56
+msgid "Deseja realmente deletar essa Caracteristica ?"
+msgstr ""
+
+#: mod/Simulador/Simulador_TagC.php:104
+msgid "Tipo de Resultado"
+msgstr ""
+
+#: mod/Simulador/Simulador_TagC.php:105
+#: mod/Financeiro/Financeiro_AdminC.php:224
+#: mod/Financeiro/Financeiro_AdminC.php:237
+#: mod/usuario_veiculo/usuario_veiculo_AdminC.php:247
+#: DAO/Transporte.Caminhoneiro.Pedido.DAO.php:580
+#: DAO/Simulador.Pergunta.DAO.php:151 DAO/Usuario.DAO.php:1720
+#: DAO/Usuario.Telefone.DAO.php:180 DAO/Usuario.Veiculo.DAO.php:586
+#: DAO/Desenvolvimento.Projeto.DAO.php:332
+#: DAO/Predial.Salao.Reserva.DAO.php:139
+#: DAO/Engenharia.Estoque.Retirada.DAO.php:171
+#: DAO/Usuario.Veiculo.Equipamento.DAO.php:334
+#: DAO/Musica.Album.Artista.DAO.php:179
+#: DAO/Transporte.Armazem.Pedido.Lance.DAO.php:183 DAO/Enquete.DAO.php:116
+#: DAO/Comercio.Fornecedor.DAO.php:795
+#: DAO/Transporte.Transportadora.Pedido.Lance.DAO.php:183
+#: DAO/Financeiro.Pagamento.Externo.DAO.php:187
+#: DAO/Evento.Manifestacao.Territorial.DAO.php:302
+#: DAO/Comercio.Venda.Mesa.DAO.php:171 DAO/Financeiro.Financa.DAO.php:147
+#: DAO/Simulador.Pergunta.Resposta.DAO.php:273 DAO/Musica.DAO.php:205
+#: DAO/Local.DAO.php:364 DAO/Usuario.Agenda.Pasta.DAO.php:166
+#: DAO/Transporte.Armazem.DAO.php:160 DAO/Comercio.Proposta.Sub.DAO.php:163
+#: DAO/Usuario.Expediente.DAO.php:205
+#: DAO/Transporte.Armazem.Pedido.DAO.php:580 DAO/Comercio.Proposta.DAO.php:692
+#: DAO/Predial.Salao.DAO.php:145 DAO/Locomocao.Entrega.Ponto.DAO.php:369
+#: DAO/Transporte.Caminhoneiro.Pedido.Lance.DAO.php:183
+#: DAO/Transporte.Transportadora.DAO.php:132
+#: DAO/Comercio.Checklist.DAO.php:272 DAO/Comercio.Produto.Estoque.DAO.php:227
+#: DAO/Social.Ficou.DAO.php:109 DAO/Simulador.Tag.DAO.php:142
+#: DAO/Financeiro.Pagamento.Interno.DAO.php:467 DAO/Musica.Album.DAO.php:232
+#: DAO/Transporte.Fornecedor.DAO.php:131
+#: DAO/Comercio.Fornecedor.Material.DAO.php:398 DAO/Musica.Video.DAO.php:297
+#: DAO/Desenvolvimento.Senha.DAO.php:265
+#: DAO/Transporte.Transportadora.Pedido.DAO.php:580
+#: DAO/Predial.Bloco.Apart.Correio.DAO.php:245
+#: DAO/Comercio.Produto.Estoque.Reduzir.DAO.php:119
+#: DAO/Curso.Turma.Inscricao.DAO.php:261 DAO/Categoria.DAO.php:153
+#: DAO/Simulador.DAO.php:124 DAO/Sistema.Grupo.DAO.php:197
+#: DAO/Usuario.Agenda.DAO.php:153
+msgid "Observação"
+msgstr ""
+
+#: mod/Simulador/Simulador_TagC.php:122
+msgid "Salvar Caracteristicas"
+msgstr ""
+
+#: mod/Simulador/Simulador_TagC.php:138
+msgid "Caracteristica Adicionada com Sucesso"
+msgstr ""
+
+#: mod/Simulador/Simulador_TagC.php:142
+msgid "Caracteristica cadastrada com sucesso."
+msgstr ""
+
+#: mod/Simulador/Simulador_TagC.php:196
+#: mod/comercio_servicos/comercio_servicos_ServicoC.php:150
+#: mod/biblioteca/biblioteca_BibliotecaC.php:456
+#: mod/categoria/categoria_AdminC.php:198
+msgid "Editado com Sucesso"
+msgstr ""
+
+#: mod/Simulador/Simulador_TagC.php:199
+msgid "Caracteristica/Tag Alterado com Sucesso."
+msgstr ""
+
+#: mod/Simulador/Simulador_TagC.php:220
+msgid "Tag/Caracteristica deletado com sucesso"
+msgstr ""
+
+#: mod/Simulador/Simulador_TagC.php:266
+msgid "Todos os Caracteristicas"
+msgstr ""
+
+#: mod/Simulador/Simulador_TagC.php:285
+msgid "Criar Conexão com Tag"
+msgstr ""
+
+#: mod/Simulador/Simulador_TagC.php:286 mod/Simulador/Simulador_TagC.php:288
+#: mod/biblioteca/biblioteca_BibliotecaC.php:584
+#: mod/biblioteca/biblioteca_BibliotecaC.php:586
+msgid "Salvar Conexão"
+msgstr ""
+
+#: mod/Simulador/Simulador_TagC.php:303
+msgid "Conexão de Tag Feita com Sucesso"
+msgstr ""
+
+#: mod/Simulador/Simulador_TagC.php:307
+#: mod/biblioteca/biblioteca_BibliotecaC.php:605
+msgid "Conexão cadastrada com sucesso."
+msgstr ""
+
 #: mod/usuario_mensagem/usuario_mensagem_SuporteC.php:26
 #: mod/usuario_mensagem/usuario_mensagem_SuporteC.php:28
 #: mod/usuario_mensagem/_Config.php:15
@@ -2937,6 +3636,14 @@ msgstr ""
 msgid "Tickets"
 msgstr ""
 
+#: mod/usuario_mensagem/usuario_mensagem_SuporteC.php:118
+msgid "Os setores não possuem chamados."
+msgstr ""
+
+#: mod/usuario_mensagem/usuario_mensagem_SuporteC.php:120
+msgid "O setor não possui chamados."
+msgstr ""
+
 #: mod/usuario_mensagem/usuario_mensagem_SuporteC.php:124
 msgid "Todos os Chamados de todos os Setores"
 msgstr ""
@@ -2948,6 +3655,10 @@ msgstr ""
 #: mod/usuario_mensagem/usuario_mensagem_SuporteC.php:132
 #: mod/usuario_mensagem/usuario_mensagem_SuporteC.php:135
 msgid "Visualizar Chamados de Cliente"
+msgstr ""
+
+#: mod/usuario_mensagem/usuario_mensagem_SuporteC.php:159
+msgid "Não possui chamados."
 msgstr ""
 
 #: mod/usuario_mensagem/usuario_mensagem_SuporteC.php:161
@@ -2969,15 +3680,44 @@ msgid "Listagem de Anexos"
 msgstr ""
 
 #: mod/usuario_mensagem/usuario_mensagem_SuporteC.php:222
-#: mod/biblioteca/biblioteca_BibliotecaC.php:403
+#: mod/biblioteca/biblioteca_BibliotecaC.php:515
 #: mod/usuario/usuario_TelefoneC.php:229 mod/usuario/usuario_AnexoC.php:133
 msgid "Upload com Sucesso"
 msgstr ""
 
 #: mod/usuario_mensagem/usuario_mensagem_SuporteC.php:239
-#: mod/biblioteca/biblioteca_BibliotecaC.php:424
+#: mod/biblioteca/biblioteca_BibliotecaC.php:530
 #: mod/usuario/usuario_TelefoneC.php:232 mod/usuario/usuario_AnexoC.php:162
 msgid "Erro com Upload"
+msgstr ""
+
+#: mod/usuario_mensagem/usuario_mensagem_SuporteC.php:271
+#: mod/biblioteca/biblioteca_BibliotecaC.php:257 DAO/Biblioteca.DAO.php:229
+msgid "Tamanho"
+msgstr ""
+
+#: mod/usuario_mensagem/usuario_mensagem_SuporteC.php:272
+#: mod/biblioteca/biblioteca_BibliotecaC.php:259
+#: DAO/Comercio.Proposta.Sub.DAO.php:90
+#: DAO/Comercio.Fornecedor.Material.DAO.php:187
+msgid "Data"
+msgstr ""
+
+#: mod/usuario_mensagem/usuario_mensagem_SuporteC.php:273
+msgid "Download"
+msgstr ""
+
+#: mod/usuario_mensagem/usuario_mensagem_SuporteC.php:273
+#: mod/biblioteca/biblioteca_BibliotecaC.php:121
+msgid "Download de Arquivo"
+msgstr ""
+
+#: mod/usuario_mensagem/usuario_mensagem_SuporteC.php:281
+msgid "Nenhum Anexo"
+msgstr ""
+
+#: mod/usuario_mensagem/usuario_mensagem_SuporteC.php:283
+msgid "Anexos"
 msgstr ""
 
 #: mod/usuario_mensagem/usuario_mensagem_OrigemC.php:41
@@ -2986,18 +3726,6 @@ msgstr ""
 
 #: mod/usuario_mensagem/usuario_mensagem_OrigemC.php:61
 msgid "Listagem de Origens"
-msgstr ""
-
-#: mod/usuario_mensagem/usuario_mensagem_OrigemC.php:61
-#: mod/usuario_mensagem/usuario_mensagem_SetorC.php:59
-#: mod/usuario_mensagem/usuario_mensagem_AssuntoC.php:59
-#: mod/Financeiro/Financeiro_PagamentoC.php:147
-#: mod/Financeiro/Financeiro_PagamentoC.php:497
-#: mod/comercio/comercio_MarcaC.php:61
-#: mod/comercio/comercio_FornecedorC.php:75
-#: mod/comercio/comercio_EstoqueC.php:301 mod/comercio/comercio_LinhaC.php:61
-#: mod/comercio/comercio_ProdutoC.php:89
-msgid "Carregando..."
 msgstr ""
 
 #: mod/usuario_mensagem/usuario_mensagem_OrigemC.php:65
@@ -3162,17 +3890,125 @@ msgstr ""
 msgid "Enviar Ticket"
 msgstr ""
 
-#: mod/usuario_mensagem/usuario_mensagem_Controle.php:232
+#: mod/usuario_mensagem/usuario_mensagem_Controle.php:230
+msgid "Enviar"
+msgstr ""
+
+#: mod/usuario_mensagem/usuario_mensagem_Controle.php:231
 msgid "Responder Ticket"
 msgstr ""
 
-#: mod/usuario_mensagem/usuario_mensagem_Controle.php:244
-#: mod/usuario_mensagem/usuario_mensagem_Controle.php:247
+#: mod/usuario_mensagem/usuario_mensagem_Controle.php:248
+msgid "Esse Cliente não Existe"
+msgstr ""
+
+#: mod/usuario_mensagem/usuario_mensagem_Controle.php:278
+#: mod/usuario_mensagem/usuario_mensagem_Controle.php:281
 msgid "Mensagem inserida com Sucesso"
 msgstr ""
 
-#: mod/usuario_mensagem/usuario_mensagem_Controle.php:336
+#: mod/usuario_mensagem/usuario_mensagem_Controle.php:289
+#: mod/usuario_mensagem/usuario_mensagem_Controle.php:341
+msgid "Cliente:"
+msgstr ""
+
+#: mod/usuario_mensagem/usuario_mensagem_Controle.php:290
+#: mod/usuario_mensagem/usuario_mensagem_Controle.php:342
+msgid "Setor:"
+msgstr ""
+
+#: mod/usuario_mensagem/usuario_mensagem_Controle.php:291
+#: mod/usuario_mensagem/usuario_mensagem_Controle.php:343
+msgid "Assunto:"
+msgstr ""
+
+#: mod/usuario_mensagem/usuario_mensagem_Controle.php:292
+#: mod/usuario_mensagem/usuario_mensagem_Controle.php:344
+msgid "Origem:"
+msgstr ""
+
+#: mod/usuario_mensagem/usuario_mensagem_Controle.php:293
+#: mod/usuario_mensagem/usuario_mensagem_Controle.php:345
+msgid "Marca:"
+msgstr ""
+
+#: mod/usuario_mensagem/usuario_mensagem_Controle.php:294
+#: mod/usuario_mensagem/usuario_mensagem_Controle.php:346
+msgid "Linha:"
+msgstr ""
+
+#: mod/usuario_mensagem/usuario_mensagem_Controle.php:295
+#: mod/usuario_mensagem/usuario_mensagem_Controle.php:347
+msgid "Produto:"
+msgstr ""
+
+#: mod/usuario_mensagem/usuario_mensagem_Controle.php:296
+#: mod/usuario_mensagem/usuario_mensagem_Controle.php:348
+msgid "Lote:"
+msgstr ""
+
+#: mod/usuario_mensagem/usuario_mensagem_Controle.php:297
+#: mod/usuario_mensagem/usuario_mensagem_Controle.php:349
+msgid "Validade:"
+msgstr ""
+
+#: mod/usuario_mensagem/usuario_mensagem_Controle.php:298
+#: mod/usuario_mensagem/usuario_mensagem_Controle.php:350
+msgid "Fabricação:"
+msgstr ""
+
+#: mod/usuario_mensagem/usuario_mensagem_Controle.php:299
+#: mod/usuario_mensagem/usuario_mensagem_Controle.php:351
+msgid "Mensagem:"
+msgstr ""
+
+#: mod/usuario_mensagem/usuario_mensagem_Controle.php:315
+msgid "NOVA MENSAGEM SAQUE"
+msgstr ""
+
+#: mod/usuario_mensagem/usuario_mensagem_Controle.php:352
+msgid "Resposta:"
+msgstr ""
+
+#: mod/usuario_mensagem/usuario_mensagem_Controle.php:365
+msgid "NOVA RESPOSTA SAQUE"
+msgstr ""
+
+#: mod/usuario_mensagem/usuario_mensagem_Controle.php:374
 msgid "Resposta inserida com Sucesso"
+msgstr ""
+
+#: mod/usuario_mensagem/usuario_mensagem_Controle.php:427
+msgid "Chamados Abertos"
+msgstr ""
+
+#: mod/usuario_mensagem/usuario_mensagem_Controle.php:437
+msgid "Chamados à Vencer"
+msgstr ""
+
+#: mod/usuario_mensagem/usuario_mensagem_Controle.php:447
+msgid "Chamados Vencidos"
+msgstr ""
+
+#: mod/usuario_mensagem/usuario_mensagem_Controle.php:457
+msgid "Chamados Finalizados"
+msgstr ""
+
+#: mod/usuario_mensagem/usuario_mensagem_Controle.php:467
+msgid "Todos os Chamados"
+msgstr ""
+
+#: mod/usuario_mensagem/usuario_mensagem_Controle.php:477
+#: mod/usuario_mensagem/usuario_mensagem_SetorC.php:39
+#: mod/usuario_mensagem/_Config.php:38
+#: DAO/Usuario.Mensagem.Setor.Responsavel.DAO.php:62
+msgid "Setores"
+msgstr ""
+
+#: mod/usuario_mensagem/usuario_mensagem_Controle.php:487
+#: mod/usuario_mensagem/_Config.php:45
+#: mod/usuario_mensagem/usuario_mensagem_AssuntoC.php:39
+msgid "Assuntos"
 msgstr ""
 
 #: mod/usuario_mensagem/usuario_mensagem_RelatorioC.php:82
@@ -3221,12 +4057,6 @@ msgstr ""
 
 #: mod/usuario_mensagem/usuario_mensagem_RelatorioC.php:131
 msgid "Relatório de Chamados Quantitativos Agrupados por Estado"
-msgstr ""
-
-#: mod/usuario_mensagem/usuario_mensagem_SetorC.php:39
-#: mod/usuario_mensagem/_Config.php:38
-#: DAO/Usuario.Mensagem.Setor.Responsavel.DAO.php:62
-msgid "Setores"
 msgstr ""
 
 #: mod/usuario_mensagem/usuario_mensagem_SetorC.php:59
@@ -3281,64 +4111,63 @@ msgstr ""
 msgid "Suporte"
 msgstr ""
 
-#: mod/usuario_mensagem/_Config.php:45
-#: mod/usuario_mensagem/usuario_mensagem_AssuntoC.php:39
-msgid "Assuntos"
-msgstr ""
-
 #: mod/usuario_mensagem/_Config.php:58
-msgid "Mensagens (Suporte) - Listagem"
+msgid "Mensagens (Suporte) - Relatorio"
 msgstr ""
 
 #: mod/usuario_mensagem/_Config.php:67
-msgid "Mensagens (Suporte) - Editar Suportes"
+msgid "Mensagens (Suporte) - Listagem"
 msgstr ""
 
 #: mod/usuario_mensagem/_Config.php:76
-msgid "Mensagens (Suporte) - Deletar Suportes"
+msgid "Mensagens (Suporte) - Editar Suportes"
 msgstr ""
 
 #: mod/usuario_mensagem/_Config.php:85
+msgid "Mensagens (Suporte) - Deletar Suportes"
+msgstr ""
+
+#: mod/usuario_mensagem/_Config.php:94
 msgid "Mensagens (Suporte) - Visualizar Suportes"
 msgstr ""
 
-#: mod/usuario_mensagem/_Config.php:95
+#: mod/usuario_mensagem/_Config.php:104
 msgid "Mensagens (Assuntos) - Listagem"
 msgstr ""
 
-#: mod/usuario_mensagem/_Config.php:104
+#: mod/usuario_mensagem/_Config.php:113
 msgid "Mensagens (Assuntos) - Add"
 msgstr ""
 
-#: mod/usuario_mensagem/_Config.php:113
+#: mod/usuario_mensagem/_Config.php:122
 msgid "Mensagens (Assuntos) - Editar"
 msgstr ""
 
-#: mod/usuario_mensagem/_Config.php:122
+#: mod/usuario_mensagem/_Config.php:131
 msgid "Mensagens (Assuntos) - Deletar"
 msgstr ""
 
-#: mod/usuario_mensagem/_Config.php:132
+#: mod/usuario_mensagem/_Config.php:141
 msgid "Mensagens (Setores) - Listagem"
 msgstr ""
 
-#: mod/usuario_mensagem/_Config.php:141
+#: mod/usuario_mensagem/_Config.php:150
 msgid "Mensagens (Setores) - Add"
 msgstr ""
 
-#: mod/usuario_mensagem/_Config.php:150
+#: mod/usuario_mensagem/_Config.php:159
 msgid "Mensagens (Setores) - Editar"
 msgstr ""
 
-#: mod/usuario_mensagem/_Config.php:159
+#: mod/usuario_mensagem/_Config.php:168
 msgid "Mensagens (Setores) - Deletar"
 msgstr ""
 
-#: mod/usuario_mensagem/_Config.php:179
+#: mod/usuario_mensagem/_Config.php:188
 msgid "Enviar Email para setor"
 msgstr ""
 
-#: mod/usuario_mensagem/_Config.php:185
+#: mod/usuario_mensagem/_Config.php:194
 msgid "Se observação conta como mensagem"
 msgstr ""
 
@@ -3402,32 +4231,6 @@ msgstr ""
 msgid "Mensagem deletada com Sucesso"
 msgstr ""
 
-#: mod/comercio_servicos/comercio_servicos_ServicoC.php:70
-#: mod/comercio_servicos/comercio_servicos_InstalacaoC.php:93
-#: mod/comercio_servicos/comercio_servicos_ServicoTipoC.php:56
-#: mod/usuario/usuario_Controle.php:1207
-#: mod/comercio/comercio_FornecedorC.php:64
-#: mod/comercio/comercio_ProdutoC.php:73
-#: DAO/Desenvolvimento.Framework.Modulo.DAO.php:64
-#: DAO/Desenvolvimento.Framework.Modulo.Config.DAO.php:91
-#: DAO/Desenvolvimento.Projeto.DAO.php:117 DAO/Musica.Album.Artista.DAO.php:94
-#: DAO/Agenda.Compromisso.DAO.php:120
-#: DAO/Evento.Manifestacao.Territorial.DAO.php:71
-#: DAO/Predial.Bloco.Apart.Advertencia.DAO.php:162
-#: DAO/Comercio.Venda.Mesa.DAO.php:67 DAO/Social.Caracteristica.DAO.php:65
-#: DAO/Comercio.Servicos.Servico.Tipo.DAO.php:63
-#: DAO/Transporte.Caminhoneiro.DAO.php:76 DAO/Usuario.Agenda.Pasta.DAO.php:140
-#: DAO/Transporte.Armazem.DAO.php:82
-#: DAO/Desenvolvimento.Framework.Metodo.DAO.php:65
-#: DAO/Transporte.Transportadora.DAO.php:81
-#: DAO/Comercio.Venda.Composicao.DAO.php:92
-#: DAO/Predial.Bloco.Apart.Informativo.DAO.php:152
-#: DAO/Transporte.Fornecedor.DAO.php:80 DAO/Universal.Vivo.Cpf.DAO.php:88
-#: DAO/Desenvolvimento.Framework.Submodulo.DAO.php:65
-#: DAO/Categoria.DAO.php:110 DAO/Curso.DAO.php:68
-msgid "Nome"
-msgstr ""
-
 #: mod/comercio_servicos/comercio_servicos_ServicoC.php:73
 msgid "Descriçao"
 msgstr ""
@@ -3440,24 +4243,10 @@ msgstr ""
 msgid "Preço"
 msgstr ""
 
-#: mod/comercio_servicos/comercio_servicos_ServicoC.php:75
-#: mod/comercio_servicos/comercio_servicos_InstalacaoC.php:97
-#: mod/comercio_servicos/comercio_servicos_InstalacaoC.php:218
-#: mod/comercio_servicos/comercio_servicos_ServicoTipoC.php:57
-#: mod/usuario/usuario_Controle.php:1219
-#: mod/comercio/comercio_FornecedorC.php:72
-#: mod/comercio/comercio_ProdutoC.php:86
-#: mod/Desenvolvimento/Desenvolvimento_SenhaC.php:65
-#: mod/Desenvolvimento/Desenvolvimento_SenhaC.php:79
-#: mod/Desenvolvimento/Desenvolvimento_SenhaC.php:379
-#: mod/Desenvolvimento/Desenvolvimento_SenhaC.php:392
-msgid "Funções"
-msgstr ""
-
 #: mod/comercio_servicos/comercio_servicos_ServicoC.php:82
 #: mod/Financeiro/Financeiro_PagamentoC.php:636
 #: mod/predial/predial_CorreioC.php:175
-#: mod/comercio/comercio_PropostaC.php:396
+#: mod/comercio/comercio_PropostaC.php:398
 msgid "Administrar "
 msgstr ""
 
@@ -3469,12 +4258,6 @@ msgstr ""
 #: mod/comercio_servicos/comercio_servicos_ServicoC.php:116
 #: mod/categoria/categoria_AdminC.php:114
 msgid "Cadastrado com sucesso."
-msgstr ""
-
-#: mod/comercio_servicos/comercio_servicos_ServicoC.php:150
-#: mod/biblioteca/biblioteca_BibliotecaC.php:344
-#: mod/categoria/categoria_AdminC.php:198
-msgid "Editado com Sucesso"
 msgstr ""
 
 #: mod/comercio_servicos/comercio_servicos_ServicoC.php:153
@@ -3550,18 +4333,23 @@ msgid "Btu deletado com Sucesso"
 msgstr ""
 
 #: mod/comercio_servicos/comercio_servicos_InstalacaoC.php:216
+#: mod/biblioteca/biblioteca_BibliotecaC.php:253
 #: DAO/Sistema.Newsletter.DAO.php:146 DAO/Gramatica.Substantivo.DAO.php:104
 #: DAO/Biblioteca.DAO.php:146
 msgid "Tipo"
 msgstr ""
 
 #: mod/comercio_servicos/comercio_servicos_InstalacaoC.php:217
-#: DAO/Usuario.Permissao.DAO.php:96 DAO/Desenvolvimento.Projeto.DAO.php:142
+#: mod/_Sistema/_Sistema_AdminC.php:319
+#: mod/Financeiro/Financeiro_AdminC.php:222
+#: mod/Financeiro/Financeiro_AdminC.php:235 DAO/Usuario.Permissao.DAO.php:96
+#: DAO/Desenvolvimento.Projeto.DAO.php:142
 #: DAO/Comercio.Servicos.Suporte.DAO.php:88
 #: DAO/Usuario.Veiculo.Equipamento.DAO.php:186
 #: DAO/Sistema.Grupo.Permissao.DAO.php:106
 #: DAO/Financeiro.Pagamento.Externo.DAO.php:160
-#: DAO/Financeiro.Financa.DAO.php:92 DAO/Comercio.Checklist.DAO.php:120
+#: DAO/Financeiro.Financa.DAO.php:92 DAO/Sistema.Config.DAO.php:137
+#: DAO/Comercio.Checklist.DAO.php:120
 #: DAO/Financeiro.Pagamento.Interno.DAO.php:273
 #: DAO/Engenharia.Equipamento.DAO.php:144
 #: DAO/Engenharia.Empreendimento.Custo.DAO.php:141
@@ -3625,7 +4413,8 @@ msgstr ""
 msgid "Tipos de Serviços"
 msgstr ""
 
-#: mod/comercio_servicos/_Config.php:32 DAO/Comercio.Proposta.DAO.php:217
+#: mod/comercio_servicos/_Config.php:32
+#: mod/comercio/comercio_PropostaC.php:184 DAO/Comercio.Proposta.DAO.php:217
 msgid "Btus"
 msgstr ""
 
@@ -3906,7 +4695,8 @@ msgstr ""
 msgid "Administrar"
 msgstr ""
 
-#: mod/_Sistema/_Config.php:33 mod/usuario/_Config.php:54
+#: mod/_Sistema/_Config.php:33 mod/_Sistema/_Config.php:56
+#: mod/usuario/_Config.php:65
 msgid "Configurações"
 msgstr ""
 
@@ -3915,75 +4705,107 @@ msgid "Grupos"
 msgstr ""
 
 #: mod/_Sistema/_Config.php:46
-msgid "Menu"
+msgid "Menus"
 msgstr ""
 
-#: mod/_Sistema/_Config.php:63
+#: mod/_Sistema/_Config.php:66
+msgid "Filiais"
+msgstr ""
+
+#: mod/_Sistema/_Config.php:83
 msgid "Gráfico"
 msgstr ""
 
-#: mod/_Sistema/_Config.php:74
+#: mod/_Sistema/_Config.php:94
 msgid "Sistema - Administração Avançada"
 msgstr ""
 
-#: mod/_Sistema/_Config.php:88
+#: mod/_Sistema/_Config.php:108
 msgid "Sistema (Menu) - Listagem"
 msgstr ""
 
-#: mod/_Sistema/_Config.php:100
+#: mod/_Sistema/_Config.php:120 mod/_Sistema/_Config.php:132
 msgid "Sistema (Menu) - Add"
 msgstr ""
 
-#: mod/_Sistema/_Config.php:112
+#: mod/_Sistema/_Config.php:144
 msgid "Sistema (Menu) - Editar"
 msgstr ""
 
-#: mod/_Sistema/_Config.php:124
+#: mod/_Sistema/_Config.php:156
 msgid "Sistema (Menu) - Deletar"
 msgstr ""
 
-#: mod/_Sistema/_Config.php:138
+#: mod/_Sistema/_Config.php:170
+msgid "Sistema (Configuração) - Listagem"
+msgstr ""
+
+#: mod/_Sistema/_Config.php:182
+msgid "Sistema (Configuração) - Editar"
+msgstr ""
+
+#: mod/_Sistema/_Config.php:196
 msgid "Newsletter - Listagem"
 msgstr ""
 
-#: mod/_Sistema/_Config.php:150
+#: mod/_Sistema/_Config.php:208
 msgid "Newsletter - Add"
 msgstr ""
 
-#: mod/_Sistema/_Config.php:162
+#: mod/_Sistema/_Config.php:220
 msgid "Newsletter - Editar"
 msgstr ""
 
-#: mod/_Sistema/_Config.php:174
+#: mod/_Sistema/_Config.php:232
 msgid "Newsletter - Deletar"
 msgstr ""
 
-#: mod/_Sistema/_Config.php:190
+#: mod/_Sistema/_Config.php:248
 msgid "Sistema (Grupos) - Listagem"
 msgstr ""
 
-#: mod/_Sistema/_Config.php:199
+#: mod/_Sistema/_Config.php:257
 msgid "Sistema (Grupos) - Add"
 msgstr ""
 
-#: mod/_Sistema/_Config.php:208
+#: mod/_Sistema/_Config.php:266
 msgid "Sistema (Grupos) - Editar"
 msgstr ""
 
-#: mod/_Sistema/_Config.php:217
+#: mod/_Sistema/_Config.php:275
 msgid "Sistema (Grupos) - Deletar"
 msgstr ""
 
-#: mod/_Sistema/_Config.php:227
+#: mod/_Sistema/_Config.php:285
 msgid "Permissões (Grupo) - Listagem"
 msgstr ""
 
-#: mod/_Sistema/_Config.php:247
+#: mod/_Sistema/_Config.php:296
+msgid "Sistema (Filiais) - Listagem"
+msgstr ""
+
+#: mod/_Sistema/_Config.php:308
+msgid "Sistema (Filiais) - Add"
+msgstr ""
+
+#: mod/_Sistema/_Config.php:320
+msgid "Sistema (Filiais) - Editar"
+msgstr ""
+
+#: mod/_Sistema/_Config.php:332
+msgid "Sistema (Filiais) - Deletar"
+msgstr ""
+
+#: mod/_Sistema/_Config.php:355
 msgid "Se possue Newsletter"
 msgstr ""
 
-#: mod/_Sistema/_Config.php:253
-msgid "Se possue acesso a parte Avancada do Sistema"
+#: mod/_Sistema/_Config.php:361
+msgid "Se Carrega ou nao Permissao em Avancado e se aparece no menu"
+msgstr ""
+
+#: mod/_Sistema/_Config.php:367
+msgid "Se Carrega ou nao as Filiais"
 msgstr ""
 
 #: mod/_Sistema/_Sistema_PrincipalC.php:33
@@ -3996,292 +4818,410 @@ msgstr ""
 msgid "Busca"
 msgstr ""
 
-#: mod/_Sistema/_Sistema_AdminC.php:29
+#: mod/_Sistema/_Sistema_FilialC.php:43 DAO/Comercio.Visita.DAO.php:358
+#: DAO/Engenharia.Empreendimento.DAO.php:281 DAO/Usuario.DAO.php:892
+#: DAO/Sistema.Filial.DAO.php:178 DAO/Social.DAO.php:374
+#: DAO/Universal.Vivo.Cep.DAO.php:139 DAO/Comercio.Fornecedor.DAO.php:668
+#: DAO/Evento.Manifestacao.Territorial.DAO.php:226 DAO/Local.DAO.php:259
+#: DAO/Locomocao.Entrega.Ponto.DAO.php:203
+msgid "Bairro"
+msgstr ""
+
+#: mod/_Sistema/_Sistema_FilialC.php:44 DAO/Comercio.Visita.DAO.php:379
+#: DAO/Sistema.Permissao.DAO.php:158 DAO/Usuario.DAO.php:917
+#: DAO/Social.DAO.php:395 DAO/Comercio.Fornecedor.DAO.php:689
+#: DAO/Evento.Manifestacao.Territorial.DAO.php:251 DAO/Local.DAO.php:285
+msgid "Endereço"
+msgstr ""
+
+#: mod/_Sistema/_Sistema_FilialC.php:49
+msgid "Listagem de Filiais"
+msgstr ""
+
+#: mod/_Sistema/_Sistema_FilialC.php:51 mod/_Sistema/_Sistema_FilialC.php:53
+#: mod/_Sistema/_Sistema_FilialC.php:55 mod/_Sistema/_Sistema_FilialC.php:68
+msgid "Adicionar Filial"
+msgstr ""
+
+#: mod/_Sistema/_Sistema_FilialC.php:58
+msgid "Administrar Filiais"
+msgstr ""
+
+#: mod/_Sistema/_Sistema_FilialC.php:69
+msgid "Salvar Filial"
+msgstr ""
+
+#: mod/_Sistema/_Sistema_FilialC.php:84
+msgid "Filial Adicionada com Sucesso"
+msgstr ""
+
+#: mod/_Sistema/_Sistema_FilialC.php:88
+msgid "Filial cadastrada com sucesso."
+msgstr ""
+
+#: mod/_Sistema/_Sistema_FilialC.php:101
+msgid "Editar Filial"
+msgstr ""
+
+#: mod/_Sistema/_Sistema_FilialC.php:102
+msgid "Alteração de Filial"
+msgstr ""
+
+#: mod/_Sistema/_Sistema_FilialC.php:104
+msgid "Alterar Filial"
+msgstr ""
+
+#: mod/_Sistema/_Sistema_FilialC.php:119 mod/_Sistema/_Sistema_FilialC.php:122
+msgid "Filial Alterada com Sucesso"
+msgstr ""
+
+#: mod/_Sistema/_Sistema_FilialC.php:146
+msgid "Filial Deletada com sucesso"
+msgstr ""
+
+#: mod/_Sistema/_Sistema_FilialC.php:159
+msgid "Filial deletada com Sucesso"
+msgstr ""
+
+#: mod/_Sistema/_Sistema_FilialC.php:170
+msgid "Filiais do Sistema"
+msgstr ""
+
+#: mod/_Sistema/_Sistema_AdminC.php:30
 msgid "Administração Avançada"
 msgstr ""
 
-#: mod/_Sistema/_Sistema_AdminC.php:137
-msgid "Nenhum Menu Cadastrado para exportar"
-msgstr ""
-
-#: mod/_Sistema/_Sistema_AdminC.php:139
-msgid "Nenhum Menu Cadastrado"
-msgstr ""
-
-#: mod/_Sistema/_Sistema_AdminC.php:143
-msgid "Listagem de Menus"
-msgstr ""
-
-#: mod/_Sistema/_Sistema_AdminC.php:152
-msgid "Administrar Menus"
-msgstr ""
-
-#: mod/_Sistema/_Sistema_AdminC.php:201
+#: mod/_Sistema/_Sistema_AdminC.php:97 mod/_Sistema/_Sistema_AdminC.php:215
 msgid "Adicionar Menu"
 msgstr ""
 
-#: mod/_Sistema/_Sistema_AdminC.php:202
+#: mod/_Sistema/_Sistema_AdminC.php:151
+msgid "Nenhum Menu Cadastrado para exportar"
+msgstr ""
+
+#: mod/_Sistema/_Sistema_AdminC.php:153
+msgid "Nenhum Menu Cadastrado"
+msgstr ""
+
+#: mod/_Sistema/_Sistema_AdminC.php:157
+msgid "Listagem de Menus"
+msgstr ""
+
+#: mod/_Sistema/_Sistema_AdminC.php:166
+msgid "Administrar Menus"
+msgstr ""
+
+#: mod/_Sistema/_Sistema_AdminC.php:216
 msgid "Salvar Menu"
 msgstr ""
 
-#: mod/_Sistema/_Sistema_AdminC.php:217
+#: mod/_Sistema/_Sistema_AdminC.php:231
 msgid "Menu Adicionado com Sucesso"
 msgstr ""
 
-#: mod/_Sistema/_Sistema_AdminC.php:221
+#: mod/_Sistema/_Sistema_AdminC.php:235
 msgid "Menu cadastrado com sucesso."
 msgstr ""
 
-#: mod/_Sistema/_Sistema_AdminC.php:235
+#: mod/_Sistema/_Sistema_AdminC.php:249
 msgid "Alteração de Menu"
 msgstr ""
 
-#: mod/_Sistema/_Sistema_AdminC.php:237
+#: mod/_Sistema/_Sistema_AdminC.php:251
 msgid "Alterar Menu"
 msgstr ""
 
-#: mod/_Sistema/_Sistema_AdminC.php:252 mod/_Sistema/_Sistema_AdminC.php:255
+#: mod/_Sistema/_Sistema_AdminC.php:266 mod/_Sistema/_Sistema_AdminC.php:269
 msgid "Menu Alterado com Sucesso"
 msgstr ""
 
-#: mod/_Sistema/_Sistema_AdminC.php:279
+#: mod/_Sistema/_Sistema_AdminC.php:293
 msgid "Menu Deletado com sucesso"
 msgstr ""
 
-#: mod/_Sistema/_Sistema_AdminC.php:292
+#: mod/_Sistema/_Sistema_AdminC.php:306
 msgid "Menu deletado com Sucesso"
 msgstr ""
 
-#: mod/_Sistema/_Sistema_AdminC.php:351
+#: mod/_Sistema/_Sistema_AdminC.php:317 DAO/Sistema.Permissao.DAO.php:57
+#: DAO/Sistema.Config.DAO.php:59
+msgid "Chave"
+msgstr ""
+
+#: mod/_Sistema/_Sistema_AdminC.php:324
+msgid "Listagem de Configurações"
+msgstr ""
+
+#: mod/_Sistema/_Sistema_AdminC.php:333
+msgid "Administrar Configurações"
+msgstr ""
+
+#: mod/_Sistema/_Sistema_AdminC.php:344
+msgid "Editar Configuração"
+msgstr ""
+
+#: mod/_Sistema/_Sistema_AdminC.php:345
+msgid "Alteração de Configuração"
+msgstr ""
+
+#: mod/_Sistema/_Sistema_AdminC.php:347
+msgid "Alterar Configuração"
+msgstr ""
+
+#: mod/_Sistema/_Sistema_AdminC.php:362 mod/_Sistema/_Sistema_AdminC.php:365
+msgid "Configuração Alterada com Sucesso"
+msgstr ""
+
+#: mod/_Sistema/_Sistema_AdminC.php:380
+msgid "Adicionar Permissao"
+msgstr ""
+
+#: mod/_Sistema/_Sistema_AdminC.php:426
 msgid "Nenhuma Permissão Cadastrada para exportar"
 msgstr ""
 
-#: mod/_Sistema/_Sistema_AdminC.php:353
+#: mod/_Sistema/_Sistema_AdminC.php:428
 msgid "Nenhuma Permissão Cadastrada"
 msgstr ""
 
-#: mod/_Sistema/_Sistema_AdminC.php:357
+#: mod/_Sistema/_Sistema_AdminC.php:432
 msgid "Listagem de Permissões"
 msgstr ""
 
-#: mod/_Sistema/_Sistema_AdminC.php:366
+#: mod/_Sistema/_Sistema_AdminC.php:441
 msgid "Administrar Permissões"
 msgstr ""
 
-#: mod/_Sistema/_Sistema_AdminC.php:376
+#: mod/_Sistema/_Sistema_AdminC.php:451
 msgid "Adicionar Permissão"
 msgstr ""
 
-#: mod/_Sistema/_Sistema_AdminC.php:377
+#: mod/_Sistema/_Sistema_AdminC.php:452
 msgid "Salvar Permissão"
 msgstr ""
 
-#: mod/_Sistema/_Sistema_AdminC.php:392
+#: mod/_Sistema/_Sistema_AdminC.php:467
 msgid "Permissão Adicionada com Sucesso"
 msgstr ""
 
-#: mod/_Sistema/_Sistema_AdminC.php:396
+#: mod/_Sistema/_Sistema_AdminC.php:471
 msgid "Permissão cadastrada com sucesso."
 msgstr ""
 
-#: mod/_Sistema/_Sistema_AdminC.php:411
+#: mod/_Sistema/_Sistema_AdminC.php:486
 msgid "Alteração de Permissao"
 msgstr ""
 
-#: mod/_Sistema/_Sistema_AdminC.php:413
+#: mod/_Sistema/_Sistema_AdminC.php:488
 msgid "Alterar Permissao"
 msgstr ""
 
-#: mod/_Sistema/_Sistema_AdminC.php:428 mod/_Sistema/_Sistema_AdminC.php:431
+#: mod/_Sistema/_Sistema_AdminC.php:503 mod/_Sistema/_Sistema_AdminC.php:506
 msgid "Permissão Alterada com Sucesso"
 msgstr ""
 
-#: mod/_Sistema/_Sistema_AdminC.php:455
+#: mod/_Sistema/_Sistema_AdminC.php:530
 msgid "Permissão Deletada com sucesso"
 msgstr ""
 
-#: mod/_Sistema/_Sistema_AdminC.php:468
+#: mod/_Sistema/_Sistema_AdminC.php:543
 msgid "Permissão deletada com Sucesso"
 msgstr ""
 
-#: mod/_Sistema/_Sistema_AdminC.php:538
-msgid "Listagem de Grupos"
-msgstr ""
-
-#: mod/_Sistema/_Sistema_AdminC.php:548
-msgid "Administrar Grupos"
-msgstr ""
-
-#: mod/_Sistema/_Sistema_AdminC.php:559
+#: mod/_Sistema/_Sistema_AdminC.php:566 mod/_Sistema/_Sistema_AdminC.php:634
 msgid "Adicionar Grupo"
 msgstr ""
 
-#: mod/_Sistema/_Sistema_AdminC.php:560
+#: mod/_Sistema/_Sistema_AdminC.php:613
+msgid "Listagem de Grupos"
+msgstr ""
+
+#: mod/_Sistema/_Sistema_AdminC.php:623
+msgid "Administrar Grupos"
+msgstr ""
+
+#: mod/_Sistema/_Sistema_AdminC.php:635
 msgid "Salvar Grupo"
 msgstr ""
 
-#: mod/_Sistema/_Sistema_AdminC.php:579
+#: mod/_Sistema/_Sistema_AdminC.php:654
 msgid "Grupo Adicionado com Sucesso"
 msgstr ""
 
-#: mod/_Sistema/_Sistema_AdminC.php:583
+#: mod/_Sistema/_Sistema_AdminC.php:658
 msgid "Grupo cadastrado com sucesso."
 msgstr ""
 
-#: mod/_Sistema/_Sistema_AdminC.php:598
+#: mod/_Sistema/_Sistema_AdminC.php:673
 msgid "Alteração de Grupo"
 msgstr ""
 
-#: mod/_Sistema/_Sistema_AdminC.php:600 mod/usuario/usuario_PerfilC.php:152
+#: mod/_Sistema/_Sistema_AdminC.php:675 mod/usuario/usuario_PerfilC.php:152
 msgid "Alterar Grupo"
 msgstr ""
 
-#: mod/_Sistema/_Sistema_AdminC.php:617
+#: mod/_Sistema/_Sistema_AdminC.php:692
 msgid "Grupo Editado com Sucesso"
 msgstr ""
 
-#: mod/_Sistema/_Sistema_AdminC.php:620
+#: mod/_Sistema/_Sistema_AdminC.php:695
 msgid "Grupo Alterado com Sucesso."
 msgstr ""
 
-#: mod/_Sistema/_Sistema_AdminC.php:645
+#: mod/_Sistema/_Sistema_AdminC.php:720
 msgid "Grupo Deletado com sucesso"
 msgstr ""
 
-#: mod/_Sistema/_Sistema_AdminC.php:658
+#: mod/_Sistema/_Sistema_AdminC.php:733
 msgid "Grupo deletado com Sucesso"
 msgstr ""
 
-#: mod/_Sistema/_Sistema_AdminC.php:669 mod/_Sistema/_Sistema_AdminC.php:754
+#: mod/_Sistema/_Sistema_AdminC.php:744 mod/_Sistema/_Sistema_AdminC.php:829
 msgid "Adicionar Permissão de Grupo"
 msgstr ""
 
-#: mod/_Sistema/_Sistema_AdminC.php:670
+#: mod/_Sistema/_Sistema_AdminC.php:745
 msgid "Nenhuma permissão de Nenhum Grupo"
 msgstr ""
 
-#: mod/_Sistema/_Sistema_AdminC.php:674
+#: mod/_Sistema/_Sistema_AdminC.php:749
 msgid "Adicionar Permissão ao Grupo"
 msgstr ""
 
-#: mod/_Sistema/_Sistema_AdminC.php:675
+#: mod/_Sistema/_Sistema_AdminC.php:750
 msgid "Nenhuma permissão do Grupo"
 msgstr ""
 
-#: mod/_Sistema/_Sistema_AdminC.php:716
+#: mod/_Sistema/_Sistema_AdminC.php:791
 msgid "Listagem de Permissão de Grupo"
 msgstr ""
 
-#: mod/_Sistema/_Sistema_AdminC.php:726
+#: mod/_Sistema/_Sistema_AdminC.php:801
 msgid "Administrar Permissões de Grupos"
 msgstr ""
 
-#: mod/_Sistema/_Sistema_AdminC.php:752
+#: mod/_Sistema/_Sistema_AdminC.php:827
 msgid "Cadastro de Permissão de Grupo"
 msgstr ""
 
-#: mod/_Sistema/_Sistema_AdminC.php:779
+#: mod/_Sistema/_Sistema_AdminC.php:854
 msgid "Alteração de Permissão de Grupo"
 msgstr ""
 
-#: mod/_Sistema/_Sistema_AdminC.php:808
+#: mod/_Sistema/_Sistema_AdminC.php:883
 msgid "Permissão de Grupo cadastrado com sucesso."
 msgstr ""
 
-#: mod/_Sistema/_Sistema_AdminC.php:819
+#: mod/_Sistema/_Sistema_AdminC.php:894
 msgid "Permissão de Grupo Adicionado com Sucesso"
 msgstr ""
 
-#: mod/_Sistema/_Sistema_AdminC.php:842
+#: mod/_Sistema/_Sistema_AdminC.php:917
 msgid "Permissão de Grupo Alterado com Sucesso"
 msgstr ""
 
-#: mod/_Sistema/_Sistema_AdminC.php:854
+#: mod/_Sistema/_Sistema_AdminC.php:929
 msgid "Permissão de Grupo Editado com Sucesso"
 msgstr ""
 
-#: mod/_Sistema/_Sistema_AdminC.php:876
+#: mod/_Sistema/_Sistema_AdminC.php:951
 msgid "Permissão de Grupo Deletado com sucesso"
 msgstr ""
 
-#: mod/_Sistema/_Sistema_AdminC.php:889
+#: mod/_Sistema/_Sistema_AdminC.php:964
 msgid "Permissão de Grupo deletado com Sucesso"
 msgstr ""
 
-#: mod/_Sistema/_Sistema_AdminC.php:920 mod/usuario/usuario_Controle.php:1209
-msgid "Contato"
-msgstr ""
-
-#: mod/_Sistema/_Sistema_AdminC.php:922
-msgid "Trabalhe Conosco"
-msgstr ""
-
-#: mod/_Sistema/_Sistema_AdminC.php:948
-msgid "Nenhuma Newsletter para Exportar"
-msgstr ""
-
-#: mod/_Sistema/_Sistema_AdminC.php:950
-msgid "Nenhuma Newsletter"
-msgstr ""
-
-#: mod/_Sistema/_Sistema_AdminC.php:954
-msgid "Listagem de Newsletter"
-msgstr ""
-
-#: mod/_Sistema/_Sistema_AdminC.php:964
-msgid "Administrar Newsletters"
-msgstr ""
-
-#: mod/_Sistema/_Sistema_AdminC.php:982
-msgid "Cadastro de Newsletter"
-msgstr ""
-
-#: mod/_Sistema/_Sistema_AdminC.php:984
+#: mod/_Sistema/_Sistema_AdminC.php:971 mod/_Sistema/_Sistema_AdminC.php:1059
 msgid "Adicionar Newsletter"
 msgstr ""
 
-#: mod/_Sistema/_Sistema_AdminC.php:1007
+#: mod/_Sistema/_Sistema_AdminC.php:995 mod/usuario/usuario_Controle.php:1211
+msgid "Contato"
+msgstr ""
+
+#: mod/_Sistema/_Sistema_AdminC.php:997
+msgid "Trabalhe Conosco"
+msgstr ""
+
+#: mod/_Sistema/_Sistema_AdminC.php:1023
+msgid "Nenhuma Newsletter para Exportar"
+msgstr ""
+
+#: mod/_Sistema/_Sistema_AdminC.php:1025
+msgid "Nenhuma Newsletter"
+msgstr ""
+
+#: mod/_Sistema/_Sistema_AdminC.php:1029
+msgid "Listagem de Newsletter"
+msgstr ""
+
+#: mod/_Sistema/_Sistema_AdminC.php:1039
+msgid "Administrar Newsletters"
+msgstr ""
+
+#: mod/_Sistema/_Sistema_AdminC.php:1057
+msgid "Cadastro de Newsletter"
+msgstr ""
+
+#: mod/_Sistema/_Sistema_AdminC.php:1082
 msgid "Alteração de Newsletter"
 msgstr ""
 
-#: mod/_Sistema/_Sistema_AdminC.php:1035
+#: mod/_Sistema/_Sistema_AdminC.php:1110
 msgid "Newsletter cadastrado com sucesso."
 msgstr ""
 
-#: mod/_Sistema/_Sistema_AdminC.php:1046
+#: mod/_Sistema/_Sistema_AdminC.php:1121
 msgid "Newsletter Adicionado com Sucesso"
 msgstr ""
 
-#: mod/_Sistema/_Sistema_AdminC.php:1069
+#: mod/_Sistema/_Sistema_AdminC.php:1144
 msgid "Newsletter Alterado com Sucesso"
 msgstr ""
 
-#: mod/_Sistema/_Sistema_AdminC.php:1081
+#: mod/_Sistema/_Sistema_AdminC.php:1156
 msgid "Newsletter Editado com Sucesso"
 msgstr ""
 
-#: mod/_Sistema/_Sistema_AdminC.php:1103
+#: mod/_Sistema/_Sistema_AdminC.php:1178
 msgid "Newsletter Deletado com sucesso"
 msgstr ""
 
-#: mod/_Sistema/_Sistema_AdminC.php:1116
+#: mod/_Sistema/_Sistema_AdminC.php:1191
 msgid "Newsletter deletado com Sucesso"
 msgstr ""
 
-#: mod/_Sistema/_Sistema_AdminC.php:1121
+#: mod/_Sistema/_Sistema_AdminC.php:1202
 msgid "Administração Geral"
 msgstr ""
 
-#: mod/_Sistema/_Sistema_AdminC.php:1132
+#: mod/_Sistema/_Sistema_AdminC.php:1219 mod/_Sistema/_Sistema_AdminC.php:1236
+#: mod/Locomocao/Locomocao_EntregaC.php:652
 msgid "Permissões do Sistema"
 msgstr ""
 
-#: mod/_Sistema/_Sistema_AdminC.php:1142
+#: mod/_Sistema/_Sistema_AdminC.php:1253
 msgid "Menus do Sistema"
 msgstr ""
 
-#: mod/_Sistema/_Sistema_AdminC.php:1152
+#: mod/_Sistema/_Sistema_AdminC.php:1270
 msgid "Grupos do Sistema"
+msgstr ""
+
+#: mod/biblioteca/_Principal.Class.php:104
+#: mod/biblioteca/biblioteca_BibliotecaC.php:59
+msgid "Voltar para Diretório Anterior"
+msgstr ""
+
+#: mod/biblioteca/_Principal.Class.php:151
+#: mod/biblioteca/biblioteca_BibliotecaC.php:106
+#: mod/biblioteca/biblioteca_BibliotecaM.php:54
+msgid "Abrir Diretório"
+msgstr ""
+
+#: mod/biblioteca/_Principal.Class.php:154
+msgid "Fazer Download de Arquivo "
 msgstr ""
 
 #: mod/biblioteca/biblioteca_BibliotecaC.php:28
@@ -4289,8 +5229,36 @@ msgstr ""
 msgid "Biblioteca"
 msgstr ""
 
+#: mod/biblioteca/biblioteca_BibliotecaC.php:109
+msgid "Fazer Download de Extensão "
+msgstr ""
+
+#: mod/biblioteca/biblioteca_BibliotecaC.php:118
+msgid "Editar Pasta"
+msgstr ""
+
+#: mod/biblioteca/biblioteca_BibliotecaC.php:119
+msgid "Deletar Pasta"
+msgstr ""
+
+#: mod/biblioteca/biblioteca_BibliotecaC.php:119
+msgid "Deseja realmente deletar essa pasta ?"
+msgstr ""
+
+#: mod/biblioteca/biblioteca_BibliotecaC.php:122
+msgid "Editar Arquivo"
+msgstr ""
+
+#: mod/biblioteca/biblioteca_BibliotecaC.php:123
+msgid "Deletar Arquivo"
+msgstr ""
+
+#: mod/biblioteca/biblioteca_BibliotecaC.php:123
+msgid "Deseja realmente deletar esse arquivo ?"
+msgstr ""
+
 #: mod/biblioteca/biblioteca_BibliotecaC.php:155
-#: mod/biblioteca/biblioteca_BibliotecaC.php:458
+#: mod/biblioteca/biblioteca_BibliotecaC.php:564
 msgid "Todos os Arquivos"
 msgstr ""
 
@@ -4306,53 +5274,144 @@ msgstr ""
 msgid "Listagem de Biblíotecas"
 msgstr ""
 
-#: mod/biblioteca/biblioteca_BibliotecaC.php:248
-msgid "Nenhum Arquivo/Pasta"
+#: mod/biblioteca/biblioteca_BibliotecaC.php:211
+msgid "Biblíoteca"
 msgstr ""
 
-#: mod/biblioteca/biblioteca_BibliotecaC.php:261
+#: mod/biblioteca/biblioteca_BibliotecaC.php:254
+msgid "Extensão"
+msgstr ""
+
+#: mod/biblioteca/biblioteca_BibliotecaC.php:256
+#: DAO/Sistema.Permissao.DAO.php:210 DAO/Comercio.Servicos.Servico.DAO.php:141
+#: DAO/Comercio.Produto.DAO.php:272
+#: DAO/Predial.Bloco.Apart.Advertencia.DAO.php:188
+#: DAO/Social.Caracteristica.DAO.php:91 DAO/Sistema.Config.DAO.php:111
+#: DAO/Agenda.Atividade.DAO.php:67 DAO/Comercio.Venda.Composicao.DAO.php:118
+#: DAO/Predial.Bloco.Apart.Informativo.DAO.php:178 DAO/Biblioteca.DAO.php:256
+msgid "Descrição"
+msgstr ""
+
+#: mod/biblioteca/biblioteca_BibliotecaC.php:258
+msgid "Criador"
+msgstr ""
+
+#: mod/biblioteca/biblioteca_BibliotecaC.php:260
+msgid "End. do Arquivo"
+msgstr ""
+
+#: mod/biblioteca/biblioteca_BibliotecaC.php:276
 msgid "Adicionar Pasta à Biblíoteca de Arquivos"
 msgstr ""
 
-#: mod/biblioteca/biblioteca_BibliotecaC.php:262
+#: mod/biblioteca/biblioteca_BibliotecaC.php:277
 msgid "Salvar Pastas"
 msgstr ""
 
-#: mod/biblioteca/biblioteca_BibliotecaC.php:286
+#: mod/biblioteca/biblioteca_BibliotecaC.php:301
 msgid "Pasta Adicionada com Sucesso"
 msgstr ""
 
-#: mod/biblioteca/biblioteca_BibliotecaC.php:290
+#: mod/biblioteca/biblioteca_BibliotecaC.php:305
 msgid "Pasta cadastrada com sucesso."
 msgstr ""
 
-#: mod/biblioteca/biblioteca_BibliotecaC.php:316
+#: mod/biblioteca/biblioteca_BibliotecaC.php:331
 msgid "Alteração de Biblíoteca"
 msgstr ""
 
-#: mod/biblioteca/biblioteca_BibliotecaC.php:318
+#: mod/biblioteca/biblioteca_BibliotecaC.php:333
 msgid "Alterar Biblíoteca"
 msgstr ""
 
-#: mod/biblioteca/biblioteca_BibliotecaC.php:368
+#: mod/biblioteca/biblioteca_BibliotecaC.php:386
+msgid "Visualizando Documento"
+msgstr ""
+
+#: mod/biblioteca/biblioteca_BibliotecaC.php:392
+msgid "Visualizando Imagem"
+msgstr ""
+
+#: mod/biblioteca/biblioteca_BibliotecaC.php:396
+#: DAO/Transporte.Caminhoneiro.Pedido.DAO.php:218
+#: DAO/Transporte.Armazem.Pedido.DAO.php:218
+#: DAO/Transporte.Transportadora.Pedido.DAO.php:218
+msgid "Largura"
+msgstr ""
+
+#: mod/biblioteca/biblioteca_BibliotecaC.php:397
+#: DAO/Transporte.Caminhoneiro.Pedido.DAO.php:191
+#: DAO/Transporte.Armazem.Pedido.DAO.php:191
+#: DAO/Transporte.Transportadora.Pedido.DAO.php:191
+msgid "Altura"
+msgstr ""
+
+#: mod/biblioteca/biblioteca_BibliotecaC.php:399
+msgid "Mime"
+msgstr ""
+
+#: mod/biblioteca/biblioteca_BibliotecaC.php:407
+msgid "Horário da Foto"
+msgstr ""
+
+#: mod/biblioteca/biblioteca_BibliotecaC.php:410
+msgid "Modelo da Camera"
+msgstr ""
+
+#: mod/biblioteca/biblioteca_BibliotecaC.php:413
+msgid "Fabricante da Camera"
+msgstr ""
+
+#: mod/biblioteca/biblioteca_BibliotecaC.php:416
+msgid "Programa que Manipulou o Arquivo"
+msgstr ""
+
+#: mod/biblioteca/biblioteca_BibliotecaC.php:419
+msgid "Flash"
+msgstr ""
+
+#: mod/biblioteca/biblioteca_BibliotecaC.php:422
+msgid "Abertura Relativa da Lente"
+msgstr ""
+
+#: mod/biblioteca/biblioteca_BibliotecaC.php:425
+msgid "Tempo para Foto"
+msgstr ""
+
+#: mod/biblioteca/biblioteca_BibliotecaC.php:428
+msgid "Tamanho Focal"
+msgstr ""
+
+#: mod/biblioteca/biblioteca_BibliotecaC.php:435
+msgid "Latitude da Foto"
+msgstr ""
+
+#: mod/biblioteca/biblioteca_BibliotecaC.php:436
+msgid "Longitude da Foto"
+msgstr ""
+
+#: mod/biblioteca/biblioteca_BibliotecaC.php:438
+msgid "Essa Foto não Possui Informações do local aonde ela foi tirada."
+msgstr ""
+
+#: mod/biblioteca/biblioteca_BibliotecaC.php:443
+msgid "Informações da Imagem"
+msgstr ""
+
+#: mod/biblioteca/biblioteca_BibliotecaC.php:459
+msgid "Arquivo/Pasta Alterado com Sucesso."
+msgstr ""
+
+#: mod/biblioteca/biblioteca_BibliotecaC.php:480
 msgid "Pasta/Arquivo deletado com sucesso"
 msgstr ""
 
-#: mod/biblioteca/biblioteca_BibliotecaC.php:477
+#: mod/biblioteca/biblioteca_BibliotecaC.php:583
 msgid "Criar Conexão com Biblioteca"
 msgstr ""
 
-#: mod/biblioteca/biblioteca_BibliotecaC.php:478
-#: mod/biblioteca/biblioteca_BibliotecaC.php:480
-msgid "Salvar Conexão"
-msgstr ""
-
-#: mod/biblioteca/biblioteca_BibliotecaC.php:495
+#: mod/biblioteca/biblioteca_BibliotecaC.php:601
 msgid "Conexão de Pasta Feita com Sucesso"
-msgstr ""
-
-#: mod/biblioteca/biblioteca_BibliotecaC.php:499
-msgid "Conexão cadastrada com sucesso."
 msgstr ""
 
 #: mod/biblioteca/_Config.php:26
@@ -4371,12 +5430,12 @@ msgstr ""
 msgid "Biblioteca - Deletar"
 msgstr ""
 
-#: mod/0_Lixo/_Modelo/_Config.php:15 mod/Direito/_Config.php:15
-msgid "Processos"
+#: mod/biblioteca/biblioteca_BibliotecaM.php:66
+msgid "Fazer Download de Extensão: "
 msgstr ""
 
-#: mod/0_Lixo/_Modelo/_Config.php:28 mod/Direito/_Config.php:28
-msgid "Visualizar Relatórios"
+#: mod/biblioteca/biblioteca_BibliotecaM.php:137
+msgid "Diretório"
 msgstr ""
 
 #: mod/categoria/categoria_categoriaC.php:39
@@ -4390,6 +5449,11 @@ msgstr ""
 #: mod/categoria/categoria_AdminC.php:24 mod/categoria/categoria_AdminC.php:70
 #: mod/categoria/_Config.php:15
 msgid "Categorias"
+msgstr ""
+
+#: mod/categoria/categoria_categoriaC.php:80
+#: mod/usuario/usuario_AdminC.php:185
+msgid "Editar"
 msgstr ""
 
 #: mod/categoria/categoria_categoriaC.php:81
@@ -4449,7 +5513,7 @@ msgid "Categoria Pai para Cadastros Externos"
 msgstr ""
 
 #: mod/Financeiro/Financeiro_FinancaC.php:28
-#: mod/Financeiro/Financeiro_FinancaC.php:30 mod/Financeiro/_Config.php:84
+#: mod/Financeiro/Financeiro_FinancaC.php:30 mod/Financeiro/_Config.php:85
 msgid "Finanças"
 msgstr ""
 
@@ -4517,6 +5581,24 @@ msgstr ""
 msgid "Usuarios com Dinheiro"
 msgstr ""
 
+#: mod/Financeiro/Financeiro_AdminC.php:104
+msgid "Armazenar Depósito da Empresa"
+msgstr ""
+
+#: mod/Financeiro/Financeiro_AdminC.php:105
+msgid "Armazenar Retirada da Empresa"
+msgstr ""
+
+#: mod/Financeiro/Financeiro_AdminC.php:106
+#: mod/usuario/_Principal.Class.php:81 mod/usuario/usuario_AdminC.php:667
+msgid "Editar Usuário"
+msgstr ""
+
+#: mod/Financeiro/Financeiro_AdminC.php:107
+#: mod/usuario/_Principal.Class.php:82 mod/usuario/usuario_AdminC.php:668
+msgid "Deletar Usuário"
+msgstr ""
+
 #: mod/Financeiro/Financeiro_AdminC.php:274
 #: mod/Financeiro/Financeiro_AdminC.php:277
 msgid "Depositado com Sucesso"
@@ -4539,48 +5621,52 @@ msgstr ""
 msgid "Dividas a Pagar"
 msgstr ""
 
-#: mod/Financeiro/Financeiro_ListarC.php:123
+#: mod/Financeiro/Financeiro_ListarC.php:121
 msgid "Realizar Saque"
 msgstr ""
 
-#: mod/Financeiro/Financeiro_ListarC.php:163
-#: mod/Financeiro/Financeiro_ListarC.php:249
+#: mod/Financeiro/Financeiro_ListarC.php:126
+msgid "Quantia a Sacar (Em Reais)"
+msgstr ""
+
+#: mod/Financeiro/Financeiro_ListarC.php:158
+#: mod/Financeiro/Financeiro_ListarC.php:239
 msgid "Saldo Insuficiente"
 msgstr ""
 
-#: mod/Financeiro/Financeiro_ListarC.php:183
+#: mod/Financeiro/Financeiro_ListarC.php:178
 msgid "Saque realizado com sucesso."
 msgstr ""
 
-#: mod/Financeiro/Financeiro_ListarC.php:190
+#: mod/Financeiro/Financeiro_ListarC.php:185
 msgid "Informe a Administração"
 msgstr ""
 
-#: mod/Financeiro/Financeiro_ListarC.php:204
+#: mod/Financeiro/Financeiro_ListarC.php:199
 msgid "Saque Realizado com Sucesso"
 msgstr ""
 
-#: mod/Financeiro/Financeiro_ListarC.php:205
+#: mod/Financeiro/Financeiro_ListarC.php:200
 msgid "Erro ao Realizar Saque"
 msgstr ""
 
-#: mod/Financeiro/Financeiro_ListarC.php:213
+#: mod/Financeiro/Financeiro_ListarC.php:206
 msgid "Transferir Quantia"
 msgstr ""
 
-#: mod/Financeiro/Financeiro_ListarC.php:257
+#: mod/Financeiro/Financeiro_ListarC.php:247
 msgid "Login não existe"
 msgstr ""
 
-#: mod/Financeiro/Financeiro_ListarC.php:267
+#: mod/Financeiro/Financeiro_ListarC.php:257
 msgid "Transferência Realizada"
 msgstr ""
 
-#: mod/Financeiro/Financeiro_ListarC.php:282
+#: mod/Financeiro/Financeiro_ListarC.php:272
 msgid "Transferência Realizada com Sucesso"
 msgstr ""
 
-#: mod/Financeiro/Financeiro_ListarC.php:283
+#: mod/Financeiro/Financeiro_ListarC.php:273
 msgid "Erro ao Realizar Transferência"
 msgstr ""
 
@@ -4654,7 +5740,7 @@ msgstr ""
 msgid "Conta Paga"
 msgstr ""
 
-#: mod/Financeiro/Financeiro_UsuarioC.php:383 mod/Financeiro/_Config.php:63
+#: mod/Financeiro/Financeiro_UsuarioC.php:383 mod/Financeiro/_Config.php:64
 #: mod/Financeiro/Financeiro_PagamentoC.php:949
 msgid "Contas Pagas"
 msgstr ""
@@ -4664,13 +5750,18 @@ msgstr ""
 msgid "Conta Recebida"
 msgstr ""
 
-#: mod/Financeiro/Financeiro_UsuarioC.php:392 mod/Financeiro/_Config.php:77
+#: mod/Financeiro/Financeiro_UsuarioC.php:392 mod/Financeiro/_Config.php:78
 #: mod/Financeiro/Financeiro_PagamentoC.php:958
 msgid "Contas Recebidas"
 msgstr ""
 
 #: mod/Financeiro/Financeiro_Controle.php:49
 msgid "Meus Dados Básicos"
+msgstr ""
+
+#: mod/Financeiro/Financeiro_Controle.php:389
+#: mod/Financeiro/Financeiro_Controle.php:537
+msgid "Gráfico de Movimentação Interna"
 msgstr ""
 
 #: mod/Financeiro/Financeiro_RelatorioC.php:27
@@ -4713,152 +5804,152 @@ msgstr ""
 msgid "Relatório de Contas Pagas"
 msgstr ""
 
-#: mod/Financeiro/_Config.php:42 mod/Financeiro/Financeiro_PagamentoC.php:127
+#: mod/Financeiro/_Config.php:43 mod/Financeiro/Financeiro_PagamentoC.php:127
 msgid "Formas de Pagamento"
 msgstr ""
 
-#: mod/Financeiro/_Config.php:49 mod/Financeiro/Financeiro_PagamentoC.php:99
+#: mod/Financeiro/_Config.php:50 mod/Financeiro/Financeiro_PagamentoC.php:99
 #: mod/Financeiro/Financeiro_PagamentoC.php:617
 msgid "Condições de Pagamento"
 msgstr ""
 
-#: mod/Financeiro/_Config.php:56
+#: mod/Financeiro/_Config.php:57
 msgid "Contas à Pagar"
 msgstr ""
 
-#: mod/Financeiro/_Config.php:70
+#: mod/Financeiro/_Config.php:71
 msgid "Contas à Receber"
 msgstr ""
 
-#: mod/Financeiro/_Config.php:97
+#: mod/Financeiro/_Config.php:98
 msgid "Minhas Contas à Pagar"
 msgstr ""
 
-#: mod/Financeiro/_Config.php:107
+#: mod/Financeiro/_Config.php:108
 msgid "Minhas Contas Pagas"
 msgstr ""
 
-#: mod/Financeiro/_Config.php:117
+#: mod/Financeiro/_Config.php:118
 msgid "Minhas Contas à Receber"
 msgstr ""
 
-#: mod/Financeiro/_Config.php:127
+#: mod/Financeiro/_Config.php:128
 msgid "Minhas Contas Recebidas"
 msgstr ""
 
-#: mod/Financeiro/_Config.php:154
+#: mod/Financeiro/_Config.php:156
 msgid "Financeiro (Condições de Pagamento) - Listagem"
 msgstr ""
 
-#: mod/Financeiro/_Config.php:163
+#: mod/Financeiro/_Config.php:165
 msgid "Financeiro (Condições de Pagamento) - Add"
 msgstr ""
 
-#: mod/Financeiro/_Config.php:172
+#: mod/Financeiro/_Config.php:174
 msgid "Financeiro (Condições de Pagamento) - Editar"
 msgstr ""
 
-#: mod/Financeiro/_Config.php:181
+#: mod/Financeiro/_Config.php:183
 msgid "Financeiro (Condições de Pagamento) - Deletar"
 msgstr ""
 
-#: mod/Financeiro/_Config.php:193
+#: mod/Financeiro/_Config.php:195
 msgid "Financeiro (Formas de Pagamento) - Listagem"
 msgstr ""
 
-#: mod/Financeiro/_Config.php:202
+#: mod/Financeiro/_Config.php:204
 msgid "Financeiro (Formas de Pagamento) - Add"
 msgstr ""
 
-#: mod/Financeiro/_Config.php:211
+#: mod/Financeiro/_Config.php:213
 msgid "Financeiro (Formas de Pagamento) - Editar"
 msgstr ""
 
-#: mod/Financeiro/_Config.php:220
+#: mod/Financeiro/_Config.php:222
 msgid "Financeiro (Formas de Pagamento) - Deletar"
 msgstr ""
 
-#: mod/Financeiro/_Config.php:233
+#: mod/Financeiro/_Config.php:235
 msgid "Financeiro (Contas a Receber) - Listagem"
 msgstr ""
 
-#: mod/Financeiro/_Config.php:242
+#: mod/Financeiro/_Config.php:244
 msgid "Financeiro (Contas Recebidas) - Listagem"
 msgstr ""
 
-#: mod/Financeiro/_Config.php:253
+#: mod/Financeiro/_Config.php:255
 msgid "Financeiro (Contas a Pagar) - Listagem"
 msgstr ""
 
-#: mod/Financeiro/_Config.php:262
+#: mod/Financeiro/_Config.php:264
 msgid "Financeiro (Contas Pagas) - Listagem"
 msgstr ""
 
-#: mod/Financeiro/_Config.php:273
+#: mod/Financeiro/_Config.php:275
 msgid "Financeiro (Contas a Receber/a Pagar) - Declarar Pago"
 msgstr ""
 
-#: mod/Financeiro/_Config.php:282
+#: mod/Financeiro/_Config.php:284
 msgid "Financeiro (Contas a Receber/a Pagar) - Alterar Vencimento"
 msgstr ""
 
-#: mod/Financeiro/_Config.php:291
+#: mod/Financeiro/_Config.php:293
 msgid "Financeiro (Contas Recebidas/Pagas) - Desfazer Pagamento"
 msgstr ""
 
-#: mod/Financeiro/_Config.php:302
+#: mod/Financeiro/_Config.php:304
 msgid "Financeiro (Relatório) -  Visualizar"
 msgstr ""
 
-#: mod/Financeiro/_Config.php:311
+#: mod/Financeiro/_Config.php:313
 msgid "Financeiro (Gráfico) -  Visualizar"
 msgstr ""
 
-#: mod/Financeiro/_Config.php:322
+#: mod/Financeiro/_Config.php:324
 msgid "Financeiro (Finanças) -  Listagem"
 msgstr ""
 
-#: mod/Financeiro/_Config.php:334
+#: mod/Financeiro/_Config.php:336
 msgid "Financeiro (Finanças) - Add"
 msgstr ""
 
-#: mod/Financeiro/_Config.php:346
+#: mod/Financeiro/_Config.php:348
 msgid "Financeiro (Finanças) - Editar"
 msgstr ""
 
-#: mod/Financeiro/_Config.php:358
+#: mod/Financeiro/_Config.php:360
 msgid "Financeiro (Finanças) - Deletar"
 msgstr ""
 
-#: mod/Financeiro/_Config.php:374
+#: mod/Financeiro/_Config.php:376
 msgid "Financeiro de Usuários (Contas a Receber) - Listagem"
 msgstr ""
 
-#: mod/Financeiro/_Config.php:386
+#: mod/Financeiro/_Config.php:388
 msgid "Financeiro de Usuários (Contas Recebidas) - Listagem"
 msgstr ""
 
-#: mod/Financeiro/_Config.php:398
+#: mod/Financeiro/_Config.php:400
 msgid "Financeiro de Usuários (Contas a Pagar) - Listagem"
 msgstr ""
 
-#: mod/Financeiro/_Config.php:410
+#: mod/Financeiro/_Config.php:412
 msgid "Financeiro de Usuários (Contas Pagas) - Listagem"
 msgstr ""
 
-#: mod/Financeiro/_Config.php:424
+#: mod/Financeiro/_Config.php:426
 msgid "Financeiro de Usuários (Contas a Receber/a Pagar) - Declarar Pago/Pagar"
 msgstr ""
 
-#: mod/Financeiro/_Config.php:447
+#: mod/Financeiro/_Config.php:449
 msgid "Se tem Cadastro de Financas"
 msgstr ""
 
-#: mod/Financeiro/_Config.php:453
+#: mod/Financeiro/_Config.php:455
 msgid "Se usuarios terão saldo próprio dentro do sistema"
 msgstr ""
 
-#: mod/Financeiro/_Config.php:459
+#: mod/Financeiro/_Config.php:461
 msgid "Se usuarios terão acesso a diferentes planos dentro do sistema"
 msgstr ""
 
@@ -5735,6 +6826,142 @@ msgstr ""
 msgid "Veiculo deletado com Sucesso"
 msgstr ""
 
+#: mod/usuario/usuario_ExpedienteC.php:47
+#: mod/usuario/usuario_ExpedienteC.php:49
+msgid "Expediente"
+msgstr ""
+
+#: mod/usuario/usuario_ExpedienteC.php:106
+msgid "Listagem de Expedientes"
+msgstr ""
+
+#: mod/usuario/usuario_ExpedienteC.php:110
+msgid "Administrar Expedientes"
+msgstr ""
+
+#: mod/usuario/usuario_ExpedienteC.php:125
+#: mod/usuario/usuario_ExpedienteC.php:295
+#: mod/usuario/usuario_ExpedienteC.php:298
+#: mod/usuario/usuario_ExpedienteC.php:301
+msgid "Adicionar Expediente"
+msgstr ""
+
+#: mod/usuario/usuario_ExpedienteC.php:126
+msgid "Salvar Expediente"
+msgstr ""
+
+#: mod/usuario/usuario_ExpedienteC.php:142
+msgid "Expediente adicionada com Sucesso"
+msgstr ""
+
+#: mod/usuario/usuario_ExpedienteC.php:146
+msgid "Expediente cadastrado com sucesso."
+msgstr ""
+
+#: mod/usuario/usuario_ExpedienteC.php:161
+msgid "Alteração de Expediente"
+msgstr ""
+
+#: mod/usuario/usuario_ExpedienteC.php:163
+msgid "Alterar Expediente"
+msgstr ""
+
+#: mod/usuario/usuario_ExpedienteC.php:179
+msgid "Expediente editada com Sucesso"
+msgstr ""
+
+#: mod/usuario/usuario_ExpedienteC.php:182
+msgid "Expediente Alterado com Sucesso."
+msgstr ""
+
+#: mod/usuario/usuario_ExpedienteC.php:207
+msgid "Expediente deletada com sucesso"
+msgstr ""
+
+#: mod/usuario/usuario_ExpedienteC.php:220
+msgid "Expediente deletada com Sucesso"
+msgstr ""
+
+#: mod/usuario/usuario_ExpedienteC.php:262
+msgid "Escolha um Funcionário"
+msgstr ""
+
+#: mod/usuario/usuario_ExpedienteC.php:283
+#: mod/usuario/usuario_ExpedienteC.php:389
+msgid "Inicio"
+msgstr ""
+
+#: mod/usuario/usuario_ExpedienteC.php:284
+#: mod/usuario/usuario_ExpedienteC.php:389
+msgid "Fim"
+msgstr ""
+
+#: mod/usuario/usuario_ExpedienteC.php:292
+msgid "Disponiveis"
+msgstr ""
+
+#: mod/usuario/usuario_ExpedienteC.php:331
+msgid "Horário de Saida"
+msgstr ""
+
+#: mod/usuario/usuario_ExpedienteC.php:339
+msgid "Em Almoço"
+msgstr ""
+
+#: mod/usuario/usuario_ExpedienteC.php:376
+#: mod/usuario/usuario_ExpedienteC.php:463
+msgid "Iniciado"
+msgstr ""
+
+#: mod/usuario/usuario_ExpedienteC.php:377
+msgid "Expediente Iniciado com sucesso"
+msgstr ""
+
+#: mod/usuario/usuario_ExpedienteC.php:389
+#: mod/Desenvolvimento/Desenvolvimento_SenhaC.php:63
+#: mod/Desenvolvimento/Desenvolvimento_SenhaC.php:77
+#: mod/Desenvolvimento/Desenvolvimento_SenhaC.php:377
+#: mod/Desenvolvimento/Desenvolvimento_SenhaC.php:390
+#: DAO/Transporte.Caminhoneiro.Pedido.DAO.php:547
+#: DAO/Simulador.Pergunta.DAO.php:117 DAO/Usuario.DAO.php:1929
+#: DAO/Sistema.Menu.DAO.php:312 DAO/Gramatica.Preposicao.DAO.php:102
+#: DAO/Desenvolvimento.Projeto.DAO.php:250
+#: DAO/Desenvolvimento.Projeto.DAO.php:298
+#: DAO/Comercio.Certificado.Proposta.DAO.php:555
+#: DAO/Usuario.Veiculo.Equipamento.DAO.php:296
+#: DAO/Musica.Album.Artista.DAO.php:145 DAO/Universal.Vivo.Cep.DAO.php:214
+#: DAO/Transporte.Armazem.Pedido.Lance.DAO.php:120
+#: DAO/Transporte.Transportadora.Pedido.Lance.DAO.php:120
+#: DAO/Universal.Vivo.Cnpj.DAO.php:457
+#: DAO/Simulador.Pergunta.Resposta.DAO.php:175 DAO/Musica.DAO.php:171
+#: DAO/Comercio.Proposta.Sub.DAO.php:118 DAO/Usuario.Expediente.DAO.php:171
+#: DAO/Transporte.Armazem.Pedido.DAO.php:547 DAO/Comercio.Proposta.DAO.php:631
+#: DAO/Locomocao.Entrega.Ponto.DAO.php:336
+#: DAO/Transporte.Caminhoneiro.Pedido.Lance.DAO.php:120
+#: DAO/Comercio.Checklist.DAO.php:230 DAO/Musica.Album.DAO.php:198
+#: DAO/Musica.Video.DAO.php:263 DAO/Universal.Vivo.Cpf.DAO.php:190
+#: DAO/Transporte.Transportadora.Pedido.DAO.php:547
+#: DAO/Curso.Turma.DAO.php:254 DAO/Simulador.DAO.php:90 DAO/Curso.DAO.php:121
+msgid "Status"
+msgstr ""
+
+#: mod/usuario/usuario_ExpedienteC.php:397
+#: mod/usuario/usuario_ExpedienteC.php:476
+msgid "Expediente Iniciado com Sucesso"
+msgstr ""
+
+#: mod/usuario/usuario_ExpedienteC.php:464
+msgid "Expediente Alterado com sucesso"
+msgstr ""
+
+#: mod/usuario/_Principal.Class.php:78
+msgid "Armazenar Depósito"
+msgstr ""
+
+#: mod/usuario/_Principal.Class.php:79
+msgid "Armazenar Retirada"
+msgstr ""
+
 #: mod/usuario/usuario_TelefoneC.php:41 mod/usuario/usuario_TelefoneC.php:43
 #: mod/comercio/comercio_FornecedorC.php:70
 #: DAO/Transporte.Caminhoneiro.DAO.php:154 DAO/Local.DAO.php:125
@@ -5796,52 +7023,58 @@ msgstr ""
 
 #: mod/usuario/usuario_Modelo.php:226 mod/usuario/usuario_Controle.php:267
 #: mod/usuario/usuario_Controle.php:466 mod/usuario/usuario_Controle.php:764
-#: mod/usuario/usuario_Controle.php:1114 mod/usuario/usuario_AcessoC.php:68
-#: mod/usuario/usuario_AdminC.php:741
+#: mod/usuario/usuario_Controle.php:1116 mod/usuario/usuario_AcessoC.php:68
+#: mod/usuario/usuario_AdminC.php:748
 msgid "Usuários "
 msgstr ""
 
 #: mod/usuario/usuario_Modelo.php:227 mod/usuario/usuario_Controle.php:268
 #: mod/usuario/usuario_Controle.php:467 mod/usuario/usuario_Controle.php:765
-#: mod/usuario/usuario_Controle.php:1115 mod/usuario/usuario_AcessoC.php:69
-#: mod/usuario/usuario_AdminC.php:742
+#: mod/usuario/usuario_Controle.php:1117 mod/usuario/usuario_AcessoC.php:69
+#: mod/usuario/usuario_AdminC.php:749
 msgid "Usuário "
 msgstr ""
 
 #: mod/usuario/usuario_Modelo.php:228 mod/usuario/usuario_Controle.php:269
 #: mod/usuario/usuario_Controle.php:468 mod/usuario/usuario_Controle.php:766
-#: mod/usuario/usuario_Controle.php:1116 mod/usuario/usuario_AcessoC.php:70
-#: mod/usuario/usuario_AdminC.php:647 DAO/Usuario.Comentario.DAO.php:65
+#: mod/usuario/usuario_Controle.php:1118 mod/usuario/usuario_AcessoC.php:70
+#: mod/usuario/usuario_AdminC.php:654 DAO/Usuario.Comentario.DAO.php:65
 #: DAO/Usuario.Anexo.DAO.php:66
 msgid "Usuario"
 msgstr ""
 
+#: mod/usuario/usuario_Modelo.php:358
+msgid "Foto de Usuário"
+msgstr ""
+
 #: mod/usuario/usuario_Controle.php:271 mod/usuario/usuario_Controle.php:556
-#: mod/usuario/usuario_Controle.php:768 mod/usuario/usuario_Controle.php:1118
-#: mod/usuario/usuario_FreeC.php:49 mod/usuario/_Config.php:26
+#: mod/usuario/usuario_Controle.php:768 mod/usuario/usuario_Controle.php:1120
+#: mod/usuario/usuario_FreeC.php:49 mod/usuario/_Config.php:37
 #: mod/usuario/usuario_AdminC.php:101 mod/usuario/usuario_AdminC.php:159
-#: mod/usuario/usuario_AdminC.php:370 mod/usuario/usuario_AdminC.php:736
-#: mod/usuario/usuario_AdminC.php:744 mod/usuario/usuario_AdminC.php:810
-#: mod/usuario/usuario_AdminC.php:815 mod/usuario/usuario_AdminC.php:818
-#: mod/usuario/usuario_AdminC.php:861 mod/usuario/usuario_AdminC.php:865
-#: mod/usuario/usuario_AdminC.php:910 mod/usuario/usuario_AdminC.php:915
-#: mod/usuario/usuario_AdminC.php:918 mod/usuario/usuario_AdminC.php:964
-#: mod/usuario/usuario_AdminC.php:968 mod/usuario/usuario_AdminC.php:1012
-#: mod/usuario/usuario_AdminC.php:1016 mod/usuario/usuario_AnexoC.php:74
+#: mod/usuario/usuario_AdminC.php:370 mod/usuario/usuario_AdminC.php:743
+#: mod/usuario/usuario_AdminC.php:751 mod/usuario/usuario_AdminC.php:817
+#: mod/usuario/usuario_AdminC.php:822 mod/usuario/usuario_AdminC.php:825
+#: mod/usuario/usuario_AdminC.php:868 mod/usuario/usuario_AdminC.php:872
+#: mod/usuario/usuario_AdminC.php:917 mod/usuario/usuario_AdminC.php:922
+#: mod/usuario/usuario_AdminC.php:925 mod/usuario/usuario_AdminC.php:971
+#: mod/usuario/usuario_AdminC.php:975 mod/usuario/usuario_AdminC.php:1019
+#: mod/usuario/usuario_AdminC.php:1023 mod/usuario/usuario_AnexoC.php:74
 msgid "Usuários"
 msgstr ""
 
 #: mod/usuario/usuario_Controle.php:452 mod/usuario/usuario_Controle.php:458
 #: mod/usuario/usuario_Controle.php:547 mod/usuario/usuario_AdminC.php:135
-#: mod/usuario/usuario_AdminC.php:737 mod/usuario/usuario_AdminC.php:811
-#: mod/usuario/usuario_AdminC.php:816 mod/usuario/usuario_AdminC.php:862
-#: mod/usuario/usuario_AdminC.php:866 mod/usuario/usuario_AdminC.php:911
-#: mod/usuario/usuario_AdminC.php:916 mod/usuario/usuario_AdminC.php:965
-#: mod/usuario/usuario_AdminC.php:969 mod/usuario/usuario_AdminC.php:1013
-#: mod/usuario/usuario_AdminC.php:1017 mod/usuario/usuario_AnexoC.php:64
+#: mod/usuario/usuario_AdminC.php:565 mod/usuario/usuario_AdminC.php:574
+#: mod/usuario/usuario_AdminC.php:744 mod/usuario/usuario_AdminC.php:818
+#: mod/usuario/usuario_AdminC.php:823 mod/usuario/usuario_AdminC.php:869
+#: mod/usuario/usuario_AdminC.php:873 mod/usuario/usuario_AdminC.php:918
+#: mod/usuario/usuario_AdminC.php:923 mod/usuario/usuario_AdminC.php:972
+#: mod/usuario/usuario_AdminC.php:976 mod/usuario/usuario_AdminC.php:1020
+#: mod/usuario/usuario_AdminC.php:1024 mod/usuario/usuario_AnexoC.php:64
 #: mod/usuario/usuario_PerfilC.php:25 mod/usuario/usuario_PerfilC.php:269
 #: mod/usuario/usuario_PerfilC.php:278 DAO/Usuario.Permissao.DAO.php:75
 #: DAO/Social.DAO.php:80 DAO/Enquete.Voto.DAO.php:88
+#: DAO/Usuario.Expediente.DAO.php:68
 msgid "Usuário"
 msgstr ""
 
@@ -5854,9 +7087,10 @@ msgid "Histórico de Envio de Email para Cliente"
 msgstr ""
 
 #: mod/usuario/usuario_Controle.php:554 mod/usuario/usuario_AdminC.php:152
-#: mod/usuario/usuario_AdminC.php:360 mod/usuario/usuario_AdminC.php:739
-#: mod/usuario/usuario_AdminC.php:813 mod/usuario/usuario_AdminC.php:913
-#: mod/usuario/usuario_AnexoC.php:72 DAO/Comercio.Proposta.DAO.php:598
+#: mod/usuario/usuario_AdminC.php:360 mod/usuario/usuario_AdminC.php:746
+#: mod/usuario/usuario_AdminC.php:820 mod/usuario/usuario_AdminC.php:920
+#: mod/usuario/usuario_AnexoC.php:72 mod/comercio/comercio_PropostaC.php:203
+#: DAO/Comercio.Proposta.DAO.php:598
 msgid "Funcionários"
 msgstr ""
 
@@ -5888,33 +7122,29 @@ msgstr ""
 msgid "Voce enviou com sucesso."
 msgstr ""
 
-#: mod/usuario/usuario_Controle.php:1199
-msgid "Id"
-msgstr ""
-
-#: mod/usuario/usuario_Controle.php:1201 DAO/Usuario.Mensagem.Setor.DAO.php:65
+#: mod/usuario/usuario_Controle.php:1203 DAO/Usuario.Mensagem.Setor.DAO.php:65
 #: DAO/Sistema.Grupo.Permissao.DAO.php:64
 #: DAO/Social.Caracteristica.Acao.DAO.php:60 DAO/Biblioteca.DAO.php:301
 msgid "Grupo"
 msgstr ""
 
-#: mod/usuario/usuario_Controle.php:1204 DAO/Foto.Referencia.DAO.php:55
+#: mod/usuario/usuario_Controle.php:1206 DAO/Foto.Referencia.DAO.php:55
 #: DAO/Comercio.Venda.Composicao.DAO.php:65
 msgid "Foto"
 msgstr ""
 
-#: mod/usuario/usuario_Controle.php:1211
+#: mod/usuario/usuario_Controle.php:1213
 #: mod/comercio/comercio_FornecedorC.php:71 DAO/Comercio.Visita.DAO.php:185
 #: DAO/Usuario.DAO.php:658 DAO/Sistema.Newsletter.DAO.php:94
 #: DAO/Comercio.Fornecedor.DAO.php:442
 msgid "Email"
 msgstr ""
 
-#: mod/usuario/usuario_Controle.php:1215
+#: mod/usuario/usuario_Controle.php:1217
 msgid "Saldo"
 msgstr ""
 
-#: mod/usuario/usuario_Controle.php:1218
+#: mod/usuario/usuario_Controle.php:1220
 msgid "Data de Cadastro"
 msgstr ""
 
@@ -5982,127 +7212,135 @@ msgstr ""
 msgid "Preencha Login e Email"
 msgstr ""
 
-#: mod/usuario/_Config.php:14
+#: mod/usuario/_Config.php:14 mod/comercio/_Config.php:99
+msgid "Comercial"
+msgstr ""
+
+#: mod/usuario/_Config.php:25
 msgid "Lista Telefonica"
 msgstr ""
 
-#: mod/usuario/_Config.php:56
+#: mod/usuario/_Config.php:67
 msgid "A. de Usuários"
 msgstr ""
 
-#: mod/usuario/_Config.php:72
+#: mod/usuario/_Config.php:83
 msgid "Sistema - Controle Grupos - Listagem"
 msgstr ""
 
-#: mod/usuario/_Config.php:185
+#: mod/usuario/_Config.php:196
 msgid "Usuario - Listagem"
 msgstr ""
 
-#: mod/usuario/_Config.php:194
+#: mod/usuario/_Config.php:205
 msgid "Usuario - Add"
 msgstr ""
 
-#: mod/usuario/_Config.php:203
+#: mod/usuario/_Config.php:214
 msgid "Usuario - Editar"
 msgstr ""
 
-#: mod/usuario/_Config.php:212
+#: mod/usuario/_Config.php:223
 msgid "Usuario - Deletar"
 msgstr ""
 
-#: mod/usuario/_Config.php:223
+#: mod/usuario/_Config.php:234
 msgid "Permissões (Usuário) - Listagem"
 msgstr ""
 
-#: mod/usuario/_Config.php:235
+#: mod/usuario/_Config.php:246
 msgid "Telefone - Listagem"
 msgstr ""
 
-#: mod/usuario/_Config.php:247
+#: mod/usuario/_Config.php:258
 msgid "Telefone - Add"
 msgstr ""
 
-#: mod/usuario/_Config.php:259
+#: mod/usuario/_Config.php:270
 msgid "Telefone - Editar"
 msgstr ""
 
-#: mod/usuario/_Config.php:271
+#: mod/usuario/_Config.php:282
 msgid "Telefone - Deletar"
 msgstr ""
 
-#: mod/usuario/_Config.php:295
+#: mod/usuario/_Config.php:306
 msgid "Se Mostra Opções de Grupos"
 msgstr ""
 
-#: mod/usuario/_Config.php:301
+#: mod/usuario/_Config.php:312
 msgid "Se verdadeiro mostra so os clientes ativos"
 msgstr ""
 
-#: mod/usuario/_Config.php:307
+#: mod/usuario/_Config.php:318
 msgid "Aonde mostra adição de grupos"
 msgstr ""
 
-#: mod/usuario/_Config.php:314
+#: mod/usuario/_Config.php:325
 msgid "Se possue login em Usuarios"
 msgstr ""
 
-#: mod/usuario/_Config.php:320
+#: mod/usuario/_Config.php:331
 msgid "Se possue Anexo em Usuarios"
 msgstr ""
 
-#: mod/usuario/_Config.php:326
+#: mod/usuario/_Config.php:337
 msgid "Se possue Site em Usuarios"
 msgstr ""
 
-#: mod/usuario/_Config.php:332
+#: mod/usuario/_Config.php:343
 msgid "Se possue Status em Usuarios (Ativado)"
 msgstr ""
 
-#: mod/usuario/_Config.php:338
+#: mod/usuario/_Config.php:349
 msgid "Se mostra na listagem o Status"
 msgstr ""
 
-#: mod/usuario/_Config.php:344
+#: mod/usuario/_Config.php:355
 msgid "Se possue Foto em Usuarios"
 msgstr ""
 
-#: mod/usuario/_Config.php:350
+#: mod/usuario/_Config.php:361
 msgid "Enviar Email Direto Entre Usuarios"
 msgstr ""
 
-#: mod/usuario/_Config.php:356
+#: mod/usuario/_Config.php:367
 msgid "Se email nao puder repetir, vem como true"
 msgstr ""
 
-#: mod/usuario/_Config.php:362
+#: mod/usuario/_Config.php:373
 msgid "Se mostra widgetna pagina inicial"
 msgstr ""
 
-#: mod/usuario/_Config.php:370
+#: mod/usuario/_Config.php:381
 msgid "Se possui Funcionarios"
 msgstr ""
 
-#: mod/usuario/_Config.php:376
+#: mod/usuario/_Config.php:387
 msgid "Nome Funcionarios"
 msgstr ""
 
-#: mod/usuario/_Config.php:384
+#: mod/usuario/_Config.php:393
+msgid "Se possui Expediente de Usuários"
+msgstr ""
+
+#: mod/usuario/_Config.php:401
 msgid "Se possui Clientes"
 msgstr ""
 
-#: mod/usuario/_Config.php:390
+#: mod/usuario/_Config.php:407
 msgid "Nome do Cliente"
 msgstr ""
 
-#: mod/usuario/_Config.php:396
+#: mod/usuario/_Config.php:413
 msgid "Opcao preço normal ou diferenciado"
 msgstr ""
 
-#: mod/usuario/_Config.php:402
+#: mod/usuario/_Config.php:419
 msgid "Se tem historico de comentarios em usuarios"
 msgstr ""
 
-#: mod/usuario/_Config.php:408
+#: mod/usuario/_Config.php:425
 msgid "Se possui listagem de telefones"
 msgstr ""
 
@@ -6131,10 +7369,6 @@ msgstr ""
 msgid "Guarde sua senha com carinho."
 msgstr ""
 
-#: mod/usuario/usuario_AdminC.php:185
-msgid "Editar"
-msgstr ""
-
 #: mod/usuario/usuario_AdminC.php:201 mod/usuario/usuario_AdminC.php:202
 msgid "Alteração de Usuário"
 msgstr ""
@@ -6143,11 +7377,11 @@ msgstr ""
 msgid "Editar "
 msgstr ""
 
-#: mod/usuario/usuario_AdminC.php:274
+#: mod/usuario/usuario_AdminC.php:274 mod/Locomocao/_Principal.Class.php:30
 msgid "Em Andamento"
 msgstr ""
 
-#: mod/usuario/usuario_AdminC.php:287 mod/comercio/comercio_PropostaC.php:2275
+#: mod/usuario/usuario_AdminC.php:287 mod/comercio/comercio_PropostaC.php:2281
 #: mod/Desenvolvimento/Desenvolvimento_SenhaC.php:225
 #: mod/Desenvolvimento/Desenvolvimento_SenhaC.php:538
 #: mod/Desenvolvimento/Desenvolvimento_ProjetoC.php:266
@@ -6178,39 +7412,47 @@ msgstr ""
 msgid "Adicionar"
 msgstr ""
 
-#: mod/usuario/usuario_AdminC.php:649
+#: mod/usuario/usuario_AdminC.php:656
 msgid "Admin GOD"
 msgstr ""
 
 #: mod/usuario/usuario_AdminC.php:665
-msgid "CNH Pendentes"
+msgid "Aprovar Usuário"
 msgstr ""
 
 #: mod/usuario/usuario_AdminC.php:666
+msgid "Desaprovar Usuário"
+msgstr ""
+
+#: mod/usuario/usuario_AdminC.php:672
+msgid "CNH Pendentes"
+msgstr ""
+
+#: mod/usuario/usuario_AdminC.php:673
 msgid "Comprovantes de Residencia Pendentes"
 msgstr ""
 
-#: mod/usuario/usuario_AdminC.php:685
+#: mod/usuario/usuario_AdminC.php:692
 msgid "Aprovado com sucesso"
 msgstr ""
 
-#: mod/usuario/usuario_AdminC.php:691
+#: mod/usuario/usuario_AdminC.php:698
 msgid "Negado com sucesso"
 msgstr ""
 
-#: mod/usuario/usuario_AdminC.php:774
+#: mod/usuario/usuario_AdminC.php:781
 msgid "Administrar Comentários do "
 msgstr ""
 
-#: mod/usuario/usuario_AdminC.php:925
+#: mod/usuario/usuario_AdminC.php:932
 msgid "Alteração de Comentário do Usuario"
 msgstr ""
 
-#: mod/usuario/usuario_AdminC.php:977
+#: mod/usuario/usuario_AdminC.php:984
 msgid "Comentário teve a alteração bem sucedida"
 msgstr ""
 
-#: mod/usuario/usuario_AdminC.php:1043
+#: mod/usuario/usuario_AdminC.php:1050
 msgid "Comentário de "
 msgstr ""
 
@@ -6262,6 +7504,119 @@ msgstr ""
 msgid "Perfil Alterado com Sucesso."
 msgstr ""
 
+#: mod/Locomocao/_Principal.Class.php:33
+msgid "Disponiveis na Rua"
+msgstr ""
+
+#: mod/Locomocao/Locomocao_EntregaC.php:25 DAO/Locomocao.Entrega.DAO.php:65
+#: DAO/Locomocao.Entrega.Ponto.DAO.php:100
+msgid "Motoboy"
+msgstr ""
+
+#: mod/Locomocao/Locomocao_EntregaC.php:30
+msgid "Listagem de Entregas"
+msgstr ""
+
+#: mod/Locomocao/Locomocao_EntregaC.php:31
+msgid "Adicionar Entrega"
+msgstr ""
+
+#: mod/Locomocao/Locomocao_EntregaC.php:40
+msgid "Administrar Entregas"
+msgstr ""
+
+#: mod/Locomocao/Locomocao_EntregaC.php:52
+#: mod/Locomocao/Locomocao_EntregaC.php:465
+#: DAO/Locomocao.Entrega.Ponto.DAO.php:74
+msgid "Entrega"
+msgstr ""
+
+#: mod/Locomocao/Locomocao_EntregaC.php:53
+#: mod/Locomocao/Locomocao_EntregaC.php:466 mod/Locomocao/_Config.php:14
+msgid "Entregas"
+msgstr ""
+
+#: mod/Locomocao/Locomocao_EntregaC.php:519
+msgid "Editar Entrega"
+msgstr ""
+
+#: mod/Locomocao/Locomocao_EntregaC.php:520
+msgid "Alteração de Entrega"
+msgstr ""
+
+#: mod/Locomocao/Locomocao_EntregaC.php:522
+msgid "Alterar Entrega"
+msgstr ""
+
+#: mod/Locomocao/Locomocao_EntregaC.php:537
+#: mod/Locomocao/Locomocao_EntregaC.php:540
+msgid "Entrega Alterada com Sucesso"
+msgstr ""
+
+#: mod/Locomocao/Locomocao_EntregaC.php:564
+msgid "Entrega Deletado com sucesso"
+msgstr ""
+
+#: mod/Locomocao/Locomocao_EntregaC.php:577
+msgid "Entrega deletado com Sucesso"
+msgstr ""
+
+#: mod/Locomocao/Locomocao_EntregaC.php:635
+msgid "Administração de Entregas"
+msgstr ""
+
+#: mod/Locomocao/_Config.php:20
+msgid "Todas as Entregas"
+msgstr ""
+
+#: mod/Locomocao/_Config.php:35
+msgid "Locomoção (Entrega) - Listagem"
+msgstr ""
+
+#: mod/Locomocao/_Config.php:44 mod/Locomocao/_Config.php:53
+msgid "Locomoção (Entrega) - Add"
+msgstr ""
+
+#: mod/Locomocao/_Config.php:62
+msgid "Locomoção (Entrega) - Editar"
+msgstr ""
+
+#: mod/Locomocao/_Config.php:71
+msgid "Locomoção (Entrega) - Deletar"
+msgstr ""
+
+#: mod/Locomocao/_Config.php:106 mod/Locomocao/_Config.php:107
+msgid "Km Min Ret. Base"
+msgstr ""
+
+#: mod/Locomocao/_Config.php:114 mod/Locomocao/_Config.php:115
+msgid "Km Min Ponto"
+msgstr ""
+
+#: mod/Locomocao/_Config.php:122 mod/Locomocao/_Config.php:123
+msgid "Minutos Minimos"
+msgstr ""
+
+#: mod/Locomocao/_Config.php:130 mod/Locomocao/_Config.php:131
+msgid "Km Min Total"
+msgstr ""
+
+#: mod/Locomocao/_Config.php:138 mod/Locomocao/_Config.php:139
+msgid "Preço por Km (Até 49)"
+msgstr ""
+
+#: mod/Locomocao/_Config.php:146 mod/Locomocao/_Config.php:147
+msgid "Preço por Km (Até 89)"
+msgstr ""
+
+#: mod/Locomocao/_Config.php:154 mod/Locomocao/_Config.php:155
+msgid "Preço por Km (Até 169)"
+msgstr ""
+
+#: mod/Locomocao/_Config.php:162 mod/Locomocao/_Config.php:163
+msgid "Preço por Km (+170)"
+msgstr ""
+
 #: mod/noticia/noticia_ListarC.php:37 mod/noticia/_Config.php:22
 #: mod/noticia/noticia_AdminC.php:11
 msgid "Noticias"
@@ -6301,6 +7656,10 @@ msgstr ""
 
 #: mod/noticia/_Config.php:81 mod/noticia/_Config.php:82
 msgid "Se possui categoria em noticias"
+msgstr ""
+
+#: mod/noticia/noticia_AdminC.php:37
+msgid "Foto da Noticia"
 msgstr ""
 
 #: mod/noticia/noticia_AdminC.php:120
@@ -6722,6 +8081,10 @@ msgstr ""
 msgid "Estradas"
 msgstr ""
 
+#: mod/Transporte/Transporte_EstradaC.php:40
+msgid "Foto da Dica de Estrada"
+msgstr ""
+
 #: mod/Transporte/Transporte_EstradaC.php:107
 msgid "Nenhuma Dica de Estrada Cadastrada para exportar"
 msgstr ""
@@ -6870,6 +8233,14 @@ msgstr ""
 #: mod/Transporte/Transporte_CaminhoneiroC.php:92
 #: mod/Transporte/Transporte_CaminhoneiroC.php:95
 msgid "Listagem de Autonômos"
+msgstr ""
+
+#: mod/Direito/_Config.php:15
+msgid "Processos"
+msgstr ""
+
+#: mod/Direito/_Config.php:28
+msgid "Visualizar Relatórios"
 msgstr ""
 
 #: mod/Direito/Direito_RelatorioC.php:221
@@ -7358,43 +8729,44 @@ msgstr ""
 msgid "Listagem de Produtos"
 msgstr ""
 
+#: mod/comercio/comercio_ProdutoC.php:90
+#: mod/comercio/comercio_ProdutoC.php:144
+msgid "Adicionar Produto"
+msgstr ""
+
 #: mod/comercio/comercio_ProdutoC.php:94
 msgid "Administrar Produtos"
 msgstr ""
 
-#: mod/comercio/comercio_ProdutoC.php:139
-msgid "Adicionar Produto"
-msgstr ""
-
-#: mod/comercio/comercio_ProdutoC.php:140
+#: mod/comercio/comercio_ProdutoC.php:145
 msgid "Salvar Produto"
 msgstr ""
 
-#: mod/comercio/comercio_ProdutoC.php:175
+#: mod/comercio/comercio_ProdutoC.php:180
 msgid "Alteração de Produto"
 msgstr ""
 
-#: mod/comercio/comercio_ProdutoC.php:177
+#: mod/comercio/comercio_ProdutoC.php:182
 msgid "Alterar Produto"
 msgstr ""
 
-#: mod/comercio/comercio_ProdutoC.php:195
+#: mod/comercio/comercio_ProdutoC.php:200
 msgid "Produto Alterado com Sucesso."
 msgstr ""
 
-#: mod/comercio/comercio_ProdutoC.php:247
+#: mod/comercio/comercio_ProdutoC.php:252
 msgid "Reduzir Estoque de Produto"
 msgstr ""
 
-#: mod/comercio/comercio_ProdutoC.php:248
+#: mod/comercio/comercio_ProdutoC.php:253
 msgid "Salvar Redução de Estoque"
 msgstr ""
 
-#: mod/comercio/comercio_ProdutoC.php:260
+#: mod/comercio/comercio_ProdutoC.php:265
 msgid "Estoque Reduzido com Sucesso"
 msgstr ""
 
-#: mod/comercio/comercio_ProdutoC.php:263
+#: mod/comercio/comercio_ProdutoC.php:268
 msgid "Redução Finalizada com Sucesso"
 msgstr ""
 
@@ -7408,10 +8780,6 @@ msgstr ""
 
 #: mod/comercio/_Config.php:87
 msgid "Entrada de NFE"
-msgstr ""
-
-#: mod/comercio/_Config.php:99
-msgid "Comercial"
 msgstr ""
 
 #: mod/comercio/_Config.php:105
@@ -7734,6 +9102,8 @@ msgid "Se possui Folha de Visitas"
 msgstr ""
 
 #: mod/comercio/comercio_PropostaC.php:103
+#: mod/comercio/comercio_PropostaC.php:204
+#: mod/comercio/comercio_PropostaC.php:231
 #: DAO/Comercio.Proposta.Checklist.DAO.php:95
 #: DAO/Comercio.Proposta.DAO.php:577
 msgid "Checklist"
@@ -7743,27 +9113,44 @@ msgstr ""
 msgid "Folhas de Visitas"
 msgstr ""
 
+#: mod/comercio/comercio_PropostaC.php:163
+#: mod/comercio/comercio_PropostaC.php:318
+#: mod/comercio/comercio_PropostaC.php:438
+#: mod/comercio/comercio_PropostaC.php:598
+#: mod/comercio/comercio_PropostaC.php:1087
+#: DAO/Comercio.Proposta.Servico.DAO.php:78 DAO/Comercio.Proposta.DAO.php:265
+msgid "Serviço"
+msgstr ""
+
+#: mod/comercio/comercio_PropostaC.php:165 DAO/Comercio.Proposta.DAO.php:288
+msgid "Serviços"
+msgstr ""
+
+#: mod/comercio/comercio_PropostaC.php:170 DAO/Comercio.Proposta.DAO.php:311
+msgid "Mão de Obra"
+msgstr ""
+
 #: mod/comercio/comercio_PropostaC.php:273
-#: mod/comercio/comercio_PropostaC.php:415
-#: mod/comercio/comercio_PropostaC.php:514
-#: mod/comercio/comercio_PropostaC.php:986
-#: mod/comercio/comercio_PropostaC.php:1523
-#: mod/comercio/comercio_PropostaC.php:1561
-#: mod/comercio/comercio_PropostaC.php:1601
-#: mod/comercio/comercio_PropostaC.php:1644
-#: mod/comercio/comercio_PropostaC.php:2147
-#: mod/comercio/comercio_PropostaC.php:2343
-#: mod/comercio/comercio_PropostaC.php:2421
-#: mod/comercio/comercio_PropostaC.php:2452
-#: mod/comercio/comercio_PropostaC.php:2483
-#: mod/comercio/comercio_PropostaC.php:2515
-#: mod/comercio/comercio_PropostaC.php:2550
-#: mod/comercio/comercio_PropostaC.php:2588
-#: mod/comercio/comercio_PropostaC.php:2667
-#: mod/comercio/comercio_PropostaC.php:2698
-#: mod/comercio/comercio_PropostaC.php:2729
-#: mod/comercio/comercio_PropostaC.php:2761
-#: mod/comercio/comercio_PropostaC.php:2796
+#: mod/comercio/comercio_PropostaC.php:417
+#: mod/comercio/comercio_PropostaC.php:518
+#: mod/comercio/comercio_PropostaC.php:990
+#: mod/comercio/comercio_PropostaC.php:1527
+#: mod/comercio/comercio_PropostaC.php:1565
+#: mod/comercio/comercio_PropostaC.php:1605
+#: mod/comercio/comercio_PropostaC.php:1648
+#: mod/comercio/comercio_PropostaC.php:2151
+#: mod/comercio/comercio_PropostaC.php:2349
+#: mod/comercio/comercio_PropostaC.php:2427
+#: mod/comercio/comercio_PropostaC.php:2458
+#: mod/comercio/comercio_PropostaC.php:2489
+#: mod/comercio/comercio_PropostaC.php:2521
+#: mod/comercio/comercio_PropostaC.php:2556
+#: mod/comercio/comercio_PropostaC.php:2594
+#: mod/comercio/comercio_PropostaC.php:2673
+#: mod/comercio/comercio_PropostaC.php:2704
+#: mod/comercio/comercio_PropostaC.php:2735
+#: mod/comercio/comercio_PropostaC.php:2767
+#: mod/comercio/comercio_PropostaC.php:2802
 #: DAO/Comercio.Fornecedor.Material.Produtos.DAO.php:56
 #: DAO/Comercio.Proposta.Checklist.DAO.php:69
 #: DAO/Comercio.Proposta.Sub.DAO.php:67
@@ -7776,163 +9163,151 @@ msgid "Proposta"
 msgstr ""
 
 #: mod/comercio/comercio_PropostaC.php:310
-#: mod/comercio/comercio_PropostaC.php:428
+#: mod/comercio/comercio_PropostaC.php:430
 msgid "INSTALAÇÃO"
 msgstr ""
 
 #: mod/comercio/comercio_PropostaC.php:312
-#: mod/comercio/comercio_PropostaC.php:430
-#: mod/comercio/comercio_PropostaC.php:592
-#: mod/comercio/comercio_PropostaC.php:1081
+#: mod/comercio/comercio_PropostaC.php:432
+#: mod/comercio/comercio_PropostaC.php:596
+#: mod/comercio/comercio_PropostaC.php:1085
 msgid "Instalação"
 msgstr ""
 
 #: mod/comercio/comercio_PropostaC.php:316
-#: mod/comercio/comercio_PropostaC.php:434
+#: mod/comercio/comercio_PropostaC.php:436
 msgid "SERVIÇO"
 msgstr ""
 
-#: mod/comercio/comercio_PropostaC.php:318
-#: mod/comercio/comercio_PropostaC.php:436
-#: mod/comercio/comercio_PropostaC.php:594
-#: mod/comercio/comercio_PropostaC.php:1083
-#: DAO/Comercio.Proposta.Servico.DAO.php:78 DAO/Comercio.Proposta.DAO.php:265
-msgid "Serviço"
-msgstr ""
-
-#: mod/comercio/comercio_PropostaC.php:699
-#: mod/comercio/comercio_PropostaC.php:1197
+#: mod/comercio/comercio_PropostaC.php:703
+#: mod/comercio/comercio_PropostaC.php:1201
 msgid "Não existente"
-msgstr ""
-
-#: mod/comercio/comercio_PropostaC.php:701
-#: mod/comercio/comercio_PropostaC.php:1199
-msgid "Existente"
 msgstr ""
 
 #: mod/comercio/comercio_PropostaC.php:705
 #: mod/comercio/comercio_PropostaC.php:1203
-msgid "Vertical"
-msgstr ""
-
-#: mod/comercio/comercio_PropostaC.php:707
-#: mod/comercio/comercio_PropostaC.php:1205
-msgid "Horizontal"
+msgid "Existente"
 msgstr ""
 
 #: mod/comercio/comercio_PropostaC.php:709
 #: mod/comercio/comercio_PropostaC.php:1207
-msgid "Janela"
+msgid "Vertical"
+msgstr ""
+
+#: mod/comercio/comercio_PropostaC.php:711
+#: mod/comercio/comercio_PropostaC.php:1209
+msgid "Horizontal"
 msgstr ""
 
 #: mod/comercio/comercio_PropostaC.php:713
 #: mod/comercio/comercio_PropostaC.php:1211
-msgid "Hi Wall"
-msgstr ""
-
-#: mod/comercio/comercio_PropostaC.php:715
-#: mod/comercio/comercio_PropostaC.php:1213
-msgid "Piso Teto"
+msgid "Janela"
 msgstr ""
 
 #: mod/comercio/comercio_PropostaC.php:717
 #: mod/comercio/comercio_PropostaC.php:1215
-msgid "Cassete"
+msgid "Hi Wall"
+msgstr ""
+
+#: mod/comercio/comercio_PropostaC.php:719
+#: mod/comercio/comercio_PropostaC.php:1217
+msgid "Piso Teto"
 msgstr ""
 
 #: mod/comercio/comercio_PropostaC.php:721
 #: mod/comercio/comercio_PropostaC.php:1219
+msgid "Cassete"
+msgstr ""
+
+#: mod/comercio/comercio_PropostaC.php:725
+#: mod/comercio/comercio_PropostaC.php:1223
 msgid "Tubulado"
 msgstr ""
 
-#: mod/comercio/comercio_PropostaC.php:723
-#: mod/comercio/comercio_PropostaC.php:1221
+#: mod/comercio/comercio_PropostaC.php:727
+#: mod/comercio/comercio_PropostaC.php:1225
 #: mod/usuario_veiculo/usuario_veiculo_EquipamentoC.php:174
 #: mod/usuario_veiculo/usuario_veiculo_EquipamentoC.php:206
 msgid "Livre"
 msgstr ""
 
-#: mod/comercio/comercio_PropostaC.php:725
-#: mod/comercio/comercio_PropostaC.php:1223
+#: mod/comercio/comercio_PropostaC.php:729
+#: mod/comercio/comercio_PropostaC.php:1227
 msgid "Mangueira"
 msgstr ""
 
-#: mod/comercio/comercio_PropostaC.php:984
+#: mod/comercio/comercio_PropostaC.php:988
 msgid "ordemdeservico"
 msgstr ""
 
-#: mod/comercio/comercio_PropostaC.php:988
+#: mod/comercio/comercio_PropostaC.php:992
 msgid "propostas"
 msgstr ""
 
-#: mod/comercio/comercio_PropostaC.php:1389
-#: mod/comercio/comercio_PropostaC.php:1459
+#: mod/comercio/comercio_PropostaC.php:1393
+#: mod/comercio/comercio_PropostaC.php:1463
 msgid " em "
 msgstr ""
 
-#: mod/comercio/comercio_PropostaC.php:2225
-msgid "Essa OS não pode ser finalizada."
-msgstr ""
-
-#: mod/comercio/comercio_PropostaC.php:2314
+#: mod/comercio/comercio_PropostaC.php:2320
 #: mod/Desenvolvimento/Desenvolvimento_ProjetoC.php:304
 msgid "Aprovada em Execução"
 msgstr ""
 
-#: mod/comercio/comercio_PropostaC.php:2322
+#: mod/comercio/comercio_PropostaC.php:2328
 #: mod/Desenvolvimento/Desenvolvimento_ProjetoC.php:312
 msgid "Recusada"
 msgstr ""
 
-#: mod/comercio/comercio_PropostaC.php:2402
+#: mod/comercio/comercio_PropostaC.php:2408
 msgid "Administrar Comentários da "
 msgstr ""
 
-#: mod/comercio/comercio_PropostaC.php:2456
+#: mod/comercio/comercio_PropostaC.php:2462
 msgid "Comentário sobre a Proposta Adicionado com Sucesso"
 msgstr ""
 
-#: mod/comercio/comercio_PropostaC.php:2460
+#: mod/comercio/comercio_PropostaC.php:2466
 msgid "Comentário de Proposta cadastrado com sucesso."
 msgstr ""
 
-#: mod/comercio/comercio_PropostaC.php:2572
+#: mod/comercio/comercio_PropostaC.php:2578
 msgid "Comentário da "
 msgstr ""
 
-#: mod/comercio/comercio_PropostaC.php:2648
+#: mod/comercio/comercio_PropostaC.php:2654
 msgid "Administrar Sub propostas da "
 msgstr ""
 
-#: mod/comercio/comercio_PropostaC.php:2702
+#: mod/comercio/comercio_PropostaC.php:2708
 msgid "Sub proposta sobre a Proposta Adicionado com Sucesso"
 msgstr ""
 
-#: mod/comercio/comercio_PropostaC.php:2706
+#: mod/comercio/comercio_PropostaC.php:2712
 msgid "Sub proposta de Proposta cadastrado com sucesso."
 msgstr ""
 
-#: mod/comercio/comercio_PropostaC.php:2818
+#: mod/comercio/comercio_PropostaC.php:2824
 msgid "Sub proposta da "
 msgstr ""
 
-#: mod/comercio/comercio_PropostaC.php:2864
+#: mod/comercio/comercio_PropostaC.php:2870
 msgid "Listagem de Checklists"
 msgstr ""
 
-#: mod/comercio/comercio_PropostaC.php:2868
+#: mod/comercio/comercio_PropostaC.php:2874
 msgid "Administrar Checklists"
 msgstr ""
 
-#: mod/comercio/comercio_PropostaC.php:2926
+#: mod/comercio/comercio_PropostaC.php:2932
 msgid "Descartado"
 msgstr ""
 
-#: mod/comercio/comercio_PropostaC.php:2930
+#: mod/comercio/comercio_PropostaC.php:2936
 msgid "Liberado"
 msgstr ""
 
-#: mod/comercio/comercio_PropostaC.php:2934
+#: mod/comercio/comercio_PropostaC.php:2940
 #: mod/Desenvolvimento/Desenvolvimento_SenhaC.php:261
 #: mod/Desenvolvimento/Desenvolvimento_SenhaC.php:572
 #: mod/Desenvolvimento/Desenvolvimento_SenhaM.php:97
@@ -7942,143 +9317,143 @@ msgstr ""
 msgid "Em Uso"
 msgstr ""
 
-#: mod/comercio/comercio_PropostaC.php:2952
+#: mod/comercio/comercio_PropostaC.php:2958
 msgid "Adicionar Checklist"
 msgstr ""
 
-#: mod/comercio/comercio_PropostaC.php:2953
+#: mod/comercio/comercio_PropostaC.php:2959
 msgid "Salvar Checklist"
 msgstr ""
 
-#: mod/comercio/comercio_PropostaC.php:2969
+#: mod/comercio/comercio_PropostaC.php:2975
 msgid "Checklist Adicionado com Sucesso"
 msgstr ""
 
-#: mod/comercio/comercio_PropostaC.php:2973
+#: mod/comercio/comercio_PropostaC.php:2979
 msgid "Checklist cadastrado com sucesso."
 msgstr ""
 
-#: mod/comercio/comercio_PropostaC.php:2987
+#: mod/comercio/comercio_PropostaC.php:2993
 msgid "Alteração de Checklist"
 msgstr ""
 
-#: mod/comercio/comercio_PropostaC.php:2989
+#: mod/comercio/comercio_PropostaC.php:2995
 msgid "Alterar Checklist"
 msgstr ""
 
-#: mod/comercio/comercio_PropostaC.php:3003
+#: mod/comercio/comercio_PropostaC.php:3009
 msgid "Checklist Editado com Sucesso"
 msgstr ""
 
-#: mod/comercio/comercio_PropostaC.php:3006
+#: mod/comercio/comercio_PropostaC.php:3012
 msgid "Checklist Alterado com Sucesso."
 msgstr ""
 
-#: mod/comercio/comercio_PropostaC.php:3030
+#: mod/comercio/comercio_PropostaC.php:3036
 msgid "Checklist Deletado com sucesso"
 msgstr ""
 
-#: mod/comercio/comercio_PropostaC.php:3043
+#: mod/comercio/comercio_PropostaC.php:3049
 msgid "Checklist deletado com Sucesso"
 msgstr ""
 
-#: mod/comercio/comercio_PropostaC.php:3094
+#: mod/comercio/comercio_PropostaC.php:3100
 msgid "Listagem de Visitas"
 msgstr ""
 
-#: mod/comercio/comercio_PropostaC.php:3098
+#: mod/comercio/comercio_PropostaC.php:3104
 msgid "Administrar Visitas"
 msgstr ""
 
-#: mod/comercio/comercio_PropostaC.php:3106
+#: mod/comercio/comercio_PropostaC.php:3112
 msgid "Adicionar Agenda de Visita"
 msgstr ""
 
-#: mod/comercio/comercio_PropostaC.php:3107
+#: mod/comercio/comercio_PropostaC.php:3113
 msgid "Salvar Agenda de Visita"
 msgstr ""
 
-#: mod/comercio/comercio_PropostaC.php:3123
+#: mod/comercio/comercio_PropostaC.php:3129
 msgid "Agenda de Visita Adicionada com Sucesso"
 msgstr ""
 
-#: mod/comercio/comercio_PropostaC.php:3127
+#: mod/comercio/comercio_PropostaC.php:3133
 msgid "Agenda de Visita cadastrada com sucesso."
 msgstr ""
 
-#: mod/comercio/comercio_PropostaC.php:3142
+#: mod/comercio/comercio_PropostaC.php:3148
 msgid "Alteração de Agenda de Visita"
 msgstr ""
 
-#: mod/comercio/comercio_PropostaC.php:3144
+#: mod/comercio/comercio_PropostaC.php:3150
 msgid "Alterar Agenda de Visita"
 msgstr ""
 
-#: mod/comercio/comercio_PropostaC.php:3158
+#: mod/comercio/comercio_PropostaC.php:3164
 msgid "Agenda de Visita Editada com Sucesso"
 msgstr ""
 
-#: mod/comercio/comercio_PropostaC.php:3162
+#: mod/comercio/comercio_PropostaC.php:3168
 msgid "Agenda de Visita teve a alteração bem sucedida"
 msgstr ""
 
-#: mod/comercio/comercio_PropostaC.php:3185
+#: mod/comercio/comercio_PropostaC.php:3191
 msgid "Agenda de Visita Deletada com sucesso"
 msgstr ""
 
-#: mod/comercio/comercio_PropostaC.php:3198
+#: mod/comercio/comercio_PropostaC.php:3204
 msgid "Agenda de Visita deletada com Sucesso"
 msgstr ""
 
-#: mod/comercio/comercio_PropostaC.php:3235
+#: mod/comercio/comercio_PropostaC.php:3241
 msgid "Comentários do Visita"
 msgstr ""
 
-#: mod/comercio/comercio_PropostaC.php:3239
+#: mod/comercio/comercio_PropostaC.php:3245
 msgid "Administrar Comentários do Visita"
 msgstr ""
 
-#: mod/comercio/comercio_PropostaC.php:3255
+#: mod/comercio/comercio_PropostaC.php:3261
 msgid "Adicionar Comentário de Visita"
 msgstr ""
 
-#: mod/comercio/comercio_PropostaC.php:3256
+#: mod/comercio/comercio_PropostaC.php:3262
 msgid "Salvar Comentário de Visita"
 msgstr ""
 
-#: mod/comercio/comercio_PropostaC.php:3273
+#: mod/comercio/comercio_PropostaC.php:3279
 msgid "Comentário sobre a Visita Adicionado com Sucesso"
 msgstr ""
 
-#: mod/comercio/comercio_PropostaC.php:3277
+#: mod/comercio/comercio_PropostaC.php:3283
 msgid "Comentário de Visita cadastrado com sucesso."
 msgstr ""
 
-#: mod/comercio/comercio_PropostaC.php:3297
+#: mod/comercio/comercio_PropostaC.php:3303
 msgid "Alteração de Comentário sobre a Visita"
 msgstr ""
 
-#: mod/comercio/comercio_PropostaC.php:3298
+#: mod/comercio/comercio_PropostaC.php:3304
 msgid "form_Sistema_AdminC_VisitaEdit"
 msgstr ""
 
-#: mod/comercio/comercio_PropostaC.php:3299
+#: mod/comercio/comercio_PropostaC.php:3305
 msgid "Alterar Comentário de Visita"
 msgstr ""
 
-#: mod/comercio/comercio_PropostaC.php:3316
+#: mod/comercio/comercio_PropostaC.php:3322
 msgid "Comentário de Visita Editado com Sucesso"
 msgstr ""
 
-#: mod/comercio/comercio_PropostaC.php:3319
+#: mod/comercio/comercio_PropostaC.php:3325
 msgid "Comentário de Visita Alterado com Sucesso."
 msgstr ""
 
-#: mod/comercio/comercio_PropostaC.php:3346
+#: mod/comercio/comercio_PropostaC.php:3352
 msgid "Comentário sobre a Visita Deletado com sucesso"
 msgstr ""
 
-#: mod/comercio/comercio_PropostaC.php:3359
+#: mod/comercio/comercio_PropostaC.php:3365
 msgid "Comentário de Visita deletado com Sucesso"
 msgstr ""
 
@@ -8228,52 +9603,8 @@ msgstr ""
 msgid "Enquete - Responder"
 msgstr ""
 
-#: mod/Enquete/Enquete_RespostaC.php:34 mod/Enquete/Enquete_RespostaC.php:36
-msgid "Respostas"
-msgstr ""
-
 #: mod/Enquete/Enquete_RespostaC.php:145
 msgid "Administrar Respostas"
-msgstr ""
-
-#: mod/Enquete/Enquete_RespostaC.php:155
-msgid "Adicionar Resposta"
-msgstr ""
-
-#: mod/Enquete/Enquete_RespostaC.php:156
-msgid "Salvar Resposta"
-msgstr ""
-
-#: mod/Enquete/Enquete_RespostaC.php:177
-msgid "Resposta Adicionada com Sucesso"
-msgstr ""
-
-#: mod/Enquete/Enquete_RespostaC.php:180
-msgid "Resposta cadastrada com sucesso."
-msgstr ""
-
-#: mod/Enquete/Enquete_RespostaC.php:209
-msgid "Alteração de Resposta"
-msgstr ""
-
-#: mod/Enquete/Enquete_RespostaC.php:211
-msgid "Alterar Resposta"
-msgstr ""
-
-#: mod/Enquete/Enquete_RespostaC.php:234
-msgid "Resposta Editada com Sucesso"
-msgstr ""
-
-#: mod/Enquete/Enquete_RespostaC.php:237
-msgid "Resposta Alterada com Sucesso."
-msgstr ""
-
-#: mod/Enquete/Enquete_RespostaC.php:268
-msgid "Resposta deletada com sucesso"
-msgstr ""
-
-#: mod/Enquete/Enquete_RespostaC.php:281
-msgid "Resposta deletada com Sucesso"
 msgstr ""
 
 #: mod/Engenharia/Engenharia_EmpreendimentoC.php:11
@@ -8967,30 +10298,6 @@ msgstr ""
 msgid "Destaque"
 msgstr ""
 
-#: mod/Desenvolvimento/Desenvolvimento_SenhaC.php:63
-#: mod/Desenvolvimento/Desenvolvimento_SenhaC.php:77
-#: mod/Desenvolvimento/Desenvolvimento_SenhaC.php:377
-#: mod/Desenvolvimento/Desenvolvimento_SenhaC.php:390
-#: DAO/Transporte.Caminhoneiro.Pedido.DAO.php:547 DAO/Usuario.DAO.php:1929
-#: DAO/Sistema.Menu.DAO.php:312 DAO/Gramatica.Preposicao.DAO.php:102
-#: DAO/Desenvolvimento.Projeto.DAO.php:250
-#: DAO/Desenvolvimento.Projeto.DAO.php:298
-#: DAO/Comercio.Certificado.Proposta.DAO.php:555
-#: DAO/Usuario.Veiculo.Equipamento.DAO.php:296
-#: DAO/Musica.Album.Artista.DAO.php:145 DAO/Universal.Vivo.Cep.DAO.php:214
-#: DAO/Transporte.Armazem.Pedido.Lance.DAO.php:120
-#: DAO/Transporte.Transportadora.Pedido.Lance.DAO.php:120
-#: DAO/Universal.Vivo.Cnpj.DAO.php:457 DAO/Musica.DAO.php:171
-#: DAO/Comercio.Proposta.Sub.DAO.php:118
-#: DAO/Transporte.Armazem.Pedido.DAO.php:547 DAO/Comercio.Proposta.DAO.php:631
-#: DAO/Transporte.Caminhoneiro.Pedido.Lance.DAO.php:120
-#: DAO/Comercio.Checklist.DAO.php:230 DAO/Musica.Album.DAO.php:198
-#: DAO/Musica.Video.DAO.php:263 DAO/Universal.Vivo.Cpf.DAO.php:190
-#: DAO/Transporte.Transportadora.Pedido.DAO.php:547
-#: DAO/Curso.Turma.DAO.php:254 DAO/Curso.DAO.php:121
-msgid "Status"
-msgstr ""
-
 #: mod/Desenvolvimento/Desenvolvimento_SenhaC.php:64
 #: mod/Desenvolvimento/Desenvolvimento_SenhaC.php:78
 #: mod/Desenvolvimento/Desenvolvimento_SenhaC.php:378
@@ -9544,35 +10851,35 @@ msgstr ""
 msgid "Salvar Curso"
 msgstr ""
 
-#: mod/Curso/Curso_CursoC.php:138
+#: mod/Curso/Curso_CursoC.php:137
 msgid "Curso Adicionado com Sucesso"
 msgstr ""
 
-#: mod/Curso/Curso_CursoC.php:142
+#: mod/Curso/Curso_CursoC.php:141
 msgid "Curso cadastrado com sucesso."
 msgstr ""
 
-#: mod/Curso/Curso_CursoC.php:156
+#: mod/Curso/Curso_CursoC.php:155
 msgid "Alteração de Curso"
 msgstr ""
 
-#: mod/Curso/Curso_CursoC.php:158
+#: mod/Curso/Curso_CursoC.php:157
 msgid "Alterar Curso"
 msgstr ""
 
-#: mod/Curso/Curso_CursoC.php:172
+#: mod/Curso/Curso_CursoC.php:171
 msgid "Curso Editado com Sucesso"
 msgstr ""
 
-#: mod/Curso/Curso_CursoC.php:175
+#: mod/Curso/Curso_CursoC.php:174
 msgid "Curso Alterado com Sucesso."
 msgstr ""
 
-#: mod/Curso/Curso_CursoC.php:199
+#: mod/Curso/Curso_CursoC.php:195
 msgid "Curso deletado com sucesso"
 msgstr ""
 
-#: mod/Curso/Curso_CursoC.php:212
+#: mod/Curso/Curso_CursoC.php:208
 msgid "Curso deletado com Sucesso"
 msgstr ""
 
@@ -9612,56 +10919,56 @@ msgstr ""
 msgid "Salvar Turma"
 msgstr ""
 
-#: mod/Curso/Curso_TurmaC.php:382
+#: mod/Curso/Curso_TurmaC.php:381
 msgid "Turma Adicionada com Sucesso"
 msgstr ""
 
-#: mod/Curso/Curso_TurmaC.php:385
+#: mod/Curso/Curso_TurmaC.php:384
 msgid "Turma cadastrada com sucesso."
 msgstr ""
 
-#: mod/Curso/Curso_TurmaC.php:451
+#: mod/Curso/Curso_TurmaC.php:450
 msgid "Nenhuma Inscrição nessa Turma"
 msgstr ""
 
-#: mod/Curso/Curso_TurmaC.php:509
+#: mod/Curso/Curso_TurmaC.php:508
 msgid "Alteração de Turma"
 msgstr ""
 
-#: mod/Curso/Curso_TurmaC.php:511
+#: mod/Curso/Curso_TurmaC.php:510
 msgid "Alterar Turma"
 msgstr ""
 
-#: mod/Curso/Curso_TurmaC.php:544
+#: mod/Curso/Curso_TurmaC.php:542
 msgid "Turma Editada com Sucesso"
 msgstr ""
 
-#: mod/Curso/Curso_TurmaC.php:551
+#: mod/Curso/Curso_TurmaC.php:549
 msgid "Turma Alterada com Sucesso."
 msgstr ""
 
-#: mod/Curso/Curso_TurmaC.php:585
+#: mod/Curso/Curso_TurmaC.php:581
 msgid "Turma deletada com sucesso"
 msgstr ""
 
-#: mod/Curso/Curso_TurmaC.php:602
+#: mod/Curso/Curso_TurmaC.php:598
 msgid "Turma deletada com Sucesso"
 msgstr ""
 
-#: mod/Curso/Curso_TurmaC.php:693 mod/Curso/Curso_TurmaC.php:778
+#: mod/Curso/Curso_TurmaC.php:689 mod/Curso/Curso_TurmaC.php:774
 msgid "Sem Vagas"
 msgstr ""
 
-#: mod/Curso/Curso_TurmaC.php:719 mod/Curso/Curso_TurmaC.php:720
-#: mod/Curso/Curso_TurmaC.php:722
+#: mod/Curso/Curso_TurmaC.php:715 mod/Curso/Curso_TurmaC.php:716
+#: mod/Curso/Curso_TurmaC.php:718
 msgid "Confirmar Inscrição"
 msgstr ""
 
-#: mod/Curso/Curso_TurmaC.php:789 mod/Curso/Curso_TurmaC.php:793
+#: mod/Curso/Curso_TurmaC.php:785 mod/Curso/Curso_TurmaC.php:789
 msgid "Inscrição Confirmada com Sucesso"
 msgstr ""
 
-#: mod/Curso/Curso_TurmaC.php:792
+#: mod/Curso/Curso_TurmaC.php:788
 msgid "Inscrição bem sucedida"
 msgstr ""
 
@@ -9739,8 +11046,8 @@ msgstr ""
 msgid "Artista"
 msgstr ""
 
-#: DAO/Usuario.Historico.Email.DAO.php:100
-#: DAO/Usuario.Agenda.Compromisso.DAO.php:73 DAO/Biblioteca.DAO.php:95
+#: DAO/Usuario.Historico.Email.DAO.php:100 DAO/Biblioteca.DAO.php:95
+#: DAO/Usuario.Agenda.DAO.php:73
 msgid "Titulo"
 msgstr ""
 
@@ -9752,13 +11059,13 @@ msgstr ""
 #: DAO/Usuario.Historico.Email.DAO.php:264 DAO/Sistema.Permissao.DAO.php:187
 #: DAO/Engenharia.Empreendimento.DAO.php:80 DAO/Usuario.DAO.php:337
 #: DAO/Sistema.Newsletter.DAO.php:71 DAO/Sistema.Newsletter.DAO.php:123
-#: DAO/Usuario.Mensagem.DAO.php:147 DAO/Usuario.Mensagem.DAO.php:199
-#: DAO/Usuario.Mensagem.DAO.php:437 DAO/Social.DAO.php:114
-#: DAO/Social.DAO.php:139 DAO/Comercio.Fornecedor.DAO.php:156
-#: DAO/Transporte.Caminhoneiro.DAO.php:217 DAO/Transporte.Armazem.DAO.php:188
-#: DAO/Transporte.Armazem.DAO.php:291 DAO/Transporte.Armazem.DAO.php:394
-#: DAO/Transporte.Armazem.DAO.php:497
-#: DAO/Transporte.Transportadora.DAO.php:160
+#: DAO/Sistema.Filial.DAO.php:77 DAO/Usuario.Mensagem.DAO.php:147
+#: DAO/Usuario.Mensagem.DAO.php:199 DAO/Usuario.Mensagem.DAO.php:437
+#: DAO/Social.DAO.php:114 DAO/Social.DAO.php:139
+#: DAO/Comercio.Fornecedor.DAO.php:156 DAO/Transporte.Caminhoneiro.DAO.php:217
+#: DAO/Transporte.Armazem.DAO.php:188 DAO/Transporte.Armazem.DAO.php:291
+#: DAO/Transporte.Armazem.DAO.php:394 DAO/Transporte.Armazem.DAO.php:497
+#: DAO/Sistema.Config.DAO.php:88 DAO/Transporte.Transportadora.DAO.php:160
 #: DAO/Transporte.Transportadora.DAO.php:263
 #: DAO/Transporte.Transportadora.DAO.php:366
 #: DAO/Transporte.Transportadora.DAO.php:469
@@ -9809,8 +11116,9 @@ msgstr ""
 
 #: DAO/Transporte.Caminhoneiro.Pedido.DAO.php:116
 #: DAO/Transporte.Caminhoneiro.Pedido.DAO.php:141
-#: DAO/Comercio.Visita.DAO.php:80 DAO/Sistema.Permissao.DAO.php:60
-#: DAO/Sistema.Permissao.DAO.php:161 DAO/Usuario.Mensagem.Origem.DAO.php:65
+#: DAO/Comercio.Visita.DAO.php:80 DAO/Simulador.Pergunta.DAO.php:94
+#: DAO/Sistema.Permissao.DAO.php:60 DAO/Sistema.Permissao.DAO.php:161
+#: DAO/Usuario.Mensagem.Origem.DAO.php:65
 #: DAO/Comercio.Servicos.Servico.DAO.php:119
 #: DAO/Comercio.Servicos.Servico.DAO.php:144 DAO/Sistema.Menu.DAO.php:107
 #: DAO/Sistema.Menu.DAO.php:133 DAO/Sistema.Menu.DAO.php:159
@@ -9819,18 +11127,19 @@ msgstr ""
 #: DAO/Usuario.Veiculo.DAO.php:165 DAO/Social.Acao.DAO.php:204
 #: DAO/Usuario.Mensagem.Setor.DAO.php:93
 #: DAO/Usuario.Mensagem.Setor.DAO.php:118
-#: DAO/Comercio.Venda.Carrinho.DAO.php:105
+#: DAO/Comercio.Venda.Carrinho.DAO.php:105 DAO/Sistema.Filial.DAO.php:205
+#: DAO/Simulador.Tag.Conexao.DAO.php:106
 #: DAO/Comercio.Servicos.Suporte.DAO.php:66
 #: DAO/Comercio.Certificado.Proposta.DAO.php:427
-#: DAO/Agenda.Compromisso.DAO.php:72 DAO/Agenda.Compromisso.DAO.php:98
-#: DAO/Agenda.Compromisso.DAO.php:123 DAO/Agenda.Compromisso.DAO.php:149
+#: DAO/Locomocao.Entrega.DAO.php:68 DAO/Locomocao.Entrega.DAO.php:94
+#: DAO/Locomocao.Entrega.DAO.php:119 DAO/Locomocao.Entrega.DAO.php:144
 #: DAO/Financeiro.Pagamento.Externo.DAO.php:63
 #: DAO/Financeiro.Pagamento.Externo.DAO.php:88
 #: DAO/Financeiro.Pagamento.Externo.DAO.php:113
 #: DAO/Financeiro.Pagamento.Externo.DAO.php:138
 #: DAO/Financeiro.Pagamento.Externo.DAO.php:164
 #: DAO/Comercio.Produto.DAO.php:176 DAO/Comercio.Produto.DAO.php:226
-#: DAO/Comercio.Produto.DAO.php:251
+#: DAO/Comercio.Produto.DAO.php:275
 #: DAO/Evento.Manifestacao.Territorial.DAO.php:74 DAO/Foto.DAO.php:64
 #: DAO/Usuario.Mensagem.Anexo.DAO.php:90
 #: DAO/Usuario.Mensagem.Anexo.DAO.php:140 DAO/Social.Caracteristica.DAO.php:68
@@ -9841,17 +11150,20 @@ msgstr ""
 #: DAO/Transporte.Caminhoneiro.DAO.php:244 DAO/Local.DAO.php:102
 #: DAO/Usuario.Mensagem.Assunto.DAO.php:92 DAO/Biblioteca.Acesso.DAO.php:73
 #: DAO/Biblioteca.Acesso.DAO.php:99 DAO/Transporte.Armazem.DAO.php:85
-#: DAO/Comercio.Marca.DAO.php:65 DAO/Comercio.Proposta.Funcionario.DAO.php:109
+#: DAO/Comercio.Marca.DAO.php:65 DAO/Sistema.Config.DAO.php:62
+#: DAO/Comercio.Proposta.Funcionario.DAO.php:109
 #: DAO/Agenda.Atividade.DAO.php:70 DAO/Agenda.Atividade.DAO.php:95
 #: DAO/Agenda.Atividade.DAO.php:121 DAO/Transporte.Armazem.Pedido.DAO.php:116
 #: DAO/Transporte.Armazem.Pedido.DAO.php:141 DAO/Usuario.Anexo.DAO.php:90
 #: DAO/Usuario.Anexo.DAO.php:140 DAO/Comercio.Proposta.DAO.php:118
 #: DAO/Comercio.Proposta.DAO.php:346 DAO/Comercio.Proposta.DAO.php:372
 #: DAO/Comercio.Proposta.DAO.php:425 DAO/Comercio.Proposta.DAO.php:451
+#: DAO/Locomocao.Entrega.Ponto.DAO.php:230
 #: DAO/Transporte.Transportadora.DAO.php:84
 #: DAO/Comercio.Produto.Estoque.DAO.php:150
 #: DAO/Comercio.Produto.Estoque.DAO.php:176
-#: DAO/Comercio.Venda.Composicao.DAO.php:147
+#: DAO/Comercio.Venda.Composicao.DAO.php:147 DAO/Agenda.DAO.php:72
+#: DAO/Agenda.DAO.php:98 DAO/Agenda.DAO.php:123 DAO/Agenda.DAO.php:149
 #: DAO/Financeiro.Pagamento.Forma.DAO.php:66
 #: DAO/Financeiro.Pagamento.Interno.DAO.php:99
 #: DAO/Financeiro.Pagamento.Interno.DAO.php:125
@@ -9890,18 +11202,6 @@ msgstr ""
 msgid "Comprimento"
 msgstr ""
 
-#: DAO/Transporte.Caminhoneiro.Pedido.DAO.php:191
-#: DAO/Transporte.Armazem.Pedido.DAO.php:191
-#: DAO/Transporte.Transportadora.Pedido.DAO.php:191
-msgid "Altura"
-msgstr ""
-
-#: DAO/Transporte.Caminhoneiro.Pedido.DAO.php:218
-#: DAO/Transporte.Armazem.Pedido.DAO.php:218
-#: DAO/Transporte.Transportadora.Pedido.DAO.php:218
-msgid "Largura"
-msgstr ""
-
 #: DAO/Transporte.Caminhoneiro.Pedido.DAO.php:245
 #: DAO/Transporte.Armazem.Pedido.DAO.php:245
 #: DAO/Transporte.Transportadora.Pedido.DAO.php:245
@@ -9921,8 +11221,7 @@ msgid "Peso Bruto"
 msgstr ""
 
 #: DAO/Transporte.Caminhoneiro.Pedido.DAO.php:325
-#: DAO/Agenda.Compromisso.DAO.php:168
-#: DAO/Transporte.Armazem.Pedido.DAO.php:325
+#: DAO/Transporte.Armazem.Pedido.DAO.php:325 DAO/Agenda.DAO.php:168
 #: DAO/Transporte.Transportadora.Pedido.DAO.php:325
 msgid "Data do Inicio"
 msgstr ""
@@ -9981,39 +11280,6 @@ msgstr ""
 msgid "Bairro de Chegada"
 msgstr ""
 
-#: DAO/Transporte.Caminhoneiro.Pedido.DAO.php:580 DAO/Usuario.DAO.php:1720
-#: DAO/Usuario.Telefone.DAO.php:180 DAO/Usuario.Veiculo.DAO.php:586
-#: DAO/Desenvolvimento.Projeto.DAO.php:332
-#: DAO/Predial.Salao.Reserva.DAO.php:139
-#: DAO/Engenharia.Estoque.Retirada.DAO.php:171
-#: DAO/Usuario.Veiculo.Equipamento.DAO.php:334
-#: DAO/Musica.Album.Artista.DAO.php:179
-#: DAO/Transporte.Armazem.Pedido.Lance.DAO.php:183 DAO/Enquete.DAO.php:116
-#: DAO/Comercio.Fornecedor.DAO.php:795
-#: DAO/Transporte.Transportadora.Pedido.Lance.DAO.php:183
-#: DAO/Financeiro.Pagamento.Externo.DAO.php:187
-#: DAO/Evento.Manifestacao.Territorial.DAO.php:302
-#: DAO/Comercio.Venda.Mesa.DAO.php:171 DAO/Financeiro.Financa.DAO.php:147
-#: DAO/Musica.DAO.php:205 DAO/Local.DAO.php:364
-#: DAO/Usuario.Agenda.Pasta.DAO.php:166 DAO/Transporte.Armazem.DAO.php:160
-#: DAO/Comercio.Proposta.Sub.DAO.php:163
-#: DAO/Transporte.Armazem.Pedido.DAO.php:580 DAO/Comercio.Proposta.DAO.php:692
-#: DAO/Predial.Salao.DAO.php:145
-#: DAO/Transporte.Caminhoneiro.Pedido.Lance.DAO.php:183
-#: DAO/Transporte.Transportadora.DAO.php:132
-#: DAO/Comercio.Checklist.DAO.php:272 DAO/Comercio.Produto.Estoque.DAO.php:227
-#: DAO/Social.Ficou.DAO.php:109 DAO/Financeiro.Pagamento.Interno.DAO.php:467
-#: DAO/Musica.Album.DAO.php:232 DAO/Transporte.Fornecedor.DAO.php:131
-#: DAO/Comercio.Fornecedor.Material.DAO.php:398 DAO/Musica.Video.DAO.php:297
-#: DAO/Desenvolvimento.Senha.DAO.php:265
-#: DAO/Transporte.Transportadora.Pedido.DAO.php:580
-#: DAO/Predial.Bloco.Apart.Correio.DAO.php:245
-#: DAO/Comercio.Produto.Estoque.Reduzir.DAO.php:119
-#: DAO/Curso.Turma.Inscricao.DAO.php:261 DAO/Categoria.DAO.php:153
-#: DAO/Usuario.Agenda.Compromisso.DAO.php:153 DAO/Sistema.Grupo.DAO.php:197
-msgid "Observação"
-msgstr ""
-
 #: DAO/Comercio.Visita.DAO.php:103
 msgid "Responsável pelo Contato"
 msgstr ""
@@ -10055,42 +11321,31 @@ msgstr ""
 
 #: DAO/Comercio.Visita.DAO.php:293 DAO/Engenharia.Empreendimento.DAO.php:216
 #: DAO/Usuario.DAO.php:815 DAO/Usuario.Telefone.DAO.php:116
-#: DAO/Sistema.Local.Bairro.DAO.php:65 DAO/Social.DAO.php:309
-#: DAO/Sistema.Local.Cidade.DAO.php:64 DAO/Comercio.Fornecedor.DAO.php:603
+#: DAO/Sistema.Local.Bairro.DAO.php:65 DAO/Sistema.Filial.DAO.php:101
+#: DAO/Social.DAO.php:309 DAO/Sistema.Local.Cidade.DAO.php:64
+#: DAO/Comercio.Fornecedor.DAO.php:603
 #: DAO/Evento.Manifestacao.Territorial.DAO.php:149 DAO/Local.DAO.php:179
-#: DAO/Sistema.Local.Estado.DAO.php:63
+#: DAO/Locomocao.Entrega.Ponto.DAO.php:126 DAO/Sistema.Local.Estado.DAO.php:63
 msgid "Pais"
 msgstr ""
 
 #: DAO/Comercio.Visita.DAO.php:315 DAO/Engenharia.Empreendimento.DAO.php:238
 #: DAO/Usuario.DAO.php:841 DAO/Usuario.Telefone.DAO.php:138
 #: DAO/Sistema.Newsletter.DAO.php:120 DAO/Sistema.Local.Bairro.DAO.php:87
-#: DAO/Social.DAO.php:331 DAO/Sistema.Local.Cidade.DAO.php:85
-#: DAO/Comercio.Fornecedor.DAO.php:625
+#: DAO/Sistema.Filial.DAO.php:127 DAO/Social.DAO.php:331
+#: DAO/Sistema.Local.Cidade.DAO.php:85 DAO/Comercio.Fornecedor.DAO.php:625
 #: DAO/Evento.Manifestacao.Territorial.DAO.php:175 DAO/Local.DAO.php:206
+#: DAO/Locomocao.Entrega.Ponto.DAO.php:152
 msgid "Estado"
 msgstr ""
 
 #: DAO/Comercio.Visita.DAO.php:337 DAO/Engenharia.Empreendimento.DAO.php:260
 #: DAO/Usuario.DAO.php:867 DAO/Usuario.Telefone.DAO.php:159
-#: DAO/Sistema.Local.Bairro.DAO.php:108 DAO/Social.DAO.php:353
-#: DAO/Comercio.Fornecedor.DAO.php:647
+#: DAO/Sistema.Local.Bairro.DAO.php:108 DAO/Sistema.Filial.DAO.php:153
+#: DAO/Social.DAO.php:353 DAO/Comercio.Fornecedor.DAO.php:647
 #: DAO/Evento.Manifestacao.Territorial.DAO.php:201 DAO/Local.DAO.php:233
+#: DAO/Locomocao.Entrega.Ponto.DAO.php:178
 msgid "Cidade"
-msgstr ""
-
-#: DAO/Comercio.Visita.DAO.php:358 DAO/Engenharia.Empreendimento.DAO.php:281
-#: DAO/Usuario.DAO.php:892 DAO/Social.DAO.php:374
-#: DAO/Universal.Vivo.Cep.DAO.php:139 DAO/Comercio.Fornecedor.DAO.php:668
-#: DAO/Evento.Manifestacao.Territorial.DAO.php:226 DAO/Local.DAO.php:259
-msgid "Bairro"
-msgstr ""
-
-#: DAO/Comercio.Visita.DAO.php:379 DAO/Sistema.Permissao.DAO.php:158
-#: DAO/Usuario.DAO.php:917 DAO/Social.DAO.php:395
-#: DAO/Comercio.Fornecedor.DAO.php:689
-#: DAO/Evento.Manifestacao.Territorial.DAO.php:251 DAO/Local.DAO.php:285
-msgid "Endereço"
 msgstr ""
 
 #: DAO/Comercio.Visita.DAO.php:405 DAO/Engenharia.Empreendimento.DAO.php:328
@@ -10112,8 +11367,14 @@ msgstr ""
 msgid "Observação sobre o Contato"
 msgstr ""
 
-#: DAO/Sistema.Permissao.DAO.php:57
-msgid "Chave"
+#: DAO/Simulador.Pergunta.DAO.php:66
+#: DAO/Simulador.Pergunta.Resposta.DAO.php:71
+#: DAO/Simulador.Assistir.DAO.php:66
+msgid "Simulador"
+msgstr ""
+
+#: DAO/Simulador.Pergunta.DAO.php:91
+msgid "Nome da Pergunta"
 msgstr ""
 
 #: DAO/Sistema.Permissao.DAO.php:82 DAO/Sistema.Menu.DAO.php:104
@@ -10135,17 +11396,8 @@ msgstr ""
 
 #: DAO/Sistema.Permissao.DAO.php:184 DAO/Usuario.DAO.php:334
 #: DAO/Sistema.Newsletter.DAO.php:68 DAO/Social.DAO.php:111
-#: DAO/Comercio.Fornecedor.DAO.php:153
+#: DAO/Comercio.Fornecedor.DAO.php:153 DAO/Sistema.Config.DAO.php:85
 msgid "Nome Completo"
-msgstr ""
-
-#: DAO/Sistema.Permissao.DAO.php:210 DAO/Comercio.Servicos.Servico.DAO.php:141
-#: DAO/Comercio.Produto.DAO.php:248
-#: DAO/Predial.Bloco.Apart.Advertencia.DAO.php:188
-#: DAO/Social.Caracteristica.DAO.php:91 DAO/Agenda.Atividade.DAO.php:67
-#: DAO/Comercio.Venda.Composicao.DAO.php:118
-#: DAO/Predial.Bloco.Apart.Informativo.DAO.php:178 DAO/Biblioteca.DAO.php:256
-msgid "Descrição"
 msgstr ""
 
 #: DAO/Engenharia.Empreendimento.DAO.php:77
@@ -10153,13 +11405,13 @@ msgid "Nome do Empreendimento"
 msgstr ""
 
 #: DAO/Engenharia.Empreendimento.DAO.php:103
-#: DAO/Predial.Salao.Reserva.DAO.php:85
+#: DAO/Predial.Salao.Reserva.DAO.php:85 DAO/Usuario.Expediente.DAO.php:120
 #: DAO/Predial.Bloco.Apart.Informativo.DAO.php:204 DAO/Curso.Turma.DAO.php:148
 msgid "Data Inicial"
 msgstr ""
 
 #: DAO/Engenharia.Empreendimento.DAO.php:131
-#: DAO/Predial.Salao.Reserva.DAO.php:112
+#: DAO/Predial.Salao.Reserva.DAO.php:112 DAO/Usuario.Expediente.DAO.php:145
 #: DAO/Predial.Bloco.Apart.Informativo.DAO.php:231 DAO/Curso.Turma.DAO.php:174
 msgid "Data Final"
 msgstr ""
@@ -10655,6 +11907,10 @@ msgstr ""
 msgid "Itens do Cardápio"
 msgstr ""
 
+#: DAO/Sistema.Filial.DAO.php:202
+msgid "Endereço (Rua e Número)"
+msgstr ""
+
 #: DAO/Sistema.Local.Pais.DAO.php:77
 msgid "Nome do Pais"
 msgstr ""
@@ -10703,11 +11959,6 @@ msgstr ""
 
 #: DAO/Predial.Bloco.Apart.Animal.DAO.php:162
 msgid "Peso (GRAMAS)"
-msgstr ""
-
-#: DAO/Predial.Bloco.Apart.Animal.DAO.php:189
-#: DAO/Predial.Bloco.Apart.Veiculo.DAO.php:188
-msgid "Cor"
 msgstr ""
 
 #: DAO/Usuario.Mensagem.DAO.php:118 DAO/Usuario.Mensagem.DAO.php:144
@@ -10770,6 +12021,19 @@ msgstr ""
 msgid "Ficada"
 msgstr ""
 
+#: DAO/Simulador.Tag.Conexao.DAO.php:102
+#: DAO/Financeiro.Pagamento.Externo.DAO.php:85
+#: DAO/Biblioteca.Acesso.DAO.php:95 DAO/Agenda.Atividade.DAO.php:117
+#: DAO/Comercio.Produto.Estoque.DAO.php:172 DAO/Agenda.DAO.php:94
+#: DAO/Financeiro.Pagamento.Interno.DAO.php:121
+#: DAO/Financeiro.Pagamento.Interno.DAO.php:172
+msgid "Id do Motivo"
+msgstr ""
+
+#: DAO/Simulador.Tag.Conexao.DAO.php:128
+msgid "Valor para {nome}"
+msgstr ""
+
 #: DAO/Comercio.Servicos.Suporte.DAO.php:63
 msgid "Tipo do Suporte"
 msgstr ""
@@ -10778,7 +12042,7 @@ msgstr ""
 #: DAO/Comercio.Certificado.Proposta.DAO.php:133
 #: DAO/Comercio.Certificado.Proposta.DAO.php:159
 #: DAO/Comercio.Certificado.Proposta.DAO.php:185
-#: DAO/Comercio.Produto.DAO.php:278 DAO/Comercio.Proposta.DAO.php:399
+#: DAO/Comercio.Produto.DAO.php:302 DAO/Comercio.Proposta.DAO.php:399
 #: DAO/Comercio.Proposta.DAO.php:479
 #: DAO/Financeiro.Pagamento.Interno.DAO.php:277
 #: DAO/Financeiro.Pagamento.Interno.DAO.php:330
@@ -10867,6 +12131,22 @@ msgstr ""
 msgid "Somente Mês e Ano"
 msgstr ""
 
+#: DAO/Locomocao.Entrega.DAO.php:91
+msgid "Nome da Entrega"
+msgstr ""
+
+#: DAO/Locomocao.Entrega.DAO.php:116
+msgid "Filial de Saida"
+msgstr ""
+
+#: DAO/Locomocao.Entrega.DAO.php:141
+msgid "Filial de Chegada"
+msgstr ""
+
+#: DAO/Locomocao.Entrega.DAO.php:160
+msgid "Pontos de Entrega"
+msgstr ""
+
 #: DAO/Universal.Vivo.Cep.DAO.php:64
 msgid "CEP"
 msgstr ""
@@ -10929,37 +12209,12 @@ msgstr ""
 msgid "Valor do Lance"
 msgstr ""
 
-#: DAO/Agenda.Compromisso.DAO.php:69
-#: DAO/Financeiro.Pagamento.Externo.DAO.php:110
-#: DAO/Biblioteca.Acesso.DAO.php:70 DAO/Agenda.Atividade.DAO.php:92
-#: DAO/Comercio.Produto.Estoque.DAO.php:147
-#: DAO/Financeiro.Pagamento.Interno.DAO.php:96
-#: DAO/Financeiro.Pagamento.Interno.DAO.php:197
-msgid "Motivo"
-msgstr ""
-
-#: DAO/Agenda.Compromisso.DAO.php:94
-#: DAO/Financeiro.Pagamento.Externo.DAO.php:85
-#: DAO/Biblioteca.Acesso.DAO.php:95 DAO/Agenda.Atividade.DAO.php:117
-#: DAO/Comercio.Produto.Estoque.DAO.php:172
-#: DAO/Financeiro.Pagamento.Interno.DAO.php:121
-#: DAO/Financeiro.Pagamento.Interno.DAO.php:172
-msgid "Id do Motivo"
-msgstr ""
-
-#: DAO/Agenda.Compromisso.DAO.php:145
-msgid "Tipo (Mensal,anual,semanal,unico)"
-msgstr ""
-
-#: DAO/Agenda.Compromisso.DAO.php:192
-msgid "Data do Final"
-msgstr ""
-
 #: DAO/Enquete.DAO.php:65
 msgid "Categoria da Enquete"
 msgstr ""
 
-#: DAO/Enquete.DAO.php:90
+#: DAO/Enquete.DAO.php:90 DAO/Simulador.Pergunta.Resposta.DAO.php:97
+#: DAO/Simulador.Assistir.DAO.php:92
 msgid "Pergunta"
 msgstr ""
 
@@ -11001,11 +12256,11 @@ msgstr ""
 msgid "Sigla do Produto"
 msgstr ""
 
-#: DAO/Comercio.Produto.DAO.php:274
+#: DAO/Comercio.Produto.DAO.php:298
 msgid "Preco"
 msgstr ""
 
-#: DAO/Comercio.Produto.DAO.php:300
+#: DAO/Comercio.Produto.DAO.php:324
 msgid "Documento Referência"
 msgstr ""
 
@@ -11021,11 +12276,6 @@ msgstr ""
 
 #: DAO/Evento.Manifestacao.Territorial.DAO.php:97
 msgid "Responsável"
-msgstr ""
-
-#: DAO/Universal.Vivo.Cnpj.DAO.php:125 DAO/Usuario.Agenda.Pasta.DAO.php:114
-#: DAO/Gramatica.Substantivo.DAO.php:184
-msgid "Numero"
 msgstr ""
 
 #: DAO/Universal.Vivo.Cnpj.DAO.php:175
@@ -11154,6 +12404,22 @@ msgstr ""
 #: DAO/Financeiro.Financa.DAO.php:119
 #: DAO/Financeiro.Pagamento.Interno.DAO.php:352
 msgid "Data do Pagamento"
+msgstr ""
+
+#: DAO/Simulador.Pergunta.Resposta.DAO.php:124
+msgid "Caracteristica Associada"
+msgstr ""
+
+#: DAO/Simulador.Pergunta.Resposta.DAO.php:149
+msgid "Nome da Resposta"
+msgstr ""
+
+#: DAO/Simulador.Pergunta.Resposta.DAO.php:209
+msgid "Filtro de Resultado"
+msgstr ""
+
+#: DAO/Simulador.Pergunta.Resposta.DAO.php:235
+msgid "Tipo do Filtro de Resultado"
 msgstr ""
 
 #: DAO/Transporte.Caminhoneiro.DAO.php:102
@@ -11332,11 +12598,6 @@ msgstr ""
 msgid "Celular do Contato 4"
 msgstr ""
 
-#: DAO/Comercio.Proposta.Sub.DAO.php:90
-#: DAO/Comercio.Fornecedor.Material.DAO.php:187
-msgid "Data"
-msgstr ""
-
 #: DAO/Comercio.Marca.DAO.php:62 DAO/Usuario.Veiculo.Marca.DAO.php:62
 #: DAO/Usuario.Veiculo.Equipamento.Marca.DAO.php:62
 msgid "Nome da Marca"
@@ -11354,7 +12615,8 @@ msgstr ""
 msgid "Dica"
 msgstr ""
 
-#: DAO/Enquete.Voto.DAO.php:108 DAO/Enquete.Resposta.DAO.php:85
+#: DAO/Enquete.Voto.DAO.php:108 DAO/Simulador.Assistir.DAO.php:118
+#: DAO/Enquete.Resposta.DAO.php:85
 msgid "Resposta"
 msgstr ""
 
@@ -11384,14 +12646,6 @@ msgstr ""
 
 #: DAO/Comercio.Proposta.DAO.php:239
 msgid "Produtos Vendidos"
-msgstr ""
-
-#: DAO/Comercio.Proposta.DAO.php:288
-msgid "Serviços"
-msgstr ""
-
-#: DAO/Comercio.Proposta.DAO.php:311
-msgid "Mão de Obra"
 msgstr ""
 
 #: DAO/Comercio.Proposta.DAO.php:342
@@ -11434,6 +12688,23 @@ msgstr ""
 msgid "Preço do Local de Reserva"
 msgstr ""
 
+#: DAO/Locomocao.Entrega.Ponto.DAO.php:227
+msgid "Endereço (Rua e Número) de Parada"
+msgstr ""
+
+#: DAO/Locomocao.Entrega.Ponto.DAO.php:253
+msgid "Tempo"
+msgstr ""
+
+#: DAO/Locomocao.Entrega.Ponto.DAO.php:280
+#: DAO/_Lixo/_Comercio.Servicos.Linha.DAO.php:88
+msgid "Distância"
+msgstr ""
+
+#: DAO/Locomocao.Entrega.Ponto.DAO.php:308
+msgid "Ordem"
+msgstr ""
+
 #: DAO/Transporte.Transportadora.DAO.php:107
 msgid "Tipo de Transportadora"
 msgstr ""
@@ -11448,6 +12719,14 @@ msgstr ""
 
 #: DAO/Comercio.Produto.Estoque.DAO.php:199
 msgid "Data do Processo"
+msgstr ""
+
+#: DAO/Agenda.DAO.php:145
+msgid "Tipo (Mensal,anual,semanal,unico)"
+msgstr ""
+
+#: DAO/Agenda.DAO.php:192
+msgid "Data do Final"
 msgstr ""
 
 #: DAO/Comercio.Proposta.ServicoTipo.DAO.php:79
@@ -11474,8 +12753,8 @@ msgstr ""
 msgid "Valor do Add de Gas"
 msgstr ""
 
-#: DAO/Financeiro.Pagamento.Interno.DAO.php:71
-msgid "Categoria"
+#: DAO/Simulador.Tag.DAO.php:90
+msgid "Tipo de Resultado Aceito"
 msgstr ""
 
 #: DAO/Financeiro.Pagamento.Interno.DAO.php:247
@@ -11694,10 +12973,6 @@ msgstr ""
 msgid "Nome do Modelo"
 msgstr ""
 
-#: DAO/_Lixo/_Comercio.Servicos.Linha.DAO.php:88
-msgid "Distância"
-msgstr ""
-
 #: DAO/Predial.Bloco.Apart.Correio.DAO.php:112
 msgid "Tipo do Correio"
 msgstr ""
@@ -11766,28 +13041,12 @@ msgstr ""
 msgid "Nome da Familia"
 msgstr ""
 
-#: DAO/Usuario.Agenda.Compromisso.DAO.php:99
-msgid "Data Inicio"
-msgstr ""
-
-#: DAO/Usuario.Agenda.Compromisso.DAO.php:126
-msgid "Data Fim"
-msgstr ""
-
-#: DAO/Usuario.Agenda.Compromisso.DAO.php:178
-msgid "Local"
-msgstr ""
-
 #: DAO/Biblioteca.DAO.php:74
 msgid "Pasta Pai"
 msgstr ""
 
 #: DAO/Biblioteca.DAO.php:120
 msgid "Endereço Virtual"
-msgstr ""
-
-#: DAO/Biblioteca.DAO.php:229
-msgid "Tamanho"
 msgstr ""
 
 #: DAO/Sistema.Grupo.DAO.php:73
@@ -11824,4 +13083,8 @@ msgstr ""
 
 #: DAO/Engenharia.Empreendimento.Unidade.DAO.php:225
 msgid "Banheiros"
+msgstr ""
+
+#: DAO/Usuario.Agenda.DAO.php:178
+msgid "Local"
 msgstr ""
