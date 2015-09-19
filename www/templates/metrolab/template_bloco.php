@@ -17,7 +17,7 @@
                     </div>
                 <?php }else{ ?>
                     <div class="update-btn">
-                        <a class="btn btn-default lajax" href="#" onClick="<?php echo $params['btn_extra']; ?>" acao=""><i class="fa fa-repeat"></i> Salvar</a>
+                        <a class="btn btn-default lajax" href="#" onClick="<?php echo $params['btn_extra']; ?>" acao=""><i class="fa fa-repeat"></i> <?php _e('Salvar'); ?></a>
                     </div>
                 <?php }
             } ?>

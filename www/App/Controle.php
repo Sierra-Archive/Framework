@@ -28,7 +28,7 @@ abstract class Controle
     protected $layoult_endereco_alterado = false; // 
     protected $layoult_endereco_travar = false; //
     protected $layoult_endereco = Array(
-        Array('Página Inicial','_Sistema/Principal/Home')
+        Array(__('Página Inicial'),'_Sistema/Principal/Home')
     ); // 
     
     // BLOQUEIO DE LAYOULT E SE O SISTEMA TA PARA USUARIO LOGADO OU NAO
@@ -139,7 +139,7 @@ abstract class Controle
     protected function Tema_Endereco_Zerar($ultimo = false){
         if($ultimo===false){
             $this->layoult_endereco = Array(
-                Array('Página Inicial','_Sistema/Principal/Home')
+                Array(__('Página Inicial'),'_Sistema/Principal/Home')
             );
         }else{
             $ultimo = (int) $ultimo;
@@ -2421,9 +2421,9 @@ readfile($link);*/
         if(empty($campos)) throw new \Exception('Campos da DAO não existe', 3030); //
         if(is_array($campos)){
             foreach ($campos as $indice=>&$valor){
-                if(((isset($valor['TabelaLinkada']) && $valor['TabelaLinkada']['Nome']==$campomysql) || (isset($valor['mysql_titulo']) && $valor['mysql_titulo']==$campomysql)) && $exceto==0){
+                if(((isset($valor['TabelaLinkada']) && $valor['TabelaLinkada']['Nome']==__($campomysql)) || (isset($valor['mysql_titulo']) && $valor['mysql_titulo']==$campomysql)) && $exceto==0){
                     unset($campos[$indice]);
-                }else if(  isset($valor['TabelaLinkada']) && $valor['TabelaLinkada']['Nome']!=$campomysql && $exceto==1){
+                }else if(  isset($valor['TabelaLinkada']) && $valor['TabelaLinkada']['Nome']!=__($campomysql) && $exceto==1){
                     unset($campos[$indice]);
                 }else if(  isset($valor['mysql_titulo']) && $valor['mysql_titulo']!=$campomysql && $exceto==1){
                     unset($campos[$indice]);

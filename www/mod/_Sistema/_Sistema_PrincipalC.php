@@ -17,7 +17,7 @@ class _Sistema_PrincipalControle extends _Sistema_Controle
         $tempo = new \Framework\App\Tempo('HOME');   
         $this->layoult_endereco_alterado = true;
         $this->layoult_endereco = Array(
-            Array('Página Inicial',false)
+            Array(__('Página Inicial'),false)
         );
         // Carrega Conteudo dos Modulos
         foreach($this->ModulosHome as $value){
