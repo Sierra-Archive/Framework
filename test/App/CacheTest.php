@@ -40,10 +40,14 @@ class CacheTest extends \PHPUnit_Framework_TestCase {
      * @todo   Implement testLer().
      */
     public function testLer() {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-                'This test has not been implemented yet.'
-        );
+        $datetime = time();
+        $funcional = $this->_Registro->_Cache->Ler('TestLer'.$datetime,false,false);
+        $this->assertFalse($funcional);
+        $gravar = 'Gravar';
+        $this->_Registro->_Cache->Salvar('TestLer'.$datetime,$gravar);
+        $funcional = $this->_Registro->_Cache->Ler('TestLer'.$datetime,false,false);
+        $this->assertEquals($funcional,$gravar);
+        $this->_Registro->_Cache->Deletar('TestLer'.$datetime);
     }
 
     /**
@@ -51,10 +55,12 @@ class CacheTest extends \PHPUnit_Framework_TestCase {
      * @todo   Implement testSalvar().
      */
     public function testSalvar() {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-                'This test has not been implemented yet.'
-        );
+        $datetime = time();
+        $gravar = 'Gravar';
+        $this->_Registro->_Cache->Salvar('TestGravar'.$datetime,$gravar);
+        $funcional = $this->_Registro->_Cache->Ler('TestGravar'.$datetime,false,false);
+        $this->assertEquals($funcional,$gravar);
+        $this->_Registro->_Cache->Deletar('TestGravar'.$datetime);
     }
 
     /**
@@ -62,10 +68,12 @@ class CacheTest extends \PHPUnit_Framework_TestCase {
      * @todo   Implement testDeletar().
      */
     public function testDeletar() {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-                'This test has not been implemented yet.'
-        );
+        $datetime = time();
+        $gravar = 'Gravar';
+        $this->_Registro->_Cache->Salvar('TestDeletar'.$datetime,$gravar);
+        $this->_Registro->_Cache->Deletar('TestDeletar'.$datetime);
+        $funcional = $this->_Registro->_Cache->Ler('TestDeletar'.$datetime,false,false);
+        $this->assertFalse($funcional);
     }
 
 }

@@ -122,9 +122,9 @@ class Cache {
      * @version 3.1.1
      * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
-    public function Ler($key,$ram=false){
+    public function Ler($key,$ram=false,$travar_localmente=true){
         // SE for pra DEBUG nao salva
-        if(SISTEMA_DEBUG===TRUE){
+        if(SISTEMA_DEBUG===TRUE && $travar_localmente){
             return false;
         }
 

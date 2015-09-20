@@ -224,7 +224,7 @@ final Class Universal_Vivo_Cnpj_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => '', // //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => __('NomeFantasia'),
+                    'Nome'              => __('Nome Fantasia'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',
@@ -249,7 +249,7 @@ final Class Universal_Vivo_Cnpj_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => '', // //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => __('AtividadePrincipal'),
+                    'Nome'              => __('Atividade Principal'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',
@@ -274,7 +274,7 @@ final Class Universal_Vivo_Cnpj_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => '', // //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => __('AtividadeSecundaria'),
+                    'Nome'              => __('Atividade Secundaria'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',
@@ -299,7 +299,7 @@ final Class Universal_Vivo_Cnpj_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => '', // //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => __('NaturezaJuridica'),
+                    'Nome'              => __('Natureza Jurídica'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',
@@ -325,7 +325,7 @@ final Class Universal_Vivo_Cnpj_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => '', // //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => __('SituacaoCadastral'),
+                    'Nome'              => __('Situação Cadastral'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',
@@ -377,7 +377,7 @@ final Class Universal_Vivo_Cnpj_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => '', // //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => __('MotivoSituacaoCadastral'),
+                    'Nome'              => __('Motivo Situação Cadastral'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',
@@ -402,7 +402,7 @@ final Class Universal_Vivo_Cnpj_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => '', // //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => __('SituacaoEspecial'),
+                    'Nome'              => __('Situação Especial'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',
@@ -427,7 +427,7 @@ final Class Universal_Vivo_Cnpj_DAO extends Framework\App\Dao
                 'mysql_outside'     => 'data_eua_brasil({valor})', // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => __('DataSituacaoEspecial'),
+                    'Nome'              => __('Data Situação Especial'),
                     'Mascara'           => 'Data',
                     'valor_padrao'      => false,
                     'readonly'          => false,

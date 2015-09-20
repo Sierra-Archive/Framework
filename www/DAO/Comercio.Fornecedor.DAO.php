@@ -115,7 +115,7 @@ final Class Comercio_Fornecedor_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => __('Pessoa Fisica ou Juridica'),
+                    'Nome'              => __('Pessoa Fisica ou Jurídica'),
                     'valor_padrao'      => 1,
                     'readonly'          => false,
                     'aviso'             => '',
@@ -125,7 +125,7 @@ final Class Comercio_Fornecedor_DAO extends Framework\App\Dao
                         'opcoes'            => array(
                             array(
                                 'value'         =>  '1',
-                                'nome'          => 'Juridica'
+                                'nome'          => 'Jurídica'
                             ),
                             array(
                                 'value'         =>  '0',

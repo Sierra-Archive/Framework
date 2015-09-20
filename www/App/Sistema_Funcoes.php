@@ -86,6 +86,7 @@ Class Sistema_Funcoes {
         
         // Se for maior que as Ocorrencias, Retorna ao começo
         while($tam<$numero) $numero = $numero - $tam;
+        if($numero<0)$numero = 0;
         
         return $string[$numero];
     }

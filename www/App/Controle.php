@@ -1290,7 +1290,7 @@ readfile($link);*/
                         }else{
                             $selecionado=0;
                         }
-                        $html .= $form->Select_Opcao($valor2['nome'],$valor2['value'],$selecionado);
+                        $html .= $form->Select_Opcao(__($valor2['nome']),$valor2['value'],$selecionado);
                     }
                 }
                 
@@ -1433,7 +1433,7 @@ readfile($link);*/
                             }else{
                                 $selecionado=0;
                             }
-                            $html .= $form->Select_Opcao($valor2['nome'],$valor2['value'],$selecionado);
+                            $html .= $form->Select_Opcao(__($valor2['nome']),$valor2['value'],$selecionado);
                         }
                     }
                     $html .= $form->Select_Fim();

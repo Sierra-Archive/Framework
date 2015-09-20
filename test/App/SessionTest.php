@@ -18,14 +18,7 @@ class SessionTest extends \PHPUnit_Framework_TestCase {
      * This method is called before a test is executed.
      */
     protected function setUp() {
-        $this->_Registro    = &\Framework\App\Registro::getInstacia();
-        $this->object     = &$this->_Registro->_Session;
-        
-        // Inicializa Classes caso ainda nao tenham sido
-        if($this->object===false){
-            $this->_Registro->_Session = new Session();
-        }
-        $this->object = new Session;
+        Session::init();
     }
 
     /**
@@ -33,51 +26,21 @@ class SessionTest extends \PHPUnit_Framework_TestCase {
      * This method is called after a test is executed.
      */
     protected function tearDown() {
-        
-    }
-
-    /**
-     * @covers Framework\App\Session::init
-     * @todo   Implement testInit().
-     */
-    public function testInit() {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-                'This test has not been implemented yet.'
-        );
-    }
-
-    /**
-     * @covers Framework\App\Session::destroy
-     * @todo   Implement testDestroy().
-     */
-    public function testDestroy() {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-                'This test has not been implemented yet.'
-        );
+        Session::Destroy();
     }
 
     /**
      * @covers Framework\App\Session::set
      * @todo   Implement testSet().
      */
-    public function testSet() {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-                'This test has not been implemented yet.'
-        );
-    }
-
-    /**
-     * @covers Framework\App\Session::get
-     * @todo   Implement testGet().
-     */
-    public function testGet() {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-                'This test has not been implemented yet.'
-        );
+    public function testSet_e_Get_e_Destroy() {
+        $numero = rand();
+        Session::set('TestSession',$numero);
+        $valor = Session::get('TestSession');
+        $this->assertEquals($numero,$valor);
+        Session::Destroy('TestSession');
+        $valor = Session::get('TestSession');
+        $this->assertFalse($valor);
     }
 
 }

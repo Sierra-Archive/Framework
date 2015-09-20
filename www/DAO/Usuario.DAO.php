@@ -295,7 +295,7 @@ final Class Usuario_DAO extends Framework\App\Dao
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => __('Pessoa Fisica ou Juridica'),
+                    'Nome'              => __('Pessoa Fisica ou Jurídica'),
                     'valor_padrao'      => 1,
                     'readonly'          => false,
                     'aviso'             => '',
@@ -303,11 +303,11 @@ final Class Usuario_DAO extends Framework\App\Dao
                     'change'            => 'Control_Layoult_Form_Campos_Trocar(\'#nome,#nome_contato,#rg,#orgao,#cpf,#cnpj,#cnpj_insc,#razao_social,#nomefantasia\')',
                     'select'            => array(
                         'class'             => 'obrigatorio',
-                        'infonulo'          => 'Escolha se a Pessoa é Fisica ou Juridica',
+                        'infonulo'          => 'Escolha se a Pessoa é Fisica ou Jurídica',
                         'opcoes'            => array(
                             array(
                                 'value'         =>  '1',
-                                'nome'          => 'Juridica'
+                                'nome'          => 'Jurídica'
                             ),
                             array(
                                 'value'         =>  '0',
