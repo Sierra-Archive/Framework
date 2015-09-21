@@ -26,9 +26,11 @@
             }
     },
     "require-dev": {
-        "phpunit/phpunit": "4.0.*",
+        "phpunit/phpunit": "*",
         "phpunit/phpunit-skeleton-generator": "*",
+        "phpunit/phpunit-selenium": ">=1.2",
         "phpdocumentor/phpdocumentor": "2.*",
-        "phpunit/phpunit-selenium": ">=1.2"
+        "kevintweber/phpunit-markup-validators": ">=2.0",
+        "facebook/webdriver": "dev-master"
     }
 } 

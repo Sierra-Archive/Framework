@@ -64,7 +64,7 @@ class locais_localidadesControle extends locais_Controle
                 $where['pais'] = $opcoes->pais;
                 $where['!id'] = $id_estado;
             }else{
-                $mensagem .= 'Estado não Existe '."\n";
+                $mensagem = 'Estado não Existe '."\n";
                 $mensagem .= 'Estado: '.$estado."\n";
                 $mensagem .= 'Cidade: '.$cidade."\n";
                 $mensagem .= 'Bairro: '.$bairro;
@@ -95,7 +95,7 @@ class locais_localidadesControle extends locais_Controle
                     $where['!nome'] = $cidade;
                     $where['!id'] = $id_cidade;
                 }else{
-                    $mensagem .= 'Cidade não Existe '."\n";
+                    $mensagem = 'Cidade não Existe '."\n";
                     $mensagem .= 'Estado: '.$estado."\n";
                     $mensagem .= 'Cidade: '.$cidade."\n";
                     $mensagem .= 'Bairro: '.$bairro;
@@ -122,7 +122,7 @@ class locais_localidadesControle extends locais_Controle
                     if(is_object($opcoes)){
                         $where['!id'] = $opcoes->id;
                     }else{
-                        $mensagem .= 'Bairro não Existe '."\n";
+                        $mensagem = 'Bairro não Existe '."\n";
                         $mensagem .= 'Estado: '.$estado."\n";
                         $mensagem .= 'Cidade: '.$cidade."\n";
                         $mensagem .= 'Bairro: '.$bairro;

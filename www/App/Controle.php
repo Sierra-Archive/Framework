@@ -320,7 +320,7 @@ header('Content-Disposition: attachment; filename="'.$titulo_novo.'"');
 
 readfile($link);*/
         $ext = strtolower(substr(strrchr(basename($arquivoLocal),"."),1));
-        $mimes = $this->Upload_Ext_Mime();
+        $mimes = self::Upload_Ext_Mime();
         $tipos = $mimes[$ext];
         
         // Remove Zipagem de Arquivo
@@ -334,7 +334,7 @@ readfile($link);*/
 	// Configuramos os headers que serão enviados para o browser
 	header('Content-Description: File Transfer');
 	header('Content-Disposition: attachment; filename="'.basename($arquivo_nome).'"');
-	header('Content-Type: '.$tipo);
+	header('Content-Type: '.$tipos);
 	header('Content-Transfer-Encoding: binary');
 	header('Content-Length: ' . filesize($arquivoLocal));
 	header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
@@ -737,7 +737,7 @@ readfile($link);*/
         
         return $ext;
     }
-    protected function Upload_Ext_Mime($padrao='Imagem,Audio,Video,Zipado,Documento,Grafico,BD'){
+    protected static function Upload_Ext_Mime($padrao='Imagem,Audio,Video,Zipado,Documento,Grafico,BD'){
         
         // Imagem
         $Imagem = Array(

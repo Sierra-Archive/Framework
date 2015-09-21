@@ -55,11 +55,12 @@ class Sistema_FuncoesTest extends \PHPUnit_Framework_TestCase {
      */
     public function testLetra_Aleatoria() {
         // Remove the following lines when you implement this test.
-        $this->assertFalse(is_numeric(Sistema_Funcoes::Letra_Aleatoria(rand())));
-        $this->assertFalse(is_null(Sistema_Funcoes::Letra_Aleatoria(rand())));
-        $this->assertFalse(is_array(Sistema_Funcoes::Letra_Aleatoria(rand())));
-        $this->assertTrue(is_string(Sistema_Funcoes::Letra_Aleatoria(rand())));
-        $this->assertEquals(1, strlen(Sistema_Funcoes::Letra_Aleatoria(rand())));
+        $variavel = Sistema_Funcoes::Letra_Aleatoria(rand());
+        $this->assertFalse(is_numeric($variavel));
+        $this->assertFalse(is_null($variavel));
+        $this->assertFalse(is_array($variavel));
+        $this->assertTrue(is_string($variavel));
+        $this->assertEquals(1, strlen($variavel));
     }
 
     /**
