@@ -16,7 +16,7 @@ final Class Advogado_Colaboradores_DAO extends Framework\App\Dao
         return false;
     }
     public static function Get_Sigla(){
-        return 'ACOL';
+        return 'AdCol';
     }
     public static function Get_Engine(){
         return 'InnoDB';

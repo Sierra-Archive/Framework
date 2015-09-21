@@ -16,7 +16,7 @@ final Class Advogado_Autores_DAO extends Framework\App\Dao
         return false;
     }
     public static function Get_Sigla(){
-        return 'AU';
+        return 'AAU';
     }
     public static function Get_Engine(){
         return 'InnoDB';

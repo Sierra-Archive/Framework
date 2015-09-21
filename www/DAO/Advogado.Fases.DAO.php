@@ -16,7 +16,7 @@ final Class Advogado_Fases_DAO extends Framework\App\Dao
         return false;
     }
     public static function Get_Sigla(){
-        return 'AF';
+        return 'AdF';
     }
     public static function Get_Engine(){
         return 'InnoDB';

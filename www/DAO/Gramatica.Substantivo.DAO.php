@@ -9,7 +9,7 @@ final Class Gramatica_Substantivo_DAO extends Framework\App\Dao
     protected $grau;
     
     protected static $objetocarregado     = false;     protected static $mysql_colunas       = false;     protected static $mysql_outside       = Array();     protected static $mysql_inside        = Array(); public function __construct() {  parent::__construct(); } public static function Get_Nome(){
-        return MYSQL_GRAMATICA_PREPOSICAO;
+        return MYSQL_GRAMATICA_SUBSTANTIVO;
     }
     /**
      * Fornece Permissão de Copia da tabela
@@ -19,7 +19,7 @@ final Class Gramatica_Substantivo_DAO extends Framework\App\Dao
         return false;
     }
     public static function Get_Sigla(){
-        return 'GP';
+        return 'GS';
     }
     public static function Get_Engine(){
         return 'InnoDB';

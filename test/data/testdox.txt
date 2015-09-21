@@ -1,5 +1,5 @@
 Html
- [ ] H t m l validation
+ [x] H t m l validation
 
 Navegador
  [ ] Title
@@ -86,6 +86,7 @@ Framework\App\Controle
 
 Framework\App\Dao
  [ ] Siglas
+ [ ] Colunas
 
 Framework\App\Modelo
  [ ] testSistema Menu

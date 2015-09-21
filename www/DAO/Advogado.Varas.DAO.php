@@ -16,7 +16,7 @@ final Class Advogado_Varas_DAO extends Framework\App\Dao
         return false;
     }
     public static function Get_Sigla(){
-        return 'AV';
+        return 'AdV';
     }
     public static function Get_Engine(){
         return 'InnoDB';

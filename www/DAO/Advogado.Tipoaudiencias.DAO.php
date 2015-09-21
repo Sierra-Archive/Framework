@@ -16,7 +16,7 @@ final Class Advogado_Tipoaudiencias_DAO extends Framework\App\Dao
         return false;
     }
     public static function Get_Sigla(){
-        return 'ATA';
+        return 'AdTa';
     }
     public static function Get_Engine(){
         return 'InnoDB';

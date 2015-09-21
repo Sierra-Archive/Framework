@@ -16,7 +16,7 @@ final Class Advogado_Contraria_DAO extends Framework\App\Dao
         return false;
     }
     public static function Get_Sigla(){
-        return 'ACON';
+        return 'AdCon';
     }
     public static function Get_Engine(){
         return 'InnoDB';

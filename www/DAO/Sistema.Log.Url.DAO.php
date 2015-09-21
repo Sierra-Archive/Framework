@@ -22,7 +22,7 @@ final Class Sistema_Log_Url_DAO extends Framework\App\Dao
         return false;
     }
     public static function Get_Sigla(){
-        return 'SLS';
+        return 'SLU';
     }
     public static function Get_Engine(){
         return 'InnoDB';

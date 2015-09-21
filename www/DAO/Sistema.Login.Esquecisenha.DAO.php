@@ -19,7 +19,7 @@ final Class Sistema_Login_Esquecisenha_DAO extends Framework\App\Dao
         return false;
     }
     public static function Get_Sigla(){
-        return 'SLE';
+        return 'SLogE';
     }
     public static function Get_Engine(){
         return 'InnoDB';

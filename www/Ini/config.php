@@ -281,6 +281,9 @@ if(  !defined('MYSQL_GRAMATICA')){
 if(  !defined('MYSQL_GRAMATICA_PREPOSICAO')){
     define('MYSQL_GRAMATICA_PREPOSICAO'                 , 'Gramatica_Preposicao');
 }
+if(  !defined('MYSQL_GRAMATICA_SUBSTANTIVO')){
+    define('MYSQL_GRAMATICA_SUBSTANTIVO'                , 'Gramatica_Substantivo');
+}
 
 
 //FRAMEWORK

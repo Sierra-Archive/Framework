@@ -16,7 +16,7 @@ final Class Advogado_Tipofases_DAO extends Framework\App\Dao
         return false;
     }
     public static function Get_Sigla(){
-        return 'ATF';
+        return 'AdTf';
     }
     public static function Get_Engine(){
         return 'InnoDB';

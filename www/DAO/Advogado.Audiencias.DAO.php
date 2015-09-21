@@ -16,7 +16,7 @@ final Class Advogado_Audiencias_DAO extends Framework\App\Dao
         return false;
     }
     public static function Get_Sigla(){
-        return 'AA';
+        return 'AdA';
     }
     public static function Get_Engine(){
         return 'InnoDB';

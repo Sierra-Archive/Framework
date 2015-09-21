@@ -16,7 +16,7 @@ final Class Advogado_Cliente_DAO extends Framework\App\Dao
         return false;
     }
     public static function Get_Sigla(){
-        return 'AC';
+        return 'AdC';
     }
     public static function Get_Engine(){
         return 'InnoDB';
