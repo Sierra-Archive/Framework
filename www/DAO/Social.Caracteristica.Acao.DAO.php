@@ -20,7 +20,7 @@ final Class Social_Caracteristica_Acao_DAO extends Framework\App\Dao
         return false;
     }
     public static function Get_Sigla(){
-        return 'SCA';
+        return 'SCaA';
     }
     public static function Get_Engine(){
         return 'InnoDB';
@@ -33,7 +33,7 @@ final Class Social_Caracteristica_Acao_DAO extends Framework\App\Dao
     }
     public static function Get_LinkTable(){
         return Array(
-            'SC'=>'caracteristica',      // Sistemas Grupos
+            'SCa'=>'caracteristica',      // Sistemas Grupos
             'SA'=>'acao', // Sistemas Permissoes
         );
     }
@@ -49,7 +49,7 @@ final Class Social_Caracteristica_Acao_DAO extends Framework\App\Dao
                 'mysql_null'        => true,  // nulo ?
                 'mysql_default'     => 0, // valor padrao
                 'mysql_primary'     => false,  // chave primaria
-                'mysql_estrangeira' => 'SC.id|SC.nome', // chave estrangeira     ligacao|apresentacao|condicao
+                'mysql_estrangeira' => 'SCa.id|SCa.nome', // chave estrangeira     ligacao|apresentacao|condicao
                 'mysql_autoadd'     => false,
                 'mysql_comment'     => false,
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados

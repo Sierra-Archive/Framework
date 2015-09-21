@@ -16,7 +16,7 @@ final Class Social_Caracteristica_DAO extends Framework\App\Dao
         return false;
     }
     public static function Get_Sigla(){
-        return 'SC';
+        return 'SCa';
     }
     public static function Get_Engine(){
         return 'InnoDB';

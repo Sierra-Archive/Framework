@@ -137,14 +137,14 @@ final Class Social_Acao_DAO extends Framework\App\Dao
             Array(
                 'TabelaLinkada'     => Array(
                     'Pai'               => 'SA', // TABELA que vai manipular a conexao
-                    'Tabela'            => 'SCA', // TABELA de LINK A SER CONECTADA
+                    'Tabela'            => 'SCaA', // TABELA de LINK A SER CONECTADA
                     'valor_padrao'      => false, // id do pai
                     'Nome'              => __('Caracteristicas'), // Nome no FOrmulario
                     'Class'             => 'obrigatorio', // Classe no formulario
                     'aviso'             => '', // Aviso no formulario
                     'formtipo'          => 'SelectMultiplo',  // Tipo de formulario
                     'SelectMultiplo'   => Array(
-                        'Extrangeira'       => 'SC.id|SC.nome',
+                        'Extrangeira'       => 'SCa.id|SCa.nome',
                         'Linkar'            => 'acao', // CAmpo a ser encaixado id do pai
                         'Linkado'           => 'caracteristica',// CAmpo a ser encaixado id do link
                         'Campos'            => Array(
