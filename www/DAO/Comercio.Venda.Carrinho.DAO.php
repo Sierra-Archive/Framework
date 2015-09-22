@@ -103,9 +103,8 @@ final Class Comercio_Venda_Carrinho_DAO extends Framework\App\Dao
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => __('Minimo 3 caracteres'),
-                    'formtipo'          => 'input',
-                    'input'             => array(
-                        'tipo'              => 'text',
+                    'formtipo'          => 'select',
+                    'select'             => array(
                         'class'             => 'obrigatorio',
                         'opcoes'            => array(
                             array(

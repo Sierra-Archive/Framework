@@ -78,7 +78,7 @@ final Class Desenvolvimento_Framework_Metodo_DAO extends Framework\App\Dao
                 'mysql_tamanho'     => 11,
                 'mysql_null'        => true,
                 'mysql_default'     => false,
-                'mysql_primary'     => true,
+                'mysql_primary'     => false,
                 'mysql_estrangeira' => 'FS.id|FS.nome', // chave estrangeira
                 'mysql_autoadd'     => false,
                 'mysql_comment'     => false,

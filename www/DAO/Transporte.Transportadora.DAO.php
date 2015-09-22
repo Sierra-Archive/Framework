@@ -82,10 +82,10 @@ final Class Transporte_Transportadora_DAO extends Framework\App\Dao
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => __('Minimo 3 caracteres'),
-                    'formtipo'          => 'input',
-                    'input'             => array(
-                        'tipo'              => 'text',
-                        'class'             => 'obrigatorio'
+                    'formtipo'          => 'select',
+                    'select'             => array(
+                        'class'             => 'obrigatorio',
+                        'infonulo'          => 'Escolha um Usuário',
                     )
                 )
             ),

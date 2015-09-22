@@ -67,7 +67,11 @@ final Class Usuario_Anexo_DAO extends Framework\App\Dao
                     'valor_padrao'      => '0',
                     'readonly'          => false,
                     'aviso'             => '',
-                    'formtipo'          => 'select'
+                    'formtipo'          => 'select',
+                    'select'             => array(
+                        'class'             => 'obrigatorio',
+                        'infonulo'          => 'Escolha um Tipo de Caminhão',
+                    )
                 )
             ),Array(
                 'mysql_titulo'      => 'endereco',

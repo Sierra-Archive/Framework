@@ -5,6 +5,8 @@ final Class Social_DAO extends Framework\App\Dao
     protected $user;
     protected $celular;
     protected $situacao;
+    protected $posicao;
+    protected $email;
     protected $nome;
     protected $perfil_nascimento;
     protected $perfil_sexo;

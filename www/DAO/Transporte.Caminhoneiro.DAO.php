@@ -47,7 +47,7 @@ final Class Transporte_Caminhoneiro_DAO extends Framework\App\Dao
             Array(
                 'mysql_titulo'      => 'id',
                 'mysql_tipovar'     => 'int', //varchar, int, 
-                'mysql_tamanho'     => 255,
+                'mysql_tamanho'     => 11,
                 'mysql_null'        => false,
                 'mysql_default'     => false,
                 'mysql_primary'     => true,
@@ -77,10 +77,10 @@ final Class Transporte_Caminhoneiro_DAO extends Framework\App\Dao
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => __('Minimo 3 caracteres'),
-                    'formtipo'          => 'input',
-                    'input'             => array(
-                        'tipo'              => 'text',
-                        'class'             => 'obrigatorio'
+                    'formtipo'          => 'select',
+                    'select'             => array(
+                        'class'             => 'obrigatorio',
+                        'infonulo'          => 'Escolha um Tipo de Caminhão',
                     )
                 )
             ),

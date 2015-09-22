@@ -66,7 +66,10 @@ final Class Social_Ficou_Comentario_DAO extends Framework\App\Dao
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',
-                    'formtipo'          => 'select'
+                    'formtipo'          => 'select',
+                    'select'             => array(
+                        'class'             => 'obrigatorio'
+                    )
                 )
             ),Array(
                 'mysql_titulo'      => 'comentario',

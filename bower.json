@@ -1,0 +1,31 @@
+{
+  "name": "y",
+  "version": "4.0.1",
+  "homepage": "https://github.com/SierraTecnologia/Framework",
+  "description": "Framework para Sistemas de Gestão",
+  "main": "www/static/sistema/sistema.js",
+  "moduleType": [
+    "globals"
+  ],
+  "keywords": [
+    "System",
+    "Gestão",
+    "Framework",
+    "php"
+  ],
+  "authors": [
+    "Ricardo Rebello Sierra <sierra.csi@gmail.com>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+  "dependencies": {
+	    "jquery": "~2.0.3"
+  }
+}

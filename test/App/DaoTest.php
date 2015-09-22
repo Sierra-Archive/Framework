@@ -97,21 +97,224 @@ class DaoTest extends \PHPUnit_Framework_TestCase {
         $siglas = Array();
         // Abre Todos os DAO
         foreach($this->tabelas as &$valor){
+            $coluna_repetida = Array();
+            $primarias = 0;
+            $possueAutocomplete = false;
             
-            // Pega Coluna
-            $array = $valor['colunas'];
+            // Verifica se Colunas são um Array
+            $this->assertTrue(
+                is_array($valor['colunas']),'Classe Dao: '.$valor['nome'].' -> Não Contem suas Colunas'
+            );
             
-            foreach($array as &$valor){
+            // Pega Coluna            
+            foreach($valor['colunas'] as &$valor2){
 
-                $array = $valor['colunas'];
+                // Se For Campo de Tabela Linkada (Não é uma coluna da tabela), tem tratamento especial
+                if(isset($valor2['TabelaLinkada'])){
+                
+                
+                }else{
+                    
+                    // Verifica Mysql_Titulo
+                    $this->assertArrayHasKey(
+                        'mysql_titulo',$valor2,'Classe Dao: '.$valor['nome'].' -> Não Contem "mysql_titulo"'
+                    );
 
+                    // Coluna Duplicada
+                    $this->assertArrayNotHasKey(
+                        $valor2['mysql_titulo'],$coluna_repetida,'Classe Dao: '.$valor['nome'].' (Coluna: '.$valor2['mysql_titulo'].') -> Essa Coluna Já Existe nessa Tabela'
+                    );
+                    
+                    // Verifica se Atributo da Classe Existe
+                    $this->assertClassHasAttribute($valor2['mysql_titulo'],$valor['class'],'Classe Dao: '.$valor['nome'].' (Coluna: '.$valor2['mysql_titulo'].') -> O Atributo de Classe dessa Coluna não Existe');
+
+                    //'mysql_tipovar'
+                    $this->assertArrayHasKey(
+                        'mysql_tipovar',$valor2,'Classe Dao: '.$valor['nome'].' (Coluna: '.$valor2['mysql_titulo'].') -> Não Contem "mysql_tipovar"'
+                    );
+                    // Verifica Tipos (longtext,text,varchar,int,float)
+
+
+
+                    //'mysql_tamanho'
+                    $this->assertArrayHasKey(
+                        'mysql_tamanho',$valor2,'Classe Dao: '.$valor['nome'].' (Coluna: '.$valor2['mysql_titulo'].') -> Não Contem "mysql_titulo"'
+                    );
+                    //'mysql_null'
+                    $this->assertArrayHasKey(
+                        'mysql_null',$valor2,'Classe Dao: '.$valor['nome'].' (Coluna: '.$valor2['mysql_titulo'].') -> Não Contem "mysql_null"'
+                    );
+                    //'mysql_default'
+                    $this->assertArrayHasKey(
+                        'mysql_default',$valor2,'Classe Dao: '.$valor['nome'].' (Coluna: '.$valor2['mysql_titulo'].') -> Não Contem "mysql_default"'
+                    );
+                    
+                    //'mysql_primary'
+                    $this->assertArrayHasKey(
+                        'mysql_primary',$valor2,'Classe Dao: '.$valor['nome'].' (Coluna: '.$valor2['mysql_titulo'].') -> Não Contem "mysql_primary"'
+                    );
+                    if($valor2['mysql_primary']!==false){
+                        ++$primarias;
+                    }
+                    
+                    //'mysql_estrangeira'
+                    $this->assertArrayHasKey(
+                        'mysql_estrangeira',$valor2,'Classe Dao: '.$valor['nome'].' (Coluna: '.$valor2['mysql_titulo'].') -> Não Contem "mysql_estrangeira"'
+                    );
+
+                    // Testa Extrangeiras se for diferente de false
+                    if($valor2['mysql_estrangeira']!==false){
+                        $extrangeiras = explode('|',$valor2['mysql_estrangeira']);
+                        $this->assertFalse((sizeof($extrangeiras)===1),'Classe Dao: '.$valor['nome'].' (Coluna: '.$valor2['mysql_titulo'].') -> "mysql_estrangeira" Inválida');
+                        $this->assertFalse((sizeof($extrangeiras)>3),'Classe Dao: '.$valor['nome'].' (Coluna: '.$valor2['mysql_titulo'].') -> "mysql_estrangeira" Inválida');
+                    }
+
+
+                    //'mysql_autoadd'
+                    $this->assertArrayHasKey(
+                        'mysql_autoadd',$valor2,'Classe Dao: '.$valor['nome'].' (Coluna: '.$valor2['mysql_titulo'].') -> Não Contem "mysql_autoadd"'
+                    );
+                    if($valor2['mysql_autoadd']!==false){
+                        $this->assertFalse($possueAutocomplete,'Classe Dao: '.$valor['nome'].' (Coluna: '.$valor2['mysql_titulo'].') -> Não Pode ter duas Colunas com AutoInclemente');
+                        $this->assertNotFalse($valor2['mysql_primary'],'Classe Dao: '.$valor['nome'].' (Coluna: '.$valor2['mysql_titulo'].') -> Somente Chaves Primários podem ser AutoInclemente');
+                        $possueAutocomplete = true;
+                    }
+                    
+                    //'mysql_comment'
+                    $this->assertArrayHasKey(
+                        'mysql_titulo',$valor2,'Classe Dao: '.$valor['nome'].' (Coluna: '.$valor2['mysql_titulo'].') -> Não Contem "mysql_titulo"'
+                    );
+                    //'mysql_inside'
+                    $this->assertArrayHasKey(
+                        'mysql_inside',$valor2,'Classe Dao: '.$valor['nome'].' (Coluna: '.$valor2['mysql_titulo'].') -> Não Contem "mysql_inside"'
+                    );
+                    //'mysql_outside'
+                    $this->assertArrayHasKey(
+                        'mysql_outside',$valor2,'Classe Dao: '.$valor['nome'].' (Coluna: '.$valor2['mysql_titulo'].') -> Não Contem "mysql_outside"'
+                    );
+                    //'perm_copia'
+                    $this->assertArrayHasKey(
+                        'perm_copia',$valor2,'Classe Dao: '.$valor['nome'].' (Coluna: '.$valor2['mysql_titulo'].') -> Não Contem "perm_copia"'
+                    );
+
+                    // Se tiver Edicao
+                    if(isset($valor2['edicao'])){
+                        //'Edicao -> Nome'
+                        $this->assertArrayHasKey(
+                            'Nome',$valor2['edicao'],'Classe Dao: '.$valor['nome'].' (Coluna: '.$valor2['mysql_titulo'].') -> Não Contem "Edição -> Nome"'
+                        );
+                        //'Edicao -> valor_padrao'
+                        $this->assertArrayHasKey(
+                            'valor_padrao',$valor2['edicao'],'Classe Dao: '.$valor['nome'].' (Coluna: '.$valor2['mysql_titulo'].') -> Não Contem "Edição -> valor_padrao"'
+                        );
+                        //'Edicao -> readonly'
+                        $this->assertArrayHasKey(
+                            'readonly',$valor2['edicao'],'Classe Dao: '.$valor['nome'].' (Coluna: '.$valor2['mysql_titulo'].') -> Não Contem "Edição -> readonly"'
+                        );
+                        //'Edicao -> aviso'
+                        $this->assertArrayHasKey(
+                            'aviso',$valor2['edicao'],'Classe Dao: '.$valor['nome'].' (Coluna: '.$valor2['mysql_titulo'].') -> Não Contem "Edição -> aviso"'
+                        );
+                        if($valor2['mysql_estrangeira']===false){
+                            //'Edicao -> formtipo'
+                            $this->assertArrayHasKey(
+                                'formtipo',$valor2['edicao'],'Classe Dao: '.$valor['nome'].' (Coluna: '.$valor2['mysql_titulo'].') -> Não Contem "Edição -> formtipo", nem possui extrangeira'
+                            );
+                        }else if(isset($valor2['edicao']['formtipo'])){
+                            $this->assertEquals($valor2['edicao']['formtipo'], 'select','Classe Dao: '.$valor['nome'].' (Coluna: '.$valor2['mysql_titulo'].') -> Conexão com Extrangeira mas o formtipo não é do tipo select');
+                        }
+                        
+                        // Verifica FormTipo é Formvalido
+                        if(isset($valor2['edicao']['formtipo'])){
+                            if($valor2['edicao']['formtipo']=='select'){
+                                // Não Contem Informacoes Sobre
+                                $this->assertArrayHasKey(
+                                    'select',$valor2['edicao'],'Classe Dao: '.$valor['nome'].' (Coluna: '.$valor2['mysql_titulo'].') -> FormTipo select sem "Edição -> Select"'
+                                );
+                                //'Edicao -> select -> Nao pode ter Tipo
+                                $this->assertArrayNotHasKey(
+                                    'tipo',$valor2['edicao']['select'],'Classe Dao: '.$valor['nome'].' (Coluna: '.$valor2['mysql_titulo'].') -> Campo Edicao -> select Contem "tipo"'
+                                );
+                                
+                                /* NAO É OBRIGATÒRIO//'Edicao -> select -> class
+                                $this->assertArrayHasKey(
+                                    'class',$valor2['edicao']['select'],'Classe Dao: '.$valor['nome'].' (Coluna: '.$valor2['mysql_titulo'].') -> Campo Edicao -> select não Contem "class"'
+                                );*/
+                                
+                                //'Edicao -> select -> opcoes (Se Nao for do Tipo Extrangeira
+                                if($valor2['mysql_estrangeira']===false){
+                                    $this->assertArrayHasKey(
+                                        'opcoes',$valor2['edicao']['select'],'Classe Dao: '.$valor['nome'].' (Coluna: '.$valor2['mysql_titulo'].') -> Indice Edicao -> select não Contem "opcoes" nen possue Ligação Extrangeira'
+                                    );
+                                }
+                                
+                                // Se Tiver 'opcoes', verifica integridade
+                                if(isset($valor2['edicao']['select']['opcoes'])){
+                                    foreach($valor2['edicao']['select']['opcoes'] as &$valor3){
+                                        // Tem que ter "value"
+                                        $this->assertArrayHasKey(
+                                            'value',$valor3,'Classe Dao: '.$valor['nome'].' (Coluna: '.$valor2['mysql_titulo'].') -> Indice Edicao/select/opcoes não Contem "value"'
+                                        );
+                                        // Tem que ter "nome"
+                                        $this->assertArrayHasKey(
+                                            'nome',$valor3,'Classe Dao: '.$valor['nome'].' (Coluna: '.$valor2['mysql_titulo'].') -> Indice Edicao/select/opcoes não Contem "nome"'
+                                        );
+                                    }
+                                }
+                            }else if($valor2['edicao']['formtipo']=='textarea'){
+                                // Não Contem Informacoes Sobre
+                                $this->assertArrayHasKey(
+                                    'textarea',$valor2['edicao'],'Classe Dao: '.$valor['nome'].' (Coluna: '.$valor2['mysql_titulo'].') -> FormTipo textarea sem "Edição -> textarea"'
+                                );
+                                //'Edicao -> select ->ter Tipo
+                                $this->assertArrayHasKey(
+                                    'tipo',$valor2['edicao']['textarea'],'Classe Dao: '.$valor['nome'].' (Coluna: '.$valor2['mysql_titulo'].') -> Campo Edicao -> textarea não Contem "tipo"'
+                                );
+                                
+                                //'Edicao -> select -> class
+                                $this->assertArrayHasKey(
+                                    'class',$valor2['edicao']['textarea'],'Classe Dao: '.$valor['nome'].' (Coluna: '.$valor2['mysql_titulo'].') -> Campo Edicao -> textarea não Contem "class"'
+                                );
+                            }else if($valor2['edicao']['formtipo']=='input'){
+                                // Não Contem Informacoes Sobre
+                                $this->assertArrayHasKey(
+                                    'input',$valor2['edicao'],'Classe Dao: '.$valor['nome'].' (Coluna: '.$valor2['mysql_titulo'].') -> FormTipo input sem "Edição -> input"'
+                                );
+                                //'Edicao -> select -> ter Tipo
+                                $this->assertArrayHasKey(
+                                    'tipo',$valor2['edicao']['input'],'Classe Dao: '.$valor['nome'].' (Coluna: '.$valor2['mysql_titulo'].') -> Campo Edicao -> input não Contem "tipo"'
+                                );
+                                
+                                //'Edicao -> select -> class
+                                $this->assertArrayHasKey(
+                                    'class',$valor2['edicao']['input'],'Classe Dao: '.$valor['nome'].' (Coluna: '.$valor2['mysql_titulo'].') -> Campo Edicao -> input não Contem "class"'
+                                );
+                            }else if($valor2['edicao']['formtipo']=='upload'){
+                                // Não Contem Informacoes Sobre
+                                $this->assertArrayHasKey(
+                                    'upload',$valor2['edicao'],'Classe Dao: '.$valor['nome'].' (Coluna: '.$valor2['mysql_titulo'].') -> FormTipo upload sem "Edição -> upload"'
+                                );
+                                //'Edicao -> upload -> ter Tipo
+                                $this->assertArrayHasKey(
+                                    'tipo',$valor2['edicao']['upload'],'Classe Dao: '.$valor['nome'].' (Coluna: '.$valor2['mysql_titulo'].') -> Campo Edicao -> upload não Contem "tipo"'
+                                );
+                                
+                                //'Edicao -> upload -> class
+                                $this->assertArrayHasKey(
+                                    'class',$valor2['edicao']['upload'],'Classe Dao: '.$valor['nome'].' (Coluna: '.$valor2['mysql_titulo'].') -> Campo Edicao -> upload não Contem "class"'
+                                );
+                            }else{
+                                $this->assertTrue(false,'Classe Dao: '.$valor['nome'].' (Coluna: '.$valor2['mysql_titulo'].') -> Campo Edicao -> formtipo Inválido');
+                            }
+                        }
+                    }
+                }
             }
+            
+            // Se Nao tiver Primarias Avisa
+            $this->assertFalse(($primarias===0), 'Classe Dao: '.$valor['nome'].' -> Não Contém Chave Primária');
+            $this->assertFalse(($primarias>1 && $possueAutocomplete===true), 'Classe Dao: '.$valor['nome'].' -> Tabelas com AutoCompĺete só podem ter uma chave primária');
         }
-
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-                'This test has not been implemented yet.'
-        );
     }
 
 }

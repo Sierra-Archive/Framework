@@ -67,7 +67,11 @@ final Class Usuario_Mensagem_Anexo_DAO extends Framework\App\Dao
                     'valor_padrao'      => '0',
                     'readonly'          => false,
                     'aviso'             => '',
-                    'formtipo'          => 'select'
+                    'formtipo'          => 'select',
+                    'select'             => array(
+                        'class'             => 'obrigatorio',
+                        'infonulo'          => 'Escolha uma Mensagem',
+                    )
                 )
             ),Array(
                 'mysql_titulo'      => 'endereco',

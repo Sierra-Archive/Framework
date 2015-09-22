@@ -3,6 +3,7 @@ final Class Locomocao_Entrega_DAO extends Framework\App\Dao
 {
     protected $id;
     protected $motoboy;
+    protected $nome;
     protected $filial_saida;
     protected $filial_chegada;
     protected static $objetocarregado     = false;     protected static $mysql_colunas       = false;     protected static $mysql_outside       = Array();     protected static $mysql_inside        = Array(); public function __construct() {  parent::__construct(); } public static function Get_Nome(){

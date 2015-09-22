@@ -76,18 +76,7 @@ final Class Noticia_Referencia_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'         => false,
-                'edicao'            => Array(
-                    'Nome'              => __('Artista'),
-                    'valor_padrao'      => false,
-                    'readonly'          => false,
-                    'aviso'             => '',
-                    'formtipo'          => 'select',
-                    'select'             => array(
-                        'class'             => 'obrigatorio',
-                        'infonulo'          => 'Escolha um Artista'
-                    )
-                )
+                'linkextra'         => false
             ),Array(
                 'mysql_titulo'      => 'tabelaid',
                 'mysql_tipovar'     => 'int', //varchar, int, 
@@ -96,7 +85,7 @@ final Class Noticia_Referencia_DAO extends Framework\App\Dao
                 'mysql_default'     => false,
                 'mysql_primary'     => true,
                 'mysql_indice_unico'=> 'noticia',
-                'mysql_estrangeira' => false, // chave estrangeira
+                'mysql_estrangeira' => 'MAA.id|MAA.nome', // chave estrangeira
                 'mysql_autoadd'     => false,
                 'mysql_comment'     => false,
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados

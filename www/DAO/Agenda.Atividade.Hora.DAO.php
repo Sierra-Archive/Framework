@@ -3,9 +3,9 @@ final Class Agenda_Atividade_Hora_DAO extends Framework\App\Dao
 {
     protected $id;
     protected $atividade;
-    protected $dt_iniciado;
-    protected $dt_finalizado;
-    protected $tempo_total;
+    protected $dt_inicio;
+    protected $dt_fim;
+    protected $tempo;
    
 
 
@@ -147,8 +147,8 @@ final Class Agenda_Atividade_Hora_DAO extends Framework\App\Dao
                 'mysql_estrangeira' => false, // chave estrangeira
                 'mysql_autoadd'     => false,
                 'mysql_comment'     => false,
-                'mysql_inside'      => 'data_brasil_eua({valor})', // Funcao Executada quando o dado for inserido no banco de dados
-                'mysql_outside'     => 'data_eua_brasil({valor})', // Funcao Executada quando o dado for retirado no banco de dados
+                'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
+                'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => '', // //0 ninguem, 1 admin, 2 todos 
             )

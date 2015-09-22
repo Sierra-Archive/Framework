@@ -50,7 +50,11 @@ final Class Biblioteca_Acesso_DAO extends Framework\App\Dao
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',
-                    'formtipo'          => 'select'
+                    'formtipo'          => 'select',
+                    'select'             => array(
+                        'class'             => 'obrigatorio',
+                        'infonulo'          => 'Escolha uma Pasta',
+                    )
                 )
             ),Array(
                 'mysql_titulo'      => 'motivo',

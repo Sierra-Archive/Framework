@@ -67,7 +67,11 @@ final Class Enquete_Voto_DAO extends Framework\App\Dao
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',
-                    'formtipo'          => 'select'
+                    'formtipo'          => 'select',
+                    'select'             => array(
+                        'class'             => 'obrigatorio',
+                        'infonulo'          => 'Escolha um Tipo de Caminhão',
+                    )
                 )
             ),Array(
                 'mysql_titulo'      => 'usuario',
@@ -88,7 +92,12 @@ final Class Enquete_Voto_DAO extends Framework\App\Dao
                     'Nome'              => __('Usuário'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
-                    'aviso'             => ''
+                    'aviso'             => '',
+                    'formtipo'          => 'select',
+                    'select'             => array(
+                        'class'             => 'obrigatorio',
+                        'infonulo'          => 'Escolha um Tipo de Caminhão',
+                    )
                 )
             ),Array(
                 'mysql_titulo'      => 'resposta',
@@ -109,7 +118,11 @@ final Class Enquete_Voto_DAO extends Framework\App\Dao
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',
-                    'formtipo'          => 'select'
+                    'formtipo'          => 'select',
+                    'select'             => array(
+                        'class'             => 'obrigatorio',
+                        'infonulo'          => 'Escolha um Tipo de Caminhão',
+                    )
                 )
             )
         );
