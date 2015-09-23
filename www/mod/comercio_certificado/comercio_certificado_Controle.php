@@ -187,8 +187,8 @@ class comercio_certificado_Controle extends \Framework\App\Controle
     public function Usuarios_Add2($tipo=false){
         
         $Registro   = &\Framework\App\Registro::getInstacia();
-        $Modelo     = $Registro->_Modelo;
-        $Visual     = $Registro->_Visual;
+        $Modelo     = &$Registro->_Modelo;
+        $Visual     = &$Registro->_Visual;
        
         if(isset($_POST['email'])){
             $email = \anti_injection($_POST['email']);

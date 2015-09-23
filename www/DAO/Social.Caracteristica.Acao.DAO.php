@@ -48,7 +48,7 @@ final Class Social_Caracteristica_Acao_DAO extends Framework\App\Dao
                 'mysql_tamanho'     => 11,
                 'mysql_null'        => true,  // nulo ?
                 'mysql_default'     => 0, // valor padrao
-                'mysql_primary'     => false,  // chave primaria
+                'mysql_primary'     => true,  // chave primaria
                 'mysql_estrangeira' => 'SCa.id|SCa.nome', // chave estrangeira     ligacao|apresentacao|condicao
                 'mysql_autoadd'     => false,
                 'mysql_comment'     => false,
@@ -60,7 +60,12 @@ final Class Social_Caracteristica_Acao_DAO extends Framework\App\Dao
                     'Nome'              => __('Grupo'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
-                    'aviso'             => ''
+                    'aviso'             => '',
+                    'formtipo'          => 'select',
+                    'select'             => array(
+                        'class'             => 'obrigatorio',
+                        'infonulo'          => 'Escolha uma Caracteristica',
+                    )
                 )
             ),
             Array(
@@ -69,7 +74,7 @@ final Class Social_Caracteristica_Acao_DAO extends Framework\App\Dao
                 'mysql_tamanho'     => 11,
                 'mysql_null'        => true,  // nulo ?
                 'mysql_default'     => 0, // valor padrao
-                'mysql_primary'     => false,  // chave primaria
+                'mysql_primary'     => true,  // chave primaria
                 'mysql_estrangeira' => 'SA.id|SA.nome', // chave estrangeira     ligacao|apresentacao|condicao
                 'mysql_autoadd'     => false,
                 'mysql_comment'     => false,
@@ -81,7 +86,12 @@ final Class Social_Caracteristica_Acao_DAO extends Framework\App\Dao
                     'Nome'              => __('Ação'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
-                    'aviso'             => ''
+                    'aviso'             => '',
+                    'formtipo'          => 'select',
+                    'select'             => array(
+                        'class'             => 'obrigatorio',
+                        'infonulo'          => 'Escolha uma Ação',
+                    )
                 )
             ),Array(
                 'mysql_titulo'      => 'gravidade',

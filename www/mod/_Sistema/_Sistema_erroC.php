@@ -32,7 +32,7 @@ class _Sistema_erroControle extends _Sistema_Controle
         $Visual->Blocar(self::_getError($codigo));
         $Visual->Bloco_Unico_CriaJanela('Erro '.$codigo);
         $Visual->Json_Info_Update('Titulo', __('Erro ').$codigo);
-        $Visual->renderizar();echo $codigo;
+        $Visual->renderizar();
         self::Tema_Travar();
     }
     private static function _getError($codigo = false){

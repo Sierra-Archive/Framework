@@ -104,7 +104,10 @@ class usuario_Modelo extends \Framework\App\Modelo
      * @param type $email
      * @return int
      */
-    static function VerificaExtEmail(&$modelo, $email){
+    static function VerificaExtEmail(&$Modelo, $email){
+        if(!is_object($Modelo)){
+            throw new \Exception('Classe Modelo não Recebida',2800);
+        }
         $sql = $Modelo->db->query(' SELECT id
         FROM '.MYSQL_USUARIOS.'
         WHERE deletado!=1 AND email=\''.$email.'\''); //P.categoria
@@ -119,7 +122,10 @@ class usuario_Modelo extends \Framework\App\Modelo
      * @param type $login
      * @return int
      */
-    static function VerificaExtLogin(&$modelo, $login){
+    static function VerificaExtLogin(&$Modelo, $login){
+        if(!is_object($Modelo)){
+            throw new \Exception('Classe Modelo não Recebida',2800);
+        }
         $sql = $Modelo->db->query(' SELECT id
         FROM '.MYSQL_USUARIOS.'
         WHERE deletado!=1 AND login=\''.$login.'\''); //P.categoria

@@ -1,9 +1,6 @@
 Navegador
  [ ] Title
 
-Framework\App\Dao
- [ ] Colunas
-
 Framework\App\Session
  [ ] testSet e Get e Destroy
 

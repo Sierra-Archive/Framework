@@ -1,6 +1,11 @@
 <?php
 final Class Usuario_Telefone_Chamada_DAO extends Framework\App\Dao 
 {
+    protected $id;
+    protected $persona;
+    protected $celular;
+    protected $dt_inicio;
+    protected $dt_fim;
     protected static $objetocarregado     = false;     protected static $mysql_colunas       = false;     protected static $mysql_outside       = Array();     protected static $mysql_inside        = Array(); public function __construct() {  parent::__construct(); } public static function Get_Nome(){
         return MYSQL_USUARIO_TELEFONE_CHAMADA;
     }
@@ -31,7 +36,7 @@ final Class Usuario_Telefone_Chamada_DAO extends Framework\App\Dao
             Array(
                 'mysql_titulo'      => 'id',
                 'mysql_tipovar'     => 'int', //varchar, int, 
-                'mysql_tamanho'     => 255,
+                'mysql_tamanho'     => 11,
                 'mysql_null'        => false,
                 'mysql_default'     => false,
                 'mysql_primary'     => true,
@@ -60,7 +65,12 @@ final Class Usuario_Telefone_Chamada_DAO extends Framework\App\Dao
                     'Nome'              => __('Cliente'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
-                    'aviso'             => ''
+                    'aviso'             => '',
+                    'formtipo'          => 'select',
+                    'select'            => array(
+                        'class'             => 'obrigatorio',
+                        'infonulo'          => 'Escolha um Usuário'
+                    )
                 )
             ),Array(
                 'mysql_titulo'      => 'celular',
@@ -75,97 +85,73 @@ final Class Usuario_Telefone_Chamada_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
+                'linkextra'         => '', // //0 ninguem, 1 admin, 2 todos 
+                'edicao'            => Array(
+                    'Nome'              => __('Telefone'),
+                    'Mascara'           => '',
+                    'valor_padrao'      => false,
+                    'readonly'          => false,
+                    'aviso'             => '',
+                    'formtipo'          => 'input',
+                    'input'             => array(
+                        'tipo'              => 'text',
+                        'class'             => 'obrigatorio'
+                    )
+                )
             ),Array(
-                'mysql_titulo'      => 'situacao',
-                'mysql_tipovar'     => 'varchar', //varchar, int, 
-                'mysql_tamanho'     => 255,
+                'mysql_titulo'      => 'dt_inicio',
+                'mysql_tipovar'     => 'datetime', //varchar, int, 
+                'mysql_tamanho'     => 19,
                 'mysql_null'        => false,
-                'mysql_default'     => false,
+                'mysql_default'     => '0000-00-00 00:00:00', // valor padrao
                 'mysql_primary'     => false,
                 'mysql_estrangeira' => false, // chave estrangeira
                 'mysql_autoadd'     => false,
                 'mysql_comment'     => false,
-                'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
-                'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
+                'mysql_inside'      => 'data_hora_brasil_eua({valor})', // Funcao Executada quando o dado for inserido no banco de dados
+                'mysql_outside'     => 'data_hora_eua_brasil({valor})', // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
+                'linkextra'         => '', // //0 ninguem, 1 admin, 2 todos 
+                'edicao'            => Array(
+                    'Nome'              => __('Data do Inicio'),
+                    'Mascara'           => 'DataHora',
+                    'valor_padrao'      => false,
+                    'readonly'          => false,
+                    'aviso'             => '',
+                    'formtipo'          => 'input',
+                    'validar'           => 'Control_Layoult_Valida_DataHora',
+                    'input'             => array(
+                        'tipo'              => 'text',
+                        'class'             => 'obrigatorio'
+                    )
+                )
             ),Array(
-                'mysql_titulo'      => 'posicao',
-                'mysql_tipovar'     => 'varchar', //varchar, int, 
-                'mysql_tamanho'     => 255,
+                'mysql_titulo'      => 'dt_fim',
+                'mysql_tipovar'     => 'datetime', //varchar, int, 
+                'mysql_tamanho'     => 19,
                 'mysql_null'        => false,
-                'mysql_default'     => false,
+                'mysql_default'     => '0000-00-00 00:00:00', // valor padrao
                 'mysql_primary'     => false,
                 'mysql_estrangeira' => false, // chave estrangeira
                 'mysql_autoadd'     => false,
                 'mysql_comment'     => false,
-                'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
-                'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
+                'mysql_inside'      => 'data_hora_brasil_eua({valor})', // Funcao Executada quando o dado for inserido no banco de dados
+                'mysql_outside'     => 'data_hora_eua_brasil({valor})', // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-            ),Array(
-                'mysql_titulo'      => 'email',
-                'mysql_tipovar'     => 'varchar', //varchar, int, 
-                'mysql_tamanho'     => 255,
-                'mysql_null'        => false,
-                'mysql_default'     => false,
-                'mysql_primary'     => false,
-                'mysql_estrangeira' => false, // chave estrangeira
-                'mysql_autoadd'     => false,
-                'mysql_comment'     => false,
-                'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
-                'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
-                'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-            ),Array(
-                'mysql_titulo'      => 'nasc',
-                'mysql_tipovar'     => 'int', //varchar, int, 
-                'mysql_tamanho'     => 255,
-                'mysql_null'        => false,
-                'mysql_default'     => false,
-                'mysql_primary'     => false,
-                'mysql_estrangeira' => false, // chave estrangeira
-                'mysql_autoadd'     => false,
-                'mysql_comment'     => false,
-                'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
-                'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
-                'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-            ),Array(
-                'mysql_titulo'      => 'fis_sexo',
-                'mysql_tipovar'     => 'int', //varchar, int, 
-                'mysql_tamanho'     => 255,
-                'mysql_null'        => false,
-                'mysql_default'     => false,
-                'mysql_primary'     => false,
-                'mysql_estrangeira' => false, // chave estrangeira
-                'mysql_autoadd'     => false,
-                'mysql_comment'     => false,
-                'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
-                'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
-                'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-            ),Array(
-                'mysql_titulo'      => 'nome',
-                'mysql_tipovar'     => 'int', //varchar, int, 
-                'mysql_tamanho'     => 255,
-                'mysql_null'        => false,
-                'mysql_default'     => false,
-                'mysql_primary'     => false,
-                'mysql_estrangeira' => false, // chave estrangeira
-                'mysql_autoadd'     => false,
-                'mysql_comment'     => false,
-                'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
-                'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
-                'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-            ),Array(
-                'mysql_titulo'      => 'id_face',
-                'mysql_tipovar'     => 'BIGINT', //varchar, int, 
-                'mysql_tamanho'     => 25,
-                'mysql_null'        => true,
-                'mysql_default'     => false,
-                'mysql_primary'     => false,
-                'mysql_estrangeira' => false, // chave estrangeira
-                'mysql_autoadd'     => false,
-                'mysql_comment'     => false,
-                'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
-                'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
-                'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
+                'linkextra'         => '', // //0 ninguem, 1 admin, 2 todos 
+                'edicao'            => Array(
+                    'Nome'              => __('Data do Termino'),
+                    'Mascara'           => 'DataHora',
+                    'valor_padrao'      => false,
+                    'readonly'          => false,
+                    'aviso'             => '',
+                    'formtipo'          => 'input',
+                    'validar'           => 'Control_Layoult_Valida_DataHora',
+                    'input'             => array(
+                        'tipo'              => 'text',
+                        'class'             => 'obrigatorio'
+                    )
+                )
             )
         );
     }

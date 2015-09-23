@@ -36,7 +36,7 @@ final Class Social_Ficou_DAO extends Framework\App\Dao
             Array(
                 'mysql_titulo'      => 'id',
                 'mysql_tipovar'     => 'int', //varchar, int, 
-                'mysql_tamanho'     => 255,
+                'mysql_tamanho'     => 11,
                 'mysql_null'        => false,
                 'mysql_default'     => false,
                 'mysql_primary'     => true,
@@ -67,7 +67,11 @@ final Class Social_Ficou_DAO extends Framework\App\Dao
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',
-                    'formtipo'          => 'select'
+                    'formtipo'          => 'select',
+                    'select'             => array(
+                        'class'             => 'obrigatorio',
+                        'infonulo'          => 'Escolha um Tipo de Noticia',
+                    )
                 )
             ),
             Array(
@@ -89,7 +93,11 @@ final Class Social_Ficou_DAO extends Framework\App\Dao
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',
-                    'formtipo'          => 'select'
+                    'formtipo'          => 'select',
+                    'select'             => array(
+                        'class'             => 'obrigatorio',
+                        'infonulo'          => 'Escolha um Tipo de Noticia',
+                    )
                 )
             ),Array(
                 'mysql_titulo'      => 'obs',

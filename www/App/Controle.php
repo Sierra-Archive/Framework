@@ -321,6 +321,9 @@ header('Content-Disposition: attachment; filename="'.$titulo_novo.'"');
 readfile($link);*/
         $ext = strtolower(substr(strrchr(basename($arquivoLocal),"."),1));
         $mimes = self::Upload_Ext_Mime();
+        if(!isset($mimes[$ext])){
+            throw new \Exception('Extensão não Permitida pra Download',2800);
+        }
         $tipos = $mimes[$ext];
         
         // Remove Zipagem de Arquivo
@@ -647,6 +650,7 @@ readfile($link);*/
             'gif',
             'png',
             'psd',
+            'tif',
             'tiff',
         );
         // Audio
@@ -738,36 +742,106 @@ readfile($link);*/
         return $ext;
     }
     protected static function Upload_Ext_Mime($padrao='Imagem,Audio,Video,Zipado,Documento,Grafico,BD'){
+        //http://www.sitepoint.com/web-foundations/mime-types-complete-list/
+        
         
         // Imagem
         $Imagem = Array(
+            'ai'   =>"application/postscript",
+            'mbp'  =>"image/bmp",
+            'eps'  =>"application/postscript",
+            'jpg'  =>"image/jpg",
+            'jpeg' =>"image/jpg",
             'gif'  =>"image/gif",
             'png'  =>"image/png",
-            'jpg'  =>"image/jpg",
+            'psd'  =>"application/octet-stream",
+            'tif'  =>"image/tiff",
+            'tiff'  =>"image/tiff",
         );
+        
+        
+        // Audio
+        $Audio = Array(
+            '3gp'  => "video/3gpp",
+            'aac'  => "audio/aac",
+            'ac3'  => "audio/ac3",
+            'mp3'  =>"audio/mpeg3",
+            'ogg'  => "video/ogg",
+            'wma'  => "audio/x-ms-wma",
+            'wav'  => "audio/wav",
+            'rm'  => "application/vnd.rn-realmedia",
+        );
+        // Video
+        $Video = Array(
+            'mp4'  => "",
+            'avi'  => "video/msvideo",
+            'mpeg'  => "video/mpeg",     'mpe'  => "video/mpeg", // Bug de Banco de Dados com 3 varchar
+            'mov'  => "video/quicktime",
+            'rmvb'  => "application/vnd.rn-realmedia-vbr",
+            'mkv'  => "video/x-matroska",
+            'vob'  => "video/dvd",
+        );
+        // Zipado
+        $Zipado = Array(
+            '7z'  => "application/x-7z-compressed", //7-zip
+            'arj'  => "application/arj",
+            'bz2'  => "application/x-bzip2", //bzip2
+            'cab'  => "application/cab",
+            'gz'  => "application/x-compressed", //Gzip
+            'rar'  => "application/x-rar-compressed",
+            'tar'  => "application/x-tar",
+            'zip' =>"application/zip",
+        );
+        
         // Documento
         $Documento = Array(
+            'txt'  => "text/plain",
             'html' =>'text/html',
             'doc'  =>'application/msword', //Word
             'docx' =>'application/vnd.openxmlformats-officedocument.wordprocessingml.document', //Word2007
             'ppt'  =>'application/vnd.ms-powerpoint',
             'pdf'  =>'application/pdf',
-            'rtf'  =>'application/rtf',
-            'odt'  =>'application/vnd.oasis.opendocument.text',
             'xls'  =>'application/vnd.ms-excel',
+            'xlsx' =>'application/vnd.ms-excel',
+            'rtf'  =>'application/rtf',
+            'rss'  =>'application/rss+xml',
+            'odt'  =>'application/vnd.oasis.opendocument.text',
         );
         
-        // Video
-        $Audio = Array(
-            'mp3'  =>"audio/mpeg"
+        // Email
+        $Email = Array(
+            'eml'  => "application/octet-stream", // Arquivos de Configuracoes de Email
         );
-        // Zipado
-        $Zipado = Array(
-            'zip' =>"application/zip",
+        
+        // Graficos
+        $Grafico = Array(
+            'dia'  => "application/x-dia-diagram",
+        );
+        
+        // BD
+        $BD = Array(
+            'dba'  => "application/octet-stream",
+            'sql'  => "application/octet-stream",
+            'mdb'  => "application/octet-stream",
+        );
+        
+        /*
+         * NAO VEM COMO PADRAO
+         */
+        // Desenvolvimento
+        $Desenvolvimento = Array(
+            'asp'  => "text/asp",
+            'c'  => "text/plain",'cpp'  => "text/x-c",
+            'js'  => "application/javascript",'css'  => "text/css",
+            //'php'  => "",'php3'  => "",'php4'  => "",
+            //'jar'  => "",
+            //'kml'  => "",
         );
         
         $Executavel = Array(
-            'exe'  =>"application/octet-stream"
+            'exe'  =>"application/octet-stream",
+            'dll'  => "application/octet-stream",
+            'bin'  => "application/octet-stream",
         );
         
         // Pega Tipos e Preenche Ext

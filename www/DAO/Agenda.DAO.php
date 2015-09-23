@@ -7,7 +7,7 @@ final Class Agenda_DAO extends Framework\App\Dao
     protected $nome;
     protected $categoria;
     protected $dt_inicio;
-    protected $dt_final;
+    protected $dt_fim;
    
 
 
@@ -156,12 +156,15 @@ final Class Agenda_DAO extends Framework\App\Dao
             ),Array(
                 'mysql_titulo'      => 'dt_inicio',
                 'mysql_tipovar'     => 'time', //varchar, int, 
+                'mysql_tamanho'     => 30,
                 'mysql_null'        => false,
                 'mysql_default'     => '00:00:00', // valor padrao
                 'mysql_primary'     => false,
                 'mysql_estrangeira' => false, // chave estrangeira
                 'mysql_autoadd'     => false,
                 'mysql_comment'     => false,
+                'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
+                'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => '', // //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
@@ -180,12 +183,15 @@ final Class Agenda_DAO extends Framework\App\Dao
             ),Array(
                 'mysql_titulo'      => 'dt_fim',
                 'mysql_tipovar'     => 'time', //varchar, int, 
+                'mysql_tamanho'     => 30,
                 'mysql_null'        => false,
                 'mysql_default'     => '00:00:00', // valor padrao
                 'mysql_primary'     => false,
                 'mysql_estrangeira' => false, // chave estrangeira
                 'mysql_autoadd'     => false,
                 'mysql_comment'     => false,
+                'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
+                'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => '', // //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(

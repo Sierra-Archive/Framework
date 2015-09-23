@@ -78,7 +78,7 @@ final Class Desenvolvimento_Framework_Submodulo_DAO extends Framework\App\Dao
                 'mysql_tamanho'     => 11,
                 'mysql_null'        => true,
                 'mysql_default'     => false,
-                'mysql_primary'     => true,
+                'mysql_primary'     => false,
                 'mysql_estrangeira' => 'FM.id|FM.nome', // chave estrangeira
                 'mysql_autoadd'     => false,
                 'mysql_comment'     => false,

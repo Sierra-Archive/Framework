@@ -35,7 +35,7 @@ final Class Social_Comentario_DAO extends Framework\App\Dao
             Array(
                 'mysql_titulo'      => 'id',
                 'mysql_tipovar'     => 'int', //varchar, int, 
-                'mysql_tamanho'     => 255,
+                'mysql_tamanho'     => 11,
                 'mysql_null'        => false,
                 'mysql_default'     => false,
                 'mysql_primary'     => true,
@@ -66,7 +66,11 @@ final Class Social_Comentario_DAO extends Framework\App\Dao
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',
-                    'formtipo'          => 'select'
+                    'formtipo'          => 'select',
+                    'select'            => array(
+                        'class'             => 'obrigatorio',
+                        'infonulo'          => 'Escolha um Diretório Pai'
+                    )
                 )
             ),Array(
                 'mysql_titulo'      => 'comentario',

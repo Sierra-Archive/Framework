@@ -66,7 +66,11 @@ final Class Comercio_Visita_Comentario_DAO extends Framework\App\Dao
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',
-                    'formtipo'          => 'select'
+                    'formtipo'          => 'select',
+                    'select'            => array(
+                        'class'             => 'obrigatorio',
+                        'infonulo'          => 'Escolha uma Visita'
+                    )
                 )
             ),Array(
                 'mysql_titulo'      => 'comentario',
