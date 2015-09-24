@@ -32,6 +32,7 @@ class biblioteca_BibliotecaModelo extends biblioteca_Modelo
         
         $function = '';
         $function .= ' if($row[\'tipo\']==1){ ';
+            if($perm_editar) $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Visualizar\'     ,Array(__(\'Visualizar Pasta\')        ,\'biblioteca/Biblioteca/Bibliotecas/\'.$d    ,\'\'),true);';
             if($perm_editar) $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Editar\'     ,Array(__(\'Editar Pasta\')        ,\'biblioteca/Biblioteca/Bibliotecas_Edit/\'.$d.\'/'.$raiz.'\'    ,\'\'),true);';
             if($perm_del) $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Deletar\'    ,Array(__(\'Deletar Pasta\')       ,\'biblioteca/Biblioteca/Bibliotecas_Del/\'.$d.\'/'.$raiz.'\'     ,__(\'Deseja realmente deletar essa pasta ?\')),true);';
         $function .= ' }else{ ';

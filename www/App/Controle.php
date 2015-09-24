@@ -298,6 +298,11 @@ abstract class Controle
      * Efetua Download de Certo Aquivo
      */
     public static function Export_Download($endereco,$arquivo_nome='Relatorio'){
+        
+        if(LAYOULT_IMPRIMIR==='AJAX'){
+            
+        }
+        
 	// Define o tempo máximo de execução em 0 para as conexões lentas
 	set_time_limit(0);
 	 

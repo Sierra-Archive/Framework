@@ -95,11 +95,11 @@ class comercio_ProdutoModelo extends comercio_Modelo
             $columns[] = array( 'db' => 'id', 'dt' => $numero,'formatter' => function( $d, $row ) { 
                 $html = ''; 
                 $html .= '<a class="lajax" acao="" href="'.URL_PATH.'comercio/Estoque/Estoques/'.$d.'">'.
-                       ''.comercio_EstoqueControle::Estoque_Retorna($valor->id); 
+                       ''.comercio_EstoqueControle::Estoque_Retorna($d); 
                 return $html; 
             });  //'Estoque';
-            if($perm_view)      $function .= ' $html .= $this->_Visual->Tema_Elementos_Btn(\'Visualizar\' ,Array(\'Visualizar Estoque\'    ,\'comercio/Estoque/Estoques/\'.$valor->id.\'/\'    ,\'\'),true);';
-            if($perm_reduzir)   $function .= ' $html .= $this->_Visual->Tema_Elementos_Btn(\'Personalizado\'   ,Array(\'Reduzir Estoque\'  ,\'comercio/Produto/Estoque_Reduzir/\'.$valor->id.\'/\'    ,\'\',\'long-arrow-down\',\'inverse\'),true);';
+            if($perm_view)      $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Visualizar\' ,Array(\'Visualizar Estoque\'    ,\'comercio/Estoque/Estoques/\'.$d.\'/\'    ,\'\'),true);';
+            if($perm_reduzir)   $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Personalizado\'   ,Array(\'Reduzir Estoque\'  ,\'comercio/Produto/Estoque_Reduzir/\'.$d.\'/\'    ,\'\',\'long-arrow-down\',\'inverse\'),true);';
         }
         if($comercio_Unidade){
             ++$numero;

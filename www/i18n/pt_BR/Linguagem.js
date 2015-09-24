@@ -28,7 +28,6 @@ Linguagem['Botoes']['Processando'] = 'Processando...';
 Linguagem['Mensagens'] = new Array();
 Linguagem['Mensagens']['Imprimir'] = 'Imprimir';
 Linguagem['Mensagens']['Copiar'] = 'Copiar';
-console.log('Opa',Linguagem,Linguagem['DataTable']['Sem_Resultado']);
 /*
  * Resto
  */

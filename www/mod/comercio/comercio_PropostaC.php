@@ -388,7 +388,7 @@ class comercio_PropostaControle extends comercio_Controle
         $this->_Visual->Blocar('<span id="proposta_outras" carregado="0"><center><font color="#FF0000" size="5">Carregando...</font></center></span>');
         $bloco_identificador =  $this->_Visual->Bloco_Unico_CriaJanela('Outras '.$titulo_plural.'','',5,false,true);
         $javascript_executar =  '$(document).on("click", \'a#'.$bloco_identificador.'_max\', function () {'. 
-                                'console.log("oi",$(\'#proposta_outras\').attr("carregado")); if($(\'#proposta_outras\').attr("carregado")!==\'1\' && $(\'#proposta_outras\').attr("carregado")!==1){'.
+                                'if($(\'#proposta_outras\').attr("carregado")!==\'1\' && $(\'#proposta_outras\').attr("carregado")!==1){'.
                                     '$(\'#proposta_outras\').attr("carregado",\'1\');'.
                                     'Sierra.Modelo_Ajax_Chamar(\'comercio/Proposta/Outros/'.$tema.'\',\'\',\'get\',true,false,true);'.
                                 '}});';

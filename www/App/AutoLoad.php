@@ -427,10 +427,19 @@ unset($tempo);
  */
 $textdomain = "Framework";
 if (isset($_GET['locale']) && !empty($_GET['locale'])){
-    define('SISTEMA_LINGUAGEM', \anti_injection($_GET['locale']));
+    $locale = \anti_injection($_GET['locale']);
 }else{
-    define('SISTEMA_LINGUAGEM', SISTEMA_LINGUAGEM_PADRAO);
+    $locale = SISTEMA_LINGUAGEM_PADRAO;
 }
+
+// Faz Tratamento
+if(strlen($locale)==4){
+    $locale = $locale[0].$locale[1].'_'.$locale[2].$locale[3];
+}
+//Verifica Se os Arquivos Existem
+
+// Carrega Internacionalização I18N
+define('SISTEMA_LINGUAGEM', \anti_injection($_GET['locale']));
 putenv('LANGUAGE=' . SISTEMA_LINGUAGEM);
 putenv('LANG=' . SISTEMA_LINGUAGEM);
 putenv('LC_ALL=' . SISTEMA_LINGUAGEM);

@@ -131,7 +131,7 @@ class comercio_EstoqueControle extends comercio_Controle
         }
         // Se tiver Vazio
         if($i==0){       
-            $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhuma Movimentação de Estoque</font></b></center>');
+            $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">'.('Nenhuma Movimentação de Estoque').'</font></b></center>');
         }
         $titulo = __('Histórico de Movimentação de Estoque').' ('.$i.')';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
@@ -149,12 +149,10 @@ class comercio_EstoqueControle extends comercio_Controle
      */
     static function Estoque_Retorna($produto=false){
         $produto = (int) $produto;
-        $Registro = &\Framework\App\Registro::getInstacia();
-        $_Modelo = &$Registro->_Modelo;
         $quantidade = 0;
-        $estoques = $_Modelo->db->Sql_Select(
+        $estoques = \Framework\App\Registro::getInstacia()->_Modelo->db->Sql_Select(
             'Comercio_Produto_Estoque',
-            Array('produto'=>$produto)
+            '{sigla}produto=\''.$produto.'\''
         );
         if($estoques!==false && !empty($estoques)){
             if(is_object($estoques)) $estoques = Array(0=>$estoques);
