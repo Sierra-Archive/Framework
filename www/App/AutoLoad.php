@@ -437,9 +437,12 @@ if(strlen($locale)==4){
     $locale = $locale[0].$locale[1].'_'.$locale[2].$locale[3];
 }
 //Verifica Se os Arquivos Existem
+if(!is_file(LANG_PATH.$locale.DS.'Linguagem.js')){
+    throw new \Exception('Javascript da Linguagem não Encontrado: '.$locale,404);
+}
 
 // Carrega Internacionalização I18N
-define('SISTEMA_LINGUAGEM', \anti_injection($_GET['locale']));
+define('SISTEMA_LINGUAGEM', $locale);
 putenv('LANGUAGE=' . SISTEMA_LINGUAGEM);
 putenv('LANG=' . SISTEMA_LINGUAGEM);
 putenv('LC_ALL=' . SISTEMA_LINGUAGEM);
