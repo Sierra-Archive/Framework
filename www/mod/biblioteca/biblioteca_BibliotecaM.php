@@ -110,14 +110,15 @@ class biblioteca_BibliotecaModelo extends biblioteca_Modelo
                 $tamanho = (int) $d;
                 if($tamanho === 0){
                     if($row['tipo']==1){
-                        $tamanho = \Framework\App\Registro::getInstacia()->_Controle->Bibliotecas_AtualizaTamanho_Pai($valor);
+                        $tamanho = \Framework\App\Registro::getInstacia()->_Controle->Bibliotecas_AtualizaTamanho_Pai($row['id']);
                     }else{
                         $endereco = ARQ_PATH.'bibliotecas'.DS.strtolower($row['arquivo']).'.'.\Framework\App\Sistema_Funcoes::Control_Arq_Ext($row['ext']);
                         if(!file_exists($endereco)){
                             return 'X';
                         }
                         $tamanho = filesize($endereco);
-                        \Framework\App\Registro::getInstacia()->_Modelo->db->Sql_Update($valor);
+                        \Framework\App\Registro::getInstacia()->query('UPDATE '.  \Framework\App\Conexao::$tabelas['Biblioteca_DAO']['nome'].' SET tamanho=\''.$tamanho.'\' WHERE id='.$row['id']);
+
                     }
                 }
                 return \Framework\App\Sistema_Funcoes::Tranf_Byte_Otimizado($tamanho);
