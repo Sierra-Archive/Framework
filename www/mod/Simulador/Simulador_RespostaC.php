@@ -15,7 +15,7 @@ class Simulador_RespostaControle extends Simulador_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 3.1.1
+    * @version 0.4.2
     */
     public function Main($simulador = false,$pergunta=false){
         \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'Simulador/Resposta/Respostas');
@@ -93,7 +93,7 @@ class Simulador_RespostaControle extends Simulador_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Respostas($simulador=false,$pergunta=false,$export=false){
         if($simulador ==='false' || $simulador ===0)  $simulador    = false;
@@ -206,7 +206,7 @@ class Simulador_RespostaControle extends Simulador_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Respostas_Add($simulador = false,$pergunta=false){
         if($simulador==='false') $simulador = false;
@@ -278,7 +278,7 @@ class Simulador_RespostaControle extends Simulador_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Respostas_Add2($simulador=false,$pergunta=false){
         if($simulador==='false') $simulador = false;
@@ -309,7 +309,7 @@ class Simulador_RespostaControle extends Simulador_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Respostas_Edit($id,$simulador = false,$pergunta=false){
         if($simulador==='false') $simulador = false;
@@ -359,7 +359,7 @@ class Simulador_RespostaControle extends Simulador_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Respostas_Edit2($id,$simulador = false,$pergunta=false){
         if($simulador==='false') $simulador = false;
@@ -396,7 +396,7 @@ class Simulador_RespostaControle extends Simulador_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Respostas_Del($id = false,$simulador=false,$pergunta=false){
         if($simulador==='false') $simulador = false;

@@ -13,7 +13,7 @@ class Financeiro_AdminControle extends Financeiro_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 3.1.1
+    * @version 0.4.2
     */
     public function __construct(){
         parent::__construct();
@@ -30,7 +30,7 @@ class Financeiro_AdminControle extends Financeiro_Controle
     * @return void 
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 3.1.1
+    * @version 0.4.2
     */
     public function Main(){
         $this->usuarios_naodevendo();
@@ -52,7 +52,7 @@ class Financeiro_AdminControle extends Financeiro_Controle
     * @return void 
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 3.1.1
+    * @version 0.4.2
     */
     public function usuarios_devendo(){
         $usuarios = Array();
@@ -124,7 +124,7 @@ class Financeiro_AdminControle extends Financeiro_Controle
     * @return void 
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 3.1.1
+    * @version 0.4.2
     */
     public function pagamentos_Del($id){
         
@@ -172,7 +172,7 @@ class Financeiro_AdminControle extends Financeiro_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 3.1.1
+    * @version 0.4.2
     */
     static function financas_carregajanelaadd(&$controle, &$modelo, &$Visual, $usuario=0){
         
@@ -212,7 +212,7 @@ class Financeiro_AdminControle extends Financeiro_Controle
     * @return int $i Quantidades de Registros Retornada
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 3.1.1
+    * @version 0.4.2
     */
     static function financas_formcadastro(&$controle, &$modelo, &$Visual,$user){
         
@@ -258,7 +258,7 @@ class Financeiro_AdminControle extends Financeiro_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 3.1.1
+    * @version 0.4.2
     */
     public function financas_inserir(){
         

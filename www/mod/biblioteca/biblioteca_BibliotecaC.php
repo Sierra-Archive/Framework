@@ -15,7 +15,7 @@ class biblioteca_BibliotecaControle extends biblioteca_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 3.1.1
+    * @version 0.4.2
     */
     public function Main(){
         \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'biblioteca/Biblioteca/Bibliotecas');
@@ -140,7 +140,7 @@ class biblioteca_BibliotecaControle extends biblioteca_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Bibliotecas($raiz = false){
         self::Endereco_Biblioteca(false);
@@ -268,7 +268,7 @@ class biblioteca_BibliotecaControle extends biblioteca_Controle
     /**
      * ADD SOMENTE PASTA
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Bibliotecas_Add($raiz = 0){
         self::Endereco_Biblioteca();
@@ -295,7 +295,7 @@ class biblioteca_BibliotecaControle extends biblioteca_Controle
      * ADD SOMENTE PASTA
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Bibliotecas_Add2($raiz = 0){
         $titulo     = __('Pasta Adicionada com Sucesso');
@@ -317,7 +317,7 @@ class biblioteca_BibliotecaControle extends biblioteca_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Bibliotecas_Edit($id,$raiz=0){
         self::Endereco_Biblioteca();
@@ -450,7 +450,7 @@ class biblioteca_BibliotecaControle extends biblioteca_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Bibliotecas_Edit2($id,$raiz=0){
         $titulo     = __('Editado com Sucesso');
@@ -465,7 +465,7 @@ class biblioteca_BibliotecaControle extends biblioteca_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Bibliotecas_Del($id,$raiz=0){
     	$id = (int) $id;

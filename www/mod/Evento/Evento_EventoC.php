@@ -24,7 +24,7 @@ class Evento_EventoControle extends Evento_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 3.1.1
+    * @version 0.4.2
     */
     public function Main(){
         \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'Evento/Evento/Eventos');
@@ -76,7 +76,7 @@ class Evento_EventoControle extends Evento_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Eventos($export=false){
         $i = 0;
@@ -131,7 +131,7 @@ class Evento_EventoControle extends Evento_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Eventos_Add(){
         self::Endereco_Evento();
@@ -149,7 +149,7 @@ class Evento_EventoControle extends Evento_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Eventos_Add2(){
         $titulo     = __('Evento Adicionado com Sucesso');
@@ -164,7 +164,7 @@ class Evento_EventoControle extends Evento_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Eventos_Edit($id){
         // Chama o Endereco
@@ -187,7 +187,7 @@ class Evento_EventoControle extends Evento_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Eventos_Edit2($id){
         $titulo     = __('Evento Editado com Sucesso');
@@ -203,7 +203,7 @@ class Evento_EventoControle extends Evento_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Eventos_Del($id){
         

@@ -19,7 +19,7 @@ class Transporte_TransportadoraControle extends Transporte_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Main(){
         \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'Transporte/Transportadora/Transportadoras');
@@ -55,7 +55,7 @@ class Transporte_TransportadoraControle extends Transporte_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Transportadoras($export=false){
         $i = 0;
@@ -97,7 +97,7 @@ class Transporte_TransportadoraControle extends Transporte_Controle
     /**
      * Painel Adminstrativo de Transportadoras
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Painel(){
         return true;

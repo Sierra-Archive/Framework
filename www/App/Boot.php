@@ -4,7 +4,7 @@ namespace Framework\App;
  * Boot do Sistema, Responsável por Iniciar todo o Sistema em toda Requisição
  * 
  * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
- * @version 3.1.1
+ * @version 0.4.2
  */
 class Boot {
     /**
@@ -19,7 +19,7 @@ class Boot {
      * @throws \Exception
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public static function Iniciar(){  
         // Pega Instancia e Inicia Cache
@@ -142,7 +142,7 @@ class Boot {
      * Desliga o Sistema, Fecha Todas as Classes e Instancias
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public static function Desligar(){
         $tempo = new \Framework\App\Tempo('BOOT Desligar');  

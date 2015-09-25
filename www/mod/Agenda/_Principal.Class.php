@@ -19,7 +19,7 @@ class Agenda_Principal implements \Framework\PrincipalInterface
     * @return void 
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 3.1.1
+    * @version 0.4.2
     */
     static function Home(&$controle, &$modelo, &$Visual){
         Agenda_PastaControle::Pastas_Listar(false,$modelo,$Visual,'Maior');

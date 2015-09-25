@@ -11,7 +11,7 @@ class usuario_rede_ListarVisual extends usuario_rede_Visual
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 3.1.1
+    * @version 0.4.2
     */
     public function __construct(){
       parent::__construct();
@@ -22,7 +22,7 @@ class usuario_rede_ListarVisual extends usuario_rede_Visual
      * @param type $nivel
      * @return type
      * 
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Show_RedeIndicadosNivel(&$array,$nivel = 1){
         $html = '';

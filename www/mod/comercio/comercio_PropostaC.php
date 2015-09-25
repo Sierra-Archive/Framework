@@ -13,7 +13,7 @@ class comercio_PropostaControle extends comercio_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 3.1.1
+    * @version 0.4.2
     */
     public function __construct(){
         if(!\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Propostas')){
@@ -246,7 +246,7 @@ class comercio_PropostaControle extends comercio_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 3.1.1
+    * @version 0.4.2
     */
     public function Main($tema='Propostas'){
         \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'comercio/Proposta/Propostas/'.$tema);
@@ -255,7 +255,7 @@ class comercio_PropostaControle extends comercio_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Propostas($tema='Propostas',$export=false){
         self::Endereco_Proposta(false,$tema);
@@ -498,7 +498,7 @@ class comercio_PropostaControle extends comercio_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Propostas_View($id,$tema='Propostas',$layoult='Unico'){
         // Se for Excell Transfere
@@ -1514,7 +1514,7 @@ class comercio_PropostaControle extends comercio_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Propostas_Add($tema='Propostas'){
         self::Endereco_Proposta(true,$tema);
@@ -1553,7 +1553,7 @@ class comercio_PropostaControle extends comercio_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Propostas_Add2($tema='Propostas'){
         // Nomes
@@ -1591,7 +1591,7 @@ class comercio_PropostaControle extends comercio_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Propostas_Edit($id,$tema='Propostas'){
         $id = (int) $id;
@@ -1635,7 +1635,7 @@ class comercio_PropostaControle extends comercio_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Propostas_Edit2($id,$tema='Propostas'){
         $id = (int) $id;
@@ -2136,7 +2136,7 @@ class comercio_PropostaControle extends comercio_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Propostas_Del($id,$tema='Propostas'){
         
@@ -2336,7 +2336,7 @@ class comercio_PropostaControle extends comercio_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Propostas_Comentario($proposta_id = false,$tema='Propostas',$export=false){
         if($proposta_id==='false') $proposta_id = false;
@@ -2410,7 +2410,7 @@ class comercio_PropostaControle extends comercio_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Propostas_Comentario_Add($proposta_id = false,$tema='Propostas'){
         // Proteção E chama Endereço
@@ -2445,7 +2445,7 @@ class comercio_PropostaControle extends comercio_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Propostas_Comentario_Add2($proposta_id = false,$tema='Propostas'){
         if($proposta_id===false) throw new \Exception('Proposta não informada',404);
@@ -2471,7 +2471,7 @@ class comercio_PropostaControle extends comercio_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Propostas_Comentario_Edit($proposta_id = false,$id = 0,$tema='Propostas'){
         if($proposta_id===false) throw new \Exception('Proposta não informado',404);
@@ -2507,7 +2507,7 @@ class comercio_PropostaControle extends comercio_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Propostas_Comentario_Edit2($proposta_id = false,$id = 0,$tema='Propostas'){
         if($proposta_id===false) throw new \Exception('Proposta não informado',404);
@@ -2535,7 +2535,7 @@ class comercio_PropostaControle extends comercio_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Propostas_Comentario_Del($proposta_id = false,$id = 0,$tema='Propostas'){
         if($proposta_id===false) throw new \Exception('Proposta não informada',404);
@@ -2581,7 +2581,7 @@ class comercio_PropostaControle extends comercio_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Propostas_Sub($proposta_id = false,$tema='Propostas',$export=false){
         if($proposta_id==='false') $proposta_id = false;
@@ -2656,7 +2656,7 @@ class comercio_PropostaControle extends comercio_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Propostas_Sub_Add($proposta_id = false,$tema='Propostas'){
         // Proteção E chama Endereço
@@ -2691,7 +2691,7 @@ class comercio_PropostaControle extends comercio_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Propostas_Sub_Add2($proposta_id = false,$tema='Propostas'){
         if($proposta_id===false) throw new \Exception('Proposta não informada',404);
@@ -2717,7 +2717,7 @@ class comercio_PropostaControle extends comercio_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Propostas_Sub_Edit($proposta_id = false,$id = 0,$tema='Propostas'){
         if($proposta_id===false) throw new \Exception('Proposta não informado',404);
@@ -2753,7 +2753,7 @@ class comercio_PropostaControle extends comercio_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Propostas_Sub_Edit2($proposta_id = false,$id = 0,$tema='Propostas'){
         if($proposta_id===false) throw new \Exception('Proposta não informado',404);
@@ -2781,7 +2781,7 @@ class comercio_PropostaControle extends comercio_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Propostas_Sub_Del($proposta_id = false,$id = 0,$tema='Propostas'){
         if($proposta_id===false) throw new \Exception('Proposta não informada',404);
@@ -2969,7 +2969,7 @@ class comercio_PropostaControle extends comercio_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Checklists_Add2(){
         $titulo     = __('Checklist Adicionado com Sucesso');
@@ -2984,7 +2984,7 @@ class comercio_PropostaControle extends comercio_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Checklists_Edit($id){
         self::Endereco_CheckList(true);
@@ -3003,7 +3003,7 @@ class comercio_PropostaControle extends comercio_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Checklists_Edit2($id){
         $titulo     = __('Checklist Editado com Sucesso');
@@ -3019,7 +3019,7 @@ class comercio_PropostaControle extends comercio_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Checklists_Del($id){
         
@@ -3123,7 +3123,7 @@ class comercio_PropostaControle extends comercio_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Visitas_Add2(){
         $titulo     = __('Agenda de Visita Adicionada com Sucesso');
@@ -3139,7 +3139,7 @@ class comercio_PropostaControle extends comercio_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Visitas_Edit($id){
         self::Endereco_Visita(true);
@@ -3158,7 +3158,7 @@ class comercio_PropostaControle extends comercio_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Visitas_Edit2($id){
         $titulo     = __('Agenda de Visita Editada com Sucesso');
@@ -3174,7 +3174,7 @@ class comercio_PropostaControle extends comercio_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Visitas_Del($id){
         
@@ -3207,7 +3207,7 @@ class comercio_PropostaControle extends comercio_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Visitas_Comentario($visita_id = false){
         if($visita_id===false){
@@ -3247,7 +3247,7 @@ class comercio_PropostaControle extends comercio_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Visitas_Comentario_Add($visita_id = false){
         // Proteção E chama Endereço
@@ -3272,7 +3272,7 @@ class comercio_PropostaControle extends comercio_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Visitas_Comentario_Add2($visita_id = false){
         if($visita_id===false) throw new \Exception('Visita não informado',404);
@@ -3288,7 +3288,7 @@ class comercio_PropostaControle extends comercio_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Visitas_Comentario_Edit($visita_id = false,$id = 0){
         if($visita_id===false) throw new \Exception('Visita não informado',404);
@@ -3314,7 +3314,7 @@ class comercio_PropostaControle extends comercio_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Visitas_Comentario_Edit2($visita_id = false,$id = 0){
         if($visita_id===false) throw new \Exception('Visita não informado',404);
@@ -3332,7 +3332,7 @@ class comercio_PropostaControle extends comercio_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Visitas_Comentario_Del($visita_id = false,$id = 0){
         if($visita_id===false) throw new \Exception('Visita não informado',404);

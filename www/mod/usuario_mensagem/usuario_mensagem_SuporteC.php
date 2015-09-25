@@ -13,7 +13,7 @@ class usuario_mensagem_SuporteControle extends usuario_mensagem_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 3.1.1
+    * @version 0.4.2
     */
     public function __construct(){
         // construct
@@ -61,7 +61,7 @@ class usuario_mensagem_SuporteControle extends usuario_mensagem_Controle
     * @return void 
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 3.1.1
+    * @version 0.4.2
     */
     public function Main(){
         \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'usuario_mensagem/Suporte/Mensagens/');
@@ -95,7 +95,7 @@ class usuario_mensagem_SuporteControle extends usuario_mensagem_Controle
      * 
      * @param type $grupo  (-1 = Admin)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function MensagensSetores($grupo = 0){
         $i = 0;
@@ -138,7 +138,7 @@ class usuario_mensagem_SuporteControle extends usuario_mensagem_Controle
      * 
      * @param type $cliente
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public static function MensagensdeCliente($cliente = 0,$retorno='Unico'){
         $Registro = &\Framework\App\Registro::getInstacia();

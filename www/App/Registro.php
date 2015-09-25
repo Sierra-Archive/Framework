@@ -4,7 +4,7 @@ namespace Framework\App;
  * Class singleton, ela garante a existencia de apenas uma instancia de cada classe
  * 
  * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
- * @version 3.1.1
+ * @version 0.4.2
  */
 class Registro
 {
@@ -22,7 +22,7 @@ class Registro
     /**
      * Para ninguem poder acessar a classe
      * 
-     * @version 3.1.1
+     * @version 0.4.2
      * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
     private function __construct(){
@@ -33,7 +33,7 @@ class Registro
      * singleton
      * @return type
      * 
-     * @version 3.1.1
+     * @version 0.4.2
      * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
     public static function &getInstacia(){
@@ -46,7 +46,7 @@ class Registro
      * 
      * @param type $sessao
      * 
-     * @version 3.1.1
+     * @version 0.4.2
      * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
     public function destruir($sessao){
@@ -62,7 +62,7 @@ class Registro
      * @param type $nome
      * @param type $valor
      * 
-     * @version 3.1.1
+     * @version 0.4.2
      * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
     public function __set($nome,$valor){
@@ -73,7 +73,7 @@ class Registro
      * @param type $nome
      * @return type
      * 
-     * @version 3.1.1
+     * @version 0.4.2
      * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
     public function &__get($nome){

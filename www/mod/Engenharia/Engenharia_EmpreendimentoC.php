@@ -24,7 +24,7 @@ class Engenharia_EmpreendimentoControle extends Engenharia_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 3.1.1
+    * @version 0.4.2
     */
     public function Main(){
         \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'Engenharia/Empreendimento/Empreendimentos');
@@ -54,7 +54,7 @@ class Engenharia_EmpreendimentoControle extends Engenharia_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Empreendimentos($export=false){
         self::Endereco_Empreendimento(false);
@@ -105,7 +105,7 @@ class Engenharia_EmpreendimentoControle extends Engenharia_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Empreendimentos_Add(){
         self::Endereco_Empreendimento();
@@ -122,7 +122,7 @@ class Engenharia_EmpreendimentoControle extends Engenharia_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Empreendimentos_Add2(){
         $titulo     = __('Empreendimento Adicionado com Sucesso');
@@ -137,7 +137,7 @@ class Engenharia_EmpreendimentoControle extends Engenharia_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Empreendimentos_Edit($id){
         self::Endereco_Empreendimento();
@@ -155,7 +155,7 @@ class Engenharia_EmpreendimentoControle extends Engenharia_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Empreendimentos_Edit2($id){
         $titulo     = __('Empreendimento Editado com Sucesso');
@@ -171,7 +171,7 @@ class Engenharia_EmpreendimentoControle extends Engenharia_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Empreendimentos_Del($id){
         
@@ -210,7 +210,7 @@ class Engenharia_EmpreendimentoControle extends Engenharia_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Estoque_Retirar(){
         
@@ -227,7 +227,7 @@ class Engenharia_EmpreendimentoControle extends Engenharia_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Estoque_Retirar2(){
         
@@ -264,7 +264,7 @@ class Engenharia_EmpreendimentoControle extends Engenharia_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Empreendimento_Receber(){
         
@@ -280,7 +280,7 @@ class Engenharia_EmpreendimentoControle extends Engenharia_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Empreendimento_Receber2(){
         

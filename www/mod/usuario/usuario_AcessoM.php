@@ -10,7 +10,7 @@ class usuario_AcessoModelo extends usuario_Modelo
      * @return void
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      * 
      */
     public function __construct(){
@@ -22,7 +22,7 @@ class usuario_AcessoModelo extends usuario_Modelo
      * @return int
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      * 
      * #update
      */

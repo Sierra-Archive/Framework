@@ -4,7 +4,7 @@ namespace Framework\App;
  * Tratamento de Sessão
  * 
  * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
- * @version 3.1.1
+ * @version 0.4.2
  */
 final Class Session {
     /**
@@ -16,7 +16,7 @@ final Class Session {
      * 
      * @return boolean
      * 
-     * @version 3.1.1
+     * @version 0.4.2
      * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
     public static function init(){
@@ -33,7 +33,7 @@ final Class Session {
      * 
      * @param type $clave
      * 
-     * @version 3.1.1
+     * @version 0.4.2
      * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
     public static function destroy($clave=false){
@@ -63,7 +63,7 @@ final Class Session {
      * @param type $valor
      * @return boolean
      * 
-     * @version 3.1.1
+     * @version 0.4.2
      * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
     public static function set($clave,$valor){
@@ -80,7 +80,7 @@ final Class Session {
      * @param type $clave
      * @return boolean
      * 
-     * @version 3.1.1
+     * @version 0.4.2
      * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
     public static function get($clave){

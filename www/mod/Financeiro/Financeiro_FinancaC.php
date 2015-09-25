@@ -15,7 +15,7 @@ class Financeiro_FinancaControle extends Financeiro_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 3.1.1
+    * @version 0.4.2
     */
     public function Main(){
         \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'Financeiro/Financa/Financas');
@@ -33,7 +33,7 @@ class Financeiro_FinancaControle extends Financeiro_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Financas(){
         self::Endereco_Financa(false);
@@ -80,7 +80,7 @@ class Financeiro_FinancaControle extends Financeiro_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Financas_Add(){
         self::Endereco_Financa();
@@ -98,7 +98,7 @@ class Financeiro_FinancaControle extends Financeiro_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Financas_Add2(){
         $titulo     = __('Finança Adicionada com Sucesso');
@@ -132,7 +132,7 @@ class Financeiro_FinancaControle extends Financeiro_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Financas_Edit($id){
         self::Endereco_Financa();
@@ -151,7 +151,7 @@ class Financeiro_FinancaControle extends Financeiro_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Financas_Edit2($id){
         $titulo     = __('Finança Editada com Sucesso');
@@ -167,7 +167,7 @@ class Financeiro_FinancaControle extends Financeiro_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Financas_Del($id){
         

@@ -13,7 +13,7 @@ class Financeiro_BancoControle extends Financeiro_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 3.1.1
+    * @version 0.4.2
     */
     public function __construct(){
         parent::__construct();
@@ -29,7 +29,7 @@ class Financeiro_BancoControle extends Financeiro_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 3.1.1
+    * @version 0.4.2
     */
     public function Main(){
         \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'Financeiro/Banco/Bancos');
@@ -38,7 +38,7 @@ class Financeiro_BancoControle extends Financeiro_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Bancos(){
         $i = 0;
@@ -82,7 +82,7 @@ class Financeiro_BancoControle extends Financeiro_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Bancos_Add(){
         // Carrega Config
@@ -99,7 +99,7 @@ class Financeiro_BancoControle extends Financeiro_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Bancos_Add2(){
         $titulo     = __('Banco Adicionado com Sucesso');
@@ -114,7 +114,7 @@ class Financeiro_BancoControle extends Financeiro_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Bancos_Edit($id){
         // Carrega Config
@@ -132,7 +132,7 @@ class Financeiro_BancoControle extends Financeiro_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Bancos_Edit2($id){
         $titulo     = __('Banco Editado com Sucesso');
@@ -148,7 +148,7 @@ class Financeiro_BancoControle extends Financeiro_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Bancos_Del($id){
         

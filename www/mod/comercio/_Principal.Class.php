@@ -11,7 +11,7 @@ class comercio_Principal implements \Framework\PrincipalInterface
     * @return void 
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 3.1.1
+    * @version 0.4.2
     */
     static function Home(&$controle,    &$modelo, &$Visual){
         self::Widgets();

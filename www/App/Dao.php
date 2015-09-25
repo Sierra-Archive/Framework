@@ -4,7 +4,7 @@ namespace Framework\App;
  * Classe Abstrata do Dao, Responsável pelas Tabelas do Banco de Dados
  * 
  * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
- * @version 3.1.1
+ * @version 0.4.2
  */
 abstract class Dao implements \Framework\DaoInterface
 {
@@ -80,7 +80,7 @@ abstract class Dao implements \Framework\DaoInterface
     /**
      * 
      * 
-     * @version 3.1.1
+     * @version 0.4.2
      * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
     public function __construct() {
@@ -95,7 +95,7 @@ abstract class Dao implements \Framework\DaoInterface
      * Triggers
      * @return type
      * 
-     * @version 3.1.1
+     * @version 0.4.2
      * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
     public static function Get_Trigger(){
@@ -105,7 +105,7 @@ abstract class Dao implements \Framework\DaoInterface
      * 
      * @return string
      * 
-     * @version 3.1.1
+     * @version 0.4.2
      * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
     public static function Get_Engine(){
@@ -115,7 +115,7 @@ abstract class Dao implements \Framework\DaoInterface
      * 
      * @return string
      * 
-     * @version 3.1.1
+     * @version 0.4.2
      * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
     public static function Get_Charset(){
@@ -125,7 +125,7 @@ abstract class Dao implements \Framework\DaoInterface
      * 
      * @return int
      * 
-     * @version 3.1.1
+     * @version 0.4.2
      * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
     public static function Get_Autoadd(){
@@ -135,7 +135,7 @@ abstract class Dao implements \Framework\DaoInterface
      * Colunas da Tabela
      * @return type
      * 
-     * @version 3.1.1
+     * @version 0.4.2
      * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
     final public static function Get_Colunas(){
@@ -154,7 +154,7 @@ abstract class Dao implements \Framework\DaoInterface
      * )
      * @return boleano or Array
      * 
-     * @version 3.1.1
+     * @version 0.4.2
      * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
     public static function Get_LinkTable(){
@@ -166,7 +166,7 @@ abstract class Dao implements \Framework\DaoInterface
      * todas as configuracoes de servidor
      * @return boleano
      * 
-     * @version 3.1.1
+     * @version 0.4.2
      * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
     public static function Get_StaticTable(){
@@ -177,7 +177,7 @@ abstract class Dao implements \Framework\DaoInterface
      * @param type $atributo
      * @return boolean
      * 
-     * @version 3.1.1
+     * @version 0.4.2
      * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
     public function Atributo_Del($atributo){
@@ -191,7 +191,7 @@ abstract class Dao implements \Framework\DaoInterface
      * 
      * @return boolean
      * 
-     * @version 3.1.1
+     * @version 0.4.2
      * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
     final public function Get_CarregaMYSQL(){
@@ -240,7 +240,7 @@ abstract class Dao implements \Framework\DaoInterface
      * 
      * @return boolean
      * 
-     * @version 3.1.1
+     * @version 0.4.2
      * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
     final public function Get_Primaria(){
@@ -260,7 +260,7 @@ abstract class Dao implements \Framework\DaoInterface
      * 
      * @return boolean|string
      * 
-     * @version 3.1.1
+     * @version 0.4.2
      * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
     final public function Get_Indice_Unico(){
@@ -291,7 +291,7 @@ abstract class Dao implements \Framework\DaoInterface
      * 
      * @return boolean
      * 
-     * @version 3.1.1
+     * @version 0.4.2
      * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
     final public function Get_Extrangeiras(){
@@ -315,7 +315,7 @@ abstract class Dao implements \Framework\DaoInterface
      * MESMA FUNCAO ACIMA MAS COM A SIGLA SEPARADO
      * @return boolean
      * 
-     * @version 3.1.1
+     * @version 0.4.2
      * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
     final public function Get_Extrangeiras_ComExterna(){
@@ -337,7 +337,7 @@ abstract class Dao implements \Framework\DaoInterface
      * @param type $name
      * @return type
      * 
-     * @version 3.1.1
+     * @version 0.4.2
      * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
     final public function __isset($name)
@@ -349,7 +349,7 @@ abstract class Dao implements \Framework\DaoInterface
      * @param type $nome
      * @param type $resultado
      * 
-     * @version 3.1.1
+     * @version 0.4.2
      * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
     final public function __set($nome,$resultado){
@@ -360,7 +360,7 @@ abstract class Dao implements \Framework\DaoInterface
      * @param type $nome
      * @return boolean
      * 
-     * @version 3.1.1
+     * @version 0.4.2
      * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
     final public function __get($nome){
@@ -379,7 +379,7 @@ abstract class Dao implements \Framework\DaoInterface
      * @param type $resultado
      * @return type
      * 
-     * @version 3.1.1
+     * @version 0.4.2
      * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
     final public function bd_get($nome,$resultado){
@@ -417,7 +417,7 @@ abstract class Dao implements \Framework\DaoInterface
      * @param type $nome
      * @return boolean
      * 
-     * @version 3.1.1
+     * @version 0.4.2
      * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
     final public function bd_set($nome, $novo_valor=''){
@@ -464,7 +464,7 @@ abstract class Dao implements \Framework\DaoInterface
      * Todas as Variaveis possiveis
      * @return type
      * 
-     * @version 3.1.1
+     * @version 0.4.2
      * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
     final public function Get_Object_Vars(){        
@@ -474,7 +474,7 @@ abstract class Dao implements \Framework\DaoInterface
      * Todas as Variaveis possiveis para Edicao
      * @return type
      * 
-     * @version 3.1.1
+     * @version 0.4.2
      * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
     final public function Get_Object_Vars_Public(){
@@ -495,7 +495,7 @@ abstract class Dao implements \Framework\DaoInterface
     /**
      * Certifica da Limpeza da Memoria
      * 
-     * @version 3.1.1
+     * @version 0.4.2
      * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
     function __destruct() {

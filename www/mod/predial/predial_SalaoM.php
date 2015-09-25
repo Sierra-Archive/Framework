@@ -11,7 +11,7 @@ class predial_SalaoModelo extends predial_Modelo
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 3.1.1
+    * @version 0.4.2
     */
     public function __construct(){
         parent::__construct();
@@ -24,7 +24,7 @@ class predial_SalaoModelo extends predial_Modelo
      * @return void
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function retorna_Agendadatas(&$datas,$veiculo=0){
         GLOBAL $tabsql,$config;

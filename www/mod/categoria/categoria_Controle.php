@@ -12,7 +12,7 @@ class categoria_Controle extends \Framework\App\Controle
      * @return type
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public static function Categorias_CarregaModulosTotais(){
         return Categoria_Acesso_DAO::Mod_Acesso_Get();

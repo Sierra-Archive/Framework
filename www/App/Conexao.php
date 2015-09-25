@@ -31,7 +31,7 @@ DELIMITER ;
  * assim como detectar erro e repara-los automaticamente
  * 
  * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
- * @version 3.1.1
+ * @version 0.4.2
  */
 final class Conexao
 {
@@ -99,7 +99,7 @@ final class Conexao
      * @return void
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function __construct()
     {        $imprimir = new \Framework\App\Tempo('Conexao');
@@ -182,7 +182,7 @@ final class Conexao
      * @throws \Exception
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public static function &Dao_GetColunas($nome){
         if(isset(self::$tabelas[$nome.'_DAO']['colunas'])){
@@ -200,7 +200,7 @@ final class Conexao
      * @throws \Exception
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     private function &Dao_GetColunas_Nome($nome){
         $tabelas = &self::$tabelas;
@@ -218,7 +218,7 @@ final class Conexao
      * @return type
      * @throws \Exception
      * 
-     * @version 3.1.1
+     * @version 0.4.2
      * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
     public function prepare($sql,$autoreparo=true) 
@@ -253,7 +253,7 @@ final class Conexao
      * @return Array $re
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function query($sql,$autoreparo=true) 
     {
@@ -281,7 +281,7 @@ final class Conexao
      * @return boolean
      * @throws \Exception
      * 
-     * @version 3.1.1
+     * @version 0.4.2
      * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
     public function multi_query($sql,$autoreparo=true) 
@@ -319,7 +319,7 @@ final class Conexao
      * 
      * @return type
      * 
-     * @version 3.1.1
+     * @version 0.4.2
      * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
     public function ultimo_id(){
@@ -330,7 +330,7 @@ final class Conexao
      * @param type $sql
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      * 
      * 
      * #update ... Invez de fazxer varias conexoes, armazena tudo em uma variavel, e faz uma conexao só no final
@@ -353,7 +353,7 @@ final class Conexao
      * @param type $erro
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      * @return bolean Verdadeiro se tiver consertado, falso caso contrario
      */
     public function autoreparo_query($query, $erro){
@@ -591,7 +591,7 @@ final class Conexao
      * @return type
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Sql_Query($comando, &$tabela, $executar_query = true){
         // Declara Variaveis
@@ -739,7 +739,7 @@ final class Conexao
      * @return int
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Sql_Inserir(&$Objeto,$tempo=true,$retorna=false){
         if($tempo){
@@ -817,7 +817,7 @@ final class Conexao
      * @throws Exception
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Sql_Delete(&$objetos,$deletar=false){
         if($objetos===false)    return false;
@@ -866,7 +866,7 @@ final class Conexao
      * @throws Exception
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Sql_Update(&$Objeto, $log=true,$tempo=true,$retornar=false){
         if($tempo){
@@ -970,7 +970,7 @@ final class Conexao
      *       $tabelas_usadas,$j
      *   )
      * 
-     * @version 3.1.1
+     * @version 0.4.2
      * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
     public function Sql_Select_Dados($class_dao,$campos,$sql='SELECT',$retornar_extrangeiras_usadas=false,$deletados=false){
@@ -1020,7 +1020,7 @@ final class Conexao
      *   )
      * @throws \Exception
      * 
-     * @version 3.1.1
+     * @version 0.4.2
      * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
     private function Sql_Select_Comeco($class_dao,$campos,$sql='SELECT',$deletados=false){
@@ -1238,7 +1238,7 @@ final class Conexao
      * @return type
      * @throws \Exception
      * 
-     * @version 3.1.1
+     * @version 0.4.2
      * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
     public function Sql_Contar($class_dao, $where = false, $inner_join = false){
@@ -1281,7 +1281,7 @@ final class Conexao
      * @param bolean $deletados = Se False, não inclui os deletados, se TRUE, só mostra os deletados, para mostrar todos use string '*'
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      * 
      * 
      * $condicao = Array(
@@ -1625,7 +1625,7 @@ final class Conexao
      * @param type $objeto
      * @param type $campo
      * 
-     * @version 3.1.1
+     * @version 0.4.2
      * @author Ricardo Sierra <web@ricardosierra.com.br>
      * 
      * Como é usado dentro de varios looping, nao faz sentido executar $objeto->Get_Object_Vars()
@@ -1657,7 +1657,7 @@ final class Conexao
      * @return boolean
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      * 
      * #UPDATE FAZER VALOR_PADRAO PARA PEGAR DE EDICAO
      */
@@ -1921,7 +1921,7 @@ final class Conexao
      * @return type
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Tabelas_CapturaExtrangeiras(&$objeto){
         
@@ -2017,7 +2017,7 @@ final class Conexao
      * @return type
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Extrangeiras_Quebra($extrangeiro){
         // Divide string e recupera valores importantes
@@ -2059,7 +2059,7 @@ final class Conexao
      * @return boolean
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     private static function Tabelas_Variaveis_Gerar(){
         $tempo = new \Framework\App\Tempo('Conexao - Processar Tabelas Gerar Variaveis');
@@ -2106,7 +2106,7 @@ final class Conexao
      * @return type
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public static function &Tabelas_GetSiglas_Recolher($sigla){
         return self::$tabelas_siglas[$sigla];
@@ -2117,7 +2117,7 @@ final class Conexao
      * @return type
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public static function &Tabelas_GetCampos_Recolher($sigla){
         $array = \Framework\App\Conexao::Tabelas_GetSiglas_Recolher($sigla);
@@ -2138,7 +2138,7 @@ final class Conexao
      * @return type
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public static function Tabelas_GetLinks_Recolher($sigla,$invertido=false){
         if($invertido){
@@ -2158,7 +2158,7 @@ final class Conexao
      * @return type
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public static function Load($class,$nome=false){
         if($nome===false){
@@ -2182,7 +2182,7 @@ final class Conexao
      * @param type $classe
      * @return type
      * 
-     * @version 3.1.1
+     * @version 0.4.2
      * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
     static function GetSigla($classe){
@@ -2194,7 +2194,7 @@ final class Conexao
      * @return type
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     protected function Tabelas(){
         $tabelas        = &self::$tabelas;
@@ -2270,7 +2270,7 @@ final class Conexao
     * @return Array $array
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 3.1.1
+    * @version 0.4.2
     */
     private function logurl(){
         global $_SERVER;
@@ -2294,7 +2294,7 @@ final class Conexao
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 3.1.1
+    * @version 0.4.2
     */
     public function __destruct()
     {

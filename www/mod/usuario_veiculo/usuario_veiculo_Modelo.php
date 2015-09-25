@@ -10,7 +10,7 @@ class usuario_veiculo_Modelo extends \Framework\App\Modelo
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 3.1.1
+    * @version 0.4.2
     */
     public function __construct(){
         parent::__construct();
@@ -30,7 +30,7 @@ class usuario_veiculo_Modelo extends \Framework\App\Modelo
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 3.1.1
+    * @version 0.4.2
     */
     public function retorna_veiculos(&$veiculos,$categoriasdividir=false){
         GLOBAL $tabsql;
@@ -79,7 +79,7 @@ class usuario_veiculo_Modelo extends \Framework\App\Modelo
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 3.1.1
+    * @version 0.4.2
     */
     public function retorna_veiculo($id){
         GLOBAL $tabsql;
@@ -116,7 +116,7 @@ class usuario_veiculo_Modelo extends \Framework\App\Modelo
      * @return int
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function retorna_marcas(&$marcas){
         $i = 0;

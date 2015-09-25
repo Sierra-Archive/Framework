@@ -13,7 +13,7 @@ define('DAO_PATH'       , ROOT_PADRAO.'DAO'.DS);
  * @throws \Exception
  * 
  * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
- * @version 3.1.1
+ * @version 0.4.2
  */
 function __autoload($class){
     $original = $class;
@@ -188,7 +188,7 @@ define('MOD_PATH'       , ROOT      .'mod'      .DS);
  * @throws \Exception
  * 
  * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
- * @version 3.1.1
+ * @version 0.4.2
  */
 function Erro_Get_Leve($error, $message,$_1,$_2)
 {
@@ -212,7 +212,7 @@ function Erro_Get_Leve($error, $message,$_1,$_2)
  * Trata Erros Fatais - Pega o Erro do Sistema e os Trata como Excessoes
  * 
  * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
- * @version 3.1.1
+ * @version 0.4.2
  */
 function Erro_Get_Fatal() {
     if(SISTEMA_DEBUG!==true){
@@ -243,7 +243,7 @@ function Erro_Get_Fatal() {
  * @return string
  * 
  * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
- * @version 3.1.1
+ * @version 0.4.2
  */
 function Erro_Formatar( $errno, $errstr, $errfile, $errline, $previ = '', $trace = false) {
     require_once APP_PATH . 'Funcao'.'.php';
@@ -278,7 +278,7 @@ function Erro_Formatar( $errno, $errstr, $errfile, $errline, $previ = '', $trace
  * @param type $errline
  * 
  * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
- * @version 3.1.1
+ * @version 0.4.2
  */
 function Erro_Email($errno, $errstr, $errfile, $errline){
     $mensagem = Erro_Formatar( $errno, $errstr, $errfile, $errline);
@@ -459,7 +459,7 @@ _textdomain($textdomain);
  * @param string $string Texto a Ser Traduzido
  * 
  * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
- * @version 3.1.1
+ * @version 0.4.2
  */
 function _e($string) {
   echo __($string);

@@ -15,7 +15,7 @@ class predial_InformativoControle extends predial_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 3.1.1
+    * @version 0.4.2
     */
     public function Main(){
     }
@@ -53,7 +53,7 @@ class predial_InformativoControle extends predial_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Informativos(){
         self::Endereco_Informativo(false);
@@ -90,7 +90,7 @@ class predial_InformativoControle extends predial_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Informativos_Add(){
         self::Endereco_Informativo();
@@ -111,7 +111,7 @@ class predial_InformativoControle extends predial_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Informativos_Add2(){
         $titulo     = __('Informativo Adicionado com Sucesso');
@@ -193,7 +193,7 @@ class predial_InformativoControle extends predial_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Informativos_Edit($id){
         self::Endereco_Informativo();
@@ -217,7 +217,7 @@ class predial_InformativoControle extends predial_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Informativos_Edit2($id){
         $titulo     = __('Informativo Editado com Sucesso');
@@ -233,7 +233,7 @@ class predial_InformativoControle extends predial_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Informativos_Del($id){
         

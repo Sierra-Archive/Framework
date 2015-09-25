@@ -668,7 +668,7 @@ var Sierra = (function () {
     /**
      * FAZ SEMPRE QUE SE USA AJAX
      * @returns {undefined}
-     * @version 3.1.1 // Mudado a fim da reaproveitacao de código, aqui repetia o conteudo de mascaras
+     * @version 0.4.2 // Mudado a fim da reaproveitacao de código, aqui repetia o conteudo de mascaras
     * @author Ricardo Rebello Sierra <contato@ricardosierra.com.br>
      */
     function Control_Layoult_Recarrega () {
@@ -1958,7 +1958,7 @@ var Sierra = (function () {
      * @returns {Boolean}
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     function Control_Layoult_Valida_CNPJ (cnpj) {
         var tamanho = 0, numeros = 0, digitos = 0, soma = 0, pos = 0, resultado = 0, i=0;

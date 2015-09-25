@@ -16,7 +16,7 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 3.1.1
+    * @version 0.4.2
     */
     public function __construct(){
         parent::__construct();
@@ -119,7 +119,7 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 3.1.1
+    * @version 0.4.2
     */
     public function Main(){
         $this->Formas();
@@ -283,7 +283,7 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     static function Financeiro_Pagamento($motivo,$motivo_id,$pago){
         // Carrega Modelo
@@ -402,7 +402,7 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Financeiros_Pagar2($id=false, $localizacao=false, $dataini=false,$datafin=false){
         // Verifica Existencia
@@ -485,7 +485,7 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
     /**
      * Listagem de Formas de Pagamento
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Formas(){
         self::Endereco_Forma(false);
@@ -504,7 +504,7 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Formas_Add(){
         self::Endereco_Forma();
@@ -522,7 +522,7 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Formas_Add2(){
         $titulo     = __('Forma de Pagamento Adicionada com Sucesso');
@@ -537,7 +537,7 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Formas_Edit($id){
         self::Endereco_Forma();
@@ -556,7 +556,7 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Formas_Edit2($id){
         $titulo     = __('Forma de Pagamento Editada com Sucesso');
@@ -572,7 +572,7 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Formas_Del($id){
         
@@ -605,7 +605,7 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Condicoes($forma=0){
         $forma = (int) $forma;
@@ -638,7 +638,7 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Condicoes_Add($forma = 0){
         $forma      = (int)$forma;
@@ -667,7 +667,7 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Condicoes_Add2($forma = 0){
         $forma      = (int)$forma;
@@ -694,7 +694,7 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Condicoes_Edit($id,$forma=0){
         $forma      = (int)$forma;
@@ -724,7 +724,7 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Condicoes_Edit2($id,$forma=0){
         $forma      = (int)$forma;
@@ -748,7 +748,7 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Condicoes_Del($id,$forma=0){
         
@@ -856,7 +856,7 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Financeiros_VencimentoEdit2($id=false){
         // Verifica Existencia

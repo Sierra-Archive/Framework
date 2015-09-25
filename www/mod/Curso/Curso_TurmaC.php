@@ -15,7 +15,7 @@ class Curso_TurmaControle extends Curso_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 3.1.1
+    * @version 0.4.2
     */
     public function Main(){
         \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'Curso/Turma/Turmas');
@@ -163,7 +163,7 @@ class Curso_TurmaControle extends Curso_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Turmas($curso=false,$export=false){
         if($curso ==='false' || $curso ===0)  $curso    = false;
@@ -254,7 +254,7 @@ class Curso_TurmaControle extends Curso_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Abertas($curso=false,$export=false){
         if($curso ==='false' || $curso ===0)  $curso    = false;
@@ -335,7 +335,7 @@ class Curso_TurmaControle extends Curso_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Turmas_Add($curso = false){
         if($curso==='false') $curso = false;
@@ -374,7 +374,7 @@ class Curso_TurmaControle extends Curso_Controle
      * Retorno de Add Turma
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Turmas_Add2($curso=false){
         if($curso==='false') $curso = false;
@@ -396,7 +396,7 @@ class Curso_TurmaControle extends Curso_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Turmas_Ver($id,$curso = false,$export=false){
         if($curso==='false') $curso = false;
@@ -492,7 +492,7 @@ class Curso_TurmaControle extends Curso_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Turmas_Edit($id,$curso = false){
         if($curso==='false') $curso = false;
@@ -528,7 +528,7 @@ class Curso_TurmaControle extends Curso_Controle
      * Retorno de Editar Turma
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Turmas_Edit2($id,$curso = false){
         if($curso==='false') $curso = false;
@@ -555,7 +555,7 @@ class Curso_TurmaControle extends Curso_Controle
      * Deletar Turma
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Turmas_Del($id = false,$curso=false){
         if($curso==='false') $curso = false;
@@ -640,7 +640,7 @@ class Curso_TurmaControle extends Curso_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     protected static function Campos_Deletar_Inscricao(&$campos){
         self::DAO_Campos_Retira($campos, 'usuario');

@@ -13,7 +13,7 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 3.1.1
+    * @version 0.4.2
     */
     public function __construct(){
         parent::__construct();
@@ -29,7 +29,7 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 3.1.1
+    * @version 0.4.2
     */
     public function Main(){
         ///$this->Propostas();
@@ -75,7 +75,7 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Propostas($cliente){
         $i = 0;
@@ -185,7 +185,7 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Propostas_Add($cliente=0,$direto=false){
         // Carrega campos e retira os que nao precisam
@@ -229,7 +229,7 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Propostas_Edit($id,$cliente){
         $id = (int) $id;
@@ -279,7 +279,7 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Propostas_Add2($cliente=0){
         
@@ -334,7 +334,7 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Propostas_Edit2($id,$cliente=0){
         
@@ -393,7 +393,7 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Propostas_Del($id,$cliente){
         
@@ -542,7 +542,7 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Periodicas_Ver($cliente){
         $cliente = (int) $cliente;
@@ -561,7 +561,7 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Periodicas_Edit($id){
         // Carrega Config
@@ -596,7 +596,7 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Periodicas_Edit2($id){
         $id = (int) $id;

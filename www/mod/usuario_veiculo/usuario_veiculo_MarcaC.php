@@ -13,7 +13,7 @@ class usuario_veiculo_MarcaControle extends usuario_veiculo_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 3.1.1
+    * @version 0.4.2
     */
     public function __construct(){
         parent::__construct();
@@ -29,7 +29,7 @@ class usuario_veiculo_MarcaControle extends usuario_veiculo_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 3.1.1
+    * @version 0.4.2
     */
     public function Main(){
         \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'usuario_veiculo/Marca/Marcas');
@@ -52,7 +52,7 @@ class usuario_veiculo_MarcaControle extends usuario_veiculo_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Marcas(){
         $i = 0;
@@ -83,7 +83,7 @@ class usuario_veiculo_MarcaControle extends usuario_veiculo_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Marcas_Add(){
         self::Endereco_Veiculo_Marca(true);
@@ -101,7 +101,7 @@ class usuario_veiculo_MarcaControle extends usuario_veiculo_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Marcas_Add2(){
         $titulo     = __('Marca Adicionada com Sucesso');
@@ -116,7 +116,7 @@ class usuario_veiculo_MarcaControle extends usuario_veiculo_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Marcas_Edit($id){
         self::Endereco_Veiculo_Marca(true);
@@ -135,7 +135,7 @@ class usuario_veiculo_MarcaControle extends usuario_veiculo_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Marcas_Edit2($id){
         $titulo     = __('Marca Editada com Sucesso');
@@ -151,7 +151,7 @@ class usuario_veiculo_MarcaControle extends usuario_veiculo_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Marcas_Del($id){
         

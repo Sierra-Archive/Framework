@@ -11,7 +11,7 @@ class usuario_veiculo_aluguel_ListarModelo extends usuario_veiculo_aluguel_Model
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 3.1.1
+    * @version 0.4.2
     */
     public function __construct(){
       parent::__construct();
@@ -29,7 +29,7 @@ class usuario_veiculo_aluguel_ListarModelo extends usuario_veiculo_aluguel_Model
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 3.1.1
+    * @version 0.4.2
     */
     public function retorna_aluguel(&$aluguel){
         $usuario_id = (int) \Framework\App\Acl::Usuario_GetID_Static();

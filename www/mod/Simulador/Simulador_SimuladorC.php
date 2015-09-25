@@ -15,7 +15,7 @@ class Simulador_SimuladorControle extends Simulador_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 3.1.1
+    * @version 0.4.2
     */
     public function Main(){
         \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'Simulador/Simulador/Simuladores');
@@ -62,7 +62,7 @@ class Simulador_SimuladorControle extends Simulador_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Simuladores($export=false){
         self::Endereco_Simulador(false);
@@ -112,7 +112,7 @@ class Simulador_SimuladorControle extends Simulador_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Simuladores_Add(){
         self::Endereco_Simulador();
@@ -130,7 +130,7 @@ class Simulador_SimuladorControle extends Simulador_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Simuladores_Add2(){
         $titulo     = __('Simulador Adicionado com Sucesso');
@@ -145,7 +145,7 @@ class Simulador_SimuladorControle extends Simulador_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Simuladores_Edit($id){
         self::Endereco_Simulador();
@@ -164,7 +164,7 @@ class Simulador_SimuladorControle extends Simulador_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Simuladores_Edit2($id){
         $titulo     = __('Simulador Editado com Sucesso');
@@ -180,7 +180,7 @@ class Simulador_SimuladorControle extends Simulador_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Simuladores_Del($id){
         

@@ -15,7 +15,7 @@ class Enquete_ShowControle extends Enquete_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 3.1.1
+    * @version 0.4.2
     */
     public function Main(){
         // ORGANIZA E MANDA CONTEUDO

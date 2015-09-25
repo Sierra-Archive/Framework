@@ -8,7 +8,7 @@ class _Sistema_FilialControle extends _Sistema_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Main(){
         return false;
@@ -33,7 +33,7 @@ class _Sistema_FilialControle extends _Sistema_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Filiais($tipobloco='Unico'){
         $this->Endereco_Filial(false);
@@ -60,7 +60,7 @@ class _Sistema_FilialControle extends _Sistema_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Filiais_Add(){
         $this->Endereco_Filial();
@@ -78,7 +78,7 @@ class _Sistema_FilialControle extends _Sistema_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Filiais_Add2(){
         $titulo     = __('Filial Adicionada com Sucesso');
@@ -93,7 +93,7 @@ class _Sistema_FilialControle extends _Sistema_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Filiais_Edit($id){
         $this->Endereco_Filial();
@@ -112,7 +112,7 @@ class _Sistema_FilialControle extends _Sistema_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Filiais_Edit2($id){
         $id = (int) $id;
@@ -129,7 +129,7 @@ class _Sistema_FilialControle extends _Sistema_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Filiais_Del($id){
         
@@ -164,7 +164,7 @@ class _Sistema_FilialControle extends _Sistema_Controle
      * @param type $true
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     function Endereco_Filial($true=true){
         $titulo = __('Filiais do Sistema');

@@ -4,7 +4,7 @@ namespace Framework\App;
  * Sistema de cache
  * 
  * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
- * @version 3.1.1
+ * @version 0.4.2
  */
 class Cache {
 
@@ -58,7 +58,7 @@ class Cache {
      *
      * @return void
      * 
-     * @version 3.1.1
+     * @version 0.4.2
      * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
     public function __construct($folder = null) {
@@ -100,7 +100,7 @@ class Cache {
      * @param type $name
      * @return int
      * 
-     * @version 3.1.1
+     * @version 0.4.2
      * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
     protected function Cache_Cod($name) {
@@ -119,7 +119,7 @@ class Cache {
      * @param type $ram
      * @return boolean
      * 
-     * @version 3.1.1
+     * @version 0.4.2
      * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
     public function Ler($key,$ram=false,$travar_localmente=true){
@@ -170,7 +170,7 @@ class Cache {
      * @param type $ram
      * @return type
      * 
-     * @version 3.1.1
+     * @version 0.4.2
      * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
     public function Salvar($key, &$content, $time = null, $ram=false){
@@ -194,7 +194,7 @@ class Cache {
      * @param type $key
      * @return boolean
      * 
-     * @version 3.1.1
+     * @version 0.4.2
      * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
     public function Deletar($key = null){
@@ -245,7 +245,7 @@ class Cache {
      *
      * @return void
      * 
-     * @version 3.1.1
+     * @version 0.4.2
      * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
     protected function Arquivos_Pasta($folder) {
@@ -268,7 +268,7 @@ class Cache {
      *
      * @return string Local do arquivo de cache
      * 
-     * @version 3.1.1
+     * @version 0.4.2
      * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
     protected function Arquivos_GerarEndereco($key) {
@@ -286,7 +286,7 @@ class Cache {
      *
      * @return boolean Se o cache foi salvo
      * 
-     * @version 3.1.1
+     * @version 0.4.2
      * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
     protected function Arquivos_Salvar($key, &$content, $time = null) {
@@ -312,7 +312,7 @@ class Cache {
      *
      * @return mixed Se o cache foi encontrado retorna o seu valor, caso contrário retorna NULL
      * 
-     * @version 3.1.1
+     * @version 0.4.2
      * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
     protected function Arquivos_Leitura($key) {
@@ -328,7 +328,7 @@ class Cache {
      * @param type $key
      * @return boolean
      * 
-     * @version 3.1.1
+     * @version 0.4.2
      * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
     protected function Arquivos_Apaga($key) {
@@ -359,7 +359,7 @@ class Cache {
      * @param type $timeout
      * @return boolean
      * 
-     * @version 3.1.1
+     * @version 0.4.2
      * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
     protected function Shmop_Salvar($name, &$data, $timeout) {
@@ -384,7 +384,7 @@ class Cache {
      * @param type $name
      * @return boolean
      * 
-     * @version 3.1.1
+     * @version 0.4.2
      * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
     protected function Shmop_Leitura($name) {
@@ -408,7 +408,7 @@ class Cache {
      * @param type $name
      * @param type $int
      * 
-     * @version 3.1.1
+     * @version 0.4.2
      * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
     protected function Shmop_Expirar_Setar($name, $int) {
@@ -431,7 +431,7 @@ class Cache {
      * @param type $name
      * @return boolean
      * 
-     * @version 3.1.1
+     * @version 0.4.2
      * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
     protected function Shmop_Expirar_Checar($name) {

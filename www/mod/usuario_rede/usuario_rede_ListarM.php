@@ -11,7 +11,7 @@ class usuario_rede_ListarModelo extends usuario_rede_Modelo
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 3.1.1
+    * @version 0.4.2
     */
     public function __construct(){
       parent::__construct();
@@ -30,7 +30,7 @@ class usuario_rede_ListarModelo extends usuario_rede_Modelo
     * @return int $i Quantidades de Registros Retornada
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 3.1.1
+    * @version 0.4.2
     *//*#update
     public function Indicados_Retorna($antecessor=0, $nivel=0){
         $array = Array();

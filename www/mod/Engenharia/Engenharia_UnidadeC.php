@@ -15,7 +15,7 @@ class Engenharia_UnidadeControle extends Engenharia_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 3.1.1
+    * @version 0.4.2
     */
     public function Main(){
         \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'Engenharia/Unidade/Unidades');
@@ -70,7 +70,7 @@ class Engenharia_UnidadeControle extends Engenharia_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Unidades($empreendimento=false,$export=false){
         if($empreendimento=='falso') $empreendimento = false;
@@ -162,7 +162,7 @@ class Engenharia_UnidadeControle extends Engenharia_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Unidades_Add($empreendimento = false, $lote=false){
         if($empreendimento=='falso') $empreendimento = false;
@@ -213,7 +213,7 @@ class Engenharia_UnidadeControle extends Engenharia_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Unidades_Add2($empreendimento=false, $lote=false){
         if($empreendimento=='falso') $empreendimento = false;
@@ -458,7 +458,7 @@ class Engenharia_UnidadeControle extends Engenharia_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Unidades_Edit($id,$empreendimento = false){
         if($id===false){
@@ -493,7 +493,7 @@ class Engenharia_UnidadeControle extends Engenharia_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Unidades_Edit2($id,$empreendimento = false){
         if($id===false){
@@ -520,7 +520,7 @@ class Engenharia_UnidadeControle extends Engenharia_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Unidades_Del($id = false,$empreendimento=false){
         

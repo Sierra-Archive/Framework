@@ -10,7 +10,7 @@ class DireitoVisual extends \Framework\App\Visual
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 3.1.1
+    * @version 0.4.2
     */
     public function __construct(){
         parent::__construct();
@@ -21,7 +21,7 @@ class DireitoVisual extends \Framework\App\Visual
      * @return string
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     static function Show_TabMeusNumeros($array){
         

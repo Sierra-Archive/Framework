@@ -15,7 +15,7 @@ class Musica_AlbumControle extends Musica_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 3.1.1
+    * @version 0.4.2
     */
     public function Main(){
         \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'Musica/Album/Albuns');
@@ -86,7 +86,7 @@ class Musica_AlbumControle extends Musica_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Albuns($artista=false,$export=false){
         if($artista ==='false' || $artista ===0)  $artista    = false;
@@ -179,7 +179,7 @@ class Musica_AlbumControle extends Musica_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Albuns_Add($artista = false){
         if($artista==='false') $artista = false;
@@ -219,7 +219,7 @@ class Musica_AlbumControle extends Musica_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Albuns_Add2($artista=false){
         if($artista==='false') $artista = false;
@@ -241,7 +241,7 @@ class Musica_AlbumControle extends Musica_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Albuns_Edit($id,$artista = false){
         if($artista==='false') $artista = false;
@@ -278,7 +278,7 @@ class Musica_AlbumControle extends Musica_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Albuns_Edit2($id,$artista = false){
         if($artista==='false') $artista = false;
@@ -306,7 +306,7 @@ class Musica_AlbumControle extends Musica_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Albuns_Del($id = false,$artista=false){
         if($artista==='false') $artista = false;

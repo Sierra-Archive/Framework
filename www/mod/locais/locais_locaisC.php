@@ -20,7 +20,7 @@ class locais_locaisControle extends locais_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Locais($export=false){
         self::Endereco_Local(false);
@@ -79,7 +79,7 @@ class locais_locaisControle extends locais_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Locais_Add(){
         self::Endereco_Local(true);
@@ -97,7 +97,7 @@ class locais_locaisControle extends locais_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Locais_Add2(){
         $titulo     = __('Local Adicionado com Sucesso');
@@ -112,7 +112,7 @@ class locais_locaisControle extends locais_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Locais_Edit($id){
         self::Endereco_Local(true);
@@ -131,7 +131,7 @@ class locais_locaisControle extends locais_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Locais_Edit2($id){
         $titulo     = __('Local Editado com Sucesso');
@@ -147,7 +147,7 @@ class locais_locaisControle extends locais_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Locais_Del($id){
         

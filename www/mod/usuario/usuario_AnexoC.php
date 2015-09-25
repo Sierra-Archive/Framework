@@ -13,7 +13,7 @@ class usuario_AnexoControle extends usuario_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 3.1.1
+    * @version 0.4.2
     */
     public function __construct(){
         // construct
@@ -32,7 +32,7 @@ class usuario_AnexoControle extends usuario_Controle
     * @return void 
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 3.1.1
+    * @version 0.4.2
     */
     public function Main($id=false,$tipo='Usuarios'){
         $this->Anexar($id,$tipo);

@@ -7,7 +7,7 @@ namespace Framework\App;
  *
  * 
  * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
- * @version 3.1.1
+ * @version 0.4.2
  */
 class Acl{
     // Informacoes de Login
@@ -45,7 +45,7 @@ class Acl{
      * @throws \Exception
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function __construct($id = false) {
         $tempo = new \Framework\App\Tempo('Acl - Construct');   
@@ -374,7 +374,7 @@ class Acl{
      * @return type
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Get_Config_Publico($chave,$campo='valor') {
         $array = &self::$Sis_Config_Publico;
@@ -398,7 +398,7 @@ class Acl{
      * @return type
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Get_Permissao_Nome($chave,$campo='Nome') {
         $array = &self::$Sis_Permissao;
@@ -418,7 +418,7 @@ class Acl{
      * @return type
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function getPermissao(){
         if(isset($this->_permissao) && count($this->_permissao)){
@@ -433,7 +433,7 @@ class Acl{
      * @return boolean
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Get_Permissao_Chave($chave,$campo='Nome') {
         $array = $this->getPermissao();
@@ -507,7 +507,7 @@ class Acl{
      * Compilar as Permissões, Junta as Permissoes de Usuario com as de Grupo
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     private function compilarAcl(){
         $usuario_perm = $this->getUsuarioPermissao();
@@ -522,7 +522,7 @@ class Acl{
      * @return boolean
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     private function getGrupo(){
         $sql = $this->_db->query(
@@ -644,7 +644,7 @@ class Acl{
      * @return boolean
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     private function getPermissaoGrupo(){
         $data = Array();
@@ -679,7 +679,7 @@ class Acl{
      * @return array
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     private function getUsuarioPermissao(){
         $data = Array();
@@ -728,7 +728,7 @@ class Acl{
      * @return int 
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Usuario_GetID(){
         if(!isset($this->logado_usuario) || !is_numeric($this->logado_usuario->id) || $this->logado===false){
@@ -742,7 +742,7 @@ class Acl{
      * @return int
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Usuario_GetNome(){
         if(!isset($this->logado_usuario) || $this->logado===false){
@@ -756,7 +756,7 @@ class Acl{
      * @return int
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Usuario_GetEmail(){
         if(!isset($this->logado_usuario) || $this->logado===false){
@@ -777,7 +777,7 @@ class Acl{
      * @return int 
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public static function Usuario_GetID_Static(){
         $Registro = &\Framework\App\Registro::getInstacia();
@@ -802,7 +802,7 @@ class Acl{
     * @return int 1
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 3.1.1 
+    * @version 0.4.2 
     * Revisão:
     *  - 0.1.1 2013-05-13 Sessao Automatizada por Constante
     */
@@ -866,7 +866,7 @@ class Acl{
      * @return boolean
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Usuario_Logar($login='',$senha='',$id=0){
         // #update -> Aplicar Segurança de Roubo de Sessao, Gerar Token e 
@@ -885,7 +885,7 @@ class Acl{
      * @return int Id de Usuario logado ou zero 
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Usuario_GetLogado(){
         return $this->logado;
@@ -896,7 +896,7 @@ class Acl{
      * @return int Id de Usuario logado ou zero
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     static public function Usuario_GetLogado_Static(){
         return \Framework\App\Registro::getInstacia()->_Acl->logado;
@@ -917,7 +917,7 @@ class Acl{
      * Inseri Novos Grupos (Grupos Basicos) no Sistema
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     static function grupos_inserir(){
         $Registro   = &Registro::getInstacia();
@@ -1024,7 +1024,7 @@ class Acl{
      * @return boolean Se o Valor desse Config for um Array, Retornara um Array
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public static function Sistema_Modulos_Configs_Funcional($chave=false){
         if($chave===false || $chave=='') return false;
@@ -1050,7 +1050,7 @@ class Acl{
      * @return boolean Se o Valor desse Config for um Array, Retornara um Array
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public static function Sistema_Modulos_Configs_Publico($chave=false){
         if($chave===false || $chave=='') return false;
@@ -1080,7 +1080,7 @@ class Acl{
      * @return type
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public static function &Sistema_Modulos_Carregar_Menu(){
         $tempo = new \Framework\App\Tempo('\Framework\App\Acl::Sistema_Modulos_Configs->Menu');
@@ -1111,7 +1111,7 @@ class Acl{
      * @return type
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public static function &Sistema_Modulos_Carregar_Permissoes(){
         $tempo = new \Framework\App\Tempo('\Framework\App\Acl::Sistema_Modulos_Configs->Permissoes');
@@ -1142,7 +1142,7 @@ class Acl{
      * @return type
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public static function &Sistema_Modulos_Carregar_Funcional(){
         $tempo = new \Framework\App\Tempo('\Framework\App\Acl::Sistema_Modulos_Configs->Funcional');
@@ -1206,7 +1206,7 @@ class Acl{
      * @return type
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public static function &Sistema_Modulos_Carregar_Publico(){
         $tempo = new \Framework\App\Tempo('\Framework\App\Acl::Sistema_Modulos_Configs->Publico');
@@ -1260,7 +1260,7 @@ class Acl{
      * VErifica se Nao existe realmente no banco de dados e se for verdade insere o padrao
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     private function Sistema_Config_Permissoes_InserirPadrao(){
         $configPermissoes = self::Sistema_Modulos_Carregar_Permissoes();
@@ -1312,7 +1312,7 @@ class Acl{
      * VErifica se Nao existe realmente no banco de dados e se for verdade insere o padrao
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     private function Sistema_Config_Publico_InserirPadrao(){
         $configPublicos = self::Sistema_Modulos_Carregar_Publico();

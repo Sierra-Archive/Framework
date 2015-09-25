@@ -19,7 +19,7 @@ class Transporte_EstradaControle extends Transporte_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Main(){
         \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'Transporte/Estrada/Estradas');
@@ -63,7 +63,7 @@ class Transporte_EstradaControle extends Transporte_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Estradas($export=false){
         $i = 0;
@@ -118,7 +118,7 @@ class Transporte_EstradaControle extends Transporte_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Estradas_Add(){
         self::Endereco_Noticia(true);
@@ -136,7 +136,7 @@ class Transporte_EstradaControle extends Transporte_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Estradas_Add2(){
         $titulo     = __('Dica de Estrada Adicionada com Sucesso');
@@ -151,7 +151,7 @@ class Transporte_EstradaControle extends Transporte_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Estradas_Edit($id){
         self::Endereco_Noticia(true);
@@ -170,7 +170,7 @@ class Transporte_EstradaControle extends Transporte_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Estradas_Edit2($id){
         $id = (int) $id;
@@ -187,7 +187,7 @@ class Transporte_EstradaControle extends Transporte_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Estradas_Del($id){
         

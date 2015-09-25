@@ -11,7 +11,7 @@ class usuario_TelefoneVisual extends usuario_Visual
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 3.1.1
+    * @version 0.4.2
     */
     public function __construct(){
       parent::__construct();

@@ -4,7 +4,7 @@ namespace Framework\App;
  * Classe para Idenfiticar e Armazenar Tempos de Execucao
  * 
  * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
- * @version 3.1.1
+ * @version 0.4.2
  */
 class Tempo{
     /**
@@ -24,7 +24,7 @@ class Tempo{
      * @param type $nome
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function __construct($nome) {
         $this->nome = $nome.' S.M.';
@@ -36,7 +36,7 @@ class Tempo{
      * @param type $fechar
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Fechar($fechar=true){
         $tempofinal = number_format((microtime(true)-$this->comeco)*1000, 10);
@@ -55,7 +55,7 @@ class Tempo{
      * Destruidor da Classe
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function __destruct(){
         $this->Fechar(false);
@@ -64,7 +64,7 @@ class Tempo{
      * Pega Tempo da Página
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     private static function Tempo_Pagina(){
         $tempofinal = number_format((microtime(true)-TEMPO_COMECO)*1000, 10);
@@ -83,7 +83,7 @@ class Tempo{
      * @return boolean
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     static function Salvar(){
         $comeco = microtime(true);
@@ -187,7 +187,7 @@ class Tempo{
      * IMprimir o Relatório dos Tempos
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     static function Imprimir(){
         var_dump(self::$log);

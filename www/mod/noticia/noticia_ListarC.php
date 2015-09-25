@@ -13,7 +13,7 @@ class noticia_ListarControle extends noticia_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 3.1.1
+    * @version 0.4.2
     */
     public function __construct(){
         parent::__construct();
@@ -29,7 +29,7 @@ class noticia_ListarControle extends noticia_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 3.1.1
+    * @version 0.4.2
     */
     public function Main(){
         $this->Noticias_Listar();
@@ -40,7 +40,7 @@ class noticia_ListarControle extends noticia_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 3.1.1
+    * @version 0.4.2
     */
     public function Noticias_Listar($categoria=0,$status=1){
         $i = 0;

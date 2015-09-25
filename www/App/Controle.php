@@ -46,7 +46,7 @@ abstract class Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 3.1.1
+    * @version 0.4.2
     */
     
     public function __construct(){
@@ -105,7 +105,7 @@ abstract class Controle
      * @throws Exception
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     protected function getLibrary($lib){
         $url_livraria = ROOT.'libs'.DS.$lib.'.php';
@@ -121,7 +121,7 @@ abstract class Controle
      * @param type $endereco
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Tema_Endereco($nome,$endereco=false){
         //if(!$this->layoult_endereco_travar){
@@ -137,7 +137,7 @@ abstract class Controle
      * @param type $ultimo (false = todos, ou numero de vezes que vai tirar
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     protected function Tema_Endereco_Zerar($ultimo = false){
         if($ultimo===false){
@@ -162,7 +162,7 @@ abstract class Controle
      * @return type
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public static function Enviar_Email($texto,$assunto='Sem Assunto',$email=false,$nome=false){
         require_once CLASS_PATH . 'Email'.DS.'Email'.'.php';
@@ -184,7 +184,7 @@ abstract class Controle
      * @param type $tipo (Informações,Aviso,Erro,Falha de Auditoria,Auditoria bem-sucesida)
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public static function log($mensagem,$tipo){
         self::Enviar_Email($mensagem,'Log - Tipo:'.$tipo);
@@ -197,7 +197,7 @@ abstract class Controle
      * @param type $nomearquivo
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     protected function Enviar_Email_Anexo($id,$arquivo,$nomearquivo){
         $arquivo = \anti_injection($arquivo);
@@ -278,7 +278,7 @@ abstract class Controle
      * Trava o Código e para de Executar tudo
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public static function Tema_Travar(){
         self::$sistema_travado = true;
@@ -289,7 +289,7 @@ abstract class Controle
      * Retorna se o Layoult está travado de retornar HTML ou nao !
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * 0.4.
      */
     public static function &Tema_Travar_GET(){
         return self::$sistema_travado;
@@ -523,7 +523,7 @@ readfile($link);*/
      * @param string $arquivo_nome
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     private static function Export_Excel(&$tabela,$arquivo_nome='Relatorio'){
         // Retira Funcoes Caso Exista
@@ -583,7 +583,7 @@ readfile($link);*/
      * @return void
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     protected function Categorias_ShowSelect(&$form,$tipo='',$padrao=0){
     	$array = $this->_Modelo->Categorias_Retorna($tipo);
@@ -599,7 +599,7 @@ readfile($link);*/
      * @return string
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     /*public function Upload($dir = '', $fileTypes = Array(), $nomearquivo = ''){
         $targetPath = ARQ_PATH.$dir;
@@ -1548,7 +1548,7 @@ readfile($link);*/
      * @throws Exception
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     static function Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,&$campos = false,$editar=false,$bloco='All',$janela=true){
         $Registro = &\Framework\App\Registro::getInstacia();
@@ -1677,7 +1677,7 @@ readfile($link);*/
      * @param type $erro2
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     protected function Gerador_Formulario_Janela2($titulo,$dao,$funcao = '',$sucesso1,$sucesso2,$colocar=false,$erro1 = '',$erro2 = ''){
         $tempo = new \Framework\App\Tempo('Controle Gerador Form Janela2');
@@ -2031,7 +2031,7 @@ readfile($link);*/
      * @return boolean
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     static function DAO_Campos_TrocaID(&$objeto,$id=false){
         // Ainda funciona com array
@@ -2054,7 +2054,7 @@ readfile($link);*/
      * @return boolean
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     static function DAO_Campos_TrocaNOME(&$objeto,$alterar=false){
         // Ainda funciona com array
@@ -2077,7 +2077,7 @@ readfile($link);*/
      * @return boolean
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     static function DAO_Campos_RetiraAlternados(&$objeto,$campomysql=false){
         // Ainda funciona com array
@@ -2105,7 +2105,7 @@ readfile($link);*/
      * @return boolean
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     static function DAO_Campos_TrocaAlternados(&$objeto,$campomysql=false){
         // Ainda funciona com array
@@ -2151,7 +2151,7 @@ readfile($link);*/
      * @return boolean
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     static function DAO_Campos_AlternadosDesabilitados(&$objeto,$campomysql=false){
         // Ainda funciona com array
@@ -2186,7 +2186,7 @@ readfile($link);*/
      * @param type $leitura
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1 (Agora funciona com Objetos DAO)
+     * @version 0.4.2 (Agora funciona com Objetos DAO)
      * 
      * #update OBJETOS AINDA NAO FUNCIONAM
      */
@@ -2226,7 +2226,7 @@ readfile($link);*/
      * @return boolean
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     static function DAO_RemoveLinkExtra(&$objeto,$campomysql){
         // Ainda funciona com array
@@ -2260,7 +2260,7 @@ readfile($link);*/
      * @return boolean
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     static function DAO_Ext_Alterar(&$objeto,$campomysql,$alterar){
         // Ainda funciona com array
@@ -2298,7 +2298,7 @@ readfile($link);*/
      * @param type $valor
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1 (Agora funciona com Objetos DAO, -1bug)
+     * @version 0.4.2 (Agora funciona com Objetos DAO, -1bug)
      */
     static function mysql_AtualizaValor(&$objeto,$campomysql,$resultado=false){
         // Ainda funciona com array
@@ -2335,7 +2335,7 @@ readfile($link);*/
      * @param type $valores
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1 (Agora funciona com Objetos DAO)
+     * @version 0.4.2 (Agora funciona com Objetos DAO)
      */
     static function mysql_AtualizaValores(&$objeto,&$valores='',$id=false){
         // TRATA ID
@@ -2497,7 +2497,7 @@ readfile($link);*/
      * @param int $exceto 0 ou 1, 0 Remove o Campo Escolhido, 1 Remove todos e deixa só esse campo
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     static function DAO_Campos_Retira(&$campos,$campomysql,$exceto=0){
         if(empty($campos)) throw new \Exception('Campos da DAO não existe', 3030); //
@@ -2537,7 +2537,7 @@ readfile($link);*/
      * @return boolean
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     protected function _Permissao_Verificar_Modulo($modulo,$sub = ''){
         $array = $this->_Acl->getPermissao();

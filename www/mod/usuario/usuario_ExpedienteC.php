@@ -13,7 +13,7 @@ class usuario_ExpedienteControle extends usuario_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 3.1.1
+    * @version 0.4.2
     */
     public function __construct(){
         parent::__construct();
@@ -27,7 +27,7 @@ class usuario_ExpedienteControle extends usuario_Controle
      * @return void
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Main(){
         return false; 
@@ -38,7 +38,7 @@ class usuario_ExpedienteControle extends usuario_Controle
      * @param bollean $true Se Adiciona Link ou nao ao Endereço
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     static function Endereco_Expediente($true=true){
         $Registro = &\Framework\App\Registro::getInstacia();
@@ -53,7 +53,7 @@ class usuario_ExpedienteControle extends usuario_Controle
      * LIstagem de Todos os Expedientes
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Expediente($export=false){
         self::Endereco_Expediente(false);
@@ -117,7 +117,7 @@ class usuario_ExpedienteControle extends usuario_Controle
      * Retorna Formulário para Cadastro de Expediente
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Expedientes_Add(){
         self::Endereco_Expediente();
@@ -136,7 +136,7 @@ class usuario_ExpedienteControle extends usuario_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Expedientes_Add2(){
         $titulo     = __('Expediente adicionada com Sucesso');
@@ -152,7 +152,7 @@ class usuario_ExpedienteControle extends usuario_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Expedientes_Edit($id){
         self::Endereco_Expediente();
@@ -173,7 +173,7 @@ class usuario_ExpedienteControle extends usuario_Controle
      * @param int $id Chave Primária (Id do Registro)
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Expedientes_Edit2($id){
         $titulo     = __('Expediente editada com Sucesso');
@@ -190,7 +190,7 @@ class usuario_ExpedienteControle extends usuario_Controle
      * @param int $id Registro do Expediente
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Expedientes_Del($id){
         
@@ -227,7 +227,7 @@ class usuario_ExpedienteControle extends usuario_Controle
      * @return boolean
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public static function Disponivel($tipobloco='Unico',$span=true){
         $Registro = Framework\App\Registro::getInstacia();
@@ -311,7 +311,7 @@ class usuario_ExpedienteControle extends usuario_Controle
      * @return boolean
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public static function Almoco($tipobloco='Unico',$span=true){
         $Registro = Framework\App\Registro::getInstacia();
@@ -357,7 +357,7 @@ class usuario_ExpedienteControle extends usuario_Controle
      * @param int $usuario Id do Usuario
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Expediente_Add_Rapido($usuario=false){
         if($usuario===false){
@@ -404,7 +404,7 @@ class usuario_ExpedienteControle extends usuario_Controle
      * @param type $status
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Expedientes_StatusAlterar($id=false,$status=0){
         $id = (int) $id;

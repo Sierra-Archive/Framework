@@ -139,7 +139,7 @@ class categoria_categoriaControle extends categoria_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 3.1.1
+    * @version 0.4.2
     */
     public function Categorias_ShowTab($tipo=''){
         $tabela = Array();
@@ -168,7 +168,7 @@ class categoria_categoriaControle extends categoria_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 3.1.1
+    * @version 0.4.2
     */
     public function Categorias_formcadastro($modulo=false){
         
@@ -226,7 +226,7 @@ class categoria_categoriaControle extends categoria_Controle
      * @return void
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Categorias_formulario(&$form, $tipo='' , $nome = '', $parent = 0){
       
@@ -268,7 +268,7 @@ class categoria_categoriaControle extends categoria_Controle
      * @return void
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Categorias_inserir(){
         

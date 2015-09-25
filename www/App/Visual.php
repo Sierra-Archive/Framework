@@ -5,7 +5,7 @@ namespace Framework\App;
  * Cria Json e Manipula Blocos e Outros
  * 
  * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
- * @version 3.1.1
+ * @version 0.4.2
  */
 class Visual
 {
@@ -129,7 +129,7 @@ class Visual
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 3.1.1
+    * @version 0.4.2
     */
     public function __construct($naozerado=true,$template=false) {
         $imprimir = new \Framework\App\Tempo('Construcao Visual - SEM SMARTY');
@@ -152,7 +152,7 @@ class Visual
      * @return boolean
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Javascript_Executar($javascript=''){
         // Se parametro vier falso, zera javascript pra executar
@@ -178,7 +178,7 @@ class Visual
      * @return boolean
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Bloco_Customizavel($blocos,$add=true,$gravidade=0){
         if(!is_array($blocos)) return false;
@@ -234,7 +234,7 @@ class Visual
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 3.1.1
+    * @version 0.4.2
     */
     public function Bloco_Unico_CriaConteudo($gravidade=0) {
         list($tipo,$bloco) = $this->retornablocos();
@@ -249,7 +249,7 @@ class Visual
      * @param type $gravidade
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Bloco_Unico_CriaTitulo($titulo, $gravidade=0) {
         list($tipo,$bloco) = $this->retornablocos();
@@ -276,7 +276,7 @@ class Visual
      * @return type
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Bloco_Unico_Retornar(){
         $html = '';
@@ -293,7 +293,7 @@ class Visual
      * 
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     protected function Bloco_Unico_Zerar(){
         $this->Layoult_BlocoUnico = array();
@@ -362,7 +362,7 @@ class Visual
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 3.1.1
+    * @version 0.4.2
     */
     public function Bloco_Maior_CriaConteudo($gravidade=0) {
         list($tipo,$bloco) = $this->retornablocos();
@@ -377,7 +377,7 @@ class Visual
      * @param type $gravidade
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Bloco_Maior_CriaTitulo($titulo, $gravidade=0) {
         list($tipo,$bloco) = $this->retornablocos();
@@ -406,7 +406,7 @@ class Visual
      * @return varchar
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     private function Bloco_Maior_Retornar(){
         $html = '';
@@ -423,7 +423,7 @@ class Visual
      * Zera o Conteudo do Bloco Maior
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     private function Bloco_Maior_Zerar(){
         $this->Layoult_BlocoMaior = array();
@@ -485,7 +485,7 @@ class Visual
      * @return void
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Bloco_Menor_CriaConteudo($gravidade=0) {
         list($tipo,$bloco) = $this->retornablocos();
@@ -500,7 +500,7 @@ class Visual
      * @param int $gravidade Quanto Maior, mais prioridade, mais emcima.
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Bloco_Menor_CriaTitulo($titulo,$gravidade=0) {
         if($url!='') $titulo = $titulo.'<a class="lajax-admin" href="'.$url.'" acao="">+</a>';
@@ -527,7 +527,7 @@ class Visual
      * @return type
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     private function Bloco_Menor_Retornar(){
         $html = '';
@@ -543,7 +543,7 @@ class Visual
      * Zera os Blocos Menores
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     private function Bloco_Menor_Zerar(){
         $this->Layoult_BlocoMenor = array();
@@ -554,7 +554,7 @@ class Visual
      * @param type $gravidade
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Bloco_Menor_CriaJanela($titulo,$url='', $gravidade=0,$botaoextra = false, $fechado=false) {
         if($url!='') $titulo = $titulo.'<a class="lajax-admin" href="'.$url.'" acao="">+</a>';
@@ -582,7 +582,7 @@ class Visual
      * @param varchar $titulo
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function janelaajax($titulo) {
         list($tipo,$bloco) = $this->retornablocos();
@@ -595,7 +595,7 @@ class Visual
      * @param type $txt2 Texto html se o primeiro parametro for o titulo
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Blocar($txt,$txt2 = false){
         if($txt2===false){
@@ -613,7 +613,7 @@ class Visual
      * @param type $endereco
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     private function Arquivos_Js($endereco){
         if(is_array($endereco)){
@@ -638,7 +638,7 @@ class Visual
      * @param type $endereco
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Arquivos_Js_Dependencia($endereco){
         if(is_array($endereco)){
@@ -663,7 +663,7 @@ class Visual
      * @return boolean
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     private function Arquivos_Js_Get(){
         $this->arquivos_js = array_merge($this->arquivos_js, $this->arquivos_js_dependencia);
@@ -682,7 +682,7 @@ class Visual
      * @return boolean
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     private function Arquivos_Js_Get_Dependentes(){
         if(empty($this->arquivos_js_dependencia)) return false;
@@ -696,7 +696,7 @@ class Visual
      * @param type $endereco
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     private function Arquivos_Css($endereco){
         if(is_array($endereco)){
@@ -721,7 +721,7 @@ class Visual
      * @param type $endereco
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     private function Arquivos_Css_Dependencia($endereco){
         if(is_array($endereco)){
@@ -746,7 +746,7 @@ class Visual
      * @return boolean
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     private function Arquivos_Css_Get(){
         $this->arquivos_css = array_merge($this->arquivos_css, $this->arquivos_css_dependencia);
@@ -764,7 +764,7 @@ class Visual
      * @return boolean
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     private function Arquivos_Css_Get_Dependentes(){
         if(empty($this->arquivos_css_dependencia)) return false;
@@ -779,7 +779,7 @@ class Visual
      * @return void
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     private function Sistema_Extras(){
         
@@ -957,7 +957,7 @@ class Visual
      * @return string
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     private function Sistema_Css(){
         
@@ -1011,7 +1011,7 @@ class Visual
      * @return type
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     private function retornablocos() {
         $temaconfig = &$this->config_template['plugins'];
@@ -1068,7 +1068,7 @@ class Visual
      * @return varchar Retorna HTML
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     private function tmp_usuario(){
         $html = '';
@@ -1092,7 +1092,7 @@ class Visual
      * @return type
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     private function tmp_menu(){
         return $this->renderizar_bloco('widget_menu',Array(
@@ -1105,7 +1105,7 @@ class Visual
      * @return string
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     private function js_local (){
         $temaconfig = &$this->config_template['javascript'];
@@ -1147,7 +1147,7 @@ class Visual
      * @return type
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public static function Layoult_Abas_Carregar($id,$html='',$ativar=true){
         $Registro           = &\Framework\App\Registro::getInstacia();
@@ -1179,7 +1179,7 @@ class Visual
      * @return boolean
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public static function Layoult_Home_Widgets_Add($nome,$link,$icon=false,$numero=false,$cor='block-yellow',$duplo=false,$gravidade=0,$bloquer_permissao=true){
         if($bloquer_permissao){
@@ -1202,7 +1202,7 @@ class Visual
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public static function Layoult_Home_Widgets_Show($gravidade=10000){
         $Registro = &\Framework\App\Registro::getInstacia();
@@ -1219,7 +1219,7 @@ class Visual
      * @return type
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public static function Layoult_Abas_Ativar_JS($numero){
         $Registro           = &Registro::getInstacia();
@@ -1235,7 +1235,7 @@ class Visual
      * @return boolean
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Widget_Assimilar($endereco,$html){
         $this->_widgets_params[$endereco] = $html;
@@ -1248,7 +1248,7 @@ class Visual
      * @return boolean
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Widgets_Assimilar($endereco,$html){
         $this->_widgets_params[$endereco][] = $html;
@@ -1259,7 +1259,7 @@ class Visual
      * principal arquivo php do tema dentro da pasta Layoult
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function renderizar() {
         $imprimir = new \Framework\App\Tempo('Renderizar Json Visual - SEM SMARTY');
@@ -1330,7 +1330,7 @@ class Visual
      * @return type
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Tema_Elementos_Btn($tipo='Editar',$nome = Array('Adicionar','#',''),$permissao='_'){
         if(!is_array($nome)) throw new \Exception('$nome não é array: '.$nome,2810);
@@ -1416,7 +1416,7 @@ class Visual
      * Renderiza Página de Login tanto inteira quanto via Ajax
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function renderizar_login(){
         if(LAYOULT_IMPRIMIR=='AJAX'){
@@ -1479,7 +1479,7 @@ class Visual
      * @return string Html com os dados preenchidos
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function renderizar_bloco($tpl,$params = Array()){
         $imprimir = new \Framework\App\Tempo('Renderizar bloco Visual - SEM SMARTY');
@@ -1496,7 +1496,7 @@ class Visual
      * @return boolean
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     private function renderizar_Template($url,$params,$retorno=true){
         $params = array_merge_recursive($params, array(
@@ -1530,7 +1530,7 @@ class Visual
      * @param type $alterar
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Layolt_Tipo($alterar=false){
         if($alterar===false){
@@ -1545,7 +1545,7 @@ class Visual
      * @return string
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function grafico_gerar(&$graficos){
         // monta os graficos desejados
@@ -1717,7 +1717,7 @@ class Visual
      * @param array $events 'Id,'Titulo','DataInicial','DataFinal'
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Js_Calendar_Gerar($idcalendar,&$events){
          $this->Javascript_Executar(
@@ -1783,7 +1783,7 @@ class Visual
      * @param bolean $historico Se armazena ou não no histórico
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Json_Start($title='',$historico=true){
         if($this->jsonativado===false){
@@ -1801,7 +1801,7 @@ class Visual
      * @return varchar
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     private function Json_Get_Titulo(){
         if(isset($this->json['Info']['Titulo']) && $this->json['Info']['Titulo']!=='' && $this->json['Info']['Titulo']!==false){
@@ -1816,7 +1816,7 @@ class Visual
      * @param type $valor Pode ser um boleano, varchar ou um array padronizado com o js
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Json_Info_Update($indice,$valor){
         if($this->jsonativado===false){
@@ -1829,7 +1829,7 @@ class Visual
      * @return boolean
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Json_Exist(){
         if($this->jsonativado===false){
@@ -1844,7 +1844,7 @@ class Visual
      * @return boolean
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Json_ExisteTipo($tipo){
         if(isset($this->json[$tipo])){
@@ -1876,7 +1876,7 @@ class Visual
      * @param array $array Pode ser um boleano, varchar ou um array padronizado com o js
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Json_IncluiTipo($tipo,&$array){
         // Se nao tiver json, ativa
@@ -1995,7 +1995,7 @@ class Visual
      * @return type
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Json_Retorna($zerar=true){
         $imprimir = new \Framework\App\Tempo('Retornar Json Visual - SEM SMARTY');
@@ -2113,7 +2113,7 @@ class Visual
      * @return varchar
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     private function Json_Codificar(){
         
@@ -2179,7 +2179,7 @@ class Visual
      * @return type
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Categorias_ShowTab(&$array,&$tabela,$i=0,$nivel=0){
         $antecipa = $nivel;
@@ -2238,7 +2238,7 @@ class Visual
      * @return type
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Categorias_ShowSelect(&$array,&$form,$padrao=0,$i=0,$nivel=0){
         $antecipa = $nivel;
@@ -2277,7 +2277,7 @@ class Visual
      * @return type
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Categorias_ShowSelect_AJAX(&$array,&$form,$padrao=0,$i=0,$nivel=0){
         $antecipa = $nivel;

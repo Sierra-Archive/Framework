@@ -13,7 +13,7 @@ class comercio_FornecedorControle extends comercio_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 3.1.1
+    * @version 0.4.2
     */
     public function __construct(){
         parent::__construct();
@@ -34,7 +34,7 @@ class comercio_FornecedorControle extends comercio_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 3.1.1
+    * @version 0.4.2
     */
     public function Main(){
         \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'comercio/Fornecedor/Fornecedores');
@@ -54,7 +54,7 @@ class comercio_FornecedorControle extends comercio_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Fornecedores($export = false){
         self::Endereco_Fornecedor(false);
@@ -82,7 +82,7 @@ class comercio_FornecedorControle extends comercio_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Fornecedores_Add(){
         self::Endereco_Fornecedor(true);
@@ -101,7 +101,7 @@ class comercio_FornecedorControle extends comercio_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Fornecedores_Add2(){
         $titulo     = __('Fornecedor Adicionado com Sucesso');
@@ -117,7 +117,7 @@ class comercio_FornecedorControle extends comercio_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Fornecedores_Edit($id){
         self::Endereco_Fornecedor(true);
@@ -137,7 +137,7 @@ class comercio_FornecedorControle extends comercio_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Fornecedores_Edit2($id){
         $titulo     = __('Fornecedor Editado com Sucesso');
@@ -153,7 +153,7 @@ class comercio_FornecedorControle extends comercio_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Fornecedores_Del($id){
         
@@ -255,7 +255,7 @@ class comercio_FornecedorControle extends comercio_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Fornecedores_Comentario($fornecedor_id = false, $export = false){
         
@@ -324,7 +324,7 @@ class comercio_FornecedorControle extends comercio_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Fornecedores_Comentario_Add($fornecedor_id = false){
         if($fornecedor_id===false) throw new \Exception('Fornecedor não informado',404);
@@ -343,7 +343,7 @@ class comercio_FornecedorControle extends comercio_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Fornecedores_Comentario_Add2($fornecedor_id = false){
         if($fornecedor_id===false) throw new \Exception('Fornecedor não informado',404);
@@ -359,7 +359,7 @@ class comercio_FornecedorControle extends comercio_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Fornecedores_Comentario_Edit($fornecedor_id = false,$id = 0){
         if($fornecedor_id===false) throw new \Exception('Fornecedor não informado',404);
@@ -380,7 +380,7 @@ class comercio_FornecedorControle extends comercio_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Fornecedores_Comentario_Edit2($fornecedor_id = false,$id = 0){
         if($fornecedor_id===false) throw new \Exception('Fornecedor não informado',404);
@@ -398,7 +398,7 @@ class comercio_FornecedorControle extends comercio_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Fornecedores_Comentario_Del($fornecedor_id = false,$id = 0){
         if($fornecedor_id===false) throw new \Exception('Fornecedor não informado',404);

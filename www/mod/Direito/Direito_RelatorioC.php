@@ -13,7 +13,7 @@ class Direito_RelatorioControle extends Direito_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 3.1.1
+    * @version 0.4.2
     */
     public function __construct(){
         parent::__construct();
@@ -30,7 +30,7 @@ class Direito_RelatorioControle extends Direito_Controle
      * @return void
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Main(){
         // FORMULARIO PARA O PASSO 1
@@ -57,7 +57,7 @@ class Direito_RelatorioControle extends Direito_Controle
      * @param type $tipo
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Impressao($tipo = -1,$id1=0,$id2=0){
         if($tipo==-1) $tipo = \anti_injection($_POST['selecttipoimpressao']);
@@ -195,7 +195,7 @@ class Direito_RelatorioControle extends Direito_Controle
      * @param INT $id
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Relatorio_Audiencia($inicialdia = 0, $inicialmes = 0, $inicialano = 0, $finaldia = 0, $finalmes = 0, $finalano = 0, $imprimir = 'false'){
         // Caso nao tenha vindo por GET entao tenta pegar por POST
@@ -232,7 +232,7 @@ class Direito_RelatorioControle extends Direito_Controle
      * @param INT $id
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Relatorio_Fase($id = 0, $imprimir = 'false'){
         if($id==0){
@@ -258,7 +258,7 @@ class Direito_RelatorioControle extends Direito_Controle
      * @param INT $id
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Relatorio_Comarca($id = 0, $imprimir = 'false'){
         if($id==0){
@@ -284,7 +284,7 @@ class Direito_RelatorioControle extends Direito_Controle
      * @param INT $id
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Relatorio_Vara($id = 0, $imprimir = 'false'){
         if($id==0){
@@ -310,7 +310,7 @@ class Direito_RelatorioControle extends Direito_Controle
      * @param INT $id
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Relatorio_Vara_Comarca($idvara = 0,$idcomarca = 0, $imprimir = 'false'){
         if($idvara==0){
@@ -340,7 +340,7 @@ class Direito_RelatorioControle extends Direito_Controle
      * @param INT $id
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Relatorio_SemAlt($imprimir = 'false'){
         $processos = Array();

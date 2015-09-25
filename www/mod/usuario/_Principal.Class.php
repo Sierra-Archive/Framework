@@ -18,7 +18,7 @@ class usuario_Principal implements \Framework\PrincipalInterface
     * @return void 
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 3.1.1
+    * @version 0.4.2
     */
     static function Home(&$controle, &$modelo, &$Visual){
         if(\Framework\App\Sistema_Funcoes::Perm_Modulos('Financeiro') && \Framework\App\Acl::Sistema_Modulos_Configs_Funcional('Financeiro_User_Planos') && \Framework\App\Acl::Sistema_Modulos_Configs_Funcional('Financeiro_User_Saldo')){

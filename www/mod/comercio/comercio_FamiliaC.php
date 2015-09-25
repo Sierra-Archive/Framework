@@ -13,7 +13,7 @@ class comercio_FamiliaControle extends comercio_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 3.1.1
+    * @version 0.4.2
     */
     public function __construct(){
         parent::__construct();
@@ -29,7 +29,7 @@ class comercio_FamiliaControle extends comercio_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 3.1.1
+    * @version 0.4.2
     */
     public function Main(){
         \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'comercio/Familia/Familias');
@@ -49,7 +49,7 @@ class comercio_FamiliaControle extends comercio_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Familias($export=false){
         self::Endereco_Familia(false);
@@ -98,7 +98,7 @@ class comercio_FamiliaControle extends comercio_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Familias_Add(){
         self::Endereco_Familia(true);
@@ -116,7 +116,7 @@ class comercio_FamiliaControle extends comercio_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Familias_Add2(){
         $titulo     = __('Familia Adicionada com Sucesso');
@@ -131,7 +131,7 @@ class comercio_FamiliaControle extends comercio_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Familias_Edit($id){
         self::Endereco_Familia(true);
@@ -150,7 +150,7 @@ class comercio_FamiliaControle extends comercio_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Familias_Edit2($id){
         $titulo     = __('Familia Editada com Sucesso');
@@ -166,7 +166,7 @@ class comercio_FamiliaControle extends comercio_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Familias_Del($id){
         

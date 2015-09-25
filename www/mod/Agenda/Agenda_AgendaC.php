@@ -13,7 +13,7 @@ class Agenda_AgendaControle extends Agenda_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 3.1.1
+    * @version 0.4.2
     */
     public function __construct(){
         parent::__construct();
@@ -29,7 +29,7 @@ class Agenda_AgendaControle extends Agenda_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 3.1.1
+    * @version 0.4.2
     */
     public function Main(){
         $this->Agendas();
@@ -49,7 +49,7 @@ class Agenda_AgendaControle extends Agenda_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Agendas($export=false){
         $i = 0;
@@ -76,7 +76,7 @@ class Agenda_AgendaControle extends Agenda_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Agendas_Add(){ 
         $this->Endereco_Agenda();  
@@ -93,7 +93,7 @@ class Agenda_AgendaControle extends Agenda_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Agendas_Add2(){
         $titulo     = __('Agenda Adicionada com Sucesso');
@@ -108,7 +108,7 @@ class Agenda_AgendaControle extends Agenda_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Agendas_Edit($id){
         $this->Endereco_Agenda();
@@ -126,7 +126,7 @@ class Agenda_AgendaControle extends Agenda_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Agendas_Edit2($id){
         $titulo     = __('Agenda Editada com Sucesso');
@@ -141,7 +141,7 @@ class Agenda_AgendaControle extends Agenda_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Agendas_Del($id){
     	$id = (int) $id;

@@ -24,7 +24,7 @@ class Locomocao_Controle extends \Framework\App\Controle
      * @return Array
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public static function Retorna_Distancia($origem_pais,$origem_estado,$origem_cidade,$origem_bairro,$origem_endereco,$destino_pais,$destino_estado,$destino_cidade,$destino_bairro,$destino_endereco,$mode = 'driving',$language = 'pt-BR',$sensor = false){
         

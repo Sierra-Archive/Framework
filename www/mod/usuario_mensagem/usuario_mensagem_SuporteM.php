@@ -11,7 +11,7 @@ class usuario_mensagem_SuporteModelo extends usuario_mensagem_Modelo
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 3.1.1
+    * @version 0.4.2
     */
     public function __construct(){
       parent::__construct();
@@ -23,7 +23,7 @@ class usuario_mensagem_SuporteModelo extends usuario_mensagem_Modelo
      * @return type
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Suporte_MensagensSetor(&$array,$grupo=0){
         $array = Array();
@@ -87,7 +87,7 @@ class usuario_mensagem_SuporteModelo extends usuario_mensagem_Modelo
      * @return type
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public static function Suporte_MensagensCliente(&$array,$cliente=0){
         $Registro = &\Framework\App\Registro::getInstacia();

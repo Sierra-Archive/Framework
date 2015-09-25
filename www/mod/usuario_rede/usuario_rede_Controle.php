@@ -10,7 +10,7 @@ class usuario_rede_Controle extends \Framework\App\Controle
     * @uses \Framework\App\Visual::$menu
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 3.1.1
+    * @version 0.4.2
     */
     public function __construct(){
         // construct
@@ -31,7 +31,7 @@ class usuario_rede_Controle extends \Framework\App\Controle
     * @uses usuario_rede_Visual::$Show_TabRedeIndicados
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 3.1.1
+    * @version 0.4.2
     */
     static function num_Indicados(&$modelo, &$Visual, $usuario){
         $valores = usuario_rede_Modelo::Retorna_num_Indicados($modelo, $usuario);

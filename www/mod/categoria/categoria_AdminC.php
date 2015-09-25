@@ -41,7 +41,7 @@ class categoria_AdminControle extends categoria_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 3.1.1
+    * @version 0.4.2
     */
     public function Categorias_ShowTab($tipo=''){
         self::Endereco_Categoria(false);
@@ -73,7 +73,7 @@ class categoria_AdminControle extends categoria_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Categorias_Add($modulo=false){
         self::Endereco_Categoria(true);
@@ -104,7 +104,7 @@ class categoria_AdminControle extends categoria_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Categorias_Add2($modulo=false){
         $titulo     = __('Adicionado com Sucesso');
@@ -155,7 +155,7 @@ class categoria_AdminControle extends categoria_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Categorias_Edit($id,$modulo=false){
         self::Endereco_Categoria(true);
@@ -192,7 +192,7 @@ class categoria_AdminControle extends categoria_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Categorias_Edit2($id,$modulo=false){
         $titulo     = __('Editado com Sucesso');
@@ -208,7 +208,7 @@ class categoria_AdminControle extends categoria_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Categorias_Del($id){
         

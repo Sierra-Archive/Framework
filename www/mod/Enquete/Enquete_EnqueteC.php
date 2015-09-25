@@ -15,7 +15,7 @@ class Enquete_EnqueteControle extends Enquete_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 3.1.1
+    * @version 0.4.2
     */
     public function Main(){
         \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'Enquete/Enquete/Enquetes');
@@ -68,7 +68,7 @@ class Enquete_EnqueteControle extends Enquete_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Enquetes($export=false){
         self::Endereco_Enquete(false);
@@ -119,7 +119,7 @@ class Enquete_EnqueteControle extends Enquete_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Enquetes_Add(){
         self::Endereco_Enquete();
@@ -136,7 +136,7 @@ class Enquete_EnqueteControle extends Enquete_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Enquetes_Add2(){
         $titulo     = __('Enquete Adicionada com Sucesso');
@@ -151,7 +151,7 @@ class Enquete_EnqueteControle extends Enquete_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Enquetes_Edit($id){
         self::Endereco_Enquete();
@@ -170,7 +170,7 @@ class Enquete_EnqueteControle extends Enquete_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Enquetes_Edit2($id){
         $titulo     = __('Enquete Editada com Sucesso');
@@ -186,7 +186,7 @@ class Enquete_EnqueteControle extends Enquete_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Enquetes_Del($id){
         

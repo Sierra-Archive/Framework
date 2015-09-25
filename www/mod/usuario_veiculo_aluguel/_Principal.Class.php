@@ -18,7 +18,7 @@ class usuario_veiculo_aluguel_Principal implements \Framework\PrincipalInterface
     * @return void 
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 3.1.1
+    * @version 0.4.2
     */
     static function Home(&$controle, &$modelo, &$Visual){
         //usuario_veiculo_aluguel_Controle::num_Indicados($modelo, $Visual, \Framework\App\Acl::Usuario_GetID_Static());

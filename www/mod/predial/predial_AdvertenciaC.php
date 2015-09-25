@@ -15,7 +15,7 @@ class predial_AdvertenciaControle extends predial_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 3.1.1
+    * @version 0.4.2
     */
     public function Main(){
         $this->Advertencias();
@@ -56,7 +56,7 @@ class predial_AdvertenciaControle extends predial_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Advertencias(){
         self::Endereco_Advertencia();
@@ -93,7 +93,7 @@ class predial_AdvertenciaControle extends predial_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Advertencias_Add(){
         self::Endereco_Advertencia(false);
@@ -111,7 +111,7 @@ class predial_AdvertenciaControle extends predial_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Advertencias_Add2(){
         $titulo     = __('Advertência Adicionada com Sucesso');
@@ -196,7 +196,7 @@ class predial_AdvertenciaControle extends predial_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Advertencias_Edit($id){
         self::Endereco_Advertencia(false);
@@ -215,7 +215,7 @@ class predial_AdvertenciaControle extends predial_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Advertencias_Edit2($id){
         $titulo     = __('Advertência Editada com Sucesso');
@@ -231,7 +231,7 @@ class predial_AdvertenciaControle extends predial_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Advertencias_Del($id){
         
@@ -287,7 +287,7 @@ class predial_AdvertenciaControle extends predial_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     static function Personalizados($apartamento){
         $Registro = &\Framework\App\Registro::getInstacia();

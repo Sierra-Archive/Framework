@@ -14,7 +14,7 @@ class usuario_PerfilControle extends usuario_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 3.1.1
+    * @version 0.4.2
     */
     public function __construct(){
         parent::__construct();
@@ -47,7 +47,7 @@ class usuario_PerfilControle extends usuario_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 3.1.1
+    * @version 0.4.2
     */
     public function Main(){
         $this->Usuarios_Edit(0,'Cliente');
@@ -220,7 +220,7 @@ class usuario_PerfilControle extends usuario_Controle
      * @return void
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Plano_Alterar(){
         
@@ -306,7 +306,7 @@ class usuario_PerfilControle extends usuario_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Perfil_Edit2($tipo=false){
         if(isset($_POST["nome"])){
@@ -340,7 +340,7 @@ class usuario_PerfilControle extends usuario_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 3.1.1
+    * @version 0.4.2
     *//*
     public function __construct(){
         parent::__construct();
@@ -373,7 +373,7 @@ class usuario_PerfilControle extends usuario_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 3.1.1
+    * @version 0.4.2
     *//*
     public function Main(){
         return false;
@@ -543,7 +543,7 @@ class usuario_PerfilControle extends usuario_Controle
      * @return void
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      *//*
     public function Plano_Alterar(){
         
@@ -625,7 +625,7 @@ class usuario_PerfilControle extends usuario_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      *//*
     public function Perfil_Edit2($tipo=false){
         $id = (int) $this->get_usuarioid();

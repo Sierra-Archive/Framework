@@ -15,7 +15,7 @@ class Simulador_TagControle extends Simulador_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 3.1.1
+    * @version 0.4.2
     */
     public function Main(){
         \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'Simulador/Tag/Tags');
@@ -73,7 +73,7 @@ class Simulador_TagControle extends Simulador_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Tags($raiz = false){
         self::Endereco_Tag(false);
@@ -113,7 +113,7 @@ class Simulador_TagControle extends Simulador_Controle
     /**
      * ADD SOMENTE PASTA
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Tags_Add($raiz = 0){
         self::Endereco_Tag();
@@ -132,7 +132,7 @@ class Simulador_TagControle extends Simulador_Controle
      * ADD SOMENTE PASTA
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Tags_Add2($raiz = 0){
         $titulo     = __('Caracteristica Adicionada com Sucesso');
@@ -147,7 +147,7 @@ class Simulador_TagControle extends Simulador_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Tags_Edit($id,$raiz=0){
         self::Endereco_Tag();
@@ -190,7 +190,7 @@ class Simulador_TagControle extends Simulador_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Tags_Edit2($id,$raiz=0){
         $titulo     = __('Editado com Sucesso');
@@ -205,7 +205,7 @@ class Simulador_TagControle extends Simulador_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Tags_Del($id,$raiz=0){
     	$id = (int) $id;

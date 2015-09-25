@@ -8,7 +8,7 @@ class Locomocao_EntregaControle extends Locomocao_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Main(){
         return false;
@@ -16,7 +16,7 @@ class Locomocao_EntregaControle extends Locomocao_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Entregas($tipobloco='Unico'){
         $this->Endereco_Entrega_Entrega(false);
@@ -44,7 +44,7 @@ class Locomocao_EntregaControle extends Locomocao_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Entregas_Add(){
         self::Endereco_Entrega(true);
@@ -458,7 +458,7 @@ class Locomocao_EntregaControle extends Locomocao_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Entregas_Add2($tema='Entregas'){
         // Nomes
@@ -511,7 +511,7 @@ class Locomocao_EntregaControle extends Locomocao_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Entregas_Edit($id){
         $this->Endereco_Entrega_Entrega();
@@ -530,7 +530,7 @@ class Locomocao_EntregaControle extends Locomocao_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Entregas_Edit2($id){
         $id = (int) $id;
@@ -547,7 +547,7 @@ class Locomocao_EntregaControle extends Locomocao_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Entregas_Del($id){
         
@@ -583,7 +583,7 @@ class Locomocao_EntregaControle extends Locomocao_Controle
      * @throws \Exception
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Entrega_Status($id=false){
         if($id===false){
@@ -629,7 +629,7 @@ class Locomocao_EntregaControle extends Locomocao_Controle
      * @param type $true
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     function Endereco_Entrega($true=true){
         $titulo = __('Administração de Entregas');
@@ -645,7 +645,7 @@ class Locomocao_EntregaControle extends Locomocao_Controle
      * @param type $true
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     function Endereco_Entrega_Entrega($true=true){
         self::Endereco_Entrega();

@@ -8,7 +8,7 @@ class Transporte_PedidoControle extends Transporte_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Main(){
         //\Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'Transporte/Pedido/Pedidos');
@@ -103,7 +103,7 @@ class Transporte_PedidoControle extends Transporte_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Arma_Ped_Add2(){
         $titulo     = __('Pedido enviado com Sucesso');
@@ -119,7 +119,7 @@ class Transporte_PedidoControle extends Transporte_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Arma_Ped_Del($id){
         
@@ -166,7 +166,7 @@ class Transporte_PedidoControle extends Transporte_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Arma_Ped_Aceitas($export=false){
         
@@ -614,7 +614,7 @@ class Transporte_PedidoControle extends Transporte_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Arma_Sol_Add($pedido=false){
         if($pedido===false) return false;
@@ -650,7 +650,7 @@ class Transporte_PedidoControle extends Transporte_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Arma_Sol_Add2($pedido=false){
         if($pedido===false) return false;
@@ -681,7 +681,7 @@ class Transporte_PedidoControle extends Transporte_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Arma_Sol_Del($id){
         
@@ -828,7 +828,7 @@ class Transporte_PedidoControle extends Transporte_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Trans_Ped_Add2(){
         $titulo     = __('Pedido enviado com Sucesso');
@@ -844,7 +844,7 @@ class Transporte_PedidoControle extends Transporte_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Trans_Ped_Del($id){
         
@@ -891,7 +891,7 @@ class Transporte_PedidoControle extends Transporte_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Trans_Ped_Aceitas($export=false){
         
@@ -1339,7 +1339,7 @@ class Transporte_PedidoControle extends Transporte_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Trans_Sol_Add($pedido=false){
         if($pedido===false) return false;
@@ -1375,7 +1375,7 @@ class Transporte_PedidoControle extends Transporte_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Trans_Sol_Add2($pedido=false){
         if($pedido===false) return false;
@@ -1406,7 +1406,7 @@ class Transporte_PedidoControle extends Transporte_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Trans_Sol_Del($id){
         
@@ -1549,7 +1549,7 @@ class Transporte_PedidoControle extends Transporte_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Caminho_Ped_Add2(){
         $titulo     = __('Pedido enviado com Sucesso');
@@ -1565,7 +1565,7 @@ class Transporte_PedidoControle extends Transporte_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Caminho_Ped_Del($id){
         
@@ -1612,7 +1612,7 @@ class Transporte_PedidoControle extends Transporte_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Caminho_Ped_Aceitas($export=false){
         
@@ -2060,7 +2060,7 @@ class Transporte_PedidoControle extends Transporte_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Caminho_Sol_Add($pedido=false){
         if($pedido===false) return false;
@@ -2096,7 +2096,7 @@ class Transporte_PedidoControle extends Transporte_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Caminho_Sol_Add2($pedido=false){
         if($pedido===false) return false;
@@ -2127,7 +2127,7 @@ class Transporte_PedidoControle extends Transporte_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Caminho_Sol_Del($id){
         

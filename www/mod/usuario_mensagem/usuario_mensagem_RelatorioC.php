@@ -13,7 +13,7 @@ class usuario_mensagem_RelatorioControle extends usuario_mensagem_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 3.1.1
+    * @version 0.4.2
     */
     public function __construct(){
         // construct
@@ -39,7 +39,7 @@ class usuario_mensagem_RelatorioControle extends usuario_mensagem_Controle
     * @return void 
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 3.1.1
+    * @version 0.4.2
     */
     public function Main(){
         \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'usuario_mensagem/Relatorio/Relatorio/');

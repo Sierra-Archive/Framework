@@ -17,7 +17,7 @@ class Simulador_Principal implements \Framework\PrincipalInterface
      * @return void 
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     static function Home(&$controle, &$modelo, &$Visual){
         self::Widgets();
@@ -27,7 +27,7 @@ class Simulador_Principal implements \Framework\PrincipalInterface
      * 
      * @return boolean
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     static function Config(){
         return false;
@@ -43,7 +43,7 @@ class Simulador_Principal implements \Framework\PrincipalInterface
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public static function Widgets(){
         $Registro = &\Framework\App\Registro::getInstacia();
@@ -182,7 +182,7 @@ class Simulador_Principal implements \Framework\PrincipalInterface
      * @param Array $log Sempre será Adicionado Novos Arrays com Indice ['Nome'] e ['Descricao']
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public static function Manutencao(&$log){
         $Registro = &\Framework\App\Registro::getInstacia();

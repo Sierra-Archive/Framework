@@ -13,7 +13,7 @@ class comercio_ProdutoControle extends comercio_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 3.1.1
+    * @version 0.4.2
     */
     public function __construct(){
         parent::__construct();
@@ -29,7 +29,7 @@ class comercio_ProdutoControle extends comercio_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 3.1.1
+    * @version 0.4.2
     */
     public function Main(){
         \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'comercio/Produto/Produtos');
@@ -47,7 +47,7 @@ class comercio_ProdutoControle extends comercio_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Produtos(){
         self::Endereco_Produto(false);
@@ -136,7 +136,7 @@ class comercio_ProdutoControle extends comercio_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Produtos_Add(){
         self::Endereco_Produto();
@@ -155,7 +155,7 @@ class comercio_ProdutoControle extends comercio_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Produtos_Add2(){
         $titulo     = __('Produto Adicionado com Sucesso');
@@ -171,7 +171,7 @@ class comercio_ProdutoControle extends comercio_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Produtos_Edit($id){
         self::Endereco_Produto();
@@ -191,7 +191,7 @@ class comercio_ProdutoControle extends comercio_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Produtos_Edit2($id){
         $titulo     = __('Produto Editado com Sucesso');
@@ -207,7 +207,7 @@ class comercio_ProdutoControle extends comercio_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Produtos_Del($id){
         
@@ -259,7 +259,7 @@ class comercio_ProdutoControle extends comercio_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Estoque_Reduzir2($produto=false){        
         $titulo     = __('Estoque Reduzido com Sucesso');

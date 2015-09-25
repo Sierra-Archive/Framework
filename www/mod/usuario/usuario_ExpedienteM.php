@@ -11,7 +11,7 @@ class usuario_ExpedienteModelo extends usuario_Modelo
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 3.1.1
+    * @version 0.4.2
     */
     public function __construct(){
         parent::__construct();
@@ -22,7 +22,7 @@ class usuario_ExpedienteModelo extends usuario_Modelo
      * @param type $almoco
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Expedientes($status=0,$almoco=false){
         // Table's primary key

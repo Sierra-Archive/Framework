@@ -13,7 +13,7 @@ class comercio_venda_ComposicaoControle extends comercio_venda_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 3.1.1
+    * @version 0.4.2
     */
     public function __construct(){
         parent::__construct();
@@ -30,7 +30,7 @@ class comercio_venda_ComposicaoControle extends comercio_venda_Controle
      * @return void
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Main(){
         return false;
@@ -49,7 +49,7 @@ class comercio_venda_ComposicaoControle extends comercio_venda_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Composicoes($export=false){
         self::Endereco_Composicao(false);
@@ -122,7 +122,7 @@ class comercio_venda_ComposicaoControle extends comercio_venda_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Composicoes_Add(){
         self::Endereco_Composicao(true);
@@ -141,7 +141,7 @@ class comercio_venda_ComposicaoControle extends comercio_venda_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Composicoes_Add2(){
         $titulo     = __('Cardápio Adicionado com Sucesso');
@@ -156,7 +156,7 @@ class comercio_venda_ComposicaoControle extends comercio_venda_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Composicoes_Edit($id){
         self::Endereco_Composicao(true);
@@ -175,7 +175,7 @@ class comercio_venda_ComposicaoControle extends comercio_venda_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Composicoes_Edit2($id){
         $titulo     = __('Cardápio Editado com Sucesso');
@@ -191,7 +191,7 @@ class comercio_venda_ComposicaoControle extends comercio_venda_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Composicoes_Del($id){
         

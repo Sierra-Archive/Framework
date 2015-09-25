@@ -5,7 +5,7 @@ class Transporte_Principal implements \Framework\PrincipalInterface
     * Função Home para o modulo Transporte aparecer na pagina HOME
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 3.1.1
+    * @version 0.4.2
     */
     static function Home(&$controle, &$modelo, &$Visual){
         $Registro = Framework\App\Registro::getInstacia();

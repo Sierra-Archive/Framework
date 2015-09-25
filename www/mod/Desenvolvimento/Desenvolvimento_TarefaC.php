@@ -13,7 +13,7 @@ class Desenvolvimento_TarefaControle extends Desenvolvimento_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 3.1.1
+    * @version 0.4.2
     */
     public function __construct(){
         parent::__construct();
@@ -36,7 +36,7 @@ class Desenvolvimento_TarefaControle extends Desenvolvimento_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 3.1.1
+    * @version 0.4.2
     */
     public function Main(){
         return false;
@@ -66,7 +66,7 @@ class Desenvolvimento_TarefaControle extends Desenvolvimento_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Tarefas($export=false){
         $this->Endereco_Tarefa(false);
@@ -117,7 +117,7 @@ class Desenvolvimento_TarefaControle extends Desenvolvimento_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Tarefas_Add(){
         $this->Endereco_Tarefa();
@@ -135,7 +135,7 @@ class Desenvolvimento_TarefaControle extends Desenvolvimento_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Tarefas_Add2(){
         $titulo     = __('Tarefa Adicionada com Sucesso');
@@ -150,7 +150,7 @@ class Desenvolvimento_TarefaControle extends Desenvolvimento_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Tarefas_Edit($id){
         $this->Endereco_Tarefa();
@@ -169,7 +169,7 @@ class Desenvolvimento_TarefaControle extends Desenvolvimento_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Tarefas_Edit2($id){
         $titulo     = __('Tarefa Editada com Sucesso');
@@ -185,7 +185,7 @@ class Desenvolvimento_TarefaControle extends Desenvolvimento_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Tarefas_Del($id){
         

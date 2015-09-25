@@ -13,7 +13,7 @@ class Engenharia_EquipamentoControle extends Engenharia_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 3.1.1
+    * @version 0.4.2
     */
     public function __construct(){
         parent::__construct();
@@ -29,7 +29,7 @@ class Engenharia_EquipamentoControle extends Engenharia_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 3.1.1
+    * @version 0.4.2
     */
     public function Main(){
         \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'Engenharia/Equipamento/Equipamentos');
@@ -45,7 +45,7 @@ class Engenharia_EquipamentoControle extends Engenharia_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Equipamentos(){
         $this->Endereco_Equipamento(false);
@@ -93,7 +93,7 @@ class Engenharia_EquipamentoControle extends Engenharia_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Equipamentos_Add(){  
         $this->Endereco_Equipamento();      
@@ -110,7 +110,7 @@ class Engenharia_EquipamentoControle extends Engenharia_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Equipamentos_Add2(){
         $titulo     = __('Equipamento Adicionado com Sucesso');
@@ -125,7 +125,7 @@ class Engenharia_EquipamentoControle extends Engenharia_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Equipamentos_Edit($id){
         $this->Endereco_Equipamento();      
@@ -143,7 +143,7 @@ class Engenharia_EquipamentoControle extends Engenharia_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Equipamentos_Edit2($id){
         $titulo     = __('Equipamento Editado com Sucesso');
@@ -159,7 +159,7 @@ class Engenharia_EquipamentoControle extends Engenharia_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Equipamentos_Del($id){
         

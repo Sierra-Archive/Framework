@@ -15,7 +15,7 @@ class Simulador_PerguntaControle extends Simulador_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 3.1.1
+    * @version 0.4.2
     */
     public function Main(){
         \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'Simulador/Pergunta/Perguntas');
@@ -80,7 +80,7 @@ class Simulador_PerguntaControle extends Simulador_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Perguntas($simulador=false,$export=false){
         if($simulador ==='false' || $simulador ===0)  $simulador    = false;
@@ -174,7 +174,7 @@ class Simulador_PerguntaControle extends Simulador_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Perguntas_Add($simulador = false){
         if($simulador==='false') $simulador = false;
@@ -214,7 +214,7 @@ class Simulador_PerguntaControle extends Simulador_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Perguntas_Add2($simulador=false){
         if($simulador==='false') $simulador = false;
@@ -236,7 +236,7 @@ class Simulador_PerguntaControle extends Simulador_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Perguntas_Edit($id,$simulador = false){
         if($simulador==='false') $simulador = false;
@@ -273,7 +273,7 @@ class Simulador_PerguntaControle extends Simulador_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Perguntas_Edit2($id,$simulador = false){
         if($simulador==='false') $simulador = false;
@@ -301,7 +301,7 @@ class Simulador_PerguntaControle extends Simulador_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Perguntas_Del($id = false,$simulador=false){
         if($simulador==='false') $simulador = false;

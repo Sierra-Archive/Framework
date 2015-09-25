@@ -11,7 +11,7 @@
  * 
  * 
  * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
- * @version 3.1.1
+ * @version 0.4.2
  */
 function anti_injection($sql,$tags=false){
      if(is_array($sql)){
@@ -35,7 +35,7 @@ function anti_injection($sql,$tags=false){
  * @return type
  * 
  * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
- * @version 3.1.1
+ * @version 0.4.2
  */
 function B ($x)
 {
@@ -47,7 +47,7 @@ function B ($x)
  * @return type
  * 
  * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
- * @version 3.1.1
+ * @version 0.4.2
  */
 function B2 ($x)
 {
@@ -61,7 +61,7 @@ function B2 ($x)
  * @return int
  * 
  * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
- * @version 3.1.1
+ * @version 0.4.2
  */
 function ordenar($a, $b, $seguir = 'pontos')
 {   
@@ -81,7 +81,7 @@ function ordenar($a, $b, $seguir = 'pontos')
  * @return string
  * 
  * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
- * @version 3.1.1
+ * @version 0.4.2
  */
 function desfazer_array($array, $comeco=0,  $separador=" | " ,  $separando=" -> " ,  $outroarray_i=" { " ,  $outroarray_f=" } " )
 {
@@ -111,7 +111,7 @@ function desfazer_array($array, $comeco=0,  $separador=" | " ,  $separando=" -> 
  * @return type
  * 
  * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
- * @version 3.1.1
+ * @version 0.4.2
  */
 function remover_acentos($string)
 { 
@@ -140,7 +140,7 @@ function remover_acentos($string)
  * @param type $inverse
  * 
  * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
- * @version 3.1.1
+ * @version 0.4.2
  */
 function orderMultiDimensionalArray(&$toOrderArray, $field, $inverse = false) { 
     if(empty($toOrderArray)) return false;
@@ -171,7 +171,7 @@ function orderMultiDimensionalArray(&$toOrderArray, $field, $inverse = false) {
  * @return type
  * 
  * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
- * @version 3.1.1
+ * @version 0.4.2
  */
 function Data_geraTimestamp($data,$quebra=true) {
     $data = trim($data);
@@ -228,7 +228,7 @@ function Data_geraTimestamp($data,$quebra=true) {
  * @return type
  * 
  * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
- * @version 3.1.1
+ * @version 0.4.2
  */
 function Data_CalculaDiferenca($data_inicial,$data_final){
     // Usa a função criada e pega o timestamp das duas datas:
@@ -249,7 +249,7 @@ function Data_CalculaDiferenca($data_inicial,$data_final){
  * @return type
  * 
  * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
- * @version 3.1.1
+ * @version 0.4.2
  */
 function Data_CalculaDiferenca_Em_Segundos($data_inicial,$data_final){
     // Usa a função criada e pega o timestamp das duas datas:
@@ -268,7 +268,7 @@ function Data_CalculaDiferenca_Em_Segundos($data_inicial,$data_final){
  * @return type
  * 
  * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
- * @version 3.1.1
+ * @version 0.4.2
  */
 function data_brasil_eua($data)
 {
@@ -294,7 +294,7 @@ function data_brasil_eua($data)
  * @return type
  * 
  * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
- * @version 3.1.1
+ * @version 0.4.2
  */
 function data_eua_brasil($data)
 {
@@ -311,7 +311,7 @@ function data_eua_brasil($data)
  * @return type
  * 
  * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
- * @version 3.1.1
+ * @version 0.4.2
  */
 function data_hora_eua_brasil($data)
 {
@@ -336,7 +336,7 @@ function data_hora_eua_brasil($data)
  * @return type
  * 
  * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
- * @version 3.1.1
+ * @version 0.4.2
  */
 function data_hora_brasil_eua($data)
 {
@@ -368,7 +368,7 @@ function data_hora_brasil_eua($data)
  * @return boolean
  * 
  * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
- * @version 3.1.1
+ * @version 0.4.2
  */
 function date_replace($date_time, $output_string, $utilizar_funcao_date = false) {
      // Verifica se a string est� num formato v�lido de data ("aaaa-mm-dd" ou "aaaa-mm-dd hh:mm:ss")
@@ -415,7 +415,7 @@ function date_replace($date_time, $output_string, $utilizar_funcao_date = false)
  * @return int
  * 
  * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
- * @version 3.1.1
+ * @version 0.4.2
  */
 function Mail_Send($nome_remetente, $email_remetente,$email_destinatario,$assunto,$mgm){
     $mensagem = "Locaway<br />";
@@ -434,7 +434,7 @@ function Mail_Send($nome_remetente, $email_remetente,$email_destinatario,$assunt
  * @return type
  * 
  * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
- * @version 3.1.1
+ * @version 0.4.2
  */
 function br2nl($string)
 {

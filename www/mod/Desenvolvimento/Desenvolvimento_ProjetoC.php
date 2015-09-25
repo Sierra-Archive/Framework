@@ -13,7 +13,7 @@ class Desenvolvimento_ProjetoControle extends Desenvolvimento_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 3.1.1
+    * @version 0.4.2
     */
     public function __construct(){
         parent::__construct();
@@ -44,7 +44,7 @@ class Desenvolvimento_ProjetoControle extends Desenvolvimento_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 3.1.1
+    * @version 0.4.2
     */
     public function Main(){
         return false;
@@ -77,7 +77,7 @@ class Desenvolvimento_ProjetoControle extends Desenvolvimento_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Projetos($export=false){
         $this->Endereco_Projeto(false);
@@ -128,7 +128,7 @@ class Desenvolvimento_ProjetoControle extends Desenvolvimento_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Projetos_Add(){
         $this->Endereco_Projeto();
@@ -146,7 +146,7 @@ class Desenvolvimento_ProjetoControle extends Desenvolvimento_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Projetos_Add2(){
         $titulo     = __('Projeto Adicionado com Sucesso');
@@ -161,7 +161,7 @@ class Desenvolvimento_ProjetoControle extends Desenvolvimento_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Projetos_Edit($id){
         $this->Endereco_Projeto();
@@ -180,7 +180,7 @@ class Desenvolvimento_ProjetoControle extends Desenvolvimento_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Projetos_Edit2($id){
         $titulo     = __('Projeto Editado com Sucesso');
@@ -196,7 +196,7 @@ class Desenvolvimento_ProjetoControle extends Desenvolvimento_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Projetos_Del($id){
         
@@ -491,7 +491,7 @@ class Desenvolvimento_ProjetoControle extends Desenvolvimento_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      * 
      * @param type $Desenvolvimento_id
      * @param type $return
@@ -536,7 +536,7 @@ class Desenvolvimento_ProjetoControle extends Desenvolvimento_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Projetos_Comentario_Add($Desenvolvimento_id = false){
         // Proteção E chama Endereço
@@ -561,7 +561,7 @@ class Desenvolvimento_ProjetoControle extends Desenvolvimento_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Projetos_Comentario_Add2($Desenvolvimento_id = false){
         if($Desenvolvimento_id===false) throw new \Exception('Projeto não informado',404);
@@ -577,7 +577,7 @@ class Desenvolvimento_ProjetoControle extends Desenvolvimento_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Projetos_Comentario_Edit($Desenvolvimento_id = false,$id = 0){
         if($Desenvolvimento_id===false) throw new \Exception('Projeto não informado',404);
@@ -603,7 +603,7 @@ class Desenvolvimento_ProjetoControle extends Desenvolvimento_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Projetos_Comentario_Edit2($Desenvolvimento_id = false,$id = 0){
         if($Desenvolvimento_id===false) throw new \Exception('Projeto não informado',404);
@@ -621,7 +621,7 @@ class Desenvolvimento_ProjetoControle extends Desenvolvimento_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Projetos_Comentario_Del($Desenvolvimento_id = false,$id = 0){
         if($Desenvolvimento_id===false) throw new \Exception('Projeto não informado',404);

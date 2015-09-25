@@ -10,7 +10,7 @@ class Transporte_Controle extends \Framework\App\Controle
     * @uses \Framework\App\Visual::$menu
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 3.1.1
+    * @version 0.4.2
     */
     public function __construct(){
         // construct

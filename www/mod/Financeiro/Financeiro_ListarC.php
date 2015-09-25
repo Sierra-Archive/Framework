@@ -24,7 +24,7 @@ class Financeiro_ListarControle extends Financeiro_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 3.1.1
+    * @version 0.4.2
     */
     public function __construct(){
         parent::__construct();
@@ -38,7 +38,7 @@ class Financeiro_ListarControle extends Financeiro_Controle
     * @return void 
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 3.1.1
+    * @version 0.4.2
     */
     public function Main(){
         Financeiro_Controle::Saldo_Carregar($this->_Modelo, $this->_Visual, $this->_Acl->Usuario_GetID());

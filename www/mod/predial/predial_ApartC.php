@@ -15,7 +15,7 @@ class predial_ApartControle extends predial_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 3.1.1
+    * @version 0.4.2
     */
     public function Main(){
     }
@@ -54,7 +54,7 @@ class predial_ApartControle extends predial_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Aparts(){
         self::Endereco_Apart(false);
@@ -91,7 +91,7 @@ class predial_ApartControle extends predial_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Aparts_Add(){
         self::Endereco_Apart();
@@ -109,7 +109,7 @@ class predial_ApartControle extends predial_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Aparts_Add2(){
         $titulo     = __('Apartamento Adicionado com Sucesso');
@@ -124,7 +124,7 @@ class predial_ApartControle extends predial_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Aparts_Edit($id){
         self::Endereco_Apart();
@@ -143,7 +143,7 @@ class predial_ApartControle extends predial_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Aparts_Edit2($id){
         $titulo     = __('Apartamento Editado com Sucesso');
@@ -159,7 +159,7 @@ class predial_ApartControle extends predial_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Aparts_Del($id){
         

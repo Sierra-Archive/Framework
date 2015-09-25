@@ -13,7 +13,7 @@ class social_AcaoControle extends social_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 3.1.1
+    * @version 0.4.2
     */
     public function __construct(){
         parent::__construct();
@@ -29,7 +29,7 @@ class social_AcaoControle extends social_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 3.1.1
+    * @version 0.4.2
     */
     public function Main(){
         return false; 
@@ -46,7 +46,7 @@ class social_AcaoControle extends social_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Acao($persona_id=false,$export=false){
         self::Acao_Stat($persona_id,'Unico',$export=false);
@@ -130,7 +130,7 @@ class social_AcaoControle extends social_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Acoes_Add($persona_id=false){
         // Carrega Config
@@ -147,7 +147,7 @@ class social_AcaoControle extends social_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Acoes_Add2($persona_id=false){
         $titulo     = __('Ação adicionada com Sucesso');
@@ -170,7 +170,7 @@ class social_AcaoControle extends social_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Acoes_Edit($id){
         // Carrega Config
@@ -188,7 +188,7 @@ class social_AcaoControle extends social_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Acoes_Edit2($id){
         $titulo     = __('Ação editado com Sucesso');
@@ -204,7 +204,7 @@ class social_AcaoControle extends social_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Acoes_Del($id,$persona_id=false){
         

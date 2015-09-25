@@ -4,7 +4,7 @@ namespace Framework\App;
  * Class Pai dos Modelos, Responsavél pelo tratamento e exibicoes dos Dados do Sistema
  * 
  * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
- * @version 3.1.1
+ * @version 0.4.2
  */
 class Modelo
 {
@@ -26,7 +26,7 @@ class Modelo
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 3.1.1
+    * @version 0.4.2
     */
     public function __construct(){
         $this->_Registro = &\Framework\App\Registro::getInstacia();
@@ -43,7 +43,7 @@ class Modelo
      * @return boolean
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Sistema_Menu($parent=0){
         $where = Array('parent'=>$parent, 'status'  =>    '1');
@@ -82,7 +82,7 @@ class Modelo
      * @param type $parent
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     protected function Sistema_Menu_Insere(&$menu,$modulo='_Sistema',$parent=0){
         
@@ -215,7 +215,7 @@ class Modelo
     * @return Array $array
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 3.1.1
+    * @version 0.4.2
     */
     public function Categorias_Retorna($tipo='',$parent=0, $cadastro=0)
     {
@@ -266,7 +266,7 @@ class Modelo
     * @return Array $array
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 3.1.1
+    * @version 0.4.2
     */
     public function Categorias_Permissoes($categoria='')
     {
@@ -297,7 +297,7 @@ class Modelo
     * @return Array $array
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 3.1.1
+    * @version 0.4.2
     */
     public function Categorias_RetornaSub($categoria, $subtab, $acesso)
     {

@@ -10,7 +10,7 @@ class usuario_mensagem_Modelo extends \Framework\App\Modelo
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 3.1.1
+    * @version 0.4.2
     */
     public function __construct(){
         parent::__construct();
@@ -193,7 +193,7 @@ class usuario_mensagem_Modelo extends \Framework\App\Modelo
      * @static
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public static function Mensagem_TipoChamado(&$mensagem){
         $tipo = false;
@@ -283,7 +283,7 @@ class usuario_mensagem_Modelo extends \Framework\App\Modelo
      * @return boolean
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     protected static function Mensagem_RespNova($mensagem=0,$escritor=0){
         $Registro = &\Framework\App\Registro::getInstacia();

@@ -13,7 +13,7 @@ class social_CaracteristicaControle extends social_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 3.1.1
+    * @version 0.4.2
     */
     public function __construct(){
         parent::__construct();
@@ -29,7 +29,7 @@ class social_CaracteristicaControle extends social_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 3.1.1
+    * @version 0.4.2
     */
     public function Main(){
         return false; 
@@ -46,7 +46,7 @@ class social_CaracteristicaControle extends social_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Caracteristica($export=false){
         self::Endereco_Caracteristica(false);
@@ -103,7 +103,7 @@ class social_CaracteristicaControle extends social_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Caracteristicas_Add(){
         self::Endereco_Caracteristica(true);
@@ -121,7 +121,7 @@ class social_CaracteristicaControle extends social_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Caracteristicas_Add2(){
         $titulo     = __('Caracteristica adicionada com Sucesso');
@@ -136,7 +136,7 @@ class social_CaracteristicaControle extends social_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Caracteristicas_Edit($id){
         self::Endereco_Caracteristica(true);
@@ -155,7 +155,7 @@ class social_CaracteristicaControle extends social_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Caracteristicas_Edit2($id){
         $titulo     = __('Caracteristica editada com Sucesso');
@@ -171,7 +171,7 @@ class social_CaracteristicaControle extends social_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function Caracteristicas_Del($id){
         

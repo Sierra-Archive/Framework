@@ -4,7 +4,7 @@ namespace Framework\App;
  * Pega a Requisição, pega todos os Dados e Prepara para Executar os Metodos
  * 
  * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
- * @version 3.1.1
+ * @version 0.4.2
  */
 class Request
 {
@@ -124,7 +124,7 @@ class Request
      * @return type
      * 
      * @author Ricardo Sierra <web@ricardosierra.com.br>
-     * @version 3.1.1
+     * @version 0.4.2
      */
     public function getArgs($indice = -1){
         if($indice == -1)

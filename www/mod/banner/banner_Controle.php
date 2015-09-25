@@ -10,7 +10,7 @@ class banner_Controle extends \Framework\App\Controle
     * @uses \Framework\App\Visual::$menu
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 3.1.1
+    * @version 0.4.2
     */
     public function __construct(){
         // construct
@@ -20,7 +20,7 @@ class banner_Controle extends \Framework\App\Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 3.1.1
+    * @version 0.4.2
     */
     public static function Banners_Mostrar($model,$categoria=0){
         /*$banner = $this->_Modelo->db->Sql_Select('Banner',Array(),1,'rand()');
