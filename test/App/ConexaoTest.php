@@ -194,10 +194,38 @@ class ConexaoTest extends \PHPUnit_Framework_TestCase {
      * @todo   Implement testTabelas_CapturaExtrangeiras().
      */
     public function testTabelas_CapturaExtrangeiras() {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-                'This test has not been implemented yet.'
-        );
+        // Teste 1
+        $extrangeiras = 'EE.id|EE.nome';
+        list($ligacao,$mostrar,$condicao) = $this->object->Extrangeiras_Quebra($extrangeiras);
+        $this->assertTrue(is_array($ligacao),'Falhou Teste 1 -> Ligacao não é Array');
+        $this->assertEquals(2,sizeof($ligacao),'Falhou Teste 1 -> Ligacao Inválida');
+        $this->assertTrue(is_array($mostrar),'Falhou Teste 1 -> Mostrar não é Array');
+        $this->assertEquals(2,sizeof($mostrar),'Falhou Teste 1 -> Mostrar Inválido');
+        $this->assertFalse($condicao,'Falhou Teste 1');
+        // Teste 2
+        $extrangeiras = 'EE.id|EE.nome-EE.senha-EE.Teste|EE.status=1';
+        list($ligacao,$mostrar,$condicao) = $this->object->Extrangeiras_Quebra($extrangeiras);
+        $this->assertTrue(is_array($ligacao),'Falhou Teste 2 -> Ligacao não é Array');
+        $this->assertEquals(2,sizeof($ligacao),'Falhou Teste 2 -> Ligacao Inválida');
+        $this->assertTrue(is_array($mostrar),'Falhou Teste 2 -> Mostrar não é Array');
+        $this->assertEquals(3,sizeof($mostrar),'Falhou Teste 2 -> Mostrar Inválido');
+        $this->assertTrue(is_array($mostrar[1]),'Falhou Teste 2 -> Mostrar não é Array');
+        $this->assertEquals(2,sizeof($mostrar[1]),'Falhou Teste 2 -> Mostrar Inválido');
+        $this->assertTrue(is_array($condicao),'Falhou Teste 2 -> Condição não é Array');
+        $this->assertEquals(2,sizeof($condicao),'Falhou Teste 2 -> Condição Inválida');
+        // Teste 3
+        $extrangeiras = 'EE.id|EE.nome-EE.senha-EE.Teste|EE.status=1-EE.teste=1-EE.equipamento=1';
+        list($ligacao,$mostrar,$condicao) = $this->object->Extrangeiras_Quebra($extrangeiras);
+        $this->assertTrue(is_array($ligacao),'Falhou Teste 3 -> Ligacao não é Array');
+        $this->assertEquals(2,sizeof($ligacao),'Falhou Teste 3 -> Ligacao Inválida');
+        $this->assertTrue(is_array($mostrar),'Falhou Teste 3 -> Mostrar não é Array');
+        $this->assertEquals(3,sizeof($mostrar),'Falhou Teste 3 -> Mostrar Inválido');
+        $this->assertTrue(is_array($mostrar[1]),'Falhou Teste 3 -> Mostrar não é Array');
+        $this->assertEquals(2,sizeof($mostrar[1]),'Falhou Teste 3 -> Mostrar Inválido');
+        $this->assertTrue(is_array($condicao),'Falhou Teste 3 -> Condição não é Array');
+        $this->assertEquals(3,sizeof($condicao),'Falhou Teste 3 -> Condição Inválida');
+        $this->assertTrue(is_array($condicao[1]),'Falhou Teste 3 -> Condição não é Array');
+        $this->assertEquals(2,sizeof($condicao[1]),'Falhou Teste 3 -> Condição Inválida');
     }
 
     /**

@@ -1917,20 +1917,20 @@ final class Conexao
     /**
      * Captura todos os lances da chave extrangeira pra colocar no Formulario 
      * dentro de um select
-     * @param type $objeto
+     * @param type $coluna
      * @return type
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Tabelas_CapturaExtrangeiras(&$objeto){
+    public function Tabelas_CapturaExtrangeiras(&$coluna){
         
         // Captura Tipo e armazena extrangeira
-        if(isset($objeto['mysql_estrangeira']) && is_array($objeto) && strlen($objeto['mysql_estrangeira'])>2){
-            $extrangeira = $objeto['mysql_estrangeira'];
+        if(isset($coluna['mysql_estrangeira']) && is_array($coluna) && strlen($coluna['mysql_estrangeira'])>2){
+            $extrangeira = $coluna['mysql_estrangeira'];
             $tipo = 'objeto';
         }else{
-            $extrangeira = $objeto;
+            $extrangeira = $coluna;
             $tipo = 'condicao';
         }
         
@@ -1945,7 +1945,7 @@ final class Conexao
         
         // Cria Condicoes para Achar as extrangeiras
         /*if($tipo=='objeto'){
-            $where = Array($ligacao[1]=>$objeto['edicao']['valor_padrao']);
+            $where = Array($ligacao[1]=>$coluna['edicao']['valor_padrao']);
         }else{*/
             $where = Array();
         //}

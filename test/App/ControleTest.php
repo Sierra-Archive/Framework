@@ -115,6 +115,65 @@ class ControleTest extends \PHPUnit_Framework_TestCase {
                 'This test has not been implemented yet.'
         );
     }
+    
+    /**
+     * @covers Framework\App\Controle::Gerador_Formulario_Col_Escondido
+     * @todo   Implement testGerador_Formulario_Col_Escondido().
+     */
+    public function testGerador_Formulario_Col_Escondido(){
+        // Teste1
+        $coluna = Array(
+            'edicao' => Array(
+                'form_escondido' => true
+            )
+        );
+        $this->assertEquals('apagado',Controle::Gerador_Formulario_Col_Escondido($coluna),'Falhou Teste 1');
+        // Teste2
+        $coluna = Array(
+            'edicao' => Array(
+                'form_escondido' => 'apagado'
+            )
+        );
+        $this->assertEquals('apagado',Controle::Gerador_Formulario_Col_Escondido($coluna),'Falhou Teste 2');
+        // Teste3
+        $coluna = Array(
+            'edicao' => Array(
+                'form_escondido' => 'apagar'
+            )
+        );
+        $this->assertEquals('apagar',Controle::Gerador_Formulario_Col_Escondido($coluna),'Falhou Teste 3');
+        // Teste4
+        $coluna = Array(
+            'TabelaLinkada' => Array(
+                'formtipo'        => 'BoleanoMultiplo',
+                'BoleanoMultiplo' => Array(
+                    'form_escondido' => true
+                )
+            )
+            
+        );
+        $this->assertEquals('apagado',Controle::Gerador_Formulario_Col_Escondido($coluna),'Falhou Teste 4');
+        // Teste5
+        $coluna = Array(
+            'TabelaLinkada' => Array(
+                'formtipo'        => 'BoleanoMultiplo',
+                'BoleanoMultiplo' => Array(
+                    'form_escondido' => 'apagado'
+                )
+            )
+        );
+        $this->assertEquals('apagado',Controle::Gerador_Formulario_Col_Escondido($coluna),'Falhou Teste 5');
+        // Teste6
+        $coluna = Array(
+            'TabelaLinkada' => Array(
+                'formtipo'        => 'BoleanoMultiplo',
+                'BoleanoMultiplo' => Array(
+                    'form_escondido' => 'apagar'
+                )
+            )
+        );
+        $this->assertEquals('apagar',Controle::Gerador_Formulario_Col_Escondido($coluna),'Falhou Teste 6');
+    }
 
     /**
      * @covers Framework\App\Controle::Gerador_Formulario_Janela
@@ -253,10 +312,21 @@ class ControleTest extends \PHPUnit_Framework_TestCase {
      * @todo   Implement testDAO_Campos_Retira().
      */
     public function testDAO_Campos_Retira() {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-                'This test has not been implemented yet.'
-        );
+        $colunas = \Usuario_DAO::Gerar_Colunas();
+        Controle::DAO_Campos_Retira($colunas, 'login');
+        Controle::DAO_Campos_Retira($colunas, __('Permissões do Usuário'));
+        foreach($colunas as &$valor){
+            if(isset($valor['TabelaLinkada'])){
+                $this->assertNotEquals($valor['TabelaLinkada']['Nome'],__('Permissões do Usuário'),'DAO_Campos_Retira não Retira TabelaLinkada das Colunas');
+            }else{
+                $this->assertNotEquals($valor['mysql_titulo'],'login','DAO_Campos_Retira não Retira Campos das Colunas');
+            }
+        }
+        Controle::DAO_Campos_Retira($colunas, 'senha',1);
+        foreach($colunas as &$valor){
+            $this->assertEquals($valor['mysql_titulo'],'senha','DAO_Campos_Retira Retirou Campos Errados da Coluna');
+        }
+        $this->assertEquals(sizeof($colunas),1,'DAO_Campos_Retira Deixou Campos além da Senha');
     }
 
     /**

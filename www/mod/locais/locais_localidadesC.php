@@ -150,7 +150,7 @@ class locais_localidadesControle extends locais_Controle
             );
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
             $this->_Visual->Javascript_Executar(
-                    '$("#'.$valor2.'").css(\'border\', \'2px solid #FFAEB0\').focus();'
+                    '$("#cep").css(\'border\', \'2px solid #FFAEB0\').focus();'
             );
             $this->_Visual->Json_Info_Update('Historico', false);
             $this->layoult_zerar = false; 

@@ -79,24 +79,24 @@ Estrutura
 * Ini/dominio.com/
 * Interface/ `Interface das Classes Principais do Framework`
 * Temp/ `usado para criação de imagens`
-* arq/ `Destinado aos arquivos de upload e do sistema`
+* media/ `Destinado aos arquivos de upload e do sistema`
 * i18n/ `Arquivos de Internacionalização`
-* layoult/ `Temas do Framework`
-* layoult/nome_do_layoult/ `Temas (xN)`
-* layoult/nome_do_layoult/ config/
-* layoult/nome_do_layoult/ * config.php
-* layoult/nome_do_layoult/ css/
-* layoult/nome_do_layoult/ img/
-* layoult/nome_do_layoult/ elemento_botao.php
-* layoult/nome_do_layoult/ elemento_miniwidget.php
-* layoult/nome_do_layoult/ page_login.php
-* layoult/nome_do_layoult/ template.php
-* layoult/nome_do_layoult/ template_abas.php
-* layoult/nome_do_layoult/ template_bloco.php
-* layoult/nome_do_layoult/ template_form.php
-* layoult/nome_do_layoult/ template_tabela.php
-* layoult/nome_do_layoult/ widget_menu.php
-* layoult/nome_do_layoult/ widget_usuario.php
+* templates/ `Temas do Framework`
+* templates/nome_do_template/ `Temas (xN)`
+* templates/nome_do_template/ config/
+* templates/nome_do_template/ * config.php
+* templates/nome_do_template/ css/
+* templates/nome_do_template/ img/
+* templates/nome_do_template/ elemento_botao.php
+* templates/nome_do_template/ elemento_miniwidget.php
+* templates/nome_do_template/ page_login.php
+* templates/nome_do_template/ template.php
+* templates/nome_do_template/ template_abas.php
+* templates/nome_do_template/ template_bloco.php
+* templates/nome_do_template/ template_form.php
+* templates/nome_do_template/ template_tabela.php
+* templates/nome_do_template/ widget_menu.php
+* templates/nome_do_template/ widget_usuario.php
 * libs/ `Bibliotecas que podem ser usadas`
 * mod/ `Modulos do Framework (xN)`
 * mod/nome_do_modulo/
@@ -108,6 +108,21 @@ Estrutura
 * mod/nome_do_modulo/{nome_do_modulo}_{nome_do_submodulo}C.php
 * mod/nome_do_modulo/{nome_do_modulo}_{nome_do_submodulo}M.php
 * mod/nome_do_modulo/{nome_do_modulo}_{nome_do_submodulo}V.php
-* web/ `Plugins html e js usados pelo framework`
+* static/ `Plugins html e js usados pelo framework`
 * index.php
 * .htaccess
+
+
+Versionamento
+-----------------
+Versão X.Y.Z
+
+* Z -> Altera sempre que um bug for Corrigido
+* Y -> Altera sempre que uma nova funcionalidade for implementada
+* X -> Altera sempre que o código deixar de ser compativel com o código anterior
+
+Manutenção
+-----------------
+Versão X.Y.Z
+
+* Bugs -> Para Corrigir um Bug é necessário primeiro criar um teste unitário que falhe e que após ser corrigido o bug, começará a passar. E só então o bug deve ser corrigido.

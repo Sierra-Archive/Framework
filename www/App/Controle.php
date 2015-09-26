@@ -989,49 +989,13 @@ readfile($link);*/
             // Zera Variaveis
             $gerar_span = false;
             
+            // Continua se não Tiver a Opção Formulario
             if(!isset($valor['edicao']) && !isset($valor['TabelaLinkada'])){
                 continue;
             }
             
             // verifica se o campo é escondido ou nao
-            if(
-                (
-                    !isset($valor['edicao']['form_escondido']) 
-                    || $valor['edicao']['form_escondido']===false
-                ) && 
-                isset($valor['TabelaLinkada']) 
-                && (
-                    (
-                        !isset($valor['TabelaLinkada'][$valor['TabelaLinkada']['formtipo']]['form_escondido']) 
-                        || $valor['TabelaLinkada'][$valor['TabelaLinkada']['formtipo']]['form_escondido']===false
-                    )
-                )
-            ){
-                $escondido = false;
-            }else if(
-                (
-                    (
-                        isset($valor['edicao']['form_escondido'])
-                        &&
-                        ($valor['edicao']['form_escondido']===true 
-                        || $valor['edicao']['form_escondido']=='apagado' )
-                    )
-                    || (
-                        isset($valor['TabelaLinkada'])
-                        && isset($valor['TabelaLinkada'][$valor['TabelaLinkada']['formtipo']]['form_escondido'])
-                        && (
-                            $valor['TabelaLinkada'][$valor['TabelaLinkada']['formtipo']]['form_escondido']===true 
-                            || $valor['TabelaLinkada'][$valor['TabelaLinkada']['formtipo']]['form_escondido']=='apagado'    
-                        )
-                    )
-                )
-            ){
-                $escondido = 'apagado';
-            }else if(((isset($valor['edicao']) && isset($valor['edicao']['form_escondido']) && $valor['edicao']['form_escondido']=='apagar') || (isset($valor['TabelaLinkada']) && isset($valor['TabelaLinkada'][$valor['TabelaLinkada']['formtipo']]['form_escondido']) && $valor['TabelaLinkada'][$valor['TabelaLinkada']['formtipo']]['form_escondido']=='apagar'))){
-                $escondido = 'apagar';
-            }else{
-                $escondido = false;
-            }
+            $escondido = self::Gerador_Formulario_Col_Escondido($valor);
             
             // SE for array bota span Principal para Multiplo Elementos
             if($controladordearray){
@@ -1063,9 +1027,7 @@ readfile($link);*/
                 // Separa Span
                 $html .= $form->addtexto('<span id="'.$valor['TabelaLinkada']['SelectMultiplo']['Linkado'].'controlador"'.$spanatributoextra.'><span id="'.$valor['TabelaLinkada']['SelectMultiplo']['Linkado'].'controlador1">');
                 $gerar_span = true;
-            }
-            
-            
+            }            
             
             // Extrangeiras LINKADAS
             if(isset($valor['TabelaLinkada'])){
@@ -1518,6 +1480,7 @@ readfile($link);*/
                     $html .= $form->Select_Fim();
                 }
             }
+            
             // se FOI CRIADO SPAN, FECHA
             if(isset($valor['TabelaLinkada']['SelectMultiplo'])){
                 $html .= $form->addtexto('</span></span>');
@@ -1531,6 +1494,41 @@ readfile($link);*/
         }
         
         return $html;
+    }
+    /**
+     * Retorna se Aparecerá Escondido ou Não Dentro do Formulário
+     * 
+     * @param type $coluna (COluna do OBjeto DAO)
+     * 
+     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
+     * @version 0.0.2
+     */
+    static function Gerador_Formulario_Col_Escondido(&$coluna){
+        // verifica se o campo é escondido ou nao
+        if(
+            (
+                isset($coluna['edicao'])
+                &&
+                isset($coluna['edicao']['form_escondido'])
+                &&
+                ($coluna['edicao']['form_escondido']===true 
+                || $coluna['edicao']['form_escondido']=='apagado' )
+            )
+            || (
+                isset($coluna['TabelaLinkada'])
+                && isset($coluna['TabelaLinkada'][$coluna['TabelaLinkada']['formtipo']]['form_escondido'])
+                && (
+                    $coluna['TabelaLinkada'][$coluna['TabelaLinkada']['formtipo']]['form_escondido']===true 
+                    || $coluna['TabelaLinkada'][$coluna['TabelaLinkada']['formtipo']]['form_escondido']=='apagado'    
+                )
+            )
+        ){
+            return 'apagado';
+        }else if(((isset($coluna['edicao']) && isset($coluna['edicao']['form_escondido']) && $coluna['edicao']['form_escondido']=='apagar') || (isset($coluna['TabelaLinkada']) && isset($coluna['TabelaLinkada'][$coluna['TabelaLinkada']['formtipo']]['form_escondido']) && $coluna['TabelaLinkada'][$coluna['TabelaLinkada']['formtipo']]['form_escondido']=='apagar'))){
+            return 'apagar';
+        }
+        return false;
+        
     }
     /**
      * Gera Formulario de Cadastro
