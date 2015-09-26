@@ -1924,7 +1924,6 @@ final class Conexao
      * @version 0.4.2
      */
     public function Tabelas_CapturaExtrangeiras(&$coluna){
-        
         // Captura Tipo e armazena extrangeira
         if(isset($coluna['mysql_estrangeira']) && is_array($coluna) && strlen($coluna['mysql_estrangeira'])>2){
             $extrangeira = $coluna['mysql_estrangeira'];

@@ -268,21 +268,86 @@ class ControleTest extends \PHPUnit_Framework_TestCase {
      * @todo   Implement testDAO_Ext_Alterar().
      */
     public function testDAO_Ext_Alterar() {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-                'This test has not been implemented yet.'
+        // Teste1
+        $coluna = Array(Array(
+            'mysql_titulo'      => 'bairro',
+            'mysql_estrangeira' => 'E.id|E.nome|E.valor={valor}',
+            'edicao' => Array(
+                'form_escondido' => false
+            )
+        ));
+        Controle::DAO_Ext_Alterar($coluna,'bairro','13');
+        $this->assertEquals('E.id|E.nome|E.valor=13',$coluna[0]['mysql_estrangeira'],'Falhou Teste 1');
+        // Teste2
+        $coluna = Array(Array(
+            'mysql_titulo'      => 'bairro',
+            'mysql_estrangeira' => 'E.id|E.nome|E.valor={valor}',
+            'edicao' => Array(
+                'form_escondido' => false
+            )
+        ));
+        Controle::DAO_Ext_Alterar($coluna,'bairro','teste');
+        $this->assertEquals('E.id|E.nome|E.valor=teste',$coluna[0]['mysql_estrangeira'],'Falhou Teste 2');
+        
+        // Teste de Alteração 1
+        $coluna = Array(
+            0 => Array(
+                'mysql_titulo'      => 'bairro',
+                'mysql_estrangeira' => 'E.id|E.nome|E.valor={cidade}',
+                'edicao' => Array(
+                    'form_escondido' => false
+                )
+            ),
+            1 => Array(
+                'mysql_titulo'      => 'cidade',
+                'mysql_estrangeira' => 'E.id|E.nome',
+                'edicao' => Array(
+                    'valor_padrao'   => '13',
+                    'form_escondido' => false
+                )
+            )
         );
+        Controle::DAO_Ext_Alterar($coluna,'bairro');
+        $this->assertEquals('E.id|E.nome|E.valor=13',$coluna[0]['mysql_estrangeira'],'Falhou Teste de Alteração 1 -> Não Era pra Imprimir: '.$coluna[0]['mysql_estrangeira']);
+        // Teste de Alteração 2
+        $coluna = Array(
+            0 => Array(
+                'mysql_titulo'      => 'bairro',
+                'mysql_estrangeira' => 'E.id|E.nome|E.valor=15',
+                'edicao' => Array(
+                    'form_escondido' => false
+                )
+            ),
+            1 => Array(
+                'mysql_titulo'      => 'cidade',
+                'mysql_estrangeira' => 'E.id|E.nome',
+                'edicao' => Array(
+                    'valor_padrao'   => '13',
+                    'form_escondido' => false
+                )
+            )
+        );
+        Controle::DAO_Ext_Alterar($coluna,'bairro');
+        $this->assertEquals('E.id|E.nome|E.valor=15',$coluna[0]['mysql_estrangeira'],'Falhou Teste de Alteração 2 -> Não Era pra Imprimir: '.$coluna[0]['mysql_estrangeira']);
     }
-
     /**
      * @covers Framework\App\Controle::DAO_Ext_ADD
      * @todo   Implement testDAO_Ext_ADD().
      */
     public function testDAO_Ext_ADD() {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-                'This test has not been implemented yet.'
+        // Teste1
+        $coluna = Array(
+            0 => Array(
+                'mysql_titulo'      => 'bairro',
+                'mysql_estrangeira' => 'E.id|E.nome',
+                'edicao' => Array(
+                    'form_escondido' => false
+                )
+            )
         );
+        Controle::DAO_Ext_ADD($coluna,'bairro','E.teste');
+
+        $this->assertEquals('E.id|E.nome|E.teste',$coluna[0]['mysql_estrangeira'],'Falhou Teste 1 -> Não Era pra Imprimir: '.$coluna[0]['mysql_estrangeira']);
     }
 
     /**

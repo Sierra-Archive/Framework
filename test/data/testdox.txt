@@ -77,8 +77,8 @@ Framework\App\Controle
  [ ] testDAO Campos AlternadosDesabilitados
  [ ] testMysql MudaLeitura
  [ ] testDAO RemoveLinkExtra
- [ ] testDAO Ext Alterar
- [ ] testDAO Ext ADD
+ [x] testDAO Ext Alterar
+ [x] testDAO Ext ADD
  [ ] testMysql AtualizaValor
  [ ] testMysql AtualizaValores
  [x] testDAO Campos Retira
@@ -111,7 +111,7 @@ Framework\App\Request
  [ ] Is ajax
 
 Framework\App\Session
- [ ] testSet e Get e Destroy
+ [x] testSet e Get e Destroy
 
 Framework\App\Sistema_Funcoes
  [ ] Redirect

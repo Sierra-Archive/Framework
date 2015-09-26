@@ -1335,6 +1335,9 @@ readfile($link);*/
                     }
                 }
                 
+                // Atualiza se Tiver Dependente
+                self::DAO_Ext_Alterar($objeto,$valor['mysql_titulo']);
+                
                 // Captura Selects da Chave Extrangeira
                 $resultado = $Modelo->db->Tabelas_CapturaExtrangeiras($valor);
                 foreach ($resultado as $indice2 => &$valor2){
@@ -2254,31 +2257,49 @@ readfile($link);*/
      * 
      * @param type $objeto
      * @param type $campomysql
-     * @param type $alterar
+     * @param type $alterar Se for false, procura pelo valor correto dentro da tabela
      * @return boolean
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    static function DAO_Ext_Alterar(&$objeto,$campomysql,$alterar){
-        // Ainda funciona com array
+    static function DAO_Ext_Alterar(&$objeto,$campomysql,$alterar=false){
+        // Procura pelo Objeto dentro do Array
+        $pattern = '/{(.+)}/U';
         if(is_array($objeto)){
             foreach ($objeto as &$valor){
                 if(isset($valor['mysql_estrangeira']) && $valor['mysql_titulo']==$campomysql){
-                    $valor['mysql_estrangeira'] = preg_replace('/{(.+)}/U', $alterar, $valor['mysql_estrangeira']);
+                    if($alterar===false){
+                        $busca = Array();
+                        preg_match($pattern, $valor['mysql_estrangeira'], $busca, PREG_OFFSET_CAPTURE);
+                        if($busca===false || empty($busca)) return false;
+                        // Procura Pelo Valor dela
+                        foreach ($objeto as &$valor2){
+                            if($valor2['mysql_titulo']===$busca[1][0]){
+                                // Substitui
+                                $valor['mysql_estrangeira'] = preg_replace($pattern, $valor2['edicao']['valor_padrao'], $valor['mysql_estrangeira']);
+                                return true;
+                            }
+                        }
+                    }else{
+                        $valor['mysql_estrangeira'] = preg_replace($pattern, $alterar, $valor['mysql_estrangeira']);
+                    }
                 }
             }
         }// Agora tbm funciona com objetos
         else{
             return false;
         }
-        return true;
+        return false;
     }
     static function DAO_Ext_ADD(&$objeto,$campomysql,$add){
         // Ainda funciona com array
         if(is_array($objeto)){
             foreach ($objeto as &$valor){
                 if(isset($valor['mysql_estrangeira']) && $valor['mysql_titulo']==$campomysql){
+                    if(substr_count($valor['mysql_estrangeira'], '|')>=2){ // 2){
+                        throw new \Exception('Extrangeira Ja possue 3 ou mais Caracteristicas'.$valor['mysql_titulo'],2800);
+                    }
                     $valor['mysql_estrangeira'] = $valor['mysql_estrangeira'].'|'.$add;
                 }
             }
