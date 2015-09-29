@@ -1354,8 +1354,8 @@ final class Conexao
                     $sql_condicao .= ' ( ';
                     $i = 0;
                     foreach($valor as $indice2 => &$valor2){
-                        $indice2 = \anti_injection($indice2);
-                        $valor2 = \anti_injection($valor2);
+                        $indice2 = \Framework\App\Conexao::anti_injection($indice2);
+                        $valor2 = \Framework\App\Conexao::anti_injection($valor2);
                         // busca ?
                         if(strpos($valor2, '%')===0){
                             $igual      = ' LIKE ';
@@ -1445,8 +1445,8 @@ final class Conexao
                     
                 // SE nao for Array simples é usado AND
                 if((!empty($valor)|| $valor==0) && (!empty($indice)|| $indice==0)){
-                    $indice = \anti_injection($indice);
-                    $valor = \anti_injection($valor);
+                    $indice = \Framework\App\Conexao::anti_injection($indice);
+                    $valor = \Framework\App\Conexao::anti_injection($valor);
                     // busca ?
                     if(!is_array($valor)){
                         if(strpos($valor, '%')===0){
@@ -2254,6 +2254,32 @@ final class Conexao
         }
     }
     /**
+     *     SEGURANÇA - Antiinjection
+     * @param type $sql
+     * @return type
+     * 
+     * 
+     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
+     * @version 0.4.2
+     */
+    static public function anti_injection($sql,$tags=false){
+         if(is_array($sql)){
+             $seg = Array();
+             foreach($sql as $indice=>&$valor){
+                 $seg[\Framework\App\Conexao::anti_injection($indice)] = \Framework\App\Conexao::anti_injection($valor,$tags);
+             }
+             $sql = $seg;
+         }else{
+            // remove palavras que contenham sintaxe sql
+            $sql = mysql_real_escape_string($sql);
+            if($tags===false){
+                $sql = strip_tags($sql);//tira tags html e php
+            }
+         }
+         return $sql;
+        
+    }
+    /**
     * Retorna Subcategorias que sao de outras tabelas
     * 
     * @name Categorias_RetornaSub
@@ -2274,10 +2300,10 @@ final class Conexao
     private function logurl(){
         global $_SERVER;
         $idusuario = \Framework\App\Acl::Usuario_GetID_Static();
-        $cliente_navegador      = serialize(Sistema_Funcoes::Detectar_Navegador());
+        $cliente_navegador      = serialize(\Framework\App\Conexao::anti_injection(Sistema_Funcoes::Detectar_Navegador()));
         $cliente_ip             = isset($_SERVER['REMOTE_ADDR']) ? strtolower($_SERVER['REMOTE_ADDR']) : 'Desconhecido';
-        $server_post            = serialize($_POST);
-        $server_get             = serialize($_GET);
+        $server_post            = serialize(\Framework\App\Conexao::anti_injection($_POST));
+        $server_get             = serialize(\Framework\App\Conexao::anti_injection($_GET));
         $server_requisitado     = isset($_SERVER['HTTP_HOST']) ? strtolower($_SERVER['HTTP_HOST']) : 'Desconhecido';
         $server_scriptname      = isset($_SERVER['SCRIPT_FILENAME']) ? strtolower($_SERVER['SCRIPT_FILENAME']) : 'Desconhecido';
         $this->query('INSERT INTO '.MYSQL_LOGURL.' (servidor,ip,cliente_pc,url,server_get,server_post,user,tempo,cfg_localscript,log_date_add) VALUES (\''.$server_requisitado.'\',\''.$cliente_ip.'\',\''.$cliente_navegador.'\',\''.SERVER_URL.'\',\''.$server_get.'\',\''.$server_post.'\',\''.$idusuario.'\',\''.(microtime(true)-TEMPO_COMECO).'\',\''.$server_scriptname.'\',\''.APP_HORA.'\')');

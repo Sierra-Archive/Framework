@@ -479,7 +479,7 @@ class _Sistema_AdminControle extends _Sistema_Controle
      * @version 0.4.2
      */
     public function Permissoes_Edit($id){
-        $id         = \anti_injection($id);
+        $id         = \Framework\App\Conexao::anti_injection($id);
         $this->Endereco_Admin_Permissao();
         // Carrega Config
         $titulo1    = 'Editar Permissao (#'.$id.')';
@@ -499,7 +499,7 @@ class _Sistema_AdminControle extends _Sistema_Controle
      * @version 0.4.2
      */
     public function Permissoes_Edit2($id){
-        $id         = \anti_injection($id);
+        $id         = \Framework\App\Conexao::anti_injection($id);
         $titulo     = __('Permissão Alterada com Sucesso');
         $dao        = Array('Sistema_Permissao',$id);
         $funcao     = '$this->Permissoes();';
@@ -517,7 +517,7 @@ class _Sistema_AdminControle extends _Sistema_Controle
      */
     public function Permissoes_Del($id){
         
-        $id         = \anti_injection($id);
+        $id         = \Framework\App\Conexao::anti_injection($id);
         
         // Puxa permissao e deleta
         $permissao    =  $this->_Modelo->db->Sql_Select('Sistema_Permissao', Array('chave'=>$id));

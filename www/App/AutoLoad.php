@@ -247,25 +247,50 @@ function Erro_Get_Fatal() {
  */
 function Erro_Formatar( $errno, $errstr, $errfile, $errline, $previ = '', $trace = false) {
     require_once APP_PATH . 'Funcao'.'.php';
-    if($trace===false) $trace = print_r( debug_backtrace( false ), true );
+    if($trace===false) $trace = debug_backtrace( false );
+    
     
     if(isset($_GET['url'])){
-        $url = \anti_injection($_GET['url']);
+        $url = \Framework\App\Conexao::anti_injection($_GET['url']);
     }else{
         $url = '';
     }
 
-    $content  = '<table><thead bgcolor=\'#c8c8c8\'><th>Item</th><th>Descricao</th></thead><tbody>';
-    $content .= '<tr valign=\'top\'><td><b>Error</b></td><td><pre>'.$errstr.'</pre></td></tr>';
-    $content .= '<tr valign=\'top\'><td><b>Errno</b></td><td><pre>'.$errno.'</pre></td></tr>';
-    $content .= '<tr valign=\'top\'><td><b>Arquivo</b></td><td>'.$errfile.'</td></tr>';
-    $content .= '<tr valign=\'top\'><td><b>Linha</b></td><td>'.$errline.'</td></tr>';
-    $content .= '<tr valign=\'top\'><td><b>Traco</b></td><td><pre>'.$trace.'</pre></td></tr>';
-    $content .= '<tr valign=\'top\'><td><b>Previa</b></td><td><pre>'.$previ.'</pre></td></tr>';
+    $content  = '<table><thead bgcolor=\'#c8c8c8\'><th>Item</th><th>Descrição</th></thead><tbody>';
+    $content .= '<tr valign=\'top\'><td><b>Error</b></td><td><pre>'.htmlspecialchars($errstr, ENT_QUOTES).'</pre></td></tr>';
+    $content .= '<tr valign=\'top\'><td><b>Errno</b></td><td><pre>'.htmlspecialchars($errno, ENT_QUOTES).'</pre></td></tr>';
+    $content .= '<tr valign=\'top\'><td><b>Arquivo</b></td><td>'.htmlspecialchars($errfile, ENT_QUOTES).'</td></tr>';
+    $content .= '<tr valign=\'top\'><td><b>Linha</b></td><td>'.htmlspecialchars($errline, ENT_QUOTES).'</td></tr>';
+    $content .= '<tr valign=\'top\'><td><b>Previa</b></td><td><pre>'.htmlspecialchars($previ, ENT_QUOTES).'</pre></td></tr>';
     $content .= '<tr valign=\'top\'><td><b>Extra</b></td><td><pre>-----------</pre></td></tr>';
-    $content .= '<tr valign=\'top\'><td><b>Url</b></td><td><pre>'.\anti_injection($url).'</pre></td></tr>';
     $content .= '<tr valign=\'top\'><td><b>Logado</b></td><td><pre>'.\Framework\App\Session::get(SESSION_ADMIN_LOG).'</pre></td></tr>';
+    $content .= '<tr valign=\'top\'><td><b>Url</b></td><td><pre>'.\Framework\App\Conexao::anti_injection($url).'</pre></td></tr>';
+    $content .= '<tr valign=\'top\'><td><b>POST</b></td><td><pre>'.htmlspecialchars(print_r($_POST,true)).'</pre></td></tr>';
     $content .= '</tbody></table>';
+    
+    
+    if(is_array($trace)){
+        $content .= '<h2>Traço</h2>';
+        $content  = '<table><thead bgcolor=\'#c8c8c8\'><th>Arquivo/Linha</th><th>Função</th><th>Argumentos</th></thead><tbody>';
+        while(!empty($trace)){
+            $linha = array_pop($trace);
+            $content .= '<tr valign=\'top\'><td><b>'.$linha['file'].':'.$linha['line'].'</b></td>'.
+                    '<td><pre>'.$linha['function'].'</pre></td>';
+            
+            $content .= '<td>';
+            $i = 1;
+            foreach($linha['args'] as &$valor){
+                if($i>1) $content .= '<br>';
+                $content .= '<b>'.$i.':</b> '.htmlspecialchars(print_r($valor,true), ENT_QUOTES);
+                ++$i;
+            }
+            $content .= '</td>';
+            
+            $content .= '</tr>';
+        }
+        $content .= '</tbody></table>';
+    }
+    
 
     return $content;
 }
@@ -427,7 +452,7 @@ unset($tempo);
  */
 $textdomain = "Framework";
 if (isset($_GET['locale']) && !empty($_GET['locale'])){
-    $locale = \anti_injection($_GET['locale']);
+    $locale = \Framework\App\Conexao::anti_injection($_GET['locale']);
 }else{
     $locale = SISTEMA_LINGUAGEM_PADRAO;
 }

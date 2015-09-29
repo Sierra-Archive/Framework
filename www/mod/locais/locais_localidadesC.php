@@ -11,22 +11,22 @@ class locais_localidadesControle extends locais_Controle
     public function cep(){
         // Controla
         if(isset($_POST['pais'])){
-            $pais = \anti_injection($_POST['pais']);
+            $pais = \Framework\App\Conexao::anti_injection($_POST['pais']);
         }else{
             $pais = '1'; // Brasil
         }
         if(isset($_POST['estado'])){
-            $estado = \anti_injection($_POST['estado']);
+            $estado = \Framework\App\Conexao::anti_injection($_POST['estado']);
         }else{
             $estado = '';
         }
         if(isset($_POST['cidade'])){
-            $cidade = \anti_injection($_POST['cidade']);
+            $cidade = \Framework\App\Conexao::anti_injection($_POST['cidade']);
         }else{
             $cidade = '';
         }
         if(isset($_POST['bairro'])){
-            $bairro = \anti_injection($_POST['bairro']);
+            $bairro = \Framework\App\Conexao::anti_injection($_POST['bairro']);
         }else{
             $bairro = '';
         }
@@ -200,8 +200,8 @@ class locais_localidadesControle extends locais_Controle
     }
     public function bairro_inserir(){
         // CARREGA VARIAIVES DO FORMULARIO E VARIAVIES PADROES
-        $nome = \anti_injection($_POST["nome"]);
-        $zona = \anti_injection($_POST["zona"]);
+        $nome = \Framework\App\Conexao::anti_injection($_POST["nome"]);
+        $zona = \Framework\App\Conexao::anti_injection($_POST["zona"]);
         $pais = 1;
         $estado = 1;
         $cidade = 1;

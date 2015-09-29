@@ -298,7 +298,7 @@ class comercio_venda_CarrinhoControle extends comercio_venda_Controle
         // Se for Pago Gera Contas Pagas, se nao, gera contas a Receber
         if($identificador->pago==1){
             Financeiro_PagamentoControle::Condicao_GerarPagamento(
-                \anti_injection($_POST["condicao_pagar"]),  // Condição de Pagamento
+                \Framework\App\Conexao::anti_injection($_POST["condicao_pagar"]),  // Condição de Pagamento
                 'comercio_venda_Carrinho',                  // Motivo
                 $identificador->id,                         // MotivoID
                 'Usuario',                                  // Entrada_Motivo
@@ -313,7 +313,7 @@ class comercio_venda_CarrinhoControle extends comercio_venda_Controle
         }else{
             $identificador->pago=0;
             Financeiro_PagamentoControle::Condicao_GerarPagamento(
-                \anti_injection($_POST["condicao_pagar"]),  // Condição de Pagamento
+                \Framework\App\Conexao::anti_injection($_POST["condicao_pagar"]),  // Condição de Pagamento
                 'comercio_venda_Carrinho',                  // Motivo
                 $identificador->id,                         // MotivoID
                 'Usuario',                                  // Entrada_Motivo
@@ -344,7 +344,7 @@ class comercio_venda_CarrinhoControle extends comercio_venda_Controle
         $valortotal = 0.0;
 
         // Composicaos
-        $composicao = \anti_injection($_POST['composicao']);
+        $composicao = \Framework\App\Conexao::anti_injection($_POST['composicao']);
         // Pega os Valores do Serviço de Instalaçao
         if(!empty($composicao)){
             foreach($composicao as &$valor){
@@ -360,7 +360,7 @@ class comercio_venda_CarrinhoControle extends comercio_venda_Controle
                 );
                 if(is_object($composicao_registro) && $composicao_registro->preco!=NULL){
                     $prod_qnt    = (int) $_POST['qnt_'.$valor];
-                    //$prod_preco  = \anti_injection($_POST['prod_preco_'.$valor]);
+                    //$prod_preco  = \Framework\App\Conexao::anti_injection($_POST['prod_preco_'.$valor]);
                     // Add valor do Composicao
                     $parcial = (Framework\App\Sistema_Funcoes::Tranf_Real_Float($composicao_registro->preco)*$prod_qnt);
                     $valortotal =   $valortotal

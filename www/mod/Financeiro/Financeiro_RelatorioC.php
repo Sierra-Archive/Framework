@@ -118,24 +118,24 @@ class Financeiro_RelatorioControle extends Financeiro_Controle
     public function Relatorio_Receber(){
         // Trata Parametros
         if(isset($_POST['data_inicial'])){
-            $data_inicial = data_brasil_eua(\anti_injection($_POST['data_inicial']));
+            $data_inicial = data_brasil_eua(\Framework\App\Conexao::anti_injection($_POST['data_inicial']));
         }else{
             $data_inicial = '2014-01-01';
         }
         if(isset($_POST['data_final'])){
-            $data_final = data_brasil_eua(\anti_injection($_POST['data_final']));
+            $data_final = data_brasil_eua(\Framework\App\Conexao::anti_injection($_POST['data_final']));
         }else{
             $data_final = APP_DATA;
         }
         if(isset($_POST['categoria'])){
-            $categoria = \anti_injection($_POST['categoria']);
+            $categoria = \Framework\App\Conexao::anti_injection($_POST['categoria']);
             if($categoria==0) $categoria = false;
         }else{
             $categoria = false;
         }
         
         if(isset($_POST['tipo_relatorio'])){
-            $tipo_relatorio = \anti_injection($_POST['tipo_relatorio']);
+            $tipo_relatorio = \Framework\App\Conexao::anti_injection($_POST['tipo_relatorio']);
             if($tipo_relatorio==='recebido'){
                 $titulo = __('Relatório de Contas Recebidas');
                 $tipo_relatorio = 'Recebido';
@@ -154,7 +154,7 @@ class Financeiro_RelatorioControle extends Financeiro_Controle
             $titulo = __('Relatório de Contas à Pagar');
         }
         if(isset($_POST['tipo_visual'])){
-            $tipo_visual = \anti_injection($_POST['tipo_visual']);
+            $tipo_visual = \Framework\App\Conexao::anti_injection($_POST['tipo_visual']);
             if($tipo_visual==='imprimir'){
                 $tipo_visual = 'Imprimir';
             }else if($tipo_visual==='pdf'){
@@ -520,24 +520,24 @@ class Financeiro_RelatorioControle extends Financeiro_Controle
     public function Grafico_Relatorio_Receber(){
         // Trata Parametros
         if(isset($_POST['data_inicial'])){
-            $data_inicial = data_brasil_eua(\anti_injection($_POST['data_inicial']));
+            $data_inicial = data_brasil_eua(\Framework\App\Conexao::anti_injection($_POST['data_inicial']));
         }else{
             $data_inicial = '2014-01-01';
         }
         if(isset($_POST['data_final'])){
-            $data_final = data_brasil_eua(\anti_injection($_POST['data_final']));
+            $data_final = data_brasil_eua(\Framework\App\Conexao::anti_injection($_POST['data_final']));
         }else{
             $data_final = APP_DATA;
         }
         if(isset($_POST['categoria'])){
-            $categoria = \anti_injection($_POST['categoria']);
+            $categoria = \Framework\App\Conexao::anti_injection($_POST['categoria']);
             if($categoria==0) $categoria = false;
         }else{
             $categoria = false;
         }
         
         if(isset($_POST['tipo_relatorio_Grafico'])){
-            $tipo_relatorio_Grafico = \anti_injection($_POST['tipo_relatorio_Grafico']);
+            $tipo_relatorio_Grafico = \Framework\App\Conexao::anti_injection($_POST['tipo_relatorio_Grafico']);
             if($tipo_relatorio_Grafico==='recebido'){
                 $titulo = __('Relatório de Contas Recebidas');
                 $tipo_relatorio_Grafico = 'Recebido';
@@ -556,7 +556,7 @@ class Financeiro_RelatorioControle extends Financeiro_Controle
             $titulo = __('Relatório de Contas à Pagar');
         }
         if(isset($_POST['tipo_grafico'])){
-            $tipo_grafico = \anti_injection($_POST['tipo_grafico']);
+            $tipo_grafico = \Framework\App\Conexao::anti_injection($_POST['tipo_grafico']);
             if($tipo_grafico!=='mes' && $tipo_grafico!=='semana' && $tipo_grafico!=='dia'){
                 $tipo_grafico = 'mes';
             }
@@ -564,7 +564,7 @@ class Financeiro_RelatorioControle extends Financeiro_Controle
             $tipo_grafico = 'mes';
         }
         if(isset($_POST['tipo_visual'])){
-            $tipo_visual = \anti_injection($_POST['tipo_visual']);
+            $tipo_visual = \Framework\App\Conexao::anti_injection($_POST['tipo_visual']);
             if($tipo_visual==='imprimir'){
                 $tipo_visual = 'Imprimir';
             }else if($tipo_visual==='pdf'){

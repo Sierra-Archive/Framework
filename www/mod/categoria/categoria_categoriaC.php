@@ -85,9 +85,9 @@ class categoria_categoriaControle extends categoria_Controle
     public function Categorias_alterar($id){
         
         $id = (int) $id;
-        $nome = \anti_injection($_POST["nome"]);
+        $nome = \Framework\App\Conexao::anti_injection($_POST["nome"]);
         $parent = (int) $_POST["parent"];
-        $mod_acc = \anti_injection($_POST["mod_acc"]);
+        $mod_acc = \Framework\App\Conexao::anti_injection($_POST["mod_acc"]);
         
         if($parent!=$id){
             $sucesso =  $this->_Modelo->Categorias_alterar($id,$nome,$parent,$mod_acc);
@@ -272,9 +272,9 @@ class categoria_categoriaControle extends categoria_Controle
      */
     public function Categorias_inserir(){
         
-        $nome = \anti_injection($_POST["nome"]);
+        $nome = \Framework\App\Conexao::anti_injection($_POST["nome"]);
         $parent = (int) $_POST["parent"];
-        $mod_acc = \anti_injection($_POST["mod_acc"]);
+        $mod_acc = \Framework\App\Conexao::anti_injection($_POST["mod_acc"]);
         
         $sucesso =  $this->_Modelo->Categorias_inserir($nome,$parent,$mod_acc);
         

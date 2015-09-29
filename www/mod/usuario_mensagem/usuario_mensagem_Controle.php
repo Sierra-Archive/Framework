@@ -254,7 +254,7 @@ class usuario_mensagem_Controle extends \Framework\App\Controle
         
         // Nao sei daonde Vem esse Paranome, foi feito isso pra consertar o erro
         if(isset($_POST["paranome"])){
-            $paranome = \anti_injection($_POST["paranome"]);
+            $paranome = \Framework\App\Conexao::anti_injection($_POST["paranome"]);
         }else{
             if($cliente->razao_social!==''){
                 $paranome = $cliente->razao_social;
@@ -271,7 +271,7 @@ class usuario_mensagem_Controle extends \Framework\App\Controle
         }
         
         // Assunto
-        $assunto = \anti_injection($_POST["assunto"]);
+        $assunto = \Framework\App\Conexao::anti_injection($_POST["assunto"]);
         
         
         $sucesso =  $this->_Modelo->db->Sql_Inserir($objeto);
@@ -330,7 +330,7 @@ class usuario_mensagem_Controle extends \Framework\App\Controle
         if(!is_int($mensagem) || $mensagem==0){
             throw new \Exception('Página não Encontrada',404);
         }
-        $resposta = \anti_injection($_POST["resposta"]);
+        $resposta = \Framework\App\Conexao::anti_injection($_POST["resposta"]);
         $sucesso =  $this->_Modelo->Mensagem_Resp_Inserir($mensagem,$resposta);
         $amensagem =  $this->_Modelo->db->Sql_Select('Usuario_Mensagem','{sigla}id=\''.$mensagem.'\'');
         // Recupera Email e Dados do Setor

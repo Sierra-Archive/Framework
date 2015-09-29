@@ -22,8 +22,8 @@ class usuario_veiculo_AdminControle extends usuario_veiculo_Controle
      * 
      */
     public function Veiculos_UploadVer($camada,$id){
-        $camada = (string) \anti_injection($camada);
-        $id = (int) \anti_injection($id);
+        $camada = (string) \Framework\App\Conexao::anti_injection($camada);
+        $id = (int) \Framework\App\Conexao::anti_injection($id);
        
         
     }
@@ -273,16 +273,16 @@ class usuario_veiculo_AdminControle extends usuario_veiculo_Controle
      */
     public function veiculos_inserir(){
         
-        $categoria = \anti_injection($_POST["categoria"]);
+        $categoria = \Framework\App\Conexao::anti_injection($_POST["categoria"]);
         $ano = (int) $_POST["ano"];
-        $Modelo = \anti_injection($_POST["modelo"]);
+        $Modelo = \Framework\App\Conexao::anti_injection($_POST["modelo"]);
         $marca = (int) $_POST["selectmarcas"];
-        $cc = \anti_injection($_POST["cc"]);
-        $valor1 = \anti_injection($_POST["valor1"]);
-        $valor2 = \anti_injection($_POST["valor2"]);
-        $valor3 = \anti_injection($_POST["valor3"]);
-        $franquia = \anti_injection($_POST["franquia"]);
-        $obs = \anti_injection($_POST["obs"]);
+        $cc = \Framework\App\Conexao::anti_injection($_POST["cc"]);
+        $valor1 = \Framework\App\Conexao::anti_injection($_POST["valor1"]);
+        $valor2 = \Framework\App\Conexao::anti_injection($_POST["valor2"]);
+        $valor3 = \Framework\App\Conexao::anti_injection($_POST["valor3"]);
+        $franquia = \Framework\App\Conexao::anti_injection($_POST["franquia"]);
+        $obs = \Framework\App\Conexao::anti_injection($_POST["obs"]);
         
         $sucesso =  $this->_Modelo->veiculos_inserir($categoria,$ano,$modelo,$marca,$cc,$valor1,$valor2,$valor3,$franquia,$obs);
         
@@ -315,16 +315,16 @@ class usuario_veiculo_AdminControle extends usuario_veiculo_Controle
         
         $id = (int) $id;
         
-        $categoria = \anti_injection($_POST["categoria"]);
+        $categoria = \Framework\App\Conexao::anti_injection($_POST["categoria"]);
         $ano = (int) $_POST["ano"];
-        $Modelo = \anti_injection($_POST["modelo"]);
+        $Modelo = \Framework\App\Conexao::anti_injection($_POST["modelo"]);
         $marca = (int) $_POST["selectmarcas"];
-        $cc = \anti_injection($_POST["cc"]);
-        $valor1 = \anti_injection($_POST["valor1"]);
-        $valor2 = \anti_injection($_POST["valor2"]);
-        $valor3 = \anti_injection($_POST["valor3"]);
-        $franquia = \anti_injection($_POST["franquia"]);
-        $obs = \anti_injection($_POST["obs"]);
+        $cc = \Framework\App\Conexao::anti_injection($_POST["cc"]);
+        $valor1 = \Framework\App\Conexao::anti_injection($_POST["valor1"]);
+        $valor2 = \Framework\App\Conexao::anti_injection($_POST["valor2"]);
+        $valor3 = \Framework\App\Conexao::anti_injection($_POST["valor3"]);
+        $franquia = \Framework\App\Conexao::anti_injection($_POST["franquia"]);
+        $obs = \Framework\App\Conexao::anti_injection($_POST["obs"]);
         
         $sucesso =  $this->_Modelo->veiculos_alterar($id,$categoria,$ano,$modelo,$marca,$cc,$valor1,$valor2,$valor3,$franquia,$obs);
         
@@ -412,7 +412,7 @@ class usuario_veiculo_AdminControle extends usuario_veiculo_Controle
      */
     public function marcas_inserir(){
         
-        $nome = \anti_injection($_POST["nome"]);
+        $nome = \Framework\App\Conexao::anti_injection($_POST["nome"]);
         $sucesso =  $this->_Modelo->marcas_inserir($nome);
         // atualiza marcas
         $marcas = Array();

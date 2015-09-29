@@ -254,7 +254,7 @@ class Simulador_SimuladorControle extends Simulador_Controle
         if($token===false){
             $token = Framework\App\Sistema_Funcoes::Seguranca_Gerar_Token();
         }else{
-            $token = anti_injection($token);
+            $token = Framework\App\Conexao::anti_injection($token);
         }
         
         // Inicializa Variavies

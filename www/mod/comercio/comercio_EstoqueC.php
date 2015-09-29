@@ -358,15 +358,15 @@ class comercio_EstoqueControle extends comercio_Controle
              */
             // Passa tudo pra Contas a Receber
             Financeiro_PagamentoControle::Condicao_GerarPagamento(
-                \anti_injection($_POST["condicao_pagar"]),    // Condição de Pagamento
+                \Framework\App\Conexao::anti_injection($_POST["condicao_pagar"]),    // Condição de Pagamento
                 $motivo,                                      // Motivo
                 $identificador,                               // MotivoID
                 'Servidor',                                   // Entrada_Motivo
                 SRV_NAME_SQL,                                 // Entrada_MotivoID
                 'Servidor',                                   // Saida_Motivo
                 $idfornecedor,                                // Saida_MotivoID
-                \anti_injection($_POST["valor"]),             // Valor
-                \anti_injection($_POST["primeiro_pagamento"]),// Data Inicial
+                \Framework\App\Conexao::anti_injection($_POST["valor"]),             // Valor
+                \Framework\App\Conexao::anti_injection($_POST["primeiro_pagamento"]),// Data Inicial
                 (int) $_POST["categoria"]                     // Categoria
             );
         }
@@ -443,15 +443,15 @@ class comercio_EstoqueControle extends comercio_Controle
             $financeiro = $this->_Modelo->db->Sql_Select('Financeiro_Pagamento_Interno', Array('motivo'=>$motivo,'motivoid'=>$id));
             $sucesso3 =  $this->_Modelo->db->Sql_Delete($financeiro,true);
             Financeiro_PagamentoControle::Condicao_GerarPagamento(
-                \anti_injection($_POST["condicao_pagar"]),    // Condição de Pagamento
+                \Framework\App\Conexao::anti_injection($_POST["condicao_pagar"]),    // Condição de Pagamento
                 $motivo,                                      // Motivo
                 $identificador,                               // MotivoID
                 'Servidor',                                   // Entrada_Motivo
                 SRV_NAME_SQL,                                 // Entrada_MotivoID
                 'Servidor',                                   // Saida_Motivo
                 $idfornecedor,                                // Saida_MotivoID
-                \anti_injection($_POST["valor"]),             // Valor
-                \anti_injection($_POST["primeiro_pagamento"]),// Data Inicial
+                \Framework\App\Conexao::anti_injection($_POST["valor"]),             // Valor
+                \Framework\App\Conexao::anti_injection($_POST["primeiro_pagamento"]),// Data Inicial
                 (int) $_POST["categoria"]                     // Categoria
             );
         }    

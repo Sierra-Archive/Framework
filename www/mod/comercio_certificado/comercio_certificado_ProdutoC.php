@@ -327,7 +327,7 @@ class comercio_certificado_ProdutoControle extends comercio_certificado_Controle
         
         if($produtos==0) return false;
         #update
-        $auditorias_post = \anti_injection($_POST['auditoria']);
+        $auditorias_post = \Framework\App\Conexao::anti_injection($_POST['auditoria']);
         $auditorias_post2 = Array();
         $i = 0;
         $auditorias_sql  = $this->_Modelo->db->Sql_Select(

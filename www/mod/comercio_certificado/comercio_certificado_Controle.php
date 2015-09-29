@@ -191,12 +191,12 @@ class comercio_certificado_Controle extends \Framework\App\Controle
         $Visual     = &$Registro->_Visual;
        
         if(isset($_POST['email'])){
-            $email = \anti_injection($_POST['email']);
+            $email = \Framework\App\Conexao::anti_injection($_POST['email']);
         }else{
             $email = '';
         }
         if(isset($_POST['login'])){
-            $login = \anti_injection($_POST['login']);
+            $login = \Framework\App\Conexao::anti_injection($_POST['login']);
         }else{
             $login = '';
         }
@@ -230,7 +230,7 @@ class comercio_certificado_Controle extends \Framework\App\Controle
             $this->layoult_zerar = false;
             $Visual->Javascript_Executar('$("#login").css(\'border\', \'2px solid #FFAEB0\').focus();');
         }else{
-            $tipousuario = \anti_injection($tipo);
+            $tipousuario = \Framework\App\Conexao::anti_injection($tipo);
 
             // atualiza todos os valores por get, retirando o nivel admin
             //self::mysql_AtualizaValores($usuario);

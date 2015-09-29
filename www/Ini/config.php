@@ -15,7 +15,7 @@ if(!defined('SISTEMA_CACHE_PAGINAS')){
 
 // RESTRITO AO SISTEMA
 if(!defined('SISTEMA_CFG_VERSION')){
-    define('SISTEMA_CFG_VERSION',        3.0); // 
+    define('SISTEMA_CFG_VERSION',        '0.4.0'); // 
 }
 
 

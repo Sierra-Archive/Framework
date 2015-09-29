@@ -1,29 +1,30 @@
 {
     "name": "sierratec/Framework",
-    "description": "The SierraTecnologia Framework 1.0.",
+    "description": "The SierraTecnologia Framework 0.4.X",
     "authors": [
-            {
-                    "name": "Ricardo Rebello Sierra",
-                    "email": "contato@ricardorebellosierra.com.br"
-            }
+        {
+            "name": "Ricardo Rebello Sierra",
+            "email": "contato@ricardorebellosierra.com.br"
+        }
     ],
     "keywords": ["sierra", "tecnologia", "framework"],
     "license": "MIT",
     "type": "project",
 
     "require": {
-            "php": ">=5.5.0"
+        "php": ">=5.5.0",
+        "gentle/bitbucket-api": "^0.7.0"
     },
 
 
 
     "autoload": {
-            "psr-0": {
-                    "Application\\"	: "src/",
-                    "App\\"		: "src/",
-                    "Classes\\"	: "src/",
-                    "Libs\\"	: "src/"
-            }
+        "psr-0": {
+            "Application\\"	: "src/",
+            "App\\"		: "src/",
+            "Classes\\"	: "src/",
+            "Libs\\"	: "src/"
+        }
     },
     "require-dev": {
         "phpunit/phpunit": "*",
@@ -32,5 +33,8 @@
         "phpdocumentor/phpdocumentor": "2.*",
         "kevintweber/phpunit-markup-validators": ">=2.0",
         "facebook/webdriver": "dev-master"
-    }
-} 
+    },
+	"config": {
+	    "vendor-dir": "3rdparty"
+	}
+}

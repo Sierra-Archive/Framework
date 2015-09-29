@@ -309,10 +309,10 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
             $pago = __('Pago');
         }
         // Captura Valores
-        //$valor_juros    = \Framework\App\Sistema_Funcoes::Tranf_Real_Float(\anti_injection($_POST['valor_juros']));
-        //$dt_pago        = \anti_injection($_POST['dt_pago']);
+        //$valor_juros    = \Framework\App\Sistema_Funcoes::Tranf_Real_Float(\Framework\App\Conexao::anti_injection($_POST['valor_juros']));
+        //$dt_pago        = \Framework\App\Conexao::anti_injection($_POST['dt_pago']);
         //$forma_pagar    = (int) $_POST['forma_pagar'];
-        //$obs            = \anti_injection($_POST['obs']);
+        //$obs            = \Framework\App\Conexao::anti_injection($_POST['obs']);
         // Mensagens
         $titulo     = 'Declarado não '.$pago.' com Sucesso';
         $dao        = Array('Financeiro_Pagamento_Interno',$id);
@@ -423,10 +423,10 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
             throw new \Exception('Campos Imcompletos: ',404);
         }
         // Captura Valores
-        $valor_juros    = \Framework\App\Sistema_Funcoes::Tranf_Real_Float(\anti_injection($_POST['valor_juros']));
-        $dt_pago        = \anti_injection($_POST['dt_pago']);
+        $valor_juros    = \Framework\App\Sistema_Funcoes::Tranf_Real_Float(\Framework\App\Conexao::anti_injection($_POST['valor_juros']));
+        $dt_pago        = \Framework\App\Conexao::anti_injection($_POST['dt_pago']);
         //$forma_pagar    = (int) $_POST['forma_pagar'];
-        $obs            = \anti_injection($_POST['obs']);
+        $obs            = \Framework\App\Conexao::anti_injection($_POST['obs']);
         // Mensagens
         $titulo     = 'Declarado '.$pago.' com Sucesso';
         $dao        = Array('Financeiro_Pagamento_Interno',$id);
@@ -875,7 +875,7 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
         $sucesso1   = $titulo;
         $sucesso2   = $titulo;
         
-        $financeiros->dt_vencimento    = \anti_injection($_POST['dt_vencimento']);
+        $financeiros->dt_vencimento    = \Framework\App\Conexao::anti_injection($_POST['dt_vencimento']);
         // Verificação e Atualizacao
         $sucesso = $this->_Modelo->db->Sql_Update($financeiros);
         if($sucesso){

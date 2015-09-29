@@ -140,7 +140,7 @@ class Financeiro_ListarControle extends Financeiro_Controle
         // Para verificar erro
         $erro = 1;
         // Carrega quantia e saldo do usuario
-        $quantia = \anti_injection($_POST["sacar_quantia"]);
+        $quantia = \Framework\App\Conexao::anti_injection($_POST["sacar_quantia"]);
         $saldo = Financeiro_Modelo::Carregar_Saldo($this->_Modelo, $this->_Acl->Usuario_GetID());
         // faz verificações de erros
         if($quantia<500){
@@ -218,8 +218,8 @@ class Financeiro_ListarControle extends Financeiro_Controle
     public function transferencia_inserir(){
         $erro = 1;
         // captura variaveis
-        $login = \anti_injection($_POST["login"]);
-        $quantia = \anti_injection($_POST["transferir_quantia"]);
+        $login = \Framework\App\Conexao::anti_injection($_POST["login"]);
+        $quantia = \Framework\App\Conexao::anti_injection($_POST["transferir_quantia"]);
         // carrega saldo e verifica se login existe
         $saldo = Financeiro_Modelo::Carregar_Saldo($this->_Modelo, $this->_Acl->Usuario_GetID());
         $existelogin = usuario_Modelo::VerificaExtLogin($this->_Modelo, $login);

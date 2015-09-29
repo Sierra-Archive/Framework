@@ -60,7 +60,7 @@ class Direito_RelatorioControle extends Direito_Controle
      * @version 0.4.2
      */
     public function Impressao($tipo = -1,$id1=0,$id2=0){
-        if($tipo==-1) $tipo = \anti_injection($_POST['selecttipoimpressao']);
+        if($tipo==-1) $tipo = \Framework\App\Conexao::anti_injection($_POST['selecttipoimpressao']);
         // POR AUDIENCIA
         if($tipo==0){
             $form = new \Framework\Classes\Form('Direito_Relatorio_Relatorio_Audiencia','Direito/Relatorio/Relatorio_Audiencia/','formajax','full');
@@ -200,12 +200,12 @@ class Direito_RelatorioControle extends Direito_Controle
     public function Relatorio_Audiencia($inicialdia = 0, $inicialmes = 0, $inicialano = 0, $finaldia = 0, $finalmes = 0, $finalano = 0, $imprimir = 'false'){
         // Caso nao tenha vindo por GET entao tenta pegar por POST
         if($inicialdia==0){
-            $inicial = data_brasil_eua(\anti_injection($_POST['data_inicial']));
+            $inicial = data_brasil_eua(\Framework\App\Conexao::anti_injection($_POST['data_inicial']));
         }else{
             $inicial = $inicialano.'-'.$inicialmes.'-'.$inicialdia;
         }
         if($finaldia==0){
-            $final = data_brasil_eua(\anti_injection($_POST['data_final']));
+            $final = data_brasil_eua(\Framework\App\Conexao::anti_injection($_POST['data_final']));
         }else{
             $final = $finalano.'-'.$finalmes.'-'.$finaldia;
         }
@@ -236,7 +236,7 @@ class Direito_RelatorioControle extends Direito_Controle
      */
     public function Relatorio_Fase($id = 0, $imprimir = 'false'){
         if($id==0){
-            $id = \anti_injection($_POST['selectadv_fase']);
+            $id = \Framework\App\Conexao::anti_injection($_POST['selectadv_fase']);
         }
         if(!isset($id) || $id==0 || $id=='') $id = 0;
         $processos = Array();
@@ -262,7 +262,7 @@ class Direito_RelatorioControle extends Direito_Controle
      */
     public function Relatorio_Comarca($id = 0, $imprimir = 'false'){
         if($id==0){
-            $id = \anti_injection($_POST['selectadv_comarca']);
+            $id = \Framework\App\Conexao::anti_injection($_POST['selectadv_comarca']);
         }
         if(!isset($id) || $id==0 || $id=='') $id = 0;
         $processos = Array();
@@ -288,7 +288,7 @@ class Direito_RelatorioControle extends Direito_Controle
      */
     public function Relatorio_Vara($id = 0, $imprimir = 'false'){
         if($id==0){
-            $id = \anti_injection($_POST['selectadv_varas']);
+            $id = \Framework\App\Conexao::anti_injection($_POST['selectadv_varas']);
         }
         if(!isset($id) || $id==0 || $id=='') $id = 0;
         $processos = Array();
@@ -314,10 +314,10 @@ class Direito_RelatorioControle extends Direito_Controle
      */
     public function Relatorio_Vara_Comarca($idvara = 0,$idcomarca = 0, $imprimir = 'false'){
         if($idvara==0){
-            $idvara = \anti_injection($_POST['selectadv_varas']);
+            $idvara = \Framework\App\Conexao::anti_injection($_POST['selectadv_varas']);
         }
         if($idcomarca==0){
-            $idcomarca = \anti_injection($_POST['selectadv_comarca']);
+            $idcomarca = \Framework\App\Conexao::anti_injection($_POST['selectadv_comarca']);
         }
         if(!isset($idvara)    || $idvara   ==0 || $idvara   =='') $idvara    = 0;
         if(!isset($idcomarca) || $idcomarca==0 || $idcomarca=='') $idcomarca = 0;

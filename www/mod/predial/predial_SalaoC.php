@@ -289,9 +289,9 @@ class predial_SalaoControle extends predial_Controle
                 $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
             }else{
                 // variaveis
-                $datainicial = data_eua_brasil(\anti_injection($datainicial));
-                $datafinal = data_eua_brasil(\anti_injection($datafinal));
-                $nomereserva = \anti_injection($nomereserva);
+                $datainicial = data_eua_brasil(\Framework\App\Conexao::anti_injection($datainicial));
+                $datafinal = data_eua_brasil(\Framework\App\Conexao::anti_injection($datafinal));
+                $nomereserva = \Framework\App\Conexao::anti_injection($nomereserva);
                 $idreserva = (int) $idreserva;
 
                 // faz busca por reserva
@@ -361,10 +361,10 @@ class predial_SalaoControle extends predial_Controle
      */
     public function agendamento_inserir(){
         
-        $reservaid = (int) \anti_injection($_POST["selectreservas"]);
-        $valor = \anti_injection($_POST["valor"]);
-        $data_inicial = \anti_injection($_POST["data_inicial"]);
-        $data_final = \anti_injection($_POST["data_final"]);
+        $reservaid = (int) \Framework\App\Conexao::anti_injection($_POST["selectreservas"]);
+        $valor = \Framework\App\Conexao::anti_injection($_POST["valor"]);
+        $data_inicial = \Framework\App\Conexao::anti_injection($_POST["data_inicial"]);
+        $data_final = \Framework\App\Conexao::anti_injection($_POST["data_final"]);
         
         // faz busca por reserva
         $reserva = $this->_Modelo->retorna_reserva($reservaid);

@@ -99,9 +99,9 @@ class usuario_veiculo_ListarControle extends usuario_veiculo_Controle
                 $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
             }else{
                 // variaveis
-                $datainicial = data_eua_brasil(\anti_injection($datainicial));
-                $datafinal = data_eua_brasil(\anti_injection($datafinal));
-                $nomeveiculo = \anti_injection($nomeveiculo);
+                $datainicial = data_eua_brasil(\Framework\App\Conexao::anti_injection($datainicial));
+                $datafinal = data_eua_brasil(\Framework\App\Conexao::anti_injection($datafinal));
+                $nomeveiculo = \Framework\App\Conexao::anti_injection($nomeveiculo);
                 $idveiculo = (int) $idveiculo;
 
                 // faz busca por veiculo
@@ -173,10 +173,10 @@ class usuario_veiculo_ListarControle extends usuario_veiculo_Controle
      */
     public function agendamento_inserir(){
         
-        $veiculoid = (int) \anti_injection($_POST["selectveiculos"]);
-        $valor = \anti_injection($_POST["valor"]);
-        $data_inicial = \anti_injection($_POST["data_inicial"]);
-        $data_final = \anti_injection($_POST["data_final"]);
+        $veiculoid = (int) \Framework\App\Conexao::anti_injection($_POST["selectveiculos"]);
+        $valor = \Framework\App\Conexao::anti_injection($_POST["valor"]);
+        $data_inicial = \Framework\App\Conexao::anti_injection($_POST["data_inicial"]);
+        $data_final = \Framework\App\Conexao::anti_injection($_POST["data_final"]);
         
         // faz busca por veiculo
         $veiculo = $this->_Modelo->retorna_veiculo($veiculoid);

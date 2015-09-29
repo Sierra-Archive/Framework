@@ -34,7 +34,7 @@ class usuario_FreeControle extends usuario_Controle
     * @version 0.4.2
     */
     public function Main($tipo = 'associado'){
-        $tipocadastro = \anti_injection($tipo);
+        $tipocadastro = \Framework\App\Conexao::anti_injection($tipo);
         if($tipocadastro!='' AND $tipocadastro!='cliente'){
             // = associado
             $tipocadastro = 'associado';
@@ -125,9 +125,9 @@ class usuario_FreeControle extends usuario_Controle
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens); 
             $this->_Visual->Javascript_Executar('$("#email").css(\'border\', \'2px solid #FFAEB0\').focus();$("#login").css(\'border\', \'2px solid #FFAEB0\');');
         }else{
-            $existeemail = usuario_Modelo::VerificaExtEmail($this->_Modelo,\anti_injection($_POST['email']));
-            $existelogin = usuario_Modelo::VerificaExtLogin($this->_Modelo,\anti_injection($_POST['login']));
-            if(\Framework\App\Sistema_Funcoes::Control_Layoult_Valida_Email(\anti_injection($_POST['email']))===false){
+            $existeemail = usuario_Modelo::VerificaExtEmail($this->_Modelo,\Framework\App\Conexao::anti_injection($_POST['email']));
+            $existelogin = usuario_Modelo::VerificaExtLogin($this->_Modelo,\Framework\App\Conexao::anti_injection($_POST['login']));
+            if(\Framework\App\Sistema_Funcoes::Control_Layoult_Valida_Email(\Framework\App\Conexao::anti_injection($_POST['email']))===false){
                 $mensagens = array(
                     "tipo" => 'erro',
                     "mgs_principal" => __('Erro'),
@@ -152,7 +152,7 @@ class usuario_FreeControle extends usuario_Controle
                 $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens); 
                 $this->_Visual->Javascript_Executar('$("#login").css(\'border\', \'2px solid #FFAEB0\').focus();');
             }else{
-                $tipousuario = \anti_injection($tipo);
+                $tipousuario = \Framework\App\Conexao::anti_injection($tipo);
 
                 // atualiza todos os valores por get, retirando o nivel admin
                 //self::mysql_Campos_Retira($this->_Modelo->campos,'nivel_admin',0);
@@ -183,7 +183,7 @@ class usuario_FreeControle extends usuario_Controle
                         "mgs_secundaria" => __('Voce foi cadastrado com sucesso.')
                     );
                     // loga usuario
-                    $this->_Modelo->Usuario_Logar(\anti_injection($_POST['login']), \Framework\App\Sistema_Funcoes::Form_Senha_Blindar($_POST['senha'],true));  
+                    $this->_Modelo->Usuario_Logar(\Framework\App\Conexao::anti_injection($_POST['login']), \Framework\App\Sistema_Funcoes::Form_Senha_Blindar($_POST['senha'],true));  
                     // boleto
                     // Mensagem Para nao Associados
                     $mgm = '<br>Seja bem vindo a Locaway.'.
@@ -199,15 +199,15 @@ class usuario_FreeControle extends usuario_Controle
 
                         '<br>Atenciosamente,'.
                         '<br>Equipe Locaway';
-                        eval('$valor = CONFIG_CLI_'.\anti_injection($_POST['nivel_usuario']).'_PRECO;');
-                        $this->_Visual->Javascript_Executar('window.open(\''.LIBS_URL.'boleto/boleto_itau.php?clientenome='.\anti_injection($_POST['nome']).
-                        '&endereco='.\anti_injection($_POST['endereco']).
-                        '&numero='.\anti_injection($_POST['numero']).
-                        '&complemento='.\anti_injection($_POST['complemento']).
-                        '&cpf='.\anti_injection($_POST['cpf']).
-                        '&cidade='.\anti_injection($_POST['cidade']).
-                        '&bairro='.\anti_injection($_POST['bairro']).
-                        '&cep='.\anti_injection($_POST['cep']).
+                        eval('$valor = CONFIG_CLI_'.\Framework\App\Conexao::anti_injection($_POST['nivel_usuario']).'_PRECO;');
+                        $this->_Visual->Javascript_Executar('window.open(\''.LIBS_URL.'boleto/boleto_itau.php?clientenome='.\Framework\App\Conexao::anti_injection($_POST['nome']).
+                        '&endereco='.\Framework\App\Conexao::anti_injection($_POST['endereco']).
+                        '&numero='.\Framework\App\Conexao::anti_injection($_POST['numero']).
+                        '&complemento='.\Framework\App\Conexao::anti_injection($_POST['complemento']).
+                        '&cpf='.\Framework\App\Conexao::anti_injection($_POST['cpf']).
+                        '&cidade='.\Framework\App\Conexao::anti_injection($_POST['cidade']).
+                        '&bairro='.\Framework\App\Conexao::anti_injection($_POST['bairro']).
+                        '&cep='.\Framework\App\Conexao::anti_injection($_POST['cep']).
                         '&valor='.$valor.'\',\'_TOP\')');
                     }else{
                         $this->Main();

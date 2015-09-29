@@ -398,12 +398,12 @@ class usuario_AdminControle extends usuario_Controle
         $this->_Visual->Json_Info_Update('Titulo','Usuários');
         
         if(isset($_POST['email'])){
-            $email = \anti_injection($_POST['email']);
+            $email = \Framework\App\Conexao::anti_injection($_POST['email']);
         }else{
             $email = '';
         }
         if(isset($_POST['login'])){
-            $login = \anti_injection($_POST['login']);
+            $login = \Framework\App\Conexao::anti_injection($_POST['login']);
         }else{
             $login = '';
         }
@@ -437,7 +437,7 @@ class usuario_AdminControle extends usuario_Controle
             $this->layoult_zerar = false;
             $this->_Visual->Javascript_Executar('$("#login").css(\'border\', \'2px solid #FFAEB0\').focus();');
         }else{
-            $tipousuario = \anti_injection($tipo);
+            $tipousuario = \Framework\App\Conexao::anti_injection($tipo);
 
             // atualiza todos os valores por get, retirando o nivel admin
             //self::mysql_AtualizaValores($usuario);
@@ -594,13 +594,22 @@ class usuario_AdminControle extends usuario_Controle
                 );
             }
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
-        }
-        if($tipo==='cliente'){
-            $this->ListarCliente();
-        }else if($tipo==='funcionario'){
-            $this->ListarFuncionario();
+            if($tipo==='cliente'){
+                $this->ListarCliente();
+            }else if($tipo==='funcionario'){
+                $this->ListarFuncionario();
+            }else{
+                $this->ListarUsuario();
+            }
+            return true;
         }else{
-            $this->ListarUsuario();
+            $mensagens = array(
+                "tipo" => 'erro',
+                "mgs_principal" => __('Erro'),
+                "mgs_secundaria" => __('Esse usuário não existe')
+            );
+            $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+            return false;
         }
     }
     

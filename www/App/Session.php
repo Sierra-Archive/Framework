@@ -88,7 +88,7 @@ final Class Session {
             self::init();
         }
         if(isset($_SESSION[$clave])){
-            return \anti_injection($_SESSION[$clave]);
+            return \Framework\App\Conexao::anti_injection($_SESSION[$clave]);
         }
         return false;
     }

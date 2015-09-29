@@ -1682,13 +1682,13 @@ class comercio_PropostaControle extends comercio_Controle
         }
         
         if(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Proposta_Lucro') && isset($_POST['pagar_lucro'])){
-            $lucro    = \Framework\App\Sistema_Funcoes::Tranf_Porc_Float(\anti_injection($_POST['pagar_lucro']));
+            $lucro    = \Framework\App\Sistema_Funcoes::Tranf_Porc_Float(\Framework\App\Conexao::anti_injection($_POST['pagar_lucro']));
         }else{
             $lucro    = 0.0;
         }
         
         if(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Proposta_Desconto') && isset($_POST['pagar_desconto'])){
-            $desconto    = \Framework\App\Sistema_Funcoes::Tranf_Porc_Float(\anti_injection($_POST['pagar_desconto']));
+            $desconto    = \Framework\App\Sistema_Funcoes::Tranf_Porc_Float(\Framework\App\Conexao::anti_injection($_POST['pagar_desconto']));
         }else{
             $desconto    = 0.0;
         }
@@ -1701,7 +1701,7 @@ class comercio_PropostaControle extends comercio_Controle
             $propostatipo=1;
             
             // Pega os BTUS de instalacao
-            $instalacao = \anti_injection($_POST['btu']);
+            $instalacao = \Framework\App\Conexao::anti_injection($_POST['btu']);
             // Pega os Valores do Serviço de Instalaçao
             if(!empty($instalacao)){
                 foreach($instalacao as &$valor){
@@ -1742,7 +1742,7 @@ class comercio_PropostaControle extends comercio_Controle
             }
             
             // Produtos
-            $produto = \anti_injection($_POST['produto']);
+            $produto = \Framework\App\Conexao::anti_injection($_POST['produto']);
             // Pega os Valores do Serviço de Instalaçao
             if(!empty($produto)){
                 foreach($produto as &$valor){
@@ -1758,7 +1758,7 @@ class comercio_PropostaControle extends comercio_Controle
                     );
                     if(is_object($produto_registro) && $produto_registro->preco!=NULL){
                         $prod_qnt    = (int) $_POST['prod_qnt_'.$valor];
-                        //$prod_preco  = \anti_injection($_POST['prod_preco_'.$valor]);
+                        //$prod_preco  = \Framework\App\Conexao::anti_injection($_POST['prod_preco_'.$valor]);
                         // Add valor do Produto
                         $valortotal =   $valortotal
                                         + (Framework\App\Sistema_Funcoes::Tranf_Real_Float($produto_registro->preco)*$prod_qnt);
@@ -1772,14 +1772,14 @@ class comercio_PropostaControle extends comercio_Controle
             // Captura Tipo de Serviço
             // Nao Altera Mais o Valor
             /*if(isset($_POST['servicotipo'])){
-                $servicotipo = \anti_injection($_POST['servicotipo']);
+                $servicotipo = \Framework\App\Conexao::anti_injection($_POST['servicotipo']);
                 // Pega os Valores do Tipo de Serviço
                 if(!empty($servicotipo)){
                     foreach($servicotipo as &$valor){
                         $valor = (int) $valor;
                         if($valor===0 || $valor===NULL) continue;
                         $diarias_qnt = (int) $_POST['diarias_qnt_'.$valor];
-                        $diarias_valor = \anti_injection($_POST['diarias_valor_'.$valor]);
+                        $diarias_valor = \Framework\App\Conexao::anti_injection($_POST['diarias_valor_'.$valor]);
                         $valortotal = $valortotal + $diarias_qnt*Framework\App\Sistema_Funcoes::Tranf_Real_Float($diarias_valor);
                     }
                 }
@@ -1787,7 +1787,7 @@ class comercio_PropostaControle extends comercio_Controle
 
             // Captura o Serviço
             if(isset($_POST['servico'])){
-                $servico = \anti_injection($_POST['servico']);
+                $servico = \Framework\App\Conexao::anti_injection($_POST['servico']);
                 // Pega os Valores do Serviço
                 if(!empty($servico)){
                     foreach($servico as &$valor){
@@ -1815,7 +1815,7 @@ class comercio_PropostaControle extends comercio_Controle
         if(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Propostas_MaodeObra')){
             $valor_maodeobra_total = 0;
             if(isset($_POST['grupo'])){
-                $maodeobra = \anti_injection($_POST['grupo']);
+                $maodeobra = \Framework\App\Conexao::anti_injection($_POST['grupo']);
                 // Pega os Valores do Tipo de Serviço
                 if(!empty($maodeobra)){
                     foreach($maodeobra as &$valor){
@@ -1825,10 +1825,10 @@ class comercio_PropostaControle extends comercio_Controle
                         
                         $maodeobra_qnt          = (int) $_POST['maodeobra_qnt_'.$valor];
                         $maodeobra_dias         = (int) $_POST['maodeobra_dias_'.$valor];
-                        $maodeobra_diaria       = \anti_injection($_POST['maodeobra_diaria_'.$valor]);
-                        $maodeobra_depreciacao  = \anti_injection($_POST['maodeobra_depreciacao_'.$valor]);
-                        $maodeobra_passagem     = \anti_injection($_POST['maodeobra_passagem_'.$valor]);
-                        $maodeobra_alimentacao  = \anti_injection($_POST['maodeobra_alimentacao_'.$valor]);
+                        $maodeobra_diaria       = \Framework\App\Conexao::anti_injection($_POST['maodeobra_diaria_'.$valor]);
+                        $maodeobra_depreciacao  = \Framework\App\Conexao::anti_injection($_POST['maodeobra_depreciacao_'.$valor]);
+                        $maodeobra_passagem     = \Framework\App\Conexao::anti_injection($_POST['maodeobra_passagem_'.$valor]);
+                        $maodeobra_alimentacao  = \Framework\App\Conexao::anti_injection($_POST['maodeobra_alimentacao_'.$valor]);
                         
                         $valor_maodeobra = $maodeobra_qnt*$maodeobra_dias*
                             (
@@ -1847,8 +1847,8 @@ class comercio_PropostaControle extends comercio_Controle
         }
         
         if(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Proposta_ValorExtra')!==false){
-            $valortotal = $valortotal+Framework\App\Sistema_Funcoes::Tranf_Real_Float(\anti_injection($_POST['valor_extra']));
-            $html .= '<b>Custo Extra:</b> '.(\anti_injection($_POST['valor_extra'])?\anti_injection($_POST['valor_extra']):'R$ 0,00').'<br>';
+            $valortotal = $valortotal+Framework\App\Sistema_Funcoes::Tranf_Real_Float(\Framework\App\Conexao::anti_injection($_POST['valor_extra']));
+            $html .= '<b>Custo Extra:</b> '.(\Framework\App\Conexao::anti_injection($_POST['valor_extra'])?\Framework\App\Conexao::anti_injection($_POST['valor_extra']):'R$ 0,00').'<br>';
         }
         
         // Calcula Valor de Custo da Proposta
@@ -1870,7 +1870,7 @@ class comercio_PropostaControle extends comercio_Controle
         
             $html .= '<b>Valor Total:</b> '.Framework\App\Sistema_Funcoes::Tranf_Float_Real($valortotal);  
         }else{
-            $valor_total_form = \anti_injection($_POST['valor_fixo']);
+            $valor_total_form = \Framework\App\Conexao::anti_injection($_POST['valor_fixo']);
             $valor_total_form_lucro = \Framework\App\Sistema_Funcoes::Tranf_Float_Real((Framework\App\Sistema_Funcoes::Tranf_Real_Float($valor_total_form)-$valortotal));
             $html .= '<b>Lucro:</b> '.
                     $valor_total_form_lucro
@@ -1881,14 +1881,14 @@ class comercio_PropostaControle extends comercio_Controle
         
         // Se tiver IMPOSTO Add
         if(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Propostas_Imposto')!==false){
-            $imposto = \Framework\App\Sistema_Funcoes::Tranf_Porc_Float(\anti_injection($_POST['imposto']));
+            $imposto = \Framework\App\Sistema_Funcoes::Tranf_Porc_Float(\Framework\App\Conexao::anti_injection($_POST['imposto']));
             $html .= '<b>Imposto:</b> '.Framework\App\Sistema_Funcoes::Tranf_Float_Real($imposto*$valortotal).'<br>';
             $valortotal_semimposto = $valortotal-($imposto*$valortotal);
         }   
         
         // Se tiver Comissao Add
         if(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Proposta_Comissao')!==false){
-            $comissao = \Framework\App\Sistema_Funcoes::Tranf_Porc_Float(\anti_injection($_POST['comissao']));
+            $comissao = \Framework\App\Sistema_Funcoes::Tranf_Porc_Float(\Framework\App\Conexao::anti_injection($_POST['comissao']));
             $html .= '<b>Comissão:</b> '.Framework\App\Sistema_Funcoes::Tranf_Float_Real($comissao*$valortotal_semimposto).'<br>';
             //$valortotal = $valortotal+($comissao*$valortotal);
         }        

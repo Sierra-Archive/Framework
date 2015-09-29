@@ -803,7 +803,7 @@ class Curso_TurmaControle extends Curso_Controle
              */
             // Passa tudo pra Contas a Receber
             Financeiro_PagamentoControle::Condicao_GerarPagamento(
-                \anti_injection($_POST["condicao_pagar"]),    // Condição de Pagamento
+                \Framework\App\Conexao::anti_injection($_POST["condicao_pagar"]),    // Condição de Pagamento
                 $motivo,                                      // Motivo
                 $identificador,                               // MotivoID
                 'Usuario',                                    // Entrada_Motivo

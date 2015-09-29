@@ -198,7 +198,7 @@ class usuario_AcessoControle extends usuario_Controle
      */
     public function UsuariosAcesso_Edit2($id,$tipo='usuario'){
         if(isset($_POST["nome"])){
-            $nome   = \anti_injection($_POST["nome"]);
+            $nome   = \Framework\App\Conexao::anti_injection($_POST["nome"]);
         }else{
             $nome   = '';
         }

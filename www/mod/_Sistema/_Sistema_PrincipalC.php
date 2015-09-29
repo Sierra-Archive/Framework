@@ -40,10 +40,10 @@ class _Sistema_PrincipalControle extends _Sistema_Controle
     public function Busca($busca=false){
         if($busca===false){
             if(isset($_POST['busca'])){
-                $busca = \anti_injection($_POST['busca']);
+                $busca = \Framework\App\Conexao::anti_injection($_POST['busca']);
             }else
             if(isset($_GET['busca'])){
-                $busca = \anti_injection($_GET['busca']);
+                $busca = \Framework\App\Conexao::anti_injection($_GET['busca']);
             }
         }
         // Carrega Buscador dos Modulos
@@ -66,7 +66,7 @@ class _Sistema_PrincipalControle extends _Sistema_Controle
     }
     public function Relatorio($busca=false){
         if($busca==false){
-            $busca = \anti_injection($_POST['busca']);
+            $busca = \Framework\App\Conexao::anti_injection($_POST['busca']);
         }
         // Carrega Buscador dos Modulos
         $i = 0;
@@ -89,7 +89,7 @@ class _Sistema_PrincipalControle extends _Sistema_Controle
     }
     public function Estatistica($busca=false){
         if($busca==false){
-            $busca = \anti_injection($_POST['busca']);
+            $busca = \Framework\App\Conexao::anti_injection($_POST['busca']);
         }
         // Carrega Buscador dos Modulos
         $i = 0;

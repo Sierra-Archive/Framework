@@ -216,7 +216,7 @@ class social_personasControle extends social_Controle
     public function social_inserir(){
         
         //data_hora_brasil_eua()
-        $nome = \anti_injection($_POST["nome"]);
+        $nome = \Framework\App\Conexao::anti_injection($_POST["nome"]);
         $idface = (int) $_POST["idface"];
         
         $sucesso =  $this->_Modelo->social_inserir($idface, $nome);

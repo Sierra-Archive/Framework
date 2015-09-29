@@ -5,31 +5,6 @@
  */
 
 /**
- *     SEGURANÇA - Antiinjection
- * @param type $sql
- * @return type
- * 
- * 
- * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
- * @version 0.4.2
- */
-function anti_injection($sql,$tags=false){
-     if(is_array($sql)){
-         $seg = Array();
-         foreach($sql as $indice=>&$valor){
-             $seg[\anti_injection($indice)] = \anti_injection($valor,$tags);
-         }
-         $sql = $seg;
-     }else{
-        /*// remove palavras que contenham sintaxe sql
-        $sql = mysql_real_escape_string($sql);
-        if($tags===false){
-            $sql = strip_tags($sql);//tira tags html e php
-        }*/
-     }
-     return $sql;
-}
-/**
  * Criptografia Fraca
  * @param type $x
  * @return type

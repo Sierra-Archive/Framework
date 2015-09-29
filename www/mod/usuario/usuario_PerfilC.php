@@ -64,8 +64,8 @@ class usuario_PerfilControle extends usuario_Controle
         $this->_Visual->Json_Info_Update('Titulo', __('Meu Perfil')); 
     }
     public function PerfilFoto_UploadVer($camada,$id){
-        $camada = (string) \anti_injection($camada);
-        $id = (int) \anti_injection($id);
+        $camada = (string) \Framework\App\Conexao::anti_injection($camada);
+        $id = (int) \Framework\App\Conexao::anti_injection($id);
        
         
     }
@@ -94,8 +94,8 @@ class usuario_PerfilControle extends usuario_Controle
         }
     }
     public function RESFoto_UploadVer($camada,$id){
-        $camada = (string) \anti_injection($camada);
-        $id = (int) \anti_injection($id);
+        $camada = (string) \Framework\App\Conexao::anti_injection($camada);
+        $id = (int) \Framework\App\Conexao::anti_injection($id);
        
         
     }
@@ -125,8 +125,8 @@ class usuario_PerfilControle extends usuario_Controle
         }
     }
     public function CNHFoto_UploadVer($camada,$id){
-        $camada = (string) \anti_injection($camada);
-        $id = (int) \anti_injection($id);
+        $camada = (string) \Framework\App\Conexao::anti_injection($camada);
+        $id = (int) \Framework\App\Conexao::anti_injection($id);
        
         
     }
@@ -233,7 +233,7 @@ class usuario_PerfilControle extends usuario_Controle
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens); 
             $this->_Visual->Javascript_Executar('$("#nivel_usuario").css(\'border\', \'2px solid #FFAEB0\').focus();');
         } else {
-            $nivel_usuario = (int) \anti_injection($_POST['nivel_usuario']);
+            $nivel_usuario = (int) \Framework\App\Conexao::anti_injection($_POST['nivel_usuario']);
             $sucesso =  $this->_Modelo->PlanoAlterar($nivel_usuario);
             // inseri e mostra mensagem
             if($sucesso==1){
@@ -393,8 +393,8 @@ class usuario_PerfilControle extends usuario_Controle
         $this->_Visual->Json_Info_Update('Titulo', __('Meu Perfil')); 
     }
     public function PerfilFoto_UploadVer($camada,$id){
-        $camada = (string) \anti_injection($camada);
-        $id = (int) \anti_injection($id);
+        $camada = (string) \Framework\App\Conexao::anti_injection($camada);
+        $id = (int) \Framework\App\Conexao::anti_injection($id);
     }
     /**
      * 
@@ -421,8 +421,8 @@ class usuario_PerfilControle extends usuario_Controle
         }
     }
     public function RESFoto_UploadVer($camada,$id){
-        $camada = (string) \anti_injection($camada);
-        $id = (int) \anti_injection($id);
+        $camada = (string) \Framework\App\Conexao::anti_injection($camada);
+        $id = (int) \Framework\App\Conexao::anti_injection($id);
        
         
     }
@@ -450,8 +450,8 @@ class usuario_PerfilControle extends usuario_Controle
         }
     }
     public function CNHFoto_UploadVer($camada,$id){
-        $camada = (string) \anti_injection($camada);
-        $id = (int) \anti_injection($id);
+        $camada = (string) \Framework\App\Conexao::anti_injection($camada);
+        $id = (int) \Framework\App\Conexao::anti_injection($id);
        
         
     }
@@ -556,7 +556,7 @@ class usuario_PerfilControle extends usuario_Controle
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens); 
             $this->_Visual->Javascript_Executar('$("#nivel_usuario").css(\'border\', \'2px solid #FFAEB0\').focus();');
         } else {
-            $nivel_usuario = (int) \anti_injection($_POST['nivel_usuario']);
+            $nivel_usuario = (int) \Framework\App\Conexao::anti_injection($_POST['nivel_usuario']);
             $sucesso =  $this->_Modelo->PlanoAlterar($nivel_usuario);
             // inseri e mostra mensagem
             if($sucesso===true){

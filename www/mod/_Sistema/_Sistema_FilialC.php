@@ -133,7 +133,7 @@ class _Sistema_FilialControle extends _Sistema_Controle
      */
     public function Filiais_Del($id){
         
-        $id         = \anti_injection($id);
+        $id         = \Framework\App\Conexao::anti_injection($id);
         
         // Puxa filial e deleta
         $filial    =  $this->_Modelo->db->Sql_Select('Sistema_Filial', Array('id'=>$id));

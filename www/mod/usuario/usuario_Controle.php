@@ -670,8 +670,8 @@ class usuario_Controle extends \Framework\App\Controle
             }
         }
         // Envia Se tiver Email Opcional
-        $email_opcional = \anti_injection($_POST['email_opcional']);
-        $nome_opcional  = \anti_injection($_POST['nome_opcional']);
+        $email_opcional = \Framework\App\Conexao::anti_injection($_POST['email_opcional']);
+        $nome_opcional  = \Framework\App\Conexao::anti_injection($_POST['nome_opcional']);
         if($email_opcional!='' && \Framework\App\Sistema_Funcoes::Control_Layoult_Valida_Email($email_opcional)){
             $enviar .= '->setTo(\''.$email_opcional.'\', \''.$nome_opcional.'\')';
         }
@@ -685,9 +685,9 @@ class usuario_Controle extends \Framework\App\Controle
             $this->_Visual->Json_Info_Update('Historico', false);
             $this->Json_Definir_zerar(false);
         }else{
-            $amensagem = '<strong><b>Mensagem:</b> '.  \anti_injection($_POST['mensagem']).'</strong><br><strong>'.usuario_PerfilVisual::Show_HTML($usuario,$tipo).'</strong>';
+            $amensagem = '<strong><b>Mensagem:</b> '.  \Framework\App\Conexao::anti_injection($_POST['mensagem']).'</strong><br><strong>'.usuario_PerfilVisual::Show_HTML($usuario,$tipo).'</strong>';
             // Enviar Email 
-            eval('$send	= $mailer'.$enviar.'->setSubject(\''.\anti_injection($_POST['titulo']).' - '.SISTEMA_NOME.'\')'.
+            eval('$send	= $mailer'.$enviar.'->setSubject(\''.\Framework\App\Conexao::anti_injection($_POST['titulo']).' - '.SISTEMA_NOME.'\')'.
             '->setFrom(SISTEMA_EMAIL, SISTEMA_NOME)'.
             '->addGenericHeader(\'X-Mailer\', \'PHP/\' . phpversion())'.
             '->addGenericHeader(\'Content-Type\', \'text/html; charset="utf-8"\')'.
@@ -696,10 +696,10 @@ class usuario_Controle extends \Framework\App\Controle
             if($send){
                 $Registro = new \Usuario_Historico_Email_DAO();
                 $Registro->cliente          = $id;
-                $Registro->titulo           = \anti_injection($_POST['titulo']);
+                $Registro->titulo           = \Framework\App\Conexao::anti_injection($_POST['titulo']);
                 $Registro->email_opcional   = $email_opcional;
                 $Registro->nome_opcional    = $nome_opcional;
-                $Registro->mensagem         = \anti_injection($_POST['mensagem']);
+                $Registro->mensagem         = \Framework\App\Conexao::anti_injection($_POST['mensagem']);
                 $Registro->email_usuario    = $usuario->email;
                 $Registro->email_usuario2   = $usuario->email2;
                 $Registro->nome_usuario     = $nome;

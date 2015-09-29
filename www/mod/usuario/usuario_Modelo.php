@@ -88,13 +88,13 @@ class usuario_Modelo extends \Framework\App\Modelo
 
         
        if($tipo!='cliente'){
-            $sql = $this->db->query('SELECT id FROM '.MYSQL_USUARIOS.' WHERE email=\''.\anti_injection($_POST['email']).'\' ORDER BY id DESC LIMIT 1');
+            $sql = $this->db->query('SELECT id FROM '.MYSQL_USUARIOS.' WHERE email=\''.\Framework\App\Conexao::anti_injection($_POST['email']).'\' ORDER BY id DESC LIMIT 1');
             while ($campo = $sql->fetch_object()) {
                $id = $campo->id;
             }
-            eval('$valor = CONFIG_CLI_'.\anti_injection($_POST['nivel_usuario']).'_PRECO;');
+            eval('$valor = CONFIG_CLI_'.\Framework\App\Conexao::anti_injection($_POST['nivel_usuario']).'_PRECO;');
             $dt_vencimento = date("Y-m-d", time() + (FINANCEIRO_DIASVENCIMENTO * 86400));
-            Financeiro_Modelo::MovInt_Inserir($this,$id,$valor,0,'usuario',\anti_injection($_POST['nivel_usuario']),$dt_vencimento);
+            Financeiro_Modelo::MovInt_Inserir($this,$id,$valor,0,'usuario',\Framework\App\Conexao::anti_injection($_POST['nivel_usuario']),$dt_vencimento);
         }
         return 1;
     }

@@ -263,9 +263,9 @@ class Financeiro_AdminControle extends Financeiro_Controle
     public function financas_inserir(){
         
         //data_hora_brasil_eua()
-        $valor = \anti_injection($_POST["valor"]);
+        $valor = \Framework\App\Conexao::anti_injection($_POST["valor"]);
         $user = (int) $_POST["user"];
-        $obs = \anti_injection($_POST["obs"]);
+        $obs = \Framework\App\Conexao::anti_injection($_POST["obs"]);
         $sucesso =  $this->_Modelo->MovExt_Inserir($user,$valor,$obs,1);
         $this->Main();
         if($sucesso===true){
@@ -290,9 +290,9 @@ class Financeiro_AdminControle extends Financeiro_Controle
     public function financas_retirar(){
         
         //data_hora_brasil_eua()
-        $valor = \anti_injection($_POST["valor"]);
+        $valor = \Framework\App\Conexao::anti_injection($_POST["valor"]);
         $user = (int) $_POST["user"];
-        $obs = \anti_injection($_POST["obs"]);
+        $obs = \Framework\App\Conexao::anti_injection($_POST["obs"]);
         $sucesso =  $this->_Modelo->MovExt_Inserir($user,$valor,$obs,0);
         $this->Main();
         if($sucesso===true){

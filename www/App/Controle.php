@@ -200,8 +200,8 @@ abstract class Controle
      * @version 0.4.2
      */
     protected function Enviar_Email_Anexo($id,$arquivo,$nomearquivo){
-        $arquivo = \anti_injection($arquivo);
-        $nomearquivo = \anti_injection($nomearquivo);
+        $arquivo = \Framework\App\Conexao::anti_injection($arquivo);
+        $nomearquivo = \Framework\App\Conexao::anti_injection($nomearquivo);
         // Envia Email
         $usuario = $this->_Modelo->db->Sql_Select('Usuario',Array('id'=>$id),1);
         $nome = $usuario->nome;
@@ -1609,7 +1609,7 @@ readfile($link);*/
                 
                 // recupera Arquivo
                 if($primaria!==false){
-                    $id = \anti_injection($editar[1]);
+                    $id = \Framework\App\Conexao::anti_injection($editar[1]);
                     $objeto = $Modelo->db->Sql_Select($editar[0], Array($primaria[0]=>$id),1);
                 }else{
                     $id = (int) $editar[1];
@@ -1687,7 +1687,7 @@ readfile($link);*/
         // Verifica se é pra Add ou Editar
         if(is_array($dao)){
             $tipo           = 'edit';
-            $tab            = \anti_injection($dao[0]);
+            $tab            = \Framework\App\Conexao::anti_injection($dao[0]);
             
             
             // PRIMARIA
@@ -1698,7 +1698,7 @@ readfile($link);*/
 
             // recupera Arquivo
             if($primaria!==false){
-                $identificador = \anti_injection($dao[1]);
+                $identificador = \Framework\App\Conexao::anti_injection($dao[1]);
                 $objeto = $this->_Modelo->db->Sql_Select($tab, '{sigla}'.$primaria[0].'=\''.$identificador.'\'',1);
             }else{
                 $identificador  = (int) $dao[1];
@@ -1707,7 +1707,7 @@ readfile($link);*/
             if($objeto===false) throw new \Exception('Registro não existe: ID->'.$identificador,404);
         }else{
             $tipo           = 'add';
-            $tab            = \anti_injection($dao);
+            $tab            = \Framework\App\Conexao::anti_injection($dao);
             $class_usada    = $tab.'_DAO';
             $identificador  = false;
             // Cria novo Origem
@@ -1797,7 +1797,7 @@ readfile($link);*/
                     
                     // Vericica se realmente é um array e captura
                     if(isset($_POST[$get]) && is_array($_POST[$get])){
-                        $get = array_unique(\anti_injection($_POST[$get]));
+                        $get = array_unique(\Framework\App\Conexao::anti_injection($_POST[$get]));
                     }
                     
                     // Caso Exista o Mesmo o trata
@@ -1832,7 +1832,7 @@ readfile($link);*/
                             if($ocampos!==false){
                                 foreach($ocampos as &$valor3){
                                     if(isset($_POST[$valor3.'_'.$valor2])){
-                                        $objeto2->$valor3 = \anti_injection($_POST[$valor3.'_'.$valor2]);
+                                        $objeto2->$valor3 = \Framework\App\Conexao::anti_injection($_POST[$valor3.'_'.$valor2]);
                                     }
                                 }
                             }
@@ -1846,7 +1846,7 @@ readfile($link);*/
                     // Pega os posts
                     $get = 'tablink_'.$tabelalinkada['Tabela'];
                     if(isset($_POST[$get]) && is_array($_POST[$get])){
-                        $get = array_unique(\anti_injection($_POST[$get]));
+                        $get = array_unique(\Framework\App\Conexao::anti_injection($_POST[$get]));
                     }
                     if(isset($get) && is_array($get)){
                         $ovalor = $tabelalinkada['BoleanoMultiplo']['Valor'];
@@ -1956,8 +1956,8 @@ readfile($link);*/
             // Variavel Nula
             $js_Extra = '';
             // Captura
-            $select = \anti_injection($_GET['formselect']);
-            $condicao = \anti_injection($_GET['condicao']);
+            $select = \Framework\App\Conexao::anti_injection($_GET['formselect']);
+            $condicao = \Framework\App\Conexao::anti_injection($_GET['condicao']);
             // Trata pra Ver se Tem Chaves
             if(strpos($condicao, '{')!==false){
                 $ext_campo = explode('|', $condicao);
@@ -1969,10 +1969,10 @@ readfile($link);*/
                 $ext_campo = explode('=', $ext_campo);
                 $ext_campo = $ext_campo[0];
                 if(isset($_GET[$ext_campo])){
-                    $mudar = \anti_injection($_GET[$ext_campo]);
+                    $mudar = \Framework\App\Conexao::anti_injection($_GET[$ext_campo]);
                     $condicao = preg_replace('/{(.+)}/U', $mudar, $condicao);
                 }else if(isset($_POST[$ext_campo])){
-                    $mudar = \anti_injection($_POST[$ext_campo]);
+                    $mudar = \Framework\App\Conexao::anti_injection($_POST[$ext_campo]);
                     $condicao = preg_replace('/{(.+)}/U', $mudar, $condicao);
                 }else{
                     $mudar = '0';
@@ -2275,7 +2275,7 @@ readfile($link);*/
                         if($busca===false || empty($busca)) return false;
                         // Procura Pelo Valor dela
                         foreach ($objeto as &$valor2){
-                            if($valor2['mysql_titulo']===$busca[1][0]){
+                            if(isset($valor2['mysql_titulo']) && $valor2['mysql_titulo']===$busca[1][0]){
                                 // Substitui
                                 $valor['mysql_estrangeira'] = preg_replace($pattern, $valor2['edicao']['valor_padrao'], $valor['mysql_estrangeira']);
                                 return true;
@@ -2328,7 +2328,7 @@ readfile($link);*/
                         if($resultado!==false){
                             $valor['edicao']['valor_padrao'] = $resultado;
                         }else{
-                            $valor['edicao']['valor_padrao'] = \anti_injection($_POST[$valor['mysql_titulo']]);
+                            $valor['edicao']['valor_padrao'] = \Framework\App\Conexao::anti_injection($_POST[$valor['mysql_titulo']]);
                         }
                     }
                 }
@@ -2341,7 +2341,7 @@ readfile($link);*/
                     if($resultado!==false){
                         $objeto->$indice = $resultado;
                     }else if(isset($_POST[$indice])){
-                        $objeto->$indice = \anti_injection($_POST[$indice]);
+                        $objeto->$indice = \Framework\App\Conexao::anti_injection($_POST[$indice]);
                     }
                 }
             }
@@ -2427,7 +2427,7 @@ readfile($link);*/
                     {
                         
                         // Atualiza Valor
-                        $valor['edicao']['valor_padrao'] = \anti_injection($_POST[$valor['mysql_titulo']]);
+                        $valor['edicao']['valor_padrao'] = \Framework\App\Conexao::anti_injection($_POST[$valor['mysql_titulo']]);
                     }
                 }else
                 // Para funcionar com modulos da versao 1.0
@@ -2449,7 +2449,7 @@ readfile($link);*/
                     {
                         
                         // Atualiza Valor
-                        $valor['valor_padrao'] = \anti_injection($_POST[$valor['mysql']]);
+                        $valor['valor_padrao'] = \Framework\App\Conexao::anti_injection($_POST[$valor['mysql']]);
                     }
                 }
             }
@@ -2489,12 +2489,12 @@ readfile($link);*/
                         if(isset($_POST['upload_'.$indice]) && $_POST['upload_'.$indice]!=''){
 
                             // Atualiza Valor
-                            $objeto->$indice = \anti_injection($_POST['upload_'.$indice]);
+                            $objeto->$indice = \Framework\App\Conexao::anti_injection($_POST['upload_'.$indice]);
                         }else if(isset($_POST[$indice])){
 
                             // Atualiza Valor
                             //if(isset($_POST[$indice])){
-                                $objeto->$indice = \anti_injection($_POST[$indice]);
+                                $objeto->$indice = \Framework\App\Conexao::anti_injection($_POST[$indice]);
                             /*}else{
                                 $objeto->Atributo_Del($indice);
                             }*/
@@ -2622,8 +2622,8 @@ readfile($link);*/
                 $this->_Visual->Bloco_Menor_CriaJanela(__('Login'));
             }
             /*// carrega menu estatisticas se exister antes de encerrar tudo
-            if(file_exists(MOD_PATH.''.\anti_injection(SISTEMA_MODULO).'/StatC.php')){
-                $this->_Visual->menu['SubMenu']['link'][] = URL_PATH.''.\anti_injection(SISTEMA_MODULO).'/Stat/Modulo';
+            if(file_exists(MOD_PATH.''.\Framework\App\Conexao::anti_injection(SISTEMA_MODULO).'/StatC.php')){
+                $this->_Visual->menu['SubMenu']['link'][] = URL_PATH.''.\Framework\App\Conexao::anti_injection(SISTEMA_MODULO).'/Stat/Modulo';
                 $this->_Visual->menu['SubMenu']['nome'][] = __('Estatisticas');
                 if(SISTEMA_SUB=='Stat' && SISTEMA_MET=='Modulo') $this->_Visual->menu['SubMenu']['ativo'][] = 1;
                 else $this->_Visual->menu['SubMenu']['ativo'][] = 0;

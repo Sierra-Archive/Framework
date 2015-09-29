@@ -301,7 +301,7 @@ class Engenharia_UnidadeControle extends Engenharia_Controle
                 // Variaveis
                 $camponovo = false;
                 $tipo           = __('add');
-                $tab            = \anti_injection($dao);
+                $tab            = \Framework\App\Conexao::anti_injection($dao);
                 $identificador  = 0;
                 // Cria novo Origem
                 eval('$objeto = new '.$tab.'_DAO;');

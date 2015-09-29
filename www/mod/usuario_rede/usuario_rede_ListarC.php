@@ -57,7 +57,7 @@ class usuario_rede_ListarControle extends usuario_rede_Controle
     }
     public function Carrega_Indicados($id,$nivel){
         $usuarioid = (int) $id;
-        $nivel = \anti_injection($nivel);
+        $nivel = \Framework\App\Conexao::anti_injection($nivel);
         
         if($nivel==2) $div = 'secundarios';
         else          $div = 'terciarios';

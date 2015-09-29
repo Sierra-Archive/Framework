@@ -94,18 +94,18 @@ class usuario_mensagem_RelatorioControle extends usuario_mensagem_Controle
     public function Relatorio_Receber(){
         // Trata Parametros
         if(isset($_POST['data_inicial'])){
-            $data_inicial = data_brasil_eua(\anti_injection($_POST['data_inicial']));
+            $data_inicial = data_brasil_eua(\Framework\App\Conexao::anti_injection($_POST['data_inicial']));
         }else{
             $data_inicial = '2014-01-01';
         }
         if(isset($_POST['data_final'])){
-            $data_final = data_brasil_eua(\anti_injection($_POST['data_final']));
+            $data_final = data_brasil_eua(\Framework\App\Conexao::anti_injection($_POST['data_final']));
         }else{
             $data_final = APP_DATA;
         }
         
         if(isset($_POST['tipo_relatorio'])){
-            $tipo_relatorio = \anti_injection($_POST['tipo_relatorio']);
+            $tipo_relatorio = \Framework\App\Conexao::anti_injection($_POST['tipo_relatorio']);
             if($tipo_relatorio==='Aberto'){
                 $titulo = __('Relatório de Chamados Abertos');
                 $tipo_relatorio = 'Aberto';
@@ -136,7 +136,7 @@ class usuario_mensagem_RelatorioControle extends usuario_mensagem_Controle
             $titulo = __('Relatório de Chamados Abertos');
         }
         /*if(isset($_POST['tipo_visual'])){
-            $tipo_visual = \anti_injection($_POST['tipo_visual']);
+            $tipo_visual = \Framework\App\Conexao::anti_injection($_POST['tipo_visual']);
             if($tipo_visual==='imprimir'){
                 $tipo_visual = 'Imprimir';
             }else if($tipo_visual==='pdf'){

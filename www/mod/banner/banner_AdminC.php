@@ -205,8 +205,8 @@ class banner_AdminControle extends banner_Controle
      * 
      */
     public function Banner_UploadVer($camada,$id){
-        $camada = (string) \anti_injection($camada);
-        $id = (int) \anti_injection($id);
+        $camada = (string) \Framework\App\Conexao::anti_injection($camada);
+        $id = (int) \Framework\App\Conexao::anti_injection($id);
        
         
     }

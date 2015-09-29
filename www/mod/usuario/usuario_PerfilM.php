@@ -28,9 +28,9 @@ class usuario_PerfilModelo extends usuario_Modelo
         if($plano<=$this->_Acl->logado_usuario->nivel_usuario) return 0;
         if($plano<0 || $plano>5) return 0;
         $id = (int) \Framework\App\Acl::Usuario_GetID_Static();
-        eval('$valor = CONFIG_CLI_'.\anti_injection($_POST['nivel_usuario']).'_PRECO;');
+        eval('$valor = CONFIG_CLI_'.\Framework\App\Conexao::anti_injection($_POST['nivel_usuario']).'_PRECO;');
         $dt_vencimento = date("Y-m-d", time() + (FINANCEIRO_DIASVENCIMENTO * 86400));
-        Financeiro_Modelo::MovInt_Inserir($this,$id,$valor,0,'usuario',\anti_injection($_POST['nivel_usuario']),$dt_vencimento);
+        Financeiro_Modelo::MovInt_Inserir($this,$id,$valor,0,'usuario',\Framework\App\Conexao::anti_injection($_POST['nivel_usuario']),$dt_vencimento);
         return 1;
     }
     public function Perfilfoto_Upload_Alterar($id,$ext){

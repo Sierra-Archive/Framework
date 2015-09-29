@@ -141,7 +141,7 @@ class Acl{
                     if(isset($_POST['sistema_esquecisenha_login'])){
                         \Framework\App\Session::destroy(false);
                         $this->logado           = false;
-                        $loginPassado = anti_injection($_POST['sistema_esquecisenha_login']);
+                        $loginPassado = Conexao::anti_injection($_POST['sistema_esquecisenha_login']);
 
                         // Procura Login
                         $usuario = $this->_db->Sql_Select('Usuario','{sigla}login=\''.$loginPassado.'\'',1);
@@ -246,7 +246,7 @@ class Acl{
             // se nao tiver sessao, verifica se o post foi acessado, caso contrario verifica se a sessao corresponde ao usuario e senha
             if(isset($_POST['sistema_login']) && isset($_POST['sistema_senha']) && (\Framework\App\Session::get(SESSION_ADMIN_LOG)===false || \Framework\App\Session::get(SESSION_ADMIN_SENHA)===false || \Framework\App\Session::get(SESSION_ADMIN_LOG)=='' || \Framework\App\Session::get(SESSION_ADMIN_SENHA)=='')){
                 // Puxa Login E senha e verifica cadastro
-                $login = \anti_injection($_POST['sistema_login']);
+                $login = \Framework\App\Conexao::anti_injection($_POST['sistema_login']);
                 // Tenta com a Nova Api de Senha mais Segura.
                 $this->logado = $this->Usuario_Senha_Verificar($login, \Framework\App\Sistema_Funcoes::Form_Senha_Blindar($_POST['sistema_senha'],true));
                 // Tenta com a VENHA Api de Senha menos seguras mas que usuários antigos ainda usam.
@@ -809,7 +809,7 @@ class Acl{
     public function Usuario_Senha_Verificar($email=false,$senha=false)
     {
         if($email===false){
-                $email = \anti_injection($_POST['sistema_login']);
+                $email = \Framework\App\Conexao::anti_injection($_POST['sistema_login']);
         }
         if($senha===false){
             $senha = $_POST['sistema_senha'];

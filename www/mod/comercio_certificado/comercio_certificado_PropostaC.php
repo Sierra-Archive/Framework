@@ -307,7 +307,7 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
         if($sucesso===true){
             // Periodicas
             $identificador  = $this->_Modelo->db->Sql_Select('Comercio_Certificado_Proposta', Array(),1,'id DESC');
-            $this->Periodicas_Add($proposta->idcliente,$proposta->idproduto,$identificador->id, \anti_injection($data_aceita));
+            $this->Periodicas_Add($proposta->idcliente,$proposta->idproduto,$identificador->id, \Framework\App\Conexao::anti_injection($data_aceita));
             // Recarrega Main
             $this->Propostas_DashBoard_Show($cliente);  
             Comercio_Certificado_PropostaControle::RecarregaLocalizar();
@@ -365,7 +365,7 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
             $sucesso =  $this->_Modelo->db->Sql_Inserir($proposta);
         }
         // Periodicas
-        $this->Periodicas_Add($proposta->idcliente,$proposta->idproduto,$proposta->id, \anti_injection($data_aceita));
+        $this->Periodicas_Add($proposta->idcliente,$proposta->idproduto,$proposta->id, \Framework\App\Conexao::anti_injection($data_aceita));
         // Recarrega Main
         $this->Propostas_DashBoard_Show($cliente); 
         Comercio_Certificado_PropostaControle::RecarregaLocalizar();
@@ -433,6 +433,7 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
     }
     public function Usuarios_Del($id,$tipo=false){
         
+        
     	$id = (int) $id;
         // Regula Tipo
         if($tipo==='falso'){
@@ -440,34 +441,68 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
         }
         // Puxa usuario e deleta
         $usuario    = $this->_Modelo->db->Sql_Select(  'Usuario',            Array('id'=>$id));
-        if($tipo===false){
-            if($usuario->grupo==CFG_TEC_IDCLIENTE){
-                $tipo = 'cliente';
-                $tipo2 = __('Cliente');
-            }else if($usuario->grupo==CFG_TEC_IDFUNCIONARIO){
-                $tipo = 'funcionario';
-                $tipo2 = __('Funcionário');
-            }
-        }
         
-        $sucesso    =  $this->_Modelo->db->Sql_Delete($usuario);
-        $mensagens  = $this->_Modelo->db->Sql_Select('Usuario_Mensagem',    Array('cliente'=>$id));
-        $this->_Modelo->db->Sql_Delete($mensagens);
-    	if($sucesso===true){
-            $mensagens = array(
-                "tipo" => 'sucesso',
-                "mgs_principal" => $tipo2.' Deletado',
-                "mgs_secundaria" => $tipo2.' Deletado com sucesso'
-            );
-    	}else{
+        // caso usuario exista
+        if($usuario!==false){
+            if($tipo===false){
+                if($usuario->grupo==CFG_TEC_IDCLIENTE){
+                    $tipo = 'cliente';
+                    $tipo2 = __('Cliente');
+                }else if($usuario->grupo==CFG_TEC_IDFUNCIONARIO){
+                    $tipo = 'funcionario';
+                    $tipo2 = __('Funcionário');
+                }else{
+                    $tipo = 'usuario';
+                    $tipo2 = __('Usuário');
+                }
+            }else{
+                if($tipo==='cliente'){
+                    $tipo2 = __('Cliente');
+                }else if($tipo==='funcionario'){
+                    $tipo2 = __('Funcionário');
+                }else{
+                    $tipo = 'usuario';
+                    $tipo2 = __('Usuário');
+                }
+            }
+
+            $sucesso    =  $this->_Modelo->db->Sql_Delete($usuario);
+            if(\Framework\App\Sistema_Funcoes::Perm_Modulos('usuario_mensagem')){
+                $mensagens  = $this->_Modelo->db->Sql_Select('Usuario_Mensagem',    Array('cliente'=>$id));
+                $sucesso2   =  $this->_Modelo->db->Sql_Delete($mensagens);
+            }
+            if($sucesso===true){
+                $mensagens = array(
+                    "tipo" => 'sucesso',
+                    "mgs_principal" => $tipo2.' Deletado',
+                    "mgs_secundaria" => $tipo2.' Deletado com sucesso'
+                );
+            }else{
+                $mensagens = array(
+                    "tipo" => 'erro',
+                    "mgs_principal" => __('Erro'),
+                    "mgs_secundaria" => __('Erro')
+                );
+            }
+            $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+            /*if($tipo==='cliente'){
+                $this->ListarCliente();
+            }else if($tipo==='funcionario'){
+                $this->ListarFuncionario();
+            }else{
+                $this->ListarUsuario();
+            }*/
+            Comercio_Certificado_PropostaControle::RecarregaLocalizar();
+            return true;
+        }else{
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),
-                "mgs_secundaria" => __('Erro')
+                "mgs_secundaria" => __('Esse usuário não existe')
             );
+            $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+            return false;
         }
-        $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
-        Comercio_Certificado_PropostaControle::RecarregaLocalizar();
     }
     protected function Periodicas_Add($cliente,$produto,$proposta,$data){
         $produto    = (int) $produto;

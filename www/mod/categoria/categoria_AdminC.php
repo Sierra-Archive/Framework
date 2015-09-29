@@ -123,8 +123,8 @@ class categoria_AdminControle extends categoria_Controle
             $objeto->mod_acc    = $modulo;
             $sucesso = $this->_Modelo->db->Sql_Inserir($objeto);
             // Gambiarra para Atualiza select denovo
-            $select = \anti_injection($_GET['formselect']);
-            $condicao = \anti_injection($_GET['condicao']);
+            $select = \Framework\App\Conexao::anti_injection($_GET['formselect']);
+            $condicao = \Framework\App\Conexao::anti_injection($_GET['condicao']);
             $opcoes = $this->_Modelo->db->Tabelas_CapturaExtrangeiras($condicao);   
             $html = '';
             if($opcoes!==false && !empty($opcoes)){

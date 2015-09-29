@@ -313,7 +313,7 @@ Class Sistema_Funcoes {
      * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
     public static function Form_Senha_Blindar($senha,$protecao_extra = false,$datetime = false){
-        $senha = \anti_injection($senha);
+        $senha = \Framework\App\Conexao::anti_injection($senha);
         if($protecao_extra){
             if($datetime===false) $datetime = time();
             // Já que Existe um Super Banco de Dados na Internet, que processa

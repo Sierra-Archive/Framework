@@ -516,7 +516,7 @@ class Datatable {
         $key = '?';
         $a[] = array(
         'key' => $key,
-        'val' => \anti_injection($val),
+        'val' => \Framework\App\Conexao::anti_injection($val),
         'type' => $type
         );
         return $key;

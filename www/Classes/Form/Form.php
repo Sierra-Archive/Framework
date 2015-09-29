@@ -51,8 +51,8 @@ class Form
         $this->ColunaForm = $ColunaForm;
         // Popup SELECT
         if(isset($_GET['formselect']) && $_GET['formselect']!='' && isset($_GET['condicao']) && $_GET['condicao']!=''){
-            $extra = '?formselect='.\anti_injection($_GET['formselect']).
-                     '&condicao='.\anti_injection($_GET['condicao']);
+            $extra = '?formselect='.\Framework\App\Conexao::anti_injection($_GET['formselect']).
+                     '&condicao='.\Framework\App\Conexao::anti_injection($_GET['condicao']);
             $this->form_dependencia = true;
         }else{
             $extra = '';
@@ -157,7 +157,7 @@ class Form
         //Aumenta o id e Add javascript no Visual
         ++self::$tab_index;
         if($id!==false){
-            $id = \anti_injection($id);
+            $id = \Framework\App\Conexao::anti_injection($id);
         }
         $Registro   = &\Framework\App\Registro::getInstacia();
         $Visual     = $Registro->_Visual;
