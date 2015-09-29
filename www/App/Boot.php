@@ -46,8 +46,13 @@ class Boot {
         $tempo = new \Framework\App\Tempo('BOOT Inicial');   
         // Inicia SEssao e Classes PARTE 1
         \Framework\App\Session::init();
-        $Registro->_Conexao = new \Framework\App\Conexao();
-        $Registro->_Request = new \Framework\App\Request();
+        
+        if($Registro->_Conexao===false){
+            $Registro->_Conexao = new \Framework\App\Conexao();
+        }
+        if($Registro->_Request===false){
+            $Registro->_Request = new \Framework\App\Request();
+        }
         
         // Recupera pra evitar multiplas solicitacoes
         $getmetodo          = $Registro->_Request->getMetodo();

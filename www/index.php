@@ -145,8 +145,8 @@ try{
 // Se der MERDA, Dispara Erro
 catch(Exception $e){
     if(SISTEMA_DEBUG===true){
-        echo  'Mensagem: '.$e->getMessage().'<br>Codigo: '.$e->getCode().'<br>Arquivo: '.$e->getFile().'<br>Linha: '.$e->getLine();
-        echo  '<br>Previus: '.$e->getPrevious().'<br>Traço: '.$e->getTraceAsString(); exit;
+        echo Erro_Formatar( $e->getCode(), $e->getMessage(), $e->getFile(), $e->getLine(),$e->getPrevious());
+        exit;
     }else{
         // Chama Erro
         if($e->getCode()!=404 && $e->getCode()!=403){

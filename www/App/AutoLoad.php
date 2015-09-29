@@ -215,19 +215,24 @@ function Erro_Get_Leve($error, $message,$_1,$_2)
  * @version 0.4.2
  */
 function Erro_Get_Fatal() {
-    if(SISTEMA_DEBUG!==true){
-        $errfile = "unknown file";
-        $errstr  = "shutdown";
-        $errno   = E_CORE_ERROR;
-        $errline = 0;
-        $error = error_get_last();
-        if( $error !== NULL) {
+    $errfile = "unknown file";
+    $errstr  = "shutdown";
+    $errno   = E_CORE_ERROR;
+    $errline = 0;
+    $error = error_get_last();
+    if( $error !== NULL) {
+        if(SISTEMA_DEBUG!==true){
             $errno   = $error["type"];
             $errfile = $error["file"];
             $errline = $error["line"];
             $errstr  = $error["message"];
             // Enviar Email
             Erro_Email($errno, $errstr, $errfile, $errline);
+        }else{
+            
+            echo Erro_Formatar( 2800, $errstr, $errfile, $errline);
+            exit;
+            //throw new \Exception($errstr.'<br>Erro:'.$errno.'<br>Arquivo: '.$errfile.'<br>Linha:'.$errline,2800);
         }
     }
 }
@@ -251,7 +256,7 @@ function Erro_Formatar( $errno, $errstr, $errfile, $errline, $previ = '', $trace
     
     
     if(isset($_GET['url'])){
-        $url = \Framework\App\Conexao::anti_injection($_GET['url']);
+        $url = htmlspecialchars($_GET['url']);
     }else{
         $url = '';
     }
@@ -264,18 +269,33 @@ function Erro_Formatar( $errno, $errstr, $errfile, $errline, $previ = '', $trace
     $content .= '<tr valign=\'top\'><td><b>Previa</b></td><td><pre>'.htmlspecialchars($previ, ENT_QUOTES).'</pre></td></tr>';
     $content .= '<tr valign=\'top\'><td><b>Extra</b></td><td><pre>-----------</pre></td></tr>';
     $content .= '<tr valign=\'top\'><td><b>Logado</b></td><td><pre>'.\Framework\App\Session::get(SESSION_ADMIN_LOG).'</pre></td></tr>';
-    $content .= '<tr valign=\'top\'><td><b>Url</b></td><td><pre>'.\Framework\App\Conexao::anti_injection($url).'</pre></td></tr>';
+    $content .= '<tr valign=\'top\'><td><b>Url</b></td><td><pre>'.$url.'</pre></td></tr>';
     $content .= '<tr valign=\'top\'><td><b>POST</b></td><td><pre>'.htmlspecialchars(print_r($_POST,true)).'</pre></td></tr>';
     $content .= '</tbody></table>';
     
     
     if(is_array($trace)){
         $content .= '<h2>Traço</h2>';
-        $content  = '<table><thead bgcolor=\'#c8c8c8\'><th>Arquivo/Linha</th><th>Função</th><th>Argumentos</th></thead><tbody>';
+        $content .= '<table><thead bgcolor=\'#c8c8c8\'><th>Arquivo/Linha</th><th>Função</th><th>Argumentos</th></thead><tbody>';
         while(!empty($trace)){
             $linha = array_pop($trace);
-            $content .= '<tr valign=\'top\'><td><b>'.$linha['file'].':'.$linha['line'].'</b></td>'.
-                    '<td><pre>'.$linha['function'].'</pre></td>';
+            if(isset($linha['file'])){
+                $file = $linha['file'];
+            }else{
+                $file = 'Nao Reconhecido';
+            }
+            if(isset($linha['line'])){
+                $line = $linha['line'];
+            }else{
+                $line = 'Nao Reconhecido';
+            }
+            if(isset($linha['function'])){
+                $function = $linha['function'];
+            }else{
+                $function = 'Nao Reconhecido';
+            }
+            $content .= '<tr valign=\'top\'><td><b>'.$file.':'.$line.'</b></td>'.
+                    '<td><pre>'.$function.'</pre></td>';
             
             $content .= '<td>';
             $i = 1;

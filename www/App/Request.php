@@ -37,12 +37,12 @@ class Request
         
         // Extrai primeiro elemento como Controlador
         if(is_array($url) && count($url)>0){
-            $this->_modulo = \Framework\App\Conexao::anti_injection(array_shift($url)); 
+            $this->_modulo = array_shift($url); 
             if($this->isAjax()===true){
                 define('LAYOULT_IMPRIMIR', 'AJAX');
                 
                 if($this->_modulo =='Modelo'){
-                    $this->_modulo = \Framework\App\Conexao::anti_injection(array_shift($url)); 
+                    $this->_modulo = array_shift($url); 
                     $this->_url = substr($this->_url, 7);
                     define('REQUISICAO_TIPO', 'MODELO');
                 }
@@ -50,10 +50,10 @@ class Request
                 // SE tiver com Ajax no Comeco, Retira, foi passado como Ajax, 
                 // mas não é ajax.
                 if($this->_modulo =='ajax'){
-                    $this->_modulo = \Framework\App\Conexao::anti_injection(array_shift($url));
+                    $this->_modulo = array_shift($url);
                 }else if($this->_modulo =='Modelo'){
                     // Se nao for Ajax, Remove E nao Coloca do Tipo Modelo
-                    $this->_modulo = \Framework\App\Conexao::anti_injection(array_shift($url)); 
+                    $this->_modulo = array_shift($url); 
                     $this->_url = substr($this->_url, 7);
                 }
                 define('LAYOULT_IMPRIMIR', 'COMPLETO');
@@ -69,13 +69,13 @@ class Request
         
         // Extrai primeiro elemento como submodulo
         if(is_array($url) && count($url)>0){
-            $this->_submodulo   = \Framework\App\Conexao::anti_injection(array_shift($url));
+            $this->_submodulo   = array_shift($url);
         }else{
             $this->_submodulo = DEFAULT_SUBMODULO;
         }
         // Extrai primeiro elemento como Metodo
         if(is_array($url) && count($url)>0){
-            $this->_metodo      = \Framework\App\Conexao::anti_injection(array_shift($url));
+            $this->_metodo      = array_shift($url);
         }else{
             $this->_metodo = DEFAULT_METODO;
         }
