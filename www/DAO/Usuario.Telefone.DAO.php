@@ -57,7 +57,7 @@ final Class Usuario_Telefone_DAO extends Framework\App\Dao
                 'mysql_null'        => true,  // nulo ?
                 'mysql_default'     => 0, // valor padrao
                 'mysql_primary'     => false,  // chave primaria
-                'mysql_estrangeira' => 'US.id|US.nome', // chave estrangeira     ligacao|apresentacao|condicao
+                'mysql_estrangeira' => 'S.id|S.nome', // chave estrangeira     ligacao|apresentacao|condicao
                 'mysql_autoadd'     => false,
                 'mysql_comment'     => false,
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados

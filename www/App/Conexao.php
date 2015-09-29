@@ -2270,7 +2270,7 @@ final class Conexao
         if($Registro->_Conexao===false){
             $Registro->_Conexao = new \Framework\App\Conexao();
         }
-        $Registro->_Conexao->EscapeSql($sql,$tags);
+        return $Registro->_Conexao->EscapeSql($sql,$tags);
     }
     public function EscapeSql($sql,$tags=false){
          if(is_array($sql)){

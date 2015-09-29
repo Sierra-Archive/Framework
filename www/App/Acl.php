@@ -245,18 +245,15 @@ class Acl{
             // Caso nao tenha sessao quer dizer que tem POST
             // se nao tiver sessao, verifica se o post foi acessado, caso contrario verifica se a sessao corresponde ao usuario e senha
             if(isset($_POST['sistema_login']) && isset($_POST['sistema_senha']) && (\Framework\App\Session::get(SESSION_ADMIN_LOG)===false || \Framework\App\Session::get(SESSION_ADMIN_SENHA)===false || \Framework\App\Session::get(SESSION_ADMIN_LOG)=='' || \Framework\App\Session::get(SESSION_ADMIN_SENHA)=='')){
-                // Puxa Login E senha e verifica cadastro
-                $login = \Framework\App\Conexao::anti_injection($_POST['sistema_login']);
+
                 // Tenta com a Nova Api de Senha mais Segura.
-                $this->logado = $this->Usuario_Senha_Verificar($login, \Framework\App\Sistema_Funcoes::Form_Senha_Blindar($_POST['sistema_senha'],true));
-                // Tenta com a VENHA Api de Senha menos seguras mas que usuários antigos ainda usam.
-                if($this->logado===false) $this->logado = $this->Usuario_Senha_Verificar($login, \Framework\App\Sistema_Funcoes::Form_Senha_Blindar($_POST['sistema_senha'],false));
+                $this->logado = $this->Usuario_Senha_Verificar();
                 
                 // Avisa se login nao teve resultado
                 if($this->logado===false){
                     // Verifica se Possui Modulo PRedial e corresponde a um Apartamento sem nenhum cadastro
                     if(\Framework\App\Sistema_Funcoes::Perm_Modulos('predial') && $senha == 'd41d8cd98f00b204e9800998ecf8427e' && strpos($login, '/')!==false){
-                        $login = explode($login, '/');
+                        $login = explode(\Framework\App\Conexao::anti_injection($_POST['sistema_login']), '/');
                         if(!isset($login[1])){
                             // Deleta Sessoes e Puxa Erro
                             $this->Usuario_Login_Sair();
@@ -316,6 +313,7 @@ class Acl{
                     $this->Fluxo_Senha_Invalida();
                 }
             }
+        
             // SE A PAGINA FOR PROIBIDA PARA USUARIOS DESLOGADOS TRAVA
             if(TEMA_LOGIN===true && $this->logado===false && $this->_Request->getSubModulo()!=='erro' && $this->_Request->getSubModulo()!=='Recurso' && $this->_Request->getSubModulo()!=='localidades'){
                 $this->_Registro->_Visual = new \Framework\App\Visual();
@@ -825,6 +823,7 @@ class Acl{
             // Se for Igual Passa
             if($this->logado_usuario->senha===$senha){
                 $this->Usuario_Logar($email,$senha,$this->logado_usuario->id);
+                 $this->logado           = true;
                 return true;
             }
             // Se nao, verifica o time da senha, pra poder compilar para comparação
@@ -834,10 +833,12 @@ class Acl{
                 // pegarem a senha criptografada, quando conseguirem descobrir uma chave que abre.
                 // O usuário já irá ter trocado de senha #update
                 $this->Usuario_Logar($email,$senha,$this->logado_usuario->id);
+                 $this->logado           = true;
                 return true;
             }else if($this->logado_usuario->senha===\Framework\App\Sistema_Funcoes::Form_Senha_Blindar($senha)){
                 // Necessita Trocar Senha
                 $this->Usuario_Logar($email,$senha,$this->logado_usuario->id);
+                 $this->logado           = true;
                 return true;
             }
             // Senha Errada
@@ -845,6 +846,7 @@ class Acl{
         // CAso nao AChe
         $this->logado_usuario = new \Usuario_DAO();
         $this->logado_usuario->id = 0;
+        $this->logado           = false;
         return false;
         
     }

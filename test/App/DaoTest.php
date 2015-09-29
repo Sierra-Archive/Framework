@@ -161,8 +161,15 @@ class DaoTest extends \PHPUnit_Framework_TestCase {
                     // Testa Extrangeiras se for diferente de false
                     if($valor2['mysql_estrangeira']!==false){
                         $extrangeiras = explode('|',$valor2['mysql_estrangeira']);
-                        $this->assertFalse((sizeof($extrangeiras)===1),'Classe Dao: '.$valor['class'].' (Coluna: '.$valor2['mysql_titulo'].') -> "mysql_estrangeira" Inválida');
-                        $this->assertFalse((sizeof($extrangeiras)>3),'Classe Dao: '.$valor['class'].' (Coluna: '.$valor2['mysql_titulo'].') -> "mysql_estrangeira" Inválida');
+                        $this->assertFalse((sizeof($extrangeiras)===1),'Classe Dao: '.$valor['class'].' (Coluna: '.$valor2['mysql_titulo'].') -> "mysql_estrangeira" Inválida: '.$valor2['mysql_estrangeira']);
+                        $this->assertFalse((sizeof($extrangeiras)>3),'Classe Dao: '.$valor['class'].' (Coluna: '.$valor2['mysql_titulo'].') -> "mysql_estrangeira" Inválida: '.$valor2['mysql_estrangeira']);
+                                                
+                        // Verifica Ligacao
+                        $ligacao = explode('.',$extrangeiras[0]);
+                        $this->assertTrue((sizeof($ligacao)===2),'Classe Dao: '.$valor['class'].' (Coluna: '.$valor2['mysql_titulo'].') -> "mysql_estrangeira" Select Invalida: '.$valor2['mysql_estrangeira']);
+                        $tabela = \Framework\App\Conexao::Tabelas_GetSiglas_Recolher($ligacao[0]);
+                        $this->assertTrue(is_array($tabela),'Classe Dao: '.$valor['class'].' (Coluna: '.$valor2['mysql_titulo'].') -> "mysql_estrangeira" Tabela Invalida: '.$ligacao[0]);
+
                     }
 
 

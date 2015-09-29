@@ -86,7 +86,7 @@ final Class Desenvolvimento_Projeto_Tarefa_DAO extends Framework\App\Dao
                 'mysql_null'        => true,  // nulo ?
                 'mysql_default'     => 0, // valor padrao
                 'mysql_primary'     => false,  // chave primaria
-                'mysql_estrangeira' => 'P.id|P.nome', // chave estrangeira     ligacao|apresentacao|condicao
+                'mysql_estrangeira' => 'DP.id|DP.nome', // chave estrangeira     ligacao|apresentacao|condicao
                 'mysql_autoadd'     => false,
                 'mysql_comment'     => false,
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados

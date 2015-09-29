@@ -65,8 +65,6 @@ abstract class Controle
         $this->_Modelo      = &$this->_Registro->_Modelo;
         $this->_Visual      = &$this->_Registro->_Visual;
         
-        
-        
         /*$manutencao = new \Framework\Classes\SierraTec_Manutencao();
         $manutencao->Atualizacao_Version(2.2);
         */
