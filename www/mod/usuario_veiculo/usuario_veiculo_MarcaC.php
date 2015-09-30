@@ -106,7 +106,7 @@ class usuario_veiculo_MarcaControle extends usuario_veiculo_Controle
     public function Marcas_Add2(){
         $titulo     = __('Marca Adicionada com Sucesso');
         $dao        = 'Usuario_Veiculo_Marca';
-        $funcao     = '$this->Main();';
+        $funcao     = '$this->Marcas();';
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = __('Marca cadastrada com sucesso.');
         $alterar    = Array();
@@ -140,7 +140,7 @@ class usuario_veiculo_MarcaControle extends usuario_veiculo_Controle
     public function Marcas_Edit2($id){
         $titulo     = __('Marca Editada com Sucesso');
         $dao        = Array('Usuario_Veiculo_Marca',$id);
-        $funcao     = '$this->Main();';
+        $funcao     = '$this->Marcas();';
         $sucesso1   = __('Marca Alterada com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
@@ -176,7 +176,7 @@ class usuario_veiculo_MarcaControle extends usuario_veiculo_Controle
         }
         $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
         
-        $this->Main();
+        $this->Marcas();
         
         $this->_Visual->Json_Info_Update('Titulo', __('Marca deletada com Sucesso'));  
         $this->_Visual->Json_Info_Update('Historico', false);  

@@ -18,6 +18,8 @@ class predial_ApartControle extends predial_Controle
     * @version 0.4.2
     */
     public function Main(){
+        \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'predial/Apart/Aparts');
+        return false;
     }
     static function Endereco_Apart($true=true){
         $Registro = &\Framework\App\Registro::getInstacia();
@@ -114,7 +116,7 @@ class predial_ApartControle extends predial_Controle
     public function Aparts_Add2(){
         $titulo     = __('Apartamento Adicionado com Sucesso');
         $dao        = 'Predial_Bloco_Apart';
-        $funcao     = '$this->Main();';
+        $funcao     = '$this->Aparts();';
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = __('Apartamento cadastrado com sucesso.');
         $alterar    = Array();

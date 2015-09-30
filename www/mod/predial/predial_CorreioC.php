@@ -18,6 +18,8 @@ class predial_CorreioControle extends predial_Controle
     * @version 0.4.2
     */
     public function Main(){
+        \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'predial/Correio/Correios');
+        return false;
     }
     static function Endereco_Correio($true=true){
         $Registro = &\Framework\App\Registro::getInstacia();

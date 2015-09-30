@@ -18,7 +18,7 @@ $config_Menu = function (){
             'Icon'                  => 'building',
             'Filhos'                => Array('Eventos'=>Array(
                 'Nome'                  => __('Eventos'),
-                'Link'                  => 'Evento/Evento/Main',
+                'Link'                  => 'Evento/Evento/Eventos',
                 'Gravidade'             => 90,
                 'Img'                   => '',
                 'Icon'                  => 'building',

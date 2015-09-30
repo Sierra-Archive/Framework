@@ -8,7 +8,7 @@ class Engenharia_EmpreendimentoControle extends Engenharia_Controle
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
         if($true===true){
-            $_Controle->Tema_Endereco(__('Empreendimentos'),'Engenharia/Empreendimento/Main');
+            $_Controle->Tema_Endereco(__('Empreendimentos'),'Engenharia/Empreendimento/Empreendimentos');
         }else{
             $_Controle->Tema_Endereco(__('Empreendimentos'));
         }
@@ -44,7 +44,7 @@ class Engenharia_EmpreendimentoControle extends Engenharia_Controle
             $tabela['Data Fim'][$i]                 =   $valor->data_fim;
             $tabela['Data Entrega'][$i]             =   $valor->data_entrega;
             $tabela['Qnt de Unidades'][$i]          =   $valor->unidades;
-            $tabela['Funções'][$i]                  =   $Visual->Tema_Elementos_Btn('Visualizar' ,Array('Visualizar Empreendimento'    ,'Engenharia/Unidade/Main/'.$valor->id.'/'    ,'')).
+            $tabela['Funções'][$i]                  =   $Visual->Tema_Elementos_Btn('Visualizar' ,Array('Visualizar Empreendimento'    ,'Engenharia/Unidade/Unidades/'.$valor->id.'/'    ,'')).
                                                         $Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Empreendimento'        ,'Engenharia/Empreendimento/Empreendimentos_Edit/'.$valor->id.'/'    ,'')).
                                                         $Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Empreendimento'       ,'Engenharia/Empreendimento/Empreendimentos_Del/'.$valor->id.'/'     ,'Deseja realmente deletar esse Empreendimento ?'));
             ++$i;
@@ -127,7 +127,7 @@ class Engenharia_EmpreendimentoControle extends Engenharia_Controle
     public function Empreendimentos_Add2(){
         $titulo     = __('Empreendimento Adicionado com Sucesso');
         $dao        = 'Engenharia_Empreendimento';
-        $funcao     = '$this->Main();';
+        $funcao     = '$this->Empreendimentos();';
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = __('Empreendimento cadastrado com sucesso.');
         $alterar    = Array();
@@ -160,7 +160,7 @@ class Engenharia_EmpreendimentoControle extends Engenharia_Controle
     public function Empreendimentos_Edit2($id){
         $titulo     = __('Empreendimento Editado com Sucesso');
         $dao        = Array('Engenharia_Empreendimento',$id);
-        $funcao     = '$this->Main();';
+        $funcao     = '$this->Empreendimentos();';
         $sucesso1   = __('Empreendimento Alterado com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
@@ -196,7 +196,7 @@ class Engenharia_EmpreendimentoControle extends Engenharia_Controle
         }
         $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
         
-        $this->Main();
+        $this->Empreendimentos();
         
         $this->_Visual->Json_Info_Update('Titulo', __('Empreendimento deletado com Sucesso'));
         $this->_Visual->Json_Info_Update('Historico', false);

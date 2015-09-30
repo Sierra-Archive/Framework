@@ -771,7 +771,7 @@ final class Conexao
             
             // Faz query com valores 
             foreach ($tabela_campos_valores as $indice =>&$valor){
-                if($valor!==false){
+                if($valor!==false && $valor!== NULL){
                     // Transforma pra pasar pra mysql
                     $valor_add = $Objeto->bd_set($indice);
                     // SE for int nao precisa de aspas
@@ -2281,7 +2281,8 @@ final class Conexao
              $sql = $seg;
          }else{
             // remove palavras que contenham sintaxe sql
-            $sql = addcslashes($this->mysqli->real_escape_string($sql), '%_');
+            //$sql = $this->mysqli->real_escape_string($sql);
+            //$sql = addcslashes($this->mysqli->real_escape_string($sql), '%_');
             if($tags===false){
                 $sql = strip_tags($sql);//tira tags html e php
             }

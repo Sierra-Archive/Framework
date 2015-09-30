@@ -18,9 +18,8 @@ class predial_AdvertenciaControle extends predial_Controle
     * @version 0.4.2
     */
     public function Main(){
-        $this->Advertencias();
-        // ORGANIZA E MANDA CONTEUDO
-        $this->_Visual->Json_Info_Update('Titulo', __('Advertências')); 
+        \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'predial/Advertencia/Advertencias');
+        return false;
     }
     static function Endereco_Advertencia($true=true){
         $Registro = &\Framework\App\Registro::getInstacia();
@@ -116,7 +115,7 @@ class predial_AdvertenciaControle extends predial_Controle
     public function Advertencias_Add2(){
         $titulo     = __('Advertência Adicionada com Sucesso');
         $dao        = 'Predial_Bloco_Apart_Advertencia';
-        $funcao     = '$this->Main();';
+        $funcao     = '$this->Advertencias();';
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = __('Advertência cadastrada com sucesso.');
         $alterar    = Array();
@@ -220,7 +219,7 @@ class predial_AdvertenciaControle extends predial_Controle
     public function Advertencias_Edit2($id){
         $titulo     = __('Advertência Editada com Sucesso');
         $dao        = Array('Predial_Bloco_Apart_Advertencia',$id);
-        $funcao     = '$this->Main();';
+        $funcao     = '$this->Advertencias();';
         $sucesso1   = __('Advertência Alterada com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
@@ -256,7 +255,7 @@ class predial_AdvertenciaControle extends predial_Controle
         }
         $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
         
-        $this->Main();
+        $this->Advertencias();
         
         $this->_Visual->Json_Info_Update('Titulo', __('Advertência deletada com Sucesso'));
         $this->_Visual->Json_Info_Update('Historico', false);

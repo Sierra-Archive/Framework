@@ -35,9 +35,8 @@ class usuario_AnexoControle extends usuario_Controle
     * @version 0.4.2
     */
     public function Main($id=false,$tipo='Usuarios'){
-        $this->Anexar($id,$tipo);
-        // ORGANIZA E MANDA CONTEUDO
-        $this->_Visual->Json_Info_Update('Titulo', __('Todos os tipos de Usuários'));         
+        \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'usuario/Anexo/Anexar/'.$id.'/'.$tipo);
+        return false;   
     }
     public function Anexar($id=false,$tipo='Usuarios'){
         // PEga usuario

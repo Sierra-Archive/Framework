@@ -32,9 +32,8 @@ class usuario_veiculo_ModeloControle extends usuario_veiculo_Controle
     * @version 0.4.2
     */
     public function Main(){
-        $this->Modelos();
-        // ORGANIZA E MANDA CONTEUDO
-        $this->_Visual->Json_Info_Update('Titulo', __('Modelos')); 
+        \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'usuario_veiculo/Modelo/Modelos');
+        return false;
     }
     static function Endereco_Veiculo_Modelo($true=true){
         $Registro = &\Framework\App\Registro::getInstacia();
@@ -108,7 +107,7 @@ class usuario_veiculo_ModeloControle extends usuario_veiculo_Controle
     public function Modelos_Add2(){
         $titulo     = __('Modelo Adicionada com Sucesso');
         $dao        = 'Usuario_Veiculo_Modelo';
-        $funcao     = '$this->Main();';
+        $funcao     = '$this->Modelos();';
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = __('Modelo cadastrada com sucesso.');
         $alterar    = Array();
@@ -142,7 +141,7 @@ class usuario_veiculo_ModeloControle extends usuario_veiculo_Controle
     public function Modelos_Edit2($id){
         $titulo     = __('Modelo Editada com Sucesso');
         $dao        = Array('Usuario_Veiculo_Modelo',$id);
-        $funcao     = '$this->Main();';
+        $funcao     = '$this->Modelos();';
         $sucesso1   = __('Modelo Alterada com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
@@ -178,7 +177,7 @@ class usuario_veiculo_ModeloControle extends usuario_veiculo_Controle
         }
         $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
         
-        $this->Main();
+        $this->Modelos();
         
         $this->_Visual->Json_Info_Update('Titulo', __('Modelo deletado com Sucesso'));  
         $this->_Visual->Json_Info_Update('Historico', false);  

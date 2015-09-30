@@ -348,7 +348,7 @@ class Financeiro_Modelo extends \Framework\App\Modelo
             $columns[] = array( 'db' => 'id', 'dt' => $numero,'formatter' => function( $d, $row ) { 
                 $html = ''; 
                 $html .= '<a class="lajax" acao="" href="'.URL_PATH.'comercio/Estoque/Estoques/'.$d.'">'.
-                       ''.comercio_EstoqueControle::Estoque_Retorna($valor->id); 
+                       ''.comercio_EstoqueControle::Estoque_Retorna($d); 
                 return $html; 
             });  //'Estoque';
             if($perm_view)      $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Visualizar\' ,Array(\'Visualizar Estoque\'    ,\'comercio/Estoque/Estoques/\'.$d.\'/\'    ,\'\'),true);';

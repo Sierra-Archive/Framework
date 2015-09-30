@@ -10,14 +10,7 @@ $config_Modulo = function (){
 };
 $config_Menu = function (){
     return Array(
-        /*'Noticias'=>Array(
-            'Nome'                  => __('Noticias'),
-            'Link'                  => 'noticia/Listar/Main',
-            'Gravidade'             => 75,
-            'Img'                   => 'turboadmin/m-dashboard.png',
-            'Icon'                  => 'rss',
-            'Filhos'                => false,
-        ),*/'Administrar'=>Array(
+        'Administrar'=>Array(
             'Filhos'                => Array('Noticias'=>Array(
                 'Nome'                  => __('Noticias'),
                 'Link'                  => 'noticia/Admin/Noticias',

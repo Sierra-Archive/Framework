@@ -103,7 +103,7 @@ class Financeiro_FinancaControle extends Financeiro_Controle
     public function Financas_Add2(){
         $titulo     = __('Finança Adicionada com Sucesso');
         $dao        = 'Financeiro_Financa';
-        $funcao     = '$this->Main();';
+        $funcao     = '$this->Financas();';
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = __('Finança cadastrada com sucesso.');
         $alterar    = Array();
@@ -156,7 +156,7 @@ class Financeiro_FinancaControle extends Financeiro_Controle
     public function Financas_Edit2($id){
         $titulo     = __('Finança Editada com Sucesso');
         $dao        = Array('Financeiro_Financa',$id);
-        $funcao     = '$this->Main();';
+        $funcao     = '$this->Financas();';
         $sucesso1   = __('Finança Alterada com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
@@ -192,7 +192,7 @@ class Financeiro_FinancaControle extends Financeiro_Controle
         }
         $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
         
-        $this->Main();
+        $this->Financas();
         
         $this->_Visual->Json_Info_Update('Titulo', __('Finança deletada com Sucesso'));  
         $this->_Visual->Json_Info_Update('Historico', false);  

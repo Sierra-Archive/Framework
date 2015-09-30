@@ -1715,7 +1715,9 @@ readfile($link);*/
         }
         
         // Adiciona OU Edita Valores
+        var_dump($objeto);
         self::mysql_AtualizaValores($objeto);
+        var_dump($objeto);
         
         // Adiciona Valores
         if(is_array($colocar) && $colocar!==false){
@@ -1803,7 +1805,14 @@ readfile($link);*/
                         // Busca AS caracteristicas da tabela mandando a sigla como parametro
                         $nome_da_tab        = \Framework\App\Conexao::Tabelas_GetSiglas_Recolher($tabelalinkada['Tabela']);
                         $nome_da_tab        = $nome_da_tab['classe'];
-                        $nome_da_tab_class  = $nome_da_tab.'_DAO';
+                        
+                        // Trata o Nome
+                        if(strpos($nome_da_tab, '_DAO')===false){
+                            $nome_da_tab_class  = $nome_da_tab.'_DAO';
+                        }
+                        else{
+                            $nome_da_tab_class = $nome_da_tab;
+                        }
 
                         // Seleciona Todas as Opções
                         $where = Array($tabelalinkada['SelectMultiplo']['Linkar'] => $identificador);
@@ -2449,6 +2458,8 @@ readfile($link);*/
                         // Atualiza Valor
                         $valor['valor_padrao'] = \Framework\App\Conexao::anti_injection($_POST[$valor['mysql']]);
                     }
+                }else if(isset($valor['mysql_default'])){
+                    $valor['valor_padrao'] = $valor['mysql_default'];
                 }
             }
         }

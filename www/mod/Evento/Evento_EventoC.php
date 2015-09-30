@@ -154,7 +154,7 @@ class Evento_EventoControle extends Evento_Controle
     public function Eventos_Add2(){
         $titulo     = __('Evento Adicionado com Sucesso');
         $dao        = 'Evento';
-        $funcao     = '$this->Main();';
+        $funcao     = '$this->Eventos();';
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = __('Evento cadastrado com sucesso.');
         $alterar    = Array();

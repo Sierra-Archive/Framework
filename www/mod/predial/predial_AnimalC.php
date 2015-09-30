@@ -18,9 +18,8 @@ class predial_AnimalControle extends predial_Controle
     * @version 0.4.2
     */
     public function Main(){
-        $this->Animais();
-        // ORGANIZA E MANDA CONTEUDO
-        $this->_Visual->Json_Info_Update('Titulo', __('Animais')); 
+        \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'predial/Animal/Animais');
+        return false;
     }
     static function Endereco_Animal($true=true){
         $Registro = &\Framework\App\Registro::getInstacia();
@@ -113,7 +112,7 @@ class predial_AnimalControle extends predial_Controle
     public function Animais_Add2(){
         $titulo     = __('Animal Adicionado com Sucesso');
         $dao        = 'Predial_Bloco_Apart_Animal';
-        $funcao     = '$this->Main();';
+        $funcao     = '$this->Animais();';
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = __('Animal cadastrado com sucesso.');
         $alterar    = Array();
@@ -147,7 +146,7 @@ class predial_AnimalControle extends predial_Controle
     public function Animais_Edit2($id){
         $titulo     = __('Animal Editado com Sucesso');
         $dao        = Array('Predial_Bloco_Apart_Animal',$id);
-        $funcao     = '$this->Main();';
+        $funcao     = '$this->Animais();';
         $sucesso1   = __('Animal Alterado com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
@@ -183,7 +182,7 @@ class predial_AnimalControle extends predial_Controle
         }
         $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
         
-        $this->Main();
+        $this->Animais();
         
         $this->_Visual->Json_Info_Update('Titulo', __('Animal deletado com Sucesso'));  
         $this->_Visual->Json_Info_Update('Historico', false);  

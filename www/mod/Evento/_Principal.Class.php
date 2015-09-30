@@ -116,7 +116,7 @@ class Evento_Principal implements \Framework\PrincipalInterface
         // Adiciona Widget a Pagina Inicial
         \Framework\App\Visual::Layoult_Home_Widgets_Add(
             'Eventos', 
-            'Evento/Evento/Main', 
+            'Evento/Evento/Eventos', 
             'building', 
             $evento_qnt, 
             'block-red', 

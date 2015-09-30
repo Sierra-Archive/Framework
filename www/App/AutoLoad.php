@@ -161,19 +161,19 @@ if(
 /**
  * Endereço de Pasta de Configurações no Servidor
  */
-define('INI_PATH'       , ROOT      .'Ini'      .DS);
+define('INI_PATH'       , ROOT_PADRAO      .'Ini'      .DS);
 /**
  * Endereço de Pasta de Classes no Servidor
  */
-define('CLASS_PATH'     , ROOT      .'Classes'  .DS);
+define('CLASS_PATH'     , ROOT_PADRAO      .'Classes'  .DS);
 /**
  * Endereço de Pasta de Interfaces no Servidor
  */
-define('INTER_PATH'     , ROOT      .'Interface'.DS);
+define('INTER_PATH'     , ROOT_PADRAO      .'Interface'.DS);
 /**
  * Endereço de Pasta de Modulos no Servidor
  */
-define('MOD_PATH'       , ROOT      .'mod'      .DS);
+define('MOD_PATH'       , ROOT_PADRAO      .'mod'      .DS);
 
 
 

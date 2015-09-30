@@ -18,9 +18,8 @@ class predial_BlocoControle extends predial_Controle
     * @version 0.4.2
     */
     public function Main(){
-        $this->Blocos();
-        // ORGANIZA E MANDA CONTEUDO
-        $this->_Visual->Json_Info_Update('Titulo', __('Blocos'));
+        \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'Financeiro/Bloco/Blocos');
+        return false;
     }
     static function Endereco_Bloco($true=true){
         $Registro = &\Framework\App\Registro::getInstacia();
@@ -113,7 +112,7 @@ class predial_BlocoControle extends predial_Controle
     public function Blocos_Add2(){
         $titulo     = __('Bloco Adicionado com Sucesso');
         $dao        = 'Predial_Bloco';
-        $funcao     = '$this->Main();';
+        $funcao     = '$this->Blocos();';
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = __('Bloco cadastrado com sucesso.');
         $alterar    = Array();
@@ -147,7 +146,7 @@ class predial_BlocoControle extends predial_Controle
     public function Blocos_Edit2($id){
         $titulo     = __('Bloco Editado com Sucesso');
         $dao        = Array('Predial_Bloco',$id);
-        $funcao     = '$this->Main();';
+        $funcao     = '$this->Blocos();';
         $sucesso1   = __('Bloco Alterado com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
@@ -183,7 +182,7 @@ class predial_BlocoControle extends predial_Controle
         }
         $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
         
-        $this->Main();
+        $this->Blocos();
         
         $this->_Visual->Json_Info_Update('Titulo', __('Bloco deletado com Sucesso'));  
         $this->_Visual->Json_Info_Update('Historico', false);  

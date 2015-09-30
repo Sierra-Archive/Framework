@@ -18,6 +18,8 @@ class predial_InformativoControle extends predial_Controle
     * @version 0.4.2
     */
     public function Main(){
+        \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'predial/Informativo/Informativos');
+        return false;
     }
     static function Endereco_Informativo($true=true){
         $Registro = &\Framework\App\Registro::getInstacia();
