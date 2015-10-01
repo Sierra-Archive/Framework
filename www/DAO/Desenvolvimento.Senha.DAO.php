@@ -21,7 +21,7 @@ final Class Desenvolvimento_Senha_DAO extends Framework\App\Dao
         return false;
     }
     public static function Get_Sigla(){
-        return 'SS';
+        return 'DS';
     }
     public static function Get_Engine(){
         return 'InnoDB';

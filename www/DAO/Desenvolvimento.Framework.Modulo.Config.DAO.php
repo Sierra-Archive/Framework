@@ -17,7 +17,7 @@ final Class Desenvolvimento_Framework_Modulo_Config_DAO extends Framework\App\Da
         return false;
     }
     public static function Get_Sigla(){
-        return 'FMC';
+        return 'DFMC';
     }
     public static function Get_Engine(){
         return 'InnoDB';
@@ -46,31 +46,30 @@ final Class Desenvolvimento_Framework_Modulo_Config_DAO extends Framework\App\Da
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-            ),
-            Array(
+            ),Array(
                 'mysql_titulo'      => 'modulo',
                 'mysql_tipovar'     => 'int', //varchar, int, 
                 'mysql_tamanho'     => 11,
-                'mysql_null'        => false,  // nulo ?
-                'mysql_default'     => false, // valor padrao
-                'mysql_primary'     => false,  // chave primaria
-                'mysql_estrangeira' => false, // chave estrangeira
+                'mysql_null'        => true,
+                'mysql_default'     => false,
+                'mysql_primary'     => false,
+                'mysql_estrangeira' => 'DFM.id|DFM.nome', // chave estrangeira
                 'mysql_autoadd'     => false,
                 'mysql_comment'     => false,
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
-                'perm_copia'        => false, //permissao funcional necessaria para campo
-                'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
+                'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
+                'linkextra'         => 'Desenvolvimento/Framework/Modulos_Add', //0 ninguem, 1 admin, 2 todos
                 'edicao'            => Array(
-                    'Nome'              => __('Modulo'),
+                    'Nome'              => __('Módulo'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',
-                    'formtipo'          => 'input',
-                    'input'             => array(
-                        'tipo'              => 'text',
-                        'class'             => 'obrigatorio'
-                    ),
+                    'formtipo'          => 'select',
+                    'select'             => array(
+                        'class'             => 'obrigatorio',
+                        'infonulo'          => 'Escolha um Módulo',
+                    )
                 )
             ),
             Array(
