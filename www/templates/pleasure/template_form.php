@@ -17,7 +17,7 @@
         </SELECT>
         <?php if($params['Opcao']['end']!='' && $params['Opcao']['form_dependencia']===false){ 
             if($params['Opcao']['ColunaForm']==='horizontal') echo '</div><div class="col-md-1">';
-            ?><p class="help-block"><a href="<?php echo $params['Opcao']['url']; echo $params['Opcao']['end']; ?>?formselect=<?php echo $params['Opcao']['id']; ?>&condicao=<?php echo $params['Opcao']['condicao']; ?>" style="" class="lajax btn btn-floating btn-ripple btn-primary" acao="">+</a></span>
+            ?><p class="help-block"><a href="<?php echo $params['Opcao']['url']; echo $params['Opcao']['end']; ?>?formselect=<?php echo $params['Opcao']['id']; ?>&condicao=<?php echo $params['Opcao']['condicao']; ?>" style="" class="lajax btn btn-floating btn-ripple btn-primary" acao=""><i class="ion-android-add"></i></a></span>
             <?php
         }
         if($params['Opcao']['ColunaForm']==='horizontal') echo '</div>'; ?>
@@ -32,7 +32,7 @@
             <?php if($params['Opcao']['ColunaForm']==='horizontal') echo '<div class="col-md-9">'; ?>
                 <?php if($params['Opcao']['urlextra']!=''){ ?><div class="input-append"><?php } ?>
                 <input tabindex="<?php echo $params['TabIndex']; ?>" type="<?php echo $params['Opcao']['tipo']; ?>" value="<?php echo $params['Opcao']['valor']; ?>"<?php if($params['Opcao']['max_caracteres']!==false && is_int($params['Opcao']['max_caracteres'])){ echo ' MAXLENGTH="'.$params['Opcao']['max_caracteres'].'"'; } ?> id="<?php echo $params['Opcao']['nome']; ?>" name="<?php echo $params['Opcao']['nome']; ?>" class="form-control <?php if($params['Opcao']['ColunaForm']==='horizontal'){ echo 'col-md-'; if($params['Opcao']['urlextra']!='' && $params['Opcao']['info']!=''){ ?>8<?php }else{ ?>12<?php } } ?> <?php if($params['Opcao']['class']!=''){ if($params['Opcao']['somenteleitura']===false){ ?> <?php echo $params['Opcao']['class']; }else{ ?> inactive <?php echo $params['Opcao']['class']; ?>"<?php } }else if($params['Opcao']['somenteleitura']===true){ ?> inactive<?php } ?>"<?php if($params['Opcao']['somenteleitura']===true){ ?> readonly=""<?php } if($params['Opcao']['Mascara']!==false){ ?> onkeypress="Sierra.Visual_Formulario_Mascara(this,'<?php echo $params['Opcao']['Mascara']; ?>');"<?php } if($params['Opcao']['change']!=''){ ?> onBlur="<?php echo $params['Opcao']['change']; ?>"<?php } if($params['Opcao']['valida']!=''){ ?> validar="<?php echo $params['Opcao']['valida']; ?>"<?php } ?> <?php if($params['Opcao']['escondido']==='apagar'){ ?> escondendo="desativado"<?php }else if($params['Opcao']['escondido']==='apagado'){ ?> escondendo="ativado"<?php } ?> x-webkit-speech/> 
-                <?php if($params['Opcao']['urlextra']!=''){ ?><span class="add-on" onClick="<?php echo $params['Opcao']['urlextra']; ?>">+</span></div><?php } ?>
+                <?php if($params['Opcao']['urlextra']!=''){ ?><span class="add-on" onClick="<?php echo $params['Opcao']['urlextra']; ?>"><i class="ion-android-add"></i></span></div><?php } ?>
                 <?php if(isset($params['Opcao']['Info']) && $params['Opcao']['Info']!=''){ ?></div><div class="col-md-1"><p class="help-block"><?php echo $params['Opcao']['info']; ?></span><?php } ?>
             <?php if($params['Opcao']['ColunaForm']==='horizontal') echo '</div>'; ?>
         </div>
@@ -44,7 +44,7 @@
         <?php if($params['Opcao']['ColunaForm']==='horizontal') echo '<div class="col-md-9">'; ?>
             <?php if($params['Opcao']['urlextra']!=''){ ?><div class="input-append"><?php } ?>
             <textarea tabindex="<?php echo $params['TabIndex']; ?>"<?php if($params['Opcao']['max_caracteres']!==false && is_int($params['Opcao']['max_caracteres'])){ echo ' MAXLENGTH="'.$params['Opcao']['max_caracteres'].'"'; } ?> name="<?php echo $params['Opcao']['nome']; ?>" id="<?php echo $params['Opcao']['id']; ?>" class="<?php echo $params['Opcao']['class']; ?> form-control<?php if($params['Opcao']['tipo'] === 'editor'){ ?> wysihtmleditor5<?php } ?>" style="max-width:100%; height:200px;"<?php if($params['Opcao']['escondido']==='apagar'){ ?> escondendo="desativado"<?php }else if($params['Opcao']['escondido']==='apagado'){ ?> escondendo="ativado"<?php } ?>><?php echo $params['Opcao']['valor']; ?></textarea>
-            <?php if($params['Opcao']['urlextra']!=''){ ?><span class="add-on"><a href="<?php echo $params['Opcao']['url']; echo $params['Opcao']['urlextra']; ?>" style="" class="lajax btn btn-floating btn-ripple btn-primary" acao="">+</a></span><?php } ?>
+            <?php if($params['Opcao']['urlextra']!=''){ ?><span class="add-on"><a href="<?php echo $params['Opcao']['url']; echo $params['Opcao']['urlextra']; ?>" style="" class="lajax btn btn-floating btn-ripple btn-primary" acao=""><i class="ion-android-add"></i></a></span><?php } ?>
             <!--<?php if($params['Opcao']['tipo'] === 'editor'){ ?><script>CKEDITOR.replace('<?php echo $params['Opcao']['id']; ?>');</script><?php } ?>-->
         <?php if($params['Opcao']['ColunaForm']==='horizontal') echo '</div>'; ?>
     </div>
@@ -65,7 +65,7 @@
     </SELECT>
     <?php if($params['Opcao']['end']!='' && $params['Opcao']['form_dependencia']===false){ 
         if($params['Opcao']['ColunaForm']==='horizontal') echo '</div><div class="col-md-1 col-sm-2 col-xs-3">';
-        ?><p style="margin-top:-3px;"><a href="<?php echo $params['Opcao']['url']; echo $params['Opcao']['end']; ?>?formselect=<?php echo $params['Opcao']['id']; ?>&condicao=<?php echo $params['Opcao']['condicao']; ?>" style="" class="lajax btn btn-floating btn-ripple btn-primary" acao="">+</a></span>
+        ?><p style="margin-top:-3px;"><a href="<?php echo $params['Opcao']['url']; echo $params['Opcao']['end']; ?>?formselect=<?php echo $params['Opcao']['id']; ?>&condicao=<?php echo $params['Opcao']['condicao']; ?>" style="" class="lajax btn btn-floating btn-ripple btn-primary" acao=""><i class="ion-android-add"></i></a></span>
         <?php
     } 
     if($params['Opcao']['ColunaForm']==='horizontal') echo '</div>'; ?>
@@ -74,7 +74,7 @@
 <?php }else if($params['Tipo']==='Radio_Inicio'){ ?> 
     <div class="form-group"<?php if($params['Opcao']['escondido']!==false){ ?> id="<?php echo $params['Opcao']['id']; ?>_escondendo"<?php } if($params['Opcao']['escondido']==='apagado'){ ?> style="display: none;"<?php } ?>>
     <label class="<?php if($params['Opcao']['ColunaForm']==='horizontal') echo 'col-md-3 control-label'; ?>" for="<?php echo $params['Opcao']['id']; ?>"><?php echo $params['Opcao']['titulo']; ?>
-    <?php if($params['Opcao']['js']!=''){ ?> <a href="#" onClick="<?php echo $params['Opcao']['js']; ?>" style="" class="lajax btn btn-floating btn-ripple btn-primary">+</a><?php } ?>
+    <?php if($params['Opcao']['js']!=''){ ?> <a href="#" onClick="<?php echo $params['Opcao']['js']; ?>" style="" class="lajax btn btn-floating btn-ripple btn-primary"><i class="ion-android-add"></i></a><?php } ?>
     </label>
     <?php if($params['Opcao']['ColunaForm']==='horizontal') echo '<div class="col-md-9">'; ?>
     
@@ -87,7 +87,7 @@
 <?php }else if($params['Tipo']==='Radio_Fim'){ ?>
     <?php if($params['Opcao']['end']!='' && $params['Opcao']['form_dependencia']===false){ 
         if($params['Opcao']['ColunaForm']==='horizontal') echo '</div><div class="col-md-1">';
-        ?><p class="help-block"><a href="<?php echo $params['Opcao']['url']; echo $params['Opcao']['end']; ?>?formselect=<?php echo $params['Opcao']['id']; ?>&condicao=<?php echo $params['Opcao']['condicao']; ?>" style="" class="lajax btn btn-floating btn-ripple btn-primary" acao="">+</a></span>
+        ?><p class="help-block"><a href="<?php echo $params['Opcao']['url']; echo $params['Opcao']['end']; ?>?formselect=<?php echo $params['Opcao']['id']; ?>&condicao=<?php echo $params['Opcao']['condicao']; ?>" style="" class="lajax btn btn-floating btn-ripple btn-primary" acao=""><i class="ion-android-add"></i></a></span>
         <?php
     } 
     if($params['Opcao']['ColunaForm']==='horizontal') echo '</div>'; ?>
@@ -96,7 +96,7 @@
 <?php }else if($params['Tipo']==='CheckBox_Inicio'){ ?> 
     <div class="form-group"<?php if($params['Opcao']['escondido']!==false){ ?> id="<?php echo $params['Opcao']['id']; ?>_escondendo"<?php } if($params['Opcao']['escondido']==='apagado'){ ?> style="display: none;"<?php } ?>>
     <label class="<?php if($params['Opcao']['ColunaForm']==='horizontal') echo 'col-md-3 control-label'; ?>" for="<?php echo $params['Opcao']['id']; ?>"><?php echo $params['Opcao']['titulo']; ?>
-    <?php if($params['Opcao']['js']!=''){ ?> <a href="#" onClick="<?php echo $params['Opcao']['js']; ?>" style="" class="lajax btn btn-floating btn-ripple btn-primary">+</a><?php } ?>
+    <?php if($params['Opcao']['js']!=''){ ?> <a href="#" onClick="<?php echo $params['Opcao']['js']; ?>" style="" class="lajax btn btn-floating btn-ripple btn-primary"><i class="ion-android-add"></i></a><?php } ?>
     </label>
     <?php if($params['Opcao']['ColunaForm']==='horizontal') echo '<div class="col-md-9">'; ?>
     
@@ -108,7 +108,7 @@
 <?php }else if($params['Tipo']==='CheckBox_Fim'){ ?> 
     <?php if($params['Opcao']['end']!='' && $params['Opcao']['form_dependencia']===false){ 
         if($params['Opcao']['ColunaForm']==='horizontal') echo '</div><div class="col-md-1">';
-        ?><p class="help-block"><a href="<?php echo $params['Opcao']['url']; echo $params['Opcao']['end']; ?>?formselect=<?php echo $params['Opcao']['id']; ?>&condicao=<?php echo $params['Opcao']['condicao']; ?>" style="" class="lajax btn btn-floating btn-ripple btn-primary" acao="">+</a></span>
+        ?><p class="help-block"><a href="<?php echo $params['Opcao']['url']; echo $params['Opcao']['end']; ?>?formselect=<?php echo $params['Opcao']['id']; ?>&condicao=<?php echo $params['Opcao']['condicao']; ?>" style="" class="lajax btn btn-floating btn-ripple btn-primary" acao=""><i class="ion-android-add"></i></a></span>
         <?php
     } 
     if($params['Opcao']['ColunaForm']==='horizontal') echo '</div>'; ?>

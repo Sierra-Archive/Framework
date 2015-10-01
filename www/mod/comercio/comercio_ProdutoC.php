@@ -182,7 +182,7 @@ class comercio_ProdutoControle extends comercio_Controle
         $formbt     = __('Alterar Produto');
         $formlink   = 'comercio/Produto/Produtos_Edit2/'.$id;
         $editar     = Array('Comercio_Produto',$id);
-        $campos = comercio_Produto_DAO::Get_Colunas();
+        $campos = Comercio_Produto_DAO::Get_Colunas();
         self::Retirar_Nao_necessarios($campos);
         \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos,$editar);  
     }
