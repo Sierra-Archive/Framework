@@ -366,10 +366,32 @@ class ControleTest extends \PHPUnit_Framework_TestCase {
      * @todo   Implement testMysql_AtualizaValores().
      */
     public function testMysql_AtualizaValores() {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-                'This test has not been implemented yet.'
-        );
+        
+        // Testar com OBjeto
+            $objeto = new \Usuario_Permissao_DAO();
+            // Valores em Array {#update}
+            $array = Array(
+                'permissao' => 'Teste',
+                'usuario' => 1,
+                'valor' => 0
+            );
+            \Framework\App\Controle::mysql_AtualizaValores($objeto,$array);
+            $this->assertEquals('Teste',$objeto->permissao,'(Objeto,Array) -> Campo permissao não Atualizado');
+            $this->assertEquals(1,$objeto->usuario,'(Objeto,Array) -> Campo usuario não Atualizado');
+            $this->assertEquals(0,$objeto->valor,'(Objeto,Array) -> Campo valor não Atualizado');
+            // Valores em Objeto {#update}
+            // Valores em $_POST[] {#update}
+        
+        
+        // TEstar com Array {#update}
+            // Valores em Array {#update}
+            // Valores em Objeto {#update}
+            // Valores em $_POST[] {#update}
+        
+        
+        
+        
+        
     }
 
     /**

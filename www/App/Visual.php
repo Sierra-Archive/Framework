@@ -146,6 +146,12 @@ class Visual
         $this->template_url        = URL_PATH.'templates'.US.$this->template_layoult.US;
         $this->template_dir        = ROOT.'templates'.DS.$this->template_layoult.DS;
     }
+    public static function get_template_dir(){
+        return Registro::getInstacia()->_Visual->template_dir;
+    }
+    public static function get_template_url(){
+        return Registro::getInstacia()->_Visual->template_url;
+    }
     /**
      * 
      * @param type $javascript

@@ -4,6 +4,9 @@
     max-height:500px;
 }
 
+.dt-responsive {
+    width: 100% !important;
+}
 
 /**
 

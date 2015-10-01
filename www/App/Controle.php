@@ -1715,9 +1715,7 @@ readfile($link);*/
         }
         
         // Adiciona OU Edita Valores
-        var_dump($objeto);
         self::mysql_AtualizaValores($objeto);
-        var_dump($objeto);
         
         // Adiciona Valores
         if(is_array($colocar) && $colocar!==false){

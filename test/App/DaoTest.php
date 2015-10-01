@@ -181,6 +181,9 @@ class DaoTest extends \PHPUnit_Framework_TestCase {
                         $this->assertFalse($possueAutocomplete,'Classe Dao: '.$valor['class'].' (Coluna: '.$valor2['mysql_titulo'].') -> Não Pode ter duas Colunas com AutoInclemente');
                         $this->assertNotFalse($valor2['mysql_primary'],'Classe Dao: '.$valor['class'].' (Coluna: '.$valor2['mysql_titulo'].') -> Somente Chaves Primários podem ser AutoInclemente');
                         $possueAutocomplete = true;
+                        
+                        //'mysql_default'
+                        $this->assertEquals(false,$valor2['mysql_default'],'Classe Dao: '.$valor['class'].' (Coluna: '.$valor2['mysql_titulo'].') -> AutoInclemente não pode ter valor default');
                     }
                     
                     //'mysql_comment'

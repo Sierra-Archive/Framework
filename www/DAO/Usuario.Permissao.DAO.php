@@ -75,7 +75,12 @@ final Class Usuario_Permissao_DAO extends Framework\App\Dao
                     'Nome'              => __('Usuário'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
-                    'aviso'             => ''
+                    'aviso'             => '',
+                    'formtipo'          => 'select',
+                    'select'             => array(
+                        'class'             => 'obrigatorio',
+                        'infonulo'          => 'Escolha um Usuário',
+                    )
                 )
             ),
             Array(

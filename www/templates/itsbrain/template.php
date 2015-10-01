@@ -6,7 +6,7 @@
     <link rel="icon" type="image/png" href="<?php echo ARQ_URL; ?>favicon.ico"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="author" content="Ricardo Rebello Sierra <contato@ricardosierra.com.br>">
     <?php echo $params['sistema']['css']; ?>
     <link href="<?php echo $params['url_css']; ?>main.css" rel="stylesheet" />
     <link href='http://fonts.googleapis.com/css?family=Cuprum' rel='stylesheet' type='text/css' />

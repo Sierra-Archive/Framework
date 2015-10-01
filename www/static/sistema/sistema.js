@@ -1170,7 +1170,7 @@ var Sierra = (function () {
                 cont = 0;
             //var j  = atual.children('thead').children('tr').children('th').length-1;
             if (!atual.hasClass('dataTable')) {
-                //ordenar = Cookie_Ler('TabelaOrdenar_'+atual.attr('url'));
+                ordenar = false; //Cookie_Ler('TabelaOrdenar_'+atual.attr('url'));
                 if(ordenar===false){
                     eval('ordenar = '+atual.attr('ordenar')+';');
                 }
@@ -1184,11 +1184,17 @@ var Sierra = (function () {
                 atual.DataTable({          
                     "processing": true,
                     "serverSide": true,
-                    "ajax": ConfigArquivoPadrao+atual.attr('url'),
-                    /*"ajax": $.fn.dataTable.pipeline( {
+                    "ajax": $.fn.dataTable.pipeline( {
                         url: ConfigArquivoPadrao+atual.attr('url'),
                         pages: 5 // number of pages to cache
-                    } ),*/
+                    } ),
+                    "bProcessing"       : true,  // Mensagem de Processando
+                    "iDisplayLength"    : 10,   // Quantidade por pagina
+                    "aaSorting"         : ordenar,
+                    "bLengthChange"     :true,
+                    "bFilter"           :true,
+                    "bSort"             :true, // Usuario pode Multi-Ordenacao ?
+                    "bInfo"             :true 
                 });
                 i = i+1;
             }

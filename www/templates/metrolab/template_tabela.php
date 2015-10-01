@@ -16,7 +16,7 @@
             $contador = 0;  ?>
             <table class="table table-hover table-striped table-bordered dt-responsive datatable<?php if($params['Opcao']['Apagado1']){ ?> apagado1<?php } ?>" ordenar="[<?php echo $params['Opcao']['aaSorting']; ?>]"><thead><tr>
             <?php foreach($params['Opcao']['Tabela'] as $k=>$v){ ?>
-                <th<?php if($contador>1 && $contador<($colunas-1)){ ?> class="hidden-xs"<?php } ?>><b><?php echo $k; ?></b></th>
+                <th<?php /* if($contador>1 && $contador<($colunas-1)){ ?> class="hidden-xs"<?php } */ ?>><b><?php echo $k; ?></b></th>
                 <?php ++$contador; ?>
             <?php } ?>
             </tr></thead><tbody>
@@ -27,7 +27,7 @@
                 <tr class="odd gradeX">
                 <?php $contador = 0;
                 foreach($params['Opcao']['Tabela'] as $k=>$v){ ?>
-                    <td style="<?php echo $params['Opcao']['Style']; ?>"<?php if($contador>1 && $contador<($colunas-1)){ ?> class="hidden-xs"<?php } ?>>
+                    <td style="<?php echo $params['Opcao']['Style']; ?>"<?php /* if($contador>1 && $contador<($colunas-1)){ ?> class="hidden-xs"<?php } */ ?>>
                         <?php if (!isset($params['Opcao']['Tabela'][$k][$cont])) {
                             echo '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
                         }else{
@@ -47,7 +47,7 @@
             $contador = 0;  ?>
             <table url="<?php echo $params['Opcao']['Url']; ?>" class="table table-hover table-striped table-bordered dt-responsive Listagem_Table<?php if($params['Opcao']['Apagado1']){ ?> apagado1<?php } ?>" ordenar="[<?php echo $params['Opcao']['aaSorting']; ?>]"><thead><tr>
             <?php foreach($params['Opcao']['Tabela'] as $k){ ?>
-                <th<?php if($contador>1 && $contador<($colunas-1)){ ?> class="hidden-xs"<?php } ?>><b><?php echo $k; ?></b></th>
+                <th<?php /* if($contador>1 && $contador<($colunas-1)){ ?> class="hidden-xs"<?php } */ ?>><b><?php echo $k; ?></b></th>
                 <?php ++$contador; ?>
             <?php } ?>
             </tr></thead></table>
