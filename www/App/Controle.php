@@ -2602,20 +2602,8 @@ readfile($link);*/
         $imprimir = new \Framework\App\Tempo('Destruicao Controle');
         if(self::Tema_Travar_GET()===false){
             // Pega Endereço
-            $endereco_html = '';
-            foreach($this->layoult_endereco as &$valor){
-                if($valor[1]!==false){
-                    $endereco_html .= '<li>'.
-                    '<a class="lajax" href="'.URL_PATH.$valor[1].'" acao="">'.$valor[0].'</a>'.
-                    ''.
-                    '</li>';
-                }else{
-                    $endereco_html .= '<li class="active">'.
-                    $valor[0].
-                    '</li>';
-                }
+            $endereco_html = $this->_Visual->elemento_breadcrumb($this->layoult_endereco);
 
-            }
             // Caso Configurado Colocar Busca
             if(TEMA_BUSCAR===true && isset($this->config_template['Buscar'])){
                 $endereco_html .= $this->config_template['Buscar'];

@@ -850,7 +850,7 @@ class Visual
             //'assets/metr-folio/js/jquery.metro-gal.plugins.min',
             //'assets/metr-folio/js/jquery.metro-gal.megafoliopro',
             // Carrega Sistema
-            'sistema/sistema'
+            'globals/scripts/sitec/sitec'
         );
         
         // Carrega no JS
@@ -1006,7 +1006,7 @@ class Visual
             'sistema/fullcalendar/fullcalendar.print',
             
             // Sistema
-            'sistema/sistema'
+            'globals/scripts/sitec/sitec'
         );        
         
         $this->Arquivos_Css($array_css);
@@ -1257,6 +1257,9 @@ class Visual
      * @version 0.4.2
      */
     public function Widgets_Assimilar($endereco,$html){
+        if(!isset($this->_widgets_params[$endereco]) || !is_array($this->_widgets_params[$endereco])){
+            $this->_widgets_params[$endereco] = Array();
+        }
         $this->_widgets_params[$endereco][] = $html;
         return true;
     }
@@ -1316,7 +1319,11 @@ class Visual
             }
             //Acrescenta ao Endereco, caso nao exista
             if(isset($params['widgets']['Navegacao_Endereco']) && preg_match('/<span class="divider">\/<\/span><\/li>$/', $params['widgets']['Navegacao_Endereco'])) {
-                $params['widgets']['Navegacao_Endereco'] .= '<li class="active">'.$tipo_nome.'</li>';
+                $this->Widget_Assimilar('Navegacao_Endereco',$this->_Visual->renderizar_Template('elemento_breadcrumb',Array(
+                    'nome' => $tipo_nome,
+                    'endereco' => false,
+                    'ativo' => false
+                ),true));
             }
         }
             
@@ -1491,6 +1498,25 @@ class Visual
         $imprimir = new \Framework\App\Tempo('Renderizar bloco Visual - SEM SMARTY');
         //$this->clear_cache($this->template_dir.$tpl.'.tpl');
         return $this->renderizar_Template($tpl,$params);
+    }
+    /**
+     * Pega Elementos e Retorna BreadCrumb (Árvore das Páginas)
+     * @param type $elementos
+     * @return type
+     * 
+     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
+     * @version 0.4.2
+     */
+    public function elemento_breadcrumb($elementos){
+        $endereco_html = '';
+        foreach($elementos as &$valor){
+            $endereco_html .= $this->renderizar_Template('elemento_breadcrumb',Array(
+                'nome' => $valor[0],
+                'endereco' => $valor[1],
+                'ativo' => $valor[1]
+            ),true);
+        }
+        return $endereco_html;
     }
     /**
      * Função Privada para Renderizar templates fornecendo os params do arquivo

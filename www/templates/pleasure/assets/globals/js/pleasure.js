@@ -335,7 +335,7 @@ var Pleasure = {
 
 	initAutoSizeTextarea: function () {
 		// Find textarea elements with "js-auto-size" class
-		$('.js-auto-size').textareaAutoSize();
+		//$('.js-auto-size').textareaAutoSize();
 	},
 
 	listenInputs: function () {

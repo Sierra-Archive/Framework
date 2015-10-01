@@ -6,7 +6,7 @@ var Index = {
 		}, 3000);
 	},
 
-	createMap: function () {
+	/*createMap: function () {
 		var map;
 		var markers = [];
 
@@ -123,7 +123,7 @@ var Index = {
 					});
 				link = '';
 		}
-	},
+	},*/
 
 	createSalesChart: function () {
 		var chartSalesData = [ [], [] ];
@@ -396,15 +396,15 @@ var Index = {
 
 	init: function () {
 		//this.createNotification();
-		this.createMap();
-		this.createSalesChart();
-		this.createBalanceChart();
-		this.createFollowersChart();
-		this.createStocksChart();
-		this.createSalesByYearChart();
-		this.createVisitors();
+		//this.createMap();
+		//this.createSalesChart();
+		//this.createBalanceChart();
+		//this.createFollowersChart();
+		//this.createStocksChart();
+		//this.createSalesByYearChart();
+		//this.createVisitors();
 
-		this.fakePageResponsive();
+		//this.fakePageResponsive();
 	}
 }
 

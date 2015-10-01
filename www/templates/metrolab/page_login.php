@@ -21,7 +21,7 @@
     <div class="lock-header">
         <!-- BEGIN LOGO -->
         <a class="center" id="logo" href="<?php echo URL_PATH; ?>">
-            <img class="center" alt="logo" src="<?php echo ARQ_URL; ?>_Sistema/logo_login.<?php echo TEMA_LOGO; ?>">
+            <img class="center" alt="<?php echo SISTEMA_NOME; ?>" src="<?php echo ARQ_URL; ?>_Sistema/logo_login.<?php echo TEMA_LOGO; ?>">
         </a>
         <!-- END LOGO -->
     </div>
@@ -31,17 +31,17 @@
             <div class="metro single-size <?php echo CFG_LP_LOGINCOR1; ?>">
                 <div class="locked">
                     <i class="fa fa-lock"></i>
-                    <span>Identificação</span>
+                    <span><?php _e('Identificação'); ?></span>
                 </div>
             </div>
             <div class="metro double-size <?php echo CFG_LP_LOGINCOR2; ?>">
                 <div class="input-append lock-input">
-                    <input type="text" class="" id="sistema_login" name="sistema_login" placeholder="Usuário" autofocus >
+                    <input type="text" class="" id="sistema_login" name="sistema_login" placeholder="<?php _e('Digite seu Usuário'); ?>" autofocus >
                 </div>
             </div>
             <div class="metro double-size <?php echo CFG_LP_LOGINCOR3; ?>">
                 <div class="input-append lock-input">
-                    <input type="password" class="" id="sistema_senha" name="sistema_senha" placeholder="Senha">
+                    <input type="password" class="" id="sistema_senha" name="sistema_senha" placeholder="<?php _e('Digite sua Senha'); ?>">
                 </div>
             </div>
             <div class="metro single-size <?php echo CFG_LP_LOGINCOR4; ?> login">
@@ -49,58 +49,18 @@
                     Entrar
                     <i class="fa fa-long-arrow-right"></i>
                 </button>
-            </div><!--
-            <div class="metro double-size navy-blue ">
-                <a href="index.html" class="social-link">
-                    <i class="fa fa-facebook-sign"></i>
-                    <span>Facebook Login</span>
-                </a>
             </div>
-            <div class="metro single-size deep-red">
-                <a href="index.html" class="social-link">
-                    <i class="fa fa-google-plus-sign"></i>
-                    <span>Google Login</span>
-                </a>
-            </div>
-            <div class="metro double-size blue">
-                <a href="index.html" class="social-link">
-                    <i class="fa fa-twitter-sign"></i>
-                    <span>Twitter Login</span>
-                </a>
-            </div>
-            <div class="metro single-size purple">
-                <a href="index.html" class="social-link">
-                    <i class="fa fa-skype"></i>
-                    <span>Skype Login</span>
-                </a>
-            </div>-->
             <div class="login-footer">
                 <div class="remember-hint pull-left">
-                    <input type="checkbox" id=""> Lembrar Login
+                    <input type="checkbox" id=""> <?php _e('Lembrar Login');?>
                 </div>
                 <div class="forgot-hint pull-right">
-                    <a id="forget-password" class="" href="<?php echo URL_PATH.SISTEMA_DIR_INT; ?>?sistema_esquecisenha=true">Esqueceu sua senha?</a>
+                    <a id="forget-password" class="" href="<?php echo URL_PATH.SISTEMA_DIR_INT; ?>?sistema_esquecisenha=true"><?php _e('Esqueceu sua senha?');?></a>
                 </div>
             </div>
         </div>
     </form>
    <!-- END FOOTER -->  
-    
-   <!-- BEGIN JAVASCRIPTS -->
-   <!-- Load javascripts at bottom, this will reduce page load time -->    
-    <!-- <?php echo $params['sistema']['extras']; ?>
-    <script src="<?php echo $params['url_js']; ?>extra.js"></script>
-    
-    
-    <script src="<?php echo $params['url_js']; ?>jquery.nicescroll.js" type="text/javascript"></script>
-
-    <!-- ie8 fixes -->
-    <!--[if lt IE 9]>
-    <script src="<?php echo $params['url_js']; ?>excanvas.js"></script>
-    <script src="<?php echo $params['url_js']; ?>respond.js"></script>
-    <![endif]-->
-    <!--common script for all pages-->
-    <!-- <script src="<?php echo $params['url_js']; ?>common-scripts.js"></script>-->
 </body>
 <!-- END BODY -->
 </html>
