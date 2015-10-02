@@ -2201,8 +2201,8 @@ final class Conexao
     protected function Tabelas(){
         $tabelas        = &self::$tabelas;
         $tabelas_ext    = &self::$tabelas_ext;
-        if(defined('TEMP_DEPENDENCIA_DAO')){
-            $arquivos = unserialize(TEMP_DEPENDENCIA_DAO);
+        if(defined('TEMP_DEPENDENCIA_TABELAS')){
+            $arquivos = unserialize(TEMP_DEPENDENCIA_TABELAS);
             if(!empty($arquivos)){
                 foreach($arquivos as $arquivo){
                     $arquivo = $arquivo.'_DAO';

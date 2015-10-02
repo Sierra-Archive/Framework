@@ -195,94 +195,94 @@ if(!defined('CFG_IMPRESSAO_TITULO_REPETIR')){
  *****************************************************************/
 // SISTEMA
 if(!defined('MYSQL_SIS_MENU')){
-    define('MYSQL_SIS_MENU'                             , 'Sistema_Menu');
+    define('MYSQL_SIS_MENU'                                 , 'Sistema_Menu');
 }
 if(!defined('MYSQL_SIS_LOG_PERFORMACE')){
-    define('MYSQL_SIS_LOG_PERFORMACE'                   , 'Sistema_Log_Performace');
+    define('MYSQL_SIS_LOG_PERFORMACE'                       , 'Sistema_Log_Performace');
 }
 
 // CURSO
 
 if(!defined('MYSQL_CURSO')){
-    define('MYSQL_CURSO'                                , 'Curso');
+    define('MYSQL_CURSO'                                    , 'Curso');
 }
 if(!defined('MYSQL_CURSO_TURMA')){
-    define('MYSQL_CURSO_TURMA'                          , 'Curso_Turma');
+    define('MYSQL_CURSO_TURMA'                              , 'Curso_Turma');
 }
 if(!defined('MYSQL_CURSO_TURMA_INSCRICAO')){
-    define('MYSQL_CURSO_TURMA_INSCRICAO'                , 'Curso_Turma_Inscricao');
+    define('MYSQL_CURSO_TURMA_INSCRICAO'                    , 'Curso_Turma_Inscricao');
 }
 
 //COMERCIO VENDAS
 if(  !defined('MYSQL_COMERCIO_VENDA_MESA')){
-    define('MYSQL_COMERCIO_VENDA_MESA'                  , 'Comercio_Venda_Mesa');
+    define('MYSQL_COMERCIO_VENDA_MESA'                      , 'Comercio_Venda_Mesa');
 }
 if(  !defined('MYSQL_COMERCIO_VENDA_COMPOSICAO')){
-    define('MYSQL_COMERCIO_VENDA_COMPOSICAO'            , 'Comercio_Venda_Composicao');
+    define('MYSQL_COMERCIO_VENDA_COMPOSICAO'                , 'Comercio_Venda_Composicao');
 }
 if(  !defined('MYSQL_COMERCIO_VENDA_COMPOSICAO_PRODUTOS')){
-    define('MYSQL_COMERCIO_VENDA_COMPOSICAO_PRODUTOS'   , 'Comercio_Venda_Composicao_Produtos');
+    define('MYSQL_COMERCIO_VENDA_COMPOSICAO_PRODUTOS'       , 'Comercio_Venda_Composicao_Produtos');
 }
 if(  !defined('MYSQL_COMERCIO_VENDA_CARRINHO')){
-    define('MYSQL_COMERCIO_VENDA_CARRINHO'              , 'Comercio_Venda_Carrinho');
+    define('MYSQL_COMERCIO_VENDA_CARRINHO'                  , 'Comercio_Venda_Carrinho');
 }
 if(  !defined('MYSQL_COMERCIO_VENDA_CARRINHO_COMPOSICOES')){
-    define('MYSQL_COMERCIO_VENDA_CARRINHO_COMPOSICOES'  , 'Comercio_Venda_Carrinho_Composicoes');
+    define('MYSQL_COMERCIO_VENDA_CARRINHO_COMPOSICOES'      , 'Comercio_Venda_Carrinho_Composicoes');
 }
 
 // LOCOMOCAO
 if(  !defined('MYSQL_LOCOMOCAO_ENTREGA')){
-    define('MYSQL_LOCOMOCAO_ENTREGA'                    , 'Locomocao_Entrega');
+    define('MYSQL_LOCOMOCAO_ENTREGA'                        , 'Locomocao_Entrega');
 }
 if(  !defined('MYSQL_LOCOMOCAO_ENTREGA_PONTO')){
-    define('MYSQL_LOCOMOCAO_ENTREGA_PONTO'             , 'Locomocao_Entrega_Ponto');
+    define('MYSQL_LOCOMOCAO_ENTREGA_PONTO'                  , 'Locomocao_Entrega_Ponto');
 }
 // TRANSPORTE
 if(  !defined('MYSQL_TRANSPORTE_ARMAZEM')){
-    define('MYSQL_TRANSPORTE_ARMAZEM'                  , 'Transporte_Armazem');
+    define('MYSQL_TRANSPORTE_ARMAZEM'                       , 'Transporte_Armazem');
 }
 if(  !defined('MYSQL_TRANSPORTE_CAMINHONEIRO')){
-    define('MYSQL_TRANSPORTE_CAMINHONEIRO'             , 'Transporte_Caminhoneiro');
+    define('MYSQL_TRANSPORTE_CAMINHONEIRO'                  , 'Transporte_Caminhoneiro');
 }
 if(  !defined('MYSQL_TRANSPORTE_ESTRADA')){
-    define('MYSQL_TRANSPORTE_ESTRADA'                  , 'Transporte_Estrada');
+    define('MYSQL_TRANSPORTE_ESTRADA'                       , 'Transporte_Estrada');
 }
 if(  !defined('MYSQL_TRANSPORTE_FORNECEDOR')){
-    define('MYSQL_TRANSPORTE_FORNECEDOR'                , 'Transporte_Fornecedor');
+    define('MYSQL_TRANSPORTE_FORNECEDOR'                    , 'Transporte_Fornecedor');
 }
 if(  !defined('MYSQL_TRANSPORTE_TRANSPORTADORA')){
-    define('MYSQL_TRANSPORTE_TRANSPORTADORA'            , 'Transporte_Transportadora');
+    define('MYSQL_TRANSPORTE_TRANSPORTADORA'                , 'Transporte_Transportadora');
 }
 if(  !defined('MYSQL_TRANSPORTE_TRANSPORTADORA_PEDIDO')){
-    define('MYSQL_TRANSPORTE_TRANSPORTADORA_PEDIDO'     , 'Transporte_Transportadora_Pedido');
+    define('MYSQL_TRANSPORTE_TRANSPORTADORA_PEDIDO'         , 'Transporte_Transportadora_Pedido');
 }
 if(  !defined('MYSQL_TRANSPORTE_ARMAZEM_PEDIDO')){
-    define('MYSQL_TRANSPORTE_ARMAZEM_PEDIDO'            , 'Transporte_Armazem_Pedido');
+    define('MYSQL_TRANSPORTE_ARMAZEM_PEDIDO'                , 'Transporte_Armazem_Pedido');
 }
 if(  !defined('MYSQL_TRANSPORTE_CAMINHONEIRO_PEDIDO')){
-    define('MYSQL_TRANSPORTE_CAMINHONEIRO_PEDIDO'       , 'Transporte_Caminhoneiro_Pedido');
+    define('MYSQL_TRANSPORTE_CAMINHONEIRO_PEDIDO'           , 'Transporte_Caminhoneiro_Pedido');
 }
 if(  !defined('MYSQL_TRANSPORTE_TRANSPORTADORA_PEDIDO_LANCE')){
-    define('MYSQL_TRANSPORTE_TRANSPORTADORA_PEDIDO_LANCE', 'Transporte_Transportadora_Pedido_Lance');
+    define('MYSQL_TRANSPORTE_TRANSPORTADORA_PEDIDO_LANCE'   , 'Transporte_Transportadora_Pedido_Lance');
 }
 if(  !defined('MYSQL_TRANSPORTE_ARMAZEM_PEDIDO_LANCE')){
-    define('MYSQL_TRANSPORTE_ARMAZEM_PEDIDO_LANCE'      , 'Transporte_Armazem_Pedido_Lance');
+    define('MYSQL_TRANSPORTE_ARMAZEM_PEDIDO_LANCE'          , 'Transporte_Armazem_Pedido_Lance');
 }
 if(  !defined('MYSQL_TRANSPORTE_CAMINHONEIRO_PEDIDO_LANCE')){
-    define('MYSQL_TRANSPORTE_CAMINHONEIRO_PEDIDO_LANCE'  , 'Transporte_Caminhoneiro_Pedido_Lance');
+    define('MYSQL_TRANSPORTE_CAMINHONEIRO_PEDIDO_LANCE'     , 'Transporte_Caminhoneiro_Pedido_Lance');
 }
 
 
 
 //GRAMATICA
 if(  !defined('MYSQL_GRAMATICA')){
-    define('MYSQL_GRAMATICA'                            , 'Gramatica');
+    define('MYSQL_GRAMATICA'                                , 'Gramatica');
 }
 if(  !defined('MYSQL_GRAMATICA_PREPOSICAO')){
-    define('MYSQL_GRAMATICA_PREPOSICAO'                 , 'Gramatica_Preposicao');
+    define('MYSQL_GRAMATICA_PREPOSICAO'                     , 'Gramatica_Preposicao');
 }
 if(  !defined('MYSQL_GRAMATICA_SUBSTANTIVO')){
-    define('MYSQL_GRAMATICA_SUBSTANTIVO'                , 'Gramatica_Substantivo');
+    define('MYSQL_GRAMATICA_SUBSTANTIVO'                    , 'Gramatica_Substantivo');
 }
 
 
@@ -298,251 +298,254 @@ if(  !defined('MYSQL_UNIVERSAL_VIVO_CPF')){
 }
 
 if(  !defined('MYSQL_LOG_FALHA')){
-    define('MYSQL_LOG_LOGIN_FALHA'                      , 'Log_Login_Falha');
+    define('MYSQL_LOG_LOGIN_FALHA'                          , 'Log_Login_Falha');
 }
 if(  !defined('MYSQL_LOG_LOGIN')){
-    define('MYSQL_LOG_LOGIN'                            , 'Log_Login');
+    define('MYSQL_LOG_LOGIN'                                , 'Log_Login');
 }
 if(  !defined('MYSQL_LOG_LOGIN_JANELA')){
-    define('MYSQL_LOG_LOGIN_JANELA'                     , 'Log_Login_Janela');
+    define('MYSQL_LOG_LOGIN_JANELA'                         , 'Log_Login_Janela');
 }
 if(  !defined('MYSQL_TELEFONE')){
-    define('MYSQL_TELEFONE'                             , 'Telefone');
+    define('MYSQL_TELEFONE'                                 , 'Telefone');
 }
 if(  !defined('MYSQL_TELEFONE_REFERENCIA')){
-    define('MYSQL_TELEFONE_REFERENCIA'                  , 'Telefone_Referencia');
+    define('MYSQL_TELEFONE_REFERENCIA'                      , 'Telefone_Referencia');
 }
 
 if(  !defined('MYSQL_EVENTO_MANIFESTACAO_TERRITORIAL')){
-    define('MYSQL_EVENTO_MANIFESTACAO_TERRITORIAL'      , 'Evento_Manifestacao_Territorial');
+    define('MYSQL_EVENTO_MANIFESTACAO_TERRITORIAL'          , 'Evento_Manifestacao_Territorial');
 }
 
 
 // AGENDA
 if(  !defined('MYSQL_AGENDA')){
-    define('MYSQL_AGENDA'                   , 'Agenda');
+    define('MYSQL_AGENDA'                                   , 'Agenda');
 }
 if(  !defined('MYSQL_AGENDA_ATIVIDADE_HORA')){
-    define('MYSQL_AGENDA_ATIVIDADE'                     , 'Agenda_Atividade');
+    define('MYSQL_AGENDA_ATIVIDADE'                         , 'Agenda_Atividade');
 }
 if(  !defined('MYSQL_AGENDA_ATIVIDADE_HORA')){
-    define('MYSQL_AGENDA_ATIVIDADE_HORA'                , 'Agenda_Atividade_Hora');
+    define('MYSQL_AGENDA_ATIVIDADE_HORA'                    , 'Agenda_Atividade_Hora');
 }
 
 
 if(  !defined('MYSQL_INSTITUICAO')){
-    define('MYSQL_INSTITUICAO'                          , 'Instituição');
+    define('MYSQL_INSTITUICAO'                              , 'Instituição');
 }
 if(  !defined('MYSQL_FOTO')){
-    define('MYSQL_FOTO'                                 , 'Foto');
+    define('MYSQL_FOTO'                                     , 'Foto');
 }
 if(  !defined('MYSQL_FOTO_REFERENCIA')){
-    define('MYSQL_FOTO_REFERENCIA'                      , 'Foto_Referencia');
+    define('MYSQL_FOTO_REFERENCIA'                          , 'Foto_Referencia');
 }
 
 if(!defined('MYSQL_BIBLIOTECA')){
-    define('MYSQL_BIBLIOTECA'                           , 'Biblioteca');
+    define('MYSQL_BIBLIOTECA'                               , 'Biblioteca');
 }
 if(!defined('MYSQL_BIBLIOTECA_ACESSO')){
-    define('MYSQL_BIBLIOTECA_ACESSO'                    , 'Biblioteca_Acesso');
+    define('MYSQL_BIBLIOTECA_ACESSO'                        , 'Biblioteca_Acesso');
 }
 if(!defined('MYSQL_ENQUETE')){
-    define('MYSQL_ENQUETE'                              , 'Enquete');
+    define('MYSQL_ENQUETE'                                  , 'Enquete');
 }
 if(!defined('MYSQL_ENQUETE_RESPOSTA')){
-    define('MYSQL_ENQUETE_RESPOSTA'                     , 'Enquete_Resposta');
+    define('MYSQL_ENQUETE_RESPOSTA'                         , 'Enquete_Resposta');
 }
 if(!defined('MYSQL_ENQUETE_VOTO')){
-    define('MYSQL_ENQUETE_VOTO'                         , 'Enquete_Voto');
+    define('MYSQL_ENQUETE_VOTO'                             , 'Enquete_Voto');
 }
 // Banco de Dados
 if(!defined('MYSQL_SIS_NEWSLETTER')){
-    define('MYSQL_SIS_NEWSLETTER'                       , 'skafe_emails');
+    define('MYSQL_SIS_NEWSLETTER'                           , 'skafe_emails');
 }
 
 // COMERCIO
 if(!defined('MYSQL_COMERCIO_VISITA')){
-    define('MYSQL_COMERCIO_VISITA'                      , 'Comercio_Visita');
+    define('MYSQL_COMERCIO_VISITA'                          , 'Comercio_Visita');
 } if(!defined('MYSQL_COMERCIO_VISITA_COMENTARIO')){
-    define('MYSQL_COMERCIO_VISITA_COMENTARIO'           ,'Comercio_Visita_Comentario');
+    define('MYSQL_COMERCIO_VISITA_COMENTARIO'               ,'Comercio_Visita_Comentario');
 }
 if(!defined('MYSQL_COMERCIO_CHECKLIST')){
-    define('MYSQL_COMERCIO_CHECKLIST'                   , 'Comercio_Checklist');
+    define('MYSQL_COMERCIO_CHECKLIST'                       , 'Comercio_Checklist');
 }
 
 
 if(!defined('MYSQL_COMERCIO_PROPOSTA_SUB')){
-    define('MYSQL_COMERCIO_PROPOSTA_SUB'                , 'Comercio_Proposta_Sub');
+    define('MYSQL_COMERCIO_PROPOSTA_SUB'                    , 'Comercio_Proposta_Sub');
 }
 if(!defined('MYSQL_COMERCIO_PROPOSTA_MAODEOBRA')){
-    define('MYSQL_COMERCIO_PROPOSTA_MAODEOBRA'          , 'Comercio_Proposta_MaodeObra');
+    define('MYSQL_COMERCIO_PROPOSTA_MAODEOBRA'              , 'Comercio_Proposta_MaodeObra');
 }
 if(!defined('MYSQL_COMERCIO_PROPOSTA_PRODUTO')){
-    define('MYSQL_COMERCIO_PROPOSTA_PRODUTO'            , 'Comercio_Proposta_Produto');
+    define('MYSQL_COMERCIO_PROPOSTA_PRODUTO'                , 'Comercio_Proposta_Produto');
 }
 if(!defined('MYSQL_COMERCIO_PROPOSTA_FUNCIONARIO')){
-    define('MYSQL_COMERCIO_PROPOSTA_FUNCIONARIO'        , 'Comercio_Proposta_Funcionario');
+    define('MYSQL_COMERCIO_PROPOSTA_FUNCIONARIO'            , 'Comercio_Proposta_Funcionario');
 }
 if(!defined('MYSQL_COMERCIO_PROPOSTA_COMENTARIO')){
-    define('MYSQL_COMERCIO_PROPOSTA_COMENTARIO'        , 'Comercio_Proposta_Comentario');
+    define('MYSQL_COMERCIO_PROPOSTA_COMENTARIO'             , 'Comercio_Proposta_Comentario');
 }
 if(!defined('MYSQL_COMERCIO_PROPOSTA_CHECKLIST')){
-    define('MYSQL_COMERCIO_PROPOSTA_CHECKLIST'          , 'Comercio_Proposta_Checklist');
+    define('MYSQL_COMERCIO_PROPOSTA_CHECKLIST'              , 'Comercio_Proposta_Checklist');
 }
 if(!defined('MYSQL_COMERCIO_PROPOSTA')){
-    define('MYSQL_COMERCIO_PROPOSTA'                    , 'comercio_proposta'); 
+    define('MYSQL_COMERCIO_PROPOSTA'                        , 'comercio_proposta'); 
 } 
 if(!defined('MYSQL_COMERCIO_PROPOSTA_SERVICOTIPO')){
-    define('MYSQL_COMERCIO_PROPOSTA_SERVICOTIPO'        , 'Comercio_Proposta_Servicotipo'); 
+    define('MYSQL_COMERCIO_PROPOSTA_SERVICOTIPO'            , 'Comercio_Proposta_Servicotipo'); 
 } 
 if(!defined('MYSQL_COMERCIO_PROPOSTA_SERVICO')){
-    define('MYSQL_COMERCIO_PROPOSTA_SERVICO'            , 'Comercio_Proposta_Servico'); 
+    define('MYSQL_COMERCIO_PROPOSTA_SERVICO'                , 'Comercio_Proposta_Servico'); 
 } 
 if(!defined('MYSQL_COMERCIO_PROPOSTA_SERVICOINSTALACAO')){
-    define('MYSQL_COMERCIO_PROPOSTA_SERVICOINSTALACAO'  , 'Comercio_Proposta_ServicoInstalacao'); 
+    define('MYSQL_COMERCIO_PROPOSTA_SERVICOINSTALACAO'      , 'Comercio_Proposta_ServicoInstalacao'); 
 } 
 if(!defined('MYSQL_COMERCIO_ESTOQUE')){
-    define('MYSQL_COMERCIO_ESTOQUE'                     , 'Comercio_Estoque');
+    define('MYSQL_COMERCIO_ESTOQUE'                         , 'Comercio_Estoque');
 }
 if(!defined('MYSQL_COMERCIO_PRODUTO_ESTOQUE_REDUZIR')){
-    define('MYSQL_COMERCIO_PRODUTO_ESTOQUE_REDUZIR'     , 'Comercio_Estoque_Reduzir');
+    define('MYSQL_COMERCIO_PRODUTO_ESTOQUE_REDUZIR'         , 'Comercio_Estoque_Reduzir');
 }
 if(!defined('MYSQL_COMERCIO_UNIDADE')){
-    define('MYSQL_COMERCIO_UNIDADE'                     , 'Comercio_Unidade');
+    define('MYSQL_COMERCIO_UNIDADE'                         , 'Comercio_Unidade');
 }
 if(!defined('MYSQL_COMERCIO_FAMILIA')){
-    define('MYSQL_COMERCIO_FAMILIA'                     , 'Comercio_Familia');
+    define('MYSQL_COMERCIO_FAMILIA'                         , 'Comercio_Familia');
 }
 if(!defined('MYSQL_COMERCIO_FORNECEDOR')){
-    define('MYSQL_COMERCIO_FORNECEDOR'                  , 'comercio_fornecedor');
+    define('MYSQL_COMERCIO_FORNECEDOR'                      , 'comercio_fornecedor');
 }
 if(!defined('MYSQL_COMERCIO_FORNECEDOR_COMENTARIO')){
-    define('MYSQL_COMERCIO_FORNECEDOR_COMENTARIO'       , 'comercio_fornecedor_Comentario');
+    define('MYSQL_COMERCIO_FORNECEDOR_COMENTARIO'           , 'comercio_fornecedor_Comentario');
 }
 if(!defined('MYSQL_COMERCIO_FORNECEDOR_MATERIAL')){
-    define('MYSQL_COMERCIO_FORNECEDOR_MATERIAL'         , 'Comercio_Fornecedor_Material');
+    define('MYSQL_COMERCIO_FORNECEDOR_MATERIAL'             , 'Comercio_Fornecedor_Material');
 }
 if(!defined('MYSQL_COMERCIO_FORNECEDOR_MATERIAL_PRODUTOS')){
-    define('MYSQL_COMERCIO_FORNECEDOR_MATERIAL_PRODUTOS' , 'Comercio_Fornecedor_Material_Produtos');
+    define('MYSQL_COMERCIO_FORNECEDOR_MATERIAL_PRODUTOS'    , 'Comercio_Fornecedor_Material_Produtos');
 }
 if(!defined('MYSQL_COMERCIO_MARCA')){
-    define('MYSQL_COMERCIO_MARCA'                       , 'comercio_marca');
+    define('MYSQL_COMERCIO_MARCA'                           , 'comercio_marca');
 }
 if(!defined('MYSQL_COMERCIO_LINHA')){
-    define('MYSQL_COMERCIO_LINHA'                       , 'comercio_linha');
+    define('MYSQL_COMERCIO_LINHA'                           , 'comercio_linha');
 }
 if(!defined('MYSQL_COMERCIO_PRODUTO')){
-    define('MYSQL_COMERCIO_PRODUTO'                     , 'comercio_produto'); 
+    define('MYSQL_COMERCIO_PRODUTO'                         , 'comercio_produto'); 
 }
 
 // MODULOS COMERCIO_SERVICO
 if(!defined('MYSQL_COMERCIO_SERVICO')){
-    define('MYSQL_COMERCIO_SERVICO'                     , 'comercio_servico'); 
+    define('MYSQL_COMERCIO_SERVICO'                         , 'comercio_servico'); 
 }   
 if(!defined('MYSQL_COMERCIO_SERVICO_TIPO')){
-    define('MYSQL_COMERCIO_SERVICO_TIPO'                , 'comercio_servico_tipo'); 
+    define('MYSQL_COMERCIO_SERVICO_TIPO'                    , 'comercio_servico_tipo'); 
 }
 if(!defined('MYSQL_COMERCIO_SERVICO_AR')){
-    define('MYSQL_COMERCIO_SERVICO_AR'                  , 'Comercio_Servico_Ar'); 
+    define('MYSQL_COMERCIO_SERVICO_AR'                      , 'Comercio_Servico_Ar'); 
 }
 if(!defined('MYSQL_COMERCIO_SERVICO_BTU')){
-    define('MYSQL_COMERCIO_SERVICO_BTU'                 , 'Comercio_Servico_Btu'); 
+    define('MYSQL_COMERCIO_SERVICO_BTU'                     , 'Comercio_Servico_Btu'); 
 }
 if(!defined('MYSQL_COMERCIO_SERVICO_GAS')){
-    define('MYSQL_COMERCIO_SERVICO_GAS'                 , 'Comercio_Servico_Gas'); 
+    define('MYSQL_COMERCIO_SERVICO_GAS'                     , 'Comercio_Servico_Gas'); 
 }
 if(!defined('MYSQL_COMERCIO_SERVICO_LINHA')){
-    define('MYSQL_COMERCIO_SERVICO_LINHA'               , 'Comercio_Servico_Linha'); 
+    define('MYSQL_COMERCIO_SERVICO_LINHA'                   , 'Comercio_Servico_Linha'); 
 }
 if(!defined('MYSQL_COMERCIO_SERVICO_SERVICO')){
-    define('MYSQL_COMERCIO_SERVICO_SERVICO'             , 'Comercio_Servico_Servico'); 
+    define('MYSQL_COMERCIO_SERVICO_SERVICO'                 , 'Comercio_Servico_Servico'); 
 }
 if(!defined('MYSQL_COMERCIO_SERVICO_SUPORTE')){
-    define('MYSQL_COMERCIO_SERVICO_SUPORTE'             , 'Comercio_Servico_Suporte'); 
+    define('MYSQL_COMERCIO_SERVICO_SUPORTE'                 , 'Comercio_Servico_Suporte'); 
 }
 // MODULO USUARIOS
 if(!defined('MYSQL_USUARIO_EXPEDIENTE')){
-    define('MYSQL_USUARIO_EXPEDIENTE'                   , 'Usuario_Expediente');
+    define('MYSQL_USUARIO_EXPEDIENTE'                       , 'Usuario_Expediente');
 }
 if(!defined('MYSQL_USUARIO_ANEXO')){
-    define('MYSQL_USUARIO_ANEXO'                        , 'Usuario_Anexo');
+    define('MYSQL_USUARIO_ANEXO'                            , 'Usuario_Anexo');
 }
 // Usuarios Mensagem
 if(!defined('MYSQL_USUARIO_MENSAGEM_ANEXO')){
-    define('MYSQL_USUARIO_MENSAGEM_ANEXO'               , 'Usuario_Mensagem_Anexo');
+    define('MYSQL_USUARIO_MENSAGEM_ANEXO'                   , 'Usuario_Mensagem_Anexo');
 }
 if(!defined('MYSQL_USUARIO_MENSAGEM_ORIGEM')){
-    define('MYSQL_USUARIO_MENSAGEM_ORIGEM'              , 'usuario_mensagem_origem');
+    define('MYSQL_USUARIO_MENSAGEM_ORIGEM'                  , 'usuario_mensagem_origem');
 }
 if(!defined('MYSQL_USUARIO_MENSAGEM_ASSUNTO')){
-    define('MYSQL_USUARIO_MENSAGEM_ASSUNTO'             , 'usuario_mensagem_assunto');
+    define('MYSQL_USUARIO_MENSAGEM_ASSUNTO'                 , 'usuario_mensagem_assunto');
 }
 if(!defined('MYSQL_USUARIO_MENSAGEM_SETOR')){
-    define('MYSQL_USUARIO_MENSAGEM_SETOR'               , 'usuario_mensagem_setor');
+    define('MYSQL_USUARIO_MENSAGEM_SETOR'                   , 'usuario_mensagem_setor');
 }
 if(!defined('MYSQL_USUARIO_MENSAGEM_SETOR_RESPONSAVEL')){
-    define('MYSQL_USUARIO_MENSAGEM_SETOR_RESPONSAVEL'   , 'usuario_mensagem_setor_responsavel');
+    define('MYSQL_USUARIO_MENSAGEM_SETOR_RESPONSAVEL'       , 'usuario_mensagem_setor_responsavel');
 }
 // ENGENHARIA
 if(!defined('MYSQL_ENGENHARIA_EQUIPAMENTO')){
-    define('MYSQL_ENGENHARIA_EQUIPAMENTO'               , 'Engenharia_Equipamento');
+    define('MYSQL_ENGENHARIA_EQUIPAMENTO'                   , 'Engenharia_Equipamento');
 }
 if(!defined('MYSQL_ENGENHARIA_EMPREENDIMENTO')){
-    define('MYSQL_ENGENHARIA_EMPREENDIMENTO'            , 'Engenharia_Empreendimento');
+    define('MYSQL_ENGENHARIA_EMPREENDIMENTO'                , 'Engenharia_Empreendimento');
 }
 if(!defined('MYSQL_ENGENHARIA_EMPREENDIMENTO_UNIDADE')){
-    define('MYSQL_ENGENHARIA_EMPREENDIMENTO_UNIDADE'    , 'Engenharia_Empreendimento_Unidade');
+    define('MYSQL_ENGENHARIA_EMPREENDIMENTO_UNIDADE'        , 'Engenharia_Empreendimento_Unidade');
 }
 if(!defined('MYSQL_ENGENHARIA_ESTOQUE_RETIRADA')){
-    define('MYSQL_ENGENHARIA_ESTOQUE_RETIRADA'          , 'Engenharia_Estoque_Retirada');
+    define('MYSQL_ENGENHARIA_ESTOQUE_RETIRADA'              , 'Engenharia_Estoque_Retirada');
 }
 if(!defined('MYSQL_ENGENHARIA_EMPREENDIMENTO_CUSTO')){
-    define('MYSQL_ENGENHARIA_EMPREENDIMENTO_CUSTO'      , 'Engenharia_Empreendimento_Custo');
+    define('MYSQL_ENGENHARIA_EMPREENDIMENTO_CUSTO'          , 'Engenharia_Empreendimento_Custo');
 }
 
 
 // Comercio Certificado
 if(!defined('MYSQL_COMERCIO_CERTIFICADO_PROPOSTA')){
-    define('MYSQL_COMERCIO_CERTIFICADO_PROPOSTA'             , 'comercio_certificado_proposta');
+    define('MYSQL_COMERCIO_CERTIFICADO_PROPOSTA'            , 'comercio_certificado_proposta');
 }
 if(!defined('MYSQL_COMERCIO_CERTIFICADO_AUDITORIA')){
-    define('MYSQL_COMERCIO_CERTIFICADO_AUDITORIA'            , 'comercio_certificado_auditoria');
+    define('MYSQL_COMERCIO_CERTIFICADO_AUDITORIA'           , 'comercio_certificado_auditoria');
 }
 if(!defined('MYSQL_COMERCIO_CERTIFICADO_AUDITORIAPERIODICA')){
-    define('MYSQL_COMERCIO_CERTIFICADO_AUDITORIAPERIODICA'   , 'comercio_certificado_auditoriaperiodica');
+    define('MYSQL_COMERCIO_CERTIFICADO_AUDITORIAPERIODICA'  , 'comercio_certificado_auditoriaperiodica');
 }
 
 
 // Banco de Dados Predial
 if(!defined('MYSQL_PREDIAL_SALAO')){
-    define('MYSQL_PREDIAL_SALAO'                    , 'Predial_Salao');
+    define('MYSQL_PREDIAL_SALAO'                            , 'Predial_Salao');
 }
 if(!defined('MYSQL_PREDIAL_SALAO_RESERVA')){
-    define('MYSQL_PREDIAL_SALAO_RESERVA'            , 'Predial_Salao_Reserva');
+    define('MYSQL_PREDIAL_SALAO_RESERVA'                    , 'Predial_Salao_Reserva');
 }
 if(!defined('MYSQL_PREDIAL_BLOCO')){
-    define('MYSQL_PREDIAL_BLOCO'                    , 'Predial_Bloco');
+    define('MYSQL_PREDIAL_BLOCO'                            , 'Predial_Bloco');
 }
 if(!defined('MYSQL_PREDIAL_BLOCO_APART')){
-    define('MYSQL_PREDIAL_BLOCO_APART'              , 'Predial_Bloco_Apart');
+    define('MYSQL_PREDIAL_BLOCO_APART'                      , 'Predial_Bloco_Apart');
 }
 if(!defined('MYSQL_PREDIAL_BLOCO_APART_ADVERTENCIA')){
-    define('MYSQL_PREDIAL_BLOCO_APART_ADVERTENCIA'  , 'Predial_Bloco_Apart_Advertencia');
+    define('MYSQL_PREDIAL_BLOCO_APART_ADVERTENCIA'          , 'Predial_Bloco_Apart_Advertencia');
 }
 if(!defined('MYSQL_PREDIAL_BLOCO_APART_INFORMATIVO')){
-    define('MYSQL_PREDIAL_BLOCO_APART_INFORMATIVO'  , 'Predial_Bloco_Apart_Informativo');
+    define('MYSQL_PREDIAL_BLOCO_APART_INFORMATIVO'          , 'Predial_Bloco_Apart_Informativo');
+}
+if(!defined('MYSQL_PREDIAL_BLOCO_APART_INFORMATIVO_AVISO')){
+    define('MYSQL_PREDIAL_BLOCO_APART_INFORMATIVO_AVISO'    , 'Predial_Bloco_Apart_Informativo_Aviso');
 }
 if(!defined('MYSQL_PREDIAL_BLOCO_APART_CORREIO')){
-    define('MYSQL_PREDIAL_BLOCO_APART_CORREIO'      , 'Predial_Bloco_Apart_Correio');
+    define('MYSQL_PREDIAL_BLOCO_APART_CORREIO'              , 'Predial_Bloco_Apart_Correio');
 }
 if(!defined('MYSQL_PREDIAL_BLOCO_APART_CORREIO_AVISO')){
-    define('MYSQL_PREDIAL_BLOCO_APART_CORREIO_AVISO', 'Predial_Bloco_Apart_Correio_Aviso');
+    define('MYSQL_PREDIAL_BLOCO_APART_CORREIO_AVISO'        , 'Predial_Bloco_Apart_Correio_Aviso');
 }
 if(!defined('MYSQL_PREDIAL_BLOCO_APART_ANIMAL')){
-    define('MYSQL_PREDIAL_BLOCO_APART_ANIMAL'       , 'Predial_Bloco_Apart_Animal');
+    define('MYSQL_PREDIAL_BLOCO_APART_ANIMAL'               , 'Predial_Bloco_Apart_Animal');
 }
 if(!defined('MYSQL_PREDIAL_BLOCO_APART_VEICULO')){
-    define('MYSQL_PREDIAL_BLOCO_APART_VEICULO'      , 'Predial_Bloco_Apart_Veiculo');
+    define('MYSQL_PREDIAL_BLOCO_APART_VEICULO'              , 'Predial_Bloco_Apart_Veiculo');
 }
 
 // OUTROS BANCOS E SUAS TABELAS
@@ -573,71 +576,71 @@ if(!defined('MYSQL_SIS_LOGIN_ESQUECISENHA')){
 
 // BASICOS
 if(!defined('MYSQL_USUARIOS')){
-    define('MYSQL_USUARIOS'                             , 'usuario');
+    define('MYSQL_USUARIOS'                                 , 'usuario');
 } if(!defined('MYSQL_USUARIOS_HISTORICO_EMAIL')){
-    define('MYSQL_USUARIOS_HISTORICO_EMAIL'             , 'Usuario_Historico_Email');
+    define('MYSQL_USUARIOS_HISTORICO_EMAIL'                 , 'Usuario_Historico_Email');
 } if(!defined('MYSQL_USUARIO_VEICULO_ALUGUEL')){
-    define('MYSQL_USUARIO_VEICULO_ALUGUEL'              , 'usuario_aluguel');
+    define('MYSQL_USUARIO_VEICULO_ALUGUEL'                  , 'usuario_aluguel');
 } if(!defined('MYSQL_USUARIO_VEICULO')){
-    define('MYSQL_USUARIO_VEICULO'                      , 'Veiculo');
+    define('MYSQL_USUARIO_VEICULO'                          , 'Veiculo');
 } if(!defined('MYSQL_USUARIO_VEICULO_EVENTO')){
-    define('MYSQL_USUARIO_VEICULO_EVENTO'               , 'Veiculo_Evento');
+    define('MYSQL_USUARIO_VEICULO_EVENTO'                   , 'Veiculo_Evento');
 } if(!defined('MYSQL_USUARIO_VEICULO_COMENTARIO')){
-    define('MYSQL_USUARIO_VEICULO_COMENTARIO'           , 'Veiculo_Comentario');
+    define('MYSQL_USUARIO_VEICULO_COMENTARIO'               , 'Veiculo_Comentario');
 } if(!defined('MYSQL_USUARIO_VEICULO_EQUIPAMENTO')){
-    define('MYSQL_USUARIO_VEICULO_EQUIPAMENTO'          , 'Veiculo_Equipamento');
+    define('MYSQL_USUARIO_VEICULO_EQUIPAMENTO'              , 'Veiculo_Equipamento');
 } if(!defined('MYSQL_USUARIO_VEICULO_EQUIPAMENTO_MARCAS')){
-    define('MYSQL_USUARIO_VEICULO_EQUIPAMENTO_MARCAS'   , 'Veiculo_Equipamento_Marcas');
+    define('MYSQL_USUARIO_VEICULO_EQUIPAMENTO_MARCAS'       , 'Veiculo_Equipamento_Marcas');
 } if(!defined('MYSQL_USUARIO_VEICULO_EQUIPAMENTO_MODELO')){
-    define('MYSQL_USUARIO_VEICULO_EQUIPAMENTO_MODELO'   , 'Veiculo_Equipamento_Modelo');
+    define('MYSQL_USUARIO_VEICULO_EQUIPAMENTO_MODELO'       , 'Veiculo_Equipamento_Modelo');
 } if(!defined('MYSQL_USUARIO_VEICULO_MARCAS')){
-    define('MYSQL_USUARIO_VEICULO_MARCAS'               , 'Veiculo_Marcas');
+    define('MYSQL_USUARIO_VEICULO_MARCAS'                   , 'Veiculo_Marcas');
 } if(!defined('MYSQL_USUARIO_VEICULO_MODELO')){
-    define('MYSQL_USUARIO_VEICULO_MODELO'               , 'Veiculo_Modelo');
+    define('MYSQL_USUARIO_VEICULO_MODELO'                   , 'Veiculo_Modelo');
 } if(!defined('MYSQL_USUARIOS_MENS')){
-    define('MYSQL_USUARIOS_MENS'                        , 'Usuario_Mensagem');
+    define('MYSQL_USUARIOS_MENS'                            , 'Usuario_Mensagem');
 } if(!defined('MYSQL_USUARIOS_MENS_RESP')){
-    define('MYSQL_USUARIOS_MENS_RESP'                   , 'Usuario_Mensagem_resp');
+    define('MYSQL_USUARIOS_MENS_RESP'                       , 'Usuario_Mensagem_resp');
 } if(!defined('MYSQL_USUARIOS_COMENTARIOS')){
-    define('MYSQL_USUARIOS_COMENTARIOS'                 , 'usuario_comentario');
+    define('MYSQL_USUARIOS_COMENTARIOS'                     , 'usuario_comentario');
 } if(!defined('MYSQL_BANNERS')){
-    define('MYSQL_BANNERS'                              , 'Banner');
+    define('MYSQL_BANNERS'                                  , 'Banner');
 }
 // FINANCEIRO
 if(!defined('MYSQL_FINANCEIRO_FINANCEIRO_FORMA')){
-    define('MYSQL_FINANCEIRO_FINANCEIRO_FORMA'          , 'Pagamento_Forma');
+    define('MYSQL_FINANCEIRO_FINANCEIRO_FORMA'              , 'Pagamento_Forma');
 } if(!defined('MYSQL_FINANCEIRO_FINANCEIRO_FORMA_CONDICAO')){
-    define('MYSQL_FINANCEIRO_FINANCEIRO_FORMA_CONDICAO' , 'Pagamento_Forma_Condicao');
+    define('MYSQL_FINANCEIRO_FINANCEIRO_FORMA_CONDICAO'     , 'Pagamento_Forma_Condicao');
 } if(!defined('MYSQL_FINANCEIRO_MOV_EXT')){
-    define('MYSQL_FINANCEIRO_MOV_EXT'                   , 'Pagamento_Mov_Ext');
+    define('MYSQL_FINANCEIRO_MOV_EXT'                       , 'Pagamento_Mov_Ext');
 } if(!defined('MYSQL_FINANCEIRO_MOV_INT')){
-    define('MYSQL_FINANCEIRO_MOV_INT'                   , 'Pagamento_Mov_Int');
+    define('MYSQL_FINANCEIRO_MOV_INT'                       , 'Pagamento_Mov_Int');
 }if(!defined('MYSQL_FINANCEIRO_BANCO')){
-    define('MYSQL_FINANCEIRO_BANCO'                     , 'Financeiro_Banco');
+    define('MYSQL_FINANCEIRO_BANCO'                         , 'Financeiro_Banco');
 }
 // AUTO ATUALIZADOS
 if(!defined('MYSQL_SOCIAL')){
-    define('MYSQL_SOCIAL'                       , 'Social');
+    define('MYSQL_SOCIAL'                                   , 'Social');
 } if(!defined('MYSQL_SOCIAL_COMENTARIO')){
-    define('MYSQL_SOCIAL_COMENTARIO'            , 'Social_Comentario');
+    define('MYSQL_SOCIAL_COMENTARIO'                        , 'Social_Comentario');
 } if(!defined('MYSQL_SOCIAL_FICOU')){
-    define('MYSQL_SOCIAL_FICOU'                 , 'Social_Ficou');
+    define('MYSQL_SOCIAL_FICOU'                             , 'Social_Ficou');
 }if(!defined('MYSQL_SOCIAL_FICOU_COMENTARIO')){
-    define('MYSQL_SOCIAL_FICOU_COMENTARIO'      , 'Social_Ficou_Comentario');
+    define('MYSQL_SOCIAL_FICOU_COMENTARIO'                  , 'Social_Ficou_Comentario');
 }if(!defined('MYSQL_SOCIAL_CARACTERISTICA')){
-    define('MYSQL_SOCIAL_CARACTERISTICA'        , 'Social_Caracteristica');
+    define('MYSQL_SOCIAL_CARACTERISTICA'                    , 'Social_Caracteristica');
 }if(!defined('MYSQL_SOCIAL_CARACTERISTICA_ACAO')){
-    define('MYSQL_SOCIAL_CARACTERISTICA_ACAO'   , 'Social_Caracteristica_Acao');
+    define('MYSQL_SOCIAL_CARACTERISTICA_ACAO'               , 'Social_Caracteristica_Acao');
 }if(!defined('MYSQL_USUARIO_TELEFONE')){
-    define('MYSQL_USUARIO_TELEFONE'              , 'Usuario_Telefone');
+    define('MYSQL_USUARIO_TELEFONE'                         , 'Usuario_Telefone');
 }if(!defined('MYSQL_USUARIO_TELEFONE_CHAMADA')){
-    define('MYSQL_USUARIO_TELEFONE_CHAMADA'      , 'Usuario_Telefone_Chamada');
+    define('MYSQL_USUARIO_TELEFONE_CHAMADA'                 , 'Usuario_Telefone_Chamada');
 }if(!defined('MYSQL_SOCIAL_ACAO')){
-    define('MYSQL_SOCIAL_ACAO'                  , 'Social_Acao');
+    define('MYSQL_SOCIAL_ACAO'                              , 'Social_Acao');
 }if(!defined('MYSQL_SOCIAL_ACAO_PARTICIPANTE')){
-    define('MYSQL_SOCIAL_ACAO_PARTICIPANTE'     , 'Social_Acao_Participante');
+    define('MYSQL_SOCIAL_ACAO_PARTICIPANTE'                 , 'Social_Acao_Participante');
 }if(!defined('MYSQL_SOCIAL_ACAO_PRESENTE')){
-    define('MYSQL_SOCIAL_ACAO_PRESENTE'         , 'Social_Acao_Presente');
+    define('MYSQL_SOCIAL_ACAO_PRESENTE'                     , 'Social_Acao_Presente');
 }
 // AUTO NAO USADOS
 if(!defined('MYSQL_USUARIO_AGENDA_PASTA')){

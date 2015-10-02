@@ -75,7 +75,7 @@ class usuario_mensagem_AssuntoControle extends usuario_mensagem_Controle
         $formid     = 'form_Sistema_Admin_Assuntos';
         $formbt     = __('Salvar');
         $formlink   = 'usuario_mensagem/Assunto/Assuntos_Add2/';
-        $campos = usuario_mensagem_Assunto_DAO::Get_Colunas();
+        $campos = Usuario_Mensagem_Assunto_DAO::Get_Colunas();
         \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos);
     }
     /**
@@ -87,7 +87,7 @@ class usuario_mensagem_AssuntoControle extends usuario_mensagem_Controle
      */
     public function Assuntos_Add2(){
         $titulo     = __('Assunto Adicionado com Sucesso');
-        $dao        = 'usuario_mensagem_Assunto';
+        $dao        = 'Usuario_Mensagem_Assunto';
         $funcao     = '$this->Assuntos();';
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = __('Assunto cadastrado com sucesso.');
@@ -104,7 +104,7 @@ class usuario_mensagem_AssuntoControle extends usuario_mensagem_Controle
         self::Endereco_Assunto(true);
         $id = (int) $id;
         // Carrega campos e retira os que nao precisam
-        $campos = usuario_mensagem_Assunto_DAO::Get_Colunas();
+        $campos = Usuario_Mensagem_Assunto_DAO::Get_Colunas();
         // recupera assunto
         $assunto = $this->_Modelo->db->Sql_Select('Usuario_Mensagem_Assunto', Array('id'=>$id));
         self::mysql_AtualizaValores($campos, $assunto);

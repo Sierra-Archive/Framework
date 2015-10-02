@@ -59,7 +59,7 @@ class SierraTec_Manutencao {
             $dependencia_dao = array_merge($dependencia_dao,$this->Atualiza_Dependencia_Banco_De_Dados(MOD_PATH.$valor.DS));
         }
         var_dump($dependencia_dao);
-        $this->Alterar_Config('TEMP_DEPENDENCIA_DAO',serialize($dependencia_dao),'_temp');
+        $this->Alterar_Config('TEMP_DEPENDENCIA_TABELAS',serialize($dependencia_dao),'_temp');
         
         // Limpa Bando de Dados
         $this->BD_Limpar();
@@ -68,7 +68,7 @@ class SierraTec_Manutencao {
      * Procura Por Todos os Usos de Dao e Coloca ai !
      * @param type $dir
      */
-    private function Atualiza_Dependencia_Banco_De_Dados($dir=ROOT_PADRAO){
+    public function Atualiza_Dependencia_Banco_De_Dados($dir=ROOT_PADRAO){
 
         // Carrega Todos os DAO
         if($dir=='mod'){

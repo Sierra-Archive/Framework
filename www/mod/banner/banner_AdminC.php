@@ -142,7 +142,7 @@ class banner_AdminControle extends banner_Controle
         $formbt     = __('Alterar Banner');
         $formlink   = 'predial/Banner/Banners_Edit2/'.$id;
         $editar     = Array('Banner',$id);
-        $campos = Predial_Banner_DAO::Get_Colunas();
+        $campos = Banner_DAO::Get_Colunas();
         \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos,$editar);
     }
     /**

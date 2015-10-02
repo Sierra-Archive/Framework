@@ -252,7 +252,7 @@ class Acl{
                 // Avisa se login nao teve resultado
                 if($this->logado===false){
                     // Verifica se Possui Modulo PRedial e corresponde a um Apartamento sem nenhum cadastro
-                    if(\Framework\App\Sistema_Funcoes::Perm_Modulos('predial') && $senha == 'd41d8cd98f00b204e9800998ecf8427e' && strpos($login, '/')!==false){
+                    if(\Framework\App\Sistema_Funcoes::Perm_Modulos('predial') && $_POST['sistema_senha'] === '123456' && strpos($login, '/')!==false){
                         $login = explode(\Framework\App\Conexao::anti_injection($_POST['sistema_login']), '/');
                         if(!isset($login[1])){
                             // Deleta Sessoes e Puxa Erro
@@ -272,7 +272,7 @@ class Acl{
                         }else{
                             $where = Array(
                                 'num'            => $login[0],
-                                'bloco'         => $bloco->id
+                                'bloco'          => $bloco->id
                             );
                             $apartamento    = $this->_db->Sql_Select(  
                                 'Predial_Bloco_Apart',            
@@ -290,6 +290,15 @@ class Acl{
                             }else{
                                 _Sistema_erroControle::Erro_Puro(5061);
                             }
+                            
+                            
+                            // MEnsagem de Erro
+                            $mensagens = array(
+                                "tipo"              => 'erro',
+                                "mgs_principal"     => __('Código Inválido'),
+                                "mgs_secundaria"    => __('Verifique se a url foi digitada corretamente, ou se já foi usado ou expirada essa requisição.')
+                            );
+                            $this->_Registro->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
                         }
                     }
                     // Deleta Sessoes e Puxa Erro
@@ -301,9 +310,10 @@ class Acl{
                     $this->_id = \Framework\App\Session::get(SESSION_ADMIN_ID);
                 }
             }else{
-                $usuario = \Framework\App\Session::get(SESSION_ADMIN_LOG);
-                $senha   = \Framework\App\Session::get(SESSION_ADMIN_SENHA);
-                $this->logado = $this->Usuario_Senha_Verificar($usuario, $senha);
+                $this->logado = $this->Usuario_Senha_Verificar(
+                    \Framework\App\Session::get(SESSION_ADMIN_LOG), 
+                    \Framework\App\Session::get(SESSION_ADMIN_SENHA)
+                );
 
                 // Avisa se login nao teve resultado
                 if($this->logado===false ){

@@ -211,8 +211,7 @@ class predial_CorreioControle extends predial_Controle
         $sucesso = $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
         if($sucesso===true){
             // Pega o Correio
-            $identificador  = $this->_Modelo->db->Sql_Select('Predial_Bloco_Apart_Correio', Array(),1,'id DESC');
-            $identificador  = $identificador->id;
+            $identificador  = $this->_Modelo->db->Sql_Select('Predial_Bloco_Apart_Correio', false,1,'id DESC');
             // Captura Apartamento Responsavel
             $enviar = false;
             $apartamento  = $this->_Modelo->db->Sql_Select(
@@ -257,7 +256,7 @@ class predial_CorreioControle extends predial_Controle
                                 '<b>Data Entregue:</b>'.$identificador->data_entregue.'<br>';
                 // Cadastra Aviso
                 $aviso = new \Predial_Bloco_Apart_Correio_Aviso_DAO();
-                $aviso->correio = $identificador;
+                $aviso->correio = $identificador->id;
                 $aviso->mensagem = $mensagem;
                 $this->_Modelo->bd->Sql_Inserir($aviso);
                 // Manda Email

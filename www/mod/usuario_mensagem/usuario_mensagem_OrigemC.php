@@ -77,7 +77,7 @@ class usuario_mensagem_OrigemControle extends usuario_mensagem_Controle
         $formid     = 'form_Sistema_Admin_Origens';
         $formbt     = __('Salvar');
         $formlink   = 'usuario_mensagem/Origem/Origens_Add2/';
-        $campos = usuario_mensagem_Origem_DAO::Get_Colunas();
+        $campos = Usuario_Mensagem_Origem_DAO::Get_Colunas();
         \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos);
     }
     /**
@@ -89,7 +89,7 @@ class usuario_mensagem_OrigemControle extends usuario_mensagem_Controle
      */
     public function Origens_Add2(){
         $titulo     = __('Origem Adicionada com Sucesso');
-        $dao        = 'usuario_mensagem_Origem';
+        $dao        = 'Usuario_Mensagem_Origem';
         $funcao     = '$this->Origens();';
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = __('Origem cadastrada com sucesso.');
@@ -110,8 +110,8 @@ class usuario_mensagem_OrigemControle extends usuario_mensagem_Controle
         $formid     = 'form_Sistema_AdminC_OrigemEdit';
         $formbt     = __('Alterar Origem');
         $formlink   = 'usuario_mensagem/Origem/Origens_Edit2/'.$id;
-        $editar     = Array('usuario_mensagem_Origem',$id);
-        $campos = usuario_mensagem_Origem_DAO::Get_Colunas();
+        $editar     = Array('Usuario_Mensagem_Origem',$id);
+        $campos = Usuario_Mensagem_Origem_DAO::Get_Colunas();
         \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos,$editar);
     }
     /**
@@ -123,7 +123,7 @@ class usuario_mensagem_OrigemControle extends usuario_mensagem_Controle
      */
     public function Origens_Edit2($id){
         $titulo     = __('Origem Editada com Sucesso');
-        $dao        = Array('usuario_mensagem_Origem',$id);
+        $dao        = Array('Usuario_Mensagem_Origem',$id);
         $funcao     = '$this->Origens();';
         $sucesso1   = __('Origem Alterado com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
@@ -142,7 +142,7 @@ class usuario_mensagem_OrigemControle extends usuario_mensagem_Controle
         
     	$id = (int) $id;
         // Puxa setor e deleta
-        $setor = $this->_Modelo->db->Sql_Select('usuario_mensagem_Origem', Array('id'=>$id));
+        $setor = $this->_Modelo->db->Sql_Select('Usuario_Mensagem_Origem', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($setor);
         // Mensagem
     	if($sucesso===true){

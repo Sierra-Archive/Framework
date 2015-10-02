@@ -97,10 +97,37 @@ $('#produtocontrolador1 select').attr('id','produto1');
         $cep = str_replace(Array('-','.'), Array('',''), trim($cep));
         if(strlen($cep)!==8 || !is_numeric($cep)){
             // CEP INVALIDO
-            
+            $mensagens = array(
+                "tipo"              => 'erro',
+                "mgs_principal"     => __('Cep Inválido'),
+                "mgs_secundaria"    => __('Cep não Reconhecido pelos Corrêios')
+            );
+            $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+            $this->_Visual->Javascript_Executar(
+                    '$("#cep").css(\'border\', \'2px solid #FFAEB0\').focus();'
+            );
+            $this->_Visual->Json_Info_Update('Historico', false);
+            $this->layoult_zerar = false; 
             
             return false;
         }
+        
+        
+        $imprimir = function(&$opcoes){
+            $html = '';
+            if($opcoes!==false && !empty($opcoes)){
+                if(is_object($opcoes)) $opcoes = Array(0=>$opcoes);
+                reset($opcoes);
+                foreach ($opcoes as $indice2=>$valor2) {
+                    $selecionado = 0;
+                    $html .= \Framework\Classes\Form::Select_Opcao_Stat($valor2->nome, $valor2->id,$selecionado);
+                }
+            }
+            return $html;
+        };
+        
+        
+        
         $arquivo = 'http://cep.republicavirtual.com.br/web_cep.php?formato=php&cep='.$cep;
         $xmls = file_get_contents($arquivo);
         $xmls = preg_replace("/<!--[\S|\s]*?-->/", "", $xmls);
@@ -109,7 +136,17 @@ $('#produtocontrolador1 select').attr('id','produto1');
         
         if($resultado[0]==='0'){
             // CEP INVALIDO
-            
+            $mensagens = array(
+                "tipo"              => 'erro',
+                "mgs_principal"     => __('Cep Inválido'),
+                "mgs_secundaria"    => __('Cep não Reconhecido pelos Corrêios')
+            );
+            $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+            $this->_Visual->Javascript_Executar(
+                    '$("#cep").css(\'border\', \'2px solid #FFAEB0\').focus();'
+            );
+            $this->_Visual->Json_Info_Update('Historico', false);
+            $this->layoult_zerar = false; 
             
             return false;
         }
@@ -129,6 +166,8 @@ $('#produtocontrolador1 select').attr('id','produto1');
         $html       =   $imprimir($opcoes,1);
         $opcoes     =   $this->_Modelo->db->Sql_Select('Sistema_Local_Bairro', $where);
         $html       .=  $imprimir($opcoes);
+        
+        return true;
     }
     public function Valida_CPF($cpf=false,$campos=false){
         $info_cpf = $cpf;

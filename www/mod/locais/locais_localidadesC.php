@@ -314,7 +314,7 @@ class locais_localidadesControle extends locais_Controle
         $formbt     = __('Alterar País');
         $formlink   = 'locais/localidades/Paises_Edit2/'.$id;
         $editar     = Array('Sistema_Local_Pais',$id);
-        $campos = Pais_DAO::Get_Colunas();
+        $campos = Sistema_Local_Pais_DAO::Get_Colunas();
         \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos,$editar);
     }
     /**

@@ -398,44 +398,55 @@ class biblioteca_BibliotecaControle extends biblioteca_Controle
             //$html .= '<b>'.__('Extensão').'</b>: '.$imnfo[2].'<br>';	  // extensão
             $html .= '<b>'.__('Mime').'</b>: '.$imnfo['mime'].'<br>'; // mime-type
             
+            // Função Exif_Read_data()
+            
+            
             // Caso seja JPG, JPEG ou TIFF, le os Dados EXIF
             if($extensao==='jpg' || $extensao==='jpeg' || $extensao==='tiff'){
-                $exif = exif_read_data(ARQ_PATH.$endereco);
                 
-                //$html .= '<br><br><b>'.__('Informações do Exif').'</b><br>';
-                if(isset($exif["DateTimeOriginal"])){
-                    $html .= '<b>'.__('Horário da Foto').'</b>: '.$exif["DateTimeOriginal"].'<br>';
-                }
-                if(isset($exif["Model"])){
-                    $html .= '<b>'.__('Modelo da Camera').'</b>: '.$exif["Model"].'<br>';
-                }
-                if(isset($exif["Make"])){
-                    $html .= '<b>'.__('Fabricante da Camera').'</b>: '.$exif["Make"].'<br>';
-                }
-                if(isset($exif["Software"])){
-                    $html .= '<b>'.__('Programa que Manipulou o Arquivo').'</b>: '.$exif["Software"].'<br>';
-                }
-                if(isset($exif["Flash"])){
-                    $html .= '<b>'.__('Flash').'</b>: '.$exif["Flash"].'<br>';
-                }
-                if(isset($exif["FNumber"])){
-                    $html .= '<b>'.__('Abertura Relativa da Lente').'</b>: '.$exif["FNumber"].'<br>';
-                }
-                if(isset($exif["ExposureTime"])){
-                    $html .= '<b>'.__('Tempo para Foto').'</b>: '.$exif["ExposureTime"].'<br>';
-                }
-                if(isset($exif["FocalLength"])){
-                    $html .= '<b>'.__('Tamanho Focal').'</b>: '.$exif["FocalLength"].'<br>';
-                }
-                
-                // Localizacao da Foto
-                if(array_key_exists('GPSLongitude', $exif) && array_key_exists('GPSLatitude', $exif)) {
-                    $lng = Framework\App\Sistema_Funcoes::Get_Gps($exif["GPSLongitude"], $exif['GPSLongitudeRef']);
-                    $lat = Framework\App\Sistema_Funcoes::Get_Gps($exif["GPSLatitude"], $exif['GPSLatitudeRef']);
-                    $html .= '<b>'.__('Latitude da Foto').'</b>: '.$lng.'<br>';
-                    $html .= '<b>'.__('Longitude da Foto').'</b>: '.$lat.'<br>';
+                if(function_exists('exif_read_data')){
+                    $exif = exif_read_data(ARQ_PATH.$endereco);
+
+                    //$html .= '<br><br><b>'.__('Informações do Exif').'</b><br>';
+                    if(isset($exif["DateTimeOriginal"])){
+                        $html .= '<b>'.__('Horário da Foto').'</b>: '.$exif["DateTimeOriginal"].'<br>';
+                    }
+                    if(isset($exif["Model"])){
+                        $html .= '<b>'.__('Modelo da Camera').'</b>: '.$exif["Model"].'<br>';
+                    }
+                    if(isset($exif["Make"])){
+                        $html .= '<b>'.__('Fabricante da Camera').'</b>: '.$exif["Make"].'<br>';
+                    }
+                    if(isset($exif["Software"])){
+                        $html .= '<b>'.__('Programa que Manipulou o Arquivo').'</b>: '.$exif["Software"].'<br>';
+                    }
+                    if(isset($exif["Flash"])){
+                        $html .= '<b>'.__('Flash').'</b>: '.$exif["Flash"].'<br>';
+                    }
+                    if(isset($exif["FNumber"])){
+                        $html .= '<b>'.__('Abertura Relativa da Lente').'</b>: '.$exif["FNumber"].'<br>';
+                    }
+                    if(isset($exif["ExposureTime"])){
+                        $html .= '<b>'.__('Tempo para Foto').'</b>: '.$exif["ExposureTime"].'<br>';
+                    }
+                    if(isset($exif["FocalLength"])){
+                        $html .= '<b>'.__('Tamanho Focal').'</b>: '.$exif["FocalLength"].'<br>';
+                    }
+
+                    // Localizacao da Foto
+                    if(array_key_exists('GPSLongitude', $exif) && array_key_exists('GPSLatitude', $exif)) {
+                        $lng = Framework\App\Sistema_Funcoes::Get_Gps($exif["GPSLongitude"], $exif['GPSLongitudeRef']);
+                        $lat = Framework\App\Sistema_Funcoes::Get_Gps($exif["GPSLatitude"], $exif['GPSLatitudeRef']);
+                        $html .= '<b>'.__('Latitude da Foto').'</b>: '.$lng.'<br>';
+                        $html .= '<b>'.__('Longitude da Foto').'</b>: '.$lat.'<br>';
+                    }else{
+                        $html .= '<br><b><font color="red">'.__('Essa Foto não Possui Informações do local aonde ela foi tirada.').'</font></b>';
+                    }
                 }else{
-                    $html .= '<br><b><font color="red">'.__('Essa Foto não Possui Informações do local aonde ela foi tirada.').'</font></b>';
+                    
+                        $mensagem = 'Biblioteca Exif não Instalada no Servidor '."\n";
+                        $mensagem .= 'Nome da Função: exif_read_data'."\n";
+                        self::log($mensagem, 'Aviso');
                 }
             }
             

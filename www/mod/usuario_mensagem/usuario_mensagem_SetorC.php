@@ -75,7 +75,7 @@ class usuario_mensagem_SetorControle extends usuario_mensagem_Controle
         $formid     = 'form_Sistema_Admin_Setores';
         $formbt     = __('Salvar');
         $formlink   = 'usuario_mensagem/Setor/Setores_Add2/';
-        $campos = usuario_mensagem_Setor_DAO::Get_Colunas();
+        $campos = Usuario_Mensagem_Setor_DAO::Get_Colunas();
         \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos);
     }
     /**
@@ -88,7 +88,7 @@ class usuario_mensagem_SetorControle extends usuario_mensagem_Controle
         self::Endereco_Setor(true);
         $id = (int) $id;
         // Carrega campos e retira os que nao precisam
-        $campos = usuario_mensagem_Setor_DAO::Get_Colunas();
+        $campos = Usuario_Mensagem_Setor_DAO::Get_Colunas();
         // recupera setor
         $setor = $this->_Modelo->db->Sql_Select('Usuario_Mensagem_Setor', Array('id'=>$id));
         self::mysql_AtualizaValores($campos, $setor);
@@ -112,7 +112,7 @@ class usuario_mensagem_SetorControle extends usuario_mensagem_Controle
      */
     public function Setores_Add2(){
         $titulo     = __('Setor Adicionado com Sucesso');
-        $dao        = 'usuario_mensagem_Setor';
+        $dao        = 'Usuario_Mensagem_Setor';
         $funcao     = '$this->Setores();';
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = __('Setor cadastrado com sucesso.');

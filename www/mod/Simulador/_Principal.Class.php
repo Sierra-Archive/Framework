@@ -96,63 +96,23 @@ class Simulador_Principal implements \Framework\PrincipalInterface
             $funcao = '';
             $tabela = Array();
             $i = 0;
-            if($raiz!==false && $raiz!=0){
-                $resultado_pasta = $Modelo->db->Sql_Select('Tag', Array('id'=>$raiz),1);
-                if($resultado_pasta===false){
-                    throw new \Exception('Essa Pasta não existe:'. $raiz, 404);
-                }
-                $tabela['Tipo'][$i]             = '<a href="'.URL_PATH.'tag/Tag/Tags/'.$resultado_pasta->parent.'" border="1" class="lajax" acao=""><img alt="'.__('Voltar para o Diretório Anterior').' src="'.WEB_URL.'img'.US.'arquivos'.US.'pastavoltar.png" alt="0" /></a>';
-                $tabela['Nome'][$i]             = '<a href="'.URL_PATH.'tag/Tag/Tags/'.$resultado_pasta->parent.'" border="1" class="lajax" acao="">Voltar para a Pasta Anterior</a>';
-                $tabela['Descrição'][$i]        = '';
-                $tabela['Tamanho'][$i]          = '';
-                $tabela['Criador'][$i]          = '';
-                $tabela['Data'][$i]  = '';
-                $tabela['Funções'][$i]          = '';
-                ++$i;
-            }
             if($tags!==false){
                 // Percorre Tags
                 if(is_object($tags)) $tags = Array(0=>$tags);
                 reset($tags);
                 if(!empty($tags)){
-                    $perm_download = \Framework\App\Registro::getInstacia()->_Acl->Get_Permissao_Url('tag/Tag/Download');
-                    $perm_editar = \Framework\App\Registro::getInstacia()->_Acl->Get_Permissao_Url('tag/Tag/Tags_Edit');
-                    $perm_del = \Framework\App\Registro::getInstacia()->_Acl->Get_Permissao_Url('tag/Tag/Tags_Del');
+                    $perm_download = \Framework\App\Registro::getInstacia()->_Acl->Get_Permissao_Url('Simulador/Tag/Download');
+                    $perm_editar = \Framework\App\Registro::getInstacia()->_Acl->Get_Permissao_Url('Simulador/Tag/Tags_Edit');
+                    $perm_del = \Framework\App\Registro::getInstacia()->_Acl->Get_Permissao_Url('Simulador/Tag/Tags_Del');
 
                     foreach ($tags as &$valor) {
-                        if($valor->tipo==1){
-                            $tipo       =   'pasta';
-                            $foto = WEB_URL.'img'.US.'arquivos'.US.$tipo.'.png';
-                        }else{
-                            $tipo  = \Framework\App\Sistema_Funcoes::Control_Arq_Ext($valor->ext);
-                            $endereco = ARQ_PATH.'tags'.DS.strtolower($valor->arquivo).'.'.$tipo;
-                            if(!file_exists($endereco)){
-                                continue;
-                            }
-                            if(file_exists(WEB_PATH.'img'.US.'arquivos'.US.$tipo.'.png')){
-                                $foto = WEB_URL.'img'.US.'arquivos'.US.$tipo.'.png';
-                            }else{
-                                $foto = WEB_URL.'img'.US.'arquivos'.US.'desconhecido.png';
-                            }
-                        }
 
-                        // Tamanho
-                        $tamanho = (int) $valor->tamanho;
-                        if($tamanho === 0){
-                            if($valor->tipo==1){
-                                $tamanho = tag_Controle::Tags_AtualizaTamanho_Pai($valor);
-                            }else{
-                                $tamanho = filesize($endereco);
-                                $Modelo->db->Sql_Update($valor);
-                            }
-                        }
-                        $tabela['Nome'][$i]             = '<a href="'.URL_PATH.'tag/Tag/Download/'.$valor->id.'/" border="1" target="_BLANK">'.$valor->nome.'</a>';
-                        
-                        $tabela['Descrição'][$i]        = $valor->obs;
-                        $tabela['Data'][$i]             = $valor->log_date_add;
-
-                        $tabela['Funções'][$i]          = $Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Pasta'        ,'tag/Tag/Tags_Edit/'.$valor->id.'/'.$raiz    ,''),$perm_editar).
-                                                          $Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Pasta'       ,'tag/Tag/Tags_Del/'.$valor->id.'/'.$raiz     ,'Deseja realmente deletar essa pasta ?'),$perm_del);
+                        $tabela['Id'][$i]    = $valor->id;
+                        $tabela['Nome'][$i]      = $valor->nome;
+                        $tabela['Tipo de Resultado'][$i]      = $valor->resultado_tipo;
+                        $tabela['Observação'][$i]      = $valor->obs;
+                        $tabela['Funções'][$i]          = $Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Pasta'        ,'Simulador/Tag/Tags_Edit/'.$valor->id.'/'.$raiz    ,''),$perm_editar).
+                                                          $Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Pasta'       ,'Simulador/Tag/Tags_Del/'.$valor->id.'/'.$raiz     ,'Deseja realmente deletar essa Tag ?'),$perm_del);
                         
                         $funcao .= $tabela['Funções'][$i];
                         ++$i;
@@ -169,9 +129,9 @@ class Simulador_Principal implements \Framework\PrincipalInterface
             // Retorna List
             $Visual->Show_Tabela_DataTable($tabela);
         }else{        
-            $Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhuma Caracteristica na Busca '.$busca.'</font></b></center>');
+            $Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhuma Tag de Simulador na Busca '.$busca.'</font></b></center>');
         }
-        $titulo = 'Busca de Caracteristicas: '.$busca.' ('.$i.')';
+        $titulo = 'Busca de Tags: '.$busca.' ('.$i.')';
         $Visual->Bloco_Unico_CriaJanela($titulo);
         return $i;
     }

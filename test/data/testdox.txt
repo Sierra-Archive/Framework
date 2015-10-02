@@ -91,6 +91,7 @@ Framework\App\Controle
 Framework\App\Dao
  [x] Siglas
  [x] Colunas
+ [x] testDao Usado Existe
 
 Framework\App\Modelo
  [ ] testSistema Menu
@@ -220,4 +221,26 @@ Framework\Classes\Form
  [ ] testSelect Fim
  [ ] Addtexto
  [ ] testRetorna form
+
+Framework\Classes\SierraTec_Manutencao
+ [ ] log
+ [ ] Manutencao
+ [ ] testAtualiza Dependencia Banco De Dados
+ [ ] testAlterar Config
+ [ ] testVerificar Sis Dao
+ [ ] testBD Limpar
+ [ ] testBD Backup
+ [ ] testTranferencia DB Servidor
+ [ ] testAtualizacao Version
+ [ ] testPHP GetVariavel
+ [ ] testCod Atualiza Constante
+ [ ] testPHP GetClasses
+ [ ] testPHP GetClasses Variaveis
+ [ ] testPHP GetClasses Metodos
+ [ ] testPHP GetFunction
+ [ ] testCod Busca Classes
+ [ ] testCod Busca Classes Metodos
+ [ ] testCod Busca Valor
+ [ ] testCod Busca ClassesUsadas
+ [ ] testCod Busca MetodosUsados
 

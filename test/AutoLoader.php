@@ -57,7 +57,6 @@ function __autoload($class){
     // Carrega Dao
     if(strpos($class, '_DAO')!==false){
         $class = str_replace(Array('_'), Array('.'), $class);
-        var_dump(DAO_PATH . $class.'.php');
         if( file_exists  (DAO_PATH . $class.'.php')){
             require_once (DAO_PATH . $class.'.php');
         }else{

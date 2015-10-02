@@ -155,7 +155,7 @@ final Class Desenvolvimento_Projeto_Tarefa_DAO extends Framework\App\Dao
                 'mysql_null'        => false,  // nulo ?
                 'mysql_default'     => false, // valor padrao
                 'mysql_primary'     => false,  // chave primaria
-                'mysql_estrangeira' => 'FM.id|FM.nome', // chave estrangeira     ligacao|apresentacao|condicao
+                'mysql_estrangeira' => 'DFM.id|DFM.nome', // chave estrangeira     ligacao|apresentacao|condicao
                 'mysql_autoadd'     => false,
                 'mysql_comment'     => false,
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
@@ -189,7 +189,7 @@ final Class Desenvolvimento_Projeto_Tarefa_DAO extends Framework\App\Dao
                 'mysql_null'        => false,  // nulo ?
                 'mysql_default'     => false, // valor padrao
                 'mysql_primary'     => false,  // chave primaria
-                'mysql_estrangeira' => 'FS.id|FS.nome|FS.modulo={framework_modulo}', // chave estrangeira     ligacao|apresentacao|condicao
+                'mysql_estrangeira' => 'DFS.id|DFS.nome|DFS.modulo={framework_modulo}', // chave estrangeira     ligacao|apresentacao|condicao
                 'mysql_autoadd'     => false,
                 'mysql_comment'     => false,
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
@@ -217,7 +217,7 @@ final Class Desenvolvimento_Projeto_Tarefa_DAO extends Framework\App\Dao
                 'mysql_null'        => false,  // nulo ?
                 'mysql_default'     => false, // valor padrao
                 'mysql_primary'     => false,  // chave primaria
-                'mysql_estrangeira' => 'FMet.id|FMet.nome|FMet.submodulo={framework_submodulo}', // chave estrangeira     ligacao|apresentacao|condicao
+                'mysql_estrangeira' => 'DFMet.id|DFMet.nome|DFMet.submodulo={framework_submodulo}', // chave estrangeira     ligacao|apresentacao|condicao
                 'mysql_autoadd'     => false,
                 'mysql_comment'     => false,
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados

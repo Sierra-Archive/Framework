@@ -322,5 +322,27 @@ class DaoTest extends \PHPUnit_Framework_TestCase {
             $this->assertFalse(($primarias>1 && $possueAutocomplete===true), 'Classe Dao: '.$valor['class'].' -> Tabelas com AutoCompĺete só podem ter uma chave primária');
         }
     }
+    public function testDao_Usado_Existe() {
+        
+        $testar = new \Framework\Classes\SierraTec_Manutencao();
+        $siglas = Array();
+        
+        // Procura nas Classes e na Pasta de App
+        $dependencia_dao = array_merge(
+            $testar->Atualiza_Dependencia_Banco_De_Dados('app'),
+            $testar->Atualiza_Dependencia_Banco_De_Dados(CLASS_PATH)
+        );
+        // Procura nos Modulos
+        $dependencia_dao = array_merge($dependencia_dao,$testar->Atualiza_Dependencia_Banco_De_Dados(MOD_PATH));
+        
+        // Verifica se Cada uma Delas Existem
+        foreach($dependencia_dao as &$valor){
+            if(strpos($valor, '_DAO')===false){
+                $valor .= '_DAO';
+            }
+            $this->assertTrue(isset($this->tabelas[$valor]),'Tabela "'.$valor.'" usada não existe.');
+        }
+        
+    }
 
 }
