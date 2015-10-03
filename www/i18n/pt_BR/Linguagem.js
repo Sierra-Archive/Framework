@@ -25,6 +25,11 @@ Linguagem['Botoes'] = new Array();
 Linguagem['Botoes']['Carregando'] = 'Carregando...';
 Linguagem['Botoes']['Processando'] = 'Processando...';
 
+Linguagem['Dropzone'] = new Array();
+Linguagem['Dropzone']['Mensagem'] = 'Arraste Arquivos para Cá';
+Linguagem['Dropzone']['MensagemErro'] = 'Your browser does not support drag\'n\'drop file uploads.';
+Linguagem['Dropzone']['TextoErro'] = 'Please use the fallback form below to upload your files like in the olden days.';
+
 Linguagem['Mensagens'] = new Array();
 Linguagem['Mensagens']['Imprimir'] = 'Imprimir';
 Linguagem['Mensagens']['Copiar'] = 'Copiar';

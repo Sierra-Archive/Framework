@@ -395,16 +395,16 @@ var Index = {
 	},
 
 	init: function () {
-		//this.createNotification();
-		//this.createMap();
-		//this.createSalesChart();
-		//this.createBalanceChart();
-		//this.createFollowersChart();
-		//this.createStocksChart();
-		//this.createSalesByYearChart();
-		//this.createVisitors();
+		this.createNotification();
+		this.createMap();
+		this.createSalesChart();
+		this.createBalanceChart();
+		this.createFollowersChart();
+		this.createStocksChart();
+		this.createSalesByYearChart();
+		this.createVisitors();
 
-		//this.fakePageResponsive();
+		this.fakePageResponsive();
 	}
 }
 

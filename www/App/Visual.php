@@ -849,6 +849,13 @@ class Visual
             //'assets/bootstrap-inputmask/bootstrap-inputmask.min',
             //'assets/metr-folio/js/jquery.metro-gal.plugins.min',
             //'assets/metr-folio/js/jquery.metro-gal.megafoliopro',
+            
+            
+            
+            //Verifica Conexao Offline
+            'globals/plugins/offline/offline.min',
+            'globals/scripts/plugins/offline',
+            
             // Carrega Sistema
             'globals/scripts/sitec/sitec'
         );
@@ -1005,6 +1012,9 @@ class Visual
             'sistema/fullcalendar/fullcalendar',
             'sistema/fullcalendar/fullcalendar.print',
             
+            //Verifica Conexao Offline
+            'globals/plugins/offline/offline-theme-default',
+                
             // Sistema
             'globals/scripts/sitec/sitec'
         );        
@@ -1763,7 +1773,7 @@ class Visual
         $atributo_id = (string) 'Drop'.$inicio.'zone'.rand();
         // Carrega Dependencias
         $this->Arquivos_Css_Dependencia('sistema/dropzone/css/dropzone');
-        $this->Arquivos_Js_Dependencia('sistema/dropzone/dropzone');
+        $this->Arquivos_Js_Dependencia(Array('sistema/dropzone/dropzone','globals/scripts/plugins/dropzone'));
         // COmeça HTML
         $html = '<form action="'.URL_PATH.$modulo.'/'.$sub.'/'.$acao.'_Upload/'.$id.'" class="dropzone" id="'.$atributo_id.'"></form>';
         

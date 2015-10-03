@@ -725,7 +725,7 @@
 		Pleasure.init();
 		Layout.init();
 
-		Index.init();
+		//Index.init();
 		//WidgetAudio.single();
 		//ChartsKnob.init();
 

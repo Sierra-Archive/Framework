@@ -11,7 +11,9 @@ function Control_Menu_SuperiorSub(elemento){
     return false;
 }
 function Control_Atualizacao(){
-	return true;
+    Pleasure.init;
+    Layout.init();
+    return true;
 }
 // widget tools
 function Control_Layoult_Botoes()

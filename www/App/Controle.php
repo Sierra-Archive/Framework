@@ -2624,7 +2624,7 @@ readfile($link);*/
                 else $this->_Visual->menu['SubMenu']['ativo'][] = 0;
             }*/
             if($this->_Visual->Json_Exist()===true || LAYOULT_IMPRIMIR=='AJAX'){
-                if($this->layoult_zerar != 'naousado' && is_bool($this->layoult_zerar)){
+                if($this->layoult_zerar !== 'naousado' && is_bool($this->layoult_zerar)){
                     $zerar = $this->layoult_zerar;
                 }else{
                     if($this->_Visual->Json_ExisteTipo('Popup') || $this->_Visual->Json_ExisteTipo('Conteudo')){
@@ -2636,14 +2636,14 @@ readfile($link);*/
                 // ORGANIZA E MANDA CONTEUDO
                 if(LAYOULT_IMPRIMIR=='AJAX'){
                     // Assimila Widget Endereço
-                    if($this->layoult_endereco_alterado===true && !(defined('LAYOULT_POPUP') && LAYOULT_POPUP===false)){
+                    if($this->layoult_endereco_alterado===true && !(defined('LAYOULT_POPUP') && LAYOULT_POPUP!==false)){
                         $conteudo = array(
                             'location' => '.breadcrumb',
                             'js' => '',
                             'html' =>  $endereco_html
                         );
                         $this->_Visual->Json_IncluiTipo('Conteudo',$conteudo);
-                    }    
+                    }
                     echo $this->_Visual->Json_Retorna($zerar);
                     return true;
                 }
