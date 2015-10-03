@@ -1,8 +1,5 @@
 <html><head>
-    <title><?php echo SISTEMA_NOME; ?> - <?php if($params['site_titulo']==''){ echo __('Sem Titulo'); }else{ echo $params['site_titulo']; } ?></title>
-    <meta http-equiv="Content-Type" content="text/html; charset=<?php echo CONFIG_PADRAO_TECLADO; ?>"/>
-
-    <link rel="icon" type="image/png" href="<?php echo ARQ_URL; ?>favicon.ico"/>
+    <?php echo $params['sistema']['head']; ?>
     <link type="text/css" rel="stylesheet" href="<?php echo $params['url_css']; ?>layoult.css" />
     <script type="text/javascript" src="<?php echo $params['url_js']; ?>javascript.js"></script>
     <?php echo $params['sistema']['css']; ?>

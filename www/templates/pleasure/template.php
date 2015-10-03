@@ -4,19 +4,10 @@
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
 <head>
-    <title><?php echo SISTEMA_NOME; ?> - <?php if($params['site_titulo']==''){ echo __('Sem Titulo'); }else{ echo $params['site_titulo']; } ?></title>
-    <meta charset="<?php echo CONFIG_PADRAO_TECLADO; ?>">
-    <link rel="icon" type="image/png" href="<?php echo ARQ_URL; ?>favicon.ico"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="Ricardo Rebello Sierra <contato@ricardosierra.com.br>">
+    
+    <?php echo $params['sistema']['head']; ?>
     <?php echo $params['sistema']['css']; ?>
     
-    
-    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-touch-fullscreen" content="yes">
 
     <!-- BEGIN CORE CSS -->
     <link rel="stylesheet" href="<?php echo \Framework\App\Visual::get_template_url(); ?>assets/admin1/css/admin1.css">

@@ -1,12 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="pt-br">
 <head>
-    <title><?php echo SISTEMA_NOME; ?> - <?php if($params['site_titulo']==''){ echo __('Sem Titulo'); }else{ echo $params['site_titulo']; } ?></title>
-    <meta charset="<?php echo CONFIG_PADRAO_TECLADO; ?>">
-    <link rel="icon" type="image/png" href="<?php echo ARQ_URL; ?>favicon.ico"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="Ricardo Rebello Sierra <contato@ricardosierra.com.br>">
+    <?php echo $params['sistema']['head']; ?>
     <?php echo $params['sistema']['css']; ?>
     <link href="<?php echo $params['url_css']; ?>main.css" rel="stylesheet" />
     <link href='http://fonts.googleapis.com/css?family=Cuprum' rel='stylesheet' type='text/css' />

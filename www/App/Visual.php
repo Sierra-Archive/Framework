@@ -1272,6 +1272,40 @@ class Visual
      */
     public function renderizar() {
         $imprimir = new \Framework\App\Tempo('Renderizar Json Visual - SEM SMARTY');
+        
+        $titulo = $this->Json_Get_Titulo();
+        $head = '<title>'.SISTEMA_NOME.' - ';
+        if($titulo==''){ 
+            $head .=  __('Sem Titulo'); 
+            
+        }else{ 
+            $head .= $titulo;
+        } 
+        $head .= '</title>'
+        .'<meta charset="'.CONFIG_PADRAO_TECLADO.'">'
+        .'<meta name="viewport" content="width=device-width, initial-scale=1.0">'
+        .'<meta name="description" content="">'
+        .'<meta name="author" content="Ricardo Rebello Sierra - contato@ricardosierra.com.br">'
+        
+        .'<link rel="icon" type="image/png" href="'.ARQ_URL.'favicon.ico"/>'
+        .'<link rel="apple-touch-icon" sizes="57x57" href="'.ARQ_URL.'favicon.ico"/>'
+        .'<link rel="apple-touch-icon" sizes="72x72" href="'.ARQ_URL.'favicon.ico"/>'
+        .'<link rel="apple-touch-icon" sizes="114x114" href="'.ARQ_URL.'favicon.ico"/>'
+
+        .'<link rel="apple-touch-icon-precomposed" sizes="57x57" href="'.ARQ_URL.'favicon.ico"/>'
+        .'<link rel="apple-touch-icon-precomposed" sizes="72x72" href="'.ARQ_URL.'favicon.ico"/>'
+        .'<link rel="apple-touch-icon-precomposed" sizes="114x114" href="'.ARQ_URL.'favicon.ico"/>'
+
+        .'<link rel="apple-touch-startup-image" href="'.ARQ_URL.'favicon.ico">'
+
+        .'<meta name="apple-mobile-web-app-capable" content="yes">'
+        .'<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">'
+        .'<meta name="apple-touch-fullscreen" content="yes">';
+        
+        
+        
+        
+        
 	// logado =2 ajax
         $params = array(
             'site_titulo'   => $this->Json_Get_Titulo(),
@@ -1281,6 +1315,7 @@ class Visual
             'url_assets'    => $this->template_url.'assets/',
             'menu'          => '',
             'sistema'       => array(
+                'head'          => $head,
                 'css'           => $this->Sistema_Css(),
                 'extras'        => $this->Sistema_Extras()
             ),
