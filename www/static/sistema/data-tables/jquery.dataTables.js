@@ -216,7 +216,7 @@ collection:{container:"DTTT_dropdown dropdown-menu",buttons:{normal:"",disabled:
 $.extend( true, $.fn.dataTable.defaults, {
     "oLanguage": {
         "sEmptyTable":     Linguagem['DataTable']['Sem_Resultado'],
-        "sInfo": Linguagem['Paginacao']['Mostrando']+"<script>console.log('aqui',this);$('#DataTable_Contador').html('_TOTAL_');</script>",
+        "sInfo": Linguagem['Paginacao']['Mostrando']+"<script>$('#DataTable_Contador').html('_TOTAL_');</script>",
         "sInfoEmpty": Linguagem['DataTable']['Vazio'],
         "sInfoFiltered": Linguagem['DataTable']['Filtro'],
         "sInfoPostFix":    "",

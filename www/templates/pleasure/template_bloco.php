@@ -9,11 +9,11 @@
                 <div class="panel-buttons"><div class="btn-group portlet-handle-cancel">
                 <?php if(is_array($params['btn_extra'])){ ?>
                     <div class="update-btn">
-                        <a class="btn btn-default lajax" href="<?php echo $params['btn_extra']['link']; ?>" acao=""><i class="ion-android-<?php echo $params['btn_extra']['icon']; ?>"></i> <?php echo $params['btn_extra']['nome']; ?></a>
+                        <a class="btn btn-default lajax" href="<?php echo $params['btn_extra']['link']; ?>" acao=""><i class="ion-android-<?php echo $params['btn_extra']['icon']; ?>"></i><span class="hidden-xs"> <?php echo $params['btn_extra']['nome']; ?></span></a>
                     </div>
                 <?php }else{ ?>
                     <div class="update-btn">
-                        <a class="btn btn-default lajax" href="#" onClick="<?php echo $params['btn_extra']; ?>" acao=""><i class="ion-checkmark"></i> <?php _e('Salvar'); ?></a>
+                        <a class="btn btn-default lajax" href="#" onClick="<?php echo $params['btn_extra']; ?>" acao=""><i class="ion-checkmark"></i><span class="hidden-xs"> <?php _e('Salvar'); ?></span></a>
                     </div>
                 <?php } ?>
                 </div></div><?php

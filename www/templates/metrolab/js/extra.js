@@ -5,15 +5,33 @@
 function Control_Menu_Superior(elemento){
 	$('.menu_li_controle').removeClass("active");
 	elemento.parent().addClass("active");
+        
+        // Fecha Sózinho no XS
+        if($(window).width()<750){
+            $("#menuresponsivo_trocar").trigger("click");
+        }else
+        // Fecha Sózinho no SM
+        if($(window).width()<970){
+            $(".sidebar-toggle-box > .fa-reorder").trigger("click");
+        }
 	return false;
 }
 function Control_Menu_SuperiorSub(elemento){
 	$('.sub > li').removeClass("active");
 	elemento.parent().addClass("active");
+        
+        // Fecha Sózinho no XS
+        if($(window).width()<750){
+            $("#menuresponsivo_trocar").trigger("click");
+        }else
+        // Fecha Sózinho no SM
+        if($(window).width()<970){
+            $(".sidebar-toggle-box > .fa-reorder").trigger("click");
+        }
 	return false;
 }
 function Control_Atualizacao(){
-	return true;
+    return true;
 }
 // widget tools
 function Control_Layoult_Botoes()
