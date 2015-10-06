@@ -39,12 +39,16 @@ class Request
         if(is_array($url) && count($url)>0){
             $this->_modulo = array_shift($url); 
             if($this->isAjax()===true){
-                define('LAYOULT_IMPRIMIR', 'AJAX');
+                if(!defined('LAYOULT_IMPRIMIR')){
+                    define('LAYOULT_IMPRIMIR', 'AJAX');
+                }
                 
                 if($this->_modulo =='Modelo'){
                     $this->_modulo = array_shift($url); 
                     $this->_url = substr($this->_url, 7);
-                    define('REQUISICAO_TIPO', 'MODELO');
+                    if(!defined('REQUISICAO_TIPO')){
+                        define('REQUISICAO_TIPO', 'MODELO');
+                    }
                 }
             }else{
                 // SE tiver com Ajax no Comeco, Retira, foi passado como Ajax, 
@@ -56,11 +60,15 @@ class Request
                     $this->_modulo = array_shift($url); 
                     $this->_url = substr($this->_url, 7);
                 }
-                define('LAYOULT_IMPRIMIR', 'COMPLETO');
+                if(!defined('LAYOULT_IMPRIMIR')){
+                    define('LAYOULT_IMPRIMIR', 'COMPLETO');
+                }
             }
         }else{
             $this->_modulo = DEFAULT_MODULO;
-            define('LAYOULT_IMPRIMIR', 'COMPLETO');
+            if(!defined('LAYOULT_IMPRIMIR')){
+                define('LAYOULT_IMPRIMIR', 'COMPLETO');
+            }
         }
         
         if(!defined('REQUISICAO_TIPO')){

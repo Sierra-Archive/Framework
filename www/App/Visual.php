@@ -1298,6 +1298,8 @@ class Visual
         .'<meta name="author" content="Ricardo Rebello Sierra - contato@ricardosierra.com.br">'
         
         .'<link rel="icon" type="image/png" href="'.ARQ_URL.'favicon.ico"/>'
+        
+        // Trata Icones para Apple
         .'<link rel="apple-touch-icon" sizes="57x57" href="'.ARQ_URL.'favicon.ico"/>'
         .'<link rel="apple-touch-icon" sizes="72x72" href="'.ARQ_URL.'favicon.ico"/>'
         .'<link rel="apple-touch-icon" sizes="114x114" href="'.ARQ_URL.'favicon.ico"/>'
@@ -1308,7 +1310,10 @@ class Visual
 
         .'<link rel="apple-touch-startup-image" href="'.ARQ_URL.'favicon.ico">'
 
+        
+        // Transforma App em Instalável
         .'<meta name="apple-mobile-web-app-capable" content="yes">'
+        .'<meta name="apple-mobile-web-app-title" content="'.SISTEMA_NOME.'">'
         .'<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">'
         .'<meta name="apple-touch-fullscreen" content="yes">';
         

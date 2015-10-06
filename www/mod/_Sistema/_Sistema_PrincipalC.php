@@ -110,5 +110,12 @@ class _Sistema_PrincipalControle extends _Sistema_Controle
         //Carrega Json
        $this->_Visual->Json_Info_Update('Titulo', __('Busca'));
     }
+    public function Release($versao=false,$melhoria='', $melhoria_qnt = 0,$bugs='',$bugs_qnt = 0){
+        if($versao<0.4){
+            $melhoria .= "\n".'- Possibilidade de Instalação no IOS: Possibilidade'; ++$melhoria_qnt;
+            $bugs .= "\n".'- Responsividade: Melhoria'; ++$bugs_qnt;
+            $bugs .= "\n".'- Outros: Outros Bugs Consertados'; ++$bugs_qnt;
+        }
+    }
 }
 ?>

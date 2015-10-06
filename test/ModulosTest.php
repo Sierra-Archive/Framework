@@ -79,5 +79,109 @@ class ModulosTest extends \PHPUnit_Framework_TestCase {
             $diretorio -> close();
         }
     }
+    public function testPaginas() {
+        // Declara Completo
+        if(!defined('LAYOULT_IMPRIMIR')){
+            define('LAYOULT_IMPRIMIR','AJAX');
+        }
+        $Registro = &\Framework\App\Registro::getInstacia();
+        // Pega Instancia e Inicia Cache
+        if($Registro->_Cache===false){
+            $Registro->_Cache   = new \Framework\App\Cache(CACHE_PATH);   
+        }
+
+        if($Registro->_Conexao===false){
+            $Registro->_Conexao = new \Framework\App\Conexao();
+        }
+        if($Registro->_Acl===false){
+            $Registro->_Acl = new \Framework\App\Acl();
+        }
+        
+        
+        // Percorre Todos os Modulos
+        foreach($this->modulos as &$valor){
+            $diretorio = dir(MOD_PATH.$valor.DS);
+            // Percorre Todos os SUbmodulos desse Modulo
+            while($arquivo = $diretorio -> read()){
+                if($arquivo !== '.' && $arquivo !== '..' && $arquivo !== $valor.'_Controle.php' && 
+                        $arquivo !== $valor.'_Modelo.php' && $arquivo !== $valor.'_Visual.php' && 
+                        $arquivo !== '_Config.php' && $arquivo !== '_Principal.Class.php' && 
+                        "C.php" === substr($arquivo, -5, 5)){
+                   $metodos =  \Framework\Classes\SierraTec_Manutencao::PHP_GetClasses_Metodos(file_get_contents(MOD_PATH.$valor.DS.$arquivo));
+                   $getsubmodulo = substr($arquivo, strlen($valor)+1, -5);
+                   //$executar = new $nome();
+                   foreach($metodos as $valor2){
+                        if(!empty($valor2['Args'])){
+                            continue;
+                            //$executar->$valor2['Nome']();
+                        }/*else{
+                            var_dump($valor2);
+                        }*/
+                        
+
+                        // Recupera pra evitar multiplas solicitacoes
+                        $getmetodo          = $valor2['Nome'];
+                        $getmodulo          = $valor;
+                        $getargs            = Array();
+
+                        // Configura Modulos
+                        $controle_Executar = $getmodulo.'_'.$getsubmodulo.'Controle';
+                        $modelo_Executar = $getmodulo.'_'.$getsubmodulo.'Modelo';
+                        $visual_Executar = $getmodulo.'_'.$getsubmodulo.'Visual';
+                        $modulo_rotaC    = MOD_PATH.$getmodulo.DS.$getmodulo.'_Controle.php';
+                        $modulo_rotaM    = MOD_PATH.$getmodulo.DS.$getmodulo.'_Modelo.php';
+                        $modulo_rotaV    = MOD_PATH.$getmodulo.DS.$getmodulo.'_Visual.php';
+                        $submodulo       = $getmodulo.'_'.$getsubmodulo.'Controle';
+                        $submodulo_rotaC = MOD_PATH.$getmodulo.DS.$getmodulo.'_'.$getsubmodulo.'C.php';
+                        $submodulo_rotaM = MOD_PATH.$getmodulo.DS.$getmodulo.'_'.$getsubmodulo.'M.php';
+                        $submodulo_rotaV = MOD_PATH.$getmodulo.DS.$getmodulo.'_'.$getsubmodulo.'V.php';
+                        $metodo          = $getmetodo;
+
+                        // Verifica se Existe e Executa
+                        if(is_readable($modulo_rotaC) && is_readable($modulo_rotaM) && is_readable($modulo_rotaV)){
+                            if(is_readable($submodulo_rotaC) && is_readable($submodulo_rotaM) && is_readable($submodulo_rotaV)){
+                                // Chama Controle, Modelo, e Visual
+                                $Registro->_Modelo  = new $modelo_Executar;
+                                $Registro->_Visual  = new $visual_Executar;
+                                $Registro->_Controle = new $controle_Executar;
+
+                                if(REQUISICAO_TIPO=='MODELO'){
+                                    if(is_callable(array($Registro->_Modelo,$metodo))){
+                                        $metodo = $getmetodo;
+                                    }else{
+                                        $metodo = 'Main';
+                                    }
+                                    if(count($getargs)>0){
+                                        call_user_func_array(array($Registro->_Modelo,$metodo), $getargs);
+                                    }else{
+                                        call_user_func(array($Registro->_Modelo,$metodo));
+                                    }
+                                    // Impede Retorno do Json do Controle
+                                    \Framework\App\Controle::Tema_Travar();
+                                }else{
+                                    if(is_callable(array($Registro->_Controle,$metodo))){
+                                        $metodo = $getmetodo;
+                                    }else{
+                                        $metodo = 'Main';
+                                    }
+                                    if(count($getargs)>0){
+                                        call_user_func_array(array($Registro->_Controle,$metodo), $getargs);
+                                    }else{
+                                        call_user_func(array($Registro->_Controle,$metodo));
+                                    }
+
+                                }
+                            }else{
+                                throw new \Exception('SubMódulo não Encontrado', 404); //
+                            }
+                        }else{
+                            throw new \Exception('Módulo não Encontrado', 404); //
+                        }
+                   }
+                }
+            }
+        }
+        
+    }
 
 }

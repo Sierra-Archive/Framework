@@ -148,9 +148,6 @@ function __autoload($class){
     
     // Carrega Modulo
     if( file_exists  (MOD_PATH . $modulo.DS.$modulo.'_'.$tipo.'.php')){
-        if(!\Framework\App\Sistema_Funcoes::Perm_Modulos($modulo)){
-            throw new \Exception('Modulo não permitido para este servidor (AutoLoad): '.$modulo,404);
-        }
         require_once (MOD_PATH . $modulo.DS.$modulo.'_'.$tipo.'.php');
     }/*else{
         throw new \Exception('Classe Modulo não encontrada'.$class."\n\n<br><Br>Original: ".$original, 2802);

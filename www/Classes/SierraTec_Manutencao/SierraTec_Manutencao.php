@@ -54,11 +54,11 @@ class SierraTec_Manutencao {
         );
         $modulos = config_modulos();
         foreach($modulos as &$valor){
-            var_dump($dependencia_dao);
-            echo "\n\nProximo:".$valor;
+            /*var_dump($dependencia_dao);
+            echo "\n\nProximo:".$valor;*/
             $dependencia_dao = array_merge($dependencia_dao,$this->Atualiza_Dependencia_Banco_De_Dados(MOD_PATH.$valor.DS));
         }
-        var_dump($dependencia_dao);
+        //var_dump($dependencia_dao);
         $this->Alterar_Config('TEMP_DEPENDENCIA_TABELAS',serialize($dependencia_dao),'_temp');
         
         // Limpa Bando de Dados
@@ -522,8 +522,62 @@ class SierraTec_Manutencao {
     private function PHP_GetClasses_Variaveis($codigo){
         
     }
-    private function PHP_GetClasses_Metodos($codigo){
+    public static function PHP_GetClasses_Metodos($codigo,$privacidade='*'){
+        $metodos = Array();
+        $achado = Array();
         
+                    //    '/MYSQL_(.+)[^([:alnum:]_)]/U', 
+        // PRocura Ocorrencias de COnexao
+        $resultado = preg_match_all(
+            '/(public|private|private) function ([_A-Za-z0-9]+)\(([_A-Za-z=,\'\"\&\$]*)\)\{/U', 
+            $codigo, 
+            $achado
+        );
+        $i = 0;
+        if ($resultado >= 1) {
+            foreach($achado[2] as $indice=>$valor){
+                if($valor=='__construct') continue;
+                
+                //Verifica Privacidade
+                if($privacidade!=='*' && $privacidade!=='public' && isset($achado[1][$indice]) && $achado[1][$indice]!=='public'){
+                    continue;
+                }
+                if($privacidade!=='*' && $privacidade!=='protected' && isset($achado[1][$indice]) && $achado[1][$indice]!=='protected'){
+                    continue;
+                }
+                if($privacidade!=='*' && $privacidade!=='private' && isset($achado[1][$indice]) && $achado[1][$indice]!=='private'){
+                    continue;
+                }
+                
+                $metodos[$i] = Array(
+                    'Nome'          => $valor,
+                    'Privacidade'   => $achado[1][$indice],
+                    'Args'          => Array()
+                );
+                
+                if(isset($achado[3][$indice]) && $achado[3][$indice]!==''){
+                    $argumentos = explode(',',$achado[3][$indice]);
+                    foreach($argumentos as $valor2){
+                        $argumentos_item = explode('=',$valor2);
+                        if(isset($argumentos_item[1])){
+                            $metodos[$i]['Args'] = Array(
+                                'Nome'          => $valor,
+                                'Opcional'      => true,
+                                'Padrao'        => $argumentos_item[1]
+                            );
+                        }else{
+                            $metodos[$i]['Args'] = Array(
+                                'Nome'          => $valor,
+                                'Opcional'      => false,
+                                'Padrao'        => false
+                            );
+                        }
+                    }
+                }
+                ++$i;
+            }
+        }
+        return $metodos;
     }
     private function PHP_GetFunction($codigo){
         

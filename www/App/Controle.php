@@ -63,7 +63,13 @@ abstract class Controle
         $this->_Cache       = &$this->_Registro->_Cache;
         $this->_Acl         = &$this->_Registro->_Acl;
         $this->_Modelo      = &$this->_Registro->_Modelo;
+        if($this->_Modelo===false){
+            $this->_Modelo = new Modelo();
+        }
         $this->_Visual      = &$this->_Registro->_Visual;
+        if($this->_Visual===false){
+            $this->_Visual = new Visual();
+        }
         
         /*$manutencao = new \Framework\Classes\SierraTec_Manutencao();
         $manutencao->Atualizacao_Version(2.2);

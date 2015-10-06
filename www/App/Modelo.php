@@ -31,6 +31,9 @@ class Modelo
     public function __construct(){
         $this->_Registro = &\Framework\App\Registro::getInstacia();
         $this->db = &$this->_Registro->_Conexao;
+        if($this->db===false){
+            $this->db = new Conexao();
+        }
         $this->_request     = &$this->_Registro->_Request;
         $this->_Cache       = &$this->_Registro->_Cache;
         $this->_Acl         = &$this->_Registro->_Acl;
