@@ -20,14 +20,14 @@ class usuario_rede_Principal implements \Framework\PrincipalInterface
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    static function Home(&$controle, &$modelo, &$Visual){
+    static function Home(&$controle, &$Modelo, &$Visual){
         if(\Framework\App\Acl::Usuario_GetLogado_Static()!==false){
-            usuario_rede_Controle::num_Indicados($modelo, $Visual, \Framework\App\Acl::Usuario_GetID_Static());
+            usuario_rede_Controle::num_Indicados($Modelo, $Visual, \Framework\App\Acl::Usuario_GetID_Static());
         }
-        usuario_rede_Controle::Ranking_listar($modelo, $Visual);
+        usuario_rede_Controle::Ranking_listar($Modelo, $Visual);
         
     }
-    static function Busca(&$controle, &$modelo, &$Visual,$busca){
+    static function Busca(&$controle, &$Modelo, &$Visual,$busca){
         return false;
     }
     static function Config(){

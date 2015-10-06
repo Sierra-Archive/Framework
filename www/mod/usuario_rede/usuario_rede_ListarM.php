@@ -31,28 +31,28 @@ class usuario_rede_ListarModelo extends usuario_rede_Modelo
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
-    *//*#update
+    */#update
     public function Indicados_Retorna($antecessor=0, $nivel=0){
         $array = Array();
         $i =0;
-        /*$where = Array(
-            'deletado'      => 0,
-            '!nivel_usuario'      => 0,
+        $where = Array(
+            '!grupo'      => CFG_TEC_IDCLIENTE,
             'ativado'      => 1,
             'indicado_por'      => $antecessor,
-        )
-        $sql = $this->db->Sql_Select('Usuario',$where,0,'nome');
-        *//*
-        $sql = $this->db->query('SELECT U.id, U.nome,U.grupo FROM '.MYSQL_USUARIOS.' U WHERE U.deletado=0 AND U.grupo!='.CFG_TEC_IDCLIENTE.' AND U.ativado=1 AND U.indicado_por='.$antecessor.' ORDER BY U.nome');
-        while($campo = $sql->fetch_object()){
-            $array[$i]['id'] = $campo->id;
-            $array[$i]['nome'] = $campo->nome;
-            $array[$i]['grupo'] = $campo->grupo;
-            if($nivel<2) $array[$i]['indicados'] = $this->Indicados_Retorna($campo->id, $nivel+1);
-            ++$i;
+        );
+        $registros = $this->db->Sql_Select('Usuario',$where,0,'id,nome,grupo');
+        if(is_object($registros)) $registros = Array($registros);
+        if($registros!==false){
+            foreach($registros as &$campo){
+                $array[$i]['id'] = $campo->id;
+                $array[$i]['nome'] = $campo->nome;
+                $array[$i]['grupo'] = $campo->grupo;
+                if($nivel<2) $array[$i]['indicados'] = $this->Indicados_Retorna($campo->id, $nivel+1);
+                ++$i;
+            }
         }
         if($i>0)        return $array; 
         else            return 0;
-    }*/
+    }
 }
 ?>

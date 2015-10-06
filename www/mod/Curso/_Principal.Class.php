@@ -19,7 +19,7 @@ class Curso_Principal implements \Framework\PrincipalInterface
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    static function Home(&$controle, &$modelo, &$Visual){
+    static function Home(&$controle, &$Modelo, &$Visual){
         self::Widgets();
         return true;
     }
@@ -44,15 +44,15 @@ class Curso_Principal implements \Framework\PrincipalInterface
         return false;
     }
     
-    static function Busca(&$controle, &$modelo, &$Visual,$busca){
+    static function Busca(&$controle, &$Modelo, &$Visual,$busca){
         $i = 0;
         // Busca Cursos
-        $result = self::Busca_Cursos($controle, $modelo, $Visual, $busca);
+        $result = self::Busca_Cursos($controle, $Modelo, $Visual, $busca);
         if($result!==false){
             $i = $i + $result;
         }
         // Busca Turmas
-        $result = self::Busca_Turmas($controle, $modelo, $Visual, $busca);
+        $result = self::Busca_Turmas($controle, $Modelo, $Visual, $busca);
         if($result!==false){
             $i = $i + $result;
         }
@@ -68,7 +68,7 @@ class Curso_Principal implements \Framework\PrincipalInterface
     /***********************
      * BUSCAS
      */
-    static function Busca_Cursos($controle, $modelo, $Visual, $busca){
+    static function Busca_Cursos($controle, $Modelo, $Visual, $busca){
         $where = Array(Array(
           'nome'                    => '%'.$busca.'%',
           'obs'                     => '%'.$busca.'%',
@@ -89,7 +89,7 @@ class Curso_Principal implements \Framework\PrincipalInterface
         $Visual->Bloco_Unico_CriaJanela($titulo);
         return $i;
     }
-    static function Busca_Turmas($controle, $modelo, $Visual, $busca){
+    static function Busca_Turmas($controle, $Modelo, $Visual, $busca){
         $where = Array(Array(
           'nome'                    => '%'.$busca.'%',
           'obs'                     => '%'.$busca.'%',

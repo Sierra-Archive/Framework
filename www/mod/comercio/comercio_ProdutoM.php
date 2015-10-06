@@ -18,7 +18,7 @@ class comercio_ProdutoModelo extends comercio_Modelo
     }
     /**
      * 
-     * @param type $modelo
+     * @param type $Modelo
      * @param type $usuarioid
      * @param type $motivoid
      */

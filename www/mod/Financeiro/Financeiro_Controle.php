@@ -17,7 +17,7 @@ class Financeiro_Controle extends \Framework\App\Controle
         parent::__construct();
     } 
     
-    static function Saldo_Carregar(&$modelo, &$Visual, $usuarioid){
+    static function Saldo_Carregar(&$Modelo, &$Visual, $usuarioid){
         $Registro = &\Framework\App\Registro::getInstacia();
         $acl = $Registro->_Acl;
         $html = '';
@@ -36,7 +36,7 @@ class Financeiro_Controle extends \Framework\App\Controle
             }
             // Se tiver saldo próprio Mostra
             if(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('Financeiro_User_Saldo')){
-                $saldo = Financeiro_Modelo::Carregar_Saldo($modelo, $usuarioid);
+                $saldo = Financeiro_Modelo::Carregar_Saldo($Modelo, $usuarioid);
                 if($saldo<0){
                     $saldo = '<p class="text-error">- R$'.number_format(abs($saldo), 2, ',', '.').'</p>';
                 }else{

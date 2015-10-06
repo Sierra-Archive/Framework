@@ -7,7 +7,7 @@ class Transporte_Principal implements \Framework\PrincipalInterface
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    static function Home(&$controle, &$modelo, &$Visual){
+    static function Home(&$controle, &$Modelo, &$Visual){
         $Registro = Framework\App\Registro::getInstacia();
         
         // Se for Armazem Libera Painel de Armazem
@@ -96,10 +96,10 @@ class Transporte_Principal implements \Framework\PrincipalInterface
         return true;
     } 
     
-    static function Busca(&$controle, &$modelo, &$Visual,$busca){
+    static function Busca(&$controle, &$Modelo, &$Visual,$busca){
         $i = 0;
         // Busca Armazens
-        $result = self::Busca_Armazens($controle, $modelo, $Visual, $busca);
+        $result = self::Busca_Armazens($controle, $Modelo, $Visual, $busca);
         if($result!==false){
             $i = $i + $result;
         }
@@ -124,7 +124,7 @@ class Transporte_Principal implements \Framework\PrincipalInterface
     /***********************
      * BUSCAS
      */
-    static function Busca_Armazens($controle, $modelo, $Visual, $busca){
+    static function Busca_Armazens($controle, $Modelo, $Visual, $busca){
         /*$where = Array(Array(
           'nome'                    => '%'.$busca.'%',
           //'texto'                   => '%'.$busca.'%',

@@ -99,7 +99,7 @@ class usuario_PerfilControle extends usuario_Controle
        
         
     }
-    static function usuarios_Upload_Residencia(&$controle,&$modelo,&$Visual){
+    static function usuarios_Upload_Residencia(&$controle,&$Modelo,&$Visual){
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Acl = $Registro->_Acl();
         if($_Acl->logado_usuario->foto_res==''){
@@ -130,7 +130,7 @@ class usuario_PerfilControle extends usuario_Controle
        
         
     }
-    static function usuarios_Upload_Cnh(&$controle,&$modelo,&$Visual){
+    static function usuarios_Upload_Cnh(&$controle,&$Modelo,&$Visual){
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Acl = $Registro->_Acl();
         if($_Acl->logado_usuario->foto_cnh==''){
@@ -143,7 +143,7 @@ class usuario_PerfilControle extends usuario_Controle
         $Visual->Blocar($Visual->Show_Upload('usuario','Perfil','CNHFoto','User_CNH_Imagem'.$_Acl->logado_usuario->id,$_Acl->logado_usuario->foto_cnh,'usuario'.DS,$_Acl->logado_usuario->id));
         $Visual->Bloco_Menor_CriaJanela(__('Fazer Upload da CNH')); 
     }
-    static function usuarios_carregaAlterarSenha(&$controle,&$modelo,&$Visual,$campos){
+    static function usuarios_carregaAlterarSenha(&$controle,&$Modelo,&$Visual,$campos){
         $id = \Framework\App\Acl::Usuario_GetID_Static();
         // Carrega Config
         $titulo1    = 'Alterar Senha (#'.$id.')';
@@ -426,7 +426,7 @@ class usuario_PerfilControle extends usuario_Controle
        
         
     }
-    static function usuarios_Upload_Residencia(&$controle,&$modelo,&$Visual){
+    static function usuarios_Upload_Residencia(&$controle,&$Modelo,&$Visual){
         if($controle->usuario->foto_res==''){
             $Visual->Blocar('<font color="#FF0000"><b>Você ainda não subiu seu comprovante de Residencia</b></font><br>');
         }else{
@@ -455,7 +455,7 @@ class usuario_PerfilControle extends usuario_Controle
        
         
     }
-    static function usuarios_Upload_Cnh(&$controle,&$modelo,&$Visual){
+    static function usuarios_Upload_Cnh(&$controle,&$Modelo,&$Visual){
         if($controle->usuario->foto_cnh==''){
             $Visual->Blocar('<font color="#FF0000"><b>Você ainda não subiu sua CNH</b></font><br>');
         }else{
@@ -466,7 +466,7 @@ class usuario_PerfilControle extends usuario_Controle
         $Visual->Blocar($Visual->Show_Upload('usuario','Perfil','CNHFoto','User_CNH_Imagem'.$controle->usuario->id,$controle->usuario->foto_cnh,'usuario'.DS,$controle->usuario->id));
         $Visual->Bloco_Menor_CriaJanela(__('Fazer Upload da CNH')); 
     }
-    static function usuarios_carregaAlterarSenha(&$controle,&$modelo,&$Visual,$campos){
+    static function usuarios_carregaAlterarSenha(&$controle,&$Modelo,&$Visual,$campos){
         $id = \Framework\App\Acl::Usuario_GetID_Static();
         // Carrega Config
         $titulo1    = 'Alterar Senha (#'.$id.')';

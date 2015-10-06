@@ -730,8 +730,8 @@ class usuario_Controle extends \Framework\App\Controle
             $this->_Visual->Json_Info_Update('Historico', false);
         }
     }
-    static function PlanoStatus(&$modelo, &$Visual, $usuario){
-        $valores = usuario_Modelo::PlanoStatus($modelo, $usuario);
+    static function PlanoStatus(&$Modelo, &$Visual, $usuario){
+        $valores = usuario_Modelo::PlanoStatus($Modelo, $usuario);
         $Visual->Blocar(usuario_Visual::Show_TabStatusPlano($valores));   
         $Visual->Bloco_Menor_CriaConteudo(60);
     }

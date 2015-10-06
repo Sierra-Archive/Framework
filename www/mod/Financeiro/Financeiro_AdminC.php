@@ -174,19 +174,19 @@ class Financeiro_AdminControle extends Financeiro_Controle
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    static function financas_carregajanelaadd(&$controle, &$modelo, &$Visual, $usuario=0){
+    static function financas_carregajanelaadd(&$controle, &$Modelo, &$Visual, $usuario=0){
         
         if($usuario==0 || !is_int($usuario)) return 0;
        // cadastro de financas
-        $formulario = Financeiro_AdminControle::financas_formcadastro($controle, $modelo, $Visual, $usuario);
+        $formulario = Financeiro_AdminControle::financas_formcadastro($controle, $Modelo, $Visual, $usuario);
         $Visual->Blocar($formulario);
         $Visual->Bloco_Menor_CriaJanela('Depositar para Usuário #'.$usuario);        
     }
-    static function financas_carregajanelaretirar(&$controle, &$modelo, &$Visual, $usuario=0){
+    static function financas_carregajanelaretirar(&$controle, &$Modelo, &$Visual, $usuario=0){
         
         if($usuario==0 || !is_int($usuario)) return 0;
        // cadastro de financas
-        $formulario = Financeiro_AdminControle::financas_formretirar($controle, $modelo, $Visual, $usuario);
+        $formulario = Financeiro_AdminControle::financas_formretirar($controle, $Modelo, $Visual, $usuario);
         $Visual->Blocar($formulario);
         $Visual->Bloco_Menor_CriaJanela('Retirar de Usuário #'.$usuario);        
     }
@@ -214,7 +214,7 @@ class Financeiro_AdminControle extends Financeiro_Controle
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    static function financas_formcadastro(&$controle, &$modelo, &$Visual,$user){
+    static function financas_formcadastro(&$controle, &$Modelo, &$Visual,$user){
         
        
         $form = new \Framework\Classes\Form('adminfinanceiroinserir','Financeiro/Admin/financas_inserir/','formajax');
@@ -227,7 +227,7 @@ class Financeiro_AdminControle extends Financeiro_Controle
 
         return $formulario;
     }
-    static function financas_formretirar(&$controle, &$modelo, &$Visual,$user){
+    static function financas_formretirar(&$controle, &$Modelo, &$Visual,$user){
         
        
         $form = new \Framework\Classes\Form('adminfinanceiroinserir','Financeiro/Admin/financas_retirar/','formajax');

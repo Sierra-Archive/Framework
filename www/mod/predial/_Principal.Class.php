@@ -19,7 +19,7 @@ class predial_Principal implements \Framework\PrincipalInterface
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    static function Home(&$controle, &$modelo, &$Visual){
+    static function Home(&$controle, &$Modelo, &$Visual){
         self::Widgets();
         return true;
     }
@@ -130,40 +130,40 @@ class predial_Principal implements \Framework\PrincipalInterface
     /***********************
      * BUSCAS
      */
-    static function Busca(&$controle, &$modelo, &$Visual,$busca){
+    static function Busca(&$controle, &$Modelo, &$Visual,$busca){
         $i = 0;
         // Busca Advertencias
-        $result = self::Busca_Advertencias($controle, $modelo, $Visual, $busca);
+        $result = self::Busca_Advertencias($controle, $Modelo, $Visual, $busca);
         if($result!==false){
             $i = $i + $result;
         }
         // Busca Animal
-        $result = self::Busca_Animais($controle, $modelo, $Visual, $busca);
+        $result = self::Busca_Animais($controle, $Modelo, $Visual, $busca);
         if($result!==false){
             $i = $i + $result;
         }
         // Busca Apartamento
-        $result = self::Busca_Apartamentos($controle, $modelo, $Visual, $busca);
+        $result = self::Busca_Apartamentos($controle, $Modelo, $Visual, $busca);
         if($result!==false){
             $i = $i + $result;
         }
         // Busca Bloco
-        $result = self::Busca_Blocos($controle, $modelo, $Visual, $busca);
+        $result = self::Busca_Blocos($controle, $Modelo, $Visual, $busca);
         if($result!==false){
             $i = $i + $result;
         }
         // Busca Correios
-        $result = self::Busca_Correios($controle, $modelo, $Visual, $busca);
+        $result = self::Busca_Correios($controle, $Modelo, $Visual, $busca);
         if($result!==false){
             $i = $i + $result;
         }
         // Busca Informativos
-        $result = self::Busca_Informativos($controle, $modelo, $Visual, $busca);
+        $result = self::Busca_Informativos($controle, $Modelo, $Visual, $busca);
         if($result!==false){
             $i = $i + $result;
         }
         // Busca Veiculo
-        $result = self::Busca_Veiculos($controle, $modelo, $Visual, $busca);
+        $result = self::Busca_Veiculos($controle, $Modelo, $Visual, $busca);
         if($result!==false){
             $i = $i + $result;
         }
@@ -173,7 +173,7 @@ class predial_Principal implements \Framework\PrincipalInterface
             return false;
         }
     }
-    static function Busca_Advertencias($controle, $modelo, $Visual, $busca){
+    static function Busca_Advertencias($controle, $Modelo, $Visual, $busca){
         $where = Array(Array(
           'nome'                    => '%'.$busca.'%',
           'descricao'               => '%'.$busca.'%',
@@ -195,7 +195,7 @@ class predial_Principal implements \Framework\PrincipalInterface
         $Visual->Bloco_Unico_CriaJanela($titulo);
         return $i;
     }
-    static function Busca_Animais($controle, $modelo, $Visual, $busca){
+    static function Busca_Animais($controle, $Modelo, $Visual, $busca){
         $where = Array(
           'nome'                    => '%'.$busca.'%'
         );
@@ -215,7 +215,7 @@ class predial_Principal implements \Framework\PrincipalInterface
         $Visual->Bloco_Unico_CriaJanela($titulo);
         return $i;
     }
-    static function Busca_Apartamentos($controle, $modelo, $Visual, $busca){
+    static function Busca_Apartamentos($controle, $Modelo, $Visual, $busca){
         $where = Array(
           'num'                     => '%'.$busca.'%'
         );
@@ -235,7 +235,7 @@ class predial_Principal implements \Framework\PrincipalInterface
         $Visual->Bloco_Unico_CriaJanela($titulo);
         return $i;
     }
-    static function Busca_Blocos($controle, $modelo, $Visual, $busca){
+    static function Busca_Blocos($controle, $Modelo, $Visual, $busca){
         $where = Array(
           'nome'                    => '%'.$busca.'%'
         );
@@ -255,7 +255,7 @@ class predial_Principal implements \Framework\PrincipalInterface
         $Visual->Bloco_Unico_CriaJanela($titulo);
         return $i;
     }    
-    static function Busca_Correios(&$controle, &$modelo, &$Visual,$busca){
+    static function Busca_Correios(&$controle, &$Modelo, &$Visual,$busca){
         $where = Array(Array(
           //'PB.nome'                 => '%'.$busca.'%',
           //'PBA.numero'              => '%'.$busca.'%',
@@ -279,7 +279,7 @@ class predial_Principal implements \Framework\PrincipalInterface
         $Visual->Bloco_Unico_CriaJanela($titulo);
         return $i;
     }
-    static function Busca_Informativos($controle, $modelo, $Visual, $busca){
+    static function Busca_Informativos($controle, $Modelo, $Visual, $busca){
         $where = Array(Array(
           //'PB.nome'                 => '%'.$busca.'%',
           //'PBA.numero'              => '%'.$busca.'%',
@@ -304,7 +304,7 @@ class predial_Principal implements \Framework\PrincipalInterface
         $Visual->Bloco_Unico_CriaJanela($titulo);
         return $i;
     }
-    static function Busca_Veiculos($controle, $modelo, $Visual, $busca){
+    static function Busca_Veiculos($controle, $Modelo, $Visual, $busca){
         $where = Array(Array(
           'marca'                   => '%'.$busca.'%',
           'modelo'                  => '%'.$busca.'%',

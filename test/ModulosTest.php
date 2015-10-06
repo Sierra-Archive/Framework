@@ -94,7 +94,13 @@ class ModulosTest extends \PHPUnit_Framework_TestCase {
             $Registro->_Conexao = new \Framework\App\Conexao();
         }
         if($Registro->_Acl===false){
-            $Registro->_Acl = new \Framework\App\Acl();
+            $Registro->_Acl = $this->getMockBuilder('\Framework\App\Acl')
+                    ->setConstructorArgs(Array(1))
+                    ->getMock();
+
+            // Configura o esboço.
+            $Registro->_Acl->method('Get_Permissao_Url')
+                 ->willReturn(true);
         }
         
         

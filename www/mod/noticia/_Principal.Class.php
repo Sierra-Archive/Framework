@@ -19,7 +19,7 @@ class noticia_Principal implements \Framework\PrincipalInterface
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    static function Home(&$controle, &$modelo, &$Visual){
+    static function Home(&$controle, &$Modelo, &$Visual){
         // Noticias
         $noticia_qnt = $Modelo->db->Sql_Contar('Noticia');
         // Adiciona Widget a Pagina Inicial
@@ -44,10 +44,10 @@ class noticia_Principal implements \Framework\PrincipalInterface
         return true;
     } 
     
-    static function Busca(&$controle, &$modelo, &$Visual,$busca){
+    static function Busca(&$controle, &$Modelo, &$Visual,$busca){
         $i = 0;
         // Busca Noticias
-        $result = self::Busca_Noticias($controle, $modelo, $Visual, $busca);
+        $result = self::Busca_Noticias($controle, $Modelo, $Visual, $busca);
         if($result!==false){
             $i = $i + $result;
         }
@@ -72,7 +72,7 @@ class noticia_Principal implements \Framework\PrincipalInterface
     /***********************
      * BUSCAS
      */
-    static function Busca_Noticias($controle, $modelo, $Visual, $busca){
+    static function Busca_Noticias($controle, $Modelo, $Visual, $busca){
         $where = Array(Array(
           'nome'                    => '%'.$busca.'%',
           'texto'                   => '%'.$busca.'%',

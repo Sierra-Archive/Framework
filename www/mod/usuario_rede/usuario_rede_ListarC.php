@@ -36,7 +36,7 @@ class usuario_rede_ListarControle extends usuario_rede_Controle
     * @version 0.4.2
     */
     public function Main(){
-        if(isset($this->_Acl->Usuario_GetID())){
+        if($this->_Acl->Usuario_GetID()!==0){
             // CARREGA ATIVIDADES
             $redes = $this->_Modelo->Indicados_Retorna($this->_Acl->Usuario_GetID());
             //$this->_Visual->Blocar($this->_Visual->Show_RedeIndicados($redes));  

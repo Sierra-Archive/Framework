@@ -19,7 +19,7 @@ class Musica_Principal implements \Framework\PrincipalInterface
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    static function Home(&$controle, &$modelo, &$Visual){
+    static function Home(&$controle, &$Modelo, &$Visual){
         self::Widgets();
         return true;
     }
@@ -50,25 +50,25 @@ class Musica_Principal implements \Framework\PrincipalInterface
         return false;
     }
     
-    static function Busca(&$controle, &$modelo, &$Visual,$busca){
+    static function Busca(&$controle, &$Modelo, &$Visual,$busca){
         $i = 0;
         // Busca Musicas
-        $result = self::Busca_Artistas($controle, $modelo, $Visual, $busca);
+        $result = self::Busca_Artistas($controle, $Modelo, $Visual, $busca);
         if($result!==false){
             $i = $i + $result;
         }
         // Busca Albuns
-        $result = self::Busca_Albuns($controle, $modelo, $Visual, $busca);
+        $result = self::Busca_Albuns($controle, $Modelo, $Visual, $busca);
         if($result!==false){
             $i = $i + $result;
         }
         // Busca Musicas
-        $result = self::Busca_Musicas($controle, $modelo, $Visual, $busca);
+        $result = self::Busca_Musicas($controle, $Modelo, $Visual, $busca);
         if($result!==false){
             $i = $i + $result;
         }
         // Busca Videos
-        $result = self::Busca_Videos($controle, $modelo, $Visual, $busca);
+        $result = self::Busca_Videos($controle, $Modelo, $Visual, $busca);
         if($result!==false){
             $i = $i + $result;
         }
@@ -83,7 +83,7 @@ class Musica_Principal implements \Framework\PrincipalInterface
     /***********************
      * BUSCAS
      */
-    static function Busca_Artistas($controle, $modelo, $Visual, $busca){
+    static function Busca_Artistas($controle, $Modelo, $Visual, $busca){
         $where = Array(Array(
           'nome'                    => '%'.$busca.'%',
           'obs'                     => '%'.$busca.'%',
@@ -104,7 +104,7 @@ class Musica_Principal implements \Framework\PrincipalInterface
         $Visual->Bloco_Unico_CriaJanela($titulo);
         return $i;
     }
-    static function Busca_Albuns($controle, $modelo, $Visual, $busca){
+    static function Busca_Albuns($controle, $Modelo, $Visual, $busca){
         $where = Array(Array(
           'nome'                    => '%'.$busca.'%',
           'obs'                     => '%'.$busca.'%',
@@ -125,7 +125,7 @@ class Musica_Principal implements \Framework\PrincipalInterface
         $Visual->Bloco_Unico_CriaJanela($titulo);
         return $i;
     }
-    static function Busca_Musicas($controle, $modelo, $Visual, $busca){
+    static function Busca_Musicas($controle, $Modelo, $Visual, $busca){
         $where = Array(Array(
           'nome'                    => '%'.$busca.'%',
           'obs'                     => '%'.$busca.'%',
@@ -146,7 +146,7 @@ class Musica_Principal implements \Framework\PrincipalInterface
         $Visual->Bloco_Unico_CriaJanela($titulo);
         return $i;
     }
-    static function Busca_Videos($controle, $modelo, $Visual, $busca){
+    static function Busca_Videos($controle, $Modelo, $Visual, $busca){
         $where = Array(Array(
           'nome'                    => '%'.$busca.'%',
           'obs'                     => '%'.$busca.'%',

@@ -47,7 +47,7 @@ class usuario_rede_ListarVisual extends usuario_rede_Visual
                   foreach ($array as $indice=>&$valor) {
                     $html .= '<div style="float:left; width:150px; text-align:center;">';
                         if($nivel!=3) $html .= '<a class="lajax" href="'.URL_PATH.'usuario_rede/Listar/Carrega_Indicados/'.$array[$indice]['id'].'/'.($nivel+1).'/" acao="">';
-                        $html .= '<img width="50" src="'.WEB_URL.'img/icons/nivel_cliente'.$array[$indice]['nivel_usuario'].'.jpg" alt="'.__('Nivel de Indicação').'">';
+                        $html .= '<img width="50" src="'.WEB_URL.'img/icons/nivel_cliente'.$nivel.'.jpg" alt="'.__('Nivel de Indicação').'">';
                         if($nivel!=3) $html .= '</a>';
                         $html .= '<br>';
                         if($nivel!=3) $html .= '<a class="lajax" href="'.URL_PATH.'usuario_rede/Listar/Carrega_Indicados/'.$array[$indice]['id'].'/'.($nivel+1).'/" acao="">';

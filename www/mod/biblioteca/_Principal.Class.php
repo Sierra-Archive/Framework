@@ -19,7 +19,7 @@ class biblioteca_Principal implements \Framework\PrincipalInterface
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    static function Home(&$controle, &$modelo, &$Visual){
+    static function Home(&$controle, &$Modelo, &$Visual){
         self::Widgets();
         return true;
     }
@@ -67,10 +67,10 @@ class biblioteca_Principal implements \Framework\PrincipalInterface
     /***********************
      * BUSCAS
      */
-    static function Busca(&$controle, &$modelo, &$Visual,$busca){
+    static function Busca(&$controle, &$Modelo, &$Visual,$busca){
         $i = 0;
         // Busca Bibliotecas
-        $result = self::Busca_Bibliotecas($controle, $modelo, $Visual, $busca);
+        $result = self::Busca_Bibliotecas($controle, $Modelo, $Visual, $busca);
         if($result!==false){
             $i = $i + $result;
         }
@@ -80,7 +80,7 @@ class biblioteca_Principal implements \Framework\PrincipalInterface
             return false;
         }
     }
-    static function Busca_Bibliotecas($controle, $modelo, $Visual, $busca){
+    static function Busca_Bibliotecas($controle, $Modelo, $Visual, $busca){
         $where = Array(Array(
           'nome'                    => '%'.$busca.'%',
           'obs'                     => '%'.$busca.'%',

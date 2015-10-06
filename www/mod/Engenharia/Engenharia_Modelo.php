@@ -17,7 +17,7 @@ class Engenharia_Modelo extends \Framework\App\Modelo
     }
     /**
      * 
-     * @param type $modelo
+     * @param type $Modelo
      * @param type $usuarioid
      * @param type $motivoid
      */

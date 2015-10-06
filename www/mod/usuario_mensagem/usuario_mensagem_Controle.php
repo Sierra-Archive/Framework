@@ -95,12 +95,12 @@ class usuario_mensagem_Controle extends \Framework\App\Controle
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         return $titulo;
     }
-    static function Mensagenslistar_naolidas(&$modelo,&$Visual,$usuarioid,$admin = 0){
+    static function Mensagenslistar_naolidas(&$Modelo,&$Visual,$usuarioid,$admin = 0){
         $i = 0;
         $mensagens = Array();
         if($admin==0) $usuario = $usuarioid;
         else          $usuario = 0;
-        usuario_mensagem_Modelo::Mensagens_Retornanaolidas($modelo,$mensagens,$usuario,1);
+        usuario_mensagem_Modelo::Mensagens_Retornanaolidas($Modelo,$mensagens,$usuario,1);
         if(!empty($mensagens)){
             $i = usuario_mensagem_Controle::Mensagens_TabelaMostrar($Visual, $mensagens,$admin);
             $Visual->Bloco_Unico_CriaJanela('Chamados não lidos ('.$i.')','',100);

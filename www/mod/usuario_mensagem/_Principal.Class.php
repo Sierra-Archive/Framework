@@ -20,9 +20,9 @@ class usuario_mensagem_Principal implements \Framework\PrincipalInterface
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    static function Home(&$controle, &$modelo, &$Visual){
+    static function Home(&$controle, &$Modelo, &$Visual){
         usuario_mensagem_Controle::MensagensWidgets();
-        //usuario_mensagem_Controle::Mensagenslistar_naolidas($modelo, $Visual, \Framework\App\Acl::Usuario_GetID_Static(),0);
+        //usuario_mensagem_Controle::Mensagenslistar_naolidas($Modelo, $Visual, \Framework\App\Acl::Usuario_GetID_Static(),0);
     }
     static function Widget(&$_Controle){
         $_Controle->Widget_Add('Superior',
@@ -32,7 +32,7 @@ class usuario_mensagem_Principal implements \Framework\PrincipalInterface
             '</a>'.
         '</li>');
     }    
-    static function Busca(&$controle, &$modelo, &$Visual,$busca){
+    static function Busca(&$controle, &$Modelo, &$Visual,$busca){
         return false;
     }
     static function Config(){

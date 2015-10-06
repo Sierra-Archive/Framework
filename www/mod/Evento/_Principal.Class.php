@@ -19,7 +19,7 @@ class Evento_Principal implements \Framework\PrincipalInterface
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    static function Home(&$controle, &$modelo, &$Visual){
+    static function Home(&$controle, &$Modelo, &$Visual){
         self::Widgets();
         return true;
     }
@@ -50,10 +50,10 @@ class Evento_Principal implements \Framework\PrincipalInterface
         return false;
     }
     
-    static function Busca(&$controle, &$modelo, &$Visual,$busca){
+    static function Busca(&$controle, &$Modelo, &$Visual,$busca){
         $i = 0;
         // Busca Eventos
-        $result = self::Busca_Eventos($controle, $modelo, $Visual, $busca);
+        $result = self::Busca_Eventos($controle, $Modelo, $Visual, $busca);
         if($result!==false){
             $i = $i + $result;
         }
@@ -68,7 +68,7 @@ class Evento_Principal implements \Framework\PrincipalInterface
     /***********************
      * BUSCAS
      */
-    static function Busca_Eventos($controle, $modelo, $Visual, $busca){
+    static function Busca_Eventos($controle, $Modelo, $Visual, $busca){
         $where = Array(Array(
           'nome'                    => '%'.$busca.'%',
           'data_inicio'             => '%'.$busca.'%',

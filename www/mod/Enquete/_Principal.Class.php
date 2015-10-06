@@ -19,7 +19,7 @@ class Enquete_Principal implements \Framework\PrincipalInterface
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    static function Home(&$controle, &$modelo, &$Visual){
+    static function Home(&$controle, &$Modelo, &$Visual){
         self::Widgets();
         Enquete_ShowControle::Show();
         return true;
@@ -68,15 +68,15 @@ class Enquete_Principal implements \Framework\PrincipalInterface
     /***********************
      * BUSCAS
      */
-    static function Busca(&$controle, &$modelo, &$Visual,$busca){
+    static function Busca(&$controle, &$Modelo, &$Visual,$busca){
         $i = 0;
         // Busca Enquetes
-        $result = self::Busca_Enquetes($controle, $modelo, $Visual, $busca);
+        $result = self::Busca_Enquetes($controle, $Modelo, $Visual, $busca);
         if($result!==false){
             $i = $i + $result;
         }
         // Busca Respostas
-        $result = self::Busca_Respostas($controle, $modelo, $Visual, $busca);
+        $result = self::Busca_Respostas($controle, $Modelo, $Visual, $busca);
         if($result!==false){
             $i = $i + $result;
         }
@@ -87,7 +87,7 @@ class Enquete_Principal implements \Framework\PrincipalInterface
             return false;
         }
     }
-    static function Busca_Enquetes($controle, $modelo, $Visual, $busca){
+    static function Busca_Enquetes($controle, $Modelo, $Visual, $busca){
         $where = Array(Array(
           'nome'                    => '%'.$busca.'%',
           'obs'                     => '%'.$busca.'%'
@@ -120,7 +120,7 @@ class Enquete_Principal implements \Framework\PrincipalInterface
         $Visual->Bloco_Unico_CriaJanela($titulo);
         return $i;
     }
-    static function Busca_Respostas($controle, $modelo, $Visual, $busca){
+    static function Busca_Respostas($controle, $Modelo, $Visual, $busca){
         $where = Array(
           'nome'                    => '%'.$busca.'%'
         );

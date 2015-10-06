@@ -18,7 +18,7 @@ class comercio_EstoqueModelo extends comercio_Modelo
     }
     /**
      * 
-     * @param type $modelo
+     * @param type $Modelo
      * @param type $produtoid
      * @param type $motivoid
      */
@@ -35,7 +35,7 @@ class comercio_EstoqueModelo extends comercio_Modelo
     }
     /**
      * 
-     * @param type $modelo
+     * @param type $Modelo
      * @param type $usuarioid
      * @param type $motivoid
      */

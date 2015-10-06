@@ -18,7 +18,7 @@ class comercio_venda_CarrinhoModelo extends comercio_vendaModelo
     }
     /**
      * 
-     * @param type $modelo
+     * @param type $Modelo
      * @param type $produtoid
      * @param type $motivoid
      */
@@ -40,7 +40,7 @@ class comercio_venda_CarrinhoModelo extends comercio_vendaModelo
     }
     /**
      * 
-     * @param type $modelo
+     * @param type $Modelo
      * @param type $usuarioid
      * @param type $motivoid
      */

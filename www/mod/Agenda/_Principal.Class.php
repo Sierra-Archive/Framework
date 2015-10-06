@@ -21,8 +21,8 @@ class Agenda_Principal implements \Framework\PrincipalInterface
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    static function Home(&$controle, &$modelo, &$Visual){
-        Agenda_PastaControle::Pastas_Listar(false,$modelo,$Visual,'Maior');
+    static function Home(&$controle, &$Modelo, &$Visual){
+        Agenda_PastaControle::Pastas_Listar(false,$Modelo,$Visual,'Maior');
     }
     static function Config(){
         return false;
@@ -38,10 +38,10 @@ class Agenda_Principal implements \Framework\PrincipalInterface
     /***********************
      * BUSCAS
      */
-    static function Busca(&$controle, &$modelo, &$Visual,$busca){
+    static function Busca(&$controle, &$Modelo, &$Visual,$busca){
         $i = 0;
         // Busca Pastas
-        $result = self::Busca_Pastas($controle, $modelo, $Visual, $busca);
+        $result = self::Busca_Pastas($controle, $Modelo, $Visual, $busca);
         if($result!==false){
             $i = $i + $result;
         }
@@ -51,7 +51,7 @@ class Agenda_Principal implements \Framework\PrincipalInterface
             return false;
         }
     }
-    static function Busca_Pastas($controle, $modelo, $Visual, $busca){
+    static function Busca_Pastas($controle, $Modelo, $Visual, $busca){
         $where = Array(Array(
           'num'                     => '%'.$busca.'%',
           'nome'                    => '%'.$busca.'%',

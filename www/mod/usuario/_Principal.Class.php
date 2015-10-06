@@ -20,9 +20,9 @@ class usuario_Principal implements \Framework\PrincipalInterface
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    static function Home(&$controle, &$modelo, &$Visual){
+    static function Home(&$controle, &$Modelo, &$Visual){
         if(\Framework\App\Sistema_Funcoes::Perm_Modulos('Financeiro') && \Framework\App\Acl::Sistema_Modulos_Configs_Funcional('Financeiro_User_Planos') && \Framework\App\Acl::Sistema_Modulos_Configs_Funcional('Financeiro_User_Saldo')){
-            usuario_Controle::PlanoStatus($modelo, $Visual, \Framework\App\Acl::Usuario_GetID_Static());
+            usuario_Controle::PlanoStatus($Modelo, $Visual, \Framework\App\Acl::Usuario_GetID_Static());
         }
         self::Widgets();
         // Carrega Expedientes
@@ -42,7 +42,7 @@ class usuario_Principal implements \Framework\PrincipalInterface
         }
         return true;
     }             
-    static function Busca(&$controle, &$modelo, &$Visual,$busca){
+    static function Busca(&$controle, &$Modelo, &$Visual,$busca){
         $where = Array(Array(
           'login'       => '%'.$busca.'%',
           'nome'        => '%'.$busca.'%',

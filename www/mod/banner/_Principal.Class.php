@@ -19,11 +19,11 @@ class banner_Principal implements \Framework\PrincipalInterface
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    static function Home(&$controle, &$modelo, &$Visual){
-        $Visual->Blocar(banner_Controle::Banners_Mostrar($modelo,7));
+    static function Home(&$controle, &$Modelo, &$Visual){
+        $Visual->Blocar(banner_Controle::Banners_Mostrar($Modelo,7));
         $Visual->Bloco_Menor_CriaJanela(__('Publicidade'));
     }
-    static function Busca(&$controle, &$modelo, &$Visual,$busca){
+    static function Busca(&$controle, &$Modelo, &$Visual,$busca){
         return false;
     }
     static function Config(){

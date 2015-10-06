@@ -20,10 +20,10 @@ class Financeiro_Principal implements \Framework\PrincipalInterface
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    static function Home(&$controle, &$modelo, &$Visual){
-        Financeiro_Controle::Saldo_Carregar($modelo, $Visual, \Framework\App\Acl::Usuario_GetID_Static());
+    static function Home(&$controle, &$Modelo, &$Visual){
+        Financeiro_Controle::Saldo_Carregar($Modelo, $Visual, \Framework\App\Acl::Usuario_GetID_Static());
     }
-    static function Busca(&$controle, &$modelo, &$Visual,$busca){
+    static function Busca(&$controle, &$Modelo, &$Visual,$busca){
         return false;
     }
     static function Config(){

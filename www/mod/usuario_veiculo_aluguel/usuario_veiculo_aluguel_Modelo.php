@@ -15,7 +15,7 @@ class usuario_veiculo_aluguel_Modelo extends \Framework\App\Modelo
     public function __construct(){
         parent::__construct();
     } 
-    static function Financeiro(&$modelo,$usuarioid,$motivoid){
+    static function Financeiro(&$Modelo,$usuarioid,$motivoid){
         $usuarioid = (int) $usuarioid;
         if(!isset($usuarioid) || !is_int($usuarioid) || $usuarioid==0) return 0;
         $motivoid = (int) $motivoid;
@@ -37,7 +37,7 @@ class usuario_veiculo_aluguel_Modelo extends \Framework\App\Modelo
             if($campo->nivel_usuario!=0){
                 eval('$novovalor = round((CONFIG_CLI_'.$campo->nivel_usuario.'_PORC1*$valor/100), 2);');
                 $dt_vencimento = date("Y-m-d", time() + (FINANCEIRO_DIASVENCIMENTO * 86400));
-                Financeiro_Modelo::MovInt_Inserir($modelo,$campo->id,$novovalor,1,'usuario_rede',$usuarioid,$dt_vencimento);                
+                Financeiro_Modelo::MovInt_Inserir($Modelo,$campo->id,$novovalor,1,'usuario_rede',$usuarioid,$dt_vencimento);                
             }
             ++$i;
         }
@@ -52,7 +52,7 @@ class usuario_veiculo_aluguel_Modelo extends \Framework\App\Modelo
                 if($campo->nivel_usuario!=0){
                     eval('$novovalor = round((CONFIG_CLI_'.$campo->nivel_usuario.'_PORC2*$valor/100), 2);');
                     $dt_vencimento = date("Y-m-d", time() + (FINANCEIRO_DIASVENCIMENTO * 86400));
-                    Financeiro_Modelo::MovInt_Inserir($modelo,$campo->id,$novovalor,1,'usuario_rede',$usuarioid,$dt_vencimento);                
+                    Financeiro_Modelo::MovInt_Inserir($Modelo,$campo->id,$novovalor,1,'usuario_rede',$usuarioid,$dt_vencimento);                
                 }
                 ++$i;
             }
@@ -67,7 +67,7 @@ class usuario_veiculo_aluguel_Modelo extends \Framework\App\Modelo
                 if($campo->nivel_usuario!=0){
                     eval('$novovalor = round((CONFIG_CLI_'.$campo->nivel_usuario.'_PORC3*$valor/100), 2);');
                     $dt_vencimento = date("Y-m-d", time() + (FINANCEIRO_DIASVENCIMENTO * 86400));
-                    Financeiro_Modelo::MovInt_Inserir($modelo,$campo->id,$novovalor,1,'usuario_rede',$usuarioid,$dt_vencimento);                
+                    Financeiro_Modelo::MovInt_Inserir($Modelo,$campo->id,$novovalor,1,'usuario_rede',$usuarioid,$dt_vencimento);                
                 }
                 ++$i;
             }

@@ -17,7 +17,7 @@ class Financeiro_Modelo extends \Framework\App\Modelo
     } /**
      * 
      * @global type $config
-     * @param type $modelo
+     * @param type $Modelo
      * @param type $user
      * @param type $valor
      * @param type $positivo
@@ -26,7 +26,7 @@ class Financeiro_Modelo extends \Framework\App\Modelo
      * @param type $dt_vencimento
      * @param type $dt_pago
      */
-    static function MovInt_Inserir(&$modelo,$user,$valor,$positivo,$motivo,$motivoid,$dt_vencimento,$dt_pago='0000-00-00 00:00:00'){
+    static function MovInt_Inserir(&$Modelo,$user,$valor,$positivo,$motivo,$motivoid,$dt_vencimento,$dt_pago='0000-00-00 00:00:00'){
         GLOBAL $config;
         if($positivo==1){
             $Modelo->db->query('INSERT INTO '.MYSQL_FINANCEIRO_MOV_INT.' (saida_motivo,saida_motivoid,entrada_motivo,entrada_motivoid,valor,positivo,motivo,motivoid,dt_vencimento,log_date_add,dt_pago) VALUES (\'Servidor\',\''.SRV_NAME_SQL.'\',\'Usuario\',\''.$user.'\',\''.$valor.'\',\''.$positivo.'\',\''.$motivo.'\',\''.$motivoid.'\',\''.$dt_vencimento.'\',\''.APP_HORA.'\',\''.$dt_pago.'\')');
@@ -40,7 +40,7 @@ class Financeiro_Modelo extends \Framework\App\Modelo
      * @param type $usuarioid
      * @return int
      */
-    static function MovInt_VerificaDebito(&$modelo,$usuarioid,$motivo){
+    static function MovInt_VerificaDebito(&$Modelo,$usuarioid,$motivo){
         $i=0;
         $sql = $Modelo->db->query('
                 SELECT motivoid
@@ -148,7 +148,7 @@ class Financeiro_Modelo extends \Framework\App\Modelo
             return 0;
         }
     }
-    static function Carregar_Saldo($modelo,$usuarioid, $completo = false){
+    static function Carregar_Saldo($Modelo,$usuarioid, $completo = false){
         // bloqueia se usuario nao existe
         if(!isset($usuarioid) || $usuarioid==0){
           return 0;
@@ -195,7 +195,7 @@ class Financeiro_Modelo extends \Framework\App\Modelo
             return $valor;
         }
     }
-    static function Financeiro(&$modelo,$usuarioid,$motivoid){
+    static function Financeiro(&$Modelo,$usuarioid,$motivoid){
         /*$usuarioid = (int) $usuarioid;
         if(!isset($usuarioid) || !is_int($usuarioid) || $usuarioid==0) return 0;
         $Modelo->db->query('UPDATE '.MYSQL_USUARIOS.' SET nivel_usuario_pago=1 WHERE id='.$usuarioid);

@@ -100,7 +100,7 @@ class usuario_Modelo extends \Framework\App\Modelo
     }
     /**
      * 
-     * @param type $modelo
+     * @param type $Modelo
      * @param type $email
      * @return int
      */
@@ -118,7 +118,7 @@ class usuario_Modelo extends \Framework\App\Modelo
     }
     /**
      * 
-     * @param type $modelo
+     * @param type $Modelo
      * @param type $login
      * @return int
      */
@@ -136,11 +136,11 @@ class usuario_Modelo extends \Framework\App\Modelo
     }
     /**
      * 
-     * @param type $modelo
+     * @param type $Modelo
      * @param type $user
      * @return string
      */
-    static function PlanoStatus($modelo, $user){
+    static function PlanoStatus($Modelo, $user){
         // Carrega e Inicializa Variavies
         $Registro = &\Framework\App\Registro::getInstacia();
         $acl = $Registro->_Acl;
@@ -150,7 +150,7 @@ class usuario_Modelo extends \Framework\App\Modelo
         // Executa
         if(file_exists(MOD_PATH.'Financeiro'.DS.'Financeiro_Controle.php')){
             // CONSULTA SE TEM DEBIDOS NO MODO USUARIO
-            $planopendente = Financeiro_Modelo::MovInt_VerificaDebito($modelo,$usuarioid,'usuario');
+            $planopendente = Financeiro_Modelo::MovInt_VerificaDebito($Modelo,$usuarioid,'usuario');
             if($planopendente!=0){
                 $planostatus['status'] = '<font color="#FF0000">Pendente</font>';
                 eval('$planostatus[\'plano\'] = CONFIG_CLI_'.$planopendente.'_NOME;');
@@ -171,7 +171,7 @@ class usuario_Modelo extends \Framework\App\Modelo
     }
     /**
      * 
-     * @param type $modelo
+     * @param type $Modelo
      * @param type $usuarioid
      * @param type $motivoid
      * @return int
@@ -186,7 +186,7 @@ class usuario_Modelo extends \Framework\App\Modelo
     }
     /**
      * 
-     * @param type $modelo
+     * @param type $Modelo
      * @param type $usuarioid
      * @param type $motivoid
      */

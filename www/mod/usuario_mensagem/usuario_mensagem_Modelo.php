@@ -51,7 +51,7 @@ class usuario_mensagem_Modelo extends \Framework\App\Modelo
         return self::Mensagem_TipoChamado_GET($array,$tipodemensagem);
     }
     #update
-    static function Mensagens_Retornanaolidas(&$modelo,&$mensagens,$proprietario=0,$ticket=0){
+    static function Mensagens_Retornanaolidas(&$Modelo,&$mensagens,$proprietario=0,$ticket=0){
         $i =0;
         if($proprietario==0 && $ticket==1){
             // mostra todos os tickets para ADMIN

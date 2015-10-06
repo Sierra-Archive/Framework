@@ -603,7 +603,7 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
     	$id = (int) $id;
         // Puxa modelo e deleta
         $Modelo = $this->_Modelo->db->Sql_Select('Usuario_Veiculo_Equipamento_Modelo', Array('id'=>$id));
-        $sucesso =  $this->_Modelo->db->Sql_Delete($modelo);
+        $sucesso =  $this->_Modelo->db->Sql_Delete($Modelo);
         // Mensagem
     	if($sucesso===true){
             $mensagens = array(

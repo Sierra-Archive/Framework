@@ -31,7 +31,7 @@ class usuario_rede_Modelo extends \Framework\App\Modelo
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    static function Retorna_num_Indicados($modelo, $user){
+    static function Retorna_num_Indicados($Modelo, $user){
         // zera contadores
         $indicados['primario'] = 0;
         $indicados['secundario'] = 0;
@@ -79,7 +79,7 @@ class usuario_rede_Modelo extends \Framework\App\Modelo
      * @return int
      */
     /**#update
-    static function Ranking_primarios(&$ranking,&$modelo){
+    static function Ranking_primarios(&$ranking,&$Modelo){
         $i = 0;
         $sql = $Modelo->db->query('SELECT U.id, U.nome, count(*) as PRIMARIO FROM '.MYSQL_USUARIOS.' U INNER JOIN '.MYSQL_USUARIOS.' US ON U.id=US.indicado_por WHERE US.deletado=0 AND US.ativado=1 AND U.grupo!='.CFG_TEC_IDCLIENTE.' AND US.grupo!='.CFG_TEC_IDCLIENTE.' AND  U.deletado=0 AND U.ativado=1 GROUP BY US.indicado_por ORDER BY PRIMARIO DESC');
         $total = $Modelo->db->Sql_Select('Usuario');
