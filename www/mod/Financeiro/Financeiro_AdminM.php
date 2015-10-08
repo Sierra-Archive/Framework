@@ -29,7 +29,7 @@ class Financeiro_AdminModelo extends Financeiro_Modelo
     public function Usuarios_devendo(&$usuarios){
         $i = 0;
         // Query
-        $sql = $this->db->query('SELECT id,nome,email
+        $sql = $this->db->query('SELECT id,nome,email,grupo
         FROM '.MYSQL_USUARIOS.' WHERE deletado=0 ORDER BY nome'); //P.categoria
         while ($campo = $sql->fetch_object()) {
             $saldo = Financeiro_Modelo::Carregar_Saldo($this, $campo->id);
@@ -38,8 +38,7 @@ class Financeiro_AdminModelo extends Financeiro_Modelo
                 $usuarios[$i]['id'] = $campo->id;
                 $usuarios[$i]['nome'] = $campo->nome;
                 $usuarios[$i]['email'] = $campo->email;
-                //$usuarios[$i]['nivel_usuario'] = $campo->nivel_usuario;
-                //$usuarios[$i]['nivel_admin'] = $campo->nivel_admin;
+                $usuarios[$i]['grupo'] = $campo->grupo;
                 ++$i;
             }
         }
@@ -48,7 +47,7 @@ class Financeiro_AdminModelo extends Financeiro_Modelo
     public function Usuarios_naodevendo(&$usuarios){
         $i = 0;
         // Query
-        $sql = $this->db->query('SELECT id,nome,email,nivel_usuario,nivel_admin
+        $sql = $this->db->query('SELECT id,nome,email,grupo
         FROM '.MYSQL_USUARIOS.' WHERE deletado=0 ORDER BY nome'); //P.categoria
         while ($campo = $sql->fetch_object()) {
             $saldo = Financeiro_Modelo::Carregar_Saldo($this, $campo->id);
@@ -57,8 +56,7 @@ class Financeiro_AdminModelo extends Financeiro_Modelo
                 $usuarios[$i]['id'] = $campo->id;
                 $usuarios[$i]['nome'] = $campo->nome;
                 $usuarios[$i]['email'] = $campo->email;
-                $usuarios[$i]['nivel_usuario'] = $campo->nivel_usuario;
-                $usuarios[$i]['nivel_admin'] = $campo->nivel_admin;
+                $usuarios[$i]['grupo'] = $campo->grupo;
                 ++$i;
             }
         }

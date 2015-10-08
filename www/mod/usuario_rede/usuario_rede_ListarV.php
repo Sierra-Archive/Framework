@@ -124,7 +124,7 @@ class usuario_rede_ListarVisual extends usuario_rede_Visual
                 
                 $tabela->addcorpo(array(
                     array("nome" => '#'.$array[$indice]['id']),
-                    array("nome" => $prenome.$array[$indice]['nome'].' <img alt="'.__('Nivel da Indicação').' width="15" src="'.WEB_URL.'img/icons/nivel_cliente'.$array[$indice]['nivel_usuario'].'.jpg">', "class" => $class),
+                    array("nome" => $prenome.$array[$indice]['nome'].' <img alt="'.__('Nivel da Indicação').' width="15" src="'.WEB_URL.'img/icons/nivel_cliente'.$array[$indice]['grupo'].'.jpg">', "class" => $class),
                 ));
                 ++$i;
                 if(!empty($array[$j]['indicados'])){

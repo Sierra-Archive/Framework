@@ -137,6 +137,11 @@ class Financeiro_ListarControle extends Financeiro_Controle
      */
     public function sacar_inserir(){
         global $config;
+        
+        if(!isset($_POST["sacar_quantia"])){
+            return false;
+        }
+        
         // Para verificar erro
         $erro = 1;
         // Carrega quantia e saldo do usuario
@@ -169,7 +174,6 @@ class Financeiro_ListarControle extends Financeiro_Controle
                         '<br>Email: '.$this->_Acl->logado_usuario->email.
                         '<br>Valor do Saque: R$'.$quantia.
                         '<br>Saldo Restante do Usuario: R$'.($saldo-$quantia);
-                eval('$mgm .= \'<br>Plano do Usuario: \'.CONFIG_CLI_'.$this->_Acl->logado_usuario->nivel_usuario.'_NOME;');
                 $mgm .= '<br>Datetime: '.APP_HORA;
                 $email = Mail_Send($this->_Acl->logado_usuario->nome, $this->_Acl->logado_usuario->email,SISTEMA_EMAIL,SISTEMA_NOME.' - Saque de Usuario do Sistema',$mgm);
                 if($email==1){
@@ -216,6 +220,9 @@ class Financeiro_ListarControle extends Financeiro_Controle
         return $formulario;
     }
     public function transferencia_inserir(){
+        if(!isset($_POST["login"]) || !isset($_POST["transferir_quantia"])){
+            return false;
+        }
         $erro = 1;
         // captura variaveis
         $login = \Framework\App\Conexao::anti_injection($_POST["login"]);

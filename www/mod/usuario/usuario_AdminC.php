@@ -653,23 +653,12 @@ class usuario_AdminControle extends usuario_Controle
             reset($usuarios);
             $i = 0;
             foreach ($usuarios as $indice=>&$valor) {
-                if($usuarios[$indice]['nivel_usuario']==1)     $niveluser = CONFIG_CLI_1_NOME;
-                elseif($usuarios[$indice]['nivel_usuario']==2) $niveluser = CONFIG_CLI_2_NOME;
-                elseif($usuarios[$indice]['nivel_usuario']==3) $niveluser = CONFIG_CLI_3_NOME;
-                elseif($usuarios[$indice]['nivel_usuario']==4) $niveluser = CONFIG_CLI_4_NOME;
-                elseif($usuarios[$indice]['nivel_usuario']==5) $niveluser = CONFIG_CLI_5_NOME;
-                else                                           $niveluser = CONFIG_CLI_0_NOME;
-                
-                if($usuarios[$indice]['nivel_admin']==0)     $niveladmin = __('Usuario');
-                elseif($usuarios[$indice]['nivel_admin']==1) $niveladmin = __('Admin');
-                else                                         $niveladmin = __('Admin GOD');
                 
                 
                 $tabela['Id'][$i] = $usuarios[$indice]['id'];
                 $tabela['Nome'][$i] = $usuarios[$indice]['nome'];
                 $tabela['Email'][$i] = $usuarios[$indice]['email'];
-                $tabela['Nivel de Usuário'][$i] = $niveluser;
-                $tabela['Nivel de Admin'][$i] = $niveladmin;
+                $tabela['Grupo'][$i] = $grupo;
                 $tabela['Saldo'][$i] = $usuarios[$indice]['saldo'];
                 $tabela['Funções'][$i] = '<a alt="'.__('Aprovar Usuário').' confirma="Deseja Realmente Aprovar?" title="Aprovar" class="lajax explicar-titulo" acao="" href="'.URL_PATH.'usuario/Admin/usuarios_pendente_aprovar/'.$usuarios[$indice]['id'].'/'.$tipo.'/sim/"><img src="'.WEB_URL.'img/icons/status1.png"></a>'.
                 '<a alt="'.__('Desaprovar Usuário').' confirma="Deseja Realmente Desaprovar?" title="Desaprovar" class="lajax explicar-titulo" acao="" href="'.URL_PATH.'usuario/Admin/usuarios_pendente_aprovar/'.$usuarios[$indice]['id'].'/'.$tipo.'/nao/"><img src="'.WEB_URL.'img/icons/status2.png"></a>'.

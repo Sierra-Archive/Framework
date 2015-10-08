@@ -29,13 +29,13 @@ class usuario_veiculo_aluguel_Modelo extends \Framework\App\Modelo
         }
         // ACRESCENTA PORCENTAGENS PARA AMIGOS DE NIVEL 1
         $i = 0;
-        $sql = $Modelo->db->query('SELECT nivel_usuario
+        $sql = $Modelo->db->query('SELECT id,grupo
         FROM '.MYSQL_USUARIOS.'
         WHERE deletado!=1 AND indicado_por='.$usuarioid.' LIMIT 1'); //P.categoria
         while ($campo = $sql->fetch_object()) {
             $idindicado = $campo->id;
-            if($campo->nivel_usuario!=0){
-                eval('$novovalor = round((CONFIG_CLI_'.$campo->nivel_usuario.'_PORC1*$valor/100), 2);');
+            if($campo->grupo!=0){
+                eval('$novovalor = round((0.5*$valor/100), 2);');
                 $dt_vencimento = date("Y-m-d", time() + (FINANCEIRO_DIASVENCIMENTO * 86400));
                 Financeiro_Modelo::MovInt_Inserir($Modelo,$campo->id,$novovalor,1,'usuario_rede',$usuarioid,$dt_vencimento);                
             }
@@ -44,13 +44,13 @@ class usuario_veiculo_aluguel_Modelo extends \Framework\App\Modelo
         if($i>0){
             // ACRESCENTA PORCENTAGENS PARA AMIGOS DE NIVEL 2
             $i = 0;
-            $sql = $Modelo->db->query('SELECT nivel_usuario
+            $sql = $Modelo->db->query('SELECT id,grupo
             FROM '.MYSQL_USUARIOS.'
             WHERE deletado!=1 AND indicado_por='.$idindicado.' LIMIT 1'); //P.categoria
             while ($campo = $sql->fetch_object()) {
                 $idindicado = $campo->id;
-                if($campo->nivel_usuario!=0){
-                    eval('$novovalor = round((CONFIG_CLI_'.$campo->nivel_usuario.'_PORC2*$valor/100), 2);');
+                if($campo->grupo!=0){
+                    eval('$novovalor = round((0.5*$valor/100), 2);');
                     $dt_vencimento = date("Y-m-d", time() + (FINANCEIRO_DIASVENCIMENTO * 86400));
                     Financeiro_Modelo::MovInt_Inserir($Modelo,$campo->id,$novovalor,1,'usuario_rede',$usuarioid,$dt_vencimento);                
                 }
@@ -60,12 +60,12 @@ class usuario_veiculo_aluguel_Modelo extends \Framework\App\Modelo
         if($i>0){
             // ACRESCENTA PORCENTAGENS PARA AMIGOS DE NIVEL 3
             $i = 0;
-            $sql = $Modelo->db->query('SELECT nivel_usuario
+            $sql = $Modelo->db->query('SELECT id,grupo
             FROM '.MYSQL_USUARIOS.'
             WHERE deletado!=1 AND indicado_por='.$idindicado.' LIMIT 1'); //P.categoria
             while ($campo = $sql->fetch_object()) {
-                if($campo->nivel_usuario!=0){
-                    eval('$novovalor = round((CONFIG_CLI_'.$campo->nivel_usuario.'_PORC3*$valor/100), 2);');
+                if($campo->grupo!=0){
+                    eval('$novovalor = round((0.5*$valor/100), 2);');
                     $dt_vencimento = date("Y-m-d", time() + (FINANCEIRO_DIASVENCIMENTO * 86400));
                     Financeiro_Modelo::MovInt_Inserir($Modelo,$campo->id,$novovalor,1,'usuario_rede',$usuarioid,$dt_vencimento);                
                 }

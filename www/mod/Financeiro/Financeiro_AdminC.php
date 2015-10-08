@@ -61,6 +61,7 @@ class Financeiro_AdminControle extends Financeiro_Controle
         if(!empty($usuarios)){
             $i = $this->usuario_formatab($usuarios);
         }else{         
+            $i = 0;
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Usuário com Saldo Negativo</font></b></center>');
         }
         $titulo = __('Usuarios Devendo').' ('.$i.')';
@@ -83,23 +84,11 @@ class Financeiro_AdminControle extends Financeiro_Controle
         $i = 0;
         reset($usuarios);
         foreach ($usuarios as $indice=>&$valor) {
-            /*if($usuarios[$indice]['nivel_usuario']==1)     $niveluser = CONFIG_CLI_1_NOME;
-            elseif($usuarios[$indice]['nivel_usuario']==2) $niveluser = CONFIG_CLI_2_NOME;
-            elseif($usuarios[$indice]['nivel_usuario']==3) $niveluser = CONFIG_CLI_3_NOME;
-            elseif($usuarios[$indice]['nivel_usuario']==4) $niveluser = CONFIG_CLI_4_NOME;
-            elseif($usuarios[$indice]['nivel_usuario']==5) $niveluser = CONFIG_CLI_5_NOME;
-            else                                           $niveluser = CONFIG_CLI_0_NOME;
-
-            if($usuarios[$indice]['nivel_admin']==0)     $niveladmin = __('Usuario');
-            elseif($usuarios[$indice]['nivel_admin']==1) $niveladmin = __('Admin');
-            else                                         $niveladmin = __('Admin GOD');
-*/
 
             $tabela['Id'][$i] = $usuarios[$indice]['id'];
             $tabela['Nome'][$i] = $usuarios[$indice]['nome'];
             $tabela['Email'][$i] = $usuarios[$indice]['email'];
-            $tabela['Nivel de Usuário'][$i] = $niveluser;
-            $tabela['Nivel de Admin'][$i] = $niveladmin;
+            $tabela['Grupo'][$i] = $usuarios[$indice]['grupo'];
             $tabela['Saldo'][$i] = $usuarios[$indice]['saldo'];
             $tabela['Funções'][$i] = '<a confirma="O cliente realizou um deposito para a empresa?" title="Add quantia ao Saldo do Usuário" class="lajax explicar-titulo" acao="" href="'.URL_PATH.'Financeiro/Admin/financeiro_deposito/'.$usuarios[$indice]['id'].'/"><img alt="'.__('Armazenar Depósito da Empresa').' src="'.WEB_URL.'img/icons/cifrao_16x16.png"></a>'.
             '<a confirma="O cliente confirmou o saque?" title="Remover Quantia do Saldo do Usuário" class="lajax explicar-titulo" acao="" href="'.URL_PATH.'Financeiro/Admin/financeiro_retirar/'.$usuarios[$indice]['id'].'/"><img alt="'.__('Armazenar Retirada da Empresa').' src="'.WEB_URL.'img/icons/cifrao_16x16.png"></a>'.
@@ -261,6 +250,9 @@ class Financeiro_AdminControle extends Financeiro_Controle
     * @version 0.4.2
     */
     public function financas_inserir(){
+        if(!isset($_POST["valor"]) || !isset($_POST["obs"]) || !isset($_POST["user"])){
+            return false;
+        }
         
         //data_hora_brasil_eua()
         $valor = \Framework\App\Conexao::anti_injection($_POST["valor"]);
@@ -288,6 +280,9 @@ class Financeiro_AdminControle extends Financeiro_Controle
         $this->_Visual->Json_Info_Update('Historico',0);    
     }
     public function financas_retirar(){
+        if(!isset($_POST["valor"]) || !isset($_POST["user"]) || !isset($_POST["obs"])){
+            return false;
+        }
         
         //data_hora_brasil_eua()
         $valor = \Framework\App\Conexao::anti_injection($_POST["valor"]);

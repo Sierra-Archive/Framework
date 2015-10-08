@@ -35,14 +35,13 @@ class usuario_AdminModelo extends usuario_Modelo
     public function usuario_cnh_pendente(&$usuarios,$ativado=1){
         $i = 0;
         $mysqlwhere = '';
-        $sql = $this->db->query('SELECT id,nome,email,nivel_usuario,nivel_admin
+        $sql = $this->db->query('SELECT id,nome,email,grupo
         FROM '.MYSQL_USUARIOS.' WHERE deletado=0 AND foto_cnh_apv=0 AND foto_cnh!=\'\' AND ativado='.$ativado.' ORDER BY nome'); //P.categoria
         while ($campo = $sql->fetch_object()) {
             $usuarios[$i]['id'] = $campo->id;
             $usuarios[$i]['nome'] = $campo->nome;
             $usuarios[$i]['email'] = $campo->email;
-            $usuarios[$i]['nivel_usuario'] = $campo->nivel_usuario;
-            $usuarios[$i]['nivel_admin'] = $campo->nivel_admin;
+            $usuarios[$i]['grupo'] = $campo->grupo;
 
             $saldo = Financeiro_Modelo::Carregar_Saldo($this, $campo->id);
 
@@ -74,14 +73,13 @@ class usuario_AdminModelo extends usuario_Modelo
     public function usuario_res_pendente(&$usuarios,$ativado=1){
         $i = 0;
         $mysqlwhere = '';
-        $sql = $this->db->query('SELECT id,nome,email,nivel_usuario,nivel_admin
+        $sql = $this->db->query('SELECT id,nome,email,grupo
         FROM '.MYSQL_USUARIOS.' WHERE deletado=0 AND foto_res_apv=0 AND foto_res!=\'\' AND ativado='.$ativado.' ORDER BY nome'); //P.categoria
         while ($campo = $sql->fetch_object()) {
             $usuarios[$i]['id'] = $campo->id;
             $usuarios[$i]['nome'] = $campo->nome;
             $usuarios[$i]['email'] = $campo->email;
-            $usuarios[$i]['nivel_usuario'] = $campo->nivel_usuario;
-            $usuarios[$i]['nivel_admin'] = $campo->nivel_admin;
+            $usuarios[$i]['grupo'] = $campo->grupo;
 
             $saldo = Financeiro_Modelo::Carregar_Saldo($this, $campo->id);
 

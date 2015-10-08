@@ -92,12 +92,6 @@ class usuario_FreeControle extends usuario_Controle
             $formbt     = __('Salvar Associado');
         }
         \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos);
-        
-        if($tipocadastro=='associado'){
-            $this->_Visual->Blocar($this->Show_ConhecaOsPlanos());
-            $this->_Visual->Bloco_Maior_CriaTitulo('Conheça os Planos');
-            $this->_Visual->bloco_maior_criaconteudo();
-        }
     }
     /**
      * Inseri usuarios no Banco de dados
@@ -155,7 +149,6 @@ class usuario_FreeControle extends usuario_Controle
                 $tipousuario = \Framework\App\Conexao::anti_injection($tipo);
 
                 // atualiza todos os valores por get, retirando o nivel admin
-                //self::mysql_Campos_Retira($this->_Modelo->campos,'nivel_admin',0);
                 self::mysql_AtualizaValores($this->_Modelo->campos);
 
                 // confere senha
@@ -186,20 +179,16 @@ class usuario_FreeControle extends usuario_Controle
                     $this->_Modelo->Usuario_Logar(\Framework\App\Conexao::anti_injection($_POST['login']), \Framework\App\Sistema_Funcoes::Form_Senha_Blindar($_POST['senha'],true));  
                     // boleto
                     // Mensagem Para nao Associados
-                    $mgm = '<br>Seja bem vindo a Locaway.'.
+                    $mgm = '<br>Seja bem vindo.'.
                     '<br>Seu cadastro foi registrado com sucesso.'.
                     '<br>Estamos trabalhando para melhor atendê-lo!<br>'.
 
                     '<br>Atenciosamente,'.
                     '<br>Equipe Locaway';
                     if($tipousuario!='cliente'){
-                        $mgm = '<br>Seja bem vindo a Locaway.'.
+                        $mgm = '<br>Obrigado por Se Registrar.'.
                         '<br>Seu cadastro foi registrado com sucesso e encontra-se em análise de pagamento.'.
-                        '<br>Estamos trabalhando para melhor atendê-lo!<br>'.
-
-                        '<br>Atenciosamente,'.
-                        '<br>Equipe Locaway';
-                        eval('$valor = CONFIG_CLI_'.\Framework\App\Conexao::anti_injection($_POST['nivel_usuario']).'_PRECO;');
+                        '<br>Estamos trabalhando para melhor atendê-lo!<br>';
                         $this->_Visual->Javascript_Executar('window.open(\''.LIBS_URL.'boleto/boleto_itau.php?clientenome='.\Framework\App\Conexao::anti_injection($_POST['nome']).
                         '&endereco='.\Framework\App\Conexao::anti_injection($_POST['endereco']).
                         '&numero='.\Framework\App\Conexao::anti_injection($_POST['numero']).

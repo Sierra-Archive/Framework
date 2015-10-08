@@ -21,9 +21,6 @@ class usuario_Principal implements \Framework\PrincipalInterface
     * @version 0.4.2
     */
     static function Home(&$controle, &$Modelo, &$Visual){
-        if(\Framework\App\Sistema_Funcoes::Perm_Modulos('Financeiro') && \Framework\App\Acl::Sistema_Modulos_Configs_Funcional('Financeiro_User_Planos') && \Framework\App\Acl::Sistema_Modulos_Configs_Funcional('Financeiro_User_Saldo')){
-            usuario_Controle::PlanoStatus($Modelo, $Visual, \Framework\App\Acl::Usuario_GetID_Static());
-        }
         self::Widgets();
         // Carrega Expedientes
         if(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Expediente')){

@@ -379,48 +379,6 @@ class usuario_Controle extends \Framework\App\Controle
         }
         $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',$gravidade);
     }
-   /**
-    * Description
-    * @return type
-    */
-    public function Show_ConhecaOsPlanos(){
-        // Cria Tabela
-        $tabela = new \Framework\Classes\Tabela();
-        $tabela->addcabecario(array(' ',CONFIG_CLI_1_NOME,CONFIG_CLI_2_NOME,CONFIG_CLI_3_NOME,CONFIG_CLI_4_NOME/*,CONFIG_CLI_5_NOME*/));   
-        $tabela->addcorpo(array(
-            array("nome" => 'Preço', "class" => 'tbold tleft'),
-            array("nome" => 'R$'.number_format(CONFIG_CLI_1_PRECO, 2, ',', '.')),
-            array("nome" => 'R$'.number_format(CONFIG_CLI_2_PRECO, 2, ',', '.')),
-            array("nome" => 'R$'.number_format(CONFIG_CLI_3_PRECO, 2, ',', '.')),
-            array("nome" => 'R$'.number_format(CONFIG_CLI_4_PRECO, 2, ',', '.'))/*,
-            array("nome" => 'R$'.number_format(CONFIG_CLI_5_PRECO, 2, ',', '.'))*/
-        ));
-        $tabela->addcorpo(array(
-            array("nome" => 'Porcentagem Sobre Primários', "class" => 'tbold tleft'),
-            array("nome" => CONFIG_CLI_1_PORC1.'%'),
-            array("nome" => CONFIG_CLI_2_PORC1.'%'),
-            array("nome" => CONFIG_CLI_3_PORC1.'%'),
-            array("nome" => CONFIG_CLI_4_PORC1.'%')/*,
-            array("nome" => CONFIG_CLI_5_PORC1.'%')*/
-        ));
-        $tabela->addcorpo(array(
-            array("nome" => 'Porcentagem Sobre Secundários', "class" => 'tbold tleft'),
-            array("nome" => CONFIG_CLI_1_PORC2.'%'),
-            array("nome" => CONFIG_CLI_2_PORC2.'%'),
-            array("nome" => CONFIG_CLI_3_PORC2.'%'),
-            array("nome" => CONFIG_CLI_4_PORC2.'%')/*,
-            array("nome" => CONFIG_CLI_5_PORC2.'%')*/
-        ));
-        $tabela->addcorpo(array(
-            array("nome" => 'Porcentagem Sobre Terciários', "class" => 'tbold tleft'),
-            array("nome" => CONFIG_CLI_1_PORC3.'%'),
-            array("nome" => CONFIG_CLI_2_PORC3.'%'),
-            array("nome" => CONFIG_CLI_3_PORC3.'%'),
-            array("nome" => CONFIG_CLI_4_PORC3.'%')/*,
-            array("nome" => CONFIG_CLI_5_PORC3.'%')*/
-        ));
-        return $tabela->retornatabela();
-    }
     static function Usuarios_Email_Ver($id = 0,$tipo=false, $tema='Cliente'){
         $Registro   = &\Framework\App\Registro::getInstacia();
         $Controle   = $Registro->_Controle;

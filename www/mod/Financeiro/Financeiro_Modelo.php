@@ -56,6 +56,9 @@ class Financeiro_Modelo extends \Framework\App\Modelo
     
     public function MovFin_Carregar(&$array,$usuarioid){
         $i = 0;
+        if($usuarioid==0 || $usuarioid == NULL || $usuarioid == ''){
+            return $i;
+        }
         // CONSULTA EXTERNOS E GANHOS EM CIMA DE OUTROS USUARIOS
         /*$sql = $this->db->query('SELECT * FROM (
                 SELECT positivo, valor, obs, log_date_add
@@ -73,7 +76,7 @@ class Financeiro_Modelo extends \Framework\App\Modelo
                 FROM '.MYSQL_FINANCEIRO_MOV_INT.'
                 WHERE deletado!=1 AND entrada_motivo = \'Usuario\' AND entrada_motivoid = '.$usuarioid.'
             UNION ALL
-                SELECT 0 as positivo, valor, \'associado\' AS obs, log_date_add
+                SELECT 0 as positivo, valor, obs, log_date_add
                 FROM '.MYSQL_FINANCEIRO_MOV_INT.'
                 WHERE deletado!=1 AND saida_motivo = \'Usuario\' AND saida_motivoid = '.$usuarioid.'
             ) as U
@@ -196,16 +199,9 @@ class Financeiro_Modelo extends \Framework\App\Modelo
         }
     }
     static function Financeiro(&$Modelo,$usuarioid,$motivoid){
-        /*$usuarioid = (int) $usuarioid;
-        if(!isset($usuarioid) || !is_int($usuarioid) || $usuarioid==0) return 0;
-        $Modelo->db->query('UPDATE '.MYSQL_USUARIOS.' SET nivel_usuario_pago=1 WHERE id='.$usuarioid);
-        */return 1;
+        return 1;
     }
     static function Financeiro_Motivo_Exibir($motivoid){
-        /*$usuarioid = (int) $usuarioid;
-        if(!isset($usuarioid) || !is_int($usuarioid) || $usuarioid==0) return 0;
-        $Modelo->db->query('UPDATE '.MYSQL_USUARIOS.' SET nivel_usuario_pago=1 WHERE id='.$usuarioid);
-        */
         $i = 0;
         $sql = $Modelo->db->query('SELECT nome
         FROM '.MYSQL_USUARIOS.' WHERE deletado!=1 AND id='.$motivoid.' ORDER BY nome limit 1'); //P.categoria
