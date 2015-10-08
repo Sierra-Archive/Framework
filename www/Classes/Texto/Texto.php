@@ -43,13 +43,13 @@ class Texto
      */
     public static function Captura_Palavra_Masculina($palavra){
         $palavra = (string) $palavra;
-        
         $tam = strlen($palavra);
-        if($palavra[$tam-1]=='a'){
+        
+        if($tam>1 && $palavra[$tam-1]=='a'){
             return false;
-        }else if($palavra[$tam-2]=='a' && $palavra[$tam-1]=='s'){
+        }else if($tam>2 && $palavra[$tam-2]=='a' && $palavra[$tam-1]=='s'){
             return false;
-        }else if($palavra[$tam-2]=='e' && $palavra[$tam-1]=='s'){
+        }else if($tam>2 && $palavra[$tam-2]=='e' && $palavra[$tam-1]=='s'){
             return false;
         }
         

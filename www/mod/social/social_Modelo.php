@@ -78,7 +78,7 @@ class social_Modelo extends \Framework\App\Modelo
         if($usuario_id==0){
             $usuario_id = \Framework\App\Acl::Usuario_GetID_Static(); 
         }
-        $sql = $this->db->query('SELECT id, id_face, nome, fis_sexo, nasc, email, posicao, situacao, celular FROM '.MYSQL_SOCIAL.' WHERE deletado!=1 AND user=\''.$usuario_id.'\' ORDER BY nome');
+        $sql = $this->db->query('SELECT id, id_face, nome, perfil_sexo, perfil_nascimento, email, posicao, situacao, celular FROM '.MYSQL_SOCIAL.' WHERE deletado!=1 AND log_user_add=\''.$usuario_id.'\' ORDER BY nome');
         $i=0;
         while ($campo = $sql->fetch_object()) {
             $persona_pontos = 0;
@@ -91,8 +91,8 @@ class social_Modelo extends \Framework\App\Modelo
             $social[$i]['id'] = $personaid;
             $social[$i]['id_face'] = $campo->id_face;
             $social[$i]['nome'] = $campo->nome;
-            $social[$i]['fis_sexo'] = $campo->fis_sexo;
-            $social[$i]['nasc'] = $campo->nasc;
+            $social[$i]['fis_sexo'] = $campo->perfil_sexo;
+            $social[$i]['nasc'] = $campo->perfil_nascimento;
             $social[$i]['email'] = $campo->email;
             $social[$i]['pontos'] = $persona_pontos;
             $social[$i]['posicao'] = $campo->posicao;

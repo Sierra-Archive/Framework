@@ -15,9 +15,7 @@ class _Sistema_FilialControle extends _Sistema_Controle
     }
     public function FilialWidgets(){
         // Filial
-        $filial = $this->_Modelo->db->Sql_Select('Sistema_Filial',Array());
-        if(is_object($filial)) $filial = Array(0=>$filial);
-        if($filial!==false && !empty($filial)){reset($filial);$filial_qnt = count($filial);}else{$filial = 0;}
+        $filial_qnt = $this->_Modelo->db->Sql_Contar('Sistema_Filial');
         
         // Exibir
         \Framework\App\Visual::Layoult_Home_Widgets_Add(

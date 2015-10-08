@@ -30,16 +30,15 @@ class banner_Modelo extends \Framework\App\Modelo
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
-    *//*
+    */
     public function retorna_banners(&$banners,$categoria=0,$ativado=1){
         $i = 0;
         $mysqlwhere = '';
         if($categoria==0) $EXTRA = '';
         else              $EXTRA = ' AND B.categoria='.$categoria;
-        $sql = $this->db->query('SELECT B.id, B.ixi, B.cliq, '.$this->mysqlSelectCampos($this->campos).'
+        $sql = $this->db->query('SELECT B.id, B.ixi, B.cliq
         FROM '.MYSQL_BANNERS.' B, '.MYSQL_CAT.' C WHERE B.deletado=0 AND B.categoria=C.id AND B.status='.$ativado.$EXTRA.' ORDER BY rand()');
         while ($campo = $sql->fetch_object()) {
-            $this->mysqlRetornaCampos($banners[$i],$this->campos,$campo);
             $banners[$i]['id'] = $campo->id;
             $banners[$i]['ixi'] = $campo->ixi;
             $banners[$i]['cliq'] = $campo->cliq;
@@ -54,16 +53,15 @@ class banner_Modelo extends \Framework\App\Modelo
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
-     *//*
+     */
     public function retorna_banner($id){
         $id = (int) $id;
         if(!isset($id) || !is_int($id) || $id==0) return 0;
         $banner = Array();
-        $sql = $this->db->query(' SELECT B.id, B.ixi, B.cliq, '.$this->mysqlSelectCampos($this->campos).'
+        $sql = $this->db->query(' SELECT B.id, B.ixi, B.cliq
         FROM '.MYSQL_BANNERS.' B, '.MYSQL_CAT.' C
         WHERE B.deletado=0 AND B.categoria=C.id AND B.id='.$id.' LIMIT 1'); //P.categoria
         while ($campo = $sql->fetch_object()) {
-            $this->mysqlRetornaCampos($banner,$this->campos,$campo);
             $banner['id'] = $campo->id;
             $banner['ixi'] = $campo->ixi;
             $banner['cliq'] = $campo->cliq;
@@ -97,6 +95,6 @@ class banner_Modelo extends \Framework\App\Modelo
             $banner['foto'] = $campo->foto;
         }
         return $banner;
-    }*/
+    }
 }
 ?>

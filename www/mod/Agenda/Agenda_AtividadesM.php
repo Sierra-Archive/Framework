@@ -1,6 +1,6 @@
 <?php
 
-class Atividade_AtividadesModelo extends Atividade_Modelo
+class Agenda_AtividadesModelo extends Agenda_Modelo
 {
     /**
     * Construtor

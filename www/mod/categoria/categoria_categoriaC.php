@@ -271,6 +271,9 @@ class categoria_categoriaControle extends categoria_Controle
      * @version 0.4.2
      */
     public function Categorias_inserir(){
+        if(!isset($_POST["nome"]) || !isset($_POST["parent"]) || !isset($_POST["mod_acc"])){
+            return false;
+        }
         
         $nome = \Framework\App\Conexao::anti_injection($_POST["nome"]);
         $parent = (int) $_POST["parent"];

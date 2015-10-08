@@ -76,13 +76,12 @@ class comercio_venda_ComposicaoControle extends comercio_venda_Controle
             if(is_object($produtos_usados)) $produtos_usados = Array(0=>$produtos_usados);
             reset($produtos_usados);
             foreach ($produtos_usados as $indice=>&$valor) {
-                $arry = &$produtos_usados_array[$valor->composicao];
-                if(!isset($arry) || $arry===''){
-                    $arry = '';
+                if(!isset($produtos_usados_array[$valor->composicao]) || $produtos_usados_array[$valor->composicao]===''){
+                    $produtos_usados_array[$valor->composicao] = '';
                 }else{
-                    $arry .= '<br>';
+                    $produtos_usados_array[$valor->composicao] .= '<br>';
                 }
-                $arry .= '<b>'.$valor->produto2.'</b> (x'.$valor->qnt.')';
+                $produtos_usados_array[$valor->composicao] .= '<b>'.$valor->produto2.'</b> (x'.$valor->qnt.')';
             }
         }
         if($composicoes!==false && !empty($composicoes)){
@@ -98,7 +97,11 @@ class comercio_venda_ComposicaoControle extends comercio_venda_Controle
                 $tabela['Foto'][$i]      = '<img alt="'.__('Foto da Composição').' src="'.$foto.'" style="max-width:100px;" />';
                 $tabela['Nome'][$i]      = $valor->nome;
                 $tabela['Descrição'][$i] = $valor->descricao;
-                $tabela['Produtos Usados'][$i] = $produtos_usados_array[$valor->id];
+                if(isset($produtos_usados_array[$valor->id])){
+                    $tabela['Produtos Usados'][$i] = $produtos_usados_array[$valor->id];
+                }else{
+                    $tabela['Produtos Usados'][$i] = __('Nenhum');
+                }
                 $tabela['Preço'][$i]     = $valor->preco;
                 $tabela['Funções'][$i]   = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Cardápio'        ,'comercio_venda/Composicao/Composicoes_Edit/'.$valor->id.'/'    ,'')).
                                            $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Cardápio'       ,'comercio_venda/Composicao/Composicoes_Del/'.$valor->id.'/'     ,'Deseja realmente deletar esse Cardápio ?'));

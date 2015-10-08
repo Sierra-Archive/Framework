@@ -55,28 +55,15 @@ class usuario_rede_Visual extends \Framework\App\Visual
                 '</tr>'.
                 '<tr>'.
                     '<td colspan="2" class="backcolor tcenter tbold">Niveis</td>'.
-                '</tr>'.
-                '<tr>'.
-                    '<td class="backcolor tleft">Master</td>'.
-                    '<td class="tright">'.$array['associado_nivel_1'].'</td>'.
-                '</tr>'.
-                '<tr>'.
-                    '<td class="backcolor tleft">Bronze</td>'.
-                    '<td class="tright">'.$array['associado_nivel_2'].'</td>'.
-                '</tr>'.
-                '<tr>'.
-                    '<td class="backcolor tleft">Prata</td>'.
-                    '<td class="tright">'.$array['associado_nivel_3'].'</td>'.
-                '</tr>'.
-                '<tr>'.
-                    '<td class="backcolor tleft">Gold</td>'.
-                    '<td class="tright">'.$array['associado_nivel_4'].'</td>'.
-                '</tr>'.
-                '<tr>'.
-                    '<td class="backcolor tleft">Platinum</td>'.
-                    '<td class="tright">'.$array['associado_nivel_5'].'</td>'.
-                '</tr>'.
-            '</tbody>'.
+                '</tr>';
+        foreach($array['associado'] as $indice=>&$valor){
+            $grupo = \Framework\App\Registro::getInstacia()->_Conexao->Sql_Select('Sistema_Grupo','{sigla}id=\''.$indice.'\'');
+            $html .= '<tr>'.
+                    '<td class="backcolor tleft">'.$grupo->nome.'</td>'.
+                    '<td class="tright">'.$valor.'</td>'.
+                '</tr>';
+        }
+        $html .= '</tbody>'.
         '</table>';
         return $html;
     }

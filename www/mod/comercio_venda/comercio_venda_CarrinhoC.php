@@ -244,7 +244,7 @@ class comercio_venda_CarrinhoControle extends comercio_venda_Controle
      * @return boolean
      */
     private function Carrinho_Atualizar_Valor(&$identificador){
-        if(!is_object($identificador)){
+        if(!is_object($identificador) || !isset($_POST["condicao_pagar"])){
             return false;
         }
         

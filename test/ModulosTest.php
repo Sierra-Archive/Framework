@@ -155,7 +155,7 @@ class ModulosTest extends \PHPUnit_Framework_TestCase {
                                     if(is_callable(array($Registro->_Modelo,$metodo))){
                                         $metodo = $getmetodo;
                                     }else{
-                                        $metodo = 'Main';
+                                        throw new \Exception('Metodo não Encontrado (Modelo): '.$getmodulo.' - '.$getsubmodulo.' - '.$getmetodo, 404); 
                                     }
                                     if(count($getargs)>0){
                                         call_user_func_array(array($Registro->_Modelo,$metodo), $getargs);
@@ -168,7 +168,7 @@ class ModulosTest extends \PHPUnit_Framework_TestCase {
                                     if(is_callable(array($Registro->_Controle,$metodo))){
                                         $metodo = $getmetodo;
                                     }else{
-                                        $metodo = 'Main';
+                                        throw new \Exception('Metodo não Encontrado: '.$getmodulo.' - '.$getsubmodulo.' - '.$getmetodo, 404); //
                                     }
                                     if(count($getargs)>0){
                                         call_user_func_array(array($Registro->_Controle,$metodo), $getargs);
@@ -178,10 +178,14 @@ class ModulosTest extends \PHPUnit_Framework_TestCase {
 
                                 }
                             }else{
-                                throw new \Exception('SubMódulo não Encontrado', 404); //
+                                if($getsubmodulo==''){
+                                    throw new \Exception('SubMódulo Vazio: '.$arquivo.' - '.$valor, 404); //
+                                }else{
+                                    throw new \Exception('SubMódulo não Encontrado: '.$getmodulo.' - '.$getsubmodulo, 404); //
+                                }
                             }
                         }else{
-                            throw new \Exception('Módulo não Encontrado', 404); //
+                            throw new \Exception('Módulo não Encontrado: '.$getmodulo, 404); //
                         }
                    }
                 }

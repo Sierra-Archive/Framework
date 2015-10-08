@@ -70,6 +70,14 @@ class Acl{
         if($id!==false){
             // Caso esteja carregando de outro usuario
             $this->_id = (int) $id;
+                    
+            $query = $this->_db->query('SELECT id,grupo,nome,foto,email,cpf,telefone,celular,endereco,numero,complemento,'.
+                    'cidade,bairro,cep,foto_cnh,foto_res,foto_cnh_apv,foto_res_apv'
+                    . ' FROM '.MYSQL_USUARIOS.' WHERE servidor=\''.SRV_NAME_SQL.'\' AND id=\''.$this->_id.'\' AND ativado=1 AND deletado=0 LIMIT 1');
+
+            // #update Nao deixar que os logins configurados cmo nao login, façam login
+            // Procura Resultado
+            $this->logado_usuario = $query->fetch_object();
         }else{
             // Caso LOGIN
             if(\Framework\App\Session::get(SESSION_ADMIN_ID)){

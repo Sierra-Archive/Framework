@@ -39,7 +39,7 @@ class usuario_rede_Controle extends \Framework\App\Controle
         $Visual->Bloco_Menor_CriaConteudo(20);
         
         // Cria Grafico De Primarios SEcundarios terciarios
-        $graficos[0]['titulo'] = __('Medidor de amigos');
+        $graficos[0]['titulo'] = __('Medidor de Indicados');
         $graficos[0]['alt'] = 400;
         $graficos[0]['larg'] = 500;
         $graficos[0]['headers'] = array('Nome','Valor');
@@ -52,11 +52,10 @@ class usuario_rede_Controle extends \Framework\App\Controle
         $graficos[1]['alt'] = 400;
         $graficos[1]['larg'] = 400;
         $graficos[1]['headers'] = array('Nome','Valor');
-        $graficos[1]['itens'][] = array('Master',$valores['associado_nivel_1']);
-        $graficos[1]['itens'][] = array('Bronze',$valores['associado_nivel_2']);
-        $graficos[1]['itens'][] = array('Prata',$valores['associado_nivel_3']);
-        $graficos[1]['itens'][] = array('Gold',$valores['associado_nivel_4']);
-        $graficos[1]['itens'][] = array('Platinum',$valores['associado_nivel_5']);
+        foreach($valores['associado'] as $indice=>&$valor){
+            $grupo = \Framework\App\Registro::getInstacia()->_Conexao->Sql_Select('Sistema_Grupo','{sigla}id=\''.$indice.'\'');
+            $graficos[1]['itens'][] = array($grupo->nome,$valor);
+        }
         unset($valores); // LIMPA MEM�RIA
         // Cria conteudo html no layoult e add numa noja janela
         $Visual->Blocar($Visual->grafico_gerar($graficos));

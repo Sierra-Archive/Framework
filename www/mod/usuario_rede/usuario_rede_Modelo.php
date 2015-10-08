@@ -36,36 +36,35 @@ class usuario_rede_Modelo extends \Framework\App\Modelo
         $indicados['primario'] = 0;
         $indicados['secundario'] = 0;
         $indicados['terciario'] = 0;
-        $indicados['associado_nivel_1'] = 0;
-        $indicados['associado_nivel_2'] = 0;
-        $indicados['associado_nivel_3'] = 0;
-        $indicados['associado_nivel_4'] = 0;
-        $indicados['associado_nivel_5'] = 0;
+        $indicados['associado'] = Array();
         $indicados['total'] = 0;
         // faz busca pelos primarios
-        $sql = $Modelo->db->query('SELECT id,nivel_usuario FROM '.MYSQL_USUARIOS.' WHERE deletado=0 AND ativado=1 AND indicado_por=\''.$user.'\' AND nivel_usuario>0');
+        $sql = $Modelo->db->query('SELECT id,grupo FROM '.MYSQL_USUARIOS.' WHERE deletado=0 AND ativado=1 AND indicado_por=\''.$user.'\'');
         while($campo = $sql->fetch_object()){
             $indicados['primario'] = $indicados['primario']+1;
             $indicados['total'] = $indicados['total']+1;
             $indicado_id1 = $campo->id;
-            $indicado_nivel1 = $campo->nivel_usuario;
-            eval('$indicados[\'associado_nivel_'.$indicado_nivel1.'\'] = $indicados[\'associado_nivel_'.$indicado_nivel1.'\'] + 1;');
+            $indicado_nivel1 = $campo->grupo;
+            if(!isset($indicados['associado'][$indicado_nivel1])) $indicados['associado'][$indicado_nivel1] = 0;
+            $indicados['associado'][$indicado_nivel1] = $indicados['associado'][$indicado_nivel1] + 1;
             // faz busca pelos secundarios
-            $sql2 = $Modelo->db->query('SELECT id,nivel_usuario FROM '.MYSQL_USUARIOS.' WHERE deletado=0 AND ativado=1 AND indicado_por=\''.$indicado_id1.'\' AND nivel_usuario>0');
+            $sql2 = $Modelo->db->query('SELECT id,grupo FROM '.MYSQL_USUARIOS.' WHERE deletado=0 AND ativado=1 AND indicado_por=\''.$indicado_id1.'\'');
             while($campo2 = $sql2->fetch_object()){
                 $indicados['secundario'] = $indicados['secundario']+1;
                 $indicados['total'] = $indicados['total']+1;
                 $indicado_id2 = $campo2->id;
-                $indicado_nivel2 = $campo2->nivel_usuario;
-                eval('$indicados[\'associado_nivel_'.$indicado_nivel2.'\'] = $indicados[\'associado_nivel_'.$indicado_nivel2.'\'] + 1;');
+                $indicado_nivel2 = $campo2->grupo;
+                if(!isset($indicados['associado'][$indicado_nivel2])) $indicados['associado'][$indicado_nivel2] = 0;
+                $indicados['associado'][$indicado_nivel2] = $indicados['associado'][$indicado_nivel2] + 1;
                 // faz busca pelos terciarios
-                $sql3 = $Modelo->db->query('SELECT id,nivel_usuario FROM '.MYSQL_USUARIOS.' WHERE deletado=0 AND ativado=1 AND indicado_por=\''.$indicado_id2.'\' AND nivel_usuario>0');
+                $sql3 = $Modelo->db->query('SELECT id,grupo FROM '.MYSQL_USUARIOS.' WHERE deletado=0 AND ativado=1 AND indicado_por=\''.$indicado_id2.'\'');
                 while($campo3 = $sql3->fetch_object()){
                     $indicados['terciario'] = $indicados['terciario']+1;
                     $indicados['total'] = $indicados['total']+1;
                     $indicado_id3 = $campo3->id;
-                    $indicado_nivel3 = $campo3->nivel_usuario;
-                    eval('$indicados[\'associado_nivel_'.$indicado_nivel3.'\'] = $indicados[\'associado_nivel_'.$indicado_nivel3.'\'] + 1;');
+                    $indicado_nivel3 = $campo3->grupo;
+                    if(!isset($indicados['associado'][$indicado_nivel3])) $indicados['associado'][$indicado_nivel3] = 0;
+                    $indicados['associado'][$indicado_nivel3] = $indicados['associado'][$indicado_nivel3] + 1;
                 }
             }
         }

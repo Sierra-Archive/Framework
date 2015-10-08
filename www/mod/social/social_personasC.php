@@ -8,8 +8,14 @@ class social_personasControle extends social_Controle
     public function __construct(){
         parent::__construct();
     }
+    public function Main(){
+        return true;
+    }
     public function social(){
-        $social ='';
+        $social     = '';
+        $impor      = Array();
+        $normal     = Array();
+        $proibido   = Array();
 
         // carrega camada de addpersona
         $this->social_carregajanelaadd();
@@ -76,14 +82,20 @@ class social_personasControle extends social_Controle
                 }
             }
         }
-        $this->_Visual->Show_Tabela_DataTable($impor);
-        $this->_Visual->Bloco_Maior_CriaJanela(__('Importantes'));
+        if(!empty($impor)){
+            $this->_Visual->Show_Tabela_DataTable($impor);
+            $this->_Visual->Bloco_Maior_CriaJanela(__('Importantes'));
+        }
 
-        $this->_Visual->Show_Tabela_DataTable($normal);
-        $this->_Visual->Bloco_Maior_CriaJanela(__('Principais'));
+        if(!empty($normal)){
+            $this->_Visual->Show_Tabela_DataTable($normal);
+            $this->_Visual->Bloco_Maior_CriaJanela(__('Principais'));
+        }
 
-        $this->_Visual->Show_Tabela_DataTable($proibido);
-        $this->_Visual->Bloco_Maior_CriaJanela(__('Lista Negra'));
+        if(!empty($proibido)){
+            $this->_Visual->Show_Tabela_DataTable($proibido);
+            $this->_Visual->Bloco_Maior_CriaJanela(__('Lista Negra'));
+        }
 
         // ORGANIZA E MANDA CONTEUDO
         $this->_Visual->Json_Start('Usuario_social');
@@ -91,6 +103,10 @@ class social_personasControle extends social_Controle
     // PAGINA DE UMA PERSONA S�
     public function love(){
         $social ='';
+        $orgulho      = Array();
+        $pegos     = Array();
+        $queropega   = Array();
+        $ultimocaso   = Array();
         $this->_Modelo->retorna_social($social);
         $i = 0;
         $j = 0;
@@ -171,20 +187,24 @@ class social_personasControle extends social_Controle
                 }
             }
         }
-        echo 'Quantidades'.$j;
-        $this->_Visual->Show_Tabela_DataTable($pegos);
-        $this->_Visual->Bloco_Maior_CriaJanela(__('Pegos'));
+        if(!empty($pegos)){
+            $this->_Visual->Show_Tabela_DataTable($pegos);
+            $this->_Visual->Bloco_Maior_CriaJanela(__('Pegos'));
+        }
+        if(!empty($orgulho)){
+            $this->_Visual->Show_Tabela_DataTable($orgulho);
+            $this->_Visual->Bloco_Maior_CriaJanela(__('Orgulho Supremo'));
+        }
+        if(!empty($queropega)){
+            $this->_Visual->Show_Tabela_DataTable($queropega);
+            $this->_Visual->Bloco_Maior_CriaJanela(__('Quero Gape'));
+        }
+        if(!empty($ultimocaso)){
+            $this->_Visual->Show_Tabela_DataTable($ultimocaso);
+            $this->_Visual->Bloco_Maior_CriaJanela(__('Ultimo Caso'));
+        }
 
-        $this->_Visual->Show_Tabela_DataTable($orgulho);
-        $this->_Visual->Bloco_Maior_CriaJanela(__('Orgulho Supremo'));
-
-        $this->_Visual->Show_Tabela_DataTable($queropega);
-        $this->_Visual->Bloco_Maior_CriaJanela(__('Quero Gape'));
-
-        $this->_Visual->Show_Tabela_DataTable($ultimocaso);
-        $this->_Visual->Bloco_Maior_CriaJanela(__('Ultimo Caso'));
-
-        $this->_Visual->renderizar(1,$this->calendario,$this->config_dia,$this->config_mes,$this->config_ano,$this->config_dataixi);
+        $this->_Visual->renderizar();
     }
     /***********************************
     *
@@ -214,7 +234,7 @@ class social_personasControle extends social_Controle
         return $formulario;
     }
     public function social_inserir(){
-        
+        if(!isset($_POST["nome"])) return false;
         //data_hora_brasil_eua()
         $nome = \Framework\App\Conexao::anti_injection($_POST["nome"]);
         $idface = (int) $_POST["idface"];
@@ -235,7 +255,6 @@ class social_personasControle extends social_Controle
             );
         }
         $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);    
-    }public function Main(){
-}
+    }
 }
 ?>

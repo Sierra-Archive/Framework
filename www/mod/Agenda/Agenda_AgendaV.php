@@ -1,6 +1,6 @@
 <?php
 
-class Agenda_PastaVisual extends Agenda_Visual
+class Agenda_AgendaVisual extends Agenda_Visual
 {
     /**
     * Construtor

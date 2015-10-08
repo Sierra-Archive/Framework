@@ -80,10 +80,10 @@ class usuario_mensagem_SuporteControle extends usuario_mensagem_Controle
             }
             //$this->Mensagem_formulario();
             // ORGANIZA E MANDA CONTEUDO
-            $this->_Visual->Json_Info_Update('Titulo',$nome);  
-        }else{
-            throw new \Exception('Id não Encontrado de Usuário: '.$id, 5050);
+            $this->_Visual->Json_Info_Update('Titulo',$nome);
+            return true;
         }
+        return false;
     }
     public function Mensagens_Mostrar($tipodemensagem = false){
         $titulo = $this->Mensagenslistar(0, $tipodemensagem);

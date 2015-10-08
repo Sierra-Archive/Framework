@@ -35,12 +35,14 @@ class usuario_mensagem_AdminControle extends usuario_mensagem_Controle
         return false;
     }
     public function Mensagem(){
-        if($this->get_usuarioid()!=0){
+        if($this->_Acl->Usuario_GetID()!=0){
             $this->Mensagenslistar(1);
             //$this->Mensagem_formulario();
             // ORGANIZA E MANDA CONTEUDO
             $this->_Visual->Json_Info_Update('Titulo', __('Tickets'));  
+            return true;
         }
+        return false;
     }
     public function Mensagem_Editar($mensagem=0){
         $mensagem = (int) $mensagem;

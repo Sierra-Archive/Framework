@@ -31,21 +31,14 @@ class _Sistema_AdminControle extends _Sistema_Controle
     }
     public function AdminWidgets(){
         // Grupo
-        $grupo = $this->_Modelo->db->Sql_Select('Sistema_Grupo',Array());
-        if(is_object($grupo)) $grupo = Array(0=>$grupo);
-        if($grupo!==false && !empty($grupo)){reset($grupo);$grupo_qnt = count($grupo);}else{$grupo_qnt = 0;}
+        $grupo_qnt = $this->_Modelo->db->Sql_Contar('Sistema_Grupo');
         // Menu
-        $menu = $this->_Modelo->db->Sql_Select('Sistema_Menu',Array());
-        if(is_object($menu)) $menu = Array(0=>$menu);
-        if($menu!==false && !empty($menu)){reset($menu);$menu_qnt = count($menu);}else{$menu = 0;}
+        $menu_qnt = $this->_Modelo->db->Sql_Contar('Sistema_Menu');
         // Config
-        $config = $this->_Modelo->db->Sql_Select('Sistema_Config',Array());
-        if(is_object($menu)) $menu = Array(0=>$menu);
-        if($menu!==false && !empty($menu)){reset($menu);$menu_qnt = count($menu);}else{$menu = 0;}
+        $config_qnt = $this->_Modelo->db->Sql_Contar('Sistema_Config');
         // Permissao
-        $permissao = $this->_Modelo->db->Sql_Select('Sistema_Permissao',Array());
-        if(is_object($permissao)) $permissao = Array(0=>$permissao);
-        if($permissao!==false && !empty($permissao)){reset($permissao);$permissao_qnt = count($permissao);}else{$permissao_qnt = 0;}
+        $permissao_qnt = $this->_Modelo->db->Sql_Contar('Sistema_Permissao');
+        
         // Exibir
         \Framework\App\Visual::Layoult_Home_Widgets_Add(
             'Grupos', 

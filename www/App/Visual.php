@@ -1088,7 +1088,7 @@ class Visual
      */
     private function tmp_usuario(){
         $html = '';
-        if(is_object($this->_Acl) && $this->_Acl->logado!==false){
+        if(is_object($this->_Acl) && $this->_Acl->logado!==false && is_object($this->_Acl->logado_usuario)){
             if(file_exists(ARQ_PATH.'usuario'.DS.$this->_Acl->logado_usuario->id.'.'.$this->_Acl->logado_usuario->foto)){
                 $foto = $this->_Acl->logado_usuario->foto;
             }else{
