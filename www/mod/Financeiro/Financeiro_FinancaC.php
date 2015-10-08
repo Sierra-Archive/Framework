@@ -115,11 +115,10 @@ class Financeiro_FinancaControle extends Financeiro_Controle
             $parcela_data   = $identificador->data;
             $parcela_valor = $identificador->valor;
             $parcela_num = '0';
-            $identificador  = $identificador->id;
             
             Financeiro_Controle::FinanceiroInt(
                 $motivo,
-                $identificador,
+                $identificador->id,
                 'Servidor',                   // Entrada_Motivo
                 SRV_NAME_SQL,                 // Entrada_MotivoID
                 'Categoria',                  // Saida_Motivo

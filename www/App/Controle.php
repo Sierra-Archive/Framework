@@ -1733,10 +1733,39 @@ readfile($link);*/
             }
         }
         
+        //Verifica Chaves Primárias
+        if(is_array($primaria) && !empty($primaria) && $tipo !== 'edit'){
+            $repetidas_where = '';
+            foreach($primaria as &$valor){
+                if($repetidas_where !== ''){
+                    $repetidas_where .= ' && ';
+                }
+                if($valor=='servidor'){
+                    $repetidas_where .= '{sigla}'.$valor.'=\''.SRV_NAME_SQL.'\'';
+                }else{
+                    $repetidas_where .= '{sigla}'.$valor.'=\''.$objeto->$valor.'\'';
+                }
+            }
+            $objeto_pesquisado = $this->_Modelo->db->Sql_Select($tab, $repetidas_where,1);
+            // Se for Encontrado outro Objeto Trava Funcao e Retorna Erro
+            if($objeto_pesquisado!==false){
+                $mensagens = array(
+                    "tipo"              => 'erro',
+                    "mgs_principal"     => __('Registro Duplicado'),
+                    "mgs_secundaria"    => __('Esse Registro já Existe.')
+                );
+                $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+                /*$this->_Visual->Javascript_Executar(
+                        '$("#'.$valor2.'").css(\'border\', \'2px solid #FFAEB0\').focus();'
+                );*/
+                $this->_Visual->Json_Info_Update('Historico', false);
+                $this->layoult_zerar = false; 
+                return false;
+            }
+        }
+        
         // Verifica Indices UNICOS
         $unicos = $objeto->Get_Indice_Unico();
-        
-        // Começa
         if($unicos!==false){
             foreach($unicos as &$valor){
                 $indice_campos = '';
@@ -1776,6 +1805,7 @@ readfile($link);*/
                 }
             }
         }
+        
         // Insere OU ATUALIZA
         if($tipo=='add'){
             $sucesso        = $this->_Modelo->db->Sql_Inserir($objeto);
