@@ -820,8 +820,8 @@ class Visual
             // Jquery UI
             //'sistema/jquery-ui/jquery-ui.min',
         
-            'sistema/bootstrap/js/bootstrap',
-            //'sistema/bootstrap/js/bootstrap-fileinput',
+            'globals/components/bootstrap/dist/js/bootstrap.min',
+            'globals/components/jasny-bootstrap/dist/js/jasny-bootstrap.min',
         
             // DATATABLE
             'sistema/data-tables/jquery.dataTables',
@@ -978,10 +978,15 @@ class Visual
         
         // JQUERY UI, BOOTSTRAP, e outros usados pelo framework
         array_push($array_css,
+                
             'sistema/jquery-ui/jquery-ui.min',
-            'sistema/bootstrap/css/bootstrap',
-            'sistema/bootstrap/css/bootstrap-theme',
-            //'sistema/bootstrap/css/bootstrap-fileinput',
+
+            'globals/components/bootstrap/dist/css/bootstrap.min',
+            'globals/components/bootstrap/dist/css/bootstrap-theme.min',
+            'globals/components/jasny-bootstrap/dist/css/jasny-bootstrap.min',
+                
+                
+                
             // Carregamento igual Google
             'sistema/nprogress/nprogress',
             // Sistema de Mensagens

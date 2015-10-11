@@ -4,6 +4,8 @@ vendor/**
 nbproject/*
 nbproject/private/
 docs/**
+.vagrant/**
+www/static/globals/components/**
 www/arq/**/*
 www/arq/**/!.htaccess
 www/Cache/**/*
