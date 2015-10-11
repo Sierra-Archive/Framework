@@ -34,7 +34,7 @@
         "kevintweber/phpunit-markup-validators": ">=2.0",
         "facebook/webdriver": "dev-master"
     },
-	"config": {
-	    "vendor-dir": "3rdparty"
-	}
+    "config": {
+        "vendor-dir": "3rdparty"
+    }
 }

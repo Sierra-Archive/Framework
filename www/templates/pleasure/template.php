@@ -21,11 +21,6 @@
     <link rel="stylesheet" href="<?php echo \Framework\App\Visual::get_template_url(); ?>assets/globals/css/plugins.css">
     <!-- END PLUGINS CSS -->
 
-    <!-- BEGIN SHORTCUT AND TOUCH ICONS -->
-    <link rel="shortcut icon" href="<?php echo \Framework\App\Visual::get_template_url(); ?>assets/globals/img/icons/favicon.ico">
-    <link rel="apple-touch-icon" href="<?php echo \Framework\App\Visual::get_template_url(); ?>assets/globals/img/icons/apple-touch-icon.png">
-    <!-- END SHORTCUT AND TOUCH ICONS -->
-
 </head>     
        
 <!-- END HEAD -->

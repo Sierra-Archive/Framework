@@ -821,7 +821,7 @@ class Visual
             //'sistema/jquery-ui/jquery-ui.min',
         
             'sistema/bootstrap/js/bootstrap',
-            //'sistema/bootstrap/js/bootstrap-fileupload',
+            //'sistema/bootstrap/js/bootstrap-fileinput',
         
             // DATATABLE
             'sistema/data-tables/jquery.dataTables',
@@ -981,7 +981,7 @@ class Visual
             'sistema/jquery-ui/jquery-ui.min',
             'sistema/bootstrap/css/bootstrap',
             'sistema/bootstrap/css/bootstrap-theme',
-            //'sistema/bootstrap/css/bootstrap-fileupload',
+            //'sistema/bootstrap/css/bootstrap-fileinput',
             // Carregamento igual Google
             'sistema/nprogress/nprogress',
             // Sistema de Mensagens
@@ -1309,13 +1309,22 @@ class Visual
         .'<link rel="apple-touch-icon-precomposed" sizes="114x114" href="'.ARQ_URL.'favicon.ico"/>'
 
         .'<link rel="apple-touch-startup-image" href="'.ARQ_URL.'favicon.ico">'
-
+        .'<!-- BEGIN SHORTCUT AND TOUCH ICONS -->'
+        .'<link rel="shortcut icon" href="'.ARQ_URL.'favicon.ico">'
+        .'<link rel="apple-touch-icon" href="'.ARQ_URL.'favicon.ico">'
+        .'<!-- END SHORTCUT AND TOUCH ICONS -->'
         
         // Transforma App em Instalável
         .'<meta name="apple-mobile-web-app-capable" content="yes">'
         .'<meta name="apple-mobile-web-app-title" content="'.SISTEMA_NOME.'">'
         .'<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">'
-        .'<meta name="apple-touch-fullscreen" content="yes">';
+        .'<meta name="apple-touch-fullscreen" content="yes">'
+        
+        .'<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->'
+        .'<!--[if lt IE 9]>'
+        .'  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>'
+        .'  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>'
+        .'<![endif]-->';
         
         
         

@@ -112,7 +112,7 @@ div, input, select, textarea, span, img, table, td, th, p, a, button, ul, li {
 
 /*form element */
 
-textarea, select, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], .uneditable-input, .fileupload-new .input-append .btn-file {
+textarea, select, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], .uneditable-input, .fileinput-new .input-append .btn-file {
     border: 1px solid #ddd;
     transition: border 0.2s linear 0s, box-shadow 0.2s linear 0s;
     -webkit-transition: border 0.2s linear 0s, box-shadow 0.2s linear 0s;
@@ -3027,7 +3027,7 @@ div.tagsinput .not_valid {
 
 /* File uploader plugin css changes */
 
-.fileupload .close {
+.fileinput .close {
     position: relative;
     top:4px !important;
 }

@@ -82,6 +82,7 @@ class Financeiro_RelatorioControle extends Financeiro_Controle
         
         // Categorias
         $categorias_selecionadas = $this->_Modelo->db->Sql_Select('Categoria',Array('CA.mod_acc'=>'Financeiro_Financa'));
+        if(is_object($categorias_selecionadas)) $categorias_selecionadas = Array($categorias_selecionadas);
         if(!empty($categorias_selecionadas)){
             $form->Select_Novo('Centro de Custo', 'categoria', 'categoria', '', '', '', false, false, '', 'Escolha um Centro de Custo');
             $form->Select_Opcao('Todos','0',($categoria===false?1:0));
@@ -90,7 +91,7 @@ class Financeiro_RelatorioControle extends Financeiro_Controle
             }
             $form->Select_Fim();
         }
-        
+
         $form->Input_Novo('Data Inicial', 'data_inicial', data_eua_brasil($data_inicial), 'text', 10, '', 'Data do Começo do Relatório', false, '', '','Data','', false);
         $form->Input_Novo('Data Final', 'data_final', data_eua_brasil($data_final), 'text', 10, '', 'Data do Final do Relatório', false, '', '','Data','', false);
         

@@ -53,7 +53,7 @@ class Financeiro_BancoControle extends Financeiro_Controle
                 'Print'     => true,
                 'Pdf'       => true,
                 'Excel'     => true,
-                'Financeiro/Banco/Bancos',
+                'Link'     => 'Financeiro/Banco/Bancos',
             )
         )));
         $linhas = $this->_Modelo->db->Sql_Select('Financeiro_Banco');

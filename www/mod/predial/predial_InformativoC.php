@@ -126,7 +126,6 @@ class predial_InformativoControle extends predial_Controle
         if($sucesso===true){
             // Pega o Informativo
             $identificador  = $this->_Modelo->db->Sql_Select('Predial_Bloco_Apart_Informativo', Array(),1,'id DESC');
-            $identificador  = $identificador->id;
             // Captura Apartamento Responsavel
             $enviar = false;
             $apartamento  = $this->_Modelo->db->Sql_Select(
@@ -138,6 +137,15 @@ class predial_InformativoControle extends predial_Controle
                 1,
                 'id DESC'
             );
+            if(!is_object($apartamento)){
+                $mensagens = array(
+                    "tipo" => 'erro',
+                    "mgs_principal" => __('Erro'),
+                    "mgs_secundaria" => __('Apartamento não existe.')
+                );
+                $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+                return false;
+            }
             if(is_int($apartamento->morador) && $apartamento->morador!=0){
                 $usuario  = $this->_Modelo->db->Sql_Select(
                     'Usuario', 
@@ -169,7 +177,7 @@ class predial_InformativoControle extends predial_Controle
                                 '<b>Bloco / Apart:</b>'.$identificador->bloco.' / '.$identificador->apart.'<br>';
                 // Cadastra Aviso
                 $aviso = new \Predial_Bloco_Apart_Informativo_Aviso_DAO();
-                $aviso->informativo = $identificador;
+                $aviso->informativo = $identificador->id;
                 $aviso->mensagem = $mensagem;
                 $this->_Modelo->bd->Sql_Inserir($aviso);
                 // Manda Email

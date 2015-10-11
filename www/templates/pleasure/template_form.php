@@ -134,28 +134,50 @@
     <div class="form-group"<?php if($params['Opcao']['escondido']!==false){ ?> id="<?php echo $params['Opcao']['id']; ?>_escondendo"<?php } if($params['Opcao']['escondido']==='apagado'){ ?> style="display: none;"<?php } ?>>
         <label class="<?php if($params['Opcao']['ColunaForm']==='horizontal') echo 'col-md-3 control-label'; ?>" for="<?php echo $params['Opcao']['id']; ?>"><?php echo $params['Opcao']['titulo']; ?></label>
         <?php if($params['Opcao']['ColunaForm']==='horizontal') echo '<div class="col-md-9">'; ?>
-            <div data-provides="fileupload" class="fileupload fileupload-new">
+        
+        
+        
+        
+        
+            <div data-provides="fileinput" class="fileinput fileinput-new">
                 <?php if($params['Opcao']['tipo']==='Imagem'){ ?>
-                    <div style="width: 200px; height: 150px;" class="fileupload-new thumbnail">
+                    <div style="width: 200px; height: 150px;" class="fileinput-new thumbnail">
                         <img alt="<?php _e('Miniatura da Imagem de Upload'); ?>" src="<?php if($params['Opcao']['valor']!=='' && $params['Opcao']['valor']!==false){ echo $params['Opcao']['valor']; }else{ ?>http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=Sem+Imagem<?php } ?>">
                     </div>
-                    <div style="max-width: 200px; max-height: 150px; line-height: 20px;" class="fileupload-preview fileupload-exists thumbnail"></div>
+                    <div style="max-width: 200px; max-height: 150px; line-height: 20px;" class="fileinput-preview fileinput-exists thumbnail"></div>
                     <div>
                 <?php }else{ ?>
                     <div class="input-append">
                         <div class="uneditable-input">
-                            <i class="fa fa-file fileupload-exists"></i>
-                            <span class="fileupload-preview"></span>
+                            <i class="fa fa-file fileinput-exists"></i>
+                            <span class="fileinput-preview"></span>
                         </div>
                 <?php } ?>
                     <span class="btn btn-ripple btn-file">
-                        <span class="fileupload-new">Selecione a Imagem</span>
-                        <span class="fileupload-exists">Trocar</span>
+                        <span class="fileinput-new"><?php _e('Selecione a Imagem'); ?></span>
+                        <span class="fileinput-exists"><?php _e('Trocar'); ?></span>
                         <input tabindex="<?php echo $params['TabIndex']; ?>" type="file" name="<?php echo $params['Opcao']['nome']; ?>" id="<?php echo $params['Opcao']['id']; ?>" class="default <?php echo $params['Opcao']['class']; ?>"<?php if($params['Opcao']['escondido']==='apagar'){ ?> escondendo="desativado"<?php }else if($params['Opcao']['escondido']==='apagado'){ ?> escondendo="ativado"<?php } ?>>
                     </span>
-                    <a data-dismiss="fileupload" class="btn fileupload-exists" href="#">Remover</a>
+                    <a data-dismiss="fileinput" class="btn fileinput-exists" href="#">Remover</a>
                 </div>
             </div>
+                    
+                    
+            <div class="fileinput fileinput-new" data-provides="fileinput">
+                    <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;"></div>
+                    <div>
+                            <span class="btn btn-default btn-file">
+                            <span class="fileinput-new">Select image</span>
+                            <span class="fileinput-exists">Change</span>
+                            <input type="file" name="..."></span>
+                            <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
+                    </div>
+            </div>
+                    
+                    
+                    
+                    
+                    
             <?php if(isset($params['Opcao']['Info']) && $params['Opcao']['Info']!=''){ ?>
                 <?php if($params['Opcao']['info_titulo']!=''){ ?><span class="label label-important"><?php echo $params['Opcao']['info_titulo']; ?></span><?php } ?>
                 <span><?php echo $params['Opcao']['info']; ?></span>

@@ -1,10 +1,17 @@
 <?php
 //require_once '../vendor/phpunit/phpunit-selenium/PHPUnit/Extensions/SeleniumTestCase.php';
 
-class NavegadorTest extends PHPUnit_Extensions_SeleniumTestCase
+class NavegadorTest extends PHPUnit_Framework_TestCase //PHPUnit_Extensions_SeleniumTestCase
 {
+    /**
+     * @var \RemoteWebDriver
+     */
+    protected $webDriver;
+    protected $url = 'https://github.com';
     protected function setUp()
     {
+        $capabilities = array(\WebDriverCapabilityType::BROWSER_NAME => 'firefox');
+        $this->webDriver = RemoteWebDriver::create('http://localhost:4444/wd/hub', $capabilities);
         //$this->setBrowser('*firefox'); // indicando qual browser ele vai usar
         //$this->setBrowserUrl('http://localhost/Framework'); // Qual é a URL que ele vai usar
     }
@@ -17,6 +24,18 @@ class NavegadorTest extends PHPUnit_Extensions_SeleniumTestCase
         $this->markTestIncomplete(
                 'This test has not been implemented yet.'
         );
+    }
+
+
+    public function testGitHubHome()
+    {
+        $this->webDriver->get($this->url);
+        // checking that page title contains word 'GitHub'
+        $this->assertContains('GitHub', $this->webDriver->getTitle());
+    } 
+    public function tearDown()
+    {
+        $this->webDriver->close();
     }
 }
 ?>

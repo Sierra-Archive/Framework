@@ -223,6 +223,15 @@ class predial_CorreioControle extends predial_Controle
                 1,
                 'id DESC'
             );
+            if(!is_object($apartamento)){
+                $mensagens = array(
+                    "tipo" => 'erro',
+                    "mgs_principal" => __('Erro'),
+                    "mgs_secundaria" => __('Apartamento não existe.')
+                );
+                $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+                return false;
+            }
             if(is_int($apartamento->morador) && $apartamento->morador!=0){
                 $usuario  = $this->_Modelo->db->Sql_Select(
                     'Usuario', 
