@@ -117,7 +117,7 @@
             <div data-provides="fileinput" class="fileinput fileinput-new">
                 <?php if($params['Opcao']['tipo']==='Imagem'){ ?>
                     <div style="width: 200px; height: 150px;" class="fileinput-preview thumbnail">
-                        <img alt="<?php _e('Miniatura da Imagem de Upload'); ?>" src="<?php if($params['Opcao']['valor']!=='' && $params['Opcao']['valor']!==false){ echo $params['Opcao']['valor']; }else{ ?>http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=Sem+Imagem<?php } ?>">
+                        <img alt="<?php _e('Miniatura da Imagem de Upload'); ?>" src="<?php if($params['Opcao']['valor']!=='' && $params['Opcao']['valor']!==false){ echo $params['Opcao']['valor']; }else{ ?>http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=<?php echo str_replace(" ", "+", __('Sem Imagem')); ?><?php } ?>">
                     </div>
                     <div style="max-width: 200px; max-height: 150px; line-height: 20px;" class="fileinput-preview fileinput-exists thumbnail"></div>
                     <div>

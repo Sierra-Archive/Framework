@@ -260,7 +260,7 @@ class Acl{
                 // Avisa se login nao teve resultado
                 if($this->logado===false){
                     // Verifica se Possui Modulo PRedial e corresponde a um Apartamento sem nenhum cadastro
-                    if(\Framework\App\Sistema_Funcoes::Perm_Modulos('predial') && $_POST['sistema_senha'] === '123456' && strpos($login, '/')!==false){
+                    if(\Framework\App\Sistema_Funcoes::Perm_Modulos('predial') && $_POST['sistema_senha'] === '123456' && strpos($_POST['sistema_login'], '/')!==false){
                         $login = explode(\Framework\App\Conexao::anti_injection($_POST['sistema_login']), '/');
                         if(!isset($login[1])){
                             // Deleta Sessoes e Puxa Erro

@@ -21,7 +21,7 @@
     <!-- END CORE CSS -->
 
     <!-- BEGIN PLUGINS CSS -->
-    <link rel="stylesheet" href="<?php echo \Framework\App\Visual::get_template_url(); ?>assets/globals/plugins/bootstrap-social/bootstrap-social.css">
+    <link rel="stylesheet" href="<?php echo WEB_URL; ?>globals/components/bootstrap-social/bootstrap-social.css">
     <!-- END PLUGINS CSS -->
 
     <!-- FIX PLUGINS -->

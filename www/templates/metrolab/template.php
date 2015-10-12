@@ -8,6 +8,7 @@
     <?php echo $params['sistema']['css']; ?>
     <link href="<?php echo $params['url_css']; ?>style.css" rel="stylesheet" />
     <link href="<?php echo $params['url_css']; ?>style-responsive.css" rel="stylesheet" />
+    <link href="<?php echo $params['url_css']; ?>metro-gallery" rel="stylesheet" />
     <link href="<?php echo $params['url_css']; ?>style-<?php if(TEMA_COLOR==''){ echo __('blue'); }else{ echo TEMA_COLOR; }?>.css" rel="stylesheet" id="style_color" />
 </head>     
        

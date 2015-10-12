@@ -26,10 +26,17 @@
     "tests"
   ],
   "dependencies": {
-    "jquery": "~2.0.3",
-    "bootstrap": "~3.3.5",
-    "jasny-bootstrap": "~3.1.3",
-    "moment": "~2.10.6",
-    "fullcalendar": "~2.4.0"
+    "jquery": "latest",
+    "bootstrap": "latest",
+    "jasny-bootstrap": "latest",
+    "moment": "latest",
+    "fullcalendar": "latest",
+    "components-font-awesome": "latest",
+    "jquery-ui": "~1.11.4",
+    "offline": "~0.7.14",
+    "nprogress": "~0.2.0",
+    "blockUI": "*",
+    "bootstrap-social": "~4.10.1",
+    "flag-icon-css": "latest"
   }
 }

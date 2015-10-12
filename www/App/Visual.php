@@ -797,64 +797,42 @@ class Visual
             '../i18n/'.$this->sistema_linguagem.'/Linguagem',
             // Identifica Oq cada Broser Suporta
             'sistema/modernizr/modernizr',
+            
+            
             // Jquery
-            'sistema/jquery/jquery.min',
-            // Detecta BRowser para Jquery
+            'globals/components/jquery/dist/jquery.min',
+            'globals/components/jquery-ui/jquery-ui.min',
+            // Carregamento igual Google
+            'globals/components/nprogress/nprogress',
+            // Bloquear Tela
+            'globals/components/blockUI/jquery.blockUI',
+            // BOOTSTRAP
+            'globals/components/bootstrap/dist/js/bootstrap.min',
+            'globals/components/jasny-bootstrap/dist/js/jasny-bootstrap.min',
+            // Calendario
+            'globals/components/moment',
+            'globals/components/fullcalendar/dist/fullcalendar.min',
+            //Verifica Conexao Offline
+            'globals/components/offline/offline.min',
+            'globals/scripts/plugins/offline',
+            
+            
+            // Sistema de Mensagens
+            'sistema/toastr/toastr.min',
+            'js/jquery/jquery.tabify',
+            // Mascara de Formulario
+            'assets/bootstrap-mask/jquery.maskedinput-1.3.min',
             'sistema/jquery.browser',
             // Historico HTML5
             'sistema/historico/jquery.history',
-            // Carregamento igual Google
-            'sistema/nprogress/nprogress',
-            // Sistema de Mensagens
-            'sistema/toastr/toastr.min',
-            // Bloquear Tela
-            'js/jquery/jquery.blockUI',
-            
-            'js/jquery/jquery.tabify',
-            
-            //'js/jquery/jquery-impromptu.3.1.min',
-            
-            // Mascara de Formulario
-            'assets/bootstrap-mask/jquery.maskedinput-1.3.min',
-            
-            // Jquery UI
-            //'sistema/jquery-ui/jquery-ui.min',
-        
-            'globals/components/bootstrap/dist/js/bootstrap.min',
-            'globals/components/jasny-bootstrap/dist/js/jasny-bootstrap.min',
-        
             // DATATABLE
             'sistema/data-tables/jquery.dataTables',
-        
             // FORMULARIOS
             //'assets/uniform/jquery.uniform.min',
             'sistema/chosen/chosen.jquery',
-            
-            // Calendario
-            'sistema/moment/moment',
-            'sistema/fullcalendar/fullcalendar.min',
-        
-        
-            //'assets/jquery-tags-input/jquery.tagsinput.min',
-            // EDITAR HTML5
-            //'assets/bootstrap-wysihtml5/wysihtml5-0.3.0',
-            //'assets/bootstrap-wysihtml5/bootstrap-wysihtml5',
             // DIAL LIST
             'sistema/bootstrap-duallistbox/jquery.bootstrap-duallistbox',
         
-        
-            //'assets/jquery-slimscroll/jquery.slimscroll.min',
-        
-            // Formularios
-            //'assets/bootstrap-inputmask/bootstrap-inputmask.min',
-            //'assets/metr-folio/js/jquery.metro-gal.plugins.min',
-            //'assets/metr-folio/js/jquery.metro-gal.megafoliopro',
-            
-            
-            
-            //Verifica Conexao Offline
-            'globals/plugins/offline/offline.min',
-            'globals/scripts/plugins/offline',
             
             // Carrega Sistema
             'globals/scripts/sitec/sitec'
@@ -978,30 +956,22 @@ class Visual
         
         // JQUERY UI, BOOTSTRAP, e outros usados pelo framework
         array_push($array_css,
-                
-            'sistema/jquery-ui/jquery-ui.min',
+            // Jquery UI
+            'globals/components/jquery-ui/themes/smoothness/jquery-ui.min',
 
             'globals/components/bootstrap/dist/css/bootstrap.min',
             'globals/components/bootstrap/dist/css/bootstrap-theme.min',
             'globals/components/jasny-bootstrap/dist/css/jasny-bootstrap.min',
-                
-                
-                
             // Carregamento igual Google
-            'sistema/nprogress/nprogress',
+            'globals/components/nprogress/nprogress',
+                
+            // Pequeno Aviso
+            'globals/components/components-font-awesome/css/font-awesome.min',
+                
+                
+                
             // Sistema de Mensagens
             'sistema/toastr/toastr.min',
-                
-            // Pequeno Aviso
-            //'css/plugins/jquery.tiptip',
-            // Bloquear Tela
-            'css/plugins/jquery.blockui',
-             // OUTROS
-            'css/jcalendar',
-                
-            // Pequeno Aviso
-            'assets/font-awesome/css/font-awesome',
-            'assets/metr-folio/css/metro-gallery', // media="screen"
             //FORMULARIO
             'assets/uniform/css/uniform.default',
             'sistema/chosen/chosen',
@@ -1014,11 +984,11 @@ class Visual
             'sistema/data-tables/DT_bootstrap',
             
             // Calendário
-            'sistema/fullcalendar/fullcalendar',
-            'sistema/fullcalendar/fullcalendar.print',
+            'globals/components/fullcalendar/dist/fullcalendar.min',
+            'globals/components/fullcalendar/dist/fullcalendar.print',
             
             //Verifica Conexao Offline
-            'globals/plugins/offline/offline-theme-default',
+            'globals/components/offline/themes/offline-theme-default',
                 
             // Sistema
             'globals/scripts/sitec/sitec'

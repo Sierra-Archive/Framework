@@ -2724,7 +2724,7 @@ readfile($link);*/
                     if($link!='#'){
                         $modulo = explode('/', $link);
                         //if(count($modulo)<3 || /*$this->_Acl->logado_usuario->grupo==CFG_TEC_IDADMIN || */$this->_Acl->logado_usuario->grupo==CFG_TEC_IDADMINDEUS || $this->_Permissao_Verificar_Modulo($modulo[0],$modulo[1])===true || $modulo[2]=='Home'){
-                        if(isset($this->_Acl->logado_usuario->grupo) && (($this->_Acl->logado_usuario->grupo!=CFG_TEC_IDADMINDEUS && $modulo[2]!='Newsletter') || ($this->_Acl->logado_usuario->grupo!=CFG_TEC_IDNEWSLETTER &&  $modulo[2]!='Newsletter'))){
+                        if(isset($this->_Acl->logado_usuario->grupo) && (($this->_Acl->logado_usuario->grupo!=CFG_TEC_IDADMINDEUS && (!isset($modulo[2]) || $modulo[2]!='Newsletter')) || ($this->_Acl->logado_usuario->grupo!=CFG_TEC_IDNEWSLETTER && (!isset($modulo[2]) || $modulo[2]!='Newsletter')))){
 
                             $this->_Visual->menu['link'][]  = $valor['link'];
                             $this->_Visual->menu['ext'][]   = $valor['ext'];
