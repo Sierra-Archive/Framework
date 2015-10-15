@@ -2,10 +2,12 @@
 final Class Usuario_Veiculo_DAO extends Framework\App\Dao 
 {
     protected $id;
+    protected $foto;
     protected $categoria;
     protected $marca;
     protected $modelo;
     protected $ano;
+    protected $franquia;
     protected $ipva;
     protected $ipva_valor;
     protected $ipva_data;
@@ -23,6 +25,10 @@ final Class Usuario_Veiculo_DAO extends Framework\App\Dao
     protected $valor1;
     protected $valor2;
     protected $valor3;
+    
+    // Padrao é false, ou array com os campos que nao aceita
+    protected static $campos_naoaceita_config  = Array('foto');
+    
     protected static $objetocarregado     = false;     protected static $mysql_colunas       = false;     protected static $mysql_outside       = Array();     protected static $mysql_inside        = Array(); public function __construct() {  parent::__construct(); } 
     public static function Get_Nome(){
         return MYSQL_USUARIO_VEICULO;
@@ -65,6 +71,32 @@ final Class Usuario_Veiculo_DAO extends Framework\App\Dao
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => '' ,//0 ninguem, 1 admin, 2 todos 
+            ),
+            Array(
+                'mysql_titulo'      => 'foto',
+                'mysql_tipovar'     => 'longtext', //varchar, int, 
+                'mysql_tamanho'     => 10000,
+                'mysql_null'        => true,  // nulo ?
+                'mysql_default'     => '', // valor padrao
+                'mysql_primary'     => false,  // chave primaria
+                'mysql_estrangeira' => false, // chave estrangeira     ligacao|apresentacao|condicao
+                'mysql_autoadd'     => false,
+                'mysql_comment'     => false,
+                'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
+                'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
+                'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
+                'edicao'            => Array(
+                    'Nome'              => __('Upload de Foto'),
+                    'valor_padrao'      => false,
+                    'readonly'          => false,
+                    'aviso'             => __('Imagens somente do tipo GIF ou JPG'),
+                    'aviso_titulo'      => 'Importante',
+                    'formtipo'          => 'upload',
+                    'upload'            => array(
+                        'tipo'              => 'Imagem',
+                        'class'             => ''
+                    )
+                )
             ),
             Array(
                 'mysql_titulo'      => 'categoria',
@@ -145,8 +177,8 @@ final Class Usuario_Veiculo_DAO extends Framework\App\Dao
                 )
             ),Array(
                 'mysql_titulo'      => 'ano',
-                'mysql_tipovar'     => 'varchar', //varchar, int, 
-                'mysql_tamanho'     => 100,
+                'mysql_tipovar'     => 'int', //varchar, int, 
+                'mysql_tamanho'     => 4,
                 'mysql_null'        => true,
                 'mysql_default'     => false,
                 'mysql_primary'     => false,
@@ -167,6 +199,32 @@ final Class Usuario_Veiculo_DAO extends Framework\App\Dao
                     'input'             => array(
                         'tipo'              => 'text',
                         'class'             => 'obrigatorio'
+                    )
+                )
+            ),
+            Array(
+                'mysql_titulo'      => 'franquia',
+                'mysql_tipovar'     => 'varchar', //varchar, int, 
+                'mysql_tamanho'     => 30,
+                'mysql_null'        => false,  // nulo ?
+                'mysql_default'     => false, // valor padrao
+                'mysql_primary'     => false,  // chave primaria
+                'mysql_estrangeira' => false, // chave estrangeira     ligacao|apresentacao|condicao
+                'mysql_autoadd'     => false,
+                'mysql_comment'     => false,
+                'mysql_inside'      => '\Framework\App\Sistema_Funcoes::Tranf_Real_Float({valor})', // Funcao Executada quando o dado for inserido no banco de dados
+                'mysql_outside'     => '\Framework\App\Sistema_Funcoes::Tranf_Float_Real({valor})', // Funcao Executada quando o dado for retirado no banco de dados
+                'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
+                'edicao'            => Array(
+                    'Nome'              => __('Franquia'),
+                    'Mascara'           => 'Real',
+                    'valor_padrao'      => false,
+                    'readonly'          => false,
+                    'aviso'             => '',
+                    'formtipo'          => 'input',
+                    'input'             => array(
+                        'tipo'              => 'text',
+                        'class'             => ''
                     )
                 )
             ),Array(

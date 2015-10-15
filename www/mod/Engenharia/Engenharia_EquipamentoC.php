@@ -61,15 +61,15 @@ class Engenharia_EquipamentoControle extends Engenharia_Controle
                 'Print'     => true,
                 'Pdf'       => true,
                 'Excel'     => true,
-                'Engenharia/Equipamento/Equipamentos',
+                'Link'      => 'Engenharia/Equipamento/Equipamentos',
             )
         )));
         // Conexao
-        $linhas = $this->_Modelo->db->Sql_Select('Engenharia_Equipamento');
-        if($linhas!==false && !empty($linhas)){
-            if(is_object($linhas)) $linhas = Array(0=>$linhas);
-            reset($linhas);
-            foreach ($linhas as $indice=>&$valor) {
+        $equipamentos = $this->_Modelo->db->Sql_Select('Engenharia_Equipamento');
+        if($equipamentos!==false && !empty($equipamentos)){
+            if(is_object($equipamentos)) $equipamentos = Array(0=>$equipamentos);
+            reset($equipamentos);
+            foreach ($equipamentos as $indice=>&$valor) {
                 //$tabela['#Id'][$i]       = '#'.$valor->id;
                 $tabela['Tipo de Equipamento'][$i]  =   $valor->categoria2;
                 $tabela['Equipamento'][$i]          =   $valor->nome;
@@ -165,9 +165,9 @@ class Engenharia_EquipamentoControle extends Engenharia_Controle
         
         
     	$id = (int) $id;
-        // Puxa linha e deleta
-        $linha = $this->_Modelo->db->Sql_Select('Engenharia_Equipamento', Array('id'=>$id));
-        $sucesso =  $this->_Modelo->db->Sql_Delete($linha);
+        // Puxa equipamento e deleta
+        $equipamento = $this->_Modelo->db->Sql_Select('Engenharia_Equipamento', Array('id'=>$id));
+        $sucesso =  $this->_Modelo->db->Sql_Delete($equipamento);
         // Mensagem
     	if($sucesso===true){
             $mensagens = array(

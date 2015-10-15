@@ -230,6 +230,7 @@ class Engenharia_EmpreendimentoControle extends Engenharia_Controle
      * @version 0.4.2
      */
     public function Estoque_Retirar2(){
+        if(!isset($_POST['idproduto']) || !isset($_POST['qnt'])) return false;
         
         $idproduto  = (int) $_POST['idproduto'];
         $qnt        = (int) $_POST['qnt'];
@@ -292,17 +293,15 @@ class Engenharia_EmpreendimentoControle extends Engenharia_Controle
         $alterar    = Array();
         $sucesso = $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
         if($sucesso){
-            $motivo = __('Engenharia');
             $identificador  = $this->_Modelo->db->Sql_Select('Engenharia_Empreendimento_Custo', Array(),1,'id DESC');
             $idempreendimento  = $identificador->empreendimento;
             $parcela_data   = $identificador->data_pag_prevista;
             $parcela_valor = $identificador->valor;
             $parcela_num = '0';
-            $identificador  = $identificador->id;
             
             Financeiro_Controle::FinanceiroInt(
-                $motivo,
-                $motivoid,
+                'Engenharia_Empreendimento',
+                $identificador->id,
                 'Engenharia_Empreendimento',
                 $idempreendimento,
                 'Servidor',

@@ -7,8 +7,8 @@ class Desenvolvimento_TarefaControle extends Desenvolvimento_Controle
     * @name __construct
     * @access public
     * 
-    * @uses Desenvolvimento_ListarModelo Carrega projeto Modelo
-    * @uses Desenvolvimento_ListarVisual Carrega projeto Visual
+    * @uses Desenvolvimento_ListarModelo Carrega tarefa Modelo
+    * @uses Desenvolvimento_ListarVisual Carrega tarefa Visual
     * 
     * @return void
     * 
@@ -31,7 +31,7 @@ class Desenvolvimento_TarefaControle extends Desenvolvimento_Controle
     * @name Main
     * @access public
     * 
-    * @uses Desenvolvimento_Controle::$projetoPerfil
+    * @uses Desenvolvimento_Controle::$tarefaPerfil
     * 
     * @return void
     * 
@@ -41,18 +41,18 @@ class Desenvolvimento_TarefaControle extends Desenvolvimento_Controle
     public function Main(){
         return false;
     }
-    static function Tarefas_Tabela($projetos){
+    static function Tarefas_Tabela($tarefas){
         $Registro   = &\Framework\App\Registro::getInstacia();
         $Visual     = &$Registro->_Visual;
         $tabela = Array();
         $i = 0;
-        if(is_object($projetos)) $projetos = Array(0=>$projetos);
-        reset($projetos);
-        foreach ($projetos as $indice=>&$valor) {
+        if(is_object($tarefas)) $tarefas = Array(0=>$tarefas);
+        reset($tarefas);
+        foreach ($tarefas as $indice=>&$valor) {
             $tabela['#Id'][$i]          =   '#'.$valor->id;
             $tabela['Categoria'][$i]    =   $valor->categoria2;
             $tabela['Projeto'][$i]      =   $valor->projeto2;
-            $tabela['k'][$i]            =   $valor->framework;
+            $tabela['Fk'][$i]            =   $valor->framework;
             $tabela['Fk - Mód'][$i]     =   $valor->framework_modulo;
             $tabela['Fk - SubMód'][$i]  =   $valor->framework_submodulo;
             $tabela['Fk - Mét'][$i]     =   $valor->framework_metodo;
@@ -86,13 +86,13 @@ class Desenvolvimento_TarefaControle extends Desenvolvimento_Controle
             )
         )));
         // Query
-        $projetos = $this->_Modelo->db->Sql_Select('Desenvolvimento_Projeto_Tarefa');
-        if($projetos!==false && !empty($projetos)){
-            list($tabela,$i) = self::Tarefas_Tabela($projetos);
+        $tarefas = $this->_Modelo->db->Sql_Select('Desenvolvimento_Projeto_Tarefa');
+        if($tarefas!==false && !empty($tarefas)){
+            list($tabela,$i) = self::Tarefas_Tabela($tarefas);
             if($export!==false){
                 self::Export_Todos($export,$tabela, 'Tarefas');
             }else{
-                $Visual->Show_Tabela_DataTable(
+                $this->_Visual->Show_Tabela_DataTable(
                     $tabela,     // Array Com a Tabela
                     '',          // style extra
                     true,        // true -> Add ao Bloco, false => Retorna html

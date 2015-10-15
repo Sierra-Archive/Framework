@@ -386,7 +386,6 @@ class usuario_AdminControle extends usuario_Controle
      * @post $_POST["valor1"]
      * @post $_POST["valor2"]
      * @post $_POST["valor3"]
-     * @post $_POST["franquia"]
      * 
      * @return void
      * 
@@ -394,6 +393,7 @@ class usuario_AdminControle extends usuario_Controle
      * @version 0.4.2
      */
     public function Usuarios_Add2($tipo=false){
+        if(!isset($_POST['email']) || !isset($_POST['login'])) return false;
         
         $this->_Visual->Json_Info_Update('Titulo','Usuários');
         

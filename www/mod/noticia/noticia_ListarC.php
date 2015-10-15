@@ -48,10 +48,10 @@ class noticia_ListarControle extends noticia_Controle
         if($categoria!=0)       $where['categoria'] = $categoria;
         if($status  !==false)  $where['status']   = $status;
         $noticias = $this->_Modelo->db->Sql_Select('Noticia',$where);
-        if(is_object($menus)) $menus = Array(0=>$menus);
-        if($menu!==false && !empty($menu)){
-            reset($menu);
-            foreach ($menu as &$valor) {
+        if(is_object($noticias)) $noticias = Array(0=>$noticias);
+        if($noticias!==false && !empty($noticias)){
+            reset($noticias);
+            foreach ($noticias as &$valor) {
                 if($valor->destaque==0)     $destaque = __('Não');
                 else                        $destaque = __('Sim');
                 

@@ -27,6 +27,10 @@ class predial_SalaoModelo extends predial_Modelo
      * @version 0.4.2
      */
     public function retorna_Agendadatas(&$datas,$veiculo=0){
+        
+        #update
+        return false;
+        
         GLOBAL $tabsql,$config;
         $i = 0;
         $datainicial = APP_DATA;

@@ -320,6 +320,7 @@ class comercio_EstoqueControle extends comercio_Controle
      * @version 0.4.2
      */
     public function Material_Entrada_Add2(){
+        if(!isset($_POST['fornecedor'])) return false;
         $titulo     = __('Entrada de NFE Adicionada com Sucesso');
         $dao        = 'Comercio_Fornecedor_Material';
         $funcao     = false;

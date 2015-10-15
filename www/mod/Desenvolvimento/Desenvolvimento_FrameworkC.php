@@ -82,7 +82,7 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
             if($export!==false){
                 self::Export_Todos($export,$tabela, 'Modulos');
             }else{
-                $Visual->Show_Tabela_DataTable(
+                $this->_Visual->Show_Tabela_DataTable(
                     $tabela,     // Array Com a Tabela
                     '',          // style extra
                     true,        // true -> Add ao Bloco, false => Retorna html
@@ -260,7 +260,7 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
             if($export!==false){
                 self::Export_Todos($export,$tabela, 'Submodulos');
             }else{
-                $Visual->Show_Tabela_DataTable(
+                $this->_Visual->Show_Tabela_DataTable(
                     $tabela,     // Array Com a Tabela
                     '',          // style extra
                     true,        // true -> Add ao Bloco, false => Retorna html
@@ -437,7 +437,7 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
             if($export!==false){
                 self::Export_Todos($export,$tabela, 'Metodos');
             }else{
-                $Visual->Show_Tabela_DataTable(
+                $this->_Visual->Show_Tabela_DataTable(
                     $tabela,     // Array Com a Tabela
                     '',          // style extra
                     true,        // true -> Add ao Bloco, false => Retorna html

@@ -19,6 +19,7 @@ class usuario_veiculo_VeiculoControle extends usuario_veiculo_Controle
         parent::__construct();
     }
     static function Campos_Deletar(&$campos){
+        self::DAO_Campos_Retira($campos, 'franquia');
         if(!\Framework\App\Sistema_Funcoes::Perm_Modulos('usuario_veiculo_aluguel')){
             self::DAO_Campos_Retira($campos, 'cc');
             self::DAO_Campos_Retira($campos, 'aluguel_disponivel');

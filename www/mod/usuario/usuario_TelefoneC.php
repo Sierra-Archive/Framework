@@ -121,7 +121,7 @@ class usuario_TelefoneControle extends usuario_Controle
      * @version 0.4.2
      */
     public function Telefones_Add(){
-        self:;Endereco_Telefone();
+        self::Endereco_Telefone();
         // Carrega Config
         $titulo1    = __('Adicionar Telefone');
         $titulo2    = __('Salvar Telefone');
@@ -154,7 +154,7 @@ class usuario_TelefoneControle extends usuario_Controle
      * @version 0.4.2
      */
     public function Telefones_Edit($id){
-        self:;Endereco_Telefone();
+        self::Endereco_Telefone();
         // Carrega Config
         $titulo1    = 'Editar Telefone (#'.$id.')';
         $titulo2    = __('Alteração de Telefone');

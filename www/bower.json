@@ -37,6 +37,9 @@
     "nprogress": "~0.2.0",
     "blockUI": "*",
     "bootstrap-social": "~4.10.1",
-    "flag-icon-css": "latest"
+    "flag-icon-css": "latest",
+    "normalize-css": "normalize.css#~3.0.3",
+    "weather-icons": "~2.0.10",
+    "Ionicons": "ionicons#~2.0.1"
   }
 }

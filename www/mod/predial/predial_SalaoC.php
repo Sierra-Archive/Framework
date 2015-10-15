@@ -362,6 +362,7 @@ class predial_SalaoControle extends predial_Controle
      * @version 0.4.2
      */
     public function agendamento_inserir(){
+        if(!isset($_POST["selectreservas"]) || !isset($_POST["valor"]) || !isset($_POST["data_inicial"]) || !isset($_POST["data_final"])) return false;
         
         $reservaid = (int) \Framework\App\Conexao::anti_injection($_POST["selectreservas"]);
         $valor = \Framework\App\Conexao::anti_injection($_POST["valor"]);

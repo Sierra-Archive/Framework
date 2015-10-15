@@ -224,7 +224,7 @@ class usuario_veiculo_AdminControle extends usuario_veiculo_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
     */
-    static function veiculos_form(&$controle, &$Visual, &$form, &$selectmarcas,$categoria = 0,$ano = '',$Modelo = '',$marca = '',$cc = '',$valor1 = '',$valor2 = '',$valor3 = '',$franquia = '',$obs = ''){
+    static function veiculos_form(&$controle, &$Visual, &$form, &$selectmarcas,$categoria = 0,$ano = '',$modelo = '',$marca = '',$cc = '',$valor1 = '',$valor2 = '',$valor3 = '',$franquia = '',$obs = ''){
         
        
 
@@ -272,6 +272,7 @@ class usuario_veiculo_AdminControle extends usuario_veiculo_Controle
      * @version 0.4.2
      */
     public function veiculos_inserir(){
+        if(!isset($_POST["categoria"]) || !isset($_POST["ano"]) || !isset($_POST["modelo"]) || !isset($_POST["selectmarcas"]) || !isset($_POST["cc"]) || !isset($_POST["valor1"])|| !isset($_POST["valor2"]) || !isset($_POST["valor3"]) || !isset($_POST["franquia"]) || !isset($_POST["obs"])) return false;
         
         $categoria = \Framework\App\Conexao::anti_injection($_POST["categoria"]);
         $ano = (int) $_POST["ano"];
@@ -411,6 +412,7 @@ class usuario_veiculo_AdminControle extends usuario_veiculo_Controle
      * 
      */
     public function marcas_inserir(){
+        if(!isset($_POST["nome"])) return false;
         
         $nome = \Framework\App\Conexao::anti_injection($_POST["nome"]);
         $sucesso =  $this->_Modelo->marcas_inserir($nome);

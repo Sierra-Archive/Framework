@@ -35,7 +35,7 @@ class NavegadorTest extends PHPUnit_Framework_TestCase //PHPUnit_Extensions_Sele
     } 
     public function tearDown()
     {
-        $this->webDriver->close();
+        //$this->webDriver->close();
     }
 }
 ?>

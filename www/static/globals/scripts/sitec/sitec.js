@@ -978,6 +978,8 @@ var Sierra = (function () {
             }
             eval(cod);
             Control_Layoult_Recarrega();
+        }else if(typeof(data) === "string"){
+            Modelo_Ajax_JsonTratar(url, JSON.parse(data), navegador);
         }else{
             console.log('Erro',data);
         }

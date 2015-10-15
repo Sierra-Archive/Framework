@@ -172,6 +172,7 @@ class usuario_veiculo_ListarControle extends usuario_veiculo_Controle
      * @version 0.4.2
      */
     public function agendamento_inserir(){
+        if(!isset($_POST["selectveiculos"]) || !isset($_POST["valor"]) || !isset($_POST["data_inicial"]) || !isset($_POST["data_final"])) return false;
         
         $veiculoid = (int) \Framework\App\Conexao::anti_injection($_POST["selectveiculos"]);
         $valor = \Framework\App\Conexao::anti_injection($_POST["valor"]);

@@ -37,10 +37,10 @@ class Evento_EventoControle extends Evento_Controle
         $i = 0;
         if(is_object($eventos)) $eventos = Array(0=>$eventos);
         reset($eventos);
-        $perm_status = $this->_Registro->_Acl->Get_Permissao_Url('Evento/Evento/Status');
-        $perm_destaque = $this->_Registro->_Acl->Get_Permissao_Url('Evento/Evento/Destaques');
-        $perm_editar = $this->_Registro->_Acl->Get_Permissao_Url('Evento/Evento/Eventos_Edit');
-        $perm_del = $this->_Registro->_Acl->Get_Permissao_Url('Evento/Evento/Eventos_Del');
+        $perm_status = $Registro->_Acl->Get_Permissao_Url('Evento/Evento/Status');
+        $perm_destaque = $Registro->_Acl->Get_Permissao_Url('Evento/Evento/Destaques');
+        $perm_editar = $Registro->_Acl->Get_Permissao_Url('Evento/Evento/Eventos_Edit');
+        $perm_del = $Registro->_Acl->Get_Permissao_Url('Evento/Evento/Eventos_Del');
 
         foreach ($eventos as &$valor) {
             $tabela['Nome do Evento'][$i]           =   $valor->nome;

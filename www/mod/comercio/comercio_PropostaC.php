@@ -16,10 +16,18 @@ class comercio_PropostaControle extends comercio_Controle
     * @version 0.4.2
     */
     public function __construct(){
-        if(!\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Propostas')){
-            throw new \Exception('Submodulo Comercio_Proposta Não Permitido para este Projeto', 404);
-        }
         parent::__construct();
+        if(!\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Propostas')){
+            $mensagens = array(
+                "tipo"              => 'erro',
+                "mgs_principal"     => __('Erro'),
+                "mgs_secundaria"    => __('Essa página não pode ser acessada.')
+            );
+            $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+            $this->_Visual->Json_Info_Update('Historico', false);
+            $this->layoult_zerar = false; 
+            return false;
+        }
     }
     /**
      * 

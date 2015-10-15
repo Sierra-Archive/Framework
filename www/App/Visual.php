@@ -798,7 +798,6 @@ class Visual
             // Identifica Oq cada Broser Suporta
             'sistema/modernizr/modernizr',
             
-            
             // Jquery
             'globals/components/jquery/dist/jquery.min',
             'globals/components/jquery-ui/jquery-ui.min',
@@ -810,7 +809,7 @@ class Visual
             'globals/components/bootstrap/dist/js/bootstrap.min',
             'globals/components/jasny-bootstrap/dist/js/jasny-bootstrap.min',
             // Calendario
-            'globals/components/moment',
+            'globals/components/moment/moment',
             'globals/components/fullcalendar/dist/fullcalendar.min',
             //Verifica Conexao Offline
             'globals/components/offline/offline.min',
@@ -956,6 +955,16 @@ class Visual
         
         // JQUERY UI, BOOTSTRAP, e outros usados pelo framework
         array_push($array_css,
+            
+            //Normalize
+            'globals/components/normalize-css/normalize',
+            
+            //Fontes
+            'globals/components/components-font-awesome/css/font-awesome.min',
+            'globals/components/weather-icons/css/weather-icons.min',
+            'globals/components/Ionicons/css/ionicons.min',
+            
+                
             // Jquery UI
             'globals/components/jquery-ui/themes/smoothness/jquery-ui.min',
 
@@ -964,9 +973,6 @@ class Visual
             'globals/components/jasny-bootstrap/dist/css/jasny-bootstrap.min',
             // Carregamento igual Google
             'globals/components/nprogress/nprogress',
-                
-            // Pequeno Aviso
-            'globals/components/components-font-awesome/css/font-awesome.min',
                 
                 
                 
@@ -1290,6 +1296,7 @@ class Visual
         .'<!-- END SHORTCUT AND TOUCH ICONS -->'
         
         // Transforma App em Instalável
+        .'<meta name="mobile-web-app-capable" content="yes">'
         .'<meta name="apple-mobile-web-app-capable" content="yes">'
         .'<meta name="apple-mobile-web-app-title" content="'.SISTEMA_NOME.'">'
         .'<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">'
@@ -1765,10 +1772,7 @@ class Visual
         $this->Arquivos_Js_Dependencia(Array('sistema/dropzone/dropzone','globals/scripts/plugins/dropzone'));
         // COmeça HTML
         $html = '<form action="'.URL_PATH.$modulo.'/'.$sub.'/'.$acao.'_Upload/'.$id.'" class="dropzone" id="'.$atributo_id.'"></form>';
-        
-        if(LAYOULT_IMPRIMIR=='AJAX'){
-            $this->Javascript_Executar('new Dropzone($(\'#'.$atributo_id.'\'));');
-        }
+        $this->Javascript_Executar('dropToUpload.init(\'#'.$atributo_id.'\');');
         
         return $html;
     }

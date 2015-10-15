@@ -1620,7 +1620,17 @@ readfile($link);*/
                     $objeto = $Modelo->db->Sql_Select($editar[0], Array('id'=>$id),1);
                 }
                 
-                if($objeto===false) throw new \Exception('Registro não existe: ID->'.$id,404);
+                if($objeto===false){
+                    $mensagens = array(
+                        "tipo"              => 'erro',
+                        "mgs_principal"     => __('Erro'),
+                        "mgs_secundaria"    => __('Registro não Existe')
+                    );
+                    $Visual->Json_IncluiTipo('Mensagens',$mensagens);
+                    $Visual->Json_Info_Update('Historico', false);
+                    $Controle->layoult_zerar = false; 
+                    return false;
+                }
             }
             self::mysql_AtualizaValores($campos, $objeto,$id);
         }
@@ -1708,7 +1718,17 @@ readfile($link);*/
                 $identificador  = (int) $dao[1];
                 $objeto = $this->_Modelo->db->Sql_Select($tab, '{sigla}id=\''.$identificador.'\'',1);
             }
-            if($objeto===false) throw new \Exception('Registro não existe: ID->'.$identificador,404);
+            if($objeto===false){
+                $mensagens = array(
+                    "tipo"              => 'erro',
+                    "mgs_principal"     => __('Erro'),
+                    "mgs_secundaria"    => __('Registro não Existe')
+                );
+                $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+                $this->_Visual->Json_Info_Update('Historico', false);
+                $this->layoult_zerar = false; 
+                return false;
+            }
         }else{
             $tipo           = 'add';
             $tab            = \Framework\App\Conexao::anti_injection($dao);

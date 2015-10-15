@@ -50,16 +50,13 @@ class usuario_PerfilControle extends usuario_Controle
     * @version 0.4.2
     */
     public function Main(){
-        $this->Usuarios_Edit(0,'Cliente');
+        $this->Perfil_Edit();
         self::usuarios_carregaAlterarSenha($this,$this->_Modelo,$this->_Visual,Usuario_DAO::Get_Colunas());
         if(\Framework\App\Sistema_Funcoes::Perm_Modulos('usuario_veiculo')){
             self::usuarios_Upload_Residencia($this,$this->_Modelo,$this->_Visual);
             self::usuarios_Upload_Cnh($this,$this->_Modelo,$this->_Visual);
         }
         
-        if(\Framework\App\Sistema_Funcoes::Perm_Modulos('Financeiro')){
-            usuario_Controle::PlanoStatus($this->_Modelo, $this->_Visual, $this->_Acl->Usuario_GetID());
-        }
         // ORGANIZA E MANDA CONTEUDO
         $this->_Visual->Json_Info_Update('Titulo', __('Meu Perfil')); 
     }
@@ -173,6 +170,13 @@ class usuario_PerfilControle extends usuario_Controle
     public function Perfil_Edit($tipo=false){
         $id = (int) $this->_Acl->Usuario_GetID();
         $usuario = $this->_Modelo->db->Sql_Select('Usuario', Array('id'=>$id));
+        
+        //Verifica Usuario
+        if(!is_object($usuario)){
+            return false;
+        }
+        
+        // Verifica Tipo
         if($tipo===false){
             if($usuario->grupo==CFG_TEC_IDCLIENTE){
                 $tipo   = __('Cliente');
