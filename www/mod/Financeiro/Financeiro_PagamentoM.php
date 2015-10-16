@@ -115,19 +115,19 @@ class Financeiro_PagamentoModelo extends Financeiro_Modelo
         );
     }
     public function Pagar(){
-        $where  = 'entrada_motivo=\'Servidor\' AND entrada_motivoid=\''.SRV_NAME_SQL.'\' AND {sigla}pago = 0';
+        $where  = 'entrada_motivo=\'Servidor\' AND entrada_motivoid=\''.SRV_NAME_SQL.'\' AND pago = 0';
         $this->Movimentacao_Interna($where,'Mini');
     }
     public function Receber(){
-        $where  = 'saida_motivo=\'Servidor\' AND saida_motivoid=\''.SRV_NAME_SQL.'\' AND {sigla}pago = 0';
+        $where  = 'saida_motivo=\'Servidor\' AND saida_motivoid=\''.SRV_NAME_SQL.'\' AND pago = 0';
         $this->Movimentacao_Interna($where,'Mini');
     }
     public function Pago(){
-        $where  = 'entrada_motivo=\'Servidor\' AND entrada_motivoid=\''.SRV_NAME_SQL.'\' AND {sigla}pago = 1';
+        $where  = 'entrada_motivo=\'Servidor\' AND entrada_motivoid=\''.SRV_NAME_SQL.'\' AND pago = 1';
         $this->Movimentacao_Interna_Pago($where,'Mini');
     }
     public function Recebido(){
-        $where  = 'saida_motivo=\'Servidor\' AND saida_motivoid=\''.SRV_NAME_SQL.'\' AND {sigla}pago = 1';
+        $where  = 'saida_motivo=\'Servidor\' AND saida_motivoid=\''.SRV_NAME_SQL.'\' AND pago = 1';
         $this->Movimentacao_Interna_Pago($where,'Mini');
     }
 }

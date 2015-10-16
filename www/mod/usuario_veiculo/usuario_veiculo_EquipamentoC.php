@@ -149,13 +149,13 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
     public function StatusEquipamentos($id=false){
         
         if($id===false){
-            throw new \Exception('Registro não informado:'. $raiz, 404);
+            return false;
         }
         $id = (int) $id;
         $resultado = $this->_Modelo->db->Sql_Select('Usuario_Veiculo_Equipamento', 'id = '.$id,1);
         
         if($resultado===false || !is_object($resultado)){
-            throw new \Exception('Esse registro não existe:'. $raiz, 404);
+            return false;
         }
         
         if($resultado->status=='0'){ // de aprovada para Aprovada em Execução

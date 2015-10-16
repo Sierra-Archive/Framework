@@ -116,20 +116,27 @@ class ModulosTest extends \PHPUnit_Framework_TestCase {
                    $metodos =  \Framework\Classes\SierraTec_Manutencao::PHP_GetClasses_Metodos(file_get_contents(MOD_PATH.$valor.DS.$arquivo));
                    $getsubmodulo = substr($arquivo, strlen($valor)+1, -5);
                    //$executar = new $nome();
-                   foreach($metodos as $valor2){
+                   foreach($metodos as &$valor2){
+                        $getargs            = Array();
+                        // Verifica Argumentos
                         if(!empty($valor2['Args'])){
-                            continue;
-                            //$executar->$valor2['Nome']();
-                        }/*else{
-                            var_dump($valor2);
-                        }*/
+                            foreach($valor2['Args'] as &$valor3){
+                                if($valor3['Opcional']===true){
+                                    $getargs[] = $valor3['Padrao'];
+                                }
+                            }
+                            
+                            // Se Nao tiver Argumentos Padroes, pula.
+                            if(empty($getargs)){
+                                continue;
+                            }
+                        }
                         
                         ob_start();
                         
                         // Recupera pra evitar multiplas solicitacoes
                         $getmetodo          = $valor2['Nome'];
                         $getmodulo          = $valor;
-                        $getargs            = Array();
 
                         // Configura Modulos
                         $controle_Executar = $getmodulo.'_'.$getsubmodulo.'Controle';

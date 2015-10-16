@@ -834,6 +834,8 @@ class Visual
         
             
             // Carrega Sistema
+            'globals/scripts/sitec/Form',
+            'globals/scripts/sitec/Json',
             'globals/scripts/sitec/sitec'
         );
         

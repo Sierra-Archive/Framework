@@ -257,7 +257,7 @@ class usuario_AdminControle extends usuario_Controle
     }
     public function Status($id=false){
         if($id===false){
-            throw new \Exception('Registro não informado:'. $raiz, 404);
+            return false;
         }
         $resultado = $this->_Modelo->db->Sql_Select('Usuario', Array('id'=>$id),1);
         if($resultado===false || !is_object($resultado)){

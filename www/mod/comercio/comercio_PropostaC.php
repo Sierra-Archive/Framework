@@ -2195,13 +2195,13 @@ class comercio_PropostaControle extends comercio_Controle
     public function StatusPropostas($id=false,$tema='Propostas'){
         
         if($id===false){
-            throw new \Exception('Registro não informado:'. $raiz, 404);
+            return false;
         }
         $id = (int) $id;
         $resultado = $this->_Modelo->db->Sql_Select('Comercio_Proposta', Array('id'=>$id),1);
         
         if($resultado===false || !is_object($resultado)){
-            throw new \Exception('Esse registro não existe:'. $raiz, 404);
+            return false;
         }
         
         if($tema=='Propostas'){
@@ -2889,13 +2889,13 @@ class comercio_PropostaControle extends comercio_Controle
     public function StatusChecklists($id=false){
         
         if($id===false){
-            throw new \Exception('Registro não informado:'. $raiz, 404);
+            return false;
         }
         $id = (int) $id;
         $resultado = $this->_Modelo->db->Sql_Select('Comercio_Checklist', 'id = '.$id,1);
         
         if($resultado===false || !is_object($resultado)){
-            throw new \Exception('Esse registro não existe:'. $raiz, 404);
+            return false;
         }
         
         if($resultado->status=='0'){ // de aprovada para Aprovada em Execução

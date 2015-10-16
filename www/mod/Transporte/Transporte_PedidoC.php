@@ -22,15 +22,15 @@ class Transporte_PedidoControle extends Transporte_Controle
      */
     public function Arma_Ped_Novas_Aceitar($id=false,$status=1){
         if($id===false){
-            throw new \Exception('Registro não informado:'. $raiz, 404);
+            return false;
         }
         $resultado = $this->_Modelo->db->Sql_Select('Transporte_Armazem_Pedido_Lance', '{sigla}id=\''.$id.'\' AND {sigla}fornecedor=\''.$this->_Acl->Usuario_GetID().'\'',1);
         if($resultado===false || !is_object($resultado)){
-            throw new \Exception('Esse registro não existe:'. $raiz, 404);
+            return false;
         }
         if($resultado->status==1 ||$resultado->status==2){
             // Voce não pode alterar
-            throw new \Exception('Registro não informado:'. $raiz, 404);
+            return false;
         }
         if($status==1){
             $resultado->status='1';
@@ -747,15 +747,15 @@ class Transporte_PedidoControle extends Transporte_Controle
      */
     public function Trans_Ped_Novas_Aceitar($id=false,$status=1){
         if($id===false){
-            throw new \Exception('Registro não informado:'. $raiz, 404);
+            return false;
         }
         $resultado = $this->_Modelo->db->Sql_Select('Transporte_Transportadora_Pedido_Lance', '{sigla}id=\''.$id.'\' AND {sigla}fornecedor=\''.$this->_Acl->Usuario_GetID().'\'',1);
         if($resultado===false || !is_object($resultado)){
-            throw new \Exception('Esse registro não existe:'. $raiz, 404);
+            return false;
         }
         if($resultado->status==1 ||$resultado->status==2){
             // Voce não pode alterar
-            throw new \Exception('Registro não informado:'. $raiz, 404);
+            return false;
         }
         if($status==1){
             $resultado->status='1';
@@ -1468,15 +1468,15 @@ class Transporte_PedidoControle extends Transporte_Controle
      */
     public function Caminho_Ped_Novas_Aceitar($id=false,$status=1){
         if($id===false){
-            throw new \Exception('Registro não informado:'. $raiz, 404);
+            return false;
         }
         $resultado = $this->_Modelo->db->Sql_Select('Transporte_Caminhoneiro_Pedido_Lance', '{sigla}id=\''.$id.'\' AND {sigla}transportadora=\''.$this->_Acl->Usuario_GetID().'\'',1);
         if($resultado===false || !is_object($resultado)){
-            throw new \Exception('Esse registro não existe:'. $raiz, 404);
+            return false;
         }
         if($resultado->status==1 ||$resultado->status==2){
             // Voce não pode alterar
-            throw new \Exception('Registro não informado:'. $raiz, 404);
+            return false;
         }
         if($status==1){
             $resultado->status='1';

@@ -560,13 +560,13 @@ class SierraTec_Manutencao {
                     foreach($argumentos as $valor2){
                         $argumentos_item = explode('=',$valor2);
                         if(isset($argumentos_item[1])){
-                            $metodos[$i]['Args'] = Array(
+                            $metodos[$i]['Args'][] = Array(
                                 'Nome'          => $valor,
                                 'Opcional'      => true,
                                 'Padrao'        => $argumentos_item[1]
                             );
                         }else{
-                            $metodos[$i]['Args'] = Array(
+                            $metodos[$i]['Args'][] = Array(
                                 'Nome'          => $valor,
                                 'Opcional'      => false,
                                 'Padrao'        => false

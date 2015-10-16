@@ -869,7 +869,7 @@ var Sierra = (function () {
         }
         if (script !== '') {
             // Salva Cache
-            Sessao_Gravar('Dependencias_Css',cache.join('|'));
+            Cache_Gravar('Dependencias_Css',cache.join('|'));
             
             $('head').append('<link href="'+ConfigArquivoPadrao+'static/min/?f='+script+'" rel="stylesheet" />');
         }
@@ -921,7 +921,7 @@ var Sierra = (function () {
         
         if(script!==''){
             // Salva Cache
-            Sessao_Gravar('Dependencias_Js',cache.join('|'));
+            Cache_Gravar('Dependencias_Js',cache.join('|'));
 
             $('head').append('<script type="text/javascript" src="'+ConfigArquivoPadrao+'static/min/?f='+script+'"></script>');
         }
@@ -1000,7 +1000,7 @@ var Sierra = (function () {
         var retorno = false;
         //retorno = Cache_Ler(url);
         if(retorno!==false){
-            Modelo_Ajax_JsonTratar(url,retorno,historico);
+            Json(url,retorno,historico);
         }else{
             if(carregando===true){
                 Control_PopMgs_Carregando();

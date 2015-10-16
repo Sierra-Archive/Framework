@@ -217,11 +217,11 @@ class Musica_ArtistaControle extends Musica_Controle
     }
     public function Status($id=false){
         if($id===false){
-            throw new \Exception('Registro não informado:'. $raiz, 404);
+            return false;
         }
         $resultado = $this->_Modelo->db->Sql_Select('Musica_Album_Artista', Array('id'=>$id),1);
         if($resultado===false || !is_object($resultado)){
-            throw new \Exception('Esse registro não existe:'. $raiz, 404);
+            return false;
         }
         if($resultado->status=='1'){
             $resultado->status='0';

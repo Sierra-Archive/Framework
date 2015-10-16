@@ -1,4 +1,4 @@
-var Json = function (url, data, navegador) {
+var Json = function (Link, Json, History) {
     
     /**
      * FUNCOES DE RETORNO
@@ -74,7 +74,7 @@ var Json = function (url, data, navegador) {
             if(json[i] !== undefined){
                 url = json[i]['Url'];
                 
-                Modelo_Ajax_Chamar(url,'','get',true,true,true);
+                Sierra.Modelo_Ajax_Chamar(url,'','get',true,true,true);
             }
         }
     };
@@ -135,7 +135,7 @@ var Json = function (url, data, navegador) {
         }
         if (script !== '') {
             // Salva Cache
-            Sessao_Gravar('Dependencias_Css',cache.join('|'));
+            Cache_Gravar('Dependencias_Css',cache.join('|'));
             
             $('head').append('<link href="'+ConfigArquivoPadrao+'static/min/?f='+script+'" rel="stylesheet" />');
         }
@@ -163,7 +163,7 @@ var Json = function (url, data, navegador) {
      */
     function Control_Ajax_Javascript (json) {
         var script = '',
-            cache = Cache_Ler('Dependencias_Js');
+            cache = Sierra.Cache_Ler('Dependencias_Js');
     
         if(cache===false){
             cache = new Array();
@@ -187,7 +187,7 @@ var Json = function (url, data, navegador) {
         
         if(script!==''){
             // Salva Cache
-            Sessao_Gravar('Dependencias_Js',cache.join('|'));
+            Sierra.Cache_Gravar('Dependencias_Js',cache.join('|'));
 
             $('head').append('<script type="text/javascript" src="'+ConfigArquivoPadrao+'static/min/?f='+script+'"></script>');
         }
@@ -202,39 +202,42 @@ var Json = function (url, data, navegador) {
     function Control_Ajax_Mensagens (json) {
         var cod = '';
         for (var i in json){
-            Control_PopMgs_Abrir(json[i]['tipo'],json[i]['mgs_principal'],json[i]['mgs_secundaria']);
+            Sierra.Control_PopMgs_Abrir(json[i]['tipo'],json[i]['mgs_principal'],json[i]['mgs_secundaria']);
         }
         return true;
     };
-    
-    var cod = '',
-        i   = 0,
-        tam;
-    if (data !== null && typeof(data) === "object") {
-        // Verifica se foi chamado pelo historico do navegador
-        if (typeof(navegador) === "undefined") {
-            navegador = false; //False
+    function Modelo_Ajax_JsonTratar(url, data, navegador){
+        var cod = '',
+            i   = 0,
+            tam;
+        if (data !== null && typeof(data) === "object") {
+            // Verifica se foi chamado pelo historico do navegador
+            if (typeof(navegador) === "undefined") {
+                navegador = false; //False
+            }
+            // Verifica Titulo
+            if (data['Info']['Titulo'] !== '') {
+                document.title = data['Info']['Titulo'];
+                document.getElementById('Framework_Titulo').innerHTML = data['Info']['Titulo'];
+            }
+            // Atualiza Link se tiver historico e nao for via navegador
+            if (navegador === false && data['Info']['Historico'] === true) {
+                Control_Link_Atualizar(url/*, data*/);
+            }
+            // Chama os Tipos de Json
+            tam = Object.keys(data['Info']['Tipo']).length;
+            for(;i<tam;++i){
+                cod += 'Control_Ajax_'+data['Info']['Tipo'][i]+'(data[\''+data['Info']['Tipo'][i]+'\']);';
+            }
+            eval(cod);
+            Control_Layoult_Recarrega();
+        }else if(typeof(data) === "string"){
+            Modelo_Ajax_JsonTratar(url, JSON.parse(data), navegador);
+        }else{
+            console.log('Erro',data);
+            return false;
         }
-        // Verifica Titulo
-        if (data['Info']['Titulo'] !== '') {
-            document.title = data['Info']['Titulo'];
-            document.getElementById('Framework_Titulo').innerHTML = data['Info']['Titulo'];
-        }
-        // Atualiza Link se tiver historico e nao for via navegador
-        if (navegador === false && data['Info']['Historico'] === true) {
-            Control_Link_Atualizar(url/*, data*/);
-        }
-        // Chama os Tipos de Json
-        tam = Object.keys(data['Info']['Tipo']).length;
-        for(;i<tam;++i){
-            cod += 'Control_Ajax_'+data['Info']['Tipo'][i]+'(data[\''+data['Info']['Tipo'][i]+'\']);';
-        }
-        eval(cod);
-        Control_Layoult_Recarrega();
-    }else if(typeof(data) === "string"){
-        Modelo_Ajax_JsonTratar(url, JSON.parse(data), navegador);
-    }else{
-        console.log('Erro',data);
-        return false;
     }
+    
+    return Modelo_Ajax_JsonTratar(Link, Json, History);
 };

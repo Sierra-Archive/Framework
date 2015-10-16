@@ -285,11 +285,11 @@ class Evento_EventoControle extends Evento_Controle
     }
     public function Destaques($id=false){
         if($id===false){
-            throw new \Exception('Registro não informado:'. $raiz, 404);
+            return false;
         }
         $resultado = $this->_Modelo->db->Sql_Select('Evento', Array('id'=>$id),1);
         if($resultado===false || !is_object($resultado)){
-            throw new \Exception('Esse registro não existe:'. $raiz, 404);
+            return false;
         }
         if($resultado->destaque==1 || $resultado->destaque=='1'){
             $resultado->destaque='0';

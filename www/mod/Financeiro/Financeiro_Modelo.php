@@ -219,97 +219,32 @@ class Financeiro_Modelo extends \Framework\App\Modelo
     
     
     public function Movimentacao_Interna($where=false,$tipo='Mini',$total=false,$endereco=''){
-        if(is_array($where)){
-            $where['pago']='1';
-        }else if($where!==''){
-            $where .= ' AND {sigla}pago = 1';
-        }else{
-            $where = '{sigla}pago = 1';
+        if($where===''){
+            $where = 'pago = 1';
         }
         
         // Table's primary key
         $primaryKey = 'id';
-        $tabela = 'Comercio_Produto';
+        $tabela = 'Financeiro_Pagamento_Interno';
         
         
-        $perm_view = $this->_Registro->_Acl->Get_Permissao_Url('comercio/Estoque/Estoques');
-        $perm_reduzir = $this->_Registro->_Acl->Get_Permissao_Url('comercio/Produto/Estoque_Reduzir');
-        $perm_editar = $this->_Registro->_Acl->Get_Permissao_Url('comercio/Produto/Produtos_Edit');
-        $perm_del = $this->_Registro->_Acl->Get_Permissao_Url('comercio/Produto/Produtos_Del');
-        
-        $function = '';      if($financeiros!==false && !empty($financeiros)){
-            if(is_object($financeiros)) $financeiros = Array(0=>$financeiros);
-            reset($financeiros);
-            $perm_visualizar = $this->_Registro->_Acl->Get_Permissao_Url('Financeiro/Pagamento/Financeiro_View');
-            $perm_naopagar = $this->_Registro->_Acl->Get_Permissao_Url('Financeiro/Pagamento/Financeiros_NaoPagar');
-            
-            foreach ($financeiros as &$valor) {
-                if($valor->motivo==='') continue;
-                //$tabela['#Id'][$i]       = '#'.$valor->id;
-                // Chamar
-                $chamar = $valor->motivo.'_Modelo';
-                if(!class_exists($chamar)){
-                    $chamar = $valor->motivo.'Modelo';
-                }
-                if(class_exists($chamar)){
-                    if($valor->num_parcela!='0' && $valor->num_parcela!=0){
-                        $parcela = $valor->num_parcela.'º parcela';
-                    }else{
-                        $parcela = 'Entrada/Unica';
-                    }
-                    $tabela['Parcela / Vencimento'][$i]     = $parcela. ' / '.$valor->dt_vencimento;
-                    list(
-                            $motivo,
-                            $responsavel
-                    )                                       = $chamar::Financeiro_Motivo_Exibir($valor->motivoid);
-                    $tabela['Motivo'][$i]                   = $responsavel.' com '.$motivo;
-                    $tabela['Valor'][$i]                    = $valor->valor;
-                    //$tabela['Data do Vencimento'][$i]       = '<a href="'.URL_PATH.'Financeiro/Pagamento/Financeiros_VencimentoEdit/'.$valor->id.'" class="lajax" acao=""><span id="financeirovenc'.$valor->id.'">'.$valor->dt_vencimento.'</span></a>';
-                    
-                    $tabela['Funções'][$i]                  = $this->_Visual->Tema_Elementos_Btn('Visualizar' ,Array('Visualizar'         ,'Financeiro/Pagamento/Financeiro_View/'.$valor->id.'/'    ,''),$perm_visualizar).
-                                                              $this->_Visual->Tema_Elementos_Btn(
-                                                                'Personalizado',
-                                                                Array(
-                                                                    'Desfazer Pagamento'        ,
-                                                                    'Financeiro/Pagamento/Financeiros_NaoPagar/'.$valor->id.'/'.$endereco    ,
-                                                                    '',
-                                                                    'download',
-                                                                    'default',
-                                                                ),
-                                                                $perm_naopagar
-                                                            );
-                    if($total!==false){
-                        $total_qnt = $total_qnt + \Framework\App\Sistema_Funcoes::Tranf_Real_Float($valor->valor);
-                    }
-                    ++$i;
-                }
-            }
-        }
-        if($perm_editar){
-            $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Editar\'     ,Array(\'Editar Produto\'        ,\'comercio/Produto/Produtos_Edit/\'.$d.\'/\'    ,\'\'),true);';
-        }
-        if($perm_del){
-            $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Deletar\'    ,Array(\'Deletar Produto\'       ,\'comercio/Produto/Produtos_Del/\'.$d.\'/\'     ,\'Deseja realmente deletar essa Produto ?\'),true);';
-        }
-
-        
-        $comercio_Produto_Cod       = \Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Produto_Cod');
-        $comercio_Produto_Familia   = \Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Produto_Familia');
-        $comercio_Estoque           = \Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Estoque');
-        $comercio_Unidade           = \Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Unidade');
-        $comercio_marca             = \Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Marca');
+        $perm_visualizar = $this->_Registro->_Acl->Get_Permissao_Url('Financeiro/Pagamento/Financeiro_View');
+        $perm_naopagar = $this->_Registro->_Acl->Get_Permissao_Url('Financeiro/Pagamento/Financeiros_NaoPagar');
+        $perm_editarvencimento = $this->_Registro->_Acl->Get_Permissao_Url('Financeiro/Pagamento/Financeiros_VencimentoEdit');
 
         $columns = Array();
         
         $numero = -1;
 
-        
-        /*++$numero;
+        //'#Cod';
+        ++$numero;
         $columns[] = array( 'db' => 'id', 'dt' => $numero,
         'formatter' => function( $d, $row ) {
             return '#'.$d;
-        }); //'#Cod';*/
-        
+        }); 
+
+                
+        //'#Parcela';
         ++$numero;
         $columns[] = array( 'db' => 'num_parcela', 'dt' => $numero,
         'formatter' => function( $d, $row ) {
@@ -318,49 +253,45 @@ class Financeiro_Modelo extends \Framework\App\Modelo
             }else{
                 return __('Entrada/Unica');
             }
-        }); //'#Cod';
+        }); 
         
         
+        //'Valor';
         ++$numero;
-        $columns[] = array( 'db' => 'dt_vencimento', 'dt' => $numero); //'#dt_vencimento';
+        $columns[] = array( 'db' => 'valor', 'dt' => $numero); 
         
-
-        if($comercio_marca===true){
-            if($comercio_Produto_Familia=='Familia'){
-                ++$numero;
-                $columns[] = array( 'db' => 'familia2', 'dt' => $numero); //'Familia';
-            }else{
-                ++$numero;
-                $columns[] = array( 'db' => 'marca2', 'dt' => $numero); //'Marca';
-                ++$numero;
-                $columns[] = array( 'db' => 'linha2', 'dt' => $numero); //'Linha';
+        
+        //'#Vencimento';
+        ++$numero;
+        if($perm_editarvencimento===true){
+            $columns[] = array( 'db' => 'dt_vencimento', 'dt' => $numero,
+            'formatter' => function($d,$row) {
+                return '<a href="'.URL_PATH.'Financeiro/Pagamento/Financeiros_VencimentoEdit/'.$row['id'].'" class="lajax" acao=""><span id="financeirovenc'.$row['id'].'">'.$d.'</span></a>';
+            });
+        }else{
+            $columns[] = array( 'db' => 'dt_vencimento', 'dt' => $numero);
+        }
+        
+        
+         // 'Motivo';
+        ++$numero;
+        $columns[] = array( 'db' => 'motivoid', 'dt' => $numero,
+        'formatter' => function( $d, $row ) {
+            $chamar = $row['motivo'].'_Modelo';
+            if(!class_exists($chamar)){
+                $chamar = $row['motivo'].'Modelo';
             }
-        }
-        ++$numero;
-        $columns[] = array( 'db' => 'nome', 'dt' => $numero); //'Nome';
+            list(
+                    $motivo,
+                    $responsavel
+            )                                       = $chamar::Financeiro_Motivo_Exibir($d);
+            return $responsavel.' com '.$motivo; 
+        });
 
-        // Coloca Preco
-        if(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Vendas')){
-            ++$numero;
-            $columns[] = array( 'db' => 'preco', 'dt' => $numero); //'Preço';
-        }
+        $function = '';
+        if($perm_visualizar)      $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Visualizar\' ,Array(__(\'Visualizar\')    ,\'Financeiro/Pagamento/Financeiro_View/\'.$d.\'/\'    ,\'\'),true);';
+        if($perm_naopagar)   $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Personalizado\'   ,Array(__(\'Desfazer Pagamento\')  ,\'Financeiro/Pagamento/Financeiros_NaoPagar/\'.$d.\'/'.$endereco.'/\'    ,\'\',\'download\',\'default\'),true);';
 
-        if($comercio_Estoque){
-            ++$numero;
-            
-            $columns[] = array( 'db' => 'id', 'dt' => $numero,'formatter' => function( $d, $row ) { 
-                $html = ''; 
-                $html .= '<a class="lajax" acao="" href="'.URL_PATH.'comercio/Estoque/Estoques/'.$d.'">'.
-                       ''.comercio_EstoqueControle::Estoque_Retorna($d); 
-                return $html; 
-            });  //'Estoque';
-            if($perm_view)      $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Visualizar\' ,Array(\'Visualizar Estoque\'    ,\'comercio/Estoque/Estoques/\'.$d.\'/\'    ,\'\'),true);';
-            if($perm_reduzir)   $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Personalizado\'   ,Array(\'Reduzir Estoque\'  ,\'comercio/Produto/Estoque_Reduzir/\'.$d.\'/\'    ,\'\',\'long-arrow-down\',\'inverse\'),true);';
-        }
-        if($comercio_Unidade){
-            ++$numero;
-            $columns[] = array( 'db' => 'unidade2', 'dt' => $numero);  //'Unidade';
-        }
         
         ++$numero;
         eval('$function = function( $d, $row ) { $html = \'\'; '.$function.' return $html; };');       
@@ -369,7 +300,7 @@ class Financeiro_Modelo extends \Framework\App\Modelo
         ); //'Funções';
                 
         echo json_encode(
-            \Framework\Classes\Datatable::complex( $_GET, Framework\App\Registro::getInstacia()->_Conexao, $tabela, $primaryKey, $columns, null)
+            \Framework\Classes\Datatable::complex( $_GET, Framework\App\Registro::getInstacia()->_Conexao, $tabela, $primaryKey, $columns, null,$where,'motivo')
         );
     }
 }

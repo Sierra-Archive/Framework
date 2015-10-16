@@ -548,18 +548,21 @@ class Musica_VideoControle extends Musica_Controle
     }
     public function Videos_Ver($video=false){
         if($video===false){
-            throw new \Exception('Video não existe:'. $video, 404);
+            return false;
         }
         $video = (int) $video;
         $where = Array('id'=>$video);
         $video = $this->_Modelo->db->Sql_Select('Musica_Video', $where);
+        if($video===false){
+            return false;
+        }
         $html = '<iframe width="560" height="315" src="http://www.youtube.com/embed/'.$video->youtube.'" frameborder="0" allowfullscreen></iframe>';
         $conteudo = array(
             'id' => 'popup',
             'title' => $video->musica2.' - '.$video->nome,
             'botoes' => array(
                 array(
-                    'text' => 'Fechar Janela',
+                    'text' => __('Fechar Janela'),
                     'clique' => '$( this ).dialog( "close" );'
                 )
             ),
@@ -570,11 +573,11 @@ class Musica_VideoControle extends Musica_Controle
     }
     public function Status($id=false){
         if($id===false){
-            throw new \Exception('Registro não informado:'. $raiz, 404);
+            return false;
         }
         $resultado = $this->_Modelo->db->Sql_Select('Musica_Video', Array('id'=>$id),1);
         if($resultado===false || !is_object($resultado)){
-            throw new \Exception('Esse registro não existe:'. $raiz, 404);
+            return false;
         }
         if($resultado->status=='1'){
             $resultado->status='0';
@@ -609,11 +612,11 @@ class Musica_VideoControle extends Musica_Controle
     }
     public function Destaques($id=false){
         if($id===false){
-            throw new \Exception('Registro não informado:'. $raiz, 404);
+            return false;
         }
         $resultado = $this->_Modelo->db->Sql_Select('Musica_Video', Array('id'=>$id),1);
         if(!is_object($resultado)){
-            throw new \Exception('Esse registro não existe:'. $raiz, 404);
+            return false;
         }
         if($resultado->destaque==1 || $resultado->destaque=='1'){
             $resultado->destaque='0';
