@@ -193,12 +193,12 @@ class ModulosTest extends \PHPUnit_Framework_TestCase {
                         ob_end_clean();
                         
                         // Se for String
-                        /*if(is_string($output) && is_object(json_decode($output)) && (json_last_error() == JSON_ERROR_NONE)){
+                        if(is_string($output) && is_object(json_decode($output)) && (json_last_error() == JSON_ERROR_NONE)){
                             
                         }else if(is_string($output) && $output!=''){
-                            var_dump($output);
-                            AssertHTML5::isValidMarkup($output,'Url:'.$getmodulo.'/'.$submodulo.'/'.$valor2.' -> HTML:'.$output);
-                        }*/
+                            var_dump(json_last_error(),JSON_ERROR_NONE);
+                            AssertHTML5::isValidMarkup($output,'Url:'.$getmodulo.'/'.$submodulo.'/'.$getmetodo.' -> HTML:'.$output);
+                        }
                    }
                 }
             }

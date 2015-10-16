@@ -203,8 +203,6 @@ class social_personasControle extends social_Controle
             $this->_Visual->Show_Tabela_DataTable($ultimocaso);
             $this->_Visual->Bloco_Maior_CriaJanela(__('Ultimo Caso'));
         }
-
-        $this->_Visual->renderizar();
     }
     /***********************************
     *

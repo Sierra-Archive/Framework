@@ -26,7 +26,7 @@
 
             <!-- BEGIN TOP NAVIGATION BAR -->
             <a class="navbar-brand" href="<?php echo URL_PATH; ?>">
-                <img src="<?php echo ARQ_URL; ?>_Sistema/logo.png" alt="<?php echo SISTEMA_NOME; ?>" style="max-height: 40px;">
+                <img src="<?php echo ARQ_URL; ?>_Sistema/logo.png" alt="<?php echo SISTEMA_NOME; ?>" height="40">
             </a>
             <!-- BEGIN LOGO -->
 
@@ -40,7 +40,7 @@
             </button>
         </div>
         <!-- END  NOTIFICATION -->
-        <div class="navbar-header navbar-right">
+        <div class="navbar-header navbar-right hidden-xs">
             <ul class="nav pull-right top-menu navbar-nav">
                 <!-- BEGIN SUPPORT  -->
                 <?php if(isset($params['widgets']['Superior'])){ 

@@ -213,7 +213,6 @@ class Financeiro_Modelo extends \Framework\App\Modelo
         return Array('Transferencia',$nome);
     }
     
-    
     /**
      * Metodos de DAtaTable Dinamica
      */
@@ -228,13 +227,17 @@ class Financeiro_Modelo extends \Framework\App\Modelo
             $where = '{sigla}pago = 1';
         }
         
-        // Valores Padroes
-        $i = 0;
-        $tabela = Array();
-        $total_qnt = 0;
+        // Table's primary key
+        $primaryKey = 'id';
+        $tabela = 'Comercio_Produto';
         
-        $financeiros = $this->db->Sql_Select('Financeiro_Pagamento_Interno',$where,0,'','id,dt_vencimento,motivo,motivoid,valor,num_parcela');
-        if($financeiros!==false && !empty($financeiros)){
+        
+        $perm_view = $this->_Registro->_Acl->Get_Permissao_Url('comercio/Estoque/Estoques');
+        $perm_reduzir = $this->_Registro->_Acl->Get_Permissao_Url('comercio/Produto/Estoque_Reduzir');
+        $perm_editar = $this->_Registro->_Acl->Get_Permissao_Url('comercio/Produto/Produtos_Edit');
+        $perm_del = $this->_Registro->_Acl->Get_Permissao_Url('comercio/Produto/Produtos_Del');
+        
+        $function = '';      if($financeiros!==false && !empty($financeiros)){
             if(is_object($financeiros)) $financeiros = Array(0=>$financeiros);
             reset($financeiros);
             $perm_visualizar = $this->_Registro->_Acl->Get_Permissao_Url('Financeiro/Pagamento/Financeiro_View');
@@ -282,17 +285,6 @@ class Financeiro_Modelo extends \Framework\App\Modelo
                 }
             }
         }
-        // Table's primary key
-        $primaryKey = 'id';
-        $tabela = 'Comercio_Produto';
-        
-        
-        $perm_view = $this->_Registro->_Acl->Get_Permissao_Url('comercio/Estoque/Estoques');
-        $perm_reduzir = $this->_Registro->_Acl->Get_Permissao_Url('comercio/Produto/Estoque_Reduzir');
-        $perm_editar = $this->_Registro->_Acl->Get_Permissao_Url('comercio/Produto/Produtos_Edit');
-        $perm_del = $this->_Registro->_Acl->Get_Permissao_Url('comercio/Produto/Produtos_Del');
-        
-        $function = '';
         if($perm_editar){
             $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Editar\'     ,Array(\'Editar Produto\'        ,\'comercio/Produto/Produtos_Edit/\'.$d.\'/\'    ,\'\'),true);';
         }
@@ -311,13 +303,28 @@ class Financeiro_Modelo extends \Framework\App\Modelo
         
         $numero = -1;
 
-        if($comercio_Produto_Cod){
-            ++$numero;
-            $columns[] = array( 'db' => 'id', 'dt' => $numero,
-                'formatter' => function( $d, $row ) {
-                    return '#'.$d;
-                }); //'#Cod';
-        }
+        
+        /*++$numero;
+        $columns[] = array( 'db' => 'id', 'dt' => $numero,
+        'formatter' => function( $d, $row ) {
+            return '#'.$d;
+        }); //'#Cod';*/
+        
+        ++$numero;
+        $columns[] = array( 'db' => 'num_parcela', 'dt' => $numero,
+        'formatter' => function( $d, $row ) {
+            if($d!=='0' && $d!==0){
+                return $valor->num_parcela.'º parcela';
+            }else{
+                return __('Entrada/Unica');
+            }
+        }); //'#Cod';
+        
+        
+        ++$numero;
+        $columns[] = array( 'db' => 'dt_vencimento', 'dt' => $numero); //'#dt_vencimento';
+        
+
         if($comercio_marca===true){
             if($comercio_Produto_Familia=='Familia'){
                 ++$numero;

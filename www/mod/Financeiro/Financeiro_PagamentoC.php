@@ -141,7 +141,7 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
         list($tabela,$i) = $this->Movimentacao_Interna($where,'Mini');*/
         
         $tabela = Array(
-            'Parcela / Vencimento','Motivo','Valor','Funções'
+            'Parcela','Vencimento','Motivo','Valor','Funções'
         );
         $this->_Visual->Show_Tabela_DataTable_Massiva($tabela,'Financeiro/Pagamento/Pagar');
         $titulo = __('Listagem de Contas à pagar').' (<span id="DataTable_Contador">0</span>)';  //

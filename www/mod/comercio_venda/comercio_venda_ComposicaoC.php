@@ -38,7 +38,7 @@ class comercio_venda_ComposicaoControle extends comercio_venda_Controle
     static function Endereco_Composicao($true=true){
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
-        $titulo = __('Cardápios');
+        $titulo = __('Cardápio');
         $link = 'comercio_venda/Composicao/Composicoes';
         if($true===true){
             $_Controle->Tema_Endereco($titulo,$link);
@@ -57,7 +57,7 @@ class comercio_venda_ComposicaoControle extends comercio_venda_Controle
         // BOTAO IMPRIMIR / ADD
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
             Array(
-                'Adicionar Cardápio',
+                'Adicionar Item ao Cardápio',
                 'comercio_venda/Composicao/Composicoes_Add',
                 ''
             ),
@@ -94,7 +94,7 @@ class comercio_venda_ComposicaoControle extends comercio_venda_Controle
                 }else{
                     $foto = $valor->foto;
                 }
-                $tabela['Foto'][$i]      = '<img alt="'.__('Foto da Composição').' src="'.$foto.'" style="max-width:100px;" />';
+                $tabela['Foto'][$i]      = '<img alt="'.__('Foto do Item do Cardápio').'" src="'.$foto.'" style="max-width:100px;" />';
                 $tabela['Nome'][$i]      = $valor->nome;
                 $tabela['Descrição'][$i] = $valor->descricao;
                 if(isset($produtos_usados_array[$valor->id])){
@@ -103,12 +103,12 @@ class comercio_venda_ComposicaoControle extends comercio_venda_Controle
                     $tabela['Produtos Usados'][$i] = __('Nenhum');
                 }
                 $tabela['Preço'][$i]     = $valor->preco;
-                $tabela['Funções'][$i]   = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Cardápio'        ,'comercio_venda/Composicao/Composicoes_Edit/'.$valor->id.'/'    ,'')).
-                                           $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Cardápio'       ,'comercio_venda/Composicao/Composicoes_Del/'.$valor->id.'/'     ,'Deseja realmente deletar esse Cardápio ?'));
+                $tabela['Funções'][$i]   = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Item do Cardápio'        ,'comercio_venda/Composicao/Composicoes_Edit/'.$valor->id.'/'    ,'')).
+                                           $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Item do Cardápio'       ,'comercio_venda/Composicao/Composicoes_Del/'.$valor->id.'/'     ,__('Deseja realmente deletar esse item do Cardápio ?')));
                 ++$i;
             }
             if($export!==false){
-                self::Export_Todos($export,$tabela, 'Comercio Vendas - Cardápios');
+                self::Export_Todos($export,$tabela, 'Comercio Vendas - Cardápio');
             }else{
                 $this->_Visual->Show_Tabela_DataTable($tabela);
             }
@@ -116,11 +116,11 @@ class comercio_venda_ComposicaoControle extends comercio_venda_Controle
         }else{          
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Cardápio</font></b></center>');
         }
-        $titulo = __('Listagem de Cardápios').' ('.$i.')';
+        $titulo = __('Listagem de Itens do Cardápio').' ('.$i.')';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo', __('Administrar Cardápios'));
+        $this->_Visual->Json_Info_Update('Titulo', __('Administrar Cardápio'));
     }
     /**
      * 

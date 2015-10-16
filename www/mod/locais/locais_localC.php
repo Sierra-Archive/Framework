@@ -39,9 +39,7 @@ class locais_localControle extends locais_Controle
                 );
                 $this->_Visual->Json_IncluiTipo('Select',$conteudo);
                 echo $this->_Visual->Json_Retorna();
-        }/*else{
-                $this->_Visual->renderizar();
-        }*/
+        }
     }
     public function select_bairros($id){
         
@@ -58,9 +56,7 @@ class locais_localControle extends locais_Controle
                 );
                 $this->_Visual->Json_IncluiTipo('Select',$conteudo);
                 echo $this->_Visual->Json_Retorna();
-        }/*else{
-                $this->_Visual->renderizar();
-        }*/
+        }
     }
 }
 ?>
