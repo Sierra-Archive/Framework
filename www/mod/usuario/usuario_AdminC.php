@@ -660,10 +660,10 @@ class usuario_AdminControle extends usuario_Controle
                 $tabela['Email'][$i] = $usuarios[$indice]['email'];
                 $tabela['Grupo'][$i] = $grupo;
                 $tabela['Saldo'][$i] = $usuarios[$indice]['saldo'];
-                $tabela['Funções'][$i] = '<a alt="'.__('Aprovar Usuário').' confirma="Deseja Realmente Aprovar?" title="Aprovar" class="lajax explicar-titulo" acao="" href="'.URL_PATH.'usuario/Admin/usuarios_pendente_aprovar/'.$usuarios[$indice]['id'].'/'.$tipo.'/sim/"><img src="'.WEB_URL.'img/icons/status1.png"></a>'.
-                '<a alt="'.__('Desaprovar Usuário').' confirma="Deseja Realmente Desaprovar?" title="Desaprovar" class="lajax explicar-titulo" acao="" href="'.URL_PATH.'usuario/Admin/usuarios_pendente_aprovar/'.$usuarios[$indice]['id'].'/'.$tipo.'/nao/"><img src="'.WEB_URL.'img/icons/status2.png"></a>'.
-                '<a alt="'.__('Editar Usuário').' title="Editar Usuário" class="lajax explicar-titulo" acao="" href="'.URL_PATH.'usuario/Admin/Usuarios_Edit/'.$usuarios[$indice]['id'].'/"><img src="'.WEB_URL.'img/icons/icon_edit.png"></a> '.
-                '<a alt="'.__('Deletar Usuário').' confirma="Deseja realmente deletar esse usuário?" title="Deletar Usuário" class="lajax explicar-titulo" acao="" href="'.URL_PATH.'usuario/Admin/usuarios_Del/'.$usuarios[$indice]['id'].'/"><img src="'.WEB_URL.'img/icons/icon_bad.png"></a>';
+                $tabela['Funções'][$i] = '<a alt="'.__('Aprovar Usuário').' data-confirma="Deseja Realmente Aprovar?" title="Aprovar" class="lajax explicar-titulo" data-acao="" href="'.URL_PATH.'usuario/Admin/usuarios_pendente_aprovar/'.$usuarios[$indice]['id'].'/'.$tipo.'/sim/"><img src="'.WEB_URL.'img/icons/status1.png"></a>'.
+                '<a alt="'.__('Desaprovar Usuário').' data-confirma="Deseja Realmente Desaprovar?" title="Desaprovar" class="lajax explicar-titulo" data-acao="" href="'.URL_PATH.'usuario/Admin/usuarios_pendente_aprovar/'.$usuarios[$indice]['id'].'/'.$tipo.'/nao/"><img src="'.WEB_URL.'img/icons/status2.png"></a>'.
+                '<a alt="'.__('Editar Usuário').' title="Editar Usuário" class="lajax explicar-titulo" data-acao="" href="'.URL_PATH.'usuario/Admin/Usuarios_Edit/'.$usuarios[$indice]['id'].'/"><img src="'.WEB_URL.'img/icons/icon_edit.png"></a> '.
+                '<a alt="'.__('Deletar Usuário').' data-confirma="Deseja realmente deletar esse usuário?" title="Deletar Usuário" class="lajax explicar-titulo" data-acao="" href="'.URL_PATH.'usuario/Admin/usuarios_Del/'.$usuarios[$indice]['id'].'/"><img src="'.WEB_URL.'img/icons/icon_bad.png"></a>';
                 ++$i;
             }
             $this->_Visual->Show_Tabela_DataTable($tabela);
@@ -752,7 +752,7 @@ class usuario_AdminControle extends usuario_Controle
         
         
         $i = 0;
-        $this->_Visual->Blocar('<a title="Adicionar Comentário ao '.$nomedisplay_sing.'" class="btn btn-success lajax explicar-titulo" acao="" href="'.URL_PATH.'usuario/Admin/Usuarios_Comentario_Add/'.$usuario_id.'/'.$tipo.'">Adicionar novo Comentário nesse '.$nomedisplay_sing.'</a><div class="space15"></div>');
+        $this->_Visual->Blocar('<a title="Adicionar Comentário ao '.$nomedisplay_sing.'" class="btn btn-success lajax explicar-titulo" data-acao="" href="'.URL_PATH.'usuario/Admin/Usuarios_Comentario_Add/'.$usuario_id.'/'.$tipo.'">Adicionar novo Comentário nesse '.$nomedisplay_sing.'</a><div class="space15"></div>');
         $comentario = $this->_Modelo->db->Sql_Select('Usuario_Comentario',$where);
         if($comentario!==false && !empty($comentario)){
             if(is_object($comentario)) $comentario = Array(0=>$comentario);

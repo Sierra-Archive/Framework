@@ -166,7 +166,7 @@ class locais_localidadesControle extends locais_Controle
      */
     public function Paises(){
         $i = 0;
-        $this->_Visual->Blocar('<a title="Adicionar País" class="btn btn-success lajax explicar-titulo" acao="" href="'.URL_PATH.'locais/localidades/Paises_Add">Adicionar novo País</a><div class="space15"></div>');
+        $this->_Visual->Blocar('<a title="Adicionar País" class="btn btn-success lajax explicar-titulo" data-acao="" href="'.URL_PATH.'locais/localidades/Paises_Add">Adicionar novo País</a><div class="space15"></div>');
         $setores = $this->_Modelo->db->Sql_Select('Sistema_Local_Pais');
         if($setores!==false && !empty($setores)){
             if(is_object($setores)) $setores = Array(0=>$setores);
@@ -289,7 +289,7 @@ class locais_localidadesControle extends locais_Controle
      */
     public function Estados(){
         $i = 0;
-        $this->_Visual->Blocar('<a title="Adicionar Estado" class="btn btn-success lajax explicar-titulo" acao="" href="'.URL_PATH.'locais/localidades/Estados_Add">Adicionar novo Estado</a><div class="space15"></div>');
+        $this->_Visual->Blocar('<a title="Adicionar Estado" class="btn btn-success lajax explicar-titulo" data-acao="" href="'.URL_PATH.'locais/localidades/Estados_Add">Adicionar novo Estado</a><div class="space15"></div>');
         $setores = $this->_Modelo->db->Sql_Select('Sistema_Local_Estado');
         if($setores!==false && !empty($setores)){
             if(is_object($setores)) $setores = Array(0=>$setores);
@@ -417,7 +417,7 @@ class locais_localidadesControle extends locais_Controle
      */
     public function Cidades(){
         $i = 0;
-        $this->_Visual->Blocar('<a title="Adicionar Cidade" class="btn btn-success lajax explicar-titulo" acao="" href="'.URL_PATH.'locais/localidades/Cidades_Add">Adicionar nova Cidade</a><div class="space15"></div>');
+        $this->_Visual->Blocar('<a title="Adicionar Cidade" class="btn btn-success lajax explicar-titulo" data-acao="" href="'.URL_PATH.'locais/localidades/Cidades_Add">Adicionar nova Cidade</a><div class="space15"></div>');
         $setores = $this->_Modelo->db->Sql_Select('Sistema_Local_Cidade');
         if($setores!==false && !empty($setores)){
             if(is_object($setores)) $setores = Array(0=>$setores);
@@ -545,7 +545,7 @@ class locais_localidadesControle extends locais_Controle
      */
     public function Bairros(){
         $i = 0;
-        $this->_Visual->Blocar('<a title="Adicionar Bairro" class="btn btn-success lajax explicar-titulo" acao="" href="'.URL_PATH.'locais/localidades/Bairros_Add">Adicionar novo Bairro</a><div class="space15"></div>');
+        $this->_Visual->Blocar('<a title="Adicionar Bairro" class="btn btn-success lajax explicar-titulo" data-acao="" href="'.URL_PATH.'locais/localidades/Bairros_Add">Adicionar novo Bairro</a><div class="space15"></div>');
         $setores = $this->_Modelo->db->Sql_Select('Sistema_Local_Bairro');
         if($setores!==false && !empty($setores)){
             if(is_object($setores)) $setores = Array(0=>$setores);

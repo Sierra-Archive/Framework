@@ -284,7 +284,7 @@ class social_PersonaControle extends social_Controle
         }
         
         $i = 0;
-        $this->_Visual->Blocar('<a title="Adicionar Comentário de Persona" class="btn btn-success lajax explicar-titulo" acao="" href="'.URL_PATH.'social/Persona/Personas_Comentario_Add/'.$persona_id.'">Adicionar novo comentário nesse Persona</a><div class="space15"></div>');
+        $this->_Visual->Blocar('<a title="Adicionar Comentário de Persona" class="btn btn-success lajax explicar-titulo" data-acao="" href="'.URL_PATH.'social/Persona/Personas_Comentario_Add/'.$persona_id.'">Adicionar novo comentário nesse Persona</a><div class="space15"></div>');
         $comentario = $this->_Modelo->db->Sql_Select('Social_Comentario',$where);
         if($comentario!==false && !empty($comentario)){
             if(is_object($comentario)) $comentario = Array(0=>$comentario);
@@ -437,7 +437,7 @@ class social_PersonaControle extends social_Controle
     }
     public function Ficou($persona_id=false,$tipo='Unico'){
         $i = 0;
-        $this->_Visual->Blocar('<a title="Adicionar Nova Ficada" class="btn btn-success lajax explicar-titulo" acao="" href="'.URL_PATH.'social/Persona/Ficou_Add/'.$persona_id.'">Adicionar Nova Ficada</a><div class="space15"></div>');
+        $this->_Visual->Blocar('<a title="Adicionar Nova Ficada" class="btn btn-success lajax explicar-titulo" data-acao="" href="'.URL_PATH.'social/Persona/Ficou_Add/'.$persona_id.'">Adicionar Nova Ficada</a><div class="space15"></div>');
         if($persona_id===false){
             self::Endereco_Persona_Ver_Ficar(false);
             $where = Array();

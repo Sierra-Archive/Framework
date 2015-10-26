@@ -189,7 +189,7 @@ class usuario_AnexoControle extends usuario_Controle
                     if(file_exists($endereco)){
                         $tamanho    =   round(filesize($endereco)/1024);
                         $tipo       =   $valor->ext;
-                        $tabela['Nome'][$i]             = '<a href="'.URL_PATH.'usuario/Anexo/Download/'.$valor->id.'/" border="1" class="lajax" acao="">'.$valor->nome.'</a>';
+                        $tabela['Nome'][$i]             = '<a href="'.URL_PATH.'usuario/Anexo/Download/'.$valor->id.'/" border="1" class="lajax" data-acao="">'.$valor->nome.'</a>';
                         $tabela['Tamanho'][$i]          = $tamanho.' KB';
                         $tabela['Data'][$i]             = $valor->log_date_add;
                         $tabela['Download'][$i]         = $this->_Visual->Tema_Elementos_Btn('Baixar'     ,Array('Download de Arquivo'   ,'usuario/Anexo/Download/'.$valor->id    ,''));

@@ -124,7 +124,7 @@ class Engenharia_UnidadeControle extends Engenharia_Controle
             )
         )));
         // Botao 2
-        $this->_Visual->Blocar('<a title="'.$titulo_add.'" class="btn btn-success lajax explicar-titulo" acao="" href="'.URL_PATH.$add_url.'">'.$titulo_add.'</a><div class="space15"></div>');
+        $this->_Visual->Blocar('<a title="'.$titulo_add.'" class="btn btn-success lajax explicar-titulo" data-acao="" href="'.URL_PATH.$add_url.'">'.$titulo_add.'</a><div class="space15"></div>');
         $unidades = $this->_Modelo->db->Sql_Select('Engenharia_Empreendimento_Unidade',$where);
         if($unidades!==false && !empty($unidades)){
             list($tabela,$i) = self::Unidades_Tabela($unidades,$empreendimento);

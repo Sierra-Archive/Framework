@@ -56,8 +56,8 @@ class biblioteca_BibliotecaControle extends biblioteca_Controle
             if($resultado_pasta===false){
                 throw new \Exception('Essa Pasta não existe:'. $raiz, 404);
             }
-            $tabela['Tipo'][$i]             = '<a href="'.URL_PATH.'biblioteca/Biblioteca/Bibliotecas/'.$resultado_pasta->parent.'" border="1" class="lajax" acao=""><img src="'.WEB_URL.'img'.US.'arquivos'.US.'pastavoltar.png" alt'.__('Voltar para Diretório Anterior').'  /></a>';
-            $tabela['Nome'][$i]             = '<a href="'.URL_PATH.'biblioteca/Biblioteca/Bibliotecas/'.$resultado_pasta->parent.'" border="1" class="lajax" acao="">Voltar para a Pasta Anterior</a>';
+            $tabela['Tipo'][$i]             = '<a href="'.URL_PATH.'biblioteca/Biblioteca/Bibliotecas/'.$resultado_pasta->parent.'" border="1" class="lajax" data-acao=""><img src="'.WEB_URL.'img'.US.'arquivos'.US.'pastavoltar.png" alt'.__('Voltar para Diretório Anterior').'  /></a>';
+            $tabela['Nome'][$i]             = '<a href="'.URL_PATH.'biblioteca/Biblioteca/Bibliotecas/'.$resultado_pasta->parent.'" border="1" class="lajax" data-acao="">Voltar para a Pasta Anterior</a>';
             $tabela['Descrição'][$i]        = '';
             $tabela['Tamanho'][$i]          = '';
             $tabela['Criador'][$i]          = '';
@@ -103,8 +103,8 @@ class biblioteca_BibliotecaControle extends biblioteca_Controle
                     }
                     
                     if($valor->tipo==1){
-                        $tabela['Tipo'][$i]             = '<a href="'.URL_PATH.'biblioteca/Biblioteca/Bibliotecas/'.$valor->id.'/" border="1" class="lajax" acao=""><img src="'.$foto.'" alt'.__('Abrir Diretório').'  /></a>';
-                        $tabela['Nome'][$i]             = '<a href="'.URL_PATH.'biblioteca/Biblioteca/Bibliotecas/'.$valor->id.'/" border="1" class="lajax" acao="">'.$valor->nome.'</a>';
+                        $tabela['Tipo'][$i]             = '<a href="'.URL_PATH.'biblioteca/Biblioteca/Bibliotecas/'.$valor->id.'/" border="1" class="lajax" data-acao=""><img src="'.$foto.'" alt'.__('Abrir Diretório').'  /></a>';
+                        $tabela['Nome'][$i]             = '<a href="'.URL_PATH.'biblioteca/Biblioteca/Bibliotecas/'.$valor->id.'/" border="1" class="lajax" data-acao="">'.$valor->nome.'</a>';
                     }else{
                         $tabela['Tipo'][$i]             = '<a href="'.URL_PATH.'biblioteca/Biblioteca/Download/'.$valor->id.'/" border="1" target="_BLANK"><img src="'.$foto.'" alt="'.__('Fazer Download de Extensão ').$tipo.'" /></a>';
                         $tabela['Nome'][$i]             = '<a href="'.URL_PATH.'biblioteca/Biblioteca/Download/'.$valor->id.'/" border="1" target="_BLANK">'.$valor->nome.'</a>';
@@ -189,7 +189,7 @@ class biblioteca_BibliotecaControle extends biblioteca_Controle
             }
             // Add ao Endereço
             $enderecopai = (int) $resultado_pasta->parent;
-            $endereco =    '<a href="'.URL_PATH.'biblioteca/Biblioteca/Bibliotecas/'.$enderecopai.'" border="1" class="lajax link_titulo" acao="">'.
+            $endereco =    '<a href="'.URL_PATH.'biblioteca/Biblioteca/Bibliotecas/'.$enderecopai.'" border="1" class="lajax link_titulo" data-acao="">'.
                             $resultado_pasta->nome.'</a> / '.$endereco;
             while(is_int($enderecopai) && $enderecopai!=0){
                 $resultado_pasta2 = $_Modelo->db->Sql_Select('Biblioteca', '{sigla}id=\''.$enderecopai.'\'',1);
@@ -199,7 +199,7 @@ class biblioteca_BibliotecaControle extends biblioteca_Controle
                     throw new \Exception('O pai Não é uma pasta:'. $enderecopai, 404);
                 }
                 $enderecopai = (int) $resultado_pasta2->parent;
-                $endereco =    '<a href="'.URL_PATH.'biblioteca/Biblioteca/Bibliotecas/'.$enderecopai.'" border="1" class="lajax link_titulo" acao="">'.
+                $endereco =    '<a href="'.URL_PATH.'biblioteca/Biblioteca/Bibliotecas/'.$enderecopai.'" border="1" class="lajax link_titulo" data-acao="">'.
                                 $resultado_pasta2->nome.'</a> / '.$endereco;
             }
             // Condicao de Query

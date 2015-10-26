@@ -24,7 +24,7 @@ class usuario_mensagem_Controle extends \Framework\App\Controle
      * @param type $admin
      */
     protected function Mensagenslistar($admin = 0, $tipodemensagem = false){
-        $this->_Visual->Blocar('<a title="Adicionar Mensagem de Suporte" class="btn btn-success lajax explicar-titulo" acao="" href="'.URL_PATH.'usuario_mensagem/Suporte/Mensagem_formulario">Adicionar novo Suporte</a><div class="space15"></div>');
+        $this->_Visual->Blocar('<a title="Adicionar Mensagem de Suporte" class="btn btn-success lajax explicar-titulo" data-acao="" href="'.URL_PATH.'usuario_mensagem/Suporte/Mensagem_formulario">Adicionar novo Suporte</a><div class="space15"></div>');
         $i = 0;
         $mensagens = Array();
         if($admin==0 || $admin=='0'){

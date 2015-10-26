@@ -90,7 +90,7 @@ class biblioteca_Principal implements \Framework\PrincipalInterface
         $bibliotecas = $Modelo->db->Sql_Select('Biblioteca',$where);
         if($bibliotecas===false) return false;
         // add botao
-        $Visual->Blocar('<a title="Adicionar Pasta a Biblíoteca" class="btn btn-success lajax explicar-titulo" acao="" href="'.URL_PATH.'biblioteca/Biblioteca/Bibliotecas_Add">Adicionar nova Biblíoteca</a><div class="space15"></div>');
+        $Visual->Blocar('<a title="Adicionar Pasta a Biblíoteca" class="btn btn-success lajax explicar-titulo" data-acao="" href="'.URL_PATH.'biblioteca/Biblioteca/Bibliotecas_Add">Adicionar nova Biblíoteca</a><div class="space15"></div>');
         if(is_object($bibliotecas)) $bibliotecas = Array(0=>$bibliotecas);
         if($bibliotecas!==false && !empty($bibliotecas)){
             $funcao = '';
@@ -101,8 +101,8 @@ class biblioteca_Principal implements \Framework\PrincipalInterface
                 if($resultado_pasta===false){
                     throw new \Exception('Essa Pasta não existe:'. $raiz, 404);
                 }
-                $tabela['Tipo'][$i]             = '<a href="'.URL_PATH.'biblioteca/Biblioteca/Bibliotecas/'.$resultado_pasta->parent.'" border="1" class="lajax" acao=""><img alt'.__('Voltar para Diretório Anterior').' src="'.WEB_URL.'img'.US.'arquivos'.US.'pastavoltar.png" alt="0" /></a>';
-                $tabela['Nome'][$i]             = '<a href="'.URL_PATH.'biblioteca/Biblioteca/Bibliotecas/'.$resultado_pasta->parent.'" border="1" class="lajax" acao="">Voltar para a Pasta Anterior</a>';
+                $tabela['Tipo'][$i]             = '<a href="'.URL_PATH.'biblioteca/Biblioteca/Bibliotecas/'.$resultado_pasta->parent.'" border="1" class="lajax" data-acao=""><img alt'.__('Voltar para Diretório Anterior').' src="'.WEB_URL.'img'.US.'arquivos'.US.'pastavoltar.png" alt="0" /></a>';
+                $tabela['Nome'][$i]             = '<a href="'.URL_PATH.'biblioteca/Biblioteca/Bibliotecas/'.$resultado_pasta->parent.'" border="1" class="lajax" data-acao="">Voltar para a Pasta Anterior</a>';
                 $tabela['Descrição'][$i]        = '';
                 $tabela['Tamanho'][$i]          = '';
                 $tabela['Criador'][$i]          = '';
@@ -148,8 +148,8 @@ class biblioteca_Principal implements \Framework\PrincipalInterface
                         }
 
                         if($valor->tipo==1){
-                            $tabela['Tipo'][$i]             = '<a href="'.URL_PATH.'biblioteca/Biblioteca/Bibliotecas/'.$valor->id.'/" border="1" class="lajax" acao=""><img src="'.$foto.'" alt="'.__('Abrir Diretório').'" /></a>';
-                            $tabela['Nome'][$i]             = '<a href="'.URL_PATH.'biblioteca/Biblioteca/Bibliotecas/'.$valor->id.'/" border="1" class="lajax" acao="">'.$valor->nome.'</a>';
+                            $tabela['Tipo'][$i]             = '<a href="'.URL_PATH.'biblioteca/Biblioteca/Bibliotecas/'.$valor->id.'/" border="1" class="lajax" data-acao=""><img src="'.$foto.'" alt="'.__('Abrir Diretório').'" /></a>';
+                            $tabela['Nome'][$i]             = '<a href="'.URL_PATH.'biblioteca/Biblioteca/Bibliotecas/'.$valor->id.'/" border="1" class="lajax" data-acao="">'.$valor->nome.'</a>';
                         }else{
                             $tabela['Tipo'][$i]             = '<a href="'.URL_PATH.'biblioteca/Biblioteca/Download/'.$valor->id.'/" border="1" target="_BLANK"><img src="'.$foto.'" alt="'.__('Fazer Download de Arquivo ').$tipo.'" /></a>';
                             $tabela['Nome'][$i]             = '<a href="'.URL_PATH.'biblioteca/Biblioteca/Download/'.$valor->id.'/" border="1" target="_BLANK">'.$valor->nome.'</a>';

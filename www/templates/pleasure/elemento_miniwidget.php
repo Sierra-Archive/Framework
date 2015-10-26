@@ -21,7 +21,7 @@ foreach($params['widgets'] as $v){
                     <div class="card-icon"><i class="fa fa-<?php echo $v['icon']; ?>"></i></div><!--.card-icon-->
                     <h4><?php echo $v['nome']; ?></h4>
                     <p class="result"><?php echo $v['numero']; ?></p>
-                    <?php /*<small><i class="fa fa-caret-up"></i> Total balance is $23,591</small><a data-original-title="<?php echo $v['nome']; ?>" href="<?php echo $v['link']; ?>" class="lajax" acao="">*/ ?>
+                    <?php /*<small><i class="fa fa-caret-up"></i> Total balance is $23,591</small><a data-original-title="<?php echo $v['nome']; ?>" href="<?php echo $v['link']; ?>" class="lajax" data-acao="">*/ ?>
             </div>
         </div>
     </div>

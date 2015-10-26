@@ -327,7 +327,7 @@ class Visual
      * @version 0.02
      */
     public function Bloco_Unico_CriaJanela($titulo,$url='', $gravidade=0,$botaoextra = false, $fechado=false) {
-        if($url!='') $titulo = $titulo.'<a class="lajax-admin" href="'.$url.'" acao="">+</a>';
+        if($url!='') $titulo = $titulo.'<a class="lajax-admin" href="'.$url.'" data-acao="">+</a>';
         list($tipo,$bloco) = $this->retornablocos();
         $identificador = 'div_unica_'.rand(100000, 999999);
         if(is_array($botaoextra)){
@@ -456,7 +456,7 @@ class Visual
      * @version 0.02
      */
     public function Bloco_Maior_CriaJanela($titulo,$url='', $gravidade=0,$botaoextra = false, $fechado=false) {
-        if($url!='') $titulo = $titulo.'<a class="lajax-admin" href="'.$url.'" acao="">+</a>';
+        if($url!='') $titulo = $titulo.'<a class="lajax-admin" href="'.$url.'" data-acao="">+</a>';
         list($tipo,$bloco) = $this->retornablocos();
         $identificador = 'div_maior_'.rand(100000, 999999);
         $config = Array(
@@ -509,7 +509,7 @@ class Visual
      * @version 0.4.2
      */
     public function Bloco_Menor_CriaTitulo($titulo,$gravidade=0) {
-        if($url!='') $titulo = $titulo.'<a class="lajax-admin" href="'.$url.'" acao="">+</a>';
+        if($url!='') $titulo = $titulo.'<a class="lajax-admin" href="'.$url.'" data-acao="">+</a>';
         list($tipo,$bloco) = $this->retornablocos();
         $identificador = 'div_menor_titulo_'.rand(100000, 999999);
         $config = Array(
@@ -563,7 +563,7 @@ class Visual
      * @version 0.4.2
      */
     public function Bloco_Menor_CriaJanela($titulo,$url='', $gravidade=0,$botaoextra = false, $fechado=false) {
-        if($url!='') $titulo = $titulo.'<a class="lajax-admin" href="'.$url.'" acao="">+</a>';
+        if($url!='') $titulo = $titulo.'<a class="lajax-admin" href="'.$url.'" data-acao="">+</a>';
         list($tipo,$bloco) = $this->retornablocos();
         $identificador = 'div_menor_'.rand(100000, 999999);
         $config = Array(
@@ -1428,7 +1428,7 @@ class Visual
             if($permissao==='_') $permissao = $this->_Registro->_Acl->Get_Permissao_Url($nome[1]);
             if($permissao===false) return '';
             //'onclick'           => $nome[2]
-            return     '<a href="'.URL_PATH.$nome[1].'" class="btn btn-'.$nome[4].' lajax explicar-titulo" title="'.$nome[0].'" acao=""><i class="fa fa-'.$nome[3].'"></i></a>';  
+            return     '<a href="'.URL_PATH.$nome[1].'" class="btn btn-'.$nome[4].' lajax explicar-titulo" title="'.$nome[0].'" data-acao=""><i class="fa fa-'.$nome[3].'"></i></a>';  
         }else{
             if($permissao==='_') $permissao = $this->_Registro->_Acl->Get_Permissao_Url($nome[1]);
             if($permissao===false) return '';
@@ -1458,13 +1458,13 @@ class Visual
                 $cor    = 'info';
                 $icone  = 'zoom-in';                
             }else if($tipo==='Editar'){
-                $cor    = 'warning" confirma="Deseja Realmente Editar?';
+                $cor    = 'warning" data-confirma="Deseja Realmente Editar?';
                 $icone  = 'pencil';                
             }else/* if($tipo==='Deletar')*/{
-                $cor    = 'danger" confirma="'.$nome[2];
+                $cor    = 'danger" data-confirma="'.$nome[2];
                 $icone  = 'trash';                
             }
-            return '<a href="'.URL_PATH.$nome[1].'" class="btn lajax explicar-titulo btn-'.$cor.'" title="'.$nome[0].'" acao="">
+            return '<a href="'.URL_PATH.$nome[1].'" class="btn lajax explicar-titulo btn-'.$cor.'" title="'.$nome[0].'" data-acao="">
         <i class="fa fa-'.$icone.'"></i></a>';
         }
     }
@@ -2156,7 +2156,7 @@ class Visual
                     if($this->menu['SubMenu']['ativo'][$i]==1){
                         $html .= ' active';
                     }
-                    $html .= '" acao="">'.$this->menu['SubMenu']['nome'][$i].'</a></li>';
+                    $html .= '" data-acao="">'.$this->menu['SubMenu']['nome'][$i].'</a></li>';
                 }
             }
             $conteudo = array(

@@ -17,7 +17,7 @@
         </SELECT>
         <?php if($params['Opcao']['end']!='' && $params['Opcao']['form_dependencia']===false){ 
             if($params['Opcao']['ColunaForm']==='horizontal') echo '</div><div class="col-sm-1">';
-            ?><p class="help-block"><a href="<?php echo $params['Opcao']['url']; echo $params['Opcao']['end']; ?>?formselect=<?php echo $params['Opcao']['id']; ?>&condicao=<?php echo $params['Opcao']['condicao']; ?>" style="" class="lajax btn btn-primary" acao="">+</a></span>
+            ?><p class="help-block"><a href="<?php echo $params['Opcao']['url']; echo $params['Opcao']['end']; ?>?formselect=<?php echo $params['Opcao']['id']; ?>&condicao=<?php echo $params['Opcao']['condicao']; ?>" style="" class="lajax btn btn-primary" data-acao="">+</a></span>
             <?php
         }
         if($params['Opcao']['ColunaForm']==='horizontal') echo '</div>'; ?>
@@ -44,7 +44,7 @@
         <?php if($params['Opcao']['ColunaForm']==='horizontal') echo '<div class="col-sm-9">'; ?>
             <?php if($params['Opcao']['urlextra']!=''){ ?><div class="input-append"><?php } ?>
             <textarea tabindex="<?php echo $params['TabIndex']; ?>"<?php if($params['Opcao']['max_caracteres']!==false && is_int($params['Opcao']['max_caracteres'])){ echo ' MAXLENGTH="'.$params['Opcao']['max_caracteres'].'"'; } ?> name="<?php echo $params['Opcao']['nome']; ?>" id="<?php echo $params['Opcao']['id']; ?>" class="<?php echo $params['Opcao']['class']; ?> form-control<?php if($params['Opcao']['tipo'] === 'editor'){ ?> wysihtmleditor5<?php } ?>" style="max-width:100%; height:200px;"<?php if($params['Opcao']['escondido']==='apagar'){ ?> escondendo="desativado"<?php }else if($params['Opcao']['escondido']==='apagado'){ ?> escondendo="ativado"<?php } ?>><?php echo $params['Opcao']['valor']; ?></textarea>
-            <?php if($params['Opcao']['urlextra']!=''){ ?><span class="add-on"><a href="<?php echo $params['Opcao']['url']; echo $params['Opcao']['urlextra']; ?>" style="" class="lajax btn btn-primary" acao="">+</a></span><?php } ?>
+            <?php if($params['Opcao']['urlextra']!=''){ ?><span class="add-on"><a href="<?php echo $params['Opcao']['url']; echo $params['Opcao']['urlextra']; ?>" style="" class="lajax btn btn-primary" data-acao="">+</a></span><?php } ?>
             <!--<?php if($params['Opcao']['tipo'] === 'editor'){ ?><script>CKEDITOR.replace('<?php echo $params['Opcao']['id']; ?>');</script><?php } ?>-->
         <?php if($params['Opcao']['ColunaForm']==='horizontal') echo '</div>'; ?>
     </div>
@@ -62,7 +62,7 @@
     </SELECT>
     <?php if($params['Opcao']['end']!='' && $params['Opcao']['form_dependencia']===false){ 
         if($params['Opcao']['ColunaForm']==='horizontal') echo '</div><div class="col-sm-1">';
-        ?><p class="help-block"><a href="<?php echo $params['Opcao']['url']; echo $params['Opcao']['end']; ?>?formselect=<?php echo $params['Opcao']['id']; ?>&condicao=<?php echo $params['Opcao']['condicao']; ?>" style="" class="lajax btn btn-primary" acao="">+</a></span>
+        ?><p class="help-block"><a href="<?php echo $params['Opcao']['url']; echo $params['Opcao']['end']; ?>?formselect=<?php echo $params['Opcao']['id']; ?>&condicao=<?php echo $params['Opcao']['condicao']; ?>" style="" class="lajax btn btn-primary" data-acao="">+</a></span>
         <?php
     } 
     if($params['Opcao']['ColunaForm']==='horizontal') echo '</div>'; ?>
@@ -84,7 +84,7 @@
 <?php }else if($params['Tipo']==='Radio_Fim'){ ?>
     <?php if($params['Opcao']['end']!='' && $params['Opcao']['form_dependencia']===false){ 
         if($params['Opcao']['ColunaForm']==='horizontal') echo '</div><div class="col-sm-1">';
-        ?><p class="help-block"><a href="<?php echo $params['Opcao']['url']; echo $params['Opcao']['end']; ?>?formselect=<?php echo $params['Opcao']['id']; ?>&condicao=<?php echo $params['Opcao']['condicao']; ?>" style="" class="lajax btn btn-primary" acao="">+</a></span>
+        ?><p class="help-block"><a href="<?php echo $params['Opcao']['url']; echo $params['Opcao']['end']; ?>?formselect=<?php echo $params['Opcao']['id']; ?>&condicao=<?php echo $params['Opcao']['condicao']; ?>" style="" class="lajax btn btn-primary" data-acao="">+</a></span>
         <?php
     } 
     if($params['Opcao']['ColunaForm']==='horizontal') echo '</div>'; ?>
@@ -105,7 +105,7 @@
 <?php }else if($params['Tipo']==='CheckBox_Fim'){ ?> 
     <?php if($params['Opcao']['end']!='' && $params['Opcao']['form_dependencia']===false){ 
         if($params['Opcao']['ColunaForm']==='horizontal') echo '</div><div class="col-sm-1">';
-        ?><p class="help-block"><a href="<?php echo $params['Opcao']['url']; echo $params['Opcao']['end']; ?>?formselect=<?php echo $params['Opcao']['id']; ?>&condicao=<?php echo $params['Opcao']['condicao']; ?>" style="" class="lajax btn btn-primary" acao="">+</a></span>
+        ?><p class="help-block"><a href="<?php echo $params['Opcao']['url']; echo $params['Opcao']['end']; ?>?formselect=<?php echo $params['Opcao']['id']; ?>&condicao=<?php echo $params['Opcao']['condicao']; ?>" style="" class="lajax btn btn-primary" data-acao="">+</a></span>
         <?php
     } 
     if($params['Opcao']['ColunaForm']==='horizontal') echo '</div>'; ?>

@@ -52,7 +52,7 @@ class biblioteca_BibliotecaModelo extends biblioteca_Modelo
                 if($d==1){
                     $tipo       =   'pasta';
                     $foto = WEB_URL.'img'.US.'arquivos'.US.$tipo.'.png';
-                    return '<a href="'.URL_PATH.'biblioteca/Biblioteca/Bibliotecas/'.$row['id'].'/" border="1" class="lajax" acao=""><img src="'.$foto.'" alt="'.__('Abrir Diretório').'" /></a>';
+                    return '<a href="'.URL_PATH.'biblioteca/Biblioteca/Bibliotecas/'.$row['id'].'/" border="1" class="lajax" data-acao=""><img src="'.$foto.'" alt="'.__('Abrir Diretório').'" /></a>';
                 }else{
                     $tipo  = \Framework\App\Sistema_Funcoes::Control_Arq_Ext($row['ext']);
                     $endereco = ARQ_PATH.'bibliotecas'.DS.strtolower($row['arquivo']).'.'.$tipo;
@@ -86,7 +86,7 @@ class biblioteca_BibliotecaModelo extends biblioteca_Modelo
         $columns[] = array( 'db' => 'nome', 'dt' => $numero,
             'formatter' => function( $d, $row ) {
                 if($row['tipo']==1){
-                    return '<a href="'.URL_PATH.'biblioteca/Biblioteca/Bibliotecas/'.$row['id'].'/" border="1" class="lajax" acao="">'.$d.'</a>';
+                    return '<a href="'.URL_PATH.'biblioteca/Biblioteca/Bibliotecas/'.$row['id'].'/" border="1" class="lajax" data-acao="">'.$d.'</a>';
                 }else{
                     return '<a href="'.URL_PATH.'biblioteca/Biblioteca/Download/'.$row['id'].'/" border="1" target="_BLANK">'.$d.'</a>';
                 }

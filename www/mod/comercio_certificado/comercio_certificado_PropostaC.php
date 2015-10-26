@@ -79,7 +79,7 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
      */
     public function Propostas($cliente){
         $i = 0;
-        $html = '<span id="propostasaddmostrar" style="display: none;"><a title="Adicionar Proposta" class="btn btn-success lajax explicar-titulo" acao="" href="'.URL_PATH.'comercio_certificado/Proposta/Propostas_Add/'.$cliente.'/">Adicionar nova Proposta</a><div class="space15"></div></span>';
+        $html = '<span id="propostasaddmostrar" style="display: none;"><a title="Adicionar Proposta" class="btn btn-success lajax explicar-titulo" data-acao="" href="'.URL_PATH.'comercio_certificado/Proposta/Propostas_Add/'.$cliente.'/">Adicionar nova Proposta</a><div class="space15"></div></span>';
         $proposta = $this->_Modelo->db->Sql_Select('Comercio_Certificado_Proposta',Array(
             'idcliente'     =>      $cliente
         ));
@@ -178,7 +178,7 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
         }
         $html = '<span class="badge badge-'.$tipo.'">'.$nometipo.'</span>';
         if($link===true){
-            $html = '<a href="'.URL_PATH.'comercio_certificado/Proposta/Propostas_Status/'.$id.'" border="1" class="lajax explicar-titulo" title="'.$nometipo.'" acao="" confirma="Deseja Realmente alterar o Status?">'.$html.'</a>';
+            $html = '<a href="'.URL_PATH.'comercio_certificado/Proposta/Propostas_Status/'.$id.'" border="1" class="lajax explicar-titulo" title="'.$nometipo.'" data-acao="" data-confirma="Deseja Realmente alterar o Status?">'.$html.'</a>';
         }
         return $html;
     }

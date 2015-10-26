@@ -41,7 +41,7 @@ class usuario_PerfilVisual extends usuario_Visual
                         '</div>'.
 
                         '<div class="col-sm-4">'.
-                            '<a class="btn btn-edit btn-large pull-right mtop20 lajax explicar-titulo" acao="" href="'.URL_PATH.'usuario/Admin/Usuarios_Edit/'.$id.'" title="Editar Usuário">Editar Usuário</a>'.
+                            '<a class="btn btn-edit btn-large pull-right mtop20 lajax explicar-titulo" data-acao="" href="'.URL_PATH.'usuario/Admin/Usuarios_Edit/'.$id.'" title="Editar Usuário">Editar Usuário</a>'.
                         '</div>'.
                     '</div>';
         }

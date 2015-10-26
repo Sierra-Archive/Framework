@@ -90,10 +90,10 @@ class Financeiro_AdminControle extends Financeiro_Controle
             $tabela['Email'][$i] = $usuarios[$indice]['email'];
             $tabela['Grupo'][$i] = $usuarios[$indice]['grupo'];
             $tabela['Saldo'][$i] = $usuarios[$indice]['saldo'];
-            $tabela['Funções'][$i] = '<a confirma="O cliente realizou um deposito para a empresa?" title="Add quantia ao Saldo do Usuário" class="lajax explicar-titulo" acao="" href="'.URL_PATH.'Financeiro/Admin/financeiro_deposito/'.$usuarios[$indice]['id'].'/"><img alt="'.__('Armazenar Depósito da Empresa').' src="'.WEB_URL.'img/icons/cifrao_16x16.png"></a>'.
-            '<a confirma="O cliente confirmou o saque?" title="Remover Quantia do Saldo do Usuário" class="lajax explicar-titulo" acao="" href="'.URL_PATH.'Financeiro/Admin/financeiro_retirar/'.$usuarios[$indice]['id'].'/"><img alt="'.__('Armazenar Retirada da Empresa').' src="'.WEB_URL.'img/icons/cifrao_16x16.png"></a>'.
-            '<a title="Editar Usuário" class="lajax explicar-titulo" acao="" href="'.URL_PATH.'usuario/Admin/usuarios_carregajanelaEdit/'.$usuarios[$indice]['id'].'/"><img alt="'.__('Editar Usuário').' src="'.WEB_URL.'img/icons/icon_edit.png"></a> '.
-            '<a confirma="Deseja realmente deletar esse usuário?" title="Deletar Usuário" class="lajax explicar-titulo" acao="" href="'.URL_PATH.'usuario/Admin/usuarios_Del/'.$usuarios[$indice]['id'].'/"><img alt="'.__('Deletar Usuário').' src="'.WEB_URL.'img/icons/icon_bad.png"></a>';
+            $tabela['Funções'][$i] = '<a data-confirma="O cliente realizou um deposito para a empresa?" title="Add quantia ao Saldo do Usuário" class="lajax explicar-titulo" data-acao="" href="'.URL_PATH.'Financeiro/Admin/financeiro_deposito/'.$usuarios[$indice]['id'].'/"><img alt="'.__('Armazenar Depósito da Empresa').' src="'.WEB_URL.'img/icons/cifrao_16x16.png"></a>'.
+            '<a data-confirma="O cliente confirmou o saque?" title="Remover Quantia do Saldo do Usuário" class="lajax explicar-titulo" data-acao="" href="'.URL_PATH.'Financeiro/Admin/financeiro_retirar/'.$usuarios[$indice]['id'].'/"><img alt="'.__('Armazenar Retirada da Empresa').' src="'.WEB_URL.'img/icons/cifrao_16x16.png"></a>'.
+            '<a title="Editar Usuário" class="lajax explicar-titulo" data-acao="" href="'.URL_PATH.'usuario/Admin/usuarios_carregajanelaEdit/'.$usuarios[$indice]['id'].'/"><img alt="'.__('Editar Usuário').' src="'.WEB_URL.'img/icons/icon_edit.png"></a> '.
+            '<a data-confirma="Deseja realmente deletar esse usuário?" title="Deletar Usuário" class="lajax explicar-titulo" data-acao="" href="'.URL_PATH.'usuario/Admin/usuarios_Del/'.$usuarios[$indice]['id'].'/"><img alt="'.__('Deletar Usuário').' src="'.WEB_URL.'img/icons/icon_bad.png"></a>';
             ++$i;
         }
         $this->_Visual->Show_Tabela_DataTable($tabela);

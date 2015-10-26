@@ -90,7 +90,7 @@ class Simulador_Principal implements \Framework\PrincipalInterface
         $tags = $Modelo->db->Sql_Select('Simulador_Tag',$where);
         if($tags===false) return false;
         // add botao
-        $Visual->Blocar('<a title="Adicionar Tag" class="btn btn-success lajax explicar-titulo" acao="" href="'.URL_PATH.'Simulador/Tag/Tags_Add">Adicionar nova Tag</a><div class="space15"></div>');
+        $Visual->Blocar('<a title="Adicionar Tag" class="btn btn-success lajax explicar-titulo" data-acao="" href="'.URL_PATH.'Simulador/Tag/Tags_Add">Adicionar nova Tag</a><div class="space15"></div>');
         if(is_object($tags)) $tags = Array(0=>$tags);
         if($tags!==false && !empty($tags)){
             $funcao = '';

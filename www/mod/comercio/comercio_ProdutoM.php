@@ -94,7 +94,7 @@ class comercio_ProdutoModelo extends comercio_Modelo
             
             $columns[] = array( 'db' => 'id', 'dt' => $numero,'formatter' => function( $d, $row ) { 
                 $html = ''; 
-                $html .= '<a class="lajax" acao="" href="'.URL_PATH.'comercio/Estoque/Estoques/'.$d.'">'.
+                $html .= '<a class="lajax" data-acao="" href="'.URL_PATH.'comercio/Estoque/Estoques/'.$d.'">'.
                        ''.comercio_EstoqueControle::Estoque_Retorna($d); 
                 return $html; 
             });  //'Estoque';

@@ -211,7 +211,7 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
         }
         $html = '<span class="badge badge-'.$tipo.'">'.$nometipo.'</span>';
         if($link===true){
-            $html = '<a href="'.URL_PATH.'usuario_veiculo/Equipamento/StatusEquipamentos/'.$id.'" border="1" class="lajax explicar-titulo" title="'.$nometipo.'" acao="" confirma="Deseja Realmente alterar o Status?">'.$html.'</a>';
+            $html = '<a href="'.URL_PATH.'usuario_veiculo/Equipamento/StatusEquipamentos/'.$id.'" border="1" class="lajax explicar-titulo" title="'.$nometipo.'" data-acao="" data-confirma="Deseja Realmente alterar o Status?">'.$html.'</a>';
         }
         return $html;
     }

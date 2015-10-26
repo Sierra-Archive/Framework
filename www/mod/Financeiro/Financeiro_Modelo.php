@@ -266,7 +266,7 @@ class Financeiro_Modelo extends \Framework\App\Modelo
         if($perm_editarvencimento===true){
             $columns[] = array( 'db' => 'dt_vencimento', 'dt' => $numero,
             'formatter' => function($d,$row) {
-                return '<a href="'.URL_PATH.'Financeiro/Pagamento/Financeiros_VencimentoEdit/'.$row['id'].'" class="lajax" acao=""><span id="financeirovenc'.$row['id'].'">'.$d.'</span></a>';
+                return '<a href="'.URL_PATH.'Financeiro/Pagamento/Financeiros_VencimentoEdit/'.$row['id'].'" class="lajax" data-acao=""><span id="financeirovenc'.$row['id'].'">'.$d.'</span></a>';
             });
         }else{
             $columns[] = array( 'db' => 'dt_vencimento', 'dt' => $numero);

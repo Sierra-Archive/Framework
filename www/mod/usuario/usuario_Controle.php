@@ -158,8 +158,8 @@ class usuario_Controle extends \Framework\App\Controle
 
             // Financeiro Especifico
             /*if(\Framework\App\Sistema_Funcoes::Perm_Modulos('Financeiro') && $Financeiro_User_Saldo){
-                $tabela['Funções'][$i]     .=   '<a confirma="O '.$nomedisplay_sing.' realizou um deposito para a empresa?" title="Add quantia ao Saldo do '.$nomedisplay_sing.'" class="btn lajax explicar-titulo" acao="" href="'.URL_PATH.'Financeiro/Admin/financeiro_deposito/'.$valor->id.$linkextra.'"><img src="'.WEB_URL.'img/icons/cifrao_16x16.png" alt="Depositar"></a>'.
-                                                '<a confirma="O '.$nomedisplay_sing.' confirmou o saque?" title="Remover Quantia do Saldo do '.$nomedisplay_sing.'" class="btn lajax explicar-titulo" acao="" href="'.URL_PATH.'Financeiro/Admin/financeiro_retirar/'.$valor->id.$linkextra.'"><img src="'.WEB_URL.'img/icons/cifrao_16x16.png" alt="Retirar"></a>';
+                $tabela['Funções'][$i]     .=   '<a data-confirma="O '.$nomedisplay_sing.' realizou um deposito para a empresa?" title="Add quantia ao Saldo do '.$nomedisplay_sing.'" class="btn lajax explicar-titulo" data-acao="" href="'.URL_PATH.'Financeiro/Admin/financeiro_deposito/'.$valor->id.$linkextra.'"><img src="'.WEB_URL.'img/icons/cifrao_16x16.png" alt="Depositar"></a>'.
+                                                '<a data-confirma="O '.$nomedisplay_sing.' confirmou o saque?" title="Remover Quantia do Saldo do '.$nomedisplay_sing.'" class="btn lajax explicar-titulo" data-acao="" href="'.URL_PATH.'Financeiro/Admin/financeiro_retirar/'.$valor->id.$linkextra.'"><img src="'.WEB_URL.'img/icons/cifrao_16x16.png" alt="Retirar"></a>';
                 $funcoes_qnt = 3;
             }*/
             
@@ -339,7 +339,7 @@ class usuario_Controle extends \Framework\App\Controle
             )
         )));
         // Continua Resto
-        //$this->_Visual->Blocar('<a title="Adicionar " class="btn btn-success lajax explicar-titulo" acao="" href="'.URL_PATH.'usuario/Admin/Usuarios_Add'.$linkextra.'">Adicionar novo '.Framework\Classes\Texto::Transformar_Plural_Singular($nomedisplay).'</a><div class="space15"></div>');
+        //$this->_Visual->Blocar('<a title="Adicionar " class="btn btn-success lajax explicar-titulo" data-acao="" href="'.URL_PATH.'usuario/Admin/Usuarios_Add'.$linkextra.'">Adicionar novo '.Framework\Classes\Texto::Transformar_Plural_Singular($nomedisplay).'</a><div class="space15"></div>');
         $usuario = $this->_Modelo->db->Sql_Select('Usuario',$where,0,'','id,grupo,foto,nome,razao_social,email,email2,telefone,telefone2,celular,celular1,celular2,celular3,ativado,log_date_add');
         if(is_object($usuario)){
             $usuario = Array(0=>$usuario);
@@ -438,7 +438,7 @@ class usuario_Controle extends \Framework\App\Controle
             $nomedisplay_tipo   = Framework\Classes\Texto::Transformar_Plural_Singular(__($nome));
         }
         // Enviar Email
-        //$Visual->Blocar('<a title="Enviar email para '.$nomedisplay_sing.'" class="btn btn-success lajax explicar-titulo" acao="" href="'.URL_PATH.'usuario/Admin/Usuarios_Email/'.$id.$linkextra.'">Enviar email para '.$nomedisplay_sing.'</a><div class="space15"></div>');
+        //$Visual->Blocar('<a title="Enviar email para '.$nomedisplay_sing.'" class="btn btn-success lajax explicar-titulo" data-acao="" href="'.URL_PATH.'usuario/Admin/Usuarios_Email/'.$id.$linkextra.'">Enviar email para '.$nomedisplay_sing.'</a><div class="space15"></div>');
         $emails = $Modelo->db->Sql_Select('Usuario_Historico_Email',Array('cliente'=>$id));
         if($emails!==false && !empty($emails)){
             if(is_object($emails)) $emails = Array(0=>$emails);
@@ -792,7 +792,7 @@ class usuario_Controle extends \Framework\App\Controle
             )
         ));
         // Continua Resto
-        //$this->_Visual->Blocar('<a title="Adicionar " class="btn btn-success lajax explicar-titulo" acao="" href="'.URL_PATH.'usuario/Admin/Usuarios_Add'.$linkextra.'">Adicionar novo '.Framework\Classes\Texto::Transformar_Plural_Singular($nomedisplay).'</a><div class="space15"></div>');
+        //$this->_Visual->Blocar('<a title="Adicionar " class="btn btn-success lajax explicar-titulo" data-acao="" href="'.URL_PATH.'usuario/Admin/Usuarios_Add'.$linkextra.'">Adicionar novo '.Framework\Classes\Texto::Transformar_Plural_Singular($nomedisplay).'</a><div class="space15"></div>');
         $usuario = $Modelo->db->Sql_Select('Usuario',$where,0,'','id,grupo,foto,nome,razao_social,email,email2,telefone,telefone2,celular,celular1,celular2,celular3,ativado,log_date_add');
         if(is_object($usuario)) $usuario = Array(0=>$usuario);
         if($usuario!==false && !empty($usuario)){

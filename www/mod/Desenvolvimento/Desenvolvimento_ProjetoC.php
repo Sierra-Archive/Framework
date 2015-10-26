@@ -313,7 +313,7 @@ class Desenvolvimento_ProjetoControle extends Desenvolvimento_Controle
         }
         $html = '<span class="badge badge-'.$tipo.'">'.$nometipo.'</span>';
         if($link===true && \Framework\App\Registro::getInstacia()->_Acl->Get_Permissao_Url('Desenvolvimento/Projeto/Status')!==false){
-            $html = '<a href="'.URL_PATH.'Desenvolvimento/Projeto/Status/'.$id.'" border="1" class="lajax explicar-titulo" title="'.$nometipo.'" acao="" confirma="Deseja Realmente alterar o Status?">'.$html.'</a>';
+            $html = '<a href="'.URL_PATH.'Desenvolvimento/Projeto/Status/'.$id.'" border="1" class="lajax explicar-titulo" title="'.$nometipo.'" data-acao="" data-confirma="Deseja Realmente alterar o Status?">'.$html.'</a>';
         }
         return $html;
     }
@@ -383,7 +383,7 @@ class Desenvolvimento_ProjetoControle extends Desenvolvimento_Controle
         }
         $html = '<span class="badge badge-'.$tipo.'">'.$nometipo.'</span>';
         if($link===true && \Framework\App\Registro::getInstacia()->_Acl->Get_Permissao_Url('Desenvolvimento/Projeto/Destaque')!==false){
-            $html = '<a href="'.URL_PATH.'Desenvolvimento/Projeto/Destaque/'.$id.'" border="1" class="lajax explicar-titulo" title="'.$nometipo.'" acao="" confirma="Deseja Realmente alterar o Destaque?">'.$html.'</a>';
+            $html = '<a href="'.URL_PATH.'Desenvolvimento/Projeto/Destaque/'.$id.'" border="1" class="lajax explicar-titulo" title="'.$nometipo.'" data-acao="" data-confirma="Deseja Realmente alterar o Destaque?">'.$html.'</a>';
         }
         return $html;
     }
@@ -504,7 +504,7 @@ class Desenvolvimento_ProjetoControle extends Desenvolvimento_Controle
         }
         
         $i = 0;
-        $html = '<a title="Adicionar Comentário de Projeto" class="btn btn-success lajax explicar-titulo" acao="" href="'.URL_PATH.'Desenvolvimento/Projeto/Projetos_Comentario_Add/'.$Desenvolvimento_id.'">Adicionar novo comentário nesse Projeto</a><div class="space15"></div>';
+        $html = '<a title="Adicionar Comentário de Projeto" class="btn btn-success lajax explicar-titulo" data-acao="" href="'.URL_PATH.'Desenvolvimento/Projeto/Projetos_Comentario_Add/'.$Desenvolvimento_id.'">Adicionar novo comentário nesse Projeto</a><div class="space15"></div>';
         $comentario = $this->_Modelo->db->Sql_Select('Desenvolvimento_Projeto_Comentario',$where);
         if($comentario!==false && !empty($comentario)){
             if(is_object($comentario)) $comentario = Array(0=>$comentario);

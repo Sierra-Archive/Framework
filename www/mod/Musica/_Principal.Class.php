@@ -26,7 +26,7 @@ class Musica_Principal implements \Framework\PrincipalInterface
     static function Widget(&$_Controle){
         $_Controle->Widget_Add('Superior',
         '<li class="dropdown mtop5">'.
-            '<a class="dropdown-toggle element lajax" acao="" data-placement="bottom" data-toggle="tooltip" href="'.URL_PATH.'Musica/Musica/Musicas_Add" data-original-title="Nova Musica">'.
+            '<a class="dropdown-toggle element lajax" data-acao="" data-placement="bottom" data-toggle="tooltip" href="'.URL_PATH.'Musica/Musica/Musicas_Add" data-original-title="Nova Musica">'.
                 '<i class="fa fa-music"></i>'.
             '</a>'.
         '</li>');
@@ -92,7 +92,7 @@ class Musica_Principal implements \Framework\PrincipalInterface
         $artistas = $Modelo->db->Sql_Select('Musica_Album_Artista',$where);
         if($artistas===false) return false;
         // add botao
-        $Visual->Blocar('<a title="Adicionar Artista" class="btn btn-success lajax explicar-titulo" acao="" href="'.URL_PATH.'Musica/Artista/Artistas_Add">Adicionar novo Artista</a><div class="space15"></div>');
+        $Visual->Blocar('<a title="Adicionar Artista" class="btn btn-success lajax explicar-titulo" data-acao="" href="'.URL_PATH.'Musica/Artista/Artistas_Add">Adicionar novo Artista</a><div class="space15"></div>');
         if(is_object($artistas)) $artistas = Array(0=>$artistas);
         if($artistas!==false && !empty($artistas)){
             list($tabela,$i) = Musica_ArtistaControle::Artistas_Tabela($artistas);
@@ -113,7 +113,7 @@ class Musica_Principal implements \Framework\PrincipalInterface
         $albuns = $Modelo->db->Sql_Select('Musica_Album',$where);
         if($albuns===false) return false;
         // add botao
-        $Visual->Blocar('<a title="Adicionar Album" class="btn btn-success lajax explicar-titulo" acao="" href="'.URL_PATH.'Musica/Album/Albuns_Add">Adicionar novo Album</a><div class="space15"></div>');
+        $Visual->Blocar('<a title="Adicionar Album" class="btn btn-success lajax explicar-titulo" data-acao="" href="'.URL_PATH.'Musica/Album/Albuns_Add">Adicionar novo Album</a><div class="space15"></div>');
         if(is_object($albuns)) $albuns = Array(0=>$albuns);
         if($albuns!==false && !empty($albuns)){
             list($tabela,$i) = Musica_AlbumControle::Albuns_Tabela($albuns);
@@ -134,7 +134,7 @@ class Musica_Principal implements \Framework\PrincipalInterface
         $albuns = $Modelo->db->Sql_Select('Musica',$where);
         if($albuns===false) return false;
         // add botao
-        $Visual->Blocar('<a title="Adicionar Musica" class="btn btn-success lajax explicar-titulo" acao="" href="'.URL_PATH.'Musica/Musica/Musicas_Add">Adicionar nova Musica</a><div class="space15"></div>');
+        $Visual->Blocar('<a title="Adicionar Musica" class="btn btn-success lajax explicar-titulo" data-acao="" href="'.URL_PATH.'Musica/Musica/Musicas_Add">Adicionar nova Musica</a><div class="space15"></div>');
         if(is_object($albuns)) $albuns = Array(0=>$albuns);
         if($albuns!==false && !empty($albuns)){
             list($tabela,$i) = Musica_AlbumControle::Albuns_Tabela($albuns);
@@ -155,7 +155,7 @@ class Musica_Principal implements \Framework\PrincipalInterface
         $albuns = $Modelo->db->Sql_Select('Musica_Video',$where);
         if($albuns===false) return false;
         // add botao
-        $Visual->Blocar('<a title="Adicionar Video" class="btn btn-success lajax explicar-titulo" acao="" href="'.URL_PATH.'Musica/Video/Videos_Add">Adicionar novo Video</a><div class="space15"></div>');
+        $Visual->Blocar('<a title="Adicionar Video" class="btn btn-success lajax explicar-titulo" data-acao="" href="'.URL_PATH.'Musica/Video/Videos_Add">Adicionar novo Video</a><div class="space15"></div>');
         if(is_object($albuns)) $albuns = Array(0=>$albuns);
         if($albuns!==false && !empty($albuns)){
             list($tabela,$i) = Musica_AlbumControle::Albuns_Tabela($albuns);

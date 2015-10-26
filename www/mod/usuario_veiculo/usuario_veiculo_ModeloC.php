@@ -57,7 +57,7 @@ class usuario_veiculo_ModeloControle extends usuario_veiculo_Controle
     public function Modelos(){
         self::Endereco_Veiculo_Modelo(false);
         $i = 0;
-        $this->_Visual->Blocar('<a title="Adicionar Modelo" class="btn btn-success lajax explicar-titulo" acao="" href="'.URL_PATH.'usuario_veiculo/Modelo/Modelos_Add">Adicionar novo Modelo</a><div class="space15"></div>');
+        $this->_Visual->Blocar('<a title="Adicionar Modelo" class="btn btn-success lajax explicar-titulo" data-acao="" href="'.URL_PATH.'usuario_veiculo/Modelo/Modelos_Add">Adicionar novo Modelo</a><div class="space15"></div>');
         $modelos = $this->_Modelo->db->Sql_Select('Usuario_Veiculo_Modelo');
         if($modelos!==false && !empty($modelos)){
             if(is_object($modelos)) $modelos = Array(0=>$modelos);

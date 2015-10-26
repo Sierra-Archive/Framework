@@ -262,7 +262,7 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
         }
         $html = '<span class="badge badge-'.$tipo.'">'.$nometipo.'</span>';
         if($link===true && \Framework\App\Registro::getInstacia()->_Acl->Get_Permissao_Url('Desenvolvimento/Senha/Status')!==false){
-            $html = '<a href="'.URL_PATH.'Desenvolvimento/Senha/Status/'.$id.'" border="1" class="lajax explicar-titulo" title="'.$nometipo.'" acao="" confirma="Deseja Realmente alterar o Status?">'.$html.'</a>';
+            $html = '<a href="'.URL_PATH.'Desenvolvimento/Senha/Status/'.$id.'" border="1" class="lajax explicar-titulo" title="'.$nometipo.'" data-acao="" data-confirma="Deseja Realmente alterar o Status?">'.$html.'</a>';
         }
         return $html;
     }
@@ -332,7 +332,7 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
         }
         $html = '<span class="badge badge-'.$tipo.'">'.$nometipo.'</span>';
         if($link===true && \Framework\App\Registro::getInstacia()->_Acl->Get_Permissao_Url('Desenvolvimento/Senha/Destaque')!==false){
-            $html = '<a href="'.URL_PATH.'Desenvolvimento/Senha/Destaque/'.$id.'" border="1" class="lajax explicar-titulo" title="'.$nometipo.'" acao="" confirma="Deseja Realmente alterar o Destaque?">'.$html.'</a>';
+            $html = '<a href="'.URL_PATH.'Desenvolvimento/Senha/Destaque/'.$id.'" border="1" class="lajax explicar-titulo" title="'.$nometipo.'" data-acao="" data-confirma="Deseja Realmente alterar o Destaque?">'.$html.'</a>';
         }
         return $html;
     }
@@ -573,7 +573,7 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
         }
         $html = '<span class="badge badge-'.$tipo.'">'.$nometipo.'</span>';
         if($link===true && \Framework\App\Registro::getInstacia()->_Acl->Get_Permissao_Url('Desenvolvimento/Senha/Status')!==false){
-            $html = '<a href="'.URL_PATH.'Desenvolvimento/Senha/Status_Todas/'.$id.'" border="1" class="lajax explicar-titulo" title="'.$nometipo.'" acao="" confirma="Deseja Realmente alterar o Status?">'.$html.'</a>';
+            $html = '<a href="'.URL_PATH.'Desenvolvimento/Senha/Status_Todas/'.$id.'" border="1" class="lajax explicar-titulo" title="'.$nometipo.'" data-acao="" data-confirma="Deseja Realmente alterar o Status?">'.$html.'</a>';
         }
         return $html;
     }
@@ -643,7 +643,7 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
         }
         $html = '<span class="badge badge-'.$tipo.'">'.$nometipo.'</span>';
         if($link===true && \Framework\App\Registro::getInstacia()->_Acl->Get_Permissao_Url('Desenvolvimento/Senha/Destaque')!==false){
-            $html = '<a href="'.URL_PATH.'Desenvolvimento/Senha/Destaque_Todas/'.$id.'" border="1" class="lajax explicar-titulo" title="'.$nometipo.'" acao="" confirma="Deseja Realmente alterar o Destaque?">'.$html.'</a>';
+            $html = '<a href="'.URL_PATH.'Desenvolvimento/Senha/Destaque_Todas/'.$id.'" border="1" class="lajax explicar-titulo" title="'.$nometipo.'" data-acao="" data-confirma="Deseja Realmente alterar o Destaque?">'.$html.'</a>';
         }
         return $html;
     }

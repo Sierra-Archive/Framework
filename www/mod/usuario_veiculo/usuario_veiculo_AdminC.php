@@ -99,10 +99,10 @@ class usuario_veiculo_AdminControle extends usuario_veiculo_Controle
                 '<br>R$'.number_format($valor['valor3'], 2, ',', '.');
                 $tabela['Franquia'][$i] = 'R$'.number_format($valor['franquia'], 2, ',', '.');
                 $tabela['Funções'][$i] = '
-                <a title="Editar" class="lajax explicar-titulo" href="'.URL_PATH.'usuario_veiculo/Admin/veiculos_carregajanelaEdit/'.$valor['id'].'/" acao="">
+                <a title="Editar" class="lajax explicar-titulo" href="'.URL_PATH.'usuario_veiculo/Admin/veiculos_carregajanelaEdit/'.$valor['id'].'/" data-acao="">
                 <img alt="Editar" src="'.WEB_URL.'img/turboadmin/icon_edit.png">
                 </a>
-                <a confirma="Deseja realmente deletar esse veiculo?" title="Deletar" class="lajax explicar-titulo" href="'.URL_PATH.'usuario_veiculo/Admin/veiculos_Del/'.$valor['id'].'/" acao="">
+                <a data-confirma="Deseja realmente deletar esse veiculo?" title="Deletar" class="lajax explicar-titulo" href="'.URL_PATH.'usuario_veiculo/Admin/veiculos_Del/'.$valor['id'].'/" data-acao="">
                 <img alt="Deletar" src="'.WEB_URL.'img/turboadmin/icon_bad.png">
                 </a>';
                 ++$i;

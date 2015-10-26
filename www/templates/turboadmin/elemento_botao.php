@@ -3,7 +3,7 @@
         <?php if($params['btn_add']){ ?>
             <div class="btn-group">
                 <?php if($params['btn_add']!=='#' && $params['btn_add']!==''){ ?>
-                    <a href="<?php echo URL_PATH; echo $params['btn_add']['url']; ?>" class="lajax" acao="">
+                    <a href="<?php echo URL_PATH; echo $params['btn_add']['url']; ?>" class="lajax" data-acao="">
                 <?php } ?>
                         <button class="btn green" onClick="<?php echo $params['btn_add']['onclick']; ?>">
                             <?php echo $params['btn_add']['nome']; ?> <i class="fa fa-plus"></i>
@@ -31,29 +31,29 @@
     </div>
     <div class="space15"></div>
 <?php }else if($params['Tipo']=='Personalizado'){ ?>
-    <a href="<?php echo URL_PATH; echo $params['btn_add']['url']; ?>" class="btn btn-<?php echo $params['btn_add']['cor']; ?> lajax explicar-titulo" title="<?php echo $params['btn_add']['nome']; ?>" acao="">
+    <a href="<?php echo URL_PATH; echo $params['btn_add']['url']; ?>" class="btn btn-<?php echo $params['btn_add']['cor']; ?> lajax explicar-titulo" title="<?php echo $params['btn_add']['nome']; ?>" data-acao="">
         <i class="fa fa-<?php echo $params['btn_add']['icone']; ?>"></i>
     </a>
 
 <?php }else if($params['Tipo']==='Destaque0'){ ?>
-    <a href="<?php echo URL_PATH; echo $params['btn_add']['url']; ?>" class="btn btn-danger lajax explicar-titulo" title="<?php echo $params['btn_add']['nome']; ?>" acao="">
+    <a href="<?php echo URL_PATH; echo $params['btn_add']['url']; ?>" class="btn btn-danger lajax explicar-titulo" title="<?php echo $params['btn_add']['nome']; ?>" data-acao="">
         <i class="fa fa-star-empty" alt="Desativado"></i>
     </a>
 <?php }else if($params['Tipo']==='Destaque1'){ ?>
-    <a href="<?php echo URL_PATH; echo $params['btn_add']['url']; ?>" class="btn btn-success lajax explicar-titulo" title="<?php echo $params['btn_add']['nome']; ?>" acao="">
+    <a href="<?php echo URL_PATH; echo $params['btn_add']['url']; ?>" class="btn btn-success lajax explicar-titulo" title="<?php echo $params['btn_add']['nome']; ?>" data-acao="">
         <i class="fa fa-star" alt="Ativado"></i>
     </a>
 
 <?php }else if($params['Tipo']==='Status0'){ ?>
-    <a href="<?php echo URL_PATH; echo $params['btn_add']['url']; ?>" class="btn btn-danger lajax explicar-titulo" title="<?php echo $params['btn_add']['nome']; ?>" acao="">
+    <a href="<?php echo URL_PATH; echo $params['btn_add']['url']; ?>" class="btn btn-danger lajax explicar-titulo" title="<?php echo $params['btn_add']['nome']; ?>" data-acao="">
         <i class="fa fa-thumbs-down"></i>
     </a>
 <?php }else if($params['Tipo']==='Status1'){ ?>
-    <a href="<?php echo URL_PATH; echo $params['btn_add']['url']; ?>" class="btn btn-success lajax explicar-titulo" title="<?php echo $params['btn_add']['nome']; ?>" acao="">
+    <a href="<?php echo URL_PATH; echo $params['btn_add']['url']; ?>" class="btn btn-success lajax explicar-titulo" title="<?php echo $params['btn_add']['nome']; ?>" data-acao="">
         <i class="fa fa-thumbs-up"></i>
     </a>
 <?php }else if($params['Tipo']=='Email'){ ?>
-    <a href="<?php echo URL_PATH; echo $params['btn_add']['url']; ?>" class="btn btn-primary lajax explicar-titulo" title="<?php echo $params['btn_add']['nome']; ?>" acao="">
+    <a href="<?php echo URL_PATH; echo $params['btn_add']['url']; ?>" class="btn btn-primary lajax explicar-titulo" title="<?php echo $params['btn_add']['nome']; ?>" data-acao="">
         <i class="fa fa-envelope"></i>
     </a>
 <?php }else if($params['Tipo']=='Baixar'){ ?>
@@ -61,19 +61,19 @@
         <i class="fa fa-download"></i>
     </a>
 <?php }else if($params['Tipo']=='Visualizar'){ ?>
-    <a href="<?php echo URL_PATH; echo $params['btn_add']['url']; ?>" class="btn btn-success lajax explicar-titulo" title="<?php echo $params['btn_add']['nome']; ?>" acao="">
+    <a href="<?php echo URL_PATH; echo $params['btn_add']['url']; ?>" class="btn btn-success lajax explicar-titulo" title="<?php echo $params['btn_add']['nome']; ?>" data-acao="">
         <i class="fa fa-eye"></i>
     </a>
 <?php }else if($params['Tipo']=='Zoom'){ ?>
-    <a href="<?php echo URL_PATH; echo $params['btn_add']['url']; ?>" class="btn btn-info lajax explicar-titulo" title="<?php echo $params['btn_add']['nome']; ?>" acao="">
+    <a href="<?php echo URL_PATH; echo $params['btn_add']['url']; ?>" class="btn btn-info lajax explicar-titulo" title="<?php echo $params['btn_add']['nome']; ?>" data-acao="">
         <i class="fa fa-zoom-in"></i>
     </a>
 <?php }else if($params['Tipo']=='Editar'){ ?>
-    <a href="<?php echo URL_PATH; echo $params['btn_add']['url']; ?>" class="btn btn-warning lajax explicar-titulo" title="<?php echo $params['btn_add']['nome']; ?>" acao="">
+    <a href="<?php echo URL_PATH; echo $params['btn_add']['url']; ?>" class="btn btn-warning lajax explicar-titulo" title="<?php echo $params['btn_add']['nome']; ?>" data-acao="">
         <i class="fa fa-pencil"></i>
     </a>
 <?php }else if($params['Tipo']=='Deletar'){ ?>
-    <a href="<?php echo URL_PATH; echo $params['btn_add']['url']; ?>" class="btn btn-danger lajax explicar-titulo" confirma="<?php echo $params['btn_add']['onclick']; ?>" title="<?php echo $params['btn_add']['nome']; ?>" acao="">
+    <a href="<?php echo URL_PATH; echo $params['btn_add']['url']; ?>" class="btn btn-danger lajax explicar-titulo" data-confirma="<?php echo $params['btn_add']['onclick']; ?>" title="<?php echo $params['btn_add']['nome']; ?>" data-acao="">
         <i class="fa fa-trash "></i>
     </a>
 <?php } ?>

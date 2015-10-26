@@ -486,7 +486,7 @@ class usuario_veiculo_VeiculoControle extends usuario_veiculo_Controle
             $where = Array('veiculo'=>$veiculo_id);
         }
         $i = 0;
-        $this->_Visual->Blocar('<a title="Adicionar Evento de Veiculo" class="btn btn-success lajax explicar-titulo" acao="" href="'.URL_PATH.'usuario_veiculo/Veiculo/Veiculos_Evento_Add/'.$veiculo_id.'">Adicionar novo evento nesse Veiculo</a><div class="space15"></div>');
+        $this->_Visual->Blocar('<a title="Adicionar Evento de Veiculo" class="btn btn-success lajax explicar-titulo" data-acao="" href="'.URL_PATH.'usuario_veiculo/Veiculo/Veiculos_Evento_Add/'.$veiculo_id.'">Adicionar novo evento nesse Veiculo</a><div class="space15"></div>');
         $linhas = $this->_Modelo->db->Sql_Select('Usuario_Veiculo_Evento');
         if($linhas!==false && !empty($linhas)){
             if(is_object($linhas)) $linhas = Array(0=>$linhas);

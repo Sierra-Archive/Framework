@@ -54,7 +54,7 @@ class comercio_UnidadeControle extends comercio_Controle
     public function Unidades(){
         self::Endereco_Unidade(false);
         $i = 0;
-        $this->_Visual->Blocar('<a title="Adicionar Unidade" class="btn btn-success lajax explicar-titulo" acao="" href="'.URL_PATH.'comercio/Unidade/Unidades_Add">Adicionar nova Unidade</a><div class="space15"></div>');
+        $this->_Visual->Blocar('<a title="Adicionar Unidade" class="btn btn-success lajax explicar-titulo" data-acao="" href="'.URL_PATH.'comercio/Unidade/Unidades_Add">Adicionar nova Unidade</a><div class="space15"></div>');
         $linhas = $this->_Modelo->db->Sql_Select('Comercio_Unidade');
         if($linhas!==false && !empty($linhas)){
             if(is_object($linhas)) $linhas = Array(0=>$linhas);

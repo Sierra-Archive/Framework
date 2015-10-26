@@ -77,7 +77,7 @@ class Curso_Principal implements \Framework\PrincipalInterface
         $cursos = $Modelo->db->Sql_Select('Curso',$where);
         if($cursos===false) return false;
         // add botao
-        $Visual->Blocar('<a title="Adicionar Curso" class="btn btn-success lajax explicar-titulo" acao="" href="'.URL_PATH.'Curso/Curso/Cursos_Add">Adicionar novo Curso</a><div class="space15"></div>');
+        $Visual->Blocar('<a title="Adicionar Curso" class="btn btn-success lajax explicar-titulo" data-acao="" href="'.URL_PATH.'Curso/Curso/Cursos_Add">Adicionar novo Curso</a><div class="space15"></div>');
         if(is_object($cursos)) $cursos = Array(0=>$cursos);
         if($cursos!==false && !empty($cursos)){
             list($tabela,$i) = Curso_CursoControle::Cursos_Tabela($cursos);
@@ -98,7 +98,7 @@ class Curso_Principal implements \Framework\PrincipalInterface
         $albuns = $Modelo->db->Sql_Select('Curso_Turma',$where);
         if($albuns===false) return false;
         // add botao
-        $Visual->Blocar('<a title="Adicionar Turma" class="btn btn-success lajax explicar-titulo" acao="" href="'.URL_PATH.'Curso/Turma/Turmas_Add">Adicionar nova Turma</a><div class="space15"></div>');
+        $Visual->Blocar('<a title="Adicionar Turma" class="btn btn-success lajax explicar-titulo" data-acao="" href="'.URL_PATH.'Curso/Turma/Turmas_Add">Adicionar nova Turma</a><div class="space15"></div>');
         if(is_object($albuns)) $albuns = Array(0=>$albuns);
         if($albuns!==false && !empty($albuns)){
             list($tabela,$i) = Curso_TurmaControle::Turmas_Tabela($albuns);

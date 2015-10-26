@@ -3,7 +3,7 @@
         <?php if($params['btn_add']){ ?>
             <div class="btn-group">
                 <?php if($params['btn_add']!=='#' && $params['btn_add']!==''){ ?>
-                    <a href="<?php echo URL_PATH; echo $params['btn_add']['url']; ?>" class="lajax" acao="">
+                    <a href="<?php echo URL_PATH; echo $params['btn_add']['url']; ?>" class="lajax" data-acao="">
                 <?php } ?>
                         <button class="btn btn-ripple  green" onClick="<?php echo $params['btn_add']['onclick']; ?>">
                             <?php echo $params['btn_add']['nome']; ?> <i class="ion-android-add"></i>
@@ -31,29 +31,29 @@
     </div>
     <div class="space15"></div>
 <?php }else if($params['Tipo']=='Personalizado'){ ?>
-    <a href="<?php echo URL_PATH; echo $params['btn_add']['url']; ?>" class="btn btn-floating btn-ripple btn-<?php echo $params['btn_add']['cor']; ?> lajax explicar-titulo" title="<?php echo $params['btn_add']['nome']; ?>" acao="">
+    <a href="<?php echo URL_PATH; echo $params['btn_add']['url']; ?>" class="btn btn-floating btn-ripple btn-<?php echo $params['btn_add']['cor']; ?> lajax explicar-titulo" title="<?php echo $params['btn_add']['nome']; ?>" data-acao="">
         <i class="ion-<?php echo $params['btn_add']['icone']; ?>"></i>
     </a>
 
 <?php }else if($params['Tipo']==='Destaque0'){ ?>
-    <a href="<?php echo URL_PATH; echo $params['btn_add']['url']; ?>" class="btn btn-floating btn-ripple btn-danger lajax explicar-titulo" title="<?php echo $params['btn_add']['nome']; ?>" acao="">
+    <a href="<?php echo URL_PATH; echo $params['btn_add']['url']; ?>" class="btn btn-floating btn-ripple btn-danger lajax explicar-titulo" title="<?php echo $params['btn_add']['nome']; ?>" data-acao="">
         <i class="ion-heart-broken"></i>
     </a>
 <?php }else if($params['Tipo']==='Destaque1'){ ?>
-    <a href="<?php echo URL_PATH; echo $params['btn_add']['url']; ?>" class="btn btn-floating btn-ripple btn-success lajax explicar-titulo" title="<?php echo $params['btn_add']['nome']; ?>" acao="">
+    <a href="<?php echo URL_PATH; echo $params['btn_add']['url']; ?>" class="btn btn-floating btn-ripple btn-success lajax explicar-titulo" title="<?php echo $params['btn_add']['nome']; ?>" data-acao="">
         <i class="ion-heart"></i>
     </a>
 
 <?php }else if($params['Tipo']==='Status0'){ ?>
-    <a href="<?php echo URL_PATH; echo $params['btn_add']['url']; ?>" class="btn btn-floating btn-ripple btn-danger lajax explicar-titulo" title="<?php echo $params['btn_add']['nome']; ?>" acao="">
+    <a href="<?php echo URL_PATH; echo $params['btn_add']['url']; ?>" class="btn btn-floating btn-ripple btn-danger lajax explicar-titulo" title="<?php echo $params['btn_add']['nome']; ?>" data-acao="">
         <i class="ion-eye-disabled" alt="Desativado"></i>
     </a>
 <?php }else if($params['Tipo']==='Status1'){ ?>
-    <a href="<?php echo URL_PATH; echo $params['btn_add']['url']; ?>" class="btn btn-floating btn-ripple btn-success lajax explicar-titulo" title="<?php echo $params['btn_add']['nome']; ?>" acao="">
+    <a href="<?php echo URL_PATH; echo $params['btn_add']['url']; ?>" class="btn btn-floating btn-ripple btn-success lajax explicar-titulo" title="<?php echo $params['btn_add']['nome']; ?>" data-acao="">
         <i class="ion-eye" alt="Ativado"></i>
     </a>
 <?php }else if($params['Tipo']==='Email'){ ?>
-    <a href="<?php echo URL_PATH; echo $params['btn_add']['url']; ?>" class="btn btn-floating btn-ripple btn-primary lajax explicar-titulo" title="<?php echo $params['btn_add']['nome']; ?>" acao="">
+    <a href="<?php echo URL_PATH; echo $params['btn_add']['url']; ?>" class="btn btn-floating btn-ripple btn-primary lajax explicar-titulo" title="<?php echo $params['btn_add']['nome']; ?>" data-acao="">
         <i class="ion-email"></i>
     </a>
 <?php }else if($params['Tipo']==='Baixar'){ ?>
@@ -61,19 +61,19 @@
         <i class="ion-code-download"></i>
     </a>
 <?php }else if($params['Tipo']==='Visualizar'){ ?>
-    <a href="<?php echo URL_PATH; echo $params['btn_add']['url']; ?>" class="btn btn-floating btn-ripple btn-success lajax explicar-titulo" title="<?php echo $params['btn_add']['nome']; ?>" acao="">
+    <a href="<?php echo URL_PATH; echo $params['btn_add']['url']; ?>" class="btn btn-floating btn-ripple btn-success lajax explicar-titulo" title="<?php echo $params['btn_add']['nome']; ?>" data-acao="">
         <i class="ion-search"></i>
     </a>
 <?php }else if($params['Tipo']==='Zoom'){ ?>
-    <a href="<?php echo URL_PATH; echo $params['btn_add']['url']; ?>" class="btn btn-floating btn-ripple btn-info lajax explicar-titulo" title="<?php echo $params['btn_add']['nome']; ?>" acao="">
+    <a href="<?php echo URL_PATH; echo $params['btn_add']['url']; ?>" class="btn btn-floating btn-ripple btn-info lajax explicar-titulo" title="<?php echo $params['btn_add']['nome']; ?>" data-acao="">
         <i class="fa fa-zoom-in"></i>
     </a>
 <?php }else if($params['Tipo']==='Editar'){ ?>
-    <a href="<?php echo URL_PATH; echo $params['btn_add']['url']; ?>" class="btn btn-floating btn-ripple btn-warning lajax explicar-titulo" confirma="Deseja Realmente Editar?" title="<?php echo $params['btn_add']['nome']; ?>" acao="">
+    <a href="<?php echo URL_PATH; echo $params['btn_add']['url']; ?>" class="btn btn-floating btn-ripple btn-warning lajax explicar-titulo" data-confirma="Deseja Realmente Editar?" title="<?php echo $params['btn_add']['nome']; ?>" data-acao="">
         <i class="ion-pencil"></i>
     </a>
 <?php }else if($params['Tipo']==='Deletar'){ ?>
-    <a href="<?php echo URL_PATH; echo $params['btn_add']['url']; ?>" class="btn btn-floating btn-ripple btn-danger lajax explicar-titulo" confirma="<?php echo $params['btn_add']['onclick']; ?>" title="<?php echo $params['btn_add']['nome']; ?>" acao="">
+    <a href="<?php echo URL_PATH; echo $params['btn_add']['url']; ?>" class="btn btn-floating btn-ripple btn-danger lajax explicar-titulo" data-confirma="<?php echo $params['btn_add']['onclick']; ?>" title="<?php echo $params['btn_add']['nome']; ?>" data-acao="">
         <i class="ion-trash "></i>
     </a>
 <?php } ?>

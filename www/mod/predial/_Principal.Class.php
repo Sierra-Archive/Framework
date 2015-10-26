@@ -183,7 +183,7 @@ class predial_Principal implements \Framework\PrincipalInterface
         $advertencias = $Modelo->db->Sql_Select('Predial_Bloco_Apart_Advertencia',$where);
         if($advertencias===false) return false;
         // add botao
-        $Visual->Blocar('<a title="Adicionar Advertência" class="btn btn-success lajax explicar-titulo" acao="" href="'.URL_PATH.'predial/Advertencia/Advertencias_Add">Adicionar nova Advertência</a><div class="space15"></div>');
+        $Visual->Blocar('<a title="Adicionar Advertência" class="btn btn-success lajax explicar-titulo" data-acao="" href="'.URL_PATH.'predial/Advertencia/Advertencias_Add">Adicionar nova Advertência</a><div class="space15"></div>');
         if(is_object($advertencias)) $advertencias = Array(0=>$advertencias);
         if($advertencias!==false && !empty($advertencias)){
             list($tabela,$i) = predial_AdvertenciaControle::Advertencias_Tabela($advertencias);
@@ -203,7 +203,7 @@ class predial_Principal implements \Framework\PrincipalInterface
         $animais = $Modelo->db->Sql_Select('Predial_Bloco_Apart_Animal',$where);
         if($animais===false) return false;
         // add botao
-        $Visual->Blocar('<a title="Adicionar Animal" class="btn btn-success lajax explicar-titulo" acao="" href="'.URL_PATH.'predial/Correio/Animais_Add">Adicionar novo Animal</a><div class="space15"></div>');
+        $Visual->Blocar('<a title="Adicionar Animal" class="btn btn-success lajax explicar-titulo" data-acao="" href="'.URL_PATH.'predial/Correio/Animais_Add">Adicionar novo Animal</a><div class="space15"></div>');
         if(is_object($animais)) $animais = Array(0=>$animais);
         if($animais!==false && !empty($animais)){
             list($tabela,$i) = predial_CorreioControle::Animais_Tabela($animais);
@@ -223,7 +223,7 @@ class predial_Principal implements \Framework\PrincipalInterface
         $apartamentos = $Modelo->db->Sql_Select('Predial_Bloco_Apart',$where);
         if($apartamentos===false) return false;
         // add botao
-        $Visual->Blocar('<a title="Adicionar Apartamento" class="btn btn-success lajax explicar-titulo" acao="" href="'.URL_PATH.'predial/Apart/Aparts_Add">Adicionar novo Apartamento</a><div class="space15"></div>');
+        $Visual->Blocar('<a title="Adicionar Apartamento" class="btn btn-success lajax explicar-titulo" data-acao="" href="'.URL_PATH.'predial/Apart/Aparts_Add">Adicionar novo Apartamento</a><div class="space15"></div>');
         if(is_object($apartamentos)) $apartamentos = Array(0=>$apartamentos);
         if($apartamentos!==false && !empty($apartamentos)){
             list($tabela,$i) = predial_ApartControle::Aparts_Tabela($apartamentos);
@@ -243,7 +243,7 @@ class predial_Principal implements \Framework\PrincipalInterface
         $blocos = $Modelo->db->Sql_Select('Predial_Bloco',$where);
         if($blocos===false) return false;
         // add botao
-        $Visual->Blocar('<a title="Adicionar Bloco" class="btn btn-success lajax explicar-titulo" acao="" href="'.URL_PATH.'predial/Bloco/Blocos_Add">Adicionar novo Bloco</a><div class="space15"></div>');
+        $Visual->Blocar('<a title="Adicionar Bloco" class="btn btn-success lajax explicar-titulo" data-acao="" href="'.URL_PATH.'predial/Bloco/Blocos_Add">Adicionar novo Bloco</a><div class="space15"></div>');
         if(is_object($blocos)) $blocos = Array(0=>$blocos);
         if($blocos!==false && !empty($blocos)){
             list($tabela,$i) = predial_BlocoControle::Blocos_Tabela($blocos);
@@ -267,7 +267,7 @@ class predial_Principal implements \Framework\PrincipalInterface
         $correios = $Modelo->db->Sql_Select('Predial_Bloco_Apart_Correio',$where);
         if($correios===false) return false;
         // add botao
-        $Visual->Blocar('<a title="Adicionar Correio" class="btn btn-success lajax explicar-titulo" acao="" href="'.URL_PATH.'predial/Correio/Correios_Add">Adicionar novo Correio</a><div class="space15"></div>');
+        $Visual->Blocar('<a title="Adicionar Correio" class="btn btn-success lajax explicar-titulo" data-acao="" href="'.URL_PATH.'predial/Correio/Correios_Add">Adicionar novo Correio</a><div class="space15"></div>');
         if(is_object($correios)) $correios = Array(0=>$correios);
         if($correios!==false && !empty($correios)){
             list($tabela,$i) = predial_CorreioControle::Correios_Tabela($correios);
@@ -292,7 +292,7 @@ class predial_Principal implements \Framework\PrincipalInterface
         $informativos = $Modelo->db->Sql_Select('Predial_Bloco_Apart_Informativo',$where);
         if($informativos===false) return false;
         // add botao
-        $Visual->Blocar('<a title="Adicionar Informativo" class="btn btn-success lajax explicar-titulo" acao="" href="'.URL_PATH.'predial/Informativo/Informativos_Add">Adicionar novo Informativo</a><div class="space15"></div>');
+        $Visual->Blocar('<a title="Adicionar Informativo" class="btn btn-success lajax explicar-titulo" data-acao="" href="'.URL_PATH.'predial/Informativo/Informativos_Add">Adicionar novo Informativo</a><div class="space15"></div>');
         if(is_object($informativos)) $informativos = Array(0=>$informativos);
         if($informativos!==false && !empty($informativos)){
             list($tabela,$i) = predial_InformativoControle::Informativos_Tabela($informativos);
@@ -315,7 +315,7 @@ class predial_Principal implements \Framework\PrincipalInterface
         $veiculos = $Modelo->db->Sql_Select('Predial_Bloco_Apart_Veiculo',$where);
         if($veiculos===false) return false;
         // add botao
-        $Visual->Blocar('<a title="Adicionar Veiculo" class="btn btn-success lajax explicar-titulo" acao="" href="'.URL_PATH.'predial/Correio/Veiculos_Add">Adicionar novo Veiculo</a><div class="space15"></div>');
+        $Visual->Blocar('<a title="Adicionar Veiculo" class="btn btn-success lajax explicar-titulo" data-acao="" href="'.URL_PATH.'predial/Correio/Veiculos_Add">Adicionar novo Veiculo</a><div class="space15"></div>');
         if(is_object($veiculos)) $veiculos = Array(0=>$veiculos);
         if($veiculos!==false && !empty($veiculos)){
             list($tabela,$i) = predial_CorreioControle::Veiculos_Tabela($veiculos);

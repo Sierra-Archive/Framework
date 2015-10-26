@@ -220,7 +220,7 @@ class Financeiro_Controle extends \Framework\App\Controle
                     )                                       = $chamar::Financeiro_Motivo_Exibir($valor->motivoid);
                     $tabela['Motivo'][$i]                   = $responsavel.' com '.$motivo;
                     $tabela['Valor'][$i]                    = $valor->valor;
-                    //$tabela['Data do Vencimento'][$i]       = '<a href="'.URL_PATH.'Financeiro/Pagamento/Financeiros_VencimentoEdit/'.$valor->id.'" class="lajax" acao=""><span id="financeirovenc'.$valor->id.'">'.$valor->dt_vencimento.'</span></a>';
+                    //$tabela['Data do Vencimento'][$i]       = '<a href="'.URL_PATH.'Financeiro/Pagamento/Financeiros_VencimentoEdit/'.$valor->id.'" class="lajax" data-acao=""><span id="financeirovenc'.$valor->id.'">'.$valor->dt_vencimento.'</span></a>';
                     
                     $tabela['Funções'][$i]                  = $this->_Visual->Tema_Elementos_Btn('Visualizar' ,Array('Visualizar'         ,'Financeiro/Pagamento/Financeiro_View/'.$valor->id.'/'    ,''),$perm_visualizar).
                                                               $this->_Visual->Tema_Elementos_Btn(

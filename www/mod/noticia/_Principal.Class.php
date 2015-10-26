@@ -37,7 +37,7 @@ class noticia_Principal implements \Framework\PrincipalInterface
     static function Widget(&$_Controle){
         $_Controle->Widget_Add('Superior',
         '<li class="dropdown mtop5">'.
-            '<a class="dropdown-toggle element lajax" acao="" data-placement="bottom" data-toggle="tooltip" href="'.URL_PATH.'noticia/Admin/Noticias_Add" data-original-title="Nova Noticia">'.
+            '<a class="dropdown-toggle element lajax" data-acao="" data-placement="bottom" data-toggle="tooltip" href="'.URL_PATH.'noticia/Admin/Noticias_Add" data-original-title="Nova Noticia">'.
                 '<i class="fa fa-rss"></i>'.
             '</a>'.
         '</li>');
@@ -81,7 +81,7 @@ class noticia_Principal implements \Framework\PrincipalInterface
         $noticias = $Modelo->db->Sql_Select('Noticia',$where);
         if($noticias===false) return false;
         // add botao
-        $Visual->Blocar('<a title="Adicionar Noticia" class="btn btn-success lajax explicar-titulo" acao="" href="'.URL_PATH.'Noticia/Admin/Noticias_Add">Adicionar novo Noticia</a><div class="space15"></div>');
+        $Visual->Blocar('<a title="Adicionar Noticia" class="btn btn-success lajax explicar-titulo" data-acao="" href="'.URL_PATH.'Noticia/Admin/Noticias_Add">Adicionar novo Noticia</a><div class="space15"></div>');
         if(is_object($noticias)) $noticias = Array(0=>$noticias);
         if($noticias!==false && !empty($noticias)){
             list($tabela,$i) = noticia_AdminControle::Noticias_Tabela($noticias);

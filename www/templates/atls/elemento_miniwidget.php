@@ -9,7 +9,7 @@ foreach($params['widgets'] as $v){
         echo '<ul class="nav nav-pills" role="tablist">';
     } ?>
     <li role="presentation" class="active <?php echo $v['cor']; echo $duplo; ?>">
-        <a href="<?php echo $v['link']; ?>" class="lajax" acao="">
+        <a href="<?php echo $v['link']; ?>" class="lajax" data-acao="">
             <?php echo $v['nome']; ?> <span class="badge"><?php echo $v['numero']; ?></span>
         </a>
     </li>

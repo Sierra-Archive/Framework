@@ -2337,7 +2337,7 @@ class comercio_PropostaControle extends comercio_Controle
         }
         $html = '<span class="badge badge-'.$tipo.'">'.$nometipo.'</span>';
         if(/*$status!='3' && */$objeto->condicao_pagar!=NULL && $link===true){
-            $html = '<a href="'.URL_PATH.'comercio/Proposta/StatusPropostas/'.$id.'/'.$tema.'" border="1" class="lajax explicar-titulo" title="'.$nometipo.'" acao="" confirma="Deseja Realmente alterar o Status?">'.$html.'</a>';
+            $html = '<a href="'.URL_PATH.'comercio/Proposta/StatusPropostas/'.$id.'/'.$tema.'" border="1" class="lajax explicar-titulo" title="'.$nometipo.'" data-acao="" data-confirma="Deseja Realmente alterar o Status?">'.$html.'</a>';
         }
         return $html;
     }
@@ -2953,7 +2953,7 @@ class comercio_PropostaControle extends comercio_Controle
         }
         $html = '<span class="badge badge-'.$tipo.'">'.$nometipo.'</span>';
         if($link===true && \Framework\App\Registro::getInstacia()->_Acl->Get_Permissao_Url('comercio/Proposta/StatusChecklists')!==false){
-            $html = '<a href="'.URL_PATH.'comercio/Proposta/StatusChecklists/'.$id.'" border="1" class="lajax explicar-titulo" title="'.$nometipo.'" acao="" confirma="Deseja Realmente alterar o Status?">'.$html.'</a>';
+            $html = '<a href="'.URL_PATH.'comercio/Proposta/StatusChecklists/'.$id.'" border="1" class="lajax explicar-titulo" title="'.$nometipo.'" data-acao="" data-confirma="Deseja Realmente alterar o Status?">'.$html.'</a>';
         }
         return $html;
     }
@@ -3225,7 +3225,7 @@ class comercio_PropostaControle extends comercio_Controle
         }
         self::Endereco_Visita_Comentario(false,$visita_id);
         $i = 0;
-        $this->_Visual->Blocar('<a title="Adicionar Comentário à Visita" class="btn btn-success lajax explicar-titulo" acao="" href="'.URL_PATH.'comercio/Proposta/Visitas_Comentario_Add/'.$visita_id.'">Adicionar novo comentário nesse Visita</a><div class="space15"></div>');
+        $this->_Visual->Blocar('<a title="Adicionar Comentário à Visita" class="btn btn-success lajax explicar-titulo" data-acao="" href="'.URL_PATH.'comercio/Proposta/Visitas_Comentario_Add/'.$visita_id.'">Adicionar novo comentário nesse Visita</a><div class="space15"></div>');
         $comentario = $this->_Modelo->db->Sql_Select('Comercio_Visita_Comentario',$where);
         if($comentario!==false && !empty($comentario)){
             if(is_object($comentario)) $comentario = Array(0=>$comentario);

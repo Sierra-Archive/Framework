@@ -133,7 +133,7 @@ class Transporte_Principal implements \Framework\PrincipalInterface
         $armazens = $Modelo->db->Sql_Select('Transporte_Armazem',$where);
         if($armazens===false) return false;
         // add botao
-        $Visual->Blocar('<a title="Adicionar Armazem" class="btn btn-success lajax explicar-titulo" acao="" href="'.URL_PATH.'Transporte/Armazem/Armazens_Add">Adicionar novo Armazem</a><div class="space15"></div>');
+        $Visual->Blocar('<a title="Adicionar Armazem" class="btn btn-success lajax explicar-titulo" data-acao="" href="'.URL_PATH.'Transporte/Armazem/Armazens_Add">Adicionar novo Armazem</a><div class="space15"></div>');
         if(is_object($armazens)) $armazens = Array(0=>$armazens);
         if($armazens!==false && !empty($armazens)){
             list($tabela,$i) = Transporte_ArmazemControle::Armazens_Tabela($armazens);

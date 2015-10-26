@@ -585,7 +585,7 @@ class _Sistema_AdminControle extends _Sistema_Controle
                 // Procura Resultado
                 $tabela['#Id'][$i]              = '#'.$valor->id;
                 $tabela['Tipo de Grupo'][$i]    = $valor->categoria2;
-                $tabela['Nome'][$i]             = '<a href="'.URL_PATH.'_Sistema/Admin/Grupo_Permissao/'.$valor->id.'" acao="" class="lajax">'.$valor->nome.'</a>';
+                $tabela['Nome'][$i]             = '<a href="'.URL_PATH.'_Sistema/Admin/Grupo_Permissao/'.$valor->id.'" data-acao="" class="lajax">'.$valor->nome.'</a>';
                 $tabela['Integrantes'][$i]      = $num_qnt;
                 $tabela['Funções'][$i]          = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Grupo'        ,'_Sistema/Admin/Grupos_Edit/'.$valor->id.'/'.$grupocat    ,''),$perm_editar);
                 if($num_qnt===0){

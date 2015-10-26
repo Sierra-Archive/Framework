@@ -46,7 +46,7 @@ class comercio_venda_Principal implements \Framework\PrincipalInterface
                     $numero = $valor->valor;
                     $html .= '<a data-original-title="Novo Caixa" 
                         href="'.SISTEMA_URL.SISTEMA_DIR.'comercio_venda/Carrinho/Carrinhos_Add?popup=true" 
-                        data-toggle="tooltip" data-placement="bottom" acao="" class="fa fa-btn col-3 lajax">
+                        data-toggle="tooltip" data-placement="bottom" data-acao="" class="fa fa-btn col-3 lajax">
                         <i class="fa fa-food"></i>
                         <div>Balcão '.$i.'</div>
                         <span class="badge badge-'.$cor.'">'.$numero.'</span>
@@ -81,7 +81,7 @@ class comercio_venda_Principal implements \Framework\PrincipalInterface
                 // Faz o Html da Parada
                 $html .= '<a data-original-title="Novo Caixa" 
                         href="'.SISTEMA_URL.SISTEMA_DIR.'comercio_venda/Carrinho/Carrinhos_Add?popup=true" 
-                        data-toggle="tooltip" data-placement="bottom" acao="" class="fa fa-btn col-3 lajax">
+                        data-toggle="tooltip" data-placement="bottom" data-acao="" class="fa fa-btn col-3 lajax">
                         <i class="fa fa-food"></i>
                     <div>'.$valor->nome.'</div>
                     <span class="badge badge-'.$cor.'">'.$numero.'</span>
@@ -137,7 +137,7 @@ class comercio_venda_Principal implements \Framework\PrincipalInterface
     static function Widget(&$_Controle){
         $_Controle->Widget_Add('Superior',
         '<li class="dropdown mtop5">'.
-            '<a class="dropdown-toggle element lajax" acao="" data-placement="bottom" data-toggle="tooltip" href="'.URL_PATH.'comercio_venda/Carrinho/Carrinhos_Add" data-original-title="Novo Caixa">'.
+            '<a class="dropdown-toggle element lajax" data-acao="" data-placement="bottom" data-toggle="tooltip" href="'.URL_PATH.'comercio_venda/Carrinho/Carrinhos_Add" data-original-title="Novo Caixa">'.
                 '<i class="fa fa-shopping-cart"></i>'.
             '</a>'.
         '</li>');

@@ -57,7 +57,7 @@ class usuario_veiculo_MarcaControle extends usuario_veiculo_Controle
     public function Marcas(){
         $i = 0;
         self::Endereco_Veiculo_Marca(false);
-        $this->_Visual->Blocar('<a title="Adicionar Marca" class="btn btn-success lajax explicar-titulo" acao="" href="'.URL_PATH.'usuario_veiculo/Marca/Marcas_Add">Adicionar nova Marca</a><div class="space15"></div>');
+        $this->_Visual->Blocar('<a title="Adicionar Marca" class="btn btn-success lajax explicar-titulo" data-acao="" href="'.URL_PATH.'usuario_veiculo/Marca/Marcas_Add">Adicionar nova Marca</a><div class="space15"></div>');
         $linhas = $this->_Modelo->db->Sql_Select('Usuario_Veiculo_Marca');
         if($linhas!==false && !empty($linhas)){
             if(is_object($linhas)) $linhas = Array(0=>$linhas);

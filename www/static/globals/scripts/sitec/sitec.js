@@ -431,9 +431,9 @@ var Sierra = (function () {
             return false;
         }else{
             // Verifica é necessário Confirmação
-            if (link.attr('confirma') !== undefined) {
+            if (link.attr('data-confirma') !== undefined) {
                 $.blockUI({ 
-                    message: '<div style="padding: 10px;"><h3>'+link.attr('confirma')+'</h3> <input class="btn" type="button" id="confirmacao_sim" value="Sim" /> <input class="btn" type="button" id="confirmacao_nao" value="Não" /></div>', 
+                    message: '<div style="padding: 10px;"><h3>'+link.attr('data-confirma')+'</h3> <input class="btn" type="button" id="confirmacao_sim" value="Sim" /> <input class="btn" type="button" id="confirmacao_nao" value="Não" /></div>', 
                     css: { width: '275px' } 
                 });
                 $(document.getElementById('confirmacao_sim')).click(function () { 
@@ -1099,8 +1099,8 @@ var Sierra = (function () {
     function Control_Link_Dinamico (link) {
         // exibe carregando, captura url e executa acao caso exista
         var url = link.attr('href');
-        if (link.attr('acao') !== '' && link.attr('acao') !== 'undefined') {
-            eval(link.attr('acao')+'(link);');
+        if (link.attr('data-acao') !== '' && link.attr('data-acao') !== 'undefined') {
+            eval(link.attr('data-acao')+'(link);');
         }
         // Corta e Chama AJAX
         Modelo_Ajax_Chamar(url,'','get',true,false,true);

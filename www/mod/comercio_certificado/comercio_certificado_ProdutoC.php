@@ -69,7 +69,7 @@ class comercio_certificado_ProdutoControle extends comercio_certificado_Controle
      */
     public function Produtos(){
         $i = 0;
-        $html = '<span id="prodaddmostrar" style="display: none;"><a title="Adicionar Produto" class="btn btn-success lajax explicar-titulo" acao="" href="'.URL_PATH.'comercio_certificado/Produto/Produtos_Add">Adicionar novo Produto</a><div class="space15"></div></span>';
+        $html = '<span id="prodaddmostrar" style="display: none;"><a title="Adicionar Produto" class="btn btn-success lajax explicar-titulo" data-acao="" href="'.URL_PATH.'comercio_certificado/Produto/Produtos_Add">Adicionar novo Produto</a><div class="space15"></div></span>';
         $produto = $this->_Modelo->db->Sql_Select('Comercio_Produto');
         if($produto!==false && !empty($produto)){
             if(is_object($produto)) $produto = Array(0=>$produto);
