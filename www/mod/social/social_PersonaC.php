@@ -554,6 +554,8 @@ class social_PersonaControle extends social_Controle
      * @version 0.4.2
      */
     public function Ficou_Edit2($id,$persona_id=false){
+        if(!isset($_POST['nome'])) return false;
+        
         $titulo     = __('Ficada de Pessoa editada com Sucesso');
         $dao        = Array('Social_Ficou',$id);
         if($persona_id===false){

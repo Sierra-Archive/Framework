@@ -658,7 +658,7 @@ Class Sistema_Funcoes {
      * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
     public static function Tranf_Url_Https($url){
-        return str_replace($url,'http://','https://');
+        return str_replace('http://','https://',$url);
     }
     /**
      * Transforma Tempo para Segundos
