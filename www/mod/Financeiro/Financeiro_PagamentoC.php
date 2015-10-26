@@ -262,6 +262,7 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         $this->_Visual->Json_Info_Update('Titulo',$titulo); 
     }
+    
     static function Financeiros_Campos_Retirar(&$campos){
         //self::DAO_Campos_Retira($campos, 'dt_pago');
         

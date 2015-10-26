@@ -199,9 +199,39 @@ class ModulosTest extends \PHPUnit_Framework_TestCase {
                         $output = ob_get_contents();
                         ob_end_clean();
                         
-                        // Se for String
+                        // Trata a Resposta
                         if(is_string($output) && is_object(json_decode($output)) && (json_last_error() == JSON_ERROR_NONE)){
                             
+                            // Trata Json se for Json Válido
+                            $output = json_decode($output, true);
+                            $have_tipo = Array();
+                            $have_title = false;
+                            $have_history = false;
+                            $have_callback = false;
+                            foreach($output as $indice3=>&$valor3){
+                                if($indice3==='Info'){
+                                    foreach($valor3 as $indice4=>&$valor4){
+                                        if($indice4==='Titulo'){
+                                            $have_title = true;
+                                        }else if($indice4==='Historico'){
+                                            $have_history = true;
+                                        }else if($indice4==='Tipo'){
+                                            $have_tipo = &$valor4;
+                                        }else if($indice4==='callback'){
+                                            $have_callback = true;
+                                        }else{
+                                            throw new \Exception($indice4.' é inválido dentro de Info: '.$getmodulo.' - '.$getsubmodulo.' - '.$getmetodo, 404);
+                                        }
+                                    }
+                                }else if($indice3==='Conteudo'){
+                                    foreach($valor3 as &$valor4){
+                                        if($valor4['html']==='') continue;
+                                        AssertHTML5::isValidMarkup($valor4['html'],'Url:'.$getmodulo.'/'.$submodulo.'/'.$getmetodo.' -> HTML:'.$valor4['html']);
+                                    }
+                                }else{
+                                    throw new \Exception($indice3.' é inválido: '.$getmodulo.' - '.$getsubmodulo.' - '.$getmetodo, 404); //
+                                }
+                            }
                         }else if(is_string($output) && $output!=''){
                             var_dump(json_last_error(),JSON_ERROR_NONE);
                             AssertHTML5::isValidMarkup($output,'Url:'.$getmodulo.'/'.$submodulo.'/'.$getmetodo.' -> HTML:'.$output);

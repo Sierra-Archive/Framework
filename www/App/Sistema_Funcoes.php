@@ -237,6 +237,18 @@ Class Sistema_Funcoes {
         return $url;
     }
     /**
+     * Verifica se uma URL possui SSL
+     * @param type $url
+     * @return bollean (yes or no)
+     */
+    public static function Url_Secure($url){
+        if(strpos($url,'https://')===0){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    /**
      * Verifica a Versão do PHP
      * Returna TRUE para comporta a versao, e false para versao nao compativel
      * 
@@ -635,6 +647,18 @@ Class Sistema_Funcoes {
         }
         if($termina_em==='minutos') return ($valor_final===''?'0 minutos':$valor_final);
         return $valor_final;
+    }
+    /**
+     * Transforma Tempo para Segundos
+     * 
+     * @param string $float
+     * @return int
+     * 
+     * @version 0.4.2
+     * @author Ricardo Sierra <web@ricardosierra.com.br>
+     */
+    public static function Tranf_Url_Https($url){
+        return str_replace($url,'http://','https://');
     }
     /**
      * Transforma Tempo para Segundos

@@ -212,7 +212,7 @@ class Simulador_SimuladorControle extends Simulador_Controle
     }
     public function Status($id=false){
         if($id===false){
-            throw new \Exception('Registro não informado:'. $id, 404);
+            return false;
         }
         $resultado = $this->_Modelo->db->Sql_Select('Simulador', Array('id'=>$id),1);
         if($resultado===false || !is_object($resultado)){

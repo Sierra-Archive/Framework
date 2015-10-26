@@ -127,11 +127,11 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
     }
     public function Propostas_Status($id=false){
         if($id===false){
-            throw new \Exception('Registro não informado:'. $id, 404);
+            return false;
         }
         $resultado = $this->_Modelo->db->Sql_Select('Comercio_Certificado_Proposta', Array('id'=>$id),1);
         if($resultado===false || !is_object($resultado)){
-            throw new \Exception('Essa registro não existe:'. $id, 404);
+            return false;
         }
         if($resultado->status===1 || $resultado->status==='1'){
             $resultado->status='2';

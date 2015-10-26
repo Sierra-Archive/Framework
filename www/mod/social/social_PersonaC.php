@@ -244,7 +244,9 @@ class social_PersonaControle extends social_Controle
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
     public function Personas_View($persona_id = false){
-        if($persona_id===false || $persona_id==0 || !isset($persona_id)) throw new \Exception('Persona não informada',404);
+        if($persona_id===false || $persona_id==0 || !isset($persona_id)){
+            return false;
+        }
         // mostra todas as suas mensagens
         $where = Array(
             'id'    =>  $persona_id,
@@ -319,9 +321,9 @@ class social_PersonaControle extends social_Controle
      */
     public function Personas_Comentario_Add($persona_id = false){
         // Proteção E chama Endereço
-        if($persona_id===false) throw new \Exception('Persona não informado',404);
+        if($persona_id===false) return false;
         $persona = $this->_Modelo->db->Sql_Select('Social',Array('id'=>$persona_id), 1);
-        if($persona===false) throw new \Exception('Persona não existe:'.$persona_id,404);
+        if($persona===false) return false;
         $this->Endereco_Persona_Ver($persona);
         // Começo
         $persona_id = (int) $persona_id;
@@ -343,7 +345,7 @@ class social_PersonaControle extends social_Controle
      * @version 0.4.2
      */
     public function Personas_Comentario_Add2($persona_id = false){
-        if($persona_id===false) throw new \Exception('Persona não informado',404);
+        if($persona_id===false) return false;
         $titulo     = __('Comentário do Persona Adicionado com Sucesso');
         $dao        = 'Social_Comentario';
         $funcao     = '$this->Personas_View('.$persona_id.');';
@@ -359,8 +361,8 @@ class social_PersonaControle extends social_Controle
      * @version 0.4.2
      */
     public function Personas_Comentario_Edit($persona_id = false,$id = 0){
-        if($persona_id===false) throw new \Exception('Persona não informado',404);
-        if($id         == 0   ) throw new \Exception('Comentário não informado',404);
+        if($persona_id===false) return false;
+        if($id         == 0   ) return false;
         // Proteção E chama Endereço
         $persona = $this->_Modelo->db->Sql_Select('Social',Array('id'=>$persona_id), 1);
         if($persona===false) throw new \Exception('Persona não existe:'.$persona_id,404);
@@ -385,8 +387,8 @@ class social_PersonaControle extends social_Controle
      * @version 0.4.2
      */
     public function Personas_Comentario_Edit2($persona_id = false,$id = 0){
-        if($persona_id===false) throw new \Exception('Persona não informado',404);
-        if($id         == 0   ) throw new \Exception('Comentário não informado',404);
+        if($persona_id===false) return false;
+        if($id         == 0   ) return false;
         $titulo     = __('Comentário de Persona Editado com Sucesso');
         $dao        = Array('Social_Comentario',$id);
         $funcao     = '$this->Personas_View('.$persona_id.');';

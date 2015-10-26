@@ -376,11 +376,21 @@ if( file_exists  (LAY_CONF.'config.php')){
     throw new \Exception('Config do Layoult não Encontrado', 404);
 }
 
-
 /**
  * URL DO SISTEMA
  */
-define('URL_PATH',          SISTEMA_URL.SISTEMA_DIR);
+// Se não for https, Verifica se tem certificado e redireciona
+if(Framework\App\Sistema_Funcoes::Url_Secure(SISTEMA_URL.SISTEMA_DIR)){
+    define('URL_PATH',          SISTEMA_URL.SISTEMA_DIR);
+}else if(isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off'){
+    Framework\App\Sistema_Funcoes::Redirect(Framework\App\Sistema_Funcoes::Tranf_Url_Https(URL_PATH));
+}else if(isset($_SERVER['HTTP_REFERER']) && Framework\App\Sistema_Funcoes::Url_Secure($_SERVER['HTTP_REFERER']) ){
+    define('URL_PATH',          Framework\App\Sistema_Funcoes::Tranf_Url_Https(SISTEMA_URL.SISTEMA_DIR));
+}else{
+    define('URL_PATH',          SISTEMA_URL.SISTEMA_DIR);
+}
+
+
 /**
  * Endereço da Pasta Web para o Cliente
  */

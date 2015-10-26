@@ -467,12 +467,11 @@ class Acl{
      */
     public function Get_Permissao_Url($url) {
         // Economiza Tempo quando a URL é obvia que é permitida
-        if($url===SISTEMA_URL.SISTEMA_DIR.'#' || $url===SISTEMA_URL.SISTEMA_DIR.'#/'){
+        if($url===NULL || $url===SISTEMA_URL.SISTEMA_DIR.'#' || $url===SISTEMA_URL.SISTEMA_DIR.'#/' || $url===SISTEMA_URL.SISTEMA_DIR || $url===SISTEMA_URL.SISTEMA_DIR.'/'){
             return true;
         }
         // Começa Tratamento
         $tempo = new \Framework\App\Tempo('Acl Get Permissao');
-        
         
         // Faz Controle de Excesso de Permissao, para Performace
         ++static::$log_qnt_get_permissao;

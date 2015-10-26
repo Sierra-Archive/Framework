@@ -105,6 +105,16 @@ class Sistema_FuncoesTest extends \PHPUnit_Framework_TestCase {
         $this->assertEquals('ricardosierra.com.br', Sistema_Funcoes::Url_Limpeza('http://www.ricardosierra.com.br'));
     }
 
+
+    /**
+     * @covers Framework\App\Sistema_Funcoes::Url_Secure
+     * @todo   Implement testUrl_Secure().
+     */
+    public function testUrl_Secure() {
+        $this->assertEquals(true, Sistema_Funcoes::Url_Secure('https://php.net/manual/pt_BR/function.rand.php'));
+        $this->assertEquals(false, Sistema_Funcoes::Url_Secure('http://www.ricardosierra.com.br'));
+    }
+
     /**
      * @covers Framework\App\Sistema_Funcoes::VersionPHP
      * @todo   Implement testVersionPHP().
@@ -254,7 +264,15 @@ class Sistema_FuncoesTest extends \PHPUnit_Framework_TestCase {
                 'This test has not been implemented yet.'
         );
     }
-
+    
+    /**
+     * @covers Framework\App\Sistema_Funcoes::Tranf_Url_Https
+     * @todo   Implement testTranf_Url_Https().
+     */
+    public function testTranf_Url_Https() {
+        $this->assertEquals('https://php.net/manual/pt_BR/function.rand.php', Sistema_Funcoes::Tranf_Url_Https('http://php.net/manual/pt_BR/function.rand.php'));
+    }
+    
     /**
      * @covers Framework\App\Sistema_Funcoes::Tranf_Tempo_Segundo
      * @todo   Implement testTranf_Tempo_Segundo().
