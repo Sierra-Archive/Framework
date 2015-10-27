@@ -155,7 +155,7 @@ class social_AcaoControle extends social_Controle
         $funcao     = '$this->Acao('.$persona_id.');';
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = __('Ação cadastrado com sucesso.');
-       if($artista===false){
+        if($persona_id===false){
             $funcao     = '$this->Acao(0);';
             $alterar    = Array();
         }else{

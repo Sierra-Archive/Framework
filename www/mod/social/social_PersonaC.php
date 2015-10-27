@@ -48,7 +48,11 @@ class social_PersonaControle extends social_Controle
         $_Controle = $Registro->_Controle;
         self::Endereco_Persona();
         if($true===true){
-            $_Controle->Tema_Endereco($persona->nome,'social/Persona/Personas_View/'.$persona->id);
+            if(is_object($persona)){
+                $_Controle->Tema_Endereco($persona->nome,'social/Persona/Personas_View/'.$persona->id);
+            }else{
+                $_Controle->Tema_Endereco(__('Todas as Pessoas'),'social/Persona/Personas_View/');
+            }
         }else{
             $_Controle->Tema_Endereco($persona->nome);
         }
@@ -58,7 +62,11 @@ class social_PersonaControle extends social_Controle
         $_Controle = $Registro->_Controle;
         self::Endereco_Persona_Ver($persona);
         if($true===true){
-            $_Controle->Tema_Endereco($persona->nome,'social/Persona/Personas_View/'.$persona->id);
+            if(is_object($persona)){
+                $_Controle->Tema_Endereco($persona->nome,'social/Persona/Ficou_View/'.$persona->id);
+            }else{
+                $_Controle->Tema_Endereco(__('Todas as Pessoas'),'social/Persona/Ficou_View/');
+            }
         }else{
             $_Controle->Tema_Endereco($persona->nome);
         }
@@ -442,6 +450,8 @@ class social_PersonaControle extends social_Controle
             self::Endereco_Persona_Ver_Ficar(false);
             $where = Array();
         }else{
+            $persona_id = (int) $persona_id;
+            self::Endereco_Persona_Ver_Ficar($this->_Modelo->db->Sql_Select('Social','{sigla}id=\''.$persona_id.'\''));
             $where = Array(Array('persona1'=>$persona_id,'persona2'=>$persona_id));
         }
         
