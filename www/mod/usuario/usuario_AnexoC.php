@@ -103,12 +103,12 @@ class usuario_AnexoControle extends usuario_Controle
         if($usuario!==false && $usuario!=0){
             $resultado_usuario = $this->_Modelo->db->Sql_Select('Usuario', Array('id'=>$usuario),1);
             if($resultado_usuario===false){
-                throw new \Exception('Esse usuário não existe:'. $usuario, 404);
+                return _Sistema_erroControle::Erro_Fluxo('Esse usuário não existe:'. $usuario,404);
             }
             // Condicao de Query
             $where = Array('usuario'=>$resultado_usuario->id);
         }else{
-            throw new \Exception('Usuário não especificado:'. $usuario, 404);
+            return _Sistema_erroControle::Erro_Fluxo('Usuário não especificado:'. $usuario,404);
         }
         $fileTypes = array(
             // Audio
@@ -128,7 +128,7 @@ class usuario_AnexoControle extends usuario_Controle
             $arquivo->ext           = $ext[0];
             $arquivo->endereco      = $ext[1];
             $arquivo->nome          = $ext[2];
-            $this->_Modelo->db->Sql_Inserir($arquivo);
+            $this->_Modelo->db->Sql_Insert($arquivo);
             $this->_Visual->Json_Info_Update('Titulo', __('Upload com Sucesso'));
             $this->_Visual->Json_Info_Update('Historico', false);
             // Tras de Volta e Atualiza via Json
@@ -167,7 +167,7 @@ class usuario_AnexoControle extends usuario_Controle
         if($usuario!==false && $usuario!=0){
             $resultado_usuario = $this->_Modelo->db->Sql_Select('Usuario', Array('id'=>$usuario),1);
             if($resultado_usuario===false){
-                throw new \Exception('Esse usuário não existe:'. $usuario, 404);
+                return _Sistema_erroControle::Erro_Fluxo('Esse usuário não existe:'. $usuario,404);
             }
             // Condicao de Query
             $where = Array('usuario'=>$resultado_usuario->id);
@@ -208,7 +208,7 @@ class usuario_AnexoControle extends usuario_Controle
     public function Download($anexo,$usuario=false){
         $resultado_arquivo = $this->_Modelo->db->Sql_Select('Usuario_Anexo', Array('id'=>$anexo),1);
         if($resultado_arquivo===false || !is_object($resultado_arquivo)){
-            throw new \Exception('Esse anexo não existe:'. $anexo, 404);
+            return _Sistema_erroControle::Erro_Fluxo('Esse anexo não existe:'. $anexo,404);
         }
         $endereco = 'usuario'.DS.'Anexos'.DS.strtolower($resultado_arquivo->endereco.'.'.$resultado_arquivo->ext);
         self::Export_Download($endereco, $resultado_arquivo->nome.'.'.$resultado_arquivo->ext);

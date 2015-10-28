@@ -80,19 +80,19 @@ class Enquete_RespostaControle extends Enquete_Controle
      */
     public function Respostas($enquete=false, $export=false){
         if($enquete===false){
-            throw new \Exception('Enquete não existe:'. $enquete, 404);
+            return _Sistema_erroControle::Erro_Fluxo('Enquete não existe:'. $enquete,404);
         }
         $enquete = (int) $enquete;
         if($enquete==0){
             $enquete_registro = $this->_Modelo->db->Sql_Select('Enquete',Array(),1,'id DESC');
             if($enquete_registro===false){
-                throw new \Exception('Não existe nenhuma enquete:', 404);
+                return _Sistema_erroControle::Erro_Fluxo('Não existe nenhuma enquete:',404);
             }
             $enquete = $enquete_registro->id;
         }else{
             $enquete_registro = $this->_Modelo->db->Sql_Select('Enquete',Array('id'=>$enquete),1);
             if($enquete_registro===false){
-                throw new \Exception('Essa Enquete não existe:', 404);
+                return _Sistema_erroControle::Erro_Fluxo('Essa Enquete não existe:',404);
             }
         }
         self::Endereco_Resposta($enquete,false);
@@ -196,10 +196,10 @@ class Enquete_RespostaControle extends Enquete_Controle
      */
     public function Respostas_Edit($enquete = false,$id){
         if($enquete===false){
-            throw new \Exception('Enquete não existe:'. $enquete, 404);
+            return _Sistema_erroControle::Erro_Fluxo('Enquete não existe:'. $enquete,404);
         }
         if($id===false){
-            throw new \Exception('Resposta não existe:'. $id, 404);
+            return _Sistema_erroControle::Erro_Fluxo('Resposta não existe:'. $id,404);
         }
         self::Endereco_Resposta($enquete);
         $id         = (int) $id;
@@ -224,10 +224,10 @@ class Enquete_RespostaControle extends Enquete_Controle
      */
     public function Respostas_Edit2($enquete = false,$id){
         if($enquete===false){
-            throw new \Exception('Enquete não existe:'. $enquete, 404);
+            return _Sistema_erroControle::Erro_Fluxo('Enquete não existe:'. $enquete,404);
         }
         if($id===false){
-            throw new \Exception('Resposta não existe:'. $id, 404);
+            return _Sistema_erroControle::Erro_Fluxo('Resposta não existe:'. $id,404);
         }
         $id         = (int) $id;
         $enquete    = (int) $enquete;
@@ -249,10 +249,10 @@ class Enquete_RespostaControle extends Enquete_Controle
     public function Respostas_Del($enquete=false,$id = false){
         
         if($enquete===false){
-            throw new \Exception('Enquete não existe:'. $enquete, 404);
+            return _Sistema_erroControle::Erro_Fluxo('Enquete não existe:'. $enquete,404);
         }
         if($id===false){
-            throw new \Exception('Resposta não existe:'. $id, 404);
+            return _Sistema_erroControle::Erro_Fluxo('Resposta não existe:'. $id,404);
         }
         // Antiinjection
     	$id = (int) $id;

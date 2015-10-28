@@ -1,4 +1,5 @@
 <?php
+var_dump($_POST,$_GET,$_SERVER,$_COOKIE);exit;
 /*
  *face 
  * 

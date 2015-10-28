@@ -95,13 +95,13 @@ class Musica_AlbumControle extends Musica_Controle
             if($artista==0){
                 $artista_registro = $this->_Modelo->db->Sql_Select('Musica_Album_Artista',Array(),1,'id DESC');
                 if($artista_registro===false){
-                    throw new \Exception('Não existe nenhum artista:', 404);
+                    return _Sistema_erroControle::Erro_Fluxo('Não existe nenhum artista:',404);
                 }
                 $artista = $artista_registro->id;
             }else{
                 $artista_registro = $this->_Modelo->db->Sql_Select('Musica_Album_Artista',Array('id'=>$artista),1);
                 if($artista_registro===false){
-                    throw new \Exception('Esse Artista não existe:', 404);
+                    return _Sistema_erroControle::Erro_Fluxo('Esse Artista não existe:',404);
                 }
             }
             $where = Array(
@@ -197,13 +197,13 @@ class Musica_AlbumControle extends Musica_Controle
             if($artista==0){
                 $artista_registro = $this->_Modelo->db->Sql_Select('Musica_Album_Artista',Array(),1,'id DESC');
                 if($artista_registro===false){
-                    throw new \Exception('Não existe nenhuma artista:', 404);
+                    return _Sistema_erroControle::Erro_Fluxo('Não existe nenhuma artista:',404);
                 }
                 $artista = $artista_registro->id;
             }else{
                 $artista_registro = $this->_Modelo->db->Sql_Select('Musica_Album_Artista',Array('id'=>$artista),1);
                 if($artista_registro===false){
-                    throw new \Exception('Esse Artista não existe:', 404);
+                    return _Sistema_erroControle::Erro_Fluxo('Esse Artista não existe:',404);
                 }
             }
             $formlink   = 'Musica/Album/Albuns_Add2/'.$artista;
@@ -246,7 +246,7 @@ class Musica_AlbumControle extends Musica_Controle
     public function Albuns_Edit($id,$artista = false){
         if($artista==='false') $artista = false;
         if($id===false){
-            throw new \Exception('Album não existe:'. $id, 404);
+            return _Sistema_erroControle::Erro_Fluxo('Album não existe:'. $id,404);
         }
         $id         = (int) $id;
         if($artista!==false){
@@ -261,7 +261,7 @@ class Musica_AlbumControle extends Musica_Controle
         if($artista!==false){
             $artista_registro = $this->_Modelo->db->Sql_Select('Musica_Album_Artista',Array('id'=>$artista),1);
             if($artista_registro===false){
-                throw new \Exception('Esse Artista não existe:', 404);
+                return _Sistema_erroControle::Erro_Fluxo('Esse Artista não existe:',404);
             }
             $formlink   = 'Musica/Album/Albuns_Edit2/'.$id.'/'.$artista;
             self::DAO_Campos_Retira($campos,'artista');
@@ -283,7 +283,7 @@ class Musica_AlbumControle extends Musica_Controle
     public function Albuns_Edit2($id,$artista = false){
         if($artista==='false') $artista = false;
         if($id===false){
-            throw new \Exception('Album não existe:'. $id, 404);
+            return _Sistema_erroControle::Erro_Fluxo('Album não existe:'. $id,404);
         }
         $id         = (int) $id;
         if($artista!==false){
@@ -312,7 +312,7 @@ class Musica_AlbumControle extends Musica_Controle
         if($artista==='false') $artista = false;
         
         if($id===false){
-            throw new \Exception('Album não existe:'. $id, 404);
+            return _Sistema_erroControle::Erro_Fluxo('Album não existe:'. $id,404);
         }
         // Antiinjection
     	$id = (int) $id;

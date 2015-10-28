@@ -154,7 +154,7 @@ class Simulador_TagControle extends Simulador_Controle
         // Recupera Caracteristica
         $resultado = $this->_Modelo->db->Sql_Select('Simulador_Tag', '{sigla}id=\''.$id.'\'',1);
         if($resultado===false){
-            throw new \Exception('Essa Caracteristica não existe:'. $raiz, 404);
+            return _Sistema_erroControle::Erro_Fluxo('Essa Caracteristica não existe:'. $raiz,404);
         }
         // Carrega Config
         $titulo1    = 'Editar Caracteristica (#'.$id.')';

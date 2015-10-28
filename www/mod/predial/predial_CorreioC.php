@@ -267,7 +267,7 @@ class predial_CorreioControle extends predial_Controle
                 $aviso = new \Predial_Bloco_Apart_Correio_Aviso_DAO();
                 $aviso->correio = $identificador->id;
                 $aviso->mensagem = $mensagem;
-                $this->_Modelo->bd->Sql_Inserir($aviso);
+                $this->_Modelo->bd->Sql_Insert($aviso);
                 // Manda Email
                 eval('$send	= $mailer'.$enviar.'
                 ->setSubject(\'Nova Encomenda (1Â° Aviso) - \'.SISTEMA_NOME)

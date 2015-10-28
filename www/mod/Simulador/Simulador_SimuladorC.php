@@ -216,7 +216,7 @@ class Simulador_SimuladorControle extends Simulador_Controle
         }
         $resultado = $this->_Modelo->db->Sql_Select('Simulador', Array('id'=>$id),1);
         if($resultado===false || !is_object($resultado)){
-            throw new \Exception('Esse registro não existe:'. $id, 404);
+            return _Sistema_erroControle::Erro_Fluxo('Esse registro não existe:'. $id,404);
         }
         if($resultado->status=='1'){
             $resultado->status='0';
@@ -265,7 +265,7 @@ class Simulador_SimuladorControle extends Simulador_Controle
         //Procura Simulador
         $simulador_registro = $this->_Modelo->db->Sql_Select('Simulador', '{sigla}id=\''.$simulador.'\'',1);
         if($simulador_registro===false || !is_object($simulador_registro)){
-            throw new \Exception('Simulador não existe:'. $simulador, 404);
+            return _Sistema_erroControle::Erro_Fluxo('Simulador não existe:'. $simulador,404);
         }
         
         // Procura as Respostas Ja Respondidas

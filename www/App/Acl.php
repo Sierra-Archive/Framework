@@ -195,7 +195,7 @@ class Acl{
                         $inscricao->usado = '0';
                         $inscricao->time = time();
                         $inscricao->chave = Sistema_Funcoes::Seguranca_Gerar_Hash($codPassado);
-                        $this->_db->Sql_Inserir($inscricao);
+                        $this->_db->Sql_Insert($inscricao);
 
 
                         // Criar Email
@@ -1002,35 +1002,35 @@ class Acl{
             //$grupo->id = 1;
             $grupo->nome = __('Admin Master');
             $grupo->categoria = $gerais_id;
-            $db->Sql_Inserir($grupo);
+            $db->Sql_Insert($grupo);
             
             // Admin
             $grupo = new \Sistema_Grupo_DAO();
             //$grupo->id = 2;
             $grupo->nome = __('Admin');
             $grupo->categoria = $gerais_id;
-            $db->Sql_Inserir($grupo);
+            $db->Sql_Insert($grupo);
             
             // Cliente
             $grupo = new \Sistema_Grupo_DAO();
             //$grupo->id = 3;
             $grupo->nome = \Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Cliente_nome');
             $grupo->categoria = $clientes_id;
-            $db->Sql_Inserir($grupo);
+            $db->Sql_Insert($grupo);
             
             // Funcionario
             $grupo = new \Sistema_Grupo_DAO();
             //$grupo->id = 3;
             $grupo->nome = __('Funcionário');
             $grupo->categoria = $funcionarios_id;
-            $db->Sql_Inserir($grupo);
+            $db->Sql_Insert($grupo);
             
             // Newsletter
             $grupo = new \Sistema_Grupo_DAO();
             //$grupo->id = 4;
             $grupo->nome = __('Newsletter');
             $grupo->categoria = $funcionarios_id;
-            $db->Sql_Inserir($grupo);
+            $db->Sql_Insert($grupo);
         }
         
         
@@ -1321,7 +1321,7 @@ class Acl{
                         $inserir->submodulo   = $submodulo;
                         $inserir->end         = $valor['End'];
                         $inserir->chave       = $valor['Chave'];
-                        $this->_db->Sql_Inserir($inserir);
+                        $this->_db->Sql_Insert($inserir);
                     }
                 }
             }
@@ -1372,7 +1372,7 @@ class Acl{
                             $inserir->max       = '100';
                         }
                         
-                        $this->_db->Sql_Inserir($inserir);
+                        $this->_db->Sql_Insert($inserir);
                     }
                 }
             }

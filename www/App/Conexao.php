@@ -744,7 +744,7 @@ final class Conexao
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Sql_Inserir(&$Objeto,$tempo=true,$retorna=false){
+    public function Sql_Insert(&$Objeto,$tempo=true,$retorna=false){
         if($tempo){
             $temponome  = 'Inserir';
             $tempo2   = new \Framework\App\Tempo($temponome);
@@ -797,7 +797,7 @@ final class Conexao
         }else if(is_array($Objeto)){
             $sql = '';
             foreach($Objeto as &$valor){
-                $sql .= $this->Sql_Inserir($valor,true,true);
+                $sql .= $this->Sql_Insert($valor,true,true);
             }
             if($retorna){
                 return $sql;

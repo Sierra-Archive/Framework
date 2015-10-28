@@ -192,7 +192,7 @@ class comercio_EstoqueControle extends comercio_Controle
         $estoque->produto   = $produto;
         $estoque->qnt       = $qnt;
         $estoque->data      = $data;
-        $_Modelo->db->Sql_Inserir($estoque);
+        $_Modelo->db->Sql_Insert($estoque);
         return true;
     }
     /**
@@ -219,7 +219,7 @@ class comercio_EstoqueControle extends comercio_Controle
         $estoque->produto   = $produto;
         $estoque->qnt       = $qnt;
         $estoque->data      = $data;
-        $_Modelo->db->Sql_Inserir($estoque);
+        $_Modelo->db->Sql_Insert($estoque);
         return true;
     }
     /**

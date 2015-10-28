@@ -238,13 +238,13 @@ class Evento_EventoControle extends Evento_Controle
     }
     public function Status($id=false){
         if($id===false){
-            throw new \Exception('Evento não informado:'. $id, 404);
+            return _Sistema_erroControle::Erro_Fluxo('Evento não informado:'. $id,404);
         }
         // Pesquisa o evento no dao
         $resultado = $this->_Modelo->db->Sql_Select('Evento', Array('id'=>$id),1);
         // Caso falso, da erro 404
         if($resultado===false || !is_object($resultado)){
-            throw new \Exception('Esse Evento não existe:'. $id, 404);
+            return _Sistema_erroControle::Erro_Fluxo('Esse Evento não existe:'. $id,404);
         }
         // Altera o Valor do Status
         if($resultado->status==1 || $resultado->status=='1'){

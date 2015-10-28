@@ -32,9 +32,10 @@
         "phpunit/phpunit-selenium": ">=1.2",
         "phpdocumentor/phpdocumentor": "2.*",
         "kevintweber/phpunit-markup-validators": ">=2.0",
-        "facebook/webdriver": "dev-master"
+        "facebook/webdriver": "dev-master",
+        "bamboohr/phpcs": "dev-master"
     },
     "config": {
-        "vendor-dir": "3rdparty"
+        "vendor-dir": "www/Lib"
     }
 }

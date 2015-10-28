@@ -150,5 +150,12 @@ Server Errors
     public function Javascript(){
         $this->Main(404);
     }
+    /**
+     * Erro Gerado pelo Mal FLuxo do Sistema, mas que não é um erro.
+     * Pode ser feito por testes ou pelo usuario
+     */
+    static function Erro_Fluxo($nome,$erro){
+        return false;
+    }
 }
 ?>

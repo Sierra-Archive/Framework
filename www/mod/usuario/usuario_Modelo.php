@@ -170,7 +170,7 @@ class usuario_Modelo extends \Framework\App\Modelo
                 }
             }
             
-            if(empty($grupos_id)) throw new \Exception('Grupos não existe', 404);
+            if(empty($grupos_id)) return _Sistema_erroControle::Erro_Fluxo('Grupos não existe',404);
             
             // cria where de acordo com parametros
             if($inverter){

@@ -73,7 +73,7 @@ class Texto
             $objeto = new \Gramatica_Preposicao_DAO();
             $objeto->palavra = current($array);
             $objeto->tipo    = 0;
-            $this->_Modelo->db->Sql_Inserir($objeto);
+            $this->_Modelo->db->Sql_Insert($objeto);
             next($array);
         }*/
         /*$array = 'afora, como, conforme, consoante, durante, exceto, feito, fora, mediante, menos, salvo, segundo, tirante, visto';
@@ -83,7 +83,7 @@ class Texto
             $objeto = new \Gramatica_Preposicao_DAO();
             $objeto->palavra = current($array);
             $objeto->tipo    = 1;
-            $this->_Modelo->db->Sql_Inserir($objeto);
+            $this->_Modelo->db->Sql_Insert($objeto);
             next($array);
         }*/
         /*$array = 'do, neste, à, duma, na';
@@ -93,7 +93,7 @@ class Texto
             $objeto = new \Gramatica_Preposicao_DAO();
             $objeto->palavra = current($array);
             $objeto->tipo    = 2;
-            $this->_Modelo->db->Sql_Inserir($objeto);
+            $this->_Modelo->db->Sql_Insert($objeto);
             next($array);
         }*/
 ?>

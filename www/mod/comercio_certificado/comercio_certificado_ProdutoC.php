@@ -185,7 +185,7 @@ class comercio_certificado_ProdutoControle extends comercio_certificado_Controle
         // Cria novo Produto
         $produto = new Comercio_Produto_DAO;
         self::mysql_AtualizaValores($produto);
-        $sucesso =  $this->_Modelo->db->Sql_Inserir($produto);
+        $sucesso =  $this->_Modelo->db->Sql_Insert($produto);
         
         // Recarrega Main
         $this->Main();  
@@ -366,7 +366,7 @@ class comercio_certificado_ProdutoControle extends comercio_certificado_Controle
             $objeto->idproduto      = $produtos;
             $objeto->meses          = $auditorias_post[$j];
             $objeto->ordem          = $j+1;
-            $sucesso                = $this->_Modelo->db->Sql_Inserir($objeto);
+            $sucesso                = $this->_Modelo->db->Sql_Insert($objeto);
             ++$j;
         }
         // Mensagem

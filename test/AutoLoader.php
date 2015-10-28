@@ -61,21 +61,12 @@ function __autoload($class){
             require_once (DAO_PATH . $class.'.php');
         }else{
             throw new \Exception('Classe Dao não encontrada'.$class."\n\n<br><Br>Original: ".$original, 2802);
-            return true;
         }
     }
     
     // Se for Classe App
-    if(strpos($class, 'Framework\App')!==false){
-        $class_partes = explode('\\',$class);
-        $class = $class_partes[sizeof($class_partes)-1];
-        $class = ucfirst($class);
-        if( file_exists  (APP_PATH . $class.'.php')){
-            require_once (APP_PATH . $class.'.php');
-            return true;
-        }else{
-            throw new \Exception('Classe Nativa do Framework não encontrada: '.$class."\n\n<br><Br>Original: ".$original, 2802);
-        }
+    if(strpos($class, 'Framework\App')===0){
+        return __autoload_Sitec($class);
     }
     
     // Classes
@@ -114,6 +105,30 @@ function __autoload($class){
         }
     }
     
+    return __autoload_Modules($class);
+}
+
+function __autoload_Sitec($class){
+    $class_partes = \explode('\\', substr($class,strlen('Framework\App\\')));
+    $pasta = ''; $j = sizeof($class_partes);
+    if($j>1){
+        $i = 0;
+        foreach($class_partes as &$valor){
+            ++$i;
+            if ($i === $j) {
+                continue;
+            }
+            $pasta .= $valor.DS;
+        }
+    }
+    if( file_exists  (APP_PATH.$pasta.ucfirst($class_partes[$j-1]).'.php')){
+        require_once (APP_PATH.$pasta.ucfirst($class_partes[$j-1]).'.php');
+        return true;
+    }else{
+        throw new \Exception('Classe Nativa do Framework não encontrada: '.$pasta.ucfirst($class_partes[$j-1])."\n\n<br><Br>Original: ".$class, 2802);
+    }
+}
+function __autoload_Modules($class){
     // Se nao passar por Nenhum dos de cima vai Pro Modulo
     // Modulos
     if(         substr($class, -8)=='Controle'){
@@ -125,43 +140,47 @@ function __autoload($class){
     }else{
         return false;
     }
-    $class = explode('_',$class);
+    $class_partes = explode('_',$class);
+    $class_qnt = count($class_partes);
+    $submodulo = $class_partes[$class_qnt-1];
     $modulo = '';
-    $class_qnt = count($class);
-    $submodulo = $class[$class_qnt-1];
     for($i=0;$i<($class_qnt-1);++$i){
-        if($i==0) $modulo .= $class[$i];
-        else            $modulo .= '_'.$class[$i];
+        if ($i == 0) {
+            $modulo .= $class_partes[$i];
+        } else {
+            $modulo .= '_' . $class_partes[$i];
+        }
     }
     $contador = 0;
     if($modulo==''){
         // Invez de Substituir, tira só a ultima ocorrencia e sobra oq ta antes
         $modulo = str_replace(Array($tipo), Array(''), $submodulo, $contador);
-        if($contador==2) $modulo = $tipo;
+        if ($contador == 2) {
+            $modulo = $tipo;
+        }
         $submodulo = '';
     }else{
         // Invez de Substituir, tira só a ultima ocorrencia e sobra oq ta antes
         $submodulo = str_replace(Array($tipo), Array(''), $submodulo, $contador);
-        if($contador==2) $submodulo = $tipo;
+        if ($contador == 2) {
+            $submodulo = $tipo;
+        }
     }
     // Verifica se Modulo é permitido
     
     // Carrega Modulo
     if( file_exists  (MOD_PATH . $modulo.DS.$modulo.'_'.$tipo.'.php')){
         require_once (MOD_PATH . $modulo.DS.$modulo.'_'.$tipo.'.php');
-    }/*else{
-        throw new \Exception('Classe Modulo não encontrada'.$class."\n\n<br><Br>Original: ".$original, 2802);
-    }*/
+    }
     if($submodulo!=''){
         if( file_exists  (MOD_PATH . $modulo.DS.$modulo.'_'.$submodulo.$tipo[0].'.php')){
             require_once (MOD_PATH . $modulo.DS.$modulo.'_'.$submodulo.$tipo[0].'.php');
         }else if( file_exists  (MOD_PATH . $modulo.DS.$modulo.'_'.ucwords($submodulo).$tipo[0].'.php')){
             require_once (MOD_PATH . $modulo.DS.$modulo.'_'.ucwords($submodulo).$tipo[0].'.php');
         }else{
-            throw new \Exception('Classe Submodulo não encontrada: '.MOD_PATH . $modulo.DS.$modulo.'_'.$submodulo.$tipo[0].'.php'."\n\n<br><Br>Original: ".$original, 2802);
+            throw new \Exception('Classe Submodulo não encontrada: '.MOD_PATH . $modulo.DS.$modulo.'_'.$submodulo.$tipo[0].'.php'."\n\n<br><Br>Original: ".$class, 2802);
         }
     }
-    
     return false;
 }
 

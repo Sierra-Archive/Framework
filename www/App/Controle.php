@@ -1828,7 +1828,7 @@ readfile($link);*/
         
         // Insere OU ATUALIZA
         if($tipo=='add'){
-            $sucesso        = $this->_Modelo->db->Sql_Inserir($objeto);
+            $sucesso        = $this->_Modelo->db->Sql_Insert($objeto);
             $identificador  = $this->_Modelo->db->ultimo_id();
         }else if($tipo=='edit'){
             $identificador  = $objeto->$primaria[0];
@@ -1897,7 +1897,7 @@ readfile($link);*/
                                     }
                                 }
                             }
-                            $sucesso = $this->_Modelo->db->Sql_Inserir($objeto2);
+                            $sucesso = $this->_Modelo->db->Sql_Insert($objeto2);
                             unset($objeto2);
                         }
                     }
@@ -1956,7 +1956,7 @@ readfile($link);*/
                                     $objeto2 = new $nome_da_tab;
                                     $objeto2->$links[$tabelalinkada['Tabela']]  = $identificador;
                                     $objeto2->$camponovo                        = $valor2;
-                                    $sucesso = $this->_Modelo->db->Sql_Inserir($objeto2);
+                                    $sucesso = $this->_Modelo->db->Sql_Insert($objeto2);
                                 }else{
                                     $where = Array(
                                         $links[$tabelalinkada['Tabela']]    => $identificador,
@@ -1968,7 +1968,7 @@ readfile($link);*/
                                         $objeto2->$links[$tabelalinkada['Tabela']]  = $identificador;
                                         $objeto2->$camponovo                        = $valor2;
                                         $objeto2->$ovalor                           = '1';
-                                        $sucesso = $this->_Modelo->db->Sql_Inserir($objeto2);
+                                        $sucesso = $this->_Modelo->db->Sql_Insert($objeto2);
                                     }else{
                                         $respostas2->$ovalor                        = '1';
                                         $sucesso = $this->_Modelo->db->Sql_Update($respostas2,false);

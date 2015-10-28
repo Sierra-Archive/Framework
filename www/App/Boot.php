@@ -135,10 +135,10 @@ class Boot {
                     
                 }
             }else{
-                throw new \Exception('SubMódulo não Encontrado', 404); //
+                return _Sistema_erroControle::Erro_Fluxo('SubMódulo não Encontrado',404); //
             }
         }else{
-            throw new \Exception('Módulo não Encontrado', 404); //
+            return _Sistema_erroControle::Erro_Fluxo('Módulo não Encontrado',404); //
         }
         
         return true;

@@ -146,7 +146,7 @@ class Tempo{
         }
         // SE tiver a inserir, inseri
         //var_dump($inserir,$atualizar);
-        if(!empty($inserir))    $db->Sql_Inserir($inserir,false);
+        if(!empty($inserir))    $db->Sql_Insert($inserir,false);
         if(!empty($atualizar))  $db->Sql_Update($atualizar,false,false);
         
         
@@ -180,7 +180,7 @@ class Tempo{
             $log_sql->tempo_maximo  = $tempo;
             $log_sql->tempo_media   = $tempo;
             $log_sql->ocorrencia = 1;
-            $db->Sql_Inserir($Registro_mysql[$chave],false);
+            $db->Sql_Insert($Registro_mysql[$chave],false);
         }
     }
     /**

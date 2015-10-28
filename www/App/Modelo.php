@@ -148,7 +148,7 @@ class Modelo
             if($trava) continue;
             
             // Insere e Faz recursividade para os filhos
-            $this->db->Sql_Inserir($inserir);
+            $this->db->Sql_Insert($inserir);
             if(isset($valor['Filhos']) && $valor['Filhos']!==false && is_array($valor['Filhos'])) {
                 $identificador  = $this->db->Sql_Select('Sistema_Menu', Array(),1,'id DESC');
                 $identificador  = $identificador->id;

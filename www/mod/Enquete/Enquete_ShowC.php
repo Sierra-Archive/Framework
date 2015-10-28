@@ -142,7 +142,7 @@ class Enquete_ShowControle extends Enquete_Controle
     }
     public function Votar($enquete = false){
         if($enquete===false){
-            throw new \Exception('Enquete nao Especificada', 404);
+            return _Sistema_erroControle::Erro_Fluxo('Enquete nao Especificada',404);
         }
         $enquete = (int) $enquete;
         // Procura Uma enquete aleatória se nao
@@ -151,14 +151,14 @@ class Enquete_ShowControle extends Enquete_Controle
                 1
         );
         if($enquetes===false){
-            throw new \Exception('Enquete nao Existe', 404);
+            return _Sistema_erroControle::Erro_Fluxo('Enquete nao Existe',404);
         }
         $respostas = $this->_Modelo->db->Sql_Select('Enquete_Resposta',Array(
             'enquete'       =>  $enquete),
             0
         );    
         if($respostas===false){
-            throw new \Exception('Enquete sem respostas', 404);
+            return _Sistema_erroControle::Erro_Fluxo('Enquete sem respostas',404);
         }
         $voto = $this->_Modelo->db->Sql_Select('Enquete_Voto',Array(
             'enquete'       =>  $enquete,
@@ -172,7 +172,7 @@ class Enquete_ShowControle extends Enquete_Controle
         $gravar_voto->usuario   = $this->_Acl->Usuario_GetID();
         $gravar_voto->enquete   = $enquete;
         $gravar_voto->resposta  = $voto_do_malandro;
-        $this->_Modelo->db->Sql_Inserir($gravar_voto);
+        $this->_Modelo->db->Sql_Insert($gravar_voto);
         // Nao Zera Layoult
         $this->layoult_zerar = false;
         // Mostra Resposta

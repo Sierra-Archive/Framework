@@ -369,7 +369,7 @@ class usuario_ExpedienteControle extends usuario_Controle
         $expediente->usuario = $usuario;
         $expediente->inicio = APP_HORA_BR;
         
-        $sucesso =  $this->_Modelo->db->Sql_Inserir($expediente);
+        $sucesso =  $this->_Modelo->db->Sql_Insert($expediente);
     	if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',

@@ -300,7 +300,7 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
         }
         self::mysql_AtualizaValor($proposta, 'num_proposta', $proposta_num);
         
-        $sucesso =  $this->_Modelo->db->Sql_Inserir($proposta);
+        $sucesso =  $this->_Modelo->db->Sql_Insert($proposta);
         
         
         // Mostra Mensagem de Sucesso
@@ -362,7 +362,7 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
         if($novoregistro==0){
             $sucesso =  $this->_Modelo->db->Sql_Update($proposta);
         }else{
-            $sucesso =  $this->_Modelo->db->Sql_Inserir($proposta);
+            $sucesso =  $this->_Modelo->db->Sql_Insert($proposta);
         }
         // Periodicas
         $this->Periodicas_Add($proposta->idcliente,$proposta->idproduto,$proposta->id, \Framework\App\Conexao::anti_injection($data_aceita));
@@ -530,7 +530,7 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
                 }else{
                     $objeto->data = '00/00/0000';
                 }
-                $this->_Modelo->db->Sql_Inserir($objeto);
+                $this->_Modelo->db->Sql_Insert($objeto);
             }
         }
         \Framework\App\Visual::Layoult_Abas_Carregar('4',$this->Periodicas($cliente)   ,false);

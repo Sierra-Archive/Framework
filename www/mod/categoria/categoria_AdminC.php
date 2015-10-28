@@ -121,7 +121,7 @@ class categoria_AdminControle extends categoria_Controle
             $objeto = new \Categoria_Acesso_DAO();
             $objeto->categoria  = $identificador;
             $objeto->mod_acc    = $modulo;
-            $sucesso = $this->_Modelo->db->Sql_Inserir($objeto);
+            $sucesso = $this->_Modelo->db->Sql_Insert($objeto);
             // Gambiarra para Atualiza select denovo
             $select = \Framework\App\Conexao::anti_injection($_GET['formselect']);
             $condicao = \Framework\App\Conexao::anti_injection($_GET['condicao']);

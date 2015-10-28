@@ -45,8 +45,8 @@ final Class Universal_Vivo_Cnpj_DAO extends Framework\App\Dao
         return Array(
             Array(
                 'mysql_titulo'      => 'cnpj',
-                'mysql_tipovar'     => 'int', //varchar, int, 
-                'mysql_tamanho'     => 30,
+                'mysql_tipovar'     => 'bigint', //varchar, int, 
+                'mysql_tamanho'     => 20,
                 'mysql_null'        => false,
                 'mysql_default'     => false,
                 'mysql_primary'     => true,

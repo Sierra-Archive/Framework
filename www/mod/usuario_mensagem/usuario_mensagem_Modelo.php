@@ -180,7 +180,7 @@ class usuario_mensagem_Modelo extends \Framework\App\Modelo
         $resposta->escritor_nome    = $this->_Acl->logado_usuario->nome;
         $resposta->ordem            = $ordem;
         $resposta->resposta         = $resposta_mgs;
-        $sucesso =  $this->db->Sql_Inserir($resposta);
+        $sucesso =  $this->db->Sql_Insert($resposta);
         return $sucesso;
     }
     /**

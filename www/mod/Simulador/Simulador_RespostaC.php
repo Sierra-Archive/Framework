@@ -103,17 +103,17 @@ class Simulador_RespostaControle extends Simulador_Controle
             if($simulador==0){
                 $resposta_registro = $this->_Modelo->db->Sql_Select('Simulador',Array(),1,'id DESC');
                 if($resposta_registro===false){
-                    throw new \Exception('Essa resposta não existe', 404);
+                    return _Sistema_erroControle::Erro_Fluxo('Essa resposta não existe',404);
                 }
                 $simulador_registro = $this->_Modelo->db->Sql_Select('Simulador_Pergunta',Array('id'=>$resposta_registro->simulador),1);
                 if($simulador_registro===false){
-                    throw new \Exception('Não existe nenhum simulador com esse id:', 404);
+                    return _Sistema_erroControle::Erro_Fluxo('Não existe nenhum simulador com esse id:',404);
                 }
                 $simulador = $simulador_registro->id;
             }else{
                 $simulador_registro = $this->_Modelo->db->Sql_Select('Simulador',Array('id'=>$simulador),1);
                 if($simulador_registro===false){
-                    throw new \Exception('Esse Simulador não existe:', 404);
+                    return _Sistema_erroControle::Erro_Fluxo('Esse Simulador não existe:',404);
                 }
             }
             $where = Array(
@@ -124,17 +124,17 @@ class Simulador_RespostaControle extends Simulador_Controle
                 if($pergunta==0){
                     $resposta_registro = $this->_Modelo->db->Sql_Select('Simulador_Pergunta_Resposta',Array(),1,'id DESC');
                     if($resposta_registro===false){
-                        throw new \Exception('Essa Resposta não existe', 404);
+                        return _Sistema_erroControle::Erro_Fluxo('Essa Resposta não existe',404);
                     }
                     $pergunta_registro = $this->_Modelo->db->Sql_Select('Simulador_Pergunta',Array('id'=>$resposta_registro->pergunta,'simulador'=>$simulador),1);
                     if($pergunta_registro===false){
-                        throw new \Exception('Não existe nenhum pergunta com esse id nesse Simulador', 404);
+                        return _Sistema_erroControle::Erro_Fluxo('Não existe nenhum pergunta com esse id nesse Simulador',404);
                     }
                     $pergunta = $pergunta_registro->id;
                 }else{
                     $pergunta_registro = $this->_Modelo->db->Sql_Select('Simulador_Pergunta',Array('id'=>$pergunta,'simulador'=>$simulador),1);
                     if($pergunta_registro===false){
-                        throw new \Exception('Esse Pergunta não existe.', 404);
+                        return _Sistema_erroControle::Erro_Fluxo('Esse Pergunta não existe.',404);
                     }
                 }
                 $where['pergunta'] = $pergunta;
@@ -226,17 +226,17 @@ class Simulador_RespostaControle extends Simulador_Controle
             if($simulador==0){
                 $resposta_registro = $this->_Modelo->db->Sql_Select('Simulador_Pergunta_Resposta',Array(),1,'id DESC');
                 if($resposta_registro===false){
-                    throw new \Exception('Essa resposta não existe', 404);
+                    return _Sistema_erroControle::Erro_Fluxo('Essa resposta não existe',404);
                 }
                 $simulador_registro = $this->_Modelo->db->Sql_Select('Simulador',Array('id'=>$resposta_registro->simulador),1);
                 if($simulador_registro===false){
-                    throw new \Exception('Não existe nenhuma simulador:', 404);
+                    return _Sistema_erroControle::Erro_Fluxo('Não existe nenhuma simulador:',404);
                 }
                 $simulador = $simulador_registro->id;
             }else{
                 $simulador_registro = $this->_Modelo->db->Sql_Select('Simulador',Array('id'=>$simulador),1);
                 if($simulador_registro===false){
-                    throw new \Exception('Esse Simulador não existe:', 404);
+                    return _Sistema_erroControle::Erro_Fluxo('Esse Simulador não existe:',404);
                 }
             }
             self::DAO_Campos_Retira($campos,'simulador');
@@ -251,17 +251,17 @@ class Simulador_RespostaControle extends Simulador_Controle
                 if($pergunta==0){
                     $resposta_registro = $this->_Modelo->db->Sql_Select('Simulador_Pergunta_Resposta',Array(),1,'id DESC');
                     if($resposta_registro===false){
-                        throw new \Exception('Essa resposta não existe', 404);
+                        return _Sistema_erroControle::Erro_Fluxo('Essa resposta não existe',404);
                     }
                     $pergunta_registro = $this->_Modelo->db->Sql_Select('Simulador_Pergunta',Array('id'=>$resposta_registro->pergunta,'simulador'=>$simulador),1);
                     if($pergunta_registro===false){
-                        throw new \Exception('Não existe nenhum Pergunta:', 404);
+                        return _Sistema_erroControle::Erro_Fluxo('Não existe nenhum Pergunta:',404);
                     }
                     $pergunta = $pergunta_registro->id;
                 }else{
                     $pergunta_registro = $this->_Modelo->db->Sql_Select('Simulador_Pergunta',Array('id'=>$pergunta,'simulador'=>$simulador),1);
                     if($pergunta_registro===false){
-                        throw new \Exception('Esse Pergunta não existe:', 404);
+                        return _Sistema_erroControle::Erro_Fluxo('Esse Pergunta não existe:',404);
                     }
                 }
                 $formlink   = 'Simulador/Resposta/Respostas_Add2/'.$simulador.'/'.$pergunta;
@@ -315,7 +315,7 @@ class Simulador_RespostaControle extends Simulador_Controle
         if($simulador==='false') $simulador = false;
         if($pergunta==='false') $pergunta = false;
         if($id===false){
-            throw new \Exception('Resposta não existe:'. $id, 404);
+            return _Sistema_erroControle::Erro_Fluxo('Resposta não existe:'. $id,404);
         }
         $id         = (int) $id;
         if($simulador!==false){
@@ -330,12 +330,12 @@ class Simulador_RespostaControle extends Simulador_Controle
         if($simulador!==false){
             $simulador_registro = $this->_Modelo->db->Sql_Select('Simulador',Array('id'=>$simulador),1);
             if($simulador_registro===false){
-                throw new \Exception('Esse Simulador não existe:', 404);
+                return _Sistema_erroControle::Erro_Fluxo('Esse Simulador não existe:',404);
             }
             if($pergunta!==false){
                 $pergunta_registro = $this->_Modelo->db->Sql_Select('Simulador_Pergunta',Array('id'=>$simulador,'simulador'=>$simulador_registro->id),1);
                 if($pergunta_registro===false){
-                    throw new \Exception('Esse Simulador não existe:', 404);
+                    return _Sistema_erroControle::Erro_Fluxo('Esse Simulador não existe:',404);
                 }
                 $formlink   = 'Simulador/Resposta/Respostas_Edit2/'.$id.'/'.$simulador.'/'.$pergunta;
                 self::DAO_Campos_Retira($campos,'simulador');
@@ -365,7 +365,7 @@ class Simulador_RespostaControle extends Simulador_Controle
         if($simulador==='false') $simulador = false;
         if($pergunta==='false') $pergunta = false;
         if($id===false){
-            throw new \Exception('Resposta não existe:'. $id, 404);
+            return _Sistema_erroControle::Erro_Fluxo('Resposta não existe:'. $id,404);
         }
         $id         = (int) $id;
         if($simulador!==false){
@@ -403,7 +403,7 @@ class Simulador_RespostaControle extends Simulador_Controle
         if($pergunta==='false') $pergunta = false;
         
         if($id===false){
-            throw new \Exception('Resposta não existe:'. $id, 404);
+            return _Sistema_erroControle::Erro_Fluxo('Resposta não existe:'. $id,404);
         }
         // Antiinjection
     	$id = (int) $id;

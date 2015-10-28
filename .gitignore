@@ -5,6 +5,7 @@ nbproject/*
 nbproject/private/
 docs/**
 .vagrant/**
+www/vendor/**
 www/static/globals/components/**
 www/arq/**/*
 www/arq/**/!.htaccess

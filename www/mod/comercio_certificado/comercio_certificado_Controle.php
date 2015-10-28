@@ -261,7 +261,7 @@ class comercio_certificado_Controle extends \Framework\App\Controle
 
             
             //insere usuario
-            $sucesso =  $Modelo->db->Sql_Inserir($usuario);
+            $sucesso =  $Modelo->db->Sql_Insert($usuario);
 
             // Recarrega Main
             $idusuario = $Modelo->db->Sql_Select('Usuario', Array(),1,'id DESC');

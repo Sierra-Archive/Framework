@@ -135,13 +135,13 @@ class Musica_VideoControle extends Musica_Controle
             if($artista==0){
                 $artista_registro = $this->_Modelo->db->Sql_Select('Musica_Album_Artista',Array(),1,'id DESC');
                 if($artista_registro===false){
-                    throw new \Exception('Não existe nenhuma artista:', 404);
+                    return _Sistema_erroControle::Erro_Fluxo('Não existe nenhuma artista:',404);
                 }
                 $artista = $artista_registro->id;
             }else{
                 $artista_registro = $this->_Modelo->db->Sql_Select('Musica_Album_Artista',Array('id'=>$artista),1);
                 if($artista_registro===false){
-                    throw new \Exception('Esse Artista não existe:', 404);
+                    return _Sistema_erroControle::Erro_Fluxo('Esse Artista não existe:',404);
                 }
             }
             $where = Array(
@@ -153,13 +153,13 @@ class Musica_VideoControle extends Musica_Controle
                 if($album==0){
                     $album_registro = $this->_Modelo->db->Sql_Select('Musica_Album',Array(),1,'id DESC');
                     if($album_registro===false){
-                        throw new \Exception('Não existe nenhuma artista:', 404);
+                        return _Sistema_erroControle::Erro_Fluxo('Não existe nenhuma artista:',404);
                     }
                     $album = $album_registro->id;
                 }else{
                     $album_registro = $this->_Modelo->db->Sql_Select('Musica_Album',Array('id'=>$artista),1);
                     if($album_registro===false){
-                        throw new \Exception('Esse Artista não existe:', 404);
+                        return _Sistema_erroControle::Erro_Fluxo('Esse Artista não existe:',404);
                     }
                 }
                 $where['album'] = $album;
@@ -169,13 +169,13 @@ class Musica_VideoControle extends Musica_Controle
                     if($musica==0){
                         $musica_registro = $this->_Modelo->db->Sql_Select('Musica',Array(),1,'id DESC');
                         if($musica_registro===false){
-                            throw new \Exception('Não existe nenhuma artista:', 404);
+                            return _Sistema_erroControle::Erro_Fluxo('Não existe nenhuma artista:',404);
                         }
                         $musica = $musica_registro->id;
                     }else{
                         $musica_registro = $this->_Modelo->db->Sql_Select('Musica',Array('id'=>$musica),1);
                         if($musica_registro===false){
-                            throw new \Exception('Esse Artista não existe:', 404);
+                            return _Sistema_erroControle::Erro_Fluxo('Esse Artista não existe:',404);
                         }
                     }
                     $where['musica'] = $musica;
@@ -273,13 +273,13 @@ class Musica_VideoControle extends Musica_Controle
             if($artista==0){
                 $artista_registro = $this->_Modelo->db->Sql_Select('Musica_Album_Artista',Array(),1,'id DESC');
                 if($artista_registro===false){
-                    throw new \Exception('Não existe nenhuma artista:', 404);
+                    return _Sistema_erroControle::Erro_Fluxo('Não existe nenhuma artista:',404);
                 }
                 $artista = $artista_registro->id;
             }else{
                 $artista_registro = $this->_Modelo->db->Sql_Select('Musica_Album_Artista',Array('id'=>$artista),1);
                 if($artista_registro===false){
-                    throw new \Exception('Esse Artista não existe:', 404);
+                    return _Sistema_erroControle::Erro_Fluxo('Esse Artista não existe:',404);
                 }
             }
             self::DAO_Campos_Retira($campos,'artista');
@@ -288,13 +288,13 @@ class Musica_VideoControle extends Musica_Controle
                 if($album==0){
                     $album_registro = $this->_Modelo->db->Sql_Select('Musica_Album',Array(),1,'id DESC');
                     if($album_registro===false){
-                        throw new \Exception('Não existe nenhum album:', 404);
+                        return _Sistema_erroControle::Erro_Fluxo('Não existe nenhum album:',404);
                     }
                     $album = $album_registro->id;
                 }else{
                     $album_registro = $this->_Modelo->db->Sql_Select('Musica_Album',Array('id'=>$album),1);
                     if($album_registro===false){
-                        throw new \Exception('Esse Album não existe:', 404);
+                        return _Sistema_erroControle::Erro_Fluxo('Esse Album não existe:',404);
                     }
                 }
                 self::DAO_Campos_Retira($campos,'album');
@@ -304,13 +304,13 @@ class Musica_VideoControle extends Musica_Controle
                     if($musica==0){
                         $musica_registro = $this->_Modelo->db->Sql_Select('Musica',Array(),1,'id DESC');
                         if($musica_registro===false){
-                            throw new \Exception('Não existe nenhuma musica:', 404);
+                            return _Sistema_erroControle::Erro_Fluxo('Não existe nenhuma musica:',404);
                         }
                         $musica = $musica_registro->id;
                     }else{
                         $musica_registro = $this->_Modelo->db->Sql_Select('Musica',Array('id'=>$musica),1);
                         if($musica_registro===false){
-                            throw new \Exception('Esse Musica não existe:', 404);
+                            return _Sistema_erroControle::Erro_Fluxo('Esse Musica não existe:',404);
                         }
                     }
                     $formlink   = 'Musica/Video/Videos_Add2/'.$artista.'/'.$album.'/'.$musica;
@@ -380,7 +380,7 @@ class Musica_VideoControle extends Musica_Controle
         if($album ==='false' || $album ===0)  $album      = false;
         if($musica ==='false' || $musica ===0) $musica     = false;
         if($id===false){
-            throw new \Exception('Video não existe:'. $id, 404);
+            return _Sistema_erroControle::Erro_Fluxo('Video não existe:'. $id,404);
         }
         $id         = (int) $id;
         if($artista!==false){
@@ -402,13 +402,13 @@ class Musica_VideoControle extends Musica_Controle
             if($artista==0){
                 $artista_registro = $this->_Modelo->db->Sql_Select('Musica_Album_Artista',Array(),1,'id DESC');
                 if($artista_registro===false){
-                    throw new \Exception('Não existe nenhuma artista:', 404);
+                    return _Sistema_erroControle::Erro_Fluxo('Não existe nenhuma artista:',404);
                 }
                 $artista = $artista_registro->id;
             }else{
                 $artista_registro = $this->_Modelo->db->Sql_Select('Musica_Album_Artista',Array('id'=>$artista),1);
                 if($artista_registro===false){
-                    throw new \Exception('Esse Artista não existe:', 404);
+                    return _Sistema_erroControle::Erro_Fluxo('Esse Artista não existe:',404);
                 }
             }
             self::DAO_Campos_Retira($campos,'artista');
@@ -449,7 +449,7 @@ class Musica_VideoControle extends Musica_Controle
         if($album ==='false' || $album ===0)  $album      = false;
         if($musica ==='false' || $musica ===0) $musica     = false;
         if($id===false){
-            throw new \Exception('Video não existe:'. $id, 404);
+            return _Sistema_erroControle::Erro_Fluxo('Video não existe:'. $id,404);
         }
         $id         = (int) $id;
         $titulo     = __('Video Editado com Sucesso');
@@ -492,7 +492,7 @@ class Musica_VideoControle extends Musica_Controle
         if($musica ==='false' || $musica ===0) $musica     = false;
         
         if($id===false){
-            throw new \Exception('Video não existe:'. $id, 404);
+            return _Sistema_erroControle::Erro_Fluxo('Video não existe:'. $id,404);
         }
         // Antiinjection
     	$id = (int) $id;

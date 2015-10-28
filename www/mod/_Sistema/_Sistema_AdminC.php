@@ -731,7 +731,7 @@ class _Sistema_AdminControle extends _Sistema_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Grupo_Permissao($grupo=false){
+    public function Grupo_Permissao($grupo=false,$bloco='Unico'){
         $i = 0;
         if($grupo===false){
             $botao_titulo  = __('Adicionar Permissão de Grupo');
@@ -755,7 +755,7 @@ class _Sistema_AdminControle extends _Sistema_Controle
                 'Print'     => true,
                 'Pdf'       => true,
                 'Excel'     => true,
-                '_Sistema/Admin/Grupo_Permissao'.$botao_extra,
+                'Link'      => '_Sistema/Admin/Grupo_Permissao'.$botao_extra,
             )
         )));
         // CONEXAO
@@ -782,9 +782,9 @@ class _Sistema_AdminControle extends _Sistema_Controle
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">'.$aviso_nenhuma.'</font></b></center>');
         }
         $titulo = __('Listagem de Permissão de Grupo').' ('.$i.')';
-        if($export==='Unico'){
+        if($bloco==='Unico'){
             $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',50);
-        }else if($export==='Maior'){
+        }else if($bloco==='Maior'){
             $this->_Visual->Bloco_Maior_CriaJanela($titulo,'',50);
         }else{
             $this->_Visual->Bloco_Menor_CriaJanela($titulo,'',50);
@@ -863,7 +863,7 @@ class _Sistema_AdminControle extends _Sistema_Controle
         $grupopermissao = new Sistema_Grupo_Permissao_DAO;
         self::mysql_AtualizaValores($grupopermissao);
         if($grupo!==false) $grupopermissao->grupo = $grupo;
-        $sucesso =  $this->_Modelo->db->Sql_Inserir($grupopermissao);
+        $sucesso =  $this->_Modelo->db->Sql_Insert($grupopermissao);
         
         // Atualiza
         $this->Grupo_Permissao(); 
@@ -1090,7 +1090,7 @@ class _Sistema_AdminControle extends _Sistema_Controle
         // Cria novo Grupo
         $grupopermissao = new Sistema_Newsletter_DAO;
         self::mysql_AtualizaValores($grupopermissao);
-        $sucesso =  $this->_Modelo->db->Sql_Inserir($grupopermissao);
+        $sucesso =  $this->_Modelo->db->Sql_Insert($grupopermissao);
         
         // Recarrega Newsletter
         $this->Newsletter();  

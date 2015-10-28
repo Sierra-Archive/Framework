@@ -218,7 +218,7 @@ class usuario_mensagem_SuporteControle extends usuario_mensagem_Controle
             $arquivo->ext           = $ext[0];
             $arquivo->endereco      = $ext[1];
             $arquivo->nome          = $ext[2];
-            $this->_Modelo->db->Sql_Inserir($arquivo);
+            $this->_Modelo->db->Sql_Insert($arquivo);
             $this->_Visual->Json_Info_Update('Titulo', __('Upload com Sucesso'));
             $this->_Visual->Json_Info_Update('Historico', false);
             // Tras de Volta e Atualiza via Json
@@ -245,7 +245,7 @@ class usuario_mensagem_SuporteControle extends usuario_mensagem_Controle
         if($mensagem!==false && $mensagem!=0){
             $resultado_mensagens = $this->_Modelo->db->Sql_Select('Usuario_Mensagem', Array('id'=>$mensagem),1);
             if($resultado_mensagens===false){
-                throw new \Exception('Essa mensagem não existe:'. $mensagem, 404);
+                return _Sistema_erroControle::Erro_Fluxo('Essa mensagem não existe:'. $mensagem,404);
             }
             // Condicao de Query
             $where = Array('mensagem'=>$resultado_mensagens->id);
@@ -286,7 +286,7 @@ class usuario_mensagem_SuporteControle extends usuario_mensagem_Controle
     public function Download($anexo,$mensagem=false){
         $resultado_arquivo = $this->_Modelo->db->Sql_Select('Usuario_Mensagem_Anexo', '{sigla}id=\''.$anexo.'\'',1);
         if($resultado_arquivo===false || !is_object($resultado_arquivo)){
-            throw new \Exception('Esse anexo não existe:'. $anexo, 404);
+            return _Sistema_erroControle::Erro_Fluxo('Esse anexo não existe:'. $anexo,404);
         }
         $endereco = 'usuario_mensagem'.DS.'Chamados_Anexos'.DS.strtolower($resultado_arquivo->endereco.'.'.$resultado_arquivo->ext);
         self::Export_Download($endereco, $resultado_arquivo->nome.'.'.$resultado_arquivo->ext);

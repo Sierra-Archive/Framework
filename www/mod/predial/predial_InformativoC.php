@@ -179,7 +179,7 @@ class predial_InformativoControle extends predial_Controle
                 $aviso = new \Predial_Bloco_Apart_Informativo_Aviso_DAO();
                 $aviso->informativo = $identificador->id;
                 $aviso->mensagem = $mensagem;
-                $this->_Modelo->bd->Sql_Inserir($aviso);
+                $this->_Modelo->bd->Sql_Insert($aviso);
                 // Manda Email
                 eval('$send	= $mailer'.$enviar.'
                 ->setSubject(\'Novo Informativo - \'.SISTEMA_NOME)

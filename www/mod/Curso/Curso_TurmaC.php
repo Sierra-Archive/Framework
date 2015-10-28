@@ -172,13 +172,13 @@ class Curso_TurmaControle extends Curso_Controle
             if($curso==0){
                 $curso_registro = $this->_Modelo->db->Sql_Select('Curso','',1,'id DESC');
                 if($curso_registro===false){
-                    throw new \Exception('Não existe nenhum curso:', 404);
+                    return _Sistema_erroControle::Erro_Fluxo('Não existe nenhum curso:',404);
                 }
                 $curso = $curso_registro->id;
             }else{
                 $curso_registro = $this->_Modelo->db->Sql_Select('Curso','Cu.id='.$curso.'',1);
                 if($curso_registro===false){
-                    throw new \Exception('Esse Curso não existe:', 404);
+                    return _Sistema_erroControle::Erro_Fluxo('Esse Curso não existe:',404);
                 }
             }
             $where = '{sigla}curso='.$curso.'';
@@ -263,13 +263,13 @@ class Curso_TurmaControle extends Curso_Controle
             if($curso==0){
                 $curso_registro = $this->_Modelo->db->Sql_Select('Curso',Array(),1,'id DESC');
                 if($curso_registro===false){
-                    throw new \Exception('Não existe nenhum curso:', 404);
+                    return _Sistema_erroControle::Erro_Fluxo('Não existe nenhum curso:',404);
                 }
                 $curso = $curso_registro->id;
             }else{
                 $curso_registro = $this->_Modelo->db->Sql_Select('Curso',Array('id'=>$curso),1);
                 if($curso_registro===false){
-                    throw new \Exception('Esse Curso não existe:', 404);
+                    return _Sistema_erroControle::Erro_Fluxo('Esse Curso não existe:',404);
                 }
             }
             $where = '{sigla}qnt>0 AND {sigla}curso='.$curso.' AND {sigla}inicio>=\''.APP_DATA.'\'';
@@ -353,13 +353,13 @@ class Curso_TurmaControle extends Curso_Controle
             if($curso==0){
                 $curso_registro = $this->_Modelo->db->Sql_Select('Curso',Array(),1,'id DESC');
                 if($curso_registro===false){
-                    throw new \Exception('Não existe nenhuma curso:', 404);
+                    return _Sistema_erroControle::Erro_Fluxo('Não existe nenhuma curso:',404);
                 }
                 $curso = $curso_registro->id;
             }else{
                 $curso_registro = $this->_Modelo->db->Sql_Select('Curso',Array('id'=>$curso),1);
                 if($curso_registro===false){
-                    throw new \Exception('Esse Curso não existe:', 404);
+                    return _Sistema_erroControle::Erro_Fluxo('Esse Curso não existe:',404);
                 }
             }
             $formlink   = 'Curso/Turma/Turmas_Add2/'.$curso;
@@ -401,14 +401,14 @@ class Curso_TurmaControle extends Curso_Controle
     public function Turmas_Ver($id,$curso = false,$export=false){
         if($curso==='false') $curso = false;
         if($id===false){
-            throw new \Exception('Turma não existe:'. $id, 404);
+            return _Sistema_erroControle::Erro_Fluxo('Turma não existe:'. $id,404);
         }
         $id         = (int) $id;
         
         // Carrega Turma
         $turma_registro = $this->_Modelo->db->Sql_Select('Curso_Turma','{sigla}id=\''.$id.'\'',1);
         if($turma_registro===false){
-            throw new \Exception('Essa Turma não existe:', 404);
+            return _Sistema_erroControle::Erro_Fluxo('Essa Turma não existe:',404);
         }
         
         // Carrega Curso
@@ -417,7 +417,7 @@ class Curso_TurmaControle extends Curso_Controle
             // Carrega Turma
             $curso_registro = $this->_Modelo->db->Sql_Select('Curso','{sigla}id=\''.$id.'\'',1);
             if($curso_registro===false){
-                throw new \Exception('Esse Curso não existe:', 404);
+                return _Sistema_erroControle::Erro_Fluxo('Esse Curso não existe:',404);
             }
             self::Endereco_Turma_Ver(false,$turma_registro,$curso_registro);
         }else{
@@ -497,7 +497,7 @@ class Curso_TurmaControle extends Curso_Controle
     public function Turmas_Edit($id,$curso = false){
         if($curso==='false') $curso = false;
         if($id===false){
-            throw new \Exception('Turma não existe:'. $id, 404);
+            return _Sistema_erroControle::Erro_Fluxo('Turma não existe:'. $id,404);
         }
         $id         = (int) $id;
         if($curso!==false){
@@ -512,7 +512,7 @@ class Curso_TurmaControle extends Curso_Controle
         if($curso!==false){
             $curso_registro = $this->_Modelo->db->Sql_Select('Curso',Array('id'=>$curso),1);
             if($curso_registro===false){
-                throw new \Exception('Esse Curso não existe:', 404);
+                return _Sistema_erroControle::Erro_Fluxo('Esse Curso não existe:',404);
             }
             $formlink   = 'Curso/Turma/Turmas_Edit2/'.$id.'/'.$curso;
             self::DAO_Campos_Retira($campos,'curso');
@@ -533,7 +533,7 @@ class Curso_TurmaControle extends Curso_Controle
     public function Turmas_Edit2($id,$curso = false){
         if($curso==='false') $curso = false;
         if($id===false){
-            throw new \Exception('Turma não existe:'. $id, 404);
+            return _Sistema_erroControle::Erro_Fluxo('Turma não existe:'. $id,404);
         }
         $id         = (int) $id;
         if($curso!==false){
@@ -560,7 +560,7 @@ class Curso_TurmaControle extends Curso_Controle
     public function Turmas_Del($id = false,$curso=false){
         if($curso==='false') $curso = false;
         if($id===false){
-            throw new \Exception('Turma não existe:'. $id, 404);
+            return _Sistema_erroControle::Erro_Fluxo('Turma não existe:'. $id,404);
         }
         // Antiinjection
     	$id = (int) $id;
@@ -652,7 +652,7 @@ class Curso_TurmaControle extends Curso_Controle
     public function Inscricao_Fazer($id,$curso = false){
         if($curso==='false') $curso = false;
         if($id===false){
-            throw new \Exception('Turma não existe:'. $id, 404);
+            return _Sistema_erroControle::Erro_Fluxo('Turma não existe:'. $id,404);
         }
         $id         = (int) $id;
         
@@ -670,14 +670,14 @@ class Curso_TurmaControle extends Curso_Controle
             self::Endereco_Aberta(true, $curso);
             $turma_registro = $this->_Modelo->db->Sql_Select('Curso_Turma',Array('id'=>$curso),1);
             if($turma_registro===false){
-                throw new \Exception('Essa Turma não existe nesse Curso:', 404);
+                return _Sistema_erroControle::Erro_Fluxo('Essa Turma não existe nesse Curso:',404);
             }
             $formlink   = 'Curso/Turma/Inscricao_Fazer2/'.$id;
         }else{
             self::Endereco_Aberta(true, false);
             $turma_registro = $this->_Modelo->db->Sql_Select('Curso_Turma',false,1);
             if($turma_registro===false){
-                throw new \Exception('Essa Turma não existe:', 404);
+                return _Sistema_erroControle::Erro_Fluxo('Essa Turma não existe:',404);
             }
             $formlink   = 'Curso/Turma/Inscricao_Fazer2/'.$id;
         }
@@ -725,7 +725,7 @@ class Curso_TurmaControle extends Curso_Controle
     public function Inscricao_Fazer2($id,$curso = false){
         if($curso==='false') $curso = false;
         if($id===false){
-            throw new \Exception('Turma não existe:'. $id, 404);
+            return _Sistema_erroControle::Erro_Fluxo('Turma não existe:'. $id,404);
         }
         $id         = (int) $id;
         $usuarioid  = $this->_Acl->Usuario_GetID();
@@ -735,7 +735,7 @@ class Curso_TurmaControle extends Curso_Controle
         // Carrega Turma
         $turma_registro = $this->_Modelo->db->Sql_Select('Curso_Turma','{sigla}id=\''.$id.'\'',1);
         if($turma_registro===false){
-            throw new \Exception('Essa Turma não existe:', 404);
+            return _Sistema_erroControle::Erro_Fluxo('Essa Turma não existe:',404);
         }
         
         if($curso!==false){
@@ -746,7 +746,7 @@ class Curso_TurmaControle extends Curso_Controle
         }
         $curso_registro = $this->_Modelo->db->Sql_Select('Curso','{sigla}id=\''.$turma_registro->curso.'\'',1);
         if($curso_registro===false){
-            throw new \Exception('Esse Curso não existe', 404);
+            return _Sistema_erroControle::Erro_Fluxo('Esse Curso não existe',404);
         }
         
         
@@ -836,7 +836,7 @@ class Curso_TurmaControle extends Curso_Controle
     public function Inscricao_Mover($inscricao,$turma,$curso = false){
         if($curso==='false') $curso = false;
         if($id===false){
-            throw new \Exception('Turma não existe:'. $id, 404);
+            return _Sistema_erroControle::Erro_Fluxo('Turma não existe:'. $id,404);
         }
         $id         = (int) $id;
         if($curso!==false){
@@ -850,7 +850,7 @@ class Curso_TurmaControle extends Curso_Controle
     public function Inscricao_Mover2($inscricao,$turma,$curso = false){
         if($curso==='false') $curso = false;
         if($id===false){
-            throw new \Exception('Turma não existe:'. $id, 404);
+            return _Sistema_erroControle::Erro_Fluxo('Turma não existe:'. $id,404);
         }
         $id         = (int) $id;
         if($curso!==false){

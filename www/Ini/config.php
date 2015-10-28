@@ -1,5 +1,8 @@
 <?php
 // Principais
+if(!defined('SISTEMA_PROXY')){
+    define('SISTEMA_PROXY',        false); //'http://213.85.92.10:80');
+}
 if(!defined('SISTEMA_DEBUG')){
     define('SISTEMA_DEBUG',        false);
 }

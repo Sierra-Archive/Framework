@@ -33,8 +33,8 @@ final Class Universal_Vivo_Cpf_DAO extends Framework\App\Dao
         return Array(
             Array(
                 'mysql_titulo'      => 'cpf',
-                'mysql_tipovar'     => 'int', //varchar, int, 
-                'mysql_tamanho'     => 255,
+                'mysql_tipovar'     => 'bigint', //varchar, int, 
+                'mysql_tamanho'     => 21,
                 'mysql_null'        => false,
                 'mysql_default'     => false,
                 'mysql_primary'     => true,

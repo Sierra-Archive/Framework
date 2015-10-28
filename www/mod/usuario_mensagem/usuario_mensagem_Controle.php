@@ -274,7 +274,7 @@ class usuario_mensagem_Controle extends \Framework\App\Controle
         $assunto = \Framework\App\Conexao::anti_injection($_POST["assunto"]);
         
         
-        $sucesso =  $this->_Modelo->db->Sql_Inserir($objeto);
+        $sucesso =  $this->_Modelo->db->Sql_Insert($objeto);
         $titulo     = __('Mensagem inserida com Sucesso');
         $dao        = 'Usuario_Mensagem';
         $funcao     = false;

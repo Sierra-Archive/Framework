@@ -99,7 +99,7 @@ class biblioteca_Principal implements \Framework\PrincipalInterface
             if($raiz!==false && $raiz!=0){
                 $resultado_pasta = $Modelo->db->Sql_Select('Biblioteca', Array('id'=>$raiz),1);
                 if($resultado_pasta===false){
-                    throw new \Exception('Essa Pasta não existe:'. $raiz, 404);
+                    return _Sistema_erroControle::Erro_Fluxo('Essa Pasta não existe:'. $raiz,404);
                 }
                 $tabela['Tipo'][$i]             = '<a href="'.URL_PATH.'biblioteca/Biblioteca/Bibliotecas/'.$resultado_pasta->parent.'" border="1" class="lajax" data-acao=""><img alt'.__('Voltar para Diretório Anterior').' src="'.WEB_URL.'img'.US.'arquivos'.US.'pastavoltar.png" alt="0" /></a>';
                 $tabela['Nome'][$i]             = '<a href="'.URL_PATH.'biblioteca/Biblioteca/Bibliotecas/'.$resultado_pasta->parent.'" border="1" class="lajax" data-acao="">Voltar para a Pasta Anterior</a>';

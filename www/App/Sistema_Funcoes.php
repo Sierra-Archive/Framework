@@ -407,112 +407,21 @@ Class Sistema_Funcoes {
     /**
      * Valida CEP
      * 
-     * @param type $cnpj
+     * @param type $cep
      * @return boolean
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public static function Control_Layoult_Valida_Cep($cnpj){
-        //Etapa 1: Cria um array com apenas os digitos numéricos, isso permite receber o cnpj em diferentes formatos como "00.000.000/0000-00", "00000000000000", "00 000 000 0000 00" etc...
-        $j=0;
-        for($i=0; $i<(strlen($cnpj)); $i++)
-        {
-            if(is_numeric($cnpj[$i]))
-            {
-                $num[$j]=$cnpj[$i];
-                $j++;
-            }
+    public static function Control_Layoult_Valida_Cep($cep){
+        // verifica o resultado
+        if(preg_match("/^[0-9]{5}-[0-9]{3}$/", trim($cep))==1){
+            return true;
         }
-        //Etapa 2: Conta os dígitos, um Cnpj válido possui 14 dígitos numéricos.
-        if(count($num)!=14)
-        {
-            return false;
-        }
-        //Etapa 3: O número 00000000000 embora não seja um cnpj real resultaria um cnpj válido após o calculo dos dígitos verificares e por isso precisa ser filtradas nesta etapa.
-        if ($num[0]==0 && $num[1]==0 && $num[2]==0 && $num[3]==0 && $num[4]==0 && $num[5]==0 && $num[6]==0 && $num[7]==0 && $num[8]==0 && $num[9]==0 && $num[10]==0 && $num[11]==0)
-        {
-            return false;
-        }
-        //Etapa 4: Calcula e compara o primeiro dígito verificador.
         else
-        {
-            $j=5;
-            for($i=0; $i<4; $i++)
-            {
-                $multiplica[$i]=$num[$i]*$j;
-                $j--;
-            }
-            $soma = array_sum($multiplica);
-            $j=9;
-            for($i=4; $i<12; $i++)
-            {
-                $multiplica[$i]=$num[$i]*$j;
-                $j--;
-            }
-            $soma = array_sum($multiplica);	
-            $resto = $soma%11;	
-            if($resto<2)
-            {
-                $dg=0;
-            }
-            else
-            {
-                $dg=11-$resto;
-            }
-            if($dg!=$num[12])
-            {
-                return false;
-            }
+        {    
+            return false;
         }
-        //Etapa 5: Calcula e compara o segundo dígito verificador.
-        if(!isset($isCnpjValid))
-        {
-            $j=6;
-            for($i=0; $i<5; $i++)
-            {
-                $multiplica[$i]=$num[$i]*$j;
-                $j--;
-            }
-            $soma = array_sum($multiplica);
-            $j=9;
-            for($i=5; $i<13; $i++)
-            {
-                $multiplica[$i]=$num[$i]*$j;
-                $j--;
-            }
-            $soma = array_sum($multiplica);	
-            $resto = $soma%11;	
-            if($resto<2)
-            {
-                $dg=0;
-            }
-            else
-            {
-                $dg=11-$resto;
-            }
-            if($dg!=$num[13])
-            {
-                return false;
-            }
-            else
-            {
-                return true;
-            }
-        }
-        //Trecho usado para depurar erros.
-        /*
-        if($isCnpjValid==true)
-        {
-        echo "<p><font color="GREEN">Cnpj é Válido</font></p>";
-        }
-        if($isCnpjValid==false)
-        {
-        echo "<p><font color="RED">Cnpj Inválido</font></p>";
-        }
-        */
-        //Etapa 6: Retorna o Resultado em um valor booleano.
-        return true;
     }
 
     /**
@@ -528,33 +437,29 @@ Class Sistema_Funcoes {
     public static function Control_Layoult_Valida_Email($email){
         $mail_correcto = 0; 
         //verifico umas coisas
-        if ((strlen($email) >= 6) && (substr_count($email,"@") == 1) && (substr($email,0,1) != "@") && (substr($email,strlen($email)-1,1) != "@")){
-            if ((!strstr($email,"'")) && (!strstr($email,"\"")) && (!strstr($email,"\\")) && (!strstr($email,"\$")) && (!strstr($email," "))) {
-                //vejo se tem caracter .
-                if (substr_count($email,".")>= 1){
-                    //obtenho a termina��o do dominio
-                    $term_dom = substr(strrchr ($email, '.'),1);
-                    //verifico que a termina��o do dominio seja correcta
-                    if (strlen($term_dom)>1 && strlen($term_dom)<5 && (!strstr($term_dom,"@")) ){
-                        //verifico que o de antes do dominio seja correcto
-                        $antes_dom = substr($email,0,strlen($email) - strlen($term_dom) - 1);
-                        $caracter_ult = substr($antes_dom,strlen($antes_dom)-1,1);
-                        if ($caracter_ult != "@" && $caracter_ult != "."){
-                                $mail_correcto = 1; 
-                        }
-                    }
-                }
+        if ((strlen($email) >= 6) && (substr_count($email,"@") == 1) && (substr($email,0,1) != "@") && (substr($email,strlen($email)-1,1) != "@") && (!strstr($email,"'")) && (!strstr($email,"\"")) && (!strstr($email,"\\")) && (!strstr($email,"\$")) && (!strstr($email," ")) && 
+        //vejo se tem caracter .
+        substr_count($email,".")>= 1){
+            //obtenho a termina��o do dominio
+            $term_dom = substr(strrchr ($email, '.'),1);
+            $caracter_ult = \substr(substr($email,0,strlen($email) - strlen($term_dom) - 1),strlen(substr($email,0,strlen($email) - strlen($term_dom) - 1))-1,1);
+            //verifico que a termina��o do dominio seja correcta
+            if (\strlen($term_dom)>1 && \strlen($term_dom)<5 && (!\strstr($term_dom,"@")) && 
+            //verifico que o de antes do dominio seja correcto
+            $caracter_ult != "@" && $caracter_ult != "."){
+                $mail_correcto = 1;
             }
         }
-        if ($mail_correcto)
-           return 1;
-        else
-           return 0;
+        if ($mail_correcto) {
+            return 1;
+        } else {
+            return 0;
+        }
     }
     /**
      * Transforma Bytes Valor em Texto
      * 
-     * @param type $tamanho
+     * @param int $tamanho
      * @return string
      * 
      * @version 0.4.2
@@ -562,13 +467,13 @@ Class Sistema_Funcoes {
      */
     public static function Tranf_Byte_Otimizado($tamanho){
         $tamanho = (int) $tamanho;
-        if($tamanho>1099511627776){
+        if($tamanho>=1099511627776){
             $tamanho    =   ((string) round($tamanho/1099511627776)).' TB';
-        }else if($tamanho>1073741824){
+        }else if($tamanho>=1073741824){
             $tamanho    =   ((string) round($tamanho/1073741824)).' GB';
-        }else if($tamanho>1048576){
+        }else if($tamanho>=1048576){
             $tamanho    =   ((string) round($tamanho/1048576)).' MB';
-        }else if($tamanho>1024){
+        }else if($tamanho>=1024){
             $tamanho    =   ((string) round($tamanho/1024)).' KB';
         }else{
             $tamanho    =   ((string) round($tamanho)).' B';
@@ -615,50 +520,49 @@ Class Sistema_Funcoes {
         $valor_final = '';
         $espaço = '';
         // Anos
-        if($tamanho>31556926){
-            $valor_temp = (int) ($tamanho/31556926) ;
-            $valor_final    .= (string) ($valor_temp.' anos');
-            $tamanho = $tamanho - ($valor_temp*31556926);
+        if($tamanho>=31556926){
+            $valor_temp = (int) round($tamanho/31556926) ;
+            $valor_final    .= (string) ($valor_temp === 1 ? $valor_temp.' ano' : $valor_temp.' anos');
+            $tamanho -= $tamanho - ($tamanho%31556926);
             $espaço = ' ';
         }
-        if($termina_em==='anos') return ($valor_final===''?'0 anos':$valor_final);
+        if ($termina_em === 'anos') {
+            return ($valor_final === '' ? '0 anos' : $valor_final);
+        }
         // Dias
-        if($tamanho>86400){
-            $valor_temp = (int) ($tamanho/86400) ;
-            $valor_final    .= (string) ($espaço.$valor_temp.' dias');
-            $tamanho = $tamanho - ($valor_temp*86400);
+        if($tamanho>=86400){
+            $valor_temp = (int) round($tamanho/86400) ;
+            $valor_final    .= (string) ($espaço.($valor_temp === 1 ? $valor_temp.' dia' : $valor_temp.' dias'));
+            $tamanho -= $tamanho - ($tamanho%86400);
             $espaço = ' ';
         }
-        if($termina_em==='dias') return ($valor_final===''?'0 dias':$valor_final);
+        if ($termina_em === 'dias') {
+            return ($valor_final === '' ? '0 dias' : $valor_final);
+        }
         // Horas
-        if($tamanho>3600){
-            $valor_temp = (int) ($tamanho/3600) ;
-            $valor_final    .= (string) ($espaço.$valor_temp.' horas');
-            $tamanho = $tamanho - ($valor_temp*3600);
+        if($tamanho>=3600){
+            $valor_temp = (int) round($tamanho/3600) ;
+            $valor_final    .= (string) ($espaço.($valor_temp === 1 ? $valor_temp.' hora' : $valor_temp.' horas'));
+            $tamanho -= $tamanho - ($tamanho%3600);
             $espaço = ' ';
         }
-        if($termina_em==='horas') return ($valor_final===''?'0 horas':$valor_final);
+        if ($termina_em === 'horas') {
+            return ($valor_final === '' ? '0 horas' : $valor_final);
+        }
         // Minutos
-        if($tamanho>60){
-            $valor_temp = (int) ($tamanho/60) ;
-            $valor_final    .= (string) ($espaço.$valor_temp.' minutos');
-            $tamanho = $tamanho - ($valor_temp*60);
+        if($tamanho>=60){
+            $valor_temp = (int) round($tamanho/60) ;
+            $valor_final    .= (string) ($espaço.($valor_temp === 1 ? $valor_temp.' minuto' : $valor_temp.' minutos'));
+            $tamanho -= $tamanho - ($tamanho%60);
             $espaço = ' ';
         }
-        if($termina_em==='minutos') return ($valor_final===''?'0 minutos':$valor_final);
-        return $valor_final;
-    }
-    /**
-     * Transforma Tempo para Segundos
-     * 
-     * @param string $float
-     * @return int
-     * 
-     * @version 0.4.2
-     * @author Ricardo Sierra <web@ricardosierra.com.br>
-     */
-    public static function Tranf_Url_Https($url){
-        return str_replace('http://','https://',$url);
+        if ($termina_em === 'minutos') {
+            return ($valor_final === '' ? '0 minutos' : $valor_final);
+        }
+        if($tamanho>0){
+            $valor_final .= $espaço.' segundos';
+        }
+        return $valor_final.'';
     }
     /**
      * Transforma Tempo para Segundos
@@ -673,30 +577,58 @@ Class Sistema_Funcoes {
         $float = strtolower($float);
         $valor_final = 0;
         if(strpos($float, 'anos')!==false){
-            $float = explode('anos',$float);
-            $tamanho = (float) $float[0];
-            $float = $float[1];
-            $valor_final += $tamanho*31556926;
+            $float_quebrado = \explode('anos',$float);
+            $float = $float_quebrado[1];
+            $valor_final += ((float) $float_quebrado[0])*31556926;
+        }
+        if(strpos($float, 'ano')!==false){
+            $float_quebrado = \explode('ano',$float);
+            $float = $float_quebrado[1];
+            $valor_final += ((float) $float_quebrado[0])*31556926;
         }
         if(strpos($float, 'dias')!==false){
-            $float = explode('dias',$float);
-            $tamanho = (float) $float[0];
-            $float = $float[1];
-            $valor_final += $tamanho*86400;
+            $float_quebrado = \explode('dias',$float);
+            $float = $float_quebrado[1];
+            $valor_final += ((float) $float_quebrado[0])*86400;
+        }
+        if(strpos($float, 'dia')!==false){
+            $float_quebrado = \explode('dia',$float);
+            $float = $float_quebrado[1];
+            $valor_final += ((float) $float_quebrado[0])*86400;
         }
         if(strpos($float, 'horas')!==false){
-            $float = explode('horas',$float);
-            $tamanho = (float) $float[0];
-            $float = $float[1];
-            $valor_final += $tamanho*3600;
+            $float_quebrado = \explode('horas',$float);
+            $float = $float_quebrado[1];
+            $valor_final += ((float) $float_quebrado[0])*3600;
+        }
+        if(strpos($float, 'hora')!==false){
+            $float_quebrado = \explode('hora',$float);
+            $float = $float_quebrado[1];
+            $valor_final += ((float) $float_quebrado[0])*3600;
         }
         if(strpos($float, 'minutos')!==false){
-            $float = explode('minutos',$float);
-            $tamanho = (float) $float[0];
-            $float = $float[1];
-            $valor_final += $tamanho*60;
+            $float_quebrado = \explode('minutos',$float);
+            $float = $float_quebrado[1];
+            $valor_final += ((float) $float_quebrado[0])*60;
         }
-        return $valor_final;
+        if(strpos($float, 'minuto')!==false){
+            $float_quebrado = \explode('minuto',$float);
+            $float = $float_quebrado[1];
+            $valor_final += ((float) $float_quebrado[0])*60;
+        }
+        return (int) $valor_final;
+    }
+    /**
+     * Transforma Tempo para Segundos
+     * 
+     * @param string $url
+     * @return int
+     * 
+     * @version 0.4.2
+     * @author Ricardo Sierra <web@ricardosierra.com.br>
+     */
+    public static function Tranf_Url_Https($url){
+        return str_replace('http://','https://',$url);
     }
     /**
      * Transforma Distancia para Otimizado
@@ -715,7 +647,6 @@ Class Sistema_Funcoes {
             $tamanho    =   ((string) round($tamanho).' m');
         }
         return $tamanho;
-        //return round($real,2);
     }
     /**
      * Transforma Otimizado em Distancia
@@ -727,8 +658,6 @@ Class Sistema_Funcoes {
      * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
     public static function Tranf_Otimizado_Distancia($float){
-        $float = strtolower($float);
-        $valor_final = 0;
         $tamanho = (float) $float;
         if(strpos($float, 'km')!==false){
             return $tamanho*1000;
@@ -745,12 +674,17 @@ Class Sistema_Funcoes {
      * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
     public static function Tranf_Real_Float($real){
-        if($real==='') return 0.0;
-        if(is_float($real)) return round($real,2);
-        $real = str_replace(Array(',','.','%A','%B'), Array('%A','%B','.',','), $real);
-        $real = preg_replace("/[^0-9.]/", "", $real); 
-        $real = (float) $real;
-        return round($real,2);
+        if ($real === '') {
+            return 0.0;
+        }
+        if(is_float($real)) {
+            return round($real, 2);
+        }
+        return round(((float) 
+            preg_replace("/[^0-9.]/", "", 
+                str_replace(Array(',','.','%A','%B'), Array('%A','%B','.',','), $real)
+            )
+        ),2);
     }
     /**
      * Transforma Decimal em Real
@@ -762,9 +696,12 @@ Class Sistema_Funcoes {
      * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
     public static function Tranf_Float_Real($float){
-        if(strpos($float, 'R$')!==false) return $float;
-        $float = (float) $float;
-        return ($float>=0?'R$'.number_format($float, 2, ',', '.'):'<span class="text-error">- R$ '.number_format($float*-1, 2, ',', '.').'</span>');
+        if (strpos($float, 'R$') !== false) {
+            return $float;
+        }
+        return (((float) $float)>=0
+            ?'R$'.number_format(((float) $float), 2, ',', '.'):
+            '<span class="text-error">- R$ '.number_format(((float) $float)*-1, 2, ',', '.').'</span>');
     }
     /**
      * Transforma Porcentagem em Decimal
@@ -776,12 +713,17 @@ Class Sistema_Funcoes {
      * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
     public static function Tranf_Porc_Float($porc){
-        if($porc==='') return 0.0;
-        if(is_float($porc)) return $porc;
-        $porc = str_replace(Array(',','.','%A','%B'), Array('%A','%B','.',','), $porc);
-        $porc = preg_replace("/[^0-9.]/", "", $porc);
-        $porc = (float) $porc;
-        return round($porc/100,4);
+        if ($porc === '') {
+            return 0.0;
+        }
+        if(is_float($porc)) {
+            return $porc;
+        }
+        return round(
+            ((float) preg_replace("/[^0-9.]/", "", 
+                str_replace(Array(',','.','%A','%B'), Array('%A','%B','.',','), $porc)
+            ))
+        /100,4);
     }
     /**
      * Transforma Decimal em Porcentagem
@@ -793,13 +735,14 @@ Class Sistema_Funcoes {
      * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
     public static function Tranf_Float_Porc($float){
-        if(strpos($float, ' %')!==false) $float = self::Tranf_Porc_Float($float);
-        $float = (float) $float;
-        $float = number_format($float*100, 2, ',', '.');
-        if($float<10){
-            return '0'.$float.' %';
+        if (strpos($float, ' %') !== false) {
+            return $float;
         }
-        return $float.' %';
+        $porc = number_format((float) $float*100, 2, ',', '.');
+        if($porc<10){
+            return '0'.$porc.'%';
+        }
+        return $porc.'%';
     }
     /**
      * 

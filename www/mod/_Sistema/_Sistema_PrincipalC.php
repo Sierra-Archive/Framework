@@ -65,11 +65,12 @@ class _Sistema_PrincipalControle extends _Sistema_Controle
        $this->_Visual->Json_Info_Update('Titulo', __('Busca'));
     }
     public function Relatorio($busca=false){
+        $html = '';
+        $i = 0;
         if($busca==false){
             $busca = \Framework\App\Conexao::anti_injection($_POST['busca']);
         }
         // Carrega Buscador dos Modulos
-        $i = 0;
         foreach($this->ModulosHome as $value){
             if($value!='_Sistema'){
                 eval('$retorno = '.$value.'_Principal::Busca($this, $this->_Modelo, $this->_Visual, $busca);');
@@ -88,11 +89,12 @@ class _Sistema_PrincipalControle extends _Sistema_Controle
        $this->_Visual->Json_Info_Update('Titulo', __('Busca'));
     }
     public function Estatistica($busca=false){
+        $html = '';
+        $i = 0;
         if($busca==false){
             $busca = \Framework\App\Conexao::anti_injection($_POST['busca']);
         }
         // Carrega Buscador dos Modulos
-        $i = 0;
         foreach($this->ModulosHome as $value){
             if($value!='_Sistema'){
                 eval('$retorno = '.$value.'_Principal::Busca($this, $this->_Modelo, $this->_Visual, $busca);');

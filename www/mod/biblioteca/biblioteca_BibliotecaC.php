@@ -33,9 +33,9 @@ class biblioteca_BibliotecaControle extends biblioteca_Controle
     public function Download($id,$raiz=false){
         $resultado_arquivo = $this->_Modelo->db->Sql_Select('Biblioteca', Array('id'=>$id),1);
         if($resultado_arquivo===false || !is_object($resultado_arquivo)){
-            throw new \Exception('Essa Arquivo não existe:'. $raiz, 404);
+            return _Sistema_erroControle::Erro_Fluxo('Essa Arquivo não existe:'. $raiz,404);
         }else if($resultado_arquivo->tipo==1){
-            throw new \Exception('Essa Pasta não pode baixar:'. $raiz, 404);
+            return _Sistema_erroControle::Erro_Fluxo('Essa Pasta não pode baixar:'. $raiz,404);
         }
         $endereco = 'bibliotecas'.DS.strtolower($resultado_arquivo->arquivo.'.'.$resultado_arquivo->ext);
         self::Export_Download($endereco, $resultado_arquivo->nome.'.'.$resultado_arquivo->ext);
@@ -54,7 +54,7 @@ class biblioteca_BibliotecaControle extends biblioteca_Controle
         if($raiz!==false && $raiz!=0){
             $resultado_pasta = $Modelo->db->Sql_Select('Biblioteca', Array('id'=>$raiz),1);
             if($resultado_pasta===false){
-                throw new \Exception('Essa Pasta não existe:'. $raiz, 404);
+                return _Sistema_erroControle::Erro_Fluxo('Essa Pasta não existe:'. $raiz,404);
             }
             $tabela['Tipo'][$i]             = '<a href="'.URL_PATH.'biblioteca/Biblioteca/Bibliotecas/'.$resultado_pasta->parent.'" border="1" class="lajax" data-acao=""><img src="'.WEB_URL.'img'.US.'arquivos'.US.'pastavoltar.png" alt'.__('Voltar para Diretório Anterior').'  /></a>';
             $tabela['Nome'][$i]             = '<a href="'.URL_PATH.'biblioteca/Biblioteca/Bibliotecas/'.$resultado_pasta->parent.'" border="1" class="lajax" data-acao="">Voltar para a Pasta Anterior</a>';
@@ -183,9 +183,9 @@ class biblioteca_BibliotecaControle extends biblioteca_Controle
         if($raiz!==false && $raiz!=='0' && $raiz!==0){
             $resultado_pasta = $_Modelo->db->Sql_Select('Biblioteca', '{sigla}id=\''.$raiz.'\'',1);
             if($resultado_pasta===false){
-                throw new \Exception('Essa Pasta não existe:'. $raiz, 404);
+                return _Sistema_erroControle::Erro_Fluxo('Essa Pasta não existe:'. $raiz,404);
             }else if($resultado_pasta->tipo!=1){
-                throw new \Exception('Não é uma pasta:'. $raiz, 404);
+                return _Sistema_erroControle::Erro_Fluxo('Não é uma pasta:'. $raiz,404);
             }
             // Add ao Endereço
             $enderecopai = (int) $resultado_pasta->parent;
@@ -194,9 +194,9 @@ class biblioteca_BibliotecaControle extends biblioteca_Controle
             while(is_int($enderecopai) && $enderecopai!=0){
                 $resultado_pasta2 = $_Modelo->db->Sql_Select('Biblioteca', '{sigla}id=\''.$enderecopai.'\'',1);
                 if($resultado_pasta2===false){
-                    throw new \Exception('Pasta Pai não existe:'. $enderecopai, 404);
+                    return _Sistema_erroControle::Erro_Fluxo('Pasta Pai não existe:'. $enderecopai,404);
                 }else if($resultado_pasta->tipo!=1){
-                    throw new \Exception('O pai Não é uma pasta:'. $enderecopai, 404);
+                    return _Sistema_erroControle::Erro_Fluxo('O pai Não é uma pasta:'. $enderecopai,404);
                 }
                 $enderecopai = (int) $resultado_pasta2->parent;
                 $endereco =    '<a href="'.URL_PATH.'biblioteca/Biblioteca/Bibliotecas/'.$enderecopai.'" border="1" class="lajax link_titulo" data-acao="">'.
@@ -324,7 +324,7 @@ class biblioteca_BibliotecaControle extends biblioteca_Controle
         // Recupera Arquivo
         $resultado = $this->_Modelo->db->Sql_Select('Biblioteca', '{sigla}id=\''.$id.'\'',1);
         if($resultado===false){
-            throw new \Exception('Esse arquivo/pasta não existe:'. $raiz, 404);
+            return _Sistema_erroControle::Erro_Fluxo('Esse arquivo/pasta não existe:'. $raiz,404);
         }
         // Carrega Config
         $titulo1    = 'Editar Biblíoteca (#'.$id.')';
@@ -522,7 +522,7 @@ class biblioteca_BibliotecaControle extends biblioteca_Controle
             $arquivo->tamanho       = $ext[3];
             $arquivo->tipo          = 2;
             $arquivo->usuario       = $this->_Acl->Usuario_GetID();
-            $this->_Modelo->db->Sql_Inserir($arquivo);
+            $this->_Modelo->db->Sql_Insert($arquivo);
             $this->_Visual->Json_Info_Update('Titulo', __('Upload com Sucesso'));
             $this->_Visual->Json_Info_Update('Historico', false);
             // Atualiza Parent

@@ -77,7 +77,7 @@ class Financeiro_Controle extends \Framework\App\Controle
         $financeiro->forma_pagar        = $forma;
         $financeiro->forma_condicao     = $condicao;
         $financeiro->pago     = $pago;
-        $_Modelo->db->Sql_Inserir($financeiro);
+        $_Modelo->db->Sql_Insert($financeiro);
         return true;
     }
     /**

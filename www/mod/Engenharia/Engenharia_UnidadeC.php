@@ -79,13 +79,13 @@ class Engenharia_UnidadeControle extends Engenharia_Controle
             if($empreendimento==0){
                 $empreendimento_registro = $this->_Modelo->db->Sql_Select('Engenharia_Empreendimento',Array(),1,'id DESC');
                 if($empreendimento_registro===false){
-                    throw new \Exception('Não existe nenhuma empreendimento:', 404);
+                    return _Sistema_erroControle::Erro_Fluxo('Não existe nenhuma empreendimento:',404);
                 }
                 $empreendimento = $empreendimento_registro->id;
             }else{
                 $empreendimento_registro = $this->_Modelo->db->Sql_Select('Engenharia_Empreendimento',Array('id'=>$empreendimento),1);
                 if($empreendimento_registro===false){
-                    throw new \Exception('Esse Empreendimento não existe:', 404);
+                    return _Sistema_erroControle::Erro_Fluxo('Esse Empreendimento não existe:',404);
                 }
             }
             $where = Array(
@@ -180,13 +180,13 @@ class Engenharia_UnidadeControle extends Engenharia_Controle
             if($empreendimento==0){
                 $empreendimento_registro = $this->_Modelo->db->Sql_Select('Engenharia_Empreendimento',Array(),1,'id DESC');
                 if($empreendimento_registro===false){
-                    throw new \Exception('Não existe nenhuma empreendimento:', 404);
+                    return _Sistema_erroControle::Erro_Fluxo('Não existe nenhuma empreendimento:',404);
                 }
                 $empreendimento = $empreendimento_registro->id;
             }else{
                 $empreendimento_registro = $this->_Modelo->db->Sql_Select('Engenharia_Empreendimento',Array('id'=>$empreendimento),1);
                 if($empreendimento_registro===false){
-                    throw new \Exception('Esse Empreendimento não existe:', 404);
+                    return _Sistema_erroControle::Erro_Fluxo('Esse Empreendimento não existe:',404);
                 }
             }
             $formlink   = 'Engenharia/Unidade/Unidades_Add2/'.$empreendimento;
@@ -331,7 +331,7 @@ class Engenharia_UnidadeControle extends Engenharia_Controle
                         $objeto_pesquisado  = $this->_Modelo->db->Sql_Select($tab,$where);
                         // Se for Encontrado outro Objeto Trava Funcao e Retorna Erro
                         if($objeto_pesquisado===false){
-                            $this->_Modelo->db->Sql_Inserir($Registros_cadastrado);
+                            $this->_Modelo->db->Sql_Insert($Registros_cadastrado);
                             ++$cont;
                         }
                         ++$j;
@@ -462,7 +462,7 @@ class Engenharia_UnidadeControle extends Engenharia_Controle
      */
     public function Unidades_Edit($id,$empreendimento = false){
         if($id===false){
-            throw new \Exception('Unidade não existe:'. $id, 404);
+            return _Sistema_erroControle::Erro_Fluxo('Unidade não existe:'. $id,404);
         }
         $id         = (int) $id;
         if($empreendimento!==false){
@@ -477,7 +477,7 @@ class Engenharia_UnidadeControle extends Engenharia_Controle
         if($empreendimento!==false){
             $empreendimento_registro = $this->_Modelo->db->Sql_Select('Engenharia_Empreendimento',Array('id'=>$empreendimento),1);
             if($empreendimento_registro===false){
-                throw new \Exception('Esse Empreendimento não existe:', 404);
+                return _Sistema_erroControle::Erro_Fluxo('Esse Empreendimento não existe:',404);
             }
             $formlink   = 'Engenharia/Unidade/Unidades_Edit2/'.$id.'/'.$empreendimento;
             self::DAO_Campos_Retira($campos,'empreendimento');
@@ -497,7 +497,7 @@ class Engenharia_UnidadeControle extends Engenharia_Controle
      */
     public function Unidades_Edit2($id,$empreendimento = false){
         if($id===false){
-            throw new \Exception('Unidade não existe:'. $id, 404);
+            return _Sistema_erroControle::Erro_Fluxo('Unidade não existe:'. $id,404);
         }
         $id         = (int) $id;
         if($empreendimento!==false){
@@ -525,7 +525,7 @@ class Engenharia_UnidadeControle extends Engenharia_Controle
     public function Unidades_Del($id = false,$empreendimento=false){
         
         if($id===false){
-            throw new \Exception('Unidade não existe:'. $id, 404);
+            return _Sistema_erroControle::Erro_Fluxo('Unidade não existe:'. $id,404);
         }
         // Antiinjection
     	$id = (int) $id;

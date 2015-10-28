@@ -282,7 +282,7 @@ class usuario_Controle extends \Framework\App\Controle
                 }
             }
             
-            if(empty($grupos_id)) throw new \Exception('Grupos não existe', 404);
+            if(empty($grupos_id)) return _Sistema_erroControle::Erro_Fluxo('Grupos não existe',404);
             
             // cria where de acordo com parametros
             if($inverter){
@@ -661,7 +661,7 @@ class usuario_Controle extends \Framework\App\Controle
                 $Registro->email_usuario    = $usuario->email;
                 $Registro->email_usuario2   = $usuario->email2;
                 $Registro->nome_usuario     = $nome;
-                $this->_Modelo->db->Sql_Inserir($Registro);
+                $this->_Modelo->db->Sql_Insert($Registro);
                 $mensagens = array(
                     "tipo" => 'sucesso',
                     "mgs_principal" => __('Email enviado com Sucesso'),
@@ -732,7 +732,7 @@ class usuario_Controle extends \Framework\App\Controle
                 }
             }
             
-            if(empty($grupos_id)) throw new \Exception('Grupos não existe', 404);
+            if(empty($grupos_id)) return _Sistema_erroControle::Erro_Fluxo('Grupos não existe',404);
             
             // cria where de acordo com parametros
             if($inverter){
@@ -1084,7 +1084,7 @@ class usuario_Controle extends \Framework\App\Controle
                 }
             }
             
-            if(empty($grupos_id)) throw new \Exception('Grupos não existe', 404);
+            if(empty($grupos_id)) return _Sistema_erroControle::Erro_Fluxo('Grupos não existe',404);
             
             // cria where de acordo com parametros
             if($inverter){

@@ -261,7 +261,7 @@ class usuario_AdminControle extends usuario_Controle
         }
         $resultado = $this->_Modelo->db->Sql_Select('Usuario', Array('id'=>$id),1);
         if($resultado===false || !is_object($resultado)){
-            throw new \Exception('Essa registro não existe:'. $raiz, 404);
+            return _Sistema_erroControle::Erro_Fluxo('Essa registro não existe:'. $raiz,404);
         }
         if($resultado->ativado==1 || $resultado->ativado=='1'){
             $resultado->ativado='0';
@@ -469,10 +469,10 @@ class usuario_AdminControle extends usuario_Controle
             // Atualiza
             // Recarrega ListarUsuario
             if($tipo===false AND !(\Framework\App\Sistema_Funcoes::Perm_Modulos('usuario_mensagem'))){
-                $sucesso =  $this->_Modelo->db->Sql_Inserir($usuario);
+                $sucesso =  $this->_Modelo->db->Sql_Insert($usuario);
                 $executar = 'ListarUsuario';
             }else if(\Framework\App\Sistema_Funcoes::Perm_Modulos('usuario_mensagem')){
-                $sucesso =  $this->_Modelo->db->Sql_Inserir($usuario);
+                $sucesso =  $this->_Modelo->db->Sql_Insert($usuario);
                 if($sucesso){$identificador  = $this->_Modelo->db->Sql_Select('Usuario', Array(),1,'id DESC');
                 $identificador  = $identificador->id;
                 usuario_mensagem_Controle::Mensagem_formulario_Static($identificador);}
@@ -482,19 +482,19 @@ class usuario_AdminControle extends usuario_Controle
                 if(!isset($_GET['grupo'])){
                     $usuario->grupo = CFG_TEC_IDCLIENTE;
                 }
-                $sucesso =  $this->_Modelo->db->Sql_Inserir($usuario);
+                $sucesso =  $this->_Modelo->db->Sql_Insert($usuario);
                 $executar = 'ListarCliente';
             }else if($tipo==='funcionario'){
                 if(!isset($_GET['grupo'])){
                     $usuario->grupo = CFG_TEC_IDFUNCIONARIO;
                 }
-                $sucesso =  $this->_Modelo->db->Sql_Inserir($usuario);
+                $sucesso =  $this->_Modelo->db->Sql_Insert($usuario);
                 $executar = 'ListarFuncionario';
             }else{
                 if(!isset($_GET['grupo'])){
                     $usuario->grupo = CFG_TEC_IDADMIN;
                 }
-                $sucesso =  $this->_Modelo->db->Sql_Inserir($usuario);
+                $sucesso =  $this->_Modelo->db->Sql_Insert($usuario);
                 $executar = 'ListarUsuario';
             }
             // Caso seja Inserido mostra Mensagem
