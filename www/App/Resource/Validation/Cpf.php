@@ -2,23 +2,39 @@
 namespace Framework\App\Resource\Validation;
 class Cpf 
 {  
-    public static function Validates($cpf) {       
-        if (strlen($cpf) != 11)       
-            return false;   
-        $numDig = substr($cpf,0, 9);       
-        return (bool) (self::calcDigVerif($numDig)==(substr($cpf,9, 11)));       
-    }  
+    public static function Validates($cpf) {  
+        if (strlen($cpf) === 15){
+            var_dump(self::calcDigVerif((int)(substr($cpf,0, 12))),(substr($cpf,13, 15)),substr($cpf,0, 12));
+            return (bool) (self::calcDigVerif((int)(substr($cpf,0, 12)))==(substr($cpf,13, 15)));  
+        }
+        if (strlen($cpf) !== 11) {
+            return false;
+        }
+        return (bool) (self::calcDigVerif(substr($cpf,0, 9))==(substr($cpf,9, 11)));       
+    }      
     
     public static function Generate() {       
-        $iniciais = "";       
+        $iniciais = "";
         $numero;       
         for ($i = 0; $i < 9; $i++) {       
-            $numero = (int) (rand(0,1) * 10);       
-            $iniciais += (string) $numero;       
+            $numero = (int) (rand(0,9));       
+            $iniciais .= (string) $numero;       
         }       
-        return $iniciais + self::calcDigVerif($iniciais);       
+        return $iniciais.self::calcDigVerif($iniciais);       
     }       
-
+  
+    
+    public static function Transfer_Client($cpf) {
+        if (strlen($cpf) !== 11) {
+            return $cpf;
+        }else{
+            return (string) substr((string) $cpf,0, 3).'.'.substr((string) $cpf,3, 3).'.'.substr((string) $cpf,6, 3).'-'.substr((string) $cpf,9, 3);  
+        } 
+    }  
+    
+    public static function Transfer_Server($cpf) {       
+        return (int) str_replace(Array('.','-'), '', $cpf);
+    }    
 
     private static function calcDigVerif($num) {    
    

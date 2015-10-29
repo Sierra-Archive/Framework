@@ -771,9 +771,7 @@ class _Sistema_AdminControle extends _Sistema_Controle
                 $tabela['Permissão'][$i]    = $valor->permissao2;
                 $tabela['Valor'][$i]        = $valor->valor;
                 $tabela['Funções'][$i]      =  $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Permissão de Grupo'        ,'_Sistema/Admin/Grupo_Permissao_Edit/'.$valor->id.'/'    ,''),$perm_editar);
-                if($valor->id>4){
-                    $tabela['Funções'][$i]  .= $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Permissão de Grupo'       ,'_Sistema/Admin/Grupo_Permissao_Del/'.$valor->id.'/'     ,'Deseja realmente deletar esse Grupo ? Isso irá afetar o sistema!'),$perm_del);
-                }
+                $tabela['Funções'][$i]  .= $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Permissão de Grupo'       ,'_Sistema/Admin/Grupo_Permissao_Del/'.$valor->id.'/'     ,__('Deseja realmente deletar essa Permissão de Grupo ? Isso irá afetar o sistema!')),$perm_del);
                 ++$i;
             }
             $this->_Visual->Show_Tabela_DataTable($tabela);
@@ -799,7 +797,11 @@ class _Sistema_AdminControle extends _Sistema_Controle
      * @version 0.4.2
      */
     public function Grupo_Permissao_Add($grupo=false){
-        // Carrega campos 
+        // Carrega Config
+        $titulo1    = __('Adicionar Permissão de Grupo');
+        $titulo2    = __('Cadastro de Permissão de Grupo');
+        $formid     = 'form_Sistema_Admin_Grupo_Permissao_Add';
+        $formbt     = __('Salvar');
         if($grupo!==false){
             $campos = Sistema_Grupo_Permissao_DAO::Get_Colunas();
             $extra = '/'.$grupo;
@@ -808,46 +810,8 @@ class _Sistema_AdminControle extends _Sistema_Controle
             $campos = Sistema_Grupo_Permissao_DAO::Get_Colunas();
             $extra = '';
         }
-        //retira os que nao precisam
-        self::DAO_Campos_Retira($campos, 'valor_mensalidade');
-        self::DAO_Campos_Retira($campos, 'valor_matricula');
-        // Carrega formulario
-        $form = new \Framework\Classes\Form('form_Sistema_Admin_Grupo_Permissao','_Sistema/Admin/Grupo_Permissao_Add2/'.$extra,'formajax');
-        \Framework\App\Controle::Gerador_Formulario($campos, $form);
-        $formulario = $form->retorna_form('Cadastrar');
-        $this->_Visual->Blocar($formulario);
-        // Mostra Conteudo
-        $this->_Visual->Bloco_Unico_CriaJanela(__('Cadastro de Permissão de Grupo'));
-        // Pagina Config
-        $this->_Visual->Json_Info_Update('Titulo', __('Adicionar Permissão de Grupo'));
-    }
-    /**
-     * 
-     * @param int $id Chave Primária (Id do Registro)
-     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
-     */
-    public function Grupo_Permissao_Edit($id,$grupo=false){
-        $id = (int) $id;
-        $extra = '';
-        if($grupo!==false) $extra = '/'.$grupo;
-        // Carrega campos e retira os que nao precisam
-        $campos = Sistema_Grupo_Permissao_DAO::Get_Colunas();
-        self::DAO_Campos_Retira($campos, 'valor_mensalidade');
-        self::DAO_Campos_Retira($campos, 'valor_matricula');
-        // recupera grupo
-        $grupopermissao = $this->_Modelo->db->Sql_Select('Sistema_Grupo_Permissao', Array('id'=>$id));
-        self::mysql_AtualizaValores($campos, $grupopermissao);
-
-        // edicao de grupos
-        $form = new \Framework\Classes\Form('form_Sistema_AdminC_GrupoEdit','_Sistema/Admin/Grupo_Permissao_Edit2/'.$id.'/'.$extra,'formajax');
-        \Framework\App\Controle::Gerador_Formulario($campos, $form);
-        $formulario = $form->retorna_form('Alterar Permissão de Grupo');
-        $this->_Visual->Blocar($formulario);
-        $this->_Visual->Bloco_Unico_CriaJanela(__('Alteração de Permissão de Grupo'));
-        // Json
-        $this->_Visual->Json_Info_Update('Titulo', 'Editar Permissão de Grupo (#'.$id.')');
-        
+        $formlink   = '_Sistema/Admin/Grupo_Permissao_Add2/'.$extra;
+        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos);
     }
     /**
      * 
@@ -857,70 +821,17 @@ class _Sistema_AdminControle extends _Sistema_Controle
      * @version 0.4.2
      */
     public function Grupo_Permissao_Add2($grupo=false){
+        // Verifica se Ja possui Antes de Inserir
+        $titulo     = __('Permissão de Grupo Adicionado com Sucesso');
+        $dao        = 'Sistema_Grupo_Permissao';
+        $funcao     = '$this->Grupo_Permissao();';
+        $sucesso1   = __('Inserção bem sucedida');
+        $sucesso2   = __('Permissão de Grupo Adicionado com Sucesso');
         
-        
-        // Cria novo Grupo
-        $grupopermissao = new Sistema_Grupo_Permissao_DAO;
-        self::mysql_AtualizaValores($grupopermissao);
-        if($grupo!==false) $grupopermissao->grupo = $grupo;
-        $sucesso =  $this->_Modelo->db->Sql_Insert($grupopermissao);
-        
-        // Atualiza
-        $this->Grupo_Permissao(); 
-        
-        // Mostra Mensagem de Sucesso
-        if($sucesso===true){
-            $mensagens = array(
-                "tipo" => 'sucesso',
-                "mgs_principal" => __('Inserção bem sucedida'),
-                "mgs_secundaria" => __('Permissão de Grupo cadastrado com sucesso.')
-            ); 
-        }else{
-            $mensagens = array(
-                "tipo" => 'erro',
-                "mgs_principal" => __('Erro'),
-                "mgs_secundaria" => __('Erro')
-            );
+        if($grupo!==false){
+            $alterar = ['grupo' => $grupo];
         }
-        $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens); 
-        // Json
-        $this->_Visual->Json_Info_Update('Titulo', __('Permissão de Grupo Adicionado com Sucesso'));  
-        $this->_Visual->Json_Info_Update('Historico', false);  
-    }
-    /**
-     * 
-     * 
-     * @param int $id Chave Primária (Id do Registro)
-     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
-     */
-    public function Grupo_Permissao_Edit2($id,$grupo=false){
-        
-        $id = (int) $id;
-        // Puxa o grupo, e altera seus valores, depois salva novamente
-        $grupopermissao = $this->_Modelo->db->Sql_Select('Sistema_Grupo_Permissao', Array('id'=>$id));
-        self::mysql_AtualizaValores($grupopermissao);
-        $sucesso =  $this->_Modelo->db->Sql_Update($grupopermissao);
-        // Atualiza
-        $this->Grupo_Permissao();
-        // Mensagem
-        if($sucesso===true){
-            $mensagens = array(
-                "tipo"              => 'sucesso',
-                "mgs_principal"     => __('Permissão de Grupo Alterado com Sucesso'),
-                "mgs_secundaria"    => ''.$_POST["nome"].' teve a alteração bem sucedida'
-            );
-        }else{
-            $mensagens = array(
-                "tipo" => 'erro',
-                "mgs_principal" => __('Erro'),
-                "mgs_secundaria" => __('Erro')
-            );
-        }
-        $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);  
-        //Json
-        $this->_Visual->Json_Info_Update('Titulo', __('Permissão de Grupo Editado com Sucesso'));  
-        $this->_Visual->Json_Info_Update('Historico', false);    
+        $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
     }
     /**
      * 

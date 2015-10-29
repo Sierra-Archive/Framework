@@ -941,7 +941,10 @@ final class Conexao
             return true;
         }else{
             $edicao = explode('|', $Objeto);
-            
+            // Trata
+            if(!isset($edicao[1]) || !isset(self::$tabelas[$edicao[0].'_DAO'])){
+                return false;
+            }
             $sql = 'UPDATE '.self::$tabelas[$edicao[0].'_DAO']['nome'].' SET '.$edicao[1].', log_date_edit=\''.APP_HORA.'\', log_user_edit=\''.\Framework\App\Acl::Usuario_GetID_Static().'\' WHERE '.$edicao[2];
             if($retornar){
                 return $sql.';';

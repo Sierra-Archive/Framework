@@ -2483,12 +2483,18 @@ readfile($link);*/
                         
                         // Atualiza Valor
                         $valor['edicao']['valor_padrao'] = $valores[$valor['mysql_titulo']]; 
-                    }else
+                    }else if(isset($_POST[$valor['mysql_titulo']]))
                     // Caso Contrario Pega do POST
                     {
                         
                         // Atualiza Valor
                         $valor['edicao']['valor_padrao'] = \Framework\App\Conexao::anti_injection($_POST[$valor['mysql_titulo']]);
+                    }else
+                    // Caso Contrario Pega do POST
+                    {
+                        
+                        // Atualiza Valor
+                        $valor['edicao']['valor_padrao'] = '';
                     }
                 }else
                 // Para funcionar com modulos da versao 1.0
@@ -2505,12 +2511,17 @@ readfile($link);*/
                         // Atualiza Valor
                         $valor['valor_padrao'] = $valores[$valor['mysql']];
 
+                    }else if(isset($_POST[$valor['mysql']]))
+                    // Caso Contrario Pega do POST
+                    {
+                        // Atualiza Valor
+                        $valor['valor_padrao'] = \Framework\App\Conexao::anti_injection($_POST[$valor['mysql']]);
                     }else
                     // Caso Contrario Pega do POST
                     {
                         
                         // Atualiza Valor
-                        $valor['valor_padrao'] = \Framework\App\Conexao::anti_injection($_POST[$valor['mysql']]);
+                        $valor['valor_padrao'] = '';
                     }
                 }else if(isset($valor['mysql_default'])){
                     $valor['valor_padrao'] = $valor['mysql_default'];

@@ -2422,7 +2422,9 @@ class comercio_PropostaControle extends comercio_Controle
      */
     public function Propostas_Comentario_Add($proposta_id = false,$tema='Propostas'){
         // Proteção E chama Endereço
-        if($proposta_id===false) throw new \Exception('Proposta não informado',404);
+        if ($proposta_id === false) {
+            throw new \Exception('Proposta não informado', 404);
+        }
         $proposta = $this->_Modelo->db->Sql_Select('Comercio_Proposta',Array('id'=>$proposta_id), 1);
         if($proposta===false) throw new \Exception('Proposta não existe:'.$proposta_id,404);
         self::Endereco_Proposta_Comentario(true,$tema,$proposta);
