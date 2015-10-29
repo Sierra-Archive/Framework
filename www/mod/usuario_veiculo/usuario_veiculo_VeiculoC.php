@@ -241,7 +241,7 @@ class usuario_veiculo_VeiculoControle extends usuario_veiculo_Controle
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
     public function Veiculos_View($veiculo_id = false){
-        if($veiculo_id===false || $veiculo_id==0 || !isset($veiculo_id)) throw new \Exception('Veiculo não informado',404);
+        if($veiculo_id===false || $veiculo_id==0 || !isset($veiculo_id)) return _Sistema_erroControle::Erro_Fluxo('Veiculo não informado',404);
         $this->Veiculos_Popup(      $veiculo_id  , false );
         if(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_veiculo_Comentario')){
             $this->Veiculos_Comentario( $veiculo_id          );
@@ -252,7 +252,7 @@ class usuario_veiculo_VeiculoControle extends usuario_veiculo_Controle
         $this->_Visual->Json_Info_Update('Titulo', __('Visualizar Comentários do Veiculo'));
     }
     public function Veiculos_Popup($veiculo_id = false, $popup=true){
-        if($veiculo_id===false || $veiculo_id==0 || !isset($veiculo_id)) throw new \Exception('Veiculo não informado',404);
+        if($veiculo_id===false || $veiculo_id==0 || !isset($veiculo_id)) return _Sistema_erroControle::Erro_Fluxo('Veiculo não informado',404);
         // mostra todas as suas mensagens
         $where = Array(
             'id'    =>  $veiculo_id,
@@ -370,7 +370,7 @@ class usuario_veiculo_VeiculoControle extends usuario_veiculo_Controle
      * @version 0.4.2
      */
     public function Veiculos_Comentario_Add($veiculo_id = false){
-        if($veiculo_id===false) throw new \Exception('Veiculo não informado',404);
+        if($veiculo_id===false) return _Sistema_erroControle::Erro_Fluxo('Veiculo não informado',404);
         // Carrega Config
         $titulo1    = __('Adicionar Comentário de Veiculo');
         $titulo2    = __('Salvar Comentário de Veiculo');
@@ -389,7 +389,7 @@ class usuario_veiculo_VeiculoControle extends usuario_veiculo_Controle
      * @version 0.4.2
      */
     public function Veiculos_Comentario_Add2($veiculo_id = false){
-        if($veiculo_id===false) throw new \Exception('Veiculo não informado',404);
+        if($veiculo_id===false) return _Sistema_erroControle::Erro_Fluxo('Veiculo não informado',404);
         $titulo     = __('Comentário do Veiculo Adicionado com Sucesso');
         $dao        = 'Usuario_Veiculo_Comentario';
         $funcao     = '$this->Veiculos_View('.$veiculo_id.');';
@@ -405,8 +405,8 @@ class usuario_veiculo_VeiculoControle extends usuario_veiculo_Controle
      * @version 0.4.2
      */
     public function Veiculos_Comentario_Edit($veiculo_id = false,$id = 0){
-        if($veiculo_id===false) throw new \Exception('Veiculo não informado',404);
-        if($id         == 0   ) throw new \Exception('Comentário não informado',404);
+        if($veiculo_id===false) return _Sistema_erroControle::Erro_Fluxo('Veiculo não informado',404);
+        if($id         == 0   ) return _Sistema_erroControle::Erro_Fluxo('Comentário não informado',404);
         // Carrega Config
         $titulo1    = 'Editar Comentário do Veiculo (#'.$id.')';
         $titulo2    = __('Alteração de Comentário do Veiculo');
@@ -426,8 +426,8 @@ class usuario_veiculo_VeiculoControle extends usuario_veiculo_Controle
      * @version 0.4.2
      */
     public function Veiculos_Comentario_Edit2($veiculo_id = false,$id = 0){
-        if($veiculo_id===false) throw new \Exception('Veiculo não informado',404);
-        if($id         == 0   ) throw new \Exception('Comentário não informado',404);
+        if($veiculo_id===false) return _Sistema_erroControle::Erro_Fluxo('Veiculo não informado',404);
+        if($id         == 0   ) return _Sistema_erroControle::Erro_Fluxo('Comentário não informado',404);
         $titulo     = __('Comentário de Veiculo Editado com Sucesso');
         $dao        = Array('Usuario_Veiculo_Comentario',$id);
         $funcao     = '$this->Veiculos_View('.$veiculo_id.');';
@@ -444,8 +444,8 @@ class usuario_veiculo_VeiculoControle extends usuario_veiculo_Controle
      * @version 0.4.2
      */
     public function Veiculos_Comentario_Del($veiculo_id = false,$id = 0){
-        if($veiculo_id===false) throw new \Exception('Veiculo não informado',404);
-        if($id         == 0   ) throw new \Exception('Comentário não informado',404);
+        if($veiculo_id===false) return _Sistema_erroControle::Erro_Fluxo('Veiculo não informado',404);
+        if($id         == 0   ) return _Sistema_erroControle::Erro_Fluxo('Comentário não informado',404);
         
         
     	$id = (int) $id;
@@ -516,7 +516,7 @@ class usuario_veiculo_VeiculoControle extends usuario_veiculo_Controle
      * @version 0.4.2
      */
     public function Veiculos_Evento_Add($veiculo_id = false){
-        if($veiculo_id===false) throw new \Exception('Veiculo não informado',404);
+        if($veiculo_id===false) return _Sistema_erroControle::Erro_Fluxo('Veiculo não informado',404);
         // Carrega Config
         $titulo1    = __('Adicionar Evento de Veiculo');
         $titulo2    = __('Salvar Evento de Veiculo');
@@ -535,7 +535,7 @@ class usuario_veiculo_VeiculoControle extends usuario_veiculo_Controle
      * @version 0.4.2
      */
     public function Veiculos_Evento_Add2($veiculo_id = false){
-        if($veiculo_id===false) throw new \Exception('Veiculo não informado',404);
+        if($veiculo_id===false) return _Sistema_erroControle::Erro_Fluxo('Veiculo não informado',404);
         $titulo     = __('Evento do Veiculo Adicionado com Sucesso');
         $dao        = 'Usuario_Veiculo_Evento';
         $funcao     = '$this->Veiculos_View('.$veiculo_id.');';
@@ -551,8 +551,8 @@ class usuario_veiculo_VeiculoControle extends usuario_veiculo_Controle
      * @version 0.4.2
      */
     public function Veiculos_Evento_Edit($veiculo_id = false,$id = 0){
-        if($veiculo_id===false) throw new \Exception('Veiculo não informado',404);
-        if($id         == 0   ) throw new \Exception('Evento não informado',404);
+        if($veiculo_id===false) return _Sistema_erroControle::Erro_Fluxo('Veiculo não informado',404);
+        if($id         == 0   ) return _Sistema_erroControle::Erro_Fluxo('Evento não informado',404);
         // Carrega Config
         $titulo1    = 'Editar Evento do Veiculo (#'.$id.')';
         $titulo2    = __('Alteração de Evento do Veiculo');
@@ -572,8 +572,8 @@ class usuario_veiculo_VeiculoControle extends usuario_veiculo_Controle
      * @version 0.4.2
      */
     public function Veiculos_Evento_Edit2($veiculo_id = false,$id = 0){
-        if($veiculo_id===false) throw new \Exception('Veiculo não informado',404);
-        if($id         == 0   ) throw new \Exception('Evento não informado',404);
+        if($veiculo_id===false) return _Sistema_erroControle::Erro_Fluxo('Veiculo não informado',404);
+        if($id         == 0   ) return _Sistema_erroControle::Erro_Fluxo('Evento não informado',404);
         $titulo     = __('Evento de Veiculo Editado com Sucesso');
         $dao        = Array('Usuario_Veiculo_Evento',$id);
         $funcao     = '$this->Veiculos_View('.$veiculo_id.');';
@@ -590,8 +590,8 @@ class usuario_veiculo_VeiculoControle extends usuario_veiculo_Controle
      * @version 0.4.2
      */
     public function Veiculos_Evento_Del($veiculo_id = false,$id = 0){
-        if($veiculo_id===false) throw new \Exception('Veiculo não informado',404);
-        if($id         == 0   ) throw new \Exception('Evento não informado',404);
+        if($veiculo_id===false) return _Sistema_erroControle::Erro_Fluxo('Veiculo não informado',404);
+        if($id         == 0   ) return _Sistema_erroControle::Erro_Fluxo('Evento não informado',404);
         
         
     	$id = (int) $id;

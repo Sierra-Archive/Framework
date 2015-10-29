@@ -297,12 +297,12 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
     public function Financeiros_NaoPagar($id=false, $localizacao=false, $dataini=false,$datafin=false){
         // Verifica Existencia
         if($id===false){
-            throw new \Exception('Financeiro não especificado: '.$id,404);
+            return _Sistema_erroControle::Erro_Fluxo('Financeiro não especificado: '.$id,404);
         }
         $where = Array('id'=>  $id);
         $financeiros = $this->_Modelo->db->Sql_Select('Financeiro_Pagamento_Interno',$where);
         if($financeiros===false){
-            throw new \Exception('Financeiro não existe: '.$id,404);
+            return _Sistema_erroControle::Erro_Fluxo('Financeiro não existe: '.$id,404);
         }
         if($financeiros->saida_motivo==='Servidor' && $financeiros->saida_motivoid===SRV_NAME_SQL){
             $pago = __('Recebido');
@@ -354,12 +354,12 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
     public function Financeiros_Pagar($id=false, $localizacao=false, $dataini=false,$datafin=false){
         // Faz Protecao, e Linguagem apropriada
         if($id===false){
-            throw new \Exception('Financeiro não especificado: '.$id,404);
+            return _Sistema_erroControle::Erro_Fluxo('Financeiro não especificado: '.$id,404);
         }
         $where = Array('id'=>  $id, 'pago'=>'0');
         $editar = $this->_Modelo->db->Sql_Select('Financeiro_Pagamento_Interno',$where);
         if($editar===false){
-            throw new \Exception('Financeiro não existe: '.$id,404);
+            return _Sistema_erroControle::Erro_Fluxo('Financeiro não existe: '.$id,404);
         }
         if($localizacao!==false){
             Financeiro_RelatorioControle::Endereco_Financeiro();
@@ -408,12 +408,12 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
     public function Financeiros_Pagar2($id=false, $localizacao=false, $dataini=false,$datafin=false){
         // Verifica Existencia
         if($id===false){
-            throw new \Exception('Financeiro não especificado: '.$id,404);
+            return _Sistema_erroControle::Erro_Fluxo('Financeiro não especificado: '.$id,404);
         }
         $where = Array('id'=>  $id);
         $financeiros = $this->_Modelo->db->Sql_Select('Financeiro_Pagamento_Interno',$where);
         if($financeiros===false){
-            throw new \Exception('Financeiro não existe: '.$id,404);
+            return _Sistema_erroControle::Erro_Fluxo('Financeiro não existe: '.$id,404);
         }
         if($financeiros->saida_motivo==='Servidor' && $financeiros->saida_motivoid===SRV_NAME_SQL){
             $pago = __('Recebido');
@@ -421,7 +421,7 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
             $pago = __('Pago');
         }
         if(!isset($_POST['valor_juros']) || !isset($_POST['dt_pago'])|| !isset($_POST['obs'])){
-            throw new \Exception('Campos Imcompletos: ',404);
+            return _Sistema_erroControle::Erro_Fluxo('Campos Imcompletos: ',404);
         }
         // Captura Valores
         $valor_juros    = \Framework\App\Sistema_Funcoes::Tranf_Real_Float(\Framework\App\Conexao::anti_injection($_POST['valor_juros']));
@@ -619,7 +619,7 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
         }else{
             $link_extra = '/'.$forma;
             $forma = $this->_Modelo->db->Sql_Select('Financeiro_Pagamento_Forma',Array('id'=>$forma),1);
-            if($forma===false)                throw new \Exception('Forma de Pagamento não existe.'.$forma,404);
+            if($forma===false)                return _Sistema_erroControle::Erro_Fluxo('Forma de Pagamento não existe.'.$forma,404);
             $nenhum     = 'Nenhuma Condição de Pagamento em '.$forma->nome;
             $titulo     = 'Condição de Pagamento em '.$forma->nome;
             $titulo2    = 'Condições de Pagamento em '.$forma->nome;
@@ -646,7 +646,7 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
         if($forma!==0){
             $formaid = $forma;
             $forma = $this->_Modelo->db->Sql_Select('Financeiro_Pagamento_Forma',Array('id'=>$forma),1);
-            if($forma===false)                throw new \Exception('Forma de Pagamento não existe.'.$forma,404);
+            if($forma===false)                return _Sistema_erroControle::Erro_Fluxo('Forma de Pagamento não existe.'.$forma,404);
         }else{
             $formaid = 0;
         }
@@ -675,7 +675,7 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
         if($forma!==0){
             $formaid = $forma;
             $forma = $this->_Modelo->db->Sql_Select('Financeiro_Pagamento_Forma',Array('id'=>$forma),1);
-            if($forma===false)                throw new \Exception('Forma de Pagamento não existe.'.$forma,404);
+            if($forma===false)                return _Sistema_erroControle::Erro_Fluxo('Forma de Pagamento não existe.'.$forma,404);
         }else{
             $formaid = 0;
         }
@@ -702,7 +702,7 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
         if($forma!==0){
             $formaid = $forma;
             $forma = $this->_Modelo->db->Sql_Select('Financeiro_Pagamento_Forma',Array('id'=>$forma),1);
-            if($forma===false)                throw new \Exception('Forma de Pagamento não existe.'.$forma,404);
+            if($forma===false)                return _Sistema_erroControle::Erro_Fluxo('Forma de Pagamento não existe.'.$forma,404);
         }else{
             $formaid = 0;
         }
@@ -732,7 +732,7 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
         if($forma!==0){
             $formaid = $forma;
             $forma = $this->_Modelo->db->Sql_Select('Financeiro_Pagamento_Forma',Array('id'=>$forma),1);
-            if($forma===false)                throw new \Exception('Forma de Pagamento não existe.'.$forma,404);
+            if($forma===false)                return _Sistema_erroControle::Erro_Fluxo('Forma de Pagamento não existe.'.$forma,404);
         }else{
             $formaid = 0;
         }
@@ -833,12 +833,12 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
     public function Financeiros_VencimentoEdit($id=false){
         // Faz Protecao, e Linguagem apropriada
         if($id===false){
-            throw new \Exception('Financeiro não especificado: '.$id,404);
+            return _Sistema_erroControle::Erro_Fluxo('Financeiro não especificado: '.$id,404);
         }
         $where = Array('id'=>  $id);
         $editar = $this->_Modelo->db->Sql_Select('Financeiro_Pagamento_Interno',$where);
         if($editar===false){
-            throw new \Exception('Financeiro não existe: '.$id,404);
+            return _Sistema_erroControle::Erro_Fluxo('Financeiro não existe: '.$id,404);
         }
         // Carrega Config
         $titulo1    = 'Mudar Vencimento (#'.$id.')';
@@ -862,13 +862,13 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
     public function Financeiros_VencimentoEdit2($id=false){
         // Verifica Existencia
         if($id===false){
-            throw new \Exception('Financeiro não especificado: '.$id,404);
+            return _Sistema_erroControle::Erro_Fluxo('Financeiro não especificado: '.$id,404);
         }
         $id = (int) $id;
         $where = Array('id'=>  $id);
         $financeiros = $this->_Modelo->db->Sql_Select('Financeiro_Pagamento_Interno',$where);
         if($financeiros===false){
-            throw new \Exception('Financeiro não existe: '.$id,404);
+            return _Sistema_erroControle::Erro_Fluxo('Financeiro não existe: '.$id,404);
         }
         // Mensagens
         $titulo     = __('Vencimento alterado com Sucesso');
@@ -921,7 +921,7 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
         $identificador = $this->_Modelo->db->Sql_Select('Financeiro_Pagamento_Interno',Array('id'=>$id),1); // Banco DAO, Condicao e LIMITE
         // Verifica se Existe e Continua
         if($identificador===false){
-            throw new \Exception('Pagamento não Existe',404);
+            return _Sistema_erroControle::Erro_Fluxo('Pagamento não Existe',404);
         }
         $id = $identificador->id;
         
@@ -965,10 +965,10 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
         /*$cliente = $this->_Modelo->db->Sql_Select('Usuario',Array('id'=>$identificador->cliente),1); // Banco DAO, Condicao e LIMITE
         // Verifica se Existe e Continua
         if($identificador===false){
-            throw new \Exception('Proposta não Existe',404);
+            return _Sistema_erroControle::Erro_Fluxo('Proposta não Existe',404);
         }
         if($cliente===false){
-            throw new \Exception('Cliente não existe',404);
+            return _Sistema_erroControle::Erro_Fluxo('Cliente não existe',404);
         }
         */
         

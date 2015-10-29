@@ -375,7 +375,7 @@ class Engenharia_UnidadeControle extends Engenharia_Controle
                 // recupera Arquivo
                 $id = (int) $editar[1];
                 $objeto = $this->_Modelo->db->Sql_Select($editar[0], Array('id'=>$id));
-                if($objeto===false) throw new \Exception('Registro não existe: ID->'.$id,404);
+                if($objeto===false) return _Sistema_erroControle::Erro_Fluxo('Registro não existe: ID->'.$id,404);
             }
             foreach($campos as &$valor){
                 if(strpos($valor['edicao']['change'], 'Control_Layoult_Form_Campos_Trocar')!==false){

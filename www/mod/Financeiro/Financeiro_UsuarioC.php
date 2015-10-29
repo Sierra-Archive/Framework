@@ -306,12 +306,12 @@ class Financeiro_UsuarioControle extends Financeiro_Controle
         
         /*// Faz Protecao, e Linguagem apropriada
         if($id===false){
-            throw new \Exception('Financeiro não especificado: '.$id,404);
+            return _Sistema_erroControle::Erro_Fluxo('Financeiro não especificado: '.$id,404);
         }
         $where = Array('id'=>  $id, 'pago'=>'0');
         $editar = $this->_Modelo->db->Sql_Select('Financeiro_Pagamento_Interno',$where);
         if($editar===false){
-            throw new \Exception('Financeiro não existe: '.$id,404);
+            return _Sistema_erroControle::Erro_Fluxo('Financeiro não existe: '.$id,404);
         }
         if($localizacao!==false){
             Financeiro_RelatorioControle::Endereco_Financeiro();
@@ -354,7 +354,7 @@ class Financeiro_UsuarioControle extends Financeiro_Controle
         $identificador = $this->_Modelo->db->Sql_Select('Financeiro_Pagamento_Interno',Array('id'=>$id),1); // Banco DAO, Condicao e LIMITE
         // Verifica se Existe e Continua
         if($identificador===false){
-            throw new \Exception('Pagamento não Existe',404);
+            return _Sistema_erroControle::Erro_Fluxo('Pagamento não Existe',404);
         }
         $id = $identificador->id;
         
@@ -398,10 +398,10 @@ class Financeiro_UsuarioControle extends Financeiro_Controle
         /*$cliente = $this->_Modelo->db->Sql_Select('Usuario',Array('id'=>$identificador->cliente),1); // Banco DAO, Condicao e LIMITE
         // Verifica se Existe e Continua
         if($identificador===false){
-            throw new \Exception('Proposta não Existe',404);
+            return _Sistema_erroControle::Erro_Fluxo('Proposta não Existe',404);
         }
         if($cliente===false){
-            throw new \Exception('Cliente não existe',404);
+            return _Sistema_erroControle::Erro_Fluxo('Cliente não existe',404);
         }
         */
         

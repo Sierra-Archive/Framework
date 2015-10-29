@@ -532,17 +532,17 @@ class comercio_PropostaControle extends comercio_Controle
         $identificador = $this->_Modelo->db->Sql_Select('Comercio_Proposta',Array('id'=>$id),1); // Banco DAO, Condicao e LIMITE
         // Verifica se Existe e Continua
         if($identificador===false){
-            throw new \Exception('Proposta não Existe',404);
+            return _Sistema_erroControle::Erro_Fluxo('Proposta não Existe',404);
         }
         $id = $identificador->id;
         
         $cliente = $this->_Modelo->db->Sql_Select('Usuario',Array('id'=>$identificador->cliente),1); // Banco DAO, Condicao e LIMITE
         // Verifica se Existe e Continua
         if($identificador===false){
-            throw new \Exception('Proposta não Existe',404);
+            return _Sistema_erroControle::Erro_Fluxo('Proposta não Existe',404);
         }
         if($cliente===false){
-            throw new \Exception('Cliente não existe',404);
+            return _Sistema_erroControle::Erro_Fluxo('Cliente não existe',404);
         }
         
         
@@ -1004,7 +1004,7 @@ class comercio_PropostaControle extends comercio_Controle
         $identificador = $this->_Modelo->db->Sql_Select('Comercio_Proposta',Array('id'=>$id),1); // Banco DAO, Condicao e LIMITE
         // Verifica se Existe e Continua
         if($identificador===false){
-            throw new \Exception('Proposta não Existe',404);
+            return _Sistema_erroControle::Erro_Fluxo('Proposta não Existe',404);
         }
         $id = $identificador->id;
         $total_geral = 0;
@@ -1027,10 +1027,10 @@ class comercio_PropostaControle extends comercio_Controle
         $cliente = $this->_Modelo->db->Sql_Select('Usuario',Array('id'=>$identificador->cliente),1); // Banco DAO, Condicao e LIMITE
         // Verifica se Existe e Continua
         if($identificador===false){
-            throw new \Exception('Proposta não Existe',404);
+            return _Sistema_erroControle::Erro_Fluxo('Proposta não Existe',404);
         }
         if($cliente===false){
-            throw new \Exception('Cliente não existe',404);
+            return _Sistema_erroControle::Erro_Fluxo('Cliente não existe',404);
         }
         
         // Lucro
@@ -2423,10 +2423,10 @@ class comercio_PropostaControle extends comercio_Controle
     public function Propostas_Comentario_Add($proposta_id = false,$tema='Propostas'){
         // Proteção E chama Endereço
         if ($proposta_id === false) {
-            throw new \Exception('Proposta não informado', 404);
+            return _Sistema_erroControle::Erro_Fluxo('Proposta não informado',404);
         }
         $proposta = $this->_Modelo->db->Sql_Select('Comercio_Proposta',Array('id'=>$proposta_id), 1);
-        if($proposta===false) throw new \Exception('Proposta não existe:'.$proposta_id,404);
+        if($proposta===false) return _Sistema_erroControle::Erro_Fluxo('Proposta não existe:'.$proposta_id,404);
         self::Endereco_Proposta_Comentario(true,$tema,$proposta);
         // Nomes
         if($tema!='Propostas'){
@@ -2458,7 +2458,7 @@ class comercio_PropostaControle extends comercio_Controle
      * @version 0.4.2
      */
     public function Propostas_Comentario_Add2($proposta_id = false,$tema='Propostas'){
-        if($proposta_id===false) throw new \Exception('Proposta não informada',404);
+        if($proposta_id===false) return _Sistema_erroControle::Erro_Fluxo('Proposta não informada',404);
         // Nomes
         if($tema!='Propostas'){
             $titulo             = CFG_TXT_COMERCIO_OS;
@@ -2484,11 +2484,11 @@ class comercio_PropostaControle extends comercio_Controle
      * @version 0.4.2
      */
     public function Propostas_Comentario_Edit($proposta_id = false,$id = 0,$tema='Propostas'){
-        if($proposta_id===false) throw new \Exception('Proposta não informado',404);
-        if($id         == 0   ) throw new \Exception('Comentário não informado',404);
+        if($proposta_id===false) return _Sistema_erroControle::Erro_Fluxo('Proposta não informado',404);
+        if($id         == 0   ) return _Sistema_erroControle::Erro_Fluxo('Comentário não informado',404);
         // Proteção E chama Endereço
         $proposta = $this->_Modelo->db->Sql_Select('Comercio_Proposta',Array('id'=>$proposta_id), 1);
-        if($proposta===false) throw new \Exception('Proposta não existe:'.$proposta_id,404);
+        if($proposta===false) return _Sistema_erroControle::Erro_Fluxo('Proposta não existe:'.$proposta_id,404);
         self::Endereco_Proposta_Comentario(true,$tema,$proposta);
         // Nomes
         if($tema!='Propostas'){
@@ -2520,8 +2520,8 @@ class comercio_PropostaControle extends comercio_Controle
      * @version 0.4.2
      */
     public function Propostas_Comentario_Edit2($proposta_id = false,$id = 0,$tema='Propostas'){
-        if($proposta_id===false) throw new \Exception('Proposta não informado',404);
-        if($id         == 0   ) throw new \Exception('Comentário não informado',404);
+        if($proposta_id===false) return _Sistema_erroControle::Erro_Fluxo('Proposta não informado',404);
+        if($id         == 0   ) return _Sistema_erroControle::Erro_Fluxo('Comentário não informado',404);
         // Nomes
         if($tema!='Propostas'){
             $titulo             = CFG_TXT_COMERCIO_OS;
@@ -2548,8 +2548,8 @@ class comercio_PropostaControle extends comercio_Controle
      * @version 0.4.2
      */
     public function Propostas_Comentario_Del($proposta_id = false,$id = 0,$tema='Propostas'){
-        if($proposta_id===false) throw new \Exception('Proposta não informada',404);
-        if($id         == 0   ) throw new \Exception('Comentário não informado',404);
+        if($proposta_id===false) return _Sistema_erroControle::Erro_Fluxo('Proposta não informada',404);
+        if($id         == 0   ) return _Sistema_erroControle::Erro_Fluxo('Comentário não informado',404);
         
         
     	$id = (int) $id;
@@ -2670,9 +2670,9 @@ class comercio_PropostaControle extends comercio_Controle
      */
     public function Propostas_Sub_Add($proposta_id = false,$tema='Propostas'){
         // Proteção E chama Endereço
-        if($proposta_id===false) throw new \Exception('Proposta não informado',404);
+        if($proposta_id===false) return _Sistema_erroControle::Erro_Fluxo('Proposta não informado',404);
         $proposta = $this->_Modelo->db->Sql_Select('Comercio_Proposta',Array('id'=>$proposta_id), 1);
-        if($proposta===false) throw new \Exception('Proposta não existe:'.$proposta_id,404);
+        if($proposta===false) return _Sistema_erroControle::Erro_Fluxo('Proposta não existe:'.$proposta_id,404);
         self::Endereco_Proposta_Sub(true,$tema,$proposta);
         // Nomes
         if($tema!='Propostas'){
@@ -2704,7 +2704,7 @@ class comercio_PropostaControle extends comercio_Controle
      * @version 0.4.2
      */
     public function Propostas_Sub_Add2($proposta_id = false,$tema='Propostas'){
-        if($proposta_id===false) throw new \Exception('Proposta não informada',404);
+        if($proposta_id===false) return _Sistema_erroControle::Erro_Fluxo('Proposta não informada',404);
         // Nomes
         if($tema!='Propostas'){
             $titulo             = CFG_TXT_COMERCIO_OS;
@@ -2730,11 +2730,11 @@ class comercio_PropostaControle extends comercio_Controle
      * @version 0.4.2
      */
     public function Propostas_Sub_Edit($proposta_id = false,$id = 0,$tema='Propostas'){
-        if($proposta_id===false) throw new \Exception('Proposta não informado',404);
-        if($id         == 0   ) throw new \Exception('Sub proposta não informado',404);
+        if($proposta_id===false) return _Sistema_erroControle::Erro_Fluxo('Proposta não informado',404);
+        if($id         == 0   ) return _Sistema_erroControle::Erro_Fluxo('Sub proposta não informado',404);
         // Proteção E chama Endereço
         $proposta = $this->_Modelo->db->Sql_Select('Comercio_Proposta',Array('id'=>$proposta_id), 1);
-        if($proposta===false) throw new \Exception('Proposta não existe:'.$proposta_id,404);
+        if($proposta===false) return _Sistema_erroControle::Erro_Fluxo('Proposta não existe:'.$proposta_id,404);
         self::Endereco_Proposta_Sub(true,$tema,$proposta);
         // Nomes
         if($tema!='Propostas'){
@@ -2766,8 +2766,8 @@ class comercio_PropostaControle extends comercio_Controle
      * @version 0.4.2
      */
     public function Propostas_Sub_Edit2($proposta_id = false,$id = 0,$tema='Propostas'){
-        if($proposta_id===false) throw new \Exception('Proposta não informado',404);
-        if($id         == 0   ) throw new \Exception('Sub proposta não informado',404);
+        if($proposta_id===false) return _Sistema_erroControle::Erro_Fluxo('Proposta não informado',404);
+        if($id         == 0   ) return _Sistema_erroControle::Erro_Fluxo('Sub proposta não informado',404);
         // Nomes
         if($tema!='Propostas'){
             $titulo             = CFG_TXT_COMERCIO_OS;
@@ -2794,8 +2794,8 @@ class comercio_PropostaControle extends comercio_Controle
      * @version 0.4.2
      */
     public function Propostas_Sub_Del($proposta_id = false,$id = 0,$tema='Propostas'){
-        if($proposta_id===false) throw new \Exception('Proposta não informada',404);
-        if($id         == 0   ) throw new \Exception('Sub proposta não informado',404);
+        if($proposta_id===false) return _Sistema_erroControle::Erro_Fluxo('Proposta não informada',404);
+        if($id         == 0   ) return _Sistema_erroControle::Erro_Fluxo('Sub proposta não informado',404);
         
         
     	$id = (int) $id;
@@ -3261,9 +3261,9 @@ class comercio_PropostaControle extends comercio_Controle
      */
     public function Visitas_Comentario_Add($visita_id = false){
         // Proteção E chama Endereço
-        if($visita_id===false) throw new \Exception('Visita não informado',404);
+        if($visita_id===false) return _Sistema_erroControle::Erro_Fluxo('Visita não informado',404);
         $visita = $this->_Modelo->db->Sql_Select('Comercio_Visita',Array('id'=>$visita_id), 1);
-        if($visita===false) throw new \Exception('Visita não existe:'.$visita_id,404);
+        if($visita===false) return _Sistema_erroControle::Erro_Fluxo('Visita não existe:'.$visita_id,404);
         self::Endereco_Visita_Comentario(true,$visita);
         // Começo
         $visita_id = (int) $visita_id;
@@ -3285,7 +3285,7 @@ class comercio_PropostaControle extends comercio_Controle
      * @version 0.4.2
      */
     public function Visitas_Comentario_Add2($visita_id = false){
-        if($visita_id===false) throw new \Exception('Visita não informado',404);
+        if($visita_id===false) return _Sistema_erroControle::Erro_Fluxo('Visita não informado',404);
         $titulo     = __('Comentário sobre a Visita Adicionado com Sucesso');
         $dao        = 'Comercio_Visita_Comentario';
         $funcao     = '$this->Visitas_Comentario('.$visita_id.');';
@@ -3301,11 +3301,11 @@ class comercio_PropostaControle extends comercio_Controle
      * @version 0.4.2
      */
     public function Visitas_Comentario_Edit($visita_id = false,$id = 0){
-        if($visita_id===false) throw new \Exception('Visita não informado',404);
-        if($id         == 0   ) throw new \Exception('Comentário não informado',404);
+        if($visita_id===false) return _Sistema_erroControle::Erro_Fluxo('Visita não informado',404);
+        if($id         == 0   ) return _Sistema_erroControle::Erro_Fluxo('Comentário não informado',404);
         // Proteção E chama Endereço
         $visita = $this->_Modelo->db->Sql_Select('Comercio_Visita',Array('id'=>$visita_id), 1);
-        if($visita===false) throw new \Exception('Visita não existe:'.$visita_id,404);
+        if($visita===false) return _Sistema_erroControle::Erro_Fluxo('Visita não existe:'.$visita_id,404);
         self::Endereco_Visita_Comentario(true,$visita);
         // Começo
         // Carrega Config
@@ -3327,8 +3327,8 @@ class comercio_PropostaControle extends comercio_Controle
      * @version 0.4.2
      */
     public function Visitas_Comentario_Edit2($visita_id = false,$id = 0){
-        if($visita_id===false) throw new \Exception('Visita não informado',404);
-        if($id         == 0   ) throw new \Exception('Comentário não informado',404);
+        if($visita_id===false) return _Sistema_erroControle::Erro_Fluxo('Visita não informado',404);
+        if($id         == 0   ) return _Sistema_erroControle::Erro_Fluxo('Comentário não informado',404);
         $titulo     = __('Comentário de Visita Editado com Sucesso');
         $dao        = Array('Comercio_Visita_Comentario',$id);
         $funcao     = '$this->Visitas_Comentario('.$visita_id.');';
@@ -3345,8 +3345,8 @@ class comercio_PropostaControle extends comercio_Controle
      * @version 0.4.2
      */
     public function Visitas_Comentario_Del($visita_id = false,$id = 0){
-        if($visita_id===false) throw new \Exception('Visita não informado',404);
-        if($id         == 0   ) throw new \Exception('Comentário não informado',404);
+        if($visita_id===false) return _Sistema_erroControle::Erro_Fluxo('Visita não informado',404);
+        if($id         == 0   ) return _Sistema_erroControle::Erro_Fluxo('Comentário não informado',404);
         
         
     	$id = (int) $id;

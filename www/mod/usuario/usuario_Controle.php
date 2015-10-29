@@ -394,7 +394,7 @@ class usuario_Controle extends \Framework\App\Controle
             $id = (int) $id;
         }
         $usuario = $Modelo->db->Sql_Select('Usuario', Array('id'=>$id));
-        if($usuario===false)            throw new \Exception('Usuario não Existe',404);
+        if($usuario===false)            return _Sistema_erroControle::Erro_Fluxo('Usuario não Existe',404);
         // Pre
         $linkextra = '';
         

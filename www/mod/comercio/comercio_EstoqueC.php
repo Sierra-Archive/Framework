@@ -76,7 +76,7 @@ class comercio_EstoqueControle extends comercio_Controle
         }else{
             $produto_id = (int) $produto; 
             $produtos = $this->_Modelo->db->Sql_Select('Comercio_Produto',Array('id'=>$produto_id),1);
-            if($produtos===false) throw new \Exception('Produto não existe:'.$produto_id,404);
+            if($produtos===false) return _Sistema_erroControle::Erro_Fluxo('Produto não existe:'.$produto_id,404);
             $where = Array('produto'=>$produto_id);
             self::Endereco_Estoque(false,$produtos);
         }

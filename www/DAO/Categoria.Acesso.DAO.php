@@ -231,7 +231,7 @@ final Class Categoria_Acesso_DAO extends Framework\App\Dao
             foreach($percorrer as &$value){
                 if(strtoupper($tipo)===strtoupper($value['chave'])) return $value;
             }
-            throw new \Exception('Categoria de Acesso não encontrado. Tipo:'.$tipo,404);
+            return _Sistema_erroControle::Erro_Fluxo('Categoria de Acesso não encontrado. Tipo:'.$tipo,404);
         }else{
             $array = Array();
             // Percorre os modulos que aceitam categorias
@@ -262,7 +262,7 @@ final Class Categoria_Acesso_DAO extends Framework\App\Dao
                 return $value['nome'];
             }
         }
-        throw new \Exception('Categoria de Acesso não encontrado. '.$chave,404);
+        return _Sistema_erroControle::Erro_Fluxo('Categoria de Acesso não encontrado. '.$chave,404);
     }
     public static function Mod_Acesso_Get_Chave(){
         $repassar = self::Mod_Acesso_Get();

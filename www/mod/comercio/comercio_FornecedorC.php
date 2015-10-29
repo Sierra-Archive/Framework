@@ -184,7 +184,7 @@ class comercio_FornecedorControle extends comercio_Controle
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
     public function Fornecedores_View($fornecedor_id = false){
-        if($fornecedor_id===false || $fornecedor_id==0 || !isset($fornecedor_id)) throw new \Exception('Fornecedor não informado',404);
+        if($fornecedor_id===false || $fornecedor_id==0 || !isset($fornecedor_id)) return _Sistema_erroControle::Erro_Fluxo('Fornecedor não informado',404);
         // Inclui Endereco
         self::Endereco_Fornecedor(true);
         $this->Tema_Endereco('Visualizar Comentários do Fornecedor #'.$fornecedor_id);
@@ -194,7 +194,7 @@ class comercio_FornecedorControle extends comercio_Controle
         $this->_Visual->Json_Info_Update('Titulo', __('Visualizar Comentários do Fornecedor'));
     }
     public function Fornecedores_Popup($fornecedor_id = false, $popup = true){
-        if($fornecedor_id===false || $fornecedor_id==0 || !isset($fornecedor_id)) throw new \Exception('Fornecedor não informado',404);
+        if($fornecedor_id===false || $fornecedor_id==0 || !isset($fornecedor_id)) return _Sistema_erroControle::Erro_Fluxo('Fornecedor não informado',404);
         // mostra todas as suas mensagens
         $where = Array(
             'id'    =>  $fornecedor_id,
@@ -327,7 +327,7 @@ class comercio_FornecedorControle extends comercio_Controle
      * @version 0.4.2
      */
     public function Fornecedores_Comentario_Add($fornecedor_id = false){
-        if($fornecedor_id===false) throw new \Exception('Fornecedor não informado',404);
+        if($fornecedor_id===false) return _Sistema_erroControle::Erro_Fluxo('Fornecedor não informado',404);
         // Carrega Config
         $titulo1    = __('Adicionar Comentário do Fornecedor');
         $titulo2    = __('Salvar Comentário do Fornecedor');
@@ -346,7 +346,7 @@ class comercio_FornecedorControle extends comercio_Controle
      * @version 0.4.2
      */
     public function Fornecedores_Comentario_Add2($fornecedor_id = false){
-        if($fornecedor_id===false) throw new \Exception('Fornecedor não informado',404);
+        if($fornecedor_id===false) return _Sistema_erroControle::Erro_Fluxo('Fornecedor não informado',404);
         $titulo     = __('Comentário do Fornecedor Adicionado com Sucesso');
         $dao        = 'Comercio_Fornecedor_Comentario';
         $funcao     = '$this->Fornecedores_View('.$fornecedor_id.');';
@@ -362,8 +362,8 @@ class comercio_FornecedorControle extends comercio_Controle
      * @version 0.4.2
      */
     public function Fornecedores_Comentario_Edit($fornecedor_id = false,$id = 0){
-        if($fornecedor_id===false) throw new \Exception('Fornecedor não informado',404);
-        if($id            == 0   ) throw new \Exception('Comentário não informado',404);
+        if($fornecedor_id===false) return _Sistema_erroControle::Erro_Fluxo('Fornecedor não informado',404);
+        if($id            == 0   ) return _Sistema_erroControle::Erro_Fluxo('Comentário não informado',404);
         // Carrega Config
         $titulo1    = 'Editar Comentário do Fornecedor (#'.$id.')';
         $titulo2    = __('Alteração de Comentário do Fornecedor');
@@ -383,8 +383,8 @@ class comercio_FornecedorControle extends comercio_Controle
      * @version 0.4.2
      */
     public function Fornecedores_Comentario_Edit2($fornecedor_id = false,$id = 0){
-        if($fornecedor_id===false) throw new \Exception('Fornecedor não informado',404);
-        if($id            == 0   ) throw new \Exception('Comentário não informado',404);
+        if($fornecedor_id===false) return _Sistema_erroControle::Erro_Fluxo('Fornecedor não informado',404);
+        if($id            == 0   ) return _Sistema_erroControle::Erro_Fluxo('Comentário não informado',404);
         $titulo     = __('Comentário de Fornecedor Editado com Sucesso');
         $dao        = Array('Comercio_Fornecedor_Comentario',$id);
         $funcao     = '$this->Fornecedores_View('.$fornecedor_id.');';
@@ -401,8 +401,8 @@ class comercio_FornecedorControle extends comercio_Controle
      * @version 0.4.2
      */
     public function Fornecedores_Comentario_Del($fornecedor_id = false,$id = 0){
-        if($fornecedor_id===false) throw new \Exception('Fornecedor não informado',404);
-        if($id            == 0   ) throw new \Exception('Comentário não informado',404);
+        if($fornecedor_id===false) return _Sistema_erroControle::Erro_Fluxo('Fornecedor não informado',404);
+        if($id            == 0   ) return _Sistema_erroControle::Erro_Fluxo('Comentário não informado',404);
         
         
     	$id = (int) $id;

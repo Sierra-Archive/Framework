@@ -382,7 +382,7 @@ define('LAY_CONF', ROOT_PADRAO.'templates'.DS.TEMA_PADRAO.DS.'config'.DS);
 if( file_exists  (LAY_CONF.'config.php')){
     require_once (LAY_CONF.'config.php');
 }else{
-    throw new \Exception('Config do Layoult não Encontrado', 404);
+    return _Sistema_erroControle::Erro_Fluxo('Config do Layoult não Encontrado',404);
 }
 
 

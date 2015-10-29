@@ -324,11 +324,11 @@ class usuario_mensagem_Controle extends \Framework\App\Controle
     }
     public function Resposta_inserir(){
         if(!isset($_POST["mensagem"]) || !isset($_POST['resposta'])){
-            throw new \Exception('Página não Encontrada',404);
+            return _Sistema_erroControle::Erro_Fluxo('Página não Encontrada',404);
         }
         $mensagem = (int) $_POST["mensagem"];
         if(!is_int($mensagem) || $mensagem==0){
-            throw new \Exception('Página não Encontrada',404);
+            return _Sistema_erroControle::Erro_Fluxo('Página não Encontrada',404);
         }
         $resposta = \Framework\App\Conexao::anti_injection($_POST["resposta"]);
         $sucesso =  $this->_Modelo->Mensagem_Resp_Inserir($mensagem,$resposta);

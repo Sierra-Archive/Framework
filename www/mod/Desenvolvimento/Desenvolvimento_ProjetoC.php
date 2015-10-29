@@ -390,9 +390,9 @@ class Desenvolvimento_ProjetoControle extends Desenvolvimento_Controle
     
     
     public function Projetos_View($Desenvolvimento_id = false){
-        if($Desenvolvimento_id===false || $Desenvolvimento_id==0 || !isset($Desenvolvimento_id)) throw new \Exception('Projeto não informado',404);
+        if($Desenvolvimento_id===false || $Desenvolvimento_id==0 || !isset($Desenvolvimento_id)) return _Sistema_erroControle::Erro_Fluxo('Projeto não informado',404);
         $projeto = $this->_Modelo->db->Sql_Select('Desenvolvimento_Projeto',Array('id'=>$Desenvolvimento_id), 1);
-        if($projeto===false) throw new \Exception('Projeto não existe:'.$Desenvolvimento_id,404);
+        if($projeto===false) return _Sistema_erroControle::Erro_Fluxo('Projeto não existe:'.$Desenvolvimento_id,404);
         
         
         
@@ -450,7 +450,7 @@ class Desenvolvimento_ProjetoControle extends Desenvolvimento_Controle
      * @throws \Exception
      */
     public function Projetos_Popup($Desenvolvimento_id = false, $popup=true){
-        if($Desenvolvimento_id===false || $Desenvolvimento_id==0 || !isset($Desenvolvimento_id)) throw new \Exception('Projeto não informado',404);
+        if($Desenvolvimento_id===false || $Desenvolvimento_id==0 || !isset($Desenvolvimento_id)) return _Sistema_erroControle::Erro_Fluxo('Projeto não informado',404);
         // mostra todas as suas mensagens
         $where = Array(
             'id'    =>  $Desenvolvimento_id,
@@ -540,9 +540,9 @@ class Desenvolvimento_ProjetoControle extends Desenvolvimento_Controle
      */
     public function Projetos_Comentario_Add($Desenvolvimento_id = false){
         // Proteção E chama Endereço
-        if($Desenvolvimento_id===false) throw new \Exception('Projeto não informado',404);
+        if($Desenvolvimento_id===false) return _Sistema_erroControle::Erro_Fluxo('Projeto não informado',404);
         $projeto = $this->_Modelo->db->Sql_Select('Desenvolvimento_Projeto',Array('id'=>$Desenvolvimento_id), 1);
-        if($projeto===false) throw new \Exception('Projeto não existe:'.$Desenvolvimento_id,404);
+        if($projeto===false) return _Sistema_erroControle::Erro_Fluxo('Projeto não existe:'.$Desenvolvimento_id,404);
         $this->Endereco_Projeto_Ver($projeto);
         // Começo
         $Desenvolvimento_id = (int) $Desenvolvimento_id;
@@ -564,7 +564,7 @@ class Desenvolvimento_ProjetoControle extends Desenvolvimento_Controle
      * @version 0.4.2
      */
     public function Projetos_Comentario_Add2($Desenvolvimento_id = false){
-        if($Desenvolvimento_id===false) throw new \Exception('Projeto não informado',404);
+        if($Desenvolvimento_id===false) return _Sistema_erroControle::Erro_Fluxo('Projeto não informado',404);
         $titulo     = __('Comentário do Projeto Adicionado com Sucesso');
         $dao        = 'Desenvolvimento_Projeto_Comentario';
         $funcao     = '$this->Projetos_View('.$Desenvolvimento_id.');';
@@ -580,11 +580,11 @@ class Desenvolvimento_ProjetoControle extends Desenvolvimento_Controle
      * @version 0.4.2
      */
     public function Projetos_Comentario_Edit($Desenvolvimento_id = false,$id = 0){
-        if($Desenvolvimento_id===false) throw new \Exception('Projeto não informado',404);
-        if($id         == 0   ) throw new \Exception('Comentário não informado',404);
+        if($Desenvolvimento_id===false) return _Sistema_erroControle::Erro_Fluxo('Projeto não informado',404);
+        if($id         == 0   ) return _Sistema_erroControle::Erro_Fluxo('Comentário não informado',404);
         // Proteção E chama Endereço
         $projeto = $this->_Modelo->db->Sql_Select('Desenvolvimento_Projeto',Array('id'=>$Desenvolvimento_id), 1);
-        if($projeto===false) throw new \Exception('Projeto não existe:'.$Desenvolvimento_id,404);
+        if($projeto===false) return _Sistema_erroControle::Erro_Fluxo('Projeto não existe:'.$Desenvolvimento_id,404);
         $this->Endereco_Projeto_Ver($projeto);
         // Começo
         // Carrega Config
@@ -606,8 +606,8 @@ class Desenvolvimento_ProjetoControle extends Desenvolvimento_Controle
      * @version 0.4.2
      */
     public function Projetos_Comentario_Edit2($Desenvolvimento_id = false,$id = 0){
-        if($Desenvolvimento_id===false) throw new \Exception('Projeto não informado',404);
-        if($id         == 0   ) throw new \Exception('Comentário não informado',404);
+        if($Desenvolvimento_id===false) return _Sistema_erroControle::Erro_Fluxo('Projeto não informado',404);
+        if($id         == 0   ) return _Sistema_erroControle::Erro_Fluxo('Comentário não informado',404);
         $titulo     = __('Comentário de Projeto Editado com Sucesso');
         $dao        = Array('Desenvolvimento_Projeto_Comentario',$id);
         $funcao     = '$this->Projetos_View('.$Desenvolvimento_id.');';
@@ -624,8 +624,8 @@ class Desenvolvimento_ProjetoControle extends Desenvolvimento_Controle
      * @version 0.4.2
      */
     public function Projetos_Comentario_Del($Desenvolvimento_id = false,$id = 0){
-        if($Desenvolvimento_id===false) throw new \Exception('Projeto não informado',404);
-        if($id         == 0   ) throw new \Exception('Comentário não informado',404);
+        if($Desenvolvimento_id===false) return _Sistema_erroControle::Erro_Fluxo('Projeto não informado',404);
+        if($id         == 0   ) return _Sistema_erroControle::Erro_Fluxo('Comentário não informado',404);
         
         
     	$id = (int) $id;

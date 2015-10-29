@@ -163,7 +163,7 @@ class ModulosTest extends \PHPUnit_Framework_TestCase {
                                     if(is_callable(array($Registro->_Modelo,$metodo))){
                                         $metodo = $getmetodo;
                                     }else{
-                                        throw new \Exception('Metodo não Encontrado (Modelo): '.$getmodulo.' - '.$getsubmodulo.' - '.$getmetodo, 404); 
+                                        return _Sistema_erroControle::Erro_Fluxo('Metodo não Encontrado (Modelo): '.$getmodulo.' - '.$getsubmodulo.' - '.$getmetodo,404); 
                                     }
                                     if(count($getargs)>0){
                                         call_user_func_array(array($Registro->_Modelo,$metodo), $getargs);
@@ -176,7 +176,7 @@ class ModulosTest extends \PHPUnit_Framework_TestCase {
                                     if(is_callable(array($Registro->_Controle,$metodo))){
                                         $metodo = $getmetodo;
                                     }else{
-                                        throw new \Exception('Metodo não Encontrado: '.$getmodulo.' - '.$getsubmodulo.' - '.$getmetodo, 404); //
+                                        return _Sistema_erroControle::Erro_Fluxo('Metodo não Encontrado: '.$getmodulo.' - '.$getsubmodulo.' - '.$getmetodo,404); //
                                     }
                                     if(count($getargs)>0){
                                         call_user_func_array(array($Registro->_Controle,$metodo), $getargs);
@@ -187,13 +187,13 @@ class ModulosTest extends \PHPUnit_Framework_TestCase {
                                 }
                             }else{
                                 if($getsubmodulo==''){
-                                    throw new \Exception('SubMódulo Vazio: '.$arquivo.' - '.$valor, 404); //
+                                    return _Sistema_erroControle::Erro_Fluxo('SubMódulo Vazio: '.$arquivo.' - '.$valor,404); //
                                 }else{
-                                    throw new \Exception('SubMódulo não Encontrado: '.$getmodulo.' - '.$getsubmodulo, 404); //
+                                    return _Sistema_erroControle::Erro_Fluxo('SubMódulo não Encontrado: '.$getmodulo.' - '.$getsubmodulo,404); //
                                 }
                             }
                         }else{
-                            throw new \Exception('Módulo não Encontrado: '.$getmodulo, 404); //
+                            return _Sistema_erroControle::Erro_Fluxo('Módulo não Encontrado: '.$getmodulo,404); //
                         }
                         
                         $output = ob_get_contents();
@@ -220,7 +220,7 @@ class ModulosTest extends \PHPUnit_Framework_TestCase {
                                         }else if($indice4==='callback'){
                                             $have_callback = true;
                                         }else{
-                                            throw new \Exception($indice4.' é inválido dentro de Info: '.$getmodulo.' - '.$getsubmodulo.' - '.$getmetodo, 404);
+                                            return _Sistema_erroControle::Erro_Fluxo($indice4.' é inválido dentro de Info: '.$getmodulo.' - '.$getsubmodulo.' - '.$getmetodo,404);
                                         }
                                     }
                                 }else if($indice3==='Conteudo'){
@@ -233,7 +233,7 @@ class ModulosTest extends \PHPUnit_Framework_TestCase {
                                         }
                                     }
                                 }else{
-                                    throw new \Exception($indice3.' é inválido: '.$getmodulo.' - '.$getsubmodulo.' - '.$getmetodo, 404); //
+                                    return _Sistema_erroControle::Erro_Fluxo($indice3.' é inválido: '.$getmodulo.' - '.$getsubmodulo.' - '.$getmetodo,404); //
                                 }
 
                             }

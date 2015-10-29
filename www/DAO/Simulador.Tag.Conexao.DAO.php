@@ -162,7 +162,7 @@ final Class Simulador_Tag_Conexao_DAO extends Framework\App\Dao
             foreach($percorrer as &$value){
                 if(strtoupper($tipo)===strtoupper($value['chave'])) return $value;
             }
-            throw new \Exception('Tag de Conexão não encontrado. Tipo:'.$tipo,404);
+            return _Sistema_erroControle::Erro_Fluxo('Tag de Conexão não encontrado. Tipo:'.$tipo,404);
         }else{
             $array = Array();
             // Percorre os modulos que aceitam tags
@@ -193,7 +193,7 @@ final Class Simulador_Tag_Conexao_DAO extends Framework\App\Dao
                 return $value['nome'];
             }
         }
-        throw new \Exception('Tag de Conexão não encontrado. '.$chave,404);
+        return _Sistema_erroControle::Erro_Fluxo('Tag de Conexão não encontrado. '.$chave,404);
     }
     public static function Mod_Conexao_Get_Chave(){
         $repassar = self::Mod_Conexao_Get();

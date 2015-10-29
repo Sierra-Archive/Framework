@@ -373,7 +373,7 @@ class social_PersonaControle extends social_Controle
         if($id         == 0   ) return false;
         // Proteção E chama Endereço
         $persona = $this->_Modelo->db->Sql_Select('Social',Array('id'=>$persona_id), 1);
-        if($persona===false) throw new \Exception('Persona não existe:'.$persona_id,404);
+        if($persona===false) return _Sistema_erroControle::Erro_Fluxo('Persona não existe:'.$persona_id,404);
         $this->Endereco_Persona_Ver($persona);
         // Começo
         // Carrega Config
@@ -413,8 +413,8 @@ class social_PersonaControle extends social_Controle
      * @version 0.4.2
      */
     public function Personas_Comentario_Del($persona_id = false,$id = 0){
-        if($persona_id===false) throw new \Exception('Persona não informado',404);
-        if($id         == 0   ) throw new \Exception('Comentário não informado',404);
+        if($persona_id===false) return _Sistema_erroControle::Erro_Fluxo('Persona não informado',404);
+        if($id         == 0   ) return _Sistema_erroControle::Erro_Fluxo('Comentário não informado',404);
         
         
     	$id = (int) $id;
@@ -618,7 +618,7 @@ class social_PersonaControle extends social_Controle
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
     public function Ficou_View($ficada_id = false, $persona_id = false){
-        if($ficada_id===false || $ficada_id==0 || !isset($ficada_id)) throw new \Exception('Ficada não informada',404);
+        if($ficada_id===false || $ficada_id==0 || !isset($ficada_id)) return _Sistema_erroControle::Erro_Fluxo('Ficada não informada',404);
         // mostra todas as suas mensagens
         $where = Array(
             'id'    =>  $ficada_id,
@@ -709,10 +709,10 @@ class social_PersonaControle extends social_Controle
      */
     public function Ficou_Comentario_Add($ficada_id = false){
         // Proteção E chama Endereço
-        if($ficada_id===false) throw new \Exception('Ficada não informada',404);
+        if($ficada_id===false) return _Sistema_erroControle::Erro_Fluxo('Ficada não informada',404);
         $ficada_id = (int) $ficada_id;
         $ficada = $this->_Modelo->db->Sql_Select('Social_Ficou',Array('id'=>$ficada_id), 1);
-        if($ficada===false) throw new \Exception('Ficada não existe:'.$ficada_id,404);
+        if($ficada===false) return _Sistema_erroControle::Erro_Fluxo('Ficada não existe:'.$ficada_id,404);
         
         self::Endereco_Persona_Ver_Ficar_Ver($ficada);
         // Carrega Config
@@ -733,7 +733,7 @@ class social_PersonaControle extends social_Controle
      * @version 0.4.2
      */
     public function Ficou_Comentario_Add2($ficada_id = false){
-        if($ficada_id===false) throw new \Exception('Ficada não informada',404);
+        if($ficada_id===false) return _Sistema_erroControle::Erro_Fluxo('Ficada não informada',404);
         $titulo     = __('Comentário do Ficada Adicionada com Sucesso');
         $dao        = 'Social_Ficou_Comentario';
         $funcao     = '$this->Ficou_View('.$ficada_id.');';
@@ -749,11 +749,11 @@ class social_PersonaControle extends social_Controle
      * @version 0.4.2
      */
     public function Ficou_Comentario_Edit($ficada_id = false,$id = 0){
-        if($ficada_id===false) throw new \Exception('Ficada não informada',404);
-        if($id         == 0   ) throw new \Exception('Comentário não informado',404);
+        if($ficada_id===false) return _Sistema_erroControle::Erro_Fluxo('Ficada não informada',404);
+        if($id         == 0   ) return _Sistema_erroControle::Erro_Fluxo('Comentário não informado',404);
         // Proteção E chama Endereço
         $ficada = $this->_Modelo->db->Sql_Select('Social_Ficou',Array('id'=>$ficada_id), 1);
-        if($ficada===false) throw new \Exception('Ficada não existe:'.$ficada_id,404);
+        if($ficada===false) return _Sistema_erroControle::Erro_Fluxo('Ficada não existe:'.$ficada_id,404);
         
         self::Endereco_Persona_Ver_Ficar_Ver();
         // Começo
@@ -776,8 +776,8 @@ class social_PersonaControle extends social_Controle
      * @version 0.4.2
      */
     public function Ficou_Comentario_Edit2($ficada_id = false,$id = 0){
-        if($ficada_id===false)  throw new \Exception('Ficada não informada',404);
-        if($id         == 0   ) throw new \Exception('Comentário não informado',404);
+        if($ficada_id===false)  return _Sistema_erroControle::Erro_Fluxo('Ficada não informada',404);
+        if($id         == 0   ) return _Sistema_erroControle::Erro_Fluxo('Comentário não informado',404);
         $titulo     = __('Comentário de Ficada Editada com Sucesso');
         $dao        = Array('Social_Ficou_Comentario',$id);
         $funcao     = '$this->Ficou_View('.$persona_id.');';
@@ -794,8 +794,8 @@ class social_PersonaControle extends social_Controle
      * @version 0.4.2
      */
     public function Ficou_Comentario_Del($ficada_id = false,$id = 0){
-        if($ficada_id===false)  throw new \Exception('Ficada não informada',404);
-        if($id         == 0   ) throw new \Exception('Comentário não informado',404);
+        if($ficada_id===false)  return _Sistema_erroControle::Erro_Fluxo('Ficada não informada',404);
+        if($id         == 0   ) return _Sistema_erroControle::Erro_Fluxo('Comentário não informado',404);
         
     	$id = (int) $id;
         // Puxa linha e deleta

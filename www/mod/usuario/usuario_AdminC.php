@@ -788,9 +788,9 @@ class usuario_AdminControle extends usuario_Controle
         $usuario_id = (int) $usuario_id;
         
         // Proteção E chama Endereço
-        if($usuario_id===false) throw new \Exception('Usuario não informado',404);
+        if($usuario_id===false) return _Sistema_erroControle::Erro_Fluxo('Usuario não informado',404);
         $usuario = $this->_Modelo->db->Sql_Select('Usuario',Array('id'=>$usuario_id), 1);
-        if($usuario===false) throw new \Exception('Usuario não existe:'.$usuario_id,404);
+        if($usuario===false) return _Sistema_erroControle::Erro_Fluxo('Usuario não existe:'.$usuario_id,404);
         
         
         /**
@@ -844,7 +844,7 @@ class usuario_AdminControle extends usuario_Controle
      * @version 0.4.2
      */
     public function Usuarios_Comentario_Add2($usuario_id = false,$tipo='usuario'){
-        if($usuario_id===false) throw new \Exception('Usuario não informado',404);
+        if($usuario_id===false) return _Sistema_erroControle::Erro_Fluxo('Usuario não informado',404);
         /**
          * Endereço, Diferenciacao etc..
          */
@@ -887,11 +887,11 @@ class usuario_AdminControle extends usuario_Controle
      * @version 0.4.2
      */
     public function Usuarios_Comentario_Edit($usuario_id = false,$id = 0,$tipo='usuario'){
-        if($usuario_id===false) throw new \Exception('Usuario não informado',404);
-        if($id         == 0   ) throw new \Exception('Comentário não informado',404);
+        if($usuario_id===false) return _Sistema_erroControle::Erro_Fluxo('Usuario não informado',404);
+        if($id         == 0   ) return _Sistema_erroControle::Erro_Fluxo('Comentário não informado',404);
         // Proteção E chama Endereço
         $usuario = $this->_Modelo->db->Sql_Select('Usuario',Array('id'=>$usuario_id), 1);
-        if($usuario===false) throw new \Exception('Usuario não existe:'.$usuario_id,404);
+        if($usuario===false) return _Sistema_erroControle::Erro_Fluxo('Usuario não existe:'.$usuario_id,404);
 
         /**
          * Endereço, Diferenciacao etc..
@@ -944,8 +944,8 @@ class usuario_AdminControle extends usuario_Controle
      * @version 0.4.2
      */
     public function Usuarios_Comentario_Edit2($usuario_id = false,$id = 0,$tipo='usuario'){
-        if($usuario_id===false) throw new \Exception('Usuario não informado',404);
-        if($id         == 0   ) throw new \Exception('Comentário não informado',404);
+        if($usuario_id===false) return _Sistema_erroControle::Erro_Fluxo('Usuario não informado',404);
+        if($id         == 0   ) return _Sistema_erroControle::Erro_Fluxo('Comentário não informado',404);
         
         
         /**
@@ -992,8 +992,8 @@ class usuario_AdminControle extends usuario_Controle
      */
     public function Usuarios_Comentario_Del($usuario_id = false,$id = 0,$tipo='usuario'){
     	$id = (int) $id;
-        if($usuario_id===false) throw new \Exception('Usuario não informado',404);
-        if($id         == 0   ) throw new \Exception('Comentário não informado',404);
+        if($usuario_id===false) return _Sistema_erroControle::Erro_Fluxo('Usuario não informado',404);
+        if($id         == 0   ) return _Sistema_erroControle::Erro_Fluxo('Comentário não informado',404);
         
         
         /**
