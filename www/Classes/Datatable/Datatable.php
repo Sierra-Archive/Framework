@@ -159,7 +159,7 @@ class Datatable {
                     // Se for da propria tabela, coloca sigla pra nao ter conflito
                     if ($tabela_campos_valores!==false && array_key_exists($column['db'],$tabela_campos_valores)) {
                         $globalSearch[] = "".$sql_tabela_sigla.'.'.$column['db']." LIKE ".$binding;
-                    }else if ($retornar_extrangeiras_usadas!==false && isset($retornar_extrangeiras_usadas[$column['db']])) {
+                    } else if ($retornar_extrangeiras_usadas!==false && isset($retornar_extrangeiras_usadas[$column['db']])) {
                         $globalSearch[] = "".$retornar_extrangeiras_usadas[$column['db']]." LIKE ".$binding;
                     } else {
                         $globalSearch[] = "`".$column['db']."` LIKE ".$binding;
@@ -194,7 +194,7 @@ class Datatable {
                 // Se for da propria tabela, coloca sigla pra nao ter conflito
                 if ($tabela_campos_valores!==false && array_key_exists($column['db'],$tabela_campos_valores)) {
                     $columnSearch[] = "".$sql_tabela_sigla.'.'.$column['db']." LIKE ".$binding;
-                }else if ($retornar_extrangeiras_usadas!==false && isset($retornar_extrangeiras_usadas[$column['db']])) {
+                } else if ($retornar_extrangeiras_usadas!==false && isset($retornar_extrangeiras_usadas[$column['db']])) {
                     $columnSearch[] = "".$retornar_extrangeiras_usadas[$column['db']]." LIKE ".$binding;
                 } else {
                     $columnSearch[] = "`".$column['db']."` LIKE ".$binding;
@@ -462,7 +462,7 @@ class Datatable {
         //var_dump($stmt); exit;
         $res = $stmt->get_result();
         $resu = Array();
-        while($row = $res->fetch_array(MYSQLI_ASSOC)) {
+        while ($row = $res->fetch_array(MYSQLI_ASSOC)) {
             /*;
             $class = new $class;
             foreach($colunas as $valor) {

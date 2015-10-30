@@ -7,7 +7,7 @@
 //$mysqli = new mysqli("localhost", "ricardos_predial", "1020943", "ricardos_predial"); 
 $mysqli = new mysqli("localhost", "root", "jmedtyqw", "Cliente_Predial"); 
 
-if($mysqli->connect_error)
+if ($mysqli->connect_error)
 {
     die("$mysqli->connect_errno: $mysqli->connect_error");
 }
@@ -57,7 +57,7 @@ echo "<br><br>\n\n'hahahahahhahahahahahahah<br><br>\n\n'";
 $query = "SELECT * FROM localizacao_cidades WHERE deletado=?";
 
 $stmt = $mysqli->stmt_init();
-if(!$stmt->prepare($query))
+if (!$stmt->prepare($query))
 {
     print 'Falha na query: '.$query.' \n';
 }

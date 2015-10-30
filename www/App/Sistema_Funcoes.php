@@ -85,7 +85,7 @@ Class Sistema_Funcoes {
         }
         
         // Se for maior que as Ocorrencias, Retorna ao começo
-        while($tam<=$numero) $numero = $numero%$tam;
+        while ($tam<=$numero) $numero = $numero%$tam;
         if ($numero<0)$numero = 0;
         
         return $string[$numero];
@@ -276,7 +276,7 @@ Class Sistema_Funcoes {
                 $objetos2[$indice2] = $valor2;
             }
             return $objetos2;
-        }else if (is_array($objetos)) {
+        } else if (is_array($objetos)) {
             $objetos2 = Array();
             foreach($objetos as $indice=>&$valor) {
                 if (!is_object($valor)) continue;
@@ -469,11 +469,11 @@ Class Sistema_Funcoes {
         $tamanho = (int) $tamanho;
         if ($tamanho>=1099511627776) {
             $tamanho    =   ((string) round($tamanho/1099511627776)).' TB';
-        }else if ($tamanho>=1073741824) {
+        } else if ($tamanho>=1073741824) {
             $tamanho    =   ((string) round($tamanho/1073741824)).' GB';
-        }else if ($tamanho>=1048576) {
+        } else if ($tamanho>=1048576) {
             $tamanho    =   ((string) round($tamanho/1048576)).' MB';
-        }else if ($tamanho>=1024) {
+        } else if ($tamanho>=1024) {
             $tamanho    =   ((string) round($tamanho/1024)).' KB';
         } else {
             $tamanho    =   ((string) round($tamanho)).' B';
@@ -844,7 +844,7 @@ Class Sistema_Funcoes {
                     $novo_ano       = $novo_ano+$ano;
                 }
             }
-        }else 
+        } else 
         // Formato: 23/09/13 | 21:13 ou 13-09-23 | 21:13
         if (strlen($data)==16) {
             $partes = explode(' | ', $data);        
@@ -925,7 +925,7 @@ Class Sistema_Funcoes {
                     $novo_ano       = $novo_ano+$ano;
                 }
             }
-        }else 
+        } else 
         // Formato: 23/09/2013 ou 2013-09-23
         if (strlen($data)==10) {
             if (strpos($data, '/')!==false) {
@@ -966,26 +966,26 @@ Class Sistema_Funcoes {
         }
         
         // Aumenta segundo, minuto e hora que tiver ultrapassado
-        while($novo_segundos>=60) {
+        while ($novo_segundos>=60) {
             $novo_segundos = $novo_segundos-60;
             ++$novo_minuto;
         }
-        while($novo_minuto>=60) {
+        while ($novo_minuto>=60) {
             $novo_minuto = $novo_minuto-60;
             ++$novo_hora;
         }
-        while($novo_hora>=60) {
+        while ($novo_hora>=60) {
             $novo_hora = $novo_hora-60;
             ++$novo_dia;
         }
         // Faz do mes antes para calculo de dias
-        while($novo_mes>12) {
+        while ($novo_mes>12) {
             $novo_mes = $novo_mes-12;
             ++$novo_ano;
         }
         // Faz corretagem de dias
         $dias_do_mes = cal_days_in_month(CAL_GREGORIAN, $novo_mes, $novo_ano);
-        while($novo_dia>$dias_do_mes) {
+        while ($novo_dia>$dias_do_mes) {
             $novo_dia = $novo_dia-$dias_do_mes;
             ++$novo_mes;
             // Recalcula Ano
@@ -1011,19 +1011,19 @@ Class Sistema_Funcoes {
     static public function Get_Info_Data($info, $data) {
         if ($info=='mes_nome') {
             return (string) jdmonthname($data,0);
-        }else if ($info=='mes') {
+        } else if ($info=='mes') {
             $data = explode('/',$data);
             return (int) $data[1];
-        }else if ($info=='semana') {
+        } else if ($info=='semana') {
             $data = explode('/',$data);
             return (int) date("w", mktime(0,0,0,$data[1],$data[0],$data[2]) );
-        }else if ($info=='semana_do_ano') {
+        } else if ($info=='semana_do_ano') {
           $data = explode('/',$data);
           return (int) intval( date('z', mktime(0,0,0,$data[1],$data[0],$data[2]) ) / 7 ) + 1;
-        }else if ($info=='dia') {
+        } else if ($info=='dia') {
             $data = explode('/',$data);
             return (int) $data[0];
-        }else if ($info=='ano') {
+        } else if ($info=='ano') {
             $data = explode('/',$data);
             return (int) $data[2];
         }

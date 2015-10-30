@@ -739,7 +739,7 @@ class PagSeguroDirectPaymentRequest
             $this->onlineDebit = $bankName;
         } else if (is_array($bankName)) {
              $this->onlineDebit = new PagSeguroOnlineDebitCheckout($bankName);
-        }else {
+        } else {
             $this->onlineDebit = new PagSeguroOnlineDebitCheckout(
                 array(
                    "bankName" => $bankName

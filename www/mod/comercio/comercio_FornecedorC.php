@@ -304,7 +304,7 @@ class comercio_FornecedorControle extends comercio_Controle
         } else {   
             if ($export!==false) {
                 $erro = __('Nenhum Comentário desse Fornecedor para Exportar');
-            }else {
+            } else {
                 $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Comentário do Fornecedor</font></b></center>');
             }
         }

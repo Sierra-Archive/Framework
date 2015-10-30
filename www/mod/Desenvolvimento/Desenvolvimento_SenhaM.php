@@ -32,11 +32,11 @@ class Desenvolvimento_SenhaModelo extends Desenvolvimento_Modelo
                 return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Senha'        ,'Desenvolvimento/Senha/Senhas_Edit/'.$d.'/'    ,''),true).
                        Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Senha'       ,'Desenvolvimento/Senha/Senhas_Del/'.$d.'/'     ,'Deseja realmente deletar essa Senha ?'),true);
             };
-        }else if ($perm_editar) {
+        } else if ($perm_editar) {
             $funcao = function( $d, $row ) {
                 return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Senha'        ,'Desenvolvimento/Senha/Senhas_Edit/'.$d.'/'    ,''),true);
             };
-        }else if ($perm_del) {
+        } else if ($perm_del) {
             $funcao = function( $d, $row ) {
                 return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Senha'       ,'Desenvolvimento/Senha/Senhas_Del/'.$d.'/'     ,'Deseja realmente deletar essa Senha ?'),true);
             };
@@ -79,7 +79,7 @@ class Desenvolvimento_SenhaModelo extends Desenvolvimento_Modelo
                 'search' => function( $search ) {
                     if (strpos(strtolower('Não Destaque'), strtolower($search))!=false) {
                         return '0';
-                    }else if (strpos(strtolower('Destaque'), strtolower($search))!=false) {
+                    } else if (strpos(strtolower('Destaque'), strtolower($search))!=false) {
                         return '1';
                     }
                     return false;
@@ -101,7 +101,7 @@ class Desenvolvimento_SenhaModelo extends Desenvolvimento_Modelo
                 'search' => function( $search ) {
                     if (strpos(strtolower('Ultrapassada'), strtolower($search))!==false) {
                         return '0';
-                    }else if (strpos(strtolower('Em Uso'), strtolower($search))!==false) {
+                    } else if (strpos(strtolower('Em Uso'), strtolower($search))!==false) {
                         return '1';
                     }
                     return false;
@@ -134,11 +134,11 @@ class Desenvolvimento_SenhaModelo extends Desenvolvimento_Modelo
                 return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Senha'        ,'Desenvolvimento/Senha/Senhas_Todas_Edit/'.$d.'/'    ,''),true).
                        Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Senha'       ,'Desenvolvimento/Senha/Senhas_Todas_Del/'.$d.'/'     ,'Deseja realmente deletar essa Senha ?'),true);
             };
-        }else if ($perm_editar) {
+        } else if ($perm_editar) {
             $funcao = function( $d, $row ) {
                 return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Senha'        ,'Desenvolvimento/Senha/Senhas_Todas_Edit/'.$d.'/'    ,''),true);
             };
-        }else if ($perm_del) {
+        } else if ($perm_del) {
             $funcao = function( $d, $row ) {
                 return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Senha'       ,'Desenvolvimento/Senha/Senhas_Todas_Del/'.$d.'/'     ,'Deseja realmente deletar essa Senha ?'),true);
             };
@@ -183,7 +183,7 @@ class Desenvolvimento_SenhaModelo extends Desenvolvimento_Modelo
                 'search' => function( $search ) {
                     if (strpos(strtolower('Destaque'), strtolower($search))!=false) {
                         return '0';
-                    }else if (strpos(strtolower('Não Destaque'), strtolower($search))!=false) {
+                    } else if (strpos(strtolower('Não Destaque'), strtolower($search))!=false) {
                         return '1';
                     }
                     return false;
@@ -205,7 +205,7 @@ class Desenvolvimento_SenhaModelo extends Desenvolvimento_Modelo
                 'search' => function( $search ) {
                     if (strpos(strtolower('Ultrapassada'), strtolower($search))!=false) {
                         return '0';
-                    }else if (strpos(strtolower('Em Uso'), strtolower($search))!=false) {
+                    } else if (strpos(strtolower('Em Uso'), strtolower($search))!=false) {
                         return '1';
                     }
                     return false;
@@ -238,11 +238,11 @@ class Desenvolvimento_SenhaModelo extends Desenvolvimento_Modelo
                 return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Senha'        ,'Desenvolvimento/Senha/Senhas_Edit/'.$d.'/'    ,''),true).
                        Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Senha'       ,'Desenvolvimento/Senha/Senhas_Del/'.$d.'/'     ,'Deseja realmente deletar essa Senha ?'),true);
             };
-        }else if ($perm_editar) {
+        } else if ($perm_editar) {
             $funcao = function( $d, $row ) {
                 return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Senha'        ,'Desenvolvimento/Senha/Senhas_Edit/'.$d.'/'    ,''),true);
             };
-        }else if ($perm_del) {
+        } else if ($perm_del) {
             $funcao = function( $d, $row ) {
                 return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Senha'       ,'Desenvolvimento/Senha/Senhas_Del/'.$d.'/'     ,'Deseja realmente deletar essa Senha ?'),true);
             };
@@ -285,7 +285,7 @@ class Desenvolvimento_SenhaModelo extends Desenvolvimento_Modelo
                 'search' => function( $search ) {
                     if (strpos(strtolower('Não Destaque'), strtolower($search))!=false) {
                         return '0';
-                    }else if (strpos(strtolower('Destaque'), strtolower($search))!=false) {
+                    } else if (strpos(strtolower('Destaque'), strtolower($search))!=false) {
                         return '1';
                     }
                     return false;
@@ -307,7 +307,7 @@ class Desenvolvimento_SenhaModelo extends Desenvolvimento_Modelo
                 'search' => function( $search ) {
                     if (strpos(strtolower('Ultrapassada'), strtolower($search))!=false) {
                         return '0';
-                    }else if (strpos(strtolower('Em Uso'), strtolower($search))!=false) {
+                    } else if (strpos(strtolower('Em Uso'), strtolower($search))!=false) {
                         return '1';
                     }
                     return false;
@@ -340,11 +340,11 @@ class Desenvolvimento_SenhaModelo extends Desenvolvimento_Modelo
                 return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Senha'        ,'Desenvolvimento/Senha/Senhas_Todas_Edit/'.$d.'/'    ,''),true).
                        Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Senha'       ,'Desenvolvimento/Senha/Senhas_Todas_Del/'.$d.'/'     ,'Deseja realmente deletar essa Senha ?'),true);
             };
-        }else if ($perm_editar) {
+        } else if ($perm_editar) {
             $funcao = function( $d, $row ) {
                 return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Senha'        ,'Desenvolvimento/Senha/Senhas_Todas_Edit/'.$d.'/'    ,''),true);
             };
-        }else if ($perm_del) {
+        } else if ($perm_del) {
             $funcao = function( $d, $row ) {
                 return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Senha'       ,'Desenvolvimento/Senha/Senhas_Todas_Del/'.$d.'/'     ,'Deseja realmente deletar essa Senha ?'),true);
             };
@@ -388,7 +388,7 @@ class Desenvolvimento_SenhaModelo extends Desenvolvimento_Modelo
                 'search' => function( $search ) {
                     if (strpos(strtolower('Destaque'), strtolower($search))!=false) {
                         return '0';
-                    }else if (strpos(strtolower('Não Destaque'), strtolower($search))!=false) {
+                    } else if (strpos(strtolower('Não Destaque'), strtolower($search))!=false) {
                         return '1';
                     }
                     return false;
@@ -410,7 +410,7 @@ class Desenvolvimento_SenhaModelo extends Desenvolvimento_Modelo
                 'search' => function( $search ) {
                     if (strpos(strtolower('Ultrapassada'), strtolower($search))!=false) {
                         return '0';
-                    }else if (strpos(strtolower('Em Uso'), strtolower($search))!=false) {
+                    } else if (strpos(strtolower('Em Uso'), strtolower($search))!=false) {
                         return '1';
                     }
                     return false;

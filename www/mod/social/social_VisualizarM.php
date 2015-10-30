@@ -16,7 +16,7 @@ class social_VisualizarModelo extends social_Modelo
             $persona_pontos = 0;
             $personaid = $campo->id;
             /*$sql2 = $this->db->query("SELECT positivo, gravidade FROM MYSQL_SOCIAL_ACAO WHERE user='$usuario_id' && persona='$personaid' ORDER BY tipo");
-            while($campo2 = $sql2->fetch_object()) {
+            while ($campo2 = $sql2->fetch_object()) {
                 if ($campo2->positivo==0) $persona_pontos = $persona_pontos - $campo2->gravidade;
                 else   $persona_pontos = $persona_pontos + $campo2->gravidade;
             }*/

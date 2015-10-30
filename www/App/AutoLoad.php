@@ -97,9 +97,9 @@ function __autoload_Modules($class) {
     // Modulos
     if (         substr($class, -8)=='Controle') {
         $tipo = 'Controle';
-    }else if (  substr($class, -6)=='Modelo') {
+    } else if (  substr($class, -6)=='Modelo') {
         $tipo = 'Modelo';
-    }else if (  substr($class, -6)=='Visual') {
+    } else if (  substr($class, -6)=='Visual') {
         $tipo = 'Visual';
     } else {
         return false;
@@ -142,7 +142,7 @@ function __autoload_Modules($class) {
     if ($submodulo!='') {
         if ( file_exists  (MOD_PATH . $modulo.DS.$modulo.'_'.$submodulo.$tipo[0].'.php')) {
             require_once (MOD_PATH . $modulo.DS.$modulo.'_'.$submodulo.$tipo[0].'.php');
-        }else if ( file_exists  (MOD_PATH . $modulo.DS.$modulo.'_'.ucwords($submodulo).$tipo[0].'.php')) {
+        } else if ( file_exists  (MOD_PATH . $modulo.DS.$modulo.'_'.ucwords($submodulo).$tipo[0].'.php')) {
             require_once (MOD_PATH . $modulo.DS.$modulo.'_'.ucwords($submodulo).$tipo[0].'.php');
         } else {
             throw new \Exception('Classe Submodulo não encontrada: '.MOD_PATH . $modulo.DS.$modulo.'_'.$submodulo.$tipo[0].'.php'."\n\n<br><Br>Original: ".$class, 2802);
@@ -296,7 +296,7 @@ function Erro_Formatar( $errno, $errstr, $errfile, $errline, $previ = '', $trace
     if (is_array($trace)) {
         $content .= '<h2>Traço</h2>';
         $content .= '<table><thead bgcolor=\'#c8c8c8\'><th>Arquivo/Linha</th><th>Função</th><th>Argumentos</th></thead><tbody>';
-        while(!empty($trace)) {
+        while (!empty($trace)) {
             $linha = array_pop($trace);
             if (isset($linha['file'])) {
                 $file = $linha['file'];
@@ -401,9 +401,9 @@ if ( file_exists  (LAY_CONF.'config.php')) {
 // Se não for https, Verifica se tem certificado e redireciona
 if (Framework\App\Sistema_Funcoes::Url_Secure(SISTEMA_URL.SISTEMA_DIR)) {
     define('URL_PATH',          SISTEMA_URL.SISTEMA_DIR);
-}else if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off') {
+} else if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off') {
     Framework\App\Sistema_Funcoes::Redirect(Framework\App\Sistema_Funcoes::Tranf_Url_Https(URL_PATH));
-}else if (isset($_SERVER['HTTP_REFERER']) && Framework\App\Sistema_Funcoes::Url_Secure($_SERVER['HTTP_REFERER']) ) {
+} else if (isset($_SERVER['HTTP_REFERER']) && Framework\App\Sistema_Funcoes::Url_Secure($_SERVER['HTTP_REFERER']) ) {
     define('URL_PATH',          Framework\App\Sistema_Funcoes::Tranf_Url_Https(SISTEMA_URL.SISTEMA_DIR));
 } else {
     define('URL_PATH',          SISTEMA_URL.SISTEMA_DIR);
@@ -549,7 +549,7 @@ function _e($string) {
 $tempo = new \Framework\App\Tempo('Teeste1');
 $i = 0;
 $config = Array();
-while($i<1000) {
+while ($i<1000) {
     $config_Modulo = function () {
         return Array(
             'Nome'                      => __('Agenda'),
@@ -567,7 +567,7 @@ unset($tempo);
 $tempo = new \Framework\App\Tempo('Teeste2');
 $i = 0;
 $config = Array();
-while($i<1000) {
+while ($i<1000) {
     $config_Modulo = Array(
         'Nome'                      => __('Agenda'),
         'Descrição'                 =>  '',
@@ -583,7 +583,7 @@ unset($tempo);
 $tempo = new \Framework\App\Tempo('Teeste3');
 $i = 0;
 $config = Array();
-while($i<1000) {
+while ($i<1000) {
     $config['Nome']= __('Agenda');
     $config['Descrição']                 =  '';
      $config['System_Require']            =  '3.1.0';

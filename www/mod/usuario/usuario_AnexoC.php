@@ -50,7 +50,7 @@ class usuario_AnexoControle extends usuario_Controle
             if ($usuario->grupo==CFG_TEC_IDCLIENTE) {
                 $tipo   = __('Cliente');
                 $tipo2  = 'cliente';
-            }else if ($usuario->grupo==CFG_TEC_IDFUNCIONARIO) {
+            } else if ($usuario->grupo==CFG_TEC_IDFUNCIONARIO) {
                 $tipo   = __('Funcionário');
                 $tipo2  = 'funcionario';
             }
@@ -66,7 +66,7 @@ class usuario_AnexoControle extends usuario_Controle
             $tipo2  = 'cliente';
             $tipo   = Framework\Classes\Texto::Transformar_Plural_Singular(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Cliente_nome'));
             $this->Tema_Endereco(__('Clientes'),'usuario/Admin/ListarCliente');
-        }else if ($tipo=='Funcionário') {
+        } else if ($tipo=='Funcionário') {
             $tipo2  = 'funcionario';
             $this->Tema_Endereco(__('Funcionários'),'usuario/Admin/ListarFuncionario');
         } else {

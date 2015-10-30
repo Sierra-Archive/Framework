@@ -64,7 +64,7 @@ class SierraTec_Facebook {
                   $autorizacao = 0;
               }
             }
-        }else if ($faceid!=$this->user_id && $this->user_id) {
+        } else if ($faceid!=$this->user_id && $this->user_id) {
           $autorizacao = 1;
         } else {
           $autorizacao = 0;

@@ -43,7 +43,7 @@ class usuario_veiculo_Principal implements \Framework\PrincipalInterface
         $Modelo = &$Registro->_Modelo;
         $Visual = &$Registro->_Visual;
         // Widget Equipamento
-        if(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_veiculo_Equipamento')) {
+        if (\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_veiculo_Equipamento')) {
             // Calcula Equipamento
             $equipamento_qnt = $Modelo->db->Sql_Contar('Usuario_Veiculo_Equipamento');
             // Chama Widgets

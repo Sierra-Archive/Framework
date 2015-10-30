@@ -43,7 +43,7 @@ class usuario_veiculo_MarcaControle extends usuario_veiculo_Controle
         // Chama Veiculo
         usuario_veiculo_VeiculoControle::Endereco_Veiculo(true);
         //Chama
-        if($true===true) {
+        if ($true===true) {
             $_Controle->Tema_Endereco($titulo,$link);
         } else {
             $_Controle->Tema_Endereco($titulo);
@@ -59,8 +59,8 @@ class usuario_veiculo_MarcaControle extends usuario_veiculo_Controle
         self::Endereco_Veiculo_Marca(false);
         $this->_Visual->Blocar('<a title="Adicionar Marca" class="btn btn-success lajax explicar-titulo" data-acao="" href="'.URL_PATH.'usuario_veiculo/Marca/Marcas_Add">Adicionar nova Marca</a><div class="space15"></div>');
         $linhas = $this->_Modelo->db->Sql_Select('Usuario_Veiculo_Marca');
-        if($linhas!==false && !empty($linhas)) {
-            if(is_object($linhas)) $linhas = Array(0=>$linhas);
+        if ($linhas!==false && !empty($linhas)) {
+            if (is_object($linhas)) $linhas = Array(0=>$linhas);
             reset($linhas);
             foreach ($linhas as $indice=>&$valor) {
                 //$tabela['#Id'][$i]       = '#'.$valor->id;
@@ -161,7 +161,7 @@ class usuario_veiculo_MarcaControle extends usuario_veiculo_Controle
         $linha = $this->_Modelo->db->Sql_Select('Usuario_Veiculo_Marca', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($linha);
         // Mensagem
-    	if($sucesso===true) {
+    	if ($sucesso===true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletada'),

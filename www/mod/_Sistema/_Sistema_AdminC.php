@@ -150,7 +150,7 @@ class _Sistema_AdminControle extends _Sistema_Controle
         $titulo = __('Listagem de Menus').' ('.$i.')';
         if ($export==='Unico') {
             $this->_Visual->Bloco_Unico_CriaJanela($titulo);
-        }else if ($export==='Maior') {
+        } else if ($export==='Maior') {
             $this->_Visual->Bloco_Maior_CriaJanela($titulo);
         } else {
             $this->_Visual->Bloco_Menor_CriaJanela($titulo);
@@ -317,7 +317,7 @@ class _Sistema_AdminControle extends _Sistema_Controle
         $titulo = __('Listagem de Configurações').' (<span id="DataTable_Contador">0</span>)';
         if ($tipobloco==='Unico') {
             $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',10);
-        }else if ($tipobloco==='Maior') {
+        } else if ($tipobloco==='Maior') {
             $this->_Visual->Bloco_Maior_CriaJanela($titulo,'',10);
         } else {
             $this->_Visual->Bloco_Menor_CriaJanela($titulo,'',10);
@@ -425,7 +425,7 @@ class _Sistema_AdminControle extends _Sistema_Controle
         $titulo = __('Listagem de Permissões').' ('.$i.')';
         if ($export==='Unico') {
             $this->_Visual->Bloco_Unico_CriaJanela($titulo);
-        }else if ($export==='Maior') {
+        } else if ($export==='Maior') {
             $this->_Visual->Bloco_Maior_CriaJanela($titulo);
         } else {
             $this->_Visual->Bloco_Menor_CriaJanela($titulo);
@@ -586,7 +586,7 @@ class _Sistema_AdminControle extends _Sistema_Controle
                 $num_usuarios = $this->_Modelo->db->query('SELECT id,nome'.
                         ' FROM '.MYSQL_USUARIOS.' WHERE servidor=\''.SRV_NAME_SQL.'\' AND grupo='.$valor->id.' AND deletado=0');
                 $num_qnt      = $num_usuarios->num_rows;
-                //while($this->_Acl->logado_usuario = $query->fetch_object()) {
+                //while ($this->_Acl->logado_usuario = $query->fetch_object()) {
                 // Procura Resultado
                 $tabela['#Id'][$i]              = '#'.$valor->id;
                 $tabela['Tipo de Grupo'][$i]    = $valor->categoria2;
@@ -611,7 +611,7 @@ class _Sistema_AdminControle extends _Sistema_Controle
         $titulo = __('Listagem de Grupos').' ('.$i.')';
         if ($export==='Unico') {
             $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',60);
-        }else if ($export==='Maior') {
+        } else if ($export==='Maior') {
             $this->_Visual->Bloco_Maior_CriaJanela($titulo,'',60);
         } else {
             $this->_Visual->Bloco_Menor_CriaJanela($titulo,'',60);
@@ -798,7 +798,7 @@ class _Sistema_AdminControle extends _Sistema_Controle
         $titulo = __('Listagem de Permissão de Grupo').' ('.$i.')';
         if ($bloco==='Unico') {
             $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',50);
-        }else if ($bloco==='Maior') {
+        } else if ($bloco==='Maior') {
             $this->_Visual->Bloco_Maior_CriaJanela($titulo,'',50);
         } else {
             $this->_Visual->Bloco_Menor_CriaJanela($titulo,'',50);
@@ -910,9 +910,9 @@ class _Sistema_AdminControle extends _Sistema_Controle
                 $tabela['Email'][$i]        = $valor->email;
                 if ($valor->tipo==1) {
                     $tabela['Tipo'][$i]     = __('Newsletter');
-                }else if ($valor->tipo==2) {
+                } else if ($valor->tipo==2) {
                     $tabela['Tipo'][$i]     = __('Contato');
-                }else if ($valor->tipo==3) {
+                } else if ($valor->tipo==3) {
                     $tabela['Tipo'][$i]     = __('Trabalhe Conosco');                    
                 }
                 $tabela['Estado'][$i]       = $valor->estado;
@@ -948,7 +948,7 @@ class _Sistema_AdminControle extends _Sistema_Controle
         $titulo = __('Listagem de Newsletter').' ('.$i.')';
         if ($export==='Unico') {
             $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',40);
-        }else if ($export==='Maior') {
+        } else if ($export==='Maior') {
             $this->_Visual->Bloco_Maior_CriaJanela($titulo,'',40);
         } else {
             $this->_Visual->Bloco_Menor_CriaJanela($titulo,'',40);

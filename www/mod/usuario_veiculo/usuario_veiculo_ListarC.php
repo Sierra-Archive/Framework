@@ -54,43 +54,43 @@ class usuario_veiculo_ListarControle extends usuario_veiculo_Controle
         $this->_Visual->Json_Info_Update('Titulo', __('Veiculos'));        
     }
     public function Popup_Agendar_veiculo($idveiculo,$datainicial,$datafinal,$nomeveiculo) {
-        if($this->_Acl->Usuario_GetLogado()) {
-            if($this->_Acl->logado_usuario->foto_cnh=='') {
+        if ($this->_Acl->Usuario_GetLogado()) {
+            if ($this->_Acl->logado_usuario->foto_cnh=='') {
                 $mensagens = array(
                     "tipo" => 'sucesso',
                     "mgs_principal" => __('Erro'),
                     "mgs_secundaria" => __('É necessário fazer upload da CNH')
                 );
                 $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
-            }else if($this->_Acl->logado_usuario->foto_res=='') {
+            } else if ($this->_Acl->logado_usuario->foto_res=='') {
                 $mensagens = array(
                     "tipo" => 'sucesso',
                     "mgs_principal" => __('Erro'),
                     "mgs_secundaria" => __('Falta upload do comprovante de residente')
                 );
                 $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
-            }else if($this->_Acl->logado_usuario->foto_cnh_apv==0) {
+            } else if ($this->_Acl->logado_usuario->foto_cnh_apv==0) {
                 $mensagens = array(
                     "tipo" => 'sucesso',
                     "mgs_principal" => __('Erro'),
                     "mgs_secundaria" => __('Aguarde a aprovação de sua CNH')
                 );
                 $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
-            }else if($this->_Acl->logado_usuario->foto_res_apv==0) {
+            } else if ($this->_Acl->logado_usuario->foto_res_apv==0) {
                 $mensagens = array(
                     "tipo" => 'sucesso',
                     "mgs_principal" => __('Erro'),
                     "mgs_secundaria" => __('Aguarde a aprovação de sua residência')
                 );
                 $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
-            }else if($this->_Acl->logado_usuario->foto_cnh_apv==1) {
+            } else if ($this->_Acl->logado_usuario->foto_cnh_apv==1) {
                 $mensagens = array(
                     "tipo" => 'sucesso',
                     "mgs_principal" => __('CNH Negada'),
                     "mgs_secundaria" => __('Suba uma CNH válida')
                 );
                 $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
-            }else if($this->_Acl->logado_usuario->foto_res_apv==1) {
+            } else if ($this->_Acl->logado_usuario->foto_res_apv==1) {
                 $mensagens = array(
                     "tipo" => 'sucesso',
                     "mgs_principal" => __('Residência Negada'),
@@ -172,7 +172,7 @@ class usuario_veiculo_ListarControle extends usuario_veiculo_Controle
      * @version 0.4.2
      */
     public function agendamento_inserir() {
-        if(!isset($_POST["selectveiculos"]) || !isset($_POST["valor"]) || !isset($_POST["data_inicial"]) || !isset($_POST["data_final"])) return false;
+        if (!isset($_POST["selectveiculos"]) || !isset($_POST["valor"]) || !isset($_POST["data_inicial"]) || !isset($_POST["data_final"])) return false;
         
         $veiculoid = (int) \Framework\App\Conexao::anti_injection($_POST["selectveiculos"]);
         $valor = \Framework\App\Conexao::anti_injection($_POST["valor"]);
@@ -191,7 +191,7 @@ class usuario_veiculo_ListarControle extends usuario_veiculo_Controle
         
         // inseri e mostra mensagem
         $sucesso =  $this->_Modelo->agendamento_inserir($veiculoid,$data_inicial,$data_final,$valor);
-        if($sucesso==1) {
+        if ($sucesso==1) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Inserção bem sucedida'),
@@ -212,9 +212,9 @@ class usuario_veiculo_ListarControle extends usuario_veiculo_Controle
     }
     public function recalcula_valor_aluguel($valor1,$valor2,$valor3,$diasdecorridos) {
         $valorfinal = 0;
-        if($diasdecorridos<=3) {
+        if ($diasdecorridos<=3) {
             $valorfinal = $valorfinal+($diasdecorridos*$valor1);
-        }else if($diasdecorridos<10) {
+        } else if ($diasdecorridos<10) {
             $valorfinal = $valorfinal+($diasdecorridos*$valor2);
         } else {
             $valorfinal = $valorfinal+($diasdecorridos*$valor3);

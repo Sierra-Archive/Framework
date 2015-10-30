@@ -79,7 +79,7 @@ class usuario_FreeControle extends usuario_Controle
             $formid     = 'form_free_cadastroUsuario';
             $formbt     = __('Salvar Usuário');
             self::DAO_Campos_Retira($campos,'grupo');
-        }elseif ($tipocadastro=='cliente') {
+        } elseif ($tipocadastro=='cliente') {
             $titulo1    = __('Se tornar Cliente');
             $titulo2    = __('Salvar Cliente');
             $formid     = 'form_free_cadastroCliente';
@@ -129,7 +129,7 @@ class usuario_FreeControle extends usuario_Controle
                 );
                 $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens); 
                 $this->_Visual->Javascript_Executar('$("#email").css(\'border\', \'2px solid #FFAEB0\').focus();');
-             }else if ($existeemail===true) {
+             } else if ($existeemail===true) {
                 $mensagens = array(
                     "tipo" => 'erro',
                     "mgs_principal" => __('Erro'),
@@ -137,7 +137,7 @@ class usuario_FreeControle extends usuario_Controle
                 );
                 $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens); 
                 $this->_Visual->Javascript_Executar('$("#email").css(\'border\', \'2px solid #FFAEB0\').focus();');
-            }else if ($existelogin===true) {
+            } else if ($existelogin===true) {
                 $mensagens = array(
                     "tipo" => 'erro',
                     "mgs_principal" => __('Erro'),

@@ -46,7 +46,7 @@ class Financeiro_Modelo extends \Framework\App\Modelo
                 SELECT motivoid
                 FROM '.MYSQL_FINANCEIRO_MOV_INT.'
                 WHERE deletado!=1 AND motivo = \''.$motivo.'\' AND saida_motivo = \'Usuario\' AND saida_motivoid = '.$usuarioid.' AND pago = 0 ORDER BY log_date_add DESC LIMIT 1');
-        while($campo = $sql->fetch_object()) {
+        while ($campo = $sql->fetch_object()) {
             $i = $campo->motivoid;
         }
         return $i;
@@ -82,7 +82,7 @@ class Financeiro_Modelo extends \Framework\App\Modelo
             ) as U
             ORDER BY log_date_add
         ');
-        while($campo = $sql->fetch_object()) {
+        while ($campo = $sql->fetch_object()) {
             $array[$i]['positivo'] = $campo->positivo;
             $array[$i]['valor'] = $campo->valor;
             $array[$i]['log_date_add'] = $campo->log_date_add;
@@ -112,7 +112,7 @@ class Financeiro_Modelo extends \Framework\App\Modelo
                 )a
                 ORDER BY log_date_add
             ');
-            while($campo = $sql->fetch_object()) {
+            while ($campo = $sql->fetch_object()) {
                 if ($campo->positivo==1) {
                     $valor = $valor + $campo->valor;
                 } else {
@@ -129,7 +129,7 @@ class Financeiro_Modelo extends \Framework\App\Modelo
                     SELECT id, valor, positivo, motivo, motivoid, dt_vencimento, dt_pago
                     FROM '.MYSQL_FINANCEIRO_MOV_INT.'
                     WHERE deletado!=1 AND saida_motivo = \'Usuario\' AND saida_motivoid = '.$usuarioid.' ORDER BY pago,log_date_add');
-            while($campo = $sql->fetch_object()) {
+            while ($campo = $sql->fetch_object()) {
                 if ($campo->pago==1) {
                     $valor = $valor-$campo->valor;
                     $array[$i]['situacao'] = __('Pago');
@@ -180,7 +180,7 @@ class Financeiro_Modelo extends \Framework\App\Modelo
                 WHERE P.deletado!=1 AND P.pago = \'0\' AND P.saida_motivo = \'Usuario\' AND P.saida_motivoid = '.$usuarioid.'
             ) as U ORDER BY log_date_add
         ');
-        while($campo = $sql->fetch_object()) {
+        while ($campo = $sql->fetch_object()) {
             if ($campo->positivo=='1') {
                 $valor = $valor + $campo->valor;
             } else {

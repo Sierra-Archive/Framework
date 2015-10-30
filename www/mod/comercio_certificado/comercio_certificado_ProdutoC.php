@@ -360,7 +360,7 @@ class comercio_certificado_ProdutoControle extends comercio_certificado_Controle
             }
         }
         // Cadastra os que faltaram
-        while($i>=$j) {
+        while ($i>=$j) {
             // Cria novo Origem
             $objeto                 = new Comercio_Certificado_Auditoria_DAO;
             $objeto->idproduto      = $produtos;

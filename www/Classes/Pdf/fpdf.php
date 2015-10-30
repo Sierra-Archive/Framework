@@ -713,7 +713,7 @@ function MultiCell($w, $h, $txt, $border=0, $align='J', $fill=false)
 	$l = 0;
 	$ns = 0;
 	$nl = 1;
-	while($i<$nb)
+	while ($i<$nb)
 	{
 		// Get next character
 		$c = $s[$i];
@@ -803,7 +803,7 @@ function Write($h, $txt, $link='')
 	$j = 0;
 	$l = 0;
 	$nl = 1;
-	while($i<$nb)
+	while ($i<$nb)
 	{
 		// Get next character
 		$c = $s[$i];
@@ -1173,7 +1173,7 @@ function _UTF8toUTF16($s)
 	$res = "\xFE\xFF";
 	$nb = strlen($s);
 	$i = 0;
-	while($i<$nb)
+	while ($i<$nb)
 	{
 		$c1 = ord($s[$i++]);
 		if ($c1>=224)
@@ -1313,7 +1313,7 @@ function _parsepngstream($f, $file)
 		else
 			$this->_readstream($f,$n+4);
 	}
-	while($n);
+	while ($n);
 
 	if ($colspace=='Indexed' && empty($pal))
 		$this->Error('Missing palette in '.$file);
@@ -1368,7 +1368,7 @@ function _readstream($f, $n)
 {
 	// Read n bytes from stream
 	$res = '';
-	while($n>0 && !feof($f))
+	while ($n>0 && !feof($f))
 	{
 		$s = fread($f,$n);
 		if ($s===false)

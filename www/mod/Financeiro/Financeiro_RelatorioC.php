@@ -140,10 +140,10 @@ class Financeiro_RelatorioControle extends Financeiro_Controle
             if ($tipo_relatorio==='recebido') {
                 $titulo = __('Relatório de Contas Recebidas');
                 $tipo_relatorio = 'Recebido';
-            }else if ($tipo_relatorio==='receber') {
+            } else if ($tipo_relatorio==='receber') {
                 $titulo = __('Relatório de Contas à Receber');
                 $tipo_relatorio = 'Receber';
-            }else if ($tipo_relatorio==='pago') {
+            } else if ($tipo_relatorio==='pago') {
                 $titulo = __('Relatório de Contas Pagas');
                 $tipo_relatorio = 'Pago';
             } else {
@@ -158,11 +158,11 @@ class Financeiro_RelatorioControle extends Financeiro_Controle
             $tipo_visual = \Framework\App\Conexao::anti_injection($_POST['tipo_visual']);
             if ($tipo_visual==='imprimir') {
                 $tipo_visual = 'Imprimir';
-            }else if ($tipo_visual==='pdf') {
+            } else if ($tipo_visual==='pdf') {
                 $tipo_visual = 'Pdf';
-            }else if ($tipo_visual==='pdfdownload') {
+            } else if ($tipo_visual==='pdfdownload') {
                 $tipo_visual = 'Pdf_Download';
-            }else if ($tipo_visual==='excell') {
+            } else if ($tipo_visual==='excell') {
                 $tipo_visual = 'Excel';
             } else {
                 $tipo_visual = false;
@@ -542,10 +542,10 @@ class Financeiro_RelatorioControle extends Financeiro_Controle
             if ($tipo_relatorio_Grafico==='recebido') {
                 $titulo = __('Relatório de Contas Recebidas');
                 $tipo_relatorio_Grafico = 'Recebido';
-            }else if ($tipo_relatorio_Grafico==='receber') {
+            } else if ($tipo_relatorio_Grafico==='receber') {
                 $titulo = __('Relatório de Contas à Receber');
                 $tipo_relatorio_Grafico = 'Receber';
-            }else if ($tipo_relatorio_Grafico==='pago') {
+            } else if ($tipo_relatorio_Grafico==='pago') {
                 $titulo = __('Relatório de Contas Pagas');
                 $tipo_relatorio_Grafico = 'Pago';
             } else {
@@ -568,11 +568,11 @@ class Financeiro_RelatorioControle extends Financeiro_Controle
             $tipo_visual = \Framework\App\Conexao::anti_injection($_POST['tipo_visual']);
             if ($tipo_visual==='imprimir') {
                 $tipo_visual = 'Imprimir';
-            }else if ($tipo_visual==='pdf') {
+            } else if ($tipo_visual==='pdf') {
                 $tipo_visual = 'Pdf';
-            }else if ($tipo_visual==='pdfdownload') {
+            } else if ($tipo_visual==='pdfdownload') {
                 $tipo_visual = 'Pdf_Download';
-            }else if ($tipo_visual==='excell') {
+            } else if ($tipo_visual==='excell') {
                 $tipo_visual = 'Excel';
             } else {
                 $tipo_visual = false;

@@ -33,12 +33,12 @@ class social_Modelo extends \Framework\App\Modelo
     public function porc_ficar($personaid) {
         $usuario_id = \Framework\App\Acl::Usuario_GetID_Static();
         $sql = $this->db->query('SELECT COUNT(id) as total, id FROM '.MYSQL_SOCIAL_ACAO.' WHERE deletado!=1 AND tipo=1 && user=\''.$usuario_id.'\' && persona=\''.$personaid.'\' ORDER BY data');
-        while($campo = $sql->fetch_object()) {
+        while ($campo = $sql->fetch_object()) {
             $id = $campo->id;
             $fiquei = $campo->total;
         }
         $sql = $this->db->query('SELECT COUNT(id) as total FROM '.MYSQL_SOCIAL_ACAO.' WHERE deletado!=1 AND id>id && user=\''.$usuario_id.'\' && persona=\''.$personaid.'\' ORDER BY tipo');
-        while($campo = $sql->fetch_object()) {
+        while ($campo = $sql->fetch_object()) {
             $dps = $campo->total;
         }
         if ($total!=0)$porc = 100-($dps/$fiquei*100);
@@ -49,11 +49,11 @@ class social_Modelo extends \Framework\App\Modelo
         $usuario_id = \Framework\App\Acl::Usuario_GetID_Static();
         //$re = 
         $sql = $this->db->query('SELECT COUNT(id) as total FROM '.MYSQL_SOCIAL_ACAO.' WHERE deletado!=1 AND tipo=3 && user=\''.$usuario_id.'\' && persona=\''.$personaid.'\' ORDER BY tipo');
-        while($campo = $sql->fetch_object()) {
+        while ($campo = $sql->fetch_object()) {
                 $mentiras = $campo->total;
         }
         $sql2 = $this->db->query('SELECT COUNT(id) as total FROM '.MYSQL_SOCIAL_ACAO.' WHERE deletado!=1 AND user=\''.$usuario_id.'\' && persona=\''.$personaid.'\' ORDER BY tipo');
-        while($campo = $sql2->fetch_object()) {
+        while ($campo = $sql2->fetch_object()) {
                 $total = $campo->total;
         }
         if ($total!=0)$porc = 100-($mentiras/$total*100);
@@ -63,11 +63,11 @@ class social_Modelo extends \Framework\App\Modelo
     public function porc_amizade($personaid) {
         $usuario_id = \Framework\App\Acl::Usuario_GetID_Static();
         $sql = $this->db->query('SELECT COUNT(id) as total FROM '.MYSQL_SOCIAL_ACAO.' WHERE deletado!=1 AND tipo=6 && user=\''.$usuario_id.'\' && persona=\''.$personaid.'\' ORDER BY tipo');
-        while($campo = $sql->fetch_object()) {
+        while ($campo = $sql->fetch_object()) {
             $chata = $campo->total;
         }
         $sql2 = $this->db->query('SELECT COUNT(id) as total FROM '.MYSQL_SOCIAL_ACAO.' WHERE deletado!=1 AND user=\''.$usuario_id.'\' && persona=\''.$personaid.'\' ORDER BY tipo');
-        while($campo = $sql2->fetch_object()) {
+        while ($campo = $sql2->fetch_object()) {
             $total = $campo->total;
         }
         if ($total!=0)$porc = 100-($chata/$total*100);
@@ -84,7 +84,7 @@ class social_Modelo extends \Framework\App\Modelo
             $persona_pontos = 0;
             $personaid = $campo->id;
             /*$sql2 = $this->db->query("SELECT positivo, gravidade FROM '.MYSQL_SOCIAL_ACAO.' WHERE user=\''.$usuario_id.'\' && persona=\''.$personaid.'\' ORDER BY tipo");
-            while($campo2 = $sql2->fetch_object()) {
+            while ($campo2 = $sql2->fetch_object()) {
                     if ($campo2->positivo==0) $persona_pontos = $persona_pontos - $campo2->gravidade;
                     else   $persona_pontos = $persona_pontos + $campo2->gravidade;
             }*/
@@ -105,14 +105,14 @@ class social_Modelo extends \Framework\App\Modelo
         $usuario_id = \Framework\App\Acl::Usuario_GetID_Static();
         $sql = $this->db->query('SELECT * FROM '.MYSQL_SOCIAL_ACAO.' WHERE deletado!=1 AND user=\''.$usuario_id.'\' && persona=\''.$personaid.'\' ORDER BY tipo');
         $i=0;
-        while($campo = $sql->fetch_object()) {
+        while ($campo = $sql->fetch_object()) {
             if ($campo->positivo==0) $persona_pontos = $persona_pontos - $campo->gravidade;
             else   $persona_pontos = $persona_pontos + $campo->gravidade;
 
             $tipo = $campo->tipo;
             $data = $campo->data;
             $sql2 = $this->db->query('SELECT * FROM '.MYSQL_SOCIAL_TIPO.' WHERE deletado!=1 AND id=\''.$tipo.'\' && user=\''.$usuario_id.'\' LIMIT 1');
-            while($campo2 = $sql2->fetch_object()) {
+            while ($campo2 = $sql2->fetch_object()) {
                 $tiponome = $campo2->nome;
             }
             $acoes[$i]['data'] = $data;

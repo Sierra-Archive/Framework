@@ -254,35 +254,35 @@ class predial_SalaoControle extends predial_Controle
                     "mgs_secundaria" => __('É necessário fazer upload da CNH')
                 );
                 $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
-            }else if ($this->_Acl->logado_usuario->foto_res=='') {
+            } else if ($this->_Acl->logado_usuario->foto_res=='') {
                 $mensagens = array(
                     "tipo" => 'sucesso',
                     "mgs_principal" => __('Erro'),
                     "mgs_secundaria" => __('Falta upload do comprovante de residente')
                 );
                 $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
-            }else if ($controle->usuario->foto_cnh_apv==0) {
+            } else if ($controle->usuario->foto_cnh_apv==0) {
                 $mensagens = array(
                     "tipo" => 'sucesso',
                     "mgs_principal" => __('Erro'),
                     "mgs_secundaria" => __('Aguarde a aprovação de sua CNH')
                 );
                 $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
-            }else if ($controle->usuario->foto_res_apv==0) {
+            } else if ($controle->usuario->foto_res_apv==0) {
                 $mensagens = array(
                     "tipo" => 'sucesso',
                     "mgs_principal" => __('Erro'),
                     "mgs_secundaria" => __('Aguarde a aprovação de sua residência')
                 );
                 $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
-            }else if ($controle->usuario->foto_cnh_apv==1) {
+            } else if ($controle->usuario->foto_cnh_apv==1) {
                 $mensagens = array(
                     "tipo" => 'sucesso',
                     "mgs_principal" => __('CNH Negada'),
                     "mgs_secundaria" => __('Suba uma CNH válida')
                 );
                 $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
-            }else if ($controle->usuario->foto_res_apv==1) {
+            } else if ($controle->usuario->foto_res_apv==1) {
                 $mensagens = array(
                     "tipo" => 'sucesso',
                     "mgs_principal" => __('Residência Negada'),

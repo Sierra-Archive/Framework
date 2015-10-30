@@ -595,7 +595,7 @@ class usuario_veiculo_ListarVisual extends usuario_veiculo_Visual
                         </div>';
         
     	/*$html = '<div class="file-gallery-con simple-con"><ul class="file-gallery clearfix">';
-    	if(!empty($array)) {
+    	if (!empty($array)) {
             reset($array);
             foreach ($array as $indice=>&$valor) {
                 $link = '<a class="lajax" data-acao="" href="'.URL_PATH.'usuario_veiculo/Listar/Popup_Agendar_veiculo/'.$valor['id'].'/'.date('Y-m-d', strtotime("+1 days",strtotime(APP_DATA))).'/'.date('Y-m-d', strtotime("+6 days",strtotime(APP_DATA))).'/'.$valor['marca'].' '.$valor['modelo'].' '.$valor['cc'].' cc Ano de '.$valor['ano'].'/">';

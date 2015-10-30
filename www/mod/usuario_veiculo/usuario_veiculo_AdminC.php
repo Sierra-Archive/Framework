@@ -35,7 +35,7 @@ class usuario_veiculo_AdminControle extends usuario_veiculo_Controle
         $fileTypes = array('jpg','jpeg','gif','png'); // File extensions
         $dir = 'usuario_veiculo'.DS;
         $ext = $this->Upload($dir,$fileTypes,$id);
-        if($ext!='falso') {
+        if ($ext!='falso') {
             $this->_Modelo->Veiculos_Upload_Alterar($id,$ext); 
         }
     }
@@ -83,7 +83,7 @@ class usuario_veiculo_AdminControle extends usuario_veiculo_Controle
     public function veiculos_lista() {
         $veiculos = Array();
         $this->_Modelo->retorna_veiculos($veiculos);
-        if(!empty($veiculos)) {
+        if (!empty($veiculos)) {
             reset($veiculos);
             $i = 0;           
             
@@ -135,7 +135,7 @@ class usuario_veiculo_AdminControle extends usuario_veiculo_Controle
         
     	$id = (int) $id;
     	$sucesso = $this->_Modelo->veiculos_Del($id);
-    	if($sucesso===true) {
+    	if ($sucesso===true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
@@ -272,7 +272,7 @@ class usuario_veiculo_AdminControle extends usuario_veiculo_Controle
      * @version 0.4.2
      */
     public function veiculos_inserir() {
-        if(!isset($_POST["categoria"]) || !isset($_POST["ano"]) || !isset($_POST["modelo"]) || !isset($_POST["selectmarcas"]) || !isset($_POST["cc"]) || !isset($_POST["valor1"])|| !isset($_POST["valor2"]) || !isset($_POST["valor3"]) || !isset($_POST["franquia"]) || !isset($_POST["obs"])) return false;
+        if (!isset($_POST["categoria"]) || !isset($_POST["ano"]) || !isset($_POST["modelo"]) || !isset($_POST["selectmarcas"]) || !isset($_POST["cc"]) || !isset($_POST["valor1"])|| !isset($_POST["valor2"]) || !isset($_POST["valor3"]) || !isset($_POST["franquia"]) || !isset($_POST["obs"])) return false;
         
         $categoria = \Framework\App\Conexao::anti_injection($_POST["categoria"]);
         $ano = (int) $_POST["ano"];
@@ -289,7 +289,7 @@ class usuario_veiculo_AdminControle extends usuario_veiculo_Controle
         
         $this->veiculos_lista();
         
-        if($sucesso===true) {
+        if ($sucesso===true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Inserção bem sucedida'),
@@ -331,7 +331,7 @@ class usuario_veiculo_AdminControle extends usuario_veiculo_Controle
         
         $this->Main();
         
-        if($sucesso===true) {
+        if ($sucesso===true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Alteração bem sucedida'),
@@ -412,7 +412,7 @@ class usuario_veiculo_AdminControle extends usuario_veiculo_Controle
      * 
      */
     public function marcas_inserir() {
-        if(!isset($_POST["nome"])) return false;
+        if (!isset($_POST["nome"])) return false;
         
         $nome = \Framework\App\Conexao::anti_injection($_POST["nome"]);
         $sucesso =  $this->_Modelo->marcas_inserir($nome);
@@ -427,7 +427,7 @@ class usuario_veiculo_AdminControle extends usuario_veiculo_Controle
         );
         $this->_Visual->Json_IncluiTipo('Conteudo',$conteudo);
         // mostra mensagem de sucesso
-        if($sucesso===true) {
+        if ($sucesso===true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Inserção bem sucedida'),

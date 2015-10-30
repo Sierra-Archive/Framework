@@ -40,11 +40,11 @@ class Financeiro_PagamentoModelo extends Financeiro_Modelo
                 return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Condição de Pagamento'        ,'Financeiro/Pagamento/Condicoes_Edit/'.$d.'/'    ,''),true).
                        Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Condição de Pagamento'       ,'Financeiro/Pagamento/Condicoes_Del/'.$d.'/'     ,'Deseja realmente deletar essa Condiçao de Pagamento ?'),true);
             };
-        }else if ($perm_editar) {
+        } else if ($perm_editar) {
             $funcao = function( $d, $row ) {
                 return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Condição de Pagamento'        ,'Financeiro/Pagamento/Condicoes_Edit/'.$d.'/'    ,''),true);
             };
-        }else if ($perm_del) {
+        } else if ($perm_del) {
             $funcao = function( $d, $row ) {
                 return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Condição de Pagamento'       ,'Financeiro/Pagamento/Condicoes_Del/'.$d.'/'     ,'Deseja realmente deletar essa Condição de Pagamento ?'),true);
             };

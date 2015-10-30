@@ -55,7 +55,7 @@ class Enquete_RespostaControle extends Enquete_Controle
             ),0,'','enquete,resposta');
             if ($resp_votos===false) {
                 $valor->qnt_votos = 0;
-            }else if (is_object($resp_votos)) {
+            } else if (is_object($resp_votos)) {
                 $valor->qnt_votos = 1;
             } else {
                 $valor->qnt_votos = count($resp_votos);

@@ -206,7 +206,7 @@ class usuario_AcessoControle extends usuario_Controle
         $dao        = Array('Usuario',$id);
         if ($tipo=='naocliente') {
             $funcao     = '$this->Listar_Clientesnao();';
-        }else /*if ($tipo=='usuario')*/{
+        } else /*if ($tipo=='usuario')*/{
             $funcao     = '$this->Usuarios();';
         }
         $sucesso1   = __('Acesso Alterado com Sucesso.');

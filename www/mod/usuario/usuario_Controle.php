@@ -372,7 +372,7 @@ class usuario_Controle extends \Framework\App\Controle
         }
         if ($ativado===false) {
             $titulo = 'Todos os '.$nomedisplay.' ('.$i.')';
-        }elseif ($ativado==0) {
+        } elseif ($ativado==0) {
             $titulo = 'Todos os '.$nomedisplay.' Desativados ('.$i.')';
         } else {
             $titulo = 'Todos os '.$nomedisplay.' Ativados ('.$i.')';
@@ -403,7 +403,7 @@ class usuario_Controle extends \Framework\App\Controle
             if ($usuario->grupo==CFG_TEC_CAT_ID_CLIENTES) {
                 $tipo   = __('Cliente');
                 $tipo2  = 'cliente';
-            }else if ($usuario->grupo==CFG_TEC_CAT_ID_FUNCIONARIOS) {
+            } else if ($usuario->grupo==CFG_TEC_CAT_ID_FUNCIONARIOS) {
                 $tipo   = __('Funcionário');
                 $tipo2  = 'funcionario';
             } else {
@@ -417,14 +417,14 @@ class usuario_Controle extends \Framework\App\Controle
         // Cria Tipo 2:
         if ($tipo==__('Cliente') || $tipo==__('cliente')) {
             $tipo2  = 'cliente';
-        }else if ($tipo==__('Funcionário') || $tipo==__('funcionário') || $tipo=='Funcionario' || $tipo=='funcionario') {
+        } else if ($tipo==__('Funcionário') || $tipo==__('funcionário') || $tipo=='Funcionario' || $tipo=='funcionario') {
             $tipo2  = 'funcionario';
         }
         if ($tipo2=='usuario') {
             $nomedisplay        = __('Usuários').' ';
             $nomedisplay_sing   = __('Usuário').' ';
             $nomedisplay_tipo   = __('Usuario');
-        }else if ($tipo2=='funcionario') {
+        } else if ($tipo2=='funcionario') {
             $nome = \Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Funcionario_nome');
             $nomedisplay        = __($nome).' ';
             $nomedisplay_sing   = Framework\Classes\Texto::Transformar_Plural_Singular(__($nome));
@@ -495,7 +495,7 @@ class usuario_Controle extends \Framework\App\Controle
             if ($usuario->grupo==CFG_TEC_IDCLIENTE) {
                 $tipo   = __('Cliente');
                 $tipo2  = 'cliente';
-            }else if ($usuario->grupo==CFG_TEC_IDFUNCIONARIO) {
+            } else if ($usuario->grupo==CFG_TEC_IDFUNCIONARIO) {
                 $tipo   = 'Funcionário';
                 $tipo2  = 'funcionario';
             }
@@ -507,7 +507,7 @@ class usuario_Controle extends \Framework\App\Controle
         if ($tipo=='Cliente' || $tipo=='cliente') {
             $tipo2  = 'cliente';
             $this->Tema_Endereco(__('Clientes'),'usuario/Admin/ListarCliente');
-        }else if ($tipo=='Funcionário' || $tipo=='Funcionario' || $tipo=='funcionário' || $tipo=='funcionario') {
+        } else if ($tipo=='Funcionário' || $tipo=='Funcionario' || $tipo=='funcionário' || $tipo=='funcionario') {
             $tipo2  = 'funcionario';
             $this->Tema_Endereco(__('Funcionários'),'usuario/Admin/ListarFuncionario');
         } else {
@@ -678,7 +678,7 @@ class usuario_Controle extends \Framework\App\Controle
             // Recarrega Main
             /*if ($tipo=='cliente') {
                 $this->ListarCliente();
-            }else if ($tipo=='funcionario') {
+            } else if ($tipo=='funcionario') {
                 $this->ListarFuncionario();
             } else {
                 $this->Main();
@@ -1017,7 +1017,7 @@ class usuario_Controle extends \Framework\App\Controle
             self::DAO_Campos_Retira($campos, 'entrega_complemento');
             if ($tipo=='cliente') {
                 
-            }else if ($tipo=='funcionario') {
+            } else if ($tipo=='funcionario') {
                 self::DAO_Campos_Retira($campos, 'site');
             }
         } else {
@@ -1177,7 +1177,7 @@ class usuario_Controle extends \Framework\App\Controle
         
         if ($ativado===false) {
             $titulo = 'Todos os '.$nomedisplay.' (<span id="DataTable_Contador">0</span>)';
-        }elseif ($ativado==0) {
+        } elseif ($ativado==0) {
             $titulo = 'Todos os '.$nomedisplay.' Desativados (<span id="DataTable_Contador">0</span>)';
         } else {
             $titulo = 'Todos os '.$nomedisplay.' Ativados (<span id="DataTable_Contador">0</span>)';

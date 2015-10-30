@@ -37,7 +37,7 @@ class usuario_TelefoneControle extends usuario_Controle
     static function Endereco_Telefone($true=true) {
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
-        if($true===true) {
+        if ($true===true) {
             $_Controle->Tema_Endereco(__('Telefone'),'usuario/Telefone/Telefone');
         } else {
             $_Controle->Tema_Endereco(__('Telefone'));
@@ -66,8 +66,8 @@ class usuario_TelefoneControle extends usuario_Controle
             )
         )));
         $telefones = $this->_Modelo->db->Sql_Select('Usuario_Telefone');
-        if($telefones!==false && !empty($telefones)) {
-            if(is_object($telefones)) $telefones = Array(0=>$telefones);
+        if ($telefones!==false && !empty($telefones)) {
+            if (is_object($telefones)) $telefones = Array(0=>$telefones);
             reset($telefones);
             foreach ($telefones as $indice=>&$valor) {
                 $tabela['Pessoa'][$i]           = $valor->persona2;
@@ -77,7 +77,7 @@ class usuario_TelefoneControle extends usuario_Controle
                                                   $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Telefone'       ,'usuario/Telefone/Telefones_Del/'.$valor->id.'/'     ,'Deseja realmente deletar essa Telefone ?'));
                 ++$i;
             }
-            if($export!==false) {
+            if ($export!==false) {
                 self::Export_Todos($export,$tabela, 'Telefones');
             } else {
                 $this->_Visual->Show_Tabela_DataTable(
@@ -196,7 +196,7 @@ class usuario_TelefoneControle extends usuario_Controle
         $setor = $this->_Modelo->db->Sql_Select('Usuario_Telefone', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($setor);
         // Mensagem
-    	if($sucesso===true) {
+    	if ($sucesso===true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletada'),
@@ -225,7 +225,7 @@ class usuario_TelefoneControle extends usuario_Controle
         $dir = 'usuario'.DS.'Chamadas_Nao_Contabilizadas'.DS;
         $ext = $this->Upload($dir,$fileTypes,false);
         $this->layoult_zerar = false;
-        if($ext!==false) {
+        if ($ext!==false) {
             $this->_Visual->Json_Info_Update('Titulo', __('Upload com Sucesso'));
             $this->_Visual->Json_Info_Update('Historico', false);
         } else {

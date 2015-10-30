@@ -22,7 +22,7 @@ class RequestTest extends \PHPUnit_Framework_TestCase {
         $this->object     = &$this->_Registro->_Request;
         
         // Inicializa Classes caso ainda nao tenham sido
-        if($this->object===false){
+        if ($this->object===false) {
             $this->_Registro->_Conexao = new Request();
         }
     }

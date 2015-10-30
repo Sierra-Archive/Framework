@@ -39,7 +39,7 @@ class CpfTest extends \PHPUnit_Framework_TestCase {
     
     /**
      * @covers Framework\App\Resource\Validation\Cpf::calcDigVerif
-     * @todo   Implement testcalcDigVerif().
+     * @todo   Implement testcalcDigVerif ().
      */
     public function testGenerate() {
         $generation = \Framework\App\Resource\Validation\Cpf::Generate();

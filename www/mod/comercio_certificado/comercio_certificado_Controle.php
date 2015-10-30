@@ -211,7 +211,7 @@ class comercio_certificado_Controle extends \Framework\App\Controle
             $Visual->Json_IncluiTipo('Mensagens',$mensagens);
             $this->layoult_zerar = false;
             $Visual->Javascript_Executar('$("#email").css(\'border\', \'2px solid #FFAEB0\').focus();');
-         }else if ($existeemail===true && ($tipo!='cliente' || $email!='')) {
+         } else if ($existeemail===true && ($tipo!='cliente' || $email!='')) {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),
@@ -220,7 +220,7 @@ class comercio_certificado_Controle extends \Framework\App\Controle
             $Visual->Json_IncluiTipo('Mensagens',$mensagens); 
             $this->layoult_zerar = false;
             $Visual->Javascript_Executar('$("#email").css(\'border\', \'2px solid #FFAEB0\').focus();');
-        }else if ($existelogin===true && $tipo!='cliente') {
+        } else if ($existelogin===true && $tipo!='cliente') {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),

@@ -334,7 +334,7 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
             // SE vier do Relatorio, volta pra la
             if ($localizacao!==false) {
                 \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'Financeiro/Relatorio/Relatorio/'.$localizacao.'/'.$dataini.'/'.$datafin);
-            }else if ($financeiros->saida_motivo==='Servidor' && $financeiros->saida_motivoid===SRV_NAME_SQL) {
+            } else if ($financeiros->saida_motivo==='Servidor' && $financeiros->saida_motivoid===SRV_NAME_SQL) {
                 $this->Receber();
             } else {
                 $this->Pagar();
@@ -369,7 +369,7 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
                 $pago = __('Pago');
             }
             $link_extra = '/'.$localizacao.'/'.$dataini.'/'.$datafin;
-        }else if ($editar->saida_motivo==='Servidor' && $editar->saida_motivoid===SRV_NAME_SQL) {
+        } else if ($editar->saida_motivo==='Servidor' && $editar->saida_motivoid===SRV_NAME_SQL) {
             $pago = __('Recebido');
             self::Endereco_Receber();
             $link_extra = '';
@@ -464,7 +464,7 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
                 // SE vier do Relatorio, volta pra la
                 if ($localizacao!==false) {
                     \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'Financeiro/Relatorio/Relatorio/'.$localizacao.'/'.$dataini.'/'.$datafin);
-                }else if ($financeiros->saida_motivo==='Servidor' && $financeiros->saida_motivoid===SRV_NAME_SQL) {
+                } else if ($financeiros->saida_motivo==='Servidor' && $financeiros->saida_motivoid===SRV_NAME_SQL) {
                     $this->Receber();
                 } else {
                     $this->Pagar();
@@ -945,11 +945,11 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
             $titulo             = __('Conta a Pagar');
             $titulo_plural      = __('Contas a Pagar');
             $titulo_unico       = 'contasapagar';
-        }else if ($tema==='Pago') {
+        } else if ($tema==='Pago') {
             $titulo             = __('Conta Paga');
             $titulo_plural      = __('Contas Pagas');
             $titulo_unico       = 'contaspagas';
-        }else if ($tema==='Receber') {
+        } else if ($tema==='Receber') {
             $titulo             = __('Conta a Pagar');
             $titulo_plural      = __('Contas a Pagar');
             $titulo_unico       = 'contasareceber';
@@ -1021,7 +1021,7 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
                 $this->_Visual->Blocar($html);
                 if ($layoult==='Unico') {
                     $this->_Visual->Bloco_Unico_CriaJanela($titulo.' #'.$identificador->id);
-                }else if ($layoult==='Maior') {
+                } else if ($layoult==='Maior') {
                     $this->_Visual->Bloco_Maior_CriaJanela($titulo.' #'.$identificador->id);
                 } else {
                     $this->_Visual->Bloco_Menor_CriaJanela($titulo.' #'.$identificador->id);

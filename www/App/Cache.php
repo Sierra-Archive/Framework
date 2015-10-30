@@ -147,7 +147,7 @@ class Cache {
                 return unserialize($retorno);
             }
 
-        }else if (self::$tipo==='Shmop' && $ram && SISTEMA_DEDICADO) {
+        } else if (self::$tipo==='Shmop' && $ram && SISTEMA_DEDICADO) {
             try{
                 $retorno = $this->Shmop_Leitura($key);
                 if ($retorno!==false) return $retorno;
@@ -177,7 +177,7 @@ class Cache {
         if (self::$tipo==='Memcache') {
             $retorno = self::$cache->set(sha1($key), serialize($content));
             return $retorno;
-        }else if (self::$tipo==='Shmop' && $ram && SISTEMA_DEDICADO) {
+        } else if (self::$tipo==='Shmop' && $ram && SISTEMA_DEDICADO) {
             try{
                 $retorno = @$this->Shmop_Salvar($key, $content, 1200); // tempo em segundos
                 if ($retorno!==false) return $retorno;
@@ -204,7 +204,7 @@ class Cache {
             } else {
                 return false;
             }
-        }else if (self::$tipo==='Shmop' && SISTEMA_DEDICADO) {
+        } else if (self::$tipo==='Shmop' && SISTEMA_DEDICADO) {
             /*try{
                 $retorno = @$this->Shmop_Salvar($key, $content, 1200); // tempo em segundos
                 if ($retorno!==false) return $retorno;

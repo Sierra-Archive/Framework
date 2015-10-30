@@ -1,11 +1,11 @@
 <?php $cont=0;
 foreach($params['widgets'] as $v) {
-    if( isset($v['duplo']) && $v['duplo']===true) {
+    if ( isset($v['duplo']) && $v['duplo']===true) {
         $duplo=' double';
     } else {
         $duplo='';
     }
-    if($cont==0) {
+    if ($cont==0) {
         echo '<ul class="nav nav-pills" role="tablist">';
     } ?>
     <li role="presentation" class="active <?php echo $v['cor']; echo $duplo; ?>">
@@ -14,9 +14,9 @@ foreach($params['widgets'] as $v) {
         </a>
     </li>
     <?php ++$cont;
-    if($cont===5) { ?>
+    if ($cont===5) { ?>
         </div>
         <?php $cont=0;
     }
 }
-if($cont!==0) { echo '</ul>'; } ?>
+if ($cont!==0) { echo '</ul>'; } ?>

@@ -64,7 +64,7 @@ class usuario_rede_Controle extends \Framework\App\Controle
     static function Ranking_listar(&$Modelo, &$Visual) {
         $ranking = Array();
         usuario_rede_Modelo::Ranking_primarios($ranking,$Modelo);
-        if(!empty($ranking)) {
+        if (!empty($ranking)) {
             reset($ranking);
             $i = 0;
             foreach ($ranking as $indice=>&$valor) {

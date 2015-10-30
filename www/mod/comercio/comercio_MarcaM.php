@@ -31,11 +31,11 @@ class comercio_MarcaModelo extends comercio_Modelo
                 return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Senha'        ,'comercio/Marca/Marcas_Edit/'.$d.'/'    ,''),true).
                        Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Senha'       ,'comercio/Marca/Marcas_Del/'.$d.'/'     ,'Deseja realmente deletar essa Marca ?'),true);
             };
-        }else if ($perm_editar) {
+        } else if ($perm_editar) {
             $funcao = function( $d, $row ) {
                 return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Senha'        ,'comercio/Marca/Marcas_Edit/'.$d.'/'    ,''),true);
             };
-        }else if ($perm_del) {
+        } else if ($perm_del) {
             $funcao = function( $d, $row ) {
                 return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Senha'       ,'comercio/Marca/Marcas_Del/'.$d.'/'     ,'Deseja realmente deletar essa Marca ?'),true);
             };

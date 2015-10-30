@@ -248,11 +248,11 @@ class Desenvolvimento_ProjetoControle extends Desenvolvimento_Controle
         // troca Resutlado
         if ($resultado->status=='1') {
             $resultado->status='2'; // De Aprovada para Recusada
-        }else if ($resultado->status=='2') { // de Aprovada em Execução para Finalizada
+        } else if ($resultado->status=='2') { // de Aprovada em Execução para Finalizada
             $resultado->status='3';
-        }else if ($resultado->status=='3') { // de Finalizada em Execução para Aprovada
+        } else if ($resultado->status=='3') { // de Finalizada em Execução para Aprovada
             $resultado->status='4';
-        }else if ($resultado->status=='4') { // De Recusada para Pendente
+        } else if ($resultado->status=='4') { // De Recusada para Pendente
             $resultado->status='0';
         } else {
             $resultado->status='1';
@@ -464,7 +464,7 @@ class Desenvolvimento_ProjetoControle extends Desenvolvimento_Controle
         $titulo = 'Informações do Projeto (#'.$Desenvolvimento_id.')';
         if ($popup=='return') {
             return Array($titulo,'<div class="row">'.$html.'</div>');
-        }else if ($popup===true) {
+        } else if ($popup===true) {
             $conteudo = array(
                 'id' => 'popup',
                 'title' => $titulo,

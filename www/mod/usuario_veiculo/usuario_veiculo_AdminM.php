@@ -57,7 +57,7 @@ class usuario_veiculo_AdminModelo extends usuario_veiculo_Modelo
         global $config;
 
         // verifica se contem subcategoria
-        if(stripos($categoria, '-')) {
+        if (stripos($categoria, '-')) {
             $categoria = explode('-',$categoria);
             $subcat = $categoria[1];
             $categoria = $categoria[0];
@@ -88,7 +88,7 @@ class usuario_veiculo_AdminModelo extends usuario_veiculo_Modelo
         global $config;
 
         // verifica se contem subcategoria
-        if(stripos($categoria, '-')) {
+        if (stripos($categoria, '-')) {
             $categoria = explode('-',$categoria);
             $subcat = $categoria[1];
             $categoria = $categoria[0];
@@ -101,7 +101,7 @@ class usuario_veiculo_AdminModelo extends usuario_veiculo_Modelo
     }
     public function Veiculos_Upload_Alterar($id,$ext) {
         $id = (int) $id;
-        if(!isset($id) || !is_int($id) || $id==0) return 0;
+        if (!isset($id) || !is_int($id) || $id==0) return 0;
         $this->db->query('UPDATE '.MYSQL_USUARIO_VEICULO.' SET foto=\''.$ext.'\' WHERE deletado!=1 AND id='.$id);
         
         return 1;

@@ -48,7 +48,7 @@ class Enquete_EnqueteControle extends Enquete_Controle
             ));
             if ($resp_votos===false) {
                 $resp_votos_res = 0;
-            }else if (is_object($resp_votos)) {
+            } else if (is_object($resp_votos)) {
                 $resp_votos_res = 1;
             } else {
                 $resp_votos_res = count($resp_votos);

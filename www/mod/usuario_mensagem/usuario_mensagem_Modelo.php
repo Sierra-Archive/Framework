@@ -26,12 +26,12 @@ class usuario_mensagem_Modelo extends \Framework\App\Modelo
     public function Mensagens_Retorna(&$array,$proprietario=0,$ticket=0,$tipodemensagem=false) {
         $i =0;
         $array = Array();
-        if($proprietario==0 && $ticket==1) {
+        if ($proprietario==0 && $ticket==1) {
             // mostra todos os tickets para ADMIN
             $where = Array(
                 'para'      =>0
             );
-        }else if($ticket==1) {
+        } else if ($ticket==1) {
             // mostra os tickets de certo proprietario
             $where = Array(
                 'escritor'  =>$proprietario,
@@ -53,12 +53,12 @@ class usuario_mensagem_Modelo extends \Framework\App\Modelo
     #update
     static function Mensagens_Retornanaolidas(&$Modelo,&$mensagens,$proprietario=0,$ticket=0) {
         $i =0;
-        if($proprietario==0 && $ticket==1) {
+        if ($proprietario==0 && $ticket==1) {
             // mostra todos os tickets para ADMIN
             $where = Array(
                 'para'      =>0
             );
-        }else if($ticket==1) {
+        } else if ($ticket==1) {
             // mostra os tickets de certo proprietario
             $where = Array(
                 'escritor'  =>$proprietario,
@@ -75,8 +75,8 @@ class usuario_mensagem_Modelo extends \Framework\App\Modelo
             );
         }
         $mensagens = $this->db->Sql_Select('Usuario_Mensagem',$where,0,'log_date_edit DESC');
-        if($mensagens!==false) {
-            if(is_object($mensagens)) $mensagens = Array($mensagens);
+        if ($mensagens!==false) {
+            if (is_object($mensagens)) $mensagens = Array($mensagens);
             foreach($mensagens as &$campo) {
                 $j = $this->db->Sql_Select('Usuario_Mensagem',
                     Array(
@@ -85,7 +85,7 @@ class usuario_mensagem_Modelo extends \Framework\App\Modelo
                     1,
                     'id DESC'
                 );
-                if($j===false || $j->escritor==$campo->escritor) {
+                if ($j===false || $j->escritor==$campo->escritor) {
                     ++$i;
                 } else {
                     unset($campo);
@@ -114,7 +114,7 @@ class usuario_mensagem_Modelo extends \Framework\App\Modelo
         $de = $mensagem->escritor;
         $para = $mensagem->para;
         $assunto = $mensagem->assunto2;
-        if($mensagem->escritor==\Framework\App\Acl::Usuario_GetID_Static()) {
+        if ($mensagem->escritor==\Framework\App\Acl::Usuario_GetID_Static()) {
             $mensagem->lido = 1;
             $this->db->Sql_Update($mensagem);
         }
@@ -123,11 +123,11 @@ class usuario_mensagem_Modelo extends \Framework\App\Modelo
         $respostas = $this->db->Sql_Select('Usuario_Mensagem_Resposta',Array('id_mensagem'=>$mensagemid),0,'log_date_add');
         $sql = $this->db->query('SELECT id, escritor, escritor_nome, resposta, log_date_add FROM '.MYSQL_USUARIOS_MENS_RESP.' WHERE deletado!=1 AND id_mensagem='.$mensagemid.' ORDER BY log_date_add');
         
-        if(is_object($respostas)) $respostas = Array(0=>$respostas);
-        if($respostas!==false && !empty($respostas)) {
+        if (is_object($respostas)) $respostas = Array(0=>$respostas);
+        if ($respostas!==false && !empty($respostas)) {
             reset($respostas);
             foreach ($respostas as $campo) {
-                if($para==0 && $campo->escritor!=$de) {
+                if ($para==0 && $campo->escritor!=$de) {
                     $escritor = 0;
                     $escritor_nome = $mensagem->origem2;
                 } else {
@@ -158,15 +158,15 @@ class usuario_mensagem_Modelo extends \Framework\App\Modelo
         // Quatnidade de respostas
         $ordem = 0;
         $quantidade = $this->db->Sql_Select('Usuario_Mensagem_Resposta',Array('id_mensagem'=>$mensagem),0,'ordem');
-        if(is_object($quantidade)) $ordem = 1;
+        if (is_object($quantidade)) $ordem = 1;
         else $ordem = count($quantidade);
         
         // Atualiza Mensagem
         $objeto = $this->db->Sql_Select('Usuario_Mensagem',Array('id'=>$mensagem));
-        if(!is_object($objeto)) throw new \Exception('Mensagem nao existe ou existe mais delas.',3030);
+        if (!is_object($objeto)) throw new \Exception('Mensagem nao existe ou existe mais delas.',3030);
         $objeto->log_date_edit = APP_HORA;
         $objeto->escritor = (int) $objeto->escritor;
-        if(\Framework\App\Acl::Usuario_GetID_Static()!=$objeto->escritor) {
+        if (\Framework\App\Acl::Usuario_GetID_Static()!=$objeto->escritor) {
             $objeto->finalizado = '1';
         } else {
             $objeto->finalizado = '0';
@@ -200,19 +200,19 @@ class usuario_mensagem_Modelo extends \Framework\App\Modelo
         $Registro = &\Framework\App\Registro::getInstacia();
         $Modelo = &$Registro->_Modelo;
         // Proteção contra erros
-        if(!is_object($mensagem)) return false;
+        if (!is_object($mensagem)) return false;
         // Captura Assunto
         /*$where = Array(
             'id' => $mensagem->assunto
         );
         $assunto = $Modelo->db->Sql_Select('Usuario_Mensagem_Assunto',$where,1);
-        if(!is_object($assunto))return false;*/
-        if(Data_geraTimestamp($mensagem->log_date_edit,false)!==false) {
+        if (!is_object($assunto))return false;*/
+        if (Data_geraTimestamp($mensagem->log_date_edit,false)!==false) {
             $dataapassar = $mensagem->log_date_edit;
-        }else if(Data_geraTimestamp($mensagem->log_date_add,false)!==false) {
+        } else if (Data_geraTimestamp($mensagem->log_date_add,false)!==false) {
             $dataapassar = $mensagem->log_date_add;
         } else {
-            if($mensagem->finalizado==1) {
+            if ($mensagem->finalizado==1) {
                 $tipo = 'fin';
                 $dataapassar = $mensagem->log_date_add;
             } else {
@@ -221,17 +221,17 @@ class usuario_mensagem_Modelo extends \Framework\App\Modelo
             }
         }
         // Se tiver data valida, continua, se nao bota como esgotado direto
-        if($tipo===false) {
+        if ($tipo===false) {
             $datapassada = Data_CalculaDiferenca($dataapassar,APP_HORA);
-            if($mensagem->finalizado==1) {
+            if ($mensagem->finalizado==1) {
                 $tipo = 'fin';
             } else {
                 // Manipula e Ve qual é da parada
                 $tempoassunto = (int) $mensagem->tempocli;
-                if(isset($tempoassunto) && $tempoassunto>0) {
+                if (isset($tempoassunto) && $tempoassunto>0) {
                     $porcentagem = floor(($datapassada*100)/$tempoassunto);
-                    if($porcentagem>=100)       $tipo = 'esg';
-                    else if($porcentagem>=80)   $tipo = 'lim';
+                    if ($porcentagem>=100)       $tipo = 'esg';
+                    else if ($porcentagem>=80)   $tipo = 'lim';
                     else                        $tipo = 'nov';
                 } else {
                                                 $tipo = 'nov';
@@ -241,34 +241,34 @@ class usuario_mensagem_Modelo extends \Framework\App\Modelo
         return Array($tipo,$datapassada);
     }
     public static function Mensagem_TipoChamado_GET(&$array,$tipodemensagem=false) {
-        if( is_object($array) ) $array = Array($array);
-        if(     empty($array) ) return 0;
+        if ( is_object($array) ) $array = Array($array);
+        if (     empty($array) ) return 0;
         foreach($array as $indice=>&$valor) {
             $valor->lido                            = self::Mensagem_RespNova($valor->id,$valor->escritor);
             list($valor->tipo,$valor->datapassada)  = usuario_mensagem_Modelo::Mensagem_TipoChamado($valor);
-            if($valor->tipo=='nov') {
-                if($tipodemensagem===false || $tipodemensagem=='nov') {
+            if ($valor->tipo=='nov') {
+                if ($tipodemensagem===false || $tipodemensagem=='nov') {
                     $valor->tipo = __('Chamado Novo');
                 } else {
                     unset($array[$indice]);
                 }
             }
-            else if($valor->tipo=='fin') {
-                if($tipodemensagem===false || $tipodemensagem=='fin') {
+            else if ($valor->tipo=='fin') {
+                if ($tipodemensagem===false || $tipodemensagem=='fin') {
                     $valor->tipo = __('Finalizado');
                 } else {
                     unset($array[$indice]);
                 }
             }
-            else if($valor->tipo=='lim') {
-                if($tipodemensagem===false || $tipodemensagem=='lim') {
+            else if ($valor->tipo=='lim') {
+                if ($tipodemensagem===false || $tipodemensagem=='lim') {
                     $valor->tipo = __('Tempo Limite');
                 } else {
                     unset($array[$indice]);
                 }
             }
-            else if($valor->tipo=='esg') {
-                if($tipodemensagem===false || $tipodemensagem=='esg') {
+            else if ($valor->tipo=='esg') {
+                if ($tipodemensagem===false || $tipodemensagem=='esg') {
                     $valor->tipo = __('Esgotado');
                 } else {
                     unset($array[$indice]);
@@ -293,14 +293,14 @@ class usuario_mensagem_Modelo extends \Framework\App\Modelo
         // Proteção contra erros
         $mensagem = (int) $mensagem;
         $escritor = (int) $escritor;
-        if($mensagem==0 || !is_int($mensagem) || $escritor==0 || !is_int($escritor)) return;
+        if ($mensagem==0 || !is_int($mensagem) || $escritor==0 || !is_int($escritor)) return;
         
         $Registro = &\Framework\App\Registro::getInstacia();
         $Modelo = &$Registro->_Modelo;
         // Carrega Mensagens de Acordo com os assuntos acima 
         $i =0;
         $array = Array();
-        if($acl->logado_usuario->id==$escritor) {
+        if ($acl->logado_usuario->id==$escritor) {
             // mostra todos os tickets para ADMIN
             $where = Array(
                 '!escritor' => $escritor
@@ -312,8 +312,8 @@ class usuario_mensagem_Modelo extends \Framework\App\Modelo
             );
         }
         $array = $Modelo->db->Sql_Select('Usuario_Mensagem_Resposta',$where,1,'ordem DESC');
-        if(!is_array($array) || count($array)==0) return false;
-        if($array->lido==0) return true;
+        if (!is_array($array) || count($array)==0) return false;
+        if ($array->lido==0) return true;
     }
     
     

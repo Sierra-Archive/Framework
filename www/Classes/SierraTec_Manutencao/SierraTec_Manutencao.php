@@ -73,7 +73,7 @@ class SierraTec_Manutencao {
         // Carrega Todos os DAO
         if ($dir=='mod') {
             $dir = MOD_PATH;  
-        }else if ($dir=='app') {
+        } else if ($dir=='app') {
             $dir = APP_PATH;  
         }
         
@@ -83,7 +83,7 @@ class SierraTec_Manutencao {
         $diretorio = dir($dir);
         
         // PRocura Arqiuvos e Anota valores usados
-        while($arquivo = $diretorio -> read()) {
+        while ($arquivo = $diretorio -> read()) {
             $achado         = Array();
             // Ignora Propria Pasta, pasta anterior e Arquivo Autoload
             if ($arquivo!='..' && $arquivo!='.' && $arquivo!='AutoLoad.php') {
@@ -100,7 +100,7 @@ class SierraTec_Manutencao {
                     );
                     if ($resultado >= 1) {
                         reset($achado[3]);
-                        while(key($achado[3])!==NULL) {
+                        while (key($achado[3])!==NULL) {
                             $dependencia_dao[current($achado[3])] = current($achado[3]);
                             next($achado[3]);
                         }
@@ -113,7 +113,7 @@ class SierraTec_Manutencao {
                     );
                     if ($resultado >= 1) {
                         reset($achado[0]);
-                        while(key($achado[0])!==NULL) {
+                        while (key($achado[0])!==NULL) {
                             $current = str_replace('_DAO', '', current($achado[0]));
                             $dependencia_dao[$current] = $current;
                             next($achado[0]);
@@ -128,7 +128,7 @@ class SierraTec_Manutencao {
                     
                     if ($resultado >= 1) {
                         reset($achado[1]);
-                        while(key($achado[1])!==NULL) {
+                        while (key($achado[1])!==NULL) {
                             if (current($achado[1]));
                             $constante = str_replace(Array(')','\'','('), Array('','',''), 'MYSQL_'.current($achado[1]));
                             if ($constante!=='MYSQL_') {
@@ -426,7 +426,7 @@ class SierraTec_Manutencao {
         var_dump(
             $achado);
             reset($achado[1]);
-            while(key($achado[1])!==NULL) {
+            while (key($achado[1])!==NULL) {
                 $constante = 'MYSQL'.current($achado[1]);
                 $dependencia_dao_CONSTANTE[$constante] = $constante;
                 next($achado[1]);
@@ -458,9 +458,9 @@ class SierraTec_Manutencao {
             if ($alterarvalor!==false) {
                 if (is_bool($alterarvalor)) {
                     $resultado = 'true';
-                }else if ($alterarvalor==='false' || $alterarvalor==='falso') {
+                } else if ($alterarvalor==='false' || $alterarvalor==='falso') {
                     $resultado = 'false';
-                }else if (is_string($alterarvalor)) {
+                } else if (is_string($alterarvalor)) {
                     $resultado = '\''.$alterarvalor.'\'';
                 } else {
                     $resultado = (int) $alterarvalor;
@@ -474,7 +474,7 @@ class SierraTec_Manutencao {
                 );
                 return $codigo;
             }
-        }else 
+        } else 
         //CASo tenha resultado
         if ($resultado >= 1) {
             $resultado = $achado[1][0];
@@ -488,11 +488,11 @@ class SierraTec_Manutencao {
             if (strpos($resultado, '\'')!==false || strtolower($resultado)=='null') {
                 $tipo = 'string';
                 $resultado = '\''.$alterarvalor.'\'';
-            }else if (strtolower($resultado)=='false' || strtolower($resultado)=='true') {
+            } else if (strtolower($resultado)=='false' || strtolower($resultado)=='true') {
                 $tipo = 'boleano';
                 if ($alterarvalor===true || $alterarvalor==='true') {
                     $resultado = 'true';
-                }else if ($alterarvalor==='false' || $alterarvalor==='falso') {
+                } else if ($alterarvalor==='false' || $alterarvalor==='falso') {
                     $resultado = 'false';
                 }
             } else {

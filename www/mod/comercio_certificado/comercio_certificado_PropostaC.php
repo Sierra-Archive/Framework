@@ -135,7 +135,7 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
         }
         if ($resultado->status===1 || $resultado->status==='1') {
             $resultado->status='2';
-        }else if ($resultado->status===2 || $resultado->status==='2') {
+        } else if ($resultado->status===2 || $resultado->status==='2') {
             $resultado->status='0';
         } else {
             $resultado->status='1';
@@ -448,7 +448,7 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
                 if ($usuario->grupo==CFG_TEC_IDCLIENTE) {
                     $tipo = 'cliente';
                     $tipo2 = __('Cliente');
-                }else if ($usuario->grupo==CFG_TEC_IDFUNCIONARIO) {
+                } else if ($usuario->grupo==CFG_TEC_IDFUNCIONARIO) {
                     $tipo = 'funcionario';
                     $tipo2 = __('Funcionário');
                 } else {
@@ -458,7 +458,7 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
             } else {
                 if ($tipo==='cliente') {
                     $tipo2 = __('Cliente');
-                }else if ($tipo==='funcionario') {
+                } else if ($tipo==='funcionario') {
                     $tipo2 = __('Funcionário');
                 } else {
                     $tipo = 'usuario';
@@ -487,7 +487,7 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
             /*if ($tipo==='cliente') {
                 $this->ListarCliente();
-            }else if ($tipo==='funcionario') {
+            } else if ($tipo==='funcionario') {
                 $this->ListarFuncionario();
             } else {
                 $this->ListarUsuario();

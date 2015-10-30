@@ -67,11 +67,11 @@ class comercio_EstoqueModelo extends comercio_Modelo
                 return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Entrada de NFE'        ,'comercio/Estoque/Material_Entrada_Edit/'.$d.'/'    ,''),true).
                        Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Entrada de NFE'       ,'comercio/Estoque/Material_Entrada_Del/'.$d.'/'     ,'Deseja realmente deletar essa Entrada de NFE ?'),true);
             };
-        }else if ($perm_editar) {
+        } else if ($perm_editar) {
             $funcao = function( $d, $row ) {
                 return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Entrada de NFE'        ,'comercio/Estoque/Material_Entrada_Edit/'.$d.'/'    ,''),true);
             };
-        }else if ($perm_del) {
+        } else if ($perm_del) {
             $funcao = function( $d, $row ) {
                 return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Entrada de NFE'       ,'comercio/Estoque/Material_Entrada_Del/'.$d.'/'     ,'Deseja realmente deletar essa Entrada de NFE ?'),true);
             };
@@ -87,7 +87,7 @@ class comercio_EstoqueModelo extends comercio_Modelo
         // indexes
               /*  if ($valor->documento==0) {
                     $documento = __('Nfe');
-                }else if ($valor->documento==1) {
+                } else if ($valor->documento==1) {
                     $documento = __('Boleto');
                 } else {
                     $documento = __('Recibo');
@@ -106,7 +106,7 @@ class comercio_EstoqueModelo extends comercio_Modelo
                 'formatter' => function( $d, $row ) {
                     if ($d==0) {
                         return 'Nfe';
-                    }else if ($d==1) {
+                    } else if ($d==1) {
                         return 'Boleto';
                     } else {
                         return 'Recibo';

@@ -165,12 +165,12 @@ class Visual
         if ($javascript===false) {
             $this->head_js = '';
             return true;
-        }else
+        } else
         // Se parametro nao for falso e igual a zero entao add js
         if ($javascript!=='') {
             $this->head_js .= $javascript;
             return true;
-        }else
+        } else
         // Caso contrario (seja só vazio), retorna o js
         {
             return $this->head_js;
@@ -625,7 +625,7 @@ class Visual
         if (is_array($endereco)) {
             $js = &$this->arquivos_js;
             reset($endereco);
-            while(key($endereco)!==NULL) {
+            while (key($endereco)!==NULL) {
                 $end_current = current($endereco);
                 if (array_search($end_current, $js)===false) {
                     $js[] = $end_current;
@@ -650,7 +650,7 @@ class Visual
         if (is_array($endereco)) {
             $js = &$this->arquivos_js_dependencia;
             reset($endereco);
-            while(key($endereco)!==NULL) {
+            while (key($endereco)!==NULL) {
                 $end_current = current($endereco);
                 if (array_search($end_current, $js)===false) {
                     $js[] = $end_current;
@@ -708,7 +708,7 @@ class Visual
         if (is_array($endereco)) {
             $css = &$this->arquivos_css;
             reset($endereco);
-            while(key($endereco)!==NULL) {
+            while (key($endereco)!==NULL) {
                 $end_current = current($endereco);
                 if (array_search($end_current, $css)===false) {
                     $css[] = $end_current;
@@ -733,7 +733,7 @@ class Visual
         if (is_array($endereco)) {
             $css = &$this->arquivos_css_dependencia;
             reset($endereco);
-            while(key($endereco)!==NULL) {
+            while (key($endereco)!==NULL) {
                 $end_current = current($endereco);
                 if (array_search($end_current, $css)===false) {
                     $css[] = $end_current;
@@ -1424,7 +1424,7 @@ class Visual
                 );
             }
             return $this->renderizar_bloco('elemento_botao',$array);  
-        }else if ($tipo=='Personalizado') {
+        } else if ($tipo=='Personalizado') {
             if ($permissao==='_') $permissao = $this->_Registro->_Acl->Get_Permissao_Url($nome[1]);
             if ($permissao===false) return '';
             //'onclick'           => $nome[2]
@@ -1436,31 +1436,31 @@ class Visual
             if ($tipo==='Destaque0') {
                 $cor    = 'danger';
                 $icone  = 'star-empty';
-            }else if ($tipo==='Destaque1') {
+            } else if ($tipo==='Destaque1') {
                 $cor    = 'success';
                 $icone  = 'star';                
-            }else if ($tipo==='Status0') {
+            } else if ($tipo==='Status0') {
                 $cor    = 'danger';
                 $icone  = 'thumbs-down';                
-            }else if ($tipo==='Status1') {
+            } else if ($tipo==='Status1') {
                 $cor    = 'success';
                 $icone  = 'thumbs-up';                
-            }else if ($tipo==='Email') {
+            } else if ($tipo==='Email') {
                 $cor    = 'primary';
                 $icone  = 'envelope';                
-            }else if ($tipo==='Baixar') {
+            } else if ($tipo==='Baixar') {
                 $cor    = 'inverse" target="_BLANK';
                 $icone  = 'download';                
-            }else if ($tipo==='Visualizar') {
+            } else if ($tipo==='Visualizar') {
                 $cor    = 'success';
                 $icone  = 'eye';                
-            }else if ($tipo==='Zoom') {
+            } else if ($tipo==='Zoom') {
                 $cor    = 'info';
                 $icone  = 'zoom-in';                
-            }else if ($tipo==='Editar') {
+            } else if ($tipo==='Editar') {
                 $cor    = 'warning" data-confirma="Deseja Realmente Editar?';
                 $icone  = 'pencil';                
-            }else/* if ($tipo==='Deletar')*/{
+            } else/* if ($tipo==='Deletar')*/{
                 $cor    = 'danger" data-confirma="'.$nome[2];
                 $icone  = 'trash';                
             }
@@ -1968,7 +1968,7 @@ class Visual
                 $this->json['Redirect'] = Array();
             }
             $this->json['Redirect'][] = $array;
-        }else if ($tipo=='Popup') {
+        } else if ($tipo=='Popup') {
             if (!isset($this->json['Popup'])) {
                 $this->json['Popup'] = Array();
             }
@@ -2001,7 +2001,7 @@ class Visual
                 "botoes" => $botoes,
                 "html" => $array['html']
             );
-        }elseif ($tipo=='Mensagens') {
+        } elseif ($tipo=='Mensagens') {
             if (!isset($this->json['Mensagens'])) {
                 $this->json['Mensagens'] = Array();
             }
@@ -2010,7 +2010,7 @@ class Visual
                 "mgs_principal" => $array['mgs_principal'],
                 "mgs_secundaria" => $array['mgs_secundaria']
             );
-        }elseif ($tipo=='Conteudo') {
+        } elseif ($tipo=='Conteudo') {
             if (!isset($this->json['Conteudo'])) {
                 $this->json['Conteudo'] = Array();
             }
@@ -2019,7 +2019,7 @@ class Visual
                 "js" => $array['js'],
                 "html" => $array['html']
             );
-        }elseif ($tipo=='Select') {
+        } elseif ($tipo=='Select') {
             if (!isset($this->json['Select'])) {
                 $this->json['Select'] = Array();
             }
@@ -2027,7 +2027,7 @@ class Visual
                 "id" => $array['id'],
                 "valores" => $array['valores']
             );
-        }elseif ($tipo=='Javascript') {
+        } elseif ($tipo=='Javascript') {
             if (!isset($this->json['Javascript'])) {
                 $this->json['Javascript'] = Array();
                 if (is_array($array)) {
@@ -2040,12 +2040,12 @@ class Visual
             } else {
                 $this->json['Javascript'][] = $array;
             }
-        }elseif ($tipo=='JavascriptInterno') {
+        } elseif ($tipo=='JavascriptInterno') {
             if (!isset($this->json['JavascriptInterno'])) {
                 $this->json['JavascriptInterno'] = Array();
             }
             $this->json['JavascriptInterno'][] = $array;
-        }elseif ($tipo=='Css') {
+        } elseif ($tipo=='Css') {
             if (!isset($this->json['Css'])) {
                 $this->json['Css'] = Array();
                 if (is_array($array)) {
@@ -2257,7 +2257,7 @@ class Visual
         $antecipa = $nivel;
         $nomeantes = '';
         $j = 0;
-        while($antecipa>0) {
+        while ($antecipa>0) {
             --$antecipa;
             $nomeantes = $nomeantes.'— ';
         }
@@ -2316,7 +2316,7 @@ class Visual
         $antecipa = $nivel;
         $nomeantes = '';
         $j = 0;
-        while($antecipa>0) {
+        while ($antecipa>0) {
             --$antecipa;
             $nomeantes = $nomeantes.'— ';
         }
@@ -2355,7 +2355,7 @@ class Visual
         $antecipa = $nivel;
         $nomeantes = '';
         $j = 0;
-        while($antecipa>0) {
+        while ($antecipa>0) {
             --$antecipa;
             $nomeantes = $nomeantes.'— ';
         }

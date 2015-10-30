@@ -39,7 +39,7 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
         $link   = 'usuario_veiculo/Equipamento/Equipamentos';
-        if($true===true) {
+        if ($true===true) {
             $_Controle->Tema_Endereco(__('Equipamentos'),$link);
         } else {
             $_Controle->Tema_Endereco(__('Equipamentos'));
@@ -52,7 +52,7 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
         $link   = 'usuario_veiculo/Equipamento/Marcas';
         // Chama Equipamento
         self::Endereco_Equipamento(true);
-        if($true===true) {
+        if ($true===true) {
             $_Controle->Tema_Endereco($titulo,$link);
         } else {
             $_Controle->Tema_Endereco($titulo);
@@ -65,7 +65,7 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
         $link   = 'usuario_veiculo/Equipamento/Modelos';
         // Chama Equipamento
         self::Endereco_Equipamento_Marca(true);
-        if($true===true) {
+        if ($true===true) {
             $_Controle->Tema_Endereco($titulo,$link);
         } else {
             $_Controle->Tema_Endereco($titulo);
@@ -95,8 +95,8 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
             )
         )));
         $equipamentos = $this->_Modelo->db->Sql_Select('Usuario_Veiculo_Equipamento');
-        if($equipamentos!==false && !empty($equipamentos)) {
-            if(is_object($equipamentos)) $equipamentos = Array(0=>$equipamentos);
+        if ($equipamentos!==false && !empty($equipamentos)) {
+            if (is_object($equipamentos)) $equipamentos = Array(0=>$equipamentos);
             reset($equipamentos);
             foreach ($equipamentos as $indice=>&$valor) {
                 //$tabela['#Id'][$i]       = '#'.$valor->id;
@@ -104,14 +104,14 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
                 $tabela[CFG_TXT_EQUIPAMENTOS_NOME][$i]  =   $valor->nome;
                 $tabela['Validade'][$i]                 =   $valor->validade;
                 $tabela['Observações'][$i]              =   $valor->obs;
-                if(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_veiculo_Status')) {
+                if (\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_veiculo_Status')) {
                     $tabela['Status'][$i]     =  '<span class="statusEquipamentos'.$valor->id.'">'.self::labelEquipamentos($valor).'</span>';
                 }
                 $tabela['Funções'][$i]                  =   $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Equipamento'        ,'usuario_veiculo/Equipamento/Equipamentos_Edit/'.$valor->id.'/'    ,'')).
                                                         $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Equipamento'       ,'usuario_veiculo/Equipamento/Equipamentos_Del/'.$valor->id.'/'     ,'Deseja realmente deletar esse Equipamento ?'));
                 ++$i;
             }
-            if($export!==false) {
+            if ($export!==false) {
                 self::Export_Todos($export,$tabela, 'Equipamentos');
             } else {
                 $this->_Visual->Show_Tabela_DataTable($tabela);
@@ -132,45 +132,45 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
      * @param type $tema
      */
     static function Campos_Deletar(&$campos) {
-        if(!\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_veiculo_Status')) {
+        if (!\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_veiculo_Status')) {
             self::DAO_Campos_Retira($campos, 'status');
         }
         
         
-        if(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Fornecedor')===false) {
+        if (\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Fornecedor')===false) {
             self::DAO_Campos_Retira($campos,'fornecedor');
         }
         
-        if(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_veiculo_Equipamento_Marca')===false) {
+        if (\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_veiculo_Equipamento_Marca')===false) {
             self::DAO_Campos_Retira($campos,'marca');
             self::DAO_Campos_Retira($campos,'modelo');
         }
     }
     public function StatusEquipamentos($id=false) {
         
-        if($id===false) {
+        if ($id===false) {
             return false;
         }
         $id = (int) $id;
         $resultado = $this->_Modelo->db->Sql_Select('Usuario_Veiculo_Equipamento', 'id = '.$id,1);
         
-        if($resultado===false || !is_object($resultado)) {
+        if ($resultado===false || !is_object($resultado)) {
             return false;
         }
         
-        if($resultado->status=='0') { // de aprovada para Aprovada em Execução
+        if ($resultado->status=='0') { // de aprovada para Aprovada em Execução
             $resultado->status='1';
-        }else if($resultado->status=='1') { // de Aprovada em Execução para Finalizada
+        } else if ($resultado->status=='1') { // de Aprovada em Execução para Finalizada
             $resultado->status='2';
 
-        }else if($resultado->status=='2') { // de Finalizada em Execução para Aprovada em Execução
+        } else if ($resultado->status=='2') { // de Finalizada em Execução para Aprovada em Execução
             $resultado->status='0';
         }
         $sucesso = $this->_Modelo->db->Sql_Update($resultado);
-        if($sucesso) {
-            if($resultado->status=='0') {
+        if ($sucesso) {
+            if ($resultado->status=='0') {
                 $texto = __('Ocupada');
-            }else if($resultado->status=='1') {
+            } else if ($resultado->status=='1') {
                 $texto = __('Livre');
             } else {
                 $texto = __('Em uso');
@@ -197,11 +197,11 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
     public static function labelEquipamentos($objeto,$link=true) {
         $status = $objeto->status;
         $id = $objeto->id;
-        if($status=='0') {
+        if ($status=='0') {
             $tipo = 'warning';
             $nometipo = __('Ocupada');
         }
-        else if($status=='1') {
+        else if ($status=='1') {
             $tipo = 'success';
             $nometipo = __('Livre');
         }
@@ -210,7 +210,7 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
             $nometipo = __('Em uso');
         }
         $html = '<span class="badge badge-'.$tipo.'">'.$nometipo.'</span>';
-        if($link===true) {
+        if ($link===true) {
             $html = '<a href="'.URL_PATH.'usuario_veiculo/Equipamento/StatusEquipamentos/'.$id.'" border="1" class="lajax explicar-titulo" title="'.$nometipo.'" data-acao="" data-confirma="Deseja Realmente alterar o Status?">'.$html.'</a>';
         }
         return $html;
@@ -308,7 +308,7 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
         $equipamento = $this->_Modelo->db->Sql_Select('Usuario_Veiculo_Equipamento', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($equipamento);
         // Mensagem
-    	if($sucesso===true) {
+    	if ($sucesso===true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
@@ -350,8 +350,8 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
             )
         )));
         $marcas = $this->_Modelo->db->Sql_Select('Usuario_Veiculo_Equipamento_Marca');
-        if($marcas!==false && !empty($marcas)) {
-            if(is_object($marcas)) $marcas = Array(0=>$marcas);
+        if ($marcas!==false && !empty($marcas)) {
+            if (is_object($marcas)) $marcas = Array(0=>$marcas);
             reset($marcas);
             foreach ($marcas as $indice=>&$valor) {
                 //$tabela['#Id'][$i]       = '#'.$valor->id;
@@ -360,7 +360,7 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
                                            $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Marca'       ,'usuario_veiculo/Equipamento/Marcas_Del/'.$valor->id.'/'     ,'Deseja realmente deletar essa Marca ?'));
                 ++$i;
             }
-            if($export!==false) {
+            if ($export!==false) {
                 self::Export_Todos($export,$tabela, 'Equipamentos - Marcas');
             } else {
                 $this->_Visual->Show_Tabela_DataTable($tabela);
@@ -456,7 +456,7 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
         $marca = $this->_Modelo->db->Sql_Select('Usuario_Veiculo_Equipamento_Marca', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($marca);
         // Mensagem
-    	if($sucesso===true) {
+    	if ($sucesso===true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletada'),
@@ -498,8 +498,8 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
             )
         )));
         $modelos = $this->_Modelo->db->Sql_Select('Usuario_Veiculo_Equipamento_Modelo');
-        if($modelos!==false && !empty($modelos)) {
-            if(is_object($modelos)) $modelos = Array(0=>$modelos);
+        if ($modelos!==false && !empty($modelos)) {
+            if (is_object($modelos)) $modelos = Array(0=>$modelos);
             reset($modelos);
             foreach ($modelos as $indice=>&$valor) {
                 //$tabela['#Id'][$i]     = '#'.$valor->id;
@@ -509,7 +509,7 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
                                            $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Modelo'       ,'usuario_veiculo/Equipamento/Modelos_Del/'.$valor->id.'/'     ,'Deseja realmente deletar essa Modelo ?'));
                 ++$i;
             }
-            if($export!==false) {
+            if ($export!==false) {
                 self::Export_Todos($export,$tabela, 'Equipamentos - Modelos');
             } else {
                 $this->_Visual->Show_Tabela_DataTable($tabela);
@@ -605,7 +605,7 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
         $Modelo = $this->_Modelo->db->Sql_Select('Usuario_Veiculo_Equipamento_Modelo', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($Modelo);
         // Mensagem
-    	if($sucesso===true) {
+    	if ($sucesso===true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),

@@ -47,7 +47,7 @@ class _Sistema_FilialControle extends _Sistema_Controle
         $titulo = __('Listagem de Filiais').' (<span id="DataTable_Contador">0</span>)';
         if ($tipobloco==='Unico') {
             $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',10,Array("link"=>"_Sistema/Filial/Filiais_Add",'icon'=>'add','nome'=>__('Adicionar Filial')));
-        }else if ($tipobloco==='Maior') {
+        } else if ($tipobloco==='Maior') {
             $this->_Visual->Bloco_Maior_CriaJanela($titulo,'',10,Array("link"=>"_Sistema/Filial/Filiais_Add",'icon'=>'add','nome'=>__('Adicionar Filial')));
         } else {
             $this->_Visual->Bloco_Menor_CriaJanela($titulo,'',10,Array("link"=>"_Sistema/Filial/Filiais_Add",'icon'=>'add','nome'=>__('Adicionar Filial')));

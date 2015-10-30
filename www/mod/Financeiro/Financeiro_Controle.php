@@ -94,7 +94,7 @@ class Financeiro_Controle extends \Framework\App\Controle
         $tempo = new \Framework\App\Tempo('Mov Interna');
         if (is_array($where)) {
             $where['pago']='0';
-        }else if ($where!=='') {
+        } else if ($where!=='') {
             $where .= ' AND pago = 0';
         } else {
             $where = 'pago = 0';
@@ -181,7 +181,7 @@ class Financeiro_Controle extends \Framework\App\Controle
     protected function Movimentacao_Interna_Pago($where=Array(),$tipo='Mini',$total=false,$endereco='') {
         if (is_array($where)) {
             $where['pago']='1';
-        }else if ($where!=='') {
+        } else if ($where!=='') {
             $where .= ' AND {sigla}pago = 1';
         } else {
             $where = '{sigla}pago = 1';
@@ -250,7 +250,7 @@ class Financeiro_Controle extends \Framework\App\Controle
     protected function Movimentacao_Interna_Grafico($titulo='Gráfico', $where=Array(),$tipo='mes',$total=false,$endereco='') {
         if (is_array($where)) {
             $where['pago']='0';
-        }else if ($where!=='') {
+        } else if ($where!=='') {
             $where .= ' AND pago = 0';
         } else {
             $where = 'pago = 0';
@@ -275,7 +275,7 @@ class Financeiro_Controle extends \Framework\App\Controle
                 10=>'0.0',
                 11=>'0.0',
             );
-        }else if ($tipo==='semana') {
+        } else if ($tipo==='semana') {
             $semana = Array(
                 0=>'0.0',
                 1=>'0.0',
@@ -338,7 +338,7 @@ class Financeiro_Controle extends \Framework\App\Controle
                     
                     if ($tipo==='mes') {
                         $mes[(Framework\App\Sistema_Funcoes::Get_Info_Data('mes',$valor->dt_vencimento)-1)] += \Framework\App\Sistema_Funcoes::Tranf_Real_Float($valor->valor);
-                    }else if ($tipo==='semana') {
+                    } else if ($tipo==='semana') {
                         $semana[Framework\App\Sistema_Funcoes::Get_Info_Data('semana',$valor->dt_vencimento)] += \Framework\App\Sistema_Funcoes::Tranf_Real_Float($valor->valor);
                     } else {
                         $dia[(Framework\App\Sistema_Funcoes::Get_Info_Data('dia',$valor->dt_vencimento)-1)] += \Framework\App\Sistema_Funcoes::Tranf_Real_Float($valor->valor);
@@ -369,7 +369,7 @@ class Financeiro_Controle extends \Framework\App\Controle
                 array('Nov', $mes[10]),
                 array('Dez', $mes[11]),
             );
-        }else if ($tipo==='semana') {;
+        } else if ($tipo==='semana') {;
             $dados = array(
                 array('Dom', $semana[0]),
                 array('Seg', $semana[1]),
@@ -398,7 +398,7 @@ class Financeiro_Controle extends \Framework\App\Controle
     protected function Movimentacao_Interna_Grafico_Pago($titulo='Gráfico', $where=Array(),$tipo='Mini',$total=false,$endereco='') {
         if (is_array($where)) {
             $where['pago']='1';
-        }else if ($where!=='') {
+        } else if ($where!=='') {
             $where .= ' AND {sigla}pago = 1';
         } else {
             $where = '{sigla}pago = 1';
@@ -426,7 +426,7 @@ class Financeiro_Controle extends \Framework\App\Controle
                 10=>'0.0',
                 11=>'0.0',
             );
-        }else if ($tipo==='semana') {
+        } else if ($tipo==='semana') {
             $semana = Array(
                 0=>'0.0',
                 1=>'0.0',
@@ -487,7 +487,7 @@ class Financeiro_Controle extends \Framework\App\Controle
                 if (class_exists($chamar)) {
                     if ($tipo==='mes') {
                         $mes[(Framework\App\Sistema_Funcoes::Get_Info_Data('mes',$valor->dt_vencimento)-1)] += \Framework\App\Sistema_Funcoes::Tranf_Real_Float($valor->valor);
-                    }else if ($tipo==='semana') {
+                    } else if ($tipo==='semana') {
                         $semana[Framework\App\Sistema_Funcoes::Get_Info_Data('semana',$valor->dt_vencimento)] += \Framework\App\Sistema_Funcoes::Tranf_Real_Float($valor->valor);
                     } else {
                         $dia[(Framework\App\Sistema_Funcoes::Get_Info_Data('dia',$valor->dt_vencimento)-1)] += \Framework\App\Sistema_Funcoes::Tranf_Real_Float($valor->valor);
@@ -518,7 +518,7 @@ class Financeiro_Controle extends \Framework\App\Controle
                 array('Nov', $mes[10]),
                 array('Dez', $mes[11]),
             );
-        }else if ($tipo==='semana') {;
+        } else if ($tipo==='semana') {;
             $dados = array(
                 array('Dom', $semana[0]),
                 array('Seg', $semana[1]),

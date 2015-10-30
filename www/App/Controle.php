@@ -152,7 +152,7 @@ abstract class Controle
         } else {
             $ultimo = (int) $ultimo;
             $i = 0;
-            while($i<$ultimo) {
+            while ($i<$ultimo) {
                 $removido = array_pop($this->layoult_endereco);
                 --$ultimo;
             }
@@ -935,7 +935,7 @@ readfile($link);*/
             if (isset($value['edicao']['Nome']) && isset($objeto->$valor)) {
                 if ($objeto->$valor2!='') {
                     $html .= '<p style="clear:left;"><label style="width:120px; float:left;"><b>'.$value['edicao']['Nome'].':</b></label> '.$objeto->$valor2.'</p>';
-                }else if ($objeto->$valor!='') {
+                } else if ($objeto->$valor!='') {
                     $html .= '<p style="clear:left;"><label style="width:120px; float:left;"><b>'.$value['edicao']['Nome'].':</b></label> '.$objeto->$valor.'</p>';
                 }
             }
@@ -1049,7 +1049,7 @@ readfile($link);*/
                         $selecionado,
                         $escondido
                     );
-                }else if ($tabelalinkada['formtipo']==='SelectMultiplo') {
+                } else if ($tabelalinkada['formtipo']==='SelectMultiplo') {
                     
                     // Carrega Informação que aparecera na tela quando nada for escrito
                     if (isset($tabelalinkada['SelectMultiplo']['infonulo']) && $tabelalinkada['SelectMultiplo']['infonulo']!='' && $tabelalinkada['SelectMultiplo']['infonulo']!==false) {
@@ -1133,7 +1133,7 @@ readfile($link);*/
                             self::Gerador_Formulario($colunas_temporaria, $form,false);
                         }
                     }
-                }else if ($tabelalinkada['formtipo']==='ExternoInsercao') {
+                } else if ($tabelalinkada['formtipo']==='ExternoInsercao') {
                     
                     // Carrega Informação que aparecera na tela quando nada for escrito
                     if (isset($tabelalinkada['ExternoInsercao']['infonulo']) && $tabelalinkada['ExternoInsercao']['infonulo']!='' && $tabelalinkada['ExternoInsercao']['infonulo']!==false) {
@@ -1240,7 +1240,7 @@ readfile($link);*/
                         }
                     }
                 }
-            }else if ($valor['mysql_estrangeira']!==false && isset($valor['edicao'])) {
+            } else if ($valor['mysql_estrangeira']!==false && isset($valor['edicao'])) {
                 
                 // Grava Extrangeira
                 $extrangeiras[$valor['mysql_titulo']] = $valor['edicao']['valor_padrao'];
@@ -1271,7 +1271,7 @@ readfile($link);*/
                 // Se houver dependencias no formulario, vai ter o form_change diferente de false
                 if (isset($valor['form_change']) && $valor['form_change']!='' && $valor['form_change']!==false) {
                     $change = 'Modelo_Ajax_Chamar(\'_Sistema/Recurso/Select_Recarrega_Extrangeira/'.$valor['form_change'].'/'.$valor['mysql_titulo'].'/\'+this.value,\'\',\'get\',true)';
-                }else if (isset($valor['edicao']['change'])) {
+                } else if (isset($valor['edicao']['change'])) {
                     $change = $valor['edicao']['change'];
                 } else {
                     $change = '';
@@ -1356,7 +1356,7 @@ readfile($link);*/
                 // Fecha Select
                 $html .= $form->Select_Fim();
                 
-            }else 
+            } else 
             // Caso Contrario e Possua Opcao Edicao
             if (isset($valor['edicao'])) {
                 
@@ -1379,7 +1379,7 @@ readfile($link);*/
                         $linkextra,
                         $escondido
                     ); 
-                }else if ($valor['edicao']['formtipo']=='input') {
+                } else if ($valor['edicao']['formtipo']=='input') {
                     // Change para formularios
                     if (isset($valor['edicao']['change']) && $valor['edicao']['change']!==false & $valor['edicao']['change']!='') {
                         $change = $valor['edicao']['change'];
@@ -1418,7 +1418,7 @@ readfile($link);*/
                         $escondido
                     ); 
                 
-                }else if ($valor['edicao']['formtipo']=='upload') {
+                } else if ($valor['edicao']['formtipo']=='upload') {
                     // Verifica se tem validacao js
                     if (isset($valor['edicao']['validar']) && $valor['edicao']['validar']!==false & $valor['edicao']['validar']!='') {
                         $validar = $valor['edicao']['validar'];
@@ -1438,7 +1438,7 @@ readfile($link);*/
                         $validar,
                         $escondido
                     ); 
-                }elseif ($valor['edicao']['formtipo']=='select') {
+                } elseif ($valor['edicao']['formtipo']=='select') {
                     if (isset($valor['edicao']['change'])) {
                         $change = $valor['edicao']['change'];
                     }
@@ -1532,7 +1532,7 @@ readfile($link);*/
             )
         ) {
             return 'apagado';
-        }else if (((isset($coluna['edicao']) && isset($coluna['edicao']['form_escondido']) && $coluna['edicao']['form_escondido']=='apagar') || (isset($coluna['TabelaLinkada']) && isset($coluna['TabelaLinkada'][$coluna['TabelaLinkada']['formtipo']]['form_escondido']) && $coluna['TabelaLinkada'][$coluna['TabelaLinkada']['formtipo']]['form_escondido']=='apagar'))) {
+        } else if (((isset($coluna['edicao']) && isset($coluna['edicao']['form_escondido']) && $coluna['edicao']['form_escondido']=='apagar') || (isset($coluna['TabelaLinkada']) && isset($coluna['TabelaLinkada'][$coluna['TabelaLinkada']['formtipo']]['form_escondido']) && $coluna['TabelaLinkada'][$coluna['TabelaLinkada']['formtipo']]['form_escondido']=='apagar'))) {
             return 'apagar';
         }
         return false;
@@ -1566,7 +1566,7 @@ readfile($link);*/
         // Define Popup
         if (isset($_GET['formselect']) && $_GET['formselect']!='') {
             $bloco='Popup';
-        }else if (isset($_GET['popup']) && $_GET['popup']!='') {
+        } else if (isset($_GET['popup']) && $_GET['popup']!='') {
             $bloco='Popup';
         }
         
@@ -1575,7 +1575,7 @@ readfile($link);*/
             if ($bloco==='Popup' && LAYOULT_IMPRIMIR!=='AJAX') {
                 $bloco='All';
                 define('LAYOULT_POPUP', false);
-            }else if ($bloco==='Popup') {
+            } else if ($bloco==='Popup') {
                 define('LAYOULT_POPUP', true);
             } else {
                 define('LAYOULT_POPUP', false);
@@ -1641,7 +1641,7 @@ readfile($link);*/
         // Carrega formulario
         if ($bloco==='html') {
             return $form->retorna_form($formbt);
-        }else if ($bloco==='Popup' || (LAYOULT_POPUP===TRUE && LAYOULT_IMPRIMIR==='AJAX')) {
+        } else if ($bloco==='Popup' || (LAYOULT_POPUP===TRUE && LAYOULT_IMPRIMIR==='AJAX')) {
             $formulario = $form->retorna_form();
             $conteudo = array(
                 'id' => 'popup',
@@ -1665,9 +1665,9 @@ readfile($link);*/
             // Mostra Conteudo
             if ($bloco==='All') {
                 $Visual->Bloco_Unico_CriaJanela($titulo2,'',0,'Sierra.Control_Form_Tratar($(\'#'.$formid.'\')[0]);');
-            }else if ($bloco==='right') {
+            } else if ($bloco==='right') {
                 $Visual->Bloco_Menor_CriaJanela($titulo2,'',0,'Sierra.Control_Form_Tratar($(\'#'.$formid.'\')[0]);');
-            }else if ($bloco==='left') {
+            } else if ($bloco==='left') {
                 $Visual->Bloco_Maior_CriaJanela($titulo2,'',0,'Sierra.Control_Form_Tratar($(\'#'.$formid.'\')[0]);');
             }
         }
@@ -1833,7 +1833,7 @@ readfile($link);*/
         if ($tipo=='add') {
             $sucesso        = $this->_Modelo->db->Sql_Insert($objeto);
             $identificador  = $this->_Modelo->db->ultimo_id();
-        }else if ($tipo=='edit') {
+        } else if ($tipo=='edit') {
             $identificador  = $objeto->$primaria[0];
             $sucesso        = $this->_Modelo->db->Sql_Update($objeto);
         }
@@ -1904,7 +1904,7 @@ readfile($link);*/
                             unset($objeto2);
                         }
                     }
-                }else
+                } else
                 // Verifica se ta liberado e faz os calculos necessarios
                 if ($tabelalinkada['formtipo']=='BoleanoMultiplo') {
                     // Pega os posts
@@ -2035,7 +2035,7 @@ readfile($link);*/
                 if (isset($_GET[$ext_campo])) {
                     $mudar = \Framework\App\Conexao::anti_injection($_GET[$ext_campo]);
                     $condicao = preg_replace('/{(.+)}/U', $mudar, $condicao);
-                }else if (isset($_POST[$ext_campo])) {
+                } else if (isset($_POST[$ext_campo])) {
                     $mudar = \Framework\App\Conexao::anti_injection($_POST[$ext_campo]);
                     $condicao = preg_replace('/{(.+)}/U', $mudar, $condicao);
                 } else {
@@ -2181,23 +2181,23 @@ readfile($link);*/
                     if ($campomysql===false || $valor['mysql_titulo']==$campomysql) {
                         if ($valor['edicao']['form_escondido']                                   ===true) {
                             $valor['edicao']['form_escondido']                              = 'apagar'; // Pode Apagar
-                        }else if ($valor['edicao']['form_escondido']                             =='apagar') {
+                        } else if ($valor['edicao']['form_escondido']                             =='apagar') {
                             $valor['edicao']['form_escondido']                              = true; // Verdade, esta Apagado
                         }
                     }
-                }else if (isset($valor['TabelaLinkada']['SelectMultiplo']['form_escondido'])) {
+                } else if (isset($valor['TabelaLinkada']['SelectMultiplo']['form_escondido'])) {
                     if ($campomysql===false || $valor['TabelaLinkada']['Nome']==$campomysql) {
                         if ($valor['TabelaLinkada']['SelectMultiplo']['form_escondido']          ===true) {
                             $valor['TabelaLinkada']['SelectMultiplo']['form_escondido']     = 'apagar'; // Pode Apagar
-                        }else if ($valor['TabelaLinkada']['SelectMultiplo']['form_escondido']    =='apagar') {
+                        } else if ($valor['TabelaLinkada']['SelectMultiplo']['form_escondido']    =='apagar') {
                             $valor['TabelaLinkada']['SelectMultiplo']['form_escondido']     = true; // Verdade, esta Apagado
                         }
                     }
-                }else if (isset($valor['TabelaLinkada']['BoleanoMultiplo']['form_escondido'])) {  
+                } else if (isset($valor['TabelaLinkada']['BoleanoMultiplo']['form_escondido'])) {  
                     if ($campomysql===false || $valor['TabelaLinkada']['Nome']==$campomysql) {
                         if ($valor['TabelaLinkada']['BoleanoMultiplo']['form_escondido']         ===true) {
                             $valor['TabelaLinkada']['BoleanoMultiplo']['form_escondido']    = 'apagar'; // Pode Apagar
-                        }else if ($valor['TabelaLinkada']['BoleanoMultiplo']['form_escondido']   =='apagar') {
+                        } else if ($valor['TabelaLinkada']['BoleanoMultiplo']['form_escondido']   =='apagar') {
                             $valor['TabelaLinkada']['BoleanoMultiplo']['form_escondido']    = true; // Verdade, esta Apagado
                         }
                     }
@@ -2227,11 +2227,11 @@ readfile($link);*/
                     if ($campomysql===false || $valor['mysql_titulo']==$campomysql) {
                         $valor['edicao']['form_escondido']                              = true; // Verdade, esta Apagado
                     }
-                }else if (isset($valor['TabelaLinkada']['SelectMultiplo']['form_escondido'])) {
+                } else if (isset($valor['TabelaLinkada']['SelectMultiplo']['form_escondido'])) {
                     if ($campomysql===false || $valor['TabelaLinkada']['Nome']==$campomysql) {
                         $valor['TabelaLinkada']['SelectMultiplo']['form_escondido']     = true; // Verdade, esta Apagado
                     }
-                }else if (isset($valor['TabelaLinkada']['BoleanoMultiplo']['form_escondido'])) {  
+                } else if (isset($valor['TabelaLinkada']['BoleanoMultiplo']['form_escondido'])) {  
                     if ($campomysql===false || $valor['TabelaLinkada']['Nome']==$campomysql) {
                         $valor['TabelaLinkada']['BoleanoMultiplo']['form_escondido']    = true; // Verdade, esta Apagado
                     }
@@ -2404,7 +2404,7 @@ readfile($link);*/
                 if ($indice==$campomysql) {
                     if ($resultado!==false) {
                         $objeto->$indice = $resultado;
-                    }else if (isset($_POST[$indice])) {
+                    } else if (isset($_POST[$indice])) {
                         $objeto->$indice = \Framework\App\Conexao::anti_injection($_POST[$indice]);
                     }
                 }
@@ -2424,7 +2424,7 @@ readfile($link);*/
         // TRATA ID
         if (is_int($id)) {
             if ($id<=0) $id = false;
-        }else if (is_string($id)) {
+        } else if (is_string($id)) {
             if ($id=='') $id = false;
         } else {
             $id = false;
@@ -2434,7 +2434,7 @@ readfile($link);*/
         // TRATA VALORES
         if (is_object($valores)) {
             $valor_tipo = 2;
-        }else if (is_array($valores)) {
+        } else if (is_array($valores)) {
             $valor_tipo = 1;
         } else {
             $valor_tipo = 0;
@@ -2446,7 +2446,7 @@ readfile($link);*/
                 // TABELA LINKADA
                 if (isset($valor["TabelaLinkada"]) && $id!==false) {
                     $valor['TabelaLinkada']['valor_padrao'] = $id;
-                }else
+                } else
                 // EDICAO PADRAO 
                 if (isset($valor['edicao'])) {
                     // Valores são Objetos
@@ -2459,7 +2459,7 @@ readfile($link);*/
                             }
                             if ($valor['edicao']['valor_padrao']===false) {
                                 self::DAO_Campos_AlternadosDesabilitados($objeto);
-                            }else
+                            } else
                             if ((string) $valor['edicao']['valor_padrao']!== (string) $valores->$valor['mysql_titulo']) {
                                 self::DAO_Campos_TrocaAlternados($objeto);
                             }
@@ -2467,7 +2467,7 @@ readfile($link);*/
                         
                         // Atualiza Valor
                         $valor['edicao']['valor_padrao'] = $valores->$valor['mysql_titulo'];
-                    }else
+                    } else
                     // Valores são Arrays
                     if ($valor_tipo===1) {
                         
@@ -2478,7 +2478,7 @@ readfile($link);*/
                             }
                             if ($valor['edicao']['valor_padrao']===false) {
                                 self::DAO_Campos_AlternadosDesabilitados($objeto);
-                            }else
+                            } else
                             if ((string) $valor['edicao']['valor_padrao']!== (string) $valores[$valor['mysql_titulo']]) {
                                 self::DAO_Campos_TrocaAlternados($objeto);
                             }
@@ -2486,20 +2486,20 @@ readfile($link);*/
                         
                         // Atualiza Valor
                         $valor['edicao']['valor_padrao'] = $valores[$valor['mysql_titulo']]; 
-                    }else if (isset($_POST[$valor['mysql_titulo']]))
+                    } else if (isset($_POST[$valor['mysql_titulo']]))
                     // Caso Contrario Pega do POST
                     {
                         
                         // Atualiza Valor
                         $valor['edicao']['valor_padrao'] = \Framework\App\Conexao::anti_injection($_POST[$valor['mysql_titulo']]);
-                    }else
+                    } else
                     // Caso Contrario Pega do POST
                     {
                         
                         // Atualiza Valor
                         $valor['edicao']['valor_padrao'] = '';
                     }
-                }else
+                } else
                 // Para funcionar com modulos da versao 1.0
                 if (isset($valor['valor_padrao'])) {
                     // Valores são Objetos
@@ -2507,26 +2507,26 @@ readfile($link);*/
                         
                         // Atualiza Valor
                         $valor['valor_padrao'] = $valores->$valor['mysql'];
-                    }else
+                    } else
                     // Valores são Arrays
                     if ($valor_tipo===1) {
                         
                         // Atualiza Valor
                         $valor['valor_padrao'] = $valores[$valor['mysql']];
 
-                    }else if (isset($_POST[$valor['mysql']]))
+                    } else if (isset($_POST[$valor['mysql']]))
                     // Caso Contrario Pega do POST
                     {
                         // Atualiza Valor
                         $valor['valor_padrao'] = \Framework\App\Conexao::anti_injection($_POST[$valor['mysql']]);
-                    }else
+                    } else
                     // Caso Contrario Pega do POST
                     {
                         
                         // Atualiza Valor
                         $valor['valor_padrao'] = '';
                     }
-                }else if (isset($valor['mysql_default'])) {
+                } else if (isset($valor['mysql_default'])) {
                     $valor['valor_padrao'] = $valor['mysql_default'];
                 }
             }
@@ -2545,7 +2545,7 @@ readfile($link);*/
                 // SE for chave primaria bloqueia
                 if ($is_primary!==false && $valor_tipo===0 && isset($valores->$indice)) {
                     throw new \Exception('Foi tentado alterar um campo primário: '.$indice,6010);
-                }else if ($objeto->$indice===NULL || $objeto->$indice===false || $is_primary===false) {
+                } else if ($objeto->$indice===NULL || $objeto->$indice===false || $is_primary===false) {
                     if ($valor_tipo===2) {
 
                         // Atualiza Valor
@@ -2554,7 +2554,7 @@ readfile($link);*/
                         } else {
                             $objeto->$indice = NULL;
                         }
-                    }else if ($valor_tipo===1) {
+                    } else if ($valor_tipo===1) {
 
                         // Atualiza Valor
                         if (isset($valores[$indice])) {
@@ -2567,7 +2567,7 @@ readfile($link);*/
 
                             // Atualiza Valor
                             $objeto->$indice = \Framework\App\Conexao::anti_injection($_POST['upload_'.$indice]);
-                        }else if (isset($_POST[$indice])) {
+                        } else if (isset($_POST[$indice])) {
 
                             // Atualiza Valor
                             //if (isset($_POST[$indice])) {
@@ -2601,9 +2601,9 @@ readfile($link);*/
             foreach ($campos as $indice=>&$valor) {
                 if (((isset($valor['TabelaLinkada']) && $valor['TabelaLinkada']['Nome']==__($campomysql)) || (isset($valor['mysql_titulo']) && $valor['mysql_titulo']==$campomysql)) && $exceto==0) {
                     unset($campos[$indice]);
-                }else if (  isset($valor['TabelaLinkada']) && $valor['TabelaLinkada']['Nome']!=__($campomysql) && $exceto==1) {
+                } else if (  isset($valor['TabelaLinkada']) && $valor['TabelaLinkada']['Nome']!=__($campomysql) && $exceto==1) {
                     unset($campos[$indice]);
-                }else if (  isset($valor['mysql_titulo']) && $valor['mysql_titulo']!=$campomysql && $exceto==1) {
+                } else if (  isset($valor['mysql_titulo']) && $valor['mysql_titulo']!=$campomysql && $exceto==1) {
                     unset($campos[$indice]);
                 }
             }
@@ -2611,7 +2611,7 @@ readfile($link);*/
             foreach ($campos as $indice=>&$valor) {
                 if (isset($valor['mysql_titulo']) && trim($valor['mysql_titulo'])==trim($campomysql) && $exceto==0) {
                     unset($campos[$indice]);
-                }else if (isset($valor['mysql_titulo']) && $valor['mysql_titulo']!=$campomysql && $exceto==1) {
+                } else if (isset($valor['mysql_titulo']) && $valor['mysql_titulo']!=$campomysql && $exceto==1) {
                     unset($campos[$indice]);
                 }
             }
@@ -2767,7 +2767,7 @@ readfile($link);*/
                             $this->_Visual->menu['ativo'][] = $valor['ativo'];
                             $this->_Visual->menu['icon'][]  = $valor['icon'];
                             $this->_Visual->menu['filhos'][]= $valor['filhos'];
-                        }else if ($modulo[0]=='_Sistema' && $modulo[1]=='Principal' && $modulo[2]=='Home') {
+                        } else if ($modulo[0]=='_Sistema' && $modulo[1]=='Principal' && $modulo[2]=='Home') {
                             $this->_Visual->menu['link'][]  = $valor['link'];
                             $this->_Visual->menu['ext'][]   = $valor['ext'];
                             $this->_Visual->menu['nome'][]  = $valor['nome'];
@@ -2776,7 +2776,7 @@ readfile($link);*/
                             $this->_Visual->menu['icon'][]  = $valor['icon'];
                             $this->_Visual->menu['filhos'][]= false;
                         }
-                    }else if ($valor['filhos']!==false) {
+                    } else if ($valor['filhos']!==false) {
                         $this->_Visual->menu['link'][]  = "#";
                         $this->_Visual->menu['ext'][]   = $valor['ext'];
                         $this->_Visual->menu['nome'][]  = $valor['nome'];

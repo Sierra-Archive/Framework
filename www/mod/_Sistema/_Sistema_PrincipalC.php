@@ -41,7 +41,7 @@ class _Sistema_PrincipalControle extends _Sistema_Controle
         if ($busca===false) {
             if (isset($_POST['busca'])) {
                 $busca = \Framework\App\Conexao::anti_injection($_POST['busca']);
-            }else
+            } else
             if (isset($_GET['busca'])) {
                 $busca = \Framework\App\Conexao::anti_injection($_GET['busca']);
             }

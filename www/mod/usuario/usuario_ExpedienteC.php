@@ -293,10 +293,10 @@ class usuario_ExpedienteControle extends usuario_Controle
         if ($tipobloco==='Unico') {
             $Registro->_Visual->Blocar($html);
             $Registro->_Visual->Bloco_Unico_CriaJanela($titulo,'',100,Array("link"=>"usuario/Expediente/Expedientes_Add",'icon'=>'add','nome'=>__('Adicionar Expediente')));
-        }else if ($tipobloco==='Maior') {
+        } else if ($tipobloco==='Maior') {
             $Registro->_Visual->Blocar($html);
             $Registro->_Visual->Bloco_Maior_CriaJanela($titulo,'',100,Array("link"=>"usuario/Expediente/Expedientes_Add",'icon'=>'add','nome'=>__('Adicionar Expediente')));
-        }else if ($tipobloco==='Menor') {
+        } else if ($tipobloco==='Menor') {
             $Registro->_Visual->Blocar($html);
             $Registro->_Visual->Bloco_Menor_CriaJanela($titulo,'',100,Array("link"=>"usuario/Expediente/Expedientes_Add",'icon'=>'add','nome'=>__('Adicionar Expediente')));
         } else {
@@ -340,10 +340,10 @@ class usuario_ExpedienteControle extends usuario_Controle
         if ($tipobloco==='Unico') {
             $Registro->_Visual->Blocar($html);
             $Registro->_Visual->Bloco_Unico_CriaJanela($titulo,'',100);
-        }else if ($tipobloco==='Maior') {
+        } else if ($tipobloco==='Maior') {
             $Registro->_Visual->Blocar($html);
             $Registro->_Visual->Bloco_Maior_CriaJanela($titulo,'',100);
-        }else if ($tipobloco==='Menor') {
+        } else if ($tipobloco==='Menor') {
             $Registro->_Visual->Blocar($html);
             $Registro->_Visual->Bloco_Menor_CriaJanela($titulo,'',100);
         } else {
@@ -422,7 +422,7 @@ class usuario_ExpedienteControle extends usuario_Controle
                 'html'      => self::Disponivel(false, false)
             );
             $this->_Visual->Json_IncluiTipo('Conteudo',$conteudo);
-        }else if ($status==1) {
+        } else if ($status==1) {
             $expediente->status = '1';
             $sucesso =  $this->_Modelo->db->Sql_Update($expediente);
             // Recarrega DIsponiveis

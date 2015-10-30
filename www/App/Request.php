@@ -55,7 +55,7 @@ class Request
                 // mas não é ajax.
                 if ($this->_modulo =='ajax') {
                     $this->_modulo = array_shift($url);
-                }else if ($this->_modulo =='Modelo') {
+                } else if ($this->_modulo =='Modelo') {
                     // Se nao for Ajax, Remove E nao Coloca do Tipo Modelo
                     $this->_modulo = array_shift($url); 
                     $this->_url = substr($this->_url, 7);

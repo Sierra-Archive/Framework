@@ -41,17 +41,17 @@ class usuario_rede_ListarModelo extends usuario_rede_Modelo
             'indicado_por'      => $antecessor,
         );
         $registros = $this->db->Sql_Select('Usuario',$where,0,'id,nome,grupo');
-        if(is_object($registros)) $registros = Array($registros);
-        if($registros!==false) {
+        if (is_object($registros)) $registros = Array($registros);
+        if ($registros!==false) {
             foreach($registros as &$campo) {
                 $array[$i]['id'] = $campo->id;
                 $array[$i]['nome'] = $campo->nome;
                 $array[$i]['grupo'] = $campo->grupo;
-                if($nivel<2) $array[$i]['indicados'] = $this->Indicados_Retorna($campo->id, $nivel+1);
+                if ($nivel<2) $array[$i]['indicados'] = $this->Indicados_Retorna($campo->id, $nivel+1);
                 ++$i;
             }
         }
-        if($i>0)        return $array; 
+        if ($i>0)        return $array; 
         else            return 0;
     }
 }

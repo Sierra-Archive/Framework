@@ -26,33 +26,33 @@ class usuario_rede_ListarVisual extends usuario_rede_Visual
      */
     public function Show_RedeIndicadosNivel(&$array,$nivel = 1) {
         $html = '';
-        if($nivel==1) {
+        if ($nivel==1) {
             $nome = __('Primario');
             $link = '';
         }
-        else if($nivel==2) {
+        else if ($nivel==2) {
             $nome = __('Secundário');
         }
         else{
             $nome = __('Terciário');
         }
         // caso nao tenha nenhum indicado
-        if($array==0) {
+        if ($array==0) {
             $html .= '<center><b><font color="#FF0000" size="5">Infelizmente nenhum '.$nome.' encontrado.</font></b></center>';            
         }
         // caso tenha algum indicado
         else{
-            if(!empty($array)) {
+            if (!empty($array)) {
                   reset($array);
                   foreach ($array as $indice=>&$valor) {
                     $html .= '<div style="float:left; width:150px; text-align:center;">';
-                        if($nivel!=3) $html .= '<a class="lajax" href="'.URL_PATH.'usuario_rede/Listar/Carrega_Indicados/'.$array[$indice]['id'].'/'.($nivel+1).'/" data-acao="">';
+                        if ($nivel!=3) $html .= '<a class="lajax" href="'.URL_PATH.'usuario_rede/Listar/Carrega_Indicados/'.$array[$indice]['id'].'/'.($nivel+1).'/" data-acao="">';
                         $html .= '<img width="50" src="'.WEB_URL.'img/icons/nivel_cliente'.$nivel.'.jpg" alt="'.__('Nivel de Indicação').'">';
-                        if($nivel!=3) $html .= '</a>';
+                        if ($nivel!=3) $html .= '</a>';
                         $html .= '<br>';
-                        if($nivel!=3) $html .= '<a class="lajax" href="'.URL_PATH.'usuario_rede/Listar/Carrega_Indicados/'.$array[$indice]['id'].'/'.($nivel+1).'/" data-acao="">';
+                        if ($nivel!=3) $html .= '<a class="lajax" href="'.URL_PATH.'usuario_rede/Listar/Carrega_Indicados/'.$array[$indice]['id'].'/'.($nivel+1).'/" data-acao="">';
                         $html .= $array[$indice]['nome'];
-                        if($nivel!=3) $html .= '</a>';
+                        if ($nivel!=3) $html .= '</a>';
                     $html .= '</div>';
                   }
               }
@@ -83,7 +83,7 @@ class usuario_rede_ListarVisual extends usuario_rede_Visual
     public function Show_RedeIndicados(&$array) {
         $html = '';
         // caso nao tenha nenhum indicado
-        if($array==0) {
+        if ($array==0) {
             $html .= '<center><b><font color="#FF0000" size="5">Infelizmente você ainda não indicou ninguem.</font></b></center>';            
         }
         // caso tenha algum indicado
@@ -107,18 +107,18 @@ class usuario_rede_ListarVisual extends usuario_rede_Visual
         $antecipa = $nivel;
         $nomeantes = '';
         $j = 0;
-        while($antecipa>0) {
+        while ($antecipa>0) {
             --$antecipa;
             $nomeantes = $nomeantes.'— ';
         }
         
-        if($prenome=='') $prenome  = $array[$indice]['nome'];
+        if ($prenome=='') $prenome  = $array[$indice]['nome'];
         else             $prenome .= ' => ';
         
-        if(!empty($array)) {
+        if (!empty($array)) {
               reset($array);
               foreach ($array as $indice=>&$valor) {
-                /*if($nivel==0) $class = 'tbold tleft';
+                /*if ($nivel==0) $class = 'tbold tleft';
                 else          $class = 'tleft backcolor';*/
                 $class = 'tbold tleft';
                 
@@ -127,7 +127,7 @@ class usuario_rede_ListarVisual extends usuario_rede_Visual
                     array("nome" => $prenome.$array[$indice]['nome'].' <img alt="'.__('Nivel da Indicação').' width="15" src="'.WEB_URL.'img/icons/nivel_cliente'.$array[$indice]['grupo'].'.jpg">', "class" => $class),
                 ));
                 ++$i;
-                if(!empty($array[$j]['indicados'])) {
+                if (!empty($array[$j]['indicados'])) {
                     $i = $this->Show_RedeIndicados_Recursiva($array[$j]['indicados'],$tabela,$i,$nivel+1,$prenome.$array[$indice]['nome']);
                 }
                 ++$j;

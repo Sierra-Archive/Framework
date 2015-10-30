@@ -256,7 +256,7 @@ class Engenharia_UnidadeControle extends Engenharia_Controle
             $this->_Visual->Json_Info_Update('Historico', false);  
             $this->layoult_zerar = false;
             return false;
-        }else if ($unidade1<=100) {
+        } else if ($unidade1<=100) {
             $erro2 = __('Unidades Minima menor ou igual a 100');
             $mensagens = array(
                 "tipo"              => 'erro',
@@ -267,7 +267,7 @@ class Engenharia_UnidadeControle extends Engenharia_Controle
             $this->_Visual->Json_Info_Update('Historico', false);  
             $this->layoult_zerar = false;
             return false;
-        }else if ($unidade2>=3500) {
+        } else if ($unidade2>=3500) {
             $erro2 = __('Nenhum prédio é tão alto');
             $mensagens = array(
                 "tipo"              => 'erro',
@@ -319,10 +319,10 @@ class Engenharia_UnidadeControle extends Engenharia_Controle
                 );
                 $cont = 0;
                 $i = $andar_inicio;
-                while($i<=$andar_final) {
+                while ($i<=$andar_final) {
                     // Cadastra um Andar
                     $j = $apartamento_inicio;
-                    while($j<=$apartamento_final) {
+                    while ($j<=$apartamento_final) {
                         // Cadastra cada Apartamento do andar
                         // Pesquisa pra ver se ja existe
                         $Registros_cadastrado = $objeto;

@@ -144,7 +144,7 @@ class Acl{
                         $this->_Registro->_Visual->renderizar();
                         \Framework\App\Controle::Tema_Travar();
 
-                    }else
+                    } else
                     //Acabou de digitar o login
                     if (isset($_POST['sistema_esquecisenha_login'])) {
                         \Framework\App\Session::destroy(false);
@@ -245,11 +245,11 @@ class Acl{
                 $this->_Registro->_Visual = new \Framework\App\Visual();
                 $this->_Registro->_Visual->renderizar_login(/*$this->calendario,$this->config_dia,$this->config_mes,$this->config_ano,$this->config_dataixi*/);
                 \Framework\App\Controle::Tema_Travar();
-            }else
+            } else
             // CASO NAO TENHA FEITO LOGIN, E NEM PREENCHIDO O 
             if (!isset($_POST['sistema_login']) && !isset($_POST['sistema_senha']) && \Framework\App\Session::get(SESSION_ADMIN_LOG)===false && \Framework\App\Session::get(SESSION_ADMIN_SENHA)===false) {
                 $this->logado           = false;
-            }else
+            } else
             // Caso nao tenha sessao quer dizer que tem POST
             // se nao tiver sessao, verifica se o post foi acessado, caso contrario verifica se a sessao corresponde ao usuario e senha
             if (isset($_POST['sistema_login']) && isset($_POST['sistema_senha']) && (\Framework\App\Session::get(SESSION_ADMIN_LOG)===false || \Framework\App\Session::get(SESSION_ADMIN_SENHA)===false || \Framework\App\Session::get(SESSION_ADMIN_LOG)=='' || \Framework\App\Session::get(SESSION_ADMIN_SENHA)=='')) {
@@ -395,7 +395,7 @@ class Acl{
     public function Get_Config_Publico($chave,$campo='valor') {
         $array = &self::$Sis_Config_Publico;
         reset($array);
-        while(key($array)!==NULL) {
+        while (key($array)!==NULL) {
             $objeto = current($array);
             if ($objeto->chave===$chave) {
                 return $objeto->$campo;
@@ -419,7 +419,7 @@ class Acl{
     public function Get_Permissao_Nome($chave,$campo='Nome') {
         $array = &self::$Sis_Permissao;
         reset($array);
-        while(key($array)!==NULL) {
+        while (key($array)!==NULL) {
             $objeto = current($array);
             if ($objeto->chave===$chave) {
                 return $objeto->$campo;
@@ -485,7 +485,7 @@ class Acl{
         $permissoes_quepossuem = Array();
         $array = &self::$Sis_Permissao;
         reset($array);
-        while(key($array)!==NULL) {
+        while (key($array)!==NULL) {
             $objeto = current($array);
             
             // CAso nao Vazio
@@ -509,7 +509,7 @@ class Acl{
         // Percorre Verificando Permissoes
         $permissoes_registro = $this->getPermissao();
         reset($permissoes_quepossuem);
-        while(key($permissoes_quepossuem)!==NULL) {
+        while (key($permissoes_quepossuem)!==NULL) {
             $objeto = current($permissoes_quepossuem);
             if (!isset($permissoes_registro[$objeto['Perm']->chave]) || $permissoes_registro[$objeto['Perm']->chave]['valor']===false) {
                 return false;
@@ -621,11 +621,11 @@ class Acl{
             // tenta botar em grupos ja existentes
             if ($grupo->grupo=='1') {
                 $this->_db->query('UPDATE '.MYSQL_USUARIOS.' SET grupo='.CFG_TEC_IDADMINDEUS.' WHERE grupo='.$grupo->grupo,true,false);
-            }else if ($grupo->grupo=='2') {
+            } else if ($grupo->grupo=='2') {
                 $this->_db->query('UPDATE '.MYSQL_USUARIOS.' SET grupo='.CFG_TEC_IDADMIN.' WHERE grupo='.$grupo->grupo,true,false);
-            }else if ($grupo->grupo=='4' || $grupo->grupo=='3') {
+            } else if ($grupo->grupo=='4' || $grupo->grupo=='3') {
                 $this->_db->query('UPDATE '.MYSQL_USUARIOS.' SET grupo='.CFG_TEC_IDCLIENTE.' WHERE grupo='.$grupo->grupo,true,false);
-            }else if ($grupo->grupo=='5') {
+            } else if ($grupo->grupo=='5') {
                 $this->_db->query('UPDATE '.MYSQL_USUARIOS.' SET grupo='.CFG_TEC_IDFUNCIONARIO.' WHERE grupo='.$grupo->grupo,true,false);
             }
         }
@@ -836,7 +836,7 @@ class Acl{
         
         // #update Nao deixar que os logins configurados cmo nao login, façam login
         // Procura Resultado
-        while($this->logado_usuario = $query->fetch_object()) {
+        while ($this->logado_usuario = $query->fetch_object()) {
             // Se for Igual Passa
             if ($this->logado_usuario->senha===$senha) {
                 $this->Usuario_Logar($email,$senha,$this->logado_usuario->id);
@@ -852,7 +852,7 @@ class Acl{
                 $this->Usuario_Logar($email,$senha,$this->logado_usuario->id);
                  $this->logado           = true;
                 return true;
-            }else if ($this->logado_usuario->senha===\Framework\App\Sistema_Funcoes::Form_Senha_Blindar($senha)) {
+            } else if ($this->logado_usuario->senha===\Framework\App\Sistema_Funcoes::Form_Senha_Blindar($senha)) {
                 // Necessita Trocar Senha
                 $this->Usuario_Logar($email,$senha,$this->logado_usuario->id);
                  $this->logado           = true;

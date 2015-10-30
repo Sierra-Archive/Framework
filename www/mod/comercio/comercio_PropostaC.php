@@ -354,7 +354,7 @@ class comercio_PropostaControle extends comercio_Controle
                     // Nao deixa aparecer os dois
                     if ($cf_lucro===true) {
                         $tabela['Lucro'][$i]                        =  $valor->pagar_lucro;
-                    }else if ($cf_desconto) {
+                    } else if ($cf_desconto) {
                         $tabela['Desconto'][$i]                     =  $valor->pagar_desconto;
                     }
                     $tabela['Valor Total'][$i]                  =  $valor->valor;
@@ -715,7 +715,7 @@ class comercio_PropostaControle extends comercio_Controle
                     
                     if ($valor->tipocondensadora==0||$valor->tipocondensadora=='0') {
                         $tipocondensadora = __('Vertical');
-                    }else if ($valor->tipocondensadora==1||$valor->tipocondensadora=='1') {
+                    } else if ($valor->tipocondensadora==1||$valor->tipocondensadora=='1') {
                         $tipocondensadora = __('Horizontal');
                     } else {
                         $tipocondensadora = __('Janela');
@@ -723,7 +723,7 @@ class comercio_PropostaControle extends comercio_Controle
                     
                     if ($valor->tipoevaporadora==0||$valor->tipoevaporadora=='0') {
                         $tipoevaporadora = __('Hi Wall');
-                    }else if ($valor->tipoevaporadora==1||$valor->tipoevaporadora=='1') {
+                    } else if ($valor->tipoevaporadora==1||$valor->tipoevaporadora=='1') {
                         $tipoevaporadora = __('Piso Teto');
                     } else {
                         $tipoevaporadora = __('Cassete');
@@ -731,7 +731,7 @@ class comercio_PropostaControle extends comercio_Controle
                     
                     if ($valor->tipodreno==0||$valor->tipodreno=='0') {
                         $tipodreno = __('Tubulado');
-                    }else if ($valor->tipodreno==1||$valor->tipodreno=='1') {
+                    } else if ($valor->tipodreno==1||$valor->tipodreno=='1') {
                         $tipodreno = __('Livre');
                     } else {
                         $tipodreno = __('Mangueira');
@@ -948,7 +948,7 @@ class comercio_PropostaControle extends comercio_Controle
                         ),*/),
                     )
                 ));
-            }else if (LAYOULT_IMPRIMIR=='AJAX') {
+            } else if (LAYOULT_IMPRIMIR=='AJAX') {
                 // Coloca Conteudo em Popup
                 $popup = array(
                     'id'        => 'popup',
@@ -970,7 +970,7 @@ class comercio_PropostaControle extends comercio_Controle
                 $this->_Visual->Blocar($html);
                 if ($layoult==='Unico') {
                     $this->_Visual->Bloco_Unico_CriaJanela($titulo.' #'.$identificador->id);
-                }else if ($layoult==='Maior') {
+                } else if ($layoult==='Maior') {
                     $this->_Visual->Bloco_Maior_CriaJanela($titulo.' #'.$identificador->id);
                 } else {
                     $this->_Visual->Bloco_Menor_CriaJanela($titulo.' #'.$identificador->id);
@@ -1213,7 +1213,7 @@ class comercio_PropostaControle extends comercio_Controle
                     
                     if ($valor->tipocondensadora==0||$valor->tipocondensadora=='0') {
                         $tipocondensadora = __('Vertical');
-                    }else if ($valor->tipocondensadora==1||$valor->tipocondensadora=='1') {
+                    } else if ($valor->tipocondensadora==1||$valor->tipocondensadora=='1') {
                         $tipocondensadora = __('Horizontal');
                     } else {
                         $tipocondensadora = __('Janela');
@@ -1221,7 +1221,7 @@ class comercio_PropostaControle extends comercio_Controle
                     
                     if ($valor->tipoevaporadora==0||$valor->tipoevaporadora=='0') {
                         $tipoevaporadora = __('Hi Wall');
-                    }else if ($valor->tipoevaporadora==1||$valor->tipoevaporadora=='1') {
+                    } else if ($valor->tipoevaporadora==1||$valor->tipoevaporadora=='1') {
                         $tipoevaporadora = __('Piso Teto');
                     } else {
                         $tipoevaporadora = __('Cassete');
@@ -1229,7 +1229,7 @@ class comercio_PropostaControle extends comercio_Controle
                     
                     if ($valor->tipodreno==0||$valor->tipodreno=='0') {
                         $tipodreno = __('Tubulado');
-                    }else if ($valor->tipodreno==1||$valor->tipodreno=='1') {
+                    } else if ($valor->tipodreno==1||$valor->tipodreno=='1') {
                         $tipodreno = __('Livre');
                     } else {
                         $tipodreno = __('Mangueira');
@@ -2207,7 +2207,7 @@ class comercio_PropostaControle extends comercio_Controle
         if ($tema=='Propostas') {
             if ($resultado->status=='1') {
                 $resultado->status='4'; // De Aprovada para Recusada
-            }else if ($resultado->status=='4') { // De Recusada para Pendente
+            } else if ($resultado->status=='4') { // De Recusada para Pendente
                 $resultado->status='0';
             } else {
                 $resultado->status='1';// De Pendente para Aprovada
@@ -2228,7 +2228,7 @@ class comercio_PropostaControle extends comercio_Controle
                     $resultado->valor,            // Valor
                     APP_DATA_BR                   // Data Inicial
                 );
-            }else if ($resultado->status=='2') { // de Aprovada em Execução para Finalizada
+            } else if ($resultado->status=='2') { // de Aprovada em Execução para Finalizada
                 
                 /* #update, colocar pra nao deixar finalizar quando nao tiver arquivo na biblioteca
                 if (\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Propostas_Biblioteca')===true && \Framework\App\Sistema_Funcoes::Perm_Modulos('biblioteca')===true) {
@@ -2277,7 +2277,7 @@ class comercio_PropostaControle extends comercio_Controle
                     }
                 }*/
                 
-            }else if ($resultado->status=='3') { // de Finalizada em Execução para Aprovada
+            } else if ($resultado->status=='3') { // de Finalizada em Execução para Aprovada
                 $resultado->status='1';
             }
         }
@@ -2902,10 +2902,10 @@ class comercio_PropostaControle extends comercio_Controle
         
         if ($resultado->status=='0') { // de aprovada para Aprovada em Execução
             $resultado->status='1';
-        }else if ($resultado->status=='1') { // de Aprovada em Execução para Finalizada
+        } else if ($resultado->status=='1') { // de Aprovada em Execução para Finalizada
             $resultado->status='2';
 
-        }else if ($resultado->status=='2') { // de Finalizada em Execução para Aprovada em Execução
+        } else if ($resultado->status=='2') { // de Finalizada em Execução para Aprovada em Execução
             $resultado->status='3';
         } else {
             $resultado->status='0';

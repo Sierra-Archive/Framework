@@ -120,7 +120,7 @@ class comercio_certificado_PropostaVisual extends comercio_certificado_Visual
             $this->Blocar($html);
             if ($layoult=='Unico') {
                 $this->Bloco_Unico_CriaConteudo();
-            }else if ($layoult=='Maior') {
+            } else if ($layoult=='Maior') {
                 $this->Bloco_Maior_CriaConteudo();
             } else {
                 $this->Bloco_Menor_CriaConteudo();

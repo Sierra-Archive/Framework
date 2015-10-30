@@ -34,14 +34,14 @@ class usuario_veiculo_Modelo extends \Framework\App\Modelo
     */
     public function retorna_veiculos(&$veiculos,$categoriasdividir=false) {
         GLOBAL $tabsql;
-        if($categoriasdividir===true) $i = Array();
+        if ($categoriasdividir===true) $i = Array();
         else                          $i = 0;
         $sql = $this->db->query(' SELECT C.nome AS CATEGORIA, V.id, V.foto, V.ano, V.modelo, M.nome as MARCA, V.cc, V.valor1, V.valor2, V.valor3, V.franquia
         FROM '.MYSQL_USUARIO_VEICULO.' V, '.MYSQL_CAT.' C, '.MYSQL_USUARIO_VEICULO_MARCAS.' M
         WHERE V.deletado=0 && V.categoria=C.id && V.marca=M.id ORDER BY V.cc'); //P.categoria
         while ($campo = $sql->fetch_object()) {
-            if($categoriasdividir===true) {
-                if(!isset($i[$campo->CATEGORIA])) $i[$campo->CATEGORIA]=0;
+            if ($categoriasdividir===true) {
+                if (!isset($i[$campo->CATEGORIA])) $i[$campo->CATEGORIA]=0;
                 $vei = &$veiculos[$campo->CATEGORIA][$i[$campo->CATEGORIA]];
             } else {
                 $vei = &$veiculos[$i];
@@ -58,7 +58,7 @@ class usuario_veiculo_Modelo extends \Framework\App\Modelo
             $vei['valor2'] = $campo->valor2;
             $vei['valor3'] = $campo->valor3;
             $vei['franquia'] = $campo->franquia;
-            if($categoriasdividir===true)   ++$i[$campo->CATEGORIA];
+            if ($categoriasdividir===true)   ++$i[$campo->CATEGORIA];
             else                            ++$i;
         }
         return $i;
@@ -83,7 +83,7 @@ class usuario_veiculo_Modelo extends \Framework\App\Modelo
     */
     public function retorna_veiculo($id) {
         GLOBAL $tabsql;
-        if(!is_int($id) || $id==0 || $id=='') return 0;
+        if (!is_int($id) || $id==0 || $id=='') return 0;
         $i = 0;
         $sql = $this->db->query(' SELECT C.nome AS CATEGORIA, V.marca AS MARCAID, V.id, V.foto, V.ano, V.modelo, M.nome as MARCA, V.cc, V.valor1, V.valor2, V.valor3, V.franquia, V.obs
         FROM '.MYSQL_USUARIO_VEICULO.' V, '.MYSQL_CAT.' C, '.MYSQL_USUARIO_VEICULO_MARCAS.' M

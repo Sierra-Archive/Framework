@@ -120,7 +120,7 @@ class ControleTest extends \PHPUnit_Framework_TestCase {
      * @covers Framework\App\Controle::Gerador_Formulario_Col_Escondido
      * @todo   Implement testGerador_Formulario_Col_Escondido().
      */
-    public function testGerador_Formulario_Col_Escondido(){
+    public function testGerador_Formulario_Col_Escondido() {
         // Teste1
         $coluna = Array(
             'edicao' => Array(
@@ -402,15 +402,15 @@ class ControleTest extends \PHPUnit_Framework_TestCase {
         $colunas = \Usuario_DAO::Gerar_Colunas();
         Controle::DAO_Campos_Retira($colunas, 'login');
         Controle::DAO_Campos_Retira($colunas, __('Permissões do Usuário'));
-        foreach($colunas as &$valor){
-            if(isset($valor['TabelaLinkada'])){
+        foreach($colunas as &$valor) {
+            if (isset($valor['TabelaLinkada'])) {
                 $this->assertNotEquals($valor['TabelaLinkada']['Nome'],__('Permissões do Usuário'),'DAO_Campos_Retira não Retira TabelaLinkada das Colunas');
-            }else{
+            } else {
                 $this->assertNotEquals($valor['mysql_titulo'],'login','DAO_Campos_Retira não Retira Campos das Colunas');
             }
         }
         Controle::DAO_Campos_Retira($colunas, 'senha',1);
-        foreach($colunas as &$valor){
+        foreach($colunas as &$valor) {
             $this->assertEquals($valor['mysql_titulo'],'senha','DAO_Campos_Retira Retirou Campos Errados da Coluna');
         }
         $this->assertEquals(sizeof($colunas),1,'DAO_Campos_Retira Deixou Campos além da Senha');

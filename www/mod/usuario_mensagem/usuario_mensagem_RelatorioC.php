@@ -24,7 +24,7 @@ class usuario_mensagem_RelatorioControle extends usuario_mensagem_Controle
         $_Controle = $Registro->_Controle;
         $titulo = __('Relatório');
         $link = 'Financeiro/Relatorio/Relatorio';
-        if($true===true) {
+        if ($true===true) {
             $_Controle->Tema_Endereco($titulo,$link);
         } else {
             $_Controle->Tema_Endereco($titulo);
@@ -49,7 +49,7 @@ class usuario_mensagem_RelatorioControle extends usuario_mensagem_Controle
         
         self::Endereco_Relatorio(false);
         
-        if($tipo_relatorio!='Aberto' && $tipo_relatorio!='Assunto' && $tipo_relatorio!='Esgotado' && $tipo_relatorio!='Finalizado' && $tipo_relatorio!='Origem' && $tipo_relatorio!='Produto' && $tipo_relatorio!='Qtd_Cidade' && $tipo_relatorio!='Qtd_Uf') {
+        if ($tipo_relatorio!='Aberto' && $tipo_relatorio!='Assunto' && $tipo_relatorio!='Esgotado' && $tipo_relatorio!='Finalizado' && $tipo_relatorio!='Origem' && $tipo_relatorio!='Produto' && $tipo_relatorio!='Qtd_Cidade' && $tipo_relatorio!='Qtd_Uf') {
             $tipo_relatorio='Aberto';
         }
         
@@ -93,38 +93,38 @@ class usuario_mensagem_RelatorioControle extends usuario_mensagem_Controle
     }
     public function Relatorio_Receber() {
         // Trata Parametros
-        if(isset($_POST['data_inicial'])) {
+        if (isset($_POST['data_inicial'])) {
             $data_inicial = data_brasil_eua(\Framework\App\Conexao::anti_injection($_POST['data_inicial']));
         } else {
             $data_inicial = '2014-01-01';
         }
-        if(isset($_POST['data_final'])) {
+        if (isset($_POST['data_final'])) {
             $data_final = data_brasil_eua(\Framework\App\Conexao::anti_injection($_POST['data_final']));
         } else {
             $data_final = APP_DATA;
         }
         
-        if(isset($_POST['tipo_relatorio'])) {
+        if (isset($_POST['tipo_relatorio'])) {
             $tipo_relatorio = \Framework\App\Conexao::anti_injection($_POST['tipo_relatorio']);
-            if($tipo_relatorio==='Aberto') {
+            if ($tipo_relatorio==='Aberto') {
                 $titulo = __('Relatório de Chamados Abertos');
                 $tipo_relatorio = 'Aberto';
-            }else if($tipo_relatorio==='Assunto') {
+            } else if ($tipo_relatorio==='Assunto') {
                 $titulo = __('Relatório Agrupado por Assuntos');
                 $tipo_relatorio = 'Assunto';
-            }else if($tipo_relatorio==='Esgotado') {
+            } else if ($tipo_relatorio==='Esgotado') {
                 $titulo = __('Relatório de Esgotados');
                 $tipo_relatorio = 'Esgotado';
-            }else if($tipo_relatorio==='Finalizado') {
+            } else if ($tipo_relatorio==='Finalizado') {
                 $titulo = __('Relatório de Finalizados');
                 $tipo_relatorio = __('Finalizado');
-            }else if($tipo_relatorio==='Origem') {
+            } else if ($tipo_relatorio==='Origem') {
                 $titulo = __('Relatório Agrupado por Origens');
                 $tipo_relatorio = __('Origem');
-            }else if($tipo_relatorio==='Produto') {
+            } else if ($tipo_relatorio==='Produto') {
                 $titulo = __('Relatório Agrupado por Produtos');
                 $tipo_relatorio = 'Produto';
-            }else if($tipo_relatorio==='Qtd_Cidade') {
+            } else if ($tipo_relatorio==='Qtd_Cidade') {
                 $titulo = __('Relatório de Chamados Quantitativos Agrupados por Cidade');
                 $tipo_relatorio = 'Qtd_Cidade';
             } else {
@@ -135,15 +135,15 @@ class usuario_mensagem_RelatorioControle extends usuario_mensagem_Controle
             $tipo_relatorio = 'Aberto';
             $titulo = __('Relatório de Chamados Abertos');
         }
-        /*if(isset($_POST['tipo_visual'])) {
+        /*if (isset($_POST['tipo_visual'])) {
             $tipo_visual = \Framework\App\Conexao::anti_injection($_POST['tipo_visual']);
-            if($tipo_visual==='imprimir') {
+            if ($tipo_visual==='imprimir') {
                 $tipo_visual = 'Imprimir';
-            }else if($tipo_visual==='pdf') {
+            } else if ($tipo_visual==='pdf') {
                 $tipo_visual = 'Pdf';
-            }else if($tipo_visual==='pdfdownload') {
+            } else if ($tipo_visual==='pdfdownload') {
                 $tipo_visual = 'Pdf_Download';
-            }else if($tipo_visual==='excell') {
+            } else if ($tipo_visual==='excell') {
                 $tipo_visual = 'Excel';
             } else {
                 $tipo_visual = false;

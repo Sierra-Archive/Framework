@@ -21,7 +21,7 @@ class usuario_rede_Principal implements \Framework\PrincipalInterface
     * @version 0.4.2
     */
     static function Home(&$controle, &$Modelo, &$Visual) {
-        if(\Framework\App\Acl::Usuario_GetLogado_Static()!==false) {
+        if (\Framework\App\Acl::Usuario_GetLogado_Static()!==false) {
             usuario_rede_Controle::num_Indicados($Modelo, $Visual, \Framework\App\Acl::Usuario_GetID_Static());
         }
         usuario_rede_Controle::Ranking_listar($Modelo, $Visual);

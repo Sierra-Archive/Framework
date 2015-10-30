@@ -24,8 +24,8 @@ class DaoTest extends \PHPUnit_Framework_TestCase {
             $diretorio = dir(DAO_PATH);
             $conexao = new Conexao();
             // Percorre Diretório
-            while($arquivo = $diretorio -> read()){
-                if(strpos($arquivo, 'DAO.php')!==false){
+            while ($arquivo = $diretorio -> read()) {
+                if (strpos($arquivo, 'DAO.php')!==false) {
                     $arquivo                = str_replace(Array('.php','.'), Array('','_') , $arquivo);
 
                     $this->tabelas[$arquivo] = Array (
@@ -44,7 +44,7 @@ class DaoTest extends \PHPUnit_Framework_TestCase {
                     // Aproveita o while e Pega as extrangeiras
                     $resultado_unico = new $arquivo();
                     $extrangeira    = $resultado_unico->Get_Extrangeiras();
-                    if($extrangeira!==false){
+                    if ($extrangeira!==false) {
                         reset($extrangeira);
                         while (key($extrangeira) !== null) {
                             $current = current($extrangeira);
@@ -73,9 +73,9 @@ class DaoTest extends \PHPUnit_Framework_TestCase {
      */
     public function testSiglas() {
         $siglas = Array();
-        foreach($this->tabelas as &$valor){
+        foreach($this->tabelas as &$valor) {
             $nome = '';
-            if(isset($siglas[$valor['sigla']])){
+            if (isset($siglas[$valor['sigla']])) {
                 $nome = $siglas[$valor['sigla']];
             }
             $this->assertArrayNotHasKey(
@@ -92,7 +92,7 @@ class DaoTest extends \PHPUnit_Framework_TestCase {
     public function testColunas() {
         $siglas = Array();
         // Abre Todos os DAO
-        foreach($this->tabelas as &$valor){
+        foreach($this->tabelas as &$valor) {
             $coluna_repetida = Array();
             $primarias = 0;
             $possueAutocomplete = false;
@@ -103,13 +103,13 @@ class DaoTest extends \PHPUnit_Framework_TestCase {
             );
             
             // Pega Coluna            
-            foreach($valor['colunas'] as &$valor2){
+            foreach($valor['colunas'] as &$valor2) {
 
                 // Se For Campo de Tabela Linkada (Não é uma coluna da tabela), tem tratamento especial
-                if(isset($valor2['TabelaLinkada'])){
+                if (isset($valor2['TabelaLinkada'])) {
                 
                 
-                }else{
+                } else {
                     
                     // Verifica Mysql_Titulo
                     $this->assertArrayHasKey(
@@ -149,7 +149,7 @@ class DaoTest extends \PHPUnit_Framework_TestCase {
                     $this->assertArrayHasKey(
                         'mysql_primary',$valor2,'Classe Dao: '.$valor['class'].' (Coluna: '.$valor2['mysql_titulo'].') -> Não Contem "mysql_primary"'
                     );
-                    if($valor2['mysql_primary']!==false){
+                    if ($valor2['mysql_primary']!==false) {
                         ++$primarias;
                     }
                     
@@ -159,7 +159,7 @@ class DaoTest extends \PHPUnit_Framework_TestCase {
                     );
 
                     // Testa Extrangeiras se for diferente de false
-                    if($valor2['mysql_estrangeira']!==false){
+                    if ($valor2['mysql_estrangeira']!==false) {
                         $extrangeiras = explode('|',$valor2['mysql_estrangeira']);
                         $this->assertFalse((sizeof($extrangeiras)===1),'Classe Dao: '.$valor['class'].' (Coluna: '.$valor2['mysql_titulo'].') -> "mysql_estrangeira" Inválida: '.$valor2['mysql_estrangeira']);
                         $this->assertFalse((sizeof($extrangeiras)>3),'Classe Dao: '.$valor['class'].' (Coluna: '.$valor2['mysql_titulo'].') -> "mysql_estrangeira" Inválida: '.$valor2['mysql_estrangeira']);
@@ -177,7 +177,7 @@ class DaoTest extends \PHPUnit_Framework_TestCase {
                     $this->assertArrayHasKey(
                         'mysql_autoadd',$valor2,'Classe Dao: '.$valor['class'].' (Coluna: '.$valor2['mysql_titulo'].') -> Não Contem "mysql_autoadd"'
                     );
-                    if($valor2['mysql_autoadd']!==false){
+                    if ($valor2['mysql_autoadd']!==false) {
                         $this->assertFalse($possueAutocomplete,'Classe Dao: '.$valor['class'].' (Coluna: '.$valor2['mysql_titulo'].') -> Não Pode ter duas Colunas com AutoInclemente');
                         $this->assertNotFalse($valor2['mysql_primary'],'Classe Dao: '.$valor['class'].' (Coluna: '.$valor2['mysql_titulo'].') -> Somente Chaves Primários podem ser AutoInclemente');
                         $possueAutocomplete = true;
@@ -204,7 +204,7 @@ class DaoTest extends \PHPUnit_Framework_TestCase {
                     );
 
                     // Se tiver Edicao
-                    if(isset($valor2['edicao'])){
+                    if (isset($valor2['edicao'])) {
                         //'Edicao -> Nome'
                         $this->assertArrayHasKey(
                             'Nome',$valor2['edicao'],'Classe Dao: '.$valor['class'].' (Coluna: '.$valor2['mysql_titulo'].') -> Não Contem "Edição -> Nome"'
@@ -221,18 +221,18 @@ class DaoTest extends \PHPUnit_Framework_TestCase {
                         $this->assertArrayHasKey(
                             'aviso',$valor2['edicao'],'Classe Dao: '.$valor['class'].' (Coluna: '.$valor2['mysql_titulo'].') -> Não Contem "Edição -> aviso"'
                         );
-                        if($valor2['mysql_estrangeira']===false){
+                        if ($valor2['mysql_estrangeira']===false) {
                             //'Edicao -> formtipo'
                             $this->assertArrayHasKey(
                                 'formtipo',$valor2['edicao'],'Classe Dao: '.$valor['class'].' (Coluna: '.$valor2['mysql_titulo'].') -> Não Contem "Edição -> formtipo", nem possui extrangeira'
                             );
-                        }else if(isset($valor2['edicao']['formtipo'])){
+                        } else if (isset($valor2['edicao']['formtipo'])) {
                             $this->assertEquals($valor2['edicao']['formtipo'], 'select','Classe Dao: '.$valor['class'].' (Coluna: '.$valor2['mysql_titulo'].') -> Conexão com Extrangeira mas o formtipo não é do tipo select');
                         }
                         
                         // Verifica FormTipo é Formvalido
-                        if(isset($valor2['edicao']['formtipo'])){
-                            if($valor2['edicao']['formtipo']=='select'){
+                        if (isset($valor2['edicao']['formtipo'])) {
+                            if ($valor2['edicao']['formtipo']=='select') {
                                 // Não Contem Informacoes Sobre
                                 $this->assertArrayHasKey(
                                     'select',$valor2['edicao'],'Classe Dao: '.$valor['class'].' (Coluna: '.$valor2['mysql_titulo'].') -> FormTipo select sem "Edição -> Select"'
@@ -248,15 +248,15 @@ class DaoTest extends \PHPUnit_Framework_TestCase {
                                 );*/
                                 
                                 //'Edicao -> select -> opcoes (Se Nao for do Tipo Extrangeira
-                                if($valor2['mysql_estrangeira']===false){
+                                if ($valor2['mysql_estrangeira']===false) {
                                     $this->assertArrayHasKey(
                                         'opcoes',$valor2['edicao']['select'],'Classe Dao: '.$valor['class'].' (Coluna: '.$valor2['mysql_titulo'].') -> Indice Edicao -> select não Contem "opcoes" nen possue Ligação Extrangeira'
                                     );
                                 }
                                 
                                 // Se Tiver 'opcoes', verifica integridade
-                                if(isset($valor2['edicao']['select']['opcoes'])){
-                                    foreach($valor2['edicao']['select']['opcoes'] as &$valor3){
+                                if (isset($valor2['edicao']['select']['opcoes'])) {
+                                    foreach($valor2['edicao']['select']['opcoes'] as &$valor3) {
                                         // Tem que ter "value"
                                         $this->assertArrayHasKey(
                                             'value',$valor3,'Classe Dao: '.$valor['class'].' (Coluna: '.$valor2['mysql_titulo'].') -> Indice Edicao/select/opcoes não Contem "value"'
@@ -267,7 +267,7 @@ class DaoTest extends \PHPUnit_Framework_TestCase {
                                         );
                                     }
                                 }
-                            }else if($valor2['edicao']['formtipo']=='textarea'){
+                            } else if ($valor2['edicao']['formtipo']=='textarea') {
                                 // Não Contem Informacoes Sobre
                                 $this->assertArrayHasKey(
                                     'textarea',$valor2['edicao'],'Classe Dao: '.$valor['class'].' (Coluna: '.$valor2['mysql_titulo'].') -> FormTipo textarea sem "Edição -> textarea"'
@@ -281,7 +281,7 @@ class DaoTest extends \PHPUnit_Framework_TestCase {
                                 $this->assertArrayHasKey(
                                     'class',$valor2['edicao']['textarea'],'Classe Dao: '.$valor['class'].' (Coluna: '.$valor2['mysql_titulo'].') -> Campo Edicao -> textarea não Contem "class"'
                                 );
-                            }else if($valor2['edicao']['formtipo']=='input'){
+                            } else if ($valor2['edicao']['formtipo']=='input') {
                                 // Não Contem Informacoes Sobre
                                 $this->assertArrayHasKey(
                                     'input',$valor2['edicao'],'Classe Dao: '.$valor['class'].' (Coluna: '.$valor2['mysql_titulo'].') -> FormTipo input sem "Edição -> input"'
@@ -295,7 +295,7 @@ class DaoTest extends \PHPUnit_Framework_TestCase {
                                 $this->assertArrayHasKey(
                                     'class',$valor2['edicao']['input'],'Classe Dao: '.$valor['class'].' (Coluna: '.$valor2['mysql_titulo'].') -> Campo Edicao -> input não Contem "class"'
                                 );
-                            }else if($valor2['edicao']['formtipo']=='upload'){
+                            } else if ($valor2['edicao']['formtipo']=='upload') {
                                 // Não Contem Informacoes Sobre
                                 $this->assertArrayHasKey(
                                     'upload',$valor2['edicao'],'Classe Dao: '.$valor['class'].' (Coluna: '.$valor2['mysql_titulo'].') -> FormTipo upload sem "Edição -> upload"'
@@ -309,7 +309,7 @@ class DaoTest extends \PHPUnit_Framework_TestCase {
                                 $this->assertArrayHasKey(
                                     'class',$valor2['edicao']['upload'],'Classe Dao: '.$valor['class'].' (Coluna: '.$valor2['mysql_titulo'].') -> Campo Edicao -> upload não Contem "class"'
                                 );
-                            }else{
+                            } else {
                                 $this->assertTrue(false,'Classe Dao: '.$valor['class'].' (Coluna: '.$valor2['mysql_titulo'].') -> Campo Edicao -> formtipo Inválido');
                             }
                         }
@@ -336,8 +336,8 @@ class DaoTest extends \PHPUnit_Framework_TestCase {
         $dependencia_dao = array_merge($dependencia_dao,$testar->Atualiza_Dependencia_Banco_De_Dados(MOD_PATH));
         
         // Verifica se Cada uma Delas Existem
-        foreach($dependencia_dao as &$valor){
-            if(strpos($valor, '_DAO')===false){
+        foreach($dependencia_dao as &$valor) {
+            if (strpos($valor, '_DAO')===false) {
                 $valor .= '_DAO';
             }
             $this->assertTrue(isset($this->tabelas[$valor]),'Tabela "'.$valor.'" usada não existe.');

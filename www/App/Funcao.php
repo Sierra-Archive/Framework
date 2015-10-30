@@ -165,7 +165,7 @@ function Data_geraTimestamp($data,$quebra=true) {
             $dias = explode('-', $partes[0]);
             return mktime($horas[0], $horas[1], $horas[2], $dias[1], $dias[2], $dias[0]);
         }
-    }else 
+    } else 
     // Formato: 23/09/13 | 21:13 ou 13-09-23 | 21:13
     if (strlen($data)==16) {
         $partes = explode(' | ', $data);        
@@ -181,7 +181,7 @@ function Data_geraTimestamp($data,$quebra=true) {
             $dias = explode('-', $partes[0]);
             return mktime($horas[0], $horas[1], '00', $dias[1], $dias[2], '20'.$dias[0]);
         }
-    }else 
+    } else 
     // Formato: 23/09/2013 ou 2013-09-23
     if (strlen($data)==10) {
         if (strpos($data, '/')!==false) {
@@ -252,7 +252,7 @@ function data_brasil_eua($data)
     // Permite parametro com data imcompleta
     if (!isset($array[1])) {
         return $array[0];
-    }else if (!isset($array[2]) || strlen($array[2])<4) {
+    } else if (!isset($array[2]) || strlen($array[2])<4) {
         return $array[1].'-'.$array[0];
     }
     

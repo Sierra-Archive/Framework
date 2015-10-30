@@ -24,7 +24,7 @@ if ($resultado!==false && !empty($resultado)) {
                             'Url' => $valor['url'],
                             'Notificacao' => $valor['notificacao']
                     );
-            }else if ($timestamp<$timestamp_minimo) {
+            } else if ($timestamp<$timestamp_minimo) {
                     unset($resultado[$indice]);
                     $modificar = true;
             }

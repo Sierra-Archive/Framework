@@ -45,7 +45,7 @@ class social_personasControle extends social_Controle
                     $impor['Nascimento'][$i] = $social[$indice]['nasc'];
                     $impor['Pontos'][$i] = $social[$indice]['pontos'];
                     ++$i;
-                }elseif ($social[$indice]['posicao']==0) {
+                } elseif ($social[$indice]['posicao']==0) {
                     if ($social[$indice]['id_face']!=0) {
                         $normal['Face'][$j] = '<a href="http://www.facebook.com/profile.php?id='.$social[$indice]['id_face'].'" target="_blank"><img  alt="'.__('Foto de Perfil').' src="http://graph.facebook.com/'.$social[$indice]['id_face'].'/picture"></a>';
                     } else {
@@ -133,7 +133,7 @@ class social_personasControle extends social_Controle
                     $orgulho['Nascimento'][$i] = $social[$indice]['nasc'];
                     $orgulho['Pontos'][$i] = $social[$indice]['pontos'];
                     ++$i;
-                }elseif ($social[$indice]['situacao']==1 && $social[$indice]['posicao']!=1) {
+                } elseif ($social[$indice]['situacao']==1 && $social[$indice]['posicao']!=1) {
                     if ($social[$indice]['id_face']!=0) {
                         $pegos['Face'][$j] = '<a href="http://www.facebook.com/profile.php?id='.$social[$indice]['id_face'].'" target="_blank"><img  alt="'.__('Foto de Perfil').' src="http://graph.facebook.com/'.$social[$indice]['id_face'].'/picture"></a>';
                     } else {
@@ -150,7 +150,7 @@ class social_personasControle extends social_Controle
                     ++$j;
                     $pegos['Email'][$j] = $social[$indice]['email'];
                     $pegos['Nascimento'][$j] = $social[$indice]['nasc'];
-                }elseif ($social[$indice]['situacao']==2 && $social[$indice]['posicao']!=1) {
+                } elseif ($social[$indice]['situacao']==2 && $social[$indice]['posicao']!=1) {
                     if ($social[$indice]['id_face']!=0) {
                         $queropega['Face'][$z] = '<a href="http://www.facebook.com/profile.php?id='.$social[$indice]['id_face'].'" target="_blank"><img  alt="'.__('Foto de Perfil').' src="http://graph.facebook.com/'.$social[$indice]['id_face'].'/picture"></a>';
                     } else {
@@ -167,7 +167,7 @@ class social_personasControle extends social_Controle
                     $queropega['Nascimento'][$z] = $social[$indice]['nasc'];
                     $queropega['Pontos'][$z] = $social[$indice]['pontos'];
                     ++$z;
-                }elseif ($social[$indice]['situacao']==3 && $social[$y]['posicao']!=1) {
+                } elseif ($social[$indice]['situacao']==3 && $social[$y]['posicao']!=1) {
                     if ($social[$indice]['id_face']!=0) {
                         $ultimocaso['Face'][$y] = '<a href="http://www.facebook.com/profile.php?id='.$social[$indice]['id_face'].'" target="_blank"><img alt="'.__('Foto de Perfil').' src="http://graph.facebook.com/'.$social[$indice]['id_face'].'/picture"></a>';
                     } else {

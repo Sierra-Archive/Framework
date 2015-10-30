@@ -40,7 +40,7 @@ class usuario_mensagem_OrigemControle extends usuario_mensagem_Controle
         $_Controle = $Registro->_Controle;
         $titulo = __('Origens');
         $link = 'usuario_mensagem/Origem/Origens';
-        if($true===true) {
+        if ($true===true) {
             $_Controle->Tema_Endereco($titulo,$link);
         } else {
             $_Controle->Tema_Endereco($titulo);
@@ -145,7 +145,7 @@ class usuario_mensagem_OrigemControle extends usuario_mensagem_Controle
         $setor = $this->_Modelo->db->Sql_Select('Usuario_Mensagem_Origem', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($setor);
         // Mensagem
-    	if($sucesso===true) {
+    	if ($sucesso===true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),

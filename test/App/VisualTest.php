@@ -21,9 +21,9 @@ class VisualTest extends \PHPUnit_Framework_TestCase {
         
         $diretorio = dir(ROOT_PADRAO.'templates'.DS);
         // PRocura Arqiuvos e Anota valores usados
-        while($valor = $diretorio -> read()){
+        while ($valor = $diretorio -> read()) {
             // Ignora Propria Pasta, pasta anterior e Arquivo Autoload
-            if($valor!='..' && $valor!='.'){
+            if ($valor!='..' && $valor!='.') {
                 $lay_CONF = ROOT_PADRAO.'templates'.DS.$valor.DS.'config'.DS;
                 $this->assertTrue(file_exists($lay_CONF.'config.php'));
                 require_once ($lay_CONF.'config.php');

@@ -38,7 +38,7 @@ class usuario_mensagem_AssuntoControle extends usuario_mensagem_Controle
         $_Controle = $Registro->_Controle;
         $titulo = __('Assuntos');
         $link = 'usuario_mensagem/Assunto/Assuntos';
-        if($true===true) {
+        if ($true===true) {
             $_Controle->Tema_Endereco($titulo,$link);
         } else {
             $_Controle->Tema_Endereco($titulo);
@@ -136,7 +136,7 @@ class usuario_mensagem_AssuntoControle extends usuario_mensagem_Controle
         // Atualiza
         $this->Assuntos();
         // Mensagem
-        if($sucesso===true) {
+        if ($sucesso===true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Assunto Alterado com Sucesso'),
@@ -169,7 +169,7 @@ class usuario_mensagem_AssuntoControle extends usuario_mensagem_Controle
         $assunto = $this->_Modelo->db->Sql_Select('Usuario_Mensagem_Assunto', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($assunto);
         // Mensagem
-    	if($sucesso===true) {
+    	if ($sucesso===true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),

@@ -36,7 +36,7 @@ class locais_locaisModelo extends locais_Modelo
         global $tabsql;
         $i = 0;
         $sql = $Modelo->db->query('SELECT id, nome FROM '.MYSQL_SIS_LOCAIS.' WHERE deletado!=1');
-        while($campo = $sql->fetch_object()) {
+        while ($campo = $sql->fetch_object()) {
             $array[$i]['id'] = $campo->id;
             $array[$i]['nome'] = $campo->nome;
             ++$i;

@@ -63,7 +63,7 @@ class usuario_mensagem_RelatorioModelo extends usuario_mensagem_Modelo
             }),
             array( 'db' => 'finalizado',    'dt' => 4 ,
                 'formatter' => function( $d, $row ) {
-                    if($d=='1') {
+                    if ($d=='1') {
                         return 'Finalizado';
                     } else {
                         return 'Novos Chamados';
@@ -71,9 +71,9 @@ class usuario_mensagem_RelatorioModelo extends usuario_mensagem_Modelo
                     return false;
                 },
                 'search' => function( $search ) {
-                    if(strpos(strtolower('Finalizado'), strtolower($search))!=false) {
+                    if (strpos(strtolower('Finalizado'), strtolower($search))!=false) {
                         return '1';
-                    }else if(strpos(strtolower('Novos Chamados'), strtolower($search))!=false) {
+                    } else if (strpos(strtolower('Novos Chamados'), strtolower($search))!=false) {
                         return '0';
                     }
                     return false;
@@ -165,7 +165,7 @@ class usuario_mensagem_RelatorioModelo extends usuario_mensagem_Modelo
             }),
             array( 'db' => 'finalizado',    'dt' => 4 ,
                 'formatter' => function( $d, $row ) {
-                if($d=='1') {
+                if ($d=='1') {
                     return 'Finalizado';
                 } else {
                     return 'Novos Chamados';

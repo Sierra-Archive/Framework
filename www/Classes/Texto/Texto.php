@@ -47,9 +47,9 @@ class Texto
         
         if ($tam>1 && $palavra[$tam-1]=='a') {
             return false;
-        }else if ($tam>2 && $palavra[$tam-2]=='a' && $palavra[$tam-1]=='s') {
+        } else if ($tam>2 && $palavra[$tam-2]=='a' && $palavra[$tam-1]=='s') {
             return false;
-        }else if ($tam>2 && $palavra[$tam-2]=='e' && $palavra[$tam-1]=='s') {
+        } else if ($tam>2 && $palavra[$tam-2]=='e' && $palavra[$tam-1]=='s') {
             return false;
         }
         
@@ -69,7 +69,7 @@ class Texto
         /*$array = 'a, ante, após, até, com, contra, de, desde, em, entre, para, por, perante, sem, sob, sobre, trás';
         $array = explode(', ', $array);
         reset($array);
-        while(key($array)!==NULL) {
+        while (key($array)!==NULL) {
             $objeto = new \Gramatica_Preposicao_DAO();
             $objeto->palavra = current($array);
             $objeto->tipo    = 0;
@@ -79,7 +79,7 @@ class Texto
         /*$array = 'afora, como, conforme, consoante, durante, exceto, feito, fora, mediante, menos, salvo, segundo, tirante, visto';
         $array = explode(', ', $array);
         reset($array);
-        while(key($array)!==NULL) {
+        while (key($array)!==NULL) {
             $objeto = new \Gramatica_Preposicao_DAO();
             $objeto->palavra = current($array);
             $objeto->tipo    = 1;
@@ -89,7 +89,7 @@ class Texto
         /*$array = 'do, neste, à, duma, na';
         $array = explode(', ', $array);
         reset($array);
-        while(key($array)!==NULL) {
+        while (key($array)!==NULL) {
             $objeto = new \Gramatica_Preposicao_DAO();
             $objeto->palavra = current($array);
             $objeto->tipo    = 2;

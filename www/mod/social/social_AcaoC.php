@@ -120,7 +120,7 @@ class social_AcaoControle extends social_Controle
         }
         if ($tipo=='Unico') {
             $Visual->Bloco_Unico_CriaJanela($titulo);
-        }else if ($tipo=='Esquerda') {
+        } else if ($tipo=='Esquerda') {
             $Visual->Bloco_Maior_CriaJanela($titulo);
         } else {
             $Visual->Bloco_Menor_CriaJanela($titulo);

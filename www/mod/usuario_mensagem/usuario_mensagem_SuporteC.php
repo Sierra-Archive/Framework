@@ -22,7 +22,7 @@ class usuario_mensagem_SuporteControle extends usuario_mensagem_Controle
     static function Endereco_Suporte($true=true) {
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
-        if($true===true) {
+        if ($true===true) {
             $_Controle->Tema_Endereco(__('Chamados'),'usuario_mensagem/Suporte/Mensagens/');
         } else {
             $_Controle->Tema_Endereco(__('Chamados'));
@@ -32,7 +32,7 @@ class usuario_mensagem_SuporteControle extends usuario_mensagem_Controle
         self::Endereco_Suporte();
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
-        if($true===true) {
+        if ($true===true) {
             $_Controle->Tema_Endereco(__('Visualizar Chamado'),'usuario_mensagem/Suporte/VisualizadordeMensagem/'.$id);
         } else {
             $_Controle->Tema_Endereco(__('Visualizar Chamado'));
@@ -42,7 +42,7 @@ class usuario_mensagem_SuporteControle extends usuario_mensagem_Controle
         $id = (int) $id;
         // Atualiza Mensagem
         $objeto = $this->_Modelo->db->Sql_Select('Usuario_Mensagem',Array('id'=>$id));
-        if(!is_object($objeto)) throw new \Exception('Mensagem não existe ou existe mais delas.',3030);
+        if (!is_object($objeto)) throw new \Exception('Mensagem não existe ou existe mais delas.',3030);
         $objeto->finalizado = 1;
         $this->_Modelo->db->Sql_Update($objeto);
         $this->Mensagens();
@@ -71,9 +71,9 @@ class usuario_mensagem_SuporteControle extends usuario_mensagem_Controle
         $nome = __('Tickets');
         self::Endereco_Suporte(false);
         $id = (int) $this->_Acl->Usuario_GetID();
-        if($id>0) {
+        if ($id>0) {
             $this->Mensagenslistar();
-            if($this->_Acl->logado_usuario->grupo==CFG_TEC_IDADMIN) {
+            if ($this->_Acl->logado_usuario->grupo==CFG_TEC_IDADMIN) {
                 $this->MensagensSetores(-1);
             } else {
                 $this->MensagensSetores();
@@ -100,27 +100,27 @@ class usuario_mensagem_SuporteControle extends usuario_mensagem_Controle
     public function MensagensSetores($grupo = 0) {
         $i = 0;
         $mensagens = Array();
-        if($grupo==0) {
+        if ($grupo==0) {
             $grupo = $this->_Acl->logado_usuario->grupo;
             $admin = 0;
-        }else if($grupo==-1) {
+        } else if ($grupo==-1) {
             $grupo = 0;
             $admin = 1;
         }
         $this->_Modelo->Suporte_MensagensSetor($mensagens,$grupo);
-        if(is_object($mensagens)) {
+        if (is_object($mensagens)) {
             $mensagens = Array(0=>$mensagens);
         }
-        if(!empty($mensagens) && $mensagens!==false) {
+        if (!empty($mensagens) && $mensagens!==false) {
             $i = usuario_mensagem_Controle::Mensagens_TabelaMostrar($this->_Visual, $mensagens,$admin);
         } else {
-            if($grupo==0) {
+            if ($grupo==0) {
                 $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">'.__('Os setores não possuem chamados.').'</font></b></center>');  
             } else {
                 $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">'.__('O setor não possui chamados.').'</font></b></center>');  
             }
         }
-        if($grupo==0) {
+        if ($grupo==0) {
             $titulo  = __('Todos os Chamados de todos os Setores').' ('.$i.')';
         } else {
             $titulo  = __('Todos os Chamados do Setor').' ('.$i.')';
@@ -146,20 +146,20 @@ class usuario_mensagem_SuporteControle extends usuario_mensagem_Controle
         $Visual = &$Registro->_Visual;
         $i = 0;
         $mensagens = Array();
-        if($cliente==0) {
+        if ($cliente==0) {
             $usuario = (int) $this->_Acl->Usuario_GetID();
         } else {
             $usuario = $cliente;
         }
         usuario_mensagem_SuporteModelo::Suporte_MensagensCliente($mensagens,$usuario,1);
-        if(is_object($mensagens)) $mensagens = Array(0=>$mensagens);
-        if(!empty($mensagens) && $mensagens!==false) {
+        if (is_object($mensagens)) $mensagens = Array(0=>$mensagens);
+        if (!empty($mensagens) && $mensagens!==false) {
             $i = usuario_mensagem_Controle::Mensagens_TabelaMostrar($Visual, $mensagens,$admin);
         } else {
             $Visual->Blocar('<center><b><font color="#FF0000" size="5">'.__('Não possui chamados.').'</font></b></center>');
         }
         $titulo  = __('Todos os chamados do Cliente').' ('.$i.')';
-        if($retorno=='Unico') {
+        if ($retorno=='Unico') {
             $Visual->Bloco_Unico_CriaJanela($titulo);
         } else {
             $Visual->Bloco_Menor_CriaJanela($titulo);
@@ -167,7 +167,7 @@ class usuario_mensagem_SuporteControle extends usuario_mensagem_Controle
     }
     public function VisualizadordeMensagem($mensagem) {
         $id = (int) $this->_Acl->Usuario_GetID();
-        if($id>0) {
+        if ($id>0) {
             $mensagem = (int) $mensagem;
             
             $this->MensagemExibir($mensagem);
@@ -211,7 +211,7 @@ class usuario_mensagem_SuporteControle extends usuario_mensagem_Controle
         $dir = 'usuario_mensagem'.DS.'Chamados_Anexos'.DS;
         $ext = $this->Upload($dir,$fileTypes,false);
         $this->layoult_zerar = false;
-        if($ext!==false) {
+        if ($ext!==false) {
             
             $arquivo = new \Usuario_Mensagem_Anexo_DAO();
             $arquivo->mensagem      = $mensagem;
@@ -242,9 +242,9 @@ class usuario_mensagem_SuporteControle extends usuario_mensagem_Controle
     }
     private function Anexos_Processar($mensagem = false) {
         // Anexo
-        if($mensagem!==false && $mensagem!=0) {
+        if ($mensagem!==false && $mensagem!=0) {
             $resultado_mensagens = $this->_Modelo->db->Sql_Select('Usuario_Mensagem', Array('id'=>$mensagem),1);
-            if($resultado_mensagens===false) {
+            if ($resultado_mensagens===false) {
                 return _Sistema_erroControle::Erro_Fluxo('Essa mensagem não existe:'. $mensagem,404);
             }
             // Condicao de Query
@@ -257,14 +257,14 @@ class usuario_mensagem_SuporteControle extends usuario_mensagem_Controle
         $html = '';
         // COntinua
         $anexos = $this->_Modelo->db->Sql_Select('Usuario_Mensagem_Anexo',$where);
-        if($anexos!==false && !empty($anexos)) {
+        if ($anexos!==false && !empty($anexos)) {
             // Percorre Anexos
-            if(is_object($anexos)) $anexos = Array(0=>$anexos);
+            if (is_object($anexos)) $anexos = Array(0=>$anexos);
             reset($anexos);
-            if(!empty($anexos)) {
+            if (!empty($anexos)) {
                 foreach ($anexos as &$valor) {
                     $endereco = ARQ_PATH.'usuario_mensagem'.DS.'Chamados_Anexos'.DS.strtolower($valor->endereco.'.'.$valor->ext);
-                    if(file_exists($endereco)) {
+                    if (file_exists($endereco)) {
                         $tamanho    =   round(filesize($endereco)/1024);
                         $tipo       =   $valor->ext;
                         $tabela[__('Nome')][$i]             = '<a href="'.URL_PATH.'usuario_mensagem/Suporte/Download/'.$valor->id.'/" border="1" class="lajax" data-acao="">'.$valor->nome.'</a>';
@@ -285,7 +285,7 @@ class usuario_mensagem_SuporteControle extends usuario_mensagem_Controle
     }
     public function Download($anexo,$mensagem=false) {
         $resultado_arquivo = $this->_Modelo->db->Sql_Select('Usuario_Mensagem_Anexo', '{sigla}id=\''.$anexo.'\'',1);
-        if($resultado_arquivo===false || !is_object($resultado_arquivo)) {
+        if ($resultado_arquivo===false || !is_object($resultado_arquivo)) {
             return _Sistema_erroControle::Erro_Fluxo('Esse anexo não existe:'. $anexo,404);
         }
         $endereco = 'usuario_mensagem'.DS.'Chamados_Anexos'.DS.strtolower($resultado_arquivo->endereco.'.'.$resultado_arquivo->ext);

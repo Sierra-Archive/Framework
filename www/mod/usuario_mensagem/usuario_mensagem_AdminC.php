@@ -35,7 +35,7 @@ class usuario_mensagem_AdminControle extends usuario_mensagem_Controle
         return false;
     }
     public function Mensagem() {
-        if($this->_Acl->Usuario_GetID()!=0) {
+        if ($this->_Acl->Usuario_GetID()!=0) {
             $this->Mensagenslistar(1);
             //$this->Mensagem_formulario();
             // ORGANIZA E MANDA CONTEUDO
@@ -46,7 +46,7 @@ class usuario_mensagem_AdminControle extends usuario_mensagem_Controle
     }
     public function Mensagem_Editar($mensagem=0) {
         $mensagem = (int) $mensagem;
-        if($mensagem==0 || !isset($mensagem)) return;
+        if ($mensagem==0 || !isset($mensagem)) return;
         self::Mensagem_Editar_Static($mensagem);
     }
     static function Mensagem_Editar_Static($mensagem) {
@@ -59,7 +59,7 @@ class usuario_mensagem_AdminControle extends usuario_mensagem_Controle
         // Chama Objeto Mensagem
         $editar = Framework\App\Registro::getInstacia()->_Modelo->db->Sql_Select('Usuario_Mensagem', '{sigla}id=\''.$mensagem.'\'');
         //Atualiza Nome para nao dar erro
-        if($editar->para_nome=='') $editar->para_nome=__('Suporte');
+        if ($editar->para_nome=='') $editar->para_nome=__('Suporte');
 
         
         // Carrega Config
@@ -87,7 +87,7 @@ class usuario_mensagem_AdminControle extends usuario_mensagem_Controle
         $mensagem = $this->_Modelo->db->Sql_Select('Usuario_Mensagem', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($mensagem);
         // Mensagem
-    	if($sucesso===true) {
+    	if ($sucesso===true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),

@@ -30,11 +30,11 @@ class comercio_LinhaModelo extends comercio_Modelo
                 return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Linha'        ,'comercio/Linha/Linhas_Edit/'.$d.'/'    ,''),true).
                        Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Linha'       ,'comercio/Linha/Linhas_Del/'.$d.'/'     ,'Deseja realmente deletar essa Linha ?'),true);
             };
-        }else if ($perm_editar) {
+        } else if ($perm_editar) {
             $funcao = function( $d, $row ) {
                 return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Linha'        ,'comercio/Linha/Linhas_Edit/'.$d.'/'    ,''),true);
             };
-        }else if ($perm_del) {
+        } else if ($perm_del) {
             $funcao = function( $d, $row ) {
                 return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Linha'       ,'comercio/Linha/Linhas_Del/'.$d.'/'     ,'Deseja realmente deletar essa Linha ?'),true);
             };

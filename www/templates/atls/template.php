@@ -33,7 +33,7 @@
         <div class="header-wrapper">
             <header class="container">
                 <div class="head-right">
-                    <?php if(isset($params['widgets']['Superior'])) { 
+                    <?php if (isset($params['widgets']['Superior'])) { 
                         $total=count($params['widgets']['Superior']); 
                         for($cont=0;$cont<$total; ++$cont) {  
                             echo $params['widgets']['Superior'][$cont];
@@ -60,10 +60,10 @@
         </div>
 
         <h1 class="page-title">
-            <span id="Framework_Titulo"><?php if($params['site_titulo']=='') { echo __('Sem Titulo'); } else { echo $params['site_titulo']; } ?></span>
+            <span id="Framework_Titulo"><?php if ($params['site_titulo']=='') { echo __('Sem Titulo'); } else { echo $params['site_titulo']; } ?></span>
         </h1>
         <?php 
-        /*if(isset($params['widgets']) && isset($params['widgets']['Navegacao_Endereco'])) {
+        /*if (isset($params['widgets']) && isset($params['widgets']['Navegacao_Endereco'])) {
             echo '<span class="breadcrumb">'.
                  $params['widgets']['Navegacao_Endereco'].
                  '</span>'; 
@@ -71,17 +71,17 @@
         ?>
 
         <!--Banner Block-->
-        <section class="banner-wrapper" id="blocounico"<?php if( $params['template']['Bloco_Unico']=='') { ?> style="display: none;"<?php } ?>>
+        <section class="banner-wrapper" id="blocounico"<?php if ( $params['template']['Bloco_Unico']=='') { ?> style="display: none;"<?php } ?>>
             <?php echo $params['template']['Bloco_Unico']; ?>
         </section>
         <!--Content Block-->
 
         <section class="content-wrapper">
             <div class="content-container container">
-                <div class="col-main-left" id="blocomaior"<?php if( $params['template']['Bloco_Maior']=='') { ?> style="display: none;"<?php } ?>>
+                <div class="col-main-left" id="blocomaior"<?php if ( $params['template']['Bloco_Maior']=='') { ?> style="display: none;"<?php } ?>>
                     <?php echo $params['template']['Bloco_Maior']; ?>
                 </div>
-                <aside class="right-sidebar" id="blocomenor"<?php if( $params['template']['Bloco_Menor']=='') { ?> style="display: none;"<?php } ?>>
+                <aside class="right-sidebar" id="blocomenor"<?php if ( $params['template']['Bloco_Menor']=='') { ?> style="display: none;"<?php } ?>>
                     <?php echo $params['template']['Bloco_Menor']; ?>
                 </aside>
             </div>

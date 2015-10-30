@@ -67,7 +67,7 @@ class usuario_AdminControle extends usuario_Controle
         $dao        = Array('Usuario',$id);
         if ($tipo==='cliente' || $tipo==='Cliente') {
             $funcao     = '$this->ListarCliente();';
-        }else if ($tipo==='funcionario' || $tipo==='Funcionario' || $tipo==='Funcionário' || $tipo==='Funcionrio') {
+        } else if ($tipo==='funcionario' || $tipo==='Funcionario' || $tipo==='Funcionário' || $tipo==='Funcionrio') {
             $funcao     = '$this->ListarFuncionario();';
         } else {
             $funcao     = '$this->ListarUsuario();';
@@ -118,10 +118,10 @@ class usuario_AdminControle extends usuario_Controle
                 $this->_Modelo->db->Sql_Update($usuario);
                 $tipo   = __('Funcionário');
                 $tipo2  = 'funcionario';
-            }else if ($sql_grupo->categoria==CFG_TEC_CAT_ID_CLIENTES) {
+            } else if ($sql_grupo->categoria==CFG_TEC_CAT_ID_CLIENTES) {
                 $tipo   = __('Cliente');
                 $tipo2  = 'cliente';
-            }else if ($sql_grupo->categoria==CFG_TEC_CAT_ID_FUNCIONARIOS) {
+            } else if ($sql_grupo->categoria==CFG_TEC_CAT_ID_FUNCIONARIOS) {
                 $tipo   = __('Funcionário');
                 $tipo2  = 'funcionario';
             }
@@ -143,7 +143,7 @@ class usuario_AdminControle extends usuario_Controle
             $tipo   = Framework\Classes\Texto::Transformar_Plural_Singular(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Cliente_nome'));
             $this->Tema_Endereco(__('Clientes'),'usuario/Admin/ListarCliente');
             $metodo = 'Cliente_Edit2'.'/'.$id.'/';
-        }else if ($tipo==='Funcionário' || $tipo===\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Funcionario_nome')) {
+        } else if ($tipo==='Funcionário' || $tipo===\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Funcionario_nome')) {
             $tipo_pass  = CFG_TEC_CAT_ID_FUNCIONARIOS;
             $tipo2  = 'funcionario'; //id do tipo
             $tipo   = Framework\Classes\Texto::Transformar_Plural_Singular(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Funcionario_nome'));
@@ -232,7 +232,7 @@ class usuario_AdminControle extends usuario_Controle
         
             if ($tipo==='cliente' || $tipo==='Cliente') {
                 $this->ListarCliente();
-            }else if ($tipo==='funcionario' || $tipo==='Funcionario' || $tipo==='Funcionário' || $tipo==='Funcionrio') {
+            } else if ($tipo==='funcionario' || $tipo==='Funcionario' || $tipo==='Funcionário' || $tipo==='Funcionrio') {
                 $this->ListarFuncionario();
             } else {
                 $this->ListarUsuario();
@@ -349,7 +349,7 @@ class usuario_AdminControle extends usuario_Controle
             $this->_Visual->Json_Info_Update('Titulo', __('Adicionar ').$func_nome);
             
             $this->Tema_Endereco($func_nome_plural,'usuario/Admin/ListarCliente');
-        }else if ($tipo==='funcionario') {
+        } else if ($tipo==='funcionario') {
             self::Campos_Deletar(CFG_TEC_CAT_ID_FUNCIONARIOS,$campos, $usuario);
             $form = new \Framework\Classes\Form('form_Sistema_Admin_Usuarios','usuario/Admin/Funcionario_Add2','formajax');
             \Framework\App\Controle::Gerador_Formulario($campos, $form);
@@ -418,7 +418,7 @@ class usuario_AdminControle extends usuario_Controle
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens); 
             $this->layoult_zerar = false;
             $this->_Visual->Javascript_Executar('$("#email").css(\'border\', \'2px solid #FFAEB0\').focus();');
-         }else if ($existeemail===true && ($tipo!=='cliente' || $email!='') && \Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Admin_EmailUnico')) {
+         } else if ($existeemail===true && ($tipo!=='cliente' || $email!='') && \Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Admin_EmailUnico')) {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),
@@ -427,7 +427,7 @@ class usuario_AdminControle extends usuario_Controle
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
             $this->layoult_zerar = false; 
             $this->_Visual->Javascript_Executar('$("#email").css(\'border\', \'2px solid #FFAEB0\').focus();');
-        }else if ($existelogin===true && $tipo!=='cliente') {
+        } else if ($existelogin===true && $tipo!=='cliente') {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),
@@ -471,20 +471,20 @@ class usuario_AdminControle extends usuario_Controle
             if ($tipo===false AND !(\Framework\App\Sistema_Funcoes::Perm_Modulos('usuario_mensagem'))) {
                 $sucesso =  $this->_Modelo->db->Sql_Insert($usuario);
                 $executar = 'ListarUsuario';
-            }else if (\Framework\App\Sistema_Funcoes::Perm_Modulos('usuario_mensagem')) {
+            } else if (\Framework\App\Sistema_Funcoes::Perm_Modulos('usuario_mensagem')) {
                 $sucesso =  $this->_Modelo->db->Sql_Insert($usuario);
                 if ($sucesso) {$identificador  = $this->_Modelo->db->Sql_Select('Usuario', Array(),1,'id DESC');
                 $identificador  = $identificador->id;
                 usuario_mensagem_Controle::Mensagem_formulario_Static($identificador);}
                 $executar = false;
                 //\Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'usuario_mensagem/Suporte/Mensagem_formulario');
-            }else if ($tipo==='cliente') {
+            } else if ($tipo==='cliente') {
                 if (!isset($_GET['grupo'])) {
                     $usuario->grupo = CFG_TEC_IDCLIENTE;
                 }
                 $sucesso =  $this->_Modelo->db->Sql_Insert($usuario);
                 $executar = 'ListarCliente';
-            }else if ($tipo==='funcionario') {
+            } else if ($tipo==='funcionario') {
                 if (!isset($_GET['grupo'])) {
                     $usuario->grupo = CFG_TEC_IDFUNCIONARIO;
                 }
@@ -557,7 +557,7 @@ class usuario_AdminControle extends usuario_Controle
                 if ($usuario->grupo==CFG_TEC_IDCLIENTE) {
                     $tipo = 'cliente';
                     $tipo2 = __('Cliente');
-                }else if ($usuario->grupo==CFG_TEC_IDFUNCIONARIO) {
+                } else if ($usuario->grupo==CFG_TEC_IDFUNCIONARIO) {
                     $tipo = 'funcionario';
                     $tipo2 = __('Funcionário');
                 } else {
@@ -567,7 +567,7 @@ class usuario_AdminControle extends usuario_Controle
             } else {
                 if ($tipo==='cliente') {
                     $tipo2 = __('Cliente');
-                }else if ($tipo==='funcionario') {
+                } else if ($tipo==='funcionario') {
                     $tipo2 = __('Funcionário');
                 } else {
                     $tipo = 'usuario';
@@ -596,7 +596,7 @@ class usuario_AdminControle extends usuario_Controle
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
             if ($tipo==='cliente') {
                 $this->ListarCliente();
-            }else if ($tipo==='funcionario') {
+            } else if ($tipo==='funcionario') {
                 $this->ListarFuncionario();
             } else {
                 $this->ListarUsuario();
@@ -690,7 +690,7 @@ class usuario_AdminControle extends usuario_Controle
                     "mgs_principal" => __('Aprovado com sucesso'),
                     "mgs_secundaria" => '#'.$id.' foi modificado.'
                 );
-            }else {
+            } else {
                 $mensagens = array(
                     "tipo" => 'sucesso',
                     "mgs_principal" => __('Negado com sucesso'),
@@ -737,7 +737,7 @@ class usuario_AdminControle extends usuario_Controle
             $nomedisplay_sing   = __('Cliente');
             $tipo               = 'cliente';
             $this->Tema_Endereco(__('Clientes'),'usuario/Admin/ListarCliente');
-        }else if ($tipo=='funcionario') {
+        } else if ($tipo=='funcionario') {
             $nomedisplay        = __('Usuários');
             $nomedisplay_sing   = __('Usuário');
             $tipo               = 'funcionario';
@@ -811,7 +811,7 @@ class usuario_AdminControle extends usuario_Controle
             $nomedisplay_sing   = __('Cliente');
             $tipo               = 'cliente';
             $this->Tema_Endereco(__('Clientes'),'usuario/Admin/ListarCliente');
-        }else if ($tipo=='funcionario') {
+        } else if ($tipo=='funcionario') {
             $nomedisplay        = __('Usuários');
             $nomedisplay_sing   = __('Usuário');
             $tipo               = 'funcionario';
@@ -862,7 +862,7 @@ class usuario_AdminControle extends usuario_Controle
             $nomedisplay        = __('Clientes');
             $nomedisplay_sing   = __('Cliente');
             $tipo               = 'cliente';
-        }else if ($tipo=='funcionario') {
+        } else if ($tipo=='funcionario') {
             $nomedisplay        = __('Usuários');
             $nomedisplay_sing   = __('Usuário');
             $tipo               = 'funcionario';
@@ -911,7 +911,7 @@ class usuario_AdminControle extends usuario_Controle
             $nomedisplay_sing   = __('Cliente');
             $tipo               = 'cliente';
             $this->Tema_Endereco(__('Clientes'),'usuario/Admin/ListarCliente');
-        }else if ($tipo==='funcionario') {
+        } else if ($tipo==='funcionario') {
             $nomedisplay        = __('Usuários');
             $nomedisplay_sing   = __('Usuário');
             $tipo               = 'funcionario';
@@ -965,7 +965,7 @@ class usuario_AdminControle extends usuario_Controle
             $nomedisplay        = __('Clientes');
             $nomedisplay_sing   = __('Cliente');
             $tipo               = 'cliente';
-        }else if ($tipo==='funcionario') {
+        } else if ($tipo==='funcionario') {
             $nomedisplay        = __('Usuários');
             $nomedisplay_sing   = __('Usuário');
             $tipo               = 'funcionario';
@@ -1013,7 +1013,7 @@ class usuario_AdminControle extends usuario_Controle
             $nomedisplay        = __('Clientes');
             $nomedisplay_sing   = __('Cliente');
             $tipo               = 'cliente';
-        }else if ($tipo==='funcionario') {
+        } else if ($tipo==='funcionario') {
             $nomedisplay        = __('Usuários');
             $nomedisplay_sing   = __('Usuário');
             $tipo               = 'funcionario';

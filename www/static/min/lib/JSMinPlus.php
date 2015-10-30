@@ -200,7 +200,7 @@ class JSMinPlus
 		static $instance;
 
 		// this is a singleton
-		if(!$instance)
+		if (!$instance)
 			$instance = new JSMinPlus();
 
 		return $instance->min($js, $filename);
@@ -288,7 +288,7 @@ class JSMinPlus
 			break;
 
 			case KEYWORD_IF:
-				$s = 'if(' . $this->parseTree($n->condition) . ')';
+				$s = 'if (' . $this->parseTree($n->condition) . ')';
 				$thenPart = $this->parseTree($n->thenPart);
 				$elsePart = $n->elsePart ? $this->parseTree($n->elsePart) : null;
 
@@ -352,7 +352,7 @@ class JSMinPlus
 			break;
 
 			case KEYWORD_WHILE:
-				$s = 'while(' . $this->parseTree($n->condition) . ')';
+				$s = 'while (' . $this->parseTree($n->condition) . ')';
 
 				$body  = $this->parseTree($n->body);
 				if ($body == '')
@@ -372,7 +372,7 @@ class JSMinPlus
 			break;
 
 			case KEYWORD_DO:
-				$s = 'do{' . $this->parseTree($n->body, true) . '}while(' . $this->parseTree($n->condition) . ')';
+				$s = 'do{' . $this->parseTree($n->body, true) . '}while (' . $this->parseTree($n->condition) . ')';
 			break;
 
 			case KEYWORD_BREAK:
@@ -1826,7 +1826,7 @@ class JSTokenizer
 
 	public function get($chunksize = 1000)
 	{
-		while($this->lookahead)
+		while ($this->lookahead)
 		{
 			$this->lookahead--;
 			$this->tokenIndex = ($this->tokenIndex + 1) & 3;
@@ -1838,7 +1838,7 @@ class JSTokenizer
 		$conditional_comment = false;
 
 		// strip whitespace and comments
-		while(true)
+		while (true)
 		{
 			$input = $this->getInput($chunksize);
 

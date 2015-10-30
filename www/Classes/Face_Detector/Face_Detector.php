@@ -173,7 +173,7 @@ class Face_Detector {
                 $tree = $trees[$i_tree];
                 $current_node = $tree[0];    
                 $tree_sum = 0;
-                while( $current_node != null ) {
+                while ( $current_node != null ) {
                     $vals = $current_node[0];
                     $node_thresh = $vals[0];
                     $leftval = $vals[1];

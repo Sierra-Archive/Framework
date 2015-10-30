@@ -342,11 +342,11 @@ class Financeiro_UsuarioControle extends Financeiro_Controle
             $titulo             = __('Conta a Pagar');
             $titulo_plural      = __('Contas a Pagar');
             $titulo_unico       = 'contasapagar';
-        }else if ($tema==='Pago') {
+        } else if ($tema==='Pago') {
             $titulo             = __('Conta Paga');
             $titulo_plural      = __('Contas Pagas');
             $titulo_unico       = 'contaspagas';
-        }else if ($tema==='Receber') {
+        } else if ($tema==='Receber') {
             $titulo             = __('Conta a Pagar');
             $titulo_plural      = __('Contas a Pagar');
             $titulo_unico       = 'contasareceber';
@@ -408,7 +408,7 @@ class Financeiro_UsuarioControle extends Financeiro_Controle
                 $this->_Visual->Blocar($html);
                 if ($layoult==='Unico') {
                     $this->_Visual->Bloco_Unico_CriaJanela($titulo.' #'.$identificador->id);
-                }else if ($layoult==='Maior') {
+                } else if ($layoult==='Maior') {
                     $this->_Visual->Bloco_Maior_CriaJanela($titulo.' #'.$identificador->id);
                 } else {
                     $this->_Visual->Bloco_Menor_CriaJanela($titulo.' #'.$identificador->id);

@@ -31,7 +31,7 @@ class Locomocao_EntregaControle extends Locomocao_Controle
         $bt_add = Array("link"=>"Locomocao/Entrega/Entregas_Add",'icon'=>'add','nome'=>__('Adicionar Entrega'));
         if ($tipobloco==='Unico') {
             $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',10,$bt_add);
-        }else if ($tipobloco==='Maior') {
+        } else if ($tipobloco==='Maior') {
             $this->_Visual->Bloco_Maior_CriaJanela($titulo,'',10,$bt_add);
         } else {
             $this->_Visual->Bloco_Menor_CriaJanela($titulo,'',10,$bt_add);

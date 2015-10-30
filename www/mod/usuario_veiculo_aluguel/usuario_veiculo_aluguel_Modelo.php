@@ -17,9 +17,9 @@ class usuario_veiculo_aluguel_Modelo extends \Framework\App\Modelo
     } 
     static function Financeiro(&$Modelo,$usuarioid,$motivoid) {
         $usuarioid = (int) $usuarioid;
-        if(!isset($usuarioid) || !is_int($usuarioid) || $usuarioid==0) return 0;
+        if (!isset($usuarioid) || !is_int($usuarioid) || $usuarioid==0) return 0;
         $motivoid = (int) $motivoid;
-        if(!isset($motivoid)  || !is_int($motivoid)  || $motivoid==0 ) return 0;
+        if (!isset($motivoid)  || !is_int($motivoid)  || $motivoid==0 ) return 0;
         $Modelo->db->query('UPDATE '.MYSQL_USUARIO_VEICULO_ALUGUEL.' SET pago=1 WHERE id='.$motivoid);
         // BUSCA VALOR DO ALUGUEL
         $sql = $Modelo->db->query('SELECT valor
@@ -34,14 +34,14 @@ class usuario_veiculo_aluguel_Modelo extends \Framework\App\Modelo
         WHERE deletado!=1 AND indicado_por='.$usuarioid.' LIMIT 1'); //P.categoria
         while ($campo = $sql->fetch_object()) {
             $idindicado = $campo->id;
-            if($campo->grupo!=0) {
+            if ($campo->grupo!=0) {
                 eval('$novovalor = round((0.5*$valor/100), 2);');
                 $dt_vencimento = date("Y-m-d", time() + (FINANCEIRO_DIASVENCIMENTO * 86400));
                 Financeiro_Modelo::MovInt_Inserir($Modelo,$campo->id,$novovalor,1,'usuario_rede',$usuarioid,$dt_vencimento);                
             }
             ++$i;
         }
-        if($i>0) {
+        if ($i>0) {
             // ACRESCENTA PORCENTAGENS PARA AMIGOS DE NIVEL 2
             $i = 0;
             $sql = $Modelo->db->query('SELECT id,grupo
@@ -49,7 +49,7 @@ class usuario_veiculo_aluguel_Modelo extends \Framework\App\Modelo
             WHERE deletado!=1 AND indicado_por='.$idindicado.' LIMIT 1'); //P.categoria
             while ($campo = $sql->fetch_object()) {
                 $idindicado = $campo->id;
-                if($campo->grupo!=0) {
+                if ($campo->grupo!=0) {
                     eval('$novovalor = round((0.5*$valor/100), 2);');
                     $dt_vencimento = date("Y-m-d", time() + (FINANCEIRO_DIASVENCIMENTO * 86400));
                     Financeiro_Modelo::MovInt_Inserir($Modelo,$campo->id,$novovalor,1,'usuario_rede',$usuarioid,$dt_vencimento);                
@@ -57,14 +57,14 @@ class usuario_veiculo_aluguel_Modelo extends \Framework\App\Modelo
                 ++$i;
             }
         }
-        if($i>0) {
+        if ($i>0) {
             // ACRESCENTA PORCENTAGENS PARA AMIGOS DE NIVEL 3
             $i = 0;
             $sql = $Modelo->db->query('SELECT id,grupo
             FROM '.MYSQL_USUARIOS.'
             WHERE deletado!=1 AND indicado_por='.$idindicado.' LIMIT 1'); //P.categoria
             while ($campo = $sql->fetch_object()) {
-                if($campo->grupo!=0) {
+                if ($campo->grupo!=0) {
                     eval('$novovalor = round((0.5*$valor/100), 2);');
                     $dt_vencimento = date("Y-m-d", time() + (FINANCEIRO_DIASVENCIMENTO * 86400));
                     Financeiro_Modelo::MovInt_Inserir($Modelo,$campo->id,$novovalor,1,'usuario_rede',$usuarioid,$dt_vencimento);                
@@ -85,7 +85,7 @@ class usuario_veiculo_aluguel_Modelo extends \Framework\App\Modelo
             ++$i;
             $veiculo = $campo->MARCA.' '.$campo->modelo.' '.$campo->cc.'cc';
         }
-        if($i==0) return 'Erro';
+        if ($i==0) return 'Erro';
         return  Array('Aluguel',$veiculo);
     }
 }

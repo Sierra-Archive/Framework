@@ -37,10 +37,10 @@ header("Cache-Control: post-check=0, pre-check=0", false);
 header("Pragma: no-cache");*/
 
 // Zipa Arquivo
-if (isset($_SERVER['HTTP_ACCEPT_ENCODING']) && substr_count($_SERVER['HTTP_ACCEPT_ENCODING'], 'gzip')){
+if (isset($_SERVER['HTTP_ACCEPT_ENCODING']) && substr_count($_SERVER['HTTP_ACCEPT_ENCODING'], 'gzip')) {
     header('Content-Encoding: gzip');
     ob_start("ob_gzhandler");
-}else{
+} else {
     ob_start();
 }
  
@@ -63,17 +63,17 @@ try{
     AutoLoader::registerDirectory('../www');
 }
 // Se der MERDA, Dispara Erro
-catch(Exception $e){
-    if(SISTEMA_DEBUG===true){
+catch(Exception $e) {
+    if (SISTEMA_DEBUG===true) {
         echo  'Mensagem: '.$e->getMessage().'<br>Codigo: '.$e->getCode().'<br>Arquivo: '.$e->getFile().'<br>Linha: '.$e->getLine();
         echo  '<br>Previus: '.$e->getPrevious().'<br>Traço: '.$e->getTraceAsString(); exit;
-    }else{
+    } else {
         // Chama Erro
-        if($e->getCode()!=404 && $e->getCode()!=403){
+        if ($e->getCode()!=404 && $e->getCode()!=403) {
             Erro_Email($e->getCode(), $e->getMessage(), $e->getFile(), $e->getLine(), $e->getPrevious(), $e->getTraceAsString());
         }
         // Redireciona
-        if(defined('SISTEMA_SUB') && SISTEMA_SUB!='erro' && defined('URL_PATH') && $e->getCode()!=2828)\Framework\App\Sistema_Funcoes::Erro($e->getCode());
+        if (defined('SISTEMA_SUB') && SISTEMA_SUB!='erro' && defined('URL_PATH') && $e->getCode()!=2828)\Framework\App\Sistema_Funcoes::Erro($e->getCode());
         else _Sistema_erroControle::Erro_Puro($e->getCode());
     }
 }

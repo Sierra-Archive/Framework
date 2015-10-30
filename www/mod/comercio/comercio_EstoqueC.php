@@ -269,7 +269,7 @@ class comercio_EstoqueControle extends comercio_Controle
                 foreach ($materiais as &$valor) {
                     if ($valor->documento==0) {
                         $documento = __('Nfe');
-                    }else if ($valor->documento==1) {
+                    } else if ($valor->documento==1) {
                         $documento = __('Boleto');
                     } else {
                         $documento = __('Recibo');

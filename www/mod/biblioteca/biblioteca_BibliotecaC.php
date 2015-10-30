@@ -34,7 +34,7 @@ class biblioteca_BibliotecaControle extends biblioteca_Controle
         $resultado_arquivo = $this->_Modelo->db->Sql_Select('Biblioteca', Array('id'=>$id),1);
         if ($resultado_arquivo===false || !is_object($resultado_arquivo)) {
             return _Sistema_erroControle::Erro_Fluxo('Essa Arquivo não existe:'. $raiz,404);
-        }else if ($resultado_arquivo->tipo==1) {
+        } else if ($resultado_arquivo->tipo==1) {
             return _Sistema_erroControle::Erro_Fluxo('Essa Pasta não pode baixar:'. $raiz,404);
         }
         $endereco = 'bibliotecas'.DS.strtolower($resultado_arquivo->arquivo.'.'.$resultado_arquivo->ext);
@@ -184,18 +184,18 @@ class biblioteca_BibliotecaControle extends biblioteca_Controle
             $resultado_pasta = $_Modelo->db->Sql_Select('Biblioteca', '{sigla}id=\''.$raiz.'\'',1);
             if ($resultado_pasta===false) {
                 return _Sistema_erroControle::Erro_Fluxo('Essa Pasta não existe:'. $raiz,404);
-            }else if ($resultado_pasta->tipo!=1) {
+            } else if ($resultado_pasta->tipo!=1) {
                 return _Sistema_erroControle::Erro_Fluxo('Não é uma pasta:'. $raiz,404);
             }
             // Add ao Endereço
             $enderecopai = (int) $resultado_pasta->parent;
             $endereco =    '<a href="'.URL_PATH.'biblioteca/Biblioteca/Bibliotecas/'.$enderecopai.'" border="1" class="lajax link_titulo" data-acao="">'.
                             $resultado_pasta->nome.'</a> / '.$endereco;
-            while(is_int($enderecopai) && $enderecopai!=0) {
+            while (is_int($enderecopai) && $enderecopai!=0) {
                 $resultado_pasta2 = $_Modelo->db->Sql_Select('Biblioteca', '{sigla}id=\''.$enderecopai.'\'',1);
                 if ($resultado_pasta2===false) {
                     return _Sistema_erroControle::Erro_Fluxo('Pasta Pai não existe:'. $enderecopai,404);
-                }else if ($resultado_pasta->tipo!=1) {
+                } else if ($resultado_pasta->tipo!=1) {
                     return _Sistema_erroControle::Erro_Fluxo('O pai Não é uma pasta:'. $enderecopai,404);
                 }
                 $enderecopai = (int) $resultado_pasta2->parent;
@@ -384,7 +384,7 @@ class biblioteca_BibliotecaControle extends biblioteca_Controle
             
             $this->_Visual->Blocar($saida);
             $this->_Visual->Bloco_Unico_CriaJanela(__('Visualizando Documento'),'',0);
-        }else
+        } else
         // Se for arquivo de Imagem como Gif, JPG, JPEG, PNG, TIFF
         if ($resultado->tipo!=1 && ($extensao==='gif' || $extensao==='jpg' || $extensao==='jpeg' || $extensao==='png' || $extensao==='tiff')) {
             $endereco = 'bibliotecas'.DS.strtolower($resultado->arquivo.'.'.$extensao);

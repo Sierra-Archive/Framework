@@ -43,7 +43,7 @@ class DooDigestAuth{
 
         //user => password
         //$users = array('admin' => '1234', 'guest' => 'guest');
-        if(!empty($_SERVER['REDIRECT_HTTP_AUTHORIZATION']) && strpos($_SERVER['REDIRECT_HTTP_AUTHORIZATION'], 'Digest')===0) {
+        if (!empty($_SERVER['REDIRECT_HTTP_AUTHORIZATION']) && strpos($_SERVER['REDIRECT_HTTP_AUTHORIZATION'], 'Digest')===0) {
             $_SERVER['PHP_AUTH_DIGEST'] = $_SERVER['REDIRECT_HTTP_AUTHORIZATION'];
         }
 
@@ -51,9 +51,9 @@ class DooDigestAuth{
             header('WWW-Authenticate: Digest realm="'.$realm.
                    '",qop="auth",nonce="'.uniqid().'",opaque="'.md5($realm).'"');
             header('HTTP/1.1 401 Unauthorized');
-            if($fail_msg!=NULL)
+            if ($fail_msg!=NULL)
                 die($fail_msg);
-            if($fail_url!=NULL)
+            if ($fail_url!=NULL)
                 die("<script>window.location.href = '$fail_url'</script>");
             exit;
         }
@@ -63,9 +63,9 @@ class DooDigestAuth{
             header('WWW-Authenticate: Digest realm="'.$realm.
                    '",qop="auth",nonce="'.uniqid().'",opaque="'.md5($realm).'"');
             header('HTTP/1.1 401 Unauthorized');
-            if($fail_msg!=NULL)
+            if ($fail_msg!=NULL)
                 die($fail_msg);
-            if($fail_url!=NULL)
+            if ($fail_url!=NULL)
                 die("<script>window.location.href = '$fail_url'</script>");
             exit;
         }
@@ -79,9 +79,9 @@ class DooDigestAuth{
             header('HTTP/1.1 401 Unauthorized');
             header('WWW-Authenticate: Digest realm="'.$realm.
                    '",qop="auth",nonce="'.uniqid().'",opaque="'.md5($realm).'"');
-            if($fail_msg!=NULL)
+            if ($fail_msg!=NULL)
                 die($fail_msg);
-            if($fail_url!=NULL)
+            if ($fail_url!=NULL)
                 die("<script>window.location.href = '$fail_url'</script>");
             exit;
         }

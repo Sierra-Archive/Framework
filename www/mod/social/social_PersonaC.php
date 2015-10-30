@@ -313,7 +313,7 @@ class social_PersonaControle extends social_Controle
         $titulo = __('Comentários do Persona').' ('.$i.')';
         if ($tipo=='Unico') {
             $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',10);
-        }else if ($tipo=='Esquerda') {
+        } else if ($tipo=='Esquerda') {
             $this->_Visual->Bloco_Maior_CriaJanela($titulo,'',10);
         } else {
             $this->_Visual->Bloco_Menor_CriaJanela($titulo,'',10);
@@ -462,7 +462,7 @@ class social_PersonaControle extends social_Controle
             foreach ($personas as $indice=>&$valor) {
                 if ($valor->persona1==$persona_id) {
                     $tabela['Nome'][$i]        = $valor->persona22;
-                }else if ($valor->persona2==$persona_id) {
+                } else if ($valor->persona2==$persona_id) {
                     $tabela['Nome'][$i]           = $valor->persona12;
                 } else {
                     $tabela['Nome de Um'][$i]           = $valor->persona12;
@@ -482,7 +482,7 @@ class social_PersonaControle extends social_Controle
         $titulo = __('Listagem de Ficada de Pessoas').' ('.$i.')';
         if ($tipo=='Unico') {
             $this->_Visual->Bloco_Unico_CriaJanela($titulo);
-        }else if ($tipo=='Esquerda') {
+        } else if ($tipo=='Esquerda') {
             $this->_Visual->Bloco_Maior_CriaJanela($titulo);
         } else {
             $this->_Visual->Bloco_Menor_CriaJanela($titulo);

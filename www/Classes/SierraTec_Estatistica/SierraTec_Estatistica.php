@@ -32,9 +32,9 @@ class SierraTec_Estatistica {
             foreach($resultado as $Registro) {
                 if ($tipo=='int') {
                     $query = $coluna.'='.$resultado;
-                }else if ($tipo=='float') {
+                } else if ($tipo=='float') {
                     $query = $coluna.'='.$resultado;
-                }else if ($tipo=='date') {
+                } else if ($tipo=='date') {
                     $query = '('.$coluna.'='.$resultado.' AND '.$coluna.'='.$resultado.')';
                 } else {
                     continue;

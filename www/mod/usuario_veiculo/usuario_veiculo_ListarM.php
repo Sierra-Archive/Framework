@@ -32,7 +32,7 @@ class usuario_veiculo_ListarModelo extends usuario_veiculo_Modelo
         
         // grava ultimas datas para cada evento
         $where = '';
-        if($veiculo!=0) $where = ' && V.id='.$veiculo;
+        if ($veiculo!=0) $where = ' && V.id='.$veiculo;
         $sql = $this->db->query('SELECT C.nome AS CATEGORIA, V.id, V.foto, V.ano, V.modelo, M.nome as MARCA, V.cc, V.valor1, V.valor2, V.valor3, V.franquia
         FROM '.MYSQL_USUARIO_VEICULO.' V, '.MYSQL_CAT.' C, '.MYSQL_USUARIO_VEICULO_MARCAS.' M
         WHERE V.deletado=0 && V.categoria=C.id && V.marca=M.id '.$where.' ORDER BY V.id'); //P.categoria
@@ -47,7 +47,7 @@ class usuario_veiculo_ListarModelo extends usuario_veiculo_Modelo
         // e a data inicial da reserva como data final
         // a data final da reserva grava no lugar da ultima data do evento
         $where = '';
-        if($veiculo!=0) $where = ' && veiculo='.$veiculo;
+        if ($veiculo!=0) $where = ' && veiculo='.$veiculo;
         $sql = $this->db->query(' SELECT data_inicial, data_final, veiculo
         FROM '.MYSQL_USUARIO_VEICULO_ALUGUEL.' WHERE deletado!=1 AND data_inicial>'.$datainicial.''.$where.' ORDER BY data_inicial'); //P.categoria
         while ($campo = $sql->fetch_object()) {

@@ -117,7 +117,7 @@ class usuario_PerfilControle extends usuario_Controle
         $fileTypes = array('jpg','jpeg','gif','png'); // File extensions
         $dir = 'usuario'.DS;
         $ext = $this->Upload($dir,$fileTypes,$id.'_cnh');
-        if($ext!='falso') {
+        if ($ext!='falso') {
             $this->_Modelo->CNHfoto_Upload_Alterar($id,$ext);  
         }
     }
@@ -130,11 +130,11 @@ class usuario_PerfilControle extends usuario_Controle
     static function usuarios_Upload_Cnh(&$controle,&$Modelo,&$Visual) {
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Acl = $Registro->_Acl();
-        if($_Acl->logado_usuario->foto_cnh=='') {
+        if ($_Acl->logado_usuario->foto_cnh=='') {
             $Visual->Blocar('<font color="#FF0000"><b>Você ainda não subiu sua CNH</b></font><br>');
         } else {
-            if($_Acl->logado_usuario->foto_cnh_apv==0) $Visual->Blocar('<font color="#FF0000"><b>Aguardando Aprovação da CNH</b></font><br>');
-            else if($_Acl->logado_usuario->foto_cnh_apv==2) $Visual->Blocar('<b>CNH Aprovada</b><br>');
+            if ($_Acl->logado_usuario->foto_cnh_apv==0) $Visual->Blocar('<font color="#FF0000"><b>Aguardando Aprovação da CNH</b></font><br>');
+            else if ($_Acl->logado_usuario->foto_cnh_apv==2) $Visual->Blocar('<b>CNH Aprovada</b><br>');
             else                                             $Visual->Blocar('<font color="#FF0000"><b>CNH Negada</b></font><br>');
         }
         $Visual->Blocar($Visual->Show_Upload('usuario','Perfil','CNHFoto','User_CNH_Imagem'.$_Acl->logado_usuario->id,$_Acl->logado_usuario->foto_cnh,'usuario'.DS,$_Acl->logado_usuario->id));
@@ -163,7 +163,7 @@ class usuario_PerfilControle extends usuario_Controle
         $alterar    = Array();
         $sucesso = $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);   
         
-        if($sucesso===true) {
+        if ($sucesso===true) {
             $this->_Modelo->Usuario_Logar('',$usuario->senha,'');
         }
     }
@@ -172,16 +172,16 @@ class usuario_PerfilControle extends usuario_Controle
         $usuario = $this->_Modelo->db->Sql_Select('Usuario', Array('id'=>$id));
         
         //Verifica Usuario
-        if(!is_object($usuario)) {
+        if (!is_object($usuario)) {
             return false;
         }
         
         // Verifica Tipo
-        if($tipo===false) {
-            if($usuario->grupo==CFG_TEC_IDCLIENTE) {
+        if ($tipo===false) {
+            if ($usuario->grupo==CFG_TEC_IDCLIENTE) {
                 $tipo   = __('Cliente');
                 $tipo2  = 'cliente';
-            }else if($usuario->grupo==CFG_TEC_IDFUNCIONARIO) {
+            } else if ($usuario->grupo==CFG_TEC_IDFUNCIONARIO) {
                 $tipo   = __('Funcionário');
                 $tipo2  = 'funcionario';
             } else {
@@ -193,14 +193,14 @@ class usuario_PerfilControle extends usuario_Controle
             $tipo = ucfirst($tipo);
         }
         // GAmbiarra Para Consertar erro de acento em url
-        if($tipo=='Funcionrio' || $tipo=="Funcionario") $tipo = "Funcionário";
-        if($tipo=="Usurio" || $tipo=="Usuario")         $tipo = __('Usuário');
+        if ($tipo=='Funcionrio' || $tipo=="Funcionario") $tipo = "Funcionário";
+        if ($tipo=="Usurio" || $tipo=="Usuario")         $tipo = __('Usuário');
         // Cria Tipo 2:
-        if($tipo=='Cliente') {
+        if ($tipo=='Cliente') {
             $tipo2      = 'cliente';
             $tipo_pass  = CFG_TEC_CAT_ID_CLIENTES;
             $tipo   = Framework\Classes\Texto::Transformar_Plural_Singular(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Cliente_nome'));
-        }else if($tipo=='Funcionário') {
+        } else if ($tipo=='Funcionário') {
             $tipo2  = 'funcionario';
             $tipo_pass  = CFG_TEC_CAT_ID_FUNCIONARIOS;
         } else {
@@ -228,7 +228,7 @@ class usuario_PerfilControle extends usuario_Controle
      * @version 0.4.2
      */
     public function Perfil_Edit2($tipo=false) {
-        if(isset($_POST["nome"])) {
+        if (isset($_POST["nome"])) {
             $nome = $_POST["nome"];
         } else {
             $nome = __('Perfil');
