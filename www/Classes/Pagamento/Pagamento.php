@@ -41,11 +41,11 @@ class Pagamento
         );
     }
 
-    public function _Pagar(&$pagamento){
+    public function _Pagar(&$pagamento) {
         return '<a title=\"URL do pagamento\" href=\"'.$this->_instancia->Pagamento($pagamento).'\">Ir para URL do pagamento.</a>';
     }
 
-    public function _Retornar(&$pagamento){
+    public function _Retornar(&$pagamento) {
         
     }
 }

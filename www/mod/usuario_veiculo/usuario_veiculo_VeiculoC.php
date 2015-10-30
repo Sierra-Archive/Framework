@@ -15,40 +15,40 @@ class usuario_veiculo_VeiculoControle extends usuario_veiculo_Controle
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    public function __construct(){
+    public function __construct() {
         parent::__construct();
     }
-    static function Campos_Deletar(&$campos){
+    static function Campos_Deletar(&$campos) {
         self::DAO_Campos_Retira($campos, 'franquia');
-        if(!\Framework\App\Sistema_Funcoes::Perm_Modulos('usuario_veiculo_aluguel')){
+        if(!\Framework\App\Sistema_Funcoes::Perm_Modulos('usuario_veiculo_aluguel')) {
             self::DAO_Campos_Retira($campos, 'cc');
             self::DAO_Campos_Retira($campos, 'aluguel_disponivel');
             self::DAO_Campos_Retira($campos, 'valor1');
             self::DAO_Campos_Retira($campos, 'valor2');
             self::DAO_Campos_Retira($campos, 'valor3');
         }
-        if(!\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_veiculo_VeiculoIPVA')){
+        if(!\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_veiculo_VeiculoIPVA')) {
             self::DAO_Campos_Retira($campos, 'ipva');
             self::DAO_Campos_Retira($campos, 'ipva_valor');
             self::DAO_Campos_Retira($campos, 'ipva_data');
         }
-        if(!\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_veiculo_VeiculoREVISAO')){
+        if(!\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_veiculo_VeiculoREVISAO')) {
             self::DAO_Campos_Retira($campos, 'revisao');
         }
-        if(!\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_veiculo_VeiculoAVALIACAO')){
+        if(!\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_veiculo_VeiculoAVALIACAO')) {
             self::DAO_Campos_Retira($campos, 'data_avaliacao');
         }
-        if(!\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_veiculo_VeiculoVALOR')){
+        if(!\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_veiculo_VeiculoVALOR')) {
             self::DAO_Campos_Retira($campos, 'valor');
         }
-        if(!\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_veiculo_VeiculoVISTORIA')){
+        if(!\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_veiculo_VeiculoVISTORIA')) {
             self::DAO_Campos_Retira($campos, 'data_vistoria');
             self::DAO_Campos_Retira($campos, 'data_vistoria2');
         }
-        if(!\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_veiculo_VeiculoRENAVAN')){
+        if(!\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_veiculo_VeiculoRENAVAN')) {
             self::DAO_Campos_Retira($campos, 'renavan');
         }
-        if(!\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_veiculo_VeiculoOBS')){
+        if(!\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_veiculo_VeiculoOBS')) {
             self::DAO_Campos_Retira($campos, 'obs');
         }
     }
@@ -65,15 +65,15 @@ class usuario_veiculo_VeiculoControle extends usuario_veiculo_Controle
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    public function Main(){
+    public function Main() {
         return false; 
     }
-    static function Endereco_Veiculo($true=true){
+    static function Endereco_Veiculo($true=true) {
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
         $titulo = __('Veiculos');
         $link   = 'usuario_veiculo/Veiculo/Veiculos';
-        if($true===true){
+        if($true===true) {
             $_Controle->Tema_Endereco($titulo,$link);
         } else {
             $_Controle->Tema_Endereco($titulo);
@@ -84,7 +84,7 @@ class usuario_veiculo_VeiculoControle extends usuario_veiculo_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Veiculos($export=false){
+    public function Veiculos($export=false) {
         self::Endereco_Veiculo(false);
         $i = 0;
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
@@ -101,7 +101,7 @@ class usuario_veiculo_VeiculoControle extends usuario_veiculo_Controle
             )
         )));
         $linhas = $this->_Modelo->db->Sql_Select('Usuario_Veiculo');
-        if($linhas!==false && !empty($linhas)){
+        if($linhas!==false && !empty($linhas)) {
             if(is_object($linhas)) $linhas = Array(0=>$linhas);
             reset($linhas);
             foreach ($linhas as $indice=>&$valor) {
@@ -110,10 +110,10 @@ class usuario_veiculo_VeiculoControle extends usuario_veiculo_Controle
                 $tabela['Marca'][$i]                = $valor->marca2;
                 $tabela['Modelo'][$i]               = $valor->modelo2;
                 $tabela['Ano'][$i]                  = $valor->ano;
-                if(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_veiculo_VeiculoIPVA')){
+                if(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_veiculo_VeiculoIPVA')) {
                     $tabela['IPVA'][$i]                 = $valor->ipva;
                 }
-                if(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_veiculo_VeiculoVALOR')){
+                if(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_veiculo_VeiculoVALOR')) {
                     $tabela['Valor do Veiculo'][$i]     = $valor->valor;
                 }
                 $tabela['Funções'][$i]   = /*$this->_Visual->Tema_Elementos_Btn('Visualizar'      ,Array('Visualizar Veiculo'    ,'usuario_veiculo/Veiculo/Veiculos_Popup/'.$valor->id.'/'    ,'')).*/
@@ -122,7 +122,7 @@ class usuario_veiculo_VeiculoControle extends usuario_veiculo_Controle
                                            $this->_Visual->Tema_Elementos_Btn('Deletar'         ,Array('Deletar Veiculo'                        ,'usuario_veiculo/Veiculo/Veiculos_Del/'.$valor->id.'/'     ,'Deseja realmente deletar esse Veiculo ?'));
                 ++$i;
             }
-            if($export!==false){
+            if($export!==false) {
                 self::Export_Todos($export,$tabela, 'Veiculos');
             } else {
                 $this->_Visual->Show_Tabela_DataTable($tabela);
@@ -142,7 +142,7 @@ class usuario_veiculo_VeiculoControle extends usuario_veiculo_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Veiculos_Add(){
+    public function Veiculos_Add() {
         self::Endereco_Veiculo(true);
         // Carrega Config
         $titulo1    = __('Adicionar Veiculo');
@@ -161,7 +161,7 @@ class usuario_veiculo_VeiculoControle extends usuario_veiculo_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Veiculos_Add2(){
+    public function Veiculos_Add2() {
         $titulo     = __('Veiculo Adicionado com Sucesso');
         $dao        = 'Usuario_Veiculo';
         $funcao     = '$this->Veiculos();';
@@ -176,7 +176,7 @@ class usuario_veiculo_VeiculoControle extends usuario_veiculo_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Veiculos_Edit($id){
+    public function Veiculos_Edit($id) {
         self::Endereco_Veiculo(true);
         // Carrega Config
         $titulo1    = 'Editar Veiculo (#'.$id.')';
@@ -196,7 +196,7 @@ class usuario_veiculo_VeiculoControle extends usuario_veiculo_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Veiculos_Edit2($id){
+    public function Veiculos_Edit2($id) {
         $titulo     = __('Veiculo Editado com Sucesso');
         $dao        = Array('Usuario_Veiculo',$id);
         $funcao     = '$this->Veiculos();';
@@ -212,7 +212,7 @@ class usuario_veiculo_VeiculoControle extends usuario_veiculo_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Veiculos_Del($id){
+    public function Veiculos_Del($id) {
         
         
     	$id = (int) $id;
@@ -220,7 +220,7 @@ class usuario_veiculo_VeiculoControle extends usuario_veiculo_Controle
         $linha = $this->_Modelo->db->Sql_Select('Usuario_Veiculo', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($linha);
         // Mensagem
-    	if($sucesso===true){
+    	if($sucesso===true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
@@ -240,18 +240,18 @@ class usuario_veiculo_VeiculoControle extends usuario_veiculo_Controle
         $this->_Visual->Json_Info_Update('Titulo', __('Veiculo deletado com Sucesso'));  
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
-    public function Veiculos_View($veiculo_id = false){
+    public function Veiculos_View($veiculo_id = false) {
         if($veiculo_id===false || $veiculo_id==0 || !isset($veiculo_id)) return _Sistema_erroControle::Erro_Fluxo('Veiculo não informado',404);
         $this->Veiculos_Popup(      $veiculo_id  , false );
-        if(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_veiculo_Comentario')){
+        if(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_veiculo_Comentario')) {
             $this->Veiculos_Comentario( $veiculo_id          );
         }
-        if(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_veiculo_Evento')){
+        if(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_veiculo_Evento')) {
             $this->Veiculos_Evento( $veiculo_id          );
         }
         $this->_Visual->Json_Info_Update('Titulo', __('Visualizar Comentários do Veiculo'));
     }
-    public function Veiculos_Popup($veiculo_id = false, $popup=true){
+    public function Veiculos_Popup($veiculo_id = false, $popup=true) {
         if($veiculo_id===false || $veiculo_id==0 || !isset($veiculo_id)) return _Sistema_erroControle::Erro_Fluxo('Veiculo não informado',404);
         // mostra todas as suas mensagens
         $where = Array(
@@ -263,33 +263,33 @@ class usuario_veiculo_VeiculoControle extends usuario_veiculo_Controle
         $html .= '<b>Marca:</b> '.$veiculo->marca2.'<br>';  
         $html .= '<b>Modelo:</b> '.$veiculo->modelo2.'<br>';  
         $html .= '<b>Ano:</b> '.$veiculo->ano.'<br>';
-        if(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_veiculo_VeiculoVALOR')){
+        if(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_veiculo_VeiculoVALOR')) {
             $html .= '<b>Valor do Veiculo:</b> '.$veiculo->valor;
         }
         $html .= '</div><div class="col-6">'; 
-        if(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_veiculo_VeiculoIPVA')){
+        if(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_veiculo_VeiculoIPVA')) {
             $html .= '<b>Nº Ipva:</b> '.$veiculo->ipva; 
             $html .= '<b>Data Ipva:</b> '.$veiculo->ipva_data; 
             $html .= '<b>Valor Ipva:</b> '.$veiculo->ipva_valor;
         } 
-        if(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_veiculo_VeiculoRENAVAN')){
+        if(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_veiculo_VeiculoRENAVAN')) {
             $html .= '<b>Renavan:</b> '.$veiculo->renavan.'<br>';  
         }
-        if(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_veiculo_VeiculoVISTORIA')){
+        if(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_veiculo_VeiculoVISTORIA')) {
             $html .= '<b>Data Vistoria:</b> '.$veiculo->data_vistoria.'<br>';  
             $html .= '<b>Data da Próxima Vistoria:</b> '.$veiculo->data_vistoria2.'<br>';  
         }
-        if(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_veiculo_VeiculoREVISAO')){
+        if(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_veiculo_VeiculoREVISAO')) {
             $html .= '<b>Revisão:</b> '.$veiculo->revisao.'<br>';  
         }
-        if(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_veiculo_VeiculoOBS')){
+        if(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_veiculo_VeiculoOBS')) {
             $html .= '<b>Observação:</b> '.$veiculo->obs; 
         }
         
         
         $html .= '</div>';    
         $titulo = __('Informações do Veiculo');
-        if($popup){
+        if($popup) {
             $conteudo = array(
                 'id' => 'popup',
                 'title' => $titulo,
@@ -317,7 +317,7 @@ class usuario_veiculo_VeiculoControle extends usuario_veiculo_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Veiculos_Comentario($veiculo_id = false, $export=false){
+    public function Veiculos_Comentario($veiculo_id = false, $export=false) {
         $i = 0;
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
             Array(
@@ -332,13 +332,13 @@ class usuario_veiculo_VeiculoControle extends usuario_veiculo_Controle
                 'Link'      => 'usuario_veiculo/Veiculo/Veiculos_Comentario/'.$veiculo_id,
             )
         )));
-        if($veiculo_id===false){
+        if($veiculo_id===false) {
             $where = Array();
         } else {
             $where = Array('veiculo'=>$veiculo_id);
         }
         $linhas = $this->_Modelo->db->Sql_Select('Usuario_Veiculo_Comentario',$where);
-        if($linhas!==false && !empty($linhas)){
+        if($linhas!==false && !empty($linhas)) {
             if(is_object($linhas)) $linhas = Array(0=>$linhas);
             reset($linhas);
             foreach ($linhas as $indice=>&$valor) {
@@ -349,7 +349,7 @@ class usuario_veiculo_VeiculoControle extends usuario_veiculo_Controle
                                                 $this->_Visual->Tema_Elementos_Btn('Deletar'         ,Array('Deletar Comentário de Veiculo'       ,'usuario_veiculo/Veiculo/Veiculos_Comentario_Del/'.$veiculo_id.'/'.$valor->id.'/'     ,'Deseja realmente deletar esse Comentário desse Veiculo ?'));
                 ++$i;
             }
-            if($export!==false){
+            if($export!==false) {
                 self::Export_Todos($export,$tabela, 'Veiculos (Comentários)');
             } else {
                 $this->_Visual->Show_Tabela_DataTable($tabela);
@@ -369,7 +369,7 @@ class usuario_veiculo_VeiculoControle extends usuario_veiculo_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Veiculos_Comentario_Add($veiculo_id = false){
+    public function Veiculos_Comentario_Add($veiculo_id = false) {
         if($veiculo_id===false) return _Sistema_erroControle::Erro_Fluxo('Veiculo não informado',404);
         // Carrega Config
         $titulo1    = __('Adicionar Comentário de Veiculo');
@@ -388,7 +388,7 @@ class usuario_veiculo_VeiculoControle extends usuario_veiculo_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Veiculos_Comentario_Add2($veiculo_id = false){
+    public function Veiculos_Comentario_Add2($veiculo_id = false) {
         if($veiculo_id===false) return _Sistema_erroControle::Erro_Fluxo('Veiculo não informado',404);
         $titulo     = __('Comentário do Veiculo Adicionado com Sucesso');
         $dao        = 'Usuario_Veiculo_Comentario';
@@ -404,7 +404,7 @@ class usuario_veiculo_VeiculoControle extends usuario_veiculo_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Veiculos_Comentario_Edit($veiculo_id = false,$id = 0){
+    public function Veiculos_Comentario_Edit($veiculo_id = false,$id = 0) {
         if($veiculo_id===false) return _Sistema_erroControle::Erro_Fluxo('Veiculo não informado',404);
         if($id         == 0   ) return _Sistema_erroControle::Erro_Fluxo('Comentário não informado',404);
         // Carrega Config
@@ -425,7 +425,7 @@ class usuario_veiculo_VeiculoControle extends usuario_veiculo_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Veiculos_Comentario_Edit2($veiculo_id = false,$id = 0){
+    public function Veiculos_Comentario_Edit2($veiculo_id = false,$id = 0) {
         if($veiculo_id===false) return _Sistema_erroControle::Erro_Fluxo('Veiculo não informado',404);
         if($id         == 0   ) return _Sistema_erroControle::Erro_Fluxo('Comentário não informado',404);
         $titulo     = __('Comentário de Veiculo Editado com Sucesso');
@@ -443,7 +443,7 @@ class usuario_veiculo_VeiculoControle extends usuario_veiculo_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Veiculos_Comentario_Del($veiculo_id = false,$id = 0){
+    public function Veiculos_Comentario_Del($veiculo_id = false,$id = 0) {
         if($veiculo_id===false) return _Sistema_erroControle::Erro_Fluxo('Veiculo não informado',404);
         if($id         == 0   ) return _Sistema_erroControle::Erro_Fluxo('Comentário não informado',404);
         
@@ -454,7 +454,7 @@ class usuario_veiculo_VeiculoControle extends usuario_veiculo_Controle
         $comentario = $this->_Modelo->db->Sql_Select('Usuario_Veiculo_Comentario', $where);
         $sucesso =  $this->_Modelo->db->Sql_Delete($comentario);
         // Mensagem
-    	if($sucesso===true){
+    	if($sucesso===true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
@@ -479,8 +479,8 @@ class usuario_veiculo_VeiculoControle extends usuario_veiculo_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Veiculos_Evento($veiculo_id = false){
-        if($veiculo_id===false){
+    public function Veiculos_Evento($veiculo_id = false) {
+        if($veiculo_id===false) {
             $where = Array();
         } else {
             $where = Array('veiculo'=>$veiculo_id);
@@ -488,7 +488,7 @@ class usuario_veiculo_VeiculoControle extends usuario_veiculo_Controle
         $i = 0;
         $this->_Visual->Blocar('<a title="Adicionar Evento de Veiculo" class="btn btn-success lajax explicar-titulo" data-acao="" href="'.URL_PATH.'usuario_veiculo/Veiculo/Veiculos_Evento_Add/'.$veiculo_id.'">Adicionar novo evento nesse Veiculo</a><div class="space15"></div>');
         $linhas = $this->_Modelo->db->Sql_Select('Usuario_Veiculo_Evento');
-        if($linhas!==false && !empty($linhas)){
+        if($linhas!==false && !empty($linhas)) {
             if(is_object($linhas)) $linhas = Array(0=>$linhas);
             reset($linhas);
             foreach ($linhas as $indice=>&$valor) {
@@ -515,7 +515,7 @@ class usuario_veiculo_VeiculoControle extends usuario_veiculo_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Veiculos_Evento_Add($veiculo_id = false){
+    public function Veiculos_Evento_Add($veiculo_id = false) {
         if($veiculo_id===false) return _Sistema_erroControle::Erro_Fluxo('Veiculo não informado',404);
         // Carrega Config
         $titulo1    = __('Adicionar Evento de Veiculo');
@@ -534,7 +534,7 @@ class usuario_veiculo_VeiculoControle extends usuario_veiculo_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Veiculos_Evento_Add2($veiculo_id = false){
+    public function Veiculos_Evento_Add2($veiculo_id = false) {
         if($veiculo_id===false) return _Sistema_erroControle::Erro_Fluxo('Veiculo não informado',404);
         $titulo     = __('Evento do Veiculo Adicionado com Sucesso');
         $dao        = 'Usuario_Veiculo_Evento';
@@ -550,7 +550,7 @@ class usuario_veiculo_VeiculoControle extends usuario_veiculo_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Veiculos_Evento_Edit($veiculo_id = false,$id = 0){
+    public function Veiculos_Evento_Edit($veiculo_id = false,$id = 0) {
         if($veiculo_id===false) return _Sistema_erroControle::Erro_Fluxo('Veiculo não informado',404);
         if($id         == 0   ) return _Sistema_erroControle::Erro_Fluxo('Evento não informado',404);
         // Carrega Config
@@ -571,7 +571,7 @@ class usuario_veiculo_VeiculoControle extends usuario_veiculo_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Veiculos_Evento_Edit2($veiculo_id = false,$id = 0){
+    public function Veiculos_Evento_Edit2($veiculo_id = false,$id = 0) {
         if($veiculo_id===false) return _Sistema_erroControle::Erro_Fluxo('Veiculo não informado',404);
         if($id         == 0   ) return _Sistema_erroControle::Erro_Fluxo('Evento não informado',404);
         $titulo     = __('Evento de Veiculo Editado com Sucesso');
@@ -589,7 +589,7 @@ class usuario_veiculo_VeiculoControle extends usuario_veiculo_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Veiculos_Evento_Del($veiculo_id = false,$id = 0){
+    public function Veiculos_Evento_Del($veiculo_id = false,$id = 0) {
         if($veiculo_id===false) return _Sistema_erroControle::Erro_Fluxo('Veiculo não informado',404);
         if($id         == 0   ) return _Sistema_erroControle::Erro_Fluxo('Evento não informado',404);
         
@@ -600,7 +600,7 @@ class usuario_veiculo_VeiculoControle extends usuario_veiculo_Controle
         $evento = $this->_Modelo->db->Sql_Select('Usuario_Veiculo_Evento', $where);
         $sucesso =  $this->_Modelo->db->Sql_Delete($evento);
         // Mensagem
-    	if($sucesso===true){
+    	if($sucesso===true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),

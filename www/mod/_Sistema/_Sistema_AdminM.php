@@ -2,10 +2,10 @@
 
 class _Sistema_AdminModelo extends _Sistema_Modelo
 {
-    public function __construct(){
+    public function __construct() {
         parent::__construct();
     }
-    public function Configs(){
+    public function Configs() {
         // Table's primary key
         $primaryKey = 'chave';
         $tabela = 'Sistema_Config';
@@ -30,7 +30,7 @@ class _Sistema_AdminModelo extends _Sistema_Modelo
 
 
         $function = '';
-        if ($perm_editar){
+        if ($perm_editar) {
             $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Editar\'     ,Array(__(\'Editar Configuração\')        ,\'_Sistema/Admin/Configs_Edit/\'.$d.\'/\'    ,\'\'),true);';
         }
         

@@ -2,10 +2,10 @@
 
 class Locomocao_EntregaModelo extends Locomocao_Modelo
 {
-    public function __construct(){
+    public function __construct() {
         parent::__construct();
     }
-    public function Entregas(){
+    public function Entregas() {
         // Table's primary key
         $primaryKey = 'id';
         $tabela = 'Locomocao_Entrega';
@@ -31,10 +31,10 @@ class Locomocao_EntregaModelo extends Locomocao_Modelo
 
 
         $function = '';
-        if ($perm_editar){
+        if ($perm_editar) {
             $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Editar\'     ,Array(__(\'Editar Entrega\')        ,\'Locomocao/Entrega/Entregas_Edit/\'.$d.\'/\'    ,\'\'),true);';
         }
-        if ($perm_del){
+        if ($perm_del) {
             $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Deletar\'    ,Array(__(\'Deletar Entrega\')       ,\'Locomocao/Entrega/Entregas_Del/\'.$d.\'/\'     ,__(\'Deseja realmente deletar essa Entrega ?\')),true);';
         }
         

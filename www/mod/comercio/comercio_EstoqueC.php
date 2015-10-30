@@ -15,7 +15,7 @@ class comercio_EstoqueControle extends comercio_Controle
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    public function __construct(){
+    public function __construct() {
         parent::__construct();
     }
     /**
@@ -31,14 +31,14 @@ class comercio_EstoqueControle extends comercio_Controle
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    public function Main(){
+    public function Main() {
         \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'comercio/Estoque/Estoques');
         return false;
     }
-    static function Endereco_Estoque($true=true,$produto=false){
+    static function Endereco_Estoque($true=true,$produto=false) {
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
-        if ($produto===false){
+        if ($produto===false) {
             $titulo = __('Histórico de Estoque');
             $link = 'comercio/Estoque/Estoques';
         } else {
@@ -46,18 +46,18 @@ class comercio_EstoqueControle extends comercio_Controle
             $link = 'comercio/Estoque/Estoques/'.$produto->id;
             comercio_ProdutoControle::Endereco_Produto();
         }
-        if ($true===true){
+        if ($true===true) {
             $_Controle->Tema_Endereco($titulo,$link);
         } else {
             $_Controle->Tema_Endereco($titulo);
         }
     }
-    static function Endereco_Entrada_Material($true=true){
+    static function Endereco_Entrada_Material($true=true) {
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
         $titulo = __('Entrada de Material');
         $link = 'comercio/Estoque/Material_Entrada';
-        if ($true===true){
+        if ($true===true) {
             $_Controle->Tema_Endereco($titulo,$link);
         } else {
             $_Controle->Tema_Endereco($titulo);
@@ -68,9 +68,9 @@ class comercio_EstoqueControle extends comercio_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Estoques($produto=false){
+    public function Estoques($produto=false) {
         $i = 0;
-        if ($produto===false){
+        if ($produto===false) {
             $where = Array();
             self::Endereco_Estoque(false);
         } else {
@@ -81,19 +81,19 @@ class comercio_EstoqueControle extends comercio_Controle
             self::Endereco_Estoque(false,$produtos);
         }
         $estoques = $this->_Modelo->db->Sql_Select('Comercio_Produto_Estoque',$where);
-        if ($estoques!==false && !empty($estoques)){
+        if ($estoques!==false && !empty($estoques)) {
             if (is_object($estoques)) $estoques = Array(0=>$estoques);
             reset($estoques);
             foreach ($estoques as &$valor) {
                 if ($produto===false) $produto_id = (int) $valor->produto;
                 $valor->qnt     = (int) $valor->qnt;
-                if ($valor->produto>0 && $valor->qnt>0){
+                if ($valor->produto>0 && $valor->qnt>0) {
                     $chamar = $valor->motivo.'_Modelo';
-                    if (!class_exists($chamar)){
+                    if (!class_exists($chamar)) {
                         $chamar = $valor->motivo.'Modelo';
                     }
-                    if (class_exists($chamar)){
-                        if ($valor->positivo==0){
+                    if (class_exists($chamar)) {
+                        if ($valor->positivo==0) {
                             $antes = '<p class="text-error">';
                             $depois = '</a>';
                             $tabela['Tipo'][$i]      = $antes.'Retirada'.$depois;
@@ -102,7 +102,7 @@ class comercio_EstoqueControle extends comercio_Controle
                             $depois = '';
                             $tabela['Tipo'][$i]      = $antes.'Entrada'.$depois;
                         }
-                        if ($valor->data!==NULL && $valor->data!=='' && $valor->data!=='0000-00-00' && $valor->data!=='00/00/0000'){
+                        if ($valor->data!==NULL && $valor->data!=='' && $valor->data!=='0000-00-00' && $valor->data!=='00/00/0000') {
                             $data = $valor->data;
                         } else {
                             $data = $valor->log_date_add;
@@ -130,7 +130,7 @@ class comercio_EstoqueControle extends comercio_Controle
             unset($tabela);
         }
         // Se tiver Vazio
-        if ($i==0){       
+        if ($i==0) {       
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">'.('Nenhuma Movimentação de Estoque').'</font></b></center>');
         }
         $titulo = __('Histórico de Movimentação de Estoque').' ('.$i.')';
@@ -147,19 +147,19 @@ class comercio_EstoqueControle extends comercio_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    static function Estoque_Retorna($produto=false){
+    static function Estoque_Retorna($produto=false) {
         $produto = (int) $produto;
         $quantidade = 0;
         $estoques = \Framework\App\Registro::getInstacia()->_Modelo->db->Sql_Select(
             'Comercio_Produto_Estoque',
             '{sigla}produto=\''.$produto.'\''
         );
-        if ($estoques!==false && !empty($estoques)){
+        if ($estoques!==false && !empty($estoques)) {
             if (is_object($estoques)) $estoques = Array(0=>$estoques);
             reset($estoques);
             foreach ($estoques as &$valor) {
                 $valor->qnt = (int) $valor->qnt;
-                if ($valor->positivo==0){
+                if ($valor->positivo==0) {
                     $quantidade = $quantidade-(int) $valor->qnt;
                 } else {
                     $quantidade = $quantidade+$valor->qnt;
@@ -179,10 +179,10 @@ class comercio_EstoqueControle extends comercio_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    static function Estoque_Inserir($motivo,$motivoid,$produto,$qnt,$data=false){
+    static function Estoque_Inserir($motivo,$motivoid,$produto,$qnt,$data=false) {
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Modelo = &$Registro->_Modelo;
-        if ($data===false){
+        if ($data===false) {
             $data = APP_DATA;
         }
         $estoque = new \Comercio_Produto_Estoque_DAO();
@@ -206,10 +206,10 @@ class comercio_EstoqueControle extends comercio_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    static function Estoque_Remover($motivo,$motivoid,$produto,$qnt,$data=false){
+    static function Estoque_Remover($motivo,$motivoid,$produto,$qnt,$data=false) {
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Modelo = &$Registro->_Modelo;
-        if ($data===false){
+        if ($data===false) {
             $data = APP_DATA;
         }
         $estoque = new \Comercio_Produto_Estoque_DAO();
@@ -227,19 +227,19 @@ class comercio_EstoqueControle extends comercio_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    protected static function Campos_Deletar_Material(&$campos){
-        if (!(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Produto') && \Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Estoque'))){
+    protected static function Campos_Deletar_Material(&$campos) {
+        if (!(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Produto') && \Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Estoque'))) {
             self::DAO_Campos_Retira($campos, 'Produtos Comprados');
         }
         
         
-        if (!\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Estoque_EntradaCategoria')){
+        if (!\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Estoque_EntradaCategoria')) {
             self::DAO_Campos_Retira($campos, 'categoria');
         }
         
         
     }
-    public function Material_Entrada($export=false){
+    public function Material_Entrada($export=false) {
         self::Endereco_Entrada_Material(false);
         $i = 0;
         // BOTAO IMPRIMIR / ADD
@@ -257,19 +257,19 @@ class comercio_EstoqueControle extends comercio_Controle
             )
         )));
         
-        if ($export!==false){
+        if ($export!==false) {
             $materiais = $this->_Modelo->db->Sql_Select('Comercio_Fornecedor_Material',false,0,'');
 
-            if ($materiais!==false && !empty($materiais)){
+            if ($materiais!==false && !empty($materiais)) {
                 $perm_editar = $this->_Registro->_Acl->Get_Permissao_Url('comercio/Estoque/Material_Entrada_Edit');
                 $perm_del = $this->_Registro->_Acl->Get_Permissao_Url('comercio/Estoque/Material_Entrada_Del');
 
                 if (is_object($materiais)) $materiais = Array(0=>$materiais);
                 reset($materiais);
                 foreach ($materiais as &$valor) {
-                    if ($valor->documento==0){
+                    if ($valor->documento==0) {
                         $documento = __('Nfe');
-                    }else if ($valor->documento==1){
+                    }else if ($valor->documento==1) {
                         $documento = __('Boleto');
                     } else {
                         $documento = __('Recibo');
@@ -302,7 +302,7 @@ class comercio_EstoqueControle extends comercio_Controle
         //Carrega Json
         $this->_Visual->Json_Info_Update('Titulo', __('Administrar Entrada de NFE'));
     }
-    public function Material_Entrada_Add(){
+    public function Material_Entrada_Add() {
         self::Endereco_Entrada_Material(true);
          // Carrega Config
         $titulo1    = __('Adicionar Entrada de NFE');
@@ -319,7 +319,7 @@ class comercio_EstoqueControle extends comercio_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Material_Entrada_Add2(){
+    public function Material_Entrada_Add2() {
         if (!isset($_POST['fornecedor'])) return false;
         $titulo     = __('Entrada de NFE Adicionada com Sucesso');
         $dao        = 'Comercio_Fornecedor_Material';
@@ -328,7 +328,7 @@ class comercio_EstoqueControle extends comercio_Controle
         $sucesso2   = __('Entrada de NFE cadastrada com sucesso.');
         $alterar    = Array();
         $sucesso = $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
-        if ($sucesso===true){
+        if ($sucesso===true) {
             $motivo = 'comercio_Estoque';
             $identificador  = $this->_Modelo->db->Sql_Select('Comercio_Fornecedor_Material', Array(),1,'id DESC');
             $identificador  = $identificador->id;
@@ -337,7 +337,7 @@ class comercio_EstoqueControle extends comercio_Controle
              * TRABALHA COM ESTOQUE se tiver produtos
              */
             
-            if (\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Produto') && \Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Estoque')){
+            if (\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Produto') && \Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Estoque')) {
 
                // Pega A Entrada
                 $produto  = $this->_Modelo->db->Sql_Select(
@@ -347,9 +347,9 @@ class comercio_EstoqueControle extends comercio_Controle
                     )
                 );
                 // Pega os Valores do Serviço de Instalaçao
-                if ($produto!==false){
+                if ($produto!==false) {
                     if (is_object($produto)) $produto = Array($produto);
-                    foreach($produto as &$valor){
+                    foreach($produto as &$valor) {
                         self::Estoque_Inserir($motivo,$identificador,$valor->produto,$valor->prod_qnt);
                     }
                 }
@@ -379,7 +379,7 @@ class comercio_EstoqueControle extends comercio_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Material_Entrada_Edit($id){
+    public function Material_Entrada_Edit($id) {
         self::Endereco_Entrada_Material(true);
         // Carrega Config
         $titulo1    = 'Editar Entrada de NFE (#'.$id.')';
@@ -399,7 +399,7 @@ class comercio_EstoqueControle extends comercio_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Material_Entrada_Edit2($id){
+    public function Material_Entrada_Edit2($id) {
         $id = (int) $id;
         $titulo     = __('Entrada de NFE Editada com Sucesso');
         $dao        = Array('Comercio_Fornecedor_Material',$id);
@@ -408,7 +408,7 @@ class comercio_EstoqueControle extends comercio_Controle
         $sucesso2   = ''.$_POST["documento"].' teve a alteração bem sucedida';
         $alterar    = Array();
         $sucesso = $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);  
-        if ($sucesso===true){
+        if ($sucesso===true) {
             
             $motivo = 'comercio_Estoque';
 
@@ -418,7 +418,7 @@ class comercio_EstoqueControle extends comercio_Controle
              * TRABALHA COM ESTOQUE se tiver produtos
              */
             
-            if (\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Produto') && \Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Estoque')){
+            if (\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Produto') && \Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Estoque')) {
                 // Deleta Antigo
                 $material = $this->_Modelo->db->Sql_Select('Comercio_Produto_Estoque', Array('motivo'=>$motivo,'motivoid'=>$id));
                 $sucesso2 =  $this->_Modelo->db->Sql_Delete($material,true);
@@ -430,9 +430,9 @@ class comercio_EstoqueControle extends comercio_Controle
                     )
                 );
                 // Pega os Valores do Serviço de Instalaçao
-                if ($produto!==false){
+                if ($produto!==false) {
                     if (is_object($produto)) $produto = Array($produto);
-                    foreach($produto as &$valor){
+                    foreach($produto as &$valor) {
                         self::Estoque_Inserir($motivo,$identificador,$valor->produto,$valor->prod_qnt);
                     }
                 }
@@ -465,7 +465,7 @@ class comercio_EstoqueControle extends comercio_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Material_Entrada_Del($id){
+    public function Material_Entrada_Del($id) {
         
         
     	$id = (int) $id;
@@ -484,7 +484,7 @@ class comercio_EstoqueControle extends comercio_Controle
         $sucesso4 =  $this->_Modelo->db->Sql_Delete($produtos,true);
         
         // Mensagem
-    	if ($sucesso===true){
+    	if ($sucesso===true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletada'),

@@ -284,7 +284,7 @@ class JSMinPlus
 				$params = $n->params;
 				for ($i = 0, $j = count($params); $i < $j; $i++)
 					$s .= ($i ? ',' : '') . $params[$i];
-				$s .= '){' . $this->parseTree($n->body, true) . '}';
+				$s .= ') {' . $this->parseTree($n->body, true) . '}';
 			break;
 
 			case KEYWORD_IF:
@@ -317,7 +317,7 @@ class JSMinPlus
 			break;
 
 			case KEYWORD_SWITCH:
-				$s = 'switch(' . $this->parseTree($n->discriminant) . '){';
+				$s = 'switch(' . $this->parseTree($n->discriminant) . ') {';
 				$cases = $n->cases;
 				for ($i = 0, $j = count($cases); $i < $j; $i++)
 				{
@@ -386,7 +386,7 @@ class JSMinPlus
 				for ($i = 0, $j = count($catchClauses); $i < $j; $i++)
 				{
 					$t = $catchClauses[$i];
-					$s .= 'catch(' . $t->varName . ($t->guard ? ' if ' . $this->parseTree($t->guard) : '') . '){' . $this->parseTree($t->block, true) . '}';
+					$s .= 'catch(' . $t->varName . ($t->guard ? ' if ' . $this->parseTree($t->guard) : '') . ') {' . $this->parseTree($t->block, true) . '}';
 				}
 				if ($n->finallyBlock)
 					$s .= 'finally{' . $this->parseTree($n->finallyBlock, true) . '}';
@@ -617,7 +617,7 @@ class JSMinPlus
 						$params = $t->params;
 						for ($i = 0, $j = count($params); $i < $j; $i++)
 							$s .= ($i ? ',' : '') . $params[$i];
-						$s .= '){' . $this->parseTree($t->body, true) . '}';
+						$s .= ') {' . $this->parseTree($t->body, true) . '}';
 					}
 				}
 				$s .= '}';

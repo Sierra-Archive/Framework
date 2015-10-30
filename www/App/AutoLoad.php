@@ -15,13 +15,13 @@ define('DAO_PATH'       , ROOT_PADRAO.'DAO'.DS);
  * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
  * @version 0.4.2
  */
-function __autoload($class){
+function __autoload($class) {
     $original = $class;
     
     // Carrega Dao
-    if (strpos($class, '_DAO')!==false){
+    if (strpos($class, '_DAO')!==false) {
         $class = str_replace(Array('_'), Array('.'), $class);
-        if ( file_exists  (DAO_PATH . $class.'.php')){
+        if ( file_exists  (DAO_PATH . $class.'.php')) {
             require_once (DAO_PATH . $class.'.php');
         } else {
             throw new \Exception('Classe Dao não encontrada'.$class."\n\n<br><Br>Original: ".$original, 2802);
@@ -29,16 +29,16 @@ function __autoload($class){
     }
     
     // Se for Classe App
-    if (strpos($class, 'Framework\App')===0){
+    if (strpos($class, 'Framework\App')===0) {
         return __autoload_Sitec($class);
     }
     
     // Classes
-    if (strpos($class, 'Framework\Classes')!==false){
+    if (strpos($class, 'Framework\Classes')!==false) {
         $class_partes = explode('\\',$class);
         $class = $class_partes[sizeof($class_partes)-1];
         $class = ucfirst($class);
-        if ( file_exists  (CLASS_PATH . $class.DS.$class.'.php')){
+        if ( file_exists  (CLASS_PATH . $class.DS.$class.'.php')) {
             require_once (CLASS_PATH . $class.DS.$class.'.php');
             return true;
         } else {
@@ -47,9 +47,9 @@ function __autoload($class){
     }
     
     // Principal
-    if (substr($class, -10)==='_Principal'){
+    if (substr($class, -10)==='_Principal') {
         $class = str_replace('_Principal', '', $class);
-        if ( file_exists  (MOD_PATH.$class.DS.'_Principal.Class.php')){
+        if ( file_exists  (MOD_PATH.$class.DS.'_Principal.Class.php')) {
             require_once(MOD_PATH.$class.DS.'_Principal.Class.php');
             return true;
         } else {
@@ -58,10 +58,10 @@ function __autoload($class){
     }
 
     // Interface
-    if (strpos($class, 'Framework\\')!==false && strpos($class, 'Interface')!==false){
+    if (strpos($class, 'Framework\\')!==false && strpos($class, 'Interface')!==false) {
         $class = str_replace(Array('Framework\\'), Array(''), $class);
         $class = str_replace(Array('Interface'), Array(''), $class);
-        if ( file_exists  (INTER_PATH.$class.'.Interface.php')){
+        if ( file_exists  (INTER_PATH.$class.'.Interface.php')) {
             require_once (INTER_PATH.$class.'.Interface.php');
             return true;
         } else {
@@ -72,12 +72,12 @@ function __autoload($class){
     return __autoload_Modules($class);
 }
 
-function __autoload_Sitec($class){
+function __autoload_Sitec($class) {
     $class_partes = \explode('\\', substr($class,strlen('Framework\App\\')));
     $pasta = ''; $j = sizeof($class_partes);
-    if ($j>1){
+    if ($j>1) {
         $i = 0;
-        foreach($class_partes as &$valor){
+        foreach($class_partes as &$valor) {
             ++$i;
             if ($i === $j) {
                 continue;
@@ -85,21 +85,21 @@ function __autoload_Sitec($class){
             $pasta .= $valor.DS;
         }
     }
-    if ( file_exists  (APP_PATH.$pasta.ucfirst($class_partes[$j-1]).'.php')){
+    if ( file_exists  (APP_PATH.$pasta.ucfirst($class_partes[$j-1]).'.php')) {
         require_once (APP_PATH.$pasta.ucfirst($class_partes[$j-1]).'.php');
         return true;
     } else {
         throw new \Exception('Classe Nativa do Framework não encontrada: '.$pasta.ucfirst($class_partes[$j-1])."\n\n<br><Br>Original: ".$class, 2802);
     }
 }
-function __autoload_Modules($class){
+function __autoload_Modules($class) {
     // Se nao passar por Nenhum dos de cima vai Pro Modulo
     // Modulos
-    if (         substr($class, -8)=='Controle'){
+    if (         substr($class, -8)=='Controle') {
         $tipo = 'Controle';
-    }else if (  substr($class, -6)=='Modelo'){
+    }else if (  substr($class, -6)=='Modelo') {
         $tipo = 'Modelo';
-    }else if (  substr($class, -6)=='Visual'){
+    }else if (  substr($class, -6)=='Visual') {
         $tipo = 'Visual';
     } else {
         return false;
@@ -108,7 +108,7 @@ function __autoload_Modules($class){
     $class_qnt = count($class_partes);
     $submodulo = $class_partes[$class_qnt-1];
     $modulo = '';
-    for($i=0;$i<($class_qnt-1);++$i){
+    for($i=0;$i<($class_qnt-1);++$i) {
         if ($i == 0) {
             $modulo .= $class_partes[$i];
         } else {
@@ -116,7 +116,7 @@ function __autoload_Modules($class){
         }
     }
     $contador = 0;
-    if ($modulo==''){
+    if ($modulo=='') {
         // Invez de Substituir, tira só a ultima ocorrencia e sobra oq ta antes
         $modulo = str_replace(Array($tipo), Array(''), $submodulo, $contador);
         if ($contador == 2) {
@@ -133,16 +133,16 @@ function __autoload_Modules($class){
     // Verifica se Modulo é permitido
     
     // Carrega Modulo
-    if ( file_exists  (MOD_PATH . $modulo.DS.$modulo.'_'.$tipo.'.php')){
-        if (!\Framework\App\Sistema_Funcoes::Perm_Modulos($modulo)){
+    if ( file_exists  (MOD_PATH . $modulo.DS.$modulo.'_'.$tipo.'.php')) {
+        if (!\Framework\App\Sistema_Funcoes::Perm_Modulos($modulo)) {
             throw new \Exception('Modulo não permitido para este servidor (AutoLoad): '.$modulo,404);
         }
         require_once (MOD_PATH . $modulo.DS.$modulo.'_'.$tipo.'.php');
     }
-    if ($submodulo!=''){
-        if ( file_exists  (MOD_PATH . $modulo.DS.$modulo.'_'.$submodulo.$tipo[0].'.php')){
+    if ($submodulo!='') {
+        if ( file_exists  (MOD_PATH . $modulo.DS.$modulo.'_'.$submodulo.$tipo[0].'.php')) {
             require_once (MOD_PATH . $modulo.DS.$modulo.'_'.$submodulo.$tipo[0].'.php');
-        }else if ( file_exists  (MOD_PATH . $modulo.DS.$modulo.'_'.ucwords($submodulo).$tipo[0].'.php')){
+        }else if ( file_exists  (MOD_PATH . $modulo.DS.$modulo.'_'.ucwords($submodulo).$tipo[0].'.php')) {
             require_once (MOD_PATH . $modulo.DS.$modulo.'_'.ucwords($submodulo).$tipo[0].'.php');
         } else {
             throw new \Exception('Classe Submodulo não encontrada: '.MOD_PATH . $modulo.DS.$modulo.'_'.$submodulo.$tipo[0].'.php'."\n\n<br><Br>Original: ".$class, 2802);
@@ -158,7 +158,7 @@ spl_autoload_register('__autoload'      );
 
 
 // Continua Configurações
-if (isset($_SERVER['SERVER_NAME'])){
+if (isset($_SERVER['SERVER_NAME'])) {
     define('SRV_NAME', \Framework\App\Sistema_Funcoes::Url_Limpeza($_SERVER['SERVER_NAME']));
 } else {
     define('SRV_NAME', 'localhost');
@@ -167,7 +167,7 @@ if (isset($_SERVER['SERVER_NAME'])){
 if (
         file_exists(INI_PATH_TEMP.SRV_NAME.'/config.php') &&
         file_exists(INI_PATH_TEMP.SRV_NAME.'/config_modulos.php')
-  ){
+  ) {
     require_once (INI_PATH_TEMP.SRV_NAME.'/config.php');
     require_once (INI_PATH_TEMP.SRV_NAME.'/config_modulos.php');
     
@@ -212,7 +212,7 @@ define('MOD_PATH'       , ROOT_PADRAO      .'mod'      .DS);
 function Erro_Get_Leve($error, $message,$_1,$_2)
 {
     //echo var_dump($message.'<br>Arquivo: '.$_1.'<br>Linha:'.$_2,3100);
-    if (SISTEMA_DEBUG===true){
+    if (SISTEMA_DEBUG===true) {
         if ($error == 8)
         {
             throw new \Exception($message.'<br>Arquivo: '.$_1.'<br>Linha:'.$_2,3100);
@@ -240,7 +240,7 @@ function Erro_Get_Fatal() {
     $errline = 0;
     $error = error_get_last();
     if ( $error !== NULL) {
-        if (SISTEMA_DEBUG!==true){
+        if (SISTEMA_DEBUG!==true) {
             $errno   = $error["type"];
             $errfile = $error["file"];
             $errline = $error["line"];
@@ -274,7 +274,7 @@ function Erro_Formatar( $errno, $errstr, $errfile, $errline, $previ = '', $trace
     if ($trace===false) $trace = debug_backtrace( false );
     
     
-    if (isset($_GET['url'])){
+    if (isset($_GET['url'])) {
         $url = htmlspecialchars($_GET['url']);
     } else {
         $url = '';
@@ -293,22 +293,22 @@ function Erro_Formatar( $errno, $errstr, $errfile, $errline, $previ = '', $trace
     $content .= '</tbody></table>';
     
     
-    if (is_array($trace)){
+    if (is_array($trace)) {
         $content .= '<h2>Traço</h2>';
         $content .= '<table><thead bgcolor=\'#c8c8c8\'><th>Arquivo/Linha</th><th>Função</th><th>Argumentos</th></thead><tbody>';
-        while(!empty($trace)){
+        while(!empty($trace)) {
             $linha = array_pop($trace);
-            if (isset($linha['file'])){
+            if (isset($linha['file'])) {
                 $file = $linha['file'];
             } else {
                 $file = 'Nao Reconhecido';
             }
-            if (isset($linha['line'])){
+            if (isset($linha['line'])) {
                 $line = $linha['line'];
             } else {
                 $line = 'Nao Reconhecido';
             }
-            if (isset($linha['function'])){
+            if (isset($linha['function'])) {
                 $function = $linha['function'];
             } else {
                 $function = 'Nao Reconhecido';
@@ -318,7 +318,7 @@ function Erro_Formatar( $errno, $errstr, $errfile, $errline, $previ = '', $trace
             
             $content .= '<td>';
             $i = 1;
-            foreach($linha['args'] as &$valor){
+            foreach($linha['args'] as &$valor) {
                 if ($i>1) $content .= '<br>';
                 $content .= '<b>'.$i.':</b> '.htmlspecialchars(print_r($valor,true), ENT_QUOTES);
                 ++$i;
@@ -344,12 +344,12 @@ function Erro_Formatar( $errno, $errstr, $errfile, $errline, $previ = '', $trace
  * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
  * @version 0.4.2
  */
-function Erro_Email($errno, $errstr, $errfile, $errline){
+function Erro_Email($errno, $errstr, $errfile, $errline) {
     $mensagem = Erro_Formatar( $errno, $errstr, $errfile, $errline);
     
     // Verifica Existencia das Constantes
-    if (!defined('CLASS_PATH')){
-        if (!defined('ROOT')){
+    if (!defined('CLASS_PATH')) {
+        if (!defined('ROOT')) {
             define('ROOT', ROOT_PADRAO);
         } 
         define('CLASS_PATH', ROOT      .'Classes'  .DS);
@@ -389,7 +389,7 @@ register_shutdown_function( "Erro_Get_Fatal" );
  * Carrega Config de Maniputação de Layoult
  */
 define('LAY_CONF', ROOT_PADRAO.'templates'.DS.TEMA_PADRAO.DS.'config'.DS);
-if ( file_exists  (LAY_CONF.'config.php')){
+if ( file_exists  (LAY_CONF.'config.php')) {
     require_once (LAY_CONF.'config.php');
 } else {
     return _Sistema_erroControle::Erro_Fluxo('Config do Layoult não Encontrado',404);
@@ -399,11 +399,11 @@ if ( file_exists  (LAY_CONF.'config.php')){
  * URL DO SISTEMA
  */
 // Se não for https, Verifica se tem certificado e redireciona
-if (Framework\App\Sistema_Funcoes::Url_Secure(SISTEMA_URL.SISTEMA_DIR)){
+if (Framework\App\Sistema_Funcoes::Url_Secure(SISTEMA_URL.SISTEMA_DIR)) {
     define('URL_PATH',          SISTEMA_URL.SISTEMA_DIR);
-}else if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off'){
+}else if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off') {
     Framework\App\Sistema_Funcoes::Redirect(Framework\App\Sistema_Funcoes::Tranf_Url_Https(URL_PATH));
-}else if (isset($_SERVER['HTTP_REFERER']) && Framework\App\Sistema_Funcoes::Url_Secure($_SERVER['HTTP_REFERER']) ){
+}else if (isset($_SERVER['HTTP_REFERER']) && Framework\App\Sistema_Funcoes::Url_Secure($_SERVER['HTTP_REFERER']) ) {
     define('URL_PATH',          Framework\App\Sistema_Funcoes::Tranf_Url_Https(SISTEMA_URL.SISTEMA_DIR));
 } else {
     define('URL_PATH',          SISTEMA_URL.SISTEMA_DIR);
@@ -452,21 +452,21 @@ define('TEMP_PATH',         ROOT.'Temp'.DS.SRV_NAME_SQL.DS);
  */
 define('TEMP_URL',          URL_PATH.'Temp'.US.SRV_NAME_SQL.US);
 // Cria e da Permissao na Pasta de Arquivos principal
-if (!is_dir(ROOT.'media'.DS)){
+if (!is_dir(ROOT.'media'.DS)) {
     mkdir (ROOT.'media'.DS, 0777 );
 }
-if (!is_dir(ROOT.'Temp'.DS)){
+if (!is_dir(ROOT.'Temp'.DS)) {
     mkdir (ROOT.'Temp'.DS, 0777 );
 }
 //chmod (URL_PATH.'media'.DS, 0777 );
 // Permissao de Pasta do Servidor
-if (!is_dir(ARQ_PATH)){
+if (!is_dir(ARQ_PATH)) {
     mkdir (ARQ_PATH, 0777 );
 }
-if (!is_dir(CACHE_PATH)){
+if (!is_dir(CACHE_PATH)) {
     mkdir (CACHE_PATH, 0777 );
 }
-if (!is_dir(TEMP_PATH)){
+if (!is_dir(TEMP_PATH)) {
     mkdir (TEMP_PATH, 0777 );
 }
 
@@ -479,14 +479,14 @@ require_once    APP_PATH . 'Funcao.php';
 /**
  * URL DO SERVIDOR
  */
-if (isset($_SERVER['REQUEST_URI'])){
+if (isset($_SERVER['REQUEST_URI'])) {
     define('SERVER_URL',           $_SERVER['REQUEST_URI']);
 } else {
     define('SERVER_URL',           'localhost');
 }
 
 // SE TIVER CONFIGURACAO GERADA PELO FRAMEWORK ABRE
-if (file_exists(INI_PATH.SRV_NAME.DS.'_temp.php')){
+if (file_exists(INI_PATH.SRV_NAME.DS.'_temp.php')) {
     require_once(INI_PATH.SRV_NAME.DS.'_temp.php');
 }
 
@@ -500,18 +500,18 @@ unset($tempo);
  * Carrega Funções de Internaciolização
  */
 $textdomain = "Framework";
-if (isset($_GET['locale']) && !empty($_GET['locale'])){
+if (isset($_GET['locale']) && !empty($_GET['locale'])) {
     $locale = \Framework\App\Conexao::anti_injection($_GET['locale']);
 } else {
     $locale = SISTEMA_LINGUAGEM_PADRAO;
 }
 
 // Faz Tratamento
-if (strlen($locale)==4){
+if (strlen($locale)==4) {
     $locale = $locale[0].$locale[1].'_'.$locale[2].$locale[3];
 }
 //Verifica Se os Arquivos Existem
-if (!is_file(LANG_PATH.$locale.DS.'Linguagem.js')){
+if (!is_file(LANG_PATH.$locale.DS.'Linguagem.js')) {
     throw new \Exception('Javascript da Linguagem não Encontrado: '.$locale,404);
 }
 
@@ -549,8 +549,8 @@ function _e($string) {
 $tempo = new \Framework\App\Tempo('Teeste1');
 $i = 0;
 $config = Array();
-while($i<1000){
-    $config_Modulo = function (){
+while($i<1000) {
+    $config_Modulo = function () {
         return Array(
             'Nome'                      => __('Agenda'),
             'Descrição'                 =>  '',
@@ -567,7 +567,7 @@ unset($tempo);
 $tempo = new \Framework\App\Tempo('Teeste2');
 $i = 0;
 $config = Array();
-while($i<1000){
+while($i<1000) {
     $config_Modulo = Array(
         'Nome'                      => __('Agenda'),
         'Descrição'                 =>  '',
@@ -583,7 +583,7 @@ unset($tempo);
 $tempo = new \Framework\App\Tempo('Teeste3');
 $i = 0;
 $config = Array();
-while($i<1000){
+while($i<1000) {
     $config['Nome']= __('Agenda');
     $config['Descrição']                 =  '';
      $config['System_Require']            =  '3.1.0';

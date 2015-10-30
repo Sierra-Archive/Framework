@@ -15,7 +15,7 @@ class usuario_mensagem_AdminControle extends usuario_mensagem_Controle
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    public function __construct(){
+    public function __construct() {
         // construct
         parent::__construct();
     }
@@ -30,12 +30,12 @@ class usuario_mensagem_AdminControle extends usuario_mensagem_Controle
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    public function Main(){
+    public function Main() {
         \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'usuario_mensagem/Admin/Mensagem/');
         return false;
     }
-    public function Mensagem(){
-        if($this->_Acl->Usuario_GetID()!=0){
+    public function Mensagem() {
+        if($this->_Acl->Usuario_GetID()!=0) {
             $this->Mensagenslistar(1);
             //$this->Mensagem_formulario();
             // ORGANIZA E MANDA CONTEUDO
@@ -44,12 +44,12 @@ class usuario_mensagem_AdminControle extends usuario_mensagem_Controle
         }
         return false;
     }
-    public function Mensagem_Editar($mensagem=0){
+    public function Mensagem_Editar($mensagem=0) {
         $mensagem = (int) $mensagem;
         if($mensagem==0 || !isset($mensagem)) return;
         self::Mensagem_Editar_Static($mensagem);
     }
-    static function Mensagem_Editar_Static($mensagem){
+    static function Mensagem_Editar_Static($mensagem) {
         $mensagem = (int) $mensagem;
         usuario_mensagem_SuporteControle::Endereco_Suporte_Listar(true,$mensagem);
   
@@ -79,7 +79,7 @@ class usuario_mensagem_AdminControle extends usuario_mensagem_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Mensagem_Del($id){
+    public function Mensagem_Del($id) {
         
         
     	$id = (int) $id;
@@ -87,7 +87,7 @@ class usuario_mensagem_AdminControle extends usuario_mensagem_Controle
         $mensagem = $this->_Modelo->db->Sql_Select('Usuario_Mensagem', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($mensagem);
         // Mensagem
-    	if($sucesso===true){
+    	if($sucesso===true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),

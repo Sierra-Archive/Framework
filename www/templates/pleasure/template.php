@@ -46,7 +46,7 @@
             </div><!--.nav-search-->*/ ?>
 
             <!-- BEGIN SUPPORT  -->
-            <?php if(isset($params['widgets']['Superior'])){ 
+            <?php if(isset($params['widgets']['Superior'])) { 
                  /*$total=count($params['widgets']['Superior']); 
                  for($cont=0;$cont<$total; ++$cont) {  
                      echo $params['widgets']['Superior'][$cont];
@@ -78,11 +78,11 @@
             <div class="page-header full-content">
                     <div class="row">
                             <div class="col-sm-6">
-                                    <h1 class="page-title" id="Framework_Titulo"><?php if($params['site_titulo']==''){ echo __('Sem Titulo'); } else { echo $params['site_titulo']; } ?></h1>
+                                    <h1 class="page-title" id="Framework_Titulo"><?php if($params['site_titulo']=='') { echo __('Sem Titulo'); } else { echo $params['site_titulo']; } ?></h1>
                             </div><!--.col-->
                             <div class="col-sm-6">
                                     <?php 
-                                    if(isset($params['widgets']) && isset($params['widgets']['Navegacao_Endereco'])){
+                                    if(isset($params['widgets']) && isset($params['widgets']['Navegacao_Endereco'])) {
                                         echo '<ol class="breadcrumb">'.
                                              $params['widgets']['Navegacao_Endereco'].
                                              '</ol>'; 
@@ -95,15 +95,15 @@
             <!-- END PAGE HEADER-->
             <!-- BEGIN PAGE CONTENT-->
             <div class="row">
-                <div class="col-sm-12" id="blocounico"<?php if( $params['template']['Bloco_Unico']==''){ ?> style="display: none;"<?php } ?>>
+                <div class="col-sm-12" id="blocounico"<?php if( $params['template']['Bloco_Unico']=='') { ?> style="display: none;"<?php } ?>>
                     <?php echo $params['template']['Bloco_Unico']; ?>
                 </div>
             </div>
             <div class="row">
-                <div class="col-sm-8" id="blocomaior"<?php if( $params['template']['Bloco_Maior']==''){ ?> style="display: none;"<?php } ?>>
+                <div class="col-sm-8" id="blocomaior"<?php if( $params['template']['Bloco_Maior']=='') { ?> style="display: none;"<?php } ?>>
                     <?php echo $params['template']['Bloco_Maior']; ?>
                 </div>
-                <div class="col-sm-4" id="blocomenor"<?php if( $params['template']['Bloco_Menor']==''){ ?> style="display: none;"<?php } ?>>
+                <div class="col-sm-4" id="blocomenor"<?php if( $params['template']['Bloco_Menor']=='') { ?> style="display: none;"<?php } ?>>
                     <?php echo $params['template']['Bloco_Menor']; ?>
                 </div>
             </div>

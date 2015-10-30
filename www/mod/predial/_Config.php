@@ -1,5 +1,5 @@
 <?php
-$config_Modulo = function (){
+$config_Modulo = function () {
     return Array(
         'Nome'                      =>  'predial',
         'Descrição'                 =>  '',
@@ -8,7 +8,7 @@ $config_Modulo = function (){
         'Dependencias'              =>  false,
     );
 };
-$config_Menu = function (){
+$config_Menu = function () {
     return Array(
         'Predial' => Array(
             'Nome'                  => __('Predial'),
@@ -76,7 +76,7 @@ $config_Menu = function (){
         ),
     );
 };
-$config_Permissoes = function (){
+$config_Permissoes = function () {
     return Array(
         // BLOCOS
         Array(
@@ -395,7 +395,7 @@ $config_Permissoes = function (){
  * 
  * @author Ricardo Sierra <web@ricardosierra.com.br>
  */
-$config_Funcional = function (){
+$config_Funcional = function () {
     return Array();
 };
 /**
@@ -404,7 +404,7 @@ $config_Funcional = function (){
  * 
  * @author Ricardo Sierra <web@ricardosierra.com.br>
  */
-$config_Publico = function (){
+$config_Publico = function () {
     return Array(
         /*'{chave}'  => Array(
             'Nome'                  => 'Nome',

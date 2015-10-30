@@ -15,7 +15,7 @@ class comercio_FamiliaControle extends comercio_Controle
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    public function __construct(){
+    public function __construct() {
         parent::__construct();
     }
     /**
@@ -31,16 +31,16 @@ class comercio_FamiliaControle extends comercio_Controle
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    public function Main(){
+    public function Main() {
         \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'comercio/Familia/Familias');
         return false;
     }
-    static function Endereco_Familia($true=true){
+    static function Endereco_Familia($true=true) {
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
         $titulo = __('Familias');
         $link = 'comercio/Familia/Familias';
-        if ($true===true){
+        if ($true===true) {
             $_Controle->Tema_Endereco($titulo,$link);
         } else {
             $_Controle->Tema_Endereco($titulo);
@@ -51,7 +51,7 @@ class comercio_FamiliaControle extends comercio_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Familias($export=false){
+    public function Familias($export=false) {
         self::Endereco_Familia(false);
         $i = 0;
         // BOTAO IMPRIMIR / ADD
@@ -70,7 +70,7 @@ class comercio_FamiliaControle extends comercio_Controle
         )));
         // CONEXAO
         $linhas = $this->_Modelo->db->Sql_Select('Comercio_Familia');
-        if ($linhas!==false && !empty($linhas)){
+        if ($linhas!==false && !empty($linhas)) {
             if (is_object($linhas)) $linhas = Array(0=>$linhas);
             reset($linhas);
             foreach ($linhas as $indice=>&$valor) {
@@ -80,7 +80,7 @@ class comercio_FamiliaControle extends comercio_Controle
                                            $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Familia'       ,'comercio/Familia/Familias_Del/'.$valor->id.'/'     ,'Deseja realmente deletar essa Familia ?'));
                 ++$i;
             }
-            if ($export!==false){
+            if ($export!==false) {
                 self::Export_Todos($export,$tabela, 'Comercio - Produtos (Familias)');
             } else {
                 $this->_Visual->Show_Tabela_DataTable($tabela);
@@ -100,7 +100,7 @@ class comercio_FamiliaControle extends comercio_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Familias_Add(){
+    public function Familias_Add() {
         self::Endereco_Familia(true);
         // Carrega Config
         $titulo1    = __('Adicionar Familia');
@@ -118,7 +118,7 @@ class comercio_FamiliaControle extends comercio_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Familias_Add2(){
+    public function Familias_Add2() {
         $titulo     = __('Familia Adicionada com Sucesso');
         $dao        = 'Comercio_Familia';
         $funcao     = '$this->Familias();';
@@ -133,7 +133,7 @@ class comercio_FamiliaControle extends comercio_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Familias_Edit($id){
+    public function Familias_Edit($id) {
         self::Endereco_Familia(true);
         // Carrega Config
         $titulo1    = 'Editar Familia (#'.$id.')';
@@ -152,7 +152,7 @@ class comercio_FamiliaControle extends comercio_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Familias_Edit2($id){
+    public function Familias_Edit2($id) {
         $titulo     = __('Familia Editada com Sucesso');
         $dao        = Array('Comercio_Familia',$id);
         $funcao     = '$this->Familias();';
@@ -168,7 +168,7 @@ class comercio_FamiliaControle extends comercio_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Familias_Del($id){
+    public function Familias_Del($id) {
         
         
     	$id = (int) $id;
@@ -176,7 +176,7 @@ class comercio_FamiliaControle extends comercio_Controle
         $linha = $this->_Modelo->db->Sql_Select('Comercio_Familia', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($linha);
         // Mensagem
-    	if ($sucesso===true){
+    	if ($sucesso===true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletada'),

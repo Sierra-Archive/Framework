@@ -13,7 +13,7 @@ class usuario_AcessoModelo extends usuario_Modelo
      * @version 0.4.2
      * 
      */
-    public function __construct(){
+    public function __construct() {
         parent::__construct();
     }
     /**
@@ -26,7 +26,7 @@ class usuario_AcessoModelo extends usuario_Modelo
      * 
      * #update
      */
-    /*public function usuarios_Del($id){
+    /*public function usuarios_Del($id) {
 
         $this->db->query('UPDATE '.MYSQL_USUARIOS.' SET deletado=1, ativado=0 WHERE id='.$id);
         

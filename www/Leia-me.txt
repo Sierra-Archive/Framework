@@ -124,7 +124,7 @@ mod/
 								protected $config_mes;
 								protected $config_ano;
 								protected $config_dataixi;
-							 	public function __construct($usuario = '0',$senha = '0'){
+							 	public function __construct($usuario = '0',$senha = '0') {
 								public function redirect($url)
 								public function error($error)
 								public function log($mensagem)

@@ -13,10 +13,10 @@ class usuario_mensagem_AssuntoModelo extends usuario_mensagem_Modelo
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    public function __construct(){
+    public function __construct() {
         parent::__construct();
     }
-    public function Assuntos(){
+    public function Assuntos() {
         
         // Table's primary key
         $primaryKey = 'id';
@@ -25,16 +25,16 @@ class usuario_mensagem_AssuntoModelo extends usuario_mensagem_Modelo
         $perm_editar = $this->_Registro->_Acl->Get_Permissao_Url('usuario_mensagem/Assunto/Assuntos_Edit');
         $perm_del = $this->_Registro->_Acl->Get_Permissao_Url('usuario_mensagem/Assunto/Assuntos_Del');
         
-        if($perm_editar && $perm_del){
+        if($perm_editar && $perm_del) {
             $funcao = function( $d, $row ) {
                 return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Assunto'        ,'usuario_mensagem/Assunto/Assuntos_Edit/'.$d.'/'    ,''),true).
                        Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Assunto'       ,'usuario_mensagem/Assunto/Assuntos_Del/'.$d.'/'     ,'Deseja realmente deletar essa Assunto ?'),true);
             };
-        }else if($perm_editar){
+        }else if($perm_editar) {
             $funcao = function( $d, $row ) {
                 return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Assunto'        ,'usuario_mensagem/Assunto/Assuntos_Edit/'.$d.'/'    ,''),true);
             };
-        }else if($perm_del){
+        }else if($perm_del) {
             $funcao = function( $d, $row ) {
                 return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Assunto'       ,'usuario_mensagem/Assunto/Assuntos_Del/'.$d.'/'     ,'Deseja realmente deletar essa Assunto ?'),true);
             };
@@ -48,7 +48,7 @@ class usuario_mensagem_AssuntoModelo extends usuario_mensagem_Modelo
             array( 'db' => 'setor2', 'dt' => 0),
             array( 'db' => 'nome',   'dt' => 1),
             array( 'db' => 'tempocli',    'dt' => 2 ,
-                'formatter' => function($d, $row){
+                'formatter' => function($d, $row) {
                     return $d.' horas';
                 }
             ),

@@ -15,7 +15,7 @@ class usuario_AnexoControle extends usuario_Controle
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    public function __construct(){
+    public function __construct() {
         // construct
         parent::__construct();
     }
@@ -34,23 +34,23 @@ class usuario_AnexoControle extends usuario_Controle
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    public function Main($id=false,$tipo='Usuarios'){
+    public function Main($id=false,$tipo='Usuarios') {
         \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'usuario/Anexo/Anexar/'.$id.'/'.$tipo);
         return false;   
     }
-    public function Anexar($id=false,$tipo='Usuarios'){
+    public function Anexar($id=false,$tipo='Usuarios') {
         // PEga usuario
-        if ($id==0 || !isset($id)){
+        if ($id==0 || !isset($id)) {
             $id = (int) $this->_Acl->Usuario_GetID();
         } else {
             $id = (int) $id;
         }
         $usuario = $this->_Modelo->db->Sql_Select('Usuario', Array('id'=>$id));
-        if ($tipo===false){
-            if ($usuario->grupo==CFG_TEC_IDCLIENTE){
+        if ($tipo===false) {
+            if ($usuario->grupo==CFG_TEC_IDCLIENTE) {
                 $tipo   = __('Cliente');
                 $tipo2  = 'cliente';
-            }else if ($usuario->grupo==CFG_TEC_IDFUNCIONARIO){
+            }else if ($usuario->grupo==CFG_TEC_IDFUNCIONARIO) {
                 $tipo   = __('Funcionário');
                 $tipo2  = 'funcionario';
             }
@@ -62,11 +62,11 @@ class usuario_AnexoControle extends usuario_Controle
         if ($tipo=='Funcionrio' || $tipo=="Funcionario") $tipo = "Funcionário";
         if ($tipo=="Usurio" || $tipo=="Usuario")         $tipo = __('Usuário');
         // Cria Tipo 2:
-        if ($tipo=='Cliente'){
+        if ($tipo=='Cliente') {
             $tipo2  = 'cliente';
             $tipo   = Framework\Classes\Texto::Transformar_Plural_Singular(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Cliente_nome'));
             $this->Tema_Endereco(__('Clientes'),'usuario/Admin/ListarCliente');
-        }else if ($tipo=='Funcionário'){
+        }else if ($tipo=='Funcionário') {
             $tipo2  = 'funcionario';
             $this->Tema_Endereco(__('Funcionários'),'usuario/Admin/ListarFuncionario');
         } else {
@@ -74,7 +74,7 @@ class usuario_AnexoControle extends usuario_Controle
         }
         // Titulo Anexo
         $nome = '';
-        if ($usuario->nome!=''){
+        if ($usuario->nome!='') {
             $nome .= $usuario->nome;
         }
         $this->Tema_Endereco('Anexos de '.$nome);
@@ -99,10 +99,10 @@ class usuario_AnexoControle extends usuario_Controle
         //Carrega Json
         $this->_Visual->Json_Info_Update('Titulo', __('Listagem de Anexos'));
     }
-    public function VisualizadordeUsuario_Upload($usuario = 0){
-        if ($usuario!==false && $usuario!=0){
+    public function VisualizadordeUsuario_Upload($usuario = 0) {
+        if ($usuario!==false && $usuario!=0) {
             $resultado_usuario = $this->_Modelo->db->Sql_Select('Usuario', Array('id'=>$usuario),1);
-            if ($resultado_usuario===false){
+            if ($resultado_usuario===false) {
                 return _Sistema_erroControle::Erro_Fluxo('Esse usuário não existe:'. $usuario,404);
             }
             // Condicao de Query
@@ -121,7 +121,7 @@ class usuario_AnexoControle extends usuario_Controle
         $ext = $this->Upload($dir,$fileTypes,false);
         $this->layoult_zerar = false;
         // CAso tenha sucesso.
-        if ($ext!==false){
+        if ($ext!==false) {
             
             $arquivo = new \Usuario_Anexo_DAO();
             $arquivo->usuario      = $usuario;
@@ -162,11 +162,11 @@ class usuario_AnexoControle extends usuario_Controle
             $this->_Visual->Json_Info_Update('Historico', false);
         }
     }
-    private function Anexos_Processar($usuario = false){
+    private function Anexos_Processar($usuario = false) {
         // Anexo
-        if ($usuario!==false && $usuario!=0){
+        if ($usuario!==false && $usuario!=0) {
             $resultado_usuario = $this->_Modelo->db->Sql_Select('Usuario', Array('id'=>$usuario),1);
-            if ($resultado_usuario===false){
+            if ($resultado_usuario===false) {
                 return _Sistema_erroControle::Erro_Fluxo('Esse usuário não existe:'. $usuario,404);
             }
             // Condicao de Query
@@ -179,14 +179,14 @@ class usuario_AnexoControle extends usuario_Controle
         $html = '';
         // COntinua
         $anexos = $this->_Modelo->db->Sql_Select('Usuario_Anexo',$where);
-        if ($anexos!==false && !empty($anexos)){
+        if ($anexos!==false && !empty($anexos)) {
             // Percorre Anexos
             if (is_object($anexos)) $anexos = Array(0=>$anexos);
             reset($anexos);
-            if (!empty($anexos)){
+            if (!empty($anexos)) {
                 foreach ($anexos as &$valor) {
                     $endereco = ARQ_PATH.'usuario'.DS.'Anexos'.DS.strtolower($valor->endereco.'.'.$valor->ext);
-                    if (file_exists($endereco)){
+                    if (file_exists($endereco)) {
                         $tamanho    =   round(filesize($endereco)/1024);
                         $tipo       =   $valor->ext;
                         $tabela['Nome'][$i]             = '<a href="'.URL_PATH.'usuario/Anexo/Download/'.$valor->id.'/" border="1" class="lajax" data-acao="">'.$valor->nome.'</a>';
@@ -205,9 +205,9 @@ class usuario_AnexoControle extends usuario_Controle
         $titulo = 'Anexos (<span id="anexo_arquivos_num">'.$i.'</span>)';
         return Array($titulo,$html,$i);
     }
-    public function Download($anexo,$usuario=false){
+    public function Download($anexo,$usuario=false) {
         $resultado_arquivo = $this->_Modelo->db->Sql_Select('Usuario_Anexo', Array('id'=>$anexo),1);
-        if ($resultado_arquivo===false || !is_object($resultado_arquivo)){
+        if ($resultado_arquivo===false || !is_object($resultado_arquivo)) {
             return _Sistema_erroControle::Erro_Fluxo('Esse anexo não existe:'. $anexo,404);
         }
         $endereco = 'usuario'.DS.'Anexos'.DS.strtolower($resultado_arquivo->endereco.'.'.$resultado_arquivo->ext);

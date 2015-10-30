@@ -1,7 +1,7 @@
 <?php
 class Musica_ArtistaControle extends Musica_Controle
 {
-    public function __construct(){
+    public function __construct() {
         parent::__construct();
     }
     /**
@@ -17,20 +17,20 @@ class Musica_ArtistaControle extends Musica_Controle
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    public function Main(){
+    public function Main() {
         \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'Musica/Artista/Artistas');
         return false;
     }
-    static function Endereco_Artista($true=true){
+    static function Endereco_Artista($true=true) {
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
-        if ($true===true){
+        if ($true===true) {
             $_Controle->Tema_Endereco(__('Artistas'),'Musica/Artista/Artistas');
         } else {
             $_Controle->Tema_Endereco(__('Artistas'));
         }
     }
-    static function Artistas_Tabela(&$artistas){
+    static function Artistas_Tabela(&$artistas) {
         $Registro   = &\Framework\App\Registro::getInstacia();
         $Visual     = &$Registro->_Visual;
         
@@ -41,7 +41,7 @@ class Musica_ArtistaControle extends Musica_Controle
         foreach ($artistas as &$valor) {
             $tabela['Nome do Artista'][$i]          =   $valor->nome;
             
-            if ($valor->foto==='' || $valor->foto===false){
+            if ($valor->foto==='' || $valor->foto===false) {
                 $foto = WEB_URL.'img'.US.'icons'.US.'clientes.png';
             } else {
                 $foto = $valor->foto;
@@ -49,7 +49,7 @@ class Musica_ArtistaControle extends Musica_Controle
             $tabela['Foto'][$i]                     = '<img alt="'.__('Foto de Artista').' src="'.$foto.'" style="max-width:100px;" />';
             $tabela['Data Cadastrada'][$i]          =   $valor->log_date_add;
             $status                                 = $valor->status;
-            if ($status!=1){
+            if ($status!=1) {
                 $status = 0;
                 $texto = __('Desativado');
             } else {
@@ -69,7 +69,7 @@ class Musica_ArtistaControle extends Musica_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Artistas($export=false){
+    public function Artistas($export=false) {
         self::Endereco_Artista(false);
         $i = 0;
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
@@ -86,10 +86,10 @@ class Musica_ArtistaControle extends Musica_Controle
             )
         )));
         $artistas = $this->_Modelo->db->Sql_Select('Musica_Album_Artista');
-        if ($artistas!==false && !empty($artistas)){
+        if ($artistas!==false && !empty($artistas)) {
             list($tabela,$i) = self::Artistas_Tabela($artistas);
             
-            if ($export!==false){
+            if ($export!==false) {
                 self::Export_Todos($export,$tabela, 'Artistas');
             } else {
                 $this->_Visual->Show_Tabela_DataTable(
@@ -119,7 +119,7 @@ class Musica_ArtistaControle extends Musica_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Artistas_Add(){
+    public function Artistas_Add() {
         self::Endereco_Artista();
         // Carrega Config
         $titulo1    = __('Adicionar Artista');
@@ -137,7 +137,7 @@ class Musica_ArtistaControle extends Musica_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Artistas_Add2(){
+    public function Artistas_Add2() {
         $titulo     = __('Artista Adicionado com Sucesso');
         $dao        = 'Musica_Album_Artista';
         $funcao     = '$this->Artistas();';
@@ -152,7 +152,7 @@ class Musica_ArtistaControle extends Musica_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Artistas_Edit($id){
+    public function Artistas_Edit($id) {
         self::Endereco_Artista();
         // Carrega Config
         $titulo1    = 'Editar Artista (#'.$id.')';
@@ -171,7 +171,7 @@ class Musica_ArtistaControle extends Musica_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Artistas_Edit2($id){
+    public function Artistas_Edit2($id) {
         $titulo     = __('Artista Editado com Sucesso');
         $dao        = Array('Musica_Album_Artista',$id);
         $funcao     = '$this->Artistas();';
@@ -187,7 +187,7 @@ class Musica_ArtistaControle extends Musica_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Artistas_Del($id){
+    public function Artistas_Del($id) {
         
         
     	$id = (int) $id;
@@ -195,7 +195,7 @@ class Musica_ArtistaControle extends Musica_Controle
         $artista = $this->_Modelo->db->Sql_Select('Musica_Album_Artista', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($artista);
         // Mensagem
-    	if ($sucesso===true){
+    	if ($sucesso===true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
@@ -215,22 +215,22 @@ class Musica_ArtistaControle extends Musica_Controle
         $this->_Visual->Json_Info_Update('Titulo', __('Artista deletado com Sucesso'));
         $this->_Visual->Json_Info_Update('Historico', false);
     }
-    public function Status($id=false){
-        if ($id===false){
+    public function Status($id=false) {
+        if ($id===false) {
             return false;
         }
         $resultado = $this->_Modelo->db->Sql_Select('Musica_Album_Artista', Array('id'=>$id),1);
-        if ($resultado===false || !is_object($resultado)){
+        if ($resultado===false || !is_object($resultado)) {
             return false;
         }
-        if ($resultado->status=='1'){
+        if ($resultado->status=='1') {
             $resultado->status='0';
         } else {
             $resultado->status='1';
         }
         $sucesso = $this->_Modelo->db->Sql_Update($resultado);
-        if ($sucesso){
-            if ($resultado->status==1){
+        if ($sucesso) {
+            if ($resultado->status==1) {
                 $texto = __('Ativado');
             } else {
                 $texto = __('Desativado');

@@ -1,5 +1,5 @@
-(function($){
-	$.fn.colorTip = function(settings){
+(function($) {
+	$.fn.colorTip = function(settings) {
 
 		var defaultSettings = {
 			color		: 'yellow',
@@ -16,7 +16,7 @@
 		*	This will add chainability to the plugin.
 		*/
 		
-		return this.each(function(){
+		return this.each(function() {
 
 			var elem = $(this);
 			
@@ -40,7 +40,7 @@
 			var hasClass = false;
 			for(var i=0;i<supportedColors.length;i++)
 			{
-				if(elem.hasClass(supportedColors[i])){
+				if(elem.hasClass(supportedColors[i])) {
 					hasClass = true;
 					break;
 				}
@@ -48,14 +48,14 @@
 			
 			// If it has been set, it will override the default color
 			
-			if(!hasClass){
+			if(!hasClass) {
 				elem.addClass(settings.color);
 			}
 			
 			// On mouseenter, show the tip, on mouseleave set the
 			// tip to be hidden in half a second.
 			
-			elem.hover(function(){
+			elem.hover(function() {
 
 				tip.show();
 				
@@ -64,12 +64,12 @@
 				
 				scheduleEvent.clear();
 
-			},function(){
+			},function() {
 
 				// Schedule event actualy sets a timeout (as you can
 				// see from the class definition below).
 				
-				scheduleEvent.set(function(){
+				scheduleEvent.set(function() {
 					tip.hide();
 				},settings.timeout);
 
@@ -88,17 +88,17 @@
 	/	Event Scheduler Class Definition
 	*/
 
-	function eventScheduler(){}
+	function eventScheduler() {}
 	
 	eventScheduler.prototype = {
-		set	: function (func,timeout){
+		set	: function (func,timeout) {
 
 			// The set method takes a function and a time period (ms) as
 			// parameters, and sets a timeout
 
 			this.timer = setTimeout(func,timeout);
 		},
-		clear: function(){
+		clear: function() {
 			
 			// The clear method clears the timeout
 			
@@ -111,13 +111,13 @@
 	/	Tip Class Definition
 	*/
 
-	function Tip(txt){
+	function Tip(txt) {
 		this.content = txt;
 		this.shown = false;
 	}
 	
 	Tip.prototype = {
-		generate: function(){
+		generate: function() {
 			
 			// The generate method returns either a previously generated element
 			// stored in the tip variable, or generates it and saves it in tip for
@@ -126,14 +126,14 @@
 			return this.tip || (this.tip = $('<span class="colorTip">'+this.content+
 											 '<span class="pointyTipShadow"></span><span class="pointyTip"></span></span>'));
 		},
-		show: function(){
+		show: function() {
 			if(this.shown) return;
 			
 			// Center the tip and start a fadeIn animation
 			this.tip.css('margin-left',-this.tip.outerWidth()/2).fadeIn('fast');
 			this.shown = true;
 		},
-		hide: function(){
+		hide: function() {
 			this.tip.fadeOut();
 			this.shown = false;
 		}

@@ -3,7 +3,7 @@ namespace Framework\App\Resource\Validation;
 class Cpf 
 {  
     public static function Validates($cpf) {  
-        if (strlen($cpf) === 14){
+        if (strlen($cpf) === 14) {
             return (bool) (self::calcDigVerif(
                     substr(
                         str_replace(

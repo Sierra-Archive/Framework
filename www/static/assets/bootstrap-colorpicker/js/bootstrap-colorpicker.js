@@ -35,7 +35,7 @@
 		constructor: Color,
 		
 		//parse a string to HSB
-		setColor: function(val){
+		setColor: function(val) {
 			val = val.toLowerCase();
 			var that = this;
 			$.each( CPGlobal.stringParsers, function( i, parser ) {
@@ -96,12 +96,12 @@
 			};
 		},
 		
-		toHex: function(h, s, b, a){
+		toHex: function(h, s, b, a) {
 			var rgb = this.toRGB(h, s, b, a);
 			return '#'+((1 << 24) | (parseInt(rgb.r) << 16) | (parseInt(rgb.g) << 8) | parseInt(rgb.b)).toString(16).substr(1);
 		},
 		
-		toHSL: function(h, s, b, a){
+		toHSL: function(h, s, b, a) {
 			if (!h) {
 				h = this.value.h;
 				s = this.value.s;
@@ -130,7 +130,7 @@
 	
 	// Picker object
 	
-	var Colorpicker = function(element, options){
+	var Colorpicker = function(element, options) {
 		this.element = $(element);
 		var format = options.format||this.element.data('color-format')||'hex';
 		this.format = CPGlobal.translateFormats[format];
@@ -146,7 +146,7 @@
 				'focus': $.proxy(this.show, this),
 				'keyup': $.proxy(this.update, this)
 			});
-		} else if (this.component){
+		} else if (this.component) {
 			this.component.on({
 				'click': $.proxy(this.show, this)
 			});
@@ -160,7 +160,7 @@
 			this.alpha = this.picker.find('.colorpicker-alpha')[0].style;
 		}
 		
-		if (this.component){
+		if (this.component) {
 			this.picker.find('.colorpicker-color').hide();
 			this.preview = this.element.find('i')[0].style;
 		} else {
@@ -194,7 +194,7 @@
 			});
 		},
 		
-		update: function(){
+		update: function() {
 			this.color = new Color(this.isInput ? this.element.prop('value') : this.element.data('color'));
 			this.picker.find('i')
 				.eq(0).css({left: this.color.value.s*100, top: 100 - this.color.value.b*100}).end()
@@ -216,14 +216,14 @@
 			});
 		},
 		
-		hide: function(){
+		hide: function() {
 			this.picker.hide();
 			$(window).off('resize', this.place);
 			if (!this.isInput) {
 				$(document).off({
 					'mousedown': this.hide
 				});
-				if (this.component){
+				if (this.component) {
 					this.element.find('input').prop('value', this.format.call(this));
 				}
 				this.element.data('color', this.format.call(this));
@@ -236,7 +236,7 @@
 			});
 		},
 		
-		place: function(){
+		place: function() {
 			var offset = this.component ? this.component.offset() : this.element.offset();
 			this.picker.css({
 				top: offset.top + this.height,
@@ -245,7 +245,7 @@
 		},
 		
 		//preview color change
-		previewColor: function(){
+		previewColor: function() {
 			try {
 				this.preview.backgroundColor = this.format.call(this);
 			} catch(e) {
@@ -263,7 +263,7 @@
 		
 		slider: null,
 		
-		mousedown: function(e){
+		mousedown: function(e) {
 			e.stopPropagation();
 			e.preventDefault();
 			
@@ -301,7 +301,7 @@
 			return false;
 		},
 		
-		mousemove: function(e){
+		mousemove: function(e) {
 			e.stopPropagation();
 			e.preventDefault();
 			var left = Math.max(
@@ -334,7 +334,7 @@
 			return false;
 		},
 		
-		mouseup: function(e){
+		mouseup: function(e) {
 			e.stopPropagation();
 			e.preventDefault();
 			$(document).off({
@@ -366,27 +366,27 @@
 	
 		// translate a format from Color object to a string
 		translateFormats: {
-			'rgb': function(){
+			'rgb': function() {
 				var rgb = this.color.toRGB();
 				return 'rgb('+rgb.r+','+rgb.g+','+rgb.b+')';
 			},
 			
-			'rgba': function(){
+			'rgba': function() {
 				var rgb = this.color.toRGB();
 				return 'rgba('+rgb.r+','+rgb.g+','+rgb.b+','+rgb.a+')';
 			},
 			
-			'hsl': function(){
+			'hsl': function() {
 				var hsl = this.color.toHSL();
 				return 'hsl('+Math.round(hsl.h*360)+','+Math.round(hsl.s*100)+'%,'+Math.round(hsl.l*100)+'%)';
 			},
 			
-			'hsla': function(){
+			'hsla': function() {
 				var hsl = this.color.toHSL();
 				return 'hsla('+Math.round(hsl.h*360)+','+Math.round(hsl.s*100)+'%,'+Math.round(hsl.l*100)+'%,'+hsl.a+')';
 			},
 			
-			'hex': function(){
+			'hex': function() {
 				return  this.color.toHex();
 			}
 		},
@@ -416,7 +416,7 @@
 		
 		// HSBtoRGB from RaphaelJS
 		// https://github.com/DmitryBaranovskiy/raphael/
-		RGBtoHSB: function (r, g, b, a){
+		RGBtoHSB: function (r, g, b, a) {
 			r /= 255;
 			g /= 255;
 			b /= 255;

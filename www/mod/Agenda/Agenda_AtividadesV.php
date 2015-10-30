@@ -13,7 +13,7 @@ class Agenda_AtividadesVisual extends Agenda_Visual
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    public function __construct(){
+    public function __construct() {
       parent::__construct();
     }
     /*
@@ -37,12 +37,12 @@ class Agenda_AtividadesVisual extends Agenda_Visual
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version
     */
-    static function Show_Atividades(&$array){
+    static function Show_Atividades(&$array) {
         $html = '';
         $tamanho = sizeof($array);
         $tabela = new \Framework\Classes\Tabela();
         $tabela->addcabecario(array('Nome / Local','Data','Descrição','Ações'));
-        for($i=0;$i<$tamanho;++$i){
+        for($i=0;$i<$tamanho;++$i) {
             $tabela->addcorpo(array(
                 array("nome" => '<a class="lajax-mesup active" href="'.URL_PATH.'Agenda/compromisso/compromisso/'.$array[$i]['id'].'/" data-acao="">'.$array[$i]['nome'].'</a><br><br>'.$array[$i]['local']),
                 array("nome" => $array[$i]['dt_inicio'].'<br>ás<br>'.$array[$i]['dt_fim']),

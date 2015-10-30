@@ -13,10 +13,10 @@ class Financeiro_ListarModelo extends Financeiro_Modelo
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    public function __construct(){
+    public function __construct() {
       parent::__construct();
     }
-    public function transferencia_inserir($login,$quantia){
+    public function transferencia_inserir($login,$quantia) {
         GLOBAL $config;
         $i = 0;
         $sql = $this->db->query('SELECT id
@@ -32,7 +32,7 @@ class Financeiro_ListarModelo extends Financeiro_Modelo
         Financeiro_Modelo::MovInt_Inserir($this,$userreceptor,$quantia,1,'Financeiro',\Framework\App\Acl::Usuario_GetID_Static(),APP_DATA,APP_HORA);
         return 1;
     }
-    public function sacar_inserir($quantia){
+    public function sacar_inserir($quantia) {
         GLOBAL $config;
         $user = (int) \Framework\App\Acl::Usuario_GetID_Static();
         if (!is_int($user) || $user==0) return 0;

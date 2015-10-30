@@ -15,7 +15,7 @@ class Financeiro_AdminControle extends Financeiro_Controle
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    public function __construct(){
+    public function __construct() {
         parent::__construct();
     }
     /**
@@ -32,7 +32,7 @@ class Financeiro_AdminControle extends Financeiro_Controle
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    public function Main(){
+    public function Main() {
         $this->usuarios_naodevendo();
         $this->usuarios_devendo();
         // ORGANIZA E MANDA CONTEUDO
@@ -54,11 +54,11 @@ class Financeiro_AdminControle extends Financeiro_Controle
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    public function usuarios_devendo(){
+    public function usuarios_devendo() {
         $usuarios = Array();
         $this->_Modelo->Usuarios_devendo($usuarios);
         
-        if (!empty($usuarios)){
+        if (!empty($usuarios)) {
             $i = $this->usuario_formatab($usuarios);
         } else {         
             $i = 0;
@@ -67,11 +67,11 @@ class Financeiro_AdminControle extends Financeiro_Controle
         $titulo = __('Usuarios Devendo').' ('.$i.')';
         $this->_Visual->Bloco_Maior_CriaJanela($titulo);
     }
-    public function usuarios_naodevendo(){
+    public function usuarios_naodevendo() {
         $usuarios = Array();
         $this->_Modelo->Usuarios_naodevendo($usuarios);
         $i = 0;
-        if (!empty($usuarios)){
+        if (!empty($usuarios)) {
             $i = $this->usuario_formatab($usuarios);
         } else {
             $html .= '<center><b><font color="#FF0000" size="5">Nenhum Usuário com Saldo Positivo</font></b></center>';
@@ -79,7 +79,7 @@ class Financeiro_AdminControle extends Financeiro_Controle
         $titulo = __('Usuarios com Dinheiro').' ('.$i.')';
         $this->_Visual->Bloco_Maior_CriaJanela($titulo);
     }
-    public function usuario_formatab(&$usuarios){
+    public function usuario_formatab(&$usuarios) {
         $tabela = Array();
         $i = 0;
         reset($usuarios);
@@ -115,12 +115,12 @@ class Financeiro_AdminControle extends Financeiro_Controle
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    public function pagamentos_Del($id){
+    public function pagamentos_Del($id) {
         
         
     	$id = (int) $id;
     	$sucesso = $this->_Modelo->pagamentos_Del($id);
-    	if ($sucesso===true){
+    	if ($sucesso===true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
@@ -137,12 +137,12 @@ class Financeiro_AdminControle extends Financeiro_Controle
         
         $this->pagamentos_lista();
     }
-    public function financeiro_deposito($usuario = 0){
+    public function financeiro_deposito($usuario = 0) {
         $usuario = (int) $usuario;
         Financeiro_AdminControle::financas_carregajanelaadd($this, $this->_Modelo, $this->_Visual, $usuario);
         $this->_Visual->Json_Info_Update('Titulo','Depositar para Usuário #'.$usuario);
     }
-    public function financeiro_retirar($usuario = 0){
+    public function financeiro_retirar($usuario = 0) {
         $usuario = (int) $usuario;
         Financeiro_AdminControle::financas_carregajanelaretirar($this, $this->_Modelo, $this->_Visual, $usuario);
         $this->_Visual->Json_Info_Update('Titulo','Sacar de Usuário #'.$usuario);
@@ -163,7 +163,7 @@ class Financeiro_AdminControle extends Financeiro_Controle
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    static function financas_carregajanelaadd(&$controle, &$Modelo, &$Visual, $usuario=0){
+    static function financas_carregajanelaadd(&$controle, &$Modelo, &$Visual, $usuario=0) {
         
         if ($usuario==0 || !is_int($usuario)) return 0;
        // cadastro de financas
@@ -171,7 +171,7 @@ class Financeiro_AdminControle extends Financeiro_Controle
         $Visual->Blocar($formulario);
         $Visual->Bloco_Menor_CriaJanela('Depositar para Usuário #'.$usuario);        
     }
-    static function financas_carregajanelaretirar(&$controle, &$Modelo, &$Visual, $usuario=0){
+    static function financas_carregajanelaretirar(&$controle, &$Modelo, &$Visual, $usuario=0) {
         
         if ($usuario==0 || !is_int($usuario)) return 0;
        // cadastro de financas
@@ -203,7 +203,7 @@ class Financeiro_AdminControle extends Financeiro_Controle
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    static function financas_formcadastro(&$controle, &$Modelo, &$Visual,$user){
+    static function financas_formcadastro(&$controle, &$Modelo, &$Visual,$user) {
         
        
         $form = new \Framework\Classes\Form('adminfinanceiroinserir','Financeiro/Admin/financas_inserir/','formajax');
@@ -216,7 +216,7 @@ class Financeiro_AdminControle extends Financeiro_Controle
 
         return $formulario;
     }
-    static function financas_formretirar(&$controle, &$Modelo, &$Visual,$user){
+    static function financas_formretirar(&$controle, &$Modelo, &$Visual,$user) {
         
        
         $form = new \Framework\Classes\Form('adminfinanceiroinserir','Financeiro/Admin/financas_retirar/','formajax');
@@ -249,8 +249,8 @@ class Financeiro_AdminControle extends Financeiro_Controle
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    public function financas_inserir(){
-        if (!isset($_POST["valor"]) || !isset($_POST["obs"]) || !isset($_POST["user"])){
+    public function financas_inserir() {
+        if (!isset($_POST["valor"]) || !isset($_POST["obs"]) || !isset($_POST["user"])) {
             return false;
         }
         
@@ -260,7 +260,7 @@ class Financeiro_AdminControle extends Financeiro_Controle
         $obs = \Framework\App\Conexao::anti_injection($_POST["obs"]);
         $sucesso =  $this->_Modelo->MovExt_Inserir($user,$valor,$obs,1);
         $this->Main();
-        if ($sucesso===true){
+        if ($sucesso===true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Depositado com Sucesso'),
@@ -279,8 +279,8 @@ class Financeiro_AdminControle extends Financeiro_Controle
         // ORGANIZA E MANDA CONTEUDO
         $this->_Visual->Json_Info_Update('Historico',0);    
     }
-    public function financas_retirar(){
-        if (!isset($_POST["valor"]) || !isset($_POST["user"]) || !isset($_POST["obs"])){
+    public function financas_retirar() {
+        if (!isset($_POST["valor"]) || !isset($_POST["user"]) || !isset($_POST["obs"])) {
             return false;
         }
         
@@ -290,7 +290,7 @@ class Financeiro_AdminControle extends Financeiro_Controle
         $obs = \Framework\App\Conexao::anti_injection($_POST["obs"]);
         $sucesso =  $this->_Modelo->MovExt_Inserir($user,$valor,$obs,0);
         $this->Main();
-        if ($sucesso===true){
+        if ($sucesso===true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Retirado com Sucesso'),

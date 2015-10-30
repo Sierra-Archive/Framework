@@ -1,5 +1,5 @@
 <?php
-function pleasure_config(){
+function pleasure_config() {
     return Array(
         'Buscar'           => '<li class="pull-right search-wrap">
             <form class="hidden-xs formajax"  id="form_Sistema_Busca" action="'.URL_PATH.'_Sistema/Principal/Busca">
@@ -12,7 +12,7 @@ function pleasure_config(){
         'plugins'           => Array(
             'abas_inverter'         => true,
             'abas_id'               => 'windows_tab_',
-            'abas_ativar'           => function ($id){
+            'abas_ativar'           => function ($id) {
                 return '$(".nav-tabs > li").removeClass("active");
                 $(".tab-pane").removeClass("active");
                 $(".nav-tabs > li > a[href=\'#windows_tab_'.$id.'\']").parent().addClass("active");

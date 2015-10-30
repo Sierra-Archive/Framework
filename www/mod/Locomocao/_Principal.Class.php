@@ -20,7 +20,7 @@ class Locomocao_Principal implements \Framework\PrincipalInterface
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    static function Home(&$controle, &$Modelo, &$Visual){
+    static function Home(&$controle, &$Modelo, &$Visual) {
         //$dados = Locomocao_Controle::Retorna_Distancia('Av. Paulista, 925 - Paraiso Brazil, São Paulo, Brasil','Av. Brg. Luís Antônio, 400 - República, São Paulo, Brasil');
         
         $html = 'Conteudo';
@@ -32,18 +32,18 @@ class Locomocao_Principal implements \Framework\PrincipalInterface
         $Visual->Blocar($html);   
         $Visual->Bloco_Menor_CriaJanela(__('Disponiveis na Rua'),'',80);
     }
-    static function Busca(&$controle, &$Modelo, &$Visual,$busca){
+    static function Busca(&$controle, &$Modelo, &$Visual,$busca) {
         return false;
     }
-    static function Config(){
-        return false;
-    }
-    
-    static function Relatorio($data_inicio,$data_final,$filtro=false){
+    static function Config() {
         return false;
     }
     
-    static function Estatistica($data_inicio,$data_final,$filtro=false){
+    static function Relatorio($data_inicio,$data_final,$filtro=false) {
+        return false;
+    }
+    
+    static function Estatistica($data_inicio,$data_final,$filtro=false) {
         return false;
     }
 }

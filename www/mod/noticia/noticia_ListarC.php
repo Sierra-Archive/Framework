@@ -15,7 +15,7 @@ class noticia_ListarControle extends noticia_Controle
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    public function __construct(){
+    public function __construct() {
         parent::__construct();
     }
     /**
@@ -31,7 +31,7 @@ class noticia_ListarControle extends noticia_Controle
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    public function Main(){
+    public function Main() {
         $this->Noticias_Listar();
         // ORGANIZA E MANDA CONTEUDO
         $this->_Visual->Json_Info_Update('Titulo', __('Noticias')); 
@@ -42,14 +42,14 @@ class noticia_ListarControle extends noticia_Controle
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    public function Noticias_Listar($categoria=0,$status=1){
+    public function Noticias_Listar($categoria=0,$status=1) {
         $i = 0;
         $where = Array();
         if ($categoria!=0)       $where['categoria'] = $categoria;
         if ($status  !==false)  $where['status']   = $status;
         $noticias = $this->_Modelo->db->Sql_Select('Noticia',$where);
         if (is_object($noticias)) $noticias = Array(0=>$noticias);
-        if ($noticias!==false && !empty($noticias)){
+        if ($noticias!==false && !empty($noticias)) {
             reset($noticias);
             foreach ($noticias as &$valor) {
                 if ($valor->destaque==0)     $destaque = __('Não');
@@ -67,7 +67,7 @@ class noticia_ListarControle extends noticia_Controle
         } else {           
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhuma Noticia</font></b></center>');
         }
-        if ($status==0){
+        if ($status==0) {
             $titulo = __('Todas as Noticias Desativadas').' ('.$i.')';
         } else {
             $titulo = __('Todas as Noticias Ativadas').' ('.$i.')';

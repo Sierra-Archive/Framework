@@ -1,7 +1,7 @@
 <?php
 class predial_AnimalControle extends predial_Controle
 {
-    public function __construct(){
+    public function __construct() {
         parent::__construct();
     }
     /**
@@ -17,22 +17,22 @@ class predial_AnimalControle extends predial_Controle
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    public function Main(){
+    public function Main() {
         \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'predial/Animal/Animais');
         return false;
     }
-    static function Endereco_Animal($true=true){
+    static function Endereco_Animal($true=true) {
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
         $titulo = __('Animais');
         $link = 'predial/Animal/Animais';
-        if ($true===true){
+        if ($true===true) {
             $_Controle->Tema_Endereco($titulo,$link);
         } else {
             $_Controle->Tema_Endereco($titulo);
         }
     }
-    static function Animais_Tabela(&$animais){
+    static function Animais_Tabela(&$animais) {
         $Registro   = &\Framework\App\Registro::getInstacia();
         $Visual     = &$Registro->_Visual;
         $tabela = Array();
@@ -54,7 +54,7 @@ class predial_AnimalControle extends predial_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Animais(){
+    public function Animais() {
         self::Endereco_Animal(false);
         $i = 0;
         // Botao Add
@@ -73,7 +73,7 @@ class predial_AnimalControle extends predial_Controle
         )));
         // Busca
         $animais = $this->_Modelo->db->Sql_Select('Predial_Bloco_Apart_Animal');
-        if ($animais!==false && !empty($animais)){
+        if ($animais!==false && !empty($animais)) {
             list($tabela,$i) = self::Animais_Tabela($animais);
             $this->_Visual->Show_Tabela_DataTable($tabela);
             unset($tabela);
@@ -91,7 +91,7 @@ class predial_AnimalControle extends predial_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Animais_Add(){
+    public function Animais_Add() {
         self::Endereco_Animal();
         // Carrega Config
         $titulo1    = __('Adicionar Animal');
@@ -109,7 +109,7 @@ class predial_AnimalControle extends predial_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Animais_Add2(){
+    public function Animais_Add2() {
         $titulo     = __('Animal Adicionado com Sucesso');
         $dao        = 'Predial_Bloco_Apart_Animal';
         $funcao     = '$this->Animais();';
@@ -124,7 +124,7 @@ class predial_AnimalControle extends predial_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Animais_Edit($id){
+    public function Animais_Edit($id) {
         self::Endereco_Animal();
         // Carrega Config
         $titulo1    = 'Editar Animal (#'.$id.')';
@@ -143,7 +143,7 @@ class predial_AnimalControle extends predial_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Animais_Edit2($id){
+    public function Animais_Edit2($id) {
         $titulo     = __('Animal Editado com Sucesso');
         $dao        = Array('Predial_Bloco_Apart_Animal',$id);
         $funcao     = '$this->Animais();';
@@ -159,7 +159,7 @@ class predial_AnimalControle extends predial_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Animais_Del($id){
+    public function Animais_Del($id) {
         
         
     	$id = (int) $id;
@@ -167,7 +167,7 @@ class predial_AnimalControle extends predial_Controle
         $animal = $this->_Modelo->db->Sql_Select('Predial_Bloco_Apart_Animal', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($animal);
         // Mensagem
-    	if ($sucesso===true){
+    	if ($sucesso===true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),

@@ -13,10 +13,10 @@ class usuario_mensagem_RelatorioModelo extends usuario_mensagem_Modelo
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    public function __construct(){
+    public function __construct() {
       parent::__construct();
     }
-    public function Aberto($datainicial, $datafinal){
+    public function Aberto($datainicial, $datafinal) {
         // Table's primary key
         $primaryKey = 'id';
         $tabela = 'Usuario_Mensagem';
@@ -43,7 +43,7 @@ class usuario_mensagem_RelatorioModelo extends usuario_mensagem_Modelo
             \Framework\Classes\Datatable::complex( $_GET, Framework\App\Registro::getInstacia()->_Conexao, $tabela, $primaryKey, $columns, null,$where )
         );
     }
-    public function Assunto($datainicial, $datafinal){
+    public function Assunto($datainicial, $datafinal) {
         // Table's primary key
         $primaryKey = 'id';
         $tabela = 'Usuario_Mensagem';
@@ -63,7 +63,7 @@ class usuario_mensagem_RelatorioModelo extends usuario_mensagem_Modelo
             }),
             array( 'db' => 'finalizado',    'dt' => 4 ,
                 'formatter' => function( $d, $row ) {
-                    if($d=='1'){
+                    if($d=='1') {
                         return 'Finalizado';
                     } else {
                         return 'Novos Chamados';
@@ -71,9 +71,9 @@ class usuario_mensagem_RelatorioModelo extends usuario_mensagem_Modelo
                     return false;
                 },
                 'search' => function( $search ) {
-                    if(strpos(strtolower('Finalizado'), strtolower($search))!=false){
+                    if(strpos(strtolower('Finalizado'), strtolower($search))!=false) {
                         return '1';
-                    }else if(strpos(strtolower('Novos Chamados'), strtolower($search))!=false){
+                    }else if(strpos(strtolower('Novos Chamados'), strtolower($search))!=false) {
                         return '0';
                     }
                     return false;
@@ -88,7 +88,7 @@ class usuario_mensagem_RelatorioModelo extends usuario_mensagem_Modelo
             \Framework\Classes\Datatable::complex( $_GET, Framework\App\Registro::getInstacia()->_Conexao, $tabela, $primaryKey, $columns, null,$where )
         );
     }
-    public function Esgotado($datainicial, $datafinal){
+    public function Esgotado($datainicial, $datafinal) {
         // Table's primary key
         $primaryKey = 'id';
         $tabela = 'Usuario_Mensagem';
@@ -117,7 +117,7 @@ class usuario_mensagem_RelatorioModelo extends usuario_mensagem_Modelo
             \Framework\Classes\Datatable::complex( $_GET, Framework\App\Registro::getInstacia()->_Conexao, $tabela, $primaryKey, $columns, null,$where )
         );
     }
-    public function Finalizado($datainicial, $datafinal){
+    public function Finalizado($datainicial, $datafinal) {
         // Table's primary key
         $primaryKey = 'id';
         $tabela = 'Usuario_Mensagem';
@@ -145,7 +145,7 @@ class usuario_mensagem_RelatorioModelo extends usuario_mensagem_Modelo
             \Framework\Classes\Datatable::complex( $_GET, Framework\App\Registro::getInstacia()->_Conexao, $tabela, $primaryKey, $columns, null,$where )
         );
     }
-    public function Origem($datainicial, $datafinal){
+    public function Origem($datainicial, $datafinal) {
         // Table's primary key
         $primaryKey = 'id';
         $tabela = 'Usuario_Mensagem';
@@ -165,7 +165,7 @@ class usuario_mensagem_RelatorioModelo extends usuario_mensagem_Modelo
             }),
             array( 'db' => 'finalizado',    'dt' => 4 ,
                 'formatter' => function( $d, $row ) {
-                if($d=='1'){
+                if($d=='1') {
                     return 'Finalizado';
                 } else {
                     return 'Novos Chamados';
@@ -181,7 +181,7 @@ class usuario_mensagem_RelatorioModelo extends usuario_mensagem_Modelo
             \Framework\Classes\Datatable::complex( $_GET, Framework\App\Registro::getInstacia()->_Conexao, $tabela, $primaryKey, $columns, null,$where )
         );
     }
-    public function Produto($datainicial, $datafinal){
+    public function Produto($datainicial, $datafinal) {
         // Table's primary key
         $primaryKey = 'id';
         $tabela = 'Usuario_Mensagem';
@@ -204,7 +204,7 @@ class usuario_mensagem_RelatorioModelo extends usuario_mensagem_Modelo
             \Framework\Classes\Datatable::complex( $_GET, Framework\App\Registro::getInstacia()->_Conexao, $tabela, $primaryKey, $columns, null,$where )
         );
     }
-    public function Qtd_Cidade($datainicial, $datafinal){
+    public function Qtd_Cidade($datainicial, $datafinal) {
         // Table's primary key
         $primaryKey = 'id';
         $tabela = 'Usuario_Mensagem';
@@ -229,7 +229,7 @@ class usuario_mensagem_RelatorioModelo extends usuario_mensagem_Modelo
             \Framework\Classes\Datatable::complex( $_GET, Framework\App\Registro::getInstacia()->_Conexao, $tabela, $primaryKey, $columns, null,$where, $select_Extra, $innerjoin_Extra )
         );
     }
-    public function Qtd_Uf($datainicial, $datafinal){
+    public function Qtd_Uf($datainicial, $datafinal) {
         // Table's primary key
         $primaryKey = 'id';
         $tabela = 'Usuario_Mensagem';

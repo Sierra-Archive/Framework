@@ -14,7 +14,7 @@ class Desenvolvimento_TarefaModelo extends Desenvolvimento_Modelo
      * @version 0.4.2
      * 
      */
-    public function __construct(){
+    public function __construct() {
       parent::__construct();
     }
 }

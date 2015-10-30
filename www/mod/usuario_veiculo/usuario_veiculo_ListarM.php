@@ -12,7 +12,7 @@ class usuario_veiculo_ListarModelo extends usuario_veiculo_Modelo
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    public function __construct(){
+    public function __construct() {
       parent::__construct();
     }   /**
      * Retorna horario vago dos alugueis
@@ -25,7 +25,7 @@ class usuario_veiculo_ListarModelo extends usuario_veiculo_Modelo
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function retorna_Agendadatas(&$datas,$veiculo=0){
+    public function retorna_Agendadatas(&$datas,$veiculo=0) {
         GLOBAL $tabsql,$config;
         $i = 0;
         $datainicial = APP_DATA;
@@ -61,7 +61,7 @@ class usuario_veiculo_ListarModelo extends usuario_veiculo_Modelo
         
         // percorre todas as ultimas datas gravadas e acrescenta as datas
         reset($ultimasdatas);
-        foreach($ultimasdatas as $key=>$value){
+        foreach($ultimasdatas as $key=>$value) {
             $datas[$i]['Id'] = $key;
             $datas[$i]['Titulo'] = $veiculotitulo[$key];
             $datas[$i]['DataInicial'] = date('Y-m-d', strtotime("+1 days",strtotime($value)));
@@ -74,7 +74,7 @@ class usuario_veiculo_ListarModelo extends usuario_veiculo_Modelo
         return $i;
         
     }
-    public function agendamento_inserir($veiculo,$data_inicial,$data_final,$valor){
+    public function agendamento_inserir($veiculo,$data_inicial,$data_final,$valor) {
         global $config;
         $this->db->query('INSERT INTO '.MYSQL_USUARIO_VEICULO_ALUGUEL.' (user,veiculo,data_inicial,data_final,valor,data_cadastro) VALUES (\''.\Framework\App\Acl::Usuario_GetID_Static().'\',\''.$veiculo.'\',\''.$data_inicial.'\',\''.$data_final.'\',\''.$valor.'\',\''.APP_HORA.'\')');
         

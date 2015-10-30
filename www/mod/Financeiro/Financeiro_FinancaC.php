@@ -1,7 +1,7 @@
 <?php
 class Financeiro_FinancaControle extends Financeiro_Controle
 {
-    public function __construct(){
+    public function __construct() {
         parent::__construct();
     }
     /**
@@ -17,14 +17,14 @@ class Financeiro_FinancaControle extends Financeiro_Controle
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    public function Main(){
+    public function Main() {
         \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'Financeiro/Financa/Financas');
         return false;
     }
-    static function Endereco_Financa($true=true){
+    static function Endereco_Financa($true=true) {
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
-        if ($true===true){
+        if ($true===true) {
             $_Controle->Tema_Endereco(__('Finanças'),'Financeiro/Financa/Financas');
         } else {
             $_Controle->Tema_Endereco(__('Finanças'));
@@ -35,7 +35,7 @@ class Financeiro_FinancaControle extends Financeiro_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Financas(){
+    public function Financas() {
         self::Endereco_Financa(false);
         $i = 0;
         // BOTAO IMPRIMIR / ADD
@@ -54,7 +54,7 @@ class Financeiro_FinancaControle extends Financeiro_Controle
         )));
         // CONEXAO
         $setores = $this->_Modelo->db->Sql_Select('Financeiro_Financa');
-        if ($setores!==false && !empty($setores)){
+        if ($setores!==false && !empty($setores)) {
             if (is_object($setores)) $setores = Array(0=>$setores);
             reset($setores);
             foreach ($setores as $indice=>&$valor) {
@@ -82,7 +82,7 @@ class Financeiro_FinancaControle extends Financeiro_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Financas_Add(){
+    public function Financas_Add() {
         self::Endereco_Financa();
         // Carrega Config
         $titulo1    = __('Adicionar Finança');
@@ -100,7 +100,7 @@ class Financeiro_FinancaControle extends Financeiro_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Financas_Add2(){
+    public function Financas_Add2() {
         $titulo     = __('Finança Adicionada com Sucesso');
         $dao        = 'Financeiro_Financa';
         $funcao     = '$this->Financas();';
@@ -109,7 +109,7 @@ class Financeiro_FinancaControle extends Financeiro_Controle
         $alterar    = Array();
         $sucesso = $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
         // Cadastra no Financeiro
-        if ($sucesso){
+        if ($sucesso) {
             $motivo = __('Financeiro_Financa');
             $identificador  = $this->_Modelo->db->Sql_Select('Financeiro_Financa', Array(),1,'id DESC');
             $parcela_data   = $identificador->data;
@@ -133,7 +133,7 @@ class Financeiro_FinancaControle extends Financeiro_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Financas_Edit($id){
+    public function Financas_Edit($id) {
         self::Endereco_Financa();
         // Carrega Config
         $titulo1    = 'Editar Finança (#'.$id.')';
@@ -152,7 +152,7 @@ class Financeiro_FinancaControle extends Financeiro_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Financas_Edit2($id){
+    public function Financas_Edit2($id) {
         $titulo     = __('Finança Editada com Sucesso');
         $dao        = Array('Financeiro_Financa',$id);
         $funcao     = '$this->Financas();';
@@ -168,7 +168,7 @@ class Financeiro_FinancaControle extends Financeiro_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Financas_Del($id){
+    public function Financas_Del($id) {
         
         
     	$id = (int) $id;
@@ -176,7 +176,7 @@ class Financeiro_FinancaControle extends Financeiro_Controle
         $setor = $this->_Modelo->db->Sql_Select('Financeiro_Financa', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($setor);
         // Mensagem
-    	if ($sucesso===true){
+    	if ($sucesso===true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),

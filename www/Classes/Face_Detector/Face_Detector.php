@@ -86,7 +86,7 @@ class Face_Detector {
         return $this->face;
     }
  
-    protected function get_img_stats($canvas){
+    protected function get_img_stats($canvas) {
         $image_width = imagesx($canvas);
         $image_height = imagesy($canvas);    
         $iis =  $this->compute_ii($canvas, $image_width, $image_height);
@@ -98,23 +98,23 @@ class Face_Detector {
         );        
     }
  
-    protected function compute_ii($canvas, $image_width, $image_height ){
+    protected function compute_ii($canvas, $image_width, $image_height ) {
         $ii_w = $image_width+1;
         $ii_h = $image_height+1;
         $ii = array();
         $ii2 = array();      
  
-        for($i=0; $i<$ii_w; $i++ ){
+        for($i=0; $i<$ii_w; $i++ ) {
             $ii[$i] = 0;
             $ii2[$i] = 0;
         }                        
  
-        for($i=1; $i<$ii_w; $i++ ){  
+        for($i=1; $i<$ii_w; $i++ ) {  
             $ii[$i*$ii_w] = 0;      
             $ii2[$i*$ii_w] = 0;
             $rowsum = 0;
             $rowsum2 = 0;
-            for($j=1; $j<$ii_h; $j++ ){
+            for($j=1; $j<$ii_h; $j++ ) {
                 $rgb = ImageColorAt($canvas, $j, $i);
                 $red = ($rgb >> 16) & 0xFF;
                 $green = ($rgb >> 8) & 0xFF;
@@ -133,19 +133,19 @@ class Face_Detector {
         return array('ii'=>$ii, 'ii2' => $ii2);
     }
  
-    protected function do_detect_greedy_big_to_small( $ii, $ii2, $width, $height ){
+    protected function do_detect_greedy_big_to_small( $ii, $ii2, $width, $height ) {
         $s_w = $width/20.0;
         $s_h = $height/20.0;
         $start_scale = $s_h < $s_w ? $s_h : $s_w;
         $scale_update = 1 / 1.2;
-        for($scale = $start_scale; $scale > 1; $scale *= $scale_update ){
+        for($scale = $start_scale; $scale > 1; $scale *= $scale_update ) {
             $w = (20*$scale) >> 0;
             $endx = $width - $w - 1;
             $endy = $height - $w - 1;
             $step = max( $scale, 2 ) >> 0;
             $inv_area = 1 / ($w*$w);
-            for($y = 0; $y < $endy ; $y += $step ){
-                for($x = 0; $x < $endx ; $x += $step ){
+            for($y = 0; $y < $endy ; $y += $step ) {
+                for($x = 0; $x < $endx ; $x += $step ) {
                     $passed = $this->detect_on_sub_image( $x, $y, $scale, $ii, $ii2, $w, $width+1, $inv_area);
                     if ( $passed ) {
                         return array('x'=>$x, 'y'=>$y, 'w'=>$w);
@@ -156,24 +156,24 @@ class Face_Detector {
         return null;
     }
  
-    protected function detect_on_sub_image( $x, $y, $scale, $ii, $ii2, $w, $iiw, $inv_area){
+    protected function detect_on_sub_image( $x, $y, $scale, $ii, $ii2, $w, $iiw, $inv_area) {
         $mean = ( $ii[($y+$w)*$iiw + $x + $w] + $ii[$y*$iiw+$x] - $ii[($y+$w)*$iiw+$x] - $ii[$y*$iiw+$x+$w]  )*$inv_area;
         $vnorm =  ( $ii2[($y+$w)*$iiw + $x + $w] + $ii2[$y*$iiw+$x] - $ii2[($y+$w)*$iiw+$x] - $ii2[$y*$iiw+$x+$w]  )*$inv_area - ($mean*$mean);    
         $vnorm = $vnorm > 1 ? sqrt($vnorm) : 1;
  
         $passed = true;
-        for($i_stage = 0; $i_stage < count($this->detection_data); $i_stage++ ){
+        for($i_stage = 0; $i_stage < count($this->detection_data); $i_stage++ ) {
             $stage = $this->detection_data[$i_stage];  
             $trees = $stage[0];  
  
             $stage_thresh = $stage[1];
             $stage_sum = 0;
  
-            for($i_tree = 0; $i_tree < count($trees); $i_tree++ ){
+            for($i_tree = 0; $i_tree < count($trees); $i_tree++ ) {
                 $tree = $trees[$i_tree];
                 $current_node = $tree[0];    
                 $tree_sum = 0;
-                while( $current_node != null ){
+                while( $current_node != null ) {
                     $vals = $current_node[0];
                     $node_thresh = $vals[0];
                     $leftval = $vals[1];
@@ -183,7 +183,7 @@ class Face_Detector {
                     $rects = $current_node[1];
  
                     $rect_sum = 0;
-                    for( $i_rect = 0; $i_rect < count($rects); $i_rect++ ){
+                    for( $i_rect = 0; $i_rect < count($rects); $i_rect++ ) {
                         $s = $scale;
                         $rect = $rects[$i_rect];
                         $rx = ($rect[0]*$s+$x)>>0;
@@ -199,7 +199,7 @@ class Face_Detector {
                     $rect_sum *= $inv_area;
  
                     $current_node = null;
-                    if ( $rect_sum >= $node_thresh*$vnorm ){
+                    if ( $rect_sum >= $node_thresh*$vnorm ) {
                         if ( $rightidx == -1 )
                             $tree_sum = $rightval;
                         else
@@ -213,7 +213,7 @@ class Face_Detector {
                 }
                 $stage_sum += $tree_sum;
             }
-            if ( $stage_sum < $stage_thresh ){
+            if ( $stage_sum < $stage_thresh ) {
                 return false;
             }
         }

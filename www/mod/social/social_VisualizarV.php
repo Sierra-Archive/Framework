@@ -2,10 +2,10 @@
 class social_VisualizarVisual extends social_Visual
 {
 
-    public function __construct(){
+    public function __construct() {
         parent::__construct();
     } 
-    public function exibetipos(&$tipo,&$tipos,&$tipon){
+    public function exibetipos(&$tipo,&$tipos,&$tipon) {
         unset($tabela);
         $tabela = array();
         $i = 0;
@@ -25,7 +25,7 @@ class social_VisualizarVisual extends social_Visual
         }
         $this->novatabela("relatorio",$tabela);
     }
-    public function exibe_persona(&$persona){
+    public function exibe_persona(&$persona) {
         $this->blocos .= '<a href="javascript:popup()"><a href="http://www.facebook.com/profile.php?id='.$persona['id_face'].'" target="_blank"><img alt="'.__('Foto de Perfil').' src="http://graph.facebook.com/'.$persona['id_face'].'/picture"></a>';
         $this->blocos .= $persona['nome'];
         if ($persona['fis_sexo']==0) $this->blocos .= __('Feminino');

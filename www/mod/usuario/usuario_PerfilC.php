@@ -16,10 +16,10 @@ class usuario_PerfilControle extends usuario_Controle
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    public function __construct(){
+    public function __construct() {
         parent::__construct();
     }
-    public function Perfil_Show($usuarioid,$tipo='Cliente'){
+    public function Perfil_Show($usuarioid,$tipo='Cliente') {
         // GAmbiarra Para Consertar erro de acento em url
         if ($tipo=='Funcionrio' || $tipo=="Funcionario") $tipo = "Funcionário";
         if ($tipo=="Usurio" || $tipo=="Usuario")         $tipo = __('Usuário');
@@ -29,7 +29,7 @@ class usuario_PerfilControle extends usuario_Controle
         if ($usuario===false)            return _Sistema_erroControle::Erro_Fluxo('Usuario não Existe',404);
         $id = $usuario->id;
         // Carrega Mensagens
-        /*if (\Framework\App\Sistema_Funcoes::Perm_Modulos('usuario_mensagem')){
+        /*if (\Framework\App\Sistema_Funcoes::Perm_Modulos('usuario_mensagem')) {
             usuario_mensagem_SuporteControle::MensagensdeCliente($id,'Menor');
             $this->_Visual->Show_Perfil($tipo,$usuario,'Maior');
         } else {*/
@@ -49,10 +49,10 @@ class usuario_PerfilControle extends usuario_Controle
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    public function Main(){
+    public function Main() {
         $this->Perfil_Edit();
         self::usuarios_carregaAlterarSenha($this,$this->_Modelo,$this->_Visual,Usuario_DAO::Get_Colunas());
-        if (\Framework\App\Sistema_Funcoes::Perm_Modulos('usuario_veiculo')){
+        if (\Framework\App\Sistema_Funcoes::Perm_Modulos('usuario_veiculo')) {
             self::usuarios_Upload_Residencia($this,$this->_Modelo,$this->_Visual);
             self::usuarios_Upload_Cnh($this,$this->_Modelo,$this->_Visual);
         }
@@ -60,7 +60,7 @@ class usuario_PerfilControle extends usuario_Controle
         // ORGANIZA E MANDA CONTEUDO
         $this->_Visual->Json_Info_Update('Titulo', __('Meu Perfil')); 
     }
-    public function PerfilFoto_UploadVer($camada,$id){
+    public function PerfilFoto_UploadVer($camada,$id) {
         $camada = (string) \Framework\App\Conexao::anti_injection($camada);
         $id = (int) \Framework\App\Conexao::anti_injection($id);
        
@@ -69,37 +69,37 @@ class usuario_PerfilControle extends usuario_Controle
     /**
      * 
      */
-    public function PerfilFoto_Upload($id){
+    public function PerfilFoto_Upload($id) {
         $id = (int) $id;
         $fileTypes = array('jpg','jpeg','gif','png'); // File extensions
         $dir = 'usuario'.DS;
         $ext = $this->Upload($dir,$fileTypes,$id);
-        if ($ext!='falso'){
+        if ($ext!='falso') {
             $this->_Modelo->Perfilfoto_Upload_Alterar($id,$ext);  
         }
     }
     /**
      * 
      */
-    public function RESFoto_Upload($id){
+    public function RESFoto_Upload($id) {
         $id = (int) $id;
         $fileTypes = array('jpg','jpeg','gif','png'); // File extensions
         $dir = 'usuario'.DS;
         $ext = $this->Upload($dir,$fileTypes,$id.'_res');
-        if ($ext!='falso'){
+        if ($ext!='falso') {
             $this->_Modelo->RESfoto_Upload_Alterar($id,$ext);  
         }
     }
-    public function RESFoto_UploadVer($camada,$id){
+    public function RESFoto_UploadVer($camada,$id) {
         $camada = (string) \Framework\App\Conexao::anti_injection($camada);
         $id = (int) \Framework\App\Conexao::anti_injection($id);
        
         
     }
-    static function usuarios_Upload_Residencia(&$controle,&$Modelo,&$Visual){
+    static function usuarios_Upload_Residencia(&$controle,&$Modelo,&$Visual) {
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Acl = $Registro->_Acl();
-        if ($_Acl->logado_usuario->foto_res==''){
+        if ($_Acl->logado_usuario->foto_res=='') {
             $Visual->Blocar('<font color="#FF0000"><b>Você ainda não subiu seu comprovante de Residencia</b></font><br>');
         } else {
             if ($_Acl->logado_usuario->foto_res_apv==0) $Visual->Blocar('<font color="#FF0000"><b>Aguardando Aprovação</b></font><br>');
@@ -112,25 +112,25 @@ class usuario_PerfilControle extends usuario_Controle
     /**
      * 
      */
-    public function CNHFoto_Upload($id){
+    public function CNHFoto_Upload($id) {
         $id = (int) $id;
         $fileTypes = array('jpg','jpeg','gif','png'); // File extensions
         $dir = 'usuario'.DS;
         $ext = $this->Upload($dir,$fileTypes,$id.'_cnh');
-        if($ext!='falso'){
+        if($ext!='falso') {
             $this->_Modelo->CNHfoto_Upload_Alterar($id,$ext);  
         }
     }
-    public function CNHFoto_UploadVer($camada,$id){
+    public function CNHFoto_UploadVer($camada,$id) {
         $camada = (string) \Framework\App\Conexao::anti_injection($camada);
         $id = (int) \Framework\App\Conexao::anti_injection($id);
        
         
     }
-    static function usuarios_Upload_Cnh(&$controle,&$Modelo,&$Visual){
+    static function usuarios_Upload_Cnh(&$controle,&$Modelo,&$Visual) {
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Acl = $Registro->_Acl();
-        if($_Acl->logado_usuario->foto_cnh==''){
+        if($_Acl->logado_usuario->foto_cnh=='') {
             $Visual->Blocar('<font color="#FF0000"><b>Você ainda não subiu sua CNH</b></font><br>');
         } else {
             if($_Acl->logado_usuario->foto_cnh_apv==0) $Visual->Blocar('<font color="#FF0000"><b>Aguardando Aprovação da CNH</b></font><br>');
@@ -140,7 +140,7 @@ class usuario_PerfilControle extends usuario_Controle
         $Visual->Blocar($Visual->Show_Upload('usuario','Perfil','CNHFoto','User_CNH_Imagem'.$_Acl->logado_usuario->id,$_Acl->logado_usuario->foto_cnh,'usuario'.DS,$_Acl->logado_usuario->id));
         $Visual->Bloco_Menor_CriaJanela(__('Fazer Upload da CNH')); 
     }
-    static function usuarios_carregaAlterarSenha(&$controle,&$Modelo,&$Visual,$campos){
+    static function usuarios_carregaAlterarSenha(&$controle,&$Modelo,&$Visual,$campos) {
         $id = \Framework\App\Acl::Usuario_GetID_Static();
         // Carrega Config
         $titulo1    = 'Alterar Senha (#'.$id.')';
@@ -153,7 +153,7 @@ class usuario_PerfilControle extends usuario_Controle
         self::DAO_Campos_Retira($campos, 'senha',1);
         \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos,$editar); 
     }
-    public function usuarios_carregaAlterarSenha2(){
+    public function usuarios_carregaAlterarSenha2() {
         $id = (int) $this->_Acl->Usuario_GetID();
         $titulo     = __('Senha editada com Sucesso');
         $dao        = Array('Usuario',$id);
@@ -163,25 +163,25 @@ class usuario_PerfilControle extends usuario_Controle
         $alterar    = Array();
         $sucesso = $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);   
         
-        if($sucesso===true){
+        if($sucesso===true) {
             $this->_Modelo->Usuario_Logar('',$usuario->senha,'');
         }
     }
-    public function Perfil_Edit($tipo=false){
+    public function Perfil_Edit($tipo=false) {
         $id = (int) $this->_Acl->Usuario_GetID();
         $usuario = $this->_Modelo->db->Sql_Select('Usuario', Array('id'=>$id));
         
         //Verifica Usuario
-        if(!is_object($usuario)){
+        if(!is_object($usuario)) {
             return false;
         }
         
         // Verifica Tipo
-        if($tipo===false){
-            if($usuario->grupo==CFG_TEC_IDCLIENTE){
+        if($tipo===false) {
+            if($usuario->grupo==CFG_TEC_IDCLIENTE) {
                 $tipo   = __('Cliente');
                 $tipo2  = 'cliente';
-            }else if($usuario->grupo==CFG_TEC_IDFUNCIONARIO){
+            }else if($usuario->grupo==CFG_TEC_IDFUNCIONARIO) {
                 $tipo   = __('Funcionário');
                 $tipo2  = 'funcionario';
             } else {
@@ -196,11 +196,11 @@ class usuario_PerfilControle extends usuario_Controle
         if($tipo=='Funcionrio' || $tipo=="Funcionario") $tipo = "Funcionário";
         if($tipo=="Usurio" || $tipo=="Usuario")         $tipo = __('Usuário');
         // Cria Tipo 2:
-        if($tipo=='Cliente'){
+        if($tipo=='Cliente') {
             $tipo2      = 'cliente';
             $tipo_pass  = CFG_TEC_CAT_ID_CLIENTES;
             $tipo   = Framework\Classes\Texto::Transformar_Plural_Singular(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Cliente_nome'));
-        }else if($tipo=='Funcionário'){
+        }else if($tipo=='Funcionário') {
             $tipo2  = 'funcionario';
             $tipo_pass  = CFG_TEC_CAT_ID_FUNCIONARIOS;
         } else {
@@ -227,8 +227,8 @@ class usuario_PerfilControle extends usuario_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Perfil_Edit2($tipo=false){
-        if(isset($_POST["nome"])){
+    public function Perfil_Edit2($tipo=false) {
+        if(isset($_POST["nome"])) {
             $nome = $_POST["nome"];
         } else {
             $nome = __('Perfil');

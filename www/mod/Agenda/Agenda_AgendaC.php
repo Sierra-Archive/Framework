@@ -15,7 +15,7 @@ class Agenda_AgendaControle extends Agenda_Controle
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    public function __construct(){
+    public function __construct() {
         parent::__construct();
     }
     /**
@@ -31,19 +31,19 @@ class Agenda_AgendaControle extends Agenda_Controle
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    public function Main(){
+    public function Main() {
         $this->Agendas();
         // ORGANIZA E MANDA CONTEUDO
         $this->_Visual->Json_Info_Update('Titulo', __('Agendas')); 
     }
-    protected function Endereco_Agenda($true=true){
-        if ($true===true){
+    protected function Endereco_Agenda($true=true) {
+        if ($true===true) {
             $this->Tema_Endereco(__('Agendas'),'Agenda/Agenda/Agendas');
         } else {
             $this->Tema_Endereco(__('Agendas'));
         }
     }
-    public static function Agenda(){
+    public static function Agenda() {
         
     }
     /**
@@ -51,7 +51,7 @@ class Agenda_AgendaControle extends Agenda_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Agendas($export=false){
+    public function Agendas($export=false) {
         $i = 0;
         $this->Endereco_Agenda(false);
         // Botao Add
@@ -78,7 +78,7 @@ class Agenda_AgendaControle extends Agenda_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Agendas_Add(){ 
+    public function Agendas_Add() { 
         $this->Endereco_Agenda();  
         // Carrega Config
         $titulo1    = __('Adicionar Agenda');
@@ -95,7 +95,7 @@ class Agenda_AgendaControle extends Agenda_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Agendas_Add2(){
+    public function Agendas_Add2() {
         $titulo     = __('Agenda Adicionada com Sucesso');
         $dao        = 'Agenda';
         $funcao     = '$this->Agendas();';
@@ -110,7 +110,7 @@ class Agenda_AgendaControle extends Agenda_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Agendas_Edit($id){
+    public function Agendas_Edit($id) {
         $this->Endereco_Agenda();
         // Carrega Config
         $titulo1    = 'Editar Agenda (#'.$id.')';
@@ -128,7 +128,7 @@ class Agenda_AgendaControle extends Agenda_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Agendas_Edit2($id){
+    public function Agendas_Edit2($id) {
         $titulo     = __('Agenda Editada com Sucesso');
         $dao        = Array('Agenda',$id);
         $funcao     = '$this->Agendas();';
@@ -143,13 +143,13 @@ class Agenda_AgendaControle extends Agenda_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Agendas_Del($id){
+    public function Agendas_Del($id) {
     	$id = (int) $id;
         // Puxa compromisso e deleta
         $compromisso = $this->_Modelo->db->Sql_Select('Agenda', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($compromisso);
         // Mensagem
-    	if ($sucesso===true){
+    	if ($sucesso===true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),

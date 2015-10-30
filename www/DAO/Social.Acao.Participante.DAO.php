@@ -4,7 +4,7 @@ final Class Social_Acao_Participante_DAO extends Framework\App\Dao
     protected $acao;
     protected $participante;
     
-    protected static $objetocarregado     = false;     protected static $mysql_colunas       = false;     protected static $mysql_outside       = Array();     protected static $mysql_inside        = Array(); public function __construct() {  parent::__construct(); } public static function Get_Nome(){
+    protected static $objetocarregado     = false;     protected static $mysql_colunas       = false;     protected static $mysql_outside       = Array();     protected static $mysql_inside        = Array(); public function __construct() {  parent::__construct(); } public static function Get_Nome() {
         return MYSQL_SOCIAL_ACAO_PARTICIPANTE;
     }
     /**
@@ -15,31 +15,31 @@ final Class Social_Acao_Participante_DAO extends Framework\App\Dao
      * Fornece Permissão de Copia da tabela
      * @return string
      */
-    public static function Permissao_Copia(){
+    public static function Permissao_Copia() {
         return false;
     }
-    public static function Get_Sigla(){
+    public static function Get_Sigla() {
         return 'SAP';
     }
-    public static function Get_Engine(){
+    public static function Get_Engine() {
         return 'InnoDB';
     }
-    public static function Get_Charset(){
+    public static function Get_Charset() {
         return 'latin1';
     }
-    public static function Get_Autoadd(){
+    public static function Get_Autoadd() {
         return 1;
     }
-    public static function Get_Class(){
+    public static function Get_Class() {
         return get_class() ; //return str_replace(Array('_DAO'), Array(''), get_class());
     }
-    public static function Get_LinkTable(){
+    public static function Get_LinkTable() {
         return Array(
             'SA'=>'acao',      // Sistemas Grupos
             'U'=>'persona', // Sistemas Permissoes
         );
     }
-    public static function Gerar_Colunas(){
+    public static function Gerar_Colunas() {
         return Array(
             Array(
                 'mysql_titulo'      => 'acao',

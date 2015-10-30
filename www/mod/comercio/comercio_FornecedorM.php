@@ -13,10 +13,10 @@ class comercio_FornecedorModelo extends comercio_Modelo
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    public function __construct(){
+    public function __construct() {
         parent::__construct();
     }
-    public function Fornecedores(){
+    public function Fornecedores() {
         // Table's primary key
         $primaryKey = 'id';
         $tabela = 'Comercio_Fornecedor';
@@ -27,13 +27,13 @@ class comercio_FornecedorModelo extends comercio_Modelo
         $perm_del = $this->_Registro->_Acl->Get_Permissao_Url('comercio/Fornecedor/Fornecedores_Del');
         
         $function = '';
-        if ($perm_view){
+        if ($perm_view) {
             $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Zoom\'     ,Array(\'Visualizar Comentários do Fornecedor\'        ,\'comercio/Fornecedor/Fornecedores_View/\'.$d.\'/\'    ,\'\'),true);';
         }
-        if ($perm_editar){
+        if ($perm_editar) {
             $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Editar\'     ,Array(\'Editar Fornecedor\'        ,\'comercio/Fornecedor/Fornecedores_Edit/\'.$d.\'/\'    ,\'\'),true);';
         }
-        if ($perm_del){
+        if ($perm_del) {
             $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Deletar\'    ,Array(\'Deletar Fornecedor\'       ,\'comercio/Fornecedor/Fornecedores_Del/\'.$d.\'/\'     ,\'Deseja realmente deletar esse Fornecedor ?\'),true);';
         }
 
@@ -44,7 +44,7 @@ class comercio_FornecedorModelo extends comercio_Modelo
         // nome e razaosocial #update
         ++$numero;
         $columns[] = array( 'db' => 'nome', 'dt' => $numero); //'#Nome';
-        if (\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Fornecedor_Categoria')){
+        if (\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Fornecedor_Categoria')) {
             ++$numero;
             $columns[] = array( 'db' => 'categoria2', 'dt' => $numero); //'Tipo de Fornecimento';
         }

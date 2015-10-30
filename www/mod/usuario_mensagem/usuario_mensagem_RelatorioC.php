@@ -15,16 +15,16 @@ class usuario_mensagem_RelatorioControle extends usuario_mensagem_Controle
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    public function __construct(){
+    public function __construct() {
         // construct
         parent::__construct();
     }
-    static function Endereco_Relatorio($true=true){
+    static function Endereco_Relatorio($true=true) {
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
         $titulo = __('Relatório');
         $link = 'Financeiro/Relatorio/Relatorio';
-        if($true===true){
+        if($true===true) {
             $_Controle->Tema_Endereco($titulo,$link);
         } else {
             $_Controle->Tema_Endereco($titulo);
@@ -41,15 +41,15 @@ class usuario_mensagem_RelatorioControle extends usuario_mensagem_Controle
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    public function Main(){
+    public function Main() {
         \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'usuario_mensagem/Relatorio/Relatorio/');
         return false;
     }
-    public function Relatorio($tipo_relatorio = 'Aberto', $data_inicial = '2014-01-01', $data_final = APP_DATA){
+    public function Relatorio($tipo_relatorio = 'Aberto', $data_inicial = '2014-01-01', $data_final = APP_DATA) {
         
         self::Endereco_Relatorio(false);
         
-        if($tipo_relatorio!='Aberto' && $tipo_relatorio!='Assunto' && $tipo_relatorio!='Esgotado' && $tipo_relatorio!='Finalizado' && $tipo_relatorio!='Origem' && $tipo_relatorio!='Produto' && $tipo_relatorio!='Qtd_Cidade' && $tipo_relatorio!='Qtd_Uf'){
+        if($tipo_relatorio!='Aberto' && $tipo_relatorio!='Assunto' && $tipo_relatorio!='Esgotado' && $tipo_relatorio!='Finalizado' && $tipo_relatorio!='Origem' && $tipo_relatorio!='Produto' && $tipo_relatorio!='Qtd_Cidade' && $tipo_relatorio!='Qtd_Uf') {
             $tipo_relatorio='Aberto';
         }
         
@@ -91,40 +91,40 @@ class usuario_mensagem_RelatorioControle extends usuario_mensagem_Controle
         // ORGANIZA E MANDA CONTEUDO
         $this->_Visual->Json_Info_Update('Titulo',$titulo); 
     }
-    public function Relatorio_Receber(){
+    public function Relatorio_Receber() {
         // Trata Parametros
-        if(isset($_POST['data_inicial'])){
+        if(isset($_POST['data_inicial'])) {
             $data_inicial = data_brasil_eua(\Framework\App\Conexao::anti_injection($_POST['data_inicial']));
         } else {
             $data_inicial = '2014-01-01';
         }
-        if(isset($_POST['data_final'])){
+        if(isset($_POST['data_final'])) {
             $data_final = data_brasil_eua(\Framework\App\Conexao::anti_injection($_POST['data_final']));
         } else {
             $data_final = APP_DATA;
         }
         
-        if(isset($_POST['tipo_relatorio'])){
+        if(isset($_POST['tipo_relatorio'])) {
             $tipo_relatorio = \Framework\App\Conexao::anti_injection($_POST['tipo_relatorio']);
-            if($tipo_relatorio==='Aberto'){
+            if($tipo_relatorio==='Aberto') {
                 $titulo = __('Relatório de Chamados Abertos');
                 $tipo_relatorio = 'Aberto';
-            }else if($tipo_relatorio==='Assunto'){
+            }else if($tipo_relatorio==='Assunto') {
                 $titulo = __('Relatório Agrupado por Assuntos');
                 $tipo_relatorio = 'Assunto';
-            }else if($tipo_relatorio==='Esgotado'){
+            }else if($tipo_relatorio==='Esgotado') {
                 $titulo = __('Relatório de Esgotados');
                 $tipo_relatorio = 'Esgotado';
-            }else if($tipo_relatorio==='Finalizado'){
+            }else if($tipo_relatorio==='Finalizado') {
                 $titulo = __('Relatório de Finalizados');
                 $tipo_relatorio = __('Finalizado');
-            }else if($tipo_relatorio==='Origem'){
+            }else if($tipo_relatorio==='Origem') {
                 $titulo = __('Relatório Agrupado por Origens');
                 $tipo_relatorio = __('Origem');
-            }else if($tipo_relatorio==='Produto'){
+            }else if($tipo_relatorio==='Produto') {
                 $titulo = __('Relatório Agrupado por Produtos');
                 $tipo_relatorio = 'Produto';
-            }else if($tipo_relatorio==='Qtd_Cidade'){
+            }else if($tipo_relatorio==='Qtd_Cidade') {
                 $titulo = __('Relatório de Chamados Quantitativos Agrupados por Cidade');
                 $tipo_relatorio = 'Qtd_Cidade';
             } else {
@@ -135,15 +135,15 @@ class usuario_mensagem_RelatorioControle extends usuario_mensagem_Controle
             $tipo_relatorio = 'Aberto';
             $titulo = __('Relatório de Chamados Abertos');
         }
-        /*if(isset($_POST['tipo_visual'])){
+        /*if(isset($_POST['tipo_visual'])) {
             $tipo_visual = \Framework\App\Conexao::anti_injection($_POST['tipo_visual']);
-            if($tipo_visual==='imprimir'){
+            if($tipo_visual==='imprimir') {
                 $tipo_visual = 'Imprimir';
-            }else if($tipo_visual==='pdf'){
+            }else if($tipo_visual==='pdf') {
                 $tipo_visual = 'Pdf';
-            }else if($tipo_visual==='pdfdownload'){
+            }else if($tipo_visual==='pdfdownload') {
                 $tipo_visual = 'Pdf_Download';
-            }else if($tipo_visual==='excell'){
+            }else if($tipo_visual==='excell') {
                 $tipo_visual = 'Excel';
             } else {
                 $tipo_visual = false;
@@ -175,7 +175,7 @@ class usuario_mensagem_RelatorioControle extends usuario_mensagem_Controle
     /**
      * Chamados Abertos
      */
-    public function Aberto($datainicial, $datafinal){
+    public function Aberto($datainicial, $datafinal) {
         
         
         $tabela = Array(
@@ -190,7 +190,7 @@ class usuario_mensagem_RelatorioControle extends usuario_mensagem_Controle
     /**
      * Chamados Assuntos
      */
-    public function Assunto($datainicial, $datafinal){
+    public function Assunto($datainicial, $datafinal) {
         $tabela = Array(
             'Protocolo','Cliente','Assunto','Mensagem','Tipo','Data Criação','Data Ult. Mod.'/*,'Funções'*/
         );
@@ -201,7 +201,7 @@ class usuario_mensagem_RelatorioControle extends usuario_mensagem_Controle
     /**
      * Chamados Esgotados
      */
-    public function Esgotado($datainicial, $datafinal){
+    public function Esgotado($datainicial, $datafinal) {
         $tabela = Array(
             'Protocolo','Cliente','Assunto','Mensagem','Data Criação','Data Ult. Mod.'/*,'Funções'*/
         );
@@ -212,7 +212,7 @@ class usuario_mensagem_RelatorioControle extends usuario_mensagem_Controle
     /**
      * Chamados Finalizados
      */
-    public function Finalizado($datainicial, $datafinal){
+    public function Finalizado($datainicial, $datafinal) {
         $tabela = Array(
             'Protocolo','Cliente','Assunto','Mensagem','Data Criação','Data Ult. Mod.'/*,'Funções'*/
         );
@@ -223,7 +223,7 @@ class usuario_mensagem_RelatorioControle extends usuario_mensagem_Controle
     /**
      * Chamados Origens
      */
-    public function Origem($datainicial, $datafinal){
+    public function Origem($datainicial, $datafinal) {
         // EM uso
         $tabela = Array(
             'Protocolo','Cliente','Assunto','Mensagem','Data Criação','Data Ult. Mod.'/*,'Funções'*/
@@ -235,7 +235,7 @@ class usuario_mensagem_RelatorioControle extends usuario_mensagem_Controle
     /**
      * Chamados Produtos
      */
-    public function Produto($datainicial, $datafinal){
+    public function Produto($datainicial, $datafinal) {
         $tabela = Array(
             'Marca','Linha','Produto','Mensagem','Data Criação','Data Ult. Mod.'/*,'Funções'*/
         );
@@ -246,7 +246,7 @@ class usuario_mensagem_RelatorioControle extends usuario_mensagem_Controle
     /**
      * Qtd_Cidade
      */
-    public function Qtd_Cidade($datainicial, $datafinal){
+    public function Qtd_Cidade($datainicial, $datafinal) {
         $tabela = Array(
             'Cidade / UF','No. de Chamados','Data Criação','Data Ult. Mod.'/*,'Funções'*/
         );
@@ -257,7 +257,7 @@ class usuario_mensagem_RelatorioControle extends usuario_mensagem_Controle
     /**
      * Qtd_Uf
      */
-    public function Qtd_Uf($datainicial, $datafinal){
+    public function Qtd_Uf($datainicial, $datafinal) {
         $tabela = Array(
             'Estado','No. de Chamados','Data Criação','Data Ult. Mod.'/*,'Funções'*/
         );

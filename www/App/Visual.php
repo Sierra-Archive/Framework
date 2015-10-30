@@ -136,7 +136,7 @@ class Visual
         
         if ($template!==false) $this->template_layoult = $template;
         
-        if ($naozerado){
+        if ($naozerado) {
             $configtemplate = $this->template_layoult.'_config';
             $this->config_template    = $configtemplate();
             $this->_Registro        = &\Framework\App\Registro::getInstacia();
@@ -146,10 +146,10 @@ class Visual
         $this->template_url        = URL_PATH.'templates'.US.$this->template_layoult.US;
         $this->template_dir        = ROOT.'templates'.DS.$this->template_layoult.DS;
     }
-    public static function get_template_dir(){
+    public static function get_template_dir() {
         return Registro::getInstacia()->_Visual->template_dir;
     }
-    public static function get_template_url(){
+    public static function get_template_url() {
         return Registro::getInstacia()->_Visual->template_url;
     }
     /**
@@ -160,14 +160,14 @@ class Visual
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Javascript_Executar($javascript=''){
+    public function Javascript_Executar($javascript='') {
         // Se parametro vier falso, zera javascript pra executar
-        if ($javascript===false){
+        if ($javascript===false) {
             $this->head_js = '';
             return true;
         }else
         // Se parametro nao for falso e igual a zero entao add js
-        if ($javascript!==''){
+        if ($javascript!=='') {
             $this->head_js .= $javascript;
             return true;
         }else
@@ -186,16 +186,16 @@ class Visual
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Bloco_Customizavel($blocos,$add=true,$gravidade=0){
+    public function Bloco_Customizavel($blocos,$add=true,$gravidade=0) {
         if (!is_array($blocos)) return false;
         $i = 0;
-        foreach($blocos as &$valor){
+        foreach($blocos as &$valor) {
             if (!is_array($valor)) return false;
             $tamanho[$i]    = $valor['span'];
             $html[$i]       = '';
-            foreach($valor['conteudo'] as &$valor2){
+            foreach($valor['conteudo'] as &$valor2) {
                 $id = '';
-                if ($valor2['title_id']!==false){
+                if ($valor2['title_id']!==false) {
                     $id = ' id="'.$valor2['title_id'].'"';
                 }
                 $bloco = Array(
@@ -218,7 +218,7 @@ class Visual
             'tamanho'       => $tamanho,
             'conteudo'      => $html
         );
-        if ($add===true){
+        if ($add===true) {
             $this->Layoult_BlocoUnico[] = Array(
                 'html'      => $this->renderizar_bloco('template_bloco',$bloco),
                 'gravidade' => $gravidade
@@ -284,11 +284,11 @@ class Visual
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Bloco_Unico_Retornar(){
+    public function Bloco_Unico_Retornar() {
         $html = '';
         orderMultiDimensionalArray($this->Layoult_BlocoUnico, 'gravidade', true);
         reset($this->Layoult_BlocoUnico);
-        foreach($this->Layoult_BlocoUnico as &$valor){
+        foreach($this->Layoult_BlocoUnico as &$valor) {
             $html .= $valor['html'];
         }
         // Apaga Bloco unico ja que ja foi usado
@@ -301,7 +301,7 @@ class Visual
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    protected function Bloco_Unico_Zerar(){
+    protected function Bloco_Unico_Zerar() {
         $this->Layoult_BlocoUnico = array();
     }
     /**
@@ -330,8 +330,8 @@ class Visual
         if ($url!='') $titulo = $titulo.'<a class="lajax-admin" href="'.$url.'" data-acao="">+</a>';
         list($tipo,$bloco) = $this->retornablocos();
         $identificador = 'div_unica_'.rand(100000, 999999);
-        if (is_array($botaoextra)){
-            if (!(isset($botaoextra['link']) && isset($botaoextra['icon']) && isset($botaoextra['nome']))){
+        if (is_array($botaoextra)) {
+            if (!(isset($botaoextra['link']) && isset($botaoextra['icon']) && isset($botaoextra['nome']))) {
                 throw new \Exception('Botao Extra com Indices Faltando: '.serialize($botaoextra),2812);
             } else {
                 $botaoextra['link'] = URL_PATH.$botaoextra['link'];
@@ -414,11 +414,11 @@ class Visual
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    private function Bloco_Maior_Retornar(){
+    private function Bloco_Maior_Retornar() {
         $html = '';
         orderMultiDimensionalArray($this->Layoult_BlocoMaior, 'gravidade', true);
         reset($this->Layoult_BlocoMaior);
-        foreach($this->Layoult_BlocoMaior AS &$valor){
+        foreach($this->Layoult_BlocoMaior AS &$valor) {
             $html .= $valor['html'];
         }
         // Apaga Bloco maior ja que ja foi usado
@@ -431,7 +431,7 @@ class Visual
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    private function Bloco_Maior_Zerar(){
+    private function Bloco_Maior_Zerar() {
         $this->Layoult_BlocoMaior = array();
     }
     /**
@@ -535,11 +535,11 @@ class Visual
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    private function Bloco_Menor_Retornar(){
+    private function Bloco_Menor_Retornar() {
         $html = '';
         orderMultiDimensionalArray($this->Layoult_BlocoMenor, 'gravidade', true);
         reset($this->Layoult_BlocoMenor);
-        foreach($this->Layoult_BlocoMenor AS &$valor){
+        foreach($this->Layoult_BlocoMenor AS &$valor) {
             $html .= $valor['html'];
         }
         $this->Bloco_Menor_Zerar();
@@ -551,7 +551,7 @@ class Visual
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    private function Bloco_Menor_Zerar(){
+    private function Bloco_Menor_Zerar() {
         $this->Layoult_BlocoMenor = array();
     }
     /**
@@ -603,8 +603,8 @@ class Visual
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Blocar($txt,$txt2 = false){
-        if ($txt2===false){
+    public function Blocar($txt,$txt2 = false) {
+        if ($txt2===false) {
             $this->blocos[] = $txt;
         } else {
             $this->blocos[] = Array(
@@ -621,19 +621,19 @@ class Visual
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    private function Arquivos_Js($endereco){
-        if (is_array($endereco)){
+    private function Arquivos_Js($endereco) {
+        if (is_array($endereco)) {
             $js = &$this->arquivos_js;
             reset($endereco);
-            while(key($endereco)!==NULL){
+            while(key($endereco)!==NULL) {
                 $end_current = current($endereco);
-                if (array_search($end_current, $js)===false){
+                if (array_search($end_current, $js)===false) {
                     $js[] = $end_current;
                 }
                 next($endereco);
             }
         } else {
-            if (array_search($endereco, $this->arquivos_js)===false){
+            if (array_search($endereco, $this->arquivos_js)===false) {
                 $this->arquivos_js[] = $endereco;
             }
         }
@@ -646,19 +646,19 @@ class Visual
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Arquivos_Js_Dependencia($endereco){
-        if (is_array($endereco)){
+    public function Arquivos_Js_Dependencia($endereco) {
+        if (is_array($endereco)) {
             $js = &$this->arquivos_js_dependencia;
             reset($endereco);
-            while(key($endereco)!==NULL){
+            while(key($endereco)!==NULL) {
                 $end_current = current($endereco);
-                if (array_search($end_current, $js)===false){
+                if (array_search($end_current, $js)===false) {
                     $js[] = $end_current;
                 }
                 next($endereco);
             }
         } else {
-            if (array_search($endereco, $this->arquivos_js_dependencia)===false){
+            if (array_search($endereco, $this->arquivos_js_dependencia)===false) {
                 $this->arquivos_js_dependencia[] = $endereco;
             }
         }
@@ -671,14 +671,14 @@ class Visual
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    private function Arquivos_Js_Get(){
+    private function Arquivos_Js_Get() {
         $this->arquivos_js = array_merge($this->arquivos_js, $this->arquivos_js_dependencia);
         if (empty($this->arquivos_js)) return false;
         //'<script type="text/javascript" src="'.WEB_URL.'"></script>'.
         
         // Cria Cache
         $this->Javascript_Executar('Sierra.Sessao_Deletar(\'Dependencias_Js\');'
-                . 'setTimeout(function(){Sierra.Sessao_Gravar(\'Dependencias_Js\',\''.implode('|',$this->arquivos_js).'\');},10);');
+                . 'setTimeout(function() {Sierra.Sessao_Gravar(\'Dependencias_Js\',\''.implode('|',$this->arquivos_js).'\');},10);');
         
         return '<script type="text/javascript" src="'.WEB_URL.'min/?f='.implode(".js,",$this->arquivos_js).'.js"></script>';
     }
@@ -690,7 +690,7 @@ class Visual
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    private function Arquivos_Js_Get_Dependentes(){
+    private function Arquivos_Js_Get_Dependentes() {
         if (empty($this->arquivos_js_dependencia)) return false;
         //'<script type="text/javascript" src="'.WEB_URL.'"></script>'.
         return $this->arquivos_js_dependencia;
@@ -704,19 +704,19 @@ class Visual
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    private function Arquivos_Css($endereco){
-        if (is_array($endereco)){
+    private function Arquivos_Css($endereco) {
+        if (is_array($endereco)) {
             $css = &$this->arquivos_css;
             reset($endereco);
-            while(key($endereco)!==NULL){
+            while(key($endereco)!==NULL) {
                 $end_current = current($endereco);
-                if (array_search($end_current, $css)===false){
+                if (array_search($end_current, $css)===false) {
                     $css[] = $end_current;
                 }
                 next($endereco);
             }
         } else {
-            if (array_search($this->arquivos_css, $endereco)===false){
+            if (array_search($this->arquivos_css, $endereco)===false) {
                 $this->arquivos_css[] = $endereco;
             }
         }
@@ -729,19 +729,19 @@ class Visual
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    private function Arquivos_Css_Dependencia($endereco){
-        if (is_array($endereco)){
+    private function Arquivos_Css_Dependencia($endereco) {
+        if (is_array($endereco)) {
             $css = &$this->arquivos_css_dependencia;
             reset($endereco);
-            while(key($endereco)!==NULL){
+            while(key($endereco)!==NULL) {
                 $end_current = current($endereco);
-                if (array_search($end_current, $css)===false){
+                if (array_search($end_current, $css)===false) {
                     $css[] = $end_current;
                 }
                 next($endereco);
             }
         } else {
-            if (array_search($endereco, $this->arquivos_css_dependencia)===false){
+            if (array_search($endereco, $this->arquivos_css_dependencia)===false) {
                 $this->arquivos_css_dependencia[] = $endereco;
             }
         }
@@ -754,13 +754,13 @@ class Visual
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    private function Arquivos_Css_Get(){
+    private function Arquivos_Css_Get() {
         $this->arquivos_css = array_merge($this->arquivos_css, $this->arquivos_css_dependencia);
         if (empty($this->arquivos_css)) return false;
         
         // Cria Cache
         $this->Javascript_Executar('Sierra.Sessao_Deletar(\'Dependencias_Css\');'
-                . 'setTimeout(function(){Sierra.Sessao_Gravar(\'Dependencias_Css\',\''.implode('|',$this->arquivos_css).'\');},10);');
+                . 'setTimeout(function() {Sierra.Sessao_Gravar(\'Dependencias_Css\',\''.implode('|',$this->arquivos_css).'\');},10);');
         
         return '<link href="'.WEB_URL.'min/?f='.implode(".css,",$this->arquivos_css).'.css" rel="stylesheet" />';
     }
@@ -772,7 +772,7 @@ class Visual
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    private function Arquivos_Css_Get_Dependentes(){
+    private function Arquivos_Css_Get_Dependentes() {
         if (empty($this->arquivos_css_dependencia)) return false;
         //'<script type="text/javascript" src="'.WEB_URL.'"></script>'.
         return $this->arquivos_css_dependencia;
@@ -787,7 +787,7 @@ class Visual
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    private function Sistema_Extras(){
+    private function Sistema_Extras() {
         
         // Pega Config
         $temaconfig         = &$this->config_template['links_js'];
@@ -951,7 +951,7 @@ class Visual
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    private function Sistema_Css(){
+    private function Sistema_Css() {
         
         $array_css = Array();
         
@@ -1019,8 +1019,8 @@ class Visual
         $html1      = '';
         $html2      = '';
         $i=0; $j=0;
-        foreach($this->blocos as &$valor){
-            if (is_array($valor)){
+        foreach($this->blocos as &$valor) {
+            if (is_array($valor)) {
                 // Adquire um id unico
                 self::$layoult_idaleatorio = self::$layoult_idaleatorio+1;
                 $id = $temaconfig['abas_id'].self::$layoult_idaleatorio;
@@ -1031,7 +1031,7 @@ class Visual
                     'titulo'        => $valor['title'],
                     'i'             => $i,
                 );
-                if ($temaconfig['abas_inverter']===true){
+                if ($temaconfig['abas_inverter']===true) {
                     $html1 = $this->renderizar_bloco('template_abas',$config).$html1;
                 } else {
                     $html1 .= $this->renderizar_bloco('template_abas',$config);
@@ -1051,7 +1051,7 @@ class Visual
             }
         }
         $this->blocos = Array();
-        if ($i>0){
+        if ($i>0) {
             $tipo = 'abas';
             $config = Array(
                 'Tipo'          => 'Montagem',
@@ -1069,10 +1069,10 @@ class Visual
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    private function tmp_usuario(){
+    private function tmp_usuario() {
         $html = '';
-        if (is_object($this->_Acl) && $this->_Acl->logado!==false && is_object($this->_Acl->logado_usuario)){
-            if (file_exists(ARQ_PATH.'usuario'.DS.$this->_Acl->logado_usuario->id.'.'.$this->_Acl->logado_usuario->foto)){
+        if (is_object($this->_Acl) && $this->_Acl->logado!==false && is_object($this->_Acl->logado_usuario)) {
+            if (file_exists(ARQ_PATH.'usuario'.DS.$this->_Acl->logado_usuario->id.'.'.$this->_Acl->logado_usuario->foto)) {
                 $foto = $this->_Acl->logado_usuario->foto;
             } else {
                 $foto = '';
@@ -1093,7 +1093,7 @@ class Visual
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    private function tmp_menu(){
+    private function tmp_menu() {
         return $this->renderizar_bloco('widget_menu',Array(
             "url" => WEB_URL,
             "menu"=> $this->menu
@@ -1106,10 +1106,10 @@ class Visual
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    private function js_local (){
+    private function js_local () {
         $temaconfig = &$this->config_template['javascript'];
         // Traduz pra js
-        if (SQL_MAIUSCULO===true){
+        if (SQL_MAIUSCULO===true) {
             $maiusculo = 'true';
         } else {
             $maiusculo = 'false';
@@ -1119,7 +1119,7 @@ class Visual
         'ConfigArquivoPadrao = \''.SISTEMA_URL.SISTEMA_DIR.'\';'.
         'Config_Form_Maiusculo = '.$maiusculo.';'.
         'UserLogado = ';
-            if (!is_object($this->_Acl) || $this->_Acl->logado===false || !is_object($this->_Acl->logado_usuario) || !isset($this->_Acl->logado_usuario->id) || $this->_Acl->logado_usuario->id==''){
+            if (!is_object($this->_Acl) || $this->_Acl->logado===false || !is_object($this->_Acl->logado_usuario) || !isset($this->_Acl->logado_usuario->id) || $this->_Acl->logado_usuario->id=='') {
                 $html .= '0';
             }
             else{
@@ -1128,8 +1128,8 @@ class Visual
         $html .= ';';
         // Carrega COnfig Javascript
         $html .= 'Configuracoes_Template = new Array();';
-        if (!empty($temaconfig)){
-            foreach($temaconfig as $indice=>&$valor){
+        if (!empty($temaconfig)) {
+            foreach($temaconfig as $indice=>&$valor) {
                 $html .= 'Configuracoes_Template["'.$indice.'"]="'.$valor.'";';
             }
         }
@@ -1148,11 +1148,11 @@ class Visual
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public static function Layoult_Abas_Carregar($id,$html='',$ativar=true){
+    public static function Layoult_Abas_Carregar($id,$html='',$ativar=true) {
         $Registro           = &\Framework\App\Registro::getInstacia();
         $Visual             = $Registro->_Visual;
         $abas_id            = &$Visual->config_template['plugins']['abas_id'];
-        if ($html!='' && isset($html)){
+        if ($html!='' && isset($html)) {
             $js = ($ativar)?Visual::Layoult_Abas_Ativar_JS($id):'';
             
             $conteudo = array(
@@ -1180,9 +1180,9 @@ class Visual
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public static function Layoult_Home_Widgets_Add($nome,$link,$icon=false,$numero=false,$cor='block-yellow',$duplo=false,$gravidade=0,$bloquer_permissao=true){
-        if ($bloquer_permissao){
-            if (\Framework\App\Registro::getInstacia()->_Acl->Get_Permissao_Url($link)===false){
+    public static function Layoult_Home_Widgets_Add($nome,$link,$icon=false,$numero=false,$cor='block-yellow',$duplo=false,$gravidade=0,$bloquer_permissao=true) {
+        if ($bloquer_permissao) {
+            if (\Framework\App\Registro::getInstacia()->_Acl->Get_Permissao_Url($link)===false) {
                 // Interrompe se nao tiver acesso
                 return false;
             }
@@ -1203,7 +1203,7 @@ class Visual
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public static function Layoult_Home_Widgets_Show($gravidade=10000){
+    public static function Layoult_Home_Widgets_Show($gravidade=10000) {
         $Registro = &\Framework\App\Registro::getInstacia();
         $Visual   = &$Registro->_Visual;
         $widgets = &self::$widgets_inline;
@@ -1220,7 +1220,7 @@ class Visual
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public static function Layoult_Abas_Ativar_JS($numero){
+    public static function Layoult_Abas_Ativar_JS($numero) {
         $Registro           = &Registro::getInstacia();
         $Visual             = &$Registro->_Visual;
         if ($Visual===false) $Registro->_Visual = new Visual();
@@ -1236,7 +1236,7 @@ class Visual
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Widget_Assimilar($endereco,$html){
+    public function Widget_Assimilar($endereco,$html) {
         $this->_widgets_params[$endereco] = $html;
         return true;
     }
@@ -1249,8 +1249,8 @@ class Visual
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Widgets_Assimilar($endereco,$html){
-        if (!isset($this->_widgets_params[$endereco]) || !is_array($this->_widgets_params[$endereco])){
+    public function Widgets_Assimilar($endereco,$html) {
+        if (!isset($this->_widgets_params[$endereco]) || !is_array($this->_widgets_params[$endereco])) {
             $this->_widgets_params[$endereco] = Array();
         }
         $this->_widgets_params[$endereco][] = $html;
@@ -1268,7 +1268,7 @@ class Visual
         
         $titulo = $this->Json_Get_Titulo();
         $head = '<title>'.SISTEMA_NOME.' - ';
-        if ($titulo==''){ 
+        if ($titulo=='') { 
             $head .=  __('Sem Titulo'); 
             
         } else { 
@@ -1337,15 +1337,15 @@ class Visual
             'widgets'       => $this->_widgets_params
         );
         // Conteudo Puro, quando json eh false
-        if ($this->Layolt_Tipo()==2){
+        if ($this->Layolt_Tipo()==2) {
             // Bloco Maior
             $params['template']['Bloco_Maior'] = $this->conteudo;
         }
         
         // Pega Mensagens e Coloca na Tela
-        if ($this->jsonativado!==false && isset($this->json['Info']) && array_search('Mensagens', $this->json['Info']['Tipo'])!==false){
-            foreach($this->json['Mensagens'] as &$valor){
-                if ($valor['tipo']==='erro'){
+        if ($this->jsonativado!==false && isset($this->json['Info']) && array_search('Mensagens', $this->json['Info']['Tipo'])!==false) {
+            foreach($this->json['Mensagens'] as &$valor) {
+                if ($valor['tipo']==='erro') {
                     $tipo_nome      = __('Erro');
                     $tipo_reportar = 'error';
                 } else {
@@ -1357,7 +1357,7 @@ class Visual
                 '<h4 class="alert-heading">'.$valor["mgs_principal"].'</h4><p style="text-align:center;">'.$valor["mgs_secundaria"].'</p></div>'.$params['template']['Bloco_Unico'];
             }
             //Acrescenta ao Titulo, caso nao exista
-            if ($params['site_titulo']===false){
+            if ($params['site_titulo']===false) {
                 $params['site_titulo'] = $tipo_nome;
             }
             //Acrescenta ao Endereco, caso nao exista
@@ -1370,7 +1370,7 @@ class Visual
             }
         }
             
-        if ($params['site_titulo']===false){
+        if ($params['site_titulo']===false) {
             $params['site_titulo'] = __('Sistema');
         }
         $this->renderizar_Template('template',$params,false);
@@ -1388,10 +1388,10 @@ class Visual
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Tema_Elementos_Btn($tipo='Editar',$nome = Array('Adicionar','#',''),$permissao='_'){
+    public function Tema_Elementos_Btn($tipo='Editar',$nome = Array('Adicionar','#',''),$permissao='_') {
         if (!is_array($nome)) throw new \Exception('$nome não é array: '.$nome,2810);
-        if ($tipo=='Superior'){
-            if (isset($nome[1]['Print'])){
+        if ($tipo=='Superior') {
+            if (isset($nome[1]['Print'])) {
                 $ferramentas    = $nome[1];
                 $nome           = $nome[0];
                 $ferramentas = Array(
@@ -1404,7 +1404,7 @@ class Visual
                 $ferramentas = false;
             }
             if ($permissao==='_') $permissao = $this->_Registro->_Acl->Get_Permissao_Url($nome[1]);
-            if ($permissao!==false && isset($nome[2])){
+            if ($permissao!==false && isset($nome[2])) {
                 $array = Array(
                     'btn_add'           => Array(
                         'nome'              => $nome[0],
@@ -1424,7 +1424,7 @@ class Visual
                 );
             }
             return $this->renderizar_bloco('elemento_botao',$array);  
-        }else if ($tipo=='Personalizado'){
+        }else if ($tipo=='Personalizado') {
             if ($permissao==='_') $permissao = $this->_Registro->_Acl->Get_Permissao_Url($nome[1]);
             if ($permissao===false) return '';
             //'onclick'           => $nome[2]
@@ -1433,31 +1433,31 @@ class Visual
             if ($permissao==='_') $permissao = $this->_Registro->_Acl->Get_Permissao_Url($nome[1]);
             if ($permissao===false) return '';
             //'onclick'           => $nome[2],
-            if ($tipo==='Destaque0'){
+            if ($tipo==='Destaque0') {
                 $cor    = 'danger';
                 $icone  = 'star-empty';
-            }else if ($tipo==='Destaque1'){
+            }else if ($tipo==='Destaque1') {
                 $cor    = 'success';
                 $icone  = 'star';                
-            }else if ($tipo==='Status0'){
+            }else if ($tipo==='Status0') {
                 $cor    = 'danger';
                 $icone  = 'thumbs-down';                
-            }else if ($tipo==='Status1'){
+            }else if ($tipo==='Status1') {
                 $cor    = 'success';
                 $icone  = 'thumbs-up';                
-            }else if ($tipo==='Email'){
+            }else if ($tipo==='Email') {
                 $cor    = 'primary';
                 $icone  = 'envelope';                
-            }else if ($tipo==='Baixar'){
+            }else if ($tipo==='Baixar') {
                 $cor    = 'inverse" target="_BLANK';
                 $icone  = 'download';                
-            }else if ($tipo==='Visualizar'){
+            }else if ($tipo==='Visualizar') {
                 $cor    = 'success';
                 $icone  = 'eye';                
-            }else if ($tipo==='Zoom'){
+            }else if ($tipo==='Zoom') {
                 $cor    = 'info';
                 $icone  = 'zoom-in';                
-            }else if ($tipo==='Editar'){
+            }else if ($tipo==='Editar') {
                 $cor    = 'warning" data-confirma="Deseja Realmente Editar?';
                 $icone  = 'pencil';                
             }else/* if ($tipo==='Deletar')*/{
@@ -1474,8 +1474,8 @@ class Visual
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function renderizar_login(){
-        if (LAYOULT_IMPRIMIR=='AJAX'){
+    public function renderizar_login() {
+        if (LAYOULT_IMPRIMIR=='AJAX') {
             $form = new \Framework\Classes\Form('Formlogin',SISTEMA_DIR_INT,''); //formajax /'.SISTEMA_MODULO.'/'.SISTEMA_SUB.'/'.SISTEMA_MET
             $form->Input_Novo('Login','sistema_login','','text', '',30, '');
             $form->Input_Novo('Senha','sistema_senha','','password', 30, '','');
@@ -1508,9 +1508,9 @@ class Visual
             );
             
             // Pega Mensagens e Coloca na Tela
-            if ($this->jsonativado!==false && isset($this->json['Info']) && array_search('Mensagens', $this->json['Info']['Tipo'])!==false){
-                foreach($this->json['Mensagens'] as &$valor){
-                    if ($valor['tipo']==='erro'){
+            if ($this->jsonativado!==false && isset($this->json['Info']) && array_search('Mensagens', $this->json['Info']['Tipo'])!==false) {
+                foreach($this->json['Mensagens'] as &$valor) {
+                    if ($valor['tipo']==='erro') {
                         $tipo_nome      = __('Erro');
                         $tipo_reportar = 'error';
                     } else {
@@ -1537,7 +1537,7 @@ class Visual
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function renderizar_bloco($tpl,$params = Array()){
+    public function renderizar_bloco($tpl,$params = Array()) {
         $imprimir = new \Framework\App\Tempo('Renderizar bloco Visual - SEM SMARTY');
         //$this->clear_cache($this->template_dir.$tpl.'.tpl');
         return $this->renderizar_Template($tpl,$params);
@@ -1550,9 +1550,9 @@ class Visual
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function elemento_breadcrumb($elementos){
+    public function elemento_breadcrumb($elementos) {
         $endereco_html = '';
-        foreach($elementos as &$valor){
+        foreach($elementos as &$valor) {
             $endereco_html .= $this->renderizar_Template('elemento_breadcrumb',Array(
                 'nome' => $valor[0],
                 'endereco' => $valor[1],
@@ -1573,7 +1573,7 @@ class Visual
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    private function renderizar_Template($url,$params,$retorno=true){
+    private function renderizar_Template($url,$params,$retorno=true) {
         $params = array_merge_recursive($params, array(
             'SOBRE_DIREITOS'    => SOBRE_DIREITOS,
             'SOBRE_SLOGAN'      => SOBRE_SLOGAN,
@@ -1585,12 +1585,12 @@ class Visual
             'TEMA_LOGO'         => TEMA_LOGO
         ));
         $url = $this->template_dir.$url.'.php';
-        if (file_exists($url)){
+        if (file_exists($url)) {
             ob_start();
             include($url);
             $saida = ob_get_contents();
             ob_end_clean();
-            if ($retorno){
+            if ($retorno) {
                 return $saida;
             } else {
                 echo $saida;
@@ -1607,8 +1607,8 @@ class Visual
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Layolt_Tipo($alterar=false){
-        if ($alterar===false){
+    public function Layolt_Tipo($alterar=false) {
+        if ($alterar===false) {
             return $this->Layolt_Tipo;
         } else {
             $this->Layolt_Tipo = $alterar;
@@ -1622,17 +1622,17 @@ class Visual
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function grafico_gerar(&$graficos){
+    public function grafico_gerar(&$graficos) {
         // monta os graficos desejados
         $html = '';
-        foreach ($graficos as &$valor){
+        foreach ($graficos as &$valor) {
               $settings = array(
                 'headers' => $valor['headers'],
                 'data' => $valor['itens'],
               );
               $alt = $valor['alt'];
               $larg = $valor['larg'];
-              if (count($valor['itens'])>1){
+              if (count($valor['itens'])>1) {
                  $html .= '<img src=\''.LIBS_URL.'phplot/graf_pizza.php?data='.serialize($valor['itens']).'&titulo='.$valor['titulo'].'&larg='.$valor['larg'].'&alt='.$valor['alt'].'&settings='.serialize($settings).'\' alt=\''.$valor['alt'].'\' />';
               }
         }
@@ -1659,8 +1659,8 @@ class Visual
     public function Show_Tabela_DataTable($tabela, $style='', $blocar=true, $apagado1=false, $aaSorting=Array(Array(0,'asc')), $ColunasOrd=false) {
         $aaSortingtxt = '';
         $i = 0;
-        if (is_array($aaSorting)){
-            foreach($aaSorting as &$valor){
+        if (is_array($aaSorting)) {
+            foreach($aaSorting as &$valor) {
                 if ($i>0) $aaSortingtxt .= ',';
                 $aaSortingtxt .= '['.$valor[0].',\''.$valor[1].'\']';
                 ++$i;
@@ -1676,7 +1676,7 @@ class Visual
                 'Colunas  '      => $ColunasOrd // Ordenacao das Colunas
             )
         );
-        if ($blocar===true){
+        if ($blocar===true) {
             $this->Blocar($this->renderizar_bloco('template_tabela',$config));
         } else {
             return $this->renderizar_bloco('template_tabela',$config);
@@ -1696,14 +1696,14 @@ class Visual
      * @return string Retorna HTML ou se Blocar, um true
      */
     public function Show_Tabela_DataTable_Massiva($tabela, $url=false, $style='', $blocar=true, $apagado1=false, $aaSorting=Array(Array(0,'asc')), $ColunasOrd=false) {
-       if ($url === false){
+       if ($url === false) {
            $url = filter_input(INPUT_GET, 'url', FILTER_SANITIZE_URL);
        }
         
         $aaSortingtxt = '';
         $i = 0;
-        if (is_array($aaSorting)){
-            foreach($aaSorting as &$valor){
+        if (is_array($aaSorting)) {
+            foreach($aaSorting as &$valor) {
                 if ($i>0) $aaSortingtxt .= ',';
                 $aaSortingtxt .= '['.$valor[0].',\''.$valor[1].'\']';
                 ++$i;
@@ -1720,7 +1720,7 @@ class Visual
                 'Colunas  '      => $ColunasOrd // Ordenacao das Colunas
             )
         );
-        if ($blocar===true){
+        if ($blocar===true) {
             $this->Blocar($this->renderizar_bloco('template_tabela',$config));
             return true;
         } else {
@@ -1743,10 +1743,10 @@ class Visual
      * @param type $descricao
      * @return string
      */
-    public function Show_Upload($modulo,$sub,$acao,$camada,$imagem,$diretorio,$id,$add='',$largura='50',$altura='50',$extensoes='*.png;*.jpg;*.gif',$descricao='Arquivos de imagens...'){
+    public function Show_Upload($modulo,$sub,$acao,$camada,$imagem,$diretorio,$id,$add='',$largura='50',$altura='50',$extensoes='*.png;*.jpg;*.gif',$descricao='Arquivos de imagens...') {
         if ($imagem=='') $imagem = '0.jpg';
         else            $imagem = $id.'.'.$imagem;
-        if (!is_dir(ARQ_PATH.$diretorio)){
+        if (!is_dir(ARQ_PATH.$diretorio)) {
             if (!mkdir (ARQ_PATH.$diretorio, 0777,true )) throw new \Exception('Erro de Permissão: '.$diretorio,2826);
         }
         $html = '<div id="'.$camada.'">'.
@@ -1766,7 +1766,7 @@ class Visual
      * @param type $descricao
      * @return string
      */
-    public function Upload_Janela($modulo,$sub,$acao,$id=false,$extensoes='*.png;*.jpg;*.gif',$descricao='Arquivos de imagens...'){
+    public function Upload_Janela($modulo,$sub,$acao,$id=false,$extensoes='*.png;*.jpg;*.gif',$descricao='Arquivos de imagens...') {
         $inicio = (int) TEMPO_COMECO;
         $atributo_id = (string) 'Drop'.$inicio.'zone'.rand();
         // Carrega Dependencias
@@ -1791,7 +1791,7 @@ class Visual
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Js_Calendar_Gerar($idcalendar,&$events){
+    public function Js_Calendar_Gerar($idcalendar,&$events) {
          $this->Javascript_Executar(
          '$(\'#'.$idcalendar.'\').fullCalendar({
              monthNames:[\'Janeiro\', \'Fevereiro\', \'Março\', \'Abril\', \'Maio\', \'Junho\', \'Julho\', \'Agosto\', \'Setembro\', \'Outubro\', \'Novembro\', \'Dezembro\'],
@@ -1817,8 +1817,8 @@ class Visual
              events:['
                 );
                 $i = 0;
-                foreach($events as &$valor){
-                    if ($i!=0){
+                foreach($events as &$valor) {
+                    if ($i!=0) {
                         $this->Javascript_Executar(',');
                     }
                     $this->Javascript_Executar('{'.
@@ -1834,7 +1834,7 @@ class Visual
                 $this->Javascript_Executar('
             ],
             eventClick: function(event) {
-                if (UserLogado==0){
+                if (UserLogado==0) {
                     alert(\'Precisa ser cadastrado para alugar motos\');
                 } else {
                     Modelo_Ajax_Chamar(\''.SISTEMA_MODULO.'/'.SISTEMA_SUB.'/Popup_Agendar_veiculo/\'+event.id+\'&nome=\'+event.title+\'&inicial=\'+event.comeco+\'&final=\'+event.final,\'\',\'GET\',true);	
@@ -1857,8 +1857,8 @@ class Visual
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Json_Start($title='',$historico=true){
-        if ($this->jsonativado===false){
+    public function Json_Start($title='',$historico=true) {
+        if ($this->jsonativado===false) {
             $this->json['Info'] = array(
                 'Titulo' => $title,
                 'Historico' => $historico,
@@ -1875,8 +1875,8 @@ class Visual
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    private function Json_Get_Titulo(){
-        if (isset($this->json['Info']['Titulo']) && $this->json['Info']['Titulo']!=='' && $this->json['Info']['Titulo']!==false){
+    private function Json_Get_Titulo() {
+        if (isset($this->json['Info']['Titulo']) && $this->json['Info']['Titulo']!=='' && $this->json['Info']['Titulo']!==false) {
             return $this->json['Info']['Titulo'];
         } else {
             return false;
@@ -1890,8 +1890,8 @@ class Visual
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Json_Info_Update($indice,$valor){
-        if ($this->jsonativado===false){
+    public function Json_Info_Update($indice,$valor) {
+        if ($this->jsonativado===false) {
             $this->Json_Start();
         }
         $this->json['Info'][$indice] = $valor;
@@ -1903,8 +1903,8 @@ class Visual
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Json_Exist(){
-        if ($this->jsonativado===false){
+    public function Json_Exist() {
+        if ($this->jsonativado===false) {
             return false;
         } else {
             return true;
@@ -1918,8 +1918,8 @@ class Visual
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Json_ExisteTipo($tipo){
-        if (isset($this->json[$tipo])){
+    public function Json_ExisteTipo($tipo) {
+        if (isset($this->json[$tipo])) {
             return true;
         } else {
             return false;
@@ -1931,10 +1931,10 @@ class Visual
      * @param int $id Chave Primária (Id do Registro)
      * @return boolean
      */
-    public function Json_RetiraTipo($id){
-        if (!empty($this->json['Conteudo'])){
-            foreach($this->json['Conteudo'] as $indice=>&$valor){
-                if ($valor['location'] == $id){
+    public function Json_RetiraTipo($id) {
+        if (!empty($this->json['Conteudo'])) {
+            foreach($this->json['Conteudo'] as $indice=>&$valor) {
+                if ($valor['location'] == $id) {
                     unset($this->json['Conteudo'][$indice]); 
                     return true;
                 }
@@ -1950,42 +1950,42 @@ class Visual
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Json_IncluiTipo($tipo,&$array){
+    public function Json_IncluiTipo($tipo,&$array) {
         // Se nao tiver json, ativa
-        if ($this->jsonativado===false){
+        if ($this->jsonativado===false) {
             $this->Json_Start();
         }
-        if (array_search($tipo, $this->json['Info']['Tipo'])===false){
-            if ($tipo=='JavascriptInterno'){
+        if (array_search($tipo, $this->json['Info']['Tipo'])===false) {
+            if ($tipo=='JavascriptInterno') {
                 array_push($this->json['Info']['Tipo'], $tipo);
             } else {
                 array_unshift($this->json['Info']['Tipo'], $tipo);
             }
         }
         // Dependendo do Tipo, faz a inserção necessaria
-        if ($tipo=='Redirect'){
-            if (!isset($this->json['Redirect'])){
+        if ($tipo=='Redirect') {
+            if (!isset($this->json['Redirect'])) {
                 $this->json['Redirect'] = Array();
             }
             $this->json['Redirect'][] = $array;
-        }else if ($tipo=='Popup'){
-            if (!isset($this->json['Popup'])){
+        }else if ($tipo=='Popup') {
+            if (!isset($this->json['Popup'])) {
                 $this->json['Popup'] = Array();
             }
             $botoes = Array();
-            if (isset($array['width'])){
+            if (isset($array['width'])) {
                 $largura    = $array['width'];
             }
             else{
                 $largura    = 800;
             }
-            if (isset($array['height'])){
+            if (isset($array['height'])) {
                 $altura     = $array['height'];
             }
             else{
                 $altura     = 600;
             }
-            if (isset($array['botoes'])){
+            if (isset($array['botoes'])) {
                 foreach ($array['botoes'] as &$valor) {
                     $botoes[] = Array(
                         'text'      => $valor['text'],
@@ -2001,8 +2001,8 @@ class Visual
                 "botoes" => $botoes,
                 "html" => $array['html']
             );
-        }elseif ($tipo=='Mensagens'){
-            if (!isset($this->json['Mensagens'])){
+        }elseif ($tipo=='Mensagens') {
+            if (!isset($this->json['Mensagens'])) {
                 $this->json['Mensagens'] = Array();
             }
             $this->json['Mensagens'][] = array(
@@ -2010,8 +2010,8 @@ class Visual
                 "mgs_principal" => $array['mgs_principal'],
                 "mgs_secundaria" => $array['mgs_secundaria']
             );
-        }elseif ($tipo=='Conteudo'){
-            if (!isset($this->json['Conteudo'])){
+        }elseif ($tipo=='Conteudo') {
+            if (!isset($this->json['Conteudo'])) {
                 $this->json['Conteudo'] = Array();
             }
             $this->json['Conteudo'][] = array(
@@ -2019,41 +2019,41 @@ class Visual
                 "js" => $array['js'],
                 "html" => $array['html']
             );
-        }elseif ($tipo=='Select'){
-            if (!isset($this->json['Select'])){
+        }elseif ($tipo=='Select') {
+            if (!isset($this->json['Select'])) {
                 $this->json['Select'] = Array();
             }
             $this->json['Select'][] = array(
                 "id" => $array['id'],
                 "valores" => $array['valores']
             );
-        }elseif ($tipo=='Javascript'){
-            if (!isset($this->json['Javascript'])){
+        }elseif ($tipo=='Javascript') {
+            if (!isset($this->json['Javascript'])) {
                 $this->json['Javascript'] = Array();
-                if (is_array($array)){
+                if (is_array($array)) {
                     $this->json['Javascript'] = $array;
                     return true;
                 }
             }
-            if (is_array($array)){
+            if (is_array($array)) {
                 $this->json['Javascript'] = array_merge($this->json['Javascript'], $array);
             } else {
                 $this->json['Javascript'][] = $array;
             }
-        }elseif ($tipo=='JavascriptInterno'){
-            if (!isset($this->json['JavascriptInterno'])){
+        }elseif ($tipo=='JavascriptInterno') {
+            if (!isset($this->json['JavascriptInterno'])) {
                 $this->json['JavascriptInterno'] = Array();
             }
             $this->json['JavascriptInterno'][] = $array;
-        }elseif ($tipo=='Css'){
-            if (!isset($this->json['Css'])){
+        }elseif ($tipo=='Css') {
+            if (!isset($this->json['Css'])) {
                 $this->json['Css'] = Array();
-                if (is_array($array)){
+                if (is_array($array)) {
                     $this->json['Css'] = $array;
                     return true;
                 }
             }
-            if (is_array($array)){
+            if (is_array($array)) {
                 $this->json['Css'] = array_merge($this->json['Css'], $array);
             } else {
                 $this->json['Css'][] = $array;
@@ -2069,22 +2069,22 @@ class Visual
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Json_Retorna($zerar=true){
+    public function Json_Retorna($zerar=true) {
         $imprimir = new \Framework\App\Tempo('Retornar Json Visual - SEM SMARTY');
         
         
         // Inicia se nao tiver iniciado
-        if ($this->jsonativado===false){
+        if ($this->jsonativado===false) {
             $this->Json_Start();
         }
         
         // Pega Conteudo Alocado e Coloca Aqui
         $configuracao_layoult = &$this->config_template;
 
-        if ($configuracao_layoult['camada_unica']!==false){
+        if ($configuracao_layoult['camada_unica']!==false) {
             $html = $this->Bloco_Unico_Retornar();
             $js = '';
-            if ($html==''){
+            if ($html=='') {
                 $js = '$(\''.$configuracao_layoult['camada_unica'].'\').hide();';
             } else {
                 $js = '$(\''.$configuracao_layoult['camada_unica'].'\').show();';
@@ -2095,7 +2095,7 @@ class Visual
                 'html'      => $html
             );
             // Joga pro Json se nao for o caso de popup
-            if ($zerar===true || $html!=''){
+            if ($zerar===true || $html!='') {
                 $this->Json_IncluiTipo('Conteudo',$conteudo);
             }
             $html = $this->Bloco_Maior_Retornar();
@@ -2104,7 +2104,7 @@ class Visual
         }
 
         $js = '';
-        if ($html==''){
+        if ($html=='') {
             $js = '$(\''.$configuracao_layoult['camada_maior'].'\').hide();';
         } else {
             $js = '$(\''.$configuracao_layoult['camada_maior'].'\').show();';
@@ -2115,13 +2115,13 @@ class Visual
             'html' => $html
         );
         // Joga pro Json se nao for o caso de popup
-        if ($zerar===true || $html!=''){
+        if ($zerar===true || $html!='') {
             $this->Json_IncluiTipo('Conteudo',$conteudo);
         }
 
         $html = $this->Bloco_Menor_Retornar();
         $js = '';
-        if ($html==''){
+        if ($html=='') {
             $js = '$(\''.$configuracao_layoult['camada_menor'].'\').hide();';
         } else {
             $js = '$(\''.$configuracao_layoult['camada_menor'].'\').show();';
@@ -2132,12 +2132,12 @@ class Visual
             'html' =>  $html
         );
         // Joga pro Json se nao for o caso de popup
-        if ($zerar===true || $html!=''){
+        if ($zerar===true || $html!='') {
             $this->Json_IncluiTipo('Conteudo',$conteudo);
         }
         // inclui js e zera o head js
         $javascript = $this->Javascript_Executar();
-        if ($javascript!=''){
+        if ($javascript!='') {
             $this->Json_IncluiTipo('JavascriptInterno',$javascript);
             //zera js
             $this->Javascript_Executar(false);
@@ -2147,13 +2147,13 @@ class Visual
         
         
         // Continuar
-        if ($this->json['Info']['Titulo']!=''){
+        if ($this->json['Info']['Titulo']!='') {
             $html='';
-            if (isset($this->menu['SubMenu'])){
+            if (isset($this->menu['SubMenu'])) {
                 $tamanho = sizeof($this->menu['SubMenu']['link']);
-                for($i = 0; $i<$tamanho; $i++){
+                for($i = 0; $i<$tamanho; $i++) {
                     $html .= '<li><a href="'.$this->menu['SubMenu']['link'][$i].'" class="lajax-mesub';
-                    if ($this->menu['SubMenu']['ativo'][$i]==1){
+                    if ($this->menu['SubMenu']['ativo'][$i]==1) {
                         $html .= ' active';
                     }
                     $html .= '" data-acao="">'.$this->menu['SubMenu']['nome'][$i].'</a></li>';
@@ -2170,10 +2170,10 @@ class Visual
         // Adiciona Dependentes
         $css    = $this->Arquivos_Css_Get_Dependentes();
         $js     = $this->Arquivos_Js_Get_Dependentes();
-        if ($js!==false){
+        if ($js!==false) {
             $this->Json_IncluiTipo('Javascript',$js);
         }
-        if ($css!==false){
+        if ($css!==false) {
             $array = Array();
             $this->Json_IncluiTipo('Css',$css);
         }
@@ -2187,7 +2187,7 @@ class Visual
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    private function Json_Codificar(){
+    private function Json_Codificar() {
         
         if (\Framework\App\Sistema_Funcoes::VersionPHP('5.3.10'))
         {
@@ -2253,18 +2253,18 @@ class Visual
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Categorias_ShowTab(&$array,&$tabela,$i=0,$nivel=0){
+    public function Categorias_ShowTab(&$array,&$tabela,$i=0,$nivel=0) {
         $antecipa = $nivel;
         $nomeantes = '';
         $j = 0;
-        while($antecipa>0){
+        while($antecipa>0) {
             --$antecipa;
             $nomeantes = $nomeantes.'— ';
         }
-        if (!empty($array)){
+        if (!empty($array)) {
               reset($array);
               foreach ($array as &$valor) {
-                if ($nivel==0){
+                if ($nivel==0) {
                     $class = 'tbold tleft';
                 }
                 else{
@@ -2272,10 +2272,10 @@ class Visual
                 }
                 // Imprime Acesso
                 $acesso = '';
-                if (!empty($valor['acesso'])){
-                    foreach ($valor['acesso'] as &$valor2){
+                if (!empty($valor['acesso'])) {
+                    foreach ($valor['acesso'] as &$valor2) {
                         $oacesso = \Categoria_Acesso_DAO::Mod_Acesso_Get($valor2);
-                        if ($acesso==''){
+                        if ($acesso=='') {
                             $acesso .= $oacesso['nome'];
                         }
                         else{
@@ -2292,7 +2292,7 @@ class Visual
                     )
                 ));
                 ++$i;
-                if (!empty($array[$j]['filhos'])){
+                if (!empty($array[$j]['filhos'])) {
                     $i = $this->Categorias_ShowTab($array[$j]['filhos'],$tabela,$i,$nivel+1);
                 }
                 ++$j;
@@ -2312,18 +2312,18 @@ class Visual
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Categorias_ShowSelect(&$array,&$form,$padrao=0,$i=0,$nivel=0){
+    public function Categorias_ShowSelect(&$array,&$form,$padrao=0,$i=0,$nivel=0) {
         $antecipa = $nivel;
         $nomeantes = '';
         $j = 0;
-        while($antecipa>0){
+        while($antecipa>0) {
             --$antecipa;
             $nomeantes = $nomeantes.'— ';
         }
-        if (!empty($array)){
+        if (!empty($array)) {
               reset($array);
               foreach ($array as &$valor) {
-                if ($padrao==$valor['id']){
+                if ($padrao==$valor['id']) {
                     $selecionado = 1;
                 }
                 else{
@@ -2331,7 +2331,7 @@ class Visual
                 }
                 $form->Select_Opcao($nomeantes.$valor['nome'],$valor['id'],$selecionado);
                 ++$i;
-                if (!empty($array[$j]['filhos'])){
+                if (!empty($array[$j]['filhos'])) {
                     $i = $this->Categorias_ShowSelect($array[$j]['filhos'],$form,$padrao,$i,$nivel+1);
                 }
                 ++$j;
@@ -2351,18 +2351,18 @@ class Visual
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Categorias_ShowSelect_AJAX(&$array,&$form,$padrao=0,$i=0,$nivel=0){
+    public function Categorias_ShowSelect_AJAX(&$array,&$form,$padrao=0,$i=0,$nivel=0) {
         $antecipa = $nivel;
         $nomeantes = '';
         $j = 0;
-        while($antecipa>0){
+        while($antecipa>0) {
             --$antecipa;
             $nomeantes = $nomeantes.'— ';
         }
-        if (!empty($array)){
+        if (!empty($array)) {
               reset($array);
               foreach ($array as &$valor) {
-                if ($padrao==$valor['id']){
+                if ($padrao==$valor['id']) {
                     $selecionado = 1;
                 }
                 else{
@@ -2370,7 +2370,7 @@ class Visual
                 }
                 $form .= \Framework\Classes\Form::Select_Opcao_Stat($nomeantes.$valor['nome'],$valor['id'],$selecionado);
                 ++$i;
-                if (!empty($array[$j]['filhos'])){
+                if (!empty($array[$j]['filhos'])) {
                     $i = $this->Categorias_ShowSelect_AJAX($array[$j]['filhos'],$form,$padrao,$i,$nivel+1);
                 }
                 ++$j;
@@ -2383,7 +2383,7 @@ class Visual
      * @param varchar $complemento Usado antes das variaveis das cores, pode ser label ou outros
      * @return Array
      */
-    static function Tema_Tipos($complemento){
+    static function Tema_Tipos($complemento) {
          return Array(4,Array(
              $complemento.'-success',
              $complemento.'-info',

@@ -1,11 +1,11 @@
 <?php $cont=0;
-foreach($params['widgets'] as $v){
-    if( isset($v['duplo']) && $v['duplo']===true){
+foreach($params['widgets'] as $v) {
+    if( isset($v['duplo']) && $v['duplo']===true) {
         $duplo=' double';
     } else {
         $duplo='';
     }
-    if($cont==0){
+    if($cont==0) {
         echo '<div class="metro-nav">';
     } ?>
     <div class="metro-nav-block nav-<?php echo $v['cor']; echo $duplo; ?>">
@@ -16,7 +16,7 @@ foreach($params['widgets'] as $v){
         </a>
     </div>
     <?php ++$cont;
-    if($cont===5){ ?>
+    if($cont===5) { ?>
         </div>
         <?php $cont=0;
     }

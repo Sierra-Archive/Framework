@@ -13,7 +13,7 @@ class usuario_mensagem_SuporteModelo extends usuario_mensagem_Modelo
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    public function __construct(){
+    public function __construct() {
       parent::__construct();
     }
     /**
@@ -25,10 +25,10 @@ class usuario_mensagem_SuporteModelo extends usuario_mensagem_Modelo
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Suporte_MensagensSetor(&$array,$grupo=0){
+    public function Suporte_MensagensSetor(&$array,$grupo=0) {
         $array = Array();
         // Carrega Todos os Grupos
-        if($grupo!=0){
+        if($grupo!=0) {
             $where = Array(
                 'grupo'      => $grupo
             );
@@ -36,8 +36,8 @@ class usuario_mensagem_SuporteModelo extends usuario_mensagem_Modelo
             $i = 0;
             $setoreswhere = Array();
             if(is_object($setores)) $setores = Array($setores);
-            if(!empty($setores)){
-                foreach($setores as $valor){
+            if(!empty($setores)) {
+                foreach($setores as $valor) {
                     $setoreswhere[$i] = $valor->id;
                     ++$i;
                 }
@@ -47,7 +47,7 @@ class usuario_mensagem_SuporteModelo extends usuario_mensagem_Modelo
             // Carrega Assuntos de Acordo com os grupos acima 
             $i =0;
             $array = Array();
-            if($setor!=0){
+            if($setor!=0) {
                 // mostra todos os tickets para ADMIN
                 $where = Array(
                     'INsetor'      => $setoreswhere
@@ -61,7 +61,7 @@ class usuario_mensagem_SuporteModelo extends usuario_mensagem_Modelo
             $i = 0;
             $assuntoswhere = Array();
             if(is_object($assuntos)) $assuntos = Array($assuntos);
-            foreach($assuntos as $valor){
+            foreach($assuntos as $valor) {
                 $assuntoswhere[$i] = $valor->id;
                 ++$i;
             }
@@ -89,13 +89,13 @@ class usuario_mensagem_SuporteModelo extends usuario_mensagem_Modelo
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public static function Suporte_MensagensCliente(&$array,$cliente=0){
+    public static function Suporte_MensagensCliente(&$array,$cliente=0) {
         $Registro = &\Framework\App\Registro::getInstacia();
         $Modelo = &$Registro->_Modelo;
         // Carrega Mensagens de Acordo com os assuntos acima 
         $i =0;
         $array = Array();
-        if($cliente!=0){
+        if($cliente!=0) {
             // mostra todos os tickets para ADMIN
             $where = Array(
                 'cliente'      => $cliente
@@ -106,9 +106,9 @@ class usuario_mensagem_SuporteModelo extends usuario_mensagem_Modelo
         }
         // Puxa Banco de Dados
         $array = $Modelo->db->Sql_Select('Usuario_Mensagem',$where);
-        if($array!==false){
+        if($array!==false) {
             if(is_object($array)) $array = Array($array);
-            foreach($array as &$valor){
+            foreach($array as &$valor) {
                 $valor->lido = self::Mensagem_RespNova($valor->id,$valor->escritor);
                 list($valor->tipo,$valor->tempopassado) = usuario_mensagem_Modelo::Mensagem_TipoChamado($valor);
                 if($valor->tipo=='nov') $valor->tipo = __('Chamado Novo');
@@ -119,13 +119,13 @@ class usuario_mensagem_SuporteModelo extends usuario_mensagem_Modelo
         }
         return count($array); 
     }
-    public static function Suporte_MensagensCliente_Qnt($cliente=0){
+    public static function Suporte_MensagensCliente_Qnt($cliente=0) {
         $Registro = &\Framework\App\Registro::getInstacia();
         $Modelo = &$Registro->_Modelo;
         // Carrega Mensagens de Acordo com os assuntos acima 
         $i =0;
         $array = Array();
-        if($cliente!=0){
+        if($cliente!=0) {
             // mostra todos os tickets para ADMIN
             $where = 'cliente='.$cliente;
         } else {

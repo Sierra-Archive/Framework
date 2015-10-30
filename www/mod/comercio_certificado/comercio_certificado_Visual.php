@@ -12,10 +12,10 @@ class comercio_certificado_Visual extends \Framework\App\Visual
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    public function __construct(){
+    public function __construct() {
         parent::__construct();
     }
-    public function ErroShow(){
+    public function ErroShow() {
         return '<center><font color="#FF0000">Primeiro escolha um cliente</font></center>';
     }
 }

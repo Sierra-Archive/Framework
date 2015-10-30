@@ -15,7 +15,7 @@ class usuario_mensagem_AssuntoControle extends usuario_mensagem_Controle
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    public function __construct(){
+    public function __construct() {
         parent::__construct();
     }
     /**
@@ -29,16 +29,16 @@ class usuario_mensagem_AssuntoControle extends usuario_mensagem_Controle
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    public function Main(){
+    public function Main() {
         \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'usuario_mensagem/Assunto/Assuntos/');
         return false;
     }
-    static function Endereco_Assunto($true=true){
+    static function Endereco_Assunto($true=true) {
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
         $titulo = __('Assuntos');
         $link = 'usuario_mensagem/Assunto/Assuntos';
-        if($true===true){
+        if($true===true) {
             $_Controle->Tema_Endereco($titulo,$link);
         } else {
             $_Controle->Tema_Endereco($titulo);
@@ -49,7 +49,7 @@ class usuario_mensagem_AssuntoControle extends usuario_mensagem_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Assuntos($export=false){
+    public function Assuntos($export=false) {
         self::Endereco_Assunto(false);
         
         $tabela = Array(
@@ -67,7 +67,7 @@ class usuario_mensagem_AssuntoControle extends usuario_mensagem_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Assuntos_Add(){
+    public function Assuntos_Add() {
         self::Endereco_Assunto(true);
         // Carrega Config
         $titulo1    = __('Adicionar Assunto');
@@ -85,7 +85,7 @@ class usuario_mensagem_AssuntoControle extends usuario_mensagem_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Assuntos_Add2(){
+    public function Assuntos_Add2() {
         $titulo     = __('Assunto Adicionado com Sucesso');
         $dao        = 'Usuario_Mensagem_Assunto';
         $funcao     = '$this->Assuntos();';
@@ -100,7 +100,7 @@ class usuario_mensagem_AssuntoControle extends usuario_mensagem_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Assuntos_Edit($id){
+    public function Assuntos_Edit($id) {
         self::Endereco_Assunto(true);
         $id = (int) $id;
         // Carrega campos e retira os que nao precisam
@@ -126,7 +126,7 @@ class usuario_mensagem_AssuntoControle extends usuario_mensagem_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Assuntos_Edit2($id){
+    public function Assuntos_Edit2($id) {
         
         $id = (int) $id;
         // Puxa o assunto, e altera seus valores, depois salva novamente
@@ -136,7 +136,7 @@ class usuario_mensagem_AssuntoControle extends usuario_mensagem_Controle
         // Atualiza
         $this->Assuntos();
         // Mensagem
-        if($sucesso===true){
+        if($sucesso===true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Assunto Alterado com Sucesso'),
@@ -161,7 +161,7 @@ class usuario_mensagem_AssuntoControle extends usuario_mensagem_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Assuntos_Del($id){
+    public function Assuntos_Del($id) {
         
         
     	$id = (int) $id;
@@ -169,7 +169,7 @@ class usuario_mensagem_AssuntoControle extends usuario_mensagem_Controle
         $assunto = $this->_Modelo->db->Sql_Select('Usuario_Mensagem_Assunto', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($assunto);
         // Mensagem
-    	if($sucesso===true){
+    	if($sucesso===true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),

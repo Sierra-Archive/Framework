@@ -10,23 +10,23 @@ final Class Financeiro_Pagamento_Externo_DAO extends Framework\App\Dao
     protected $obs;
     
     protected static $aceita_config       = false;
-    protected static $objetocarregado     = false;     protected static $mysql_colunas       = false;     protected static $mysql_outside       = Array();     protected static $mysql_inside        = Array(); public function __construct() {  parent::__construct(); } public static function Get_Nome(){
+    protected static $objetocarregado     = false;     protected static $mysql_colunas       = false;     protected static $mysql_outside       = Array();     protected static $mysql_inside        = Array(); public function __construct() {  parent::__construct(); } public static function Get_Nome() {
         return MYSQL_FINANCEIRO_MOV_EXT;
     }
     /**
      * Fornece Permissão de Copia da tabela
      * @return string
      */
-    public static function Permissao_Copia(){
+    public static function Permissao_Copia() {
         return false;
     }
-    public static function Get_Sigla(){
+    public static function Get_Sigla() {
         return 'FME';
     }
-    public static function Get_Class(){
+    public static function Get_Class() {
         return get_class() ; //return str_replace(Array('_DAO'), Array(''), get_class());
     }
-    public static function Gerar_Colunas(){
+    public static function Gerar_Colunas() {
         return Array(
             Array(
                 'mysql_titulo'      => 'id',

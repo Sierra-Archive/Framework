@@ -50,7 +50,7 @@ class Form
         // Grava Coluna Tipo
         $this->ColunaForm = $ColunaForm;
         // Popup SELECT
-        if (isset($_GET['formselect']) && $_GET['formselect']!='' && isset($_GET['condicao']) && $_GET['condicao']!=''){
+        if (isset($_GET['formselect']) && $_GET['formselect']!='' && isset($_GET['condicao']) && $_GET['condicao']!='') {
             $extra = '?formselect='.\Framework\App\Conexao::anti_injection($_GET['formselect']).
                      '&condicao='.\Framework\App\Conexao::anti_injection($_GET['condicao']);
             $this->form_dependencia = true;
@@ -71,7 +71,7 @@ class Form
                 'AutoComplete'      => $autocomplete
             )
         );
-        if ($this->_Visual===false){
+        if ($this->_Visual===false) {
             $this->_Registro->_Visual = new \Framework\App\Visual();
         }
         $this->form = $this->_Visual->renderizar_bloco('template_form',$config);
@@ -90,7 +90,7 @@ class Form
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function BoleanoMultiplo($titulo='',$col1 = 'Não Permitido',$col2 = 'Permitido',$id='padrao',$class='',$nao_selecionado = Array(),$selecionado = Array(), $escondido=false){
+    public function BoleanoMultiplo($titulo='',$col1 = 'Não Permitido',$col2 = 'Permitido',$id='padrao',$class='',$nao_selecionado = Array(),$selecionado = Array(), $escondido=false) {
         // Aumenta o id e Add javascript no Visual
         $controle_duallist = &self::$controle_duallist;
         ++$controle_duallist;
@@ -113,13 +113,13 @@ class Form
         ');');
         // Cria Formulario
         $html  = '<select tabindex="'.self::$tab_index.'" multiple="multiple" size="10" id="'.$id.'" name="'.$id.'" class="form_duallist'.$controle_duallist.'">';
-        if (!empty($nao_selecionado) && is_array($nao_selecionado)){
-            foreach($nao_selecionado as $indice=>&$valor){
+        if (!empty($nao_selecionado) && is_array($nao_selecionado)) {
+            foreach($nao_selecionado as $indice=>&$valor) {
                 $html .= '<option value="'.$indice.'">'.$valor.'</option>';
             }
         }
-        if (!empty($selecionado) && is_array($selecionado)){
-            foreach($selecionado as $indice=>&$valor){
+        if (!empty($selecionado) && is_array($selecionado)) {
+            foreach($selecionado as $indice=>&$valor) {
                 $html .= '<option value="'.$indice.'" selected="selected">'.$valor.'</option>';
             }
         }
@@ -153,10 +153,10 @@ class Form
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function SelectMultiplo($titulo='',$opcoes = Array(),$id=false,$url='',$campos=false, $javascript_campos = false, $condicao=false, $escondido = false, $class='', $infonulo='Escolha uma opção'){
+    public function SelectMultiplo($titulo='',$opcoes = Array(),$id=false,$url='',$campos=false, $javascript_campos = false, $condicao=false, $escondido = false, $class='', $infonulo='Escolha uma opção') {
         //Aumenta o id e Add javascript no Visual
         ++self::$tab_index;
-        if ($id!==false){
+        if ($id!==false) {
             $id = \Framework\App\Conexao::anti_injection($id);
         }
         $Registro   = &\Framework\App\Registro::getInstacia();
@@ -164,13 +164,13 @@ class Form
         // Zera VAriaveis
         $change = '';
         
-        if ($campos!==false && $javascript_campos!==false){
+        if ($campos!==false && $javascript_campos!==false) {
             // Javascript
             $js = '<script LANGUAGE="JavaScript" TYPE="text/javascript">';
-            $js .= 'function Form_Change_'.$id.'(){'. 
+            $js .= 'function Form_Change_'.$id.'() {'. 
                 'var valores_usados = $("#'.$id.'").val();'.
                 '$("#'.$id.'controlador > span").attr("calculado",0);'.
-                'if (typeof(valores_usados)!="undefined" && valores_usados!=null){'.
+                'if (typeof(valores_usados)!="undefined" && valores_usados!=null) {'.
                     'var length = valores_usados.length;'.
                     'for(var i = 0; i < length; i++) {'.
                     
@@ -179,19 +179,19 @@ class Form
                         // Trocado de chzn para chosen, nao sei qual bug que dava, mas acho que nao ocorre mais
                         // vou comentar
                         /*'var j = 0;'.
-                        '$(\'#'.$id.'_chosen\').find(\'#'.$id.'_chzn_c_\'+valores_usados[i]).each(function(i){'.
+                        '$(\'#'.$id.'_chosen\').find(\'#'.$id.'_chzn_c_\'+valores_usados[i]).each(function(i) {'.
                             '++j;'.
-                            'if (j>1){'.
+                            'if (j>1) {'.
                                 '$(this).delete();'.
                             '}'.
                         '});'.*/
                     
                     
                         // Puxa Nome, E troca calculado pra 1 caso exista
-                        'if (valores_usados[i]!=\'\'){'.
+                        'if (valores_usados[i]!=\'\') {'.
                             'var nome = $("#'.$id.' option[value="+valores_usados[i]+"]").html();'.
-                            'if (nome!=\'\'){'.
-                                'if ($("#'.$id.'controlador_"+valores_usados[i]+"").size()!=1){'.
+                            'if (nome!=\'\') {'.
+                                'if ($("#'.$id.'controlador_"+valores_usados[i]+"").size()!=1) {'.
                                     'var java_campos = "'.$javascript_campos.'";'.
                                     'java_campos = java_campos.replace(/{id}/g, valores_usados[i]);'.
                                     'java_campos = java_campos.replace(/{nome}/g, Sierra.Visual_Tratamento_Maiusculo_Primeira(nome,true));'.
@@ -214,13 +214,13 @@ class Form
             $change = 'Form_Change_'.$id.'()';
         }
         // Se tiver Obrigatorio bota Asteristico
-        if (strpos($class, 'obrigatorio')!==false){
+        if (strpos($class, 'obrigatorio')!==false) {
             $titulo = $titulo.'*';
         } 
         // Add Valor Zero
         $nenhum_selecionado = true;
-        foreach($opcoes as $valor){
-            if ($valor['selected']===1){
+        foreach($opcoes as $valor) {
+            if ($valor['selected']===1) {
                 $nenhum_selecionado = false;
                 continue;
             }
@@ -264,7 +264,7 @@ class Form
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    static function Select_Opcao_Stat($titulo,$value,$selected = 0){        
+    static function Select_Opcao_Stat($titulo,$value,$selected = 0) {        
         $_Registro = &\Framework\App\Registro::getInstacia();
         $_Visual     = $_Registro->_Visual;
         $config = Array(
@@ -278,13 +278,13 @@ class Form
         );
         return $_Visual->renderizar_bloco('template_form',$config);
     }
-    public function Upload($titulo,$name,$value,$type = 'Imagem', $class='', $info='', $info_titulo='', $somenteleitura=false,$valida='', $escondido = false){
+    public function Upload($titulo,$name,$value,$type = 'Imagem', $class='', $info='', $info_titulo='', $somenteleitura=false,$valida='', $escondido = false) {
   
         ++self::$tab_index;
         //Começa
         $id = $name;
         // Verifica se é obrigatorio
-        if (strpos($class, 'obrigatorio')!==false){
+        if (strpos($class, 'obrigatorio')!==false) {
             $titulo = $titulo.'*';
         } 
         // Faz Array
@@ -329,18 +329,18 @@ class Form
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Input_Novo($titulo,$name,$value,$type = 'text', $max_caracteres = false, $class='', $info='', $somenteleitura=false,$urlextra='',$change='',$mascara=false,$valida='', $escondido = false){
+    public function Input_Novo($titulo,$name,$value,$type = 'text', $max_caracteres = false, $class='', $info='', $somenteleitura=false,$urlextra='',$change='',$mascara=false,$valida='', $escondido = false) {
   
         ++self::$tab_index;
         //Começa
         $id = $name;
         // Verifica se é obrigatorio
-        if (strpos($class, 'obrigatorio')!==false){
+        if (strpos($class, 'obrigatorio')!==false) {
             $titulo = $titulo.'*';
         } 
         // Trata o Change
-        if ($change!==false && $change!='' && is_string($change)){
-            if (strpos($change, 'Local::')!==false){
+        if ($change!==false && $change!='' && is_string($change)) {
+            if (strpos($change, 'Local::')!==false) {
                 $change = str_replace(Array('Local::'), Array(''), $change);
                 $change = $change;
             } else {
@@ -392,11 +392,11 @@ class Form
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function TextArea_Novo($titulo,$name,$id = '',$value = '',$type = 'text', $max_caracteres = false, $class='', $info='', $somenteleitura=false,$urlextra='', $escondido = false){
+    public function TextArea_Novo($titulo,$name,$id = '',$value = '',$type = 'text', $max_caracteres = false, $class='', $info='', $somenteleitura=false,$urlextra='', $escondido = false) {
         
         ++self::$tab_index;
         // Verifica se é obrigatorio
-        if (strpos($class, 'obrigatorio')!==false){
+        if (strpos($class, 'obrigatorio')!==false) {
             $titulo = $titulo.'*';
         }        
         //Começa
@@ -439,14 +439,14 @@ class Form
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Radio_Novo($titulo,$name,$id='',$url='',$change='', $js = '', $condicao=false, $escondido = false){
+    public function Radio_Novo($titulo,$name,$id='',$url='',$change='', $js = '', $condicao=false, $escondido = false) {
         // Verifica se é obrigatorio
-        /*if (strpos($class, 'obrigatorio')!==false){
+        /*if (strpos($class, 'obrigatorio')!==false) {
             $titulo = $titulo.'*';
         }*/
         // Trata o Change
-        if ($change!==false && $change!='' && is_string($change)){
-            if (strpos($change, 'Local::')!==false){
+        if ($change!==false && $change!='' && is_string($change)) {
+            if (strpos($change, 'Local::')!==false) {
                 $change = str_replace(Array('Local::'), Array(''), $change);
                 $change = $change;
             } else {
@@ -488,9 +488,9 @@ class Form
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Radio_Opcao($titulo,$value,$selected = 0){
+    public function Radio_Opcao($titulo,$value,$selected = 0) {
         ++self::$tab_index;
-        if ($this->ColunaForm=='vertical'){
+        if ($this->ColunaForm=='vertical') {
             $classextra = 'radio-block-level';
         } else {
             $classextra = 'radio';
@@ -519,7 +519,7 @@ class Form
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Radio_Fim(){
+    public function Radio_Fim() {
         $config = Array(
             'Tipo'      => 'Radio_Fim',
             'Opcao'     => Array(
@@ -554,14 +554,14 @@ class Form
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Checkbox_Novo($titulo,$name,$id='',$url='',$change='', $js = '', $condicao=false, $escondido = false){
+    public function Checkbox_Novo($titulo,$name,$id='',$url='',$change='', $js = '', $condicao=false, $escondido = false) {
         // Verifica se é obrigatorio
-        if (strpos($class, 'obrigatorio')!==false){
+        if (strpos($class, 'obrigatorio')!==false) {
             $titulo = $titulo.'*';
         }
         // Trata o Change
-        if ($change!==false && $change!='' && is_string($change)){
-            if (strpos($change, 'Local::')!==false){
+        if ($change!==false && $change!='' && is_string($change)) {
+            if (strpos($change, 'Local::')!==false) {
                 $change = str_replace(Array('Local::'), Array(''), $change);
                 $change = $change;
             } else {
@@ -603,7 +603,7 @@ class Form
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Checkbox_Opcao($titulo,$value,$selected = 0){
+    public function Checkbox_Opcao($titulo,$value,$selected = 0) {
         ++self::$tab_index;
         $config = Array(
             'Tipo'      => 'Checkbox_Opcao',
@@ -628,7 +628,7 @@ class Form
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Checkbox_Fim(){
+    public function Checkbox_Fim() {
         $config = Array(
             'Tipo'      => 'Checkbox_Fim',
             'Opcao'     => Array(
@@ -668,15 +668,15 @@ class Form
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Select_Novo($titulo,$name,$id='',$url='',$change='', $js = '', $condicao=false, $escondido = false, $class='', $infonulo='Escolha uma opção',$multiplo=false){
+    public function Select_Novo($titulo,$name,$id='',$url='',$change='', $js = '', $condicao=false, $escondido = false, $class='', $infonulo='Escolha uma opção',$multiplo=false) {
         ++self::$tab_index;
         // Verifica se é obrigatorio
-        if (strpos($class, 'obrigatorio')!==false){
+        if (strpos($class, 'obrigatorio')!==false) {
             $titulo = $titulo.'*';
         }
         // Trata o Change
-        if ($change!==false && $change!='' && is_string($change)){
-            if (strpos($change, 'Local::')!==false){
+        if ($change!==false && $change!='' && is_string($change)) {
+            if (strpos($change, 'Local::')!==false) {
                 $change = str_replace(Array('Local::'), Array(''), $change);
                 $change = $change;
             } else {
@@ -722,7 +722,7 @@ class Form
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Select_Opcao($titulo,$value,$selected = 0){
+    public function Select_Opcao($titulo,$value,$selected = 0) {
         $config = Array(
             'Tipo'      => 'Select_Opcao',
             'Opcao'     => Array(
@@ -744,7 +744,7 @@ class Form
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Select_Fim(){
+    public function Select_Fim() {
         $config = Array(
             'Tipo'      => 'Select_Fim',
             'Opcao'     => Array(
@@ -777,7 +777,7 @@ class Form
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    public function addtexto($texto){
+    public function addtexto($texto) {
         $this->form .= $texto;
     }
     /**
@@ -795,7 +795,7 @@ class Form
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    public function retorna_form($botao=''){
+    public function retorna_form($botao='') {
         // Salvar
         ++self::$tab_index;
         $config = Array(

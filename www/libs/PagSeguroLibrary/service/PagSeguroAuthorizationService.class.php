@@ -62,7 +62,7 @@ class PagSeguroAuthorizationService
         PagSeguroCredentials $credentials,
         PagSeguroAuthorizationRequest $authorizationRequest,
         $onlyAuthorizationCode
-    ){
+    ) {
 
         LogPagSeguro::info("PagSeguroAuthorizationService.Register(" . $authorizationRequest->toString() . ") - begin");
 

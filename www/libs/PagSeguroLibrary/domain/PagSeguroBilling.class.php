@@ -39,7 +39,7 @@ class PagSeguroBilling
      */
     public function __construct($data = null)
     {
-        if (isset($data) and is_array($data)){
+        if (isset($data) and is_array($data)) {
             $this->setAddress(new PagSeguroAddress($data));
         } elseif ($data instanceof PagSeguroAddress) {
             $this->setAddress($data);

@@ -4,7 +4,7 @@
 <!--[if !IE]><!--> <html lang="pt-br"> <!--<![endif]-->
 <!-- BEGIN HEAD -->
 <head>
-    <title><?php echo SISTEMA_NOME; ?> - <?php if($params['site_titulo']==''){ echo __('Sem Titulo'); } else { echo $params['site_titulo']; } ?></title>
+    <title><?php echo SISTEMA_NOME; ?> - <?php if($params['site_titulo']=='') { echo __('Sem Titulo'); } else { echo $params['site_titulo']; } ?></title>
     <meta charset="<?php echo CONFIG_PADRAO_TECLADO; ?>">
     <link rel="icon" type="image/png" href="<?php echo ARQ_URL; ?>favicon.ico"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -48,7 +48,7 @@
         </a>
         <!-- END LOGO -->
     </div>
-    <?php if(isset( $params['mensagem'] ) ){ echo $params['mensagem']; } ?>
+    <?php if(isset( $params['mensagem'] ) ) { echo $params['mensagem']; } ?>
     <form action="<?php echo URL_PATH.SISTEMA_DIR_INT; ?>" method="POST">
         <div class="login-wrap" style=" margin: auto; max-width:480px;">
             <div class="metro single-size <?php echo CFG_LP_LOGINCOR1; ?>">
@@ -118,10 +118,10 @@
     
     <!--Ver detalhes Block-->
     <script type="text/javascript">
-    jQuery (function(){
+    jQuery (function() {
         var tabContainers=jQuery('div.tabs > div');
         tabContainers.hide().filter(':first').show();
-        jQuery('div.tabs ul.tabNavigation a').click(function(){
+        jQuery('div.tabs ul.tabNavigation a').click(function() {
             tabContainers.hide();
             tabContainers.filter(this.hash).show();
             jQuery('div.tabs ul.tabNavigation a').removeClass('selected');
@@ -142,7 +142,7 @@
     <script src="<?php echo $params['url_js']; ?>jquery.jcarousel.min.js"></script>
     <script src="<?php echo $params['url_js']; ?>jquery.accordion.js"></script>
     <script src="<?php echo $params['url_js']; ?>light_box.js"></script>
-    <script type="text/javascript">$(document).ready(function(){$(".inline").colorbox({inline:true, width:"50%"});});</script>
+    <script type="text/javascript">$(document).ready(function() {$(".inline").colorbox({inline:true, width:"50%"});});</script>
     <!--end js-->
     
     

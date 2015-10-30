@@ -15,7 +15,7 @@ class usuario_mensagem_OrigemControle extends usuario_mensagem_Controle
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    public function __construct(){
+    public function __construct() {
         parent::__construct();
     }
     /**
@@ -31,16 +31,16 @@ class usuario_mensagem_OrigemControle extends usuario_mensagem_Controle
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    public function Main(){
+    public function Main() {
         \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'usuario_mensagem/Origem/Origens/');
         return false;
     }
-    static function Endereco_Origem($true=true){
+    static function Endereco_Origem($true=true) {
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
         $titulo = __('Origens');
         $link = 'usuario_mensagem/Origem/Origens';
-        if($true===true){
+        if($true===true) {
             $_Controle->Tema_Endereco($titulo,$link);
         } else {
             $_Controle->Tema_Endereco($titulo);
@@ -51,7 +51,7 @@ class usuario_mensagem_OrigemControle extends usuario_mensagem_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Origens($export=false){
+    public function Origens($export=false) {
         self::Endereco_Origem(false);
        
         $tabela = Array(
@@ -69,7 +69,7 @@ class usuario_mensagem_OrigemControle extends usuario_mensagem_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Origens_Add(){
+    public function Origens_Add() {
         self::Endereco_Origem(true);
         // Carrega Config
         $titulo1    = __('Adicionar Origem');
@@ -87,7 +87,7 @@ class usuario_mensagem_OrigemControle extends usuario_mensagem_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Origens_Add2(){
+    public function Origens_Add2() {
         $titulo     = __('Origem Adicionada com Sucesso');
         $dao        = 'Usuario_Mensagem_Origem';
         $funcao     = '$this->Origens();';
@@ -102,7 +102,7 @@ class usuario_mensagem_OrigemControle extends usuario_mensagem_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Origens_Edit($id){
+    public function Origens_Edit($id) {
         self::Endereco_Origem(true);
         // Carrega Config
         $titulo1    = 'Editar Origem (#'.$id.')';
@@ -121,7 +121,7 @@ class usuario_mensagem_OrigemControle extends usuario_mensagem_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Origens_Edit2($id){
+    public function Origens_Edit2($id) {
         $titulo     = __('Origem Editada com Sucesso');
         $dao        = Array('Usuario_Mensagem_Origem',$id);
         $funcao     = '$this->Origens();';
@@ -137,7 +137,7 @@ class usuario_mensagem_OrigemControle extends usuario_mensagem_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Origens_Del($id){
+    public function Origens_Del($id) {
         
         
     	$id = (int) $id;
@@ -145,7 +145,7 @@ class usuario_mensagem_OrigemControle extends usuario_mensagem_Controle
         $setor = $this->_Modelo->db->Sql_Select('Usuario_Mensagem_Origem', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($setor);
         // Mensagem
-    	if($sucesso===true){
+    	if($sucesso===true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),

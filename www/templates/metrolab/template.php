@@ -9,7 +9,7 @@
     <link href="<?php echo $params['url_css']; ?>style.css" rel="stylesheet" />
     <link href="<?php echo $params['url_css']; ?>style-responsive.css" rel="stylesheet" />
     <link href="<?php echo $params['url_css']; ?>metro-gallery" rel="stylesheet" />
-    <link href="<?php echo $params['url_css']; ?>style-<?php if(TEMA_COLOR==''){ echo __('blue'); } else { echo TEMA_COLOR; }?>.css" rel="stylesheet" id="style_color" />
+    <link href="<?php echo $params['url_css']; ?>style-<?php if(TEMA_COLOR=='') { echo __('blue'); } else { echo TEMA_COLOR; }?>.css" rel="stylesheet" id="style_color" />
 </head>     
        
 <!-- END HEAD -->
@@ -43,7 +43,7 @@
         <div class="navbar-header navbar-right hidden-xs">
             <ul class="nav pull-right top-menu navbar-nav">
                 <!-- BEGIN SUPPORT  -->
-                <?php if(isset($params['widgets']['Superior'])){ 
+                <?php if(isset($params['widgets']['Superior'])) { 
                      $total=count($params['widgets']['Superior']); 
                      for($cont=0;$cont<$total; ++$cont) {  
                          echo $params['widgets']['Superior'][$cont];
@@ -86,10 +86,10 @@
                     <!-- END THEME CUSTOMIZER-->
                     <!-- BEGIN PAGE TITLE & BREADCRUMB-->
                     <h3 class="page-title">
-                      <span id="Framework_Titulo"><?php if($params['site_titulo']==''){ echo __('Sem Titulo'); } else { echo $params['site_titulo']; } ?></span>
+                      <span id="Framework_Titulo"><?php if($params['site_titulo']=='') { echo __('Sem Titulo'); } else { echo $params['site_titulo']; } ?></span>
                     </h3>
                     <?php 
-                    if(isset($params['widgets']) && isset($params['widgets']['Navegacao_Endereco'])){
+                    if(isset($params['widgets']) && isset($params['widgets']['Navegacao_Endereco'])) {
                         echo '<ul class="breadcrumb">'.
                              $params['widgets']['Navegacao_Endereco'].
                              '</ul>'; 
@@ -101,15 +101,15 @@
             <!-- END PAGE HEADER-->
             <!-- BEGIN PAGE CONTENT-->
             <div class="row">
-                <div class="col-sm-12" id="blocounico"<?php if( $params['template']['Bloco_Unico']==''){ ?> style="display: none;"<?php } ?>>
+                <div class="col-sm-12" id="blocounico"<?php if( $params['template']['Bloco_Unico']=='') { ?> style="display: none;"<?php } ?>>
                     <?php echo $params['template']['Bloco_Unico']; ?>
                 </div>
             </div>
             <div class="row">
-                <div class="col-sm-8" id="blocomaior"<?php if( $params['template']['Bloco_Maior']==''){ ?> style="display: none;"<?php } ?>>
+                <div class="col-sm-8" id="blocomaior"<?php if( $params['template']['Bloco_Maior']=='') { ?> style="display: none;"<?php } ?>>
                     <?php echo $params['template']['Bloco_Maior']; ?>
                 </div>
-                <div class="col-sm-4" id="blocomenor"<?php if( $params['template']['Bloco_Menor']==''){ ?> style="display: none;"<?php } ?>>
+                <div class="col-sm-4" id="blocomenor"<?php if( $params['template']['Bloco_Menor']=='') { ?> style="display: none;"<?php } ?>>
                     <?php echo $params['template']['Bloco_Menor']; ?>
                 </div>
             </div>

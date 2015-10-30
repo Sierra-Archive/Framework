@@ -1,7 +1,7 @@
 <?php
 class predial_BlocoControle extends predial_Controle
 {
-    public function __construct(){
+    public function __construct() {
         parent::__construct();
     }
     /**
@@ -17,22 +17,22 @@ class predial_BlocoControle extends predial_Controle
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    public function Main(){
+    public function Main() {
         \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'Financeiro/Bloco/Blocos');
         return false;
     }
-    static function Endereco_Bloco($true=true){
+    static function Endereco_Bloco($true=true) {
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
         $titulo = __('Blocos');
         $link = 'predial/Bloco/Blocos';
-        if ($true===true){
+        if ($true===true) {
             $_Controle->Tema_Endereco($titulo,$link);
         } else {
             $_Controle->Tema_Endereco($titulo);
         }
     }
-    static function Blocos_Tabela(&$blocos){
+    static function Blocos_Tabela(&$blocos) {
         $Registro   = &\Framework\App\Registro::getInstacia();
         $Visual     = &$Registro->_Visual;
         $tabela = Array();
@@ -52,7 +52,7 @@ class predial_BlocoControle extends predial_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Blocos($export=false){
+    public function Blocos($export=false) {
         self::Endereco_Bloco(false);
         $i = 0;
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
@@ -69,9 +69,9 @@ class predial_BlocoControle extends predial_Controle
             )
         )));
         $blocos = $this->_Modelo->db->Sql_Select('Predial_Bloco');
-        if ($blocos!==false && !empty($blocos)){
+        if ($blocos!==false && !empty($blocos)) {
             list($tabela,$i) = self::Blocos_Tabela($blocos);
-            if ($export!==false){
+            if ($export!==false) {
                 self::Export_Todos($export,$tabela, 'Blocos');
             } else {
                 $this->_Visual->Show_Tabela_DataTable($tabela);
@@ -91,7 +91,7 @@ class predial_BlocoControle extends predial_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Blocos_Add(){
+    public function Blocos_Add() {
         self::Endereco_Bloco();
         // Carrega Config
         $titulo1    = __('Adicionar Bloco');
@@ -109,7 +109,7 @@ class predial_BlocoControle extends predial_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Blocos_Add2(){
+    public function Blocos_Add2() {
         $titulo     = __('Bloco Adicionado com Sucesso');
         $dao        = 'Predial_Bloco';
         $funcao     = '$this->Blocos();';
@@ -124,7 +124,7 @@ class predial_BlocoControle extends predial_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Blocos_Edit($id){
+    public function Blocos_Edit($id) {
         self::Endereco_Bloco();
         // Carrega Config
         $titulo1    = 'Editar Bloco (#'.$id.')';
@@ -143,7 +143,7 @@ class predial_BlocoControle extends predial_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Blocos_Edit2($id){
+    public function Blocos_Edit2($id) {
         $titulo     = __('Bloco Editado com Sucesso');
         $dao        = Array('Predial_Bloco',$id);
         $funcao     = '$this->Blocos();';
@@ -159,7 +159,7 @@ class predial_BlocoControle extends predial_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Blocos_Del($id){
+    public function Blocos_Del($id) {
         
         
     	$id = (int) $id;
@@ -167,7 +167,7 @@ class predial_BlocoControle extends predial_Controle
         $bloco = $this->_Modelo->db->Sql_Select('Predial_Bloco', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($bloco);
         // Mensagem
-    	if ($sucesso===true){
+    	if ($sucesso===true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),

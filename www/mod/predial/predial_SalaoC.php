@@ -1,7 +1,7 @@
 <?php
 class predial_SalaoControle extends predial_Controle
 {
-    public function __construct(){
+    public function __construct() {
         parent::__construct();
     }
     /**
@@ -17,22 +17,22 @@ class predial_SalaoControle extends predial_Controle
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    public function Main(){
+    public function Main() {
         \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'predial/Salao/Saloes');
         return false;
     }
-    static function Endereco_Salao($true=true){
+    static function Endereco_Salao($true=true) {
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
         $titulo = __('Saloes');
         $link = 'predial/Salao/Saloes';
-        if ($true===true){
+        if ($true===true) {
             $_Controle->Tema_Endereco($titulo,$link);
         } else {
             $_Controle->Tema_Endereco($titulo);
         }
     }
-    static function Saloes_Tabela(&$saloes){
+    static function Saloes_Tabela(&$saloes) {
         $Registro   = &\Framework\App\Registro::getInstacia();
         $Visual     = &$Registro->_Visual;
         $tabela = Array();
@@ -56,7 +56,7 @@ class predial_SalaoControle extends predial_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Saloes(){
+    public function Saloes() {
         self::Endereco_Salao(false);
         $i = 0;
         // Botao Add
@@ -75,7 +75,7 @@ class predial_SalaoControle extends predial_Controle
         )));
         // Busca
         $saloes = $this->_Modelo->db->Sql_Select('Predial_Salao');
-        if ($saloes!==false && !empty($saloes)){
+        if ($saloes!==false && !empty($saloes)) {
             list($tabela,$i) = self::Saloes_Tabela($saloes);
             $this->_Visual->Show_Tabela_DataTable($tabela);
             unset($tabela);
@@ -93,7 +93,7 @@ class predial_SalaoControle extends predial_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Saloes_Add(){
+    public function Saloes_Add() {
         self::Endereco_Salao();
         // Carrega Config
         $titulo1    = __('Adicionar Local de Reserva');
@@ -111,7 +111,7 @@ class predial_SalaoControle extends predial_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Saloes_Add2(){
+    public function Saloes_Add2() {
         $titulo     = __('Local de Reserva Adicionado com Sucesso');
         $dao        = 'Predial_Salao';
         $funcao     = '$this->Saloes();';
@@ -126,7 +126,7 @@ class predial_SalaoControle extends predial_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Saloes_Edit($id){
+    public function Saloes_Edit($id) {
         self::Endereco_Salao();
         // Carrega Config
         $titulo1    = 'Editar Local de Reserva (#'.$id.')';
@@ -145,7 +145,7 @@ class predial_SalaoControle extends predial_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Saloes_Edit2($id){
+    public function Saloes_Edit2($id) {
         $titulo     = __('Local de Reserva Editado com Sucesso');
         $dao        = Array('Predial_Salao',$id);
         $funcao     = '$this->Saloes();';
@@ -161,7 +161,7 @@ class predial_SalaoControle extends predial_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Saloes_Del($id){
+    public function Saloes_Del($id) {
         
         
     	$id = (int) $id;
@@ -169,7 +169,7 @@ class predial_SalaoControle extends predial_Controle
         $salao = $this->_Modelo->db->Sql_Select('Predial_Salao', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($salao);
         // Mensagem
-    	if ($sucesso===true){
+    	if ($sucesso===true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
@@ -226,11 +226,11 @@ class predial_SalaoControle extends predial_Controle
     
     
     
-    public function Reserva(){
+    public function Reserva() {
         //mostra reservas
         /*$reservas = Array();
         $i = $this->_Modelo->retorna_reservas($reservas,true);
-        foreach($reservas as $indice=>&$valor){
+        foreach($reservas as $indice=>&$valor) {
             $this->_Visual->Blocar($this->_Visual->Show_Reservas($valor));
             $this->_Visual->Bloco_Unico_CriaTitulo($indice.' ('.$i[$indice].')',2);
             $this->_Visual->Bloco_Unico_CriaConteudo(1);
@@ -245,44 +245,44 @@ class predial_SalaoControle extends predial_Controle
         
         $this->_Visual->Json_Info_Update('Titulo', __('Reservas'));        
     }
-    public function Popup_Agendar_reserva($idreserva,$datainicial,$datafinal,$nomereserva){
-        if ($this->get_logado()){
-            if ($this->_Acl->logado_usuario->foto_cnh==''){
+    public function Popup_Agendar_reserva($idreserva,$datainicial,$datafinal,$nomereserva) {
+        if ($this->get_logado()) {
+            if ($this->_Acl->logado_usuario->foto_cnh=='') {
                 $mensagens = array(
                     "tipo" => 'sucesso',
                     "mgs_principal" => __('Erro'),
                     "mgs_secundaria" => __('É necessário fazer upload da CNH')
                 );
                 $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
-            }else if ($this->_Acl->logado_usuario->foto_res==''){
+            }else if ($this->_Acl->logado_usuario->foto_res=='') {
                 $mensagens = array(
                     "tipo" => 'sucesso',
                     "mgs_principal" => __('Erro'),
                     "mgs_secundaria" => __('Falta upload do comprovante de residente')
                 );
                 $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
-            }else if ($controle->usuario->foto_cnh_apv==0){
+            }else if ($controle->usuario->foto_cnh_apv==0) {
                 $mensagens = array(
                     "tipo" => 'sucesso',
                     "mgs_principal" => __('Erro'),
                     "mgs_secundaria" => __('Aguarde a aprovação de sua CNH')
                 );
                 $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
-            }else if ($controle->usuario->foto_res_apv==0){
+            }else if ($controle->usuario->foto_res_apv==0) {
                 $mensagens = array(
                     "tipo" => 'sucesso',
                     "mgs_principal" => __('Erro'),
                     "mgs_secundaria" => __('Aguarde a aprovação de sua residência')
                 );
                 $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
-            }else if ($controle->usuario->foto_cnh_apv==1){
+            }else if ($controle->usuario->foto_cnh_apv==1) {
                 $mensagens = array(
                     "tipo" => 'sucesso',
                     "mgs_principal" => __('CNH Negada'),
                     "mgs_secundaria" => __('Suba uma CNH válida')
                 );
                 $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
-            }else if ($controle->usuario->foto_res_apv==1){
+            }else if ($controle->usuario->foto_res_apv==1) {
                 $mensagens = array(
                     "tipo" => 'sucesso',
                     "mgs_principal" => __('Residência Negada'),
@@ -336,7 +336,7 @@ class predial_SalaoControle extends predial_Controle
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
         }
     }
-    static function agendamento_form(&$controle, &$Visual, &$form, &$idreserva,$nomereserva,$datainicial = '',$datafinal = '',$franquia=0, $valor=0){
+    static function agendamento_form(&$controle, &$Visual, &$form, &$idreserva,$nomereserva,$datainicial = '',$datafinal = '',$franquia=0, $valor=0) {
         
        
        // select de pessoas
@@ -361,7 +361,7 @@ class predial_SalaoControle extends predial_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function agendamento_inserir(){
+    public function agendamento_inserir() {
         if (!isset($_POST["selectreservas"]) || !isset($_POST["valor"]) || !isset($_POST["data_inicial"]) || !isset($_POST["data_final"])) return false;
         
         $reservaid = (int) \Framework\App\Conexao::anti_injection($_POST["selectreservas"]);
@@ -381,7 +381,7 @@ class predial_SalaoControle extends predial_Controle
         
         // inseri e mostra mensagem
         $sucesso =  $this->_Modelo->agendamento_inserir($reservaid,$data_inicial,$data_final,$valor);
-        if ($sucesso===true){
+        if ($sucesso===true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Inserção bem sucedida'),

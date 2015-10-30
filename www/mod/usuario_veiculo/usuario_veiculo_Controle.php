@@ -12,7 +12,7 @@ class usuario_veiculo_Controle extends \Framework\App\Controle
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    public function __construct(){
+    public function __construct() {
         parent::__construct();
     } 
 }

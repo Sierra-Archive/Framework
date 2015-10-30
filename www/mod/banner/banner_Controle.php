@@ -12,7 +12,7 @@ class banner_Controle extends \Framework\App\Controle
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    public function __construct(){
+    public function __construct() {
         // construct
         parent::__construct();
     }
@@ -22,7 +22,7 @@ class banner_Controle extends \Framework\App\Controle
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    public static function Banners_Mostrar($model,$categoria=0){
+    public static function Banners_Mostrar($model,$categoria=0) {
         /*$banner = $this->_Modelo->db->Sql_Select('Banner',Array(),1,'rand()');
         $banner->ixi = $banner->ixi + 1;*/
         //$banner = banner_Modelo::retorna_banner_aleatorio($model,$categoria);

@@ -13,10 +13,10 @@ class usuario_PerfilVisual extends usuario_Visual
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    public function __construct(){
+    public function __construct() {
       parent::__construct();
     }
-    static function Show_HTML(&$usuario,$tipo='Cliente',$mensagens=false){
+    static function Show_HTML(&$usuario,$tipo='Cliente',$mensagens=false) {
         $html = '';
         if($tipo=='cliente')                                                                                                    $tipo = "Cliente";
         if($tipo=='Funcionrio' || $tipo=="Funcionario" || $tipo=="funcionario" || $tipo=="funcionário" || $tipo=="funcionrio")  $tipo = "Funcionário";
@@ -24,16 +24,16 @@ class usuario_PerfilVisual extends usuario_Visual
         $nome = $usuario->nome;
         
         $email = '';
-        if(isset($usuario->email)){
+        if(isset($usuario->email)) {
             $email .= $usuario->email.' ';
         }
         
-        if(isset($usuario->id)){
+        if(isset($usuario->id)) {
             $id = $usuario->id;
         } else {
             $id = '';
         }
-        if(LAYOULT_IMPRIMIR!='AJAX'){
+        if(LAYOULT_IMPRIMIR!='AJAX') {
             $html .= '<div class="profile-head">'.
                         '<div class="col-sm-8">'.
                             '<h1>'.$nome.'</h1>'.
@@ -46,7 +46,7 @@ class usuario_PerfilVisual extends usuario_Visual
                     '</div>';
         }
         $html .= '<div class="space15"></div>';
-        if(LAYOULT_IMPRIMIR!='AJAX'){
+        if(LAYOULT_IMPRIMIR!='AJAX') {
             $html .= '<div class="row">'.
             '<div class="col-sm-8 bio">';
         } else {
@@ -93,8 +93,8 @@ class usuario_PerfilVisual extends usuario_Visual
         if($usuario->tipocontrato!='')  $html .= '<p><label style="width:150px;">'.__('Tipo de Contrato').' </label>: '.$usuario->tipocontrato.'</p>';
         if($usuario->cnh!='')  $html .= '<p><label style="width:150px;">'.__('CNH').' </label>: '.$usuario->cnh.'</p>';
         '<div class="space15"></div>';
-        if($usuario->obs!=''){
-            if(\Framework\App\Sistema_Funcoes::Perm_Modulos('usuario_mensagem')){
+        if($usuario->obs!='') {
+            if(\Framework\App\Sistema_Funcoes::Perm_Modulos('usuario_mensagem')) {
                 $html .= '<h2>Mensagem</h2>';
             } else {
                 $html .= '<h2>Observação</h2>';
@@ -102,11 +102,11 @@ class usuario_PerfilVisual extends usuario_Visual
            $html .= '<p>'.$usuario->obs.'</p>';
         }
         $html .= '<div class="space15"></div>';
-        if(LAYOULT_IMPRIMIR!='AJAX'){
+        if(LAYOULT_IMPRIMIR!='AJAX') {
             $html .= '</div>';
-            if($mensagens!==false){
+            if($mensagens!==false) {
                 $html .= '<div class="col-sm-4">';
-                foreach($mensagens AS &$valor){
+                foreach($mensagens AS &$valor) {
                     $html .= '';
                 }
                 $html .= '</div>';
@@ -115,17 +115,17 @@ class usuario_PerfilVisual extends usuario_Visual
         $html .= '</div>';
         return $html;
     }
-    public function Show_Perfil($tipo,&$usuario,$layoult='Unico'){
+    public function Show_Perfil($tipo,&$usuario,$layoult='Unico') {
         $nome = $usuario->nome;
         $html = self::Show_HTML($usuario,$tipo);
         
-        if(SQL_MAIUSCULO){
+        if(SQL_MAIUSCULO) {
             $titulo = 'VISUALIZAR '.$nome; //mb_strtoupper( )
         } else {
             $titulo = 'Visualizar '.$nome;
         }
         // FORMULA JSON OU IMPRIME HTML
-        if(LAYOULT_IMPRIMIR=='AJAX'){
+        if(LAYOULT_IMPRIMIR=='AJAX') {
             $popup = array(
                 'id'        => 'popup',
                 'title'     => $titulo,
@@ -140,9 +140,9 @@ class usuario_PerfilVisual extends usuario_Visual
             $this->Json_IncluiTipo('Popup',$popup);
         } else {
             $this->Blocar($html);
-            if($layoult=='Unico'){
+            if($layoult=='Unico') {
                 $this->Bloco_Unico_CriaConteudo();
-            }else if($layoult=='Maior'){
+            }else if($layoult=='Maior') {
                 $this->Bloco_Maior_CriaConteudo();
             } else {
                 $this->Bloco_Menor_CriaConteudo();

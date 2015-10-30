@@ -5,7 +5,7 @@ if(args)
 {if(typeof args[index]=="undefined")args[index]=default_args[index];}}
 var aHeight=$(document).height();var aWidth=$(document).width();$('body').append('<div class="appriseOverlay" id="aOverlay"></div>');$('.appriseOverlay')('height',aHeight)('width',aWidth).fadeIn(100);$('body').append('<div class="appriseOuter"></div>');$('.appriseOuter').append('<div class="appriseInner"></div>');$('.appriseInner').append(string);$('.appriseOuter')("left",($(window).width()-$('.appriseOuter').width())/2+$(window).scrollLeft()+"px");if(args)
 {if(args['animate'])
-{var aniSpeed=args['animate'];if(isNaN(aniSpeed)){aniSpeed=400;}
+{var aniSpeed=args['animate'];if(isNaN(aniSpeed)) {aniSpeed=400;}
 $('.appriseOuter')('top','-200px').show().animate({top:"100px"},aniSpeed);}
 else
 {$('.appriseOuter')('top','100px').fadeIn(200);}}
@@ -32,7 +32,7 @@ $(document).keydown(function(e)
 {if(e.keyCode==13)
 {$('.aButtons > button[value="ok"]').click();}
 if(e.keyCode==27)
-{$('.aButtons > button[value="cancel"]').click();}}});var aText=$('.aTextbox').val();if(!aText){aText=false;}
+{$('.aButtons > button[value="cancel"]').click();}}});var aText=$('.aTextbox').val();if(!aText) {aText=false;}
 $('.aTextbox').keyup(function()
 {aText=$(this).val();});$('.aButtons > button').click(function()
 {$('.appriseOverlay').remove();$('.appriseOuter').remove();if(callback)

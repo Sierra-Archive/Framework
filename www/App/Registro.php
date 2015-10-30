@@ -25,7 +25,7 @@ class Registro
      * @version 0.4.2
      * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
-    private function __construct(){
+    private function __construct() {
         
     }
     
@@ -36,8 +36,8 @@ class Registro
      * @version 0.4.2
      * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
-    public static function &getInstacia(){
-        if (!self::$_instacia instanceof self){
+    public static function &getInstacia() {
+        if (!self::$_instacia instanceof self) {
             self::$_instacia = new Registro();
         }
         return self::$_instacia;
@@ -49,8 +49,8 @@ class Registro
      * @version 0.4.2
      * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
-    public function destruir($sessao){
-        if (isset($this->_data[$sessao])){
+    public function destruir($sessao) {
+        if (isset($this->_data[$sessao])) {
             $this->_data[$sessao] = false;
             unset($this->_data[$sessao]);
         }/*else{
@@ -65,7 +65,7 @@ class Registro
      * @version 0.4.2
      * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
-    public function __set($nome,$valor){
+    public function __set($nome,$valor) {
         //var_dump($nome,$valor);
         $this->_data[$nome] = $valor;
     }
@@ -77,8 +77,8 @@ class Registro
      * @version 0.4.2
      * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
-    public function &__get($nome){
-        if (isset($this->_data[$nome])){
+    public function &__get($nome) {
+        if (isset($this->_data[$nome])) {
             return $this->_data[$nome];
         } else {
             $this->_data[$nome] = false;

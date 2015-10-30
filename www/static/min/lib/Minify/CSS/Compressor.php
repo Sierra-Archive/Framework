@@ -137,7 +137,7 @@ class Minify_CSS_Compressor {
         $css = preg_replace('/[ \\t]*\\n+\\s*/', "\n", $css);
         
         // separate common descendent selectors w/ newlines (to limit line lengths)
-        $css = preg_replace('/([\\w#\\.\\*]+)\\s+([\\w#\\.\\*]+){/', "$1\n$2{", $css);
+        $css = preg_replace('/([\\w#\\.\\*]+)\\s+([\\w#\\.\\*]+) {/', "$1\n$2{", $css);
         
         // Use newline after 1st numeric value (to limit line lengths).
         $css = preg_replace('/

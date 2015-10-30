@@ -18,91 +18,91 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    public function __construct(){
+    public function __construct() {
         parent::__construct();
     }
-    static function Endereco_Financeiro($true=true){
+    static function Endereco_Financeiro($true=true) {
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
         $titulo = __('Financeiro');
         $link = '_Sistema/Principal/Home';
-        if ($true===true){
+        if ($true===true) {
             $_Controle->Tema_Endereco($titulo,$link);
         } else {
             $_Controle->Tema_Endereco($titulo);
         }
     }
-    static function Endereco_Pagar($true=true){
+    static function Endereco_Pagar($true=true) {
         self::Endereco_Financeiro();
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
         $titulo = __('À Pagar');
         $link = 'Financeiro/Pagamento/Pagar';
-        if ($true===true){
+        if ($true===true) {
             $_Controle->Tema_Endereco($titulo,$link);
         } else {
             $_Controle->Tema_Endereco($titulo);
         }
     }
-    static function Endereco_Receber($true=true){
+    static function Endereco_Receber($true=true) {
         self::Endereco_Financeiro();
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
         $titulo = __('À Receber');
         $link = 'Financeiro/Pagamento/Receber';
-        if ($true===true){
+        if ($true===true) {
             $_Controle->Tema_Endereco($titulo,$link);
         } else {
             $_Controle->Tema_Endereco($titulo);
         }
     }
-    static function Endereco_Pago($true=true){
+    static function Endereco_Pago($true=true) {
         self::Endereco_Financeiro();
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
         $titulo = __('Pagas');
         $link = 'Financeiro/Pagamento/Pago';
-        if ($true===true){
+        if ($true===true) {
             $_Controle->Tema_Endereco($titulo,$link);
         } else {
             $_Controle->Tema_Endereco($titulo);
         }
     }
-    static function Endereco_Recebido($true=true){
+    static function Endereco_Recebido($true=true) {
         self::Endereco_Financeiro();
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
         $titulo = __('Recebidos');
         $link = 'Financeiro/Pagamento/Recebido';
-        if ($true===true){
+        if ($true===true) {
             $_Controle->Tema_Endereco($titulo,$link);
         } else {
             $_Controle->Tema_Endereco($titulo);
         }
     }
-    static function Endereco_Forma($true=true){
+    static function Endereco_Forma($true=true) {
         self::Endereco_Financeiro();
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
         $titulo = __('Forma de Pagamento');
         $link = 'Financeiro/Pagamento/Formas';
-        if ($true===true){
+        if ($true===true) {
             $_Controle->Tema_Endereco($titulo,$link);
         } else {
             $_Controle->Tema_Endereco($titulo);
         }
     }
-    static function Endereco_Forma_Condicao($true=true, $forma = 0){
+    static function Endereco_Forma_Condicao($true=true, $forma = 0) {
         self::Endereco_Forma();
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
         $titulo = __('Condições de Pagamento');
         $link = 'Financeiro/Pagamento/Condicoes';
-        if (is_object($forma)){
+        if (is_object($forma)) {
             $titulo = $titulo.' em '.$forma->nome;
             $link = $link.'/'.$forma->id;
         }
-        if ($true===true){
+        if ($true===true) {
             $_Controle->Tema_Endereco($titulo,$link);
         } else {
             $_Controle->Tema_Endereco($titulo);
@@ -121,7 +121,7 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    public function Main(){
+    public function Main() {
         $this->Formas();
         // ORGANIZA E MANDA CONTEUDO
         $this->_Visual->Json_Info_Update('Titulo', __('Formas de Pagamento')); 
@@ -129,7 +129,7 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
     /**
      * Contas a Pagar
      */
-    public function Pagar(){
+    public function Pagar() {
         self::Endereco_Pagar(false);
         
         // Parametros
@@ -154,7 +154,7 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
     /**
      * Contas a Receber
      */
-    public function Receber($export = false){
+    public function Receber($export = false) {
         self::Endereco_Receber(false);
         
         // Exportar
@@ -176,10 +176,10 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
         
         list($tabela,$i) = $this->Movimentacao_Interna($where,'Mini');
         $titulo = $titulo.' ('.$i.')';
-        if ($i==0 ){
+        if ($i==0 ) {
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhuma Conta à Receber</font></b></center>');
         } else {
-            if ($export!==false){
+            if ($export!==false) {
                 self::Export_Todos($export,$tabela, 'Contas à Receber');
             } else {
                 $this->_Visual->Show_Tabela_DataTable($tabela);
@@ -189,7 +189,7 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         $this->_Visual->Json_Info_Update('Titulo',$titulo); 
     }
-    public function Pago($export = false){
+    public function Pago($export = false) {
         self::Endereco_Pago(false);
         
         // Exportar
@@ -211,10 +211,10 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
         );
         list($tabela,$i) = $this->Movimentacao_Interna_Pago($where,'Mini');
         $titulo = $titulo.' ('.$i.')';
-        if ($i==0){          
+        if ($i==0) {          
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhuma Conta Paga</font></b></center>');
         } else {
-            if ($export!==false){
+            if ($export!==false) {
                 self::Export_Todos($export,$tabela, 'Contas Pagas');
             } else {
                 $this->_Visual->Show_Tabela_DataTable($tabela);
@@ -227,7 +227,7 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
     /**
      * Contas a Receber
      */
-    public function Recebido($export = false){
+    public function Recebido($export = false) {
         self::Endereco_Recebido(false);
         
         // Exportar
@@ -249,10 +249,10 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
         
         list($tabela,$i) = $this->Movimentacao_Interna_Pago($where,'Mini');
         $titulo = $titulo.' ('.$i.')';
-        if ($i==0 ){
+        if ($i==0 ) {
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhuma Conta Recebida</font></b></center>');
         } else {
-            if ($export!==false){
+            if ($export!==false) {
                 self::Export_Todos($export,$tabela, 'Contas Recebidas');
             } else {
                 $this->_Visual->Show_Tabela_DataTable($tabela);
@@ -263,7 +263,7 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
         $this->_Visual->Json_Info_Update('Titulo',$titulo); 
     }
     
-    static function Financeiros_Campos_Retirar(&$campos){
+    static function Financeiros_Campos_Retirar(&$campos) {
         //self::DAO_Campos_Retira($campos, 'dt_pago');
         
         self::DAO_Campos_Retira($campos, 'categoria');
@@ -286,7 +286,7 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    static function Financeiro_Pagamento($motivo,$motivo_id,$pago){
+    static function Financeiro_Pagamento($motivo,$motivo_id,$pago) {
         // Carrega Modelo
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Modelo = &$Registro->_Modelo;
@@ -294,17 +294,17 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
         $string = 'Financeiro_Pagamento_Interno|pago=\''.$pago.'\'| motivo=\''.$motivo.'\' AND motivoid=\''.$motivo_id.'\'';
         $_Modelo->db->Sql_Update($string);
     }
-    public function Financeiros_NaoPagar($id=false, $localizacao=false, $dataini=false,$datafin=false){
+    public function Financeiros_NaoPagar($id=false, $localizacao=false, $dataini=false,$datafin=false) {
         // Verifica Existencia
-        if ($id===false){
+        if ($id===false) {
             return _Sistema_erroControle::Erro_Fluxo('Financeiro não especificado: '.$id,404);
         }
         $where = Array('id'=>  $id);
         $financeiros = $this->_Modelo->db->Sql_Select('Financeiro_Pagamento_Interno',$where);
-        if ($financeiros===false){
+        if ($financeiros===false) {
             return _Sistema_erroControle::Erro_Fluxo('Financeiro não existe: '.$id,404);
         }
-        if ($financeiros->saida_motivo==='Servidor' && $financeiros->saida_motivoid===SRV_NAME_SQL){
+        if ($financeiros->saida_motivo==='Servidor' && $financeiros->saida_motivoid===SRV_NAME_SQL) {
             $pago = __('Recebido');
         } else {
             $pago = __('Pago');
@@ -324,7 +324,7 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
         $financeiros->pago = '0';
 
         $sucesso = $this->_Modelo->db->Sql_Update($financeiros);
-        if ($sucesso){
+        if ($sucesso) {
             $mensagens = array(
                 "tipo"              => 'sucesso',
                 "mgs_principal"     => $sucesso1,
@@ -332,9 +332,9 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
             ); 
             $this->_Visual->Json_Info_Update('Titulo', $titulo);
             // SE vier do Relatorio, volta pra la
-            if ($localizacao!==false){
+            if ($localizacao!==false) {
                 \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'Financeiro/Relatorio/Relatorio/'.$localizacao.'/'.$dataini.'/'.$datafin);
-            }else if ($financeiros->saida_motivo==='Servidor' && $financeiros->saida_motivoid===SRV_NAME_SQL){
+            }else if ($financeiros->saida_motivo==='Servidor' && $financeiros->saida_motivoid===SRV_NAME_SQL) {
                 $this->Receber();
             } else {
                 $this->Pagar();
@@ -351,25 +351,25 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
         $this->_Visual->Json_Info_Update('Historico', false);
         $this->layoult_zerar = false;
     }
-    public function Financeiros_Pagar($id=false, $localizacao=false, $dataini=false,$datafin=false){
+    public function Financeiros_Pagar($id=false, $localizacao=false, $dataini=false,$datafin=false) {
         // Faz Protecao, e Linguagem apropriada
-        if ($id===false){
+        if ($id===false) {
             return _Sistema_erroControle::Erro_Fluxo('Financeiro não especificado: '.$id,404);
         }
         $where = Array('id'=>  $id, 'pago'=>'0');
         $editar = $this->_Modelo->db->Sql_Select('Financeiro_Pagamento_Interno',$where);
-        if ($editar===false){
+        if ($editar===false) {
             return _Sistema_erroControle::Erro_Fluxo('Financeiro não existe: '.$id,404);
         }
-        if ($localizacao!==false){
+        if ($localizacao!==false) {
             Financeiro_RelatorioControle::Endereco_Financeiro();
-            if ($editar->saida_motivo==='Servidor' && $editar->saida_motivoid===SRV_NAME_SQL){
+            if ($editar->saida_motivo==='Servidor' && $editar->saida_motivoid===SRV_NAME_SQL) {
                 $pago = __('Recebido');
             } else {
                 $pago = __('Pago');
             }
             $link_extra = '/'.$localizacao.'/'.$dataini.'/'.$datafin;
-        }else if ($editar->saida_motivo==='Servidor' && $editar->saida_motivoid===SRV_NAME_SQL){
+        }else if ($editar->saida_motivo==='Servidor' && $editar->saida_motivoid===SRV_NAME_SQL) {
             $pago = __('Recebido');
             self::Endereco_Receber();
             $link_extra = '';
@@ -388,7 +388,7 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
         // Retira Desnecessarios
         self::Financeiros_Campos_Retirar($campos);
         // Modifica Resultados
-        if ($editar->num_parcela=='0' || $editar->num_parcela==0){
+        if ($editar->num_parcela=='0' || $editar->num_parcela==0) {
             $editar->num_parcela = __('Parcela Unica');
         } else {
             $editar->num_parcela = $editar->num_parcela.'º Parcela';
@@ -405,22 +405,22 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Financeiros_Pagar2($id=false, $localizacao=false, $dataini=false,$datafin=false){
+    public function Financeiros_Pagar2($id=false, $localizacao=false, $dataini=false,$datafin=false) {
         // Verifica Existencia
-        if ($id===false){
+        if ($id===false) {
             return _Sistema_erroControle::Erro_Fluxo('Financeiro não especificado: '.$id,404);
         }
         $where = Array('id'=>  $id);
         $financeiros = $this->_Modelo->db->Sql_Select('Financeiro_Pagamento_Interno',$where);
-        if ($financeiros===false){
+        if ($financeiros===false) {
             return _Sistema_erroControle::Erro_Fluxo('Financeiro não existe: '.$id,404);
         }
-        if ($financeiros->saida_motivo==='Servidor' && $financeiros->saida_motivoid===SRV_NAME_SQL){
+        if ($financeiros->saida_motivo==='Servidor' && $financeiros->saida_motivoid===SRV_NAME_SQL) {
             $pago = __('Recebido');
         } else {
             $pago = __('Pago');
         }
-        if (!isset($_POST['valor_juros']) || !isset($_POST['dt_pago'])|| !isset($_POST['obs'])){
+        if (!isset($_POST['valor_juros']) || !isset($_POST['dt_pago'])|| !isset($_POST['obs'])) {
             return _Sistema_erroControle::Erro_Fluxo('Campos Imcompletos: ',404);
         }
         // Captura Valores
@@ -435,7 +435,7 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
         $sucesso2   = ''.$_POST["valor"].' '.$pago.' com sucesso.';
         // Verificação e Atualizacao
         $financeiros->valor = \Framework\App\Sistema_Funcoes::Tranf_Real_Float($financeiros->valor);
-        /*if ($financeiros->valor>$valor_juros){
+        /*if ($financeiros->valor>$valor_juros) {
             $mensagens = array(
                 "tipo"              => 'erro',
                 "mgs_principal"     => __('Valor Pago Incorreto'),
@@ -454,7 +454,7 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
             $financeiros->valor = \Framework\App\Sistema_Funcoes::Tranf_Float_Real($valor_juros);
 
             $sucesso = $this->_Modelo->db->Sql_Update($financeiros);
-            if ($sucesso){
+            if ($sucesso) {
                 $mensagens = array(
                     "tipo"              => 'sucesso',
                     "mgs_principal"     => $sucesso1,
@@ -462,9 +462,9 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
                 ); 
                 $this->_Visual->Json_Info_Update('Titulo', $titulo);
                 // SE vier do Relatorio, volta pra la
-                if ($localizacao!==false){
+                if ($localizacao!==false) {
                     \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'Financeiro/Relatorio/Relatorio/'.$localizacao.'/'.$dataini.'/'.$datafin);
-                }else if ($financeiros->saida_motivo==='Servidor' && $financeiros->saida_motivoid===SRV_NAME_SQL){
+                }else if ($financeiros->saida_motivo==='Servidor' && $financeiros->saida_motivoid===SRV_NAME_SQL) {
                     $this->Receber();
                 } else {
                     $this->Pagar();
@@ -488,7 +488,7 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Formas(){
+    public function Formas() {
         self::Endereco_Forma(false);
         
         $tabela = Array(
@@ -507,7 +507,7 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Formas_Add(){
+    public function Formas_Add() {
         self::Endereco_Forma();
         // Carrega Config
         $titulo1    = __('Adicionar Forma de Pagamento');
@@ -525,7 +525,7 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Formas_Add2(){
+    public function Formas_Add2() {
         $titulo     = __('Forma de Pagamento Adicionada com Sucesso');
         $dao        = 'Financeiro_Pagamento_Forma';
         $funcao     = '$this->Formas();';
@@ -540,7 +540,7 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Formas_Edit($id){
+    public function Formas_Edit($id) {
         self::Endereco_Forma();
         // Carrega Config
         $titulo1    = 'Editar Forma de Pagamento (#'.$id.')';
@@ -559,7 +559,7 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Formas_Edit2($id){
+    public function Formas_Edit2($id) {
         $titulo     = __('Forma de Pagamento Editada com Sucesso');
         $dao        = Array('Financeiro_Pagamento_Forma',$id);
         $funcao     = '$this->Formas();';
@@ -575,7 +575,7 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Formas_Del($id){
+    public function Formas_Del($id) {
         
         
     	$id = (int) $id;
@@ -583,7 +583,7 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
         $forma = $this->_Modelo->db->Sql_Select('Financeiro_Pagamento_Forma', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($forma);
         // Mensagem
-    	if ($sucesso===true){
+    	if ($sucesso===true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
@@ -608,10 +608,10 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Condicoes($forma=0){
+    public function Condicoes($forma=0) {
         $forma = (int) $forma;
         $i = 0;
-        if ($forma===0){
+        if ($forma===0) {
             $link_extra = '/0';
             $nenhum     = __('Nenhuma Condição de Pagamento');
             $titulo     = __('Condição de Pagamento');
@@ -641,9 +641,9 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Condicoes_Add($forma = 0){
+    public function Condicoes_Add($forma = 0) {
         $forma      = (int)$forma;
-        if ($forma!==0){
+        if ($forma!==0) {
             $formaid = $forma;
             $forma = $this->_Modelo->db->Sql_Select('Financeiro_Pagamento_Forma',Array('id'=>$forma),1);
             if ($forma===false)                return _Sistema_erroControle::Erro_Fluxo('Forma de Pagamento não existe.'.$forma,404);
@@ -658,7 +658,7 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
         $formbt     = __('Salvar');
         $formlink   = 'Financeiro/Pagamento/Condicoes_Add2/'.$formaid;
         $campos = Financeiro_Pagamento_Forma_Condicao_DAO::Get_Colunas();
-        if (is_object($forma)){
+        if (is_object($forma)) {
             self::DAO_Campos_Retira($campos,'forma');
         }
         \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos);
@@ -670,9 +670,9 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Condicoes_Add2($forma = 0){
+    public function Condicoes_Add2($forma = 0) {
         $forma      = (int)$forma;
-        if ($forma!==0){
+        if ($forma!==0) {
             $formaid = $forma;
             $forma = $this->_Modelo->db->Sql_Select('Financeiro_Pagamento_Forma',Array('id'=>$forma),1);
             if ($forma===false)                return _Sistema_erroControle::Erro_Fluxo('Forma de Pagamento não existe.'.$forma,404);
@@ -683,7 +683,7 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
         $dao        = 'Financeiro_Pagamento_Forma_Condicao';
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = __('Condição de Pagamento cadastrada com sucesso.');
-        if ($formaid===0){
+        if ($formaid===0) {
             $alterar    = Array();
         } else {
             $alterar    = Array('forma'=>$formaid);
@@ -697,9 +697,9 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Condicoes_Edit($id,$forma=0){
+    public function Condicoes_Edit($id,$forma=0) {
         $forma      = (int)$forma;
-        if ($forma!==0){
+        if ($forma!==0) {
             $formaid = $forma;
             $forma = $this->_Modelo->db->Sql_Select('Financeiro_Pagamento_Forma',Array('id'=>$forma),1);
             if ($forma===false)                return _Sistema_erroControle::Erro_Fluxo('Forma de Pagamento não existe.'.$forma,404);
@@ -715,7 +715,7 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
         $formlink   = 'Financeiro/Pagamento/Condicoes_Edit2/'.$id.'/'.$formaid;
         $editar     = Array('Financeiro_Pagamento_Forma_Condicao',$id);
         $campos = Financeiro_Pagamento_Forma_Condicao_DAO::Get_Colunas();
-        if (is_object($forma)){
+        if (is_object($forma)) {
             self::DAO_Campos_Retira($campos,'forma');
         }
         \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos,$editar);
@@ -727,9 +727,9 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Condicoes_Edit2($id,$forma=0){
+    public function Condicoes_Edit2($id,$forma=0) {
         $forma      = (int)$forma;
-        if ($forma!==0){
+        if ($forma!==0) {
             $formaid = $forma;
             $forma = $this->_Modelo->db->Sql_Select('Financeiro_Pagamento_Forma',Array('id'=>$forma),1);
             if ($forma===false)                return _Sistema_erroControle::Erro_Fluxo('Forma de Pagamento não existe.'.$forma,404);
@@ -751,7 +751,7 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Condicoes_Del($id,$forma=0){
+    public function Condicoes_Del($id,$forma=0) {
         
         $forma      = (int)$forma;
         
@@ -760,7 +760,7 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
         $condicao = $this->_Modelo->db->Sql_Select('Financeiro_Pagamento_Forma_Condicao', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($condicao);
         // Mensagem
-    	if ($sucesso===true){
+    	if ($sucesso===true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
@@ -793,18 +793,18 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
      * @param type $valor
      * @param type $data
      */
-    static function Condicao_GerarPagamento($condicaoid,$motivo,$motivoid,$entrada_motivo,$entrada_motivoid,$saida_motivo,$saida_motivoid, $valor, $data = false,$categoria=0,$pago=0){
+    static function Condicao_GerarPagamento($condicaoid,$motivo,$motivoid,$entrada_motivo,$entrada_motivoid,$saida_motivo,$saida_motivoid, $valor, $data = false,$categoria=0,$pago=0) {
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Modelo = &$Registro->_Modelo;
         //Valores Iniciais
         $num            = 1; // Parcelas
         $condicaoid     = (int) $condicaoid; // AntiInjection
-        if ($data===false){
+        if ($data===false) {
             $data = APP_DATA_BR;
         }
         // Pega Condicao do Banco de Dados
         $condicao           = $_Modelo->db->Sql_Select('Financeiro_Pagamento_Forma_Condicao',Array('id'=>$condicaoid),1);
-        if ($condicao===false){
+        if ($condicao===false) {
             return false;
         }
         // Transforma Real e Porcentagem em Decimal
@@ -813,31 +813,31 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
         // Pega Parcelas por Referencia
         $condicao_parcelas  = $condicao->parcelas;
         // Insere Entrada caso necessario
-        if ($condicao_entrada>0.0 && $valor>0){
+        if ($condicao_entrada>0.0 && $valor>0) {
             $entrada = $condicao_entrada*$valor;
             $valor = $valor-$entrada;
             // Insere Entrada
             Financeiro_Controle::FinanceiroInt($motivo,$motivoid,$entrada_motivo,$entrada_motivoid,$saida_motivo,$saida_motivoid,$entrada,$data,0,$categoria,$condicao->forma_pagar,$condicaoid,$pago);
         }
         // Insere Parcelas caso necesario
-        if ($condicao_parcelas>0 && $valor>0){
+        if ($condicao_parcelas>0 && $valor>0) {
             $valor = round($valor/$condicao_parcelas,2);
             // Insere Um a um
-            for(;$num<=$condicao_parcelas;$num++){
+            for(;$num<=$condicao_parcelas;$num++) {
                 $data = \Framework\App\Sistema_Funcoes::Modelo_Data_Soma($data,0,1);
                 Financeiro_Controle::FinanceiroInt($motivo,$motivoid,$entrada_motivo,$entrada_motivoid,$saida_motivo,$saida_motivoid,$valor,$data,$num,$categoria,$condicao->forma_pagar,$condicaoid,$pago);
             }
         }
         return true;
     }
-    public function Financeiros_VencimentoEdit($id=false){
+    public function Financeiros_VencimentoEdit($id=false) {
         // Faz Protecao, e Linguagem apropriada
-        if ($id===false){
+        if ($id===false) {
             return _Sistema_erroControle::Erro_Fluxo('Financeiro não especificado: '.$id,404);
         }
         $where = Array('id'=>  $id);
         $editar = $this->_Modelo->db->Sql_Select('Financeiro_Pagamento_Interno',$where);
-        if ($editar===false){
+        if ($editar===false) {
             return _Sistema_erroControle::Erro_Fluxo('Financeiro não existe: '.$id,404);
         }
         // Carrega Config
@@ -859,15 +859,15 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Financeiros_VencimentoEdit2($id=false){
+    public function Financeiros_VencimentoEdit2($id=false) {
         // Verifica Existencia
-        if ($id===false){
+        if ($id===false) {
             return _Sistema_erroControle::Erro_Fluxo('Financeiro não especificado: '.$id,404);
         }
         $id = (int) $id;
         $where = Array('id'=>  $id);
         $financeiros = $this->_Modelo->db->Sql_Select('Financeiro_Pagamento_Interno',$where);
-        if ($financeiros===false){
+        if ($financeiros===false) {
             return _Sistema_erroControle::Erro_Fluxo('Financeiro não existe: '.$id,404);
         }
         // Mensagens
@@ -879,7 +879,7 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
         $financeiros->dt_vencimento    = \Framework\App\Conexao::anti_injection($_POST['dt_vencimento']);
         // Verificação e Atualizacao
         $sucesso = $this->_Modelo->db->Sql_Update($financeiros);
-        if ($sucesso){
+        if ($sucesso) {
             $mensagens = array(
                 "tipo"              => 'sucesso',
                 "mgs_principal"     => $sucesso1,
@@ -913,27 +913,27 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
      * @param type $layoult
      * @throws Exception
      */
-    public function Financeiro_View($id,$layoult='Unico'){
+    public function Financeiro_View($id,$layoult='Unico') {
         $html = '<span style="text-transform:uppercase;">';
 
 
         // Puxca Financeiro
         $identificador = $this->_Modelo->db->Sql_Select('Financeiro_Pagamento_Interno',Array('id'=>(int) $id),1); // Banco DAO, Condicao e LIMITE
         // Verifica se Existe e Continua
-        if ($identificador===false){
+        if ($identificador===false) {
             return _Sistema_erroControle::Erro_Fluxo('Pagamento não Existe',404);
         }
         $id = $identificador->id;
         
         
-        if ($identificador->entrada_motivo==='Servidor' && $identificador->entrada_motivoid===SRV_NAME_SQL){
-            if ($identificador->pago==1){
+        if ($identificador->entrada_motivo==='Servidor' && $identificador->entrada_motivoid===SRV_NAME_SQL) {
+            if ($identificador->pago==1) {
                 $tema = 'Pago';
             } else {
                 $tema = 'Pagar';
             }
         } else {            
-            if ($identificador->pago==1){
+            if ($identificador->pago==1) {
                 $tema = 'Receber';
             } else {
                 $tema = 'Recebido';
@@ -941,15 +941,15 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
         }
         
         // Nomes
-        if ($tema==='Pagar'){
+        if ($tema==='Pagar') {
             $titulo             = __('Conta a Pagar');
             $titulo_plural      = __('Contas a Pagar');
             $titulo_unico       = 'contasapagar';
-        }else if ($tema==='Pago'){
+        }else if ($tema==='Pago') {
             $titulo             = __('Conta Paga');
             $titulo_plural      = __('Contas Pagas');
             $titulo_unico       = 'contaspagas';
-        }else if ($tema==='Receber'){
+        }else if ($tema==='Receber') {
             $titulo             = __('Conta a Pagar');
             $titulo_plural      = __('Contas a Pagar');
             $titulo_unico       = 'contasareceber';
@@ -964,16 +964,16 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
         
         /*$cliente = $this->_Modelo->db->Sql_Select('Usuario',Array('id'=>$identificador->cliente),1); // Banco DAO, Condicao e LIMITE
         // Verifica se Existe e Continua
-        if ($identificador===false){
+        if ($identificador===false) {
             return _Sistema_erroControle::Erro_Fluxo('Proposta não Existe',404);
         }
-        if ($cliente===false){
+        if ($cliente===false) {
             return _Sistema_erroControle::Erro_Fluxo('Cliente não existe',404);
         }
         */
         
         
-        if ($layoult!=='Imprimir'){            
+        if ($layoult!=='Imprimir') {            
             $html .= $this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
                 false,
                 Array(
@@ -994,11 +994,11 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
         
         $html .= '</span>';
         // Caso seja pra Imprimir
-        if ($layoult==='Imprimir'){
+        if ($layoult==='Imprimir') {
             self::Export_Todos($layoult,$html, $titulo.' #'.$identificador->id);
         } else {
             // Identifica tipo e cria conteudo
-            if (LAYOULT_IMPRIMIR=='AJAX'){
+            if (LAYOULT_IMPRIMIR=='AJAX') {
                 // Coloca Conteudo em Popup
                 $popup = array(
                     'id'        => 'popup',
@@ -1019,9 +1019,9 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
                 $this->Tema_Endereco('Visualizar '.$titulo);
                 // Coloca COnteudo em Janela
                 $this->_Visual->Blocar($html);
-                if ($layoult==='Unico'){
+                if ($layoult==='Unico') {
                     $this->_Visual->Bloco_Unico_CriaJanela($titulo.' #'.$identificador->id);
-                }else if ($layoult==='Maior'){
+                }else if ($layoult==='Maior') {
                     $this->_Visual->Bloco_Maior_CriaJanela($titulo.' #'.$identificador->id);
                 } else {
                     $this->_Visual->Bloco_Menor_CriaJanela($titulo.' #'.$identificador->id);

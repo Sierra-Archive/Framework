@@ -1,5 +1,5 @@
 <?php
-$config_Modulo = function (){
+$config_Modulo = function () {
     return Array(
         'Nome'                      =>  'usuario_veiculo',
         'Descrição'                 =>  '',
@@ -8,7 +8,7 @@ $config_Modulo = function (){
         'Dependencias'              =>  false,
     );
 };
-$config_Menu = function (){
+$config_Menu = function () {
     return Array(
         'Administrar' => Array(
             'Filhos'                => Array('Veiculos'=>Array(
@@ -32,7 +32,7 @@ $config_Menu = function (){
         ),
     );
 };
-$config_Permissoes = function (){
+$config_Permissoes = function () {
     return Array(
         
         //Veiculos
@@ -180,7 +180,7 @@ $config_Permissoes = function (){
  * 
  * @author Ricardo Sierra <web@ricardosierra.com.br>
  */
-$config_Funcional = function (){
+$config_Funcional = function () {
     return Array(
         'usuario_veiculo_VeiculoIPVA'       => Array(
             'Nome'                  => 'Veiculos -> IPVA',
@@ -262,7 +262,7 @@ $config_Funcional = function (){
  * 
  * @author Ricardo Sierra <web@ricardosierra.com.br>
  */
-$config_Publico = function (){
+$config_Publico = function () {
     return Array(
         /*'{chave}'  => Array(
             'Nome'                  => 'Nome',

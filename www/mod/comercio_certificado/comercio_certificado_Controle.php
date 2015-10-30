@@ -12,7 +12,7 @@ class comercio_certificado_Controle extends \Framework\App\Controle
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    public function __construct(){
+    public function __construct() {
         // construct
         parent::__construct();
     }
@@ -21,8 +21,8 @@ class comercio_certificado_Controle extends \Framework\App\Controle
      * Mostra o Editar ou Add Usuario em Tab
      * @param int $id Chave Primária (Id do Registro)
      */
-    public function Usuarios_Produtos($id = 0){
-        if ($id==0){
+    public function Usuarios_Produtos($id = 0) {
+        if ($id==0) {
             \Framework\App\Visual::Layoult_Abas_Carregar('2',self::Usuarios_Add('cliente')     ,true);
             \Framework\App\Visual::Layoult_Abas_Carregar('3',$this->_Visual->ErroShow()        ,false);
             \Framework\App\Visual::Layoult_Abas_Carregar('4',$this->_Visual->ErroShow()        ,false);
@@ -45,8 +45,8 @@ class comercio_certificado_Controle extends \Framework\App\Controle
      * Mostra o Editar ou Add Usuario em Tab
      * @param int $id Chave Primária (Id do Registro)
      */
-    public function Usuarios_Mostrar($id = 0){
-        if ($id==0){
+    public function Usuarios_Mostrar($id = 0) {
+        if ($id==0) {
             \Framework\App\Visual::Layoult_Abas_Carregar('2',self::Usuarios_Add('cliente')     ,true);
             \Framework\App\Visual::Layoult_Abas_Carregar('3',$this->_Visual->ErroShow()        ,false);
             \Framework\App\Visual::Layoult_Abas_Carregar('4',$this->_Visual->ErroShow()        ,false);
@@ -64,12 +64,12 @@ class comercio_certificado_Controle extends \Framework\App\Controle
         // Joga pro Json se nao for o caso de popup
         $this->_Visual->Json_Info_Update('Historico',0);
     }
-    public static function Usuario_UpdateInfo($id = 0){
+    public static function Usuario_UpdateInfo($id = 0) {
         $Registro   = &\Framework\App\Registro::getInstacia();
         $Modelo     = $Registro->_Modelo;
         $Visual     = $Registro->_Visual;
         $abas_id    = &$Visual->config_template['plugins']['abas_id'];
-        if ($id==0 || !isset($id)){
+        if ($id==0 || !isset($id)) {
             $id = (int) $this->_Acl->Usuario_GetID();
         } else {
             $id = (int) $id;
@@ -78,7 +78,7 @@ class comercio_certificado_Controle extends \Framework\App\Controle
         $campos = Usuario_DAO::Get_Colunas();
         self::DAO_Campos_Retira($campos, 'obs',1);
         $usuario = $Modelo->db->Sql_Select('Usuario', Array('id'=>$id));
-        if ($usuario===false){
+        if ($usuario===false) {
             throw new \Exception('Usuário não existe', 8010);
         }
         self::mysql_AtualizaValores($campos, $usuario);
@@ -97,7 +97,7 @@ class comercio_certificado_Controle extends \Framework\App\Controle
         $Visual->Json_IncluiTipo('Conteudo',$conteudo);        
     }
     
-    public static function Usuario_UpdateInfo2($id){
+    public static function Usuario_UpdateInfo2($id) {
         
         $Registro   = &\Framework\App\Registro::getInstacia();
         $Controle   = $Registro->_Controle;
@@ -109,7 +109,7 @@ class comercio_certificado_Controle extends \Framework\App\Controle
         self::mysql_AtualizaValores($usuario);
         $sucesso =  $Modelo->db->Sql_Update($usuario);
         
-        if ($sucesso===true){
+        if ($sucesso===true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Alteração bem sucedida'),
@@ -125,12 +125,12 @@ class comercio_certificado_Controle extends \Framework\App\Controle
         $Controle->Json_Definir_zerar(false);
         $Visual->Json_IncluiTipo('Mensagens',$mensagens);    
     }
-    public static function Usuarios_Add($tipo=false){
+    public static function Usuarios_Add($tipo=false) {
         // Carrega campos e retira os que nao precisam
         $campos = Usuario_DAO::Get_Colunas();
         // Retira os de clientes
         $linkextra = '';
-        if ($tipo=='cliente'){
+        if ($tipo=='cliente') {
             $linkextra = $tipo.'/';
         }
         // Carrega formulario
@@ -140,17 +140,17 @@ class comercio_certificado_Controle extends \Framework\App\Controle
         // Chama Formulario
         \Framework\App\Controle::Gerador_Formulario($campos, $form);
 
-        if ($tipo=='cliente'){
+        if ($tipo=='cliente') {
             $formulario = $form->retorna_form('Cadastrar Cliente');
         } else {
             $formulario = $form->retorna_form('Cadastrar Usuário');
         }
         return $formulario;
     }
-    public static function Usuarios_Edit($tipo='usuario',$id = 0){
+    public static function Usuarios_Edit($tipo='usuario',$id = 0) {
         $Registro   = &\Framework\App\Registro::getInstacia();
         $Modelo     = $Registro->_Modelo;
-        if ($id==0 || !isset($id)){
+        if ($id==0 || !isset($id)) {
             $id = (int) $this->_Acl->Usuario_GetID();
         } else {
             $id = (int) $id;
@@ -184,25 +184,25 @@ class comercio_certificado_Controle extends \Framework\App\Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Usuarios_Add2($tipo=false){
+    public function Usuarios_Add2($tipo=false) {
         
         $Registro   = &\Framework\App\Registro::getInstacia();
         $Modelo     = &$Registro->_Modelo;
         $Visual     = &$Registro->_Visual;
        
-        if (isset($_POST['email'])){
+        if (isset($_POST['email'])) {
             $email = \Framework\App\Conexao::anti_injection($_POST['email']);
         } else {
             $email = '';
         }
-        if (isset($_POST['login'])){
+        if (isset($_POST['login'])) {
             $login = \Framework\App\Conexao::anti_injection($_POST['login']);
         } else {
             $login = '';
         }
         $existeemail = usuario_Modelo::VerificaExtEmail($Modelo,$email);
         $existelogin = usuario_Modelo::VerificaExtLogin($Modelo,$login);
-        if (\Framework\App\Sistema_Funcoes::Control_Layoult_Valida_Email($email)===false && $tipo!='cliente'){
+        if (\Framework\App\Sistema_Funcoes::Control_Layoult_Valida_Email($email)===false && $tipo!='cliente') {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),
@@ -211,7 +211,7 @@ class comercio_certificado_Controle extends \Framework\App\Controle
             $Visual->Json_IncluiTipo('Mensagens',$mensagens);
             $this->layoult_zerar = false;
             $Visual->Javascript_Executar('$("#email").css(\'border\', \'2px solid #FFAEB0\').focus();');
-         }else if ($existeemail===true && ($tipo!='cliente' || $email!='')){
+         }else if ($existeemail===true && ($tipo!='cliente' || $email!='')) {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),
@@ -220,7 +220,7 @@ class comercio_certificado_Controle extends \Framework\App\Controle
             $Visual->Json_IncluiTipo('Mensagens',$mensagens); 
             $this->layoult_zerar = false;
             $Visual->Javascript_Executar('$("#email").css(\'border\', \'2px solid #FFAEB0\').focus();');
-        }else if ($existelogin===true && $tipo!='cliente'){
+        }else if ($existelogin===true && $tipo!='cliente') {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),
@@ -242,8 +242,8 @@ class comercio_certificado_Controle extends \Framework\App\Controle
             self::mysql_AtualizaValores($usuario);
         
             // confere senha
-            if (isset($_POST['senha'])){
-                if ($_POST['senha']==''){
+            if (isset($_POST['senha'])) {
+                if ($_POST['senha']=='') {
                     $mensagens = array(
                         "tipo" => 'erro',
                         "mgs_principal" => __('Erro'),
@@ -268,7 +268,7 @@ class comercio_certificado_Controle extends \Framework\App\Controle
             $this->Usuarios_Produtos($idusuario->id);
             comercio_certificado_PropostaControle::RecarregaLocalizar();
 
-            if ($sucesso===true){
+            if ($sucesso===true) {
                 $mensagens = array(
                     "tipo" => 'sucesso',
                     "mgs_principal" => __('Inserção bem sucedida'),
@@ -291,7 +291,7 @@ class comercio_certificado_Controle extends \Framework\App\Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Usuarios_Edit2($tipo='usuario',$id){
+    public function Usuarios_Edit2($tipo='usuario',$id) {
         
         $id = (int) $id;
         // Puxa o usuario, e altera seus valores, depois salva novamente
@@ -302,7 +302,7 @@ class comercio_certificado_Controle extends \Framework\App\Controle
         $this->Usuarios_Produtos($id);
         comercio_certificado_PropostaControle::RecarregaLocalizar();
         
-        if ($sucesso===true){
+        if ($sucesso===true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Alteração bem sucedida'),

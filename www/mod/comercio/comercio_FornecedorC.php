@@ -15,11 +15,11 @@ class comercio_FornecedorControle extends comercio_Controle
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    public function __construct(){
+    public function __construct() {
         parent::__construct();
     }
-    static function Campos_Deletar(&$campos){
-        if (!\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Fornecedor_Categoria')){
+    static function Campos_Deletar(&$campos) {
+        if (!\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Fornecedor_Categoria')) {
             self::DAO_Campos_Retira($campos, 'categoria');
         }
     }
@@ -36,16 +36,16 @@ class comercio_FornecedorControle extends comercio_Controle
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    public function Main(){
+    public function Main() {
         \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'comercio/Fornecedor/Fornecedores');
         return false;
     }
-    static function Endereco_Fornecedor($true=true,$produto=false){
+    static function Endereco_Fornecedor($true=true,$produto=false) {
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
         $titulo = __('Fornecedores');
         $link = 'comercio/Fornecedor/Fornecedores';
-        if ($true===true){
+        if ($true===true) {
             $_Controle->Tema_Endereco($titulo,$link);
         } else {
             $_Controle->Tema_Endereco($titulo);
@@ -56,14 +56,14 @@ class comercio_FornecedorControle extends comercio_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Fornecedores($export = false){
+    public function Fornecedores($export = false) {
         self::Endereco_Fornecedor(false);
         
         $tabela_colunas = Array();
 
         $tabela_colunas[] = __('Nome');
         // Coloca Preco
-        if (\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Fornecedor_Categoria')){
+        if (\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Fornecedor_Categoria')) {
             $tabela_colunas[] = __('Tipo de Fornecimento');
         }
         
@@ -84,7 +84,7 @@ class comercio_FornecedorControle extends comercio_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Fornecedores_Add(){
+    public function Fornecedores_Add() {
         self::Endereco_Fornecedor(true);
         // Carrega Config
         $titulo1    = __('Adicionar Fornecedor');
@@ -103,7 +103,7 @@ class comercio_FornecedorControle extends comercio_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Fornecedores_Add2(){
+    public function Fornecedores_Add2() {
         $titulo     = __('Fornecedor Adicionado com Sucesso');
         $dao        = 'Comercio_Fornecedor';
         $funcao     = '$this->Fornecedores();';
@@ -119,7 +119,7 @@ class comercio_FornecedorControle extends comercio_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Fornecedores_Edit($id){
+    public function Fornecedores_Edit($id) {
         self::Endereco_Fornecedor(true);
         // Carrega Config
         $titulo1    = 'Editar Fornecedor (#'.$id.')';
@@ -139,7 +139,7 @@ class comercio_FornecedorControle extends comercio_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Fornecedores_Edit2($id){
+    public function Fornecedores_Edit2($id) {
         $titulo     = __('Fornecedor Editado com Sucesso');
         $dao        = Array('Comercio_Fornecedor',$id);
         $funcao     = '$this->Fornecedores();';
@@ -155,7 +155,7 @@ class comercio_FornecedorControle extends comercio_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Fornecedores_Del($id){
+    public function Fornecedores_Del($id) {
         
         
     	$id = (int) $id;
@@ -163,7 +163,7 @@ class comercio_FornecedorControle extends comercio_Controle
         $fornecedor = $this->_Modelo->db->Sql_Select('Comercio_Fornecedor', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($fornecedor);
         // Mensagem
-    	if ($sucesso===true){
+    	if ($sucesso===true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
@@ -183,7 +183,7 @@ class comercio_FornecedorControle extends comercio_Controle
         $this->_Visual->Json_Info_Update('Titulo', __('Fornecedor deletado com Sucesso'));  
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
-    public function Fornecedores_View($fornecedor_id = false){
+    public function Fornecedores_View($fornecedor_id = false) {
         if ($fornecedor_id===false || $fornecedor_id==0 || !isset($fornecedor_id)) return _Sistema_erroControle::Erro_Fluxo('Fornecedor não informado',404);
         // Inclui Endereco
         self::Endereco_Fornecedor(true);
@@ -193,8 +193,8 @@ class comercio_FornecedorControle extends comercio_Controle
         $this->Fornecedores_Comentario( $fornecedor_id);
         $this->_Visual->Json_Info_Update('Titulo', __('Visualizar Comentários do Fornecedor'));
     }
-    public function Fornecedores_Popup($fornecedor_id = false, $popup = true){
-        if ($fornecedor_id===false || $fornecedor_id==0 || !isset($fornecedor_id)){
+    public function Fornecedores_Popup($fornecedor_id = false, $popup = true) {
+        if ($fornecedor_id===false || $fornecedor_id==0 || !isset($fornecedor_id)) {
             return _Sistema_erroControle::Erro_Fluxo('Fornecedor não informado',404);
         }
         // mostra todas as suas mensagens
@@ -231,7 +231,7 @@ class comercio_FornecedorControle extends comercio_Controle
         $html .= '<b>Observação:</b> '.             $fornecedor->obs;
         $html .= '</div>';            
         $titulo = 'Informações do Fornecedor '.$fornecedor->nome.' ('.$fornecedor_id.')';
-        if ($popup){
+        if ($popup) {
             $conteudo = array(
                 'id' => 'popup',
                 'title' => 'Visualizar Fornecedor',
@@ -259,10 +259,10 @@ class comercio_FornecedorControle extends comercio_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Fornecedores_Comentario($fornecedor_id = false, $export = false){
+    public function Fornecedores_Comentario($fornecedor_id = false, $export = false) {
         
         $erro = false;
-        if ($fornecedor_id===false){
+        if ($fornecedor_id===false) {
             $where = Array();
         } else {
             $where = Array('fornecedor'=>$fornecedor_id);
@@ -284,7 +284,7 @@ class comercio_FornecedorControle extends comercio_Controle
         )));
         // CONEXAO
         $linhas = $this->_Modelo->db->Sql_Select('Comercio_Fornecedor_Comentario',$where);
-        if ($linhas!==false && !empty($linhas)){
+        if ($linhas!==false && !empty($linhas)) {
             if (is_object($linhas)) $linhas = Array(0=>$linhas);
             reset($linhas);
             foreach ($linhas as $indice=>&$valor) {
@@ -295,20 +295,20 @@ class comercio_FornecedorControle extends comercio_Controle
                                                 $this->_Visual->Tema_Elementos_Btn('Deletar'         ,Array('Deletar Comentário de Fornecedor'       ,'comercio/Fornecedor/Fornecedores_Comentario_Del/'.$fornecedor_id.'/'.$valor->id.'/'     ,'Deseja realmente deletar esse Comentário desse Fornecedor ?'));
                 ++$i;
             }
-            if ($export!==false){
+            if ($export!==false) {
                 self::Export_Todos($export,$tabela, 'Comercio - Fornecedor (#'.$fornecedor_id.') Comentários');
             } else {
                 $this->_Visual->Show_Tabela_DataTable($tabela);
             }
             unset($tabela);
         } else {   
-            if ($export!==false){
+            if ($export!==false) {
                 $erro = __('Nenhum Comentário desse Fornecedor para Exportar');
             }else {
                 $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Comentário do Fornecedor</font></b></center>');
             }
         }
-        if ($erro===false){
+        if ($erro===false) {
             $titulo = __('Comentários do Fornecedor').' ('.$i.')';
             $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',10);
 
@@ -328,7 +328,7 @@ class comercio_FornecedorControle extends comercio_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Fornecedores_Comentario_Add($fornecedor_id = false){
+    public function Fornecedores_Comentario_Add($fornecedor_id = false) {
         if ($fornecedor_id===false) return _Sistema_erroControle::Erro_Fluxo('Fornecedor não informado',404);
         // Carrega Config
         $titulo1    = __('Adicionar Comentário do Fornecedor');
@@ -347,7 +347,7 @@ class comercio_FornecedorControle extends comercio_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Fornecedores_Comentario_Add2($fornecedor_id = false){
+    public function Fornecedores_Comentario_Add2($fornecedor_id = false) {
         if ($fornecedor_id===false) return _Sistema_erroControle::Erro_Fluxo('Fornecedor não informado',404);
         $titulo     = __('Comentário do Fornecedor Adicionado com Sucesso');
         $dao        = 'Comercio_Fornecedor_Comentario';
@@ -363,7 +363,7 @@ class comercio_FornecedorControle extends comercio_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Fornecedores_Comentario_Edit($fornecedor_id = false,$id = 0){
+    public function Fornecedores_Comentario_Edit($fornecedor_id = false,$id = 0) {
         if ($fornecedor_id===false) return _Sistema_erroControle::Erro_Fluxo('Fornecedor não informado',404);
         if ($id            == 0   ) return _Sistema_erroControle::Erro_Fluxo('Comentário não informado',404);
         // Carrega Config
@@ -384,7 +384,7 @@ class comercio_FornecedorControle extends comercio_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Fornecedores_Comentario_Edit2($fornecedor_id = false,$id = 0){
+    public function Fornecedores_Comentario_Edit2($fornecedor_id = false,$id = 0) {
         if ($fornecedor_id===false) return _Sistema_erroControle::Erro_Fluxo('Fornecedor não informado',404);
         if ($id            == 0   ) return _Sistema_erroControle::Erro_Fluxo('Comentário não informado',404);
         $titulo     = __('Comentário de Fornecedor Editado com Sucesso');
@@ -402,7 +402,7 @@ class comercio_FornecedorControle extends comercio_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Fornecedores_Comentario_Del($fornecedor_id = false,$id = 0){
+    public function Fornecedores_Comentario_Del($fornecedor_id = false,$id = 0) {
         if ($fornecedor_id===false) return _Sistema_erroControle::Erro_Fluxo('Fornecedor não informado',404);
         if ($id            == 0   ) return _Sistema_erroControle::Erro_Fluxo('Comentário não informado',404);
         
@@ -413,7 +413,7 @@ class comercio_FornecedorControle extends comercio_Controle
         $comentario = $this->_Modelo->db->Sql_Select('Comercio_Fornecedor_Comentario', $where);
         $sucesso =  $this->_Modelo->db->Sql_Delete($comentario);
         // Mensagem
-    	if ($sucesso===true){
+    	if ($sucesso===true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),

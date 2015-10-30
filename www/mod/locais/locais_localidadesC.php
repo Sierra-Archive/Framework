@@ -2,48 +2,48 @@
 class locais_localidadesControle extends locais_Controle
 {
 
-    public function __construct(){
+    public function __construct() {
         parent::__construct();
     }
     public function Main() {
 
     }
-    public function cep(){
+    public function cep() {
         // Controla
-        if (isset($_POST['pais'])){
+        if (isset($_POST['pais'])) {
             $pais = \Framework\App\Conexao::anti_injection($_POST['pais']);
         } else {
             $pais = '1'; // Brasil
         }
-        if (isset($_POST['estado'])){
+        if (isset($_POST['estado'])) {
             $estado = \Framework\App\Conexao::anti_injection($_POST['estado']);
         } else {
             $estado = '';
         }
-        if (isset($_POST['cidade'])){
+        if (isset($_POST['cidade'])) {
             $cidade = \Framework\App\Conexao::anti_injection($_POST['cidade']);
         } else {
             $cidade = '';
         }
-        if (isset($_POST['bairro'])){
+        if (isset($_POST['bairro'])) {
             $bairro = \Framework\App\Conexao::anti_injection($_POST['bairro']);
         } else {
             $bairro = '';
         }
         
         // Limpa
-        if ($estado=='' || !isset($estado)){
+        if ($estado=='' || !isset($estado)) {
             $estado = 'falso';
         }
-        if ($cidade=='' || !isset($cidade)){
+        if ($cidade=='' || !isset($cidade)) {
             $cidade = 'falso';
         }
-        if ($bairro=='' || !isset($bairro)){
+        if ($bairro=='' || !isset($bairro)) {
             $bairro = 'falso';
         }
-        $imprimir = function(&$opcoes){
+        $imprimir = function(&$opcoes) {
             $html = '';
-            if ($opcoes!==false && !empty($opcoes)){
+            if ($opcoes!==false && !empty($opcoes)) {
                 if (is_object($opcoes)) $opcoes = Array(0=>$opcoes);
                 reset($opcoes);
                 foreach ($opcoes as $indice2=>$valor2) {
@@ -54,12 +54,12 @@ class locais_localidadesControle extends locais_Controle
             return $html;
         };
         // Estado
-        if ($estado!='falso'){
+        if ($estado!='falso') {
             $where      =   Array('sigla'=>$estado,'pais'=>$pais);
             $opcoes     =   $this->_Modelo->db->Sql_Select('Sistema_Local_Estado', $where, 1);
             $where      =   Array('!sigla'=>$estado);
             // Verifica Se Estado Escolhido Existe
-            if (is_object($opcoes)){
+            if (is_object($opcoes)) {
                 $id_estado = $opcoes->id;
                 $where['pais'] = $opcoes->pais;
                 $where['!id'] = $id_estado;
@@ -85,12 +85,12 @@ class locais_localidadesControle extends locais_Controle
             );
             $this->_Visual->Json_IncluiTipo('Conteudo',$conteudo);
             // CIdade
-            if ($cidade!='falso'){
+            if ($cidade!='falso') {
                 $where      =   Array('estado'=>$id_estado,'nome'=>$cidade);
                 $opcoes     =   $this->_Modelo->db->Sql_Select('Sistema_Local_Cidade', $where, 1);
                 $where      =   Array('estado'=>$id_estado);
                 // Verifica Se Estado Escolhido Existe
-                if (is_object($opcoes)){
+                if (is_object($opcoes)) {
                     $id_cidade = $opcoes->id;
                     $where['!nome'] = $cidade;
                     $where['!id'] = $id_cidade;
@@ -114,12 +114,12 @@ class locais_localidadesControle extends locais_Controle
                 );
                 $this->_Visual->Json_IncluiTipo('Conteudo',$conteudo);
                 // Bairro
-                if ($bairro!='falso'){
+                if ($bairro!='falso') {
                     // Procura Selecionado
                     $where      =   Array('cidade'=>$id_cidade,'nome'=>$bairro);
                     $opcoes     =   $this->_Modelo->db->Sql_Select('Sistema_Local_Bairro', $where, 1);
                     $where      =   Array('!nome'=>$bairro,'cidade'=>$id_cidade);
-                    if (is_object($opcoes)){
+                    if (is_object($opcoes)) {
                         $where['!id'] = $opcoes->id;
                     } else {
                         $mensagem = 'Bairro não Existe '."\n";
@@ -164,11 +164,11 @@ class locais_localidadesControle extends locais_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Paises(){
+    public function Paises() {
         $i = 0;
         $this->_Visual->Blocar('<a title="Adicionar País" class="btn btn-success lajax explicar-titulo" data-acao="" href="'.URL_PATH.'locais/localidades/Paises_Add">Adicionar novo País</a><div class="space15"></div>');
         $setores = $this->_Modelo->db->Sql_Select('Sistema_Local_Pais');
-        if ($setores!==false && !empty($setores)){
+        if ($setores!==false && !empty($setores)) {
             if (is_object($setores)) $setores = Array(0=>$setores);
             reset($setores);
             foreach ($setores as $indice=>&$valor) {
@@ -193,7 +193,7 @@ class locais_localidadesControle extends locais_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Paises_Add(){
+    public function Paises_Add() {
         // Carrega Config
         $titulo1    = __('Adicionar País');
         $titulo2    = __('Salvar País');
@@ -209,7 +209,7 @@ class locais_localidadesControle extends locais_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Paises_Add2(){
+    public function Paises_Add2() {
         $titulo     = __('País Adicionado com Sucesso');
         $dao        = 'Sistema_Local_Pais';
         $funcao     = '$this->Paises();';
@@ -224,7 +224,7 @@ class locais_localidadesControle extends locais_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Paises_Edit($id){
+    public function Paises_Edit($id) {
         // Carrega Config
         $titulo1    = 'Editar País (#'.$id.')';
         $titulo2    = __('Alteração de País');
@@ -241,7 +241,7 @@ class locais_localidadesControle extends locais_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Paises_Edit2($id){
+    public function Paises_Edit2($id) {
         $titulo     = __('País Editado com Sucesso');
         $dao        = Array('Sistema_Local_Pais',$id);
         $funcao     = '$this->Paises();';
@@ -256,13 +256,13 @@ class locais_localidadesControle extends locais_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Paises_Del($id){
+    public function Paises_Del($id) {
     	$id = (int) $id;
         // Puxa setor e deleta
         $setor = $this->_Modelo->db->Sql_Select('Sistema_Local_Pais', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($setor);
         // Mensagem
-    	if ($sucesso===true){
+    	if ($sucesso===true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
@@ -287,11 +287,11 @@ class locais_localidadesControle extends locais_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Estados(){
+    public function Estados() {
         $i = 0;
         $this->_Visual->Blocar('<a title="Adicionar Estado" class="btn btn-success lajax explicar-titulo" data-acao="" href="'.URL_PATH.'locais/localidades/Estados_Add">Adicionar novo Estado</a><div class="space15"></div>');
         $setores = $this->_Modelo->db->Sql_Select('Sistema_Local_Estado');
-        if ($setores!==false && !empty($setores)){
+        if ($setores!==false && !empty($setores)) {
             if (is_object($setores)) $setores = Array(0=>$setores);
             reset($setores);
             foreach ($setores as $indice=>&$valor) {
@@ -316,7 +316,7 @@ class locais_localidadesControle extends locais_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Estados_Add(){
+    public function Estados_Add() {
         // Carrega Config
         $titulo1    = __('Adicionar Estado');
         $titulo2    = __('Salvar Estado');
@@ -333,7 +333,7 @@ class locais_localidadesControle extends locais_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Estados_Add2(){
+    public function Estados_Add2() {
         $titulo     = __('Estado Adicionado com Sucesso');
         $dao        = 'Sistema_Local_Estado';
         $funcao     = '$this->Estados();';
@@ -348,7 +348,7 @@ class locais_localidadesControle extends locais_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Estados_Edit($id){
+    public function Estados_Edit($id) {
         // Carrega Config
         $titulo1    = 'Editar Estado (#'.$id.')';
         $titulo2    = __('Alteração de Estado');
@@ -366,7 +366,7 @@ class locais_localidadesControle extends locais_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Estados_Edit2($id){
+    public function Estados_Edit2($id) {
         $titulo     = __('Estado Editado com Sucesso');
         $dao        = Array('Sistema_Local_Estado',$id);
         $funcao     = '$this->Estados();';
@@ -382,7 +382,7 @@ class locais_localidadesControle extends locais_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Estados_Del($id){
+    public function Estados_Del($id) {
         
         
     	$id = (int) $id;
@@ -390,7 +390,7 @@ class locais_localidadesControle extends locais_Controle
         $setor = $this->_Modelo->db->Sql_Select('Sistema_Local_Estado', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($setor);
         // Mensagem
-    	if ($sucesso===true){
+    	if ($sucesso===true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
@@ -415,11 +415,11 @@ class locais_localidadesControle extends locais_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Cidades(){
+    public function Cidades() {
         $i = 0;
         $this->_Visual->Blocar('<a title="Adicionar Cidade" class="btn btn-success lajax explicar-titulo" data-acao="" href="'.URL_PATH.'locais/localidades/Cidades_Add">Adicionar nova Cidade</a><div class="space15"></div>');
         $setores = $this->_Modelo->db->Sql_Select('Sistema_Local_Cidade');
-        if ($setores!==false && !empty($setores)){
+        if ($setores!==false && !empty($setores)) {
             if (is_object($setores)) $setores = Array(0=>$setores);
             reset($setores);
             foreach ($setores as $indice=>&$valor) {
@@ -444,7 +444,7 @@ class locais_localidadesControle extends locais_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Cidades_Add(){
+    public function Cidades_Add() {
         // Carrega Config
         $titulo1    = __('Adicionar Cidade');
         $titulo2    = __('Salvar Cidade');
@@ -461,7 +461,7 @@ class locais_localidadesControle extends locais_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Cidades_Add2(){
+    public function Cidades_Add2() {
         $titulo     = __('Cidade Adicionada com Sucesso');
         $dao        = 'Sistema_Local_Cidade';
         $funcao     = '$this->Cidades();';
@@ -476,7 +476,7 @@ class locais_localidadesControle extends locais_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Cidades_Edit($id){
+    public function Cidades_Edit($id) {
         // Carrega Config
         $titulo1    = 'Editar Cidade (#'.$id.')';
         $titulo2    = __('Alteração de Cidade');
@@ -494,7 +494,7 @@ class locais_localidadesControle extends locais_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Cidades_Edit2($id){
+    public function Cidades_Edit2($id) {
         $titulo     = __('Cidade Editada com Sucesso');
         $dao        = Array('Sistema_Local_Cidade',$id);
         $funcao     = '$this->Cidades();';
@@ -510,7 +510,7 @@ class locais_localidadesControle extends locais_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Cidades_Del($id){
+    public function Cidades_Del($id) {
         
         
     	$id = (int) $id;
@@ -518,7 +518,7 @@ class locais_localidadesControle extends locais_Controle
         $setor = $this->_Modelo->db->Sql_Select('Sistema_Local_Cidade', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($setor);
         // Mensagem
-    	if ($sucesso===true){
+    	if ($sucesso===true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
@@ -543,11 +543,11 @@ class locais_localidadesControle extends locais_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Bairros(){
+    public function Bairros() {
         $i = 0;
         $this->_Visual->Blocar('<a title="Adicionar Bairro" class="btn btn-success lajax explicar-titulo" data-acao="" href="'.URL_PATH.'locais/localidades/Bairros_Add">Adicionar novo Bairro</a><div class="space15"></div>');
         $setores = $this->_Modelo->db->Sql_Select('Sistema_Local_Bairro');
-        if ($setores!==false && !empty($setores)){
+        if ($setores!==false && !empty($setores)) {
             if (is_object($setores)) $setores = Array(0=>$setores);
             reset($setores);
             foreach ($setores as $indice=>&$valor) {
@@ -572,7 +572,7 @@ class locais_localidadesControle extends locais_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Bairros_Add(){
+    public function Bairros_Add() {
         // Carrega Config
         $titulo1    = __('Adicionar Bairro');
         $titulo2    = __('Salvar Bairro');
@@ -589,7 +589,7 @@ class locais_localidadesControle extends locais_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Bairros_Add2(){
+    public function Bairros_Add2() {
         $titulo     = __('Bairro Adicionado com Sucesso');
         $dao        = 'Sistema_Local_Bairro';
         $funcao     = '$this->Bairros();';
@@ -604,7 +604,7 @@ class locais_localidadesControle extends locais_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Bairros_Edit($id){
+    public function Bairros_Edit($id) {
         // Carrega Config
         $titulo1    = 'Editar Bairro (#'.$id.')';
         $titulo2    = __('Alteração de Bairro');
@@ -622,7 +622,7 @@ class locais_localidadesControle extends locais_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Bairros_Edit2($id){
+    public function Bairros_Edit2($id) {
         $titulo     = __('Bairro Editado com Sucesso');
         $dao        = Array('Sistema_Local_Bairro',$id);
         $funcao     = '$this->Bairros();';
@@ -638,7 +638,7 @@ class locais_localidadesControle extends locais_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Bairros_Del($id){
+    public function Bairros_Del($id) {
         
         
     	$id = (int) $id;
@@ -646,7 +646,7 @@ class locais_localidadesControle extends locais_Controle
         $setor = $this->_Modelo->db->Sql_Select('Sistema_Local_Bairro', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($setor);
         // Mensagem
-    	if ($sucesso===true){
+    	if ($sucesso===true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),

@@ -1,5 +1,5 @@
 <?php
-$config_Modulo = function (){
+$config_Modulo = function () {
     return Array(
         'Nome'                      =>  'comercio_servicos',
         'Descrição'                 =>  '',
@@ -8,7 +8,7 @@ $config_Modulo = function (){
         'Dependencias'              =>  Array('comercio','usuario'),
     );
 };
-$config_Menu = function (){
+$config_Menu = function () {
     return Array(
         'Administrar'=>Array(
             'Filhos'                => Array(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_servicos_Titulo')=>Array(
@@ -52,7 +52,7 @@ $config_Menu = function (){
         )
     );
 };
-$config_Permissoes = function (){
+$config_Permissoes = function () {
     return Array(
         
         // SERVICOS
@@ -255,7 +255,7 @@ $config_Permissoes = function (){
  * 
  * @author Ricardo Sierra <web@ricardosierra.com.br>
  */
-$config_Funcional = function (){
+$config_Funcional = function () {
     return Array(
         'comercio_servicos_ServicoTipo' => Array(
             'Nome'                  => 'Serviços -> Tipo',
@@ -290,7 +290,7 @@ $config_Funcional = function (){
  * 
  * @author Ricardo Sierra <web@ricardosierra.com.br>
  */
-$config_Publico = function (){
+$config_Publico = function () {
     return Array(
         /*'{chave}'  => Array(
             'Nome'                  => 'Nome',

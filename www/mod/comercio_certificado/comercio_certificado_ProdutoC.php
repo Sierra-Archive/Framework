@@ -15,7 +15,7 @@ class comercio_certificado_ProdutoControle extends comercio_certificado_Controle
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    public function __construct(){
+    public function __construct() {
         parent::__construct();
     }
     /**
@@ -31,7 +31,7 @@ class comercio_certificado_ProdutoControle extends comercio_certificado_Controle
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    public function Main(){
+    public function Main() {
         ///$this->Propostas();
         $this->_Visual->Bloco_Customizavel(Array(
             Array(
@@ -67,11 +67,11 @@ class comercio_certificado_ProdutoControle extends comercio_certificado_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Produtos(){
+    public function Produtos() {
         $i = 0;
         $html = '<span id="prodaddmostrar" style="display: none;"><a title="Adicionar Produto" class="btn btn-success lajax explicar-titulo" data-acao="" href="'.URL_PATH.'comercio_certificado/Produto/Produtos_Add">Adicionar novo Produto</a><div class="space15"></div></span>';
         $produto = $this->_Modelo->db->Sql_Select('Comercio_Produto');
-        if ($produto!==false && !empty($produto)){
+        if ($produto!==false && !empty($produto)) {
             if (is_object($produto)) $produto = Array(0=>$produto);
             reset($produto);
             foreach ($produto as $indice=>&$valor) {
@@ -87,7 +87,7 @@ class comercio_certificado_ProdutoControle extends comercio_certificado_Controle
             return $html;
         }
     }
-    public static function Retirar_Nao_necessarios(&$campos){
+    public static function Retirar_Nao_necessarios(&$campos) {
         //comercio_ProdutoControle::Retirar_Nao_necessarios($campos);
         self::DAO_Campos_Retira($campos,'cod',0);
         self::DAO_Campos_Retira($campos,'marca',0);
@@ -101,7 +101,7 @@ class comercio_certificado_ProdutoControle extends comercio_certificado_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Produtos_Add($direto=false){
+    public function Produtos_Add($direto=false) {
         // Carrega campos e retira os que nao precisam
         $campos = Comercio_Produto_DAO::Get_Colunas();
         self::Retirar_Nao_necessarios($campos);
@@ -109,7 +109,7 @@ class comercio_certificado_ProdutoControle extends comercio_certificado_Controle
         $form = new \Framework\Classes\Form('form_Sistema_Admin_Produtos','comercio_certificado/Produto/Produtos_Add2/','formajax');
         \Framework\App\Controle::Gerador_Formulario($campos, $form);
         $formulario = $form->retorna_form('Cadastrar');
-        if ($direto===true){
+        if ($direto===true) {
             return $formulario;
         } else {
             // Json
@@ -135,7 +135,7 @@ class comercio_certificado_ProdutoControle extends comercio_certificado_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Produtos_Edit($id){
+    public function Produtos_Edit($id) {
         $id = (int) $id;
         // Carrega campos e retira os que nao precisam
         $campos = Comercio_Produto_DAO::Get_Colunas();
@@ -179,7 +179,7 @@ class comercio_certificado_ProdutoControle extends comercio_certificado_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Produtos_Add2(){
+    public function Produtos_Add2() {
         
         
         // Cria novo Produto
@@ -191,7 +191,7 @@ class comercio_certificado_ProdutoControle extends comercio_certificado_Controle
         $this->Main();  
         
         // Mostra Mensagem de Sucesso
-        if ($sucesso===true){
+        if ($sucesso===true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Inserção bem sucedida'),
@@ -216,7 +216,7 @@ class comercio_certificado_ProdutoControle extends comercio_certificado_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Produtos_Edit2($id){
+    public function Produtos_Edit2($id) {
         
         $id = (int) $id;
         // Puxa o produto, e altera seus valores, depois salva novamente
@@ -226,7 +226,7 @@ class comercio_certificado_ProdutoControle extends comercio_certificado_Controle
         // Atualiza
         $this->Main();
         // Mensagem
-        if ($sucesso===true){
+        if ($sucesso===true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Produto Alterado com Sucesso'),
@@ -253,7 +253,7 @@ class comercio_certificado_ProdutoControle extends comercio_certificado_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Produtos_Del($id){
+    public function Produtos_Del($id) {
         
         
     	$id = (int) $id;
@@ -261,7 +261,7 @@ class comercio_certificado_ProdutoControle extends comercio_certificado_Controle
         $produto = $this->_Modelo->db->Sql_Select('Comercio_Produto', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($produto);
         // Mensagem
-    	if ($sucesso===true){
+    	if ($sucesso===true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
@@ -281,7 +281,7 @@ class comercio_certificado_ProdutoControle extends comercio_certificado_Controle
         $this->_Visual->Json_Info_Update('Titulo', __('Produto deletado com Sucesso'));  
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
-    public function Auditorias($produtos=0){
+    public function Auditorias($produtos=0) {
         $auditorias = $this->_Modelo->db->Sql_Select(
                 'Comercio_Certificado_Auditoria', 
                 Array('idproduto'=>$produtos),0,'id'
@@ -290,13 +290,13 @@ class comercio_certificado_ProdutoControle extends comercio_certificado_Controle
         $botao = $this->_Visual->Tema_Elementos_Btn('Superior',Array('Add','#','return inputadd();'));
         $formulario = new \Framework\Classes\Form('Formulario_de_Auditorias','comercio_certificado/Produto/Auditorias_Modificar/'.$produtos,'formajax');
         $formulario->addtexto('<span id="Formulario_de_Auditorias_Input">');
-        if ($auditorias===false){
+        if ($auditorias===false) {
             $input = \Framework\App\Sistema_Funcoes::HTML_min($formulario->Input_Novo('Auditoria 1', 'auditoria[]', 0, 'text', 11, '','(Meses)'));
         } else {
             $i      = 0 ;
-            foreach($auditorias as $indice=>&$valor){
-                if ($valor->meses!='' && $valor->meses!=0 && $valor->meses!=NULL){
-                    if ($i==0){
+            foreach($auditorias as $indice=>&$valor) {
+                if ($valor->meses!='' && $valor->meses!=0 && $valor->meses!=NULL) {
+                    if ($i==0) {
                         $input = \Framework\App\Sistema_Funcoes::HTML_min($formulario->Input_Novo('Auditoria '.($i+1), 'auditoria[]', $valor->meses, 'text', 11, '','(Meses)'));
                         $input = str_replace(Array('value="4"'), Array('value="0"'), $input);
                     } else {
@@ -314,7 +314,7 @@ class comercio_certificado_ProdutoControle extends comercio_certificado_Controle
         $html = str_replace(Array('col-sm-12'), Array('col-sm-8'), $html);
         // HTML EXTRA PARA ADD CAMPOS EXTRAS
         $input = str_replace(Array('1:','col-sm-12'), Array('\'+quant+\':','col-sm-8'), $input);
-        $html =   $botao.$html.'<script> function inputadd(){'.
+        $html =   $botao.$html.'<script> function inputadd() {'.
                             'var quant = 1+$("#Formulario_de_Auditorias_Input input").size();'.
                             'if (quant>=10) $("#produtos_auditorias > .widget-body > .clearfix").hide();'.
                             '$(\'#Formulario_de_Auditorias_Input\').append( \''.$input.'\' );'.
@@ -323,7 +323,7 @@ class comercio_certificado_ProdutoControle extends comercio_certificado_Controle
         // Faz o Retorno
         return $html;
     }
-    public function Auditorias_Modificar($produtos=0){
+    public function Auditorias_Modificar($produtos=0) {
         
         if ($produtos==0) return false;
         #update
@@ -338,8 +338,8 @@ class comercio_certificado_ProdutoControle extends comercio_certificado_Controle
         if (!is_array($auditorias_post)) $auditorias_post = Array($auditorias_post);
         if (is_object($auditorias_sql))  $auditorias_sql  = Array($auditorias_sql );
         // Foreach, tira os que tiverem mes 0
-        foreach($auditorias_post as $valor){
-            if ($valor!=0 && $valor!=NULL && $valor!=''){
+        foreach($auditorias_post as $valor) {
+            if ($valor!=0 && $valor!=NULL && $valor!='') {
                 $valor = (int) $valor;
                 $auditorias_post2[$i] = $valor;
                 ++$i;
@@ -347,9 +347,9 @@ class comercio_certificado_ProdutoControle extends comercio_certificado_Controle
         }
         $auditorias_post = $auditorias_post2;
         $j = 0;
-        if ($auditorias_sql!==false && !empty($auditorias_sql)){
-            foreach($auditorias_sql as $valor){
-                if ($i>=$j){
+        if ($auditorias_sql!==false && !empty($auditorias_sql)) {
+            foreach($auditorias_sql as $valor) {
+                if ($i>=$j) {
                     $auditorias_sql[$j]->meses = $auditorias_post[$j];
                     $auditorias_sql[$j]->ordem = $j+1;
                     $sucesso =  $this->_Modelo->db->Sql_Update($auditorias_sql[$j]);
@@ -360,7 +360,7 @@ class comercio_certificado_ProdutoControle extends comercio_certificado_Controle
             }
         }
         // Cadastra os que faltaram
-        while($i>=$j){
+        while($i>=$j) {
             // Cria novo Origem
             $objeto                 = new Comercio_Certificado_Auditoria_DAO;
             $objeto->idproduto      = $produtos;
@@ -370,7 +370,7 @@ class comercio_certificado_ProdutoControle extends comercio_certificado_Controle
             ++$j;
         }
         // Mensagem
-    	if ($sucesso===true){
+    	if ($sucesso===true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Modificado'),

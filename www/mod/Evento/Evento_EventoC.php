@@ -1,13 +1,13 @@
 <?php
 class Evento_EventoControle extends Evento_Controle
 {
-    public function __construct(){
+    public function __construct() {
         parent::__construct();
     }
-    static function Endereco_Evento($true=true){
+    static function Endereco_Evento($true=true) {
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
-        if ($true===true){
+        if ($true===true) {
             $_Controle->Tema_Endereco(__('Eventos'),'Evento/Evento/Eventos');
         } else {
             $_Controle->Tema_Endereco(__('Eventos'));
@@ -26,11 +26,11 @@ class Evento_EventoControle extends Evento_Controle
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    public function Main(){
+    public function Main() {
         \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'Evento/Evento/Eventos');
         return false;
     }
-    static function Eventos_Tabela(&$eventos){
+    static function Eventos_Tabela(&$eventos) {
         $Registro   = &\Framework\App\Registro::getInstacia();
         $Visual     = &$Registro->_Visual;
         $tabela = Array();
@@ -48,7 +48,7 @@ class Evento_EventoControle extends Evento_Controle
             $tabela['Data Inicio'][$i]              =   $valor->data_inicio;
             $tabela['Data Fim'][$i]                 =   $valor->data_fim;
             $tabela['Data Registrado'][$i]          =   $valor->log_date_add;
-            if ($valor->status==1 || $valor->status=='1'){
+            if ($valor->status==1 || $valor->status=='1') {
                 $valor->status='1';
                 $texto = 'Ativado';
             } else {
@@ -59,7 +59,7 @@ class Evento_EventoControle extends Evento_Controle
             if ($perm_status)    $tabela['Funções'][$i]                   =   '<span id="status'.$valor->id.'">'.$Visual->Tema_Elementos_Btn('Status'.$valor->status     ,Array($texto        ,'Evento/Evento/Status/'.$valor->id.'/'    ,'')).'</span>';
             else                $tabela['Funções'][$i] = '';
             
-            if ($destaque==1){
+            if ($destaque==1) {
                 $destaque = 1;
                 $texto = __('Em Destaque');
             } else {
@@ -78,7 +78,7 @@ class Evento_EventoControle extends Evento_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Eventos($export=false){
+    public function Eventos($export=false) {
         $i = 0;
         self::Endereco_Evento(false);
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
@@ -95,10 +95,10 @@ class Evento_EventoControle extends Evento_Controle
             )
         )));
         $eventos = $this->_Modelo->db->Sql_Select('Evento');
-        if ($eventos!==false && !empty($eventos)){
+        if ($eventos!==false && !empty($eventos)) {
             list($tabela,$i) = self::Eventos_Tabela($eventos);
             // SE exportar ou mostra em tabela
-            if ($export!==false){
+            if ($export!==false) {
                 self::Export_Todos($export,$tabela, 'Eventos');
             } else {
                 $this->_Visual->Show_Tabela_DataTable(
@@ -115,7 +115,7 @@ class Evento_EventoControle extends Evento_Controle
             }
             unset($tabela);
         } else {
-            if ($export!==false){
+            if ($export!==false) {
                 $mensagem = __('Nenhum Evento para exportar');
             } else {
                 $mensagem = __('Nenhum Evento');
@@ -133,7 +133,7 @@ class Evento_EventoControle extends Evento_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Eventos_Add(){
+    public function Eventos_Add() {
         self::Endereco_Evento();
         // Carrega Config
         $titulo1    = __('Adicionar Evento');
@@ -151,7 +151,7 @@ class Evento_EventoControle extends Evento_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Eventos_Add2(){
+    public function Eventos_Add2() {
         $titulo     = __('Evento Adicionado com Sucesso');
         $dao        = 'Evento';
         $funcao     = '$this->Eventos();';
@@ -166,7 +166,7 @@ class Evento_EventoControle extends Evento_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Eventos_Edit($id){
+    public function Eventos_Edit($id) {
         // Chama o Endereco
         self::Endereco_Evento();
         
@@ -189,7 +189,7 @@ class Evento_EventoControle extends Evento_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Eventos_Edit2($id){
+    public function Eventos_Edit2($id) {
         $titulo     = __('Evento Editado com Sucesso');
         $dao        = Array('Evento',$id); // Nome do DAO , $identificador
         $funcao     = '$this->Eventos();'; // Funcao executada depois de editar e mandar mensagem pro usuario
@@ -205,7 +205,7 @@ class Evento_EventoControle extends Evento_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Eventos_Del($id){
+    public function Eventos_Del($id) {
         
         
     	$id = (int) $id;
@@ -215,7 +215,7 @@ class Evento_EventoControle extends Evento_Controle
         // Envia evento pro metodo deletar do sql, e grava boleano em variavel sucesso
         $sucesso =  $this->_Modelo->db->Sql_Delete($evento);
         // Mensagem
-    	if ($sucesso===true){
+    	if ($sucesso===true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
@@ -236,27 +236,27 @@ class Evento_EventoControle extends Evento_Controle
         // Bota pra nao gravar historico
         $this->_Visual->Json_Info_Update('Historico', false);
     }
-    public function Status($id=false){
-        if ($id===false){
+    public function Status($id=false) {
+        if ($id===false) {
             return _Sistema_erroControle::Erro_Fluxo('Evento não informado:'. $id,404);
         }
         // Pesquisa o evento no dao
         $resultado = $this->_Modelo->db->Sql_Select('Evento', Array('id'=>$id),1);
         // Caso falso, da erro 404
-        if ($resultado===false || !is_object($resultado)){
+        if ($resultado===false || !is_object($resultado)) {
             return _Sistema_erroControle::Erro_Fluxo('Esse Evento não existe:'. $id,404);
         }
         // Altera o Valor do Status
-        if ($resultado->status==1 || $resultado->status=='1'){
+        if ($resultado->status==1 || $resultado->status=='1') {
             $resultado->status='0';
         } else {
             $resultado->status='1';
         }
         // Faz Alteracao Update no MYSQL 
         $sucesso = $this->_Modelo->db->Sql_Update($resultado);
-        if ($sucesso){
+        if ($sucesso) {
             // CASO TENHA SUCESSO EXIBE TEXTO E MANDA PRO USUARIO NOVO FORMATO
-            if ($resultado->status==1 || $resultado->status=='1'){
+            if ($resultado->status==1 || $resultado->status=='1') {
                 $texto = __('Ativado');
             } else {
                 $texto = __('Desativado');
@@ -283,22 +283,22 @@ class Evento_EventoControle extends Evento_Controle
         }
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
-    public function Destaques($id=false){
-        if ($id===false){
+    public function Destaques($id=false) {
+        if ($id===false) {
             return false;
         }
         $resultado = $this->_Modelo->db->Sql_Select('Evento', Array('id'=>$id),1);
-        if ($resultado===false || !is_object($resultado)){
+        if ($resultado===false || !is_object($resultado)) {
             return false;
         }
-        if ($resultado->destaque==1 || $resultado->destaque=='1'){
+        if ($resultado->destaque==1 || $resultado->destaque=='1') {
             $resultado->destaque='0';
         } else {
             $resultado->destaque='1';
         }
         $sucesso = $this->_Modelo->db->Sql_Update($resultado);
-        if ($sucesso){
-            if ($resultado->destaque==1){
+        if ($sucesso) {
+            if ($resultado->destaque==1) {
                 $texto = __('Em destaque');
             } else {
                 $texto = __('Não está em destaque');

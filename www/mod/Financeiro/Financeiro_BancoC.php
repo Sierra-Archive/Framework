@@ -15,7 +15,7 @@ class Financeiro_BancoControle extends Financeiro_Controle
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    public function __construct(){
+    public function __construct() {
         parent::__construct();
     }
     /**
@@ -31,7 +31,7 @@ class Financeiro_BancoControle extends Financeiro_Controle
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    public function Main(){
+    public function Main() {
         \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'Financeiro/Banco/Bancos');
         return false;
     }
@@ -40,7 +40,7 @@ class Financeiro_BancoControle extends Financeiro_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Bancos(){
+    public function Bancos() {
         $i = 0;
         // add botao
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
@@ -57,7 +57,7 @@ class Financeiro_BancoControle extends Financeiro_Controle
             )
         )));
         $linhas = $this->_Modelo->db->Sql_Select('Financeiro_Banco');
-        if ($linhas!==false && !empty($linhas)){
+        if ($linhas!==false && !empty($linhas)) {
             if (is_object($linhas)) $linhas = Array(0=>$linhas);
             reset($linhas);
             foreach ($linhas as $indice=>&$valor) {
@@ -84,7 +84,7 @@ class Financeiro_BancoControle extends Financeiro_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Bancos_Add(){
+    public function Bancos_Add() {
         // Carrega Config
         $titulo1    = __('Adicionar Banco');
         $titulo2    = __('Salvar Banco');
@@ -101,7 +101,7 @@ class Financeiro_BancoControle extends Financeiro_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Bancos_Add2(){
+    public function Bancos_Add2() {
         $titulo     = __('Banco Adicionado com Sucesso');
         $dao        = 'Financeiro_Banco';
         $funcao     = '$this->Bancos();';
@@ -116,7 +116,7 @@ class Financeiro_BancoControle extends Financeiro_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Bancos_Edit($id){
+    public function Bancos_Edit($id) {
         // Carrega Config
         $titulo1    = 'Editar Banco (#'.$id.')';
         $titulo2    = __('Alteração de Banco');
@@ -134,7 +134,7 @@ class Financeiro_BancoControle extends Financeiro_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Bancos_Edit2($id){
+    public function Bancos_Edit2($id) {
         $titulo     = __('Banco Editado com Sucesso');
         $dao        = Array('Financeiro_Banco',$id);
         $funcao     = '$this->Bancos();';
@@ -150,7 +150,7 @@ class Financeiro_BancoControle extends Financeiro_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Bancos_Del($id){
+    public function Bancos_Del($id) {
         
         
     	$id = (int) $id;
@@ -158,7 +158,7 @@ class Financeiro_BancoControle extends Financeiro_Controle
         $linha = $this->_Modelo->db->Sql_Select('Financeiro_Banco', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($linha);
         // Mensagem
-    	if ($sucesso===true){
+    	if ($sucesso===true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),

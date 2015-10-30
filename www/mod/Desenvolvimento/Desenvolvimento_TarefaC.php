@@ -15,11 +15,11 @@ class Desenvolvimento_TarefaControle extends Desenvolvimento_Controle
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    public function __construct(){
+    public function __construct() {
         parent::__construct();
     }
-    protected function Endereco_Tarefa($true=true){
-        if ($true===true){
+    protected function Endereco_Tarefa($true=true) {
+        if ($true===true) {
             $this->Tema_Endereco(__('Tarefas'),'Desenvolvimento/Tarefa/Tarefas');
         } else {
             $this->Tema_Endereco(__('Tarefas'));
@@ -38,10 +38,10 @@ class Desenvolvimento_TarefaControle extends Desenvolvimento_Controle
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    public function Main(){
+    public function Main() {
         return false;
     }
-    static function Tarefas_Tabela($tarefas){
+    static function Tarefas_Tabela($tarefas) {
         $Registro   = &\Framework\App\Registro::getInstacia();
         $Visual     = &$Registro->_Visual;
         $tabela = Array();
@@ -68,7 +68,7 @@ class Desenvolvimento_TarefaControle extends Desenvolvimento_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Tarefas($export=false){
+    public function Tarefas($export=false) {
         $this->Endereco_Tarefa(false);
         $i = 0;
         // Add BOtao
@@ -87,9 +87,9 @@ class Desenvolvimento_TarefaControle extends Desenvolvimento_Controle
         )));
         // Query
         $tarefas = $this->_Modelo->db->Sql_Select('Desenvolvimento_Projeto_Tarefa');
-        if ($tarefas!==false && !empty($tarefas)){
+        if ($tarefas!==false && !empty($tarefas)) {
             list($tabela,$i) = self::Tarefas_Tabela($tarefas);
-            if ($export!==false){
+            if ($export!==false) {
                 self::Export_Todos($export,$tabela, 'Tarefas');
             } else {
                 $this->_Visual->Show_Tabela_DataTable(
@@ -119,7 +119,7 @@ class Desenvolvimento_TarefaControle extends Desenvolvimento_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Tarefas_Add(){
+    public function Tarefas_Add() {
         $this->Endereco_Tarefa();
         // Carrega Config
         $titulo1    = __('Adicionar Tarefa');
@@ -137,7 +137,7 @@ class Desenvolvimento_TarefaControle extends Desenvolvimento_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Tarefas_Add2(){
+    public function Tarefas_Add2() {
         $titulo     = __('Tarefa Adicionada com Sucesso');
         $dao        = 'Desenvolvimento_Projeto_Tarefa';
         $funcao     = '$this->Tarefas();';
@@ -152,7 +152,7 @@ class Desenvolvimento_TarefaControle extends Desenvolvimento_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Tarefas_Edit($id){
+    public function Tarefas_Edit($id) {
         $this->Endereco_Tarefa();
         // Carrega Config
         $titulo1    = 'Editar Tarefa (#'.$id.')';
@@ -171,7 +171,7 @@ class Desenvolvimento_TarefaControle extends Desenvolvimento_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Tarefas_Edit2($id){
+    public function Tarefas_Edit2($id) {
         $titulo     = __('Tarefa Editada com Sucesso');
         $dao        = Array('Desenvolvimento_Projeto_Tarefa',$id);
         $funcao     = '$this->Tarefas();';
@@ -187,7 +187,7 @@ class Desenvolvimento_TarefaControle extends Desenvolvimento_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Tarefas_Del($id){
+    public function Tarefas_Del($id) {
         
         
     	$id = (int) $id;
@@ -195,7 +195,7 @@ class Desenvolvimento_TarefaControle extends Desenvolvimento_Controle
         $linha = $this->_Modelo->db->Sql_Select('Desenvolvimento_Projeto_Tarefa', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($linha);
         // Mensagem
-    	if ($sucesso===true){
+    	if ($sucesso===true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),

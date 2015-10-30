@@ -2,15 +2,15 @@
 
 class Transporte_ArmazemControle extends Transporte_Controle
 {
-    public function __construct(){
+    public function __construct() {
         parent::__construct();
     }
-    static function Endereco_Armazem($true=true){
+    static function Endereco_Armazem($true=true) {
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
         $titulo = __('Armazens');
         $link = 'Transporte/Armazem/Armazens';
-        if ($true===true){
+        if ($true===true) {
             $_Controle->Tema_Endereco($titulo,$link);
         } else {
             $_Controle->Tema_Endereco($titulo);
@@ -21,11 +21,11 @@ class Transporte_ArmazemControle extends Transporte_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Main(){
+    public function Main() {
         \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'Transporte/Armazem/Armazens');
         return false;
     }
-    static function Armazens_Tabela(&$armazem){
+    static function Armazens_Tabela(&$armazem) {
         $Registro   = &\Framework\App\Registro::getInstacia();
         $Visual     = &$Registro->_Visual;
         $tabela = Array();
@@ -43,7 +43,7 @@ class Transporte_ArmazemControle extends Transporte_Controle
         }
         return Array($tabela,$i);
     }
-    public function Visualizar($id,$export=false){
+    public function Visualizar($id,$export=false) {
         
         
         $armazem = $this->_Modelo->db->Sql_Select('Transporte_Armazem','TA.id=\''.((int) $id).'\'',1);
@@ -57,15 +57,15 @@ class Transporte_ArmazemControle extends Transporte_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Armazens($export=false){
+    public function Armazens($export=false) {
         $i = 0;
         self::Endereco_Armazem(false);
         $armazem = $this->_Modelo->db->Sql_Select('Transporte_Armazem');
         if (is_object($armazem)) $armazem = Array(0=>$armazem);
-        if ($armazem!==false && !empty($armazem)){
+        if ($armazem!==false && !empty($armazem)) {
             list($tabela,$i) = self::Armazens_Tabela($armazem);
             // SE exportar ou mostra em tabela
-            if ($export!==false){
+            if ($export!==false) {
                 self::Export_Todos($export,$tabela, 'Armazens');
             } else {
                 $this->_Visual->Show_Tabela_DataTable(
@@ -82,7 +82,7 @@ class Transporte_ArmazemControle extends Transporte_Controle
             }
             unset($tabela);
         } else {
-            if ($export!==false){
+            if ($export!==false) {
                 $mensagem = __('Nenhum Armazém Cadastrado para exportar');
             } else {
                 $mensagem = __('Nenhum Armazém Cadastrado');
@@ -99,27 +99,27 @@ class Transporte_ArmazemControle extends Transporte_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Painel(){
+    public function Painel() {
         return true;
     }
-    static function Painel_Armazem($camada,$retornar=true){
+    static function Painel_Armazem($camada,$retornar=true) {
         $existe = false;
         if ($retornar==='false') $retornar = false;
         // Verifica se Existe Conexao, se nao tiver abre o adicionar conexao, se nao, abre a pasta!
         $Registro = &\Framework\App\Registro::getInstacia();
         $resultado = $Registro->_Modelo->db->Sql_Select('Transporte_Armazem','{sigla}usuario=\''.$Registro->_Acl->Usuario_GetID().'\'',1);
-        if (is_object($resultado)){
+        if (is_object($resultado)) {
             $existe = true;
         }
         
         // Dependendo se Existir Cria Formulario ou Lista arquivos
-        if ($existe===false){
+        if ($existe===false) {
             $html = '<b>Ainda faltam insformações sobre o seu Armazém</b><br>'.self::Painel_Armazem_Add($camada);
         } else {
             $html = __('Painel');
         }
         
-        if ($retornar===true){
+        if ($retornar===true) {
             return $html;
         } else {
             $conteudo = array(
@@ -157,7 +157,7 @@ class Transporte_ArmazemControle extends Transporte_Controle
                 ));*/
         return true;
     }
-    static protected function Painel_Armazem_Add($camada){
+    static protected function Painel_Armazem_Add($camada) {
         // Carrega Config
         $titulo1    = __('Salvar Dados');
         $titulo2    = __('Salvar Dados');
@@ -170,9 +170,9 @@ class Transporte_ArmazemControle extends Transporte_Controle
         // Chama Formulario
        return \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos,false,'html',false);
     }
-    public function Painel_Armazem_Add2($camada){
+    public function Painel_Armazem_Add2($camada) {
         $resultado = $this->_Modelo->db->Sql_Select('Transporte_Armazem','{sigla}usuario=\''.$this->_Acl->Usuario_GetID().'\'',1);
-        if (is_object($resultado)){
+        if (is_object($resultado)) {
             self::Painel_Armazem($camada,false);
             return true;
         }

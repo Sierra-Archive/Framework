@@ -15,7 +15,7 @@ class Engenharia_EquipamentoControle extends Engenharia_Controle
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    public function __construct(){
+    public function __construct() {
         parent::__construct();
     }
     /**
@@ -31,12 +31,12 @@ class Engenharia_EquipamentoControle extends Engenharia_Controle
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    public function Main(){
+    public function Main() {
         \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'Engenharia/Equipamento/Equipamentos');
         return false;
     }
-    protected function Endereco_Equipamento($true=true){
-        if ($true===true){
+    protected function Endereco_Equipamento($true=true) {
+        if ($true===true) {
             $this->Tema_Endereco(__('Equipamentos'),'Engenharia/Equipamento/Equipamentos');
         } else {
             $this->Tema_Endereco(__('Equipamentos'));
@@ -47,7 +47,7 @@ class Engenharia_EquipamentoControle extends Engenharia_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Equipamentos(){
+    public function Equipamentos() {
         $this->Endereco_Equipamento(false);
         $i = 0;
         // Botao Add
@@ -66,7 +66,7 @@ class Engenharia_EquipamentoControle extends Engenharia_Controle
         )));
         // Conexao
         $equipamentos = $this->_Modelo->db->Sql_Select('Engenharia_Equipamento');
-        if ($equipamentos!==false && !empty($equipamentos)){
+        if ($equipamentos!==false && !empty($equipamentos)) {
             if (is_object($equipamentos)) $equipamentos = Array(0=>$equipamentos);
             reset($equipamentos);
             foreach ($equipamentos as $indice=>&$valor) {
@@ -95,7 +95,7 @@ class Engenharia_EquipamentoControle extends Engenharia_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Equipamentos_Add(){  
+    public function Equipamentos_Add() {  
         $this->Endereco_Equipamento();      
         // Carrega Config
         $titulo1    = __('Adicionar Equipamento');
@@ -112,7 +112,7 @@ class Engenharia_EquipamentoControle extends Engenharia_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Equipamentos_Add2(){
+    public function Equipamentos_Add2() {
         $titulo     = __('Equipamento Adicionado com Sucesso');
         $dao        = 'Engenharia_Equipamento';
         $funcao     = '$this->Equipamentos();';
@@ -127,7 +127,7 @@ class Engenharia_EquipamentoControle extends Engenharia_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Equipamentos_Edit($id){
+    public function Equipamentos_Edit($id) {
         $this->Endereco_Equipamento();      
         // Carrega Config
         $titulo1    = 'Editar Equipamento (#'.$id.')';
@@ -145,7 +145,7 @@ class Engenharia_EquipamentoControle extends Engenharia_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Equipamentos_Edit2($id){
+    public function Equipamentos_Edit2($id) {
         $titulo     = __('Equipamento Editado com Sucesso');
         $dao        = Array('Engenharia_Equipamento',$id);
         $funcao     = '$this->Equipamentos();';
@@ -161,7 +161,7 @@ class Engenharia_EquipamentoControle extends Engenharia_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Equipamentos_Del($id){
+    public function Equipamentos_Del($id) {
         
         
     	$id = (int) $id;
@@ -169,7 +169,7 @@ class Engenharia_EquipamentoControle extends Engenharia_Controle
         $equipamento = $this->_Modelo->db->Sql_Select('Engenharia_Equipamento', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($equipamento);
         // Mensagem
-    	if ($sucesso===true){
+    	if ($sucesso===true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),

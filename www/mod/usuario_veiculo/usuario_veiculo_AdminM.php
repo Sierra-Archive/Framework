@@ -14,7 +14,7 @@ class usuario_veiculo_AdminModelo extends usuario_veiculo_Modelo
      * @version 0.4.2
      * 
      */
-    public function __construct(){
+    public function __construct() {
       parent::__construct();
     }
     /**
@@ -25,7 +25,7 @@ class usuario_veiculo_AdminModelo extends usuario_veiculo_Modelo
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function veiculos_Del($id){
+    public function veiculos_Del($id) {
 
         $this->db->query('UPDATE '.MYSQL_USUARIO_VEICULO.' SET deletado=1 WHERE deletado!=1 AND id='.$id);
         
@@ -53,11 +53,11 @@ class usuario_veiculo_AdminModelo extends usuario_veiculo_Modelo
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function veiculos_inserir($categoria,$ano,$modelo,$marca,$cc,$valor1,$valor2,$valor3,$franquia,$obs){
+    public function veiculos_inserir($categoria,$ano,$modelo,$marca,$cc,$valor1,$valor2,$valor3,$franquia,$obs) {
         global $config;
 
         // verifica se contem subcategoria
-        if(stripos($categoria, '-')){
+        if(stripos($categoria, '-')) {
             $categoria = explode('-',$categoria);
             $subcat = $categoria[1];
             $categoria = $categoria[0];
@@ -84,11 +84,11 @@ class usuario_veiculo_AdminModelo extends usuario_veiculo_Modelo
      * @param type $obs
      * @return int
      */
-    public function veiculos_alterar($id,$categoria,$ano,$modelo,$marca,$cc,$valor1,$valor2,$valor3,$franquia,$obs){
+    public function veiculos_alterar($id,$categoria,$ano,$modelo,$marca,$cc,$valor1,$valor2,$valor3,$franquia,$obs) {
         global $config;
 
         // verifica se contem subcategoria
-        if(stripos($categoria, '-')){
+        if(stripos($categoria, '-')) {
             $categoria = explode('-',$categoria);
             $subcat = $categoria[1];
             $categoria = $categoria[0];
@@ -99,7 +99,7 @@ class usuario_veiculo_AdminModelo extends usuario_veiculo_Modelo
         
         return 1;
     }
-    public function Veiculos_Upload_Alterar($id,$ext){
+    public function Veiculos_Upload_Alterar($id,$ext) {
         $id = (int) $id;
         if(!isset($id) || !is_int($id) || $id==0) return 0;
         $this->db->query('UPDATE '.MYSQL_USUARIO_VEICULO.' SET foto=\''.$ext.'\' WHERE deletado!=1 AND id='.$id);
@@ -122,7 +122,7 @@ class usuario_veiculo_AdminModelo extends usuario_veiculo_Modelo
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function marcas_inserir($nome){
+    public function marcas_inserir($nome) {
         global $config;
 
         $this->db->query('INSERT INTO '.MYSQL_USUARIO_VEICULO_MARCAS.' (nome,criacao_user,criacao_data) VALUES (\''.$nome.'\',\''.\Framework\App\Acl::Usuario_GetID_Static().'\',\''.APP_HORA.'\')');

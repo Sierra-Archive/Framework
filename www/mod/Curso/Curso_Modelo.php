@@ -12,10 +12,10 @@ class Curso_Modelo extends \Framework\App\Modelo
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    public function __construct(){
+    public function __construct() {
         parent::__construct();
     }
-    static function Financeiro_Motivo_Exibir($motivoid){
+    static function Financeiro_Motivo_Exibir($motivoid) {
         $motivoid = (int) $motivoid;
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Modelo = &$Registro->_Modelo;

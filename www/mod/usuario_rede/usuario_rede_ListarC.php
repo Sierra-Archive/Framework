@@ -15,7 +15,7 @@ class usuario_rede_ListarControle extends usuario_rede_Controle
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    public function __construct(){
+    public function __construct() {
         // construct
         parent::__construct();
     }
@@ -35,8 +35,8 @@ class usuario_rede_ListarControle extends usuario_rede_Controle
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    public function Main(){
-        if($this->_Acl->Usuario_GetID()!==0){
+    public function Main() {
+        if($this->_Acl->Usuario_GetID()!==0) {
             // CARREGA ATIVIDADES
             $redes = $this->_Modelo->Indicados_Retorna($this->_Acl->Usuario_GetID());
             //$this->_Visual->Blocar($this->_Visual->Show_RedeIndicados($redes));  
@@ -55,7 +55,7 @@ class usuario_rede_ListarControle extends usuario_rede_Controle
             $this->_Visual->Json_Info_Update('Titulo', __('Rede'));
         }
     }
-    public function Carrega_Indicados($id,$nivel){
+    public function Carrega_Indicados($id,$nivel) {
         $usuarioid = (int) $id;
         $nivel = \Framework\App\Conexao::anti_injection($nivel);
         

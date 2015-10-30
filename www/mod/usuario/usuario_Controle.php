@@ -12,18 +12,18 @@ class usuario_Controle extends \Framework\App\Controle
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    public function __construct(){
+    public function __construct() {
         // construct
         parent::__construct();
     }
     
-    static function Usuarios_Tabela(&$usuarios,$nomedisplay_sing,$linkextra, $grupo=false, $url_ver='usuario/Perfil/Perfil_Show', $url_editar='usuario/Admin/Usuarios_Edit', $url_deletar='usuario/Admin/Usuarios_Del'){
+    static function Usuarios_Tabela(&$usuarios,$nomedisplay_sing,$linkextra, $grupo=false, $url_ver='usuario/Perfil/Perfil_Show', $url_editar='usuario/Admin/Usuarios_Edit', $url_deletar='usuario/Admin/Usuarios_Del') {
         $Registro   = &\Framework\App\Registro::getInstacia();
         $Modelo     = &$Registro->_Modelo;
         $Visual     = &$Registro->_Visual;
         $tabela = Array();
         $i = 0;
-        if (is_object($usuarios)){
+        if (is_object($usuarios)) {
             $usuarios = Array(0=>$usuarios);
         }
         reset($usuarios);
@@ -46,35 +46,35 @@ class usuario_Controle extends \Framework\App\Controle
         
         // Verifica Grupo
         $Ativado_Grupo = false;
-        if (is_array($usuario_Admin_Grupo)){
-            if ($grupo===false || (is_array($grupo) && in_array($grupo[0], $usuario_Admin_Grupo))){
+        if (is_array($usuario_Admin_Grupo)) {
+            if ($grupo===false || (is_array($grupo) && in_array($grupo[0], $usuario_Admin_Grupo))) {
                 $Ativado_Grupo = true;
             }
         } else {
-            if ($usuario_Admin_Grupo===true){
+            if ($usuario_Admin_Grupo===true) {
                 $Ativado_Grupo = true;
             }
         }
         
         // Verifica foto
         $Ativado_Foto = false;
-        if (is_array($usuario_Admin_Foto)){
-            if ($grupo===false || (is_array($grupo) && in_array($grupo[0], $usuario_Admin_Foto))){
+        if (is_array($usuario_Admin_Foto)) {
+            if ($grupo===false || (is_array($grupo) && in_array($grupo[0], $usuario_Admin_Foto))) {
                 $Ativado_Foto = true;
             }
         } else {
-            if ($usuario_Admin_Foto===true){
+            if ($usuario_Admin_Foto===true) {
                 $Ativado_Foto = true;
             }
         }
         // Faz Looping Escrevendo Tabelas
         foreach ($usuarios as &$valor) {
             $tabela['Id'][$i]         = $valor->id;
-            if ($Ativado_Grupo===true){
+            if ($Ativado_Grupo===true) {
                 $tabela['Grupo'][$i]      = $valor->grupo2;
             }
-            if ($Ativado_Foto===true){
-                if ($valor->foto==='' || $valor->foto===false){
+            if ($Ativado_Foto===true) {
+                if ($valor->foto==='' || $valor->foto===false) {
                     $foto = WEB_URL.'img'.US.'icons'.US.'clientes.png';
                 } else {
                     $foto = $valor->foto;
@@ -84,51 +84,51 @@ class usuario_Controle extends \Framework\App\Controle
             //$tabela['#Id'][$i]               = '#'.$valor->id;
             $nome = '';
             // Atualiza Nome
-            if ($valor->nome!=''){
+            if ($valor->nome!='') {
                 $nome .= $valor->nome;
             }
             // Atualiza Razao Social
-            if ($valor->razao_social!=''){
+            if ($valor->razao_social!='') {
                 if ($nome!='') $nome .= '<br>';
                 $nome .= $valor->razao_social;
             }
             // Se tiver Mensagens
-            if (\Framework\App\Sistema_Funcoes::Perm_Modulos('usuario_mensagem')){
+            if (\Framework\App\Sistema_Funcoes::Perm_Modulos('usuario_mensagem')) {
                 $nome = '<a href="'.URL_PATH.'usuario_mensagem/Suporte/Mostrar_Cliente/'.$valor->id.'/">'.$nome.' ('.usuario_mensagem_SuporteModelo::Suporte_MensagensCliente_Qnt($valor->id).')</a>';
             }
             // Mostra Nome
             $tabela['Nome'][$i]             = $nome;
             $telefone = '';
-            if ($valor->telefone!=''){
+            if ($valor->telefone!='') {
                 $telefone .= $valor->telefone;
             }
-            if ($valor->telefone2!=''){
+            if ($valor->telefone2!='') {
                 if ($telefone!='') $telefone .= '<br>';
                 $telefone .= $valor->telefone1;
             }
-            if ($valor->celular!=''){
+            if ($valor->celular!='') {
                 if ($telefone!='') $telefone .= '<br>';
                 $telefone .= $valor->celular;
             }
-            if ($valor->celular1!=''){
+            if ($valor->celular1!='') {
                 if ($telefone!='') $telefone .= '<br>';
                 $telefone .= $valor->celular1;
             }
-            if ($valor->celular2!=''){
+            if ($valor->celular2!='') {
                 if ($telefone!='') $telefone .= '<br>';
                 $telefone .= $valor->celular2;
             }
-            if ($valor->celular3!=''){
+            if ($valor->celular3!='') {
                 if ($telefone!='') $telefone .= '<br>';
                 $telefone .= $valor->celular3;
             }
 
             $tabela['Contato'][$i]         = $telefone;
             $email = '';
-            if ($valor->email!=''){
+            if ($valor->email!='') {
                 $email .= $valor->email;
             }
-            if ($valor->email2!=''){
+            if ($valor->email2!='') {
                 if ($email!='') $email .= '<br>';
                 $email .= $valor->email2;
             }
@@ -138,12 +138,12 @@ class usuario_Controle extends \Framework\App\Controle
             //$tabela['Nivel de Usuário'][$i] = $niveluser;
             //$tabela['Nivel de Admin'][$i]   = $niveladmin;
             // para MOdulos que contem banco
-            if (\Framework\App\Sistema_Funcoes::Perm_Modulos('Financeiro') && $Financeiro_User_Saldo){
+            if (\Framework\App\Sistema_Funcoes::Perm_Modulos('Financeiro') && $Financeiro_User_Saldo) {
                 $tabela['Saldo'][$i]        = Financeiro_Modelo::Carregar_Saldo($Modelo, $valor->id, true);
             }
             // Funcoes
 
-            if (strpos($valor->log_date_add, APP_DATA_BR)!==false){
+            if (strpos($valor->log_date_add, APP_DATA_BR)!==false) {
                 $data_add = '<b>'.$valor->log_date_add.'</b>';
             } else {
                 $data_add = $valor->log_date_add;
@@ -157,7 +157,7 @@ class usuario_Controle extends \Framework\App\Controle
 
 
             // Financeiro Especifico
-            /*if (\Framework\App\Sistema_Funcoes::Perm_Modulos('Financeiro') && $Financeiro_User_Saldo){
+            /*if (\Framework\App\Sistema_Funcoes::Perm_Modulos('Financeiro') && $Financeiro_User_Saldo) {
                 $tabela['Funções'][$i]     .=   '<a data-confirma="O '.$nomedisplay_sing.' realizou um deposito para a empresa?" title="Add quantia ao Saldo do '.$nomedisplay_sing.'" class="btn lajax explicar-titulo" data-acao="" href="'.URL_PATH.'Financeiro/Admin/financeiro_deposito/'.$valor->id.$linkextra.'"><img src="'.WEB_URL.'img/icons/cifrao_16x16.png" alt="Depositar"></a>'.
                                                 '<a data-confirma="O '.$nomedisplay_sing.' confirmou o saque?" title="Remover Quantia do Saldo do '.$nomedisplay_sing.'" class="btn lajax explicar-titulo" data-acao="" href="'.URL_PATH.'Financeiro/Admin/financeiro_retirar/'.$valor->id.$linkextra.'"><img src="'.WEB_URL.'img/icons/cifrao_16x16.png" alt="Retirar"></a>';
                 $funcoes_qnt = 3;
@@ -166,8 +166,8 @@ class usuario_Controle extends \Framework\App\Controle
             
             
             // Comentario de Usuario
-            if (\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Comentarios')){
-                if ($funcoes_qnt>2){
+            if (\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Comentarios')) {
+                if ($funcoes_qnt>2) {
                     $tabela['Funções'][$i]     .=   '<br>';
                     $funcoes_qnt = 0;
                 }
@@ -175,8 +175,8 @@ class usuario_Controle extends \Framework\App\Controle
                 $tabela['Funções'][$i]     .=   $Visual->Tema_Elementos_Btn('Personalizado'   ,Array('Histórico'    ,'usuario/Admin/Usuarios_Comentario/'.$valor->id.$linkextra    ,'','file','inverse'),$perm_comentario);
             }
             // Anexo de Usuario
-            if (\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Anexo')){
-                if ($funcoes_qnt>2){
+            if (\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Anexo')) {
+                if ($funcoes_qnt>2) {
                     $tabela['Funções'][$i]     .=   '<br>';
                     $funcoes_qnt = 0;
                 }
@@ -184,8 +184,8 @@ class usuario_Controle extends \Framework\App\Controle
                 $tabela['Funções'][$i]     .=   $Visual->Tema_Elementos_Btn('Personalizado'   ,Array('Anexos'    ,'usuario/Anexo/Anexar/'.$valor->id.$linkextra    ,'','file','inverse'),$perm_anexo);
             }
             // Email para Usuario
-            if (\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Admin_Email')){
-                if ($funcoes_qnt>2){
+            if (\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Admin_Email')) {
+                if ($funcoes_qnt>2) {
                     $tabela['Funções'][$i]     .=   '<br>';
                     $funcoes_qnt = 0;
                 }
@@ -193,8 +193,8 @@ class usuario_Controle extends \Framework\App\Controle
                 $tabela['Funções'][$i]     .=   $Visual->Tema_Elementos_Btn('Email'      ,Array('Enviar email para '.$nomedisplay_sing        ,'usuario/Admin/Usuarios_Email/'.$valor->id.$linkextra    ,''),$perm_email);
             }
             // Email para Setor
-            if (\Framework\App\Sistema_Funcoes::Perm_Modulos('usuario_mensagem') && $usuario_mensagem_EmailSetor){
-                if ($funcoes_qnt>2){
+            if (\Framework\App\Sistema_Funcoes::Perm_Modulos('usuario_mensagem') && $usuario_mensagem_EmailSetor) {
+                if ($funcoes_qnt>2) {
                     $tabela['Funções'][$i]     .=   '<br>';
                     $funcoes_qnt = 0;
                 }
@@ -202,22 +202,22 @@ class usuario_Controle extends \Framework\App\Controle
                 $tabela['Funções'][$i]     .=   $Visual->Tema_Elementos_Btn('Personalizado'   ,Array('Enviar email para Setor'    ,'usuario/Admin/Usuarios_Email/'.$valor->id.$linkextra.'/Setor/'    ,'','envelope','danger'),$perm_email);
             }
             // Verifica se Possue Status e Mostra
-            if ($usuario_Admin_Ativado_Listar!==false){
-                if ($valor->ativado===1 || $valor->ativado==='1'){
+            if ($usuario_Admin_Ativado_Listar!==false) {
+                if ($valor->ativado===1 || $valor->ativado==='1') {
                     $texto = $usuario_Admin_Ativado_Listar[1];
                     $valor->ativado='1';
                 } else {
                     $valor->ativado = '0';
                     $texto = $usuario_Admin_Ativado_Listar[0];
                 }
-                if ($funcoes_qnt>2){
+                if ($funcoes_qnt>2) {
                     $tabela['Funções'][$i]     .=   '<br>';
                     $funcoes_qnt = 0;
                 }
                 ++$funcoes_qnt;
                 $tabela['Funções'][$i]     .=   '<span id="status'.$valor->id.'">'.$Visual->Tema_Elementos_Btn('Status'.$valor->ativado     ,Array($texto        ,'usuario/Admin/Status/'.$valor->id.'/'    ,''),$perm_status).'</span>';
             }
-            if ($funcoes_qnt>2){
+            if ($funcoes_qnt>2) {
                 $tabela['Funções'][$i]     .=   '<br>';
                 $funcoes_qnt = 0;
             }
@@ -252,16 +252,16 @@ class usuario_Controle extends \Framework\App\Controle
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
      */
-    protected function usuariolistar($grupo=false,$ativado=false,$gravidade=0,$inverter=false,$export=false){
+    protected function usuariolistar($grupo=false,$ativado=false,$gravidade=0,$inverter=false,$export=false) {
         $i = 0;
-        if ($grupo===false){
+        if ($grupo===false) {
             $categoria = 0;
-            if ($inverter){
+            if ($inverter) {
                 $where = 'ativado!='.$ativado;
             } else {
                 $where = 'ativado='.$ativado;
             }
-            if ($ativado===false){
+            if ($ativado===false) {
                 $where = '';
             }
             $nomedisplay        = __('Usuários ');
@@ -276,7 +276,7 @@ class usuario_Controle extends \Framework\App\Controle
             $sql_grupos = $this->_Modelo->db->Sql_Select('Sistema_Grupo','categoria='.$categoria,0,'','id');
             $grupos_id = Array();
             if (is_object($sql_grupos)) $sql_grupos = Array(0=>$sql_grupos);
-            if ($sql_grupos!==false && !empty($sql_grupos)){
+            if ($sql_grupos!==false && !empty($sql_grupos)) {
                 foreach ($sql_grupos as &$valor) {
                     $grupos_id[] = $valor->id;
                 }
@@ -285,13 +285,13 @@ class usuario_Controle extends \Framework\App\Controle
             if (empty($grupos_id)) return _Sistema_erroControle::Erro_Fluxo('Grupos não existe',404);
             
             // cria where de acordo com parametros
-            if ($inverter){
+            if ($inverter) {
                 $where = 'grupo NOT IN ('.implode(',',$grupos_id).') AND ativado='.$ativado;
             } else {
                 $where = 'grupo IN ('.implode(',',$grupos_id).') AND ativado='.$ativado;
             }
             
-            if ($ativado===false){
+            if ($ativado===false) {
                 $where = explode(' AND ', $where);
                 $where = $where[0];
             }
@@ -304,14 +304,14 @@ class usuario_Controle extends \Framework\App\Controle
         }
         
         $linkextra = '';
-        if ($grupo!==false && $grupo[0]==CFG_TEC_CAT_ID_CLIENTES && $inverter===false){
+        if ($grupo!==false && $grupo[0]==CFG_TEC_CAT_ID_CLIENTES && $inverter===false) {
             $linkextra = '/cliente';
             $link = 'usuario/Admin/ListarCliente';
             $link_editar = 'usuario/Admin/Cliente_Edit';
             $link_deletar = 'usuario/Admin/Cliente_Del';
             $link_add = 'usuario/Admin/Cliente_Add/'.$categoria;
         }
-        else if ($grupo!==false && $grupo[0]==CFG_TEC_CAT_ID_FUNCIONARIOS && $inverter===false){
+        else if ($grupo!==false && $grupo[0]==CFG_TEC_CAT_ID_FUNCIONARIOS && $inverter===false) {
             $linkextra = '/funcionario';
             $link = 'usuario/Admin/ListarFuncionario';
             $link_editar = 'usuario/Admin/Funcionario_Edit';
@@ -341,16 +341,16 @@ class usuario_Controle extends \Framework\App\Controle
         // Continua Resto
         //$this->_Visual->Blocar('<a title="Adicionar " class="btn btn-success lajax explicar-titulo" data-acao="" href="'.URL_PATH.'usuario/Admin/Usuarios_Add'.$linkextra.'">Adicionar novo '.Framework\Classes\Texto::Transformar_Plural_Singular($nomedisplay).'</a><div class="space15"></div>');
         $usuario = $this->_Modelo->db->Sql_Select('Usuario',$where,0,'','id,grupo,foto,nome,razao_social,email,email2,telefone,telefone2,celular,celular1,celular2,celular3,ativado,log_date_add');
-        if (is_object($usuario)){
+        if (is_object($usuario)) {
             $usuario = Array(0=>$usuario);
         }
-        if ($usuario!==false && !empty($usuario)){
+        if ($usuario!==false && !empty($usuario)) {
             
             // Puxa Tabela e qnt de registro
             list($tabela,$i) = self::Usuarios_Tabela($usuario,$nomedisplay_sing,$linkextra,$grupo,'usuario/Perfil/Perfil_Show', $link_editar, $link_deletar);
             
             // SE tiver opcao de exportar, exporta e trava o sistema
-            if ($export!==false){
+            if ($export!==false) {
                 self::Export_Todos($export,$tabela, $nomedisplay);
             } else {
                 // Imprime a tabela
@@ -370,16 +370,16 @@ class usuario_Controle extends \Framework\App\Controle
         } else {          
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum '.$nomedisplay_sing.'</font></b></center>');
         }
-        if ($ativado===false){
+        if ($ativado===false) {
             $titulo = 'Todos os '.$nomedisplay.' ('.$i.')';
-        }elseif ($ativado==0){
+        }elseif ($ativado==0) {
             $titulo = 'Todos os '.$nomedisplay.' Desativados ('.$i.')';
         } else {
             $titulo = 'Todos os '.$nomedisplay.' Ativados ('.$i.')';
         }
         $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',$gravidade);
     }
-    static function Usuarios_Email_Ver($id = 0,$tipo=false, $tema='Cliente'){
+    static function Usuarios_Email_Ver($id = 0,$tipo=false, $tema='Cliente') {
         $Registro   = &\Framework\App\Registro::getInstacia();
         $Controle   = $Registro->_Controle;
         $Acl   = $Registro->_Acl;
@@ -388,7 +388,7 @@ class usuario_Controle extends \Framework\App\Controle
         $id = (int) $id;
         $i = 0;
         // Puxa Usuario
-        if ($id==0 || !isset($id)){
+        if ($id==0 || !isset($id)) {
             $id = (int) $Acl->Usuario_GetID();
         } else {
             $id = (int) $id;
@@ -399,11 +399,11 @@ class usuario_Controle extends \Framework\App\Controle
         $linkextra = '';
         
         // Pega Tipo
-        if ($tipo===false){
-            if ($usuario->grupo==CFG_TEC_CAT_ID_CLIENTES){
+        if ($tipo===false) {
+            if ($usuario->grupo==CFG_TEC_CAT_ID_CLIENTES) {
                 $tipo   = __('Cliente');
                 $tipo2  = 'cliente';
-            }else if ($usuario->grupo==CFG_TEC_CAT_ID_FUNCIONARIOS){
+            }else if ($usuario->grupo==CFG_TEC_CAT_ID_FUNCIONARIOS) {
                 $tipo   = __('Funcionário');
                 $tipo2  = 'funcionario';
             } else {
@@ -415,16 +415,16 @@ class usuario_Controle extends \Framework\App\Controle
         if ($tipo=='Funcionrio' || $tipo=="Funcionario") $tipo = __("Funcionário");
         if ($tipo=="Usurio" || $tipo=="Usuario")         $tipo = __('Usuário');
         // Cria Tipo 2:
-        if ($tipo==__('Cliente') || $tipo==__('cliente')){
+        if ($tipo==__('Cliente') || $tipo==__('cliente')) {
             $tipo2  = 'cliente';
-        }else if ($tipo==__('Funcionário') || $tipo==__('funcionário') || $tipo=='Funcionario' || $tipo=='funcionario'){
+        }else if ($tipo==__('Funcionário') || $tipo==__('funcionário') || $tipo=='Funcionario' || $tipo=='funcionario') {
             $tipo2  = 'funcionario';
         }
-        if ($tipo2=='usuario'){
+        if ($tipo2=='usuario') {
             $nomedisplay        = __('Usuários').' ';
             $nomedisplay_sing   = __('Usuário').' ';
             $nomedisplay_tipo   = __('Usuario');
-        }else if ($tipo2=='funcionario'){
+        }else if ($tipo2=='funcionario') {
             $nome = \Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Funcionario_nome');
             $nomedisplay        = __($nome).' ';
             $nomedisplay_sing   = Framework\Classes\Texto::Transformar_Plural_Singular(__($nome));
@@ -440,22 +440,22 @@ class usuario_Controle extends \Framework\App\Controle
         // Enviar Email
         //$Visual->Blocar('<a title="Enviar email para '.$nomedisplay_sing.'" class="btn btn-success lajax explicar-titulo" data-acao="" href="'.URL_PATH.'usuario/Admin/Usuarios_Email/'.$id.$linkextra.'">Enviar email para '.$nomedisplay_sing.'</a><div class="space15"></div>');
         $emails = $Modelo->db->Sql_Select('Usuario_Historico_Email',Array('cliente'=>$id));
-        if ($emails!==false && !empty($emails)){
+        if ($emails!==false && !empty($emails)) {
             if (is_object($emails)) $emails = Array(0=>$emails);
             reset($emails);
             foreach ($emails as $indice=>&$valor) {
                 $tabela['Cliente'][$i]              = $valor->nome_usuario;
                 $email = '';
                 
-                if ($tema!='Setor'){
-                    if ($valor->email_usuario2!=''){
-                        if ($email!=''){
+                if ($tema!='Setor') {
+                    if ($valor->email_usuario2!='') {
+                        if ($email!='') {
                             $email .= '<br>';
                         }
                         $email .= $valor->email_usuario2;
                     }
-                    if ($valor->email_usuario!=''){
-                        if ($email!=''){
+                    if ($valor->email_usuario!='') {
+                        if ($email!='') {
                             $email .= '<br>';
                         }
                         $email .= $valor->email_usuario;
@@ -469,13 +469,13 @@ class usuario_Controle extends \Framework\App\Controle
             $Visual->Show_Tabela_DataTable($tabela);
             unset($tabela);
         } else {
-            if ($tema=='Setor'){
+            if ($tema=='Setor') {
                 $Visual->Blocar('<center><b><font color="#FF0000" size="5">'.__('Nenhum Email enviado para o Setor').'</font></b></center>');            
             } else {
                 $Visual->Blocar('<center><b><font color="#FF0000" size="5">'.__('Nenhum Email enviado para o Usuário').'</font></b></center>');            
             }
         }
-        if ($tema=='Setor'){
+        if ($tema=='Setor') {
             $titulo = __('Histórico de Envio de Email para Setor').' ('.$i.')';
         } else {
             $titulo = __('Histórico de Envio de Email para Cliente').' ('.$i.')';
@@ -485,17 +485,17 @@ class usuario_Controle extends \Framework\App\Controle
         //Carrega Json
         $Visual->Json_Info_Update('Titulo','Histórico de Email');
     }
-    public function Usuarios_Email($id = 0,$tipo=false,$tema='Cliente'){
-        if ($id==0 || !isset($id)){
+    public function Usuarios_Email($id = 0,$tipo=false,$tema='Cliente') {
+        if ($id==0 || !isset($id)) {
             $id = (int) $this->_Acl->Usuario_GetID();
         } else {
             $id = (int) $id;
         }
-        if ($tipo===false){
-            if ($usuario->grupo==CFG_TEC_IDCLIENTE){
+        if ($tipo===false) {
+            if ($usuario->grupo==CFG_TEC_IDCLIENTE) {
                 $tipo   = __('Cliente');
                 $tipo2  = 'cliente';
-            }else if ($usuario->grupo==CFG_TEC_IDFUNCIONARIO){
+            }else if ($usuario->grupo==CFG_TEC_IDFUNCIONARIO) {
                 $tipo   = 'Funcionário';
                 $tipo2  = 'funcionario';
             }
@@ -504,23 +504,23 @@ class usuario_Controle extends \Framework\App\Controle
         if ($tipo=='Funcionrio' || $tipo=="Funcionario") $tipo = "Funcionário";
         if ($tipo=="Usurio" || $tipo=="Usuario")         $tipo = __('Usuário');
         // Cria Tipo 2:
-        if ($tipo=='Cliente' || $tipo=='cliente'){
+        if ($tipo=='Cliente' || $tipo=='cliente') {
             $tipo2  = 'cliente';
             $this->Tema_Endereco(__('Clientes'),'usuario/Admin/ListarCliente');
-        }else if ($tipo=='Funcionário' || $tipo=='Funcionario' || $tipo=='funcionário' || $tipo=='funcionario'){
+        }else if ($tipo=='Funcionário' || $tipo=='Funcionario' || $tipo=='funcionário' || $tipo=='funcionario') {
             $tipo2  = 'funcionario';
             $this->Tema_Endereco(__('Funcionários'),'usuario/Admin/ListarFuncionario');
         } else {
             $this->Tema_Endereco(__('Usuários'),'usuario/Admin/Main');
         }
-        if ($tema=='Setor'){
+        if ($tema=='Setor') {
             $this->Tema_Endereco(__('Enviar Email para Setor'));
         } else {
             $this->Tema_Endereco(__('Enviar Email'));
         }
         // Retira os de clientes
         $linkextra = '';
-        if ($tipo!==false){
+        if ($tipo!==false) {
             $linkextra = $tipo.'/';
         }
         // Carrega formulario
@@ -536,7 +536,7 @@ class usuario_Controle extends \Framework\App\Controle
             false,
             ''
         ); 
-        if ($tema=='Setor'){
+        if ($tema=='Setor') {
             $form->Input_Novo(
                 'Nome Opcional',
                 'nome_opcional',
@@ -593,7 +593,7 @@ class usuario_Controle extends \Framework\App\Controle
             'obrigatorio',
             ''
         ); 
-        if ($tema!='Setor'){
+        if ($tema!='Setor') {
             $formulario = $form->retorna_form('Enviar Email para Usuário');
             $this->_Visual->Blocar($formulario);
             $this->_Visual->Bloco_Unico_CriaJanela(__('Enviar Email para Usuário'),'',10);
@@ -607,8 +607,8 @@ class usuario_Controle extends \Framework\App\Controle
         // Titulo
         $this->_Visual->Json_Info_Update('Titulo', __('Enviar Email para Usuário'));
     }
-    public function Usuarios_Email2($id = 0,$tipo=false, $tema='Cliente'){
-        if ($id==0 || !isset($id)){
+    public function Usuarios_Email2($id = 0,$tipo=false, $tema='Cliente') {
+        if ($id==0 || !isset($id)) {
             $id = (int) $this->_Acl->Usuario_GetID();
         } else {
             $id = (int) $id;
@@ -619,21 +619,21 @@ class usuario_Controle extends \Framework\App\Controle
         $nome = $usuario->nome;
         // Add Email normal e alternativo para enviar 
         $enviar = '';
-        if ($tema=='Cliente'){
-            if ($usuario->email!='' && \Framework\App\Sistema_Funcoes::Control_Layoult_Valida_Email($usuario->email)){
+        if ($tema=='Cliente') {
+            if ($usuario->email!='' && \Framework\App\Sistema_Funcoes::Control_Layoult_Valida_Email($usuario->email)) {
                 $enviar .= '->setTo(\''.$usuario->email.'\', \''.$nome.'\')';
             }
-            if ($usuario->email2!='' && \Framework\App\Sistema_Funcoes::Control_Layoult_Valida_Email($usuario->email2)){
+            if ($usuario->email2!='' && \Framework\App\Sistema_Funcoes::Control_Layoult_Valida_Email($usuario->email2)) {
                 $enviar .= '->setTo(\''.$usuario->email2.'\', \''.$nome.'\')';
             }
         }
         // Envia Se tiver Email Opcional
         $email_opcional = \Framework\App\Conexao::anti_injection($_POST['email_opcional']);
         $nome_opcional  = \Framework\App\Conexao::anti_injection($_POST['nome_opcional']);
-        if ($email_opcional!='' && \Framework\App\Sistema_Funcoes::Control_Layoult_Valida_Email($email_opcional)){
+        if ($email_opcional!='' && \Framework\App\Sistema_Funcoes::Control_Layoult_Valida_Email($email_opcional)) {
             $enviar .= '->setTo(\''.$email_opcional.'\', \''.$nome_opcional.'\')';
         }
-        if ($enviar==''){
+        if ($enviar=='') {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),
@@ -651,7 +651,7 @@ class usuario_Controle extends \Framework\App\Controle
             '->addGenericHeader(\'Content-Type\', \'text/html; charset="utf-8"\')'.
             '->setMessage(\''.$amensagem.'\')'.
             '->setWrap(78)->send();');
-            if ($send){
+            if ($send) {
                 $Registro = new \Usuario_Historico_Email_DAO();
                 $Registro->cliente          = $id;
                 $Registro->titulo           = \Framework\App\Conexao::anti_injection($_POST['titulo']);
@@ -676,9 +676,9 @@ class usuario_Controle extends \Framework\App\Controle
                 );
             }
             // Recarrega Main
-            /*if ($tipo=='cliente'){
+            /*if ($tipo=='cliente') {
                 $this->ListarCliente();
-            }else if ($tipo=='funcionario'){
+            }else if ($tipo=='funcionario') {
                 $this->ListarFuncionario();
             } else {
                 $this->Main();
@@ -689,7 +689,7 @@ class usuario_Controle extends \Framework\App\Controle
         }
     }
     
-    static function Static_usuariolistar($grupo=false,$ativado=false,$inverter=false, $export=false){
+    static function Static_usuariolistar($grupo=false,$ativado=false,$inverter=false, $export=false) {
         
         
         $Registro   = &\Framework\App\Registro::getInstacia();
@@ -704,14 +704,14 @@ class usuario_Controle extends \Framework\App\Controle
         
         
         
-        if ($grupo===false){
+        if ($grupo===false) {
             $categoria = 0;
-            if ($inverter){
+            if ($inverter) {
                 $where = 'ativado!='.$ativado;
             } else {
                 $where = 'ativado='.$ativado;
             }
-            if ($ativado===false){
+            if ($ativado===false) {
                 $where = '';
             }
             $nomedisplay        = __('Usuários ');
@@ -726,7 +726,7 @@ class usuario_Controle extends \Framework\App\Controle
             $sql_grupos = $Modelo->db->Sql_Select('Sistema_Grupo','categoria='.$categoria,0,'','id');
             $grupos_id = Array();
             if (is_object($sql_grupos)) $sql_grupos = Array(0=>$sql_grupos);
-            if ($sql_grupos!==false && !empty($sql_grupos)){
+            if ($sql_grupos!==false && !empty($sql_grupos)) {
                 foreach ($sql_grupos as &$valor) {
                     $grupos_id[] = $valor->id;
                 }
@@ -735,13 +735,13 @@ class usuario_Controle extends \Framework\App\Controle
             if (empty($grupos_id)) return _Sistema_erroControle::Erro_Fluxo('Grupos não existe',404);
             
             // cria where de acordo com parametros
-            if ($inverter){
+            if ($inverter) {
                 $where = 'grupo NOT IN ('.implode(',',$grupos_id).') AND ativado='.$ativado;
             } else {
                 $where = 'grupo IN ('.implode(',',$grupos_id).') AND ativado='.$ativado;
             }
             
-            if ($ativado===false){
+            if ($ativado===false) {
                 $where = explode(' AND ', $where);
                 $where = $where[0];
             }
@@ -754,7 +754,7 @@ class usuario_Controle extends \Framework\App\Controle
         }
         
         $linkextra = '';
-        if ($grupo!==false && $grupo[0]==CFG_TEC_CAT_ID_CLIENTES && $inverter===false){
+        if ($grupo!==false && $grupo[0]==CFG_TEC_CAT_ID_CLIENTES && $inverter===false) {
             $linkextra = '/cliente';
             $link = 'usuario/Admin/ListarCliente';
             $link_ver = 'comercio_certificado/Proposta/Usuarios_Produtos';    
@@ -762,7 +762,7 @@ class usuario_Controle extends \Framework\App\Controle
             $link_deletar = 'comercio_certificado/Proposta/Usuarios_Del';
             $link_add = 'comercio_certificado/Proposta/Usuarios_Mostrar';
         }
-        else if ($grupo!==false && $grupo[0]==CFG_TEC_CAT_ID_FUNCIONARIOS && $inverter===false){
+        else if ($grupo!==false && $grupo[0]==CFG_TEC_CAT_ID_FUNCIONARIOS && $inverter===false) {
             $linkextra = '/funcionario';
             $link = 'usuario/Admin/ListarFuncionario';
             $link_ver = 'comercio_certificado/Proposta/Usuarios_Produtos';    
@@ -795,9 +795,9 @@ class usuario_Controle extends \Framework\App\Controle
         //$this->_Visual->Blocar('<a title="Adicionar " class="btn btn-success lajax explicar-titulo" data-acao="" href="'.URL_PATH.'usuario/Admin/Usuarios_Add'.$linkextra.'">Adicionar novo '.Framework\Classes\Texto::Transformar_Plural_Singular($nomedisplay).'</a><div class="space15"></div>');
         $usuario = $Modelo->db->Sql_Select('Usuario',$where,0,'','id,grupo,foto,nome,razao_social,email,email2,telefone,telefone2,celular,celular1,celular2,celular3,ativado,log_date_add');
         if (is_object($usuario)) $usuario = Array(0=>$usuario);
-        if ($usuario!==false && !empty($usuario)){
+        if ($usuario!==false && !empty($usuario)) {
             list($tabela,$i) = self::Usuarios_Tabela($usuario,$nomedisplay_sing,$linkextra, $grupo,$link_ver, $link_editar, $link_deletar);
-            if ($export!==false){
+            if ($export!==false) {
                 self::Export_Todos($export,$tabela, $nomedisplay);
             } else {
                 $html .= $Visual->Show_Tabela_DataTable(
@@ -824,7 +824,7 @@ class usuario_Controle extends \Framework\App\Controle
      * @param type $campos
      * @param type $form
      */
-    public static function Campos_Deletar_Juridica($tipo, &$campos,&$usuario = false){
+    public static function Campos_Deletar_Juridica($tipo, &$campos,&$usuario = false) {
             // Retira JURIFICA / CNPJ
             self::DAO_Campos_Retira($campos, 'fisica');
             self::DAO_Campos_RetiraAlternados($campos);
@@ -840,7 +840,7 @@ class usuario_Controle extends \Framework\App\Controle
      * @param type $campos
      * @param type $form
      */
-    public static function Campos_Deletar_Fisica($tipo, &$campos,&$usuario = false){
+    public static function Campos_Deletar_Fisica($tipo, &$campos,&$usuario = false) {
             // Retira Fisica / CPF
             self::DAO_Campos_Retira($campos, 'fisica');
             self::DAO_Campos_RetiraAlternados($campos);
@@ -857,7 +857,7 @@ class usuario_Controle extends \Framework\App\Controle
      * @param type $campos
      * @param type $form
      */
-    public static function Campos_Deletar_Localizacao($tipo, &$campos,&$usuario = false){
+    public static function Campos_Deletar_Localizacao($tipo, &$campos,&$usuario = false) {
             // Retira Fisica / CPF
             self::DAO_Campos_Retira($campos, 'cep');
             self::DAO_Campos_Retira($campos, 'endereco');
@@ -874,12 +874,12 @@ class usuario_Controle extends \Framework\App\Controle
      * @param type $campos
      * @param type $form
      */
-    public static function Campos_Deletar($tipo = false, &$campos,&$usuario = false){
+    public static function Campos_Deletar($tipo = false, &$campos,&$usuario = false) {
         // Captura Instancias e 
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Modelo  = &$Registro->_Modelo;
         
-        if ($usuario!==false && isset($usuario->grupo)){
+        if ($usuario!==false && isset($usuario->grupo)) {
             $sql_grupo = $_Modelo->db->Sql_Select('Sistema_Grupo',Array('id'=>$usuario->grupo),1);
             $sql_grupo = $sql_grupo->categoria;
         } else {
@@ -887,19 +887,19 @@ class usuario_Controle extends \Framework\App\Controle
         }
             
             
-        if (CFG_TEC_PAISES_EXTRAGEIROS===false){
+        if (CFG_TEC_PAISES_EXTRAGEIROS===false) {
             self::DAO_RemoveLinkExtra($campos, Array('pais','estado','cidade','bairro'));
         }
         // LOGIN
         $usuario_Admin_Login = \Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Login');
-        if (is_array($usuario_Admin_Login)){
+        if (is_array($usuario_Admin_Login)) {
             // SE categoria nao existir
-            if (!($sql_grupo===false || in_array($sql_grupo, $usuario_Admin_Login))){
+            if (!($sql_grupo===false || in_array($sql_grupo, $usuario_Admin_Login))) {
                 self::DAO_Campos_Retira($campos, 'login');
                 self::DAO_Campos_Retira($campos, 'senha');
             }
         } else {
-            if ($usuario_Admin_Login===false){
+            if ($usuario_Admin_Login===false) {
                 self::DAO_Campos_Retira($campos, 'login');
                 self::DAO_Campos_Retira($campos, 'senha');
             }
@@ -907,48 +907,48 @@ class usuario_Controle extends \Framework\App\Controle
         
         // GRUPO
         $usuario_Admin_Grupo = \Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Grupo_Mostrar');
-        if (is_array($usuario_Admin_Grupo)){
+        if (is_array($usuario_Admin_Grupo)) {
             // SE categoria nao existir
-            if (!($sql_grupo===false || in_array($sql_grupo, $usuario_Admin_Grupo))){
+            if (!($sql_grupo===false || in_array($sql_grupo, $usuario_Admin_Grupo))) {
                 self::DAO_Campos_Retira($campos, 'grupo');
             }
         } else {
-            if ($usuario_Admin_Grupo===false){
+            if ($usuario_Admin_Grupo===false) {
                 self::DAO_Campos_Retira($campos, 'grupo');
             }
         }
         
         // FOTO
         $usuario_Admin_Foto = \Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Admin_Foto');
-        if (is_array($usuario_Admin_Foto)){
+        if (is_array($usuario_Admin_Foto)) {
             // SE categoria nao existir
-            if (!($sql_grupo===false || in_array($sql_grupo, $usuario_Admin_Foto))){
+            if (!($sql_grupo===false || in_array($sql_grupo, $usuario_Admin_Foto))) {
                 self::DAO_Campos_Retira($campos, 'foto');
             }
         } else {
-            if ($usuario_Admin_Foto===false){
+            if ($usuario_Admin_Foto===false) {
                 self::DAO_Campos_Retira($campos, 'foto');
             }
         }
         
         // CONTINUA
-        if (!\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Admin_Ativado')){
+        if (!\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Admin_Ativado')) {
             self::DAO_Campos_Retira($campos, 'ativado');
         }
-        if (!\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Admin_Site')){
+        if (!\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Admin_Site')) {
             self::DAO_Campos_Retira($campos, 'site');
         }
         // Tira resto 
         self::DAO_Campos_Retira($campos, 'Permissões do Usuário');
         self::DAO_Campos_Retira($campos, 'perfil_sexo');
         // Retira se nao for Engenharia
-        if (!(\Framework\App\Sistema_Funcoes::Perm_Modulos('Engenharia')) || $tipo!='cliente'){
+        if (!(\Framework\App\Sistema_Funcoes::Perm_Modulos('Engenharia')) || $tipo!='cliente') {
             self::DAO_Campos_Retira($campos, 'eng_clienteinvestidor');
             //self::DAO_Campos_Retira($campos, 'empreendimento');
             //self::DAO_Campos_Retira($campos, 'unidade');
         }
         // Caso seja Cliente
-        if ($tipo=='cliente'){
+        if ($tipo=='cliente') {
             self::DAO_Campos_Retira($campos, 'banco');
             self::DAO_Campos_Retira($campos, 'agencia');
             self::DAO_Campos_Retira($campos, 'conta');
@@ -957,10 +957,10 @@ class usuario_Controle extends \Framework\App\Controle
             self::DAO_Campos_Retira($campos, 'email2');
         }
         // Caso seja Funcionario 
-        if ($tipo=='funcionario'){
+        if ($tipo=='funcionario') {
             // Retira Fisica / CNPJ
             self::Campos_Deletar_Juridica($tipo, $campos, $usuario);
-            if (!\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Cliente_PrecoDiferenciado')){
+            if (!\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Cliente_PrecoDiferenciado')) {
                 self::DAO_Campos_Retira($campos, 'precoespecial');
             }
         } else {
@@ -980,11 +980,11 @@ class usuario_Controle extends \Framework\App\Controle
         }
         
         // SE esta no modulo predial
-        if ((\Framework\App\Sistema_Funcoes::Perm_Modulos('predial'))){
+        if ((\Framework\App\Sistema_Funcoes::Perm_Modulos('predial'))) {
             self::DAO_Campos_Retira($campos, 'site');
             self::DAO_Campos_Retira($campos, 'email2');
             self::DAO_Campos_Retira($campos, 'telefone2');
-            if ($tipo=='funcionario'){
+            if ($tipo=='funcionario') {
                 self::Campos_Deletar_Juridica($tipo, $campos, $usuario);
             }
             else{
@@ -996,11 +996,11 @@ class usuario_Controle extends \Framework\App\Controle
             }
         }
         // SE nao esta no modulo usuario_rede
-        if (!(\Framework\App\Sistema_Funcoes::Perm_Modulos('usuario_rede'))){
+        if (!(\Framework\App\Sistema_Funcoes::Perm_Modulos('usuario_rede'))) {
             self::DAO_Campos_Retira($campos, 'indicado_por');
         }
         // SE nao esta no modulo comercio_certificado
-        if (!(\Framework\App\Sistema_Funcoes::Perm_Modulos('comercio_certificado'))){
+        if (!(\Framework\App\Sistema_Funcoes::Perm_Modulos('comercio_certificado'))) {
             self::DAO_Campos_Retira($campos, 'fax');
             
             self::DAO_Campos_Retira($campos, 'selo_liberar');
@@ -1015,9 +1015,9 @@ class usuario_Controle extends \Framework\App\Controle
             self::DAO_Campos_Retira($campos, 'entrega_bairro');
             self::DAO_Campos_Retira($campos, 'entrega_numero');
             self::DAO_Campos_Retira($campos, 'entrega_complemento');
-            if ($tipo=='cliente'){
+            if ($tipo=='cliente') {
                 
-            }else if ($tipo=='funcionario'){
+            }else if ($tipo=='funcionario') {
                 self::DAO_Campos_Retira($campos, 'site');
             }
         } else {
@@ -1025,7 +1025,7 @@ class usuario_Controle extends \Framework\App\Controle
             self::DAO_Campos_Retira($campos, 'site');
             self::DAO_Campos_Retira($campos, 'telefone2');
             self::DAO_Campos_Retira($campos, 'email2');
-            if ($tipo=='cliente'){
+            if ($tipo=='cliente') {
                 self::Campos_Deletar_Fisica($tipo, $campos, $usuario);
                 self::DAO_Campos_Retira($campos, 'obs');
             } else {
@@ -1054,16 +1054,16 @@ class usuario_Controle extends \Framework\App\Controle
     
     
     
-    protected function Usuario_Listagem($grupo=false,$ativado=false,$gravidade=0,$inverter=false,$export=false){
+    protected function Usuario_Listagem($grupo=false,$ativado=false,$gravidade=0,$inverter=false,$export=false) {
         $i = 0;
-        if ($grupo===false){
+        if ($grupo===false) {
             $categoria = 0;
-            if ($inverter){
+            if ($inverter) {
                 $where = 'ativado!='.$ativado;
             } else {
                 $where = 'ativado='.$ativado;
             }
-            if ($ativado===false){
+            if ($ativado===false) {
                 $where = '';
             }
             $nomedisplay        = __('Usuários').' ';
@@ -1078,7 +1078,7 @@ class usuario_Controle extends \Framework\App\Controle
             $sql_grupos = $this->_Modelo->db->Sql_Select('Sistema_Grupo','categoria='.$categoria,0,'','id');
             $grupos_id = Array();
             if (is_object($sql_grupos)) $sql_grupos = Array(0=>$sql_grupos);
-            if ($sql_grupos!==false && !empty($sql_grupos)){
+            if ($sql_grupos!==false && !empty($sql_grupos)) {
                 foreach ($sql_grupos as &$valor) {
                     $grupos_id[] = $valor->id;
                 }
@@ -1087,13 +1087,13 @@ class usuario_Controle extends \Framework\App\Controle
             if (empty($grupos_id)) return _Sistema_erroControle::Erro_Fluxo('Grupos não existe',404);
             
             // cria where de acordo com parametros
-            if ($inverter){
+            if ($inverter) {
                 $where = 'grupo NOT IN ('.implode(',',$grupos_id).') AND ativado='.$ativado;
             } else {
                 $where = 'grupo IN ('.implode(',',$grupos_id).') AND ativado='.$ativado;
             }
             
-            if ($ativado===false){
+            if ($ativado===false) {
                 $where = explode(' AND ', $where);
                 $where = $where[0];
             }
@@ -1106,12 +1106,12 @@ class usuario_Controle extends \Framework\App\Controle
         }
         
         $linkextra = '';
-        if ($grupo!==false && $grupo[0]==CFG_TEC_CAT_ID_CLIENTES && $inverter===false){
+        if ($grupo!==false && $grupo[0]==CFG_TEC_CAT_ID_CLIENTES && $inverter===false) {
             $linkextra = '/cliente';
             $link = 'usuario/Admin/ListarCliente';
             $link_add = 'usuario/Admin/Cliente_Add/'.$categoria;
         }
-        else if ($grupo!==false && $grupo[0]==CFG_TEC_CAT_ID_FUNCIONARIOS && $inverter===false){
+        else if ($grupo!==false && $grupo[0]==CFG_TEC_CAT_ID_FUNCIONARIOS && $inverter===false) {
             $linkextra = '/funcionario';
             $link = 'usuario/Admin/ListarFuncionario';
             $link_add = 'usuario/Admin/Funcionario_Add/'.$categoria;
@@ -1128,34 +1128,34 @@ class usuario_Controle extends \Framework\App\Controle
 
         // Verifica Grupo
         $Ativado_Grupo = false;
-        if (is_array($usuario_Admin_Grupo)){
-            if ($grupo===false || (is_array($grupo) && in_array($grupo[0], $usuario_Admin_Grupo))){
+        if (is_array($usuario_Admin_Grupo)) {
+            if ($grupo===false || (is_array($grupo) && in_array($grupo[0], $usuario_Admin_Grupo))) {
                 $Ativado_Grupo = true;
             }
         } else {
-            if ($usuario_Admin_Grupo===true){
+            if ($usuario_Admin_Grupo===true) {
                 $Ativado_Grupo = true;
             }
         }
 
         // Verifica foto
         $Ativado_Foto = false;
-        if (is_array($usuario_Admin_Foto)){
-            if ($grupo===false || (is_array($grupo) && in_array($grupo[0], $usuario_Admin_Foto))){
+        if (is_array($usuario_Admin_Foto)) {
+            if ($grupo===false || (is_array($grupo) && in_array($grupo[0], $usuario_Admin_Foto))) {
                 $Ativado_Foto = true;
             }
         } else {
-            if ($usuario_Admin_Foto===true){
+            if ($usuario_Admin_Foto===true) {
                 $Ativado_Foto = true;
             }
         }         
         
         $tabela_colunas = Array();
         $tabela_colunas[] = __('Id');
-        if ($Ativado_Grupo===true){
+        if ($Ativado_Grupo===true) {
             $tabela_colunas[] = __('Grupo');
         }
-        if ($Ativado_Foto===true){
+        if ($Ativado_Foto===true) {
             $tabela_colunas[] = __('Foto');
         }
         // Mostra Nome
@@ -1166,7 +1166,7 @@ class usuario_Controle extends \Framework\App\Controle
         $tabela_colunas[] = __('Email');
 
         // para MOdulos que contem banco
-        if (\Framework\App\Sistema_Funcoes::Perm_Modulos('Financeiro') && $Financeiro_User_Saldo){
+        if (\Framework\App\Sistema_Funcoes::Perm_Modulos('Financeiro') && $Financeiro_User_Saldo) {
             $tabela_colunas[] = __('Saldo');
         }
 
@@ -1175,9 +1175,9 @@ class usuario_Controle extends \Framework\App\Controle
 
         $this->_Visual->Show_Tabela_DataTable_Massiva($tabela_colunas,$link,'',true,false,Array(Array(0,'desc')));
         
-        if ($ativado===false){
+        if ($ativado===false) {
             $titulo = 'Todos os '.$nomedisplay.' (<span id="DataTable_Contador">0</span>)';
-        }elseif ($ativado==0){
+        }elseif ($ativado==0) {
             $titulo = 'Todos os '.$nomedisplay.' Desativados (<span id="DataTable_Contador">0</span>)';
         } else {
             $titulo = 'Todos os '.$nomedisplay.' Ativados (<span id="DataTable_Contador">0</span>)';

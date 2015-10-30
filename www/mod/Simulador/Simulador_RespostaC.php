@@ -1,7 +1,7 @@
 <?php
 class Simulador_RespostaControle extends Simulador_Controle
 {
-    public function __construct(){
+    public function __construct() {
         parent::__construct();
     }
     /**
@@ -17,20 +17,20 @@ class Simulador_RespostaControle extends Simulador_Controle
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    public function Main($simulador = false,$pergunta=false){
+    public function Main($simulador = false,$pergunta=false) {
         \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'Simulador/Resposta/Respostas');
         return false;
     }
-    static function Endereco_Resposta($true=true,$simulador=false, $pergunta=false){
+    static function Endereco_Resposta($true=true,$simulador=false, $pergunta=false) {
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
-        if ($simulador===false){
+        if ($simulador===false) {
             $titulo = __('Todas as Respostas');
             $link   = 'Simulador/Resposta/Respostas';
         } else {
             $titulo = $simulador->nome;
             $link   = 'Simulador/Pergunta/Perguntas/'.$simulador->id;
-            if ($pergunta!==false){
+            if ($pergunta!==false) {
                 Simulador_PerguntaControle::Endereco_Pergunta(true, $simulador);
                 $_Controle->Tema_Endereco($titulo,$link);
                 $titulo = $pergunta->nome;
@@ -39,13 +39,13 @@ class Simulador_RespostaControle extends Simulador_Controle
                 Simulador_SimuladorControle::Endereco_Simulador();
             }
         }
-        if ($true===true){
+        if ($true===true) {
             $_Controle->Tema_Endereco($titulo,$link);
         } else {
             $_Controle->Tema_Endereco($titulo);
         }
     }
-    static function Respostas_Tabela(&$respostas,$simulador=false,$pergunta=false){
+    static function Respostas_Tabela(&$respostas,$simulador=false,$pergunta=false) {
         $Registro   = &\Framework\App\Registro::getInstacia();
         $Modelo     = &$Registro->_Modelo;
         $Visual     = &$Registro->_Visual;
@@ -54,14 +54,14 @@ class Simulador_RespostaControle extends Simulador_Controle
         if (is_object($respostas)) $respostas = Array(0=>$respostas);
         reset($respostas);
         foreach ($respostas as &$valor) {
-            if ($simulador===false || $simulador==0){
+            if ($simulador===false || $simulador==0) {
                 $tabela['Simulador'][$i]   = $valor->simulador2;
                 $tabela['Pergunta'][$i]   = $valor->pergunta2;
                 $view_url   = 'Simulador/Video/Videos/'.$valor->simulador.'/';
                 $edit_url   = 'Simulador/Resposta/Respostas_Edit/'.$valor->id.'/';
                 $del_url    = 'Simulador/Resposta/Respostas_Del/'.$valor->id.'/';
             } else {
-                if ($pergunta===false || $pergunta==0){
+                if ($pergunta===false || $pergunta==0) {
                     $tabela['Pergunta'][$i]   = $valor->pergunta2;
                     //$view_url   = 'Simulador/Video/Videos/'.$valor->simulador.'/'.$valor->pergunta.'/';
                     $edit_url   = 'Simulador/Resposta/Respostas_Edit/'.$valor->id.'/'.$valor->simulador.'/';
@@ -75,7 +75,7 @@ class Simulador_RespostaControle extends Simulador_Controle
             $tabela['Resposta'][$i]           = $valor->nome;
             $tabela['Data Registrada no Sistema'][$i]  = $valor->log_date_add;
             $status                                 = $valor->status;
-            if ($status!=1){
+            if ($status!=1) {
                 $status = 0;
                 $texto = __('Desativado');
             } else {
@@ -95,45 +95,45 @@ class Simulador_RespostaControle extends Simulador_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Respostas($simulador=false,$pergunta=false,$export=false){
+    public function Respostas($simulador=false,$pergunta=false,$export=false) {
         if ($simulador ==='false' || $simulador ===0)  $simulador    = false;
         if ($pergunta ==='false' || $pergunta ===0)  $pergunta      = false;
-        if ($simulador!==false){
+        if ($simulador!==false) {
             $simulador = (int) $simulador;
-            if ($simulador==0){
+            if ($simulador==0) {
                 $resposta_registro = $this->_Modelo->db->Sql_Select('Simulador',Array(),1,'id DESC');
-                if ($resposta_registro===false){
+                if ($resposta_registro===false) {
                     return _Sistema_erroControle::Erro_Fluxo('Essa resposta não existe',404);
                 }
                 $simulador_registro = $this->_Modelo->db->Sql_Select('Simulador_Pergunta',Array('id'=>$resposta_registro->simulador),1);
-                if ($simulador_registro===false){
+                if ($simulador_registro===false) {
                     return _Sistema_erroControle::Erro_Fluxo('Não existe nenhum simulador com esse id:',404);
                 }
                 $simulador = $simulador_registro->id;
             } else {
                 $simulador_registro = $this->_Modelo->db->Sql_Select('Simulador',Array('id'=>$simulador),1);
-                if ($simulador_registro===false){
+                if ($simulador_registro===false) {
                     return _Sistema_erroControle::Erro_Fluxo('Esse Simulador não existe:',404);
                 }
             }
             $where = Array(
                 'simulador'   => $simulador,
             );
-            if ($pergunta!==false){
+            if ($pergunta!==false) {
                 $pergunta = (int) $pergunta;
-                if ($pergunta==0){
+                if ($pergunta==0) {
                     $resposta_registro = $this->_Modelo->db->Sql_Select('Simulador_Pergunta_Resposta',Array(),1,'id DESC');
-                    if ($resposta_registro===false){
+                    if ($resposta_registro===false) {
                         return _Sistema_erroControle::Erro_Fluxo('Essa Resposta não existe',404);
                     }
                     $pergunta_registro = $this->_Modelo->db->Sql_Select('Simulador_Pergunta',Array('id'=>$resposta_registro->pergunta,'simulador'=>$simulador),1);
-                    if ($pergunta_registro===false){
+                    if ($pergunta_registro===false) {
                         return _Sistema_erroControle::Erro_Fluxo('Não existe nenhum pergunta com esse id nesse Simulador',404);
                     }
                     $pergunta = $pergunta_registro->id;
                 } else {
                     $pergunta_registro = $this->_Modelo->db->Sql_Select('Simulador_Pergunta',Array('id'=>$pergunta,'simulador'=>$simulador),1);
-                    if ($pergunta_registro===false){
+                    if ($pergunta_registro===false) {
                         return _Sistema_erroControle::Erro_Fluxo('Esse Pergunta não existe.',404);
                     }
                 }
@@ -175,10 +175,10 @@ class Simulador_RespostaControle extends Simulador_Controle
             )
         )));
         $respostas = $this->_Modelo->db->Sql_Select('Simulador_Pergunta_Resposta',$where);
-        if ($respostas!==false && !empty($respostas)){
+        if ($respostas!==false && !empty($respostas)) {
             list($tabela,$i) = self::Respostas_Tabela($respostas,$simulador,$pergunta);
             $titulo = $titulo.' ('.$i.')';
-            if ($export!==false){
+            if ($export!==false) {
                 self::Export_Todos($export,$tabela, $titulo);
             } else {
                 $this->_Visual->Show_Tabela_DataTable(
@@ -208,7 +208,7 @@ class Simulador_RespostaControle extends Simulador_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Respostas_Add($simulador = false,$pergunta=false){
+    public function Respostas_Add($simulador = false,$pergunta=false) {
         if ($simulador==='false') $simulador = false;
         if ($pergunta==='false') $pergunta = false;
         
@@ -216,31 +216,31 @@ class Simulador_RespostaControle extends Simulador_Controle
         $formid     = 'form_Simulador_Resposta_Respostas';
         $formbt     = __('Salvar');
         $campos     = Simulador_Pergunta_Resposta_DAO::Get_Colunas();
-        if ($simulador===false){
+        if ($simulador===false) {
             $formlink   = 'Simulador/Resposta/Respostas_Add2';
             $titulo1    = __('Adicionar Resposta');
             $titulo2    = __('Salvar Resposta');
             self::Endereco_Resposta(true, false, false);
         } else {
             $simulador = (int) $simulador;
-            if ($simulador==0){
+            if ($simulador==0) {
                 $resposta_registro = $this->_Modelo->db->Sql_Select('Simulador_Pergunta_Resposta',Array(),1,'id DESC');
-                if ($resposta_registro===false){
+                if ($resposta_registro===false) {
                     return _Sistema_erroControle::Erro_Fluxo('Essa resposta não existe',404);
                 }
                 $simulador_registro = $this->_Modelo->db->Sql_Select('Simulador',Array('id'=>$resposta_registro->simulador),1);
-                if ($simulador_registro===false){
+                if ($simulador_registro===false) {
                     return _Sistema_erroControle::Erro_Fluxo('Não existe nenhuma simulador:',404);
                 }
                 $simulador = $simulador_registro->id;
             } else {
                 $simulador_registro = $this->_Modelo->db->Sql_Select('Simulador',Array('id'=>$simulador),1);
-                if ($simulador_registro===false){
+                if ($simulador_registro===false) {
                     return _Sistema_erroControle::Erro_Fluxo('Esse Simulador não existe:',404);
                 }
             }
             self::DAO_Campos_Retira($campos,'simulador');
-            if ($pergunta===false){
+            if ($pergunta===false) {
                 self::DAO_Ext_Alterar($campos,'pergunta',$simulador);
                 $formlink   = 'Simulador/Resposta/Respostas_Add2/'.$simulador;
                 $titulo1    = 'Adicionar Resposta ao Simulador: '.$simulador_registro->nome ;
@@ -248,19 +248,19 @@ class Simulador_RespostaControle extends Simulador_Controle
                 self::Endereco_Resposta(true, $simulador_registro, false);
             } else {
                 $pergunta = (int) $pergunta;
-                if ($pergunta==0){
+                if ($pergunta==0) {
                     $resposta_registro = $this->_Modelo->db->Sql_Select('Simulador_Pergunta_Resposta',Array(),1,'id DESC');
-                    if ($resposta_registro===false){
+                    if ($resposta_registro===false) {
                         return _Sistema_erroControle::Erro_Fluxo('Essa resposta não existe',404);
                     }
                     $pergunta_registro = $this->_Modelo->db->Sql_Select('Simulador_Pergunta',Array('id'=>$resposta_registro->pergunta,'simulador'=>$simulador),1);
-                    if ($pergunta_registro===false){
+                    if ($pergunta_registro===false) {
                         return _Sistema_erroControle::Erro_Fluxo('Não existe nenhum Pergunta:',404);
                     }
                     $pergunta = $pergunta_registro->id;
                 } else {
                     $pergunta_registro = $this->_Modelo->db->Sql_Select('Simulador_Pergunta',Array('id'=>$pergunta,'simulador'=>$simulador),1);
-                    if ($pergunta_registro===false){
+                    if ($pergunta_registro===false) {
                         return _Sistema_erroControle::Erro_Fluxo('Esse Pergunta não existe:',404);
                     }
                 }
@@ -280,7 +280,7 @@ class Simulador_RespostaControle extends Simulador_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Respostas_Add2($simulador=false,$pergunta=false){
+    public function Respostas_Add2($simulador=false,$pergunta=false) {
         if ($simulador==='false') $simulador = false;
         if ($pergunta==='false') $pergunta = false;
         
@@ -289,10 +289,10 @@ class Simulador_RespostaControle extends Simulador_Controle
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = __('Resposta cadastrada com sucesso.');
         // Recupera Respostas
-        if ($simulador!==false){
+        if ($simulador!==false) {
             $simulador = (int) $simulador;
             $alterar    = Array('simulador'=>$simulador);
-            if ($pergunta!==false){
+            if ($pergunta!==false) {
                 $pergunta = (int) $pergunta;
                 $funcao     = '$this->Respostas('.$simulador.','.$pergunta.');';
                 $alterar['pergunta'] = $pergunta;
@@ -311,14 +311,14 @@ class Simulador_RespostaControle extends Simulador_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Respostas_Edit($id,$simulador = false,$pergunta=false){
+    public function Respostas_Edit($id,$simulador = false,$pergunta=false) {
         if ($simulador==='false') $simulador = false;
         if ($pergunta==='false') $pergunta = false;
-        if ($id===false){
+        if ($id===false) {
             return _Sistema_erroControle::Erro_Fluxo('Resposta não existe:'. $id,404);
         }
         $id         = (int) $id;
-        if ($simulador!==false){
+        if ($simulador!==false) {
             $simulador    = (int) $simulador;
         }
         // Carrega Config
@@ -327,14 +327,14 @@ class Simulador_RespostaControle extends Simulador_Controle
         $formid     = 'form_Simulador_RespostaC_RespostaEdit';
         $formbt     = __('Alterar Resposta');
         $campos = Simulador_Pergunta_Resposta_DAO::Get_Colunas();
-        if ($simulador!==false){
+        if ($simulador!==false) {
             $simulador_registro = $this->_Modelo->db->Sql_Select('Simulador',Array('id'=>$simulador),1);
-            if ($simulador_registro===false){
+            if ($simulador_registro===false) {
                 return _Sistema_erroControle::Erro_Fluxo('Esse Simulador não existe:',404);
             }
-            if ($pergunta!==false){
+            if ($pergunta!==false) {
                 $pergunta_registro = $this->_Modelo->db->Sql_Select('Simulador_Pergunta',Array('id'=>$simulador,'simulador'=>$simulador_registro->id),1);
-                if ($pergunta_registro===false){
+                if ($pergunta_registro===false) {
                     return _Sistema_erroControle::Erro_Fluxo('Esse Simulador não existe:',404);
                 }
                 $formlink   = 'Simulador/Resposta/Respostas_Edit2/'.$id.'/'.$simulador.'/'.$pergunta;
@@ -361,24 +361,24 @@ class Simulador_RespostaControle extends Simulador_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Respostas_Edit2($id,$simulador = false,$pergunta=false){
+    public function Respostas_Edit2($id,$simulador = false,$pergunta=false) {
         if ($simulador==='false') $simulador = false;
         if ($pergunta==='false') $pergunta = false;
-        if ($id===false){
+        if ($id===false) {
             return _Sistema_erroControle::Erro_Fluxo('Resposta não existe:'. $id,404);
         }
         $id         = (int) $id;
-        if ($simulador!==false){
+        if ($simulador!==false) {
             $simulador    = (int) $simulador;
         }
-        if ($pergunta!==false){
+        if ($pergunta!==false) {
             $pergunta    = (int) $pergunta;
         }
         $titulo     = __('Resposta Editada com Sucesso');
         $dao        = Array('Simulador_Pergunta_Resposta',$id);
         // Recupera Respostas
-        if ($simulador!==false){
-            if ($pergunta!==false){
+        if ($simulador!==false) {
+            if ($pergunta!==false) {
                 $funcao     = '$this->Respostas('.$simulador.','.$pergunta.');';
             } else {
                 $funcao     = '$this->Respostas('.$simulador.');';
@@ -398,16 +398,16 @@ class Simulador_RespostaControle extends Simulador_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Respostas_Del($id = false,$simulador=false,$pergunta=false){
+    public function Respostas_Del($id = false,$simulador=false,$pergunta=false) {
         if ($simulador==='false') $simulador = false;
         if ($pergunta==='false') $pergunta = false;
         
-        if ($id===false){
+        if ($id===false) {
             return _Sistema_erroControle::Erro_Fluxo('Resposta não existe:'. $id,404);
         }
         // Antiinjection
     	$id = (int) $id;
-        if ($simulador!==false){
+        if ($simulador!==false) {
             $simulador    = (int) $simulador;
             $where = Array('simulador'=>$simulador,'id'=>$id);
         } else {
@@ -417,7 +417,7 @@ class Simulador_RespostaControle extends Simulador_Controle
         $resposta = $this->_Modelo->db->Sql_Select('Simulador_Pergunta_Resposta', $where);
         $sucesso =  $this->_Modelo->db->Sql_Delete($resposta);
         // Mensagem
-    	if ($sucesso===true){
+    	if ($sucesso===true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
@@ -432,8 +432,8 @@ class Simulador_RespostaControle extends Simulador_Controle
         }
         $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
         // Recupera Respostas
-        if ($simulador!==false){
-            if ($pergunta!==false){
+        if ($simulador!==false) {
+            if ($pergunta!==false) {
                 $this->Respostas($simulador,$pergunta);
             } else {
                 $this->Respostas($simulador);
@@ -445,22 +445,22 @@ class Simulador_RespostaControle extends Simulador_Controle
         $this->_Visual->Json_Info_Update('Titulo', __('Resposta deletada com Sucesso'));
         $this->_Visual->Json_Info_Update('Historico', false);
     }
-    public function Status($id=false){
-        if ($id===false){
+    public function Status($id=false) {
+        if ($id===false) {
             return false;
         }
         $resultado = $this->_Modelo->db->Sql_Select('Simulador_Pergunta_Resposta', Array('id'=>$id),1);
-        if ($resultado===false || !is_object($resultado)){
+        if ($resultado===false || !is_object($resultado)) {
             return false;
         }
-        if ($resultado->status=='1'){
+        if ($resultado->status=='1') {
             $resultado->status='0';
         } else {
             $resultado->status='1';
         }
         $sucesso = $this->_Modelo->db->Sql_Update($resultado);
-        if ($sucesso){
-            if ($resultado->status==1){
+        if ($sucesso) {
+            if ($resultado->status==1) {
                 $texto = __('Ativado');
             } else {
                 $texto = __('Desativado');

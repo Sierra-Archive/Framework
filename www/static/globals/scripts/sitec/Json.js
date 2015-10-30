@@ -27,7 +27,7 @@ var Json = function (Link, Json, History) {
             i           = 0,
             tam = Object.keys(json['botoes']).length;
         // Percorre Botoes e os fazem
-        for(; i<tam; ++i){
+        for(; i<tam; ++i) {
             if (json['botoes'][i]['clique'] === '$( this ).dialog( "close" );') {
                 footer += '<button class="btn" data-dismiss="modal" aria-hidden="true" onCLick="Sierra.Control_Ajax_Popup_Fechar(\''+json["id"]+'\');">'+json['botoes'][i]['text']+'</button>';
             } else {
@@ -49,8 +49,8 @@ var Json = function (Link, Json, History) {
         var cod         = '',
             script      = '';
     
-        for (var i in json){
-            if(json[i] !== undefined){
+        for (var i in json) {
+            if(json[i] !== undefined) {
                 $(json[i]['location']).html(json[i]['html']);
                 script += json[i]['js'];
             }
@@ -70,8 +70,8 @@ var Json = function (Link, Json, History) {
             script      = '',
             url         = [];
     
-        for (var i in json){
-            if(json[i] !== undefined){
+        for (var i in json) {
+            if(json[i] !== undefined) {
                 url = json[i]['Url'];
                 
                 Sierra.Modelo_Ajax_Chamar(url,'','get',true,true,true);
@@ -90,11 +90,11 @@ var Json = function (Link, Json, History) {
             i2          = 0,
             tam2,
             identificador;
-        for (var i in json){
+        for (var i in json) {
             identificador = $(document.getElementById(json[i]['id']));
             tam2 = Object.keys(json[i]['valores']).length;
             identificador.find('option').remove();
-            for(; i2<tam2; ++i2){
+            for(; i2<tam2; ++i2) {
                 identificador.append(
                     new Option(
                         json[i]['valores']['nome'], 
@@ -116,18 +116,18 @@ var Json = function (Link, Json, History) {
         var script      = '',
             cache = Cache_Ler('Dependencias_Css');
     
-        if(cache===false){
+        if(cache===false) {
             cache = new Array();
         } else {
             cache = cache.split('|');
         }
-        for (var i in json){
+        for (var i in json) {
             // VErifica se ja esta carregado
-            if(!inArray(json[i],cache)){
+            if(!inArray(json[i],cache)) {
                 // Adiciona ao Cache
                 cache.push(json[i]);
                 
-                if (script !== ''){
+                if (script !== '') {
                     script += ',';
                 }
                 script += json[i]+'.css';
@@ -148,7 +148,7 @@ var Json = function (Link, Json, History) {
      */
     function Control_Ajax_JavascriptInterno (json) {
         var script      = '';
-        for (var i in json){
+        for (var i in json) {
             script += json[i];
         }
         if (script !== '') {
@@ -165,19 +165,19 @@ var Json = function (Link, Json, History) {
         var script = '',
             cache = Sierra.Cache_Ler('Dependencias_Js');
     
-        if(cache===false){
+        if(cache===false) {
             cache = new Array();
         } else {
             cache = cache.split('|');
         }
         
-        for (var i in json){
+        for (var i in json) {
             // VErifica se ja esta carregado
-            if(!inArray(json[i],cache)){
+            if(!inArray(json[i],cache)) {
                 // Adiciona ao Cache
                 cache.push(json[i]);
                 
-                if (script !== ''){
+                if (script !== '') {
                     script += ',';
                 }
                 // ADiciona ao codigo
@@ -185,7 +185,7 @@ var Json = function (Link, Json, History) {
             }
         }
         
-        if(script!==''){
+        if(script!=='') {
             // Salva Cache
             Sierra.Cache_Gravar('Dependencias_Js',cache.join('|'));
 
@@ -201,12 +201,12 @@ var Json = function (Link, Json, History) {
      */
     function Control_Ajax_Mensagens (json) {
         var cod = '';
-        for (var i in json){
+        for (var i in json) {
             Sierra.Control_PopMgs_Abrir(json[i]['tipo'],json[i]['mgs_principal'],json[i]['mgs_secundaria']);
         }
         return true;
     };
-    function Modelo_Ajax_JsonTratar(url, data, navegador){
+    function Modelo_Ajax_JsonTratar(url, data, navegador) {
         var cod = '',
             i   = 0,
             tam;
@@ -226,12 +226,12 @@ var Json = function (Link, Json, History) {
             }
             // Chama os Tipos de Json
             tam = Object.keys(data['Info']['Tipo']).length;
-            for(;i<tam;++i){
+            for(;i<tam;++i) {
                 cod += 'Control_Ajax_'+data['Info']['Tipo'][i]+'(data[\''+data['Info']['Tipo'][i]+'\']);';
             }
             eval(cod);
             Control_Layoult_Recarrega();
-        }else if(typeof(data) === "string"){
+        }else if(typeof(data) === "string") {
             Modelo_Ajax_JsonTratar(url, JSON.parse(data), navegador);
         } else {
             console.log('Erro',data);

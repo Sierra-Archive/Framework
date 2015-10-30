@@ -14,10 +14,10 @@ class Agenda_PastaModelo extends Agenda_Modelo
      * @version 0.4.2
      * 
      */
-    public function __construct(){
+    public function __construct() {
       parent::__construct();
     }
-    public function Pastas(){
+    public function Pastas() {
         // Table's primary key
         $primaryKey = 'id';
         $tabela = 'Usuario_Agenda_Pasta';

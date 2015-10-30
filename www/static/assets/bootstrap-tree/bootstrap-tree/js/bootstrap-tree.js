@@ -85,7 +85,7 @@
         delete data.href
         delete data.callback
 
-        $.post(options.href, data, function (d, s, x){
+        $.post(options.href, data, function (d, s, x) {
           
           var doc, type = "html"
             

@@ -5,46 +5,46 @@ final Class Simulador_Tag_Conexao_DAO extends Framework\App\Dao
     protected $motivo;
     protected $motivoid;
     protected $valor;
-    protected static $objetocarregado     = false;     protected static $mysql_colunas       = false;     protected static $mysql_outside       = Array();     protected static $mysql_inside        = Array(); public function __construct() {  parent::__construct(); } public static function Get_Nome(){
+    protected static $objetocarregado     = false;     protected static $mysql_colunas       = false;     protected static $mysql_outside       = Array();     protected static $mysql_inside        = Array(); public function __construct() {  parent::__construct(); } public static function Get_Nome() {
         return MYSQL_SIMULADOR_TAG_CONEXAO;
     }
     /**
      * Fornece Permissão de Copia da tabela
      * @return string
      */
-    public static function Permissao_Copia(){
+    public static function Permissao_Copia() {
         return false;
     }
-    public static function Get_Sigla(){
+    public static function Get_Sigla() {
         return 'SiTC';
     }
-    public static function Get_LinkTable(){
+    public static function Get_LinkTable() {
         return Array(
             'SiT'      =>'tag',
             'CP'       =>'motivoid',
         );
         $links = self::Mod_Conexao_Get_Siglas();
         $array = Array('SiT'         =>  'tag');
-        if (!empty($links)){
-            foreach($links as &$valor){
+        if (!empty($links)) {
+            foreach($links as &$valor) {
                 $array[$valor] = 'motivoid';
             }
         }
         return $array;
     }
-    public static function Get_Engine(){
+    public static function Get_Engine() {
         return 'InnoDB';
     }
-    public static function Get_Charset(){
+    public static function Get_Charset() {
         return 'latin1';
     }
-    public static function Get_Autoadd(){
+    public static function Get_Autoadd() {
         return 1;
     }
-    public static function Get_Class(){
+    public static function Get_Class() {
         return get_class() ; //return str_replace(Array('_DAO'), Array(''), get_class());
     }
-    public static function Gerar_Colunas(){
+    public static function Gerar_Colunas() {
         return Array(
             Array(
                 'mysql_titulo'      => 'tag',
@@ -138,7 +138,7 @@ final Class Simulador_Tag_Conexao_DAO extends Framework\App\Dao
             )
         );
     }
-    private static function Mod_Conexao(){
+    private static function Mod_Conexao() {
         return Array(
             'comercio|Produto'                  => Array(                
                 'nome'      =>  'Caracteristica de Produtos',   
@@ -154,12 +154,12 @@ final Class Simulador_Tag_Conexao_DAO extends Framework\App\Dao
      * @return type
      * @throws Exception
      */
-    public static function Mod_Conexao_Get($tipo=false){
-        if ($tipo!==false){
+    public static function Mod_Conexao_Get($tipo=false) {
+        if ($tipo!==false) {
             $array = Array();
             // Percorre os modulos que aceitam tags
             $percorrer = Simulador_Tag_Conexao_DAO::Mod_Conexao();
-            foreach($percorrer as &$value){
+            foreach($percorrer as &$value) {
                 if (strtoupper($tipo)===strtoupper($value['chave'])) return $value;
             }
             return _Sistema_erroControle::Erro_Fluxo('Tag de Conexão não encontrado. Tipo:'.$tipo,404);
@@ -167,9 +167,9 @@ final Class Simulador_Tag_Conexao_DAO extends Framework\App\Dao
             $array = Array();
             // Percorre os modulos que aceitam tags
             $percorrer = Simulador_Tag_Conexao_DAO::Mod_Conexao();
-            foreach($percorrer as $indice=>&$value){
+            foreach($percorrer as $indice=>&$value) {
                 // Verifica se é do modulo inteiro ou de um submodulo
-                if (strpos($indice, '|')===false){
+                if (strpos($indice, '|')===false) {
                     $modulo     = $indice;
                     $submodulo  = false;
                 } else {
@@ -178,33 +178,33 @@ final Class Simulador_Tag_Conexao_DAO extends Framework\App\Dao
                     $submodulo  = $indice[1];
                 }
                 // Verifica se o modulo é permitido
-                if (\Framework\App\Sistema_Funcoes::Perm_Modulos($modulo,$submodulo)){
+                if (\Framework\App\Sistema_Funcoes::Perm_Modulos($modulo,$submodulo)) {
                    $array[] = $value;
                 }
             }
             return $array;
         }
     }
-    public static function Mod_Conexao_Get_Nome($chave){
+    public static function Mod_Conexao_Get_Nome($chave) {
         // Percorre os modulos que aceitam tags
         $percorrer = self::Mod_Conexao();
-        foreach($percorrer as &$value){
-            if (strtoupper($chave)===strtoupper($value['chave'])){
+        foreach($percorrer as &$value) {
+            if (strtoupper($chave)===strtoupper($value['chave'])) {
                 return $value['nome'];
             }
         }
         return _Sistema_erroControle::Erro_Fluxo('Tag de Conexão não encontrado. '.$chave,404);
     }
-    public static function Mod_Conexao_Get_Chave(){
+    public static function Mod_Conexao_Get_Chave() {
         $repassar = self::Mod_Conexao_Get();
-        foreach($repassar AS &$valor){
+        foreach($repassar AS &$valor) {
             $valor = $valor['chave'];
         }
         return $repassar;
     }
-    public static function Mod_Conexao_Get_Siglas(){
+    public static function Mod_Conexao_Get_Siglas() {
         $repassar = self::Mod_Conexao_Get();
-        foreach($repassar AS &$valor){
+        foreach($repassar AS &$valor) {
             $valor = $valor['sigla'];
         }
         return $repassar;

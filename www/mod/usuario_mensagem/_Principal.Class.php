@@ -20,11 +20,11 @@ class usuario_mensagem_Principal implements \Framework\PrincipalInterface
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    static function Home(&$controle, &$Modelo, &$Visual){
+    static function Home(&$controle, &$Modelo, &$Visual) {
         usuario_mensagem_Controle::MensagensWidgets();
         //usuario_mensagem_Controle::Mensagenslistar_naolidas($Modelo, $Visual, \Framework\App\Acl::Usuario_GetID_Static(),0);
     }
-    static function Widget(&$_Controle){
+    static function Widget(&$_Controle) {
         $_Controle->Widget_Add('Superior',
         '<li class="dropdown mtop5">'.
             '<a class="dropdown-toggle element lajax" data-acao="" data-placement="bottom" data-toggle="tooltip" href="'.URL_PATH.'usuario_mensagem/Suporte/Mensagem_formulario" data-original-title="Novo Chamado">'.
@@ -32,18 +32,18 @@ class usuario_mensagem_Principal implements \Framework\PrincipalInterface
             '</a>'.
         '</li>');
     }    
-    static function Busca(&$controle, &$Modelo, &$Visual,$busca){
+    static function Busca(&$controle, &$Modelo, &$Visual,$busca) {
         return false;
     }
-    static function Config(){
-        return false;
-    }
-    
-    static function Relatorio($data_inicio,$data_final,$filtro=false){
+    static function Config() {
         return false;
     }
     
-    static function Estatistica($data_inicio,$data_final,$filtro=false){
+    static function Relatorio($data_inicio,$data_final,$filtro=false) {
+        return false;
+    }
+    
+    static function Estatistica($data_inicio,$data_final,$filtro=false) {
         return false;
     }
 }

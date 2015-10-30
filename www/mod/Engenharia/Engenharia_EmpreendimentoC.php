@@ -1,13 +1,13 @@
 <?php
 class Engenharia_EmpreendimentoControle extends Engenharia_Controle
 {
-    public function __construct(){
+    public function __construct() {
         parent::__construct();
     }
-    static function Endereco_Empreendimento($true=true){
+    static function Endereco_Empreendimento($true=true) {
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
-        if ($true===true){
+        if ($true===true) {
             $_Controle->Tema_Endereco(__('Empreendimentos'),'Engenharia/Empreendimento/Empreendimentos');
         } else {
             $_Controle->Tema_Endereco(__('Empreendimentos'));
@@ -26,11 +26,11 @@ class Engenharia_EmpreendimentoControle extends Engenharia_Controle
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    public function Main(){
+    public function Main() {
         \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'Engenharia/Empreendimento/Empreendimentos');
         return false;
     }
-    static function Empreendimentos_Tabela(&$empreendimentos){
+    static function Empreendimentos_Tabela(&$empreendimentos) {
         $Registro   = &\Framework\App\Registro::getInstacia();
         $Visual     = &$Registro->_Visual;
         $tabela = Array();
@@ -56,7 +56,7 @@ class Engenharia_EmpreendimentoControle extends Engenharia_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Empreendimentos($export=false){
+    public function Empreendimentos($export=false) {
         self::Endereco_Empreendimento(false);
         $i = 0;
         
@@ -75,9 +75,9 @@ class Engenharia_EmpreendimentoControle extends Engenharia_Controle
             )
         )));
         $empreendimentos = $this->_Modelo->db->Sql_Select('Engenharia_Empreendimento');
-        if ($empreendimentos!==false && !empty($empreendimentos)){
+        if ($empreendimentos!==false && !empty($empreendimentos)) {
             list($tabela,$i) = self::Empreendimentos_Tabela($empreendimentos);
-            if ($export!==false){
+            if ($export!==false) {
                 self::Export_Todos($export,$tabela, 'Empreendimentos');
             } else {
                 $this->_Visual->Show_Tabela_DataTable(
@@ -107,7 +107,7 @@ class Engenharia_EmpreendimentoControle extends Engenharia_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Empreendimentos_Add(){
+    public function Empreendimentos_Add() {
         self::Endereco_Empreendimento();
         // Carrega Config
         $titulo1    = __('Adicionar Empreendimento');
@@ -124,7 +124,7 @@ class Engenharia_EmpreendimentoControle extends Engenharia_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Empreendimentos_Add2(){
+    public function Empreendimentos_Add2() {
         $titulo     = __('Empreendimento Adicionado com Sucesso');
         $dao        = 'Engenharia_Empreendimento';
         $funcao     = '$this->Empreendimentos();';
@@ -139,7 +139,7 @@ class Engenharia_EmpreendimentoControle extends Engenharia_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Empreendimentos_Edit($id){
+    public function Empreendimentos_Edit($id) {
         self::Endereco_Empreendimento();
         // Carrega Config
         $titulo1    = 'Editar Empreendimento (#'.$id.')';
@@ -157,7 +157,7 @@ class Engenharia_EmpreendimentoControle extends Engenharia_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Empreendimentos_Edit2($id){
+    public function Empreendimentos_Edit2($id) {
         $titulo     = __('Empreendimento Editado com Sucesso');
         $dao        = Array('Engenharia_Empreendimento',$id);
         $funcao     = '$this->Empreendimentos();';
@@ -173,7 +173,7 @@ class Engenharia_EmpreendimentoControle extends Engenharia_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Empreendimentos_Del($id){
+    public function Empreendimentos_Del($id) {
         
         
     	$id = (int) $id;
@@ -181,7 +181,7 @@ class Engenharia_EmpreendimentoControle extends Engenharia_Controle
         $empreendimento = $this->_Modelo->db->Sql_Select('Engenharia_Empreendimento', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($empreendimento);
         // Mensagem
-    	if ($sucesso===true){
+    	if ($sucesso===true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
@@ -212,7 +212,7 @@ class Engenharia_EmpreendimentoControle extends Engenharia_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Estoque_Retirar(){
+    public function Estoque_Retirar() {
         
         // Carrega Config
         $titulo1    = __('Retirar Produto do Estoque');
@@ -229,12 +229,12 @@ class Engenharia_EmpreendimentoControle extends Engenharia_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Estoque_Retirar2(){
+    public function Estoque_Retirar2() {
         if (!isset($_POST['idproduto']) || !isset($_POST['qnt'])) return false;
         
         $idproduto  = (int) $_POST['idproduto'];
         $qnt        = (int) $_POST['qnt'];
-        if (comercio_EstoqueControle::Estoque_Retorna($idproduto)<$qnt){
+        if (comercio_EstoqueControle::Estoque_Retorna($idproduto)<$qnt) {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),
@@ -251,7 +251,7 @@ class Engenharia_EmpreendimentoControle extends Engenharia_Controle
             $sucesso2   = __('Produto retirado do estoque com sucesso.');
             $alterar    = Array();
             $sucesso = $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
-            if ($sucesso){
+            if ($sucesso) {
                 $motivo = 'Engenharia';
                 $identificador  = $this->_Modelo->db->Sql_Select('Engenharia_Estoque_Retirada', Array(),1,'id DESC');
                 $idproduto  = $identificador->idproduto;
@@ -267,7 +267,7 @@ class Engenharia_EmpreendimentoControle extends Engenharia_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Empreendimento_Receber(){
+    public function Empreendimento_Receber() {
         
         // Carrega Config
         $titulo1    = __('Adicionar Conta a Receber');
@@ -283,7 +283,7 @@ class Engenharia_EmpreendimentoControle extends Engenharia_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Empreendimento_Receber2(){
+    public function Empreendimento_Receber2() {
         
         $titulo     = __('Conta a Receber Adicionada com Sucesso');
         $dao        = 'Engenharia_Empreendimento_Custo';
@@ -292,7 +292,7 @@ class Engenharia_EmpreendimentoControle extends Engenharia_Controle
         $sucesso2   = __('Conta a Receber cadastrada com sucesso.');
         $alterar    = Array();
         $sucesso = $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
-        if ($sucesso){
+        if ($sucesso) {
             $identificador  = $this->_Modelo->db->Sql_Select('Engenharia_Empreendimento_Custo', Array(),1,'id DESC');
             $idempreendimento  = $identificador->empreendimento;
             $parcela_data   = $identificador->data_pag_prevista;

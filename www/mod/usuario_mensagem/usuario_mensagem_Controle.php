@@ -12,10 +12,10 @@ class usuario_mensagem_Controle extends \Framework\App\Controle
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    public function __construct(){
+    public function __construct() {
         parent::__construct();
     }
-    public function Mensagens_Mostrar($tipodemensagem = false){
+    public function Mensagens_Mostrar($tipodemensagem = false) {
         // ORGANIZA E MANDA CONTEUDO
         $this->_Visual->Json_Info_Update('Titulo',$this->Mensagenslistar(0, $tipodemensagem));
     } 
@@ -23,42 +23,42 @@ class usuario_mensagem_Controle extends \Framework\App\Controle
      * lISTA OS SUPORTES
      * @param type $admin
      */
-    protected function Mensagenslistar($admin = 0, $tipodemensagem = false){
+    protected function Mensagenslistar($admin = 0, $tipodemensagem = false) {
         $this->_Visual->Blocar('<a title="Adicionar Mensagem de Suporte" class="btn btn-success lajax explicar-titulo" data-acao="" href="'.URL_PATH.'usuario_mensagem/Suporte/Mensagem_formulario">Adicionar novo Suporte</a><div class="space15"></div>');
         $i = 0;
         $mensagens = Array();
-        if($admin==0 || $admin=='0'){
+        if($admin==0 || $admin=='0') {
             $proprietario = $this->_Acl->Usuario_GetID();
         } else {
             $proprietario = 0;
         }
         $this->_Modelo->Mensagens_Retorna($mensagens,$proprietario,1,$tipodemensagem);
         if(is_object($mensagens)) $mensagens = Array(0=>$mensagens);
-        if(!empty($mensagens) && $mensagens!==false){
+        if(!empty($mensagens) && $mensagens!==false) {
             $i = usuario_mensagem_Controle::Mensagens_TabelaMostrar($this->_Visual, $mensagens,$admin);
         } else {
-            if($admin==0){
-                if($tipodemensagem===false){
+            if($admin==0) {
+                if($tipodemensagem===false) {
                     $texto_vazio = __('Você não possui nenhum chamado.');
-                }else if($tipodemensagem=='nov'){
+                }else if($tipodemensagem=='nov') {
                     $texto_vazio = __('Você não possui chamados novos.');
-                }else if($tipodemensagem=='fin'){
+                }else if($tipodemensagem=='fin') {
                     $texto_vazio = __('Você não possui nenhum chamados finalizados.');
-                }else if($tipodemensagem=='lim'){
+                }else if($tipodemensagem=='lim') {
                     $texto_vazio = __('Você não possui nenhum chamados em tempo limite.');
-                }else if($tipodemensagem=='esg'){
+                }else if($tipodemensagem=='esg') {
                     $texto_vazio = __('Você não possui nenhum chamados Esgotado.');
                 }
             } else {
-                if($tipodemensagem===false){
+                if($tipodemensagem===false) {
                     $texto_vazio = __('O sistema não possui nenhum chamado.');
-                }else if($tipodemensagem=='nov'){
+                }else if($tipodemensagem=='nov') {
                     $texto_vazio = __('O sistema não possui nenhum chamados novos.');
-                }else if($tipodemensagem=='fin'){
+                }else if($tipodemensagem=='fin') {
                     $texto_vazio = __('O sistema não possui nenhum chamados finalizados.');
-                }else if($tipodemensagem=='lim'){
+                }else if($tipodemensagem=='lim') {
                     $texto_vazio = __('O sistema não possui nenhum chamados em tempo limite.');
-                }else if($tipodemensagem=='esg'){
+                }else if($tipodemensagem=='esg') {
                     $texto_vazio = __('O sistema não possui nenhum chamados Esgotado.');
                 }
             }
@@ -66,28 +66,28 @@ class usuario_mensagem_Controle extends \Framework\App\Controle
         }
         
         // Titulos
-        if($admin==0){
-            if($tipodemensagem===false){
+        if($admin==0) {
+            if($tipodemensagem===false) {
                 $titulo  = __('Todos os seus Chamados');
-            }else if($tipodemensagem=='nov'){
+            }else if($tipodemensagem=='nov') {
                 $titulo  = __('Todos seus novos Chamados');
-            }else if($tipodemensagem=='fin'){
+            }else if($tipodemensagem=='fin') {
                 $titulo  = __('Todos seus Chamados Finalizados');
-            }else if($tipodemensagem=='lim'){
+            }else if($tipodemensagem=='lim') {
                 $titulo  = __('Todos seus Chamados em tempo limite');
-            }else if($tipodemensagem=='esg'){
+            }else if($tipodemensagem=='esg') {
                 $titulo  = __('Todos seus Chamados em tempo Esgotado');
             }
         } else {
-            if($tipodemensagem===false){
+            if($tipodemensagem===false) {
                 $titulo  = __('Todos os Chamados do Sistema');
-            }else if($tipodemensagem=='nov'){
+            }else if($tipodemensagem=='nov') {
                 $titulo  = __('Todos novos Chamados do Sistema');
-            }else if($tipodemensagem=='fin'){
+            }else if($tipodemensagem=='fin') {
                 $titulo  = __('Todos Chamados Finalizados do Sistema');
-            }else if($tipodemensagem=='lim'){
+            }else if($tipodemensagem=='lim') {
                 $titulo  = __('Todos Chamados em Tempo lLimite do Sistema');
-            }else if($tipodemensagem=='esg'){
+            }else if($tipodemensagem=='esg') {
                 $titulo  = __('Todos Chamados em Tempo Esgotado do Sistema');
             }
         }
@@ -95,22 +95,22 @@ class usuario_mensagem_Controle extends \Framework\App\Controle
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         return $titulo;
     }
-    static function Mensagenslistar_naolidas(&$Modelo,&$Visual,$usuarioid,$admin = 0){
+    static function Mensagenslistar_naolidas(&$Modelo,&$Visual,$usuarioid,$admin = 0) {
         $i = 0;
         $mensagens = Array();
         if($admin==0) $usuario = $usuarioid;
         else          $usuario = 0;
         usuario_mensagem_Modelo::Mensagens_Retornanaolidas($Modelo,$mensagens,$usuario,1);
-        if(!empty($mensagens)){
+        if(!empty($mensagens)) {
             $i = usuario_mensagem_Controle::Mensagens_TabelaMostrar($Visual, $mensagens,$admin);
             $Visual->Bloco_Unico_CriaJanela('Chamados não lidos ('.$i.')','',100);
         }
         // ORGANIZA E MANDA CONTEUDO
         $this->_Visual->Json_Info_Update('Titulo', __('Chamados não lidos'));  
     }
-    static function Mensagens_TabelaMostrar(&$Visual,&$mensagens,$admin=0){
+    static function Mensagens_TabelaMostrar(&$Visual,&$mensagens,$admin=0) {
         $_Registro = &\Framework\App\Registro::getInstacia();
-        $label = function($nometipo){
+        $label = function($nometipo) {
             if($nometipo=='Chamado Novo')       $tipo = 'success';
             else if($nometipo=='Esgotado')      $tipo = 'important';
             else if($nometipo=='Finalizado')    $tipo = 'inverse';
@@ -126,7 +126,7 @@ class usuario_mensagem_Controle extends \Framework\App\Controle
         $perm_del = $_Registro->_Acl->Get_Permissao_Url('usuario_mensagem/Admin/Mensagem_Del');
         
         foreach ($mensagens as &$valor) {
-            if($valor->lido===false){
+            if($valor->lido===false) {
                 $valor->assunto2                = '<b>'.$valor->assunto2.'</b>';
             }
             $tabela['Protocolo'][$i]            = '#'.$valor->id;
@@ -134,7 +134,7 @@ class usuario_mensagem_Controle extends \Framework\App\Controle
             if($admin==1) $tabela['De'][$i]     = $valor->escritor_nome;
             $tabela['Assunto'][$i]              = $valor->assunto2;
             $tabela['Tipo'][$i]                 = $label($valor->tipo);
-            if($valor->datapassada==1){
+            if($valor->datapassada==1) {
                 $tabela['Últ. Alteração'][$i]   = $valor->datapassada.' hora atrás';
             } else {
                 $tabela['Últ. Alteração'][$i]   = $valor->datapassada.' horas atrás';
@@ -142,7 +142,7 @@ class usuario_mensagem_Controle extends \Framework\App\Controle
             
             $tabela['Data de Criação'][$i]      = $valor->log_date_add; //date_replace($valor->log_date_add, "d/m/y | H:i");
             $tabela['Ultima Modificação'][$i]   = $valor->log_date_edit; //date_replace($valor->log_date_edit, "d/m/y | H:i");
-            if($valor->tipo!='Finalizado'){
+            if($valor->tipo!='Finalizado') {
                 $tabela['Visualizar Mensagem'][$i]  = $Visual->Tema_Elementos_Btn('Personalizado' ,    Array('Finalizar Mensagem'         ,'usuario_mensagem/Suporte/Finalizar/'.$valor->id.'/'    ,'','download','inverse'),$perm_finalizar);
             } else {
                 $tabela['Visualizar Mensagem'][$i] = '';
@@ -156,7 +156,7 @@ class usuario_mensagem_Controle extends \Framework\App\Controle
         unset($tabela);
         return $i;
     }
-    public function MensagemExibir($mensagem){
+    public function MensagemExibir($mensagem) {
         $id = (int) $mensagem;
         $mensagens = Array();
         $tabela = Array();
@@ -166,7 +166,7 @@ class usuario_mensagem_Controle extends \Framework\App\Controle
         $titulo = $amensagem->assunto2;
         if($titulo=='' || $titulo==NULL) $titulo = __('Conversa sem Assunto');
         // Se tiver config maluco da skafe mostra
-        if(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_mensagem_Obs')){
+        if(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_mensagem_Obs')) {
             $where = Array('id'=>$amensagem->cliente);
             $usuario = $this->_Modelo->db->Sql_Select('Usuario',$where,1);
             $tabela['Mensagem'][$i] = '<b>'.$amensagem->cliente2.':</b> '.$usuario->obs;
@@ -174,9 +174,9 @@ class usuario_mensagem_Controle extends \Framework\App\Controle
             ++$i;
         }
         // Continua
-        if($mensagens->is_empty==NULL){
+        if($mensagens->is_empty==NULL) {
             $mensagens->rewind();
-            while ($mensagens->valid){
+            while ($mensagens->valid) {
                 $tabela['Mensagem'][$i] = '<b>'.$mensagens->current->escritor_nome.':</b> '.$mensagens->current->resposta;
                 $tabela['Data'][$i] = $mensagens->current->log_date_add;
                 ++$i;
@@ -184,7 +184,7 @@ class usuario_mensagem_Controle extends \Framework\App\Controle
             }
             $info = '<b>Setor:</b> '.$amensagem->setor2.
             '<br><b>Assunto:</b> '.$titulo;
-            if((\Framework\App\Sistema_Funcoes::Perm_Modulos('comercio') && file_exists(MOD_PATH.'comercio'.DS.'comercio_Controle.php'))){
+            if((\Framework\App\Sistema_Funcoes::Perm_Modulos('comercio') && file_exists(MOD_PATH.'comercio'.DS.'comercio_Controle.php'))) {
                 $info .= '<br><b>Cliente:</b> '.$amensagem->cliente2.
                 '<br><b>Origem:</b> '.$amensagem->origem2.
                 '<br><b>Marca:</b> '.$amensagem->marca2.
@@ -201,7 +201,7 @@ class usuario_mensagem_Controle extends \Framework\App\Controle
             unset($tabela);
         }
     }
-    static function Mensagem_formulario_Static($cliente=0){
+    static function Mensagem_formulario_Static($cliente=0) {
         // Carrega campos e retira os que nao precisam
         $campos = Usuario_Mensagem_DAO::Get_Colunas();
         self::Campos_deletar($campos);
@@ -216,11 +216,11 @@ class usuario_mensagem_Controle extends \Framework\App\Controle
         \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos);
     
     }
-    public function Mensagem_formulario($cliente=0){
+    public function Mensagem_formulario($cliente=0) {
         usuario_mensagem_SuporteControle::Endereco_Suporte(true);
         self::Mensagem_formulario_Static($cliente);
     }
-    public function Resposta_formulario($mensagemid){
+    public function Resposta_formulario($mensagemid) {
         $mensagemid = (int)$mensagemid;
         
         $form = new \Framework\Classes\Form('mensagem_resposta',SISTEMA_MODULO.'/'.SISTEMA_SUB.'/Resposta_inserir/'.$mensagemid.'/','formajax','full');
@@ -233,15 +233,15 @@ class usuario_mensagem_Controle extends \Framework\App\Controle
     /**
      * Formulario Suporter - Inserir Mensagem de FOrmulario
      */
-    public function Mensagem_inserir(){
+    public function Mensagem_inserir() {
         
         $cliente = false;
-        if(isset($_POST["cliente"])){
+        if(isset($_POST["cliente"])) {
             $clienteid = (int) $_POST["cliente"];
             $cliente  = $this->_Modelo->db->Sql_Select('Usuario', '{sigla}id=\''.$clienteid.'\'',1,'id DESC');
         }
         
-        if($cliente===false){
+        if($cliente===false) {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),
@@ -253,10 +253,10 @@ class usuario_mensagem_Controle extends \Framework\App\Controle
         }
         
         // Nao sei daonde Vem esse Paranome, foi feito isso pra consertar o erro
-        if(isset($_POST["paranome"])){
+        if(isset($_POST["paranome"])) {
             $paranome = \Framework\App\Conexao::anti_injection($_POST["paranome"]);
         } else {
-            if($cliente->razao_social!==''){
+            if($cliente->razao_social!=='') {
                 $paranome = $cliente->razao_social;
             } else {
                 $paranome = $cliente->nome;
@@ -264,7 +264,7 @@ class usuario_mensagem_Controle extends \Framework\App\Controle
         }
         
         // Pega para id , mesmo problema;
-        if(isset($_POST["paraid"])){
+        if(isset($_POST["paraid"])) {
             $paraid = (int) $_POST["paraid"];
         } else {
             $paraid = $clienteid;
@@ -304,11 +304,11 @@ class usuario_mensagem_Controle extends \Framework\App\Controle
         $mailer = new \Framework\Classes\Email();
         $enviar = '';
         $emaildosetor = $setor->email;
-        if(strpos($emaildosetor, ',')===false){
+        if(strpos($emaildosetor, ',')===false) {
             $enviar .= '->setTo(\''.$emaildosetor.'\', \''.$setor->nome.'\')';
         } else {
             $emaildosetor = explode(',', $emaildosetor);
-            foreach($emaildosetor as &$valor){
+            foreach($emaildosetor as &$valor) {
                 $enviar .= '->setTo(\''.$valor.'\', \''.$setor->nome.'\')';
             }
         }
@@ -322,12 +322,12 @@ class usuario_mensagem_Controle extends \Framework\App\Controle
         $this->VisualizadordeMensagem($identificador->id);
         $this->_Visual->Json_Info_Update('Historico', false); 
     }
-    public function Resposta_inserir(){
-        if(!isset($_POST["mensagem"]) || !isset($_POST['resposta'])){
+    public function Resposta_inserir() {
+        if(!isset($_POST["mensagem"]) || !isset($_POST['resposta'])) {
             return _Sistema_erroControle::Erro_Fluxo('Página não Encontrada',404);
         }
         $mensagem = (int) $_POST["mensagem"];
-        if(!is_int($mensagem) || $mensagem==0){
+        if(!is_int($mensagem) || $mensagem==0) {
             return _Sistema_erroControle::Erro_Fluxo('Página não Encontrada',404);
         }
         $resposta = \Framework\App\Conexao::anti_injection($_POST["resposta"]);
@@ -354,11 +354,11 @@ class usuario_mensagem_Controle extends \Framework\App\Controle
         $mailer = new \Framework\Classes\Email();
         $enviar = '';
         $emaildosetor = $setor->email;
-        if(strpos($emaildosetor, ',')===false){
+        if(strpos($emaildosetor, ',')===false) {
             $enviar = '->setTo(\''.$emaildosetor.'\', \''.$setor->nome.'\')';
         } else {
             $emaildosetor = explode(',', $emaildosetor);
-            foreach($emaildosetor as &$valor){
+            foreach($emaildosetor as &$valor) {
                 $enviar .= '->setTo(\''.$valor.'\', \''.$setor->nome.'\')';
             }
         }
@@ -368,7 +368,7 @@ class usuario_mensagem_Controle extends \Framework\App\Controle
         '->addGenericHeader(\'Content-Type\', \'text/html; charset="utf-8"\')'.
         '->setMessage(\'<strong><b>Resposta:</b> \'.$resposta.\'</strong>\')'.
         '->setWrap(78)->send();');
-        if($sucesso===true){
+        if($sucesso===true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Resposta inserida com Sucesso'),
@@ -385,7 +385,7 @@ class usuario_mensagem_Controle extends \Framework\App\Controle
         $this->VisualizadordeMensagem($mensagem);
         $this->_Visual->Json_Info_Update('Historico', false); 
     }
-    public static function MensagensWidgets(){
+    public static function MensagensWidgets() {
         $Registro = &\Framework\App\Registro::getInstacia();
         $Modelo = &$Registro->_Modelo;
         $Visual = &$Registro->_Visual;
@@ -398,18 +398,18 @@ class usuario_mensagem_Controle extends \Framework\App\Controle
         #update -> Aqui tera que ser Sql_Contar (Mais performatico, aqui ta perdendo mt tempo de processamento)
         $array = $Modelo->db->Sql_Select('Usuario_Mensagem',$where,0, '','assunto.tempocli,log_date_edit,log_date_add,finalizado');
         if(is_object($array)) $array = Array(0=>$array);
-        if($array!==false && !empty($array)){
+        if($array!==false && !empty($array)) {
             reset($array);
-            foreach($array as $valor){
+            foreach($array as $valor) {
                 ++$total;
                 list($tipo,$tempopassado) = usuario_mensagem_Modelo::Mensagem_TipoChamado($valor);
-                if($tipo=='fin'){
+                if($tipo=='fin') {
                     ++$finalizado;
-                }else if($tipo=='nov'){
+                }else if($tipo=='nov') {
                     ++$novos;
-                }else if($tipo=='lim'){
+                }else if($tipo=='lim') {
                     ++$espera;
-                }else if($tipo=='esg'){
+                }else if($tipo=='esg') {
                     ++$esgotado;
                 } else {
                     ++$finalizado;
@@ -493,9 +493,9 @@ class usuario_mensagem_Controle extends \Framework\App\Controle
             121
         );
     }
-    static function Campos_deletar(&$campos){
+    static function Campos_deletar(&$campos) {
         // SE nao tiver acesso ao comercio bloqueia
-        if(!(\Framework\App\Sistema_Funcoes::Perm_Modulos('comercio'))){
+        if(!(\Framework\App\Sistema_Funcoes::Perm_Modulos('comercio'))) {
             self::DAO_Campos_Retira($campos, 'cliente');
             self::DAO_Campos_Retira($campos, 'marca');
             self::DAO_Campos_Retira($campos, 'linha');

@@ -20,7 +20,7 @@ class comercio_venda_Principal implements \Framework\PrincipalInterface
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    static function Home(&$controle, &$Modelo, &$Visual){
+    static function Home(&$controle, &$Modelo, &$Visual) {
         $html = '';
         $i = 1;
         $j = 0;
@@ -32,10 +32,10 @@ class comercio_venda_Principal implements \Framework\PrincipalInterface
         $where = '(data_fechada=\'0000-00-00 00:00:00\' || data_fechada=\'\')';
         $carrinhos = $Modelo->db->Sql_Select('Comercio_Venda_Carrinho');
         if (is_object($carrinhos)) $carrinhos = Array($carrinhos);
-        if ($carrinhos!==false && !empty($carrinhos)){
-            foreach($carrinhos as &$valor){
+        if ($carrinhos!==false && !empty($carrinhos)) {
+            foreach($carrinhos as &$valor) {
                 // SE nao for Balcao Adiciona a Mesa Ocupada
-                if ($valor->mesa!='' && $valor->mesa!=0){
+                if ($valor->mesa!='' && $valor->mesa!=0) {
                     $mesas_ocupadas[$valor->mesa] = Array(
                         'Pago'=>$valor->pago,
                         'Valor'=>$valor->valor,
@@ -55,7 +55,7 @@ class comercio_venda_Principal implements \Framework\PrincipalInterface
                 
                     // Contador por Linha
                     ++$j;
-                    if ($j>=4){
+                    if ($j>=4) {
                         $j = 0;
                         $html .= '</div><div class="row">';
                     }
@@ -66,11 +66,11 @@ class comercio_venda_Principal implements \Framework\PrincipalInterface
         // FAz BUsca Por Todas as Mesas
         $mesas = $Modelo->db->Sql_Select('Comercio_Venda_Mesa');
         if (is_object($mesas)) $mesas = Array($mesas);
-        if ($mesas!==false && !empty($mesas)){
-            foreach($mesas as &$valor){
+        if ($mesas!==false && !empty($mesas)) {
+            foreach($mesas as &$valor) {
                 
                 // SE Tiver Aberta Bota ali
-                if (isset($mesas_ocupadas[$valor->id]) && $mesas_ocupadas[$valor->id]!==false){
+                if (isset($mesas_ocupadas[$valor->id]) && $mesas_ocupadas[$valor->id]!==false) {
                     $cor = 'important';
                     $numero = $mesas_ocupadas[$valor->id]['Valor'];
                 } else {
@@ -89,7 +89,7 @@ class comercio_venda_Principal implements \Framework\PrincipalInterface
                 
                 // Contador por Linha
                 ++$j;
-                if ($j>=4){
+                if ($j>=4) {
                     $j = 0;
                     $html .= '</div><div class="row">';
                 }
@@ -97,7 +97,7 @@ class comercio_venda_Principal implements \Framework\PrincipalInterface
         }
         
         
-        if ($html===''){
+        if ($html==='') {
             return false;
         }
         
@@ -134,7 +134,7 @@ class comercio_venda_Principal implements \Framework\PrincipalInterface
         
         return true;
     }
-    static function Widget(&$_Controle){
+    static function Widget(&$_Controle) {
         $_Controle->Widget_Add('Superior',
         '<li class="dropdown mtop5">'.
             '<a class="dropdown-toggle element lajax" data-acao="" data-placement="bottom" data-toggle="tooltip" href="'.URL_PATH.'comercio_venda/Carrinho/Carrinhos_Add" data-original-title="Novo Caixa">'.
@@ -142,10 +142,10 @@ class comercio_venda_Principal implements \Framework\PrincipalInterface
             '</a>'.
         '</li>');
     }
-    static function Busca(&$controle, &$Modelo, &$Visual,$busca){
+    static function Busca(&$controle, &$Modelo, &$Visual,$busca) {
         return false;
     }
-    static function Config(){
+    static function Config() {
         return false;
     }
 

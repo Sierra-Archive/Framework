@@ -19,7 +19,7 @@ class biblioteca_Principal implements \Framework\PrincipalInterface
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    static function Home(&$controle, &$Modelo, &$Visual){
+    static function Home(&$controle, &$Modelo, &$Visual) {
         self::Widgets();
         return true;
     }
@@ -29,15 +29,15 @@ class biblioteca_Principal implements \Framework\PrincipalInterface
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    static function Config(){
+    static function Config() {
         return false;
     }
     
-    static function Relatorio($data_inicio,$data_final,$filtro=false){
+    static function Relatorio($data_inicio,$data_final,$filtro=false) {
         return false;
     }
     
-    static function Estatistica($data_inicio,$data_final,$filtro=false){
+    static function Estatistica($data_inicio,$data_final,$filtro=false) {
         return false;
     }
     /**
@@ -45,7 +45,7 @@ class biblioteca_Principal implements \Framework\PrincipalInterface
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public static function Widgets(){
+    public static function Widgets() {
         $Registro = &\Framework\App\Registro::getInstacia();
         $Modelo = &$Registro->_Modelo;
         $Visual = &$Registro->_Visual;
@@ -67,20 +67,20 @@ class biblioteca_Principal implements \Framework\PrincipalInterface
     /***********************
      * BUSCAS
      */
-    static function Busca(&$controle, &$Modelo, &$Visual,$busca){
+    static function Busca(&$controle, &$Modelo, &$Visual,$busca) {
         $i = 0;
         // Busca Bibliotecas
         $result = self::Busca_Bibliotecas($controle, $Modelo, $Visual, $busca);
-        if ($result!==false){
+        if ($result!==false) {
             $i = $i + $result;
         }
-        if (is_int($i) && $i>0){
+        if (is_int($i) && $i>0) {
             return $i;
         } else {
             return false;
         }
     }
-    static function Busca_Bibliotecas($controle, $Modelo, $Visual, $busca){
+    static function Busca_Bibliotecas($controle, $Modelo, $Visual, $busca) {
         $where = Array(Array(
           'nome'                    => '%'.$busca.'%',
           'obs'                     => '%'.$busca.'%',
@@ -92,13 +92,13 @@ class biblioteca_Principal implements \Framework\PrincipalInterface
         // add botao
         $Visual->Blocar('<a title="Adicionar Pasta a Biblíoteca" class="btn btn-success lajax explicar-titulo" data-acao="" href="'.URL_PATH.'biblioteca/Biblioteca/Bibliotecas_Add">Adicionar nova Biblíoteca</a><div class="space15"></div>');
         if (is_object($bibliotecas)) $bibliotecas = Array(0=>$bibliotecas);
-        if ($bibliotecas!==false && !empty($bibliotecas)){
+        if ($bibliotecas!==false && !empty($bibliotecas)) {
             $funcao = '';
             $tabela = Array();
             $i = 0;
-            if ($raiz!==false && $raiz!=0){
+            if ($raiz!==false && $raiz!=0) {
                 $resultado_pasta = $Modelo->db->Sql_Select('Biblioteca', Array('id'=>$raiz),1);
-                if ($resultado_pasta===false){
+                if ($resultado_pasta===false) {
                     return _Sistema_erroControle::Erro_Fluxo('Essa Pasta não existe:'. $raiz,404);
                 }
                 $tabela['Tipo'][$i]             = '<a href="'.URL_PATH.'biblioteca/Biblioteca/Bibliotecas/'.$resultado_pasta->parent.'" border="1" class="lajax" data-acao=""><img alt'.__('Voltar para Diretório Anterior').' src="'.WEB_URL.'img'.US.'arquivos'.US.'pastavoltar.png" alt="0" /></a>';
@@ -110,26 +110,26 @@ class biblioteca_Principal implements \Framework\PrincipalInterface
                 $tabela['Funções'][$i]          = '';
                 ++$i;
             }
-            if ($bibliotecas!==false){
+            if ($bibliotecas!==false) {
                 // Percorre Bibliotecas
                 if (is_object($bibliotecas)) $bibliotecas = Array(0=>$bibliotecas);
                 reset($bibliotecas);
-                if (!empty($bibliotecas)){
+                if (!empty($bibliotecas)) {
                     $perm_download = \Framework\App\Registro::getInstacia()->_Acl->Get_Permissao_Url('biblioteca/Biblioteca/Download');
                     $perm_editar = \Framework\App\Registro::getInstacia()->_Acl->Get_Permissao_Url('biblioteca/Biblioteca/Bibliotecas_Edit');
                     $perm_del = \Framework\App\Registro::getInstacia()->_Acl->Get_Permissao_Url('biblioteca/Biblioteca/Bibliotecas_Del');
 
                     foreach ($bibliotecas as &$valor) {
-                        if ($valor->tipo==1){
+                        if ($valor->tipo==1) {
                             $tipo       =   'pasta';
                             $foto = WEB_URL.'img'.US.'arquivos'.US.$tipo.'.png';
                         } else {
                             $tipo  = \Framework\App\Sistema_Funcoes::Control_Arq_Ext($valor->ext);
                             $endereco = ARQ_PATH.'bibliotecas'.DS.strtolower($valor->arquivo).'.'.$tipo;
-                            if (!file_exists($endereco)){
+                            if (!file_exists($endereco)) {
                                 continue;
                             }
-                            if (file_exists(WEB_PATH.'img'.US.'arquivos'.US.$tipo.'.png')){
+                            if (file_exists(WEB_PATH.'img'.US.'arquivos'.US.$tipo.'.png')) {
                                 $foto = WEB_URL.'img'.US.'arquivos'.US.$tipo.'.png';
                             } else {
                                 $foto = WEB_URL.'img'.US.'arquivos'.US.'desconhecido.png';
@@ -138,8 +138,8 @@ class biblioteca_Principal implements \Framework\PrincipalInterface
 
                         // Tamanho
                         $tamanho = (int) $valor->tamanho;
-                        if ($tamanho === 0){
-                            if ($valor->tipo==1){
+                        if ($tamanho === 0) {
+                            if ($valor->tipo==1) {
                                 $tamanho = biblioteca_Controle::Bibliotecas_AtualizaTamanho_Pai($valor);
                             } else {
                                 $tamanho = filesize($endereco);
@@ -147,7 +147,7 @@ class biblioteca_Principal implements \Framework\PrincipalInterface
                             }
                         }
 
-                        if ($valor->tipo==1){
+                        if ($valor->tipo==1) {
                             $tabela['Tipo'][$i]             = '<a href="'.URL_PATH.'biblioteca/Biblioteca/Bibliotecas/'.$valor->id.'/" border="1" class="lajax" data-acao=""><img src="'.$foto.'" alt="'.__('Abrir Diretório').'" /></a>';
                             $tabela['Nome'][$i]             = '<a href="'.URL_PATH.'biblioteca/Biblioteca/Bibliotecas/'.$valor->id.'/" border="1" class="lajax" data-acao="">'.$valor->nome.'</a>';
                         } else {
@@ -159,7 +159,7 @@ class biblioteca_Principal implements \Framework\PrincipalInterface
                         $tabela['Criador'][$i]          = $valor->usuario2;
                         $tabela['Data'][$i]             = $valor->log_date_add;
 
-                        if ($valor->tipo==1){
+                        if ($valor->tipo==1) {
                             $tabela['Funções'][$i]          = $Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Pasta'        ,'biblioteca/Biblioteca/Bibliotecas_Edit/'.$valor->id.'/'.$raiz    ,''),$perm_editar).
                                                               $Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Pasta'       ,'biblioteca/Biblioteca/Bibliotecas_Del/'.$valor->id.'/'.$raiz     ,'Deseja realmente deletar essa pasta ?'),$perm_del);
                         } else {
@@ -172,11 +172,11 @@ class biblioteca_Principal implements \Framework\PrincipalInterface
                     }
                 }
             }
-            if ($funcao===''){
+            if ($funcao==='') {
                 unset($tabela['Funções']);
             }
             // Desconta Primeiro Registro
-            if ($raiz!==false && $raiz!=0){
+            if ($raiz!==false && $raiz!=0) {
                 $i = $i-1;
             }
             // Retorna List
@@ -197,7 +197,7 @@ class biblioteca_Principal implements \Framework\PrincipalInterface
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public static function Manutencao(&$log){
+    public static function Manutencao(&$log) {
         $Registro = &\Framework\App\Registro::getInstacia();
         $Modelo = &$Registro->_Modelo;
         $Visual = &$Registro->_Visual;
@@ -210,8 +210,8 @@ class biblioteca_Principal implements \Framework\PrincipalInterface
         if ($biblioteca===false)     $biblioteca = Array();
         
         // Verifica se Todos tem Download Válido
-        if (!empty($biblioteca)){
-            foreach($biblioteca as $valor){
+        if (!empty($biblioteca)) {
+            foreach($biblioteca as $valor) {
 
             }
         }

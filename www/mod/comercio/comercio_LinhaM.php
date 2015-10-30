@@ -13,10 +13,10 @@ class comercio_LinhaModelo extends comercio_Modelo
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    public function __construct(){
+    public function __construct() {
         parent::__construct();
     }
-    public function Linhas(){
+    public function Linhas() {
         
         // Table's primary key
         $primaryKey = 'id';
@@ -25,16 +25,16 @@ class comercio_LinhaModelo extends comercio_Modelo
         $perm_editar = $this->_Registro->_Acl->Get_Permissao_Url('comercio/Linha/Linhas_Edit');
         $perm_del = $this->_Registro->_Acl->Get_Permissao_Url('comercio/Linha/Linhas_Del');
         
-        if ($perm_editar && $perm_del){
+        if ($perm_editar && $perm_del) {
             $funcao = function( $d, $row ) {
                 return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Linha'        ,'comercio/Linha/Linhas_Edit/'.$d.'/'    ,''),true).
                        Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Linha'       ,'comercio/Linha/Linhas_Del/'.$d.'/'     ,'Deseja realmente deletar essa Linha ?'),true);
             };
-        }else if ($perm_editar){
+        }else if ($perm_editar) {
             $funcao = function( $d, $row ) {
                 return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Linha'        ,'comercio/Linha/Linhas_Edit/'.$d.'/'    ,''),true);
             };
-        }else if ($perm_del){
+        }else if ($perm_del) {
             $funcao = function( $d, $row ) {
                 return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Linha'       ,'comercio/Linha/Linhas_Del/'.$d.'/'     ,'Deseja realmente deletar essa Linha ?'),true);
             };

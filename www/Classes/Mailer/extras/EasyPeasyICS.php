@@ -25,7 +25,7 @@ class EasyPeasyICS {
 	 * Constructor
 	 * @param string $calendarName
 	 */	
-	public function __construct($calendarName=""){
+	public function __construct($calendarName="") {
 		$this->calendarName = $calendarName;
 	}//function
 
@@ -34,7 +34,7 @@ class EasyPeasyICS {
 	 * Add event to calendar
 	 * @param string $calendarName
 	 */	
-	public function addEvent($start, $end, $summary="", $description="", $url=""){
+	public function addEvent($start, $end, $summary="", $description="", $url="") {
 		$this->events[] = array(
 			"start" => $start,
 			"end"   => $end,
@@ -45,7 +45,7 @@ class EasyPeasyICS {
 	}//function
 	
 	
-	public function render($output = true){
+	public function render($output = true) {
 		
 		//start Variable
 		$ics = "";
@@ -58,7 +58,7 @@ X-WR-CALNAME:".$this->calendarName."
 PRODID:-//hacksw/handcal//NONSGML v1.0//EN";
 		
 		//Add events
-		foreach($this->events as $event){
+		foreach($this->events as $event) {
 			$ics .= "
 BEGIN:VEVENT
 UID:". md5(uniqid(mt_rand(), true)) ."@EasyPeasyICS.php

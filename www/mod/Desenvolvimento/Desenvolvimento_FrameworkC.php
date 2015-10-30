@@ -12,7 +12,7 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    public function __construct(){
+    public function __construct() {
         parent::__construct();
     }
     /**
@@ -26,17 +26,17 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    public function Main(){
+    public function Main() {
         return false;
     }
-    protected function Endereco_Modulo($true=true){
-        if ($true===true){
+    protected function Endereco_Modulo($true=true) {
+        if ($true===true) {
             $this->Tema_Endereco(__('Modulos'),'Desenvolvimento/Framework/Modulos');
         } else {
             $this->Tema_Endereco(__('Modulos'));
         }
     }
-    static function Modulos_Tabela($modulos){
+    static function Modulos_Tabela($modulos) {
         $Registro   = &\Framework\App\Registro::getInstacia();
         $Visual     = &$Registro->_Visual;
         $tabela = Array();
@@ -58,7 +58,7 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Modulos($export=false){
+    public function Modulos($export=false) {
         $this->Endereco_Modulo(false);
         $i = 0;
         // Add BOtao
@@ -77,9 +77,9 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
         )));
         // Query
         $modulos = $this->_Modelo->db->Sql_Select('Desenvolvimento_Framework_Modulo');
-        if ($modulos!==false && !empty($modulos)){
+        if ($modulos!==false && !empty($modulos)) {
             list($tabela,$i) = self::Modulos_Tabela($modulos);
-            if ($export!==false){
+            if ($export!==false) {
                 self::Export_Todos($export,$tabela, 'Modulos');
             } else {
                 $this->_Visual->Show_Tabela_DataTable(
@@ -109,7 +109,7 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Modulos_Add(){
+    public function Modulos_Add() {
         $this->Endereco_Modulo();
         // Carrega Config
         $titulo1    = __('Adicionar Modulo');
@@ -127,7 +127,7 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Modulos_Add2(){
+    public function Modulos_Add2() {
         $titulo     = __('Modulo Adicionado com Sucesso');
         $dao        = 'Desenvolvimento_Framework_Modulo';
         $funcao     = '$this->Modulos();';
@@ -142,7 +142,7 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Modulos_Edit($id){
+    public function Modulos_Edit($id) {
         $this->Endereco_Modulo();
         // Carrega Config
         $titulo1    = 'Editar Modulo (#'.$id.')';
@@ -161,7 +161,7 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Modulos_Edit2($id){
+    public function Modulos_Edit2($id) {
         $titulo     = __('Modulo Editado com Sucesso');
         $dao        = Array('Desenvolvimento_Framework_Modulo',$id);
         $funcao     = '$this->Modulos();';
@@ -177,7 +177,7 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Modulos_Del($id){
+    public function Modulos_Del($id) {
         
         
     	$id = (int) $id;
@@ -185,7 +185,7 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
         $modulos = $this->_Modelo->db->Sql_Select('Desenvolvimento_Framework_Modulo', '{sigla}id=\''.$id.'\'');
         $sucesso =  $this->_Modelo->db->Sql_Delete($modulos);
         // Mensagem
-    	if ($sucesso===true){
+    	if ($sucesso===true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
@@ -207,14 +207,14 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
     }
     
     
-    protected function Endereco_Submodulo($true=true){
-        if ($true===true){
+    protected function Endereco_Submodulo($true=true) {
+        if ($true===true) {
             $this->Tema_Endereco(__('Submodulos'),'Desenvolvimento/Framework/Submodulos');
         } else {
             $this->Tema_Endereco(__('Submodulos'));
         }
     }
-    static function Submodulos_Tabela($submodulos){
+    static function Submodulos_Tabela($submodulos) {
         $Registro   = &\Framework\App\Registro::getInstacia();
         $Visual     = &$Registro->_Visual;
         $tabela = Array();
@@ -236,7 +236,7 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Submodulos($export=false){
+    public function Submodulos($export=false) {
         $this->Endereco_Submodulo(false);
         $i = 0;
         // Add BOtao
@@ -255,9 +255,9 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
         )));
         // Query
         $submodulos = $this->_Modelo->db->Sql_Select('Desenvolvimento_Framework_Submodulo');
-        if ($submodulos!==false && !empty($submodulos)){
+        if ($submodulos!==false && !empty($submodulos)) {
             list($tabela,$i) = self::Submodulos_Tabela($submodulos);
-            if ($export!==false){
+            if ($export!==false) {
                 self::Export_Todos($export,$tabela, 'Submodulos');
             } else {
                 $this->_Visual->Show_Tabela_DataTable(
@@ -287,7 +287,7 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Submodulos_Add(){
+    public function Submodulos_Add() {
         $this->Endereco_Submodulo();
         // Carrega Config
         $titulo1    = __('Adicionar Submodulo');
@@ -305,7 +305,7 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Submodulos_Add2(){
+    public function Submodulos_Add2() {
         $titulo     = __('Submodulo Adicionado com Sucesso');
         $dao        = 'Desenvolvimento_Framework_Submodulo';
         $funcao     = '$this->Submodulos();';
@@ -320,7 +320,7 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Submodulos_Edit($id){
+    public function Submodulos_Edit($id) {
         $this->Endereco_Submodulo();
         // Carrega Config
         $titulo1    = 'Editar Submodulo (#'.$id.')';
@@ -339,7 +339,7 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Submodulos_Edit2($id){
+    public function Submodulos_Edit2($id) {
         $titulo     = __('Submodulo Editado com Sucesso');
         $dao        = Array('Desenvolvimento_Framework_Submodulo',$id);
         $funcao     = '$this->Submodulos();';
@@ -355,7 +355,7 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Submodulos_Del($id){
+    public function Submodulos_Del($id) {
         
         
     	$id = (int) $id;
@@ -363,7 +363,7 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
         $submodulos = $this->_Modelo->db->Sql_Select('Desenvolvimento_Framework_Submodulo', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($submodulos);
         // Mensagem
-    	if ($sucesso===true){
+    	if ($sucesso===true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
@@ -385,14 +385,14 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
     }
     
     
-    protected function Endereco_Metodo($true=true){
-        if ($true===true){
+    protected function Endereco_Metodo($true=true) {
+        if ($true===true) {
             $this->Tema_Endereco(__('Metodos'),'Desenvolvimento/Framework/Metodos');
         } else {
             $this->Tema_Endereco(__('Metodos'));
         }
     }
-    static function Metodos_Tabela($metodos){
+    static function Metodos_Tabela($metodos) {
         $Registro   = &\Framework\App\Registro::getInstacia();
         $Visual     = &$Registro->_Visual;
         $tabela = Array();
@@ -413,7 +413,7 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Metodos($export=false){
+    public function Metodos($export=false) {
         $this->Endereco_Metodo(false);
         $i = 0;
         // Add BOtao
@@ -432,9 +432,9 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
         )));
         // Query
         $metodos = $this->_Modelo->db->Sql_Select('Desenvolvimento_Framework_Metodo');
-        if ($metodos!==false && !empty($metodos)){
+        if ($metodos!==false && !empty($metodos)) {
             list($tabela,$i) = self::Metodos_Tabela($metodos);
-            if ($export!==false){
+            if ($export!==false) {
                 self::Export_Todos($export,$tabela, 'Metodos');
             } else {
                 $this->_Visual->Show_Tabela_DataTable(
@@ -464,7 +464,7 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Metodos_Add(){
+    public function Metodos_Add() {
         $this->Endereco_Metodo();
         // Carrega Config
         $titulo1    = __('Adicionar Metodo');
@@ -482,7 +482,7 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Metodos_Add2(){
+    public function Metodos_Add2() {
         $titulo     = __('Metodo Adicionado com Sucesso');
         $dao        = 'Desenvolvimento_Framework_Metodo';
         $funcao     = '$this->Metodos();';
@@ -497,7 +497,7 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Metodos_Edit($id){
+    public function Metodos_Edit($id) {
         $this->Endereco_Metodo();
         // Carrega Config
         $titulo1    = 'Editar Metodo (#'.$id.')';
@@ -516,7 +516,7 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Metodos_Edit2($id){
+    public function Metodos_Edit2($id) {
         $titulo     = __('Metodo Editado com Sucesso');
         $dao        = Array('Desenvolvimento_Framework_Metodo',$id);
         $funcao     = '$this->Metodos();';
@@ -532,7 +532,7 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Metodos_Del($id){
+    public function Metodos_Del($id) {
         
         
     	$id = (int) $id;
@@ -540,7 +540,7 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
         $metodos = $this->_Modelo->db->Sql_Select('Desenvolvimento_Framework_Metodo', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($metodos);
         // Mensagem
-    	if ($sucesso===true){
+    	if ($sucesso===true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),

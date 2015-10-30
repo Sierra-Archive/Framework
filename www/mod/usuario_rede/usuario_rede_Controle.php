@@ -12,7 +12,7 @@ class usuario_rede_Controle extends \Framework\App\Controle
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    public function __construct(){
+    public function __construct() {
         // construct
         parent::__construct();
     } 
@@ -33,7 +33,7 @@ class usuario_rede_Controle extends \Framework\App\Controle
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    static function num_Indicados(&$Modelo, &$Visual, $usuario){
+    static function num_Indicados(&$Modelo, &$Visual, $usuario) {
         $valores = usuario_rede_Modelo::Retorna_num_Indicados($Modelo, $usuario);
         $Visual->Blocar(usuario_rede_Visual::Show_TabRedeIndicados($valores));   
         $Visual->Bloco_Menor_CriaConteudo(20);
@@ -52,7 +52,7 @@ class usuario_rede_Controle extends \Framework\App\Controle
         $graficos[1]['alt'] = 400;
         $graficos[1]['larg'] = 400;
         $graficos[1]['headers'] = array('Nome','Valor');
-        foreach($valores['associado'] as $indice=>&$valor){
+        foreach($valores['associado'] as $indice=>&$valor) {
             $grupo = \Framework\App\Registro::getInstacia()->_Conexao->Sql_Select('Sistema_Grupo','{sigla}id=\''.$indice.'\'');
             $graficos[1]['itens'][] = array($grupo->nome,$valor);
         }
@@ -61,10 +61,10 @@ class usuario_rede_Controle extends \Framework\App\Controle
         $Visual->Blocar($Visual->grafico_gerar($graficos));
         $Visual->Bloco_Unico_CriaJanela(__('Gráficos'));
     }
-    static function Ranking_listar(&$Modelo, &$Visual){
+    static function Ranking_listar(&$Modelo, &$Visual) {
         $ranking = Array();
         usuario_rede_Modelo::Ranking_primarios($ranking,$Modelo);
-        if(!empty($ranking)){
+        if(!empty($ranking)) {
             reset($ranking);
             $i = 0;
             foreach ($ranking as $indice=>&$valor) {

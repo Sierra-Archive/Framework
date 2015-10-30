@@ -65,7 +65,7 @@ var Sierra = (function () {
      * @author Ricardo Rebello Sierra <contato@ricardosierra.com.br>
     */
     function Sessao_Ler(nome) {
-        if(Cache['SierraTec_'+nome]!=undefined){
+        if(Cache['SierraTec_'+nome]!=undefined) {
             return Cache['SierraTec_'+nome][1];
         }
         return false;
@@ -83,7 +83,7 @@ var Sierra = (function () {
      * @author Ricardo Rebello Sierra <contato@ricardosierra.com.br>
      */
     function Sessao_Deletar(nome) {
-        if(nome===false){
+        if(nome===false) {
             Cache = {};
         } else {
             Cache['SierraTec_'+nome] = undefined;
@@ -127,7 +127,7 @@ var Sierra = (function () {
      */
     function Cache_Deletar(nome) {
         if (Modernizr.localstorage) {
-            if(nome===false){
+            if(nome===false) {
                 window.localStorage.clear();
             } else {
                 window.localStorage.removeItem('SierraTec_'+nome);
@@ -141,7 +141,7 @@ var Sierra = (function () {
      * 
      * @author Ricardo Rebello Sierra <contato@ricardosierra.com.br>
      */
-    function Cookie_Salvar(name,value){    //função universal para criar cookie
+    function Cookie_Salvar(name,value) {    //função universal para criar cookie
 
         var expires,
             exdays = 70,
@@ -156,7 +156,7 @@ var Sierra = (function () {
      * 
      * @author Ricardo Rebello Sierra <contato@ricardosierra.com.br>
      */
-    function Cookie_Ler(strCookie){
+    function Cookie_Ler(strCookie) {
         var strNomeIgual = strCookie + "=";
         var arrCookies = document.cookie.split(';');
 
@@ -515,16 +515,16 @@ var Sierra = (function () {
                 validar         = true;
             elemento.removeClass('obrigatoriomarcado');
             // Se tiver atr de max verifica
-            if (atr_max !== undefined){
-                if(parseInt(valor)>parseInt(atr_max)){
+            if (atr_max !== undefined) {
+                if(parseInt(valor)>parseInt(atr_max)) {
                     Control_PopMgs_Abrir('erro','Número Inválido',valor+' é maior que '+atr_max);
                     elemento.addClass('obrigatoriomarcado').focus();
                      passar = false;
                 }
             }
             // Se tiver atr de min verifica
-            if (atr_min !== undefined){
-                if(parseInt(valor)<parseInt(atr_min)){
+            if (atr_min !== undefined) {
+                if(parseInt(valor)<parseInt(atr_min)) {
                     Control_PopMgs_Abrir('erro','Número Inválido',valor+' é menor que '+atr_min);
                     elemento.addClass('obrigatoriomarcado').focus();
                      passar = false;
@@ -533,7 +533,7 @@ var Sierra = (function () {
             if (funcao_valida !== undefined && inArray(valor,Config_Formulario_Vazios) === false && funcao_valida !== 'undefined' && esta_escondido !== 'ativado') {
                 validar = Control_Layoult_Validar(elemento,funcao_valida,valor);
                 
-                if (validar === false){ 
+                if (validar === false) { 
                     passar = false;
                     elemento.addClass('obrigatoriomarcado').focus();   
                 }
@@ -682,7 +682,7 @@ var Sierra = (function () {
         Control_Layoult_Recarrega_Formulario();
         console.timeEnd('Acao_LINK');
     }
-    function Control_Layoult_Recarrega_Formulario(){
+    function Control_Layoult_Recarrega_Formulario() {
         Control_Layoult_Mascaras();
         Visual_Layoult_UniForm();
         // Atualiza TabIndex
@@ -761,7 +761,7 @@ var Sierra = (function () {
             i           = 0,
             tam = Object.keys(json['botoes']).length;
         // Percorre Botoes e os fazem
-        for(; i<tam; ++i){
+        for(; i<tam; ++i) {
             if (json['botoes'][i]['clique'] === '$( this ).dialog( "close" );') {
                 footer += '<button class="btn" data-dismiss="modal" aria-hidden="true" onCLick="Sierra.Control_Ajax_Popup_Fechar(\''+json["id"]+'\');">'+json['botoes'][i]['text']+'</button>';
             } else {
@@ -783,8 +783,8 @@ var Sierra = (function () {
         var cod         = '',
             script      = '';
     
-        for (var i in json){
-            if(json[i] !== undefined){
+        for (var i in json) {
+            if(json[i] !== undefined) {
                 $(json[i]['location']).html(json[i]['html']);
                 script += json[i]['js'];
             }
@@ -804,8 +804,8 @@ var Sierra = (function () {
             script      = '',
             url         = [];
     
-        for (var i in json){
-            if(json[i] !== undefined){
+        for (var i in json) {
+            if(json[i] !== undefined) {
                 url = json[i]['Url'];
                 
                 Modelo_Ajax_Chamar(url,'','get',true,true,true);
@@ -824,11 +824,11 @@ var Sierra = (function () {
             i2          = 0,
             tam2,
             identificador;
-        for (var i in json){
+        for (var i in json) {
             identificador = $(document.getElementById(json[i]['id']));
             tam2 = Object.keys(json[i]['valores']).length;
             identificador.find('option').remove();
-            for(; i2<tam2; ++i2){
+            for(; i2<tam2; ++i2) {
                 identificador.append(
                     new Option(
                         json[i]['valores']['nome'], 
@@ -850,18 +850,18 @@ var Sierra = (function () {
         var script      = '',
             cache = Cache_Ler('Dependencias_Css');
     
-        if(cache===false){
+        if(cache===false) {
             cache = new Array();
         } else {
             cache = cache.split('|');
         }
-        for (var i in json){
+        for (var i in json) {
             // VErifica se ja esta carregado
-            if(!inArray(json[i],cache)){
+            if(!inArray(json[i],cache)) {
                 // Adiciona ao Cache
                 cache.push(json[i]);
                 
-                if (script !== ''){
+                if (script !== '') {
                     script += ',';
                 }
                 script += json[i]+'.css';
@@ -882,7 +882,7 @@ var Sierra = (function () {
      */
     function Control_Ajax_JavascriptInterno (json) {
         var script      = '';
-        for (var i in json){
+        for (var i in json) {
             script += json[i];
         }
         if (script !== '') {
@@ -899,19 +899,19 @@ var Sierra = (function () {
         var script = '',
             cache = Cache_Ler('Dependencias_Js');
     
-        if(cache===false){
+        if(cache===false) {
             cache = new Array();
         } else {
             cache = cache.split('|');
         }
         
-        for (var i in json){
+        for (var i in json) {
             // VErifica se ja esta carregado
-            if(!inArray(json[i],cache)){
+            if(!inArray(json[i],cache)) {
                 // Adiciona ao Cache
                 cache.push(json[i]);
                 
-                if (script !== ''){
+                if (script !== '') {
                     script += ',';
                 }
                 // ADiciona ao codigo
@@ -919,7 +919,7 @@ var Sierra = (function () {
             }
         }
         
-        if(script!==''){
+        if(script!=='') {
             // Salva Cache
             Cache_Gravar('Dependencias_Js',cache.join('|'));
 
@@ -935,7 +935,7 @@ var Sierra = (function () {
      */
     function Control_Ajax_Mensagens (json) {
         var cod = '';
-        for (var i in json){
+        for (var i in json) {
             Control_PopMgs_Abrir(json[i]['tipo'],json[i]['mgs_principal'],json[i]['mgs_secundaria']);
         }
         return true;
@@ -973,12 +973,12 @@ var Sierra = (function () {
             }
             // Chama os Tipos de Json
             tam = Object.keys(data['Info']['Tipo']).length;
-            for(;i<tam;++i){
+            for(;i<tam;++i) {
                 cod += 'Control_Ajax_'+data['Info']['Tipo'][i]+'(data[\''+data['Info']['Tipo'][i]+'\']);';
             }
             eval(cod);
             Control_Layoult_Recarrega();
-        }else if(typeof(data) === "string"){
+        }else if(typeof(data) === "string") {
             Modelo_Ajax_JsonTratar(url, JSON.parse(data), navegador);
         } else {
             console.log('Erro',data);
@@ -999,10 +999,10 @@ var Sierra = (function () {
         console.time('Acao_LINK');
         var retorno = false;
         //retorno = Cache_Ler(url);
-        if(retorno!==false){
+        if(retorno!==false) {
             Json(url,retorno,historico);
         } else {
-            if(carregando===true){
+            if(carregando===true) {
                 Control_PopMgs_Carregando();
             }
             /* 
@@ -1015,7 +1015,7 @@ var Sierra = (function () {
             xhr.send(null);
              */
             // Verifica se Contem http ou www se nao tiver acrescenta url do sistema
-            if(url.indexOf('http://') === -1 && url.indexOf('www.') === -1){
+            if(url.indexOf('http://') === -1 && url.indexOf('www.') === -1) {
                 url = ConfigArquivoPadrao+url;
             }
             
@@ -1036,7 +1036,7 @@ var Sierra = (function () {
                     Control_PopMgs_Carregando_Fechar();
                 }
                 // Trata o Erro
-                if(req.status === 200 && resposta===true){
+                if(req.status === 200 && resposta===true) {
                     // Caso Pagina Exista, mas JSON Esteja incorreto
                     Modelo_Ajax_Chamar('_Sistema/erro/Javascript','html='+req.responseText,'POST',false,false,false);
                 } else {
@@ -1173,14 +1173,14 @@ var Sierra = (function () {
             //var j  = atual.children('thead').children('tr').children('th').length-1;
             if (!atual.hasClass('dataTable')) {
                 ordenar = false; //Cookie_Ler('TabelaOrdenar_'+atual.attr('url'));
-                if(ordenar===false){
+                if(ordenar===false) {
                     eval('ordenar = '+atual.attr('ordenar')+';');
                 }
                 if (atual.hasClass('apagado1')) {
                     apagar = false;
                 }
                 
-                /*for(;cont<j;++cont){
+                /*for(;cont<j;++cont) {
                     colunas_imprimir.push(cont);
                 }*/
                 atual.DataTable({          
@@ -1325,10 +1325,10 @@ var Sierra = (function () {
      * @returns {void}
      * @author Ricardo Rebello Sierra <contato@ricardosierra.com.br>
      */
-    function Visual_Formulario_Mascara(o,f){
+    function Visual_Formulario_Mascara(o,f) {
         var v_obj   =   o,
             v_fun   =   "Visual_Formulario_Mascara_"+f;
-        setTimeout(function(){
+        setTimeout(function() {
             eval('v_obj.value = '+v_fun+'(v_obj.value);');
         },10);
     };
@@ -1338,12 +1338,12 @@ var Sierra = (function () {
      * @returns {string}
      * @author Ricardo Rebello Sierra <contato@ricardosierra.com.br>
      */
-    function Visual_Formulario_Mascara_Porc(v){
+    function Visual_Formulario_Mascara_Porc(v) {
         var tam = v.length;
         
-        if(v[tam-2]!='%' && v[tam-2]!=' ' && tam>1){
+        if(v[tam-2]!='%' && v[tam-2]!=' ' && tam>1) {
             v=v.replace(/\D/g,""); //Remove tudo o que não é dígito
-            if(tam>2){
+            if(tam>2) {
                 v=v.replace(/(\d+)(\d{1})/,"$1");
             } else {
                 return '00,00 %';
@@ -1353,22 +1353,22 @@ var Sierra = (function () {
         }
         
         // Caso numero comece com zero, retira
-        if(v[0]==='0'){
+        if(v[0]==='0') {
             v = parseInt(v);
         }
         
         // se for vazio retorna vazio
-        if(v==''|| v===0){
+        if(v==''|| v===0) {
             return '00,00 %';
         } else {
             v = parseFloat(v)/100;
             v = v.toFixed(2);
         }
         
-        if(v>=100){
+        if(v>=100) {
             return "100,00 %";
         }else
-        if(v<10){
+        if(v<10) {
             return '0'+v.toString().replace(".",",")+' %';
         } else {
             return v.toString().replace(".",",")+' %';
@@ -1380,7 +1380,7 @@ var Sierra = (function () {
      * @returns {string}
      * @author Ricardo Rebello Sierra <contato@ricardosierra.com.br>
      */
-    function Visual_Formulario_Mascara_Real(v){
+    function Visual_Formulario_Mascara_Real(v) {
         v=v.replace(/\D/g,"") //Remove tudo o que não é dígito
         if(v=='') v = 0;
         // Coloca Virgula, ou coloca zero na frente
@@ -1403,7 +1403,7 @@ var Sierra = (function () {
      * @returns {String}
      * @author Ricardo Rebello Sierra <contato@ricardosierra.com.br>
      */
-    function Visual_Formulario_Mascara_Data(v){
+    function Visual_Formulario_Mascara_Data(v) {
         var tam     = v.length,
             data    = '',
             direto  = false,
@@ -1415,18 +1415,18 @@ var Sierra = (function () {
         
         tam = v.length;
         if(tam>8) tam = 8;
-        for(var i = 0;i<tam;++i){
+        for(var i = 0;i<tam;++i) {
             num = parseInt(v[i]);
-            if(i===0){
+            if(i===0) {
                 //nao deixa ter dia acima de 39
-                if(num>3){
+                if(num>3) {
                     num = 3;
                 }
                 dia = num*10;
             }else
-            if(i===1){
+            if(i===1) {
                 //nao deixa ter dia acima de 31
-                if(num>2 && dia===30){
+                if(num>2 && dia===30) {
                     dia = dia+1;
                     data = data+'1';
                     continue;
@@ -1434,11 +1434,11 @@ var Sierra = (function () {
                     dia = dia+num;
                 }
             }else
-            if(i===2){
+            if(i===2) {
                 // Colocar Barra
                 data = data+'/';
                 //nao deixa ter mes acima de 19
-                if(num>1){
+                if(num>1) {
                     mes = 10;
                     data = data+'1';
                     continue;
@@ -1446,24 +1446,24 @@ var Sierra = (function () {
                     mes = num*10;
                 }
             }else
-            if(i===3){
+            if(i===3) {
                 //nao deixa ter mes 0
-                if(mes===0 && num===0){
+                if(mes===0 && num===0) {
                     mes = 1;
                     data = data+'1';
                     continue;
                 }else
                 // Nao deixa ter mes > 13
-                if(num>=2 && mes===10){
+                if(num>=2 && mes===10) {
                     mes = 12;
                     data = data+'2';
                     continue;
                 }else
                 // Controla os dias 31, nao deixa ter dia 31 dos meses que nao tem dia 31
-                if(dia===31 && ((mes===0 && (num===4 || num===6 || num===9)) || (mes===10 && num===1))){
+                if(dia===31 && ((mes===0 && (num===4 || num===6 || num===9)) || (mes===10 && num===1))) {
                     mes = num+mes;
                     dia = 30;
-                    if(mes===11){
+                    if(mes===11) {
                         data = '30/'+mes.toString();
                     } else {
                         data = '30/0'+mes.toString();
@@ -1471,7 +1471,7 @@ var Sierra = (function () {
                     continue;
                 }else 
                 // Caso Fevereiro com dia acima de 29
-                if(mes===0 && num===2 && dia>=29){
+                if(mes===0 && num===2 && dia>=29) {
                     dia = 29;
                     mes = 2;
                     data = '29/02';
@@ -1480,11 +1480,11 @@ var Sierra = (function () {
                     mes = num+mes;
                 }
             }else
-            if(i===4){
+            if(i===4) {
                 // Colocar Barra
                 data = data+'/';
                 // Caso ano direto
-                if(v[i]>2 || v[i]==='0'){
+                if(v[i]>2 || v[i]==='0') {
                     data = data+'20'+v[i];
                     direto = true;
                     continue;
@@ -1499,7 +1499,7 @@ var Sierra = (function () {
             if(direto===true) i = 8;
         }
         // Fevereiro com 29 dias e nao é ano bissexto volta a ser 28 dias
-        if(tam===8 && mes===2 && dia===29 && !((ano % 4 === 0) && ((ano % 100 !== 0) || (ano % 400 === 0)))){
+        if(tam===8 && mes===2 && dia===29 && !((ano % 4 === 0) && ((ano % 100 !== 0) || (ano % 400 === 0)))) {
             dia = 28;
             data = data.split('/');
             data = '28/'+data[1]+'/'+data[2];
@@ -1510,7 +1510,7 @@ var Sierra = (function () {
      * 
      * @author Ricardo Rebello Sierra <contato@ricardosierra.com.br>
      */
-    function Visual_Formulario_Mascara_Ano(v){
+    function Visual_Formulario_Mascara_Ano(v) {
         var tam     = v.length,
             direto  = false,
             data     = '',
@@ -1521,11 +1521,11 @@ var Sierra = (function () {
         v= parseInt(v).toString(); //Transforma pra string denovo
         tam = v.length;
         if(tam>4) tam = 4;
-        for(i = 0;i<tam;++i){
+        for(i = 0;i<tam;++i) {
             num = parseInt(v[i]);
-            if(i===0){
+            if(i===0) {
                 // Caso ano direto
-                if(num>2 || v[i]==='0'){
+                if(num>2 || v[i]==='0') {
                     data = '20'+v[i];
                     direto = true;
                     continue;
@@ -1542,7 +1542,7 @@ var Sierra = (function () {
      * 
      * @author Ricardo Rebello Sierra <contato@ricardosierra.com.br>
      */
-    function Visual_Formulario_Mascara_Validade(v){
+    function Visual_Formulario_Mascara_Validade(v) {
         var tam     = v.length,
             data    = '',
             direto  = false,
@@ -1554,11 +1554,11 @@ var Sierra = (function () {
         // Coloca Virgula, ou coloca zero na frente
         tam = v.length;
         if(tam>6) tam = 6;
-        for(var i = 0;i<tam;++i){
+        for(var i = 0;i<tam;++i) {
             num = parseInt(v[i]);
-            if(i===0){
+            if(i===0) {
                 //nao deixa ter mes acima de 19
-                if(num>1){
+                if(num>1) {
                     mes = 10;
                     data = data+'1';
                     continue;
@@ -1566,15 +1566,15 @@ var Sierra = (function () {
                     mes = num*10;
                 }
             }else
-            if(i===1){
+            if(i===1) {
                 //nao deixa ter mes 0
-                if(mes===0 && num===0){
+                if(mes===0 && num===0) {
                     mes = 1;
                     data = data+'1';
                     continue;
                 }else
                     // Nao deixa ter mes > 13
-                if(num>=2 && mes===10){
+                if(num>=2 && mes===10) {
                     mes = 12;
                     data = data+'2';
                     continue;
@@ -1582,11 +1582,11 @@ var Sierra = (function () {
                     mes = num+mes;
                 }
             }else
-            if(i===2){
+            if(i===2) {
                 // Colocar Barra
                 data = data+'/';
                 // Caso ano direto
-                if(v[i]>2 || v[i]==='0'){
+                if(v[i]>2 || v[i]==='0') {
                     data = data+'20'+v[i];
                     direto = true;
                     continue;
@@ -1608,7 +1608,7 @@ var Sierra = (function () {
      * @returns {string}
      * @author Ricardo Rebello Sierra <contato@ricardosierra.com.br>
      */
-    function Visual_Formulario_Mascara_leech(v){
+    function Visual_Formulario_Mascara_leech(v) {
         v=v.replace(/o/gi,"0");
         v=v.replace(/i/gi,"1");
         v=v.replace(/z/gi,"2");
@@ -1624,7 +1624,7 @@ var Sierra = (function () {
      * @returns {string}
      * @author Ricardo Rebello Sierra <contato@ricardosierra.com.br>
      */
-    function Visual_Formulario_Mascara_Numero(v){
+    function Visual_Formulario_Mascara_Numero(v) {
         return v.replace(/\D/g,"");
     }
     /**
@@ -1633,7 +1633,7 @@ var Sierra = (function () {
      * @returns {string}
      * @author Ricardo Rebello Sierra <contato@ricardosierra.com.br>
      */
-    function Visual_Formulario_Mascara_Tel(v){
+    function Visual_Formulario_Mascara_Tel(v) {
         v=v.replace(/\D/g,"").substring(0, 10);                 //Remove tudo o que não é dígito
         v=v.replace(/^(\d\d)(\d)/g,"($1) $2"); //Coloca parênteses em volta dos dois primeiros dígitos
         v=v.replace(/(\d{4})(\d)/,"$1-$2");    //Coloca hífen entre o quarto e o quinto dígitos
@@ -1643,9 +1643,9 @@ var Sierra = (function () {
      * 
      * @author Ricardo Rebello Sierra <contato@ricardosierra.com.br>
      */
-    function Visual_Formulario_Mascara_Cel(v){
+    function Visual_Formulario_Mascara_Cel(v) {
         v=v.replace(/\D/g,"").substring(0, 11);                 //Remove tudo o que não é dígito
-        if(v.length===11){
+        if(v.length===11) {
             v=v.replace(/(\d{7})(\d)/,"$1-$2");    //Coloca hífen entre o quarto e o quinto dígitos
         } else {
             v=v.replace(/(\d{6})(\d)/,"$1-$2");    //Coloca hífen entre o quarto e o quinto dígitos
@@ -1659,7 +1659,7 @@ var Sierra = (function () {
      * @returns {string}
      * @author Ricardo Rebello Sierra <contato@ricardosierra.com.br>
      */
-    function Visual_Formulario_Mascara_Cpf(v){
+    function Visual_Formulario_Mascara_Cpf(v) {
         v=v.replace(/\D/g,"");                    //Remove tudo o que não é dígito
         v=v.replace(/(\d{3})(\d)/,"$1.$2");       //Coloca um ponto entre o terceiro e o quarto dígitos
         v=v.replace(/(\d{3})(\d)/,"$1.$2");       //Coloca um ponto entre o terceiro e o quarto dígitos
@@ -1673,7 +1673,7 @@ var Sierra = (function () {
      * @returns {string}
      * @author Ricardo Rebello Sierra <contato@ricardosierra.com.br>
      */
-    function Visual_Formulario_Mascara_Cep(v){
+    function Visual_Formulario_Mascara_Cep(v) {
         v=v.replace(/D/g,"");                //Remove tudo o que não é dígito
         v=v.replace(/^(\d{5})(\d)/,"$1-$2"); //Esse é tão fácil que não merece explicações
         return v;
@@ -1684,7 +1684,7 @@ var Sierra = (function () {
      * @returns {string}
      * @author Ricardo Rebello Sierra <contato@ricardosierra.com.br>
      */
-    function Visual_Formulario_Mascara_Cnpj(v){
+    function Visual_Formulario_Mascara_Cnpj(v) {
         v=v.replace(/\D/g,"");                           //Remove tudo o que não é dígito
         v=v.replace(/^(\d{2})(\d)/,"$1.$2");             //Coloca ponto entre o segundo e o terceiro dígitos
         v=v.replace(/^(\d{2})\.(\d{3})(\d)/,"$1.$2.$3"); //Coloca ponto entre o quinto e o sexto dígitos
@@ -1698,11 +1698,11 @@ var Sierra = (function () {
      * @returns {string}
      * @author Ricardo Rebello Sierra <contato@ricardosierra.com.br>
      * */
-    function Visual_Formulario_Mascara_Rom(v){
+    function Visual_Formulario_Mascara_Rom(v) {
         v=v.toUpperCase();             //Maiúsculas
         v=v.replace(/[^IVXLCDM]/g,""); //Remove tudo o que não for I, V, X, L, C, D ou M
         //Essa é complicada! Copiei daqui: http://www.diveintopython.org/refactoring/refactoring.html
-        while(v.replace(/^M{0,4}(CM|CD|D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3})$/,"")!=""){
+        while(v.replace(/^M{0,4}(CM|CD|D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3})$/,"")!="") {
             v=v.replace(/.$/,"");
         }
         return v;
@@ -1713,12 +1713,12 @@ var Sierra = (function () {
      * @returns {string}
      * @author Ricardo Rebello Sierra <contato@ricardosierra.com.br>
      * */
-    function Visual_Formulario_Mascara_Site(v){
+    function Visual_Formulario_Mascara_Site(v) {
         //Esse sem comentarios para que você entenda sozinho ;-)
         v=v.replace(/^http:\/\/?/,"");
         dominio=v;
         caminho="";
-        if(v.indexOf("/")>-1){
+        if(v.indexOf("/")>-1) {
             dominio=v.split("/")[0];
         }
         caminho=v.replace(/[^\/]*/,"");
@@ -1999,7 +1999,7 @@ var Sierra = (function () {
         pos = tamanho - 7;
         for (i = tamanho; i >= 1; i--) {
             soma += numeros.charAt(tamanho - i) * pos--;
-            if (pos < 2){
+            if (pos < 2) {
                 pos = 9;
             }
         }
@@ -2222,7 +2222,7 @@ var Sierra = (function () {
                 campoid2,
                 escondendo;
             for (i in trocar) {
-                if(trocar[i].indexOf('.')==0){
+                if(trocar[i].indexOf('.')==0) {
                     campoid1 = $(trocar[i]+'_escondendo');
                     campo   = trocar[i].replace('.', '#');
                     campoid2 = $(campo);
@@ -2268,7 +2268,7 @@ var Sierra = (function () {
                                 return;
                             }
                         });
-                        if(pais_achado!==0){
+                        if(pais_achado!==0) {
                             form_estado.each(function () {
                                 if ($(this).text() === uf) {
                                     ++uf_achado;
@@ -2277,7 +2277,7 @@ var Sierra = (function () {
                                     return;
                                 }
                             });
-                            if(uf_achado!==0){
+                            if(uf_achado!==0) {
                                 form_cidade.each(function () {
                                     if ($(this).text() === cidade) {
                                         ++cidade_achado;
@@ -2286,7 +2286,7 @@ var Sierra = (function () {
                                         return;
                                     }
                                 });
-                                if(cidade_achado!==0){
+                                if(cidade_achado!==0) {
                                     form_bairro.each(function () {
                                         if ($(this).text() === bairro) {
                                             ++bairro_achado;

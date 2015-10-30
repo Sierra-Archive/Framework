@@ -15,7 +15,7 @@ class usuario_veiculo_ModeloControle extends usuario_veiculo_Controle
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    public function __construct(){
+    public function __construct() {
         parent::__construct();
     }
     /**
@@ -31,11 +31,11 @@ class usuario_veiculo_ModeloControle extends usuario_veiculo_Controle
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    public function Main(){
+    public function Main() {
         \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'usuario_veiculo/Modelo/Modelos');
         return false;
     }
-    static function Endereco_Veiculo_Modelo($true=true){
+    static function Endereco_Veiculo_Modelo($true=true) {
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
         $titulo = __('Modelos');
@@ -43,7 +43,7 @@ class usuario_veiculo_ModeloControle extends usuario_veiculo_Controle
         // Chama Veiculo
         usuario_veiculo_MarcaControle::Endereco_Veiculo_Marca(true);
         //Chama
-        if($true===true){
+        if($true===true) {
             $_Controle->Tema_Endereco($titulo,$link);
         } else {
             $_Controle->Tema_Endereco($titulo);
@@ -54,12 +54,12 @@ class usuario_veiculo_ModeloControle extends usuario_veiculo_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Modelos(){
+    public function Modelos() {
         self::Endereco_Veiculo_Modelo(false);
         $i = 0;
         $this->_Visual->Blocar('<a title="Adicionar Modelo" class="btn btn-success lajax explicar-titulo" data-acao="" href="'.URL_PATH.'usuario_veiculo/Modelo/Modelos_Add">Adicionar novo Modelo</a><div class="space15"></div>');
         $modelos = $this->_Modelo->db->Sql_Select('Usuario_Veiculo_Modelo');
-        if($modelos!==false && !empty($modelos)){
+        if($modelos!==false && !empty($modelos)) {
             if(is_object($modelos)) $modelos = Array(0=>$modelos);
             reset($modelos);
             foreach ($modelos as $indice=>&$valor) {
@@ -86,7 +86,7 @@ class usuario_veiculo_ModeloControle extends usuario_veiculo_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Modelos_Add(){
+    public function Modelos_Add() {
         self::Endereco_Veiculo_Modelo(true);
         // Carrega Config
         $titulo1    = __('Adicionar Modelo');
@@ -104,7 +104,7 @@ class usuario_veiculo_ModeloControle extends usuario_veiculo_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Modelos_Add2(){
+    public function Modelos_Add2() {
         $titulo     = __('Modelo Adicionada com Sucesso');
         $dao        = 'Usuario_Veiculo_Modelo';
         $funcao     = '$this->Modelos();';
@@ -119,7 +119,7 @@ class usuario_veiculo_ModeloControle extends usuario_veiculo_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Modelos_Edit($id){
+    public function Modelos_Edit($id) {
         self::Endereco_Veiculo_Modelo(true);
         // Carrega Config
         $titulo1    = 'Editar Modelo (#'.$id.')';
@@ -138,7 +138,7 @@ class usuario_veiculo_ModeloControle extends usuario_veiculo_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Modelos_Edit2($id){
+    public function Modelos_Edit2($id) {
         $titulo     = __('Modelo Editada com Sucesso');
         $dao        = Array('Usuario_Veiculo_Modelo',$id);
         $funcao     = '$this->Modelos();';
@@ -154,7 +154,7 @@ class usuario_veiculo_ModeloControle extends usuario_veiculo_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Modelos_Del($id){
+    public function Modelos_Del($id) {
         
         
     	$id = (int) $id;
@@ -162,7 +162,7 @@ class usuario_veiculo_ModeloControle extends usuario_veiculo_Controle
         $Modelo = $this->_Modelo->db->Sql_Select('Usuario_Veiculo_Modelo', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($Modelo);
         // Mensagem
-    	if($sucesso===true){
+    	if($sucesso===true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),

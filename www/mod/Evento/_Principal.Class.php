@@ -19,11 +19,11 @@ class Evento_Principal implements \Framework\PrincipalInterface
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    static function Home(&$controle, &$Modelo, &$Visual){
+    static function Home(&$controle, &$Modelo, &$Visual) {
         self::Widgets();
         return true;
     }
-    static function Widget(&$_Controle){
+    static function Widget(&$_Controle) {
         $_Controle->Widget_Add('Superior',
         '<li class="dropdown mtop5">'.
             '<a class="dropdown-toggle element lajax" data-acao="" data-placement="bottom" data-toggle="tooltip" href="'.URL_PATH.'Evento/Evento/Eventos_Add" data-original-title="Novo Evento">'.
@@ -38,27 +38,27 @@ class Evento_Principal implements \Framework\PrincipalInterface
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    static function Config(){
+    static function Config() {
         return false;
     }
     
-    static function Relatorio($data_inicio,$data_final,$filtro=false){
+    static function Relatorio($data_inicio,$data_final,$filtro=false) {
         return false;
     }
     
-    static function Estatistica($data_inicio,$data_final,$filtro=false){
+    static function Estatistica($data_inicio,$data_final,$filtro=false) {
         return false;
     }
     
-    static function Busca(&$controle, &$Modelo, &$Visual,$busca){
+    static function Busca(&$controle, &$Modelo, &$Visual,$busca) {
         $i = 0;
         // Busca Eventos
         $result = self::Busca_Eventos($controle, $Modelo, $Visual, $busca);
-        if ($result!==false){
+        if ($result!==false) {
             $i = $i + $result;
         }
         // Retorna
-        if (is_int($i) && $i>0){
+        if (is_int($i) && $i>0) {
             return $i;
         } else {
             return false;
@@ -68,7 +68,7 @@ class Evento_Principal implements \Framework\PrincipalInterface
     /***********************
      * BUSCAS
      */
-    static function Busca_Eventos($controle, $Modelo, $Visual, $busca){
+    static function Busca_Eventos($controle, $Modelo, $Visual, $busca) {
         $where = Array(Array(
           'nome'                    => '%'.$busca.'%',
           'data_inicio'             => '%'.$busca.'%',
@@ -92,7 +92,7 @@ class Evento_Principal implements \Framework\PrincipalInterface
             )
         )));
         if (is_object($eventos)) $eventos = Array(0=>$eventos);
-        if ($eventos!==false && !empty($eventos)){
+        if ($eventos!==false && !empty($eventos)) {
             list($tabela,$i) = Evento_EventoControle::Eventos_Tabela($eventos);
             $Visual->Show_Tabela_DataTable($tabela);
         } else {    
@@ -107,7 +107,7 @@ class Evento_Principal implements \Framework\PrincipalInterface
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public static function Widgets(){
+    public static function Widgets() {
         $Registro = &\Framework\App\Registro::getInstacia();
         $Modelo = &$Registro->_Modelo;
         $Visual = &$Registro->_Visual;

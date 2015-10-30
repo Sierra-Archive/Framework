@@ -1,5 +1,5 @@
 <?php
-$config_Modulo = function (){
+$config_Modulo = function () {
     return Array(
         'Nome'                      =>  'usuario',
         'Descrição'                 =>  '',
@@ -8,7 +8,7 @@ $config_Modulo = function (){
         'Dependencias'              =>  false,
     );
 };
-$config_Menu = function (){
+$config_Menu = function () {
     return Array(
         'Comercial' => Array(
             'Nome'                  => __('Comercial'),
@@ -74,7 +74,7 @@ $config_Menu = function (){
         ),
     );
 };
-$config_Permissoes = function (){
+$config_Permissoes = function () {
     return Array(
         
         
@@ -299,7 +299,7 @@ $config_Permissoes = function (){
  * 
  * @author Ricardo Sierra <web@ricardosierra.com.br>
  */
-$config_Funcional = function (){
+$config_Funcional = function () {
     return Array(
         'usuario_grupo'  => Array(
             'Nome'                  => 'Grupos -> Se Mostra Opções de Grupos',
@@ -434,7 +434,7 @@ $config_Funcional = function (){
  * 
  * @author Ricardo Sierra <web@ricardosierra.com.br>
  */
-$config_Publico = function (){
+$config_Publico = function () {
     return Array(
         /*'{chave}'  => Array(
             'Nome'                  => 'Nome',

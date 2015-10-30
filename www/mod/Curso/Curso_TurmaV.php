@@ -13,7 +13,7 @@ class Curso_TurmaVisual extends Curso_Visual
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    public function __construct(){
+    public function __construct() {
       parent::__construct();
     }
 }

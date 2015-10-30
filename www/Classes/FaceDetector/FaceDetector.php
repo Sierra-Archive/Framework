@@ -150,7 +150,7 @@ class FaceDetector
 
                     $col                +=  $value;
                     $col2               +=  $value*$value;
-                    if ($i>0){
+                    if ($i>0) {
                         $grayImage[$i][$j]  =   $grayImage[$i-1][$j] + $col;
                         $squares[$i][$j]    =   $squares[$i-1][$j] + $col2;
                     } else {

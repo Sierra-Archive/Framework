@@ -96,7 +96,7 @@ class PagSeguroTransactionSearchService
         PagSeguroConnectionData $connectionData,
         $reference,
         $searchParams = null
-    ){
+    ) {
         $url = $connectionData->getServiceUrl('v2');
         if ($searchParams == null) {
             return "{$url}?" . $connectionData->getCredentialsUrlQuery() . "&reference=" . $reference;

@@ -13,7 +13,7 @@ class usuario_veiculo_ListarVisual extends usuario_veiculo_Visual
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    public function __construct(){
+    public function __construct() {
       parent::__construct();
     }
     /**
@@ -21,7 +21,7 @@ class usuario_veiculo_ListarVisual extends usuario_veiculo_Visual
      * @param type $array
      * @return string
      */
-    static function Show_Veiculos(&$array){
+    static function Show_Veiculos(&$array) {
         GLOBAL $config;
         $Registro = &\Framework\App\Registro::getInstacia();
         $Visual = &$Registro->_Visual;
@@ -595,7 +595,7 @@ class usuario_veiculo_ListarVisual extends usuario_veiculo_Visual
                         </div>';
         
     	/*$html = '<div class="file-gallery-con simple-con"><ul class="file-gallery clearfix">';
-    	if(!empty($array)){
+    	if(!empty($array)) {
             reset($array);
             foreach ($array as $indice=>&$valor) {
                 $link = '<a class="lajax" data-acao="" href="'.URL_PATH.'usuario_veiculo/Listar/Popup_Agendar_veiculo/'.$valor['id'].'/'.date('Y-m-d', strtotime("+1 days",strtotime(APP_DATA))).'/'.date('Y-m-d', strtotime("+6 days",strtotime(APP_DATA))).'/'.$valor['marca'].' '.$valor['modelo'].' '.$valor['cc'].' cc Ano de '.$valor['ano'].'/">';

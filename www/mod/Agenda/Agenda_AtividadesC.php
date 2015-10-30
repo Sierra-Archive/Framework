@@ -15,7 +15,7 @@ class Agenda_AtividadesControle extends Agenda_Controle
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    public function __construct(){
+    public function __construct() {
         parent::__construct();
     }
     /**
@@ -35,16 +35,16 @@ class Agenda_AtividadesControle extends Agenda_Controle
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    public function Main(){    
+    public function Main() {    
         return false;
     }
     
     
-    static function Atividades_Abertas($tipo='Unico'){     
+    static function Atividades_Abertas($tipo='Unico') {     
         $i = 0;
         // Botao Add
         $atividades = $Modelo->db->Sql_Select('Agenda_Atividade_Hora','AAH.dt_fim=\'0000-00-00 00:00:00\'');
-        if ($atividades!==false && !empty($atividades)){
+        if ($atividades!==false && !empty($atividades)) {
             
             if (is_object($atividades)) $atividades = Array(0=>$atividades);
             reset($atividades);
@@ -56,7 +56,7 @@ class Agenda_AtividadesControle extends Agenda_Controle
                 ++$i;
             }
         
-            if ($export!==false){
+            if ($export!==false) {
                 self::Export_Todos($export,$tabela, 'Atividades Abertas');
             } else {
                 $this->_Visual->Show_Tabela_DataTable(
@@ -76,7 +76,7 @@ class Agenda_AtividadesControle extends Agenda_Controle
             $Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhuma Atividade Aberta</font></b></center>');
         }
         $titulo = __('Arquivo de Pastas').' ('.$i.')';
-        if ($tipo==='Unico'){
+        if ($tipo==='Unico') {
             $Visual->Bloco_Unico_CriaJanela($titulo);
         } else {
             $Visual->Bloco_Maior_CriaJanela($titulo);
@@ -87,12 +87,12 @@ class Agenda_AtividadesControle extends Agenda_Controle
     
     
     
-    public function Atividades_Tempo($atividade){     
+    public function Atividades_Tempo($atividade) {     
         // Procura em Atividades Tempo, com tempo inicial mas sem tempo final
         $atv_tempo = $this->_Modelo->db->Sql_Select('Agenda_Atividade_Hora');
         
         // Se nao Achar adicionar um com tempo
-        if ($atv_tempo===false){
+        if ($atv_tempo===false) {
             $atv_tempo = new Agenda_Atividade_Hora_DAO();
             
             $atv_tempo->atividade = 0;

@@ -15,7 +15,7 @@ class social_CaracteristicaControle extends social_Controle
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    public function __construct(){
+    public function __construct() {
         parent::__construct();
     }
     /**
@@ -31,13 +31,13 @@ class social_CaracteristicaControle extends social_Controle
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    public function Main(){
+    public function Main() {
         return false; 
     }
-    static function Endereco_Caracteristica($true=true){
+    static function Endereco_Caracteristica($true=true) {
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
-        if ($true===true){
+        if ($true===true) {
             $_Controle->Tema_Endereco(__('Caracteristicas'),'social/Caracteristica/Caracteristica');
         } else {
             $_Controle->Tema_Endereco(__('Caracteristicas'));
@@ -48,7 +48,7 @@ class social_CaracteristicaControle extends social_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Caracteristica($export=false){
+    public function Caracteristica($export=false) {
         self::Endereco_Caracteristica(false);
         $i = 0;
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
@@ -65,7 +65,7 @@ class social_CaracteristicaControle extends social_Controle
             )
         )));
         $caracteristicas = $this->_Modelo->db->Sql_Select('Social_Caracteristica');
-        if ($caracteristicas!==false && !empty($caracteristicas)){
+        if ($caracteristicas!==false && !empty($caracteristicas)) {
             if (is_object($caracteristicas)) $caracteristicas = Array(0=>$caracteristicas);
             reset($caracteristicas);
             foreach ($caracteristicas as $indice=>&$valor) {
@@ -75,7 +75,7 @@ class social_CaracteristicaControle extends social_Controle
                                                   $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Caracteristica'       ,'social/Caracteristica/Caracteristicas_Del/'.$valor->id.'/'     ,'Deseja realmente deletar essa Caracteristica ?'));
                 ++$i;
             }
-            if ($export!==false){
+            if ($export!==false) {
                 self::Export_Todos($export,$tabela, 'Caracteristicas');
             } else {
                 $this->_Visual->Show_Tabela_DataTable(
@@ -105,7 +105,7 @@ class social_CaracteristicaControle extends social_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Caracteristicas_Add(){
+    public function Caracteristicas_Add() {
         self::Endereco_Caracteristica(true);
         // Carrega Config
         $titulo1    = __('Adicionar Caracteristica');
@@ -123,7 +123,7 @@ class social_CaracteristicaControle extends social_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Caracteristicas_Add2(){
+    public function Caracteristicas_Add2() {
         $titulo     = __('Caracteristica adicionada com Sucesso');
         $dao        = 'Social_Caracteristica';
         $funcao     = '$this->Caracteristica();';
@@ -138,7 +138,7 @@ class social_CaracteristicaControle extends social_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Caracteristicas_Edit($id){
+    public function Caracteristicas_Edit($id) {
         self::Endereco_Caracteristica(true);
         // Carrega Config
         $titulo1    = 'Editar Caracteristica (#'.$id.')';
@@ -157,7 +157,7 @@ class social_CaracteristicaControle extends social_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Caracteristicas_Edit2($id){
+    public function Caracteristicas_Edit2($id) {
         $titulo     = __('Caracteristica editada com Sucesso');
         $dao        = Array('Social_Caracteristica',$id);
         $funcao     = '$this->Caracteristica();';
@@ -173,7 +173,7 @@ class social_CaracteristicaControle extends social_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Caracteristicas_Del($id){
+    public function Caracteristicas_Del($id) {
         
         
     	$id = (int) $id;
@@ -181,7 +181,7 @@ class social_CaracteristicaControle extends social_Controle
         $setor = $this->_Modelo->db->Sql_Select('Social_Caracteristica', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($setor);
         // Mensagem
-    	if ($sucesso===true){
+    	if ($sucesso===true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletada'),

@@ -1,5 +1,5 @@
 <?php
-$config_Modulo = function (){
+$config_Modulo = function () {
     return Array(
         'Nome'                      =>  'noticia',
         'Descrição'                 =>  '',
@@ -8,7 +8,7 @@ $config_Modulo = function (){
         'Dependencias'              =>  false,
     );
 };
-$config_Menu = function (){
+$config_Menu = function () {
     return Array(
         'Administrar'=>Array(
             'Filhos'                => Array('Noticias'=>Array(
@@ -22,7 +22,7 @@ $config_Menu = function (){
         ),
     );
 };
-$config_Permissoes = function (){
+$config_Permissoes = function () {
     return Array(
         Array(
             'Nome'                  => __('Noticias - Administrar Noticias'),
@@ -68,7 +68,7 @@ $config_Permissoes = function (){
  * 
  * @author Ricardo Sierra <web@ricardosierra.com.br>
  */
-$config_Funcional = function (){
+$config_Funcional = function () {
     return Array(
         'noticia_Categoria'  => Array(
             'Nome'                  => __('Se possui categoria em noticias'),
@@ -84,7 +84,7 @@ $config_Funcional = function (){
  * 
  * @author Ricardo Sierra <web@ricardosierra.com.br>
  */
-$config_Publico = function (){
+$config_Publico = function () {
     return Array(
         /*'{chave}'  => Array(
             'Nome'                  => 'Nome',

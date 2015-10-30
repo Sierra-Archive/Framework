@@ -1,5 +1,5 @@
 <?php
-$config_Modulo = function (){
+$config_Modulo = function () {
     return Array(
         'Nome'                      =>  'Locomocao',
         'Descrição'                 =>  'Módulo Criado para o Calculo de Locomocao assim como cadastro de motoboys e entrega por emcomenda.',
@@ -8,7 +8,7 @@ $config_Modulo = function (){
         'Dependencias'              =>  false,
     );
 };
-$config_Menu = function (){
+$config_Menu = function () {
     return Array(
         'Entregas' => Array(
             'Nome'                  => __('Entregas'),
@@ -27,7 +27,7 @@ $config_Menu = function (){
         )
     );
 };
-$config_Permissoes = function (){
+$config_Permissoes = function () {
     return Array(
         
         // Entrega
@@ -84,7 +84,7 @@ $config_Permissoes = function (){
  * 
  * @author Ricardo Sierra <web@ricardosierra.com.br>
  */
-$config_Funcional = function (){
+$config_Funcional = function () {
     return Array(
         /*'Locomocao_Avancado'  => Array(
             'Nome'                  => 'Locomocao -> Avancado',
@@ -100,7 +100,7 @@ $config_Funcional = function (){
  * 
  * @author Ricardo Sierra <web@ricardosierra.com.br>
  */
-$config_Publico = function (){
+$config_Publico = function () {
     return Array(
         'Locomocao_Entrega_Kmminbase'  => Array(
             'Nome'                  => __('Km Min Ret. Base'),

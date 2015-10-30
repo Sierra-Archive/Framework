@@ -15,7 +15,7 @@ class usuario_AcessoControle extends usuario_Controle
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    public function __construct(){
+    public function __construct() {
         // construct
         parent::__construct();
     }
@@ -34,29 +34,29 @@ class usuario_AcessoControle extends usuario_Controle
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    public function Main(){
+    public function Main() {
         $this->Usuarios();
         // ORGANIZA E MANDA CONTEUDO
         $this->_Visual->Json_Info_Update('Titulo', __('Permissões de Usuários'));         
     }
-    public function Listar_Clientesnao(){
+    public function Listar_Clientesnao() {
         $this->Usuarios(Array(CFG_TEC_CAT_ID_CLIENTES,'Usuários'),false,100,true);
         // ORGANIZA E MANDA CONTEUDO
         $this->_Visual->Json_Info_Update('Titulo', __('Permissões de Usuários'));         
     }
     
-    public function Usuarios($grupo=false,$ativado=false,$gravidade=0,$inverter=false){
+    public function Usuarios($grupo=false,$ativado=false,$gravidade=0,$inverter=false) {
         $i = 0;
-        if ((isset($tipo) && ($tipo)===false)){
+        if ((isset($tipo) && ($tipo)===false)) {
             $where = Array();
         } else {
             $where = Array();
         }
         // cria where de acordo com parametros
         
-        if ($grupo===false){
+        if ($grupo===false) {
             $categoria = 0;
-            if ($inverter){
+            if ($inverter) {
                 $where = Array(
                     'ativado'=>$ativado
                 );
@@ -77,14 +77,14 @@ class usuario_AcessoControle extends usuario_Controle
             $sql_grupos = $this->_Modelo->db->Sql_Select('Sistema_Grupo',Array('categoria'=>$categoria));
             $grupos_id = Array();
             if (is_object($sql_grupos)) $sql_grupos = Array(0=>$sql_grupos);
-            if ($sql_grupos!==false && !empty($sql_grupos)){
+            if ($sql_grupos!==false && !empty($sql_grupos)) {
                 foreach ($sql_grupos as &$valor) {
                     $grupos_id[] = $valor->id;
                 }
             }
             
             // cria where de acordo com parametros
-            if ($inverter){
+            if ($inverter) {
                 $where = Array(
                     'NOTINgrupo'=>$grupos_id,
                     'ativado'=>$ativado
@@ -104,13 +104,13 @@ class usuario_AcessoControle extends usuario_Controle
         }
         
         $linkextra = '';
-        if ($grupo!==false && $grupo[0]==CFG_TEC_CAT_ID_CLIENTES && $inverter===false){
+        if ($grupo!==false && $grupo[0]==CFG_TEC_CAT_ID_CLIENTES && $inverter===false) {
             $linkextra = '/cliente';
         }
-        else if ($grupo!==false && $grupo[0]==CFG_TEC_CAT_ID_CLIENTES && $inverter===true){
+        else if ($grupo!==false && $grupo[0]==CFG_TEC_CAT_ID_CLIENTES && $inverter===true) {
             $linkextra = '/naocliente';
         }
-        else if ($grupo!==false && $grupo[0]==CFG_TEC_CAT_ID_FUNCIONARIOS && $inverter===false){
+        else if ($grupo!==false && $grupo[0]==CFG_TEC_CAT_ID_FUNCIONARIOS && $inverter===false) {
             $linkextra = '/funcionario';
         }
         
@@ -118,7 +118,7 @@ class usuario_AcessoControle extends usuario_Controle
         // Chama Usuarios
         $usuarios = $this->_Modelo->db->Sql_Select('Usuario',$where);
         if (is_object($usuarios)) $usuarios = Array(0=>$usuarios);
-        if ($usuarios!==false && !empty($usuarios)){
+        if ($usuarios!==false && !empty($usuarios)) {
             reset($usuarios);
             $perm_editar = $this->_Registro->_Acl->Get_Permissao_Url('usuario/Acesso/UsuariosAcesso_Edit');
             
@@ -127,11 +127,11 @@ class usuario_AcessoControle extends usuario_Controle
                 $tabela['Grupo'][$i]     = $valor->grupo2;
                 // Atualiza Nome
                 $nome = '';
-                if ($valor->nome!=''){
+                if ($valor->nome!='') {
                     $nome .= $valor->nome;
                 }
                 // Atualiza Razao Social
-                if ($valor->razao_social!=''){
+                if ($valor->razao_social!='') {
                     if ($nome!='') $nome .= '<br>';
                     $nome .= $valor->razao_social;
                 }
@@ -140,14 +140,14 @@ class usuario_AcessoControle extends usuario_Controle
                 $acl = new \Framework\App\Acl($valor->id);
                 $acl = $acl->getPermissao();
                 $permissoes = '';
-                if (!empty($acl)){
-                    foreach($acl as &$valor2){
-                        if ($valor2['valor']===true){
-                            if ($permissoes!==''){
+                if (!empty($acl)) {
+                    foreach($acl as &$valor2) {
+                        if ($valor2['valor']===true) {
+                            if ($permissoes!=='') {
                                 $permissoes .= ', ';
                             }
                             $permissoes .= $valor2['permissao'];
-                            if ($valor2['herdado']===true){
+                            if ($valor2['herdado']===true) {
                                 $permissoes .= ' (Herdado)';
                             }
                         }
@@ -177,7 +177,7 @@ class usuario_AcessoControle extends usuario_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function UsuariosAcesso_Edit($id,$tipo='usuario'){
+    public function UsuariosAcesso_Edit($id,$tipo='usuario') {
         // Carrega Config
         $titulo1    = 'Editar Usuario (#'.(int) $id.')';
         $titulo2    = __('Alteração de Usuario');
@@ -196,15 +196,15 @@ class usuario_AcessoControle extends usuario_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function UsuariosAcesso_Edit2($id,$tipo='usuario'){
-        if (isset($_POST["nome"])){
+    public function UsuariosAcesso_Edit2($id,$tipo='usuario') {
+        if (isset($_POST["nome"])) {
             $nome   = \Framework\App\Conexao::anti_injection($_POST["nome"]);
         } else {
             $nome   = '';
         }
         $titulo     = __('Usuario Editado com Sucesso');
         $dao        = Array('Usuario',$id);
-        if ($tipo=='naocliente'){
+        if ($tipo=='naocliente') {
             $funcao     = '$this->Listar_Clientesnao();';
         }else /*if ($tipo=='usuario')*/{
             $funcao     = '$this->Usuarios();';

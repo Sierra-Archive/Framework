@@ -15,7 +15,7 @@ class usuario_mensagem_SetorControle extends usuario_mensagem_Controle
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    public function __construct(){
+    public function __construct() {
         parent::__construct();
     }
     /**
@@ -29,16 +29,16 @@ class usuario_mensagem_SetorControle extends usuario_mensagem_Controle
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    public function Main(){
+    public function Main() {
         \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'usuario_mensagem/Setor/Setores/');
         return false;
     }
-    static function Endereco_Setor($true=true){
+    static function Endereco_Setor($true=true) {
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
         $titulo = __('Setores');
         $link = 'usuario_mensagem/Setor/Setores';
-        if($true===true){
+        if($true===true) {
             $_Controle->Tema_Endereco($titulo,$link);
         } else {
             $_Controle->Tema_Endereco($titulo);
@@ -49,7 +49,7 @@ class usuario_mensagem_SetorControle extends usuario_mensagem_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Setores($export=false){
+    public function Setores($export=false) {
         self::Endereco_Setor(false);
         
         $tabela = Array(
@@ -67,7 +67,7 @@ class usuario_mensagem_SetorControle extends usuario_mensagem_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Setores_Add(){
+    public function Setores_Add() {
         self::Endereco_Setor(true);
         // Carrega Config
         $titulo1    = __('Adicionar Setor');
@@ -84,7 +84,7 @@ class usuario_mensagem_SetorControle extends usuario_mensagem_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Setores_Edit($id){
+    public function Setores_Edit($id) {
         self::Endereco_Setor(true);
         $id = (int) $id;
         // Carrega campos e retira os que nao precisam
@@ -110,7 +110,7 @@ class usuario_mensagem_SetorControle extends usuario_mensagem_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Setores_Add2(){
+    public function Setores_Add2() {
         $titulo     = __('Setor Adicionado com Sucesso');
         $dao        = 'Usuario_Mensagem_Setor';
         $funcao     = '$this->Setores();';
@@ -126,7 +126,7 @@ class usuario_mensagem_SetorControle extends usuario_mensagem_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Setores_Edit2($id){
+    public function Setores_Edit2($id) {
         
         $id = (int) $id;
         // Puxa o setor, e altera seus valores, depois salva novamente
@@ -136,7 +136,7 @@ class usuario_mensagem_SetorControle extends usuario_mensagem_Controle
         // Atualiza
         $this->Setores();
         // Mensagem
-        if($sucesso===true){
+        if($sucesso===true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Setor Alterado com Sucesso'),
@@ -161,7 +161,7 @@ class usuario_mensagem_SetorControle extends usuario_mensagem_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Setores_Del($id){
+    public function Setores_Del($id) {
         
         
     	$id = (int) $id;
@@ -169,7 +169,7 @@ class usuario_mensagem_SetorControle extends usuario_mensagem_Controle
         $setor = $this->_Modelo->db->Sql_Select('Usuario_Mensagem_Setor', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($setor);
         // Mensagem
-    	if($sucesso===true){
+    	if($sucesso===true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),

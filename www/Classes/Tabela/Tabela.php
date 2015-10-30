@@ -33,7 +33,7 @@ class Tabela
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    public function addcabecario($array){
+    public function addcabecario($array) {
         $config = Array(
             'Tipo'      => 'Head',
             'Opcao'     => Array(
@@ -57,15 +57,15 @@ class Tabela
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    public function addcorpo($array){
-        if (!is_array($array)){
+    public function addcorpo($array) {
+        if (!is_array($array)) {
             return false;
         }
         // Percorre Array
         reset($array);
         while (key($array) !== null) {
             $current = current($array);
-            if (!isset($current["class"]) || $current["class"]===false){
+            if (!isset($current["class"]) || $current["class"]===false) {
                 $array[key($array)]["class"] = '';
             }
             next($array);
@@ -93,7 +93,7 @@ class Tabela
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    public function retornatabela(){
+    public function retornatabela() {
         $config = Array(
             'Tipo'      => 'Escopo',
             'Opcao'     => Array(

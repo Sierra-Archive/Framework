@@ -19,7 +19,7 @@ class noticia_Principal implements \Framework\PrincipalInterface
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    static function Home(&$controle, &$Modelo, &$Visual){
+    static function Home(&$controle, &$Modelo, &$Visual) {
         // Noticias
         $noticia_qnt = $Modelo->db->Sql_Contar('Noticia');
         // Adiciona Widget a Pagina Inicial
@@ -34,7 +34,7 @@ class noticia_Principal implements \Framework\PrincipalInterface
         );
         return true;
     }
-    static function Widget(&$_Controle){
+    static function Widget(&$_Controle) {
         $_Controle->Widget_Add('Superior',
         '<li class="dropdown mtop5">'.
             '<a class="dropdown-toggle element lajax" data-acao="" data-placement="bottom" data-toggle="tooltip" href="'.URL_PATH.'noticia/Admin/Noticias_Add" data-original-title="Nova Noticia">'.
@@ -44,35 +44,35 @@ class noticia_Principal implements \Framework\PrincipalInterface
         return true;
     } 
     
-    static function Busca(&$controle, &$Modelo, &$Visual,$busca){
+    static function Busca(&$controle, &$Modelo, &$Visual,$busca) {
         $i = 0;
         // Busca Noticias
         $result = self::Busca_Noticias($controle, $Modelo, $Visual, $busca);
-        if ($result!==false){
+        if ($result!==false) {
             $i = $i + $result;
         }
         // Retorna
-        if (is_int($i) && $i>0){
+        if (is_int($i) && $i>0) {
             return $i;
         } else {
             return false;
         }
     }
-    static function Config(){
+    static function Config() {
         return false;
     }
     
-    static function Relatorio($data_inicio,$data_final,$filtro=false){
+    static function Relatorio($data_inicio,$data_final,$filtro=false) {
         return false;
     }
     
-    static function Estatistica($data_inicio,$data_final,$filtro=false){
+    static function Estatistica($data_inicio,$data_final,$filtro=false) {
         return false;
     }
     /***********************
      * BUSCAS
      */
-    static function Busca_Noticias($controle, $Modelo, $Visual, $busca){
+    static function Busca_Noticias($controle, $Modelo, $Visual, $busca) {
         $where = Array(Array(
           'nome'                    => '%'.$busca.'%',
           'texto'                   => '%'.$busca.'%',
@@ -83,7 +83,7 @@ class noticia_Principal implements \Framework\PrincipalInterface
         // add botao
         $Visual->Blocar('<a title="Adicionar Noticia" class="btn btn-success lajax explicar-titulo" data-acao="" href="'.URL_PATH.'Noticia/Admin/Noticias_Add">Adicionar novo Noticia</a><div class="space15"></div>');
         if (is_object($noticias)) $noticias = Array(0=>$noticias);
-        if ($noticias!==false && !empty($noticias)){
+        if ($noticias!==false && !empty($noticias)) {
             list($tabela,$i) = noticia_AdminControle::Noticias_Tabela($noticias);
             $Visual->Show_Tabela_DataTable($tabela);
         } else {   

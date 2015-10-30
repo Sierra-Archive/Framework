@@ -13,7 +13,7 @@ class usuario_ExpedienteModelo extends usuario_Modelo
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    public function __construct(){
+    public function __construct() {
         parent::__construct();
     }
     /**
@@ -24,7 +24,7 @@ class usuario_ExpedienteModelo extends usuario_Modelo
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Expedientes($status=0,$almoco=false){
+    public function Expedientes($status=0,$almoco=false) {
         // Table's primary key
         $primaryKey = 'id';
         $tabela = 'Usuario_Expediente';
@@ -34,8 +34,8 @@ class usuario_ExpedienteModelo extends usuario_Modelo
         $perm_statusalterar = $this->_Registro->_Acl->Get_Permissao_Url('usuario/Expediente/Expedientes_StatusAlterar');
         
         $function = '';
-        if ($perm_statusalterar){
-            if ($status==0){
+        if ($perm_statusalterar) {
+            if ($status==0) {
                 $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Personalizado\'     ,Array(__(\'Colocar em Almoço\')        ,\'usuario/Expediente/Expedientes_StatusAlterar/\'.$d.\'/1/\'    ,\'\',\'cutlery\',\'success\'),true);';
                 $function .= ' $html .= \' \'.Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Personalizado\'     ,Array(__(\'Finalizar\')        ,\'usuario/Expediente/Expedientes_StatusAlterar/\'.$d.\'/2/\'    ,\'\',\'home\',\'warning\'),true);';
             } else {
@@ -63,7 +63,7 @@ class usuario_ExpedienteModelo extends usuario_Modelo
             'dt' => $numero); //'Funcionário';
         
         
-        if ($almoco!==false){
+        if ($almoco!==false) {
             ++$numero;
             $columns[] = array( 
                 'db' => 'log_date_edit', 

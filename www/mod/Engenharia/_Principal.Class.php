@@ -19,7 +19,7 @@ class Engenharia_Principal implements \Framework\PrincipalInterface
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    static function Home(&$controle, &$Modelo, &$Visual){
+    static function Home(&$controle, &$Modelo, &$Visual) {
         self::Widgets();
         return true;
     }
@@ -29,32 +29,32 @@ class Engenharia_Principal implements \Framework\PrincipalInterface
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    static function Config(){
+    static function Config() {
         return false;
     }
     
-    static function Relatorio($data_inicio,$data_final,$filtro=false){
+    static function Relatorio($data_inicio,$data_final,$filtro=false) {
         return false;
     }
     
-    static function Estatistica($data_inicio,$data_final,$filtro=false){
+    static function Estatistica($data_inicio,$data_final,$filtro=false) {
         return false;
     }
     
-    static function Busca(&$controle, &$Modelo, &$Visual,$busca){
+    static function Busca(&$controle, &$Modelo, &$Visual,$busca) {
         $i = 0;
         // Busca Engenharias
         $result = self::Busca_Empreendimentos($controle, $Modelo, $Visual, $busca);
-        if ($result!==false){
+        if ($result!==false) {
             $i = $i + $result;
         }
         // Busca Unidades
         $result = self::Busca_Unidades($controle, $Modelo, $Visual, $busca);
-        if ($result!==false){
+        if ($result!==false) {
             $i = $i + $result;
         }
         // Retorna
-        if (is_int($i) && $i>0){
+        if (is_int($i) && $i>0) {
             return $i;
         } else {
             return false;
@@ -64,7 +64,7 @@ class Engenharia_Principal implements \Framework\PrincipalInterface
     /***********************
      * BUSCAS
      */
-    static function Busca_Empreendimentos($controle, $Modelo, $Visual, $busca){
+    static function Busca_Empreendimentos($controle, $Modelo, $Visual, $busca) {
         $where = Array(Array(
           'nome'                    => '%'.$busca.'%',
           'unidades'                => '%'.$busca.'%',
@@ -93,7 +93,7 @@ class Engenharia_Principal implements \Framework\PrincipalInterface
             )
         )));
         if (is_object($empreendimentos)) $empreendimentos = Array(0=>$empreendimentos);
-        if ($empreendimentos!==false && !empty($empreendimentos)){
+        if ($empreendimentos!==false && !empty($empreendimentos)) {
             list($tabela,$i) = Engenharia_EmpreendimentoControle::Empreendimentos_Tabela($empreendimentos);
             $Visual->Show_Tabela_DataTable($tabela);
         } else {             
@@ -103,7 +103,7 @@ class Engenharia_Principal implements \Framework\PrincipalInterface
         $Visual->Bloco_Unico_CriaJanela($titulo);
         return $i;
     }
-    static function Busca_Unidades($controle, $Modelo, $Visual, $busca){
+    static function Busca_Unidades($controle, $Modelo, $Visual, $busca) {
         $where = Array(Array(
           'unidade'                 => '%'.$busca.'%',
           'metragem'                => '%'.$busca.'%',
@@ -128,7 +128,7 @@ class Engenharia_Principal implements \Framework\PrincipalInterface
             )
         )));
         if (is_object($unidades)) $unidades = Array(0=>$unidades);
-        if ($unidades!==false && !empty($unidades)){
+        if ($unidades!==false && !empty($unidades)) {
             list($tabela,$i) = Engenharia_UnidadeControle::Unidades_Tabela($unidades);
             $Visual->Show_Tabela_DataTable($tabela);
         } else {    
@@ -143,7 +143,7 @@ class Engenharia_Principal implements \Framework\PrincipalInterface
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public static function Widgets(){
+    public static function Widgets() {
         $Registro = &\Framework\App\Registro::getInstacia();
         $Modelo = &$Registro->_Modelo;
         $Visual = &$Registro->_Visual;

@@ -1,7 +1,7 @@
 <?php
 class Enquete_EnqueteControle extends Enquete_Controle
 {
-    public function __construct(){
+    public function __construct() {
         parent::__construct();
     }
     /**
@@ -17,20 +17,20 @@ class Enquete_EnqueteControle extends Enquete_Controle
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    public function Main(){
+    public function Main() {
         \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'Enquete/Enquete/Enquetes');
         return false;
     }
-    static function Endereco_Enquete($true=true){
+    static function Endereco_Enquete($true=true) {
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
-        if ($true===true){
+        if ($true===true) {
             $_Controle->Tema_Endereco(__('Enquetes'),'Enquete/Enquete/Enquetes');
         } else {
             $_Controle->Tema_Endereco(__('Enquetes'));
         }
     }
-    static function Enquetes_Tabela(&$enquetes){
+    static function Enquetes_Tabela(&$enquetes) {
         $Registro   = &\Framework\App\Registro::getInstacia();
         $Modelo     = &$Registro->_Modelo;
         $Visual     = &$Registro->_Visual;
@@ -46,9 +46,9 @@ class Enquete_EnqueteControle extends Enquete_Controle
             $resp_votos = $Modelo->db->Sql_Select('Enquete_Voto',Array(
                 'enquete'   =>  $valor->id
             ));
-            if ($resp_votos===false){
+            if ($resp_votos===false) {
                 $resp_votos_res = 0;
-            }else if (is_object($resp_votos)){
+            }else if (is_object($resp_votos)) {
                 $resp_votos_res = 1;
             } else {
                 $resp_votos_res = count($resp_votos);
@@ -70,7 +70,7 @@ class Enquete_EnqueteControle extends Enquete_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Enquetes($export=false){
+    public function Enquetes($export=false) {
         self::Endereco_Enquete(false);
         $i = 0;
         // Botao Add
@@ -89,9 +89,9 @@ class Enquete_EnqueteControle extends Enquete_Controle
         )));
         // Conexao
         $enquetes = $this->_Modelo->db->Sql_Select('Enquete');
-        if ($enquetes!==false && !empty($enquetes)){
+        if ($enquetes!==false && !empty($enquetes)) {
             list($tabela,$i) = self::Enquetes_Tabela($enquetes);
-            if ($export!==false){
+            if ($export!==false) {
                 self::Export_Todos($export,$tabela, 'Enquetes');
             } else {
                 $this->_Visual->Show_Tabela_DataTable(
@@ -121,7 +121,7 @@ class Enquete_EnqueteControle extends Enquete_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Enquetes_Add(){
+    public function Enquetes_Add() {
         self::Endereco_Enquete();
         // Carrega Config
         $titulo1    = __('Adicionar Enquete');
@@ -138,7 +138,7 @@ class Enquete_EnqueteControle extends Enquete_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Enquetes_Add2(){
+    public function Enquetes_Add2() {
         $titulo     = __('Enquete Adicionada com Sucesso');
         $dao        = 'Enquete';
         $funcao     = '$this->Enquetes();';
@@ -153,7 +153,7 @@ class Enquete_EnqueteControle extends Enquete_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Enquetes_Edit($id){
+    public function Enquetes_Edit($id) {
         self::Endereco_Enquete();
         // Carrega Config
         $titulo1    = 'Editar Enquete (#'.$id.')';
@@ -172,7 +172,7 @@ class Enquete_EnqueteControle extends Enquete_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Enquetes_Edit2($id){
+    public function Enquetes_Edit2($id) {
         $titulo     = __('Enquete Editada com Sucesso');
         $dao        = Array('Enquete',$id);
         $funcao     = '$this->Enquetes();';
@@ -188,7 +188,7 @@ class Enquete_EnqueteControle extends Enquete_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Enquetes_Del($id){
+    public function Enquetes_Del($id) {
         
         
     	$id = (int) $id;
@@ -196,7 +196,7 @@ class Enquete_EnqueteControle extends Enquete_Controle
         $enquete = $this->_Modelo->db->Sql_Select('Enquete', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($enquete);
         // Mensagem
-    	if ($sucesso===true){
+    	if ($sucesso===true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),

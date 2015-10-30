@@ -13,7 +13,7 @@ class banner_Modelo extends \Framework\App\Modelo
     * @version 0.4.2
     */
     public $campos = Array();
-    public function __construct(){
+    public function __construct() {
         //GLOBAL $config;
         parent::__construct();
     } 
@@ -31,7 +31,7 @@ class banner_Modelo extends \Framework\App\Modelo
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    public function retorna_banners(&$banners,$categoria=0,$ativado=1){
+    public function retorna_banners(&$banners,$categoria=0,$ativado=1) {
         $i = 0;
         $mysqlwhere = '';
         if ($categoria==0) $EXTRA = '';
@@ -54,7 +54,7 @@ class banner_Modelo extends \Framework\App\Modelo
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function retorna_banner($id){
+    public function retorna_banner($id) {
         $id = (int) $id;
         if (!isset($id) || !is_int($id) || $id==0) return 0;
         $banner = Array();
@@ -68,19 +68,19 @@ class banner_Modelo extends \Framework\App\Modelo
         }
         return $banner;
     }
-    public function banner_contabiliza_cliq($id,$cliq){
+    public function banner_contabiliza_cliq($id,$cliq) {
         $id = (int) $id;
         if (!isset($id) || !is_int($id) || $id==0) return 0;
         $this->db->query('UPDATE '.MYSQL_BANNERS.' SET cliq='.$cliq.' WHERE id='.$id); //P.categoria
         return 1;
     }
-    public static function banner_contabiliza_ixi(&$model, $id,$ixi){
+    public static function banner_contabiliza_ixi(&$model, $id,$ixi) {
         $id = (int) $id;
         if (!isset($id) || !is_int($id) || $id==0) return 0;
         $model->db->query('UPDATE '.MYSQL_BANNERS.' SET ixi='.$ixi.' WHERE id='.$id); //P.categoria
         return 1;
     }
-    public static function retorna_banner_aleatorio(&$model, $cat){
+    public static function retorna_banner_aleatorio(&$model, $cat) {
         $cat = (int) $cat;
         if (!isset($cat) || !is_int($cat) || $cat=='') return 0;
         $banner = Array();

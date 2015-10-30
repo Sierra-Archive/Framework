@@ -1,7 +1,7 @@
 <?php
 class Simulador_PerguntaControle extends Simulador_Controle
 {
-    public function __construct(){
+    public function __construct() {
         parent::__construct();
     }
     /**
@@ -17,15 +17,15 @@ class Simulador_PerguntaControle extends Simulador_Controle
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    public function Main(){
+    public function Main() {
         \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'Simulador/Pergunta/Perguntas');
         return false;
     }
-    static function Endereco_Pergunta($true=true,$simulador=false){
+    static function Endereco_Pergunta($true=true,$simulador=false) {
         if ($simulador==='false') $simulador = false;
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
-        if ($simulador===false){
+        if ($simulador===false) {
             $titulo = __('Todos os Perguntas');
             $link   = 'Simulador/Pergunta/Perguntas';
         } else {
@@ -33,13 +33,13 @@ class Simulador_PerguntaControle extends Simulador_Controle
             $titulo = $simulador->nome;
             $link   = 'Simulador/Pergunta/Perguntas/'.$simulador->id;
         }
-        if ($true===true){
+        if ($true===true) {
             $_Controle->Tema_Endereco($titulo,$link);
         } else {
             $_Controle->Tema_Endereco($titulo);
         }
     }
-    static function Perguntas_Tabela(&$perguntas,$simulador=false){
+    static function Perguntas_Tabela(&$perguntas,$simulador=false) {
         if ($simulador==='false') $simulador = false;
         $Registro   = &\Framework\App\Registro::getInstacia();
         $Modelo     = &$Registro->_Modelo;
@@ -49,7 +49,7 @@ class Simulador_PerguntaControle extends Simulador_Controle
         if (is_object($perguntas)) $perguntas = Array(0=>$perguntas);
         reset($perguntas);
         foreach ($perguntas as &$valor) {
-            if ($simulador===false || $simulador==0){
+            if ($simulador===false || $simulador==0) {
                 
                 $tabela['Simulador'][$i]   = $valor->simulador2;
                 $edit_url   = 'Simulador/Pergunta/Perguntas_Edit/'.$valor->id.'/';
@@ -62,7 +62,7 @@ class Simulador_PerguntaControle extends Simulador_Controle
             $tabela['Nome'][$i]             = $valor->nome;
             $tabela['Data Registrada no Sistema'][$i]  = $valor->log_date_add;
             $status                                 = $valor->status;
-            if ($status!=1){
+            if ($status!=1) {
                 $status = 0;
                 $texto = __('Desativado');
             } else {
@@ -82,19 +82,19 @@ class Simulador_PerguntaControle extends Simulador_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Perguntas($simulador=false,$export=false){
+    public function Perguntas($simulador=false,$export=false) {
         if ($simulador ==='false' || $simulador ===0)  $simulador    = false;
-        if ($simulador!==false){
+        if ($simulador!==false) {
             $simulador = (int) $simulador;
-            if ($simulador==0){
+            if ($simulador==0) {
                 $simulador_registro = $this->_Modelo->db->Sql_Select('Simulador',Array(),1,'id DESC');
-                if ($simulador_registro===false){
+                if ($simulador_registro===false) {
                     return _Sistema_erroControle::Erro_Fluxo('Não existe nenhum simulador:',404);
                 }
                 $simulador = $simulador_registro->id;
             } else {
                 $simulador_registro = $this->_Modelo->db->Sql_Select('Simulador',Array('id'=>$simulador),1);
-                if ($simulador_registro===false){
+                if ($simulador_registro===false) {
                     return _Sistema_erroControle::Erro_Fluxo('Esse Simulador não existe:',404);
                 }
             }
@@ -107,7 +107,7 @@ class Simulador_PerguntaControle extends Simulador_Controle
             self::Endereco_Pergunta(false, false);
         }
         $i = 0;
-        if ($simulador!==false){
+        if ($simulador!==false) {
             $titulo_add = 'Adicionar nova Pergunta ao Simulador: '.$simulador_registro->nome;
             $url_add = '/'.$simulador;
             $add_url = 'Simulador/Pergunta/Perguntas_Add/'.$simulador;
@@ -133,15 +133,15 @@ class Simulador_PerguntaControle extends Simulador_Controle
         )));
         $perguntas = $this->_Modelo->db->Sql_Select('Simulador_Pergunta',$where);
            
-        if ($simulador!==false){
+        if ($simulador!==false) {
             $titulo = 'Listagem de Perguntas: '.$simulador_registro->nome;
         } else {
             $titulo = __('Listagem de Perguntas em Todos os Simuladores');
         }
-        if ($perguntas!==false && !empty($perguntas)){
+        if ($perguntas!==false && !empty($perguntas)) {
             list($tabela,$i) = self::Perguntas_Tabela($perguntas,$simulador);
             $titulo = $titulo.' ('.$i.')';
-            if ($export!==false){
+            if ($export!==false) {
                 self::Export_Todos($export,$tabela, $titulo);
             } else {
                 $this->_Visual->Show_Tabela_DataTable(
@@ -159,7 +159,7 @@ class Simulador_PerguntaControle extends Simulador_Controle
             unset($tabela);
         } else {
             $titulo = $titulo.' ('.$i.')';
-            if ($simulador!==false){
+            if ($simulador!==false) {
                 $erro = __('Nenhuma Pergunta nesse Simulador');
             } else {
                 $erro = __('Nenhuma Pergunta nos Simuladores');
@@ -176,28 +176,28 @@ class Simulador_PerguntaControle extends Simulador_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Perguntas_Add($simulador = false){
+    public function Perguntas_Add($simulador = false) {
         if ($simulador==='false') $simulador = false;
         // Carrega Config
         $formid     = 'form_Simulador_Pergunta_Perguntas';
         $formbt     = __('Salvar');
         $campos     = Simulador_Pergunta_DAO::Get_Colunas();
-        if ($simulador===false){
+        if ($simulador===false) {
             $formlink   = 'Simulador/Pergunta/Perguntas_Add2';
             $titulo1    = __('Adicionar Pergunta');
             $titulo2    = __('Salvar Pergunta');
             self::Endereco_Pergunta(true, false);
         } else {
             $simulador = (int) $simulador;
-            if ($simulador==0){
+            if ($simulador==0) {
                 $simulador_registro = $this->_Modelo->db->Sql_Select('Simulador',Array(),1,'id DESC');
-                if ($simulador_registro===false){
+                if ($simulador_registro===false) {
                     return _Sistema_erroControle::Erro_Fluxo('Não existe nenhuma simulador:',404);
                 }
                 $simulador = $simulador_registro->id;
             } else {
                 $simulador_registro = $this->_Modelo->db->Sql_Select('Simulador',Array('id'=>$simulador),1);
-                if ($simulador_registro===false){
+                if ($simulador_registro===false) {
                     return _Sistema_erroControle::Erro_Fluxo('Esse Simulador não existe:',404);
                 }
             }
@@ -216,13 +216,13 @@ class Simulador_PerguntaControle extends Simulador_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Perguntas_Add2($simulador=false){
+    public function Perguntas_Add2($simulador=false) {
         if ($simulador==='false') $simulador = false;
         $titulo     = __('Pergunta Adicionada com Sucesso');
         $dao        = 'Simulador_Pergunta';
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = __('Pergunta cadastrada com sucesso.');
-        if ($simulador===false){
+        if ($simulador===false) {
             $funcao     = '$this->Perguntas(0);';
             $alterar    = Array();
         } else {
@@ -238,13 +238,13 @@ class Simulador_PerguntaControle extends Simulador_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Perguntas_Edit($id,$simulador = false){
+    public function Perguntas_Edit($id,$simulador = false) {
         if ($simulador==='false') $simulador = false;
-        if ($id===false){
+        if ($id===false) {
             return _Sistema_erroControle::Erro_Fluxo('Pergunta não existe:'. $id,404);
         }
         $id         = (int) $id;
-        if ($simulador!==false){
+        if ($simulador!==false) {
             $simulador    = (int) $simulador;
         }
         // Carrega Config
@@ -253,9 +253,9 @@ class Simulador_PerguntaControle extends Simulador_Controle
         $formid     = 'form_Simulador_PerguntaC_PerguntaEdit';
         $formbt     = __('Alterar Pergunta');
         $campos = Simulador_Pergunta_DAO::Get_Colunas();
-        if ($simulador!==false){
+        if ($simulador!==false) {
             $simulador_registro = $this->_Modelo->db->Sql_Select('Simulador',Array('id'=>$simulador),1);
-            if ($simulador_registro===false){
+            if ($simulador_registro===false) {
                 return _Sistema_erroControle::Erro_Fluxo('Esse Simulador não existe:',404);
             }
             $formlink   = 'Simulador/Pergunta/Perguntas_Edit2/'.$id.'/'.$simulador;
@@ -275,18 +275,18 @@ class Simulador_PerguntaControle extends Simulador_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Perguntas_Edit2($id,$simulador = false){
+    public function Perguntas_Edit2($id,$simulador = false) {
         if ($simulador==='false') $simulador = false;
-        if ($id===false){
+        if ($id===false) {
             return _Sistema_erroControle::Erro_Fluxo('Pergunta não existe:'. $id,404);
         }
         $id         = (int) $id;
-        if ($simulador!==false){
+        if ($simulador!==false) {
             $simulador    = (int) $simulador;
         }
         $titulo     = __('Pergunta Editada com Sucesso');
         $dao        = Array('Simulador_Pergunta',$id);
-        if ($simulador!==false){
+        if ($simulador!==false) {
             $funcao     = '$this->Perguntas('.$simulador.');';
         } else {
             $funcao     = '$this->Perguntas();';
@@ -303,15 +303,15 @@ class Simulador_PerguntaControle extends Simulador_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Perguntas_Del($id = false,$simulador=false){
+    public function Perguntas_Del($id = false,$simulador=false) {
         if ($simulador==='false') $simulador = false;
         
-        if ($id===false){
+        if ($id===false) {
             return _Sistema_erroControle::Erro_Fluxo('Pergunta não existe:'. $id,404);
         }
         // Antiinjection
     	$id = (int) $id;
-        if ($simulador!==false){
+        if ($simulador!==false) {
             $simulador    = (int) $simulador;
             $where = Array('simulador'=>$simulador,'id'=>$id);
         } else {
@@ -321,7 +321,7 @@ class Simulador_PerguntaControle extends Simulador_Controle
         $pergunta = $this->_Modelo->db->Sql_Select('Simulador_Pergunta', $where);
         $sucesso =  $this->_Modelo->db->Sql_Delete($pergunta);
         // Mensagem
-    	if ($sucesso===true){
+    	if ($sucesso===true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
@@ -336,7 +336,7 @@ class Simulador_PerguntaControle extends Simulador_Controle
         }
         $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
         // Recupera Perguntas
-        if ($simulador!==false){
+        if ($simulador!==false) {
             $this->Perguntas($simulador);
         } else {
             $this->Perguntas();
@@ -345,22 +345,22 @@ class Simulador_PerguntaControle extends Simulador_Controle
         $this->_Visual->Json_Info_Update('Titulo', __('Pergunta deletada com Sucesso'));
         $this->_Visual->Json_Info_Update('Historico', false);
     }
-    public function Status($id=false){
-        if ($id===false){
+    public function Status($id=false) {
+        if ($id===false) {
             return false;
         }
         $resultado = $this->_Modelo->db->Sql_Select('Simulador_Pergunta', Array('id'=>$id),1);
-        if ($resultado===false || !is_object($resultado)){
+        if ($resultado===false || !is_object($resultado)) {
             return false;
         }
-        if ($resultado->status=='1'){
+        if ($resultado->status=='1') {
             $resultado->status='0';
         } else {
             $resultado->status='1';
         }
         $sucesso = $this->_Modelo->db->Sql_Update($resultado);
-        if ($sucesso){
-            if ($resultado->status==1){
+        if ($sucesso) {
+            if ($resultado->status==1) {
                 $texto = __('Ativado');
             } else {
                 $texto = __('Desativado');

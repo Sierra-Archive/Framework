@@ -15,7 +15,7 @@ class banner_ListarControle extends banner_Controle
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    public function __construct(){
+    public function __construct() {
         parent::__construct();
     }
     /**
@@ -31,12 +31,12 @@ class banner_ListarControle extends banner_Controle
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    public function Main(){
+    public function Main() {
         $this->Banners_Listar();
         // ORGANIZA E MANDA CONTEUDO
         $this->_Visual->Json_Info_Update('Titulo', __('Banners')); 
     }
-    public function Banner_Redirecionar($id = 0){
+    public function Banner_Redirecionar($id = 0) {
         $id = (int) $id;
         if ($id == 0)            return;
         
@@ -50,11 +50,11 @@ class banner_ListarControle extends banner_Controle
         
         \Framework\App\Sistema_Funcoes::Redirect($banner['url']);
     }
-    public function Banners_Listar($categoria=0,$ativado=1){
+    public function Banners_Listar($categoria=0,$ativado=1) {
         $banners = Array();
         $i = 0;
         $this->_Modelo->retorna_banners($banners,$categoria,$ativado);
-        if (!empty($banners)){
+        if (!empty($banners)) {
             reset($banners);
             
             foreach ($banners as $indice=>&$valor) {                
@@ -70,7 +70,7 @@ class banner_ListarControle extends banner_Controle
         } else {      
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Banner</font></b></center>');
         }
-        if ($ativado==0){
+        if ($ativado==0) {
             $titulo = __('Todos os Banners Desativados').' ('.$i.')';
         } else {
             $titulo = __('Todos os Banners Ativados').' ('.$i.')';

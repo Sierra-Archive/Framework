@@ -18,63 +18,63 @@ class Financeiro_UsuarioControle extends Financeiro_Controle
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    public function __construct(){
+    public function __construct() {
         parent::__construct();
     }
-    static function Endereco_Financeiro($true=true){
+    static function Endereco_Financeiro($true=true) {
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
         $titulo = __('Financeiro');
         $link = '_Sistema/Principal/Home';
-        if ($true===true){
+        if ($true===true) {
             $_Controle->Tema_Endereco($titulo,$link);
         } else {
             $_Controle->Tema_Endereco($titulo);
         }
     }
-    static function Endereco_Pagar($true=true){
+    static function Endereco_Pagar($true=true) {
         self::Endereco_Financeiro();
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
         $titulo = __('À Pagar');
         $link = 'Financeiro/Usuario/Pagar';
-        if ($true===true){
+        if ($true===true) {
             $_Controle->Tema_Endereco($titulo,$link);
         } else {
             $_Controle->Tema_Endereco($titulo);
         }
     }
-    static function Endereco_Receber($true=true){
+    static function Endereco_Receber($true=true) {
         self::Endereco_Financeiro();
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
         $titulo = __('À Receber');
         $link = 'Financeiro/Usuario/Receber';
-        if ($true===true){
+        if ($true===true) {
             $_Controle->Tema_Endereco($titulo,$link);
         } else {
             $_Controle->Tema_Endereco($titulo);
         }
     }
-    static function Endereco_Pago($true=true){
+    static function Endereco_Pago($true=true) {
         self::Endereco_Financeiro();
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
         $titulo = __('Pagas');
         $link = 'Financeiro/Usuario/Pago';
-        if ($true===true){
+        if ($true===true) {
             $_Controle->Tema_Endereco($titulo,$link);
         } else {
             $_Controle->Tema_Endereco($titulo);
         }
     }
-    static function Endereco_Recebido($true=true){
+    static function Endereco_Recebido($true=true) {
         self::Endereco_Financeiro();
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
         $titulo = __('Recebidos');
         $link = 'Financeiro/Usuario/Recebido';
-        if ($true===true){
+        if ($true===true) {
             $_Controle->Tema_Endereco($titulo,$link);
         } else {
             $_Controle->Tema_Endereco($titulo);
@@ -93,13 +93,13 @@ class Financeiro_UsuarioControle extends Financeiro_Controle
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    public function Main(){
+    public function Main() {
         return false;
     }
     /**
      * Contas a Pagar
      */
-    public function Pagar($export = false){
+    public function Pagar($export = false) {
         self::Endereco_Pagar(false);
         
         // Exportar
@@ -122,10 +122,10 @@ class Financeiro_UsuarioControle extends Financeiro_Controle
         );
         list($tabela,$i) = $this->Movimentacao_Interna($where,'Mini',false,'',false);
         $titulo = $titulo.' ('.$i.')';
-        if ($i==0){          
+        if ($i==0) {          
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhuma Conta à pagar</font></b></center>');
         } else {
-            if ($export!==false){
+            if ($export!==false) {
                 self::Export_Todos($export,$tabela, 'Contas à pagar');
             } else {
                 $this->_Visual->Show_Tabela_DataTable($tabela);
@@ -138,7 +138,7 @@ class Financeiro_UsuarioControle extends Financeiro_Controle
     /**
      * Contas a Receber
      */
-    public function Receber($export = false){
+    public function Receber($export = false) {
         self::Endereco_Receber(false);
         
         // Exportar
@@ -161,10 +161,10 @@ class Financeiro_UsuarioControle extends Financeiro_Controle
         
         list($tabela,$i) = $this->Movimentacao_Interna($where,'Mini');
         $titulo = $titulo.' ('.$i.')';
-        if ($i==0 ){
+        if ($i==0 ) {
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhuma Conta à Receber</font></b></center>');
         } else {
-            if ($export!==false){
+            if ($export!==false) {
                 self::Export_Todos($export,$tabela, 'Contas à Receber');
             } else {
                 $this->_Visual->Show_Tabela_DataTable($tabela);
@@ -174,7 +174,7 @@ class Financeiro_UsuarioControle extends Financeiro_Controle
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         $this->_Visual->Json_Info_Update('Titulo',$titulo); 
     }
-    public function Pago($export = false){
+    public function Pago($export = false) {
         self::Endereco_Pago(false);
         
         // Exportar
@@ -197,10 +197,10 @@ class Financeiro_UsuarioControle extends Financeiro_Controle
         );
         list($tabela,$i) = $this->Movimentacao_Interna_Pago($where,'Mini');
         $titulo = $titulo.' ('.$i.')';
-        if ($i==0){          
+        if ($i==0) {          
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhuma Conta Paga</font></b></center>');
         } else {
-            if ($export!==false){
+            if ($export!==false) {
                 self::Export_Todos($export,$tabela, 'Contas Pagas');
             } else {
                 $this->_Visual->Show_Tabela_DataTable($tabela);
@@ -213,7 +213,7 @@ class Financeiro_UsuarioControle extends Financeiro_Controle
     /**
      * Contas a Receber
      */
-    public function Recebido($export = false){
+    public function Recebido($export = false) {
         self::Endereco_Recebido(false);
         
         // Exportar
@@ -236,10 +236,10 @@ class Financeiro_UsuarioControle extends Financeiro_Controle
         
         list($tabela,$i) = $this->Movimentacao_Interna_Pago($where,'Mini');
         $titulo = $titulo.' ('.$i.')';
-        if ($i==0 ){
+        if ($i==0 ) {
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhuma Conta Recebida</font></b></center>');
         } else {
-            if ($export!==false){
+            if ($export!==false) {
                 self::Export_Todos($export,$tabela, 'Contas Recebidas');
             } else {
                 $this->_Visual->Show_Tabela_DataTable($tabela);
@@ -249,7 +249,7 @@ class Financeiro_UsuarioControle extends Financeiro_Controle
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         $this->_Visual->Json_Info_Update('Titulo',$titulo); 
     }
-    static function Financeiros_Campos_Retirar(&$campos){
+    static function Financeiros_Campos_Retirar(&$campos) {
         //self::DAO_Campos_Retira($campos, 'dt_pago');
         
         self::DAO_Campos_Retira($campos, 'categoria');
@@ -272,7 +272,7 @@ class Financeiro_UsuarioControle extends Financeiro_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    static function Financeiro_Usuario($motivo,$motivo_id,$pago){
+    static function Financeiro_Usuario($motivo,$motivo_id,$pago) {
         // Carrega Modelo
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Modelo = &$Registro->_Modelo;
@@ -287,7 +287,7 @@ class Financeiro_UsuarioControle extends Financeiro_Controle
      * @param type $dataini
      * @param type $datafin
      */
-    public function Financeiros_Pagar($id=false, $localizacao=false, $dataini=false,$datafin=false){
+    public function Financeiros_Pagar($id=false, $localizacao=false, $dataini=false,$datafin=false) {
         $html = '';
         
         $html .= '<!-- INICIO FORMULARIO BOTAO PAGSEGURO -->
@@ -310,27 +310,27 @@ class Financeiro_UsuarioControle extends Financeiro_Controle
      * @param type $layoult
      * @throws Exception
      */
-    public function Financeiro_View($id=false,$layoult='Unico'){
+    public function Financeiro_View($id=false,$layoult='Unico') {
         $html = '<span style="text-transform:uppercase;">';
 
 
         // Puxca Financeiro
         $identificador = $this->_Modelo->db->Sql_Select('Financeiro_Pagamento_Interno',Array('id'=>(int) $id),1); // Banco DAO, Condicao e LIMITE
         // Verifica se Existe e Continua
-        if ($identificador===false){
+        if ($identificador===false) {
             return _Sistema_erroControle::Erro_Fluxo('Pagamento não Existe',404);
         }
         $identificador->id;
         
         
-        if ($identificador->entrada_motivo==='Servidor' && $identificador->entrada_motivoid===SRV_NAME_SQL){
-            if ($identificador->pago==1){
+        if ($identificador->entrada_motivo==='Servidor' && $identificador->entrada_motivoid===SRV_NAME_SQL) {
+            if ($identificador->pago==1) {
                 $tema = 'Pago';
             } else {
                 $tema = 'Pagar';
             }
         } else {            
-            if ($identificador->pago==1){
+            if ($identificador->pago==1) {
                 $tema = 'Receber';
             } else {
                 $tema = 'Recebido';
@@ -338,15 +338,15 @@ class Financeiro_UsuarioControle extends Financeiro_Controle
         }
         
         // Nomes
-        if ($tema==='Pagar'){
+        if ($tema==='Pagar') {
             $titulo             = __('Conta a Pagar');
             $titulo_plural      = __('Contas a Pagar');
             $titulo_unico       = 'contasapagar';
-        }else if ($tema==='Pago'){
+        }else if ($tema==='Pago') {
             $titulo             = __('Conta Paga');
             $titulo_plural      = __('Contas Pagas');
             $titulo_unico       = 'contaspagas';
-        }else if ($tema==='Receber'){
+        }else if ($tema==='Receber') {
             $titulo             = __('Conta a Pagar');
             $titulo_plural      = __('Contas a Pagar');
             $titulo_unico       = 'contasareceber';
@@ -360,7 +360,7 @@ class Financeiro_UsuarioControle extends Financeiro_Controle
         
         
         
-        if ($layoult!=='Imprimir'){            
+        if ($layoult!=='Imprimir') {            
             $html .= $this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
                 false,
                 Array(
@@ -381,11 +381,11 @@ class Financeiro_UsuarioControle extends Financeiro_Controle
         
         $html .= '</span>';
         // Caso seja pra Imprimir
-        if ($layoult==='Imprimir'){
+        if ($layoult==='Imprimir') {
             self::Export_Todos($layoult,$html, $titulo.' #'.$identificador->id);
         } else {
             // Identifica tipo e cria conteudo
-            if (LAYOULT_IMPRIMIR=='AJAX'){
+            if (LAYOULT_IMPRIMIR=='AJAX') {
                 // Coloca Conteudo em Popup
                 $popup = array(
                     'id'        => 'popup',
@@ -406,9 +406,9 @@ class Financeiro_UsuarioControle extends Financeiro_Controle
                 $this->Tema_Endereco('Visualizar '.$titulo);
                 // Coloca COnteudo em Janela
                 $this->_Visual->Blocar($html);
-                if ($layoult==='Unico'){
+                if ($layoult==='Unico') {
                     $this->_Visual->Bloco_Unico_CriaJanela($titulo.' #'.$identificador->id);
-                }else if ($layoult==='Maior'){
+                }else if ($layoult==='Maior') {
                     $this->_Visual->Bloco_Maior_CriaJanela($titulo.' #'.$identificador->id);
                 } else {
                     $this->_Visual->Bloco_Menor_CriaJanela($titulo.' #'.$identificador->id);

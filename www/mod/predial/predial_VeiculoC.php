@@ -1,7 +1,7 @@
 <?php
 class predial_VeiculoControle extends predial_Controle
 {
-    public function __construct(){
+    public function __construct() {
         parent::__construct();
     }
     /**
@@ -17,22 +17,22 @@ class predial_VeiculoControle extends predial_Controle
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    public function Main(){
+    public function Main() {
         \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'predial/Veiculo/Veiculos');
         return false;
     }
-    static function Endereco_Veiculo($true=true){
+    static function Endereco_Veiculo($true=true) {
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
         $titulo = __('Veiculos');
         $link = 'predial/Veiculo/Veiculos';
-        if ($true===true){
+        if ($true===true) {
             $_Controle->Tema_Endereco($titulo,$link);
         } else {
             $_Controle->Tema_Endereco($titulo);
         }
     }
-    static function Veiculos_Tabela(&$veiculos){
+    static function Veiculos_Tabela(&$veiculos) {
         $Registro   = &\Framework\App\Registro::getInstacia();
         $Visual     = &$Registro->_Visual;
         $tabela = Array();
@@ -56,7 +56,7 @@ class predial_VeiculoControle extends predial_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Veiculos(){
+    public function Veiculos() {
         self::Endereco_Veiculo(false);
         $i = 0;
         // Botao Add
@@ -75,7 +75,7 @@ class predial_VeiculoControle extends predial_Controle
         )));
         // Busca
         $veiculos = $this->_Modelo->db->Sql_Select('Predial_Bloco_Apart_Veiculo');
-        if ($veiculos!==false && !empty($veiculos)){
+        if ($veiculos!==false && !empty($veiculos)) {
             list($tabela,$i) = self::Veiculos_Tabela($veiculos);
             $this->_Visual->Show_Tabela_DataTable($tabela);
             unset($tabela);
@@ -93,7 +93,7 @@ class predial_VeiculoControle extends predial_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Veiculos_Add(){
+    public function Veiculos_Add() {
         self::Endereco_Veiculo();
         // Carrega Config
         $titulo1    = __('Adicionar Veiculo');
@@ -111,7 +111,7 @@ class predial_VeiculoControle extends predial_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Veiculos_Add2(){
+    public function Veiculos_Add2() {
         $titulo     = __('Veiculo Adicionado com Sucesso');
         $dao        = 'Predial_Bloco_Apart_Veiculo';
         $funcao     = '$this->Veiculos();';
@@ -126,7 +126,7 @@ class predial_VeiculoControle extends predial_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Veiculos_Edit($id){
+    public function Veiculos_Edit($id) {
         self::Endereco_Veiculo();
         // Carrega Config
         $titulo1    = 'Editar Veiculo (#'.$id.')';
@@ -145,7 +145,7 @@ class predial_VeiculoControle extends predial_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Veiculos_Edit2($id){
+    public function Veiculos_Edit2($id) {
         $titulo     = __('Veiculo Editado com Sucesso');
         $dao        = Array('Predial_Bloco_Apart_Veiculo',$id);
         $funcao     = '$this->Veiculos();';
@@ -161,7 +161,7 @@ class predial_VeiculoControle extends predial_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Veiculos_Del($id){
+    public function Veiculos_Del($id) {
         
         
     	$id = (int) $id;
@@ -169,7 +169,7 @@ class predial_VeiculoControle extends predial_Controle
         $veiculo = $this->_Modelo->db->Sql_Select('Predial_Bloco_Apart_Veiculo', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($veiculo);
         // Mensagem
-    	if ($sucesso===true){
+    	if ($sucesso===true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),

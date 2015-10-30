@@ -12,7 +12,7 @@ class usuario_rede_Visual extends \Framework\App\Visual
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    public function __construct(){
+    public function __construct() {
         parent::__construct();
     } 
     /**
@@ -28,7 +28,7 @@ class usuario_rede_Visual extends \Framework\App\Visual
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version
     */
-    static function Show_TabRedeIndicados(&$array){
+    static function Show_TabRedeIndicados(&$array) {
         
         $html = '<table>'.
             '<thead>'.
@@ -56,7 +56,7 @@ class usuario_rede_Visual extends \Framework\App\Visual
                 '<tr>'.
                     '<td colspan="2" class="backcolor tcenter tbold">Niveis</td>'.
                 '</tr>';
-        foreach($array['associado'] as $indice=>&$valor){
+        foreach($array['associado'] as $indice=>&$valor) {
             $grupo = \Framework\App\Registro::getInstacia()->_Conexao->Sql_Select('Sistema_Grupo','{sigla}id=\''.$indice.'\'');
             $html .= '<tr>'.
                     '<td class="backcolor tleft">'.$grupo->nome.'</td>'.

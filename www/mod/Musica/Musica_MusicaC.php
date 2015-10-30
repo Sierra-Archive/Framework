@@ -1,7 +1,7 @@
 <?php
 class Musica_MusicaControle extends Musica_Controle
 {
-    public function __construct(){
+    public function __construct() {
         parent::__construct();
     }
     /**
@@ -17,20 +17,20 @@ class Musica_MusicaControle extends Musica_Controle
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    public function Main($artista = false,$album=false){
+    public function Main($artista = false,$album=false) {
         \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'Musica/Musica/Musicas');
         return false;
     }
-    static function Endereco_Musica($true=true,$artista=false, $album=false){
+    static function Endereco_Musica($true=true,$artista=false, $album=false) {
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
-        if ($artista===false){
+        if ($artista===false) {
             $titulo = __('Todas as Musicas');
             $link   = 'Musica/Musica/Musicas';
         } else {
             $titulo = $artista->nome;
             $link   = 'Musica/Album/Albuns/'.$artista->id;
-            if ($album!==false){
+            if ($album!==false) {
                 Musica_AlbumControle::Endereco_Album(true, $artista);
                 $_Controle->Tema_Endereco($titulo,$link);
                 $titulo = $album->nome;
@@ -39,13 +39,13 @@ class Musica_MusicaControle extends Musica_Controle
                 Musica_ArtistaControle::Endereco_Artista();
             }
         }
-        if ($true===true){
+        if ($true===true) {
             $_Controle->Tema_Endereco($titulo,$link);
         } else {
             $_Controle->Tema_Endereco($titulo);
         }
     }
-    static function Musicas_Tabela(&$musicas,$artista=false,$album=false){
+    static function Musicas_Tabela(&$musicas,$artista=false,$album=false) {
         $Registro   = &\Framework\App\Registro::getInstacia();
         $Modelo     = &$Registro->_Modelo;
         $Visual     = &$Registro->_Visual;
@@ -54,14 +54,14 @@ class Musica_MusicaControle extends Musica_Controle
         if (is_object($musicas)) $musicas = Array(0=>$musicas);
         reset($musicas);
         foreach ($musicas as &$valor) {
-            if ($artista===false || $artista==0){
+            if ($artista===false || $artista==0) {
                 $tabela['Artista'][$i]   = $valor->artista2;
                 $tabela['Album'][$i]   = $valor->album2;
                 $view_url   = 'Musica/Video/Videos/'.$valor->artista.'/';
                 $edit_url   = 'Musica/Musica/Musicas_Edit/'.$valor->id.'/';
                 $del_url    = 'Musica/Musica/Musicas_Del/'.$valor->id.'/';
             } else {
-                if ($album===false || $album==0){
+                if ($album===false || $album==0) {
                     $tabela['Album'][$i]   = $valor->album2;
                     $view_url   = 'Musica/Video/Videos/'.$valor->artista.'/'.$valor->album.'/';
                     $edit_url   = 'Musica/Musica/Musicas_Edit/'.$valor->id.'/'.$valor->artista.'/';
@@ -75,7 +75,7 @@ class Musica_MusicaControle extends Musica_Controle
             $tabela['Musica'][$i]           = $valor->nome;
             $tabela['Data Registrada no Sistema'][$i]  = $valor->log_date_add;
             $status                                 = $valor->status;
-            if ($status!=1){
+            if ($status!=1) {
                 $status = 0;
                 $texto = __('Desativado');
             } else {
@@ -95,45 +95,45 @@ class Musica_MusicaControle extends Musica_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Musicas($artista=false,$album=false,$export=false){
+    public function Musicas($artista=false,$album=false,$export=false) {
         if ($artista ==='false' || $artista ===0)  $artista    = false;
         if ($album ==='false' || $album ===0)  $album      = false;
-        if ($artista!==false){
+        if ($artista!==false) {
             $artista = (int) $artista;
-            if ($artista==0){
+            if ($artista==0) {
                 $musica_registro = $this->_Modelo->db->Sql_Select('Musica',Array(),1,'id DESC');
-                if ($musica_registro===false){
+                if ($musica_registro===false) {
                     return _Sistema_erroControle::Erro_Fluxo('Essa musica não existe',404);
                 }
                 $artista_registro = $this->_Modelo->db->Sql_Select('Musica_Album_Artista',Array('id'=>$musica_registro->artista),1);
-                if ($artista_registro===false){
+                if ($artista_registro===false) {
                     return _Sistema_erroControle::Erro_Fluxo('Não existe nenhum artista com esse id:',404);
                 }
                 $artista = $artista_registro->id;
             } else {
                 $artista_registro = $this->_Modelo->db->Sql_Select('Musica_Album_Artista',Array('id'=>$artista),1);
-                if ($artista_registro===false){
+                if ($artista_registro===false) {
                     return _Sistema_erroControle::Erro_Fluxo('Esse Artista não existe:',404);
                 }
             }
             $where = Array(
                 'artista'   => $artista,
             );
-            if ($album!==false){
+            if ($album!==false) {
                 $album = (int) $album;
-                if ($album==0){
+                if ($album==0) {
                     $musica_registro = $this->_Modelo->db->Sql_Select('Musica',Array(),1,'id DESC');
-                    if ($musica_registro===false){
+                    if ($musica_registro===false) {
                         return _Sistema_erroControle::Erro_Fluxo('Essa musica não existe',404);
                     }
                     $album_registro = $this->_Modelo->db->Sql_Select('Musica_Album',Array('id'=>$musica_registro->album,'artista'=>$artista),1);
-                    if ($album_registro===false){
+                    if ($album_registro===false) {
                         return _Sistema_erroControle::Erro_Fluxo('Não existe nenhum album com esse id nesse Artista',404);
                     }
                     $album = $album_registro->id;
                 } else {
                     $album_registro = $this->_Modelo->db->Sql_Select('Musica_Album',Array('id'=>$album,'artista'=>$artista),1);
-                    if ($album_registro===false){
+                    if ($album_registro===false) {
                         return _Sistema_erroControle::Erro_Fluxo('Esse Album não existe.',404);
                     }
                 }
@@ -175,10 +175,10 @@ class Musica_MusicaControle extends Musica_Controle
             )
         )));
         $musicas = $this->_Modelo->db->Sql_Select('Musica',$where);
-        if ($musicas!==false && !empty($musicas)){
+        if ($musicas!==false && !empty($musicas)) {
             list($tabela,$i) = self::Musicas_Tabela($musicas,$artista,$album);
             $titulo = $titulo.' ('.$i.')';
-            if ($export!==false){
+            if ($export!==false) {
                 self::Export_Todos($export,$tabela, $titulo);
             } else {
                 $this->_Visual->Show_Tabela_DataTable(
@@ -208,7 +208,7 @@ class Musica_MusicaControle extends Musica_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Musicas_Add($artista = false,$album=false){
+    public function Musicas_Add($artista = false,$album=false) {
         if ($artista==='false') $artista = false;
         if ($album==='false') $album = false;
         
@@ -216,31 +216,31 @@ class Musica_MusicaControle extends Musica_Controle
         $formid     = 'form_Sistema_Admin_Musicas';
         $formbt     = __('Salvar');
         $campos     = Musica_DAO::Get_Colunas();
-        if ($artista===false){
+        if ($artista===false) {
             $formlink   = 'Musica/Musica/Musicas_Add2';
             $titulo1    = __('Adicionar Musica');
             $titulo2    = __('Salvar Musica');
             self::Endereco_Musica(true, false, false);
         } else {
             $artista = (int) $artista;
-            if ($artista==0){
+            if ($artista==0) {
                 $musica_registro = $this->_Modelo->db->Sql_Select('Musica',Array(),1,'id DESC');
-                if ($musica_registro===false){
+                if ($musica_registro===false) {
                     return _Sistema_erroControle::Erro_Fluxo('Essa musica não existe',404);
                 }
                 $artista_registro = $this->_Modelo->db->Sql_Select('Musica_Album_Artista',Array('id'=>$musica_registro->artista),1);
-                if ($artista_registro===false){
+                if ($artista_registro===false) {
                     return _Sistema_erroControle::Erro_Fluxo('Não existe nenhuma artista:',404);
                 }
                 $artista = $artista_registro->id;
             } else {
                 $artista_registro = $this->_Modelo->db->Sql_Select('Musica_Album_Artista',Array('id'=>$artista),1);
-                if ($artista_registro===false){
+                if ($artista_registro===false) {
                     return _Sistema_erroControle::Erro_Fluxo('Esse Artista não existe:',404);
                 }
             }
             self::DAO_Campos_Retira($campos,'artista');
-            if ($album===false){
+            if ($album===false) {
                 self::DAO_Ext_Alterar($campos,'album',$artista);
                 $formlink   = 'Musica/Musica/Musicas_Add2/'.$artista;
                 $titulo1    = 'Adicionar Musica ao Artista: '.$artista_registro->nome ;
@@ -248,19 +248,19 @@ class Musica_MusicaControle extends Musica_Controle
                 self::Endereco_Musica(true, $artista_registro, false);
             } else {
                 $album = (int) $album;
-                if ($album==0){
+                if ($album==0) {
                     $musica_registro = $this->_Modelo->db->Sql_Select('Musica',Array(),1,'id DESC');
-                    if ($musica_registro===false){
+                    if ($musica_registro===false) {
                         return _Sistema_erroControle::Erro_Fluxo('Essa musica não existe',404);
                     }
                     $album_registro = $this->_Modelo->db->Sql_Select('Musica_Album',Array('id'=>$musica_registro->album,'artista'=>$artista),1);
-                    if ($album_registro===false){
+                    if ($album_registro===false) {
                         return _Sistema_erroControle::Erro_Fluxo('Não existe nenhum Album:',404);
                     }
                     $album = $album_registro->id;
                 } else {
                     $album_registro = $this->_Modelo->db->Sql_Select('Musica_Album',Array('id'=>$album,'artista'=>$artista),1);
-                    if ($album_registro===false){
+                    if ($album_registro===false) {
                         return _Sistema_erroControle::Erro_Fluxo('Esse Album não existe:',404);
                     }
                 }
@@ -280,7 +280,7 @@ class Musica_MusicaControle extends Musica_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Musicas_Add2($artista=false,$album=false){
+    public function Musicas_Add2($artista=false,$album=false) {
         if ($artista==='false') $artista = false;
         if ($album==='false') $album = false;
         
@@ -289,10 +289,10 @@ class Musica_MusicaControle extends Musica_Controle
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = __('Musica cadastrada com sucesso.');
         // Recupera Musicas
-        if ($artista!==false){
+        if ($artista!==false) {
             $artista = (int) $artista;
             $alterar    = Array('artista'=>$artista);
-            if ($album!==false){
+            if ($album!==false) {
                 $album = (int) $album;
                 $funcao     = '$this->Musicas('.$artista.','.$album.');';
                 $alterar['album'] = $album;
@@ -311,14 +311,14 @@ class Musica_MusicaControle extends Musica_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Musicas_Edit($id,$artista = false,$album=false){
+    public function Musicas_Edit($id,$artista = false,$album=false) {
         if ($artista==='false') $artista = false;
         if ($album==='false') $album = false;
-        if ($id===false){
+        if ($id===false) {
             return _Sistema_erroControle::Erro_Fluxo('Musica não existe:'. $id,404);
         }
         $id         = (int) $id;
-        if ($artista!==false){
+        if ($artista!==false) {
             $artista    = (int) $artista;
         }
         // Carrega Config
@@ -327,14 +327,14 @@ class Musica_MusicaControle extends Musica_Controle
         $formid     = 'form_Sistema_AdminC_MusicaEdit';
         $formbt     = __('Alterar Musica');
         $campos = Musica_DAO::Get_Colunas();
-        if ($artista!==false){
+        if ($artista!==false) {
             $artista_registro = $this->_Modelo->db->Sql_Select('Musica_Album_Artista',Array('id'=>$artista),1);
-            if ($artista_registro===false){
+            if ($artista_registro===false) {
                 return _Sistema_erroControle::Erro_Fluxo('Esse Artista não existe:',404);
             }
-            if ($album!==false){
+            if ($album!==false) {
                 $album_registro = $this->_Modelo->db->Sql_Select('Musica_Album',Array('id'=>$artista,'artista'=>$artista_registro->id),1);
-                if ($album_registro===false){
+                if ($album_registro===false) {
                     return _Sistema_erroControle::Erro_Fluxo('Esse Artista não existe:',404);
                 }
                 $formlink   = 'Musica/Musica/Musicas_Edit2/'.$id.'/'.$artista.'/'.$album;
@@ -361,24 +361,24 @@ class Musica_MusicaControle extends Musica_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Musicas_Edit2($id,$artista = false,$album=false){
+    public function Musicas_Edit2($id,$artista = false,$album=false) {
         if ($artista==='false') $artista = false;
         if ($album==='false') $album = false;
-        if ($id===false){
+        if ($id===false) {
             return _Sistema_erroControle::Erro_Fluxo('Musica não existe:'. $id,404);
         }
         $id         = (int) $id;
-        if ($artista!==false){
+        if ($artista!==false) {
             $artista    = (int) $artista;
         }
-        if ($album!==false){
+        if ($album!==false) {
             $album    = (int) $album;
         }
         $titulo     = __('Musica Editada com Sucesso');
         $dao        = Array('Musica',$id);
         // Recupera Musicas
-        if ($artista!==false){
-            if ($album!==false){
+        if ($artista!==false) {
+            if ($album!==false) {
                 $funcao     = '$this->Musicas('.$artista.','.$album.');';
             } else {
                 $funcao     = '$this->Musicas('.$artista.');';
@@ -398,16 +398,16 @@ class Musica_MusicaControle extends Musica_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Musicas_Del($id = false,$artista=false,$album=false){
+    public function Musicas_Del($id = false,$artista=false,$album=false) {
         if ($artista==='false') $artista = false;
         if ($album==='false') $album = false;
         
-        if ($id===false){
+        if ($id===false) {
             return _Sistema_erroControle::Erro_Fluxo('Musica não existe:'. $id,404);
         }
         // Antiinjection
     	$id = (int) $id;
-        if ($artista!==false){
+        if ($artista!==false) {
             $artista    = (int) $artista;
             $where = Array('artista'=>$artista,'id'=>$id);
         } else {
@@ -417,7 +417,7 @@ class Musica_MusicaControle extends Musica_Controle
         $musica = $this->_Modelo->db->Sql_Select('Musica', $where);
         $sucesso =  $this->_Modelo->db->Sql_Delete($musica);
         // Mensagem
-    	if ($sucesso===true){
+    	if ($sucesso===true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
@@ -432,8 +432,8 @@ class Musica_MusicaControle extends Musica_Controle
         }
         $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
         // Recupera Musicas
-        if ($artista!==false){
-            if ($album!==false){
+        if ($artista!==false) {
+            if ($album!==false) {
                 $this->Musicas($artista,$album);
             } else {
                 $this->Musicas($artista);
@@ -445,22 +445,22 @@ class Musica_MusicaControle extends Musica_Controle
         $this->_Visual->Json_Info_Update('Titulo', __('Musica deletada com Sucesso'));
         $this->_Visual->Json_Info_Update('Historico', false);
     }
-    public function Status($id=false){
-        if ($id===false){
+    public function Status($id=false) {
+        if ($id===false) {
             return false;
         }
         $resultado = $this->_Modelo->db->Sql_Select('Musica', Array('id'=>$id),1);
-        if ($resultado===false || !is_object($resultado)){
+        if ($resultado===false || !is_object($resultado)) {
             return false;
         }
-        if ($resultado->status=='1'){
+        if ($resultado->status=='1') {
             $resultado->status='0';
         } else {
             $resultado->status='1';
         }
         $sucesso = $this->_Modelo->db->Sql_Update($resultado);
-        if ($sucesso){
-            if ($resultado->status==1){
+        if ($sucesso) {
+            if ($resultado->status==1) {
                 $texto = __('Ativado');
             } else {
                 $texto = __('Desativado');

@@ -13,10 +13,10 @@ class Financeiro_AdminModelo extends Financeiro_Modelo
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    public function __construct(){
+    public function __construct() {
       parent::__construct();
     }
-    public function MovExt_Inserir($user,$valor,$obs,$positivo){
+    public function MovExt_Inserir($user,$valor,$obs,$positivo) {
         GLOBAL $config;
         $admin = (int) \Framework\App\Acl::Usuario_GetID_Static();
         if (!is_int($admin) || $admin==0) return 0;
@@ -26,14 +26,14 @@ class Financeiro_AdminModelo extends Financeiro_Modelo
         $this->Dividas_Carregar($financas, $user);
         return 1;
     }
-    public function Usuarios_devendo(&$usuarios){
+    public function Usuarios_devendo(&$usuarios) {
         $i = 0;
         // Query
         $sql = $this->db->query('SELECT id,nome,email,grupo
         FROM '.MYSQL_USUARIOS.' WHERE deletado=0 ORDER BY nome'); //P.categoria
         while ($campo = $sql->fetch_object()) {
             $saldo = Financeiro_Modelo::Carregar_Saldo($this, $campo->id);
-            if ($saldo<0){
+            if ($saldo<0) {
                 $usuarios[$i]['saldo'] = '<font style="color:#FF0000;">- R$ '.number_format(abs($saldo), 2, ',', '.').'</font>';
                 $usuarios[$i]['id'] = $campo->id;
                 $usuarios[$i]['nome'] = $campo->nome;
@@ -44,14 +44,14 @@ class Financeiro_AdminModelo extends Financeiro_Modelo
         }
         return $i;
     }
-    public function Usuarios_naodevendo(&$usuarios){
+    public function Usuarios_naodevendo(&$usuarios) {
         $i = 0;
         // Query
         $sql = $this->db->query('SELECT id,nome,email,grupo
         FROM '.MYSQL_USUARIOS.' WHERE deletado=0 ORDER BY nome'); //P.categoria
         while ($campo = $sql->fetch_object()) {
             $saldo = Financeiro_Modelo::Carregar_Saldo($this, $campo->id);
-            if ($saldo>=0){
+            if ($saldo>=0) {
                 $usuarios[$i]['saldo'] = 'R$ '.number_format(abs($saldo), 2, ',', '.').'';
                 $usuarios[$i]['id'] = $campo->id;
                 $usuarios[$i]['nome'] = $campo->nome;

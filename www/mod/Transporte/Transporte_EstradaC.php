@@ -2,15 +2,15 @@
 
 class Transporte_EstradaControle extends Transporte_Controle
 {
-    public function __construct(){
+    public function __construct() {
         parent::__construct();
     }
-    static function Endereco_Noticia($true=true){
+    static function Endereco_Noticia($true=true) {
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
         $titulo = __('Estradas');
         $link = 'Transporte/Estrada/Estradas';
-        if ($true===true){
+        if ($true===true) {
             $_Controle->Tema_Endereco($titulo,$link);
         } else {
             $_Controle->Tema_Endereco($titulo);
@@ -21,11 +21,11 @@ class Transporte_EstradaControle extends Transporte_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Main(){
+    public function Main() {
         \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'Transporte/Estrada/Estradas');
         return false;
     }
-    static function Estradas_Tabela(&$estrada){
+    static function Estradas_Tabela(&$estrada) {
         $Registro   = &\Framework\App\Registro::getInstacia();
         $Visual     = &$Registro->_Visual;
         $tabela = Array();
@@ -39,7 +39,7 @@ class Transporte_EstradaControle extends Transporte_Controle
             $tabela['Id'][$i]           = '#'.$valor->id;
             $tabela['Foto'][$i]         = '<img alt="'.__('Foto da Dica de Estrada').' src="'.$valor->foto.'" style="max-width:100px;" />';
             $tabela['Estrada'][$i]       = $valor->nome;
-            if ($valor->status==1 || $valor->status=='1'){
+            if ($valor->status==1 || $valor->status=='1') {
                 $texto = __('Ativado');
                 $valor->status='1';
             } else {
@@ -47,7 +47,7 @@ class Transporte_EstradaControle extends Transporte_Controle
                 $valor->status='0';
             }
             $tabela['Funções'][$i]      = '<span id="status'.$valor->id.'">'.$Visual->Tema_Elementos_Btn('Status'.$valor->status     ,Array($texto        ,'Transporte/Estrada/Status/'.$valor->id.'/'    ,''),$perm_status).'</span>';
-            if ($valor->destaque==1){
+            if ($valor->destaque==1) {
                 $texto = __('Em Destaque');
             } else {
                 $texto = __('Não está em destaque');
@@ -65,7 +65,7 @@ class Transporte_EstradaControle extends Transporte_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Estradas($export=false){
+    public function Estradas($export=false) {
         $i = 0;
         self::Endereco_Noticia(false);
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
@@ -83,10 +83,10 @@ class Transporte_EstradaControle extends Transporte_Controle
         )));
         $estrada = $this->_Modelo->db->Sql_Select('Transporte_Estrada');
         if (is_object($estrada)) $estrada = Array(0=>$estrada);
-        if ($estrada!==false && !empty($estrada)){
+        if ($estrada!==false && !empty($estrada)) {
             list($tabela,$i) = self::Estradas_Tabela($estrada);
             // SE exportar ou mostra em tabela
-            if ($export!==false){
+            if ($export!==false) {
                 self::Export_Todos($export,$tabela, 'Dicas de Estradas');
             } else {
                 $this->_Visual->Show_Tabela_DataTable(
@@ -103,7 +103,7 @@ class Transporte_EstradaControle extends Transporte_Controle
             }
             unset($tabela);
         } else {
-            if ($export!==false){
+            if ($export!==false) {
                 $mensagem = __('Nenhuma Dica de Estrada Cadastrada para exportar');
             } else {
                 $mensagem = __('Nenhuma Dica de Estrada Cadastrada');
@@ -120,7 +120,7 @@ class Transporte_EstradaControle extends Transporte_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Estradas_Add(){
+    public function Estradas_Add() {
         self::Endereco_Noticia(true);
         // Carrega Config
         $titulo1    = __('Adicionar Dica de Estrada');
@@ -138,7 +138,7 @@ class Transporte_EstradaControle extends Transporte_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Estradas_Add2(){
+    public function Estradas_Add2() {
         $titulo     = __('Dica de Estrada Adicionada com Sucesso');
         $dao        = 'Transporte_Estrada';
         $funcao     = '$this->Estradas();';
@@ -153,7 +153,7 @@ class Transporte_EstradaControle extends Transporte_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Estradas_Edit($id){
+    public function Estradas_Edit($id) {
         self::Endereco_Noticia(true);
         // Carrega Config
         $titulo1    = 'Editar Dica de Estrada (#'.$id.')';
@@ -172,7 +172,7 @@ class Transporte_EstradaControle extends Transporte_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Estradas_Edit2($id){
+    public function Estradas_Edit2($id) {
         $id = (int) $id;
         $titulo     = __('Dica de Estrada Alterada com Sucesso');
         $dao        = Array('Transporte_Estrada',$id);
@@ -189,7 +189,7 @@ class Transporte_EstradaControle extends Transporte_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Estradas_Del($id){
+    public function Estradas_Del($id) {
         
         
     	$id = (int) $id;
@@ -197,7 +197,7 @@ class Transporte_EstradaControle extends Transporte_Controle
         $estrada    =  $this->_Modelo->db->Sql_Select('Transporte_Estrada', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($estrada);
         // Mensagem
-    	if ($sucesso===true){
+    	if ($sucesso===true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
@@ -217,22 +217,22 @@ class Transporte_EstradaControle extends Transporte_Controle
         $this->_Visual->Json_Info_Update('Titulo', __('Dica de Estrada deletada com Sucesso'));  
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
-    public function Status($id=false){
-        if ($id===false){
+    public function Status($id=false) {
+        if ($id===false) {
             return false;
         }
         $resultado = $this->_Modelo->db->Sql_Select('Transporte_Estrada', Array('id'=>$id),1);
-        if ($resultado===false || !is_object($resultado)){
+        if ($resultado===false || !is_object($resultado)) {
             return false;
         }
-        if ($resultado->status==1 || $resultado->status=='1'){
+        if ($resultado->status==1 || $resultado->status=='1') {
             $resultado->status='0';
         } else {
             $resultado->status='1';
         }
         $sucesso = $this->_Modelo->db->Sql_Update($resultado);
-        if ($sucesso){
-            if ($resultado->status==1){
+        if ($sucesso) {
+            if ($resultado->status==1) {
                 $texto = __('Ativado');
             } else {
                 $texto = __('Desativado');
@@ -256,22 +256,22 @@ class Transporte_EstradaControle extends Transporte_Controle
         }
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
-    public function Destaques($id=false){
-        if ($id===false){
+    public function Destaques($id=false) {
+        if ($id===false) {
             return false;
         }
         $resultado = $this->_Modelo->db->Sql_Select('Transporte_Estrada', Array('id'=>$id),1);
-        if ($resultado===false || !is_object($resultado)){
+        if ($resultado===false || !is_object($resultado)) {
             return false;
         }
-        if ($resultado->destaque==1 || $resultado->destaque=='1'){
+        if ($resultado->destaque==1 || $resultado->destaque=='1') {
             $resultado->destaque='0';
         } else {
             $resultado->destaque='1';
         }
         $sucesso = $this->_Modelo->db->Sql_Update($resultado);
-        if ($sucesso){
-            if ($resultado->destaque==1){
+        if ($sucesso) {
+            if ($resultado->destaque==1) {
                 $texto = __('Em destaque');
             } else {
                 $texto = __('Não está em destaque');

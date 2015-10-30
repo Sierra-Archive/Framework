@@ -15,7 +15,7 @@ class comercio_venda_CarrinhoControle extends comercio_venda_Controle
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    public function __construct(){
+    public function __construct() {
         parent::__construct();
     }
     /**
@@ -32,15 +32,15 @@ class comercio_venda_CarrinhoControle extends comercio_venda_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Main(){
+    public function Main() {
         return false;
     }
-    static function Endereco_Carrinho($true=true){
+    static function Endereco_Carrinho($true=true) {
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
         $titulo = __('Caixas');
         $link = 'comercio_venda/Carrinho/Carrinhos';
-        if ($true===true){
+        if ($true===true) {
             $_Controle->Tema_Endereco($titulo,$link);
         } else {
             $_Controle->Tema_Endereco($titulo);
@@ -51,7 +51,7 @@ class comercio_venda_CarrinhoControle extends comercio_venda_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Carrinhos($export=false){
+    public function Carrinhos($export=false) {
         self::Endereco_Carrinho(false);
         $i = 0;
         // BOTAO IMPRIMIR / ADD
@@ -70,11 +70,11 @@ class comercio_venda_CarrinhoControle extends comercio_venda_Controle
         )));
         // CONEXAO
         $carrinhos = $this->_Modelo->db->Sql_Select('Comercio_Venda_Carrinho');
-        if ($carrinhos!==false && !empty($carrinhos)){
+        if ($carrinhos!==false && !empty($carrinhos)) {
             if (is_object($carrinhos)) $carrinhos = Array(0=>$carrinhos);
             reset($carrinhos);
             foreach ($carrinhos as $indice=>&$valor) {
-                if ($valor->mesa2==NULL){
+                if ($valor->mesa2==NULL) {
                     $mesa2 = __('Balcao');
                 } else {
                     $mesa2 = $valor->mesa2;
@@ -90,7 +90,7 @@ class comercio_venda_CarrinhoControle extends comercio_venda_Controle
                                                 $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Caixa'       ,'comercio_venda/Carrinho/Carrinhos_Del/'.$valor->id.'/'     ,'Deseja realmente deletar esse Caixa ?'));
                 ++$i;
             }
-            if ($export!==false){
+            if ($export!==false) {
                 self::Export_Todos($export,$tabela, 'Comercio Caixas');
             } else {
                 $this->_Visual->Show_Tabela_DataTable($tabela);
@@ -110,7 +110,7 @@ class comercio_venda_CarrinhoControle extends comercio_venda_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Carrinhos_Add(){
+    public function Carrinhos_Add() {
         self::Endereco_Carrinho(true);
         // Carrega Config
         $titulo1    = __('Adicionar Caixa');
@@ -132,7 +132,7 @@ class comercio_venda_CarrinhoControle extends comercio_venda_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Carrinhos_Add2(){
+    public function Carrinhos_Add2() {
         $titulo     = __('Caixa Adicionado com Sucesso');
         $dao        = 'Comercio_Venda_Carrinho';
         $funcao     = false;
@@ -154,7 +154,7 @@ class comercio_venda_CarrinhoControle extends comercio_venda_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Carrinhos_Edit($id){
+    public function Carrinhos_Edit($id) {
         self::Endereco_Carrinho(true);
         // Carrega Config
         $titulo1    = 'Editar Caixa (#'.$id.')';
@@ -179,7 +179,7 @@ class comercio_venda_CarrinhoControle extends comercio_venda_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Carrinhos_Edit2($id){
+    public function Carrinhos_Edit2($id) {
         $titulo     = __('Caixa Editado com Sucesso');
         $dao        = Array('Comercio_Venda_Carrinho',$id);
         $funcao     = false;
@@ -202,7 +202,7 @@ class comercio_venda_CarrinhoControle extends comercio_venda_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Carrinhos_Del($id){
+    public function Carrinhos_Del($id) {
         
         
     	$id = (int) $id;
@@ -218,7 +218,7 @@ class comercio_venda_CarrinhoControle extends comercio_venda_Controle
         $sucesso2 =  $this->_Modelo->db->Sql_Delete($del2,true);
         $sucesso3 =  $this->_Modelo->db->Sql_Delete($material,true);
         // Mensagem
-    	if ($sucesso===true){
+    	if ($sucesso===true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletada'),
@@ -243,8 +243,8 @@ class comercio_venda_CarrinhoControle extends comercio_venda_Controle
      * @param type $identificador
      * @return boolean
      */
-    private function Carrinho_Atualizar_Valor(&$identificador){
-        if (!is_object($identificador) || !isset($_POST["condicao_pagar"])){
+    private function Carrinho_Atualizar_Valor(&$identificador) {
+        if (!is_object($identificador) || !isset($_POST["condicao_pagar"])) {
             return false;
         }
         
@@ -259,9 +259,9 @@ class comercio_venda_CarrinhoControle extends comercio_venda_Controle
             )
         );
         // Pega os Valores do Serviço de Instalaçao
-        if ($composicao!==false){
+        if ($composicao!==false) {
             if (is_object($composicao)) $composicao = Array($composicao);
-            foreach($composicao as &$valor){
+            foreach($composicao as &$valor) {
                 // Captura Preço do SUPORTE
                 $composicao_registro  = $this->_Modelo->db->Sql_Select(
                     'Comercio_Venda_Composicao' ,
@@ -270,7 +270,7 @@ class comercio_venda_CarrinhoControle extends comercio_venda_Controle
                     ),
                     1
                 );
-                if (is_object($composicao_registro) && $composicao_registro->preco!=NULL){
+                if (is_object($composicao_registro) && $composicao_registro->preco!=NULL) {
                     
                     // Procura Produtos Usados
                     $composicao_registro_produtos  = $this->_Modelo->db->Sql_Select(
@@ -280,7 +280,7 @@ class comercio_venda_CarrinhoControle extends comercio_venda_Controle
                         )
                     );
                     if (is_object($composicao_registro_produtos)) $composicao_registro_produtos = array($composicao_registro_produtos);
-                    foreach($composicao_registro_produtos as &$valor2){
+                    foreach($composicao_registro_produtos as &$valor2) {
                         // Remove do Estoque
                         comercio_EstoqueControle::Estoque_Remover('comercio_venda_Carrinho',$identificador->id,$valor2->produto,$valor2->qnt);
                     }
@@ -296,7 +296,7 @@ class comercio_venda_CarrinhoControle extends comercio_venda_Controle
         $financeiro = $this->_Modelo->db->Sql_Select('Financeiro_Pagamento_Interno', Array('motivo'=>'comercio_venda_Carrinho','motivoid'=>$identificador->id));
         $sucesso3 =  $this->_Modelo->db->Sql_Delete($financeiro,true);
         // Se for Pago Gera Contas Pagas, se nao, gera contas a Receber
-        if ($identificador->pago==1){
+        if ($identificador->pago==1) {
             Financeiro_PagamentoControle::Condicao_GerarPagamento(
                 \Framework\App\Conexao::anti_injection($_POST["condicao_pagar"]),  // Condição de Pagamento
                 'comercio_venda_Carrinho',                  // Motivo
@@ -337,7 +337,7 @@ class comercio_venda_CarrinhoControle extends comercio_venda_Controle
      * @param type $time
      * @return boolean
      */
-    public function Carrinho_Atualizar_Valor_Dinamico($time){        
+    public function Carrinho_Atualizar_Valor_Dinamico($time) {        
         $html = '';
         
         // Zera Valor
@@ -346,8 +346,8 @@ class comercio_venda_CarrinhoControle extends comercio_venda_Controle
         // Composicaos
         $composicao = \Framework\App\Conexao::anti_injection($_POST['composicao']);
         // Pega os Valores do Serviço de Instalaçao
-        if (!empty($composicao)){
-            foreach($composicao as &$valor){
+        if (!empty($composicao)) {
+            foreach($composicao as &$valor) {
                 $valor = (int) $valor;
                 if ($valor===0 || $valor===NULL) continue;
                 // Captura Preço do SUPORTE
@@ -358,7 +358,7 @@ class comercio_venda_CarrinhoControle extends comercio_venda_Controle
                     ),
                     1
                 );
-                if (is_object($composicao_registro) && $composicao_registro->preco!=NULL){
+                if (is_object($composicao_registro) && $composicao_registro->preco!=NULL) {
                     $prod_qnt    = (int) $_POST['qnt_'.$valor];
                     //$prod_preco  = \Framework\App\Conexao::anti_injection($_POST['prod_preco_'.$valor]);
                     // Add valor do Composicao
@@ -389,9 +389,9 @@ class comercio_venda_CarrinhoControle extends comercio_venda_Controle
      * @param type $form_id
      * @param type $valor
      */
-    public function Carrinho_Atualizar_Valor_Dinamico_Janela($form_id,$recalcular=false){
+    public function Carrinho_Atualizar_Valor_Dinamico_Janela($form_id,$recalcular=false) {
         $time = round(TEMPO_COMECO);
-        if ($recalcular===false){
+        if ($recalcular===false) {
             $valor ='R$ 0,00';
         } else {
             $valor =__('Calculando');
@@ -401,8 +401,8 @@ class comercio_venda_CarrinhoControle extends comercio_venda_Controle
         // Janela De Valor Temporario
         $this->_Visual->Javascript_Executar('function Carrinho_Valor_Dinamico_Rodar() {var params'.$time.' = $(\'#'.$form_id.'\').serialize();'
             . 'var intervalo'.$time.' = window.setInterval(function () {console.log(\'SierraTecnologia\',params'.$time.');'
-                . 'if ($(\'#'.$form_id.'\').length){'
-                    . 'if (params'.$time.'!==$(\'#'.$form_id.'\').serialize()){'
+                . 'if ($(\'#'.$form_id.'\').length) {'
+                    . 'if (params'.$time.'!==$(\'#'.$form_id.'\').serialize()) {'
                         . 'params'.$time.'=$(\'#'.$form_id.'\').serialize();'
                         . 'Sierra.Modelo_Ajax_Chamar(\'comercio_venda/Carrinho/Carrinho_Atualizar_Valor_Dinamico/'.$time.'\',params'.$time.',\'POST\',true,false,false);'
                     . '}'
@@ -422,19 +422,19 @@ class comercio_venda_CarrinhoControle extends comercio_venda_Controle
      * @param int $id Chave Primária (Id do Registro)
      * @throws Exception
      */
-    public function PagoCarrinhos($id=false){
+    public function PagoCarrinhos($id=false) {
         
-        if ($id===false){
+        if ($id===false) {
             return false;
         }
         $id = (int) $id;
         $resultado = $this->_Modelo->db->Sql_Select('Comercio_Venda_Carrinho', Array('id'=>$id),1);
         
-        if ($resultado===false || !is_object($resultado)){
+        if ($resultado===false || !is_object($resultado)) {
             return false;
         }
         
-        if ($resultado->pago=='1'){
+        if ($resultado->pago=='1') {
             $resultado->pago='0'; // De Pago para NãoPago
             // Joga pra Contas nao Pagas
             Financeiro_PagamentoControle::Financeiro_Pagamento(
@@ -462,7 +462,7 @@ class comercio_venda_CarrinhoControle extends comercio_venda_Controle
             );
         }
         $sucesso = $this->_Modelo->db->Sql_Update($resultado);
-        if ($sucesso){
+        if ($sucesso) {
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
             $conteudo = array(
                 'location' => '.pago'.$resultado->id,
@@ -486,10 +486,10 @@ class comercio_venda_CarrinhoControle extends comercio_venda_Controle
      * @param type $link
      * @return string
      */
-    public static function label($objeto,$link=true){
+    public static function label($objeto,$link=true) {
         $pago = $objeto->pago;
         $id = $objeto->id;
-        if ($pago=='0'){
+        if ($pago=='0') {
             $tipo = 'important';
             $nometipo = __('Não Pago');
         }
@@ -498,7 +498,7 @@ class comercio_venda_CarrinhoControle extends comercio_venda_Controle
             $nometipo = __('Pago');
         }
         $html = '<span class="badge badge-'.$tipo.'">'.$nometipo.'</span>';
-        if ($link===true && \Framework\App\Registro::getInstacia()->_Acl->Get_Permissao_Url('comercio_venda/Carrinho/PagoCarrinhos')!==false){
+        if ($link===true && \Framework\App\Registro::getInstacia()->_Acl->Get_Permissao_Url('comercio_venda/Carrinho/PagoCarrinhos')!==false) {
             $html = '<a href="'.URL_PATH.'comercio_venda/Carrinho/PagoCarrinhos/'.$id.'" border="1" class="lajax explicar-titulo" title="'.$nometipo.'" data-acao="" data-confirma="Deseja Realmente alterar o Status do Pagamento?">'.$html.'</a>';
         }
         return $html;
@@ -512,12 +512,12 @@ class comercio_venda_CarrinhoControle extends comercio_venda_Controle
     
     
     
-    static function Endereco_Mesa($true=true){
+    static function Endereco_Mesa($true=true) {
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
         $titulo = __('Mesas');
         $link = 'comercio_venda/Carrinho/Mesas';
-        if ($true===true){
+        if ($true===true) {
             $_Controle->Tema_Endereco($titulo,$link);
         } else {
             $_Controle->Tema_Endereco($titulo);
@@ -528,7 +528,7 @@ class comercio_venda_CarrinhoControle extends comercio_venda_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Mesas($export=false){
+    public function Mesas($export=false) {
         self::Endereco_Mesa(false);
         $i = 0;
         // BOTAO IMPRIMIR / ADD
@@ -547,7 +547,7 @@ class comercio_venda_CarrinhoControle extends comercio_venda_Controle
         )));
         // CONEXAO
         $mesas = $this->_Modelo->db->Sql_Select('Comercio_Venda_Mesa');
-        if ($mesas!==false && !empty($mesas)){
+        if ($mesas!==false && !empty($mesas)) {
             if (is_object($mesas)) $mesas = Array(0=>$mesas);
             reset($mesas);
             foreach ($mesas as $indice=>&$valor) {
@@ -560,7 +560,7 @@ class comercio_venda_CarrinhoControle extends comercio_venda_Controle
                                            $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Mesa'       ,'comercio_venda/Carrinho/Mesas_Del/'.$valor->id.'/'     ,'Deseja realmente deletar essa Mesa ?'));
                 ++$i;
             }
-            if ($export!==false){
+            if ($export!==false) {
                 self::Export_Todos($export,$tabela, 'Comercio Vendas - Mesas');
             } else {
                 $this->_Visual->Show_Tabela_DataTable($tabela);
@@ -580,7 +580,7 @@ class comercio_venda_CarrinhoControle extends comercio_venda_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Mesas_Add(){
+    public function Mesas_Add() {
         self::Endereco_Mesa(true);
         // Carrega Config
         $titulo1    = __('Adicionar Mesa');
@@ -598,7 +598,7 @@ class comercio_venda_CarrinhoControle extends comercio_venda_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Mesas_Add2(){
+    public function Mesas_Add2() {
         $titulo     = __('Mesa Adicionada com Sucesso');
         $dao        = 'Comercio_Venda_Mesa';
         $funcao     = '$this->Mesas();';
@@ -613,7 +613,7 @@ class comercio_venda_CarrinhoControle extends comercio_venda_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Mesas_Edit($id){
+    public function Mesas_Edit($id) {
         self::Endereco_Mesa(true);
         // Carrega Config
         $titulo1    = 'Editar Mesa (#'.$id.')';
@@ -632,7 +632,7 @@ class comercio_venda_CarrinhoControle extends comercio_venda_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Mesas_Edit2($id){
+    public function Mesas_Edit2($id) {
         $titulo     = __('Mesa Editada com Sucesso');
         $dao        = Array('Comercio_Venda_Mesa',$id);
         $funcao     = '$this->Mesas();';
@@ -648,7 +648,7 @@ class comercio_venda_CarrinhoControle extends comercio_venda_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Mesas_Del($id){
+    public function Mesas_Del($id) {
         
         
     	$id = (int) $id;
@@ -656,7 +656,7 @@ class comercio_venda_CarrinhoControle extends comercio_venda_Controle
         $carrinho = $this->_Modelo->db->Sql_Select('Comercio_Venda_Mesa', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($carrinho);
         // Mensagem
-    	if ($sucesso===true){
+    	if ($sucesso===true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletada'),

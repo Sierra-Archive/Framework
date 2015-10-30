@@ -2,7 +2,7 @@
 
 class Transporte_PedidoControle extends Transporte_Controle
 {
-    public function __construct(){
+    public function __construct() {
         parent::__construct();
     }
     /**
@@ -10,7 +10,7 @@ class Transporte_PedidoControle extends Transporte_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Main(){
+    public function Main() {
         //\Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'Transporte/Pedido/Pedidos');
         return false;
     }
@@ -20,34 +20,34 @@ class Transporte_PedidoControle extends Transporte_Controle
      * @param type $status
      * @throws \Exception
      */
-    public function Arma_Ped_Novas_Aceitar($id=false,$status=1){
-        if ($id===false){
+    public function Arma_Ped_Novas_Aceitar($id=false,$status=1) {
+        if ($id===false) {
             return false;
         }
         $resultado = $this->_Modelo->db->Sql_Select('Transporte_Armazem_Pedido_Lance', '{sigla}id=\''.$id.'\' AND {sigla}fornecedor=\''.$this->_Acl->Usuario_GetID().'\'',1);
-        if ($resultado===false || !is_object($resultado)){
+        if ($resultado===false || !is_object($resultado)) {
             return false;
         }
-        if ($resultado->status==1 ||$resultado->status==2){
+        if ($resultado->status==1 ||$resultado->status==2) {
             // Voce não pode alterar
             return false;
         }
-        if ($status==1){
+        if ($status==1) {
             $resultado->status='1';
         } else {
             $resultado->status='2';
         }
         $sucesso = $this->_Modelo->db->Sql_Update($resultado);
-        if ($sucesso){
-            if ($resultado->status==1){
+        if ($sucesso) {
+            if ($resultado->status==1) {
                 $texto = __('Aceito');
                 $pedido = $resultado->pedido;
                 
                 // Caso Aceita o Resto ele Recusa
                 $procurar = $this->_Modelo->db->Sql_Select('Transporte_Armazem_Pedido_Lance', '{sigla}pedido=\''.$pedido.'\' AND {sigla}fornecedor=\''.$this->_Acl->Usuario_GetID().'\'');
                 if (is_object($procurar)) $procurar = array($procurar);
-                if ($procurar!==false){
-                    foreach($procurar as &$valor){
+                if ($procurar!==false) {
+                    foreach($procurar as &$valor) {
                         $valor->status = '2';
                     }
                     $this->_Modelo->db->Sql_Update($procurar);
@@ -55,8 +55,8 @@ class Transporte_PedidoControle extends Transporte_Controle
                 // Caso Aceita o Resto ele Recusa
                 $procurar = $this->_Modelo->db->Sql_Select('Transporte_Armazem_Pedido', '{sigla}id=\''.$pedido.'\' AND {sigla}log_user_add=\''.$this->_Acl->Usuario_GetID().'\'');
                 if (is_object($procurar)) $procurar = array($procurar);
-                if ($procurar!==false){
-                    foreach($procurar as &$valor){
+                if ($procurar!==false) {
+                    foreach($procurar as &$valor) {
                         $valor->status = '2';
                     }
                     $this->_Modelo->db->Sql_Update($procurar);
@@ -87,7 +87,7 @@ class Transporte_PedidoControle extends Transporte_Controle
     /**
      * Enviar Pedido (->)
      */
-    public function Arma_Ped_Add(){
+    public function Arma_Ped_Add() {
         //self::Endereco_Noticia(true);
         // Carrega Config
         $titulo1    = __('Adicionar Pedido');
@@ -105,7 +105,7 @@ class Transporte_PedidoControle extends Transporte_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Arma_Ped_Add2(){
+    public function Arma_Ped_Add2() {
         $titulo     = __('Pedido enviado com Sucesso');
         $dao        = 'Transporte_Armazem_Pedido';
         $funcao     = '$this->Arma_Ped_Novas();';
@@ -121,13 +121,13 @@ class Transporte_PedidoControle extends Transporte_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Arma_Ped_Del($id){
+    public function Arma_Ped_Del($id) {
         
         
     	$id = (int) $id;
         // Puxa Transporte e deleta
         $pedido    =  $this->_Modelo->db->Sql_Select('Transporte_Armazem_Pedido', '{sigla}id=\''.$id.'\' AND {sigla}log_user_add=\''.$this->_Acl->Usuario_GetID().'\'',1);
-        if ($pedido===false || $pedido->status!='0'){
+        if ($pedido===false || $pedido->status!='0') {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),
@@ -140,7 +140,7 @@ class Transporte_PedidoControle extends Transporte_Controle
         $sucesso =  $this->_Modelo->db->Sql_Delete($pedido);
         
         // Mensagem
-    	if ($sucesso===true){
+    	if ($sucesso===true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
@@ -168,7 +168,7 @@ class Transporte_PedidoControle extends Transporte_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Arma_Ped_Aceitas($export=false){
+    public function Arma_Ped_Aceitas($export=false) {
         
         //self::Endereco_Noticia(false);
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
@@ -183,7 +183,7 @@ class Transporte_PedidoControle extends Transporte_Controle
         $i = 0;
         $pedido = $this->_Modelo->db->Sql_Select('Transporte_Armazem_Pedido_Lance', '{sigla}status=\'1\' AND {sigla}fornecedor=\''.$this->_Acl->Usuario_GetID().'\'');
         if (is_object($pedido)) $pedido = Array(0=>$pedido);
-        if ($pedido!==false && !empty($pedido)){
+        if ($pedido!==false && !empty($pedido)) {
             $i = 0;
             reset($pedido);
             $perm_status = $this->_Registro->_Acl->Get_Permissao_Url('Transporte/Pedido/Arma_Ped_Novas_Aceitar');
@@ -198,7 +198,7 @@ class Transporte_PedidoControle extends Transporte_Controle
                 ++$i;
             }
             // SE exportar ou mostra em tabela
-            if ($export!==false){
+            if ($export!==false) {
                 self::Export_Todos($export,$tabela, 'Propostas Aceitas');
             } else {
                 $this->_Visual->Show_Tabela_DataTable(
@@ -215,7 +215,7 @@ class Transporte_PedidoControle extends Transporte_Controle
             }
             unset($tabela);
         } else {
-            if ($export!==false){
+            if ($export!==false) {
                 $mensagem = __('Nenhuma Proposta Aceita para exportar');
             } else {
                 $mensagem = __('Nenhuma Proposta Aceita');
@@ -227,7 +227,7 @@ class Transporte_PedidoControle extends Transporte_Controle
         //Carrega Json
         $this->_Visual->Json_Info_Update('Titulo', __('Propostas Aceitas dos Meus Pedidos'));
     }
-    public function Arma_Ped_Novas($export=false){
+    public function Arma_Ped_Novas($export=false) {
         
         //self::Endereco_Noticia(false);
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
@@ -242,7 +242,7 @@ class Transporte_PedidoControle extends Transporte_Controle
         $i = 0;
         $pedido = $this->_Modelo->db->Sql_Select('Transporte_Armazem_Pedido_Lance', '{sigla}status=\'0\' AND {sigla}fornecedor=\''.$this->_Acl->Usuario_GetID().'\'');
         if (is_object($pedido)) $pedido = Array(0=>$pedido);
-        if ($pedido!==false && !empty($pedido)){
+        if ($pedido!==false && !empty($pedido)) {
             $i = 0;
             reset($pedido);
             $perm_status = $this->_Registro->_Acl->Get_Permissao_Url('Transporte/Pedido/Arma_Ped_Novas_Aceitar');
@@ -257,7 +257,7 @@ class Transporte_PedidoControle extends Transporte_Controle
                 ++$i;
             }
             // SE exportar ou mostra em tabela
-            if ($export!==false){
+            if ($export!==false) {
                 self::Export_Todos($export,$tabela, 'Novas Propostas');
             } else {
                 $this->_Visual->Show_Tabela_DataTable(
@@ -274,7 +274,7 @@ class Transporte_PedidoControle extends Transporte_Controle
             }
             unset($tabela);
         } else {
-            if ($export!==false){
+            if ($export!==false) {
                 $mensagem = __('Nenhuma nova Proposta para exportar');
             } else {
                 $mensagem = __('Nenhuma nova Proposta');
@@ -286,7 +286,7 @@ class Transporte_PedidoControle extends Transporte_Controle
         //Carrega Json
         $this->_Visual->Json_Info_Update('Titulo', __('Novas Propostas dos Meus Pedidos'));
     }
-    public function Arma_Ped_Minhas($export=false){
+    public function Arma_Ped_Minhas($export=false) {
         $i = 0;
         //self::Endereco_Noticia(false);
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
@@ -304,7 +304,7 @@ class Transporte_PedidoControle extends Transporte_Controle
         )));
         $pedido = $this->_Modelo->db->Sql_Select('Transporte_Armazem_Pedido', '{sigla}status=\'0\' AND {sigla}log_user_add=\''.$this->_Acl->Usuario_GetID().'\'');
         if (is_object($pedido)) $pedido = Array(0=>$pedido);
-        if ($pedido!==false && !empty($pedido)){
+        if ($pedido!==false && !empty($pedido)) {
             $i = 0;
             reset($pedido);
             $perm_del = $this->_Registro->_Acl->Get_Permissao_Url('Transporte/Pedido/Arma_Ped_Del');
@@ -319,7 +319,7 @@ class Transporte_PedidoControle extends Transporte_Controle
                 ++$i;
             }
             // SE exportar ou mostra em tabela
-            if ($export!==false){
+            if ($export!==false) {
                 self::Export_Todos($export,$tabela, 'Pedidos Cadastrados');
             } else {
                 $this->_Visual->Show_Tabela_DataTable(
@@ -336,7 +336,7 @@ class Transporte_PedidoControle extends Transporte_Controle
             }
             unset($tabela);
         } else {
-            if ($export!==false){
+            if ($export!==false) {
                 $mensagem = __('Nenhum Pedido Cadastrado para exportar');
             } else {
                 $mensagem = __('Nenhum Pedido Cadastrado');
@@ -348,7 +348,7 @@ class Transporte_PedidoControle extends Transporte_Controle
         //Carrega Json
         $this->_Visual->Json_Info_Update('Titulo', __('Meus Pedidos'));
     }
-    public function Arma_Sol_Solicitacoes($export=false){
+    public function Arma_Sol_Solicitacoes($export=false) {
         $i = 0;
         //self::Endereco_Noticia(false);
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
@@ -362,7 +362,7 @@ class Transporte_PedidoControle extends Transporte_Controle
         )));
         $pedido = $this->_Modelo->db->Sql_Select('Transporte_Armazem_Pedido', '{sigla}status=\'0\'');
         if (is_object($pedido)) $pedido = Array(0=>$pedido);
-        if ($pedido!==false && !empty($pedido)){
+        if ($pedido!==false && !empty($pedido)) {
             $i = 0;
             reset($pedido);
             $perm_add = $this->_Registro->_Acl->Get_Permissao_Url('Transporte/Pedido/Arma_Sol_Add');
@@ -377,7 +377,7 @@ class Transporte_PedidoControle extends Transporte_Controle
                 ++$i;
             }
             // SE exportar ou mostra em tabela
-            if ($export!==false){
+            if ($export!==false) {
                 self::Export_Todos($export,$tabela, 'Pedidos pendentes');
             } else {
                 $this->_Visual->Show_Tabela_DataTable(
@@ -394,7 +394,7 @@ class Transporte_PedidoControle extends Transporte_Controle
             }
             unset($tabela);
         } else {
-            if ($export!==false){
+            if ($export!==false) {
                 $mensagem = __('Nenhum Pedido pendente para exportar');
             } else {
                 $mensagem = __('Nenhum Pedido Pendente');
@@ -434,7 +434,7 @@ class Transporte_PedidoControle extends Transporte_Controle
     
     
     
-    public function Arma_Sol_PedAceitos($export=false){
+    public function Arma_Sol_PedAceitos($export=false) {
         
         //self::Endereco_Noticia(false);
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
@@ -449,7 +449,7 @@ class Transporte_PedidoControle extends Transporte_Controle
         $i = 0;
         $pedido = $this->_Modelo->db->Sql_Select('Transporte_Armazem_Pedido_Lance', '{sigla}status=\'1\' AND {sigla}log_user_add=\''.$this->_Acl->Usuario_GetID().'\'');
         if (is_object($pedido)) $pedido = Array(0=>$pedido);
-        if ($pedido!==false && !empty($pedido)){
+        if ($pedido!==false && !empty($pedido)) {
             $i = 0;
             reset($pedido);
             foreach ($pedido as &$valor) {                
@@ -461,7 +461,7 @@ class Transporte_PedidoControle extends Transporte_Controle
                 ++$i;
             }
             // SE exportar ou mostra em tabela
-            if ($export!==false){
+            if ($export!==false) {
                 self::Export_Todos($export,$tabela, 'Propostas Aceitas');
             } else {
                 $this->_Visual->Show_Tabela_DataTable(
@@ -478,7 +478,7 @@ class Transporte_PedidoControle extends Transporte_Controle
             }
             unset($tabela);
         } else {
-            if ($export!==false){
+            if ($export!==false) {
                 $mensagem = __('Nenhuma Proposta Aceita para exportar');
             } else {
                 $mensagem = __('Nenhuma Proposta Aceita');
@@ -490,7 +490,7 @@ class Transporte_PedidoControle extends Transporte_Controle
         //Carrega Json
         $this->_Visual->Json_Info_Update('Titulo', __('Propostas Aceitas'));
     }
-    public function Arma_Sol_PedRecusados($export=false){
+    public function Arma_Sol_PedRecusados($export=false) {
         
         //self::Endereco_Noticia(false);
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
@@ -505,7 +505,7 @@ class Transporte_PedidoControle extends Transporte_Controle
         $i = 0;
         $pedido = $this->_Modelo->db->Sql_Select('Transporte_Armazem_Pedido_Lance', '{sigla}status=\'2\' AND {sigla}log_user_add=\''.$this->_Acl->Usuario_GetID().'\'');
         if (is_object($pedido)) $pedido = Array(0=>$pedido);
-        if ($pedido!==false && !empty($pedido)){
+        if ($pedido!==false && !empty($pedido)) {
             $i = 0;
             reset($pedido);
             foreach ($pedido as &$valor) {                
@@ -517,7 +517,7 @@ class Transporte_PedidoControle extends Transporte_Controle
                 ++$i;
             }
             // SE exportar ou mostra em tabela
-            if ($export!==false){
+            if ($export!==false) {
                 self::Export_Todos($export,$tabela, 'Propostas Recusadas');
             } else {
                 $this->_Visual->Show_Tabela_DataTable(
@@ -534,7 +534,7 @@ class Transporte_PedidoControle extends Transporte_Controle
             }
             unset($tabela);
         } else {
-            if ($export!==false){
+            if ($export!==false) {
                 $mensagem = __('Nenhuma Proposta Recusada para exportar');
             } else {
                 $mensagem = __('Nenhuma Proposta Recusada');
@@ -546,7 +546,7 @@ class Transporte_PedidoControle extends Transporte_Controle
         //Carrega Json
         $this->_Visual->Json_Info_Update('Titulo', __('Propostas Recusadas'));
     }
-    public function Arma_Sol_PedPendente($export=false){
+    public function Arma_Sol_PedPendente($export=false) {
         
         //self::Endereco_Noticia(false);
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
@@ -561,7 +561,7 @@ class Transporte_PedidoControle extends Transporte_Controle
         $i = 0;
         $pedido = $this->_Modelo->db->Sql_Select('Transporte_Armazem_Pedido_Lance', '{sigla}status=\'0\' AND {sigla}log_user_add=\''.$this->_Acl->Usuario_GetID().'\'');
         if (is_object($pedido)) $pedido = Array(0=>$pedido);
-        if ($pedido!==false && !empty($pedido)){
+        if ($pedido!==false && !empty($pedido)) {
             $i = 0;
             reset($pedido);
             $perm_del = $this->_Registro->_Acl->Get_Permissao_Url('Transporte/Pedido/Arma_Sol_Del');
@@ -575,7 +575,7 @@ class Transporte_PedidoControle extends Transporte_Controle
                 ++$i;
             }
             // SE exportar ou mostra em tabela
-            if ($export!==false){
+            if ($export!==false) {
                 self::Export_Todos($export,$tabela, 'Propostas Pendentes');
             } else {
                 $this->_Visual->Show_Tabela_DataTable(
@@ -592,7 +592,7 @@ class Transporte_PedidoControle extends Transporte_Controle
             }
             unset($tabela);
         } else {
-            if ($export!==false){
+            if ($export!==false) {
                 $mensagem = __('Nenhuma Proposta Pendente para exportar');
             } else {
                 $mensagem = __('Nenhuma Proposta Pendente');
@@ -616,13 +616,13 @@ class Transporte_PedidoControle extends Transporte_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Arma_Sol_Add($pedido=false){
+    public function Arma_Sol_Add($pedido=false) {
         if ($pedido===false) return false;
         else{
             $pedido = (int) $pedido;
             
             $pedido    =  $this->_Modelo->db->Sql_Select('Transporte_Armazem_Pedido', '{sigla}id=\''.$pedido.'\'',1);
-            if ($pedido===false || $pedido->status!=0){
+            if ($pedido===false || $pedido->status!=0) {
                 $mensagens = array(
                     "tipo" => 'erro',
                     "mgs_principal" => __('Erro'),
@@ -652,13 +652,13 @@ class Transporte_PedidoControle extends Transporte_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Arma_Sol_Add2($pedido=false){
+    public function Arma_Sol_Add2($pedido=false) {
         if ($pedido===false) return false;
         else{
             $pedido = (int) $pedido;
             
             $pedido    =  $this->_Modelo->db->Sql_Select('Transporte_Armazem_Pedido', '{sigla}id=\''.$pedido.'\'',1);
-            if ($pedido===false || $pedido->status!=0){
+            if ($pedido===false || $pedido->status!=0) {
                 $mensagens = array(
                     "tipo" => 'erro',
                     "mgs_principal" => __('Erro'),
@@ -683,14 +683,14 @@ class Transporte_PedidoControle extends Transporte_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Arma_Sol_Del($id){
+    public function Arma_Sol_Del($id) {
         
         
     	$id = (int) $id;
         // Puxa Transporte e deleta
         $pedido_lance    =  $this->_Modelo->db->Sql_Select('Transporte_Armazem_Pedido_Lance', '{sigla}id=\''.$id.'\' AND {sigla}log_user_add=\''.$this->_Acl->Usuario_GetID().'\'',1);
         
-        if ($pedido_lance===false || $pedido_lance->status!=0){
+        if ($pedido_lance===false || $pedido_lance->status!=0) {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),
@@ -701,7 +701,7 @@ class Transporte_PedidoControle extends Transporte_Controle
         }
         
         $pedido    =  $this->_Modelo->db->Sql_Select('Transporte_Armazem_Pedido', '{sigla}id=\''.$pedido_lance->pedido.'\'',1);
-        if ($pedido===false || $pedido->status!=0){
+        if ($pedido===false || $pedido->status!=0) {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),
@@ -713,7 +713,7 @@ class Transporte_PedidoControle extends Transporte_Controle
         
         $sucesso =  $this->_Modelo->db->Sql_Delete($pedido_lance);
         // Mensagem
-    	if ($sucesso===true){
+    	if ($sucesso===true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
@@ -745,34 +745,34 @@ class Transporte_PedidoControle extends Transporte_Controle
      * @param type $status
      * @throws \Exception
      */
-    public function Trans_Ped_Novas_Aceitar($id=false,$status=1){
-        if ($id===false){
+    public function Trans_Ped_Novas_Aceitar($id=false,$status=1) {
+        if ($id===false) {
             return false;
         }
         $resultado = $this->_Modelo->db->Sql_Select('Transporte_Transportadora_Pedido_Lance', '{sigla}id=\''.$id.'\' AND {sigla}fornecedor=\''.$this->_Acl->Usuario_GetID().'\'',1);
-        if ($resultado===false || !is_object($resultado)){
+        if ($resultado===false || !is_object($resultado)) {
             return false;
         }
-        if ($resultado->status==1 ||$resultado->status==2){
+        if ($resultado->status==1 ||$resultado->status==2) {
             // Voce não pode alterar
             return false;
         }
-        if ($status==1){
+        if ($status==1) {
             $resultado->status='1';
         } else {
             $resultado->status='2';
         }
         $sucesso = $this->_Modelo->db->Sql_Update($resultado);
-        if ($sucesso){
-            if ($resultado->status==1){
+        if ($sucesso) {
+            if ($resultado->status==1) {
                 $texto = __('Aceito');
                 $pedido = $resultado->pedido;
                 
                 // Caso Aceita o Resto ele Recusa
                 $procurar = $this->_Modelo->db->Sql_Select('Transporte_Transportadora_Pedido_Lance', '{sigla}pedido=\''.$pedido.'\' AND {sigla}fornecedor=\''.$this->_Acl->Usuario_GetID().'\'');
                 if (is_object($procurar)) $procurar = array($procurar);
-                if ($procurar!==false){
-                    foreach($procurar as &$valor){
+                if ($procurar!==false) {
+                    foreach($procurar as &$valor) {
                         $valor->status = '2';
                     }
                     $this->_Modelo->db->Sql_Update($procurar);
@@ -780,8 +780,8 @@ class Transporte_PedidoControle extends Transporte_Controle
                 // Caso Aceita o Resto ele Recusa
                 $procurar = $this->_Modelo->db->Sql_Select('Transporte_Transportadora_Pedido', '{sigla}id=\''.$pedido.'\' AND {sigla}log_user_add=\''.$this->_Acl->Usuario_GetID().'\'');
                 if (is_object($procurar)) $procurar = array($procurar);
-                if ($procurar!==false){
-                    foreach($procurar as &$valor){
+                if ($procurar!==false) {
+                    foreach($procurar as &$valor) {
                         $valor->status = '2';
                     }
                     $this->_Modelo->db->Sql_Update($procurar);
@@ -812,7 +812,7 @@ class Transporte_PedidoControle extends Transporte_Controle
     /**
      * Enviar Pedido (->)
      */
-    public function Trans_Ped_Add(){
+    public function Trans_Ped_Add() {
         //self::Endereco_Noticia(true);
         // Carrega Config
         $titulo1    = __('Adicionar Pedido');
@@ -830,7 +830,7 @@ class Transporte_PedidoControle extends Transporte_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Trans_Ped_Add2(){
+    public function Trans_Ped_Add2() {
         $titulo     = __('Pedido enviado com Sucesso');
         $dao        = 'Transporte_Transportadora_Pedido';
         $funcao     = '$this->Trans_Ped_Novas();';
@@ -846,13 +846,13 @@ class Transporte_PedidoControle extends Transporte_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Trans_Ped_Del($id){
+    public function Trans_Ped_Del($id) {
         
         
     	$id = (int) $id;
         // Puxa Transporte e deleta
         $pedido    =  $this->_Modelo->db->Sql_Select('Transporte_Transportadora_Pedido', '{sigla}id=\''.$id.'\' AND {sigla}log_user_add=\''.$this->_Acl->Usuario_GetID().'\'',1);
-        if ($pedido===false || $pedido->status!='0'){
+        if ($pedido===false || $pedido->status!='0') {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),
@@ -865,7 +865,7 @@ class Transporte_PedidoControle extends Transporte_Controle
         $sucesso =  $this->_Modelo->db->Sql_Delete($pedido);
         
         // Mensagem
-    	if ($sucesso===true){
+    	if ($sucesso===true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
@@ -893,7 +893,7 @@ class Transporte_PedidoControle extends Transporte_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Trans_Ped_Aceitas($export=false){
+    public function Trans_Ped_Aceitas($export=false) {
         
         //self::Endereco_Noticia(false);
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
@@ -908,7 +908,7 @@ class Transporte_PedidoControle extends Transporte_Controle
         $i = 0;
         $pedido = $this->_Modelo->db->Sql_Select('Transporte_Transportadora_Pedido_Lance', '{sigla}status=\'1\' AND {sigla}fornecedor=\''.$this->_Acl->Usuario_GetID().'\'');
         if (is_object($pedido)) $pedido = Array(0=>$pedido);
-        if ($pedido!==false && !empty($pedido)){
+        if ($pedido!==false && !empty($pedido)) {
             $i = 0;
             reset($pedido);
             $perm_status = $this->_Registro->_Acl->Get_Permissao_Url('Transporte/Pedido/Trans_Ped_Novas_Aceitar');
@@ -923,7 +923,7 @@ class Transporte_PedidoControle extends Transporte_Controle
                 ++$i;
             }
             // SE exportar ou mostra em tabela
-            if ($export!==false){
+            if ($export!==false) {
                 self::Export_Todos($export,$tabela, 'Propostas Aceitas');
             } else {
                 $this->_Visual->Show_Tabela_DataTable(
@@ -940,7 +940,7 @@ class Transporte_PedidoControle extends Transporte_Controle
             }
             unset($tabela);
         } else {
-            if ($export!==false){
+            if ($export!==false) {
                 $mensagem = __('Nenhuma Proposta Aceita para exportar');
             } else {
                 $mensagem = __('Nenhuma Proposta Aceita');
@@ -952,7 +952,7 @@ class Transporte_PedidoControle extends Transporte_Controle
         //Carrega Json
         $this->_Visual->Json_Info_Update('Titulo', __('Propostas Aceitas dos Meus Pedidos'));
     }
-    public function Trans_Ped_Novas($export=false){
+    public function Trans_Ped_Novas($export=false) {
         
         //self::Endereco_Noticia(false);
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
@@ -967,7 +967,7 @@ class Transporte_PedidoControle extends Transporte_Controle
         $i = 0;
         $pedido = $this->_Modelo->db->Sql_Select('Transporte_Transportadora_Pedido_Lance', '{sigla}status=\'0\' AND {sigla}fornecedor=\''.$this->_Acl->Usuario_GetID().'\'');
         if (is_object($pedido)) $pedido = Array(0=>$pedido);
-        if ($pedido!==false && !empty($pedido)){
+        if ($pedido!==false && !empty($pedido)) {
             $i = 0;
             reset($pedido);
             $perm_status = $this->_Registro->_Acl->Get_Permissao_Url('Transporte/Pedido/Trans_Ped_Novas_Aceitar');
@@ -982,7 +982,7 @@ class Transporte_PedidoControle extends Transporte_Controle
                 ++$i;
             }
             // SE exportar ou mostra em tabela
-            if ($export!==false){
+            if ($export!==false) {
                 self::Export_Todos($export,$tabela, 'Novas Propostas');
             } else {
                 $this->_Visual->Show_Tabela_DataTable(
@@ -999,7 +999,7 @@ class Transporte_PedidoControle extends Transporte_Controle
             }
             unset($tabela);
         } else {
-            if ($export!==false){
+            if ($export!==false) {
                 $mensagem = __('Nenhuma nova Proposta para exportar');
             } else {
                 $mensagem = __('Nenhuma nova Proposta');
@@ -1011,7 +1011,7 @@ class Transporte_PedidoControle extends Transporte_Controle
         //Carrega Json
         $this->_Visual->Json_Info_Update('Titulo', __('Novas Propostas dos Meus Pedidos'));
     }
-    public function Trans_Ped_Minhas($export=false){
+    public function Trans_Ped_Minhas($export=false) {
         $i = 0;
         //self::Endereco_Noticia(false);
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
@@ -1029,7 +1029,7 @@ class Transporte_PedidoControle extends Transporte_Controle
         )));
         $pedido = $this->_Modelo->db->Sql_Select('Transporte_Transportadora_Pedido', '{sigla}status=\'0\' AND {sigla}log_user_add=\''.$this->_Acl->Usuario_GetID().'\'');
         if (is_object($pedido)) $pedido = Array(0=>$pedido);
-        if ($pedido!==false && !empty($pedido)){
+        if ($pedido!==false && !empty($pedido)) {
             $i = 0;
             reset($pedido);
             $perm_del = $this->_Registro->_Acl->Get_Permissao_Url('Transporte/Pedido/Trans_Ped_Del');
@@ -1044,7 +1044,7 @@ class Transporte_PedidoControle extends Transporte_Controle
                 ++$i;
             }
             // SE exportar ou mostra em tabela
-            if ($export!==false){
+            if ($export!==false) {
                 self::Export_Todos($export,$tabela, 'Pedidos Cadastrados');
             } else {
                 $this->_Visual->Show_Tabela_DataTable(
@@ -1061,7 +1061,7 @@ class Transporte_PedidoControle extends Transporte_Controle
             }
             unset($tabela);
         } else {
-            if ($export!==false){
+            if ($export!==false) {
                 $mensagem = __('Nenhum Pedido Cadastrado para exportar');
             } else {
                 $mensagem = __('Nenhum Pedido Cadastrado');
@@ -1073,7 +1073,7 @@ class Transporte_PedidoControle extends Transporte_Controle
         //Carrega Json
         $this->_Visual->Json_Info_Update('Titulo', __('Meus Pedidos'));
     }
-    public function Trans_Sol_Solicitacoes($export=false){
+    public function Trans_Sol_Solicitacoes($export=false) {
         $i = 0;
         //self::Endereco_Noticia(false);
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
@@ -1087,7 +1087,7 @@ class Transporte_PedidoControle extends Transporte_Controle
         )));
         $pedido = $this->_Modelo->db->Sql_Select('Transporte_Transportadora_Pedido', '{sigla}status=\'0\'');
         if (is_object($pedido)) $pedido = Array(0=>$pedido);
-        if ($pedido!==false && !empty($pedido)){
+        if ($pedido!==false && !empty($pedido)) {
             $i = 0;
             reset($pedido);
             $perm_status = $this->_Registro->_Acl->Get_Permissao_Url('Transporte/Pedido/Trans_Sol_Add');
@@ -1102,7 +1102,7 @@ class Transporte_PedidoControle extends Transporte_Controle
                 ++$i;
             }
             // SE exportar ou mostra em tabela
-            if ($export!==false){
+            if ($export!==false) {
                 self::Export_Todos($export,$tabela, 'Pedidos pendentes');
             } else {
                 $this->_Visual->Show_Tabela_DataTable(
@@ -1119,7 +1119,7 @@ class Transporte_PedidoControle extends Transporte_Controle
             }
             unset($tabela);
         } else {
-            if ($export!==false){
+            if ($export!==false) {
                 $mensagem = __('Nenhum Pedido pendente para exportar');
             } else {
                 $mensagem = __('Nenhum Pedido Pendente');
@@ -1159,7 +1159,7 @@ class Transporte_PedidoControle extends Transporte_Controle
     
     
     
-    public function Trans_Sol_PedAceitos($export=false){
+    public function Trans_Sol_PedAceitos($export=false) {
         
         //self::Endereco_Noticia(false);
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
@@ -1174,7 +1174,7 @@ class Transporte_PedidoControle extends Transporte_Controle
         $i = 0;
         $pedido = $this->_Modelo->db->Sql_Select('Transporte_Transportadora_Pedido_Lance', '{sigla}status=\'1\' AND {sigla}log_user_add=\''.$this->_Acl->Usuario_GetID().'\'');
         if (is_object($pedido)) $pedido = Array(0=>$pedido);
-        if ($pedido!==false && !empty($pedido)){
+        if ($pedido!==false && !empty($pedido)) {
             $i = 0;
             reset($pedido);
             foreach ($pedido as &$valor) {                
@@ -1186,7 +1186,7 @@ class Transporte_PedidoControle extends Transporte_Controle
                 ++$i;
             }
             // SE exportar ou mostra em tabela
-            if ($export!==false){
+            if ($export!==false) {
                 self::Export_Todos($export,$tabela, 'Propostas Aceitas');
             } else {
                 $this->_Visual->Show_Tabela_DataTable(
@@ -1203,7 +1203,7 @@ class Transporte_PedidoControle extends Transporte_Controle
             }
             unset($tabela);
         } else {
-            if ($export!==false){
+            if ($export!==false) {
                 $mensagem = __('Nenhuma Proposta Aceita para exportar');
             } else {
                 $mensagem = __('Nenhuma Proposta Aceita');
@@ -1215,7 +1215,7 @@ class Transporte_PedidoControle extends Transporte_Controle
         //Carrega Json
         $this->_Visual->Json_Info_Update('Titulo', __('Propostas Aceitas'));
     }
-    public function Trans_Sol_PedRecusados($export=false){
+    public function Trans_Sol_PedRecusados($export=false) {
         
         //self::Endereco_Noticia(false);
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
@@ -1230,7 +1230,7 @@ class Transporte_PedidoControle extends Transporte_Controle
         $i = 0;
         $pedido = $this->_Modelo->db->Sql_Select('Transporte_Transportadora_Pedido_Lance', '{sigla}status=\'2\' AND {sigla}log_user_add=\''.$this->_Acl->Usuario_GetID().'\'');
         if (is_object($pedido)) $pedido = Array(0=>$pedido);
-        if ($pedido!==false && !empty($pedido)){
+        if ($pedido!==false && !empty($pedido)) {
             $i = 0;
             reset($pedido);
             foreach ($pedido as &$valor) {                
@@ -1242,7 +1242,7 @@ class Transporte_PedidoControle extends Transporte_Controle
                 ++$i;
             }
             // SE exportar ou mostra em tabela
-            if ($export!==false){
+            if ($export!==false) {
                 self::Export_Todos($export,$tabela, 'Propostas Recusadas');
             } else {
                 $this->_Visual->Show_Tabela_DataTable(
@@ -1259,7 +1259,7 @@ class Transporte_PedidoControle extends Transporte_Controle
             }
             unset($tabela);
         } else {
-            if ($export!==false){
+            if ($export!==false) {
                 $mensagem = __('Nenhuma Proposta Recusada para exportar');
             } else {
                 $mensagem = __('Nenhuma Proposta Recusada');
@@ -1271,7 +1271,7 @@ class Transporte_PedidoControle extends Transporte_Controle
         //Carrega Json
         $this->_Visual->Json_Info_Update('Titulo', __('Propostas Recusadas'));
     }
-    public function Trans_Sol_PedPendente($export=false){
+    public function Trans_Sol_PedPendente($export=false) {
         
         //self::Endereco_Noticia(false);
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
@@ -1286,7 +1286,7 @@ class Transporte_PedidoControle extends Transporte_Controle
         $i = 0;
         $pedido = $this->_Modelo->db->Sql_Select('Transporte_Transportadora_Pedido_Lance', '{sigla}status=\'0\' AND {sigla}log_user_add=\''.$this->_Acl->Usuario_GetID().'\'');
         if (is_object($pedido)) $pedido = Array(0=>$pedido);
-        if ($pedido!==false && !empty($pedido)){
+        if ($pedido!==false && !empty($pedido)) {
             $i = 0;
             reset($pedido);
             $perm_del = $this->_Registro->_Acl->Get_Permissao_Url('Transporte/Pedido/Trans_Sol_Del');
@@ -1300,7 +1300,7 @@ class Transporte_PedidoControle extends Transporte_Controle
                 ++$i;
             }
             // SE exportar ou mostra em tabela
-            if ($export!==false){
+            if ($export!==false) {
                 self::Export_Todos($export,$tabela, 'Propostas Pendentes');
             } else {
                 $this->_Visual->Show_Tabela_DataTable(
@@ -1317,7 +1317,7 @@ class Transporte_PedidoControle extends Transporte_Controle
             }
             unset($tabela);
         } else {
-            if ($export!==false){
+            if ($export!==false) {
                 $mensagem = __('Nenhuma Proposta Pendente para exportar');
             } else {
                 $mensagem = __('Nenhuma Proposta Pendente');
@@ -1341,13 +1341,13 @@ class Transporte_PedidoControle extends Transporte_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Trans_Sol_Add($pedido=false){
+    public function Trans_Sol_Add($pedido=false) {
         if ($pedido===false) return false;
         else{
             $pedido = (int) $pedido;
             
             $pedido    =  $this->_Modelo->db->Sql_Select('Transporte_Transportadora_Pedido', '{sigla}id=\''.$pedido.'\'',1);
-            if ($pedido===false || $pedido->status!=0){
+            if ($pedido===false || $pedido->status!=0) {
                 $mensagens = array(
                     "tipo" => 'erro',
                     "mgs_principal" => __('Erro'),
@@ -1377,13 +1377,13 @@ class Transporte_PedidoControle extends Transporte_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Trans_Sol_Add2($pedido=false){
+    public function Trans_Sol_Add2($pedido=false) {
         if ($pedido===false) return false;
         else{
             $pedido = (int) $pedido;
             
             $pedido    =  $this->_Modelo->db->Sql_Select('Transporte_Transportadora_Pedido', '{sigla}id=\''.$pedido.'\'',1);
-            if ($pedido===false || $pedido->status!=0){
+            if ($pedido===false || $pedido->status!=0) {
                 $mensagens = array(
                     "tipo" => 'erro',
                     "mgs_principal" => __('Erro'),
@@ -1408,14 +1408,14 @@ class Transporte_PedidoControle extends Transporte_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Trans_Sol_Del($id){
+    public function Trans_Sol_Del($id) {
         
         
     	$id = (int) $id;
         // Puxa Transporte e deleta
         $pedido_lance    =  $this->_Modelo->db->Sql_Select('Transporte_Transportadora_Pedido_Lance', '{sigla}id=\''.$id.'\' AND {sigla}log_user_add=\''.$this->_Acl->Usuario_GetID().'\'',1);
         
-        if ($pedido_lance===false || $pedido_lance->status!=0){
+        if ($pedido_lance===false || $pedido_lance->status!=0) {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),
@@ -1426,7 +1426,7 @@ class Transporte_PedidoControle extends Transporte_Controle
         }
         
         $pedido    =  $this->_Modelo->db->Sql_Select('Transporte_Transportadora_Pedido', '{sigla}id=\''.$pedido_lance->pedido.'\'',1);
-        if ($pedido===false || $pedido->status!=0){
+        if ($pedido===false || $pedido->status!=0) {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),
@@ -1438,7 +1438,7 @@ class Transporte_PedidoControle extends Transporte_Controle
         
         $sucesso =  $this->_Modelo->db->Sql_Delete($pedido_lance);
         // Mensagem
-    	if ($sucesso===true){
+    	if ($sucesso===true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
@@ -1466,34 +1466,34 @@ class Transporte_PedidoControle extends Transporte_Controle
      * @param type $status
      * @throws \Exception
      */
-    public function Caminho_Ped_Novas_Aceitar($id=false,$status=1){
-        if ($id===false){
+    public function Caminho_Ped_Novas_Aceitar($id=false,$status=1) {
+        if ($id===false) {
             return false;
         }
         $resultado = $this->_Modelo->db->Sql_Select('Transporte_Caminhoneiro_Pedido_Lance', '{sigla}id=\''.$id.'\' AND {sigla}transportadora=\''.$this->_Acl->Usuario_GetID().'\'',1);
-        if ($resultado===false || !is_object($resultado)){
+        if ($resultado===false || !is_object($resultado)) {
             return false;
         }
-        if ($resultado->status==1 ||$resultado->status==2){
+        if ($resultado->status==1 ||$resultado->status==2) {
             // Voce não pode alterar
             return false;
         }
-        if ($status==1){
+        if ($status==1) {
             $resultado->status='1';
         } else {
             $resultado->status='2';
         }
         $sucesso = $this->_Modelo->db->Sql_Update($resultado);
-        if ($sucesso){
-            if ($resultado->status==1){
+        if ($sucesso) {
+            if ($resultado->status==1) {
                 $texto = __('Aceito');
                 $pedido = $resultado->pedido;
                 
                 // Caso Aceita o Resto ele Recusa
                 $procurar = $this->_Modelo->db->Sql_Select('Transporte_Caminhoneiro_Pedido_Lance', '{sigla}pedido=\''.$pedido.'\' AND {sigla}transportadora=\''.$this->_Acl->Usuario_GetID().'\'');
                 if (is_object($procurar)) $procurar = array($procurar);
-                if ($procurar!==false){
-                    foreach($procurar as &$valor){
+                if ($procurar!==false) {
+                    foreach($procurar as &$valor) {
                         $valor->status = '2';
                     }
                     $this->_Modelo->db->Sql_Update($procurar);
@@ -1501,8 +1501,8 @@ class Transporte_PedidoControle extends Transporte_Controle
                 // Caso Aceita o Resto ele Recusa
                 $procurar = $this->_Modelo->db->Sql_Select('Transporte_Caminhoneiro_Pedido', '{sigla}id=\''.$pedido.'\' AND {sigla}log_user_add=\''.$this->_Acl->Usuario_GetID().'\'');
                 if (is_object($procurar)) $procurar = array($procurar);
-                if ($procurar!==false){
-                    foreach($procurar as &$valor){
+                if ($procurar!==false) {
+                    foreach($procurar as &$valor) {
                         $valor->status = '2';
                     }
                     $this->_Modelo->db->Sql_Update($procurar);
@@ -1533,7 +1533,7 @@ class Transporte_PedidoControle extends Transporte_Controle
     /**
      * Enviar Pedido (->)
      */
-    public function Caminho_Ped_Add(){
+    public function Caminho_Ped_Add() {
         //self::Endereco_Noticia(true);
         // Carrega Config
         $titulo1    = __('Adicionar Pedido');
@@ -1551,7 +1551,7 @@ class Transporte_PedidoControle extends Transporte_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Caminho_Ped_Add2(){
+    public function Caminho_Ped_Add2() {
         $titulo     = __('Pedido enviado com Sucesso');
         $dao        = 'Transporte_Caminhoneiro_Pedido';
         $funcao     = '$this->Caminho_Ped_Novas();';
@@ -1567,13 +1567,13 @@ class Transporte_PedidoControle extends Transporte_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Caminho_Ped_Del($id){
+    public function Caminho_Ped_Del($id) {
         
         
     	$id = (int) $id;
         // Puxa Transporte e deleta
         $pedido    =  $this->_Modelo->db->Sql_Select('Transporte_Caminhoneiro_Pedido', '{sigla}id=\''.$id.'\' AND {sigla}log_user_add=\''.$this->_Acl->Usuario_GetID().'\'',1);
-        if ($pedido===false || $pedido->status!='0'){
+        if ($pedido===false || $pedido->status!='0') {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),
@@ -1586,7 +1586,7 @@ class Transporte_PedidoControle extends Transporte_Controle
         $sucesso =  $this->_Modelo->db->Sql_Delete($pedido);
         
         // Mensagem
-    	if ($sucesso===true){
+    	if ($sucesso===true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
@@ -1614,7 +1614,7 @@ class Transporte_PedidoControle extends Transporte_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Caminho_Ped_Aceitas($export=false){
+    public function Caminho_Ped_Aceitas($export=false) {
         
         //self::Endereco_Noticia(false);
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
@@ -1629,7 +1629,7 @@ class Transporte_PedidoControle extends Transporte_Controle
         $i = 0;
         $pedido = $this->_Modelo->db->Sql_Select('Transporte_Caminhoneiro_Pedido_Lance', '{sigla}status=\'1\' AND {sigla}transportadora=\''.$this->_Acl->Usuario_GetID().'\'');
         if (is_object($pedido)) $pedido = Array(0=>$pedido);
-        if ($pedido!==false && !empty($pedido)){
+        if ($pedido!==false && !empty($pedido)) {
             $i = 0;
             reset($pedido);
             $perm_status = $this->_Registro->_Acl->Get_Permissao_Url('Transporte/Pedido/Caminho_Ped_Novas_Aceitar');
@@ -1644,7 +1644,7 @@ class Transporte_PedidoControle extends Transporte_Controle
                 ++$i;
             }
             // SE exportar ou mostra em tabela
-            if ($export!==false){
+            if ($export!==false) {
                 self::Export_Todos($export,$tabela, 'Propostas Aceitas');
             } else {
                 $this->_Visual->Show_Tabela_DataTable(
@@ -1661,7 +1661,7 @@ class Transporte_PedidoControle extends Transporte_Controle
             }
             unset($tabela);
         } else {
-            if ($export!==false){
+            if ($export!==false) {
                 $mensagem = __('Nenhuma Proposta Aceita para exportar');
             } else {
                 $mensagem = __('Nenhuma Proposta Aceita');
@@ -1673,7 +1673,7 @@ class Transporte_PedidoControle extends Transporte_Controle
         //Carrega Json
         $this->_Visual->Json_Info_Update('Titulo', __('Propostas Aceitas dos Meus Pedidos'));
     }
-    public function Caminho_Ped_Novas($export=false){
+    public function Caminho_Ped_Novas($export=false) {
         
         //self::Endereco_Noticia(false);
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
@@ -1688,7 +1688,7 @@ class Transporte_PedidoControle extends Transporte_Controle
         $i = 0;
         $pedido = $this->_Modelo->db->Sql_Select('Transporte_Caminhoneiro_Pedido_Lance', '{sigla}status=\'0\' AND {sigla}transportadora=\''.$this->_Acl->Usuario_GetID().'\'');
         if (is_object($pedido)) $pedido = Array(0=>$pedido);
-        if ($pedido!==false && !empty($pedido)){
+        if ($pedido!==false && !empty($pedido)) {
             $i = 0;
             reset($pedido);
             $perm_status = $this->_Registro->_Acl->Get_Permissao_Url('Transporte/Pedido/Caminho_Ped_Novas_Aceitar');
@@ -1703,7 +1703,7 @@ class Transporte_PedidoControle extends Transporte_Controle
                 ++$i;
             }
             // SE exportar ou mostra em tabela
-            if ($export!==false){
+            if ($export!==false) {
                 self::Export_Todos($export,$tabela, 'Novas Propostas');
             } else {
                 $this->_Visual->Show_Tabela_DataTable(
@@ -1720,7 +1720,7 @@ class Transporte_PedidoControle extends Transporte_Controle
             }
             unset($tabela);
         } else {
-            if ($export!==false){
+            if ($export!==false) {
                 $mensagem = __('Nenhuma nova Proposta para exportar');
             } else {
                 $mensagem = __('Nenhuma nova Proposta');
@@ -1732,7 +1732,7 @@ class Transporte_PedidoControle extends Transporte_Controle
         //Carrega Json
         $this->_Visual->Json_Info_Update('Titulo', __('Novas Propostas dos Meus Pedidos'));
     }
-    public function Caminho_Ped_Minhas($export=false){
+    public function Caminho_Ped_Minhas($export=false) {
         $i = 0;
         //self::Endereco_Noticia(false);
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
@@ -1750,7 +1750,7 @@ class Transporte_PedidoControle extends Transporte_Controle
         )));
         $pedido = $this->_Modelo->db->Sql_Select('Transporte_Caminhoneiro_Pedido', '{sigla}status=\'0\' AND {sigla}log_user_add=\''.$this->_Acl->Usuario_GetID().'\'');
         if (is_object($pedido)) $pedido = Array(0=>$pedido);
-        if ($pedido!==false && !empty($pedido)){
+        if ($pedido!==false && !empty($pedido)) {
             $i = 0;
             reset($pedido);
             $perm_del = $this->_Registro->_Acl->Get_Permissao_Url('Transporte/Pedido/Caminho_Ped_Del');
@@ -1765,7 +1765,7 @@ class Transporte_PedidoControle extends Transporte_Controle
                 ++$i;
             }
             // SE exportar ou mostra em tabela
-            if ($export!==false){
+            if ($export!==false) {
                 self::Export_Todos($export,$tabela, 'Pedidos Cadastrados');
             } else {
                 $this->_Visual->Show_Tabela_DataTable(
@@ -1782,7 +1782,7 @@ class Transporte_PedidoControle extends Transporte_Controle
             }
             unset($tabela);
         } else {
-            if ($export!==false){
+            if ($export!==false) {
                 $mensagem = __('Nenhum Pedido Cadastrado para exportar');
             } else {
                 $mensagem = __('Nenhum Pedido Cadastrado');
@@ -1794,7 +1794,7 @@ class Transporte_PedidoControle extends Transporte_Controle
         //Carrega Json
         $this->_Visual->Json_Info_Update('Titulo', __('Meus Pedidos'));
     }
-    public function Caminho_Sol_Solicitacoes($export=false){
+    public function Caminho_Sol_Solicitacoes($export=false) {
         $i = 0;
         //self::Endereco_Noticia(false);
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
@@ -1808,7 +1808,7 @@ class Transporte_PedidoControle extends Transporte_Controle
         )));
         $pedido = $this->_Modelo->db->Sql_Select('Transporte_Caminhoneiro_Pedido', '{sigla}status=\'0\'');
         if (is_object($pedido)) $pedido = Array(0=>$pedido);
-        if ($pedido!==false && !empty($pedido)){
+        if ($pedido!==false && !empty($pedido)) {
             $i = 0;
             reset($pedido);
             $perm_add = $this->_Registro->_Acl->Get_Permissao_Url('Transporte/Pedido/Caminho_Sol_Add');
@@ -1823,7 +1823,7 @@ class Transporte_PedidoControle extends Transporte_Controle
                 ++$i;
             }
             // SE exportar ou mostra em tabela
-            if ($export!==false){
+            if ($export!==false) {
                 self::Export_Todos($export,$tabela, 'Pedidos pendentes');
             } else {
                 $this->_Visual->Show_Tabela_DataTable(
@@ -1840,7 +1840,7 @@ class Transporte_PedidoControle extends Transporte_Controle
             }
             unset($tabela);
         } else {
-            if ($export!==false){
+            if ($export!==false) {
                 $mensagem = __('Nenhum Pedido pendente para exportar');
             } else {
                 $mensagem = __('Nenhum Pedido Pendente');
@@ -1880,7 +1880,7 @@ class Transporte_PedidoControle extends Transporte_Controle
     
     
     
-    public function Caminho_Sol_PedAceitos($export=false){
+    public function Caminho_Sol_PedAceitos($export=false) {
         
         //self::Endereco_Noticia(false);
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
@@ -1895,7 +1895,7 @@ class Transporte_PedidoControle extends Transporte_Controle
         $i = 0;
         $pedido = $this->_Modelo->db->Sql_Select('Transporte_Caminhoneiro_Pedido_Lance', '{sigla}status=\'1\' AND {sigla}log_user_add=\''.$this->_Acl->Usuario_GetID().'\'');
         if (is_object($pedido)) $pedido = Array(0=>$pedido);
-        if ($pedido!==false && !empty($pedido)){
+        if ($pedido!==false && !empty($pedido)) {
             $i = 0;
             reset($pedido);
             foreach ($pedido as &$valor) {                
@@ -1907,7 +1907,7 @@ class Transporte_PedidoControle extends Transporte_Controle
                 ++$i;
             }
             // SE exportar ou mostra em tabela
-            if ($export!==false){
+            if ($export!==false) {
                 self::Export_Todos($export,$tabela, 'Propostas Aceitas');
             } else {
                 $this->_Visual->Show_Tabela_DataTable(
@@ -1924,7 +1924,7 @@ class Transporte_PedidoControle extends Transporte_Controle
             }
             unset($tabela);
         } else {
-            if ($export!==false){
+            if ($export!==false) {
                 $mensagem = __('Nenhuma Proposta Aceita para exportar');
             } else {
                 $mensagem = __('Nenhuma Proposta Aceita');
@@ -1936,7 +1936,7 @@ class Transporte_PedidoControle extends Transporte_Controle
         //Carrega Json
         $this->_Visual->Json_Info_Update('Titulo', __('Propostas Aceitas'));
     }
-    public function Caminho_Sol_PedRecusados($export=false){
+    public function Caminho_Sol_PedRecusados($export=false) {
         
         //self::Endereco_Noticia(false);
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
@@ -1951,7 +1951,7 @@ class Transporte_PedidoControle extends Transporte_Controle
         $i = 0;
         $pedido = $this->_Modelo->db->Sql_Select('Transporte_Caminhoneiro_Pedido_Lance', '{sigla}status=\'2\' AND {sigla}log_user_add=\''.$this->_Acl->Usuario_GetID().'\'');
         if (is_object($pedido)) $pedido = Array(0=>$pedido);
-        if ($pedido!==false && !empty($pedido)){
+        if ($pedido!==false && !empty($pedido)) {
             $i = 0;
             reset($pedido);
             foreach ($pedido as &$valor) {                
@@ -1963,7 +1963,7 @@ class Transporte_PedidoControle extends Transporte_Controle
                 ++$i;
             }
             // SE exportar ou mostra em tabela
-            if ($export!==false){
+            if ($export!==false) {
                 self::Export_Todos($export,$tabela, 'Propostas Recusadas');
             } else {
                 $this->_Visual->Show_Tabela_DataTable(
@@ -1980,7 +1980,7 @@ class Transporte_PedidoControle extends Transporte_Controle
             }
             unset($tabela);
         } else {
-            if ($export!==false){
+            if ($export!==false) {
                 $mensagem = __('Nenhuma Proposta Recusada para exportar');
             } else {
                 $mensagem = __('Nenhuma Proposta Recusada');
@@ -1992,7 +1992,7 @@ class Transporte_PedidoControle extends Transporte_Controle
         //Carrega Json
         $this->_Visual->Json_Info_Update('Titulo', __('Propostas Recusadas'));
     }
-    public function Caminho_Sol_PedPendente($export=false){
+    public function Caminho_Sol_PedPendente($export=false) {
         
         //self::Endereco_Noticia(false);
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
@@ -2007,7 +2007,7 @@ class Transporte_PedidoControle extends Transporte_Controle
         $i = 0;
         $pedido = $this->_Modelo->db->Sql_Select('Transporte_Caminhoneiro_Pedido_Lance', '{sigla}status=\'0\' AND {sigla}log_user_add=\''.$this->_Acl->Usuario_GetID().'\'');
         if (is_object($pedido)) $pedido = Array(0=>$pedido);
-        if ($pedido!==false && !empty($pedido)){
+        if ($pedido!==false && !empty($pedido)) {
             $i = 0;
             reset($pedido);
             $perm_del = $this->_Registro->_Acl->Get_Permissao_Url('Transporte/Pedido/Caminho_Sol_Del');
@@ -2021,7 +2021,7 @@ class Transporte_PedidoControle extends Transporte_Controle
                 ++$i;
             }
             // SE exportar ou mostra em tabela
-            if ($export!==false){
+            if ($export!==false) {
                 self::Export_Todos($export,$tabela, 'Propostas Pendentes');
             } else {
                 $this->_Visual->Show_Tabela_DataTable(
@@ -2038,7 +2038,7 @@ class Transporte_PedidoControle extends Transporte_Controle
             }
             unset($tabela);
         } else {
-            if ($export!==false){
+            if ($export!==false) {
                 $mensagem = __('Nenhuma Proposta Pendente para exportar');
             } else {
                 $mensagem = __('Nenhuma Proposta Pendente');
@@ -2062,13 +2062,13 @@ class Transporte_PedidoControle extends Transporte_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Caminho_Sol_Add($pedido=false){
+    public function Caminho_Sol_Add($pedido=false) {
         if ($pedido===false) return false;
         else{
             $pedido = (int) $pedido;
             
             $pedido    =  $this->_Modelo->db->Sql_Select('Transporte_Caminhoneiro_Pedido', '{sigla}id=\''.$pedido.'\'',1);
-            if ($pedido===false || $pedido->status!=0){
+            if ($pedido===false || $pedido->status!=0) {
                 $mensagens = array(
                     "tipo" => 'erro',
                     "mgs_principal" => __('Erro'),
@@ -2098,13 +2098,13 @@ class Transporte_PedidoControle extends Transporte_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Caminho_Sol_Add2($pedido=false){
+    public function Caminho_Sol_Add2($pedido=false) {
         if ($pedido===false) return false;
         else{
             $pedido = (int) $pedido;
             
             $pedido    =  $this->_Modelo->db->Sql_Select('Transporte_Caminhoneiro_Pedido', '{sigla}id=\''.$pedido.'\'',1);
-            if ($pedido===false || $pedido->status!=0){
+            if ($pedido===false || $pedido->status!=0) {
                 $mensagens = array(
                     "tipo" => 'erro',
                     "mgs_principal" => __('Erro'),
@@ -2129,14 +2129,14 @@ class Transporte_PedidoControle extends Transporte_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Caminho_Sol_Del($id){
+    public function Caminho_Sol_Del($id) {
         
         
     	$id = (int) $id;
         // Puxa Transporte e deleta
         $pedido_lance    =  $this->_Modelo->db->Sql_Select('Transporte_Caminhoneiro_Pedido_Lance', '{sigla}id=\''.$id.'\' AND {sigla}log_user_add=\''.$this->_Acl->Usuario_GetID().'\'',1);
         
-        if ($pedido_lance===false || $pedido_lance->status!=0){
+        if ($pedido_lance===false || $pedido_lance->status!=0) {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),
@@ -2147,7 +2147,7 @@ class Transporte_PedidoControle extends Transporte_Controle
         }
         
         $pedido    =  $this->_Modelo->db->Sql_Select('Transporte_Caminhoneiro_Pedido', '{sigla}id=\''.$pedido_lance->pedido.'\'',1);
-        if ($pedido===false || $pedido->status!=0){
+        if ($pedido===false || $pedido->status!=0) {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),
@@ -2159,7 +2159,7 @@ class Transporte_PedidoControle extends Transporte_Controle
         
         $sucesso =  $this->_Modelo->db->Sql_Delete($pedido_lance);
         // Mensagem
-    	if ($sucesso===true){
+    	if ($sucesso===true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),

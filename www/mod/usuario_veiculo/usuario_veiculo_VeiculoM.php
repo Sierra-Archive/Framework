@@ -14,7 +14,7 @@ class usuario_veiculo_VeiculoModelo extends usuario_veiculo_Modelo
      * @version 0.4.2
      * 
      */
-    public function __construct(){
+    public function __construct() {
       parent::__construct();
     }
 }

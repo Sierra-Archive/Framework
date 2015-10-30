@@ -1,7 +1,7 @@
 <?php
 class Curso_CursoControle extends Curso_Controle
 {
-    public function __construct(){
+    public function __construct() {
         parent::__construct();
     }
     /**
@@ -17,20 +17,20 @@ class Curso_CursoControle extends Curso_Controle
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    public function Main(){
+    public function Main() {
         \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'Curso/Curso/Cursos');
         return false;
     }
-    static function Endereco_Curso($true=true){
+    static function Endereco_Curso($true=true) {
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
-        if ($true===true){
+        if ($true===true) {
             $_Controle->Tema_Endereco(__('Cursos'),'Curso/Curso/Cursos');
         } else {
             $_Controle->Tema_Endereco(__('Cursos'));
         }
     }
-    static function Cursos_Tabela(&$cursos){
+    static function Cursos_Tabela(&$cursos) {
         $Registro   = &\Framework\App\Registro::getInstacia();
         $Visual     = &$Registro->_Visual;
         
@@ -44,7 +44,7 @@ class Curso_CursoControle extends Curso_Controle
             $tabela['Custo'][$i]                    =   $valor->valor;
             $tabela['Data Cadastrada'][$i]          =   $valor->log_date_add;
             $status                                 = $valor->status;
-            if ($status!=1){
+            if ($status!=1) {
                 $status = 0;
                 $texto = __('Desativado');
             } else {
@@ -64,7 +64,7 @@ class Curso_CursoControle extends Curso_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Cursos($export=false){
+    public function Cursos($export=false) {
         self::Endereco_Curso(false);
         $i = 0;
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
@@ -81,10 +81,10 @@ class Curso_CursoControle extends Curso_Controle
             )
         )));
         $cursos = $this->_Modelo->db->Sql_Select('Curso');
-        if ($cursos!==false && !empty($cursos)){
+        if ($cursos!==false && !empty($cursos)) {
             list($tabela,$i) = self::Cursos_Tabela($cursos);
             
-            if ($export!==false){
+            if ($export!==false) {
                 // Retira Status
                 unset($tabela['Status']);
                 self::Export_Todos($export,$tabela, 'Cursos');
@@ -116,7 +116,7 @@ class Curso_CursoControle extends Curso_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Cursos_Add(){
+    public function Cursos_Add() {
         self::Endereco_Curso();
         // Carrega Config
         $titulo1    = __('Adicionar Curso');
@@ -133,7 +133,7 @@ class Curso_CursoControle extends Curso_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Cursos_Add2(){
+    public function Cursos_Add2() {
         $titulo     = __('Curso Adicionado com Sucesso');
         $dao        = 'Curso';
         $funcao     = '$this->Cursos();';
@@ -148,7 +148,7 @@ class Curso_CursoControle extends Curso_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Cursos_Edit($id){
+    public function Cursos_Edit($id) {
         self::Endereco_Curso();
         // Carrega Config
         $titulo1    = 'Editar Curso (#'.$id.')';
@@ -167,7 +167,7 @@ class Curso_CursoControle extends Curso_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Cursos_Edit2($id){
+    public function Cursos_Edit2($id) {
         $titulo     = __('Curso Editado com Sucesso');
         $dao        = Array('Curso',$id);
         $funcao     = '$this->Cursos();';
@@ -182,13 +182,13 @@ class Curso_CursoControle extends Curso_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Cursos_Del($id){        
+    public function Cursos_Del($id) {        
     	$id = (int) $id;
         // Puxa curso e deleta
         $curso = $this->_Modelo->db->Sql_Select('Curso', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($curso);
         // Mensagem
-    	if ($sucesso===true){
+    	if ($sucesso===true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
@@ -208,22 +208,22 @@ class Curso_CursoControle extends Curso_Controle
         $this->_Visual->Json_Info_Update('Titulo', __('Curso deletado com Sucesso'));
         $this->_Visual->Json_Info_Update('Historico', false);
     }
-    public function Status($id=false){
-        if ($id===false){
+    public function Status($id=false) {
+        if ($id===false) {
             return false;
         }
         $resultado = $this->_Modelo->db->Sql_Select('Curso', Array('id'=>$id),1);
-        if ($resultado===false || !is_object($resultado)){
+        if ($resultado===false || !is_object($resultado)) {
             return false;
         }
-        if ($resultado->status=='1'){
+        if ($resultado->status=='1') {
             $resultado->status='0';
         } else {
             $resultado->status='1';
         }
         $sucesso = $this->_Modelo->db->Sql_Update($resultado);
-        if ($sucesso){
-            if ($resultado->status==1){
+        if ($sucesso) {
+            if ($resultado->status==1) {
                 $texto = __('Ativado');
             } else {
                 $texto = __('Desativado');

@@ -1,5 +1,5 @@
 <?php
-$config_Modulo = function (){
+$config_Modulo = function () {
     return Array(
         'Nome'                      =>  'comercio_venda',
         'Descrição'                 =>  '',
@@ -8,7 +8,7 @@ $config_Modulo = function (){
         'Dependencias'              =>  false,
     );
 };
-$config_Menu = function (){
+$config_Menu = function () {
     return Array(
         'Vendas' => Array(
             'Nome'                  => __('Vendas'),
@@ -54,7 +54,7 @@ $config_Menu = function (){
         ),*/
     );
 };
-$config_Permissoes = function (){
+$config_Permissoes = function () {
     return Array(
         // MESAS
         Array(
@@ -209,7 +209,7 @@ $config_Permissoes = function (){
  * 
  * @author Ricardo Sierra <web@ricardosierra.com.br>
  */
-$config_Funcional = function (){
+$config_Funcional = function () {
     return Array(
         'comercio_venda_mesa'  => Array(
             'Nome'                  => __('Se Possui Sistema de Mesas?'),
@@ -225,7 +225,7 @@ $config_Funcional = function (){
  * 
  * @author Ricardo Sierra <web@ricardosierra.com.br>
  */
-$config_Publico = function (){
+$config_Publico = function () {
     return Array(
         /*'{chave}'  => Array(
             'Nome'                  => 'Nome',

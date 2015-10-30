@@ -12,14 +12,14 @@ class biblioteca_Controle extends \Framework\App\Controle
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    public function __construct(){
+    public function __construct() {
         // construct
         parent::__construct();
     }
-    static function Bibliotecas_AtualizaTamanho_Pai($parent=false){
+    static function Bibliotecas_AtualizaTamanho_Pai($parent=false) {
         $Registro = &\Framework\App\Registro::getInstacia();
         if ($parent===false) return false;
-        if (!is_object($parent)){
+        if (!is_object($parent)) {
             $parent = (int) $parent;
             if ($parent<=0) return false;
 
@@ -35,13 +35,13 @@ class biblioteca_Controle extends \Framework\App\Controle
         
         // Soma Tamanho dos Filhos
         $biblioteca = $Registro->_Modelo->db->Sql_Select('Biblioteca', '{sigla}parent = '.$parent);
-        if ($biblioteca!==false){
-            if (is_object($biblioteca)){
+        if ($biblioteca!==false) {
+            if (is_object($biblioteca)) {
                 $biblioteca = Array($biblioteca);
             }
-            foreach($biblioteca as $valor){
+            foreach($biblioteca as $valor) {
                 // Faz Recursividade com os Filhos
-                if ($valor->tipo==1){
+                if ($valor->tipo==1) {
                     $tamanho = $tamanho + self::Bibliotecas_AtualizaTamanho_Pai($valor->id);
                 }
                 $tamanho = $tamanho + $valor->tamanho;

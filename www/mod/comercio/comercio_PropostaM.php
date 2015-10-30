@@ -13,7 +13,7 @@ class comercio_PropostaModelo extends comercio_Modelo
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    public function __construct(){
+    public function __construct() {
         parent::__construct();
     }
     /**
@@ -22,7 +22,7 @@ class comercio_PropostaModelo extends comercio_Modelo
      * @param type $usuarioid
      * @param type $motivoid
      */
-    static function Financeiro_Motivo_Exibir($motivoid){
+    static function Financeiro_Motivo_Exibir($motivoid) {
         $motivoid = (int) $motivoid;
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Modelo = &$Registro->_Modelo;

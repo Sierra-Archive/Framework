@@ -14,7 +14,7 @@ class Engenharia_EquipamentoModelo extends Engenharia_Modelo
      * @version 0.4.2
      * 
      */
-    public function __construct(){
+    public function __construct() {
       parent::__construct();
     }
 }

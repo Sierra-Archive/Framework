@@ -198,7 +198,7 @@ class TTFParser
 				fseek($this->f, $tableOffset+$stringOffset+$offset, SEEK_SET);
 				$s = $this->Read($length);
 				$s = str_replace(chr(0), '', $s);
-				$s = preg_replace('|[ \[\](){}<>/%]|', '', $s);
+				$s = preg_replace('|[ \[\]() {}<>/%]|', '', $s);
 				$this->postScriptName = $s;
 				break;
 			}

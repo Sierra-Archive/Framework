@@ -12,32 +12,32 @@ class Financeiro_Controle extends \Framework\App\Controle
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    public function __construct(){
+    public function __construct() {
         // construct
         parent::__construct();
     } 
     
-    static function Saldo_Carregar(&$Modelo, &$Visual, $usuarioid){
+    static function Saldo_Carregar(&$Modelo, &$Visual, $usuarioid) {
         $Registro = &\Framework\App\Registro::getInstacia();
         $acl = $Registro->_Acl;
         $html = '';
-        if ($usuarioid!=0 && $usuarioid!='' && isset($usuarioid)){
+        if ($usuarioid!=0 && $usuarioid!='' && isset($usuarioid)) {
             // Mostra a Porrra Toda
-            if ($acl->logado_usuario->nome!=''){
+            if ($acl->logado_usuario->nome!='') {
                 $html .= '<b>Nome:</b> '.$acl->logado_usuario->nome;
-            }if ($acl->logado_usuario->email!=''){
+            }if ($acl->logado_usuario->email!='') {
                 $html .= '<br><b>Email:</b> '.$acl->logado_usuario->email;
-            }if ($acl->logado_usuario->cpf!=''){
+            }if ($acl->logado_usuario->cpf!='') {
                 $html .= '<br><b>Cpf:</b> '.$acl->logado_usuario->cpf;
-            }if ($acl->logado_usuario->telefone!=''){
+            }if ($acl->logado_usuario->telefone!='') {
                 $html .= '<br><b>Telefone:</b> '.$acl->logado_usuario->telefone;
-            }if ($acl->logado_usuario->celular!=''){
+            }if ($acl->logado_usuario->celular!='') {
                 $html .= '<br><b>Celular:</b> '.$acl->logado_usuario->celular;
             }
             // Se tiver saldo próprio Mostra
-            if (\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('Financeiro_User_Saldo')){
+            if (\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('Financeiro_User_Saldo')) {
                 $saldo = Financeiro_Modelo::Carregar_Saldo($Modelo, $usuarioid);
-                if ($saldo<0){
+                if ($saldo<0) {
                     $saldo = '<p class="text-error">- R$'.number_format(abs($saldo), 2, ',', '.').'</p>';
                 } else {
                     $saldo = 'R$'.number_format($saldo, 2, ',', '.');
@@ -60,7 +60,7 @@ class Financeiro_Controle extends \Framework\App\Controle
      * @param type $parcela
      * @return boolean
      */
-    public static function FinanceiroInt($motivo,$motivoid,$entrada_motivo,$entrada_motivoid,$saida_motivo,$saida_motivoid,$valor,$vencimento,$parcela='0',$categoria=0,$forma=0,$condicao=0,$pago=0){
+    public static function FinanceiroInt($motivo,$motivoid,$entrada_motivo,$entrada_motivoid,$saida_motivo,$saida_motivoid,$valor,$vencimento,$parcela='0',$categoria=0,$forma=0,$condicao=0,$pago=0) {
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Modelo = &$Registro->_Modelo;
         $financeiro = new \Financeiro_Pagamento_Interno_DAO();
@@ -89,12 +89,12 @@ class Financeiro_Controle extends \Framework\App\Controle
      * @param type $pagamento Se tem permissao pra declarar pago ou se tem que pagar
      * @return type
      */
-    protected function Movimentacao_Interna($where=Array(),$tipo='Mini',$total=false,$endereco='',$pagamento=true){
+    protected function Movimentacao_Interna($where=Array(),$tipo='Mini',$total=false,$endereco='',$pagamento=true) {
         
         $tempo = new \Framework\App\Tempo('Mov Interna');
-        if (is_array($where)){
+        if (is_array($where)) {
             $where['pago']='0';
-        }else if ($where!==''){
+        }else if ($where!=='') {
             $where .= ' AND pago = 0';
         } else {
             $where = 'pago = 0';
@@ -106,11 +106,11 @@ class Financeiro_Controle extends \Framework\App\Controle
         
         // SElect
         $financeiros = $this->_Modelo->db->Sql_Select('Financeiro_Pagamento_Interno',$where,0,'','id,dt_vencimento,motivo,motivoid,valor,num_parcela');
-        if ($financeiros!==false && !empty($financeiros)){
+        if ($financeiros!==false && !empty($financeiros)) {
             if (is_object($financeiros)) $financeiros = Array(0=>$financeiros);
             reset($financeiros);
             $perm_editar = $this->_Registro->_Acl->Get_Permissao_Url('Financeiro/Pagamento/Financeiros_VencimentoEdit');
-            if ($pagamento){
+            if ($pagamento) {
                 $perm_pagar = $this->_Registro->_Acl->Get_Permissao_Url('Financeiro/Pagamento/Financeiros_Pagar');
             } else {
                 $perm_pagar = $this->_Registro->_Acl->Get_Permissao_Url('Financeiro/Usuario/Financeiros_Pagar');
@@ -120,11 +120,11 @@ class Financeiro_Controle extends \Framework\App\Controle
                 //$tabela['#Id'][$i]       = '#'.$valor->id;
                 // Chamar
                 $chamar = $valor->motivo.'_Modelo';
-                if (!class_exists($chamar)){
+                if (!class_exists($chamar)) {
                     $chamar = $valor->motivo.'Modelo';
                 }
-                if (class_exists($chamar)){
-                    if ($valor->num_parcela!='0' && $valor->num_parcela!=0){
+                if (class_exists($chamar)) {
+                    if ($valor->num_parcela!='0' && $valor->num_parcela!=0) {
                         $parcela = $valor->num_parcela.'º parcela';
                     } else {
                         $parcela = 'Entrada/Unica';
@@ -137,7 +137,7 @@ class Financeiro_Controle extends \Framework\App\Controle
                     unset($tempo2);$tabela['Motivo'][$i]                   = $responsavel.' com '.$motivo;
                     $tabela['Valor'][$i]                    = $valor->valor;                    
                     
-                    if ($pagamento){
+                    if ($pagamento) {
                         $tabela['Funções'][$i]              = //$this->_Visual->Tema_Elementos_Btn('Visualizar' ,Array('Visualizar'         ,'Financeiro/Pagamento/Financeiro_View/'.$valor->id.'/'    ,'')).
                                                               $this->_Visual->Tema_Elementos_Btn('Editar'          ,Array('Editar Vencimento'        ,'Financeiro/Pagamento/Financeiros_VencimentoEdit/'.$valor->id.'/'    ,''),$perm_editar).
                                                               $this->_Visual->Tema_Elementos_Btn(
@@ -165,23 +165,23 @@ class Financeiro_Controle extends \Framework\App\Controle
                                                                 $perm_pagar
                                                             );
                     }
-                    if ($total!==false){
+                    if ($total!==false) {
                         $total_qnt = $total_qnt + \Framework\App\Sistema_Funcoes::Tranf_Real_Float($valor->valor);
                     }
                     ++$i;
                 }
             }
         }
-        if ($total!==false){
+        if ($total!==false) {
             return Array($tabela,$i,$total_qnt);
         } else {
             return Array($tabela,$i);
         }
     }
-    protected function Movimentacao_Interna_Pago($where=Array(),$tipo='Mini',$total=false,$endereco=''){
-        if (is_array($where)){
+    protected function Movimentacao_Interna_Pago($where=Array(),$tipo='Mini',$total=false,$endereco='') {
+        if (is_array($where)) {
             $where['pago']='1';
-        }else if ($where!==''){
+        }else if ($where!=='') {
             $where .= ' AND {sigla}pago = 1';
         } else {
             $where = '{sigla}pago = 1';
@@ -193,7 +193,7 @@ class Financeiro_Controle extends \Framework\App\Controle
         $total_qnt = 0;
         
         $financeiros = $this->_Modelo->db->Sql_Select('Financeiro_Pagamento_Interno',$where,0,'','id,dt_vencimento,motivo,motivoid,valor,num_parcela');
-        if ($financeiros!==false && !empty($financeiros)){
+        if ($financeiros!==false && !empty($financeiros)) {
             if (is_object($financeiros)) $financeiros = Array(0=>$financeiros);
             reset($financeiros);
             $perm_visualizar = $this->_Registro->_Acl->Get_Permissao_Url('Financeiro/Pagamento/Financeiro_View');
@@ -204,11 +204,11 @@ class Financeiro_Controle extends \Framework\App\Controle
                 //$tabela['#Id'][$i]       = '#'.$valor->id;
                 // Chamar
                 $chamar = $valor->motivo.'_Modelo';
-                if (!class_exists($chamar)){
+                if (!class_exists($chamar)) {
                     $chamar = $valor->motivo.'Modelo';
                 }
-                if (class_exists($chamar)){
-                    if ($valor->num_parcela!='0' && $valor->num_parcela!=0){
+                if (class_exists($chamar)) {
+                    if ($valor->num_parcela!='0' && $valor->num_parcela!=0) {
                         $parcela = $valor->num_parcela.'º parcela';
                     } else {
                         $parcela = 'Entrada/Unica';
@@ -234,23 +234,23 @@ class Financeiro_Controle extends \Framework\App\Controle
                                                                 ),
                                                                 $perm_naopagar
                                                             );
-                    if ($total!==false){
+                    if ($total!==false) {
                         $total_qnt = $total_qnt + \Framework\App\Sistema_Funcoes::Tranf_Real_Float($valor->valor);
                     }
                     ++$i;
                 }
             }
         }
-        if ($total!==false){
+        if ($total!==false) {
             return Array($tabela,$i,$total_qnt);
         } else {
             return Array($tabela,$i);
         }
     }
-    protected function Movimentacao_Interna_Grafico($titulo='Gráfico', $where=Array(),$tipo='mes',$total=false,$endereco=''){
-        if (is_array($where)){
+    protected function Movimentacao_Interna_Grafico($titulo='Gráfico', $where=Array(),$tipo='mes',$total=false,$endereco='') {
+        if (is_array($where)) {
             $where['pago']='0';
-        }else if ($where!==''){
+        }else if ($where!=='') {
             $where .= ' AND pago = 0';
         } else {
             $where = 'pago = 0';
@@ -260,7 +260,7 @@ class Financeiro_Controle extends \Framework\App\Controle
         $total_qnt = 0;
         $tabela = Array();
         
-        if ($tipo==='mes'){
+        if ($tipo==='mes') {
             $mes = Array(
                 0=>'0.0',
                 1=>'0.0',
@@ -275,7 +275,7 @@ class Financeiro_Controle extends \Framework\App\Controle
                 10=>'0.0',
                 11=>'0.0',
             );
-        }else if ($tipo==='semana'){
+        }else if ($tipo==='semana') {
             $semana = Array(
                 0=>'0.0',
                 1=>'0.0',
@@ -323,7 +323,7 @@ class Financeiro_Controle extends \Framework\App\Controle
         
         // SElect
         $financeiros = $this->_Modelo->db->Sql_Select('Financeiro_Pagamento_Interno',$where,0,'','id,dt_vencimento,motivo,motivoid,valor,num_parcela');
-        if ($financeiros!==false && !empty($financeiros)){
+        if ($financeiros!==false && !empty($financeiros)) {
             if (is_object($financeiros)) $financeiros = Array(0=>$financeiros);
             reset($financeiros);
             foreach ($financeiros as &$valor) {
@@ -331,20 +331,20 @@ class Financeiro_Controle extends \Framework\App\Controle
                 //$tabela['#Id'][$i]       = '#'.$valor->id;
                 // Chamar
                 $chamar = $valor->motivo.'_Modelo';
-                if (!class_exists($chamar)){
+                if (!class_exists($chamar)) {
                     $chamar = $valor->motivo.'Modelo';
                 }
-                if (class_exists($chamar)){
+                if (class_exists($chamar)) {
                     
-                    if ($tipo==='mes'){
+                    if ($tipo==='mes') {
                         $mes[(Framework\App\Sistema_Funcoes::Get_Info_Data('mes',$valor->dt_vencimento)-1)] += \Framework\App\Sistema_Funcoes::Tranf_Real_Float($valor->valor);
-                    }else if ($tipo==='semana'){
+                    }else if ($tipo==='semana') {
                         $semana[Framework\App\Sistema_Funcoes::Get_Info_Data('semana',$valor->dt_vencimento)] += \Framework\App\Sistema_Funcoes::Tranf_Real_Float($valor->valor);
                     } else {
                         $dia[(Framework\App\Sistema_Funcoes::Get_Info_Data('dia',$valor->dt_vencimento)-1)] += \Framework\App\Sistema_Funcoes::Tranf_Real_Float($valor->valor);
                     }
                     
-                    if ($total!==false){
+                    if ($total!==false) {
                         $total_qnt = $total_qnt + \Framework\App\Sistema_Funcoes::Tranf_Real_Float($valor->valor);
                     }
                     ++$i;
@@ -354,7 +354,7 @@ class Financeiro_Controle extends \Framework\App\Controle
         
         # Definimos os dados do gráfico
         
-        if ($tipo==='mes'){
+        if ($tipo==='mes') {
             $dados = array(
                 array('Jan', $mes[0]),
                 array('Fev', $mes[1]),
@@ -369,7 +369,7 @@ class Financeiro_Controle extends \Framework\App\Controle
                 array('Nov', $mes[10]),
                 array('Dez', $mes[11]),
             );
-        }else if ($tipo==='semana'){;
+        }else if ($tipo==='semana') {;
             $dados = array(
                 array('Dom', $semana[0]),
                 array('Seg', $semana[1]),
@@ -381,7 +381,7 @@ class Financeiro_Controle extends \Framework\App\Controle
             );
         } else {
             $dados = Array();
-            foreach($dia as $indice=>$valor){
+            foreach($dia as $indice=>$valor) {
                 $dados[] = array($indice, $valor);
             }
         }
@@ -389,16 +389,16 @@ class Financeiro_Controle extends \Framework\App\Controle
         $html = '<img alt="'.__('Gráfico de Movimentação Interna').' src="'.$this->Gerador_Grafico_Padrao($titulo, 'Mês', 'Valor (R$)', $dados).'" />';
         
         
-        if ($total!==false){
+        if ($total!==false) {
             return Array($html,$i,$total_qnt);
         } else {
             return Array($html,$i);
         }
     }
-    protected function Movimentacao_Interna_Grafico_Pago($titulo='Gráfico', $where=Array(),$tipo='Mini',$total=false,$endereco=''){
-        if (is_array($where)){
+    protected function Movimentacao_Interna_Grafico_Pago($titulo='Gráfico', $where=Array(),$tipo='Mini',$total=false,$endereco='') {
+        if (is_array($where)) {
             $where['pago']='1';
-        }else if ($where!==''){
+        }else if ($where!=='') {
             $where .= ' AND {sigla}pago = 1';
         } else {
             $where = '{sigla}pago = 1';
@@ -411,7 +411,7 @@ class Financeiro_Controle extends \Framework\App\Controle
         
         
         
-        if ($tipo==='mes'){
+        if ($tipo==='mes') {
             $mes = Array(
                 0=>'0.0',
                 1=>'0.0',
@@ -426,7 +426,7 @@ class Financeiro_Controle extends \Framework\App\Controle
                 10=>'0.0',
                 11=>'0.0',
             );
-        }else if ($tipo==='semana'){
+        }else if ($tipo==='semana') {
             $semana = Array(
                 0=>'0.0',
                 1=>'0.0',
@@ -473,7 +473,7 @@ class Financeiro_Controle extends \Framework\App\Controle
         }        
         
         $financeiros = $this->_Modelo->db->Sql_Select('Financeiro_Pagamento_Interno',$where,0,'','id,dt_vencimento,motivo,motivoid,valor,num_parcela');
-        if ($financeiros!==false && !empty($financeiros)){
+        if ($financeiros!==false && !empty($financeiros)) {
             if (is_object($financeiros)) $financeiros = Array(0=>$financeiros);
             reset($financeiros);
             foreach ($financeiros as &$valor) {
@@ -481,19 +481,19 @@ class Financeiro_Controle extends \Framework\App\Controle
                 //$tabela['#Id'][$i]       = '#'.$valor->id;
                 // Chamar
                 $chamar = $valor->motivo.'_Modelo';
-                if (!class_exists($chamar)){
+                if (!class_exists($chamar)) {
                     $chamar = $valor->motivo.'Modelo';
                 }
-                if (class_exists($chamar)){
-                    if ($tipo==='mes'){
+                if (class_exists($chamar)) {
+                    if ($tipo==='mes') {
                         $mes[(Framework\App\Sistema_Funcoes::Get_Info_Data('mes',$valor->dt_vencimento)-1)] += \Framework\App\Sistema_Funcoes::Tranf_Real_Float($valor->valor);
-                    }else if ($tipo==='semana'){
+                    }else if ($tipo==='semana') {
                         $semana[Framework\App\Sistema_Funcoes::Get_Info_Data('semana',$valor->dt_vencimento)] += \Framework\App\Sistema_Funcoes::Tranf_Real_Float($valor->valor);
                     } else {
                         $dia[(Framework\App\Sistema_Funcoes::Get_Info_Data('dia',$valor->dt_vencimento)-1)] += \Framework\App\Sistema_Funcoes::Tranf_Real_Float($valor->valor);
                     }
                     
-                    if ($total!==false){
+                    if ($total!==false) {
                         $total_qnt = $total_qnt + \Framework\App\Sistema_Funcoes::Tranf_Real_Float($valor->valor);
                     }
                     ++$i;
@@ -503,7 +503,7 @@ class Financeiro_Controle extends \Framework\App\Controle
         
         # Definimos os dados do gráfico
         
-        if ($tipo==='mes'){
+        if ($tipo==='mes') {
             $dados = array(
                 array('Jan', $mes[0]),
                 array('Fev', $mes[1]),
@@ -518,7 +518,7 @@ class Financeiro_Controle extends \Framework\App\Controle
                 array('Nov', $mes[10]),
                 array('Dez', $mes[11]),
             );
-        }else if ($tipo==='semana'){;
+        }else if ($tipo==='semana') {;
             $dados = array(
                 array('Dom', $semana[0]),
                 array('Seg', $semana[1]),
@@ -530,14 +530,14 @@ class Financeiro_Controle extends \Framework\App\Controle
             );
         } else {
             $dados = Array();
-            foreach($dia as $indice=>$valor){
+            foreach($dia as $indice=>$valor) {
                 $dados[] = array($indice, $valor);
             }
         }
         $html = '<img alt="'.__('Gráfico de Movimentação Interna').' src="'.$this->Gerador_Grafico_Padrao($titulo, 'Mês', 'Valor (R$)', $dados).'" />';
         
         
-        if ($total!==false){
+        if ($total!==false) {
             return Array($html,$i,$total_qnt);
         } else {
             return Array($html,$i);

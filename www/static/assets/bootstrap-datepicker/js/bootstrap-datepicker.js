@@ -21,7 +21,7 @@
 	
 	// Picker object
 	
-	var Datepicker = function(element, options){
+	var Datepicker = function(element, options) {
 		this.element = $(element);
 		this.format = DPGlobal.parseFormat(options.format||this.element.data('date-format')||'mm/dd/yyyy');
 		this.picker = $(DPGlobal.template)
@@ -40,7 +40,7 @@
 				keyup: $.proxy(this.update, this)
 			});
 		} else {
-			if (this.component){
+			if (this.component) {
 				this.component.on('click', $.proxy(this.show, this));
 			} else {
 				this.element.on('click', $.proxy(this.show, this));
@@ -104,7 +104,7 @@
 			});
 		},
 		
-		hide: function(){
+		hide: function() {
 			this.picker.hide();
 			$(window).off('resize', this.place);
 			this.viewMode = this.startViewMode;
@@ -122,7 +122,7 @@
 		set: function() {
 			var formated = DPGlobal.formatDate(this.date, this.format);
 			if (!this.isInput) {
-				if (this.component){
+				if (this.component) {
 					this.element.find('input').prop('value', formated);
 				}
 				this.element.data('date', formated);
@@ -142,7 +142,7 @@
 			this.fill();
 		},
 		
-		place: function(){
+		place: function() {
 			var offset = this.component ? this.component.offset() : this.element.offset();
 			this.picker.css({
 				top: offset.top + this.height,
@@ -150,7 +150,7 @@
 			});
 		},
 		
-		update: function(newDate){
+		update: function(newDate) {
 			this.date = DPGlobal.parseDate(
 				typeof newDate === 'string' ? newDate : (this.isInput ? this.element.prop('value') : this.element.data('date')),
 				this.format
@@ -159,7 +159,7 @@
 			this.fill();
 		},
 		
-		fillDow: function(){
+		fillDow: function() {
 			var dowCnt = this.weekStart;
 			var html = '<tr>';
 			while (dowCnt < this.weekStart + 7) {
@@ -169,7 +169,7 @@
 			this.picker.find('.datepicker-days thead').append(html);
 		},
 		
-		fillMonths: function(){
+		fillMonths: function() {
 			var html = '';
 			var i = 0
 			while (i < 12) {
@@ -284,7 +284,7 @@
 						this.set();
 						break;
 					case 'td':
-						if (target.is('.day')){
+						if (target.is('.day')) {
 							var day = parseInt(target.text(), 10)||1;
 							var month = this.viewDate.getMonth();
 							if (target.is('.old')) {
@@ -308,7 +308,7 @@
 			}
 		},
 		
-		mousedown: function(e){
+		mousedown: function(e) {
 			e.stopPropagation();
 			e.preventDefault();
 		},
@@ -367,10 +367,10 @@
 		getDaysInMonth: function (year, month) {
 			return [31, (DPGlobal.isLeapYear(year) ? 29 : 28), 31, 30, 31, 30, 31, 31, 30, 31, 30, 31][month]
 		},
-		parseFormat: function(format){
+		parseFormat: function(format) {
 			var separator = format.match(/[.\/\-\s].*?/),
 				parts = format.split(/\W+/);
-			if (!separator || !parts || parts.length === 0){
+			if (!separator || !parts || parts.length === 0) {
 				throw new Error("Invalid date format.");
 			}
 			return {separator: separator, parts: parts};
@@ -406,7 +406,7 @@
 			}
 			return date;
 		},
-		formatDate: function(date, format){
+		formatDate: function(date, format) {
 			var val = {
 				d: date.getDate(),
 				m: date.getMonth() + 1,

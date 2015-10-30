@@ -137,7 +137,7 @@
             this.$element.trigger('shown');
         }
 
-        , hideWidget: function(){
+        , hideWidget: function() {
             this.$element.trigger('hide');
 
             if (this.template === 'modal') {
@@ -376,7 +376,7 @@
             this.updateElement();
         }
 
-        , setDefaultTime: function(defaultTime){
+        , setDefaultTime: function(defaultTime) {
             if (defaultTime) {
                 if (defaultTime === 'current') {
                     var dTime = new Date();

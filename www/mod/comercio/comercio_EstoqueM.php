@@ -13,7 +13,7 @@ class comercio_EstoqueModelo extends comercio_Modelo
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    public function __construct(){
+    public function __construct() {
         parent::__construct();
     }
     /**
@@ -22,13 +22,13 @@ class comercio_EstoqueModelo extends comercio_Modelo
      * @param type $produtoid
      * @param type $motivoid
      */
-    static function Estoque_Exibir($produtoid,$motivoid){
+    static function Estoque_Exibir($produtoid,$motivoid) {
         $produtoid = (int) $produtoid;
         $motivoid = (int) $motivoid;
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Modelo = &$Registro->_Modelo;
         $retirada = $_Modelo->db->Sql_Select('Comercio_Fornecedor_Material',Array('id'=>$motivoid),1);
-        if ($retirada===false){
+        if ($retirada===false) {
             return Array('Entrada Não existente','Não existe');
         }
         return Array('Entrada de Nota Fiscal','Fornecedor '.$retirada->fornecedor2);
@@ -39,21 +39,21 @@ class comercio_EstoqueModelo extends comercio_Modelo
      * @param type $usuarioid
      * @param type $motivoid
      */
-    static function Financeiro_Motivo_Exibir($motivoid){
+    static function Financeiro_Motivo_Exibir($motivoid) {
         $motivoid = (int) $motivoid;
-        if ($motivoid===0){
+        if ($motivoid===0) {
             return Array('Compra não existe no banco de dados.','Não existe');
         }
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Modelo = &$Registro->_Modelo;
         $material = $_Modelo->db->Sql_Select('Comercio_Fornecedor_Material',Array('id'=>$motivoid),1);
-        if ($material===false){
+        if ($material===false) {
             return Array('Compra não existe no banco de dados.','Não existe');
         }
         return Array('Compra de Nota Fiscal '.$material->documento,'Fornecedor '.$material->fornecedor2);
     }
     
-    public function Material_Entrada(){
+    public function Material_Entrada() {
         
         // Table's primary key
         $primaryKey = 'id';
@@ -62,16 +62,16 @@ class comercio_EstoqueModelo extends comercio_Modelo
         $perm_editar = $this->_Registro->_Acl->Get_Permissao_Url('comercio/Estoque/Material_Entrada_Edit');
         $perm_del = $this->_Registro->_Acl->Get_Permissao_Url('comercio/Estoque/Material_Entrada_Del');
         
-        if ($perm_editar && $perm_del){
+        if ($perm_editar && $perm_del) {
             $funcao = function( $d, $row ) {
                 return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Entrada de NFE'        ,'comercio/Estoque/Material_Entrada_Edit/'.$d.'/'    ,''),true).
                        Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Entrada de NFE'       ,'comercio/Estoque/Material_Entrada_Del/'.$d.'/'     ,'Deseja realmente deletar essa Entrada de NFE ?'),true);
             };
-        }else if ($perm_editar){
+        }else if ($perm_editar) {
             $funcao = function( $d, $row ) {
                 return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Entrada de NFE'        ,'comercio/Estoque/Material_Entrada_Edit/'.$d.'/'    ,''),true);
             };
-        }else if ($perm_del){
+        }else if ($perm_del) {
             $funcao = function( $d, $row ) {
                 return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Entrada de NFE'       ,'comercio/Estoque/Material_Entrada_Del/'.$d.'/'     ,'Deseja realmente deletar essa Entrada de NFE ?'),true);
             };
@@ -85,9 +85,9 @@ class comercio_EstoqueModelo extends comercio_Modelo
         // The `db` parameter represents the column name in the database, while the `dt`
         // parameter represents the DataTables column identifier. In this case simple
         // indexes
-              /*  if ($valor->documento==0){
+              /*  if ($valor->documento==0) {
                     $documento = __('Nfe');
-                }else if ($valor->documento==1){
+                }else if ($valor->documento==1) {
                     $documento = __('Boleto');
                 } else {
                     $documento = __('Recibo');
@@ -104,9 +104,9 @@ class comercio_EstoqueModelo extends comercio_Modelo
             array( 'db' => 'numero', 'dt' => 0 ),
             array( 'db' => 'documento',  'dt' => 1 ,
                 'formatter' => function( $d, $row ) {
-                    if ($d==0){
+                    if ($d==0) {
                         return 'Nfe';
-                    }else if ($d==1){
+                    }else if ($d==1) {
                         return 'Boleto';
                     } else {
                         return 'Recibo';

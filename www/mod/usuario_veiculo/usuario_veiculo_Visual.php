@@ -12,7 +12,7 @@ class usuario_veiculo_Visual extends \Framework\App\Visual
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function __construct(){
+    public function __construct() {
         parent::__construct();
     }
     /**
@@ -23,13 +23,13 @@ class usuario_veiculo_Visual extends \Framework\App\Visual
      * @param type $form
      * @return type
      */
-    static function Marcas_ShowSelect(&$array,&$form,$padrao=0){
+    static function Marcas_ShowSelect(&$array,&$form,$padrao=0) {
     	$i = 0;
         
     	if($padrao==0) $form->Select_Opcao('Selecione uma Marca',0,1);
         else           $form->Select_Opcao('Selecione uma Marca',0,0);
             
-    	if(!empty($array)){
+    	if(!empty($array)) {
             reset($array);
             foreach ($array as $indice=>&$valor) {
                 if($padrao==$array[$indice]['id']) $selecionado = 1;
@@ -46,11 +46,11 @@ class usuario_veiculo_Visual extends \Framework\App\Visual
      * @param type $array
      * @return type
      */
-    static function Marcas_ShowSelectAjax(&$array){
+    static function Marcas_ShowSelectAjax(&$array) {
     	
     	$html = '';
     	$html .= \Framework\Classes\Form::Select_Opcao_Stat('Selecione uma Marca',0,0);
-    	if(!empty($array)){
+    	if(!empty($array)) {
     		reset($array);
     		foreach ($array as $indice=>&$valor) {
     			$html .= \Framework\Classes\Form::Select_Opcao_Stat($array[$indice]['nome'],$array[$indice]['id'],0);

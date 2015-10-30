@@ -44,7 +44,7 @@ class PagSeguroRefundService
         PagSeguroCredentials $credentials,
         $transactionCode,
         $refundValue = null
-    ){
+    ) {
 
         LogPagSeguro::info("PagSeguroRefundService.Register(".$transactionCode.") - begin");
         $connectionData = new PagSeguroConnectionData($credentials, self::SERVICE_NAME);

@@ -1,7 +1,7 @@
 <?php
 class predial_ApartControle extends predial_Controle
 {
-    public function __construct(){
+    public function __construct() {
         parent::__construct();
     }
     /**
@@ -17,22 +17,22 @@ class predial_ApartControle extends predial_Controle
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    public function Main(){
+    public function Main() {
         \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'predial/Apart/Aparts');
         return false;
     }
-    static function Endereco_Apart($true=true){
+    static function Endereco_Apart($true=true) {
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
         $titulo = __('Apartamentos');
         $link = 'predial/Apart/Aparts';
-        if ($true===true){
+        if ($true===true) {
             $_Controle->Tema_Endereco($titulo,$link);
         } else {
             $_Controle->Tema_Endereco($titulo);
         }
     }
-    static function Aparts_Tabela(&$apartamentos){
+    static function Aparts_Tabela(&$apartamentos) {
         $Registro   = &\Framework\App\Registro::getInstacia();
         $Visual     = &$Registro->_Visual;
         $tabela = Array();
@@ -42,7 +42,7 @@ class predial_ApartControle extends predial_Controle
         foreach ($apartamentos as &$valor) {
             $tabela['Bloco'][$i]            = $valor->bloco2;
             $tabela['Número'][$i]           = $valor->num;
-            if ($valor->morador!=0 && $valor->morador2!=NULL){
+            if ($valor->morador!=0 && $valor->morador2!=NULL) {
                 $tabela['Morador'][$i]          = $valor->morador2;
             } else {
                 $tabela['Morador'][$i]          = '<p class="text-error">Não Registrado</p>';
@@ -58,7 +58,7 @@ class predial_ApartControle extends predial_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Aparts(){
+    public function Aparts() {
         self::Endereco_Apart(false);
         $i = 0;
         // Botao Add
@@ -77,7 +77,7 @@ class predial_ApartControle extends predial_Controle
         )));
         // Busca
         $apartamentos = $this->_Modelo->db->Sql_Select('Predial_Bloco_Apart');
-        if ($apartamentos!==false && !empty($apartamentos)){
+        if ($apartamentos!==false && !empty($apartamentos)) {
             list($tabela,$i) = self::Aparts_Tabela($apartamentos);
             $this->_Visual->Show_Tabela_DataTable($tabela);
             unset($tabela);
@@ -95,7 +95,7 @@ class predial_ApartControle extends predial_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Aparts_Add(){
+    public function Aparts_Add() {
         self::Endereco_Apart();
         // Carrega Config
         $titulo1    = __('Adicionar Apartamento');
@@ -113,7 +113,7 @@ class predial_ApartControle extends predial_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Aparts_Add2(){
+    public function Aparts_Add2() {
         $titulo     = __('Apartamento Adicionado com Sucesso');
         $dao        = 'Predial_Bloco_Apart';
         $funcao     = '$this->Aparts();';
@@ -128,7 +128,7 @@ class predial_ApartControle extends predial_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Aparts_Edit($id){
+    public function Aparts_Edit($id) {
         self::Endereco_Apart();
         // Carrega Config
         $titulo1    = 'Editar Apartamentoamento (#'.$id.')';
@@ -147,7 +147,7 @@ class predial_ApartControle extends predial_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Aparts_Edit2($id){
+    public function Aparts_Edit2($id) {
         $titulo     = __('Apartamento Editado com Sucesso');
         $dao        = Array('Predial_Bloco_Apart',$id);
         $funcao     = '$this->Aparts();';
@@ -163,7 +163,7 @@ class predial_ApartControle extends predial_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Aparts_Del($id){
+    public function Aparts_Del($id) {
         
         
     	$id = (int) $id;
@@ -171,7 +171,7 @@ class predial_ApartControle extends predial_Controle
         $apartamento = $this->_Modelo->db->Sql_Select('Predial_Bloco_Apart', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($apartamento);
         // Mensagem
-    	if ($sucesso===true){
+    	if ($sucesso===true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),

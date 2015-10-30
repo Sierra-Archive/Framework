@@ -2,7 +2,7 @@
 
 class _Sistema_FilialControle extends _Sistema_Controle
 {
-    public function __construct(){
+    public function __construct() {
         parent::__construct();
     }
     /**
@@ -10,10 +10,10 @@ class _Sistema_FilialControle extends _Sistema_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Main(){
+    public function Main() {
         return false;
     }
-    public function FilialWidgets(){
+    public function FilialWidgets() {
         // Filial
         $filial_qnt = $this->_Modelo->db->Sql_Contar('Sistema_Filial');
         
@@ -33,7 +33,7 @@ class _Sistema_FilialControle extends _Sistema_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Filiais($tipobloco='Unico'){
+    public function Filiais($tipobloco='Unico') {
         $this->Endereco_Filial(false);
         
         $tabela_colunas[] = __('Id');
@@ -45,9 +45,9 @@ class _Sistema_FilialControle extends _Sistema_Controle
         $this->_Visual->Show_Tabela_DataTable_Massiva($tabela_colunas,'_Sistema/Filial/Filiais');
 
         $titulo = __('Listagem de Filiais').' (<span id="DataTable_Contador">0</span>)';
-        if ($tipobloco==='Unico'){
+        if ($tipobloco==='Unico') {
             $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',10,Array("link"=>"_Sistema/Filial/Filiais_Add",'icon'=>'add','nome'=>__('Adicionar Filial')));
-        }else if ($tipobloco==='Maior'){
+        }else if ($tipobloco==='Maior') {
             $this->_Visual->Bloco_Maior_CriaJanela($titulo,'',10,Array("link"=>"_Sistema/Filial/Filiais_Add",'icon'=>'add','nome'=>__('Adicionar Filial')));
         } else {
             $this->_Visual->Bloco_Menor_CriaJanela($titulo,'',10,Array("link"=>"_Sistema/Filial/Filiais_Add",'icon'=>'add','nome'=>__('Adicionar Filial')));
@@ -60,7 +60,7 @@ class _Sistema_FilialControle extends _Sistema_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Filiais_Add(){
+    public function Filiais_Add() {
         $this->Endereco_Filial();
         // Carrega Filial
         $titulo1    = __('Adicionar Filial');
@@ -78,7 +78,7 @@ class _Sistema_FilialControle extends _Sistema_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Filiais_Add2(){
+    public function Filiais_Add2() {
         $titulo     = __('Filial Adicionada com Sucesso');
         $dao        = 'Sistema_Filial';
         $funcao     = '$this->Filiais();';
@@ -93,7 +93,7 @@ class _Sistema_FilialControle extends _Sistema_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Filiais_Edit($id){
+    public function Filiais_Edit($id) {
         $this->Endereco_Filial();
         // Carrega Filial
         $titulo1    = __('Editar Filial').' (#'.$id.')';
@@ -112,7 +112,7 @@ class _Sistema_FilialControle extends _Sistema_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Filiais_Edit2($id){
+    public function Filiais_Edit2($id) {
         $id = (int) $id;
         $titulo     = __('Filial Alterada com Sucesso');
         $dao        = Array('Sistema_Filial',$id);
@@ -129,7 +129,7 @@ class _Sistema_FilialControle extends _Sistema_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Filiais_Del($id){
+    public function Filiais_Del($id) {
         
         $id         = \Framework\App\Conexao::anti_injection($id);
         
@@ -137,7 +137,7 @@ class _Sistema_FilialControle extends _Sistema_Controle
         $filial    =  $this->_Modelo->db->Sql_Select('Sistema_Filial', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($filial);
         // Mensagem
-    	if ($sucesso===true){
+    	if ($sucesso===true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
@@ -164,10 +164,10 @@ class _Sistema_FilialControle extends _Sistema_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    function Endereco_Filial($true=true){
+    function Endereco_Filial($true=true) {
         $titulo = __('Filiais do Sistema');
         $link = '_Sistema/Filial/Filiais';
-        if ($true===true){
+        if ($true===true) {
             $this->Tema_Endereco($titulo,$link);
         } else {
             $this->Tema_Endereco($titulo);

@@ -1,10 +1,10 @@
 <?php
-function itsbrain_config(){
+function itsbrain_config() {
     return Array(
         'plugins'           => Array(
             'abas_inverter'         => false,
             'abas_id'               => 'tabs-',
-            'abas_ativar'           => function ($id){
+            'abas_ativar'           => function ($id) {
                 $id = (int) $id;
                 return '$( ".tabs" ).tabs( "option", "active", '.($id-1).' );';
             },

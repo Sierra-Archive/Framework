@@ -4,7 +4,7 @@
 <!--[if !IE]><!--> <html lang="pt-br"> <!--<![endif]-->
 <!-- BEGIN HEAD -->
 <head>
-    <title><?php echo SISTEMA_NOME; ?> - <?php if($params['site_titulo']==''){ echo __('Sem Titulo'); } else { echo $params['site_titulo']; } ?></title>
+    <title><?php echo SISTEMA_NOME; ?> - <?php if($params['site_titulo']=='') { echo __('Sem Titulo'); } else { echo $params['site_titulo']; } ?></title>
     <meta http-equiv="Content-Type" content="text/html; charset=<?php echo CONFIG_PADRAO_TECLADO; ?>"/> 
     <link rel="icon" type="image/png" href="<?php echo ARQ_URL; ?>favicon.ico"/>
     <meta name="description" content="">
@@ -36,7 +36,7 @@
 <!-- END HEAD -->
 <!-- BEGIN BODY -->
 <body class="bg-login printable" style="background: url(<?php echo ARQ_URL; ?>_Sistema/fundo.jpg)no-repeat fixed;">
-    <?php if(isset( $params['mensagem'] ) ){ echo $params['mensagem']; } ?>
+    <?php if(isset( $params['mensagem'] ) ) { echo $params['mensagem']; } ?>
     <form action="<?php echo URL_PATH.SISTEMA_DIR_INT; ?>" method="POST">
 
 

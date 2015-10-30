@@ -84,7 +84,7 @@ abstract class Dao implements \Framework\DaoInterface
      * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
     public function __construct() {
-        if (static::$objetocarregado===false){
+        if (static::$objetocarregado===false) {
             $this->Get_CarregaMYSQL();
             static::$mysql_colunas      = $this->Gerar_Colunas();
             static::$objetocarregado    = true;
@@ -98,7 +98,7 @@ abstract class Dao implements \Framework\DaoInterface
      * @version 0.4.2
      * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
-    public static function Get_Trigger(){
+    public static function Get_Trigger() {
         return Array();
     }
     /**
@@ -108,7 +108,7 @@ abstract class Dao implements \Framework\DaoInterface
      * @version 0.4.2
      * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
-    public static function Get_Engine(){
+    public static function Get_Engine() {
         return 'InnoDB';
     }
     /**
@@ -118,7 +118,7 @@ abstract class Dao implements \Framework\DaoInterface
      * @version 0.4.2
      * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
-    public static function Get_Charset(){
+    public static function Get_Charset() {
         return 'latin1';
     }
     /**
@@ -128,7 +128,7 @@ abstract class Dao implements \Framework\DaoInterface
      * @version 0.4.2
      * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
-    public static function Get_Autoadd(){
+    public static function Get_Autoadd() {
         return 1;
     }
     /**
@@ -138,8 +138,8 @@ abstract class Dao implements \Framework\DaoInterface
      * @version 0.4.2
      * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
-    final public static function Get_Colunas(){
-        if (static::$mysql_colunas===false){
+    final public static function Get_Colunas() {
+        if (static::$mysql_colunas===false) {
             $class = get_called_class();
             static::$mysql_colunas = $class::Gerar_Colunas();
         }
@@ -157,7 +157,7 @@ abstract class Dao implements \Framework\DaoInterface
      * @version 0.4.2
      * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
-    public static function Get_LinkTable(){
+    public static function Get_LinkTable() {
         return false;
     }
     /**
@@ -169,7 +169,7 @@ abstract class Dao implements \Framework\DaoInterface
      * @version 0.4.2
      * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
-    public static function Get_StaticTable(){
+    public static function Get_StaticTable() {
         return false;
     }
     /**
@@ -180,8 +180,8 @@ abstract class Dao implements \Framework\DaoInterface
      * @version 0.4.2
      * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
-    public function Atributo_Del($atributo){
-        if (isset($this->$atributo)){
+    public function Atributo_Del($atributo) {
+        if (isset($this->$atributo)) {
             unset($this->$atributo);
             return true;
         }
@@ -194,7 +194,7 @@ abstract class Dao implements \Framework\DaoInterface
      * @version 0.4.2
      * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
-    final public function Get_CarregaMYSQL(){
+    final public function Get_CarregaMYSQL() {
         $campos         = $this->Get_Colunas();
         $inside         = &static::$mysql_inside;
         $outside        = &static::$mysql_outside;
@@ -222,12 +222,12 @@ abstract class Dao implements \Framework\DaoInterface
             $mysql_titulo  = &$current['mysql_titulo'];
             
             // Passa valores
-            if ($mysql_inside === false || $mysql_inside == ''){
+            if ($mysql_inside === false || $mysql_inside == '') {
                 $inside[$mysql_titulo] = false;
             } else {
                 $inside[$mysql_titulo] = $mysql_inside;
             }
-            if ($mysql_outside === false || $mysql_outside == ''){
+            if ($mysql_outside === false || $mysql_outside == '') {
                 $outside[$mysql_titulo] = false;
             } else {
                 $outside[$mysql_titulo] = $mysql_outside;
@@ -243,12 +243,12 @@ abstract class Dao implements \Framework\DaoInterface
      * @version 0.4.2
      * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
-    final public function Get_Primaria(){
+    final public function Get_Primaria() {
         $campos = $this->Get_Colunas();
         $primarias = Array();
         $contador = 0;
-        foreach($campos as &$valor){
-            if (isset($valor['mysql_primary']) && $valor['mysql_primary'] === true){
+        foreach($campos as &$valor) {
+            if (isset($valor['mysql_primary']) && $valor['mysql_primary'] === true) {
                 $primarias[$contador] = $valor['mysql_titulo'];
                 ++$contador;
             }
@@ -263,17 +263,17 @@ abstract class Dao implements \Framework\DaoInterface
      * @version 0.4.2
      * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
-    final public function Get_Indice_Unico(){
+    final public function Get_Indice_Unico() {
         $campos = $this->Get_Colunas();
         $indice_unico   = Array(); 
         $i_u            = Array(); // contagem de indices unicos
-        foreach($campos as &$valor){
+        foreach($campos as &$valor) {
             // Verifica Indices Unicos
-            if (isset($valor['mysql_indice_unico']) && $valor['mysql_indice_unico']!==false && is_string($valor['mysql_indice_unico'])){
-                if (isset($i_u[$valor['mysql_indice_unico']]) && is_int($i_u[$valor['mysql_indice_unico']]) && $i_u[$valor['mysql_indice_unico']]>0){
+            if (isset($valor['mysql_indice_unico']) && $valor['mysql_indice_unico']!==false && is_string($valor['mysql_indice_unico'])) {
+                if (isset($i_u[$valor['mysql_indice_unico']]) && is_int($i_u[$valor['mysql_indice_unico']]) && $i_u[$valor['mysql_indice_unico']]>0) {
                     $indice_unico[$valor['mysql_indice_unico']] .= ',';
                 } else {
-                    if (static::Get_StaticTable()===false){
+                    if (static::Get_StaticTable()===false) {
                         $indice_unico[$valor['mysql_indice_unico']] = (string)  '`servidor`,'  ;
                     } else {
                         $indice_unico[$valor['mysql_indice_unico']] = (string)  ''  ;
@@ -294,13 +294,13 @@ abstract class Dao implements \Framework\DaoInterface
      * @version 0.4.2
      * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
-    final public function Get_Extrangeiras(){
+    final public function Get_Extrangeiras() {
         $campos = $this->Get_Colunas();
         $extrangeiras = Array();
         reset($campos);
         while (key($campos) !== null) {
             $current = current($campos);
-            if (isset($current['mysql_estrangeira']) && $current['mysql_estrangeira']== true){
+            if (isset($current['mysql_estrangeira']) && $current['mysql_estrangeira']== true) {
                 $extrangeiras[] = Array(
                     'titulo'        =>  $current['mysql_titulo'],
                     'conect'        =>  $current['mysql_estrangeira']
@@ -318,13 +318,13 @@ abstract class Dao implements \Framework\DaoInterface
      * @version 0.4.2
      * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
-    final public function Get_Extrangeiras_ComExterna(){
+    final public function Get_Extrangeiras_ComExterna() {
         $campos = $this->Get_Colunas();
         $extrangeiras = Array();
         reset($campos);
         while (key($campos) !== null) {
             $current = current($campos);
-            if (isset($current['mysql_estrangeira']) && $current['mysql_estrangeira']!== false){
+            if (isset($current['mysql_estrangeira']) && $current['mysql_estrangeira']!== false) {
                 $extrangeiras[$current['mysql_titulo']] = $current['mysql_estrangeira'];
             }
             next($campos);
@@ -352,7 +352,7 @@ abstract class Dao implements \Framework\DaoInterface
      * @version 0.4.2
      * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
-    final public function __set($nome,$resultado){
+    final public function __set($nome,$resultado) {
         $this->$nome = $resultado;
     }
     /**
@@ -363,8 +363,8 @@ abstract class Dao implements \Framework\DaoInterface
      * @version 0.4.2
      * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
-    final public function __get($nome){
-        if (!isset($this->$nome)){
+    final public function __get($nome) {
+        if (!isset($this->$nome)) {
             return false;
         }
         return $this->$nome;
@@ -382,16 +382,16 @@ abstract class Dao implements \Framework\DaoInterface
      * @version 0.4.2
      * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
-    final public function bd_get($nome,$resultado){
+    final public function bd_get($nome,$resultado) {
         // Pega as variaveis static
         $aceita_config = &static::$aceita_config;
         $campos_naoaceita_config = &static::$campos_naoaceita_config;
         
         // Caso nao exista retorna direto
-        if (static::$mysql_outside===false){
+        if (static::$mysql_outside===false) {
             $this->Get_CarregaMYSQL();
         }
-        if (!isset(static::$mysql_outside[$nome])){
+        if (!isset(static::$mysql_outside[$nome])) {
             $this->$nome = $resultado;
             return true;
         }
@@ -402,7 +402,7 @@ abstract class Dao implements \Framework\DaoInterface
         
         $funcao = static::$mysql_outside[$nome];
         // Verifica se nao tem funcao ou é nula, caso contrario à executa
-        if ($funcao===false || $funcao=='' || $funcao=='{valor}'){
+        if ($funcao===false || $funcao=='' || $funcao=='{valor}') {
             $this->$nome = $resultado;
         } else {
             $funcao = str_replace(Array('{valor}'), Array('$this->$nome'), $funcao);
@@ -420,39 +420,39 @@ abstract class Dao implements \Framework\DaoInterface
      * @version 0.4.2
      * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
-    final public function bd_set($nome, $novo_valor=''){
+    final public function bd_set($nome, $novo_valor='') {
         // Pega as variaveis static
         $aceita_config = &static::$aceita_config;
         $campos_naoaceita_config = &static::$campos_naoaceita_config;
         
         // Se tiver novo valor, anula o anterior
-        if ($novo_valor!==''){
+        if ($novo_valor!=='') {
             $this->$nome = $novo_valor;
         }
         // Resutlado
-        if (!isset($this->$nome)){
+        if (!isset($this->$nome)) {
             return false;
         }
         // Se for inserir array no banco de dados, serializa
-        if (is_array($this->$nome)){
+        if (is_array($this->$nome)) {
             return serialize($this->$nome);
         }
         $this->$nome = (SQL_MAIUSCULO && $aceita_config && ($campos_naoaceita_config===false || !in_array($nome, $campos_naoaceita_config)))?mb_strtoupper(($this->$nome), 'UTF-8'):$this->$nome;
         
         
         // Caso nao exista retorna direto
-        if (static::$mysql_inside===false){
+        if (static::$mysql_inside===false) {
             $this->Get_CarregaMYSQL();
         }
-        if (!isset(static::$mysql_inside[$nome])){
+        if (!isset(static::$mysql_inside[$nome])) {
             return $this->$nome;
         }
         $funcao = static::$mysql_inside[$nome];  
-        if (!$funcao){
+        if (!$funcao) {
             return $this->$nome;
         } else {
             $funcao = str_replace('{valor}', '$this->$nome', $funcao);
-            if ($funcao==''){
+            if ($funcao=='') {
                 return $this->$nome;
             }
             else{
@@ -467,7 +467,7 @@ abstract class Dao implements \Framework\DaoInterface
      * @version 0.4.2
      * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
-    final public function Get_Object_Vars(){        
+    final public function Get_Object_Vars() {        
         return get_object_vars($this);
     }
     /**
@@ -477,7 +477,7 @@ abstract class Dao implements \Framework\DaoInterface
      * @version 0.4.2
      * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
-    final public function Get_Object_Vars_Public(){
+    final public function Get_Object_Vars_Public() {
         $var = get_object_vars($this);
         
         // Retira os que não podem ser editados

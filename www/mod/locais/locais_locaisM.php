@@ -13,7 +13,7 @@ class locais_locaisModelo extends locais_Modelo
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    public function __construct(){
+    public function __construct() {
         parent::__construct();
     }
     /**
@@ -32,11 +32,11 @@ class locais_locaisModelo extends locais_Modelo
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    static function local_retorna(&$Modelo, &$array){
+    static function local_retorna(&$Modelo, &$array) {
         global $tabsql;
         $i = 0;
         $sql = $Modelo->db->query('SELECT id, nome FROM '.MYSQL_SIS_LOCAIS.' WHERE deletado!=1');
-        while($campo = $sql->fetch_object()){
+        while($campo = $sql->fetch_object()) {
             $array[$i]['id'] = $campo->id;
             $array[$i]['nome'] = $campo->nome;
             ++$i;

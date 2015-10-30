@@ -1,7 +1,7 @@
 <?php
 class Locomocao_Controle extends \Framework\App\Controle
 {
-    public function __construct(){
+    public function __construct() {
         // construct
         parent::__construct();
     } 
@@ -26,7 +26,7 @@ class Locomocao_Controle extends \Framework\App\Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public static function Retorna_Distancia($origem_pais,$origem_estado,$origem_cidade,$origem_bairro,$origem_endereco,$destino_pais,$destino_estado,$destino_cidade,$destino_bairro,$destino_endereco,$mode = 'driving',$language = 'pt-BR',$sensor = false){
+    public static function Retorna_Distancia($origem_pais,$origem_estado,$origem_cidade,$origem_bairro,$origem_endereco,$destino_pais,$destino_estado,$destino_cidade,$destino_bairro,$destino_endereco,$mode = 'driving',$language = 'pt-BR',$sensor = false) {
         
         // Trata Endereço
         if ($origem_endereco!=='') $origem_endereco .= ', ';
@@ -40,7 +40,7 @@ class Locomocao_Controle extends \Framework\App\Controle
         $xml = simplexml_load_file("http://maps.googleapis.com/maps/api/distancematrix/xml?origins=".$origem."&destinations=".$destino."&mode=".$mode."&language=".$language."&sensor=false");
 
         // Trata Resposta
-        if ($xml->row->element->status!='OK'){
+        if ($xml->row->element->status!='OK') {
             return false;
         }
         return Array(

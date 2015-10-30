@@ -2,15 +2,15 @@
 
 class Transporte_FornecedorControle extends Transporte_Controle
 {
-    public function __construct(){
+    public function __construct() {
         parent::__construct();
     }
-    static function Endereco_Fornecedor($true=true){
+    static function Endereco_Fornecedor($true=true) {
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
         $titulo = __('Fornecedores');
         $link = 'Transporte/Fornecedor/Fornecedores';
-        if ($true===true){
+        if ($true===true) {
             $_Controle->Tema_Endereco($titulo,$link);
         } else {
             $_Controle->Tema_Endereco($titulo);
@@ -21,11 +21,11 @@ class Transporte_FornecedorControle extends Transporte_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Main(){
+    public function Main() {
         \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'Transporte/Fornecedor/Fornecedores');
         return false;
     }
-    static function Fornecedores_Tabela(&$fornecedor){
+    static function Fornecedores_Tabela(&$fornecedor) {
         $Registro   = &\Framework\App\Registro::getInstacia();
         $Visual     = &$Registro->_Visual;
         $tabela = Array();
@@ -43,7 +43,7 @@ class Transporte_FornecedorControle extends Transporte_Controle
         }
         return Array($tabela,$i);
     }
-    public function Visualizar($id,$export=false){
+    public function Visualizar($id,$export=false) {
         
         
         $fornecedor = $this->_Modelo->db->Sql_Select('Transporte_Fornecedor','TF.id=\''.((int) $id).'\'',1);
@@ -56,15 +56,15 @@ class Transporte_FornecedorControle extends Transporte_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Fornecedores($export=false){
+    public function Fornecedores($export=false) {
         $i = 0;
         self::Endereco_Fornecedor(false);
         $fornecedor = $this->_Modelo->db->Sql_Select('Transporte_Fornecedor');
         if (is_object($fornecedor)) $fornecedor = Array(0=>$fornecedor);
-        if ($fornecedor!==false && !empty($fornecedor)){
+        if ($fornecedor!==false && !empty($fornecedor)) {
             list($tabela,$i) = self::Fornecedores_Tabela($fornecedor);
             // SE exportar ou mostra em tabela
-            if ($export!==false){
+            if ($export!==false) {
                 self::Export_Todos($export,$tabela, 'Fornecedores');
             } else {
                 $this->_Visual->Show_Tabela_DataTable(
@@ -81,7 +81,7 @@ class Transporte_FornecedorControle extends Transporte_Controle
             }
             unset($tabela);
         } else {
-            if ($export!==false){
+            if ($export!==false) {
                 $mensagem = __('Nenhum Fornecedor Cadastrado para exportar');
             } else {
                 $mensagem = __('Nenhum Fornecedor Cadastrado');
@@ -98,27 +98,27 @@ class Transporte_FornecedorControle extends Transporte_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Painel(){
+    public function Painel() {
         return true;
     }
-    static function Painel_Fornecedor($camada,$retornar=true){
+    static function Painel_Fornecedor($camada,$retornar=true) {
         $existe = false;
         if ($retornar==='false') $retornar = false;
         // Verifica se Existe Conexao, se nao tiver abre o adicionar conexao, se nao, abre a pasta!
         $Registro = &\Framework\App\Registro::getInstacia();
         $resultado = $Registro->_Modelo->db->Sql_Select('Transporte_Fornecedor','{sigla}usuario=\''.$Registro->_Acl->Usuario_GetID().'\'',1);
-        if (is_object($resultado)){
+        if (is_object($resultado)) {
             $existe = true;
         }
         
         // Dependendo se Existir Cria Formulario ou Lista arquivos
-        if ($existe===false){
+        if ($existe===false) {
             $html = '<b>Ainda faltam insformações sobre o seu Fornecedor</b><br>'.self::Painel_Fornecedor_Add($camada);
         } else {
             $html = __('Painel');
         }
         
-        if ($retornar===true){
+        if ($retornar===true) {
             return $html;
         } else {
             $conteudo = array(
@@ -156,7 +156,7 @@ class Transporte_FornecedorControle extends Transporte_Controle
                 ));*/
         return true;
     }
-    static protected function Painel_Fornecedor_Add($camada){
+    static protected function Painel_Fornecedor_Add($camada) {
         // Carrega Config
         $titulo1    = __('Salvar Dados');
         $titulo2    = __('Salvar Dados');
@@ -169,9 +169,9 @@ class Transporte_FornecedorControle extends Transporte_Controle
         // Chama Formulario
        return \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos,false,'html',false);
     }
-    public function Painel_Fornecedor_Add2($camada){
+    public function Painel_Fornecedor_Add2($camada) {
         $resultado = $this->_Modelo->db->Sql_Select('Transporte_Fornecedor','{sigla}usuario=\''.$this->_Acl->Usuario_GetID().'\'',1);
-        if (is_object($resultado)){
+        if (is_object($resultado)) {
             self::Painel_Fornecedor($camada,false);
             return true;
         }

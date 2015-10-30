@@ -12,7 +12,7 @@ class Direito_Controle extends \Framework\App\Controle
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    public function __construct(){
+    public function __construct() {
         // construct
         parent::__construct();
     }
@@ -22,10 +22,10 @@ class Direito_Controle extends \Framework\App\Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Listar_Processos(&$processos, $titulo = '', $imprimir = 'false'){
+    public function Listar_Processos(&$processos, $titulo = '', $imprimir = 'false') {
         $i = 0;
-        if (!empty($processos)){
-            if ($imprimir!='false'){
+        if (!empty($processos)) {
+            if ($imprimir!='false') {
                 // Cria Tabela Estatica
                 $tabela = new \Framework\Classes\Tabela();
                 $tabela->addcabecario(array('Data','Autor / Reu','Comarca / Vara','Fases','Dias em Atraso')); 
@@ -35,7 +35,7 @@ class Direito_Controle extends \Framework\App\Controle
             }
             reset($processos);
             foreach ($processos as &$valor) {
-                if ($imprimir!='false'){
+                if ($imprimir!='false') {
                     $tabela->addcorpo(array(
                         array("nome" => data_hora_eua_brasil($valor['DATA'])), //, "class" => 'tbold tleft'
                         array("nome" => $valor['AUTOR'].' / '.$valor['REU']),
@@ -52,7 +52,7 @@ class Direito_Controle extends \Framework\App\Controle
                 }
                 ++$i;
             }
-            if ($imprimir!='false'){
+            if ($imprimir!='false') {
                 $this->_Visual->Blocar($tabela->retornatabela());
                 $this->_Visual->Blocar('<br><center><a href="#" onClick="window.print();" ><img width="121" height="34" src="'.WEB_URL.'img/icons/imprimir.gif"></a></center>');
             } else {
@@ -64,7 +64,7 @@ class Direito_Controle extends \Framework\App\Controle
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Processo</font></b></center>');
         }
         $titulo = 'Processos '.$titulo.'('.$i.')';
-        if ($imprimir=='false'){
+        if ($imprimir=='false') {
             $this->_Visual->Bloco_Maior_CriaJanela($titulo,'',50);
             $this->_Visual->Json_Info_Update('Titulo',$titulo); 
         } else {
@@ -77,7 +77,7 @@ class Direito_Controle extends \Framework\App\Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Meus_Numeros(){
+    public function Meus_Numeros() {
         // Chama NUmero de Processos, Reus e Autores e Manda pro VIEW imprimir
         $this->_Visual->Blocar(
                 DireitoVisual::Show_TabMeusNumeros(

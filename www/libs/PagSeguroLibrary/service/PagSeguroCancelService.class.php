@@ -52,7 +52,7 @@ class PagSeguroCancelService
     public static function createRequest(
         PagSeguroCredentials $credentials,
         $transactionCode
-    ){
+    ) {
 
         LogPagSeguro::info("PagSeguroCancelService.Register(".$transactionCode.") - begin");
         $connectionData = new PagSeguroConnectionData($credentials, self::SERVICE_NAME);

@@ -7,11 +7,11 @@ class Transporte_Principal implements \Framework\PrincipalInterface
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    static function Home(&$controle, &$Modelo, &$Visual){
+    static function Home(&$controle, &$Modelo, &$Visual) {
         $Registro = Framework\App\Registro::getInstacia();
         
         // Se for Armazem Libera Painel de Armazem
-        if ($Registro->_Acl->Get_Permissao_Url('Transporte/Armazem/Painel')){
+        if ($Registro->_Acl->Get_Permissao_Url('Transporte/Armazem/Painel')) {
                 $Visual->Bloco_Customizavel(Array(
                     Array(
                         'span'      =>      12,
@@ -31,7 +31,7 @@ class Transporte_Principal implements \Framework\PrincipalInterface
         }
         
         // Se for Caminhoneiro Libera Painel de Caminhoneiro
-        if ($Registro->_Acl->Get_Permissao_Url('Transporte/Caminhoneiro/Painel')){
+        if ($Registro->_Acl->Get_Permissao_Url('Transporte/Caminhoneiro/Painel')) {
                 $Visual->Bloco_Customizavel(Array(
                     Array(
                         'span'      =>      12,
@@ -51,7 +51,7 @@ class Transporte_Principal implements \Framework\PrincipalInterface
         }
         
         // Se for Transportadora Libera Painel de Transportadora
-        if ($Registro->_Acl->Get_Permissao_Url('Transporte/Transportadora/Painel')){
+        if ($Registro->_Acl->Get_Permissao_Url('Transporte/Transportadora/Painel')) {
                 $Visual->Bloco_Customizavel(Array(
                     Array(
                         'span'      =>      12,
@@ -71,7 +71,7 @@ class Transporte_Principal implements \Framework\PrincipalInterface
         }
         
         // Se for Fornecedor Libera Painel de Fornecedor
-        if ($Registro->_Acl->Get_Permissao_Url('Transporte/Fornecedor/Painel')){
+        if ($Registro->_Acl->Get_Permissao_Url('Transporte/Fornecedor/Painel')) {
                 $Visual->Bloco_Customizavel(Array(
                     Array(
                         'span'      =>      12,
@@ -92,39 +92,39 @@ class Transporte_Principal implements \Framework\PrincipalInterface
         
         return true;
     }
-    static function Widget(&$_Controle){
+    static function Widget(&$_Controle) {
         return true;
     } 
     
-    static function Busca(&$controle, &$Modelo, &$Visual,$busca){
+    static function Busca(&$controle, &$Modelo, &$Visual,$busca) {
         $i = 0;
         // Busca Armazens
         $result = self::Busca_Armazens($controle, $Modelo, $Visual, $busca);
-        if ($result!==false){
+        if ($result!==false) {
             $i = $i + $result;
         }
         // Retorna
-        if (is_int($i) && $i>0){
+        if (is_int($i) && $i>0) {
             return $i;
         } else {
             return false;
         }
     }
-    static function Config(){
+    static function Config() {
         return false;
     }
     
-    static function Relatorio($data_inicio,$data_final,$filtro=false){
+    static function Relatorio($data_inicio,$data_final,$filtro=false) {
         return false;
     }
     
-    static function Estatistica($data_inicio,$data_final,$filtro=false){
+    static function Estatistica($data_inicio,$data_final,$filtro=false) {
         return false;
     }
     /***********************
      * BUSCAS
      */
-    static function Busca_Armazens($controle, $Modelo, $Visual, $busca){
+    static function Busca_Armazens($controle, $Modelo, $Visual, $busca) {
         /*$where = Array(Array(
           'nome'                    => '%'.$busca.'%',
           //'texto'                   => '%'.$busca.'%',
@@ -135,7 +135,7 @@ class Transporte_Principal implements \Framework\PrincipalInterface
         // add botao
         $Visual->Blocar('<a title="Adicionar Armazem" class="btn btn-success lajax explicar-titulo" data-acao="" href="'.URL_PATH.'Transporte/Armazem/Armazens_Add">Adicionar novo Armazem</a><div class="space15"></div>');
         if (is_object($armazens)) $armazens = Array(0=>$armazens);
-        if ($armazens!==false && !empty($armazens)){
+        if ($armazens!==false && !empty($armazens)) {
             list($tabela,$i) = Transporte_ArmazemControle::Armazens_Tabela($armazens);
             $Visual->Show_Tabela_DataTable($tabela);
         } else {   

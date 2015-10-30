@@ -15,7 +15,7 @@ class comercio_servicos_ServicoControle extends comercio_servicos_Controle
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    public function __construct(){
+    public function __construct() {
         parent::__construct();
     }
     /**
@@ -31,14 +31,14 @@ class comercio_servicos_ServicoControle extends comercio_servicos_Controle
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    public function Main(){
+    public function Main() {
         \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'comercio_servicos/Servico/Servico');
         return false;
     }
-    static function Endereco_Servico($true=true){
+    static function Endereco_Servico($true=true) {
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
-        if ($true===true){
+        if ($true===true) {
             $_Controle->Tema_Endereco(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_servicos_Titulo'),'comercio_servicos/Servico/Servico');
         } else {
             $_Controle->Tema_Endereco(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_servicos_Titulo'));
@@ -49,11 +49,11 @@ class comercio_servicos_ServicoControle extends comercio_servicos_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Servico($export=false){
+    public function Servico($export=false) {
         self::Endereco_Servico(false);
         $titulo = \Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_servicos_Titulo');
         $titulo2 = Framework\Classes\Texto::Transformar_Plural_Singular($titulo);
-        if (Framework\Classes\Texto::Captura_Palavra_Masculina($titulo2)===true){
+        if (Framework\Classes\Texto::Captura_Palavra_Masculina($titulo2)===true) {
             $titulo_com_sexo        = 'o '.Framework\Classes\Texto::Transformar_Plural_Singular($titulo);
             $titulo_com_sexo_mudo   = ' '.Framework\Classes\Texto::Transformar_Plural_Singular($titulo);
         } else {
@@ -63,10 +63,10 @@ class comercio_servicos_ServicoControle extends comercio_servicos_Controle
         
         $tabela_colunas = Array();
 
-        if (\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_servicos_ServicoTipo')){
+        if (\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_servicos_ServicoTipo')) {
             $tabela_colunas[] = 'Tipo d'.$titulo_com_sexo;
         }
-        if (\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_servicos_nome')){
+        if (\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_servicos_nome')) {
             $tabela_colunas[] = __('Nome');
         }
         
@@ -86,7 +86,7 @@ class comercio_servicos_ServicoControle extends comercio_servicos_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Servicos_Add(){
+    public function Servicos_Add() {
         self::Endereco_Servico();
         // Titulos
         $titulo             = \Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_servicos_Titulo');
@@ -108,7 +108,7 @@ class comercio_servicos_ServicoControle extends comercio_servicos_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Servicos_Add2(){
+    public function Servicos_Add2() {
         $titulo     = __('Adicionado com Sucesso');
         $dao        = 'Comercio_Servicos_Servico';
         $funcao     = '$this->Servico();';
@@ -123,7 +123,7 @@ class comercio_servicos_ServicoControle extends comercio_servicos_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Servicos_Edit($id){
+    public function Servicos_Edit($id) {
         self::Endereco_Servico();
         // Titulos
         $titulo             = \Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_servicos_Titulo');
@@ -146,7 +146,7 @@ class comercio_servicos_ServicoControle extends comercio_servicos_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Servicos_Edit2($id){
+    public function Servicos_Edit2($id) {
         $titulo     = __('Editado com Sucesso');
         $dao        = Array('Comercio_Servicos_Servico',$id);
         $funcao     = '$this->Servico();';
@@ -162,14 +162,14 @@ class comercio_servicos_ServicoControle extends comercio_servicos_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Servicos_Del($id){
+    public function Servicos_Del($id) {
         
     	$id = (int) $id;
         // Puxa setor e deleta
         $setor = $this->_Modelo->db->Sql_Select('Comercio_Servicos_Servico', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($setor);
         // Mensagem
-    	if ($sucesso===true){
+    	if ($sucesso===true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
@@ -195,12 +195,12 @@ class comercio_servicos_ServicoControle extends comercio_servicos_Controle
      * @param type $campos
      * @param type $form
      */
-    public static function Campos_Deletar(&$campos){
+    public static function Campos_Deletar(&$campos) {
         // SE nao tiver Foto tira foto
-        if (!\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_servicos_ServicoTipo')){
+        if (!\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_servicos_ServicoTipo')) {
             self::DAO_Campos_Retira($campos, 'tipo');
         }
-        if (!\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_servicos_nome')){
+        if (!\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_servicos_nome')) {
             self::DAO_Campos_Retira($campos, 'nome');
         }
     }

@@ -2,16 +2,16 @@
 class locais_locaisControle extends locais_Controle
 {
 
-    public function __construct(){
+    public function __construct() {
         parent::__construct();
     }
-    public function Main(){
+    public function Main() {
         return false;   
     }
-    static function Endereco_Local($true=true){
+    static function Endereco_Local($true=true) {
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
-        if ($true===true){
+        if ($true===true) {
             $_Controle->Tema_Endereco(__('Locais'),'locais/locais/Locais');
         } else {
             $_Controle->Tema_Endereco(__('Locais'));
@@ -22,7 +22,7 @@ class locais_locaisControle extends locais_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Locais($export=false){
+    public function Locais($export=false) {
         self::Endereco_Local(false);
         $i = 0;
         // Add BOtao
@@ -41,7 +41,7 @@ class locais_locaisControle extends locais_Controle
         )));
         // Query
         $setores = $this->_Modelo->db->Sql_Select('Local');
-        if ($setores!==false && !empty($setores)){
+        if ($setores!==false && !empty($setores)) {
             if (is_object($setores)) $setores = Array(0=>$setores);
             reset($setores);
             foreach ($setores as $indice=>&$valor) {
@@ -51,7 +51,7 @@ class locais_locaisControle extends locais_Controle
                                                   $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Local'       ,'locais/locais/Locais_Del/'.$valor->id.'/'     ,'Deseja realmente deletar esse Local ?'));
                 ++$i;
             }
-            if ($export!==false){
+            if ($export!==false) {
                 self::Export_Todos($export,$tabela, 'Locais');
             } else {
                 $this->_Visual->Show_Tabela_DataTable(
@@ -81,7 +81,7 @@ class locais_locaisControle extends locais_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Locais_Add(){
+    public function Locais_Add() {
         self::Endereco_Local(true);
         // Carrega Config
         $titulo1    = __('Adicionar Local');
@@ -99,7 +99,7 @@ class locais_locaisControle extends locais_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Locais_Add2(){
+    public function Locais_Add2() {
         $titulo     = __('Local Adicionado com Sucesso');
         $dao        = 'Local';
         $funcao     = '$this->Locais();';
@@ -114,7 +114,7 @@ class locais_locaisControle extends locais_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Locais_Edit($id){
+    public function Locais_Edit($id) {
         self::Endereco_Local(true);
         // Carrega Config
         $titulo1    = 'Editar Local (#'.$id.')';
@@ -133,7 +133,7 @@ class locais_locaisControle extends locais_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Locais_Edit2($id){
+    public function Locais_Edit2($id) {
         $titulo     = __('Local Editado com Sucesso');
         $dao        = Array('Local',$id);
         $funcao     = '$this->Locais();';
@@ -149,7 +149,7 @@ class locais_locaisControle extends locais_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Locais_Del($id){
+    public function Locais_Del($id) {
         
         
     	$id = (int) $id;
@@ -157,7 +157,7 @@ class locais_locaisControle extends locais_Controle
         $setor = $this->_Modelo->db->Sql_Select('Local', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($setor);
         // Mensagem
-    	if ($sucesso===true){
+    	if ($sucesso===true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),

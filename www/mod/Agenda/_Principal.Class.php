@@ -21,37 +21,37 @@ class Agenda_Principal implements \Framework\PrincipalInterface
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    static function Home(&$controle, &$Modelo, &$Visual){
+    static function Home(&$controle, &$Modelo, &$Visual) {
         Agenda_PastaControle::Pastas_Listar(false,$Modelo,$Visual,'Maior');
     }
-    static function Config(){
+    static function Config() {
         return false;
     }
     
-    static function Relatorio($data_inicio,$data_final,$filtro=false){
+    static function Relatorio($data_inicio,$data_final,$filtro=false) {
         return false;
     }
     
-    static function Estatistica($data_inicio,$data_final,$filtro=false){
+    static function Estatistica($data_inicio,$data_final,$filtro=false) {
         return false;
     }
     /***********************
      * BUSCAS
      */
-    static function Busca(&$controle, &$Modelo, &$Visual,$busca){
+    static function Busca(&$controle, &$Modelo, &$Visual,$busca) {
         $i = 0;
         // Busca Pastas
         $result = self::Busca_Pastas($controle, $Modelo, $Visual, $busca);
-        if ($result!==false){
+        if ($result!==false) {
             $i = $i + $result;
         }
-        if (is_int($i) && $i>0){
+        if (is_int($i) && $i>0) {
             return $i;
         } else {
             return false;
         }
     }
-    static function Busca_Pastas($controle, $Modelo, $Visual, $busca){
+    static function Busca_Pastas($controle, $Modelo, $Visual, $busca) {
         $where = Array(Array(
           'num'                     => '%'.$busca.'%',
           'nome'                    => '%'.$busca.'%',
@@ -76,7 +76,7 @@ class Agenda_Principal implements \Framework\PrincipalInterface
         )));
         // Conexao
         if (is_object($pastas)) $pastas = Array(0=>$pastas);
-        if ($pastas!==false && !empty($pastas)){
+        if ($pastas!==false && !empty($pastas)) {
             list($tabela,$i) = Agenda_PastaControle::Pastas_Tabela($pastas);
             $Visual->Show_Tabela_DataTable($tabela);
         } else { 

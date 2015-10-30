@@ -72,7 +72,7 @@ header("Cache-Control: post-check=0, pre-check=0", false);
 header("Pragma: no-cache");*/
 
 // Zipa Arquivo
-if (isset($_SERVER['HTTP_ACCEPT_ENCODING']) && substr_count($_SERVER['HTTP_ACCEPT_ENCODING'], 'gzip')){
+if (isset($_SERVER['HTTP_ACCEPT_ENCODING']) && substr_count($_SERVER['HTTP_ACCEPT_ENCODING'], 'gzip')) {
     header('Content-Encoding: gzip');
     ob_start("ob_gzhandler");
 } else {
@@ -101,13 +101,13 @@ try{
     \Framework\App\Boot::Desligar();
 }
 // Se der MERDA, Dispara Erro
-catch(Exception $e){
-    if (SISTEMA_DEBUG===true){
+catch(Exception $e) {
+    if (SISTEMA_DEBUG===true) {
         echo Erro_Formatar( $e->getCode(), $e->getMessage(), $e->getFile(), $e->getLine(),$e->getPrevious());
         exit;
     } else {
         // Chama Erro
-        if ($e->getCode()!=404 && $e->getCode()!=403){
+        if ($e->getCode()!=404 && $e->getCode()!=403) {
             Erro_Email($e->getCode(), $e->getMessage(), $e->getFile(), $e->getLine(), $e->getPrevious(), $e->getTraceAsString());
         }
         // Redireciona

@@ -14,7 +14,7 @@ class DireitoModelo extends \Framework\App\Modelo
     * @version 0.4.2
     */
     public $campos = Array();
-    public function __construct(){
+    public function __construct() {
         parent::__construct();
     }
     /**
@@ -28,7 +28,7 @@ class DireitoModelo extends \Framework\App\Modelo
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Listar($tabela,$tabela_campo, &$resultado){
+    public function Listar($tabela,$tabela_campo, &$resultado) {
         $i = 0;
         $sql = $this->db->query('SELECT id,'.$tabela_campo.'
         FROM '.$tabela.' WHERE deletado!=1 ORDER BY '.$tabela_campo.''); //P.categoria
@@ -48,7 +48,7 @@ class DireitoModelo extends \Framework\App\Modelo
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Contar($tabela){
+    public function Contar($tabela) {
         $i = 0;
         $sql = $this->db->query('SELECT id
         FROM '.$tabela.' WHERE deletado!=1');

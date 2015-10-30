@@ -126,7 +126,7 @@ class Datatable {
         $dtColumns = self::pluck( $columns, 'dt' );
         
         $objeto = false;
-        if ($class!==''){
+        if ($class!=='') {
             $objeto = new $class();
         }
         
@@ -144,9 +144,9 @@ class Datatable {
                         $str_temp = $str;
                     }
                     // Se Existir Funcao de Procura (Funcao Inversa), executa
-                    if (isset($column['search'])){
+                    if (isset($column['search'])) {
                         $resultado = $column['search']($str_temp);
-                        if ($resultado!==false){
+                        if ($resultado!==false) {
                             $binding = self::bind( $bindings, '%'.$resultado.'%', 's' );
                         } else {
                             continue;
@@ -157,9 +157,9 @@ class Datatable {
                         $binding = self::bind( $bindings, '%'.$str_temp.'%', 's' );
                     }
                     // Se for da propria tabela, coloca sigla pra nao ter conflito
-                    if ($tabela_campos_valores!==false && array_key_exists($column['db'],$tabela_campos_valores)){
+                    if ($tabela_campos_valores!==false && array_key_exists($column['db'],$tabela_campos_valores)) {
                         $globalSearch[] = "".$sql_tabela_sigla.'.'.$column['db']." LIKE ".$binding;
-                    }else if ($retornar_extrangeiras_usadas!==false && isset($retornar_extrangeiras_usadas[$column['db']])){
+                    }else if ($retornar_extrangeiras_usadas!==false && isset($retornar_extrangeiras_usadas[$column['db']])) {
                         $globalSearch[] = "".$retornar_extrangeiras_usadas[$column['db']]." LIKE ".$binding;
                     } else {
                         $globalSearch[] = "`".$column['db']."` LIKE ".$binding;
@@ -183,18 +183,18 @@ class Datatable {
                     $str_temp = $str;
                 }
                 // Se Existir Funcao de Procura (Funcao Inversa)
-                if (isset($column['search'])){
+                if (isset($column['search'])) {
                     $resultado = $column['search']($str_temp);
-                    if ($resultado!==false){
+                    if ($resultado!==false) {
                         $binding = self::bind( $bindings, '%'.$resultado.'%', 's' );
                         continue;
                     }
                 }
                 $binding = self::bind( $bindings, '%'.$str_temp.'%', 's' );
                 // Se for da propria tabela, coloca sigla pra nao ter conflito
-                if ($tabela_campos_valores!==false && array_key_exists($column['db'],$tabela_campos_valores)){
+                if ($tabela_campos_valores!==false && array_key_exists($column['db'],$tabela_campos_valores)) {
                     $columnSearch[] = "".$sql_tabela_sigla.'.'.$column['db']." LIKE ".$binding;
-                }else if ($retornar_extrangeiras_usadas!==false && isset($retornar_extrangeiras_usadas[$column['db']])){
+                }else if ($retornar_extrangeiras_usadas!==false && isset($retornar_extrangeiras_usadas[$column['db']])) {
                     $columnSearch[] = "".$retornar_extrangeiras_usadas[$column['db']]." LIKE ".$binding;
                 } else {
                     $columnSearch[] = "`".$column['db']."` LIKE ".$binding;
@@ -465,15 +465,15 @@ class Datatable {
         while($row = $res->fetch_array(MYSQLI_ASSOC)) {
             /*;
             $class = new $class;
-            foreach($colunas as $valor){
-                if (isset($row[$valor["mysql_titulo"]]) && isset($valor["mysql_outside"]) && $valor["mysql_outside"]!==false){
+            foreach($colunas as $valor) {
+                if (isset($row[$valor["mysql_titulo"]]) && isset($valor["mysql_outside"]) && $valor["mysql_outside"]!==false) {
                     $row[$valor["mysql_titulo"] = $valor["mysql_outside"];
                 }
             }*/
             
-            if ($class!==''){
+            if ($class!=='') {
                 $objeto = new $class();
-                foreach($row as $indice=>$valor){
+                foreach($row as $indice=>$valor) {
                     if ($valor==='' || $valor===NULL) continue;
                     $objeto->bd_get($indice,$valor);
                     $row[$indice] = $objeto->$indice;

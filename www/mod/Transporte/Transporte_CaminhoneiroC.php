@@ -2,15 +2,15 @@
 
 class Transporte_CaminhoneiroControle extends Transporte_Controle
 {
-    public function __construct(){
+    public function __construct() {
         parent::__construct();
     }
-    static function Endereco_Caminhoneiro($true=true){
+    static function Endereco_Caminhoneiro($true=true) {
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
         $titulo = __('Autonômos');
         $link = 'Transporte/Caminhoneiro/Caminhoneiros';
-        if ($true===true){
+        if ($true===true) {
             $_Controle->Tema_Endereco($titulo,$link);
         } else {
             $_Controle->Tema_Endereco($titulo);
@@ -21,11 +21,11 @@ class Transporte_CaminhoneiroControle extends Transporte_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Main(){
+    public function Main() {
         \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'Transporte/Caminhoneiro/Caminhoneiros');
         return false;
     }
-    static function Caminhoneiros_Tabela(&$caminhoneiro){
+    static function Caminhoneiros_Tabela(&$caminhoneiro) {
         $Registro   = &\Framework\App\Registro::getInstacia();
         $Visual     = &$Registro->_Visual;
         $tabela = Array();
@@ -44,7 +44,7 @@ class Transporte_CaminhoneiroControle extends Transporte_Controle
         }
         return Array($tabela,$i);
     }
-    public function Visualizar($id,$export=false){
+    public function Visualizar($id,$export=false) {
 
         $caminhoneiro = $this->_Modelo->db->Sql_Select('Transporte_Caminhoneiro','TC.id=\''.((int) $id).'\'',1);
         
@@ -57,15 +57,15 @@ class Transporte_CaminhoneiroControle extends Transporte_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Caminhoneiros($export=false){
+    public function Caminhoneiros($export=false) {
         $i = 0;
         self::Endereco_Caminhoneiro(false);
         $caminhoneiro = $this->_Modelo->db->Sql_Select('Transporte_Caminhoneiro');
         if (is_object($caminhoneiro)) $caminhoneiro = Array(0=>$caminhoneiro);
-        if ($caminhoneiro!==false && !empty($caminhoneiro)){
+        if ($caminhoneiro!==false && !empty($caminhoneiro)) {
             list($tabela,$i) = self::Caminhoneiros_Tabela($caminhoneiro);
             // SE exportar ou mostra em tabela
-            if ($export!==false){
+            if ($export!==false) {
                 self::Export_Todos($export,$tabela, 'Autonômos');
             } else {
                 $this->_Visual->Show_Tabela_DataTable(
@@ -82,7 +82,7 @@ class Transporte_CaminhoneiroControle extends Transporte_Controle
             }
             unset($tabela);
         } else {
-            if ($export!==false){
+            if ($export!==false) {
                 $mensagem = __('Nenhum Autonômo Cadastrado para exportar');
             } else {
                 $mensagem = __('Nenhum Autonômo Cadastrado');
@@ -99,27 +99,27 @@ class Transporte_CaminhoneiroControle extends Transporte_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Painel(){
+    public function Painel() {
         return true;
     }
-    static function Painel_Caminhoneiro($camada,$retornar=true){
+    static function Painel_Caminhoneiro($camada,$retornar=true) {
         $existe = false;
         if ($retornar==='false') $retornar = false;
         // Verifica se Existe Conexao, se nao tiver abre o adicionar conexao, se nao, abre a pasta!
         $Registro = &\Framework\App\Registro::getInstacia();
         $resultado = $Registro->_Modelo->db->Sql_Select('Transporte_Caminhoneiro','{sigla}usuario=\''.$Registro->_Acl->Usuario_GetID().'\'',1);
-        if (is_object($resultado)){
+        if (is_object($resultado)) {
             $existe = true;
         }
         
         // Dependendo se Existir Cria Formulario ou Lista arquivos
-        if ($existe===false){
+        if ($existe===false) {
             $html = '<b>Ainda faltam insformações sobre você</b><br>'.self::Painel_Caminhoneiro_Add($camada);
         } else {
             $html = __('Painel');
         }
         
-        if ($retornar===true){
+        if ($retornar===true) {
             return $html;
         } else {
             $conteudo = array(
@@ -131,7 +131,7 @@ class Transporte_CaminhoneiroControle extends Transporte_Controle
         }
         return true;
     }
-    static protected function Painel_Caminhoneiro_Add($camada){
+    static protected function Painel_Caminhoneiro_Add($camada) {
         // Carrega Config
         $titulo1    = __('Salvar Dados');
         $titulo2    = __('Salvar Dados');
@@ -144,9 +144,9 @@ class Transporte_CaminhoneiroControle extends Transporte_Controle
         // Chama Formulario
        return \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos,false,'html',false);
     }
-    public function Painel_Caminhoneiro_Add2($camada){
+    public function Painel_Caminhoneiro_Add2($camada) {
         $resultado = $this->_Modelo->db->Sql_Select('Transporte_Caminhoneiro','{sigla}usuario=\''.$this->_Acl->Usuario_GetID().'\'',1);
-        if (is_object($resultado)){
+        if (is_object($resultado)) {
             self::Painel_Caminhoneiro($camada,false);
             return true;
         }

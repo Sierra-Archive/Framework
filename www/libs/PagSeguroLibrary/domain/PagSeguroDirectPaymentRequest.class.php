@@ -196,7 +196,7 @@ class PagSeguroDirectPaymentRequest
             $sender->setEmail($email);
             $sender->setPhone(new PagSeguroPhone($areaCode, $number));
             $sender->addDocument($documentType, $documentValue);
-            if ($ip === true){
+            if ($ip === true) {
                 $sender->getIP();
             }
             $this->sender = $sender;
@@ -656,7 +656,7 @@ class PagSeguroDirectPaymentRequest
 
         $param = $postalCode;
         $this->billing = new PagSeguroBilling();
-        if (isset($param) and is_array($param)){
+        if (isset($param) and is_array($param)) {
             $this->billing->setAddress(new PagSeguroAddress($param));
         } elseif ($param instanceof PagSeguroAddress) {
             $this->billing->setAddress($param);

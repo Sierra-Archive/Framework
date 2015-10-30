@@ -29,16 +29,16 @@
  */
 class categoria_categoriaControle extends categoria_Controle
 {
-    public function __construct(){
+    public function __construct() {
         parent::__construct();
     }
     /**
      * 
      */
-    public function Main($status=''){
+    public function Main($status='') {
         if (isset($status) AND $status!='') $status=__('salvar');
         else                               $status='';
-        if ($status=='salvar'){
+        if ($status=='salvar') {
             $this->_Visual->Json_Info_Update('Titulo', __('Categorias'));
               
             // insere categoria e atualiza o select
@@ -70,7 +70,7 @@ class categoria_categoriaControle extends categoria_Controle
      * 
      * @param type $tipo
      */
-    public function Categorias_formeditar($id){
+    public function Categorias_formeditar($id) {
         
         $id = (int) $id;
         $categoria = $this->_Modelo->Categoria_Retorna($id);
@@ -82,16 +82,16 @@ class categoria_categoriaControle extends categoria_Controle
         // ORGANIZA E MANDA CONTEUDO
         $this->_Visual->Json_Info_Update('Titulo', __('Editar Categoria'));
     }
-    public function Categorias_alterar($id){
+    public function Categorias_alterar($id) {
         
         $id = (int) $id;
         $nome = \Framework\App\Conexao::anti_injection($_POST["nome"]);
         $parent = (int) $_POST["parent"];
         $mod_acc = \Framework\App\Conexao::anti_injection($_POST["mod_acc"]);
         
-        if ($parent!=$id){
+        if ($parent!=$id) {
             $sucesso =  $this->_Modelo->Categorias_alterar($id,$nome,$parent,$mod_acc);
-            if ($sucesso===true){
+            if ($sucesso===true) {
                 $mensagens = array(
                     "tipo" => 'sucesso',
                     "mgs_principal" => __('Categoria alterada com Sucesso'),
@@ -141,7 +141,7 @@ class categoria_categoriaControle extends categoria_Controle
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    public function Categorias_ShowTab($tipo=''){
+    public function Categorias_ShowTab($tipo='') {
         $tabela = Array();
         $array = $this->_Modelo->Categorias_Retorna($tipo);
         $tabela = new \Framework\Classes\Tabela();
@@ -170,7 +170,7 @@ class categoria_categoriaControle extends categoria_Controle
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    public function Categorias_formcadastro($modulo=false){
+    public function Categorias_formcadastro($modulo=false) {
         
         $form = new \Framework\Classes\Form('adminformcategoriasend',SISTEMA_MODULO.'/'.SISTEMA_SUB.'/Main/salvar/','formajax');
         
@@ -180,7 +180,7 @@ class categoria_categoriaControle extends categoria_Controle
         // Puxa Form
         $this->Categorias_formulario($form);
         // Carrega formulario
-        if (isset($_GET['formselect']) && $_GET['formselect']!='' && LAYOULT_IMPRIMIR=='AJAX'){
+        if (isset($_GET['formselect']) && $_GET['formselect']!='' && LAYOULT_IMPRIMIR=='AJAX') {
             $formulario = $form->retorna_form();
             $conteudo = array(
                 'id' => 'popup',
@@ -228,7 +228,7 @@ class categoria_categoriaControle extends categoria_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Categorias_formulario(&$form, $tipo='' , $nome = '', $parent = 0){
+    public function Categorias_formulario(&$form, $tipo='' , $nome = '', $parent = 0) {
       
         $categorias = $this->_Modelo->Categorias_Retorna($tipo,0,1);
         // CADASTRA
@@ -245,7 +245,7 @@ class categoria_categoriaControle extends categoria_Controle
         $acc = categoria_Controle::Categorias_CarregaModulosTotais();
         $form->Select_Novo('Modulo Aceito','mod_acc','mod_acc');
         $j = 0;
-        foreach($acc as &$valor){
+        foreach($acc as &$valor) {
             if ($j==0) $form->Select_Opcao($valor['chave_nome'],$valor['chave_nome'],1);
             else  $form->Select_Opcao($valor['chave_nome'],$valor['chave_nome'],0);
             ++$j;
@@ -270,8 +270,8 @@ class categoria_categoriaControle extends categoria_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Categorias_inserir(){
-        if (!isset($_POST["nome"]) || !isset($_POST["parent"]) || !isset($_POST["mod_acc"])){
+    public function Categorias_inserir() {
+        if (!isset($_POST["nome"]) || !isset($_POST["parent"]) || !isset($_POST["mod_acc"])) {
             return false;
         }
         
@@ -281,7 +281,7 @@ class categoria_categoriaControle extends categoria_Controle
         
         $sucesso =  $this->_Modelo->Categorias_inserir($nome,$parent,$mod_acc);
         
-        if ($sucesso===true){
+        if ($sucesso===true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Categoria inserida com Sucesso'),

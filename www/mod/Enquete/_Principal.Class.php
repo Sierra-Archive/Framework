@@ -19,7 +19,7 @@ class Enquete_Principal implements \Framework\PrincipalInterface
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    static function Home(&$controle, &$Modelo, &$Visual){
+    static function Home(&$controle, &$Modelo, &$Visual) {
         self::Widgets();
         Enquete_ShowControle::Show();
         return true;
@@ -30,15 +30,15 @@ class Enquete_Principal implements \Framework\PrincipalInterface
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    static function Config(){
+    static function Config() {
         return false;
     }
     
-    static function Relatorio($data_inicio,$data_final,$filtro=false){
+    static function Relatorio($data_inicio,$data_final,$filtro=false) {
         return false;
     }
     
-    static function Estatistica($data_inicio,$data_final,$filtro=false){
+    static function Estatistica($data_inicio,$data_final,$filtro=false) {
         return false;
     }
     /**
@@ -46,7 +46,7 @@ class Enquete_Principal implements \Framework\PrincipalInterface
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public static function Widgets(){
+    public static function Widgets() {
         $Registro = &\Framework\App\Registro::getInstacia();
         $Modelo = &$Registro->_Modelo;
         $Visual = &$Registro->_Visual;
@@ -68,26 +68,26 @@ class Enquete_Principal implements \Framework\PrincipalInterface
     /***********************
      * BUSCAS
      */
-    static function Busca(&$controle, &$Modelo, &$Visual,$busca){
+    static function Busca(&$controle, &$Modelo, &$Visual,$busca) {
         $i = 0;
         // Busca Enquetes
         $result = self::Busca_Enquetes($controle, $Modelo, $Visual, $busca);
-        if ($result!==false){
+        if ($result!==false) {
             $i = $i + $result;
         }
         // Busca Respostas
         $result = self::Busca_Respostas($controle, $Modelo, $Visual, $busca);
-        if ($result!==false){
+        if ($result!==false) {
             $i = $i + $result;
         }
         // Retorna
-        if (is_int($i) && $i>0){
+        if (is_int($i) && $i>0) {
             return $i;
         } else {
             return false;
         }
     }
-    static function Busca_Enquetes($controle, $Modelo, $Visual, $busca){
+    static function Busca_Enquetes($controle, $Modelo, $Visual, $busca) {
         $where = Array(Array(
           'nome'                    => '%'.$busca.'%',
           'obs'                     => '%'.$busca.'%'
@@ -110,7 +110,7 @@ class Enquete_Principal implements \Framework\PrincipalInterface
             )
         )));
         if (is_object($enquetes)) $enquetes = Array(0=>$enquetes);
-        if ($enquetes!==false && !empty($enquetes)){
+        if ($enquetes!==false && !empty($enquetes)) {
             list($tabela,$i) = Enquete_EnqueteControle::Enquetes_Tabela($enquetes);
             $Visual->Show_Tabela_DataTable($tabela);
         } else {     
@@ -120,7 +120,7 @@ class Enquete_Principal implements \Framework\PrincipalInterface
         $Visual->Bloco_Unico_CriaJanela($titulo);
         return $i;
     }
-    static function Busca_Respostas($controle, $Modelo, $Visual, $busca){
+    static function Busca_Respostas($controle, $Modelo, $Visual, $busca) {
         $where = Array(
           'nome'                    => '%'.$busca.'%'
         );
@@ -142,7 +142,7 @@ class Enquete_Principal implements \Framework\PrincipalInterface
             )
         )));
         if (is_object($enquetes)) $enquetes = Array(0=>$enquetes);
-        if ($enquetes!==false && !empty($enquetes)){
+        if ($enquetes!==false && !empty($enquetes)) {
             list($tabela,$i) = Enquete_RespostaControle::Respostas_Tabela($enquetes);
             $Visual->Show_Tabela_DataTable($tabela);
         } else {  

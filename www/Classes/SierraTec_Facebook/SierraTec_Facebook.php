@@ -26,7 +26,7 @@ class SierraTec_Facebook {
     * 
     * @Params {autorizacao (0->face nao logado, 1-> facenaoconfere com cadastro original, 2->Autorizado)}
     */
-    public function __construct($faceid = '1425023667768754',$autorizacao = '3fc791cc908fb3baa644e2f2d0e62957'){
+    public function __construct($faceid = '1425023667768754',$autorizacao = '3fc791cc908fb3baa644e2f2d0e62957') {
         $this->_Registro = &\Framework\App\Registro::getInstacia();
         $this->db = &$this->_Registro->_Conexao;
         
@@ -54,7 +54,7 @@ class SierraTec_Facebook {
 
 
             } catch(FacebookApiException $e) {
-              if ($autorizacao!=2){
+              if ($autorizacao!=2) {
                   // If the user is logged out, you can have a 
                   // user ID even though the access token is invalid.
                   // In this case, we'll get an exception, so we'll
@@ -64,14 +64,14 @@ class SierraTec_Facebook {
                   $autorizacao = 0;
               }
             }
-        }else if ($faceid!=$this->user_id && $this->user_id){
+        }else if ($faceid!=$this->user_id && $this->user_id) {
           $autorizacao = 1;
         } else {
           $autorizacao = 0;
 
         }
     } 
-    public function Armazena(){
+    public function Armazena() {
         // captura informacoes de profile
         $this->user_profile = $this->facebook->api('/me','GET');
 
@@ -81,7 +81,7 @@ class SierraTec_Facebook {
         $inbox = $this->facebook->api($this->user_id.'/inbox?limit=0');
         $this->Armazena_Conversas($inbox['data']);
         // armazena outras paginas
-        for($i=0;$i<2; ++$i){
+        for($i=0;$i<2; ++$i) {
              $inbox['paging']['next'] = explode($this->user_id.'/', $inbox['paging']['next']);
              $inbox['paging']['next'] = $inbox['paging']['next'][1];
              $inbox = $this->facebook->api($this->user_id.'/'.$inbox['paging']['next']);
@@ -92,13 +92,13 @@ class SierraTec_Facebook {
      * Captura Mensagens Trazidas do face e faz backup local
      * @Params $conversas($facebook['imbox']['data'])
      */
-    private function Armazena_Conversas($conversas){
+    private function Armazena_Conversas($conversas) {
         // percorre todas as conversas
-        if (is_array($conversas)){
-            foreach($conversas as $i => $valor){
+        if (is_array($conversas)) {
+            foreach($conversas as $i => $valor) {
                 // foreach com as conversas
-                if (is_array($conversas[$i]['comments']['data'])){
-                    foreach($conversas[$i]['comments']['data'] as $j => $valor2){
+                if (is_array($conversas[$i]['comments']['data'])) {
+                    foreach($conversas[$i]['comments']['data'] as $j => $valor2) {
                         $mensagemid = explode('_',$conversas[$i]['comments']['data'][$j]['id']);
                         $mensagemid = $mensagemid[1];
                         $this->Armazena_Conversas_Inserir($conversas[$i]['id'], $conversas[$i]['to']['data'][0]['id'], $conversas[$i]['to']['data'][1]['id'], $conversas[$i]['updated_time'], $conversas[$i]['unread'], $mensagemid, $conversas[$i]['comments']['data'][$j]['from']['name'], $conversas[$i]['comments']['data'][$j]['from']['id'], $conversas[$i]['comments']['data'][$j]['message'], $conversas[$i]['comments']['data'][$j]['created_time']);
@@ -108,7 +108,7 @@ class SierraTec_Facebook {
         }
 
     }
-    private function Armazena_Conversas_Inserir($conversaid, $meuid, $idamigo, $dataleitura, $lida, $mensagemid, $mensagemusername, $mensagemuserid, $mensagem, $datamensagem){
+    private function Armazena_Conversas_Inserir($conversaid, $meuid, $idamigo, $dataleitura, $lida, $mensagemid, $mensagemusername, $mensagemuserid, $mensagem, $datamensagem) {
         if ($meuid=='')     $meuid = 0;
         if ($idamigo=='') $idamigo = 0;
         // VERIFICA SE CONVERSA JA ESTA REGISTRADA SE NAO TIVER CADASTRA ELA NO DBA
@@ -117,7 +117,7 @@ class SierraTec_Facebook {
         while ($campo = $sql->fetch_object()) {
             ++$contador;
         }
-        if ($contador==0){
+        if ($contador==0) {
             $this->db->query('INSERT INTO '.MYSQL_SOCIAL_HIST_FACE.' (id, faceid1, faceid2, updated_time, unread) VALUES (\''.$conversaid.'\',\''.$meuid.'\',\''.$idamigo.'\',\''.$dataleitura.'\',\''.$lida.'\')');
         }
 
@@ -127,7 +127,7 @@ class SierraTec_Facebook {
         while ($campo = $sql->fetch_object()) {
             ++$contador;
         }
-        if ($contador==0){
+        if ($contador==0) {
             $this->db->query('INSERT INTO '.MYSQL_SOCIAL_HIST_FACE_MGS.' (id, fromname, fromid, message, criacao, conversaid) VALUES (\''.$mensagemid.'\',\''.$mensagemusername.'\',\''.$mensagemuserid.'\',\''.$mensagem.'\',\''.$datamensagem.'\',\''.$conversaid.'\')');
         }
         return 1;
@@ -136,7 +136,7 @@ class SierraTec_Facebook {
      * Captura Amigos Trazidos do face e faz backup local
      * @Params $conversas($facebook['imbox']['data'])
      */
-    private function Armazena_Amigos($conversas){
+    private function Armazena_Amigos($conversas) {
 
     }
 }

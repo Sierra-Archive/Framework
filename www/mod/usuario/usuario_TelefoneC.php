@@ -15,7 +15,7 @@ class usuario_TelefoneControle extends usuario_Controle
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    public function __construct(){
+    public function __construct() {
         parent::__construct();
     }
     /**
@@ -31,13 +31,13 @@ class usuario_TelefoneControle extends usuario_Controle
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    public function Main(){
+    public function Main() {
         return false; 
     }
-    static function Endereco_Telefone($true=true){
+    static function Endereco_Telefone($true=true) {
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
-        if($true===true){
+        if($true===true) {
             $_Controle->Tema_Endereco(__('Telefone'),'usuario/Telefone/Telefone');
         } else {
             $_Controle->Tema_Endereco(__('Telefone'));
@@ -48,7 +48,7 @@ class usuario_TelefoneControle extends usuario_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Telefone($export=false){
+    public function Telefone($export=false) {
         self::Endereco_Telefone(false);
         $i = 0;
         // add botao
@@ -66,7 +66,7 @@ class usuario_TelefoneControle extends usuario_Controle
             )
         )));
         $telefones = $this->_Modelo->db->Sql_Select('Usuario_Telefone');
-        if($telefones!==false && !empty($telefones)){
+        if($telefones!==false && !empty($telefones)) {
             if(is_object($telefones)) $telefones = Array(0=>$telefones);
             reset($telefones);
             foreach ($telefones as $indice=>&$valor) {
@@ -77,7 +77,7 @@ class usuario_TelefoneControle extends usuario_Controle
                                                   $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Telefone'       ,'usuario/Telefone/Telefones_Del/'.$valor->id.'/'     ,'Deseja realmente deletar essa Telefone ?'));
                 ++$i;
             }
-            if($export!==false){
+            if($export!==false) {
                 self::Export_Todos($export,$tabela, 'Telefones');
             } else {
                 $this->_Visual->Show_Tabela_DataTable(
@@ -120,7 +120,7 @@ class usuario_TelefoneControle extends usuario_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Telefones_Add(){
+    public function Telefones_Add() {
         self::Endereco_Telefone();
         // Carrega Config
         $titulo1    = __('Adicionar Telefone');
@@ -138,7 +138,7 @@ class usuario_TelefoneControle extends usuario_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Telefones_Add2(){
+    public function Telefones_Add2() {
         $titulo     = __('Telefone adicionada com Sucesso');
         $dao        = 'Usuario_Telefone';
         $funcao     = '$this->Telefone();';
@@ -153,7 +153,7 @@ class usuario_TelefoneControle extends usuario_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Telefones_Edit($id){
+    public function Telefones_Edit($id) {
         self::Endereco_Telefone();
         // Carrega Config
         $titulo1    = 'Editar Telefone (#'.$id.')';
@@ -172,7 +172,7 @@ class usuario_TelefoneControle extends usuario_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Telefones_Edit2($id){
+    public function Telefones_Edit2($id) {
         $titulo     = __('Telefone editada com Sucesso');
         $dao        = Array('Usuario_Telefone',$id);
         $funcao     = '$this->Telefone();';
@@ -188,7 +188,7 @@ class usuario_TelefoneControle extends usuario_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Telefones_Del($id){
+    public function Telefones_Del($id) {
         
         
     	$id = (int) $id;
@@ -196,7 +196,7 @@ class usuario_TelefoneControle extends usuario_Controle
         $setor = $this->_Modelo->db->Sql_Select('Usuario_Telefone', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($setor);
         // Mensagem
-    	if($sucesso===true){
+    	if($sucesso===true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletada'),
@@ -216,7 +216,7 @@ class usuario_TelefoneControle extends usuario_Controle
         $this->_Visual->Json_Info_Update('Titulo', __('Telefone deletada com Sucesso'));  
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
-    public function Telefone_Upload($parent = 0){
+    public function Telefone_Upload($parent = 0) {
         $fileTypes = array(
             // Audio
             'mp3',
@@ -225,7 +225,7 @@ class usuario_TelefoneControle extends usuario_Controle
         $dir = 'usuario'.DS.'Chamadas_Nao_Contabilizadas'.DS;
         $ext = $this->Upload($dir,$fileTypes,false);
         $this->layoult_zerar = false;
-        if($ext!==false){
+        if($ext!==false) {
             $this->_Visual->Json_Info_Update('Titulo', __('Upload com Sucesso'));
             $this->_Visual->Json_Info_Update('Historico', false);
         } else {

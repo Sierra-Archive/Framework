@@ -5,23 +5,23 @@
 class social_VisualizarControle extends social_Controle
 {
 
-    public function __construct(){
+    public function __construct() {
         parent::__construct();
     }
     // PAGINA DE UMA PERSONA S�
-    public function Main($id){
+    public function Main($id) {
         $personaid = (int) $id;
         $tipos = array();
         $tipo = array();
         $tipon = array();
         $persona = $this->_Modelo->retorna_persona($personaid);
-        if (!empty($persona)){
+        if (!empty($persona)) {
             $this->_Visual->exibe_persona($persona);
             $this->_Visual->Bloco_Maior_CriaJanela($persona['nome'] .' - Informaçees');
         }
         $this->_Modelo->retorna_acoes($personaid, $acoes);
         $i = 0;
-        if (!empty($acoes)){
+        if (!empty($acoes)) {
             usort($acoes, "ordenar");
             reset($acoes);
             foreach ($acoes as $indice=>&$valor) {
@@ -34,7 +34,7 @@ class social_VisualizarControle extends social_Controle
                 if (!isset($tipos[$acoes[$indice]['tipo']])) $tipos[$acoes[$indice]['tipo']] = 0;
 
                 // verifica os tipso e add
-                if ($acoes[$indice]['positivo']==1){
+                if ($acoes[$indice]['positivo']==1) {
                     $tipos[$acoes[$indice]['tipo']] = $tipos[$acoes[$indice]['tipo']] + $acoes[$indice]['gravidade'];
                     $tabela['Pontos'][$i] = '+ '.$acoes[$indice]['gravidade'];
                 } else {

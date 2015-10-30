@@ -19,7 +19,7 @@ class Simulador_Principal implements \Framework\PrincipalInterface
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    static function Home(&$controle, &$Modelo, &$Visual){
+    static function Home(&$controle, &$Modelo, &$Visual) {
         self::Widgets();
         return true;
     }
@@ -29,15 +29,15 @@ class Simulador_Principal implements \Framework\PrincipalInterface
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    static function Config(){
+    static function Config() {
         return false;
     }
     
-    static function Relatorio($data_inicio,$data_final,$filtro=false){
+    static function Relatorio($data_inicio,$data_final,$filtro=false) {
         return false;
     }
     
-    static function Estatistica($data_inicio,$data_final,$filtro=false){
+    static function Estatistica($data_inicio,$data_final,$filtro=false) {
         return false;
     }
     /**
@@ -45,7 +45,7 @@ class Simulador_Principal implements \Framework\PrincipalInterface
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public static function Widgets(){
+    public static function Widgets() {
         $Registro = &\Framework\App\Registro::getInstacia();
         $Modelo = &$Registro->_Modelo;
         $Visual = &$Registro->_Visual;
@@ -67,20 +67,20 @@ class Simulador_Principal implements \Framework\PrincipalInterface
     /***********************
      * BUSCAS
      */
-    static function Busca(&$controle, &$Modelo, &$Visual,$busca){
+    static function Busca(&$controle, &$Modelo, &$Visual,$busca) {
         $i = 0;
         // Busca Tags
         $result = self::Busca_Tags($controle, $Modelo, $Visual, $busca);
-        if ($result!==false){
+        if ($result!==false) {
             $i = $i + $result;
         }
-        if (is_int($i) && $i>0){
+        if (is_int($i) && $i>0) {
             return $i;
         } else {
             return false;
         }
     }
-    static function Busca_Tags($controle, $Modelo, $Visual, $busca){
+    static function Busca_Tags($controle, $Modelo, $Visual, $busca) {
         $where = Array(Array(
           'nome'                    => '%'.$busca.'%',
           'obs'                     => '%'.$busca.'%',
@@ -92,15 +92,15 @@ class Simulador_Principal implements \Framework\PrincipalInterface
         // add botao
         $Visual->Blocar('<a title="Adicionar Tag" class="btn btn-success lajax explicar-titulo" data-acao="" href="'.URL_PATH.'Simulador/Tag/Tags_Add">Adicionar nova Tag</a><div class="space15"></div>');
         if (is_object($tags)) $tags = Array(0=>$tags);
-        if ($tags!==false && !empty($tags)){
+        if ($tags!==false && !empty($tags)) {
             $funcao = '';
             $tabela = Array();
             $i = 0;
-            if ($tags!==false){
+            if ($tags!==false) {
                 // Percorre Tags
                 if (is_object($tags)) $tags = Array(0=>$tags);
                 reset($tags);
-                if (!empty($tags)){
+                if (!empty($tags)) {
                     $perm_download = \Framework\App\Registro::getInstacia()->_Acl->Get_Permissao_Url('Simulador/Tag/Download');
                     $perm_editar = \Framework\App\Registro::getInstacia()->_Acl->Get_Permissao_Url('Simulador/Tag/Tags_Edit');
                     $perm_del = \Framework\App\Registro::getInstacia()->_Acl->Get_Permissao_Url('Simulador/Tag/Tags_Del');
@@ -119,11 +119,11 @@ class Simulador_Principal implements \Framework\PrincipalInterface
                     }
                 }
             }
-            if ($funcao===''){
+            if ($funcao==='') {
                 unset($tabela['Funções']);
             }
             // Desconta Primeiro Registro
-            if ($raiz!==false && $raiz!=0){
+            if ($raiz!==false && $raiz!=0) {
                 $i = $i-1;
             }
             // Retorna List
@@ -144,7 +144,7 @@ class Simulador_Principal implements \Framework\PrincipalInterface
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public static function Manutencao(&$log){
+    public static function Manutencao(&$log) {
         $Registro = &\Framework\App\Registro::getInstacia();
         $Modelo = &$Registro->_Modelo;
         $Visual = &$Registro->_Visual;

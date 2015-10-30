@@ -20,30 +20,30 @@ class usuario_veiculo_Principal implements \Framework\PrincipalInterface
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    static function Home(&$controle, &$Modelo, &$Visual){
+    static function Home(&$controle, &$Modelo, &$Visual) {
         //usuario_veiculo_Controle::num_Indicados($Modelo, $Visual, \Framework\App\Acl::Usuario_GetID_Static());
         self::Widgets();
     }
-    static function Busca(&$controle, &$Modelo, &$Visual,$busca){
+    static function Busca(&$controle, &$Modelo, &$Visual,$busca) {
         return false;
     }
-    static function Config(){
-        return false;
-    }
-    
-    static function Relatorio($data_inicio,$data_final,$filtro=false){
+    static function Config() {
         return false;
     }
     
-    static function Estatistica($data_inicio,$data_final,$filtro=false){
+    static function Relatorio($data_inicio,$data_final,$filtro=false) {
         return false;
     }
-    public static function Widgets(){
+    
+    static function Estatistica($data_inicio,$data_final,$filtro=false) {
+        return false;
+    }
+    public static function Widgets() {
         $Registro = &\Framework\App\Registro::getInstacia();
         $Modelo = &$Registro->_Modelo;
         $Visual = &$Registro->_Visual;
         // Widget Equipamento
-        if(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_veiculo_Equipamento')){
+        if(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_veiculo_Equipamento')) {
             // Calcula Equipamento
             $equipamento_qnt = $Modelo->db->Sql_Contar('Usuario_Veiculo_Equipamento');
             // Chama Widgets

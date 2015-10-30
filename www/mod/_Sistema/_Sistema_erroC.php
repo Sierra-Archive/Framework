@@ -2,11 +2,11 @@
 
 class _Sistema_erroControle extends _Sistema_Controle
 {
-    public function __construct(){
+    public function __construct() {
         parent::__construct();
     }
-    public function Main($codigo = false){
-        if (LAYOULT_IMPRIMIR=='AJAX'){
+    public function Main($codigo = false) {
+        if (LAYOULT_IMPRIMIR=='AJAX') {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro ').$codigo,
@@ -15,7 +15,7 @@ class _Sistema_erroControle extends _Sistema_Controle
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
         } else {
             // CAso login invalido
-            if ($codigo=='5051'){
+            if ($codigo=='5051') {
                 
                 $this->_Visual->Javascript_Executar('alert(\''.__('Login ou senha Inválida').'\');');
                 $this->_Visual->renderizar_login();
@@ -27,7 +27,7 @@ class _Sistema_erroControle extends _Sistema_Controle
         //Carrega Json
         $this->_Visual->Json_Info_Update('Titulo', __('Erro ').$codigo);
     }
-    static function Erro_Puro($codigo){
+    static function Erro_Puro($codigo) {
         $Visual = new \Framework\App\Visual(false);
         $Visual->Blocar(self::_getError($codigo));
         $Visual->Bloco_Unico_CriaJanela('Erro '.$codigo);
@@ -35,8 +35,8 @@ class _Sistema_erroControle extends _Sistema_Controle
         $Visual->renderizar();
         self::Tema_Travar();
     }
-    private static function _getError($codigo = false){
-        if ($codigo){
+    private static function _getError($codigo = false) {
+        if ($codigo) {
             $codigo = (int) $codigo;
         } else {
             $codigo = 'default';
@@ -136,7 +136,7 @@ Server Errors
         
         $error['9010']    = __('Você já votou nessa enquete.');
         
-        if (array_key_exists($codigo, $error)){
+        if (array_key_exists($codigo, $error)) {
             return $error[$codigo];
         } else {
             return $error['default'];
@@ -147,14 +147,14 @@ Server Errors
     /**
      * Trata Erros de paginas que sao enviadas ao Javascript
      */
-    public function Javascript(){
+    public function Javascript() {
         $this->Main(404);
     }
     /**
      * Erro Gerado pelo Mal FLuxo do Sistema, mas que não é um erro.
      * Pode ser feito por testes ou pelo usuario
      */
-    static function Erro_Fluxo($nome,$erro){
+    static function Erro_Fluxo($nome,$erro) {
         return false;
     }
 }

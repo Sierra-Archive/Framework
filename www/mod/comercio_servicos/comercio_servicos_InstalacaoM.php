@@ -13,13 +13,13 @@ class comercio_servicos_InstalacaoModelo extends comercio_servicos_Modelo
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    public function __construct(){
+    public function __construct() {
         parent::__construct();
     }
-    public function Main(){
+    public function Main() {
         return false;
     }
-    public function Btu(){
+    public function Btu() {
         // Table's primary key
         $primaryKey = 'id';
         $tabela = 'Comercio_Servicos_Btu';
@@ -29,10 +29,10 @@ class comercio_servicos_InstalacaoModelo extends comercio_servicos_Modelo
         $perm_del = $this->_Registro->_Acl->Get_Permissao_Url('comercio_servicos/Instalacao/Btu_Del');
         
         $function = '';
-        if ($perm_editar){
+        if ($perm_editar) {
             $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Editar\'     ,Array(\'Editar Btu\'        ,\'comercio_servicos/Instalacao/Btu_Edit/\'.$d.\'/\'    ,\'\'),true);';
         }
-        if ($perm_del){
+        if ($perm_del) {
             $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Deletar\'    ,Array(\'Deletar Btu\'       ,\'comercio_servicos/Instalacao/Btu_Del/\'.$d.\'/\'     ,\'Deseja realmente deletar essa Btu ?\'),true);';
         }
 
@@ -60,7 +60,7 @@ class comercio_servicos_InstalacaoModelo extends comercio_servicos_Modelo
             \Framework\Classes\Datatable::complex( $_GET, Framework\App\Registro::getInstacia()->_Conexao, $tabela, $primaryKey, $columns, null)
         );
     }
-    public function Suporte(){
+    public function Suporte() {
         // Table's primary key
         $primaryKey = 'id';
         $tabela = 'Comercio_Servicos_Suporte';
@@ -70,10 +70,10 @@ class comercio_servicos_InstalacaoModelo extends comercio_servicos_Modelo
         $perm_del = $this->_Registro->_Acl->Get_Permissao_Url('comercio_servicos/Instalacao/Suporte_Del');
         
         $function = '';
-        if ($perm_editar){
+        if ($perm_editar) {
             $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Editar\'     ,Array(\'Editar Suporte\'        ,\'comercio_servicos/Instalacao/Suporte_Edit/\'.$d.\'/\'    ,\'\'),true);';
         }
-        if ($perm_del){
+        if ($perm_del) {
             $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Deletar\'    ,Array(\'Deletar Suporte\'       ,\'comercio_servicos/Instalacao/Suporte_Del/\'.$d.\'/\'     ,\'Deseja realmente deletar esse Suporte ?\'),true);';
         }
         

@@ -151,14 +151,14 @@ function orderMultiDimensionalArray(&$toOrderArray, $field, $inverse = false) {
 function Data_geraTimestamp($data,$quebra=true) {
     $data = trim($data);
     // Formato: 23/09/2013 00:00:00 ou 2013-09-23 00:00:00
-    if (strlen($data)==19){
+    if (strlen($data)==19) {
         $partes = explode(' ', $data);        
-        if (strpos($partes[1], '-')!==false){
+        if (strpos($partes[1], '-')!==false) {
             $horas = explode('-', $partes[1]);
         } else {
             $horas = explode(':', $partes[1]);
         }
-        if (strpos($partes[0], '/')!==false){
+        if (strpos($partes[0], '/')!==false) {
             $dias = explode('/', $partes[0]);
             return mktime($horas[0], $horas[1], $horas[2], $dias[1], $dias[0], $dias[2]);
         } else {
@@ -167,14 +167,14 @@ function Data_geraTimestamp($data,$quebra=true) {
         }
     }else 
     // Formato: 23/09/13 | 21:13 ou 13-09-23 | 21:13
-    if (strlen($data)==16){
+    if (strlen($data)==16) {
         $partes = explode(' | ', $data);        
-        if (strpos($partes[1], '-')!==false){
+        if (strpos($partes[1], '-')!==false) {
             $horas = explode('-', $partes[1]);
         } else {
             $horas = explode(':', $partes[1]);
         }
-        if (strpos($partes[0], '/')!==false){
+        if (strpos($partes[0], '/')!==false) {
             $dias = explode('/', $partes[0]);
             return mktime($horas[0], $horas[1], '00', $dias[1], $dias[0], '20'.$dias[2]);
         } else {
@@ -183,8 +183,8 @@ function Data_geraTimestamp($data,$quebra=true) {
         }
     }else 
     // Formato: 23/09/2013 ou 2013-09-23
-    if (strlen($data)==10){
-        if (strpos($data, '/')!==false){
+    if (strlen($data)==10) {
+        if (strpos($data, '/')!==false) {
             $partes = explode('/', $data);
             return mktime(0, 0, 0, $partes[1], $partes[0], $partes[2]);
         } else {
@@ -205,7 +205,7 @@ function Data_geraTimestamp($data,$quebra=true) {
  * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
  * @version 0.4.2
  */
-function Data_CalculaDiferenca($data_inicial,$data_final){
+function Data_CalculaDiferenca($data_inicial,$data_final) {
     // Usa a função criada e pega o timestamp das duas datas:
     $time_inicial = Data_geraTimestamp($data_inicial);
     $time_final = Data_geraTimestamp($data_final);
@@ -226,7 +226,7 @@ function Data_CalculaDiferenca($data_inicial,$data_final){
  * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
  * @version 0.4.2
  */
-function Data_CalculaDiferenca_Em_Segundos($data_inicial,$data_final){
+function Data_CalculaDiferenca_Em_Segundos($data_inicial,$data_final) {
     // Usa a função criada e pega o timestamp das duas datas:
     $time_inicial = Data_geraTimestamp($data_inicial);
     $time_final = Data_geraTimestamp($data_final);
@@ -250,13 +250,13 @@ function data_brasil_eua($data)
     $array = explode("/",$data);
     
     // Permite parametro com data imcompleta
-    if (!isset($array[1])){
+    if (!isset($array[1])) {
         return $array[0];
-    }else if (!isset($array[2]) || strlen($array[2])<4){
+    }else if (!isset($array[2]) || strlen($array[2])<4) {
         return $array[1].'-'.$array[0];
     }
     
-    if (((int)$array[2])<1000){
+    if (((int)$array[2])<1000) {
         
     }
     
@@ -274,7 +274,7 @@ function data_brasil_eua($data)
 function data_eua_brasil($data)
 {
     $array = explode("-",$data);
-    if (!isset($array[2])){
+    if (!isset($array[2])) {
         return '0000/00/00';
     }
     return $array[2].'/'.$array[1].'/'.$array[0];
@@ -291,13 +291,13 @@ function data_eua_brasil($data)
 function data_hora_eua_brasil($data)
 {
     // Caso seja vazio retorna vazio
-    if ($data==NULL){
+    if ($data==NULL) {
         return '';
     }
     
     $data = explode(" ",$data);
     $array2 = explode("-",$data[0]);
-    if (!isset($data[1]) || !isset($array2[2])){
+    if (!isset($data[1]) || !isset($array2[2])) {
         return '00/00/0000 00:00:00';
     }
     $hora = $data[1];
@@ -316,19 +316,19 @@ function data_hora_eua_brasil($data)
 function data_hora_brasil_eua($data)
 {
     // Caso seja vazio retorna vazio
-    if ($data==NULL){
+    if ($data==NULL) {
         return '';
     }
     $data_quebrada = explode(" ",$data);
     
     
-    if (!isset($data_quebrada[1])){
+    if (!isset($data_quebrada[1])) {
         return '0000-00-00 00:00:00';
     }
     $hora = $data_quebrada[1];
     $data_quebrada = explode("/",$data_quebrada[0]);
     
-    if (!isset($data_quebrada[2])){
+    if (!isset($data_quebrada[2])) {
         return '0000-00-00 00:00:00';
     }
     
@@ -347,7 +347,7 @@ function data_hora_brasil_eua($data)
  */
 function date_replace($date_time, $output_string, $utilizar_funcao_date = false) {
      // Verifica se a string est� num formato v�lido de data ("aaaa-mm-dd" ou "aaaa-mm-dd hh:mm:ss")
-     if (preg_match("/^(\d{4}(-\d{2}){2})( \d{2}(:\d{2}){2})?$/", $date_time)) {
+     if (preg_match("/^(\d{4}(-\d{2}) {2})( \d{2}(:\d{2}) {2})?$/", $date_time)) {
        $valor['d'] = substr($date_time, 8, 2);
        $valor['m'] = substr($date_time, 5, 2);
        $valor['Y'] = substr($date_time, 0, 4);
@@ -357,7 +357,7 @@ function date_replace($date_time, $output_string, $utilizar_funcao_date = false)
       $valor['s'] = substr($date_time, 17, 2);
 
     // Verifica se a string est� num formato v�lido de hor�rio ("hh:mm:ss")
-    } else if (preg_match("/^(\d{2}(:\d{2}){2})?$/", $date_time)) {
+    } else if (preg_match("/^(\d{2}(:\d{2}) {2})?$/", $date_time)) {
       $valor['d'] = NULL;
       $valor['m'] = NULL;
       $valor['Y'] = NULL;
@@ -392,7 +392,7 @@ function date_replace($date_time, $output_string, $utilizar_funcao_date = false)
  * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
  * @version 0.4.2
  */
-function Mail_Send($nome_remetente, $email_remetente,$email_destinatario,$assunto,$mgm){
+function Mail_Send($nome_remetente, $email_remetente,$email_destinatario,$assunto,$mgm) {
     $mensagem = "Locaway<br />";
     $mensagem .= $mgm;
     $mensagem .= "<br /><br />";

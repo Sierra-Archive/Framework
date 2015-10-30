@@ -138,11 +138,11 @@
 				format: 'Y-m-d',
 				position: 'bottom',
 				eventName: 'click',
-				onRender: function(){return {};},
-				onChange: function(){return true;},
-				onShow: function(){return true;},
-				onBeforeShow: function(){return true;},
-				onHide: function(){return true;},
+				onRender: function() {return {};},
+				onChange: function() {return true;},
+				onShow: function() {return true;},
+				onBeforeShow: function() {return true;},
+				onHide: function() {return true;},
 				locale: {
 					days: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
 					daysShort: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
@@ -543,7 +543,7 @@
 									case 'multiple':
 										val = (tmp.setHours(0,0,0,0)).valueOf();
 										if ($.inArray(val, options.date) > -1) {
-											$.each(options.date, function(nr, dat){
+											$.each(options.date, function(nr, dat) {
 												if (dat == val) {
 													options.date.splice(nr,1);
 													return false;
@@ -591,7 +591,7 @@
 					return [formatDate(tmp, options.format), tmp, options.el];
 				} else {
 					tmp = [[],[], options.el];
-					$.each(options.date, function(nr, val){
+					$.each(options.date, function(nr, val) {
 						var date = new Date(val);
 						tmp[0].push(formatDate(date, options.format));
 						tmp[1].push(date);
@@ -643,7 +643,7 @@
 						display: 'block'
 					});
 					layout(calEl);
-					switch (options.position){
+					switch (options.position) {
 						case 'top':
 							top -= calEl.offsetHeight;
 							break;
@@ -691,12 +691,12 @@
 				}
 			};
 		return {
-			init: function(options){
+			init: function(options) {
 				options = $.extend({}, defaults, options||{});
 				extendDate(options.locale);
 				options.calendars = Math.max(1, parseInt(options.calendars,10)||1);
 				options.mode = /single|multiple|range/.test(options.mode) ? options.mode : 'single';
-				return this.each(function(){
+				return this.each(function() {
 					if (!$(this).data('datepicker')) {
 						options.el = this;
 						if (options.date.constructor == String) {
@@ -781,8 +781,8 @@
 					}
 				});
 			},
-			setDate: function(date, shiftTo){
-				return this.each(function(){
+			setDate: function(date, shiftTo) {
+				return this.each(function() {
 					if ($(this).data('datepickerId')) {
 						var cal = $('#' + $(this).data('datepickerId'));
 						var options = cal.data('datepicker');
@@ -820,8 +820,8 @@
 					return prepareDate($('#' + $(this).data('datepickerId')).data('datepicker'))[formated ? 0 : 1];
 				}
 			},
-			clear: function(){
-				return this.each(function(){
+			clear: function() {
+				return this.each(function() {
 					if ($(this).data('datepickerId')) {
 						var cal = $('#' + $(this).data('datepickerId'));
 						var options = cal.data('datepicker');
@@ -832,8 +832,8 @@
 					}
 				});
 			},
-			fixLayout: function(){
-				return this.each(function(){
+			fixLayout: function() {
+				return this.each(function() {
 					if ($(this).data('datepickerId')) {
 						var cal = $('#' + $(this).data('datepickerId'));
 						var options = cal.data('datepicker');
@@ -856,10 +856,10 @@
 	});
 })(jQuery);
 
-(function(){
+(function() {
   var cache = {};
  
-  this.tmpl = function tmpl(str, data){
+  this.tmpl = function tmpl(str, data) {
     // Figure out if we're getting a template, or if we need to
     // load the template - and be sure to cache the result.
     var fn = !/\W/.test(str) ?
@@ -869,10 +869,10 @@
       // Generate a reusable function that will serve as a template
       // generator (and which will be cached).
       new Function("obj",
-        "var p=[],print=function(){p.push.apply(p,arguments);};" +
+        "var p=[],print=function() {p.push.apply(p,arguments);};" +
        
-        // Introduce the data as local variables using with(){}
-        "with(obj){p.push('" +
+        // Introduce the data as local variables using with() {}
+        "with(obj) {p.push('" +
        
         // Convert the template into pure JavaScript
         str

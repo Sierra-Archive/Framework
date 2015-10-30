@@ -15,7 +15,7 @@ class comercio_UnidadeControle extends comercio_Controle
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    public function __construct(){
+    public function __construct() {
         parent::__construct();
     }
     /**
@@ -31,16 +31,16 @@ class comercio_UnidadeControle extends comercio_Controle
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    public function Main(){
+    public function Main() {
         \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'comercio/Unidade/Unidades/');
         return false;
     }
-    static function Endereco_Unidade($true=true){
+    static function Endereco_Unidade($true=true) {
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
         $titulo = __('Unidades');
         $link = 'comercio/Unidade/Unidades';
-        if ($true===true){
+        if ($true===true) {
             $_Controle->Tema_Endereco($titulo,$link);
         } else {
             $_Controle->Tema_Endereco($titulo);
@@ -51,12 +51,12 @@ class comercio_UnidadeControle extends comercio_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Unidades(){
+    public function Unidades() {
         self::Endereco_Unidade(false);
         $i = 0;
         $this->_Visual->Blocar('<a title="Adicionar Unidade" class="btn btn-success lajax explicar-titulo" data-acao="" href="'.URL_PATH.'comercio/Unidade/Unidades_Add">Adicionar nova Unidade</a><div class="space15"></div>');
         $linhas = $this->_Modelo->db->Sql_Select('Comercio_Unidade');
-        if ($linhas!==false && !empty($linhas)){
+        if ($linhas!==false && !empty($linhas)) {
             if (is_object($linhas)) $linhas = Array(0=>$linhas);
             reset($linhas);
             foreach ($linhas as $indice=>&$valor) {
@@ -82,7 +82,7 @@ class comercio_UnidadeControle extends comercio_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Unidades_Add(){
+    public function Unidades_Add() {
         self::Endereco_Unidade(true);
         // Carrega Config
         $titulo1    = __('Adicionar Unidade');
@@ -100,7 +100,7 @@ class comercio_UnidadeControle extends comercio_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Unidades_Add2(){
+    public function Unidades_Add2() {
         $titulo     = __('Unidade Adicionada com Sucesso');
         $dao        = 'Comercio_Unidade';
         $funcao     = '$this->Unidades();';
@@ -115,7 +115,7 @@ class comercio_UnidadeControle extends comercio_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Unidades_Edit($id){
+    public function Unidades_Edit($id) {
         self::Endereco_Unidade(true);
         // Carrega Config
         $titulo1    = 'Editar Unidade (#'.$id.')';
@@ -134,7 +134,7 @@ class comercio_UnidadeControle extends comercio_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Unidades_Edit2($id){
+    public function Unidades_Edit2($id) {
         $titulo     = __('Unidade Editada com Sucesso');
         $dao        = Array('Comercio_Unidade',$id);
         $funcao     = '$this->Unidades();';
@@ -150,7 +150,7 @@ class comercio_UnidadeControle extends comercio_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Unidades_Del($id){
+    public function Unidades_Del($id) {
         
         
     	$id = (int) $id;
@@ -158,7 +158,7 @@ class comercio_UnidadeControle extends comercio_Controle
         $linha = $this->_Modelo->db->Sql_Select('Comercio_Unidade', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($linha);
         // Mensagem
-    	if ($sucesso===true){
+    	if ($sucesso===true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletada'),

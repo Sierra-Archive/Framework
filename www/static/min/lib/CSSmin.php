@@ -319,7 +319,7 @@ class CSSmin
         $css = preg_replace_callback('/([:,\( ]\s*)(attr|color-stop|from|rgba|to|url|(?:-(?:atsc|khtml|moz|ms|o|wap|webkit)-)?(?:calc|max|min|(?:repeating-)?(?:linear|radial)-gradient)|-webkit-gradient)/iS', array($this, 'lowercase_common_functions_values'), $css);
         
         // Put the space back in some cases, to support stuff like
-        // @media screen and (-webkit-min-device-pixel-ratio:0){
+        // @media screen and (-webkit-min-device-pixel-ratio:0) {
         $css = preg_replace('/\band\(/i', 'and (', $css);
 
         // Remove the spaces after the things that should not have spaces after them.
@@ -337,7 +337,7 @@ class CSSmin
         $css = preg_replace('/(^|[^0-9])(?:0?\.)?0(?:em|ex|ch|rem|vw|vh|vm|vmin|cm|mm|in|px|pt|pc|%|deg|g?rad|m?s|k?hz)/iS', '${1}0', $css);
 
         // Replace 0 0; or 0 0 0; or 0 0 0 0; with 0.
-        $css = preg_replace('/\:0(?: 0){1,3}(;|\}| \!)/', ':0$1', $css);
+        $css = preg_replace('/\:0(?: 0) {1,3}(;|\}| \!)/', ':0$1', $css);
 
         // Fix for issue: #2528142
         // Replace text-shadow:0; with text-shadow:0 0 0;
@@ -585,7 +585,7 @@ class CSSmin
     private function rgb_to_hex($matches)
     {
         // Support for percentage values rgb(100%, 0%, 45%);
-        if ($this->index_of($matches[1], '%') >= 0){
+        if ($this->index_of($matches[1], '%') >= 0) {
             $rgbcolors = explode(',', str_replace('%', '', $matches[1]));
             for ($i = 0; $i < count($rgbcolors); $i++) {
                 $rgbcolors[$i] = $this->round_number(floatval($rgbcolors[$i]) * 2.55);
@@ -601,7 +601,7 @@ class CSSmin
         }
 
         // Fix for issue #2528093
-        if (!preg_match('/[\s\,\);\}]/', $matches[2])){
+        if (!preg_match('/[\s\,\);\}]/', $matches[2])) {
             $matches[2] = ' ' . $matches[2];
         }
 

@@ -38,7 +38,7 @@ class Tempo{
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Fechar($fechar=true){
+    public function Fechar($fechar=true) {
         $tempofinal = number_format((microtime(true)-$this->comeco)*1000, 10);
         self::$log[] = Array(
             $this->nome,
@@ -47,7 +47,7 @@ class Tempo{
             round((memory_get_peak_usage(true)/1024)/1024,2).'MB',
             round((memory_get_peak_usage(false)/1024)/1024,2).'MB'
         );
-        if ($fechar){
+        if ($fechar) {
             unset($this);
         }
     }
@@ -57,7 +57,7 @@ class Tempo{
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function __destruct(){
+    public function __destruct() {
         $this->Fechar(false);
     }
     /**
@@ -66,7 +66,7 @@ class Tempo{
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    private static function Tempo_Pagina(){
+    private static function Tempo_Pagina() {
         $tempofinal = number_format((microtime(true)-TEMPO_COMECO)*1000, 10);
         self::$log[] = Array(
             SERVER_URL,
@@ -85,13 +85,13 @@ class Tempo{
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    static function Salvar(){
+    static function Salvar() {
         $comeco = microtime(true);
         self::Tempo_Pagina();
         $Registro   = &\Framework\App\Registro::getInstacia();$db     = &$Registro->_Conexao; $log = self::$log;
         
         // Se nao tiver Carregado Conexao, aborta
-        if ($db===false){
+        if ($db===false) {
             return false;
         }
         
@@ -99,27 +99,27 @@ class Tempo{
         $Registro_mysql     = Array();
         $Registros_mysql    = $db->Sql_Select('Sistema_Log_Performace',  false,0,'', 'chave,nome,ocorrencia,tempo_total,tempo_minimo,tempo_media,tempo_maximo', false);
         if (is_object($Registros_mysql))$Registros_mysql = Array($Registros_mysql);
-        if (!empty($Registros_mysql)){
-            foreach($Registros_mysql as &$valor){
+        if (!empty($Registros_mysql)) {
+            foreach($Registros_mysql as &$valor) {
                 $Registro_mysql[$valor->chave] = $valor;
             }
         }
         $inserir = Array();
         $atualizar = Array();
-        if (!empty($log)){
-            foreach($log as &$valor){
+        if (!empty($log)) {
+            foreach($log as &$valor) {
                 $chave = sha1($valor[0]);
-                if (isset($Registro_mysql[$chave])){
+                if (isset($Registro_mysql[$chave])) {
                     $log_sql = &$Registro_mysql[$chave];
                     $log_sql->tempo_total = $log_sql->tempo_total+$valor[1];
                     ++$log_sql->ocorrencia;
-                    if ($valor[1]<$log_sql->tempo_minimo){
+                    if ($valor[1]<$log_sql->tempo_minimo) {
                         $log_sql->tempo_minimo  = $valor[1];
                     }
-                    if ($valor[1]>$log_sql->tempo_maximo){
+                    if ($valor[1]>$log_sql->tempo_maximo) {
                         $log_sql->tempo_maximo  = $valor[1];
                     }
-                    if ($log_sql->ocorrencia==0){
+                    if ($log_sql->ocorrencia==0) {
                         $log_sql->tempo_media = $log_sql->tempo_total;
                     } else {
                         $log_sql->tempo_media = ($log_sql->tempo_total/$log_sql->ocorrencia);
@@ -154,17 +154,17 @@ class Tempo{
         $nome   = 'Log Salvar S.M';
         $tempo  = number_format((microtime(true)-$comeco)*1000, 10);
         $chave  = sha1($nome);
-        if (isset($Registro_mysql[$chave])){
+        if (isset($Registro_mysql[$chave])) {
             $log_sql = &$Registro_mysql[$chave];
             $log_sql->tempo_total = $log_sql->tempo_total+$tempo;
             ++$log_sql->ocorrencia;
-            if ($tempo<$log_sql->tempo_minimo){
+            if ($tempo<$log_sql->tempo_minimo) {
                 $log_sql->tempo_minimo  = $tempo;
             }
-            if ($tempo>$log_sql->tempo_maximo){
+            if ($tempo>$log_sql->tempo_maximo) {
                 $log_sql->tempo_maximo  = $tempo;
             }
-            if ($log_sql->ocorrencia==0){
+            if ($log_sql->ocorrencia==0) {
                 $log_sql->tempo_media = $log_sql->tempo_total;
             } else {
                 $log_sql->tempo_media = ($log_sql->tempo_total/$log_sql->ocorrencia);
@@ -189,7 +189,7 @@ class Tempo{
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    static function Imprimir(){
+    static function Imprimir() {
         var_dump(self::$log);
     }
 }

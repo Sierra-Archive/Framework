@@ -15,7 +15,7 @@ class banner_AdminControle extends banner_Controle
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    public function __construct(){
+    public function __construct() {
         // construct
         parent::__construct();
     }
@@ -34,7 +34,7 @@ class banner_AdminControle extends banner_Controle
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    public function Main(){
+    public function Main() {
         // carrega lista de banners
         $this->Banners_Listar(0,1);
         // carrega lista de banners
@@ -50,11 +50,11 @@ class banner_AdminControle extends banner_Controle
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    public function Banners_Listar($categoria=0,$ativado=1){
+    public function Banners_Listar($categoria=0,$ativado=1) {
         $banners = Array();
         $i = 0;
         $this->_Modelo->retorna_banners($banners,$categoria,$ativado);
-        if (!empty($banners)){
+        if (!empty($banners)) {
             reset($banners);
             
             foreach ($banners as $indice=>&$valor) {                
@@ -74,7 +74,7 @@ class banner_AdminControle extends banner_Controle
         } else {           
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Banner</font></b></center>');
         }
-        if ($ativado==0){
+        if ($ativado==0) {
             $titulo = __('Todos os Banners Desativados').' ('.$i.')';
         } else {
             $titulo = __('Todos os Banners Ativados').' ('.$i.')';
@@ -102,7 +102,7 @@ class banner_AdminControle extends banner_Controle
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    public function Banners_Add(){
+    public function Banners_Add() {
         // Carrega Config
         $titulo1    = __('Adicionar Banner');
         $titulo2    = __('Salvar Banner');
@@ -119,7 +119,7 @@ class banner_AdminControle extends banner_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Banners_Add2(){
+    public function Banners_Add2() {
         $titulo     = __('Banner Adicionado com Sucesso');
         $dao        = 'Banner';
         $funcao     = '$this->Main();';
@@ -134,7 +134,7 @@ class banner_AdminControle extends banner_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Banners_Edit($id){
+    public function Banners_Edit($id) {
         // Carrega Config
         $titulo1    = 'Editar Banner (#'.$id.')';
         $titulo2    = __('Alteração de Banner');
@@ -152,7 +152,7 @@ class banner_AdminControle extends banner_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Banners_Edit2($id){
+    public function Banners_Edit2($id) {
         $titulo     = __('Banner Editado com Sucesso');
         $dao        = Array('Banner',$id);
         $funcao     = '$this->Main();';
@@ -176,12 +176,12 @@ class banner_AdminControle extends banner_Controle
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    public function Banners_Del($id){
+    public function Banners_Del($id) {
         
         
     	$id = (int) $id;
     	$sucesso = $this->_Modelo->Banners_Del($id);
-    	if ($sucesso===true){
+    	if ($sucesso===true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
@@ -204,7 +204,7 @@ class banner_AdminControle extends banner_Controle
     /**
      * 
      */
-    public function Banner_UploadVer($camada,$id){
+    public function Banner_UploadVer($camada,$id) {
         $camada = (string) \Framework\App\Conexao::anti_injection($camada);
         $id = (int) \Framework\App\Conexao::anti_injection($id);
        
@@ -213,12 +213,12 @@ class banner_AdminControle extends banner_Controle
     /**
      * 
      */
-    public function Banner_Upload($id){
+    public function Banner_Upload($id) {
         $id = (int) $id;
         $fileTypes = array('jpg','jpeg','gif','png'); // File extensions
         $dir = 'banner'.DS;
         $ext = $this->Upload($dir,$fileTypes,$id);
-        if ($ext!='falso'){
+        if ($ext!='falso') {
             $this->_Modelo->Banner_Upload_Alterar($id,$ext); 
         }
     }
