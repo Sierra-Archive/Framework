@@ -42,7 +42,7 @@ class usuario_mensagem_OrigemControle extends usuario_mensagem_Controle
         $link = 'usuario_mensagem/Origem/Origens';
         if($true===true){
             $_Controle->Tema_Endereco($titulo,$link);
-        }else{
+        } else {
             $_Controle->Tema_Endereco($titulo);
         }
     }
@@ -151,7 +151,7 @@ class usuario_mensagem_OrigemControle extends usuario_mensagem_Controle
                 "mgs_principal" => __('Deletado'),
                 "mgs_secundaria" => __('Origem deletada com sucesso')
             );
-    	}else{
+    	} else {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),

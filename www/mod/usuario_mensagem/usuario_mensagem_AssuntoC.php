@@ -40,7 +40,7 @@ class usuario_mensagem_AssuntoControle extends usuario_mensagem_Controle
         $link = 'usuario_mensagem/Assunto/Assuntos';
         if($true===true){
             $_Controle->Tema_Endereco($titulo,$link);
-        }else{
+        } else {
             $_Controle->Tema_Endereco($titulo);
         }
     }
@@ -142,7 +142,7 @@ class usuario_mensagem_AssuntoControle extends usuario_mensagem_Controle
                 "mgs_principal" => __('Assunto Alterado com Sucesso'),
                 "mgs_secundaria" => ''.$_POST["nome"].' teve a alteração bem sucedida'
             );
-        }else{
+        } else {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),
@@ -175,7 +175,7 @@ class usuario_mensagem_AssuntoControle extends usuario_mensagem_Controle
                 "mgs_principal" => __('Deletado'),
                 "mgs_secundaria" => __('Assunto Deletado com sucesso')
             );
-    	}else{
+    	} else {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),

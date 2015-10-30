@@ -6,16 +6,16 @@ class _Sistema_erroControle extends _Sistema_Controle
         parent::__construct();
     }
     public function Main($codigo = false){
-        if(LAYOULT_IMPRIMIR=='AJAX'){
+        if (LAYOULT_IMPRIMIR=='AJAX'){
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro ').$codigo,
                 "mgs_secundaria" => self::_getError($codigo)
             );
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
-        }else{
+        } else {
             // CAso login invalido
-            if($codigo=='5051'){
+            if ($codigo=='5051'){
                 
                 $this->_Visual->Javascript_Executar('alert(\''.__('Login ou senha Inválida').'\');');
                 $this->_Visual->renderizar_login();
@@ -36,9 +36,9 @@ class _Sistema_erroControle extends _Sistema_Controle
         self::Tema_Travar();
     }
     private static function _getError($codigo = false){
-        if($codigo){
+        if ($codigo){
             $codigo = (int) $codigo;
-        }else{
+        } else {
             $codigo = 'default';
         }
         
@@ -120,7 +120,7 @@ Server Errors
         //PRedial
         $error['5061']    = __('Esse Apartamento não existe.');
         $error['5062']    = __('Esse Bloco não existe.');
-        if($codigo==5063) $error['5063']    = 'Esse '.Framework\Classes\Texto::Transformar_Plural_Singular(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Cliente_nome')).' já está registrado';
+        if ($codigo==5063) $error['5063']    = 'Esse '.Framework\Classes\Texto::Transformar_Plural_Singular(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Cliente_nome')).' já está registrado';
         
         // Códigos de SEgurança
         $error['6010']    = __('Essa solicitação foi bloqueada por segurança.');
@@ -136,9 +136,9 @@ Server Errors
         
         $error['9010']    = __('Você já votou nessa enquete.');
         
-        if(array_key_exists($codigo, $error)){
+        if (array_key_exists($codigo, $error)){
             return $error[$codigo];
-        }else{
+        } else {
             return $error['default'];
         }
         

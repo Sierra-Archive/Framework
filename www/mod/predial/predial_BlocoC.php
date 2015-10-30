@@ -26,9 +26,9 @@ class predial_BlocoControle extends predial_Controle
         $_Controle = $Registro->_Controle;
         $titulo = __('Blocos');
         $link = 'predial/Bloco/Blocos';
-        if($true===true){
+        if ($true===true){
             $_Controle->Tema_Endereco($titulo,$link);
-        }else{
+        } else {
             $_Controle->Tema_Endereco($titulo);
         }
     }
@@ -37,7 +37,7 @@ class predial_BlocoControle extends predial_Controle
         $Visual     = &$Registro->_Visual;
         $tabela = Array();
         $i = 0;
-        if(is_object($blocos)) $blocos = Array(0=>$blocos);
+        if (is_object($blocos)) $blocos = Array(0=>$blocos);
         reset($blocos);
         foreach ($blocos as &$valor) {
             $tabela['Nome'][$i]             = $valor->nome;
@@ -69,15 +69,15 @@ class predial_BlocoControle extends predial_Controle
             )
         )));
         $blocos = $this->_Modelo->db->Sql_Select('Predial_Bloco');
-        if($blocos!==false && !empty($blocos)){
+        if ($blocos!==false && !empty($blocos)){
             list($tabela,$i) = self::Blocos_Tabela($blocos);
-            if($export!==false){
+            if ($export!==false){
                 self::Export_Todos($export,$tabela, 'Blocos');
-            }else{
+            } else {
                 $this->_Visual->Show_Tabela_DataTable($tabela);
             }
             unset($tabela);
-        }else{         
+        } else {         
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Bloco</font></b></center>');
         }
         $titulo = __('Listagem de Blocos').' ('.$i.')';
@@ -167,13 +167,13 @@ class predial_BlocoControle extends predial_Controle
         $bloco = $this->_Modelo->db->Sql_Select('Predial_Bloco', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($bloco);
         // Mensagem
-    	if($sucesso===true){
+    	if ($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
                 "mgs_secundaria" => __('Bloco deletado com sucesso')
             );
-    	}else{
+    	} else {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),

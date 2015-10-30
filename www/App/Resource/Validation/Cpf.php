@@ -3,9 +3,29 @@ namespace Framework\App\Resource\Validation;
 class Cpf 
 {  
     public static function Validates($cpf) {  
-        if (strlen($cpf) === 15){
-            var_dump(self::calcDigVerif((int)(substr($cpf,0, 12))),(substr($cpf,13, 15)),substr($cpf,0, 12));
-            return (bool) (self::calcDigVerif((int)(substr($cpf,0, 12)))==(substr($cpf,13, 15)));  
+        if (strlen($cpf) === 14){
+            return (bool) (self::calcDigVerif(
+                    substr(
+                        str_replace(
+                            Array('.','-'),
+                            '', 
+                            $cpf
+                        ),
+                        0, 
+                        9
+                    )
+                )==(
+                    substr(
+                        str_replace(
+                            Array('.','-'), 
+                            '', 
+                            $cpf
+                        ),
+                        9, 
+                        11
+                    )
+                )
+            );       
         }
         if (strlen($cpf) !== 11) {
             return false;
@@ -27,15 +47,15 @@ class Cpf
     public static function Transfer_Client($cpf) {
         if (strlen($cpf) !== 11) {
             return $cpf;
-        }else{
+        } else {
             return (string) substr((string) $cpf,0, 3).'.'.substr((string) $cpf,3, 3).'.'.substr((string) $cpf,6, 3).'-'.substr((string) $cpf,9, 3);  
         } 
     }  
     
     public static function Transfer_Server($cpf) {       
         return (int) str_replace(Array('.','-'), '', $cpf);
-    }    
-
+    }
+    
     private static function calcDigVerif($num) {    
    
         $soma = 0;

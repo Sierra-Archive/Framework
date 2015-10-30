@@ -24,9 +24,9 @@ class Financeiro_FinancaControle extends Financeiro_Controle
     static function Endereco_Financa($true=true){
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
-        if($true===true){
+        if ($true===true){
             $_Controle->Tema_Endereco(__('Finanças'),'Financeiro/Financa/Financas');
-        }else{
+        } else {
             $_Controle->Tema_Endereco(__('Finanças'));
         }
     }
@@ -54,8 +54,8 @@ class Financeiro_FinancaControle extends Financeiro_Controle
         )));
         // CONEXAO
         $setores = $this->_Modelo->db->Sql_Select('Financeiro_Financa');
-        if($setores!==false && !empty($setores)){
-            if(is_object($setores)) $setores = Array(0=>$setores);
+        if ($setores!==false && !empty($setores)){
+            if (is_object($setores)) $setores = Array(0=>$setores);
             reset($setores);
             foreach ($setores as $indice=>&$valor) {
                 $tabela['Id'][$i]               = $valor->id;
@@ -68,7 +68,7 @@ class Financeiro_FinancaControle extends Financeiro_Controle
             }
             $this->_Visual->Show_Tabela_DataTable($tabela,'', true, true, Array(Array(0,'asc')));
             unset($tabela);
-        }else{     
+        } else {     
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhuma Finança</font></b></center>');
         }
         $titulo = __('Listagem de Finanças').' ('.$i.')';
@@ -109,7 +109,7 @@ class Financeiro_FinancaControle extends Financeiro_Controle
         $alterar    = Array();
         $sucesso = $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
         // Cadastra no Financeiro
-        if($sucesso){
+        if ($sucesso){
             $motivo = __('Financeiro_Financa');
             $identificador  = $this->_Modelo->db->Sql_Select('Financeiro_Financa', Array(),1,'id DESC');
             $parcela_data   = $identificador->data;
@@ -176,13 +176,13 @@ class Financeiro_FinancaControle extends Financeiro_Controle
         $setor = $this->_Modelo->db->Sql_Select('Financeiro_Financa', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($setor);
         // Mensagem
-    	if($sucesso===true){
+    	if ($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
                 "mgs_secundaria" => __('Finança deletada com sucesso')
             );
-    	}else{
+    	} else {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),

@@ -530,7 +530,7 @@ abstract class BaseFacebook
       if (array_key_exists('user_id', $signed_request)) {
         $user = $signed_request['user_id'];
 
-        if($user != $this->getPersistentData('user_id')){
+        if ($user != $this->getPersistentData('user_id')){
           $this->clearAllPersistentData();
         }
 

@@ -54,13 +54,13 @@ class Evento_Principal implements \Framework\PrincipalInterface
         $i = 0;
         // Busca Eventos
         $result = self::Busca_Eventos($controle, $Modelo, $Visual, $busca);
-        if($result!==false){
+        if ($result!==false){
             $i = $i + $result;
         }
         // Retorna
-        if(is_int($i) && $i>0){
+        if (is_int($i) && $i>0){
             return $i;
-        }else{
+        } else {
             return false;
         }
     }
@@ -76,7 +76,7 @@ class Evento_Principal implements \Framework\PrincipalInterface
         ));
         $i = 0;
         $eventos = $Modelo->db->Sql_Select('Evento',$where);
-        if($eventos===false) return false;
+        if ($eventos===false) return false;
         // add botao
         $Visual->Blocar($Visual->Tema_Elementos_Btn('Superior'     ,Array(
             Array(
@@ -91,11 +91,11 @@ class Evento_Principal implements \Framework\PrincipalInterface
                 'Evento/Evento/Eventos',
             )
         )));
-        if(is_object($eventos)) $eventos = Array(0=>$eventos);
-        if($eventos!==false && !empty($eventos)){
+        if (is_object($eventos)) $eventos = Array(0=>$eventos);
+        if ($eventos!==false && !empty($eventos)){
             list($tabela,$i) = Evento_EventoControle::Eventos_Tabela($eventos);
             $Visual->Show_Tabela_DataTable($tabela);
-        }else{    
+        } else {    
             $Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Evento na Busca '.$busca.'</font></b></center>');
         }
         $titulo = 'Busca de Eventos: '.$busca.' ('.$i.')';

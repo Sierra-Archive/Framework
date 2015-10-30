@@ -26,9 +26,9 @@ class predial_InformativoControle extends predial_Controle
         $_Controle = $Registro->_Controle;
         $titulo = __('Informativos');
         $link = 'predial/Informativo/Informativos';
-        if($true===true){
+        if ($true===true){
             $_Controle->Tema_Endereco($titulo,$link);
-        }else{
+        } else {
             $_Controle->Tema_Endereco($titulo);
         }
     }
@@ -37,7 +37,7 @@ class predial_InformativoControle extends predial_Controle
         $Visual     = &$Registro->_Visual;
         $tabela = Array();
         $i = 0;
-        if(is_object($informativos)) $informativos = Array(0=>$informativos);
+        if (is_object($informativos)) $informativos = Array(0=>$informativos);
         reset($informativos);
         foreach ($informativos as &$valor) {
             $tabela['Bloco'][$i]            = $valor->bloco2;
@@ -76,11 +76,11 @@ class predial_InformativoControle extends predial_Controle
         )));
         // Busca
         $informativos = $this->_Modelo->db->Sql_Select('Predial_Bloco_Apart_Informativo');
-        if($informativos!==false && !empty($informativos)){
+        if ($informativos!==false && !empty($informativos)){
             list($tabela,$i) = self::Informativos_Tabela($informativos);
             $this->_Visual->Show_Tabela_DataTable($tabela);
             unset($tabela);
-        }else{          
+        } else {          
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Informativo</font></b></center>');
         }
         $titulo = __('Listagem de Informativos').' ('.$i.')';
@@ -123,7 +123,7 @@ class predial_InformativoControle extends predial_Controle
         $sucesso2   = __('Informativo cadastrado com sucesso.');
         $alterar    = Array();
         $sucesso = $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
-        if($sucesso===true){
+        if ($sucesso===true){
             // Pega o Informativo
             $identificador  = $this->_Modelo->db->Sql_Select('Predial_Bloco_Apart_Informativo', Array(),1,'id DESC');
             // Captura Apartamento Responsavel
@@ -137,7 +137,7 @@ class predial_InformativoControle extends predial_Controle
                 1,
                 'id DESC'
             );
-            if(!is_object($apartamento)){
+            if (!is_object($apartamento)){
                 $mensagens = array(
                     "tipo" => 'erro',
                     "mgs_principal" => __('Erro'),
@@ -146,32 +146,32 @@ class predial_InformativoControle extends predial_Controle
                 $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
                 return false;
             }
-            if(is_int($apartamento->morador) && $apartamento->morador!=0){
+            if (is_int($apartamento->morador) && $apartamento->morador!=0){
                 $usuario  = $this->_Modelo->db->Sql_Select(
                     'Usuario', 
                     Array('id'=>$apartamento->morador),
                     1
                 );
-                if($usuario!==false){
+                if ($usuario!==false){
                     $nome = $usuario->nome;
                     $enviar = '';
-                    if($usuario->email!='' && \Framework\App\Sistema_Funcoes::Control_Layoult_Valida_Email($usuario->email)){
+                    if ($usuario->email!='' && \Framework\App\Sistema_Funcoes::Control_Layoult_Valida_Email($usuario->email)){
                         $enviar .= '->setTo(\''.$usuario->email.'\', \''.$nome.'\')';
                     }
-                    if($usuario->email2!='' && \Framework\App\Sistema_Funcoes::Control_Layoult_Valida_Email($usuario->email2)){
+                    if ($usuario->email2!='' && \Framework\App\Sistema_Funcoes::Control_Layoult_Valida_Email($usuario->email2)){
                         $enviar .= '->setTo(\''.$usuario->email2.'\', \''.$nome.'\')';
                     }
                 }
             }
             // Avisa que nao foi, ou manda 
-            if($enviar===false || $enviar==''){
+            if ($enviar===false || $enviar==''){
                 $mensagens = array(
                     "tipo" => 'erro',
                     "mgs_principal" => __('Informativo não Enviado'),
                     "mgs_secundaria" => __('Verifique se o Morador está registrado no sistema e com um email válido.')
                 );
                 $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
-            }else{
+            } else {
                 // Mandar Mensagem
                 $mensagem   =   'Chegou uma novo informativo para Você<br>'.
                                 '<b>Bloco / Apart:</b>'.$identificador->bloco.' / '.$identificador->apart.'<br>';
@@ -188,7 +188,7 @@ class predial_InformativoControle extends predial_Controle
                 ->addGenericHeader(\'Content-Type\', \'text/html; charset="utf-8"\')
                 ->setMessage(\'<strong>'.$mensagem.'</strong>\')
                 ->setWrap(78)->send();');
-                if(!$send){
+                if (!$send){
                     $mensagens = array(
                         "tipo" => 'erro',
                         "mgs_principal" => __('Informativo não Enviado'),
@@ -253,13 +253,13 @@ class predial_InformativoControle extends predial_Controle
         $informativo = $this->_Modelo->db->Sql_Select('Predial_Bloco_Apart_Informativo', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($informativo);
         // Mensagem
-    	if($sucesso===true){
+    	if ($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
                 "mgs_secundaria" => __('Informativo deletado com sucesso')
             );
-    	}else{
+    	} else {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),

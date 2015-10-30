@@ -6,14 +6,14 @@ class _Sistema_LoginControle extends _Sistema_Controle
         parent::__construct();
     }
     public function Main($codigo){
-        if(LAYOULT_IMPRIMIR=='AJAX'){
+        if (LAYOULT_IMPRIMIR=='AJAX'){
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro ').$codigo,
                 "mgs_secundaria" => $this->_getError($codigo)
             );
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
-        }else{
+        } else {
             $this->_Visual->Blocar($this->_getError($codigo));
             $this->_Visual->Bloco_Maior_CriaJanela('Erro '.$codigo);
         }
@@ -21,9 +21,9 @@ class _Sistema_LoginControle extends _Sistema_Controle
         $this->_Visual->Json_Info_Update('Titulo', __('Erro ').$codigo);
     }
     private function _getError($codigo = false){
-        if($codigo){
+        if ($codigo){
             $codigo = (int) $codigo;
-        }else{
+        } else {
             $codigo = 'default';
         }
         
@@ -32,9 +32,9 @@ class _Sistema_LoginControle extends _Sistema_Controle
         $error['5051']    = __('Login ou Senha inválida.');
         $error['5052']    = __('Acesso negado devido a falta de pagamento.');
         
-        if(array_key_exists($codigo, $error)){
+        if (array_key_exists($codigo, $error)){
             return $error[$codigo];
-        }else{
+        } else {
             return $error['default'];
         }
         

@@ -26,9 +26,9 @@ class predial_ApartControle extends predial_Controle
         $_Controle = $Registro->_Controle;
         $titulo = __('Apartamentos');
         $link = 'predial/Apart/Aparts';
-        if($true===true){
+        if ($true===true){
             $_Controle->Tema_Endereco($titulo,$link);
-        }else{
+        } else {
             $_Controle->Tema_Endereco($titulo);
         }
     }
@@ -37,14 +37,14 @@ class predial_ApartControle extends predial_Controle
         $Visual     = &$Registro->_Visual;
         $tabela = Array();
         $i = 0;
-        if(is_object($apartamentos)) $apartamentos = Array(0=>$apartamentos);
+        if (is_object($apartamentos)) $apartamentos = Array(0=>$apartamentos);
         reset($apartamentos);
         foreach ($apartamentos as &$valor) {
             $tabela['Bloco'][$i]            = $valor->bloco2;
             $tabela['Número'][$i]           = $valor->num;
-            if($valor->morador!=0 && $valor->morador2!=NULL){
+            if ($valor->morador!=0 && $valor->morador2!=NULL){
                 $tabela['Morador'][$i]          = $valor->morador2;
-            }else{
+            } else {
                 $tabela['Morador'][$i]          = '<p class="text-error">Não Registrado</p>';
             }
             $tabela['Funções'][$i]          = $Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Apartamento'        ,'predial/Apart/Aparts_Edit/'.$valor->id.'/'    ,'')).
@@ -77,11 +77,11 @@ class predial_ApartControle extends predial_Controle
         )));
         // Busca
         $apartamentos = $this->_Modelo->db->Sql_Select('Predial_Bloco_Apart');
-        if($apartamentos!==false && !empty($apartamentos)){
+        if ($apartamentos!==false && !empty($apartamentos)){
             list($tabela,$i) = self::Aparts_Tabela($apartamentos);
             $this->_Visual->Show_Tabela_DataTable($tabela);
             unset($tabela);
-        }else{           
+        } else {           
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Apartamento</font></b></center>');
         }
         $titulo = __('Listagem de Apartamentos').' ('.$i.')';
@@ -171,13 +171,13 @@ class predial_ApartControle extends predial_Controle
         $apartamento = $this->_Modelo->db->Sql_Select('Predial_Bloco_Apart', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($apartamento);
         // Mensagem
-    	if($sucesso===true){
+    	if ($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
                 "mgs_secundaria" => __('Apartamento deletado com sucesso')
             );
-    	}else{
+    	} else {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),

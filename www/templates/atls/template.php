@@ -60,7 +60,7 @@
         </div>
 
         <h1 class="page-title">
-            <span id="Framework_Titulo"><?php if($params['site_titulo']==''){ echo __('Sem Titulo'); }else{ echo $params['site_titulo']; } ?></span>
+            <span id="Framework_Titulo"><?php if($params['site_titulo']==''){ echo __('Sem Titulo'); } else { echo $params['site_titulo']; } ?></span>
         </h1>
         <?php 
         /*if(isset($params['widgets']) && isset($params['widgets']['Navegacao_Endereco'])){

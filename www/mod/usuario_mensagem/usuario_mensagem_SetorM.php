@@ -38,7 +38,7 @@ class usuario_mensagem_SetorModelo extends usuario_mensagem_Modelo
             $funcao = function( $d, $row ) {
                 return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Setor'       ,'usuario_mensagem/Setor/Setores_Del/'.$d.'/'     ,'Deseja realmente deletar essa Setor ?'),true);
             };
-        }else{
+        } else {
             $funcao = function( $d, $row ) {
                 return '';
             };

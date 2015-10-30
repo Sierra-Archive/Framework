@@ -85,7 +85,7 @@ var Sierra = (function () {
     function Sessao_Deletar(nome) {
         if(nome===false){
             Cache = {};
-        }else{
+        } else {
             Cache['SierraTec_'+nome] = undefined;
         }
         return true;
@@ -100,7 +100,7 @@ var Sierra = (function () {
                 return window.localStorage.getObject('SierraTec_'+nome);
             }
             return false;
-        }else{
+        } else {
             return Sessao_Ler(nome);
         }
     }
@@ -117,7 +117,7 @@ var Sierra = (function () {
                 return false;
             }
             return true;
-        }else{
+        } else {
             return Sessao_Gravar(nome,valor);
         }
     }  
@@ -129,11 +129,11 @@ var Sierra = (function () {
         if (Modernizr.localstorage) {
             if(nome===false){
                 window.localStorage.clear();
-            }else{
+            } else {
                 window.localStorage.removeItem('SierraTec_'+nome);
             }
             return true;
-        }else{
+        } else {
             return Sessao_Deletar(nome);
         }
     }    
@@ -253,7 +253,7 @@ var Sierra = (function () {
                     }
                 }
             };
-        }else{
+        } else {
             return {
                 timeFormat: 'HH:mm:ss'
             };
@@ -296,7 +296,7 @@ var Sierra = (function () {
                     }
                 }
             };
-        }else{
+        } else {
             return { 
                 timeFormat: 'HH:mm:ss'
             };
@@ -429,7 +429,7 @@ var Sierra = (function () {
             eval(url);
             console.timeEnd('Control_Link_Dinamico');
             return false;
-        }else{
+        } else {
             // Verifica é necessário Confirmação
             if (link.attr('data-confirma') !== undefined) {
                 $.blockUI({ 
@@ -484,7 +484,7 @@ var Sierra = (function () {
             elemento.removeClass('obrigatoriomarcado');
              console.timeEnd('Control_Form_PassagemDeCampo');
             return true;
-        }else{
+        } else {
             console.timeEnd('Control_Form_PassagemDeCampo');
             return false;
         }
@@ -561,7 +561,7 @@ var Sierra = (function () {
                 if (identificador_ch_tamanho) {
                     identificador.addClass('obrigatoriomarcado');
                 }
-            }else{
+            } else {
                 // Aplica a cor de fundo
                 elemento.removeClass('obrigatoriomarcado');
 
@@ -597,7 +597,7 @@ var Sierra = (function () {
         eval('validar = '+funcao_valida+'(valor)');
         if (validar === false) {
             elemento.addClass('obrigatoriomarcado').focus();
-        }else{
+        } else {
             elemento.removeClass('obrigatoriomarcado');
         }
         return validar;
@@ -729,7 +729,7 @@ var Sierra = (function () {
             toastr.error(mensagem_secundaria, mensagem_principal);
         }else if (tipo === 'aviso') {
             toastr.warning(mensagem_secundaria, mensagem_principal);
-        }else{
+        } else {
             toastr.info(mensagem_secundaria, mensagem_principal);
         }
     };
@@ -764,7 +764,7 @@ var Sierra = (function () {
         for(; i<tam; ++i){
             if (json['botoes'][i]['clique'] === '$( this ).dialog( "close" );') {
                 footer += '<button class="btn" data-dismiss="modal" aria-hidden="true" onCLick="Sierra.Control_Ajax_Popup_Fechar(\''+json["id"]+'\');">'+json['botoes'][i]['text']+'</button>';
-            }else{
+            } else {
                 footer += '<button class="btn btn-primary" onClick="'+json['botoes'][i]['clique']+'">'+json['botoes'][i]['text']+'</button>';
             }
         }
@@ -852,7 +852,7 @@ var Sierra = (function () {
     
         if(cache===false){
             cache = new Array();
-        }else{
+        } else {
             cache = cache.split('|');
         }
         for (var i in json){
@@ -901,7 +901,7 @@ var Sierra = (function () {
     
         if(cache===false){
             cache = new Array();
-        }else{
+        } else {
             cache = cache.split('|');
         }
         
@@ -980,7 +980,7 @@ var Sierra = (function () {
             Control_Layoult_Recarrega();
         }else if(typeof(data) === "string"){
             Modelo_Ajax_JsonTratar(url, JSON.parse(data), navegador);
-        }else{
+        } else {
             console.log('Erro',data);
         }
     };
@@ -1001,7 +1001,7 @@ var Sierra = (function () {
         //retorno = Cache_Ler(url);
         if(retorno!==false){
             Json(url,retorno,historico);
-        }else{
+        } else {
             if(carregando===true){
                 Control_PopMgs_Carregando();
             }
@@ -1039,7 +1039,7 @@ var Sierra = (function () {
                 if(req.status === 200 && resposta===true){
                     // Caso Pagina Exista, mas JSON Esteja incorreto
                     Modelo_Ajax_Chamar('_Sistema/erro/Javascript','html='+req.responseText,'POST',false,false,false);
-                }else{
+                } else {
                     // Página não existe
                 }
             }});
@@ -1308,7 +1308,7 @@ var Sierra = (function () {
                 element.mask("9.999.999-*");
             } else if(rg.length == 9) {
                 element.mask("99.999.999-*");
-            }else{
+            } else {
                 element.mask("999.999.999-*");
             };
          } }*/);
@@ -1345,10 +1345,10 @@ var Sierra = (function () {
             v=v.replace(/\D/g,""); //Remove tudo o que não é dígito
             if(tam>2){
                 v=v.replace(/(\d+)(\d{1})/,"$1");
-            }else{
+            } else {
                 return '00,00 %';
             }
-        }else{
+        } else {
             v=v.replace(/\D/g,""); //Remove tudo o que não é dígito
         }
         
@@ -1360,7 +1360,7 @@ var Sierra = (function () {
         // se for vazio retorna vazio
         if(v==''|| v===0){
             return '00,00 %';
-        }else{
+        } else {
             v = parseFloat(v)/100;
             v = v.toFixed(2);
         }
@@ -1370,7 +1370,7 @@ var Sierra = (function () {
         }else
         if(v<10){
             return '0'+v.toString().replace(".",",")+' %';
-        }else{
+        } else {
             return v.toString().replace(".",",")+' %';
         }
     }
@@ -1430,7 +1430,7 @@ var Sierra = (function () {
                     dia = dia+1;
                     data = data+'1';
                     continue;
-                }else{
+                } else {
                     dia = dia+num;
                 }
             }else
@@ -1442,7 +1442,7 @@ var Sierra = (function () {
                     mes = 10;
                     data = data+'1';
                     continue;
-                }else{
+                } else {
                     mes = num*10;
                 }
             }else
@@ -1465,7 +1465,7 @@ var Sierra = (function () {
                     dia = 30;
                     if(mes===11){
                         data = '30/'+mes.toString();
-                    }else{
+                    } else {
                         data = '30/0'+mes.toString();
                     }
                     continue;
@@ -1476,7 +1476,7 @@ var Sierra = (function () {
                     mes = 2;
                     data = '29/02';
                     continue;
-                }else{
+                } else {
                     mes = num+mes;
                 }
             }else
@@ -1489,7 +1489,7 @@ var Sierra = (function () {
                     direto = true;
                     continue;
                 }
-            }else{
+            } else {
                 // Guarda ano
                 ano = ano+(num*(8-i));
             }
@@ -1562,7 +1562,7 @@ var Sierra = (function () {
                     mes = 10;
                     data = data+'1';
                     continue;
-                }else{
+                } else {
                     mes = num*10;
                 }
             }else
@@ -1578,7 +1578,7 @@ var Sierra = (function () {
                     mes = 12;
                     data = data+'2';
                     continue;
-                }else{
+                } else {
                     mes = num+mes;
                 }
             }else
@@ -1591,7 +1591,7 @@ var Sierra = (function () {
                     direto = true;
                     continue;
                 }
-            }else{
+            } else {
                 // Guarda ano
                 ano = ano+(num*(6-i));
             }
@@ -1647,7 +1647,7 @@ var Sierra = (function () {
         v=v.replace(/\D/g,"").substring(0, 11);                 //Remove tudo o que não é dígito
         if(v.length===11){
             v=v.replace(/(\d{7})(\d)/,"$1-$2");    //Coloca hífen entre o quarto e o quinto dígitos
-        }else{
+        } else {
             v=v.replace(/(\d{6})(\d)/,"$1-$2");    //Coloca hífen entre o quarto e o quinto dígitos
         }
         v=v.replace(/^(\d\d)(\d)/g,"($1) $2"); //Coloca parênteses em volta dos dois primeiros dígitos
@@ -1874,7 +1874,7 @@ var Sierra = (function () {
         //if (/^((([a-z]|[0-9]|!|#|$|%|&|'|\*|\+|\-|\/|=|\?|\^|_|`|\{|\||\}|~)+(\.([a-z]|[0-9]|!|#|$|%|&|'|\*|\+|\-|\/|=|\?|\^|_|`|\{|\||\}|~)+)*)@((((([a-z]|[0-9])([a-z]|[0-9]|\-) {0,61}([a-z]|[0-9])\.))*([a-z]|[0-9])([a-z]|[0-9]|\-) {0,61}([a-z]|[0-9])\.)[\w]{2,4}|(((([0-9]) {1,3}\.) {3}([0-9]) {1,3}))|(\[((([0-9]) {1,3}\.) {3}([0-9]) {1,3})\])))$/.test(email)) {
         if (/^[A-Za-z0-9_\-\.]+@[A-Za-z0-9_\-\.]{2,}\.[A-Za-z0-9]{2,}(\.[A-Za-z0-9])?/.test(email)) {
             return true;
-        }else{
+        } else {
             return false;
         }
     };
@@ -1885,7 +1885,7 @@ var Sierra = (function () {
     function Control_Layoult_Valida_URL (url) {
         if (/^(([\w]+:)?\/\/)?(([\d\w]|%[a-fA-f\d]{2,2})+(:([\d\w]|%[a-fA-f\d]{2,2})+)?@)?([\d\w][-\d\w]{0,253}[\d\w]\.)+[\w]{2,4}(:[\d]+)?(\/([-+_~.\d\w]|%[a-fA-f\d]{2,2})*)*(\?(&?([-+_~.\d\w]|%[a-fA-f\d]{2,2})=?)*)?(#([-+_~.\d\w]|%[a-fA-f\d]{2,2})*)?$/.test(url)) {
             return true;
-        }else{
+        } else {
             return false;
         }
         /*if (!url)
@@ -2113,7 +2113,7 @@ var Sierra = (function () {
                //separa as partes em inteiro e decimal
                inteiro = valor.substring(0,c);
                decimal = valor.substring(c+1,valor.length);
-            }else{
+            } else {
                inteiro = valor;
             }
 
@@ -2134,7 +2134,7 @@ var Sierra = (function () {
             decimal = parseInt(decimal);
             if (isNaN(decimal)) {
                decimal = "00";
-            }else{
+            } else {
                decimal = ""+decimal;
                if (decimal.length === 1) {
                   decimal = decimal+"0";
@@ -2226,7 +2226,7 @@ var Sierra = (function () {
                     campoid1 = $(trocar[i]+'_escondendo');
                     campo   = trocar[i].replace('.', '#');
                     campoid2 = $(campo);
-                }else{
+                } else {
                     campoid1 = $(trocar[i]+'_escondendo');
                     campoid2 = $(trocar[i]);
                 }
@@ -2302,25 +2302,25 @@ var Sierra = (function () {
                         $(document.getElementById('numero')).focus();
                         if (uf_achado !== 0 && cidade_achado !== 0 && bairro_achado !== 0) {
                             Visual_Layoult_UniForm_Selectiona();
-                        }else{
+                        } else {
                             if (uf_achado === 0) {
                                 link += 'estado='+uf+'&';
-                            }else{
+                            } else {
                                 link += 'estado=falso&';
                             }
                             if (cidade_achado === 0) {
                                 link += 'cidade='+cidade+'&';
-                            }else{
+                            } else {
                                 link += 'cidade=falso&';
                             }
                             if (bairro_achado === 0) {
                                 link += 'bairro='+bairro+'&';
-                            }else{
+                            } else {
                                 link += 'bairro=falso&';
                             }
                             Modelo_Ajax_Chamar('locais/localidades/cep',link,'POST',true,false,false);
                         }
-                    }else{
+                    } else {
                         Control_PopMgs_Abrir('erro','Cep Inválido','Esse cep não foi reconhecido pelos Corrêios');
                         $(document.getElementById('endereco')).focus();
                     }
@@ -2416,7 +2416,7 @@ var Sierra = (function () {
                 valorfinal = valorfinal+(diasdecorridos*valor1);
             }else if (diasdecorridos<10) {
                 valorfinal = valorfinal+(diasdecorridos*valor2);
-            }else{
+            } else {
                 valorfinal = valorfinal+(diasdecorridos*valor3);
             }
             $(document.getElementById('valor')).val('R$ '+Visual_Moeda_Manipulacao(valorfinal,2,',','.'));

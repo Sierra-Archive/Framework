@@ -37,7 +37,7 @@ if ($stmt->prepare("SELECT estado FROM localizacao_cidades WHERE Nome=?")) {
 
     /* fecha a declaração */
     $stmt->close();
-}else{
+} else {
     echo __('nao preparo');
 }
 

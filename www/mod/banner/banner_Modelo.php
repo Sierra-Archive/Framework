@@ -34,7 +34,7 @@ class banner_Modelo extends \Framework\App\Modelo
     public function retorna_banners(&$banners,$categoria=0,$ativado=1){
         $i = 0;
         $mysqlwhere = '';
-        if($categoria==0) $EXTRA = '';
+        if ($categoria==0) $EXTRA = '';
         else              $EXTRA = ' AND B.categoria='.$categoria;
         $sql = $this->db->query('SELECT B.id, B.ixi, B.cliq
         FROM '.MYSQL_BANNERS.' B, '.MYSQL_CAT.' C WHERE B.deletado=0 AND B.categoria=C.id AND B.status='.$ativado.$EXTRA.' ORDER BY rand()');
@@ -56,7 +56,7 @@ class banner_Modelo extends \Framework\App\Modelo
      */
     public function retorna_banner($id){
         $id = (int) $id;
-        if(!isset($id) || !is_int($id) || $id==0) return 0;
+        if (!isset($id) || !is_int($id) || $id==0) return 0;
         $banner = Array();
         $sql = $this->db->query(' SELECT B.id, B.ixi, B.cliq
         FROM '.MYSQL_BANNERS.' B, '.MYSQL_CAT.' C
@@ -70,19 +70,19 @@ class banner_Modelo extends \Framework\App\Modelo
     }
     public function banner_contabiliza_cliq($id,$cliq){
         $id = (int) $id;
-        if(!isset($id) || !is_int($id) || $id==0) return 0;
+        if (!isset($id) || !is_int($id) || $id==0) return 0;
         $this->db->query('UPDATE '.MYSQL_BANNERS.' SET cliq='.$cliq.' WHERE id='.$id); //P.categoria
         return 1;
     }
     public static function banner_contabiliza_ixi(&$model, $id,$ixi){
         $id = (int) $id;
-        if(!isset($id) || !is_int($id) || $id==0) return 0;
+        if (!isset($id) || !is_int($id) || $id==0) return 0;
         $model->db->query('UPDATE '.MYSQL_BANNERS.' SET ixi='.$ixi.' WHERE id='.$id); //P.categoria
         return 1;
     }
     public static function retorna_banner_aleatorio(&$model, $cat){
         $cat = (int) $cat;
-        if(!isset($cat) || !is_int($cat) || $cat=='') return 0;
+        if (!isset($cat) || !is_int($cat) || $cat=='') return 0;
         $banner = Array();
         $sql = $model->db->query(' SELECT B.id, B.ixi, B.cliq, B.url, B.foto
         FROM '.MYSQL_BANNERS.' B

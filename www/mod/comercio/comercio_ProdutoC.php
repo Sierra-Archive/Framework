@@ -38,9 +38,9 @@ class comercio_ProdutoControle extends comercio_Controle
     static function Endereco_Produto($true=true){
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
-        if($true===true){
+        if ($true===true){
             $_Controle->Tema_Endereco(__('Produtos'),'comercio/Produto/Produtos');
-        }else{
+        } else {
             $_Controle->Tema_Endereco(__('Produtos'));
         }
     }
@@ -59,13 +59,13 @@ class comercio_ProdutoControle extends comercio_Controle
 
         $tabela_colunas = Array();
 
-        if($comercio_Produto_Cod){
+        if ($comercio_Produto_Cod){
             $tabela_colunas[] = __('#Cod');
         }
-        if($comercio_marca===true){
-            if($comercio_Produto_Familia=='Familia'){
+        if ($comercio_marca===true){
+            if ($comercio_Produto_Familia=='Familia'){
                 $tabela_colunas[] = __('Familia');
-            }else{
+            } else {
                 $tabela_colunas[] = __('Marca');
                 $tabela_colunas[] = __('Linha');
             }
@@ -73,14 +73,14 @@ class comercio_ProdutoControle extends comercio_Controle
         $tabela_colunas[] = __('Nome');
 
         // Coloca Preco
-        if(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Vendas')){
+        if (\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Vendas')){
             $tabela_colunas[] = __('Preço');
         }
 
-        if($comercio_Estoque){
+        if ($comercio_Estoque){
             $tabela_colunas[] = __('Estoque');
         }
-        if($comercio_Unidade){
+        if ($comercio_Unidade){
             $tabela_colunas[] = __('Unidade');
         }
         $tabela_colunas[] = __('Funções');
@@ -99,37 +99,37 @@ class comercio_ProdutoControle extends comercio_Controle
         self::DAO_Campos_Retira($campos,'referencia',0);
         
         // Se nao Tiver Modulo Simulador Retira Campo
-        if(!(\Framework\App\Sistema_Funcoes::Perm_Modulos('Simulador'))){
+        if (!(\Framework\App\Sistema_Funcoes::Perm_Modulos('Simulador'))){
             self::DAO_Campos_Retira($campos, __('Caracteristicas'));
         }
          
         // Outros
-        if(!\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Produto_Obs')){
+        if (!\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Produto_Obs')){
             self::DAO_Campos_Retira($campos,'obs',0);
         }
         
         // Retira Preco
-        if(!\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Vendas')){
+        if (!\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Vendas')){
             self::DAO_Campos_Retira($campos,'preco',0);
         }
         
-        if(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Marca')===true){
-            if(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Produto_Familia')==='Familia'){
+        if (\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Marca')===true){
+            if (\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Produto_Familia')==='Familia'){
                 self::DAO_Campos_Retira($campos, 'marca');
                 self::DAO_Campos_Retira($campos, 'linha');
-            }else{
+            } else {
                 self::DAO_Campos_Retira($campos, 'familia');
             }
-        }else{
+        } else {
             self::DAO_Campos_Retira($campos, 'marca');
             self::DAO_Campos_Retira($campos, 'linha');
             self::DAO_Campos_Retira($campos, 'familia');
         }
         
-        if(!\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Unidade')){
+        if (!\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Unidade')){
             self::DAO_Campos_Retira($campos, 'unidade');
         }
-        if(!\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Produto_Cod')){
+        if (!\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Produto_Cod')){
             self::DAO_Campos_Retira($campos, 'cod');
         }
     }
@@ -217,13 +217,13 @@ class comercio_ProdutoControle extends comercio_Controle
         $produto = $this->_Modelo->db->Sql_Select('Comercio_Produto', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($produto);
         // Mensagem
-    	if($sucesso===true){
+    	if ($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
                 "mgs_secundaria" => __('Produto Deletado com sucesso')
             );
-    	}else{
+    	} else {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),
@@ -240,9 +240,9 @@ class comercio_ProdutoControle extends comercio_Controle
     public function Estoque_Reduzir($produto=false){
         
         $campos = Comercio_Produto_Estoque_Reduzir_DAO::Get_Colunas();
-        if($produto===false || $produto==0){
+        if ($produto===false || $produto==0){
             $produto = '';
-        }else{
+        } else {
             $produto = (int) $produto;
             self::DAO_Campos_Retira($campos, 'produto');
         }
@@ -266,17 +266,17 @@ class comercio_ProdutoControle extends comercio_Controle
         $dao        = 'Comercio_Produto_Estoque_Reduzir';
         $sucesso1   = __('Sucesso');
         $sucesso2   = __('Redução Finalizada com Sucesso');
-        if($produto===false || $produto==0){
+        if ($produto===false || $produto==0){
             //$funcao     = '$this->Produtos(0);';
             $alterar    = Array();
-        }else{
+        } else {
             $produto    = (int) $produto;
             $alterar    = Array('produto'=>$produto);
             //$funcao     = '$this->Produtos('.$produto.');';
         }
         $funcao     = '$this->Produtos();';
         $sucesso = $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
-        if($sucesso===true){
+        if ($sucesso===true){
             $motivo = 'comercio_Produto';
             $identificador  = $this->_Modelo->db->Sql_Select('Comercio_Produto_Estoque_Reduzir', Array(),1,'id DESC');
             $prod  = (int) $identificador->produto;

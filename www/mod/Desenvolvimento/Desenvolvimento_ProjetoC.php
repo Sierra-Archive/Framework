@@ -19,17 +19,17 @@ class Desenvolvimento_ProjetoControle extends Desenvolvimento_Controle
         parent::__construct();
     }
     protected function Endereco_Projeto($true=true){
-        if($true===true){
+        if ($true===true){
             $this->Tema_Endereco(__('Projetos'),'Desenvolvimento/Projeto/Projetos');
-        }else{
+        } else {
             $this->Tema_Endereco(__('Projetos'));
         }
     }
     protected function Endereco_Projeto_Ver($projeto,$true=true){
         $this->Endereco_Projeto();
-        if($true===true){
+        if ($true===true){
             $this->Tema_Endereco($projeto->nome,'Desenvolvimento/Projeto/Projetos_View/'.$projeto->id);
-        }else{
+        } else {
             $this->Tema_Endereco($projeto->nome);
         }
     }
@@ -54,7 +54,7 @@ class Desenvolvimento_ProjetoControle extends Desenvolvimento_Controle
         $Visual     = &$Registro->_Visual;
         $tabela = Array();
         $i = 0;
-        if(is_object($projetos)) $projetos = Array(0=>$projetos);
+        if (is_object($projetos)) $projetos = Array(0=>$projetos);
         reset($projetos);
         foreach ($projetos as $indice=>&$valor) {
             $tabela['#Id'][$i]          =   '#'.$valor->id;
@@ -98,11 +98,11 @@ class Desenvolvimento_ProjetoControle extends Desenvolvimento_Controle
         )));
         // Query
         $projetos = $this->_Modelo->db->Sql_Select('Desenvolvimento_Projeto');
-        if($projetos!==false && !empty($projetos)){
+        if ($projetos!==false && !empty($projetos)){
             list($tabela,$i) = self::Projetos_Tabela($projetos);
-            if($export!==false){
+            if ($export!==false){
                 self::Export_Todos($export,$tabela, 'Projetos');
-            }else{
+            } else {
                 $this->_Visual->Show_Tabela_DataTable(
                     $tabela,     // Array Com a Tabela
                     '',          // style extra
@@ -116,7 +116,7 @@ class Desenvolvimento_ProjetoControle extends Desenvolvimento_Controle
                 );
             }
             unset($tabela);
-        }else{    
+        } else {    
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Projeto</font></b></center>');
         }
         $titulo = __('Listagem de Projetos').' ('.$i.')';
@@ -206,13 +206,13 @@ class Desenvolvimento_ProjetoControle extends Desenvolvimento_Controle
         $linha = $this->_Modelo->db->Sql_Select('Desenvolvimento_Projeto', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($linha);
         // Mensagem
-    	if($sucesso===true){
+    	if ($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
                 "mgs_secundaria" => __('Projeto Deletado com sucesso')
             );
-    	}else{
+    	} else {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),
@@ -235,31 +235,31 @@ class Desenvolvimento_ProjetoControle extends Desenvolvimento_Controle
      */
     public function Status($id=false){
         
-        if($id===false){
+        if ($id===false){
             return false;
         }
         $id = (int) $id;
         $resultado = $this->_Modelo->db->Sql_Select('Desenvolvimento_Projeto', Array('id'=>$id),1);
         
-        if($resultado===false || !is_object($resultado)){
+        if ($resultado===false || !is_object($resultado)){
             return false;
         }
         
         // troca Resutlado
-        if($resultado->status=='1'){
+        if ($resultado->status=='1'){
             $resultado->status='2'; // De Aprovada para Recusada
-        }else if($resultado->status=='2'){ // de Aprovada em Execução para Finalizada
+        }else if ($resultado->status=='2'){ // de Aprovada em Execução para Finalizada
             $resultado->status='3';
-        }else if($resultado->status=='3'){ // de Finalizada em Execução para Aprovada
+        }else if ($resultado->status=='3'){ // de Finalizada em Execução para Aprovada
             $resultado->status='4';
-        }else if($resultado->status=='4'){ // De Recusada para Pendente
+        }else if ($resultado->status=='4'){ // De Recusada para Pendente
             $resultado->status='0';
-        }else{
+        } else {
             $resultado->status='1';
         }
             
         $sucesso = $this->_Modelo->db->Sql_Update($resultado);
-        if($sucesso){
+        if ($sucesso){
             $mensagens = array(
                 "tipo"              => 'sucesso',
                 "mgs_principal"     => __('Sucesso'),
@@ -272,7 +272,7 @@ class Desenvolvimento_ProjetoControle extends Desenvolvimento_Controle
                 'html' =>  self::Statuslabel($resultado)
             );
             $this->_Visual->Json_IncluiTipo('Conteudo',$conteudo);
-        }else{
+        } else {
             $mensagens = array(
                 "tipo"              => 'erro',
                 "mgs_principal"     => __('Erro'),
@@ -291,19 +291,19 @@ class Desenvolvimento_ProjetoControle extends Desenvolvimento_Controle
     public static function Statuslabel($objeto,$link=true){
         $status = $objeto->status;
         $id = $objeto->id;
-        if($status=='0'){
+        if ($status=='0'){
             $tipo = 'warning';
             $nometipo = __('Pendente');
         }
-        else if($status=='1'){
+        else if ($status=='1'){
             $tipo = 'success';
             $nometipo = __('Aprovada');
         }
-        else if($status=='2'){
+        else if ($status=='2'){
             $tipo = 'info';
             $nometipo = __('Aprovada em Execução');
         }
-        else if($status=='3'){
+        else if ($status=='3'){
             $tipo = 'inverse';
             $nometipo = __('Finalizada');
         }
@@ -312,7 +312,7 @@ class Desenvolvimento_ProjetoControle extends Desenvolvimento_Controle
             $nometipo = __('Recusada');
         }
         $html = '<span class="badge badge-'.$tipo.'">'.$nometipo.'</span>';
-        if($link===true && \Framework\App\Registro::getInstacia()->_Acl->Get_Permissao_Url('Desenvolvimento/Projeto/Status')!==false){
+        if ($link===true && \Framework\App\Registro::getInstacia()->_Acl->Get_Permissao_Url('Desenvolvimento/Projeto/Status')!==false){
             $html = '<a href="'.URL_PATH.'Desenvolvimento/Projeto/Status/'.$id.'" border="1" class="lajax explicar-titulo" title="'.$nometipo.'" data-acao="" data-confirma="Deseja Realmente alterar o Status?">'.$html.'</a>';
         }
         return $html;
@@ -324,25 +324,25 @@ class Desenvolvimento_ProjetoControle extends Desenvolvimento_Controle
      */
     public function Destaque($id=false){
         
-        if($id===false){
+        if ($id===false){
             return false;
         }
         $id = (int) $id;
         $resultado = $this->_Modelo->db->Sql_Select('Desenvolvimento_Projeto', Array('id'=>$id),1);
         
-        if($resultado===false || !is_object($resultado)){
+        if ($resultado===false || !is_object($resultado)){
             return false;
         }
         
         // troca Resutlado
-        if($resultado->destaque=='1'){
+        if ($resultado->destaque=='1'){
             $resultado->destaque='0'; // De Aprovada para Recusada
-        }else{
+        } else {
             $resultado->destaque='1';
         }
             
         $sucesso = $this->_Modelo->db->Sql_Update($resultado);
-        if($sucesso){
+        if ($sucesso){
             $mensagens = array(
                 "tipo"              => 'sucesso',
                 "mgs_principal"     => __('Sucesso'),
@@ -355,7 +355,7 @@ class Desenvolvimento_ProjetoControle extends Desenvolvimento_Controle
                 'html' =>  self::Destaquelabel($resultado)
             );
             $this->_Visual->Json_IncluiTipo('Conteudo',$conteudo);
-        }else{
+        } else {
             $mensagens = array(
                 "tipo"              => 'erro',
                 "mgs_principal"     => __('Erro'),
@@ -374,15 +374,15 @@ class Desenvolvimento_ProjetoControle extends Desenvolvimento_Controle
     public static function Destaquelabel($objeto,$link=true){
         $destaque = $objeto->destaque;
         $id = $objeto->id;
-        if($destaque=='0'){
+        if ($destaque=='0'){
             $tipo = 'important';
             $nometipo = __('Não Destaque');
-        }else{
+        } else {
             $tipo = 'success';
             $nometipo = __('Destaque');
         }
         $html = '<span class="badge badge-'.$tipo.'">'.$nometipo.'</span>';
-        if($link===true && \Framework\App\Registro::getInstacia()->_Acl->Get_Permissao_Url('Desenvolvimento/Projeto/Destaque')!==false){
+        if ($link===true && \Framework\App\Registro::getInstacia()->_Acl->Get_Permissao_Url('Desenvolvimento/Projeto/Destaque')!==false){
             $html = '<a href="'.URL_PATH.'Desenvolvimento/Projeto/Destaque/'.$id.'" border="1" class="lajax explicar-titulo" title="'.$nometipo.'" data-acao="" data-confirma="Deseja Realmente alterar o Destaque?">'.$html.'</a>';
         }
         return $html;
@@ -390,9 +390,9 @@ class Desenvolvimento_ProjetoControle extends Desenvolvimento_Controle
     
     
     public function Projetos_View($Desenvolvimento_id = false){
-        if($Desenvolvimento_id===false || $Desenvolvimento_id==0 || !isset($Desenvolvimento_id)) return _Sistema_erroControle::Erro_Fluxo('Projeto não informado',404);
+        if ($Desenvolvimento_id===false || $Desenvolvimento_id==0 || !isset($Desenvolvimento_id)) return _Sistema_erroControle::Erro_Fluxo('Projeto não informado',404);
         $projeto = $this->_Modelo->db->Sql_Select('Desenvolvimento_Projeto',Array('id'=>$Desenvolvimento_id), 1);
-        if($projeto===false) return _Sistema_erroControle::Erro_Fluxo('Projeto não existe:'.$Desenvolvimento_id,404);
+        if ($projeto===false) return _Sistema_erroControle::Erro_Fluxo('Projeto não existe:'.$Desenvolvimento_id,404);
         
         
         
@@ -404,7 +404,7 @@ class Desenvolvimento_ProjetoControle extends Desenvolvimento_Controle
         
         
         // Biblioteca
-        if(\Framework\App\Sistema_Funcoes::Perm_Modulos('biblioteca')===true){
+        if (\Framework\App\Sistema_Funcoes::Perm_Modulos('biblioteca')===true){
             $this->_Visual->Bloco_Customizavel(Array(
                 Array(
                     'span'      =>      5,
@@ -435,7 +435,7 @@ class Desenvolvimento_ProjetoControle extends Desenvolvimento_Controle
                     ),),
                 )
             ));
-        }else{
+        } else {
             $this->_Visual->Blocar($html);
             $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',20);
             $this->_Visual->Blocar($html2);
@@ -450,7 +450,7 @@ class Desenvolvimento_ProjetoControle extends Desenvolvimento_Controle
      * @throws \Exception
      */
     public function Projetos_Popup($Desenvolvimento_id = false, $popup=true){
-        if($Desenvolvimento_id===false || $Desenvolvimento_id==0 || !isset($Desenvolvimento_id)) return _Sistema_erroControle::Erro_Fluxo('Projeto não informado',404);
+        if ($Desenvolvimento_id===false || $Desenvolvimento_id==0 || !isset($Desenvolvimento_id)) return _Sistema_erroControle::Erro_Fluxo('Projeto não informado',404);
         // mostra todas as suas mensagens
         $where = Array(
             'id'    =>  $Desenvolvimento_id,
@@ -462,9 +462,9 @@ class Desenvolvimento_ProjetoControle extends Desenvolvimento_Controle
         $html .= '<b>Observação:</b> '.$projeto->obs; 
         $html .= '</div>';    
         $titulo = 'Informações do Projeto (#'.$Desenvolvimento_id.')';
-        if($popup=='return'){
+        if ($popup=='return'){
             return Array($titulo,'<div class="row">'.$html.'</div>');
-        }else if($popup===true){
+        }else if ($popup===true){
             $conteudo = array(
                 'id' => 'popup',
                 'title' => $titulo,
@@ -478,7 +478,7 @@ class Desenvolvimento_ProjetoControle extends Desenvolvimento_Controle
             );
             $this->_Visual->Json_IncluiTipo('Popup',$conteudo);
             $this->_Visual->Json_Info_Update('Titulo', __('Visualizar Projeto'));
-        }else{
+        } else {
             $this->_Visual->Blocar('<div class="row">'.$html.'</div>');
             $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',20);
             $this->_Visual->Json_Info_Update('Titulo', __('Visualizar Projeto'));
@@ -497,17 +497,17 @@ class Desenvolvimento_ProjetoControle extends Desenvolvimento_Controle
      * @param type $return
      */
     public function Projetos_Comentario($Desenvolvimento_id = false,$return = false){
-        if($Desenvolvimento_id===false){
+        if ($Desenvolvimento_id===false){
             $where = Array();
-        }else{
+        } else {
             $where = Array('projeto'=>$Desenvolvimento_id);
         }
         
         $i = 0;
         $html = '<a title="Adicionar Comentário de Projeto" class="btn btn-success lajax explicar-titulo" data-acao="" href="'.URL_PATH.'Desenvolvimento/Projeto/Projetos_Comentario_Add/'.$Desenvolvimento_id.'">Adicionar novo comentário nesse Projeto</a><div class="space15"></div>';
         $comentario = $this->_Modelo->db->Sql_Select('Desenvolvimento_Projeto_Comentario',$where);
-        if($comentario!==false && !empty($comentario)){
-            if(is_object($comentario)) $comentario = Array(0=>$comentario);
+        if ($comentario!==false && !empty($comentario)){
+            if (is_object($comentario)) $comentario = Array(0=>$comentario);
             reset($comentario);
             foreach ($comentario as $indice=>&$valor) {
                 $tabela['#Id'][$i]          =   '#'.$valor->id;
@@ -519,14 +519,14 @@ class Desenvolvimento_ProjetoControle extends Desenvolvimento_Controle
             }
             $html .= $this->_Visual->Show_Tabela_DataTable($tabela,'', false, false, Array(Array(0,'desc')));
             unset($tabela);
-        }else{
+        } else {
             $html .= '<center><b><font color="#FF0000" size="5">Nenhum Comentário do Projeto</font></b></center>';
         }
         
         $titulo = __('Comentários do Projeto').' ('.$i.')';
-        if($return){
+        if ($return){
             return Array($titulo,$html);
-        }else{
+        } else {
             $this->_Visual->Blocar($html);
             $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',10);
         }
@@ -540,9 +540,9 @@ class Desenvolvimento_ProjetoControle extends Desenvolvimento_Controle
      */
     public function Projetos_Comentario_Add($Desenvolvimento_id = false){
         // Proteção E chama Endereço
-        if($Desenvolvimento_id===false) return _Sistema_erroControle::Erro_Fluxo('Projeto não informado',404);
+        if ($Desenvolvimento_id===false) return _Sistema_erroControle::Erro_Fluxo('Projeto não informado',404);
         $projeto = $this->_Modelo->db->Sql_Select('Desenvolvimento_Projeto',Array('id'=>$Desenvolvimento_id), 1);
-        if($projeto===false) return _Sistema_erroControle::Erro_Fluxo('Projeto não existe:'.$Desenvolvimento_id,404);
+        if ($projeto===false) return _Sistema_erroControle::Erro_Fluxo('Projeto não existe:'.$Desenvolvimento_id,404);
         $this->Endereco_Projeto_Ver($projeto);
         // Começo
         $Desenvolvimento_id = (int) $Desenvolvimento_id;
@@ -564,7 +564,7 @@ class Desenvolvimento_ProjetoControle extends Desenvolvimento_Controle
      * @version 0.4.2
      */
     public function Projetos_Comentario_Add2($Desenvolvimento_id = false){
-        if($Desenvolvimento_id===false) return _Sistema_erroControle::Erro_Fluxo('Projeto não informado',404);
+        if ($Desenvolvimento_id===false) return _Sistema_erroControle::Erro_Fluxo('Projeto não informado',404);
         $titulo     = __('Comentário do Projeto Adicionado com Sucesso');
         $dao        = 'Desenvolvimento_Projeto_Comentario';
         $funcao     = '$this->Projetos_View('.$Desenvolvimento_id.');';
@@ -580,11 +580,11 @@ class Desenvolvimento_ProjetoControle extends Desenvolvimento_Controle
      * @version 0.4.2
      */
     public function Projetos_Comentario_Edit($Desenvolvimento_id = false,$id = 0){
-        if($Desenvolvimento_id===false) return _Sistema_erroControle::Erro_Fluxo('Projeto não informado',404);
-        if($id         == 0   ) return _Sistema_erroControle::Erro_Fluxo('Comentário não informado',404);
+        if ($Desenvolvimento_id===false) return _Sistema_erroControle::Erro_Fluxo('Projeto não informado',404);
+        if ($id         == 0   ) return _Sistema_erroControle::Erro_Fluxo('Comentário não informado',404);
         // Proteção E chama Endereço
         $projeto = $this->_Modelo->db->Sql_Select('Desenvolvimento_Projeto',Array('id'=>$Desenvolvimento_id), 1);
-        if($projeto===false) return _Sistema_erroControle::Erro_Fluxo('Projeto não existe:'.$Desenvolvimento_id,404);
+        if ($projeto===false) return _Sistema_erroControle::Erro_Fluxo('Projeto não existe:'.$Desenvolvimento_id,404);
         $this->Endereco_Projeto_Ver($projeto);
         // Começo
         // Carrega Config
@@ -606,8 +606,8 @@ class Desenvolvimento_ProjetoControle extends Desenvolvimento_Controle
      * @version 0.4.2
      */
     public function Projetos_Comentario_Edit2($Desenvolvimento_id = false,$id = 0){
-        if($Desenvolvimento_id===false) return _Sistema_erroControle::Erro_Fluxo('Projeto não informado',404);
-        if($id         == 0   ) return _Sistema_erroControle::Erro_Fluxo('Comentário não informado',404);
+        if ($Desenvolvimento_id===false) return _Sistema_erroControle::Erro_Fluxo('Projeto não informado',404);
+        if ($id         == 0   ) return _Sistema_erroControle::Erro_Fluxo('Comentário não informado',404);
         $titulo     = __('Comentário de Projeto Editado com Sucesso');
         $dao        = Array('Desenvolvimento_Projeto_Comentario',$id);
         $funcao     = '$this->Projetos_View('.$Desenvolvimento_id.');';
@@ -624,8 +624,8 @@ class Desenvolvimento_ProjetoControle extends Desenvolvimento_Controle
      * @version 0.4.2
      */
     public function Projetos_Comentario_Del($Desenvolvimento_id = false,$id = 0){
-        if($Desenvolvimento_id===false) return _Sistema_erroControle::Erro_Fluxo('Projeto não informado',404);
-        if($id         == 0   ) return _Sistema_erroControle::Erro_Fluxo('Comentário não informado',404);
+        if ($Desenvolvimento_id===false) return _Sistema_erroControle::Erro_Fluxo('Projeto não informado',404);
+        if ($id         == 0   ) return _Sistema_erroControle::Erro_Fluxo('Comentário não informado',404);
         
         
     	$id = (int) $id;
@@ -634,13 +634,13 @@ class Desenvolvimento_ProjetoControle extends Desenvolvimento_Controle
         $comentario = $this->_Modelo->db->Sql_Select('Desenvolvimento_Projeto_Comentario', $where);
         $sucesso =  $this->_Modelo->db->Sql_Delete($comentario);
         // Mensagem
-    	if($sucesso===true){
+    	if ($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
                 "mgs_secundaria" => __('Comentário do Projeto Deletado com sucesso')
             );
-    	}else{
+    	} else {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),

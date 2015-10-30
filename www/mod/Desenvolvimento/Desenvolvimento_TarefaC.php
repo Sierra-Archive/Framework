@@ -19,9 +19,9 @@ class Desenvolvimento_TarefaControle extends Desenvolvimento_Controle
         parent::__construct();
     }
     protected function Endereco_Tarefa($true=true){
-        if($true===true){
+        if ($true===true){
             $this->Tema_Endereco(__('Tarefas'),'Desenvolvimento/Tarefa/Tarefas');
-        }else{
+        } else {
             $this->Tema_Endereco(__('Tarefas'));
         }
     }
@@ -46,7 +46,7 @@ class Desenvolvimento_TarefaControle extends Desenvolvimento_Controle
         $Visual     = &$Registro->_Visual;
         $tabela = Array();
         $i = 0;
-        if(is_object($tarefas)) $tarefas = Array(0=>$tarefas);
+        if (is_object($tarefas)) $tarefas = Array(0=>$tarefas);
         reset($tarefas);
         foreach ($tarefas as $indice=>&$valor) {
             $tabela['#Id'][$i]          =   '#'.$valor->id;
@@ -87,11 +87,11 @@ class Desenvolvimento_TarefaControle extends Desenvolvimento_Controle
         )));
         // Query
         $tarefas = $this->_Modelo->db->Sql_Select('Desenvolvimento_Projeto_Tarefa');
-        if($tarefas!==false && !empty($tarefas)){
+        if ($tarefas!==false && !empty($tarefas)){
             list($tabela,$i) = self::Tarefas_Tabela($tarefas);
-            if($export!==false){
+            if ($export!==false){
                 self::Export_Todos($export,$tabela, 'Tarefas');
-            }else{
+            } else {
                 $this->_Visual->Show_Tabela_DataTable(
                     $tabela,     // Array Com a Tabela
                     '',          // style extra
@@ -105,7 +105,7 @@ class Desenvolvimento_TarefaControle extends Desenvolvimento_Controle
                 );
             }
             unset($tabela);
-        }else{    
+        } else {    
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhuma Tarefa</font></b></center>');
         }
         $titulo = __('Listagem de Tarefas').' ('.$i.')';
@@ -195,13 +195,13 @@ class Desenvolvimento_TarefaControle extends Desenvolvimento_Controle
         $linha = $this->_Modelo->db->Sql_Select('Desenvolvimento_Projeto_Tarefa', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($linha);
         // Mensagem
-    	if($sucesso===true){
+    	if ($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
                 "mgs_secundaria" => __('Tarefa Deletada com sucesso')
             );
-    	}else{
+    	} else {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),

@@ -47,7 +47,7 @@ function SetCol($col)
 function AcceptPageBreak()
 {
 	// Method accepting or not automatic page break
-	if($this->col<2)
+	if ($this->col<2)
 	{
 		// Go to next column
 		$this->SetCol($this->col+1);

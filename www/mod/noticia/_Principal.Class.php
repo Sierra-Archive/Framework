@@ -48,13 +48,13 @@ class noticia_Principal implements \Framework\PrincipalInterface
         $i = 0;
         // Busca Noticias
         $result = self::Busca_Noticias($controle, $Modelo, $Visual, $busca);
-        if($result!==false){
+        if ($result!==false){
             $i = $i + $result;
         }
         // Retorna
-        if(is_int($i) && $i>0){
+        if (is_int($i) && $i>0){
             return $i;
-        }else{
+        } else {
             return false;
         }
     }
@@ -79,14 +79,14 @@ class noticia_Principal implements \Framework\PrincipalInterface
         ));
         $i = 0;
         $noticias = $Modelo->db->Sql_Select('Noticia',$where);
-        if($noticias===false) return false;
+        if ($noticias===false) return false;
         // add botao
         $Visual->Blocar('<a title="Adicionar Noticia" class="btn btn-success lajax explicar-titulo" data-acao="" href="'.URL_PATH.'Noticia/Admin/Noticias_Add">Adicionar novo Noticia</a><div class="space15"></div>');
-        if(is_object($noticias)) $noticias = Array(0=>$noticias);
-        if($noticias!==false && !empty($noticias)){
+        if (is_object($noticias)) $noticias = Array(0=>$noticias);
+        if ($noticias!==false && !empty($noticias)){
             list($tabela,$i) = noticia_AdminControle::Noticias_Tabela($noticias);
             $Visual->Show_Tabela_DataTable($tabela);
-        }else{   
+        } else {   
             $Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhuma Noticia na Busca '.$busca.'</font></b></center>');
         }
         $titulo = 'Busca de Noticias: '.$busca.' ('.$i.')';

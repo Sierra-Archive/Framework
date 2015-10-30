@@ -61,7 +61,7 @@ class usuario_veiculo_AdminModelo extends usuario_veiculo_Modelo
             $categoria = explode('-',$categoria);
             $subcat = $categoria[1];
             $categoria = $categoria[0];
-        }else{
+        } else {
             $subcat = 0;
         }
 
@@ -92,7 +92,7 @@ class usuario_veiculo_AdminModelo extends usuario_veiculo_Modelo
             $categoria = explode('-',$categoria);
             $subcat = $categoria[1];
             $categoria = $categoria[0];
-        }else{
+        } else {
             $subcat = 0;
         }
         $this->db->query('UPDATE '.MYSQL_USUARIO_VEICULO.' SET categoria=\''.$categoria.'\', categoria_sub=\''.$subcat.'\', ano=\''.$ano.'\', modelo=\''.$modelo.'\', marca=\''.$marca.'\', cc=\''.$cc.'\', valor1=\''.$valor1.'\', valor2=\''.$valor2.'\', valor3=\''.$valor3.'\', franquia=\''.$franquia.'\', obs=\''.$obs.'\' WHERE deletado!=1 AND id='.$id);

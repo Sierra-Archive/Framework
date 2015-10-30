@@ -41,7 +41,7 @@ class usuario_mensagem_SuporteModelo extends usuario_mensagem_Modelo
                     $setoreswhere[$i] = $valor->id;
                     ++$i;
                 }
-            }else{
+            } else {
                 return 0;
             }
             // Carrega Assuntos de Acordo com os grupos acima 
@@ -52,7 +52,7 @@ class usuario_mensagem_SuporteModelo extends usuario_mensagem_Modelo
                 $where = Array(
                     'INsetor'      => $setoreswhere
                 );
-            }else{
+            } else {
                 // mostra todas as suas mensagens
                 $where = Array();
             }
@@ -73,7 +73,7 @@ class usuario_mensagem_SuporteModelo extends usuario_mensagem_Modelo
                 'INassunto'      => $assuntoswhere,
                 '!finalizado'     => 1
             );
-        }else{
+        } else {
             // mostra todas as suas mensagens
             $where = Array('!finalizado'     => 1);
         }
@@ -100,7 +100,7 @@ class usuario_mensagem_SuporteModelo extends usuario_mensagem_Modelo
             $where = Array(
                 'cliente'      => $cliente
             );
-        }else{
+        } else {
             // mostra todas as suas mensagens
             $where = Array();
         }
@@ -128,7 +128,7 @@ class usuario_mensagem_SuporteModelo extends usuario_mensagem_Modelo
         if($cliente!=0){
             // mostra todos os tickets para ADMIN
             $where = 'cliente='.$cliente;
-        }else{
+        } else {
             // mostra todas as suas mensagens
             $where = false;
         }

@@ -2673,7 +2673,7 @@ $.ui.plugin.add("resizable", "alsoResize", {
 		if (typeof(o.alsoResize) == 'object' && !o.alsoResize.parentNode) {
 			if (o.alsoResize.length) { o.alsoResize = o.alsoResize[0]; _store(o.alsoResize); }
 			else { $.each(o.alsoResize, function (exp) { _store(exp); }); }
-		}else{
+		} else {
 			_store(o.alsoResize);
 		}
 	},
@@ -2703,7 +2703,7 @@ $.ui.plugin.add("resizable", "alsoResize", {
 
 		if (typeof(o.alsoResize) == 'object' && !o.alsoResize.nodeType) {
 			$.each(o.alsoResize, function (exp, c) { _alsoResize(exp, c); });
-		}else{
+		} else {
 			_alsoResize(o.alsoResize);
 		}
 	},

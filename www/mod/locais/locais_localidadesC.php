@@ -10,41 +10,41 @@ class locais_localidadesControle extends locais_Controle
     }
     public function cep(){
         // Controla
-        if(isset($_POST['pais'])){
+        if (isset($_POST['pais'])){
             $pais = \Framework\App\Conexao::anti_injection($_POST['pais']);
-        }else{
+        } else {
             $pais = '1'; // Brasil
         }
-        if(isset($_POST['estado'])){
+        if (isset($_POST['estado'])){
             $estado = \Framework\App\Conexao::anti_injection($_POST['estado']);
-        }else{
+        } else {
             $estado = '';
         }
-        if(isset($_POST['cidade'])){
+        if (isset($_POST['cidade'])){
             $cidade = \Framework\App\Conexao::anti_injection($_POST['cidade']);
-        }else{
+        } else {
             $cidade = '';
         }
-        if(isset($_POST['bairro'])){
+        if (isset($_POST['bairro'])){
             $bairro = \Framework\App\Conexao::anti_injection($_POST['bairro']);
-        }else{
+        } else {
             $bairro = '';
         }
         
         // Limpa
-        if($estado=='' || !isset($estado)){
+        if ($estado=='' || !isset($estado)){
             $estado = 'falso';
         }
-        if($cidade=='' || !isset($cidade)){
+        if ($cidade=='' || !isset($cidade)){
             $cidade = 'falso';
         }
-        if($bairro=='' || !isset($bairro)){
+        if ($bairro=='' || !isset($bairro)){
             $bairro = 'falso';
         }
         $imprimir = function(&$opcoes){
             $html = '';
-            if($opcoes!==false && !empty($opcoes)){
-                if(is_object($opcoes)) $opcoes = Array(0=>$opcoes);
+            if ($opcoes!==false && !empty($opcoes)){
+                if (is_object($opcoes)) $opcoes = Array(0=>$opcoes);
                 reset($opcoes);
                 foreach ($opcoes as $indice2=>$valor2) {
                     $selecionado = 0;
@@ -54,16 +54,16 @@ class locais_localidadesControle extends locais_Controle
             return $html;
         };
         // Estado
-        if($estado!='falso'){
+        if ($estado!='falso'){
             $where      =   Array('sigla'=>$estado,'pais'=>$pais);
             $opcoes     =   $this->_Modelo->db->Sql_Select('Sistema_Local_Estado', $where, 1);
             $where      =   Array('!sigla'=>$estado);
             // Verifica Se Estado Escolhido Existe
-            if(is_object($opcoes)){
+            if (is_object($opcoes)){
                 $id_estado = $opcoes->id;
                 $where['pais'] = $opcoes->pais;
                 $where['!id'] = $id_estado;
-            }else{
+            } else {
                 $mensagem = 'Estado não Existe '."\n";
                 $mensagem .= 'Estado: '.$estado."\n";
                 $mensagem .= 'Cidade: '.$cidade."\n";
@@ -85,16 +85,16 @@ class locais_localidadesControle extends locais_Controle
             );
             $this->_Visual->Json_IncluiTipo('Conteudo',$conteudo);
             // CIdade
-            if($cidade!='falso'){
+            if ($cidade!='falso'){
                 $where      =   Array('estado'=>$id_estado,'nome'=>$cidade);
                 $opcoes     =   $this->_Modelo->db->Sql_Select('Sistema_Local_Cidade', $where, 1);
                 $where      =   Array('estado'=>$id_estado);
                 // Verifica Se Estado Escolhido Existe
-                if(is_object($opcoes)){
+                if (is_object($opcoes)){
                     $id_cidade = $opcoes->id;
                     $where['!nome'] = $cidade;
                     $where['!id'] = $id_cidade;
-                }else{
+                } else {
                     $mensagem = 'Cidade não Existe '."\n";
                     $mensagem .= 'Estado: '.$estado."\n";
                     $mensagem .= 'Cidade: '.$cidade."\n";
@@ -114,14 +114,14 @@ class locais_localidadesControle extends locais_Controle
                 );
                 $this->_Visual->Json_IncluiTipo('Conteudo',$conteudo);
                 // Bairro
-                if($bairro!='falso'){
+                if ($bairro!='falso'){
                     // Procura Selecionado
                     $where      =   Array('cidade'=>$id_cidade,'nome'=>$bairro);
                     $opcoes     =   $this->_Modelo->db->Sql_Select('Sistema_Local_Bairro', $where, 1);
                     $where      =   Array('!nome'=>$bairro,'cidade'=>$id_cidade);
-                    if(is_object($opcoes)){
+                    if (is_object($opcoes)){
                         $where['!id'] = $opcoes->id;
-                    }else{
+                    } else {
                         $mensagem = 'Bairro não Existe '."\n";
                         $mensagem .= 'Estado: '.$estado."\n";
                         $mensagem .= 'Cidade: '.$cidade."\n";
@@ -141,7 +141,7 @@ class locais_localidadesControle extends locais_Controle
                     $this->_Visual->Json_IncluiTipo('Conteudo',$conteudo);
                 }
             }
-        }else{
+        } else {
             //Cep Não Reconhecido
             $mensagens = array(
                 "tipo"              => 'erro',
@@ -168,8 +168,8 @@ class locais_localidadesControle extends locais_Controle
         $i = 0;
         $this->_Visual->Blocar('<a title="Adicionar País" class="btn btn-success lajax explicar-titulo" data-acao="" href="'.URL_PATH.'locais/localidades/Paises_Add">Adicionar novo País</a><div class="space15"></div>');
         $setores = $this->_Modelo->db->Sql_Select('Sistema_Local_Pais');
-        if($setores!==false && !empty($setores)){
-            if(is_object($setores)) $setores = Array(0=>$setores);
+        if ($setores!==false && !empty($setores)){
+            if (is_object($setores)) $setores = Array(0=>$setores);
             reset($setores);
             foreach ($setores as $indice=>&$valor) {
                 $tabela['Nome'][$i]             = $valor->nome;
@@ -179,7 +179,7 @@ class locais_localidadesControle extends locais_Controle
             }
             $this->_Visual->Show_Tabela_DataTable($tabela);
             unset($tabela);
-        }else{       
+        } else {       
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum País</font></b></center>');
         }
         $titulo = __('Listagem de Paises').' ('.$i.')';
@@ -262,13 +262,13 @@ class locais_localidadesControle extends locais_Controle
         $setor = $this->_Modelo->db->Sql_Select('Sistema_Local_Pais', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($setor);
         // Mensagem
-    	if($sucesso===true){
+    	if ($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
                 "mgs_secundaria" => __('País deletado com sucesso')
             );
-    	}else{
+    	} else {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),
@@ -291,8 +291,8 @@ class locais_localidadesControle extends locais_Controle
         $i = 0;
         $this->_Visual->Blocar('<a title="Adicionar Estado" class="btn btn-success lajax explicar-titulo" data-acao="" href="'.URL_PATH.'locais/localidades/Estados_Add">Adicionar novo Estado</a><div class="space15"></div>');
         $setores = $this->_Modelo->db->Sql_Select('Sistema_Local_Estado');
-        if($setores!==false && !empty($setores)){
-            if(is_object($setores)) $setores = Array(0=>$setores);
+        if ($setores!==false && !empty($setores)){
+            if (is_object($setores)) $setores = Array(0=>$setores);
             reset($setores);
             foreach ($setores as $indice=>&$valor) {
                 $tabela['Nome'][$i]             = $valor->nome;
@@ -302,7 +302,7 @@ class locais_localidadesControle extends locais_Controle
             }
             $this->_Visual->Show_Tabela_DataTable($tabela);
             unset($tabela);
-        }else{
+        } else {
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Estado</font></b></center>');
         }
         $titulo = __('Listagem de Estados').' ('.$i.')';
@@ -390,13 +390,13 @@ class locais_localidadesControle extends locais_Controle
         $setor = $this->_Modelo->db->Sql_Select('Sistema_Local_Estado', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($setor);
         // Mensagem
-    	if($sucesso===true){
+    	if ($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
                 "mgs_secundaria" => __('Estado deletado com sucesso')
             );
-    	}else{
+    	} else {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),
@@ -419,8 +419,8 @@ class locais_localidadesControle extends locais_Controle
         $i = 0;
         $this->_Visual->Blocar('<a title="Adicionar Cidade" class="btn btn-success lajax explicar-titulo" data-acao="" href="'.URL_PATH.'locais/localidades/Cidades_Add">Adicionar nova Cidade</a><div class="space15"></div>');
         $setores = $this->_Modelo->db->Sql_Select('Sistema_Local_Cidade');
-        if($setores!==false && !empty($setores)){
-            if(is_object($setores)) $setores = Array(0=>$setores);
+        if ($setores!==false && !empty($setores)){
+            if (is_object($setores)) $setores = Array(0=>$setores);
             reset($setores);
             foreach ($setores as $indice=>&$valor) {
                 $tabela['Nome'][$i]             = $valor->nome;
@@ -430,7 +430,7 @@ class locais_localidadesControle extends locais_Controle
             }
             $this->_Visual->Show_Tabela_DataTable($tabela);
             unset($tabela);
-        }else{
+        } else {
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhuma Cidade</font></b></center>');
         }
         $titulo = __('Listagem de Cidades').' ('.$i.')';
@@ -518,13 +518,13 @@ class locais_localidadesControle extends locais_Controle
         $setor = $this->_Modelo->db->Sql_Select('Sistema_Local_Cidade', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($setor);
         // Mensagem
-    	if($sucesso===true){
+    	if ($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
                 "mgs_secundaria" => __('Cidade deletada com sucesso')
             );
-    	}else{
+    	} else {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),
@@ -547,8 +547,8 @@ class locais_localidadesControle extends locais_Controle
         $i = 0;
         $this->_Visual->Blocar('<a title="Adicionar Bairro" class="btn btn-success lajax explicar-titulo" data-acao="" href="'.URL_PATH.'locais/localidades/Bairros_Add">Adicionar novo Bairro</a><div class="space15"></div>');
         $setores = $this->_Modelo->db->Sql_Select('Sistema_Local_Bairro');
-        if($setores!==false && !empty($setores)){
-            if(is_object($setores)) $setores = Array(0=>$setores);
+        if ($setores!==false && !empty($setores)){
+            if (is_object($setores)) $setores = Array(0=>$setores);
             reset($setores);
             foreach ($setores as $indice=>&$valor) {
                 $tabela['Nome'][$i]             = $valor->nome;
@@ -558,7 +558,7 @@ class locais_localidadesControle extends locais_Controle
             }
             $this->_Visual->Show_Tabela_DataTable($tabela);
             unset($tabela);
-        }else{
+        } else {
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Bairro</font></b></center>');
         }
         $titulo = __('Listagem de Bairros').' ('.$i.')';
@@ -646,13 +646,13 @@ class locais_localidadesControle extends locais_Controle
         $setor = $this->_Modelo->db->Sql_Select('Sistema_Local_Bairro', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($setor);
         // Mensagem
-    	if($sucesso===true){
+    	if ($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
                 "mgs_secundaria" => __('Bairro deletado com sucesso')
             );
-    	}else{
+    	} else {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),

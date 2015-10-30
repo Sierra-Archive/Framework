@@ -37,9 +37,9 @@ class Agenda_AgendaControle extends Agenda_Controle
         $this->_Visual->Json_Info_Update('Titulo', __('Agendas')); 
     }
     protected function Endereco_Agenda($true=true){
-        if($true===true){
+        if ($true===true){
             $this->Tema_Endereco(__('Agendas'),'Agenda/Agenda/Agendas');
-        }else{
+        } else {
             $this->Tema_Endereco(__('Agendas'));
         }
     }
@@ -149,13 +149,13 @@ class Agenda_AgendaControle extends Agenda_Controle
         $compromisso = $this->_Modelo->db->Sql_Select('Agenda', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($compromisso);
         // Mensagem
-    	if($sucesso===true){
+    	if ($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
                 "mgs_secundaria" => __('Agenda Deletado com sucesso')
             );
-    	}else{
+    	} else {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),

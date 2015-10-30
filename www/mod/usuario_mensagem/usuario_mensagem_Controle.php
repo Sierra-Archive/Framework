@@ -29,14 +29,14 @@ class usuario_mensagem_Controle extends \Framework\App\Controle
         $mensagens = Array();
         if($admin==0 || $admin=='0'){
             $proprietario = $this->_Acl->Usuario_GetID();
-        }else{
+        } else {
             $proprietario = 0;
         }
         $this->_Modelo->Mensagens_Retorna($mensagens,$proprietario,1,$tipodemensagem);
         if(is_object($mensagens)) $mensagens = Array(0=>$mensagens);
         if(!empty($mensagens) && $mensagens!==false){
             $i = usuario_mensagem_Controle::Mensagens_TabelaMostrar($this->_Visual, $mensagens,$admin);
-        }else{
+        } else {
             if($admin==0){
                 if($tipodemensagem===false){
                     $texto_vazio = __('Você não possui nenhum chamado.');
@@ -49,7 +49,7 @@ class usuario_mensagem_Controle extends \Framework\App\Controle
                 }else if($tipodemensagem=='esg'){
                     $texto_vazio = __('Você não possui nenhum chamados Esgotado.');
                 }
-            }else{
+            } else {
                 if($tipodemensagem===false){
                     $texto_vazio = __('O sistema não possui nenhum chamado.');
                 }else if($tipodemensagem=='nov'){
@@ -78,7 +78,7 @@ class usuario_mensagem_Controle extends \Framework\App\Controle
             }else if($tipodemensagem=='esg'){
                 $titulo  = __('Todos seus Chamados em tempo Esgotado');
             }
-        }else{
+        } else {
             if($tipodemensagem===false){
                 $titulo  = __('Todos os Chamados do Sistema');
             }else if($tipodemensagem=='nov'){
@@ -136,7 +136,7 @@ class usuario_mensagem_Controle extends \Framework\App\Controle
             $tabela['Tipo'][$i]                 = $label($valor->tipo);
             if($valor->datapassada==1){
                 $tabela['Últ. Alteração'][$i]   = $valor->datapassada.' hora atrás';
-            }else{
+            } else {
                 $tabela['Últ. Alteração'][$i]   = $valor->datapassada.' horas atrás';
             }
             
@@ -144,7 +144,7 @@ class usuario_mensagem_Controle extends \Framework\App\Controle
             $tabela['Ultima Modificação'][$i]   = $valor->log_date_edit; //date_replace($valor->log_date_edit, "d/m/y | H:i");
             if($valor->tipo!='Finalizado'){
                 $tabela['Visualizar Mensagem'][$i]  = $Visual->Tema_Elementos_Btn('Personalizado' ,    Array('Finalizar Mensagem'         ,'usuario_mensagem/Suporte/Finalizar/'.$valor->id.'/'    ,'','download','inverse'),$perm_finalizar);
-            }else{
+            } else {
                 $tabela['Visualizar Mensagem'][$i] = '';
             }
             $tabela['Visualizar Mensagem'][$i]  .= $Visual->Tema_Elementos_Btn('Visualizar' ,    Array('Visualizar Mensagem'         ,'usuario_mensagem/Suporte/VisualizadordeMensagem/'.$valor->id.'/'    ,''),$perm_view).
@@ -255,10 +255,10 @@ class usuario_mensagem_Controle extends \Framework\App\Controle
         // Nao sei daonde Vem esse Paranome, foi feito isso pra consertar o erro
         if(isset($_POST["paranome"])){
             $paranome = \Framework\App\Conexao::anti_injection($_POST["paranome"]);
-        }else{
+        } else {
             if($cliente->razao_social!==''){
                 $paranome = $cliente->razao_social;
-            }else{
+            } else {
                 $paranome = $cliente->nome;
             }
         }
@@ -266,7 +266,7 @@ class usuario_mensagem_Controle extends \Framework\App\Controle
         // Pega para id , mesmo problema;
         if(isset($_POST["paraid"])){
             $paraid = (int) $_POST["paraid"];
-        }else{
+        } else {
             $paraid = $clienteid;
         }
         
@@ -306,7 +306,7 @@ class usuario_mensagem_Controle extends \Framework\App\Controle
         $emaildosetor = $setor->email;
         if(strpos($emaildosetor, ',')===false){
             $enviar .= '->setTo(\''.$emaildosetor.'\', \''.$setor->nome.'\')';
-        }else{
+        } else {
             $emaildosetor = explode(',', $emaildosetor);
             foreach($emaildosetor as &$valor){
                 $enviar .= '->setTo(\''.$valor.'\', \''.$setor->nome.'\')';
@@ -356,7 +356,7 @@ class usuario_mensagem_Controle extends \Framework\App\Controle
         $emaildosetor = $setor->email;
         if(strpos($emaildosetor, ',')===false){
             $enviar = '->setTo(\''.$emaildosetor.'\', \''.$setor->nome.'\')';
-        }else{
+        } else {
             $emaildosetor = explode(',', $emaildosetor);
             foreach($emaildosetor as &$valor){
                 $enviar .= '->setTo(\''.$valor.'\', \''.$setor->nome.'\')';
@@ -374,7 +374,7 @@ class usuario_mensagem_Controle extends \Framework\App\Controle
                 "mgs_principal" => __('Resposta inserida com Sucesso'),
                 "mgs_secundaria" => $resposta
             );
-        }else{
+        } else {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),
@@ -411,7 +411,7 @@ class usuario_mensagem_Controle extends \Framework\App\Controle
                     ++$espera;
                 }else if($tipo=='esg'){
                     ++$esgotado;
-                }else{
+                } else {
                     ++$finalizado;
                 }
             }

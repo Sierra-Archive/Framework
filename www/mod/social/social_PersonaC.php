@@ -37,9 +37,9 @@ class social_PersonaControle extends social_Controle
     protected static function Endereco_Persona($true=true){
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
-        if($true===true){
+        if ($true===true){
             $_Controle->Tema_Endereco(__('Personas'),'social/Persona/Personas');
-        }else{
+        } else {
             $_Controle->Tema_Endereco(__('Personas'));
         }
     }
@@ -47,13 +47,13 @@ class social_PersonaControle extends social_Controle
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
         self::Endereco_Persona();
-        if($true===true){
-            if(is_object($persona)){
+        if ($true===true){
+            if (is_object($persona)){
                 $_Controle->Tema_Endereco($persona->nome,'social/Persona/Personas_View/'.$persona->id);
-            }else{
+            } else {
                 $_Controle->Tema_Endereco(__('Todas as Pessoas'),'social/Persona/Personas_View/');
             }
-        }else{
+        } else {
             $_Controle->Tema_Endereco($persona->nome);
         }
     }
@@ -61,13 +61,13 @@ class social_PersonaControle extends social_Controle
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
         self::Endereco_Persona_Ver($persona);
-        if($true===true){
-            if(is_object($persona)){
+        if ($true===true){
+            if (is_object($persona)){
                 $_Controle->Tema_Endereco($persona->nome,'social/Persona/Ficou_View/'.$persona->id);
-            }else{
+            } else {
                 $_Controle->Tema_Endereco(__('Todas as Pessoas'),'social/Persona/Ficou_View/');
             }
-        }else{
+        } else {
             $_Controle->Tema_Endereco($persona->nome);
         }
     }
@@ -75,9 +75,9 @@ class social_PersonaControle extends social_Controle
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
         self::Endereco_Persona_Ver_Ficar($persona);
-        if($true===true){
+        if ($true===true){
             $_Controle->Tema_Endereco($ficada->nome,'social/Persona/Personas_View/'.$persona->id);
-        }else{
+        } else {
             $_Controle->Tema_Endereco($ficada->nome);
         }
     }
@@ -103,18 +103,18 @@ class social_PersonaControle extends social_Controle
             )
         )));
         $personas = $this->_Modelo->db->Sql_Select('Social');
-        if($personas!==false && !empty($personas)){
-            if(is_object($personas)) $personas = Array(0=>$personas);
+        if ($personas!==false && !empty($personas)){
+            if (is_object($personas)) $personas = Array(0=>$personas);
             reset($personas);
             foreach ($personas as $indice=>&$valor) {
-                    if($valor->id_face!=0){
+                    if ($valor->id_face!=0){
                         $face = '<a href="http://www.facebook.com/profile.php?id='.$valor->id_face.'" target="_blank" alt="'.$valor->id_face.'"><img alt="'.__('Foto de Perfil').' src="http://graph.facebook.com/'.$valor->id_face.'/picture"></a>';
-                    }else{
+                    } else {
                         $face = __('Sem foto');
                     }
-                    if($valor->perfil_sexo!=0){
+                    if ($valor->perfil_sexo!=0){
                         $sexo = __('Masculino');
-                    }else{
+                    } else {
                         $sexo = __('Feminino');
                     }
                 $tabela['Foto'][$i]             = $face;
@@ -125,9 +125,9 @@ class social_PersonaControle extends social_Controle
                                                   $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Pessoa'       ,'social/Persona/Personas_Del/'.$valor->id.'/'     ,'Deseja realmente deletar essa Pessoa ?'));
                 ++$i;
             }
-            if($export!==false){
+            if ($export!==false){
                 self::Export_Todos($export,$tabela, 'Social - Pessoas');
-            }else{
+            } else {
                 $this->_Visual->Show_Tabela_DataTable(
                     $tabela,     // Array Com a Tabela
                     '',          // style extra
@@ -141,7 +141,7 @@ class social_PersonaControle extends social_Controle
                 );
             }
             unset($tabela);
-        }else{          
+        } else {          
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhuma Pessoa</font></b></center>');
         }
         $titulo = __('Listagem de Pessoas').' ('.$i.')';
@@ -231,13 +231,13 @@ class social_PersonaControle extends social_Controle
         $setor = $this->_Modelo->db->Sql_Select('Social', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($setor);
         // Mensagem
-    	if($sucesso===true){
+    	if ($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
                 "mgs_secundaria" => __('Pessoa deletada com sucesso')
             );
-    	}else{
+    	} else {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),
@@ -252,7 +252,7 @@ class social_PersonaControle extends social_Controle
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
     public function Personas_View($persona_id = false){
-        if($persona_id===false || $persona_id==0 || !isset($persona_id)){
+        if ($persona_id===false || $persona_id==0 || !isset($persona_id)){
             return false;
         }
         // mostra todas as suas mensagens
@@ -285,17 +285,17 @@ class social_PersonaControle extends social_Controle
      */
     public function Personas_Comentario($persona_id = false,$tipo='Unico'){
         
-        if($persona_id===false){
+        if ($persona_id===false){
             $where = Array();
-        }else{
+        } else {
             $where = Array('persona'=>$persona_id);
         }
         
         $i = 0;
         $this->_Visual->Blocar('<a title="Adicionar Comentário de Persona" class="btn btn-success lajax explicar-titulo" data-acao="" href="'.URL_PATH.'social/Persona/Personas_Comentario_Add/'.$persona_id.'">Adicionar novo comentário nesse Persona</a><div class="space15"></div>');
         $comentario = $this->_Modelo->db->Sql_Select('Social_Comentario',$where);
-        if($comentario!==false && !empty($comentario)){
-            if(is_object($comentario)) $comentario = Array(0=>$comentario);
+        if ($comentario!==false && !empty($comentario)){
+            if (is_object($comentario)) $comentario = Array(0=>$comentario);
             reset($comentario);
             foreach ($comentario as $indice=>&$valor) {
                 $tabela['#Id'][$i]          =   '#'.$valor->id;
@@ -307,15 +307,15 @@ class social_PersonaControle extends social_Controle
             }
             $this->_Visual->Show_Tabela_DataTable($tabela,'', true, false, Array(Array(0,'desc')));
             unset($tabela);
-        }else{          
+        } else {          
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Comentário do Persona</font></b></center>');
         }
         $titulo = __('Comentários do Persona').' ('.$i.')';
-        if($tipo=='Unico'){
+        if ($tipo=='Unico'){
             $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',10);
-        }else if($tipo=='Esquerda'){
+        }else if ($tipo=='Esquerda'){
             $this->_Visual->Bloco_Maior_CriaJanela($titulo,'',10);
-        }else{
+        } else {
             $this->_Visual->Bloco_Menor_CriaJanela($titulo,'',10);
         }
         
@@ -329,9 +329,9 @@ class social_PersonaControle extends social_Controle
      */
     public function Personas_Comentario_Add($persona_id = false){
         // Proteção E chama Endereço
-        if($persona_id===false) return false;
+        if ($persona_id===false) return false;
         $persona = $this->_Modelo->db->Sql_Select('Social',Array('id'=>$persona_id), 1);
-        if($persona===false) return false;
+        if ($persona===false) return false;
         $this->Endereco_Persona_Ver($persona);
         // Começo
         $persona_id = (int) $persona_id;
@@ -353,7 +353,7 @@ class social_PersonaControle extends social_Controle
      * @version 0.4.2
      */
     public function Personas_Comentario_Add2($persona_id = false){
-        if($persona_id===false) return false;
+        if ($persona_id===false) return false;
         $titulo     = __('Comentário do Persona Adicionado com Sucesso');
         $dao        = 'Social_Comentario';
         $funcao     = '$this->Personas_View('.$persona_id.');';
@@ -369,11 +369,11 @@ class social_PersonaControle extends social_Controle
      * @version 0.4.2
      */
     public function Personas_Comentario_Edit($persona_id = false,$id = 0){
-        if($persona_id===false) return false;
-        if($id         == 0   ) return false;
+        if ($persona_id===false) return false;
+        if ($id         == 0   ) return false;
         // Proteção E chama Endereço
         $persona = $this->_Modelo->db->Sql_Select('Social',Array('id'=>$persona_id), 1);
-        if($persona===false) return _Sistema_erroControle::Erro_Fluxo('Persona não existe:'.$persona_id,404);
+        if ($persona===false) return _Sistema_erroControle::Erro_Fluxo('Persona não existe:'.$persona_id,404);
         $this->Endereco_Persona_Ver($persona);
         // Começo
         // Carrega Config
@@ -395,8 +395,8 @@ class social_PersonaControle extends social_Controle
      * @version 0.4.2
      */
     public function Personas_Comentario_Edit2($persona_id = false,$id = 0){
-        if($persona_id===false) return false;
-        if($id         == 0   ) return false;
+        if ($persona_id===false) return false;
+        if ($id         == 0   ) return false;
         $titulo     = __('Comentário de Persona Editado com Sucesso');
         $dao        = Array('Social_Comentario',$id);
         $funcao     = '$this->Personas_View('.$persona_id.');';
@@ -413,8 +413,8 @@ class social_PersonaControle extends social_Controle
      * @version 0.4.2
      */
     public function Personas_Comentario_Del($persona_id = false,$id = 0){
-        if($persona_id===false) return _Sistema_erroControle::Erro_Fluxo('Persona não informado',404);
-        if($id         == 0   ) return _Sistema_erroControle::Erro_Fluxo('Comentário não informado',404);
+        if ($persona_id===false) return _Sistema_erroControle::Erro_Fluxo('Persona não informado',404);
+        if ($id         == 0   ) return _Sistema_erroControle::Erro_Fluxo('Comentário não informado',404);
         
         
     	$id = (int) $id;
@@ -423,13 +423,13 @@ class social_PersonaControle extends social_Controle
         $comentario = $this->_Modelo->db->Sql_Select('Social_Comentario', $where);
         $sucesso =  $this->_Modelo->db->Sql_Delete($comentario);
         // Mensagem
-    	if($sucesso===true){
+    	if ($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
                 "mgs_secundaria" => __('Comentário do Persona Deletado com sucesso')
             );
-    	}else{
+    	} else {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),
@@ -446,25 +446,25 @@ class social_PersonaControle extends social_Controle
     public function Ficou($persona_id=false,$tipo='Unico'){
         $i = 0;
         $this->_Visual->Blocar('<a title="Adicionar Nova Ficada" class="btn btn-success lajax explicar-titulo" data-acao="" href="'.URL_PATH.'social/Persona/Ficou_Add/'.$persona_id.'">Adicionar Nova Ficada</a><div class="space15"></div>');
-        if($persona_id===false){
+        if ($persona_id===false){
             self::Endereco_Persona_Ver_Ficar(false);
             $where = Array();
-        }else{
+        } else {
             $persona_id = (int) $persona_id;
             self::Endereco_Persona_Ver_Ficar($this->_Modelo->db->Sql_Select('Social','{sigla}id=\''.$persona_id.'\''));
             $where = Array(Array('persona1'=>$persona_id,'persona2'=>$persona_id));
         }
         
         $personas = $this->_Modelo->db->Sql_Select('Social_Ficou',$where);
-        if($personas!==false && !empty($personas)){
-            if(is_object($personas)) $personas = Array(0=>$personas);
+        if ($personas!==false && !empty($personas)){
+            if (is_object($personas)) $personas = Array(0=>$personas);
             reset($personas);
             foreach ($personas as $indice=>&$valor) {
-                if($valor->persona1==$persona_id){
+                if ($valor->persona1==$persona_id){
                     $tabela['Nome'][$i]        = $valor->persona22;
-                }else if($valor->persona2==$persona_id){
+                }else if ($valor->persona2==$persona_id){
                     $tabela['Nome'][$i]           = $valor->persona12;
-                }else{
+                } else {
                     $tabela['Nome de Um'][$i]           = $valor->persona12;
                     $tabela['Nome do Outro'][$i]        = $valor->persona22;
                 }
@@ -476,15 +476,15 @@ class social_PersonaControle extends social_Controle
             }
             $this->_Visual->Show_Tabela_DataTable($tabela);
             unset($tabela);
-        }else{          
+        } else {          
             $this->_Visual->Blocar('<center><b><p class="text-error">'.__('Nenhuma Ficada de Pessoa').'</p></b></center>');
         }
         $titulo = __('Listagem de Ficada de Pessoas').' ('.$i.')';
-        if($tipo=='Unico'){
+        if ($tipo=='Unico'){
             $this->_Visual->Bloco_Unico_CriaJanela($titulo);
-        }else if($tipo=='Esquerda'){
+        }else if ($tipo=='Esquerda'){
             $this->_Visual->Bloco_Maior_CriaJanela($titulo);
-        }else{
+        } else {
             $this->_Visual->Bloco_Menor_CriaJanela($titulo);
         }
         
@@ -504,10 +504,10 @@ class social_PersonaControle extends social_Controle
         $formid     = 'SierraForm_social_Persona_Ficou';
         $formbt     = __('Salvar');
         $campos = Social_Ficou_DAO::Get_Colunas();
-        if($persona_id!==false){
+        if ($persona_id!==false){
             self::DAO_Campos_Retira($campos,'persona1');
             $formlink   = 'social/Persona/Ficou_Add2/'.$persona_id;
-        }else{  
+        } else {  
             $formlink   = 'social/Persona/Ficou_Add2/';
         }
         \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos);
@@ -523,10 +523,10 @@ class social_PersonaControle extends social_Controle
         $persona_id = (int) $persona_id;
         $titulo     = __('Ficada de Pessoa adicionada com Sucesso');
         $dao        = 'Social_Ficou';
-        if($persona_id===false){
+        if ($persona_id===false){
             $funcao     = '$this->Ficou();';
             $alterar    = Array();
-        }else{
+        } else {
             $funcao     = '$this->Personas_View('.$persona_id.');';
             $alterar    = Array('persona1'=>$persona_id);
         }
@@ -547,9 +547,9 @@ class social_PersonaControle extends social_Controle
         $titulo2    = __('Alteração de Ficada de Pessoa');
         $formid     = 'SierraForm_social_Persona_Ficou';
         $formbt     = __('Alterar Pessoa');
-        if($persona_id!==false){
+        if ($persona_id!==false){
             $formlink   = 'social/Persona/Ficou_Edit2/'.$id.'/'.$persona_id;
-        }else{  
+        } else {  
             $formlink   = 'social/Persona/Ficou_Edit2/'.$id.'/';
         }
         $editar     = Array('Social_Ficou',$id);
@@ -564,13 +564,13 @@ class social_PersonaControle extends social_Controle
      * @version 0.4.2
      */
     public function Ficou_Edit2($id,$persona_id=false){
-        if(!isset($_POST['nome'])) return false;
+        if (!isset($_POST['nome'])) return false;
         
         $titulo     = __('Ficada de Pessoa editada com Sucesso');
         $dao        = Array('Social_Ficou',$id);
-        if($persona_id===false){
+        if ($persona_id===false){
             $funcao     = '$this->Ficou();';
-        }else{
+        } else {
             $funcao     = '$this->Personas_View('.$persona_id.');';
         }
         $sucesso1   = __('Ficada de Pessoa Alterada com Sucesso.');
@@ -593,13 +593,13 @@ class social_PersonaControle extends social_Controle
         $setor = $this->_Modelo->db->Sql_Select('Social_Ficou', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($setor);
         // Mensagem
-    	if($sucesso===true){
+    	if ($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
                 "mgs_secundaria" => __('Ficada de Pessoa deletada com sucesso')
             );
-    	}else{
+    	} else {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),
@@ -608,9 +608,9 @@ class social_PersonaControle extends social_Controle
         }
         $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
         
-        if($persona_id===false){
+        if ($persona_id===false){
             $this->Ficou();
-        }else{
+        } else {
             $this->Personas_View($persona_id);
         }
         
@@ -618,7 +618,7 @@ class social_PersonaControle extends social_Controle
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
     public function Ficou_View($ficada_id = false, $persona_id = false){
-        if($ficada_id===false || $ficada_id==0 || !isset($ficada_id)) return _Sistema_erroControle::Erro_Fluxo('Ficada não informada',404);
+        if ($ficada_id===false || $ficada_id==0 || !isset($ficada_id)) return _Sistema_erroControle::Erro_Fluxo('Ficada não informada',404);
         // mostra todas as suas mensagens
         $where = Array(
             'id'    =>  $ficada_id,
@@ -630,10 +630,10 @@ class social_PersonaControle extends social_Controle
         $html .= '<b>Nome 2:</b> '.$ficada->persona22.'<br>';  
         $html .= '<b>Observação:</b> '.$ficada->obs; 
         $html .= '</div>';    
-        if($persona_id===false){
+        if ($persona_id===false){
             $titulo = 'Informações da Ficada (#'.$ficada_id.')';
             $this->Ficou_Comentario($ficada_id);
-        }else{
+        } else {
             $where = Array(
                 'id'    =>  $persona_id,
             );
@@ -655,9 +655,9 @@ class social_PersonaControle extends social_Controle
      * @version 0.4.2
      */
     public function Ficou_Comentario($ficada_id = false, $export = false){
-        if($ficada_id===false){
+        if ($ficada_id===false){
             $where = Array();
-        }else{
+        } else {
             $where = Array('ficada'=>$ficada_id);
         }
         
@@ -677,8 +677,8 @@ class social_PersonaControle extends social_Controle
             )
         )));
         $comentario = $this->_Modelo->db->Sql_Select('Social_Ficou_Comentario',$where);
-        if($comentario!==false && !empty($comentario)){
-            if(is_object($comentario)) $comentario = Array(0=>$comentario);
+        if ($comentario!==false && !empty($comentario)){
+            if (is_object($comentario)) $comentario = Array(0=>$comentario);
             reset($comentario);
             foreach ($comentario as $indice=>&$valor) {
                 //$tabela['#Id'][$i]        = '#'.$valor->id;
@@ -688,13 +688,13 @@ class social_PersonaControle extends social_Controle
                                                 $this->_Visual->Tema_Elementos_Btn('Deletar'         ,Array('Deletar Comentário de Persona'       ,'social/Persona/Ficou_Comentario_Del/'.$ficada_id.'/'.$valor->id.'/'     ,'Deseja realmente deletar esse Comentário?'));
                 ++$i;
             }
-            if($export!==false){
+            if ($export!==false){
                 self::Export_Todos($export,$tabela, 'Usuario Social - Ficada (#'.$ficada_id.') Comentários');
-            }else{
+            } else {
                 $this->_Visual->Show_Tabela_DataTable($tabela);
             }
             unset($tabela);
-        }else{           
+        } else {           
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Comentário</font></b></center>');
         }
         $titulo = __('Comentários').' ('.$i.')';
@@ -709,10 +709,10 @@ class social_PersonaControle extends social_Controle
      */
     public function Ficou_Comentario_Add($ficada_id = false){
         // Proteção E chama Endereço
-        if($ficada_id===false) return _Sistema_erroControle::Erro_Fluxo('Ficada não informada',404);
+        if ($ficada_id===false) return _Sistema_erroControle::Erro_Fluxo('Ficada não informada',404);
         $ficada_id = (int) $ficada_id;
         $ficada = $this->_Modelo->db->Sql_Select('Social_Ficou',Array('id'=>$ficada_id), 1);
-        if($ficada===false) return _Sistema_erroControle::Erro_Fluxo('Ficada não existe:'.$ficada_id,404);
+        if ($ficada===false) return _Sistema_erroControle::Erro_Fluxo('Ficada não existe:'.$ficada_id,404);
         
         self::Endereco_Persona_Ver_Ficar_Ver($ficada);
         // Carrega Config
@@ -733,7 +733,7 @@ class social_PersonaControle extends social_Controle
      * @version 0.4.2
      */
     public function Ficou_Comentario_Add2($ficada_id = false){
-        if($ficada_id===false) return _Sistema_erroControle::Erro_Fluxo('Ficada não informada',404);
+        if ($ficada_id===false) return _Sistema_erroControle::Erro_Fluxo('Ficada não informada',404);
         $titulo     = __('Comentário do Ficada Adicionada com Sucesso');
         $dao        = 'Social_Ficou_Comentario';
         $funcao     = '$this->Ficou_View('.$ficada_id.');';
@@ -749,11 +749,11 @@ class social_PersonaControle extends social_Controle
      * @version 0.4.2
      */
     public function Ficou_Comentario_Edit($ficada_id = false,$id = 0){
-        if($ficada_id===false) return _Sistema_erroControle::Erro_Fluxo('Ficada não informada',404);
-        if($id         == 0   ) return _Sistema_erroControle::Erro_Fluxo('Comentário não informado',404);
+        if ($ficada_id===false) return _Sistema_erroControle::Erro_Fluxo('Ficada não informada',404);
+        if ($id         == 0   ) return _Sistema_erroControle::Erro_Fluxo('Comentário não informado',404);
         // Proteção E chama Endereço
         $ficada = $this->_Modelo->db->Sql_Select('Social_Ficou',Array('id'=>$ficada_id), 1);
-        if($ficada===false) return _Sistema_erroControle::Erro_Fluxo('Ficada não existe:'.$ficada_id,404);
+        if ($ficada===false) return _Sistema_erroControle::Erro_Fluxo('Ficada não existe:'.$ficada_id,404);
         
         self::Endereco_Persona_Ver_Ficar_Ver();
         // Começo
@@ -776,8 +776,8 @@ class social_PersonaControle extends social_Controle
      * @version 0.4.2
      */
     public function Ficou_Comentario_Edit2($ficada_id = false,$id = 0){
-        if($ficada_id===false)  return _Sistema_erroControle::Erro_Fluxo('Ficada não informada',404);
-        if($id         == 0   ) return _Sistema_erroControle::Erro_Fluxo('Comentário não informado',404);
+        if ($ficada_id===false)  return _Sistema_erroControle::Erro_Fluxo('Ficada não informada',404);
+        if ($id         == 0   ) return _Sistema_erroControle::Erro_Fluxo('Comentário não informado',404);
         $titulo     = __('Comentário de Ficada Editada com Sucesso');
         $dao        = Array('Social_Ficou_Comentario',$id);
         $funcao     = '$this->Ficou_View('.$persona_id.');';
@@ -794,8 +794,8 @@ class social_PersonaControle extends social_Controle
      * @version 0.4.2
      */
     public function Ficou_Comentario_Del($ficada_id = false,$id = 0){
-        if($ficada_id===false)  return _Sistema_erroControle::Erro_Fluxo('Ficada não informada',404);
-        if($id         == 0   ) return _Sistema_erroControle::Erro_Fluxo('Comentário não informado',404);
+        if ($ficada_id===false)  return _Sistema_erroControle::Erro_Fluxo('Ficada não informada',404);
+        if ($id         == 0   ) return _Sistema_erroControle::Erro_Fluxo('Comentário não informado',404);
         
     	$id = (int) $id;
         // Puxa linha e deleta
@@ -803,13 +803,13 @@ class social_PersonaControle extends social_Controle
         $comentario = $this->_Modelo->db->Sql_Select('Social_Ficou_Comentario', $where);
         $sucesso =  $this->_Modelo->db->Sql_Delete($comentario);
         // Mensagem
-    	if($sucesso===true){
+    	if ($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
                 "mgs_secundaria" => __('Comentário do Ficada Deletada com sucesso')
             );
-    	}else{
+    	} else {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),

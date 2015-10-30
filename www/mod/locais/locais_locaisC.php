@@ -11,9 +11,9 @@ class locais_locaisControle extends locais_Controle
     static function Endereco_Local($true=true){
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
-        if($true===true){
+        if ($true===true){
             $_Controle->Tema_Endereco(__('Locais'),'locais/locais/Locais');
-        }else{
+        } else {
             $_Controle->Tema_Endereco(__('Locais'));
         }
     }
@@ -41,8 +41,8 @@ class locais_locaisControle extends locais_Controle
         )));
         // Query
         $setores = $this->_Modelo->db->Sql_Select('Local');
-        if($setores!==false && !empty($setores)){
-            if(is_object($setores)) $setores = Array(0=>$setores);
+        if ($setores!==false && !empty($setores)){
+            if (is_object($setores)) $setores = Array(0=>$setores);
             reset($setores);
             foreach ($setores as $indice=>&$valor) {
                 $tabela['Tipo de Local'][$i]             = $valor->categoria2;
@@ -51,9 +51,9 @@ class locais_locaisControle extends locais_Controle
                                                   $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Local'       ,'locais/locais/Locais_Del/'.$valor->id.'/'     ,'Deseja realmente deletar esse Local ?'));
                 ++$i;
             }
-            if($export!==false){
+            if ($export!==false){
                 self::Export_Todos($export,$tabela, 'Locais');
-            }else{
+            } else {
                 $this->_Visual->Show_Tabela_DataTable(
                     $tabela,     // Array Com a Tabela
                     '',          // style extra
@@ -67,7 +67,7 @@ class locais_locaisControle extends locais_Controle
                 );
             }
             unset($tabela);
-        }else{        
+        } else {        
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Local</font></b></center>');
         }
         $titulo = __('Listagem de Locais').' ('.$i.')';
@@ -157,13 +157,13 @@ class locais_locaisControle extends locais_Controle
         $setor = $this->_Modelo->db->Sql_Select('Local', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($setor);
         // Mensagem
-    	if($sucesso===true){
+    	if ($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
                 "mgs_secundaria" => __('Local deletado com sucesso')
             );
-    	}else{
+    	} else {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),

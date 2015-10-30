@@ -43,9 +43,9 @@ class usuario_ExpedienteControle extends usuario_Controle
     static function Endereco_Expediente($true=true){
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
-        if($true===true){
+        if ($true===true){
             $_Controle->Tema_Endereco(__('Expediente'),'usuario/Expediente/Expediente');
-        }else{
+        } else {
             $_Controle->Tema_Endereco(__('Expediente'));
         }
     }
@@ -73,8 +73,8 @@ class usuario_ExpedienteControle extends usuario_Controle
             )
         )));
         $expedientes = $this->_Modelo->db->Sql_Select('Usuario_Expediente');
-        if($expedientes!==false && !empty($expedientes)){
-            if(is_object($expedientes)) $expedientes = Array(0=>$expedientes);
+        if ($expedientes!==false && !empty($expedientes)){
+            if (is_object($expedientes)) $expedientes = Array(0=>$expedientes);
             reset($expedientes);
             foreach ($expedientes as $indice=>&$valor) {
                 $tabela['Pessoa'][$i]           = $valor->persona2;
@@ -84,9 +84,9 @@ class usuario_ExpedienteControle extends usuario_Controle
                                                   $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Expediente'       ,'usuario/Expediente/Expedientes_Del/'.$valor->id.'/'     ,'Deseja realmente deletar essa Expediente ?'));
                 ++$i;
             }
-            if($export!==false){
+            if ($export!==false){
                 self::Export_Todos($export,$tabela, 'Expedientes');
-            }else{
+            } else {
                 $this->_Visual->Show_Tabela_DataTable(
                     $tabela,     // Array Com a Tabela
                     '',          // style extra
@@ -100,7 +100,7 @@ class usuario_ExpedienteControle extends usuario_Controle
                 );
             }
             unset($tabela);
-        }else{        
+        } else {        
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Expediente</font></b></center>');
         }
         $titulo = __('Listagem de Expedientes').' ('.$i.')';
@@ -200,13 +200,13 @@ class usuario_ExpedienteControle extends usuario_Controle
         $setor = $this->_Modelo->db->Sql_Select('Usuario_Expediente', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($setor);
         // Mensagem
-    	if($sucesso===true){
+    	if ($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletada'),
                 "mgs_secundaria" => __('Expediente deletada com sucesso')
             );
-    	}else{
+    	} else {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),
@@ -232,9 +232,9 @@ class usuario_ExpedienteControle extends usuario_Controle
     public static function Disponivel($tipobloco='Unico',$span=true){
         $Registro = Framework\App\Registro::getInstacia();
 
-        if($span===true){
+        if ($span===true){
             $html = '<span id="usuario_Expediente_Disponiveis">';
-        }else{
+        } else {
             $html = '';
         }
         
@@ -242,8 +242,8 @@ class usuario_ExpedienteControle extends usuario_Controle
         $Registros_usuario = $Registro->_Modelo->db->Sql_Select('Usuario');
         $Registros_expediente = $Registro->_Modelo->db->Sql_Select('Usuario_Expediente','{sigla}fim=\'0000-00-00 00:00:00\'');
         $usuarios_nao_podem = Array();
-        if(is_object($Registros_expediente))$Registros_expediente = Array($Registros_expediente);
-        if(is_array($Registros_expediente)){
+        if (is_object($Registros_expediente))$Registros_expediente = Array($Registros_expediente);
+        if (is_array($Registros_expediente)){
             foreach ($Registros_expediente as &$valor){
                 $usuarios_nao_podem[] = $valor->usuario;
             }
@@ -261,14 +261,14 @@ class usuario_ExpedienteControle extends usuario_Controle
             'obrigatorio',
             __('Escolha um Funcionário')
         );
-        /*if($valor['edicao']['valor_padrao']===false){
+        /*if ($valor['edicao']['valor_padrao']===false){
             $html .= $form->Select_Opcao('','',1);
-        }else{
+        } else {
             $html .= $form->Select_Opcao('','',0);
         }*/
-        if(is_array($Registros_usuario)){
+        if (is_array($Registros_usuario)){
             foreach ($Registros_usuario as &$valor){
-                if(array_search($valor->id, $usuarios_nao_podem)===false){
+                if (array_search($valor->id, $usuarios_nao_podem)===false){
                     $form->Select_Opcao($valor->nome,$valor->id,0);
                 }
             }
@@ -285,21 +285,21 @@ class usuario_ExpedienteControle extends usuario_Controle
         $tabela_colunas[] = __('Funções');
         $html .= $Registro->_Visual->Show_Tabela_DataTable_Massiva($tabela_colunas,'usuario/Expediente/Expedientes','',false);
         
-        if($span===true){
+        if ($span===true){
             $html .= '</span>';
         }
         
         $titulo = __('Disponiveis'); //.' (<span id="DataTable_Contador">0</span>)';        
-        if($tipobloco==='Unico'){
+        if ($tipobloco==='Unico'){
             $Registro->_Visual->Blocar($html);
             $Registro->_Visual->Bloco_Unico_CriaJanela($titulo,'',100,Array("link"=>"usuario/Expediente/Expedientes_Add",'icon'=>'add','nome'=>__('Adicionar Expediente')));
-        }else if($tipobloco==='Maior'){
+        }else if ($tipobloco==='Maior'){
             $Registro->_Visual->Blocar($html);
             $Registro->_Visual->Bloco_Maior_CriaJanela($titulo,'',100,Array("link"=>"usuario/Expediente/Expedientes_Add",'icon'=>'add','nome'=>__('Adicionar Expediente')));
-        }else if($tipobloco==='Menor'){
+        }else if ($tipobloco==='Menor'){
             $Registro->_Visual->Blocar($html);
             $Registro->_Visual->Bloco_Menor_CriaJanela($titulo,'',100,Array("link"=>"usuario/Expediente/Expedientes_Add",'icon'=>'add','nome'=>__('Adicionar Expediente')));
-        }else{
+        } else {
             return $html;
         }
         return true;
@@ -316,9 +316,9 @@ class usuario_ExpedienteControle extends usuario_Controle
     public static function Almoco($tipobloco='Unico',$span=true){
         $Registro = Framework\App\Registro::getInstacia();
 
-        if($span===true){
+        if ($span===true){
             $html = '<span id="usuario_Expediente_Almoco">';
-        }else{
+        } else {
             $html = '';
         }
         
@@ -332,21 +332,21 @@ class usuario_ExpedienteControle extends usuario_Controle
         $tabela_colunas[] = __('Funções');
         $html .= $Registro->_Visual->Show_Tabela_DataTable_Massiva($tabela_colunas,'usuario/Expediente/Expedientes/1/sim','',false);
         
-        if($span===true){
+        if ($span===true){
             $html .= '</span>';
         }
         
         $titulo = __('Em Almoço'); //.' (<span id="DataTable_Contador">0</span>)';        
-        if($tipobloco==='Unico'){
+        if ($tipobloco==='Unico'){
             $Registro->_Visual->Blocar($html);
             $Registro->_Visual->Bloco_Unico_CriaJanela($titulo,'',100);
-        }else if($tipobloco==='Maior'){
+        }else if ($tipobloco==='Maior'){
             $Registro->_Visual->Blocar($html);
             $Registro->_Visual->Bloco_Maior_CriaJanela($titulo,'',100);
-        }else if($tipobloco==='Menor'){
+        }else if ($tipobloco==='Menor'){
             $Registro->_Visual->Blocar($html);
             $Registro->_Visual->Bloco_Menor_CriaJanela($titulo,'',100);
-        }else{
+        } else {
             return $html;
         }
         return true;
@@ -360,9 +360,9 @@ class usuario_ExpedienteControle extends usuario_Controle
      * @version 0.4.2
      */
     public function Expediente_Add_Rapido($usuario=false){
-        if($usuario===false){
+        if ($usuario===false){
             $usuario = (int) $_POST['usuario'];
-        }else{
+        } else {
             $usuario = (int) $usuario;
         }
         $expediente = new Usuario_Expediente_DAO();
@@ -370,13 +370,13 @@ class usuario_ExpedienteControle extends usuario_Controle
         $expediente->inicio = APP_HORA_BR;
         
         $sucesso =  $this->_Modelo->db->Sql_Insert($expediente);
-    	if($sucesso===true){
+    	if ($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Iniciado'),
                 "mgs_secundaria" => __('Expediente Iniciado com sucesso')
             );
-    	}else{
+    	} else {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),
@@ -410,7 +410,7 @@ class usuario_ExpedienteControle extends usuario_Controle
         $id = (int) $id;
         $expediente = $this->_Modelo->db->Sql_Select('Usuario_Expediente','{sigla}id=\''.$id.'\'');
         
-        if($status==2){
+        if ($status==2){
             $expediente->fim = APP_HORA_BR;
             $expediente->status = '2';
             $expediente->qnt = Data_CalculaDiferenca_Em_Segundos($expediente->inicio,$expediente->fim);
@@ -422,7 +422,7 @@ class usuario_ExpedienteControle extends usuario_Controle
                 'html'      => self::Disponivel(false, false)
             );
             $this->_Visual->Json_IncluiTipo('Conteudo',$conteudo);
-        }else if($status==1){
+        }else if ($status==1){
             $expediente->status = '1';
             $sucesso =  $this->_Modelo->db->Sql_Update($expediente);
             // Recarrega DIsponiveis
@@ -439,7 +439,7 @@ class usuario_ExpedienteControle extends usuario_Controle
                 'html'      => self::Almoco(false, false)
             );
             $this->_Visual->Json_IncluiTipo('Conteudo',$conteudo);
-        }else{
+        } else {
             $expediente->status = '0';
             $sucesso =  $this->_Modelo->db->Sql_Update($expediente);
             // Recarrega DIsponiveis
@@ -457,13 +457,13 @@ class usuario_ExpedienteControle extends usuario_Controle
             );
             $this->_Visual->Json_IncluiTipo('Conteudo',$conteudo);
         }
-    	if($sucesso===true){
+    	if ($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Iniciado'),
                 "mgs_secundaria" => __('Expediente Alterado com sucesso')
             );
-    	}else{
+    	} else {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),

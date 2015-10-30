@@ -40,9 +40,9 @@ class comercio_LinhaControle extends comercio_Controle
         $_Controle = $Registro->_Controle;
         $titulo = __('Linhas');
         $link = 'comercio/Linha/Linhas';
-        if($true===true){
+        if ($true===true){
             $_Controle->Tema_Endereco($titulo,$link);
-        }else{
+        } else {
             $_Controle->Tema_Endereco($titulo);
         }
     }
@@ -146,13 +146,13 @@ class comercio_LinhaControle extends comercio_Controle
         $linha = $this->_Modelo->db->Sql_Select('Comercio_Linha', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($linha);
         // Mensagem
-    	if($sucesso===true){
+    	if ($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
                 "mgs_secundaria" => __('Linha Deletada com sucesso')
             );
-    	}else{
+    	} else {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),

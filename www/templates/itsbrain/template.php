@@ -48,7 +48,7 @@
 
         <!-- Content -->
         <div class="content">
-            <div class="title"><h5><span id="Framework_Titulo"><?php if($params['site_titulo']==''){ echo __('Sem Titulo'); }else{ echo $params['site_titulo']; } ?></span></h5></div>
+            <div class="title"><h5><span id="Framework_Titulo"><?php if($params['site_titulo']==''){ echo __('Sem Titulo'); } else { echo $params['site_titulo']; } ?></span></h5></div>
             <spam id="blocounico"<?php if( $params['template']['Bloco_Unico']==''){ ?> style="display: none;"<?php } ?>>
                 <?php echo $params['template']['Bloco_Unico']; ?>
             </spam>

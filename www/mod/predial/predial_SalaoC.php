@@ -26,9 +26,9 @@ class predial_SalaoControle extends predial_Controle
         $_Controle = $Registro->_Controle;
         $titulo = __('Saloes');
         $link = 'predial/Salao/Saloes';
-        if($true===true){
+        if ($true===true){
             $_Controle->Tema_Endereco($titulo,$link);
-        }else{
+        } else {
             $_Controle->Tema_Endereco($titulo);
         }
     }
@@ -37,7 +37,7 @@ class predial_SalaoControle extends predial_Controle
         $Visual     = &$Registro->_Visual;
         $tabela = Array();
         $i = 0;
-        if(is_object($saloes)) $saloes = Array(0=>$saloes);
+        if (is_object($saloes)) $saloes = Array(0=>$saloes);
         reset($saloes);
         foreach ($saloes as &$valor) {
             $tabela['Tipo'][$i]             = $valor->categoria2;
@@ -75,11 +75,11 @@ class predial_SalaoControle extends predial_Controle
         )));
         // Busca
         $saloes = $this->_Modelo->db->Sql_Select('Predial_Salao');
-        if($saloes!==false && !empty($saloes)){
+        if ($saloes!==false && !empty($saloes)){
             list($tabela,$i) = self::Saloes_Tabela($saloes);
             $this->_Visual->Show_Tabela_DataTable($tabela);
             unset($tabela);
-        }else{            
+        } else {            
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Local de Reserva</font></b></center>');
         }
         $titulo = __('Listagem de Locais de Reserva').' ('.$i.')';
@@ -169,13 +169,13 @@ class predial_SalaoControle extends predial_Controle
         $salao = $this->_Modelo->db->Sql_Select('Predial_Salao', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($salao);
         // Mensagem
-    	if($sucesso===true){
+    	if ($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
                 "mgs_secundaria" => __('Local de Reserva deletado com sucesso')
             );
-    	}else{
+    	} else {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),
@@ -246,50 +246,50 @@ class predial_SalaoControle extends predial_Controle
         $this->_Visual->Json_Info_Update('Titulo', __('Reservas'));        
     }
     public function Popup_Agendar_reserva($idreserva,$datainicial,$datafinal,$nomereserva){
-        if($this->get_logado()){
-            if($this->_Acl->logado_usuario->foto_cnh==''){
+        if ($this->get_logado()){
+            if ($this->_Acl->logado_usuario->foto_cnh==''){
                 $mensagens = array(
                     "tipo" => 'sucesso',
                     "mgs_principal" => __('Erro'),
                     "mgs_secundaria" => __('É necessário fazer upload da CNH')
                 );
                 $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
-            }else if($this->_Acl->logado_usuario->foto_res==''){
+            }else if ($this->_Acl->logado_usuario->foto_res==''){
                 $mensagens = array(
                     "tipo" => 'sucesso',
                     "mgs_principal" => __('Erro'),
                     "mgs_secundaria" => __('Falta upload do comprovante de residente')
                 );
                 $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
-            }else if($controle->usuario->foto_cnh_apv==0){
+            }else if ($controle->usuario->foto_cnh_apv==0){
                 $mensagens = array(
                     "tipo" => 'sucesso',
                     "mgs_principal" => __('Erro'),
                     "mgs_secundaria" => __('Aguarde a aprovação de sua CNH')
                 );
                 $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
-            }else if($controle->usuario->foto_res_apv==0){
+            }else if ($controle->usuario->foto_res_apv==0){
                 $mensagens = array(
                     "tipo" => 'sucesso',
                     "mgs_principal" => __('Erro'),
                     "mgs_secundaria" => __('Aguarde a aprovação de sua residência')
                 );
                 $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
-            }else if($controle->usuario->foto_cnh_apv==1){
+            }else if ($controle->usuario->foto_cnh_apv==1){
                 $mensagens = array(
                     "tipo" => 'sucesso',
                     "mgs_principal" => __('CNH Negada'),
                     "mgs_secundaria" => __('Suba uma CNH válida')
                 );
                 $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
-            }else if($controle->usuario->foto_res_apv==1){
+            }else if ($controle->usuario->foto_res_apv==1){
                 $mensagens = array(
                     "tipo" => 'sucesso',
                     "mgs_principal" => __('Residência Negada'),
                     "mgs_secundaria" => __('Suba uma residência válida')
                 );
                 $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
-            }else{
+            } else {
                 // variaveis
                 $datainicial = data_eua_brasil(\Framework\App\Conexao::anti_injection($datainicial));
                 $datafinal = data_eua_brasil(\Framework\App\Conexao::anti_injection($datafinal));
@@ -327,7 +327,7 @@ class predial_SalaoControle extends predial_Controle
                 //$this->_Visual->Json_IncluiTipo('JavascriptInterno',$this->_Visual->Javascript_Executar());
                 //$this->_Visual->Javascript_Executar(false);
             }
-        }else{
+        } else {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Erro'),
@@ -362,7 +362,7 @@ class predial_SalaoControle extends predial_Controle
      * @version 0.4.2
      */
     public function agendamento_inserir(){
-        if(!isset($_POST["selectreservas"]) || !isset($_POST["valor"]) || !isset($_POST["data_inicial"]) || !isset($_POST["data_final"])) return false;
+        if (!isset($_POST["selectreservas"]) || !isset($_POST["valor"]) || !isset($_POST["data_inicial"]) || !isset($_POST["data_final"])) return false;
         
         $reservaid = (int) \Framework\App\Conexao::anti_injection($_POST["selectreservas"]);
         $valor = \Framework\App\Conexao::anti_injection($_POST["valor"]);
@@ -381,13 +381,13 @@ class predial_SalaoControle extends predial_Controle
         
         // inseri e mostra mensagem
         $sucesso =  $this->_Modelo->agendamento_inserir($reservaid,$data_inicial,$data_final,$valor);
-        if($sucesso===true){
+        if ($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Inserção bem sucedida'),
                 "mgs_secundaria" => __('Agendado com sucesso.')
             );
-        }else{
+        } else {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),

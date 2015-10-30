@@ -1068,7 +1068,7 @@ class Securimage
     {
         set_error_handler(array(&$this, 'errorHandler'));
 
-        if($background_image != '' && is_readable($background_image)) {
+        if ($background_image != '' && is_readable($background_image)) {
             $this->bgimg = $background_image;
         }
 
@@ -1405,7 +1405,7 @@ class Securimage
      */
     protected function doImage()
     {
-        if( ($this->use_transparent_text == true || $this->bgimg != '') && function_exists('imagecreatetruecolor')) {
+        if ( ($this->use_transparent_text == true || $this->bgimg != '') && function_exists('imagecreatetruecolor')) {
             $imagecreate = 'imagecreatetruecolor';
         } else {
             $imagecreate = 'imagecreate';
@@ -1552,18 +1552,18 @@ class Securimage
         }
 
         $dat = @getimagesize($this->bgimg);
-        if($dat == false) {
+        if ($dat == false) {
             return;
         }
 
         switch($dat[2]) {
-            case 1:  $newim = @imagecreatefromgif($this->bgimg); break;
+            case 1:  $newim = @imagecreatefromgif ($this->bgimg); break;
             case 2:  $newim = @imagecreatefromjpeg($this->bgimg); break;
             case 3:  $newim = @imagecreatefrompng($this->bgimg); break;
             default: return;
         }
 
-        if(!$newim) return;
+        if (!$newim) return;
 
         imagecopyresized($this->im, $newim, 0, 0, 0, 0,
                          $this->image_width, $this->image_height,
@@ -1854,7 +1854,7 @@ class Securimage
                     break;
                 case self::SI_IMAGE_GIF:
                     if ($this->send_headers) header("Content-Type: image/gif");
-                    imagegif($this->im);
+                    imagegif ($this->im);
                     break;
                 default:
                     if ($this->send_headers) header("Content-Type: image/png");

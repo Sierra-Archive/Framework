@@ -39,7 +39,7 @@ class usuario_TelefoneControle extends usuario_Controle
         $_Controle = $Registro->_Controle;
         if($true===true){
             $_Controle->Tema_Endereco(__('Telefone'),'usuario/Telefone/Telefone');
-        }else{
+        } else {
             $_Controle->Tema_Endereco(__('Telefone'));
         }
     }
@@ -79,7 +79,7 @@ class usuario_TelefoneControle extends usuario_Controle
             }
             if($export!==false){
                 self::Export_Todos($export,$tabela, 'Telefones');
-            }else{
+            } else {
                 $this->_Visual->Show_Tabela_DataTable(
                     $tabela,     // Array Com a Tabela
                     '',          // style extra
@@ -93,7 +93,7 @@ class usuario_TelefoneControle extends usuario_Controle
                 );
             }
             unset($tabela);
-        }else{        
+        } else {        
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Telefone</font></b></center>');
         }
         $titulo = __('Listagem de Telefones').' ('.$i.')';
@@ -202,7 +202,7 @@ class usuario_TelefoneControle extends usuario_Controle
                 "mgs_principal" => __('Deletada'),
                 "mgs_secundaria" => __('Telefone deletada com sucesso')
             );
-    	}else{
+    	} else {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),
@@ -228,7 +228,7 @@ class usuario_TelefoneControle extends usuario_Controle
         if($ext!==false){
             $this->_Visual->Json_Info_Update('Titulo', __('Upload com Sucesso'));
             $this->_Visual->Json_Info_Update('Historico', false);
-        }else{
+        } else {
             $this->_Visual->Json_Info_Update('Titulo', __('Erro com Upload'));
             $this->_Visual->Json_Info_Update('Historico', false);
         }

@@ -54,7 +54,7 @@ class banner_AdminControle extends banner_Controle
         $banners = Array();
         $i = 0;
         $this->_Modelo->retorna_banners($banners,$categoria,$ativado);
-        if(!empty($banners)){
+        if (!empty($banners)){
             reset($banners);
             
             foreach ($banners as $indice=>&$valor) {                
@@ -71,12 +71,12 @@ class banner_AdminControle extends banner_Controle
             }
             $this->_Visual->Show_Tabela_DataTable($tabela);
             unset($tabela);
-        }else{           
+        } else {           
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Banner</font></b></center>');
         }
-        if($ativado==0){
+        if ($ativado==0){
             $titulo = __('Todos os Banners Desativados').' ('.$i.')';
-        }else{
+        } else {
             $titulo = __('Todos os Banners Ativados').' ('.$i.')';
         }
         $this->_Visual->Bloco_Maior_CriaJanela($titulo);
@@ -181,13 +181,13 @@ class banner_AdminControle extends banner_Controle
         
     	$id = (int) $id;
     	$sucesso = $this->_Modelo->Banners_Del($id);
-    	if($sucesso===true){
+    	if ($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
                 "mgs_secundaria" => __('Deletado com sucesso')
             );
-    	}else{
+    	} else {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),
@@ -218,7 +218,7 @@ class banner_AdminControle extends banner_Controle
         $fileTypes = array('jpg','jpeg','gif','png'); // File extensions
         $dir = 'banner'.DS;
         $ext = $this->Upload($dir,$fileTypes,$id);
-        if($ext!='falso'){
+        if ($ext!='falso'){
             $this->_Modelo->Banner_Upload_Alterar($id,$ext); 
         }
     }

@@ -45,9 +45,9 @@ class usuario_AdminModelo extends usuario_Modelo
 
             $saldo = Financeiro_Modelo::Carregar_Saldo($this, $campo->id);
 
-            if($saldo<0){
+            if ($saldo<0){
                 $usuarios[$i]['saldo'] = '<font style="color:#FF0000;">- R$ '.number_format(abs($saldo), 2, ',', '.').'</font>';
-            }else{
+            } else {
                 $usuarios[$i]['saldo'] = 'R$ '.number_format($saldo, 2, ',', '.');
             }
             ++$i;
@@ -55,7 +55,7 @@ class usuario_AdminModelo extends usuario_Modelo
         return $i;
     }
     public function usuario_cnh_aprovar($id,$aprovar='sim'){
-        if($aprovar=='sim') $cnh_apv = 2;
+        if ($aprovar=='sim') $cnh_apv = 2;
         else                $cnh_apv = 1;
         
         $this->db->query('UPDATE '.MYSQL_USUARIOS.' SET foto_cnh_apv='.$cnh_apv.' WHERE deletado!=1 AND id='.$id);
@@ -63,7 +63,7 @@ class usuario_AdminModelo extends usuario_Modelo
         return 1;
     }
     public function usuario_res_aprovar($id,$aprovar='sim'){
-        if($aprovar=='sim') $res_apv = 2;
+        if ($aprovar=='sim') $res_apv = 2;
         else                $res_apv = 1;
         
         $this->db->query('UPDATE '.MYSQL_USUARIOS.' SET foto_res_apv='.$res_apv.' WHERE deletado!=1 AND id='.$id);
@@ -83,9 +83,9 @@ class usuario_AdminModelo extends usuario_Modelo
 
             $saldo = Financeiro_Modelo::Carregar_Saldo($this, $campo->id);
 
-            if($saldo<0){
+            if ($saldo<0){
                 $usuarios[$i]['saldo'] = '<font style="color:#FF0000;">- R$ '.number_format(abs($saldo), 2, ',', '.').'</font>';
-            }else{
+            } else {
                 $usuarios[$i]['saldo'] = 'R$ '.number_format($saldo, 2, ',', '.');
             }
             ++$i;

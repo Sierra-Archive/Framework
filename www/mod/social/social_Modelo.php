@@ -41,7 +41,7 @@ class social_Modelo extends \Framework\App\Modelo
         while($campo = $sql->fetch_object()){
             $dps = $campo->total;
         }
-        if($total!=0)$porc = 100-($dps/$fiquei*100);
+        if ($total!=0)$porc = 100-($dps/$fiquei*100);
         else $porc = 100;
         return $porc;
     }
@@ -56,7 +56,7 @@ class social_Modelo extends \Framework\App\Modelo
         while($campo = $sql2->fetch_object()){
                 $total = $campo->total;
         }
-        if($total!=0)$porc = 100-($mentiras/$total*100);
+        if ($total!=0)$porc = 100-($mentiras/$total*100);
         else $porc = 100;
         return $porc;
     }
@@ -70,12 +70,12 @@ class social_Modelo extends \Framework\App\Modelo
         while($campo = $sql2->fetch_object()){
             $total = $campo->total;
         }
-        if($total!=0)$porc = 100-($chata/$total*100);
+        if ($total!=0)$porc = 100-($chata/$total*100);
         else $porc = 100;
         return $porc;
     }
     public function retorna_social(&$social, $usuario_id=0){
-        if($usuario_id==0){
+        if ($usuario_id==0){
             $usuario_id = \Framework\App\Acl::Usuario_GetID_Static(); 
         }
         $sql = $this->db->query('SELECT id, id_face, nome, perfil_sexo, perfil_nascimento, email, posicao, situacao, celular FROM '.MYSQL_SOCIAL.' WHERE deletado!=1 AND log_user_add=\''.$usuario_id.'\' ORDER BY nome');
@@ -85,7 +85,7 @@ class social_Modelo extends \Framework\App\Modelo
             $personaid = $campo->id;
             /*$sql2 = $this->db->query("SELECT positivo, gravidade FROM '.MYSQL_SOCIAL_ACAO.' WHERE user=\''.$usuario_id.'\' && persona=\''.$personaid.'\' ORDER BY tipo");
             while($campo2 = $sql2->fetch_object()){
-                    if($campo2->positivo==0) $persona_pontos = $persona_pontos - $campo2->gravidade;
+                    if ($campo2->positivo==0) $persona_pontos = $persona_pontos - $campo2->gravidade;
                     else   $persona_pontos = $persona_pontos + $campo2->gravidade;
             }*/
             $social[$i]['id'] = $personaid;
@@ -106,7 +106,7 @@ class social_Modelo extends \Framework\App\Modelo
         $sql = $this->db->query('SELECT * FROM '.MYSQL_SOCIAL_ACAO.' WHERE deletado!=1 AND user=\''.$usuario_id.'\' && persona=\''.$personaid.'\' ORDER BY tipo');
         $i=0;
         while($campo = $sql->fetch_object()){
-            if($campo->positivo==0) $persona_pontos = $persona_pontos - $campo->gravidade;
+            if ($campo->positivo==0) $persona_pontos = $persona_pontos - $campo->gravidade;
             else   $persona_pontos = $persona_pontos + $campo->gravidade;
 
             $tipo = $campo->tipo;

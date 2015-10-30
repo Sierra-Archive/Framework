@@ -14,7 +14,7 @@ class locais_localControle extends locais_Controle
         $select = array();
         $this->_Modelo->estados_retorna($select,$pais);
 
-        if(LAYOULT_IMPRIMIR=='AJAX'){
+        if (LAYOULT_IMPRIMIR=='AJAX'){
             $this->_Visual->Json_Start();
             $conteudo = array(
                 'id' => 'selectlocalestado',
@@ -31,7 +31,7 @@ class locais_localControle extends locais_Controle
         $select = array();
         $this->_Modelo->cidades_retorna($select,$estado);
 
-        if(LAYOULT_IMPRIMIR=='AJAX'){
+        if (LAYOULT_IMPRIMIR=='AJAX'){
                 $this->_Visual->Json_Start();
                 $conteudo = array(
                         'id' => 'selectlocalcidade',
@@ -48,7 +48,7 @@ class locais_localControle extends locais_Controle
         $select = array();
         $this->_Modelo->bairros_retorna($select,$cidade);
 
-        if(LAYOULT_IMPRIMIR=='AJAX'){
+        if (LAYOULT_IMPRIMIR=='AJAX'){
                 $this->_Visual->Json_Start();
                 $conteudo = array(
                         'id' => 'selectlocalbairro',

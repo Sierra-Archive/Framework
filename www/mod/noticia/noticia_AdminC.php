@@ -10,9 +10,9 @@ class noticia_AdminControle extends noticia_Controle
         $_Controle = $Registro->_Controle;
         $titulo = __('Noticias');
         $link = 'noticia/Admin/Noticias';
-        if($true===true){
+        if ($true===true){
             $_Controle->Tema_Endereco($titulo,$link);
-        }else{
+        } else {
             $_Controle->Tema_Endereco($titulo);
         }
     }
@@ -30,23 +30,23 @@ class noticia_AdminControle extends noticia_Controle
         $Visual     = &$Registro->_Visual;
         $tabela = Array();
         $i = 0;
-        if(is_object($noticia)) $noticia = Array(0=>$noticia);reset($noticia);
+        if (is_object($noticia)) $noticia = Array(0=>$noticia);reset($noticia);
         foreach ($noticia as &$valor) {                
             $tabela['Id'][$i]           = '#'.$valor->id;
             $tabela['Categoria'][$i]    = $valor->categoria2;
             $tabela['Foto'][$i]         = '<img alt="'.__('Foto da Noticia').' src="'.$valor->foto.'" style="max-width:100px;" />';
             $tabela['Titulo'][$i]       = $valor->nome;
-            if($valor->status==1 || $valor->status=='1'){
+            if ($valor->status==1 || $valor->status=='1'){
                 $texto = __('Ativado');
                 $valor->status='1';
-            }else{
+            } else {
                 $texto = __('Desativado');
                 $valor->status='0';
             }
             $tabela['Funções'][$i]      = '<span id="status'.$valor->id.'">'.$Visual->Tema_Elementos_Btn('Status'.$valor->status     ,Array($texto        ,'noticia/Admin/Status/'.$valor->id.'/'    ,'')).'</span>';
-            if($valor->destaque==1){
+            if ($valor->destaque==1){
                 $texto = __('Em Destaque');
-            }else{
+            } else {
                 $texto = __('Não está em destaque');
             }
             $tabela['Funções'][$i]      .= '<span id="destaques'.$valor->id.'">'.$Visual->Tema_Elementos_Btn('Destaque'.$valor->destaque   ,Array($texto   ,'noticia/Admin/Destaques/'.$valor->id.'/'    ,'')).'</span>';
@@ -64,11 +64,11 @@ class noticia_AdminControle extends noticia_Controle
      */
     static function Campos_Deletar(&$campos){
         // Retira Padroes
-        if(!(\Framework\App\Sistema_Funcoes::Perm_Modulos('Musica'))){
+        if (!(\Framework\App\Sistema_Funcoes::Perm_Modulos('Musica'))){
              self::DAO_Campos_Retira($campos, 'Artistas');
         }
         
-        if(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('noticia_Categoria') === false){
+        if (\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('noticia_Categoria') === false){
             self::DAO_Campos_Retira($campos, 'categoria');
         }
        
@@ -95,13 +95,13 @@ class noticia_AdminControle extends noticia_Controle
             )
         )));
         $noticia = $this->_Modelo->db->Sql_Select('Noticia');
-        if(is_object($noticia)) $noticia = Array(0=>$noticia);
-        if($noticia!==false && !empty($noticia)){
+        if (is_object($noticia)) $noticia = Array(0=>$noticia);
+        if ($noticia!==false && !empty($noticia)){
             list($tabela,$i) = self::Noticias_Tabela($noticia);
             // SE exportar ou mostra em tabela
-            if($export!==false){
+            if ($export!==false){
                 self::Export_Todos($export,$tabela, 'Noticias');
-            }else{
+            } else {
                 $this->_Visual->Show_Tabela_DataTable(
                     $tabela,     // Array Com a Tabela
                     '',          // style extra
@@ -115,10 +115,10 @@ class noticia_AdminControle extends noticia_Controle
                 );
             }
             unset($tabela);
-        }else{
-            if($export!==false){
+        } else {
+            if ($export!==false){
                 $mensagem = __('Nenhuma Noticia Cadastrada para exportar');
-            }else{
+            } else {
                 $mensagem = __('Nenhuma Noticia Cadastrada');
             }
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">'.$mensagem.'</font></b></center>');
@@ -215,13 +215,13 @@ class noticia_AdminControle extends noticia_Controle
         $noticia    =  $this->_Modelo->db->Sql_Select('Noticia', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($noticia);
         // Mensagem
-    	if($sucesso===true){
+    	if ($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
                 "mgs_secundaria" => __('Noticia Deletada com sucesso')
             );
-    	}else{
+    	} else {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),
@@ -236,23 +236,23 @@ class noticia_AdminControle extends noticia_Controle
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
     public function Status($id=false){
-        if($id===false){
+        if ($id===false){
             return false;
         }
         $resultado = $this->_Modelo->db->Sql_Select('Noticia', Array('id'=>$id),1);
-        if($resultado===false || !is_object($resultado)){
+        if ($resultado===false || !is_object($resultado)){
             return false;
         }
-        if($resultado->status==1 || $resultado->status=='1'){
+        if ($resultado->status==1 || $resultado->status=='1'){
             $resultado->status='0';
-        }else{
+        } else {
             $resultado->status='1';
         }
         $sucesso = $this->_Modelo->db->Sql_Update($resultado);
-        if($sucesso){
-            if($resultado->status==1){
+        if ($sucesso){
+            if ($resultado->status==1){
                 $texto = __('Ativado');
-            }else{
+            } else {
                 $texto = __('Desativado');
             }
             $conteudo = array(
@@ -262,7 +262,7 @@ class noticia_AdminControle extends noticia_Controle
             );
             $this->_Visual->Json_IncluiTipo('Conteudo',$conteudo);
             $this->_Visual->Json_Info_Update('Titulo', __('Status Alterado')); 
-        }else{
+        } else {
             $mensagens = array(
                 "tipo"              => 'erro',
                 "mgs_principal"     => __('Erro'),
@@ -275,23 +275,23 @@ class noticia_AdminControle extends noticia_Controle
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
     public function Destaques($id=false){
-        if($id===false){
+        if ($id===false){
             return false;
         }
         $resultado = $this->_Modelo->db->Sql_Select('Noticia', Array('id'=>$id),1);
-        if($resultado===false || !is_object($resultado)){
+        if ($resultado===false || !is_object($resultado)){
             return false;
         }
-        if($resultado->destaque==1 || $resultado->destaque=='1'){
+        if ($resultado->destaque==1 || $resultado->destaque=='1'){
             $resultado->destaque='0';
-        }else{
+        } else {
             $resultado->destaque='1';
         }
         $sucesso = $this->_Modelo->db->Sql_Update($resultado);
-        if($sucesso){
-            if($resultado->destaque==1){
+        if ($sucesso){
+            if ($resultado->destaque==1){
                 $texto = __('Em destaque');
-            }else{
+            } else {
                 $texto = __('Não está em destaque');
             }
             $conteudo = array(
@@ -301,7 +301,7 @@ class noticia_AdminControle extends noticia_Controle
             );
             $this->_Visual->Json_IncluiTipo('Conteudo',$conteudo);
             $this->_Visual->Json_Info_Update('Titulo', __('Destaque Alterado')); 
-        }else{
+        } else {
             $mensagens = array(
                 "tipo"              => 'erro',
                 "mgs_principal"     => __('Erro'),

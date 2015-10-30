@@ -72,18 +72,18 @@ class Enquete_Principal implements \Framework\PrincipalInterface
         $i = 0;
         // Busca Enquetes
         $result = self::Busca_Enquetes($controle, $Modelo, $Visual, $busca);
-        if($result!==false){
+        if ($result!==false){
             $i = $i + $result;
         }
         // Busca Respostas
         $result = self::Busca_Respostas($controle, $Modelo, $Visual, $busca);
-        if($result!==false){
+        if ($result!==false){
             $i = $i + $result;
         }
         // Retorna
-        if(is_int($i) && $i>0){
+        if (is_int($i) && $i>0){
             return $i;
-        }else{
+        } else {
             return false;
         }
     }
@@ -94,7 +94,7 @@ class Enquete_Principal implements \Framework\PrincipalInterface
         ));
         $i = 0;
         $enquetes = $Modelo->db->Sql_Select('Enquete',$where);
-        if($enquetes===false) return false;
+        if ($enquetes===false) return false;
         // add botao
         $Visual->Blocar($Visual->Tema_Elementos_Btn('Superior'     ,Array(
             Array(
@@ -109,11 +109,11 @@ class Enquete_Principal implements \Framework\PrincipalInterface
                 'Enquete/Enquete/Enquetes',
             )
         )));
-        if(is_object($enquetes)) $enquetes = Array(0=>$enquetes);
-        if($enquetes!==false && !empty($enquetes)){
+        if (is_object($enquetes)) $enquetes = Array(0=>$enquetes);
+        if ($enquetes!==false && !empty($enquetes)){
             list($tabela,$i) = Enquete_EnqueteControle::Enquetes_Tabela($enquetes);
             $Visual->Show_Tabela_DataTable($tabela);
-        }else{     
+        } else {     
             $Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhuma Enquete na Busca '.$busca.'</font></b></center>');
         }
         $titulo = 'Busca de Enquetes: '.$busca.' ('.$i.')';
@@ -126,7 +126,7 @@ class Enquete_Principal implements \Framework\PrincipalInterface
         );
         $i = 0;
         $enquetes = $Modelo->db->Sql_Select('Enquete_Resposta',$where);
-        if($enquetes===false) return false;
+        if ($enquetes===false) return false;
         // add botao
         $Visual->Blocar($Visual->Tema_Elementos_Btn('Superior'     ,Array(
             Array(
@@ -141,11 +141,11 @@ class Enquete_Principal implements \Framework\PrincipalInterface
                 'Enquete/Resposta/Respostas',
             )
         )));
-        if(is_object($enquetes)) $enquetes = Array(0=>$enquetes);
-        if($enquetes!==false && !empty($enquetes)){
+        if (is_object($enquetes)) $enquetes = Array(0=>$enquetes);
+        if ($enquetes!==false && !empty($enquetes)){
             list($tabela,$i) = Enquete_RespostaControle::Respostas_Tabela($enquetes);
             $Visual->Show_Tabela_DataTable($tabela);
-        }else{  
+        } else {  
             $Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhuma Resposta de Enquete na Busca '.$busca.'</font></b></center>');
         }
         $titulo = 'Busca de Respostas de Enquetes: '.$busca.' ('.$i.')';

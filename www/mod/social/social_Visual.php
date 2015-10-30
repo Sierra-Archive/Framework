@@ -8,7 +8,7 @@ class social_Visual extends \Framework\App\Visual
     	
     	
     	$form->Select_Opcao(__('Não Relacionado a Ninguém'),0,0);
-    	if(!empty($array)){
+    	if (!empty($array)){
             reset($array);
             foreach ($array as $indice=>&$valor) {
                 $form->Select_Opcao($array[$indice]['nome'],$array[$indice]['id'],0);

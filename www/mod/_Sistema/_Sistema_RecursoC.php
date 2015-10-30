@@ -33,7 +33,7 @@ $('#produtocontrolador1 select').attr('id','produto1');
         $usados = Array();
         $this->Json_Definir_zerar(false);
         $this->_Visual->Json_Info_Update('Historico', false);
-        if($id==0 || !isset($id)){
+        if ($id==0 || !isset($id)){
             return false;
         }
         
@@ -46,34 +46,34 @@ $('#produtocontrolador1 select').attr('id','produto1');
         //var_dump($alterado,$alterado->Get_Extrangeiras_ComExterna());
         $alterado = $alterado->Get_Extrangeiras_ComExterna();
         
-        if($alterado===false) return true;
+        if ($alterado===false) return true;
         
         foreach($alterado as $indice=>&$valor){
-            if($indice!==$campo_alterado){
+            if ($indice!==$campo_alterado){
                 $achado         = Array();
                 $resultado = preg_match(
                     '/{(.+)}/U',
                     $valor,
                     $achado
                 );
-                if($resultado===1 && $achado[1]===$campo_alterado){
+                if ($resultado===1 && $achado[1]===$campo_alterado){
                     // ACHADO TABELA A ALTERAR
                     $extrangeira_procurar = str_replace('{'.$campo_alterado.'}', $id, $valor);
                     $resultado = $this->_Modelo->db->Tabelas_CapturaExtrangeiras($extrangeira_procurar);
-                    if($resultado!==false && !empty($resultado)){
-                        if(is_object($resultado)) $resultado = Array(0=>$resultado);
+                    if ($resultado!==false && !empty($resultado)){
+                        if (is_object($resultado)) $resultado = Array(0=>$resultado);
                         $i = 0;
                         foreach ($resultado as $indice2=>$valor2) {
-                            if($i==0){
+                            if ($i==0){
                                 $novoid = $indice2;
                                 $seleciona = 1;
-                            }else{
+                            } else {
                                 $seleciona = 0;
                             }
                             $html .= \Framework\Classes\Form::Select_Opcao_Stat($valor2, $indice2,$seleciona);
                             ++$i;
                         }
-                    }else{
+                    } else {
                         $html .= \Framework\Classes\Form::Select_Opcao_Stat('', '',1);
                     }
                     // Json
@@ -85,7 +85,7 @@ $('#produtocontrolador1 select').attr('id','produto1');
                     );
                     $this->_Visual->Json_IncluiTipo('Conteudo',$conteudo);
                     // SE tiver dependente chama denovo 
-                    if($novoid!==0){
+                    if ($novoid!==0){
                         self::Select_Recarrega_Extrangeira($dominiosigla,$indice,$novoid);
                     }
                 }
@@ -95,7 +95,7 @@ $('#produtocontrolador1 select').attr('id','produto1');
     public function Valida_Cep($cep=false,$campos=false){
         
         $cep = str_replace(Array('-','.'), Array('',''), trim($cep));
-        if(strlen($cep)!==8 || !is_numeric($cep)){
+        if (strlen($cep)!==8 || !is_numeric($cep)){
             // CEP INVALIDO
             $mensagens = array(
                 "tipo"              => 'erro',
@@ -115,8 +115,8 @@ $('#produtocontrolador1 select').attr('id','produto1');
         
         $imprimir = function(&$opcoes){
             $html = '';
-            if($opcoes!==false && !empty($opcoes)){
-                if(is_object($opcoes)) $opcoes = Array(0=>$opcoes);
+            if ($opcoes!==false && !empty($opcoes)){
+                if (is_object($opcoes)) $opcoes = Array(0=>$opcoes);
                 reset($opcoes);
                 foreach ($opcoes as $indice2=>$valor2) {
                     $selecionado = 0;
@@ -134,7 +134,7 @@ $('#produtocontrolador1 select').attr('id','produto1');
         $xml = simplexml_load_string($xmls);
         $resultado = (Array) $xml->resultado;
         
-        if($resultado[0]==='0'){
+        if ($resultado[0]==='0'){
             // CEP INVALIDO
             $mensagens = array(
                 "tipo"              => 'erro',
@@ -175,7 +175,7 @@ $('#produtocontrolador1 select').attr('id','produto1');
         $this->_Visual->Json_Info_Update('Historico', false);
         
         $invalido = false;
-        if($invalido){
+        if ($invalido){
             // CEP INVALIDO
             $mensagens = array(
                 "tipo"              => 'erro',
@@ -194,7 +194,7 @@ $('#produtocontrolador1 select').attr('id','produto1');
         
         $sql_cpf = $this->_Modelo->db->Sql_Select('Universal_Vivo_Cpf',Array('cpf'=>$cpf),1);
 
-        if($sql_cpf===false){       
+        if ($sql_cpf===false){       
             // Carrega XML            
             $arquivo_teste = 'http://www.situacaocadastral.com.br/';
  
@@ -266,7 +266,7 @@ $('#produtocontrolador1 select').attr('id','produto1');
             $result = curl_exec($ch) or die (curl_error($ch));
             curl_close($ch);
             
-            if(stripos($result, '<span class="dados">')!==false){
+            if (stripos($result, '<span class="dados">')!==false){
                 
                 // Pega nome
                 $dados_retorno = Array('cpf'=>$info_cpf);
@@ -277,9 +277,9 @@ $('#produtocontrolador1 select').attr('id','produto1');
                 // Condicao da Receira Federal
                 preg_match_all('/<span class="dados texto">(.*?)<\/span>/', $result, $matches);
                 array_shift($matches);
-                if('* Sem pendência cadastral na Receita Federal.'){
+                if ('* Sem pendência cadastral na Receita Federal.'){
                     $dados_retorno['situacao'] = '1';
-                }else{
+                } else {
                     $dados_retorno['situacao'] = '0';
                 }
                 
@@ -291,7 +291,7 @@ $('#produtocontrolador1 select').attr('id','produto1');
                 $sql_cpf->info_situacaocadastral = $dados_retorno['situacao'];
                 $sql_cpf->extra_validado = '1';
                 $this->_Modelo->db->Sql_Insert($sql_cpf);
-            }else{
+            } else {
                 // CEP INVALIDO
                 $mensagens = array(
                     "tipo"              => 'erro',
@@ -307,21 +307,21 @@ $('#produtocontrolador1 select').attr('id','produto1');
 
                 return false;
             }
-        }else{
+        } else {
             $dados_retorno = Array(
                 'cpf' => $info_cpf,
                 'nome' => $sql_cpf->info_nome,
                 'situacao' => $sql_cpf->info_situacaocadastral
             );
         }
-        if($campos!==false && trim($campos)!=='' && !is_int($campos)){
+        if ($campos!==false && trim($campos)!=='' && !is_int($campos)){
             $campos = \explode(',', $campos);
             foreach($campos as &$valor){
-                if(strpos('=',$valor)===false){
+                if (strpos('=',$valor)===false){
                     continue;
                 }
                 list($camada,$value) = \explode('=', $valor);
-                if(isset($dados_retorno[$value])){
+                if (isset($dados_retorno[$value])){
                     // Json
                     $conteudo = [
                         'location'  =>  '#'.$camada,
@@ -347,7 +347,7 @@ $('#produtocontrolador1 select').attr('id','produto1');
         
         $sql_cnpj = $this->_Modelo->db->Sql_Select('Universal_Vivo_Cnpj',Array('cnpj'=>$cnpj),1);
         
-        if($sql_cnpj===false){
+        if ($sql_cnpj===false){
         
             // Carrega XML
             $login = 'sierratecnologia';
@@ -359,19 +359,19 @@ $('#produtocontrolador1 select').attr('id','produto1');
             $xmls = file_get_contents($arquivo_teste);
             $xmls = preg_replace("/<!--[\S|\s]*?-->/", "", $xmls);
             $xml = simplexml_load_string($xmls);
-            if($xml->CodErro!==0){
+            if ($xml->CodErro!==0){
                 $xmls = file_get_contents($arquivo);
                 $xmls = preg_replace("/<!--[\S|\s]*?-->/", "", $xmls);
                 $xml = simplexml_load_string($xmls);
             }
-            if($xml->CodErro!==0){
+            if ($xml->CodErro!==0){
                 return false;
             }
             $cep_num = $xml->CEP;
             $cep_num = (int) str_replace(Array('.',',','-'), Array('','',''), $cep_num);
             $cons_cep = $this->_Modelo->db->Sql_Select('Universal_Vivo_Cep',Array('cep'=>$cep_num),1);
 
-            if($cons_cep!==false){
+            if ($cons_cep!==false){
                 // cria CEP
                 $sql_cep = new \Universal_Vivo_Cep_DAO();
                 $sql_cep->info_logradouro = $xml->Logradouro;
@@ -406,11 +406,11 @@ $('#produtocontrolador1 select').attr('id','produto1');
             $this->_Modelo->db->Sql_Insert($sql_cnpj);
         }
         
-        if($campos!==false){
+        if ($campos!==false){
             $campos = explode(',', $campos);
             foreach($campos as &$valor){
                 list($camada,$value) = explode('=', $valor);
-                if(isset($sql_cnpj->$value)){
+                if (isset($sql_cnpj->$value)){
                     // Json
                     $conteudo = array(
                         'location'  =>  '#'.$camada,

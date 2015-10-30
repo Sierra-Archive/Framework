@@ -75,7 +75,7 @@ class usuario_veiculo_VeiculoControle extends usuario_veiculo_Controle
         $link   = 'usuario_veiculo/Veiculo/Veiculos';
         if($true===true){
             $_Controle->Tema_Endereco($titulo,$link);
-        }else{
+        } else {
             $_Controle->Tema_Endereco($titulo);
         }
     }
@@ -124,11 +124,11 @@ class usuario_veiculo_VeiculoControle extends usuario_veiculo_Controle
             }
             if($export!==false){
                 self::Export_Todos($export,$tabela, 'Veiculos');
-            }else{
+            } else {
                 $this->_Visual->Show_Tabela_DataTable($tabela);
             }
             unset($tabela);
-        }else{     
+        } else {     
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Veiculo</font></b></center>');
         }
         $titulo = __('Listagem de Veiculos').' ('.$i.')';
@@ -226,7 +226,7 @@ class usuario_veiculo_VeiculoControle extends usuario_veiculo_Controle
                 "mgs_principal" => __('Deletado'),
                 "mgs_secundaria" => __('Veiculo Deletado com sucesso')
             );
-    	}else{
+    	} else {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),
@@ -302,7 +302,7 @@ class usuario_veiculo_VeiculoControle extends usuario_veiculo_Controle
                 'html' => $html
             );
             $this->_Visual->Json_IncluiTipo('Popup',$conteudo);
-        }else{
+        } else {
             $this->_Visual->Blocar('<div class="row">'.$html.'</div>');
             $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',20);
             $this->_Visual->Json_Info_Update('Titulo', __('Visualizar Veiculo'));
@@ -334,7 +334,7 @@ class usuario_veiculo_VeiculoControle extends usuario_veiculo_Controle
         )));
         if($veiculo_id===false){
             $where = Array();
-        }else{
+        } else {
             $where = Array('veiculo'=>$veiculo_id);
         }
         $linhas = $this->_Modelo->db->Sql_Select('Usuario_Veiculo_Comentario',$where);
@@ -351,11 +351,11 @@ class usuario_veiculo_VeiculoControle extends usuario_veiculo_Controle
             }
             if($export!==false){
                 self::Export_Todos($export,$tabela, 'Veiculos (Comentários)');
-            }else{
+            } else {
                 $this->_Visual->Show_Tabela_DataTable($tabela);
             }
             unset($tabela);
-        }else{          
+        } else {          
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Comentário do Veiculo</font></b></center>');
         }
         $titulo = __('Comentários do Veiculo').' ('.$i.')';
@@ -460,7 +460,7 @@ class usuario_veiculo_VeiculoControle extends usuario_veiculo_Controle
                 "mgs_principal" => __('Deletado'),
                 "mgs_secundaria" => __('Comentário do Veiculo Deletado com sucesso')
             );
-    	}else{
+    	} else {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),
@@ -482,7 +482,7 @@ class usuario_veiculo_VeiculoControle extends usuario_veiculo_Controle
     public function Veiculos_Evento($veiculo_id = false){
         if($veiculo_id===false){
             $where = Array();
-        }else{
+        } else {
             $where = Array('veiculo'=>$veiculo_id);
         }
         $i = 0;
@@ -501,7 +501,7 @@ class usuario_veiculo_VeiculoControle extends usuario_veiculo_Controle
             }
             $this->_Visual->Show_Tabela_DataTable($tabela);
             unset($tabela);
-        }else{          
+        } else {          
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Evento do Veiculo</font></b></center>');
         }
         $titulo = __('Eventos do Veiculo').' ('.$i.')';
@@ -606,7 +606,7 @@ class usuario_veiculo_VeiculoControle extends usuario_veiculo_Controle
                 "mgs_principal" => __('Deletado'),
                 "mgs_secundaria" => __('Evento do Veiculo Deletado com sucesso')
             );
-    	}else{
+    	} else {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),

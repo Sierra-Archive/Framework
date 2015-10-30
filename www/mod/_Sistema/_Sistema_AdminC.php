@@ -99,8 +99,8 @@ class _Sistema_AdminControle extends _Sistema_Controle
             )
         )));
         $menu = $this->_Modelo->db->Sql_Select('Sistema_Menu');
-        if(is_object($menu)) $menu = Array(0=>$menu);
-        if($menu!==false && !empty($menu)){
+        if (is_object($menu)) $menu = Array(0=>$menu);
+        if ($menu!==false && !empty($menu)){
             reset($menu);
             $perm_status = $this->_Registro->_Acl->Get_Permissao_Url('_Sistema/Admin/Menu_Status');
             $perm_editar = $this->_Registro->_Acl->Get_Permissao_Url('_Sistema/Admin/Menus_Edit');
@@ -112,9 +112,9 @@ class _Sistema_AdminControle extends _Sistema_Controle
                 $tabela['Link'][$i]         = $valor->link;
                 $tabela['Img'][$i]          = $valor->img;
                 $tabela['Icone'][$i]        = $valor->icon;
-                if($valor->status==1){
+                if ($valor->status==1){
                     $texto = __('Desativado');
-                }else{
+                } else {
                     $texto = __('Ativado');
                 }
                 $tabela['Status'][$i]        = '<span id="status'.$valor->id.'">'.$this->_Visual->Tema_Elementos_Btn('Status'.$valor->status     ,Array($texto        ,'_Sistema/Admin/Menu_Status/'.$valor->id.'/'    ,''),$perm_status).'</span>';
@@ -123,9 +123,9 @@ class _Sistema_AdminControle extends _Sistema_Controle
                                               $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Menu'       ,'_Sistema/Admin/Menus_Del/'.$valor->id.'/'     ,'Deseja realmente deletar esse Menu ? Isso irá afetar o sistema!'),$perm_del);
                 ++$i;
             }
-            if($export!==false && $export!=='Unico'){
+            if ($export!==false && $export!=='Unico'){
                 self::Export_Todos($export,$tabela, 'Menus');
-            }else{
+            } else {
                 $this->_Visual->Show_Tabela_DataTable(
                     $tabela,     // Array Com a Tabela
                     '',          // style extra
@@ -139,43 +139,43 @@ class _Sistema_AdminControle extends _Sistema_Controle
                 );
             }
             unset($tabela);
-        }else{
-            if($export!==false){
+        } else {
+            if ($export!==false){
                 $mensagem = __('Nenhum Menu Cadastrado para exportar');
-            }else{
+            } else {
                 $mensagem = __('Nenhum Menu Cadastrado');
             }          
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">'.$mensagem.'</font></b></center>');
         }
         $titulo = __('Listagem de Menus').' ('.$i.')';
-        if($export==='Unico'){
+        if ($export==='Unico'){
             $this->_Visual->Bloco_Unico_CriaJanela($titulo);
-        }else if($export==='Maior'){
+        }else if ($export==='Maior'){
             $this->_Visual->Bloco_Maior_CriaJanela($titulo);
-        }else{
+        } else {
             $this->_Visual->Bloco_Menor_CriaJanela($titulo);
         }
         //Carrega Json
         $this->_Visual->Json_Info_Update('Titulo', __('Administrar Menus'));
     }
     public function Menu_Status($id=false){
-        if($id===false){
+        if ($id===false){
             return false;
         }
         $resultado = $this->_Modelo->db->Sql_Select('Sistema_Menu', Array('id'=>$id),1);
-        if($resultado===false || !is_object($resultado)){
+        if ($resultado===false || !is_object($resultado)){
             return false;
         }
-        if($resultado->status==1 || $resultado->status=='1'){
+        if ($resultado->status==1 || $resultado->status=='1'){
             $resultado->status='0';
-        }else{
+        } else {
             $resultado->status='1';
         }
         $sucesso = $this->_Modelo->db->Sql_Update($resultado);
-        if($sucesso){
-            if($resultado->status==1 || $resultado->status=='1'){
+        if ($sucesso){
+            if ($resultado->status==1 || $resultado->status=='1'){
                 $texto = __('Ativado');
-            }else{
+            } else {
                 $texto = __('Desativado');
             }
             $conteudo = array(
@@ -185,7 +185,7 @@ class _Sistema_AdminControle extends _Sistema_Controle
             );
             $this->_Visual->Json_IncluiTipo('Conteudo',$conteudo);
             $this->_Visual->Json_Info_Update('Titulo', __('Status Alterado')); 
-        }else{
+        } else {
             $mensagens = array(
                 "tipo"              => 'erro',
                 "mgs_principal"     => __('Erro'),
@@ -279,13 +279,13 @@ class _Sistema_AdminControle extends _Sistema_Controle
         $menu    =  $this->_Modelo->db->Sql_Select('Sistema_Menu', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($menu);
         // Mensagem
-    	if($sucesso===true){
+    	if ($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
                 "mgs_secundaria" => __('Menu Deletado com sucesso')
             );
-    	}else{
+    	} else {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),
@@ -315,11 +315,11 @@ class _Sistema_AdminControle extends _Sistema_Controle
         $this->_Visual->Show_Tabela_DataTable_Massiva($tabela_colunas,'_Sistema/Admin/Configs');
 
         $titulo = __('Listagem de Configurações').' (<span id="DataTable_Contador">0</span>)';
-        if($tipobloco==='Unico'){
+        if ($tipobloco==='Unico'){
             $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',10);
-        }else if($tipobloco==='Maior'){
+        }else if ($tipobloco==='Maior'){
             $this->_Visual->Bloco_Maior_CriaJanela($titulo,'',10);
-        }else{
+        } else {
             $this->_Visual->Bloco_Menor_CriaJanela($titulo,'',10);
         }
         //Carrega Json
@@ -382,8 +382,8 @@ class _Sistema_AdminControle extends _Sistema_Controle
             )
         )));
         $permissao = $this->_Modelo->db->Sql_Select('Sistema_Permissao');
-        if(is_object($permissao)) $permissao = Array(0=>$permissao);
-        if($permissao!==false && !empty($permissao)){
+        if (is_object($permissao)) $permissao = Array(0=>$permissao);
+        if ($permissao!==false && !empty($permissao)){
             reset($permissao);
             $perm_editar = $this->_Registro->_Acl->Get_Permissao_Url('_Sistema/Admin/Permissoes_Edit');
             $perm_del = $this->_Registro->_Acl->Get_Permissao_Url('_Sistema/Admin/Permissoes_Del');
@@ -398,9 +398,9 @@ class _Sistema_AdminControle extends _Sistema_Controle
                                               $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Permissao'       ,'_Sistema/Admin/Permissoes_Del/'.$valor->chave.'/'     ,'Deseja realmente deletar essa Permissao ? Isso irá afetar o sistema!'),$perm_del);
                 ++$i;
             }
-            if($export!==false && $export!=='Unico'){
+            if ($export!==false && $export!=='Unico'){
                 self::Export_Todos($export,$tabela, 'Permissoes');
-            }else{
+            } else {
                 $this->_Visual->Show_Tabela_DataTable(
                     $tabela,     // Array Com a Tabela
                     '',          // style extra
@@ -414,20 +414,20 @@ class _Sistema_AdminControle extends _Sistema_Controle
                 );
             }
             unset($tabela);
-        }else{
-            if($export!==false){
+        } else {
+            if ($export!==false){
                 $mensagem = __('Nenhuma Permissão Cadastrada para exportar');
-            }else{
+            } else {
                 $mensagem = __('Nenhuma Permissão Cadastrada');
             }   
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">'.$mensagem.'</font></b></center>');
         }
         $titulo = __('Listagem de Permissões').' ('.$i.')';
-        if($export==='Unico'){
+        if ($export==='Unico'){
             $this->_Visual->Bloco_Unico_CriaJanela($titulo);
-        }else if($export==='Maior'){
+        }else if ($export==='Maior'){
             $this->_Visual->Bloco_Maior_CriaJanela($titulo);
-        }else{
+        } else {
             $this->_Visual->Bloco_Menor_CriaJanela($titulo);
         }
         //Carrega Json
@@ -516,13 +516,13 @@ class _Sistema_AdminControle extends _Sistema_Controle
         $permissao    =  $this->_Modelo->db->Sql_Select('Sistema_Permissao', Array('chave'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($permissao);
         // Mensagem
-    	if($sucesso===true){
+    	if ($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
                 "mgs_secundaria" => __('Permissão Deletada com sucesso')
             );
-    	}else{
+    	} else {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),
@@ -546,10 +546,12 @@ class _Sistema_AdminControle extends _Sistema_Controle
      */
     public function Grupos($grupocat = false,$export='Unico'){
         $this->Endereco_Admin_Grupo(false);
-        if($grupocat==='false') $grupocat = false;
-        if($grupocat!==false){
+        if ($grupocat === 'false') {
+            $grupocat = false;
+        }
+        if ($grupocat!==false){
             $where = Array('categoria'=>$grupocat);
-        }else{
+        } else {
             $grupocat = 'false';
             $where = Array();
         }
@@ -568,16 +570,19 @@ class _Sistema_AdminControle extends _Sistema_Controle
             )
         )));
         $grupos = $this->_Modelo->db->Sql_Select('Sistema_Grupo',$where);
-        if($grupos==false){
+        if ($grupos==false){
             \Framework\App\Acl::grupos_inserir();
             $grupos = $this->_Modelo->db->Sql_Select('Sistema_Grupo');
         }
-        if(is_object($grupos)) $grupos = Array(0=>$grupos);
-        if($grupos!==false && !empty($grupos)){
+        $tabela = Array();
+        if (is_object($grupos)) {
+            $grupos = Array(0 => $grupos);
+        }
+        if ($grupos!==false && !empty($grupos)){
             reset($grupos);
             $perm_editar = $this->_Registro->_Acl->Get_Permissao_Url('_Sistema/Admin/Grupos_Edit');
             $perm_del = $this->_Registro->_Acl->Get_Permissao_Url('_Sistema/Admin/Grupos_Del');
-            foreach ($grupos as $indice=>&$valor) {
+            foreach ($grupos as &$valor) {
                 $num_usuarios = $this->_Modelo->db->query('SELECT id,nome'.
                         ' FROM '.MYSQL_USUARIOS.' WHERE servidor=\''.SRV_NAME_SQL.'\' AND grupo='.$valor->id.' AND deletado=0');
                 $num_qnt      = $num_usuarios->num_rows;
@@ -588,27 +593,27 @@ class _Sistema_AdminControle extends _Sistema_Controle
                 $tabela['Nome'][$i]             = '<a href="'.URL_PATH.'_Sistema/Admin/Grupo_Permissao/'.$valor->id.'" data-acao="" class="lajax">'.$valor->nome.'</a>';
                 $tabela['Integrantes'][$i]      = $num_qnt;
                 $tabela['Funções'][$i]          = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Grupo'        ,'_Sistema/Admin/Grupos_Edit/'.$valor->id.'/'.$grupocat    ,''),$perm_editar);
-                if($num_qnt===0){
+                if ($num_qnt===0){
                     $tabela['Funções'][$i]          .= $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Grupo'       ,'_Sistema/Admin/Grupos_Del/'.$valor->id.'/'.$grupocat     ,'Deseja realmente deletar esse Grupo ? Isso irá afetar o sistema!'),$perm_del);
                 }
                 ++$i;
             }
             
-            if($export!==false && $export!=='Unico'){
+            if ($export!==false && $export!=='Unico'){
                 self::Export_Todos($export,$tabela, 'Grupos');
-            }else{
+            } else {
                 $this->_Visual->Show_Tabela_DataTable($tabela);
             }
             unset($tabela);
-        }else{            
+        } else {
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Grupo</font></b></center>');
         }
         $titulo = __('Listagem de Grupos').' ('.$i.')';
-        if($export==='Unico'){
+        if ($export==='Unico'){
             $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',60);
-        }else if($export==='Maior'){
+        }else if ($export==='Maior'){
             $this->_Visual->Bloco_Maior_CriaJanela($titulo,'',60);
-        }else{
+        } else {
             $this->_Visual->Bloco_Menor_CriaJanela($titulo,'',60);
         }
         
@@ -622,7 +627,9 @@ class _Sistema_AdminControle extends _Sistema_Controle
      */
     public function Grupos_Add($grupocat = false){
         $this->Endereco_Admin_Grupo();
-        if($grupocat===false) $grupocat = 'false';
+        if ($grupocat === false) {
+            $grupocat = 'false';
+        }
         // Carrega Config
         $titulo1    = __('Adicionar Grupo');
         $titulo2    = __('Salvar Grupo');
@@ -643,7 +650,9 @@ class _Sistema_AdminControle extends _Sistema_Controle
      * @version 0.4.2
      */
     public function Grupos_Add2($grupocat = false){
-        if($grupocat==='false') $grupocat = false;
+        if ($grupocat === 'false') {
+            $grupocat = false;
+        }
         $titulo     = __('Grupo Adicionado com Sucesso');
         $dao        = 'Sistema_Grupo';
         $funcao     = '$this->Grupos();';
@@ -660,7 +669,9 @@ class _Sistema_AdminControle extends _Sistema_Controle
      */
     public function Grupos_Edit($id,$grupocat = false){
         $this->Endereco_Admin_Grupo();
-        if($grupocat===false) $grupocat = 'false';
+        if ($grupocat === false) {
+            $grupocat = 'false';
+        }
         // Carrega Config
         $titulo1    = 'Editar Grupo (#'.$id.')';
         $titulo2    = __('Alteração de Grupo');
@@ -681,7 +692,9 @@ class _Sistema_AdminControle extends _Sistema_Controle
      * @version 0.4.2
      */
     public function Grupos_Edit2($id,$grupocat = false){
-        if($grupocat===false) $grupocat = 'false';
+        if ($grupocat === false) {
+            $grupocat = 'false';
+        }
         $titulo     = __('Grupo Editado com Sucesso');
         $dao        = Array('Sistema_Grupo',$id);
         $funcao     = '$this->Grupos('.$grupocat.');';
@@ -699,20 +712,22 @@ class _Sistema_AdminControle extends _Sistema_Controle
      */
     public function Grupos_Del($id,$grupocat = false){
         
-        if($grupocat==='false') $grupocat = false;
-        
-    	$id = (int) $id;
+        if ($grupocat === 'false') {
+            $grupocat = false;
+        }
+
+        $id = (int) $id;
         // Puxa grupo e deleta
         $grupo = $this->_Modelo->db->Sql_Select('Sistema_Grupo', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($grupo);
         // Mensagem
-    	if($sucesso===true){
+    	if ($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
                 "mgs_secundaria" => __('Grupo Deletado com sucesso')
             );
-    	}else{
+    	} else {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),
@@ -733,12 +748,12 @@ class _Sistema_AdminControle extends _Sistema_Controle
      */
     public function Grupo_Permissao($grupo=false,$bloco='Unico'){
         $i = 0;
-        if($grupo===false){
+        if ($grupo===false){
             $botao_titulo  = __('Adicionar Permissão de Grupo');
             $aviso_nenhuma = __('Nenhuma permissão de Nenhum Grupo');
             $botao_extra   = '';
             $where = Array();
-        }else{
+        } else {
             $botao_titulo  = __('Adicionar Permissão ao Grupo');
             $aviso_nenhuma = __('Nenhuma permissão do Grupo');
             $botao_extra   = '/'.$grupo;
@@ -759,13 +774,14 @@ class _Sistema_AdminControle extends _Sistema_Controle
             )
         )));
         // CONEXAO
+        $tabela = Array();
         $grupopermissaos = $this->_Modelo->db->Sql_Select('Sistema_Grupo_Permissao',$where);
-        if(is_object($grupopermissaos)) $grupopermissaos = Array(0=>$grupopermissaos);
-        if($grupopermissaos!==false && !empty($grupopermissaos)){
+        if (is_object($grupopermissaos)) $grupopermissaos = Array(0=>$grupopermissaos);
+        if ($grupopermissaos!==false && !empty($grupopermissaos)){
             reset($grupopermissaos);
             $perm_editar = $this->_Registro->_Acl->Get_Permissao_Url('_Sistema/Admin/Grupo_Permissao_Edit');
             $perm_del = $this->_Registro->_Acl->Get_Permissao_Url('_Sistema/Admin/Grupo_Permissao_Del');
-            foreach ($grupopermissaos as $indice=>&$valor) {
+            foreach ($grupopermissaos as &$valor) {
                 $tabela['#Id'][$i]          = '#'.$valor->id;
                 $tabela['Grupo'][$i]        = $valor->grupo2;
                 $tabela['Permissão'][$i]    = $valor->permissao2;
@@ -776,15 +792,15 @@ class _Sistema_AdminControle extends _Sistema_Controle
             }
             $this->_Visual->Show_Tabela_DataTable($tabela);
             unset($tabela);
-        }else{ 
+        } else { 
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">'.$aviso_nenhuma.'</font></b></center>');
         }
         $titulo = __('Listagem de Permissão de Grupo').' ('.$i.')';
-        if($bloco==='Unico'){
+        if ($bloco==='Unico'){
             $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',50);
-        }else if($bloco==='Maior'){
+        }else if ($bloco==='Maior'){
             $this->_Visual->Bloco_Maior_CriaJanela($titulo,'',50);
-        }else{
+        } else {
             $this->_Visual->Bloco_Menor_CriaJanela($titulo,'',50);
         }
         
@@ -802,11 +818,11 @@ class _Sistema_AdminControle extends _Sistema_Controle
         $titulo2    = __('Cadastro de Permissão de Grupo');
         $formid     = 'form_Sistema_Admin_Grupo_Permissao_Add';
         $formbt     = __('Salvar');
-        if($grupo!==false){
+        if ($grupo!==false){
             $campos = Sistema_Grupo_Permissao_DAO::Get_Colunas();
             $extra = '/'.$grupo;
             self::DAO_Campos_Retira($campos, 'grupo');
-        }else{
+        } else {
             $campos = Sistema_Grupo_Permissao_DAO::Get_Colunas();
             $extra = '';
         }
@@ -828,7 +844,7 @@ class _Sistema_AdminControle extends _Sistema_Controle
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = __('Permissão de Grupo Adicionado com Sucesso');
         
-        if($grupo!==false){
+        if ($grupo!==false){
             $alterar = ['grupo' => $grupo];
         }
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
@@ -841,20 +857,17 @@ class _Sistema_AdminControle extends _Sistema_Controle
      * @version 0.4.2
      */
     public function Grupo_Permissao_Del($id){
-        
-        
-    	$id = (int) $id;
         // Puxa grupo e deleta
-        $grupopermissao = $this->_Modelo->db->Sql_Select('Sistema_Grupo_Permissao', Array('id'=>$id));
+        $grupopermissao = $this->_Modelo->db->Sql_Select('Sistema_Grupo_Permissao', Array('id'=>(int) $id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($grupopermissao);
         // Mensagem
-    	if($sucesso===true){
+    	if ($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
                 "mgs_secundaria" => __('Permissão de Grupo Deletado com sucesso')
             );
-    	}else{
+    	} else {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),
@@ -884,20 +897,22 @@ class _Sistema_AdminControle extends _Sistema_Controle
             )
         )));
         $grupopermissaos = $this->_Modelo->db->Sql_Select('Sistema_Newsletter');
-        if(is_object($grupopermissaos)) $grupopermissaos = Array(0=>$grupopermissaos);
-        if($grupopermissaos!==false && !empty($grupopermissaos)){
+        if (is_object($grupopermissaos)) {
+            $grupopermissaos = Array(0 => $grupopermissaos);
+        }
+        if ($grupopermissaos!==false && !empty($grupopermissaos)){
             reset($grupopermissaos);
             $perm_editar = $this->_Registro->_Acl->Get_Permissao_Url('_Sistema/Admin/Newsletter_Edit');
             $perm_del = $this->_Registro->_Acl->Get_Permissao_Url('_Sistema/Admin/Newsletter_Del');
-            foreach ($grupopermissaos as $indice=>&$valor) {
+            foreach ($grupopermissaos as &$valor) {
                 $tabela['Id'][$i]           = $valor->id;
                 $tabela['Nome'][$i]         = $valor->nome;
                 $tabela['Email'][$i]        = $valor->email;
-                if($valor->tipo==1){
+                if ($valor->tipo==1){
                     $tabela['Tipo'][$i]     = __('Newsletter');
-                }else if($valor->tipo==2){
+                }else if ($valor->tipo==2){
                     $tabela['Tipo'][$i]     = __('Contato');
-                }else if($valor->tipo==3){
+                }else if ($valor->tipo==3){
                     $tabela['Tipo'][$i]     = __('Trabalhe Conosco');                    
                 }
                 $tabela['Estado'][$i]       = $valor->estado;
@@ -906,9 +921,9 @@ class _Sistema_AdminControle extends _Sistema_Controle
                                               $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Newsletter'       ,'_Sistema/Admin/Newsletter_Del/'.$valor->id.'/'     ,'Deseja realmente deletar essa Newsletter ? Isso irá afetar o sistema!'),$perm_del);
                 ++$i;
             }
-            if($export!==false && $export!=='Unico'){
+            if ($export!==false && $export!=='Unico'){
                 self::Export_Todos($export,$tabela, 'Newsletter');
-            }else{
+            } else {
                 $this->_Visual->Show_Tabela_DataTable(
                     $tabela,     // Array Com a Tabela
                     '',          // style extra
@@ -922,20 +937,20 @@ class _Sistema_AdminControle extends _Sistema_Controle
                 );
             }
             unset($tabela);
-        }else{
-            if($export!==false){
+        } else {
+            if ($export!==false){
                 $mensagem = __('Nenhuma Newsletter para Exportar');
-            }else{
+            } else {
                 $mensagem = __('Nenhuma Newsletter');
             }            
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">'.$mensagem.'</font></b></center>');
         }
         $titulo = __('Listagem de Newsletter').' ('.$i.')';
-        if($export==='Unico'){
+        if ($export==='Unico'){
             $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',40);
-        }else if($export==='Maior'){
+        }else if ($export==='Maior'){
             $this->_Visual->Bloco_Maior_CriaJanela($titulo,'',40);
-        }else{
+        } else {
             $this->_Visual->Bloco_Menor_CriaJanela($titulo,'',40);
         }
         
@@ -1007,13 +1022,13 @@ class _Sistema_AdminControle extends _Sistema_Controle
         $this->Newsletter();  
         
         // Mostra Mensagem de Sucesso
-        if($sucesso===true){
+        if ($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Inserção bem sucedida'),
                 "mgs_secundaria" => __('Newsletter cadastrado com sucesso.')
             ); 
-        }else{
+        } else {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),
@@ -1042,13 +1057,13 @@ class _Sistema_AdminControle extends _Sistema_Controle
         // Atualiza
         $this->Newsletter();
         // Mensagem
-        if($sucesso===true){
+        if ($sucesso===true){
             $mensagens = array(
                 "tipo"              => 'sucesso',
                 "mgs_principal"     => __('Newsletter Alterado com Sucesso'),
                 "mgs_secundaria"    => ''.$_POST["nome"].' teve a alteração bem sucedida'
             );
-        }else{
+        } else {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),
@@ -1075,13 +1090,13 @@ class _Sistema_AdminControle extends _Sistema_Controle
         $grupopermissao = $this->_Modelo->db->Sql_Select('Sistema_Newsletter', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($grupopermissao);
         // Mensagem
-    	if($sucesso===true){
+    	if ($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
                 "mgs_secundaria" => __('Newsletter Deletado com sucesso')
             );
-    	}else{
+    	} else {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),
@@ -1105,9 +1120,9 @@ class _Sistema_AdminControle extends _Sistema_Controle
     function Endereco_Admin($true=true){
         $titulo = __('Administração Geral');
         $link = '_Sistema/Admin/Main';
-        if($true===true){
+        if ($true===true){
             $this->Tema_Endereco($titulo,$link);
-        }else{
+        } else {
             $this->Tema_Endereco($titulo);
         }
     }
@@ -1122,9 +1137,9 @@ class _Sistema_AdminControle extends _Sistema_Controle
         self::Endereco_Admin();
         $titulo = __('Permissões do Sistema');
         $link = '_Sistema/Admin/Permissoes';
-        if($true===true){
+        if ($true===true){
             $this->Tema_Endereco($titulo,$link);
-        }else{
+        } else {
             $this->Tema_Endereco($titulo);
         }
     }
@@ -1139,9 +1154,9 @@ class _Sistema_AdminControle extends _Sistema_Controle
         self::Endereco_Admin();
         $titulo = __('Permissões do Sistema');
         $link = '_Sistema/Admin/Permissoes';
-        if($true===true){
+        if ($true===true){
             $this->Tema_Endereco($titulo,$link);
-        }else{
+        } else {
             $this->Tema_Endereco($titulo);
         }
     }
@@ -1156,9 +1171,9 @@ class _Sistema_AdminControle extends _Sistema_Controle
         $this->Endereco_Admin();
         $titulo = __('Menus do Sistema');
         $link = '_Sistema/Admin/Menus';
-        if($true===true){
+        if ($true===true){
             $this->Tema_Endereco($titulo,$link);
-        }else{
+        } else {
             $this->Tema_Endereco($titulo);
         }
     }
@@ -1173,9 +1188,9 @@ class _Sistema_AdminControle extends _Sistema_Controle
         $this->Endereco_Admin();
         $titulo = __('Grupos do Sistema');
         $link = '_Sistema/Admin/Grupos';
-        if($true===true){
+        if ($true===true){
             $this->Tema_Endereco($titulo,$link);
-        }else{
+        } else {
             $this->Tema_Endereco($titulo);
         }
     }

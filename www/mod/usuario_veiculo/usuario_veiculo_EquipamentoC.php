@@ -41,7 +41,7 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
         $link   = 'usuario_veiculo/Equipamento/Equipamentos';
         if($true===true){
             $_Controle->Tema_Endereco(__('Equipamentos'),$link);
-        }else{
+        } else {
             $_Controle->Tema_Endereco(__('Equipamentos'));
         }
     }
@@ -54,7 +54,7 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
         self::Endereco_Equipamento(true);
         if($true===true){
             $_Controle->Tema_Endereco($titulo,$link);
-        }else{
+        } else {
             $_Controle->Tema_Endereco($titulo);
         }
     }
@@ -67,7 +67,7 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
         self::Endereco_Equipamento_Marca(true);
         if($true===true){
             $_Controle->Tema_Endereco($titulo,$link);
-        }else{
+        } else {
             $_Controle->Tema_Endereco($titulo);
         }
     }
@@ -113,11 +113,11 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
             }
             if($export!==false){
                 self::Export_Todos($export,$tabela, 'Equipamentos');
-            }else{
+            } else {
                 $this->_Visual->Show_Tabela_DataTable($tabela);
             }
             unset($tabela);
-        }else{ 
+        } else { 
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum '.$titulo2.'</font></b></center>');
         }
         $titulo_janela = 'Listagem de '.$titulo.' ('.$i.')';
@@ -172,7 +172,7 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
                 $texto = __('Ocupada');
             }else if($resultado->status=='1'){
                 $texto = __('Livre');
-            }else{
+            } else {
                 $texto = __('Em uso');
             }
             $conteudo = array(
@@ -182,7 +182,7 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
             );
             $this->_Visual->Json_IncluiTipo('Conteudo',$conteudo);
             $this->_Visual->Json_Info_Update('Titulo', __('Status Alterado')); 
-        }else{
+        } else {
             $mensagens = array(
                 "tipo"              => 'erro',
                 "mgs_principal"     => __('Erro'),
@@ -314,7 +314,7 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
                 "mgs_principal" => __('Deletado'),
                 "mgs_secundaria" => $titulo_singular.' Deletado com sucesso'
             );
-    	}else{
+    	} else {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),
@@ -362,11 +362,11 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
             }
             if($export!==false){
                 self::Export_Todos($export,$tabela, 'Equipamentos - Marcas');
-            }else{
+            } else {
                 $this->_Visual->Show_Tabela_DataTable($tabela);
             }
             unset($tabela);
-        }else{        
+        } else {        
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhuma Marca</font></b></center>');
         }
         $titulo = __('Listagem de Marcas').' ('.$i.')';
@@ -462,7 +462,7 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
                 "mgs_principal" => __('Deletada'),
                 "mgs_secundaria" => __('Marca Deletada com sucesso')
             );
-    	}else{
+    	} else {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),
@@ -511,11 +511,11 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
             }
             if($export!==false){
                 self::Export_Todos($export,$tabela, 'Equipamentos - Modelos');
-            }else{
+            } else {
                 $this->_Visual->Show_Tabela_DataTable($tabela);
             }
             unset($tabela);
-        }else{       
+        } else {       
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Modelo</font></b></center>');
         }
         $titulo = __('Listagem de Modelos').' ('.$i.')';
@@ -611,7 +611,7 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
                 "mgs_principal" => __('Deletado'),
                 "mgs_secundaria" => __('Modelo Deletado com sucesso')
             );
-    	}else{
+    	} else {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),

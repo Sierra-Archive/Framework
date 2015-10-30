@@ -47,7 +47,7 @@ while ($row = mysqli_fetch_assoc($result))
     $mail->addAddress($row['email'], $row['full_name']);
     $mail->addStringAttachment($row['photo'], 'YourPhoto.jpg');
 
-    if(!$mail->send())
+    if (!$mail->send())
         echo "There has been a mail error sending to " . $row['email'] . "&lt;br&gt;";
 
     // Clear all addresses and attachments for next loop
@@ -117,7 +117,7 @@ $mail->Subject = __('Here is the subject');
 $mail->Body    = __('This is the message body');
 $mail->addAttachment('c:/temp/11-10-00.zip', 'new_name.zip');  // optional name
 
-if(!$mail->send())
+if (!$mail->send())
 {
    echo __('There was an error sending the message');
    exit;

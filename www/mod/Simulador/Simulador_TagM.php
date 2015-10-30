@@ -27,8 +27,8 @@ class Simulador_TagModelo extends Simulador_Modelo
         $perm_del = $this->_Registro->_Acl->Get_Permissao_Url('Simulador/Tag/Tags_Del');
         
         $function = '';
-        if($perm_editar) $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Editar\'     ,Array(__(\'Editar Pasta\')        ,\'Simulador/Tag/Tags_Edit/\'.$d    ,\'\'),true);';
-        if($perm_del) $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Deletar\'    ,Array(__(\'Deletar Pasta\')       ,\'Simulador/Tag/Tags_Del/\'.$d     ,__(\'Deseja realmente deletar essa Caracteristica ?\')),true);';
+        if ($perm_editar) $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Editar\'     ,Array(__(\'Editar Pasta\')        ,\'Simulador/Tag/Tags_Edit/\'.$d    ,\'\'),true);';
+        if ($perm_del) $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Deletar\'    ,Array(__(\'Deletar Pasta\')       ,\'Simulador/Tag/Tags_Del/\'.$d     ,__(\'Deseja realmente deletar essa Caracteristica ?\')),true);';
 
         $columns = Array();
         

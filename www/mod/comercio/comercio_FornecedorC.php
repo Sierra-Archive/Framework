@@ -19,7 +19,7 @@ class comercio_FornecedorControle extends comercio_Controle
         parent::__construct();
     }
     static function Campos_Deletar(&$campos){
-        if(!\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Fornecedor_Categoria')){
+        if (!\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Fornecedor_Categoria')){
             self::DAO_Campos_Retira($campos, 'categoria');
         }
     }
@@ -45,9 +45,9 @@ class comercio_FornecedorControle extends comercio_Controle
         $_Controle = $Registro->_Controle;
         $titulo = __('Fornecedores');
         $link = 'comercio/Fornecedor/Fornecedores';
-        if($true===true){
+        if ($true===true){
             $_Controle->Tema_Endereco($titulo,$link);
-        }else{
+        } else {
             $_Controle->Tema_Endereco($titulo);
         }
     }
@@ -63,7 +63,7 @@ class comercio_FornecedorControle extends comercio_Controle
 
         $tabela_colunas[] = __('Nome');
         // Coloca Preco
-        if(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Fornecedor_Categoria')){
+        if (\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Fornecedor_Categoria')){
             $tabela_colunas[] = __('Tipo de Fornecimento');
         }
         
@@ -163,13 +163,13 @@ class comercio_FornecedorControle extends comercio_Controle
         $fornecedor = $this->_Modelo->db->Sql_Select('Comercio_Fornecedor', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($fornecedor);
         // Mensagem
-    	if($sucesso===true){
+    	if ($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
                 "mgs_secundaria" => __('Fornecedor Deletado com sucesso')
             );
-    	}else{
+    	} else {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),
@@ -184,7 +184,7 @@ class comercio_FornecedorControle extends comercio_Controle
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
     public function Fornecedores_View($fornecedor_id = false){
-        if($fornecedor_id===false || $fornecedor_id==0 || !isset($fornecedor_id)) return _Sistema_erroControle::Erro_Fluxo('Fornecedor não informado',404);
+        if ($fornecedor_id===false || $fornecedor_id==0 || !isset($fornecedor_id)) return _Sistema_erroControle::Erro_Fluxo('Fornecedor não informado',404);
         // Inclui Endereco
         self::Endereco_Fornecedor(true);
         $this->Tema_Endereco('Visualizar Comentários do Fornecedor #'.$fornecedor_id);
@@ -194,7 +194,9 @@ class comercio_FornecedorControle extends comercio_Controle
         $this->_Visual->Json_Info_Update('Titulo', __('Visualizar Comentários do Fornecedor'));
     }
     public function Fornecedores_Popup($fornecedor_id = false, $popup = true){
-        if($fornecedor_id===false || $fornecedor_id==0 || !isset($fornecedor_id)) return _Sistema_erroControle::Erro_Fluxo('Fornecedor não informado',404);
+        if ($fornecedor_id===false || $fornecedor_id==0 || !isset($fornecedor_id)){
+            return _Sistema_erroControle::Erro_Fluxo('Fornecedor não informado',404);
+        }
         // mostra todas as suas mensagens
         $where = Array(
             'id'    =>  $fornecedor_id,
@@ -229,7 +231,7 @@ class comercio_FornecedorControle extends comercio_Controle
         $html .= '<b>Observação:</b> '.             $fornecedor->obs;
         $html .= '</div>';            
         $titulo = 'Informações do Fornecedor '.$fornecedor->nome.' ('.$fornecedor_id.')';
-        if($popup){
+        if ($popup){
             $conteudo = array(
                 'id' => 'popup',
                 'title' => 'Visualizar Fornecedor',
@@ -242,7 +244,7 @@ class comercio_FornecedorControle extends comercio_Controle
                 'html' => $html
             );
             $this->_Visual->Json_IncluiTipo('Popup',$conteudo);
-        }else{
+        } else {
             $this->_Visual->Blocar('<div class="row">'.$html.'</div>');
             $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',20);
             $this->_Visual->Json_Info_Update('Titulo', __('Visualizar Fornecedor'));
@@ -260,9 +262,9 @@ class comercio_FornecedorControle extends comercio_Controle
     public function Fornecedores_Comentario($fornecedor_id = false, $export = false){
         
         $erro = false;
-        if($fornecedor_id===false){
+        if ($fornecedor_id===false){
             $where = Array();
-        }else{
+        } else {
             $where = Array('fornecedor'=>$fornecedor_id);
         }
         $i = 0;
@@ -282,8 +284,8 @@ class comercio_FornecedorControle extends comercio_Controle
         )));
         // CONEXAO
         $linhas = $this->_Modelo->db->Sql_Select('Comercio_Fornecedor_Comentario',$where);
-        if($linhas!==false && !empty($linhas)){
-            if(is_object($linhas)) $linhas = Array(0=>$linhas);
+        if ($linhas!==false && !empty($linhas)){
+            if (is_object($linhas)) $linhas = Array(0=>$linhas);
             reset($linhas);
             foreach ($linhas as $indice=>&$valor) {
                 //$tabela['#Id'][$i]        = '#'.$valor->id;
@@ -293,26 +295,26 @@ class comercio_FornecedorControle extends comercio_Controle
                                                 $this->_Visual->Tema_Elementos_Btn('Deletar'         ,Array('Deletar Comentário de Fornecedor'       ,'comercio/Fornecedor/Fornecedores_Comentario_Del/'.$fornecedor_id.'/'.$valor->id.'/'     ,'Deseja realmente deletar esse Comentário desse Fornecedor ?'));
                 ++$i;
             }
-            if($export!==false){
+            if ($export!==false){
                 self::Export_Todos($export,$tabela, 'Comercio - Fornecedor (#'.$fornecedor_id.') Comentários');
-            }else{
+            } else {
                 $this->_Visual->Show_Tabela_DataTable($tabela);
             }
             unset($tabela);
-        }else{   
-            if($export!==false){
+        } else {   
+            if ($export!==false){
                 $erro = __('Nenhum Comentário desse Fornecedor para Exportar');
             }else {
                 $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Comentário do Fornecedor</font></b></center>');
             }
         }
-        if($erro===false){
+        if ($erro===false){
             $titulo = __('Comentários do Fornecedor').' ('.$i.')';
             $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',10);
 
             //Carrega Json
             $this->_Visual->Json_Info_Update('Titulo', __('Administrar Comentários do Fornecedor'));
-        }else{
+        } else {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),
@@ -327,7 +329,7 @@ class comercio_FornecedorControle extends comercio_Controle
      * @version 0.4.2
      */
     public function Fornecedores_Comentario_Add($fornecedor_id = false){
-        if($fornecedor_id===false) return _Sistema_erroControle::Erro_Fluxo('Fornecedor não informado',404);
+        if ($fornecedor_id===false) return _Sistema_erroControle::Erro_Fluxo('Fornecedor não informado',404);
         // Carrega Config
         $titulo1    = __('Adicionar Comentário do Fornecedor');
         $titulo2    = __('Salvar Comentário do Fornecedor');
@@ -346,7 +348,7 @@ class comercio_FornecedorControle extends comercio_Controle
      * @version 0.4.2
      */
     public function Fornecedores_Comentario_Add2($fornecedor_id = false){
-        if($fornecedor_id===false) return _Sistema_erroControle::Erro_Fluxo('Fornecedor não informado',404);
+        if ($fornecedor_id===false) return _Sistema_erroControle::Erro_Fluxo('Fornecedor não informado',404);
         $titulo     = __('Comentário do Fornecedor Adicionado com Sucesso');
         $dao        = 'Comercio_Fornecedor_Comentario';
         $funcao     = '$this->Fornecedores_View('.$fornecedor_id.');';
@@ -362,8 +364,8 @@ class comercio_FornecedorControle extends comercio_Controle
      * @version 0.4.2
      */
     public function Fornecedores_Comentario_Edit($fornecedor_id = false,$id = 0){
-        if($fornecedor_id===false) return _Sistema_erroControle::Erro_Fluxo('Fornecedor não informado',404);
-        if($id            == 0   ) return _Sistema_erroControle::Erro_Fluxo('Comentário não informado',404);
+        if ($fornecedor_id===false) return _Sistema_erroControle::Erro_Fluxo('Fornecedor não informado',404);
+        if ($id            == 0   ) return _Sistema_erroControle::Erro_Fluxo('Comentário não informado',404);
         // Carrega Config
         $titulo1    = 'Editar Comentário do Fornecedor (#'.$id.')';
         $titulo2    = __('Alteração de Comentário do Fornecedor');
@@ -383,8 +385,8 @@ class comercio_FornecedorControle extends comercio_Controle
      * @version 0.4.2
      */
     public function Fornecedores_Comentario_Edit2($fornecedor_id = false,$id = 0){
-        if($fornecedor_id===false) return _Sistema_erroControle::Erro_Fluxo('Fornecedor não informado',404);
-        if($id            == 0   ) return _Sistema_erroControle::Erro_Fluxo('Comentário não informado',404);
+        if ($fornecedor_id===false) return _Sistema_erroControle::Erro_Fluxo('Fornecedor não informado',404);
+        if ($id            == 0   ) return _Sistema_erroControle::Erro_Fluxo('Comentário não informado',404);
         $titulo     = __('Comentário de Fornecedor Editado com Sucesso');
         $dao        = Array('Comercio_Fornecedor_Comentario',$id);
         $funcao     = '$this->Fornecedores_View('.$fornecedor_id.');';
@@ -401,8 +403,8 @@ class comercio_FornecedorControle extends comercio_Controle
      * @version 0.4.2
      */
     public function Fornecedores_Comentario_Del($fornecedor_id = false,$id = 0){
-        if($fornecedor_id===false) return _Sistema_erroControle::Erro_Fluxo('Fornecedor não informado',404);
-        if($id            == 0   ) return _Sistema_erroControle::Erro_Fluxo('Comentário não informado',404);
+        if ($fornecedor_id===false) return _Sistema_erroControle::Erro_Fluxo('Fornecedor não informado',404);
+        if ($id            == 0   ) return _Sistema_erroControle::Erro_Fluxo('Comentário não informado',404);
         
         
     	$id = (int) $id;
@@ -411,13 +413,13 @@ class comercio_FornecedorControle extends comercio_Controle
         $comentario = $this->_Modelo->db->Sql_Select('Comercio_Fornecedor_Comentario', $where);
         $sucesso =  $this->_Modelo->db->Sql_Delete($comentario);
         // Mensagem
-    	if($sucesso===true){
+    	if ($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
                 "mgs_secundaria" => __('Comentário do Fornecedor Deletado com sucesso')
             );
-    	}else{
+    	} else {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),

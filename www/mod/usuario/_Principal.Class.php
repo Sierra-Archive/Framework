@@ -23,13 +23,13 @@ class usuario_Principal implements \Framework\PrincipalInterface
     static function Home(&$controle, &$Modelo, &$Visual){
         self::Widgets();
         // Carrega Expedientes
-        if(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Expediente')){
+        if (\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Expediente')){
             usuario_ExpedienteControle::Disponivel('Maior');
             usuario_ExpedienteControle::Almoco('Menor');
         }
     }
     static function Widget(&$_Controle){
-        if(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Admin_Cliente')){
+        if (\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Admin_Cliente')){
             $_Controle->Widget_Add('Superior',
             '<li class="dropdown mtop5">'.
                 '<a class="dropdown-toggle element lajax" data-acao="" data-placement="bottom" data-toggle="tooltip" href="'.URL_PATH.'usuario/Admin/Usuarios_Add/cliente" data-original-title="Novo Cliente">'.
@@ -53,10 +53,10 @@ class usuario_Principal implements \Framework\PrincipalInterface
         $i = 0;
         // add botao
         $usuario = $Modelo->db->Sql_Select('Usuario',$where,0,'',true);
-        if($usuario===false) return false;
+        if ($usuario===false) return false;
         $Visual->Blocar('<a title="Adicionar Usuário" class="btn btn-success lajax explicar-titulo" data-acao="" href="'.URL_PATH.'usuario/Admin/Usuarios_Add">Adicionar novo Usuário</a><div class="space15"></div>');
-        if(is_object($usuario)) $usuario = Array(0=>$usuario);
-        if($usuario!==false && !empty($usuario)){
+        if (is_object($usuario)) $usuario = Array(0=>$usuario);
+        if ($usuario!==false && !empty($usuario)){
             reset($usuario);
             foreach ($usuario as $indice=>&$valor) {
                 //$tabela['#Id'][$i]               = '#'.$valor->id;
@@ -64,14 +64,14 @@ class usuario_Principal implements \Framework\PrincipalInterface
                 $tabela['Email'][$i]            = $valor->email;
                 $tabela['Telefone'][$i]         = $valor->telefone;
                 $tabela['Celular'][$i]          = $valor->celular;
-                //if($grupo==false){
+                //if ($grupo==false){
                     $tabela['Grupo'][$i]        = $valor->grupo;
                 //}
                 //$tabela['Nivel de Usuário'][$i] = $niveluser;
                 //$tabela['Nivel de Admin'][$i]   = $niveladmin;
-                if(\Framework\App\Sistema_Funcoes::Perm_Modulos('Financeiro')) $tabela['Saldo'][$i]            = $valor->saldo;
+                if (\Framework\App\Sistema_Funcoes::Perm_Modulos('Financeiro')) $tabela['Saldo'][$i]            = $valor->saldo;
                 $tabela['Funções'][$i]          = '';
-                if(\Framework\App\Sistema_Funcoes::Perm_Modulos('Financeiro')){
+                if (\Framework\App\Sistema_Funcoes::Perm_Modulos('Financeiro')){
                     $tabela['Funções'][$i]     .= '<a data-confirma="O cliente realizou um deposito para a empresa?" title="Add quantia ao Saldo do Usuário" class="lajax explicar-titulo" data-acao="" href="'.URL_PATH.'Financeiro/Admin/financeiro_deposito/'.$valor->id.'/"><img alt="'.__('Armazenar Depósito').' src="'.WEB_URL.'img/icons/cifrao_16x16.png"></a>'.
                     '<a data-confirma="O cliente confirmou o saque?" title="Remover Quantia do Saldo do Usuário" class="lajax explicar-titulo" data-acao="" href="'.URL_PATH.'Financeiro/Admin/financeiro_retirar/'.$valor->id.'/"><img alt="'.__('Armazenar Retirada').' src="'.WEB_URL.'img/icons/cifrao_16x16.png"></a>';
                 }
@@ -81,7 +81,7 @@ class usuario_Principal implements \Framework\PrincipalInterface
             }
             $Visual->Show_Tabela_DataTable($tabela);;
             unset($tabela);
-        }else{ 
+        } else { 
             $Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Usuário na busca '.$busca.'</font></b></center>');
         }
         $titulo = 'Busca de Usuários: '.$busca.' ('.$i.')';
@@ -104,8 +104,8 @@ class usuario_Principal implements \Framework\PrincipalInterface
         $Registro = &\Framework\App\Registro::getInstacia();
         $Modelo = &$Registro->_Modelo;
         $Visual = &$Registro->_Visual;
-        //if(!\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Principal_Widgets')) return false;
-        if(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Admin_Funcionario')){
+        //if (!\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Principal_Widgets')) return false;
+        if (\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Admin_Funcionario')){
             $where = Array(
                 'EXTA.categoria'    =>  CFG_TEC_CAT_ID_FUNCIONARIOS,
                 'ativado'           =>  1
@@ -122,7 +122,7 @@ class usuario_Principal implements \Framework\PrincipalInterface
                 false, 
                 140
             );
-        }else{
+        } else {
             
             
             
@@ -144,7 +144,7 @@ class usuario_Principal implements \Framework\PrincipalInterface
             
             
         }
-        if(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Admin_Cliente')){
+        if (\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Admin_Cliente')){
             // Clientes
             $inner_join = 'INNER JOIN '.MYSQL_SIS_GRUPO.' SG ON U.grupo=SG.id';
             $cliente_qnt = $Modelo->db->Sql_Contar('Usuario','SG.categoria=\''.CFG_TEC_CAT_ID_CLIENTES.'\'',$inner_join);

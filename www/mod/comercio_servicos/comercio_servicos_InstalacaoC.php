@@ -38,45 +38,45 @@ class comercio_servicos_InstalacaoControle extends comercio_servicos_Controle
     static function Endereco_Ar($true=true){
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
-        if($true===true){
+        if ($true===true){
             $_Controle->Tema_Endereco(__('Adicional de Ar'),'comercio_servicos/Instalacao/Ar');
-        }else{
+        } else {
             $_Controle->Tema_Endereco(__('Adicional de Ar'));
         }
     }
     static function Endereco_Gas($true=true){
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
-        if($true===true){
+        if ($true===true){
             $_Controle->Tema_Endereco(__('Adicional de Gás'),'comercio_servicos/Instalacao/Gas');
-        }else{
+        } else {
             $_Controle->Tema_Endereco(__('Adicional de Gás'));
         }
     }
     static function Endereco_Linha($true=true){
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
-        if($true===true){
+        if ($true===true){
             $_Controle->Tema_Endereco(__('Adicional de Linha'),'comercio_servicos/Instalacao/Linha');
-        }else{
+        } else {
             $_Controle->Tema_Endereco(__('Adicional de Linha'));
         }
     }*/
     static function Endereco_Btu($true=true){
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
-        if($true===true){
+        if ($true===true){
             $_Controle->Tema_Endereco(__('Btu'),'comercio_servicos/Instalacao/Btu');
-        }else{
+        } else {
             $_Controle->Tema_Endereco(__('Btu'));
         }
     }
     static function Endereco_Suporte($true=true){
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
-        if($true===true){
+        if ($true===true){
             $_Controle->Tema_Endereco(__('Suporte'),'comercio_servicos/Instalacao/Suporte');
-        }else{
+        } else {
             $_Controle->Tema_Endereco(__('Suporte'));
         }
     }
@@ -184,13 +184,13 @@ class comercio_servicos_InstalacaoControle extends comercio_servicos_Controle
         $setor = $this->_Modelo->db->Sql_Select('Comercio_Servicos_Btu', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($setor);
         // Mensagem
-    	if($sucesso===true){
+    	if ($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
                 "mgs_secundaria" => __('Btu deletado com sucesso')
             );
-    	}else{
+    	} else {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),
@@ -305,13 +305,13 @@ class comercio_servicos_InstalacaoControle extends comercio_servicos_Controle
         $setor = $this->_Modelo->db->Sql_Select('Comercio_Servicos_Suporte', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($setor);
         // Mensagem
-    	if($sucesso===true){
+    	if ($sucesso===true){
             $mensagens = array(
                 "tipo"              => 'sucesso',
                 "mgs_principal"     => __('Deletado'),
                 "mgs_secundaria"    => __('Suporte deletado com sucesso')
             );
-    	}else{
+    	} else {
             $mensagens = array(
                 "tipo"              => 'erro',
                 "mgs_principal"     => __('Erro'),

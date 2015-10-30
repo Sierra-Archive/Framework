@@ -116,9 +116,9 @@ final Class Usuario_DAO extends Framework\App\Dao
         return get_class() ; //return str_replace(Array('_DAO'), Array(''), get_class());
     }
     public static function Gerar_Colunas(){
-        if(isset($_COOKIE['indicativo_nome'])){
+        if (isset($_COOKIE['indicativo_nome'])){
             $indicativo_nome = $_COOKIE['indicativo_nome'];
-        }else{
+        } else {
             $indicativo_nome = 0;
         }
         return Array(

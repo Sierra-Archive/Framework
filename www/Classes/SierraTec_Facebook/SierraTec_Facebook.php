@@ -37,7 +37,7 @@ class SierraTec_Facebook {
         ));
         $this->user_id = $this->facebook->getUser();
 
-        if($this->user_id /*&& $faceid==$this->user_id*/) {
+        if ($this->user_id /*&& $faceid==$this->user_id*/) {
 
             // We have a user ID, so probably a logged in user.
             // If not, we'll get an exception, which we handle below.
@@ -54,7 +54,7 @@ class SierraTec_Facebook {
 
 
             } catch(FacebookApiException $e) {
-              if($autorizacao!=2){
+              if ($autorizacao!=2){
                   // If the user is logged out, you can have a 
                   // user ID even though the access token is invalid.
                   // In this case, we'll get an exception, so we'll
@@ -64,7 +64,7 @@ class SierraTec_Facebook {
                   $autorizacao = 0;
               }
             }
-        }else if($faceid!=$this->user_id && $this->user_id){
+        }else if ($faceid!=$this->user_id && $this->user_id){
           $autorizacao = 1;
         } else {
           $autorizacao = 0;
@@ -94,10 +94,10 @@ class SierraTec_Facebook {
      */
     private function Armazena_Conversas($conversas){
         // percorre todas as conversas
-        if(is_array($conversas)){
+        if (is_array($conversas)){
             foreach($conversas as $i => $valor){
                 // foreach com as conversas
-                if(is_array($conversas[$i]['comments']['data'])){
+                if (is_array($conversas[$i]['comments']['data'])){
                     foreach($conversas[$i]['comments']['data'] as $j => $valor2){
                         $mensagemid = explode('_',$conversas[$i]['comments']['data'][$j]['id']);
                         $mensagemid = $mensagemid[1];
@@ -109,15 +109,15 @@ class SierraTec_Facebook {
 
     }
     private function Armazena_Conversas_Inserir($conversaid, $meuid, $idamigo, $dataleitura, $lida, $mensagemid, $mensagemusername, $mensagemuserid, $mensagem, $datamensagem){
-        if($meuid=='')     $meuid = 0;
-        if($idamigo=='') $idamigo = 0;
+        if ($meuid=='')     $meuid = 0;
+        if ($idamigo=='') $idamigo = 0;
         // VERIFICA SE CONVERSA JA ESTA REGISTRADA SE NAO TIVER CADASTRA ELA NO DBA
         $contador = 0;
         $sql = $this->db->query('SELECT id FROM '.MYSQL_SOCIAL_HIST_FACE.' WHERE deletado!=1 AND id='.$conversaid.' AND faceid1='.$meuid.' AND faceid2='.$idamigo.'');
         while ($campo = $sql->fetch_object()) {
             ++$contador;
         }
-        if($contador==0){
+        if ($contador==0){
             $this->db->query('INSERT INTO '.MYSQL_SOCIAL_HIST_FACE.' (id, faceid1, faceid2, updated_time, unread) VALUES (\''.$conversaid.'\',\''.$meuid.'\',\''.$idamigo.'\',\''.$dataleitura.'\',\''.$lida.'\')');
         }
 
@@ -127,7 +127,7 @@ class SierraTec_Facebook {
         while ($campo = $sql->fetch_object()) {
             ++$contador;
         }
-        if($contador==0){
+        if ($contador==0){
             $this->db->query('INSERT INTO '.MYSQL_SOCIAL_HIST_FACE_MGS.' (id, fromname, fromid, message, criacao, conversaid) VALUES (\''.$mensagemid.'\',\''.$mensagemusername.'\',\''.$mensagemuserid.'\',\''.$mensagem.'\',\''.$datamensagem.'\',\''.$conversaid.'\')');
         }
         return 1;

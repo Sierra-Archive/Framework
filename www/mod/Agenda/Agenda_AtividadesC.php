@@ -44,9 +44,9 @@ class Agenda_AtividadesControle extends Agenda_Controle
         $i = 0;
         // Botao Add
         $atividades = $Modelo->db->Sql_Select('Agenda_Atividade_Hora','AAH.dt_fim=\'0000-00-00 00:00:00\'');
-        if($atividades!==false && !empty($atividades)){
+        if ($atividades!==false && !empty($atividades)){
             
-            if(is_object($atividades)) $atividades = Array(0=>$atividades);
+            if (is_object($atividades)) $atividades = Array(0=>$atividades);
             reset($atividades);
             foreach ($atividades as $indice=>&$valor) {
                 //$tabela['#Id'][$i]       = '#'.$valor->id;
@@ -56,9 +56,9 @@ class Agenda_AtividadesControle extends Agenda_Controle
                 ++$i;
             }
         
-            if($export!==false){
+            if ($export!==false){
                 self::Export_Todos($export,$tabela, 'Atividades Abertas');
-            }else{
+            } else {
                 $this->_Visual->Show_Tabela_DataTable(
                     $tabela,     // Array Com a Tabela
                     '',          // style extra
@@ -72,13 +72,13 @@ class Agenda_AtividadesControle extends Agenda_Controle
                 );
             }
             unset($tabela);
-        }else{           
+        } else {           
             $Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhuma Atividade Aberta</font></b></center>');
         }
         $titulo = __('Arquivo de Pastas').' ('.$i.')';
-        if($tipo==='Unico'){
+        if ($tipo==='Unico'){
             $Visual->Bloco_Unico_CriaJanela($titulo);
-        }else{
+        } else {
             $Visual->Bloco_Maior_CriaJanela($titulo);
         }
     }
@@ -92,7 +92,7 @@ class Agenda_AtividadesControle extends Agenda_Controle
         $atv_tempo = $this->_Modelo->db->Sql_Select('Agenda_Atividade_Hora');
         
         // Se nao Achar adicionar um com tempo
-        if($atv_tempo===false){
+        if ($atv_tempo===false){
             $atv_tempo = new Agenda_Atividade_Hora_DAO();
             
             $atv_tempo->atividade = 0;
@@ -101,7 +101,7 @@ class Agenda_AtividadesControle extends Agenda_Controle
             $atv_tempo->total = 0;
             
             $this->_Modelo->db->Sql_Insert($atv_tempo);
-        }else{
+        } else {
             $atv_tempo->dt_fim = APP_HORA;
             $atv_tempo->total = Data_CalculaDiferenca_Em_Segundos($atv_tempo->dt_inicio,$atv_tempo->dt_fim);
             $this->_Modelo->db->Sql_Update($atv_tempo);

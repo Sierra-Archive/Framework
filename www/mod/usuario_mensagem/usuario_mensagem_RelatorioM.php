@@ -65,7 +65,7 @@ class usuario_mensagem_RelatorioModelo extends usuario_mensagem_Modelo
                 'formatter' => function( $d, $row ) {
                     if($d=='1'){
                         return 'Finalizado';
-                    }else{
+                    } else {
                         return 'Novos Chamados';
                     }
                     return false;
@@ -167,7 +167,7 @@ class usuario_mensagem_RelatorioModelo extends usuario_mensagem_Modelo
                 'formatter' => function( $d, $row ) {
                 if($d=='1'){
                     return 'Finalizado';
-                }else{
+                } else {
                     return 'Novos Chamados';
                 }
             }),

@@ -26,10 +26,10 @@ function WriteHTML($html)
 	$a = preg_split('/<(.*)>/U',$html,-1,PREG_SPLIT_DELIM_CAPTURE);
 	foreach($a as $i=>$e)
 	{
-		if($i%2==0)
+		if ($i%2==0)
 		{
 			// Text
-			if($this->HREF)
+			if ($this->HREF)
 				$this->PutLink($this->HREF,$e);
 			else
 				$this->Write(5,$e);
@@ -37,7 +37,7 @@ function WriteHTML($html)
 		else
 		{
 			// Tag
-			if($e[0]=='/')
+			if ($e[0]=='/')
 				$this->CloseTag(strtoupper(substr($e,1)));
 			else
 			{
@@ -47,7 +47,7 @@ function WriteHTML($html)
 				$attr = array();
 				foreach($a2 as $v)
 				{
-					if(preg_match('/([^=]*)=["\']?([^"\']*)/',$v,$a3))
+					if (preg_match('/([^=]*)=["\']?([^"\']*)/',$v,$a3))
 						$attr[strtoupper($a3[1])] = $a3[2];
 				}
 				$this->OpenTag($tag,$attr);
@@ -59,20 +59,20 @@ function WriteHTML($html)
 function OpenTag($tag, $attr)
 {
 	// Opening tag
-	if($tag=='B' || $tag=='I' || $tag=='U')
+	if ($tag=='B' || $tag=='I' || $tag=='U')
 		$this->SetStyle($tag,true);
-	if($tag=='A')
+	if ($tag=='A')
 		$this->HREF = $attr['HREF'];
-	if($tag=='BR')
+	if ($tag=='BR')
 		$this->Ln(5);
 }
 
 function CloseTag($tag)
 {
 	// Closing tag
-	if($tag=='B' || $tag=='I' || $tag=='U')
+	if ($tag=='B' || $tag=='I' || $tag=='U')
 		$this->SetStyle($tag,false);
-	if($tag=='A')
+	if ($tag=='A')
 		$this->HREF = '';
 }
 
@@ -83,7 +83,7 @@ function SetStyle($tag, $enable)
 	$style = '';
 	foreach(array('B', 'I', 'U') as $s)
 	{
-		if($this->$s>0)
+		if ($this->$s>0)
 			$style .= $s;
 	}
 	$this->SetFont('',$style);

@@ -29,8 +29,8 @@ class Locomocao_Controle extends \Framework\App\Controle
     public static function Retorna_Distancia($origem_pais,$origem_estado,$origem_cidade,$origem_bairro,$origem_endereco,$destino_pais,$destino_estado,$destino_cidade,$destino_bairro,$destino_endereco,$mode = 'driving',$language = 'pt-BR',$sensor = false){
         
         // Trata Endereço
-        if($origem_endereco!=='') $origem_endereco .= ', ';
-        if($destino_endereco!=='') $origem_endereco .= ', ';
+        if ($origem_endereco!=='') $origem_endereco .= ', ';
+        if ($destino_endereco!=='') $origem_endereco .= ', ';
         $origem = $origem_endereco.$origem_bairro.', '.$origem_cidade.', '.$origem_estado.', '.$origem_pais;
         $destino = $destino_endereco.$destino_bairro.', '.$destino_cidade.', '.$destino_estado.', '.$destino_pais;
         $origem = str_replace(' ', '+', $origem);
@@ -40,7 +40,7 @@ class Locomocao_Controle extends \Framework\App\Controle
         $xml = simplexml_load_file("http://maps.googleapis.com/maps/api/distancematrix/xml?origins=".$origem."&destinations=".$destino."&mode=".$mode."&language=".$language."&sensor=false");
 
         // Trata Resposta
-        if($xml->row->element->status!='OK'){
+        if ($xml->row->element->status!='OK'){
             return false;
         }
         return Array(

@@ -26,7 +26,7 @@ class usuario_mensagem_RelatorioControle extends usuario_mensagem_Controle
         $link = 'Financeiro/Relatorio/Relatorio';
         if($true===true){
             $_Controle->Tema_Endereco($titulo,$link);
-        }else{
+        } else {
             $_Controle->Tema_Endereco($titulo);
         }
     }
@@ -95,12 +95,12 @@ class usuario_mensagem_RelatorioControle extends usuario_mensagem_Controle
         // Trata Parametros
         if(isset($_POST['data_inicial'])){
             $data_inicial = data_brasil_eua(\Framework\App\Conexao::anti_injection($_POST['data_inicial']));
-        }else{
+        } else {
             $data_inicial = '2014-01-01';
         }
         if(isset($_POST['data_final'])){
             $data_final = data_brasil_eua(\Framework\App\Conexao::anti_injection($_POST['data_final']));
-        }else{
+        } else {
             $data_final = APP_DATA;
         }
         
@@ -127,11 +127,11 @@ class usuario_mensagem_RelatorioControle extends usuario_mensagem_Controle
             }else if($tipo_relatorio==='Qtd_Cidade'){
                 $titulo = __('Relatório de Chamados Quantitativos Agrupados por Cidade');
                 $tipo_relatorio = 'Qtd_Cidade';
-            }else{
+            } else {
                 $titulo = __('Relatório de Chamados Quantitativos Agrupados por Estado');
                 $tipo_relatorio = 'Qtd_Uf';
             }
-        }else{
+        } else {
             $tipo_relatorio = 'Aberto';
             $titulo = __('Relatório de Chamados Abertos');
         }
@@ -145,10 +145,10 @@ class usuario_mensagem_RelatorioControle extends usuario_mensagem_Controle
                 $tipo_visual = 'Pdf_Download';
             }else if($tipo_visual==='excell'){
                 $tipo_visual = 'Excel';
-            }else{
+            } else {
                 $tipo_visual = false;
             }
-        }else{
+        } else {
             $tipo_visual = false;
         }*/
         

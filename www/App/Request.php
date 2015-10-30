@@ -18,82 +18,82 @@ class Request
     
     public function __construct() {
         
-        if(function_exists('config_modulos')){
+        if (function_exists('config_modulos')){
             $this->_permitidos = config_modulos();
-        }else{
+        } else {
             $this->permitidos = Array();
         }
         
         // Puxa URL e a separada pela /
-        if(isset($_GET['url'])){
+        if (isset($_GET['url'])){
             $url = filter_input(INPUT_GET, 'url', FILTER_SANITIZE_URL);
             $this->_url = $url;
             $url = explode('/', $url);
             $url = array_filter($url);
-        }else{
+        } else {
             $url = false;
             $this->_url = '';
         }
         
         // Extrai primeiro elemento como Controlador
-        if(is_array($url) && count($url)>0){
+        if (is_array($url) && count($url)>0){
             $this->_modulo = array_shift($url); 
-            if($this->isAjax()===true){
-                if(!defined('LAYOULT_IMPRIMIR')){
+            if ($this->isAjax()===true){
+                if (!defined('LAYOULT_IMPRIMIR')){
                     define('LAYOULT_IMPRIMIR', 'AJAX');
                 }
                 
-                if($this->_modulo =='Modelo'){
+                if ($this->_modulo =='Modelo'){
                     $this->_modulo = array_shift($url); 
                     $this->_url = substr($this->_url, 7);
-                    if(!defined('REQUISICAO_TIPO')){
+                    if (!defined('REQUISICAO_TIPO')){
                         define('REQUISICAO_TIPO', 'MODELO');
                     }
                 }
-            }else{
+            } else {
                 // SE tiver com Ajax no Comeco, Retira, foi passado como Ajax, 
                 // mas não é ajax.
-                if($this->_modulo =='ajax'){
+                if ($this->_modulo =='ajax'){
                     $this->_modulo = array_shift($url);
-                }else if($this->_modulo =='Modelo'){
+                }else if ($this->_modulo =='Modelo'){
                     // Se nao for Ajax, Remove E nao Coloca do Tipo Modelo
                     $this->_modulo = array_shift($url); 
                     $this->_url = substr($this->_url, 7);
                 }
-                if(!defined('LAYOULT_IMPRIMIR')){
+                if (!defined('LAYOULT_IMPRIMIR')){
                     define('LAYOULT_IMPRIMIR', 'COMPLETO');
                 }
             }
-        }else{
+        } else {
             $this->_modulo = DEFAULT_MODULO;
-            if(!defined('LAYOULT_IMPRIMIR')){
+            if (!defined('LAYOULT_IMPRIMIR')){
                 define('LAYOULT_IMPRIMIR', 'COMPLETO');
             }
         }
         
-        if(!defined('REQUISICAO_TIPO')){
+        if (!defined('REQUISICAO_TIPO')){
             define('REQUISICAO_TIPO', 'CONTROLE');
         }
         
         // Extrai primeiro elemento como submodulo
-        if(is_array($url) && count($url)>0){
+        if (is_array($url) && count($url)>0){
             $this->_submodulo   = array_shift($url);
-        }else{
+        } else {
             $this->_submodulo = DEFAULT_SUBMODULO;
         }
         // Extrai primeiro elemento como Metodo
-        if(is_array($url) && count($url)>0){
+        if (is_array($url) && count($url)>0){
             $this->_metodo      = array_shift($url);
-        }else{
+        } else {
             $this->_metodo = DEFAULT_METODO;
         }
         
         
         
         // Resto fica como os argumentos
-        if(is_array($url) && count($url)>0){
+        if (is_array($url) && count($url)>0){
             $this->_argumentos  = $url;
-        }else{
+        } else {
             $this->_argumentos = Array();
         }
         
@@ -109,7 +109,7 @@ class Request
         define('SISTEMA_DIR_INT', $this->url_inteira);
         
         // Bloqueia caso modulo nao seja permitido: Da que a pagina nao foi encontrada
-        if(!\Framework\App\Sistema_Funcoes::Perm_Modulos($this->_modulo)){
+        if (!\Framework\App\Sistema_Funcoes::Perm_Modulos($this->_modulo)){
             throw new \Exception('Modulo não permitido para este servidor ou não existe: '.$this->_modulo,404);
         }
     }
@@ -135,7 +135,7 @@ class Request
      * @version 0.4.2
      */
     public function getArgs($indice = -1){
-        if($indice == -1)
+        if ($indice == -1)
             return $this->_argumentos;
         else
             return $this->_argumentos[$indice];

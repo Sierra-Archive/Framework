@@ -38,9 +38,9 @@ class comercio_servicos_ServicoTipoControle extends comercio_servicos_Controle
     static function Endereco_Servico_Tipo($true=true){
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
-        if($true===true){
+        if ($true===true){
             $_Controle->Tema_Endereco(__('Tipos de Serviços'),'comercio_servicos/Servico_Tipo/Servico_Tipo');
-        }else{
+        } else {
             $_Controle->Tema_Endereco(__('Tipos de Serviços'));
         }
     }
@@ -142,13 +142,13 @@ class comercio_servicos_ServicoTipoControle extends comercio_servicos_Controle
         $setor = $this->_Modelo->db->Sql_Select('Comercio_Servicos_Servico_Tipo', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($setor);
         // Mensagem
-    	if($sucesso===true){
+    	if ($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
                 "mgs_secundaria" => __('Tipo de Serviço deletada com sucesso')
             );
-    	}else{
+    	} else {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),

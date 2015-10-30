@@ -40,41 +40,41 @@ class usuario_AnexoControle extends usuario_Controle
     }
     public function Anexar($id=false,$tipo='Usuarios'){
         // PEga usuario
-        if($id==0 || !isset($id)){
+        if ($id==0 || !isset($id)){
             $id = (int) $this->_Acl->Usuario_GetID();
-        }else{
+        } else {
             $id = (int) $id;
         }
         $usuario = $this->_Modelo->db->Sql_Select('Usuario', Array('id'=>$id));
-        if($tipo===false){
-            if($usuario->grupo==CFG_TEC_IDCLIENTE){
+        if ($tipo===false){
+            if ($usuario->grupo==CFG_TEC_IDCLIENTE){
                 $tipo   = __('Cliente');
                 $tipo2  = 'cliente';
-            }else if($usuario->grupo==CFG_TEC_IDFUNCIONARIO){
+            }else if ($usuario->grupo==CFG_TEC_IDFUNCIONARIO){
                 $tipo   = __('Funcionário');
                 $tipo2  = 'funcionario';
             }
-        }else{
+        } else {
             // Primeira Letra Maiuscula
             $tipo = ucfirst($tipo);
         }
         // GAmbiarra Para Consertar erro de acento em url
-        if($tipo=='Funcionrio' || $tipo=="Funcionario") $tipo = "Funcionário";
-        if($tipo=="Usurio" || $tipo=="Usuario")         $tipo = __('Usuário');
+        if ($tipo=='Funcionrio' || $tipo=="Funcionario") $tipo = "Funcionário";
+        if ($tipo=="Usurio" || $tipo=="Usuario")         $tipo = __('Usuário');
         // Cria Tipo 2:
-        if($tipo=='Cliente'){
+        if ($tipo=='Cliente'){
             $tipo2  = 'cliente';
             $tipo   = Framework\Classes\Texto::Transformar_Plural_Singular(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Cliente_nome'));
             $this->Tema_Endereco(__('Clientes'),'usuario/Admin/ListarCliente');
-        }else if($tipo=='Funcionário'){
+        }else if ($tipo=='Funcionário'){
             $tipo2  = 'funcionario';
             $this->Tema_Endereco(__('Funcionários'),'usuario/Admin/ListarFuncionario');
-        }else{
+        } else {
             $this->Tema_Endereco(__('Usuários'),'usuario/Admin/Main');
         }
         // Titulo Anexo
         $nome = '';
-        if($usuario->nome!=''){
+        if ($usuario->nome!=''){
             $nome .= $usuario->nome;
         }
         $this->Tema_Endereco('Anexos de '.$nome);
@@ -100,14 +100,14 @@ class usuario_AnexoControle extends usuario_Controle
         $this->_Visual->Json_Info_Update('Titulo', __('Listagem de Anexos'));
     }
     public function VisualizadordeUsuario_Upload($usuario = 0){
-        if($usuario!==false && $usuario!=0){
+        if ($usuario!==false && $usuario!=0){
             $resultado_usuario = $this->_Modelo->db->Sql_Select('Usuario', Array('id'=>$usuario),1);
-            if($resultado_usuario===false){
+            if ($resultado_usuario===false){
                 return _Sistema_erroControle::Erro_Fluxo('Esse usuário não existe:'. $usuario,404);
             }
             // Condicao de Query
             $where = Array('usuario'=>$resultado_usuario->id);
-        }else{
+        } else {
             return _Sistema_erroControle::Erro_Fluxo('Usuário não especificado:'. $usuario,404);
         }
         $fileTypes = array(
@@ -121,7 +121,7 @@ class usuario_AnexoControle extends usuario_Controle
         $ext = $this->Upload($dir,$fileTypes,false);
         $this->layoult_zerar = false;
         // CAso tenha sucesso.
-        if($ext!==false){
+        if ($ext!==false){
             
             $arquivo = new \Usuario_Anexo_DAO();
             $arquivo->usuario      = $usuario;
@@ -150,7 +150,7 @@ class usuario_AnexoControle extends usuario_Controle
             // Enviar Email
             $this->Enviar_Email_Anexo($usuario, $dir.strtolower($arquivo->endereco.'.'.$arquivo->ext),$arquivo->nome);
             
-        }else{
+        } else {
             
             $mensagens = array(
                 "tipo" => 'erro',
@@ -164,14 +164,14 @@ class usuario_AnexoControle extends usuario_Controle
     }
     private function Anexos_Processar($usuario = false){
         // Anexo
-        if($usuario!==false && $usuario!=0){
+        if ($usuario!==false && $usuario!=0){
             $resultado_usuario = $this->_Modelo->db->Sql_Select('Usuario', Array('id'=>$usuario),1);
-            if($resultado_usuario===false){
+            if ($resultado_usuario===false){
                 return _Sistema_erroControle::Erro_Fluxo('Esse usuário não existe:'. $usuario,404);
             }
             // Condicao de Query
             $where = Array('usuario'=>$resultado_usuario->id);
-        }else{
+        } else {
             $usuario = 0;
             $where = Array();
         }
@@ -179,14 +179,14 @@ class usuario_AnexoControle extends usuario_Controle
         $html = '';
         // COntinua
         $anexos = $this->_Modelo->db->Sql_Select('Usuario_Anexo',$where);
-        if($anexos!==false && !empty($anexos)){
+        if ($anexos!==false && !empty($anexos)){
             // Percorre Anexos
-            if(is_object($anexos)) $anexos = Array(0=>$anexos);
+            if (is_object($anexos)) $anexos = Array(0=>$anexos);
             reset($anexos);
-            if(!empty($anexos)){
+            if (!empty($anexos)){
                 foreach ($anexos as &$valor) {
                     $endereco = ARQ_PATH.'usuario'.DS.'Anexos'.DS.strtolower($valor->endereco.'.'.$valor->ext);
-                    if(file_exists($endereco)){
+                    if (file_exists($endereco)){
                         $tamanho    =   round(filesize($endereco)/1024);
                         $tipo       =   $valor->ext;
                         $tabela['Nome'][$i]             = '<a href="'.URL_PATH.'usuario/Anexo/Download/'.$valor->id.'/" border="1" class="lajax" data-acao="">'.$valor->nome.'</a>';
@@ -199,7 +199,7 @@ class usuario_AnexoControle extends usuario_Controle
             }
             $html .= $this->_Visual->Show_Tabela_DataTable($tabela,'',false);
             unset($tabela);
-        }else{
+        } else {
             $html .= '<center><b><font color="#FF0000" size="5">Nenhum Anexo</font></b></center>';            
         }
         $titulo = 'Anexos (<span id="anexo_arquivos_num">'.$i.'</span>)';
@@ -207,7 +207,7 @@ class usuario_AnexoControle extends usuario_Controle
     }
     public function Download($anexo,$usuario=false){
         $resultado_arquivo = $this->_Modelo->db->Sql_Select('Usuario_Anexo', Array('id'=>$anexo),1);
-        if($resultado_arquivo===false || !is_object($resultado_arquivo)){
+        if ($resultado_arquivo===false || !is_object($resultado_arquivo)){
             return _Sistema_erroControle::Erro_Fluxo('Esse anexo não existe:'. $anexo,404);
         }
         $endereco = 'usuario'.DS.'Anexos'.DS.strtolower($resultado_arquivo->endereco.'.'.$resultado_arquivo->ext);

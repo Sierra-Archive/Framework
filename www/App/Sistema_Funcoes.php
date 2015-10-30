@@ -20,24 +20,24 @@ Class Sistema_Funcoes {
     public static function Redirect($url)
     {
         // acrescenta url 
-        if( strpos($url, URL_PATH)!==false && strpos($url, 'www.')===false && strpos($url, 'http://')===false){
+        if ( strpos($url, URL_PATH)!==false && strpos($url, 'www.')===false && strpos($url, 'http://')===false){
             $url = URL_PATH.$url;
         }
         
         // Ou redireciona via php ou html
-        if(LAYOULT_IMPRIMIR==='AJAX'){
+        if (LAYOULT_IMPRIMIR==='AJAX'){
             $Registro = Registro::getInstacia();
             $params = Array('Url'=>$url,'Tempo'=>10);
-            if($Registro->_Visual===false){
+            if ($Registro->_Visual===false){
                 $Registro->_Visual = new \Framework\App\Visual();
             }
             $Registro->_Visual->Json_IncluiTipo('Redirect',$params);
-            if(\Framework\App\Controle::$ligado===false){
+            if (\Framework\App\Controle::$ligado===false){
                 $Registro->_Visual->renderizar();
                 \Framework\App\Controle::Tema_Travar();
             }
             return true;
-        }else{
+        } else {
             header('Location: ' . $url);
         }
         exit;
@@ -54,13 +54,13 @@ Class Sistema_Funcoes {
      */
     public static function Control_Arq_Ext($ext){
         $ext = strtolower($ext);
-        if($ext==='jpe'){
+        if ($ext==='jpe'){
             $ext = 'jpeg';
         }
-        if($ext==='mpe'){
+        if ($ext==='mpe'){
             $ext = 'mpeg';
         }
-        if($ext==='tif'){
+        if ($ext==='tif'){
             $ext = 'tiff';
         }
         return $ext;
@@ -78,15 +78,15 @@ Class Sistema_Funcoes {
         $string = 'ABCDEFGHIJKLMNOPQUVYXWZ';
         $tam = strlen($string);
         
-        if(!is_numeric($numero)){
+        if (!is_numeric($numero)){
             throw new \Exception('Parametro não Numerico'.$numero, 3030);
-        }else{
+        } else {
             $numero = (int) $numero;
         }
         
         // Se for maior que as Ocorrencias, Retorna ao começo
         while($tam<=$numero) $numero = $numero%$tam;
-        if($numero<0)$numero = 0;
+        if ($numero<0)$numero = 0;
         
         return $string[$numero];
     }
@@ -173,10 +173,10 @@ Class Sistema_Funcoes {
             '%C3%B4',
             '%C3%B5',
         );
-        if($inverso===false){
+        if ($inverso===false){
             $a = &$codigo;
             $b = &$letras;
-        }else{
+        } else {
             $a = &$letras;
             $b = &$codigo;
         }
@@ -193,9 +193,9 @@ Class Sistema_Funcoes {
      */
     public static function Erro($codigo)
     {
-        /*if(LAYOULT_IMPRIMIR=='COMPLETO'){
+        /*if (LAYOULT_IMPRIMIR=='COMPLETO'){
             $url = URL_PATH.'_Sistema'.US.'erro'.US.'Main'.US.$codigo.US;
-        }else{
+        } else {
             $url = URL_PATH.'ajax'.US.'_Sistema'.US.'erro'.US.'Main'.US.$codigo.US;
         }*/
         
@@ -212,10 +212,10 @@ Class Sistema_Funcoes {
      * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
     public static function DirReplace($dir = false){
-        if($dir){
-            if(strpos($dir, '-')){
+        if ($dir){
+            if (strpos($dir, '-')){
                 $dir = str_replace(Array('-'), Array('/'), $dir);
-            }else{
+            } else {
                 $dir = str_replace(Array('/'), Array('-'), $dir);
             }
             return $dir;
@@ -242,9 +242,9 @@ Class Sistema_Funcoes {
      * @return bollean (yes or no)
      */
     public static function Url_Secure($url){
-        if(strpos($url,'https://')===0){
+        if (strpos($url,'https://')===0){
             return true;
-        }else{
+        } else {
             return false;
         }
     }
@@ -269,17 +269,17 @@ Class Sistema_Funcoes {
      * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
     public static function Transf_Object_Array(&$objetos){
-        if(is_object($objetos)){
+        if (is_object($objetos)){
             $valores = $objetos->Get_Object_Vars();
             $objetos2 = Array();
             foreach ($valores as $indice2 => &$valor2){
                 $objetos2[$indice2] = $valor2;
             }
             return $objetos2;
-        }else if(is_array($objetos)){
+        }else if (is_array($objetos)){
             $objetos2 = Array();
             foreach($objetos as $indice=>&$valor){
-                if(!is_object($valor)) continue;
+                if (!is_object($valor)) continue;
                 $valores = $valor->Get_Object_Vars();
                 $objetos2[$indice] = Array();
                 foreach ($valores as $indice2 => &$valor2){
@@ -299,17 +299,17 @@ Class Sistema_Funcoes {
      * @version 0.4.2
      */
     public static function Perm_Modulos($modulo,$submodulo=false){
-        if($submodulo=='' || !isset($submodulo)) $submodulo = false;
-        if(!file_exists(MOD_PATH.$modulo.DS.$modulo.'_Controle.php')){
+        if ($submodulo=='' || !isset($submodulo)) $submodulo = false;
+        if (!file_exists(MOD_PATH.$modulo.DS.$modulo.'_Controle.php')){
             return false;
         }
-        if($submodulo!==false && !file_exists(MOD_PATH.$modulo.DS.$modulo.'_'.$submodulo.'C.php')){
+        if ($submodulo!==false && !file_exists(MOD_PATH.$modulo.DS.$modulo.'_'.$submodulo.'C.php')){
             return false;
         }
         // Verifica se Modulo é permitido
-        if($modulo!='_Sistema' && function_exists('config_modulos') && !array_key_exists($modulo,config_modulos())){
+        if ($modulo!='_Sistema' && function_exists('config_modulos') && !array_key_exists($modulo,config_modulos())){
             return false;
-        }else{
+        } else {
             return true;
         }
     }
@@ -325,8 +325,8 @@ Class Sistema_Funcoes {
      * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
     public static function Form_Senha_Blindar($senha,$protecao_extra = false,$datetime = false){
-        if($protecao_extra){
-            if($datetime===false) $datetime = time();
+        if ($protecao_extra){
+            if ($datetime===false) $datetime = time();
             // Já que Existe um Super Banco de Dados na Internet, que processa
             // ŧodos os MD5 e SHA1, e arruma senha que funcionem através de 
             // engenharia reversa. Então Aqui a gente Dificulta e muito esse tipo
@@ -334,7 +334,7 @@ Class Sistema_Funcoes {
             // abaixo, além de precisar saber o algoritmo, e ter acesso as senhas
             // criptografadas. Um processo lento, custoso e complicado.
             $senha = '\?SiTec\?'.$datetime.'\?'.sha1(sha1('SierraTecnologia_'.date('dmY', $datetime).'_'.SRV_NAME_SQL.'_'.$datetime).sha1($senha)); // 51 Caracteres
-        }else{
+        } else {
             $senha = md5($senha);
         }
         return $senha;
@@ -415,7 +415,7 @@ Class Sistema_Funcoes {
      */
     public static function Control_Layoult_Valida_Cep($cep){
         // verifica o resultado
-        if(preg_match("/^[0-9]{5}-[0-9]{3}$/", trim($cep))==1){
+        if (preg_match("/^[0-9]{5}-[0-9]{3}$/", trim($cep))==1){
             return true;
         }
         else
@@ -467,15 +467,15 @@ Class Sistema_Funcoes {
      */
     public static function Tranf_Byte_Otimizado($tamanho){
         $tamanho = (int) $tamanho;
-        if($tamanho>=1099511627776){
+        if ($tamanho>=1099511627776){
             $tamanho    =   ((string) round($tamanho/1099511627776)).' TB';
-        }else if($tamanho>=1073741824){
+        }else if ($tamanho>=1073741824){
             $tamanho    =   ((string) round($tamanho/1073741824)).' GB';
-        }else if($tamanho>=1048576){
+        }else if ($tamanho>=1048576){
             $tamanho    =   ((string) round($tamanho/1048576)).' MB';
-        }else if($tamanho>=1024){
+        }else if ($tamanho>=1024){
             $tamanho    =   ((string) round($tamanho/1024)).' KB';
-        }else{
+        } else {
             $tamanho    =   ((string) round($tamanho)).' B';
         }
         return $tamanho;
@@ -492,16 +492,16 @@ Class Sistema_Funcoes {
      */
     public static function Tranf_Otimizado_Byte($float){
         $tamanho = (float) $float;
-        if(strpos($float, 'TB')!==false){
+        if (strpos($float, 'TB')!==false){
             return $tamanho*1099511627776;
         }
-        if(strpos($float, 'GB')!==false){
+        if (strpos($float, 'GB')!==false){
             return $tamanho*1073741824;
         }
-        if(strpos($float, 'MB')!==false){
+        if (strpos($float, 'MB')!==false){
             return $tamanho*1048576;
         }
-        if(strpos($float, 'KB')!==false){
+        if (strpos($float, 'KB')!==false){
             return $tamanho*1024;
         }
         return $tamanho;
@@ -520,7 +520,7 @@ Class Sistema_Funcoes {
         $valor_final = '';
         $espaço = '';
         // Anos
-        if($tamanho>=31556926){
+        if ($tamanho>=31556926){
             $valor_temp = (int) round($tamanho/31556926) ;
             $valor_final    .= (string) ($valor_temp === 1 ? $valor_temp.' ano' : $valor_temp.' anos');
             $tamanho -= $tamanho - ($tamanho%31556926);
@@ -530,7 +530,7 @@ Class Sistema_Funcoes {
             return ($valor_final === '' ? '0 anos' : $valor_final);
         }
         // Dias
-        if($tamanho>=86400){
+        if ($tamanho>=86400){
             $valor_temp = (int) round($tamanho/86400) ;
             $valor_final    .= (string) ($espaço.($valor_temp === 1 ? $valor_temp.' dia' : $valor_temp.' dias'));
             $tamanho -= $tamanho - ($tamanho%86400);
@@ -540,7 +540,7 @@ Class Sistema_Funcoes {
             return ($valor_final === '' ? '0 dias' : $valor_final);
         }
         // Horas
-        if($tamanho>=3600){
+        if ($tamanho>=3600){
             $valor_temp = (int) round($tamanho/3600) ;
             $valor_final    .= (string) ($espaço.($valor_temp === 1 ? $valor_temp.' hora' : $valor_temp.' horas'));
             $tamanho -= $tamanho - ($tamanho%3600);
@@ -550,7 +550,7 @@ Class Sistema_Funcoes {
             return ($valor_final === '' ? '0 horas' : $valor_final);
         }
         // Minutos
-        if($tamanho>=60){
+        if ($tamanho>=60){
             $valor_temp = (int) round($tamanho/60) ;
             $valor_final    .= (string) ($espaço.($valor_temp === 1 ? $valor_temp.' minuto' : $valor_temp.' minutos'));
             $tamanho -= $tamanho - ($tamanho%60);
@@ -559,7 +559,7 @@ Class Sistema_Funcoes {
         if ($termina_em === 'minutos') {
             return ($valor_final === '' ? '0 minutos' : $valor_final);
         }
-        if($tamanho>0){
+        if ($tamanho>0){
             $valor_final .= $espaço.' segundos';
         }
         return $valor_final.'';
@@ -576,42 +576,42 @@ Class Sistema_Funcoes {
     public static function Tranf_Tempo_Segundo($float){
         $float = strtolower($float);
         $valor_final = 0;
-        if(strpos($float, 'anos')!==false){
+        if (strpos($float, 'anos')!==false){
             $float_quebrado = \explode('anos',$float);
             $float = $float_quebrado[1];
             $valor_final += ((float) $float_quebrado[0])*31556926;
         }
-        if(strpos($float, 'ano')!==false){
+        if (strpos($float, 'ano')!==false){
             $float_quebrado = \explode('ano',$float);
             $float = $float_quebrado[1];
             $valor_final += ((float) $float_quebrado[0])*31556926;
         }
-        if(strpos($float, 'dias')!==false){
+        if (strpos($float, 'dias')!==false){
             $float_quebrado = \explode('dias',$float);
             $float = $float_quebrado[1];
             $valor_final += ((float) $float_quebrado[0])*86400;
         }
-        if(strpos($float, 'dia')!==false){
+        if (strpos($float, 'dia')!==false){
             $float_quebrado = \explode('dia',$float);
             $float = $float_quebrado[1];
             $valor_final += ((float) $float_quebrado[0])*86400;
         }
-        if(strpos($float, 'horas')!==false){
+        if (strpos($float, 'horas')!==false){
             $float_quebrado = \explode('horas',$float);
             $float = $float_quebrado[1];
             $valor_final += ((float) $float_quebrado[0])*3600;
         }
-        if(strpos($float, 'hora')!==false){
+        if (strpos($float, 'hora')!==false){
             $float_quebrado = \explode('hora',$float);
             $float = $float_quebrado[1];
             $valor_final += ((float) $float_quebrado[0])*3600;
         }
-        if(strpos($float, 'minutos')!==false){
+        if (strpos($float, 'minutos')!==false){
             $float_quebrado = \explode('minutos',$float);
             $float = $float_quebrado[1];
             $valor_final += ((float) $float_quebrado[0])*60;
         }
-        if(strpos($float, 'minuto')!==false){
+        if (strpos($float, 'minuto')!==false){
             $float_quebrado = \explode('minuto',$float);
             $float = $float_quebrado[1];
             $valor_final += ((float) $float_quebrado[0])*60;
@@ -641,9 +641,9 @@ Class Sistema_Funcoes {
      */
     public static function Tranf_Distancia_Otimizado($tamanho){
         $tamanho = (float) $tamanho;
-        if($tamanho>100){
+        if ($tamanho>100){
             $tamanho    =   ((string) round($tamanho/1000,1).' km');
-        }else{
+        } else {
             $tamanho    =   ((string) round($tamanho).' m');
         }
         return $tamanho;
@@ -659,7 +659,7 @@ Class Sistema_Funcoes {
      */
     public static function Tranf_Otimizado_Distancia($float){
         $tamanho = (float) $float;
-        if(strpos($float, 'km')!==false){
+        if (strpos($float, 'km')!==false){
             return $tamanho*1000;
         }
         return $tamanho;
@@ -677,7 +677,7 @@ Class Sistema_Funcoes {
         if ($real === '') {
             return 0.0;
         }
-        if(is_float($real)) {
+        if (is_float($real)) {
             return round($real, 2);
         }
         return round(((float) 
@@ -716,7 +716,7 @@ Class Sistema_Funcoes {
         if ($porc === '') {
             return 0.0;
         }
-        if(is_float($porc)) {
+        if (is_float($porc)) {
             return $porc;
         }
         return round(
@@ -739,7 +739,7 @@ Class Sistema_Funcoes {
             return $float;
         }
         $porc = number_format((float) $float*100, 2, ',', '.');
-        if($porc<10){
+        if ($porc<10){
             return '0'.$porc.'%';
         }
         return $porc.'%';
@@ -761,12 +761,12 @@ Class Sistema_Funcoes {
     public static function Modelo_Data_Soma($data,$ano=0,$mes=0,$dia=0,$hora=0,$minuto=0,$segundos=0) {
         $data = trim($data);
         // Formato: 23/09/2013 00:00:00 ou 2013-09-23 00:00:00
-        if(strlen($data)==19){
+        if (strlen($data)==19){
             $partes = explode(' ', $data);        
-            if(strpos($partes[1], '-')!==false){
+            if (strpos($partes[1], '-')!==false){
                 $horas = explode('-', $partes[1]);
             
-                if(strpos($partes[0], '/')!==false){
+                if (strpos($partes[0], '/')!==false){
                     $tipo = 'd/m/Y H-i-s';
                     $dias = explode('/', $partes[0]);  
 
@@ -784,7 +784,7 @@ Class Sistema_Funcoes {
                     $novo_dia       = $novo_dia+$dia;
                     $novo_mes       = $novo_mes+$mes;
                     $novo_ano       = $novo_ano+$ano;
-                }else{
+                } else {
                     $tipo = 'Y-m-d H-i-s';
                     $dias = explode('-', $partes[0]);
 
@@ -803,10 +803,10 @@ Class Sistema_Funcoes {
                     $novo_mes       = $novo_mes+$mes;
                     $novo_ano       = $novo_ano+$ano;
                 }
-            }else{
+            } else {
                 $horas = explode(':', $partes[1]);
                 
-                if(strpos($partes[0], '/')!==false){
+                if (strpos($partes[0], '/')!==false){
                     $tipo = 'd/m/Y H:i:s';
                     $dias = explode('/', $partes[0]);  
 
@@ -824,7 +824,7 @@ Class Sistema_Funcoes {
                     $novo_dia       = $novo_dia+$dia;
                     $novo_mes       = $novo_mes+$mes;
                     $novo_ano       = $novo_ano+$ano; 
-                }else{
+                } else {
                     $tipo = 'Y-m-d H:i:s';
                     $dias = explode('-', $partes[0]);
 
@@ -846,11 +846,11 @@ Class Sistema_Funcoes {
             }
         }else 
         // Formato: 23/09/13 | 21:13 ou 13-09-23 | 21:13
-        if(strlen($data)==16){
+        if (strlen($data)==16){
             $partes = explode(' | ', $data);        
-            if(strpos($partes[1], '-')!==false){
+            if (strpos($partes[1], '-')!==false){
                 $horas = explode('-', $partes[1]);
-                if(strpos($partes[0], '/')!==false){
+                if (strpos($partes[0], '/')!==false){
                     $tipo = 'd/m/y | H-i';
                     $dias = explode('/', $partes[0]);
                     
@@ -868,7 +868,7 @@ Class Sistema_Funcoes {
                     $novo_dia       = $novo_dia+$dia;
                     $novo_mes       = $novo_mes+$mes;
                     $novo_ano       = $novo_ano+$ano;
-                }else{
+                } else {
                     $dias = explode('-', $partes[0]);
                     $tipo = 'y-m-d | H-i';
                     
@@ -887,9 +887,9 @@ Class Sistema_Funcoes {
                     $novo_mes       = $novo_mes+$mes;
                     $novo_ano       = $novo_ano+$ano;
                 }
-            }else{
+            } else {
                 $horas = explode(':', $partes[1]);
-                if(strpos($partes[0], '/')!==false){
+                if (strpos($partes[0], '/')!==false){
                     $tipo = 'd/m/y | H:i';
                     $dias = explode('/', $partes[0]);
                     
@@ -906,7 +906,7 @@ Class Sistema_Funcoes {
                     $novo_dia       = $novo_dia+$dia;
                     $novo_mes       = $novo_mes+$mes;
                     $novo_ano       = $novo_ano+$ano;
-                }else{
+                } else {
                     $tipo = 'y-m-d | H:i';
                     $dias = explode('-', $partes[0]);
                     
@@ -927,8 +927,8 @@ Class Sistema_Funcoes {
             }
         }else 
         // Formato: 23/09/2013 ou 2013-09-23
-        if(strlen($data)==10){
-            if(strpos($data, '/')!==false){
+        if (strlen($data)==10){
+            if (strpos($data, '/')!==false){
                 $tipo = 'd/m/Y';
                 $partes = explode('/', $data);
                     
@@ -945,7 +945,7 @@ Class Sistema_Funcoes {
                 $novo_dia       = $novo_dia+$dia;
                 $novo_mes       = $novo_mes+$mes;
                 $novo_ano       = $novo_ano+$ano;
-            }else{
+            } else {
                 $tipo = 'Y-m-d';
                 $partes = explode('-', $data);
                     
@@ -989,7 +989,7 @@ Class Sistema_Funcoes {
             $novo_dia = $novo_dia-$dias_do_mes;
             ++$novo_mes;
             // Recalcula Ano
-            if($novo_mes>12){
+            if ($novo_mes>12){
                 $novo_mes = $novo_mes-12;
                 ++$novo_ano;
             }
@@ -1009,21 +1009,21 @@ Class Sistema_Funcoes {
      * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
     static public function Get_Info_Data($info, $data){
-        if($info=='mes_nome'){
+        if ($info=='mes_nome'){
             return (string) jdmonthname($data,0);
-        }else if($info=='mes'){
+        }else if ($info=='mes'){
             $data = explode('/',$data);
             return (int) $data[1];
-        }else if($info=='semana'){
+        }else if ($info=='semana'){
             $data = explode('/',$data);
             return (int) date("w", mktime(0,0,0,$data[1],$data[0],$data[2]) );
-        }else if($info=='semana_do_ano'){
+        }else if ($info=='semana_do_ano'){
           $data = explode('/',$data);
           return (int) intval( date('z', mktime(0,0,0,$data[1],$data[0],$data[2]) ) / 7 ) + 1;
-        }else if($info=='dia'){
+        }else if ($info=='dia'){
             $data = explode('/',$data);
             return (int) $data[0];
-        }else if($info=='ano'){
+        }else if ($info=='ano'){
             $data = explode('/',$data);
             return (int) $data[2];
         }
@@ -1088,7 +1088,7 @@ Class Sistema_Funcoes {
      */
     public static function Detectar_Navegador()
     {
-        if(!isset($_SERVER['HTTP_USER_AGENT']) || empty($_SERVER['HTTP_USER_AGENT'])) {
+        if (!isset($_SERVER['HTTP_USER_AGENT']) || empty($_SERVER['HTTP_USER_AGENT'])) {
             return array(
                 'name' => 'Desconhecido',
                 'version' => 'Desconhecido',

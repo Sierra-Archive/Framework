@@ -63,10 +63,10 @@ class Cache {
      */
     public function __construct($folder = null) {
         // Tenta Conectar Memcache, se nao faz pelo hd mesmo
-        if(class_exists('\Memcached')){
+        if (class_exists('\Memcached')){
             self::$cache = new \Memcached();
             $retorno = self::$cache->addServer('localhost', 11211);
-            if($retorno!==false){
+            if ($retorno!==false){
                 self::$tipo           = 'Memcache';
                 self::$tipo_performace = 'rapido';
                 /*// checando dados no cache e carregando em $rows
@@ -85,13 +85,13 @@ class Cache {
                 // acessando dados
                 var_dump($rows);
                 $cache->delete('lista_usuarios');*/
-            }else{
+            } else {
                 self::$tipo='HD';
             }
-        }else{
+        } else {
             self::$tipo='HD';
         }
-        if(self::$tipo==='HD'){
+        if (self::$tipo==='HD'){
             $this->Arquivos_Pasta(!is_null($folder) ? $folder : sys_get_temp_dir());
         }
     }
@@ -124,15 +124,15 @@ class Cache {
      */
     public function Ler($key,$ram=false,$travar_localmente=true){
         // SE for pra DEBUG nao salva
-        if(SISTEMA_DEBUG===TRUE && $travar_localmente){
+        if (SISTEMA_DEBUG===TRUE && $travar_localmente){
             return false;
         }
 
         // Continua
         $retorno = false;
-        if(self::$tipo==='Memcache'){
+        if (self::$tipo==='Memcache'){
             // SE FOR DEBUG DELETA CACHE
-            /*if(SISTEMA_DEBUG===TRUE){
+            /*if (SISTEMA_DEBUG===TRUE){
                 self::$cache->delete(sha1($key));
                 return false;
             }*/
@@ -140,17 +140,17 @@ class Cache {
             if (!($retorno)) {
                 if (self::$cache->getResultCode() == \Memcached::RES_NOTFOUND) {
                     return false;
-                }else{
+                } else {
                     return false;
                 }
-            }else{
+            } else {
                 return unserialize($retorno);
             }
 
-        }else if(self::$tipo==='Shmop' && $ram && SISTEMA_DEDICADO){
+        }else if (self::$tipo==='Shmop' && $ram && SISTEMA_DEDICADO){
             try{
                 $retorno = $this->Shmop_Leitura($key);
-                if($retorno!==false) return $retorno;
+                if ($retorno!==false) return $retorno;
                 else  $this->Arquivos_Leitura($key);
             }
             catch(Exception $e){
@@ -174,13 +174,13 @@ class Cache {
      * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
     public function Salvar($key, &$content, $time = null, $ram=false){
-        if(self::$tipo==='Memcache'){
+        if (self::$tipo==='Memcache'){
             $retorno = self::$cache->set(sha1($key), serialize($content));
             return $retorno;
-        }else if(self::$tipo==='Shmop' && $ram && SISTEMA_DEDICADO){
+        }else if (self::$tipo==='Shmop' && $ram && SISTEMA_DEDICADO){
             try{
                 $retorno = @$this->Shmop_Salvar($key, $content, 1200); // tempo em segundos
-                if($retorno!==false) return $retorno;
+                if ($retorno!==false) return $retorno;
                 else  $this->Arquivos_Leitura($key);
             }
             catch(Exception $e){
@@ -198,16 +198,16 @@ class Cache {
      * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
     public function Deletar($key = null){
-        if(self::$tipo==='Memcache'){
-            if($key!==null){
+        if (self::$tipo==='Memcache'){
+            if ($key!==null){
                 return self::$cache->delete(sha1($key));
-            }else{
+            } else {
                 return false;
             }
-        }else if(self::$tipo==='Shmop' && SISTEMA_DEDICADO){
+        }else if (self::$tipo==='Shmop' && SISTEMA_DEDICADO){
             /*try{
                 $retorno = @$this->Shmop_Salvar($key, $content, 1200); // tempo em segundos
-                if($retorno!==false) return $retorno;
+                if ($retorno!==false) return $retorno;
                 else  $this->Arquivos_Leitura($key);
             }
             catch(Exception $e){*/
@@ -249,7 +249,7 @@ class Cache {
      * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
     protected function Arquivos_Pasta($folder) {
-        if(!file_exists($folder))
+        if (!file_exists($folder))
         {
             mkdir($folder, 0777);
         }

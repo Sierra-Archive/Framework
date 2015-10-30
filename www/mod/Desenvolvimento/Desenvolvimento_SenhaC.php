@@ -17,16 +17,16 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
         parent::__construct();
     }
     protected function Endereco_Senha($true=true){
-        if($true===true){
+        if ($true===true){
             $this->Tema_Endereco(__('Senhas'),'Desenvolvimento/Senha/Senhas');
-        }else{
+        } else {
             $this->Tema_Endereco(__('Senhas'));
         }
     }
     protected function Endereco_Senha_Todas($true=true){
-        if($true===true){
+        if ($true===true){
             $this->Tema_Endereco(__('Todas as Senhas'),'Desenvolvimento/Senha/Senhas_Todas');
-        }else{
+        } else {
             $this->Tema_Endereco(__('Todas as Senhas'));
         }
     }
@@ -59,8 +59,8 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
         $tabela = Array(
             'Id','Categoria','Url','Login','Senha'
         );
-        if($perm_destaque)  $tabela[] = __('Destaque');
-        if($perm_status)    $tabela[] = __('Status');
+        if ($perm_destaque)  $tabela[] = __('Destaque');
+        if ($perm_status)    $tabela[] = __('Status');
         $tabela[] = __('Adicionada em');
         $tabela[] = __('Funções');
         $this->_Visual->Show_Tabela_DataTable_Massiva($tabela,'Desenvolvimento/Senha/Senhas');
@@ -73,8 +73,8 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
         $tabela = Array(
             'Id','Categoria','Url','Login','Senha'
         );
-        if($perm_destaque)  $tabela[] = __('Destaque');
-        if($perm_status)    $tabela[] = __('Status');
+        if ($perm_destaque)  $tabela[] = __('Destaque');
+        if ($perm_status)    $tabela[] = __('Status');
         $tabela[] = __('Adicionada em');
         $tabela[] = __('Funções');
         $this->_Visual->Show_Tabela_DataTable_Massiva($tabela,'Desenvolvimento/Senha/Senhas_Antigas');
@@ -165,13 +165,13 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
         $senha = $this->_Modelo->db->Sql_Select('Desenvolvimento_Senha', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($senha);
         // Mensagem
-    	if($sucesso===true){
+    	if ($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
                 "mgs_secundaria" => __('Senha Deletada com sucesso')
             );
-    	}else{
+    	} else {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),
@@ -194,31 +194,31 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
      */
     public function Status($id=false){
         
-        if($id===false){
+        if ($id===false){
             return false;
         }
         $id = (int) $id;
         $resultado = $this->_Modelo->db->Sql_Select('Desenvolvimento_Senha', Array('id'=>$id),1);
         
-        if($resultado===false || !is_object($resultado)){
+        if ($resultado===false || !is_object($resultado)){
             return false;
         }
         
         // troca Resutlado
-        if($resultado->status=='1'){
+        if ($resultado->status=='1'){
             $resultado->status='2'; // De Aprovada para Recusada
-        }else if($resultado->status=='2'){ // de Aprovada em Execução para Finalizada
+        }else if ($resultado->status=='2'){ // de Aprovada em Execução para Finalizada
             $resultado->status='3';
-        }else if($resultado->status=='3'){ // de Finalizada em Execução para Aprovada
+        }else if ($resultado->status=='3'){ // de Finalizada em Execução para Aprovada
             $resultado->status='4';
-        }else if($resultado->status=='4'){ // De Recusada para Pendente
+        }else if ($resultado->status=='4'){ // De Recusada para Pendente
             $resultado->status='0';
-        }else{
+        } else {
             $resultado->status='1';
         }
             
         $sucesso = $this->_Modelo->db->Sql_Update($resultado);
-        if($sucesso){
+        if ($sucesso){
             $mensagens = array(
                 "tipo"              => 'sucesso',
                 "mgs_principal"     => __('Sucesso'),
@@ -233,7 +233,7 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
                 'html' =>  self::Statuslabel($resultado)
             );
             $this->_Visual->Json_IncluiTipo('Conteudo',$conteudo);
-        }else{
+        } else {
             $mensagens = array(
                 "tipo"              => 'erro',
                 "mgs_principal"     => __('Erro'),
@@ -252,7 +252,7 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
     public static function Statuslabel($objeto,$link=true){
         $status = $objeto->status;
         $id = $objeto->id;
-        if($status=='0'){
+        if ($status=='0'){
             $tipo = 'important';
             $nometipo = __('Ultrapassada');
         }
@@ -261,7 +261,7 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
             $nometipo = __('Em Uso');
         }
         $html = '<span class="badge badge-'.$tipo.'">'.$nometipo.'</span>';
-        if($link===true && \Framework\App\Registro::getInstacia()->_Acl->Get_Permissao_Url('Desenvolvimento/Senha/Status')!==false){
+        if ($link===true && \Framework\App\Registro::getInstacia()->_Acl->Get_Permissao_Url('Desenvolvimento/Senha/Status')!==false){
             $html = '<a href="'.URL_PATH.'Desenvolvimento/Senha/Status/'.$id.'" border="1" class="lajax explicar-titulo" title="'.$nometipo.'" data-acao="" data-confirma="Deseja Realmente alterar o Status?">'.$html.'</a>';
         }
         return $html;
@@ -273,25 +273,25 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
      */
     public function Destaque($id=false){
         
-        if($id===false){
+        if ($id===false){
             return false;
         }
         $id = (int) $id;
         $resultado = $this->_Modelo->db->Sql_Select('Desenvolvimento_Senha', Array('id'=>$id),1);
         
-        if($resultado===false || !is_object($resultado)){
+        if ($resultado===false || !is_object($resultado)){
             return false;
         }
         
         // troca Resutlado
-        if($resultado->destaque=='1'){
+        if ($resultado->destaque=='1'){
             $resultado->destaque='0'; // De Aprovada para Recusada
-        }else{
+        } else {
             $resultado->destaque='1';
         }
             
         $sucesso = $this->_Modelo->db->Sql_Update($resultado);
-        if($sucesso){
+        if ($sucesso){
             $mensagens = array(
                 "tipo"              => 'sucesso',
                 "mgs_principal"     => __('Sucesso'),
@@ -304,7 +304,7 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
                 'html' =>  self::Destaquelabel($resultado)
             );
             $this->_Visual->Json_IncluiTipo('Conteudo',$conteudo);
-        }else{
+        } else {
             $mensagens = array(
                 "tipo"              => 'erro',
                 "mgs_principal"     => __('Erro'),
@@ -323,15 +323,15 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
     public static function Destaquelabel($objeto,$link=true){
         $destaque = $objeto->destaque;
         $id = $objeto->id;
-        if($destaque=='0'){
+        if ($destaque=='0'){
             $tipo = 'important';
             $nometipo = __('Não Destaque');
-        }else{
+        } else {
             $tipo = 'success';
             $nometipo = __('Destaque');
         }
         $html = '<span class="badge badge-'.$tipo.'">'.$nometipo.'</span>';
-        if($link===true && \Framework\App\Registro::getInstacia()->_Acl->Get_Permissao_Url('Desenvolvimento/Senha/Destaque')!==false){
+        if ($link===true && \Framework\App\Registro::getInstacia()->_Acl->Get_Permissao_Url('Desenvolvimento/Senha/Destaque')!==false){
             $html = '<a href="'.URL_PATH.'Desenvolvimento/Senha/Destaque/'.$id.'" border="1" class="lajax explicar-titulo" title="'.$nometipo.'" data-acao="" data-confirma="Deseja Realmente alterar o Destaque?">'.$html.'</a>';
         }
         return $html;
@@ -341,7 +341,7 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
         $Visual     = &$Registro->_Visual;
         $tabela = Array();
         $i = 0;
-        if(is_object($Senhas_Todas)) $Senhas_Todas = Array(0=>$Senhas_Todas);
+        if (is_object($Senhas_Todas)) $Senhas_Todas = Array(0=>$Senhas_Todas);
         reset($Senhas_Todas);
         foreach ($Senhas_Todas as $indice=>&$valor) {
             $tabela['#Id'][$i]          =   '#'.$valor->id;
@@ -373,8 +373,8 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
         $tabela = Array(
             'Id','Responsável','Categoria','Url','Login','Senha'
         );
-        if($perm_destaque)  $tabela[] = __('Destaque');
-        if($perm_status)    $tabela[] = __('Status');
+        if ($perm_destaque)  $tabela[] = __('Destaque');
+        if ($perm_status)    $tabela[] = __('Status');
         $tabela[] = __('Adicionada em');
         $tabela[] = __('Funções');
         $this->_Visual->Show_Tabela_DataTable_Massiva($tabela,'Desenvolvimento/Senha/Senhas_Todas');
@@ -386,8 +386,8 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
         $tabela = Array(
             'Id','Responsável','Categoria','Url','Login','Senha'
         );
-        if($perm_destaque)  $tabela[] = __('Destaque');
-        if($perm_status)    $tabela[] = __('Status');
+        if ($perm_destaque)  $tabela[] = __('Destaque');
+        if ($perm_status)    $tabela[] = __('Status');
         $tabela[] = __('Adicionada em');
         $tabela[] = __('Funções');
         $this->_Visual->Show_Tabela_DataTable_Massiva($tabela,'Desenvolvimento/Senha/Senhas_Todas_Antigas');
@@ -478,13 +478,13 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
         $senha = $this->_Modelo->db->Sql_Select('Desenvolvimento_Senha', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($senha);
         // Mensagem
-    	if($sucesso===true){
+    	if ($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
                 "mgs_secundaria" => __('Senha Deletada com sucesso')
             );
-    	}else{
+    	} else {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),
@@ -507,31 +507,31 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
      */
     public function Status_Todas($id=false){
         
-        if($id===false){
+        if ($id===false){
             return false;
         }
         $id = (int) $id;
         $resultado = $this->_Modelo->db->Sql_Select('Desenvolvimento_Senha', Array('id'=>$id),1);
         
-        if($resultado===false || !is_object($resultado)){
+        if ($resultado===false || !is_object($resultado)){
             return false;
         }
         
         // troca Resutlado
-        if($resultado->status=='1'){
+        if ($resultado->status=='1'){
             $resultado->status='2'; // De Aprovada para Recusada
-        }else if($resultado->status=='2'){ // de Aprovada em Execução para Finalizada
+        }else if ($resultado->status=='2'){ // de Aprovada em Execução para Finalizada
             $resultado->status='3';
-        }else if($resultado->status=='3'){ // de Finalizada em Execução para Aprovada
+        }else if ($resultado->status=='3'){ // de Finalizada em Execução para Aprovada
             $resultado->status='4';
-        }else if($resultado->status=='4'){ // De Recusada para Pendente
+        }else if ($resultado->status=='4'){ // De Recusada para Pendente
             $resultado->status='0';
-        }else{
+        } else {
             $resultado->status='1';
         }
             
         $sucesso = $this->_Modelo->db->Sql_Update($resultado);
-        if($sucesso){
+        if ($sucesso){
             $mensagens = array(
                 "tipo"              => 'sucesso',
                 "mgs_principal"     => __('Sucesso'),
@@ -544,7 +544,7 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
                 'html' =>  self::Statuslabel_Todas($resultado)
             );
             $this->_Visual->Json_IncluiTipo('Conteudo',$conteudo);
-        }else{
+        } else {
             $mensagens = array(
                 "tipo"              => 'erro',
                 "mgs_principal"     => __('Erro'),
@@ -563,7 +563,7 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
     public static function Statuslabel_Todas($objeto,$link=true){
         $status = $objeto->status;
         $id = $objeto->id;
-        if($status=='0'){
+        if ($status=='0'){
             $tipo = 'important';
             $nometipo = __('Ultrapassada');
         }
@@ -572,7 +572,7 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
             $nometipo = __('Em Uso');
         }
         $html = '<span class="badge badge-'.$tipo.'">'.$nometipo.'</span>';
-        if($link===true && \Framework\App\Registro::getInstacia()->_Acl->Get_Permissao_Url('Desenvolvimento/Senha/Status')!==false){
+        if ($link===true && \Framework\App\Registro::getInstacia()->_Acl->Get_Permissao_Url('Desenvolvimento/Senha/Status')!==false){
             $html = '<a href="'.URL_PATH.'Desenvolvimento/Senha/Status_Todas/'.$id.'" border="1" class="lajax explicar-titulo" title="'.$nometipo.'" data-acao="" data-confirma="Deseja Realmente alterar o Status?">'.$html.'</a>';
         }
         return $html;
@@ -584,25 +584,25 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
      */
     public function Destaque_Todas($id=false){
         
-        if($id===false){
+        if ($id===false){
             return false;
         }
         $id = (int) $id;
         $resultado = $this->_Modelo->db->Sql_Select('Desenvolvimento_Senha', Array('id'=>$id),1);
         
-        if($resultado===false || !is_object($resultado)){
+        if ($resultado===false || !is_object($resultado)){
             return false;
         }
         
         // troca Resutlado
-        if($resultado->destaque=='1'){
+        if ($resultado->destaque=='1'){
             $resultado->destaque='0'; // De Aprovada para Recusada
-        }else{
+        } else {
             $resultado->destaque='1';
         }
             
         $sucesso = $this->_Modelo->db->Sql_Update($resultado);
-        if($sucesso){
+        if ($sucesso){
             $mensagens = array(
                 "tipo"              => 'sucesso',
                 "mgs_principal"     => __('Sucesso'),
@@ -615,7 +615,7 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
                 'html' =>  self::Destaquelabel_Todas($resultado)
             );
             $this->_Visual->Json_IncluiTipo('Conteudo',$conteudo);
-        }else{
+        } else {
             $mensagens = array(
                 "tipo"              => 'erro',
                 "mgs_principal"     => __('Erro'),
@@ -634,15 +634,15 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
     public static function Destaquelabel_Todas($objeto,$link=true){
         $destaque = $objeto->destaque;
         $id = $objeto->id;
-        if($destaque=='0'){
+        if ($destaque=='0'){
             $tipo = 'important';
             $nometipo = __('Não Destaque');
-        }else{
+        } else {
             $tipo = 'success';
             $nometipo = __('Destaque');
         }
         $html = '<span class="badge badge-'.$tipo.'">'.$nometipo.'</span>';
-        if($link===true && \Framework\App\Registro::getInstacia()->_Acl->Get_Permissao_Url('Desenvolvimento/Senha/Destaque')!==false){
+        if ($link===true && \Framework\App\Registro::getInstacia()->_Acl->Get_Permissao_Url('Desenvolvimento/Senha/Destaque')!==false){
             $html = '<a href="'.URL_PATH.'Desenvolvimento/Senha/Destaque_Todas/'.$id.'" border="1" class="lajax explicar-titulo" title="'.$nometipo.'" data-acao="" data-confirma="Deseja Realmente alterar o Destaque?">'.$html.'</a>';
         }
         return $html;

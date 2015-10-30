@@ -28,7 +28,7 @@ class comercio_ProdutoModelo extends comercio_Modelo
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Modelo = &$Registro->_Modelo;
         $retirada = $_Modelo->db->Sql_Select('Comercio_Produto_Estoque_Reduzir',Array('id'=>$motivoid),1);
-        if($retirada===false){
+        if ($retirada===false){
             return Array('Redução Não existente','Não existe');
         }
         return Array('Redução de Estoque','Cadastrado por #'.$retirada->log_user_add);
@@ -44,10 +44,10 @@ class comercio_ProdutoModelo extends comercio_Modelo
         $perm_del = $this->_Registro->_Acl->Get_Permissao_Url('comercio/Produto/Produtos_Del');
         
         $function = '';
-        if($perm_editar){
+        if ($perm_editar){
             $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Editar\'     ,Array(\'Editar Produto\'        ,\'comercio/Produto/Produtos_Edit/\'.$d.\'/\'    ,\'\'),true);';
         }
-        if($perm_del){
+        if ($perm_del){
             $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Deletar\'    ,Array(\'Deletar Produto\'       ,\'comercio/Produto/Produtos_Del/\'.$d.\'/\'     ,\'Deseja realmente deletar essa Produto ?\'),true);';
         }
 
@@ -62,18 +62,18 @@ class comercio_ProdutoModelo extends comercio_Modelo
         
         $numero = -1;
 
-        if($comercio_Produto_Cod){
+        if ($comercio_Produto_Cod){
             ++$numero;
             $columns[] = array( 'db' => 'id', 'dt' => $numero,
                 'formatter' => function( $d, $row ) {
                     return '#'.$d;
                 }); //'#Cod';
         }
-        if($comercio_marca===true){
-            if($comercio_Produto_Familia=='Familia'){
+        if ($comercio_marca===true){
+            if ($comercio_Produto_Familia=='Familia'){
                 ++$numero;
                 $columns[] = array( 'db' => 'familia2', 'dt' => $numero); //'Familia';
-            }else{
+            } else {
                 ++$numero;
                 $columns[] = array( 'db' => 'marca2', 'dt' => $numero); //'Marca';
                 ++$numero;
@@ -84,12 +84,12 @@ class comercio_ProdutoModelo extends comercio_Modelo
         $columns[] = array( 'db' => 'nome', 'dt' => $numero); //'Nome';
 
         // Coloca Preco
-        if(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Vendas')){
+        if (\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Vendas')){
             ++$numero;
             $columns[] = array( 'db' => 'preco', 'dt' => $numero); //'Preço';
         }
 
-        if($comercio_Estoque){
+        if ($comercio_Estoque){
             ++$numero;
             
             $columns[] = array( 'db' => 'id', 'dt' => $numero,'formatter' => function( $d, $row ) { 
@@ -98,10 +98,10 @@ class comercio_ProdutoModelo extends comercio_Modelo
                        ''.comercio_EstoqueControle::Estoque_Retorna($d); 
                 return $html; 
             });  //'Estoque';
-            if($perm_view)      $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Visualizar\' ,Array(\'Visualizar Estoque\'    ,\'comercio/Estoque/Estoques/\'.$d.\'/\'    ,\'\'),true);';
-            if($perm_reduzir)   $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Personalizado\'   ,Array(\'Reduzir Estoque\'  ,\'comercio/Produto/Estoque_Reduzir/\'.$d.\'/\'    ,\'\',\'long-arrow-down\',\'inverse\'),true);';
+            if ($perm_view)      $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Visualizar\' ,Array(\'Visualizar Estoque\'    ,\'comercio/Estoque/Estoques/\'.$d.\'/\'    ,\'\'),true);';
+            if ($perm_reduzir)   $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Personalizado\'   ,Array(\'Reduzir Estoque\'  ,\'comercio/Produto/Estoque_Reduzir/\'.$d.\'/\'    ,\'\',\'long-arrow-down\',\'inverse\'),true);';
         }
-        if($comercio_Unidade){
+        if ($comercio_Unidade){
             ++$numero;
             $columns[] = array( 'db' => 'unidade2', 'dt' => $numero);  //'Unidade';
         }

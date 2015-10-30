@@ -20,7 +20,7 @@ final Class Session {
      * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
     public static function init(){
-        if(self::$Iniciado===true){
+        if (self::$Iniciado===true){
             return true;
         }
         self::$Iniciado = true;
@@ -37,21 +37,21 @@ final Class Session {
      * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
     public static function destroy($clave=false){
-        if(self::$Iniciado!==true){
+        if (self::$Iniciado!==true){
             self::init();
         }
-        if($clave===false){
+        if ($clave===false){
             session_destroy();
-        }else{
-            if(is_array($clave)){
+        } else {
+            if (is_array($clave)){
                 $clave_qnt = $count($clave);
                 for($i=0; $i<$clave_qnt; ++$i){
-                    if(isset($_SESSION[$clave[$i]])){
+                    if (isset($_SESSION[$clave[$i]])){
                         unset($_SESSION[$clave[$i]]);
                     }
                 }
-            }else{
-                if(isset($_SESSION[$clave])){
+            } else {
+                if (isset($_SESSION[$clave])){
                     unset($_SESSION[$clave]);
                 }
             }
@@ -67,10 +67,10 @@ final Class Session {
      * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
     public static function set($clave,$valor){
-        if(self::$Iniciado!==true){
+        if (self::$Iniciado!==true){
             self::init();
         }
-        if(!empty($clave)){
+        if (!empty($clave)){
             $_SESSION[$clave] = $valor;
         }
         return false;
@@ -84,10 +84,10 @@ final Class Session {
      * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
     public static function get($clave){
-        if(self::$Iniciado!==true){
+        if (self::$Iniciado!==true){
             self::init();
         }
-        if(isset($_SESSION[$clave])){
+        if (isset($_SESSION[$clave])){
             return \Framework\App\Conexao::anti_injection($_SESSION[$clave]);
         }
         return false;

@@ -16,7 +16,7 @@ var_dump($_POST,$_GET,$_SERVER,$_COOKIE);exit;
 // Fuder tudo com Variavies nao inicializadas, afim de nao deixar ter perda de performace
 function newErrorHandler($error, $message,$_1,$_2)
 {
-    if($error == 8)
+    if ($error == 8)
     {
         trigger_error($message.'<br>Arquivo: '.$_1.'<br>Linha: '.$_2, E_USER_ERROR);
     }
@@ -75,7 +75,7 @@ header("Pragma: no-cache");*/
 if (isset($_SERVER['HTTP_ACCEPT_ENCODING']) && substr_count($_SERVER['HTTP_ACCEPT_ENCODING'], 'gzip')){
     header('Content-Encoding: gzip');
     ob_start("ob_gzhandler");
-}else{
+} else {
     ob_start();
 }
  
@@ -102,16 +102,16 @@ try{
 }
 // Se der MERDA, Dispara Erro
 catch(Exception $e){
-    if(SISTEMA_DEBUG===true){
+    if (SISTEMA_DEBUG===true){
         echo Erro_Formatar( $e->getCode(), $e->getMessage(), $e->getFile(), $e->getLine(),$e->getPrevious());
         exit;
-    }else{
+    } else {
         // Chama Erro
-        if($e->getCode()!=404 && $e->getCode()!=403){
+        if ($e->getCode()!=404 && $e->getCode()!=403){
             Erro_Email($e->getCode(), $e->getMessage(), $e->getFile(), $e->getLine(), $e->getPrevious(), $e->getTraceAsString());
         }
         // Redireciona
-        if(defined('SISTEMA_SUB') && SISTEMA_SUB!='erro' && defined('URL_PATH') && $e->getCode()!=2828)\Framework\App\Sistema_Funcoes::Erro($e->getCode());
+        if (defined('SISTEMA_SUB') && SISTEMA_SUB!='erro' && defined('URL_PATH') && $e->getCode()!=2828)\Framework\App\Sistema_Funcoes::Erro($e->getCode());
         else _Sistema_erroControle::Erro_Puro($e->getCode());
     }
 }

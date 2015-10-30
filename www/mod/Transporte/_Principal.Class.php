@@ -11,7 +11,7 @@ class Transporte_Principal implements \Framework\PrincipalInterface
         $Registro = Framework\App\Registro::getInstacia();
         
         // Se for Armazem Libera Painel de Armazem
-        if($Registro->_Acl->Get_Permissao_Url('Transporte/Armazem/Painel')){
+        if ($Registro->_Acl->Get_Permissao_Url('Transporte/Armazem/Painel')){
                 $Visual->Bloco_Customizavel(Array(
                     Array(
                         'span'      =>      12,
@@ -31,7 +31,7 @@ class Transporte_Principal implements \Framework\PrincipalInterface
         }
         
         // Se for Caminhoneiro Libera Painel de Caminhoneiro
-        if($Registro->_Acl->Get_Permissao_Url('Transporte/Caminhoneiro/Painel')){
+        if ($Registro->_Acl->Get_Permissao_Url('Transporte/Caminhoneiro/Painel')){
                 $Visual->Bloco_Customizavel(Array(
                     Array(
                         'span'      =>      12,
@@ -51,7 +51,7 @@ class Transporte_Principal implements \Framework\PrincipalInterface
         }
         
         // Se for Transportadora Libera Painel de Transportadora
-        if($Registro->_Acl->Get_Permissao_Url('Transporte/Transportadora/Painel')){
+        if ($Registro->_Acl->Get_Permissao_Url('Transporte/Transportadora/Painel')){
                 $Visual->Bloco_Customizavel(Array(
                     Array(
                         'span'      =>      12,
@@ -71,7 +71,7 @@ class Transporte_Principal implements \Framework\PrincipalInterface
         }
         
         // Se for Fornecedor Libera Painel de Fornecedor
-        if($Registro->_Acl->Get_Permissao_Url('Transporte/Fornecedor/Painel')){
+        if ($Registro->_Acl->Get_Permissao_Url('Transporte/Fornecedor/Painel')){
                 $Visual->Bloco_Customizavel(Array(
                     Array(
                         'span'      =>      12,
@@ -100,13 +100,13 @@ class Transporte_Principal implements \Framework\PrincipalInterface
         $i = 0;
         // Busca Armazens
         $result = self::Busca_Armazens($controle, $Modelo, $Visual, $busca);
-        if($result!==false){
+        if ($result!==false){
             $i = $i + $result;
         }
         // Retorna
-        if(is_int($i) && $i>0){
+        if (is_int($i) && $i>0){
             return $i;
-        }else{
+        } else {
             return false;
         }
     }
@@ -131,14 +131,14 @@ class Transporte_Principal implements \Framework\PrincipalInterface
         ));
         $i = 0;
         $armazens = $Modelo->db->Sql_Select('Transporte_Armazem',$where);
-        if($armazens===false) return false;
+        if ($armazens===false) return false;
         // add botao
         $Visual->Blocar('<a title="Adicionar Armazem" class="btn btn-success lajax explicar-titulo" data-acao="" href="'.URL_PATH.'Transporte/Armazem/Armazens_Add">Adicionar novo Armazem</a><div class="space15"></div>');
-        if(is_object($armazens)) $armazens = Array(0=>$armazens);
-        if($armazens!==false && !empty($armazens)){
+        if (is_object($armazens)) $armazens = Array(0=>$armazens);
+        if ($armazens!==false && !empty($armazens)){
             list($tabela,$i) = Transporte_ArmazemControle::Armazens_Tabela($armazens);
             $Visual->Show_Tabela_DataTable($tabela);
-        }else{   
+        } else {   
             $Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Armazem na Busca '.$busca.'</font></b></center>');
         }
         $titulo = 'Busca de Armazens: '.$busca.' ('.$i.')';

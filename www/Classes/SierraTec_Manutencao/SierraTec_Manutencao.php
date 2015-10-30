@@ -71,9 +71,9 @@ class SierraTec_Manutencao {
     public function Atualiza_Dependencia_Banco_De_Dados($dir=ROOT_PADRAO){
 
         // Carrega Todos os DAO
-        if($dir=='mod'){
+        if ($dir=='mod'){
             $dir = MOD_PATH;  
-        }else if($dir=='app'){
+        }else if ($dir=='app'){
             $dir = APP_PATH;  
         }
         
@@ -86,10 +86,10 @@ class SierraTec_Manutencao {
         while($arquivo = $diretorio -> read()){
             $achado         = Array();
             // Ignora Propria Pasta, pasta anterior e Arquivo Autoload
-            if($arquivo!='..' && $arquivo!='.' && $arquivo!='AutoLoad.php'){
-                if(is_dir($dir.$arquivo)){
+            if ($arquivo!='..' && $arquivo!='.' && $arquivo!='AutoLoad.php'){
+                if (is_dir($dir.$arquivo)){
                     $dependencia_dao = array_merge($dependencia_dao,$this->Atualiza_Dependencia_Banco_De_Dados($dir.$arquivo.DS));
-                }else{
+                } else {
                     $conteudo = file_get_contents($dir.$arquivo);
                     // PRocura Ocorrencias de COnexao
                     $resultado = preg_match_all(
@@ -129,9 +129,9 @@ class SierraTec_Manutencao {
                     if ($resultado >= 1) {
                         reset($achado[1]);
                         while(key($achado[1])!==NULL){
-                            if(current($achado[1]));
+                            if (current($achado[1]));
                             $constante = str_replace(Array(')','\'','('), Array('','',''), 'MYSQL_'.current($achado[1]));
-                            if($constante!=='MYSQL_'){
+                            if ($constante!=='MYSQL_'){
                                 eval('$dependencia_dao_CONSTANTE[$constante] = '.$constante.';');
                             }
                             next($achado[1]);
@@ -144,7 +144,7 @@ class SierraTec_Manutencao {
         // Adiciona as COnstantes a Classe
         $tabelas = &\Framework\App\Conexao::$tabelas;
         foreach($tabelas as &$valor){
-            if(in_array($valor['nome'], $dependencia_dao_CONSTANTE)){
+            if (in_array($valor['nome'], $dependencia_dao_CONSTANTE)){
                 //var_dump($valor['nome'],$valor['class']); echo "\n\n";
                 $dependencia_dao[$valor['class']] = $valor['class'];
             }
@@ -193,13 +193,13 @@ class SierraTec_Manutencao {
         
         // Carrega CONFIG
         $arq = INI_PATH.SRV_NAME.DS.$config.'.php'; 
-        if(file_exists($arq)){
+        if (file_exists($arq)){
             chmod ($arq, 0777);
             $conteudo = file_get_contents($arq);
             // Caso valor seja falso, apenas retorna valor
-            if($valor===false){
+            if ($valor===false){
                 return $this->Cod_Atualiza_Constante($conteudo, $nome,$valor);
-            }else{
+            } else {
                 // SE nao, pega o novo conteudo e altera no arquivo.
                 $conteudo = $this->Cod_Atualiza_Constante($conteudo, $nome,$valor);
             }
@@ -209,11 +209,11 @@ class SierraTec_Manutencao {
                     
             //Retorna
             return true;
-        }else{
+        } else {
             $arquivo = fopen ($arq, 'w');
-            if(is_int($valor)){
+            if (is_int($valor)){
                 $conteudo_novo = '<?php'."\n".'define(\''.$nome.'\',  '.$valor.');'."\n"."?>";
-            }else{
+            } else {
                 $conteudo_novo = '<?php'."\n".'define(\''.$nome.'\',  \''.$valor.'\');'."\n"."?>";
             }
             
@@ -318,10 +318,10 @@ class SierraTec_Manutencao {
     public function Tranferencia_DB_Servidor($novo,$antigo=false){
         $tabelas = &\Framework\App\Conexao::$tabelas;
         foreach($tabelas as $indice=>&$valor){
-            if($valor['static']===false){
-                if($antigo!==false){
+            if ($valor['static']===false){
+                if ($antigo!==false){
                     $this->_Conexao->query('UPDATE '.$indice.' SET servidor=\''.$novo.'\' WHERE servidor=\''.$antigo.'\'');
-                }else{
+                } else {
                     $this->_Conexao->query('UPDATE '.$indice.' SET servidor=\''.$novo.'\'');
                 }
             }
@@ -336,7 +336,7 @@ class SierraTec_Manutencao {
         $versao_atual = SISTEMA_CFG_VERSION;
         
         // Atualizacao para Versao 2.3
-        if($versao<2.3 && $versao_atual>=2.3){
+        if ($versao<2.3 && $versao_atual>=2.3){
             $qnt = Array();
             $qnt['deupau'] = 0;
             $sucesso = 0;
@@ -344,30 +344,30 @@ class SierraTec_Manutencao {
             // Acrescentar Categoria em Todos os Financeiros
             $atualizar = Array();
             $financeiro = $this->_Conexao->Sql_Select('Financeiro_Pagamento_Interno',false,0,''/*,'motivo,motivoid,categoria'*/);
-            if(is_object($financeiro)) $financeiro = Array($financeiro);
-            if(!empty($financeiro)){
+            if (is_object($financeiro)) $financeiro = Array($financeiro);
+            if (!empty($financeiro)){
                 foreach($financeiro as $valor){
                     $valor->categoria = (int) $valor->categoria;
-                    if($valor->motivo=='comercio_Estoque' && ($valor->categoria=='' || $valor->categoria==0 || $valor->categoria==NULL)){
+                    if ($valor->motivo=='comercio_Estoque' && ($valor->categoria=='' || $valor->categoria==0 || $valor->categoria==NULL)){
                         $valor_motivo = $this->_Conexao->Sql_Select('Comercio_Fornecedor_Material',Array('id'=>$valor->motivoid),1,'','categoria');
-                        if(!is_object($valor_motivo)){  ++$qnt['deupau']; continue;}
+                        if (!is_object($valor_motivo)){  ++$qnt['deupau']; continue;}
                         $valor->categoria = $valor_motivo->categoria;
                         $foi = $this->_Conexao->Sql_Update($valor);
-                        if($foi){
+                        if ($foi){
                             $sucesso=$sucesso+1;
                         }
                     }
                     
-                    if($valor->categoria=='' || $valor->categoria==0 || $valor->categoria==NULL){
-                        if(isset($qnt['nullo'])){
+                    if ($valor->categoria=='' || $valor->categoria==0 || $valor->categoria==NULL){
+                        if (isset($qnt['nullo'])){
                             ++$qnt['nullo'];
-                        }else{
+                        } else {
                             $qnt['nullo'] = 1;
                         }
-                    }else{
-                        if(isset($qnt[$valor->categoria])){
+                    } else {
+                        if (isset($qnt[$valor->categoria])){
                             ++$qnt[$valor->categoria];
-                        }else{
+                        } else {
                             $qnt[$valor->categoria] = 1;
                         }
                     }
@@ -455,14 +455,14 @@ class SierraTec_Manutencao {
         // Caso nao tenha resultado
         if ($resultado == 0) {
             // Caso tenha valor, cria a constante
-            if($alterarvalor!==false){
-                if(is_bool($alterarvalor)){
+            if ($alterarvalor!==false){
+                if (is_bool($alterarvalor)){
                     $resultado = 'true';
-                }else if($alterarvalor==='false' || $alterarvalor==='falso'){
+                }else if ($alterarvalor==='false' || $alterarvalor==='falso'){
                     $resultado = 'false';
-                }else if(is_string($alterarvalor)){
+                }else if (is_string($alterarvalor)){
                     $resultado = '\''.$alterarvalor.'\'';
-                }else{
+                } else {
                     $resultado = (int) $alterarvalor;
                 }
                 
@@ -480,22 +480,22 @@ class SierraTec_Manutencao {
             $resultado = $achado[1][0];
             
             // CAso alterar valor seja falso, retorna no mesmo tipo e nao como string usando eval
-            if($alterarvalor===false){
+            if ($alterarvalor===false){
                 return eval('return '.$resultado.';');
             }
             
             // CAso seja inteiro, boleano ou string
-            if(strpos($resultado, '\'')!==false || strtolower($resultado)=='null'){
+            if (strpos($resultado, '\'')!==false || strtolower($resultado)=='null'){
                 $tipo = 'string';
                 $resultado = '\''.$alterarvalor.'\'';
-            }else if(strtolower($resultado)=='false' || strtolower($resultado)=='true'){
+            }else if (strtolower($resultado)=='false' || strtolower($resultado)=='true'){
                 $tipo = 'boleano';
-                if($alterarvalor===true || $alterarvalor==='true'){
+                if ($alterarvalor===true || $alterarvalor==='true'){
                     $resultado = 'true';
-                }else if($alterarvalor==='false' || $alterarvalor==='falso'){
+                }else if ($alterarvalor==='false' || $alterarvalor==='falso'){
                     $resultado = 'false';
                 }
-            }else{
+            } else {
                 $tipo = 'numeral';
                 $resultado = (string) $alterarvalor;
             }
@@ -536,16 +536,16 @@ class SierraTec_Manutencao {
         $i = 0;
         if ($resultado >= 1) {
             foreach($achado[2] as $indice=>$valor){
-                if($valor=='__construct') continue;
+                if ($valor=='__construct') continue;
                 
                 //Verifica Privacidade
-                if($privacidade!=='*' && $privacidade!=='public' && isset($achado[1][$indice]) && $achado[1][$indice]!=='public'){
+                if ($privacidade!=='*' && $privacidade!=='public' && isset($achado[1][$indice]) && $achado[1][$indice]!=='public'){
                     continue;
                 }
-                if($privacidade!=='*' && $privacidade!=='protected' && isset($achado[1][$indice]) && $achado[1][$indice]!=='protected'){
+                if ($privacidade!=='*' && $privacidade!=='protected' && isset($achado[1][$indice]) && $achado[1][$indice]!=='protected'){
                     continue;
                 }
-                if($privacidade!=='*' && $privacidade!=='private' && isset($achado[1][$indice]) && $achado[1][$indice]!=='private'){
+                if ($privacidade!=='*' && $privacidade!=='private' && isset($achado[1][$indice]) && $achado[1][$indice]!=='private'){
                     continue;
                 }
                 
@@ -555,17 +555,17 @@ class SierraTec_Manutencao {
                     'Args'          => Array()
                 );
                 
-                if(isset($achado[3][$indice]) && $achado[3][$indice]!==''){
+                if (isset($achado[3][$indice]) && $achado[3][$indice]!==''){
                     $argumentos = explode(',',$achado[3][$indice]);
                     foreach($argumentos as $valor2){
                         $argumentos_item = explode('=',$valor2);
-                        if(isset($argumentos_item[1])){
+                        if (isset($argumentos_item[1])){
                             $metodos[$i]['Args'][] = Array(
                                 'Nome'          => $valor,
                                 'Opcional'      => true,
                                 'Padrao'        => $argumentos_item[1]
                             );
-                        }else{
+                        } else {
                             $metodos[$i]['Args'][] = Array(
                                 'Nome'          => $valor,
                                 'Opcional'      => false,
@@ -611,7 +611,7 @@ class SierraTec_Manutencao {
      * Busca Por uma string ou um numero, ou qlqr outra coisa
      */
     public function Cod_Busca_Valor($cod,$valor){
-        if(is_string($valor)){
+        if (is_string($valor)){
             $achado = Array();
             $resultado = preg_match_all(
                 '/\$'.$variavel.'[ \t\n\r\f\v]*=[ \t\n\r\f\v]*([^ \t\n\r\f\v]*);/U', 

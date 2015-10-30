@@ -78,7 +78,7 @@
             <div class="page-header full-content">
                     <div class="row">
                             <div class="col-sm-6">
-                                    <h1 class="page-title" id="Framework_Titulo"><?php if($params['site_titulo']==''){ echo __('Sem Titulo'); }else{ echo $params['site_titulo']; } ?></h1>
+                                    <h1 class="page-title" id="Framework_Titulo"><?php if($params['site_titulo']==''){ echo __('Sem Titulo'); } else { echo $params['site_titulo']; } ?></h1>
                             </div><!--.col-->
                             <div class="col-sm-6">
                                     <?php 

@@ -93,7 +93,7 @@ class usuario_mensagem_AdminControle extends usuario_mensagem_Controle
                 "mgs_principal" => __('Deletado'),
                 "mgs_secundaria" => __('Mensagem deletada com sucesso')
             );
-    	}else{
+    	} else {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),

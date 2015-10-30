@@ -47,10 +47,10 @@ class Agenda_AgendaModelo extends Agenda_Modelo
 
 
         $function = '';
-        if($perm_editar){
+        if ($perm_editar){
             $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Editar\'     ,Array(__(\'Editar Agenda\')        ,\'Agenda/Agenda/Agendas_Edit/\'.$d.\'/\'    ,\'\'),true);';
         }
-        if($perm_deletar){
+        if ($perm_deletar){
             $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Deletar\'     ,Array(__(\'Deletar Agenda\')        ,\'Agenda/Agenda/Agendas_Del/\'.$d.\'/\'    ,\'\'),true);';
         }
         

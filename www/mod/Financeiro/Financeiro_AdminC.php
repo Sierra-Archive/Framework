@@ -58,9 +58,9 @@ class Financeiro_AdminControle extends Financeiro_Controle
         $usuarios = Array();
         $this->_Modelo->Usuarios_devendo($usuarios);
         
-        if(!empty($usuarios)){
+        if (!empty($usuarios)){
             $i = $this->usuario_formatab($usuarios);
-        }else{         
+        } else {         
             $i = 0;
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Usuário com Saldo Negativo</font></b></center>');
         }
@@ -71,9 +71,9 @@ class Financeiro_AdminControle extends Financeiro_Controle
         $usuarios = Array();
         $this->_Modelo->Usuarios_naodevendo($usuarios);
         $i = 0;
-        if(!empty($usuarios)){
+        if (!empty($usuarios)){
             $i = $this->usuario_formatab($usuarios);
-        }else{
+        } else {
             $html .= '<center><b><font color="#FF0000" size="5">Nenhum Usuário com Saldo Positivo</font></b></center>';
         }
         $titulo = __('Usuarios com Dinheiro').' ('.$i.')';
@@ -120,13 +120,13 @@ class Financeiro_AdminControle extends Financeiro_Controle
         
     	$id = (int) $id;
     	$sucesso = $this->_Modelo->pagamentos_Del($id);
-    	if($sucesso===true){
+    	if ($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
                 "mgs_secundaria" => __('Deletado com sucesso')
             );
-    	}else{
+    	} else {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),
@@ -165,7 +165,7 @@ class Financeiro_AdminControle extends Financeiro_Controle
     */
     static function financas_carregajanelaadd(&$controle, &$Modelo, &$Visual, $usuario=0){
         
-        if($usuario==0 || !is_int($usuario)) return 0;
+        if ($usuario==0 || !is_int($usuario)) return 0;
        // cadastro de financas
         $formulario = Financeiro_AdminControle::financas_formcadastro($controle, $Modelo, $Visual, $usuario);
         $Visual->Blocar($formulario);
@@ -173,7 +173,7 @@ class Financeiro_AdminControle extends Financeiro_Controle
     }
     static function financas_carregajanelaretirar(&$controle, &$Modelo, &$Visual, $usuario=0){
         
-        if($usuario==0 || !is_int($usuario)) return 0;
+        if ($usuario==0 || !is_int($usuario)) return 0;
        // cadastro de financas
         $formulario = Financeiro_AdminControle::financas_formretirar($controle, $Modelo, $Visual, $usuario);
         $Visual->Blocar($formulario);
@@ -250,7 +250,7 @@ class Financeiro_AdminControle extends Financeiro_Controle
     * @version 0.4.2
     */
     public function financas_inserir(){
-        if(!isset($_POST["valor"]) || !isset($_POST["obs"]) || !isset($_POST["user"])){
+        if (!isset($_POST["valor"]) || !isset($_POST["obs"]) || !isset($_POST["user"])){
             return false;
         }
         
@@ -260,14 +260,14 @@ class Financeiro_AdminControle extends Financeiro_Controle
         $obs = \Framework\App\Conexao::anti_injection($_POST["obs"]);
         $sucesso =  $this->_Modelo->MovExt_Inserir($user,$valor,$obs,1);
         $this->Main();
-        if($sucesso===true){
+        if ($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Depositado com Sucesso'),
                 "mgs_secundaria" => 'Valor: '.$valor
             );
             $this->_Visual->Json_Info_Update('Titulo', __('Depositado com Sucesso'));
-        }else{
+        } else {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),
@@ -280,7 +280,7 @@ class Financeiro_AdminControle extends Financeiro_Controle
         $this->_Visual->Json_Info_Update('Historico',0);    
     }
     public function financas_retirar(){
-        if(!isset($_POST["valor"]) || !isset($_POST["user"]) || !isset($_POST["obs"])){
+        if (!isset($_POST["valor"]) || !isset($_POST["user"]) || !isset($_POST["obs"])){
             return false;
         }
         
@@ -290,14 +290,14 @@ class Financeiro_AdminControle extends Financeiro_Controle
         $obs = \Framework\App\Conexao::anti_injection($_POST["obs"]);
         $sucesso =  $this->_Modelo->MovExt_Inserir($user,$valor,$obs,0);
         $this->Main();
-        if($sucesso===true){
+        if ($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Retirado com Sucesso'),
                 "mgs_secundaria" => 'Valor: '.$valor
             );
             $this->_Visual->Json_Info_Update('Titulo', __('Retirado com Sucesso'));
-        }else{
+        } else {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),

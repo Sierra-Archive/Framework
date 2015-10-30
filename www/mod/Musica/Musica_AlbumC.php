@@ -22,45 +22,45 @@ class Musica_AlbumControle extends Musica_Controle
         return false;
     }
     static function Endereco_Album($true=true,$artista=false){
-        if($artista==='false') $artista = false;
+        if ($artista==='false') $artista = false;
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
-        if($artista===false){
+        if ($artista===false){
             $titulo = __('Todos os Albuns');
             $link   = 'Musica/Album/Albuns';
-        }else{
+        } else {
             Musica_ArtistaControle::Endereco_Artista();
             $titulo = $artista->nome;
             $link   = 'Musica/Album/Albuns/'.$artista->id;
         }
-        if($true===true){
+        if ($true===true){
             $_Controle->Tema_Endereco($titulo,$link);
-        }else{
+        } else {
             $_Controle->Tema_Endereco($titulo);
         }
     }
     static function Albuns_Tabela(&$albuns,$artista=false){
-        if($artista==='false') $artista = false;
+        if ($artista==='false') $artista = false;
         $Registro   = &\Framework\App\Registro::getInstacia();
         $Modelo     = &$Registro->_Modelo;
         $Visual     = &$Registro->_Visual;
         $tabela = Array();
         $i = 0;
-        if(is_object($albuns)) $albuns = Array(0=>$albuns);
+        if (is_object($albuns)) $albuns = Array(0=>$albuns);
         reset($albuns);
         foreach ($albuns as &$valor) {
-            if($artista===false || $artista==0){
+            if ($artista===false || $artista==0){
                 
                 $tabela['Artista'][$i]   = $valor->artista2;
                 $edit_url   = 'Musica/Album/Albuns_Edit/'.$valor->id.'/';
                 $del_url    = 'Musica/Album/Albuns_Del/'.$valor->id.'/';
-            }else{
+            } else {
                 $edit_url   = 'Musica/Album/Albuns_Edit/'.$valor->id.'/'.$valor->artista.'/';
                 $del_url    = 'Musica/Album/Albuns_Del/'.$valor->id.'/'.$valor->artista.'/';
             }
-            if($valor->foto==='' || $valor->foto===false){
+            if ($valor->foto==='' || $valor->foto===false){
                 $foto = WEB_URL.'img'.US.'icons'.US.'clientes.png';
-            }else{
+            } else {
                 $foto = $valor->foto;
             }
             $tabela['Foto'][$i]             = '<img alt="'.__('Foto de Album').' src="'.$foto.'" style="max-width:100px;" />';
@@ -68,10 +68,10 @@ class Musica_AlbumControle extends Musica_Controle
             $tabela['Lançamento'][$i]       = $valor->lancamento;
             $tabela['Data Registrada no Sistema'][$i]  = $valor->log_date_add;
             $status                                 = $valor->status;
-            if($status!=1){
+            if ($status!=1){
                 $status = 0;
                 $texto = __('Desativado');
-            }else{
+            } else {
                 $status = 1;
                 $texto = __('Ativado');
             }
@@ -89,18 +89,18 @@ class Musica_AlbumControle extends Musica_Controle
      * @version 0.4.2
      */
     public function Albuns($artista=false,$export=false){
-        if($artista ==='false' || $artista ===0)  $artista    = false;
-        if($artista!==false){
+        if ($artista ==='false' || $artista ===0)  $artista    = false;
+        if ($artista!==false){
             $artista = (int) $artista;
-            if($artista==0){
+            if ($artista==0){
                 $artista_registro = $this->_Modelo->db->Sql_Select('Musica_Album_Artista',Array(),1,'id DESC');
-                if($artista_registro===false){
+                if ($artista_registro===false){
                     return _Sistema_erroControle::Erro_Fluxo('Não existe nenhum artista:',404);
                 }
                 $artista = $artista_registro->id;
-            }else{
+            } else {
                 $artista_registro = $this->_Modelo->db->Sql_Select('Musica_Album_Artista',Array('id'=>$artista),1);
-                if($artista_registro===false){
+                if ($artista_registro===false){
                     return _Sistema_erroControle::Erro_Fluxo('Esse Artista não existe:',404);
                 }
             }
@@ -108,16 +108,16 @@ class Musica_AlbumControle extends Musica_Controle
                 'artista'   => $artista,
             );
             self::Endereco_Album(false, $artista_registro);
-        }else{
+        } else {
             $where = Array();
             self::Endereco_Album(false, false);
         }
         $i = 0;
-        if($artista!==false){
+        if ($artista!==false){
             $titulo_add = 'Adicionar novo Album ao Artista: '.$artista_registro->nome;
             $url_add = '/'.$artista;
             $add_url = 'Musica/Album/Albuns_Add/'.$artista;
-        }else{
+        } else {
             $titulo_add = __('Adicionar novo Album');
             $url_add = '/false';
             $add_url    = 'Musica/Album/Albuns_Add';
@@ -138,17 +138,17 @@ class Musica_AlbumControle extends Musica_Controle
             )
         )));
         $albuns = $this->_Modelo->db->Sql_Select('Musica_Album',$where);
-        if($artista!==false){
+        if ($artista!==false){
             $titulo = 'Listagem de Albuns: '.$artista_registro->nome;
-        }else{
+        } else {
             $titulo = __('Listagem de Albuns em Todos os Artistas');
         }
-        if($albuns!==false && !empty($albuns)){
+        if ($albuns!==false && !empty($albuns)){
             list($tabela,$i) = self::Albuns_Tabela($albuns,$artista);
             $titulo = $titulo.' ('.$i.')';
-            if($export!==false){
+            if ($export!==false){
                 self::Export_Todos($export,$tabela, $titulo);
-            }else{
+            } else {
                 $this->_Visual->Show_Tabela_DataTable(
                     $tabela,     // Array Com a Tabela
                     '',          // style extra
@@ -162,11 +162,11 @@ class Musica_AlbumControle extends Musica_Controle
                 );
             }
             unset($tabela);
-        }else{
+        } else {
             $titulo = $titulo.' ('.$i.')';
-            if($artista!==false){
+            if ($artista!==false){
                 $erro = __('Nenhuma Album nesse Artista');
-            }else{
+            } else {
                 $erro = __('Nenhuma Album nos Artistas');
             }         
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">'.$erro.'</font></b></center>');
@@ -182,27 +182,27 @@ class Musica_AlbumControle extends Musica_Controle
      * @version 0.4.2
      */
     public function Albuns_Add($artista = false){
-        if($artista==='false') $artista = false;
+        if ($artista==='false') $artista = false;
         // Carrega Config
         $formid     = 'form_Sistema_Admin_Albuns';
         $formbt     = __('Salvar');
         $campos     = Musica_Album_DAO::Get_Colunas();
-        if($artista===false){
+        if ($artista===false){
             $formlink   = 'Musica/Album/Albuns_Add2';
             $titulo1    = __('Adicionar Album');
             $titulo2    = __('Salvar Album');
             self::Endereco_Album(true, false);
-        }else{
+        } else {
             $artista = (int) $artista;
-            if($artista==0){
+            if ($artista==0){
                 $artista_registro = $this->_Modelo->db->Sql_Select('Musica_Album_Artista',Array(),1,'id DESC');
-                if($artista_registro===false){
+                if ($artista_registro===false){
                     return _Sistema_erroControle::Erro_Fluxo('Não existe nenhuma artista:',404);
                 }
                 $artista = $artista_registro->id;
-            }else{
+            } else {
                 $artista_registro = $this->_Modelo->db->Sql_Select('Musica_Album_Artista',Array('id'=>$artista),1);
-                if($artista_registro===false){
+                if ($artista_registro===false){
                     return _Sistema_erroControle::Erro_Fluxo('Esse Artista não existe:',404);
                 }
             }
@@ -222,15 +222,15 @@ class Musica_AlbumControle extends Musica_Controle
      * @version 0.4.2
      */
     public function Albuns_Add2($artista=false){
-        if($artista==='false') $artista = false;
+        if ($artista==='false') $artista = false;
         $titulo     = __('Album Adicionada com Sucesso');
         $dao        = 'Musica_Album';
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = __('Album cadastrada com sucesso.');
-        if($artista===false){
+        if ($artista===false){
             $funcao     = '$this->Albuns(0);';
             $alterar    = Array();
-        }else{
+        } else {
             $artista = (int) $artista;
             $alterar    = Array('artista'=>$artista);
             $funcao     = '$this->Albuns('.$artista.');';
@@ -244,12 +244,12 @@ class Musica_AlbumControle extends Musica_Controle
      * @version 0.4.2
      */
     public function Albuns_Edit($id,$artista = false){
-        if($artista==='false') $artista = false;
-        if($id===false){
+        if ($artista==='false') $artista = false;
+        if ($id===false){
             return _Sistema_erroControle::Erro_Fluxo('Album não existe:'. $id,404);
         }
         $id         = (int) $id;
-        if($artista!==false){
+        if ($artista!==false){
             $artista    = (int) $artista;
         }
         // Carrega Config
@@ -258,15 +258,15 @@ class Musica_AlbumControle extends Musica_Controle
         $formid     = 'form_Sistema_AdminC_AlbumEdit';
         $formbt     = __('Alterar Album');
         $campos = Musica_Album_DAO::Get_Colunas();
-        if($artista!==false){
+        if ($artista!==false){
             $artista_registro = $this->_Modelo->db->Sql_Select('Musica_Album_Artista',Array('id'=>$artista),1);
-            if($artista_registro===false){
+            if ($artista_registro===false){
                 return _Sistema_erroControle::Erro_Fluxo('Esse Artista não existe:',404);
             }
             $formlink   = 'Musica/Album/Albuns_Edit2/'.$id.'/'.$artista;
             self::DAO_Campos_Retira($campos,'artista');
             self::Endereco_Album(true, $artista_registro);
-        }else{
+        } else {
             $formlink   = 'Musica/Album/Albuns_Edit2/'.$id;
             self::Endereco_Album(true, false);
         }
@@ -281,19 +281,19 @@ class Musica_AlbumControle extends Musica_Controle
      * @version 0.4.2
      */
     public function Albuns_Edit2($id,$artista = false){
-        if($artista==='false') $artista = false;
-        if($id===false){
+        if ($artista==='false') $artista = false;
+        if ($id===false){
             return _Sistema_erroControle::Erro_Fluxo('Album não existe:'. $id,404);
         }
         $id         = (int) $id;
-        if($artista!==false){
+        if ($artista!==false){
             $artista    = (int) $artista;
         }
         $titulo     = __('Album Editada com Sucesso');
         $dao        = Array('Musica_Album',$id);
-        if($artista!==false){
+        if ($artista!==false){
             $funcao     = '$this->Albuns('.$artista.');';
-        }else{
+        } else {
             $funcao     = '$this->Albuns();';
         }
         $sucesso1   = __('Album Alterada com Sucesso.');
@@ -309,30 +309,30 @@ class Musica_AlbumControle extends Musica_Controle
      * @version 0.4.2
      */
     public function Albuns_Del($id = false,$artista=false){
-        if($artista==='false') $artista = false;
+        if ($artista==='false') $artista = false;
         
-        if($id===false){
+        if ($id===false){
             return _Sistema_erroControle::Erro_Fluxo('Album não existe:'. $id,404);
         }
         // Antiinjection
     	$id = (int) $id;
-        if($artista!==false){
+        if ($artista!==false){
             $artista    = (int) $artista;
             $where = Array('artista'=>$artista,'id'=>$id);
-        }else{
+        } else {
             $where = Array('id'=>$id);
         }
         // Puxa album e deleta
         $album = $this->_Modelo->db->Sql_Select('Musica_Album', $where);
         $sucesso =  $this->_Modelo->db->Sql_Delete($album);
         // Mensagem
-    	if($sucesso===true){
+    	if ($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
                 "mgs_secundaria" => __('Album deletada com sucesso')
             );
-    	}else{
+    	} else {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),
@@ -341,9 +341,9 @@ class Musica_AlbumControle extends Musica_Controle
         }
         $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
         // Recupera Albuns
-        if($artista!==false){
+        if ($artista!==false){
             $this->Albuns($artista);
-        }else{
+        } else {
             $this->Albuns();
         }
         
@@ -351,23 +351,23 @@ class Musica_AlbumControle extends Musica_Controle
         $this->_Visual->Json_Info_Update('Historico', false);
     }
     public function Status($id=false){
-        if($id===false){
+        if ($id===false){
             return false;
         }
         $resultado = $this->_Modelo->db->Sql_Select('Musica_Album', Array('id'=>$id),1);
-        if($resultado===false || !is_object($resultado)){
+        if ($resultado===false || !is_object($resultado)){
             return false;
         }
-        if($resultado->status=='1'){
+        if ($resultado->status=='1'){
             $resultado->status='0';
-        }else{
+        } else {
             $resultado->status='1';
         }
         $sucesso = $this->_Modelo->db->Sql_Update($resultado);
-        if($sucesso){
-            if($resultado->status==1){
+        if ($sucesso){
+            if ($resultado->status==1){
                 $texto = __('Ativado');
-            }else{
+            } else {
                 $texto = __('Desativado');
             }
             $conteudo = array(
@@ -377,7 +377,7 @@ class Musica_AlbumControle extends Musica_Controle
             );
             $this->_Visual->Json_IncluiTipo('Conteudo',$conteudo);
             $this->_Visual->Json_Info_Update('Titulo', __('Status Alterado')); 
-        }else{
+        } else {
             $mensagens = array(
                 "tipo"              => 'erro',
                 "mgs_principal"     => __('Erro'),

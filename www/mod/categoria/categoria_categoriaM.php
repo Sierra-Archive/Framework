@@ -29,7 +29,7 @@ class categoria_categoriaModelo extends categoria_Modelo
         while($campo = $sql->fetch_object()){
             ++$cont;
         }
-        if($cont==0) $this->db->query('INSERT INTO '.MYSQL_CAT_ACESSO.' (servidor,categoria,mod_acc,log_date_add,user_criacao) VALUES (\''.SRV_NAME_SQL.'\',\''.$id.'\',\''.$tipo.'\',\''.APP_HORA.'\',\''.\Framework\App\Acl::Usuario_GetID_Static().'\')');
+        if ($cont==0) $this->db->query('INSERT INTO '.MYSQL_CAT_ACESSO.' (servidor,categoria,mod_acc,log_date_add,user_criacao) VALUES (\''.SRV_NAME_SQL.'\',\''.$id.'\',\''.$tipo.'\',\''.APP_HORA.'\',\''.\Framework\App\Acl::Usuario_GetID_Static().'\')');
         return 1;
     }
     /**
@@ -45,7 +45,7 @@ class categoria_categoriaModelo extends categoria_Modelo
         $extra = '';
         
         // Nao serao ixibidos categorias com subsessao qnd for cadastro
-        if($cadastro==1) $extra = ' AND subtab=""';
+        if ($cadastro==1) $extra = ' AND subtab=""';
         $sql = $this->db->query('SELECT parent, nome FROM '.MYSQL_CAT.' WHERE deletado!=1 AND servidor=\''.SRV_NAME_SQL.'\' && id=\''.$id.'\'');
         while($campo = $sql->fetch_object()){
             $array['parent'] = $campo->parent;
@@ -53,7 +53,7 @@ class categoria_categoriaModelo extends categoria_Modelo
 
             ++$i;
         }
-        if($i>0)        return $array; 
+        if ($i>0)        return $array; 
         else            return 0;
     }
     /**

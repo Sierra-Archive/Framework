@@ -10,7 +10,7 @@ function Template_TrocarMenu() {
             $('#sidebar').css({
                 'margin-left': '-180px'
             });
-        }else{
+        } else {
             $('#sidebar').css({
                 'margin-left': '0'
             });
@@ -26,7 +26,7 @@ function Template_TrocarMenu() {
             $('#main-content').css({
                 'margin-left': '180px'
             });
-        }else{
+        } else {
             $('#main-content').css({
                 'margin-left': '0'
             });
@@ -45,7 +45,7 @@ function Template_Menu_Consertar() {
             $('#main-content').css({
                 'margin-left': '180px'
             });
-        }else{
+        } else {
             $('#main-content').css({
                 'margin-left': '0'
             });
@@ -61,7 +61,7 @@ function Template_Menu_Consertar() {
             $('#sidebar').css({
                 'margin-left': '-180px'
             });
-        }else{
+        } else {
             $('#sidebar').css({
                 'margin-left': '0'
             });

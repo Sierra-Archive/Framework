@@ -10,9 +10,9 @@ class Transporte_FornecedorControle extends Transporte_Controle
         $_Controle = $Registro->_Controle;
         $titulo = __('Fornecedores');
         $link = 'Transporte/Fornecedor/Fornecedores';
-        if($true===true){
+        if ($true===true){
             $_Controle->Tema_Endereco($titulo,$link);
-        }else{
+        } else {
             $_Controle->Tema_Endereco($titulo);
         }
     }
@@ -30,7 +30,7 @@ class Transporte_FornecedorControle extends Transporte_Controle
         $Visual     = &$Registro->_Visual;
         $tabela = Array();
         $i = 0;
-        if(is_object($fornecedor)) $fornecedor = Array(0=>$fornecedor);reset($fornecedor);
+        if (is_object($fornecedor)) $fornecedor = Array(0=>$fornecedor);reset($fornecedor);
         $perm_view = $this->_Registro->_Acl->Get_Permissao_Url('Transporte/Fornecedor/Visualizar');
         foreach ($fornecedor as &$valor) {                
             $tabela['Id'][$i]           = '#'.$valor->id;
@@ -60,13 +60,13 @@ class Transporte_FornecedorControle extends Transporte_Controle
         $i = 0;
         self::Endereco_Fornecedor(false);
         $fornecedor = $this->_Modelo->db->Sql_Select('Transporte_Fornecedor');
-        if(is_object($fornecedor)) $fornecedor = Array(0=>$fornecedor);
-        if($fornecedor!==false && !empty($fornecedor)){
+        if (is_object($fornecedor)) $fornecedor = Array(0=>$fornecedor);
+        if ($fornecedor!==false && !empty($fornecedor)){
             list($tabela,$i) = self::Fornecedores_Tabela($fornecedor);
             // SE exportar ou mostra em tabela
-            if($export!==false){
+            if ($export!==false){
                 self::Export_Todos($export,$tabela, 'Fornecedores');
-            }else{
+            } else {
                 $this->_Visual->Show_Tabela_DataTable(
                     $tabela,     // Array Com a Tabela
                     '',          // style extra
@@ -80,10 +80,10 @@ class Transporte_FornecedorControle extends Transporte_Controle
                 );
             }
             unset($tabela);
-        }else{
-            if($export!==false){
+        } else {
+            if ($export!==false){
                 $mensagem = __('Nenhum Fornecedor Cadastrado para exportar');
-            }else{
+            } else {
                 $mensagem = __('Nenhum Fornecedor Cadastrado');
             }
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">'.$mensagem.'</font></b></center>');
@@ -103,24 +103,24 @@ class Transporte_FornecedorControle extends Transporte_Controle
     }
     static function Painel_Fornecedor($camada,$retornar=true){
         $existe = false;
-        if($retornar==='false') $retornar = false;
+        if ($retornar==='false') $retornar = false;
         // Verifica se Existe Conexao, se nao tiver abre o adicionar conexao, se nao, abre a pasta!
         $Registro = &\Framework\App\Registro::getInstacia();
         $resultado = $Registro->_Modelo->db->Sql_Select('Transporte_Fornecedor','{sigla}usuario=\''.$Registro->_Acl->Usuario_GetID().'\'',1);
-        if(is_object($resultado)){
+        if (is_object($resultado)){
             $existe = true;
         }
         
         // Dependendo se Existir Cria Formulario ou Lista arquivos
-        if($existe===false){
+        if ($existe===false){
             $html = '<b>Ainda faltam insformações sobre o seu Fornecedor</b><br>'.self::Painel_Fornecedor_Add($camada);
-        }else{
+        } else {
             $html = __('Painel');
         }
         
-        if($retornar===true){
+        if ($retornar===true){
             return $html;
-        }else{
+        } else {
             $conteudo = array(
                 'location'  =>  '#'.$camada,
                 'js'        =>  '',
@@ -171,7 +171,7 @@ class Transporte_FornecedorControle extends Transporte_Controle
     }
     public function Painel_Fornecedor_Add2($camada){
         $resultado = $this->_Modelo->db->Sql_Select('Transporte_Fornecedor','{sigla}usuario=\''.$this->_Acl->Usuario_GetID().'\'',1);
-        if(is_object($resultado)){
+        if (is_object($resultado)){
             self::Painel_Fornecedor($camada,false);
             return true;
         }

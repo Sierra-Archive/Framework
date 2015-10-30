@@ -71,12 +71,12 @@ class Simulador_Principal implements \Framework\PrincipalInterface
         $i = 0;
         // Busca Tags
         $result = self::Busca_Tags($controle, $Modelo, $Visual, $busca);
-        if($result!==false){
+        if ($result!==false){
             $i = $i + $result;
         }
-        if(is_int($i) && $i>0){
+        if (is_int($i) && $i>0){
             return $i;
-        }else{
+        } else {
             return false;
         }
     }
@@ -88,19 +88,19 @@ class Simulador_Principal implements \Framework\PrincipalInterface
         ));
         $i = 0;
         $tags = $Modelo->db->Sql_Select('Simulador_Tag',$where);
-        if($tags===false) return false;
+        if ($tags===false) return false;
         // add botao
         $Visual->Blocar('<a title="Adicionar Tag" class="btn btn-success lajax explicar-titulo" data-acao="" href="'.URL_PATH.'Simulador/Tag/Tags_Add">Adicionar nova Tag</a><div class="space15"></div>');
-        if(is_object($tags)) $tags = Array(0=>$tags);
-        if($tags!==false && !empty($tags)){
+        if (is_object($tags)) $tags = Array(0=>$tags);
+        if ($tags!==false && !empty($tags)){
             $funcao = '';
             $tabela = Array();
             $i = 0;
-            if($tags!==false){
+            if ($tags!==false){
                 // Percorre Tags
-                if(is_object($tags)) $tags = Array(0=>$tags);
+                if (is_object($tags)) $tags = Array(0=>$tags);
                 reset($tags);
-                if(!empty($tags)){
+                if (!empty($tags)){
                     $perm_download = \Framework\App\Registro::getInstacia()->_Acl->Get_Permissao_Url('Simulador/Tag/Download');
                     $perm_editar = \Framework\App\Registro::getInstacia()->_Acl->Get_Permissao_Url('Simulador/Tag/Tags_Edit');
                     $perm_del = \Framework\App\Registro::getInstacia()->_Acl->Get_Permissao_Url('Simulador/Tag/Tags_Del');
@@ -119,16 +119,16 @@ class Simulador_Principal implements \Framework\PrincipalInterface
                     }
                 }
             }
-            if($funcao===''){
+            if ($funcao===''){
                 unset($tabela['Funções']);
             }
             // Desconta Primeiro Registro
-            if($raiz!==false && $raiz!=0){
+            if ($raiz!==false && $raiz!=0){
                 $i = $i-1;
             }
             // Retorna List
             $Visual->Show_Tabela_DataTable($tabela);
-        }else{        
+        } else {        
             $Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhuma Tag de Simulador na Busca '.$busca.'</font></b></center>');
         }
         $titulo = 'Busca de Tags: '.$busca.' ('.$i.')';

@@ -36,7 +36,7 @@ class usuario_AdminControle extends usuario_Controle
     */
     public function Main($export=false){
         $this->usuariolistar(false,false,0,false,$export);
-        if(\Framework\App\Sistema_Funcoes::Perm_Modulos('usuario_veiculo')){
+        if (\Framework\App\Sistema_Funcoes::Perm_Modulos('usuario_veiculo')){
             $this->usuarios_pendentes('cnh');
             $this->usuarios_pendentes('res');
         }
@@ -44,10 +44,10 @@ class usuario_AdminControle extends usuario_Controle
         $this->_Visual->Json_Info_Update('Titulo', __('Todos os Usuários'));         
     }
     static function usuarios_carregaAlterarSenha($id=false,$tipo=false){
-        if($id===false){
+        if ($id===false){
             $id = \Framework\App\Acl::Usuario_GetID_Static();
             $link = '';
-        }else{
+        } else {
             $link = '/'.$id.'/'.$tipo;
         }
         // Carrega Config
@@ -62,14 +62,14 @@ class usuario_AdminControle extends usuario_Controle
         \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos,$editar,'right',false); 
     }
     public function usuarios_carregaAlterarSenha2($id=false,$tipo=false){
-        if($id===false) $id = (int) $this->_Acl->Usuario_GetID();
+        if ($id===false) $id = (int) $this->_Acl->Usuario_GetID();
         $titulo     = __('Senha editada com Sucesso');
         $dao        = Array('Usuario',$id);
-        if($tipo==='cliente' || $tipo==='Cliente'){
+        if ($tipo==='cliente' || $tipo==='Cliente'){
             $funcao     = '$this->ListarCliente();';
-        }else if($tipo==='funcionario' || $tipo==='Funcionario' || $tipo==='Funcionário' || $tipo==='Funcionrio'){
+        }else if ($tipo==='funcionario' || $tipo==='Funcionario' || $tipo==='Funcionário' || $tipo==='Funcionrio'){
             $funcao     = '$this->ListarFuncionario();';
-        }else{
+        } else {
             $funcao     = '$this->ListarUsuario();';
         }
         $sucesso1   = __('Senha Alterada com Sucesso.');
@@ -101,9 +101,9 @@ class usuario_AdminControle extends usuario_Controle
         $this->_Visual->Json_Info_Update('Titulo', __('Usuários'));  
     }
     public function Usuarios_Edit($id = 0,$tipo=false){
-        if($id==0 || !isset($id)){
+        if ($id==0 || !isset($id)){
             $id = (int) $this->_Acl->Usuario_GetID();
-        }else{
+        } else {
             $id = (int) $id;
         }
         // CARREGA USUARIO
@@ -111,30 +111,30 @@ class usuario_AdminControle extends usuario_Controle
         // Carrega campos e retira os que nao precisam
         $campos = Usuario_DAO::Get_Colunas();
         // Verifica TIPO
-        if($tipo===false){
+        if ($tipo===false){
             $sql_grupo = $this->_Modelo->db->Sql_Select('Sistema_Grupo', Array('id'=>$usuario->grupo),1);
-            if($sql_grupo===false){
+            if ($sql_grupo===false){
                 $usuario->grupo = CFG_TEC_IDFUNCIONARIO;
                 $this->_Modelo->db->Sql_Update($usuario);
                 $tipo   = __('Funcionário');
                 $tipo2  = 'funcionario';
-            }else if($sql_grupo->categoria==CFG_TEC_CAT_ID_CLIENTES){
+            }else if ($sql_grupo->categoria==CFG_TEC_CAT_ID_CLIENTES){
                 $tipo   = __('Cliente');
                 $tipo2  = 'cliente';
-            }else if($sql_grupo->categoria==CFG_TEC_CAT_ID_FUNCIONARIOS){
+            }else if ($sql_grupo->categoria==CFG_TEC_CAT_ID_FUNCIONARIOS){
                 $tipo   = __('Funcionário');
                 $tipo2  = 'funcionario';
             }
-        }else{
+        } else {
             // Primeira Letra Maiuscula
             $tipo = ucfirst($tipo);
         }
         
         // GAmbiarra Para Consertar erro de acento em url
-        if($tipo==='Funcionrio' || $tipo==="Funcionario") $tipo = "Funcionário";
-        if($tipo==="Usurio" || $tipo==="Usuario")         $tipo = __('Usuário');
+        if ($tipo==='Funcionrio' || $tipo==="Funcionario") $tipo = "Funcionário";
+        if ($tipo==="Usurio" || $tipo==="Usuario")         $tipo = __('Usuário');
         // Cria Tipo 2:
-        if($tipo==='Cliente'){
+        if ($tipo==='Cliente'){
             $tipo_pass    = CFG_TEC_CAT_ID_CLIENTES;
             $tipo2  = 'cliente';
             // Troca grupo
@@ -143,7 +143,7 @@ class usuario_AdminControle extends usuario_Controle
             $tipo   = Framework\Classes\Texto::Transformar_Plural_Singular(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Cliente_nome'));
             $this->Tema_Endereco(__('Clientes'),'usuario/Admin/ListarCliente');
             $metodo = 'Cliente_Edit2'.'/'.$id.'/';
-        }else if($tipo==='Funcionário' || $tipo===\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Funcionario_nome')){
+        }else if ($tipo==='Funcionário' || $tipo===\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Funcionario_nome')){
             $tipo_pass  = CFG_TEC_CAT_ID_FUNCIONARIOS;
             $tipo2  = 'funcionario'; //id do tipo
             $tipo   = Framework\Classes\Texto::Transformar_Plural_Singular(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Funcionario_nome'));
@@ -151,7 +151,7 @@ class usuario_AdminControle extends usuario_Controle
             self::DAO_Ext_ADD($campos,'grupo','SG.categoria='.CFG_TEC_CAT_ID_FUNCIONARIOS);
             $this->Tema_Endereco(__('Funcionários'),'usuario/Admin/ListarFuncionario');
             $metodo = 'Funcionario_Edit2'.'/'.$id.'/';
-        }else{
+        } else {
             $tipo_pass  = CFG_TEC_CAT_ID_ADMIN;
             $tipo2  = 'usuario'; //id do tipo
             // Troca grupo
@@ -163,14 +163,14 @@ class usuario_AdminControle extends usuario_Controle
         // Alterar Senha
         $encolher = false;
         $usuario_Login = \Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Login');
-        if(is_array($usuario_Login)){
-            if(in_array($tipo_pass, $usuario_Login)){
+        if (is_array($usuario_Login)){
+            if (in_array($tipo_pass, $usuario_Login)){
                 // Carrega Alterar SEnha
                 self::usuarios_carregaAlterarSenha($id,$tipo2);
                 $encolher = true;
             }
-        }else{
-            if($usuario_Login===true){
+        } else {
+            if ($usuario_Login===true){
                 // Carrega Alterar SEnha
                 self::usuarios_carregaAlterarSenha($id,$tipo2);
                 $encolher = true;
@@ -189,7 +189,7 @@ class usuario_AdminControle extends usuario_Controle
         self::Campos_Deletar($tipo_pass,$campos,$usuario);
         // Retira sempre a senha
         self::DAO_Campos_Retira($campos, 'senha');
-        if($usuario===false) throw new \Exception('Usuário não existe', 8010);
+        if ($usuario===false) throw new \Exception('Usuário não existe', 8010);
         
         // Atualiza Valores
         self::mysql_AtualizaValores($campos, $usuario);
@@ -197,12 +197,12 @@ class usuario_AdminControle extends usuario_Controle
         \Framework\App\Controle::Gerador_Formulario($campos, $form);
         $formulario = $form->retorna_form('Alterar');
         $this->_Visual->Blocar($formulario);
-        if($tipo===false){
-            if($encolher===true)$this->_Visual->Bloco_Maior_CriaJanela(__('Alteração de Usuário'));
+        if ($tipo===false){
+            if ($encolher===true)$this->_Visual->Bloco_Maior_CriaJanela(__('Alteração de Usuário'));
             else                $this->_Visual->Bloco_Unico_CriaJanela(__('Alteração de Usuário'));
             $this->_Visual->Json_Info_Update('Titulo', 'Editar Usuário (#'.$id.')');   
-        }else{
-            if($encolher===true)$this->_Visual->Bloco_Maior_CriaJanela('Alteração de '.$tipo.'');
+        } else {
+            if ($encolher===true)$this->_Visual->Bloco_Maior_CriaJanela('Alteração de '.$tipo.'');
             else                $this->_Visual->Bloco_Unico_CriaJanela('Alteração de '.$tipo.'');
             
             $this->_Visual->Json_Info_Update('Titulo', __('Editar ').$tipo.' (#'.$id.')');   
@@ -228,13 +228,13 @@ class usuario_AdminControle extends usuario_Controle
         $sucesso =  $this->_Modelo->db->Sql_Update($usuario);
         
         
-        if($sucesso===true){
+        if ($sucesso===true){
         
-            if($tipo==='cliente' || $tipo==='Cliente'){
+            if ($tipo==='cliente' || $tipo==='Cliente'){
                 $this->ListarCliente();
-            }else if($tipo==='funcionario' || $tipo==='Funcionario' || $tipo==='Funcionário' || $tipo==='Funcionrio'){
+            }else if ($tipo==='funcionario' || $tipo==='Funcionario' || $tipo==='Funcionário' || $tipo==='Funcionrio'){
                 $this->ListarFuncionario();
-            }else{
+            } else {
                 $this->ListarUsuario();
             }
             
@@ -244,7 +244,7 @@ class usuario_AdminControle extends usuario_Controle
                 "mgs_secundaria" => ''.$_POST["nome"].' foi alterado com sucesso.'
             );
             $this->_Visual->Json_Info_Update('Titulo', ''.$_POST["nome"].' foi alterado com sucesso.');
-        }else{
+        } else {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),
@@ -256,23 +256,23 @@ class usuario_AdminControle extends usuario_Controle
         $this->_Visual->Json_Info_Update('Historico', false); 
     }
     public function Status($id=false){
-        if($id===false){
+        if ($id===false){
             return false;
         }
         $resultado = $this->_Modelo->db->Sql_Select('Usuario', Array('id'=>$id),1);
-        if($resultado===false || !is_object($resultado)){
+        if ($resultado===false || !is_object($resultado)){
             return _Sistema_erroControle::Erro_Fluxo('Essa registro não existe:'. $raiz,404);
         }
-        if($resultado->ativado==1 || $resultado->ativado=='1'){
+        if ($resultado->ativado==1 || $resultado->ativado=='1'){
             $resultado->ativado='0';
-        }else{
+        } else {
             $resultado->ativado='1';
         }
         $sucesso = $this->_Modelo->db->Sql_Update($resultado);
-        if($sucesso){
-            if($resultado->ativado==1 || $resultado->ativado=='1'){
+        if ($sucesso){
+            if ($resultado->ativado==1 || $resultado->ativado=='1'){
                 $texto = __('Em Andamento');
-            }else{
+            } else {
                 $texto = __('Finalizado');
             }
             $conteudo = array(
@@ -287,7 +287,7 @@ class usuario_AdminControle extends usuario_Controle
                 "mgs_secundaria"    => __('Status Alterado com Sucesso.')
             );
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
-        }else{
+        } else {
             $mensagens = array(
                 "tipo"              => 'erro',
                 "mgs_principal"     => __('Erro'),
@@ -323,21 +323,21 @@ class usuario_AdminControle extends usuario_Controle
         // Carrega campos e retira os que nao precisam
         $campos = Usuario_DAO::Get_Colunas();
         // Troca grupo
-        if($categoria!==0){
+        if ($categoria!==0){
             self::DAO_Ext_ADD($campos,'grupo','SG.categoria='.$categoria);
         }
         
         // Retira os de clientes
         $linkextra = '';
-        if($tipo!==false){
+        if ($tipo!==false){
             $linkextra = $tipo.'/';
         }
         // GAmbiarra Para Consertar erro de acento em url
-        if($tipo==='Funcionrio'){
+        if ($tipo==='Funcionrio'){
             $tipo = "Funcionário";
         }
         
-        if($tipo==='cliente'){
+        if ($tipo==='cliente'){
             self::Campos_Deletar(CFG_TEC_CAT_ID_CLIENTES,$campos, $usuario);
             $func_nome_plural = \Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Cliente_nome');
             $func_nome = Framework\Classes\Texto::Transformar_Plural_Singular($func_nome_plural);
@@ -349,7 +349,7 @@ class usuario_AdminControle extends usuario_Controle
             $this->_Visual->Json_Info_Update('Titulo', __('Adicionar ').$func_nome);
             
             $this->Tema_Endereco($func_nome_plural,'usuario/Admin/ListarCliente');
-        }else if($tipo==='funcionario'){
+        }else if ($tipo==='funcionario'){
             self::Campos_Deletar(CFG_TEC_CAT_ID_FUNCIONARIOS,$campos, $usuario);
             $form = new \Framework\Classes\Form('form_Sistema_Admin_Usuarios','usuario/Admin/Funcionario_Add2','formajax');
             \Framework\App\Controle::Gerador_Formulario($campos, $form);
@@ -358,7 +358,7 @@ class usuario_AdminControle extends usuario_Controle
             $this->_Visual->Bloco_Unico_CriaJanela(__('Cadastro de Funcionário'));
             $this->_Visual->Json_Info_Update('Titulo', __('Adicionar Funcionário'));
             $this->Tema_Endereco(__('Funcionários'),'usuario/Admin/ListarFuncionario');
-        }else{
+        } else {
             self::Campos_Deletar(CFG_TEC_CAT_ID_ADMIN,$campos, $usuario);
             // Carrega formulario
             $form = new \Framework\Classes\Form('form_Sistema_Admin_Usuarios','usuario/Admin/Usuarios_Add2/'.$linkextra,'formajax');
@@ -393,23 +393,23 @@ class usuario_AdminControle extends usuario_Controle
      * @version 0.4.2
      */
     public function Usuarios_Add2($tipo=false){
-        if(!isset($_POST['email']) || !isset($_POST['login'])) return false;
+        if (!isset($_POST['email']) || !isset($_POST['login'])) return false;
         
         $this->_Visual->Json_Info_Update('Titulo','Usuários');
         
-        if(isset($_POST['email'])){
+        if (isset($_POST['email'])){
             $email = \Framework\App\Conexao::anti_injection($_POST['email']);
-        }else{
+        } else {
             $email = '';
         }
-        if(isset($_POST['login'])){
+        if (isset($_POST['login'])){
             $login = \Framework\App\Conexao::anti_injection($_POST['login']);
-        }else{
+        } else {
             $login = '';
         }
         $existeemail = usuario_Modelo::VerificaExtEmail($this->_Modelo,$email);
         $existelogin = usuario_Modelo::VerificaExtLogin($this->_Modelo,$login);
-        if(\Framework\App\Sistema_Funcoes::Control_Layoult_Valida_Email($email)===false && $tipo!='cliente' && \Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Admin_EmailUnico')){
+        if (\Framework\App\Sistema_Funcoes::Control_Layoult_Valida_Email($email)===false && $tipo!='cliente' && \Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Admin_EmailUnico')){
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),
@@ -418,7 +418,7 @@ class usuario_AdminControle extends usuario_Controle
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens); 
             $this->layoult_zerar = false;
             $this->_Visual->Javascript_Executar('$("#email").css(\'border\', \'2px solid #FFAEB0\').focus();');
-         }else if($existeemail===true && ($tipo!=='cliente' || $email!='') && \Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Admin_EmailUnico')){
+         }else if ($existeemail===true && ($tipo!=='cliente' || $email!='') && \Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Admin_EmailUnico')){
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),
@@ -427,7 +427,7 @@ class usuario_AdminControle extends usuario_Controle
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
             $this->layoult_zerar = false; 
             $this->_Visual->Javascript_Executar('$("#email").css(\'border\', \'2px solid #FFAEB0\').focus();');
-        }else if($existelogin===true && $tipo!=='cliente'){
+        }else if ($existelogin===true && $tipo!=='cliente'){
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),
@@ -436,7 +436,7 @@ class usuario_AdminControle extends usuario_Controle
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens); 
             $this->layoult_zerar = false;
             $this->_Visual->Javascript_Executar('$("#login").css(\'border\', \'2px solid #FFAEB0\').focus();');
-        }else{
+        } else {
             $tipousuario = \Framework\App\Conexao::anti_injection($tipo);
 
             // atualiza todos os valores por get, retirando o nivel admin
@@ -449,8 +449,8 @@ class usuario_AdminControle extends usuario_Controle
             self::mysql_AtualizaValores($usuario);
         
             // confere senha
-            if(isset($_POST['senha'])){
-                if($_POST['senha']==''){
+            if (isset($_POST['senha'])){
+                if ($_POST['senha']==''){
                     $mensagens = array(
                         "tipo" => 'erro',
                         "mgs_principal" => __('Erro'),
@@ -463,42 +463,42 @@ class usuario_AdminControle extends usuario_Controle
             }
 
             // captura indicado;
-            if(!isset($_COOKIE['indicativo_id'])) $_COOKIE['indicativo_id'] = 0;
+            if (!isset($_COOKIE['indicativo_id'])) $_COOKIE['indicativo_id'] = 0;
             self::mysql_AtualizaValor($usuario,'indicado_por', $_COOKIE['indicativo_id']);
 
             // Atualiza
             // Recarrega ListarUsuario
-            if($tipo===false AND !(\Framework\App\Sistema_Funcoes::Perm_Modulos('usuario_mensagem'))){
+            if ($tipo===false AND !(\Framework\App\Sistema_Funcoes::Perm_Modulos('usuario_mensagem'))){
                 $sucesso =  $this->_Modelo->db->Sql_Insert($usuario);
                 $executar = 'ListarUsuario';
-            }else if(\Framework\App\Sistema_Funcoes::Perm_Modulos('usuario_mensagem')){
+            }else if (\Framework\App\Sistema_Funcoes::Perm_Modulos('usuario_mensagem')){
                 $sucesso =  $this->_Modelo->db->Sql_Insert($usuario);
-                if($sucesso){$identificador  = $this->_Modelo->db->Sql_Select('Usuario', Array(),1,'id DESC');
+                if ($sucesso){$identificador  = $this->_Modelo->db->Sql_Select('Usuario', Array(),1,'id DESC');
                 $identificador  = $identificador->id;
                 usuario_mensagem_Controle::Mensagem_formulario_Static($identificador);}
                 $executar = false;
                 //\Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'usuario_mensagem/Suporte/Mensagem_formulario');
-            }else if($tipo==='cliente'){
-                if(!isset($_GET['grupo'])){
+            }else if ($tipo==='cliente'){
+                if (!isset($_GET['grupo'])){
                     $usuario->grupo = CFG_TEC_IDCLIENTE;
                 }
                 $sucesso =  $this->_Modelo->db->Sql_Insert($usuario);
                 $executar = 'ListarCliente';
-            }else if($tipo==='funcionario'){
-                if(!isset($_GET['grupo'])){
+            }else if ($tipo==='funcionario'){
+                if (!isset($_GET['grupo'])){
                     $usuario->grupo = CFG_TEC_IDFUNCIONARIO;
                 }
                 $sucesso =  $this->_Modelo->db->Sql_Insert($usuario);
                 $executar = 'ListarFuncionario';
-            }else{
-                if(!isset($_GET['grupo'])){
+            } else {
+                if (!isset($_GET['grupo'])){
                     $usuario->grupo = CFG_TEC_IDADMIN;
                 }
                 $sucesso =  $this->_Modelo->db->Sql_Insert($usuario);
                 $executar = 'ListarUsuario';
             }
             // Caso seja Inserido mostra Mensagem
-            if($sucesso===true){
+            if ($sucesso===true){
                 $mensagens = array(
                     "tipo" => 'sucesso',
                     "mgs_principal" => __('Inserção bem sucedida'),
@@ -507,15 +507,15 @@ class usuario_AdminControle extends usuario_Controle
                 // loga usuario
                 
                 //#update Invez de tipo !=cliente tem que ser de acordo com as opcoes do sistema
-                if($tipo!='cliente' && !$this->_Acl->Usuario_GetLogado()){
+                if ($tipo!='cliente' && !$this->_Acl->Usuario_GetLogado()){
                     $this->_Modelo->Usuario_Logar($login, \Framework\App\Sistema_Funcoes::Form_Senha_Blindar($_POST['senha'],true));  
                 }
                 $this->_Visual->Json_Info_Update('Titulo','Adicionado com Sucesso.');
                 
-                if($executar){
+                if ($executar){
                     $this->$executar();
                 }
-            }else{
+            } else {
                 $mensagens = array(
                     "tipo" => 'erro',
                     "mgs_principal" => __('Erro'),
@@ -545,48 +545,48 @@ class usuario_AdminControle extends usuario_Controle
         
     	$id = (int) $id;
         // Regula Tipo
-        if($tipo==='falso'){
+        if ($tipo==='falso'){
             $tipo  = false;
         }
         // Puxa usuario e deleta
         $usuario    = $this->_Modelo->db->Sql_Select(  'Usuario',            Array('id'=>$id));
         
         // caso usuario exista
-        if($usuario!==false){
-            if($tipo===false){
-                if($usuario->grupo==CFG_TEC_IDCLIENTE){
+        if ($usuario!==false){
+            if ($tipo===false){
+                if ($usuario->grupo==CFG_TEC_IDCLIENTE){
                     $tipo = 'cliente';
                     $tipo2 = __('Cliente');
-                }else if($usuario->grupo==CFG_TEC_IDFUNCIONARIO){
+                }else if ($usuario->grupo==CFG_TEC_IDFUNCIONARIO){
                     $tipo = 'funcionario';
                     $tipo2 = __('Funcionário');
-                }else{
+                } else {
                     $tipo = 'usuario';
                     $tipo2 = __('Usuário');
                 }
-            }else{
-                if($tipo==='cliente'){
+            } else {
+                if ($tipo==='cliente'){
                     $tipo2 = __('Cliente');
-                }else if($tipo==='funcionario'){
+                }else if ($tipo==='funcionario'){
                     $tipo2 = __('Funcionário');
-                }else{
+                } else {
                     $tipo = 'usuario';
                     $tipo2 = __('Usuário');
                 }
             }
 
             $sucesso    =  $this->_Modelo->db->Sql_Delete($usuario);
-            if(\Framework\App\Sistema_Funcoes::Perm_Modulos('usuario_mensagem')){
+            if (\Framework\App\Sistema_Funcoes::Perm_Modulos('usuario_mensagem')){
                 $mensagens  = $this->_Modelo->db->Sql_Select('Usuario_Mensagem',    Array('cliente'=>$id));
                 $sucesso2   =  $this->_Modelo->db->Sql_Delete($mensagens);
             }
-            if($sucesso===true){
+            if ($sucesso===true){
                 $mensagens = array(
                     "tipo" => 'sucesso',
                     "mgs_principal" => $tipo2.' Deletado',
                     "mgs_secundaria" => $tipo2.' Deletado com sucesso'
                 );
-            }else{
+            } else {
                 $mensagens = array(
                     "tipo" => 'erro',
                     "mgs_principal" => __('Erro'),
@@ -594,15 +594,15 @@ class usuario_AdminControle extends usuario_Controle
                 );
             }
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
-            if($tipo==='cliente'){
+            if ($tipo==='cliente'){
                 $this->ListarCliente();
-            }else if($tipo==='funcionario'){
+            }else if ($tipo==='funcionario'){
                 $this->ListarFuncionario();
-            }else{
+            } else {
                 $this->ListarUsuario();
             }
             return true;
-        }else{
+        } else {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),
@@ -647,9 +647,9 @@ class usuario_AdminControle extends usuario_Controle
     
     public function usuarios_pendentes($tipo='cnh'){
         $usuarios = Array();
-        if($tipo=='cnh') $this->_Modelo->usuario_cnh_pendente($usuarios);
+        if ($tipo=='cnh') $this->_Modelo->usuario_cnh_pendente($usuarios);
         else             $this->_Modelo->usuario_res_pendente($usuarios);
-        if(!empty($usuarios)){
+        if (!empty($usuarios)){
             reset($usuarios);
             $i = 0;
             foreach ($usuarios as $indice=>&$valor) {
@@ -667,7 +667,7 @@ class usuario_AdminControle extends usuario_Controle
                 ++$i;
             }
             $this->_Visual->Show_Tabela_DataTable($tabela);
-            if($tipo=='cnh') $titulo = __('CNH Pendentes').' ('.$i.')';
+            if ($tipo=='cnh') $titulo = __('CNH Pendentes').' ('.$i.')';
             else             $titulo = __('Comprovantes de Residencia Pendentes').' ('.$i.')';
             $this->_Visual->Bloco_Maior_CriaJanela($titulo);
             unset($tabela);
@@ -678,13 +678,13 @@ class usuario_AdminControle extends usuario_Controle
         
         $id = (int) $id;
         
-        if($tipo=='cnh') $sucesso = $this->_Modelo->usuario_cnh_aprovar($id,$aprovar);
+        if ($tipo=='cnh') $sucesso = $this->_Modelo->usuario_cnh_aprovar($id,$aprovar);
         else             $sucesso = $this->_Modelo->usuario_res_aprovar($id,$aprovar);
         
         $this->Main();
         
-        if($sucesso===true){
-            if($aprovar=='sim'){
+        if ($sucesso===true){
+            if ($aprovar=='sim'){
                 $mensagens = array(
                     "tipo" => 'sucesso',
                     "mgs_principal" => __('Aprovado com sucesso'),
@@ -697,7 +697,7 @@ class usuario_AdminControle extends usuario_Controle
                     "mgs_secundaria" => '#'.$id.' foi modificado.'
                 );
             }
-        }else{
+        } else {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),
@@ -712,9 +712,9 @@ class usuario_AdminControle extends usuario_Controle
      * @version 0.4.2
      */
     public function Usuarios_Comentario($usuario_id = false,$tipo='usuario'){
-        if($usuario_id===false){
+        if ($usuario_id===false){
             $where = Array();
-        }else{
+        } else {
             $where = Array('usuario'=>$usuario_id);
         }
         
@@ -723,26 +723,26 @@ class usuario_AdminControle extends usuario_Controle
          * Endereço, Diferenciacao etc..
          */
         // GAmbiarra Para Consertar erro de acento em url
-        if($tipo=='Funcionrio' || $tipo=='Funcionário' || $tipo=='funcionrio' || $tipo=='funcionário' || $tipo=='Funcionario'){
+        if ($tipo=='Funcionrio' || $tipo=='Funcionário' || $tipo=='funcionrio' || $tipo=='funcionário' || $tipo=='Funcionario'){
             $tipo = "funcionario";
         }
-        if($tipo=='Usuário' || $tipo=='usuário' || $tipo=='Usurio' || $tipo=='usurio'){
+        if ($tipo=='Usuário' || $tipo=='usuário' || $tipo=='Usurio' || $tipo=='usurio'){
             $tipo = "usuario";
         }
-        if($tipo=='Cliente'){
+        if ($tipo=='Cliente'){
             $tipo = "cliente";
         }
-        if($tipo=='cliente'){
+        if ($tipo=='cliente'){
             $nomedisplay        = __('Clientes');
             $nomedisplay_sing   = __('Cliente');
             $tipo               = 'cliente';
             $this->Tema_Endereco(__('Clientes'),'usuario/Admin/ListarCliente');
-        }else if($tipo=='funcionario'){
+        }else if ($tipo=='funcionario'){
             $nomedisplay        = __('Usuários');
             $nomedisplay_sing   = __('Usuário');
             $tipo               = 'funcionario';
             $this->Tema_Endereco(__('Funcionários'),'usuario/Admin/ListarFuncionario');
-        }else{
+        } else {
             $nomedisplay        = __('Usuários ');
             $nomedisplay_sing   = __('Usuário ');
             $tipo               = 'usuario';
@@ -754,8 +754,8 @@ class usuario_AdminControle extends usuario_Controle
         $i = 0;
         $this->_Visual->Blocar('<a title="Adicionar Comentário ao '.$nomedisplay_sing.'" class="btn btn-success lajax explicar-titulo" data-acao="" href="'.URL_PATH.'usuario/Admin/Usuarios_Comentario_Add/'.$usuario_id.'/'.$tipo.'">Adicionar novo Comentário nesse '.$nomedisplay_sing.'</a><div class="space15"></div>');
         $comentario = $this->_Modelo->db->Sql_Select('Usuario_Comentario',$where);
-        if($comentario!==false && !empty($comentario)){
-            if(is_object($comentario)) $comentario = Array(0=>$comentario);
+        if ($comentario!==false && !empty($comentario)){
+            if (is_object($comentario)) $comentario = Array(0=>$comentario);
             reset($comentario);
             $perm_editar = $this->_Registro->_Acl->Get_Permissao_Url('usuario/Admin/Usuarios_Comentario_Edit');
             $perm_del = $this->_Registro->_Acl->Get_Permissao_Url('usuario/Admin/Usuarios_Comentario_Del');
@@ -769,7 +769,7 @@ class usuario_AdminControle extends usuario_Controle
             }
             $this->_Visual->Show_Tabela_DataTable($tabela,'', true, false, Array(Array(0,'desc')));
             unset($tabela);
-        }else{          
+        } else {          
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Comentário do '.$nomedisplay_sing.'</font></b></center>');
         }
         $titulo = 'Comentários do '.$nomedisplay_sing.' ('.$i.')';
@@ -788,35 +788,35 @@ class usuario_AdminControle extends usuario_Controle
         $usuario_id = (int) $usuario_id;
         
         // Proteção E chama Endereço
-        if($usuario_id===false) return _Sistema_erroControle::Erro_Fluxo('Usuario não informado',404);
+        if ($usuario_id===false) return _Sistema_erroControle::Erro_Fluxo('Usuario não informado',404);
         $usuario = $this->_Modelo->db->Sql_Select('Usuario',Array('id'=>$usuario_id), 1);
-        if($usuario===false) return _Sistema_erroControle::Erro_Fluxo('Usuario não existe:'.$usuario_id,404);
+        if ($usuario===false) return _Sistema_erroControle::Erro_Fluxo('Usuario não existe:'.$usuario_id,404);
         
         
         /**
          * Endereço, Diferenciacao etc..
          */
         // GAmbiarra Para Consertar erro de acento em url
-        if($tipo=='Funcionrio' || $tipo=='Funcionário' || $tipo=='funcionrio' || $tipo=='funcionário' || $tipo=='Funcionario'){
+        if ($tipo=='Funcionrio' || $tipo=='Funcionário' || $tipo=='funcionrio' || $tipo=='funcionário' || $tipo=='Funcionario'){
             $tipo = "funcionario";
         }
-        if($tipo=='Usuário' || $tipo=='usuário' || $tipo=='Usurio' || $tipo=='usurio'){
+        if ($tipo=='Usuário' || $tipo=='usuário' || $tipo=='Usurio' || $tipo=='usurio'){
             $tipo = "usuario";
         }
-        if($tipo=='Cliente'){
+        if ($tipo=='Cliente'){
             $tipo = "cliente";
         }
-        if($tipo=='cliente'){
+        if ($tipo=='cliente'){
             $nomedisplay        = __('Clientes');
             $nomedisplay_sing   = __('Cliente');
             $tipo               = 'cliente';
             $this->Tema_Endereco(__('Clientes'),'usuario/Admin/ListarCliente');
-        }else if($tipo=='funcionario'){
+        }else if ($tipo=='funcionario'){
             $nomedisplay        = __('Usuários');
             $nomedisplay_sing   = __('Usuário');
             $tipo               = 'funcionario';
             $this->Tema_Endereco(__('Funcionários'),'usuario/Admin/ListarFuncionario');
-        }else{
+        } else {
             $nomedisplay        = __('Usuários');
             $nomedisplay_sing   = __('Usuário');
             $tipo               = 'usuario';
@@ -844,29 +844,29 @@ class usuario_AdminControle extends usuario_Controle
      * @version 0.4.2
      */
     public function Usuarios_Comentario_Add2($usuario_id = false,$tipo='usuario'){
-        if($usuario_id===false) return _Sistema_erroControle::Erro_Fluxo('Usuario não informado',404);
+        if ($usuario_id===false) return _Sistema_erroControle::Erro_Fluxo('Usuario não informado',404);
         /**
          * Endereço, Diferenciacao etc..
          */
         // GAmbiarra Para Consertar erro de acento em url
-        if($tipo=='Funcionrio' || $tipo=='Funcionário' || $tipo=='funcionrio' || $tipo=='funcionário' || $tipo=='Funcionario'){
+        if ($tipo=='Funcionrio' || $tipo=='Funcionário' || $tipo=='funcionrio' || $tipo=='funcionário' || $tipo=='Funcionario'){
             $tipo = "funcionario";
         }
-        if($tipo=='Usuário' || $tipo=='usuário' || $tipo=='Usurio' || $tipo=='usurio'){
+        if ($tipo=='Usuário' || $tipo=='usuário' || $tipo=='Usurio' || $tipo=='usurio'){
             $tipo = "usuario";
         }
-        if($tipo=='Cliente'){
+        if ($tipo=='Cliente'){
             $tipo = "cliente";
         }
-        if($tipo=='cliente'){
+        if ($tipo=='cliente'){
             $nomedisplay        = __('Clientes');
             $nomedisplay_sing   = __('Cliente');
             $tipo               = 'cliente';
-        }else if($tipo=='funcionario'){
+        }else if ($tipo=='funcionario'){
             $nomedisplay        = __('Usuários');
             $nomedisplay_sing   = __('Usuário');
             $tipo               = 'funcionario';
-        }else{
+        } else {
             $nomedisplay        = __('Usuários');
             $nomedisplay_sing   = __('Usuário');
             $tipo               = 'usuario';
@@ -887,36 +887,36 @@ class usuario_AdminControle extends usuario_Controle
      * @version 0.4.2
      */
     public function Usuarios_Comentario_Edit($usuario_id = false,$id = 0,$tipo='usuario'){
-        if($usuario_id===false) return _Sistema_erroControle::Erro_Fluxo('Usuario não informado',404);
-        if($id         == 0   ) return _Sistema_erroControle::Erro_Fluxo('Comentário não informado',404);
+        if ($usuario_id===false) return _Sistema_erroControle::Erro_Fluxo('Usuario não informado',404);
+        if ($id         == 0   ) return _Sistema_erroControle::Erro_Fluxo('Comentário não informado',404);
         // Proteção E chama Endereço
         $usuario = $this->_Modelo->db->Sql_Select('Usuario',Array('id'=>$usuario_id), 1);
-        if($usuario===false) return _Sistema_erroControle::Erro_Fluxo('Usuario não existe:'.$usuario_id,404);
+        if ($usuario===false) return _Sistema_erroControle::Erro_Fluxo('Usuario não existe:'.$usuario_id,404);
 
         /**
          * Endereço, Diferenciacao etc..
          */
         // GAmbiarra Para Consertar erro de acento em url
-        if($tipo==='Funcionrio' || $tipo==='Funcionário' || $tipo==='funcionrio' || $tipo==='funcionário' || $tipo==='Funcionario'){
+        if ($tipo==='Funcionrio' || $tipo==='Funcionário' || $tipo==='funcionrio' || $tipo==='funcionário' || $tipo==='Funcionario'){
             $tipo = "funcionario";
         }
-        if($tipo==='Usuário' || $tipo==='usuário' || $tipo==='Usurio' || $tipo==='usurio'){
+        if ($tipo==='Usuário' || $tipo==='usuário' || $tipo==='Usurio' || $tipo==='usurio'){
             $tipo = "usuario";
         }
-        if($tipo==='Cliente'){
+        if ($tipo==='Cliente'){
             $tipo = "cliente";
         }
-        if($tipo==='cliente'){
+        if ($tipo==='cliente'){
             $nomedisplay        = __('Clientes');
             $nomedisplay_sing   = __('Cliente');
             $tipo               = 'cliente';
             $this->Tema_Endereco(__('Clientes'),'usuario/Admin/ListarCliente');
-        }else if($tipo==='funcionario'){
+        }else if ($tipo==='funcionario'){
             $nomedisplay        = __('Usuários');
             $nomedisplay_sing   = __('Usuário');
             $tipo               = 'funcionario';
             $this->Tema_Endereco(__('Funcionários'),'usuario/Admin/ListarFuncionario');
-        }else{
+        } else {
             $nomedisplay        = __('Usuários');
             $nomedisplay_sing   = __('Usuário');
             $tipo               = 'usuario';
@@ -944,32 +944,32 @@ class usuario_AdminControle extends usuario_Controle
      * @version 0.4.2
      */
     public function Usuarios_Comentario_Edit2($usuario_id = false,$id = 0,$tipo='usuario'){
-        if($usuario_id===false) return _Sistema_erroControle::Erro_Fluxo('Usuario não informado',404);
-        if($id         == 0   ) return _Sistema_erroControle::Erro_Fluxo('Comentário não informado',404);
+        if ($usuario_id===false) return _Sistema_erroControle::Erro_Fluxo('Usuario não informado',404);
+        if ($id         == 0   ) return _Sistema_erroControle::Erro_Fluxo('Comentário não informado',404);
         
         
         /**
          * Endereço, Diferenciacao etc..
          */
         // GAmbiarra Para Consertar erro de acento em url
-        if($tipo==='Funcionrio' || $tipo==='Funcionário' || $tipo==='funcionrio' || $tipo==='funcionário' || $tipo==='Funcionario'){
+        if ($tipo==='Funcionrio' || $tipo==='Funcionário' || $tipo==='funcionrio' || $tipo==='funcionário' || $tipo==='Funcionario'){
             $tipo = "funcionario";
         }
-        if($tipo==='Usuário' || $tipo==='usuário' || $tipo==='Usurio' || $tipo==='usurio'){
+        if ($tipo==='Usuário' || $tipo==='usuário' || $tipo==='Usurio' || $tipo==='usurio'){
             $tipo = "usuario";
         }
-        if($tipo==='Cliente'){
+        if ($tipo==='Cliente'){
             $tipo = "cliente";
         }
-        if($tipo==='cliente'){
+        if ($tipo==='cliente'){
             $nomedisplay        = __('Clientes');
             $nomedisplay_sing   = __('Cliente');
             $tipo               = 'cliente';
-        }else if($tipo==='funcionario'){
+        }else if ($tipo==='funcionario'){
             $nomedisplay        = __('Usuários');
             $nomedisplay_sing   = __('Usuário');
             $tipo               = 'funcionario';
-        }else{
+        } else {
             $nomedisplay        = __('Usuários');
             $nomedisplay_sing   = __('Usuário');
             $tipo               = 'usuario';
@@ -992,32 +992,32 @@ class usuario_AdminControle extends usuario_Controle
      */
     public function Usuarios_Comentario_Del($usuario_id = false,$id = 0,$tipo='usuario'){
     	$id = (int) $id;
-        if($usuario_id===false) return _Sistema_erroControle::Erro_Fluxo('Usuario não informado',404);
-        if($id         == 0   ) return _Sistema_erroControle::Erro_Fluxo('Comentário não informado',404);
+        if ($usuario_id===false) return _Sistema_erroControle::Erro_Fluxo('Usuario não informado',404);
+        if ($id         == 0   ) return _Sistema_erroControle::Erro_Fluxo('Comentário não informado',404);
         
         
         /**
          * Endereço, Diferenciacao etc..
          */
         // GAmbiarra Para Consertar erro de acento em url
-        if($tipo==='Funcionrio' || $tipo==='Funcionário' || $tipo==='funcionrio' || $tipo==='funcionário' || $tipo==='Funcionario'){
+        if ($tipo==='Funcionrio' || $tipo==='Funcionário' || $tipo==='funcionrio' || $tipo==='funcionário' || $tipo==='Funcionario'){
             $tipo = "funcionario";
         }
-        if($tipo==='Usuário' || $tipo==='usuário' || $tipo==='Usurio' || $tipo==='usurio'){
+        if ($tipo==='Usuário' || $tipo==='usuário' || $tipo==='Usurio' || $tipo==='usurio'){
             $tipo = "usuario";
         }
-        if($tipo==='Cliente'){
+        if ($tipo==='Cliente'){
             $tipo = "cliente";
         }
-        if($tipo==='cliente'){
+        if ($tipo==='cliente'){
             $nomedisplay        = __('Clientes');
             $nomedisplay_sing   = __('Cliente');
             $tipo               = 'cliente';
-        }else if($tipo==='funcionario'){
+        }else if ($tipo==='funcionario'){
             $nomedisplay        = __('Usuários');
             $nomedisplay_sing   = __('Usuário');
             $tipo               = 'funcionario';
-        }else{
+        } else {
             $nomedisplay        = __('Usuários');
             $nomedisplay_sing   = __('Usuário');
             $tipo               = 'usuario';
@@ -1028,13 +1028,13 @@ class usuario_AdminControle extends usuario_Controle
         $comentario = $this->_Modelo->db->Sql_Select('Usuario_Comentario', $where);
         $sucesso =  $this->_Modelo->db->Sql_Delete($comentario);
         // Mensagem
-    	if($sucesso===true){
+    	if ($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
                 "mgs_secundaria" => 'Comentário do '.$nomedisplay_sing.' Deletado com sucesso'
             );
-    	}else{
+    	} else {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),

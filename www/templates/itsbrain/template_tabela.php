@@ -30,7 +30,7 @@
                     <td style="<?php echo $params['Opcao']['Style']; ?>"<?php /* if($contador>1 && $contador<($colunas-1)){ ?> class="hidden-xs"<?php } */ ?>>
                         <?php if (!isset($params['Opcao']['Tabela'][$k][$cont])) {
                             echo '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
-                        }else{
+                        } else {
                             echo $params['Opcao']['Tabela'][$k][$cont];
                         } ?>
                     </td>

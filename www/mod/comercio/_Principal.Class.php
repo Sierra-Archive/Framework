@@ -36,7 +36,7 @@ class comercio_Principal implements \Framework\PrincipalInterface
         $Visual = &$Registro->_Visual;
         
         // Fornecedor
-        if(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Fornecedor')){
+        if (\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Fornecedor')){
             $fornecedor_qnt = $Modelo->db->Sql_Contar('Comercio_Fornecedor');
             // Adiciona Widget a Pagina Inicial
             \Framework\App\Visual::Layoult_Home_Widgets_Add(
@@ -52,7 +52,7 @@ class comercio_Principal implements \Framework\PrincipalInterface
         
         
         // Produto
-        if(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Produto')){
+        if (\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Produto')){
             // Calculo Produto
             $produto_qnt = $Modelo->db->Sql_Contar('Comercio_Produto');
             // Adiciona Widget a Pagina Inicial
@@ -65,7 +65,7 @@ class comercio_Principal implements \Framework\PrincipalInterface
                false,
                113
             );
-            if(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Linha_Widget')){
+            if (\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Linha_Widget')){
                 // Calculo Linha
                 $linha_qnt = $Modelo->db->Sql_Contar('Comercio_Linha');
                // Adiciona Widget a Pagina Inicial

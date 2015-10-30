@@ -46,10 +46,10 @@ class Agenda_AtividadesModelo extends Agenda_Modelo
 
 
         $function = '';
-        if($perm_editar){
+        if ($perm_editar){
             $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Editar\'     ,Array(__(\'Editar Atividade\')        ,\'Agenda/Agenda/Atividades_Edit/\'.$d.\'/\'    ,\'\'),true);';
         }
-        if($perm_deletar){
+        if ($perm_deletar){
             $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Deletar\'     ,Array(__(\'Deletar Atividade\')        ,\'Agenda/Agenda/Atividades_Del/\'.$d.\'/\'    ,\'\'),true);';
         }
         

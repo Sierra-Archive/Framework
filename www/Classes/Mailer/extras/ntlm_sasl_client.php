@@ -24,7 +24,7 @@ class ntlm_sasl_client_class
 
 	Function Initialize(&$client)
 	{
-		if(!function_exists($function="mcrypt_encrypt")
+		if (!function_exists($function="mcrypt_encrypt")
 		|| !function_exists($function="mhash"))
 		{
 			$extensions=array(
@@ -140,7 +140,7 @@ class ntlm_sasl_client_class
 
 	Function Start(&$client, &$message, &$interactions)
 	{
-		if($this->state!=SASL_NTLM_STATE_START)
+		if ($this->state!=SASL_NTLM_STATE_START)
 		{
 			$client->error="NTLM authentication state is not at the start";
 			return(SASL_FAIL);
@@ -153,7 +153,7 @@ class ntlm_sasl_client_class
 		);
 		$defaults=array();
 		$status=$client->GetCredentials($this->credentials,$defaults,$interactions);
-		if($status==SASL_CONTINUE)
+		if ($status==SASL_CONTINUE)
 			$this->state=SASL_NTLM_STATE_IDENTIFY_DOMAIN;
 		Unset($message);
 		return($status);

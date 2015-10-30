@@ -43,7 +43,7 @@ class usuario_veiculo_Modelo extends \Framework\App\Modelo
             if($categoriasdividir===true){
                 if(!isset($i[$campo->CATEGORIA])) $i[$campo->CATEGORIA]=0;
                 $vei = &$veiculos[$campo->CATEGORIA][$i[$campo->CATEGORIA]];
-            }else{
+            } else {
                 $vei = &$veiculos[$i];
             }
             

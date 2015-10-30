@@ -63,7 +63,7 @@ function desfazer_array($array, $comeco=0,  $separador=" | " ,  $separando=" -> 
   $imprimir = "";
   foreach( $array as $key=>$value)
   {
-    if( is_array( $value ) )
+    if ( is_array( $value ) )
     {
 	  $imprimir .= $outroarray_i;
       $imprimir .= desfazer_array($value, 0, $separador, $separando, $outroarray_i, $outroarray_f );
@@ -71,7 +71,7 @@ function desfazer_array($array, $comeco=0,  $separador=" | " ,  $separando=" -> 
     }
     else
     {
-		if($comeco==0) $imprimir .=  $key.$separando.$value;
+		if ($comeco==0) $imprimir .=  $key.$separando.$value;
 		else           $imprimir .=  $separador.$key.$separando.$value;
 		++$comeco;
     }
@@ -118,7 +118,7 @@ function remover_acentos($string)
  * @version 0.4.2
  */
 function orderMultiDimensionalArray(&$toOrderArray, $field, $inverse = false) { 
-    if(empty($toOrderArray)) return false;
+    if (empty($toOrderArray)) return false;
     $position = array();  
     $newRow = array();  
     foreach ($toOrderArray as $key => $row) {  
@@ -151,48 +151,48 @@ function orderMultiDimensionalArray(&$toOrderArray, $field, $inverse = false) {
 function Data_geraTimestamp($data,$quebra=true) {
     $data = trim($data);
     // Formato: 23/09/2013 00:00:00 ou 2013-09-23 00:00:00
-    if(strlen($data)==19){
+    if (strlen($data)==19){
         $partes = explode(' ', $data);        
-        if(strpos($partes[1], '-')!==false){
+        if (strpos($partes[1], '-')!==false){
             $horas = explode('-', $partes[1]);
-        }else{
+        } else {
             $horas = explode(':', $partes[1]);
         }
-        if(strpos($partes[0], '/')!==false){
+        if (strpos($partes[0], '/')!==false){
             $dias = explode('/', $partes[0]);
             return mktime($horas[0], $horas[1], $horas[2], $dias[1], $dias[0], $dias[2]);
-        }else{
+        } else {
             $dias = explode('-', $partes[0]);
             return mktime($horas[0], $horas[1], $horas[2], $dias[1], $dias[2], $dias[0]);
         }
     }else 
     // Formato: 23/09/13 | 21:13 ou 13-09-23 | 21:13
-    if(strlen($data)==16){
+    if (strlen($data)==16){
         $partes = explode(' | ', $data);        
-        if(strpos($partes[1], '-')!==false){
+        if (strpos($partes[1], '-')!==false){
             $horas = explode('-', $partes[1]);
-        }else{
+        } else {
             $horas = explode(':', $partes[1]);
         }
-        if(strpos($partes[0], '/')!==false){
+        if (strpos($partes[0], '/')!==false){
             $dias = explode('/', $partes[0]);
             return mktime($horas[0], $horas[1], '00', $dias[1], $dias[0], '20'.$dias[2]);
-        }else{
+        } else {
             $dias = explode('-', $partes[0]);
             return mktime($horas[0], $horas[1], '00', $dias[1], $dias[2], '20'.$dias[0]);
         }
     }else 
     // Formato: 23/09/2013 ou 2013-09-23
-    if(strlen($data)==10){
-        if(strpos($data, '/')!==false){
+    if (strlen($data)==10){
+        if (strpos($data, '/')!==false){
             $partes = explode('/', $data);
             return mktime(0, 0, 0, $partes[1], $partes[0], $partes[2]);
-        }else{
+        } else {
             $partes = explode('-', $data);
             return mktime(0, 0, 0, $partes[1], $partes[2], $partes[0]);
         }
     }
-    if($quebra) throw new \Exception('Função::Data_geraTimestamp(): Data em Formato Inválido ('.$data.')',3040);
+    if ($quebra) throw new \Exception('Função::Data_geraTimestamp(): Data em Formato Inválido ('.$data.')',3040);
     return false;
 }
 /**
@@ -250,13 +250,13 @@ function data_brasil_eua($data)
     $array = explode("/",$data);
     
     // Permite parametro com data imcompleta
-    if(!isset($array[1])){
+    if (!isset($array[1])){
         return $array[0];
-    }else if(!isset($array[2]) || strlen($array[2])<4){
+    }else if (!isset($array[2]) || strlen($array[2])<4){
         return $array[1].'-'.$array[0];
     }
     
-    if(((int)$array[2])<1000){
+    if (((int)$array[2])<1000){
         
     }
     
@@ -274,7 +274,7 @@ function data_brasil_eua($data)
 function data_eua_brasil($data)
 {
     $array = explode("-",$data);
-    if(!isset($array[2])){
+    if (!isset($array[2])){
         return '0000/00/00';
     }
     return $array[2].'/'.$array[1].'/'.$array[0];
@@ -291,13 +291,13 @@ function data_eua_brasil($data)
 function data_hora_eua_brasil($data)
 {
     // Caso seja vazio retorna vazio
-    if($data==NULL){
+    if ($data==NULL){
         return '';
     }
     
     $data = explode(" ",$data);
     $array2 = explode("-",$data[0]);
-    if(!isset($data[1]) || !isset($array2[2])){
+    if (!isset($data[1]) || !isset($array2[2])){
         return '00/00/0000 00:00:00';
     }
     $hora = $data[1];
@@ -316,19 +316,19 @@ function data_hora_eua_brasil($data)
 function data_hora_brasil_eua($data)
 {
     // Caso seja vazio retorna vazio
-    if($data==NULL){
+    if ($data==NULL){
         return '';
     }
     $data_quebrada = explode(" ",$data);
     
     
-    if(!isset($data_quebrada[1])){
+    if (!isset($data_quebrada[1])){
         return '0000-00-00 00:00:00';
     }
     $hora = $data_quebrada[1];
     $data_quebrada = explode("/",$data_quebrada[0]);
     
-    if(!isset($data_quebrada[2])){
+    if (!isset($data_quebrada[2])){
         return '0000-00-00 00:00:00';
     }
     

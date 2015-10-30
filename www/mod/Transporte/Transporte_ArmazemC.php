@@ -10,9 +10,9 @@ class Transporte_ArmazemControle extends Transporte_Controle
         $_Controle = $Registro->_Controle;
         $titulo = __('Armazens');
         $link = 'Transporte/Armazem/Armazens';
-        if($true===true){
+        if ($true===true){
             $_Controle->Tema_Endereco($titulo,$link);
-        }else{
+        } else {
             $_Controle->Tema_Endereco($titulo);
         }
     }
@@ -30,7 +30,7 @@ class Transporte_ArmazemControle extends Transporte_Controle
         $Visual     = &$Registro->_Visual;
         $tabela = Array();
         $i = 0;
-        if(is_object($armazem)) $armazem = Array(0=>$armazem);reset($armazem);
+        if (is_object($armazem)) $armazem = Array(0=>$armazem);reset($armazem);
         $perm_view = $Registro->_Acl->Get_Permissao_Url('Transporte/Armazem/Visualizar');
         foreach ($armazem as &$valor) {                
             $tabela['Id'][$i]           = '#'.$valor->id;
@@ -61,13 +61,13 @@ class Transporte_ArmazemControle extends Transporte_Controle
         $i = 0;
         self::Endereco_Armazem(false);
         $armazem = $this->_Modelo->db->Sql_Select('Transporte_Armazem');
-        if(is_object($armazem)) $armazem = Array(0=>$armazem);
-        if($armazem!==false && !empty($armazem)){
+        if (is_object($armazem)) $armazem = Array(0=>$armazem);
+        if ($armazem!==false && !empty($armazem)){
             list($tabela,$i) = self::Armazens_Tabela($armazem);
             // SE exportar ou mostra em tabela
-            if($export!==false){
+            if ($export!==false){
                 self::Export_Todos($export,$tabela, 'Armazens');
-            }else{
+            } else {
                 $this->_Visual->Show_Tabela_DataTable(
                     $tabela,     // Array Com a Tabela
                     '',          // style extra
@@ -81,10 +81,10 @@ class Transporte_ArmazemControle extends Transporte_Controle
                 );
             }
             unset($tabela);
-        }else{
-            if($export!==false){
+        } else {
+            if ($export!==false){
                 $mensagem = __('Nenhum Armazém Cadastrado para exportar');
-            }else{
+            } else {
                 $mensagem = __('Nenhum Armazém Cadastrado');
             }
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">'.$mensagem.'</font></b></center>');
@@ -104,24 +104,24 @@ class Transporte_ArmazemControle extends Transporte_Controle
     }
     static function Painel_Armazem($camada,$retornar=true){
         $existe = false;
-        if($retornar==='false') $retornar = false;
+        if ($retornar==='false') $retornar = false;
         // Verifica se Existe Conexao, se nao tiver abre o adicionar conexao, se nao, abre a pasta!
         $Registro = &\Framework\App\Registro::getInstacia();
         $resultado = $Registro->_Modelo->db->Sql_Select('Transporte_Armazem','{sigla}usuario=\''.$Registro->_Acl->Usuario_GetID().'\'',1);
-        if(is_object($resultado)){
+        if (is_object($resultado)){
             $existe = true;
         }
         
         // Dependendo se Existir Cria Formulario ou Lista arquivos
-        if($existe===false){
+        if ($existe===false){
             $html = '<b>Ainda faltam insformações sobre o seu Armazém</b><br>'.self::Painel_Armazem_Add($camada);
-        }else{
+        } else {
             $html = __('Painel');
         }
         
-        if($retornar===true){
+        if ($retornar===true){
             return $html;
-        }else{
+        } else {
             $conteudo = array(
                 'location'  =>  '#'.$camada,
                 'js'        =>  '',
@@ -172,7 +172,7 @@ class Transporte_ArmazemControle extends Transporte_Controle
     }
     public function Painel_Armazem_Add2($camada){
         $resultado = $this->_Modelo->db->Sql_Select('Transporte_Armazem','{sigla}usuario=\''.$this->_Acl->Usuario_GetID().'\'',1);
-        if(is_object($resultado)){
+        if (is_object($resultado)){
             self::Painel_Armazem($camada,false);
             return true;
         }

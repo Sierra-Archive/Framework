@@ -35,10 +35,10 @@ class usuario_FreeControle extends usuario_Controle
     */
     public function Main($tipo = 'associado'){
         $tipocadastro = \Framework\App\Conexao::anti_injection($tipo);
-        if($tipocadastro!='' AND $tipocadastro!='cliente'){
+        if ($tipocadastro!='' AND $tipocadastro!='cliente'){
             // = associado
             $tipocadastro = 'associado';
-        }else{
+        } else {
             // = ''; // cliente
             $tipocadastro = 'cliente';
             
@@ -73,19 +73,19 @@ class usuario_FreeControle extends usuario_Controle
         // Carrega Config
         $formlink   = 'usuario/Free/usuarios_inserir/'.$tipocadastro;
         $campos = Usuario_DAO::Get_Colunas();
-        if($tipocadastro===false){
+        if ($tipocadastro===false){
             $titulo1    = __('Se tornar Usuário');
             $titulo2    = __('Salvar Usuário');
             $formid     = 'form_free_cadastroUsuario';
             $formbt     = __('Salvar Usuário');
             self::DAO_Campos_Retira($campos,'grupo');
-        }elseif($tipocadastro=='cliente'){
+        }elseif ($tipocadastro=='cliente'){
             $titulo1    = __('Se tornar Cliente');
             $titulo2    = __('Salvar Cliente');
             $formid     = 'form_free_cadastroCliente';
             $formbt     = __('Salvar');
             self::DAO_Campos_Retira($campos,'grupo');
-        }else{
+        } else {
             $titulo1    = __('Se tornar Associado');
             $titulo2    = __('Salvar Associado');
             $formid     = 'form_free_cadastroAssociado';
@@ -109,7 +109,7 @@ class usuario_FreeControle extends usuario_Controle
     public function usuarios_inserir($tipo = 'cliente'){
         
         
-        if(!isset($_POST['email']) || !isset($_POST['login'])){
+        if (!isset($_POST['email']) || !isset($_POST['login'])){
             
             $mensagens = array(
                 "tipo" => 'erro',
@@ -118,10 +118,10 @@ class usuario_FreeControle extends usuario_Controle
             );
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens); 
             $this->_Visual->Javascript_Executar('$("#email").css(\'border\', \'2px solid #FFAEB0\').focus();$("#login").css(\'border\', \'2px solid #FFAEB0\');');
-        }else{
+        } else {
             $existeemail = usuario_Modelo::VerificaExtEmail($this->_Modelo,\Framework\App\Conexao::anti_injection($_POST['email']));
             $existelogin = usuario_Modelo::VerificaExtLogin($this->_Modelo,\Framework\App\Conexao::anti_injection($_POST['login']));
-            if(\Framework\App\Sistema_Funcoes::Control_Layoult_Valida_Email(\Framework\App\Conexao::anti_injection($_POST['email']))===false){
+            if (\Framework\App\Sistema_Funcoes::Control_Layoult_Valida_Email(\Framework\App\Conexao::anti_injection($_POST['email']))===false){
                 $mensagens = array(
                     "tipo" => 'erro',
                     "mgs_principal" => __('Erro'),
@@ -129,7 +129,7 @@ class usuario_FreeControle extends usuario_Controle
                 );
                 $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens); 
                 $this->_Visual->Javascript_Executar('$("#email").css(\'border\', \'2px solid #FFAEB0\').focus();');
-             }else if($existeemail===true){
+             }else if ($existeemail===true){
                 $mensagens = array(
                     "tipo" => 'erro',
                     "mgs_principal" => __('Erro'),
@@ -137,7 +137,7 @@ class usuario_FreeControle extends usuario_Controle
                 );
                 $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens); 
                 $this->_Visual->Javascript_Executar('$("#email").css(\'border\', \'2px solid #FFAEB0\').focus();');
-            }else if($existelogin===true){
+            }else if ($existelogin===true){
                 $mensagens = array(
                     "tipo" => 'erro',
                     "mgs_principal" => __('Erro'),
@@ -145,14 +145,14 @@ class usuario_FreeControle extends usuario_Controle
                 );
                 $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens); 
                 $this->_Visual->Javascript_Executar('$("#login").css(\'border\', \'2px solid #FFAEB0\').focus();');
-            }else{
+            } else {
                 $tipousuario = \Framework\App\Conexao::anti_injection($tipo);
 
                 // atualiza todos os valores por get, retirando o nivel admin
                 self::mysql_AtualizaValores($this->_Modelo->campos);
 
                 // confere senha
-                if($_POST['senha']==''){
+                if ($_POST['senha']==''){
                     $mensagens = array(
                         "tipo" => 'erro',
                         "mgs_principal" => __('Erro'),
@@ -163,13 +163,13 @@ class usuario_FreeControle extends usuario_Controle
                 }
 
                 // captura indicado;
-                if(!isset($_COOKIE['indicativo_id'])) $_COOKIE['indicativo_id'] = 0;
+                if (!isset($_COOKIE['indicativo_id'])) $_COOKIE['indicativo_id'] = 0;
                 self::mysql_AtualizaValor($this->_Modelo->campos,'indicado_por', $_COOKIE['indicativo_id']);
 
                 //insere usuario
                 $sucesso =  $this->_Modelo->usuarios_inserir();
 
-                if($sucesso===true){
+                if ($sucesso===true){
                     $mensagens = array(
                         "tipo" => 'sucesso',
                         "mgs_principal" => __('Inserção bem sucedida'),
@@ -185,7 +185,7 @@ class usuario_FreeControle extends usuario_Controle
 
                     '<br>Atenciosamente,'.
                     '<br>Equipe Locaway';
-                    if($tipousuario!='cliente'){
+                    if ($tipousuario!='cliente'){
                         $mgm = '<br>Obrigado por Se Registrar.'.
                         '<br>Seu cadastro foi registrado com sucesso e encontra-se em análise de pagamento.'.
                         '<br>Estamos trabalhando para melhor atendê-lo!<br>';
@@ -198,11 +198,11 @@ class usuario_FreeControle extends usuario_Controle
                         '&bairro='.\Framework\App\Conexao::anti_injection($_POST['bairro']).
                         '&cep='.\Framework\App\Conexao::anti_injection($_POST['cep']).
                         '&valor='.$valor.'\',\'_TOP\')');
-                    }else{
+                    } else {
                         $this->Main();
                     }
                     $email = Mail_Send($this->_Acl->logado_usuario->nome, $this->_Acl->logado_usuario->email,SISTEMA_EMAIL,SISTEMA_NOME.' - Cadastro Realizado com Sucesso',$mgm);
-                }else{
+                } else {
                     $mensagens = array(
                         "tipo" => 'erro',
                         "mgs_principal" => __('Erro'),

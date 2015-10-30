@@ -24,7 +24,7 @@ class usuario_mensagem_SuporteControle extends usuario_mensagem_Controle
         $_Controle = $Registro->_Controle;
         if($true===true){
             $_Controle->Tema_Endereco(__('Chamados'),'usuario_mensagem/Suporte/Mensagens/');
-        }else{
+        } else {
             $_Controle->Tema_Endereco(__('Chamados'));
         }
     }
@@ -34,7 +34,7 @@ class usuario_mensagem_SuporteControle extends usuario_mensagem_Controle
         $_Controle = $Registro->_Controle;
         if($true===true){
             $_Controle->Tema_Endereco(__('Visualizar Chamado'),'usuario_mensagem/Suporte/VisualizadordeMensagem/'.$id);
-        }else{
+        } else {
             $_Controle->Tema_Endereco(__('Visualizar Chamado'));
         }
     }
@@ -75,7 +75,7 @@ class usuario_mensagem_SuporteControle extends usuario_mensagem_Controle
             $this->Mensagenslistar();
             if($this->_Acl->logado_usuario->grupo==CFG_TEC_IDADMIN){
                 $this->MensagensSetores(-1);
-            }else{
+            } else {
                 $this->MensagensSetores();
             }
             //$this->Mensagem_formulario();
@@ -113,16 +113,16 @@ class usuario_mensagem_SuporteControle extends usuario_mensagem_Controle
         }
         if(!empty($mensagens) && $mensagens!==false){
             $i = usuario_mensagem_Controle::Mensagens_TabelaMostrar($this->_Visual, $mensagens,$admin);
-        }else{
+        } else {
             if($grupo==0){
                 $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">'.__('Os setores não possuem chamados.').'</font></b></center>');  
-            }else{
+            } else {
                 $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">'.__('O setor não possui chamados.').'</font></b></center>');  
             }
         }
         if($grupo==0){
             $titulo  = __('Todos os Chamados de todos os Setores').' ('.$i.')';
-        }else{
+        } else {
             $titulo  = __('Todos os Chamados do Setor').' ('.$i.')';
         }
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
@@ -148,20 +148,20 @@ class usuario_mensagem_SuporteControle extends usuario_mensagem_Controle
         $mensagens = Array();
         if($cliente==0){
             $usuario = (int) $this->_Acl->Usuario_GetID();
-        }else{
+        } else {
             $usuario = $cliente;
         }
         usuario_mensagem_SuporteModelo::Suporte_MensagensCliente($mensagens,$usuario,1);
         if(is_object($mensagens)) $mensagens = Array(0=>$mensagens);
         if(!empty($mensagens) && $mensagens!==false){
             $i = usuario_mensagem_Controle::Mensagens_TabelaMostrar($Visual, $mensagens,$admin);
-        }else{
+        } else {
             $Visual->Blocar('<center><b><font color="#FF0000" size="5">'.__('Não possui chamados.').'</font></b></center>');
         }
         $titulo  = __('Todos os chamados do Cliente').' ('.$i.')';
         if($retorno=='Unico'){
             $Visual->Bloco_Unico_CriaJanela($titulo);
-        }else{
+        } else {
             $Visual->Bloco_Menor_CriaJanela($titulo);
         }
     }
@@ -175,7 +175,7 @@ class usuario_mensagem_SuporteControle extends usuario_mensagem_Controle
             $this->Anexar($mensagem);
             // ORGANIZA E MANDA CONTEUDO
             $this->_Visual->Json_Info_Update('Titulo', __('Visualizar Ticket')); 
-        }else{
+        } else {
             throw new \Exception('Id não Encontrado de Usuário: '.$id, 5050);
         }
     }
@@ -235,7 +235,7 @@ class usuario_mensagem_SuporteControle extends usuario_mensagem_Controle
                 'html'      => $html
             );
             $this->_Visual->Json_IncluiTipo('Conteudo',$conteudo);
-        }else{
+        } else {
             $this->_Visual->Json_Info_Update('Titulo', __('Erro com Upload'));
             $this->_Visual->Json_Info_Update('Historico', false);
         }
@@ -249,7 +249,7 @@ class usuario_mensagem_SuporteControle extends usuario_mensagem_Controle
             }
             // Condicao de Query
             $where = Array('mensagem'=>$resultado_mensagens->id);
-        }else{
+        } else {
             $mensagem = 0;
             $where = Array();
         }
@@ -277,7 +277,7 @@ class usuario_mensagem_SuporteControle extends usuario_mensagem_Controle
             }
             $html .= $this->_Visual->Show_Tabela_DataTable($tabela,'',false);
             unset($tabela);
-        }else{
+        } else {
             $html .= '<center><b><font color="#FF0000" size="5">'.__('Nenhum Anexo').'</font></b></center>';            
         }
         $titulo = __('Anexos').' (<span id="anexo_arquivos_num">'.$i.'</span>)';

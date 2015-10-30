@@ -26,9 +26,9 @@ class Financeiro_UsuarioControle extends Financeiro_Controle
         $_Controle = $Registro->_Controle;
         $titulo = __('Financeiro');
         $link = '_Sistema/Principal/Home';
-        if($true===true){
+        if ($true===true){
             $_Controle->Tema_Endereco($titulo,$link);
-        }else{
+        } else {
             $_Controle->Tema_Endereco($titulo);
         }
     }
@@ -38,9 +38,9 @@ class Financeiro_UsuarioControle extends Financeiro_Controle
         $_Controle = $Registro->_Controle;
         $titulo = __('À Pagar');
         $link = 'Financeiro/Usuario/Pagar';
-        if($true===true){
+        if ($true===true){
             $_Controle->Tema_Endereco($titulo,$link);
-        }else{
+        } else {
             $_Controle->Tema_Endereco($titulo);
         }
     }
@@ -50,9 +50,9 @@ class Financeiro_UsuarioControle extends Financeiro_Controle
         $_Controle = $Registro->_Controle;
         $titulo = __('À Receber');
         $link = 'Financeiro/Usuario/Receber';
-        if($true===true){
+        if ($true===true){
             $_Controle->Tema_Endereco($titulo,$link);
-        }else{
+        } else {
             $_Controle->Tema_Endereco($titulo);
         }
     }
@@ -62,9 +62,9 @@ class Financeiro_UsuarioControle extends Financeiro_Controle
         $_Controle = $Registro->_Controle;
         $titulo = __('Pagas');
         $link = 'Financeiro/Usuario/Pago';
-        if($true===true){
+        if ($true===true){
             $_Controle->Tema_Endereco($titulo,$link);
-        }else{
+        } else {
             $_Controle->Tema_Endereco($titulo);
         }
     }
@@ -74,9 +74,9 @@ class Financeiro_UsuarioControle extends Financeiro_Controle
         $_Controle = $Registro->_Controle;
         $titulo = __('Recebidos');
         $link = 'Financeiro/Usuario/Recebido';
-        if($true===true){
+        if ($true===true){
             $_Controle->Tema_Endereco($titulo,$link);
-        }else{
+        } else {
             $_Controle->Tema_Endereco($titulo);
         }
     }
@@ -122,12 +122,12 @@ class Financeiro_UsuarioControle extends Financeiro_Controle
         );
         list($tabela,$i) = $this->Movimentacao_Interna($where,'Mini',false,'',false);
         $titulo = $titulo.' ('.$i.')';
-        if($i==0){          
+        if ($i==0){          
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhuma Conta à pagar</font></b></center>');
-        }else{
-            if($export!==false){
+        } else {
+            if ($export!==false){
                 self::Export_Todos($export,$tabela, 'Contas à pagar');
-            }else{
+            } else {
                 $this->_Visual->Show_Tabela_DataTable($tabela);
             }
             unset($tabela);
@@ -161,12 +161,12 @@ class Financeiro_UsuarioControle extends Financeiro_Controle
         
         list($tabela,$i) = $this->Movimentacao_Interna($where,'Mini');
         $titulo = $titulo.' ('.$i.')';
-        if($i==0 ){
+        if ($i==0 ){
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhuma Conta à Receber</font></b></center>');
-        }else{
-            if($export!==false){
+        } else {
+            if ($export!==false){
                 self::Export_Todos($export,$tabela, 'Contas à Receber');
-            }else{
+            } else {
                 $this->_Visual->Show_Tabela_DataTable($tabela);
             }
             unset($tabela);
@@ -197,12 +197,12 @@ class Financeiro_UsuarioControle extends Financeiro_Controle
         );
         list($tabela,$i) = $this->Movimentacao_Interna_Pago($where,'Mini');
         $titulo = $titulo.' ('.$i.')';
-        if($i==0){          
+        if ($i==0){          
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhuma Conta Paga</font></b></center>');
-        }else{
-            if($export!==false){
+        } else {
+            if ($export!==false){
                 self::Export_Todos($export,$tabela, 'Contas Pagas');
-            }else{
+            } else {
                 $this->_Visual->Show_Tabela_DataTable($tabela);
             }
             unset($tabela);
@@ -236,12 +236,12 @@ class Financeiro_UsuarioControle extends Financeiro_Controle
         
         list($tabela,$i) = $this->Movimentacao_Interna_Pago($where,'Mini');
         $titulo = $titulo.' ('.$i.')';
-        if($i==0 ){
+        if ($i==0 ){
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhuma Conta Recebida</font></b></center>');
-        }else{
-            if($export!==false){
+        } else {
+            if ($export!==false){
                 self::Export_Todos($export,$tabela, 'Contas Recebidas');
-            }else{
+            } else {
                 $this->_Visual->Show_Tabela_DataTable($tabela);
             }
             unset($tabela);
@@ -280,9 +280,15 @@ class Financeiro_UsuarioControle extends Financeiro_Controle
         $string = 'Financeiro_Pagamento_Interno|pago=\''.$pago.'\'| motivo=\''.$motivo.'\' AND motivoid=\''.$motivo_id.'\'';
         $_Modelo->db->Sql_Update($string);
     }
+    /**
+     * 
+     * @param type $id
+     * @param type $localizacao
+     * @param type $dataini
+     * @param type $datafin
+     */
     public function Financeiros_Pagar($id=false, $localizacao=false, $dataini=false,$datafin=false){
         $html = '';
-        
         
         $html .= '<!-- INICIO FORMULARIO BOTAO PAGSEGURO -->
         <form action="https://pagseguro.uol.com.br/checkout/v2/payment.html" method="post" onsubmit="PagSeguroLightbox(this); return false;">
@@ -291,53 +297,11 @@ class Financeiro_UsuarioControle extends Financeiro_Controle
         <input type="image" src="https://p.simg.uol.com.br/out/pagseguro/i/botoes/pagamentos/120x53-pagar.gif" name="submit" alt="Pague com PagSeguro - é rápido, grátis e seguro!" />
         </form>
         <script type="text/javascript" src="https://stc.pagseguro.uol.com.br/pagseguro/api/v2/checkout/pagseguro.lightbox.js"></script>
-        <!-- FINAL FORMULARIO BOTAO PAGSEGURO -->';
-        
-        
-        
-        
+        <!-- FINAL FORMULARIO BOTAO PAGSEGURO -->'.$id.$localizacao.$dataini.$datafin;
         
         $this->_Visual->Blocar($html);
         
-        
         $this->_Visual->Bloco_Unico_CriaJanela(__('Pagar'));
-        
-        
-        
-        /*// Faz Protecao, e Linguagem apropriada
-        if($id===false){
-            return _Sistema_erroControle::Erro_Fluxo('Financeiro não especificado: '.$id,404);
-        }
-        $where = Array('id'=>  $id, 'pago'=>'0');
-        $editar = $this->_Modelo->db->Sql_Select('Financeiro_Pagamento_Interno',$where);
-        if($editar===false){
-            return _Sistema_erroControle::Erro_Fluxo('Financeiro não existe: '.$id,404);
-        }
-        if($localizacao!==false){
-            Financeiro_RelatorioControle::Endereco_Financeiro();
-            if($editar->saida_motivo==='Servidor' && $editar->saida_motivoid===SRV_NAME_SQL){
-                $pago = 'Recebido';
-            }else{
-                $pago = 'Pago';
-            }
-            $link_extra = '/'.$localizacao.'/'.$dataini.'/'.$datafin;
-        }else if($editar->saida_motivo==='Servidor' && $editar->saida_motivoid===SRV_NAME_SQL){
-            $pago = 'Recebido';
-            self::Endereco_Receber();
-            $link_extra = '';
-        }else{
-            $pago = 'Pago';
-            self::Endereco_Pagar();
-            $link_extra = '';
-        }
-        // Carrega Config
-        $titulo1    = 'Declarar '.$pago.' (#'.$id.')';
-        $titulo2    = $titulo1;
-        $formid     = 'form_Sistema_AdminC_UsuarioEdit';
-        $formbt     = $titulo1;
-        $formlink   = 'Financeiro/Usuario/Financeiros_Pagar2/'.$id.$link_extra;
-        $campos = Financeiro_Pagamento_Interno_DAO::Get_Colunas();
-        // R$titulo1,$titulo2,$formlink,$formid,$formbt,$campos,$editar);*/
     }
     /**
      * 
@@ -346,47 +310,47 @@ class Financeiro_UsuarioControle extends Financeiro_Controle
      * @param type $layoult
      * @throws Exception
      */
-    public function Financeiro_View($id,$layoult='Unico'){
+    public function Financeiro_View($id=false,$layoult='Unico'){
         $html = '<span style="text-transform:uppercase;">';
 
 
         // Puxca Financeiro
-        $identificador = $this->_Modelo->db->Sql_Select('Financeiro_Pagamento_Interno',Array('id'=>$id),1); // Banco DAO, Condicao e LIMITE
+        $identificador = $this->_Modelo->db->Sql_Select('Financeiro_Pagamento_Interno',Array('id'=>(int) $id),1); // Banco DAO, Condicao e LIMITE
         // Verifica se Existe e Continua
-        if($identificador===false){
+        if ($identificador===false){
             return _Sistema_erroControle::Erro_Fluxo('Pagamento não Existe',404);
         }
-        $id = $identificador->id;
+        $identificador->id;
         
         
-        if($identificador->entrada_motivo==='Servidor' && $identificador->entrada_motivoid===SRV_NAME_SQL){
-            if($identificador->pago==1){
+        if ($identificador->entrada_motivo==='Servidor' && $identificador->entrada_motivoid===SRV_NAME_SQL){
+            if ($identificador->pago==1){
                 $tema = 'Pago';
-            }else{
+            } else {
                 $tema = 'Pagar';
             }
-        }else{            
-            if($identificador->pago==1){
+        } else {            
+            if ($identificador->pago==1){
                 $tema = 'Receber';
-            }else{
+            } else {
                 $tema = 'Recebido';
             }
         }
         
         // Nomes
-        if($tema==='Pagar'){
+        if ($tema==='Pagar'){
             $titulo             = __('Conta a Pagar');
             $titulo_plural      = __('Contas a Pagar');
             $titulo_unico       = 'contasapagar';
-        }else if($tema==='Pago'){
+        }else if ($tema==='Pago'){
             $titulo             = __('Conta Paga');
             $titulo_plural      = __('Contas Pagas');
             $titulo_unico       = 'contaspagas';
-        }else if($tema==='Receber'){
+        }else if ($tema==='Receber'){
             $titulo             = __('Conta a Pagar');
             $titulo_plural      = __('Contas a Pagar');
             $titulo_unico       = 'contasareceber';
-        }else{
+        } else {
             $tema               = 'Recebido';
             $titulo             = __('Conta Recebida');
             $titulo_plural      = __('Contas Recebidas');
@@ -395,43 +359,33 @@ class Financeiro_UsuarioControle extends Financeiro_Controle
         
         
         
-        /*$cliente = $this->_Modelo->db->Sql_Select('Usuario',Array('id'=>$identificador->cliente),1); // Banco DAO, Condicao e LIMITE
-        // Verifica se Existe e Continua
-        if($identificador===false){
-            return _Sistema_erroControle::Erro_Fluxo('Proposta não Existe',404);
-        }
-        if($cliente===false){
-            return _Sistema_erroControle::Erro_Fluxo('Cliente não existe',404);
-        }
-        */
         
-        
-        if($layoult!=='Imprimir'){            
+        if ($layoult!=='Imprimir'){            
             $html .= $this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
                 false,
                 Array(
                     'Print'     => true,
                     'Pdf'       => false,
                     'Excel'     => false,
-                    'Link'      => 'Financeiro/Usuario/Financeiro_View/'.$id.'/'.$tema,
+                    'Link'      => 'Financeiro/Usuario/Financeiro_View/'.$identificador->id.'/'.$tema,
                 )
             ));
         }
         
         //DADOS
-        if($identificador->valor!='')  $html .= '<p><label style="width:250px; float:left; margin-right:5px;">Valor:</label>'.$identificador->valor.'</p>';
-        if($identificador->obs!='')  $html .= '<p><label style="width:250px; float:left; margin-right:5px;">Observação:</label>'.$identificador->obs.'</p>';
+        if ($identificador->valor!='')  $html .= '<p><label style="width:250px; float:left; margin-right:5px;">Valor:</label>'.$identificador->valor.'</p>';
+        if ($identificador->obs!='')  $html .= '<p><label style="width:250px; float:left; margin-right:5px;">Observação:</label>'.$identificador->obs.'</p>';
         
         // Bota Espaço
         $html .= '<div class="space15"></div>';
         
         $html .= '</span>';
         // Caso seja pra Imprimir
-        if($layoult==='Imprimir'){
+        if ($layoult==='Imprimir'){
             self::Export_Todos($layoult,$html, $titulo.' #'.$identificador->id);
-        }else{
+        } else {
             // Identifica tipo e cria conteudo
-            if(LAYOULT_IMPRIMIR=='AJAX'){
+            if (LAYOULT_IMPRIMIR=='AJAX'){
                 // Coloca Conteudo em Popup
                 $popup = array(
                     'id'        => 'popup',
@@ -445,18 +399,18 @@ class Financeiro_UsuarioControle extends Financeiro_Controle
                     'html'      => $html
                 );
                 $this->_Visual->Json_IncluiTipo('Popup',$popup);
-            }else{
+            } else {
                 // Coloca Endereco
                 $funcao = 'Endereco_'.$tema;
                 self::$funcao(true);
                 $this->Tema_Endereco('Visualizar '.$titulo);
                 // Coloca COnteudo em Janela
                 $this->_Visual->Blocar($html);
-                if($layoult==='Unico'){
+                if ($layoult==='Unico'){
                     $this->_Visual->Bloco_Unico_CriaJanela($titulo.' #'.$identificador->id);
-                }else if($layoult==='Maior'){
+                }else if ($layoult==='Maior'){
                     $this->_Visual->Bloco_Maior_CriaJanela($titulo.' #'.$identificador->id);
-                }else{
+                } else {
                     $this->_Visual->Bloco_Menor_CriaJanela($titulo.' #'.$identificador->id);
                 }
             }

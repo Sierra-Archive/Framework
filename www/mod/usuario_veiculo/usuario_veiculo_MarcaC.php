@@ -45,7 +45,7 @@ class usuario_veiculo_MarcaControle extends usuario_veiculo_Controle
         //Chama
         if($true===true){
             $_Controle->Tema_Endereco($titulo,$link);
-        }else{
+        } else {
             $_Controle->Tema_Endereco($titulo);
         }
     }
@@ -71,7 +71,7 @@ class usuario_veiculo_MarcaControle extends usuario_veiculo_Controle
             }
             $this->_Visual->Show_Tabela_DataTable($tabela);
             unset($tabela);
-        }else{           
+        } else {           
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhuma Marca</font></b></center>');
         }
         $titulo = __('Listagem de Marcas').' ('.$i.')';
@@ -167,7 +167,7 @@ class usuario_veiculo_MarcaControle extends usuario_veiculo_Controle
                 "mgs_principal" => __('Deletada'),
                 "mgs_secundaria" => __('Marca Deletada com sucesso')
             );
-    	}else{
+    	} else {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),

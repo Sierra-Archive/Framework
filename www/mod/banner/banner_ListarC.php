@@ -38,7 +38,7 @@ class banner_ListarControle extends banner_Controle
     }
     public function Banner_Redirecionar($id = 0){
         $id = (int) $id;
-        if($id == 0)            return;
+        if ($id == 0)            return;
         
         /*$banner = $this->_Modelo->db->Sql_Select('Banner',Array('id'=>$id));
         $banner->cliq = $banner->cliq+1;
@@ -54,7 +54,7 @@ class banner_ListarControle extends banner_Controle
         $banners = Array();
         $i = 0;
         $this->_Modelo->retorna_banners($banners,$categoria,$ativado);
-        if(!empty($banners)){
+        if (!empty($banners)){
             reset($banners);
             
             foreach ($banners as $indice=>&$valor) {                
@@ -67,12 +67,12 @@ class banner_ListarControle extends banner_Controle
             }
             $this->_Visual->Show_Tabela_DataTable($tabela);
             unset($tabela);
-        }else{      
+        } else {      
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Banner</font></b></center>');
         }
-        if($ativado==0){
+        if ($ativado==0){
             $titulo = __('Todos os Banners Desativados').' ('.$i.')';
-        }else{
+        } else {
             $titulo = __('Todos os Banners Ativados').' ('.$i.')';
         }
         $this->_Visual->Bloco_Maior_CriaJanela($titulo);

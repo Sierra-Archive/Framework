@@ -71,8 +71,8 @@ class comercio_certificado_ProdutoControle extends comercio_certificado_Controle
         $i = 0;
         $html = '<span id="prodaddmostrar" style="display: none;"><a title="Adicionar Produto" class="btn btn-success lajax explicar-titulo" data-acao="" href="'.URL_PATH.'comercio_certificado/Produto/Produtos_Add">Adicionar novo Produto</a><div class="space15"></div></span>';
         $produto = $this->_Modelo->db->Sql_Select('Comercio_Produto');
-        if($produto!==false && !empty($produto)){
-            if(is_object($produto)) $produto = Array(0=>$produto);
+        if ($produto!==false && !empty($produto)){
+            if (is_object($produto)) $produto = Array(0=>$produto);
             reset($produto);
             foreach ($produto as $indice=>&$valor) {
                 $tabela['Sigla'][$i]     = $valor->sigla;
@@ -82,7 +82,7 @@ class comercio_certificado_ProdutoControle extends comercio_certificado_Controle
                 ++$i;
             }
             return $html.$this->_Visual->Show_Tabela_DataTable($tabela,'',false);
-        }else{
+        } else {
             $html .= '<center><b><font color="#FF0000" size="5">Nenhum Produto</font></b></center>';            
             return $html;
         }
@@ -109,9 +109,9 @@ class comercio_certificado_ProdutoControle extends comercio_certificado_Controle
         $form = new \Framework\Classes\Form('form_Sistema_Admin_Produtos','comercio_certificado/Produto/Produtos_Add2/','formajax');
         \Framework\App\Controle::Gerador_Formulario($campos, $form);
         $formulario = $form->retorna_form('Cadastrar');
-        if($direto===true){
+        if ($direto===true){
             return $formulario;
-        }else{
+        } else {
             // Json
             $conteudo = array(
                 'location'  =>  '#produtosmodificar_titulo',
@@ -191,13 +191,13 @@ class comercio_certificado_ProdutoControle extends comercio_certificado_Controle
         $this->Main();  
         
         // Mostra Mensagem de Sucesso
-        if($sucesso===true){
+        if ($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Inserção bem sucedida'),
                 "mgs_secundaria" => __('Produto cadastrado com sucesso.')
             ); 
-        }else{
+        } else {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),
@@ -226,13 +226,13 @@ class comercio_certificado_ProdutoControle extends comercio_certificado_Controle
         // Atualiza
         $this->Main();
         // Mensagem
-        if($sucesso===true){
+        if ($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Produto Alterado com Sucesso'),
                 "mgs_secundaria" => ''.$_POST["nome"].' teve a alteração bem sucedida'
             );
-        }else{
+        } else {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),
@@ -261,13 +261,13 @@ class comercio_certificado_ProdutoControle extends comercio_certificado_Controle
         $produto = $this->_Modelo->db->Sql_Select('Comercio_Produto', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($produto);
         // Mensagem
-    	if($sucesso===true){
+    	if ($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
                 "mgs_secundaria" => __('Produto Deletado com sucesso')
             );
-    	}else{
+    	} else {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),
@@ -290,20 +290,20 @@ class comercio_certificado_ProdutoControle extends comercio_certificado_Controle
         $botao = $this->_Visual->Tema_Elementos_Btn('Superior',Array('Add','#','return inputadd();'));
         $formulario = new \Framework\Classes\Form('Formulario_de_Auditorias','comercio_certificado/Produto/Auditorias_Modificar/'.$produtos,'formajax');
         $formulario->addtexto('<span id="Formulario_de_Auditorias_Input">');
-        if($auditorias===false){
+        if ($auditorias===false){
             $input = \Framework\App\Sistema_Funcoes::HTML_min($formulario->Input_Novo('Auditoria 1', 'auditoria[]', 0, 'text', 11, '','(Meses)'));
-        }else{
+        } else {
             $i      = 0 ;
             foreach($auditorias as $indice=>&$valor){
-                if($valor->meses!='' && $valor->meses!=0 && $valor->meses!=NULL){
-                    if($i==0){
+                if ($valor->meses!='' && $valor->meses!=0 && $valor->meses!=NULL){
+                    if ($i==0){
                         $input = \Framework\App\Sistema_Funcoes::HTML_min($formulario->Input_Novo('Auditoria '.($i+1), 'auditoria[]', $valor->meses, 'text', 11, '','(Meses)'));
                         $input = str_replace(Array('value="4"'), Array('value="0"'), $input);
-                    }else{
+                    } else {
                         $formulario->Input_Novo('Auditoria '.($i+1), 'auditoria[]', $valor->meses, 'text', 11, '','(Meses)');
                     }
                     ++$i;
-                }else{
+                } else {
                     $this->_Modelo->db->Sql_Delete($auditorias[$indice]);
                 }
             }
@@ -316,7 +316,7 @@ class comercio_certificado_ProdutoControle extends comercio_certificado_Controle
         $input = str_replace(Array('1:','col-sm-12'), Array('\'+quant+\':','col-sm-8'), $input);
         $html =   $botao.$html.'<script> function inputadd(){'.
                             'var quant = 1+$("#Formulario_de_Auditorias_Input input").size();'.
-                            'if(quant>=10) $("#produtos_auditorias > .widget-body > .clearfix").hide();'.
+                            'if (quant>=10) $("#produtos_auditorias > .widget-body > .clearfix").hide();'.
                             '$(\'#Formulario_de_Auditorias_Input\').append( \''.$input.'\' );'.
                             'return false;'.
                         ' }</script>';
@@ -325,7 +325,7 @@ class comercio_certificado_ProdutoControle extends comercio_certificado_Controle
     }
     public function Auditorias_Modificar($produtos=0){
         
-        if($produtos==0) return false;
+        if ($produtos==0) return false;
         #update
         $auditorias_post = \Framework\App\Conexao::anti_injection($_POST['auditoria']);
         $auditorias_post2 = Array();
@@ -335,11 +335,11 @@ class comercio_certificado_ProdutoControle extends comercio_certificado_Controle
                 Array('idproduto'=>$produtos)
         );
         // Organiza
-        if(!is_array($auditorias_post)) $auditorias_post = Array($auditorias_post);
-        if(is_object($auditorias_sql))  $auditorias_sql  = Array($auditorias_sql );
+        if (!is_array($auditorias_post)) $auditorias_post = Array($auditorias_post);
+        if (is_object($auditorias_sql))  $auditorias_sql  = Array($auditorias_sql );
         // Foreach, tira os que tiverem mes 0
         foreach($auditorias_post as $valor){
-            if($valor!=0 && $valor!=NULL && $valor!=''){
+            if ($valor!=0 && $valor!=NULL && $valor!=''){
                 $valor = (int) $valor;
                 $auditorias_post2[$i] = $valor;
                 ++$i;
@@ -347,13 +347,13 @@ class comercio_certificado_ProdutoControle extends comercio_certificado_Controle
         }
         $auditorias_post = $auditorias_post2;
         $j = 0;
-        if($auditorias_sql!==false && !empty($auditorias_sql)){
+        if ($auditorias_sql!==false && !empty($auditorias_sql)){
             foreach($auditorias_sql as $valor){
-                if($i>=$j){
+                if ($i>=$j){
                     $auditorias_sql[$j]->meses = $auditorias_post[$j];
                     $auditorias_sql[$j]->ordem = $j+1;
                     $sucesso =  $this->_Modelo->db->Sql_Update($auditorias_sql[$j]);
-                }else{
+                } else {
                     $sucesso =  $this->_Modelo->db->Sql_Delete($auditorias_sql[$j]);
                 }
                 ++$j;
@@ -370,13 +370,13 @@ class comercio_certificado_ProdutoControle extends comercio_certificado_Controle
             ++$j;
         }
         // Mensagem
-    	if($sucesso===true){
+    	if ($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Modificado'),
                 "mgs_secundaria" => __('Auditorias do Produto editados com sucesso')
             );
-    	}else{
+    	} else {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),

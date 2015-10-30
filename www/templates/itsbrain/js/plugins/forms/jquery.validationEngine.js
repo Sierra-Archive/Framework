@@ -714,7 +714,7 @@
 
 			if (options.isError && options.showPrompts){
 				methods._showPrompt(field, promptText, promptType, false, options);
-			}else{
+			} else {
 				if (!isAjaxValidator) methods._closePrompt(field);
 			}
 

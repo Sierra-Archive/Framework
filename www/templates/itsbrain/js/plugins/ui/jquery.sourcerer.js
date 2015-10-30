@@ -29,7 +29,7 @@
 					}
 				}
 			}
-		}else{
+		} else {
 			Code = "&nbsp;";
 		}
     return Code;
@@ -135,7 +135,7 @@
 								Out.push("<div class='SRC_Line' style='height:"+h+"px'><div class='SRC_NumContent'>"+(j+1)+"</div></div>");
 							}
 							numbox.html(Out.join(''));
-						}else{
+						} else {
 							$(this).find('.SRC_CodeBox').width('100%');
 							$(this).find('.SRC_CodeContent').css('border-left',0);
 						}

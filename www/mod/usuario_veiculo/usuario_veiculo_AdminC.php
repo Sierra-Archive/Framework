@@ -110,7 +110,7 @@ class usuario_veiculo_AdminControle extends usuario_veiculo_Controle
             $this->_Visual->Show_Tabela_DataTable($tabela);
             $this->_Visual->Bloco_Maior_CriaJanela('Veiculos ('.$i.')');
             unset($tabela);
-        }else{     
+        } else {     
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Não há nenhum veiculo cadastrado.</font></b></center>');
             $this->_Visual->Bloco_Maior_CriaJanela('Veiculos (0)');
         } 
@@ -141,7 +141,7 @@ class usuario_veiculo_AdminControle extends usuario_veiculo_Controle
                 "mgs_principal" => __('Deletado'),
                 "mgs_secundaria" => __('Deletado com sucesso.')
             );
-    	}else{
+    	} else {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),
@@ -295,7 +295,7 @@ class usuario_veiculo_AdminControle extends usuario_veiculo_Controle
                 "mgs_principal" => __('Inserção bem sucedida'),
                 "mgs_secundaria" => ''.$modelo.''.$ano.''.$marca.' foi inserido com sucesso.'
             );
-        }else{
+        } else {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),
@@ -337,7 +337,7 @@ class usuario_veiculo_AdminControle extends usuario_veiculo_Controle
                 "mgs_principal" => __('Alteração bem sucedida'),
                 "mgs_secundaria" => ''.$modelo.''.$ano.''.$marca.' foi alterado com sucesso.'
             );
-        }else{
+        } else {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),
@@ -433,7 +433,7 @@ class usuario_veiculo_AdminControle extends usuario_veiculo_Controle
                 "mgs_principal" => __('Inserção bem sucedida'),
                 "mgs_secundaria" => ''.$nome.' foi inserido com sucesso.'
             );
-        }else{
+        } else {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),

@@ -24,18 +24,18 @@ class Direito_Controle extends \Framework\App\Controle
      */
     public function Listar_Processos(&$processos, $titulo = '', $imprimir = 'false'){
         $i = 0;
-        if(!empty($processos)){
-            if($imprimir!='false'){
+        if (!empty($processos)){
+            if ($imprimir!='false'){
                 // Cria Tabela Estatica
                 $tabela = new \Framework\Classes\Tabela();
                 $tabela->addcabecario(array('Data','Autor / Reu','Comarca / Vara','Fases','Dias em Atraso')); 
-            }else{
+            } else {
                 // Cria Tabela Dinamica
                 $tabela = Array();
             }
             reset($processos);
             foreach ($processos as &$valor) {
-                if($imprimir!='false'){
+                if ($imprimir!='false'){
                     $tabela->addcorpo(array(
                         array("nome" => data_hora_eua_brasil($valor['DATA'])), //, "class" => 'tbold tleft'
                         array("nome" => $valor['AUTOR'].' / '.$valor['REU']),
@@ -43,7 +43,7 @@ class Direito_Controle extends \Framework\App\Controle
                         array("nome" => $valor['FASE']),
                         array("nome" => $valor['ATRASO'])
                     ));
-                }else{
+                } else {
                     $tabela['Data'][$i] = data_hora_eua_brasil($valor['DATA']);
                     $tabela['Autor / Reu'][$i] = $valor['AUTOR'].' / '.$valor['REU'];
                     $tabela['Comarca / Vara'][$i] = $valor['COMARCA'].' / '.$valor['VARA'];
@@ -52,22 +52,22 @@ class Direito_Controle extends \Framework\App\Controle
                 }
                 ++$i;
             }
-            if($imprimir!='false'){
+            if ($imprimir!='false'){
                 $this->_Visual->Blocar($tabela->retornatabela());
                 $this->_Visual->Blocar('<br><center><a href="#" onClick="window.print();" ><img width="121" height="34" src="'.WEB_URL.'img/icons/imprimir.gif"></a></center>');
-            }else{
+            } else {
                 $this->_Visual->Show_Tabela_DataTable($tabela);
                 
             }
             unset($tabela);
-        }else{         
+        } else {         
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Processo</font></b></center>');
         }
         $titulo = 'Processos '.$titulo.'('.$i.')';
-        if($imprimir=='false'){
+        if ($imprimir=='false'){
             $this->_Visual->Bloco_Maior_CriaJanela($titulo,'',50);
             $this->_Visual->Json_Info_Update('Titulo',$titulo); 
-        }else{
+        } else {
             $this->_Visual->janelaajax('<style>body {background: #FFFFFF url(none) repeat 0 0;}</style>'.$titulo);
         }
     }

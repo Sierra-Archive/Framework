@@ -7,9 +7,9 @@ class Engenharia_EmpreendimentoControle extends Engenharia_Controle
     static function Endereco_Empreendimento($true=true){
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
-        if($true===true){
+        if ($true===true){
             $_Controle->Tema_Endereco(__('Empreendimentos'),'Engenharia/Empreendimento/Empreendimentos');
-        }else{
+        } else {
             $_Controle->Tema_Endereco(__('Empreendimentos'));
         }
     }
@@ -35,7 +35,7 @@ class Engenharia_EmpreendimentoControle extends Engenharia_Controle
         $Visual     = &$Registro->_Visual;
         $tabela = Array();
         $i = 0;
-        if(is_object($empreendimentos)) $empreendimentos = Array(0=>$empreendimentos);
+        if (is_object($empreendimentos)) $empreendimentos = Array(0=>$empreendimentos);
         reset($empreendimentos);
         foreach ($empreendimentos as &$valor) {
             $tabela['Nome do Empreendimento'][$i]   =   $valor->nome;
@@ -75,11 +75,11 @@ class Engenharia_EmpreendimentoControle extends Engenharia_Controle
             )
         )));
         $empreendimentos = $this->_Modelo->db->Sql_Select('Engenharia_Empreendimento');
-        if($empreendimentos!==false && !empty($empreendimentos)){
+        if ($empreendimentos!==false && !empty($empreendimentos)){
             list($tabela,$i) = self::Empreendimentos_Tabela($empreendimentos);
-            if($export!==false){
+            if ($export!==false){
                 self::Export_Todos($export,$tabela, 'Empreendimentos');
-            }else{
+            } else {
                 $this->_Visual->Show_Tabela_DataTable(
                     $tabela,     // Array Com a Tabela
                     '',          // style extra
@@ -93,7 +93,7 @@ class Engenharia_EmpreendimentoControle extends Engenharia_Controle
                 );
             }
             unset($tabela);
-        }else{           
+        } else {           
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Empreendimento</font></b></center>');
         }
         $titulo = __('Listagem de Empreendimentos').' ('.$i.')';
@@ -181,13 +181,13 @@ class Engenharia_EmpreendimentoControle extends Engenharia_Controle
         $empreendimento = $this->_Modelo->db->Sql_Select('Engenharia_Empreendimento', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($empreendimento);
         // Mensagem
-    	if($sucesso===true){
+    	if ($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
                 "mgs_secundaria" => __('Empreendimento deletado com sucesso')
             );
-    	}else{
+    	} else {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),
@@ -230,11 +230,11 @@ class Engenharia_EmpreendimentoControle extends Engenharia_Controle
      * @version 0.4.2
      */
     public function Estoque_Retirar2(){
-        if(!isset($_POST['idproduto']) || !isset($_POST['qnt'])) return false;
+        if (!isset($_POST['idproduto']) || !isset($_POST['qnt'])) return false;
         
         $idproduto  = (int) $_POST['idproduto'];
         $qnt        = (int) $_POST['qnt'];
-        if(comercio_EstoqueControle::Estoque_Retorna($idproduto)<$qnt){
+        if (comercio_EstoqueControle::Estoque_Retorna($idproduto)<$qnt){
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),
@@ -243,7 +243,7 @@ class Engenharia_EmpreendimentoControle extends Engenharia_Controle
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens); 
             $this->layoult_zerar = false;
             $this->_Visual->Javascript_Executar('$("#qnt").css(\'border\', \'2px solid #FFAEB0\').focus();');
-        }else{
+        } else {
             $titulo     = __('Produto retirado do estoque com Sucesso');
             $dao        = 'Engenharia_Estoque_Retirada';
             $funcao     = '$this->Estoque_Retirar();';
@@ -251,7 +251,7 @@ class Engenharia_EmpreendimentoControle extends Engenharia_Controle
             $sucesso2   = __('Produto retirado do estoque com sucesso.');
             $alterar    = Array();
             $sucesso = $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
-            if($sucesso){
+            if ($sucesso){
                 $motivo = 'Engenharia';
                 $identificador  = $this->_Modelo->db->Sql_Select('Engenharia_Estoque_Retirada', Array(),1,'id DESC');
                 $idproduto  = $identificador->idproduto;
@@ -292,7 +292,7 @@ class Engenharia_EmpreendimentoControle extends Engenharia_Controle
         $sucesso2   = __('Conta a Receber cadastrada com sucesso.');
         $alterar    = Array();
         $sucesso = $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
-        if($sucesso){
+        if ($sucesso){
             $identificador  = $this->_Modelo->db->Sql_Select('Engenharia_Empreendimento_Custo', Array(),1,'id DESC');
             $idempreendimento  = $identificador->empreendimento;
             $parcela_data   = $identificador->data_pag_prevista;

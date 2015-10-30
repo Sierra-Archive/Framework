@@ -83,8 +83,8 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
         $proposta = $this->_Modelo->db->Sql_Select('Comercio_Certificado_Proposta',Array(
             'idcliente'     =>      $cliente
         ));
-        if($proposta!==false && !empty($proposta)){
-            if(is_object($proposta)){
+        if ($proposta!==false && !empty($proposta)){
+            if (is_object($proposta)){
                 $proposta = Array(0=>$proposta);
             }
             reset($proposta);
@@ -96,7 +96,7 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
                 //                           $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Proposta'       ,'comercio_certificado/Proposta/Propostas_Del/'.$valor->id.'/'.$cliente.'/'     ,'Deseja realmente deletar essa Proposta ?'));
                 // Classifica de Acordo se foi aceito ou nao
                 $class = 'left';
-                if($valor->data_comissao!=='0000-00-00 00:00:00' && $valor->data_comissao!=='0000-00-00' && $valor->data_comissao!=='//'){
+                if ($valor->data_comissao!=='0000-00-00 00:00:00' && $valor->data_comissao!=='0000-00-00' && $valor->data_comissao!=='//'){
                     $class = 'right';
                 }
                 
@@ -120,28 +120,28 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
             //$html .= $this->_Visual->Show_Tabela_DataTable($tabela,'',false);
             $html .= $tabela->retornatabela();
             unset($tabela);
-        }else{
+        } else {
             $html .= '<center><b><font color="#FF0000" size="5">Nenhuma Proposta</font></b></center>';
         }
         return $html;
     }
     public function Propostas_Status($id=false){
-        if($id===false){
+        if ($id===false){
             return false;
         }
         $resultado = $this->_Modelo->db->Sql_Select('Comercio_Certificado_Proposta', Array('id'=>$id),1);
-        if($resultado===false || !is_object($resultado)){
+        if ($resultado===false || !is_object($resultado)){
             return false;
         }
-        if($resultado->status===1 || $resultado->status==='1'){
+        if ($resultado->status===1 || $resultado->status==='1'){
             $resultado->status='2';
-        }else if($resultado->status===2 || $resultado->status==='2'){
+        }else if ($resultado->status===2 || $resultado->status==='2'){
             $resultado->status='0';
-        }else{
+        } else {
             $resultado->status='1';
         }
         $sucesso = $this->_Modelo->db->Sql_Update($resultado);
-        if($sucesso){
+        if ($sucesso){
             $conteudo = array(
                 'location' => '#status'.$resultado->id,
                 'js' => '',
@@ -149,7 +149,7 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
             );
             $this->_Visual->Json_IncluiTipo('Conteudo',$conteudo);
             $this->_Visual->Json_Info_Update('Titulo', __('Status Alterado')); 
-        }else{
+        } else {
             $mensagens = array(
                 "tipo"              => 'erro',
                 "mgs_principal"     => __('Erro'),
@@ -164,11 +164,11 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
     public static function Propostas_Label($objeto,$link=true){
         $status     = $objeto->status;
         $id         = $objeto->id;
-        if($status==='0' || $status===0){
+        if ($status==='0' || $status===0){
             $tipo = 'warning';
             $nometipo = __('Pendente');
         }
-        else if($status==='1' || $status===1){
+        else if ($status==='1' || $status===1){
             $tipo = 'success';
             $nometipo = __('Aprovada');
         }
@@ -177,7 +177,7 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
             $nometipo = __('Reprovada');
         }
         $html = '<span class="badge badge-'.$tipo.'">'.$nometipo.'</span>';
-        if($link===true){
+        if ($link===true){
             $html = '<a href="'.URL_PATH.'comercio_certificado/Proposta/Propostas_Status/'.$id.'" border="1" class="lajax explicar-titulo" title="'.$nometipo.'" data-acao="" data-confirma="Deseja Realmente alterar o Status?">'.$html.'</a>';
         }
         return $html;
@@ -190,13 +190,13 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
     public function Propostas_Add($cliente=0,$direto=false){
         // Carrega campos e retira os que nao precisam
         $campos = Comercio_Certificado_Proposta_DAO::Get_Colunas();
-        if($cliente!=0){
+        if ($cliente!=0){
             self::DAO_Campos_Retira($campos, 'idcliente');
         }
         $proposta_num = $this->_Modelo->db->Sql_Select('Comercio_Certificado_Proposta',false,1,'ID DESC');
-        if($proposta_num===false){
+        if ($proposta_num===false){
             $proposta_num = '1/'.date('y').' - 1';
-        }else{
+        } else {
             $proposta_num = $proposta_num->id.'/'.date('y').' - 1';
         }
         
@@ -205,9 +205,9 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
         self::mysql_AtualizaValor($campos, 'num_proposta', $proposta_num);
         \Framework\App\Controle::Gerador_Formulario($campos, $form);
         $formulario = $form->retorna_form('Cadastrar');
-        if($direto===true){
+        if ($direto===true){
             return $formulario;
-        }else{
+        } else {
             // Json
             $conteudo = array(
                 'location'  =>  '#propostasmodificar_titulo',
@@ -235,7 +235,7 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
         $id = (int) $id;
         // Carrega campos e retira os que nao precisam
         $campos = Comercio_Certificado_Proposta_DAO::Get_Colunas();
-        if($cliente!=0) self::DAO_Campos_Retira($campos, 'idcliente');
+        if ($cliente!=0) self::DAO_Campos_Retira($campos, 'idcliente');
         // recupera proposta
         $proposta = $this->_Modelo->db->Sql_Select('Comercio_Certificado_Proposta', Array('id'=>$id));
         self::mysql_AtualizaValores($campos, $proposta);
@@ -290,12 +290,12 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
         $proposta->idcliente = $cliente;
         // Atualiza Proposta de Numero denovo só por segurança
         $proposta_num = $this->_Modelo->db->Sql_Select('Comercio_Certificado_Proposta',false,1,'ID DESC');
-        if($proposta_num===false){
+        if ($proposta_num===false){
             $proposta_num = '1/'.date('y');
-        }else{
+        } else {
             $proposta_num = $proposta_num->id.'/'.date('y');
         }
-        if($data_aceita==='0000-00-00 00:00:00' || $data_aceita==='0000-00-00' || $data_aceita===''){
+        if ($data_aceita==='0000-00-00 00:00:00' || $data_aceita==='0000-00-00' || $data_aceita===''){
             $proposta_num = $proposta_num.' - 1';
         }
         self::mysql_AtualizaValor($proposta, 'num_proposta', $proposta_num);
@@ -304,7 +304,7 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
         
         
         // Mostra Mensagem de Sucesso
-        if($sucesso===true){
+        if ($sucesso===true){
             // Periodicas
             $identificador  = $this->_Modelo->db->Sql_Select('Comercio_Certificado_Proposta', Array(),1,'id DESC');
             $this->Periodicas_Add($proposta->idcliente,$proposta->idproduto,$identificador->id, \Framework\App\Conexao::anti_injection($data_aceita));
@@ -317,7 +317,7 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
                 "mgs_principal" => __('Inserção bem sucedida'),
                 "mgs_secundaria" => __('Proposta cadastrada com sucesso.')
             ); 
-        }else{
+        } else {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),
@@ -345,12 +345,12 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
         $proposta = $this->_Modelo->db->Sql_Select('Comercio_Certificado_Proposta', Array('id'=>$id));
         // Atualiza Proposta de Numero denovo só por segurança
         $proposta_num = explode(' - ',$proposta->num_proposta);
-        if($data_aceita==='0000-00-00 00:00:00' || $data_aceita==='0000-00-00' || $data_aceita===''){
+        if ($data_aceita==='0000-00-00 00:00:00' || $data_aceita==='0000-00-00' || $data_aceita===''){
             $proposta_num[1] = $proposta_num[1]+1;
             $proposta_num = $proposta_num[0].' - '.$proposta_num[1];
             $novoregistro = 1;
             $fechar = false;
-        }else{
+        } else {
             $proposta_num = $proposta_num[0];
             $fechar = true;
         }
@@ -359,9 +359,9 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
         // Reatualiza os dados de segurança
         self::mysql_AtualizaValor($proposta, 'num_proposta', $proposta_num);
         // Grava no banco de dados
-        if($novoregistro==0){
+        if ($novoregistro==0){
             $sucesso =  $this->_Modelo->db->Sql_Update($proposta);
-        }else{
+        } else {
             $sucesso =  $this->_Modelo->db->Sql_Insert($proposta);
         }
         // Periodicas
@@ -370,13 +370,13 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
         $this->Propostas_DashBoard_Show($cliente); 
         Comercio_Certificado_PropostaControle::RecarregaLocalizar();
         // Mensagem
-        if($sucesso===true){
+        if ($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Proposta Alterada com Sucesso'),
                 "mgs_secundaria" => ''.$_POST["nome"].' teve a alteração bem sucedida'
             );
-        }else{
+        } else {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),
@@ -403,13 +403,13 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
         $proposta = $this->_Modelo->db->Sql_Select('Comercio_Certificado_Proposta', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($proposta);
         // Mensagem
-    	if($sucesso===true){
+    	if ($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
                 "mgs_secundaria" => __('Proposta Deletada com sucesso')
             );
-    	}else{
+    	} else {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),
@@ -428,7 +428,7 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
         // Verifica Permissao e Puxa Proposta
         $proposta = $this->_Modelo->db->Sql_Select('Comercio_Certificado_Proposta',Array('id'=>$propostaid),1); // Banco DAO, Condicao e LIMITE
         // Resgata DAdos e Manda pra View
-        if($proposta===false)            throw new \Exception(404,'Proposta não Existe');
+        if ($proposta===false)            throw new \Exception(404,'Proposta não Existe');
         $this->_Visual->Show_Perfil($proposta);
     }
     public function Usuarios_Del($id,$tipo=false){
@@ -436,48 +436,48 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
         
     	$id = (int) $id;
         // Regula Tipo
-        if($tipo==='falso'){
+        if ($tipo==='falso'){
             $tipo  = false;
         }
         // Puxa usuario e deleta
         $usuario    = $this->_Modelo->db->Sql_Select(  'Usuario',            Array('id'=>$id));
         
         // caso usuario exista
-        if($usuario!==false){
-            if($tipo===false){
-                if($usuario->grupo==CFG_TEC_IDCLIENTE){
+        if ($usuario!==false){
+            if ($tipo===false){
+                if ($usuario->grupo==CFG_TEC_IDCLIENTE){
                     $tipo = 'cliente';
                     $tipo2 = __('Cliente');
-                }else if($usuario->grupo==CFG_TEC_IDFUNCIONARIO){
+                }else if ($usuario->grupo==CFG_TEC_IDFUNCIONARIO){
                     $tipo = 'funcionario';
                     $tipo2 = __('Funcionário');
-                }else{
+                } else {
                     $tipo = 'usuario';
                     $tipo2 = __('Usuário');
                 }
-            }else{
-                if($tipo==='cliente'){
+            } else {
+                if ($tipo==='cliente'){
                     $tipo2 = __('Cliente');
-                }else if($tipo==='funcionario'){
+                }else if ($tipo==='funcionario'){
                     $tipo2 = __('Funcionário');
-                }else{
+                } else {
                     $tipo = 'usuario';
                     $tipo2 = __('Usuário');
                 }
             }
 
             $sucesso    =  $this->_Modelo->db->Sql_Delete($usuario);
-            if(\Framework\App\Sistema_Funcoes::Perm_Modulos('usuario_mensagem')){
+            if (\Framework\App\Sistema_Funcoes::Perm_Modulos('usuario_mensagem')){
                 $mensagens  = $this->_Modelo->db->Sql_Select('Usuario_Mensagem',    Array('cliente'=>$id));
                 $sucesso2   =  $this->_Modelo->db->Sql_Delete($mensagens);
             }
-            if($sucesso===true){
+            if ($sucesso===true){
                 $mensagens = array(
                     "tipo" => 'sucesso',
                     "mgs_principal" => $tipo2.' Deletado',
                     "mgs_secundaria" => $tipo2.' Deletado com sucesso'
                 );
-            }else{
+            } else {
                 $mensagens = array(
                     "tipo" => 'erro',
                     "mgs_principal" => __('Erro'),
@@ -485,16 +485,16 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
                 );
             }
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
-            /*if($tipo==='cliente'){
+            /*if ($tipo==='cliente'){
                 $this->ListarCliente();
-            }else if($tipo==='funcionario'){
+            }else if ($tipo==='funcionario'){
                 $this->ListarFuncionario();
-            }else{
+            } else {
                 $this->ListarUsuario();
             }*/
             Comercio_Certificado_PropostaControle::RecarregaLocalizar();
             return true;
-        }else{
+        } else {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),
@@ -509,25 +509,25 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
         $cliente    = (int) $cliente;
         $proposta   = (int) $proposta;
         $periodicas    = $this->_Modelo->db->Sql_Select(  'Comercio_Certificado_Auditoria',  Array('idproduto'=>$produto),0,'ordem ASC');
-        if(is_object($periodicas)){
+        if (is_object($periodicas)){
             $periodicas = Array($periodicas);
         }
         $data = explode('/',$data);
-        if(is_array($periodicas) && !empty($periodicas)){
+        if (is_array($periodicas) && !empty($periodicas)){
             foreach($periodicas as &$valor){
                 
                 $objeto = new \Comercio_Certificado_AuditoriaPeriodica_DAO();
                 $objeto->idcliente  = $cliente;
                 $objeto->idproduto  = $produto;
                 $objeto->idproposta = $proposta;
-                if(isset($data[2])){
+                if (isset($data[2])){
                     $data[1] = $data[1]+$valor->meses;
-                    if($data[1]>12){
+                    if ($data[1]>12){
                         $data[1] = $data[1]-12;
                         $data[2] = $data[2]+1;
                     }
                     $objeto->data = $data[0].'/'.$data[1].'/'.$data[2];
-                }else{
+                } else {
                     $objeto->data = '00/00/0000';
                 }
                 $this->_Modelo->db->Sql_Insert($objeto);
@@ -541,7 +541,7 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
         $Visual     = &$Registro->_Visual;
         $tabela = Array();
         $i = 0;
-        if(is_object($periodicas)) $periodicas = Array(0=>$periodicas);
+        if (is_object($periodicas)) $periodicas = Array(0=>$periodicas);
         reset($periodicas);
         foreach ($periodicas as &$valor) {
             $tabela['Proposta'][$i]         = $valor->idproposta2;
@@ -583,11 +583,11 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
         $cliente = (int) $cliente;
         $i = 0;
         $periodicas = $this->_Modelo->db->Sql_Select('Comercio_Certificado_AuditoriaPeriodica',Array('idcliente'=>$cliente));
-        if($periodicas!==false && !empty($periodicas)){
+        if ($periodicas!==false && !empty($periodicas)){
             list($tabela,$i) = self::Periodicas_Tabela($periodicas);
             $html = $this->_Visual->Show_Tabela_DataTable($tabela,'',false);
             unset($tabela);
-        }else{
+        } else {
             $html = '<center><b><font color="#FF0000" size="5">Nenhuma Periódica Marcada</font></b></center>';            
         }
         return $html;
@@ -642,7 +642,7 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
         $sucesso2   = ''.$_POST["autor"].' teve a alteração bem sucedida';
         $alterar    = Array();
         $sucesso = $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar); 
-        if($sucesso){
+        if ($sucesso){
             
             $periodicas    = $this->_Modelo->db->Sql_Select('Comercio_Certificado_AuditoriaPeriodica',  Array('id'=>$id),1);
             $conteudo = array(

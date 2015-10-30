@@ -30,7 +30,7 @@ class usuario_PerfilVisual extends usuario_Visual
         
         if(isset($usuario->id)){
             $id = $usuario->id;
-        }else{
+        } else {
             $id = '';
         }
         if(LAYOULT_IMPRIMIR!='AJAX'){
@@ -49,7 +49,7 @@ class usuario_PerfilVisual extends usuario_Visual
         if(LAYOULT_IMPRIMIR!='AJAX'){
             $html .= '<div class="row">'.
             '<div class="col-sm-8 bio">';
-        }else{
+        } else {
             $html .= '<div class="col-sm-12 bio">';
         }
         $html .= '<h2>Dados do '.$tipo.'</h2>';
@@ -96,7 +96,7 @@ class usuario_PerfilVisual extends usuario_Visual
         if($usuario->obs!=''){
             if(\Framework\App\Sistema_Funcoes::Perm_Modulos('usuario_mensagem')){
                 $html .= '<h2>Mensagem</h2>';
-            }else{
+            } else {
                 $html .= '<h2>Observação</h2>';
             }
            $html .= '<p>'.$usuario->obs.'</p>';
@@ -121,7 +121,7 @@ class usuario_PerfilVisual extends usuario_Visual
         
         if(SQL_MAIUSCULO){
             $titulo = 'VISUALIZAR '.$nome; //mb_strtoupper( )
-        }else{
+        } else {
             $titulo = 'Visualizar '.$nome;
         }
         // FORMULA JSON OU IMPRIME HTML
@@ -138,13 +138,13 @@ class usuario_PerfilVisual extends usuario_Visual
                 'html'      => $html
             );
             $this->Json_IncluiTipo('Popup',$popup);
-        }else{
+        } else {
             $this->Blocar($html);
             if($layoult=='Unico'){
                 $this->Bloco_Unico_CriaConteudo();
             }else if($layoult=='Maior'){
                 $this->Bloco_Maior_CriaConteudo();
-            }else{
+            } else {
                 $this->Bloco_Menor_CriaConteudo();
             }
             $this->Json_Info_Update('Titulo',$titulo);

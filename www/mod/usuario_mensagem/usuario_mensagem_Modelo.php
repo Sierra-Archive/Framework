@@ -37,7 +37,7 @@ class usuario_mensagem_Modelo extends \Framework\App\Modelo
                 'escritor'  =>$proprietario,
                 'para'      =>0
             );
-        }else{
+        } else {
             // mostra todas as suas mensagens
             $where = Array(
                 '!para'=>0,
@@ -64,7 +64,7 @@ class usuario_mensagem_Modelo extends \Framework\App\Modelo
                 'escritor'  =>$proprietario,
                 'para'      =>0
             );
-        }else{
+        } else {
             // mostra todas as suas mensagens
             $where = Array(
                 '!para'=>0,
@@ -87,7 +87,7 @@ class usuario_mensagem_Modelo extends \Framework\App\Modelo
                 );
                 if($j===false || $j->escritor==$campo->escritor){
                     ++$i;
-                }else{
+                } else {
                     unset($campo);
                 }
             }
@@ -130,7 +130,7 @@ class usuario_mensagem_Modelo extends \Framework\App\Modelo
                 if($para==0 && $campo->escritor!=$de){
                     $escritor = 0;
                     $escritor_nome = $mensagem->origem2;
-                }else{
+                } else {
                     $escritor = $campo->escritor;
                     $escritor_nome = $campo->escritor_nome;
                 }
@@ -168,7 +168,7 @@ class usuario_mensagem_Modelo extends \Framework\App\Modelo
         $objeto->escritor = (int) $objeto->escritor;
         if(\Framework\App\Acl::Usuario_GetID_Static()!=$objeto->escritor){
             $objeto->finalizado = '1';
-        }else{
+        } else {
             $objeto->finalizado = '0';
         }
         $this->db->Sql_Update($objeto);
@@ -211,11 +211,11 @@ class usuario_mensagem_Modelo extends \Framework\App\Modelo
             $dataapassar = $mensagem->log_date_edit;
         }else if(Data_geraTimestamp($mensagem->log_date_add,false)!==false){
             $dataapassar = $mensagem->log_date_add;
-        }else{
+        } else {
             if($mensagem->finalizado==1){
                 $tipo = 'fin';
                 $dataapassar = $mensagem->log_date_add;
-            }else{
+            } else {
                 $tipo = 'esg';
                 $dataapassar = $mensagem->log_date_add;
             }
@@ -225,7 +225,7 @@ class usuario_mensagem_Modelo extends \Framework\App\Modelo
             $datapassada = Data_CalculaDiferenca($dataapassar,APP_HORA);
             if($mensagem->finalizado==1){
                 $tipo = 'fin';
-            }else{
+            } else {
                 // Manipula e Ve qual é da parada
                 $tempoassunto = (int) $mensagem->tempocli;
                 if(isset($tempoassunto) && $tempoassunto>0){
@@ -233,7 +233,7 @@ class usuario_mensagem_Modelo extends \Framework\App\Modelo
                     if($porcentagem>=100)       $tipo = 'esg';
                     else if($porcentagem>=80)   $tipo = 'lim';
                     else                        $tipo = 'nov';
-                }else{
+                } else {
                                                 $tipo = 'nov';
                 }
             }
@@ -249,28 +249,28 @@ class usuario_mensagem_Modelo extends \Framework\App\Modelo
             if($valor->tipo=='nov'){
                 if($tipodemensagem===false || $tipodemensagem=='nov'){
                     $valor->tipo = __('Chamado Novo');
-                }else{
+                } else {
                     unset($array[$indice]);
                 }
             }
             else if($valor->tipo=='fin'){
                 if($tipodemensagem===false || $tipodemensagem=='fin'){
                     $valor->tipo = __('Finalizado');
-                }else{
+                } else {
                     unset($array[$indice]);
                 }
             }
             else if($valor->tipo=='lim'){
                 if($tipodemensagem===false || $tipodemensagem=='lim'){
                     $valor->tipo = __('Tempo Limite');
-                }else{
+                } else {
                     unset($array[$indice]);
                 }
             }
             else if($valor->tipo=='esg'){
                 if($tipodemensagem===false || $tipodemensagem=='esg'){
                     $valor->tipo = __('Esgotado');
-                }else{
+                } else {
                     unset($array[$indice]);
                 }
             }
@@ -305,7 +305,7 @@ class usuario_mensagem_Modelo extends \Framework\App\Modelo
             $where = Array(
                 '!escritor' => $escritor
             );
-        }else{
+        } else {
             // mostra todos os tickets para ADMIN
             $where = Array(
                 'escritor' => $escritor

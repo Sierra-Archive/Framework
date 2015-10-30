@@ -38,7 +38,7 @@ class usuario_mensagem_AssuntoModelo extends usuario_mensagem_Modelo
             $funcao = function( $d, $row ) {
                 return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Assunto'       ,'usuario_mensagem/Assunto/Assuntos_Del/'.$d.'/'     ,'Deseja realmente deletar essa Assunto ?'),true);
             };
-        }else{
+        } else {
             $funcao = function( $d, $row ) {
                 return '';
             };

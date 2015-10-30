@@ -36,9 +36,9 @@ class Engenharia_EquipamentoControle extends Engenharia_Controle
         return false;
     }
     protected function Endereco_Equipamento($true=true){
-        if($true===true){
+        if ($true===true){
             $this->Tema_Endereco(__('Equipamentos'),'Engenharia/Equipamento/Equipamentos');
-        }else{
+        } else {
             $this->Tema_Endereco(__('Equipamentos'));
         }
     }
@@ -66,8 +66,8 @@ class Engenharia_EquipamentoControle extends Engenharia_Controle
         )));
         // Conexao
         $equipamentos = $this->_Modelo->db->Sql_Select('Engenharia_Equipamento');
-        if($equipamentos!==false && !empty($equipamentos)){
-            if(is_object($equipamentos)) $equipamentos = Array(0=>$equipamentos);
+        if ($equipamentos!==false && !empty($equipamentos)){
+            if (is_object($equipamentos)) $equipamentos = Array(0=>$equipamentos);
             reset($equipamentos);
             foreach ($equipamentos as $indice=>&$valor) {
                 //$tabela['#Id'][$i]       = '#'.$valor->id;
@@ -81,7 +81,7 @@ class Engenharia_EquipamentoControle extends Engenharia_Controle
             }
             $this->_Visual->Show_Tabela_DataTable($tabela);
             unset($tabela);
-        }else{           
+        } else {           
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Equipamento</font></b></center>');
         }
         $titulo = __('Listagem de Equipamentos').' ('.$i.')';
@@ -169,13 +169,13 @@ class Engenharia_EquipamentoControle extends Engenharia_Controle
         $equipamento = $this->_Modelo->db->Sql_Select('Engenharia_Equipamento', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($equipamento);
         // Mensagem
-    	if($sucesso===true){
+    	if ($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
                 "mgs_secundaria" => __('Equipamento Deletado com sucesso')
             );
-    	}else{
+    	} else {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),

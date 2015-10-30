@@ -37,9 +37,9 @@ class social_CaracteristicaControle extends social_Controle
     static function Endereco_Caracteristica($true=true){
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
-        if($true===true){
+        if ($true===true){
             $_Controle->Tema_Endereco(__('Caracteristicas'),'social/Caracteristica/Caracteristica');
-        }else{
+        } else {
             $_Controle->Tema_Endereco(__('Caracteristicas'));
         }
     }
@@ -65,8 +65,8 @@ class social_CaracteristicaControle extends social_Controle
             )
         )));
         $caracteristicas = $this->_Modelo->db->Sql_Select('Social_Caracteristica');
-        if($caracteristicas!==false && !empty($caracteristicas)){
-            if(is_object($caracteristicas)) $caracteristicas = Array(0=>$caracteristicas);
+        if ($caracteristicas!==false && !empty($caracteristicas)){
+            if (is_object($caracteristicas)) $caracteristicas = Array(0=>$caracteristicas);
             reset($caracteristicas);
             foreach ($caracteristicas as $indice=>&$valor) {
                 $tabela['Nome'][$i]            = $valor->nome;
@@ -75,9 +75,9 @@ class social_CaracteristicaControle extends social_Controle
                                                   $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Caracteristica'       ,'social/Caracteristica/Caracteristicas_Del/'.$valor->id.'/'     ,'Deseja realmente deletar essa Caracteristica ?'));
                 ++$i;
             }
-            if($export!==false){
+            if ($export!==false){
                 self::Export_Todos($export,$tabela, 'Caracteristicas');
-            }else{
+            } else {
                 $this->_Visual->Show_Tabela_DataTable(
                     $tabela,     // Array Com a Tabela
                     '',          // style extra
@@ -91,7 +91,7 @@ class social_CaracteristicaControle extends social_Controle
                 );
             }
             unset($tabela);
-        }else{           
+        } else {           
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhuma Caracteristica</font></b></center>');
         }
         $titulo = __('Listagem de Caracteristicas').' ('.$i.')';
@@ -181,13 +181,13 @@ class social_CaracteristicaControle extends social_Controle
         $setor = $this->_Modelo->db->Sql_Select('Social_Caracteristica', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($setor);
         // Mensagem
-    	if($sucesso===true){
+    	if ($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletada'),
                 "mgs_secundaria" => __('Caracteristica deletada com sucesso')
             );
-    	}else{
+    	} else {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),

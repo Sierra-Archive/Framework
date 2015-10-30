@@ -23,7 +23,7 @@ class Enquete_ShowControle extends Enquete_Controle
     }
     static function Show($bloco='right',$id_min=0){
         // Verifica Permissao
-        if(\Framework\App\Registro::getInstacia()->_Acl->Get_Permissao_Chave('Enquete_Show')===false) return false;
+        if (\Framework\App\Registro::getInstacia()->_Acl->Get_Permissao_Chave('Enquete_Show')===false) return false;
         
         $Registro = &\Framework\App\Registro::getInstacia();
         $Modelo = &$Registro->_Modelo;
@@ -34,29 +34,29 @@ class Enquete_ShowControle extends Enquete_Controle
                 1/*,
                 'rand()'*/
         );
-        if($enquetes===false) return false;
+        if ($enquetes===false) return false;
         $titulo2 = $enquetes->nome;
         $respostas = $Modelo->db->Sql_Select('Enquete_Resposta',Array(
             'enquete'       =>  $enquetes->id),
             0
         );    
-        if($respostas===false){
+        if ($respostas===false){
             return self::Show($bloco,$enquetes->id);
         }
-        if(is_object($respostas)) return false;
-        if(\Framework\App\Acl::Usuario_GetID_Static()==0) return false;
+        if (is_object($respostas)) return false;
+        if (\Framework\App\Acl::Usuario_GetID_Static()==0) return false;
         $voto = $Modelo->db->Sql_Select('Enquete_Voto',Array(
             'enquete'       =>  $enquetes->id,
             'usuario'       =>  \Framework\App\Acl::Usuario_GetID_Static()
         ),1);  
-        if($voto!==false){
+        if ($voto!==false){
             $retorno = self::Show($bloco,$enquetes->id);
-            if($retorno===false){
+            if ($retorno===false){
                 $Visual->Blocar('<span id="home_Enquete_Show">'.self::Show_Resposta($enquetes,$respostas).'</span>');
                 // Mostra Conteudo
-                if($bloco=='All')   $Visual->Bloco_Unico_CriaJanela($titulo2,'',0); //,'Sierra.Control_Form_Tratar($(\'#'.$formid.'\')[0]);'
-                if($bloco=='right') $Visual->Bloco_Menor_CriaJanela($titulo2,'',0);
-                if($bloco=='left')  $Visual->Bloco_Maior_CriaJanela($titulo2,'',0);
+                if ($bloco=='All')   $Visual->Bloco_Unico_CriaJanela($titulo2,'',0); //,'Sierra.Control_Form_Tratar($(\'#'.$formid.'\')[0]);'
+                if ($bloco=='right') $Visual->Bloco_Menor_CriaJanela($titulo2,'',0);
+                if ($bloco=='left')  $Visual->Bloco_Maior_CriaJanela($titulo2,'',0);
                 return true;
             }
             return $retorno;
@@ -81,9 +81,9 @@ class Enquete_ShowControle extends Enquete_Controle
         $formulario = $form->retorna_form('Votar');
         $Visual->Blocar('<span id="home_Enquete_Show">'.$formulario.'</span>');
         // Mostra Conteudo
-        if($bloco=='All')   $Visual->Bloco_Unico_CriaJanela($titulo2,'',0); //,'Sierra.Control_Form_Tratar($(\'#'.$formid.'\')[0]);'
-        if($bloco=='right') $Visual->Bloco_Menor_CriaJanela($titulo2,'',0);
-        if($bloco=='left')  $Visual->Bloco_Maior_CriaJanela($titulo2,'',0);
+        if ($bloco=='All')   $Visual->Bloco_Unico_CriaJanela($titulo2,'',0); //,'Sierra.Control_Form_Tratar($(\'#'.$formid.'\')[0]);'
+        if ($bloco=='right') $Visual->Bloco_Menor_CriaJanela($titulo2,'',0);
+        if ($bloco=='left')  $Visual->Bloco_Maior_CriaJanela($titulo2,'',0);
         // Pagina Config
     }
     static function Show_Resposta(&$enquete,&$respostas){
@@ -94,11 +94,11 @@ class Enquete_ShowControle extends Enquete_Controle
         $votos = $Modelo->db->Sql_Select('Enquete_Voto',Array(
             'enquete'       =>  $id
         ));
-        if(is_object($respostas)) $respostas = Array($respostas);
-        if(is_object($votos)) $votos = Array($votos);
-        if($votos===false){
+        if (is_object($respostas)) $respostas = Array($respostas);
+        if (is_object($votos)) $votos = Array($votos);
+        if ($votos===false){
             $total_votos = 0;
-        }else{
+        } else {
             $total_votos = count($votos);
         }
         // Zera Votos
@@ -111,7 +111,7 @@ class Enquete_ShowControle extends Enquete_Controle
         list($barracores_qnt,$barracores)   = \Framework\App\Visual::Tema_Tipos('progress-bar');
         $cor = 0;
         // Percorre Votos
-        if(!empty($votos)){
+        if (!empty($votos)){
             foreach($votos as &$valor){
                 $contagem_votos[$valor->resposta] = 1+$contagem_votos[$valor->resposta];
             }
@@ -119,10 +119,10 @@ class Enquete_ShowControle extends Enquete_Controle
         // Percorre Respostas
         $html = '<ul class="list-unstyled">';
         foreach($respostas as &$valor){
-            if(!isset($contagem_votos[$valor->id]) || $total_votos==0){
+            if (!isset($contagem_votos[$valor->id]) || $total_votos==0){
                 $os_votos  = 0;
                 $porc = 0;
-            }else{
+            } else {
                 $os_votos = $contagem_votos[$valor->id];
                 $porc = round($os_votos/$total_votos*100);
             }
@@ -135,13 +135,13 @@ class Enquete_ShowControle extends Enquete_Controle
                 '</div>'.
             '</li>';
             ++$cor;
-            if($cor==$cores_qnt) $cor=0;
+            if ($cor==$cores_qnt) $cor=0;
         }
         $html .= '</ul>';
         return $html;
     }
     public function Votar($enquete = false){
-        if($enquete===false){
+        if ($enquete===false){
             return _Sistema_erroControle::Erro_Fluxo('Enquete nao Especificada',404);
         }
         $enquete = (int) $enquete;
@@ -150,21 +150,21 @@ class Enquete_ShowControle extends Enquete_Controle
                 Array('id'  => $enquete),
                 1
         );
-        if($enquetes===false){
+        if ($enquetes===false){
             return _Sistema_erroControle::Erro_Fluxo('Enquete nao Existe',404);
         }
         $respostas = $this->_Modelo->db->Sql_Select('Enquete_Resposta',Array(
             'enquete'       =>  $enquete),
             0
         );    
-        if($respostas===false){
+        if ($respostas===false){
             return _Sistema_erroControle::Erro_Fluxo('Enquete sem respostas',404);
         }
         $voto = $this->_Modelo->db->Sql_Select('Enquete_Voto',Array(
             'enquete'       =>  $enquete,
             'usuario'       =>  \Framework\App\Acl::Usuario_GetID_Static()
         ),1);  
-        if($voto!==false){
+        if ($voto!==false){
             throw new \Exception('Já votou nessa enquete', 9010);
         }
         $voto_do_malandro = (int) $_POST['votar'];

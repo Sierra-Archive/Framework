@@ -38,10 +38,10 @@ function </span>WriteHTML<span class="kw">(</span>$html<span class="kw">)
     </span>$a <span class="kw">= </span>preg_split<span class="kw">(</span><span class="str">'/&lt;(.*)&gt;/U'</span><span class="kw">,</span>$html<span class="kw">,-</span>1<span class="kw">,</span>PREG_SPLIT_DELIM_CAPTURE<span class="kw">);
     foreach(</span>$a <span class="kw">as </span>$i<span class="kw">=&gt;</span>$e<span class="kw">)
     {
-        if(</span>$i<span class="kw">%</span>2<span class="kw">==</span>0<span class="kw">)
+        if (</span>$i<span class="kw">%</span>2<span class="kw">==</span>0<span class="kw">)
         {
             </span><span class="cmt">// Text
-            </span><span class="kw">if(</span>$<span class="kw">this-&gt;</span>HREF<span class="kw">)
+            </span><span class="kw">if (</span>$<span class="kw">this-&gt;</span>HREF<span class="kw">)
                 </span>$<span class="kw">this-&gt;</span>PutLink<span class="kw">(</span>$<span class="kw">this-&gt;</span>HREF<span class="kw">,</span>$e<span class="kw">);
             else
                 </span>$<span class="kw">this-&gt;</span>Write<span class="kw">(</span>5<span class="kw">,</span>$e<span class="kw">);
@@ -49,7 +49,7 @@ function </span>WriteHTML<span class="kw">(</span>$html<span class="kw">)
         else
         {
             </span><span class="cmt">// Tag
-            </span><span class="kw">if(</span>$e<span class="kw">[</span>0<span class="kw">]==</span><span class="str">'/'</span><span class="kw">)
+            </span><span class="kw">if (</span>$e<span class="kw">[</span>0<span class="kw">]==</span><span class="str">'/'</span><span class="kw">)
                 </span>$<span class="kw">this-&gt;</span>CloseTag<span class="kw">(</span>strtoupper<span class="kw">(</span>substr<span class="kw">(</span>$e<span class="kw">,</span>1<span class="kw">)));
             else
             {
@@ -59,7 +59,7 @@ function </span>WriteHTML<span class="kw">(</span>$html<span class="kw">)
                 </span>$attr <span class="kw">= array();
                 foreach(</span>$a2 <span class="kw">as </span>$v<span class="kw">)
                 {
-                    if(</span>preg_match<span class="kw">(</span><span class="str">'/([^=]*)=["\']?([^"\']*)/'</span><span class="kw">,</span>$v<span class="kw">,</span>$a3<span class="kw">))
+                    if (</span>preg_match<span class="kw">(</span><span class="str">'/([^=]*)=["\']?([^"\']*)/'</span><span class="kw">,</span>$v<span class="kw">,</span>$a3<span class="kw">))
                         </span>$attr<span class="kw">[</span>strtoupper<span class="kw">(</span>$a3<span class="kw">[</span>1<span class="kw">])] = </span>$a3<span class="kw">[</span>2<span class="kw">];
                 }
                 </span>$<span class="kw">this-&gt;</span>OpenTag<span class="kw">(</span>$tag<span class="kw">,</span>$attr<span class="kw">);
@@ -71,20 +71,20 @@ function </span>WriteHTML<span class="kw">(</span>$html<span class="kw">)
 function </span>OpenTag<span class="kw">(</span>$tag<span class="kw">, </span>$attr<span class="kw">)
 {
     </span><span class="cmt">// Opening tag
-    </span><span class="kw">if(</span>$tag<span class="kw">==</span><span class="str">'B' </span><span class="kw">|| </span>$tag<span class="kw">==</span><span class="str">'I' </span><span class="kw">|| </span>$tag<span class="kw">==</span><span class="str">'U'</span><span class="kw">)
+    </span><span class="kw">if (</span>$tag<span class="kw">==</span><span class="str">'B' </span><span class="kw">|| </span>$tag<span class="kw">==</span><span class="str">'I' </span><span class="kw">|| </span>$tag<span class="kw">==</span><span class="str">'U'</span><span class="kw">)
         </span>$<span class="kw">this-&gt;</span>SetStyle<span class="kw">(</span>$tag<span class="kw">,</span>true<span class="kw">);
-    if(</span>$tag<span class="kw">==</span><span class="str">'A'</span><span class="kw">)
+    if (</span>$tag<span class="kw">==</span><span class="str">'A'</span><span class="kw">)
         </span>$<span class="kw">this-&gt;</span>HREF <span class="kw">= </span>$attr<span class="kw">[</span><span class="str">'HREF'</span><span class="kw">];
-    if(</span>$tag<span class="kw">==</span><span class="str">'BR'</span><span class="kw">)
+    if (</span>$tag<span class="kw">==</span><span class="str">'BR'</span><span class="kw">)
         </span>$<span class="kw">this-&gt;</span>Ln<span class="kw">(</span>5<span class="kw">);
 }
 
 function </span>CloseTag<span class="kw">(</span>$tag<span class="kw">)
 {
     </span><span class="cmt">// Closing tag
-    </span><span class="kw">if(</span>$tag<span class="kw">==</span><span class="str">'B' </span><span class="kw">|| </span>$tag<span class="kw">==</span><span class="str">'I' </span><span class="kw">|| </span>$tag<span class="kw">==</span><span class="str">'U'</span><span class="kw">)
+    </span><span class="kw">if (</span>$tag<span class="kw">==</span><span class="str">'B' </span><span class="kw">|| </span>$tag<span class="kw">==</span><span class="str">'I' </span><span class="kw">|| </span>$tag<span class="kw">==</span><span class="str">'U'</span><span class="kw">)
         </span>$<span class="kw">this-&gt;</span>SetStyle<span class="kw">(</span>$tag<span class="kw">,</span>false<span class="kw">);
-    if(</span>$tag<span class="kw">==</span><span class="str">'A'</span><span class="kw">)
+    if (</span>$tag<span class="kw">==</span><span class="str">'A'</span><span class="kw">)
         </span>$<span class="kw">this-&gt;</span>HREF <span class="kw">= </span><span class="str">''</span><span class="kw">;
 }
 
@@ -95,7 +95,7 @@ function </span>SetStyle<span class="kw">(</span>$tag<span class="kw">, </span>$
     </span>$style <span class="kw">= </span><span class="str">''</span><span class="kw">;
     foreach(array(</span><span class="str">'B'</span><span class="kw">, </span><span class="str">'I'</span><span class="kw">, </span><span class="str">'U'</span><span class="kw">) as </span>$s<span class="kw">)
     {
-        if(</span>$<span class="kw">this-&gt;</span>$s<span class="kw">&gt;</span>0<span class="kw">)
+        if (</span>$<span class="kw">this-&gt;</span>$s<span class="kw">&gt;</span>0<span class="kw">)
             </span>$style <span class="kw">.= </span>$s<span class="kw">;
     }
     </span>$<span class="kw">this-&gt;</span>SetFont<span class="kw">(</span><span class="str">''</span><span class="kw">,</span>$style<span class="kw">);

@@ -37,9 +37,9 @@ class social_AcaoControle extends social_Controle
     protected static function Endereco_Acao($true=true){
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
-        if($true===true){
+        if ($true===true){
             $_Controle->Tema_Endereco(__('Açoes'),'social/Acao/Acoes');
-        }else{
+        } else {
             $_Controle->Tema_Endereco(__('Açoes'));
         }
     }
@@ -58,18 +58,18 @@ class social_AcaoControle extends social_Controle
         $Modelo = &$Registro->_Modelo;
         $Visual = &$Registro->_Visual;
         $i = 0;
-        if($persona_id==0) $persona_id = false;
-        if($persona_id===false){
+        if ($persona_id==0) $persona_id = false;
+        if ($persona_id===false){
             self::Endereco_Acao(false);
             $where = Array();
-        }else{
+        } else {
             $where = Array(Array('vitima'=>$persona_id,'alvo'=>$persona_id));
         }
         
         // add botao
-        if($persona_id===false){
+        if ($persona_id===false){
             $extra = '/0';
-        }else{
+        } else {
             $extra = '/'.$persona_id;
         }
         $Visual->Blocar($Visual->Tema_Elementos_Btn('Superior'     ,Array(
@@ -86,8 +86,8 @@ class social_AcaoControle extends social_Controle
             )
         )));
         $acoes = $Modelo->db->Sql_Select('Social_Acao',$where);
-        if($acoes!==false && !empty($acoes)){
-            if(is_object($acoes)) $acoes = Array(0=>$acoes);
+        if ($acoes!==false && !empty($acoes)){
+            if (is_object($acoes)) $acoes = Array(0=>$acoes);
             reset($acoes);
             foreach ($acoes as $indice=>&$valor) {
                 $tabela['Data'][$i]             = $valor->data;
@@ -98,9 +98,9 @@ class social_AcaoControle extends social_Controle
                 ++$i;
             }
             $titulo = __('Listagem de Ações').' ('.$i.')';
-            if($export!==false){
+            if ($export!==false){
                 self::Export_Todos($export,$tabela, $titulo);
-            }else{
+            } else {
                 $Visual->Show_Tabela_DataTable(
                     $tabela,     // Array Com a Tabela
                     '',          // style extra
@@ -114,15 +114,15 @@ class social_AcaoControle extends social_Controle
                 );
             }
             unset($tabela);
-        }else{        
+        } else {        
         $titulo = __('Listagem de Ações').' ('.$i.')'; 
             $Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhuma Ação</font></b></center>');
         }
-        if($tipo=='Unico'){
+        if ($tipo=='Unico'){
             $Visual->Bloco_Unico_CriaJanela($titulo);
-        }else if($tipo=='Esquerda'){
+        }else if ($tipo=='Esquerda'){
             $Visual->Bloco_Maior_CriaJanela($titulo);
-        }else{
+        } else {
             $Visual->Bloco_Menor_CriaJanela($titulo);
         }
         
@@ -155,10 +155,10 @@ class social_AcaoControle extends social_Controle
         $funcao     = '$this->Acao('.$persona_id.');';
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = __('Ação cadastrado com sucesso.');
-        if($persona_id===false){
+        if ($persona_id===false){
             $funcao     = '$this->Acao(0);';
             $alterar    = Array();
-        }else{
+        } else {
             $persona_id = (int) $persona_id;
             $alterar    = Array('alvo'=>$persona_id);
             $funcao     = '$this->Acao('.$persona_id.');';
@@ -214,13 +214,13 @@ class social_AcaoControle extends social_Controle
         $setor = $this->_Modelo->db->Sql_Select('Social_Acao', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($setor);
         // Mensagem
-    	if($sucesso===true){
+    	if ($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
                 "mgs_secundaria" => __('Ação deletada com sucesso')
             );
-    	}else{
+    	} else {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),

@@ -45,18 +45,18 @@ class Engenharia_Principal implements \Framework\PrincipalInterface
         $i = 0;
         // Busca Engenharias
         $result = self::Busca_Empreendimentos($controle, $Modelo, $Visual, $busca);
-        if($result!==false){
+        if ($result!==false){
             $i = $i + $result;
         }
         // Busca Unidades
         $result = self::Busca_Unidades($controle, $Modelo, $Visual, $busca);
-        if($result!==false){
+        if ($result!==false){
             $i = $i + $result;
         }
         // Retorna
-        if(is_int($i) && $i>0){
+        if (is_int($i) && $i>0){
             return $i;
-        }else{
+        } else {
             return false;
         }
     }
@@ -77,7 +77,7 @@ class Engenharia_Principal implements \Framework\PrincipalInterface
         ));
         $i = 0;
         $empreendimentos = $Modelo->db->Sql_Select('Engenharia_Empreendimento',$where);
-        if($empreendimentos===false) return false;
+        if ($empreendimentos===false) return false;
         // Botao Add
         $Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
             Array(
@@ -92,11 +92,11 @@ class Engenharia_Principal implements \Framework\PrincipalInterface
                 'Engenharia/Empreendimento/Empreendimentos',
             )
         )));
-        if(is_object($empreendimentos)) $empreendimentos = Array(0=>$empreendimentos);
-        if($empreendimentos!==false && !empty($empreendimentos)){
+        if (is_object($empreendimentos)) $empreendimentos = Array(0=>$empreendimentos);
+        if ($empreendimentos!==false && !empty($empreendimentos)){
             list($tabela,$i) = Engenharia_EmpreendimentoControle::Empreendimentos_Tabela($empreendimentos);
             $Visual->Show_Tabela_DataTable($tabela);
-        }else{             
+        } else {             
             $Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Empreendimento na Busca '.$busca.'</font></b></center>');
         }
         $titulo = 'Busca de Empreendimentos: '.$busca.' ('.$i.')';
@@ -112,7 +112,7 @@ class Engenharia_Principal implements \Framework\PrincipalInterface
         ));
         $i = 0;
         $unidades = $Modelo->db->Sql_Select('Engenharia_Empreendimento_Unidade',$where);
-        if($unidades===false) return false;
+        if ($unidades===false) return false;
         // Botao Add
         $Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
             Array(
@@ -127,11 +127,11 @@ class Engenharia_Principal implements \Framework\PrincipalInterface
                 'Engenharia/Unidade/Unidades',
             )
         )));
-        if(is_object($unidades)) $unidades = Array(0=>$unidades);
-        if($unidades!==false && !empty($unidades)){
+        if (is_object($unidades)) $unidades = Array(0=>$unidades);
+        if ($unidades!==false && !empty($unidades)){
             list($tabela,$i) = Engenharia_UnidadeControle::Unidades_Tabela($unidades);
             $Visual->Show_Tabela_DataTable($tabela);
-        }else{    
+        } else {    
             $Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhuma Unidade de Empreendimento na Busca '.$busca.'</font></b></center>');
         }
         $titulo = 'Busca de Unidades de Empreendimentos: '.$busca.' ('.$i.')';

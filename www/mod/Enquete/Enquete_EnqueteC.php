@@ -24,9 +24,9 @@ class Enquete_EnqueteControle extends Enquete_Controle
     static function Endereco_Enquete($true=true){
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
-        if($true===true){
+        if ($true===true){
             $_Controle->Tema_Endereco(__('Enquetes'),'Enquete/Enquete/Enquetes');
-        }else{
+        } else {
             $_Controle->Tema_Endereco(__('Enquetes'));
         }
     }
@@ -36,7 +36,7 @@ class Enquete_EnqueteControle extends Enquete_Controle
         $Visual     = &$Registro->_Visual;
         $tabela = Array();
         $i = 0;
-        if(is_object($enquetes)) $enquetes = Array(0=>$enquetes);
+        if (is_object($enquetes)) $enquetes = Array(0=>$enquetes);
         reset($enquetes);
         $perm_view = $Registro->_Acl->Get_Permissao_Url('Enquete/Resposta/Respostas');
         $perm_editar = $Registro->_Acl->Get_Permissao_Url('Enquete/Enquete/Enquetes_Edit');
@@ -46,11 +46,11 @@ class Enquete_EnqueteControle extends Enquete_Controle
             $resp_votos = $Modelo->db->Sql_Select('Enquete_Voto',Array(
                 'enquete'   =>  $valor->id
             ));
-            if($resp_votos===false){
+            if ($resp_votos===false){
                 $resp_votos_res = 0;
-            }else if(is_object($resp_votos)){
+            }else if (is_object($resp_votos)){
                 $resp_votos_res = 1;
-            }else{
+            } else {
                 $resp_votos_res = count($resp_votos);
             }
             $tabela['Tipo de Enquete'][$i]  = $valor->categoria2;
@@ -89,11 +89,11 @@ class Enquete_EnqueteControle extends Enquete_Controle
         )));
         // Conexao
         $enquetes = $this->_Modelo->db->Sql_Select('Enquete');
-        if($enquetes!==false && !empty($enquetes)){
+        if ($enquetes!==false && !empty($enquetes)){
             list($tabela,$i) = self::Enquetes_Tabela($enquetes);
-            if($export!==false){
+            if ($export!==false){
                 self::Export_Todos($export,$tabela, 'Enquetes');
-            }else{
+            } else {
                 $this->_Visual->Show_Tabela_DataTable(
                     $tabela,     // Array Com a Tabela
                     '',          // style extra
@@ -107,7 +107,7 @@ class Enquete_EnqueteControle extends Enquete_Controle
                 );
             }
             unset($tabela);
-        }else{            
+        } else {            
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhuma Enquete</font></b></center>');
         }
         $titulo = __('Listagem de Enquetes').' ('.$i.')';
@@ -196,13 +196,13 @@ class Enquete_EnqueteControle extends Enquete_Controle
         $enquete = $this->_Modelo->db->Sql_Select('Enquete', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($enquete);
         // Mensagem
-    	if($sucesso===true){
+    	if ($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
                 "mgs_secundaria" => __('Enquete deletada com sucesso')
             );
-    	}else{
+    	} else {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),

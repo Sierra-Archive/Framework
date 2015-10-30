@@ -42,12 +42,12 @@ class Agenda_Principal implements \Framework\PrincipalInterface
         $i = 0;
         // Busca Pastas
         $result = self::Busca_Pastas($controle, $Modelo, $Visual, $busca);
-        if($result!==false){
+        if ($result!==false){
             $i = $i + $result;
         }
-        if(is_int($i) && $i>0){
+        if (is_int($i) && $i>0){
             return $i;
-        }else{
+        } else {
             return false;
         }
     }
@@ -59,7 +59,7 @@ class Agenda_Principal implements \Framework\PrincipalInterface
         ));
         $i = 0;
         $pastas = $Modelo->db->Sql_Select('Usuario_Agenda_Pasta',$where);
-        if($pastas===false) return false;
+        if ($pastas===false) return false;
         // Botao Add
         $Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
             Array(
@@ -75,11 +75,11 @@ class Agenda_Principal implements \Framework\PrincipalInterface
             )
         )));
         // Conexao
-        if(is_object($pastas)) $pastas = Array(0=>$pastas);
-        if($pastas!==false && !empty($pastas)){
+        if (is_object($pastas)) $pastas = Array(0=>$pastas);
+        if ($pastas!==false && !empty($pastas)){
             list($tabela,$i) = Agenda_PastaControle::Pastas_Tabela($pastas);
             $Visual->Show_Tabela_DataTable($tabela);
-        }else{ 
+        } else { 
             $Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhuma Pasta no Arquivo de Pastas '.$busca.'</font></b></center>');
         }
         $titulo = 'Busca de Pastas no Arquivo de Pastas: '.$busca.' ('.$i.')';

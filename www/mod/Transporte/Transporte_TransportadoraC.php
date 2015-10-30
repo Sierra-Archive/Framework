@@ -10,9 +10,9 @@ class Transporte_TransportadoraControle extends Transporte_Controle
         $_Controle = $Registro->_Controle;
         $titulo = __('Transportadoras');
         $link = 'Transporte/Transportadora/Transportadoras';
-        if($true===true){
+        if ($true===true){
             $_Controle->Tema_Endereco($titulo,$link);
-        }else{
+        } else {
             $_Controle->Tema_Endereco($titulo);
         }
     }
@@ -30,7 +30,7 @@ class Transporte_TransportadoraControle extends Transporte_Controle
         $Visual     = &$Registro->_Visual;
         $tabela = Array();
         $i = 0;
-        if(is_object($transportadora)) $transportadora = Array(0=>$transportadora);reset($transportadora);
+        if (is_object($transportadora)) $transportadora = Array(0=>$transportadora);reset($transportadora);
         $perm_view = $Registro->_Acl->Get_Permissao_Url('Transporte/Transportadora/Visualizar');
         foreach ($transportadora as &$valor) {                
             $tabela['Id'][$i]           = '#'.$valor->id;
@@ -61,13 +61,13 @@ class Transporte_TransportadoraControle extends Transporte_Controle
         $i = 0;
         self::Endereco_Transportadora(false);
         $transportadora = $this->_Modelo->db->Sql_Select('Transporte_Transportadora');
-        if(is_object($transportadora)) $transportadora = Array(0=>$transportadora);
-        if($transportadora!==false && !empty($transportadora)){
+        if (is_object($transportadora)) $transportadora = Array(0=>$transportadora);
+        if ($transportadora!==false && !empty($transportadora)){
             list($tabela,$i) = self::Transportadoras_Tabela($transportadora);
             // SE exportar ou mostra em tabela
-            if($export!==false){
+            if ($export!==false){
                 self::Export_Todos($export,$tabela, 'Transportadoras');
-            }else{
+            } else {
                 $this->_Visual->Show_Tabela_DataTable(
                     $tabela,     // Array Com a Tabela
                     '',          // style extra
@@ -81,10 +81,10 @@ class Transporte_TransportadoraControle extends Transporte_Controle
                 );
             }
             unset($tabela);
-        }else{
-            if($export!==false){
+        } else {
+            if ($export!==false){
                 $mensagem = __('Nenhum Transportadora Cadastrada para exportar');
-            }else{
+            } else {
                 $mensagem = __('Nenhum Transportadora Cadastrada');
             }
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">'.$mensagem.'</font></b></center>');
@@ -104,24 +104,24 @@ class Transporte_TransportadoraControle extends Transporte_Controle
     }
     static function Painel_Transportadora($camada,$retornar=true){
         $existe = false;
-        if($retornar==='false') $retornar = false;
+        if ($retornar==='false') $retornar = false;
         // Verifica se Existe Conexao, se nao tiver abre o adicionar conexao, se nao, abre a pasta!
         $Registro = &\Framework\App\Registro::getInstacia();
         $resultado = $Registro->_Modelo->db->Sql_Select('Transporte_Transportadora','{sigla}usuario=\''.$Registro->_Acl->Usuario_GetID().'\'',1);
-        if(is_object($resultado)){
+        if (is_object($resultado)){
             $existe = true;
         }
         
         // Dependendo se Existir Cria Formulario ou Lista arquivos
-        if($existe===false){
+        if ($existe===false){
             $html = '<b>Ainda faltam insformações sobre vocês</b><br>'.self::Painel_Transportadora_Add($camada);
-        }else{
+        } else {
             $html = __('Painel');
         }
         
-        if($retornar===true){
+        if ($retornar===true){
             return $html;
-        }else{
+        } else {
             $conteudo = array(
                 'location'  =>  '#'.$camada,
                 'js'        =>  '',
@@ -172,7 +172,7 @@ class Transporte_TransportadoraControle extends Transporte_Controle
     }
     public function Painel_Transportadora_Add2($camada){
         $resultado = $this->_Modelo->db->Sql_Select('Transporte_Transportadora','{sigla}usuario=\''.$this->_Acl->Usuario_GetID().'\'',1);
-        if(is_object($resultado)){
+        if (is_object($resultado)){
             self::Painel_Transportadora($camada,false);
             return true;
         }

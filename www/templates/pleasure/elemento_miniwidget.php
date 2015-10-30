@@ -12,11 +12,11 @@ $class = Array(
 foreach($params['widgets'] as $v){
     if( isset($v['duplo']) && $v['duplo']===true){
         $duplo=' double';
-    }else{
+    } else {
         $duplo='';
     } ?>
     <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-        <div class="card tile card-dashboard-info card-<?php if(isset($class[$v['cor']])){ echo $class[$v['cor']]; }else{ echo $v['cor']; } echo $duplo; ?> material-animate">
+        <div class="card tile card-dashboard-info card-<?php if(isset($class[$v['cor']])){ echo $class[$v['cor']]; } else { echo $v['cor']; } echo $duplo; ?> material-animate">
             <div class="card-body">
                     <div class="card-icon"><i class="fa fa-<?php echo $v['icon']; ?>"></i></div><!--.card-icon-->
                     <h4><?php echo $v['nome']; ?></h4>

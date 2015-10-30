@@ -45,11 +45,11 @@ class _Sistema_FilialControle extends _Sistema_Controle
         $this->_Visual->Show_Tabela_DataTable_Massiva($tabela_colunas,'_Sistema/Filial/Filiais');
 
         $titulo = __('Listagem de Filiais').' (<span id="DataTable_Contador">0</span>)';
-        if($tipobloco==='Unico'){
+        if ($tipobloco==='Unico'){
             $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',10,Array("link"=>"_Sistema/Filial/Filiais_Add",'icon'=>'add','nome'=>__('Adicionar Filial')));
-        }else if($tipobloco==='Maior'){
+        }else if ($tipobloco==='Maior'){
             $this->_Visual->Bloco_Maior_CriaJanela($titulo,'',10,Array("link"=>"_Sistema/Filial/Filiais_Add",'icon'=>'add','nome'=>__('Adicionar Filial')));
-        }else{
+        } else {
             $this->_Visual->Bloco_Menor_CriaJanela($titulo,'',10,Array("link"=>"_Sistema/Filial/Filiais_Add",'icon'=>'add','nome'=>__('Adicionar Filial')));
         }
         //Carrega Json
@@ -137,13 +137,13 @@ class _Sistema_FilialControle extends _Sistema_Controle
         $filial    =  $this->_Modelo->db->Sql_Select('Sistema_Filial', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($filial);
         // Mensagem
-    	if($sucesso===true){
+    	if ($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
                 "mgs_secundaria" => __('Filial Deletada com sucesso')
             );
-    	}else{
+    	} else {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),
@@ -167,9 +167,9 @@ class _Sistema_FilialControle extends _Sistema_Controle
     function Endereco_Filial($true=true){
         $titulo = __('Filiais do Sistema');
         $link = '_Sistema/Filial/Filiais';
-        if($true===true){
+        if ($true===true){
             $this->Tema_Endereco($titulo,$link);
-        }else{
+        } else {
             $this->Tema_Endereco($titulo);
         }
     }

@@ -38,9 +38,9 @@ class comercio_servicos_ServicoControle extends comercio_servicos_Controle
     static function Endereco_Servico($true=true){
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
-        if($true===true){
+        if ($true===true){
             $_Controle->Tema_Endereco(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_servicos_Titulo'),'comercio_servicos/Servico/Servico');
-        }else{
+        } else {
             $_Controle->Tema_Endereco(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_servicos_Titulo'));
         }
     }
@@ -53,20 +53,20 @@ class comercio_servicos_ServicoControle extends comercio_servicos_Controle
         self::Endereco_Servico(false);
         $titulo = \Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_servicos_Titulo');
         $titulo2 = Framework\Classes\Texto::Transformar_Plural_Singular($titulo);
-        if(Framework\Classes\Texto::Captura_Palavra_Masculina($titulo2)===true){
+        if (Framework\Classes\Texto::Captura_Palavra_Masculina($titulo2)===true){
             $titulo_com_sexo        = 'o '.Framework\Classes\Texto::Transformar_Plural_Singular($titulo);
             $titulo_com_sexo_mudo   = ' '.Framework\Classes\Texto::Transformar_Plural_Singular($titulo);
-        }else{
+        } else {
             $titulo_com_sexo        = 'a '.Framework\Classes\Texto::Transformar_Plural_Singular($titulo);
             $titulo_com_sexo_mudo   = 'a '.Framework\Classes\Texto::Transformar_Plural_Singular($titulo);
         }
         
         $tabela_colunas = Array();
 
-        if(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_servicos_ServicoTipo')){
+        if (\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_servicos_ServicoTipo')){
             $tabela_colunas[] = 'Tipo d'.$titulo_com_sexo;
         }
-        if(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_servicos_nome')){
+        if (\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_servicos_nome')){
             $tabela_colunas[] = __('Nome');
         }
         
@@ -169,13 +169,13 @@ class comercio_servicos_ServicoControle extends comercio_servicos_Controle
         $setor = $this->_Modelo->db->Sql_Select('Comercio_Servicos_Servico', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($setor);
         // Mensagem
-    	if($sucesso===true){
+    	if ($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
                 "mgs_secundaria" => __('Deletado com sucesso')
             );
-    	}else{
+    	} else {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),
@@ -197,10 +197,10 @@ class comercio_servicos_ServicoControle extends comercio_servicos_Controle
      */
     public static function Campos_Deletar(&$campos){
         // SE nao tiver Foto tira foto
-        if(!\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_servicos_ServicoTipo')){
+        if (!\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_servicos_ServicoTipo')){
             self::DAO_Campos_Retira($campos, 'tipo');
         }
-        if(!\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_servicos_nome')){
+        if (!\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_servicos_nome')){
             self::DAO_Campos_Retira($campos, 'nome');
         }
     }

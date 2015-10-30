@@ -1,7 +1,7 @@
 <?php if( $params['Tipo']==='Entrada'){ ?>
     <?php if($params['Opcao']['end']!=''){ ?>
         <form id="<?php echo $params['Opcao']['id']; ?>" class="form-<?php echo $params['Opcao']['ColunaForm']; ?> <?php echo $params['Opcao']['class']; ?>" action="<?php echo $params['Opcao']['url']; echo $params['Opcao']['end']; ?>" method="post" enctype="multipart/form-data" autocomplete="<?php echo $params['Opcao']['AutoComplete']; ?>">
-    <?php }else{ ?>
+    <?php } else { ?>
         <form id="<?php echo $params['Opcao']['id']; ?>" class="form-<?php echo $params['Opcao']['ColunaForm']; ?> <?php echo $params['Opcao']['class']; ?>" action="<?php echo $params['Opcao']['url']; ?>" method="post" enctype="multipart/form-data" autocomplete="<?php echo $params['Opcao']['AutoComplete']; ?>">
     <?php } ?>
 
@@ -26,13 +26,13 @@
     
 <?php }else if($params['Tipo']==='Input'){ ?>
     <?php if(isset($params['Opcao']['tipo']) && $params['Opcao']['tipo']==='hidden'){ ?>
-        <input type="hidden"<?php if($params['Opcao']['max_caracteres']!==false && is_int($params['Opcao']['max_caracteres'])){ echo ' MAXLENGTH="'.$params['Opcao']['max_caracteres'].'"'; } ?> value="<?php echo $params['Opcao']['valor']; ?>" id="<?php echo $params['Opcao']['id']; ?>" name="<?php echo $params['Opcao']['nome']; ?>"<?php if($params['Opcao']['class']!=''){ if($params['Opcao']['somenteleitura']===false){ ?> class="<?php echo $params['Opcao']['class']; ?>"<?php }else{ ?> class="inactive <?php echo $params['Opcao']['class']; ?>"<?php } }else if($params['Opcao']['somenteleitura']===true){ ?> class="inactive" <?php } if($params['Opcao']['somenteleitura']===true){ ?> readonly=""<?php } ?>/>
-    <?php }else{ ?>
+        <input type="hidden"<?php if($params['Opcao']['max_caracteres']!==false && is_int($params['Opcao']['max_caracteres'])){ echo ' MAXLENGTH="'.$params['Opcao']['max_caracteres'].'"'; } ?> value="<?php echo $params['Opcao']['valor']; ?>" id="<?php echo $params['Opcao']['id']; ?>" name="<?php echo $params['Opcao']['nome']; ?>"<?php if($params['Opcao']['class']!=''){ if($params['Opcao']['somenteleitura']===false){ ?> class="<?php echo $params['Opcao']['class']; ?>"<?php } else { ?> class="inactive <?php echo $params['Opcao']['class']; ?>"<?php } }else if($params['Opcao']['somenteleitura']===true){ ?> class="inactive" <?php } if($params['Opcao']['somenteleitura']===true){ ?> readonly=""<?php } ?>/>
+    <?php } else { ?>
         <div class="form-group"<?php if($params['Opcao']['escondido']!==false){ ?> id="<?php echo $params['Opcao']['id']; ?>_escondendo"<?php } if($params['Opcao']['escondido']==='apagado'){ ?> style="display: none;"<?php } ?>>
             <label class="<?php if($params['Opcao']['ColunaForm']==='horizontal') echo 'col-sm-2 control-label'; ?>" for="<?php echo $params['Opcao']['id']; ?>"><?php echo $params['Opcao']['titulo']; ?>:</label>
             <?php if($params['Opcao']['ColunaForm']==='horizontal') echo '<div class="col-sm-9">'; ?>
                 <?php if($params['Opcao']['urlextra']!=''){ ?><div class="input-append"><?php } ?>
-                <input tabindex="<?php echo $params['TabIndex']; ?>" type="<?php echo $params['Opcao']['tipo']; ?>" value="<?php echo $params['Opcao']['valor']; ?>"<?php if($params['Opcao']['max_caracteres']!==false && is_int($params['Opcao']['max_caracteres'])){ echo ' MAXLENGTH="'.$params['Opcao']['max_caracteres'].'"'; } ?> id="<?php echo $params['Opcao']['nome']; ?>" name="<?php echo $params['Opcao']['nome']; ?>" class="form-control <?php if($params['Opcao']['class']!=''){ if($params['Opcao']['somenteleitura']===false){ ?> <?php echo $params['Opcao']['class']; }else{ ?> inactive <?php echo $params['Opcao']['class']; ?>"<?php } }else if($params['Opcao']['somenteleitura']===true){ ?> inactive<?php } ?>"<?php if($params['Opcao']['somenteleitura']===true){ ?> readonly=""<?php } if($params['Opcao']['Mascara']!==false){ ?> onkeypress="Sierra.Visual_Formulario_Mascara(this,'<?php echo $params['Opcao']['Mascara']; ?>');"<?php } if($params['Opcao']['change']!=''){ ?> onBlur="<?php echo $params['Opcao']['change']; ?>"<?php } if($params['Opcao']['valida']!=''){ ?> validar="<?php echo $params['Opcao']['valida']; ?>"<?php } ?> <?php if($params['Opcao']['escondido']==='apagar'){ ?> escondendo="desativado"<?php }else if($params['Opcao']['escondido']==='apagado'){ ?> escondendo="ativado"<?php } ?> x-webkit-speech/> 
+                <input tabindex="<?php echo $params['TabIndex']; ?>" type="<?php echo $params['Opcao']['tipo']; ?>" value="<?php echo $params['Opcao']['valor']; ?>"<?php if($params['Opcao']['max_caracteres']!==false && is_int($params['Opcao']['max_caracteres'])){ echo ' MAXLENGTH="'.$params['Opcao']['max_caracteres'].'"'; } ?> id="<?php echo $params['Opcao']['nome']; ?>" name="<?php echo $params['Opcao']['nome']; ?>" class="form-control <?php if($params['Opcao']['class']!=''){ if($params['Opcao']['somenteleitura']===false){ ?> <?php echo $params['Opcao']['class']; } else { ?> inactive <?php echo $params['Opcao']['class']; ?>"<?php } }else if($params['Opcao']['somenteleitura']===true){ ?> inactive<?php } ?>"<?php if($params['Opcao']['somenteleitura']===true){ ?> readonly=""<?php } if($params['Opcao']['Mascara']!==false){ ?> onkeypress="Sierra.Visual_Formulario_Mascara(this,'<?php echo $params['Opcao']['Mascara']; ?>');"<?php } if($params['Opcao']['change']!=''){ ?> onBlur="<?php echo $params['Opcao']['change']; ?>"<?php } if($params['Opcao']['valida']!=''){ ?> validar="<?php echo $params['Opcao']['valida']; ?>"<?php } ?> <?php if($params['Opcao']['escondido']==='apagar'){ ?> escondendo="desativado"<?php }else if($params['Opcao']['escondido']==='apagado'){ ?> escondendo="ativado"<?php } ?> x-webkit-speech/> 
                 <?php if($params['Opcao']['urlextra']!=''){ ?><span class="add-on" onClick="<?php echo $params['Opcao']['urlextra']; ?>">+</span></div><?php } ?>
                 <?php if(isset($params['Opcao']['Info']) && $params['Opcao']['Info']!=''){ ?></div><div class="col-sm-1"><p class="help-block"><?php echo $params['Opcao']['info']; ?></span><?php } ?>
             <?php if($params['Opcao']['ColunaForm']==='horizontal') echo '</div>'; ?>
@@ -135,11 +135,11 @@
             <div data-provides="fileinput" class="fileinput fileinput-new">
                 <?php if($params['Opcao']['tipo']==='Imagem'){ ?>
                     <div style="width: 200px; height: 150px;" class="fileinput-preview thumbnail">
-                        <img alt="<?php _e('Miniatura da Imagem de Upload'); ?>" src="<?php if($params['Opcao']['valor']!=='' && $params['Opcao']['valor']!==false){ echo $params['Opcao']['valor']; }else{ ?>http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=<?php echo str_replace(" ", "+", __('Sem Imagem')); ?><?php } ?>">
+                        <img alt="<?php _e('Miniatura da Imagem de Upload'); ?>" src="<?php if($params['Opcao']['valor']!=='' && $params['Opcao']['valor']!==false){ echo $params['Opcao']['valor']; } else { ?>http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=<?php echo str_replace(" ", "+", __('Sem Imagem')); ?><?php } ?>">
                     </div>
                     <div style="max-width: 200px; max-height: 150px; line-height: 20px;" class="fileinput-preview fileinput-exists thumbnail"></div>
                     <div>
-                <?php }else{ ?>
+                <?php } else { ?>
                     <div class="input-append">
                         <div class="uneditable-input">
                             <i class="fa fa-file fileinput-exists"></i>

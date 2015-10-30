@@ -58,14 +58,14 @@ class Tabela
     * @version 0.4.2
     */
     public function addcorpo($array){
-        if(!is_array($array)){
+        if (!is_array($array)){
             return false;
         }
         // Percorre Array
         reset($array);
         while (key($array) !== null) {
             $current = current($array);
-            if(!isset($current["class"]) || $current["class"]===false){
+            if (!isset($current["class"]) || $current["class"]===false){
                 $array[key($array)]["class"] = '';
             }
             next($array);

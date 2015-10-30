@@ -57,8 +57,8 @@ class Financeiro_BancoControle extends Financeiro_Controle
             )
         )));
         $linhas = $this->_Modelo->db->Sql_Select('Financeiro_Banco');
-        if($linhas!==false && !empty($linhas)){
-            if(is_object($linhas)) $linhas = Array(0=>$linhas);
+        if ($linhas!==false && !empty($linhas)){
+            if (is_object($linhas)) $linhas = Array(0=>$linhas);
             reset($linhas);
             foreach ($linhas as $indice=>&$valor) {
                 //$tabela['#Id'][$i]       = '#'.$valor->id;
@@ -70,7 +70,7 @@ class Financeiro_BancoControle extends Financeiro_Controle
             }
             $this->_Visual->Show_Tabela_DataTable($tabela);
             unset($tabela);
-        }else{         
+        } else {         
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Banco</font></b></center>');
         }
         $titulo = __('Listagem de Bancos').' ('.$i.')';
@@ -158,13 +158,13 @@ class Financeiro_BancoControle extends Financeiro_Controle
         $linha = $this->_Modelo->db->Sql_Select('Financeiro_Banco', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($linha);
         // Mensagem
-    	if($sucesso===true){
+    	if ($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
                 "mgs_secundaria" => __('Banco Deletado com sucesso')
             );
-    	}else{
+    	} else {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),

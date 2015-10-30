@@ -57,15 +57,15 @@ class Financeiro_ListarControle extends Financeiro_Controle
     public function Listar_MovimentacaoFin(){
         $movimentacoes = Array();
         $this->_Modelo->MovFin_Carregar($movimentacoes,  $this->_Acl->Usuario_GetID());
-        if(!empty($movimentacoes)){
+        if (!empty($movimentacoes)){
             reset($movimentacoes);
             $i = 0;
             foreach ($movimentacoes as $indice=>&$valor) {
                 $tabela['Referência'][$i] = $valor['nome'];
                 $tabela['Data'][$i] = date_replace($valor['log_date_add'], "d/m/y | H:m");
-                if($valor['positivo']==1){
+                if ($valor['positivo']==1){
                     $tabela['Valor'][$i] = '<font color="#0000FF">+ R$ '.number_format($valor['valor'], 2, ',', '.').'</font>';
-                }else{
+                } else {
                     $tabela['Valor'][$i] = '<font color="#FF0000">- RR$$ '.number_format($valor['valor'], 2, ',', '.').'</font>';
                 }
                 ++$i;
@@ -73,7 +73,7 @@ class Financeiro_ListarControle extends Financeiro_Controle
             $this->_Visual->Show_Tabela_DataTable($tabela);
             $this->_Visual->Bloco_Maior_CriaJanela('Todas as Atividades Financeiras ('.$i.')');
             unset($tabela);
-        }else{          
+        } else {          
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Infelizmente você nunca movimentou dinheiro com a gente.</font></b></center>');
             $this->_Visual->Bloco_Maior_CriaJanela('Todas as Atividades Financeiras (0)');
         }
@@ -81,7 +81,7 @@ class Financeiro_ListarControle extends Financeiro_Controle
     public function Listar_Dividas(){
         $movimentacoes = Array();
         $this->_Modelo->Dividas_Carregar($movimentacoes,  $this->_Acl->Usuario_GetID());
-        if(!empty($movimentacoes)){
+        if (!empty($movimentacoes)){
             reset($movimentacoes);
             $i = 0;
             foreach ($movimentacoes as $indice=>&$valor) {
@@ -90,7 +90,7 @@ class Financeiro_ListarControle extends Financeiro_Controle
                 $tabela['Data Venc'][$i] = date_replace($valor['dt_vencimento'], "d/m/y");
                 $tabela['Data Pgto'][$i] = date_replace($valor['dt_pago'], "d/m/y");
                 $tabela['Valor'][$i] = $valor['valor'];
-                if($valor['situacao']!='Pago'){
+                if ($valor['situacao']!='Pago'){
                     $tabela['Boleto'][$i] = '<a href="'.LIBS_URL.'boleto/boleto_itau.php?clientenome='.$this->_Acl->logado_usuario->nome.
                     '&endereco='.$this->_Acl->logado_usuario->endereco.
                     '&numero='.$this->_Acl->logado_usuario->numero.
@@ -100,7 +100,7 @@ class Financeiro_ListarControle extends Financeiro_Controle
                     '&bairro='.$this->_Acl->logado_usuario->bairro.
                     '&cep='.$this->_Acl->logado_usuario->cep.
                     '&valor='.$valor['valor'].'" target="_BLANK">Abrir Boleto</a>';
-                }else{
+                } else {
                     $tabela['Boleto'][$i] = '';
                 }
                 ++$i;
@@ -108,7 +108,7 @@ class Financeiro_ListarControle extends Financeiro_Controle
             $this->_Visual->Show_Tabela_DataTable($tabela);
             $this->_Visual->Bloco_Maior_CriaJanela('Pagamentos ('.$i.')');
             unset($tabela);
-        }else{  
+        } else {  
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Infelizmente você nunca fez um pagamento com a gente.</font></b></center>');
             $this->_Visual->Bloco_Maior_CriaJanela('Pagamentos (0)');
         }
@@ -138,7 +138,7 @@ class Financeiro_ListarControle extends Financeiro_Controle
     public function sacar_inserir(){
         global $config;
         
-        if(!isset($_POST["sacar_quantia"])){
+        if (!isset($_POST["sacar_quantia"])){
             return false;
         }
         
@@ -148,7 +148,7 @@ class Financeiro_ListarControle extends Financeiro_Controle
         $quantia = \Framework\App\Conexao::anti_injection($_POST["sacar_quantia"]);
         $saldo = Financeiro_Modelo::Carregar_Saldo($this->_Modelo, $this->_Acl->Usuario_GetID());
         // faz verificações de erros
-        if($quantia<500){
+        if ($quantia<500){
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Erro'),
@@ -156,7 +156,7 @@ class Financeiro_ListarControle extends Financeiro_Controle
             );
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens); 
             $this->_Visual->Javascript_Executar('$("#quantia").css(\'border\', \'2px solid #FFAEB0\').focus();');
-        } else if($saldo<$quantia){
+        } else if ($saldo<$quantia){
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Erro'),
@@ -167,7 +167,7 @@ class Financeiro_ListarControle extends Financeiro_Controle
         } else {
             $sucesso =  $this->_Modelo->sacar_inserir($quantia);
             // mostra mensagem de sucesso
-            if($sucesso===true){
+            if ($sucesso===true){
                 $mgm = 'Usuario Realizou um saque no sistema, com saldo suficiente e ja descontado de seu saldo<br>'.
                         '<br><br>#Id: #'.$this->_Acl->Usuario_GetID().
                         '<br>Nome: '.$this->_Acl->logado_usuario->nome.
@@ -176,21 +176,21 @@ class Financeiro_ListarControle extends Financeiro_Controle
                         '<br>Saldo Restante do Usuario: R$'.($saldo-$quantia);
                 $mgm .= '<br>Datetime: '.APP_HORA;
                 $email = Mail_Send($this->_Acl->logado_usuario->nome, $this->_Acl->logado_usuario->email,SISTEMA_EMAIL,SISTEMA_NOME.' - Saque de Usuario do Sistema',$mgm);
-                if($email==1){
+                if ($email==1){
                     $mensagens = array(
                         "tipo" => 'sucesso',
                         "mgs_principal" => __('Saque realizado com sucesso.'),
                         "mgs_secundaria" => 'Espere a quantia entrar na sua conta: R$'.$quantia.',00.'
                     );
                     $erro=0;
-                }else{
+                } else {
                     $mensagens = array(
                         "tipo" => 'sucesso',
                         "mgs_principal" => __('Informe a Administração'),
                         "mgs_secundaria" => 'do sistema que houve um erro ao fazer o saque. R$'.$quantia.',00.'
                     );
                 }
-            }else{
+            } else {
                 $mensagens = array(
                     "tipo" => 'erro',
                     "mgs_principal" => __('Erro'),
@@ -200,7 +200,7 @@ class Financeiro_ListarControle extends Financeiro_Controle
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
         }
         $this->Main();
-        if($erro==0) $this->_Visual->Json_Info_Update('Titulo', __('Saque Realizado com Sucesso'));
+        if ($erro==0) $this->_Visual->Json_Info_Update('Titulo', __('Saque Realizado com Sucesso'));
         else         $this->_Visual->Json_Info_Update('Titulo', __('Erro ao Realizar Saque'));
     }
     function transferencia_carregajanelaadd(){
@@ -220,7 +220,7 @@ class Financeiro_ListarControle extends Financeiro_Controle
         return $formulario;
     }
     public function transferencia_inserir(){
-        if(!isset($_POST["login"]) || !isset($_POST["transferir_quantia"])){
+        if (!isset($_POST["login"]) || !isset($_POST["transferir_quantia"])){
             return false;
         }
         $erro = 1;
@@ -231,7 +231,7 @@ class Financeiro_ListarControle extends Financeiro_Controle
         $saldo = Financeiro_Modelo::Carregar_Saldo($this->_Modelo, $this->_Acl->Usuario_GetID());
         $existelogin = usuario_Modelo::VerificaExtLogin($this->_Modelo, $login);
         // verifica erros
-        if($quantia<50){
+        if ($quantia<50){
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Erro'),
@@ -239,7 +239,7 @@ class Financeiro_ListarControle extends Financeiro_Controle
             );
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens); 
             $this->_Visual->Javascript_Executar('$("#quantia").css(\'border\', \'2px solid #FFAEB0\').focus();');
-        } else if($saldo<$quantia){
+        } else if ($saldo<$quantia){
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Erro'),
@@ -247,7 +247,7 @@ class Financeiro_ListarControle extends Financeiro_Controle
             );
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens); 
             $this->_Visual->Javascript_Executar('$("#quantia").css(\'border\', \'2px solid #FFAEB0\').focus();');
-        } else if($existelogin===false){
+        } else if ($existelogin===false){
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Erro'),
@@ -258,14 +258,14 @@ class Financeiro_ListarControle extends Financeiro_Controle
         } else {
             $sucesso =  $this->_Modelo->transferencia_inserir($login,$quantia);
             // mostra mensagem de sucesso
-            if($sucesso===true){
+            if ($sucesso===true){
                 $mensagens = array(
                     "tipo" => 'sucesso',
                     "mgs_principal" => __('Transferência Realizada'),
                     "mgs_secundaria" => ''.$quantia.' foi transferida com sucesso.'
                 );
                 $erro = 0;
-            }else{
+            } else {
                 $mensagens = array(
                     "tipo" => 'erro',
                     "mgs_principal" => __('Erro'),
@@ -276,7 +276,7 @@ class Financeiro_ListarControle extends Financeiro_Controle
         }
         
         $this->Main();
-        if($erro==0) $this->_Visual->Json_Info_Update('Titulo', __('Transferência Realizada com Sucesso'));
+        if ($erro==0) $this->_Visual->Json_Info_Update('Titulo', __('Transferência Realizada com Sucesso'));
         else         $this->_Visual->Json_Info_Update('Titulo', __('Erro ao Realizar Transferência'));
     }
 }

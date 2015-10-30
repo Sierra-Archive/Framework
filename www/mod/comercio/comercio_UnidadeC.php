@@ -40,9 +40,9 @@ class comercio_UnidadeControle extends comercio_Controle
         $_Controle = $Registro->_Controle;
         $titulo = __('Unidades');
         $link = 'comercio/Unidade/Unidades';
-        if($true===true){
+        if ($true===true){
             $_Controle->Tema_Endereco($titulo,$link);
-        }else{
+        } else {
             $_Controle->Tema_Endereco($titulo);
         }
     }
@@ -56,8 +56,8 @@ class comercio_UnidadeControle extends comercio_Controle
         $i = 0;
         $this->_Visual->Blocar('<a title="Adicionar Unidade" class="btn btn-success lajax explicar-titulo" data-acao="" href="'.URL_PATH.'comercio/Unidade/Unidades_Add">Adicionar nova Unidade</a><div class="space15"></div>');
         $linhas = $this->_Modelo->db->Sql_Select('Comercio_Unidade');
-        if($linhas!==false && !empty($linhas)){
-            if(is_object($linhas)) $linhas = Array(0=>$linhas);
+        if ($linhas!==false && !empty($linhas)){
+            if (is_object($linhas)) $linhas = Array(0=>$linhas);
             reset($linhas);
             foreach ($linhas as $indice=>&$valor) {
                 //$tabela['#Id'][$i]       = '#'.$valor->id;
@@ -68,7 +68,7 @@ class comercio_UnidadeControle extends comercio_Controle
             }
             $this->_Visual->Show_Tabela_DataTable($tabela);
             unset($tabela);
-        }else{            
+        } else {            
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhuma Unidade</font></b></center>');
         }
         $titulo = __('Listagem de Unidades').' ('.$i.')';
@@ -158,13 +158,13 @@ class comercio_UnidadeControle extends comercio_Controle
         $linha = $this->_Modelo->db->Sql_Select('Comercio_Unidade', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($linha);
         // Mensagem
-    	if($sucesso===true){
+    	if ($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletada'),
                 "mgs_secundaria" => __('Unidade Deletada com sucesso')
             );
-    	}else{
+    	} else {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),

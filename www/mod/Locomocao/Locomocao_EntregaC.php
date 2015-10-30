@@ -29,11 +29,11 @@ class Locomocao_EntregaControle extends Locomocao_Controle
 
         $titulo = __('Listagem de Entregas').' (<span id="DataTable_Contador">0</span>)';
         $bt_add = Array("link"=>"Locomocao/Entrega/Entregas_Add",'icon'=>'add','nome'=>__('Adicionar Entrega'));
-        if($tipobloco==='Unico'){
+        if ($tipobloco==='Unico'){
             $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',10,$bt_add);
-        }else if($tipobloco==='Maior'){
+        }else if ($tipobloco==='Maior'){
             $this->_Visual->Bloco_Maior_CriaJanela($titulo,'',10,$bt_add);
-        }else{
+        } else {
             $this->_Visual->Bloco_Menor_CriaJanela($titulo,'',10,$bt_add);
         }
         //Carrega Json
@@ -74,17 +74,17 @@ class Locomocao_EntregaControle extends Locomocao_Controle
      * @return boolean
      */
     private function Entrega_Atualizar_Valor(&$identificador){
-        if(!is_object($identificador)){
+        if (!is_object($identificador)){
             return false;
         }
         
         // Zera Valor
         $valortotal = 0.0;        
         
-        if(!\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('Locomocao_Entrega_ValorFinal')){
+        if (!\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('Locomocao_Entrega_ValorFinal')){
             
             // Pega o Tipo
-            if($identificador->propostatipo==1){
+            if ($identificador->propostatipo==1){
                 $identificador->propostatipo=1;
 
                 // Captura o Serviço de Instalaçao
@@ -95,8 +95,8 @@ class Locomocao_EntregaControle extends Locomocao_Controle
                     )
                 );
                 // Pega os Valores do Serviço de Instalaçao
-                if($instalacao!==false){
-                    if(is_object($instalacao)) $instalacao = Array($instalacao);
+                if ($instalacao!==false){
+                    if (is_object($instalacao)) $instalacao = Array($instalacao);
                     foreach($instalacao as &$valor){
                         // Captura Preço do Gas
                         $instalacao_btu  = $this->_Modelo->db->Sql_Select(
@@ -107,7 +107,7 @@ class Locomocao_EntregaControle extends Locomocao_Controle
                             1
                         );
                         // Adiciona Valor da Linha para acima de 5 metros
-                        if($valor->distancia>5){
+                        if ($valor->distancia>5){
                             $valortotal =   $valortotal + (Framework\App\Sistema_Funcoes::Tranf_Real_Float($instalacao_btu->valor_linha)*($valor->distancia-5))
                                             + \Framework\App\Sistema_Funcoes::Tranf_Real_Float($instalacao_btu->valor_gas);
                         }
@@ -136,8 +136,8 @@ class Locomocao_EntregaControle extends Locomocao_Controle
                     )
                 );
                 // Pega os Valores do Serviço de Instalaçao
-                if($produto!==false){
-                    if(is_object($produto)) $produto = Array($produto);
+                if ($produto!==false){
+                    if (is_object($produto)) $produto = Array($produto);
                     foreach($produto as &$valor){
                         // Captura Preço do SUPORTE
                         $produto_registro  = $this->_Modelo->db->Sql_Select(
@@ -147,7 +147,7 @@ class Locomocao_EntregaControle extends Locomocao_Controle
                             ),
                             1
                         );
-                        if(is_object($produto_registro) && $produto_registro->preco!=NULL){
+                        if (is_object($produto_registro) && $produto_registro->preco!=NULL){
                             // Add valor do Produto
                             $valortotal =   $valortotal
                                             + (Framework\App\Sistema_Funcoes::Tranf_Real_Float($produto_registro->preco)*$valor->prod_qnt);
@@ -156,7 +156,7 @@ class Locomocao_EntregaControle extends Locomocao_Controle
                 }
 
 
-            }else{
+            } else {
                 $identificador->propostatipo=0;
                 // Captura Tipo de Serviço
                 /* NAO TEM MAIS MUDANCA DE VALOR COM SERVICOTIPO
@@ -167,8 +167,8 @@ class Locomocao_EntregaControle extends Locomocao_Controle
                     )
                 );
                 // Pega os Valores do Tipo de Serviço
-                if($servicotipo!==false){
-                    if(is_object($servicotipo)) $servicotipo = Array($servicotipo);
+                if ($servicotipo!==false){
+                    if (is_object($servicotipo)) $servicotipo = Array($servicotipo);
                     foreach($servicotipo as &$valor){
                         $valortotal = $valortotal + $valor->diarias_qnt*Framework\App\Sistema_Funcoes::Tranf_Real_Float($valor->diarias_valor);
                     }
@@ -182,8 +182,8 @@ class Locomocao_EntregaControle extends Locomocao_Controle
                     )
                 );
                 // Pega os Valores do Serviço
-                if($servico!==false){
-                    if(is_object($servico)) $servico = Array($servico);
+                if ($servico!==false){
+                    if (is_object($servico)) $servico = Array($servico);
                     foreach($servico as &$valor){
                         // Captura Preço do SErviço
                         $servico2  = $this->_Modelo->db->Sql_Select(
@@ -193,7 +193,7 @@ class Locomocao_EntregaControle extends Locomocao_Controle
                             ),
                             1
                         );
-                        if($servico2===false)                        continue;
+                        if ($servico2===false)                        continue;
                         $valortotal = $valortotal + $valor->qnt*Framework\App\Sistema_Funcoes::Tranf_Real_Float($servico2->preco);
                     }
                 }
@@ -201,7 +201,7 @@ class Locomocao_EntregaControle extends Locomocao_Controle
             }
 
             // SE tiver Mao de Obra Calcula e Soma ao Custo
-            if(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('Locomocao_Entregas_MaodeObra')){
+            if (\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('Locomocao_Entregas_MaodeObra')){
                 $valor_maodeobra_total = 0;
                 // Captura o Serviço
                 $maodeobra  = $this->_Modelo->db->Sql_Select(
@@ -211,8 +211,8 @@ class Locomocao_EntregaControle extends Locomocao_Controle
                     )
                 );
                 // Pega os Valores do Serviço
-                if($maodeobra!==false){
-                    if(is_object($maodeobra)) $maodeobra = Array($maodeobra);
+                if ($maodeobra!==false){
+                    if (is_object($maodeobra)) $maodeobra = Array($maodeobra);
                     foreach($maodeobra as &$valor){
                         $valor_maodeobra = $valor->maodeobra_qnt*$valor->maodeobra_dias*
                             (
@@ -227,33 +227,33 @@ class Locomocao_EntregaControle extends Locomocao_Controle
                 $valortotal = $valortotal+$valor_maodeobra_total;
             }
         
-            if(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('Locomocao_Entrega_ValorExtra')!==false){
+            if (\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('Locomocao_Entrega_ValorExtra')!==false){
                 $valortotal = $valortotal+Framework\App\Sistema_Funcoes::Tranf_Real_Float($valor->valor_extra);
             }
             
             // Calcula Lucro
-            if(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('Locomocao_Entrega_Lucro')){
+            if (\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('Locomocao_Entrega_Lucro')){
                 $lucro    = \Framework\App\Sistema_Funcoes::Tranf_Porc_Float($identificador->pagar_lucro);
                 $valortotal = $valortotal+($lucro*$valortotal);
             }
             // Calcula Desconto
-            if(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('Locomocao_Entrega_Desconto')){
+            if (\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('Locomocao_Entrega_Desconto')){
                 $desconto    = \Framework\App\Sistema_Funcoes::Tranf_Porc_Float($identificador->pagar_desconto);
                 $valortotal = $valortotal-($desconto*$valortotal);
             }
             // Converte Valor Total para Real e Imprime     
-        }else{
+        } else {
             $valortotal = \Framework\App\Sistema_Funcoes::Tranf_Real_Float($identificador->valor_fixo);
         }
         
         /*// Se tiver Comissao Add
-        if(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('Locomocao_Entrega_Comissao')!==false){
+        if (\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('Locomocao_Entrega_Comissao')!==false){
             $comissao = \Framework\App\Sistema_Funcoes::Tranf_Porc_Float($identificador->comissao);
             $valortotal = $valortotal+($comissao*$valortotal);
         }   
         
         // Se tiver Imposto Add
-        if(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('Locomocao_Entregas_Imposto')!==false){
+        if (\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('Locomocao_Entregas_Imposto')!==false){
             $imposto = \Framework\App\Sistema_Funcoes::Tranf_Porc_Float($identificador->imposto);
             $valortotal = $valortotal+($imposto*$valortotal);
         }*/
@@ -268,7 +268,7 @@ class Locomocao_EntregaControle extends Locomocao_Controle
      * @return boolean
      */
     public function Entrega_Atualizar_Valor_Dinamico($time){
-        //if(!isset($_POST['status'])) return false;
+        //if (!isset($_POST['status'])) return false;
         
         $html = '';
         
@@ -279,10 +279,10 @@ class Locomocao_EntregaControle extends Locomocao_Controle
         $distanciatotal = 0.0;
         $tempototal = 0.0;
         
-        if(isset($_POST['filial_saida']) && $_POST['filial_saida']!==''){
+        if (isset($_POST['filial_saida']) && $_POST['filial_saida']!==''){
             $filial_saida = (int) $_POST['filial_saida'];
             $filial_saida_registro = $this->_Modelo->db->Sql_Select('Sistema_Filial','{sigla}id=\''.$filial_saida.'\'',1);
-            if($filial_saida_registro===false){
+            if ($filial_saida_registro===false){
                 // Json
                 $conteudo = array(
                     'location'  =>  '#valortemporario'.$time,
@@ -293,7 +293,7 @@ class Locomocao_EntregaControle extends Locomocao_Controle
                 $this->_Visual->Json_Info_Update('Historico', false);  
                 return true;
             }
-        }else{
+        } else {
             // Json
             $conteudo = array(
                 'location'  =>  '#valortemporario'.$time,
@@ -305,14 +305,14 @@ class Locomocao_EntregaControle extends Locomocao_Controle
             return true;
         }
         
-        if(isset($_POST['filial_chegada']) && $_POST['filial_chegada']!==''){
+        if (isset($_POST['filial_chegada']) && $_POST['filial_chegada']!==''){
             $filial_chegada = (int) $_POST['filial_chegada'];
-            if($filial_saida===$filial_chegada){
+            if ($filial_saida===$filial_chegada){
                 $filial_chegada_registro = &$filial_saida_registro;
-            }else{
+            } else {
                 $filial_chegada_registro = $this->_Modelo->db->Sql_Select('Sistema_Filial','{sigla}id=\''.$filial_saida.'\'',1);
             }
-            if($filial_chegada_registro===false){
+            if ($filial_chegada_registro===false){
                 // Json
                 $conteudo = array(
                     'location'  =>  '#valortemporario'.$time,
@@ -323,7 +323,7 @@ class Locomocao_EntregaControle extends Locomocao_Controle
                 $this->_Visual->Json_Info_Update('Historico', false);  
                 return true;
             }
-        }else{
+        } else {
             // Json
             $conteudo = array(
                 'location'  =>  '#valortemporario'.$time,
@@ -337,10 +337,10 @@ class Locomocao_EntregaControle extends Locomocao_Controle
         $etapa = 1;
         
 
-        if(!isset($_POST['pais']) || !isset($_POST['estado']) || !isset($_POST['cidade']) || !isset($_POST['bairro']) || !isset($_POST['endereco']) ||
+        if (!isset($_POST['pais']) || !isset($_POST['estado']) || !isset($_POST['cidade']) || !isset($_POST['bairro']) || !isset($_POST['endereco']) ||
                 $_POST['pais']=='' || $_POST['estado']=='' || $_POST['cidade']=='' || $_POST['bairro']==''){
             $html = 'Insira Pelo Menos um Ponto de Parada';
-        }else{
+        } else {
             // Inicia Para Primeiro Ponto
             $ponto_bairro = (int) $_POST['bairro'];
             $ponto_bairro_registro = $this->_Modelo->db->Sql_Select('Sistema_Local_Bairro','{sigla}id=\''.$ponto_bairro.'\'',1);
@@ -356,9 +356,9 @@ class Locomocao_EntregaControle extends Locomocao_Controle
                     $ponto_bairro_registro->nome,
                     $_POST['endereco']
             );
-            if($dados===false){
+            if ($dados===false){
                 $html = 'Erro: Endereço não Localizado pelo Google.';
-            }else{
+            } else {
                 $distanciatotal += $dados['Distancia']['Valor'];
                 $tempototal += $dados['Tempo']['Valor'];
                 $html .= '<b>Distância Parcial ('.$etapa.'º Etapa):</b> '.$dados['Distancia']['Texto'].'<br>';
@@ -383,9 +383,9 @@ class Locomocao_EntregaControle extends Locomocao_Controle
                     $filial_saida_registro->bairro2,
                     $filial_saida_registro->endereco
             );
-            if($dados===false){
+            if ($dados===false){
                 $html = 'Erro: Endereço não Localizado pelo Google.';
-            }else{
+            } else {
                 $distanciatotal += $dados['Distancia']['Valor'];
                 $tempototal += $dados['Tempo']['Valor'];
                 $html .= '<br><br><b>Distância Parcial ('.$etapa.'º Etapa):</b> '.$dados['Distancia']['Texto'].'<br>';
@@ -417,11 +417,11 @@ class Locomocao_EntregaControle extends Locomocao_Controle
      */
     public function Entrega_Atualizar_Valor_Dinamico_Janela($form_id,$recalcular=false){
         $time = round(TEMPO_COMECO);
-        if($recalcular===false){
+        if ($recalcular===false){
             $valor ='R$ 0,00';
             $tempo ='0 Min';
             $distancia ='0 Km';
-        }else{
+        } else {
             $valor =__('Calculando');
             $tempo =__('Calculando');
             $distancia =__('Calculando');
@@ -431,12 +431,12 @@ class Locomocao_EntregaControle extends Locomocao_Controle
         // Janela De Valor Temporario
         $this->_Visual->Javascript_Executar('function Valor_Dinamico_Rodar() {var params'.$time.' = $(\'#'.$form_id.'\').serialize();'
             . 'var intervalo'.$time.' = window.setInterval(function () {console.log(\'SierraTecnologia\',params'.$time.');'
-                . 'if($(\'#'.$form_id.'\').length){'
-                    . 'if(params'.$time.'!==$(\'#'.$form_id.'\').serialize()){'
+                . 'if ($(\'#'.$form_id.'\').length){'
+                    . 'if (params'.$time.'!==$(\'#'.$form_id.'\').serialize()){'
                         . 'params'.$time.'=$(\'#'.$form_id.'\').serialize();'
                         . 'Sierra.Modelo_Ajax_Chamar(\'Locomocao/Entrega/Entrega_Atualizar_Valor_Dinamico/'.$time.'\',params'.$time.',\'POST\',true,false,false);'
                     . '}'
-                . '}else{'
+                . '} else {'
                     . 'clearInterval(intervalo'.$time.');'
                 . '}'
             . '}, 1000);} Valor_Dinamico_Rodar();');
@@ -472,7 +472,7 @@ class Locomocao_EntregaControle extends Locomocao_Controle
         $sucesso2   = $titulo.' cadastrada com sucesso.';
         $alterar    = Array();
         $sucesso = $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
-        if($sucesso===true){
+        if ($sucesso===true){
             // Pega o ID
             $identificador  = $this->_Modelo->db->Sql_Select('Locomocao_Entrega', Array(),1,'id DESC');
             $this->Entrega_Atualizar_Valor($identificador);
@@ -557,13 +557,13 @@ class Locomocao_EntregaControle extends Locomocao_Controle
         $menu    =  $this->_Modelo->db->Sql_Select('Locomocao_Entrega', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($menu);
         // Mensagem
-    	if($sucesso===true){
+    	if ($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
                 "mgs_secundaria" => __('Entrega Deletado com sucesso')
             );
-    	}else{
+    	} else {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),
@@ -586,23 +586,23 @@ class Locomocao_EntregaControle extends Locomocao_Controle
      * @version 0.4.2
      */
     public function Entrega_Status($id=false){
-        if($id===false){
+        if ($id===false){
             return false;
         }
         $resultado = $this->_Modelo->db->Sql_Select('Locomocao_Entrega', Array('id'=>$id),1);
-        if($resultado===false || !is_object($resultado)){
+        if ($resultado===false || !is_object($resultado)){
             return false;
         }
-        if($resultado->status==1 || $resultado->status=='1'){
+        if ($resultado->status==1 || $resultado->status=='1'){
             $resultado->status='0';
-        }else{
+        } else {
             $resultado->status='1';
         }
         $sucesso = $this->_Modelo->db->Sql_Update($resultado);
-        if($sucesso){
-            if($resultado->status==1 || $resultado->status=='1'){
+        if ($sucesso){
+            if ($resultado->status==1 || $resultado->status=='1'){
                 $texto = __('Ativado');
-            }else{
+            } else {
                 $texto = __('Desativado');
             }
             $conteudo = array(
@@ -612,7 +612,7 @@ class Locomocao_EntregaControle extends Locomocao_Controle
             );
             $this->_Visual->Json_IncluiTipo('Conteudo',$conteudo);
             $this->_Visual->Json_Info_Update('Titulo', __('Status Alterado')); 
-        }else{
+        } else {
             $mensagens = array(
                 "tipo"              => 'erro',
                 "mgs_principal"     => __('Erro'),
@@ -634,9 +634,9 @@ class Locomocao_EntregaControle extends Locomocao_Controle
     function Endereco_Entrega($true=true){
         $titulo = __('Administração de Entregas');
         $link = 'Locomocao/Entrega/Entregas';
-        if($true===true){
+        if ($true===true){
             $this->Tema_Endereco($titulo,$link);
-        }else{
+        } else {
             $this->Tema_Endereco($titulo);
         }
     }
@@ -651,9 +651,9 @@ class Locomocao_EntregaControle extends Locomocao_Controle
         self::Endereco_Entrega();
         $titulo = __('Permissões do Sistema');
         $link = 'Locomocao/Entrega/Permissoes';
-        if($true===true){
+        if ($true===true){
             $this->Tema_Endereco($titulo,$link);
-        }else{
+        } else {
             $this->Tema_Endereco($titulo);
         }
     }

@@ -97,7 +97,7 @@ class usuario_veiculo_ListarControle extends usuario_veiculo_Controle
                     "mgs_secundaria" => __('Suba uma residência válida')
                 );
                 $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
-            }else{
+            } else {
                 // variaveis
                 $datainicial = data_eua_brasil(\Framework\App\Conexao::anti_injection($datainicial));
                 $datafinal = data_eua_brasil(\Framework\App\Conexao::anti_injection($datafinal));
@@ -137,7 +137,7 @@ class usuario_veiculo_ListarControle extends usuario_veiculo_Controle
                 //$this->_Visual->Json_IncluiTipo('JavascriptInterno',$this->_Visual->Javascript_Executar());
                 //$this->_Visual->Javascript_Executar(false);
             }
-        }else{
+        } else {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Erro'),
@@ -197,7 +197,7 @@ class usuario_veiculo_ListarControle extends usuario_veiculo_Controle
                 "mgs_principal" => __('Inserção bem sucedida'),
                 "mgs_secundaria" => __('Moto Agendada com sucesso.')
             );
-        }else{
+        } else {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),
@@ -216,7 +216,7 @@ class usuario_veiculo_ListarControle extends usuario_veiculo_Controle
             $valorfinal = $valorfinal+($diasdecorridos*$valor1);
         }else if($diasdecorridos<10){
             $valorfinal = $valorfinal+($diasdecorridos*$valor2);
-        }else{
+        } else {
             $valorfinal = $valorfinal+($diasdecorridos*$valor3);
         }
         return $valorfinal;

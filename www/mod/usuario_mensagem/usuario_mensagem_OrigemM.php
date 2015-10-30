@@ -38,7 +38,7 @@ class usuario_mensagem_OrigemModelo extends usuario_mensagem_Modelo
             $funcao = function( $d, $row ) {
                 return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Origem'       ,'usuario_mensagem/Origem/Origens_Del/'.$d.'/'     ,'Deseja realmente deletar essa Origem ?'),true);
             };
-        }else{
+        } else {
             $funcao = function( $d, $row ) {
                 return '';
             };

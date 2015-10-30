@@ -30,9 +30,9 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
         return false;
     }
     protected function Endereco_Modulo($true=true){
-        if($true===true){
+        if ($true===true){
             $this->Tema_Endereco(__('Modulos'),'Desenvolvimento/Framework/Modulos');
-        }else{
+        } else {
             $this->Tema_Endereco(__('Modulos'));
         }
     }
@@ -41,7 +41,7 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
         $Visual     = &$Registro->_Visual;
         $tabela = Array();
         $i = 0;
-        if(is_object($modulos)) $modulos = Array(0=>$modulos);
+        if (is_object($modulos)) $modulos = Array(0=>$modulos);
         reset($modulos);
         foreach ($modulos as $indice=>&$valor) {
             $tabela['#Id'][$i]          =   '#'.$valor->id;
@@ -77,11 +77,11 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
         )));
         // Query
         $modulos = $this->_Modelo->db->Sql_Select('Desenvolvimento_Framework_Modulo');
-        if($modulos!==false && !empty($modulos)){
+        if ($modulos!==false && !empty($modulos)){
             list($tabela,$i) = self::Modulos_Tabela($modulos);
-            if($export!==false){
+            if ($export!==false){
                 self::Export_Todos($export,$tabela, 'Modulos');
-            }else{
+            } else {
                 $this->_Visual->Show_Tabela_DataTable(
                     $tabela,     // Array Com a Tabela
                     '',          // style extra
@@ -95,7 +95,7 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
                 );
             }
             unset($tabela);
-        }else{    
+        } else {    
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Modulo</font></b></center>');
         }
         $titulo = __('Listagem de Modulos').' ('.$i.')';
@@ -185,13 +185,13 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
         $modulos = $this->_Modelo->db->Sql_Select('Desenvolvimento_Framework_Modulo', '{sigla}id=\''.$id.'\'');
         $sucesso =  $this->_Modelo->db->Sql_Delete($modulos);
         // Mensagem
-    	if($sucesso===true){
+    	if ($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
                 "mgs_secundaria" => __('Modulo Deletado com sucesso')
             );
-    	}else{
+    	} else {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),
@@ -208,9 +208,9 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
     
     
     protected function Endereco_Submodulo($true=true){
-        if($true===true){
+        if ($true===true){
             $this->Tema_Endereco(__('Submodulos'),'Desenvolvimento/Framework/Submodulos');
-        }else{
+        } else {
             $this->Tema_Endereco(__('Submodulos'));
         }
     }
@@ -219,7 +219,7 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
         $Visual     = &$Registro->_Visual;
         $tabela = Array();
         $i = 0;
-        if(is_object($submodulos)) $submodulos = Array(0=>$submodulos);
+        if (is_object($submodulos)) $submodulos = Array(0=>$submodulos);
         reset($submodulos);
         foreach ($submodulos as $indice=>&$valor) {
             $tabela['#Id'][$i]          =   '#'.$valor->id;
@@ -255,11 +255,11 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
         )));
         // Query
         $submodulos = $this->_Modelo->db->Sql_Select('Desenvolvimento_Framework_Submodulo');
-        if($submodulos!==false && !empty($submodulos)){
+        if ($submodulos!==false && !empty($submodulos)){
             list($tabela,$i) = self::Submodulos_Tabela($submodulos);
-            if($export!==false){
+            if ($export!==false){
                 self::Export_Todos($export,$tabela, 'Submodulos');
-            }else{
+            } else {
                 $this->_Visual->Show_Tabela_DataTable(
                     $tabela,     // Array Com a Tabela
                     '',          // style extra
@@ -273,7 +273,7 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
                 );
             }
             unset($tabela);
-        }else{    
+        } else {    
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Submodulo</font></b></center>');
         }
         $titulo = __('Listagem de Submodulos').' ('.$i.')';
@@ -363,13 +363,13 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
         $submodulos = $this->_Modelo->db->Sql_Select('Desenvolvimento_Framework_Submodulo', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($submodulos);
         // Mensagem
-    	if($sucesso===true){
+    	if ($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
                 "mgs_secundaria" => __('Submodulo Deletado com sucesso')
             );
-    	}else{
+    	} else {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),
@@ -386,9 +386,9 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
     
     
     protected function Endereco_Metodo($true=true){
-        if($true===true){
+        if ($true===true){
             $this->Tema_Endereco(__('Metodos'),'Desenvolvimento/Framework/Metodos');
-        }else{
+        } else {
             $this->Tema_Endereco(__('Metodos'));
         }
     }
@@ -397,7 +397,7 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
         $Visual     = &$Registro->_Visual;
         $tabela = Array();
         $i = 0;
-        if(is_object($metodos)) $metodos = Array(0=>$metodos);
+        if (is_object($metodos)) $metodos = Array(0=>$metodos);
         reset($metodos);
         foreach ($metodos as $indice=>&$valor) {
             $tabela['#Id'][$i]          =   '#'.$valor->id;
@@ -432,11 +432,11 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
         )));
         // Query
         $metodos = $this->_Modelo->db->Sql_Select('Desenvolvimento_Framework_Metodo');
-        if($metodos!==false && !empty($metodos)){
+        if ($metodos!==false && !empty($metodos)){
             list($tabela,$i) = self::Metodos_Tabela($metodos);
-            if($export!==false){
+            if ($export!==false){
                 self::Export_Todos($export,$tabela, 'Metodos');
-            }else{
+            } else {
                 $this->_Visual->Show_Tabela_DataTable(
                     $tabela,     // Array Com a Tabela
                     '',          // style extra
@@ -450,7 +450,7 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
                 );
             }
             unset($tabela);
-        }else{    
+        } else {    
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Metodo</font></b></center>');
         }
         $titulo = __('Listagem de Metodos').' ('.$i.')';
@@ -540,13 +540,13 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
         $metodos = $this->_Modelo->db->Sql_Select('Desenvolvimento_Framework_Metodo', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($metodos);
         // Mensagem
-    	if($sucesso===true){
+    	if ($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
                 "mgs_secundaria" => __('Metodo Deletado com sucesso')
             );
-    	}else{
+    	} else {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),

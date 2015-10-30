@@ -50,11 +50,11 @@ class Form
         // Grava Coluna Tipo
         $this->ColunaForm = $ColunaForm;
         // Popup SELECT
-        if(isset($_GET['formselect']) && $_GET['formselect']!='' && isset($_GET['condicao']) && $_GET['condicao']!=''){
+        if (isset($_GET['formselect']) && $_GET['formselect']!='' && isset($_GET['condicao']) && $_GET['condicao']!=''){
             $extra = '?formselect='.\Framework\App\Conexao::anti_injection($_GET['formselect']).
                      '&condicao='.\Framework\App\Conexao::anti_injection($_GET['condicao']);
             $this->form_dependencia = true;
-        }else{
+        } else {
             $extra = '';
         }
         // Puxa Layoult
@@ -71,7 +71,7 @@ class Form
                 'AutoComplete'      => $autocomplete
             )
         );
-        if($this->_Visual===false){
+        if ($this->_Visual===false){
             $this->_Registro->_Visual = new \Framework\App\Visual();
         }
         $this->form = $this->_Visual->renderizar_bloco('template_form',$config);
@@ -113,12 +113,12 @@ class Form
         ');');
         // Cria Formulario
         $html  = '<select tabindex="'.self::$tab_index.'" multiple="multiple" size="10" id="'.$id.'" name="'.$id.'" class="form_duallist'.$controle_duallist.'">';
-        if(!empty($nao_selecionado) && is_array($nao_selecionado)){
+        if (!empty($nao_selecionado) && is_array($nao_selecionado)){
             foreach($nao_selecionado as $indice=>&$valor){
                 $html .= '<option value="'.$indice.'">'.$valor.'</option>';
             }
         }
-        if(!empty($selecionado) && is_array($selecionado)){
+        if (!empty($selecionado) && is_array($selecionado)){
             foreach($selecionado as $indice=>&$valor){
                 $html .= '<option value="'.$indice.'" selected="selected">'.$valor.'</option>';
             }
@@ -156,7 +156,7 @@ class Form
     public function SelectMultiplo($titulo='',$opcoes = Array(),$id=false,$url='',$campos=false, $javascript_campos = false, $condicao=false, $escondido = false, $class='', $infonulo='Escolha uma opção'){
         //Aumenta o id e Add javascript no Visual
         ++self::$tab_index;
-        if($id!==false){
+        if ($id!==false){
             $id = \Framework\App\Conexao::anti_injection($id);
         }
         $Registro   = &\Framework\App\Registro::getInstacia();
@@ -164,13 +164,13 @@ class Form
         // Zera VAriaveis
         $change = '';
         
-        if($campos!==false && $javascript_campos!==false){
+        if ($campos!==false && $javascript_campos!==false){
             // Javascript
             $js = '<script LANGUAGE="JavaScript" TYPE="text/javascript">';
             $js .= 'function Form_Change_'.$id.'(){'. 
                 'var valores_usados = $("#'.$id.'").val();'.
                 '$("#'.$id.'controlador > span").attr("calculado",0);'.
-                'if(typeof(valores_usados)!="undefined" && valores_usados!=null){'.
+                'if (typeof(valores_usados)!="undefined" && valores_usados!=null){'.
                     'var length = valores_usados.length;'.
                     'for(var i = 0; i < length; i++) {'.
                     
@@ -181,17 +181,17 @@ class Form
                         /*'var j = 0;'.
                         '$(\'#'.$id.'_chosen\').find(\'#'.$id.'_chzn_c_\'+valores_usados[i]).each(function(i){'.
                             '++j;'.
-                            'if(j>1){'.
+                            'if (j>1){'.
                                 '$(this).delete();'.
                             '}'.
                         '});'.*/
                     
                     
                         // Puxa Nome, E troca calculado pra 1 caso exista
-                        'if(valores_usados[i]!=\'\'){'.
+                        'if (valores_usados[i]!=\'\'){'.
                             'var nome = $("#'.$id.' option[value="+valores_usados[i]+"]").html();'.
-                            'if(nome!=\'\'){'.
-                                'if($("#'.$id.'controlador_"+valores_usados[i]+"").size()!=1){'.
+                            'if (nome!=\'\'){'.
+                                'if ($("#'.$id.'controlador_"+valores_usados[i]+"").size()!=1){'.
                                     'var java_campos = "'.$javascript_campos.'";'.
                                     'java_campos = java_campos.replace(/{id}/g, valores_usados[i]);'.
                                     'java_campos = java_campos.replace(/{nome}/g, Sierra.Visual_Tratamento_Maiusculo_Primeira(nome,true));'.
@@ -200,7 +200,7 @@ class Form
                                         //'<hr>'.
                                         '</span>"'.
                                     ');'.
-                                '}else{'.
+                                '} else {'.
                                     '$("#'.$id.'controlador_"+valores_usados[i]+"").attr("calculado",1);'.
                                 '}'.
                             '}'.
@@ -214,18 +214,18 @@ class Form
             $change = 'Form_Change_'.$id.'()';
         }
         // Se tiver Obrigatorio bota Asteristico
-        if(strpos($class, 'obrigatorio')!==false){
+        if (strpos($class, 'obrigatorio')!==false){
             $titulo = $titulo.'*';
         } 
         // Add Valor Zero
         $nenhum_selecionado = true;
         foreach($opcoes as $valor){
-            if($valor['selected']===1){
+            if ($valor['selected']===1){
                 $nenhum_selecionado = false;
                 continue;
             }
         }
-        if($nenhum_selecionado) array_unshift($opcoes, Array('titulo'=>'','valor'=>'','selected'=>1));
+        if ($nenhum_selecionado) array_unshift($opcoes, Array('titulo'=>'','valor'=>'','selected'=>1));
         // Puxa Formulario
         $config = Array(
             'Tipo'      => 'SelectMultiplo',
@@ -284,7 +284,7 @@ class Form
         //Começa
         $id = $name;
         // Verifica se é obrigatorio
-        if(strpos($class, 'obrigatorio')!==false){
+        if (strpos($class, 'obrigatorio')!==false){
             $titulo = $titulo.'*';
         } 
         // Faz Array
@@ -335,15 +335,15 @@ class Form
         //Começa
         $id = $name;
         // Verifica se é obrigatorio
-        if(strpos($class, 'obrigatorio')!==false){
+        if (strpos($class, 'obrigatorio')!==false){
             $titulo = $titulo.'*';
         } 
         // Trata o Change
-        if($change!==false && $change!='' && is_string($change)){
-            if(strpos($change, 'Local::')!==false){
+        if ($change!==false && $change!='' && is_string($change)){
+            if (strpos($change, 'Local::')!==false){
                 $change = str_replace(Array('Local::'), Array(''), $change);
                 $change = $change;
-            }else{
+            } else {
                 $change = 'Sierra.'.$change;
             }
         }
@@ -396,7 +396,7 @@ class Form
         
         ++self::$tab_index;
         // Verifica se é obrigatorio
-        if(strpos($class, 'obrigatorio')!==false){
+        if (strpos($class, 'obrigatorio')!==false){
             $titulo = $titulo.'*';
         }        
         //Começa
@@ -441,15 +441,15 @@ class Form
      */
     public function Radio_Novo($titulo,$name,$id='',$url='',$change='', $js = '', $condicao=false, $escondido = false){
         // Verifica se é obrigatorio
-        /*if(strpos($class, 'obrigatorio')!==false){
+        /*if (strpos($class, 'obrigatorio')!==false){
             $titulo = $titulo.'*';
         }*/
         // Trata o Change
-        if($change!==false && $change!='' && is_string($change)){
-            if(strpos($change, 'Local::')!==false){
+        if ($change!==false && $change!='' && is_string($change)){
+            if (strpos($change, 'Local::')!==false){
                 $change = str_replace(Array('Local::'), Array(''), $change);
                 $change = $change;
-            }else{
+            } else {
                 $change = 'Sierra.'.$change;
             }
         }
@@ -490,9 +490,9 @@ class Form
      */
     public function Radio_Opcao($titulo,$value,$selected = 0){
         ++self::$tab_index;
-        if($this->ColunaForm=='vertical'){
+        if ($this->ColunaForm=='vertical'){
             $classextra = 'radio-block-level';
-        }else{
+        } else {
             $classextra = 'radio';
         }
         $config = Array(
@@ -556,15 +556,15 @@ class Form
      */
     public function Checkbox_Novo($titulo,$name,$id='',$url='',$change='', $js = '', $condicao=false, $escondido = false){
         // Verifica se é obrigatorio
-        if(strpos($class, 'obrigatorio')!==false){
+        if (strpos($class, 'obrigatorio')!==false){
             $titulo = $titulo.'*';
         }
         // Trata o Change
-        if($change!==false && $change!='' && is_string($change)){
-            if(strpos($change, 'Local::')!==false){
+        if ($change!==false && $change!='' && is_string($change)){
+            if (strpos($change, 'Local::')!==false){
                 $change = str_replace(Array('Local::'), Array(''), $change);
                 $change = $change;
-            }else{
+            } else {
                 $change = 'Sierra.'.$change;
             }
         }
@@ -671,15 +671,15 @@ class Form
     public function Select_Novo($titulo,$name,$id='',$url='',$change='', $js = '', $condicao=false, $escondido = false, $class='', $infonulo='Escolha uma opção',$multiplo=false){
         ++self::$tab_index;
         // Verifica se é obrigatorio
-        if(strpos($class, 'obrigatorio')!==false){
+        if (strpos($class, 'obrigatorio')!==false){
             $titulo = $titulo.'*';
         }
         // Trata o Change
-        if($change!==false && $change!='' && is_string($change)){
-            if(strpos($change, 'Local::')!==false){
+        if ($change!==false && $change!='' && is_string($change)){
+            if (strpos($change, 'Local::')!==false){
                 $change = str_replace(Array('Local::'), Array(''), $change);
                 $change = $change;
-            }else{
+            } else {
                 $change = 'Sierra.'.$change;
             }
         }

@@ -147,7 +147,7 @@ class Face_Detector {
             for($y = 0; $y < $endy ; $y += $step ){
                 for($x = 0; $x < $endx ; $x += $step ){
                     $passed = $this->detect_on_sub_image( $x, $y, $scale, $ii, $ii2, $w, $width+1, $inv_area);
-                    if( $passed ) {
+                    if ( $passed ) {
                         return array('x'=>$x, 'y'=>$y, 'w'=>$w);
                     }
                 } // end x
@@ -199,13 +199,13 @@ class Face_Detector {
                     $rect_sum *= $inv_area;
  
                     $current_node = null;
-                    if( $rect_sum >= $node_thresh*$vnorm ){
-                        if( $rightidx == -1 )
+                    if ( $rect_sum >= $node_thresh*$vnorm ){
+                        if ( $rightidx == -1 )
                             $tree_sum = $rightval;
                         else
                             $current_node = $tree[$rightidx];
                     } else {
-                        if( $leftidx == -1 )
+                        if ( $leftidx == -1 )
                             $tree_sum = $leftval;
                         else
                             $current_node = $tree[$leftidx];
@@ -213,7 +213,7 @@ class Face_Detector {
                 }
                 $stage_sum += $tree_sum;
             }
-            if( $stage_sum < $stage_thresh ){
+            if ( $stage_sum < $stage_thresh ){
                 return false;
             }
         }

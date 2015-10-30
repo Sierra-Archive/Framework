@@ -48,19 +48,19 @@ class Curso_Principal implements \Framework\PrincipalInterface
         $i = 0;
         // Busca Cursos
         $result = self::Busca_Cursos($controle, $Modelo, $Visual, $busca);
-        if($result!==false){
+        if ($result!==false){
             $i = $i + $result;
         }
         // Busca Turmas
         $result = self::Busca_Turmas($controle, $Modelo, $Visual, $busca);
-        if($result!==false){
+        if ($result!==false){
             $i = $i + $result;
         }
         
         // Retorna
-        if(is_int($i) && $i>0){
+        if (is_int($i) && $i>0){
             return $i;
-        }else{
+        } else {
             return false;
         }
     }
@@ -75,14 +75,14 @@ class Curso_Principal implements \Framework\PrincipalInterface
         ));
         $i = 0;
         $cursos = $Modelo->db->Sql_Select('Curso',$where);
-        if($cursos===false) return false;
+        if ($cursos===false) return false;
         // add botao
         $Visual->Blocar('<a title="Adicionar Curso" class="btn btn-success lajax explicar-titulo" data-acao="" href="'.URL_PATH.'Curso/Curso/Cursos_Add">Adicionar novo Curso</a><div class="space15"></div>');
-        if(is_object($cursos)) $cursos = Array(0=>$cursos);
-        if($cursos!==false && !empty($cursos)){
+        if (is_object($cursos)) $cursos = Array(0=>$cursos);
+        if ($cursos!==false && !empty($cursos)){
             list($tabela,$i) = Curso_CursoControle::Cursos_Tabela($cursos);
             $Visual->Show_Tabela_DataTable($tabela);
-        }else{         
+        } else {         
             $Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Curso na Busca '.$busca.'</font></b></center>');
         }
         $titulo = 'Busca de Cursos: '.$busca.' ('.$i.')';
@@ -96,14 +96,14 @@ class Curso_Principal implements \Framework\PrincipalInterface
         ));
         $i = 0;
         $albuns = $Modelo->db->Sql_Select('Curso_Turma',$where);
-        if($albuns===false) return false;
+        if ($albuns===false) return false;
         // add botao
         $Visual->Blocar('<a title="Adicionar Turma" class="btn btn-success lajax explicar-titulo" data-acao="" href="'.URL_PATH.'Curso/Turma/Turmas_Add">Adicionar nova Turma</a><div class="space15"></div>');
-        if(is_object($albuns)) $albuns = Array(0=>$albuns);
-        if($albuns!==false && !empty($albuns)){
+        if (is_object($albuns)) $albuns = Array(0=>$albuns);
+        if ($albuns!==false && !empty($albuns)){
             list($tabela,$i) = Curso_TurmaControle::Turmas_Tabela($albuns);
             $Visual->Show_Tabela_DataTable($tabela);
-        }else{        
+        } else {        
             $Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Turma de Curso na Busca '.$busca.'</font></b></center>');
         }
         $titulo = 'Busca de Turmas de Cursos: '.$busca.' ('.$i.')';

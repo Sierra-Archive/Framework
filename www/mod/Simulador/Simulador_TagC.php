@@ -24,9 +24,9 @@ class Simulador_TagControle extends Simulador_Controle
     static function Endereco_Tag($true=true){
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
-        if($true===true){
+        if ($true===true){
             $_Controle->Tema_Endereco(__('Tag'),'Simulador/Tag/Tags');
-        }else{
+        } else {
             $_Controle->Tema_Endereco(__('Tag'));
         }
     }
@@ -38,11 +38,11 @@ class Simulador_TagControle extends Simulador_Controle
         $Visual     = &$Registro->_Visual;
         $tabela = Array();
         $i = 0;
-        if($tags!==false){
+        if ($tags!==false){
             // Percorre Tags
-            if(is_object($tags)) $tags = Array(0=>$tags);
+            if (is_object($tags)) $tags = Array(0=>$tags);
             reset($tags);
-            if(!empty($tags)){
+            if (!empty($tags)){
                 $perm_editar = \Framework\App\Registro::getInstacia()->_Acl->Get_Permissao_Url('Simulador/Tag/Tags_Edit');
                 $perm_del = \Framework\App\Registro::getInstacia()->_Acl->Get_Permissao_Url('Simulador/Tag/Tags_Del');
 
@@ -60,11 +60,11 @@ class Simulador_TagControle extends Simulador_Controle
                 }
             }
         }
-        if($funcao===''){
+        if ($funcao===''){
             unset($tabela['Funções']);
         }
         // Desconta Primeiro Registro
-        if($raiz!==false && $raiz!=0){
+        if ($raiz!==false && $raiz!=0){
             $i = $i-1;
         }
         // Retorna List
@@ -153,7 +153,7 @@ class Simulador_TagControle extends Simulador_Controle
         self::Endereco_Tag();
         // Recupera Caracteristica
         $resultado = $this->_Modelo->db->Sql_Select('Simulador_Tag', '{sigla}id=\''.$id.'\'',1);
-        if($resultado===false){
+        if ($resultado===false){
             return _Sistema_erroControle::Erro_Fluxo('Essa Caracteristica não existe:'. $raiz,404);
         }
         // Carrega Config
@@ -174,7 +174,7 @@ class Simulador_TagControle extends Simulador_Controle
         self::DAO_Campos_Retira($campos, 'grupo');
         self::DAO_Campos_Retira($campos, 'ext');
         self::DAO_Campos_Retira($campos, 'tamanho');
-        /*if($resultado->tipo==1){
+        /*if ($resultado->tipo==1){
             self::DAO_Campos_Retira($campos, $campomysql);
         }*/
         $this->_Visual->Blocar(\Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos,$editar,'html'));
@@ -213,13 +213,13 @@ class Simulador_TagControle extends Simulador_Controle
         $tag = $this->_Modelo->db->Sql_Select('Simulador_Tag', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($tag);
         // Mensagem
-    	if($sucesso===true){
+    	if ($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
                 "mgs_secundaria" => __('Tag/Caracteristica deletado com sucesso')
             );
-    	}else{
+    	} else {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),
@@ -243,18 +243,18 @@ class Simulador_TagControle extends Simulador_Controle
      */
     static function Tag_Dinamica($motivo,$motivoid,$camada,$retornar=true){
         $existe = false;
-        if($retornar==='false') $retornar = false;
+        if ($retornar==='false') $retornar = false;
         // Verifica se Existe Conexao, se nao tiver abre o adicionar conexao, se nao, abre a tag!
         $Registro = &\Framework\App\Registro::getInstacia();
         $resultado = $Registro->_Modelo->db->Sql_Select('Simulador_Tag_Conexao','{sigla}motivo=\''.$motivo.'\' AND {sigla}motivoid=\''.$motivoid.'\'',1);
-        if(is_object($resultado)){
+        if (is_object($resultado)){
             $existe = true;
         }
         
         // Dependendo se Existir Cria Formulario ou Lista arquivos
-        if($existe===false){
+        if ($existe===false){
             $html = self::Tag_Dinamica_Add($motivo, $motivoid, $camada);
-        }else{
+        } else {
             /*list($titulo,$html,$i)*/$html = self::Tags_Processar_Static($resultado->tag, false);
             $html = '<span id="tag_arquivos_mostrar">'.$html[1].'</span>'.
                     $Registro->_Visual->Upload_Janela(
@@ -269,9 +269,9 @@ class Simulador_TagControle extends Simulador_Controle
             $this->_Visual->Bloco_Unico_CriaJanela($titulo);*/
         }
         
-        if($retornar===true){
+        if ($retornar===true){
             return $html;
-        }else{
+        } else {
             $conteudo = array(
                 'location'  =>  '#'.$camada,
                 'js'        =>  '',
@@ -296,7 +296,7 @@ class Simulador_TagControle extends Simulador_Controle
     }
     public function Tag_Dinamica_Add2($motivo,$motivoid,$camada){
         $resultado = $this->_Modelo->db->Sql_Select('Simulador_Tag_Conexao','{sigla}motivo=\''.$motivo.'\' AND {sigla}motivoid=\''.$motivoid.'\'',1);
-        if(is_object($resultado)){
+        if (is_object($resultado)){
             SimuladorControle::Tag_Dinamica($motivo,$motivoid,$camada,false);
             return true;
         }

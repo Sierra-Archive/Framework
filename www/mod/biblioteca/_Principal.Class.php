@@ -71,12 +71,12 @@ class biblioteca_Principal implements \Framework\PrincipalInterface
         $i = 0;
         // Busca Bibliotecas
         $result = self::Busca_Bibliotecas($controle, $Modelo, $Visual, $busca);
-        if($result!==false){
+        if ($result!==false){
             $i = $i + $result;
         }
-        if(is_int($i) && $i>0){
+        if (is_int($i) && $i>0){
             return $i;
-        }else{
+        } else {
             return false;
         }
     }
@@ -88,17 +88,17 @@ class biblioteca_Principal implements \Framework\PrincipalInterface
         ));
         $i = 0;
         $bibliotecas = $Modelo->db->Sql_Select('Biblioteca',$where);
-        if($bibliotecas===false) return false;
+        if ($bibliotecas===false) return false;
         // add botao
         $Visual->Blocar('<a title="Adicionar Pasta a Biblíoteca" class="btn btn-success lajax explicar-titulo" data-acao="" href="'.URL_PATH.'biblioteca/Biblioteca/Bibliotecas_Add">Adicionar nova Biblíoteca</a><div class="space15"></div>');
-        if(is_object($bibliotecas)) $bibliotecas = Array(0=>$bibliotecas);
-        if($bibliotecas!==false && !empty($bibliotecas)){
+        if (is_object($bibliotecas)) $bibliotecas = Array(0=>$bibliotecas);
+        if ($bibliotecas!==false && !empty($bibliotecas)){
             $funcao = '';
             $tabela = Array();
             $i = 0;
-            if($raiz!==false && $raiz!=0){
+            if ($raiz!==false && $raiz!=0){
                 $resultado_pasta = $Modelo->db->Sql_Select('Biblioteca', Array('id'=>$raiz),1);
-                if($resultado_pasta===false){
+                if ($resultado_pasta===false){
                     return _Sistema_erroControle::Erro_Fluxo('Essa Pasta não existe:'. $raiz,404);
                 }
                 $tabela['Tipo'][$i]             = '<a href="'.URL_PATH.'biblioteca/Biblioteca/Bibliotecas/'.$resultado_pasta->parent.'" border="1" class="lajax" data-acao=""><img alt'.__('Voltar para Diretório Anterior').' src="'.WEB_URL.'img'.US.'arquivos'.US.'pastavoltar.png" alt="0" /></a>';
@@ -110,47 +110,47 @@ class biblioteca_Principal implements \Framework\PrincipalInterface
                 $tabela['Funções'][$i]          = '';
                 ++$i;
             }
-            if($bibliotecas!==false){
+            if ($bibliotecas!==false){
                 // Percorre Bibliotecas
-                if(is_object($bibliotecas)) $bibliotecas = Array(0=>$bibliotecas);
+                if (is_object($bibliotecas)) $bibliotecas = Array(0=>$bibliotecas);
                 reset($bibliotecas);
-                if(!empty($bibliotecas)){
+                if (!empty($bibliotecas)){
                     $perm_download = \Framework\App\Registro::getInstacia()->_Acl->Get_Permissao_Url('biblioteca/Biblioteca/Download');
                     $perm_editar = \Framework\App\Registro::getInstacia()->_Acl->Get_Permissao_Url('biblioteca/Biblioteca/Bibliotecas_Edit');
                     $perm_del = \Framework\App\Registro::getInstacia()->_Acl->Get_Permissao_Url('biblioteca/Biblioteca/Bibliotecas_Del');
 
                     foreach ($bibliotecas as &$valor) {
-                        if($valor->tipo==1){
+                        if ($valor->tipo==1){
                             $tipo       =   'pasta';
                             $foto = WEB_URL.'img'.US.'arquivos'.US.$tipo.'.png';
-                        }else{
+                        } else {
                             $tipo  = \Framework\App\Sistema_Funcoes::Control_Arq_Ext($valor->ext);
                             $endereco = ARQ_PATH.'bibliotecas'.DS.strtolower($valor->arquivo).'.'.$tipo;
-                            if(!file_exists($endereco)){
+                            if (!file_exists($endereco)){
                                 continue;
                             }
-                            if(file_exists(WEB_PATH.'img'.US.'arquivos'.US.$tipo.'.png')){
+                            if (file_exists(WEB_PATH.'img'.US.'arquivos'.US.$tipo.'.png')){
                                 $foto = WEB_URL.'img'.US.'arquivos'.US.$tipo.'.png';
-                            }else{
+                            } else {
                                 $foto = WEB_URL.'img'.US.'arquivos'.US.'desconhecido.png';
                             }
                         }
 
                         // Tamanho
                         $tamanho = (int) $valor->tamanho;
-                        if($tamanho === 0){
-                            if($valor->tipo==1){
+                        if ($tamanho === 0){
+                            if ($valor->tipo==1){
                                 $tamanho = biblioteca_Controle::Bibliotecas_AtualizaTamanho_Pai($valor);
-                            }else{
+                            } else {
                                 $tamanho = filesize($endereco);
                                 $Modelo->db->Sql_Update($valor);
                             }
                         }
 
-                        if($valor->tipo==1){
+                        if ($valor->tipo==1){
                             $tabela['Tipo'][$i]             = '<a href="'.URL_PATH.'biblioteca/Biblioteca/Bibliotecas/'.$valor->id.'/" border="1" class="lajax" data-acao=""><img src="'.$foto.'" alt="'.__('Abrir Diretório').'" /></a>';
                             $tabela['Nome'][$i]             = '<a href="'.URL_PATH.'biblioteca/Biblioteca/Bibliotecas/'.$valor->id.'/" border="1" class="lajax" data-acao="">'.$valor->nome.'</a>';
-                        }else{
+                        } else {
                             $tabela['Tipo'][$i]             = '<a href="'.URL_PATH.'biblioteca/Biblioteca/Download/'.$valor->id.'/" border="1" target="_BLANK"><img src="'.$foto.'" alt="'.__('Fazer Download de Arquivo ').$tipo.'" /></a>';
                             $tabela['Nome'][$i]             = '<a href="'.URL_PATH.'biblioteca/Biblioteca/Download/'.$valor->id.'/" border="1" target="_BLANK">'.$valor->nome.'</a>';
                         }
@@ -159,10 +159,10 @@ class biblioteca_Principal implements \Framework\PrincipalInterface
                         $tabela['Criador'][$i]          = $valor->usuario2;
                         $tabela['Data'][$i]             = $valor->log_date_add;
 
-                        if($valor->tipo==1){
+                        if ($valor->tipo==1){
                             $tabela['Funções'][$i]          = $Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Pasta'        ,'biblioteca/Biblioteca/Bibliotecas_Edit/'.$valor->id.'/'.$raiz    ,''),$perm_editar).
                                                               $Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Pasta'       ,'biblioteca/Biblioteca/Bibliotecas_Del/'.$valor->id.'/'.$raiz     ,'Deseja realmente deletar essa pasta ?'),$perm_del);
-                        }else{
+                        } else {
                             $tabela['Funções'][$i]          = $Visual->Tema_Elementos_Btn('Baixar'     ,Array('Download de Arquivo'   ,'biblioteca/Biblioteca/Download/'.$valor->id    ,''),$perm_download).
                                                               $Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Arquivo'        ,'biblioteca/Biblioteca/Bibliotecas_Edit/'.$valor->id.'/'.$raiz    ,''),$perm_editar).
                                                               $Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Arquivo'       ,'biblioteca/Biblioteca/Bibliotecas_Del/'.$valor->id.'/'.$raiz     ,'Deseja realmente deletar esse arquivo ?'),$perm_del);
@@ -172,16 +172,16 @@ class biblioteca_Principal implements \Framework\PrincipalInterface
                     }
                 }
             }
-            if($funcao===''){
+            if ($funcao===''){
                 unset($tabela['Funções']);
             }
             // Desconta Primeiro Registro
-            if($raiz!==false && $raiz!=0){
+            if ($raiz!==false && $raiz!=0){
                 $i = $i-1;
             }
             // Retorna List
             $Visual->Show_Tabela_DataTable($tabela);
-        }else{        
+        } else {        
             $Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Arquivo/Pasta na Busca '.$busca.'</font></b></center>');
         }
         $titulo = 'Busca de Pasta/Arquivo na Biblíoteca: '.$busca.' ('.$i.')';
@@ -206,11 +206,11 @@ class biblioteca_Principal implements \Framework\PrincipalInterface
         
         // Carrega Bibliotecas
         $biblioteca = $Modelo->db->Sql_Select('Biblioteca',false,0, '', '*', true, '*'); // Pega Todos os Dados de Bibliotecas -> Até os Deletados.
-        if(is_object($biblioteca))  $biblioteca = Array($biblioteca);
-        if($biblioteca===false)     $biblioteca = Array();
+        if (is_object($biblioteca))  $biblioteca = Array($biblioteca);
+        if ($biblioteca===false)     $biblioteca = Array();
         
         // Verifica se Todos tem Download Válido
-        if(!empty($biblioteca)){
+        if (!empty($biblioteca)){
             foreach($biblioteca as $valor){
 
             }

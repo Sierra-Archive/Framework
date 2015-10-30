@@ -52,7 +52,7 @@ class predial_Principal implements \Framework\PrincipalInterface
         
         
         
-        if(\Framework\App\Registro::getInstacia()->_Acl->Get_Permissao_Url('predial/Correio/Correios')){
+        if (\Framework\App\Registro::getInstacia()->_Acl->Get_Permissao_Url('predial/Correio/Correios')){
             // Correios
             $correio_qnt = $Modelo->db->Sql_Contar('Predial_Bloco_Apart_Correio','data_recebido=\'0000-00-00 00:00:00\'');
             // Adiciona Widget a Pagina Inicial
@@ -71,14 +71,14 @@ class predial_Principal implements \Framework\PrincipalInterface
         
         // Area de Donos de Apartamentos
         $id = \Framework\App\Acl::Usuario_GetID_Static();
-        if($id!==false && $id!==0){
+        if ($id!==false && $id!==0){
             // Correios
             $where = Array(
                 'morador'     => $id
             );
             $apartamentos = $Modelo->db->Sql_Select('Predial_Bloco_Apart',$where);
-            if(is_object($apartamentos)) $apartamentos = Array(0=>$apartamentos);
-            if($apartamentos!==false && !empty($apartamentos)){
+            if (is_object($apartamentos)) $apartamentos = Array(0=>$apartamentos);
+            if ($apartamentos!==false && !empty($apartamentos)){
                 foreach ($apartamentos as $valor){
                     $apartamento = $valor->id;
                     list($titulo1,$html1) = predial_AdvertenciaControle::Personalizados($apartamento);
@@ -134,42 +134,42 @@ class predial_Principal implements \Framework\PrincipalInterface
         $i = 0;
         // Busca Advertencias
         $result = self::Busca_Advertencias($controle, $Modelo, $Visual, $busca);
-        if($result!==false){
+        if ($result!==false){
             $i = $i + $result;
         }
         // Busca Animal
         $result = self::Busca_Animais($controle, $Modelo, $Visual, $busca);
-        if($result!==false){
+        if ($result!==false){
             $i = $i + $result;
         }
         // Busca Apartamento
         $result = self::Busca_Apartamentos($controle, $Modelo, $Visual, $busca);
-        if($result!==false){
+        if ($result!==false){
             $i = $i + $result;
         }
         // Busca Bloco
         $result = self::Busca_Blocos($controle, $Modelo, $Visual, $busca);
-        if($result!==false){
+        if ($result!==false){
             $i = $i + $result;
         }
         // Busca Correios
         $result = self::Busca_Correios($controle, $Modelo, $Visual, $busca);
-        if($result!==false){
+        if ($result!==false){
             $i = $i + $result;
         }
         // Busca Informativos
         $result = self::Busca_Informativos($controle, $Modelo, $Visual, $busca);
-        if($result!==false){
+        if ($result!==false){
             $i = $i + $result;
         }
         // Busca Veiculo
         $result = self::Busca_Veiculos($controle, $Modelo, $Visual, $busca);
-        if($result!==false){
+        if ($result!==false){
             $i = $i + $result;
         }
-        if(is_int($i) && $i>0){
+        if (is_int($i) && $i>0){
             return $i;
-        }else{
+        } else {
             return false;
         }
     }
@@ -181,14 +181,14 @@ class predial_Principal implements \Framework\PrincipalInterface
         ));
         $i = 0;
         $advertencias = $Modelo->db->Sql_Select('Predial_Bloco_Apart_Advertencia',$where);
-        if($advertencias===false) return false;
+        if ($advertencias===false) return false;
         // add botao
         $Visual->Blocar('<a title="Adicionar Advertência" class="btn btn-success lajax explicar-titulo" data-acao="" href="'.URL_PATH.'predial/Advertencia/Advertencias_Add">Adicionar nova Advertência</a><div class="space15"></div>');
-        if(is_object($advertencias)) $advertencias = Array(0=>$advertencias);
-        if($advertencias!==false && !empty($advertencias)){
+        if (is_object($advertencias)) $advertencias = Array(0=>$advertencias);
+        if ($advertencias!==false && !empty($advertencias)){
             list($tabela,$i) = predial_AdvertenciaControle::Advertencias_Tabela($advertencias);
             $Visual->Show_Tabela_DataTable($tabela);
-        }else{
+        } else {
             $Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhuma Advertência na Busca '.$busca.'</font></b></center>');
         }
         $titulo = 'Busca de Advertências: '.$busca.' ('.$i.')';
@@ -201,14 +201,14 @@ class predial_Principal implements \Framework\PrincipalInterface
         );
         $i = 0;
         $animais = $Modelo->db->Sql_Select('Predial_Bloco_Apart_Animal',$where);
-        if($animais===false) return false;
+        if ($animais===false) return false;
         // add botao
         $Visual->Blocar('<a title="Adicionar Animal" class="btn btn-success lajax explicar-titulo" data-acao="" href="'.URL_PATH.'predial/Correio/Animais_Add">Adicionar novo Animal</a><div class="space15"></div>');
-        if(is_object($animais)) $animais = Array(0=>$animais);
-        if($animais!==false && !empty($animais)){
+        if (is_object($animais)) $animais = Array(0=>$animais);
+        if ($animais!==false && !empty($animais)){
             list($tabela,$i) = predial_CorreioControle::Animais_Tabela($animais);
             $Visual->Show_Tabela_DataTable($tabela);
-        }else{           
+        } else {           
             $Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Animal na Busca '.$busca.'</font></b></center>');
         }
         $titulo = 'Busca de Animais: '.$busca.' ('.$i.')';
@@ -221,14 +221,14 @@ class predial_Principal implements \Framework\PrincipalInterface
         );
         $i = 0;
         $apartamentos = $Modelo->db->Sql_Select('Predial_Bloco_Apart',$where);
-        if($apartamentos===false) return false;
+        if ($apartamentos===false) return false;
         // add botao
         $Visual->Blocar('<a title="Adicionar Apartamento" class="btn btn-success lajax explicar-titulo" data-acao="" href="'.URL_PATH.'predial/Apart/Aparts_Add">Adicionar novo Apartamento</a><div class="space15"></div>');
-        if(is_object($apartamentos)) $apartamentos = Array(0=>$apartamentos);
-        if($apartamentos!==false && !empty($apartamentos)){
+        if (is_object($apartamentos)) $apartamentos = Array(0=>$apartamentos);
+        if ($apartamentos!==false && !empty($apartamentos)){
             list($tabela,$i) = predial_ApartControle::Aparts_Tabela($apartamentos);
             $Visual->Show_Tabela_DataTable($tabela);
-        }else{       
+        } else {       
             $Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Apartamento na Busca '.$busca.'</font></b></center>');
         }
         $titulo = 'Busca de Apartamentos: '.$busca.' ('.$i.')';
@@ -241,14 +241,14 @@ class predial_Principal implements \Framework\PrincipalInterface
         );
         $i = 0;
         $blocos = $Modelo->db->Sql_Select('Predial_Bloco',$where);
-        if($blocos===false) return false;
+        if ($blocos===false) return false;
         // add botao
         $Visual->Blocar('<a title="Adicionar Bloco" class="btn btn-success lajax explicar-titulo" data-acao="" href="'.URL_PATH.'predial/Bloco/Blocos_Add">Adicionar novo Bloco</a><div class="space15"></div>');
-        if(is_object($blocos)) $blocos = Array(0=>$blocos);
-        if($blocos!==false && !empty($blocos)){
+        if (is_object($blocos)) $blocos = Array(0=>$blocos);
+        if ($blocos!==false && !empty($blocos)){
             list($tabela,$i) = predial_BlocoControle::Blocos_Tabela($blocos);
             $Visual->Show_Tabela_DataTable($tabela);
-        }else{          
+        } else {          
             $Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Bloco na Busca '.$busca.'</font></b></center>');
         }
         $titulo = 'Busca de Blocos: '.$busca.' ('.$i.')';
@@ -265,14 +265,14 @@ class predial_Principal implements \Framework\PrincipalInterface
         ));
         $i = 0;
         $correios = $Modelo->db->Sql_Select('Predial_Bloco_Apart_Correio',$where);
-        if($correios===false) return false;
+        if ($correios===false) return false;
         // add botao
         $Visual->Blocar('<a title="Adicionar Correio" class="btn btn-success lajax explicar-titulo" data-acao="" href="'.URL_PATH.'predial/Correio/Correios_Add">Adicionar novo Correio</a><div class="space15"></div>');
-        if(is_object($correios)) $correios = Array(0=>$correios);
-        if($correios!==false && !empty($correios)){
+        if (is_object($correios)) $correios = Array(0=>$correios);
+        if ($correios!==false && !empty($correios)){
             list($tabela,$i) = predial_CorreioControle::Correios_Tabela($correios);
             $Visual->Show_Tabela_DataTable($tabela);
-        }else{       
+        } else {       
             $Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Correio na Busca '.$busca.'</font></b></center>');
         }
         $titulo = 'Busca de Correios: '.$busca.' ('.$i.')';
@@ -290,14 +290,14 @@ class predial_Principal implements \Framework\PrincipalInterface
         ));
         $i = 0;
         $informativos = $Modelo->db->Sql_Select('Predial_Bloco_Apart_Informativo',$where);
-        if($informativos===false) return false;
+        if ($informativos===false) return false;
         // add botao
         $Visual->Blocar('<a title="Adicionar Informativo" class="btn btn-success lajax explicar-titulo" data-acao="" href="'.URL_PATH.'predial/Informativo/Informativos_Add">Adicionar novo Informativo</a><div class="space15"></div>');
-        if(is_object($informativos)) $informativos = Array(0=>$informativos);
-        if($informativos!==false && !empty($informativos)){
+        if (is_object($informativos)) $informativos = Array(0=>$informativos);
+        if ($informativos!==false && !empty($informativos)){
             list($tabela,$i) = predial_InformativoControle::Informativos_Tabela($informativos);
             $Visual->Show_Tabela_DataTable($tabela);
-        }else{     
+        } else {     
             $Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Informativo na Busca '.$busca.'</font></b></center>');
         }
         $titulo = 'Busca de Informativos: '.$busca.' ('.$i.')';
@@ -313,14 +313,14 @@ class predial_Principal implements \Framework\PrincipalInterface
         ));
         $i = 0;
         $veiculos = $Modelo->db->Sql_Select('Predial_Bloco_Apart_Veiculo',$where);
-        if($veiculos===false) return false;
+        if ($veiculos===false) return false;
         // add botao
         $Visual->Blocar('<a title="Adicionar Veiculo" class="btn btn-success lajax explicar-titulo" data-acao="" href="'.URL_PATH.'predial/Correio/Veiculos_Add">Adicionar novo Veiculo</a><div class="space15"></div>');
-        if(is_object($veiculos)) $veiculos = Array(0=>$veiculos);
-        if($veiculos!==false && !empty($veiculos)){
+        if (is_object($veiculos)) $veiculos = Array(0=>$veiculos);
+        if ($veiculos!==false && !empty($veiculos)){
             list($tabela,$i) = predial_CorreioControle::Veiculos_Tabela($veiculos);
             $Visual->Show_Tabela_DataTable($tabela);
-        }else{      
+        } else {      
             $Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Veiculo na Busca '.$busca.'</font></b></center>');
         }
         $titulo = 'Busca de Veiculos: '.$busca.' ('.$i.')';

@@ -54,28 +54,28 @@ class Musica_Principal implements \Framework\PrincipalInterface
         $i = 0;
         // Busca Musicas
         $result = self::Busca_Artistas($controle, $Modelo, $Visual, $busca);
-        if($result!==false){
+        if ($result!==false){
             $i = $i + $result;
         }
         // Busca Albuns
         $result = self::Busca_Albuns($controle, $Modelo, $Visual, $busca);
-        if($result!==false){
+        if ($result!==false){
             $i = $i + $result;
         }
         // Busca Musicas
         $result = self::Busca_Musicas($controle, $Modelo, $Visual, $busca);
-        if($result!==false){
+        if ($result!==false){
             $i = $i + $result;
         }
         // Busca Videos
         $result = self::Busca_Videos($controle, $Modelo, $Visual, $busca);
-        if($result!==false){
+        if ($result!==false){
             $i = $i + $result;
         }
         // Retorna
-        if(is_int($i) && $i>0){
+        if (is_int($i) && $i>0){
             return $i;
-        }else{
+        } else {
             return false;
         }
     }
@@ -90,14 +90,14 @@ class Musica_Principal implements \Framework\PrincipalInterface
         ));
         $i = 0;
         $artistas = $Modelo->db->Sql_Select('Musica_Album_Artista',$where);
-        if($artistas===false) return false;
+        if ($artistas===false) return false;
         // add botao
         $Visual->Blocar('<a title="Adicionar Artista" class="btn btn-success lajax explicar-titulo" data-acao="" href="'.URL_PATH.'Musica/Artista/Artistas_Add">Adicionar novo Artista</a><div class="space15"></div>');
-        if(is_object($artistas)) $artistas = Array(0=>$artistas);
-        if($artistas!==false && !empty($artistas)){
+        if (is_object($artistas)) $artistas = Array(0=>$artistas);
+        if ($artistas!==false && !empty($artistas)){
             list($tabela,$i) = Musica_ArtistaControle::Artistas_Tabela($artistas);
             $Visual->Show_Tabela_DataTable($tabela);
-        }else{         
+        } else {         
             $Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Artista na Busca '.$busca.'</font></b></center>');
         }
         $titulo = 'Busca de Artistas: '.$busca.' ('.$i.')';
@@ -111,14 +111,14 @@ class Musica_Principal implements \Framework\PrincipalInterface
         ));
         $i = 0;
         $albuns = $Modelo->db->Sql_Select('Musica_Album',$where);
-        if($albuns===false) return false;
+        if ($albuns===false) return false;
         // add botao
         $Visual->Blocar('<a title="Adicionar Album" class="btn btn-success lajax explicar-titulo" data-acao="" href="'.URL_PATH.'Musica/Album/Albuns_Add">Adicionar novo Album</a><div class="space15"></div>');
-        if(is_object($albuns)) $albuns = Array(0=>$albuns);
-        if($albuns!==false && !empty($albuns)){
+        if (is_object($albuns)) $albuns = Array(0=>$albuns);
+        if ($albuns!==false && !empty($albuns)){
             list($tabela,$i) = Musica_AlbumControle::Albuns_Tabela($albuns);
             $Visual->Show_Tabela_DataTable($tabela);
-        }else{        
+        } else {        
             $Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Album de Artista na Busca '.$busca.'</font></b></center>');
         }
         $titulo = 'Busca de Albuns de Artistas: '.$busca.' ('.$i.')';
@@ -132,14 +132,14 @@ class Musica_Principal implements \Framework\PrincipalInterface
         ));
         $i = 0;
         $albuns = $Modelo->db->Sql_Select('Musica',$where);
-        if($albuns===false) return false;
+        if ($albuns===false) return false;
         // add botao
         $Visual->Blocar('<a title="Adicionar Musica" class="btn btn-success lajax explicar-titulo" data-acao="" href="'.URL_PATH.'Musica/Musica/Musicas_Add">Adicionar nova Musica</a><div class="space15"></div>');
-        if(is_object($albuns)) $albuns = Array(0=>$albuns);
-        if($albuns!==false && !empty($albuns)){
+        if (is_object($albuns)) $albuns = Array(0=>$albuns);
+        if ($albuns!==false && !empty($albuns)){
             list($tabela,$i) = Musica_AlbumControle::Albuns_Tabela($albuns);
             $Visual->Show_Tabela_DataTable($tabela);
-        }else{      
+        } else {      
             $Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhuma Musica de Artista na Busca '.$busca.'</font></b></center>');
         }
         $titulo = 'Busca de Musicas de Artistas: '.$busca.' ('.$i.')';
@@ -153,14 +153,14 @@ class Musica_Principal implements \Framework\PrincipalInterface
         ));
         $i = 0;
         $albuns = $Modelo->db->Sql_Select('Musica_Video',$where);
-        if($albuns===false) return false;
+        if ($albuns===false) return false;
         // add botao
         $Visual->Blocar('<a title="Adicionar Video" class="btn btn-success lajax explicar-titulo" data-acao="" href="'.URL_PATH.'Musica/Video/Videos_Add">Adicionar novo Video</a><div class="space15"></div>');
-        if(is_object($albuns)) $albuns = Array(0=>$albuns);
-        if($albuns!==false && !empty($albuns)){
+        if (is_object($albuns)) $albuns = Array(0=>$albuns);
+        if ($albuns!==false && !empty($albuns)){
             list($tabela,$i) = Musica_AlbumControle::Albuns_Tabela($albuns);
             $Visual->Show_Tabela_DataTable($tabela);
-        }else{           
+        } else {           
             $Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Video de Artista na Busca '.$busca.'</font></b></center>');
         }
         $titulo = 'Busca de Videos de Artistas: '.$busca.' ('.$i.')';

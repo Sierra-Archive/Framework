@@ -25,7 +25,7 @@ class Financeiro_ListarModelo extends Financeiro_Modelo
             $userreceptor = $campo->id;
             ++$i;
         }
-        if($i==0) return 0;
+        if ($i==0) return 0;
         // Retira saldo do usuario atual   $userreceptor
         Financeiro_Modelo::MovInt_Inserir($this,\Framework\App\Acl::Usuario_GetID_Static(),$quantia,0,'Financeiro',$userreceptor,APP_DATA,APP_HORA);
         // Acrescenta no novo usuario
@@ -35,7 +35,7 @@ class Financeiro_ListarModelo extends Financeiro_Modelo
     public function sacar_inserir($quantia){
         GLOBAL $config;
         $user = (int) \Framework\App\Acl::Usuario_GetID_Static();
-        if(!is_int($user) || $user==0) return 0;
+        if (!is_int($user) || $user==0) return 0;
         $this->db->query('INSERT INTO '.MYSQL_FINANCEIRO_MOV_EXT.' (user,valor,positivo,obs,log_date_add,log_user_add) VALUES (\''.$user.'\',\''.$quantia.'\',\'0\',\'Pedido de Saque Realizado pelo Sistema\',\''.APP_HORA.'\','.$user.')');
         return 1;
     }

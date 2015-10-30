@@ -26,9 +26,9 @@ class predial_AnimalControle extends predial_Controle
         $_Controle = $Registro->_Controle;
         $titulo = __('Animais');
         $link = 'predial/Animal/Animais';
-        if($true===true){
+        if ($true===true){
             $_Controle->Tema_Endereco($titulo,$link);
-        }else{
+        } else {
             $_Controle->Tema_Endereco($titulo);
         }
     }
@@ -37,7 +37,7 @@ class predial_AnimalControle extends predial_Controle
         $Visual     = &$Registro->_Visual;
         $tabela = Array();
         $i = 0;
-        if(is_object($animais)) $animais = Array(0=>$animais);
+        if (is_object($animais)) $animais = Array(0=>$animais);
         reset($animais);
         foreach ($animais as &$valor) {
             $tabela['Bloco'][$i]            = $valor->bloco2;
@@ -73,11 +73,11 @@ class predial_AnimalControle extends predial_Controle
         )));
         // Busca
         $animais = $this->_Modelo->db->Sql_Select('Predial_Bloco_Apart_Animal');
-        if($animais!==false && !empty($animais)){
+        if ($animais!==false && !empty($animais)){
             list($tabela,$i) = self::Animais_Tabela($animais);
             $this->_Visual->Show_Tabela_DataTable($tabela);
             unset($tabela);
-        }else{          
+        } else {          
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Animal</font></b></center>');
         }
         $titulo = __('Listagem de Animais').' ('.$i.')';
@@ -167,13 +167,13 @@ class predial_AnimalControle extends predial_Controle
         $animal = $this->_Modelo->db->Sql_Select('Predial_Bloco_Apart_Animal', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($animal);
         // Mensagem
-    	if($sucesso===true){
+    	if ($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
                 "mgs_secundaria" => __('Animal deletado com sucesso')
             );
-    	}else{
+    	} else {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),

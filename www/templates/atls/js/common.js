@@ -70,7 +70,7 @@ $(document).ready(function(){
 			if($(window).width() <= 1000){
 				$('#smoothmenu1').hide();
 				$('.mobMenu').show();
-			}else{
+			} else {
 				$('#smoothmenu1').show();
 				$('.mobMenu').hide();
 				}
@@ -94,7 +94,7 @@ jQuery(function() {
 		if($(window).width() <= 1000){
 			$('#smoothmenu1').hide();
 			$('.mobMenu').show();
-		}else{
+		} else {
 			$('#smoothmenu1').show();
 			$('.mobMenu').hide();
 			}

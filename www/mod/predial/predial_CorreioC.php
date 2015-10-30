@@ -26,16 +26,16 @@ class predial_CorreioControle extends predial_Controle
         $_Controle = $Registro->_Controle;
         $titulo = __('Corrêios');
         $link = 'predial/Correio/Correios';
-        if($true===true){
+        if ($true===true){
             $_Controle->Tema_Endereco($titulo,$link);
-        }else{
+        } else {
             $_Controle->Tema_Endereco($titulo);
         }
     }
     public function Correios_Baixar($correio=false){
         
         self::Endereco_Correio();
-        if($correio===false || $correio == 0) return false;
+        if ($correio===false || $correio == 0) return false;
         $correio = (int) $correio;
         $where = Array(
             'id' => $correio
@@ -43,13 +43,13 @@ class predial_CorreioControle extends predial_Controle
         $correios = $this->_Modelo->db->Sql_Select('Predial_Bloco_Apart_Correio',$where);
         $correios->data_recebido = date('d/m/Y H:i:s');
         $sucesso = $this->_Modelo->db->Sql_Update($correios);
-    	if($sucesso===true){
+    	if ($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Sucesso'),
                 "mgs_secundaria" => __('Correio declarado Recebido com sucesso')
             );
-    	}else{
+    	} else {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),
@@ -68,7 +68,7 @@ class predial_CorreioControle extends predial_Controle
         $Visual     = &$Registro->_Visual;
         $tabela = Array();
         $i = 0;
-        if(is_object($correios)) $correios = Array(0=>$correios);
+        if (is_object($correios)) $correios = Array(0=>$correios);
         reset($correios);
         foreach ($correios as &$valor) {
             $email = false;
@@ -82,28 +82,28 @@ class predial_CorreioControle extends predial_Controle
                 1,
                 'id DESC'
             );
-            if($apartamento!==false && is_int($apartamento->morador) && $apartamento->morador!=0){
+            if ($apartamento!==false && is_int($apartamento->morador) && $apartamento->morador!=0){
                 $usuario  = $Modelo->db->Sql_Select(
                     'Usuario', 
                     Array('id'=>$apartamento->morador),
                     1
                 );
-                if($usuario!==false){
+                if ($usuario!==false){
                     $email = '';
-                    if($usuario->email!='' && \Framework\App\Sistema_Funcoes::Control_Layoult_Valida_Email($usuario->email)){
+                    if ($usuario->email!='' && \Framework\App\Sistema_Funcoes::Control_Layoult_Valida_Email($usuario->email)){
                         $email .= $usuario->email;
                     }
-                    if($usuario->email2!='' && \Framework\App\Sistema_Funcoes::Control_Layoult_Valida_Email($usuario->email2)){
-                        if($email!='') $email .= '<br>';
+                    if ($usuario->email2!='' && \Framework\App\Sistema_Funcoes::Control_Layoult_Valida_Email($usuario->email2)){
+                        if ($email!='') $email .= '<br>';
                         $email .= $usuario->email2;
                     }
-                    if($email==''){
+                    if ($email==''){
                         $email = '<p class="text-error">Morador sem nenhum email válido</p>';
                     }
                 }
             }
             // Avisa que nao foi, ou manda 
-            if($email===false || $email==''){
+            if ($email===false || $email==''){
                 $email = '<p class="text-error">Morador não registrado</p>';
             }
             $tabela['Bloco'][$i]                        = $valor->bloco2;
@@ -112,10 +112,10 @@ class predial_CorreioControle extends predial_Controle
             $tabela['Responsável'][$i]                  = $valor->responsavel;
             $tabela['Email para Avisos'][$i]                  = $email;
             $tabela['Data Recebida Adm/Portaria'][$i]   = $valor->data_entregue;
-            if($recebido!==false){
+            if ($recebido!==false){
                 $tabela['Data Entregue ao Morador'][$i]     = $valor->data_recebido;
                 $tabela['Funções'][$i]                      = '';
-            }else{
+            } else {
                 $tabela['Funções'][$i]                      = $Visual->Tema_Elementos_Btn('Baixar'     ,Array('Declarar Recebido Pelo Morador'        ,'predial/Correio/Correios_Baixar/'.$valor->id.'/'    ,''));
             }
             $tabela['Funções'][$i]                      .=  $Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Correio'        ,'predial/Correio/Correios_Edit/'.$valor->id.'/'    ,'')).
@@ -138,7 +138,7 @@ class predial_CorreioControle extends predial_Controle
      */
     protected function Correios_Bloco($recebido=false,$gravidade=0){
         $i = 0;
-        if($recebido===false){
+        if ($recebido===false){
             $titulo = __('Correios recebidos e não entregues');
             $where = Array(
                 'data_recebido' => '0000-00-00 00:00:00'
@@ -157,17 +157,17 @@ class predial_CorreioControle extends predial_Controle
                     'Link'      => 'predial/Correio/Correios',
                 )
             )));
-        }else{
+        } else {
             $titulo = __('Histórico de Correios Entregues');
             $where = Array(
                 '!data_recebido' => '0000-00-00 00:00:00'
             );
         }
         $correios = $this->_Modelo->db->Sql_Select('Predial_Bloco_Apart_Correio',$where);
-        if($correios!==false && !empty($correios)){
+        if ($correios!==false && !empty($correios)){
             list($tabela,$i) = self::Correios_Tabela($correios,$recebido);
             $this->_Visual->Show_Tabela_DataTable($tabela);
-        }else{     
+        } else {     
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Correio</font></b></center>');
         }
         $titulo = 'Listagem de '.$titulo.' ('.$i.')';
@@ -209,7 +209,7 @@ class predial_CorreioControle extends predial_Controle
         $sucesso2   = __('Correio cadastrado com sucesso.');
         $alterar    = Array();
         $sucesso = $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
-        if($sucesso===true){
+        if ($sucesso===true){
             // Pega o Correio
             $identificador  = $this->_Modelo->db->Sql_Select('Predial_Bloco_Apart_Correio', false,1,'id DESC');
             // Captura Apartamento Responsavel
@@ -223,7 +223,7 @@ class predial_CorreioControle extends predial_Controle
                 1,
                 'id DESC'
             );
-            if(!is_object($apartamento)){
+            if (!is_object($apartamento)){
                 $mensagens = array(
                     "tipo" => 'erro',
                     "mgs_principal" => __('Erro'),
@@ -232,32 +232,32 @@ class predial_CorreioControle extends predial_Controle
                 $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
                 return false;
             }
-            if(is_int($apartamento->morador) && $apartamento->morador!=0){
+            if (is_int($apartamento->morador) && $apartamento->morador!=0){
                 $usuario  = $this->_Modelo->db->Sql_Select(
                     'Usuario', 
                     Array('id'=>$apartamento->morador),
                     1
                 );
-                if($usuario!==false){
+                if ($usuario!==false){
                     $nome = $usuario->nome;
                     $enviar = '';
-                    if($usuario->email!='' && \Framework\App\Sistema_Funcoes::Control_Layoult_Valida_Email($usuario->email)){
+                    if ($usuario->email!='' && \Framework\App\Sistema_Funcoes::Control_Layoult_Valida_Email($usuario->email)){
                         $enviar .= '->setTo(\''.$usuario->email.'\', \''.$nome.'\')';
                     }
-                    if($usuario->email2!='' && \Framework\App\Sistema_Funcoes::Control_Layoult_Valida_Email($usuario->email2)){
+                    if ($usuario->email2!='' && \Framework\App\Sistema_Funcoes::Control_Layoult_Valida_Email($usuario->email2)){
                         $enviar .= '->setTo(\''.$usuario->email2.'\', \''.$nome.'\')';
                     }
                 }
             }
             // Avisa que nao foi, ou manda 
-            if($enviar===false || $enviar==''){
+            if ($enviar===false || $enviar==''){
                 $mensagens = array(
                     "tipo" => 'erro',
                     "mgs_principal" => __('Aviso não Enviado'),
                     "mgs_secundaria" => __('Verifique se o Morador está registrado no sistema e com um email válido.')
                 );
                 $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
-            }else{
+            } else {
                 // Mandar Mensagem
                 $mensagem   =   'Informamos que encontra-se na administração corrreio registrado<br>'.
                                 '<b>Bloco / Apart:</b>'.$identificador->bloco.' / '.$identificador->apart.'<br>'.
@@ -276,7 +276,7 @@ class predial_CorreioControle extends predial_Controle
                 ->addGenericHeader(\'Content-Type\', \'text/html; charset="utf-8"\')
                 ->setMessage(\'<strong>'.$mensagem.'</strong>\')
                 ->setWrap(78)->send();');
-                if(!$send){
+                if (!$send){
                     $mensagens = array(
                         "tipo" => 'erro',
                         "mgs_principal" => __('Aviso não Enviado'),
@@ -336,13 +336,13 @@ class predial_CorreioControle extends predial_Controle
         $correio = $this->_Modelo->db->Sql_Select('Predial_Bloco_Apart_Correio', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($correio);
         // Mensagem
-    	if($sucesso===true){
+    	if ($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
                 "mgs_secundaria" => __('Correio deletado com sucesso')
             );
-    	}else{
+    	} else {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),
@@ -376,13 +376,13 @@ class predial_CorreioControle extends predial_Controle
         $Visual     = &$Registro->_Visual;
         $tabela = Array();
         $i = 0;
-        if(is_object($correios)) $correios = Array(0=>$correios);
+        if (is_object($correios)) $correios = Array(0=>$correios);
         reset($correios);
         foreach ($correios as &$valor) {
             $tabela['Tipo de Correio'][$i]              = $valor->categoria2;
             $tabela['Responsável'][$i]                  = $valor->responsavel;
             $tabela['Data Recebida Adm/Portaria'][$i]   = $valor->data_entregue;
-            if($recebido!==false){
+            if ($recebido!==false){
                 $tabela['Data Entregue ao Morador'][$i]     = $valor->data_recebido;
             }
             ++$i;
@@ -398,7 +398,7 @@ class predial_CorreioControle extends predial_Controle
         $Registro = &\Framework\App\Registro::getInstacia();
         $i = 0;
         $html = '';
-        if($recebido===false){
+        if ($recebido===false){
             $titulo = __('Correios recebidos e não entregues');
             $where = Array(
                 'data_recebido' => '0000-00-00 00:00:00',
@@ -414,7 +414,7 @@ class predial_CorreioControle extends predial_Controle
                     'Link'      => 'predial/Correio/Correios',
                 )
             ));
-        }else{
+        } else {
             $titulo = __('Histórico de Correios Entregues');
             $where = Array(
                 '!data_recebido' => '0000-00-00 00:00:00',
@@ -422,10 +422,10 @@ class predial_CorreioControle extends predial_Controle
             );
         }
         $correios = $Registro->_Modelo->db->Sql_Select('Predial_Bloco_Apart_Correio',$where);
-        if($correios!==false && !empty($correios)){
+        if ($correios!==false && !empty($correios)){
             list($tabela,$i) = self::Correios_Tabela($correios,$recebido);
             $html .= $Registro->_Visual->Show_Tabela_DataTable($tabela,'',false);
-        }else{     
+        } else {     
             $html .= '<center><b><font color="#FF0000" size="3">Nenhum Correio para Você</font></b></center>';
         }
         $titulo = 'Listagem de '.$titulo.' ('.$i.')';

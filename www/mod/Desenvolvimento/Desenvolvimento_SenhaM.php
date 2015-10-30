@@ -27,20 +27,20 @@ class Desenvolvimento_SenhaModelo extends Desenvolvimento_Modelo
         $perm_status = $this->_Registro->_Acl->Get_Permissao_Url('Desenvolvimento/Senha/Status');
         $perm_destaque = $this->_Registro->_Acl->Get_Permissao_Url('Desenvolvimento/Senha/Destaque');
         
-        if($perm_editar && $perm_del){
+        if ($perm_editar && $perm_del){
             $funcao = function( $d, $row ) {
                 return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Senha'        ,'Desenvolvimento/Senha/Senhas_Edit/'.$d.'/'    ,''),true).
                        Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Senha'       ,'Desenvolvimento/Senha/Senhas_Del/'.$d.'/'     ,'Deseja realmente deletar essa Senha ?'),true);
             };
-        }else if($perm_editar){
+        }else if ($perm_editar){
             $funcao = function( $d, $row ) {
                 return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Senha'        ,'Desenvolvimento/Senha/Senhas_Edit/'.$d.'/'    ,''),true);
             };
-        }else if($perm_del){
+        }else if ($perm_del){
             $funcao = function( $d, $row ) {
                 return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Senha'       ,'Desenvolvimento/Senha/Senhas_Del/'.$d.'/'     ,'Deseja realmente deletar essa Senha ?'),true);
             };
-        }else{
+        } else {
             $funcao = function( $d, $row ) {
                 return '';
             };
@@ -63,12 +63,12 @@ class Desenvolvimento_SenhaModelo extends Desenvolvimento_Modelo
         );
         // Destaque, somente se tiver permissao
         $numero = 4;
-        if($perm_destaque){
+        if ($perm_destaque){
             ++$numero;
             $columns[] = array( 'db' => 'destaque'    ,  'dt' => $numero ,
                     'formatter' => function( $d, $row ) {
 
-                    if($d=='0'){
+                    if ($d=='0'){
                         $nometipo = __('Não Destaque');
                     }
                     else{
@@ -77,20 +77,20 @@ class Desenvolvimento_SenhaModelo extends Desenvolvimento_Modelo
                     return $nometipo;
                 },
                 'search' => function( $search ) {
-                    if(strpos(strtolower('Não Destaque'), strtolower($search))!=false){
+                    if (strpos(strtolower('Não Destaque'), strtolower($search))!=false){
                         return '0';
-                    }else if(strpos(strtolower('Destaque'), strtolower($search))!=false){
+                    }else if (strpos(strtolower('Destaque'), strtolower($search))!=false){
                         return '1';
                     }
                     return false;
                 }
             );
         }
-        if($perm_status){
+        if ($perm_status){
             ++$numero;
             $columns[] = array( 'db' => 'status'      ,  'dt' => $numero ,
                 'formatter' => function( $d, $row ) {
-                    if($d=='0'){
+                    if ($d=='0'){
                         $nometipo = __('Ultrapassada');
                     }
                     else{
@@ -99,9 +99,9 @@ class Desenvolvimento_SenhaModelo extends Desenvolvimento_Modelo
                     return $nometipo;
                 },
                 'search' => function( $search ) {
-                    if(strpos(strtolower('Ultrapassada'), strtolower($search))!==false){
+                    if (strpos(strtolower('Ultrapassada'), strtolower($search))!==false){
                         return '0';
-                    }else if(strpos(strtolower('Em Uso'), strtolower($search))!==false){
+                    }else if (strpos(strtolower('Em Uso'), strtolower($search))!==false){
                         return '1';
                     }
                     return false;
@@ -129,20 +129,20 @@ class Desenvolvimento_SenhaModelo extends Desenvolvimento_Modelo
         $perm_status = $this->_Registro->_Acl->Get_Permissao_Url('Desenvolvimento/Senha/Status_Todas');
         $perm_destaque = $this->_Registro->_Acl->Get_Permissao_Url('Desenvolvimento/Senha/Destaque_Todas');
         
-        if($perm_editar && $perm_del){
+        if ($perm_editar && $perm_del){
             $funcao = function( $d, $row ) {
                 return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Senha'        ,'Desenvolvimento/Senha/Senhas_Todas_Edit/'.$d.'/'    ,''),true).
                        Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Senha'       ,'Desenvolvimento/Senha/Senhas_Todas_Del/'.$d.'/'     ,'Deseja realmente deletar essa Senha ?'),true);
             };
-        }else if($perm_editar){
+        }else if ($perm_editar){
             $funcao = function( $d, $row ) {
                 return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Senha'        ,'Desenvolvimento/Senha/Senhas_Todas_Edit/'.$d.'/'    ,''),true);
             };
-        }else if($perm_del){
+        }else if ($perm_del){
             $funcao = function( $d, $row ) {
                 return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Senha'       ,'Desenvolvimento/Senha/Senhas_Todas_Del/'.$d.'/'     ,'Deseja realmente deletar essa Senha ?'),true);
             };
-        }else{
+        } else {
             $funcao = function( $d, $row ) {
                 return '';
             };
@@ -167,12 +167,12 @@ class Desenvolvimento_SenhaModelo extends Desenvolvimento_Modelo
         );
         // Destaque, somente se tiver permissao
         $numero = 5;
-        if($perm_destaque){
+        if ($perm_destaque){
             ++$numero;
             $columns[] = array( 'db' => 'destaque'    ,  'dt' => $numero ,
                     'formatter' => function( $d, $row ) {
 
-                    if($d=='0'){
+                    if ($d=='0'){
                         $nometipo = __('Não Destaque');
                     }
                     else{
@@ -181,20 +181,20 @@ class Desenvolvimento_SenhaModelo extends Desenvolvimento_Modelo
                     return $nometipo;
                 },
                 'search' => function( $search ) {
-                    if(strpos(strtolower('Destaque'), strtolower($search))!=false){
+                    if (strpos(strtolower('Destaque'), strtolower($search))!=false){
                         return '0';
-                    }else if(strpos(strtolower('Não Destaque'), strtolower($search))!=false){
+                    }else if (strpos(strtolower('Não Destaque'), strtolower($search))!=false){
                         return '1';
                     }
                     return false;
                 }
             );
         }
-        if($perm_status){
+        if ($perm_status){
             ++$numero;
             $columns[] = array( 'db' => 'status'      ,  'dt' => $numero ,
                 'formatter' => function( $d, $row ) {
-                    if($d=='0'){
+                    if ($d=='0'){
                         $nometipo = __('Ultrapassada');
                     }
                     else{
@@ -203,9 +203,9 @@ class Desenvolvimento_SenhaModelo extends Desenvolvimento_Modelo
                     return $nometipo;
                 },
                 'search' => function( $search ) {
-                    if(strpos(strtolower('Ultrapassada'), strtolower($search))!=false){
+                    if (strpos(strtolower('Ultrapassada'), strtolower($search))!=false){
                         return '0';
-                    }else if(strpos(strtolower('Em Uso'), strtolower($search))!=false){
+                    }else if (strpos(strtolower('Em Uso'), strtolower($search))!=false){
                         return '1';
                     }
                     return false;
@@ -233,20 +233,20 @@ class Desenvolvimento_SenhaModelo extends Desenvolvimento_Modelo
         $perm_status = $this->_Registro->_Acl->Get_Permissao_Url('Desenvolvimento/Senha/Status');
         $perm_destaque = $this->_Registro->_Acl->Get_Permissao_Url('Desenvolvimento/Senha/Destaque');
         
-        if($perm_editar && $perm_del){
+        if ($perm_editar && $perm_del){
             $funcao = function( $d, $row ) {
                 return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Senha'        ,'Desenvolvimento/Senha/Senhas_Edit/'.$d.'/'    ,''),true).
                        Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Senha'       ,'Desenvolvimento/Senha/Senhas_Del/'.$d.'/'     ,'Deseja realmente deletar essa Senha ?'),true);
             };
-        }else if($perm_editar){
+        }else if ($perm_editar){
             $funcao = function( $d, $row ) {
                 return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Senha'        ,'Desenvolvimento/Senha/Senhas_Edit/'.$d.'/'    ,''),true);
             };
-        }else if($perm_del){
+        }else if ($perm_del){
             $funcao = function( $d, $row ) {
                 return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Senha'       ,'Desenvolvimento/Senha/Senhas_Del/'.$d.'/'     ,'Deseja realmente deletar essa Senha ?'),true);
             };
-        }else{
+        } else {
             $funcao = function( $d, $row ) {
                 return '';
             };
@@ -269,12 +269,12 @@ class Desenvolvimento_SenhaModelo extends Desenvolvimento_Modelo
         );
         // Destaque, somente se tiver permissao
         $numero = 4;
-        if($perm_destaque){
+        if ($perm_destaque){
             ++$numero;
             $columns[] = array( 'db' => 'destaque'    ,  'dt' => $numero ,
                     'formatter' => function( $d, $row ) {
 
-                    if($d=='0'){
+                    if ($d=='0'){
                         $nometipo = __('Não Destaque');
                     }
                     else{
@@ -283,20 +283,20 @@ class Desenvolvimento_SenhaModelo extends Desenvolvimento_Modelo
                     return $nometipo;
                 },
                 'search' => function( $search ) {
-                    if(strpos(strtolower('Não Destaque'), strtolower($search))!=false){
+                    if (strpos(strtolower('Não Destaque'), strtolower($search))!=false){
                         return '0';
-                    }else if(strpos(strtolower('Destaque'), strtolower($search))!=false){
+                    }else if (strpos(strtolower('Destaque'), strtolower($search))!=false){
                         return '1';
                     }
                     return false;
                 }
             );
         }
-        if($perm_status){
+        if ($perm_status){
             ++$numero;
             $columns[] = array( 'db' => 'status'      ,  'dt' => $numero ,
                 'formatter' => function( $d, $row ) {
-                    if($d=='0'){
+                    if ($d=='0'){
                         $nometipo = __('Ultrapassada');
                     }
                     else{
@@ -305,9 +305,9 @@ class Desenvolvimento_SenhaModelo extends Desenvolvimento_Modelo
                     return $nometipo;
                 },
                 'search' => function( $search ) {
-                    if(strpos(strtolower('Ultrapassada'), strtolower($search))!=false){
+                    if (strpos(strtolower('Ultrapassada'), strtolower($search))!=false){
                         return '0';
-                    }else if(strpos(strtolower('Em Uso'), strtolower($search))!=false){
+                    }else if (strpos(strtolower('Em Uso'), strtolower($search))!=false){
                         return '1';
                     }
                     return false;
@@ -335,20 +335,20 @@ class Desenvolvimento_SenhaModelo extends Desenvolvimento_Modelo
         $perm_status = $this->_Registro->_Acl->Get_Permissao_Url('Desenvolvimento/Senha/Status_Todas');
         $perm_destaque = $this->_Registro->_Acl->Get_Permissao_Url('Desenvolvimento/Senha/Destaque_Todas');
         
-        if($perm_editar && $perm_del){
+        if ($perm_editar && $perm_del){
             $funcao = function( $d, $row ) {
                 return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Senha'        ,'Desenvolvimento/Senha/Senhas_Todas_Edit/'.$d.'/'    ,''),true).
                        Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Senha'       ,'Desenvolvimento/Senha/Senhas_Todas_Del/'.$d.'/'     ,'Deseja realmente deletar essa Senha ?'),true);
             };
-        }else if($perm_editar){
+        }else if ($perm_editar){
             $funcao = function( $d, $row ) {
                 return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Senha'        ,'Desenvolvimento/Senha/Senhas_Todas_Edit/'.$d.'/'    ,''),true);
             };
-        }else if($perm_del){
+        }else if ($perm_del){
             $funcao = function( $d, $row ) {
                 return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Senha'       ,'Desenvolvimento/Senha/Senhas_Todas_Del/'.$d.'/'     ,'Deseja realmente deletar essa Senha ?'),true);
             };
-        }else{
+        } else {
             $funcao = function( $d, $row ) {
                 return '';
             };
@@ -372,12 +372,12 @@ class Desenvolvimento_SenhaModelo extends Desenvolvimento_Modelo
         );
         // Destaque, somente se tiver permissao
         $numero = 5;
-        if($perm_destaque){
+        if ($perm_destaque){
             ++$numero;
             $columns[] = array( 'db' => 'destaque'    ,  'dt' => $numero ,
                     'formatter' => function( $d, $row ) {
 
-                    if($d=='0'){
+                    if ($d=='0'){
                         $nometipo = __('Não Destaque');
                     }
                     else{
@@ -386,20 +386,20 @@ class Desenvolvimento_SenhaModelo extends Desenvolvimento_Modelo
                     return $nometipo;
                 },
                 'search' => function( $search ) {
-                    if(strpos(strtolower('Destaque'), strtolower($search))!=false){
+                    if (strpos(strtolower('Destaque'), strtolower($search))!=false){
                         return '0';
-                    }else if(strpos(strtolower('Não Destaque'), strtolower($search))!=false){
+                    }else if (strpos(strtolower('Não Destaque'), strtolower($search))!=false){
                         return '1';
                     }
                     return false;
                 }
             );
         }
-        if($perm_status){
+        if ($perm_status){
             ++$numero;
             $columns[] = array( 'db' => 'status'      ,  'dt' => $numero ,
                 'formatter' => function( $d, $row ) {
-                    if($d=='0'){
+                    if ($d=='0'){
                         $nometipo = __('Ultrapassada');
                     }
                     else{
@@ -408,9 +408,9 @@ class Desenvolvimento_SenhaModelo extends Desenvolvimento_Modelo
                     return $nometipo;
                 },
                 'search' => function( $search ) {
-                    if(strpos(strtolower('Ultrapassada'), strtolower($search))!=false){
+                    if (strpos(strtolower('Ultrapassada'), strtolower($search))!=false){
                         return '0';
-                    }else if(strpos(strtolower('Em Uso'), strtolower($search))!=false){
+                    }else if (strpos(strtolower('Em Uso'), strtolower($search))!=false){
                         return '1';
                     }
                     return false;

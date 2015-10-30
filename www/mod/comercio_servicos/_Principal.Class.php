@@ -51,7 +51,7 @@ class comercio_servicos_Principal implements \Framework\PrincipalInterface
         );
         
         
-        if(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_servicos_ServicoTipo')===true){
+        if (\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_servicos_ServicoTipo')===true){
             // Calcula Tipo de Serviço
             $tiposervico_qnt = $Modelo->db->Sql_Contar('Comercio_Servicos_Servico_Tipo');
 

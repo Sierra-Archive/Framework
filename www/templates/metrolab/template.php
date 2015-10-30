@@ -9,7 +9,7 @@
     <link href="<?php echo $params['url_css']; ?>style.css" rel="stylesheet" />
     <link href="<?php echo $params['url_css']; ?>style-responsive.css" rel="stylesheet" />
     <link href="<?php echo $params['url_css']; ?>metro-gallery" rel="stylesheet" />
-    <link href="<?php echo $params['url_css']; ?>style-<?php if(TEMA_COLOR==''){ echo __('blue'); }else{ echo TEMA_COLOR; }?>.css" rel="stylesheet" id="style_color" />
+    <link href="<?php echo $params['url_css']; ?>style-<?php if(TEMA_COLOR==''){ echo __('blue'); } else { echo TEMA_COLOR; }?>.css" rel="stylesheet" id="style_color" />
 </head>     
        
 <!-- END HEAD -->
@@ -86,7 +86,7 @@
                     <!-- END THEME CUSTOMIZER-->
                     <!-- BEGIN PAGE TITLE & BREADCRUMB-->
                     <h3 class="page-title">
-                      <span id="Framework_Titulo"><?php if($params['site_titulo']==''){ echo __('Sem Titulo'); }else{ echo $params['site_titulo']; } ?></span>
+                      <span id="Framework_Titulo"><?php if($params['site_titulo']==''){ echo __('Sem Titulo'); } else { echo $params['site_titulo']; } ?></span>
                     </h3>
                     <?php 
                     if(isset($params['widgets']) && isset($params['widgets']['Navegacao_Endereco'])){

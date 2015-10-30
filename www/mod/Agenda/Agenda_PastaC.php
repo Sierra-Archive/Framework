@@ -37,17 +37,17 @@ class Agenda_PastaControle extends Agenda_Controle
         $this->_Visual->Json_Info_Update('Titulo', __('Pastas')); 
     }
     protected function Endereco_Pasta($true=true){
-        if($true===true){
+        if ($true===true){
             $this->Tema_Endereco(__('Pastas'),'Agenda/Pasta/Pastas');
-        }else{
+        } else {
             $this->Tema_Endereco(__('Pastas'));
         }
     }
     protected function Endereco_Cor($true=true){
         $this->Endereco_Pasta();
-        if($true===true){
+        if ($true===true){
             $this->Tema_Endereco(__('Cores'),'Agenda/Pasta/Cores');
-        }else{
+        } else {
             $this->Tema_Endereco(__('Cores'));
         }
     }
@@ -56,7 +56,7 @@ class Agenda_PastaControle extends Agenda_Controle
         $Visual     = &$Registro->_Visual;
         $tabela = Array();
         $i = 0;
-        if(is_object($pastas)) $pastas = Array(0=>$pastas);
+        if (is_object($pastas)) $pastas = Array(0=>$pastas);
         reset($pastas);
         foreach ($pastas as $indice=>&$valor) {
             //$tabela['#Id'][$i]       = '#'.$valor->id;
@@ -103,9 +103,9 @@ class Agenda_PastaControle extends Agenda_Controle
         $Visual->Show_Tabela_DataTable_Massiva($tabela_colunas,'Agenda/Pasta/Pastas/','',true,false);
         
         $titulo = __('Arquivo de Pastas').' (<span id="DataTable_Contador">0</span>)';
-        if($tipo==='Unico'){
+        if ($tipo==='Unico'){
             $Visual->Bloco_Unico_CriaJanela($titulo);
-        }else{
+        } else {
             $Visual->Bloco_Maior_CriaJanela($titulo);
         }
     }
@@ -186,13 +186,13 @@ class Agenda_PastaControle extends Agenda_Controle
         $pasta = $this->_Modelo->db->Sql_Select('Usuario_Agenda_Pasta', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($pasta);
         // Mensagem
-    	if($sucesso===true){
+    	if ($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
                 "mgs_secundaria" => __('Pasta Deletado com sucesso')
             );
-    	}else{
+    	} else {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),
@@ -230,8 +230,8 @@ class Agenda_PastaControle extends Agenda_Controle
         )));
         // Conexao
         $cores = $this->_Modelo->db->Sql_Select('Usuario_Agenda_Pasta_Cor');
-        if($cores!==false && !empty($cores)){
-            if(is_object($cores)) $cores = Array(0=>$cores);
+        if ($cores!==false && !empty($cores)){
+            if (is_object($cores)) $cores = Array(0=>$cores);
             reset($cores);
             foreach ($cores as $indice=>&$valor) {
                 //$tabela['#Id'][$i]       = '#'.$valor->id;
@@ -240,9 +240,9 @@ class Agenda_PastaControle extends Agenda_Controle
                                            $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Cor'       ,'Agenda/Pasta/Cores_Del/'.$valor->id.'/'     ,'Deseja realmente deletar essa Cor ?'));
                 ++$i;
             }
-            if($export!==false){
+            if ($export!==false){
                 self::Export_Todos($export,$tabela, 'Cores');
-            }else{
+            } else {
                 $this->_Visual->Show_Tabela_DataTable(
                     $tabela,     // Array Com a Tabela
                     '',          // style extra
@@ -256,7 +256,7 @@ class Agenda_PastaControle extends Agenda_Controle
                 );
             }
             unset($tabela);
-        }else{ 
+        } else { 
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhuma Cor</font></b></center>');
         }
         $titulo = __('Listagem de Cores').' ('.$i.')';
@@ -341,13 +341,13 @@ class Agenda_PastaControle extends Agenda_Controle
         $pasta = $this->_Modelo->db->Sql_Select('Usuario_Agenda_Pasta_Cor', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($pasta);
         // Mensagem
-    	if($sucesso===true){
+    	if ($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletada'),
                 "mgs_secundaria" => __('Cor Deletada com sucesso')
             );
-    	}else{
+    	} else {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),

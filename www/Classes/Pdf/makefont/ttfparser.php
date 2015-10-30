@@ -31,13 +31,13 @@ class TTFParser
 	function Parse($file)
 	{
 		$this->f = fopen($file, 'rb');
-		if(!$this->f)
+		if (!$this->f)
 			$this->Error('Can\'t open file: '.$file);
 
 		$version = $this->Read(4);
-		if($version=='OTTO')
+		if ($version=='OTTO')
 			$this->Error('OpenType fonts based on PostScript outlines are not supported');
-		if($version!="\x00\x01\x00\x00")
+		if ($version!="\x00\x01\x00\x00")
 			$this->Error('Unrecognized file format');
 		$numTables = $this->ReadUShort();
 		$this->Skip(3*2); // searchRange, entrySelector, rangeShift
@@ -68,7 +68,7 @@ class TTFParser
 		$this->Seek('head');
 		$this->Skip(3*4); // version, fontRevision, checkSumAdjustment
 		$magicNumber = $this->ReadULong();
-		if($magicNumber!=0x5F0F3CF5)
+		if ($magicNumber!=0x5F0F3CF5)
 			$this->Error('Incorrect magic number');
 		$this->Skip(2); // flags
 		$this->unitsPerEm = $this->ReadUShort();
@@ -103,7 +103,7 @@ class TTFParser
 			$this->Skip(2); // lsb
 			$this->widths[$i] = $advanceWidth;
 		}
-		if($this->numberOfHMetrics<$this->numGlyphs)
+		if ($this->numberOfHMetrics<$this->numGlyphs)
 		{
 			$lastWidth = $this->widths[$this->numberOfHMetrics-1];
 			$this->widths = array_pad($this->widths, $this->numGlyphs, $lastWidth);
@@ -121,10 +121,10 @@ class TTFParser
 			$platformID = $this->ReadUShort();
 			$encodingID = $this->ReadUShort();
 			$offset = $this->ReadULong();
-			if($platformID==3 && $encodingID==1)
+			if ($platformID==3 && $encodingID==1)
 				$offset31 = $offset;
 		}
-		if($offset31==0)
+		if ($offset31==0)
 			$this->Error('No Unicode encoding found');
 
 		$startCount = array();
@@ -134,7 +134,7 @@ class TTFParser
 		$this->chars = array();
 		fseek($this->f, $this->tables['cmap']+$offset31, SEEK_SET);
 		$format = $this->ReadUShort();
-		if($format!=4)
+		if ($format!=4)
 			$this->Error('Unexpected subtable format: '.$format);
 		$this->Skip(2*2); // length, language
 		$segCount = $this->ReadUShort()/2;
@@ -156,23 +156,23 @@ class TTFParser
 			$c2 = $endCount[$i];
 			$d = $idDelta[$i];
 			$ro = $idRangeOffset[$i];
-			if($ro>0)
+			if ($ro>0)
 				fseek($this->f, $offset+2*$i+$ro, SEEK_SET);
 			for($c=$c1;$c<=$c2;$c++)
 			{
-				if($c==0xFFFF)
+				if ($c==0xFFFF)
 					break;
-				if($ro>0)
+				if ($ro>0)
 				{
 					$gid = $this->ReadUShort();
-					if($gid>0)
+					if ($gid>0)
 						$gid += $d;
 				}
 				else
 					$gid = $c+$d;
-				if($gid>=65536)
+				if ($gid>=65536)
 					$gid -= 65536;
-				if($gid>0)
+				if ($gid>0)
 					$this->chars[$c] = $gid;
 			}
 		}
@@ -192,7 +192,7 @@ class TTFParser
 			$nameID = $this->ReadUShort();
 			$length = $this->ReadUShort();
 			$offset = $this->ReadUShort();
-			if($nameID==6)
+			if ($nameID==6)
 			{
 				// PostScript name
 				fseek($this->f, $tableOffset+$stringOffset+$offset, SEEK_SET);
@@ -203,7 +203,7 @@ class TTFParser
 				break;
 			}
 		}
-		if($this->postScriptName=='')
+		if ($this->postScriptName=='')
 			$this->Error('PostScript name not found');
 	}
 
@@ -220,7 +220,7 @@ class TTFParser
 		$this->Skip(2*2); // usFirstCharIndex, usLastCharIndex
 		$this->typoAscender = $this->ReadShort();
 		$this->typoDescender = $this->ReadShort();
-		if($version>=2)
+		if ($version>=2)
 		{
 			$this->Skip(3*2+2*4+2);
 			$this->capHeight = $this->ReadShort();
@@ -242,7 +242,7 @@ class TTFParser
 
 	function Error($msg)
 	{
-		if(PHP_SAPI=='cli')
+		if (PHP_SAPI=='cli')
 			die("Error: $msg\n");
 		else
 			die("<b>Error</b>: $msg");
@@ -250,7 +250,7 @@ class TTFParser
 
 	function Seek($tag)
 	{
-		if(!isset($this->tables[$tag]))
+		if (!isset($this->tables[$tag]))
 			$this->Error('Table not found: '.$tag);
 		fseek($this->f, $this->tables[$tag], SEEK_SET);
 	}
@@ -275,7 +275,7 @@ class TTFParser
 	{
 		$a = unpack('nn', fread($this->f,2));
 		$v = $a['n'];
-		if($v>=0x8000)
+		if ($v>=0x8000)
 			$v -= 65536;
 		return $v;
 	}

@@ -49,7 +49,7 @@ class usuario_veiculo_aluguel_ListarControle extends usuario_veiculo_aluguel_Con
                 $tabela['Valor'][$i] = 'R$ '.number_format($aluguel[$indice]['valor'], 2, ',', '.');
                 if($aluguel[$indice]['pago']==1){
                     $tabela['Status'][$i] = __('Confirmado');
-                }else{
+                } else {
                     $tabela['Status'][$i] = '<font color="#FF0000">Pendente</font>';
                 }
                 ++$i;
@@ -57,7 +57,7 @@ class usuario_veiculo_aluguel_ListarControle extends usuario_veiculo_aluguel_Con
             $this->_Visual->Show_Tabela_DataTable($tabela);
             $this->_Visual->Bloco_Maior_CriaJanela('Todos os Alugueis ('.$i.')');
             unset($tabela);
-        }else{        
+        } else {        
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Infelizmente você nunca fez um aluguel com a gente.</font></b></center>');
             $this->_Visual->Bloco_Maior_CriaJanela('Todos os Alugueis (0)');
         }

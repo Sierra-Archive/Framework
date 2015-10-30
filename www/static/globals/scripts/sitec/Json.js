@@ -30,7 +30,7 @@ var Json = function (Link, Json, History) {
         for(; i<tam; ++i){
             if (json['botoes'][i]['clique'] === '$( this ).dialog( "close" );') {
                 footer += '<button class="btn" data-dismiss="modal" aria-hidden="true" onCLick="Sierra.Control_Ajax_Popup_Fechar(\''+json["id"]+'\');">'+json['botoes'][i]['text']+'</button>';
-            }else{
+            } else {
                 footer += '<button class="btn btn-primary" onClick="'+json['botoes'][i]['clique']+'">'+json['botoes'][i]['text']+'</button>';
             }
         }
@@ -118,7 +118,7 @@ var Json = function (Link, Json, History) {
     
         if(cache===false){
             cache = new Array();
-        }else{
+        } else {
             cache = cache.split('|');
         }
         for (var i in json){
@@ -167,7 +167,7 @@ var Json = function (Link, Json, History) {
     
         if(cache===false){
             cache = new Array();
-        }else{
+        } else {
             cache = cache.split('|');
         }
         
@@ -233,7 +233,7 @@ var Json = function (Link, Json, History) {
             Control_Layoult_Recarrega();
         }else if(typeof(data) === "string"){
             Modelo_Ajax_JsonTratar(url, JSON.parse(data), navegador);
-        }else{
+        } else {
             console.log('Erro',data);
             return false;
         }

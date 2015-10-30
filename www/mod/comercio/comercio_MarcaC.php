@@ -40,9 +40,9 @@ class comercio_MarcaControle extends comercio_Controle
         $_Controle = $Registro->_Controle;
         $titulo = __('Marcas');
         $link = 'comercio/Marca/Marcas';
-        if($true===true){
+        if ($true===true){
             $_Controle->Tema_Endereco($titulo,$link);
-        }else{
+        } else {
             $_Controle->Tema_Endereco($titulo);
         }
     }
@@ -145,13 +145,13 @@ class comercio_MarcaControle extends comercio_Controle
         $linha = $this->_Modelo->db->Sql_Select('Comercio_Marca', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($linha);
         // Mensagem
-    	if($sucesso===true){
+    	if ($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletada'),
                 "mgs_secundaria" => __('Marca Deletada com sucesso')
             );
-    	}else{
+    	} else {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),

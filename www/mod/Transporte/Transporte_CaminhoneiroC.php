@@ -10,9 +10,9 @@ class Transporte_CaminhoneiroControle extends Transporte_Controle
         $_Controle = $Registro->_Controle;
         $titulo = __('Autonômos');
         $link = 'Transporte/Caminhoneiro/Caminhoneiros';
-        if($true===true){
+        if ($true===true){
             $_Controle->Tema_Endereco($titulo,$link);
-        }else{
+        } else {
             $_Controle->Tema_Endereco($titulo);
         }
     }
@@ -30,7 +30,7 @@ class Transporte_CaminhoneiroControle extends Transporte_Controle
         $Visual     = &$Registro->_Visual;
         $tabela = Array();
         $i = 0;
-        if(is_object($caminhoneiro)) $caminhoneiro = Array(0=>$caminhoneiro);reset($caminhoneiro);
+        if (is_object($caminhoneiro)) $caminhoneiro = Array(0=>$caminhoneiro);reset($caminhoneiro);
         $perm_view = $Registro->_Acl->Get_Permissao_Url('Transporte/Caminhoneiro/Visualizar');
         foreach ($caminhoneiro as &$valor) {                
             $tabela['Id'][$i]           = '#'.$valor->id;
@@ -61,13 +61,13 @@ class Transporte_CaminhoneiroControle extends Transporte_Controle
         $i = 0;
         self::Endereco_Caminhoneiro(false);
         $caminhoneiro = $this->_Modelo->db->Sql_Select('Transporte_Caminhoneiro');
-        if(is_object($caminhoneiro)) $caminhoneiro = Array(0=>$caminhoneiro);
-        if($caminhoneiro!==false && !empty($caminhoneiro)){
+        if (is_object($caminhoneiro)) $caminhoneiro = Array(0=>$caminhoneiro);
+        if ($caminhoneiro!==false && !empty($caminhoneiro)){
             list($tabela,$i) = self::Caminhoneiros_Tabela($caminhoneiro);
             // SE exportar ou mostra em tabela
-            if($export!==false){
+            if ($export!==false){
                 self::Export_Todos($export,$tabela, 'Autonômos');
-            }else{
+            } else {
                 $this->_Visual->Show_Tabela_DataTable(
                     $tabela,     // Array Com a Tabela
                     '',          // style extra
@@ -81,10 +81,10 @@ class Transporte_CaminhoneiroControle extends Transporte_Controle
                 );
             }
             unset($tabela);
-        }else{
-            if($export!==false){
+        } else {
+            if ($export!==false){
                 $mensagem = __('Nenhum Autonômo Cadastrado para exportar');
-            }else{
+            } else {
                 $mensagem = __('Nenhum Autonômo Cadastrado');
             }
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">'.$mensagem.'</font></b></center>');
@@ -104,24 +104,24 @@ class Transporte_CaminhoneiroControle extends Transporte_Controle
     }
     static function Painel_Caminhoneiro($camada,$retornar=true){
         $existe = false;
-        if($retornar==='false') $retornar = false;
+        if ($retornar==='false') $retornar = false;
         // Verifica se Existe Conexao, se nao tiver abre o adicionar conexao, se nao, abre a pasta!
         $Registro = &\Framework\App\Registro::getInstacia();
         $resultado = $Registro->_Modelo->db->Sql_Select('Transporte_Caminhoneiro','{sigla}usuario=\''.$Registro->_Acl->Usuario_GetID().'\'',1);
-        if(is_object($resultado)){
+        if (is_object($resultado)){
             $existe = true;
         }
         
         // Dependendo se Existir Cria Formulario ou Lista arquivos
-        if($existe===false){
+        if ($existe===false){
             $html = '<b>Ainda faltam insformações sobre você</b><br>'.self::Painel_Caminhoneiro_Add($camada);
-        }else{
+        } else {
             $html = __('Painel');
         }
         
-        if($retornar===true){
+        if ($retornar===true){
             return $html;
-        }else{
+        } else {
             $conteudo = array(
                 'location'  =>  '#'.$camada,
                 'js'        =>  '',
@@ -146,7 +146,7 @@ class Transporte_CaminhoneiroControle extends Transporte_Controle
     }
     public function Painel_Caminhoneiro_Add2($camada){
         $resultado = $this->_Modelo->db->Sql_Select('Transporte_Caminhoneiro','{sigla}usuario=\''.$this->_Acl->Usuario_GetID().'\'',1);
-        if(is_object($resultado)){
+        if (is_object($resultado)){
             self::Painel_Caminhoneiro($camada,false);
             return true;
         }

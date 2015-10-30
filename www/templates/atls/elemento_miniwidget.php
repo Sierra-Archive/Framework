@@ -2,7 +2,7 @@
 foreach($params['widgets'] as $v){
     if( isset($v['duplo']) && $v['duplo']===true){
         $duplo=' double';
-    }else{
+    } else {
         $duplo='';
     }
     if($cont==0){

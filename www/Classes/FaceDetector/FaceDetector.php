@@ -95,7 +95,7 @@ class FaceDetector
             $col = 0;$col2 = 0;
             $imgInfo = getimagesize($imgFile);
 
-            if(!$imgInfo)
+            if (!$imgInfo)
             {
                 throw new \Exception("Não consegue abrir a imagem: ".$imgFile);
             }
@@ -103,15 +103,15 @@ class FaceDetector
             $this->width    = $imgInfo[0];
             $this->height   = $imgInfo[1];
             
-            if( $imgInfo[2] == IMAGETYPE_JPEG )
+            if ( $imgInfo[2] == IMAGETYPE_JPEG )
             {
                 $this->imagem = imagecreatefromjpeg($imgFile);
             }
-            elseif( $imgInfo[2] == IMAGETYPE_GIF )
+            elseif ( $imgInfo[2] == IMAGETYPE_GIF )
             {
-                $this->imagem = imagecreatefromgif($imgFile);
+                $this->imagem = imagecreatefromgif ($imgFile);
             }
-            elseif( $imgInfo[2] == IMAGETYPE_PNG )
+            elseif ( $imgInfo[2] == IMAGETYPE_PNG )
             {
                 $this->imagem = imagecreatefrompng($imgFile);
             }
@@ -150,10 +150,10 @@ class FaceDetector
 
                     $col                +=  $value;
                     $col2               +=  $value*$value;
-                    if($i>0){
+                    if ($i>0){
                         $grayImage[$i][$j]  =   $grayImage[$i-1][$j] + $col;
                         $squares[$i][$j]    =   $squares[$i-1][$j] + $col2;
-                    }else{
+                    } else {
                         $grayImage[$i][$j]  =   $col;
                         $squares[$i][$j]    =   $col2;
                     }
@@ -183,7 +183,7 @@ class FaceDetector
                         foreach($this->stages as $s)
                         {
 
-                            if(!$s->pass($grayImage, $squares, $i, $j, $scale))
+                            if (!$s->pass($grayImage, $squares, $i, $j, $scale))
                             {
                                 $pass = false;
                                 //echo $k."\n";
@@ -191,7 +191,7 @@ class FaceDetector
                             }
                             $k++;
                         }
-                        if($pass)
+                        if ($pass)
                         {
                             $this->foundRects[]= array("x" => $i, "y" => $j, "width" => $size, "height" => $size);
                         }
@@ -230,7 +230,7 @@ class FaceDetector
 		$blue = imagecolorallocate($canvas, 0, 0, 255);
 		$red = imagecolorallocate($canvas, 255, 0, 0);
 		
-		if($showAllRects)
+		if ($showAllRects)
 		{
 			foreach($this->foundRects as $r)
 			{
@@ -244,22 +244,22 @@ class FaceDetector
 			imagerectangle( $canvas, $r['x'], $r['y']  , $r['x']+$r['width']  , $r['y']+$r['height'], $red);
 		}
 		
-		if(empty($fileName))
+		if (empty($fileName))
 		{
 			return $canvas;
 		}
 		
 		$ext = strtolower(array_pop(explode('.', $fileName)));
 		
-		if( $ext == "jpg" )
+		if ( $ext == "jpg" )
 		{
 			return imagejpeg($canvas, $fileName, 100);
 		}
-		elseif( $ext == "gif" )
+		elseif ( $ext == "gif" )
 		{
-			return imagegif($canvas, $fileName);         
+			return imagegif ($canvas, $fileName);         
 		}
-		elseif( $ext == "png")
+		elseif ( $ext == "png")
 		{
 			return imagepng($canvas, $fileName);
 		}
@@ -281,14 +281,14 @@ class FaceDetector
 			$found = false;
 			for($j = 0; $j < $i; $j++)
 			{
-				if($this->equals($rects[$j], $rects[$i]))
+				if ($this->equals($rects[$j], $rects[$i]))
 				{
 					$found = true;
 					$ret[$i] = $ret[$j];
 				}
 			}
 			
-			if(!$found)
+			if (!$found)
 			{
 				$ret[$i] = $nb_classes;
 				$nb_classes++;
@@ -316,7 +316,7 @@ class FaceDetector
 		for($i = 0; $i < $nb_classes; $i++ )
 		{
 			$n = $neighbors[$i];
-			if( $n >= $min_neighbors)
+			if ( $n >= $min_neighbors)
 			{
 				$r = array("x" => 0, "y" => 0, "width" => 0, "height" => 0);
 				$r['x'] = ($rect[$i]['x']*2 + $n)/(2*$n);
@@ -334,7 +334,7 @@ class FaceDetector
 	{
 		$distance = (int)($r1['width']*0.2);
 		
-		if(	$r2['x'] <= $r1['x'] + $distance &&
+		if (	$r2['x'] <= $r1['x'] + $distance &&
 			$r2['x'] >= $r1['x'] - $distance &&
 			$r2['y'] <= $r1['y'] + $distance &&
 			$r2['y'] >= $r1['y'] - $distance &&
@@ -344,7 +344,7 @@ class FaceDetector
 			return true;
 		}
 		
-		if( $r1['x'] >= $r2['x'] &&
+		if ( $r1['x'] >= $r2['x'] &&
 			$r1['x'] + $r1['width'] <= $r2['x'] + $r2['width'] &&
 			$r1['y'] >= $r2['y'] &&
 			$r1['y'] + $r1['height'] <= $r2['y'] + $r2['height'] )

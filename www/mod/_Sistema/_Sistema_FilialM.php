@@ -33,10 +33,10 @@ class _Sistema_FilialModelo extends _Sistema_Modelo
 
 
         $function = '';
-        if($perm_editar){
+        if ($perm_editar){
             $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Editar\'     ,Array(__(\'Editar Filial\')        ,\'_Sistema/Filial/Filiais_Edit/\'.$d.\'/\'    ,\'\'),true);';
         }
-        if($perm_deletar){
+        if ($perm_deletar){
             $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Deletar\'     ,Array(__(\'Deletar Filial\')        ,\'_Sistema/Filial/Filiais_Del/\'.$d.\'/\'    ,\'\'),true);';
         }
         

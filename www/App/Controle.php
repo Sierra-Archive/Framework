@@ -63,11 +63,11 @@ abstract class Controle
         $this->_Cache       = &$this->_Registro->_Cache;
         $this->_Acl         = &$this->_Registro->_Acl;
         $this->_Modelo      = &$this->_Registro->_Modelo;
-        if($this->_Modelo===false){
+        if ($this->_Modelo===false){
             $this->_Modelo = new Modelo();
         }
         $this->_Visual      = &$this->_Registro->_Visual;
-        if($this->_Visual===false){
+        if ($this->_Visual===false){
             $this->_Visual = new Visual();
         }
         
@@ -94,7 +94,7 @@ abstract class Controle
         $this->ModulosHome = config_modulos();
 
         // Se nao for tipo AJAX chama os widgets;
-        if(LAYOULT_IMPRIMIR!=='AJAX'){
+        if (LAYOULT_IMPRIMIR!=='AJAX'){
             $this->Chamar_Widget();
         }
             
@@ -113,9 +113,9 @@ abstract class Controle
      */
     protected function getLibrary($lib){
         $url_livraria = ROOT.'libs'.DS.$lib.'.php';
-        if(is_readable($url_livraria)){
+        if (is_readable($url_livraria)){
             require_once $url_livraria;
-        }else{
+        } else {
             throw new \Exception('Biblioteca não Encontrada',404);
         }
     }
@@ -128,10 +128,10 @@ abstract class Controle
      * @version 0.4.2
      */
     public function Tema_Endereco($nome,$endereco=false){
-        //if(!$this->layoult_endereco_travar){
+        //if (!$this->layoult_endereco_travar){
             $this->layoult_endereco_alterado = true;
             // Caso seja endereco final nao deixa mais acrescentar nenhum
-            //if(!$endereco) $this->layoult_endereco_travar = true;
+            //if (!$endereco) $this->layoult_endereco_travar = true;
             // ACrescenta Enderecos
             $this->layoult_endereco[] = Array($nome,$endereco);
         //}
@@ -144,11 +144,11 @@ abstract class Controle
      * @version 0.4.2
      */
     protected function Tema_Endereco_Zerar($ultimo = false){
-        if($ultimo===false){
+        if ($ultimo===false){
             $this->layoult_endereco = Array(
                 Array(__('Página Inicial'),'_Sistema/Principal/Home')
             );
-        }else{
+        } else {
             $ultimo = (int) $ultimo;
             $i = 0;
             while($i<$ultimo){
@@ -170,8 +170,8 @@ abstract class Controle
      */
     public static function Enviar_Email($texto,$assunto='Sem Assunto',$email=false,$nome=false){
         require_once CLASS_PATH . 'Email'.DS.'Email'.'.php';
-        if($email===false) $email = SISTEMA_EMAIL_RECEBER;
-        if($nome===false) $nome = __('Administrador');
+        if ($email===false) $email = SISTEMA_EMAIL_RECEBER;
+        if ($nome===false) $nome = __('Administrador');
         $mailer = new \Framework\Classes\Email();
         $send	= $mailer->setTo($email, $nome)
                     ->setSubject($assunto.' - '.SISTEMA_NOME)
@@ -225,15 +225,15 @@ abstract class Controle
         $mail->FromName = SISTEMA_NOME;
         
         $enviar = '';
-        if($usuario->email!='' && \Framework\App\Sistema_Funcoes::Control_Layoult_Valida_Email($usuario->email)){
+        if ($usuario->email!='' && \Framework\App\Sistema_Funcoes::Control_Layoult_Valida_Email($usuario->email)){
             $enviar .= $usuario->email.'-';
             $mail->addAddress($usuario->email, $nome);  // Add a recipient
         }
-        if($usuario->email2!='' && \Framework\App\Sistema_Funcoes::Control_Layoult_Valida_Email($usuario->email2)){
+        if ($usuario->email2!='' && \Framework\App\Sistema_Funcoes::Control_Layoult_Valida_Email($usuario->email2)){
             $enviar .= $usuario->email2.'-';
             $mail->addAddress($usuario->email2, $nome);  // Add a recipient
         }
-        if($enviar==''){
+        if ($enviar==''){
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),
@@ -242,7 +242,7 @@ abstract class Controle
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens); 
             $this->_Visual->Json_Info_Update('Historico', false);
             $this->Json_Definir_zerar(false);
-        }else{
+        } else {
             $amensagem = '<strong><b>Arquivo em Anexo:</b> '.  $nomearquivo.'</strong>';
             // Enviar Email 
             
@@ -259,7 +259,7 @@ abstract class Controle
             $mail->Subject      = 'Anexo de Chamado - '.SISTEMA_NOME;
             $mail->Body         = $amensagem;
             $mail->AltBody      = __('Arquivo em Anexo');
-            if($mail->send()){
+            if ($mail->send()){
                 $mensagens = array(
                     "tipo" => 'sucesso',
                     "mgs_principal" => __('Anexo enviado com Sucesso'),
@@ -267,7 +267,7 @@ abstract class Controle
                 );
                 $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens); 
                 $this->_Visual->Json_Info_Update('Titulo','Enviado com Sucesso.');
-            }else{
+            } else {
                 $mensagens = array(
                     "tipo" => 'erro',
                     "mgs_principal" => __('Erro'),
@@ -303,7 +303,7 @@ abstract class Controle
      */
     public static function Export_Download($endereco,$arquivo_nome='Relatorio'){
         
-        if(LAYOULT_IMPRIMIR==='AJAX'){
+        if (LAYOULT_IMPRIMIR==='AJAX'){
             
         }
         
@@ -330,7 +330,7 @@ header('Content-Disposition: attachment; filename="'.$titulo_novo.'"');
 readfile($link);*/
         $ext = strtolower(substr(strrchr(basename($arquivoLocal),"."),1));
         $mimes = self::Upload_Ext_Mime();
-        if(!isset($mimes[$ext])){
+        if (!isset($mimes[$ext])){
             throw new \Exception('Extensão não Permitida pra Download',2800);
         }
         $tipos = $mimes[$ext];
@@ -360,7 +360,7 @@ readfile($link);*/
         // Se nao existir cria
         $folder     = TEMP_PATH.'Grafico';
         $folder_url = TEMP_URL.'Grafico';
-        if(!file_exists($folder))
+        if (!file_exists($folder))
         {
             mkdir($folder, 0777);
         }
@@ -369,7 +369,7 @@ readfile($link);*/
         // Se nao existir cria
         $folder     = TEMP_PATH.'Grafico';
         $folder_url = TEMP_URL.'Grafico';
-        if(!file_exists($folder))
+        if (!file_exists($folder))
         {
             mkdir($folder, 0777);
         }
@@ -431,19 +431,19 @@ readfile($link);*/
     }
     protected static function Export_Todos($tipo,&$conteudo,$arquivo_nome='Relatorio'){
         $tipo = (string) 'Export_'.$tipo;
-        if(method_exists('\Framework\App\Controle',$tipo)){
+        if (method_exists('\Framework\App\Controle',$tipo)){
             self::$tipo($conteudo,$arquivo_nome);
             return true;
-        }else{
+        } else {
             return false;
         }
     }
     private static function Export_Pdf(&$conteudo,$arquivo_nome='Relatorio',$imprimir=false){
         ob_clean();
         $pdf = new \Framework\Classes\Pdf($arquivo_nome);
-        if(is_array($conteudo)){
+        if (is_array($conteudo)){
             // Retira Funcoes Caso Exista
-            if(isset($conteudo['Funções'])) unset($conteudo['Funções']);
+            if (isset($conteudo['Funções'])) unset($conteudo['Funções']);
             $pdf->AddPage();
             $pdf->ArrayTable($conteudo);
         }
@@ -451,9 +451,9 @@ readfile($link);*/
         $pdf->ImprovedTable($header,$data);
         $pdf->AddPage();
         $pdf->FancyTable($header,$data);*/
-        if($imprimir===true){
+        if ($imprimir===true){
             $pdf->Output($arquivo_nome.".pdf","D");
-        }else{
+        } else {
             $pdf->Output();
         }
         // Trava Sistema
@@ -489,9 +489,9 @@ readfile($link);*/
                 . '</style></head><body>'.self::Export_Imprimir_Titulo();
         // Definimos o nome do arquivo que será exportado
         // Criamos uma tabela HTML com o formato da planilha
-        if(is_array($conteudo)){
+        if (is_array($conteudo)){
             // Retira Funcoes Caso Exista
-            if(isset($conteudo['Funções'])) unset($conteudo['Funções']);
+            if (isset($conteudo['Funções'])) unset($conteudo['Funções']);
             $html .= '<table width="100%"><tr>';
             $total = 0;
             foreach($conteudo as $indice=>&$valor){
@@ -504,9 +504,9 @@ readfile($link);*/
                 $html .= '<tr>';
                 foreach($conteudo as &$valor){
                     $html .= '<td>';
-                    if(!isset($valor[$i]) || $valor[$i]==''){
+                    if (!isset($valor[$i]) || $valor[$i]==''){
                         $html .= '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
-                    }else{
+                    } else {
                         $html .= $valor[$i];
                     }
                     $html .= '</td>';
@@ -514,7 +514,7 @@ readfile($link);*/
                 $html .= '</tr>';
             }
             $html .= '</table>';
-        }else{
+        } else {
             $html .= $conteudo;
         }
         $html .= self::Export_Imprimir_Rodape().'<script type="text/javascript">$(document).ready(function() {self.print()});</script></body></html>';
@@ -531,7 +531,7 @@ readfile($link);*/
      */
     private static function Export_Excel(&$tabela,$arquivo_nome='Relatorio'){
         // Retira Funcoes Caso Exista
-        if(isset($tabela['Funções'])) unset($tabela['Funções']);
+        if (isset($tabela['Funções'])) unset($tabela['Funções']);
         // Definimos o nome do arquivo que será exportado
         $arquivo_nome = $arquivo_nome.'.xls';
         // Criamos uma tabela HTML com o formato da planilha
@@ -547,9 +547,9 @@ readfile($link);*/
             $html .= '<tr>';
             foreach($tabela as &$valor){
                 $html .= '<td>';
-                if(!isset($valor[$i]) || $valor[$i]==''){
+                if (!isset($valor[$i]) || $valor[$i]==''){
                     $html .= '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
-                }else{
+                } else {
                     $html .= utf8_decode($valor[$i]);
                 }
                 $html .= '</td>';
@@ -607,7 +607,7 @@ readfile($link);*/
      */
     /*public function Upload($dir = '', $fileTypes = Array(), $nomearquivo = ''){
         $targetPath = ARQ_PATH.$dir;
-        if(!is_dir($targetPath)){
+        if (!is_dir($targetPath)){
             mkdir ($targetPath, 0777,true );
         }
         if (!empty($_FILES)) {
@@ -743,7 +743,7 @@ readfile($link);*/
         $ext = Array();
         $padrao = explode(',',$padrao);
         foreach($padrao as $valor){
-            if(isset($$valor)){
+            if (isset($$valor)){
                 $ext = array_merge($ext, $$valor);
             }
         }
@@ -857,7 +857,7 @@ readfile($link);*/
         $ext = Array();
         $padrao = explode(',',$padrao);
         foreach($padrao as $valor){
-            if(isset($$valor)){
+            if (isset($$valor)){
                 $ext = array_merge($ext, $$valor);
             }
         }
@@ -873,13 +873,13 @@ readfile($link);*/
      */
     protected function Upload($dir = '', $fileTypes = false, $nomearquivo = false){
         $targetPath = ARQ_PATH.$dir;
-        if(!is_dir($targetPath)){
+        if (!is_dir($targetPath)){
             mkdir ($targetPath, 0777,true );
         }
         if (!empty($_FILES)) {
-            if($nomearquivo===false){
+            if ($nomearquivo===false){
                 $nomearquivo = strtolower(srand(time()).rand(10000000000000, 99999999999999));
-            }else{
+            } else {
                 $nomearquivo = strtolower($nomearquivo);
             }
             // pega extensao
@@ -895,10 +895,10 @@ readfile($link);*/
             
             $fileParts = pathinfo($_FILES['file']['name']);
             
-            if(!is_array($fileTypes)){
-                if($fileTypes===false){
+            if (!is_array($fileTypes)){
+                if ($fileTypes===false){
                     $fileTypes = $this->Upload_Ext();
-                }else{
+                } else {
                     $fileTypes = $this->Upload_Ext($fileTypes);
                 }
             }
@@ -931,10 +931,10 @@ readfile($link);*/
         foreach ($colunas as $value) {
             $valor      = &$value['mysql_titulo'];
             $valor2     = $valor.'2';
-            if(isset($value['edicao']['Nome']) && isset($objeto->$valor)){
-                if($objeto->$valor2!=''){
+            if (isset($value['edicao']['Nome']) && isset($objeto->$valor)){
+                if ($objeto->$valor2!=''){
                     $html .= '<p style="clear:left;"><label style="width:120px; float:left;"><b>'.$value['edicao']['Nome'].':</b></label> '.$objeto->$valor2.'</p>';
-                }else if($objeto->$valor!=''){
+                }else if ($objeto->$valor!=''){
                     $html .= '<p style="clear:left;"><label style="width:120px; float:left;"><b>'.$value['edicao']['Nome'].':</b></label> '.$objeto->$valor.'</p>';
                 }
             }
@@ -977,16 +977,16 @@ readfile($link);*/
         foreach ($objeto as &$valor){
                 
             // Pega Link extra
-            if(isset($valor['linkextra']) && $valor['linkextra']!==false && $valor['linkextra']!==''){
+            if (isset($valor['linkextra']) && $valor['linkextra']!==false && $valor['linkextra']!==''){
                 // Verifica se Tem Permissao
                 $permitir = explode('/', $valor['linkextra']);
                 $permitir = $permitir[0];
-                if(\Framework\App\Sistema_Funcoes::Perm_Modulos($permitir)===true){
+                if (\Framework\App\Sistema_Funcoes::Perm_Modulos($permitir)===true){
                     $linkextra = $valor['linkextra'];
-                }else{
+                } else {
                     $linkextra = '';
                 }
-            }else{
+            } else {
                 $linkextra = '';
             }
             
@@ -994,7 +994,7 @@ readfile($link);*/
             $gerar_span = false;
             
             // Continua se não Tiver a Opção Formulario
-            if(!isset($valor['edicao']) && !isset($valor['TabelaLinkada'])){
+            if (!isset($valor['edicao']) && !isset($valor['TabelaLinkada'])){
                 continue;
             }
             
@@ -1002,16 +1002,16 @@ readfile($link);*/
             $escondido = self::Gerador_Formulario_Col_Escondido($valor);
             
             // SE for array bota span Principal para Multiplo Elementos
-            if($controladordearray){
-                if(isset($valor['mysql_titulo']) && strpos($valor['mysql_titulo'], '[]')===false){
+            if ($controladordearray){
+                if (isset($valor['mysql_titulo']) && strpos($valor['mysql_titulo'], '[]')===false){
                     $html .= $form->addtexto('</span></span>');
                     $controladordearray = false;
-                }/*else if(isset($valor['TabelaLinkada']['SelectMultiplo'])){
+                }/*else if (isset($valor['TabelaLinkada']['SelectMultiplo'])){
                     $html .= $form->addtexto('</span></span>');
                     $controladordearray = false;
                 }*/
-            }else{
-                if(isset($valor['mysql_titulo']) && strpos($valor['mysql_titulo'], '[]')!==false){
+            } else {
+                if (isset($valor['mysql_titulo']) && strpos($valor['mysql_titulo'], '[]')!==false){
                     $html .= $form->addtexto('<span id="'.str_replace('[]', '', $valor['mysql_titulo']).'controlador"><span id="'.str_replace('[]', '', $valor['mysql_titulo']).'controlador1">');
                     $controladordearray = true;
                 }
@@ -1019,12 +1019,12 @@ readfile($link);*/
             
             
             // Gerador de Span de COntrole
-            if(isset($valor['TabelaLinkada']['SelectMultiplo'])){
+            if (isset($valor['TabelaLinkada']['SelectMultiplo'])){
                 // Verifica se Ta escondido para colocar atributo extra
                 $spanatributoextra = '';
-                if($escondido!==false){
+                if ($escondido!==false){
                     $spanatributoextra = ' class="'.$valor['TabelaLinkada']['SelectMultiplo']['Linkado'].'_escondendo"';
-                    if($escondido=='apagado'){
+                    if ($escondido=='apagado'){
                         $spanatributoextra .= ' style="display: none;"';
                     }
                 }
@@ -1034,9 +1034,9 @@ readfile($link);*/
             }            
             
             // Extrangeiras LINKADAS
-            if(isset($valor['TabelaLinkada'])){
+            if (isset($valor['TabelaLinkada'])){
                 $tabelalinkada = &$valor['TabelaLinkada'];
-                if($tabelalinkada['formtipo']==='BoleanoMultiplo'){
+                if ($tabelalinkada['formtipo']==='BoleanoMultiplo'){
                     list($selecionado,$nao_selecionado) = $Modelo->db->Tabelas_CapturaLinkadas($tabelalinkada);
                     $html .= $form->BoleanoMultiplo(
                         $tabelalinkada['Nome'],
@@ -1048,12 +1048,12 @@ readfile($link);*/
                         $selecionado,
                         $escondido
                     );
-                }else if($tabelalinkada['formtipo']==='SelectMultiplo'){
+                }else if ($tabelalinkada['formtipo']==='SelectMultiplo'){
                     
                     // Carrega Informação que aparecera na tela quando nada for escrito
-                    if(isset($tabelalinkada['SelectMultiplo']['infonulo']) && $tabelalinkada['SelectMultiplo']['infonulo']!='' && $tabelalinkada['SelectMultiplo']['infonulo']!==false){
+                    if (isset($tabelalinkada['SelectMultiplo']['infonulo']) && $tabelalinkada['SelectMultiplo']['infonulo']!='' && $tabelalinkada['SelectMultiplo']['infonulo']!==false){
                         $select_infonulo = $tabelalinkada['SelectMultiplo']['infonulo'];
-                    }else{
+                    } else {
                         $select_infonulo = __('Escolha uma Opção');
                     }
                     
@@ -1062,11 +1062,11 @@ readfile($link);*/
                     //var_dump($selecionados,$resultado, $colunas);
                     // Configura Array
                     $opcoes = Array();
-                    if($resultado!==false){
+                    if ($resultado!==false){
                         // Captura Selects da Chave Extrangeira
                         foreach ($resultado as $indice_cha_ext=>$valor_cha_ext){
                             $selecionado = 0;
-                            if(in_array($indice_cha_ext, $selecionados)){
+                            if (in_array($indice_cha_ext, $selecionados)){
                                 $selecionado = 1;
                             }
                             $opcoes[] = Array(
@@ -1077,7 +1077,7 @@ readfile($link);*/
                         }
                     }
                     // Coloca {id} que sera substituido pelo id
-                    if($colunas!==false){
+                    if ($colunas!==false){
                         $colunas_temporaria = $colunas;
                         self::DAO_Campos_TrocaID($colunas_temporaria,'{id}');
                         
@@ -1087,7 +1087,7 @@ readfile($link);*/
                         $javascript_campos = str_replace(Array('"','\n','\r','    '), Array('\"','','',''), $javascript_campos);
                         $javascript_campos = preg_replace('/\s/',' ',trim($javascript_campos));
                         
-                    }else{
+                    } else {
                         $javascript_campos = '';
                     }
                     // Puxa Select
@@ -1104,7 +1104,7 @@ readfile($link);*/
                         $select_infonulo   // Informacao quando vazio             
                     );
                     // Se tiver selecionado coloca as colunas extras extras 
-                    if($selecionados!==false && !empty($selecionados) && $colunas!==false){
+                    if ($selecionados!==false && !empty($selecionados) && $colunas!==false){
                         foreach ($selecionados as &$valor2){
                             // Chama TAbela
                             $tabela_link = \Framework\App\Conexao::Tabelas_GetSiglas_Recolher($tabelalinkada['Tabela']);
@@ -1114,7 +1114,7 @@ readfile($link);*/
                                 $tabelalinkada['SelectMultiplo']['Linkado']=>$valor2
                             );
                             $objeto_novo = $Modelo->db->Sql_Select($tabela_link['classe'], $where,1);
-                            if($objeto_novo===false) throw new \Exception('Registro não existe: ID->'.$id,404);
+                            if ($objeto_novo===false) throw new \Exception('Registro não existe: ID->'.$id,404);
                             // Atualiza Valores
                             self::mysql_AtualizaValores($colunas, $objeto_novo, $objeto_novo->id);
                             // Atualiza id
@@ -1122,7 +1122,7 @@ readfile($link);*/
                             self::DAO_Campos_TrocaID($colunas_temporaria,$valor2);
                             $nome = $tabelalinkada['SelectMultiplo']['Linkado'].'2';
                             // caso nao exista
-                            if($objeto_novo->$nome===NULL){
+                            if ($objeto_novo->$nome===NULL){
                                 CONTINUE;
                             }
                             self::DAO_Campos_TrocaNOME($colunas_temporaria,$objeto_novo->$nome);
@@ -1132,26 +1132,26 @@ readfile($link);*/
                             self::Gerador_Formulario($colunas_temporaria, $form,false);
                         }
                     }
-                }else if($tabelalinkada['formtipo']==='ExternoInsercao'){
+                }else if ($tabelalinkada['formtipo']==='ExternoInsercao'){
                     
                     // Carrega Informação que aparecera na tela quando nada for escrito
-                    if(isset($tabelalinkada['ExternoInsercao']['infonulo']) && $tabelalinkada['ExternoInsercao']['infonulo']!='' && $tabelalinkada['ExternoInsercao']['infonulo']!==false){
+                    if (isset($tabelalinkada['ExternoInsercao']['infonulo']) && $tabelalinkada['ExternoInsercao']['infonulo']!='' && $tabelalinkada['ExternoInsercao']['infonulo']!==false){
                         $select_infonulo = $tabelalinkada['ExternoInsercao']['infonulo'];
-                    }else{
+                    } else {
                         $select_infonulo = __('Escolha uma Opção');
                     }
                     
                     // Puxa Selecionados, Resutados e Colunas
                     $resultado_tabcapturados = $Modelo->db->Tabelas_CapturaLinkadas($tabelalinkada);
-                    if($resultado_tabcapturados===false) return false;
+                    if ($resultado_tabcapturados===false) return false;
                     list($selecionados,$resultado, $colunas) = $resultado_tabcapturados;
                     // Configura Array
                     $opcoes = Array();
-                    if($resultado!==false){
+                    if ($resultado!==false){
                         // Captura Selects da Chave Extrangeira
                         foreach ($resultado as $indice_cha_ext=>$valor_cha_ext){
                             $selecionado = 0;
-                            if(in_array($indice_cha_ext, $selecionados)){
+                            if (in_array($indice_cha_ext, $selecionados)){
                                 $selecionado = 1;
                             }
                             $opcoes[] = Array(
@@ -1162,7 +1162,7 @@ readfile($link);*/
                         }
                     }
                     // Coloca {id} que sera substituido pelo id
-                    if($colunas!==false){
+                    if ($colunas!==false){
                         $colunas_temporaria = $colunas;
                         self::DAO_Campos_TrocaID($colunas_temporaria,'{id}');
                         // Puxa CAmpos Javascript
@@ -1170,7 +1170,7 @@ readfile($link);*/
                         $javascript_campos = self::Gerador_Formulario($colunas_temporaria, $form_js,false);
                         $javascript_campos = str_replace(Array('"','\n','\r','    '), Array('\"','','',''), $javascript_campos);
                         $javascript_campos = preg_replace('/\s/',' ',trim($javascript_campos));
-                    }else{
+                    } else {
                         $javascript_campos = '';
                     }
                     // Puxa Select
@@ -1198,7 +1198,7 @@ readfile($link);*/
                     // So coloca os Campos Requisitados
                     $Ext_Campos = $tabelalinkada['ExternoInsercao']['Campos'];
                     foreach($colunas_temporaria as $indice_col_temp=>&$valor_col_temp){
-                        if(array_search($valor_col_temp["mysql_titulo"],$Ext_Campos)===false){
+                        if (array_search($valor_col_temp["mysql_titulo"],$Ext_Campos)===false){
                             unset($colunas_temporaria[$indice_col_temp]);
                         }
                     }
@@ -1210,7 +1210,7 @@ readfile($link);*/
                     
                     
                     // Se tiver selecionado coloca as colunas extras extras 
-                    if($selecionados!==false && !empty($selecionados) && $colunas!==false){
+                    if ($selecionados!==false && !empty($selecionados) && $colunas!==false){
                         foreach ($selecionados as &$valor2){
                             // Chama TAbela
                             $tabela_link = \Framework\App\Conexao::Tabelas_GetSiglas_Recolher($tabelalinkada['Tabela']);
@@ -1220,7 +1220,7 @@ readfile($link);*/
                                 $tabelalinkada['ExternoInsercao']['Linkado']=>$valor2
                             );
                             $objeto_novo = $Modelo->db->Sql_Select($tabela_link['classe'], $where,1);
-                            if($objeto_novo===false) throw new \Exception('Registro não existe: ID->'.$id,404);
+                            if ($objeto_novo===false) throw new \Exception('Registro não existe: ID->'.$id,404);
                             // Atualiza Valores
                             self::mysql_AtualizaValores($colunas, $objeto_novo, $objeto_novo->id);
                             // Atualiza id
@@ -1228,7 +1228,7 @@ readfile($link);*/
                             self::DAO_Campos_TrocaID($colunas_temporaria,$valor2);
                             $nome = $tabelalinkada['ExternoInsercao']['Linkado'].'2';
                             // caso nao exista
-                            if($objeto_novo->$nome===NULL){
+                            if ($objeto_novo->$nome===NULL){
                                 CONTINUE;
                             }
                             self::DAO_Campos_TrocaNOME($colunas_temporaria,$objeto_novo->$nome);
@@ -1239,68 +1239,68 @@ readfile($link);*/
                         }
                     }
                 }
-            }else if($valor['mysql_estrangeira']!==false && isset($valor['edicao'])){
+            }else if ($valor['mysql_estrangeira']!==false && isset($valor['edicao'])){
                 
                 // Grava Extrangeira
                 $extrangeiras[$valor['mysql_titulo']] = $valor['edicao']['valor_padrao'];
                 
                 // Captura condicao
-                if($valor['mysql_estrangeira']){
+                if ($valor['mysql_estrangeira']){
                     $condicao = $valor['mysql_estrangeira'];
                     /*// Caso seja Extrangeira e dependente
-                    if(strpos($condicao, '{')!==false){
+                    if (strpos($condicao, '{')!==false){
                         $ext_campo = explode('|', $condicao);
                         $ext_campo = $ext_campo[2];
-                        if(strpos($ext_campo, '.')!==false){
+                        if (strpos($ext_campo, '.')!==false){
                             $ext_campo = explode('.', $ext_campo);
                             $ext_campo = $ext_campo[1];
                         }
                         $ext_campo = explode('=', $ext_campo);
                         $ext_campo = $ext_campo[0];
-                        if(isset($extrangeiras[$ext_campo]) && $extrangeiras[$ext_campo]!==false){
+                        if (isset($extrangeiras[$ext_campo]) && $extrangeiras[$ext_campo]!==false){
                             $condicao = preg_replace('/{(.+)}/U', $extrangeiras[$ext_campo], $condicao);
-                        }else{
+                        } else {
                             $condicao = preg_replace('/{(.+)}/U', '0', $condicao);
                         }
                     }*/
-                }else{
+                } else {
                     $condicao = false;
                 }
                 
                 // Se houver dependencias no formulario, vai ter o form_change diferente de false
-                if(isset($valor['form_change']) && $valor['form_change']!='' && $valor['form_change']!==false){
+                if (isset($valor['form_change']) && $valor['form_change']!='' && $valor['form_change']!==false){
                     $change = 'Modelo_Ajax_Chamar(\'_Sistema/Recurso/Select_Recarrega_Extrangeira/'.$valor['form_change'].'/'.$valor['mysql_titulo'].'/\'+this.value,\'\',\'get\',true)';
-                }else if(isset($valor['edicao']['change'])){
+                }else if (isset($valor['edicao']['change'])){
                     $change = $valor['edicao']['change'];
-                }else{
+                } else {
                     $change = '';
                 }
                 
                 // Add CLASSE DO Select
-                if(isset($valor['edicao']['select']['class']) && $valor['edicao']['select']['class']!='' && $valor['edicao']['select']['class']!==false){
+                if (isset($valor['edicao']['select']['class']) && $valor['edicao']['select']['class']!='' && $valor['edicao']['select']['class']!==false){
                     $select_class = $valor['edicao']['select']['class'];
-                }else{
+                } else {
                     $select_class = '';
                 }
                 
                 // Informação quando nulo 
-                if(isset($valor['edicao']['select']['infonulo']) && $valor['edicao']['select']['infonulo']!='' && $valor['edicao']['select']['infonulo']!==false){
+                if (isset($valor['edicao']['select']['infonulo']) && $valor['edicao']['select']['infonulo']!='' && $valor['edicao']['select']['infonulo']!==false){
                     $select_infonulo = $valor['edicao']['select']['infonulo'];
-                }else{
+                } else {
                     $select_infonulo = __('Escolha uma Opção');
                 }
                 
                 // Multiplo select ou nao?
-                if(isset($valor['edicao']['select']['multiplo']) && $valor['edicao']['select']['multiplo']!='' && $valor['edicao']['select']['multiplo']!==false){
+                if (isset($valor['edicao']['select']['multiplo']) && $valor['edicao']['select']['multiplo']!='' && $valor['edicao']['select']['multiplo']!==false){
                     $multiplo = true;
-                }else{
+                } else {
                     $multiplo = false;
                 }
                 
                 // Verifica se titulo tem [] indicando array para entao remover
-                if(strpos($valor['mysql_titulo'], '[]')!==false && $multiplo===true){
+                if (strpos($valor['mysql_titulo'], '[]')!==false && $multiplo===true){
                     $selectid = str_replace('[]', '', $valor['mysql_titulo']);
-                }else{
+                } else {
                     $selectid = $valor['mysql_titulo'];
                 }
                 
@@ -1320,19 +1320,19 @@ readfile($link);*/
                 );
                 
                 // Primeira Opção
-                if($valor['edicao']['valor_padrao']===false){
+                if ($valor['edicao']['valor_padrao']===false){
                     $html .= $form->Select_Opcao('','',1);
-                }else{
+                } else {
                     $html .= $form->Select_Opcao('','',0);
                 }
                 
                 // Captura Selects pré denifidos
-                if(isset($valor['edicao']['select']) && isset($valor['edicao']['select']['opcoes'])){
+                if (isset($valor['edicao']['select']) && isset($valor['edicao']['select']['opcoes'])){
                     $select = &$valor['edicao']['select']['opcoes'];
                     foreach ($select as &$valor2){
-                        if((string) $valor2['value'] === (string) $valor['edicao']['valor_padrao']){
+                        if ((string) $valor2['value'] === (string) $valor['edicao']['valor_padrao']){
                             $selecionado=1;
-                        }else{
+                        } else {
                             $selecionado=0;
                         }
                         $html .= $form->Select_Opcao(__($valor2['nome']),$valor2['value'],$selecionado);
@@ -1345,9 +1345,9 @@ readfile($link);*/
                 // Captura Selects da Chave Extrangeira
                 $resultado = $Modelo->db->Tabelas_CapturaExtrangeiras($valor);
                 foreach ($resultado as $indice2 => &$valor2){
-                    if((string) $indice2 === (string) $valor['edicao']['valor_padrao']){
+                    if ((string) $indice2 === (string) $valor['edicao']['valor_padrao']){
                         $selecionado=1;
-                    }else{
+                    } else {
                         $selecionado=0;
                     }
                     $html .= $form->Select_Opcao($valor2,$indice2,$selecionado);
@@ -1357,14 +1357,14 @@ readfile($link);*/
                 
             }else 
             // Caso Contrario e Possua Opcao Edicao
-            if(isset($valor['edicao'])){
+            if (isset($valor['edicao'])){
                 
                 // Trata Campos que Mudam o Formulario, se for false desabilita mudanças
-                if($valor['edicao']['valor_padrao']===false && isset($valor['edicao']['change']) && strpos($valor['edicao']['change'], 'Control_Layoult_Form_Campos_Trocar')!==false){
+                if ($valor['edicao']['valor_padrao']===false && isset($valor['edicao']['change']) && strpos($valor['edicao']['change'], 'Control_Layoult_Form_Campos_Trocar')!==false){
                     self::DAO_Campos_AlternadosDesabilitados($objeto);
                 }
                 
-                if($valor['edicao']['formtipo']=='textarea'){
+                if ($valor['edicao']['formtipo']=='textarea'){
                     $html .= $form->TextArea_Novo(
                         $valor['edicao']['Nome'],
                         $valor['mysql_titulo'],
@@ -1378,23 +1378,23 @@ readfile($link);*/
                         $linkextra,
                         $escondido
                     ); 
-                }else if($valor['edicao']['formtipo']=='input'){
+                }else if ($valor['edicao']['formtipo']=='input'){
                     // Change para formularios
-                    if(isset($valor['edicao']['change']) && $valor['edicao']['change']!==false & $valor['edicao']['change']!=''){
+                    if (isset($valor['edicao']['change']) && $valor['edicao']['change']!==false & $valor['edicao']['change']!=''){
                         $change = $valor['edicao']['change'];
                     }
                     else{
                         $change = '';
                     }
                     // Verifica se tem validacao js
-                    if(isset($valor['edicao']['validar']) && $valor['edicao']['validar']!==false & $valor['edicao']['validar']!=''){
+                    if (isset($valor['edicao']['validar']) && $valor['edicao']['validar']!==false & $valor['edicao']['validar']!=''){
                         $validar = $valor['edicao']['validar'];
                     }
                     else{
                         $validar = '';
                     }
                     // Verifica se tem validacao js
-                    if(isset($valor['edicao']['Mascara']) && $valor['edicao']['Mascara']!==false & $valor['edicao']['Mascara']!=''){
+                    if (isset($valor['edicao']['Mascara']) && $valor['edicao']['Mascara']!==false & $valor['edicao']['Mascara']!=''){
                         $mascara = $valor['edicao']['Mascara'];
                     }
                     else{
@@ -1417,9 +1417,9 @@ readfile($link);*/
                         $escondido
                     ); 
                 
-                }else if($valor['edicao']['formtipo']=='upload'){
+                }else if ($valor['edicao']['formtipo']=='upload'){
                     // Verifica se tem validacao js
-                    if(isset($valor['edicao']['validar']) && $valor['edicao']['validar']!==false & $valor['edicao']['validar']!=''){
+                    if (isset($valor['edicao']['validar']) && $valor['edicao']['validar']!==false & $valor['edicao']['validar']!=''){
                         $validar = $valor['edicao']['validar'];
                     }
                     else{
@@ -1437,22 +1437,22 @@ readfile($link);*/
                         $validar,
                         $escondido
                     ); 
-                }elseif($valor['edicao']['formtipo']=='select'){
-                    if(isset($valor['edicao']['change'])){
+                }elseif ($valor['edicao']['formtipo']=='select'){
+                    if (isset($valor['edicao']['change'])){
                         $change = $valor['edicao']['change'];
                     }
                     else{
                         $change = '';
                     }
                     // Add o Select
-                    if(isset($valor['edicao']['select']['class']) && $valor['edicao']['select']['class']!='' && $valor['edicao']['select']['class']!==false){
+                    if (isset($valor['edicao']['select']['class']) && $valor['edicao']['select']['class']!='' && $valor['edicao']['select']['class']!==false){
                         $select_class = $valor['edicao']['select']['class'];
-                    }else{
+                    } else {
                         $select_class = '';
                     }
-                    if(isset($valor['edicao']['select']['infonulo']) && $valor['edicao']['select']['infonulo']!='' && $valor['edicao']['select']['infonulo']!==false){
+                    if (isset($valor['edicao']['select']['infonulo']) && $valor['edicao']['select']['infonulo']!='' && $valor['edicao']['select']['infonulo']!==false){
                         $select_infonulo = $valor['edicao']['select']['infonulo'];
-                    }else{
+                    } else {
                         $select_infonulo = __('Escolha uma Opção');
                     }
                     
@@ -1469,16 +1469,16 @@ readfile($link);*/
                         $select_infonulo
                     );
                     $select = &$valor['edicao']['select']['opcoes'];
-                    if($valor['edicao']['valor_padrao']===false){
+                    if ($valor['edicao']['valor_padrao']===false){
                         $html .= $form->Select_Opcao('','',1);
-                    }else{
+                    } else {
                         $html .= $form->Select_Opcao('','',0);
                     }
-                    if(is_array($select)){
+                    if (is_array($select)){
                         foreach ($select as &$valor2){
-                            if( (string) $valor2['value'] === (string) $valor['edicao']['valor_padrao']){
+                            if ( (string) $valor2['value'] === (string) $valor['edicao']['valor_padrao']){
                                 $selecionado=1;
-                            }else{
+                            } else {
                                 $selecionado=0;
                             }
                             $html .= $form->Select_Opcao(__($valor2['nome']),$valor2['value'],$selecionado);
@@ -1489,12 +1489,12 @@ readfile($link);*/
             }
             
             // se FOI CRIADO SPAN, FECHA
-            if(isset($valor['TabelaLinkada']['SelectMultiplo'])){
+            if (isset($valor['TabelaLinkada']['SelectMultiplo'])){
                 $html .= $form->addtexto('</span></span>');
                 $controladordearray = false;
             }
             // SE for array bota span
-            if($gerar_span===true){
+            if ($gerar_span===true){
                 $html .= $form->addtexto('</span></span>');
                 $gerar_span = false;
             }
@@ -1512,7 +1512,7 @@ readfile($link);*/
      */
     static function Gerador_Formulario_Col_Escondido(&$coluna){
         // verifica se o campo é escondido ou nao
-        if(
+        if (
             (
                 isset($coluna['edicao'])
                 &&
@@ -1531,7 +1531,7 @@ readfile($link);*/
             )
         ){
             return 'apagado';
-        }else if(((isset($coluna['edicao']) && isset($coluna['edicao']['form_escondido']) && $coluna['edicao']['form_escondido']=='apagar') || (isset($coluna['TabelaLinkada']) && isset($coluna['TabelaLinkada'][$coluna['TabelaLinkada']['formtipo']]['form_escondido']) && $coluna['TabelaLinkada'][$coluna['TabelaLinkada']['formtipo']]['form_escondido']=='apagar'))){
+        }else if (((isset($coluna['edicao']) && isset($coluna['edicao']['form_escondido']) && $coluna['edicao']['form_escondido']=='apagar') || (isset($coluna['TabelaLinkada']) && isset($coluna['TabelaLinkada'][$coluna['TabelaLinkada']['formtipo']]['form_escondido']) && $coluna['TabelaLinkada'][$coluna['TabelaLinkada']['formtipo']]['form_escondido']=='apagar'))){
             return 'apagar';
         }
         return false;
@@ -1563,47 +1563,47 @@ readfile($link);*/
         $tempo = new \Framework\App\Tempo('Controle Gerador Form Janela');
         
         // Define Popup
-        if(isset($_GET['formselect']) && $_GET['formselect']!=''){
+        if (isset($_GET['formselect']) && $_GET['formselect']!=''){
             $bloco='Popup';
-        }else if(isset($_GET['popup']) && $_GET['popup']!=''){
+        }else if (isset($_GET['popup']) && $_GET['popup']!=''){
             $bloco='Popup';
         }
         
         // Se nao for ajax sai do Popup
-        if(!defined('LAYOULT_POPUP')){
-            if($bloco==='Popup' && LAYOULT_IMPRIMIR!=='AJAX'){
+        if (!defined('LAYOULT_POPUP')){
+            if ($bloco==='Popup' && LAYOULT_IMPRIMIR!=='AJAX'){
                 $bloco='All';
                 define('LAYOULT_POPUP', false);
-            }else if($bloco==='Popup'){
+            }else if ($bloco==='Popup'){
                 define('LAYOULT_POPUP', true);
-            }else{
+            } else {
                 define('LAYOULT_POPUP', false);
             }
-        }else{
-            if($bloco==='Popup' && LAYOULT_IMPRIMIR!=='AJAX'){
+        } else {
+            if ($bloco==='Popup' && LAYOULT_IMPRIMIR!=='AJAX'){
                 $bloco='All';
             }
         }
         
-        if(!is_array($campos)){
+        if (!is_array($campos)){
             $campos = $Modelo->Dao_GetColunas($campos);
         }
         
         // Verifica se nao é editavel
-        if($editar!==false){
+        if ($editar!==false){
             
-            if(is_object($editar)){
+            if (is_object($editar)){
                 $objeto = &$editar;
                 $primaria = $objeto->Get_Primaria();
                 
                 
-                if($primaria!==false){
+                if ($primaria!==false){
                     $id = (int) $objeto->$primaria[0];
-                }else{
+                } else {
                     $id = (int) $objeto->id;
                 }
-            }else{
-                if(!is_array($editar))throw new \Exception('Variavel nao e um Array: '.$editar,2800);
+            } else {
+                if (!is_array($editar))throw new \Exception('Variavel nao e um Array: '.$editar,2800);
                 
                 // PRIMARIA
                 $class_usada = $editar[0].'_DAO';
@@ -1612,15 +1612,15 @@ readfile($link);*/
                 $primaria = $primaria->Get_Primaria();
                 
                 // recupera Arquivo
-                if($primaria!==false){
+                if ($primaria!==false){
                     $id = \Framework\App\Conexao::anti_injection($editar[1]);
                     $objeto = $Modelo->db->Sql_Select($editar[0], Array($primaria[0]=>$id),1);
-                }else{
+                } else {
                     $id = (int) $editar[1];
                     $objeto = $Modelo->db->Sql_Select($editar[0], Array('id'=>$id),1);
                 }
                 
-                if($objeto===false){
+                if ($objeto===false){
                     $mensagens = array(
                         "tipo"              => 'erro',
                         "mgs_principal"     => __('Erro'),
@@ -1638,9 +1638,9 @@ readfile($link);*/
         $form = new \Framework\Classes\Form($formid,$formlink,'formajax',"mini",'horizontal','off');
         \Framework\App\Controle::Gerador_Formulario($campos, $form, true);
         // Carrega formulario
-        if($bloco==='html'){
+        if ($bloco==='html'){
             return $form->retorna_form($formbt);
-        }else if($bloco==='Popup' || (LAYOULT_POPUP===TRUE && LAYOULT_IMPRIMIR==='AJAX')){
+        }else if ($bloco==='Popup' || (LAYOULT_POPUP===TRUE && LAYOULT_IMPRIMIR==='AJAX')){
             $formulario = $form->retorna_form();
             $conteudo = array(
                 'id' => 'popup',
@@ -1659,23 +1659,23 @@ readfile($link);*/
             );
             $Visual->Json_IncluiTipo('Popup',$conteudo);
             $janela = false;
-        }else{
+        } else {
             $Visual->Blocar($form->retorna_form($formbt));
             // Mostra Conteudo
-            if($bloco==='All'){
+            if ($bloco==='All'){
                 $Visual->Bloco_Unico_CriaJanela($titulo2,'',0,'Sierra.Control_Form_Tratar($(\'#'.$formid.'\')[0]);');
-            }else if($bloco==='right'){
+            }else if ($bloco==='right'){
                 $Visual->Bloco_Menor_CriaJanela($titulo2,'',0,'Sierra.Control_Form_Tratar($(\'#'.$formid.'\')[0]);');
-            }else if($bloco==='left'){
+            }else if ($bloco==='left'){
                 $Visual->Bloco_Maior_CriaJanela($titulo2,'',0,'Sierra.Control_Form_Tratar($(\'#'.$formid.'\')[0]);');
             }
         }
         // Adiciona Titulo ao Endereço
-        if($janela===true){
+        if ($janela===true){
             $Controle->Tema_Endereco($titulo1);
             $Visual->Json_Info_Update('Historico', true);
             $Visual->Json_Info_Update('Titulo',$titulo1);
-        }else{
+        } else {
             $Visual->Json_Info_Update('Historico', false);
         }
     }
@@ -1699,7 +1699,7 @@ readfile($link);*/
         // Variaveis
         $camponovo = false;
         // Verifica se é pra Add ou Editar
-        if(is_array($dao)){
+        if (is_array($dao)){
             $tipo           = 'edit';
             $tab            = \Framework\App\Conexao::anti_injection($dao[0]);
             
@@ -1711,14 +1711,16 @@ readfile($link);*/
             $primaria = $primaria->Get_Primaria();
 
             // recupera Arquivo
-            if($primaria!==false){
+            if ($primaria!==false){
                 $identificador = \Framework\App\Conexao::anti_injection($dao[1]);
+                var_dump('aqui','{sigla}'.$primaria[0].'=\''.$identificador.'\'');
                 $objeto = $this->_Modelo->db->Sql_Select($tab, '{sigla}'.$primaria[0].'=\''.$identificador.'\'',1);
-            }else{
+            } else {
                 $identificador  = (int) $dao[1];
+                var_dump('aqui', '{sigla}'.$primaria.'=\''.$identificador.'\'');
                 $objeto = $this->_Modelo->db->Sql_Select($tab, '{sigla}id=\''.$identificador.'\'',1);
             }
-            if($objeto===false){
+            if ($objeto===false){
                 $mensagens = array(
                     "tipo"              => 'erro',
                     "mgs_principal"     => __('Erro'),
@@ -1729,7 +1731,7 @@ readfile($link);*/
                 $this->layoult_zerar = false; 
                 return false;
             }
-        }else{
+        } else {
             $tipo           = 'add';
             $tab            = \Framework\App\Conexao::anti_injection($dao);
             $class_usada    = $tab.'_DAO';
@@ -1744,7 +1746,7 @@ readfile($link);*/
         self::mysql_AtualizaValores($objeto);
         
         // Adiciona Valores
-        if(is_array($colocar) && $colocar!==false){
+        if (is_array($colocar) && $colocar!==false){
             reset($colocar);
             while (key($colocar) !== null) {
                 $chave=key($colocar);
@@ -1754,21 +1756,21 @@ readfile($link);*/
         }
         
         //Verifica Chaves Primárias
-        if(is_array($primaria) && !empty($primaria) && $tipo !== 'edit'){
+        if (is_array($primaria) && !empty($primaria) && $tipo !== 'edit'){
             $repetidas_where = '';
             foreach($primaria as &$valor){
-                if($repetidas_where !== ''){
+                if ($repetidas_where !== ''){
                     $repetidas_where .= ' && ';
                 }
-                if($valor=='servidor'){
+                if ($valor=='servidor'){
                     $repetidas_where .= '{sigla}'.$valor.'=\''.SRV_NAME_SQL.'\'';
-                }else{
+                } else {
                     $repetidas_where .= '{sigla}'.$valor.'=\''.$objeto->$valor.'\'';
                 }
             }
             $objeto_pesquisado = $this->_Modelo->db->Sql_Select($tab, $repetidas_where,1);
             // Se for Encontrado outro Objeto Trava Funcao e Retorna Erro
-            if($objeto_pesquisado!==false){
+            if ($objeto_pesquisado!==false){
                 $mensagens = array(
                     "tipo"              => 'erro',
                     "mgs_principal"     => __('Registro Duplicado'),
@@ -1786,30 +1788,30 @@ readfile($link);*/
         
         // Verifica Indices UNICOS
         $unicos = $objeto->Get_Indice_Unico();
-        if($unicos!==false){
+        if ($unicos!==false){
             foreach($unicos as &$valor){
                 $indice_campos = '';
                 $valor = str_replace(Array('`'), Array(''), $valor);
                 $valores = explode(',',$valor);
                 $where = Array();
                 foreach($valores as &$valor2){
-                    if($valor2=='servidor'){
+                    if ($valor2=='servidor'){
                         $where[$valor2] = SRV_NAME_SQL;
-                    }else{
+                    } else {
                         $where[$valor2] = $objeto->$valor2;
-                        if($indice_campos!=''){
+                        if ($indice_campos!=''){
                             $indice_campos .= ', ';
                         }
                         $indice_campos .= $valor2;
                     }
                 }
                 // caso esteja editando, o proprio registro nao conta
-                if($tipo === 'edit' && $primaria!==false){
+                if ($tipo === 'edit' && $primaria!==false){
                     $where['!'.$primaria[0]] = $objeto->$primaria[0];
                 }
                 $objeto_pesquisado  = $this->_Modelo->db->Sql_Select($tab, $where,1);
                 // Se for Encontrado outro Objeto Trava Funcao e Retorna Erro
-                if($objeto_pesquisado!==false){
+                if ($objeto_pesquisado!==false){
                     $mensagens = array(
                         "tipo"              => 'erro',
                         "mgs_principal"     => __('Registro Duplicado'),
@@ -1827,10 +1829,10 @@ readfile($link);*/
         }
         
         // Insere OU ATUALIZA
-        if($tipo=='add'){
+        if ($tipo=='add'){
             $sucesso        = $this->_Modelo->db->Sql_Insert($objeto);
             $identificador  = $this->_Modelo->db->ultimo_id();
-        }else if($tipo=='edit'){
+        }else if ($tipo=='edit'){
             $identificador  = $objeto->$primaria[0];
             $sucesso        = $this->_Modelo->db->Sql_Update($objeto);
         }
@@ -1840,28 +1842,28 @@ readfile($link);*/
         $sigla = $dao_completo::Get_Sigla();
         $links = \Framework\App\Conexao::Tabelas_GetLinks_Recolher($sigla);
         $campos = &Conexao::Tabelas_GetCampos_Recolher($sigla);
-        if($campos!==NULL && !empty($campos)){
+        if ($campos!==NULL && !empty($campos)){
             foreach ($campos as &$valor){
-            if(isset($valor['TabelaLinkada'])){
+            if (isset($valor['TabelaLinkada'])){
                 $tabelalinkada = &$valor['TabelaLinkada'];
                 
                 // Verifica se ta liberado e faz os calculos necessarios
-                if($tabelalinkada['formtipo']=='SelectMultiplo'){
+                if ($tabelalinkada['formtipo']=='SelectMultiplo'){
                     $get = $tabelalinkada['SelectMultiplo']['Linkado'];
                     
                     // Vericica se realmente é um array e captura
-                    if(isset($_POST[$get]) && is_array($_POST[$get])){
+                    if (isset($_POST[$get]) && is_array($_POST[$get])){
                         $get = array_unique(\Framework\App\Conexao::anti_injection($_POST[$get]));
                     }
                     
                     // Caso Exista o Mesmo o trata
-                    if(isset($get) && is_array($get)){
+                    if (isset($get) && is_array($get)){
                         // Busca AS caracteristicas da tabela mandando a sigla como parametro
                         $nome_da_tab        = \Framework\App\Conexao::Tabelas_GetSiglas_Recolher($tabelalinkada['Tabela']);
                         $nome_da_tab        = $nome_da_tab['classe'];
                         
                         // Trata o Nome
-                        if(strpos($nome_da_tab, '_DAO')===false){
+                        if (strpos($nome_da_tab, '_DAO')===false){
                             $nome_da_tab_class  = $nome_da_tab.'_DAO';
                         }
                         else{
@@ -1872,27 +1874,27 @@ readfile($link);*/
                         $where = Array($tabelalinkada['SelectMultiplo']['Linkar'] => $identificador);
                         $respostas  = $this->_Modelo->db->Sql_Select($nome_da_tab, $where);
                         // PEga essas opcoes e deleta a porra toda !
-                        if($respostas!==false){
-                            if(!is_array($respostas)) $respostas = Array($respostas);
+                        if ($respostas!==false){
+                            if (!is_array($respostas)) $respostas = Array($respostas);
                             $this->_Modelo->db->Sql_Delete($respostas,true);
                         }
                         // Agora registra o que importa
                         foreach($get as &$valor2){
                                 // Caso nao exista pula
-                            if($valor2=='' || $valor===NULL) continue;
+                            if ($valor2=='' || $valor===NULL) continue;
                             // Cria Objeto e Cadastra o Mesmo
                             $objeto2 = new $nome_da_tab_class;
                             $objeto2->$tabelalinkada['SelectMultiplo']['Linkar']  = $identificador;
                             $objeto2->$tabelalinkada['SelectMultiplo']['Linkado'] = $valor2;
                             $ocampos = $tabelalinkada['SelectMultiplo']['Campos'];
-                            if(isset($tabelalinkada['Preencher']) && $tabelalinkada['Preencher']!==false){
+                            if (isset($tabelalinkada['Preencher']) && $tabelalinkada['Preencher']!==false){
                                 foreach($tabelalinkada['Preencher'] as $indice3=>&$valor3){
                                     $objeto2->$indice3 = $valor3;
                                 }
                             }
-                            if($ocampos!==false){
+                            if ($ocampos!==false){
                                 foreach($ocampos as &$valor3){
-                                    if(isset($_POST[$valor3.'_'.$valor2])){
+                                    if (isset($_POST[$valor3.'_'.$valor2])){
                                         $objeto2->$valor3 = \Framework\App\Conexao::anti_injection($_POST[$valor3.'_'.$valor2]);
                                     }
                                 }
@@ -1903,13 +1905,13 @@ readfile($link);*/
                     }
                 }else
                 // Verifica se ta liberado e faz os calculos necessarios
-                if($tabelalinkada['formtipo']=='BoleanoMultiplo'){
+                if ($tabelalinkada['formtipo']=='BoleanoMultiplo'){
                     // Pega os posts
                     $get = 'tablink_'.$tabelalinkada['Tabela'];
-                    if(isset($_POST[$get]) && is_array($_POST[$get])){
+                    if (isset($_POST[$get]) && is_array($_POST[$get])){
                         $get = array_unique(\Framework\App\Conexao::anti_injection($_POST[$get]));
                     }
-                    if(isset($get) && is_array($get)){
+                    if (isset($get) && is_array($get)){
                         $ovalor = $tabelalinkada['BoleanoMultiplo']['Valor'];
                         // Busca AS caracteristicas da tabela mandando a sigla como parametro
                         $nome_da_tab        = \Framework\App\Conexao::Tabelas_GetSiglas_Recolher($tabelalinkada['Tabela']);
@@ -1922,11 +1924,11 @@ readfile($link);*/
                         $where = Array($links[$tabelalinkada['Tabela']] => $identificador);
                         $respostas  = $this->_Modelo->db->Sql_Select($nome_da_tab, $where);
                         //var_dump($respostas);
-                        if($respostas!==false){
-                            if(!is_array($respostas)) $respostas = Array($respostas);
+                        if ($respostas!==false){
+                            if (!is_array($respostas)) $respostas = Array($respostas);
                             // Caso nao tenha campo de controle deleta os que nao 
                             // forem selecionados
-                            if($ovalor===false){
+                            if ($ovalor===false){
                                 $this->_Modelo->db->Sql_Delete($respostas,true);
                             }
                             // Caso tenha valor a ser alterado
@@ -1939,37 +1941,37 @@ readfile($link);*/
                         }
                         // Pega campo da 3 tabela linkada
                         foreach($links_reverso as $indice=>&$valor3){
-                            if(is_array($valor3)){
+                            if (is_array($valor3)){
                                 $camponovo = $indice;
-                            }else{
+                            } else {
                                 $camponovo = $valor3;
                             }
                         }
                         // Agora registra o que importa
                         //var_dump($get,$camponovo);
-                        if(!empty($get) && $camponovo!==false){
+                        if (!empty($get) && $camponovo!==false){
                             foreach($get as &$valor2){
                                 // Caso nao exista pula
-                                if($valor2=='' || $valor===NULL) continue;
+                                if ($valor2=='' || $valor===NULL) continue;
                                 // Confere o Resto
-                                if($ovalor===false){
+                                if ($ovalor===false){
                                     $objeto2 = new $nome_da_tab;
                                     $objeto2->$links[$tabelalinkada['Tabela']]  = $identificador;
                                     $objeto2->$camponovo                        = $valor2;
                                     $sucesso = $this->_Modelo->db->Sql_Insert($objeto2);
-                                }else{
+                                } else {
                                     $where = Array(
                                         $links[$tabelalinkada['Tabela']]    => $identificador,
                                         $camponovo                          => $valor2,
                                     );
                                     $respostas2  = $this->_Modelo->db->Sql_Select($nome_da_tab, $where,1);
-                                    if($respostas2===false){
+                                    if ($respostas2===false){
                                         $objeto2 = new $nome_da_tab;
                                         $objeto2->$links[$tabelalinkada['Tabela']]  = $identificador;
                                         $objeto2->$camponovo                        = $valor2;
                                         $objeto2->$ovalor                           = '1';
                                         $sucesso = $this->_Modelo->db->Sql_Insert($objeto2);
-                                    }else{
+                                    } else {
                                         $respostas2->$ovalor                        = '1';
                                         $sucesso = $this->_Modelo->db->Sql_Update($respostas2,false);
                                     }
@@ -1984,11 +1986,11 @@ readfile($link);*/
         }
         }
         // Termina de Tratar as LINKADAS
-        if($erro1=='') $erro1 = __('Erro');
-        if($erro2=='') $erro2 = __('Erro');
+        if ($erro1=='') $erro1 = __('Erro');
+        if ($erro2=='') $erro2 = __('Erro');
         
         // Mostra Mensagem de Sucesso
-        if($sucesso===true){
+        if ($sucesso===true){
             $mensagens = array(
                 "tipo"              => 'sucesso',
                 "mgs_principal"     => $sucesso1,
@@ -1996,7 +1998,7 @@ readfile($link);*/
             ); 
             $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
             $this->_Visual->Json_Info_Update('Historico', false);  
-        }else{
+        } else {
             $mensagens = array(
                 "tipo"              => 'erro',
                 "mgs_principal"     => $erro1,
@@ -2013,29 +2015,29 @@ readfile($link);*/
         
         
         // Carrega Pagina, Caso seja formselect atualiza o select do formulario anterior
-        if(isset($_GET['formselect']) && $_GET['formselect']!='' && LAYOULT_IMPRIMIR=='AJAX'){
+        if (isset($_GET['formselect']) && $_GET['formselect']!='' && LAYOULT_IMPRIMIR=='AJAX'){
             // Variavel Nula
             $js_Extra = '';
             // Captura
             $select = \Framework\App\Conexao::anti_injection($_GET['formselect']);
             $condicao = \Framework\App\Conexao::anti_injection($_GET['condicao']);
             // Trata pra Ver se Tem Chaves
-            if(strpos($condicao, '{')!==false){
+            if (strpos($condicao, '{')!==false){
                 $ext_campo = explode('|', $condicao);
                 $ext_campo = $ext_campo[2];
-                if(strpos($ext_campo, '.')!==false){
+                if (strpos($ext_campo, '.')!==false){
                     $ext_campo = explode('.', $ext_campo);
                     $ext_campo = $ext_campo[1];
                 }
                 $ext_campo = explode('=', $ext_campo);
                 $ext_campo = $ext_campo[0];
-                if(isset($_GET[$ext_campo])){
+                if (isset($_GET[$ext_campo])){
                     $mudar = \Framework\App\Conexao::anti_injection($_GET[$ext_campo]);
                     $condicao = preg_replace('/{(.+)}/U', $mudar, $condicao);
-                }else if(isset($_POST[$ext_campo])){
+                }else if (isset($_POST[$ext_campo])){
                     $mudar = \Framework\App\Conexao::anti_injection($_POST[$ext_campo]);
                     $condicao = preg_replace('/{(.+)}/U', $mudar, $condicao);
-                }else{
+                } else {
                     $mudar = '0';
                     $condicao = preg_replace('/{(.+)}/U', $mudar, $condicao);
                 }
@@ -2044,13 +2046,13 @@ readfile($link);*/
             }
                     
             $opcoes = $this->_Modelo->db->Tabelas_CapturaExtrangeiras($condicao);  
-            if(is_object($opcoes)) $opcoes = Array(0=>$opcoes);
+            if (is_object($opcoes)) $opcoes = Array(0=>$opcoes);
             //Guarda Resultados
             $html = '';
-            if($opcoes!==false && !empty($opcoes)){
+            if ($opcoes!==false && !empty($opcoes)){
                 reset($opcoes);
                 foreach ($opcoes as $indice=>&$valor) {
-                    if($identificador==$indice){
+                    if ($identificador==$indice){
                         $selecionado=1;
                     }
                     else{
@@ -2063,7 +2065,7 @@ readfile($link);*/
             $conteudo = array(
                 'location'  =>  '#'.$select,
                 'js'        =>  '$("#'.$select.'").trigger("liszt:updated");'.
-                                'if(typeof $("#'.$select.'").attr("onchange") !== "undefined"){'.
+                                'if (typeof $("#'.$select.'").attr("onchange") !== "undefined"){'.
                                     'var onchange = $("#'.$select.'").attr("onchange");'.
                                     'var valor = $("#'.$select.'").val();'.
                                     'onchange = onchange.replace(\'this.value\',\'valor\'); '.
@@ -2073,9 +2075,9 @@ readfile($link);*/
                 'html'      =>  $html
             );
             $this->_Visual->Json_IncluiTipo('Conteudo',$conteudo);
-        }else{
+        } else {
             // Recarrega Main
-            if($funcao!='' && $funcao!==false){
+            if ($funcao!='' && $funcao!==false){
                 eval($funcao);
             }
             // Json
@@ -2097,9 +2099,9 @@ readfile($link);*/
      */
     static function DAO_Campos_TrocaID(&$objeto,$id=false){
         // Ainda funciona com array
-        if(is_array($objeto)){
+        if (is_array($objeto)){
             foreach ($objeto as &$valor){
-                if(isset($valor['mysql_titulo'])){
+                if (isset($valor['mysql_titulo'])){
                     $valor['mysql_titulo'] = $valor['mysql_titulo'].'_'.$id;
                 }
             }
@@ -2120,9 +2122,9 @@ readfile($link);*/
      */
     static function DAO_Campos_TrocaNOME(&$objeto,$alterar=false){
         // Ainda funciona com array
-        if(is_array($objeto)){
+        if (is_array($objeto)){
             foreach ($objeto as &$valor){
-                if(isset($valor['edicao']['Nome'])){
+                if (isset($valor['edicao']['Nome'])){
                      $valor['edicao']['Nome'] = str_replace('{nome}', $alterar, $valor['edicao']['Nome']);
                 }
             }
@@ -2143,11 +2145,11 @@ readfile($link);*/
      */
     static function DAO_Campos_RetiraAlternados(&$objeto,$campomysql=false){
         // Ainda funciona com array
-        if(is_array($objeto)){
+        if (is_array($objeto)){
             foreach ($objeto as &$valor){
                 // Para continuar rodando a versao 1.0 do Sistema
-                if(isset($valor['edicao']['form_escondido'])){
-                    if($valor['mysql_titulo']==$campomysql || $campomysql===false){
+                if (isset($valor['edicao']['form_escondido'])){
+                    if ($valor['mysql_titulo']==$campomysql || $campomysql===false){
                         $valor['edicao']['form_escondido'] = false;
                     }
                 }
@@ -2171,30 +2173,30 @@ readfile($link);*/
      */
     static function DAO_Campos_TrocaAlternados(&$objeto,$campomysql=false){
         // Ainda funciona com array
-        if(is_array($objeto)){
+        if (is_array($objeto)){
             foreach ($objeto as &$valor){
                 // Para continuar rodando a versao 1.0 do Sistema
-                if(isset($valor['edicao']['form_escondido'])){
-                    if($campomysql===false || $valor['mysql_titulo']==$campomysql){
-                        if($valor['edicao']['form_escondido']                                   ===true){
+                if (isset($valor['edicao']['form_escondido'])){
+                    if ($campomysql===false || $valor['mysql_titulo']==$campomysql){
+                        if ($valor['edicao']['form_escondido']                                   ===true){
                             $valor['edicao']['form_escondido']                              = 'apagar'; // Pode Apagar
-                        }else if($valor['edicao']['form_escondido']                             =='apagar'){
+                        }else if ($valor['edicao']['form_escondido']                             =='apagar'){
                             $valor['edicao']['form_escondido']                              = true; // Verdade, esta Apagado
                         }
                     }
-                }else if(isset($valor['TabelaLinkada']['SelectMultiplo']['form_escondido'])){
-                    if($campomysql===false || $valor['TabelaLinkada']['Nome']==$campomysql){
-                        if($valor['TabelaLinkada']['SelectMultiplo']['form_escondido']          ===true){
+                }else if (isset($valor['TabelaLinkada']['SelectMultiplo']['form_escondido'])){
+                    if ($campomysql===false || $valor['TabelaLinkada']['Nome']==$campomysql){
+                        if ($valor['TabelaLinkada']['SelectMultiplo']['form_escondido']          ===true){
                             $valor['TabelaLinkada']['SelectMultiplo']['form_escondido']     = 'apagar'; // Pode Apagar
-                        }else if($valor['TabelaLinkada']['SelectMultiplo']['form_escondido']    =='apagar'){
+                        }else if ($valor['TabelaLinkada']['SelectMultiplo']['form_escondido']    =='apagar'){
                             $valor['TabelaLinkada']['SelectMultiplo']['form_escondido']     = true; // Verdade, esta Apagado
                         }
                     }
-                }else if(isset($valor['TabelaLinkada']['BoleanoMultiplo']['form_escondido'])){  
-                    if($campomysql===false || $valor['TabelaLinkada']['Nome']==$campomysql){
-                        if($valor['TabelaLinkada']['BoleanoMultiplo']['form_escondido']         ===true){
+                }else if (isset($valor['TabelaLinkada']['BoleanoMultiplo']['form_escondido'])){  
+                    if ($campomysql===false || $valor['TabelaLinkada']['Nome']==$campomysql){
+                        if ($valor['TabelaLinkada']['BoleanoMultiplo']['form_escondido']         ===true){
                             $valor['TabelaLinkada']['BoleanoMultiplo']['form_escondido']    = 'apagar'; // Pode Apagar
-                        }else if($valor['TabelaLinkada']['BoleanoMultiplo']['form_escondido']   =='apagar'){
+                        }else if ($valor['TabelaLinkada']['BoleanoMultiplo']['form_escondido']   =='apagar'){
                             $valor['TabelaLinkada']['BoleanoMultiplo']['form_escondido']    = true; // Verdade, esta Apagado
                         }
                     }
@@ -2217,19 +2219,19 @@ readfile($link);*/
      */
     static function DAO_Campos_AlternadosDesabilitados(&$objeto,$campomysql=false){
         // Ainda funciona com array
-        if(is_array($objeto)){
+        if (is_array($objeto)){
             foreach ($objeto as &$valor){
                 // Para continuar rodando a versao 1.0 do Sistema
-                if(isset($valor['edicao']['form_escondido'])){
-                    if($campomysql===false || $valor['mysql_titulo']==$campomysql){
+                if (isset($valor['edicao']['form_escondido'])){
+                    if ($campomysql===false || $valor['mysql_titulo']==$campomysql){
                         $valor['edicao']['form_escondido']                              = true; // Verdade, esta Apagado
                     }
-                }else if(isset($valor['TabelaLinkada']['SelectMultiplo']['form_escondido'])){
-                    if($campomysql===false || $valor['TabelaLinkada']['Nome']==$campomysql){
+                }else if (isset($valor['TabelaLinkada']['SelectMultiplo']['form_escondido'])){
+                    if ($campomysql===false || $valor['TabelaLinkada']['Nome']==$campomysql){
                         $valor['TabelaLinkada']['SelectMultiplo']['form_escondido']     = true; // Verdade, esta Apagado
                     }
-                }else if(isset($valor['TabelaLinkada']['BoleanoMultiplo']['form_escondido'])){  
-                    if($campomysql===false || $valor['TabelaLinkada']['Nome']==$campomysql){
+                }else if (isset($valor['TabelaLinkada']['BoleanoMultiplo']['form_escondido'])){  
+                    if ($campomysql===false || $valor['TabelaLinkada']['Nome']==$campomysql){
                         $valor['TabelaLinkada']['BoleanoMultiplo']['form_escondido']    = true; // Verdade, esta Apagado
                     }
                 }
@@ -2254,22 +2256,22 @@ readfile($link);*/
      */
     static function mysql_MudaLeitura(&$objeto,$campomysql,$leitura = true){
         // Ainda funciona com array
-        if(is_array($objeto)){
+        if (is_array($objeto)){
             foreach ($objeto as &$valor){
                 /*// Para continuar rodando a versao 1.0 do Sistema
-                if(isset($valor['mysql'])){
-                    if($valor['mysql']==$campomysql){
+                if (isset($valor['mysql'])){
+                    if ($valor['mysql']==$campomysql){
                         $valor['readonly'] = $leitura;
                     }
                 }
                 // A partir da 2.0 trata assim
-                else */if(isset($valor['edicao'])){
-                    if(is_array($campomysql)){
-                        if(in_array($valor['mysql_titulo'],$campomysql)){
+                else */if (isset($valor['edicao'])){
+                    if (is_array($campomysql)){
+                        if (in_array($valor['mysql_titulo'],$campomysql)){
                             $valor['edicao']['readonly'] = $leitura;
                         }
-                    }else{
-                        if($valor['mysql_titulo']==$campomysql){
+                    } else {
+                        if ($valor['mysql_titulo']==$campomysql){
                             $valor['edicao']['readonly'] = $leitura;
                         }
                     }
@@ -2292,15 +2294,15 @@ readfile($link);*/
      */
     static function DAO_RemoveLinkExtra(&$objeto,$campomysql){
         // Ainda funciona com array
-        if(is_array($objeto)){
+        if (is_array($objeto)){
             foreach ($objeto as &$valor){
-                if(isset($valor['mysql_titulo'])){
-                    if(is_array($campomysql)){
-                        if(in_array($valor['mysql_titulo'],$campomysql)){
+                if (isset($valor['mysql_titulo'])){
+                    if (is_array($campomysql)){
+                        if (in_array($valor['mysql_titulo'],$campomysql)){
                             $valor['linkextra'] = '';
                         }
-                    }else{
-                        if($valor['mysql_titulo']==$campomysql){
+                    } else {
+                        if ($valor['mysql_titulo']==$campomysql){
                             $valor['linkextra'] = '';
                         }
                     }
@@ -2327,22 +2329,22 @@ readfile($link);*/
     static function DAO_Ext_Alterar(&$objeto,$campomysql,$alterar=false){
         // Procura pelo Objeto dentro do Array
         $pattern = '/{(.+)}/U';
-        if(is_array($objeto)){
+        if (is_array($objeto)){
             foreach ($objeto as &$valor){
-                if(isset($valor['mysql_estrangeira']) && $valor['mysql_titulo']==$campomysql){
-                    if($alterar===false){
+                if (isset($valor['mysql_estrangeira']) && $valor['mysql_titulo']==$campomysql){
+                    if ($alterar===false){
                         $busca = Array();
                         preg_match($pattern, $valor['mysql_estrangeira'], $busca, PREG_OFFSET_CAPTURE);
-                        if($busca===false || empty($busca)) return false;
+                        if ($busca===false || empty($busca)) return false;
                         // Procura Pelo Valor dela
                         foreach ($objeto as &$valor2){
-                            if(isset($valor2['mysql_titulo']) && $valor2['mysql_titulo']===$busca[1][0]){
+                            if (isset($valor2['mysql_titulo']) && $valor2['mysql_titulo']===$busca[1][0]){
                                 // Substitui
                                 $valor['mysql_estrangeira'] = preg_replace($pattern, $valor2['edicao']['valor_padrao'], $valor['mysql_estrangeira']);
                                 return true;
                             }
                         }
-                    }else{
+                    } else {
                         $valor['mysql_estrangeira'] = preg_replace($pattern, $alterar, $valor['mysql_estrangeira']);
                     }
                 }
@@ -2355,10 +2357,10 @@ readfile($link);*/
     }
     static function DAO_Ext_ADD(&$objeto,$campomysql,$add){
         // Ainda funciona com array
-        if(is_array($objeto)){
+        if (is_array($objeto)){
             foreach ($objeto as &$valor){
-                if(isset($valor['mysql_estrangeira']) && $valor['mysql_titulo']==$campomysql){
-                    if(substr_count($valor['mysql_estrangeira'], '|')>=2){ // 2){
+                if (isset($valor['mysql_estrangeira']) && $valor['mysql_titulo']==$campomysql){
+                    if (substr_count($valor['mysql_estrangeira'], '|')>=2){ // 2){
                         throw new \Exception('Extrangeira Ja possue 3 ou mais Caracteristicas'.$valor['mysql_titulo'],2800);
                     }
                     $valor['mysql_estrangeira'] = $valor['mysql_estrangeira'].'|'.$add;
@@ -2382,13 +2384,13 @@ readfile($link);*/
      */
     static function mysql_AtualizaValor(&$objeto,$campomysql,$resultado=false){
         // Ainda funciona com array
-        if(is_array($objeto)){
+        if (is_array($objeto)){
             foreach ($objeto as &$valor){
-                if(isset($valor['edicao'])){
-                    if($valor['mysql_titulo']==$campomysql){
-                        if($resultado!==false){
+                if (isset($valor['edicao'])){
+                    if ($valor['mysql_titulo']==$campomysql){
+                        if ($resultado!==false){
                             $valor['edicao']['valor_padrao'] = $resultado;
-                        }else{
+                        } else {
                             $valor['edicao']['valor_padrao'] = \Framework\App\Conexao::anti_injection($_POST[$valor['mysql_titulo']]);
                         }
                     }
@@ -2398,10 +2400,10 @@ readfile($link);*/
         else{
             $campos = $objeto->Get_Object_Vars_Public();
             foreach ($campos as $indice => &$value){
-                if($indice==$campomysql){
-                    if($resultado!==false){
+                if ($indice==$campomysql){
+                    if ($resultado!==false){
                         $objeto->$indice = $resultado;
-                    }else if(isset($_POST[$indice])){
+                    }else if (isset($_POST[$indice])){
                         $objeto->$indice = \Framework\App\Conexao::anti_injection($_POST[$indice]);
                     }
                 }
@@ -2419,45 +2421,45 @@ readfile($link);*/
      */
     static function mysql_AtualizaValores(&$objeto,&$valores='',$id=false){
         // TRATA ID
-        if(is_int($id)){
-            if($id<=0) $id = false;
-        }else if(is_string($id)){
-            if($id=='') $id = false;
-        }else{
+        if (is_int($id)){
+            if ($id<=0) $id = false;
+        }else if (is_string($id)){
+            if ($id=='') $id = false;
+        } else {
             $id = false;
         }
         
         
         // TRATA VALORES
-        if(is_object($valores)){
+        if (is_object($valores)){
             $valor_tipo = 2;
-        }else if(is_array($valores)){
+        }else if (is_array($valores)){
             $valor_tipo = 1;
-        }else{
+        } else {
             $valor_tipo = 0;
         }
         // Array, Formularios e Afins
-        if(is_array($objeto)){
+        if (is_array($objeto)){
             foreach ($objeto as &$valor){
                 
                 // TABELA LINKADA
-                if(isset($valor["TabelaLinkada"]) && $id!==false){
+                if (isset($valor["TabelaLinkada"]) && $id!==false){
                     $valor['TabelaLinkada']['valor_padrao'] = $id;
                 }else
                 // EDICAO PADRAO 
-                if(isset($valor['edicao'])){
+                if (isset($valor['edicao'])){
                     // Valores são Objetos
-                    if($valor_tipo===2){
+                    if ($valor_tipo===2){
                         
                         // Trata Campos que Mudam o Formulario
-                        if(isset($valor['edicao']['change']) && strpos($valor['edicao']['change'], 'Control_Layoult_Form_Campos_Trocar')!==false){
-                            if($valores->$valor['mysql_titulo']=== NULL || $valores->$valor['mysql_titulo']==='' || $valores->$valor['mysql_titulo']===false){
+                        if (isset($valor['edicao']['change']) && strpos($valor['edicao']['change'], 'Control_Layoult_Form_Campos_Trocar')!==false){
+                            if ($valores->$valor['mysql_titulo']=== NULL || $valores->$valor['mysql_titulo']==='' || $valores->$valor['mysql_titulo']===false){
                                 $valores->$valor['mysql_titulo'] = $valor['edicao']['valor_padrao'];
                             }
-                            if($valor['edicao']['valor_padrao']===false){
+                            if ($valor['edicao']['valor_padrao']===false){
                                 self::DAO_Campos_AlternadosDesabilitados($objeto);
                             }else
-                            if((string) $valor['edicao']['valor_padrao']!== (string) $valores->$valor['mysql_titulo']){
+                            if ((string) $valor['edicao']['valor_padrao']!== (string) $valores->$valor['mysql_titulo']){
                                 self::DAO_Campos_TrocaAlternados($objeto);
                             }
                         }
@@ -2466,24 +2468,24 @@ readfile($link);*/
                         $valor['edicao']['valor_padrao'] = $valores->$valor['mysql_titulo'];
                     }else
                     // Valores são Arrays
-                    if($valor_tipo===1){
+                    if ($valor_tipo===1){
                         
                         // Trata Campos que Mudam o Formulario
-                        if(isset($valor['edicao']['change']) && strpos($valor['edicao']['change'], 'Control_Layoult_Form_Campos_Trocar')!==false){
-                            if($valores[$valor['mysql_titulo']]=== NULL || $valores[$valor['mysql_titulo']]==='' || $valores[$valor['mysql_titulo']]===false){
+                        if (isset($valor['edicao']['change']) && strpos($valor['edicao']['change'], 'Control_Layoult_Form_Campos_Trocar')!==false){
+                            if ($valores[$valor['mysql_titulo']]=== NULL || $valores[$valor['mysql_titulo']]==='' || $valores[$valor['mysql_titulo']]===false){
                                 $valores[$valor['mysql_titulo']] = $valor['edicao']['valor_padrao'];
                             }
-                            if($valor['edicao']['valor_padrao']===false){
+                            if ($valor['edicao']['valor_padrao']===false){
                                 self::DAO_Campos_AlternadosDesabilitados($objeto);
                             }else
-                            if((string) $valor['edicao']['valor_padrao']!== (string) $valores[$valor['mysql_titulo']]){
+                            if ((string) $valor['edicao']['valor_padrao']!== (string) $valores[$valor['mysql_titulo']]){
                                 self::DAO_Campos_TrocaAlternados($objeto);
                             }
                         }
                         
                         // Atualiza Valor
                         $valor['edicao']['valor_padrao'] = $valores[$valor['mysql_titulo']]; 
-                    }else if(isset($_POST[$valor['mysql_titulo']]))
+                    }else if (isset($_POST[$valor['mysql_titulo']]))
                     // Caso Contrario Pega do POST
                     {
                         
@@ -2498,20 +2500,20 @@ readfile($link);*/
                     }
                 }else
                 // Para funcionar com modulos da versao 1.0
-                if(isset($valor['valor_padrao'])){
+                if (isset($valor['valor_padrao'])){
                     // Valores são Objetos
-                    if($valor_tipo===2){
+                    if ($valor_tipo===2){
                         
                         // Atualiza Valor
                         $valor['valor_padrao'] = $valores->$valor['mysql'];
                     }else
                     // Valores são Arrays
-                    if($valor_tipo===1){
+                    if ($valor_tipo===1){
                         
                         // Atualiza Valor
                         $valor['valor_padrao'] = $valores[$valor['mysql']];
 
-                    }else if(isset($_POST[$valor['mysql']]))
+                    }else if (isset($_POST[$valor['mysql']]))
                     // Caso Contrario Pega do POST
                     {
                         // Atualiza Valor
@@ -2523,56 +2525,56 @@ readfile($link);*/
                         // Atualiza Valor
                         $valor['valor_padrao'] = '';
                     }
-                }else if(isset($valor['mysql_default'])){
+                }else if (isset($valor['mysql_default'])){
                     $valor['valor_padrao'] = $valor['mysql_default'];
                 }
             }
         }
         else 
         // Agora tbm funciona com objetos
-        if(is_object($objeto)){
+        if (is_object($objeto)){
             $campos = $objeto->Get_Object_Vars_Public();
             $primarias = $objeto->Get_Primaria();
             foreach ($campos as $indice => $value){
-                if(!is_array($primarias)){
+                if (!is_array($primarias)){
                     throw new \Exception('Primárias não é um Array: '.$primarias,3250);
                 }
                 // Verifica se Existe
                 $is_primary = array_search($indice, $primarias);
                 // SE for chave primaria bloqueia
-                if($is_primary!==false && $valor_tipo===0 && isset($valores->$indice)){
+                if ($is_primary!==false && $valor_tipo===0 && isset($valores->$indice)){
                     throw new \Exception('Foi tentado alterar um campo primário: '.$indice,6010);
-                }else if($objeto->$indice===NULL || $objeto->$indice===false || $is_primary===false){
-                    if($valor_tipo===2){
+                }else if ($objeto->$indice===NULL || $objeto->$indice===false || $is_primary===false){
+                    if ($valor_tipo===2){
 
                         // Atualiza Valor
-                        if(isset($valores->$indice)){
+                        if (isset($valores->$indice)){
                             $objeto->$indice = $valores->$indice;
-                        }else{
+                        } else {
                             $objeto->$indice = NULL;
                         }
-                    }else if($valor_tipo===1){
+                    }else if ($valor_tipo===1){
 
                         // Atualiza Valor
-                        if(isset($valores[$indice])){
+                        if (isset($valores[$indice])){
                             $objeto->$indice = $valores[$indice];
-                        }else{
+                        } else {
                             $objeto->$indice = NULL;
                         }
-                    }else{
-                        if(isset($_POST['upload_'.$indice]) && $_POST['upload_'.$indice]!=''){
+                    } else {
+                        if (isset($_POST['upload_'.$indice]) && $_POST['upload_'.$indice]!=''){
 
                             // Atualiza Valor
                             $objeto->$indice = \Framework\App\Conexao::anti_injection($_POST['upload_'.$indice]);
-                        }else if(isset($_POST[$indice])){
+                        }else if (isset($_POST[$indice])){
 
                             // Atualiza Valor
-                            //if(isset($_POST[$indice])){
+                            //if (isset($_POST[$indice])){
                                 $objeto->$indice = \Framework\App\Conexao::anti_injection($_POST[$indice]);
-                            /*}else{
+                            /*} else {
                                 $objeto->Atributo_Del($indice);
                             }*/
-                        }else{
+                        } else {
                             $objeto->Atributo_Del($indice);
                         }
                     }
@@ -2593,22 +2595,22 @@ readfile($link);*/
      * @version 0.4.2
      */
     static function DAO_Campos_Retira(&$campos,$campomysql,$exceto=0){
-        if(empty($campos)) throw new \Exception('Campos da DAO não existe', 3030); //
-        if(is_array($campos)){
+        if (empty($campos)) throw new \Exception('Campos da DAO não existe', 3030); //
+        if (is_array($campos)){
             foreach ($campos as $indice=>&$valor){
-                if(((isset($valor['TabelaLinkada']) && $valor['TabelaLinkada']['Nome']==__($campomysql)) || (isset($valor['mysql_titulo']) && $valor['mysql_titulo']==$campomysql)) && $exceto==0){
+                if (((isset($valor['TabelaLinkada']) && $valor['TabelaLinkada']['Nome']==__($campomysql)) || (isset($valor['mysql_titulo']) && $valor['mysql_titulo']==$campomysql)) && $exceto==0){
                     unset($campos[$indice]);
-                }else if(  isset($valor['TabelaLinkada']) && $valor['TabelaLinkada']['Nome']!=__($campomysql) && $exceto==1){
+                }else if (  isset($valor['TabelaLinkada']) && $valor['TabelaLinkada']['Nome']!=__($campomysql) && $exceto==1){
                     unset($campos[$indice]);
-                }else if(  isset($valor['mysql_titulo']) && $valor['mysql_titulo']!=$campomysql && $exceto==1){
+                }else if (  isset($valor['mysql_titulo']) && $valor['mysql_titulo']!=$campomysql && $exceto==1){
                     unset($campos[$indice]);
                 }
             }
-        }else{
+        } else {
             foreach ($campos as $indice=>&$valor){
-                if(isset($valor['mysql_titulo']) && trim($valor['mysql_titulo'])==trim($campomysql) && $exceto==0){
+                if (isset($valor['mysql_titulo']) && trim($valor['mysql_titulo'])==trim($campomysql) && $exceto==0){
                     unset($campos[$indice]);
-                }else if(isset($valor['mysql_titulo']) && $valor['mysql_titulo']!=$campomysql && $exceto==1){
+                }else if (isset($valor['mysql_titulo']) && $valor['mysql_titulo']!=$campomysql && $exceto==1){
                     unset($campos[$indice]);
                 }
             }
@@ -2618,7 +2620,7 @@ readfile($link);*/
         $array = $this->_Acl->getPermissao();
         // #update, nao ta limitando paginas
         return;
-        if(!isset($array[$chave]) || $array[$chave]['valor']!==true){
+        if (!isset($array[$chave]) || $array[$chave]['valor']!==true){
             self::Tema_Travar();
             \Framework\App\Sistema_Funcoes::Erro('5050');
         }
@@ -2635,21 +2637,21 @@ readfile($link);*/
     protected function _Permissao_Verificar_Modulo($modulo,$sub = ''){
         $array = $this->_Acl->getPermissao();
         $var = false;
-        if(!empty($array)){
+        if (!empty($array)){
             foreach($array as &$valor){
-                if(trim($modulo)==trim($valor['mod'])){
-                    if(trim($sub)==trim($valor['sub'])){
-                        if($valor['valor']===false){ $var = false;  }
-                        if($valor['valor']===true){  $var = true;  }
-                    }else{
-                        if($valor['valor']===false){ $var = false;  }
-                        if($valor['valor']===true){  $var = true;  }
+                if (trim($modulo)==trim($valor['mod'])){
+                    if (trim($sub)==trim($valor['sub'])){
+                        if ($valor['valor']===false){ $var = false;  }
+                        if ($valor['valor']===true){  $var = true;  }
+                    } else {
+                        if ($valor['valor']===false){ $var = false;  }
+                        if ($valor['valor']===true){  $var = true;  }
                     }
                     //else                      { return false; }
                 }
             }
         }
-        if($var===true) return true;
+        if ($var===true) return true;
         else            return false;
     }
     /**
@@ -2667,16 +2669,16 @@ readfile($link);*/
     */
     public function __destruct() {
         $imprimir = new \Framework\App\Tempo('Destruicao Controle');
-        if(self::Tema_Travar_GET()===false){
+        if (self::Tema_Travar_GET()===false){
             // Pega Endereço
             $endereco_html = $this->_Visual->elemento_breadcrumb($this->layoult_endereco);
 
             // Caso Configurado Colocar Busca
-            if(TEMA_BUSCAR===true && isset($this->config_template['Buscar'])){
+            if (TEMA_BUSCAR===true && isset($this->config_template['Buscar'])){
                 $endereco_html .= $this->config_template['Buscar'];
             }
             // cria form se nao tiver logado
-            if(TEMA_LOGIN===false && $this->_Acl->logado===false && $this->_request->getSubModulo()!=='erro' && $this->_request->getSubModulo()!=='Recurso' && $this->_request->getSubModulo()!=='localidades'){
+            if (TEMA_LOGIN===false && $this->_Acl->logado===false && $this->_request->getSubModulo()!=='erro' && $this->_request->getSubModulo()!=='Recurso' && $this->_request->getSubModulo()!=='localidades'){
                 $form = new \Framework\Classes\Form('Formlogin','',''); //formajax /'.SISTEMA_MODULO.'/'.SISTEMA_SUB.'/'.SISTEMA_MET
                 $form->Input_Novo('Login','sistema_login','','text', '',30, '');
                 $form->Input_Novo('Senha','sistema_senha','','password', 30, '','');
@@ -2684,26 +2686,26 @@ readfile($link);*/
                 $this->_Visual->Bloco_Menor_CriaJanela(__('Login'));
             }
             /*// carrega menu estatisticas se exister antes de encerrar tudo
-            if(file_exists(MOD_PATH.''.\Framework\App\Conexao::anti_injection(SISTEMA_MODULO).'/StatC.php')){
+            if (file_exists(MOD_PATH.''.\Framework\App\Conexao::anti_injection(SISTEMA_MODULO).'/StatC.php')){
                 $this->_Visual->menu['SubMenu']['link'][] = URL_PATH.''.\Framework\App\Conexao::anti_injection(SISTEMA_MODULO).'/Stat/Modulo';
                 $this->_Visual->menu['SubMenu']['nome'][] = __('Estatisticas');
-                if(SISTEMA_SUB=='Stat' && SISTEMA_MET=='Modulo') $this->_Visual->menu['SubMenu']['ativo'][] = 1;
+                if (SISTEMA_SUB=='Stat' && SISTEMA_MET=='Modulo') $this->_Visual->menu['SubMenu']['ativo'][] = 1;
                 else $this->_Visual->menu['SubMenu']['ativo'][] = 0;
             }*/
-            if($this->_Visual->Json_Exist()===true || LAYOULT_IMPRIMIR=='AJAX'){
-                if($this->layoult_zerar !== 'naousado' && is_bool($this->layoult_zerar)){
+            if ($this->_Visual->Json_Exist()===true || LAYOULT_IMPRIMIR=='AJAX'){
+                if ($this->layoult_zerar !== 'naousado' && is_bool($this->layoult_zerar)){
                     $zerar = $this->layoult_zerar;
-                }else{
-                    if($this->_Visual->Json_ExisteTipo('Popup') || $this->_Visual->Json_ExisteTipo('Conteudo')){
+                } else {
+                    if ($this->_Visual->Json_ExisteTipo('Popup') || $this->_Visual->Json_ExisteTipo('Conteudo')){
                         $zerar = false;
-                    }else{
+                    } else {
                         $zerar = true;
                     }
                 }
                 // ORGANIZA E MANDA CONTEUDO
-                if(LAYOULT_IMPRIMIR=='AJAX'){
+                if (LAYOULT_IMPRIMIR=='AJAX'){
                     // Assimila Widget Endereço
-                    if($this->layoult_endereco_alterado===true && !(defined('LAYOULT_POPUP') && LAYOULT_POPUP!==false)){
+                    if ($this->layoult_endereco_alterado===true && !(defined('LAYOULT_POPUP') && LAYOULT_POPUP!==false)){
                         $conteudo = array(
                             'location' => '.breadcrumb',
                             'js' => '',
@@ -2714,7 +2716,7 @@ readfile($link);*/
                     echo $this->_Visual->Json_Retorna($zerar);
                     return true;
                 }
-            }else{
+            } else {
                 // Carrega Layoult
                 $this->_Visual->Layolt_Tipo(2);
             }
@@ -2728,34 +2730,34 @@ readfile($link);*/
                 $this->_Cache->Salvar('Menu', $menu);
             }
             
-            if(is_array($menu)){
+            if (is_array($menu)){
                 foreach($menu as $indice=>&$valor){
-                    if($valor===false) continue;
+                    if ($valor===false) continue;
                     
                     // CAso seja interno e  sem permissao, deleta;
-                    if($valor['ext']===false && $this->_Registro->_Acl->Get_Permissao_Url($valor['link'])!==true){
+                    if ($valor['ext']===false && $this->_Registro->_Acl->Get_Permissao_Url($valor['link'])!==true){
                         unset($menu[$indice]);
                         continue;
                     }
                     
                     // Permissao dos Filhos
-                    if(is_array($valor['filhos'])){
+                    if (is_array($valor['filhos'])){
                         foreach($valor['filhos'] as $indice_filho=>&$filho){
-                            if($this->_Registro->_Acl->Get_Permissao_Url($filho['link'])!==true){
+                            if ($this->_Registro->_Acl->Get_Permissao_Url($filho['link'])!==true){
                                 unset($menu[$indice]['filhos'][$indice_filho]);
                                 continue;
                             }
                         }
                     }
                     // Caso seja vazio vira false para nao aparecer
-                    if(empty($menu[$indice]['filhos'])) $menu[$indice]['filhos'] = false;
+                    if (empty($menu[$indice]['filhos'])) $menu[$indice]['filhos'] = false;
                     
                     //Cria Para o Visual
                     $link = str_replace(Array(URL_PATH), Array(''), $valor['link']);
-                    if($link!='#'){
+                    if ($link!='#'){
                         $modulo = explode('/', $link);
-                        //if(count($modulo)<3 || /*$this->_Acl->logado_usuario->grupo==CFG_TEC_IDADMIN || */$this->_Acl->logado_usuario->grupo==CFG_TEC_IDADMINDEUS || $this->_Permissao_Verificar_Modulo($modulo[0],$modulo[1])===true || $modulo[2]=='Home'){
-                        if(isset($this->_Acl->logado_usuario->grupo) && (($this->_Acl->logado_usuario->grupo!=CFG_TEC_IDADMINDEUS && (!isset($modulo[2]) || $modulo[2]!='Newsletter')) || ($this->_Acl->logado_usuario->grupo!=CFG_TEC_IDNEWSLETTER && (!isset($modulo[2]) || $modulo[2]!='Newsletter')))){
+                        //if (count($modulo)<3 || /*$this->_Acl->logado_usuario->grupo==CFG_TEC_IDADMIN || */$this->_Acl->logado_usuario->grupo==CFG_TEC_IDADMINDEUS || $this->_Permissao_Verificar_Modulo($modulo[0],$modulo[1])===true || $modulo[2]=='Home'){
+                        if (isset($this->_Acl->logado_usuario->grupo) && (($this->_Acl->logado_usuario->grupo!=CFG_TEC_IDADMINDEUS && (!isset($modulo[2]) || $modulo[2]!='Newsletter')) || ($this->_Acl->logado_usuario->grupo!=CFG_TEC_IDNEWSLETTER && (!isset($modulo[2]) || $modulo[2]!='Newsletter')))){
 
                             $this->_Visual->menu['link'][]  = $valor['link'];
                             $this->_Visual->menu['ext'][]   = $valor['ext'];
@@ -2764,7 +2766,7 @@ readfile($link);*/
                             $this->_Visual->menu['ativo'][] = $valor['ativo'];
                             $this->_Visual->menu['icon'][]  = $valor['icon'];
                             $this->_Visual->menu['filhos'][]= $valor['filhos'];
-                        }else if($modulo[0]=='_Sistema' && $modulo[1]=='Principal' && $modulo[2]=='Home'){
+                        }else if ($modulo[0]=='_Sistema' && $modulo[1]=='Principal' && $modulo[2]=='Home'){
                             $this->_Visual->menu['link'][]  = $valor['link'];
                             $this->_Visual->menu['ext'][]   = $valor['ext'];
                             $this->_Visual->menu['nome'][]  = $valor['nome'];
@@ -2773,7 +2775,7 @@ readfile($link);*/
                             $this->_Visual->menu['icon'][]  = $valor['icon'];
                             $this->_Visual->menu['filhos'][]= false;
                         }
-                    }else if($valor['filhos']!==false){
+                    }else if ($valor['filhos']!==false){
                         $this->_Visual->menu['link'][]  = "#";
                         $this->_Visual->menu['ext'][]   = $valor['ext'];
                         $this->_Visual->menu['nome'][]  = $valor['nome'];
@@ -2794,7 +2796,7 @@ readfile($link);*/
     }
     private function Chamar_Widget(){
         foreach($this->ModulosHome as $value){
-            if(is_callable(array($value.'_Principal','Widget'))){
+            if (is_callable(array($value.'_Principal','Widget'))){
                 eval($value.'_Principal::Widget($this);');
             }
         }

@@ -40,9 +40,9 @@ class comercio_FamiliaControle extends comercio_Controle
         $_Controle = $Registro->_Controle;
         $titulo = __('Familias');
         $link = 'comercio/Familia/Familias';
-        if($true===true){
+        if ($true===true){
             $_Controle->Tema_Endereco($titulo,$link);
-        }else{
+        } else {
             $_Controle->Tema_Endereco($titulo);
         }
     }
@@ -70,8 +70,8 @@ class comercio_FamiliaControle extends comercio_Controle
         )));
         // CONEXAO
         $linhas = $this->_Modelo->db->Sql_Select('Comercio_Familia');
-        if($linhas!==false && !empty($linhas)){
-            if(is_object($linhas)) $linhas = Array(0=>$linhas);
+        if ($linhas!==false && !empty($linhas)){
+            if (is_object($linhas)) $linhas = Array(0=>$linhas);
             reset($linhas);
             foreach ($linhas as $indice=>&$valor) {
                 //$tabela['#Id'][$i]       = '#'.$valor->id;
@@ -80,13 +80,13 @@ class comercio_FamiliaControle extends comercio_Controle
                                            $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Familia'       ,'comercio/Familia/Familias_Del/'.$valor->id.'/'     ,'Deseja realmente deletar essa Familia ?'));
                 ++$i;
             }
-            if($export!==false){
+            if ($export!==false){
                 self::Export_Todos($export,$tabela, 'Comercio - Produtos (Familias)');
-            }else{
+            } else {
                 $this->_Visual->Show_Tabela_DataTable($tabela);
             }
             unset($tabela);
-        }else{          
+        } else {          
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhuma Familia</font></b></center>');
         }
         $titulo = __('Listagem de Familias').' ('.$i.')';
@@ -176,13 +176,13 @@ class comercio_FamiliaControle extends comercio_Controle
         $linha = $this->_Modelo->db->Sql_Select('Comercio_Familia', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($linha);
         // Mensagem
-    	if($sucesso===true){
+    	if ($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletada'),
                 "mgs_secundaria" => __('Familia Deletada com sucesso')
             );
-    	}else{
+    	} else {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),

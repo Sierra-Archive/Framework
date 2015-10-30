@@ -21,18 +21,18 @@ class usuario_PerfilControle extends usuario_Controle
     }
     public function Perfil_Show($usuarioid,$tipo='Cliente'){
         // GAmbiarra Para Consertar erro de acento em url
-        if($tipo=='Funcionrio' || $tipo=="Funcionario") $tipo = "Funcionário";
-        if($tipo=="Usurio" || $tipo=="Usuario")         $tipo = __('Usuário');
+        if ($tipo=='Funcionrio' || $tipo=="Funcionario") $tipo = "Funcionário";
+        if ($tipo=="Usurio" || $tipo=="Usuario")         $tipo = __('Usuário');
         // Verifica Permissao e Puxa Usuário
         $usuario = $this->_Modelo->db->Sql_Select('Usuario',Array('id'=>$usuarioid),1); // Banco DAO, Condicao e LIMITE
         // Resgata DAdos e Manda pra View
-        if($usuario===false)            return _Sistema_erroControle::Erro_Fluxo('Usuario não Existe',404);
+        if ($usuario===false)            return _Sistema_erroControle::Erro_Fluxo('Usuario não Existe',404);
         $id = $usuario->id;
         // Carrega Mensagens
-        /*if(\Framework\App\Sistema_Funcoes::Perm_Modulos('usuario_mensagem')){
+        /*if (\Framework\App\Sistema_Funcoes::Perm_Modulos('usuario_mensagem')){
             usuario_mensagem_SuporteControle::MensagensdeCliente($id,'Menor');
             $this->_Visual->Show_Perfil($tipo,$usuario,'Maior');
-        }else{*/
+        } else {*/
             $this->_Visual->Show_Perfil($tipo,$usuario);
         //}
     }
@@ -52,7 +52,7 @@ class usuario_PerfilControle extends usuario_Controle
     public function Main(){
         $this->Perfil_Edit();
         self::usuarios_carregaAlterarSenha($this,$this->_Modelo,$this->_Visual,Usuario_DAO::Get_Colunas());
-        if(\Framework\App\Sistema_Funcoes::Perm_Modulos('usuario_veiculo')){
+        if (\Framework\App\Sistema_Funcoes::Perm_Modulos('usuario_veiculo')){
             self::usuarios_Upload_Residencia($this,$this->_Modelo,$this->_Visual);
             self::usuarios_Upload_Cnh($this,$this->_Modelo,$this->_Visual);
         }
@@ -74,7 +74,7 @@ class usuario_PerfilControle extends usuario_Controle
         $fileTypes = array('jpg','jpeg','gif','png'); // File extensions
         $dir = 'usuario'.DS;
         $ext = $this->Upload($dir,$fileTypes,$id);
-        if($ext!='falso'){
+        if ($ext!='falso'){
             $this->_Modelo->Perfilfoto_Upload_Alterar($id,$ext);  
         }
     }
@@ -86,7 +86,7 @@ class usuario_PerfilControle extends usuario_Controle
         $fileTypes = array('jpg','jpeg','gif','png'); // File extensions
         $dir = 'usuario'.DS;
         $ext = $this->Upload($dir,$fileTypes,$id.'_res');
-        if($ext!='falso'){
+        if ($ext!='falso'){
             $this->_Modelo->RESfoto_Upload_Alterar($id,$ext);  
         }
     }
@@ -99,11 +99,11 @@ class usuario_PerfilControle extends usuario_Controle
     static function usuarios_Upload_Residencia(&$controle,&$Modelo,&$Visual){
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Acl = $Registro->_Acl();
-        if($_Acl->logado_usuario->foto_res==''){
+        if ($_Acl->logado_usuario->foto_res==''){
             $Visual->Blocar('<font color="#FF0000"><b>Você ainda não subiu seu comprovante de Residencia</b></font><br>');
-        }else{
-            if($_Acl->logado_usuario->foto_res_apv==0) $Visual->Blocar('<font color="#FF0000"><b>Aguardando Aprovação</b></font><br>');
-            else if($_Acl->logado_usuario->foto_res_apv==2) $Visual->Blocar('<b>Aprovado</b><br>');
+        } else {
+            if ($_Acl->logado_usuario->foto_res_apv==0) $Visual->Blocar('<font color="#FF0000"><b>Aguardando Aprovação</b></font><br>');
+            else if ($_Acl->logado_usuario->foto_res_apv==2) $Visual->Blocar('<b>Aprovado</b><br>');
             else                                             $Visual->Blocar('<font color="#FF0000"><b>Negado</b></font><br>');
         }
         $Visual->Blocar($Visual->Show_Upload('usuario','Perfil','RESFoto','User_RES_Imagem'.$_Acl->logado_usuario->id,$_Acl->logado_usuario->foto_res,'usuario'.DS,$_Acl->logado_usuario->id));
@@ -132,7 +132,7 @@ class usuario_PerfilControle extends usuario_Controle
         $_Acl = $Registro->_Acl();
         if($_Acl->logado_usuario->foto_cnh==''){
             $Visual->Blocar('<font color="#FF0000"><b>Você ainda não subiu sua CNH</b></font><br>');
-        }else{
+        } else {
             if($_Acl->logado_usuario->foto_cnh_apv==0) $Visual->Blocar('<font color="#FF0000"><b>Aguardando Aprovação da CNH</b></font><br>');
             else if($_Acl->logado_usuario->foto_cnh_apv==2) $Visual->Blocar('<b>CNH Aprovada</b><br>');
             else                                             $Visual->Blocar('<font color="#FF0000"><b>CNH Negada</b></font><br>');
@@ -184,11 +184,11 @@ class usuario_PerfilControle extends usuario_Controle
             }else if($usuario->grupo==CFG_TEC_IDFUNCIONARIO){
                 $tipo   = __('Funcionário');
                 $tipo2  = 'funcionario';
-            }else{
+            } else {
                 $tipo   = __('Usuário');
                 $tipo2  = __('usuario');
             }
-        }else{
+        } else {
             // Primeira Letra Maiuscula
             $tipo = ucfirst($tipo);
         }
@@ -203,7 +203,7 @@ class usuario_PerfilControle extends usuario_Controle
         }else if($tipo=='Funcionário'){
             $tipo2  = 'funcionario';
             $tipo_pass  = CFG_TEC_CAT_ID_FUNCIONARIOS;
-        }else{
+        } else {
             $tipo_pass  = CFG_TEC_CAT_ID_ADMIN;
         }
         // Carrega Config
@@ -230,7 +230,7 @@ class usuario_PerfilControle extends usuario_Controle
     public function Perfil_Edit2($tipo=false){
         if(isset($_POST["nome"])){
             $nome = $_POST["nome"];
-        }else{
+        } else {
             $nome = __('Perfil');
         }
         $id = (int) $this->_Acl->Usuario_GetID();

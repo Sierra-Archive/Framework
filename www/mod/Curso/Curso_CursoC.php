@@ -24,9 +24,9 @@ class Curso_CursoControle extends Curso_Controle
     static function Endereco_Curso($true=true){
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
-        if($true===true){
+        if ($true===true){
             $_Controle->Tema_Endereco(__('Cursos'),'Curso/Curso/Cursos');
-        }else{
+        } else {
             $_Controle->Tema_Endereco(__('Cursos'));
         }
     }
@@ -36,7 +36,7 @@ class Curso_CursoControle extends Curso_Controle
         
         $tabela = Array();
         $i = 0;
-        if(is_object($cursos)) $cursos = Array(0=>$cursos);
+        if (is_object($cursos)) $cursos = Array(0=>$cursos);
         reset($cursos);
         foreach ($cursos as &$valor) {
             $tabela['Nome do Curso'][$i]            =   $valor->nome;
@@ -44,10 +44,10 @@ class Curso_CursoControle extends Curso_Controle
             $tabela['Custo'][$i]                    =   $valor->valor;
             $tabela['Data Cadastrada'][$i]          =   $valor->log_date_add;
             $status                                 = $valor->status;
-            if($status!=1){
+            if ($status!=1){
                 $status = 0;
                 $texto = __('Desativado');
-            }else{
+            } else {
                 $status = 1;
                 $texto = __('Ativado');
             }
@@ -81,14 +81,14 @@ class Curso_CursoControle extends Curso_Controle
             )
         )));
         $cursos = $this->_Modelo->db->Sql_Select('Curso');
-        if($cursos!==false && !empty($cursos)){
+        if ($cursos!==false && !empty($cursos)){
             list($tabela,$i) = self::Cursos_Tabela($cursos);
             
-            if($export!==false){
+            if ($export!==false){
                 // Retira Status
                 unset($tabela['Status']);
                 self::Export_Todos($export,$tabela, 'Cursos');
-            }else{
+            } else {
                 $this->_Visual->Show_Tabela_DataTable(
                     $tabela,     // Array Com a Tabela
                     '',          // style extra
@@ -102,7 +102,7 @@ class Curso_CursoControle extends Curso_Controle
                 );
             }
             unset($tabela);
-        }else{            
+        } else {            
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Curso</font></b></center>');
         }
         $titulo = __('Listagem de Cursos').' ('.$i.')';
@@ -188,13 +188,13 @@ class Curso_CursoControle extends Curso_Controle
         $curso = $this->_Modelo->db->Sql_Select('Curso', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($curso);
         // Mensagem
-    	if($sucesso===true){
+    	if ($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
                 "mgs_secundaria" => __('Curso deletado com sucesso')
             );
-    	}else{
+    	} else {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),
@@ -209,23 +209,23 @@ class Curso_CursoControle extends Curso_Controle
         $this->_Visual->Json_Info_Update('Historico', false);
     }
     public function Status($id=false){
-        if($id===false){
+        if ($id===false){
             return false;
         }
         $resultado = $this->_Modelo->db->Sql_Select('Curso', Array('id'=>$id),1);
-        if($resultado===false || !is_object($resultado)){
+        if ($resultado===false || !is_object($resultado)){
             return false;
         }
-        if($resultado->status=='1'){
+        if ($resultado->status=='1'){
             $resultado->status='0';
-        }else{
+        } else {
             $resultado->status='1';
         }
         $sucesso = $this->_Modelo->db->Sql_Update($resultado);
-        if($sucesso){
-            if($resultado->status==1){
+        if ($sucesso){
+            if ($resultado->status==1){
                 $texto = __('Ativado');
-            }else{
+            } else {
                 $texto = __('Desativado');
             }
             $conteudo = array(
@@ -235,7 +235,7 @@ class Curso_CursoControle extends Curso_Controle
             );
             $this->_Visual->Json_IncluiTipo('Conteudo',$conteudo);
             $this->_Visual->Json_Info_Update('Titulo', __('Status Alterado')); 
-        }else{
+        } else {
             $mensagens = array(
                 "tipo"              => 'erro',
                 "mgs_principal"     => __('Erro'),

@@ -24,9 +24,9 @@ class Simulador_SimuladorControle extends Simulador_Controle
     static function Endereco_Simulador($true=true){
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
-        if($true===true){
+        if ($true===true){
             $_Controle->Tema_Endereco(__('Simuladores'),'Simulador/Simulador/Simuladores');
-        }else{
+        } else {
             $_Controle->Tema_Endereco(__('Simuladores'));
         }
     }
@@ -36,17 +36,17 @@ class Simulador_SimuladorControle extends Simulador_Controle
         
         $tabela = Array();
         $i = 0;
-        if(is_object($simuladores)) $simuladores = Array(0=>$simuladores);
+        if (is_object($simuladores)) $simuladores = Array(0=>$simuladores);
         reset($simuladores);
         foreach ($simuladores as &$valor) {
             $tabela['Nome do Simulador'][$i]          =   $valor->nome;
             
             $tabela['Data Cadastrada'][$i]          =   $valor->log_date_add;
             $status                                 = $valor->status;
-            if($status!=1){
+            if ($status!=1){
                 $status = 0;
                 $texto = __('Desativado');
-            }else{
+            } else {
                 $status = 1;
                 $texto = __('Ativado');
             }
@@ -81,12 +81,12 @@ class Simulador_SimuladorControle extends Simulador_Controle
             )
         )));
         $simuladores = $this->_Modelo->db->Sql_Select('Simulador');
-        if($simuladores!==false && !empty($simuladores)){
+        if ($simuladores!==false && !empty($simuladores)){
             list($tabela,$i) = self::Simuladores_Tabela($simuladores);
             
-            if($export!==false){
+            if ($export!==false){
                 self::Export_Todos($export,$tabela, 'Simuladores');
-            }else{
+            } else {
                 $this->_Visual->Show_Tabela_DataTable(
                     $tabela,     // Array Com a Tabela
                     '',          // style extra
@@ -100,7 +100,7 @@ class Simulador_SimuladorControle extends Simulador_Controle
                 );
             }
             unset($tabela);
-        }else{            
+        } else {            
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Simulador</font></b></center>');
         }
         $titulo = __('Listagem de Simuladores').' ('.$i.')';
@@ -190,13 +190,13 @@ class Simulador_SimuladorControle extends Simulador_Controle
         $simulador = $this->_Modelo->db->Sql_Select('Simulador', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($simulador);
         // Mensagem
-    	if($sucesso===true){
+    	if ($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
                 "mgs_secundaria" => __('Simulador deletado com sucesso')
             );
-    	}else{
+    	} else {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),
@@ -211,23 +211,23 @@ class Simulador_SimuladorControle extends Simulador_Controle
         $this->_Visual->Json_Info_Update('Historico', false);
     }
     public function Status($id=false){
-        if($id===false){
+        if ($id===false){
             return false;
         }
         $resultado = $this->_Modelo->db->Sql_Select('Simulador', Array('id'=>$id),1);
-        if($resultado===false || !is_object($resultado)){
+        if ($resultado===false || !is_object($resultado)){
             return _Sistema_erroControle::Erro_Fluxo('Esse registro não existe:'. $id,404);
         }
-        if($resultado->status=='1'){
+        if ($resultado->status=='1'){
             $resultado->status='0';
-        }else{
+        } else {
             $resultado->status='1';
         }
         $sucesso = $this->_Modelo->db->Sql_Update($resultado);
-        if($sucesso){
-            if($resultado->status==1){
+        if ($sucesso){
+            if ($resultado->status==1){
                 $texto = __('Ativado');
-            }else{
+            } else {
                 $texto = __('Desativado');
             }
             $conteudo = array(
@@ -237,7 +237,7 @@ class Simulador_SimuladorControle extends Simulador_Controle
             );
             $this->_Visual->Json_IncluiTipo('Conteudo',$conteudo);
             $this->_Visual->Json_Info_Update('Titulo', __('Status Alterado')); 
-        }else{
+        } else {
             $mensagens = array(
                 "tipo"              => 'erro',
                 "mgs_principal"     => __('Erro'),
@@ -251,9 +251,9 @@ class Simulador_SimuladorControle extends Simulador_Controle
     }
     public function Simuladores_Assistir($simulador,$token=false,$pergunta=false){
         // Verifica Token, se nao vier cria
-        if($token===false){
+        if ($token===false){
             $token = Framework\App\Sistema_Funcoes::Seguranca_Gerar_Token();
-        }else{
+        } else {
             $token = Framework\App\Conexao::anti_injection($token);
         }
         
@@ -264,16 +264,16 @@ class Simulador_SimuladorControle extends Simulador_Controle
         
         //Procura Simulador
         $simulador_registro = $this->_Modelo->db->Sql_Select('Simulador', '{sigla}id=\''.$simulador.'\'',1);
-        if($simulador_registro===false || !is_object($simulador_registro)){
+        if ($simulador_registro===false || !is_object($simulador_registro)){
             return _Sistema_erroControle::Erro_Fluxo('Simulador não existe:'. $simulador,404);
         }
         
         // Procura as Respostas Ja Respondidas
         $respondidas = $this->_Modelo->db->Sql_Select('Simulador_Assistir', '{sigla}token=\''.$token.'\'');
-        if(is_object($respondidas)){
+        if (is_object($respondidas)){
             $respondidas = Array($respondidas);
         }
-        if($respondidas!==false){
+        if ($respondidas!==false){
             foreach($respondidas as &$valor){
                 $respondidas_perguntas[] = $valor->pergunta;
                 $respondidas_respostas[] = $valor->resposta;
@@ -281,7 +281,7 @@ class Simulador_SimuladorControle extends Simulador_Controle
         }
         
         // Se tiver POST, cadastra a resposta
-        if($pergunta!==false && isset($_POST['resposta'])){
+        if ($pergunta!==false && isset($_POST['resposta'])){
             $pergunta = (int) $pergunta;
                 
                 
@@ -311,7 +311,7 @@ class Simulador_SimuladorControle extends Simulador_Controle
         $pergunta_proxima = $this->_Modelo->db->Sql_Select('Simulador_Pergunta', $where, 1);
         
         // Escolhe a próxima Página
-        if($pergunta_proxima===false){
+        if ($pergunta_proxima===false){
             //IMprimi Resultado
             $caracteristicas = Array();
             // PRocura Resultados
@@ -320,10 +320,10 @@ class Simulador_SimuladorControle extends Simulador_Controle
                 'INid'          => $respondidas_respostas
             );
             $assistir_respostas = $this->_Modelo->db->Sql_Select('Simulador_Pergunta_Resposta', $where);
-            if(is_object($assistir_respostas)){
+            if (is_object($assistir_respostas)){
                 $assistir_respostas = Array($assistir_respostas);
             }
-            if($assistir_respostas!==false){var_dump($assistir_respostas);
+            if ($assistir_respostas!==false){var_dump($assistir_respostas);
                 foreach($assistir_respostas as &$valor){
                     $caracteristicas[] = Array(
                         'Tag'       => $valor->tag,
@@ -333,17 +333,17 @@ class Simulador_SimuladorControle extends Simulador_Controle
                 }
             }
             var_dump($caracteristicas);
-        }else{
+        } else {
             //Procura as Respostas
             /*$where = Array(
                 'simulador'     => $simulador,
                 'pergunta'      => $pergunta_proxima->id
             );
             $pergunta_respostas = $this->_Modelo->db->Sql_Select('Simulador_Pergunta_Resposta', $where);
-            if(is_object($pergunta_respostas)){
+            if (is_object($pergunta_respostas)){
                 $pergunta_respostas = Array($pergunta_respostas);
             }
-            if($pergunta_respostas!==false){
+            if ($pergunta_respostas!==false){
                 foreach($pergunta_respostas as &$valor){
                     $respondidas_perguntas[] = $valor->pergunta;
                     $respondidas_respostas[] = $valor->resposta;

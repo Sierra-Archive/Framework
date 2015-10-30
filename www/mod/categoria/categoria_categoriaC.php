@@ -36,9 +36,9 @@ class categoria_categoriaControle extends categoria_Controle
      * 
      */
     public function Main($status=''){
-        if(isset($status) AND $status!='') $status=__('salvar');
+        if (isset($status) AND $status!='') $status=__('salvar');
         else                               $status='';
-        if($status=='salvar'){
+        if ($status=='salvar'){
             $this->_Visual->Json_Info_Update('Titulo', __('Categorias'));
               
             // insere categoria e atualiza o select
@@ -57,7 +57,7 @@ class categoria_categoriaControle extends categoria_Controle
             $this->Categorias_ShowTab();
             // ORGANIZA E MANDA CONTEUDO
             $this->_Visual->Json_Start('Categorias');
-        }else{
+        } else {
             $this->Categorias_ShowTab();
             $this->Categorias_formcadastro();
     
@@ -89,22 +89,22 @@ class categoria_categoriaControle extends categoria_Controle
         $parent = (int) $_POST["parent"];
         $mod_acc = \Framework\App\Conexao::anti_injection($_POST["mod_acc"]);
         
-        if($parent!=$id){
+        if ($parent!=$id){
             $sucesso =  $this->_Modelo->Categorias_alterar($id,$nome,$parent,$mod_acc);
-            if($sucesso===true){
+            if ($sucesso===true){
                 $mensagens = array(
                     "tipo" => 'sucesso',
                     "mgs_principal" => __('Categoria alterada com Sucesso'),
                     "mgs_secundaria" => ''.$nome.' foi alterado na base de dados...'
                 );
-            }else{
+            } else {
                 $mensagens = array(
                     "tipo" => 'erro',
                     "mgs_principal" => __('Erro'),
                     "mgs_secundaria" => __('Erro')
                 );
             }
-        }else{
+        } else {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),
@@ -180,7 +180,7 @@ class categoria_categoriaControle extends categoria_Controle
         // Puxa Form
         $this->Categorias_formulario($form);
         // Carrega formulario
-        if(isset($_GET['formselect']) && $_GET['formselect']!='' && LAYOULT_IMPRIMIR=='AJAX'){
+        if (isset($_GET['formselect']) && $_GET['formselect']!='' && LAYOULT_IMPRIMIR=='AJAX'){
             $formulario = $form->retorna_form();
             $conteudo = array(
                 'id' => 'popup',
@@ -199,7 +199,7 @@ class categoria_categoriaControle extends categoria_Controle
             );
             $this->_Visual->Json_IncluiTipo('Popup',$conteudo);
             $this->_Visual->Json_Info_Update('Historico',0);
-        }else{
+        } else {
             $formulario = $form->retorna_form($formbt);
             $this->_Visual->Blocar($formulario);
             // Mostra Conteudo
@@ -236,7 +236,7 @@ class categoria_categoriaControle extends categoria_Controle
         
         // COMEÇO DOS SELECT DE CATEGORIAS PAI
         $form->Select_Novo('Categoria Pai','parent','selectcategorias');
-        if($parent==0) $form->Select_Opcao('Pasta Raiz',0,1);
+        if ($parent==0) $form->Select_Opcao('Pasta Raiz',0,1);
         else  $form->Select_Opcao('Pasta Raiz',0,1);
         $this->_Visual->Categorias_ShowSelect($categorias,$form,$parent);
         $form->Select_Fim();
@@ -246,7 +246,7 @@ class categoria_categoriaControle extends categoria_Controle
         $form->Select_Novo('Modulo Aceito','mod_acc','mod_acc');
         $j = 0;
         foreach($acc as &$valor){
-            if($j==0) $form->Select_Opcao($valor['chave_nome'],$valor['chave_nome'],1);
+            if ($j==0) $form->Select_Opcao($valor['chave_nome'],$valor['chave_nome'],1);
             else  $form->Select_Opcao($valor['chave_nome'],$valor['chave_nome'],0);
             ++$j;
         }
@@ -271,7 +271,7 @@ class categoria_categoriaControle extends categoria_Controle
      * @version 0.4.2
      */
     public function Categorias_inserir(){
-        if(!isset($_POST["nome"]) || !isset($_POST["parent"]) || !isset($_POST["mod_acc"])){
+        if (!isset($_POST["nome"]) || !isset($_POST["parent"]) || !isset($_POST["mod_acc"])){
             return false;
         }
         
@@ -281,13 +281,13 @@ class categoria_categoriaControle extends categoria_Controle
         
         $sucesso =  $this->_Modelo->Categorias_inserir($nome,$parent,$mod_acc);
         
-        if($sucesso===true){
+        if ($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Categoria inserida com Sucesso'),
                 "mgs_secundaria" => ''.$nome.' foi add a base de dados...'
             );
-        }else{
+        } else {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),

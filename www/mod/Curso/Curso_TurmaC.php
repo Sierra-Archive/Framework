@@ -22,76 +22,76 @@ class Curso_TurmaControle extends Curso_Controle
         return false;
     }
     static function Endereco_Turma($true=true,$curso=false){
-        if($curso==='false') $curso = false;
+        if ($curso==='false') $curso = false;
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
-        if($curso===false){
+        if ($curso===false){
             $titulo = __('Todas as Turmas');
             $link   = 'Curso/Turma/Turmas';
-        }else{
+        } else {
             Curso_CursoControle::Endereco_Curso();
             $titulo = $curso->nome;
             $link   = 'Curso/Turma/Turmas/'.$curso->id;
         }
-        if($true===true){
+        if ($true===true){
             $_Controle->Tema_Endereco($titulo,$link);
-        }else{
+        } else {
             $_Controle->Tema_Endereco($titulo);
         }
     }
     static function Endereco_Turma_Ver($true=true,$turma,$curso=false){
-        if($turma==='false') $turma = false;
-        if($curso==='false') $curso = false;
+        if ($turma==='false') $turma = false;
+        if ($curso==='false') $curso = false;
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
         self::Endereco_Turma(true,$curso);
         $titulo = 'Visualizar Turma: '.$turma->nome;
-        if($curso===false){
+        if ($curso===false){
             $link   = 'Curso/Turma/Turmas_Ver/'.$turma->id;
-        }else{
+        } else {
             $link   = 'Curso/Turma/Turmas_Ver/'.$turma->id.'/'.$curso->id;
         }
-        if($true===true){
+        if ($true===true){
             $_Controle->Tema_Endereco($titulo,$link);
-        }else{
+        } else {
             $_Controle->Tema_Endereco($titulo);
         }
     }
     static function Endereco_Aberta($true=true,$curso=false){
-        if($curso==='false') $curso = false;
+        if ($curso==='false') $curso = false;
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
-        if($curso===false){
+        if ($curso===false){
             $titulo = __('Todas as Turmas');
             $link   = 'Curso/Turma/Abertas';
-        }else{
+        } else {
             Curso_CursoControle::Endereco_Curso();
             $titulo = $curso->nome;
             $link   = 'Curso/Turma/Abertas/'.$curso->id;
         }
-        if($true===true){
+        if ($true===true){
             $_Controle->Tema_Endereco($titulo,$link);
-        }else{
+        } else {
             $_Controle->Tema_Endereco($titulo);
         }
     }
     static function Turmas_Tabela(&$turmas,$curso=false){
-        if($curso==='false') $curso = false;
+        if ($curso==='false') $curso = false;
         $Registro   = &\Framework\App\Registro::getInstacia();
         $Modelo     = &$Registro->_Modelo;
         $Visual     = &$Registro->_Visual;
         $tabela = Array();
         $i = 0;
-        if(is_object($turmas)) $turmas = Array(0=>$turmas);
+        if (is_object($turmas)) $turmas = Array(0=>$turmas);
         reset($turmas);
         foreach ($turmas as &$valor) {
-            if($curso===false || $curso==0){
+            if ($curso===false || $curso==0){
                 
                 $tabela['Curso'][$i]   = $valor->curso2;
                 $ver_url    = 'Curso/Turma/Turmas_Ver/'.$valor->id.'/';
                 $edit_url   = 'Curso/Turma/Turmas_Edit/'.$valor->id.'/';
                 $del_url    = 'Curso/Turma/Turmas_Del/'.$valor->id.'/';
-            }else{
+            } else {
                 $ver_url    = 'Curso/Turma/Turmas_Ver/'.$valor->id.'/'.$valor->curso.'/';
                 $edit_url   = 'Curso/Turma/Turmas_Edit/'.$valor->id.'/'.$valor->curso.'/';
                 $del_url    = 'Curso/Turma/Turmas_Del/'.$valor->id.'/'.$valor->curso.'/';
@@ -102,10 +102,10 @@ class Curso_TurmaControle extends Curso_Controle
             $tabela['Fim'][$i]              = $valor->fim;
             $tabela['Data Registrada no Sistema'][$i]  = $valor->log_date_add;
             $status                                 = $valor->status;
-            if($status!=1){
+            if ($status!=1){
                 $status = 0;
                 $texto = __('Desativado');
-            }else{
+            } else {
                 $status = 1;
                 $texto = __('Ativado');
             }
@@ -118,27 +118,27 @@ class Curso_TurmaControle extends Curso_Controle
         return Array($tabela,$i);
     }
     static function Abertas_Tabela(&$turmas,$curso=false,$inscrever=true){
-        if($curso==='false') $curso = false;
+        if ($curso==='false') $curso = false;
         $Registro   = &\Framework\App\Registro::getInstacia();
         $Modelo     = &$Registro->_Modelo;
         $Visual     = &$Registro->_Visual;
         $tabela = Array();
         $i = 0;
-        if(is_object($turmas)) $turmas = Array(0=>$turmas);
+        if (is_object($turmas)) $turmas = Array(0=>$turmas);
         reset($turmas);
         foreach ($turmas as &$valor) {
-            if($curso===false || $curso==0){
+            if ($curso===false || $curso==0){
                 
                 $tabela['Curso'][$i]   = $valor->curso2;
                 $inscricao_url    = 'Curso/Turma/Inscricao_Fazer/'.$valor->id.'/';
-            }else{
+            } else {
                 $inscricao_url    = 'Curso/Turma/Inscricao_Fazer/'.$valor->id.'/'.$valor->curso.'/';
             }
             $tabela['Nome'][$i]             = $valor->nome;
             $tabela['Vagas'][$i]            = $valor->qnt;
             $tabela['Inicio'][$i]           = $valor->inicio;
             $tabela['Fim'][$i]              = $valor->fim;
-            if($inscrever) $tabela['Funções'][$i]          = $Visual->Tema_Elementos_Btn('Personalizado'     ,
+            if ($inscrever) $tabela['Funções'][$i]          = $Visual->Tema_Elementos_Btn('Personalizado'     ,
                     Array('Se Inscrever'        ,$inscricao_url    ,'','hdd','success'));
             ++$i;
         }
@@ -150,7 +150,7 @@ class Curso_TurmaControle extends Curso_Controle
         $Visual     = &$Registro->_Visual;
         $tabela = Array();
         $i = 0;
-        if(is_object($inscricoes)) $inscricoes = Array(0=>$inscricoes);
+        if (is_object($inscricoes)) $inscricoes = Array(0=>$inscricoes);
         reset($inscricoes);
         foreach ($inscricoes as &$valor) {
             $tabela['Curso'][$i]            = $valor->curso2;
@@ -166,33 +166,33 @@ class Curso_TurmaControle extends Curso_Controle
      * @version 0.4.2
      */
     public function Turmas($curso=false,$export=false){
-        if($curso ==='false' || $curso ===0)  $curso    = false;
-        if($curso!==false){
+        if ($curso ==='false' || $curso ===0)  $curso    = false;
+        if ($curso!==false){
             $curso = (int) $curso;
-            if($curso==0){
+            if ($curso==0){
                 $curso_registro = $this->_Modelo->db->Sql_Select('Curso','',1,'id DESC');
-                if($curso_registro===false){
+                if ($curso_registro===false){
                     return _Sistema_erroControle::Erro_Fluxo('Não existe nenhum curso:',404);
                 }
                 $curso = $curso_registro->id;
-            }else{
+            } else {
                 $curso_registro = $this->_Modelo->db->Sql_Select('Curso','Cu.id='.$curso.'',1);
-                if($curso_registro===false){
+                if ($curso_registro===false){
                     return _Sistema_erroControle::Erro_Fluxo('Esse Curso não existe:',404);
                 }
             }
             $where = '{sigla}curso='.$curso.'';
             self::Endereco_Turma(false, $curso_registro);
-        }else{
+        } else {
             $where = false;
             self::Endereco_Turma(false, false);
         }
         $i = 0;
-        if($curso!==false){
+        if ($curso!==false){
             $titulo_add = 'Adicionar nova Turma ao Curso: '.$curso_registro->nome;
             $url_add = '/'.$curso;
             $add_url = 'Curso/Turma/Turmas_Add/'.$curso;
-        }else{
+        } else {
             $titulo_add = __('Adicionar nova Turma');
             $url_add = '/false';
             $add_url    = 'Curso/Turma/Turmas_Add';
@@ -213,17 +213,17 @@ class Curso_TurmaControle extends Curso_Controle
             )
         )));
         $turmas = $this->_Modelo->db->Sql_Select('Curso_Turma',$where);
-        if($curso!==false){
+        if ($curso!==false){
             $titulo = 'Listagem de Turmas: '.$curso_registro->nome;
-        }else{
+        } else {
             $titulo = __('Listagem de Turmas em Todos os Cursos');
         }
-        if($turmas!==false && !empty($turmas)){
+        if ($turmas!==false && !empty($turmas)){
             list($tabela,$i) = self::Turmas_Tabela($turmas,$curso);
             $titulo = $titulo.' ('.$i.')';
-            if($export!==false){
+            if ($export!==false){
                 self::Export_Todos($export,$tabela, $titulo);
-            }else{
+            } else {
                 $this->_Visual->Show_Tabela_DataTable(
                     $tabela,     // Array Com a Tabela
                     '',          // style extra
@@ -237,11 +237,11 @@ class Curso_TurmaControle extends Curso_Controle
                 );
             }
             unset($tabela);
-        }else{
+        } else {
             $titulo = $titulo.' ('.$i.')';
-            if($curso!==false){
+            if ($curso!==false){
                 $erro = __('Nenhuma Turma nesse Curso');
-            }else{
+            } else {
                 $erro = __('Nenhuma Turma nos Cursos');
             }         
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">'.$erro.'</font></b></center>');
@@ -257,31 +257,31 @@ class Curso_TurmaControle extends Curso_Controle
      * @version 0.4.2
      */
     public function Abertas($curso=false,$export=false){
-        if($curso ==='false' || $curso ===0)  $curso    = false;
-        if($curso!==false){
+        if ($curso ==='false' || $curso ===0)  $curso    = false;
+        if ($curso!==false){
             $curso = (int) $curso;
-            if($curso==0){
+            if ($curso==0){
                 $curso_registro = $this->_Modelo->db->Sql_Select('Curso',Array(),1,'id DESC');
-                if($curso_registro===false){
+                if ($curso_registro===false){
                     return _Sistema_erroControle::Erro_Fluxo('Não existe nenhum curso:',404);
                 }
                 $curso = $curso_registro->id;
-            }else{
+            } else {
                 $curso_registro = $this->_Modelo->db->Sql_Select('Curso',Array('id'=>$curso),1);
-                if($curso_registro===false){
+                if ($curso_registro===false){
                     return _Sistema_erroControle::Erro_Fluxo('Esse Curso não existe:',404);
                 }
             }
             $where = '{sigla}qnt>0 AND {sigla}curso='.$curso.' AND {sigla}inicio>=\''.APP_DATA.'\'';
             self::Endereco_Aberta(false, $curso_registro);
-        }else{
+        } else {
             $where = '{sigla}qnt>0 AND {sigla}inicio>=\''.APP_DATA.'\'';
             self::Endereco_Aberta(false, false);
         }
         $i = 0;
-        if($curso!==false){
+        if ($curso!==false){
             $url_add = '/'.$curso;
-        }else{
+        } else {
             $url_add = '/false';
         }
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
@@ -294,17 +294,17 @@ class Curso_TurmaControle extends Curso_Controle
             )
         )));
         $turmas = $this->_Modelo->db->Sql_Select('Curso_Turma',$where);
-        if($curso!==false){
+        if ($curso!==false){
             $titulo = 'Listagem de Turmas: '.$curso_registro->nome;
-        }else{
+        } else {
             $titulo = __('Listagem de Turmas em Todos os Cursos');
         }
-        if($turmas!==false && !empty($turmas)){
+        if ($turmas!==false && !empty($turmas)){
             list($tabela,$i) = self::Abertas_Tabela($turmas,$curso);
             $titulo = $titulo.' ('.$i.')';
-            if($export!==false){
+            if ($export!==false){
                 self::Export_Todos($export,$tabela, $titulo);
-            }else{
+            } else {
                 $this->_Visual->Show_Tabela_DataTable(
                     $tabela,     // Array Com a Tabela
                     '',          // style extra
@@ -318,11 +318,11 @@ class Curso_TurmaControle extends Curso_Controle
                 );
             }
             unset($tabela);
-        }else{
+        } else {
             $titulo = $titulo.' ('.$i.')';
-            if($curso!==false){
+            if ($curso!==false){
                 $erro = __('Nenhuma Turma com inscrição aberta nesse Curso');
-            }else{
+            } else {
                 $erro = __('Nenhuma Turma com inscrição aberta');
             }         
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">'.$erro.'</font></b></center>');
@@ -338,27 +338,27 @@ class Curso_TurmaControle extends Curso_Controle
      * @version 0.4.2
      */
     public function Turmas_Add($curso = false){
-        if($curso==='false') $curso = false;
+        if ($curso==='false') $curso = false;
         // Carrega Config
         $formid     = 'form_Sistema_Admin_Turmas';
         $formbt     = __('Salvar');
         $campos     = Curso_Turma_DAO::Get_Colunas();
-        if($curso===false){
+        if ($curso===false){
             $formlink   = 'Curso/Turma/Turmas_Add2';
             $titulo1    = __('Adicionar Turma');
             $titulo2    = __('Salvar Turma');
             self::Endereco_Turma(true, false);
-        }else{
+        } else {
             $curso = (int) $curso;
-            if($curso==0){
+            if ($curso==0){
                 $curso_registro = $this->_Modelo->db->Sql_Select('Curso',Array(),1,'id DESC');
-                if($curso_registro===false){
+                if ($curso_registro===false){
                     return _Sistema_erroControle::Erro_Fluxo('Não existe nenhuma curso:',404);
                 }
                 $curso = $curso_registro->id;
-            }else{
+            } else {
                 $curso_registro = $this->_Modelo->db->Sql_Select('Curso',Array('id'=>$curso),1);
-                if($curso_registro===false){
+                if ($curso_registro===false){
                     return _Sistema_erroControle::Erro_Fluxo('Esse Curso não existe:',404);
                 }
             }
@@ -377,15 +377,15 @@ class Curso_TurmaControle extends Curso_Controle
      * @version 0.4.2
      */
     public function Turmas_Add2($curso=false){
-        if($curso==='false') $curso = false;
+        if ($curso==='false') $curso = false;
         $titulo     = __('Turma Adicionada com Sucesso');
         $dao        = 'Curso_Turma';
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = __('Turma cadastrada com sucesso.');
-        if($curso===false){
+        if ($curso===false){
             $funcao     = '$this->Turmas(0);';
             $alterar    = Array();
-        }else{
+        } else {
             $curso = (int) $curso;
             $alterar    = Array('curso'=>$curso);
             $funcao     = '$this->Turmas('.$curso.');';
@@ -399,39 +399,39 @@ class Curso_TurmaControle extends Curso_Controle
      * @version 0.4.2
      */
     public function Turmas_Ver($id,$curso = false,$export=false){
-        if($curso==='false') $curso = false;
-        if($id===false){
+        if ($curso==='false') $curso = false;
+        if ($id===false){
             return _Sistema_erroControle::Erro_Fluxo('Turma não existe:'. $id,404);
         }
         $id         = (int) $id;
         
         // Carrega Turma
         $turma_registro = $this->_Modelo->db->Sql_Select('Curso_Turma','{sigla}id=\''.$id.'\'',1);
-        if($turma_registro===false){
+        if ($turma_registro===false){
             return _Sistema_erroControle::Erro_Fluxo('Essa Turma não existe:',404);
         }
         
         // Carrega Curso
-        if($curso!==false){
+        if ($curso!==false){
             $curso    = (int) $curso;
             // Carrega Turma
             $curso_registro = $this->_Modelo->db->Sql_Select('Curso','{sigla}id=\''.$id.'\'',1);
-            if($curso_registro===false){
+            if ($curso_registro===false){
                 return _Sistema_erroControle::Erro_Fluxo('Esse Curso não existe:',404);
             }
             self::Endereco_Turma_Ver(false,$turma_registro,$curso_registro);
-        }else{
+        } else {
             self::Endereco_Turma_Ver(false,$turma_registro,false);
         }
         $inscricoes = $this->_Modelo->db->Sql_Select('Curso_Turma_Inscricao','{sigla}turma=\''.$id.'\'');
         $titulo = 'Visualização da Turma: '.$turma_registro->nome;
         $i = 0;
-        if($inscricoes!==false && !empty($inscricoes)){
+        if ($inscricoes!==false && !empty($inscricoes)){
             list($tabela,$i) = self::Inscricoes_Tabela($inscricoes);
             $titulo = $titulo.' ('.$i.')';
-            if($export!==false){
+            if ($export!==false){
                 self::Export_Todos($export,$tabela, $titulo);
-            }else{
+            } else {
                 $html = $this->_Visual->Show_Tabela_DataTable(
                     $tabela,     // Array Com a Tabela
                     '',          // style extra
@@ -445,7 +445,7 @@ class Curso_TurmaControle extends Curso_Controle
                 );
             }
             unset($tabela);
-        }else{
+        } else {
             $titulo = $titulo.' ('.$i.')';
             $erro = __('Nenhuma Inscrição nessa Turma');     
             $html = '<center><b><font color="#FF0000" size="5">'.$erro.'</font></b></center>';
@@ -453,7 +453,7 @@ class Curso_TurmaControle extends Curso_Controle
         
         
         // Identifica tipo e cria conteudo
-        if(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Propostas_Biblioteca')===true && \Framework\App\Sistema_Funcoes::Perm_Modulos('biblioteca')===true){
+        if (\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Propostas_Biblioteca')===true && \Framework\App\Sistema_Funcoes::Perm_Modulos('biblioteca')===true){
 
             $this->_Visual->Bloco_Customizavel(Array(
                 Array(
@@ -475,7 +475,7 @@ class Curso_TurmaControle extends Curso_Controle
                     )),
                 )
             ));
-        }else{
+        } else {
             $this->_Visual->Blocar($html);
             $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         }
@@ -495,12 +495,12 @@ class Curso_TurmaControle extends Curso_Controle
      * @version 0.4.2
      */
     public function Turmas_Edit($id,$curso = false){
-        if($curso==='false') $curso = false;
-        if($id===false){
+        if ($curso==='false') $curso = false;
+        if ($id===false){
             return _Sistema_erroControle::Erro_Fluxo('Turma não existe:'. $id,404);
         }
         $id         = (int) $id;
-        if($curso!==false){
+        if ($curso!==false){
             $curso    = (int) $curso;
         }
         // Carrega Config
@@ -509,15 +509,15 @@ class Curso_TurmaControle extends Curso_Controle
         $formid     = 'form_Sistema_AdminC_TurmaEdit';
         $formbt     = __('Alterar Turma');
         $campos = Curso_Turma_DAO::Get_Colunas();
-        if($curso!==false){
+        if ($curso!==false){
             $curso_registro = $this->_Modelo->db->Sql_Select('Curso',Array('id'=>$curso),1);
-            if($curso_registro===false){
+            if ($curso_registro===false){
                 return _Sistema_erroControle::Erro_Fluxo('Esse Curso não existe:',404);
             }
             $formlink   = 'Curso/Turma/Turmas_Edit2/'.$id.'/'.$curso;
             self::DAO_Campos_Retira($campos,'curso');
             self::Endereco_Turma(true, $curso_registro);
-        }else{
+        } else {
             $formlink   = 'Curso/Turma/Turmas_Edit2/'.$id;
             self::Endereco_Turma(true, false);
         }
@@ -531,19 +531,19 @@ class Curso_TurmaControle extends Curso_Controle
      * @version 0.4.2
      */
     public function Turmas_Edit2($id,$curso = false){
-        if($curso==='false') $curso = false;
-        if($id===false){
+        if ($curso==='false') $curso = false;
+        if ($id===false){
             return _Sistema_erroControle::Erro_Fluxo('Turma não existe:'. $id,404);
         }
         $id         = (int) $id;
-        if($curso!==false){
+        if ($curso!==false){
             $curso    = (int) $curso;
         }
         $titulo     = __('Turma Editada com Sucesso');
         $dao        = Array('Curso_Turma',$id);
-        if($curso!==false){
+        if ($curso!==false){
             $funcao     = '$this->Turmas('.$curso.');';
-        }else{
+        } else {
             $funcao     = '$this->Turmas();';
         }
         $sucesso1   = __('Turma Alterada com Sucesso.');
@@ -558,29 +558,29 @@ class Curso_TurmaControle extends Curso_Controle
      * @version 0.4.2
      */
     public function Turmas_Del($id = false,$curso=false){
-        if($curso==='false') $curso = false;
-        if($id===false){
+        if ($curso==='false') $curso = false;
+        if ($id===false){
             return _Sistema_erroControle::Erro_Fluxo('Turma não existe:'. $id,404);
         }
         // Antiinjection
     	$id = (int) $id;
-        if($curso!==false){
+        if ($curso!==false){
             $curso    = (int) $curso;
             $where = Array('curso'=>$curso,'id'=>$id);
-        }else{
+        } else {
             $where = Array('id'=>$id);
         }
         // Puxa album e deleta
         $album = $this->_Modelo->db->Sql_Select('Curso_Turma', $where);
         $sucesso =  $this->_Modelo->db->Sql_Delete($album);
         // Mensagem
-    	if($sucesso===true){
+    	if ($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
                 "mgs_secundaria" => __('Turma deletada com sucesso')
             );
-    	}else{
+    	} else {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),
@@ -589,9 +589,9 @@ class Curso_TurmaControle extends Curso_Controle
         }
         $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
         // Recupera Turmas
-        if($curso!==false){
+        if ($curso!==false){
             $this->Turmas($curso);
-        }else{
+        } else {
             $this->Turmas();
         }
         
@@ -599,23 +599,23 @@ class Curso_TurmaControle extends Curso_Controle
         $this->_Visual->Json_Info_Update('Historico', false);
     }
     public function Status($id=false){
-        if($id===false){
+        if ($id===false){
             return false;
         }
         $resultado = $this->_Modelo->db->Sql_Select('Curso_Turma', Array('id'=>$id),1);
-        if($resultado===false || !is_object($resultado)){
+        if ($resultado===false || !is_object($resultado)){
             return false;
         }
-        if($resultado->status=='1'){
+        if ($resultado->status=='1'){
             $resultado->status='0';
-        }else{
+        } else {
             $resultado->status='1';
         }
         $sucesso = $this->_Modelo->db->Sql_Update($resultado);
-        if($sucesso){
-            if($resultado->status==1){
+        if ($sucesso){
+            if ($resultado->status==1){
                 $texto = __('Ativado');
-            }else{
+            } else {
                 $texto = __('Desativado');
             }
             $conteudo = array(
@@ -625,7 +625,7 @@ class Curso_TurmaControle extends Curso_Controle
             );
             $this->_Visual->Json_IncluiTipo('Conteudo',$conteudo);
             $this->_Visual->Json_Info_Update('Titulo', __('Status Alterado')); 
-        }else{
+        } else {
             $mensagens = array(
                 "tipo"              => 'erro',
                 "mgs_principal"     => __('Erro'),
@@ -650,8 +650,8 @@ class Curso_TurmaControle extends Curso_Controle
         self::DAO_Campos_Retira($campos, 'turma');
     }
     public function Inscricao_Fazer($id,$curso = false){
-        if($curso==='false') $curso = false;
-        if($id===false){
+        if ($curso==='false') $curso = false;
+        if ($id===false){
             return _Sistema_erroControle::Erro_Fluxo('Turma não existe:'. $id,404);
         }
         $id         = (int) $id;
@@ -665,25 +665,25 @@ class Curso_TurmaControle extends Curso_Controle
     Cancelamento de inscrição entre 30(trinta) e 15(quinze) dias de antecedência ao curso: o aluno poderá transferir sua inscrição para outra data disponível ou cancelar participação com 50% (vinte e cinco) de multa.<br>
     Cancelamento de inscrição em até 15 dias de antecedência ao curso: o aluno perderá o direito à inscrição, sem ressarcimento.');
         
-        if($curso!==false){
+        if ($curso!==false){
             $curso    = (int) $curso;
             self::Endereco_Aberta(true, $curso);
             $turma_registro = $this->_Modelo->db->Sql_Select('Curso_Turma',Array('id'=>$curso),1);
-            if($turma_registro===false){
+            if ($turma_registro===false){
                 return _Sistema_erroControle::Erro_Fluxo('Essa Turma não existe nesse Curso:',404);
             }
             $formlink   = 'Curso/Turma/Inscricao_Fazer2/'.$id;
-        }else{
+        } else {
             self::Endereco_Aberta(true, false);
             $turma_registro = $this->_Modelo->db->Sql_Select('Curso_Turma',false,1);
-            if($turma_registro===false){
+            if ($turma_registro===false){
                 return _Sistema_erroControle::Erro_Fluxo('Essa Turma não existe:',404);
             }
             $formlink   = 'Curso/Turma/Inscricao_Fazer2/'.$id;
         }
         
         // Verifica Vagas
-        if($turma_registro->qnt<=0){
+        if ($turma_registro->qnt<=0){
             $mensagens = array(
                 "tipo"              => 'erro',
                 "mgs_principal"     => __('Sem Vagas'),
@@ -698,7 +698,7 @@ class Curso_TurmaControle extends Curso_Controle
         // Inscricao Verifica se ja tem
         $usuarioid  = $this->_Acl->Usuario_GetID();
         $insc_registro = $this->_Modelo->db->Sql_Select('Curso_Turma_Inscricao','{sigla}usuario=\''.$usuarioid.'\' && {sigla}turma=\''.$turma_registro->curso.'\'',1);
-        if($insc_registro!==false){
+        if ($insc_registro!==false){
             $mensagens = array(
                 "tipo"              => 'erro',
                 "mgs_principal"     => __('Erro'),
@@ -723,8 +723,8 @@ class Curso_TurmaControle extends Curso_Controle
         
     }
     public function Inscricao_Fazer2($id,$curso = false){
-        if($curso==='false') $curso = false;
-        if($id===false){
+        if ($curso==='false') $curso = false;
+        if ($id===false){
             return _Sistema_erroControle::Erro_Fluxo('Turma não existe:'. $id,404);
         }
         $id         = (int) $id;
@@ -734,18 +734,18 @@ class Curso_TurmaControle extends Curso_Controle
         
         // Carrega Turma
         $turma_registro = $this->_Modelo->db->Sql_Select('Curso_Turma','{sigla}id=\''.$id.'\'',1);
-        if($turma_registro===false){
+        if ($turma_registro===false){
             return _Sistema_erroControle::Erro_Fluxo('Essa Turma não existe:',404);
         }
         
-        if($curso!==false){
+        if ($curso!==false){
             $curso    = (int) $curso;
             self::Endereco_Aberta(true, $curso);
-        }else{
+        } else {
             self::Endereco_Aberta(true, false);
         }
         $curso_registro = $this->_Modelo->db->Sql_Select('Curso','{sigla}id=\''.$turma_registro->curso.'\'',1);
-        if($curso_registro===false){
+        if ($curso_registro===false){
             return _Sistema_erroControle::Erro_Fluxo('Esse Curso não existe',404);
         }
         
@@ -753,7 +753,7 @@ class Curso_TurmaControle extends Curso_Controle
         
         // Inscricao Verifica se ja tem
         $insc_registro = $this->_Modelo->db->Sql_Select('Curso_Turma_Inscricao','{sigla}usuario=\''.$usuarioid.'\' && {sigla}turma=\''.$turma_registro->id.'\'',1);
-        if($insc_registro!==false){
+        if ($insc_registro!==false){
             $mensagens = array(
                 "tipo"              => 'erro',
                 "mgs_principal"     => __('Erro'),
@@ -768,7 +768,7 @@ class Curso_TurmaControle extends Curso_Controle
         
         
         // Verifica Vagas
-        if($turma_registro->qnt<=0){
+        if ($turma_registro->qnt<=0){
             $mensagens = array(
                 "tipo"              => 'erro',
                 "mgs_principal"     => __('Sem Vagas'),
@@ -789,7 +789,7 @@ class Curso_TurmaControle extends Curso_Controle
         $sucesso2   = __('Inscrição Confirmada com Sucesso');
         $alterar    = Array('usuario'=>$usuarioid,'valor'=>$curso_registro->valor,'curso'=>$turma_registro->curso,'turma'=>$turma_registro->id);
         $sucesso = $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
-        if($sucesso===true){
+        if ($sucesso===true){
             $motivo = 'Curso';
             $identificador  = $this->_Modelo->db->Sql_Select('Curso_Turma_Inscricao', false,1,'id DESC');
             $identificador  = $identificador->id;
@@ -834,26 +834,26 @@ class Curso_TurmaControle extends Curso_Controle
         //$this->Abertas($curso);
     }
     public function Inscricao_Mover($inscricao,$turma,$curso = false){
-        if($curso==='false') $curso = false;
-        if($id===false){
+        if ($curso==='false') $curso = false;
+        if ($id===false){
             return _Sistema_erroControle::Erro_Fluxo('Turma não existe:'. $id,404);
         }
         $id         = (int) $id;
-        if($curso!==false){
+        if ($curso!==false){
             $curso    = (int) $curso;
             self::Endereco_Aberta(true, $curso);
-        }else{
+        } else {
             self::Endereco_Aberta(true, false);
         }
         
     }
     public function Inscricao_Mover2($inscricao,$turma,$curso = false){
-        if($curso==='false') $curso = false;
-        if($id===false){
+        if ($curso==='false') $curso = false;
+        if ($id===false){
             return _Sistema_erroControle::Erro_Fluxo('Turma não existe:'. $id,404);
         }
         $id         = (int) $id;
-        if($curso!==false){
+        if ($curso!==false){
             $curso    = (int) $curso;
         }
         

@@ -26,9 +26,9 @@ class predial_VeiculoControle extends predial_Controle
         $_Controle = $Registro->_Controle;
         $titulo = __('Veiculos');
         $link = 'predial/Veiculo/Veiculos';
-        if($true===true){
+        if ($true===true){
             $_Controle->Tema_Endereco($titulo,$link);
-        }else{
+        } else {
             $_Controle->Tema_Endereco($titulo);
         }
     }
@@ -37,7 +37,7 @@ class predial_VeiculoControle extends predial_Controle
         $Visual     = &$Registro->_Visual;
         $tabela = Array();
         $i = 0;
-        if(is_object($veiculos)) $veiculos = Array(0=>$veiculos);
+        if (is_object($veiculos)) $veiculos = Array(0=>$veiculos);
         reset($veiculos);
         foreach ($veiculos as &$valor) {
             $tabela['Bloco'][$i]            = $valor->bloco2;
@@ -75,11 +75,11 @@ class predial_VeiculoControle extends predial_Controle
         )));
         // Busca
         $veiculos = $this->_Modelo->db->Sql_Select('Predial_Bloco_Apart_Veiculo');
-        if($veiculos!==false && !empty($veiculos)){
+        if ($veiculos!==false && !empty($veiculos)){
             list($tabela,$i) = self::Veiculos_Tabela($veiculos);
             $this->_Visual->Show_Tabela_DataTable($tabela);
             unset($tabela);
-        }else{       
+        } else {       
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Veiculo</font></b></center>');
         }
         $titulo = __('Listagem de Veiculos').' ('.$i.')';
@@ -169,13 +169,13 @@ class predial_VeiculoControle extends predial_Controle
         $veiculo = $this->_Modelo->db->Sql_Select('Predial_Bloco_Apart_Veiculo', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($veiculo);
         // Mensagem
-    	if($sucesso===true){
+    	if ($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
                 "mgs_secundaria" => __('Veiculo deletado com sucesso')
             );
-    	}else{
+    	} else {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),

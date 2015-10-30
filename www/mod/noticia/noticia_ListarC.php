@@ -45,14 +45,14 @@ class noticia_ListarControle extends noticia_Controle
     public function Noticias_Listar($categoria=0,$status=1){
         $i = 0;
         $where = Array();
-        if($categoria!=0)       $where['categoria'] = $categoria;
-        if($status  !==false)  $where['status']   = $status;
+        if ($categoria!=0)       $where['categoria'] = $categoria;
+        if ($status  !==false)  $where['status']   = $status;
         $noticias = $this->_Modelo->db->Sql_Select('Noticia',$where);
-        if(is_object($noticias)) $noticias = Array(0=>$noticias);
-        if($noticias!==false && !empty($noticias)){
+        if (is_object($noticias)) $noticias = Array(0=>$noticias);
+        if ($noticias!==false && !empty($noticias)){
             reset($noticias);
             foreach ($noticias as &$valor) {
-                if($valor->destaque==0)     $destaque = __('Não');
+                if ($valor->destaque==0)     $destaque = __('Não');
                 else                        $destaque = __('Sim');
                 
                 
@@ -64,12 +64,12 @@ class noticia_ListarControle extends noticia_Controle
             }
             $this->_Visual->Show_Tabela_DataTable($tabela);
             unset($tabela);
-        }else{           
+        } else {           
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhuma Noticia</font></b></center>');
         }
-        if($status==0){
+        if ($status==0){
             $titulo = __('Todas as Noticias Desativadas').' ('.$i.')';
-        }else{
+        } else {
             $titulo = __('Todas as Noticias Ativadas').' ('.$i.')';
         }
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);

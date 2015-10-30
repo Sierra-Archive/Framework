@@ -19,9 +19,9 @@ class Pdf extends FPDF
         $this->SetAuthor(utf8_decode('Ricardo Rebello Sierra'));
         $this->SetFont('Arial','',10);
         // Logo Caso Solicitado
-        if($logo!==false){
+        if ($logo!==false){
             $this->logo = $logo;
-        }else{
+        } else {
             $this->logo = ARQ_URL.'_Sistema/logo.png';
         }
     }
@@ -66,9 +66,9 @@ class Pdf extends FPDF
         $this->Ln();
         for ($i=0;$i<$colunas;++$i){
             foreach($tabela as &$valor){
-                if(!isset($valor[$i]) || $valor[$i]==''){
+                if (!isset($valor[$i]) || $valor[$i]==''){
                     $this->Cell($largura,6,' ',1);
-                }else{
+                } else {
                     $this->Cell($largura,6,utf8_decode($valor[$i]),1);
                 }
             }

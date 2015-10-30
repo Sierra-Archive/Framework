@@ -30,17 +30,17 @@ class SierraTec_Estatistica {
             
             // Para Cada Resultado faz Estatica com o filho
             foreach($resultado as $Registro){
-                if($tipo=='int'){
+                if ($tipo=='int'){
                     $query = $coluna.'='.$resultado;
-                }else if($tipo=='float'){
+                }else if ($tipo=='float'){
                     $query = $coluna.'='.$resultado;
-                }else if($tipo=='date'){
+                }else if ($tipo=='date'){
                     $query = '('.$coluna.'='.$resultado.' AND '.$coluna.'='.$resultado.')';
-                }else{
+                } else {
                     continue;
                 }
                     
-                if($query_condicao!==false){
+                if ($query_condicao!==false){
                     $query = $query_condicao.' AND '.$query;
                 }
                 

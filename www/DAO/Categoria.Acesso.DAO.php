@@ -224,30 +224,30 @@ final Class Categoria_Acesso_DAO extends Framework\App\Dao
      * @throws Exception
      */
     public static function Mod_Acesso_Get($tipo=false){
-        if($tipo!==false){
+        if ($tipo!==false){
             $array = Array();
             // Percorre os modulos que aceitam categorias
             $percorrer = Categoria_Acesso_DAO::Mod_Acesso();
             foreach($percorrer as &$value){
-                if(strtoupper($tipo)===strtoupper($value['chave'])) return $value;
+                if (strtoupper($tipo)===strtoupper($value['chave'])) return $value;
             }
             return _Sistema_erroControle::Erro_Fluxo('Categoria de Acesso não encontrado. Tipo:'.$tipo,404);
-        }else{
+        } else {
             $array = Array();
             // Percorre os modulos que aceitam categorias
             $percorrer = Categoria_Acesso_DAO::Mod_Acesso();
             foreach($percorrer as $indice=>&$value){
                 // Verifica se é do modulo inteiro ou de um submodulo
-                if(strpos($indice, '|')===false){
+                if (strpos($indice, '|')===false){
                     $modulo     = $indice;
                     $submodulo  = false;
-                }else{
+                } else {
                     $indice = explode('|',$indice);
                     $modulo     = $indice[0];
                     $submodulo  = $indice[1];
                 }
                 // Verifica se o modulo é permitido
-                if(\Framework\App\Sistema_Funcoes::Perm_Modulos($modulo,$submodulo)){
+                if (\Framework\App\Sistema_Funcoes::Perm_Modulos($modulo,$submodulo)){
                    $array[] = $value;
                 }
             }
@@ -258,7 +258,7 @@ final Class Categoria_Acesso_DAO extends Framework\App\Dao
         // Percorre os modulos que aceitam categorias
         $percorrer = self::Mod_Acesso();
         foreach($percorrer as &$value){
-            if(strtoupper($chave)===strtoupper($value['chave'])){
+            if (strtoupper($chave)===strtoupper($value['chave'])){
                 return $value['nome'];
             }
         }

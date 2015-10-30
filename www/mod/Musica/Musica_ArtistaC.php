@@ -24,9 +24,9 @@ class Musica_ArtistaControle extends Musica_Controle
     static function Endereco_Artista($true=true){
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
-        if($true===true){
+        if ($true===true){
             $_Controle->Tema_Endereco(__('Artistas'),'Musica/Artista/Artistas');
-        }else{
+        } else {
             $_Controle->Tema_Endereco(__('Artistas'));
         }
     }
@@ -36,23 +36,23 @@ class Musica_ArtistaControle extends Musica_Controle
         
         $tabela = Array();
         $i = 0;
-        if(is_object($artistas)) $artistas = Array(0=>$artistas);
+        if (is_object($artistas)) $artistas = Array(0=>$artistas);
         reset($artistas);
         foreach ($artistas as &$valor) {
             $tabela['Nome do Artista'][$i]          =   $valor->nome;
             
-            if($valor->foto==='' || $valor->foto===false){
+            if ($valor->foto==='' || $valor->foto===false){
                 $foto = WEB_URL.'img'.US.'icons'.US.'clientes.png';
-            }else{
+            } else {
                 $foto = $valor->foto;
             }
             $tabela['Foto'][$i]                     = '<img alt="'.__('Foto de Artista').' src="'.$foto.'" style="max-width:100px;" />';
             $tabela['Data Cadastrada'][$i]          =   $valor->log_date_add;
             $status                                 = $valor->status;
-            if($status!=1){
+            if ($status!=1){
                 $status = 0;
                 $texto = __('Desativado');
-            }else{
+            } else {
                 $status = 1;
                 $texto = __('Ativado');
             }
@@ -86,12 +86,12 @@ class Musica_ArtistaControle extends Musica_Controle
             )
         )));
         $artistas = $this->_Modelo->db->Sql_Select('Musica_Album_Artista');
-        if($artistas!==false && !empty($artistas)){
+        if ($artistas!==false && !empty($artistas)){
             list($tabela,$i) = self::Artistas_Tabela($artistas);
             
-            if($export!==false){
+            if ($export!==false){
                 self::Export_Todos($export,$tabela, 'Artistas');
-            }else{
+            } else {
                 $this->_Visual->Show_Tabela_DataTable(
                     $tabela,     // Array Com a Tabela
                     '',          // style extra
@@ -105,7 +105,7 @@ class Musica_ArtistaControle extends Musica_Controle
                 );
             }
             unset($tabela);
-        }else{            
+        } else {            
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Artista</font></b></center>');
         }
         $titulo = __('Listagem de Artistas').' ('.$i.')';
@@ -195,13 +195,13 @@ class Musica_ArtistaControle extends Musica_Controle
         $artista = $this->_Modelo->db->Sql_Select('Musica_Album_Artista', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($artista);
         // Mensagem
-    	if($sucesso===true){
+    	if ($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
                 "mgs_secundaria" => __('Artista deletado com sucesso')
             );
-    	}else{
+    	} else {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),
@@ -216,23 +216,23 @@ class Musica_ArtistaControle extends Musica_Controle
         $this->_Visual->Json_Info_Update('Historico', false);
     }
     public function Status($id=false){
-        if($id===false){
+        if ($id===false){
             return false;
         }
         $resultado = $this->_Modelo->db->Sql_Select('Musica_Album_Artista', Array('id'=>$id),1);
-        if($resultado===false || !is_object($resultado)){
+        if ($resultado===false || !is_object($resultado)){
             return false;
         }
-        if($resultado->status=='1'){
+        if ($resultado->status=='1'){
             $resultado->status='0';
-        }else{
+        } else {
             $resultado->status='1';
         }
         $sucesso = $this->_Modelo->db->Sql_Update($resultado);
-        if($sucesso){
-            if($resultado->status==1){
+        if ($sucesso){
+            if ($resultado->status==1){
                 $texto = __('Ativado');
-            }else{
+            } else {
                 $texto = __('Desativado');
             }
             $conteudo = array(
@@ -242,7 +242,7 @@ class Musica_ArtistaControle extends Musica_Controle
             );
             $this->_Visual->Json_IncluiTipo('Conteudo',$conteudo);
             $this->_Visual->Json_Info_Update('Titulo', __('Status Alterado')); 
-        }else{
+        } else {
             $mensagens = array(
                 "tipo"              => 'erro',
                 "mgs_principal"     => __('Erro'),
