@@ -1,5 +1,5 @@
 <?php
-$config_Modulo = function() {
+$configModule = function() {
     return Array(
         'Nome'                      =>  'categoria',
         'Descrição'                 =>  '',
@@ -8,7 +8,7 @@ $config_Modulo = function() {
         'Dependencias'              =>  FALSE,
     );
 };
-$config_Menu = function () {
+$configMenu = function () {
     return Array(
         'Administrar' => Array(
             'Filhos'                => Array('Categorias' =>Array(
@@ -18,7 +18,7 @@ $config_Menu = function () {
                 'Img'                   => 'turboadmin/m-dashboard.png',
                 'Icon'                  => 'barcode',
                 'Permissao_Func'        => Array(// Permissoes NEcessarias
-                    'categoria_visualizar' => true
+                    'categoria_visualizar' => TRUE
                 ),
                 'Filhos'                => FALSE,
             ),),
@@ -36,7 +36,7 @@ $config_Permissoes = function () {
             'SubModulo'             => 'Admin',   // Submodulo Referente
             'Metodo'                => 'Categorias',  // Metodos referentes separados por virgula
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                'categoria_visualizar' => true
+                'categoria_visualizar' => TRUE
             ),
         ),
         Array(
@@ -48,19 +48,19 @@ $config_Permissoes = function () {
             'SubModulo'             => 'Admin',   // Submodulo Referente
             'Metodo'                => 'Categorias_Add,categorias_Add2',  // Metodos referentes separados por virgula
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                'categoria_visualizar' => true
+                'categoria_visualizar' => TRUE
             ),
         ),
         Array(
             'Nome'                  => __('Categorias - Editar'),
             'Desc'                  => '',
             'Chave'                 => 'categoria_Admin_Categorias_Edit', // CHave unica nunca repete, chave primaria
-            'End'                   => 'categoria/Admin/Categorias_Edit', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
-            'Modulo'                => 'categoria', // Modulo Referente // Modulo Referente
-            'SubModulo'             => 'Admin',   // Submodulo Referente   // Submodulo Referente
+            'End'                   => 'categoria/Admin/Categorias_Edit', // Endereco que deve conter a url para permitir acesso
+            'Modulo'                => 'categoria', // Modulo Referente
+            'SubModulo'             => 'Admin',// Submodulo Referente
             'Metodo'                => 'Categorias_Edit,Categorias_Edit2',  // Metodos referentes separados por virgula
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                'categoria_visualizar' => true
+                'categoria_visualizar' => TRUE
             ),
         ),
         Array(
@@ -72,7 +72,7 @@ $config_Permissoes = function () {
             'SubModulo'             => 'Admin',   // Submodulo Referente
             'Metodo'                => 'Categorias_Del',  // Metodos referentes separados por virgula
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                'categoria_visualizar' => true
+                'categoria_visualizar' => TRUE
             ),
         ),
     );

@@ -1,5 +1,5 @@
 <?php
-$config_Modulo = function () {
+$configModule = function () {
     return Array(
         'Nome'                      =>  'Financeiro',
         'Descrição'                 =>  'Permite o controle de um banco '.
@@ -10,7 +10,7 @@ $config_Modulo = function () {
         'Dependencias'              =>  FALSE,
     );
 };
-$config_Menu = function () {
+$configMenu = function () {
     return Array(
         'Relatório' => Array(
             'Filhos'                => Array('Financeiro'=>Array(
@@ -88,7 +88,7 @@ $config_Menu = function () {
                     'Img'                   => 'money',
                     'Icon'                  => 'money',
                     'Permissao_Func'        => Array(// Permissoes NEcessarias
-                        'Financeiro_Financa' => true
+                        'Financeiro_Financa' => TRUE
                     ),
                     'Filhos'                => FALSE,
                 ),
@@ -101,7 +101,7 @@ $config_Menu = function () {
                     'Img'                   => 'money',
                     'Icon'                  => 'money',
                     'Permissao_Func'        => Array(// Permissoes NEcessarias
-                        'Financeiro_User_Saldo' => true
+                        'Financeiro_User_Saldo' => TRUE
                     ),
                     'Filhos'                => FALSE,
                 ),'Minhas Contas Pagas'=>Array(
@@ -111,7 +111,7 @@ $config_Menu = function () {
                     'Img'                   => 'money',
                     'Icon'                  => 'money',
                     'Permissao_Func'        => Array(// Permissoes NEcessarias
-                        'Financeiro_User_Saldo' => true
+                        'Financeiro_User_Saldo' => TRUE
                     ),
                     'Filhos'                => FALSE,
                 ),'Minhas Contas à Receber'=>Array(
@@ -121,7 +121,7 @@ $config_Menu = function () {
                     'Img'                   => 'money',
                     'Icon'                  => 'money',
                     'Permissao_Func'        => Array(// Permissoes NEcessarias
-                        'Financeiro_User_Saldo' => true
+                        'Financeiro_User_Saldo' => TRUE
                     ),
                     'Filhos'                => FALSE,
                 ),'Minhas Contas Recebidas'=>Array(
@@ -131,7 +131,7 @@ $config_Menu = function () {
                     'Img'                   => 'money',
                     'Icon'                  => 'money',
                     'Permissao_Func'        => Array(// Permissoes NEcessarias
-                        'Financeiro_User_Saldo' => true
+                        'Financeiro_User_Saldo' => TRUE
                     ),
                     'Filhos'                => FALSE,
                 )
@@ -174,9 +174,9 @@ $config_Permissoes = function () {
             'Nome'                  => __('Financeiro (Condições de Pagamento) - Editar'),
             'Desc'                  => '',
             'Chave'                 => 'Financeiro_Pagamento_Condicoes_Edit', // CHave unica nunca repete, chave primaria
-            'End'                   => 'Financeiro/Pagamento/Condicoes_Edit', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
-            'Modulo'                => 'Financeiro', // Modulo Referente // Modulo Referente
-            'SubModulo'             => 'Pagamento',   // Submodulo Referente   // Submodulo Referente
+            'End'                   => 'Financeiro/Pagamento/Condicoes_Edit', // Endereco que deve conter a url para permitir acesso
+            'Modulo'                => 'Financeiro', // Modulo Referente
+            'SubModulo'             => 'Pagamento',// Submodulo Referente
             'Metodo'                => 'Condicoes_Edit,Condicoes_Edit2',  // Metodos referentes separados por virgula
         ),
         Array(
@@ -213,9 +213,9 @@ $config_Permissoes = function () {
             'Nome'                  => __('Financeiro (Formas de Pagamento) - Editar'),
             'Desc'                  => '',
             'Chave'                 => 'Financeiro_Pagamento_Formas_Edit', // CHave unica nunca repete, chave primaria
-            'End'                   => 'Financeiro/Pagamento/Formas_Edit', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
-            'Modulo'                => 'Financeiro', // Modulo Referente // Modulo Referente
-            'SubModulo'             => 'Pagamento',   // Submodulo Referente   // Submodulo Referente
+            'End'                   => 'Financeiro/Pagamento/Formas_Edit', // Endereco que deve conter a url para permitir acesso
+            'Modulo'                => 'Financeiro', // Modulo Referente
+            'SubModulo'             => 'Pagamento',// Submodulo Referente
             'Metodo'                => 'Formas_Edit,Formas_Edit2',  // Metodos referentes separados por virgula
         ),
         Array(
@@ -329,7 +329,7 @@ $config_Permissoes = function () {
             'SubModulo'             => 'Financa',   // Submodulo Referente
             'Metodo'                => 'Financas',  // Metodos referentes separados por virgula
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                'Financeiro_Financa' => true
+                'Financeiro_Financa' => TRUE
             ),
         ),
         Array(
@@ -341,19 +341,19 @@ $config_Permissoes = function () {
             'SubModulo'             => 'Financa',   // Submodulo Referente
             'Metodo'                => 'Financas_Add,Financas_Add2',  // Metodos referentes separados por virgula
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                'Financeiro_Financa' => true
+                'Financeiro_Financa' => TRUE
             ),
         ),
         Array(
             'Nome'                  => __('Financeiro (Finanças) - Editar'),
             'Desc'                  => '',
             'Chave'                 => 'Financeiro_Financa_Financas_Edit', // CHave unica nunca repete, chave primaria
-            'End'                   => 'Financeiro/Financa/Financas_Edit', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
-            'Modulo'                => 'Financeiro', // Modulo Referente // Modulo Referente
-            'SubModulo'             => 'Financa',   // Submodulo Referente   // Submodulo Referente
+            'End'                   => 'Financeiro/Financa/Financas_Edit', // Endereco que deve conter a url para permitir acesso
+            'Modulo'                => 'Financeiro', // Modulo Referente
+            'SubModulo'             => 'Financa',// Submodulo Referente
             'Metodo'                => 'Financas_Edit,Financas_Edit2',  // Metodos referentes separados por virgula
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                'Financeiro_Financa' => true
+                'Financeiro_Financa' => TRUE
             ),
         ),
         Array(
@@ -365,7 +365,7 @@ $config_Permissoes = function () {
             'SubModulo'             => 'Financa',   // Submodulo Referente
             'Metodo'                => 'Financas_Del',  // Metodos referentes separados por virgula
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                'Financeiro_Financa' => true
+                'Financeiro_Financa' => TRUE
             ),
         ),
         
@@ -381,7 +381,7 @@ $config_Permissoes = function () {
             'SubModulo'             => 'Usuario',   // Submodulo Referente
             'Metodo'                => 'Receber',  // Metodos referentes separados por virgula
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                'Financeiro_User_Saldo' => true
+                'Financeiro_User_Saldo' => TRUE
             ),
         ),
         Array(
@@ -393,7 +393,7 @@ $config_Permissoes = function () {
             'SubModulo'             => 'Usuario',   // Submodulo Referente
             'Metodo'                => 'Recebido',  // Metodos referentes separados por virgula
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                'Financeiro_User_Saldo' => true
+                'Financeiro_User_Saldo' => TRUE
             ),
         ),
         Array(
@@ -405,7 +405,7 @@ $config_Permissoes = function () {
             'SubModulo'             => 'Usuario',   // Submodulo Referente
             'Metodo'                => 'Pagar',  // Metodos referentes separados por virgula
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                'Financeiro_User_Saldo' => true
+                'Financeiro_User_Saldo' => TRUE
             ),
         ),
         Array(
@@ -417,7 +417,7 @@ $config_Permissoes = function () {
             'SubModulo'             => 'Usuario',   // Submodulo Referente
             'Metodo'                => 'Pago',  // Metodos referentes separados por virgula
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                'Financeiro_User_Saldo' => true
+                'Financeiro_User_Saldo' => TRUE
             ),
         ),
         
@@ -431,7 +431,7 @@ $config_Permissoes = function () {
             'SubModulo'             => 'Usuario',   // Submodulo Referente
             'Metodo'                => 'Financeiros_Pagar',  // Metodos referentes separados por virgula
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                'Financeiro_User_Saldo' => true
+                'Financeiro_User_Saldo' => TRUE
             ),
         ),
     );

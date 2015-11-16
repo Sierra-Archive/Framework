@@ -40,17 +40,17 @@ abstract class Minify_Controller_Base {
      */
     public function getDefaultMinifyOptions() {
         return array(
-            'isPublic' => true
+            'isPublic' => TRUE
             ,'encodeOutput' => function_exists('gzdeflate')
             ,'encodeMethod' => null // determine later
             ,'encodeLevel' => 9
             ,'minifierOptions' => array() // no minifier options
             ,'contentTypeCharset' => 'utf-8'
             ,'maxAge' => 1800 // 30 minutes
-            ,'rewriteCssUris' => true
-            ,'bubbleCssImports' => false
-            ,'quiet' => false // serve() will send headers and output
-            ,'debug' => false
+            ,'rewriteCssUris' => TRUE
+            ,'bubbleCssImports' => FALSE
+            ,'quiet' => FALSE // serve() will send headers and output
+            ,'debug' => FALSE
             
             // if you override these, the response codes MUST be directly after
             // the first space.

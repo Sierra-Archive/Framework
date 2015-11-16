@@ -111,7 +111,7 @@ final Class Social_Acao_DAO extends Framework\App\Dao
                         'Linkado'           => 'participante',// CAmpo a ser encaixado id do link
                         'Campos'            => FALSE,
                         'infonulo'          => 'Escolha Um Participante',
-                      'linkextra'         => false
+                      'linkextra'         => FALSE
                     ), // Campo Boleano da tabela LINK, caso false apaga os que nao forem puxados
                 )
             ),
@@ -130,7 +130,7 @@ final Class Social_Acao_DAO extends Framework\App\Dao
                         'Linkado'           => 'presente',// CAmpo a ser encaixado id do link
                         'Campos'            => FALSE,
                         'infonulo'          => 'Escolha Um Presente',
-                      'linkextra'         => false
+                      'linkextra'         => FALSE
                     ), // Campo Boleano da tabela LINK, caso false apaga os que nao forem puxados
                 )
             ),
@@ -151,7 +151,7 @@ final Class Social_Acao_DAO extends Framework\App\Dao
                             'gravidade'
                         ),
                         'infonulo'          => 'Escolha pelo menos uma Caracteristica',
-                      'linkextra'         => false
+                      'linkextra'         => FALSE
                     ), // Campo Boleano da tabela LINK, caso false apaga os que nao forem puxados
                 )
             ),

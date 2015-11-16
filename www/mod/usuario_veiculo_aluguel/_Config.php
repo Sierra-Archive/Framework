@@ -1,5 +1,5 @@
 <?php
-$config_Modulo = function () {
+$configModule = function () {
     return Array(
         'Nome'                      =>  'usuario_veiculo_aluguel',
         'Descrição'                 =>  '',
@@ -8,7 +8,7 @@ $config_Modulo = function () {
         'Dependencias'              =>  FALSE,
     );
 };
-$config_Menu = function () {
+$configMenu = function () {
     return Array(
         'Alugueis'=>Array(
             'Nome'                  => __('Alugueis'),

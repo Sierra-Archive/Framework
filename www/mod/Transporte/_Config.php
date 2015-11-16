@@ -1,5 +1,5 @@
 <?php
-$config_Modulo = function () {
+$configModule = function () {
     return Array(
         'Nome'                      =>  'Transporte',
         'Descrição'                 =>  'Módulo Feito para o Transporte de Caminhoneiros, cadastro de Transportadoras, armazéns e empresas associadas.',
@@ -8,7 +8,7 @@ $config_Modulo = function () {
         'Dependencias'              =>  FALSE,
     );
 };
-$config_Menu = function () {
+$configMenu = function () {
     return Array(
         'Fornecedores'=>Array(
             'Nome'                  => __('Fornecedores'),
@@ -336,9 +336,9 @@ $config_Permissoes = function () {
             'Nome'                  => __('Transporte - Dicas de Estradas (Editar)'),
             'Desc'                  => '',
             'Chave'                 => 'Transporte_Estrada_Estradas_Edit', // CHave unica nunca repete, chave primaria
-            'End'                   => 'Transporte/Estrada/Estradas_Edit', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
-            'Modulo'                => 'Transporte', // Modulo Referente // Modulo Referente
-            'SubModulo'             => 'Estrada',   // Submodulo Referente   // Submodulo Referente
+            'End'                   => 'Transporte/Estrada/Estradas_Edit', // Endereco que deve conter a url para permitir acesso
+            'Modulo'                => 'Transporte', // Modulo Referente
+            'SubModulo'             => 'Estrada',// Submodulo Referente
             'Metodo'                => 'Estradas_Edit,Estradas_Edit2',  // Metodos referentes separados por virgula
         ),
         Array(

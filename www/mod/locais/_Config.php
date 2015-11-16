@@ -1,5 +1,5 @@
 <?php
-$config_Modulo = function () {
+$configModule = function () {
     return Array(
         'Nome'                      =>  'locais',
         'Descrição'                 =>  '',
@@ -8,7 +8,7 @@ $config_Modulo = function () {
         'Dependencias'              =>  FALSE,
     );
 };
-$config_Menu = function () {
+$configMenu = function () {
     return Array(
         'Administrar' => Array(
             'Filhos'                => Array('Locais' =>Array(
@@ -18,7 +18,7 @@ $config_Menu = function () {
                 'Img'                   => 'turboadmin/m-dashboard.png',
                 'Icon'                  => 'map-marker',
                 'Permissao_Func'        => Array(// Permissoes NEcessarias
-                    'locais_Acesso' => true
+                    'locais_Acesso' => TRUE
                 ),
                 'Filhos'                => FALSE,
             ),),
@@ -36,7 +36,7 @@ $config_Permissoes = function () {
             'SubModulo'             => 'locais',   // Submodulo Referente
             'Metodo'                => 'Locais',  // Metodos referentes separados por virgula
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                'locais_Acesso' => true
+                'locais_Acesso' => TRUE
             ),
         ),
         Array(
@@ -48,19 +48,19 @@ $config_Permissoes = function () {
             'SubModulo'             => 'locais',   // Submodulo Referente
             'Metodo'                => 'Locais_Add,Locais_Add2',  // Metodos referentes separados por virgula
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                'locais_Acesso' => true
+                'locais_Acesso' => TRUE
             ),
         ),
         Array(
             'Nome'                  => __('Locais - Editar'),
             'Desc'                  => '',
             'Chave'                 => 'locais_locais_Locais_Edit', // CHave unica nunca repete, chave primaria
-            'End'                   => 'locais/locais/Locais_Edit', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
-            'Modulo'                => 'locais', // Modulo Referente // Modulo Referente
-            'SubModulo'             => 'locais',   // Submodulo Referente   // Submodulo Referente
+            'End'                   => 'locais/locais/Locais_Edit', // Endereco que deve conter a url para permitir acesso
+            'Modulo'                => 'locais', // Modulo Referente
+            'SubModulo'             => 'locais',// Submodulo Referente
             'Metodo'                => 'Locais_Edit,Locais_Edit2',  // Metodos referentes separados por virgula
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                'locais_Acesso' => true
+                'locais_Acesso' => TRUE
             ),
         ),
         Array(
@@ -72,7 +72,7 @@ $config_Permissoes = function () {
             'SubModulo'             => 'locais',   // Submodulo Referente
             'Metodo'                => 'Locais_Del',  // Metodos referentes separados por virgula
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                'locais_Acesso' => true
+                'locais_Acesso' => TRUE
             ),
         ),
     );

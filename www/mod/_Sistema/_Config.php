@@ -1,5 +1,5 @@
 <?php
-$config_Modulo = function () {
+$configModule = function () {
     return Array(
         'Nome'                      =>  '_Sistema',
         'Descrição'                 =>  '',
@@ -8,7 +8,7 @@ $config_Modulo = function () {
         'Dependencias'              =>  FALSE,
     );
 };
-$config_Menu = function () {
+$configMenu = function () {
     return Array(
         'Página Inicial' => Array(
             'Nome'                  => __('Página Inicial'),
@@ -49,7 +49,7 @@ $config_Menu = function () {
                 'Img'                   => 'turboadmin/m-dashboard.png',
                 'Icon'                  => 'dashboard',
                 'Permissao_Func'        => Array(// Permissoes NEcessarias
-                    '_Sistema_Avancado' => true
+                    '_Sistema_Avancado' => TRUE
                 ),
                 'Filhos'                => FALSE,
             ),'Configurações'=>Array(
@@ -59,7 +59,7 @@ $config_Menu = function () {
                 'Img'                   => 'turboadmin/m-dashboard.png',
                 'Icon'                  => 'dashboard',
                 'Permissao_Func'        => Array(// Permissoes NEcessarias
-                    '_Sistema_Avancado' => true
+                    '_Sistema_Avancado' => TRUE
                 ),
                 'Filhos'                => FALSE,
             ),'Filiais'=>Array(
@@ -69,7 +69,7 @@ $config_Menu = function () {
                 'Img'                   => 'turboadmin/m-dashboard.png',
                 'Icon'                  => 'dashboard',
                 'Permissao_Func'        => Array(// Permissoes NEcessarias
-                    '_Sistema_Filial' => true
+                    '_Sistema_Filial' => TRUE
                 ),
                 'Filhos'                => FALSE,
             ))
@@ -99,7 +99,7 @@ $config_Permissoes = function () {
             'SubModulo'             => 'Admin',   // Submodulo Referente
             'Metodo'                => '*',  // Metodos referentes separados por virgula
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                '_Sistema_Avancado' => true
+                '_Sistema_Avancado' => TRUE
             ),
         ),
         
@@ -113,7 +113,7 @@ $config_Permissoes = function () {
             'SubModulo'             => 'Admin',   // Submodulo Referente
             'Metodo'                => 'Menus',  // Metodos referentes separados por virgula
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                '_Sistema_Avancado' => true
+                '_Sistema_Avancado' => TRUE
             ),
         ),
         Array(
@@ -125,7 +125,7 @@ $config_Permissoes = function () {
             'SubModulo'             => 'Admin',   // Submodulo Referente
             'Metodo'                => 'Menus_Add,Menus_Add2',  // Metodos referentes separados por virgula
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                '_Sistema_Avancado' => true
+                '_Sistema_Avancado' => TRUE
             ),
         ), 
         Array(
@@ -137,19 +137,19 @@ $config_Permissoes = function () {
             'SubModulo'             => 'Admin',   // Submodulo Referente
             'Metodo'                => 'Menus_Add,Menus_Add2',  // Metodos referentes separados por virgula
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                '_Sistema_Avancado' => true
+                '_Sistema_Avancado' => TRUE
             ),
         ),
         Array(
             'Nome'                  => __('Sistema (Menu) - Editar'),
             'Desc'                  => '',
             'Chave'                 => '_Sistema_Admin_Menus_Edit', // CHave unica nunca repete, chave primaria
-            'End'                   => '_Sistema/Admin/Menus_Edit', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
-            'Modulo'                => '_Sistema', // Modulo Referente // Modulo Referente
-            'SubModulo'             => 'Admin',   // Submodulo Referente   // Submodulo Referente
+            'End'                   => '_Sistema/Admin/Menus_Edit', // Endereco que deve conter a url para permitir acesso
+            'Modulo'                => '_Sistema', // Modulo Referente
+            'SubModulo'             => 'Admin',// Submodulo Referente
             'Metodo'                => 'Menus_Edit,Menus_Edit2',  // Metodos referentes separados por virgula
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                '_Sistema_Avancado' => true
+                '_Sistema_Avancado' => TRUE
             ),
         ),
         Array(
@@ -161,7 +161,7 @@ $config_Permissoes = function () {
             'SubModulo'             => 'Admin',   // Submodulo Referente
             'Metodo'                => 'Menus_Del',  // Metodos referentes separados por virgula
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                '_Sistema_Avancado' => true
+                '_Sistema_Avancado' => TRUE
             ),
         ),
         
@@ -175,19 +175,19 @@ $config_Permissoes = function () {
             'SubModulo'             => 'Admin',   // Submodulo Referente
             'Metodo'                => 'Configs',  // Metodos referentes separados por virgula
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                '_Sistema_Avancado' => true
+                '_Sistema_Avancado' => TRUE
             ),
         ),
         Array(
             'Nome'                  => __('Sistema (Configuração) - Editar'),
             'Desc'                  => '',
             'Chave'                 => '_Sistema_Admin_Configs_Edit', // CHave unica nunca repete, chave primaria
-            'End'                   => '_Sistema/Admin/Configs_Edit', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
-            'Modulo'                => '_Sistema', // Modulo Referente // Modulo Referente
-            'SubModulo'             => 'Admin',   // Submodulo Referente   // Submodulo Referente
+            'End'                   => '_Sistema/Admin/Configs_Edit', // Endereco que deve conter a url para permitir acesso
+            'Modulo'                => '_Sistema', // Modulo Referente
+            'SubModulo'             => 'Admin',// Submodulo Referente
             'Metodo'                => 'Configs_Edit,Configs_Edit2',  // Metodos referentes separados por virgula
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                '_Sistema_Avancado' => true
+                '_Sistema_Avancado' => TRUE
             ),
         ),
         
@@ -201,7 +201,7 @@ $config_Permissoes = function () {
             'SubModulo'             => 'Admin',   // Submodulo Referente
             'Metodo'                => 'Newsletter',  // Metodos referentes separados por virgula
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                '_Sistema_Newsletter' => true
+                '_Sistema_Newsletter' => TRUE
             ),
         ),
         Array(
@@ -213,19 +213,19 @@ $config_Permissoes = function () {
             'SubModulo'             => 'Admin',   // Submodulo Referente
             'Metodo'                => 'Newsletter_Add,Newsletter_Add2',  // Metodos referentes separados por virgula
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                '_Sistema_Newsletter' => true
+                '_Sistema_Newsletter' => TRUE
             ),
         ),
         Array(
             'Nome'                  => __('Newsletter - Editar'),
             'Desc'                  => '',
             'Chave'                 => '_Sistema_Admin_Newsletter_Edit', // CHave unica nunca repete, chave primaria
-            'End'                   => '_Sistema/Admin/Newsletter_Edit', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
-            'Modulo'                => '_Sistema', // Modulo Referente // Modulo Referente
-            'SubModulo'             => 'Admin',   // Submodulo Referente   // Submodulo Referente
+            'End'                   => '_Sistema/Admin/Newsletter_Edit', // Endereco que deve conter a url para permitir acesso
+            'Modulo'                => '_Sistema', // Modulo Referente
+            'SubModulo'             => 'Admin',// Submodulo Referente
             'Metodo'                => 'Newsletter_Edit,Newsletter_Edit2',  // Metodos referentes separados por virgula
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                '_Sistema_Newsletter' => true
+                '_Sistema_Newsletter' => TRUE
             ),
         ),
         Array(
@@ -237,7 +237,7 @@ $config_Permissoes = function () {
             'SubModulo'             => 'Admin',   // Submodulo Referente
             'Metodo'                => 'Newsletter_Del',  // Metodos referentes separados por virgula
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                '_Sistema_Newsletter' => true
+                '_Sistema_Newsletter' => TRUE
             ),
         ),
         
@@ -266,9 +266,9 @@ $config_Permissoes = function () {
             'Nome'                  => __('Sistema (Grupos) - Editar'),
             'Desc'                  => '',
             'Chave'                 => '_Sistema_Admin_Grupos_Edit', // CHave unica nunca repete, chave primaria
-            'End'                   => '_Sistema/Admin/Grupos_Edit', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
-            'Modulo'                => '_Sistema', // Modulo Referente // Modulo Referente
-            'SubModulo'             => 'Admin',   // Submodulo Referente   // Submodulo Referente
+            'End'                   => '_Sistema/Admin/Grupos_Edit', // Endereco que deve conter a url para permitir acesso
+            'Modulo'                => '_Sistema', // Modulo Referente
+            'SubModulo'             => 'Admin',// Submodulo Referente
             'Metodo'                => 'Grupos_Edit,Grupos_Edit2',  // Metodos referentes separados por virgula
         ),
         Array(
@@ -301,7 +301,7 @@ $config_Permissoes = function () {
             'SubModulo'             => 'Filial',   // Submodulo Referente
             'Metodo'                => 'Filial',  // Metodos referentes separados por virgula
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                '_Sistema_Filial' => true
+                '_Sistema_Filial' => TRUE
             ),
         ),
         Array(
@@ -313,19 +313,19 @@ $config_Permissoes = function () {
             'SubModulo'             => 'Filial',   // Submodulo Referente
             'Metodo'                => 'Filial_Add,Filial_Add2',  // Metodos referentes separados por virgula
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                '_Sistema_Filial' => true
+                '_Sistema_Filial' => TRUE
             ),
         ),
         Array(
             'Nome'                  => __('Sistema (Filiais) - Editar'),
             'Desc'                  => '',
             'Chave'                 => '_Sistema_Filial_Filial_Edit', // CHave unica nunca repete, chave primaria
-            'End'                   => '_Sistema/Filial/Filial_Edit', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
-            'Modulo'                => '_Sistema', // Modulo Referente // Modulo Referente
-            'SubModulo'             => 'Filial',   // Submodulo Referente   // Submodulo Referente
+            'End'                   => '_Sistema/Filial/Filial_Edit', // Endereco que deve conter a url para permitir acesso
+            'Modulo'                => '_Sistema', // Modulo Referente
+            'SubModulo'             => 'Filial',// Submodulo Referente
             'Metodo'                => 'Filial_Edit,Filial_Edit2',  // Metodos referentes separados por virgula
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                '_Sistema_Filial' => true
+                '_Sistema_Filial' => TRUE
             ),
         ),
         Array(
@@ -337,7 +337,7 @@ $config_Permissoes = function () {
             'SubModulo'             => 'Filial',   // Submodulo Referente
             'Metodo'                => 'Filial_Del',  // Metodos referentes separados por virgula
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                '_Sistema_Filial' => true
+                '_Sistema_Filial' => TRUE
             ),
         ),
     );

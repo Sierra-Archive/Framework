@@ -1,5 +1,5 @@
 <?php
-$config_Modulo = function () {
+$configModule = function () {
     return Array(
         'Nome'                      =>  'predial',
         'Descrição'                 =>  '',
@@ -8,7 +8,7 @@ $config_Modulo = function () {
         'Dependencias'              =>  FALSE,
     );
 };
-$config_Menu = function () {
+$configMenu = function () {
     return Array(
         'Predial' => Array(
             'Nome'                  => __('Predial'),
@@ -101,9 +101,9 @@ $config_Permissoes = function () {
             'Nome'                  => __('Predial (Blocos) - Editar'),
             'Desc'                  => '',
             'Chave'                 => 'predial_Bloco_Blocos_Edit', // CHave unica nunca repete, chave primaria
-            'End'                   => 'predial/Bloco/Blocos_Edit', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
-            'Modulo'                => 'predial', // Modulo Referente // Modulo Referente
-            'SubModulo'             => 'Bloco',   // Submodulo Referente   // Submodulo Referente
+            'End'                   => 'predial/Bloco/Blocos_Edit', // Endereco que deve conter a url para permitir acesso
+            'Modulo'                => 'predial', // Modulo Referente
+            'SubModulo'             => 'Bloco',// Submodulo Referente
             'Metodo'                => 'Blocos_Edit,Blocos_Edit2',  // Metodos referentes separados por virgula
         ),
         Array(
@@ -139,9 +139,9 @@ $config_Permissoes = function () {
             'Nome'                  => __('Predial (Apartamentos) - Editar'),
             'Desc'                  => '',
             'Chave'                 => 'predial_Apart_Aparts_Edit', // CHave unica nunca repete, chave primaria
-            'End'                   => 'predial/Apart/Aparts_Edit', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
-            'Modulo'                => 'predial', // Modulo Referente // Modulo Referente
-            'SubModulo'             => 'Apart',   // Submodulo Referente   // Submodulo Referente
+            'End'                   => 'predial/Apart/Aparts_Edit', // Endereco que deve conter a url para permitir acesso
+            'Modulo'                => 'predial', // Modulo Referente
+            'SubModulo'             => 'Apart',// Submodulo Referente
             'Metodo'                => 'Aparts_Edit,Aparts_Edit2',  // Metodos referentes separados por virgula
         ),
         Array(
@@ -178,9 +178,9 @@ $config_Permissoes = function () {
             'Nome'                  => __('Predial (Advertências) - Editar'),
             'Desc'                  => '',
             'Chave'                 => 'predial_Advertencia_Advertencias_Edit', // CHave unica nunca repete, chave primaria
-            'End'                   => 'predial/Advertencia/Advertencias_Edit', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
-            'Modulo'                => 'predial', // Modulo Referente // Modulo Referente
-            'SubModulo'             => 'Advertencia',   // Submodulo Referente   // Submodulo Referente
+            'End'                   => 'predial/Advertencia/Advertencias_Edit', // Endereco que deve conter a url para permitir acesso
+            'Modulo'                => 'predial', // Modulo Referente
+            'SubModulo'             => 'Advertencia',// Submodulo Referente
             'Metodo'                => 'Advertencias_Edit,Advertencias_Edit2',  // Metodos referentes separados por virgula
         ),
         Array(
@@ -217,9 +217,9 @@ $config_Permissoes = function () {
             'Nome'                  => __('Predial (Animais) - Editar'),
             'Desc'                  => '',
             'Chave'                 => 'predial_Animal_Animais_Edit', // CHave unica nunca repete, chave primaria
-            'End'                   => 'predial/Animal/Animais_Edit', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
-            'Modulo'                => 'predial', // Modulo Referente // Modulo Referente
-            'SubModulo'             => 'Animal',   // Submodulo Referente   // Submodulo Referente
+            'End'                   => 'predial/Animal/Animais_Edit', // Endereco que deve conter a url para permitir acesso
+            'Modulo'                => 'predial', // Modulo Referente
+            'SubModulo'             => 'Animal',// Submodulo Referente
             'Metodo'                => 'Animais_Edit,Animais_Edit2',  // Metodos referentes separados por virgula
         ),
         Array(
@@ -256,9 +256,9 @@ $config_Permissoes = function () {
             'Nome'                  => __('Predial (Correios) - Editar'),
             'Desc'                  => '',
             'Chave'                 => 'predial_Correio_Correios_Edit', // CHave unica nunca repete, chave primaria
-            'End'                   => 'predial/Correio/Correios_Edit', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
-            'Modulo'                => 'predial', // Modulo Referente // Modulo Referente
-            'SubModulo'             => 'Correio',   // Submodulo Referente   // Submodulo Referente
+            'End'                   => 'predial/Correio/Correios_Edit', // Endereco que deve conter a url para permitir acesso
+            'Modulo'                => 'predial', // Modulo Referente
+            'SubModulo'             => 'Correio',// Submodulo Referente
             'Metodo'                => 'Correios_Edit,Correios_Edit2',  // Metodos referentes separados por virgula
         ),
         Array(
@@ -295,9 +295,9 @@ $config_Permissoes = function () {
             'Nome'                  => __('Predial (Informativos) - Editar'),
             'Desc'                  => '',
             'Chave'                 => 'predial_Informativo_Informativos_Edit', // CHave unica nunca repete, chave primaria
-            'End'                   => 'predial/Informativo/Informativos_Edit', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
-            'Modulo'                => 'predial', // Modulo Referente // Modulo Referente
-            'SubModulo'             => 'Informativo',   // Submodulo Referente   // Submodulo Referente
+            'End'                   => 'predial/Informativo/Informativos_Edit', // Endereco que deve conter a url para permitir acesso
+            'Modulo'                => 'predial', // Modulo Referente
+            'SubModulo'             => 'Informativo',// Submodulo Referente
             'Metodo'                => 'Informativos_Edit,Informativos_Edit2',  // Metodos referentes separados por virgula
         ),
         Array(
@@ -334,9 +334,9 @@ $config_Permissoes = function () {
             'Nome'                  => __('Predial (Salões) - Editar'),
             'Desc'                  => '',
             'Chave'                 => 'predial_Salao_Saloes_Edit', // CHave unica nunca repete, chave primaria
-            'End'                   => 'predial/Salao/Saloes_Edit', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
-            'Modulo'                => 'predial', // Modulo Referente // Modulo Referente
-            'SubModulo'             => 'Salao',   // Submodulo Referente   // Submodulo Referente
+            'End'                   => 'predial/Salao/Saloes_Edit', // Endereco que deve conter a url para permitir acesso
+            'Modulo'                => 'predial', // Modulo Referente
+            'SubModulo'             => 'Salao',// Submodulo Referente
             'Metodo'                => 'Saloes_Edit,Saloes_Edit2',  // Metodos referentes separados por virgula
         ),
         Array(
@@ -373,9 +373,9 @@ $config_Permissoes = function () {
             'Nome'                  => __('Predial (Veiculos) - Editar'),
             'Desc'                  => '',
             'Chave'                 => 'predial_Veiculo_Veiculos_Edit', // CHave unica nunca repete, chave primaria
-            'End'                   => 'predial/Veiculo/Veiculos_Edit', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
-            'Modulo'                => 'predial', // Modulo Referente // Modulo Referente
-            'SubModulo'             => 'Veiculo',   // Submodulo Referente   // Submodulo Referente
+            'End'                   => 'predial/Veiculo/Veiculos_Edit', // Endereco que deve conter a url para permitir acesso
+            'Modulo'                => 'predial', // Modulo Referente
+            'SubModulo'             => 'Veiculo',// Submodulo Referente
             'Metodo'                => 'Veiculos_Edit,Veiculos_Edit2',  // Metodos referentes separados por virgula
         ),
         Array(

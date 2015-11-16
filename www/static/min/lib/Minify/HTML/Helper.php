@@ -31,11 +31,11 @@ class Minify_HTML_Helper {
     public static function getUri($keyOrFiles, $opts = array())
     {
         $opts = array_merge(array( // default options
-            'farExpires' => true
-            ,'debug' => false
+            'farExpires' => TRUE
+            ,'debug' => FALSE
             ,'charset' => 'UTF-8'
             ,'minAppUri' => '/min'
-            ,'rewriteWorks' => true
+            ,'rewriteWorks' => TRUE
             ,'groupsConfigFile' => ''
         ), $opts);
         $h = new self;

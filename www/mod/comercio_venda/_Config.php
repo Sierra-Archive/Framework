@@ -1,5 +1,5 @@
 <?php
-$config_Modulo = function () {
+$configModule = function () {
     return Array(
         'Nome'                      =>  'comercio_venda',
         'Descrição'                 =>  '',
@@ -8,7 +8,7 @@ $config_Modulo = function () {
         'Dependencias'              =>  FALSE,
     );
 };
-$config_Menu = function () {
+$configMenu = function () {
     return Array(
         'Vendas' => Array(
             'Nome'                  => __('Vendas'),
@@ -23,7 +23,7 @@ $config_Menu = function () {
                 'Img'                   => 'turboadmin/m-dashboard.png',
                 'Icon'                  => 'truck',
                 'Permissao_Func'        => Array(// Permissoes NEcessarias
-                    'comercio_venda_mesa' => true
+                    'comercio_venda_mesa' => TRUE
                 ),
                 'Filhos'                => FALSE,
             ),'Caixa'=>Array(
@@ -66,7 +66,7 @@ $config_Permissoes = function () {
             'SubModulo'             => 'Carrinho',   // Submodulo Referente
             'Metodo'                => 'Mesas',  // Metodos referentes separados por virgula // Endereco que deve conter a url para permitir acesso
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                'comercio_venda_mesa' => true
+                'comercio_venda_mesa' => TRUE
             )
         ),
         Array(
@@ -78,7 +78,7 @@ $config_Permissoes = function () {
             'SubModulo'             => 'Carrinho',   // Submodulo Referente
             'Metodo'                => 'Mesas_Add,Mesas_Add2',  // Metodos referentes separados por virgula // Endereco que deve conter a url para permitir acesso
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                'comercio_venda_mesa' => true
+                'comercio_venda_mesa' => TRUE
             )
         ),
         Array(
@@ -90,7 +90,7 @@ $config_Permissoes = function () {
             'SubModulo'             => 'Carrinho',   // Submodulo Referente
             'Metodo'                => 'Mesas_Edit,Mesas_Edit2',  // Metodos referentes separados por virgula // Endereco que deve conter a url para permitir acesso
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                'comercio_venda_mesa' => true
+                'comercio_venda_mesa' => TRUE
             )
         ),
         Array(
@@ -102,7 +102,7 @@ $config_Permissoes = function () {
             'SubModulo'             => 'Carrinho',   // Submodulo Referente
             'Metodo'                => 'Mesas_Del',  // Metodos referentes separados por virgula // Endereco que deve conter a url para permitir acesso
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                'comercio_venda_mesa' => true
+                'comercio_venda_mesa' => TRUE
             )
         ),
         
@@ -215,7 +215,7 @@ $config_Funcional = function () {
             'Nome'                  => __('Se Possui Sistema de Mesas?'),
             'Desc'                  => __('Se possue Mesas'),
             'chave'                 => 'comercio_venda_mesa',
-            'Valor'                 => false
+            'Valor'                 => FALSE
         ),
     );
 };

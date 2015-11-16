@@ -569,7 +569,7 @@ class SierraTec_Manutencao {
                             $metodos[$i]['Args'][] = Array(
                                 'Nome'          => $valor,
                                 'Opcional'      => FALSE,
-                                'Padrao'        => false
+                                'Padrao'        => FALSE
                             );
                         }
                     }

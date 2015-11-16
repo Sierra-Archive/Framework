@@ -1,5 +1,5 @@
 <?php
-$config_Modulo = function () {
+$configModule = function () {
     return Array(
         'Nome'                      =>  'noticia',
         'Descrição'                 =>  '',
@@ -8,7 +8,7 @@ $config_Modulo = function () {
         'Dependencias'              =>  FALSE,
     );
 };
-$config_Menu = function () {
+$configMenu = function () {
     return Array(
         'Administrar'=>Array(
             'Filhos'                => Array('Noticias'=>Array(
@@ -46,9 +46,9 @@ $config_Permissoes = function () {
             'Nome'                  => __('Noticias - Editar Noticias'),
             'Desc'                  => '',
             'Chave'                 => 'noticia_Admin_Noticias_Edit', // CHave unica nunca repete, chave primaria
-            'End'                   => 'noticia/Admin/Noticias_Edit', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
-            'Modulo'                => 'noticia', // Modulo Referente // Modulo Referente
-            'SubModulo'             => 'Admin',   // Submodulo Referente   // Submodulo Referente
+            'End'                   => 'noticia/Admin/Noticias_Edit', // Endereco que deve conter a url para permitir acesso
+            'Modulo'                => 'noticia', // Modulo Referente
+            'SubModulo'             => 'Admin',// Submodulo Referente
             'Metodo'                => 'Noticias_Edit,Noticias_Edit2',  // Metodos referentes separados por virgula
         ),
         Array(

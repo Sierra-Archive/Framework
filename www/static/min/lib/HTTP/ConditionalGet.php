@@ -13,7 +13,7 @@
  * list($updateTime, $content) = getDbUpdateAndContent();
  * $cg = new HTTP_ConditionalGet(array(
  *     'lastModifiedTime' => $updateTime
- *     ,'isPublic' => true
+ *     ,'isPublic' => TRUE
  * ));
  * $cg->sendHeaders();
  * if ($cg->cacheIsValid) {

@@ -235,6 +235,6 @@ Minify::serve('Page', array(
         ,filemtime(dirname(__FILE__) . '/../config.php')
         ,filemtime(dirname(__FILE__) . '/../lib/Minify.php')
     )
-    ,'minifyAll' => true
+    ,'minifyAll' => TRUE
     ,'encodeOutput' => $encodeOutput
 ));

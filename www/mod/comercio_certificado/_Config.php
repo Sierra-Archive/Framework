@@ -1,5 +1,5 @@
 <?php
-$config_Modulo = function () {
+$configModule = function () {
     return Array(
         'Nome'                      =>  'comercio_certificado',
         'Descrição'                 =>  '',
@@ -8,7 +8,7 @@ $config_Modulo = function () {
         'Dependencias'              =>  Array('comercio', 'usuario'),
     );
 };
-$config_Menu = function () {
+$configMenu = function () {
     return Array(
         'Administração'=>Array(
             'Filhos'                => Array('Tipos de Produtos'=>Array(
@@ -116,9 +116,9 @@ $config_Permissoes = function () {
             'Nome'                  => __('Certificações (Produtos) - Editar'),
             'Desc'                  => '',
             'Chave'                 => 'comercio_Edit', // CHave unica nunca repete, chave primaria
-            'End'                   => 'comercio_certificado/Produto/Produtos_Edit', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
-            'Modulo'                => 'comercio_certificado', // Modulo Referente // Modulo Referente
-            'SubModulo'             => 'Produto',   // Submodulo Referente   // Submodulo Referente
+            'End'                   => 'comercio_certificado/Produto/Produtos_Edit', // Endereco que deve conter a url para permitir acesso
+            'Modulo'                => 'comercio_certificado', // Modulo Referente
+            'SubModulo'             => 'Produto',// Submodulo Referente
             'Metodo'                => 'Produtos_Edit,Produtos_Edit2',  // Metodos referentes separados por virgula
         ),
         Array(
@@ -154,9 +154,9 @@ $config_Permissoes = function () {
             'Nome'                  => __('Certificações (Propostas) - Editar'),
             'Desc'                  => '',
             'Chave'                 => 'comercio_Edit', // CHave unica nunca repete, chave primaria
-            'End'                   => 'comercio_certificado/Proposta/Propostas_Edit', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
-            'Modulo'                => 'comercio_certificado', // Modulo Referente // Modulo Referente
-            'SubModulo'             => 'Proposta',   // Submodulo Referente   // Submodulo Referente
+            'End'                   => 'comercio_certificado/Proposta/Propostas_Edit', // Endereco que deve conter a url para permitir acesso
+            'Modulo'                => 'comercio_certificado', // Modulo Referente
+            'SubModulo'             => 'Proposta',// Submodulo Referente
             'Metodo'                => 'Propostas_Edit,Propostas_Edit2',  // Metodos referentes separados por virgula
         ),
         Array(

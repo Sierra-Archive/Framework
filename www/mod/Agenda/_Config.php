@@ -1,5 +1,5 @@
 <?php
-$config_Modulo = function () {
+$configModule = function () {
     return Array(
         'Nome'                      =>  'Agenda',
         'Descrição'                 =>  '',
@@ -10,7 +10,7 @@ $config_Modulo = function () {
 };
 
 // Menu
-$config_Menu = function () {
+$configMenu = function () {
     return Array(
         'Agenda'=>Array(
             'Nome'                  => __('Agenda'),
@@ -59,9 +59,9 @@ $config_Permissoes = function () {
             'Nome'                  => __('Agenda (Compromissos) - Listagem'),
             'Desc'                  => '',
             'Chave'                 => 'Agenda',
-            'End'                   => 'Agenda/Compromisso', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
-            'Modulo'                => 'Agenda', // Modulo Referente // Modulo Referente
-            'SubModulo'             => 'Compromisso',   // Submodulo Referente   // Submodulo Referente
+            'End'                   => 'Agenda/Compromisso', // Endereco que deve conter a url para permitir acesso
+            'Modulo'                => 'Agenda', // Modulo Referente
+            'SubModulo'             => 'Compromisso',// Submodulo Referente
             'Metodo'                => 'Compromissos',  // Metodos referentes separados por virgula
         ),
         Array(
@@ -77,9 +77,9 @@ $config_Permissoes = function () {
             'Nome'                  => __('Agenda (Compromissos) - Editar Compromissos'),
             'Desc'                  => '',
             'Chave'                 => 'Agenda_Edit', // CHave unica nunca repete, chave primaria
-            'End'                   => 'Agenda/Compromisso/Compromissos_Edit', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
-            'Modulo'                => 'Agenda', // Modulo Referente // Modulo Referente
-            'SubModulo'             => 'Compromisso',   // Submodulo Referente   // Submodulo Referente
+            'End'                   => 'Agenda/Compromisso/Compromissos_Edit', // Endereco que deve conter a url para permitir acesso
+            'Modulo'                => 'Agenda', // Modulo Referente
+            'SubModulo'             => 'Compromisso',// Submodulo Referente
             'Metodo'                => 'Compromissos_Edit,Compromissos_Edit2',  // Metodos referentes separados por virgula
         ),
         Array(
@@ -99,9 +99,9 @@ $config_Permissoes = function () {
             'Nome'                  => __('Agenda (Pastas) - Listagem'),
             'Desc'                  => '',
             'Chave'                 => 'Agenda_Pasta',
-            'End'                   => 'Agenda/Pasta', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
-            'Modulo'                => 'Agenda', // Modulo Referente // Modulo Referente
-            'SubModulo'             => 'Pasta',   // Submodulo Referente   // Submodulo Referente
+            'End'                   => 'Agenda/Pasta', // Endereco que deve conter a url para permitir acesso
+            'Modulo'                => 'Agenda', // Modulo Referente
+            'SubModulo'             => 'Pasta',// Submodulo Referente
             'Metodo'                => 'Pastas',  // Metodos referentes separados por virgula
         ),
         Array(
@@ -117,9 +117,9 @@ $config_Permissoes = function () {
             'Nome'                  => __('Agenda (Pastas) - Editar'),
             'Desc'                  => '',
             'Chave'                 => 'Agenda_Pasta_Pastas_Edit', // CHave unica nunca repete, chave primaria
-            'End'                   => 'Agenda/Pasta/Pastas_Edit', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
-            'Modulo'                => 'Agenda', // Modulo Referente // Modulo Referente
-            'SubModulo'             => 'Pasta',   // Submodulo Referente   // Submodulo Referente
+            'End'                   => 'Agenda/Pasta/Pastas_Edit', // Endereco que deve conter a url para permitir acesso
+            'Modulo'                => 'Agenda', // Modulo Referente
+            'SubModulo'             => 'Pasta',// Submodulo Referente
             'Metodo'                => 'Pastas_Edit,Pastas_Edit2',  // Metodos referentes separados por virgula
         ),
         Array(
@@ -135,9 +135,9 @@ $config_Permissoes = function () {
             'Nome'                  => __('Agenda (Pasta - Cores) - Listagem'),
             'Desc'                  => '',
             'Chave'                 => 'Agenda_Pasta',
-            'End'                   => 'Agenda/Pasta', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
-            'Modulo'                => 'Agenda', // Modulo Referente // Modulo Referente
-            'SubModulo'             => 'Pasta',   // Submodulo Referente   // Submodulo Referente
+            'End'                   => 'Agenda/Pasta', // Endereco que deve conter a url para permitir acesso
+            'Modulo'                => 'Agenda', // Modulo Referente
+            'SubModulo'             => 'Pasta',// Submodulo Referente
             'Metodo'                => 'Cores',  // Metodos referentes separados por virgula
         ),
         Array(
@@ -153,9 +153,9 @@ $config_Permissoes = function () {
             'Nome'                  => __('Agenda (Pasta - Cores) - Editar'),
             'Desc'                  => '',
             'Chave'                 => 'Agenda_Pasta_Cores_Edit', // CHave unica nunca repete, chave primaria
-            'End'                   => 'Agenda/Pasta/Cores_Edit', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
-            'Modulo'                => 'Agenda', // Modulo Referente // Modulo Referente
-            'SubModulo'             => 'Pasta',   // Submodulo Referente   // Submodulo Referente
+            'End'                   => 'Agenda/Pasta/Cores_Edit', // Endereco que deve conter a url para permitir acesso
+            'Modulo'                => 'Agenda', // Modulo Referente
+            'SubModulo'             => 'Pasta',// Submodulo Referente
             'Metodo'                => 'Cores_Edit,Cores_Edit2',  // Metodos referentes separados por virgula
         ),
         Array(

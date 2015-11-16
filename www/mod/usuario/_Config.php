@@ -1,5 +1,5 @@
 <?php
-$config_Modulo = function () {
+$configModule = function () {
     return Array(
         'Nome'                      =>  'usuario',
         'Descrição'                 =>  '',
@@ -8,7 +8,7 @@ $config_Modulo = function () {
         'Dependencias'              =>  FALSE,
     );
 };
-$config_Menu = function () {
+$configMenu = function () {
     return Array(
         'Comercial' => Array(
             'Nome'                  => __('Comercial'),
@@ -17,7 +17,7 @@ $config_Menu = function () {
             'Img'                   => 'turboadmin/m-users.png',
             'Icon'                  => 'time',
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                'usuario_Expediente' => true
+                'usuario_Expediente' => TRUE
             ),
             'Filhos'                => FALSE,
         ),
@@ -28,7 +28,7 @@ $config_Menu = function () {
             'Img'                   => 'turboadmin/m-users.png',
             'Icon'                  => 'phone',
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                'usuario_Telefone_Lista' => true
+                'usuario_Telefone_Lista' => TRUE
             ),
             'Filhos'                => FALSE,
         ),
@@ -47,7 +47,7 @@ $config_Menu = function () {
                 'Img'                   => 'turboadmin/m-dashboard.png',
                 'Icon'                  => 'group',
                 'Permissao_Func'        => Array(// Permissoes NEcessarias
-                    'usuario_Admin_Funcionario' => true
+                    'usuario_Admin_Funcionario' => TRUE
                 ),
                 'Filhos'                => FALSE,
             ),\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Cliente_nome')=>Array(
@@ -57,7 +57,7 @@ $config_Menu = function () {
                 'Img'                   => 'turboadmin/m-dashboard.png',
                 'Icon'                  => 'user',
                 'Permissao_Func'        => Array(// Permissoes NEcessarias
-                    'usuario_Admin_Cliente' => true
+                    'usuario_Admin_Cliente' => TRUE
                 ),
                 'Filhos'                => FALSE,
             )),
@@ -83,12 +83,12 @@ $config_Permissoes = function () {
             'Nome'                  => __('Sistema - Controle Grupos - Listagem'),
             'Desc'                  => '',
             'Chave'                 => 'usuario_grupo', // CHave unica nunca repete, chave primaria
-            'End'                   => 'usuario/grupo', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
+            'End'                   => 'usuario/grupo', // Endereco que deve conter a url para permitir acesso
             'Modulo'                => 'usuario', // Modulo Referente
             'SubModulo'             => 'grupo',   // Submodulo Referente
             'Metodo'                => '*',  // Metodos referentes separados por virgula
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                'usuario_grupo' => true
+                'usuario_grupo' => TRUE
             ),
         ),
         // Funcionario
@@ -96,12 +96,12 @@ $config_Permissoes = function () {
             'Nome'                  => \Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Funcionario_nome').' - Listagem',
             'Desc'                  => '',
             'Chave'                 => 'usuario_Admin_ListarFuncionario', // CHave unica nunca repete, chave primaria
-            'End'                   => 'usuario/Admin/ListarFuncionario', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
+            'End'                   => 'usuario/Admin/ListarFuncionario', // Endereco que deve conter a url para permitir acesso
             'Modulo'                => 'usuario', // Modulo Referente
             'SubModulo'             => 'Admin',   // Submodulo Referente
             'Metodo'                => 'ListarFuncionario',  // Metodos referentes separados por virgula
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                'usuario_Admin_Funcionario' => true
+                'usuario_Admin_Funcionario' => TRUE
             ),
         ),
         Array(
@@ -113,19 +113,19 @@ $config_Permissoes = function () {
             'SubModulo'             => 'Admin',   // Submodulo Referente
             'Metodo'                => 'Funcionario_Add,Funcionario_Add2',  // Metodos referentes separados por virgula
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                'usuario_Admin_Funcionario' => true
+                'usuario_Admin_Funcionario' => TRUE
             ),
         ),
         Array(
             'Nome'                  => \Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Funcionario_nome').' - Editar',
             'Desc'                  => '',
             'Chave'                 => 'usuario_Admin_Funcionario_Edit', // CHave unica nunca repete, chave primaria
-            'End'                   => 'usuario/Admin/Funcionario_Edit', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
-            'Modulo'                => 'usuario', // Modulo Referente // Modulo Referente
-            'SubModulo'             => 'Admin',   // Submodulo Referente   // Submodulo Referente
+            'End'                   => 'usuario/Admin/Funcionario_Edit', // Endereco que deve conter a url para permitir acesso
+            'Modulo'                => 'usuario', // Modulo Referente
+            'SubModulo'             => 'Admin',// Submodulo Referente
             'Metodo'                => 'Funcionario_Edit,Funcionario_Edit2',  // Metodos referentes separados por virgula
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                'usuario_Admin_Funcionario' => true
+                'usuario_Admin_Funcionario' => TRUE
             ),
         ),
         Array(
@@ -137,7 +137,7 @@ $config_Permissoes = function () {
             'SubModulo'             => 'Admin',   // Submodulo Referente
             'Metodo'                => 'Funcionario_Del',  // Metodos referentes separados por virgula
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                'usuario_Admin_Funcionario' => true
+                'usuario_Admin_Funcionario' => TRUE
             ),
         ),
         
@@ -146,12 +146,12 @@ $config_Permissoes = function () {
             'Nome'                  => \Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Cliente_nome').' - Listagem',
             'Desc'                  => '',
             'Chave'                 => 'usuario_Admin_ListarCliente', // CHave unica nunca repete, chave primaria
-            'End'                   => 'usuario/Admin/ListarCliente', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
+            'End'                   => 'usuario/Admin/ListarCliente', // Endereco que deve conter a url para permitir acesso
             'Modulo'                => 'usuario', // Modulo Referente
             'SubModulo'             => 'Admin',   // Submodulo Referente
             'Metodo'                => 'ListarCliente',  // Metodos referentes separados por virgula
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                'usuario_Admin_Cliente' => true
+                'usuario_Admin_Cliente' => TRUE
             ),
         ),
         Array(
@@ -163,19 +163,19 @@ $config_Permissoes = function () {
             'SubModulo'             => 'Admin',   // Submodulo Referente
             'Metodo'                => 'Cliente_Add,Cliente_Add2',  // Metodos referentes separados por virgula
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                'usuario_Admin_Cliente' => true
+                'usuario_Admin_Cliente' => TRUE
             ),
         ),
         Array(
             'Nome'                  => \Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Cliente_nome').' - Editar',
             'Desc'                  => '',
             'Chave'                 => 'usuario_Admin_Cliente_Edit', // CHave unica nunca repete, chave primaria
-            'End'                   => 'usuario/Admin/Cliente_Edit', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
-            'Modulo'                => 'usuario', // Modulo Referente // Modulo Referente
-            'SubModulo'             => 'Admin',   // Submodulo Referente   // Submodulo Referente
+            'End'                   => 'usuario/Admin/Cliente_Edit', // Endereco que deve conter a url para permitir acesso
+            'Modulo'                => 'usuario', // Modulo Referente
+            'SubModulo'             => 'Admin',// Submodulo Referente
             'Metodo'                => 'Cliente_Edit,Cliente_Edit2',  // Metodos referentes separados por virgula
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                'usuario_Admin_Cliente' => true
+                'usuario_Admin_Cliente' => TRUE
             ),
         ),
         Array(
@@ -187,7 +187,7 @@ $config_Permissoes = function () {
             'SubModulo'             => 'Admin',   // Submodulo Referente
             'Metodo'                => 'Cliente_Del',  // Metodos referentes separados por virgula
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                'usuario_Admin_Cliente' => true
+                'usuario_Admin_Cliente' => TRUE
             ),
         ),
         
@@ -196,7 +196,7 @@ $config_Permissoes = function () {
             'Nome'                  => __('Usuario - Listagem'),
             'Desc'                  => '',
             'Chave'                 => 'usuario_Admin_ListarUsuario', // CHave unica nunca repete, chave primaria
-            'End'                   => 'usuario/Admin/ListarUsuario', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
+            'End'                   => 'usuario/Admin/ListarUsuario', // Endereco que deve conter a url para permitir acesso
             'Modulo'                => 'usuario', // Modulo Referente
             'SubModulo'             => 'Admin',   // Submodulo Referente
             'Metodo'                => 'ListarUsuario',  // Metodos referentes separados por virgula
@@ -214,9 +214,9 @@ $config_Permissoes = function () {
             'Nome'                  => __('Usuario - Editar'),
             'Desc'                  => '',
             'Chave'                 => 'usuario_Admin_Usuarios_Edit', // CHave unica nunca repete, chave primaria
-            'End'                   => 'usuario/Admin/Usuarios_Edit', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
-            'Modulo'                => 'usuario', // Modulo Referente // Modulo Referente
-            'SubModulo'             => 'Admin',   // Submodulo Referente   // Submodulo Referente
+            'End'                   => 'usuario/Admin/Usuarios_Edit', // Endereco que deve conter a url para permitir acesso
+            'Modulo'                => 'usuario', // Modulo Referente
+            'SubModulo'             => 'Admin',// Submodulo Referente
             'Metodo'                => 'Usuarios_Edit,Usuarios_Edit2',  // Metodos referentes separados por virgula
         ),
         Array(
@@ -246,12 +246,12 @@ $config_Permissoes = function () {
             'Nome'                  => __('Telefone - Listagem'),
             'Desc'                  => '',
             'Chave'                 => 'usuario_Telefone_Telefones', // CHave unica nunca repete, chave primaria
-            'End'                   => 'usuario/Telefone/Telefones', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
+            'End'                   => 'usuario/Telefone/Telefones', // Endereco que deve conter a url para permitir acesso
             'Modulo'                => 'usuario', // Modulo Referente
             'SubModulo'             => 'Telefone',   // Submodulo Referente
             'Metodo'                => 'Telefones',  // Metodos referentes separados por virgula
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                'usuario_Telefone_Lista' => true
+                'usuario_Telefone_Lista' => TRUE
             ),
         ),
         Array(
@@ -263,19 +263,19 @@ $config_Permissoes = function () {
             'SubModulo'             => 'Telefone',   // Submodulo Referente
             'Metodo'                => 'Telefones_Add,Telefones_Add2',  // Metodos referentes separados por virgula
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                'usuario_Telefone_Lista' => true
+                'usuario_Telefone_Lista' => TRUE
             ),
         ),
         Array(
             'Nome'                  => __('Telefone - Editar'),
             'Desc'                  => '',
             'Chave'                 => 'usuario_Telefone_Telefones_Edit', // CHave unica nunca repete, chave primaria
-            'End'                   => 'usuario/Telefone/Telefones_Edit', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
-            'Modulo'                => 'usuario', // Modulo Referente // Modulo Referente
-            'SubModulo'             => 'Telefone',   // Submodulo Referente   // Submodulo Referente
+            'End'                   => 'usuario/Telefone/Telefones_Edit', // Endereco que deve conter a url para permitir acesso
+            'Modulo'                => 'usuario', // Modulo Referente
+            'SubModulo'             => 'Telefone',// Submodulo Referente
             'Metodo'                => 'Telefones_Edit,Telefones_Edit2',  // Metodos referentes separados por virgula
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                'usuario_Telefone_Lista' => true
+                'usuario_Telefone_Lista' => TRUE
             ),
         ),
         Array(
@@ -287,7 +287,7 @@ $config_Permissoes = function () {
             'SubModulo'             => 'Telefone',   // Submodulo Referente
             'Metodo'                => 'Telefones_Del',  // Metodos referentes separados por virgula
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                'usuario_Telefone_Lista' => true
+                'usuario_Telefone_Lista' => TRUE
             ),
         ),
         

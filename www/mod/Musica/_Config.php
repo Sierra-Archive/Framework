@@ -1,5 +1,5 @@
 <?php
-$config_Modulo = function () {
+$configModule = function () {
     return Array(
         'Nome'                      =>  'Musica',
         'Descrição'                 =>  '',
@@ -8,7 +8,7 @@ $config_Modulo = function () {
         'Dependencias'              =>  FALSE,
     );
 };
-$config_Menu = function () {
+$configMenu = function () {
     return Array(
         'Midia' => Array(
             'Nome'                  => __('Midia'),
@@ -54,9 +54,9 @@ $config_Permissoes = function () {
             'Nome'                  => __('Midia (Artistas) - Listagem'),
             'Desc'                  => '',
             'Chave'                 => 'Musica_Artista_Artistas',
-            'End'                   => 'Musica/Artista/Artistas', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
-            'Modulo'                => 'Musica', // Modulo Referente // Modulo Referente
-            'SubModulo'             => 'Artista',   // Submodulo Referente   // Submodulo Referente
+            'End'                   => 'Musica/Artista/Artistas', // Endereco que deve conter a url para permitir acesso
+            'Modulo'                => 'Musica', // Modulo Referente
+            'SubModulo'             => 'Artista',// Submodulo Referente
             'Metodo'                => 'Artistas',  // Metodos referentes separados por virgula
         ),
         Array(
@@ -72,9 +72,9 @@ $config_Permissoes = function () {
             'Nome'                  => __('Midia (Artistas) - Editar'),
             'Desc'                  => '',
             'Chave'                 => 'Musica_Artista_Artistas_Edit', // CHave unica nunca repete, chave primaria
-            'End'                   => 'Musica/Artista/Artistas_Edit', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
-            'Modulo'                => 'Musica', // Modulo Referente // Modulo Referente
-            'SubModulo'             => 'Artista',   // Submodulo Referente   // Submodulo Referente
+            'End'                   => 'Musica/Artista/Artistas_Edit', // Endereco que deve conter a url para permitir acesso
+            'Modulo'                => 'Musica', // Modulo Referente
+            'SubModulo'             => 'Artista',// Submodulo Referente
             'Metodo'                => 'Artistas_Edit,Artistas_Edit2',  // Metodos referentes separados por virgula
         ),
         Array(
@@ -91,9 +91,9 @@ $config_Permissoes = function () {
             'Nome'                  => __('Midia (Albuns) - Listagem'),
             'Desc'                  => '',
             'Chave'                 => 'Musica_Album_Albuns',
-            'End'                   => 'Musica/Album/Albuns', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
-            'Modulo'                => 'Musica', // Modulo Referente // Modulo Referente
-            'SubModulo'             => 'Album',   // Submodulo Referente   // Submodulo Referente
+            'End'                   => 'Musica/Album/Albuns', // Endereco que deve conter a url para permitir acesso
+            'Modulo'                => 'Musica', // Modulo Referente
+            'SubModulo'             => 'Album',// Submodulo Referente
             'Metodo'                => 'Albuns',  // Metodos referentes separados por virgula
         ),
         Array(
@@ -109,9 +109,9 @@ $config_Permissoes = function () {
             'Nome'                  => __('Midia (Albuns) - Editar'),
             'Desc'                  => '',
             'Chave'                 => 'Musica_Album_Albuns_Edit', // CHave unica nunca repete, chave primaria
-            'End'                   => 'Musica/Album/Albuns_Edit', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
-            'Modulo'                => 'Musica', // Modulo Referente // Modulo Referente
-            'SubModulo'             => 'Album',   // Submodulo Referente   // Submodulo Referente
+            'End'                   => 'Musica/Album/Albuns_Edit', // Endereco que deve conter a url para permitir acesso
+            'Modulo'                => 'Musica', // Modulo Referente
+            'SubModulo'             => 'Album',// Submodulo Referente
             'Metodo'                => 'Albuns_Edit,Albuns_Edit2',  // Metodos referentes separados por virgula
         ),
         Array(
@@ -128,9 +128,9 @@ $config_Permissoes = function () {
             'Nome'                  => __('Midia (Musicas) - Listagem'),
             'Desc'                  => '',
             'Chave'                 => 'Musica_Musica_Musicas',
-            'End'                   => 'Musica/Musica/Musicas', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
-            'Modulo'                => 'Musica', // Modulo Referente // Modulo Referente
-            'SubModulo'             => 'Musica',   // Submodulo Referente   // Submodulo Referente
+            'End'                   => 'Musica/Musica/Musicas', // Endereco que deve conter a url para permitir acesso
+            'Modulo'                => 'Musica', // Modulo Referente
+            'SubModulo'             => 'Musica',// Submodulo Referente
             'Metodo'                => 'Musicas',  // Metodos referentes separados por virgula
         ),
         Array(
@@ -146,9 +146,9 @@ $config_Permissoes = function () {
             'Nome'                  => __('Midia (Musicas) - Editar'),
             'Desc'                  => '',
             'Chave'                 => 'Musica_Musica_Musicas_Edit', // CHave unica nunca repete, chave primaria
-            'End'                   => 'Musica/Musica/Musicas_Edit', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
-            'Modulo'                => 'Musica', // Modulo Referente // Modulo Referente
-            'SubModulo'             => 'Musica',   // Submodulo Referente   // Submodulo Referente
+            'End'                   => 'Musica/Musica/Musicas_Edit', // Endereco que deve conter a url para permitir acesso
+            'Modulo'                => 'Musica', // Modulo Referente
+            'SubModulo'             => 'Musica',// Submodulo Referente
             'Metodo'                => 'Musicas_Edit,Musicas_Edit2',  // Metodos referentes separados por virgula
         ),
         Array(
@@ -164,9 +164,9 @@ $config_Permissoes = function () {
             'Nome'                  => __('Midia (Video) - Listagem'),
             'Desc'                  => '',
             'Chave'                 => 'Musica_Video_Videos',
-            'End'                   => 'Musica/Video/Videos', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
-            'Modulo'                => 'Musica', // Modulo Referente // Modulo Referente
-            'SubModulo'             => 'Video',   // Submodulo Referente   // Submodulo Referente
+            'End'                   => 'Musica/Video/Videos', // Endereco que deve conter a url para permitir acesso
+            'Modulo'                => 'Musica', // Modulo Referente
+            'SubModulo'             => 'Video',// Submodulo Referente
             'Metodo'                => 'Videos_Edit,Videos_Edit2',  // Metodos referentes separados por virgula
         ),
         Array(
@@ -182,9 +182,9 @@ $config_Permissoes = function () {
             'Nome'                  => __('Midia (Video) - Editar'),
             'Desc'                  => '',
             'Chave'                 => 'Musica_Video_Videos_Edit', // CHave unica nunca repete, chave primaria
-            'End'                   => 'Musica/Video/Videos_Edit', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
-            'Modulo'                => 'Musica', // Modulo Referente // Modulo Referente
-            'SubModulo'             => 'Video',   // Submodulo Referente   // Submodulo Referente
+            'End'                   => 'Musica/Video/Videos_Edit', // Endereco que deve conter a url para permitir acesso
+            'Modulo'                => 'Musica', // Modulo Referente
+            'SubModulo'             => 'Video',// Submodulo Referente
             'Metodo'                => 'Videos_Edit,Videos_Edit2',  // Metodos referentes separados por virgula
         ),
         Array(

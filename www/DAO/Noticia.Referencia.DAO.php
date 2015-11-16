@@ -76,7 +76,7 @@ final Class Noticia_Referencia_DAO extends Framework\App\Dao
                 'mysql_inside'      => FALSE, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => FALSE, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => FALSE, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'         => false
+                'linkextra'         => FALSE
             ),Array(
                 'mysql_titulo'      => 'tabelaid',
                 'mysql_tipovar'     => 'int', //varchar, int, 

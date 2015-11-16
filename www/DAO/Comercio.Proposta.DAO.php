@@ -227,7 +227,7 @@ final Class Comercio_Proposta_DAO extends Framework\App\Dao
                         ),
                         'form_escondido'    => TRUE,    // Vai aparecer, quando trocar select
                         'infonulo'          => 'Escolha pelo menos um Btu para Instalar',
-                      'linkextra'         => false
+                      'linkextra'         => FALSE
                     ), // Campo Boleano da tabela LINK, caso false apaga os que nao forem puxados
                 )
             ),
@@ -249,7 +249,7 @@ final Class Comercio_Proposta_DAO extends Framework\App\Dao
                         ),
                         'form_escondido'    => TRUE,    // Vai aparecer, quando trocar select
                         'infonulo'          => 'Escolha os Produtos Vendidos na Proposta',
-                      'linkextra'         => false
+                      'linkextra'         => FALSE
                     ), // Campo Boleano da tabela LINK, caso false apaga os que nao forem puxados
                 )
             ),
@@ -275,7 +275,7 @@ final Class Comercio_Proposta_DAO extends Framework\App\Dao
                         ),
                         'form_escondido'    => 'apagar', // Apagar = Vai Apagar Após a troca
                         'infonulo'          => 'Escolha pelo menos um Serviço',
-                      'linkextra'         => false
+                      'linkextra'         => FALSE
                     ), // Campo Boleano da tabela LINK, caso false apaga os que nao forem puxados
                 )
             ),
@@ -584,7 +584,7 @@ final Class Comercio_Proposta_DAO extends Framework\App\Dao
                         'Linkado'           => 'checklist',// CAmpo a ser encaixado id do link
                         'Campos'            => FALSE,
                         'infonulo'          => 'Escolha pelo menos um Checklist',
-                      'linkextra'         => false
+                      'linkextra'         => FALSE
                     ), // Campo Boleano da tabela LINK, caso false apaga os que nao forem puxados
                 )
             ),
@@ -607,7 +607,7 @@ final Class Comercio_Proposta_DAO extends Framework\App\Dao
                             'dias'
                         ),
                         'infonulo'          => 'Escolha pelo menos um Funcionário',
-                      'linkextra'         => false
+                      'linkextra'         => FALSE
                     ), // Campo Boleano da tabela LINK, caso false apaga os que nao forem puxados
                 )
             ),

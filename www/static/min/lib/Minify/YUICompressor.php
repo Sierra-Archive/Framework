@@ -108,9 +108,9 @@ class Minify_YUICompressor {
                 'charset' => ''
                 ,'line-break' => 5000
                 ,'type' => $type
-                ,'nomunge' => false
-                ,'preserve-semi' => false
-                ,'disable-optimizations' => false
+                ,'nomunge' => FALSE
+                ,'preserve-semi' => FALSE
+                ,'disable-optimizations' => FALSE
 	            ,'stack-size' => ''
             )
             , $userOptions

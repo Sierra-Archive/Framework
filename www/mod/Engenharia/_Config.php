@@ -1,5 +1,5 @@
 <?php
-$config_Modulo = function () {
+$configModule = function () {
     return Array(
         'Nome'                      =>  'Engenharia',
         'Descrição'                 =>  '',
@@ -8,7 +8,7 @@ $config_Modulo = function () {
         'Dependencias'              =>  FALSE,
     );
 };
-$config_Menu = function () {
+$configMenu = function () {
     return Array(
         'Empreendimentos' => Array(
             'Nome'                  => __('Engenharia'),
@@ -23,7 +23,7 @@ $config_Menu = function () {
                 'Img'                   => '',
                 'Icon'                  => 'truck',
                 'Permissao_Func'        => Array(// Permissoes NEcessarias
-                    'comercio_Produto' => true
+                    'comercio_Produto' => TRUE
                 ),
                 'Filhos'                => FALSE,
             ),'Retirar do Estoque'=>Array(
@@ -102,9 +102,9 @@ $config_Permissoes = function () {
             'Nome'                  => __('Engenharia (Unidade) - Editar'),
             'Desc'                  => '',
             'Chave'                 => 'Engenharia_Unidade_Unidades_Edit', // CHave unica nunca repete, chave primaria
-            'End'                   => 'Engenharia/Unidade/Unidades_Edit', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
-            'Modulo'                => 'Engenharia', // Modulo Referente // Modulo Referente
-            'SubModulo'             => 'Unidade',   // Submodulo Referente   // Submodulo Referente
+            'End'                   => 'Engenharia/Unidade/Unidades_Edit', // Endereco que deve conter a url para permitir acesso
+            'Modulo'                => 'Engenharia', // Modulo Referente
+            'SubModulo'             => 'Unidade',// Submodulo Referente
             'Metodo'                => 'Unidades_Edit,Unidades_Edit2',  // Metodos referentes separados por virgula
         ),
         Array(
@@ -140,9 +140,9 @@ $config_Permissoes = function () {
             'Nome'                  => __('Engenharia (Empreendimento) - Editar'),
             'Desc'                  => '',
             'Chave'                 => 'Engenharia_Empreendimento_Empreendimentos_Edit', // CHave unica nunca repete, chave primaria
-            'End'                   => 'Engenharia/Empreendimento/Empreendimentos_Edit', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
-            'Modulo'                => 'Engenharia', // Modulo Referente // Modulo Referente
-            'SubModulo'             => 'Empreendimento',   // Submodulo Referente   // Submodulo Referente
+            'End'                   => 'Engenharia/Empreendimento/Empreendimentos_Edit', // Endereco que deve conter a url para permitir acesso
+            'Modulo'                => 'Engenharia', // Modulo Referente
+            'SubModulo'             => 'Empreendimento',// Submodulo Referente
             'Metodo'                => 'Empreendimentos_Edit,Empreendimentos_Edit2',  // Metodos referentes separados por virgula
         ),
         Array(
@@ -178,9 +178,9 @@ $config_Permissoes = function () {
             'Nome'                  => __('Engenharia (Equipamento) - Editar'),
             'Desc'                  => '',
             'Chave'                 => 'Engenharia_Equipamento_Equipamentos_Edit', // CHave unica nunca repete, chave primaria
-            'End'                   => 'Engenharia/Equipamento/Equipamentos_Edit', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
-            'Modulo'                => 'Engenharia', // Modulo Referente // Modulo Referente
-            'SubModulo'             => 'Equipamento',   // Submodulo Referente   // Submodulo Referente
+            'End'                   => 'Engenharia/Equipamento/Equipamentos_Edit', // Endereco que deve conter a url para permitir acesso
+            'Modulo'                => 'Engenharia', // Modulo Referente
+            'SubModulo'             => 'Equipamento',// Submodulo Referente
             'Metodo'                => 'Equipamentos_Edit,Equipamentos_Edit2',  // Metodos referentes separados por virgula
         ),
         Array(

@@ -1,5 +1,5 @@
 <?php
-$config_Modulo = function () {
+$configModule = function () {
     return Array(
         'Nome'                      =>  'comercio_servicos',
         'Descrição'                 =>  '',
@@ -8,7 +8,7 @@ $config_Modulo = function () {
         'Dependencias'              =>  Array('comercio', 'usuario'),
     );
 };
-$config_Menu = function () {
+$configMenu = function () {
     return Array(
         'Administrar'=>Array(
             'Filhos'                => Array(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_servicos_Titulo')=>Array(
@@ -25,7 +25,7 @@ $config_Menu = function () {
                 'Img'                   => 'turboadmin/m-dashboard.png',
                 'Icon'                  => 'tags',
                 'Permissao_Func'        => Array(// Permissoes NEcessarias
-                    'comercio_servicos_ServicoTipo' => true
+                    'comercio_servicos_ServicoTipo' => TRUE
                 ),
                 'Filhos'                => FALSE,
             ),'Btu\'s'=>Array(
@@ -35,7 +35,7 @@ $config_Menu = function () {
                 'Img'                   => 'turboadmin/m-dashboard.png',
                 'Icon'                  => 'bolt',
                 'Permissao_Func'        => Array(// Permissoes NEcessarias
-                    'comercio_servicos_Instalacao' => true
+                    'comercio_servicos_Instalacao' => TRUE
                 ),
                 'Filhos'                => FALSE,
             ),'Suporte'=>Array(
@@ -45,7 +45,7 @@ $config_Menu = function () {
                 'Img'                   => 'turboadmin/m-dashboard.png',
                 'Icon'                  => 'globe',
                 'Permissao_Func'        => Array(// Permissoes NEcessarias
-                    'comercio_servicos_Instalacao' => true
+                    'comercio_servicos_Instalacao' => TRUE
                 ),
                 'Filhos'                => FALSE,
             )),
@@ -78,9 +78,9 @@ $config_Permissoes = function () {
             'Nome'                  => __('Serviços (').\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_servicos_Titulo').') - Editar',
             'Desc'                  => '',
             'Chave'                 => 'comercio_servicos_Servico_Servicos_Edit', // CHave unica nunca repete, chave primaria
-            'End'                   => 'comercio_servicos/Servico/Servicos_Edit', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
-            'Modulo'                => 'comercio_servicos', // Modulo Referente // Modulo Referente
-            'SubModulo'             => 'Servico',   // Submodulo Referente   // Submodulo Referente
+            'End'                   => 'comercio_servicos/Servico/Servicos_Edit', // Endereco que deve conter a url para permitir acesso
+            'Modulo'                => 'comercio_servicos', // Modulo Referente
+            'SubModulo'             => 'Servico',// Submodulo Referente
             'Metodo'                => 'Servicos_Edit,Servicos_Edit2',  // Metodos referentes separados por virgula
         ),
         Array(
@@ -106,7 +106,7 @@ $config_Permissoes = function () {
             'SubModulo'             => 'ServicoTipo',   // Submodulo Referente
             'Metodo'                => 'Servico_Tipo',  // Metodos referentes separados por virgula
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                'comercio_servicos_ServicoTipo' => true
+                'comercio_servicos_ServicoTipo' => TRUE
             ),
         ),
         Array(
@@ -118,19 +118,19 @@ $config_Permissoes = function () {
             'SubModulo'             => 'ServicoTipo',   // Submodulo Referente
             'Metodo'                => 'Servico_Tipo_Add,Servico_Tipo_Add2',  // Metodos referentes separados por virgula
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                'comercio_servicos_ServicoTipo' => true
+                'comercio_servicos_ServicoTipo' => TRUE
             ),
         ),
         Array(
             'Nome'                  => __('Serviços (Tipos) - Editar'),
             'Desc'                  => '',
             'Chave'                 => 'comercio_servicos_ServicoTipo_Servico_Tipo_Edit', // CHave unica nunca repete, chave primaria
-            'End'                   => 'comercio_servicos/ServicoTipo/Servico_Tipo_Edit', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
-            'Modulo'                => 'comercio_servicos', // Modulo Referente // Modulo Referente
-            'SubModulo'             => 'ServicoTipo',   // Submodulo Referente   // Submodulo Referente
+            'End'                   => 'comercio_servicos/ServicoTipo/Servico_Tipo_Edit', // Endereco que deve conter a url para permitir acesso
+            'Modulo'                => 'comercio_servicos', // Modulo Referente
+            'SubModulo'             => 'ServicoTipo',// Submodulo Referente
             'Metodo'                => 'Servico_Tipo_Edit,Servico_Tipo_Edit2',  // Metodos referentes separados por virgula
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                'comercio_servicos_ServicoTipo' => true
+                'comercio_servicos_ServicoTipo' => TRUE
             ),
         ),
         Array(
@@ -142,7 +142,7 @@ $config_Permissoes = function () {
             'SubModulo'             => 'ServicoTipo',   // Submodulo Referente
             'Metodo'                => 'Servico_Tipo_Del',  // Metodos referentes separados por virgula
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                'comercio_servicos_ServicoTipo' => true
+                'comercio_servicos_ServicoTipo' => TRUE
             ),
         ),
         
@@ -157,7 +157,7 @@ $config_Permissoes = function () {
             'SubModulo'             => 'Instalacao',   // Submodulo Referente
             'Metodo'                => 'Btu',  // Metodos referentes separados por virgula
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                'comercio_servicos_Instalacao' => true
+                'comercio_servicos_Instalacao' => TRUE
             ),
         ),
         Array(
@@ -169,19 +169,19 @@ $config_Permissoes = function () {
             'SubModulo'             => 'Instalacao',   // Submodulo Referente
             'Metodo'                => 'Btu_Add,Btu_Add2',  // Metodos referentes separados por virgula
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                'comercio_servicos_Instalacao' => true
+                'comercio_servicos_Instalacao' => TRUE
             ),
         ),
         Array(
             'Nome'                  => __('Serviços (Instalação BTU) - Editar'),
             'Desc'                  => '',
             'Chave'                 => 'comercio_servicos_Instalacao_Btu_Edit', // CHave unica nunca repete, chave primaria
-            'End'                   => 'comercio_servicos/Instalacao/Btu_Edit', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
-            'Modulo'                => 'comercio_servicos', // Modulo Referente // Modulo Referente
-            'SubModulo'             => 'Instalacao',   // Submodulo Referente   // Submodulo Referente
+            'End'                   => 'comercio_servicos/Instalacao/Btu_Edit', // Endereco que deve conter a url para permitir acesso
+            'Modulo'                => 'comercio_servicos', // Modulo Referente
+            'SubModulo'             => 'Instalacao',// Submodulo Referente
             'Metodo'                => 'Btu_Edit,Btu_Edit2',  // Metodos referentes separados por virgula
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                'comercio_servicos_Instalacao' => true
+                'comercio_servicos_Instalacao' => TRUE
             ),
         ),
         Array(
@@ -193,7 +193,7 @@ $config_Permissoes = function () {
             'SubModulo'             => 'Instalacao',   // Submodulo Referente
             'Metodo'                => 'Btu_Del',  // Metodos referentes separados por virgula
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                'comercio_servicos_Instalacao' => true
+                'comercio_servicos_Instalacao' => TRUE
             ),
         ),
         
@@ -208,7 +208,7 @@ $config_Permissoes = function () {
             'SubModulo'             => 'Instalacao',   // Submodulo Referente
             'Metodo'                => 'Suporte',  // Metodos referentes separados por virgula
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                'comercio_servicos_Instalacao' => true
+                'comercio_servicos_Instalacao' => TRUE
             ),
         ),
         Array(
@@ -220,19 +220,19 @@ $config_Permissoes = function () {
             'SubModulo'             => 'Instalacao',   // Submodulo Referente
             'Metodo'                => 'Suporte_Add,Suporte_Add2',  // Metodos referentes separados por virgula
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                'comercio_servicos_Instalacao' => true
+                'comercio_servicos_Instalacao' => TRUE
             ),
         ),
         Array(
             'Nome'                  => __('Serviços (Instalação Suporte) - Editar'),
             'Desc'                  => '',
             'Chave'                 => 'comercio_servicos_Instalacao_Suporte_Edit', // CHave unica nunca repete, chave primaria
-            'End'                   => 'comercio_servicos/Instalacao/Suporte_Edit', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
-            'Modulo'                => 'comercio_servicos', // Modulo Referente // Modulo Referente
-            'SubModulo'             => 'Instalacao',   // Submodulo Referente   // Submodulo Referente
+            'End'                   => 'comercio_servicos/Instalacao/Suporte_Edit', // Endereco que deve conter a url para permitir acesso
+            'Modulo'                => 'comercio_servicos', // Modulo Referente
+            'SubModulo'             => 'Instalacao',// Submodulo Referente
             'Metodo'                => 'Suporte_Edit,Suporte_Edit2',  // Metodos referentes separados por virgula
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                'comercio_servicos_Instalacao' => true
+                'comercio_servicos_Instalacao' => TRUE
             ),
         ),
         Array(
@@ -244,7 +244,7 @@ $config_Permissoes = function () {
             'SubModulo'             => 'Instalacao',   // Submodulo Referente
             'Metodo'                => 'Suporte_Del',  // Metodos referentes separados por virgula
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                'comercio_servicos_Instalacao' => true
+                'comercio_servicos_Instalacao' => TRUE
             ),
         ),
     );

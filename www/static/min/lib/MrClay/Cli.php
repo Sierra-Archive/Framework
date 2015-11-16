@@ -29,8 +29,8 @@ class Cli {
      * @var array option values available after validation.
      * 
      * E.g. array(
-     *      'a' => false              // option was missing
-     *     ,'b' => true               // option was present
+     *      'a' => FALSE              // option was missing
+     *     ,'b' => TRUE               // option was present
      *     ,'c' => "Hello"            // option had value
      *     ,'f' => "/home/user/file"  // file path from root
      *     ,'f.raw' => "~/file"       // file path as given to option

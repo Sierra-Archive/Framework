@@ -215,7 +215,7 @@ final Class Comercio_Fornecedor_Material_DAO extends Framework\App\Dao
                         ),
                         'form_escondido'    => FALSE,    // Vai aparecer, quando trocar select
                         'infonulo'          => 'Escolha os Produtos Comprados',
-                        'linkextra'         => false
+                        'linkextra'         => FALSE
                     ), // Campo Boleano da tabela LINK, caso false apaga os que nao forem puxados
                 )
             ),Array(

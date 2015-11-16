@@ -683,7 +683,7 @@ class Acl{
                 'end'       => $campo->end,
                 'permissao' => $campo->nome,
                 'valor'     => $v,
-                'herdado'   => true
+                'herdado'   => TRUE
             );
         }  
         return $data;
@@ -1118,7 +1118,7 @@ class Acl{
                     // Puxa
                     include MOD_PATH.''.$current.'/_Config.php';
                     // Realiza Merge para Indexir Configuracoes
-                    $config         = array_merge_recursive($config     , $config_Menu()         );
+                    $config         = array_merge_recursive($config     , $configMenu()         );
                 } 
             }
             next($ponteiro);

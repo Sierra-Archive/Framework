@@ -206,7 +206,7 @@ class Visual
                     'tamanho'       => $tamanho[$i],
                     'conteudo_tipo' => 'Normal',
                     'conteudo'      => $valor2['html'],
-                    'btn_extra'     => false
+                    'btn_extra'     => FALSE
                 );
                 $html[$i] .= $this->renderizar_bloco('template_bloco', $bloco);
             }
@@ -269,7 +269,7 @@ class Visual
             'tamanho'       => 12,
             'conteudo_tipo' => $tipo,
             'conteudo'      => $bloco,
-            'btn_extra'     => false
+            'btn_extra'     => FALSE
         );
         $html = $this->renderizar_bloco('template_bloco', $config);
         $this->Layoult_BlocoUnico[] = Array(
@@ -397,7 +397,7 @@ class Visual
             'tamanho'       => 8,
             'conteudo_tipo' => $tipo,
             'conteudo'      => $bloco,
-            'btn_extra'     => false
+            'btn_extra'     => FALSE
         );
         $html = $this->renderizar_bloco('template_bloco', $config);
         $this->Layoult_BlocoMaior[] = Array(
@@ -521,7 +521,7 @@ class Visual
             'tamanho'       => 4,
             'conteudo_tipo' => $tipo,
             'conteudo'      => $bloco,
-            'btn_extra'     => false
+            'btn_extra'     => FALSE
         );
         $this->Layoult_BlocoMenor[] = Array(
             'html' => $this->renderizar_bloco('template_bloco', $config),
@@ -1365,7 +1365,7 @@ class Visual
                 $this->Widget_Assimilar('Navegacao_Endereco', $this->_Visual->renderizar_Template('elemento_breadcrumb',Array(
                     'nome' => $tipo_nome,
                     'endereco' => FALSE,
-                    'ativo' => false
+                    'ativo' => FALSE
                 ),TRUE));
             }
         }

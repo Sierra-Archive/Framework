@@ -251,7 +251,7 @@ final Class Comercio_Produto_DAO extends Framework\App\Dao
                             'valor'
                         ),
                         'infonulo'          => 'Escolha pelo menos uma Caracteristica',
-                        'linkextra'         => false
+                        'linkextra'         => FALSE
                     ), // Campo Boleano da tabela LINK, caso false apaga os que nao forem puxados
                 )
             ),Array(

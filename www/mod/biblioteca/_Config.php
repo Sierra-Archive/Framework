@@ -1,5 +1,5 @@
 <?php
-$config_Modulo = function () {
+$configModule = function () {
     return Array(
         'Nome'                      =>  'biblioteca',
         'Descrição'                 =>  '',
@@ -8,7 +8,7 @@ $config_Modulo = function () {
         'Dependencias'              =>  FALSE,
     );
 };
-$config_Menu = function () {
+$configMenu = function () {
     return Array(
         'Biblioteca'=>Array(
             'Nome'                  => __('Biblioteca'),
@@ -44,9 +44,9 @@ $config_Permissoes = function () {
             'Nome'                  => __('Biblioteca - Editar'),
             'Desc'                  => '',
             'Chave'                 => 'biblioteca_Biblioteca_Bibliotecas_Edit', // CHave unica nunca repete, chave primaria
-            'End'                   => 'biblioteca/Biblioteca/Bibliotecas_Edit', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
-            'Modulo'                => 'biblioteca', // Modulo Referente // Modulo Referente
-            'SubModulo'             => 'Biblioteca',   // Submodulo Referente   // Submodulo Referente
+            'End'                   => 'biblioteca/Biblioteca/Bibliotecas_Edit', // Endereco que deve conter a url para permitir acesso
+            'Modulo'                => 'biblioteca', // Modulo Referente
+            'SubModulo'             => 'Biblioteca',// Submodulo Referente
             'Metodo'                => 'Bibliotecas_Edit,Bibliotecas_Edit2',  // Metodos referentes separados por virgula
         ),
         Array(

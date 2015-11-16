@@ -1,5 +1,5 @@
 <?php
-$config_Modulo = function () {
+$configModule = function () {
     return Array(
         'Nome'                      =>  'Locomocao',
         'Descrição'                 =>  'Módulo Criado para o Calculo de Locomocao assim como cadastro de motoboys e entrega por emcomenda.',
@@ -8,7 +8,7 @@ $config_Modulo = function () {
         'Dependencias'              =>  FALSE,
     );
 };
-$config_Menu = function () {
+$configMenu = function () {
     return Array(
         'Entregas' => Array(
             'Nome'                  => __('Entregas'),
@@ -62,9 +62,9 @@ $config_Permissoes = function () {
             'Nome'                  => __('Locomoção (Entrega) - Editar'),
             'Desc'                  => '',
             'Chave'                 => 'Locomocao_Entrega_Entregas_Edit', // CHave unica nunca repete, chave primaria
-            'End'                   => 'Locomocao/Entrega/Entregas_Edit', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
-            'Modulo'                => 'Locomocao', // Modulo Referente // Modulo Referente
-            'SubModulo'             => 'Entrega',   // Submodulo Referente   // Submodulo Referente
+            'End'                   => 'Locomocao/Entrega/Entregas_Edit', // Endereco que deve conter a url para permitir acesso
+            'Modulo'                => 'Locomocao', // Modulo Referente
+            'SubModulo'             => 'Entrega',// Submodulo Referente
             'Metodo'                => 'Entregas_Edit,Entregas_Edit2'  // Metodos referentes separados por virgula
         ),
         Array(

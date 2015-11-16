@@ -31,7 +31,7 @@ class Minify_Controller_MinApp extends Minify_Controller_Base {
         $cOptions = array_merge(
             array(
                 'allowDirs' => '//'
-                ,'groupsOnly' => false
+                ,'groupsOnly' => FALSE
                 ,'groups' => array()
                 ,'noMinPattern' => '@[-\\.]min\\.(?:js|css)$@i' // matched against basename
             )

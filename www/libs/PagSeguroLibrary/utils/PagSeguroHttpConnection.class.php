@@ -80,7 +80,7 @@ class PagSeguroHttpConnection
         } else {
             $contentLength = null;
             $methodOptions = array(
-                CURLOPT_HTTPGET => true
+                CURLOPT_HTTPGET => TRUE
             );
         }
 

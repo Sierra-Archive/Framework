@@ -1,5 +1,5 @@
 <?php
-$config_Modulo = function () {
+$configModule = function () {
     return Array(
         'Nome'                      =>  'Simulador',
         'Descrição'                 =>  '',
@@ -8,7 +8,7 @@ $config_Modulo = function () {
         'Dependencias'              =>  FALSE,
     );
 };
-$config_Menu = function () {
+$configMenu = function () {
     return Array(
         'Simuladores'=>Array(
             'Nome'                  => __('Simuladores'),
@@ -74,9 +74,9 @@ $config_Permissoes = function () {
             'Nome'                  => __('Caracteristica - Editar'),
             'Desc'                  => '',
             'Chave'                 => 'Simulador_Tag_Tags_Edit', // CHave unica nunca repete, chave primaria
-            'End'                   => 'Simulador/Tag/Tags_Edit', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
-            'Modulo'                => 'Simulador', // Modulo Referente // Modulo Referente
-            'SubModulo'             => 'Tag',   // Submodulo Referente   // Submodulo Referente
+            'End'                   => 'Simulador/Tag/Tags_Edit', // Endereco que deve conter a url para permitir acesso
+            'Modulo'                => 'Simulador', // Modulo Referente
+            'SubModulo'             => 'Tag',// Submodulo Referente
             'Metodo'                => 'Tags_Edit,Tags_Edit2',  // Metodos referentes separados por virgula
         ),
         Array(
@@ -113,9 +113,9 @@ $config_Permissoes = function () {
             'Nome'                  => __('Simulador - Editar'),
             'Desc'                  => '',
             'Chave'                 => 'Simulador_Simulador_Simuladores_Edit', // CHave unica nunca repete, chave primaria
-            'End'                   => 'Simulador/Simulador/Simuladores_Edit', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
-            'Modulo'                => 'Simulador', // Modulo Referente // Modulo Referente
-            'SubModulo'             => 'Simulador',   // Submodulo Referente   // Submodulo Referente
+            'End'                   => 'Simulador/Simulador/Simuladores_Edit', // Endereco que deve conter a url para permitir acesso
+            'Modulo'                => 'Simulador', // Modulo Referente
+            'SubModulo'             => 'Simulador',// Submodulo Referente
             'Metodo'                => 'Simuladores_Edit,Simuladores_Edit2',  // Metodos referentes separados por virgula
         ),
         Array(
@@ -151,9 +151,9 @@ $config_Permissoes = function () {
             'Nome'                  => __('Pergunta - Editar'),
             'Desc'                  => '',
             'Chave'                 => 'Simulador_Pergunta_Perguntas_Edit', // CHave unica nunca repete, chave primaria
-            'End'                   => 'Simulador/Pergunta/Perguntas_Edit', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
-            'Modulo'                => 'Simulador', // Modulo Referente // Modulo Referente
-            'SubModulo'             => 'Pergunta',   // Submodulo Referente   // Submodulo Referente
+            'End'                   => 'Simulador/Pergunta/Perguntas_Edit', // Endereco que deve conter a url para permitir acesso
+            'Modulo'                => 'Simulador', // Modulo Referente
+            'SubModulo'             => 'Pergunta',// Submodulo Referente
             'Metodo'                => 'Perguntas_Edit,Perguntas_Edit2',  // Metodos referentes separados por virgula
         ),
         Array(
@@ -189,9 +189,9 @@ $config_Permissoes = function () {
             'Nome'                  => __('Resposta - Editar'),
             'Desc'                  => '',
             'Chave'                 => 'Simulador_Resposta_Respostas_Edit', // CHave unica nunca repete, chave primaria
-            'End'                   => 'Simulador/Resposta/Respostas_Edit', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
-            'Modulo'                => 'Simulador', // Modulo Referente // Modulo Referente
-            'SubModulo'             => 'Resposta',   // Submodulo Referente   // Submodulo Referente
+            'End'                   => 'Simulador/Resposta/Respostas_Edit', // Endereco que deve conter a url para permitir acesso
+            'Modulo'                => 'Simulador', // Modulo Referente
+            'SubModulo'             => 'Resposta',// Submodulo Referente
             'Metodo'                => 'Respostas_Edit,Respostas_Edit2',  // Metodos referentes separados por virgula
         ),
         Array(

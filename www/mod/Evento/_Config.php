@@ -1,5 +1,5 @@
 <?php
-$config_Modulo = function () {
+$configModule = function () {
     return Array(
         'Nome'                      =>  'Evento',
         'Descrição'                 =>  '',
@@ -8,7 +8,7 @@ $config_Modulo = function () {
         'Dependencias'              =>  FALSE,
     );
 };
-$config_Menu = function () {
+$configMenu = function () {
     return Array(
         'Administrar' => Array(
             'Nome'                  => __('Administrar'),
@@ -51,9 +51,9 @@ $config_Permissoes = function () {
             'Nome'                  => __('Eventos - Editar'),
             'Desc'                  => '',
             'Chave'                 => 'Evento_Evento_Eventos_Edit', // CHave unica nunca repete, chave primaria
-            'End'                   => 'Evento/Evento/Eventos_Edit', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
-            'Modulo'                => 'Evento', // Modulo Referente // Modulo Referente
-            'SubModulo'             => 'Evento',   // Submodulo Referente   // Submodulo Referente
+            'End'                   => 'Evento/Evento/Eventos_Edit', // Endereco que deve conter a url para permitir acesso
+            'Modulo'                => 'Evento', // Modulo Referente
+            'SubModulo'             => 'Evento',// Submodulo Referente
             'Metodo'                => 'Eventos_Edit,Eventos_Edit2',  // Metodos referentes separados por virgula
         ),
         Array(

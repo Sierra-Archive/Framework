@@ -168,7 +168,7 @@ final Class Locomocao_Entrega_DAO extends Framework\App\Dao
                         'Linkado'           => 'entrega',// CAmpo a ser encaixado id do link
                         'Campos'            => Array('pais', 'estado', 'cidade', 'bairro', 'endereco'),
                         'infonulo'          => 'Escolha pelo menos um Ponto',
-                      'linkextra'         => false
+                      'linkextra'         => FALSE
                     ), // Campo Boleano da tabela LINK, caso false apaga os que nao forem puxados
                 )
             ),

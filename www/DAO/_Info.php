@@ -116,7 +116,7 @@ final Class Predial_Bloco_Apart_DAO extends Framework\App\Dao
                         'Linkado'           => 'tabelaid',// CAmpo a ser encaixado id do link
                         'Campos'            => FALSE, // CAmpos extras da tabela de ligacao
                         'infonulo'          => 'Escolha pelo menos um Artista', // Informacao quando nada é clicado
-                      'linkextra'         => false ,// Caso tenha atalho pra add
+                      'linkextra'         => FALSE ,// Caso tenha atalho pra add
                     ), // Campo Boleano da tabela LINK, caso false apaga os que nao forem puxados
                 )
             )

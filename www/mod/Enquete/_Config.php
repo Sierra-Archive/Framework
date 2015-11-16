@@ -1,5 +1,5 @@
 <?php
-$config_Modulo = function () {
+$configModule = function () {
     return Array(
         'Nome'                      =>  'Enquete',
         'Descrição'                 =>  '',
@@ -8,7 +8,7 @@ $config_Modulo = function () {
         'Dependencias'              =>  FALSE,
     );
 };
-$config_Menu = function () {
+$configMenu = function () {
     return Array(
         'Administrar' => Array(
             'Filhos'                => Array('Enquete'=>Array(
@@ -46,9 +46,9 @@ $config_Permissoes = function () {
             'Nome'                  => __('Enquete - Editar'),
             'Desc'                  => '',
             'Chave'                 => 'Enquete_Enquete_Enquetes_Edit', // CHave unica nunca repete, chave primaria
-            'End'                   => 'Enquete/Enquete/Enquetes_Edit', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
-            'Modulo'                => 'Enquete', // Modulo Referente // Modulo Referente
-            'SubModulo'             => 'Enquete',   // Submodulo Referente   // Submodulo Referente
+            'End'                   => 'Enquete/Enquete/Enquetes_Edit', // Endereco que deve conter a url para permitir acesso
+            'Modulo'                => 'Enquete', // Modulo Referente
+            'SubModulo'             => 'Enquete',// Submodulo Referente
             'Metodo'                => 'Enquetes_Edit,Enquetes_Edit2',  // Metodos referentes separados por virgula
         ),
         Array(
@@ -83,9 +83,9 @@ $config_Permissoes = function () {
             'Nome'                  => __('Enquete (Respostas) - Editar'),
             'Desc'                  => '',
             'Chave'                 => 'Enquete_Edit', // CHave unica nunca repete, chave primaria
-            'End'                   => 'Enquete/Resposta/Respostas_Edit', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
-            'Modulo'                => 'Enquete', // Modulo Referente // Modulo Referente
-            'SubModulo'             => 'Resposta',   // Submodulo Referente   // Submodulo Referente
+            'End'                   => 'Enquete/Resposta/Respostas_Edit', // Endereco que deve conter a url para permitir acesso
+            'Modulo'                => 'Enquete', // Modulo Referente
+            'SubModulo'             => 'Resposta',// Submodulo Referente
             'Metodo'                => 'Respostas_Edit,Respostas_Edit2',  // Metodos referentes separados por virgula
         ),
         Array(

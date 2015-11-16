@@ -1,5 +1,5 @@
 <?php
-$config_Modulo = function () {
+$configModule = function () {
     return Array(
         'Nome'                      =>  'usuario_veiculo',
         'Descrição'                 =>  '',
@@ -8,7 +8,7 @@ $config_Modulo = function () {
         'Dependencias'              =>  FALSE,
     );
 };
-$config_Menu = function () {
+$configMenu = function () {
     return Array(
         'Administrar' => Array(
             'Filhos'                => Array('Veiculos'=>Array(
@@ -25,7 +25,7 @@ $config_Menu = function () {
                 'Img'                   => '',
                 'Icon'                  => 'laptop',
                 'Permissao_Func'        => Array(// Permissoes NEcessarias
-                    'usuario_veiculo_Equipamento' => true
+                    'usuario_veiculo_Equipamento' => TRUE
                 ),
                 'Filhos'                => FALSE,
             ),),
@@ -83,7 +83,7 @@ $config_Permissoes = function () {
             'SubModulo'             => 'Veiculo',   // Submodulo Referente
             'Metodo'                => 'Veiculos_Comentario',  // Metodos referentes separados por virgula
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                'usuario_veiculo_Comentario' => true
+                'usuario_veiculo_Comentario' => TRUE
             ),
         ),
         Array(
@@ -95,7 +95,7 @@ $config_Permissoes = function () {
             'SubModulo'             => 'Veiculo',   // Submodulo Referente
             'Metodo'                => 'Veiculos_Comentario_Add,Veiculos_Comentario_Add2',  // Metodos referentes separados por virgula
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                'usuario_veiculo_Comentario' => true
+                'usuario_veiculo_Comentario' => TRUE
             ),
         ),
         Array(
@@ -107,7 +107,7 @@ $config_Permissoes = function () {
             'SubModulo'             => 'Veiculo',   // Submodulo Referente
             'Metodo'                => 'Veiculos_Comentario_Edit,Veiculos_Comentario_Edit2',  // Metodos referentes separados por virgula
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                'usuario_veiculo_Comentario' => true
+                'usuario_veiculo_Comentario' => TRUE
             ),
         ),
         Array(
@@ -119,7 +119,7 @@ $config_Permissoes = function () {
             'SubModulo'             => 'Veiculo',   // Submodulo Referente
             'Metodo'                => 'Veiculos_Comentario_Del',  // Metodos referentes separados por virgula
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                'usuario_veiculo_Comentario' => true
+                'usuario_veiculo_Comentario' => TRUE
             ),
         ),
         
@@ -133,7 +133,7 @@ $config_Permissoes = function () {
             'SubModulo'             => 'Equipamento',   // Submodulo Referente
             'Metodo'                => '*',  // Metodos referentes separados por virgula
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                'usuario_veiculo_Equipamento' => true
+                'usuario_veiculo_Equipamento' => TRUE
             ),
         ),
         Array(
@@ -145,7 +145,7 @@ $config_Permissoes = function () {
             'SubModulo'             => 'Equipamento',   // Submodulo Referente
             'Metodo'                => 'Equipamentos_Add,Equipamentos_Add2',  // Metodos referentes separados por virgula
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                'usuario_veiculo_Equipamento' => true
+                'usuario_veiculo_Equipamento' => TRUE
             ),
         ),
         Array(
@@ -157,7 +157,7 @@ $config_Permissoes = function () {
             'SubModulo'             => 'Equipamento',   // Submodulo Referente
             'Metodo'                => 'Equipamentos_Edit,Equipamentos_Edit2',  // Metodos referentes separados por virgula
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                'usuario_veiculo_Equipamento' => true
+                'usuario_veiculo_Equipamento' => TRUE
             ),
         ),
         Array(
@@ -169,7 +169,7 @@ $config_Permissoes = function () {
             'SubModulo'             => 'Equipamento',   // Submodulo Referente
             'Metodo'                => 'Equipamentos_Del',  // Metodos referentes separados por virgula
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                'usuario_veiculo_Equipamento' => true
+                'usuario_veiculo_Equipamento' => TRUE
             ),
         )
     );

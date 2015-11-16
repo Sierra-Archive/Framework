@@ -1,5 +1,5 @@
 <?php
-$config_Modulo = function () {
+$configModule = function () {
     return Array(
         'Nome'                      =>  'social',
         'Descrição'                 =>  '',
@@ -8,7 +8,7 @@ $config_Modulo = function () {
         'Dependencias'              =>  FALSE,
     );
 };
-$config_Menu = function () {
+$configMenu = function () {
     return Array(
         'Social'=>Array(
             'Nome'                  => __('Social'),
@@ -97,9 +97,9 @@ $config_Permissoes = function () {
             'Nome'                  => __('Social (Pessoas) - Editar'),
             'Desc'                  => '',
             'Chave'                 => 'social_Persona_Personas_Edit', // CHave unica nunca repete, chave primaria
-            'End'                   => 'social/Persona/Personas_Edit', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
-            'Modulo'                => 'social', // Modulo Referente // Modulo Referente
-            'SubModulo'             => 'Persona',   // Submodulo Referente   // Submodulo Referente
+            'End'                   => 'social/Persona/Personas_Edit', // Endereco que deve conter a url para permitir acesso
+            'Modulo'                => 'social', // Modulo Referente
+            'SubModulo'             => 'Persona',// Submodulo Referente
             'Metodo'                => 'Personas_Edit,Personas_Edit2',  // Metodos referentes separados por virgula
         ),
         Array(
@@ -134,9 +134,9 @@ $config_Permissoes = function () {
             'Nome'                  => __('Social (Caracteristicas) - Editar'),
             'Desc'                  => '',
             'Chave'                 => 'social_Caracteristica_Caracteristicas_Edit', // CHave unica nunca repete, chave primaria
-            'End'                   => 'social/Caracteristica/Caracteristicas_Edit', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
-            'Modulo'                => 'social', // Modulo Referente // Modulo Referente
-            'SubModulo'             => 'Caracteristica',   // Submodulo Referente   // Submodulo Referente
+            'End'                   => 'social/Caracteristica/Caracteristicas_Edit', // Endereco que deve conter a url para permitir acesso
+            'Modulo'                => 'social', // Modulo Referente
+            'SubModulo'             => 'Caracteristica',// Submodulo Referente
             'Metodo'                => 'Caracteristicas_Edit,Caracteristicas_Edit2',  // Metodos referentes separados por virgula
         ),
         Array(
@@ -171,9 +171,9 @@ $config_Permissoes = function () {
             'Nome'                  => __('Social (Ações) - Editar'),
             'Desc'                  => '',
             'Chave'                 => 'social_Acao_Acoes_Edit', // CHave unica nunca repete, chave primaria
-            'End'                   => 'social/Acao/Acoes_Edit', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
-            'Modulo'                => 'social', // Modulo Referente // Modulo Referente
-            'SubModulo'             => 'PAcao',   // Submodulo Referente   // Submodulo Referente
+            'End'                   => 'social/Acao/Acoes_Edit', // Endereco que deve conter a url para permitir acesso
+            'Modulo'                => 'social', // Modulo Referente
+            'SubModulo'             => 'PAcao',// Submodulo Referente
             'Metodo'                => 'Acoes_Edit,Acoes_Edit2',  // Metodos referentes separados por virgula
         ),
         Array(
@@ -208,9 +208,9 @@ $config_Permissoes = function () {
             'Nome'                  => __('Social (Midias) - Editar'),
             'Desc'                  => '',
             'Chave'                 => 'social_Midia_Midias_Edit', // CHave unica nunca repete, chave primaria
-            'End'                   => 'social/Midia/Midias_Edit', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
-            'Modulo'                => 'social', // Modulo Referente // Modulo Referente
-            'SubModulo'             => 'Midia',   // Submodulo Referente   // Submodulo Referente
+            'End'                   => 'social/Midia/Midias_Edit', // Endereco que deve conter a url para permitir acesso
+            'Modulo'                => 'social', // Modulo Referente
+            'SubModulo'             => 'Midia',// Submodulo Referente
             'Metodo'                => 'Midias_Edit,Midias_Edit2',  // Metodos referentes separados por virgula
         ),
         Array(

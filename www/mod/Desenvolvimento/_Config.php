@@ -1,5 +1,5 @@
 <?php
-$config_Modulo = function () {
+$configModule = function () {
     return Array(
         'Nome'                      =>  'Desenvolvimento',
         'Descrição'                 =>  'Modulo desenvolvido para Desenvolvimentos',
@@ -8,7 +8,7 @@ $config_Modulo = function () {
         'Dependencias'              =>  FALSE,
     );
 };
-$config_Menu = function () {
+$configMenu = function () {
     return Array(
         'Dev'=>Array(
             'Nome'                  => __('Dev'),
@@ -93,9 +93,9 @@ $config_Permissoes = function () {
             'Nome'                  => __('Desenvolvimento (Minhas Senhas) - Editar'),
             'Desc'                  => '',
             'Chave'                 => 'Desenvolvimento_Senha_Senhas_Edit', // CHave unica nunca repete, chave primaria
-            'End'                   => 'Desenvolvimento/Senha/Senhas_Edit', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
-            'Modulo'                => 'Desenvolvimento', // Modulo Referente // Modulo Referente
-            'SubModulo'             => 'Senha',   // Submodulo Referente   // Submodulo Referente
+            'End'                   => 'Desenvolvimento/Senha/Senhas_Edit', // Endereco que deve conter a url para permitir acesso
+            'Modulo'                => 'Desenvolvimento', // Modulo Referente
+            'SubModulo'             => 'Senha',// Submodulo Referente
             'Metodo'                => 'Senhas_Edit,Senhas_Edit2',  // Metodos referentes separados por virgula
         ),
         Array(
@@ -147,9 +147,9 @@ $config_Permissoes = function () {
             'Nome'                  => __('Desenvolvimento (Senhas_Todas) - Editar'),
             'Desc'                  => '',
             'Chave'                 => 'Desenvolvimento_Senha_Senhas_Todas_Edit', // CHave unica nunca repete, chave primaria
-            'End'                   => 'Desenvolvimento/Senha/Senhas_Todas_Edit', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
-            'Modulo'                => 'Desenvolvimento', // Modulo Referente // Modulo Referente
-            'SubModulo'             => 'Senha',   // Submodulo Referente   // Submodulo Referente
+            'End'                   => 'Desenvolvimento/Senha/Senhas_Todas_Edit', // Endereco que deve conter a url para permitir acesso
+            'Modulo'                => 'Desenvolvimento', // Modulo Referente
+            'SubModulo'             => 'Senha',// Submodulo Referente
             'Metodo'                => 'Senhas_Todas_Edit,Senhas_Todas_Edit2',  // Metodos referentes separados por virgula
         ),
         Array(
@@ -202,9 +202,9 @@ $config_Permissoes = function () {
             'Nome'                  => __('Dev (Projetos) - Editar'),
             'Desc'                  => '',
             'Chave'                 => 'Desenvolvimento_Projeto_Projetos_Edit', // CHave unica nunca repete, chave primaria
-            'End'                   => 'Desenvolvimento/Projeto/Projetos_Edit', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
-            'Modulo'                => 'Desenvolvimento', // Modulo Referente // Modulo Referente
-            'SubModulo'             => 'Projeto',   // Submodulo Referente   // Submodulo Referente
+            'End'                   => 'Desenvolvimento/Projeto/Projetos_Edit', // Endereco que deve conter a url para permitir acesso
+            'Modulo'                => 'Desenvolvimento', // Modulo Referente
+            'SubModulo'             => 'Projeto',// Submodulo Referente
             'Metodo'                => 'Projetos_Edit,Projetos_Edit2',  // Metodos referentes separados por virgula
         ),
         Array(
@@ -258,9 +258,9 @@ $config_Permissoes = function () {
             'Nome'                  => __('Dev (Tarefas) - Editar'),
             'Desc'                  => '',
             'Chave'                 => 'Desenvolvimento_Tarefa_Tarefas_Edit', // CHave unica nunca repete, chave primaria
-            'End'                   => 'Desenvolvimento/Tarefa/Tarefas_Edit', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
-            'Modulo'                => 'Desenvolvimento', // Modulo Referente // Modulo Referente
-            'SubModulo'             => 'Tarefa',   // Submodulo Referente   // Submodulo Referente
+            'End'                   => 'Desenvolvimento/Tarefa/Tarefas_Edit', // Endereco que deve conter a url para permitir acesso
+            'Modulo'                => 'Desenvolvimento', // Modulo Referente
+            'SubModulo'             => 'Tarefa',// Submodulo Referente
             'Metodo'                => 'Tarefas_Edit,Tarefas_Edit2',  // Metodos referentes separados por virgula
         ),
         Array(
@@ -296,9 +296,9 @@ $config_Permissoes = function () {
             'Nome'                  => __('Dev (Modulos) - Editar'),
             'Desc'                  => '',
             'Chave'                 => 'Desenvolvimento_Framework_Modulos_Edit', // CHave unica nunca repete, chave primaria
-            'End'                   => 'Desenvolvimento/Framework/Modulos_Edit', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
-            'Modulo'                => 'Desenvolvimento', // Modulo Referente // Modulo Referente
-            'SubModulo'             => 'Framework',   // Submodulo Referente   // Submodulo Referente
+            'End'                   => 'Desenvolvimento/Framework/Modulos_Edit', // Endereco que deve conter a url para permitir acesso
+            'Modulo'                => 'Desenvolvimento', // Modulo Referente
+            'SubModulo'             => 'Framework',// Submodulo Referente
             'Metodo'                => 'Modulos_Edit,Modulos_Edit2',  // Metodos referentes separados por virgula
         ),
         Array(
@@ -334,9 +334,9 @@ $config_Permissoes = function () {
             'Nome'                  => __('Dev (Submodulos) - Editar'),
             'Desc'                  => '',
             'Chave'                 => 'Desenvolvimento_Framework_Submodulos_Edit', // CHave unica nunca repete, chave primaria
-            'End'                   => 'Desenvolvimento/Framework/Submodulos_Edit', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
+            'End'                   => 'Desenvolvimento/Framework/Submodulos_Edit', // Endereco que deve conter a url para permitir acesso
             'Modulo'                => 'Desenvolvimento', // Modulo Referente
-            'SubModulo'             => 'Framework',   // Submodulo Referente   // Submodulo Referente
+            'SubModulo'             => 'Framework',// Submodulo Referente
             'Metodo'                => 'Submodulos_Edit,Submodulos_Edit2',  // Metodos referentes separados por virgula
         ),
         Array(
@@ -372,9 +372,9 @@ $config_Permissoes = function () {
             'Nome'                  => __('Dev (Metodos) - Editar'),
             'Desc'                  => '',
             'Chave'                 => 'Desenvolvimento_Framework_Metodos_Edit', // CHave unica nunca repete, chave primaria
-            'End'                   => 'Desenvolvimento/Framework/Metodos_Edit', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
+            'End'                   => 'Desenvolvimento/Framework/Metodos_Edit', // Endereco que deve conter a url para permitir acesso
             'Modulo'                => 'Desenvolvimento', // Modulo Referente
-            'SubModulo'             => 'Framework',   // Submodulo Referente   // Submodulo Referente
+            'SubModulo'             => 'Framework',// Submodulo Referente
             'Metodo'                => 'Metodos_Edit,Metodos_Edit2',  // Metodos referentes separados por virgula
         ),
         Array(

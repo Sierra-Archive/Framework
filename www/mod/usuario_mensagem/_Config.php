@@ -1,5 +1,5 @@
 <?php
-$config_Modulo = function () {
+$configModule = function () {
     return Array(
         'Nome'                      =>  'usuario_mensagem',
         'Descrição'                 =>  'É um modulo para Atendimento telefonico de grandes empresas',
@@ -8,7 +8,7 @@ $config_Modulo = function () {
         'Dependencias'              =>  FALSE,
     );
 };
-$config_Menu = function () {
+$configMenu = function () {
     return Array(
         'Relatório' => Array(
             'Filhos'                => Array('Chamados'=>Array(
@@ -76,9 +76,9 @@ $config_Permissoes = function () {
             'Nome'                  => __('Mensagens (Suporte) - Editar Suportes'),
             'Desc'                  => '',
             'Chave'                 => 'usuario_mensagem_Admin_Mensagem_Editar', // CHave unica nunca repete, chave primaria
-            'End'                   => 'usuario_mensagem/Admin/Mensagem_Editar', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
-            'Modulo'                => 'usuario_mensagem', // Modulo Referente // Modulo Referente
-            'SubModulo'             => 'Admin',   // Submodulo Referente   // Submodulo Referente
+            'End'                   => 'usuario_mensagem/Admin/Mensagem_Editar', // Endereco que deve conter a url para permitir acesso
+            'Modulo'                => 'usuario_mensagem', // Modulo Referente
+            'SubModulo'             => 'Admin',// Submodulo Referente
             'Metodo'                => 'Mensagem_Editar,Mensagem_Editar2',  // Metodos referentes separados por virgula
         ),
         Array(
@@ -122,9 +122,9 @@ $config_Permissoes = function () {
             'Nome'                  => __('Mensagens (Assuntos) - Editar'),
             'Desc'                  => '',
             'Chave'                 => 'usuario_mensagem_Assunto_Assuntos_Edit', // CHave unica nunca repete, chave primaria
-            'End'                   => 'usuario_mensagem/Assunto/Assuntos_Edit', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
-            'Modulo'                => 'usuario_mensagem', // Modulo Referente // Modulo Referente
-            'SubModulo'             => 'Assunto',   // Submodulo Referente   // Submodulo Referente
+            'End'                   => 'usuario_mensagem/Assunto/Assuntos_Edit', // Endereco que deve conter a url para permitir acesso
+            'Modulo'                => 'usuario_mensagem', // Modulo Referente
+            'SubModulo'             => 'Assunto',// Submodulo Referente
             'Metodo'                => 'Assuntos_Edit,Assuntos_Edit2',  // Metodos referentes separados por virgula
         ),
         Array(
@@ -159,9 +159,9 @@ $config_Permissoes = function () {
             'Nome'                  => __('Mensagens (Setores) - Editar'),
             'Desc'                  => '',
             'Chave'                 => 'usuario_mensagem_Setor_Setores_Edit', // CHave unica nunca repete, chave primaria
-            'End'                   => 'usuario_mensagem/Setor/Setores_Edit', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
-            'Modulo'                => 'usuario_mensagem', // Modulo Referente // Modulo Referente
-            'SubModulo'             => 'Setor',   // Submodulo Referente   // Submodulo Referente
+            'End'                   => 'usuario_mensagem/Setor/Setores_Edit', // Endereco que deve conter a url para permitir acesso
+            'Modulo'                => 'usuario_mensagem', // Modulo Referente
+            'SubModulo'             => 'Setor',// Submodulo Referente
             'Metodo'                => 'Setores_Edit,Setores_Edit2',  // Metodos referentes separados por virgula
         ),
         Array(

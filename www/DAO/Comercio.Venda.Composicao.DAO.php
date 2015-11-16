@@ -170,7 +170,7 @@ final Class Comercio_Venda_Composicao_DAO extends Framework\App\Dao
                             'qnt'
                         ),
                         'infonulo'          => 'Escolha pelo menos um Produto',
-                      'linkextra'         => false
+                      'linkextra'         => FALSE
                     ), // Campo Boleano da tabela LINK, caso false apaga os que nao forem puxados
                 )
             ),

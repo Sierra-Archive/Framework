@@ -121,7 +121,7 @@ final Class Simulador_Tag_DAO extends Framework\App\Dao
                         'campomostrar'      => 'nome', // Campo mostrar
                         'Col1'              => 'Não Liberar', // Nome da 1 Coluna (Nao Selecionada)
                         'Col2'              => 'Liberar', // Nome da 2 Coluna (Selecionadas)
-                        'Valor'             => false
+                        'Valor'             => FALSE
                     ), // Campo Boleano da tabela LINK, caso false apaga os que nao forem puxados
                 )
             ),*/

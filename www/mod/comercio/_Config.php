@@ -1,16 +1,15 @@
 <?php
-$config_Modulo = function () {
+$configModule = function () {
     return Array(
-        'Nome'                      =>  'comercio',
-        'Descrição'                 =>  '',
-        'System_Require'            =>  '3.1.0',
-        'Version'                   =>  '3.1.1',
-        'Dependencias'              =>  FALSE,
+        'Nome'                      => 'comercio',
+        'Descrição'                 => '',
+        'System_Require'            => '3.1.0',
+        'Version'                   => '3.1.1',
+        'Dependencias'              => FALSE,
     );
 };
-$config_Menu = function () {
-    return Array(
-        'Administrar' => Array(
+$configMenu = function () {
+    return ['Administrar' => Array(
             'Filhos'                => Array('Fornecedores'=>Array(
                 'Nome'                  => __('Fornecedores'),
                 'Link'                  => 'comercio/Fornecedor/Fornecedores',
@@ -18,7 +17,7 @@ $config_Menu = function () {
                 'Img'                   => 'turboadmin/m-dashboard.png',
                 'Icon'                  => 'truck',
                 'Permissao_Func'        => Array(// Permissoes NEcessarias
-                    'comercio_Fornecedor' => true
+                    'comercio_Fornecedor' => TRUE
                 ),
                 'Filhos'                => FALSE,
             ),'Checklists'=>Array(
@@ -28,7 +27,7 @@ $config_Menu = function () {
                 'Img'                   => 'turboadmin/m-dashboard.png',
                 'Icon'                  => 'archive',
                 'Permissao_Func'        => Array(// Permissoes NEcessarias
-                    'comercio_Proposta_Checklist' => true
+                    'comercio_Proposta_Checklist' => TRUE
                 ),
                 'Filhos'                => FALSE,
             ),'Marcas'=>Array(
@@ -40,7 +39,7 @@ $config_Menu = function () {
                 'Filhos'                => FALSE,
                 'Permissao_Func'        => Array(// Permissoes NEcessarias
                     'comercio_Produto' => TRUE,
-                    'comercio_Marca' => true
+                    'comercio_Marca' => TRUE
                 ),
             ),'Linhas'=>Array(
                 'Nome'                  => __('Linhas'),
@@ -72,7 +71,7 @@ $config_Menu = function () {
                 'Img'                   => 'turboadmin/m-dashboard.png',
                 'Icon'                  => 'shopping-cart',
                 'Permissao_Func'        => Array(// Permissoes NEcessarias
-                    'comercio_Produto' => true
+                    'comercio_Produto' => TRUE
                 ),
                 'Filhos'                => FALSE,
             ),),
@@ -90,7 +89,7 @@ $config_Menu = function () {
                 'Img'                   => 'turboadmin/m-dashboard.png',
                 'Icon'                  => 'truck',
                 'Permissao_Func'        => Array(// Permissoes NEcessarias
-                    'comercio_Fornecedor' => true
+                    'comercio_Fornecedor' => TRUE
                 ),
                 'Filhos'                => FALSE,
             ),),
@@ -108,7 +107,7 @@ $config_Menu = function () {
                 'Img'                   => 'turboadmin/m-dashboard.png',
                 'Icon'                  => 'archive',
                 'Permissao_Func'        => Array(// Permissoes NEcessarias
-                    'comercio_Visitas' => true
+                    'comercio_Visitas' => TRUE
                 ),
                 'Filhos'                => FALSE,
             ),'Propostas'=>Array(
@@ -118,7 +117,7 @@ $config_Menu = function () {
                 'Img'                   => 'turboadmin/m-dashboard.png',
                 'Icon'                  => 'archive',
                 'Permissao_Func'        => Array(// Permissoes NEcessarias
-                    'comercio_Propostas' => true
+                    'comercio_Propostas' => TRUE
                 ),
                 'Filhos'                => FALSE,
             ),CFG_TXT_COMERCIO_OS=>Array(
@@ -128,7 +127,7 @@ $config_Menu = function () {
                 'Img'                   => 'turboadmin/m-dashboard.png',
                 'Icon'                  => 'archive',
                 'Permissao_Func'        => Array(// Permissoes NEcessarias
-                    'comercio_Propostas' => true
+                    'comercio_Propostas' => TRUE
                 ),
                 'Filhos'                => FALSE,
             ),),
@@ -142,12 +141,12 @@ $config_Menu = function () {
                 'Icon'                  => 'barcode',
                 'Permissao_Func'        => Array(// Permissoes NEcessarias
                     'comercio_Produto' => TRUE,
-                    'comercio_Estoque' => true
+                    'comercio_Estoque' => TRUE
                 ),
                 'Filhos'                => FALSE,
             ),),
         ),
-    );
+        ];
 };                    
                     
 $config_Permissoes = function () {
@@ -164,7 +163,7 @@ $config_Permissoes = function () {
             'SubModulo'             => 'Proposta',   // Submodulo Referente
             'Metodo'                => 'Visitas',  // Metodos referentes separados por virgula // Endereco que deve conter a url para permitir acesso
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                'comercio_Visitas' => true
+                'comercio_Visitas' => TRUE
             ),
         ),
         Array(
@@ -176,7 +175,7 @@ $config_Permissoes = function () {
             'SubModulo'             => 'Proposta',   // Submodulo Referente
             'Metodo'                => 'Visitas_Add,Visitas_Add2',  // Metodos referentes separados por virgula // Endereco que deve conter a url para permitir acesso
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                'comercio_Visitas' => true
+                'comercio_Visitas' => TRUE
             ),
         ),
         Array(
@@ -188,7 +187,7 @@ $config_Permissoes = function () {
             'SubModulo'             => 'Proposta',   // Submodulo Referente
             'Metodo'                => 'Visitas_Edit,Visitas_Edit2',  // Metodos referentes separados por virgula // Endereco que deve conter a url para permitir acesso
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                'comercio_Visitas' => true
+                'comercio_Visitas' => TRUE
             ),
         ),
         Array(
@@ -200,7 +199,7 @@ $config_Permissoes = function () {
             'SubModulo'             => 'Proposta',   // Submodulo Referente
             'Metodo'                => 'Visitas_Del',  // Metodos referentes separados por virgula // Endereco que deve conter a url para permitir acesso
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                'comercio_Visitas' => true
+                'comercio_Visitas' => TRUE
             ),
         ),
         Array(
@@ -212,7 +211,7 @@ $config_Permissoes = function () {
             'SubModulo'             => 'Proposta',   // Submodulo Referente
             'Metodo'                => 'Visitas_Comentario,,Visitas_Comentario_Add2,Visitas_Comentario_Edit,Visitas_Comentario_Edit,Visitas_Comentario_Del',  // Metodos referentes separados por virgula // Endereco que deve conter a url para permitir acesso
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                'comercio_Visitas' => true
+                'comercio_Visitas' => TRUE
             ),
         ),
         Array(
@@ -224,19 +223,19 @@ $config_Permissoes = function () {
             'SubModulo'             => 'Proposta',   // Submodulo Referente
             'Metodo'                => 'Visitas_Comentario_Add,Visitas_Comentario_Add2',  // Metodos referentes separados por virgula
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                'comercio_Visitas' => true
+                'comercio_Visitas' => TRUE
             ),
         ),
         Array(
             'Nome'                  => __('Comercio (Agenda de Visita) - Histórico Editar'),
             'Desc'                  => '',
             'Chave'                 => 'comercio_Proposta_Visitas_Comentario_Edit', // CHave unica nunca repete, chave primaria
-            'End'                   => 'comercio/Proposta/Visitas_Comentario_Edit', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
-            'Modulo'                => 'comercio', // Modulo Referente // Modulo Referente
-            'SubModulo'             => 'Proposta',   // Submodulo Referente   // Submodulo Referente
+            'End'                   => 'comercio/Proposta/Visitas_Comentario_Edit', // Endereco que deve conter a url para permitir acesso
+            'Modulo'                => 'comercio', // Modulo Referente
+            'SubModulo'             => 'Proposta',// Submodulo Referente
             'Metodo'                => 'Visitas_Comentario_Edit,Visitas_Comentario_Edit2',  // Metodos referentes separados por virgula
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                'comercio_Visitas' => true
+                'comercio_Visitas' => TRUE
             ),
         ),
         Array(
@@ -248,7 +247,7 @@ $config_Permissoes = function () {
             'SubModulo'             => 'Proposta',   // Submodulo Referente
             'Metodo'                => 'Visitas_Comentario_Del',  // Metodos referentes separados por virgula
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                'comercio_Visitas' => true
+                'comercio_Visitas' => TRUE
             ),
         ),
         
@@ -262,7 +261,7 @@ $config_Permissoes = function () {
             'SubModulo'             => 'Proposta',   // Submodulo Referente
             'Metodo'                => 'Checklists',  // Metodos referentes separados por virgula // Endereco que deve conter a url para permitir acesso
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                'comercio_Proposta_Checklist' => true
+                'comercio_Proposta_Checklist' => TRUE
             ),
         ),
         Array(
@@ -274,7 +273,7 @@ $config_Permissoes = function () {
             'SubModulo'             => 'Proposta',   // Submodulo Referente
             'Metodo'                => 'Checklists_Add,Checklists_Add2',  // Metodos referentes separados por virgula // Endereco que deve conter a url para permitir acesso
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                'comercio_Proposta_Checklist' => true
+                'comercio_Proposta_Checklist' => TRUE
             ),
         ),
         Array(
@@ -286,7 +285,7 @@ $config_Permissoes = function () {
             'SubModulo'             => 'Proposta',   // Submodulo Referente
             'Metodo'                => 'Checklists_Edit,Checklists_Edit2',  // Metodos referentes separados por virgula // Endereco que deve conter a url para permitir acesso
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                'comercio_Proposta_Checklist' => true
+                'comercio_Proposta_Checklist' => TRUE
             ),
         ),
         Array(
@@ -298,7 +297,7 @@ $config_Permissoes = function () {
             'SubModulo'             => 'Proposta',   // Submodulo Referente
             'Metodo'                => 'Checklists_Del',  // Metodos referentes separados por virgula // Endereco que deve conter a url para permitir acesso
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                'comercio_Proposta_Checklist' => true
+                'comercio_Proposta_Checklist' => TRUE
             ),
         ),
         Array(
@@ -310,7 +309,7 @@ $config_Permissoes = function () {
             'SubModulo'             => 'Proposta',   // Submodulo Referente
             'Metodo'                => 'StatusChecklists',  // Metodos referentes separados por virgula // Endereco que deve conter a url para permitir acesso
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                'comercio_Proposta_Checklist' => true
+                'comercio_Proposta_Checklist' => TRUE
             ),
         ),
         
@@ -325,7 +324,7 @@ $config_Permissoes = function () {
             'SubModulo'             => 'Marca',   // Submodulo Referente
             'Metodo'                => 'Propostas',  // Metodos referentes separados por virgula // Endereco que deve conter a url para permitir acesso
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                'comercio_Propostas' => true
+                'comercio_Propostas' => TRUE
             ),
         ),
         Array(
@@ -337,7 +336,7 @@ $config_Permissoes = function () {
             'SubModulo'             => 'Proposta',   // Submodulo Referente
             'Metodo'                => 'Propostas_Add',  // Metodos referentes separados por virgula // Endereco que deve conter a url para permitir acesso
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                'comercio_Propostas' => true
+                'comercio_Propostas' => TRUE
             ),
         ),
         Array(
@@ -349,7 +348,7 @@ $config_Permissoes = function () {
             'SubModulo'             => 'Proposta',   // Submodulo Referente
             'Metodo'                => 'Propostas',  // Metodos referentes separados por virgula
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                'comercio_Propostas' => true
+                'comercio_Propostas' => TRUE
             ),
         ),
         Array(
@@ -361,7 +360,7 @@ $config_Permissoes = function () {
             'SubModulo'             => 'Proposta',   // Submodulo Referente
             'Metodo'                => 'Propostas_View',  // Metodos referentes separados por virgula
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                'comercio_Propostas' => true
+                'comercio_Propostas' => TRUE
             ),
         ),
         Array(
@@ -373,7 +372,7 @@ $config_Permissoes = function () {
             'SubModulo'             => 'Proposta',   // Submodulo Referente
             'Metodo'                => 'Propostas_Edit,Propostas_Edit2',  // Metodos referentes separados por virgula // Endereco que deve conter a url para permitir acesso
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                'comercio_Propostas' => true
+                'comercio_Propostas' => TRUE
             ),
         ),
         Array(
@@ -385,7 +384,7 @@ $config_Permissoes = function () {
             'SubModulo'             => 'Proposta',   // Submodulo Referente
             'Metodo'                => 'Propostas_Del',  // Metodos referentes separados por virgula // Endereco que deve conter a url para permitir acesso
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                'comercio_Propostas' => true
+                'comercio_Propostas' => TRUE
             ),
         ),
         Array(
@@ -397,7 +396,7 @@ $config_Permissoes = function () {
             'SubModulo'             => 'Proposta',   // Submodulo Referente
             'Metodo'                => 'StatusPropostas',  // Metodos referentes separados por virgula // Endereco que deve conter a url para permitir acesso
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                'comercio_Propostas' => true
+                'comercio_Propostas' => TRUE
             ),
         ),
         
@@ -411,7 +410,7 @@ $config_Permissoes = function () {
             'SubModulo'             => 'Proposta',   // Submodulo Referente
             'Metodo'                => 'Propostas_Comentario',  // Metodos referentes separados por virgula
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                'comercio_Propostas' => true
+                'comercio_Propostas' => TRUE
             ),
         ),
         Array(
@@ -423,19 +422,19 @@ $config_Permissoes = function () {
             'SubModulo'             => 'Proposta',   // Submodulo Referente
             'Metodo'                => 'Propostas_Comentario_Add,Propostas_Comentario_Add2',  // Metodos referentes separados por virgula
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                'comercio_Propostas' => true
+                'comercio_Propostas' => TRUE
             ),
         ),
         Array(
             'Nome'                  => 'Comercio ('.CFG_TXT_COMERCIO_OS.'/Proposta) - Histórico Editar',
             'Desc'                  => '',
             'Chave'                 => 'comercio_Proposta_Propostas_Comentario_Edit', // CHave unica nunca repete, chave primaria
-            'End'                   => 'comercio/Proposta/Propostas_Comentario_Edit', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
-            'Modulo'                => 'comercio', // Modulo Referente // Modulo Referente
-            'SubModulo'             => 'Proposta',   // Submodulo Referente   // Submodulo Referente
+            'End'                   => 'comercio/Proposta/Propostas_Comentario_Edit', // Endereco que deve conter a url para permitir acesso
+            'Modulo'                => 'comercio', // Modulo Referente
+            'SubModulo'             => 'Proposta',// Submodulo Referente
             'Metodo'                => 'Propostas_Comentario_Edit,Propostas_Comentario_Edit2',  // Metodos referentes separados por virgula
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                'comercio_Propostas' => true
+                'comercio_Propostas' => TRUE
             ),
         ),
         Array(
@@ -447,7 +446,7 @@ $config_Permissoes = function () {
             'SubModulo'             => 'Proposta',   // Submodulo Referente
             'Metodo'                => 'Propostas_Comentario_Del',  // Metodos referentes separados por virgula
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                'comercio_Propostas' => true
+                'comercio_Propostas' => TRUE
             ),
         ),
         
@@ -462,7 +461,7 @@ $config_Permissoes = function () {
             'Metodo'                => 'Propostas_Sub',  // Metodos referentes separados por virgula
             'Permissao_Func'        => Array(// Permissoes NEcessarias
                 'comercio_Propostas'        => TRUE,
-                'comercio_Propostas_Sub'    => true
+                'comercio_Propostas_Sub'    => TRUE
             ),
         ),
         Array(
@@ -475,20 +474,20 @@ $config_Permissoes = function () {
             'Metodo'                => 'Propostas_Sub_Add,Propostas_Sub_Add2',  // Metodos referentes separados por virgula
             'Permissao_Func'        => Array(// Permissoes NEcessarias
                 'comercio_Propostas'        => TRUE,
-                'comercio_Propostas_Sub'    => true
+                'comercio_Propostas_Sub'    => TRUE
             ),
         ),
         Array(
             'Nome'                  => 'Comercio ('.CFG_TXT_COMERCIO_OS.'/Proposta) - Sub Editar',
             'Desc'                  => '',
             'Chave'                 => 'comercio_Proposta_Propostas_Sub_Edit', // CHave unica nunca repete, chave primaria
-            'End'                   => 'comercio/Proposta/Propostas_Sub_Edit', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
-            'Modulo'                => 'comercio', // Modulo Referente // Modulo Referente
-            'SubModulo'             => 'Proposta',   // Submodulo Referente   // Submodulo Referente
+            'End'                   => 'comercio/Proposta/Propostas_Sub_Edit', // Endereco que deve conter a url para permitir acesso
+            'Modulo'                => 'comercio', // Modulo Referente
+            'SubModulo'             => 'Proposta',// Submodulo Referente
             'Metodo'                => 'Propostas_Sub_Edit,Propostas_Sub_Edit2',  // Metodos referentes separados por virgula
             'Permissao_Func'        => Array(// Permissoes NEcessarias
                 'comercio_Propostas'        => TRUE,
-                'comercio_Propostas_Sub'    => true
+                'comercio_Propostas_Sub'    => TRUE
             ),
         ),
         Array(
@@ -501,7 +500,7 @@ $config_Permissoes = function () {
             'Metodo'                => 'Propostas_Sub_Del',  // Metodos referentes separados por virgula
             'Permissao_Func'        => Array(// Permissoes NEcessarias
                 'comercio_Propostas'        => TRUE,
-                'comercio_Propostas_Sub'    => true
+                'comercio_Propostas_Sub'    => TRUE
             ),
         ),
         
@@ -517,7 +516,7 @@ $config_Permissoes = function () {
             'SubModulo'             => 'Estoque',   // Submodulo Referente
             'Metodo'                => 'Estoques',  // Metodos referentes separados por virgula // Endereco que deve conter a url para permitir acesso
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                'comercio_Estoque' => true
+                'comercio_Estoque' => TRUE
             ),
         ),
         Array(
@@ -529,7 +528,7 @@ $config_Permissoes = function () {
             'SubModulo'             => 'Estoque',   // Submodulo Referente
             'Metodo'                => 'Material_Entrada',  // Metodos referentes separados por virgula // Endereco que deve conter a url para permitir acesso
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                'comercio_Fornecedor' => true
+                'comercio_Fornecedor' => TRUE
             ),
         ),
         Array(
@@ -541,7 +540,7 @@ $config_Permissoes = function () {
             'SubModulo'             => 'Estoque',   // Submodulo Referente
             'Metodo'                => 'Material_Entrada_Add',  // Metodos referentes separados por virgula // Endereco que deve conter a url para permitir acesso
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                'comercio_Fornecedor' => true
+                'comercio_Fornecedor' => TRUE
             ),
         ),
         Array(
@@ -553,7 +552,7 @@ $config_Permissoes = function () {
             'SubModulo'             => 'Estoque',   // Submodulo Referente
             'Metodo'                => 'Material_Entrada_Edit,Material_Entrada_Edit2',  // Metodos referentes separados por virgula // Endereco que deve conter a url para permitir acesso
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                'comercio_Fornecedor' => true
+                'comercio_Fornecedor' => TRUE
             ),
         ),
         Array(
@@ -565,7 +564,7 @@ $config_Permissoes = function () {
             'SubModulo'             => 'Estoque',   // Submodulo Referente
             'Metodo'                => 'Material_Entrada_Del',  // Metodos referentes separados por virgula // Endereco que deve conter a url para permitir acesso
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                'comercio_Fornecedor' => true
+                'comercio_Fornecedor' => TRUE
             ),
         ),
         
@@ -581,7 +580,7 @@ $config_Permissoes = function () {
             'Metodo'                => '*',  // Metodos referentes separados por virgula // Endereco que deve conter a url para permitir acesso
             'Permissao_Func'        => Array(// Permissoes NEcessarias
                 'comercio_Produto'      => TRUE,
-                'comercio_Marca'        => true
+                'comercio_Marca'        => TRUE
             ),
         ),
         Array(
@@ -594,20 +593,20 @@ $config_Permissoes = function () {
             'Metodo'                => 'Marcas_Add,Marcas_Add2',  // Metodos referentes separados por virgula
             'Permissao_Func'        => Array(// Permissoes NEcessarias
                 'comercio_Produto'      => TRUE,
-                'comercio_Marca'        => true
+                'comercio_Marca'        => TRUE
             ),
         ),
         Array(
             'Nome'                  => __('Comercio (Marcas) - Editar'),
             'Desc'                  => '',
             'Chave'                 => 'comercio_Marca_Marcas_Edit', // CHave unica nunca repete, chave primaria
-            'End'                   => 'comercio/Marca/Marcas_Edit', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
-            'Modulo'                => 'comercio', // Modulo Referente // Modulo Referente
-            'SubModulo'             => 'Marca',   // Submodulo Referente   // Submodulo Referente
+            'End'                   => 'comercio/Marca/Marcas_Edit', // Endereco que deve conter a url para permitir acesso
+            'Modulo'                => 'comercio', // Modulo Referente
+            'SubModulo'             => 'Marca',// Submodulo Referente
             'Metodo'                => 'Marcas_Edit,Marcas_Edit2',  // Metodos referentes separados por virgula
             'Permissao_Func'        => Array(// Permissoes NEcessarias
                 'comercio_Produto'      => TRUE,
-                'comercio_Marca'        => true
+                'comercio_Marca'        => TRUE
             ),
         ),
         Array(
@@ -620,7 +619,7 @@ $config_Permissoes = function () {
             'Metodo'                => 'Marcas_Del',  // Metodos referentes separados por virgula
             'Permissao_Func'        => Array(// Permissoes NEcessarias
                 'comercio_Produto'      => TRUE,
-                'comercio_Marca'        => true
+                'comercio_Marca'        => TRUE
             ),
         ),
         
@@ -659,9 +658,9 @@ $config_Permissoes = function () {
             'Nome'                  => __('Comercio (Linhas) - Editar'),
             'Desc'                  => '',
             'Chave'                 => 'comercio_Admin_Linhas_Edit', // CHave unica nunca repete, chave primaria
-            'End'                   => 'comercio/Admin/Linhas_Edit', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
-            'Modulo'                => 'comercio', // Modulo Referente // Modulo Referente
-            'SubModulo'             => 'Linha',   // Submodulo Referente   // Submodulo Referente
+            'End'                   => 'comercio/Admin/Linhas_Edit', // Endereco que deve conter a url para permitir acesso
+            'Modulo'                => 'comercio', // Modulo Referente
+            'SubModulo'             => 'Linha',// Submodulo Referente
             'Metodo'                => 'Linhas_Edit,Linhas_Edit2',  // Metodos referentes separados por virgula
             'Permissao_Func'        => Array(// Permissoes NEcessarias
                 'comercio_Produto'          => TRUE,
@@ -717,9 +716,9 @@ $config_Permissoes = function () {
             'Nome'                  => __('Comercio (Familia) - Editar'),
             'Desc'                  => '',
             'Chave'                 => 'comercio_Familia_Familias_Edit', // CHave unica nunca repete, chave primaria
-            'End'                   => 'comercio/Familia/Familias_Edit', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
-            'Modulo'                => 'comercio', // Modulo Referente // Modulo Referente
-            'SubModulo'             => 'Familia',   // Submodulo Referente   // Submodulo Referente
+            'End'                   => 'comercio/Familia/Familias_Edit', // Endereco que deve conter a url para permitir acesso
+            'Modulo'                => 'comercio', // Modulo Referente
+            'SubModulo'             => 'Familia',// Submodulo Referente
             'Metodo'                => 'Familias_Edit,Familias_Edit2',  // Metodos referentes separados por virgula
             'Permissao_Func'        => Array(// Permissoes NEcessarias
                 'comercio_Produto'          => TRUE,
@@ -751,7 +750,7 @@ $config_Permissoes = function () {
             'SubModulo'             => 'Produto',   // Submodulo Referente
             'Metodo'                => '*',// Endereco que deve conter a url para permitir acesso
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                'comercio_Produto' => true
+                'comercio_Produto' => TRUE
             ),
         ),       
         Array(
@@ -763,19 +762,19 @@ $config_Permissoes = function () {
             'SubModulo'             => 'Produto',   // Submodulo Referente
             'Metodo'                => 'Produtos_Add,Produtos_Add2',  // Metodos referentes separados por virgula
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                'comercio_Produto' => true
+                'comercio_Produto' => TRUE
             ),
         ),
         Array(
             'Nome'                  => __('Comercio (Produtos) - Editar'),
             'Desc'                  => '',
             'Chave'                 => 'comercio_Produto_Produtos_Edit', // CHave unica nunca repete, chave primaria
-            'End'                   => 'comercio/Produto/Produtos_Edit', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
-            'Modulo'                => 'comercio', // Modulo Referente // Modulo Referente
-            'SubModulo'             => 'Produto',   // Submodulo Referente   // Submodulo Referente
+            'End'                   => 'comercio/Produto/Produtos_Edit', // Endereco que deve conter a url para permitir acesso
+            'Modulo'                => 'comercio', // Modulo Referente
+            'SubModulo'             => 'Produto',// Submodulo Referente
             'Metodo'                => 'Produtos_Edit,Produtos_Edit2',  // Metodos referentes separados por virgula
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                'comercio_Produto' => true
+                'comercio_Produto' => TRUE
             ),
         ),
         Array(
@@ -787,7 +786,7 @@ $config_Permissoes = function () {
             'SubModulo'             => 'Produto',   // Submodulo Referente
             'Metodo'                => 'Produtos_Del',  // Metodos referentes separados por virgula
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                'comercio_Produto' => true
+                'comercio_Produto' => TRUE
             ),
         ),
         
@@ -802,7 +801,7 @@ $config_Permissoes = function () {
             'SubModulo'             => 'Fornecedor',   // Submodulo Referente
             'Metodo'                => '*',// Endereco que deve conter a url para permitir acesso
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                'comercio_Fornecedor' => true
+                'comercio_Fornecedor' => TRUE
             ),
         ),       
         Array(
@@ -814,19 +813,19 @@ $config_Permissoes = function () {
             'SubModulo'             => 'Fornecedor',   // Submodulo Referente
             'Metodo'                => 'Fornecedors_Add,Fornecedors_Add2',  // Metodos referentes separados por virgula
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                'comercio_Fornecedor' => true
+                'comercio_Fornecedor' => TRUE
             ),
         ),
         Array(
             'Nome'                  => __('Comercio (Fornecedores) - Editar'),
             'Desc'                  => '',
             'Chave'                 => 'comercio_Fornecedor_Fornecedores_Edit', // CHave unica nunca repete, chave primaria
-            'End'                   => 'comercio/Fornecedor/Fornecedores_Edit', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
-            'Modulo'                => 'comercio', // Modulo Referente // Modulo Referente
-            'SubModulo'             => 'Fornecedor',   // Submodulo Referente   // Submodulo Referente
+            'End'                   => 'comercio/Fornecedor/Fornecedores_Edit', // Endereco que deve conter a url para permitir acesso
+            'Modulo'                => 'comercio', // Modulo Referente
+            'SubModulo'             => 'Fornecedor',// Submodulo Referente
             'Metodo'                => 'Fornecedors_Edit,Fornecedors_Edit2',  // Metodos referentes separados por virgula
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                'comercio_Fornecedor' => true
+                'comercio_Fornecedor' => TRUE
             ),
         ),
         Array(
@@ -838,7 +837,7 @@ $config_Permissoes = function () {
             'SubModulo'             => 'Fornecedor',   // Submodulo Referente
             'Metodo'                => 'Fornecedores_Del',  // Metodos referentes separados por virgula
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                'comercio_Fornecedor' => true
+                'comercio_Fornecedor' => TRUE
             ),
         ),
     );
@@ -855,13 +854,13 @@ $config_Funcional = function () {
             'Nome'                  => __('Observação?'),
             'Desc'                  => __('Se  produtos vao ter campo observacao'),
             'chave'                 => 'comercio_Produto_Obs',
-            'Valor'                 => false
+            'Valor'                 => FALSE
         ),
         'comercio_Produto_Cod'  => Array(
             'Nome'                  => __('Cod?'),
             'Desc'                  => __('Se produtos vao ter campo Codigo'),
             'chave'                 => 'comercio_Produto_Cod',
-            'Valor'                 => false
+            'Valor'                 => FALSE
         ),
         'comercio_Produto'  => Array(
             'Nome'                  => __('Se Produtos estao ativados ou nao.'),
@@ -891,7 +890,7 @@ $config_Funcional = function () {
             'Nome'                  => __('Unidade?'),
             'Desc'                  => __('Se vai ter Unidades'),
             'chave'                 => 'comercio_Unidade',
-            'Valor'                 => false
+            'Valor'                 => FALSE
         ),
         'comercio_Estoque'  => Array(
             'Nome'                  => __('Estoque'),

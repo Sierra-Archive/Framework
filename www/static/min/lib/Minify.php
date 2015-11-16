@@ -187,7 +187,7 @@ class Minify {
             } else {
                 list(, $statusCode) = explode(' ', self::$_options['badRequestHeader']);
                 return array(
-                    'success' => false
+                    'success' => FALSE
                     ,'statusCode' => (int)$statusCode
                     ,'content' => ''
                     ,'headers' => array()
@@ -239,7 +239,7 @@ class Minify {
                 return;
             } else {
                 return array(
-                    'success' => true
+                    'success' => TRUE
                     ,'statusCode' => 304
                     ,'content' => ''
                     ,'headers' => $cg->getHeaders()
@@ -340,7 +340,7 @@ class Minify {
             }
         } else {
             return array(
-                'success' => true
+                'success' => TRUE
                 ,'statusCode' => 200
                 ,'content' => $cacheIsReady
                     ? self::$_cache->fetch($fullCacheId)
@@ -368,7 +368,7 @@ class Minify {
         self::$_cache = null;
         $options = array_merge(array(
             'files' => (array)$sources
-            ,'quiet' => true
+            ,'quiet' => TRUE
             ,'encodeMethod' => ''
             ,'lastModifiedTime' => 0
         ), $options);

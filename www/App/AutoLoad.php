@@ -550,7 +550,7 @@ $tempo = new \Framework\App\Tempo('Teeste1');
 $i = 0;
 $config = Array();
 while ($i<1000) {
-    $config_Modulo = function () {
+    $configModule = function () {
         return Array(
             'Nome'                      => __('Agenda'),
             'Descrição'                 =>  '',
@@ -560,7 +560,7 @@ while ($i<1000) {
         );
     };
     ++$i;
-    $config    = array_merge_recursive($config, $config_Modulo()   );
+    $config    = array_merge_recursive($config, $configModule()   );
 }
 unset($tempo);
 
@@ -568,7 +568,7 @@ $tempo = new \Framework\App\Tempo('Teeste2');
 $i = 0;
 $config = Array();
 while ($i<1000) {
-    $config_Modulo = Array(
+    $configModule = Array(
         'Nome'                      => __('Agenda'),
         'Descrição'                 =>  '',
         'System_Require'            =>  '3.1.0',
@@ -576,7 +576,7 @@ while ($i<1000) {
         'Dependencias'              =>  FALSE,
     );
     ++$i;
-    $config    = array_merge_recursive($config, $config_Modulo   );
+    $config    = array_merge_recursive($config, $configModule   );
 }
 unset($tempo);
 
