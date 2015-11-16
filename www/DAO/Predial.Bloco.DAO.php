@@ -4,7 +4,7 @@ final Class Predial_Bloco_DAO extends Framework\App\Dao
     protected $id;
     protected $nome;
     //protected $user;
-    protected static $objetocarregado     = false;     protected static $mysql_colunas       = false;     protected static $mysql_outside       = Array();     protected static $mysql_inside        = Array(); public function __construct() {  parent::__construct(); } public static function Get_Nome() {
+    protected static $objetocarregado     = FALSE;     protected static $mysql_colunas       = FALSE;     protected static $mysql_outside       = Array();     protected static $mysql_inside        = Array(); public function __construct() {  parent::__construct(); } public static function Get_Nome() {
         return MYSQL_PREDIAL_BLOCO;
     }
     /**
@@ -12,7 +12,7 @@ final Class Predial_Bloco_DAO extends Framework\App\Dao
      * @return string
      */
     public static function Permissao_Copia() {
-        return false;
+        return FALSE;
     }
     public static function Get_Sigla() {
         return 'PB';

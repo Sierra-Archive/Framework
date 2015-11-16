@@ -4,7 +4,7 @@ final Class Usuario_Comentario_DAO extends Framework\App\Dao
     protected $id;
     protected $usuario;
     protected $comentario;
-    protected static $objetocarregado     = false;     protected static $mysql_colunas       = false;     protected static $mysql_outside       = Array();     protected static $mysql_inside        = Array(); public function __construct() {  parent::__construct(); } 
+    protected static $objetocarregado     = FALSE;     protected static $mysql_colunas       = FALSE;     protected static $mysql_outside       = Array();     protected static $mysql_inside        = Array(); public function __construct() {  parent::__construct(); } 
     public static function Get_Nome() {
         return MYSQL_USUARIOS_COMENTARIOS;
     }
@@ -13,7 +13,7 @@ final Class Usuario_Comentario_DAO extends Framework\App\Dao
      * @return string
      */
     public static function Permissao_Copia() {
-        return false;
+        return FALSE;
     }
     public static function Get_Sigla() {
         return 'UC';
@@ -51,7 +51,7 @@ final Class Usuario_Comentario_DAO extends Framework\App\Dao
                 'mysql_titulo'      => 'usuario',
                 'mysql_tipovar'     => 'int', //varchar, int, 
                 'mysql_tamanho'     => 11,
-                'mysql_null'        => TRUE, // true NULL, false, NOT NULL
+                'mysql_null'        => TRUE, // true NULL, FALSE, NOT NULL
                 'mysql_default'     => FALSE,//false -> NONE, outro -> default
                 'mysql_primary'     => FALSE, // chave primaria
                 'mysql_estrangeira' => 'U.id|U.nome-U.razao_social', // chave estrangeira     ligacao|apresentacao|condicao

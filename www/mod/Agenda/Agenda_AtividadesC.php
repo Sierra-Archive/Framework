@@ -36,7 +36,7 @@ class Agenda_AtividadesControle extends Agenda_Controle
     * @version 0.4.2
     */
     public function Main() {    
-        return false;
+        return FALSE;
     }
     
     
@@ -44,7 +44,7 @@ class Agenda_AtividadesControle extends Agenda_Controle
         $i = 0;
         // Botao Add
         $atividades = $Modelo->db->Sql_Select('Agenda_Atividade_Hora', 'AAH.dt_fim=\'0000-00-00 00:00:00\'');
-        if ($atividades!==false && !empty($atividades)) {
+        if ($atividades !== FALSE && !empty($atividades)) {
             
             if (is_object($atividades)) $atividades = Array(0=>$atividades);
             reset($atividades);
@@ -52,12 +52,12 @@ class Agenda_AtividadesControle extends Agenda_Controle
                 //$tabela['#Id'][$i]       = '#'.$valor->id;
                 $tabela['Tipo de Compromisso'][$i]        =   $valor->atividade2;
                 $tabela['Inicio'][$i]                  =   $valor->dt_inicio;
-                $tabela['Funções'][$i]              =   $Visual->Tema_Elementos_Btn('Personalizar'     ,Array('Editar Atividade'        ,'Agenda/Compromisso/Compromissos_Edit/'.$valor->id.'/'    ,''));
+                $tabela['Funções'][$i]              =   $Visual->Tema_Elementos_Btn('Personalizar'     ,Array('Editar Atividade'        ,'Agenda/Compromisso/Compromissos_Edit/'.$valor->id.'/'    , ''));
                 ++$i;
             }
         
-            if ($export!==false) {
-                self::Export_Todos($export,$tabela, 'Atividades Abertas');
+            if ($export !== FALSE) {
+                self::Export_Todos($export, $tabela, 'Atividades Abertas');
             } else {
                 $this->_Visual->Show_Tabela_DataTable(
                     $tabela,     // Array Com a Tabela
@@ -92,7 +92,7 @@ class Agenda_AtividadesControle extends Agenda_Controle
         $atv_tempo = $this->_Modelo->db->Sql_Select('Agenda_Atividade_Hora');
         
         // Se nao Achar adicionar um com tempo
-        if ($atv_tempo===false) {
+        if ($atv_tempo === FALSE) {
             $atv_tempo = new Agenda_Atividade_Hora_DAO();
             
             $atv_tempo->atividade = 0;
@@ -103,7 +103,7 @@ class Agenda_AtividadesControle extends Agenda_Controle
             $this->_Modelo->db->Sql_Insert($atv_tempo);
         } else {
             $atv_tempo->dt_fim = APP_HORA;
-            $atv_tempo->total = Data_CalculaDiferenca_Em_Segundos($atv_tempo->dt_inicio,$atv_tempo->dt_fim);
+            $atv_tempo->total = Data_CalculaDiferenca_Em_Segundos($atv_tempo->dt_inicio, $atv_tempo->dt_fim);
             $this->_Modelo->db->Sql_Update($atv_tempo);
         }
     }

@@ -33,10 +33,10 @@ class Engenharia_EquipamentoControle extends Engenharia_Controle
     */
     public function Main() {
         \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'Engenharia/Equipamento/Equipamentos');
-        return false;
+        return FALSE;
     }
-    protected function Endereco_Equipamento($true=true) {
-        if ($true===true) {
+    protected function Endereco_Equipamento($true= TRUE ) {
+        if ($true === TRUE) {
             $this->Tema_Endereco(__('Equipamentos'),'Engenharia/Equipamento/Equipamentos');
         } else {
             $this->Tema_Endereco(__('Equipamentos'));
@@ -48,7 +48,7 @@ class Engenharia_EquipamentoControle extends Engenharia_Controle
      * @version 0.4.2
      */
     public function Equipamentos() {
-        $this->Endereco_Equipamento(false);
+        $this->Endereco_Equipamento(FALSE);
         $i = 0;
         // Botao Add
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
@@ -66,7 +66,7 @@ class Engenharia_EquipamentoControle extends Engenharia_Controle
         )));
         // Conexao
         $equipamentos = $this->_Modelo->db->Sql_Select('Engenharia_Equipamento');
-        if ($equipamentos!==false && !empty($equipamentos)) {
+        if ($equipamentos !== FALSE && !empty($equipamentos)) {
             if (is_object($equipamentos)) $equipamentos = Array(0=>$equipamentos);
             reset($equipamentos);
             foreach ($equipamentos as $indice=>&$valor) {
@@ -75,7 +75,7 @@ class Engenharia_EquipamentoControle extends Engenharia_Controle
                 $tabela['Equipamento'][$i]          =   $valor->nome;
                 $tabela['Data Aquisição'][$i]       =   $valor->data_aquisicao;
                 $tabela['Valor'][$i]                =   $valor->valor;
-                $tabela['Funções'][$i]              =   $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Equipamento'        ,'Engenharia/Equipamento/Equipamentos_Edit/'.$valor->id.'/'    ,'')).
+                $tabela['Funções'][$i]              =   $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Equipamento'        ,'Engenharia/Equipamento/Equipamentos_Edit/'.$valor->id.'/'    , '')).
                                                         $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Equipamento'       ,'Engenharia/Equipamento/Equipamentos_Del/'.$valor->id.'/'     ,'Deseja realmente deletar essa Equipamento ?'));
                 ++$i;
             }
@@ -104,7 +104,7 @@ class Engenharia_EquipamentoControle extends Engenharia_Controle
         $formbt     = __('Salvar');
         $formlink   = 'Engenharia/Equipamento/Equipamentos_Add2/';
         $campos = Engenharia_Equipamento_DAO::Get_Colunas();
-        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos);
+        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1, $titulo2, $formlink, $formid, $formbt, $campos);
     }
     /**
      * 
@@ -119,7 +119,7 @@ class Engenharia_EquipamentoControle extends Engenharia_Controle
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = __('Equipamento cadastrado com sucesso.');
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
     }
     /**
      * 
@@ -135,9 +135,9 @@ class Engenharia_EquipamentoControle extends Engenharia_Controle
         $formid     = 'form_Sistema_AdminC_EquipamentoEdit';
         $formbt     = __('Alterar Equipamento');
         $formlink   = 'Engenharia/Equipamento/Equipamentos_Edit2/'.$id;
-        $editar     = Array('Engenharia_Equipamento',$id);
+        $editar     = Array('Engenharia_Equipamento', $id);
         $campos = Engenharia_Equipamento_DAO::Get_Colunas();
-        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos,$editar);
+        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1, $titulo2, $formlink, $formid, $formbt, $campos, $editar);
     }
     /**
      * 
@@ -147,12 +147,12 @@ class Engenharia_EquipamentoControle extends Engenharia_Controle
      */
     public function Equipamentos_Edit2($id) {
         $titulo     = __('Equipamento Editado com Sucesso');
-        $dao        = Array('Engenharia_Equipamento',$id);
+        $dao        = Array('Engenharia_Equipamento', $id);
         $funcao     = '$this->Equipamentos();';
         $sucesso1   = __('Equipamento Alterado com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);      
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);      
     }
     /**
      * 
@@ -169,7 +169,7 @@ class Engenharia_EquipamentoControle extends Engenharia_Controle
         $equipamento = $this->_Modelo->db->Sql_Select('Engenharia_Equipamento', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($equipamento);
         // Mensagem
-    	if ($sucesso===true) {
+    	if ($sucesso === TRUE) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
@@ -182,12 +182,12 @@ class Engenharia_EquipamentoControle extends Engenharia_Controle
                 "mgs_secundaria" => __('Erro')
             );
         }
-        $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+        $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
         
         $this->Equipamentos();
         
         $this->_Visual->Json_Info_Update('Titulo', __('Equipamento deletado com Sucesso'));  
-        $this->_Visual->Json_Info_Update('Historico', false);  
+        $this->_Visual->Json_Info_Update('Historico', FALSE);  
     }
 }
 ?>

@@ -23,7 +23,7 @@ class social_VisualizarVisual extends social_Visual
             $tabela['Pontos'][$i] = $valor;
             ++$i;
         }
-        $this->novatabela("relatorio",$tabela);
+        $this->novatabela("relatorio", $tabela);
     }
     public function exibe_persona(&$persona) {
         $this->blocos .= '<a href="javascript:popup()"><a href="http://www.facebook.com/profile.php?id='.$persona['id_face'].'" target="_blank"><img alt="'.__('Foto de Perfil').' src="http://graph.facebook.com/'.$persona['id_face'].'/picture"></a>';

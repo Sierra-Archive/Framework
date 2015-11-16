@@ -19,12 +19,12 @@ class Curso_CursoControle extends Curso_Controle
     */
     public function Main() {
         \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'Curso/Curso/Cursos');
-        return false;
+        return FALSE;
     }
-    static function Endereco_Curso($true=true) {
+    static function Endereco_Curso($true= TRUE ) {
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
-        if ($true===true) {
+        if ($true === TRUE) {
             $_Controle->Tema_Endereco(__('Cursos'),'Curso/Curso/Cursos');
         } else {
             $_Controle->Tema_Endereco(__('Cursos'));
@@ -51,21 +51,21 @@ class Curso_CursoControle extends Curso_Controle
                 $status = 1;
                 $texto = __('Ativado');
             }
-            $tabela['Status'][$i]                   = '<span id="status'.$valor->id.'">'.$Visual->Tema_Elementos_Btn('Status'.$status     ,Array($texto        ,'Curso/Curso/Status/'.$valor->id.'/'    ,'')).'</span>';
-            $tabela['Funções'][$i]                  =   $Visual->Tema_Elementos_Btn('Visualizar' ,Array('Visualizar Turmas do Curso'    ,'Curso/Turma/Turmas/'.$valor->id.'/'    ,'')).
-                                                        $Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Curso'        ,'Curso/Curso/Cursos_Edit/'.$valor->id.'/'    ,'')).
+            $tabela['Status'][$i]                   = '<span id="status'.$valor->id.'">'.$Visual->Tema_Elementos_Btn('Status'.$status     ,Array($texto        ,'Curso/Curso/Status/'.$valor->id.'/'    , '')).'</span>';
+            $tabela['Funções'][$i]                  =   $Visual->Tema_Elementos_Btn('Visualizar' ,Array('Visualizar Turmas do Curso'    ,'Curso/Turma/Turmas/'.$valor->id.'/'    , '')).
+                                                        $Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Curso'        ,'Curso/Curso/Cursos_Edit/'.$valor->id.'/'    , '')).
                                                         $Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Curso'       ,'Curso/Curso/Cursos_Del/'.$valor->id.'/'     ,'Deseja realmente deletar esse Curso ?'));
             ++$i;
         }
-        return Array($tabela,$i);
+        return Array($tabela, $i);
     }
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Cursos($export=false) {
-        self::Endereco_Curso(false);
+    public function Cursos($export = FALSE) {
+        self::Endereco_Curso(FALSE);
         $i = 0;
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
             Array(
@@ -81,19 +81,19 @@ class Curso_CursoControle extends Curso_Controle
             )
         )));
         $cursos = $this->_Modelo->db->Sql_Select('Curso');
-        if ($cursos!==false && !empty($cursos)) {
-            list($tabela,$i) = self::Cursos_Tabela($cursos);
+        if ($cursos !== FALSE && !empty($cursos)) {
+            list($tabela, $i) = self::Cursos_Tabela($cursos);
             
-            if ($export!==false) {
+            if ($export !== FALSE) {
                 // Retira Status
                 unset($tabela['Status']);
-                self::Export_Todos($export,$tabela, 'Cursos');
+                self::Export_Todos($export, $tabela, 'Cursos');
             } else {
                 $this->_Visual->Show_Tabela_DataTable(
                     $tabela,     // Array Com a Tabela
                     '',          // style extra
                     true,        // true -> Add ao Bloco, false => Retorna html
-                    false,        // Apagar primeira coluna ?
+                    FALSE,        // Apagar primeira coluna ?
                     Array(       // Ordenacao
                         Array(
                             0,'desc'
@@ -125,7 +125,7 @@ class Curso_CursoControle extends Curso_Controle
         $formbt     = __('Salvar');
         $formlink   = 'Curso/Curso/Cursos_Add2/';
         $campos = Curso_DAO::Get_Colunas();
-        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos);
+        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1, $titulo2, $formlink, $formid, $formbt, $campos);
     }
     /**
      * Retorno de Adicionar Cursos
@@ -140,7 +140,7 @@ class Curso_CursoControle extends Curso_Controle
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = __('Curso cadastrado com sucesso.');
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
     }
     /**
      * 
@@ -156,9 +156,9 @@ class Curso_CursoControle extends Curso_Controle
         $formid     = 'form_Sistema_AdminC_CursoEdit';
         $formbt     = __('Alterar Curso');
         $formlink   = 'Curso/Curso/Cursos_Edit2/'.$id;
-        $editar     = Array('Curso',$id);
+        $editar     = Array('Curso', $id);
         $campos = Curso_DAO::Get_Colunas();
-        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos,$editar);
+        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1, $titulo2, $formlink, $formid, $formbt, $campos, $editar);
     }
     /**
      * Retorno de Editar Cursos
@@ -169,12 +169,12 @@ class Curso_CursoControle extends Curso_Controle
      */
     public function Cursos_Edit2($id) {
         $titulo     = __('Curso Editado com Sucesso');
-        $dao        = Array('Curso',$id);
+        $dao        = Array('Curso', $id);
         $funcao     = '$this->Cursos();';
         $sucesso1   = __('Curso Alterado com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);   
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);   
     }
     /**
      * Deletar Cursos
@@ -188,7 +188,7 @@ class Curso_CursoControle extends Curso_Controle
         $curso = $this->_Modelo->db->Sql_Select('Curso', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($curso);
         // Mensagem
-    	if ($sucesso===true) {
+    	if ($sucesso === TRUE) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
@@ -201,20 +201,20 @@ class Curso_CursoControle extends Curso_Controle
                 "mgs_secundaria" => __('Erro')
             );
         }
-        $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+        $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
         
         $this->Cursos();
         
         $this->_Visual->Json_Info_Update('Titulo', __('Curso deletado com Sucesso'));
-        $this->_Visual->Json_Info_Update('Historico', false);
+        $this->_Visual->Json_Info_Update('Historico', FALSE);
     }
-    public function Status($id=false) {
-        if ($id===false) {
-            return false;
+    public function Status($id = FALSE) {
+        if ($id === FALSE) {
+            return FALSE;
         }
         $resultado = $this->_Modelo->db->Sql_Select('Curso', Array('id'=>$id),1);
-        if ($resultado===false || !is_object($resultado)) {
-            return false;
+        if ($resultado === FALSE || !is_object($resultado)) {
+            return FALSE;
         }
         if ($resultado->status=='1') {
             $resultado->status='0';
@@ -231,9 +231,9 @@ class Curso_CursoControle extends Curso_Controle
             $conteudo = array(
                 'location' => '#status'.$resultado->id,
                 'js' => '',
-                'html' =>  $this->_Visual->Tema_Elementos_Btn('Status'.$resultado->status     ,Array($texto        ,'Curso/Curso/Status/'.$resultado->id.'/'    ,''))
+                'html' =>  $this->_Visual->Tema_Elementos_Btn('Status'.$resultado->status     ,Array($texto        ,'Curso/Curso/Status/'.$resultado->id.'/'    , ''))
             );
-            $this->_Visual->Json_IncluiTipo('Conteudo',$conteudo);
+            $this->_Visual->Json_IncluiTipo('Conteudo', $conteudo);
             $this->_Visual->Json_Info_Update('Titulo', __('Status Alterado')); 
         } else {
             $mensagens = array(
@@ -241,11 +241,11 @@ class Curso_CursoControle extends Curso_Controle
                 "mgs_principal"     => __('Erro'),
                 "mgs_secundaria"    => __('Ocorreu um Erro.')
             );
-            $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+            $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
 
             $this->_Visual->Json_Info_Update('Titulo', __('Erro')); 
         }
-        $this->_Visual->Json_Info_Update('Historico', false);  
+        $this->_Visual->Json_Info_Update('Historico', FALSE);  
     }
 }
 ?>

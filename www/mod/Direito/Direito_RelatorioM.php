@@ -24,7 +24,7 @@ class Direito_RelatorioModelo extends DireitoModelo
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Relatorio_Audiencia(&$resultado,$inicial=0,$final=0) {
+    public function Relatorio_Audiencia(&$resultado, $inicial=0, $final=0) {
         $i = $this->Relatorio(
             $resultado,
             $id,
@@ -41,7 +41,7 @@ class Direito_RelatorioModelo extends DireitoModelo
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Relatorio_Fase(&$resultado,$id = 0) {
+    public function Relatorio_Fase(&$resultado, $id = 0) {
         $i = $this->Relatorio(
             $resultado,
             $id,
@@ -58,7 +58,7 @@ class Direito_RelatorioModelo extends DireitoModelo
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Relatorio_Comarca(&$resultado,$id = 0) {
+    public function Relatorio_Comarca(&$resultado, $id = 0) {
         $i = $this->Relatorio(
             $resultado,
             $id,
@@ -75,7 +75,7 @@ class Direito_RelatorioModelo extends DireitoModelo
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Relatorio_Vara(&$resultado,$id = 0) {
+    public function Relatorio_Vara(&$resultado, $id = 0) {
         $i = $this->Relatorio(
             $resultado,
             $id,
@@ -93,7 +93,7 @@ class Direito_RelatorioModelo extends DireitoModelo
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Relatorio_Vara_Comarca(&$resultado,$idvara = 0,$idcomarca = 0) {
+    public function Relatorio_Vara_Comarca(&$resultado, $idvara = 0, $idcomarca = 0) {
         if ($idvara==0 || $idcomarca==0) $id = 0;
         else                            $id = 1;
         $i = $this->Relatorio(
@@ -133,7 +133,7 @@ class Direito_RelatorioModelo extends DireitoModelo
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Relatorio(&$resultado,$id=0,$FROM,$WHERE,$EXTRA = '') {
+    public function Relatorio(&$resultado, $id=0, $FROM, $WHERE, $EXTRA = '') {
         $i = 0;
         if ($id==0) {
             $sql = $this->db->query(' SELECT P.data as DATA, C.titulo AS COMARCA, V.titulo AS VARA, F.data as FASEDATA, TF.titulo AS FASE, AU.nome AS AUTOR, CO.nome AS REU

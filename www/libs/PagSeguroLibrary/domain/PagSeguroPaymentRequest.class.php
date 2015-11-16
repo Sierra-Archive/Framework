@@ -625,7 +625,7 @@ class PagSeguroPaymentRequest
      * @return String The URL to where the user needs to be redirected to in order to complete the payment process or
      * the CODE when use lightbox
      */
-    public function register(PagSeguroCredentials $credentials, $onlyCheckoutCode = false)
+    public function register(PagSeguroCredentials $credentials, $onlyCheckoutCode = FALSE)
     {
         return PagSeguroPaymentService::createCheckoutRequest($credentials, $this, $onlyCheckoutCode);
     }
@@ -641,7 +641,7 @@ class PagSeguroPaymentRequest
         $request['Reference'] = $this->reference;
         $request['SenderEmail'] = $email;
 
-        return "PagSeguroPaymentRequest: " . var_export($request, true);
+        return "PagSeguroPaymentRequest: " . var_export($request, TRUE);
     }
 
     /***

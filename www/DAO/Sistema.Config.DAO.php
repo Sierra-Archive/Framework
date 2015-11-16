@@ -8,8 +8,8 @@ final Class Sistema_Config_DAO extends Framework\App\Dao
     protected $mascara;
     protected $max;
     
-    protected static $objetocarregado     = false;     
-    protected static $mysql_colunas       = false;     
+    protected static $objetocarregado     = FALSE;     
+    protected static $mysql_colunas       = FALSE;     
     protected static $mysql_outside       = Array();     
     protected static $mysql_inside        = Array(); 
     protected static $campos_naoaceita_config  = Array('chave');
@@ -22,7 +22,7 @@ final Class Sistema_Config_DAO extends Framework\App\Dao
      * @return string
      */
     public static function Permissao_Copia() {
-        return false;
+        return FALSE;
     }
     public static function Get_Sigla() {
         return 'SC';

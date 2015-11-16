@@ -205,7 +205,7 @@ class Drawing
         } elseif (strlen($pValue) == 3) {
             list($colorR, $colorG, $colorB) = array($pValue[0] . $pValue[0], $pValue[1] . $pValue[1], $pValue[2] . $pValue[2]);
         } else {
-            return false;
+            return FALSE;
         }
 
         $colorR = hexdec($colorR);

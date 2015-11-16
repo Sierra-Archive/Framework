@@ -24,7 +24,7 @@ class usuario_ExpedienteModelo extends usuario_Modelo
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Expedientes($status=0,$almoco=false) {
+    public function Expedientes($status=0, $almoco = FALSE) {
         // Table's primary key
         $primaryKey = 'id';
         $tabela = 'Usuario_Expediente';
@@ -36,10 +36,10 @@ class usuario_ExpedienteModelo extends usuario_Modelo
         $function = '';
         if ($perm_statusalterar) {
             if ($status==0) {
-                $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Personalizado\'     ,Array(__(\'Colocar em Almoço\')        ,\'usuario/Expediente/Expedientes_StatusAlterar/\'.$d.\'/1/\'    ,\'\',\'cutlery\',\'success\'),true);';
-                $function .= ' $html .= \' \'.Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Personalizado\'     ,Array(__(\'Finalizar\')        ,\'usuario/Expediente/Expedientes_StatusAlterar/\'.$d.\'/2/\'    ,\'\',\'home\',\'warning\'),true);';
+                $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Personalizado\'     ,Array(__(\'Colocar em Almoço\')        ,\'usuario/Expediente/Expedientes_StatusAlterar/\'.$d.\'/1/\'    ,\'\',\'cutlery\',\'success\'),TRUE);';
+                $function .= ' $html .= \' \'.Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Personalizado\'     ,Array(__(\'Finalizar\')        ,\'usuario/Expediente/Expedientes_StatusAlterar/\'.$d.\'/2/\'    ,\'\',\'home\',\'warning\'),TRUE);';
             } else {
-                $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Personalizado\'     ,Array(__(\'Sair do Almoço\')        ,\'usuario/Expediente/Expedientes_StatusAlterar/\'.$d.\'/0/\'    ,\'\',\'random\',\'primary\'),true);';
+                $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Personalizado\'     ,Array(__(\'Sair do Almoço\')        ,\'usuario/Expediente/Expedientes_StatusAlterar/\'.$d.\'/0/\'    ,\'\',\'random\',\'primary\'),TRUE);';
             }
         }
 
@@ -63,7 +63,7 @@ class usuario_ExpedienteModelo extends usuario_Modelo
             'dt' => $numero); //'Funcionário';
         
         
-        if ($almoco!==false) {
+        if ($almoco !== FALSE) {
             ++$numero;
             $columns[] = array( 
                 'db' => 'log_date_edit', 
@@ -87,7 +87,7 @@ class usuario_ExpedienteModelo extends usuario_Modelo
         ); //'Funções';
                 
         echo json_encode(
-            \Framework\Classes\Datatable::complex( $_GET, Framework\App\Registro::getInstacia()->_Conexao, $tabela, $primaryKey, $columns, null,$where)
+            \Framework\Classes\Datatable::complex( $_GET, Framework\App\Registro::getInstacia()->_Conexao, $tabela, $primaryKey, $columns, null, $where)
         );
     }
 }

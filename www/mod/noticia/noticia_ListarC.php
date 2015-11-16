@@ -42,14 +42,14 @@ class noticia_ListarControle extends noticia_Controle
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    public function Noticias_Listar($categoria=0,$status=1) {
+    public function Noticias_Listar($categoria=0, $status=1) {
         $i = 0;
         $where = Array();
         if ($categoria!=0)       $where['categoria'] = $categoria;
-        if ($status  !==false)  $where['status']   = $status;
-        $noticias = $this->_Modelo->db->Sql_Select('Noticia',$where);
+        if ($status   !== FALSE)  $where['status']   = $status;
+        $noticias = $this->_Modelo->db->Sql_Select('Noticia', $where);
         if (is_object($noticias)) $noticias = Array(0=>$noticias);
-        if ($noticias!==false && !empty($noticias)) {
+        if ($noticias !== FALSE && !empty($noticias)) {
             reset($noticias);
             foreach ($noticias as &$valor) {
                 if ($valor->destaque==0)     $destaque = __('Não');

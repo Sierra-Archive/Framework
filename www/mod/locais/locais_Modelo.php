@@ -4,7 +4,7 @@ class locais_Modelo extends \Framework\App\Modelo
     public function __construct() {
         parent::__construct();
     }
-    public function bairros_retorna(&$array,$cidade = 1) {
+    public function bairros_retorna(&$array, $cidade = 1) {
         global $tabsql, $db;
         $i = 0;
         $sql = $db->query('SELECT id, nome FROM '.MYSQL_SIS_LOCALIZACAO_BAIRROS.' WHERE deletado!=1 AND cidade='.$cidade.' ORDER BY nome');
@@ -15,7 +15,7 @@ class locais_Modelo extends \Framework\App\Modelo
         }
         return $i;
     }
-    public function cidades_retorna(&$array,$estado = 1) {
+    public function cidades_retorna(&$array, $estado = 1) {
         global $tabsql, $db;
         $i = 0;
         $sql = $db->query('SELECT id, nome FROM '.MYSQL_SIS_LOCALIZACAO_CIDADES.' WHERE deletado!=1 AND estado='.$estado.' ORDER BY nome');
@@ -26,7 +26,7 @@ class locais_Modelo extends \Framework\App\Modelo
         }
         return $i;
     }
-    public function estados_retorna(&$array,$estado = 1) {
+    public function estados_retorna(&$array, $estado = 1) {
         global $tabsql, $db;
         $i = 0;
         $sql = $db->query('SELECT id, nome FROM '.MYSQL_SIS_LOCALIZACAO_ESTADOS.' WHERE deletado!=1 AND pais='.$estado.' ORDER BY nome');

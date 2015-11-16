@@ -21,7 +21,7 @@ if (isset($_GET['hello'])) {
     ini_set('zlib.output_compression', '0');
     
     require $min_libPath . '/HTTP/Encoder.php';
-    HTTP_Encoder::$encodeToIe6  = true; // just in case
+    HTTP_Encoder::$encodeToIe6  = TRUE; // just in case
     $he = new HTTP_Encoder(array(
         'content' => 'World!'
         ,'method' => 'deflate'

@@ -27,10 +27,10 @@ class comercio_servicos_ServicoTipoModelo extends comercio_servicos_Modelo
         
         $function = '';
         if ($perm_editar) {
-            $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Editar\'     ,Array(\'Editar Produto\'        ,\'comercio_servicos/ServicoTipo/Servico_Tipo_Edit/\'.$d.\'/\'    ,\'\'),true);';
+            $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Editar\'     ,Array(\'Editar Produto\'        ,\'comercio_servicos/ServicoTipo/Servico_Tipo_Edit/\'.$d.\'/\'    ,\'\'),TRUE);';
         }
         if ($perm_del) {
-            $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Deletar\'    ,Array(\'Deletar Produto\'       ,\'comercio_servicos/ServicoTipo/Servico_Tipo_Del/\'.$d.\'/\'     ,\'Deseja realmente deletar esse Tipo de Serviço ?\'),true);';
+            $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Deletar\'    ,Array(\'Deletar Produto\'       ,\'comercio_servicos/ServicoTipo/Servico_Tipo_Del/\'.$d.\'/\'     ,\'Deseja realmente deletar esse Tipo de Serviço ?\'),TRUE);';
         }
 
         $columns = Array();

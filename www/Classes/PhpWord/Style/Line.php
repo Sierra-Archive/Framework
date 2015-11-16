@@ -57,7 +57,7 @@ class Line extends Image
      *
      * @var boolean
      */
-    private $flip = false;
+    private $flip = FALSE;
 
     /**
      * connectorType
@@ -117,7 +117,7 @@ class Line extends Image
      * @param boolean $value
      * @return self
      */
-    public function setFlip($value = false)
+    public function setFlip($value = FALSE)
     {
         $this->flip = $this->setBoolVal($value, $this->flip);
 

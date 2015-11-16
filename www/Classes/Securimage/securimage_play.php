@@ -49,9 +49,9 @@ $options = array(
 $img = new Securimage();
 
 // Other audio settings
-//$img->audio_use_sox   = true;
-//$img->audio_use_noise = true;
-//$img->degrade_audio   = false;
+//$img->audio_use_sox   = TRUE;
+//$img->audio_use_noise = TRUE;
+//$img->degrade_audio   = FALSE;
 //$img->sox_binary_path = 'sox';
 
 // To use an alternate language, uncomment the following and download the files from phpcaptcha.org

@@ -21,7 +21,7 @@ class usuario_veiculo_AdminControle extends usuario_veiculo_Controle
     /**
      * 
      */
-    public function Veiculos_UploadVer($camada,$id) {
+    public function Veiculos_UploadVer($camada, $id) {
         $camada = (string) \Framework\App\Conexao::anti_injection($camada);
         $id = (int) \Framework\App\Conexao::anti_injection($id);
        
@@ -34,9 +34,9 @@ class usuario_veiculo_AdminControle extends usuario_veiculo_Controle
         $id = (int) $id;
         $fileTypes = array('jpg', 'jpeg', 'gif', 'png'); // File extensions
         $dir = 'usuario_veiculo'.DS;
-        $ext = $this->Upload($dir,$fileTypes,$id);
+        $ext = $this->Upload($dir, $fileTypes, $id);
         if ($ext!='falso') {
-            $this->_Modelo->Veiculos_Upload_Alterar($id,$ext); 
+            $this->_Modelo->Veiculos_Upload_Alterar($id, $ext); 
         }
     }
     /**
@@ -89,7 +89,7 @@ class usuario_veiculo_AdminControle extends usuario_veiculo_Controle
             
             foreach ($veiculos as $indice=>&$valor) {
                 $tabela['Id'][$i] = $valor['id'];
-                $tabela['Foto'][$i] = $this->_Visual->Show_Upload('usuario_veiculo', 'Admin', 'Veiculos', 'VeiculoImagem'.$valor['id'],$valor['foto'],'usuario_veiculo'.DS,$valor['id']);
+                $tabela['Foto'][$i] = $this->_Visual->Show_Upload('usuario_veiculo', 'Admin', 'Veiculos', 'VeiculoImagem'.$valor['id'], $valor['foto'],'usuario_veiculo'.DS, $valor['id']);
                 $tabela['Categoria'][$i] = $valor['categoria'];
                 $tabela['Ano'][$i] = $valor['ano'];
                 $tabela['Moto'][$i] = $valor['marca'].' '.$valor['modelo'];
@@ -135,7 +135,7 @@ class usuario_veiculo_AdminControle extends usuario_veiculo_Controle
         
     	$id = (int) $id;
     	$sucesso = $this->_Modelo->veiculos_Del($id);
-    	if ($sucesso===true) {
+    	if ($sucesso === TRUE) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
@@ -148,7 +148,7 @@ class usuario_veiculo_AdminControle extends usuario_veiculo_Controle
                 "mgs_secundaria" => __('Erro')
             );
     	}
-        $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+        $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
         
         $this->Main();
     }
@@ -224,27 +224,27 @@ class usuario_veiculo_AdminControle extends usuario_veiculo_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
     */
-    static function veiculos_form(&$controle, &$Visual, &$form, &$selectmarcas,$categoria = 0,$ano = '',$modelo = '',$marca = '',$cc = '',$valor1 = '',$valor2 = '',$valor3 = '',$franquia = '',$obs = '') {
+    static function veiculos_form(&$controle, &$Visual, &$form, &$selectmarcas, $categoria = 0, $ano = '', $modelo = '', $marca = '', $cc = '', $valor1 = '', $valor2 = '', $valor3 = '', $franquia = '', $obs = '') {
         
        
 
 	// select de categorias
         $controle->Categorias_ShowSelect($form, 'objetos', $categoria);
         
-        $form->Input_Novo('Ano do Veiculo', 'ano',$ano,'text', 4, 'obrigatorio', '', false,'', '', 'Ano', '', false); 
-        $form->Input_Novo('Modelo do Veiculo', 'modelo',$modelo,'text', 30, 'obrigatorio'); 
+        $form->Input_Novo('Ano do Veiculo', 'ano', $ano,'text', 4, 'obrigatorio', '', FALSE, '', '', 'Ano', '', FALSE); 
+        $form->Input_Novo('Modelo do Veiculo', 'modelo', $modelo,'text', 30, 'obrigatorio'); 
         // select de pessoas
         $form->Select_Novo('Marca', 'selectmarcas', 'selectmarcas');
-        $Visual->Marcas_ShowSelect($selectmarcas,$form,$marca);
+        $Visual->Marcas_ShowSelect($selectmarcas, $form, $marca);
         $form->Select_Fim();
-        $form->Input_Novo('Cilindradas', 'cc',$cc,'text', 11, 'obrigatorio', '', false,'', '', 'Numero', '', false); 
-        $form->Input_Novo('Valor da Diária até 3 Dias', 'valor1',$valor1,'text', 30, 'obrigatorio', '', false,'', '', 'Numero', '', false); 
-        $form->Input_Novo('Valor da Diária de 3 a 9 Dias', 'valor2',$valor2,'text', 30, 'obrigatorio', '', false,'', '', 'Numero', '', false); 
-        $form->Input_Novo('Valor Acima de 10 dias', 'valor3',$valor3,'text', 30, 'obrigatorio', '', false,'', '', 'Numero', '', false); 
-        $form->Input_Novo('Valor da Franquia', 'franquia',$franquia,'text', 30, 'obrigatorio', '', false,'', '', 'Numero', '', false); 
+        $form->Input_Novo('Cilindradas', 'cc', $cc,'text', 11, 'obrigatorio', '', FALSE, '', '', 'Numero', '', FALSE); 
+        $form->Input_Novo('Valor da Diária até 3 Dias', 'valor1', $valor1,'text', 30, 'obrigatorio', '', FALSE, '', '', 'Numero', '', FALSE); 
+        $form->Input_Novo('Valor da Diária de 3 a 9 Dias', 'valor2', $valor2,'text', 30, 'obrigatorio', '', FALSE, '', '', 'Numero', '', FALSE); 
+        $form->Input_Novo('Valor Acima de 10 dias', 'valor3', $valor3,'text', 30, 'obrigatorio', '', FALSE, '', '', 'Numero', '', FALSE); 
+        $form->Input_Novo('Valor da Franquia', 'franquia', $franquia,'text', 30, 'obrigatorio', '', FALSE, '', '', 'Numero', '', FALSE); 
 
 
-        $form->Input_Novo(__('Observação'),'obs',$obs,'text', 1000);
+        $form->Input_Novo(__('Observação'),'obs', $obs,'text', 1000);
     }
     /**
      * Inseri Veiculos no Banco de dados
@@ -272,7 +272,7 @@ class usuario_veiculo_AdminControle extends usuario_veiculo_Controle
      * @version 0.4.2
      */
     public function veiculos_inserir() {
-        if (!isset($_POST["categoria"]) || !isset($_POST["ano"]) || !isset($_POST["modelo"]) || !isset($_POST["selectmarcas"]) || !isset($_POST["cc"]) || !isset($_POST["valor1"])|| !isset($_POST["valor2"]) || !isset($_POST["valor3"]) || !isset($_POST["franquia"]) || !isset($_POST["obs"])) return false;
+        if (!isset($_POST["categoria"]) || !isset($_POST["ano"]) || !isset($_POST["modelo"]) || !isset($_POST["selectmarcas"]) || !isset($_POST["cc"]) || !isset($_POST["valor1"])|| !isset($_POST["valor2"]) || !isset($_POST["valor3"]) || !isset($_POST["franquia"]) || !isset($_POST["obs"])) return FALSE;
         
         $categoria = \Framework\App\Conexao::anti_injection($_POST["categoria"]);
         $ano = (int) $_POST["ano"];
@@ -285,11 +285,11 @@ class usuario_veiculo_AdminControle extends usuario_veiculo_Controle
         $franquia = \Framework\App\Conexao::anti_injection($_POST["franquia"]);
         $obs = \Framework\App\Conexao::anti_injection($_POST["obs"]);
         
-        $sucesso =  $this->_Modelo->veiculos_inserir($categoria,$ano,$modelo,$marca,$cc,$valor1,$valor2,$valor3,$franquia,$obs);
+        $sucesso =  $this->_Modelo->veiculos_inserir($categoria, $ano, $modelo, $marca, $cc, $valor1, $valor2, $valor3, $franquia, $obs);
         
         $this->veiculos_lista();
         
-        if ($sucesso===true) {
+        if ($sucesso === TRUE) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Inserção bem sucedida'),
@@ -302,7 +302,7 @@ class usuario_veiculo_AdminControle extends usuario_veiculo_Controle
                 "mgs_secundaria" => __('Erro')
             );
         }
-        $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);    
+        $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);    
     }
     /**
      * 
@@ -327,11 +327,11 @@ class usuario_veiculo_AdminControle extends usuario_veiculo_Controle
         $franquia = \Framework\App\Conexao::anti_injection($_POST["franquia"]);
         $obs = \Framework\App\Conexao::anti_injection($_POST["obs"]);
         
-        $sucesso =  $this->_Modelo->veiculos_alterar($id,$categoria,$ano,$modelo,$marca,$cc,$valor1,$valor2,$valor3,$franquia,$obs);
+        $sucesso =  $this->_Modelo->veiculos_alterar($id, $categoria, $ano, $modelo, $marca, $cc, $valor1, $valor2, $valor3, $franquia, $obs);
         
         $this->Main();
         
-        if ($sucesso===true) {
+        if ($sucesso === TRUE) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Alteração bem sucedida'),
@@ -344,7 +344,7 @@ class usuario_veiculo_AdminControle extends usuario_veiculo_Controle
                 "mgs_secundaria" => __('Erro')
             );
         }
-        $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);    
+        $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);    
     }
     /**
     * Cria Janela Do Formulario de Cadastro de Marcas
@@ -412,7 +412,7 @@ class usuario_veiculo_AdminControle extends usuario_veiculo_Controle
      * 
      */
     public function marcas_inserir() {
-        if (!isset($_POST["nome"])) return false;
+        if (!isset($_POST["nome"])) return FALSE;
         
         $nome = \Framework\App\Conexao::anti_injection($_POST["nome"]);
         $sucesso =  $this->_Modelo->marcas_inserir($nome);
@@ -425,9 +425,9 @@ class usuario_veiculo_AdminControle extends usuario_veiculo_Controle
             'js' => '',
             'html' => $html
         );
-        $this->_Visual->Json_IncluiTipo('Conteudo',$conteudo);
+        $this->_Visual->Json_IncluiTipo('Conteudo', $conteudo);
         // mostra mensagem de sucesso
-        if ($sucesso===true) {
+        if ($sucesso === TRUE) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Inserção bem sucedida'),
@@ -440,7 +440,7 @@ class usuario_veiculo_AdminControle extends usuario_veiculo_Controle
                 "mgs_secundaria" => __('Erro')
             );
         }
-        $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);    
+        $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);    
     }
 }
 ?>

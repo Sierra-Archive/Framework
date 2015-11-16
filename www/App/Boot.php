@@ -11,7 +11,7 @@ class Boot {
      * Armazena Url que foi Acessado o Sistema
      * @var string 
      */
-    static $url = false;
+    static $url = FALSE;
     /**
      * Inicia o Sistema
      * 
@@ -36,7 +36,7 @@ class Boot {
             $Cache = $Registro->_Cache->Ler('Pagina_'.self::$url);
             if ($Cache) {
                 echo $Cache;
-                return false;
+                return FALSE;
             }
         }
         
@@ -47,10 +47,10 @@ class Boot {
         // Inicia SEssao e Classes PARTE 1
         \Framework\App\Session::init();
         
-        if ($Registro->_Conexao===false) {
+        if ($Registro->_Conexao === FALSE) {
             $Registro->_Conexao = new \Framework\App\Conexao();
         }
-        if ($Registro->_Request===false) {
+        if ($Registro->_Request === FALSE) {
             $Registro->_Request = new \Framework\App\Request();
         }
         
@@ -62,7 +62,7 @@ class Boot {
         $geturl             = $Registro->_Request->getURL();
         
         // Controle de Erros
-        /*if (SISTEMA_DEBUG===true) {
+        /*if (SISTEMA_DEBUG === TRUE) {
             // Controle de Erros
             ini_set('error_reporting', 'E_ALL');
             ini_set('display_errors', 'On');
@@ -94,7 +94,7 @@ class Boot {
         // Verifica Permissão da URL
         $permissao = $Registro->_Acl->Get_Permissao_Url($geturl);
 
-        if ($permissao===false) {
+        if ($permissao === FALSE) {
             throw new \Exception('Sem Permissão: '.$geturl, 403); 
         }
         
@@ -109,28 +109,28 @@ class Boot {
                 $Registro->_Controle = new $controle_Executar;
                 
                 if (REQUISICAO_TIPO=='MODELO') {
-                    if (is_callable(array($Registro->_Modelo,$metodo))) {
+                    if (is_callable(array($Registro->_Modelo, $metodo))) {
                         $metodo = $getmetodo;
                     } else {
                         $metodo = 'Main';
                     }
                     if (count($getargs)>0) {
-                        call_user_func_array(array($Registro->_Modelo,$metodo), $getargs);
+                        call_user_func_array(array($Registro->_Modelo, $metodo), $getargs);
                     } else {
-                        call_user_func(array($Registro->_Modelo,$metodo));
+                        call_user_func(array($Registro->_Modelo, $metodo));
                     }
                     // Impede Retorno do Json do Controle
                     \Framework\App\Controle::Tema_Travar();
                 } else {
-                    if (is_callable(array($Registro->_Controle,$metodo))) {
+                    if (is_callable(array($Registro->_Controle, $metodo))) {
                         $metodo = $getmetodo;
                     } else {
                         $metodo = 'Main';
                     }
                     if (count($getargs)>0) {
-                        call_user_func_array(array($Registro->_Controle,$metodo), $getargs);
+                        call_user_func_array(array($Registro->_Controle, $metodo), $getargs);
                     } else {
-                        call_user_func(array($Registro->_Controle,$metodo));
+                        call_user_func(array($Registro->_Controle, $metodo));
                     }
                     
                 }
@@ -141,7 +141,7 @@ class Boot {
             return _Sistema_erroControle::Erro_Fluxo('Módulo não Encontrado',404); //
         }
         
-        return true;
+        return TRUE;
     }
     /**
      * Desliga o Sistema, Fecha Todas as Classes e Instancias
@@ -169,7 +169,7 @@ class Boot {
         // Salvar Cache e Da exite
         if (SISTEMA_CACHE_PAGINAS) {
             $conteudo = ob_get_contents();
-            $Registro->_Cache->Salvar('Pagina_'.self::$url,$conteudo);
+            $Registro->_Cache->Salvar('Pagina_'.self::$url, $conteudo);
         }
         
         // Da Exit

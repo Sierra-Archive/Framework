@@ -5,13 +5,13 @@ class Transporte_EstradaControle extends Transporte_Controle
     public function __construct() {
         parent::__construct();
     }
-    static function Endereco_Noticia($true=true) {
+    static function Endereco_Noticia($true= TRUE ) {
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
         $titulo = __('Estradas');
         $link = 'Transporte/Estrada/Estradas';
-        if ($true===true) {
-            $_Controle->Tema_Endereco($titulo,$link);
+        if ($true === TRUE) {
+            $_Controle->Tema_Endereco($titulo, $link);
         } else {
             $_Controle->Tema_Endereco($titulo);
         }
@@ -23,7 +23,7 @@ class Transporte_EstradaControle extends Transporte_Controle
      */
     public function Main() {
         \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'Transporte/Estrada/Estradas');
-        return false;
+        return FALSE;
     }
     static function Estradas_Tabela(&$estrada) {
         $Registro   = &\Framework\App\Registro::getInstacia();
@@ -46,18 +46,18 @@ class Transporte_EstradaControle extends Transporte_Controle
                 $texto = __('Desativado');
                 $valor->status='0';
             }
-            $tabela['Funções'][$i]      = '<span id="status'.$valor->id.'">'.$Visual->Tema_Elementos_Btn('Status'.$valor->status     ,Array($texto        ,'Transporte/Estrada/Status/'.$valor->id.'/'    ,''),$perm_status).'</span>';
+            $tabela['Funções'][$i]      = '<span id="status'.$valor->id.'">'.$Visual->Tema_Elementos_Btn('Status'.$valor->status     ,Array($texto        ,'Transporte/Estrada/Status/'.$valor->id.'/'    , ''), $perm_status).'</span>';
             if ($valor->destaque==1) {
                 $texto = __('Em Destaque');
             } else {
                 $texto = __('Não está em destaque');
             }
-            $tabela['Funções'][$i]      .= '<span id="destaques'.$valor->id.'">'.$Visual->Tema_Elementos_Btn('Destaque'.$valor->destaque   ,Array($texto   ,'Transporte/Estrada/Destaques/'.$valor->id.'/'    ,''),$perm_destaque).'</span>';
-            $tabela['Funções'][$i]      .= $Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Dica de Estrada'        ,'Transporte/Estrada/Estradas_Edit/'.$valor->id.'/'    ,''),$perm_editar).
-                                           $Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Dica de Estrada'       ,'Transporte/Estrada/Estradas_Del/'.$valor->id.'/'     ,'Deseja realmente deletar esse Dica de Estrada ?'),$perm_del);
+            $tabela['Funções'][$i]      .= '<span id="destaques'.$valor->id.'">'.$Visual->Tema_Elementos_Btn('Destaque'.$valor->destaque   ,Array($texto   ,'Transporte/Estrada/Destaques/'.$valor->id.'/'    , ''), $perm_destaque).'</span>';
+            $tabela['Funções'][$i]      .= $Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Dica de Estrada'        ,'Transporte/Estrada/Estradas_Edit/'.$valor->id.'/'    , ''), $perm_editar).
+                                           $Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Dica de Estrada'       ,'Transporte/Estrada/Estradas_Del/'.$valor->id.'/'     ,'Deseja realmente deletar esse Dica de Estrada ?'), $perm_del);
             ++$i;
         }
-        return Array($tabela,$i);
+        return Array($tabela, $i);
     }
     
     /**
@@ -65,9 +65,9 @@ class Transporte_EstradaControle extends Transporte_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Estradas($export=false) {
+    public function Estradas($export = FALSE) {
         $i = 0;
-        self::Endereco_Noticia(false);
+        self::Endereco_Noticia(FALSE);
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
             Array(
                 'Adicionar Dica de Estrada',
@@ -83,17 +83,17 @@ class Transporte_EstradaControle extends Transporte_Controle
         )));
         $estrada = $this->_Modelo->db->Sql_Select('Transporte_Estrada');
         if (is_object($estrada)) $estrada = Array(0=>$estrada);
-        if ($estrada!==false && !empty($estrada)) {
-            list($tabela,$i) = self::Estradas_Tabela($estrada);
+        if ($estrada !== FALSE && !empty($estrada)) {
+            list($tabela, $i) = self::Estradas_Tabela($estrada);
             // SE exportar ou mostra em tabela
-            if ($export!==false) {
-                self::Export_Todos($export,$tabela, 'Dicas de Estradas');
+            if ($export !== FALSE) {
+                self::Export_Todos($export, $tabela, 'Dicas de Estradas');
             } else {
                 $this->_Visual->Show_Tabela_DataTable(
                     $tabela,     // Array Com a Tabela
                     '',          // style extra
                     true,        // true -> Add ao Bloco, false => Retorna html
-                    false,        // Apagar primeira coluna ?
+                    FALSE,        // Apagar primeira coluna ?
                     Array(       // Ordenacao
                         Array(
                             0,'desc'
@@ -103,7 +103,7 @@ class Transporte_EstradaControle extends Transporte_Controle
             }
             unset($tabela);
         } else {
-            if ($export!==false) {
+            if ($export !== FALSE) {
                 $mensagem = __('Nenhuma Dica de Estrada Cadastrada para exportar');
             } else {
                 $mensagem = __('Nenhuma Dica de Estrada Cadastrada');
@@ -121,7 +121,7 @@ class Transporte_EstradaControle extends Transporte_Controle
      * @version 0.4.2
      */
     public function Estradas_Add() {
-        self::Endereco_Noticia(true);
+        self::Endereco_Noticia(TRUE);
         // Carrega Config
         $titulo1    = __('Adicionar Dica de Estrada');
         $titulo2    = __('Salvar Dica de Estrada');
@@ -129,7 +129,7 @@ class Transporte_EstradaControle extends Transporte_Controle
         $formbt     = __('Salvar');
         $formlink   = 'Transporte/Estrada/Estradas_Add2/';
         $campos = Transporte_Estrada_DAO::Get_Colunas();
-        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos);
+        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1, $titulo2, $formlink, $formid, $formbt, $campos);
     }
     /**
      * 
@@ -145,7 +145,7 @@ class Transporte_EstradaControle extends Transporte_Controle
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = __('Dica de Estrada cadastrada com sucesso.');
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
     }
     /**
      * 
@@ -154,16 +154,16 @@ class Transporte_EstradaControle extends Transporte_Controle
      * @version 0.4.2
      */
     public function Estradas_Edit($id) {
-        self::Endereco_Noticia(true);
+        self::Endereco_Noticia(TRUE);
         // Carrega Config
         $titulo1    = 'Editar Dica de Estrada (#'.$id.')';
         $titulo2    = __('Alteração de Dica de Estrada');
         $formid     = 'formTransporte_EstradaC_NoticiaEdit';
         $formbt     = __('Alterar Dica de Estrada');
         $formlink   = 'Transporte/Estrada/Estradas_Edit2/'.$id;
-        $editar     = Array('Transporte_Estrada',$id);
+        $editar     = Array('Transporte_Estrada', $id);
         $campos = Transporte_Estrada_DAO::Get_Colunas();
-        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos,$editar);   
+        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1, $titulo2, $formlink, $formid, $formbt, $campos, $editar);   
     }
     /**
      * 
@@ -175,12 +175,12 @@ class Transporte_EstradaControle extends Transporte_Controle
     public function Estradas_Edit2($id) {
         $id = (int) $id;
         $titulo     = __('Dica de Estrada Alterada com Sucesso');
-        $dao        = Array('Transporte_Estrada',$id);
+        $dao        = Array('Transporte_Estrada', $id);
         $funcao     = '$this->Estradas();';
         $sucesso1   = __('Dica de Estrada Alterada com Sucesso');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
     }
     /**
      * 
@@ -197,7 +197,7 @@ class Transporte_EstradaControle extends Transporte_Controle
         $estrada    =  $this->_Modelo->db->Sql_Select('Transporte_Estrada', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($estrada);
         // Mensagem
-    	if ($sucesso===true) {
+    	if ($sucesso === TRUE) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
@@ -210,20 +210,20 @@ class Transporte_EstradaControle extends Transporte_Controle
                 "mgs_secundaria" => __('Erro')
             );
         }
-        $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+        $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
         
         $this->Estradas();
         
         $this->_Visual->Json_Info_Update('Titulo', __('Dica de Estrada deletada com Sucesso'));  
-        $this->_Visual->Json_Info_Update('Historico', false);  
+        $this->_Visual->Json_Info_Update('Historico', FALSE);  
     }
-    public function Status($id=false) {
-        if ($id===false) {
-            return false;
+    public function Status($id = FALSE) {
+        if ($id === FALSE) {
+            return FALSE;
         }
         $resultado = $this->_Modelo->db->Sql_Select('Transporte_Estrada', Array('id'=>$id),1);
-        if ($resultado===false || !is_object($resultado)) {
-            return false;
+        if ($resultado === FALSE || !is_object($resultado)) {
+            return FALSE;
         }
         if ($resultado->status==1 || $resultado->status=='1') {
             $resultado->status='0';
@@ -240,9 +240,9 @@ class Transporte_EstradaControle extends Transporte_Controle
             $conteudo = array(
                 'location' => '#status'.$resultado->id,
                 'js' => '',
-                'html' =>  $this->_Visual->Tema_Elementos_Btn('Status'.$resultado->status     ,Array($texto        ,'Transporte/Estrada/Status/'.$resultado->id.'/'    ,''))
+                'html' =>  $this->_Visual->Tema_Elementos_Btn('Status'.$resultado->status     ,Array($texto        ,'Transporte/Estrada/Status/'.$resultado->id.'/'    , ''))
             );
-            $this->_Visual->Json_IncluiTipo('Conteudo',$conteudo);
+            $this->_Visual->Json_IncluiTipo('Conteudo', $conteudo);
             $this->_Visual->Json_Info_Update('Titulo', __('Status Alterado')); 
         } else {
             $mensagens = array(
@@ -250,19 +250,19 @@ class Transporte_EstradaControle extends Transporte_Controle
                 "mgs_principal"     => __('Erro'),
                 "mgs_secundaria"    => __('Ocorreu um Erro.')
             );
-            $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+            $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
 
             $this->_Visual->Json_Info_Update('Titulo', __('Erro')); 
         }
-        $this->_Visual->Json_Info_Update('Historico', false);  
+        $this->_Visual->Json_Info_Update('Historico', FALSE);  
     }
-    public function Destaques($id=false) {
-        if ($id===false) {
-            return false;
+    public function Destaques($id = FALSE) {
+        if ($id === FALSE) {
+            return FALSE;
         }
         $resultado = $this->_Modelo->db->Sql_Select('Transporte_Estrada', Array('id'=>$id),1);
-        if ($resultado===false || !is_object($resultado)) {
-            return false;
+        if ($resultado === FALSE || !is_object($resultado)) {
+            return FALSE;
         }
         if ($resultado->destaque==1 || $resultado->destaque=='1') {
             $resultado->destaque='0';
@@ -279,9 +279,9 @@ class Transporte_EstradaControle extends Transporte_Controle
             $conteudo = array(
                 'location' => '#destaques'.$resultado->id,
                 'js' => '',
-                'html' =>  $this->_Visual->Tema_Elementos_Btn('Destaque'.$resultado->destaque     ,Array($texto        ,'Transporte/Estrada/Destaques/'.$resultado->id.'/'    ,''))
+                'html' =>  $this->_Visual->Tema_Elementos_Btn('Destaque'.$resultado->destaque     ,Array($texto        ,'Transporte/Estrada/Destaques/'.$resultado->id.'/'    , ''))
             );
-            $this->_Visual->Json_IncluiTipo('Conteudo',$conteudo);
+            $this->_Visual->Json_IncluiTipo('Conteudo', $conteudo);
             $this->_Visual->Json_Info_Update('Titulo', __('Destaque Alterado')); 
         } else {
             $mensagens = array(
@@ -289,11 +289,11 @@ class Transporte_EstradaControle extends Transporte_Controle
                 "mgs_principal"     => __('Erro'),
                 "mgs_secundaria"    => __('Ocorreu um Erro.')
             );
-            $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+            $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
 
             $this->_Visual->Json_Info_Update('Titulo', __('Erro')); 
         }
-        $this->_Visual->Json_Info_Update('Historico', false);  
+        $this->_Visual->Json_Info_Update('Historico', FALSE);  
     }
 }
 ?>

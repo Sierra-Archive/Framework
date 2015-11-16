@@ -46,7 +46,7 @@ class social_VisualizarControle extends social_Controle
                 ++$i;
             }
         }
-        $this->_Visual->exibetipos($tipo,$tipos,$tipon);
+        $this->_Visual->exibetipos($tipo, $tipos, $tipon);
         $this->_Visual->Show_Tabela_DataTable($tabela);
         $this->_Visual->Bloco_Maior_CriaJanela($persona['nome'] .' - Ações');
         // ORGANIZA E MANDA CONTEUDO

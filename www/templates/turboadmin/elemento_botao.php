@@ -20,7 +20,7 @@
                 <ul class="dropdown-menu pull-right">
                     <?php if ($params['Ferramentas']['Print']) { 
                         ?><li><a href="<?php echo URL_PATH; echo $params['Ferramentas']['Link']; ?>/Imprimir" target="_BLANK">Imprimir</a></li>
-                        <?php if ($params['Ferramentas']['Pdf']!==false && $params['Ferramentas']['Excel']!==false) { ?><li class="divider"></li><?php }
+                        <?php if ($params['Ferramentas']['Pdf'] !== FALSE && $params['Ferramentas']['Excel'] !== FALSE) { ?><li class="divider"></li><?php }
                     } ?>
                     <?php if ($params['Ferramentas']['Pdf']) { ?><li><a href="<?php echo URL_PATH; echo $params['Ferramentas']['Link']; ?>/Pdf" target="_BLANK">Abrir em PDF</a></li><?php } ?>
                     <?php if ($params['Ferramentas']['Pdf']) { ?><li><a href="<?php echo URL_PATH; echo $params['Ferramentas']['Link']; ?>/Pdf_Download">Download em PDF</a></li><?php } ?>

@@ -10,7 +10,7 @@
  * @package Minify
  */
 
-if (! class_exists('Minify_Loader', false)) {
+if (! class_exists('Minify_Loader', FALSE)) {
     require dirname(__FILE__) . '/lib/Minify/Loader.php';
     Minify_Loader::register();
 }
@@ -30,11 +30,11 @@ if (! class_exists('Minify_Loader', false)) {
  *
  * @param mixed $keyOrFiles a group key or array of file paths/URIs
  * @param array $opts options:
- *   'farExpires' : (default true) append a modified timestamp for cache revving
- *   'debug' : (default false) append debug flag
+ *   'farExpires' : (default TRUE) append a modified timestamp for cache revving
+ *   'debug' : (default FALSE) append debug flag
  *   'charset' : (default 'UTF-8') for htmlspecialchars
  *   'minAppUri' : (default '/min') URI of min directory
- *   'rewriteWorks' : (default true) does mod_rewrite work in min app?
+ *   'rewriteWorks' : (default TRUE) does mod_rewrite work in min app?
  *   'groupsConfigFile' : specify if different
  * @return string
  */

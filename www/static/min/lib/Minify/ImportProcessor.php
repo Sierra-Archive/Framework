@@ -51,7 +51,7 @@ class Minify_ImportProcessor {
         $this->_previewsDir = $previewsDir;
     }
 
-    private function _getContent($file, $is_imported = false)
+    private function _getContent($file, $is_imported = FALSE)
     {
         $file = realpath($file);
         if (! $file
@@ -84,7 +84,7 @@ class Minify_ImportProcessor {
                 ;                    # end token
             /x'
             ,array($this, '_importCB')
-            ,$content
+            , $content
         );
 
         // You only need to rework the import-path if the script is imported
@@ -93,7 +93,7 @@ class Minify_ImportProcessor {
             $content = preg_replace_callback(
                 '/url\\(\\s*([^\\)\\s]+)\\s*\\)/'
                 ,array($this, '_urlCB')
-                ,$content
+                , $content
             );
         }
 
@@ -122,7 +122,7 @@ class Minify_ImportProcessor {
                 . strtr($url, '/', DIRECTORY_SEPARATOR);
         }
         $obj = new Minify_ImportProcessor(dirname($file), $this->_currentDir);
-        $content = $obj->_getContent($file, true);
+        $content = $obj->_getContent($file, TRUE);
         if ('' === $content) {
             // failed. leave in place for CSS, comment for JS
             return self::$_isCss

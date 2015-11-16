@@ -6,21 +6,21 @@ class Desenvolvimento_Principal implements \Framework\PrincipalInterface
     * @version 0.4.2
     */
     static function Home(&$controle, &$Modelo, &$Visual) {
-        return false;
+        return FALSE;
     }
-    static function Busca(&$controle, &$Modelo, &$Visual,$busca) {
-        return false;
+    static function Busca(&$controle, &$Modelo, &$Visual, $busca) {
+        return FALSE;
     }
     static function Config() {
-        return false;
+        return FALSE;
     }
     
-    static function Relatorio($data_inicio,$data_final,$filtro=false) {
-        return false;
+    static function Relatorio($data_inicio, $data_final, $filtro = FALSE) {
+        return FALSE;
     }
     
-    static function Estatistica($data_inicio,$data_final,$filtro=false) {
-        return false;
+    static function Estatistica($data_inicio, $data_final, $filtro = FALSE) {
+        return FALSE;
     }
 }
 ?>

@@ -7,7 +7,7 @@ class _Sistema_ImgControle extends _Sistema_Controle
     }
     public function Main($codigo) {
     }
-    public function Redimensionar($img = false,$width = 50,$height = 50) {
+    public function Redimensionar($img = FALSE, $width = 50, $height = 50) {
         // Carrega a imagem de um arquivo
 	$img = WideImage::loadFromFile('imagens/minha_foto.jpg');
         // Redimensiona a imagem para preencher um quadrado de 350x200px

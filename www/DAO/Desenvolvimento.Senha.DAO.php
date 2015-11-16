@@ -10,7 +10,7 @@ final Class Desenvolvimento_Senha_DAO extends Framework\App\Dao
     protected $destaque;
     protected $status;
     protected $obs;
-    protected static $objetocarregado     = false;     protected static $mysql_colunas       = false;     protected static $mysql_outside       = Array();     protected static $mysql_inside        = Array(); public function __construct() {  parent::__construct(); } public static function Get_Nome() {
+    protected static $objetocarregado     = FALSE;     protected static $mysql_colunas       = FALSE;     protected static $mysql_outside       = Array();     protected static $mysql_inside        = Array(); public function __construct() {  parent::__construct(); } public static function Get_Nome() {
         return MYSQL_DESENVOLVIMENTO_SENHA;
     }
     /**
@@ -18,7 +18,7 @@ final Class Desenvolvimento_Senha_DAO extends Framework\App\Dao
      * @return string
      */
     public static function Permissao_Copia() {
-        return false;
+        return FALSE;
     }
     public static function Get_Sigla() {
         return 'DS';
@@ -41,7 +41,7 @@ final Class Desenvolvimento_Senha_DAO extends Framework\App\Dao
                 'mysql_titulo'      => 'id',
                 'mysql_tipovar'     => 'int', //varchar, int, 
                 'mysql_tamanho'     => 11,
-                'mysql_null'        => FALSE, // true NULL, false, NOT NULL
+                'mysql_null'        => FALSE, // true NULL, FALSE, NOT NULL
                 'mysql_default'     => FALSE,//false -> NONE, outro -> default
                 'mysql_primary'     => TRUE, // chave primaria
                 'mysql_estrangeira' => FALSE, // chave estrangeira     ligacao|apresentacao|condicao
@@ -55,7 +55,7 @@ final Class Desenvolvimento_Senha_DAO extends Framework\App\Dao
                 'mysql_titulo'      => 'usuario',
                 'mysql_tipovar'     => 'int', //varchar, int, 
                 'mysql_tamanho'     => 11,
-                'mysql_null'        => TRUE, // true NULL, false, NOT NULL
+                'mysql_null'        => TRUE, // true NULL, FALSE, NOT NULL
                 'mysql_default'     => '1',//false -> NONE, outro -> default
                 'mysql_primary'     => FALSE, // chave primaria
                 'mysql_estrangeira' => 'U.id|U.nome', // chave estrangeira     ligacao|apresentacao|condicao
@@ -81,7 +81,7 @@ final Class Desenvolvimento_Senha_DAO extends Framework\App\Dao
                 'mysql_titulo'      => 'categoria',
                 'mysql_tipovar'     => 'int', //varchar, int, 
                 'mysql_tamanho'     => 11,
-                'mysql_null'        => TRUE, // true NULL, false, NOT NULL
+                'mysql_null'        => TRUE, // true NULL, FALSE, NOT NULL
                 'mysql_default'     => FALSE,//false -> NONE, outro -> default
                 'mysql_primary'     => FALSE, // chave primaria
                 'mysql_estrangeira' => 'C.id|C.nome|CA.mod_acc=Desenvolvimento_Senha', // chave estrangeira     ligacao|apresentacao|condicao

@@ -11,7 +11,7 @@ var $HREF;
 function PDF($orientation='P', $unit='mm', $size='A4')
 {
 	// Call parent constructor
-	$this->FPDF($orientation,$unit,$size);
+	$this->FPDF($orientation, $unit, $size);
 	// Initialization
 	$this->B = 0;
 	$this->I = 0;
@@ -22,17 +22,17 @@ function PDF($orientation='P', $unit='mm', $size='A4')
 function WriteHTML($html)
 {
 	// HTML parser
-	$html = str_replace("\n",' ',$html);
-	$a = preg_split('/<(.*)>/U',$html,-1,PREG_SPLIT_DELIM_CAPTURE);
+	$html = str_replace("\n",' ', $html);
+	$a = preg_split('/<(.*)>/U', $html,-1,PREG_SPLIT_DELIM_CAPTURE);
 	foreach($a as $i=>$e)
 	{
 		if ($i%2==0)
 		{
 			// Text
 			if ($this->HREF)
-				$this->PutLink($this->HREF,$e);
+				$this->PutLink($this->HREF, $e);
 			else
-				$this->Write(5,$e);
+				$this->Write(5, $e);
 		}
 		else
 		{
@@ -42,15 +42,15 @@ function WriteHTML($html)
 			else
 			{
 				// Extract attributes
-				$a2 = explode(' ',$e);
+				$a2 = explode(' ', $e);
 				$tag = strtoupper(array_shift($a2));
 				$attr = array();
 				foreach($a2 as $v)
 				{
-					if (preg_match('/([^=]*)=["\']?([^"\']*)/',$v,$a3))
+					if (preg_match('/([^=]*)=["\']?([^"\']*)/', $v, $a3))
 						$attr[strtoupper($a3[1])] = $a3[2];
 				}
-				$this->OpenTag($tag,$attr);
+				$this->OpenTag($tag, $attr);
 			}
 		}
 	}
@@ -60,7 +60,7 @@ function OpenTag($tag, $attr)
 {
 	// Opening tag
 	if ($tag=='B' || $tag=='I' || $tag=='U')
-		$this->SetStyle($tag,true);
+		$this->SetStyle($tag,TRUE);
 	if ($tag=='A')
 		$this->HREF = $attr['HREF'];
 	if ($tag=='BR')
@@ -71,7 +71,7 @@ function CloseTag($tag)
 {
 	// Closing tag
 	if ($tag=='B' || $tag=='I' || $tag=='U')
-		$this->SetStyle($tag,false);
+		$this->SetStyle($tag, FALSE);
 	if ($tag=='A')
 		$this->HREF = '';
 }
@@ -86,16 +86,16 @@ function SetStyle($tag, $enable)
 		if ($this->$s>0)
 			$style .= $s;
 	}
-	$this->SetFont('',$style);
+	$this->SetFont('', $style);
 }
 
 function PutLink($URL, $txt)
 {
 	// Put a hyperlink
 	$this->SetTextColor(0,0,255);
-	$this->SetStyle('U',true);
-	$this->Write(5,$txt,$URL);
-	$this->SetStyle('U',false);
+	$this->SetStyle('U',TRUE);
+	$this->Write(5, $txt, $URL);
+	$this->SetStyle('U', FALSE);
 	$this->SetTextColor(0);
 }
 }
@@ -111,12 +111,12 @@ $pdf->SetFont('Arial', '',20);
 $pdf->Write(5,"To find out what's new in this tutorial, click ");
 $pdf->SetFont('', 'U');
 $link = $pdf->AddLink();
-$pdf->Write(5,'here',$link);
+$pdf->Write(5,'here', $link);
 $pdf->SetFont('');
 // Second page
 $pdf->AddPage();
 $pdf->SetLink($link);
-$pdf->Image('logo.png',10,12,30,0,'', 'http://www.fpdf.org');
+$pdf->Image('logo.png',10,12,30,0, '', 'http://www.fpdf.org');
 $pdf->SetLeftMargin(45);
 $pdf->SetFontSize(14);
 $pdf->WriteHTML($html);

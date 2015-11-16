@@ -118,7 +118,7 @@ class Image extends AbstractElement
      *
      * @var bool
      */
-    protected $mediaRelation = true;
+    protected $mediaRelation = TRUE;
 
     /**
      * Create new image element
@@ -129,11 +129,11 @@ class Image extends AbstractElement
      * @throws \Framework\Classes\PhpWord\Exception\InvalidImageException
      * @throws \Framework\Classes\PhpWord\Exception\UnsupportedImageTypeException
      */
-    public function __construct($source, $style = null, $watermark = false)
+    public function __construct($source, $style = null, $watermark = FALSE)
     {
         $this->source = $source;
         $this->setIsWatermark($watermark);
-        $this->style = $this->setNewStyle(new ImageStyle(), $style, true);
+        $this->style = $this->setNewStyle(new ImageStyle(), $style, TRUE);
 
         $this->checkImage($source);
     }
@@ -297,13 +297,13 @@ class Image extends AbstractElement
      * @return string|null
      * @since 0.11.0
      */
-    public function getImageStringData($base64 = false)
+    public function getImageStringData($base64 = FALSE)
     {
         $source = $this->source;
         $actualSource = null;
         $imageBinary = null;
         $imageData = null;
-        $isTemp = false;
+        $isTemp = FALSE;
 
         // Get actual source from archive image or other source
         // Return null if not found
@@ -312,9 +312,9 @@ class Image extends AbstractElement
             list($zipFilename, $imageFilename) = explode('#', $source);
 
             $zip = new ZipArchive();
-            if ($zip->open($zipFilename) !== false) {
+            if ($zip->open($zipFilename) !== FALSE) {
                 if ($zip->locateName($imageFilename)) {
-                    $isTemp = true;
+                    $isTemp = TRUE;
                     $zip->extractTo(Settings::getTempDir(), $imageFilename);
                     $actualSource = Settings::getTempDir() . DIRECTORY_SEPARATOR . $imageFilename;
                 }
@@ -339,8 +339,8 @@ class Image extends AbstractElement
             $imageBinary = ob_get_contents();
             ob_end_clean();
         } else {
-            $fileHandle = fopen($actualSource, 'rb', false);
-            if ($fileHandle !== false) {
+            $fileHandle = fopen($actualSource, 'rb', FALSE);
+            if ($fileHandle !== FALSE) {
                 $imageBinary = fread($fileHandle, filesize($actualSource));
                 fclose($fileHandle);
             }
@@ -354,7 +354,7 @@ class Image extends AbstractElement
         }
 
         // Delete temporary file if necessary
-        if ($isTemp === true) {
+        if ($isTemp === TRUE) {
             @unlink($actualSource);
         }
 
@@ -408,13 +408,13 @@ class Image extends AbstractElement
     private function setSourceType($source)
     {
         if (stripos(strrev($source), strrev('.php')) === 0) {
-            $this->memoryImage = true;
+            $this->memoryImage = TRUE;
             $this->sourceType = self::SOURCE_GD;
-        } elseif (strpos($source, 'zip://') !== false) {
-            $this->memoryImage = false;
+        } elseif (strpos($source, 'zip://') !== FALSE) {
+            $this->memoryImage = FALSE;
             $this->sourceType = self::SOURCE_ARCHIVE;
         } else {
-            $this->memoryImage = (filter_var($source, FILTER_VALIDATE_URL) !== false);
+            $this->memoryImage = (filter_var($source, FILTER_VALIDATE_URL) !== FALSE);
             $this->sourceType = $this->memoryImage ? self::SOURCE_GD : self::SOURCE_LOCAL;
         }
     }
@@ -440,10 +440,10 @@ class Image extends AbstractElement
         }
 
         $zip = new ZipArchive();
-        if ($zip->open($zipFilename) !== false) {
+        if ($zip->open($zipFilename) !== FALSE) {
             if ($zip->locateName($imageFilename)) {
                 $imageContent = $zip->getFromName($imageFilename);
-                if ($imageContent !== false) {
+                if ($imageContent !== FALSE) {
                     file_put_contents($tempFilename, $imageContent);
                     $imageData = getimagesize($tempFilename);
                     unlink($tempFilename);

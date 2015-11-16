@@ -40,9 +40,9 @@ class usuario_rede_ListarModelo extends usuario_rede_Modelo
             'ativado'      => 1,
             'indicado_por'      => $antecessor,
         );
-        $registros = $this->db->Sql_Select('Usuario',$where,0,'id,nome,grupo');
+        $registros = $this->db->Sql_Select('Usuario', $where,0,'id,nome,grupo');
         if (is_object($registros)) $registros = Array($registros);
-        if ($registros!==false) {
+        if ($registros !== FALSE) {
             foreach($registros as &$campo) {
                 $array[$i]['id'] = $campo->id;
                 $array[$i]['nome'] = $campo->nome;

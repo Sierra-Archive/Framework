@@ -114,14 +114,14 @@ class Font extends AbstractStyle
      *
      * @var bool
      */
-    private $bold = false;
+    private $bold = FALSE;
 
     /**
      * Italic
      *
      * @var bool
      */
-    private $italic = false;
+    private $italic = FALSE;
 
     /**
      * Undeline
@@ -135,28 +135,28 @@ class Font extends AbstractStyle
      *
      * @var bool
      */
-    private $superScript = false;
+    private $superScript = FALSE;
 
     /**
      * Subscript
      *
      * @var bool
      */
-    private $subScript = false;
+    private $subScript = FALSE;
 
     /**
      * Strikethrough
      *
      * @var bool
      */
-    private $strikethrough = false;
+    private $strikethrough = FALSE;
 
     /**
      * Double strikethrough
      *
      * @var bool
      */
-    private $doubleStrikethrough = false;
+    private $doubleStrikethrough = FALSE;
 
     /**
      * Small caps
@@ -164,7 +164,7 @@ class Font extends AbstractStyle
      * @var bool
      * @link http://www.schemacentral.com/sc/ooxml/e-w_smallCaps-1.html
      */
-    private $smallCaps = false;
+    private $smallCaps = FALSE;
 
     /**
      * All caps
@@ -172,7 +172,7 @@ class Font extends AbstractStyle
      * @var bool
      * @link http://www.schemacentral.com/sc/ooxml/e-w_caps-1.html
      */
-    private $allCaps = false;
+    private $allCaps = FALSE;
 
     /**
      * Foreground/highlight
@@ -226,7 +226,7 @@ class Font extends AbstractStyle
      * Right to left languages 
      * @var boolean
      */
-    private $rtl = false;
+    private $rtl = FALSE;
 
     /**
      * Create new font style
@@ -399,7 +399,7 @@ class Font extends AbstractStyle
      * @param bool $value
      * @return self
      */
-    public function setBold($value = true)
+    public function setBold($value = TRUE)
     {
         $this->bold = $this->setBoolVal($value, $this->bold);
 
@@ -422,7 +422,7 @@ class Font extends AbstractStyle
      * @param bool $value
      * @return self
      */
-    public function setItalic($value = true)
+    public function setItalic($value = TRUE)
     {
         $this->italic = $this->setBoolVal($value, $this->italic);
 
@@ -468,7 +468,7 @@ class Font extends AbstractStyle
      * @param bool $value
      * @return self
      */
-    public function setSuperScript($value = true)
+    public function setSuperScript($value = TRUE)
     {
         return $this->setPairedVal($this->superScript, $this->subScript, $value);
     }
@@ -489,7 +489,7 @@ class Font extends AbstractStyle
      * @param bool $value
      * @return self
      */
-    public function setSubScript($value = true)
+    public function setSubScript($value = TRUE)
     {
         return $this->setPairedVal($this->subScript, $this->superScript, $value);
     }
@@ -510,7 +510,7 @@ class Font extends AbstractStyle
      * @param bool $value
      * @return self
      */
-    public function setStrikethrough($value = true)
+    public function setStrikethrough($value = TRUE)
     {
         return $this->setPairedVal($this->strikethrough, $this->doubleStrikethrough, $value);
     }
@@ -531,7 +531,7 @@ class Font extends AbstractStyle
      * @param bool $value
      * @return self
      */
-    public function setDoubleStrikethrough($value = true)
+    public function setDoubleStrikethrough($value = TRUE)
     {
         return $this->setPairedVal($this->doubleStrikethrough, $this->strikethrough, $value);
     }
@@ -552,7 +552,7 @@ class Font extends AbstractStyle
      * @param bool $value
      * @return self
      */
-    public function setSmallCaps($value = true)
+    public function setSmallCaps($value = TRUE)
     {
         return $this->setPairedVal($this->smallCaps, $this->allCaps, $value);
     }
@@ -573,7 +573,7 @@ class Font extends AbstractStyle
      * @param bool $value
      * @return self
      */
-    public function setAllCaps($value = true)
+    public function setAllCaps($value = TRUE)
     {
         return $this->setPairedVal($this->allCaps, $this->smallCaps, $value);
     }
@@ -753,7 +753,7 @@ class Font extends AbstractStyle
      * @param bool $value
      * @return self
      */
-    public function setRTL($value = true)
+    public function setRTL($value = TRUE)
     {
         $this->rtl = $this->setBoolVal($value, $this->rtl);
 

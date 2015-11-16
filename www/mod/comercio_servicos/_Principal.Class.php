@@ -16,19 +16,19 @@ class comercio_servicos_Principal implements \Framework\PrincipalInterface
     static function Home(&$controle, &$Modelo, &$Visual) {
         self::Widgets();
     }
-    static function Busca(&$controle, &$Modelo, &$Visual,$busca) {
-        return false;
+    static function Busca(&$controle, &$Modelo, &$Visual, $busca) {
+        return FALSE;
     }
     static function Config() {
-        return false;
+        return FALSE;
     }
     
-    static function Relatorio($data_inicio,$data_final,$filtro=false) {
-        return false;
+    static function Relatorio($data_inicio, $data_final, $filtro = FALSE) {
+        return FALSE;
     }
     
-    static function Estatistica($data_inicio,$data_final,$filtro=false) {
-        return false;
+    static function Estatistica($data_inicio, $data_final, $filtro = FALSE) {
+        return FALSE;
     }
     public static function Widgets() {
         $Registro = &\Framework\App\Registro::getInstacia();
@@ -51,7 +51,7 @@ class comercio_servicos_Principal implements \Framework\PrincipalInterface
         );
         
         
-        if (\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_servicos_ServicoTipo')===true) {
+        if (\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_servicos_ServicoTipo') === TRUE) {
             // Calcula Tipo de Serviço
             $tiposervico_qnt = $Modelo->db->Sql_Contar('Comercio_Servicos_Servico_Tipo');
 
@@ -61,7 +61,7 @@ class comercio_servicos_Principal implements \Framework\PrincipalInterface
                 'tags', 
                 $tiposervico_qnt, 
                 'light-brown', 
-                false, 
+                FALSE, 
                 120
             );
         }

@@ -32,7 +32,7 @@ class usuario_AdminModelo extends usuario_Modelo
         
         return 1;
     }*/
-    public function usuario_cnh_pendente(&$usuarios,$ativado=1) {
+    public function usuario_cnh_pendente(&$usuarios, $ativado=1) {
         $i = 0;
         $mysqlwhere = '';
         $sql = $this->db->query('SELECT id,nome,email,grupo
@@ -54,7 +54,7 @@ class usuario_AdminModelo extends usuario_Modelo
         }
         return $i;
     }
-    public function usuario_cnh_aprovar($id,$aprovar='sim') {
+    public function usuario_cnh_aprovar($id, $aprovar='sim') {
         if ($aprovar=='sim') $cnh_apv = 2;
         else                $cnh_apv = 1;
         
@@ -62,7 +62,7 @@ class usuario_AdminModelo extends usuario_Modelo
         
         return 1;
     }
-    public function usuario_res_aprovar($id,$aprovar='sim') {
+    public function usuario_res_aprovar($id, $aprovar='sim') {
         if ($aprovar=='sim') $res_apv = 2;
         else                $res_apv = 1;
         
@@ -70,7 +70,7 @@ class usuario_AdminModelo extends usuario_Modelo
         
         return 1;
     }
-    public function usuario_res_pendente(&$usuarios,$ativado=1) {
+    public function usuario_res_pendente(&$usuarios, $ativado=1) {
         $i = 0;
         $mysqlwhere = '';
         $sql = $this->db->query('SELECT id,nome,email,grupo
@@ -110,16 +110,16 @@ class usuario_AdminModelo extends usuario_Modelo
      */
     
     public function ListarCliente() {
-        $this->Usuario_Listagem(Array(CFG_TEC_CAT_ID_CLIENTES,\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Cliente_nome')),false,20,false);
-        return true;
+        $this->Usuario_Listagem(Array(CFG_TEC_CAT_ID_CLIENTES,\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Cliente_nome')), FALSE,20, FALSE);
+        return TRUE;
     }
     public function ListarFuncionario() {
-        $this->Usuario_Listagem(Array(CFG_TEC_CAT_ID_FUNCIONARIOS,\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Funcionario_nome')),false,10,false,'Funcionario');
-        return true;
+        $this->Usuario_Listagem(Array(CFG_TEC_CAT_ID_FUNCIONARIOS,\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Funcionario_nome')), FALSE,10, FALSE,'Funcionario');
+        return TRUE;
     }
     public function ListarUsuario() {
-        $this->Usuario_Listagem(Array(CFG_TEC_CAT_ID_ADMIN,'Usuários'),false,10,false);
-        return true;
+        $this->Usuario_Listagem(Array(CFG_TEC_CAT_ID_ADMIN,'Usuários'), FALSE,10, FALSE);
+        return TRUE;
     }
     
 }

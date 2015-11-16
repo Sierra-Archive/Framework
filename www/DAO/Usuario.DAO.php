@@ -87,10 +87,10 @@ final Class Usuario_DAO extends Framework\App\Dao
     protected $foto_res_apv;
     
     
-    // Padrao é false, ou array com os campos que nao aceita
+    // Padrao é FALSE, ou array com os campos que nao aceita
     protected static $campos_naoaceita_config  = Array('foto', 'email', 'email2', 'login', 'senha', 'foto_cnh', 'foto_res');
     
-    protected static $objetocarregado     = false;     protected static $mysql_colunas       = false;     protected static $mysql_outside       = Array();     protected static $mysql_inside        = Array(); public function __construct() {  parent::__construct(); } public static function Get_Nome() {
+    protected static $objetocarregado     = FALSE;     protected static $mysql_colunas       = FALSE;     protected static $mysql_outside       = Array();     protected static $mysql_inside        = Array(); public function __construct() {  parent::__construct(); } public static function Get_Nome() {
         return MYSQL_USUARIOS;
     }
     /**
@@ -98,7 +98,7 @@ final Class Usuario_DAO extends Framework\App\Dao
      * @return string
      */
     public static function Permissao_Copia() {
-        return false;
+        return FALSE;
     }
     public static function Get_Sigla() {
         return 'U';
@@ -1632,12 +1632,12 @@ final Class Usuario_DAO extends Framework\App\Dao
                 'mysql_tipovar'     => 'varchar', //varchar, int, 
                 'mysql_tamanho'     => 80,
                 'mysql_null'        => TRUE,  // nulo ?
-                'mysql_default'     => \Framework\App\Sistema_Funcoes::Form_Senha_Blindar('123456',true),
+                'mysql_default'     => \Framework\App\Sistema_Funcoes::Form_Senha_Blindar('123456',TRUE),
                 'mysql_primary'     => FALSE,  // chave primaria
                 'mysql_estrangeira' => FALSE, // chave estrangeira     ligacao|apresentacao|condicao
                 'mysql_autoadd'     => FALSE,
                 'mysql_comment'     => FALSE,
-                'mysql_inside'      => 'Framework\App\Sistema_Funcoes::Form_Senha_Blindar({valor},true)', // Funcao Executada quando o dado for inserido no banco de dados
+                'mysql_inside'      => 'Framework\App\Sistema_Funcoes::Form_Senha_Blindar({valor},TRUE)', // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => FALSE, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => FALSE, //permissao funcional necessaria para campo 2 todos 
                 'edicao'            => Array(

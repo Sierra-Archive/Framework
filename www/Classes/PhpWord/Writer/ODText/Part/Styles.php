@@ -116,7 +116,7 @@ class Styles extends AbstractPart
         $styles = Style::getStyles();
         if (count($styles) > 0) {
             foreach ($styles as $style) {
-                if ($style->isAuto() === false) {
+                if ($style->isAuto() === FALSE) {
                     $styleClass = str_replace('\\Style\\', '\\Writer\\ODText\\Style\\', get_class($style));
                     if (class_exists($styleClass)) {
                         /** @var $styleWriter \Framework\Classes\PhpWord\Writer\ODText\Style\AbstractStyle Type hint */

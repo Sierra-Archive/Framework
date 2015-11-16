@@ -201,7 +201,7 @@ class Minify_Controller_MinApp extends Minify_Controller_Base {
         $spec['filepath'] = $file;
         if ($cOptions['noMinPattern'] && preg_match($cOptions['noMinPattern'], basename($file))) {
             if (preg_match('~\.css$~i', $file)) {
-                $spec['minifyOptions']['compress'] = false;
+                $spec['minifyOptions']['compress'] = FALSE;
             } else {
                 $spec['minifier'] = '';
             }

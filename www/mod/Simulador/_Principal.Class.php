@@ -21,7 +21,7 @@ class Simulador_Principal implements \Framework\PrincipalInterface
      */
     static function Home(&$controle, &$Modelo, &$Visual) {
         self::Widgets();
-        return true;
+        return TRUE;
     }
     /**
      * 
@@ -30,15 +30,15 @@ class Simulador_Principal implements \Framework\PrincipalInterface
      * @version 0.4.2
      */
     static function Config() {
-        return false;
+        return FALSE;
     }
     
-    static function Relatorio($data_inicio,$data_final,$filtro=false) {
-        return false;
+    static function Relatorio($data_inicio, $data_final, $filtro = FALSE) {
+        return FALSE;
     }
     
-    static function Estatistica($data_inicio,$data_final,$filtro=false) {
-        return false;
+    static function Estatistica($data_inicio, $data_final, $filtro = FALSE) {
+        return FALSE;
     }
     /**
      * 
@@ -58,7 +58,7 @@ class Simulador_Principal implements \Framework\PrincipalInterface
             'folder-open',
             $tag_qnt, 
             'light-green', 
-            false, 
+            FALSE, 
             300
         );
     }
@@ -67,17 +67,17 @@ class Simulador_Principal implements \Framework\PrincipalInterface
     /***********************
      * BUSCAS
      */
-    static function Busca(&$controle, &$Modelo, &$Visual,$busca) {
+    static function Busca(&$controle, &$Modelo, &$Visual, $busca) {
         $i = 0;
         // Busca Tags
         $result = self::Busca_Tags($controle, $Modelo, $Visual, $busca);
-        if ($result!==false) {
+        if ($result !== FALSE) {
             $i = $i + $result;
         }
         if (is_int($i) && $i>0) {
             return $i;
         } else {
-            return false;
+            return FALSE;
         }
     }
     static function Busca_Tags($controle, $Modelo, $Visual, $busca) {
@@ -87,16 +87,16 @@ class Simulador_Principal implements \Framework\PrincipalInterface
           'arquivo'                 => '%'.$busca.'%'
         ));
         $i = 0;
-        $tags = $Modelo->db->Sql_Select('Simulador_Tag',$where);
-        if ($tags===false) return false;
+        $tags = $Modelo->db->Sql_Select('Simulador_Tag', $where);
+        if ($tags === FALSE) return FALSE;
         // add botao
         $Visual->Blocar('<a title="Adicionar Tag" class="btn btn-success lajax explicar-titulo" data-acao="" href="'.URL_PATH.'Simulador/Tag/Tags_Add">Adicionar nova Tag</a><div class="space15"></div>');
         if (is_object($tags)) $tags = Array(0=>$tags);
-        if ($tags!==false && !empty($tags)) {
+        if ($tags !== FALSE && !empty($tags)) {
             $funcao = '';
             $tabela = Array();
             $i = 0;
-            if ($tags!==false) {
+            if ($tags !== FALSE) {
                 // Percorre Tags
                 if (is_object($tags)) $tags = Array(0=>$tags);
                 reset($tags);
@@ -111,8 +111,8 @@ class Simulador_Principal implements \Framework\PrincipalInterface
                         $tabela['Nome'][$i]      = $valor->nome;
                         $tabela['Tipo de Resultado'][$i]      = $valor->resultado_tipo;
                         $tabela['Observação'][$i]      = $valor->obs;
-                        $tabela['Funções'][$i]          = $Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Pasta'        ,'Simulador/Tag/Tags_Edit/'.$valor->id.'/'.$raiz    ,''),$perm_editar).
-                                                          $Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Pasta'       ,'Simulador/Tag/Tags_Del/'.$valor->id.'/'.$raiz     ,'Deseja realmente deletar essa Tag ?'),$perm_del);
+                        $tabela['Funções'][$i]          = $Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Pasta'        ,'Simulador/Tag/Tags_Edit/'.$valor->id.'/'.$raiz    , ''), $perm_editar).
+                                                          $Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Pasta'       ,'Simulador/Tag/Tags_Del/'.$valor->id.'/'.$raiz     ,'Deseja realmente deletar essa Tag ?'), $perm_del);
                         
                         $funcao .= $tabela['Funções'][$i];
                         ++$i;
@@ -123,7 +123,7 @@ class Simulador_Principal implements \Framework\PrincipalInterface
                 unset($tabela['Funções']);
             }
             // Desconta Primeiro Registro
-            if ($raiz!==false && $raiz!=0) {
+            if ($raiz !== FALSE && $raiz!=0) {
                 $i = $i-1;
             }
             // Retorna List
@@ -149,7 +149,7 @@ class Simulador_Principal implements \Framework\PrincipalInterface
         $Modelo = &$Registro->_Modelo;
         $Visual = &$Registro->_Visual;
         // Endereços dos arquivos $tags_chaves['endereco'] = 'ID';
-        return true;
+        return TRUE;
     }
 }
 ?>

@@ -59,7 +59,7 @@ class PagSeguroAuthorizationParser extends PagSeguroServiceParser
         }
         // Permissions
         if ($authorization->getPermissions()->getPermissions() != null) {
-            $data['permissions'] = implode(', ',$authorization->getPermissions()->getPermissions());
+            $data['permissions'] = implode(', ', $authorization->getPermissions()->getPermissions());
         }
 
         // parameter
@@ -121,7 +121,7 @@ class PagSeguroAuthorizationParser extends PagSeguroServiceParser
                 $i = 0;
                 foreach ($data['authorizations']['authorization'] as $key => $value) {
                     $newAuthorization = new PagSeguroAuthorization();
-                    $nAuthorization[$i++] = self::buildAuthorization($newAuthorization,$value);
+                    $nAuthorization[$i++] = self::buildAuthorization($newAuthorization, $value);
                 }
                 $authorization->setAuthorizations($nAuthorization);
 
@@ -220,7 +220,7 @@ class PagSeguroAuthorizationParser extends PagSeguroServiceParser
     {
     	$err = new stdClass();
     	$err->message = key($error);
-    	$err->status = true;
+    	$err->status = TRUE;
 
     	return $err;
     }

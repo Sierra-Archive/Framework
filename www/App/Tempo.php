@@ -28,7 +28,7 @@ class Tempo{
      */
     public function __construct($nome) {
         $this->nome = $nome.' S.M.';
-        $this->comeco = microtime(true);
+        $this->comeco = microtime(TRUE);
     }
     /**
      * Fechar Logs
@@ -38,14 +38,14 @@ class Tempo{
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Fechar($fechar=true) {
-        $tempofinal = number_format((microtime(true)-$this->comeco)*1000, 10);
+    public function Fechar($fechar= TRUE ) {
+        $tempofinal = number_format((microtime(TRUE)-$this->comeco)*1000, 10);
         self::$log[] = Array(
             $this->nome,
             $tempofinal,
-            round((memory_get_usage(true)/1024)/1024,2).'MB',
-            round((memory_get_peak_usage(true)/1024)/1024,2).'MB',
-            round((memory_get_peak_usage(false)/1024)/1024,2).'MB'
+            round((memory_get_usage(TRUE)/1024)/1024,2).'MB',
+            round((memory_get_peak_usage(TRUE)/1024)/1024,2).'MB',
+            round((memory_get_peak_usage(FALSE)/1024)/1024,2).'MB'
         );
         if ($fechar) {
             unset($this);
@@ -58,7 +58,7 @@ class Tempo{
      * @version 0.4.2
      */
     public function __destruct() {
-        $this->Fechar(false);
+        $this->Fechar(FALSE);
     }
     /**
      * Pega Tempo da Página
@@ -67,13 +67,13 @@ class Tempo{
      * @version 0.4.2
      */
     private static function Tempo_Pagina() {
-        $tempofinal = number_format((microtime(true)-TEMPO_COMECO)*1000, 10);
+        $tempofinal = number_format((microtime(TRUE)-TEMPO_COMECO)*1000, 10);
         self::$log[] = Array(
             SERVER_URL,
             $tempofinal,
-            round((memory_get_usage(true)/1024)/1024,2).'MB',
-            round((memory_get_peak_usage(true)/1024)/1024,2).'MB',
-            round((memory_get_peak_usage(false)/1024)/1024,2).'MB'
+            round((memory_get_usage(TRUE)/1024)/1024,2).'MB',
+            round((memory_get_peak_usage(TRUE)/1024)/1024,2).'MB',
+            round((memory_get_peak_usage(FALSE)/1024)/1024,2).'MB'
         );
         
     }
@@ -86,18 +86,18 @@ class Tempo{
      * @version 0.4.2
      */
     static function Salvar() {
-        $comeco = microtime(true);
+        $comeco = microtime(TRUE);
         self::Tempo_Pagina();
         $Registro   = &\Framework\App\Registro::getInstacia();$db     = &$Registro->_Conexao; $log = self::$log;
         
         // Se nao tiver Carregado Conexao, aborta
-        if ($db===false) {
-            return false;
+        if ($db === FALSE) {
+            return FALSE;
         }
         
         // Busca Performaces e Da Forach
         $Registro_mysql     = Array();
-        $Registros_mysql    = $db->Sql_Select('Sistema_Log_Performace',  false,0,'', 'chave,nome,ocorrencia,tempo_total,tempo_minimo,tempo_media,tempo_maximo', false);
+        $Registros_mysql    = $db->Sql_Select('Sistema_Log_Performace',  FALSE,0, '', 'chave,nome,ocorrencia,tempo_total,tempo_minimo,tempo_media,tempo_maximo', FALSE);
         if (is_object($Registros_mysql))$Registros_mysql = Array($Registros_mysql);
         if (!empty($Registros_mysql)) {
             foreach($Registros_mysql as &$valor) {
@@ -136,7 +136,7 @@ class Tempo{
                     $log_sql->tempo_maximo  = $valor[1];
                     $log_sql->tempo_media   = $valor[1];
                     $log_sql->ocorrencia = 1;
-        //var_dump($log_sql,$valor);
+        //var_dump($log_sql, $valor);
                     // Guarda pra Inserir
                     $inserir[] = $log_sql;
                     // Atualiza Memoria Ram
@@ -145,14 +145,14 @@ class Tempo{
             }
         }
         // SE tiver a inserir, inseri
-        //var_dump($inserir,$atualizar);
-        if (!empty($inserir))    $db->Sql_Insert($inserir,false);
-        if (!empty($atualizar))  $db->Sql_Update($atualizar,false,false);
+        //var_dump($inserir, $atualizar);
+        if (!empty($inserir))    $db->Sql_Insert($inserir, FALSE);
+        if (!empty($atualizar))  $db->Sql_Update($atualizar, FALSE, FALSE);
         
         
         // Grava Tempo de Log
         $nome   = 'Log Salvar S.M';
-        $tempo  = number_format((microtime(true)-$comeco)*1000, 10);
+        $tempo  = number_format((microtime(TRUE)-$comeco)*1000, 10);
         $chave  = sha1($nome);
         if (isset($Registro_mysql[$chave])) {
             $log_sql = &$Registro_mysql[$chave];
@@ -169,7 +169,7 @@ class Tempo{
             } else {
                 $log_sql->tempo_media = ($log_sql->tempo_total/$log_sql->ocorrencia);
             }
-            $db->Sql_Update($Registro_mysql[$chave],false);
+            $db->Sql_Update($Registro_mysql[$chave], FALSE);
         } else {
             $Registro_mysql[$chave] = new \Sistema_Log_Performace_DAO();
             $log_sql = &$Registro_mysql[$chave];
@@ -180,7 +180,7 @@ class Tempo{
             $log_sql->tempo_maximo  = $tempo;
             $log_sql->tempo_media   = $tempo;
             $log_sql->ocorrencia = 1;
-            $db->Sql_Insert($Registro_mysql[$chave],false);
+            $db->Sql_Insert($Registro_mysql[$chave], FALSE);
         }
     }
     /**

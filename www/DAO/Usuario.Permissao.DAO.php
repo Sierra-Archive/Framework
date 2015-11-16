@@ -5,11 +5,11 @@ final Class Usuario_Permissao_DAO extends Framework\App\Dao
     protected $usuario;
     protected $valor;
     
-    // Padrao é false, ou array com os campos que nao aceita
-    protected static $aceita_config       = false;
+    // Padrao é FALSE, ou array com os campos que nao aceita
+    protected static $aceita_config       = FALSE;
     protected static $campos_naoaceita_config  = Array('permissao', 'valor');
     
-    protected static $objetocarregado     = false;     protected static $mysql_colunas       = false;     protected static $mysql_outside       = Array();     protected static $mysql_inside        = Array(); public function __construct() {  parent::__construct(); } public static function Get_Nome() {
+    protected static $objetocarregado     = FALSE;     protected static $mysql_colunas       = FALSE;     protected static $mysql_outside       = Array();     protected static $mysql_inside        = Array(); public function __construct() {  parent::__construct(); } public static function Get_Nome() {
         return MYSQL_USUARIO_PERMISSAO;
     }
     /**
@@ -17,7 +17,7 @@ final Class Usuario_Permissao_DAO extends Framework\App\Dao
      * @return string
      */
     public static function Permissao_Copia() {
-        return false;
+        return FALSE;
     }
     public static function Get_Sigla() {
         return 'UP';

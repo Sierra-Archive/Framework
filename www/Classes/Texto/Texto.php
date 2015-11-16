@@ -18,7 +18,7 @@ class Texto
      * @var type 
      */
     private $texto = '';
-    public function __construct($texto=false) {
+    public function __construct($texto = FALSE) {
         $this->texto = $texto;
     }
     /**
@@ -46,14 +46,14 @@ class Texto
         $tam = strlen($palavra);
         
         if ($tam>1 && $palavra[$tam-1]=='a') {
-            return false;
+            return FALSE;
         } else if ($tam>2 && $palavra[$tam-2]=='a' && $palavra[$tam-1]=='s') {
-            return false;
+            return FALSE;
         } else if ($tam>2 && $palavra[$tam-2]=='e' && $palavra[$tam-1]=='s') {
-            return false;
+            return FALSE;
         }
         
-        return true;
+        return TRUE;
         
     }
 }

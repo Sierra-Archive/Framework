@@ -112,7 +112,7 @@ class Word2007 extends AbstractReader implements ReaderInterface
         // word/_rels/*.xml.rels
         $wordRelsPath = 'word/_rels/';
         $zip = new ZipArchive();
-        if ($zip->open($docFile) === true) {
+        if ($zip->open($docFile) === TRUE) {
             for ($i = 0; $i < $zip->numFiles; $i++) {
                 $xmlFile = $zip->getNameIndex($i);
                 if ((substr($xmlFile, 0, strlen($wordRelsPath))) == $wordRelsPath && (substr($xmlFile, -1)) != '/') {

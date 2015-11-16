@@ -34,14 +34,14 @@ class Paragraph extends AbstractStyle
      *
      * @var bool
      */
-    private $withoutPPR = false;
+    private $withoutPPR = FALSE;
 
     /**
      * Is inline in element
      *
      * @var bool
      */
-    private $isInline = false;
+    private $isInline = FALSE;
 
     /**
      * Write style.
@@ -87,7 +87,7 @@ class Paragraph extends AbstractStyle
         }
 
         // Style name
-        if ($this->isInline === true) {
+        if ($this->isInline === TRUE) {
             $xmlWriter->writeElementIf($styles['name'] !== null, 'w:pStyle', 'w:val', $styles['name']);
         }
 
@@ -96,7 +96,7 @@ class Paragraph extends AbstractStyle
         $styleWriter->write();
 
         // Pagination
-        $xmlWriter->writeElementIf($styles['pagination']['widowControl'] === false, 'w:widowControl', 'w:val', '0');
+        $xmlWriter->writeElementIf($styles['pagination']['widowControl'] === FALSE, 'w:widowControl', 'w:val', '0');
         $xmlWriter->writeElementIf($styles['pagination']['keepNext'] === true, 'w:keepNext', 'w:val', '1');
         $xmlWriter->writeElementIf($styles['pagination']['keepLines'] === true, 'w:keepLines', 'w:val', '1');
         $xmlWriter->writeElementIf($styles['pagination']['pageBreak'] === true, 'w:pageBreakBefore', 'w:val', '1');

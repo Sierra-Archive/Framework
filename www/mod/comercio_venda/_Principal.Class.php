@@ -32,7 +32,7 @@ class comercio_venda_Principal implements \Framework\PrincipalInterface
         $where = '(data_fechada=\'0000-00-00 00:00:00\' || data_fechada=\'\')';
         $carrinhos = $Modelo->db->Sql_Select('Comercio_Venda_Carrinho');
         if (is_object($carrinhos)) $carrinhos = Array($carrinhos);
-        if ($carrinhos!==false && !empty($carrinhos)) {
+        if ($carrinhos !== FALSE && !empty($carrinhos)) {
             foreach($carrinhos as &$valor) {
                 // SE nao for Balcao Adiciona a Mesa Ocupada
                 if ($valor->mesa!='' && $valor->mesa!=0) {
@@ -45,7 +45,7 @@ class comercio_venda_Principal implements \Framework\PrincipalInterface
                     $cor = 'important';
                     $numero = $valor->valor;
                     $html .= '<a data-original-title="Novo Caixa" 
-                        href="'.SISTEMA_URL.SISTEMA_DIR.'comercio_venda/Carrinho/Carrinhos_Add?popup=true" 
+                        href="'.SISTEMA_URL.SISTEMA_DIR.'comercio_venda/Carrinho/Carrinhos_Add?popup= TRUE" 
                         data-toggle="tooltip" data-placement="bottom" data-acao="" class="fa fa-btn col-3 lajax">
                         <i class="fa fa-food"></i>
                         <div>Balcão '.$i.'</div>
@@ -66,11 +66,11 @@ class comercio_venda_Principal implements \Framework\PrincipalInterface
         // FAz BUsca Por Todas as Mesas
         $mesas = $Modelo->db->Sql_Select('Comercio_Venda_Mesa');
         if (is_object($mesas)) $mesas = Array($mesas);
-        if ($mesas!==false && !empty($mesas)) {
+        if ($mesas !== FALSE && !empty($mesas)) {
             foreach($mesas as &$valor) {
                 
                 // SE Tiver Aberta Bota ali
-                if (isset($mesas_ocupadas[$valor->id]) && $mesas_ocupadas[$valor->id]!==false) {
+                if (isset($mesas_ocupadas[$valor->id]) && $mesas_ocupadas[$valor->id] !== FALSE) {
                     $cor = 'important';
                     $numero = $mesas_ocupadas[$valor->id]['Valor'];
                 } else {
@@ -80,7 +80,7 @@ class comercio_venda_Principal implements \Framework\PrincipalInterface
                 
                 // Faz o Html da Parada
                 $html .= '<a data-original-title="Novo Caixa" 
-                        href="'.SISTEMA_URL.SISTEMA_DIR.'comercio_venda/Carrinho/Carrinhos_Add?popup=true" 
+                        href="'.SISTEMA_URL.SISTEMA_DIR.'comercio_venda/Carrinho/Carrinhos_Add?popup= TRUE" 
                         data-toggle="tooltip" data-placement="bottom" data-acao="" class="fa fa-btn col-3 lajax">
                         <i class="fa fa-food"></i>
                     <div>'.$valor->nome.'</div>
@@ -98,7 +98,7 @@ class comercio_venda_Principal implements \Framework\PrincipalInterface
         
         
         if ($html==='') {
-            return false;
+            return FALSE;
         }
         
         /*<a href="#" class="fa fa-btn col-2">
@@ -132,7 +132,7 @@ class comercio_venda_Principal implements \Framework\PrincipalInterface
         $Visual->Blocar($html);
         $Visual->Bloco_Maior_CriaJanela(__('Mesas'));
         
-        return true;
+        return TRUE;
     }
     static function Widget(&$_Controle) {
         $_Controle->Widget_Add('Superior',
@@ -142,19 +142,19 @@ class comercio_venda_Principal implements \Framework\PrincipalInterface
             '</a>'.
         '</li>');
     }
-    static function Busca(&$controle, &$Modelo, &$Visual,$busca) {
-        return false;
+    static function Busca(&$controle, &$Modelo, &$Visual, $busca) {
+        return FALSE;
     }
     static function Config() {
-        return false;
+        return FALSE;
     }
 
-    public static function Estatistica($data_inicio, $data_final, $filtro = false) {
-        return false;
+    public static function Estatistica($data_inicio, $data_final, $filtro = FALSE) {
+        return FALSE;
     }
 
-    public static function Relatorio($data_inicio, $data_final, $filtro = false) {
-        return false;
+    public static function Relatorio($data_inicio, $data_final, $filtro = FALSE) {
+        return FALSE;
     }
 
 }

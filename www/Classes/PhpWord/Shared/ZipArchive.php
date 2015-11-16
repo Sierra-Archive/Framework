@@ -73,7 +73,7 @@ class ZipArchive
      *
      * @var bool
      */
-    private $usePclzip = true;
+    private $usePclzip = TRUE;
 
     /**
      * Create new instance
@@ -110,7 +110,7 @@ class ZipArchive
         }
 
         // Run function
-        $result = false;
+        $result = FALSE;
         if (method_exists($zipObject, $zipFunction)) {
             $result = @call_user_func_array(array($zipObject, $zipFunction), $args);
         }
@@ -127,7 +127,7 @@ class ZipArchive
      */
     public function open($filename, $flags = null)
     {
-        $result = true;
+        $result = TRUE;
         $this->filename = $filename;
 
         if (!$this->usePclzip) {
@@ -157,12 +157,12 @@ class ZipArchive
     public function close()
     {
         if (!$this->usePclzip) {
-            if ($this->zip->close() === false) {
+            if ($this->zip->close() === FALSE) {
                 throw new Exception("Could not close zip file {$this->filename}.");
             }
         }
 
-        return true;
+        return TRUE;
     }
 
     /**
@@ -176,7 +176,7 @@ class ZipArchive
     public function extractTo($destination, $entries = null)
     {
         if (!is_dir($destination)) {
-            return false;
+            return FALSE;
         }
 
         if (!$this->usePclzip) {
@@ -196,7 +196,7 @@ class ZipArchive
     {
         if (!$this->usePclzip) {
             $contents = $this->zip->getFromName($filename);
-            if ($contents === false) {
+            if ($contents === FALSE) {
                 $filename = substr($filename, 1);
                 $contents = $this->zip->getFromName($filename);
             }
@@ -221,7 +221,7 @@ class ZipArchive
 
         // Bugfix GH-261 https://github.com/PHPOffice/PHPWord/pull/261
         $realpathFilename = realpath($filename);
-        if ($realpathFilename !== false) {
+        if ($realpathFilename !== FALSE) {
             $filename = $realpathFilename;
         }
 
@@ -230,9 +230,9 @@ class ZipArchive
 
         // To Rename the file while adding it to the zip we
         //   need to create a temp file with the correct name
-        $tempFile = false;
+        $tempFile = FALSE;
         if ($filenameParts['basename'] != $localnameParts['basename']) {
-            $tempFile = true; // temp file created
+            $tempFile = TRUE; // temp file created
             $temppath = $this->tempDir . DIRECTORY_SEPARATOR . $localnameParts['basename'];
             copy($filename, $temppath);
             $filename = $temppath;
@@ -310,11 +310,11 @@ class ZipArchive
             $entryIndex = $this->locateName($entry);
             $result = $zip->extractByIndex($entryIndex, PCLZIP_OPT_PATH, $destination);
             if ($result <= 0) {
-                return false;
+                return FALSE;
             }
         }
 
-        return true;
+        return TRUE;
     }
 
     /**
@@ -328,9 +328,9 @@ class ZipArchive
         /** @var \PclZip $zip Type hint */
         $zip = $this->zip;
         $listIndex = $this->pclzipLocateName($filename);
-        $contents = false;
+        $contents = FALSE;
 
-        if ($listIndex !== false) {
+        if ($listIndex !== FALSE) {
             $extracted = $zip->extractByIndex($listIndex, PCLZIP_OPT_EXTRACT_AS_STRING);
         } else {
             $filename = substr($filename, 1);
@@ -359,7 +359,7 @@ class ZipArchive
         if (isset($list[$index])) {
             return $list[$index]['filename'];
         } else {
-            return false;
+            return FALSE;
         }
     }
 

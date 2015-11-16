@@ -50,9 +50,9 @@ class TCPDF extends AbstractRenderer implements WriterInterface
 
         // Create PDF
         $pdf = new \TCPDF($orientation, 'pt', $paperSize);
-        $pdf->setFontSubsetting(false);
-        $pdf->setPrintHeader(false);
-        $pdf->setPrintFooter(false);
+        $pdf->setFontSubsetting(FALSE);
+        $pdf->setPrintHeader(FALSE);
+        $pdf->setPrintFooter(FALSE);
         $pdf->addPage();
         $pdf->setFont($this->getFont());
         $pdf->writeHTML($this->getContent());

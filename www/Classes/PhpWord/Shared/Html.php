@@ -36,7 +36,7 @@ class Html
      * @param bool $fullHTML If it's a full HTML, no need to add 'body' tag
      * @return void
      */
-    public static function addHtml($element, $html, $fullHTML = false)
+    public static function addHtml($element, $html, $fullHTML = FALSE)
     {
         /*
          * @todo parse $stylesheet for default styles.  Should result in an array based on id, class and element,
@@ -51,13 +51,13 @@ class Html
         $html = str_replace('&', '&amp;', $html);
         $html = str_replace(array('_lt_', '_gt_', '_amp_'), array('&lt;', '&gt;', '&amp;'), $html);
 
-        if ($fullHTML === false) {
+        if ($fullHTML === FALSE) {
             $html = '<body>' . $html . '</body>';
         }
 
         // Load DOM
         $dom = new \DOMDocument();
-        $dom->preserveWhiteSpace = true;
+        $dom->preserveWhiteSpace = TRUE;
         $dom->loadXML($html);
         $node = $dom->getElementsByTagName('body');
 
@@ -118,13 +118,13 @@ class Html
             'h5'        => array('Heading',     null,   $element,   $styles,    null,   'Heading5',     null),
             'h6'        => array('Heading',     null,   $element,   $styles,    null,   'Heading6',     null),
             '#text'     => array('Text',        $node,  $element,   $styles,    null,   null,           null),
-            'strong'    => array('Property',    null,   null,       $styles,    null,   'bold',         true),
-            'em'        => array('Property',    null,   null,       $styles,    null,   'italic',       true),
-            'sup'       => array('Property',    null,   null,       $styles,    null,   'superScript',  true),
-            'sub'       => array('Property',    null,   null,       $styles,    null,   'subScript',    true),
-            'table'     => array('Table',       $node,  $element,   $styles,    null,   'addTable',     true),
-            'tr'        => array('Table',       $node,  $element,   $styles,    null,   'addRow',       true),
-            'td'        => array('Table',       $node,  $element,   $styles,    null,   'addCell',      true),
+            'strong'    => array('Property',    null,   null,       $styles,    null,   'bold',         TRUE),
+            'em'        => array('Property',    null,   null,       $styles,    null,   'italic',       TRUE),
+            'sup'       => array('Property',    null,   null,       $styles,    null,   'superScript',  TRUE),
+            'sub'       => array('Property',    null,   null,       $styles,    null,   'subScript',    TRUE),
+            'table'     => array('Table',       $node,  $element,   $styles,    null,   'addTable',     TRUE),
+            'tr'        => array('Table',       $node,  $element,   $styles,    null,   'addRow',       TRUE),
+            'td'        => array('Table',       $node,  $element,   $styles,    null,   'addCell',      TRUE),
             'ul'        => array('List',        null,   null,       $styles,    $data,  3,              null),
             'ol'        => array('List',        null,   null,       $styles,    $data,  7,              null),
             'li'        => array('ListItem',    $node,  $element,   $styles,    $data,  null,           null),
@@ -356,7 +356,7 @@ class Html
                             $styles['underline'] = 'single';
                             break;
                         case 'line-through':
-                            $styles['strikethrough'] = true;
+                            $styles['strikethrough'] = TRUE;
                             break;
                     }
                     break;

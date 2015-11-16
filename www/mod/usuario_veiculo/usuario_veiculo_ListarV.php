@@ -610,8 +610,8 @@ class usuario_veiculo_ListarVisual extends usuario_veiculo_Visual
         $html .= '</ul></div>';*/
         /*$js1 = Array(WEB_URL.'assets/metr-folio/js/jquery.metro-gal.plugins.min');
         $js2 = Array(WEB_URL.'assets/metr-folio/js/jquery.metro-gal.megafoliopro');
-        $Visual->Json_IncluiTipo('Javascript',$js1);
-        $Visual->Json_IncluiTipo('Javascript',$js2);*/
+        $Visual->Json_IncluiTipo('Javascript', $js1);
+        $Visual->Json_IncluiTipo('Javascript', $js2);*/
         $Visual->Javascript_Executar('var api=jQuery(\'.metro-gal-container\').megafoliopro(
                    {
                        filterChangeAnimation:"pagebottom",			// fade, rotate, scale, rotatescale, pagetop, pagebottom,pagemiddle

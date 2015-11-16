@@ -22,13 +22,13 @@ class comercio_ProdutoModelo extends comercio_Modelo
      * @param type $usuarioid
      * @param type $motivoid
      */
-    static function Estoque_Exibir($produtoid,$motivoid) {
+    static function Estoque_Exibir($produtoid, $motivoid) {
         $produtoid = (int) $produtoid;
         $motivoid = (int) $motivoid;
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Modelo = &$Registro->_Modelo;
         $retirada = $_Modelo->db->Sql_Select('Comercio_Produto_Estoque_Reduzir',Array('id'=>$motivoid),1);
-        if ($retirada===false) {
+        if ($retirada === FALSE) {
             return Array('Redução Não existente', 'Não existe');
         }
         return Array('Redução de Estoque', 'Cadastrado por #'.$retirada->log_user_add);
@@ -45,10 +45,10 @@ class comercio_ProdutoModelo extends comercio_Modelo
         
         $function = '';
         if ($perm_editar) {
-            $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Editar\'     ,Array(\'Editar Produto\'        ,\'comercio/Produto/Produtos_Edit/\'.$d.\'/\'    ,\'\'),true);';
+            $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Editar\'     ,Array(\'Editar Produto\'        ,\'comercio/Produto/Produtos_Edit/\'.$d.\'/\'    ,\'\'),TRUE);';
         }
         if ($perm_del) {
-            $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Deletar\'    ,Array(\'Deletar Produto\'       ,\'comercio/Produto/Produtos_Del/\'.$d.\'/\'     ,\'Deseja realmente deletar essa Produto ?\'),true);';
+            $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Deletar\'    ,Array(\'Deletar Produto\'       ,\'comercio/Produto/Produtos_Del/\'.$d.\'/\'     ,\'Deseja realmente deletar essa Produto ?\'),TRUE);';
         }
 
         
@@ -69,7 +69,7 @@ class comercio_ProdutoModelo extends comercio_Modelo
                     return '#'.$d;
                 }); //'#Cod';
         }
-        if ($comercio_marca===true) {
+        if ($comercio_marca === TRUE) {
             if ($comercio_Produto_Familia=='Familia') {
                 ++$numero;
                 $columns[] = array( 'db' => 'familia2', 'dt' => $numero); //'Familia';
@@ -98,8 +98,8 @@ class comercio_ProdutoModelo extends comercio_Modelo
                        ''.comercio_EstoqueControle::Estoque_Retorna($d); 
                 return $html; 
             });  //'Estoque';
-            if ($perm_view)      $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Visualizar\' ,Array(\'Visualizar Estoque\'    ,\'comercio/Estoque/Estoques/\'.$d.\'/\'    ,\'\'),true);';
-            if ($perm_reduzir)   $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Personalizado\'   ,Array(\'Reduzir Estoque\'  ,\'comercio/Produto/Estoque_Reduzir/\'.$d.\'/\'    ,\'\',\'long-arrow-down\',\'inverse\'),true);';
+            if ($perm_view)      $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Visualizar\' ,Array(\'Visualizar Estoque\'    ,\'comercio/Estoque/Estoques/\'.$d.\'/\'    ,\'\'),TRUE);';
+            if ($perm_reduzir)   $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Personalizado\'   ,Array(\'Reduzir Estoque\'  ,\'comercio/Produto/Estoque_Reduzir/\'.$d.\'/\'    ,\'\',\'long-arrow-down\',\'inverse\'),TRUE);';
         }
         if ($comercio_Unidade) {
             ++$numero;

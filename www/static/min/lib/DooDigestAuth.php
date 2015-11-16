@@ -109,7 +109,7 @@ class DooDigestAuth{
         $res = preg_match('/cnonce=\"([^\"]+)\"/i', $txt, $match);
         $data['cnonce'] = $match[1];
         $res = preg_match('/qop=([^,]+)/i', $txt, $match);
-        $data['qop'] = str_replace('"', '',$match[1]);
+        $data['qop'] = str_replace('"', '', $match[1]);
         $res = preg_match('/uri=\"([^\"]+)\"/i', $txt, $match);
         $data['uri'] = $match[1];
         $res = preg_match('/response=\"([^\"]+)\"/i', $txt, $match);

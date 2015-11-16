@@ -10,8 +10,8 @@ class SierraTec_Facebook {
      * Armazena a Classe Registro (Classe singleton, ela garante a existencia de apenas uma instancia de cada classe)
      * @var Object 
      */
-    protected $_Registro = false;
-    protected $db = false;
+    protected $_Registro = FALSE;
+    protected $db = FALSE;
     
     public $facebook;
     public $login = array(
@@ -26,7 +26,7 @@ class SierraTec_Facebook {
     * 
     * @Params {autorizacao (0->face nao logado, 1-> facenaoconfere com cadastro original, 2->Autorizado)}
     */
-    public function __construct($faceid = '1425023667768754',$autorizacao = '3fc791cc908fb3baa644e2f2d0e62957') {
+    public function __construct($faceid = '1425023667768754', $autorizacao = '3fc791cc908fb3baa644e2f2d0e62957') {
         $this->_Registro = &\Framework\App\Registro::getInstacia();
         $this->db = &$this->_Registro->_Conexao;
         
@@ -99,7 +99,7 @@ class SierraTec_Facebook {
                 // foreach com as conversas
                 if (is_array($conversas[$i]['comments']['data'])) {
                     foreach($conversas[$i]['comments']['data'] as $j => $valor2) {
-                        $mensagemid = explode('_',$conversas[$i]['comments']['data'][$j]['id']);
+                        $mensagemid = explode('_', $conversas[$i]['comments']['data'][$j]['id']);
                         $mensagemid = $mensagemid[1];
                         $this->Armazena_Conversas_Inserir($conversas[$i]['id'], $conversas[$i]['to']['data'][0]['id'], $conversas[$i]['to']['data'][1]['id'], $conversas[$i]['updated_time'], $conversas[$i]['unread'], $mensagemid, $conversas[$i]['comments']['data'][$j]['from']['name'], $conversas[$i]['comments']['data'][$j]['from']['id'], $conversas[$i]['comments']['data'][$j]['message'], $conversas[$i]['comments']['data'][$j]['created_time']);
                     }

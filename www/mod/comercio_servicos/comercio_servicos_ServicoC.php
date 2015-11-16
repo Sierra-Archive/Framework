@@ -33,12 +33,12 @@ class comercio_servicos_ServicoControle extends comercio_servicos_Controle
     */
     public function Main() {
         \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'comercio_servicos/Servico/Servico');
-        return false;
+        return FALSE;
     }
-    static function Endereco_Servico($true=true) {
+    static function Endereco_Servico($true= TRUE ) {
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
-        if ($true===true) {
+        if ($true === TRUE) {
             $_Controle->Tema_Endereco(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_servicos_Titulo'),'comercio_servicos/Servico/Servico');
         } else {
             $_Controle->Tema_Endereco(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_servicos_Titulo'));
@@ -49,11 +49,11 @@ class comercio_servicos_ServicoControle extends comercio_servicos_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Servico($export=false) {
-        self::Endereco_Servico(false);
+    public function Servico($export = FALSE) {
+        self::Endereco_Servico(FALSE);
         $titulo = \Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_servicos_Titulo');
         $titulo2 = Framework\Classes\Texto::Transformar_Plural_Singular($titulo);
-        if (Framework\Classes\Texto::Captura_Palavra_Masculina($titulo2)===true) {
+        if (Framework\Classes\Texto::Captura_Palavra_Masculina($titulo2) === TRUE) {
             $titulo_com_sexo        = 'o '.Framework\Classes\Texto::Transformar_Plural_Singular($titulo);
             $titulo_com_sexo_mudo   = ' '.Framework\Classes\Texto::Transformar_Plural_Singular($titulo);
         } else {
@@ -99,7 +99,7 @@ class comercio_servicos_ServicoControle extends comercio_servicos_Controle
         $formlink   = 'comercio_servicos/Servico/Servicos_Add2/';
         $campos = Comercio_Servicos_Servico_DAO::Get_Colunas();
         self::Campos_Deletar($campos);
-        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos);
+        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1, $titulo2, $formlink, $formid, $formbt, $campos);
     }
     /**
      * 
@@ -115,7 +115,7 @@ class comercio_servicos_ServicoControle extends comercio_servicos_Controle
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = __('Cadastrado com sucesso.');
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
     }
     /**
      * 
@@ -134,10 +134,10 @@ class comercio_servicos_ServicoControle extends comercio_servicos_Controle
         $formid     = 'form_Sistema_ServicoC_ServiçoEdit';
         $formbt     = 'Alterar '.$titulo2;
         $formlink   = 'comercio_servicos/Servico/Servicos_Edit2/'.$id;
-        $editar     = Array('Comercio_Servicos_Servico',$id);
+        $editar     = Array('Comercio_Servicos_Servico', $id);
         $campos = Comercio_Servicos_Servico_DAO::Get_Colunas();
         self::Campos_Deletar($campos);
-        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos,$editar);
+        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1, $titulo2, $formlink, $formid, $formbt, $campos, $editar);
     }
     /**
      * 
@@ -148,12 +148,12 @@ class comercio_servicos_ServicoControle extends comercio_servicos_Controle
      */
     public function Servicos_Edit2($id) {
         $titulo     = __('Editado com Sucesso');
-        $dao        = Array('Comercio_Servicos_Servico',$id);
+        $dao        = Array('Comercio_Servicos_Servico', $id);
         $funcao     = '$this->Servico();';
         $sucesso1   = __('Alterado com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);   
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);   
     }
     /**
      * 
@@ -169,7 +169,7 @@ class comercio_servicos_ServicoControle extends comercio_servicos_Controle
         $setor = $this->_Modelo->db->Sql_Select('Comercio_Servicos_Servico', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($setor);
         // Mensagem
-    	if ($sucesso===true) {
+    	if ($sucesso === TRUE) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
@@ -182,12 +182,12 @@ class comercio_servicos_ServicoControle extends comercio_servicos_Controle
                 "mgs_secundaria" => __('Erro')
             );
         }
-        $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+        $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
         
         $this->Servico();
         
         $this->_Visual->Json_Info_Update('Titulo', __('Deletado com Sucesso'));  
-        $this->_Visual->Json_Info_Update('Historico', false);  
+        $this->_Visual->Json_Info_Update('Historico', FALSE);  
     }
     /**
      * 

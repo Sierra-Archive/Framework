@@ -32,7 +32,7 @@ class HTML extends AbstractWriter implements WriterInterface
      *
      * @var boolean
      */
-    protected $isPdf = false;
+    protected $isPdf = FALSE;
 
     /**
      * Footnotes and endnotes collection

@@ -44,22 +44,22 @@ class banner_ListarControle extends banner_Controle
         $banner->cliq = $banner->cliq+1;
         $this->_Modelo->db->Sql_Update($banner);*/
         $banner = $this->_Modelo->retorna_banner($id);
-        $this->_Modelo->banner_contabiliza_cliq($id,$banner['cliq']+1);
+        $this->_Modelo->banner_contabiliza_cliq($id, $banner['cliq']+1);
         
         
         
         \Framework\App\Sistema_Funcoes::Redirect($banner['url']);
     }
-    public function Banners_Listar($categoria=0,$ativado=1) {
+    public function Banners_Listar($categoria=0, $ativado=1) {
         $banners = Array();
         $i = 0;
-        $this->_Modelo->retorna_banners($banners,$categoria,$ativado);
+        $this->_Modelo->retorna_banners($banners, $categoria, $ativado);
         if (!empty($banners)) {
             reset($banners);
             
             foreach ($banners as $indice=>&$valor) {                
                 $tabela['Id'][$i]        = $valor['id'];
-                $tabela['Foto'][$i]      = $this->_Visual->Show_Upload('banner', 'Admin', 'Banner', 'BannerImagem'.$valor['id'],$valor['foto'],'banner'.DS,$valor['id']);
+                $tabela['Foto'][$i]      = $this->_Visual->Show_Upload('banner', 'Admin', 'Banner', 'BannerImagem'.$valor['id'], $valor['foto'],'banner'.DS, $valor['id']);
                 $tabela['Categoria'][$i] = $valor['categoria'];
                 $tabela['Nome'][$i]    = $valor['nome'];
                 $tabela['Url'][$i]       = $valor['url'];

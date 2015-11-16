@@ -289,7 +289,7 @@ class PhpWord
      * @param bool $download
      * @return bool
      */
-    public function save($filename, $format = 'Word2007', $download = false)
+    public function save($filename, $format = 'Word2007', $download = FALSE)
     {
         $mime = array(
             'Word2007'  => 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
@@ -301,7 +301,7 @@ class PhpWord
 
         $writer = IOFactory::createWriter($this, $format);
 
-        if ($download === true) {
+        if ($download === TRUE) {
             header("Content-Description: File Transfer");
             header('Content-Disposition: attachment; filename="' . $filename . '"');
             header('Content-Type: ' . $mime[$format]);
@@ -313,7 +313,7 @@ class PhpWord
 
         $writer->save($filename);
 
-        return true;
+        return TRUE;
     }
 
     /**

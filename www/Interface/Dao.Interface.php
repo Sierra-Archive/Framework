@@ -20,10 +20,10 @@ interface DaoInterface
     function Get_CarregaMYSQL();
     function Get_Primaria();
     function Get_Extrangeiras();
-    function __set($nome,$resultado);
+    function __set($nome, $resultado);
     function __get($nome);
     function bd_set($nome);
-    function bd_get($nome,$resultado);
+    function bd_get($nome, $resultado);
     
     function Get_Object_Vars();
     function Get_Object_Vars_Public();

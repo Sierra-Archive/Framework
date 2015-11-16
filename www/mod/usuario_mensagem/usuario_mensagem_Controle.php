@@ -15,15 +15,15 @@ class usuario_mensagem_Controle extends \Framework\App\Controle
     public function __construct() {
         parent::__construct();
     }
-    public function Mensagens_Mostrar($tipodemensagem = false) {
+    public function Mensagens_Mostrar($tipodemensagem = FALSE) {
         // ORGANIZA E MANDA CONTEUDO
-        $this->_Visual->Json_Info_Update('Titulo',$this->Mensagenslistar(0, $tipodemensagem));
+        $this->_Visual->Json_Info_Update('Titulo', $this->Mensagenslistar(0, $tipodemensagem));
     } 
    /**
      * lISTA OS SUPORTES
      * @param type $admin
      */
-    protected function Mensagenslistar($admin = 0, $tipodemensagem = false) {
+    protected function Mensagenslistar($admin = 0, $tipodemensagem = FALSE) {
         $this->_Visual->Blocar('<a title="Adicionar Mensagem de Suporte" class="btn btn-success lajax explicar-titulo" data-acao="" href="'.URL_PATH.'usuario_mensagem/Suporte/Mensagem_formulario">Adicionar novo Suporte</a><div class="space15"></div>');
         $i = 0;
         $mensagens = Array();
@@ -32,13 +32,13 @@ class usuario_mensagem_Controle extends \Framework\App\Controle
         } else {
             $proprietario = 0;
         }
-        $this->_Modelo->Mensagens_Retorna($mensagens,$proprietario,1,$tipodemensagem);
+        $this->_Modelo->Mensagens_Retorna($mensagens, $proprietario,1, $tipodemensagem);
         if (is_object($mensagens)) $mensagens = Array(0=>$mensagens);
-        if (!empty($mensagens) && $mensagens!==false) {
-            $i = usuario_mensagem_Controle::Mensagens_TabelaMostrar($this->_Visual, $mensagens,$admin);
+        if (!empty($mensagens) && $mensagens !== FALSE) {
+            $i = usuario_mensagem_Controle::Mensagens_TabelaMostrar($this->_Visual, $mensagens, $admin);
         } else {
             if ($admin==0) {
-                if ($tipodemensagem===false) {
+                if ($tipodemensagem === FALSE) {
                     $texto_vazio = __('Você não possui nenhum chamado.');
                 } else if ($tipodemensagem=='nov') {
                     $texto_vazio = __('Você não possui chamados novos.');
@@ -50,7 +50,7 @@ class usuario_mensagem_Controle extends \Framework\App\Controle
                     $texto_vazio = __('Você não possui nenhum chamados Esgotado.');
                 }
             } else {
-                if ($tipodemensagem===false) {
+                if ($tipodemensagem === FALSE) {
                     $texto_vazio = __('O sistema não possui nenhum chamado.');
                 } else if ($tipodemensagem=='nov') {
                     $texto_vazio = __('O sistema não possui nenhum chamados novos.');
@@ -67,7 +67,7 @@ class usuario_mensagem_Controle extends \Framework\App\Controle
         
         // Titulos
         if ($admin==0) {
-            if ($tipodemensagem===false) {
+            if ($tipodemensagem === FALSE) {
                 $titulo  = __('Todos os seus Chamados');
             } else if ($tipodemensagem=='nov') {
                 $titulo  = __('Todos seus novos Chamados');
@@ -79,7 +79,7 @@ class usuario_mensagem_Controle extends \Framework\App\Controle
                 $titulo  = __('Todos seus Chamados em tempo Esgotado');
             }
         } else {
-            if ($tipodemensagem===false) {
+            if ($tipodemensagem === FALSE) {
                 $titulo  = __('Todos os Chamados do Sistema');
             } else if ($tipodemensagem=='nov') {
                 $titulo  = __('Todos novos Chamados do Sistema');
@@ -95,20 +95,20 @@ class usuario_mensagem_Controle extends \Framework\App\Controle
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         return $titulo;
     }
-    static function Mensagenslistar_naolidas(&$Modelo,&$Visual,$usuarioid,$admin = 0) {
+    static function Mensagenslistar_naolidas(&$Modelo,&$Visual, $usuarioid, $admin = 0) {
         $i = 0;
         $mensagens = Array();
         if ($admin==0) $usuario = $usuarioid;
         else          $usuario = 0;
-        usuario_mensagem_Modelo::Mensagens_Retornanaolidas($Modelo,$mensagens,$usuario,1);
+        usuario_mensagem_Modelo::Mensagens_Retornanaolidas($Modelo, $mensagens, $usuario,1);
         if (!empty($mensagens)) {
-            $i = usuario_mensagem_Controle::Mensagens_TabelaMostrar($Visual, $mensagens,$admin);
+            $i = usuario_mensagem_Controle::Mensagens_TabelaMostrar($Visual, $mensagens, $admin);
             $Visual->Bloco_Unico_CriaJanela('Chamados não lidos ('.$i.')', '',100);
         }
         // ORGANIZA E MANDA CONTEUDO
         $this->_Visual->Json_Info_Update('Titulo', __('Chamados não lidos'));  
     }
-    static function Mensagens_TabelaMostrar(&$Visual,&$mensagens,$admin=0) {
+    static function Mensagens_TabelaMostrar(&$Visual,&$mensagens, $admin=0) {
         $_Registro = &\Framework\App\Registro::getInstacia();
         $label = function($nometipo) {
             if ($nometipo=='Chamado Novo')       $tipo = 'success';
@@ -126,7 +126,7 @@ class usuario_mensagem_Controle extends \Framework\App\Controle
         $perm_del = $_Registro->_Acl->Get_Permissao_Url('usuario_mensagem/Admin/Mensagem_Del');
         
         foreach ($mensagens as &$valor) {
-            if ($valor->lido===false) {
+            if ($valor->lido === FALSE) {
                 $valor->assunto2                = '<b>'.$valor->assunto2.'</b>';
             }
             $tabela['Protocolo'][$i]            = '#'.$valor->id;
@@ -143,16 +143,16 @@ class usuario_mensagem_Controle extends \Framework\App\Controle
             $tabela['Data de Criação'][$i]      = $valor->log_date_add; //date_replace($valor->log_date_add, "d/m/y | H:i");
             $tabela['Ultima Modificação'][$i]   = $valor->log_date_edit; //date_replace($valor->log_date_edit, "d/m/y | H:i");
             if ($valor->tipo!='Finalizado') {
-                $tabela['Visualizar Mensagem'][$i]  = $Visual->Tema_Elementos_Btn('Personalizado' ,    Array('Finalizar Mensagem'         ,'usuario_mensagem/Suporte/Finalizar/'.$valor->id.'/'    ,'', 'download', 'inverse'),$perm_finalizar);
+                $tabela['Visualizar Mensagem'][$i]  = $Visual->Tema_Elementos_Btn('Personalizado' ,    Array('Finalizar Mensagem'         ,'usuario_mensagem/Suporte/Finalizar/'.$valor->id.'/'    , '', 'download', 'inverse'), $perm_finalizar);
             } else {
                 $tabela['Visualizar Mensagem'][$i] = '';
             }
-            $tabela['Visualizar Mensagem'][$i]  .= $Visual->Tema_Elementos_Btn('Visualizar' ,    Array('Visualizar Mensagem'         ,'usuario_mensagem/Suporte/VisualizadordeMensagem/'.$valor->id.'/'    ,''),$perm_view).
-                                                  $Visual->Tema_Elementos_Btn('Editar'     ,    Array('Editar Mensagem'             ,'usuario_mensagem/Admin/Mensagem_Editar/'.$valor->id.'/'    ,''), $perm_editar).
+            $tabela['Visualizar Mensagem'][$i]  .= $Visual->Tema_Elementos_Btn('Visualizar' ,    Array('Visualizar Mensagem'         ,'usuario_mensagem/Suporte/VisualizadordeMensagem/'.$valor->id.'/'    , ''), $perm_view).
+                                                  $Visual->Tema_Elementos_Btn('Editar'     ,    Array('Editar Mensagem'             ,'usuario_mensagem/Admin/Mensagem_Editar/'.$valor->id.'/'    , ''), $perm_editar).
                                                   $Visual->Tema_Elementos_Btn('Deletar'    ,    Array('Deletar Mensagem'            ,'usuario_mensagem/Admin/Mensagem_Del/'.$valor->id.'/'     ,'Deseja realmente deletar essa Mensagem ?'), $perm_del);
             ++$i;
         }
-        $Visual->Show_Tabela_DataTable($tabela,'',true,false,Array(Array(1,'asc')));
+        $Visual->Show_Tabela_DataTable($tabela, '', TRUE, FALSE,Array(Array(1,'asc')));
         unset($tabela);
         return $i;
     }
@@ -162,13 +162,13 @@ class usuario_mensagem_Controle extends \Framework\App\Controle
         $tabela = Array();
             $i = 0;
         $amensagem = $this->_Modelo->Mensagem_Retorna($mensagens, $id, 1);
-        usuario_mensagem_SuporteControle::Endereco_Suporte_Listar(false,$id);
+        usuario_mensagem_SuporteControle::Endereco_Suporte_Listar(FALSE, $id);
         $titulo = $amensagem->assunto2;
         if ($titulo=='' || $titulo==NULL) $titulo = __('Conversa sem Assunto');
         // Se tiver config maluco da skafe mostra
         if (\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_mensagem_Obs')) {
             $where = Array('id'=>$amensagem->cliente);
-            $usuario = $this->_Modelo->db->Sql_Select('Usuario',$where,1);
+            $usuario = $this->_Modelo->db->Sql_Select('Usuario', $where,1);
             $tabela['Mensagem'][$i] = '<b>'.$amensagem->cliente2.':</b> '.$usuario->obs;
             $tabela['Data'][$i] = $usuario->log_date_add;
             ++$i;
@@ -195,9 +195,9 @@ class usuario_mensagem_Controle extends \Framework\App\Controle
                 '<br><b>Validade:</b> '.$amensagem->validade.
                 '<br><b>Fabricacao:</b> '.$amensagem->fabricacao;
             }
-            $this->_Visual->Show_Tabela_DataTable($tabela,'',true,false,Array(Array(1,'asc')));
+            $this->_Visual->Show_Tabela_DataTable($tabela, '', TRUE, FALSE,Array(Array(1,'asc')));
             $this->_Visual->Blocar('<h3>Informações Adicionais:</h3>'.$info);
-            $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',60);
+            $this->_Visual->Bloco_Unico_CriaJanela($titulo, '',60);
             unset($tabela);
         }
     }
@@ -205,7 +205,7 @@ class usuario_mensagem_Controle extends \Framework\App\Controle
         // Carrega campos e retira os que nao precisam
         $campos = Usuario_Mensagem_DAO::Get_Colunas();
         self::Campos_deletar($campos);
-        if ($cliente!=0) self::mysql_AtualizaValor($campos, 'cliente',$cliente);
+        if ($cliente!=0) self::mysql_AtualizaValor($campos, 'cliente', $cliente);
         
         // Pagina Config
         $titulo1    = __('Cadastro de Ticket');
@@ -213,11 +213,11 @@ class usuario_mensagem_Controle extends \Framework\App\Controle
         $formid     = 'form_Usuario_Mensagem_Suporte';
         $formbt     = __('Salvar');
         $formlink   = 'usuario_mensagem/Suporte/Mensagem_inserir';
-        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos);
+        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1, $titulo2, $formlink, $formid, $formbt, $campos);
     
     }
     public function Mensagem_formulario($cliente=0) {
-        usuario_mensagem_SuporteControle::Endereco_Suporte(true);
+        usuario_mensagem_SuporteControle::Endereco_Suporte(TRUE);
         self::Mensagem_formulario_Static($cliente);
     }
     public function Resposta_formulario($mensagemid) {
@@ -225,7 +225,7 @@ class usuario_mensagem_Controle extends \Framework\App\Controle
         
         $form = new \Framework\Classes\Form('mensagem_resposta',SISTEMA_MODULO.'/'.SISTEMA_SUB.'/Resposta_inserir/'.$mensagemid.'/', 'formajax', 'full');
         // CADASTRA
-        $form->Input_Novo('Mensagem', 'mensagem',$mensagemid,'hidden', false, 'obrigatorio');
+        $form->Input_Novo('Mensagem', 'mensagem', $mensagemid,'hidden', FALSE, 'obrigatorio');
         $form->TextArea_Novo('Responder', 'resposta', '', '', 'text', 10000, 'obrigatorio');
         $this->_Visual->Blocar($form->retorna_form(__('Enviar')));
         $this->_Visual->Bloco_Unico_CriaJanela(__('Responder Ticket'));
@@ -235,21 +235,21 @@ class usuario_mensagem_Controle extends \Framework\App\Controle
      */
     public function Mensagem_inserir() {
         
-        $cliente = false;
+        $cliente = FALSE;
         if (isset($_POST["cliente"])) {
             $clienteid = (int) $_POST["cliente"];
             $cliente  = $this->_Modelo->db->Sql_Select('Usuario', '{sigla}id=\''.$clienteid.'\'',1,'id DESC');
         }
         
-        if ($cliente===false) {
+        if ($cliente === FALSE) {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),
                 "mgs_secundaria" => __('Esse Cliente não Existe')
             );
-            $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens); 
-            $this->_Visual->Json_Info_Update('Historico', false);
-            return false;
+            $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens); 
+            $this->_Visual->Json_Info_Update('Historico', FALSE);
+            return FALSE;
         }
         
         // Nao sei daonde Vem esse Paranome, foi feito isso pra consertar o erro
@@ -277,11 +277,11 @@ class usuario_mensagem_Controle extends \Framework\App\Controle
         $sucesso =  $this->_Modelo->db->Sql_Insert($objeto);
         $titulo     = __('Mensagem inserida com Sucesso');
         $dao        = 'Usuario_Mensagem';
-        $funcao     = false;
+        $funcao     = FALSE;
         $sucesso1   = __('Mensagem inserida com Sucesso');
         $sucesso2   = 'Solicitação de '.$paranome.' foi enviada com sucesso';
         $alterar    = Array('escritor'=>\Framework\App\Acl::Usuario_GetID_Static(),'escritor_nome'=>$this->_Acl->logado_usuario->nome);
-        $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);  
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);  
         
         
         $identificador  = $this->_Modelo->db->Sql_Select('Usuario_Mensagem', '',1,'id DESC');
@@ -304,7 +304,7 @@ class usuario_mensagem_Controle extends \Framework\App\Controle
         $mailer = new \Framework\Classes\Email();
         $enviar = '';
         $emaildosetor = $setor->email;
-        if (strpos($emaildosetor, ', ')===false) {
+        if (strpos($emaildosetor, ', ') === FALSE) {
             $enviar .= '->setTo(\''.$emaildosetor.'\', \''.$setor->nome.'\')';
         } else {
             $emaildosetor = explode(', ', $emaildosetor);
@@ -320,7 +320,7 @@ class usuario_mensagem_Controle extends \Framework\App\Controle
         '->setWrap(78)->send();');
         //atualiza
         $this->VisualizadordeMensagem($identificador->id);
-        $this->_Visual->Json_Info_Update('Historico', false); 
+        $this->_Visual->Json_Info_Update('Historico', FALSE); 
     }
     public function Resposta_inserir() {
         if (!isset($_POST["mensagem"]) || !isset($_POST['resposta'])) {
@@ -331,7 +331,7 @@ class usuario_mensagem_Controle extends \Framework\App\Controle
             return _Sistema_erroControle::Erro_Fluxo('Página não Encontrada',404);
         }
         $resposta = \Framework\App\Conexao::anti_injection($_POST["resposta"]);
-        $sucesso =  $this->_Modelo->Mensagem_Resp_Inserir($mensagem,$resposta);
+        $sucesso =  $this->_Modelo->Mensagem_Resp_Inserir($mensagem, $resposta);
         $amensagem =  $this->_Modelo->db->Sql_Select('Usuario_Mensagem', '{sigla}id=\''.$mensagem.'\'');
         // Recupera Email e Dados do Setor
         $assunto    = $this->_Modelo->db->Sql_Select('Usuario_Mensagem_Assunto', '{sigla}id=\''.$amensagem->assunto.'\'');
@@ -354,7 +354,7 @@ class usuario_mensagem_Controle extends \Framework\App\Controle
         $mailer = new \Framework\Classes\Email();
         $enviar = '';
         $emaildosetor = $setor->email;
-        if (strpos($emaildosetor, ', ')===false) {
+        if (strpos($emaildosetor, ', ') === FALSE) {
             $enviar = '->setTo(\''.$emaildosetor.'\', \''.$setor->nome.'\')';
         } else {
             $emaildosetor = explode(', ', $emaildosetor);
@@ -368,7 +368,7 @@ class usuario_mensagem_Controle extends \Framework\App\Controle
         '->addGenericHeader(\'Content-Type\', \'text/html; charset="utf-8"\')'.
         '->setMessage(\'<strong><b>Resposta:</b> \'.$resposta.\'</strong>\')'.
         '->setWrap(78)->send();');
-        if ($sucesso===true) {
+        if ($sucesso === TRUE) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Resposta inserida com Sucesso'),
@@ -381,9 +381,9 @@ class usuario_mensagem_Controle extends \Framework\App\Controle
                 "mgs_secundaria" => __('Erro')
             );
         }
-        $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+        $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
         $this->VisualizadordeMensagem($mensagem);
-        $this->_Visual->Json_Info_Update('Historico', false); 
+        $this->_Visual->Json_Info_Update('Historico', FALSE); 
     }
     public static function MensagensWidgets() {
         $Registro = &\Framework\App\Registro::getInstacia();
@@ -392,17 +392,17 @@ class usuario_mensagem_Controle extends \Framework\App\Controle
         $total = 0; $novos = 0; $espera = 0; $esgotado = 0; $finalizado = 0;
         
         // PEga só as deles 
-        $where = false;
+        $where = FALSE;
         $where = Array('escritor'=>$Registro->_Acl->Usuario_GetID(), 'para'=>0);
         
         #update -> Aqui tera que ser Sql_Contar (Mais performatico, aqui ta perdendo mt tempo de processamento)
-        $array = $Modelo->db->Sql_Select('Usuario_Mensagem',$where,0, '', 'assunto.tempocli,log_date_edit,log_date_add,finalizado');
+        $array = $Modelo->db->Sql_Select('Usuario_Mensagem', $where,0, '', 'assunto.tempocli,log_date_edit,log_date_add,finalizado');
         if (is_object($array)) $array = Array(0=>$array);
-        if ($array!==false && !empty($array)) {
+        if ($array !== FALSE && !empty($array)) {
             reset($array);
             foreach($array as $valor) {
                 ++$total;
-                list($tipo,$tempopassado) = usuario_mensagem_Modelo::Mensagem_TipoChamado($valor);
+                list($tipo, $tempopassado) = usuario_mensagem_Modelo::Mensagem_TipoChamado($valor);
                 if ($tipo=='fin') {
                     ++$finalizado;
                 } else if ($tipo=='nov') {
@@ -429,7 +429,7 @@ class usuario_mensagem_Controle extends \Framework\App\Controle
             'envelope', 
             '+'.$novos, 
             'block-yellow', 
-            false, 
+            FALSE, 
             191
         );
         // Adiciona Widget a Pagina Inicial
@@ -449,7 +449,7 @@ class usuario_mensagem_Controle extends \Framework\App\Controle
             'time', 
             '+'.$esgotado, 
             'block-green', 
-            false,
+            FALSE,
             161
         );
         // Adiciona Widget a Pagina Inicial
@@ -459,7 +459,7 @@ class usuario_mensagem_Controle extends \Framework\App\Controle
             'thumbs-up', 
             '+'.$esgotado, 
             'block-orange', 
-            false,
+            FALSE,
             151
         );
         // Adiciona Widget a Pagina Inicial
@@ -479,7 +479,7 @@ class usuario_mensagem_Controle extends \Framework\App\Controle
             'smile',
             $setor_qnt,
             'block-grey',
-            false,
+            FALSE,
             131
         );
         // Adiciona Widget a Pagina Inicial
@@ -489,7 +489,7 @@ class usuario_mensagem_Controle extends \Framework\App\Controle
             'comments-alt',
             $assunto_qnt,
             'block-red',
-            false,
+            FALSE,
             121
         );
     }

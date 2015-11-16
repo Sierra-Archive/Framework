@@ -51,7 +51,7 @@ class Registro
      */
     public function destruir($sessao) {
         if (isset($this->_data[$sessao])) {
-            $this->_data[$sessao] = false;
+            $this->_data[$sessao] = FALSE;
             unset($this->_data[$sessao]);
         }/*else{
             echo $sessao;
@@ -65,8 +65,8 @@ class Registro
      * @version 0.4.2
      * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
-    public function __set($nome,$valor) {
-        //var_dump($nome,$valor);
+    public function __set($nome, $valor) {
+        //var_dump($nome, $valor);
         $this->_data[$nome] = $valor;
     }
     /**
@@ -81,7 +81,7 @@ class Registro
         if (isset($this->_data[$nome])) {
             return $this->_data[$nome];
         } else {
-            $this->_data[$nome] = false;
+            $this->_data[$nome] = FALSE;
             return $this->_data[$nome];
         }
     }

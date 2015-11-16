@@ -36,7 +36,7 @@ namespace Framework\Classes\PhpWord\Element;
  *
  * @method PageBreak addPageBreak()
  * @method Table addTable(mixed $style = null)
- * @method Image addImage(string $source, mixed $style = null, bool $isWatermark = false)
+ * @method Image addImage(string $source, mixed $style = null, bool $isWatermark = FALSE)
  * @method Object addObject(string $source, mixed $style = null)
  * @method TextBox addTextBox(mixed $style = null)
  * @method Field addField(string $type = null, array $properties = array(), array $options = array())
@@ -241,7 +241,7 @@ abstract class AbstractContainer extends AbstractElement
             }
         }
 
-        return true;
+        return TRUE;
     }
 
     /**

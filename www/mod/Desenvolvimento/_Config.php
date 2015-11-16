@@ -5,7 +5,7 @@ $config_Modulo = function () {
         'Descrição'                 =>  'Modulo desenvolvido para Desenvolvimentos',
         'System_Require'            =>  '3.1.0',
         'Version'                   =>  '3.1.1',
-        'Dependencias'              =>  false,
+        'Dependencias'              =>  FALSE,
     );
 };
 $config_Menu = function () {

@@ -11,7 +11,7 @@ final Class Universal_Vivo_Cep_DAO extends Framework\App\Dao
     protected $info_uf; // UF
     
     protected $extra_validado; //Informacoes Antigas
-    protected static $objetocarregado     = false;     protected static $mysql_colunas       = false;     protected static $mysql_outside       = Array();     protected static $mysql_inside        = Array(); public function __construct() {  parent::__construct(); } public static function Get_Nome() {
+    protected static $objetocarregado     = FALSE;     protected static $mysql_colunas       = FALSE;     protected static $mysql_outside       = Array();     protected static $mysql_inside        = Array(); public function __construct() {  parent::__construct(); } public static function Get_Nome() {
         return MYSQL_UNIVERSAL_VIVO_CEP;
     }
     /**
@@ -19,13 +19,13 @@ final Class Universal_Vivo_Cep_DAO extends Framework\App\Dao
      * @return string
      */
     public static function Permissao_Copia() {
-        return false;
+        return FALSE;
     }
     public static function Get_Sigla() {
         return 'UOCEP';
     }
     public static function Get_StaticTable() {
-        return true;
+        return TRUE;
     }
     public static function Get_Class() {
         return get_class() ; //return str_replace(Array('_DAO'), Array(''), get_class());

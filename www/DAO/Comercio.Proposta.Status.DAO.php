@@ -6,16 +6,16 @@ final Class Comercio_Proposta_Status_DAO extends Framework\App\Dao
     protected $data;
     protected $status;
     protected $obs;
-    protected static $objetocarregado     = false;     protected static $mysql_colunas       = false;     protected static $mysql_outside       = Array();     protected static $mysql_inside        = Array(); public function __construct() {  parent::__construct(); } 
+    protected static $objetocarregado     = FALSE;     protected static $mysql_colunas       = FALSE;     protected static $mysql_outside       = Array();     protected static $mysql_inside        = Array(); public function __construct() {  parent::__construct(); } 
     public static function Get_Nome() {
-        return MYSQL_COMERCIO_PROPOSTA_SUB;
+        return MYSQL_COMERCIO_PROPOSTA_STATUS;
     }
     /**
      * Fornece Permissão de Copia da tabela
      * @return string
      */
     public static function Permissao_Copia() {
-        return false;
+        return FALSE;
     }
     public static function Get_Sigla() {
         return 'CPROSt';
@@ -53,7 +53,7 @@ final Class Comercio_Proposta_Status_DAO extends Framework\App\Dao
                 'mysql_titulo'      => 'proposta',
                 'mysql_tipovar'     => 'int', //varchar, int, 
                 'mysql_tamanho'     => 11,
-                'mysql_null'        => TRUE, // true NULL, false, NOT NULL
+                'mysql_null'        => TRUE, // true NULL, FALSE, NOT NULL
                 'mysql_default'     => FALSE,//false -> NONE, outro -> default
                 'mysql_primary'     => FALSE, // chave primaria
                 'mysql_estrangeira' => 'CPRO.id|CPRO.clientepossivel', // chave estrangeira     ligacao|apresentacao|condicao

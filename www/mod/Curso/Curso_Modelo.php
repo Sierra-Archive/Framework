@@ -20,7 +20,7 @@ class Curso_Modelo extends \Framework\App\Modelo
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Modelo = &$Registro->_Modelo;
         $item = $_Modelo->db->Sql_Select('Curso_Turma_Inscricao', '{sigla}id=\''.$motivoid.'\'',1);
-        return Array('<b>Matricula na Turma </b> em '.$item->turma2,$item->usuario2);
+        return Array('<b>Matricula na Turma </b> em '.$item->turma2, $item->usuario2);
     }
 }
 ?>

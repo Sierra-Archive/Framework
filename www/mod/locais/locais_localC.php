@@ -12,7 +12,7 @@ class locais_localControle extends locais_Controle
 
         $pais = (int) $id;
         $select = array();
-        $this->_Modelo->estados_retorna($select,$pais);
+        $this->_Modelo->estados_retorna($select, $pais);
 
         if (LAYOULT_IMPRIMIR=='AJAX') {
             $this->_Visual->Json_Start();
@@ -20,7 +20,7 @@ class locais_localControle extends locais_Controle
                 'id' => 'selectlocalestado',
                 'valores' => $select
             );
-            $this->_Visual->Json_IncluiTipo('Select',$conteudo);
+            $this->_Visual->Json_IncluiTipo('Select', $conteudo);
             echo $this->_Visual->Json_Retorna();
         }
     }
@@ -29,7 +29,7 @@ class locais_localControle extends locais_Controle
 
         $estado = (int) $id;
         $select = array();
-        $this->_Modelo->cidades_retorna($select,$estado);
+        $this->_Modelo->cidades_retorna($select, $estado);
 
         if (LAYOULT_IMPRIMIR=='AJAX') {
                 $this->_Visual->Json_Start();
@@ -37,7 +37,7 @@ class locais_localControle extends locais_Controle
                         'id' => 'selectlocalcidade',
                         'valores' => $select
                 );
-                $this->_Visual->Json_IncluiTipo('Select',$conteudo);
+                $this->_Visual->Json_IncluiTipo('Select', $conteudo);
                 echo $this->_Visual->Json_Retorna();
         }
     }
@@ -46,7 +46,7 @@ class locais_localControle extends locais_Controle
 
         $cidade = (int) $id;
         $select = array();
-        $this->_Modelo->bairros_retorna($select,$cidade);
+        $this->_Modelo->bairros_retorna($select, $cidade);
 
         if (LAYOULT_IMPRIMIR=='AJAX') {
                 $this->_Visual->Json_Start();
@@ -54,7 +54,7 @@ class locais_localControle extends locais_Controle
                         'id' => 'selectlocalbairro',
                         'valores' => $select
                 );
-                $this->_Visual->Json_IncluiTipo('Select',$conteudo);
+                $this->_Visual->Json_IncluiTipo('Select', $conteudo);
                 echo $this->_Visual->Json_Retorna();
         }
     }

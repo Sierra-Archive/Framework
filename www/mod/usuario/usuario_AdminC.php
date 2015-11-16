@@ -34,8 +34,8 @@ class usuario_AdminControle extends usuario_Controle
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    public function Main($export=false) {
-        $this->usuariolistar(false,false,0,false,$export);
+    public function Main($export = FALSE) {
+        $this->usuariolistar(FALSE, FALSE,0, FALSE, $export);
         if (\Framework\App\Sistema_Funcoes::Perm_Modulos('usuario_veiculo')) {
             $this->usuarios_pendentes('cnh');
             $this->usuarios_pendentes('res');
@@ -43,8 +43,8 @@ class usuario_AdminControle extends usuario_Controle
         // ORGANIZA E MANDA CONTEUDO
         $this->_Visual->Json_Info_Update('Titulo', __('Todos os Usuários'));         
     }
-    static function usuarios_carregaAlterarSenha($id=false,$tipo=false) {
-        if ($id===false) {
+    static function usuarios_carregaAlterarSenha($id = FALSE, $tipo = FALSE) {
+        if ($id === FALSE) {
             $id = \Framework\App\Acl::Usuario_GetID_Static();
             $link = '';
         } else {
@@ -56,15 +56,15 @@ class usuario_AdminControle extends usuario_Controle
         $formid     = 'form_perfil_senha';
         $formbt     = __('Alterar Senha');
         $formlink   = 'usuario/Admin/usuarios_carregaAlterarSenha2'.$link;
-        $editar     = Array('Usuario',$id);
+        $editar     = Array('Usuario', $id);
         $campos = Usuario_DAO::Get_Colunas();
         self::DAO_Campos_Retira($campos, 'senha',1);
-        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos,$editar,'right',false); 
+        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1, $titulo2, $formlink, $formid, $formbt, $campos, $editar,'right', FALSE); 
     }
-    public function usuarios_carregaAlterarSenha2($id=false,$tipo=false) {
-        if ($id===false) $id = (int) $this->_Acl->Usuario_GetID();
+    public function usuarios_carregaAlterarSenha2($id = FALSE, $tipo = FALSE) {
+        if ($id === FALSE) $id = (int) $this->_Acl->Usuario_GetID();
         $titulo     = __('Senha editada com Sucesso');
-        $dao        = Array('Usuario',$id);
+        $dao        = Array('Usuario', $id);
         if ($tipo==='cliente' || $tipo==='Cliente') {
             $funcao     = '$this->ListarCliente();';
         } else if ($tipo==='funcionario' || $tipo==='Funcionario' || $tipo==='Funcionário' || $tipo==='Funcionrio') {
@@ -75,32 +75,32 @@ class usuario_AdminControle extends usuario_Controle
         $sucesso1   = __('Senha Alterada com Sucesso.');
         $sucesso2   = __('Guarde sua senha com carinho.');
         $alterar    = Array();
-        $sucesso = $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
+        $sucesso = $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
     }
-    public function ListarCliente($export=false) {
-        $this->Usuario_Listagem(Array(CFG_TEC_CAT_ID_CLIENTES,\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Cliente_nome')),false,20,false,$export);
+    public function ListarCliente($export = FALSE) {
+        $this->Usuario_Listagem(Array(CFG_TEC_CAT_ID_CLIENTES,\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Cliente_nome')), FALSE,20, FALSE, $export);
         // ORGANIZA E MANDA CONTEUDO
         $this->_Visual->Json_Info_Update('Titulo',__(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Cliente_nome')));  
     }
-    public function ListarFuncionarios($export=false) {
+    public function ListarFuncionarios($export = FALSE) {
         \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'usuario/Admin/ListarFuncionario');
-        return false;
+        return FALSE;
     }
-    public function ListarFuncionario($export=false) {
-        $this->Usuario_Listagem(Array(CFG_TEC_CAT_ID_FUNCIONARIOS,\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Funcionario_nome')),false,10,false,'Funcionario',$export);
+    public function ListarFuncionario($export = FALSE) {
+        $this->Usuario_Listagem(Array(CFG_TEC_CAT_ID_FUNCIONARIOS,\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Funcionario_nome')), FALSE,10, FALSE,'Funcionario', $export);
         // ORGANIZA E MANDA CONTEUDO
         $this->_Visual->Json_Info_Update('Titulo',__(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Funcionario_nome')));
     }
     public function ListarOutros() {
         \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'usuario/Admin/ListarUsuario');
-        return false;        
+        return FALSE;        
     }
-    public function ListarUsuario($export=false) {
-        $this->Usuario_Listagem(Array(CFG_TEC_CAT_ID_ADMIN,__('Usuários')),false,10,false,$export);
+    public function ListarUsuario($export = FALSE) {
+        $this->Usuario_Listagem(Array(CFG_TEC_CAT_ID_ADMIN,__('Usuários')), FALSE,10, FALSE, $export);
         // ORGANIZA E MANDA CONTEUDO
         $this->_Visual->Json_Info_Update('Titulo', __('Usuários'));  
     }
-    public function Usuarios_Edit($id = 0,$tipo=false) {
+    public function Usuarios_Edit($id = 0, $tipo = FALSE) {
         if ($id==0 || !isset($id)) {
             $id = (int) $this->_Acl->Usuario_GetID();
         } else {
@@ -111,9 +111,9 @@ class usuario_AdminControle extends usuario_Controle
         // Carrega campos e retira os que nao precisam
         $campos = Usuario_DAO::Get_Colunas();
         // Verifica TIPO
-        if ($tipo===false) {
+        if ($tipo === FALSE) {
             $sql_grupo = $this->_Modelo->db->Sql_Select('Sistema_Grupo', Array('id'=>$usuario->grupo),1);
-            if ($sql_grupo===false) {
+            if ($sql_grupo === FALSE) {
                 $usuario->grupo = CFG_TEC_IDFUNCIONARIO;
                 $this->_Modelo->db->Sql_Update($usuario);
                 $tipo   = __('Funcionário');
@@ -161,19 +161,19 @@ class usuario_AdminControle extends usuario_Controle
         }
         
         // Alterar Senha
-        $encolher = false;
+        $encolher = FALSE;
         $usuario_Login = \Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Login');
         if (is_array($usuario_Login)) {
             if (in_array($tipo_pass, $usuario_Login)) {
                 // Carrega Alterar SEnha
-                self::usuarios_carregaAlterarSenha($id,$tipo2);
-                $encolher = true;
+                self::usuarios_carregaAlterarSenha($id, $tipo2);
+                $encolher = TRUE;
             }
         } else {
-            if ($usuario_Login===true) {
+            if ($usuario_Login === TRUE) {
                 // Carrega Alterar SEnha
-                self::usuarios_carregaAlterarSenha($id,$tipo2);
-                $encolher = true;
+                self::usuarios_carregaAlterarSenha($id, $tipo2);
+                $encolher = TRUE;
             }
         }
         
@@ -186,10 +186,10 @@ class usuario_AdminControle extends usuario_Controle
         // cadastro de usuario
         $form = new \Framework\Classes\Form('form_Sistema_AdminC_UsuarioEdit', 'usuario/Admin/'.$metodo,'formajax');
         // Deleta Campos Responsaveis
-        self::Campos_Deletar($tipo_pass,$campos,$usuario);
+        self::Campos_Deletar($tipo_pass, $campos, $usuario);
         // Retira sempre a senha
         self::DAO_Campos_Retira($campos, 'senha');
-        if ($usuario===false) throw new \Exception('Usuário não existe', 8010);
+        if ($usuario === FALSE) throw new \Exception('Usuário não existe', 8010);
         
         // Atualiza Valores
         self::mysql_AtualizaValores($campos, $usuario);
@@ -197,12 +197,12 @@ class usuario_AdminControle extends usuario_Controle
         \Framework\App\Controle::Gerador_Formulario($campos, $form);
         $formulario = $form->retorna_form('Alterar');
         $this->_Visual->Blocar($formulario);
-        if ($tipo===false) {
-            if ($encolher===true)$this->_Visual->Bloco_Maior_CriaJanela(__('Alteração de Usuário'));
+        if ($tipo === FALSE) {
+            if ($encolher === TRUE)$this->_Visual->Bloco_Maior_CriaJanela(__('Alteração de Usuário'));
             else                $this->_Visual->Bloco_Unico_CriaJanela(__('Alteração de Usuário'));
             $this->_Visual->Json_Info_Update('Titulo', 'Editar Usuário (#'.$id.')');   
         } else {
-            if ($encolher===true)$this->_Visual->Bloco_Maior_CriaJanela('Alteração de '.$tipo.'');
+            if ($encolher === TRUE)$this->_Visual->Bloco_Maior_CriaJanela('Alteração de '.$tipo.'');
             else                $this->_Visual->Bloco_Unico_CriaJanela('Alteração de '.$tipo.'');
             
             $this->_Visual->Json_Info_Update('Titulo', __('Editar ').$tipo.' (#'.$id.')');   
@@ -215,7 +215,7 @@ class usuario_AdminControle extends usuario_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Usuarios_Edit2($id,$tipo=false) {
+    public function Usuarios_Edit2($id, $tipo = FALSE) {
         
         
         
@@ -228,7 +228,7 @@ class usuario_AdminControle extends usuario_Controle
         $sucesso =  $this->_Modelo->db->Sql_Update($usuario);
         
         
-        if ($sucesso===true) {
+        if ($sucesso === TRUE) {
         
             if ($tipo==='cliente' || $tipo==='Cliente') {
                 $this->ListarCliente();
@@ -252,15 +252,15 @@ class usuario_AdminControle extends usuario_Controle
             );
             $this->_Visual->Json_Info_Update('Titulo',__('Erro'));
         }
-        $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);   
-        $this->_Visual->Json_Info_Update('Historico', false); 
+        $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);   
+        $this->_Visual->Json_Info_Update('Historico', FALSE); 
     }
-    public function Status($id=false) {
-        if ($id===false) {
-            return false;
+    public function Status($id = FALSE) {
+        if ($id === FALSE) {
+            return FALSE;
         }
         $resultado = $this->_Modelo->db->Sql_Select('Usuario', Array('id'=>$id),1);
-        if ($resultado===false || !is_object($resultado)) {
+        if ($resultado === FALSE || !is_object($resultado)) {
             return _Sistema_erroControle::Erro_Fluxo('Essa registro não existe:'. $raiz,404);
         }
         if ($resultado->ativado==1 || $resultado->ativado=='1') {
@@ -278,24 +278,24 @@ class usuario_AdminControle extends usuario_Controle
             $conteudo = array(
                 'location' => '#status'.$resultado->id,
                 'js' => '',
-                'html' =>  $this->_Visual->Tema_Elementos_Btn('Status'.$resultado->ativado     ,Array($texto        ,'usuario/Admin/Status/'.$resultado->id.'/'    ,''))
+                'html' =>  $this->_Visual->Tema_Elementos_Btn('Status'.$resultado->ativado     ,Array($texto        ,'usuario/Admin/Status/'.$resultado->id.'/'    , ''))
             );
-            $this->_Visual->Json_IncluiTipo('Conteudo',$conteudo);
+            $this->_Visual->Json_IncluiTipo('Conteudo', $conteudo);
             $mensagens = array(
                 "tipo"              => 'sucesso',
                 "mgs_principal"     => __('Sucesso'),
                 "mgs_secundaria"    => __('Status Alterado com Sucesso.')
             );
-            $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+            $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
         } else {
             $mensagens = array(
                 "tipo"              => 'erro',
                 "mgs_principal"     => __('Erro'),
                 "mgs_secundaria"    => __('Ocorreu um Erro.')
             );
-            $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+            $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
         }
-        $this->_Visual->Json_Info_Update('Historico', false);  
+        $this->_Visual->Json_Info_Update('Historico', FALSE);  
     }
     /**
     * Cria Janela Do Formulario de Cadastro de usuarios
@@ -318,7 +318,7 @@ class usuario_AdminControle extends usuario_Controle
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    public function Usuarios_Add($categoria = 0,$tipo=false) {
+    public function Usuarios_Add($categoria = 0, $tipo = FALSE) {
         $usuario = new \Usuario_DAO();
         // Carrega campos e retira os que nao precisam
         $campos = Usuario_DAO::Get_Colunas();
@@ -329,7 +329,7 @@ class usuario_AdminControle extends usuario_Controle
         
         // Retira os de clientes
         $linkextra = '';
-        if ($tipo!==false) {
+        if ($tipo !== FALSE) {
             $linkextra = $tipo.'/';
         }
         // GAmbiarra Para Consertar erro de acento em url
@@ -338,7 +338,7 @@ class usuario_AdminControle extends usuario_Controle
         }
         
         if ($tipo==='cliente') {
-            self::Campos_Deletar(CFG_TEC_CAT_ID_CLIENTES,$campos, $usuario);
+            self::Campos_Deletar(CFG_TEC_CAT_ID_CLIENTES, $campos, $usuario);
             $func_nome_plural = \Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Cliente_nome');
             $func_nome = Framework\Classes\Texto::Transformar_Plural_Singular($func_nome_plural);
             $form = new \Framework\Classes\Form('form_Sistema_Admin_Usuarios', 'usuario/Admin/Cliente_Add2/', 'formajax');
@@ -350,7 +350,7 @@ class usuario_AdminControle extends usuario_Controle
             
             $this->Tema_Endereco($func_nome_plural,'usuario/Admin/ListarCliente');
         } else if ($tipo==='funcionario') {
-            self::Campos_Deletar(CFG_TEC_CAT_ID_FUNCIONARIOS,$campos, $usuario);
+            self::Campos_Deletar(CFG_TEC_CAT_ID_FUNCIONARIOS, $campos, $usuario);
             $form = new \Framework\Classes\Form('form_Sistema_Admin_Usuarios', 'usuario/Admin/Funcionario_Add2', 'formajax');
             \Framework\App\Controle::Gerador_Formulario($campos, $form);
             $formulario = $form->retorna_form('Cadastrar Funcionário');
@@ -359,7 +359,7 @@ class usuario_AdminControle extends usuario_Controle
             $this->_Visual->Json_Info_Update('Titulo', __('Adicionar Funcionário'));
             $this->Tema_Endereco(__('Funcionários'),'usuario/Admin/ListarFuncionario');
         } else {
-            self::Campos_Deletar(CFG_TEC_CAT_ID_ADMIN,$campos, $usuario);
+            self::Campos_Deletar(CFG_TEC_CAT_ID_ADMIN, $campos, $usuario);
             // Carrega formulario
             $form = new \Framework\Classes\Form('form_Sistema_Admin_Usuarios', 'usuario/Admin/Usuarios_Add2/'.$linkextra,'formajax');
             \Framework\App\Controle::Gerador_Formulario($campos, $form);
@@ -392,8 +392,8 @@ class usuario_AdminControle extends usuario_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Usuarios_Add2($tipo=false) {
-        if (!isset($_POST['email']) || !isset($_POST['login'])) return false;
+    public function Usuarios_Add2($tipo = FALSE) {
+        if (!isset($_POST['email']) || !isset($_POST['login'])) return FALSE;
         
         $this->_Visual->Json_Info_Update('Titulo', 'Usuários');
         
@@ -407,34 +407,34 @@ class usuario_AdminControle extends usuario_Controle
         } else {
             $login = '';
         }
-        $existeemail = usuario_Modelo::VerificaExtEmail($this->_Modelo,$email);
-        $existelogin = usuario_Modelo::VerificaExtLogin($this->_Modelo,$login);
-        if (\Framework\App\Sistema_Funcoes::Control_Layoult_Valida_Email($email)===false && $tipo!='cliente' && \Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Admin_EmailUnico')) {
+        $existeemail = usuario_Modelo::VerificaExtEmail($this->_Modelo, $email);
+        $existelogin = usuario_Modelo::VerificaExtLogin($this->_Modelo, $login);
+        if (\Framework\App\Sistema_Funcoes::Control_Layoult_Valida_Email($email) === FALSE && $tipo!='cliente' && \Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Admin_EmailUnico')) {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),
                 "mgs_secundaria" => __('Email Inválido')
             );
-            $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens); 
-            $this->layoult_zerar = false;
+            $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens); 
+            $this->layoult_zerar = FALSE;
             $this->_Visual->Javascript_Executar('$("#email").css(\'border\', \'2px solid #FFAEB0\').focus();');
-         } else if ($existeemail===true && ($tipo!=='cliente' || $email!='') && \Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Admin_EmailUnico')) {
+         } else if ($existeemail === TRUE && ($tipo!=='cliente' || $email!='') && \Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Admin_EmailUnico')) {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),
                 "mgs_secundaria" => __('Email Ja Existe')
             );
-            $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
-            $this->layoult_zerar = false; 
+            $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
+            $this->layoult_zerar = FALSE; 
             $this->_Visual->Javascript_Executar('$("#email").css(\'border\', \'2px solid #FFAEB0\').focus();');
-        } else if ($existelogin===true && $tipo!=='cliente') {
+        } else if ($existelogin === TRUE && $tipo!=='cliente') {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),
                 "mgs_secundaria" => __('Login ja existe')
             );
-            $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens); 
-            $this->layoult_zerar = false;
+            $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens); 
+            $this->layoult_zerar = FALSE;
             $this->_Visual->Javascript_Executar('$("#login").css(\'border\', \'2px solid #FFAEB0\').focus();');
         } else {
             $tipousuario = \Framework\App\Conexao::anti_injection($tipo);
@@ -456,8 +456,8 @@ class usuario_AdminControle extends usuario_Controle
                         "mgs_principal" => __('Erro'),
                         "mgs_secundaria" => __('Senha Inválida')
                     );
-                    $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
-                    $this->layoult_zerar = false;
+                    $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
+                    $this->layoult_zerar = FALSE;
                     return;
                 }
             }
@@ -468,7 +468,7 @@ class usuario_AdminControle extends usuario_Controle
 
             // Atualiza
             // Recarrega ListarUsuario
-            if ($tipo===false AND !(\Framework\App\Sistema_Funcoes::Perm_Modulos('usuario_mensagem'))) {
+            if ($tipo === FALSE AND !(\Framework\App\Sistema_Funcoes::Perm_Modulos('usuario_mensagem'))) {
                 $sucesso =  $this->_Modelo->db->Sql_Insert($usuario);
                 $executar = 'ListarUsuario';
             } else if (\Framework\App\Sistema_Funcoes::Perm_Modulos('usuario_mensagem')) {
@@ -476,7 +476,7 @@ class usuario_AdminControle extends usuario_Controle
                 if ($sucesso) {$identificador  = $this->_Modelo->db->Sql_Select('Usuario', Array(),1,'id DESC');
                 $identificador  = $identificador->id;
                 usuario_mensagem_Controle::Mensagem_formulario_Static($identificador);}
-                $executar = false;
+                $executar = FALSE;
                 //\Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'usuario_mensagem/Suporte/Mensagem_formulario');
             } else if ($tipo==='cliente') {
                 if (!isset($_GET['grupo'])) {
@@ -498,7 +498,7 @@ class usuario_AdminControle extends usuario_Controle
                 $executar = 'ListarUsuario';
             }
             // Caso seja Inserido mostra Mensagem
-            if ($sucesso===true) {
+            if ($sucesso === TRUE) {
                 $mensagens = array(
                     "tipo" => 'sucesso',
                     "mgs_principal" => __('Inserção bem sucedida'),
@@ -508,7 +508,7 @@ class usuario_AdminControle extends usuario_Controle
                 
                 //#update Invez de tipo !=cliente tem que ser de acordo com as opcoes do sistema
                 if ($tipo!='cliente' && !$this->_Acl->Usuario_GetLogado()) {
-                    $this->_Modelo->Usuario_Logar($login, \Framework\App\Sistema_Funcoes::Form_Senha_Blindar($_POST['senha'],true));  
+                    $this->_Modelo->Usuario_Logar($login, \Framework\App\Sistema_Funcoes::Form_Senha_Blindar($_POST['senha'],TRUE));  
                 }
                 $this->_Visual->Json_Info_Update('Titulo', 'Adicionado com Sucesso.');
                 
@@ -522,9 +522,9 @@ class usuario_AdminControle extends usuario_Controle
                     "mgs_secundaria" => __('Erro')
                 );
             }
-            $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens); 
+            $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens); 
         }
-        $this->_Visual->Json_Info_Update('Historico', false);
+        $this->_Visual->Json_Info_Update('Historico', FALSE);
     }
     /**
     * Deleta usuario
@@ -541,19 +541,19 @@ class usuario_AdminControle extends usuario_Controle
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    public function Usuarios_Del($id,$tipo=false) {
+    public function Usuarios_Del($id, $tipo = FALSE) {
         
     	$id = (int) $id;
         // Regula Tipo
         if ($tipo==='falso') {
-            $tipo  = false;
+            $tipo  = FALSE;
         }
         // Puxa usuario e deleta
         $usuario    = $this->_Modelo->db->Sql_Select(  'Usuario',            Array('id'=>$id));
         
         // caso usuario exista
-        if ($usuario!==false) {
-            if ($tipo===false) {
+        if ($usuario !== FALSE) {
+            if ($tipo === FALSE) {
                 if ($usuario->grupo==CFG_TEC_IDCLIENTE) {
                     $tipo = 'cliente';
                     $tipo2 = __('Cliente');
@@ -580,7 +580,7 @@ class usuario_AdminControle extends usuario_Controle
                 $mensagens  = $this->_Modelo->db->Sql_Select('Usuario_Mensagem',    Array('cliente'=>$id));
                 $sucesso2   =  $this->_Modelo->db->Sql_Delete($mensagens);
             }
-            if ($sucesso===true) {
+            if ($sucesso === TRUE) {
                 $mensagens = array(
                     "tipo" => 'sucesso',
                     "mgs_principal" => $tipo2.' Deletado',
@@ -593,7 +593,7 @@ class usuario_AdminControle extends usuario_Controle
                     "mgs_secundaria" => __('Erro')
                 );
             }
-            $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+            $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
             if ($tipo==='cliente') {
                 $this->ListarCliente();
             } else if ($tipo==='funcionario') {
@@ -601,15 +601,15 @@ class usuario_AdminControle extends usuario_Controle
             } else {
                 $this->ListarUsuario();
             }
-            return true;
+            return TRUE;
         } else {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),
                 "mgs_secundaria" => __('Esse usuário não existe')
             );
-            $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
-            return false;
+            $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
+            return FALSE;
         }
     }
     
@@ -673,17 +673,17 @@ class usuario_AdminControle extends usuario_Controle
             unset($tabela);
         }
     }
-    public function usuarios_pendente_aprovar($id, $tipo='cnh',$aprovar='sim') {
+    public function usuarios_pendente_aprovar($id, $tipo='cnh', $aprovar='sim') {
         
         
         $id = (int) $id;
         
-        if ($tipo=='cnh') $sucesso = $this->_Modelo->usuario_cnh_aprovar($id,$aprovar);
-        else             $sucesso = $this->_Modelo->usuario_res_aprovar($id,$aprovar);
+        if ($tipo=='cnh') $sucesso = $this->_Modelo->usuario_cnh_aprovar($id, $aprovar);
+        else             $sucesso = $this->_Modelo->usuario_res_aprovar($id, $aprovar);
         
         $this->Main();
         
-        if ($sucesso===true) {
+        if ($sucesso === TRUE) {
             if ($aprovar=='sim') {
                 $mensagens = array(
                     "tipo" => 'sucesso',
@@ -704,15 +704,15 @@ class usuario_AdminControle extends usuario_Controle
                 "mgs_secundaria" => __('Erro')
             );
         }
-        $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens); 
+        $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens); 
     }
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Usuarios_Comentario($usuario_id = false,$tipo='usuario') {
-        if ($usuario_id===false) {
+    public function Usuarios_Comentario($usuario_id = FALSE, $tipo='usuario') {
+        if ($usuario_id === FALSE) {
             $where = Array();
         } else {
             $where = Array('usuario'=>$usuario_id);
@@ -753,8 +753,8 @@ class usuario_AdminControle extends usuario_Controle
         
         $i = 0;
         $this->_Visual->Blocar('<a title="Adicionar Comentário ao '.$nomedisplay_sing.'" class="btn btn-success lajax explicar-titulo" data-acao="" href="'.URL_PATH.'usuario/Admin/Usuarios_Comentario_Add/'.$usuario_id.'/'.$tipo.'">Adicionar novo Comentário nesse '.$nomedisplay_sing.'</a><div class="space15"></div>');
-        $comentario = $this->_Modelo->db->Sql_Select('Usuario_Comentario',$where);
-        if ($comentario!==false && !empty($comentario)) {
+        $comentario = $this->_Modelo->db->Sql_Select('Usuario_Comentario', $where);
+        if ($comentario !== FALSE && !empty($comentario)) {
             if (is_object($comentario)) $comentario = Array(0=>$comentario);
             reset($comentario);
             $perm_editar = $this->_Registro->_Acl->Get_Permissao_Url('usuario/Admin/Usuarios_Comentario_Edit');
@@ -763,17 +763,17 @@ class usuario_AdminControle extends usuario_Controle
                 $tabela['#Id'][$i]          =   '#'.$valor->id;
                 $tabela['Comentário'][$i]   =   nl2br($valor->comentario);
                 $tabela['Data'][$i]         =   $valor->log_date_add;
-                $tabela['Funções'][$i]      =   $this->_Visual->Tema_Elementos_Btn('Editar'          ,Array('Editar Comentário de Usuario'        ,'usuario/Admin/Usuarios_Comentario_Edit/'.$usuario_id.'/'.$valor->id.'/'.$tipo    ,''),$perm_editar).
-                                                $this->_Visual->Tema_Elementos_Btn('Deletar'         ,Array('Deletar Comentário de Usuario'       ,'usuario/Admin/Usuarios_Comentario_Del/'.$usuario_id.'/'.$valor->id.'/'.$tipo     ,'Deseja realmente deletar esse Comentário desse '.$nomedisplay_sing.' ?'),$perm_del);
+                $tabela['Funções'][$i]      =   $this->_Visual->Tema_Elementos_Btn('Editar'          ,Array('Editar Comentário de Usuario'        ,'usuario/Admin/Usuarios_Comentario_Edit/'.$usuario_id.'/'.$valor->id.'/'.$tipo    , ''), $perm_editar).
+                                                $this->_Visual->Tema_Elementos_Btn('Deletar'         ,Array('Deletar Comentário de Usuario'       ,'usuario/Admin/Usuarios_Comentario_Del/'.$usuario_id.'/'.$valor->id.'/'.$tipo     ,'Deseja realmente deletar esse Comentário desse '.$nomedisplay_sing.' ?'), $perm_del);
                 ++$i;
             }
-            $this->_Visual->Show_Tabela_DataTable($tabela,'', true, false, Array(Array(0,'desc')));
+            $this->_Visual->Show_Tabela_DataTable($tabela, '', true, FALSE, Array(Array(0,'desc')));
             unset($tabela);
         } else {          
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Comentário do '.$nomedisplay_sing.'</font></b></center>');
         }
         $titulo = 'Comentários do '.$nomedisplay_sing.' ('.$i.')';
-        $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',10);
+        $this->_Visual->Bloco_Unico_CriaJanela($titulo, '',10);
         
         //Carrega Json
         $this->_Visual->Json_Info_Update('Titulo', __('Administrar Comentários do ').$nomedisplay_sing.'');
@@ -783,14 +783,14 @@ class usuario_AdminControle extends usuario_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Usuarios_Comentario_Add($usuario_id = false,$tipo='usuario') {
+    public function Usuarios_Comentario_Add($usuario_id = FALSE, $tipo='usuario') {
         // Começo
         $usuario_id = (int) $usuario_id;
         
         // Proteção E chama Endereço
-        if ($usuario_id===false) return _Sistema_erroControle::Erro_Fluxo('Usuario não informado',404);
+        if ($usuario_id === FALSE) return _Sistema_erroControle::Erro_Fluxo('Usuario não informado',404);
         $usuario = $this->_Modelo->db->Sql_Select('Usuario',Array('id'=>$usuario_id), 1);
-        if ($usuario===false) return _Sistema_erroControle::Erro_Fluxo('Usuario não existe:'.$usuario_id,404);
+        if ($usuario === FALSE) return _Sistema_erroControle::Erro_Fluxo('Usuario não existe:'.$usuario_id,404);
         
         
         /**
@@ -834,7 +834,7 @@ class usuario_AdminControle extends usuario_Controle
         $formlink   = 'usuario/Admin/Usuarios_Comentario_Add2/'.$usuario_id.'/'.$tipo;
         $campos = Usuario_Comentario_DAO::Get_Colunas();
         self::DAO_Campos_Retira($campos, 'usuario');
-        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos);
+        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1, $titulo2, $formlink, $formid, $formbt, $campos);
     }
     /**
      * 
@@ -843,8 +843,8 @@ class usuario_AdminControle extends usuario_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Usuarios_Comentario_Add2($usuario_id = false,$tipo='usuario') {
-        if ($usuario_id===false) return _Sistema_erroControle::Erro_Fluxo('Usuario não informado',404);
+    public function Usuarios_Comentario_Add2($usuario_id = FALSE, $tipo='usuario') {
+        if ($usuario_id === FALSE) return _Sistema_erroControle::Erro_Fluxo('Usuario não informado',404);
         /**
          * Endereço, Diferenciacao etc..
          */
@@ -878,7 +878,7 @@ class usuario_AdminControle extends usuario_Controle
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = 'Comentário de '.$nomedisplay_sing.' Cadastrado com sucesso.';
         $alterar    = Array('usuario'=>$usuario_id);
-        $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
     }
     /**
      * 
@@ -886,12 +886,12 @@ class usuario_AdminControle extends usuario_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Usuarios_Comentario_Edit($usuario_id = false,$id = 0,$tipo='usuario') {
-        if ($usuario_id===false) return _Sistema_erroControle::Erro_Fluxo('Usuario não informado',404);
+    public function Usuarios_Comentario_Edit($usuario_id = FALSE, $id = 0, $tipo='usuario') {
+        if ($usuario_id === FALSE) return _Sistema_erroControle::Erro_Fluxo('Usuario não informado',404);
         if ($id         == 0   ) return _Sistema_erroControle::Erro_Fluxo('Comentário não informado',404);
         // Proteção E chama Endereço
         $usuario = $this->_Modelo->db->Sql_Select('Usuario',Array('id'=>$usuario_id), 1);
-        if ($usuario===false) return _Sistema_erroControle::Erro_Fluxo('Usuario não existe:'.$usuario_id,404);
+        if ($usuario === FALSE) return _Sistema_erroControle::Erro_Fluxo('Usuario não existe:'.$usuario_id,404);
 
         /**
          * Endereço, Diferenciacao etc..
@@ -931,10 +931,10 @@ class usuario_AdminControle extends usuario_Controle
         $formid     = 'form_Sistema_AdminC_'.$nomedisplay_sing.'Edit_Comentario_'.$id;
         $formbt     = 'Alterar Comentário de '.$nomedisplay_sing;
         $formlink   = 'usuario/Admin/Usuarios_Comentario_Edit2/'.$usuario_id.'/'.$id.'/'.$tipo;
-        $editar     = Array('Usuario_Comentario',$id);
+        $editar     = Array('Usuario_Comentario', $id);
         $campos = Usuario_Comentario_DAO::Get_Colunas();
         self::DAO_Campos_Retira($campos, 'usuario');
-        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos,$editar);
+        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1, $titulo2, $formlink, $formid, $formbt, $campos, $editar);
     }
     /**
      * 
@@ -943,8 +943,8 @@ class usuario_AdminControle extends usuario_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Usuarios_Comentario_Edit2($usuario_id = false,$id = 0,$tipo='usuario') {
-        if ($usuario_id===false) return _Sistema_erroControle::Erro_Fluxo('Usuario não informado',404);
+    public function Usuarios_Comentario_Edit2($usuario_id = FALSE, $id = 0, $tipo='usuario') {
+        if ($usuario_id === FALSE) return _Sistema_erroControle::Erro_Fluxo('Usuario não informado',404);
         if ($id         == 0   ) return _Sistema_erroControle::Erro_Fluxo('Comentário não informado',404);
         
         
@@ -976,12 +976,12 @@ class usuario_AdminControle extends usuario_Controle
         }
         // Puxa Formulario Padrao do Sistema
         $titulo     = 'Comentário de '.$nomedisplay_sing.' Editado com Sucesso';
-        $dao        = Array('Usuario_Comentario',$id);
+        $dao        = Array('Usuario_Comentario', $id);
         $funcao     = '$this->Usuarios_Comentario('.$usuario_id.',\''.$tipo.'\');';
         $sucesso1   = 'Comentário de '.$nomedisplay_sing.' Alterado com Sucesso.';
         $sucesso2   = __('Comentário teve a alteração bem sucedida');
         $alterar    = Array('usuario'=>$usuario_id);
-        $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);      
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);      
     }
     /**
      * 
@@ -990,9 +990,9 @@ class usuario_AdminControle extends usuario_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Usuarios_Comentario_Del($usuario_id = false,$id = 0,$tipo='usuario') {
+    public function Usuarios_Comentario_Del($usuario_id = FALSE, $id = 0, $tipo='usuario') {
     	$id = (int) $id;
-        if ($usuario_id===false) return _Sistema_erroControle::Erro_Fluxo('Usuario não informado',404);
+        if ($usuario_id === FALSE) return _Sistema_erroControle::Erro_Fluxo('Usuario não informado',404);
         if ($id         == 0   ) return _Sistema_erroControle::Erro_Fluxo('Comentário não informado',404);
         
         
@@ -1028,7 +1028,7 @@ class usuario_AdminControle extends usuario_Controle
         $comentario = $this->_Modelo->db->Sql_Select('Usuario_Comentario', $where);
         $sucesso =  $this->_Modelo->db->Sql_Delete($comentario);
         // Mensagem
-    	if ($sucesso===true) {
+    	if ($sucesso === TRUE) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
@@ -1041,12 +1041,12 @@ class usuario_AdminControle extends usuario_Controle
                 "mgs_secundaria" => __('Erro')
             );
         }
-        $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+        $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
         
-        $this->Usuarios_Comentario($usuario_id,$tipo);
+        $this->Usuarios_Comentario($usuario_id, $tipo);
         
         $this->_Visual->Json_Info_Update('Titulo', __('Comentário de ').$nomedisplay_sing.' deletado com Sucesso');  
-        $this->_Visual->Json_Info_Update('Historico', false);  
+        $this->_Visual->Json_Info_Update('Historico', FALSE);  
     }
 }
 ?>

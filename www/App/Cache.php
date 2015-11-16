@@ -66,7 +66,7 @@ class Cache {
         if (class_exists('\Memcached')) {
             self::$cache = new \Memcached();
             $retorno = self::$cache->addServer('localhost', 11211);
-            if ($retorno!==false) {
+            if ($retorno !== FALSE) {
                 self::$tipo           = 'Memcache';
                 self::$tipo_performace = 'rapido';
                 /*// checando dados no cache e carregando em $rows
@@ -122,26 +122,26 @@ class Cache {
      * @version 0.4.2
      * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
-    public function Ler($key,$ram=false,$travar_localmente=true) {
+    public function Ler($key, $ram = FALSE, $travar_localmente= TRUE ) {
         // SE for pra DEBUG nao salva
         if (SISTEMA_DEBUG===TRUE && $travar_localmente) {
-            return false;
+            return FALSE;
         }
 
         // Continua
-        $retorno = false;
+        $retorno = FALSE;
         if (self::$tipo==='Memcache') {
             // SE FOR DEBUG DELETA CACHE
             /*if (SISTEMA_DEBUG===TRUE) {
                 self::$cache->delete(sha1($key));
-                return false;
+                return FALSE;
             }*/
             $retorno = self::$cache->get(sha1($key));
             if (!($retorno)) {
                 if (self::$cache->getResultCode() == \Memcached::RES_NOTFOUND) {
-                    return false;
+                    return FALSE;
                 } else {
-                    return false;
+                    return FALSE;
                 }
             } else {
                 return unserialize($retorno);
@@ -150,7 +150,7 @@ class Cache {
         } else if (self::$tipo==='Shmop' && $ram && SISTEMA_DEDICADO) {
             try{
                 $retorno = $this->Shmop_Leitura($key);
-                if ($retorno!==false) return $retorno;
+                if ($retorno !== FALSE) return $retorno;
                 else  $this->Arquivos_Leitura($key);
             }
             catch(Exception $e) {
@@ -173,14 +173,14 @@ class Cache {
      * @version 0.4.2
      * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
-    public function Salvar($key, &$content, $time = null, $ram=false) {
+    public function Salvar($key, &$content, $time = null, $ram = FALSE) {
         if (self::$tipo==='Memcache') {
             $retorno = self::$cache->set(sha1($key), serialize($content));
             return $retorno;
         } else if (self::$tipo==='Shmop' && $ram && SISTEMA_DEDICADO) {
             try{
                 $retorno = @$this->Shmop_Salvar($key, $content, 1200); // tempo em segundos
-                if ($retorno!==false) return $retorno;
+                if ($retorno !== FALSE) return $retorno;
                 else  $this->Arquivos_Leitura($key);
             }
             catch(Exception $e) {
@@ -202,12 +202,12 @@ class Cache {
             if ($key!==null) {
                 return self::$cache->delete(sha1($key));
             } else {
-                return false;
+                return FALSE;
             }
         } else if (self::$tipo==='Shmop' && SISTEMA_DEDICADO) {
             /*try{
                 $retorno = @$this->Shmop_Salvar($key, $content, 1200); // tempo em segundos
-                if ($retorno!==false) return $retorno;
+                if ($retorno !== FALSE) return $retorno;
                 else  $this->Arquivos_Leitura($key);
             }
             catch(Exception $e) {*/
@@ -321,7 +321,7 @@ class Cache {
         if (file_exists($filename) && is_readable($filename)) {
             return unserialize(file_get_contents($filename));
         }
-        return false;
+        return FALSE;
     }
     /**
      * APAGA ARQUIVO DE CACHE
@@ -336,7 +336,7 @@ class Cache {
         if (file_exists($filename) && is_readable($filename)) {
             return unlink($filename);
         }
-        return false;
+        return FALSE;
     }
 
 
@@ -377,7 +377,7 @@ class Cache {
             $this->Shmop_Expirar_Setar($name, $timeout);
             return shmop_write($id, serialize($data), 0);
         }
-        else return false;
+        else return FALSE;
     }
     /**
      * 
@@ -393,15 +393,15 @@ class Cache {
             $id=shmop_open($this->Cache_Cod($name), "a", 0, 0);
 
             if ($id) $data=unserialize(shmop_read($id, 0, shmop_size($id)));
-            else return false;          // failed to load data
+            else return FALSE;          // failed to load data
 
             if ($data) {                // array retrieved
                 shmop_close();
                 return $data;
             }
-            else return false;          // failed to load data
+            else return FALSE;          // failed to load data
         }
-        else return false;              // data was expired
+        else return FALSE;              // data was expired
     }
     /**
      * 
@@ -440,7 +440,7 @@ class Cache {
 
         $id=shmop_open(1000, "a", 0, 0);
         if ($id) $tl=unserialize(shmop_read($id, 0, shmop_size($id)));
-        else return true;
+        else return TRUE;
         shmop_close($id);
 
         $timeout=$tl[$name];

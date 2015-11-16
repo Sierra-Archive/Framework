@@ -28,7 +28,7 @@ class Cpf
             );       
         }
         if (strlen($cpf) !== 11) {
-            return false;
+            return FALSE;
         }
         return (bool) (self::calcDigVerif(substr($cpf,0, 9))==(substr($cpf,9, 11)));       
     }      
@@ -61,7 +61,7 @@ class Cpf
         $soma = 0;
         $peso = 10;       
         for ($i = 0; $i < strlen($num); $i++) {     
-            $soma += (int) ((substr($num,$i, $i + 1)) * $peso--);
+            $soma += (int) ((substr($num, $i, $i + 1)) * $peso--);
         }
 
         if ($soma % 11 == 0 | $soma % 11 == 1)       
@@ -72,7 +72,7 @@ class Cpf
         $soma = 0;       
         $peso = 11;       
         for ($i = 0; $i < strlen($num); $i++)       
-               $soma += (int) (substr($num,$i, $i + 1)) * $peso--;       
+               $soma += (int) (substr($num, $i, $i + 1)) * $peso--;       
 
         $soma += ((int)$primDig) * 2;       
         if ($soma % 11 == 0 | $soma % 11 == 1)       

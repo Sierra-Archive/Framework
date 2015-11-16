@@ -22,33 +22,33 @@ class Agenda_Principal implements \Framework\PrincipalInterface
     * @version 0.4.2
     */
     static function Home(&$controle, &$Modelo, &$Visual) {
-        Agenda_PastaControle::Pastas_Listar(false,$Modelo,$Visual,'Maior');
+        Agenda_PastaControle::Pastas_Listar(FALSE, $Modelo, $Visual,'Maior');
     }
     static function Config() {
-        return false;
+        return FALSE;
     }
     
-    static function Relatorio($data_inicio,$data_final,$filtro=false) {
-        return false;
+    static function Relatorio($data_inicio, $data_final, $filtro = FALSE) {
+        return FALSE;
     }
     
-    static function Estatistica($data_inicio,$data_final,$filtro=false) {
-        return false;
+    static function Estatistica($data_inicio, $data_final, $filtro = FALSE) {
+        return FALSE;
     }
     /***********************
      * BUSCAS
      */
-    static function Busca(&$controle, &$Modelo, &$Visual,$busca) {
+    static function Busca(&$controle, &$Modelo, &$Visual, $busca) {
         $i = 0;
         // Busca Pastas
         $result = self::Busca_Pastas($controle, $Modelo, $Visual, $busca);
-        if ($result!==false) {
+        if ($result !== FALSE) {
             $i = $i + $result;
         }
         if (is_int($i) && $i>0) {
             return $i;
         } else {
-            return false;
+            return FALSE;
         }
     }
     static function Busca_Pastas($controle, $Modelo, $Visual, $busca) {
@@ -58,8 +58,8 @@ class Agenda_Principal implements \Framework\PrincipalInterface
           'obs'                     => '%'.$busca.'%'
         ));
         $i = 0;
-        $pastas = $Modelo->db->Sql_Select('Usuario_Agenda_Pasta',$where);
-        if ($pastas===false) return false;
+        $pastas = $Modelo->db->Sql_Select('Usuario_Agenda_Pasta', $where);
+        if ($pastas === FALSE) return FALSE;
         // Botao Add
         $Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
             Array(
@@ -76,8 +76,8 @@ class Agenda_Principal implements \Framework\PrincipalInterface
         )));
         // Conexao
         if (is_object($pastas)) $pastas = Array(0=>$pastas);
-        if ($pastas!==false && !empty($pastas)) {
-            list($tabela,$i) = Agenda_PastaControle::Pastas_Tabela($pastas);
+        if ($pastas !== FALSE && !empty($pastas)) {
+            list($tabela, $i) = Agenda_PastaControle::Pastas_Tabela($pastas);
             $Visual->Show_Tabela_DataTable($tabela);
         } else { 
             $Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhuma Pasta no Arquivo de Pastas '.$busca.'</font></b></center>');

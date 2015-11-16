@@ -11,7 +11,7 @@ class SierraTec_Estatistica {
     public function Gera_Estatistica(&$tabelas) {
         // Para cada tabela
         foreach($tabelas as &$valor) {
-            $this->Gera_Estatistica_Tabela($tabela,$valor);
+            $this->Gera_Estatistica_Tabela($tabela, $valor);
         }
     }
     /**
@@ -20,7 +20,7 @@ class SierraTec_Estatistica {
      * @param type $campos
      * #update
      */
-    private function Gera_Estatistica_Tabela($tabela,$campos,$total, $nivel=0, $query_condicao=false) {
+    private function Gera_Estatistica_Tabela($tabela, $campos, $total, $nivel=0, $query_condicao = FALSE) {
         
         // Para cada Campo
         foreach($campos as &$valor) {
@@ -40,7 +40,7 @@ class SierraTec_Estatistica {
                     continue;
                 }
                     
-                if ($query_condicao!==false) {
+                if ($query_condicao !== FALSE) {
                     $query = $query_condicao.' AND '.$query;
                 }
                 

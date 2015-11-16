@@ -141,7 +141,7 @@ final class Conexao
         } else {
             // Inicia Tabelas Verificando se a mesma já contem no cache
             // Ja que são funcoes que demandam tempo e sempre retorna mesmo resultado.
-            $cache_conexao = $this->_Cache->Ler('Conexao', true);
+            $cache_conexao = $this->_Cache->Ler('Conexao', TRUE);
             if (!$cache_conexao) {
                 // REaliza Consulta DOS DAO
                 $this->Tabelas();
@@ -154,7 +154,7 @@ final class Conexao
                 $cache_conexao[] = &self::$tabelas_Links_Invertido;
                 $cache_conexao[] = &self::$tabelas_ext;
 
-                $this->_Cache->Salvar('Conexao', $cache_conexao, '1200', true);
+                $this->_Cache->Salvar('Conexao', $cache_conexao, '1200', TRUE);
             } else {
                 // Recupera Cache
                 list(
@@ -168,7 +168,7 @@ final class Conexao
             }
         }
         
-        return true;
+        return TRUE;
     }  
     public function &get_connection() {
         return $this->mysqli;
@@ -224,19 +224,19 @@ final class Conexao
      * @version 0.4.2
      * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
-    public function prepare($sql,$autoreparo=true) 
+    public function prepare($sql, $autoreparo= TRUE ) 
     {
         $stmt = $this->mysqli->prepare($sql);
-        $passar = true;
-        if ($stmt===false) {
+        $passar = TRUE;
+        if ($stmt === FALSE) {
             $erro = $this->mysqli->error;
-            if (SISTEMA_DEBUG===true) {
+            if (SISTEMA_DEBUG === TRUE) {
                 echo '#QUERY:'.$sql.'n\n<br \>ERRO:'.$erro."\n\n<br \><br \>";
             }
             if ($passar && $autoreparo) {
                 $passar = $this->autoreparo_query($sql, $erro);
                 $stmt = $this->mysqli->prepare($sql);
-                if ($stmt===false) {
+                if ($stmt === FALSE) {
                     throw new \Exception('Erro de Query: '.$erro."\n<br>".'Query: '.$sql,3110);
                 }
             } else {
@@ -258,14 +258,14 @@ final class Conexao
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function query($sql,$autoreparo=true) 
+    public function query($sql, $autoreparo= TRUE ) 
     {
         $tempo = new \Framework\App\Tempo('Conexao Query');
-        $passar = true;
+        $passar = TRUE;
         //echo "\n\n<br><br>".$sql;
         while (!$re = $this->mysqli->query($sql)) {
             $erro = $this->mysqli->error;
-            if (SISTEMA_DEBUG===true) {
+            if (SISTEMA_DEBUG === TRUE) {
                 echo '#QUERY:'.$sql.'n\n<br \>ERRO:'.$erro."\n\n<br \><br \>";
             }
             if ($passar && $autoreparo) {
@@ -274,7 +274,7 @@ final class Conexao
                 throw new \Exception('Erro de Query: '.$erro."\n<br>".'Query: '.$sql,3110);
             }
         }
-        //var_dump($sql,'final',$re);
+        //var_dump($sql,'final', $re);
         return $re;
     }
     /**
@@ -287,13 +287,13 @@ final class Conexao
      * @version 0.4.2
      * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
-    public function multi_query($sql,$autoreparo=true) 
+    public function multi_query($sql, $autoreparo= TRUE ) 
     {
         $tempo = new \Framework\App\Tempo('Conexao MultiQuery');
-        $passar = true;
+        $passar = TRUE;
         //echo "\n\n<br><br>".$sql;
         if ($this->mysqli->multi_query($sql/*,MYSQLI_ASYNC*/)) {
-            //return true;
+            //return TRUE;
             do {
                 /* store first result set */
                 if ($result = $this->mysqli->store_result()) {
@@ -309,13 +309,13 @@ final class Conexao
             } while ($this->mysqli->next_result());
         } else {
             $erro = $this->mysqli->error;
-            if (SISTEMA_DEBUG===true) {
+            if (SISTEMA_DEBUG === TRUE) {
                 echo '#QUERY:'.$sql.'n\n<br \>ERRO:'.$erro."\n\n<br \><br \>";
             }
             throw new \Exception('Erro de Query MULTIPLA: '.$erro,3110);
         }
-        //var_dump($sql,'final',$re);
-        return true;
+        //var_dump($sql,'final', $re);
+        return TRUE;
         
     }
     /**
@@ -338,10 +338,10 @@ final class Conexao
      * 
      * #update ... Invez de fazxer varias conexoes, armazena tudo em uma variavel, e faz uma conexao só no final
      */
-    protected function Sql_Log($tabela,$campos,$valores,$tipo='Update') {
+    protected function Sql_Log($tabela, $campos, $valores, $tipo='Update') {
         $tempo = new \Framework\App\Tempo('Log');
         $query = 'INSERT INTO '.MYSQL_LOG_SQL.' (tabela,campos,valores) VALUES (\''.$tabela.'\',\''.$campos.'\',\''.$valores.'\',\''.APP_HORA.'\')';
-        $this->query($query,true);
+        $this->query($query,TRUE);
         
     }
     /**
@@ -360,26 +360,26 @@ final class Conexao
      * @return bolean Verdadeiro se tiver consertado, falso caso contrario
      */
     public function autoreparo_query($query, $erro) {
-        if (strpos($erro, 'Failed to read auto-increment value from storage engine ')!==false) {
+        if (strpos($erro, 'Failed to read auto-increment value from storage engine ') !== FALSE) {
             
             // Puxa nome da tabela de acordo com a query
-            if (strpos(strtolower($query), "insert into")!==false) {
+            if (strpos(strtolower($query), "insert into") !== FALSE) {
                 if (\Framework\App\Sistema_Funcoes::VersionPHP('5.3.10')) {
-                    $tabela = stristr(trim(stristr(trim(stristr($query, 'into' )), ' ')), $multi, true);
+                    $tabela = stristr(trim(stristr(trim(stristr($query, 'into' )), ' ')), $multi, TRUE);
                 } else {
                     // Criado para funcionar Abaixo do PHP 5.3
                     $tabela = explode($multi,trim(stristr(trim(stristr($query, 'into' )), ' ')));
                     $tabela = $tabela[0];
                 }
-            } else if (strpos(strtolower($query), "select")!==false) {
+            } else if (strpos(strtolower($query), "select") !== FALSE) {
                 if (\Framework\App\Sistema_Funcoes::VersionPHP('5.3.10')) {
-                    $tabela = stristr(trim(stristr(trim(stristr($query, 'from' )), ' ')), $multi, true); 
+                    $tabela = stristr(trim(stristr(trim(stristr($query, 'from' )), ' ')), $multi, TRUE); 
                 } else {
                     // Criado para funcionar Abaixo do PHP 5.3
                     $tabela = explode($multi,trim(stristr(trim(stristr($query, 'from' )), ' ')));
                     $tabela = $tabela[0];
                 }
-            } else if (strpos(strtolower($query), "insert")!==false) {
+            } else if (strpos(strtolower($query), "insert") !== FALSE) {
                 if (\Framework\App\Sistema_Funcoes::VersionPHP('5.3.10')) {
                     $tabela = stristr(
                         trim(
@@ -398,41 +398,41 @@ final class Conexao
                     );
                 }
             } else {
-                return false;
+                return FALSE;
             }
-            return $this->query('ALTER TABLE `'.$tabela.'` AUTO_INCREMENT =1;',true);
+            return $this->query('ALTER TABLE `'.$tabela.'` AUTO_INCREMENT =1;',TRUE);
 
-        } else if (strpos($erro, 'Unknown column')!==false) {
+        } else if (strpos($erro, 'Unknown column') !== FALSE) {
             /*
              * ALTER TABLE clientes ADD email char(80) not null AFTER fone;
              * ALTER TABLE clientes DROP email;  //eliminar email
              * ALTER TABLE clientes CHANGE fone fone char(30) not null; 
              */
             // Trata Erro e acha o campo errado
-            if (strpos($erro, "in 'field list'")!==false) {
+            if (strpos($erro, "in 'field list'") !== FALSE) {
                 $erro = str_replace('in \'field list\'', '', $erro);
-            } else if (strpos($erro, 'in \'where clause\'')!==false) {
+            } else if (strpos($erro, 'in \'where clause\'') !== FALSE) {
                 $erro = str_replace('in \'where clause\'', '', $erro);
-            } else if (strpos($erro, 'in \'on clause\'')!==false) {
+            } else if (strpos($erro, 'in \'on clause\'') !== FALSE) {
                 $erro = str_replace('in \'on clause\'', '', $erro);
             } else {
-                $erro = explode(' in ',$erro);
+                $erro = explode(' in ', $erro);
                 $erro = $erro[0];
             }
-            $campo = explode("'",$erro);
+            $campo = explode("'", $erro);
             $campo = $campo[1];
             
             // Caso nao seja alterado, se trata de uma tabela só
             $multi = ' ';
             $tabelanova = '';
-            if (strpos($campo, '.')!==false) {
-                $campo = explode('.',$campo);
+            if (strpos($campo, '.') !== FALSE) {
+                $campo = explode('.', $campo);
                 $multi .= $campo[0];
                 // Verifica se foi erro numa tabela que foi incluida automaticamente
                 // pelo sistema na query de SelECT
-                if (strpos($campo[0], 'EXT')!==false) {
-                    $capturar_externa = explode(' AS '.$campo[0],$query);
-                    $capturar_externa = explode(' JOIN ',$capturar_externa[0]);
+                if (strpos($campo[0], 'EXT') !== FALSE) {
+                    $capturar_externa = explode(' AS '.$campo[0], $query);
+                    $capturar_externa = explode(' JOIN ', $capturar_externa[0]);
                     $cont = count($capturar_externa);
                     $tabelanova = $capturar_externa[$cont-1];
                 } else {
@@ -440,33 +440,33 @@ final class Conexao
                     $tabelanova = $tabelanova['tabela'];
                 }
                 $campo  = $campo[1];
-                if (strpos($query, $multi.' ')!==false) $multi .= ' ';
-                if (strpos($query, $multi.', ')!==false) $multi .= ', ';
+                if (strpos($query, $multi.' ') !== FALSE) $multi .= ' ';
+                if (strpos($query, $multi.', ') !== FALSE) $multi .= ', ';
             }
             // Trava bug quando query é muito simples e nao tem final
-            if (strpos(strtolower($query), "where")===false && strpos(strtolower($query), "limit")===false && strpos(strtolower($query), "order")===false)
+            if (strpos(strtolower($query), "where") === FALSE && strpos(strtolower($query), "limit") === FALSE && strpos(strtolower($query), "order") === FALSE)
             {
                 $query = $query. ' LIMIT 1';
             }
             
             // Puxa nome da tabela de acordo com a query
-            if (strpos(strtolower($query), "insert into")!==false) {
+            if (strpos(strtolower($query), "insert into") !== FALSE) {
                 if (\Framework\App\Sistema_Funcoes::VersionPHP('5.3.10')) {
-                    $tabela = stristr(trim(stristr(trim(stristr($query, 'into' )), ' ')), $multi, true);
+                    $tabela = stristr(trim(stristr(trim(stristr($query, 'into' )), ' ')), $multi, TRUE);
                 } else {
                     // Criado para funcionar Abaixo do PHP 5.3
                     $tabela = explode($multi,trim(stristr(trim(stristr($query, 'into' )), ' ')));
                     $tabela = $tabela[0];
                 }
-            } else if (strpos(strtolower($query), "select")!==false) {
+            } else if (strpos(strtolower($query), "select") !== FALSE) {
                 if (\Framework\App\Sistema_Funcoes::VersionPHP('5.3.10')) {
-                    $tabela = stristr(trim(stristr(trim(stristr($query, 'from' )), ' ')), $multi, true); 
+                    $tabela = stristr(trim(stristr(trim(stristr($query, 'from' )), ' ')), $multi, TRUE); 
                 } else {
                     // Criado para funcionar Abaixo do PHP 5.3
                     $tabela = explode($multi,trim(stristr(trim(stristr($query, 'from' )), ' ')));
                     $tabela = $tabela[0];
                 }
-            } else if (strpos(strtolower($query), "insert")!==false) {
+            } else if (strpos(strtolower($query), "insert") !== FALSE) {
                 if (\Framework\App\Sistema_Funcoes::VersionPHP('5.3.10')) {
                     $tabela = stristr(
                         trim(
@@ -484,7 +484,7 @@ final class Conexao
                         true
                     );
                 }
-            } else if (strpos(strtolower($query), "update")!==false) {
+            } else if (strpos(strtolower($query), "update") !== FALSE) {
                 if (\Framework\App\Sistema_Funcoes::VersionPHP('5.3.10')) {
                     $tabela = stristr(
                         trim(
@@ -503,10 +503,10 @@ final class Conexao
                     );
                 }
             } else {
-                return false;
+                return FALSE;
             }
             // Se tiverem varias tabelas escolhe a correta
-            $tabela_multi = explode(' ',$tabela);
+            $tabela_multi = explode(' ', $tabela);
             if (count($tabela_multi)>1) {
                $tabela = $tabela_multi[0];
             }
@@ -515,56 +515,56 @@ final class Conexao
             }
             
             if ($campo=='log_user_add' || $campo=='log_user_edit' || $campo=='log_user_del') {
-                return $this->query('ALTER TABLE `'.$tabela.'` ADD `'.$campo.'` int(11) DEFAULT NULL;',false);
+                return $this->query('ALTER TABLE `'.$tabela.'` ADD `'.$campo.'` int(11) DEFAULT NULL;', FALSE);
             } else if ($campo=='log_date_add' || $campo=='log_date_edit' || $campo=='log_date_del') {
-                return $this->query('ALTER TABLE `'.$tabela.'` ADD `'.$campo.'` datetime;',false,false);
+                return $this->query('ALTER TABLE `'.$tabela.'` ADD `'.$campo.'` datetime;', FALSE, FALSE);
             } else if ($campo=='deletado') {
-                return $this->query('ALTER TABLE `'.$tabela.'` ADD `'.$campo.'`  INT(3) NOT NULL DEFAULT \'0\';',false);
+                return $this->query('ALTER TABLE `'.$tabela.'` ADD `'.$campo.'`  INT(3) NOT NULL DEFAULT \'0\';', FALSE);
             } else if ($campo=='servidor') {
-                return $this->query('ALTER TABLE `'.$tabela.'` ADD `'.$campo.'`  VARCHAR(45) NOT NULL DEFAULT \''.SRV_NAME_SQL.'\' FIRST;',false);
+                return $this->query('ALTER TABLE `'.$tabela.'` ADD `'.$campo.'`  VARCHAR(45) NOT NULL DEFAULT \''.SRV_NAME_SQL.'\' FIRST;', FALSE);
             } else if ($campo=='id') {
-                return $this->query('ALTER TABLE `'.$tabela.'` ADD `'.$campo.'`  INT( 11 ) NOT NULL AUTO_INCREMENT PRIMARY KEY COMMENT \'Chave Primária\';',false);
+                return $this->query('ALTER TABLE `'.$tabela.'` ADD `'.$campo.'`  INT( 11 ) NOT NULL AUTO_INCREMENT PRIMARY KEY COMMENT \'Chave Primária\';', FALSE);
             } else {
                 
                 $colunas = &$this->Dao_GetColunas_Nome($tabela);
-                $existe = false;
+                $existe = FALSE;
                 if (isset($colunas) && !empty($colunas)) {
                     foreach($colunas as &$valor) {
-                        if ($existe===false && isset($valor['mysql_titulo']) && ($valor['mysql_titulo']==$campo || $valor['mysql_titulo']==$campo.'[]')) {
-                            $existe = true;
+                        if ($existe === FALSE && isset($valor['mysql_titulo']) && ($valor['mysql_titulo']==$campo || $valor['mysql_titulo']==$campo.'[]')) {
+                            $existe = TRUE;
                             $inf_campo = '';
 
                             $valor['mysql_tipovar'] = strtoupper($valor['mysql_tipovar']);
                             $inf_campo .= $valor['mysql_tipovar'];		
                             // text e blog nao aceita default
-                            if (strpos($valor['mysql_tipovar'], 'TEXT')===false && strpos($valor['mysql_tipovar'], 'BLOG')===false) {
-                                if (isset($valor['mysql_tamanho']) && $valor['mysql_tamanho']  !==false && $valor['mysql_tipovar']!='DATETIME' && $valor['mysql_tipovar']!='DATE' && $valor['mysql_tipovar']!='TIME') {
+                            if (strpos($valor['mysql_tipovar'], 'TEXT') === FALSE && strpos($valor['mysql_tipovar'], 'BLOG') === FALSE) {
+                                if (isset($valor['mysql_tamanho']) && $valor['mysql_tamanho']   !== FALSE && $valor['mysql_tipovar']!='DATETIME' && $valor['mysql_tipovar']!='DATE' && $valor['mysql_tipovar']!='TIME') {
                                     $inf_campo .= '('.$valor['mysql_tamanho'].')';
                                 }
-                                if ($valor['mysql_null'] === false && $valor['mysql_default'] !== false) {
+                                if ($valor['mysql_null'] === false && $valor['mysql_default'] !== FALSE) {
                                     $inf_campo .= ' NOT NULL DEFAULT \''.$valor['mysql_default'].'\'';
                                 }
                                 else{
                                     $inf_campo .= ' DEFAULT NULL';
                                 }
-                                if ($valor['mysql_autoadd']!==false) {
+                                if ($valor['mysql_autoadd'] !== FALSE) {
                                     $inf_campo .= ' AUTO_INCREMENT';
                                 }
                             }
                             // Adiciona Comentário 
-                            if ($valor['mysql_comment']!==false) {
+                            if ($valor['mysql_comment'] !== FALSE) {
                                 $inf_campo .= ' COMMENT \''.$valor['mysql_comment'].'\'';
                             }
                         }
                     }
                 }
                 // SE exister faz query e retorna se nao retorna falso
-                return $existe?$this->query('ALTER TABLE `'.$tabela.'` ADD `'.$campo.'` '.$inf_campo.';',true):false;
+                return $existe?$this->query('ALTER TABLE `'.$tabela.'` ADD `'.$campo.'` '.$inf_campo.';',TRUE):false;
             }
-        } else if (strpos($erro, 'Table')!==false AND strpos($erro, 'doesn\'t exist')!==false) {
+        } else if (strpos($erro, 'Table') !== FALSE AND strpos($erro, 'doesn\'t exist') !== FALSE) {
             /*$tabela = explode('.',stristr($erro, $this->banco.'.'));
             if (\Framework\App\Sistema_Funcoes::VersionPHP('5.3.10')) {
-                $tabela = stristr($tabela[1], '\' doesn\'t exist',true);
+                $tabela = stristr($tabela[1], '\' doesn\'t exist',TRUE);
             } else {
                 $tabela = explode('\' doesn\'t exist', $tabela[1]);
                 $tabela = $tabela[0];
@@ -582,9 +582,9 @@ final class Conexao
             }*/
             // Conserta query
             $this->Sql_Query('criar tabela', self::$tabelas);
-            return true;
+            return TRUE;
         }
-        return false;
+        return FALSE;
     }
     /**
      * Executa query de reparação de acordo com a Instrução dada
@@ -596,31 +596,31 @@ final class Conexao
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Sql_Query($comando, &$tabela, $executar_query = true) {
+    public function Sql_Query($comando, &$tabela, $executar_query = TRUE) {
         // Declara Variaveis
         $query          = (string) '';
         $primaria       = (string) ''; 
         $indices        = (string) ''; 
         $indice_unico   = Array(); 
-        $autoincrement  = false;
+        $autoincrement  = FALSE;
         // Declara Varaiveis funcoes
-        $autoincrement_sql = function($primaria,$autoincrement) {
-            if ($primaria!='' && $autoincrement===false) {
+        $autoincrement_sql = function($primaria, $autoincrement) {
+            if ($primaria!='' && $autoincrement === FALSE) {
                 $primaria = ', '.$primaria;
             }
             return ($autoincrement)?$primaria:'`servidor`'.$primaria;
         };
-        // Se tabela não é um array return false;
+        // Se tabela não é um array return FALSE;
         if (!is_array($tabela)) {
-            return false;
+            return FALSE;
         }
         if (isset($tabela['colunas']) && is_array($tabela['colunas'])) {
             // Verifica comando
             if ($comando == 'criar tabela') {
                 // Começa a criar tabela
                 $query .= 'CREATE TABLE IF NOT EXISTS `'.$tabela['nome'].'` (';
-                if ($tabela['static']===false || !isset($tabela['static'])) {
-                    $tabela['static'] = false;
+                if ($tabela['static'] === FALSE || !isset($tabela['static'])) {
+                    $tabela['static'] = FALSE;
                     $query .= '`servidor` VARCHAR(45) NOT NULL DEFAULT \''.SRV_NAME_SQL.'\', ';
                 }
                 // Logs de Usuarios e datas
@@ -642,33 +642,33 @@ final class Conexao
                         if ($i!=0) $query .= ', ';
                         $query .= '`'.$valor['mysql_titulo'].'` '.$valor['mysql_tipovar'];		
                         // text e blog nao aceita default
-                        if (strpos($valor['mysql_tipovar'], 'TEXT')===false && strpos($valor['mysql_tipovar'], 'BLOG')===false) {
-                            if (isset($valor['mysql_tamanho']) && $valor['mysql_tamanho']  !==false && $valor['mysql_tipovar']!='DATETIME' && $valor['mysql_tipovar']!='DATE' && $valor['mysql_tipovar']!='TIME') {
+                        if (strpos($valor['mysql_tipovar'], 'TEXT') === FALSE && strpos($valor['mysql_tipovar'], 'BLOG') === FALSE) {
+                            if (isset($valor['mysql_tamanho']) && $valor['mysql_tamanho']   !== FALSE && $valor['mysql_tipovar']!='DATETIME' && $valor['mysql_tipovar']!='DATE' && $valor['mysql_tipovar']!='TIME') {
                                 $query .= '('.$valor['mysql_tamanho'].')';
                             }
-                            if ($valor['mysql_null'] === false && $valor['mysql_default'] !== false && $valor['mysql_autoadd']===false) {
+                            if ($valor['mysql_null'] === false && $valor['mysql_default'] !== false && $valor['mysql_autoadd'] === FALSE) {
                                 $query .= ' NOT NULL DEFAULT \''.$valor['mysql_default'].'\'';
-                            } else if ($valor['mysql_null'] === false && $valor['mysql_autoadd']===false) {
+                            } else if ($valor['mysql_null'] === false && $valor['mysql_autoadd'] === FALSE) {
                                 $query .= ' NOT NULL';
                             } else{
                                 $query .= ' DEFAULT NULL';
                             }
-                            if ($valor['mysql_autoadd']!==false) {
+                            if ($valor['mysql_autoadd'] !== FALSE) {
                                 $query .= ' AUTO_INCREMENT';
-                                $autoincrement = true;
+                                $autoincrement = TRUE;
                             }
                             // Verifica Primarias...
-                            if ($valor['mysql_primary']!==false) {
+                            if ($valor['mysql_primary'] !== FALSE) {
                                 if ($p!=0) $primaria .= ', ';
                                 $primaria .= '`'.$valor['mysql_titulo'].'`';
                                 ++$p;
                             }
                             // Verifica Indices Unicos
-                            if (isset($valor['mysql_indice_unico']) && $valor['mysql_indice_unico']!==false && is_string($valor['mysql_indice_unico'])) {
+                            if (isset($valor['mysql_indice_unico']) && $valor['mysql_indice_unico'] !== FALSE && is_string($valor['mysql_indice_unico'])) {
                                 if (isset($i_u[$valor['mysql_indice_unico']]) && is_int($i_u[$valor['mysql_indice_unico']]) && $i_u[$valor['mysql_indice_unico']]>0) {
                                     $indice_unico[$valor['mysql_indice_unico']] .= ', ';
                                 } else {
-                                    if ($tabela['static']===false) {
+                                    if ($tabela['static'] === FALSE) {
                                         $indice_unico[$valor['mysql_indice_unico']] = (string)  '`servidor`,'  ;
                                     } else {
                                         $indice_unico[$valor['mysql_indice_unico']] = (string)  ''  ;
@@ -680,7 +680,7 @@ final class Conexao
                             }
                         }
                         // Adiciona Comentário 
-                        if ($valor['mysql_comment']!==false) {
+                        if ($valor['mysql_comment'] !== FALSE) {
                             $query .= ' COMMENT \''.$valor['mysql_comment'].'\'';
                         }
                         ++$i;
@@ -688,10 +688,10 @@ final class Conexao
                 }
                 // Add Primarias a Indice..
                 if ($primaria!='') {
-                    if ($tabela['static']===false) {
-                        $indices .= ', PRIMARY KEY ('.$autoincrement_sql($primaria,$autoincrement).')';
+                    if ($tabela['static'] === FALSE) {
+                        $indices .= ', PRIMARY KEY ('.$autoincrement_sql($primaria, $autoincrement).')';
                     } else {
-                        $indices .= ', PRIMARY KEY ('.$autoincrement_sql($primaria,true).')';
+                        $indices .= ', PRIMARY KEY ('.$autoincrement_sql($primaria,TRUE).')';
                     }
                 }
                 // Adiciona Unicos a Indice 
@@ -711,16 +711,16 @@ final class Conexao
         } else {
             // Se for um conjunto de tabelas, faz em todas, recursivamente
             foreach($tabela as &$valor) {
-                $this->Sql_Query($comando,$valor);
-                /*$query_somar = $this->Sql_Query($comando,$valor,false);
-                if ($query_somar!==false) {
+                $this->Sql_Query($comando, $valor);
+                /*$query_somar = $this->Sql_Query($comando, $valor, FALSE);
+                if ($query_somar !== FALSE) {
                     $query .= $query_somar;
                 }*/
             }
-            return true;
+            return TRUE;
         }
         // Executa ou retorna query
-        return ($executar_query)?$this->query($query,true):$query;
+        return ($executar_query)?$this->query($query,TRUE):$query;
     }
     /***************
      * 
@@ -744,7 +744,7 @@ final class Conexao
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Sql_Insert(&$Objeto,$tempo=true,$retorna=false) {
+    public function Sql_Insert(&$Objeto, $tempo= TRUE, $retorna = FALSE) {
         if ($tempo) {
             $temponome  = 'Inserir';
             $tempo2   = new \Framework\App\Tempo($temponome);
@@ -754,7 +754,7 @@ final class Conexao
             $sql = 'INSERT '.self::$tabelas[$class_name]['nome'].' ';
 
             // Divide por Servidores
-            if (self::$tabelas[$class_name]['static']===false) {
+            if (self::$tabelas[$class_name]['static'] === FALSE) {
                 $sql1 = '(servidor';
                 $sql2 = '(\'' .SRV_NAME_SQL.'\'';
             } else {
@@ -771,7 +771,7 @@ final class Conexao
             
             // Faz query com valores 
             foreach ($tabela_campos_valores as $indice =>&$valor) {
-                if ($valor!==false && $valor!== NULL) {
+                if ($valor !== FALSE && $valor!== NULL) {
                     // Transforma pra pasar pra mysql
                     $valor_add = $Objeto->bd_set($indice);
                     // SE for int nao precisa de aspas
@@ -793,11 +793,11 @@ final class Conexao
                 return $this->query($sql);
             }
             
-            return true;
+            return TRUE;
         } else if (is_array($Objeto)) {
             $sql = '';
             foreach($Objeto as &$valor) {
-                $sql .= $this->Sql_Insert($valor,true,true);
+                $sql .= $this->Sql_Insert($valor, TRUE,TRUE);
             }
             if ($retorna) {
                 return $sql;
@@ -805,9 +805,9 @@ final class Conexao
                 return $this->multi_query($sql);
             }
             
-            return true;
+            return TRUE;
         } else {
-            return false;
+            return FALSE;
         }
     }
     /**
@@ -822,16 +822,16 @@ final class Conexao
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Sql_Delete(&$objetos,$deletar=false) {
-        if ($objetos===false)    return false;
+    public function Sql_Delete(&$objetos, $deletar = FALSE) {
+        if ($objetos === FALSE)    return FALSE;
         if (is_object($objetos)) $objetos = Array($objetos);
-        if (empty($objetos))     return false;
-        if ($deletar===false) {
+        if (empty($objetos))     return FALSE;
+        if ($deletar === FALSE) {
             foreach($objetos as &$Objeto) {
                 $Objeto->deletado       = 1;
                 $Objeto->log_date_del   = APP_HORA_BR;
             }
-            $this->Sql_Update($objetos,false);
+            $this->Sql_Update($objetos, FALSE);
         } else {
             foreach($objetos as &$Objeto) {
                 $class_name = get_class($Objeto);
@@ -852,9 +852,9 @@ final class Conexao
                 $sql .= '; ';
             }
             // Executa as Querys
-            $this->multi_query($sql,true);
+            $this->multi_query($sql,TRUE);
         }
-        return true;
+        return TRUE;
     }
     /**
      * @param type $Objeto
@@ -871,7 +871,7 @@ final class Conexao
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Sql_Update(&$Objeto, $log=true,$tempo=true,$retornar=false) {
+    public function Sql_Update(&$Objeto, $log= TRUE, $tempo= TRUE, $retornar = FALSE) {
         if ($tempo) {
             $temponome  = 'Update';
             $tempo2   = new \Framework\App\Tempo($temponome);
@@ -881,16 +881,16 @@ final class Conexao
             reset($Objeto);
             $sql = '';
             while (key($Objeto) !== null) {
-                $sql .= $this->Sql_Update($Objeto[key($Objeto)],true,true,true);
+                $sql .= $this->Sql_Update($Objeto[key($Objeto)], TRUE, TRUE,TRUE);
                 next($Objeto);
             }            
             // Executa ou retorna sql
             if ($retornar) {
                 return $sql;
             } else {
-                return $this->multi_query($sql,true);
+                return $this->multi_query($sql,TRUE);
             }
-            return true;
+            return TRUE;
         } else if (is_object($Objeto)) {
             $class_name = get_class($Objeto);
             // Captura Variaveis do Objeto e Primarias
@@ -902,8 +902,8 @@ final class Conexao
             $i      = 0;
             $j      = 0;
             reset($tabela_campos_valores);
-            while (list($indice,$valor) = each($tabela_campos_valores)) {
-                if ($valor!==false && strpos($indice, '2')===false && (array_search($indice, $primarias)===false ||  array_search($indice, $primarias)===NULL)) {
+            while (list($indice, $valor) = each($tabela_campos_valores)) {
+                if ($valor !== FALSE && strpos($indice, '2') === FALSE && (array_search($indice, $primarias) === FALSE ||  array_search($indice, $primarias)===NULL)) {
                     if ($sql!='') {
                         $sql .=  ', ';
                     }
@@ -915,7 +915,7 @@ final class Conexao
             // SE nao tiver valores da erro, se nao tiver nenhum alterado nao faz update
             if ($j==0) throw new \Exception('Falta Valores de SET no mysql',3130);
             if ($i==0) { 
-                return true;
+                return TRUE;
             }
             
             $sql = 'UPDATE '.self::$tabelas[$class_name]['nome'].' SET '.$sql.', log_date_edit=\''.APP_HORA.'\', log_user_edit=\''.\Framework\App\Acl::Usuario_GetID_Static().'\'';
@@ -936,20 +936,20 @@ final class Conexao
             if ($retornar) {
                 return $sql.';';
             } else {
-                return $this->query($sql,true);
+                return $this->query($sql,TRUE);
             }
-            return true;
+            return TRUE;
         } else {
             $edicao = explode('|', $Objeto);
             // Trata
             if (!isset($edicao[1]) || !isset(self::$tabelas[$edicao[0].'_DAO'])) {
-                return false;
+                return FALSE;
             }
             $sql = 'UPDATE '.self::$tabelas[$edicao[0].'_DAO']['nome'].' SET '.$edicao[1].', log_date_edit=\''.APP_HORA.'\', log_user_edit=\''.\Framework\App\Acl::Usuario_GetID_Static().'\' WHERE '.$edicao[2];
             if ($retornar) {
                 return $sql.';';
             } else {
-                return $this->query($sql,true);
+                return $this->query($sql,TRUE);
             }
         }
     }
@@ -962,8 +962,8 @@ final class Conexao
      *       $sql_tabela_sigla,
      *       $sql_condicao,
      *       $tabela_campos_valores,
-     *       $tabelas_usadas,$j
-     *   ) = $this->Sql_Select_Dados($class_dao,$campos);
+     *       $tabelas_usadas, $j
+     *   ) = $this->Sql_Select_Dados($class_dao, $campos);
      * 
      * @param type $class_dao Classe Dao do Sistema ou Modulo
      * @param type $campos Campos Correspondentes
@@ -973,13 +973,13 @@ final class Conexao
      *       $sql_tabela_sigla,
      *       $sql_condicao,
      *       $tabela_campos_valores,
-     *       $tabelas_usadas,$j
+     *       $tabelas_usadas, $j
      *   )
      * 
      * @version 0.4.2
      * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
-    public function Sql_Select_Dados($class_dao,$campos,$sql='SELECT',$retornar_extrangeiras_usadas=false,$deletados=false) {
+    public function Sql_Select_Dados($class_dao, $campos, $sql='SELECT', $retornar_extrangeiras_usadas = FALSE, $deletados = FALSE) {
         // Carrega Chave do Cache
         $chave_cache = 'Select-'.$class_dao.serialize($campos).$sql;
         if ($deletados) {
@@ -990,7 +990,7 @@ final class Conexao
         // Carrega Cache
         $Cache = $this->_Cache->Ler($chave_cache);
         if (!$Cache) {
-            $Cache = $this->Sql_Select_Comeco($class_dao, $campos,$sql,$deletados);
+            $Cache = $this->Sql_Select_Comeco($class_dao, $campos, $sql, $deletados);
         
             $this->_Cache->Salvar($chave_cache, $Cache);
         }
@@ -1009,8 +1009,8 @@ final class Conexao
      *       $sql_tabela_sigla,
      *       $sql_condicao,
      *       $tabela_campos_valores,
-     *       $tabelas_usadas,$j
-     *   ) = $this->Sql_Select_Dados($class_dao,$campos);
+     *       $tabelas_usadas, $j
+     *   ) = $this->Sql_Select_Dados($class_dao, $campos);
      * 
      * @param type $class_dao Classe Dao do Sistema ou Modulo
      * @param type $campos Campos Correspondentes
@@ -1022,15 +1022,15 @@ final class Conexao
      *       $sql_tabela_sigla,
      *       $sql_condicao,
      *       $tabela_campos_valores,
-     *       $tabelas_usadas,$j
+     *       $tabelas_usadas, $j
      *   )
      * @throws \Exception
      * 
      * @version 0.4.2
      * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
-    private function Sql_Select_Comeco($class_dao,$campos,$sql='SELECT',$deletados=false) {
-        $campos_todos = false;
+    private function Sql_Select_Comeco($class_dao, $campos, $sql='SELECT', $deletados = FALSE) {
+        $campos_todos = FALSE;
         
         // Campos Usados da Principal e das Extrangeiras
         $principal = Array();
@@ -1075,7 +1075,7 @@ final class Conexao
         // Caso venha uma string *, ira puxar todos os campos,
         // Se nao, só vai puxar os campos pedidos
         $campos_string = '*';
-        if ($campos!==false && is_string($campos) && $campos!=='*') {
+        if ($campos !== FALSE && is_string($campos) && $campos!=='*') {
             
             
             // Explode CAmpos e Trata Eles
@@ -1084,44 +1084,44 @@ final class Conexao
             foreach($campos as $valor) {
                 if ($valor==='*') {
                     // Libera Todos os campos
-                    $campos_todos = true;
-                } else if (strripos($valor, '.')===false) {
+                    $campos_todos = TRUE;
+                } else if (strripos($valor, '.') === FALSE) {
                     // Adiciona Aos Principais
-                    $principal[$valor] = true;
+                    $principal[$valor] = TRUE;
                 } else {
                     // Adiciona as Extrangeiras
                     $quebrado = explode('.', $valor);
                     if (!isset($extrangeiras[$quebrado[0]])) {
                         $extrangeiras[$quebrado[0]] = Array();
                     }
-                    $extrangeiras[$quebrado[0]][$quebrado[1]] = true;
+                    $extrangeiras[$quebrado[0]][$quebrado[1]] = TRUE;
                 }
             }
         } else {
-            $campos_todos = true;
+            $campos_todos = TRUE;
         }
         // Trata os Campos das Extrangeiras da Tabela do Select        
-        if ($extrangeira!==false && (!empty($extrangeiras) || $campos_todos===true || !empty($principal))) {
+        if ($extrangeira !== FALSE && (!empty($extrangeiras) || $campos_todos === TRUE || !empty($principal))) {
         
             foreach($extrangeira as &$valor) {
-                if (strpos($valor['titulo'], '[]')===false ) {
+                if (strpos($valor['titulo'], '[]') === FALSE ) {
                     
                     // Se não é pra exibir todos os campos e nao pediram essa extrangeiras em campos
                     // e ( extrangeiras ta vazia ou nao existe em extrangeiras ou valor em extrangeiras 
                     // é falso, ou extrangeiras esta vazio
                     // )
-                    if ($campos_todos===false && strripos($campos_string, $valor["titulo"].'2')===false 
+                    if ($campos_todos === FALSE && strripos($campos_string, $valor["titulo"].'2') === FALSE 
                         && (
                             empty($extrangeiras) || 
                             !isset($extrangeiras[$valor['titulo']]) || 
-                            $extrangeiras[$valor['titulo']]===false || 
+                            $extrangeiras[$valor['titulo']] === FALSE || 
                             empty($extrangeiras[$valor['titulo']])
                         )
                     ) {
                         continue;
                     }
                     // Faz Tratamento de Extrangeira
-                    list($ligacao,$mostrar,$extcondicao) = $this->Extrangeiras_Quebra($valor['conect']);
+                    list($ligacao, $mostrar, $extcondicao) = $this->Extrangeiras_Quebra($valor['conect']);
 
                     
                     // Lista Sigla a ser usada e a tabela
@@ -1160,7 +1160,7 @@ final class Conexao
                         // Se pedir campo extra, acrescenta #update Nao lembro oq faz
                         if (isset($extrangeiras[$valor['titulo']])) {
                             foreach($extrangeiras[$valor['titulo']] as $indice2=>$valor2) {
-                                if ($valor2===true) {
+                                if ($valor2 === TRUE) {
                                     $ext_campos .= $sigla.'.'.$indice2;
                                 }
                             }
@@ -1198,10 +1198,10 @@ final class Conexao
          */
         // Continua
         $i = 0;
-        while (list($indice,$valor) = each($tabela_campos_valores)) {    
+        while (list($indice, $valor) = each($tabela_campos_valores)) {    
             
             // Se nao tiver que colocar nao coloca
-            if ($campos_todos===false && (empty($principal) || !isset($principal[$indice]) || $principal[$indice]===false)) continue;
+            if ($campos_todos === FALSE && (empty($principal) || !isset($principal[$indice]) || $principal[$indice] === FALSE)) continue;
             
             if ($i==0) {
                 $sql .= $sql_tabela_sigla.'.'.$indice;
@@ -1216,15 +1216,15 @@ final class Conexao
         $numero_de_campos_nativos = $i;
         // WHERE  -> Adiciona Servidor se Tabela nao for estatica
         $j = 0;
-        if (self::$tabelas[$class_dao]['static']===false) {
+        if (self::$tabelas[$class_dao]['static'] === FALSE) {
             $sql_condicao .= $sql_tabela_sigla.'.servidor = \''.SRV_NAME_SQL.'\'';
             ++$j;
         }
         // Nao deletado
-        if ($deletados===false) {
+        if ($deletados === FALSE) {
             if ($j!=0) $sql_condicao .= ' AND ';
             $sql_condicao .= $sql_tabela_sigla.'.deletado != \'1\'';
-        } else if ($deletados===true) {
+        } else if ($deletados === TRUE) {
             if ($j!=0) $sql_condicao .= ' AND ';
             $sql_condicao .= $sql_tabela_sigla.'.deletado != \'0\'';
         }
@@ -1235,7 +1235,7 @@ final class Conexao
             $sql.= ', ';
         }
         $sql .= $ext_campos.' FROM '.$sql_tabela.$join;
-        return Array($sql,$sql_tabela_sigla,$sql_condicao,$tabela_campos_valores,$tabelas_usadas,$j,$retornar_extrangeiras_usadas);
+        return Array($sql, $sql_tabela_sigla, $sql_condicao, $tabela_campos_valores, $tabelas_usadas, $j, $retornar_extrangeiras_usadas);
     }
     /**
      * Conta os Resultados de na tabela de Cada DAO
@@ -1247,7 +1247,7 @@ final class Conexao
      * @version 0.4.2
      * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
-    public function Sql_Contar($class_dao, $where = false, $inner_join = false) {
+    public function Sql_Contar($class_dao, $where = FALSE, $inner_join = FALSE) {
         $tempo = new \Framework\App\Tempo('Conexao_Contar');   
         // Expections
         if ($class_dao=='') {
@@ -1261,17 +1261,17 @@ final class Conexao
         
         // Ve se tem servidor
         $condicao = '';
-        if (self::$tabelas[$class_dao]['static']===false) {
+        if (self::$tabelas[$class_dao]['static'] === FALSE) {
             $condicao .= ' && '.$sql_tabela_sigla.'.servidor = \''.SRV_NAME_SQL.'\'';
         }
         
         // Se pedir mais condicoes acrescenta
-        if ($where!==false) {
+        if ($where !== FALSE) {
             $condicao .= ' && ('.$where.')';
         }
         
         // Faz Contas
-        if ($inner_join!==false) $sql_tabela_nome .= ' '.$inner_join;
+        if ($inner_join !== FALSE) $sql_tabela_nome .= ' '.$inner_join;
         $query_result = $this->query('SELECT COUNT(*) AS total FROM '.$sql_tabela_nome.' WHERE '.$sql_tabela_sigla.'.deletado=0'.$condicao);
         
         $row = $query_result->fetch_object();
@@ -1302,8 +1302,8 @@ final class Conexao
      *       and $indice2!=$valor2 and ($indice3=$valor3 OR $indice4!=$valor4);
      * 
      */
-    public function Sql_Select($class_dao,$condicao = false,$limit = 0, $order_by='', $campos = '*', $tempo = true, $deletados = false) {
-        if ($limit === false) {
+    public function Sql_Select($class_dao, $condicao = FALSE, $limit = 0, $order_by='', $campos = '*', $tempo = true, $deletados = FALSE) {
+        if ($limit === FALSE) {
             $limit = 0;
         }
         /*if ($tempo) {
@@ -1329,7 +1329,7 @@ final class Conexao
             $class_dao2      = 'Simulador_Pergunta_DAO';
             if ($class_dao=='Simulador_Pergunta') { echo 'oi8iiii';  exit;} 
         } else {*/
-            if (strpos($class_dao, '_DAO')===false) {
+            if (strpos($class_dao, '_DAO') === FALSE) {
                 $class_dao      = $class_dao.'_DAO';
             }
         //}
@@ -1341,15 +1341,15 @@ final class Conexao
             $sql_tabela_sigla,
             $sql_condicao,
             $tabela_campos_valores,
-            $tabelas_usadas,$j
-        ) = $this->Sql_Select_Dados($class_dao,$campos,'SELECT',false,$deletados);
+            $tabelas_usadas, $j
+        ) = $this->Sql_Select_Dados($class_dao, $campos,'SELECT', FALSE, $deletados);
         /*echo "\n\n<br><br>";
         var_dump(
             $sql,
             $sql_tabela_sigla,
             $sql_condicao,
             $tabela_campos_valores,
-            $tabelas_usadas,$j
+            $tabelas_usadas, $j
         );*/
         // Roda todas as condicoes afim de nao trazer nada a mais..
         //if ($tempo) {
@@ -1358,7 +1358,7 @@ final class Conexao
         if (is_array($condicao) && !empty($condicao)) {
             foreach($condicao as $indice => &$valor) {
                 // SE for array dentro de array entro usa OR
-                if (is_array($valor) && strpos($indice, 'IN')===false && strpos($indice, 'NOTIN')===false && (!empty($indice)|| $indice==0)) {
+                if (is_array($valor) && strpos($indice, 'IN') === FALSE && strpos($indice, 'NOTIN') === FALSE && (!empty($indice)|| $indice==0)) {
                     if ($j != 0) {
                         $sql_condicao .= ' AND';
                     }
@@ -1383,27 +1383,27 @@ final class Conexao
                             $indice2 = substr($indice2, 5);
                             $sql_condicao .= ' ';
                             // Verifica se nao é extrangeira
-                            if (strpos($indice2, '.')===false) {
+                            if (strpos($indice2, '.') === FALSE) {
                                 $sql_condicao .= $sql_tabela_sigla.'.';
                             }
-                            $sql_condicao .= $indice2.' NOT IN ('.implode(', ',$valor2).')';
+                            $sql_condicao .= $indice2.' NOT IN ('.implode(', ', $valor2).')';
                         } else 
                         // Para Busca Diferente
                         if (strpos($indice2, 'IN')===0) {
                             $indice2 = substr($indice2, 2);
                             $sql_condicao .= ' ';
                             // Verifica se nao é extrangeira
-                            if (strpos($indice2, '.')===false) {
+                            if (strpos($indice2, '.') === FALSE) {
                                 $sql_condicao .= $sql_tabela_sigla.'.';
                             }
-                            $sql_condicao .= $indice2.' IN ('.implode(', ',$valor2).')';
+                            $sql_condicao .= $indice2.' IN ('.implode(', ', $valor2).')';
                         } else 
                         // Maior igual que
                         if (strpos($indice2, '>=')===0) {
                             $indice2 = substr($indice2, 2);
                             $sql_condicao .= ' ';
                             // Verifica se nao é extrangeira
-                            if (strpos($indice2, '.')===false) {
+                            if (strpos($indice2, '.') === FALSE) {
                                 $sql_condicao .= $sql_tabela_sigla.'.';
                             }
                             $sql_condicao .= $indice2.$maiorigual.'\''.$valor2.'\'';
@@ -1411,7 +1411,7 @@ final class Conexao
                             $indice2 = substr($indice2, 2);
                             $sql_condicao .= ' ';
                             // Verifica se nao é extrangeira
-                            if (strpos($indice2, '.')===false) {
+                            if (strpos($indice2, '.') === FALSE) {
                                 $sql_condicao .= $sql_tabela_sigla.'.';
                             }
                             $sql_condicao .= $indice2.$menorigual.'\''.$valor2.'\'';
@@ -1419,7 +1419,7 @@ final class Conexao
                             $indice2 = substr($indice2, 1);
                             $sql_condicao .= ' ';
                             // Verifica se nao é extrangeira
-                            if (strpos($indice2, '.')===false) {
+                            if (strpos($indice2, '.') === FALSE) {
                                 $sql_condicao .= $sql_tabela_sigla.'.';
                             }
                             $sql_condicao .= $indice2.$maior.'\''.$valor2.'\'';
@@ -1427,7 +1427,7 @@ final class Conexao
                             $indice2 = substr($indice2, 1);
                             $sql_condicao .= ' ';
                             // Verifica se nao é extrangeira
-                            if (strpos($indice2, '.')===false) {
+                            if (strpos($indice2, '.') === FALSE) {
                                 $sql_condicao .= $sql_tabela_sigla.'.';
                             }
                             $sql_condicao .= $indice2.$menor.'\''.$valor2.'\'';
@@ -1435,7 +1435,7 @@ final class Conexao
                             $indice2 = substr($indice2, 1);
                             $sql_condicao .= ' ';
                             // Verifica se nao é extrangeira
-                            if (strpos($indice2, '.')===false) {
+                            if (strpos($indice2, '.') === FALSE) {
                                 $sql_condicao .= $sql_tabela_sigla.'.';
                             }
                             $sql_condicao .= $indice2.$diferente.'\''.$valor2.'\'';
@@ -1443,7 +1443,7 @@ final class Conexao
                         // Para Busca IGUAL
                             $sql_condicao .= ' ';
                             // Verifica se nao é extrangeira
-                            if (strpos($indice2, '.')===false) {
+                            if (strpos($indice2, '.') === FALSE) {
                                 $sql_condicao .= $sql_tabela_sigla.'.';
                             }
                             $sql_condicao .= $indice2.$igual.'\''.$valor2.'\'';
@@ -1482,10 +1482,10 @@ final class Conexao
                         $indice = substr($indice, 5);
                         $sql_condicao .= ' ';
                         // Verifica se nao é extrangeira
-                        if (strpos($indice, '.')===false) {
+                        if (strpos($indice, '.') === FALSE) {
                             $sql_condicao .= $sql_tabela_sigla.'.';
                         }
-                        $sql_condicao .= $indice.' NOT IN ('.implode(', ',$valor).')';
+                        $sql_condicao .= $indice.' NOT IN ('.implode(', ', $valor).')';
                     } else 
                     // Caso de IN (Multiplos Valores)
                     if (strpos($indice, 'IN')===0) {
@@ -1495,10 +1495,10 @@ final class Conexao
                         $indice = substr($indice, 2);
                         $sql_condicao .= ' ';
                         // Verifica se nao é extrangeira
-                        if (strpos($indice, '.')===false) {
+                        if (strpos($indice, '.') === FALSE) {
                             $sql_condicao .= $sql_tabela_sigla.'.';
                         }
-                        $sql_condicao .= $indice.' IN ('.implode(', ',$valor).')';
+                        $sql_condicao .= $indice.' IN ('.implode(', ', $valor).')';
                     } else 
                     // Caso de where ser Diferente 
                     if (strpos($indice, '>=')===0) {
@@ -1509,7 +1509,7 @@ final class Conexao
                         $indice = substr($indice, 2);
                         $sql_condicao .= ' ';
                         // Verifica se nao é extrangeira
-                        if (strpos($indice, '.')===false) {
+                        if (strpos($indice, '.') === FALSE) {
                             $sql_condicao .= $sql_tabela_sigla.'.';
                         }
                         $sql_condicao .= $indice.$maiorigual.'\''.$valor.'\'';
@@ -1523,7 +1523,7 @@ final class Conexao
                         $indice = substr($indice, 2);
                         $sql_condicao .= ' ';
                         // Verifica se nao é extrangeira
-                        if (strpos($indice, '.')===false) {
+                        if (strpos($indice, '.') === FALSE) {
                             $sql_condicao .= $sql_tabela_sigla.'.';
                         }
                         $sql_condicao .= $indice.$menorigual.'\''.$valor.'\'';
@@ -1537,7 +1537,7 @@ final class Conexao
                         $indice = substr($indice, 1);
                         $sql_condicao .= ' ';
                         // Verifica se nao é extrangeira
-                        if (strpos($indice, '.')===false) {
+                        if (strpos($indice, '.') === FALSE) {
                             $sql_condicao .= $sql_tabela_sigla.'.';
                         }
                         $sql_condicao .= $indice.$maior.'\''.$valor.'\'';
@@ -1549,7 +1549,7 @@ final class Conexao
                         $indice = substr($indice, 1);
                         $sql_condicao .= ' ';
                         // Verifica se nao é extrangeira
-                        if (strpos($indice, '.')===false) {
+                        if (strpos($indice, '.') === FALSE) {
                             $sql_condicao .= $sql_tabela_sigla.'.';
                         }
                         $sql_condicao .= $indice.$menor.'\''.$valor.'\'';
@@ -1563,7 +1563,7 @@ final class Conexao
                         $indice = substr($indice, 1);
                         $sql_condicao .= ' ';
                         // Verifica se nao é extrangeira
-                        if (strpos($indice, '.')===false) {
+                        if (strpos($indice, '.') === FALSE) {
                             $sql_condicao .= $sql_tabela_sigla.'.';
                         }
                         $sql_condicao .= $indice.$diferente.'\''.$valor.'\'';
@@ -1572,7 +1572,7 @@ final class Conexao
                             $sql_condicao .= ' AND';
                         }
                         // Coloca Sigla se nao tiver
-                        if (strpos($indice, '.')===false) {
+                        if (strpos($indice, '.') === FALSE) {
                             $indice = $sql_tabela_sigla.'.'.$indice;
                         } else {
                             $sigla = \explode('.', $indice);
@@ -1599,12 +1599,12 @@ final class Conexao
             }
         } else 
         // Se Tiver {sigla}, adiciona
-        if (is_string($condicao) && strpos($condicao, '{sigla}')!==false) {
+        if (is_string($condicao) && strpos($condicao, '{sigla}') !== FALSE) {
             if ($sql_condicao != '') {
                 $sql_condicao .= ' AND ';
             }
             $sql_condicao .= str_replace('{sigla}', $sql_tabela_sigla.'.', $condicao);
-        } else if ($condicao!==false && is_string($condicao) && $condicao!=='') {
+        } else if ($condicao !== FALSE && is_string($condicao) && $condicao!=='') {
             if ($sql_condicao != '') {
                 $sql_condicao .= ' AND ';
             }
@@ -1630,7 +1630,7 @@ final class Conexao
         //echo $sql."<br><br>\n\n\n";
 
         //echo "\n\n<br><BR>".$sql;
-        $query_result = $this->query($sql,true);
+        $query_result = $this->query($sql,TRUE);
         // Guarda o Resultado e VOLTA pro cliente
         $contador = 0;
         $resultado = Array();
@@ -1649,7 +1649,7 @@ final class Conexao
         }
         
         if ($contador == 0) {
-            return false;
+            return FALSE;
         } else if ($contador == 1) {
             return $resultado[0];
         } else {
@@ -1700,17 +1700,17 @@ final class Conexao
     public function Tabelas_CapturaLinkadas(&$objeto) {
         $capturatabela = function(&$limpar) {
             if (empty($limpar)) {
-                return false;
+                return FALSE;
             } else {
                 foreach($limpar as $indice=>&$valor) {
                     if ($indice!='Array') { 
-                        return Array($indice,$valor);
+                        return Array($indice, $valor);
                     } else if (is_array($valor)) {
                         return $valor;
                     }
                 }
             }
-            return false;
+            return FALSE;
         };
         if ($objeto['formtipo']=='SelectMultiplo') {
             $select = &$objeto['SelectMultiplo'];
@@ -1732,7 +1732,7 @@ final class Conexao
             $colunas_retirar = Array();
             
             // VErifica se tem Preencehr
-            if (isset($objeto['Preencher']) && $objeto['Preencher']!==false) {
+            if (isset($objeto['Preencher']) && $objeto['Preencher'] !== FALSE) {
                 foreach($objeto['Preencher'] as $indice3=>&$valor3) {
                     // Acrescenta ao SElect
                     $where[$indice3] = $valor3;
@@ -1750,7 +1750,7 @@ final class Conexao
             
             // SE tiver vazio é false
             if (empty($colunas)) {
-                $colunas = false;
+                $colunas = FALSE;
             }
             
             // BUsca Selecionados
@@ -1760,17 +1760,17 @@ final class Conexao
                 $opcoes = $this->Sql_Select($tabela_link['classe'], $where);
                 if (is_object($opcoes)) $opcoes = Array($opcoes);
             } else {
-                $opcoes = false;
+                $opcoes = FALSE;
             }
             // Caso tenha resultado
-            if ($opcoes!==false) {
+            if ($opcoes !== FALSE) {
                 // Captura Selects da Chave Extrangeira
                 foreach ($opcoes as &$valor) {
                         $selecionado[] = $valor->$select['Linkado'];
                 }
             }
             // Retorna Array Todos, Selecionados e COlunas a mais
-            return Array($selecionado,$resultado, $colunas);
+            return Array($selecionado, $resultado, $colunas);
             
         } else 
             
@@ -1780,13 +1780,13 @@ final class Conexao
          */
         // zera opcoes
         if ($objeto['formtipo']=='BoleanoMultiplo') {
-            $opcoes = false;
+            $opcoes = FALSE;
             $boleanomultiplo    = &$objeto['BoleanoMultiplo'];
             $ovalor             = &$boleanomultiplo['Valor'];
             // Pega Tabela LINK
-            $linkado = self::Tabelas_GetLinks_Recolher($objeto['Tabela'],true  );
+            $linkado = self::Tabelas_GetLinks_Recolher($objeto['Tabela'], TRUE  );
             if (!array_key_exists($objeto['Pai'], $linkado)) { 
-                return false;
+                return FALSE;
             }
             // Caso Tenha Grupo faz a conexao
             $selecionado        = Array();
@@ -1794,11 +1794,11 @@ final class Conexao
             // Caso seja EDICAO
             // Pela Sigla pega a tabela
             $tabela_utilizada = self::Tabelas_GetSiglas_Recolher($objeto['Tabela']);
-            if ($objeto['valor_padrao']!==false) {
+            if ($objeto['valor_padrao'] !== FALSE) {
                 
                 
                 // Condicao da Query
-                if ($ovalor!==false) {
+                if ($ovalor !== FALSE) {
                     // CAso tenha campo de alteracao, esse campo tem que estar positivo
                     // e ter o valor padrao do pai incluido
                     $where = Array(
@@ -1815,18 +1815,18 @@ final class Conexao
                 // Recupera os Selecionados
                 $opcoes = $this->Sql_Select($tabela_utilizada['classe'], $where);
                 if (is_object($opcoes)) $opcoes = Array($opcoes);
-                if (empty($opcoes)) $opcoes = false;
+                if (empty($opcoes)) $opcoes = FALSE;
             }
             
             
             // Deleta Tabela Usada
             unset($linkado[$objeto['Pai']]);
             $temp = $capturatabela($linkado);
-            if ($temp===false ) { 
-                return false;
+            if ($temp === FALSE ) { 
+                return FALSE;
             }
             // Pega tabela e campo
-            list($tabela_secundaria,$campo_secundaria) = $temp;
+            list($tabela_secundaria, $campo_secundaria) = $temp;
 
             // Caso Secundaria seja array, entao nao tem a 3 tabela
             if (is_array($campo_secundaria)) {
@@ -1839,7 +1839,7 @@ final class Conexao
             // PEga Classe para Percorrer valores do selectmultiplo selecionados
             $classe_dao = $tabela_utilizada['classe'];
             // Guarda OS SELECIONADOS
-            if ($opcoes!==false) {
+            if ($opcoes !== FALSE) {
                 foreach($opcoes as &$valor) {
                     if ($tipo==='Tabela') {
                         $selecionado[$valor->$campo_secundaria] = $valor->$campo_secundaria2;
@@ -1876,7 +1876,7 @@ final class Conexao
             }
             $nao_selecionado = array_diff($nao_selecionado, $selecionado);
             // Retorna Array Selecionado e Nao
-            return Array($selecionado,$nao_selecionado);
+            return Array($selecionado, $nao_selecionado);
         } else 
             
             
@@ -1885,7 +1885,7 @@ final class Conexao
          */
         // zera opcoes
         if ($objeto['formtipo']=='ExternoInsercao') {
-            $opcoes = false;
+            $opcoes = FALSE;
             $select = &$objeto['ExternoInsercao'];
             
             // Captura REsultado da Extrangeira
@@ -1905,7 +1905,7 @@ final class Conexao
             $colunas_retirar = Array();
             
             // VErifica se tem Preencehr
-            if (isset($objeto['Preencher']) && $objeto['Preencher']!==false) {
+            if (isset($objeto['Preencher']) && $objeto['Preencher'] !== FALSE) {
                 foreach($objeto['Preencher'] as $indice3=>&$valor3) {
                     // Acrescenta ao SElect
                     $where[$indice3] = $valor3;
@@ -1923,7 +1923,7 @@ final class Conexao
             
             // SE tiver vazio é false
             if (empty($colunas)) {
-                $colunas = false;
+                $colunas = FALSE;
             }
             
             // BUsca Selecionados
@@ -1933,19 +1933,19 @@ final class Conexao
                 $opcoes = $this->Sql_Select($tabela_link['classe'], $where);
                 if (is_object($opcoes)) $opcoes = Array($opcoes);
             } else {
-                $opcoes = false;
+                $opcoes = FALSE;
             }
             // Caso tenha resultado
-            if ($opcoes!==false) {
+            if ($opcoes !== FALSE) {
                 // Captura Selects da Chave Extrangeira
                 foreach ($opcoes as &$valor) {
                         $selecionado[] = $valor->$select['Linkado'];
                 }
             }
             // Retorna Array Todos, Selecionados e COlunas a mais
-            return Array($selecionado,$resultado, $colunas);
+            return Array($selecionado, $resultado, $colunas);
         }
-        return false;
+        return FALSE;
     }
     
     
@@ -1970,7 +1970,7 @@ final class Conexao
         }
         
         // Quebra a extrangeira para utiliza-lo
-        list($ligacao,$mostrar,$condicao) = $this->Extrangeiras_Quebra($extrangeira);
+        list($ligacao, $mostrar, $condicao) = $this->Extrangeiras_Quebra($extrangeira);
         
         // Captura a Tabela a ser Utilizada
         $tabela_utilizada = self::Tabelas_GetSiglas_Recolher($ligacao[0]);
@@ -1987,21 +1987,21 @@ final class Conexao
         
         // SE nao tiver identificador do valor padrao, remove
         //if (!isset($where[$ligacao[1]]) || $where[$ligacao[1]]=='' || !is_string($where[$ligacao[1]])) {
-            //$where = false;
+            //$where = FALSE;
         //}
         
         // Add condição
-        if ($condicao!==false) {
+        if ($condicao !== FALSE) {
         
             // Trata condicao
             if (is_array($condicao[0])) {
                 foreach ($condicao as &$valor_cond) {
-                    if (strpos($valor_cond[1], '.')===false) {
+                    if (strpos($valor_cond[1], '.') === FALSE) {
                         $where[$valor_cond[0]] = $valor_cond[1];
                     }
                 }
             } else {
-                if (strpos($condicao[1], '.')===false) {
+                if (strpos($condicao[1], '.') === FALSE) {
                     $where[$condicao[0]] = $condicao[1];
                 }
             }
@@ -2022,7 +2022,7 @@ final class Conexao
         $opcoes = $this->Sql_Select($tabela_utilizada['classe'], $where,0, $orderby);
         //Guarda Resultados
         $resultado = Array();
-        if ($opcoes!==false && !empty($opcoes)) {
+        if ($opcoes !== FALSE && !empty($opcoes)) {
             if (is_object($opcoes)) $opcoes = Array(0=>$opcoes);
             reset($opcoes);
             while (key($opcoes) !== null) {
@@ -2060,7 +2060,7 @@ final class Conexao
         $extrangeiro    = explode('|', $extrangeiro);
         $ligacao        = explode('.', $extrangeiro[0]);
         $mostrar        = Array();
-        if (strpos($extrangeiro[1], '-')!==false) {
+        if (strpos($extrangeiro[1], '-') !== FALSE) {
             $mostrar_foreach        = explode('-', $extrangeiro[1]);
             reset($mostrar_foreach);
             while (key($mostrar_foreach) !== null) {
@@ -2072,7 +2072,7 @@ final class Conexao
             $mostrar        = explode('.', $extrangeiro[1]);
         }
         if (count($extrangeiro)>=3) {
-            if (strpos($extrangeiro[2], '-')!==false) {
+            if (strpos($extrangeiro[2], '-') !== FALSE) {
                 $mostrar_foreach        = explode('-', $extrangeiro[2]);
                 reset($mostrar_foreach);
                 while (key($mostrar_foreach) !== null) {
@@ -2084,9 +2084,9 @@ final class Conexao
                 $condicao        = explode('=', $extrangeiro[2]);
             }
         } else {
-            $condicao       = false;
+            $condicao       = FALSE;
         }
-        return Array($ligacao,$mostrar,$condicao);
+        return Array($ligacao, $mostrar, $condicao);
     }
     /**
      * 
@@ -2113,7 +2113,7 @@ final class Conexao
                 'tabela'    => $current['nome'],
                 'classe'    => $current['class']
             );
-            if ($Link!==false) {
+            if ($Link !== FALSE) {
                 if (!empty($Link) && is_array($Link)) {
                     reset($Link);
                     while (key($Link) !== null) {
@@ -2175,7 +2175,7 @@ final class Conexao
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public static function Tabelas_GetLinks_Recolher($sigla,$invertido=false) {
+    public static function Tabelas_GetLinks_Recolher($sigla, $invertido = FALSE) {
         if ($invertido) {
             if (isset(self::$tabelas_Links_Invertido[$sigla])) {
                 return self::$tabelas_Links_Invertido[$sigla];
@@ -2185,7 +2185,7 @@ final class Conexao
                 return self::$tabelas_Links[$sigla];
             }
         }
-        return false;
+        return FALSE;
     }
     /**
      * 
@@ -2195,8 +2195,8 @@ final class Conexao
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public static function Load($class,$nome=false) {
-        if ($nome===false) {
+    public static function Load($class, $nome = FALSE) {
+        if ($nome === FALSE) {
             $nome = $class::Get_Nome();
         }
         $tab = Array (
@@ -2245,11 +2245,11 @@ final class Conexao
                     // Aproveita o while e Pega as extrangeiras
                     $resultado_unico = new $arquivo();
                     $extrangeira    = $resultado_unico->Get_Extrangeiras();
-                    if ($extrangeira!==false) {
+                    if ($extrangeira !== FALSE) {
                         reset($extrangeira);
                         while (key($extrangeira) !== null) {
                             $current = current($extrangeira);
-                            list($ligacao,$mostrar,$extcondicao) = $this->Extrangeiras_Quebra($current['conect']);
+                            list($ligacao, $mostrar, $extcondicao) = $this->Extrangeiras_Quebra($current['conect']);
 
                             // ARMAZENA NA VARIAVEL DE CONTROLE AS SIGLAS
                             $tabelas_ext[$ligacao[0]][$sigla] = $sigla;
@@ -2264,7 +2264,7 @@ final class Conexao
             $diretorio = dir(DAO_PATH);
             // Percorre Diretório
             while ($arquivo = $diretorio -> read()) {
-                if (strpos($arquivo, 'DAO.php')!==false) {
+                if (strpos($arquivo, 'DAO.php') !== FALSE) {
                     $arquivo                = str_replace(Array('.php', '.'), Array('', '_') , $arquivo);
 
                     $tabelas[$arquivo] = self::Load($arquivo);
@@ -2273,11 +2273,11 @@ final class Conexao
                     // Aproveita o while e Pega as extrangeiras
                     $resultado_unico = new $arquivo();
                     $extrangeira    = $resultado_unico->Get_Extrangeiras();
-                    if ($extrangeira!==false) {
+                    if ($extrangeira !== FALSE) {
                         reset($extrangeira);
                         while (key($extrangeira) !== null) {
                             $current = current($extrangeira);
-                            list($ligacao,$mostrar,$extcondicao) = $this->Extrangeiras_Quebra($current['conect']);
+                            list($ligacao, $mostrar, $extcondicao) = $this->Extrangeiras_Quebra($current['conect']);
 
                             // ARMAZENA NA VARIAVEL DE CONTROLE AS SIGLAS
                             $tabelas_ext[$ligacao[0]][$sigla] = $sigla;
@@ -2298,25 +2298,25 @@ final class Conexao
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    static public function anti_injection($sql,$tags=false) {
+    static public function anti_injection($sql, $tags = FALSE) {
         $Registro = &\Framework\App\Registro::getInstacia();
-        if ($Registro->_Conexao===false) {
+        if ($Registro->_Conexao === FALSE) {
             $Registro->_Conexao = new \Framework\App\Conexao();
         }
-        return $Registro->_Conexao->EscapeSql($sql,$tags);
+        return $Registro->_Conexao->EscapeSql($sql, $tags);
     }
-    public function EscapeSql($sql,$tags=false) {
+    public function EscapeSql($sql, $tags = FALSE) {
          if (is_array($sql)) {
              $seg = Array();
              foreach($sql as $indice=>&$valor) {
-                 $seg[$this->EscapeSql($indice)] = $this->EscapeSql($valor,$tags);
+                 $seg[$this->EscapeSql($indice)] = $this->EscapeSql($valor, $tags);
              }
              $sql = $seg;
          } else {
             // remove palavras que contenham sintaxe sql
             //$sql = $this->mysqli->real_escape_string($sql);
             //$sql = addcslashes($this->mysqli->real_escape_string($sql), '%_');
-            if ($tags===false) {
+            if ($tags === FALSE) {
                 $sql = strip_tags($sql);//tira tags html e php
             }
          }
@@ -2350,7 +2350,7 @@ final class Conexao
         $server_get             = htmlspecialchars(serialize($this->EscapeSql($_GET)), ENT_QUOTES);
         $server_requisitado     = isset($_SERVER['HTTP_HOST']) ? strtolower($_SERVER['HTTP_HOST']) : 'Desconhecido';
         $server_scriptname      = isset($_SERVER['SCRIPT_FILENAME']) ? strtolower($_SERVER['SCRIPT_FILENAME']) : 'Desconhecido';
-        $this->query('INSERT INTO '.MYSQL_LOGURL.' (servidor,ip,cliente_pc,url,server_get,server_post,user,tempo,cfg_localscript,log_date_add) VALUES (\''.$server_requisitado.'\',\''.$cliente_ip.'\',\''.$cliente_navegador.'\',\''.SERVER_URL.'\',\''.$server_get.'\',\''.$server_post.'\',\''.$idusuario.'\',\''.(microtime(true)-TEMPO_COMECO).'\',\''.$server_scriptname.'\',\''.APP_HORA.'\')');
+        $this->query('INSERT INTO '.MYSQL_LOGURL.' (servidor,ip,cliente_pc,url,server_get,server_post,user,tempo,cfg_localscript,log_date_add) VALUES (\''.$server_requisitado.'\',\''.$cliente_ip.'\',\''.$cliente_navegador.'\',\''.SERVER_URL.'\',\''.$server_get.'\',\''.$server_post.'\',\''.$idusuario.'\',\''.(microtime(TRUE)-TEMPO_COMECO).'\',\''.$server_scriptname.'\',\''.APP_HORA.'\')');
     }
     /**
     * Destruidor

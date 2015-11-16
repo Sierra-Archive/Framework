@@ -41,7 +41,7 @@ class Footnote extends AbstractContainer
      *
      * @var bool
      */
-    protected $collectionRelation = true;
+    protected $collectionRelation = TRUE;
 
     /**
      * Create new instance

@@ -12,9 +12,9 @@ final Class  Biblioteca_DAO extends Framework\App\Dao
     protected $arquivo;
     protected $usuario;
     protected $grupo;
-    // Padrao é false, ou array com os campos que nao aceita
+    // Padrao é FALSE, ou array com os campos que nao aceita
     protected static $campos_naoaceita_config  = Array('arquivo', 'end_virtual', 'ext');
-    protected static $objetocarregado     = false;     protected static $mysql_colunas       = false;     protected static $mysql_outside       = Array();     protected static $mysql_inside        = Array(); public function __construct() {  parent::__construct(); } public static function Get_Nome() {
+    protected static $objetocarregado     = FALSE;     protected static $mysql_colunas       = FALSE;     protected static $mysql_outside       = Array();     protected static $mysql_inside        = Array(); public function __construct() {  parent::__construct(); } public static function Get_Nome() {
         return MYSQL_BIBLIOTECA;
     }
     /**
@@ -22,7 +22,7 @@ final Class  Biblioteca_DAO extends Framework\App\Dao
      * @return string
      */
     public static function Permissao_Copia() {
-        return false;
+        return FALSE;
     }
     public static function Get_Sigla() {
         return 'Bi';
@@ -60,7 +60,7 @@ final Class  Biblioteca_DAO extends Framework\App\Dao
                 'mysql_titulo'      => 'parent',
                 'mysql_tipovar'     => 'int', //varchar, int, 
                 'mysql_tamanho'     => 11,
-                'mysql_null'        => FALSE, // true NULL, false, NOT NULL
+                'mysql_null'        => FALSE, // true NULL, FALSE, NOT NULL
                 'mysql_default'     => '0',//false -> NONE, outro -> default
                 'mysql_primary'     => FALSE, // chave primaria
                 'mysql_estrangeira' => 'Bi.id|Bi.nome|Bi.tipo=1', // chave estrangeira     ligacao|apresentacao|condicao

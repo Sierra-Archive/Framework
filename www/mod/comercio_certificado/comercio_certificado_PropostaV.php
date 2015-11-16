@@ -94,7 +94,7 @@ class comercio_certificado_PropostaVisual extends comercio_certificado_Visual
         $html .= '</div>';
         return $html;
     }
-    public function Show_Perfil(&$proposta,$layoult='Unico') {
+    public function Show_Perfil(&$proposta, $layoult='Unico') {
         $html = self::Show_HTML($proposta);
         
         if (SQL_MAIUSCULO) {
@@ -115,7 +115,7 @@ class comercio_certificado_PropostaVisual extends comercio_certificado_Visual
                 ),*/
                 'html'      => $html
             );
-            $this->Json_IncluiTipo('Popup',$popup);
+            $this->Json_IncluiTipo('Popup', $popup);
         } else {
             $this->Blocar($html);
             if ($layoult=='Unico') {
@@ -125,7 +125,7 @@ class comercio_certificado_PropostaVisual extends comercio_certificado_Visual
             } else {
                 $this->Bloco_Menor_CriaConteudo();
             }
-            $this->Json_Info_Update('Titulo',$titulo);
+            $this->Json_Info_Update('Titulo', $titulo);
         }
     }
 }

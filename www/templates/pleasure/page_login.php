@@ -84,7 +84,7 @@
 
 			<div id="pane-forgot-password" class="panel-body">
                             <h2><?php _e('Esqueci minha Senha'); ?></h2>
-                            <form id="FormEsqueciSenha" action="<?php echo URL_PATH.SISTEMA_DIR_INT; ?>?sistema_esquecisenha=true" method="post" enctype="multipart/form-data" autocomplete="on">
+                            <form id="FormEsqueciSenha" action="<?php echo URL_PATH.SISTEMA_DIR_INT; ?>?sistema_esquecisenha= TRUE" method="post" enctype="multipart/form-data" autocomplete="on">
 				<div class="form-group">
 					<div class="inputer">
 						<div class="input-wrapper">

@@ -11,7 +11,7 @@ class _Sistema_FilialControle extends _Sistema_Controle
      * @version 0.4.2
      */
     public function Main() {
-        return false;
+        return FALSE;
     }
     public function FilialWidgets() {
         // Filial
@@ -24,7 +24,7 @@ class _Sistema_FilialControle extends _Sistema_Controle
             'tag', 
             $filial_qnt, 
             'block-green', 
-            false, 
+            FALSE, 
             10
         );
     }
@@ -34,7 +34,7 @@ class _Sistema_FilialControle extends _Sistema_Controle
      * @version 0.4.2
      */
     public function Filiais($tipobloco='Unico') {
-        $this->Endereco_Filial(false);
+        $this->Endereco_Filial(FALSE);
         
         $tabela_colunas[] = __('Id');
         $tabela_colunas[] = __('Nome');
@@ -46,11 +46,11 @@ class _Sistema_FilialControle extends _Sistema_Controle
 
         $titulo = __('Listagem de Filiais').' (<span id="DataTable_Contador">0</span>)';
         if ($tipobloco==='Unico') {
-            $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',10,Array("link"=>"_Sistema/Filial/Filiais_Add",'icon'=>'add', 'nome'=>__('Adicionar Filial')));
+            $this->_Visual->Bloco_Unico_CriaJanela($titulo, '',10,Array("link"=>"_Sistema/Filial/Filiais_Add",'icon'=>'add', 'nome'=>__('Adicionar Filial')));
         } else if ($tipobloco==='Maior') {
-            $this->_Visual->Bloco_Maior_CriaJanela($titulo,'',10,Array("link"=>"_Sistema/Filial/Filiais_Add",'icon'=>'add', 'nome'=>__('Adicionar Filial')));
+            $this->_Visual->Bloco_Maior_CriaJanela($titulo, '',10,Array("link"=>"_Sistema/Filial/Filiais_Add",'icon'=>'add', 'nome'=>__('Adicionar Filial')));
         } else {
-            $this->_Visual->Bloco_Menor_CriaJanela($titulo,'',10,Array("link"=>"_Sistema/Filial/Filiais_Add",'icon'=>'add', 'nome'=>__('Adicionar Filial')));
+            $this->_Visual->Bloco_Menor_CriaJanela($titulo, '',10,Array("link"=>"_Sistema/Filial/Filiais_Add",'icon'=>'add', 'nome'=>__('Adicionar Filial')));
         }
         //Carrega Json
         $this->_Visual->Json_Info_Update('Titulo', __('Administrar Filiais'));
@@ -69,7 +69,7 @@ class _Sistema_FilialControle extends _Sistema_Controle
         $formbt     = __('Salvar');
         $formlink   = '_Sistema/Filial/Filiais_Add2/';
         $campos = Sistema_Filial_DAO::Get_Colunas();
-        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos);
+        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1, $titulo2, $formlink, $formid, $formbt, $campos);
     }
     /**
      * 
@@ -85,7 +85,7 @@ class _Sistema_FilialControle extends _Sistema_Controle
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = __('Filial cadastrada com sucesso.');
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
     }
     /**
      * 
@@ -101,9 +101,9 @@ class _Sistema_FilialControle extends _Sistema_Controle
         $formid     = 'form_Sistema_FilialC_FilialEdit';
         $formbt     = __('Alterar Filial');
         $formlink   = '_Sistema/Filial/Filiais_Edit2/'.$id;
-        $editar     = Array('Sistema_Filial',$id);
+        $editar     = Array('Sistema_Filial', $id);
         $campos = Sistema_Filial_DAO::Get_Colunas();
-        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos,$editar);   
+        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1, $titulo2, $formlink, $formid, $formbt, $campos, $editar);   
     }
     /**
      * 
@@ -115,12 +115,12 @@ class _Sistema_FilialControle extends _Sistema_Controle
     public function Filiais_Edit2($id) {
         $id = (int) $id;
         $titulo     = __('Filial Alterada com Sucesso');
-        $dao        = Array('Sistema_Filial',$id);
+        $dao        = Array('Sistema_Filial', $id);
         $funcao     = '$this->Filiais();';
         $sucesso1   = __('Filial Alterada com Sucesso');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
     }
     /**
      * 
@@ -137,7 +137,7 @@ class _Sistema_FilialControle extends _Sistema_Controle
         $filial    =  $this->_Modelo->db->Sql_Select('Sistema_Filial', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($filial);
         // Mensagem
-    	if ($sucesso===true) {
+    	if ($sucesso === TRUE) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
@@ -150,12 +150,12 @@ class _Sistema_FilialControle extends _Sistema_Controle
                 "mgs_secundaria" => __('Erro')
             );
         }
-        $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+        $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
         
         $this->Filiais();
         
         $this->_Visual->Json_Info_Update('Titulo', __('Filial deletada com Sucesso'));  
-        $this->_Visual->Json_Info_Update('Historico', false);  
+        $this->_Visual->Json_Info_Update('Historico', FALSE);  
     }
     /**
      * Administra as Filiais Publicas
@@ -164,11 +164,11 @@ class _Sistema_FilialControle extends _Sistema_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    function Endereco_Filial($true=true) {
+    function Endereco_Filial($true= TRUE ) {
         $titulo = __('Filiais do Sistema');
         $link = '_Sistema/Filial/Filiais';
-        if ($true===true) {
-            $this->Tema_Endereco($titulo,$link);
+        if ($true === TRUE) {
+            $this->Tema_Endereco($titulo, $link);
         } else {
             $this->Tema_Endereco($titulo);
         }

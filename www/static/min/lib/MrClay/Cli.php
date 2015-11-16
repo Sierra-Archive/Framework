@@ -51,7 +51,7 @@ class Cli {
     /**
      * @var bool The user wants help info
      */
-    public $isHelpRequest = false;
+    public $isHelpRequest = FALSE;
 
     /**
      * @var Arg[]
@@ -69,16 +69,16 @@ class Cli {
     protected $_stdout = null;
     
     /**
-     * @param bool $exitIfNoStdin (default true) Exit() if STDIN is not defined
+     * @param bool $exitIfNoStdin (default TRUE) Exit() if STDIN is not defined
      */
-    public function __construct($exitIfNoStdin = true)
+    public function __construct($exitIfNoStdin = TRUE)
     {
         if ($exitIfNoStdin && ! defined('STDIN')) {
             exit('This script is for command-line use only.');
         }
         if (isset($GLOBALS['argv'][1])
              && ($GLOBALS['argv'][1] === '-?' || $GLOBALS['argv'][1] === '--help')) {
-            $this->isHelpRequest = true;
+            $this->isHelpRequest = TRUE;
         }
     }
 
@@ -88,7 +88,7 @@ class Cli {
      */
     public function addOptionalArg($letter)
     {
-        return $this->addArgument($letter, false);
+        return $this->addArgument($letter, FALSE);
     }
 
     /**
@@ -97,7 +97,7 @@ class Cli {
      */
     public function addRequiredArg($letter)
     {
-        return $this->addArgument($letter, true);
+        return $this->addArgument($letter, TRUE);
     }
 
     /**
@@ -141,7 +141,7 @@ class Cli {
         $this->_stdin = null;
         
         if ($this->isHelpRequest) {
-            return false;
+            return FALSE;
         }
         
         $lettersUsed = '';
@@ -163,20 +163,20 @@ class Cli {
 
         foreach ($this->_args as $letter => $arg) {
             /* @var Arg $arg  */
-            $this->values[$letter] = false;
+            $this->values[$letter] = FALSE;
             if (isset($o[$letter])) {
                 if (is_bool($o[$letter])) {
 
                     // remove from argv copy
                     $k = array_search("-$letter", $argvCopy);
-                    if ($k !== false) {
+                    if ($k !== FALSE) {
                         array_splice($argvCopy, $k, 1);
                     }
 
                     if ($arg->mustHaveValue) {
                         $this->addError($letter, "Missing value");
                     } else {
-                        $this->values[$letter] = true;
+                        $this->values[$letter] = TRUE;
                     }
                 } else {
                     // string
@@ -186,18 +186,18 @@ class Cli {
                     // remove from argv copy
                     // first look for -ovalue or -o=value
                     $pattern = "/^-{$letter}=?" . preg_quote($v, '/') . "$/";
-                    $foundInArgv = false;
+                    $foundInArgv = FALSE;
                     foreach ($argvCopy as $k => $argV) {
                         if (preg_match($pattern, $argV)) {
                             array_splice($argvCopy, $k, 1);
-                            $foundInArgv = true;
+                            $foundInArgv = TRUE;
                             break;
                         }
                     }
                     if (! $foundInArgv) {
                         // space separated
                         $k = array_search("-$letter", $argvCopy);
-                        if ($k !== false) {
+                        if ($k !== FALSE) {
                             array_splice($argvCopy, $k, 2);
                         }
                     }
@@ -207,7 +207,7 @@ class Cli {
                         $pattern = "/^-[" . str_replace($letter, '', $lettersUsed) . "]/i";
                         if (preg_match($pattern, $v)) {
                             $this->addError($letter, "Value was read as another option: %s", $v);
-                            return false;
+                            return FALSE;
                         }    
                     }
                     if ($arg->assertFile || $arg->assertDir) {

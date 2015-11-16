@@ -19,12 +19,12 @@ class Financeiro_FinancaControle extends Financeiro_Controle
     */
     public function Main() {
         \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'Financeiro/Financa/Financas');
-        return false;
+        return FALSE;
     }
-    static function Endereco_Financa($true=true) {
+    static function Endereco_Financa($true= TRUE ) {
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
-        if ($true===true) {
+        if ($true === TRUE) {
             $_Controle->Tema_Endereco(__('Finanças'),'Financeiro/Financa/Financas');
         } else {
             $_Controle->Tema_Endereco(__('Finanças'));
@@ -36,7 +36,7 @@ class Financeiro_FinancaControle extends Financeiro_Controle
      * @version 0.4.2
      */
     public function Financas() {
-        self::Endereco_Financa(false);
+        self::Endereco_Financa(FALSE);
         $i = 0;
         // BOTAO IMPRIMIR / ADD
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
@@ -54,7 +54,7 @@ class Financeiro_FinancaControle extends Financeiro_Controle
         )));
         // CONEXAO
         $setores = $this->_Modelo->db->Sql_Select('Financeiro_Financa');
-        if ($setores!==false && !empty($setores)) {
+        if ($setores !== FALSE && !empty($setores)) {
             if (is_object($setores)) $setores = Array(0=>$setores);
             reset($setores);
             foreach ($setores as $indice=>&$valor) {
@@ -62,11 +62,11 @@ class Financeiro_FinancaControle extends Financeiro_Controle
                 $tabela['Tipo de Conta'][$i]        = $valor->categoria2;
                 $tabela['Valor'][$i]            = $valor->valor;
                 $tabela['Data Pago'][$i]        = $valor->data;
-                /*$tabela['Funções'][$i]          = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Finança'        ,'Financeiro/Financa/Financas_Edit/'.$valor->id.'/'    ,'')).
+                /*$tabela['Funções'][$i]          = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Finança'        ,'Financeiro/Financa/Financas_Edit/'.$valor->id.'/'    , '')).
                                                   $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Finança'       ,'Financeiro/Financa/Financas_Del/'.$valor->id.'/'     ,'Deseja realmente deletar essa Finança ?'));*/
                 ++$i;
             }
-            $this->_Visual->Show_Tabela_DataTable($tabela,'', true, true, Array(Array(0,'asc')));
+            $this->_Visual->Show_Tabela_DataTable($tabela, '', true, true, Array(Array(0,'asc')));
             unset($tabela);
         } else {     
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhuma Finança</font></b></center>');
@@ -91,7 +91,7 @@ class Financeiro_FinancaControle extends Financeiro_Controle
         $formbt     = __('Salvar');
         $formlink   = 'Financeiro/Financa/Financas_Add2/';
         $campos = Financeiro_Financa_DAO::Get_Colunas();
-        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos);
+        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1, $titulo2, $formlink, $formid, $formbt, $campos);
     }
     /**
      * 
@@ -107,7 +107,7 @@ class Financeiro_FinancaControle extends Financeiro_Controle
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = __('Finança cadastrada com sucesso.');
         $alterar    = Array();
-        $sucesso = $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
+        $sucesso = $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
         // Cadastra no Financeiro
         if ($sucesso) {
             $motivo = __('Financeiro_Financa');
@@ -123,7 +123,7 @@ class Financeiro_FinancaControle extends Financeiro_Controle
                 SRV_NAME_SQL,                 // Entrada_MotivoID
                 'Categoria',                  // Saida_Motivo
                 $identificador->categoria,    // Saida_MotivoID
-                $parcela_valor,$parcela_data,$parcela_num,$identificador->categoria
+                $parcela_valor, $parcela_data, $parcela_num, $identificador->categoria
             );
         }
     }
@@ -141,9 +141,9 @@ class Financeiro_FinancaControle extends Financeiro_Controle
         $formid     = 'form_Sistema_FinancaC_FinancaEdit';
         $formbt     = __('Alterar Finança');
         $formlink   = 'Financeiro/Financa/Financas_Edit2/'.$id;
-        $editar     = Array('Financeiro_Financa',$id);
+        $editar     = Array('Financeiro_Financa', $id);
         $campos = Financeiro_Financa_DAO::Get_Colunas();
-        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos,$editar);
+        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1, $titulo2, $formlink, $formid, $formbt, $campos, $editar);
     }
     /**
      * 
@@ -154,12 +154,12 @@ class Financeiro_FinancaControle extends Financeiro_Controle
      */
     public function Financas_Edit2($id) {
         $titulo     = __('Finança Editada com Sucesso');
-        $dao        = Array('Financeiro_Financa',$id);
+        $dao        = Array('Financeiro_Financa', $id);
         $funcao     = '$this->Financas();';
         $sucesso1   = __('Finança Alterada com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);   
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);   
     }
     /**
      * 
@@ -176,7 +176,7 @@ class Financeiro_FinancaControle extends Financeiro_Controle
         $setor = $this->_Modelo->db->Sql_Select('Financeiro_Financa', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($setor);
         // Mensagem
-    	if ($sucesso===true) {
+    	if ($sucesso === TRUE) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
@@ -189,12 +189,12 @@ class Financeiro_FinancaControle extends Financeiro_Controle
                 "mgs_secundaria" => __('Erro')
             );
         }
-        $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+        $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
         
         $this->Financas();
         
         $this->_Visual->Json_Info_Update('Titulo', __('Finança deletada com Sucesso'));  
-        $this->_Visual->Json_Info_Update('Historico', false);  
+        $this->_Visual->Json_Info_Update('Historico', FALSE);  
     }
 }
 ?>

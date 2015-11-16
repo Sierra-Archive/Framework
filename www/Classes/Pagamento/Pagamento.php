@@ -16,8 +16,8 @@ class Pagamento
     /**
      * @var object $_instancia 
      */
-    protected $_instancia = false;
-    protected $_usuario   = false;
+    protected $_instancia = FALSE;
+    protected $_usuario   = FALSE;
 
 
     /**

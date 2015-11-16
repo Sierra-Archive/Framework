@@ -71,7 +71,7 @@ class Facebook extends BaseFacebook
     }
     // evil/corrupt/missing case
     $base_domain = $this->getBaseDomain();
-    $this->sharedSessionID = md5(uniqid(mt_rand(), true));
+    $this->sharedSessionID = md5(uniqid(mt_rand(), TRUE));
     $cookie_value = $this->makeSignedRequest(
       array(
         'domain' => $base_domain,
@@ -109,7 +109,7 @@ class Facebook extends BaseFacebook
     $_SESSION[$session_var_name] = $value;
   }
 
-  protected function getPersistentData($key, $default = false) {
+  protected function getPersistentData($key, $default = FALSE) {
     if (!in_array($key, self::$kSupportedKeys)) {
       self::errorLog('Unsupported key passed to getPersistentData.');
       return $default;

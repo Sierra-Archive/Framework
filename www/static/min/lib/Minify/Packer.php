@@ -31,7 +31,7 @@ class Minify_Packer {
     public static function minify($code, $options = array())
     {
         // @todo: set encoding options based on $options :)
-        $packer = new JavascriptPacker($code, 'Normal', true, false);
+        $packer = new JavascriptPacker($code, 'Normal', true, FALSE);
         return trim($packer->pack());
     }
 }

@@ -209,7 +209,7 @@ class Minify_CSS_UriRewriter {
     protected static function _realpath($path)
     {
         $realPath = realpath($path);
-        if ($realPath !== false) {
+        if ($realPath !== FALSE) {
             $path = $realPath;
         }
         return rtrim($path, '/\\');

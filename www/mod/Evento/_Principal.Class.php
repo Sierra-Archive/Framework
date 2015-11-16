@@ -21,7 +21,7 @@ class Evento_Principal implements \Framework\PrincipalInterface
      */
     static function Home(&$controle, &$Modelo, &$Visual) {
         self::Widgets();
-        return true;
+        return TRUE;
     }
     static function Widget(&$_Controle) {
         $_Controle->Widget_Add('Superior',
@@ -30,7 +30,7 @@ class Evento_Principal implements \Framework\PrincipalInterface
                 '<i class="fa fa-building"></i>'.
             '</a>'.
         '</li>');
-        return true;
+        return TRUE;
     }      
     /**
      * 
@@ -39,29 +39,29 @@ class Evento_Principal implements \Framework\PrincipalInterface
      * @version 0.4.2
      */
     static function Config() {
-        return false;
+        return FALSE;
     }
     
-    static function Relatorio($data_inicio,$data_final,$filtro=false) {
-        return false;
+    static function Relatorio($data_inicio, $data_final, $filtro = FALSE) {
+        return FALSE;
     }
     
-    static function Estatistica($data_inicio,$data_final,$filtro=false) {
-        return false;
+    static function Estatistica($data_inicio, $data_final, $filtro = FALSE) {
+        return FALSE;
     }
     
-    static function Busca(&$controle, &$Modelo, &$Visual,$busca) {
+    static function Busca(&$controle, &$Modelo, &$Visual, $busca) {
         $i = 0;
         // Busca Eventos
         $result = self::Busca_Eventos($controle, $Modelo, $Visual, $busca);
-        if ($result!==false) {
+        if ($result !== FALSE) {
             $i = $i + $result;
         }
         // Retorna
         if (is_int($i) && $i>0) {
             return $i;
         } else {
-            return false;
+            return FALSE;
         }
     }
     
@@ -75,8 +75,8 @@ class Evento_Principal implements \Framework\PrincipalInterface
           'data_fim'                => '%'.$busca.'%',
         ));
         $i = 0;
-        $eventos = $Modelo->db->Sql_Select('Evento',$where);
-        if ($eventos===false) return false;
+        $eventos = $Modelo->db->Sql_Select('Evento', $where);
+        if ($eventos === FALSE) return FALSE;
         // add botao
         $Visual->Blocar($Visual->Tema_Elementos_Btn('Superior'     ,Array(
             Array(
@@ -92,8 +92,8 @@ class Evento_Principal implements \Framework\PrincipalInterface
             )
         )));
         if (is_object($eventos)) $eventos = Array(0=>$eventos);
-        if ($eventos!==false && !empty($eventos)) {
-            list($tabela,$i) = Evento_EventoControle::Eventos_Tabela($eventos);
+        if ($eventos !== FALSE && !empty($eventos)) {
+            list($tabela, $i) = Evento_EventoControle::Eventos_Tabela($eventos);
             $Visual->Show_Tabela_DataTable($tabela);
         } else {    
             $Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Evento na Busca '.$busca.'</font></b></center>');
@@ -120,7 +120,7 @@ class Evento_Principal implements \Framework\PrincipalInterface
             'building', 
             $evento_qnt, 
             'block-red', 
-            false, 
+            FALSE, 
             400
         );
     }

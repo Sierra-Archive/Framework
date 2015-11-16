@@ -37,16 +37,16 @@ class Financeiro_PagamentoModelo extends Financeiro_Modelo
         
         if ($perm_editar && $perm_del) {
             $funcao = function( $d, $row ) {
-                return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Condição de Pagamento'        ,'Financeiro/Pagamento/Condicoes_Edit/'.$d.'/'    ,''),true).
-                       Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Condição de Pagamento'       ,'Financeiro/Pagamento/Condicoes_Del/'.$d.'/'     ,'Deseja realmente deletar essa Condiçao de Pagamento ?'),true);
+                return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Condição de Pagamento'        ,'Financeiro/Pagamento/Condicoes_Edit/'.$d.'/'    , ''),TRUE).
+                       Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Condição de Pagamento'       ,'Financeiro/Pagamento/Condicoes_Del/'.$d.'/'     ,'Deseja realmente deletar essa Condiçao de Pagamento ?'),TRUE);
             };
         } else if ($perm_editar) {
             $funcao = function( $d, $row ) {
-                return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Condição de Pagamento'        ,'Financeiro/Pagamento/Condicoes_Edit/'.$d.'/'    ,''),true);
+                return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Condição de Pagamento'        ,'Financeiro/Pagamento/Condicoes_Edit/'.$d.'/'    , ''),TRUE);
             };
         } else if ($perm_del) {
             $funcao = function( $d, $row ) {
-                return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Condição de Pagamento'       ,'Financeiro/Pagamento/Condicoes_Del/'.$d.'/'     ,'Deseja realmente deletar essa Condição de Pagamento ?'),true);
+                return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Condição de Pagamento'       ,'Financeiro/Pagamento/Condicoes_Del/'.$d.'/'     ,'Deseja realmente deletar essa Condição de Pagamento ?'),TRUE);
             };
         } else {
             $funcao = function( $d, $row ) {
@@ -91,13 +91,13 @@ class Financeiro_PagamentoModelo extends Financeiro_Modelo
         
         $function = '';
         if ($perm_condicoes) {
-            $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Visualizar\'     ,Array(\'Visualizar Condições de Pagamento\'        ,\'Financeiro/Pagamento/Condicoes/\'.$d.\'/\'    ,\'\'),true);';
+            $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Visualizar\'     ,Array(\'Visualizar Condições de Pagamento\'        ,\'Financeiro/Pagamento/Condicoes/\'.$d.\'/\'    ,\'\'),TRUE);';
         }
         if ($perm_editar) {
-            $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Editar\'     ,Array(\'Editar Forma de Pagamento\'        ,\'Financeiro/Pagamento/Formas_Edit/\'.$d.\'/\'    ,\'\'),true);';
+            $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Editar\'     ,Array(\'Editar Forma de Pagamento\'        ,\'Financeiro/Pagamento/Formas_Edit/\'.$d.\'/\'    ,\'\'),TRUE);';
         }
         if ($perm_del) {
-            $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Deletar\'    ,Array(\'Deletar Forma de Pagamento\'       ,\'Financeiro/Pagamento/Formas_Del/\'.$d.\'/\'     ,\'Deseja realmente deletar essa Forma de Pagamento ?\'),true);';
+            $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Deletar\'    ,Array(\'Deletar Forma de Pagamento\'       ,\'Financeiro/Pagamento/Formas_Del/\'.$d.\'/\'     ,\'Deseja realmente deletar essa Forma de Pagamento ?\'),TRUE);';
         }
         
         $columns = array();

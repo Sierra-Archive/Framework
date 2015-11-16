@@ -33,15 +33,15 @@ class comercio_LinhaControle extends comercio_Controle
     */
     public function Main() {
         \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'comercio/Linha/Linhas');
-        return false;
+        return FALSE;
     }
-    static function Endereco_Linha($true=true) {
+    static function Endereco_Linha($true= TRUE ) {
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
         $titulo = __('Linhas');
         $link = 'comercio/Linha/Linhas';
-        if ($true===true) {
-            $_Controle->Tema_Endereco($titulo,$link);
+        if ($true === TRUE) {
+            $_Controle->Tema_Endereco($titulo, $link);
         } else {
             $_Controle->Tema_Endereco($titulo);
         }
@@ -51,15 +51,15 @@ class comercio_LinhaControle extends comercio_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Linhas($export=false) {
-        self::Endereco_Linha(false);
+    public function Linhas($export = FALSE) {
+        self::Endereco_Linha(FALSE);
         
         $tabela = Array(
             'Id', 'Nome', 'Linha', 'Funções'
         );
         $this->_Visual->Show_Tabela_DataTable_Massiva($tabela,'comercio/Linha/Linhas');
         $titulo = __('Listagem de Linhas').' (<span id="DataTable_Contador">0</span>)';  //
-        $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',10,Array("link"=>"comercio/Linha/Linhas_Add",'icon'=>'add', 'nome'=>'Adicionar Linha'));
+        $this->_Visual->Bloco_Unico_CriaJanela($titulo, '',10,Array("link"=>"comercio/Linha/Linhas_Add",'icon'=>'add', 'nome'=>'Adicionar Linha'));
         
         
         //Carrega Json
@@ -71,7 +71,7 @@ class comercio_LinhaControle extends comercio_Controle
      * @version 0.4.2
      */
     public function Linhas_Add() {
-        self::Endereco_Linha(true);
+        self::Endereco_Linha(TRUE);
         // Carrega Config
         $titulo1    = __('Adicionar Linha');
         $titulo2    = __('Salvar Linha');
@@ -79,7 +79,7 @@ class comercio_LinhaControle extends comercio_Controle
         $formbt     = __('Salvar');
         $formlink   = 'comercio/Linha/Linhas_Add2/';
         $campos = Comercio_Linha_DAO::Get_Colunas();
-        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos);
+        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1, $titulo2, $formlink, $formid, $formbt, $campos);
     }
     /**
      * 
@@ -95,7 +95,7 @@ class comercio_LinhaControle extends comercio_Controle
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = __('Linha cadastrada com sucesso.');
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
     }
     /**
      * 
@@ -104,16 +104,16 @@ class comercio_LinhaControle extends comercio_Controle
      * @version 0.4.2
      */
     public function Linhas_Edit($id) {
-        self::Endereco_Linha(true);
+        self::Endereco_Linha(TRUE);
         // Carrega Config
         $titulo1    = 'Editar Linha (#'.$id.')';
         $titulo2    = __('Alteração de Linha');
         $formid     = 'form_Sistema_AdminC_LinhaEdit';
         $formbt     = __('Alterar Linha');
         $formlink   = 'comercio/Linha/Linhas_Edit2/'.$id;
-        $editar     = Array('Comercio_Linha',$id);
+        $editar     = Array('Comercio_Linha', $id);
         $campos = Comercio_Linha_DAO::Get_Colunas();
-        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos,$editar);
+        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1, $titulo2, $formlink, $formid, $formbt, $campos, $editar);
     }
     /**
      * 
@@ -124,12 +124,12 @@ class comercio_LinhaControle extends comercio_Controle
      */
     public function Linhas_Edit2($id) {
         $titulo     = __('Linha Editada com Sucesso');
-        $dao        = Array('Comercio_Linha',$id);
+        $dao        = Array('Comercio_Linha', $id);
         $funcao     = '$this->Linhas();';
         $sucesso1   = __('Linha Alterada com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);      
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);      
     }
     /**
      * 
@@ -146,7 +146,7 @@ class comercio_LinhaControle extends comercio_Controle
         $linha = $this->_Modelo->db->Sql_Select('Comercio_Linha', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($linha);
         // Mensagem
-    	if ($sucesso===true) {
+    	if ($sucesso === TRUE) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
@@ -159,12 +159,12 @@ class comercio_LinhaControle extends comercio_Controle
                 "mgs_secundaria" => __('Erro')
             );
         }
-        $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+        $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
         
         $this->Linhas();
         
         $this->_Visual->Json_Info_Update('Titulo', __('Linha deletada com Sucesso'));  
-        $this->_Visual->Json_Info_Update('Historico', false);  
+        $this->_Visual->Json_Info_Update('Historico', FALSE);  
     }
 }
 ?>

@@ -102,7 +102,7 @@
                     <input type="checkbox" id=""> Lembrar Login
                 </div>
                 <div class="forgot-hint pull-right">
-                    <a id="forget-password" class="" href="<?php echo URL_PATH.SISTEMA_DIR_INT; ?>?sistema_esquecisenha=true">Esqueceu sua senha?</a>
+                    <a id="forget-password" class="" href="<?php echo URL_PATH.SISTEMA_DIR_INT; ?>?sistema_esquecisenha= TRUE">Esqueceu sua senha?</a>
                 </div>
             </div>
         </div>
@@ -126,7 +126,7 @@
             tabContainers.filter(this.hash).show();
             jQuery('div.tabs ul.tabNavigation a').removeClass('selected');
             jQuery(this).addClass('selected');
-            return false;
+            return FALSE;
         }).filter(':first').click();
     });
     </script>

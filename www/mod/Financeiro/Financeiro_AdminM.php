@@ -16,7 +16,7 @@ class Financeiro_AdminModelo extends Financeiro_Modelo
     public function __construct() {
       parent::__construct();
     }
-    public function MovExt_Inserir($user,$valor,$obs,$positivo) {
+    public function MovExt_Inserir($user, $valor, $obs, $positivo) {
         GLOBAL $config;
         $admin = (int) \Framework\App\Acl::Usuario_GetID_Static();
         if (!is_int($admin) || $admin==0) return 0;

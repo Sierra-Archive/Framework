@@ -55,7 +55,7 @@ abstract class AbstractStyle
      * @var bool
      * @since 0.11.0
      */
-    private $isAuto = false;
+    private $isAuto = FALSE;
 
     /**
      * Get style name
@@ -119,7 +119,7 @@ abstract class AbstractStyle
      * @param bool $value
      * @return self
      */
-    public function setAuto($value = true)
+    public function setAuto($value = TRUE)
     {
         $this->isAuto = $this->setBoolVal($value, $this->isAuto);
 
@@ -327,8 +327,8 @@ abstract class AbstractStyle
     protected function setPairedVal(&$property, &$pairProperty, $value)
     {
         $property = $this->setBoolVal($value, $property);
-        if ($value == true) {
-            $pairProperty = false;
+        if ($value == TRUE) {
+            $pairProperty = FALSE;
         }
 
         return $this;

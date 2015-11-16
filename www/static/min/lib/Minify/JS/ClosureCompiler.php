@@ -64,7 +64,7 @@ class Minify_JS_ClosureCompiler {
             }
         }
         if ($response === '') {
-            $errors = $this->_getResponse($this->_buildPostBody($js, true));
+            $errors = $this->_getResponse($this->_buildPostBody($js, TRUE));
             throw new Minify_JS_ClosureCompiler_Exception($errors);
         }
         return $response;
@@ -76,7 +76,7 @@ class Minify_JS_ClosureCompiler {
     {
         $allowUrlFopen = preg_match('/1|yes|on|true/i', ini_get('allow_url_fopen'));
         if ($allowUrlFopen) {
-            $contents = file_get_contents(self::URL, false, stream_context_create(array(
+            $contents = file_get_contents(self::URL, FALSE, stream_context_create(array(
                 'http' => array(
                     'method' => 'POST',
                     'header' => "Content-type: application/x-www-form-urlencoded\r\nConnection: close\r\n",
@@ -87,11 +87,11 @@ class Minify_JS_ClosureCompiler {
             )));
         } elseif (defined('CURLOPT_POST')) {
             $ch = curl_init(self::URL);
-            curl_setopt($ch, CURLOPT_POST, true);
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($ch, CURLOPT_POST, TRUE);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
             curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-type: application/x-www-form-urlencoded'));
             curl_setopt($ch, CURLOPT_POSTFIELDS, $postBody);
-            curl_setopt($ch, CURLOPT_FOLLOWLOCATION, false);
+            curl_setopt($ch, CURLOPT_FOLLOWLOCATION, FALSE);
             curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 15);
             $contents = curl_exec($ch);
             curl_close($ch);
@@ -108,7 +108,7 @@ class Minify_JS_ClosureCompiler {
         return trim($contents);
     }
 
-    protected function _buildPostBody($js, $returnErrors = false)
+    protected function _buildPostBody($js, $returnErrors = FALSE)
     {
         return http_build_query(array(
             'js_code' => $js,

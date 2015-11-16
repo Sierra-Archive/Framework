@@ -97,7 +97,7 @@ class Section extends AbstractContainer
      */
     public function addHeader($type = Header::AUTO)
     {
-        return $this->addHeaderFooter($type, true);
+        return $this->addHeaderFooter($type, TRUE);
     }
 
     /**
@@ -109,7 +109,7 @@ class Section extends AbstractContainer
      */
     public function addFooter($type = Header::AUTO)
     {
-        return $this->addHeaderFooter($type, false);
+        return $this->addHeaderFooter($type, FALSE);
     }
 
     /**
@@ -144,10 +144,10 @@ class Section extends AbstractContainer
     {
         foreach ($this->headers as $header) {
             if ($header->getType() == Header::FIRST) {
-                return true;
+                return TRUE;
             }
         }
-        return false;
+        return FALSE;
     }
 
     /**
@@ -159,7 +159,7 @@ class Section extends AbstractContainer
      * @throws \Framework\Classes\PhpWord\Exception\Exception
      * @since 0.10.0
      */
-    private function addHeaderFooter($type = Header::AUTO, $header = true)
+    private function addHeaderFooter($type = Header::AUTO, $header = TRUE)
     {
         $containerClass = substr(get_class($this), 0, strrpos(get_class($this), '\\')) . '\\' .
             ($header ? 'Header' : 'Footer');

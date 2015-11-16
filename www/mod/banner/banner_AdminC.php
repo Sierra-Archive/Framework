@@ -50,16 +50,16 @@ class banner_AdminControle extends banner_Controle
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    public function Banners_Listar($categoria=0,$ativado=1) {
+    public function Banners_Listar($categoria=0, $ativado=1) {
         $banners = Array();
         $i = 0;
-        $this->_Modelo->retorna_banners($banners,$categoria,$ativado);
+        $this->_Modelo->retorna_banners($banners, $categoria, $ativado);
         if (!empty($banners)) {
             reset($banners);
             
             foreach ($banners as $indice=>&$valor) {                
                 $tabela['Id'][$i]        = $valor['id'];
-                $tabela['Foto'][$i]      = $this->_Visual->Show_Upload('banner', 'Admin', 'Banner', 'BannerImagem'.$valor['id'],$valor['foto'],'banner'.DS,$valor['id']);
+                $tabela['Foto'][$i]      = $this->_Visual->Show_Upload('banner', 'Admin', 'Banner', 'BannerImagem'.$valor['id'], $valor['foto'],'banner'.DS, $valor['id']);
                 $tabela['Categoria'][$i] = $valor['categoria'];
                 $tabela['Nome'][$i]    = $valor['nome'];
                 $tabela['Url'][$i]       = $valor['url'];
@@ -110,7 +110,7 @@ class banner_AdminControle extends banner_Controle
         $formbt     = __('Salvar');
         $formlink   = 'banner/Admin/Banners_Add2/';
         $campos     = Banner_DAO::Get_Colunas();
-        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos,false,'right');
+        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1, $titulo2, $formlink, $formid, $formbt, $campos, FALSE,'right');
     }
     /**
      * 
@@ -126,7 +126,7 @@ class banner_AdminControle extends banner_Controle
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = __('Banner cadastrada com sucesso.');
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
     }
     /**
      * 
@@ -141,9 +141,9 @@ class banner_AdminControle extends banner_Controle
         $formid     = 'form_Sistema_AdminC_BannerEdit';
         $formbt     = __('Alterar Banner');
         $formlink   = 'predial/Banner/Banners_Edit2/'.$id;
-        $editar     = Array('Banner',$id);
+        $editar     = Array('Banner', $id);
         $campos = Banner_DAO::Get_Colunas();
-        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos,$editar);
+        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1, $titulo2, $formlink, $formid, $formbt, $campos, $editar);
     }
     /**
      * 
@@ -154,12 +154,12 @@ class banner_AdminControle extends banner_Controle
      */
     public function Banners_Edit2($id) {
         $titulo     = __('Banner Editado com Sucesso');
-        $dao        = Array('Banner',$id);
+        $dao        = Array('Banner', $id);
         $funcao     = '$this->Main();';
         $sucesso1   = __('Banner Alterado com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);   
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);   
     }
     /**
     * Deleta banner
@@ -181,7 +181,7 @@ class banner_AdminControle extends banner_Controle
         
     	$id = (int) $id;
     	$sucesso = $this->_Modelo->Banners_Del($id);
-    	if ($sucesso===true) {
+    	if ($sucesso === TRUE) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
@@ -194,17 +194,17 @@ class banner_AdminControle extends banner_Controle
                 "mgs_secundaria" => __('Erro')
             );
         }
-        $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+        $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
         
         $this->Main();
         
         $this->_Visual->Json_Info_Update('Titulo', __('Banner deletado com Sucesso'));  
-        $this->_Visual->Json_Info_Update('Historico', false);  
+        $this->_Visual->Json_Info_Update('Historico', FALSE);  
     }
     /**
      * 
      */
-    public function Banner_UploadVer($camada,$id) {
+    public function Banner_UploadVer($camada, $id) {
         $camada = (string) \Framework\App\Conexao::anti_injection($camada);
         $id = (int) \Framework\App\Conexao::anti_injection($id);
        
@@ -217,9 +217,9 @@ class banner_AdminControle extends banner_Controle
         $id = (int) $id;
         $fileTypes = array('jpg', 'jpeg', 'gif', 'png'); // File extensions
         $dir = 'banner'.DS;
-        $ext = $this->Upload($dir,$fileTypes,$id);
+        $ext = $this->Upload($dir, $fileTypes, $id);
         if ($ext!='falso') {
-            $this->_Modelo->Banner_Upload_Alterar($id,$ext); 
+            $this->_Modelo->Banner_Upload_Alterar($id, $ext); 
         }
     }
 }

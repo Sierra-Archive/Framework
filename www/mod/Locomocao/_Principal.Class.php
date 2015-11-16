@@ -27,24 +27,24 @@ class Locomocao_Principal implements \Framework\PrincipalInterface
         
         // Bloca Conteudo
         $Visual->Blocar($html);   
-        $Visual->Bloco_Menor_CriaJanela(__('Em Andamento'),'',80);
+        $Visual->Bloco_Menor_CriaJanela(__('Em Andamento'), '',80);
         // Bloca Conteudo
         $Visual->Blocar($html);   
-        $Visual->Bloco_Menor_CriaJanela(__('Disponiveis na Rua'),'',80);
+        $Visual->Bloco_Menor_CriaJanela(__('Disponiveis na Rua'), '',80);
     }
-    static function Busca(&$controle, &$Modelo, &$Visual,$busca) {
-        return false;
+    static function Busca(&$controle, &$Modelo, &$Visual, $busca) {
+        return FALSE;
     }
     static function Config() {
-        return false;
+        return FALSE;
     }
     
-    static function Relatorio($data_inicio,$data_final,$filtro=false) {
-        return false;
+    static function Relatorio($data_inicio, $data_final, $filtro = FALSE) {
+        return FALSE;
     }
     
-    static function Estatistica($data_inicio,$data_final,$filtro=false) {
-        return false;
+    static function Estatistica($data_inicio, $data_final, $filtro = FALSE) {
+        return FALSE;
     }
 }
 ?>

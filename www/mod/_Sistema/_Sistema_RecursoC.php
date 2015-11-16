@@ -5,10 +5,10 @@ class _Sistema_RecursoControle extends _Sistema_Controle
         
         parent::__construct();
     }
-    public function Main($dominio,$campo_alterado,$id=0) {
-        $this->Select_Recarrega_Extrangeira($dominio,$campo_alterado,$id);
-        $this->Json_Definir_zerar(false);
-        $this->_Visual->Json_Info_Update('Historico', false);
+    public function Main($dominio, $campo_alterado, $id=0) {
+        $this->Select_Recarrega_Extrangeira($dominio, $campo_alterado, $id);
+        $this->Json_Definir_zerar(FALSE);
+        $this->_Visual->Json_Info_Update('Historico', FALSE);
     }
     /**
      * 
@@ -24,15 +24,15 @@ $('#produtocontrolador1 select').attr('id', 'produto1');
 	
 
      */
-    public function Select_Recarrega_Extrangeira($dominiosigla,$campo_alterado,$id=0) {
+    public function Select_Recarrega_Extrangeira($dominiosigla, $campo_alterado, $id=0) {
         // Variaveis INICIAIS
         $html = '';
         $novoid = 0;
         // Configura Json
-        $this->Json_Definir_zerar(false);
-        $this->_Visual->Json_Info_Update('Historico', false);
+        $this->Json_Definir_zerar(FALSE);
+        $this->_Visual->Json_Info_Update('Historico', FALSE);
         if ($id==0 || !isset($id)) {
-            return false;
+            return FALSE;
         }
         
         // Pega ["tabela"] e ["class"] da tabela que estava sendo alterada no forum
@@ -41,10 +41,10 @@ $('#produtocontrolador1 select').attr('id', 'produto1');
         $alterado = $dominio['classe'];
         $alterado = new $alterado();
         // PRimeiro Foreach
-        //var_dump($alterado,$alterado->Get_Extrangeiras_ComExterna());
+        //var_dump($alterado, $alterado->Get_Extrangeiras_ComExterna());
         $alterado = $alterado->Get_Extrangeiras_ComExterna();
         
-        if ($alterado===false) return true;
+        if ($alterado === FALSE) return TRUE;
         
         foreach($alterado as $indice=>&$valor) {
             if ($indice!==$campo_alterado) {
@@ -58,7 +58,7 @@ $('#produtocontrolador1 select').attr('id', 'produto1');
                     // ACHADO TABELA A ALTERAR
                     $extrangeira_procurar = str_replace('{'.$campo_alterado.'}', $id, $valor);
                     $resultado = $this->_Modelo->db->Tabelas_CapturaExtrangeiras($extrangeira_procurar);
-                    if ($resultado!==false && !empty($resultado)) {
+                    if ($resultado !== FALSE && !empty($resultado)) {
                         if (is_object($resultado)) $resultado = Array(0=>$resultado);
                         $i = 0;
                         foreach ($resultado as $indice2=>$valor2) {
@@ -68,7 +68,7 @@ $('#produtocontrolador1 select').attr('id', 'produto1');
                             } else {
                                 $seleciona = 0;
                             }
-                            $html .= \Framework\Classes\Form::Select_Opcao_Stat($valor2, $indice2,$seleciona);
+                            $html .= \Framework\Classes\Form::Select_Opcao_Stat($valor2, $indice2, $seleciona);
                             ++$i;
                         }
                     } else {
@@ -81,16 +81,16 @@ $('#produtocontrolador1 select').attr('id', 'produto1');
                         'js'        =>  '',
                         'html'      =>  $html
                     );
-                    $this->_Visual->Json_IncluiTipo('Conteudo',$conteudo);
+                    $this->_Visual->Json_IncluiTipo('Conteudo', $conteudo);
                     // SE tiver dependente chama denovo 
                     if ($novoid!==0) {
-                        self::Select_Recarrega_Extrangeira($dominiosigla,$indice,$novoid);
+                        self::Select_Recarrega_Extrangeira($dominiosigla, $indice, $novoid);
                     }
                 }
             }
         }
     }
-    public function Valida_Cep($cep=false,$campos=false) {
+    public function Valida_Cep($cep = FALSE, $campos = FALSE) {
         
         $cep = str_replace(Array('-', '.'), Array('', ''), trim($cep));
         if (strlen($cep)!==8 || !is_numeric($cep)) {
@@ -100,25 +100,25 @@ $('#produtocontrolador1 select').attr('id', 'produto1');
                 "mgs_principal"     => __('Cep Inválido'),
                 "mgs_secundaria"    => __('Cep não Reconhecido pelos Corrêios')
             );
-            $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+            $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
             $this->_Visual->Javascript_Executar(
                     '$("#cep").css(\'border\', \'2px solid #FFAEB0\').focus();'
             );
-            $this->_Visual->Json_Info_Update('Historico', false);
-            $this->layoult_zerar = false; 
+            $this->_Visual->Json_Info_Update('Historico', FALSE);
+            $this->layoult_zerar = FALSE; 
             
-            return false;
+            return FALSE;
         }
         
         
         $imprimir = function(&$opcoes) {
             $html = '';
-            if ($opcoes!==false && !empty($opcoes)) {
+            if ($opcoes !== FALSE && !empty($opcoes)) {
                 if (is_object($opcoes)) $opcoes = Array(0=>$opcoes);
                 reset($opcoes);
                 foreach ($opcoes as $indice2=>$valor2) {
                     $selecionado = 0;
-                    $html .= \Framework\Classes\Form::Select_Opcao_Stat($valor2->nome, $valor2->id,$selecionado);
+                    $html .= \Framework\Classes\Form::Select_Opcao_Stat($valor2->nome, $valor2->id, $selecionado);
                 }
             }
             return $html;
@@ -139,18 +139,18 @@ $('#produtocontrolador1 select').attr('id', 'produto1');
                 "mgs_principal"     => __('Cep Inválido'),
                 "mgs_secundaria"    => __('Cep não Reconhecido pelos Corrêios')
             );
-            $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+            $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
             $this->_Visual->Javascript_Executar(
                     '$("#cep").css(\'border\', \'2px solid #FFAEB0\').focus();'
             );
-            $this->_Visual->Json_Info_Update('Historico', false);
-            $this->layoult_zerar = false; 
+            $this->_Visual->Json_Info_Update('Historico', FALSE);
+            $this->layoult_zerar = FALSE; 
             
-            return false;
+            return FALSE;
         }
         // Captura Informacoes e Cria UNIVERSAL
         $universal = new \Universal_Vivo_Cep_DAO();
-        //var_dump($xml,$resultado[0]);
+        //var_dump($xml, $resultado[0]);
         $estado = (Array) $xml->uf;
         $cidade = (Array) $xml->cidade;
         $bairro = (Array) $xml->bairro;
@@ -165,14 +165,14 @@ $('#produtocontrolador1 select').attr('id', 'produto1');
         $opcoes     =   $this->_Modelo->db->Sql_Select('Sistema_Local_Bairro', $where);
         $html       .=  $imprimir($opcoes);
         
-        return true;
+        return TRUE;
     }
-    public function Valida_CPF($cpf=false,$campos=false) {
+    public function Valida_CPF($cpf = FALSE, $campos = FALSE) {
         $info_cpf = $cpf; //$cpf;
         $cpf = (int) str_replace(Array('.', ',', '-'), Array('', '', ''), $cpf/*$cpf*/);
-        $this->_Visual->Json_Info_Update('Historico', false);
+        $this->_Visual->Json_Info_Update('Historico', FALSE);
         
-        $invalido = false;
+        $invalido = FALSE;
         if ($invalido) {
             // CEP INVALIDO
             $mensagens = array(
@@ -180,19 +180,19 @@ $('#produtocontrolador1 select').attr('id', 'produto1');
                 "mgs_principal"     => __('Cpf Inválido'),
                 "mgs_secundaria"    => __('Por favor forneça um CPF válido')
             );
-            $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+            $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
             $this->_Visual->Javascript_Executar(
                     '$("#cpf").css(\'border\', \'2px solid #FFAEB0\').focus();'
             );
-            $this->_Visual->Json_Info_Update('Historico', false);
-            $this->layoult_zerar = false; 
+            $this->_Visual->Json_Info_Update('Historico', FALSE);
+            $this->layoult_zerar = FALSE; 
             
-            return false;
+            return FALSE;
         }
         
         $sql_cpf = $this->_Modelo->db->Sql_Select('Universal_Vivo_Cpf',Array('cpf'=>$cpf),1);
 
-        if ($sql_cpf===false) {       
+        if ($sql_cpf === FALSE) {       
             // Carrega XML            
             $arquivo_teste = 'http://www.situacaocadastral.com.br/';
  
@@ -205,16 +205,16 @@ $('#produtocontrolador1 select').attr('id', 'produto1');
             'HTTP_CONNECTION'       => 'keep-alive'
             );
             $ch=curl_init();
-            curl_setopt($ch,    CURLOPT_URL,$arquivo_teste);
+            curl_setopt($ch,    CURLOPT_URL, $arquivo_teste);
             curl_setopt($ch,    CURLOPT_PROXY, SISTEMA_PROXY); 
-            curl_setopt($ch,    CURLOPT_AUTOREFERER,         true);
-            curl_setopt($ch,    CURLOPT_COOKIESESSION,         true);
-            curl_setopt($ch,    CURLOPT_FAILONERROR,         false);
-            curl_setopt($ch,    CURLOPT_FOLLOWLOCATION,        false);
-            curl_setopt($ch,    CURLOPT_FRESH_CONNECT,         true);
-            curl_setopt($ch,    CURLOPT_HEADER,             true);
-            curl_setopt($ch,    CURLOPT_POST,                 true);
-            curl_setopt($ch,    CURLOPT_RETURNTRANSFER,        true);
+            curl_setopt($ch,    CURLOPT_AUTOREFERER,         TRUE);
+            curl_setopt($ch,    CURLOPT_COOKIESESSION,         TRUE);
+            curl_setopt($ch,    CURLOPT_FAILONERROR,         FALSE);
+            curl_setopt($ch,    CURLOPT_FOLLOWLOCATION,        FALSE);
+            curl_setopt($ch,    CURLOPT_FRESH_CONNECT,         TRUE);
+            curl_setopt($ch,    CURLOPT_HEADER,             TRUE);
+            curl_setopt($ch,    CURLOPT_POST,                 TRUE);
+            curl_setopt($ch,    CURLOPT_RETURNTRANSFER,        TRUE);
             curl_setopt($ch,    CURLOPT_CONNECTTIMEOUT,     300);
             $result = curl_exec($ch) or die (curl_error($ch));
             preg_match_all('/Set-Cookie: (.*?; path=.*?)\n/', $result, $matches);
@@ -226,17 +226,17 @@ $('#produtocontrolador1 select').attr('id', 'produto1');
             
             
             // Carrega JS
-            curl_setopt($ch,    CURLOPT_URL,$arquivo_teste.'js/'.$js.'.js');
+            curl_setopt($ch,    CURLOPT_URL, $arquivo_teste.'js/'.$js.'.js');
             curl_setopt($ch,    CURLOPT_PROXY, SISTEMA_PROXY); 
-            curl_setopt($ch,    CURLOPT_AUTOREFERER,         true);
-            curl_setopt($ch,    CURLOPT_COOKIESESSION,         true);
+            curl_setopt($ch,    CURLOPT_AUTOREFERER,         TRUE);
+            curl_setopt($ch,    CURLOPT_COOKIESESSION,         TRUE);
             curl_setopt($ch,    CURLOPT_COOKIE,         $cookie);
-            curl_setopt($ch,    CURLOPT_FAILONERROR,         false);
-            curl_setopt($ch,    CURLOPT_FOLLOWLOCATION,        false);
-            curl_setopt($ch,    CURLOPT_FRESH_CONNECT,         true);
-            curl_setopt($ch,    CURLOPT_HEADER,             true);
-            curl_setopt($ch,    CURLOPT_POST,                 true);
-            curl_setopt($ch,    CURLOPT_RETURNTRANSFER,        true);
+            curl_setopt($ch,    CURLOPT_FAILONERROR,         FALSE);
+            curl_setopt($ch,    CURLOPT_FOLLOWLOCATION,        FALSE);
+            curl_setopt($ch,    CURLOPT_FRESH_CONNECT,         TRUE);
+            curl_setopt($ch,    CURLOPT_HEADER,             TRUE);
+            curl_setopt($ch,    CURLOPT_POST,                 TRUE);
+            curl_setopt($ch,    CURLOPT_RETURNTRANSFER,        TRUE);
             curl_setopt($ch,    CURLOPT_CONNECTTIMEOUT,     300);
             $result = curl_exec($ch) or die (curl_error($ch));
             
@@ -247,24 +247,24 @@ $('#produtocontrolador1 select').attr('id', 'produto1');
 
             
             // Then, once we have the cookie, let's use it in the next request:
-            curl_setopt($ch,    CURLOPT_URL,$arquivo_teste);
+            curl_setopt($ch,    CURLOPT_URL, $arquivo_teste);
             curl_setopt($ch,    CURLOPT_PROXY, SISTEMA_PROXY); 
             curl_setopt($ch,    CURLOPT_REFERER,         $arquivo_teste);
-            curl_setopt($ch,    CURLOPT_COOKIESESSION,         false);
-            curl_setopt($ch,    CURLOPT_FAILONERROR,         false);
-            curl_setopt($ch,    CURLOPT_FOLLOWLOCATION,        false);
-            curl_setopt($ch,    CURLOPT_FRESH_CONNECT,         true);
-            curl_setopt($ch,    CURLOPT_HEADER,             true);
+            curl_setopt($ch,    CURLOPT_COOKIESESSION,         FALSE);
+            curl_setopt($ch,    CURLOPT_FAILONERROR,         FALSE);
+            curl_setopt($ch,    CURLOPT_FOLLOWLOCATION,        FALSE);
+            curl_setopt($ch,    CURLOPT_FRESH_CONNECT,         TRUE);
+            curl_setopt($ch,    CURLOPT_HEADER,             TRUE);
             curl_setopt($ch,    CURLOPT_CONNECTTIMEOUT,     300);
-            curl_setopt($ch,    CURLOPT_RETURNTRANSFER,        true);
+            curl_setopt($ch,    CURLOPT_RETURNTRANSFER,        TRUE);
             curl_setopt($ch,    CURLOPT_USERAGENT, 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:43.0) Gecko/20100101 Firefox/43.0');
-            curl_setopt($ch,    CURLOPT_POST, true);
+            curl_setopt($ch,    CURLOPT_POST, TRUE);
             curl_setopt($ch,    CURLOPT_POSTFIELDS, 'doc='.$cpf.'&'.$js);
             curl_setopt($ch,    CURLOPT_HTTPHEADER, $headers);
             $result = curl_exec($ch) or die (curl_error($ch));
             curl_close($ch);
             
-            if (stripos($result, '<span class="dados">')!==false) {
+            if (stripos($result, '<span class="dados">') !== FALSE) {
                 
                 // Pega nome
                 $dados_retorno = Array('cpf'=>$info_cpf);
@@ -296,14 +296,14 @@ $('#produtocontrolador1 select').attr('id', 'produto1');
                     "mgs_principal"     => __('Cpf Inválido'),
                     "mgs_secundaria"    => __('Por favor forneça um CPF válido')
                 );
-                $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+                $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
                 $this->_Visual->Javascript_Executar(
                         '$("#cpf").css(\'border\', \'2px solid #FFAEB0\').focus();'
                 );
-                $this->_Visual->Json_Info_Update('Historico', false);
-                $this->layoult_zerar = false; 
+                $this->_Visual->Json_Info_Update('Historico', FALSE);
+                $this->layoult_zerar = FALSE; 
 
-                return false;
+                return FALSE;
             }
         } else {
             $dados_retorno = Array(
@@ -312,13 +312,13 @@ $('#produtocontrolador1 select').attr('id', 'produto1');
                 'situacao' => $sql_cpf->info_situacaocadastral
             );
         }
-        if ($campos!==false && trim($campos)!=='' && !is_int($campos)) {
+        if ($campos !== FALSE && trim($campos)!=='' && !is_int($campos)) {
             $campos = \explode(', ', $campos);
             foreach($campos as &$valor) {
-                if (strpos('=',$valor)===false) {
+                if (strpos('=', $valor) === FALSE) {
                     continue;
                 }
-                list($camada,$value) = \explode('=', $valor);
+                list($camada, $value) = \explode('=', $valor);
                 if (isset($dados_retorno[$value])) {
                     // Json
                     $conteudo = [
@@ -326,26 +326,26 @@ $('#produtocontrolador1 select').attr('id', 'produto1');
                         'js'        =>  '',
                         'html'      =>  $dados_retorno[$value]
                     ];
-                    $this->_Visual->Json_IncluiTipo('Conteudo',$conteudo);
+                    $this->_Visual->Json_IncluiTipo('Conteudo', $conteudo);
                 }
             }
         }
 
-        return true;
+        return TRUE;
     }
     /**
      * BUSCA DE CNPJ
      */
     
-    public function Valida_CNPJ($cnpj=false,$campos=false) {
+    public function Valida_CNPJ($cnpj = FALSE, $campos = FALSE) {
         $info_cnpj = $cnpj;
         $cnpj = (int) str_replace(Array('.', ',', '-'), Array('', '', ''), $cnpj);
-        $this->_Visual->Json_Info_Update('Historico', false);
+        $this->_Visual->Json_Info_Update('Historico', FALSE);
         
         
         $sql_cnpj = $this->_Modelo->db->Sql_Select('Universal_Vivo_Cnpj',Array('cnpj'=>$cnpj),1);
         
-        if ($sql_cnpj===false) {
+        if ($sql_cnpj === FALSE) {
         
             // Carrega XML
             $login = 'sierratecnologia';
@@ -363,13 +363,13 @@ $('#produtocontrolador1 select').attr('id', 'produto1');
                 $xml = simplexml_load_string($xmls);
             }
             if ($xml->CodErro!==0) {
-                return false;
+                return FALSE;
             }
             $cep_num = $xml->CEP;
             $cep_num = (int) str_replace(Array('.', ',', '-'), Array('', '', ''), $cep_num);
             $cons_cep = $this->_Modelo->db->Sql_Select('Universal_Vivo_Cep',Array('cep'=>$cep_num),1);
 
-            if ($cons_cep!==false) {
+            if ($cons_cep !== FALSE) {
                 // cria CEP
                 $sql_cep = new \Universal_Vivo_Cep_DAO();
                 $sql_cep->info_logradouro = $xml->Logradouro;
@@ -404,10 +404,10 @@ $('#produtocontrolador1 select').attr('id', 'produto1');
             $this->_Modelo->db->Sql_Insert($sql_cnpj);
         }
         
-        if ($campos!==false) {
+        if ($campos !== FALSE) {
             $campos = explode(', ', $campos);
             foreach($campos as &$valor) {
-                list($camada,$value) = explode('=', $valor);
+                list($camada, $value) = explode('=', $valor);
                 if (isset($sql_cnpj->$value)) {
                     // Json
                     $conteudo = array(
@@ -416,11 +416,11 @@ $('#produtocontrolador1 select').attr('id', 'produto1');
                         'js'        =>  '',
                         'html'      =>  $sql_cnpj->$value
                     );
-                    $this->_Visual->Json_IncluiTipo('Conteudo',$conteudo);
+                    $this->_Visual->Json_IncluiTipo('Conteudo', $conteudo);
                 }
             }
         }
-        return true;
+        return TRUE;
     }
 }
 ?>

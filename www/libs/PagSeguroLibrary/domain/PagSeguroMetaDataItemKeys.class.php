@@ -72,7 +72,7 @@ class PagSeguroMetaDataItemKeys
         if (isset(self::$availableItemKeysList[$itemKey])) {
             return self::$availableItemKeysList[$itemKey];
         } else {
-            return false;
+            return FALSE;
         }
     }
 

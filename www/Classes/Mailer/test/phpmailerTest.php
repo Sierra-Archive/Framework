@@ -97,7 +97,7 @@ class PHPMailerTest extends PHPUnit_Framework_TestCase
             $this->Mail->Port = 25;
         }
         $this->Mail->Helo = 'localhost.localdomain';
-        $this->Mail->SMTPAuth = false;
+        $this->Mail->SMTPAuth = FALSE;
         $this->Mail->Username = '';
         $this->Mail->Password = '';
         $this->Mail->PluginDir = $this->INCLUDE_DIR;
@@ -288,7 +288,7 @@ class PHPMailerTest extends PHPUnit_Framework_TestCase
             case 'bcc':
                 return $this->Mail->addBCC($sAddress, $sName);
         }
-        return false;
+        return FALSE;
     }
 
     /**
@@ -299,7 +299,7 @@ class PHPMailerTest extends PHPUnit_Framework_TestCase
     {
         $this->Mail->Host = 'hostname';
         $this->Mail->Port = 587;
-        $this->Mail->SMTPAuth = true;
+        $this->Mail->SMTPAuth = TRUE;
         $this->Mail->SMTPSecure = 'tls';
         $this->Mail->AuthType = 'CRAM-MD5';
         $this->Mail->Username = 'username';
@@ -676,12 +676,12 @@ class PHPMailerTest extends PHPUnit_Framework_TestCase
         $this->Mail->Subject .= ': Plain + Multiple FileAttachments';
 
         if (!$this->Mail->addAttachment('../examples/images/phpmailer.png')) {
-            $this->assertTrue(false, $this->Mail->ErrorInfo);
+            $this->assertTrue(FALSE, $this->Mail->ErrorInfo);
             return;
         }
 
         if (!$this->Mail->addAttachment(__FILE__, 'test.txt')) {
-            $this->assertTrue(false, $this->Mail->ErrorInfo);
+            $this->assertTrue(FALSE, $this->Mail->ErrorInfo);
             return;
         }
 
@@ -738,7 +738,7 @@ class PHPMailerTest extends PHPUnit_Framework_TestCase
      */
     public function testHtml()
     {
-        $this->Mail->isHTML(true);
+        $this->Mail->isHTML(TRUE);
         $this->Mail->Subject .= ": HTML only";
 
         $this->Mail->Body = <<<EOT
@@ -777,7 +777,7 @@ EOT;
 
         //Again, using the advanced HTML to text converter
         $this->Mail->AltBody = '';
-        $this->Mail->msgHTML($message, '../examples', true);
+        $this->Mail->msgHTML($message, '../examples', TRUE);
         $this->Mail->Subject .= ' + html2text advanced';
         $this->assertNotEmpty($this->Mail->AltBody, 'Advanced AltBody not set by msgHTML');
 
@@ -791,10 +791,10 @@ EOT;
     {
         $this->Mail->Body = 'This is the <strong>HTML</strong> part of the email.';
         $this->Mail->Subject .= ': HTML + Attachment';
-        $this->Mail->isHTML(true);
+        $this->Mail->isHTML(TRUE);
 
         if (!$this->Mail->addAttachment(__FILE__, 'test_attach.txt')) {
-            $this->assertTrue(false, $this->Mail->ErrorInfo);
+            $this->assertTrue(FALSE, $this->Mail->ErrorInfo);
             return;
         }
 
@@ -813,7 +813,7 @@ EOT;
         $this->Mail->Body = 'Embedded Image: <img alt="phpmailer" src="cid:my-attach">' .
             'Here is an image!</a>';
         $this->Mail->Subject .= ': Embedded Image';
-        $this->Mail->isHTML(true);
+        $this->Mail->isHTML(TRUE);
 
         if (!$this->Mail->addEmbeddedImage(
             '../examples/images/phpmailer.png',
@@ -823,7 +823,7 @@ EOT;
             'image/png'
         )
         ) {
-            $this->assertTrue(false, $this->Mail->ErrorInfo);
+            $this->assertTrue(FALSE, $this->Mail->ErrorInfo);
             return;
         }
 
@@ -842,7 +842,7 @@ EOT;
         $this->Mail->Body = 'Embedded Image: <img alt="phpmailer" src="cid:my-attach">' .
             'Here is an image!</a>';
         $this->Mail->Subject .= ': Embedded Image + Attachment';
-        $this->Mail->isHTML(true);
+        $this->Mail->isHTML(TRUE);
 
         if (!$this->Mail->addEmbeddedImage(
             '../examples/images/phpmailer.png',
@@ -852,12 +852,12 @@ EOT;
             'image/png'
         )
         ) {
-            $this->assertTrue(false, $this->Mail->ErrorInfo);
+            $this->assertTrue(FALSE, $this->Mail->ErrorInfo);
             return;
         }
 
         if (!$this->Mail->addAttachment(__FILE__, 'test.txt')) {
-            $this->assertTrue(false, $this->Mail->ErrorInfo);
+            $this->assertTrue(FALSE, $this->Mail->ErrorInfo);
             return;
         }
 
@@ -890,10 +890,10 @@ EOT;
         $this->Mail->Body = 'This is the <strong>HTML</strong> part of the email.';
         $this->Mail->AltBody = __('This is the text part of the email.');
         $this->Mail->Subject .= ': AltBody + Attachment';
-        $this->Mail->isHTML(true);
+        $this->Mail->isHTML(TRUE);
 
         if (!$this->Mail->addAttachment(__FILE__, 'test_attach.txt')) {
-            $this->assertTrue(false, $this->Mail->ErrorInfo);
+            $this->assertTrue(FALSE, $this->Mail->ErrorInfo);
             return;
         }
 
@@ -902,7 +902,7 @@ EOT;
         if (is_writable('.')) {
             file_put_contents('message.txt', $this->Mail->createHeader() . $this->Mail->createBody());
         } else {
-            $this->assertTrue(false, 'Could not write local file - check permissions');
+            $this->assertTrue(FALSE, 'Could not write local file - check permissions');
         }
     }
 
@@ -914,7 +914,7 @@ EOT;
         $this->Mail->Body = 'This is the <strong>HTML</strong> part of the email.';
         $this->Mail->AltBody = __('This is the text part of the email.');
         $this->Mail->Subject .= ': iCal';
-        $this->Mail->isHTML(true);
+        $this->Mail->isHTML(TRUE);
         $this->buildBody();
         require_once '../extras/EasyPeasyICS.php';
         $ICS = new EasyPeasyICS("PHPMailer test calendar");
@@ -925,13 +925,13 @@ EOT;
             'A test of PHPMailer iCal support',
             'https://github.com/PHPMailer/PHPMailer'
         );
-        $this->Mail->Ical = $ICS->render(false);
+        $this->Mail->Ical = $ICS->render(FALSE);
         $this->assertTrue($this->Mail->send(), $this->Mail->ErrorInfo);
         $this->Mail->Body = 'Embedded Image: <img alt="phpmailer" src="cid:my-attach">' .
             'Here is an image!</a>.';
         $this->Mail->AltBody = __('This is the text part of the email.');
         $this->Mail->Subject .= ': iCal + inline';
-        $this->Mail->isHTML(true);
+        $this->Mail->isHTML(TRUE);
         $this->Mail->addEmbeddedImage(
             '../examples/images/phpmailer.png',
             'my-attach',
@@ -999,7 +999,7 @@ EOT;
     public function testMailSend()
     {
         $sendmail = ini_get('sendmail_path');
-        if (strpos($sendmail, '/') === false) { //No path in sendmail_path
+        if (strpos($sendmail, '/') === FALSE) { //No path in sendmail_path
             ini_set('sendmail_path', '/usr/sbin/sendmail -t -i ');
         }
         $this->Mail->Body = 'Sending via mail()';
@@ -1019,9 +1019,9 @@ EOT;
         $this->Mail->Body = '';
         $this->Mail->Subject = $this->Mail->Subject . ': Empty Body';
         $this->Mail->isMail();
-        $this->Mail->AllowEmpty = true;
+        $this->Mail->AllowEmpty = TRUE;
         $this->assertTrue($this->Mail->send(), $this->Mail->ErrorInfo);
-        $this->Mail->AllowEmpty = false;
+        $this->Mail->AllowEmpty = FALSE;
         $this->assertFalse($this->Mail->send(), $this->Mail->ErrorInfo);
     }
 
@@ -1034,7 +1034,7 @@ EOT;
         $this->buildBody();
         $subject = $this->Mail->Subject;
 
-        $this->Mail->SMTPKeepAlive = true;
+        $this->Mail->SMTPKeepAlive = TRUE;
         $this->Mail->Subject = $subject . ': SMTP keep-alive 1';
         $this->assertTrue($this->Mail->send(), $this->Mail->ErrorInfo);
 
@@ -1101,8 +1101,8 @@ EOT;
         $this->Mail->Subject .= ': This should be sent';
         $this->buildBody();
         $this->Mail->clearAllRecipients(); // no addresses should cause an error
-        $this->assertTrue($this->Mail->isError() == false, 'Error found');
-        $this->assertTrue($this->Mail->send() == false, 'send succeeded');
+        $this->assertTrue($this->Mail->isError() == FALSE, 'Error found');
+        $this->assertTrue($this->Mail->send() == FALSE, 'send succeeded');
         $this->assertTrue($this->Mail->isError(), 'No error found');
         $this->assertEquals('You must provide at least one recipient email address.', $this->Mail->ErrorInfo);
         $this->Mail->addAddress($_REQUEST['mail_to']);
@@ -1130,10 +1130,10 @@ EOT;
         $this->assertTrue($this->Mail->setFrom('a@example.com', 'some name'), 'setFrom failed');
         $this->assertFalse($this->Mail->setFrom('a@example.com.', 'some name'), 'setFrom accepted invalid address');
         $this->Mail->Sender = '';
-        $this->Mail->setFrom('a@example.com', 'some name', true);
+        $this->Mail->setFrom('a@example.com', 'some name', TRUE);
         $this->assertEquals($this->Mail->Sender, 'a@example.com', 'setFrom failed to set sender');
         $this->Mail->Sender = '';
-        $this->Mail->setFrom('a@example.com', 'some name', false);
+        $this->Mail->setFrom('a@example.com', 'some name', FALSE);
         $this->assertEquals($this->Mail->Sender, '', 'setFrom should not have set sender');
         $this->Mail->clearCCs();
         $this->Mail->clearBCCs();
@@ -1152,7 +1152,7 @@ EOT;
         $this->buildBody();
         $this->Mail->preSend();
         $b = $this->Mail->getSentMIMEMessage();
-        $this->assertTrue((strpos($b, 'To: "Tim \"The Book\" O\'Reilly" <foo@example.com>') !== false));
+        $this->assertTrue((strpos($b, 'To: "Tim \"The Book\" O\'Reilly" <foo@example.com>') !== FALSE));
     }
 
     /**
@@ -1363,7 +1363,7 @@ EOT;
         $this->Mail->addCustomHeader('SomeHeader: Some Value');
         $this->Mail->clearCustomHeaders();
         $this->Mail->clearAttachments();
-        $this->Mail->isHTML(false);
+        $this->Mail->isHTML(FALSE);
         $this->Mail->isSMTP();
         $this->Mail->isMail();
         $this->Mail->isSendmail();

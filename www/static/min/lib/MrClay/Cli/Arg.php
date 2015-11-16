@@ -69,7 +69,7 @@ class Arg {
     /**
      * @var bool
      */
-    protected $required = false;
+    protected $required = FALSE;
 
     /**
      * @var string
@@ -79,12 +79,12 @@ class Arg {
     /**
      * @param bool $isRequired
      */
-    public function __construct($isRequired = false)
+    public function __construct($isRequired = FALSE)
     {
         $this->spec = $this->getDefaultSpec();
         $this->required = (bool) $isRequired;
         if ($isRequired) {
-            $this->spec['mustHaveValue'] = true;
+            $this->spec['mustHaveValue'] = TRUE;
         }
     }
 
@@ -96,7 +96,7 @@ class Arg {
      */
     public function useAsOutfile()
     {
-        $this->spec['useAsOutfile'] = true;
+        $this->spec['useAsOutfile'] = TRUE;
         return $this->assertFile()->assertWritable();
     }
 
@@ -108,7 +108,7 @@ class Arg {
      */
     public function useAsInfile()
     {
-        $this->spec['useAsInfile'] = true;
+        $this->spec['useAsInfile'] = TRUE;
         return $this->assertFile()->assertReadable();
     }
 
@@ -157,9 +157,9 @@ class Arg {
     public function __call($name, array $args = array())
     {
         if (array_key_exists($name, $this->spec)) {
-            $this->spec[$name] = true;
+            $this->spec[$name] = TRUE;
             if ($name === 'assertFile' || $name === 'assertDir') {
-                $this->spec['mustHaveValue'] = true;
+                $this->spec['mustHaveValue'] = TRUE;
             }
         } else {
             throw new BadMethodCallException('Method does not exist');

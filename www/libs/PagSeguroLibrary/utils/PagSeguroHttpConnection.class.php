@@ -124,7 +124,7 @@ class PagSeguroHttpConnection
         if ($error) {
             throw new Exception("CURL can't connect: $errorMessage");
         } else {
-            return true;
+            return TRUE;
         }
     }
 }

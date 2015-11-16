@@ -20,7 +20,7 @@ function Header()
 	$this->SetFillColor(230,230,0);
 	$this->SetTextColor(220,50,50);
 	$this->SetLineWidth(1);
-	$this->Cell($w,9,$title,1,1,'C',true);
+	$this->Cell($w,9, $title,1,1,'C',TRUE);
 	$this->Ln(10);
 	// Save ordinate
 	$this->y0 = $this->GetY();
@@ -54,14 +54,14 @@ function AcceptPageBreak()
 		// Set ordinate to top
 		$this->SetY($this->y0);
 		// Keep on page
-		return false;
+		return FALSE;
 	}
 	else
 	{
 		// Go back to first column
 		$this->SetCol(0);
 		// Page break
-		return true;
+		return TRUE;
 	}
 }
 
@@ -70,7 +70,7 @@ function ChapterTitle($num, $label)
 	// Title
 	$this->SetFont('Arial', '',12);
 	$this->SetFillColor(200,220,255);
-	$this->Cell(0,6,"Chapter $num : $label",0,1,'L',true);
+	$this->Cell(0,6,"Chapter $num : $label",0,1,'L',TRUE);
 	$this->Ln(4);
 	// Save ordinate
 	$this->y0 = $this->GetY();
@@ -83,7 +83,7 @@ function ChapterBody($file)
 	// Font
 	$this->SetFont('Times', '',12);
 	// Output text in a 6 cm width column
-	$this->MultiCell(60,5,$txt);
+	$this->MultiCell(60,5, $txt);
 	$this->Ln();
 	// Mention
 	$this->SetFont('', 'I');
@@ -96,7 +96,7 @@ function PrintChapter($num, $title, $file)
 {
 	// Add chapter
 	$this->AddPage();
-	$this->ChapterTitle($num,$title);
+	$this->ChapterTitle($num, $title);
 	$this->ChapterBody($file);
 }
 }

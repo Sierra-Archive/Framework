@@ -33,15 +33,15 @@ class comercio_venda_ComposicaoControle extends comercio_venda_Controle
      * @version 0.4.2
      */
     public function Main() {
-        return false;
+        return FALSE;
     }
-    static function Endereco_Composicao($true=true) {
+    static function Endereco_Composicao($true= TRUE ) {
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
         $titulo = __('Cardápio');
         $link = 'comercio_venda/Composicao/Composicoes';
-        if ($true===true) {
-            $_Controle->Tema_Endereco($titulo,$link);
+        if ($true === TRUE) {
+            $_Controle->Tema_Endereco($titulo, $link);
         } else {
             $_Controle->Tema_Endereco($titulo);
         }
@@ -51,8 +51,8 @@ class comercio_venda_ComposicaoControle extends comercio_venda_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Composicoes($export=false) {
-        self::Endereco_Composicao(false);
+    public function Composicoes($export = FALSE) {
+        self::Endereco_Composicao(FALSE);
         $i = 0;
         // BOTAO IMPRIMIR / ADD
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
@@ -72,7 +72,7 @@ class comercio_venda_ComposicaoControle extends comercio_venda_Controle
         $composicoes = $this->_Modelo->db->Sql_Select('Comercio_Venda_Composicao');
         $produtos_usados = $this->_Modelo->db->Sql_Select('Comercio_Venda_Composicao_Produtos');
         $produtos_usados_array = Array();
-        if ($produtos_usados!==false && !empty($produtos_usados)) {
+        if ($produtos_usados !== FALSE && !empty($produtos_usados)) {
             if (is_object($produtos_usados)) $produtos_usados = Array(0=>$produtos_usados);
             reset($produtos_usados);
             foreach ($produtos_usados as $indice=>&$valor) {
@@ -84,12 +84,12 @@ class comercio_venda_ComposicaoControle extends comercio_venda_Controle
                 $produtos_usados_array[$valor->composicao] .= '<b>'.$valor->produto2.'</b> (x'.$valor->qnt.')';
             }
         }
-        if ($composicoes!==false && !empty($composicoes)) {
+        if ($composicoes !== FALSE && !empty($composicoes)) {
             if (is_object($composicoes)) $composicoes = Array(0=>$composicoes);
             reset($composicoes);
             foreach ($composicoes as $indice=>&$valor) {
                 $tabela['#Id'][$i]       = '#'.$valor->id;
-                if ($valor->foto==='' || $valor->foto===false) {
+                if ($valor->foto==='' || $valor->foto === FALSE) {
                     $foto = WEB_URL.'img'.US.'icons'.US.'clientes.png';
                 } else {
                     $foto = $valor->foto;
@@ -103,12 +103,12 @@ class comercio_venda_ComposicaoControle extends comercio_venda_Controle
                     $tabela['Produtos Usados'][$i] = __('Nenhum');
                 }
                 $tabela['Preço'][$i]     = $valor->preco;
-                $tabela['Funções'][$i]   = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Item do Cardápio'        ,'comercio_venda/Composicao/Composicoes_Edit/'.$valor->id.'/'    ,'')).
+                $tabela['Funções'][$i]   = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Item do Cardápio'        ,'comercio_venda/Composicao/Composicoes_Edit/'.$valor->id.'/'    , '')).
                                            $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Item do Cardápio'       ,'comercio_venda/Composicao/Composicoes_Del/'.$valor->id.'/'     ,__('Deseja realmente deletar esse item do Cardápio ?')));
                 ++$i;
             }
-            if ($export!==false) {
-                self::Export_Todos($export,$tabela, 'Comercio Vendas - Cardápio');
+            if ($export !== FALSE) {
+                self::Export_Todos($export, $tabela, 'Comercio Vendas - Cardápio');
             } else {
                 $this->_Visual->Show_Tabela_DataTable($tabela);
             }
@@ -128,7 +128,7 @@ class comercio_venda_ComposicaoControle extends comercio_venda_Controle
      * @version 0.4.2
      */
     public function Composicoes_Add() {
-        self::Endereco_Composicao(true);
+        self::Endereco_Composicao(TRUE);
         // Carrega Config
         $titulo1    = __('Adicionar Cardápio');
         $titulo2    = __('Salvar Cardápio');
@@ -137,7 +137,7 @@ class comercio_venda_ComposicaoControle extends comercio_venda_Controle
         $formlink   = 'comercio_venda/Composicao/Composicoes_Add2/';
         
         $campos = Comercio_Venda_Composicao_DAO::Get_Colunas();
-        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos);
+        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1, $titulo2, $formlink, $formid, $formbt, $campos);
     }
     /**
      * 
@@ -153,7 +153,7 @@ class comercio_venda_ComposicaoControle extends comercio_venda_Controle
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = __('Cardápio cadastrado com sucesso.');
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
     }
     /**
      * 
@@ -162,16 +162,16 @@ class comercio_venda_ComposicaoControle extends comercio_venda_Controle
      * @version 0.4.2
      */
     public function Composicoes_Edit($id) {
-        self::Endereco_Composicao(true);
+        self::Endereco_Composicao(TRUE);
         // Carrega Config
         $titulo1    = 'Editar Cardápio (#'.$id.')';
         $titulo2    = __('Alteração de Cardápio');
         $formid     = 'form_Sistema_AdminC_ComposicaoEdit';
         $formbt     = __('Alterar Cardápio');
         $formlink   = 'comercio_venda/Composicao/Composicoes_Edit2/'.$id;
-        $editar     = Array('Comercio_Venda_Composicao',$id);
+        $editar     = Array('Comercio_Venda_Composicao', $id);
         $campos = Comercio_Venda_Composicao_DAO::Get_Colunas();
-        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos,$editar);
+        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1, $titulo2, $formlink, $formid, $formbt, $campos, $editar);
     }
     /**
      * 
@@ -182,12 +182,12 @@ class comercio_venda_ComposicaoControle extends comercio_venda_Controle
      */
     public function Composicoes_Edit2($id) {
         $titulo     = __('Cardápio Editado com Sucesso');
-        $dao        = Array('Comercio_Venda_Composicao',$id);
+        $dao        = Array('Comercio_Venda_Composicao', $id);
         $funcao     = '$this->Composicoes();';
         $sucesso1   = __('Cardápio Alterado com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);      
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);      
     }
     /**
      * 
@@ -204,7 +204,7 @@ class comercio_venda_ComposicaoControle extends comercio_venda_Controle
         $linha = $this->_Modelo->db->Sql_Select('Comercio_Venda_Composicao', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($linha);
         // Mensagem
-    	if ($sucesso===true) {
+    	if ($sucesso === TRUE) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletada'),
@@ -217,12 +217,12 @@ class comercio_venda_ComposicaoControle extends comercio_venda_Controle
                 "mgs_secundaria" => __('Erro')
             );
         }
-        $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+        $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
         
         $this->Composicoes();
         
         $this->_Visual->Json_Info_Update('Titulo', __('Cardápio deletado com Sucesso'));  
-        $this->_Visual->Json_Info_Update('Historico', false);  
+        $this->_Visual->Json_Info_Update('Historico', FALSE);  
     }
 }
 ?>

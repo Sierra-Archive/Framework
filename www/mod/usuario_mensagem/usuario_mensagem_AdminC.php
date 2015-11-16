@@ -32,7 +32,7 @@ class usuario_mensagem_AdminControle extends usuario_mensagem_Controle
     */
     public function Main() {
         \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'usuario_mensagem/Admin/Mensagem/');
-        return false;
+        return FALSE;
     }
     public function Mensagem() {
         if ($this->_Acl->Usuario_GetID()!=0) {
@@ -40,9 +40,9 @@ class usuario_mensagem_AdminControle extends usuario_mensagem_Controle
             //$this->Mensagem_formulario();
             // ORGANIZA E MANDA CONTEUDO
             $this->_Visual->Json_Info_Update('Titulo', __('Tickets'));  
-            return true;
+            return TRUE;
         }
-        return false;
+        return FALSE;
     }
     public function Mensagem_Editar($mensagem=0) {
         $mensagem = (int) $mensagem;
@@ -51,7 +51,7 @@ class usuario_mensagem_AdminControle extends usuario_mensagem_Controle
     }
     static function Mensagem_Editar_Static($mensagem) {
         $mensagem = (int) $mensagem;
-        usuario_mensagem_SuporteControle::Endereco_Suporte_Listar(true,$mensagem);
+        usuario_mensagem_SuporteControle::Endereco_Suporte_Listar(true, $mensagem);
   
         // Carrega campos e retira os que nao precisam
         $campos = Usuario_Mensagem_DAO::Get_Colunas();
@@ -69,7 +69,7 @@ class usuario_mensagem_AdminControle extends usuario_mensagem_Controle
         $formbt     = __('Alterar Edição');
         $formlink   = 'usuario_mensagem/Suporte/Mensagem_inserir';
         $editar     = $editar;
-        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos,$editar);
+        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1, $titulo2, $formlink, $formid, $formbt, $campos, $editar);
    
     }
     /**
@@ -87,7 +87,7 @@ class usuario_mensagem_AdminControle extends usuario_mensagem_Controle
         $mensagem = $this->_Modelo->db->Sql_Select('Usuario_Mensagem', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($mensagem);
         // Mensagem
-    	if ($sucesso===true) {
+    	if ($sucesso === TRUE) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
@@ -100,12 +100,12 @@ class usuario_mensagem_AdminControle extends usuario_mensagem_Controle
                 "mgs_secundaria" => __('Erro')
             );
         }
-        $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+        $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
         
         $this->Mensagem();
         
         $this->_Visual->Json_Info_Update('Titulo', __('Mensagem deletada com Sucesso'));  
-        $this->_Visual->Json_Info_Update('Historico', false);  
+        $this->_Visual->Json_Info_Update('Historico', FALSE);  
     }
 }
 ?>

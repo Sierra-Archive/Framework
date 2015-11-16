@@ -5,7 +5,7 @@ final Class Gramatica_Preposicao_DAO extends Framework\App\Dao
     protected $palavra;
     protected $tipo;
     
-    protected static $objetocarregado     = false;     protected static $mysql_colunas       = false;     protected static $mysql_outside       = Array();     protected static $mysql_inside        = Array(); public function __construct() {  parent::__construct(); } public static function Get_Nome() {
+    protected static $objetocarregado     = FALSE;     protected static $mysql_colunas       = FALSE;     protected static $mysql_outside       = Array();     protected static $mysql_inside        = Array(); public function __construct() {  parent::__construct(); } public static function Get_Nome() {
         return MYSQL_GRAMATICA_PREPOSICAO;
     }
     /**
@@ -13,7 +13,7 @@ final Class Gramatica_Preposicao_DAO extends Framework\App\Dao
      * @return string
      */
     public static function Permissao_Copia() {
-        return false;
+        return FALSE;
     }
     public static function Get_Sigla() {
         return 'GP';
@@ -36,7 +36,7 @@ final Class Gramatica_Preposicao_DAO extends Framework\App\Dao
                 'mysql_titulo'      => 'gramatica',
                 'mysql_tipovar'     => 'int', //varchar, int, 
                 'mysql_tamanho'     => 11,
-                'mysql_null'        => TRUE, // true NULL, false, NOT NULL
+                'mysql_null'        => TRUE, // true NULL, FALSE, NOT NULL
                 'mysql_default'     => FALSE,//false -> NONE, outro -> default
                 'mysql_primary'     => TRUE, // chave primaria
                 'mysql_estrangeira' => 'G.id|G.nome', // chave estrangeira     ligacao|apresentacao|condicao

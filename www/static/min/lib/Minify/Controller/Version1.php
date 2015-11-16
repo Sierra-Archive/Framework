@@ -66,7 +66,7 @@ class Minify_Controller_Version1 extends Minify_Controller_Base {
         $prependAbsPaths = $_SERVER['DOCUMENT_ROOT'];
         
         $goodFiles = array();
-        $hasBadSource = false;
+        $hasBadSource = FALSE;
         
         $allowDirs = isset($options['allowDirs'])
             ? $options['allowDirs']
@@ -87,7 +87,7 @@ class Minify_Controller_Version1 extends Minify_Controller_Base {
                 );
                 $this->sources[] = new Minify_Source($srcOptions);
             } else {
-                $hasBadSource = true;
+                $hasBadSource = TRUE;
                 break;
             }
         }
@@ -95,7 +95,7 @@ class Minify_Controller_Version1 extends Minify_Controller_Base {
             $this->sources = array();
         }
         if (! MINIFY_REWRITE_CSS_URLS) {
-            $options['rewriteCssUris'] = false;
+            $options['rewriteCssUris'] = FALSE;
         }
         return $options;
     }

@@ -6,12 +6,12 @@ require(dirname(__FILE__).'/fpdf.php');
 
 class Pdf extends FPDF
 {
-    private $titulo = false;
-    private $logo = false;
-    function __construct($titulo,$logo=false,$orientation='P', $unit='mm', $size='A4')
+    private $titulo = FALSE;
+    private $logo = FALSE;
+    function __construct($titulo, $logo = FALSE, $orientation='P', $unit='mm', $size='A4')
     {
 	// Call parent constructor
-	$this->FPDF($orientation,$unit,$size);
+	$this->FPDF($orientation, $unit, $size);
         
 	// Initialization
         $this->titulo = utf8_decode($titulo);
@@ -19,7 +19,7 @@ class Pdf extends FPDF
         $this->SetAuthor(utf8_decode('Ricardo Rebello Sierra'));
         $this->SetFont('Arial', '',10);
         // Logo Caso Solicitado
-        if ($logo!==false) {
+        if ($logo !== FALSE) {
             $this->logo = $logo;
         } else {
             $this->logo = ARQ_URL.'_Sistema/logo.png';
@@ -35,7 +35,7 @@ class Pdf extends FPDF
         // Move to the right
         $this->Cell(80);
         // Title
-        $this->Cell(strlen($this->titulo)*4,10,$this->titulo,1,0,'C');
+        $this->Cell(strlen($this->titulo)*4,10, $this->titulo,1,0,'C');
         // Line break
         $this->Ln(20);
     }
@@ -75,7 +75,7 @@ class Pdf extends FPDF
             $this->Ln();
         }
         // Closing line
-        $this->Cell($colunas*$largura,0,'', 'T');
+        $this->Cell($colunas*$largura,0, '', 'T');
     }
 
     // Better table
@@ -85,19 +85,19 @@ class Pdf extends FPDF
             $w = array(40, 35, 40, 45);
             // Header
             for($i=0;$i<count($header);$i++)
-                    $this->Cell($w[$i],7,$header[$i],1,0,'C');
+                    $this->Cell($w[$i],7, $header[$i],1,0,'C');
             $this->Ln();
             // Data
             foreach($data as $row)
             {
-                    $this->Cell($w[0],6,$row[0],'LR');
-                    $this->Cell($w[1],6,$row[1],'LR');
+                    $this->Cell($w[0],6, $row[0],'LR');
+                    $this->Cell($w[1],6, $row[1],'LR');
                     $this->Cell($w[2],6,number_format($row[2]),'LR',0,'R');
                     $this->Cell($w[3],6,number_format($row[3]),'LR',0,'R');
                     $this->Ln();
             }
             // Closing line
-            $this->Cell(array_sum($w),0,'', 'T');
+            $this->Cell(array_sum($w),0, '', 'T');
     }
 
     // Colored table
@@ -112,24 +112,24 @@ class Pdf extends FPDF
             // Header
             $w = array(40, 35, 40, 45);
             for($i=0;$i<count($header);$i++)
-                    $this->Cell($w[$i],7,$header[$i],1,0,'C',true);
+                    $this->Cell($w[$i],7, $header[$i],1,0,'C',TRUE);
             $this->Ln();
             // Color and font restoration
             $this->SetFillColor(224,235,255);
             $this->SetTextColor(0);
             $this->SetFont('');
             // Data
-            $fill = false;
+            $fill = FALSE;
             foreach($data as $row)
             {
-                    $this->Cell($w[0],6,$row[0],'LR',0,'L',$fill);
-                    $this->Cell($w[1],6,$row[1],'LR',0,'L',$fill);
-                    $this->Cell($w[2],6,number_format($row[2]),'LR',0,'R',$fill);
-                    $this->Cell($w[3],6,number_format($row[3]),'LR',0,'R',$fill);
+                    $this->Cell($w[0],6, $row[0],'LR',0,'L', $fill);
+                    $this->Cell($w[1],6, $row[1],'LR',0,'L', $fill);
+                    $this->Cell($w[2],6,number_format($row[2]),'LR',0,'R', $fill);
+                    $this->Cell($w[3],6,number_format($row[3]),'LR',0,'R', $fill);
                     $this->Ln();
                     $fill = !$fill;
             }
             // Closing line
-            $this->Cell(array_sum($w),0,'', 'T');
+            $this->Cell(array_sum($w),0, '', 'T');
     }
 }

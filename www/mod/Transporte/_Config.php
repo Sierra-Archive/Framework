@@ -5,7 +5,7 @@ $config_Modulo = function () {
         'Descrição'                 =>  'Módulo Feito para o Transporte de Caminhoneiros, cadastro de Transportadoras, armazéns e empresas associadas.',
         'System_Require'            =>  '3.1.0',
         'Version'                   =>  '3.1.1',
-        'Dependencias'              =>  false,
+        'Dependencias'              =>  FALSE,
     );
 };
 $config_Menu = function () {

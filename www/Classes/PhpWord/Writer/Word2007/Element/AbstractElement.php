@@ -47,7 +47,7 @@ abstract class AbstractElement
      *
      * @var bool
      */
-    protected $withoutP = false;
+    protected $withoutP = FALSE;
 
     /**
      * Write element
@@ -61,7 +61,7 @@ abstract class AbstractElement
      * @param \Framework\Classes\PhpWord\Element\AbstractElement $element
      * @param bool $withoutP
      */
-    public function __construct(XMLWriter $xmlWriter, Element $element, $withoutP = false)
+    public function __construct(XMLWriter $xmlWriter, Element $element, $withoutP = FALSE)
     {
         $this->xmlWriter = $xmlWriter;
         $this->element = $element;
@@ -152,7 +152,7 @@ abstract class AbstractElement
 
         $styleWriter = new $class($this->xmlWriter, $styleObject);
         if (method_exists($styleWriter, 'setIsInline')) {
-            $styleWriter->setIsInline(true);
+            $styleWriter->setIsInline(TRUE);
         }
 
         /** @var \Framework\Classes\PhpWord\Writer\Word2007\Style\AbstractStyle $styleWriter */

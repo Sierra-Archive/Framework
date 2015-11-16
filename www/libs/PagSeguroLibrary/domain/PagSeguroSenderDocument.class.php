@@ -97,6 +97,6 @@ class PagSeguroSenderDocument
         $document['type'] = $this->type;
         $document['value'] = $this->value;
 
-        return "PagSeguroSenderDocument: " . var_export($document, true);
+        return "PagSeguroSenderDocument: " . var_export($document, TRUE);
     }
 }

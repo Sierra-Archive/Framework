@@ -113,7 +113,7 @@ class Minify_YUICompressor {
                 ,'disable-optimizations' => false
 	            ,'stack-size' => ''
             )
-            ,$userOptions
+            , $userOptions
         );
         $cmd = self::$javaExecutable
 	         . (!empty($o['stack-size'])

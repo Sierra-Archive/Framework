@@ -53,12 +53,12 @@ class usuario_veiculo_AdminModelo extends usuario_veiculo_Modelo
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function veiculos_inserir($categoria,$ano,$modelo,$marca,$cc,$valor1,$valor2,$valor3,$franquia,$obs) {
+    public function veiculos_inserir($categoria, $ano, $modelo, $marca, $cc, $valor1, $valor2, $valor3, $franquia, $obs) {
         global $config;
 
         // verifica se contem subcategoria
         if (stripos($categoria, '-')) {
-            $categoria = explode('-',$categoria);
+            $categoria = explode('-', $categoria);
             $subcat = $categoria[1];
             $categoria = $categoria[0];
         } else {
@@ -84,12 +84,12 @@ class usuario_veiculo_AdminModelo extends usuario_veiculo_Modelo
      * @param type $obs
      * @return int
      */
-    public function veiculos_alterar($id,$categoria,$ano,$modelo,$marca,$cc,$valor1,$valor2,$valor3,$franquia,$obs) {
+    public function veiculos_alterar($id, $categoria, $ano, $modelo, $marca, $cc, $valor1, $valor2, $valor3, $franquia, $obs) {
         global $config;
 
         // verifica se contem subcategoria
         if (stripos($categoria, '-')) {
-            $categoria = explode('-',$categoria);
+            $categoria = explode('-', $categoria);
             $subcat = $categoria[1];
             $categoria = $categoria[0];
         } else {
@@ -99,7 +99,7 @@ class usuario_veiculo_AdminModelo extends usuario_veiculo_Modelo
         
         return 1;
     }
-    public function Veiculos_Upload_Alterar($id,$ext) {
+    public function Veiculos_Upload_Alterar($id, $ext) {
         $id = (int) $id;
         if (!isset($id) || !is_int($id) || $id==0) return 0;
         $this->db->query('UPDATE '.MYSQL_USUARIO_VEICULO.' SET foto=\''.$ext.'\' WHERE deletado!=1 AND id='.$id);

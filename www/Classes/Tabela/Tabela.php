@@ -40,7 +40,7 @@ class Tabela
                 'Campos'          => $array
             )
         );
-        $this->cabeca .= $this->_Visual->renderizar_bloco('template_tabela',$config);
+        $this->cabeca .= $this->_Visual->renderizar_bloco('template_tabela', $config);
     }
     /**
     * Add Corpo de uma tabela
@@ -59,13 +59,13 @@ class Tabela
     */
     public function addcorpo($array) {
         if (!is_array($array)) {
-            return false;
+            return FALSE;
         }
         // Percorre Array
         reset($array);
         while (key($array) !== null) {
             $current = current($array);
-            if (!isset($current["class"]) || $current["class"]===false) {
+            if (!isset($current["class"]) || $current["class"] === FALSE) {
                 $array[key($array)]["class"] = '';
             }
             next($array);
@@ -77,7 +77,7 @@ class Tabela
                 //'Classes'       => $class,
             )
         );
-        $this->corpo .= $this->_Visual->renderizar_bloco('template_tabela',$config);
+        $this->corpo .= $this->_Visual->renderizar_bloco('template_tabela', $config);
     }
     /**
     * Retorna a tabela
@@ -101,7 +101,7 @@ class Tabela
                 'body'          => $this->corpo
             )
         );
-        return $this->_Visual->renderizar_bloco('template_tabela',$config);
+        return $this->_Visual->renderizar_bloco('template_tabela', $config);
     }
 }
 ?>

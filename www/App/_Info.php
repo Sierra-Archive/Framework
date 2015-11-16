@@ -20,8 +20,8 @@ define('SYSTEM_VERSION', '2.14.0');
         $tabela[ Nome_da_Coluna ][ LINHA[0;+oo) ][ coluna_LINHA_conteudo ]
         html da tabela é add ao bloco 
  * 
- * \Framework\App\Visual::Blocar($txt,$txt2=false);
- *      Caso txt2==false Vai ser uma Janela unica..
+ * \Framework\App\Visual::Blocar($txt, $txt2 = FALSE);
+ *      Caso txt2 == FALSE Vai ser uma Janela unica..
  *      Se nao vai ser divida em tabs
  *      return Array (   TIPO{simples,abas}  ,    CONTEUDO  );
  * 

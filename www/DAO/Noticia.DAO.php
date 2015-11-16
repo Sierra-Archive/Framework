@@ -10,7 +10,7 @@ final Class Noticia_DAO extends Framework\App\Dao
     protected $destaque;
     protected $status;
     
-    protected static $objetocarregado     = false;     protected static $mysql_colunas       = false;     protected static $mysql_outside       = Array();     protected static $mysql_inside        = Array(); public function __construct() {  parent::__construct(); } public static function Get_Nome() {
+    protected static $objetocarregado     = FALSE;     protected static $mysql_colunas       = FALSE;     protected static $mysql_outside       = Array();     protected static $mysql_inside        = Array(); public function __construct() {  parent::__construct(); } public static function Get_Nome() {
         return MYSQL_NOTICIAS;
     }
     /**
@@ -18,7 +18,7 @@ final Class Noticia_DAO extends Framework\App\Dao
      * @return string
      */
     public static function Permissao_Copia() {
-        return false;
+        return FALSE;
     }
     public static function Get_Sigla() {
         return 'N';
@@ -55,7 +55,7 @@ final Class Noticia_DAO extends Framework\App\Dao
                 'mysql_titulo'      => 'categoria',
                 'mysql_tipovar'     => 'int', //varchar, int, 
                 'mysql_tamanho'     => 11,
-                'mysql_null'        => TRUE, // true NULL, false, NOT NULL
+                'mysql_null'        => TRUE, // true NULL, FALSE, NOT NULL
                 'mysql_default'     => FALSE,//false -> NONE, outro -> default
                 'mysql_primary'     => FALSE, // chave primaria
                 'mysql_estrangeira' => 'C.id|C.nome|CA.mod_acc=noticia', // chave estrangeira     ligacao|apresentacao|condicao
@@ -106,7 +106,7 @@ final Class Noticia_DAO extends Framework\App\Dao
                 'TabelaLinkada'     => Array(
                     'Pai'               => 'N', // TABELA que vai manipular a conexao
                     'Tabela'            => 'NR', // TABELA de LINK A SER CONECTADA
-                    'Preencher'         => Array( // CAso exista e != de false, preenche automaticamente esses campos
+                    'Preencher'         => Array( // CAso exista e != de FALSE, preenche automaticamente esses campos
                         'tabela'            => 'Musica_Album_Artista', // Campo e Resultado
                     ),
                     'valor_padrao'      => FALSE, // id do pai

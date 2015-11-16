@@ -56,7 +56,7 @@ class SierraTec_Manutencao {
         foreach($modulos as &$valor) {
             /*var_dump($dependencia_dao);
             echo "\n\nProximo:".$valor;*/
-            $dependencia_dao = array_merge($dependencia_dao,$this->Atualiza_Dependencia_Banco_De_Dados(MOD_PATH.$valor.DS));
+            $dependencia_dao = array_merge($dependencia_dao, $this->Atualiza_Dependencia_Banco_De_Dados(MOD_PATH.$valor.DS));
         }
         //var_dump($dependencia_dao);
         $this->Alterar_Config('TEMP_DEPENDENCIA_TABELAS',serialize($dependencia_dao),'_temp');
@@ -88,7 +88,7 @@ class SierraTec_Manutencao {
             // Ignora Propria Pasta, pasta anterior e Arquivo Autoload
             if ($arquivo!='..' && $arquivo!='.' && $arquivo!='AutoLoad.php') {
                 if (is_dir($dir.$arquivo)) {
-                    $dependencia_dao = array_merge($dependencia_dao,$this->Atualiza_Dependencia_Banco_De_Dados($dir.$arquivo.DS));
+                    $dependencia_dao = array_merge($dependencia_dao, $this->Atualiza_Dependencia_Banco_De_Dados($dir.$arquivo.DS));
                 } else {
                     $conteudo = file_get_contents($dir.$arquivo);
                     // PRocura Ocorrencias de COnexao
@@ -145,7 +145,7 @@ class SierraTec_Manutencao {
         $tabelas = &\Framework\App\Conexao::$tabelas;
         foreach($tabelas as &$valor) {
             if (in_array($valor['nome'], $dependencia_dao_CONSTANTE)) {
-                //var_dump($valor['nome'],$valor['class']); echo "\n\n";
+                //var_dump($valor['nome'], $valor['class']); echo "\n\n";
                 $dependencia_dao[$valor['class']] = $valor['class'];
             }
         }
@@ -189,7 +189,7 @@ class SierraTec_Manutencao {
      * @param type $config
      * @return type
      */
-    public function Alterar_Config($nome,$valor=false,$config='config') {
+    public function Alterar_Config($nome, $valor = FALSE, $config='config') {
         
         // Carrega CONFIG
         $arq = INI_PATH.SRV_NAME.DS.$config.'.php'; 
@@ -197,18 +197,18 @@ class SierraTec_Manutencao {
             chmod ($arq, 0777);
             $conteudo = file_get_contents($arq);
             // Caso valor seja falso, apenas retorna valor
-            if ($valor===false) {
-                return $this->Cod_Atualiza_Constante($conteudo, $nome,$valor);
+            if ($valor === FALSE) {
+                return $this->Cod_Atualiza_Constante($conteudo, $nome, $valor);
             } else {
                 // SE nao, pega o novo conteudo e altera no arquivo.
-                $conteudo = $this->Cod_Atualiza_Constante($conteudo, $nome,$valor);
+                $conteudo = $this->Cod_Atualiza_Constante($conteudo, $nome, $valor);
             }
             
             // Salvar
             file_put_contents($arq, $conteudo);
                     
             //Retorna
-            return true;
+            return TRUE;
         } else {
             $arquivo = fopen ($arq, 'w');
             if (is_int($valor)) {
@@ -315,11 +315,11 @@ class SierraTec_Manutencao {
      * @param type $novo Nome antigo
      * @param type $antigo Nome Novo
      */
-    public function Tranferencia_DB_Servidor($novo,$antigo=false) {
+    public function Tranferencia_DB_Servidor($novo, $antigo = FALSE) {
         $tabelas = &\Framework\App\Conexao::$tabelas;
         foreach($tabelas as $indice=>&$valor) {
-            if ($valor['static']===false) {
-                if ($antigo!==false) {
+            if ($valor['static'] === FALSE) {
+                if ($antigo !== FALSE) {
                     $this->_Conexao->query('UPDATE '.$indice.' SET servidor=\''.$novo.'\' WHERE servidor=\''.$antigo.'\'');
                 } else {
                     $this->_Conexao->query('UPDATE '.$indice.' SET servidor=\''.$novo.'\'');
@@ -340,16 +340,16 @@ class SierraTec_Manutencao {
             $qnt = Array();
             $qnt['deupau'] = 0;
             $sucesso = 0;
-            $foi = false;
+            $foi = FALSE;
             // Acrescentar Categoria em Todos os Financeiros
             $atualizar = Array();
-            $financeiro = $this->_Conexao->Sql_Select('Financeiro_Pagamento_Interno',false,0,''/*,'motivo,motivoid,categoria'*/);
+            $financeiro = $this->_Conexao->Sql_Select('Financeiro_Pagamento_Interno', FALSE,0, ''/*,'motivo,motivoid,categoria'*/);
             if (is_object($financeiro)) $financeiro = Array($financeiro);
             if (!empty($financeiro)) {
                 foreach($financeiro as $valor) {
                     $valor->categoria = (int) $valor->categoria;
                     if ($valor->motivo=='comercio_Estoque' && ($valor->categoria=='' || $valor->categoria==0 || $valor->categoria==NULL)) {
-                        $valor_motivo = $this->_Conexao->Sql_Select('Comercio_Fornecedor_Material',Array('id'=>$valor->motivoid),1,'', 'categoria');
+                        $valor_motivo = $this->_Conexao->Sql_Select('Comercio_Fornecedor_Material',Array('id'=>$valor->motivoid),1, '', 'categoria');
                         if (!is_object($valor_motivo)) {  ++$qnt['deupau']; continue;}
                         $valor->categoria = $valor_motivo->categoria;
                         $foi = $this->_Conexao->Sql_Update($valor);
@@ -373,7 +373,7 @@ class SierraTec_Manutencao {
                     }
                 }
             }
-            var_dump($sucesso,$qnt);
+            var_dump($sucesso, $qnt);
             
             
             
@@ -414,7 +414,7 @@ class SierraTec_Manutencao {
      * @param type $codigo
      * @param type $variavel
      */
-    private function PHP_GetVariavel($codigo,$variavel) {
+    private function PHP_GetVariavel($codigo, $variavel) {
         // Procura CONSTANTES DE BANCO DE DADOS
         $achado = Array();
         $resultado = preg_match_all(
@@ -440,7 +440,7 @@ class SierraTec_Manutencao {
      * @param type $nome_Constante
      * @param type $alterarvalor
      */
-    private function Cod_Atualiza_Constante($codigo,$nome_Constante,$alterarvalor=false) {
+    private function Cod_Atualiza_Constante($codigo, $nome_Constante, $alterarvalor = FALSE) {
         // Procura CONSTANTES DE BANCO DE DADOS
         $achado = Array();
         $resultado = preg_match_all(
@@ -449,13 +449,13 @@ class SierraTec_Manutencao {
             $achado
         );
         if ($resultado > 1) {
-            $this->log('Não se pode ter duas constantes com o mesmo nome',$nome_Constante);
+            $this->log('Não se pode ter duas constantes com o mesmo nome', $nome_Constante);
         }
         
         // Caso nao tenha resultado
         if ($resultado == 0) {
             // Caso tenha valor, cria a constante
-            if ($alterarvalor!==false) {
+            if ($alterarvalor !== FALSE) {
                 if (is_bool($alterarvalor)) {
                     $resultado = 'true';
                 } else if ($alterarvalor==='false' || $alterarvalor==='falso') {
@@ -480,17 +480,17 @@ class SierraTec_Manutencao {
             $resultado = $achado[1][0];
             
             // CAso alterar valor seja falso, retorna no mesmo tipo e nao como string usando eval
-            if ($alterarvalor===false) {
+            if ($alterarvalor === FALSE) {
                 return eval('return '.$resultado.';');
             }
             
             // CAso seja inteiro, boleano ou string
-            if (strpos($resultado, '\'')!==false || strtolower($resultado)=='null') {
+            if (strpos($resultado, '\'') !== FALSE || strtolower($resultado)=='null') {
                 $tipo = 'string';
                 $resultado = '\''.$alterarvalor.'\'';
             } else if (strtolower($resultado)=='false' || strtolower($resultado)=='true') {
                 $tipo = 'boleano';
-                if ($alterarvalor===true || $alterarvalor==='true') {
+                if ($alterarvalor === TRUE || $alterarvalor==='true') {
                     $resultado = 'true';
                 } else if ($alterarvalor==='false' || $alterarvalor==='falso') {
                     $resultado = 'false';
@@ -522,7 +522,7 @@ class SierraTec_Manutencao {
     private function PHP_GetClasses_Variaveis($codigo) {
         
     }
-    public static function PHP_GetClasses_Metodos($codigo,$privacidade='*') {
+    public static function PHP_GetClasses_Metodos($codigo, $privacidade='*') {
         $metodos = Array();
         $achado = Array();
         
@@ -556,9 +556,9 @@ class SierraTec_Manutencao {
                 );
                 
                 if (isset($achado[3][$indice]) && $achado[3][$indice]!=='') {
-                    $argumentos = explode(', ',$achado[3][$indice]);
+                    $argumentos = explode(', ', $achado[3][$indice]);
                     foreach($argumentos as $valor2) {
-                        $argumentos_item = explode('=',$valor2);
+                        $argumentos_item = explode('=', $valor2);
                         if (isset($argumentos_item[1])) {
                             $metodos[$i]['Args'][] = Array(
                                 'Nome'          => $valor,
@@ -601,7 +601,7 @@ class SierraTec_Manutencao {
         //Procura DAO SENDO USADO
         foreach($metodos as $valor) {
             foreach($tabelas as $valor2) {
-                $this->Cod_Busca_Valor($valor,$valor2);
+                $this->Cod_Busca_Valor($valor, $valor2);
             }
             $this->Cod_Busca_ClassesUsadas($valor);
             $this->Cod_Busca_MetodosUsados($valor);
@@ -610,7 +610,7 @@ class SierraTec_Manutencao {
     /**
      * Busca Por uma string ou um numero, ou qlqr outra coisa
      */
-    public function Cod_Busca_Valor($cod,$valor) {
+    public function Cod_Busca_Valor($cod, $valor) {
         if (is_string($valor)) {
             $achado = Array();
             $resultado = preg_match_all(
@@ -623,10 +623,10 @@ class SierraTec_Manutencao {
     /**
      * Busca Por uma string ou um numero, ou qlqr outra coisa
      */
-    public function Cod_Busca_ClassesUsadas($cod,$valor) {
+    public function Cod_Busca_ClassesUsadas($cod, $valor) {
         // new até ;
     }
-    public function Cod_Busca_MetodosUsados($cod,$valor) {
+    public function Cod_Busca_MetodosUsados($cod, $valor) {
         // Quando Tiver :: do começo da linha até o proximo ;
         
         // QUando Tiver -> dentro da expressao $ até ;

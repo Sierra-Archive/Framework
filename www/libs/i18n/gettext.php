@@ -40,8 +40,8 @@ class gettext_reader {
    //private:
   var $BYTEORDER = 0;        // 0: low endian, 1: big endian
   var $STREAM = NULL;
-  var $short_circuit = false;
-  var $enable_cache = false;
+  var $short_circuit = FALSE;
+  var $enable_cache = FALSE;
   var $originals = NULL;      // offset of original table
   var $translations = NULL;    // offset of translation table
   var $pluralheader = NULL;    // cache header field for plural forms
@@ -98,10 +98,10 @@ class gettext_reader {
    * @param object Reader the StreamReader object
    * @param boolean enable_cache Enable or disable caching of strings (default on)
    */
-  function gettext_reader($Reader, $enable_cache = true) {
+  function gettext_reader($Reader, $enable_cache = TRUE) {
     // If there isn't a StreamReader, turn on short circuit mode.
     if (! $Reader || isset($Reader->error) ) {
-      $this->short_circuit = true;
+      $this->short_circuit = TRUE;
       return;
     }
 
@@ -119,7 +119,7 @@ class gettext_reader {
       $this->BYTEORDER = 0;
     } else {
       $this->error = 1; // not MO file
-      return false;
+      return FALSE;
     }
 
     // FIXME: Do we care about revision? We should.
@@ -351,9 +351,9 @@ class gettext_reader {
    */
   function select_string($n) {
     $string = $this->get_plural_forms();
-    $string = str_replace('nplurals',"\$total",$string);
-    $string = str_replace("n",$n,$string);
-    $string = str_replace('plural',"\$plural",$string);
+    $string = str_replace('nplurals',"\$total", $string);
+    $string = str_replace("n", $n, $string);
+    $string = str_replace('plural',"\$plural", $string);
 
     $total = 0;
     $plural = 0;

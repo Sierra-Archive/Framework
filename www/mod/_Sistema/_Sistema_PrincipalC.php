@@ -15,9 +15,9 @@ class _Sistema_PrincipalControle extends _Sistema_Controle
      */
     public function Home() {
         $tempo = new \Framework\App\Tempo('HOME');   
-        $this->layoult_endereco_alterado = true;
+        $this->layoult_endereco_alterado = TRUE;
         $this->layoult_endereco = Array(
-            Array(__('Página Inicial'),false)
+            Array(__('Página Inicial'), FALSE)
         );
         // Carrega Conteudo dos Modulos
         foreach($this->ModulosHome as $value) {
@@ -37,8 +37,8 @@ class _Sistema_PrincipalControle extends _Sistema_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Busca($busca=false) {
-        if ($busca===false) {
+    public function Busca($busca = FALSE) {
+        if ($busca === FALSE) {
             if (isset($_POST['busca'])) {
                 $busca = \Framework\App\Conexao::anti_injection($_POST['busca']);
             } else
@@ -51,7 +51,7 @@ class _Sistema_PrincipalControle extends _Sistema_Controle
         foreach($this->ModulosHome as $value) {
             if ($value!='_Sistema') {
                 eval('$retorno = '.$value.'_Principal::Busca($this, $this->_Modelo, $this->_Visual, $busca);');
-                if ($retorno!==false) {
+                if ($retorno !== FALSE) {
                     $i = $i + $retorno;
                 }
             }
@@ -64,17 +64,17 @@ class _Sistema_PrincipalControle extends _Sistema_Controle
         //Carrega Json
        $this->_Visual->Json_Info_Update('Titulo', __('Busca'));
     }
-    public function Relatorio($busca=false) {
+    public function Relatorio($busca = FALSE) {
         $html = '';
         $i = 0;
-        if ($busca==false) {
+        if ($busca == FALSE) {
             $busca = \Framework\App\Conexao::anti_injection($_POST['busca']);
         }
         // Carrega Buscador dos Modulos
         foreach($this->ModulosHome as $value) {
             if ($value!='_Sistema') {
                 eval('$retorno = '.$value.'_Principal::Busca($this, $this->_Modelo, $this->_Visual, $busca);');
-                if ($retorno!==false) {
+                if ($retorno !== FALSE) {
                     $i = $i + $retorno;
                 }
             }
@@ -88,17 +88,17 @@ class _Sistema_PrincipalControle extends _Sistema_Controle
         //Carrega Json
        $this->_Visual->Json_Info_Update('Titulo', __('Busca'));
     }
-    public function Estatistica($busca=false) {
+    public function Estatistica($busca = FALSE) {
         $html = '';
         $i = 0;
-        if ($busca==false) {
+        if ($busca == FALSE) {
             $busca = \Framework\App\Conexao::anti_injection($_POST['busca']);
         }
         // Carrega Buscador dos Modulos
         foreach($this->ModulosHome as $value) {
             if ($value!='_Sistema') {
                 eval('$retorno = '.$value.'_Principal::Busca($this, $this->_Modelo, $this->_Visual, $busca);');
-                if ($retorno!==false) {
+                if ($retorno !== FALSE) {
                     $i = $i + $retorno;
                 }
             }
@@ -112,7 +112,7 @@ class _Sistema_PrincipalControle extends _Sistema_Controle
         //Carrega Json
        $this->_Visual->Json_Info_Update('Titulo', __('Busca'));
     }
-    public function Release($versao=false,$melhoria='', $melhoria_qnt = 0,$bugs='',$bugs_qnt = 0) {
+    public function Release($versao = FALSE, $melhoria='', $melhoria_qnt = 0, $bugs='', $bugs_qnt = 0) {
         if ($versao<0.4) {
             $melhoria .= "\n".'- Possibilidade de Instalação no IOS: Possibilidade'; ++$melhoria_qnt;
             $bugs .= "\n".'- Responsividade: Melhoria'; ++$bugs_qnt;

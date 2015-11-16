@@ -32,12 +32,12 @@ class social_AcaoControle extends social_Controle
     * @version 0.4.2
     */
     public function Main() {
-        return false; 
+        return FALSE; 
     }
-    protected static function Endereco_Acao($true=true) {
+    protected static function Endereco_Acao($true= TRUE ) {
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
-        if ($true===true) {
+        if ($true === TRUE) {
             $_Controle->Tema_Endereco(__('Açoes'),'social/Acao/Acoes');
         } else {
             $_Controle->Tema_Endereco(__('Açoes'));
@@ -48,26 +48,26 @@ class social_AcaoControle extends social_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Acao($persona_id=false,$export=false) {
-        self::Acao_Stat($persona_id,'Unico',$export=false);
+    public function Acao($persona_id = FALSE, $export = FALSE) {
+        self::Acao_Stat($persona_id,'Unico', $export = FALSE);
         //Carrega Json
         $this->_Visual->Json_Info_Update('Titulo', __('Administrar Ações'));
     }
-    public static function Acao_Stat($persona_id=false,$tipo='Unico',$export=false) {
+    public static function Acao_Stat($persona_id = FALSE, $tipo='Unico', $export = FALSE) {
         $Registro = &\Framework\App\Registro::getInstacia();
         $Modelo = &$Registro->_Modelo;
         $Visual = &$Registro->_Visual;
         $i = 0;
-        if ($persona_id==0) $persona_id = false;
-        if ($persona_id===false) {
-            self::Endereco_Acao(false);
+        if ($persona_id==0) $persona_id = FALSE;
+        if ($persona_id === FALSE) {
+            self::Endereco_Acao(FALSE);
             $where = Array();
         } else {
             $where = Array(Array('vitima'=>$persona_id,'alvo'=>$persona_id));
         }
         
         // add botao
-        if ($persona_id===false) {
+        if ($persona_id === FALSE) {
             $extra = '/0';
         } else {
             $extra = '/'.$persona_id;
@@ -85,21 +85,21 @@ class social_AcaoControle extends social_Controle
                 'Link'      => 'social/Acao/Acao'.$extra,
             )
         )));
-        $acoes = $Modelo->db->Sql_Select('Social_Acao',$where);
-        if ($acoes!==false && !empty($acoes)) {
+        $acoes = $Modelo->db->Sql_Select('Social_Acao', $where);
+        if ($acoes !== FALSE && !empty($acoes)) {
             if (is_object($acoes)) $acoes = Array(0=>$acoes);
             reset($acoes);
             foreach ($acoes as $indice=>&$valor) {
                 $tabela['Data'][$i]             = $valor->data;
                 $tabela['Vitima'][$i]           = $valor->vitima2;
                 $tabela['Alvo'][$i]             = $valor->alvo2;
-                $tabela['Funções'][$i]          = $Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Ação'        ,'social/Acao/Acoes_Edit/'.$valor->id.'/'.$persona_id    ,'')).
+                $tabela['Funções'][$i]          = $Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Ação'        ,'social/Acao/Acoes_Edit/'.$valor->id.'/'.$persona_id    , '')).
                                                   $Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Ação'       ,'social/Acao/Acoes_Del/'.$valor->id.'/'.$persona_id     ,'Deseja realmente deletar essa Ação ?'));
                 ++$i;
             }
             $titulo = __('Listagem de Ações').' ('.$i.')';
-            if ($export!==false) {
-                self::Export_Todos($export,$tabela, $titulo);
+            if ($export !== FALSE) {
+                self::Export_Todos($export, $tabela, $titulo);
             } else {
                 $Visual->Show_Tabela_DataTable(
                     $tabela,     // Array Com a Tabela
@@ -132,7 +132,7 @@ class social_AcaoControle extends social_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Acoes_Add($persona_id=false) {
+    public function Acoes_Add($persona_id = FALSE) {
         // Carrega Config
         $titulo1    = __('Adicionar Ação');
         $titulo2    = __('Salvar Ação');
@@ -140,7 +140,7 @@ class social_AcaoControle extends social_Controle
         $formbt     = __('Salvar');
         $formlink   = 'social/Acao/Acoes_Add2/';
         $campos = Social_Acao_DAO::Get_Colunas();
-        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos);
+        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1, $titulo2, $formlink, $formid, $formbt, $campos);
     }
     /**
      * 
@@ -149,13 +149,13 @@ class social_AcaoControle extends social_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Acoes_Add2($persona_id=false) {
+    public function Acoes_Add2($persona_id = FALSE) {
         $titulo     = __('Ação adicionada com Sucesso');
         $dao        = 'Social_Acao';
         $funcao     = '$this->Acao('.$persona_id.');';
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = __('Ação cadastrado com sucesso.');
-        if ($persona_id===false) {
+        if ($persona_id === FALSE) {
             $funcao     = '$this->Acao(0);';
             $alterar    = Array();
         } else {
@@ -164,7 +164,7 @@ class social_AcaoControle extends social_Controle
             $funcao     = '$this->Acao('.$persona_id.');';
         }
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
     }
     /**
      * 
@@ -179,9 +179,9 @@ class social_AcaoControle extends social_Controle
         $formid     = 'form_Sistema_AcaoC_AçãoEdit';
         $formbt     = __('Alterar Ação');
         $formlink   = 'social/Acao/Acoes_Edit2/'.$id;
-        $editar     = Array('Social_Acao',$id);
+        $editar     = Array('Social_Acao', $id);
         $campos = Social_Acao_DAO::Get_Colunas();
-        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos,$editar);
+        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1, $titulo2, $formlink, $formid, $formbt, $campos, $editar);
     }
     /**
      * 
@@ -192,12 +192,12 @@ class social_AcaoControle extends social_Controle
      */
     public function Acoes_Edit2($id) {
         $titulo     = __('Ação editado com Sucesso');
-        $dao        = Array('Social_Acao',$id);
+        $dao        = Array('Social_Acao', $id);
         $funcao     = '$this->Acao();';
         $sucesso1   = __('Ação Alterado com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);   
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);   
     }
     /**
      * 
@@ -206,7 +206,7 @@ class social_AcaoControle extends social_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Acoes_Del($id,$persona_id=false) {
+    public function Acoes_Del($id, $persona_id = FALSE) {
         
         
     	$id = (int) $id;
@@ -214,7 +214,7 @@ class social_AcaoControle extends social_Controle
         $setor = $this->_Modelo->db->Sql_Select('Social_Acao', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($setor);
         // Mensagem
-    	if ($sucesso===true) {
+    	if ($sucesso === TRUE) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
@@ -227,12 +227,12 @@ class social_AcaoControle extends social_Controle
                 "mgs_secundaria" => __('Erro')
             );
         }
-        $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+        $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
         
         $this->Acao($persona_id);
         
         $this->_Visual->Json_Info_Update('Titulo', __('Ação deletada com Sucesso'));  
-        $this->_Visual->Json_Info_Update('Historico', false);  
+        $this->_Visual->Json_Info_Update('Historico', FALSE);  
     }
 }
 ?>

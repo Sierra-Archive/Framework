@@ -40,7 +40,7 @@ class usuario_mensagem_RelatorioModelo extends usuario_mensagem_Modelo
         );
 
         echo json_encode(
-            \Framework\Classes\Datatable::complex( $_GET, Framework\App\Registro::getInstacia()->_Conexao, $tabela, $primaryKey, $columns, null,$where )
+            \Framework\Classes\Datatable::complex( $_GET, Framework\App\Registro::getInstacia()->_Conexao, $tabela, $primaryKey, $columns, null, $where )
         );
     }
     public function Assunto($datainicial, $datafinal) {
@@ -68,15 +68,15 @@ class usuario_mensagem_RelatorioModelo extends usuario_mensagem_Modelo
                     } else {
                         return 'Novos Chamados';
                     }
-                    return false;
+                    return FALSE;
                 },
                 'search' => function( $search ) {
-                    if (strpos(strtolower('Finalizado'), strtolower($search))!=false) {
+                    if (strpos(strtolower('Finalizado'), strtolower($search))! = FALSE) {
                         return '1';
-                    } else if (strpos(strtolower('Novos Chamados'), strtolower($search))!=false) {
+                    } else if (strpos(strtolower('Novos Chamados'), strtolower($search))! = FALSE) {
                         return '0';
                     }
-                    return false;
+                    return FALSE;
                 }),
             array( 'db' => 'log_date_add', 'dt' => 5 ),
             array( 'db' => 'log_date_edit', 'dt' => 6 )/*,
@@ -85,7 +85,7 @@ class usuario_mensagem_RelatorioModelo extends usuario_mensagem_Modelo
         );
 
         echo json_encode(
-            \Framework\Classes\Datatable::complex( $_GET, Framework\App\Registro::getInstacia()->_Conexao, $tabela, $primaryKey, $columns, null,$where )
+            \Framework\Classes\Datatable::complex( $_GET, Framework\App\Registro::getInstacia()->_Conexao, $tabela, $primaryKey, $columns, null, $where )
         );
     }
     public function Esgotado($datainicial, $datafinal) {
@@ -114,7 +114,7 @@ class usuario_mensagem_RelatorioModelo extends usuario_mensagem_Modelo
         );
 
         echo json_encode(
-            \Framework\Classes\Datatable::complex( $_GET, Framework\App\Registro::getInstacia()->_Conexao, $tabela, $primaryKey, $columns, null,$where )
+            \Framework\Classes\Datatable::complex( $_GET, Framework\App\Registro::getInstacia()->_Conexao, $tabela, $primaryKey, $columns, null, $where )
         );
     }
     public function Finalizado($datainicial, $datafinal) {
@@ -142,7 +142,7 @@ class usuario_mensagem_RelatorioModelo extends usuario_mensagem_Modelo
         );
 
         echo json_encode(
-            \Framework\Classes\Datatable::complex( $_GET, Framework\App\Registro::getInstacia()->_Conexao, $tabela, $primaryKey, $columns, null,$where )
+            \Framework\Classes\Datatable::complex( $_GET, Framework\App\Registro::getInstacia()->_Conexao, $tabela, $primaryKey, $columns, null, $where )
         );
     }
     public function Origem($datainicial, $datafinal) {
@@ -178,7 +178,7 @@ class usuario_mensagem_RelatorioModelo extends usuario_mensagem_Modelo
         );
 
         echo json_encode(
-            \Framework\Classes\Datatable::complex( $_GET, Framework\App\Registro::getInstacia()->_Conexao, $tabela, $primaryKey, $columns, null,$where )
+            \Framework\Classes\Datatable::complex( $_GET, Framework\App\Registro::getInstacia()->_Conexao, $tabela, $primaryKey, $columns, null, $where )
         );
     }
     public function Produto($datainicial, $datafinal) {
@@ -201,7 +201,7 @@ class usuario_mensagem_RelatorioModelo extends usuario_mensagem_Modelo
         );
 
         echo json_encode(
-            \Framework\Classes\Datatable::complex( $_GET, Framework\App\Registro::getInstacia()->_Conexao, $tabela, $primaryKey, $columns, null,$where )
+            \Framework\Classes\Datatable::complex( $_GET, Framework\App\Registro::getInstacia()->_Conexao, $tabela, $primaryKey, $columns, null, $where )
         );
     }
     public function Qtd_Cidade($datainicial, $datafinal) {
@@ -226,7 +226,7 @@ class usuario_mensagem_RelatorioModelo extends usuario_mensagem_Modelo
         );
 
         echo json_encode(
-            \Framework\Classes\Datatable::complex( $_GET, Framework\App\Registro::getInstacia()->_Conexao, $tabela, $primaryKey, $columns, null,$where, $select_Extra, $innerjoin_Extra )
+            \Framework\Classes\Datatable::complex( $_GET, Framework\App\Registro::getInstacia()->_Conexao, $tabela, $primaryKey, $columns, null, $where, $select_Extra, $innerjoin_Extra )
         );
     }
     public function Qtd_Uf($datainicial, $datafinal) {
@@ -251,7 +251,7 @@ class usuario_mensagem_RelatorioModelo extends usuario_mensagem_Modelo
         );
 
         echo json_encode(
-            \Framework\Classes\Datatable::complex( $_GET, Framework\App\Registro::getInstacia()->_Conexao, $tabela, $primaryKey, $columns, null,$where, $select_Extra, $innerjoin_Extra )
+            \Framework\Classes\Datatable::complex( $_GET, Framework\App\Registro::getInstacia()->_Conexao, $tabela, $primaryKey, $columns, null, $where, $select_Extra, $innerjoin_Extra )
         );
     }
 }

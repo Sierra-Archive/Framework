@@ -59,7 +59,7 @@ class HTTP_Encoder {
      * 
      * @var bool
      */
-    public static $encodeToIe6 = true;
+    public static $encodeToIe6 = TRUE;
     
     
     /**
@@ -189,7 +189,7 @@ class HTTP_Encoder {
      * alias of that method to use in the Content-Encoding header (some browsers
      * call gzip "x-gzip" etc.)
      */
-    public static function getAcceptedEncoding($allowCompress = true, $allowDeflate = true)
+    public static function getAcceptedEncoding($allowCompress = true, $allowDeflate = TRUE)
     {
         // @link http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html
         
@@ -208,8 +208,8 @@ class HTTP_Encoder {
         // gzip checks (slow)
         if (preg_match(
                 '@(?:^|,)\\s*((?:x-)?gzip)\\s*(?:$|,|;\\s*q=(?:0\\.|1))@'
-                ,$ae
-                ,$m)) {
+                , $ae
+                , $m)) {
             return array('gzip', $m[1]);
         }
         if ($allowDeflate) {
@@ -226,8 +226,8 @@ class HTTP_Encoder {
         }
         if ($allowCompress && preg_match(
                 '@(?:^|,)\\s*((?:x-)?compress)\\s*(?:$|,|;\\s*q=(?:0\\.|1))@'
-                ,$ae
-                ,$m)) {
+                , $ae
+                , $m)) {
             return array('compress', $m[1]);
         }
         return array('', '');
@@ -262,7 +262,7 @@ class HTTP_Encoder {
             || ($compressionLevel == 0)
             || !extension_loaded('zlib'))
         {
-            return false;
+            return FALSE;
         }
         if ($this->_encodeMethod[0] === 'deflate') {
             $encoded = gzdeflate($this->_content, $compressionLevel);
@@ -272,14 +272,14 @@ class HTTP_Encoder {
             $encoded = gzcompress($this->_content, $compressionLevel);
         }
         if (false === $encoded) {
-            return false;
+            return FALSE;
         }
         $this->_headers['Content-Length'] = $this->_useMbStrlen
             ? (string)mb_strlen($encoded, '8bit')
             : (string)strlen($encoded);
         $this->_headers['Content-Encoding'] = $this->_encodeMethod[1];
         $this->_content = $encoded;
-        return true;
+        return TRUE;
     }
     
     /**
@@ -313,13 +313,13 @@ class HTTP_Encoder {
     public static function isBuggyIe()
     {
         if (empty($_SERVER['HTTP_USER_AGENT'])) {
-            return false;
+            return FALSE;
         }
         $ua = $_SERVER['HTTP_USER_AGENT'];
         // quick escape for non-IEs
         if (0 !== strpos($ua, 'Mozilla/4.0 (compatible; MSIE ')
             || false !== strpos($ua, 'Opera')) {
-            return false;
+            return FALSE;
         }
         // no regex = faaast
         $version = (float)substr($ua, 30);
@@ -331,5 +331,5 @@ class HTTP_Encoder {
     protected $_content = '';
     protected $_headers = array();
     protected $_encodeMethod = array('', '');
-    protected $_useMbStrlen = false;
+    protected $_useMbStrlen = FALSE;
 }

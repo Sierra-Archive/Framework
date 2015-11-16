@@ -24,19 +24,19 @@ class usuario_veiculo_Principal implements \Framework\PrincipalInterface
         //usuario_veiculo_Controle::num_Indicados($Modelo, $Visual, \Framework\App\Acl::Usuario_GetID_Static());
         self::Widgets();
     }
-    static function Busca(&$controle, &$Modelo, &$Visual,$busca) {
-        return false;
+    static function Busca(&$controle, &$Modelo, &$Visual, $busca) {
+        return FALSE;
     }
     static function Config() {
-        return false;
+        return FALSE;
     }
     
-    static function Relatorio($data_inicio,$data_final,$filtro=false) {
-        return false;
+    static function Relatorio($data_inicio, $data_final, $filtro = FALSE) {
+        return FALSE;
     }
     
-    static function Estatistica($data_inicio,$data_final,$filtro=false) {
-        return false;
+    static function Estatistica($data_inicio, $data_final, $filtro = FALSE) {
+        return FALSE;
     }
     public static function Widgets() {
         $Registro = &\Framework\App\Registro::getInstacia();
@@ -53,7 +53,7 @@ class usuario_veiculo_Principal implements \Framework\PrincipalInterface
                'laptop', 
                $equipamento_qnt, 
                'block-red', 
-               false, 
+               FALSE, 
                110
             );
         }

@@ -33,48 +33,48 @@ class comercio_servicos_InstalacaoControle extends comercio_servicos_Controle
     */
     public function Main() {
         \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'comercio_servicos/Instalacao/Btu/');
-        return false;
+        return FALSE;
     }/*
-    static function Endereco_Ar($true=true) {
+    static function Endereco_Ar($true= TRUE ) {
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
-        if ($true===true) {
+        if ($true === TRUE) {
             $_Controle->Tema_Endereco(__('Adicional de Ar'),'comercio_servicos/Instalacao/Ar');
         } else {
             $_Controle->Tema_Endereco(__('Adicional de Ar'));
         }
     }
-    static function Endereco_Gas($true=true) {
+    static function Endereco_Gas($true= TRUE ) {
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
-        if ($true===true) {
+        if ($true === TRUE) {
             $_Controle->Tema_Endereco(__('Adicional de Gás'),'comercio_servicos/Instalacao/Gas');
         } else {
             $_Controle->Tema_Endereco(__('Adicional de Gás'));
         }
     }
-    static function Endereco_Linha($true=true) {
+    static function Endereco_Linha($true= TRUE ) {
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
-        if ($true===true) {
+        if ($true === TRUE) {
             $_Controle->Tema_Endereco(__('Adicional de Linha'),'comercio_servicos/Instalacao/Linha');
         } else {
             $_Controle->Tema_Endereco(__('Adicional de Linha'));
         }
     }*/
-    static function Endereco_Btu($true=true) {
+    static function Endereco_Btu($true= TRUE ) {
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
-        if ($true===true) {
+        if ($true === TRUE) {
             $_Controle->Tema_Endereco(__('Btu'),'comercio_servicos/Instalacao/Btu');
         } else {
             $_Controle->Tema_Endereco(__('Btu'));
         }
     }
-    static function Endereco_Suporte($true=true) {
+    static function Endereco_Suporte($true= TRUE ) {
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
-        if ($true===true) {
+        if ($true === TRUE) {
             $_Controle->Tema_Endereco(__('Suporte'),'comercio_servicos/Instalacao/Suporte');
         } else {
             $_Controle->Tema_Endereco(__('Suporte'));
@@ -86,7 +86,7 @@ class comercio_servicos_InstalacaoControle extends comercio_servicos_Controle
      * @version 0.4.2
      */
     public function Btu() {
-        self::Endereco_Btu(false);
+        self::Endereco_Btu(FALSE);
         
         $tabela_colunas = Array();
         
@@ -117,7 +117,7 @@ class comercio_servicos_InstalacaoControle extends comercio_servicos_Controle
         $formbt     = __('Salvar');
         $formlink   = 'comercio_servicos/Instalacao/Btu_Add2/';
         $campos = Comercio_Servicos_Btu_DAO::Get_Colunas();
-        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos);
+        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1, $titulo2, $formlink, $formid, $formbt, $campos);
     }
     /**
      * 
@@ -133,7 +133,7 @@ class comercio_servicos_InstalacaoControle extends comercio_servicos_Controle
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = __('Btu cadastrado com sucesso.');
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
     }
     /**
      * 
@@ -149,9 +149,9 @@ class comercio_servicos_InstalacaoControle extends comercio_servicos_Controle
         $formid     = 'form_Sistema_AdminC_BtuEdit';
         $formbt     = __('Alterar Btu');
         $formlink   = 'comercio_servicos/Instalacao/Btu_Edit2/'.$id;
-        $editar     = Array('Comercio_Servicos_Btu',$id);
+        $editar     = Array('Comercio_Servicos_Btu', $id);
         $campos = Comercio_Servicos_Btu_DAO::Get_Colunas();
-        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos,$editar);
+        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1, $titulo2, $formlink, $formid, $formbt, $campos, $editar);
     }
     /**
      * 
@@ -162,12 +162,12 @@ class comercio_servicos_InstalacaoControle extends comercio_servicos_Controle
      */
     public function Btu_Edit2($id) {
         $titulo     = __('Btu editado com Sucesso');
-        $dao        = Array('Comercio_Servicos_Btu',$id);
+        $dao        = Array('Comercio_Servicos_Btu', $id);
         $funcao     = '$this->Btu();';
         $sucesso1   = __('Btu Alterado com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);   
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);   
     }
     /**
      * 
@@ -184,7 +184,7 @@ class comercio_servicos_InstalacaoControle extends comercio_servicos_Controle
         $setor = $this->_Modelo->db->Sql_Select('Comercio_Servicos_Btu', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($setor);
         // Mensagem
-    	if ($sucesso===true) {
+    	if ($sucesso === TRUE) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
@@ -197,12 +197,12 @@ class comercio_servicos_InstalacaoControle extends comercio_servicos_Controle
                 "mgs_secundaria" => __('Erro')
             );
         }
-        $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+        $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
         
         $this->Btu();
         
         $this->_Visual->Json_Info_Update('Titulo', __('Btu deletado com Sucesso'));  
-        $this->_Visual->Json_Info_Update('Historico', false);  
+        $this->_Visual->Json_Info_Update('Historico', FALSE);  
     }
     /**
      * 
@@ -210,7 +210,7 @@ class comercio_servicos_InstalacaoControle extends comercio_servicos_Controle
      * @version 0.4.2
      */
     public function Suporte() {
-        self::Endereco_Suporte(false);
+        self::Endereco_Suporte(FALSE);
         
         $tabela_colunas = Array();
         $tabela_colunas[] = __('Tipo');
@@ -238,7 +238,7 @@ class comercio_servicos_InstalacaoControle extends comercio_servicos_Controle
         $formbt     = __('Salvar');
         $formlink   = 'comercio_servicos/Instalacao/Suporte_Add2/';
         $campos = Comercio_Servicos_Suporte_DAO::Get_Colunas();
-        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos);
+        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1, $titulo2, $formlink, $formid, $formbt, $campos);
     }
     /**
      * 
@@ -254,7 +254,7 @@ class comercio_servicos_InstalacaoControle extends comercio_servicos_Controle
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = __('Suporte cadastrado com sucesso.');
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
     }
     /**
      * 
@@ -270,9 +270,9 @@ class comercio_servicos_InstalacaoControle extends comercio_servicos_Controle
         $formid     = 'form_Sistema_AdminC_SuporteEdit';
         $formbt     = __('Alterar Suporte');
         $formlink   = 'comercio_servicos/Instalacao/Suporte_Edit2/'.$id;
-        $editar     = Array('Comercio_Servicos_Suporte',$id);
+        $editar     = Array('Comercio_Servicos_Suporte', $id);
         $campos = Comercio_Servicos_Suporte_DAO::Get_Colunas();
-        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos,$editar);
+        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1, $titulo2, $formlink, $formid, $formbt, $campos, $editar);
     }
     /**
      * 
@@ -283,12 +283,12 @@ class comercio_servicos_InstalacaoControle extends comercio_servicos_Controle
      */
     public function Suporte_Edit2($id) {
         $titulo     = __('Suporte editado com Sucesso');
-        $dao        = Array('Comercio_Servicos_Suporte',$id);
+        $dao        = Array('Comercio_Servicos_Suporte', $id);
         $funcao     = '$this->Suporte();';
         $sucesso1   = __('Suporte alterado com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);   
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);   
     }
     /**
      * 
@@ -305,7 +305,7 @@ class comercio_servicos_InstalacaoControle extends comercio_servicos_Controle
         $setor = $this->_Modelo->db->Sql_Select('Comercio_Servicos_Suporte', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($setor);
         // Mensagem
-    	if ($sucesso===true) {
+    	if ($sucesso === TRUE) {
             $mensagens = array(
                 "tipo"              => 'sucesso',
                 "mgs_principal"     => __('Deletado'),
@@ -318,12 +318,12 @@ class comercio_servicos_InstalacaoControle extends comercio_servicos_Controle
                 "mgs_secundaria"    => __('Erro')
             );
         }
-        $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+        $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
         
         $this->Suporte();
         
         $this->_Visual->Json_Info_Update('Titulo', __('Suporte deletado com Sucesso'));  
-        $this->_Visual->Json_Info_Update('Historico', false);  
+        $this->_Visual->Json_Info_Update('Historico', FALSE);  
     }
 }
 ?>

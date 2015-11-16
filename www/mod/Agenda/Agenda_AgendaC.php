@@ -36,8 +36,8 @@ class Agenda_AgendaControle extends Agenda_Controle
         // ORGANIZA E MANDA CONTEUDO
         $this->_Visual->Json_Info_Update('Titulo', __('Agendas')); 
     }
-    protected function Endereco_Agenda($true=true) {
-        if ($true===true) {
+    protected function Endereco_Agenda($true= TRUE ) {
+        if ($true === TRUE) {
             $this->Tema_Endereco(__('Agendas'),'Agenda/Agenda/Agendas');
         } else {
             $this->Tema_Endereco(__('Agendas'));
@@ -51,9 +51,9 @@ class Agenda_AgendaControle extends Agenda_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Agendas($export=false) {
+    public function Agendas($export = FALSE) {
         $i = 0;
-        $this->Endereco_Agenda(false);
+        $this->Endereco_Agenda(FALSE);
         // Botao Add
         
         $tabela_colunas = Array();
@@ -67,7 +67,7 @@ class Agenda_AgendaControle extends Agenda_Controle
 
         $this->_Visual->Show_Tabela_DataTable_Massiva($tabela_colunas,'Agenda/Agenda/Agendas');
         $titulo = __('Listagem de Agendas').' (<span id="DataTable_Contador">0</span>)';
-        $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',10,Array("link"=>"Agenda/Agenda/Agendas_Add",'icon'=>'add', 'nome'=>__('Adicionar Agenda')));
+        $this->_Visual->Bloco_Unico_CriaJanela($titulo, '',10,Array("link"=>"Agenda/Agenda/Agendas_Add",'icon'=>'add', 'nome'=>__('Adicionar Agenda')));
         
         
         //Carrega Json
@@ -87,7 +87,7 @@ class Agenda_AgendaControle extends Agenda_Controle
         $formbt     = __('Salvar');
         $formlink   = 'Agenda/Agenda/Agendas_Add2/';
         $campos = Agenda_DAO::Get_Colunas();
-        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos);
+        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1, $titulo2, $formlink, $formid, $formbt, $campos);
     }
     /**
      * 
@@ -102,7 +102,7 @@ class Agenda_AgendaControle extends Agenda_Controle
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = __('Agenda cadastrado com sucesso.');
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
     }
     /**
      * 
@@ -118,9 +118,9 @@ class Agenda_AgendaControle extends Agenda_Controle
         $formid     = 'form_Sistema_AdminC_AgendaEdit';
         $formbt     = __('Alterar Agenda');
         $formlink   = 'Agenda/Agenda/Agendas_Edit2/'.$id;
-        $editar     = Array('Agenda',$id);
+        $editar     = Array('Agenda', $id);
         $campos = Agenda_DAO::Get_Colunas();
-        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos,$editar);
+        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1, $titulo2, $formlink, $formid, $formbt, $campos, $editar);
     }
     /**
      * 
@@ -130,12 +130,12 @@ class Agenda_AgendaControle extends Agenda_Controle
      */
     public function Agendas_Edit2($id) {
         $titulo     = __('Agenda Editada com Sucesso');
-        $dao        = Array('Agenda',$id);
+        $dao        = Array('Agenda', $id);
         $funcao     = '$this->Agendas();';
         $sucesso1   = __('Agenda Alterada com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);      
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);      
     }
     /**
      * 
@@ -149,7 +149,7 @@ class Agenda_AgendaControle extends Agenda_Controle
         $compromisso = $this->_Modelo->db->Sql_Select('Agenda', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($compromisso);
         // Mensagem
-    	if ($sucesso===true) {
+    	if ($sucesso === TRUE) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
@@ -162,12 +162,12 @@ class Agenda_AgendaControle extends Agenda_Controle
                 "mgs_secundaria" => __('Erro')
             );
         }
-        $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+        $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
         
         $this->Agendas();
         
         $this->_Visual->Json_Info_Update('Titulo', __('Agenda deletado com Sucesso'));  
-        $this->_Visual->Json_Info_Update('Historico', false);  
+        $this->_Visual->Json_Info_Update('Historico', FALSE);  
     }
 }
 ?>

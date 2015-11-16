@@ -21,10 +21,10 @@ class Curso_Principal implements \Framework\PrincipalInterface
      */
     static function Home(&$controle, &$Modelo, &$Visual) {
         self::Widgets();
-        return true;
+        return TRUE;
     }
     static function Widget(&$_Controle) {
-        return true;
+        return TRUE;
     }     
     /**
      * 
@@ -33,27 +33,27 @@ class Curso_Principal implements \Framework\PrincipalInterface
      * @version 0.4.2
      */
     static function Config() {
-        return false;
+        return FALSE;
     }
     
-    static function Relatorio($data_inicio,$data_final,$filtro=false) {
-        return false;
+    static function Relatorio($data_inicio, $data_final, $filtro = FALSE) {
+        return FALSE;
     }
     
-    static function Estatistica($data_inicio,$data_final,$filtro=false) {
-        return false;
+    static function Estatistica($data_inicio, $data_final, $filtro = FALSE) {
+        return FALSE;
     }
     
-    static function Busca(&$controle, &$Modelo, &$Visual,$busca) {
+    static function Busca(&$controle, &$Modelo, &$Visual, $busca) {
         $i = 0;
         // Busca Cursos
         $result = self::Busca_Cursos($controle, $Modelo, $Visual, $busca);
-        if ($result!==false) {
+        if ($result !== FALSE) {
             $i = $i + $result;
         }
         // Busca Turmas
         $result = self::Busca_Turmas($controle, $Modelo, $Visual, $busca);
-        if ($result!==false) {
+        if ($result !== FALSE) {
             $i = $i + $result;
         }
         
@@ -61,7 +61,7 @@ class Curso_Principal implements \Framework\PrincipalInterface
         if (is_int($i) && $i>0) {
             return $i;
         } else {
-            return false;
+            return FALSE;
         }
     }
     
@@ -74,13 +74,13 @@ class Curso_Principal implements \Framework\PrincipalInterface
           'obs'                     => '%'.$busca.'%',
         ));
         $i = 0;
-        $cursos = $Modelo->db->Sql_Select('Curso',$where);
-        if ($cursos===false) return false;
+        $cursos = $Modelo->db->Sql_Select('Curso', $where);
+        if ($cursos === FALSE) return FALSE;
         // add botao
         $Visual->Blocar('<a title="Adicionar Curso" class="btn btn-success lajax explicar-titulo" data-acao="" href="'.URL_PATH.'Curso/Curso/Cursos_Add">Adicionar novo Curso</a><div class="space15"></div>');
         if (is_object($cursos)) $cursos = Array(0=>$cursos);
-        if ($cursos!==false && !empty($cursos)) {
-            list($tabela,$i) = Curso_CursoControle::Cursos_Tabela($cursos);
+        if ($cursos !== FALSE && !empty($cursos)) {
+            list($tabela, $i) = Curso_CursoControle::Cursos_Tabela($cursos);
             $Visual->Show_Tabela_DataTable($tabela);
         } else {         
             $Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Curso na Busca '.$busca.'</font></b></center>');
@@ -95,13 +95,13 @@ class Curso_Principal implements \Framework\PrincipalInterface
           'obs'                     => '%'.$busca.'%',
         ));
         $i = 0;
-        $albuns = $Modelo->db->Sql_Select('Curso_Turma',$where);
-        if ($albuns===false) return false;
+        $albuns = $Modelo->db->Sql_Select('Curso_Turma', $where);
+        if ($albuns === FALSE) return FALSE;
         // add botao
         $Visual->Blocar('<a title="Adicionar Turma" class="btn btn-success lajax explicar-titulo" data-acao="" href="'.URL_PATH.'Curso/Turma/Turmas_Add">Adicionar nova Turma</a><div class="space15"></div>');
         if (is_object($albuns)) $albuns = Array(0=>$albuns);
-        if ($albuns!==false && !empty($albuns)) {
-            list($tabela,$i) = Curso_TurmaControle::Turmas_Tabela($albuns);
+        if ($albuns !== FALSE && !empty($albuns)) {
+            list($tabela, $i) = Curso_TurmaControle::Turmas_Tabela($albuns);
             $Visual->Show_Tabela_DataTable($tabela);
         } else {        
             $Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Turma de Curso na Busca '.$busca.'</font></b></center>');
@@ -128,7 +128,7 @@ class Curso_Principal implements \Framework\PrincipalInterface
             'group', 
             $curso_qnt, 
             'block-orange', 
-            false, 
+            FALSE, 
             14
         );
         // Turmas
@@ -140,7 +140,7 @@ class Curso_Principal implements \Framework\PrincipalInterface
             'hdd', 
             $turma_qnt, 
             'block-yellow', 
-            false, 
+            FALSE, 
             16
         );
     }

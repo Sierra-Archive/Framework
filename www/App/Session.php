@@ -11,7 +11,7 @@ final Class Session {
      *
      * @var type 
      */
-    private static $Iniciado = false;
+    private static $Iniciado = FALSE;
     /**
      * 
      * @return boolean
@@ -20,14 +20,14 @@ final Class Session {
      * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
     public static function init() {
-        if (self::$Iniciado===true) {
-            return true;
+        if (self::$Iniciado === TRUE) {
+            return TRUE;
         }
-        self::$Iniciado = true;
+        self::$Iniciado = TRUE;
         
         session_start();
         
-        return true;
+        return TRUE;
     }
     /**
      * 
@@ -36,11 +36,11 @@ final Class Session {
      * @version 0.4.2
      * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
-    public static function destroy($clave=false) {
-        if (self::$Iniciado!==true) {
+    public static function destroy($clave = FALSE) {
+        if (self::$Iniciado !== TRUE) {
             self::init();
         }
-        if ($clave===false) {
+        if ($clave === FALSE) {
             session_destroy();
         } else {
             if (is_array($clave)) {
@@ -66,14 +66,14 @@ final Class Session {
      * @version 0.4.2
      * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
-    public static function set($clave,$valor) {
-        if (self::$Iniciado!==true) {
+    public static function set($clave, $valor) {
+        if (self::$Iniciado !== TRUE) {
             self::init();
         }
         if (!empty($clave)) {
             $_SESSION[$clave] = $valor;
         }
-        return false;
+        return FALSE;
     }
     /**
      * 
@@ -84,13 +84,13 @@ final Class Session {
      * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
     public static function get($clave) {
-        if (self::$Iniciado!==true) {
+        if (self::$Iniciado !== TRUE) {
             self::init();
         }
         if (isset($_SESSION[$clave])) {
             return \Framework\App\Conexao::anti_injection($_SESSION[$clave]);
         }
-        return false;
+        return FALSE;
     }
 }
 ?>

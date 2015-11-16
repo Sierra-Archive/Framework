@@ -26,12 +26,12 @@ class predial_SalaoModelo extends predial_Modelo
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function retorna_Agendadatas(&$datas,$veiculo=0) {
+    public function retorna_Agendadatas(&$datas, $veiculo=0) {
         
         #update
-        return false;
+        return FALSE;
         
-        GLOBAL $tabsql,$config;
+        GLOBAL $tabsql, $config;
         $i = 0;
         $datainicial = APP_DATA;
         
@@ -79,7 +79,7 @@ class predial_SalaoModelo extends predial_Modelo
         return $i;
         
     }
-    public function agendamento_inserir($veiculo,$data_inicial,$data_final,$valor) {
+    public function agendamento_inserir($veiculo, $data_inicial, $data_final, $valor) {
         global $config;
         $this->db->query('INSERT INTO '.MYSQL_USUARIO_VEICULO_ALUGUEL.' (user,veiculo,data_inicial,data_final,valor,data_cadastro) VALUES (\''.\Framework\App\Acl::Usuario_GetID_Static().'\',\''.$veiculo.'\',\''.$data_inicial.'\',\''.$data_final.'\',\''.$valor.'\',\''.APP_HORA.'\')');
         
@@ -88,7 +88,7 @@ class predial_SalaoModelo extends predial_Modelo
            $id = $campo->id;
         }
         $dt_vencimento = date("Y-m-d", time() + (FINANCEIRO_DIASVENCIMENTO * 86400));
-        Financeiro_Modelo::MovInt_Inserir($this,\Framework\App\Acl::Usuario_GetID_Static(),$valor,0,'usuario_veiculo_aluguel',$id,$dt_vencimento);
+        Financeiro_Modelo::MovInt_Inserir($this,\Framework\App\Acl::Usuario_GetID_Static(), $valor,0,'usuario_veiculo_aluguel', $id, $dt_vencimento);
         return 1;
     }
 }

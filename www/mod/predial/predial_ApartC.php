@@ -19,15 +19,15 @@ class predial_ApartControle extends predial_Controle
     */
     public function Main() {
         \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'predial/Apart/Aparts');
-        return false;
+        return FALSE;
     }
-    static function Endereco_Apart($true=true) {
+    static function Endereco_Apart($true= TRUE ) {
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
         $titulo = __('Apartamentos');
         $link = 'predial/Apart/Aparts';
-        if ($true===true) {
-            $_Controle->Tema_Endereco($titulo,$link);
+        if ($true === TRUE) {
+            $_Controle->Tema_Endereco($titulo, $link);
         } else {
             $_Controle->Tema_Endereco($titulo);
         }
@@ -47,11 +47,11 @@ class predial_ApartControle extends predial_Controle
             } else {
                 $tabela['Morador'][$i]          = '<p class="text-error">Não Registrado</p>';
             }
-            $tabela['Funções'][$i]          = $Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Apartamento'        ,'predial/Apart/Aparts_Edit/'.$valor->id.'/'    ,'')).
+            $tabela['Funções'][$i]          = $Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Apartamento'        ,'predial/Apart/Aparts_Edit/'.$valor->id.'/'    , '')).
                                               $Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Apartamento'       ,'predial/Apart/Aparts_Del/'.$valor->id.'/'     ,'Deseja realmente deletar esse Apartamento ?'));
             ++$i;
         }
-        return Array($tabela,$i);
+        return Array($tabela, $i);
     }
     /**
      * 
@@ -59,7 +59,7 @@ class predial_ApartControle extends predial_Controle
      * @version 0.4.2
      */
     public function Aparts() {
-        self::Endereco_Apart(false);
+        self::Endereco_Apart(FALSE);
         $i = 0;
         // Botao Add
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
@@ -77,8 +77,8 @@ class predial_ApartControle extends predial_Controle
         )));
         // Busca
         $apartamentos = $this->_Modelo->db->Sql_Select('Predial_Bloco_Apart');
-        if ($apartamentos!==false && !empty($apartamentos)) {
-            list($tabela,$i) = self::Aparts_Tabela($apartamentos);
+        if ($apartamentos !== FALSE && !empty($apartamentos)) {
+            list($tabela, $i) = self::Aparts_Tabela($apartamentos);
             $this->_Visual->Show_Tabela_DataTable($tabela);
             unset($tabela);
         } else {           
@@ -104,7 +104,7 @@ class predial_ApartControle extends predial_Controle
         $formbt     = __('Salvar');
         $formlink   = 'predial/Apart/Aparts_Add2/';
         $campos = Predial_Bloco_Apart_DAO::Get_Colunas();
-        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos);
+        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1, $titulo2, $formlink, $formid, $formbt, $campos);
     }
     /**
      * 
@@ -120,7 +120,7 @@ class predial_ApartControle extends predial_Controle
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = __('Apartamento cadastrado com sucesso.');
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
     }
     /**
      * 
@@ -136,9 +136,9 @@ class predial_ApartControle extends predial_Controle
         $formid     = 'form_Sistema_AdminC_ApartEdit';
         $formbt     = __('Alterar Apartamento');
         $formlink   = 'predial/Apart/Aparts_Edit2/'.$id;
-        $editar     = Array('Predial_Bloco_Apart',$id);
+        $editar     = Array('Predial_Bloco_Apart', $id);
         $campos = Predial_Bloco_Apart_DAO::Get_Colunas();
-        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos,$editar);
+        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1, $titulo2, $formlink, $formid, $formbt, $campos, $editar);
     }
     /**
      * 
@@ -149,12 +149,12 @@ class predial_ApartControle extends predial_Controle
      */
     public function Aparts_Edit2($id) {
         $titulo     = __('Apartamento Editado com Sucesso');
-        $dao        = Array('Predial_Bloco_Apart',$id);
+        $dao        = Array('Predial_Bloco_Apart', $id);
         $funcao     = '$this->Aparts();';
         $sucesso1   = __('Apartamento Alterado com Sucesso.');
         $sucesso2   = ''.$_POST["num"].' teve a alteração bem sucedida';
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);   
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);   
     }
     /**
      * 
@@ -171,7 +171,7 @@ class predial_ApartControle extends predial_Controle
         $apartamento = $this->_Modelo->db->Sql_Select('Predial_Bloco_Apart', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($apartamento);
         // Mensagem
-    	if ($sucesso===true) {
+    	if ($sucesso === TRUE) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
@@ -184,12 +184,12 @@ class predial_ApartControle extends predial_Controle
                 "mgs_secundaria" => __('Erro')
             );
         }
-        $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+        $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
         
         $this->Aparts();
         
         $this->_Visual->Json_Info_Update('Titulo', __('Apartamento deletado com Sucesso'));  
-        $this->_Visual->Json_Info_Update('Historico', false);  
+        $this->_Visual->Json_Info_Update('Historico', FALSE);  
     }
 }
 ?>

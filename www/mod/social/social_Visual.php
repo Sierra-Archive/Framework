@@ -11,7 +11,7 @@ class social_Visual extends \Framework\App\Visual
     	if (!empty($array)) {
             reset($array);
             foreach ($array as $indice=>&$valor) {
-                $form->Select_Opcao($array[$indice]['nome'],$array[$indice]['id'],0);
+                $form->Select_Opcao($array[$indice]['nome'], $array[$indice]['id'],0);
                 ++$i;
             }
     	}

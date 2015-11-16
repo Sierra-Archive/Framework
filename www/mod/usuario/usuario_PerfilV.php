@@ -16,7 +16,7 @@ class usuario_PerfilVisual extends usuario_Visual
     public function __construct() {
       parent::__construct();
     }
-    static function Show_HTML(&$usuario,$tipo='Cliente',$mensagens=false) {
+    static function Show_HTML(&$usuario, $tipo='Cliente', $mensagens = FALSE) {
         $html = '';
         if ($tipo=='cliente')                                                                                                    $tipo = "Cliente";
         if ($tipo=='Funcionrio' || $tipo=="Funcionario" || $tipo=="funcionario" || $tipo=="funcionário" || $tipo=="funcionrio")  $tipo = "Funcionário";
@@ -104,7 +104,7 @@ class usuario_PerfilVisual extends usuario_Visual
         $html .= '<div class="space15"></div>';
         if (LAYOULT_IMPRIMIR!='AJAX') {
             $html .= '</div>';
-            if ($mensagens!==false) {
+            if ($mensagens !== FALSE) {
                 $html .= '<div class="col-sm-4">';
                 foreach($mensagens AS &$valor) {
                     $html .= '';
@@ -115,9 +115,9 @@ class usuario_PerfilVisual extends usuario_Visual
         $html .= '</div>';
         return $html;
     }
-    public function Show_Perfil($tipo,&$usuario,$layoult='Unico') {
+    public function Show_Perfil($tipo,&$usuario, $layoult='Unico') {
         $nome = $usuario->nome;
-        $html = self::Show_HTML($usuario,$tipo);
+        $html = self::Show_HTML($usuario, $tipo);
         
         if (SQL_MAIUSCULO) {
             $titulo = 'VISUALIZAR '.$nome; //mb_strtoupper( )
@@ -137,7 +137,7 @@ class usuario_PerfilVisual extends usuario_Visual
                 ),*/
                 'html'      => $html
             );
-            $this->Json_IncluiTipo('Popup',$popup);
+            $this->Json_IncluiTipo('Popup', $popup);
         } else {
             $this->Blocar($html);
             if ($layoult=='Unico') {
@@ -147,7 +147,7 @@ class usuario_PerfilVisual extends usuario_Visual
             } else {
                 $this->Bloco_Menor_CriaConteudo();
             }
-            $this->Json_Info_Update('Titulo',$titulo);
+            $this->Json_Info_Update('Titulo', $titulo);
         }
     }
 }

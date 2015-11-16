@@ -72,7 +72,7 @@ class Media
                     $mediaData['imageExtension'] = $extension;
                     $mediaData['imageType'] = $image->getImageType();
                     if ($isMemImage) {
-                        $mediaData['isMemImage'] = true;
+                        $mediaData['isMemImage'] = TRUE;
                         $mediaData['createFunction'] = $image->getImageCreateFunction();
                         $mediaData['imageFunction'] = $image->getImageFunction();
                     }

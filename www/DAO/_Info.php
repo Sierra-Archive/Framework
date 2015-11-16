@@ -12,12 +12,12 @@ final Class Predial_Bloco_Apart_DAO extends Framework\App\Dao
     protected $num;
     protected $morador;
     
-    // Padrao é true, com false, a tabela nao é transformada em maiuscula
-    protected static $aceita_config         = false;
-    // Padrao é false, ou array com os campos que nao aceita
+    // Padrao é true, com FALSE, a tabela nao é transformada em maiuscula
+    protected static $aceita_config         = FALSE;
+    // Padrao é FALSE, ou array com os campos que nao aceita
     protected static $campos_naoaceita_config  = Array('email', 'email2');
     
-    protected static $objetocarregado     = false;     protected static $mysql_colunas       = false;     protected static $mysql_outside       = Array();     protected static $mysql_inside        = Array(); public function __construct() {  parent::__construct(); } public static function Get_Nome() {
+    protected static $objetocarregado     = FALSE;     protected static $mysql_colunas       = FALSE;     protected static $mysql_outside       = Array();     protected static $mysql_inside        = Array(); public function __construct() {  parent::__construct(); } public static function Get_Nome() {
         return MYSQL_PREDIAL_BLOCO_APART;
     }
     /**
@@ -25,7 +25,7 @@ final Class Predial_Bloco_Apart_DAO extends Framework\App\Dao
      * @return string
      */
     public static function Permissao_Copia() {
-        return false;
+        return FALSE;
     }
     public static function Get_Sigla() {
         return 'PBA';
@@ -52,7 +52,7 @@ final Class Predial_Bloco_Apart_DAO extends Framework\App\Dao
                 'mysql_null'        => FALSE,
                 'mysql_default'     => FALSE,
                 'mysql_primary'     => FALSE,
-                'mysql_indice_unico'=> 'num', // Se pode repetir = false, se nao, 
+                'mysql_indice_unico'=> 'num', // Se pode repetir = FALSE, se nao, 
                                               // o conjunto de campos que não podem repetir
                                               // possuem o mesmo nome neste valor
                 'mysql_estrangeira' => 'CP.id|CP.nome', // chave estrangeira
@@ -66,7 +66,7 @@ final Class Predial_Bloco_Apart_DAO extends Framework\App\Dao
                 // Edicao sao as Partes Visuais do Formulario
                 'edicao'            => Array(
                     'Nome'              => __('Produto'),
-                    'Mascara'           => 'Numero', // MAscara, pode ser false, ou Real, Numero, Porc, etc...
+                    'Mascara'           => 'Numero', // MAscara, pode ser FALSE, ou Real, Numero, Porc, etc...
                     'valor_padrao'      => FALSE,
                     'change'            => '',
                     'readonly'          => FALSE, // Somente Leitura
@@ -102,7 +102,7 @@ final Class Predial_Bloco_Apart_DAO extends Framework\App\Dao
                 'TabelaLinkada'     => Array(
                     'Pai'               => 'N', // TABELA que vai manipular a conexao
                     'Tabela'            => 'NR', // TABELA de LINK A SER CONECTADA
-                    'Preencher'         => Array( // CAso exista e != de false, preenche automaticamente esses campos
+                    'Preencher'         => Array( // CAso exista e != de FALSE, preenche automaticamente esses campos
                         'tabela'            => 'Musica_Album_Artista', // Campo e Resultado
                     ),
                     'valor_padrao'      => FALSE, // ID do pai, usada para edicao, sempre false por padrao

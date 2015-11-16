@@ -22,7 +22,7 @@ final Class Transporte_Transportadora_DAO extends Framework\App\Dao
     protected $contato_email4;
     protected $contato_tel4;
     protected $contato_cel4;
-    protected static $objetocarregado     = false;     protected static $mysql_colunas       = false;     protected static $mysql_outside       = Array();     protected static $mysql_inside        = Array(); public function __construct() {  parent::__construct(); } public static function Get_Nome() {
+    protected static $objetocarregado     = FALSE;     protected static $mysql_colunas       = FALSE;     protected static $mysql_outside       = Array();     protected static $mysql_inside        = Array(); public function __construct() {  parent::__construct(); } public static function Get_Nome() {
         return MYSQL_TRANSPORTE_TRANSPORTADORA;
     }
     /**
@@ -30,7 +30,7 @@ final Class Transporte_Transportadora_DAO extends Framework\App\Dao
      * @return string
      */
     public static function Permissao_Copia() {
-        return false;
+        return FALSE;
     }
     public static function Get_Sigla() {
         return 'TT';
@@ -93,7 +93,7 @@ final Class Transporte_Transportadora_DAO extends Framework\App\Dao
                 'mysql_titulo'      => 'categoria',
                 'mysql_tipovar'     => 'int', //varchar, int, 
                 'mysql_tamanho'     => 11,
-                'mysql_null'        => TRUE, // true NULL, false, NOT NULL
+                'mysql_null'        => TRUE, // true NULL, FALSE, NOT NULL
                 'mysql_default'     => FALSE,//false -> NONE, outro -> default
                 'mysql_primary'     => FALSE, // chave primaria
                 'mysql_estrangeira' => 'C.id|C.nome|CA.mod_acc=Transporte_Transportadora', // chave estrangeira     ligacao|apresentacao|condicao

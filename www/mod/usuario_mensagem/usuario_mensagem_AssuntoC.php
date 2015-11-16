@@ -31,15 +31,15 @@ class usuario_mensagem_AssuntoControle extends usuario_mensagem_Controle
     */
     public function Main() {
         \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'usuario_mensagem/Assunto/Assuntos/');
-        return false;
+        return FALSE;
     }
-    static function Endereco_Assunto($true=true) {
+    static function Endereco_Assunto($true= TRUE ) {
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
         $titulo = __('Assuntos');
         $link = 'usuario_mensagem/Assunto/Assuntos';
-        if ($true===true) {
-            $_Controle->Tema_Endereco($titulo,$link);
+        if ($true === TRUE) {
+            $_Controle->Tema_Endereco($titulo, $link);
         } else {
             $_Controle->Tema_Endereco($titulo);
         }
@@ -49,15 +49,15 @@ class usuario_mensagem_AssuntoControle extends usuario_mensagem_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Assuntos($export=false) {
-        self::Endereco_Assunto(false);
+    public function Assuntos($export = FALSE) {
+        self::Endereco_Assunto(FALSE);
         
         $tabela = Array(
             'Setor', 'Nome', 'Tempo de Resposta', 'Funções'
         );
         $this->_Visual->Show_Tabela_DataTable_Massiva($tabela,'usuario_mensagem/Assunto/Assuntos');
         $titulo = __('Listagem de Assuntos').' (<span id="DataTable_Contador">0</span>)';  //
-        $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',10,Array("link"=>"usuario_mensagem/Assunto/Assuntos_Add",'icon'=>'add', 'nome'=>'Adicionar Assunto'));
+        $this->_Visual->Bloco_Unico_CriaJanela($titulo, '',10,Array("link"=>"usuario_mensagem/Assunto/Assuntos_Add",'icon'=>'add', 'nome'=>'Adicionar Assunto'));
         
         //Carrega Json
         $this->_Visual->Json_Info_Update('Titulo', __('Administrar Assuntos'));
@@ -68,7 +68,7 @@ class usuario_mensagem_AssuntoControle extends usuario_mensagem_Controle
      * @version 0.4.2
      */
     public function Assuntos_Add() {
-        self::Endereco_Assunto(true);
+        self::Endereco_Assunto(TRUE);
         // Carrega Config
         $titulo1    = __('Adicionar Assunto');
         $titulo2    = __('Salvar Assunto');
@@ -76,7 +76,7 @@ class usuario_mensagem_AssuntoControle extends usuario_mensagem_Controle
         $formbt     = __('Salvar');
         $formlink   = 'usuario_mensagem/Assunto/Assuntos_Add2/';
         $campos = Usuario_Mensagem_Assunto_DAO::Get_Colunas();
-        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos);
+        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1, $titulo2, $formlink, $formid, $formbt, $campos);
     }
     /**
      * 
@@ -92,7 +92,7 @@ class usuario_mensagem_AssuntoControle extends usuario_mensagem_Controle
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = __('Assunto cadastrado com sucesso.');
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
     }
     /**
      * 
@@ -101,7 +101,7 @@ class usuario_mensagem_AssuntoControle extends usuario_mensagem_Controle
      * @version 0.4.2
      */
     public function Assuntos_Edit($id) {
-        self::Endereco_Assunto(true);
+        self::Endereco_Assunto(TRUE);
         $id = (int) $id;
         // Carrega campos e retira os que nao precisam
         $campos = Usuario_Mensagem_Assunto_DAO::Get_Colunas();
@@ -136,7 +136,7 @@ class usuario_mensagem_AssuntoControle extends usuario_mensagem_Controle
         // Atualiza
         $this->Assuntos();
         // Mensagem
-        if ($sucesso===true) {
+        if ($sucesso === TRUE) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Assunto Alterado com Sucesso'),
@@ -149,10 +149,10 @@ class usuario_mensagem_AssuntoControle extends usuario_mensagem_Controle
                 "mgs_secundaria" => __('Erro')
             );
         }
-        $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);  
+        $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);  
         //Json
         $this->_Visual->Json_Info_Update('Titulo', __('Assunto Editado com Sucesso'));  
-        $this->_Visual->Json_Info_Update('Historico', false);    
+        $this->_Visual->Json_Info_Update('Historico', FALSE);    
     }
     /**
      * 
@@ -169,7 +169,7 @@ class usuario_mensagem_AssuntoControle extends usuario_mensagem_Controle
         $assunto = $this->_Modelo->db->Sql_Select('Usuario_Mensagem_Assunto', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($assunto);
         // Mensagem
-    	if ($sucesso===true) {
+    	if ($sucesso === TRUE) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
@@ -182,12 +182,12 @@ class usuario_mensagem_AssuntoControle extends usuario_mensagem_Controle
                 "mgs_secundaria" => __('Erro')
             );
         }
-        $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+        $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
         
         $this->Assuntos();
         
         $this->_Visual->Json_Info_Update('Titulo', __('Assunto deletado com Sucesso'));  
-        $this->_Visual->Json_Info_Update('Historico', false);  
+        $this->_Visual->Json_Info_Update('Historico', FALSE);  
     }
 }
 ?>

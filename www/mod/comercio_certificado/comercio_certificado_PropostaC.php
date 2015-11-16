@@ -33,7 +33,7 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
     */
     public function Main() {
         ///$this->Propostas();
-        $this->_Visual->Blocar(__('Localizar'),                 usuario_Controle::Static_usuariolistar(Array(CFG_TEC_CAT_ID_CLIENTES,'Clientes'),false,false));
+        $this->_Visual->Blocar(__('Localizar'),                 usuario_Controle::Static_usuariolistar(Array(CFG_TEC_CAT_ID_CLIENTES,'Clientes'), FALSE, FALSE));
         $this->_Visual->Blocar(__('Cliente'),                   comercio_certificado_Controle::Usuarios_Add('cliente'));
         $this->_Visual->Blocar(__('Produto'),                   $this->_Visual->ErroShow());
         $this->_Visual->Blocar(__('Auditoria Periódica'),       $this->_Visual->ErroShow());
@@ -45,18 +45,18 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
     }
     public function Propostas_DashBoard_Show($cliente=0) {
         // Produtos
-        \Framework\App\Visual::Layoult_Abas_Carregar('3',$this->Propostas_DashBoard($cliente));
+        \Framework\App\Visual::Layoult_Abas_Carregar('3', $this->Propostas_DashBoard($cliente));
         // Joga pro Json se nao for o caso de popup
         $this->_Visual->Json_Info_Update('Titulo', __('Proposta Adicionada'));
-        $this->_Visual->Json_Info_Update('Historico', false);
+        $this->_Visual->Json_Info_Update('Historico', FALSE);
     }
     public function Propostas_DashBoard($cliente=0) {
         return $this->_Visual->Bloco_Customizavel(Array(
             Array(
                 'span'      =>      4,
                 'conteudo'  =>  Array(Array(
-                    'div_ext'   =>      false,
-                    'title_id'  =>      false,
+                    'div_ext'   =>      FALSE,
+                    'title_id'  =>      FALSE,
                     'title'     =>      'Propostas / Contratos',
                     'html'      =>      $this->Propostas($cliente),
                 ),),
@@ -64,13 +64,13 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
             Array(
                 'span'      =>      8,
                 'conteudo'  =>  Array(Array(
-                    'div_ext'   =>      false,
+                    'div_ext'   =>      FALSE,
                     'title_id'  =>      'propostasmodificar_titulo',
                     'title'     =>      'Produtos (Adicionar)',
-                    'html'      =>      '<span id="propostasmodificar">'.$this->Propostas_Add($cliente,true).'</span>',
+                    'html'      =>      '<span id="propostasmodificar">'.$this->Propostas_Add($cliente,TRUE).'</span>',
                 ),),
             )
-        ),false);
+        ), FALSE);
     }
     /**
      * 
@@ -83,7 +83,7 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
         $proposta = $this->_Modelo->db->Sql_Select('Comercio_Certificado_Proposta',Array(
             'idcliente'     =>      $cliente
         ));
-        if ($proposta!==false && !empty($proposta)) {
+        if ($proposta !== FALSE && !empty($proposta)) {
             if (is_object($proposta)) {
                 $proposta = Array(0=>$proposta);
             }
@@ -92,7 +92,7 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
             $tabela->addcabecario(Array('#Cod', 'Funções'));
             foreach ($proposta as &$valor) {
                 //$tabela['#Cod'][$i]      = '#'.$valor->num_proposta;
-                //$tabela['Funções'][$i]   = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Proposta'        ,'comercio_certificado/Proposta/Propostas_Edit/'.$valor->id.'/'.$cliente.'/'    ,'')).
+                //$tabela['Funções'][$i]   = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Proposta'        ,'comercio_certificado/Proposta/Propostas_Edit/'.$valor->id.'/'.$cliente.'/'    , '')).
                 //                           $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Proposta'       ,'comercio_certificado/Proposta/Propostas_Del/'.$valor->id.'/'.$cliente.'/'     ,'Deseja realmente deletar essa Proposta ?'));
                 // Classifica de Acordo se foi aceito ou nao
                 $class = 'left';
@@ -101,7 +101,7 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
                 }
                 
                 $funcoes =  '<span id="status'.$valor->id.'">'.self::Propostas_Label($valor).'</span>'.
-                            $this->_Visual->Tema_Elementos_Btn('Visualizar'     ,Array('Visualizar Proposta'        ,'comercio_certificado/Proposta/Show/'.$valor->id    ,''));
+                            $this->_Visual->Tema_Elementos_Btn('Visualizar'     ,Array('Visualizar Proposta'        ,'comercio_certificado/Proposta/Show/'.$valor->id    , ''));
             
                 
                 $corpo =  ($class=='right')?Array(
@@ -111,13 +111,13 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
                 ):Array(
                     Array('nome'=>'#'.$valor->num_proposta,'class'=>$class),
                     Array('nome'=>  $funcoes.
-                                    $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Proposta'        ,'comercio_certificado/Proposta/Propostas_Edit/'.$valor->id.'/'.$cliente.'/'    ,''))/*.
+                                    $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Proposta'        ,'comercio_certificado/Proposta/Propostas_Edit/'.$valor->id.'/'.$cliente.'/'    , ''))/*.
                     $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Proposta'       ,'comercio_certificado/Proposta/Propostas_Del/'.$valor->id.'/'.$cliente.'/'     ,'Deseja realmente deletar essa Proposta ?'))*/,'class'=>''),
                 );
                 $tabela->addcorpo($corpo);
                 ++$i;
             }
-            //$html .= $this->_Visual->Show_Tabela_DataTable($tabela,'',false);
+            //$html .= $this->_Visual->Show_Tabela_DataTable($tabela, '', FALSE);
             $html .= $tabela->retornatabela();
             unset($tabela);
         } else {
@@ -125,13 +125,13 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
         }
         return $html;
     }
-    public function Propostas_Status($id=false) {
-        if ($id===false) {
-            return false;
+    public function Propostas_Status($id = FALSE) {
+        if ($id === FALSE) {
+            return FALSE;
         }
         $resultado = $this->_Modelo->db->Sql_Select('Comercio_Certificado_Proposta', Array('id'=>$id),1);
-        if ($resultado===false || !is_object($resultado)) {
-            return false;
+        if ($resultado === FALSE || !is_object($resultado)) {
+            return FALSE;
         }
         if ($resultado->status===1 || $resultado->status==='1') {
             $resultado->status='2';
@@ -147,7 +147,7 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
                 'js' => '',
                 'html' =>  self::Propostas_Label($resultado)
             );
-            $this->_Visual->Json_IncluiTipo('Conteudo',$conteudo);
+            $this->_Visual->Json_IncluiTipo('Conteudo', $conteudo);
             $this->_Visual->Json_Info_Update('Titulo', __('Status Alterado')); 
         } else {
             $mensagens = array(
@@ -155,13 +155,13 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
                 "mgs_principal"     => __('Erro'),
                 "mgs_secundaria"    => __('Ocorreu um Erro.')
             );
-            $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+            $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
 
             $this->_Visual->Json_Info_Update('Titulo', __('Erro')); 
         }
-        $this->_Visual->Json_Info_Update('Historico', false);  
+        $this->_Visual->Json_Info_Update('Historico', FALSE);  
     }
-    public static function Propostas_Label($objeto,$link=true) {
+    public static function Propostas_Label($objeto, $link= TRUE ) {
         $status     = $objeto->status;
         $id         = $objeto->id;
         if ($status==='0' || $status===0) {
@@ -177,7 +177,7 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
             $nometipo = __('Reprovada');
         }
         $html = '<span class="badge badge-'.$tipo.'">'.$nometipo.'</span>';
-        if ($link===true) {
+        if ($link === TRUE) {
             $html = '<a href="'.URL_PATH.'comercio_certificado/Proposta/Propostas_Status/'.$id.'" border="1" class="lajax explicar-titulo" title="'.$nometipo.'" data-acao="" data-confirma="Deseja Realmente alterar o Status?">'.$html.'</a>';
         }
         return $html;
@@ -187,14 +187,14 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Propostas_Add($cliente=0,$direto=false) {
+    public function Propostas_Add($cliente=0, $direto = FALSE) {
         // Carrega campos e retira os que nao precisam
         $campos = Comercio_Certificado_Proposta_DAO::Get_Colunas();
         if ($cliente!=0) {
             self::DAO_Campos_Retira($campos, 'idcliente');
         }
-        $proposta_num = $this->_Modelo->db->Sql_Select('Comercio_Certificado_Proposta',false,1,'ID DESC');
-        if ($proposta_num===false) {
+        $proposta_num = $this->_Modelo->db->Sql_Select('Comercio_Certificado_Proposta', FALSE,1,'ID DESC');
+        if ($proposta_num === FALSE) {
             $proposta_num = '1/'.date('y').' - 1';
         } else {
             $proposta_num = $proposta_num->id.'/'.date('y').' - 1';
@@ -205,7 +205,7 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
         self::mysql_AtualizaValor($campos, 'num_proposta', $proposta_num);
         \Framework\App\Controle::Gerador_Formulario($campos, $form);
         $formulario = $form->retorna_form('Cadastrar');
-        if ($direto===true) {
+        if ($direto === TRUE) {
             return $formulario;
         } else {
             // Json
@@ -214,15 +214,15 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
                 'js'        =>  '$("#propostas_auditorias").hide();',
                 'html'      =>  'Produto (Adicionar)'
             );
-            $this->_Visual->Json_IncluiTipo('Conteudo',$conteudo);
+            $this->_Visual->Json_IncluiTipo('Conteudo', $conteudo);
             $conteudo = array(
                 'location'  =>  '#propostasmodificar',
                 'js'        =>  '$("propostasaddmostrar").hide();',
                 'html'      =>  $formulario
             );
-            $this->_Visual->Json_IncluiTipo('Conteudo',$conteudo);
+            $this->_Visual->Json_IncluiTipo('Conteudo', $conteudo);
             $this->_Visual->Json_Info_Update('Titulo', __('Cadastrar Proposta'));
-            $this->_Visual->Json_Info_Update('Historico', false);
+            $this->_Visual->Json_Info_Update('Historico', FALSE);
         }
     }
     /**
@@ -231,7 +231,7 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Propostas_Edit($id,$cliente) {
+    public function Propostas_Edit($id, $cliente) {
         $id = (int) $id;
         // Carrega campos e retira os que nao precisam
         $campos = Comercio_Certificado_Proposta_DAO::Get_Colunas();
@@ -250,16 +250,16 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
             'js'        =>  '$("#auditorias_periodicas_editar").show();',
             'html'      =>  'Produto (Editar: #'.$id.')'
         );
-        $this->_Visual->Json_IncluiTipo('Conteudo',$conteudo);
+        $this->_Visual->Json_IncluiTipo('Conteudo', $conteudo);
         $conteudo = array(
             'location'  =>  '#propostasmodificar',
             'js'        =>  '$("#propostasaddmostrar").show();',
             'html'      =>  $formulario
         );
-        $this->_Visual->Json_IncluiTipo('Conteudo',$conteudo);
+        $this->_Visual->Json_IncluiTipo('Conteudo', $conteudo);
         
         $this->_Visual->Json_Info_Update('Titulo', __('Editar Proposta'));  
-        $this->_Visual->Json_Info_Update('Historico', false);  
+        $this->_Visual->Json_Info_Update('Historico', FALSE);  
     }
     public static function RecarregaLocalizar() {
         $Registro = &\Framework\App\Registro::getInstacia();
@@ -269,9 +269,9 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
         $conteudo = array(
             'location'  =>  '#'.$abas_id.'1',
             'js'        =>  '',
-            'html'      =>  usuario_Controle::Static_usuariolistar(Array(CFG_TEC_CAT_ID_CLIENTES,'Clientes'),false,false)
+            'html'      =>  usuario_Controle::Static_usuariolistar(Array(CFG_TEC_CAT_ID_CLIENTES,'Clientes'), FALSE, FALSE)
         );
-        $Visual->Json_IncluiTipo('Conteudo',$conteudo);
+        $Visual->Json_IncluiTipo('Conteudo', $conteudo);
     }
             
     /**
@@ -289,8 +289,8 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
         self::mysql_AtualizaValores($proposta);
         $proposta->idcliente = $cliente;
         // Atualiza Proposta de Numero denovo só por segurança
-        $proposta_num = $this->_Modelo->db->Sql_Select('Comercio_Certificado_Proposta',false,1,'ID DESC');
-        if ($proposta_num===false) {
+        $proposta_num = $this->_Modelo->db->Sql_Select('Comercio_Certificado_Proposta', FALSE,1,'ID DESC');
+        if ($proposta_num === FALSE) {
             $proposta_num = '1/'.date('y');
         } else {
             $proposta_num = $proposta_num->id.'/'.date('y');
@@ -304,10 +304,10 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
         
         
         // Mostra Mensagem de Sucesso
-        if ($sucesso===true) {
+        if ($sucesso === TRUE) {
             // Periodicas
             $identificador  = $this->_Modelo->db->Sql_Select('Comercio_Certificado_Proposta', Array(),1,'id DESC');
-            $this->Periodicas_Add($proposta->idcliente,$proposta->idproduto,$identificador->id, \Framework\App\Conexao::anti_injection($data_aceita));
+            $this->Periodicas_Add($proposta->idcliente, $proposta->idproduto, $identificador->id, \Framework\App\Conexao::anti_injection($data_aceita));
             // Recarrega Main
             $this->Propostas_DashBoard_Show($cliente);  
             Comercio_Certificado_PropostaControle::RecarregaLocalizar();
@@ -324,10 +324,10 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
                 "mgs_secundaria" => __('Erro')
             );
         }
-        $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens); 
+        $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens); 
         // Json
         $this->_Visual->Json_Info_Update('Titulo', __('Proposta Adicionada com Sucesso'));  
-        $this->_Visual->Json_Info_Update('Historico', false);  
+        $this->_Visual->Json_Info_Update('Historico', FALSE);  
     }
     /**
      * 
@@ -336,7 +336,7 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Propostas_Edit2($id,$cliente=0) {
+    public function Propostas_Edit2($id, $cliente=0) {
         
         $id = (int) $id;
         $data_aceita = $_POST['data_comissao'];
@@ -344,15 +344,15 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
         // Puxa o proposta
         $proposta = $this->_Modelo->db->Sql_Select('Comercio_Certificado_Proposta', Array('id'=>$id));
         // Atualiza Proposta de Numero denovo só por segurança
-        $proposta_num = explode(' - ',$proposta->num_proposta);
+        $proposta_num = explode(' - ', $proposta->num_proposta);
         if ($data_aceita==='0000-00-00 00:00:00' || $data_aceita==='0000-00-00' || $data_aceita==='') {
             $proposta_num[1] = $proposta_num[1]+1;
             $proposta_num = $proposta_num[0].' - '.$proposta_num[1];
             $novoregistro = 1;
-            $fechar = false;
+            $fechar = FALSE;
         } else {
             $proposta_num = $proposta_num[0];
-            $fechar = true;
+            $fechar = TRUE;
         }
         //altera seus valores
         self::mysql_AtualizaValores($proposta);
@@ -365,12 +365,12 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
             $sucesso =  $this->_Modelo->db->Sql_Insert($proposta);
         }
         // Periodicas
-        $this->Periodicas_Add($proposta->idcliente,$proposta->idproduto,$proposta->id, \Framework\App\Conexao::anti_injection($data_aceita));
+        $this->Periodicas_Add($proposta->idcliente, $proposta->idproduto, $proposta->id, \Framework\App\Conexao::anti_injection($data_aceita));
         // Recarrega Main
         $this->Propostas_DashBoard_Show($cliente); 
         Comercio_Certificado_PropostaControle::RecarregaLocalizar();
         // Mensagem
-        if ($sucesso===true) {
+        if ($sucesso === TRUE) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Proposta Alterada com Sucesso'),
@@ -383,10 +383,10 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
                 "mgs_secundaria" => __('Erro')
             );
         }
-        $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);  
+        $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);  
         //Json
         $this->_Visual->Json_Info_Update('Titulo', __('Proposta Editada com Sucesso'));  
-        $this->_Visual->Json_Info_Update('Historico', false);    
+        $this->_Visual->Json_Info_Update('Historico', FALSE);    
     }
     /**
      * 
@@ -395,7 +395,7 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Propostas_Del($id,$cliente) {
+    public function Propostas_Del($id, $cliente) {
         
         
     	$id = (int) $id;
@@ -403,7 +403,7 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
         $proposta = $this->_Modelo->db->Sql_Select('Comercio_Certificado_Proposta', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($proposta);
         // Mensagem
-    	if ($sucesso===true) {
+    	if ($sucesso === TRUE) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
@@ -416,35 +416,35 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
                 "mgs_secundaria" => __('Erro')
             );
         }
-        $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+        $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
         
         $this->Propostas_DashBoard_Show($cliente);
         
         $this->_Visual->Json_Info_Update('Titulo', __('Proposta deletada com Sucesso'));  
-        $this->_Visual->Json_Info_Update('Historico', false);  
+        $this->_Visual->Json_Info_Update('Historico', FALSE);  
     }
     public function Show($propostaid) {
         $propostaid = (int) $propostaid;
         // Verifica Permissao e Puxa Proposta
         $proposta = $this->_Modelo->db->Sql_Select('Comercio_Certificado_Proposta',Array('id'=>$propostaid),1); // Banco DAO, Condicao e LIMITE
         // Resgata DAdos e Manda pra View
-        if ($proposta===false)            throw new \Exception(404,'Proposta não Existe');
+        if ($proposta === FALSE)            throw new \Exception(404,'Proposta não Existe');
         $this->_Visual->Show_Perfil($proposta);
     }
-    public function Usuarios_Del($id,$tipo=false) {
+    public function Usuarios_Del($id, $tipo = FALSE) {
         
         
     	$id = (int) $id;
         // Regula Tipo
         if ($tipo==='falso') {
-            $tipo  = false;
+            $tipo  = FALSE;
         }
         // Puxa usuario e deleta
         $usuario    = $this->_Modelo->db->Sql_Select(  'Usuario',            Array('id'=>$id));
         
         // caso usuario exista
-        if ($usuario!==false) {
-            if ($tipo===false) {
+        if ($usuario !== FALSE) {
+            if ($tipo === FALSE) {
                 if ($usuario->grupo==CFG_TEC_IDCLIENTE) {
                     $tipo = 'cliente';
                     $tipo2 = __('Cliente');
@@ -471,7 +471,7 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
                 $mensagens  = $this->_Modelo->db->Sql_Select('Usuario_Mensagem',    Array('cliente'=>$id));
                 $sucesso2   =  $this->_Modelo->db->Sql_Delete($mensagens);
             }
-            if ($sucesso===true) {
+            if ($sucesso === TRUE) {
                 $mensagens = array(
                     "tipo" => 'sucesso',
                     "mgs_principal" => $tipo2.' Deletado',
@@ -484,7 +484,7 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
                     "mgs_secundaria" => __('Erro')
                 );
             }
-            $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+            $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
             /*if ($tipo==='cliente') {
                 $this->ListarCliente();
             } else if ($tipo==='funcionario') {
@@ -493,18 +493,18 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
                 $this->ListarUsuario();
             }*/
             Comercio_Certificado_PropostaControle::RecarregaLocalizar();
-            return true;
+            return TRUE;
         } else {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),
                 "mgs_secundaria" => __('Esse usuário não existe')
             );
-            $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
-            return false;
+            $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
+            return FALSE;
         }
     }
-    protected function Periodicas_Add($cliente,$produto,$proposta,$data) {
+    protected function Periodicas_Add($cliente, $produto, $proposta, $data) {
         $produto    = (int) $produto;
         $cliente    = (int) $cliente;
         $proposta   = (int) $proposta;
@@ -512,7 +512,7 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
         if (is_object($periodicas)) {
             $periodicas = Array($periodicas);
         }
-        $data = explode('/',$data);
+        $data = explode('/', $data);
         if (is_array($periodicas) && !empty($periodicas)) {
             foreach($periodicas as &$valor) {
                 
@@ -533,8 +533,8 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
                 $this->_Modelo->db->Sql_Insert($objeto);
             }
         }
-        \Framework\App\Visual::Layoult_Abas_Carregar('4',$this->Periodicas($cliente)   ,false);
-        $this->_Visual->Json_Info_Update('Historico', false);
+        \Framework\App\Visual::Layoult_Abas_Carregar('4', $this->Periodicas($cliente)   , FALSE);
+        $this->_Visual->Json_Info_Update('Historico', FALSE);
     }
     static function Periodicas_Tabela(&$periodicas) {
         $Registro   = &\Framework\App\Registro::getInstacia();
@@ -548,10 +548,10 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
             $tabela['Auditor'][$i]          = $valor->autor;
             $tabela['Data Auditoria'][$i]   = $valor->data;
             $tabela['Data Realização'][$i]  = $valor->data_realizacao;
-            $tabela['Funções'][$i]          = $Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Periodica'        ,'comercio_certificado/Proposta/Periodicas_Edit/'.$valor->id.'/'    ,''));
+            $tabela['Funções'][$i]          = $Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Periodica'        ,'comercio_certificado/Proposta/Periodicas_Edit/'.$valor->id.'/'    , ''));
             ++$i;
         }
-        return Array($tabela,$i);
+        return Array($tabela, $i);
     }
     public function Periodicas($cliente) {
         return $this->_Visual->Bloco_Customizavel(Array(
@@ -559,20 +559,20 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
                 'span'      =>      6,
                 'conteudo'  =>  Array(Array(
                     'div_ext'   =>      ' style="display:none;"  id="auditorias_periodicas_editar"',
-                    'title_id'  =>      false,
+                    'title_id'  =>      FALSE,
                     'title'     =>      'Editar Periódica',
                     'html'      =>      '<span id="Periodicas_editar">Selecione uma para Editar</span>',
                 ),),
             ),Array(
                 'span'      =>      6,
                 'conteudo'  =>  Array(Array(
-                    'div_ext'   =>      false,
+                    'div_ext'   =>      FALSE,
                     'title_id'  =>      'produtosmodificar_titulo',
                     'title'     =>      'Listagem de Periódicas',
                     'html'      =>      '<span id="Periodicas_listar">'.$this->Periodicas_Ver($cliente).'</span>',
                 )),
             )
-        ),false);
+        ), FALSE);
     }
     /**
      * 
@@ -583,9 +583,9 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
         $cliente = (int) $cliente;
         $i = 0;
         $periodicas = $this->_Modelo->db->Sql_Select('Comercio_Certificado_AuditoriaPeriodica',Array('idcliente'=>$cliente));
-        if ($periodicas!==false && !empty($periodicas)) {
-            list($tabela,$i) = self::Periodicas_Tabela($periodicas);
-            $html = $this->_Visual->Show_Tabela_DataTable($tabela,'',false);
+        if ($periodicas !== FALSE && !empty($periodicas)) {
+            list($tabela, $i) = self::Periodicas_Tabela($periodicas);
+            $html = $this->_Visual->Show_Tabela_DataTable($tabela, '', FALSE);
             unset($tabela);
         } else {
             $html = '<center><b><font color="#FF0000" size="5">Nenhuma Periódica Marcada</font></b></center>';            
@@ -605,11 +605,11 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
         $formid     = 'form_Sistema_AdminC_PeriodicaEdit';
         $formbt     = __('Alterar Periodica');
         $formlink   = 'comercio_certificado/Proposta/Periodicas_Edit2/'.$id;
-        $editar     = Array('Comercio_Certificado_AuditoriaPeriodica',$id);
+        $editar     = Array('Comercio_Certificado_AuditoriaPeriodica', $id);
         $campos = Comercio_Certificado_AuditoriaPeriodica_DAO::Get_Colunas();
         self::DAO_Campos_Retira($campos, 'idcliente');
         self::DAO_Campos_Retira($campos, 'idproduto');
-        $html = \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos,$editar, 'html');
+        $html = \Framework\App\Controle::Gerador_Formulario_Janela($titulo1, $titulo2, $formlink, $formid, $formbt, $campos, $editar, 'html');
         
         // Conteudo
         /*// Json
@@ -623,8 +623,8 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
             'js'        =>  '$("#auditorias_periodicas_editar").show();',
             'html'      =>  $html
         );
-        $this->_Visual->Json_IncluiTipo('Conteudo',$conteudo);
-        $this->_Visual->Json_Info_Update('Historico', false);
+        $this->_Visual->Json_IncluiTipo('Conteudo', $conteudo);
+        $this->_Visual->Json_Info_Update('Historico', FALSE);
     }
     /**
      * 
@@ -636,12 +636,12 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
     public function Periodicas_Edit2($id) {
         $id = (int) $id;
         $titulo     = __('Periodica Editada com Sucesso');
-        $dao        = Array('Comercio_Certificado_AuditoriaPeriodica',$id);
-        $funcao     = false;
+        $dao        = Array('Comercio_Certificado_AuditoriaPeriodica', $id);
+        $funcao     = FALSE;
         $sucesso1   = __('Periodica Alterada com Sucesso.');
         $sucesso2   = ''.$_POST["autor"].' teve a alteração bem sucedida';
         $alterar    = Array();
-        $sucesso = $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar); 
+        $sucesso = $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar); 
         if ($sucesso) {
             
             $periodicas    = $this->_Modelo->db->Sql_Select('Comercio_Certificado_AuditoriaPeriodica',  Array('id'=>$id),1);
@@ -650,7 +650,7 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
                 'js'        =>  '$("#auditorias_periodicas_editar").hide();',
                 'html'      =>  $this->Periodicas_Ver($periodicas->idcliente)
             );
-            $this->_Visual->Json_IncluiTipo('Conteudo',$conteudo); 
+            $this->_Visual->Json_IncluiTipo('Conteudo', $conteudo); 
         }
     }
 }

@@ -30,7 +30,7 @@ function callbackAction($result, $to, $cc, $bcc, $subject, $body)
     echo $result . "\tTo: " . $to['Name'] . "\tTo: " . $to['Email'] . "\tCc: " . $cc['Name'] .
         "\tCc: " . $cc['Email'] . "\tBcc: " . $bcc['Name'] . "\tBcc: " . $bcc['Email'] .
         "\t" . $subject . "\n\n". $body . "\n";
-    return true;
+    return TRUE;
 }
 
 require_once '../class.phpmailer.php';

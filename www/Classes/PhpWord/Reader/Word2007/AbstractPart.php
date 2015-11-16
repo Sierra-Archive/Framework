@@ -114,7 +114,7 @@ abstract class AbstractPart
 
         // PreserveText
         if ($xmlReader->elementExists('w:r/w:instrText', $domNode)) {
-            $ignoreText = false;
+            $ignoreText = FALSE;
             $textContent = '';
             $fontStyle = $this->readFontStyle($xmlReader, $domNode);
             $nodes = $xmlReader->getElements('w:r', $domNode);
@@ -123,15 +123,15 @@ abstract class AbstractPart
                 if ($xmlReader->elementExists('w:fldChar', $node)) {
                     $fldCharType = $xmlReader->getAttribute('w:fldCharType', $node, 'w:fldChar');
                     if ($fldCharType == 'begin') {
-                        $ignoreText = true;
+                        $ignoreText = TRUE;
                     } elseif ($fldCharType == 'end') {
-                        $ignoreText = false;
+                        $ignoreText = FALSE;
                     }
                 }
                 if (!is_null($instrText)) {
                     $textContent .= '{' . $instrText . '}';
                 } else {
-                    if ($ignoreText === false) {
+                    if ($ignoreText === FALSE) {
                         $textContent .= $xmlReader->getValue('w:t', $node);
                     }
                 }
@@ -485,9 +485,9 @@ abstract class AbstractPart
         if ($method == self::READ_SIZE) {
             $style = $attributeValue / 2;
         } elseif ($method == self::READ_TRUE) {
-            $style = true;
+            $style = TRUE;
         } elseif ($method == self::READ_FALSE) {
-            $style = false;
+            $style = FALSE;
         } elseif ($method == self::READ_EQUAL) {
             $style = $attributeValue == $expected;
         }

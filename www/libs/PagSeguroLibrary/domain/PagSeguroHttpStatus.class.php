@@ -84,7 +84,7 @@ class PagSeguroHttpStatus
         if (isset($this->typeList[(int) $status])) {
             return $this->typeList[(int) $status];
         } else {
-            return false;
+            return FALSE;
         }
     }
 }

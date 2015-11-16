@@ -5,14 +5,14 @@ class _Sistema_erroControle extends _Sistema_Controle
     public function __construct() {
         parent::__construct();
     }
-    public function Main($codigo = false) {
+    public function Main($codigo = FALSE) {
         if (LAYOULT_IMPRIMIR=='AJAX') {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro ').$codigo,
                 "mgs_secundaria" => self::_getError($codigo)
             );
-            $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+            $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
         } else {
             // CAso login invalido
             if ($codigo=='5051') {
@@ -28,14 +28,14 @@ class _Sistema_erroControle extends _Sistema_Controle
         $this->_Visual->Json_Info_Update('Titulo', __('Erro ').$codigo);
     }
     static function Erro_Puro($codigo) {
-        $Visual = new \Framework\App\Visual(false);
+        $Visual = new \Framework\App\Visual(FALSE);
         $Visual->Blocar(self::_getError($codigo));
         $Visual->Bloco_Unico_CriaJanela('Erro '.$codigo);
         $Visual->Json_Info_Update('Titulo', __('Erro ').$codigo);
         $Visual->renderizar();
         self::Tema_Travar();
     }
-    private static function _getError($codigo = false) {
+    private static function _getError($codigo = FALSE) {
         if ($codigo) {
             $codigo = (int) $codigo;
         } else {
@@ -154,8 +154,8 @@ Server Errors
      * Erro Gerado pelo Mal FLuxo do Sistema, mas que não é um erro.
      * Pode ser feito por testes ou pelo usuario
      */
-    static function Erro_Fluxo($nome,$erro) {
-        return false;
+    static function Erro_Fluxo($nome, $erro) {
+        return FALSE;
     }
 }
 ?>

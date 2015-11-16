@@ -20,8 +20,8 @@ class Acl{
     private $_permissao = Array();
     
     // Permissoes do Sistema
-    public static $Sis_Permissao = false;
-    private static $Sis_Config_Publico = false;
+    public static $Sis_Permissao = FALSE;
+    private static $Sis_Config_Publico = FALSE;
     
     // Registro e banco de dados
     private $_Registro;
@@ -30,7 +30,7 @@ class Acl{
     private $_Cache;
     
     // Configuracoes
-    public      static  $config = false;   
+    public      static  $config = FALSE;   
     
     /**
      *
@@ -47,7 +47,7 @@ class Acl{
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function __construct($id = false) {
+    public function __construct($id = FALSE) {
         $tempo = new \Framework\App\Tempo('Acl - Construct');   
         
         // Recupera Registro
@@ -57,17 +57,17 @@ class Acl{
         $this->_Cache     = &$this->_Registro->_Cache;
         
         // Inicializa Classes caso ainda nao tenham sido
-        if ($this->_db===false) {
+        if ($this->_db === FALSE) {
             $this->_Registro->_Conexao = new \Framework\App\Conexao();
         }
-        if ($this->_Request===false) {
+        if ($this->_Request === FALSE) {
             $this->_Registro->_Request = new \Framework\App\Request();
         }
-        if ($this->_Cache===false) {
+        if ($this->_Cache === FALSE) {
             $this->_Registro->_Cache = new \Framework\App\Cache();
         }
         
-        if ($id!==false) {
+        if ($id !== FALSE) {
             // Caso esteja carregando de outro usuario
             $this->_id = (int) $id;
                     
@@ -87,21 +87,21 @@ class Acl{
 
                 // Esqueci Minha Senha
                 if (isset($_GET['sistema_esquecisenha'])) {
-                    if ($this->_Registro->_Visual===false) $this->_Registro->_Visual = new \Framework\App\Visual();
+                    if ($this->_Registro->_Visual === FALSE) $this->_Registro->_Visual = new \Framework\App\Visual();
                     $this->_Registro->_Visual->Json_Info_Update('Titulo', __('Esqueci Senha'));
                     // Clicando no link do email
                     if (isset($_GET['sistema_esquecisenha_cod'])) {
                         $novasenha = Sistema_Funcoes::Gerar_Senha();
                         $codPassado = Sistema_Funcoes::Seguranca_Gerar_Hash($_GET['sistema_esquecisenha_cod']);
                         $inscricao = $this->_db->Sql_Select('Sistema_Login_Esquecisenha', '{sigla}usado=\'0\' AND {sigla}chave=\''.$codPassado.'\'',1);
-                        if ($inscricao===false) {
+                        if ($inscricao === FALSE) {
                             // MEnsagem de Erro
                             $mensagens = array(
                                 "tipo"              => 'erro',
                                 "mgs_principal"     => __('Código Inválido'),
                                 "mgs_secundaria"    => __('Verifique se a url foi digitada corretamente, ou se já foi usado ou expirada essa requisição.')
                             );
-                            $this->_Registro->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+                            $this->_Registro->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
                             $this->_Registro->_Visual->renderizar();
                             \Framework\App\Controle::Tema_Travar();
                         }
@@ -115,21 +115,21 @@ class Acl{
                                 "mgs_principal"     => __('Código Expirado'),
                                 "mgs_secundaria"    => __('Já faz mais de 24 hrs que esse código foi gerado.')
                             );
-                            $this->_Registro->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+                            $this->_Registro->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
                             $this->_Registro->_Visual->renderizar();
                             \Framework\App\Controle::Tema_Travar();
                         }
 
                         // Verifica se usuario existe
                         $usuario = $this->_db->Sql_Select('Usuario', '{sigla}status=\'1\' && {sigla}login=\''.$inscricao->login.'\'',1);
-                        if ($usuario===false) {
+                        if ($usuario === FALSE) {
                             // MEnsagem de Erro
                             $mensagens = array(
                                 "tipo"              => 'erro',
                                 "mgs_principal"     => __('Erro'),
                                 "mgs_secundaria"    => __('Usuário não encontrado.')
                             );
-                            $this->_Registro->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+                            $this->_Registro->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
                             $this->_Registro->_Visual->renderizar();
                             \Framework\App\Controle::Tema_Travar();
                         }
@@ -147,22 +147,22 @@ class Acl{
                     } else
                     //Acabou de digitar o login
                     if (isset($_POST['sistema_esquecisenha_login'])) {
-                        \Framework\App\Session::destroy(false);
-                        $this->logado           = false;
+                        \Framework\App\Session::destroy(FALSE);
+                        $this->logado           = FALSE;
                         $loginPassado = Conexao::anti_injection($_POST['sistema_esquecisenha_login']);
 
                         // Procura Login
                         $usuario = $this->_db->Sql_Select('Usuario', '{sigla}login=\''.$loginPassado.'\'',1);
-                        if ($usuario===false) {
+                        if ($usuario === FALSE) {
                             // MEnsagem de Erro
                             $mensagens = array(
                                 "tipo"              => 'erro',
                                 "mgs_principal"     => __('Erro'),
                                 "mgs_secundaria"    => __('Usuário não encontrado.')
                             );
-                            $this->_Registro->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+                            $this->_Registro->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
 
-                            $form = new \Framework\Classes\Form('FormEsqueciSenha',SISTEMA_DIR_INT.'?sistema_esquecisenha=true'/*,'formajax'*/); //formajax /'.SISTEMA_MODULO.'/'.SISTEMA_SUB.'/'.SISTEMA_MET
+                            $form = new \Framework\Classes\Form('FormEsqueciSenha',SISTEMA_DIR_INT.'?sistema_esquecisenha= TRUE'/*,'formajax'*/); //formajax /'.SISTEMA_MODULO.'/'.SISTEMA_SUB.'/'.SISTEMA_MET
                             $form->Input_Novo('Login', 'sistema_esquecisenha_login', '', 'text', '',30, '');
                             $this->_Registro->_Visual->Blocar($form->retorna_form('Trocar a Senha'));
                             $this->_Registro->_Visual->Bloco_Unico_CriaJanela(__('Digite o Email'));
@@ -171,7 +171,7 @@ class Acl{
                         }
                         // SE ja tiver inscricao desvale ela
                         $inscricao = $this->_db->Sql_Select('Sistema_Login_Esquecisenha', '{sigla}usado=\'0\' AND {sigla}login=\''.$loginPassado.'\'',1);
-                        if ($inscricao!==false) {
+                        if ($inscricao !== FALSE) {
                             if ((time()-(60*60*24))>$inscricao->time) {
                                 $inscricao->usado=2;
                                 $this->_db->Sql_Update($inscricao);
@@ -182,7 +182,7 @@ class Acl{
                                     "mgs_principal"     => __('Erro'),
                                     "mgs_secundaria"    => __('Vocẽ já fez sua requisição por uma nova senha. Verifique seu email.')
                                 );
-                                $this->_Registro->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+                                $this->_Registro->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
                                 $this->_Registro->_Visual->renderizar();
                                 \Framework\App\Controle::Tema_Travar();
                             }
@@ -200,15 +200,15 @@ class Acl{
 
                         // Criar Email
                         $email = __('Clique no Link Abaixo para Gerar uma Nova senha para o seu Login')
-                                .'<a href="'.URL_PATH.SISTEMA_DIR_INT.'?sistema_esquecisenha=true&sistema_esquecisenha_cod='.$codPassado.'">'.__('Clique Aqui').'</a>';
-                        if (Controle::Enviar_Email($email, 'Alteração de Senha', $usuario->email, $usuario->nome)===false) {
+                                .'<a href="'.URL_PATH.SISTEMA_DIR_INT.'?sistema_esquecisenha= TRUE&sistema_esquecisenha_cod='.$codPassado.'">'.__('Clique Aqui').'</a>';
+                        if (Controle::Enviar_Email($email, 'Alteração de Senha', $usuario->email, $usuario->nome) === FALSE) {
                             // MEnsagem de Erro
                             $mensagens = array(
                                 "tipo"              => 'erro',
                                 "mgs_principal"     => __('Erro'),
                                 "mgs_secundaria"    => __('O email não pode ser enviado, contate o administrador do sistema.')
                             );
-                            $this->_Registro->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+                            $this->_Registro->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
                             $this->_Registro->_Visual->renderizar();
                             \Framework\App\Controle::Tema_Travar();
                         }
@@ -221,10 +221,10 @@ class Acl{
                     }
                     // Criar Formulario
                     else{
-                        \Framework\App\Session::destroy(false);
-                        $this->logado           = false;
+                        \Framework\App\Session::destroy(FALSE);
+                        $this->logado           = FALSE;
 
-                        $form = new \Framework\Classes\Form('FormEsqueciSenha',SISTEMA_DIR_INT.'?sistema_esquecisenha=true'/*,'formajax'*/); //formajax /'.SISTEMA_MODULO.'/'.SISTEMA_SUB.'/'.SISTEMA_MET
+                        $form = new \Framework\Classes\Form('FormEsqueciSenha',SISTEMA_DIR_INT.'?sistema_esquecisenha= TRUE'/*,'formajax'*/); //formajax /'.SISTEMA_MODULO.'/'.SISTEMA_SUB.'/'.SISTEMA_MET
                         $form->Input_Novo('Login', 'sistema_esquecisenha_login', '', 'text', '',30, '');
                         $this->_Registro->_Visual->Blocar($form->retorna_form('Trocar a Senha'));
                         $this->_Registro->_Visual->Bloco_Unico_CriaJanela(__('Digite o Email'));
@@ -237,30 +237,30 @@ class Acl{
             
             // verifica se foi pedido o logout
             if (isset($_GET['logout'])) $logout = 'sair';
-            else                       $logout = false;
+            else                       $logout = FALSE;
             
             // Caso Tenha Pedido Pra sair, SAIR
             if ($logout==='sair') {
                 $this->Usuario_Login_Sair();
                 $this->_Registro->_Visual = new \Framework\App\Visual();
-                $this->_Registro->_Visual->renderizar_login(/*$this->calendario,$this->config_dia,$this->config_mes,$this->config_ano,$this->config_dataixi*/);
+                $this->_Registro->_Visual->renderizar_login(/*$this->calendario, $this->config_dia, $this->config_mes, $this->config_ano, $this->config_dataixi*/);
                 \Framework\App\Controle::Tema_Travar();
             } else
             // CASO NAO TENHA FEITO LOGIN, E NEM PREENCHIDO O 
-            if (!isset($_POST['sistema_login']) && !isset($_POST['sistema_senha']) && \Framework\App\Session::get(SESSION_ADMIN_LOG)===false && \Framework\App\Session::get(SESSION_ADMIN_SENHA)===false) {
-                $this->logado           = false;
+            if (!isset($_POST['sistema_login']) && !isset($_POST['sistema_senha']) && \Framework\App\Session::get(SESSION_ADMIN_LOG) === FALSE && \Framework\App\Session::get(SESSION_ADMIN_SENHA) === FALSE) {
+                $this->logado           = FALSE;
             } else
             // Caso nao tenha sessao quer dizer que tem POST
             // se nao tiver sessao, verifica se o post foi acessado, caso contrario verifica se a sessao corresponde ao usuario e senha
-            if (isset($_POST['sistema_login']) && isset($_POST['sistema_senha']) && (\Framework\App\Session::get(SESSION_ADMIN_LOG)===false || \Framework\App\Session::get(SESSION_ADMIN_SENHA)===false || \Framework\App\Session::get(SESSION_ADMIN_LOG)=='' || \Framework\App\Session::get(SESSION_ADMIN_SENHA)=='')) {
+            if (isset($_POST['sistema_login']) && isset($_POST['sistema_senha']) && (\Framework\App\Session::get(SESSION_ADMIN_LOG) === FALSE || \Framework\App\Session::get(SESSION_ADMIN_SENHA) === FALSE || \Framework\App\Session::get(SESSION_ADMIN_LOG)=='' || \Framework\App\Session::get(SESSION_ADMIN_SENHA)=='')) {
 
                 // Tenta com a Nova Api de Senha mais Segura.
                 $this->logado = $this->Usuario_Senha_Verificar();
                 
                 // Avisa se login nao teve resultado
-                if ($this->logado===false) {
+                if ($this->logado === FALSE) {
                     // Verifica se Possui Modulo PRedial e corresponde a um Apartamento sem nenhum cadastro
-                    if (\Framework\App\Sistema_Funcoes::Perm_Modulos('predial') && $_POST['sistema_senha'] === '123456' && strpos($_POST['sistema_login'], '/')!==false) {
+                    if (\Framework\App\Sistema_Funcoes::Perm_Modulos('predial') && $_POST['sistema_senha'] === '123456' && strpos($_POST['sistema_login'], '/') !== FALSE) {
                         $login = explode(\Framework\App\Conexao::anti_injection($_POST['sistema_login']), '/');
                         if (!isset($login[1])) {
                             // Deleta Sessoes e Puxa Erro
@@ -275,7 +275,7 @@ class Acl{
                             $where,
                             1
                         );
-                        if ($bloco===false) {
+                        if ($bloco === FALSE) {
                             _Sistema_erroControle::Erro_Puro(5062);
                         } else {
                             $where = Array(
@@ -287,7 +287,7 @@ class Acl{
                                 $where,
                                 1
                             );
-                            if ($apartamento!==false) {
+                            if ($apartamento !== FALSE) {
                                 if ($apartamento->morador==0) {
                                     $Visual = new \Framework\App\Visual();
                                     $Visual->renderizar();
@@ -306,7 +306,7 @@ class Acl{
                                 "mgs_principal"     => __('Código Inválido'),
                                 "mgs_secundaria"    => __('Verifique se a url foi digitada corretamente, ou se já foi usado ou expirada essa requisição.')
                             );
-                            $this->_Registro->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+                            $this->_Registro->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
                         }
                     }
                     // Deleta Sessoes e Puxa Erro
@@ -324,7 +324,7 @@ class Acl{
                 );
 
                 // Avisa se login nao teve resultado
-                if ($this->logado===false ) {
+                if ($this->logado === FALSE ) {
                     \Framework\App\Session::destroy(SESSION_ADMIN_ID);
                     \Framework\App\Session::destroy(SESSION_ADMIN_LOG);
                     \Framework\App\Session::destroy(SESSION_ADMIN_SENHA);
@@ -333,26 +333,26 @@ class Acl{
             }
         
             // SE A PAGINA FOR PROIBIDA PARA USUARIOS DESLOGADOS TRAVA
-            if (TEMA_LOGIN===true && $this->logado===false && $this->_Request->getSubModulo()!=='erro' && $this->_Request->getSubModulo()!=='Recurso' && $this->_Request->getSubModulo()!=='localidades') {
+            if (TEMA_LOGIN === TRUE && $this->logado === FALSE && $this->_Request->getSubModulo()!=='erro' && $this->_Request->getSubModulo()!=='Recurso' && $this->_Request->getSubModulo()!=='localidades') {
                 $this->_Registro->_Visual = new \Framework\App\Visual();
-                $this->_Registro->_Visual->renderizar_login(/*$this->calendario,$this->config_dia,$this->config_mes,$this->config_ano,$this->config_dataixi*/);
+                $this->_Registro->_Visual->renderizar_login(/*$this->calendario, $this->config_dia, $this->config_mes, $this->config_ano, $this->config_dataixi*/);
                 \Framework\App\Controle::Tema_Travar();
             }            
         }
         self::$Sis_Permissao = $this->_db->Sql_Select('Sistema_Permissao');
-        if (self::$Sis_Permissao===false) {
+        if (self::$Sis_Permissao === FALSE) {
             $this->Sistema_Config_Permissoes_InserirPadrao();
             self::$Sis_Permissao = $this->_db->Sql_Select('Sistema_Permissao');
         }
         self::$Sis_Config_Publico = $this->_db->Sql_Select('Sistema_Config');
-        if (self::$Sis_Config_Publico===false) {
+        if (self::$Sis_Config_Publico === FALSE) {
             $this->Sistema_Config_Publico_InserirPadrao();
             self::$Sis_Config_Publico = $this->_db->Sql_Select('Sistema_Config');
         }
         
         if ($this->_id!==0) {
             $this->_grupo       = $this->getGrupo();
-            if ($this->_grupo!==false) {
+            if ($this->_grupo !== FALSE) {
                 if (!is_int($this->_grupo) || $this->_grupo==0) {
                     self::grupos_inserir();
                     throw new \Exception('Grupo não existente: '.$this->_grupo, 2901);
@@ -365,7 +365,7 @@ class Acl{
                 //}
             }
         }
-        return true;
+        return TRUE;
     }
     
     /**
@@ -379,7 +379,7 @@ class Acl{
             "mgs_principal"     => __('Senha Inválida'),
             "mgs_secundaria"    => __('Verifique se o Login ou a senha foram colocadas com sucesso.')
         );
-        $_Registro->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+        $_Registro->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
     }
     /**
      * CONFIG PUBLICAS DO SISTEMA
@@ -392,7 +392,7 @@ class Acl{
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Get_Config_Publico($chave,$campo='valor') {
+    public function Get_Config_Publico($chave, $campo='valor') {
         $array = &self::$Sis_Config_Publico;
         reset($array);
         while (key($array)!==NULL) {
@@ -416,7 +416,7 @@ class Acl{
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Get_Permissao_Nome($chave,$campo='Nome') {
+    public function Get_Permissao_Nome($chave, $campo='Nome') {
         $array = &self::$Sis_Permissao;
         reset($array);
         while (key($array)!==NULL) {
@@ -451,12 +451,12 @@ class Acl{
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Get_Permissao_Chave($chave,$campo='Nome') {
+    public function Get_Permissao_Chave($chave, $campo='Nome') {
         $array = $this->getPermissao();
         if (isset($array[$chave])) {
             return $array[$chave]['valor'];
         } else {
-            return false;
+            return FALSE;
         }
     }
     /**
@@ -468,7 +468,7 @@ class Acl{
     public function Get_Permissao_Url($url) {
         // Economiza Tempo quando a URL é obvia que é permitida
         if ($url===NULL || $url===SISTEMA_URL.SISTEMA_DIR.'#' || $url===SISTEMA_URL.SISTEMA_DIR.'#/' || $url===SISTEMA_URL.SISTEMA_DIR || $url===SISTEMA_URL.SISTEMA_DIR.'/') {
-            return true;
+            return TRUE;
         }
         // Começa Tratamento
         $tempo = new \Framework\App\Tempo('Acl Get Permissao');
@@ -493,7 +493,7 @@ class Acl{
             
                 // Verifica se permissao inclue a url de entrada
                 $consta = strpos(strtolower($url), strtolower($objeto->end));
-                if ($consta!==false) {
+                if ($consta !== FALSE) {
                     $permissoes_quepossuem[] = Array(
                         'Perm'      => $objeto,
                         'Gravidade' => strlen($objeto->end)); // tamanho da url vira a gravidade
@@ -503,20 +503,20 @@ class Acl{
             next($array);
         }
         // Ordena Array Multi indices
-        orderMultiDimensionalArray($permissoes_quepossuem, 'Gravidade', true);
+        orderMultiDimensionalArray($permissoes_quepossuem, 'Gravidade', TRUE);
         
-        //var_dump($permissoes_registro,$permissoes_quepossuem);
+        //var_dump($permissoes_registro, $permissoes_quepossuem);
         // Percorre Verificando Permissoes
         $permissoes_registro = $this->getPermissao();
         reset($permissoes_quepossuem);
         while (key($permissoes_quepossuem)!==NULL) {
             $objeto = current($permissoes_quepossuem);
-            if (!isset($permissoes_registro[$objeto['Perm']->chave]) || $permissoes_registro[$objeto['Perm']->chave]['valor']===false) {
-                return false;
+            if (!isset($permissoes_registro[$objeto['Perm']->chave]) || $permissoes_registro[$objeto['Perm']->chave]['valor'] === FALSE) {
+                return FALSE;
             }
             next($permissoes_quepossuem);
         }
-        return true;
+        return TRUE;
     }
     /**
      * Compilar as Permissões, Junta as Permissoes de Usuario com as de Grupo
@@ -547,7 +547,7 @@ class Acl{
         /*echo 'SELECT U.grupo,SG.categoria FROM '.MYSQL_USUARIOS.' U LEFT JOIN '.MYSQL_SIS_GRUPO.' SG '.
             'ON U.grupo=SG.id WHERE U.deletado!=1 AND U.id='.$this->_id; exit;*/
         $grupo = $sql->fetch_object();
-        if ($grupo==NULL) return false;
+        if ($grupo==NULL) return FALSE;
         if ($grupo->categoria!==NULL && $grupo->categoria!=0) {
             return (int) $grupo->grupo;    
         }
@@ -555,7 +555,7 @@ class Acl{
         $sql = $this->_db->query(
             'SELECT * FROM '.MYSQL_CAT.' C LEFT JOIN '.MYSQL_CAT_ACESSO.' CA '.
             'ON C.id WHERE CA.mod_acc=\'usuario_grupo\''
-        ,true);
+        ,TRUE);
         $categoria = $sql->fetch_object();
         // Caso nao Exista, cria as categorias
         if ($categoria===NULL) {
@@ -565,68 +565,68 @@ class Acl{
             $this->_db->query(
                 'INSERT INTO '.MYSQL_CAT.' (log_date_add,servidor,parent,nome,deletado)
                 VALUES (\''.APP_HORA.'\',\''.SRV_NAME_SQL.'\',0,\'Gerais\',0);'
-            ,true);
+            ,TRUE);
             $id = (int) $this->_db->ultimo_id();
             $cadastrar = $this->_db->query(
                 'INSERT INTO '.MYSQL_CAT_ACESSO.' (log_date_add,servidor,categoria,mod_acc)
                 VALUES (\''.APP_HORA.'\',\''.SRV_NAME_SQL.'\', '.$id.',\'usuario_grupo\');'
-            ,true);
-            $manutencao->Alterar_Config('CFG_TEC_CAT_ID_ADMIN',$id);
+            ,TRUE);
+            $manutencao->Alterar_Config('CFG_TEC_CAT_ID_ADMIN', $id);
             // Atualiza GRUPOs REFErentes
-            $this->_db->query('UPDATE '.MYSQL_SIS_GRUPO.' SET categoria='.$id.' WHERE id!='.CFG_TEC_IDFUNCIONARIO.' AND id!='.CFG_TEC_IDCLIENTE,true,false);
+            $this->_db->query('UPDATE '.MYSQL_SIS_GRUPO.' SET categoria='.$id.' WHERE id!='.CFG_TEC_IDFUNCIONARIO.' AND id!='.CFG_TEC_IDCLIENTE, TRUE, FALSE);
             
             // Funcionarios
             $this->_db->query(
                 'INSERT INTO '.MYSQL_CAT.' (log_date_add,servidor,parent,nome,deletado)
                 VALUES (\''.APP_HORA.'\',\''.SRV_NAME_SQL.'\',0,\'Clientes\',0);'
-            ,true);
+            ,TRUE);
             $id = (int) $this->_db->ultimo_id();
             $cadastrar = $this->_db->query(
                 'INSERT INTO '.MYSQL_CAT_ACESSO.' (log_date_add,servidor,categoria,mod_acc)
                 VALUES (\''.APP_HORA.'\',\''.SRV_NAME_SQL.'\', '.$id.',\'usuario_grupo\');'
-            ,true);
-            $manutencao->Alterar_Config('CFG_TEC_CAT_ID_CLIENTES',$id);
+            ,TRUE);
+            $manutencao->Alterar_Config('CFG_TEC_CAT_ID_CLIENTES', $id);
             // Atualiza GRUPOs REFErentes
-            $this->_db->query('UPDATE '.MYSQL_SIS_GRUPO.' SET categoria='.$id.' WHERE id='.CFG_TEC_IDCLIENTE,true,false);
+            $this->_db->query('UPDATE '.MYSQL_SIS_GRUPO.' SET categoria='.$id.' WHERE id='.CFG_TEC_IDCLIENTE, TRUE, FALSE);
             
             // Funcionarios
             $this->_db->query(
                 'INSERT INTO '.MYSQL_CAT.' (log_date_add,servidor,parent,nome,deletado)
                 VALUES (\''.APP_HORA.'\',\''.SRV_NAME_SQL.'\',0,\'Funcionários\',0);'
-            ,true);
+            ,TRUE);
             $id = (int) $this->_db->ultimo_id();
             $cadastrar = $this->_db->query(
                 'INSERT INTO '.MYSQL_CAT_ACESSO.' (log_date_add,servidor,categoria,mod_acc)
                 VALUES (\''.APP_HORA.'\',\''.SRV_NAME_SQL.'\', '.$id.',\'usuario_grupo\');'
-            ,true);
-            $manutencao->Alterar_Config('CFG_TEC_CAT_ID_FUNCIONARIOS',$id);
+            ,TRUE);
+            $manutencao->Alterar_Config('CFG_TEC_CAT_ID_FUNCIONARIOS', $id);
             // Atualiza GRUPOs REFErentes
-            $this->_db->query('UPDATE '.MYSQL_SIS_GRUPO.' SET categoria='.$id.' WHERE id='.CFG_TEC_IDCLIENTE,true,false);
+            $this->_db->query('UPDATE '.MYSQL_SIS_GRUPO.' SET categoria='.$id.' WHERE id='.CFG_TEC_IDCLIENTE, TRUE, FALSE);
             
             // Clientes 
             $this->_db->query(
                 'INSERT INTO '.MYSQL_CAT.' (log_date_add,servidor,parent,nome,deletado)
                 VALUES (\''.APP_HORA.'\',\''.SRV_NAME_SQL.'\',0,\'Clientes\',0);'
-            ,true);
+            ,TRUE);
             $id = (int) $this->_db->ultimo_id();
             $cadastrar = $this->_db->query(
                 'INSERT INTO '.MYSQL_CAT_ACESSO.' (log_date_add,servidor,categoria,mod_acc)
                 VALUES (\''.APP_HORA.'\',\''.SRV_NAME_SQL.'\', '.$id.',\'usuario_grupo\');'
-            ,true);
-            $manutencao->Alterar_Config('CFG_TEC_CAT_ID_CLIENTES',$id);
+            ,TRUE);
+            $manutencao->Alterar_Config('CFG_TEC_CAT_ID_CLIENTES', $id);
             // Atualiza GRUPOs REFErentes
-            $this->_db->query('UPDATE '.MYSQL_SIS_GRUPO.' SET categoria='.$id.' WHERE id='.CFG_TEC_IDFUNCIONARIO,true,false);
+            $this->_db->query('UPDATE '.MYSQL_SIS_GRUPO.' SET categoria='.$id.' WHERE id='.CFG_TEC_IDFUNCIONARIO, TRUE, FALSE);
 
         } else {
             // tenta botar em grupos ja existentes
             if ($grupo->grupo=='1') {
-                $this->_db->query('UPDATE '.MYSQL_USUARIOS.' SET grupo='.CFG_TEC_IDADMINDEUS.' WHERE grupo='.$grupo->grupo,true,false);
+                $this->_db->query('UPDATE '.MYSQL_USUARIOS.' SET grupo='.CFG_TEC_IDADMINDEUS.' WHERE grupo='.$grupo->grupo, TRUE, FALSE);
             } else if ($grupo->grupo=='2') {
-                $this->_db->query('UPDATE '.MYSQL_USUARIOS.' SET grupo='.CFG_TEC_IDADMIN.' WHERE grupo='.$grupo->grupo,true,false);
+                $this->_db->query('UPDATE '.MYSQL_USUARIOS.' SET grupo='.CFG_TEC_IDADMIN.' WHERE grupo='.$grupo->grupo, TRUE, FALSE);
             } else if ($grupo->grupo=='4' || $grupo->grupo=='3') {
-                $this->_db->query('UPDATE '.MYSQL_USUARIOS.' SET grupo='.CFG_TEC_IDCLIENTE.' WHERE grupo='.$grupo->grupo,true,false);
+                $this->_db->query('UPDATE '.MYSQL_USUARIOS.' SET grupo='.CFG_TEC_IDCLIENTE.' WHERE grupo='.$grupo->grupo, TRUE, FALSE);
             } else if ($grupo->grupo=='5') {
-                $this->_db->query('UPDATE '.MYSQL_USUARIOS.' SET grupo='.CFG_TEC_IDFUNCIONARIO.' WHERE grupo='.$grupo->grupo,true,false);
+                $this->_db->query('UPDATE '.MYSQL_USUARIOS.' SET grupo='.CFG_TEC_IDFUNCIONARIO.' WHERE grupo='.$grupo->grupo, TRUE, FALSE);
             }
         }
         // REEXECUTA QUERY
@@ -635,7 +635,7 @@ class Acl{
             'ON U.grupo=SG.id WHERE U.deletado!=1 AND U.id='.$this->_id
         );
         $grupo = $sql->fetch_object();
-        if ($grupo==NULL) return false;
+        if ($grupo==NULL) return FALSE;
         if ($grupo->categoria!==NULL && $grupo->categoria!=0) {
             return (int) $grupo->grupo;    
         }
@@ -670,9 +670,9 @@ class Acl{
         while ($campo = $sql_permissoes->fetch_object()) {
             
             if ($campo->valor=='1') {
-                $v = true;
+                $v = TRUE;
             } else {
-                $v = false;
+                $v = FALSE;
             }
             
             $data[$campo->chave] = Array(
@@ -710,13 +710,13 @@ class Acl{
 
         $permissao = $this->_db->query('SELECT SP.chave,SP.modulo,SP.submodulo,SP.metodo,SP.end,SP.nome,UP.valor FROM '.MYSQL_USUARIO_PERMISSAO.' UP, '.MYSQL_SIS_PERMISSAO.' SP'.
                 ' WHERE UP.deletado!=1 AND UP.permissao = SP.chave AND UP.servidor = \''.SRV_NAME_SQL.'\' AND UP.usuario = '.$this->_id
-                //.' AND UP.permissao in ( '.implode(', ',$ids).' )'
-                ,true);
+                //.' AND UP.permissao in ( '.implode(', ', $ids).' )'
+                ,TRUE);
         while ($campo = $permissao->fetch_object()) {            
             if ($campo->valor==1 || $campo->valor=='1') {
-                $v = true;
+                $v = TRUE;
             } else {
-                $v = false;
+                $v = FALSE;
             }
             
             $data[$campo->chave] = Array(
@@ -746,7 +746,7 @@ class Acl{
      * @version 0.4.2
      */
     public function Usuario_GetID() {
-        if (!isset($this->logado_usuario) || !is_numeric($this->logado_usuario->id) || $this->logado===false) {
+        if (!isset($this->logado_usuario) || !is_numeric($this->logado_usuario->id) || $this->logado === FALSE) {
             return 0;
         }
         $id = (int) $this->logado_usuario->id;
@@ -760,7 +760,7 @@ class Acl{
      * @version 0.4.2
      */
     public function Usuario_GetNome() {
-        if (!isset($this->logado_usuario) || $this->logado===false) {
+        if (!isset($this->logado_usuario) || $this->logado === FALSE) {
             return 0;
         }
         $nome = $this->logado_usuario->nome;
@@ -774,7 +774,7 @@ class Acl{
      * @version 0.4.2
      */
     public function Usuario_GetEmail() {
-        if (!isset($this->logado_usuario) || $this->logado===false) {
+        if (!isset($this->logado_usuario) || $this->logado === FALSE) {
             return 0;
         }
         $email = $this->logado_usuario->email;
@@ -821,12 +821,12 @@ class Acl{
     * Revisão:
     *  - 0.1.1 2013-05-13 Sessao Automatizada por Constante
     */
-    public function Usuario_Senha_Verificar($email=false,$senha=false)
+    public function Usuario_Senha_Verificar($email = FALSE, $senha = FALSE)
     {
-        if ($email===false) {
+        if ($email === FALSE) {
                 $email = \Framework\App\Conexao::anti_injection($_POST['sistema_login']);
         }
-        if ($senha===false) {
+        if ($senha === FALSE) {
             $senha = $_POST['sistema_senha'];
         }
         
@@ -839,32 +839,32 @@ class Acl{
         while ($this->logado_usuario = $query->fetch_object()) {
             // Se for Igual Passa
             if ($this->logado_usuario->senha===$senha) {
-                $this->Usuario_Logar($email,$senha,$this->logado_usuario->id);
-                 $this->logado           = true;
-                return true;
+                $this->Usuario_Logar($email, $senha, $this->logado_usuario->id);
+                 $this->logado           = TRUE;
+                return TRUE;
             }
             // Se nao, verifica o time da senha, pra poder compilar para comparação
-            $recuperaca_time = explode('\?',$this->logado_usuario->senha);
-            if (isset($recuperaca_time[2]) && $this->logado_usuario->senha===\Framework\App\Sistema_Funcoes::Form_Senha_Blindar($senha,true,$recuperaca_time[2])) {
+            $recuperaca_time = explode('\?', $this->logado_usuario->senha);
+            if (isset($recuperaca_time[2]) && $this->logado_usuario->senha===\Framework\App\Sistema_Funcoes::Form_Senha_Blindar($senha, TRUE, $recuperaca_time[2])) {
                 // Se a senha tiver passado de 3 meses, pedir pra trocar a senha, dessa forma, mesmo se
                 // pegarem a senha criptografada, quando conseguirem descobrir uma chave que abre.
                 // O usuário já irá ter trocado de senha #update
-                $this->Usuario_Logar($email,$senha,$this->logado_usuario->id);
-                 $this->logado           = true;
-                return true;
+                $this->Usuario_Logar($email, $senha, $this->logado_usuario->id);
+                 $this->logado           = TRUE;
+                return TRUE;
             } else if ($this->logado_usuario->senha===\Framework\App\Sistema_Funcoes::Form_Senha_Blindar($senha)) {
                 // Necessita Trocar Senha
-                $this->Usuario_Logar($email,$senha,$this->logado_usuario->id);
-                 $this->logado           = true;
-                return true;
+                $this->Usuario_Logar($email, $senha, $this->logado_usuario->id);
+                 $this->logado           = TRUE;
+                return TRUE;
             }
             // Senha Errada
         }
         // CAso nao AChe
         $this->logado_usuario = new \Usuario_DAO();
         $this->logado_usuario->id = 0;
-        $this->logado           = false;
-        return false;
+        $this->logado           = FALSE;
+        return FALSE;
         
     }
     /**
@@ -874,8 +874,8 @@ class Acl{
         \Framework\App\Session::destroy(SESSION_ADMIN_ID);
         \Framework\App\Session::destroy(SESSION_ADMIN_LOG);
         \Framework\App\Session::destroy(SESSION_ADMIN_SENHA);
-        \Framework\App\Session::destroy(false);
-        $this->logado           = false;
+        \Framework\App\Session::destroy(FALSE);
+        $this->logado           = FALSE;
     }
     /**
      * 
@@ -887,13 +887,13 @@ class Acl{
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Usuario_Logar($login='',$senha='',$id=0) {
+    public function Usuario_Logar($login='', $senha='', $id=0) {
         // #update -> Aplicar Segurança de Roubo de Sessao, Gerar Token e 
         // Configurar opcao de manter logado
         if ($login!=='') \Framework\App\Session::set(SESSION_ADMIN_LOG,   $login);
         if ($senha!=='') \Framework\App\Session::set(SESSION_ADMIN_SENHA, $senha);
         if ($senha!==0) \Framework\App\Session::set(SESSION_ADMIN_ID,    $id);
-        return true;
+        return TRUE;
     }
     /**
      * Retorna se ta logado
@@ -945,7 +945,7 @@ class Acl{
         $sql = $db->query(
             'SELECT * FROM '.MYSQL_CAT.' C LEFT JOIN '.MYSQL_CAT_ACESSO.' CA '.
             'ON C.id WHERE CA.mod_acc=\'usuario_grupo\'' 
-       ,true);
+       ,TRUE);
         $categoria = $sql->fetch_object();
         // Caso nao Exista, cria as categorias
         if ($categoria===NULL) {
@@ -955,37 +955,37 @@ class Acl{
             $db->query(
                 'INSERT INTO '.MYSQL_CAT.' (log_date_add,servidor,parent,nome,deletado)
                 VALUES (\''.APP_HORA.'\',\''.SRV_NAME_SQL.'\',0,\'Gerais\',0);'
-            ,true);
+            ,TRUE);
             $gerais_id = (int) $db->ultimo_id();
             $cadastrar = $db->query(
                 'INSERT INTO '.MYSQL_CAT_ACESSO.' (log_date_add,servidor,categoria,mod_acc)
                 VALUES (\''.APP_HORA.'\',\''.SRV_NAME_SQL.'\', '.$gerais_id.',\'usuario_grupo\');'
-            ,true);
-            $manutencao->Alterar_Config('CFG_TEC_CAT_ID_ADMIN',$gerais_id);
+            ,TRUE);
+            $manutencao->Alterar_Config('CFG_TEC_CAT_ID_ADMIN', $gerais_id);
             
             // Clientes
             $db->query(
                 'INSERT INTO '.MYSQL_CAT.' (log_date_add,servidor,parent,nome,deletado)
                 VALUES (\''.APP_HORA.'\',\''.SRV_NAME_SQL.'\',0,\'Clientes\',0);'
-            ,true);
+            ,TRUE);
             $clientes_id = (int) $db->ultimo_id();
             $cadastrar = $db->query(
                 'INSERT INTO '.MYSQL_CAT_ACESSO.' (log_date_add,servidor,categoria,mod_acc)
                 VALUES (\''.APP_HORA.'\',\''.SRV_NAME_SQL.'\', '.$clientes_id.',\'usuario_grupo\');'
-            ,true);
-            $manutencao->Alterar_Config('CFG_TEC_CAT_ID_CLIENTES',$clientes_id);
+            ,TRUE);
+            $manutencao->Alterar_Config('CFG_TEC_CAT_ID_CLIENTES', $clientes_id);
             
             // Funcionarios
             $db->query(
                 'INSERT INTO '.MYSQL_CAT.' (log_date_add,servidor,parent,nome,deletado)
                 VALUES (\''.APP_HORA.'\',\''.SRV_NAME_SQL.'\',0,\'Funcionários\',0);'
-            ,true);
+            ,TRUE);
             $funcionarios_id = (int) $db->ultimo_id();
             $cadastrar = $db->query(
                 'INSERT INTO '.MYSQL_CAT_ACESSO.' (log_date_add,servidor,categoria,mod_acc)
                 VALUES (\''.APP_HORA.'\',\''.SRV_NAME_SQL.'\', '.$funcionarios_id.',\'usuario_grupo\');'
-            ,true);
-            $manutencao->Alterar_Config('CFG_TEC_CAT_ID_FUNCIONARIOS',$funcionarios_id);
+            ,TRUE);
+            $manutencao->Alterar_Config('CFG_TEC_CAT_ID_FUNCIONARIOS', $funcionarios_id);
         } else {
             
             $gerais_id = (int) CFG_TEC_CAT_ID_ADMIN;
@@ -995,7 +995,7 @@ class Acl{
         
         
         $grupos = $db->Sql_Select('Sistema_Grupo');
-        if ($grupos===false) {
+        if ($grupos === FALSE) {
             
             // Admin Master
             $grupo = new \Sistema_Grupo_DAO();
@@ -1045,14 +1045,14 @@ class Acl{
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public static function Sistema_Modulos_Configs_Funcional($chave=false) {
-        if ($chave===false || $chave=='') return false;
-        if (self::$config===false) {
+    public static function Sistema_Modulos_Configs_Funcional($chave = FALSE) {
+        if ($chave === FALSE || $chave=='') return FALSE;
+        if (self::$config === FALSE) {
             self::$config     = &self::Sistema_Modulos_Carregar_Funcional();
         }
         $percorrer  = &self::$config[$chave]['Valor'];
         // Percorre Funcional
-        /*if (empty($percorrer)) return false;
+        /*if (empty($percorrer)) return FALSE;
         foreach($percorrer as &$valor) {
             if ($valor['chave']==$chave) {
                 return $valor['Valor'];
@@ -1060,7 +1060,7 @@ class Acl{
         }*/
         if (isset($percorrer))
             return $percorrer;
-        return false;
+        return FALSE;
     }
     /**
      * Em cima de uma Chave, retorna o Valor desse Config nesse Servidor
@@ -1071,12 +1071,12 @@ class Acl{
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public static function Sistema_Modulos_Configs_Publico($chave=false) {
-        if ($chave===false || $chave=='') return false;
+    public static function Sistema_Modulos_Configs_Publico($chave = FALSE) {
+        if ($chave === FALSE || $chave=='') return FALSE;
         $db          = &$this->_Registro->_Conexao;
-        if (self::$Sis_Config_Publico===false) {
+        if (self::$Sis_Config_Publico === FALSE) {
             self::$Sis_Config_Publico = $db->Sql_Select('Sistema_Config');
-            if (self::$Sis_Config_Publico===false) {
+            if (self::$Sis_Config_Publico === FALSE) {
                 $this->Sistema_Config_Publico_InserirPadrao();
                 self::$Sis_Config_Publico = $db->Sql_Select('Sistema_Config');
             }
@@ -1084,7 +1084,7 @@ class Acl{
         $percorrer  = &self::$Sis_Config_Publico[$chave]['Valor'];
         
         // Percorre Publico
-        /*if (empty($percorrer)) return false;
+        /*if (empty($percorrer)) return FALSE;
         foreach($percorrer as &$valor) {
             if ($valor['chave']==$chave) {
                 return $valor['Valor'];
@@ -1092,7 +1092,7 @@ class Acl{
         }*/
         if (isset($percorrer))
             return $percorrer;
-        return false;
+        return FALSE;
     }
     /**
      * 
@@ -1118,7 +1118,7 @@ class Acl{
                     // Puxa
                     include MOD_PATH.''.$current.'/_Config.php';
                     // Realiza Merge para Indexir Configuracoes
-                    $config         = array_merge_recursive($config     ,$config_Menu()         );
+                    $config         = array_merge_recursive($config     , $config_Menu()         );
                 } 
             }
             next($ponteiro);
@@ -1149,7 +1149,7 @@ class Acl{
                     // Puxa
                     include MOD_PATH.''.$current.'/_Config.php';
                     // Realiza Merge para Indexir Configuracoes
-                    $config    = array_merge_recursive($config,$config_Permissoes()   );
+                    $config    = array_merge_recursive($config, $config_Permissoes()   );
                 } 
             }
             next($ponteiro);
@@ -1168,7 +1168,7 @@ class Acl{
         // ordena na ordem correta
         $Registro = &\Framework\App\Registro::getInstacia();
         // Inicializa Caso nao Tenha Sido
-        if ($Registro->_Cache===false) {
+        if ($Registro->_Cache === FALSE) {
             $Registro->_Cache = new \Framework\App\Cache();
         }
         // Verifica se Tem Cache
@@ -1211,7 +1211,7 @@ class Acl{
                             $config_funciona = $config_Funcional();
                         }
                         // Realiza Merge para Indexir Configuracoes
-                        $funcional    = array_merge_recursive($funcional,$config_funciona       );
+                        $funcional    = array_merge_recursive($funcional, $config_funciona       );
                     } 
                 }
                 next($ponteiro);
@@ -1267,7 +1267,7 @@ class Acl{
                         $config_publico_temp = $config_Publico();
                     }
                     // Realiza Merge para Indexir Configuracoes
-                    $publico    = array_merge_recursive($publico,$config_publico_temp       );
+                    $publico    = array_merge_recursive($publico, $config_publico_temp       );
                 } 
             }
             next($ponteiro);
@@ -1290,16 +1290,16 @@ class Acl{
                     $where = Array(
                         'chave' => $valor['Chave'],
                     );
-                    $retorno = $this->_db->Sql_Select('Sistema_Permissao',$where);
-                    if ($retorno===false) {
+                    $retorno = $this->_db->Sql_Select('Sistema_Permissao', $where);
+                    if ($retorno === FALSE) {
                         
                         
                         // Se nao tiver Permissao funcional requerida, entao passa direto
-                        $trava = false;
+                        $trava = FALSE;
                         if (isset($valor['Permissao_Func']) && is_array($valor['Permissao_Func'])) {
                             foreach($valor['Permissao_Func'] as $indicepermfunc=>&$permfunc) {
                                 if (\Framework\App\Acl::Sistema_Modulos_Configs_Funcional($indicepermfunc)!==$permfunc) {
-                                    $trava = true;
+                                    $trava = TRUE;
                                     continue;
                                 }
                             }
@@ -1307,7 +1307,7 @@ class Acl{
                         if ($trava) continue;
                         
                         // Faz as Paradas Cria Permissao e Grava no Banco
-                        $endereco   = explode('/',$valor['End']);
+                        $endereco   = explode('/', $valor['End']);
                         $modulo     = $endereco[0];
                         if (isset($endereco[1])) {
                             $submodulo  = $endereco[1];
@@ -1340,16 +1340,16 @@ class Acl{
                 if ($valor['Chave']!='') {
                     // Verifica se ja existe
                     $where = '{sigla}chave=\''.$valor['Chave'].'\'';
-                    $retorno = $this->_db->Sql_Select('Sistema_Config',$where);
-                    if ($retorno===false) {
+                    $retorno = $this->_db->Sql_Select('Sistema_Config', $where);
+                    if ($retorno === FALSE) {
                         
                         
                         // Se nao tiver Permissao funcional requerida, entao passa direto
-                        $trava = false;
+                        $trava = FALSE;
                         if (isset($valor['Permissao_Func']) && is_array($valor['Permissao_Func'])) {
                             foreach($valor['Permissao_Func'] as $indicepermfunc=>&$permfunc) {
                                 if (\Framework\App\Acl::Sistema_Modulos_Configs_Funcional($indicepermfunc)!==$permfunc) {
-                                    $trava = true;
+                                    $trava = TRUE;
                                     continue;
                                 }
                             }

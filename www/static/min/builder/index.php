@@ -222,7 +222,7 @@ $content = ob_get_clean();
 // setup Minify
 Minify::setCache(
     isset($min_cachePath) ? $min_cachePath : ''
-    ,$min_cacheFileLocking
+    , $min_cacheFileLocking
 );
 Minify::$uploaderHoursBehind = $min_uploaderHoursBehind;
 

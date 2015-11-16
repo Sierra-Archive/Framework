@@ -19,15 +19,15 @@ class predial_AdvertenciaControle extends predial_Controle
     */
     public function Main() {
         \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'predial/Advertencia/Advertencias');
-        return false;
+        return FALSE;
     }
-    static function Endereco_Advertencia($true=true) {
+    static function Endereco_Advertencia($true= TRUE ) {
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
         $titulo = __('Advertencias');
         $link = 'predial/Advertencia/Advertencias';
-        if ($true===true) {
-            $_Controle->Tema_Endereco($titulo,$link);
+        if ($true === TRUE) {
+            $_Controle->Tema_Endereco($titulo, $link);
         } else {
             $_Controle->Tema_Endereco($titulo);
         }
@@ -46,11 +46,11 @@ class predial_AdvertenciaControle extends predial_Controle
             $tabela['Descrição'][$i]        = $valor->descricao;
             $tabela['Data do Ocorrido'][$i] = $valor->data_acontecimento;
             $tabela['Data Registrado'][$i]  = $valor->log_date_add;
-            $tabela['Funções'][$i]          = $Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Advertência'        ,'predial/Advertencia/Advertencias_Edit/'.$valor->id.'/'    ,'')).
+            $tabela['Funções'][$i]          = $Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Advertência'        ,'predial/Advertencia/Advertencias_Edit/'.$valor->id.'/'    , '')).
                                               $Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Advertência'       ,'predial/Advertencia/Advertencias_Del/'.$valor->id.'/'     ,'Deseja realmente deletar essa Advertência ?'));
             ++$i;
         }
-        return Array($tabela,$i);
+        return Array($tabela, $i);
     }
     /**
      * 
@@ -76,8 +76,8 @@ class predial_AdvertenciaControle extends predial_Controle
         )));
         // Busca
         $advertencias = $this->_Modelo->db->Sql_Select('Predial_Bloco_Apart_Advertencia');
-        if ($advertencias!==false && !empty($advertencias)) {
-            list($tabela,$i) = self::Advertencias_Tabela($advertencias);
+        if ($advertencias !== FALSE && !empty($advertencias)) {
+            list($tabela, $i) = self::Advertencias_Tabela($advertencias);
             $this->_Visual->Show_Tabela_DataTable($tabela);
             unset($tabela);
         } else {            
@@ -95,7 +95,7 @@ class predial_AdvertenciaControle extends predial_Controle
      * @version 0.4.2
      */
     public function Advertencias_Add() {
-        self::Endereco_Advertencia(false);
+        self::Endereco_Advertencia(FALSE);
         // Carrega Config
         $titulo1    = __('Adicionar Advertência');
         $titulo2    = __('Salvar Advertência');
@@ -103,7 +103,7 @@ class predial_AdvertenciaControle extends predial_Controle
         $formbt     = __('Salvar');
         $formlink   = 'predial/Advertencia/Advertencias_Add2/';
         $campos = Predial_Bloco_Apart_Advertencia_DAO::Get_Colunas();
-        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos);
+        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1, $titulo2, $formlink, $formid, $formbt, $campos);
     }
     /**
      * 
@@ -119,12 +119,12 @@ class predial_AdvertenciaControle extends predial_Controle
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = __('Advertência cadastrada com sucesso.');
         $alterar    = Array();
-        $sucesso = $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
-        if ($sucesso===true) {
+        $sucesso = $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
+        if ($sucesso === TRUE) {
             // Pega o Correio
             $identificador  = $this->_Modelo->db->Sql_Select('Predial_Bloco_Apart_Advertencia', Array(),1,'id DESC');
             // Captura Apartamento Responsavel
-            $enviar = false;
+            $enviar = FALSE;
             $apartamento  = $this->_Modelo->db->Sql_Select(
                 'Predial_Bloco_Apart', 
                 Array(
@@ -140,8 +140,8 @@ class predial_AdvertenciaControle extends predial_Controle
                     "mgs_principal" => __('Erro'),
                     "mgs_secundaria" => __('Apartamento não existe.')
                 );
-                $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
-                return false;
+                $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
+                return FALSE;
             }
             if (is_int($apartamento->morador) && $apartamento->morador!=0) {
                 $usuario  = $this->_Modelo->db->Sql_Select(
@@ -149,7 +149,7 @@ class predial_AdvertenciaControle extends predial_Controle
                     Array('id'=>$apartamento->morador),
                     1
                 );
-                if ($usuario!==false) {
+                if ($usuario !== FALSE) {
                     $nome = $usuario->nome;
                     $enviar = '';
                     if ($usuario->email!='' && \Framework\App\Sistema_Funcoes::Control_Layoult_Valida_Email($usuario->email)) {
@@ -161,13 +161,13 @@ class predial_AdvertenciaControle extends predial_Controle
                 }
             }
             // Avisa que nao foi, ou manda 
-            if ($enviar===false || $enviar=='') {
+            if ($enviar === FALSE || $enviar=='') {
                 $mensagens = array(
                     "tipo" => 'erro',
                     "mgs_principal" => __('Advertência não Enviada'),
                     "mgs_secundaria" => __('Verifique se o Morador está registrado no sistema e com um email válido.')
                 );
-                $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+                $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
             } else {
                 $mailer = new \Framework\Classes\Email();
                 // Mandar Mensagem
@@ -194,7 +194,7 @@ class predial_AdvertenciaControle extends predial_Controle
                         "mgs_principal" => __('Advertência não Enviada'),
                         "mgs_secundaria" => __('Verifique se o Morador está registrado no sistema e com um email válido.')
                     );
-                    $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+                    $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
                 }
             }
         }
@@ -206,16 +206,16 @@ class predial_AdvertenciaControle extends predial_Controle
      * @version 0.4.2
      */
     public function Advertencias_Edit($id) {
-        self::Endereco_Advertencia(false);
+        self::Endereco_Advertencia(FALSE);
         // Carrega Config
         $titulo1    = 'Editar Advertência (#'.$id.')';
         $titulo2    = __('Alteração de Advertência');
         $formid     = 'form_Sistema_AdminC_AdvertenciaEdit';
         $formbt     = __('Alterar Advertência');
         $formlink   = 'predial/Advertencia/Advertencias_Edit2/'.$id;
-        $editar     = Array('Predial_Bloco_Apart_Advertencia',$id);
+        $editar     = Array('Predial_Bloco_Apart_Advertencia', $id);
         $campos = Predial_Bloco_Apart_Advertencia_DAO::Get_Colunas();
-        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos,$editar);
+        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1, $titulo2, $formlink, $formid, $formbt, $campos, $editar);
     }
     /**
      * 
@@ -226,12 +226,12 @@ class predial_AdvertenciaControle extends predial_Controle
      */
     public function Advertencias_Edit2($id) {
         $titulo     = __('Advertência Editada com Sucesso');
-        $dao        = Array('Predial_Bloco_Apart_Advertencia',$id);
+        $dao        = Array('Predial_Bloco_Apart_Advertencia', $id);
         $funcao     = '$this->Advertencias();';
         $sucesso1   = __('Advertência Alterada com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);   
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);   
     }
     /**
      * 
@@ -248,7 +248,7 @@ class predial_AdvertenciaControle extends predial_Controle
         $advertencia = $this->_Modelo->db->Sql_Select('Predial_Bloco_Apart_Advertencia', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($advertencia);
         // Mensagem
-    	if ($sucesso===true) {
+    	if ($sucesso === TRUE) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
@@ -261,12 +261,12 @@ class predial_AdvertenciaControle extends predial_Controle
                 "mgs_secundaria" => __('Erro')
             );
         }
-        $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+        $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
         
         $this->Advertencias();
         
         $this->_Visual->Json_Info_Update('Titulo', __('Advertência deletada com Sucesso'));
-        $this->_Visual->Json_Info_Update('Historico', false);
+        $this->_Visual->Json_Info_Update('Historico', FALSE);
     }
     
     
@@ -289,7 +289,7 @@ class predial_AdvertenciaControle extends predial_Controle
             $tabela['Data Registrado'][$i]  = $valor->log_date_add;
             ++$i;
         }
-        return Array($tabela,$i);
+        return Array($tabela, $i);
     }
     /**
      * 
@@ -301,7 +301,7 @@ class predial_AdvertenciaControle extends predial_Controle
         $i = 0;
         // Botao Add
         $html = $Registro->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
-            false,
+            FALSE,
             Array(
                 'Print'     => TRUE,
                 'Pdf'       => TRUE,
@@ -313,16 +313,16 @@ class predial_AdvertenciaControle extends predial_Controle
         $where = Array(
             'apart' =>   (int) $apartamento
         );
-        $advertencias = $Registro->_Modelo->db->Sql_Select('Predial_Bloco_Apart_Advertencia',$where);
-        if ($advertencias!==false && !empty($advertencias)) {
-            list($tabela,$i) = self::Personalizados_Tabela($advertencias);
-            $html .= $Registro->_Visual->Show_Tabela_DataTable($tabela,'',false);
+        $advertencias = $Registro->_Modelo->db->Sql_Select('Predial_Bloco_Apart_Advertencia', $where);
+        if ($advertencias !== FALSE && !empty($advertencias)) {
+            list($tabela, $i) = self::Personalizados_Tabela($advertencias);
+            $html .= $Registro->_Visual->Show_Tabela_DataTable($tabela, '', FALSE);
             unset($tabela);
         } else {            
             $html .= '<center><b><font color="#FF0000" size="3">Nenhuma Advertência para seu Apartamento</font></b></center>';
         }
         $titulo = __('Listagem de Advertências').' ('.$i.')';
-        return Array($titulo,$html);
+        return Array($titulo, $html);
     }
 }
 ?>

@@ -30,7 +30,7 @@ class usuario_ExpedienteControle extends usuario_Controle
      * @version 0.4.2
      */
     public function Main() {
-        return false; 
+        return FALSE; 
     }
     /**
      * Escreve Link de Auxilio para o Usuário
@@ -40,10 +40,10 @@ class usuario_ExpedienteControle extends usuario_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    static function Endereco_Expediente($true=true) {
+    static function Endereco_Expediente($true= TRUE ) {
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
-        if ($true===true) {
+        if ($true === TRUE) {
             $_Controle->Tema_Endereco(__('Expediente'),'usuario/Expediente/Expediente');
         } else {
             $_Controle->Tema_Endereco(__('Expediente'));
@@ -55,8 +55,8 @@ class usuario_ExpedienteControle extends usuario_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Expediente($export=false) {
-        self::Endereco_Expediente(false);
+    public function Expediente($export = FALSE) {
+        self::Endereco_Expediente(FALSE);
         $i = 0;
         // add botao
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
@@ -73,19 +73,19 @@ class usuario_ExpedienteControle extends usuario_Controle
             )
         )));
         $expedientes = $this->_Modelo->db->Sql_Select('Usuario_Expediente');
-        if ($expedientes!==false && !empty($expedientes)) {
+        if ($expedientes !== FALSE && !empty($expedientes)) {
             if (is_object($expedientes)) $expedientes = Array(0=>$expedientes);
             reset($expedientes);
             foreach ($expedientes as $indice=>&$valor) {
                 $tabela['Pessoa'][$i]           = $valor->persona2;
                 $tabela['Numero'][$i]           = $valor->expediente;
                 $tabela['Obs'][$i]              = $valor->obs;
-                $tabela['Funções'][$i]          = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Expediente'        ,'usuario/Expediente/Expedientes_Edit/'.$valor->id.'/'    ,'')).
+                $tabela['Funções'][$i]          = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Expediente'        ,'usuario/Expediente/Expedientes_Edit/'.$valor->id.'/'    , '')).
                                                   $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Expediente'       ,'usuario/Expediente/Expedientes_Del/'.$valor->id.'/'     ,'Deseja realmente deletar essa Expediente ?'));
                 ++$i;
             }
-            if ($export!==false) {
-                self::Export_Todos($export,$tabela, 'Expedientes');
+            if ($export !== FALSE) {
+                self::Export_Todos($export, $tabela, 'Expedientes');
             } else {
                 $this->_Visual->Show_Tabela_DataTable(
                     $tabela,     // Array Com a Tabela
@@ -104,7 +104,7 @@ class usuario_ExpedienteControle extends usuario_Controle
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Expediente</font></b></center>');
         }
         $titulo = __('Listagem de Expedientes').' ('.$i.')';
-        $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',10);
+        $this->_Visual->Bloco_Unico_CriaJanela($titulo, '',10);
 
         //Carrega Json
         $this->_Visual->Json_Info_Update('Titulo', __('Administrar Expedientes'));
@@ -129,7 +129,7 @@ class usuario_ExpedienteControle extends usuario_Controle
         $formlink   = 'usuario/Expediente/Expedientes_Add2/';
         $campos = Usuario_Expediente_DAO::Get_Colunas();
         self::Expedientes_Campos_Remover($campos);
-        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos);
+        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1, $titulo2, $formlink, $formid, $formbt, $campos);
     }
     /**
      * Cadastra Expediente no Banco de Dados, usado dados vindos do Formulário
@@ -145,7 +145,7 @@ class usuario_ExpedienteControle extends usuario_Controle
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = __('Expediente cadastrado com sucesso.');
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
     }
     /**
      * Retorna Formulário para Edição de Expediente
@@ -162,10 +162,10 @@ class usuario_ExpedienteControle extends usuario_Controle
         $formid     = 'form_Sistema_ExpedienteC_ExpedienteEdit';
         $formbt     = __('Alterar Expediente');
         $formlink   = 'usuario/Expediente/Expedientes_Edit2/'.$id;
-        $editar     = Array('Usuario_Expediente',$id);
+        $editar     = Array('Usuario_Expediente', $id);
         $campos = Usuario_Expediente_DAO::Get_Colunas();
         self::Expedientes_Campos_Remover($campos);
-        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos,$editar);
+        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1, $titulo2, $formlink, $formid, $formbt, $campos, $editar);
     }
     /**
      * 
@@ -177,12 +177,12 @@ class usuario_ExpedienteControle extends usuario_Controle
      */
     public function Expedientes_Edit2($id) {
         $titulo     = __('Expediente editada com Sucesso');
-        $dao        = Array('Usuario_Expediente',$id);
+        $dao        = Array('Usuario_Expediente', $id);
         $funcao     = '$this->Expediente();';
         $sucesso1   = __('Expediente Alterado com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);   
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);   
     }
     /**
      * Deleta Expediente
@@ -200,7 +200,7 @@ class usuario_ExpedienteControle extends usuario_Controle
         $setor = $this->_Modelo->db->Sql_Select('Usuario_Expediente', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($setor);
         // Mensagem
-    	if ($sucesso===true) {
+    	if ($sucesso === TRUE) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletada'),
@@ -213,12 +213,12 @@ class usuario_ExpedienteControle extends usuario_Controle
                 "mgs_secundaria" => __('Erro')
             );
         }
-        $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+        $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
         
         $this->Expediente();
         
         $this->_Visual->Json_Info_Update('Titulo', __('Expediente deletada com Sucesso'));  
-        $this->_Visual->Json_Info_Update('Historico', false);  
+        $this->_Visual->Json_Info_Update('Historico', FALSE);  
     }
     /**
      * Lista todos os Funcionários Disponiveis
@@ -229,10 +229,10 @@ class usuario_ExpedienteControle extends usuario_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public static function Disponivel($tipobloco='Unico',$span=true) {
+    public static function Disponivel($tipobloco='Unico', $span= TRUE ) {
         $Registro = Framework\App\Registro::getInstacia();
 
-        if ($span===true) {
+        if ($span === TRUE) {
             $html = '<span id="usuario_Expediente_Disponiveis">';
         } else {
             $html = '';
@@ -256,20 +256,20 @@ class usuario_ExpedienteControle extends usuario_Controle
             '',
             '',
             '',
-            false,
-            false,
+            FALSE,
+            FALSE,
             'obrigatorio',
             __('Escolha um Funcionário')
         );
-        /*if ($valor['edicao']['valor_padrao']===false) {
+        /*if ($valor['edicao']['valor_padrao'] === FALSE) {
             $html .= $form->Select_Opcao('', '',1);
         } else {
             $html .= $form->Select_Opcao('', '',0);
         }*/
         if (is_array($Registros_usuario)) {
             foreach ($Registros_usuario as &$valor) {
-                if (array_search($valor->id, $usuarios_nao_podem)===false) {
-                    $form->Select_Opcao($valor->nome,$valor->id,0);
+                if (array_search($valor->id, $usuarios_nao_podem) === FALSE) {
+                    $form->Select_Opcao($valor->nome, $valor->id,0);
                 }
             }
         }
@@ -283,26 +283,26 @@ class usuario_ExpedienteControle extends usuario_Controle
         $tabela_colunas[] = __('Inicio');
         $tabela_colunas[] = __('Fim');
         $tabela_colunas[] = __('Funções');
-        $html .= $Registro->_Visual->Show_Tabela_DataTable_Massiva($tabela_colunas,'usuario/Expediente/Expedientes', '',false);
+        $html .= $Registro->_Visual->Show_Tabela_DataTable_Massiva($tabela_colunas,'usuario/Expediente/Expedientes', '', FALSE);
         
-        if ($span===true) {
+        if ($span === TRUE) {
             $html .= '</span>';
         }
         
         $titulo = __('Disponiveis'); //.' (<span id="DataTable_Contador">0</span>)';        
         if ($tipobloco==='Unico') {
             $Registro->_Visual->Blocar($html);
-            $Registro->_Visual->Bloco_Unico_CriaJanela($titulo,'',100,Array("link"=>"usuario/Expediente/Expedientes_Add",'icon'=>'add', 'nome'=>__('Adicionar Expediente')));
+            $Registro->_Visual->Bloco_Unico_CriaJanela($titulo, '',100,Array("link"=>"usuario/Expediente/Expedientes_Add",'icon'=>'add', 'nome'=>__('Adicionar Expediente')));
         } else if ($tipobloco==='Maior') {
             $Registro->_Visual->Blocar($html);
-            $Registro->_Visual->Bloco_Maior_CriaJanela($titulo,'',100,Array("link"=>"usuario/Expediente/Expedientes_Add",'icon'=>'add', 'nome'=>__('Adicionar Expediente')));
+            $Registro->_Visual->Bloco_Maior_CriaJanela($titulo, '',100,Array("link"=>"usuario/Expediente/Expedientes_Add",'icon'=>'add', 'nome'=>__('Adicionar Expediente')));
         } else if ($tipobloco==='Menor') {
             $Registro->_Visual->Blocar($html);
-            $Registro->_Visual->Bloco_Menor_CriaJanela($titulo,'',100,Array("link"=>"usuario/Expediente/Expedientes_Add",'icon'=>'add', 'nome'=>__('Adicionar Expediente')));
+            $Registro->_Visual->Bloco_Menor_CriaJanela($titulo, '',100,Array("link"=>"usuario/Expediente/Expedientes_Add",'icon'=>'add', 'nome'=>__('Adicionar Expediente')));
         } else {
             return $html;
         }
-        return true;
+        return TRUE;
     }
     /**
      * Lista todos os Funcionários Disponiveis
@@ -313,10 +313,10 @@ class usuario_ExpedienteControle extends usuario_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public static function Almoco($tipobloco='Unico',$span=true) {
+    public static function Almoco($tipobloco='Unico', $span= TRUE ) {
         $Registro = Framework\App\Registro::getInstacia();
 
-        if ($span===true) {
+        if ($span === TRUE) {
             $html = '<span id="usuario_Expediente_Almoco">';
         } else {
             $html = '';
@@ -330,26 +330,26 @@ class usuario_ExpedienteControle extends usuario_Controle
         $tabela_colunas[] = __('Funcionário');
         $tabela_colunas[] = __('Horário de Saida');
         $tabela_colunas[] = __('Funções');
-        $html .= $Registro->_Visual->Show_Tabela_DataTable_Massiva($tabela_colunas,'usuario/Expediente/Expedientes/1/sim', '',false);
+        $html .= $Registro->_Visual->Show_Tabela_DataTable_Massiva($tabela_colunas,'usuario/Expediente/Expedientes/1/sim', '', FALSE);
         
-        if ($span===true) {
+        if ($span === TRUE) {
             $html .= '</span>';
         }
         
         $titulo = __('Em Almoço'); //.' (<span id="DataTable_Contador">0</span>)';        
         if ($tipobloco==='Unico') {
             $Registro->_Visual->Blocar($html);
-            $Registro->_Visual->Bloco_Unico_CriaJanela($titulo,'',100);
+            $Registro->_Visual->Bloco_Unico_CriaJanela($titulo, '',100);
         } else if ($tipobloco==='Maior') {
             $Registro->_Visual->Blocar($html);
-            $Registro->_Visual->Bloco_Maior_CriaJanela($titulo,'',100);
+            $Registro->_Visual->Bloco_Maior_CriaJanela($titulo, '',100);
         } else if ($tipobloco==='Menor') {
             $Registro->_Visual->Blocar($html);
-            $Registro->_Visual->Bloco_Menor_CriaJanela($titulo,'',100);
+            $Registro->_Visual->Bloco_Menor_CriaJanela($titulo, '',100);
         } else {
             return $html;
         }
-        return true;
+        return TRUE;
     }
     /**
      * Pega um Usuario qualquer e Abre um Expediente Rapidamente pra Ele
@@ -359,8 +359,8 @@ class usuario_ExpedienteControle extends usuario_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Expediente_Add_Rapido($usuario=false) {
-        if ($usuario===false) {
+    public function Expediente_Add_Rapido($usuario = FALSE) {
+        if ($usuario === FALSE) {
             $usuario = (int) $_POST['usuario'];
         } else {
             $usuario = (int) $usuario;
@@ -370,7 +370,7 @@ class usuario_ExpedienteControle extends usuario_Controle
         $expediente->inicio = APP_HORA_BR;
         
         $sucesso =  $this->_Modelo->db->Sql_Insert($expediente);
-    	if ($sucesso===true) {
+    	if ($sucesso === TRUE) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Iniciado'),
@@ -383,19 +383,19 @@ class usuario_ExpedienteControle extends usuario_Controle
                 "mgs_secundaria" => __('Erro')
             );
         }
-        $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+        $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
         
         // Recarrega
         $tabela_colunas = Array(__('Id'),__('Funcionário'),__('Inicio'),__('Fim'),__('Status'),__('Funções'));
         $conteudo = array(
             'location'  =>  '#usuario_Expediente_Disponiveis',
             'js'        =>  '',
-            'html'      => self::Disponivel(false, false)
+            'html'      => self::Disponivel(FALSE, FALSE)
         );
-        $this->_Visual->Json_IncluiTipo('Conteudo',$conteudo);
+        $this->_Visual->Json_IncluiTipo('Conteudo', $conteudo);
         
         $this->_Visual->Json_Info_Update('Titulo', __('Expediente Iniciado com Sucesso'));  
-        $this->_Visual->Json_Info_Update('Historico', false);  
+        $this->_Visual->Json_Info_Update('Historico', FALSE);  
     }
     /**
      * Altera Status de um Expediente
@@ -406,22 +406,22 @@ class usuario_ExpedienteControle extends usuario_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Expedientes_StatusAlterar($id=false,$status=0) {
+    public function Expedientes_StatusAlterar($id = FALSE, $status=0) {
         $id = (int) $id;
         $expediente = $this->_Modelo->db->Sql_Select('Usuario_Expediente', '{sigla}id=\''.$id.'\'');
         
         if ($status==2) {
             $expediente->fim = APP_HORA_BR;
             $expediente->status = '2';
-            $expediente->qnt = Data_CalculaDiferenca_Em_Segundos($expediente->inicio,$expediente->fim);
+            $expediente->qnt = Data_CalculaDiferenca_Em_Segundos($expediente->inicio, $expediente->fim);
             $sucesso =  $this->_Modelo->db->Sql_Update($expediente);
             // Recarrega
             $conteudo = array(
                 'location'  =>  '#usuario_Expediente_Disponiveis',
                 'js'        =>  '',
-                'html'      => self::Disponivel(false, false)
+                'html'      => self::Disponivel(FALSE, FALSE)
             );
-            $this->_Visual->Json_IncluiTipo('Conteudo',$conteudo);
+            $this->_Visual->Json_IncluiTipo('Conteudo', $conteudo);
         } else if ($status==1) {
             $expediente->status = '1';
             $sucesso =  $this->_Modelo->db->Sql_Update($expediente);
@@ -429,16 +429,16 @@ class usuario_ExpedienteControle extends usuario_Controle
             $conteudo = array(
                 'location'  =>  '#usuario_Expediente_Disponiveis',
                 'js'        =>  '',
-                'html'      => self::Disponivel(false, false)
+                'html'      => self::Disponivel(FALSE, FALSE)
             );
-            $this->_Visual->Json_IncluiTipo('Conteudo',$conteudo);
+            $this->_Visual->Json_IncluiTipo('Conteudo', $conteudo);
             // Recarrega Almoco
             $conteudo = array(
                 'location'  =>  '#usuario_Expediente_Almoco',
                 'js'        =>  '',
-                'html'      => self::Almoco(false, false)
+                'html'      => self::Almoco(FALSE, FALSE)
             );
-            $this->_Visual->Json_IncluiTipo('Conteudo',$conteudo);
+            $this->_Visual->Json_IncluiTipo('Conteudo', $conteudo);
         } else {
             $expediente->status = '0';
             $sucesso =  $this->_Modelo->db->Sql_Update($expediente);
@@ -446,18 +446,18 @@ class usuario_ExpedienteControle extends usuario_Controle
             $conteudo = array(
                 'location'  =>  '#usuario_Expediente_Disponiveis',
                 'js'        =>  '',
-                'html'      => self::Disponivel(false, false)
+                'html'      => self::Disponivel(FALSE, FALSE)
             );
-            $this->_Visual->Json_IncluiTipo('Conteudo',$conteudo);
+            $this->_Visual->Json_IncluiTipo('Conteudo', $conteudo);
             // Recarrega Almoco
             $conteudo = array(
                 'location'  =>  '#usuario_Expediente_Almoco',
                 'js'        =>  '',
-                'html'      => self::Almoco(false, false)
+                'html'      => self::Almoco(FALSE, FALSE)
             );
-            $this->_Visual->Json_IncluiTipo('Conteudo',$conteudo);
+            $this->_Visual->Json_IncluiTipo('Conteudo', $conteudo);
         }
-    	if ($sucesso===true) {
+    	if ($sucesso === TRUE) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Iniciado'),
@@ -470,11 +470,11 @@ class usuario_ExpedienteControle extends usuario_Controle
                 "mgs_secundaria" => __('Erro')
             );
         }
-        $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+        $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
         
         
         $this->_Visual->Json_Info_Update('Titulo', __('Expediente Iniciado com Sucesso'));  
-        $this->_Visual->Json_Info_Update('Historico', false);  
+        $this->_Visual->Json_Info_Update('Historico', FALSE);  
     }
 }
 ?>

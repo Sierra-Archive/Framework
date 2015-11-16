@@ -65,8 +65,8 @@ class Direito_Controle extends \Framework\App\Controle
         }
         $titulo = 'Processos '.$titulo.'('.$i.')';
         if ($imprimir=='false') {
-            $this->_Visual->Bloco_Maior_CriaJanela($titulo,'',50);
-            $this->_Visual->Json_Info_Update('Titulo',$titulo); 
+            $this->_Visual->Bloco_Maior_CriaJanela($titulo, '',50);
+            $this->_Visual->Json_Info_Update('Titulo', $titulo); 
         } else {
             $this->_Visual->janelaajax('<style>body {background: #FFFFFF url(none) repeat 0 0;}</style>'.$titulo);
         }

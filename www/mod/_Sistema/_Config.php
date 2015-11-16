@@ -5,7 +5,7 @@ $config_Modulo = function () {
         'Descrição'                 =>  '',
         'System_Require'            =>  '3.1.0',
         'Version'                   =>  '3.1.1',
-        'Dependencias'              =>  false,
+        'Dependencias'              =>  FALSE,
     );
 };
 $config_Menu = function () {
@@ -354,19 +354,19 @@ $config_Funcional = function () {
             'Nome'                  => 'Sistema -> Newsletter',
             'Desc'                  => __('Se possue Newsletter'),
             'chave'                 => '_Sistema_Newsletter',
-            'Valor'                 => FALSE,  // false, true, ou array com os grupos que pode
+            'Valor'                 => FALSE,  // FALSE, true, ou array com os grupos que pode
         ),
         '_Sistema_Avancado'  => Array(
             'Nome'                  => 'Sistema -> Avancado',
             'Desc'                  => __('Se Carrega ou nao Permissao em Avancado e se aparece no menu'),
             'chave'                 => '_Sistema_Avancado',
-            'Valor'                 => TRUE,  // false, true, ou array com os grupos que pode
+            'Valor'                 => TRUE,  // FALSE, true, ou array com os grupos que pode
         ),
         '_Sistema_Filial'  => Array(
             'Nome'                  => 'Sistema -> Avancado',
             'Desc'                  => __('Se Carrega ou nao as Filiais'),
             'chave'                 => '_Sistema_Filial',
-            'Valor'                 => FALSE,  // false, true, ou array com os grupos que pode
+            'Valor'                 => FALSE,  // FALSE, true, ou array com os grupos que pode
         ),
     );
 };

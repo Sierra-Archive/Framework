@@ -59,14 +59,14 @@ class Direito_RelatorioControle extends Direito_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Impressao($tipo = -1,$id1=0,$id2=0) {
+    public function Impressao($tipo = -1, $id1=0, $id2=0) {
         if ($tipo==-1) $tipo = \Framework\App\Conexao::anti_injection($_POST['selecttipoimpressao']);
         // POR AUDIENCIA
         if ($tipo==0) {
             $form = new \Framework\Classes\Form('Direito_Relatorio_Relatorio_Audiencia', 'Direito/Relatorio/Relatorio_Audiencia/', 'formajax', 'full');
             // SELECT AUDIENCIA
             /*$resultado = Array();
-            $total = $this->_Modelo->Listar(MYSQL_ADVOGADO_TIPOAUDIENCIAS,'titulo',$resultado);
+            $total = $this->_Modelo->Listar(MYSQL_ADVOGADO_TIPOAUDIENCIAS,'titulo', $resultado);
             $form->Select_Novo('Audiência', 'selectadv_audiencias', 'selectadv_audiencias');
             for($i=0;$i<$total;++$i) {
                 if ($id1==0) {
@@ -76,22 +76,22 @@ class Direito_RelatorioControle extends Direito_Controle
                     if ($resultado[$i]['id']==$id1)  $ativado = 1;
                     else                            $ativado = 0;
                 }
-                $form->Select_Opcao($resultado[$i]['titulo'],$resultado[$i]['id'],$ativado);
+                $form->Select_Opcao($resultado[$i]['titulo'], $resultado[$i]['id'], $ativado);
             }
             $form->Select_Fim();*/
             // Chama funcao js
             if ($id1==0) $id1 = data_eua_brasil(APP_DATA);
             if ($id2==0) $id2 = date('d/m/Y', strtotime("+1 days"));
             $this->_Visual->Javascript_Executar('Sierra.Control_Layoult_Calendario_Intervalo_SemLimite(\'data_inicial\',\'data_final\',\''.$id1.'\',\''.$id2.'\');');
-            $form->Input_Novo('Data Inicial', 'data_inicial',$id1,'text', 10,'obrigatorio', '', false,'', '', 'Data', '', false);
-            $form->Input_Novo('Data Final', 'data_final',  $id2,'text', 10,'obrigatorio', '', false,'', '', 'Data', '', false);
+            $form->Input_Novo('Data Inicial', 'data_inicial', $id1,'text', 10,'obrigatorio', '', FALSE, '', '', 'Data', '', FALSE);
+            $form->Input_Novo('Data Final', 'data_final',  $id2,'text', 10,'obrigatorio', '', FALSE, '', '', 'Data', '', FALSE);
         }
         // POR FASE
         else if ($tipo==1) {
             $form = new \Framework\Classes\Form('Direito_Relatorio_Relatorio_Fase', 'Direito/Relatorio/Relatorio_Fase/', 'formajax', 'full');
             // SELECT FASE
             $resultado = Array();
-            $total = $this->_Modelo->Listar(MYSQL_ADVOGADO_TIPOFASES,'titulo',$resultado);
+            $total = $this->_Modelo->Listar(MYSQL_ADVOGADO_TIPOFASES,'titulo', $resultado);
             $form->Select_Novo('Fase', 'selectadv_fase', 'selectadv_fase');
             for($i=0;$i<$total;++$i) {
                 if ($id1==0) {
@@ -101,7 +101,7 @@ class Direito_RelatorioControle extends Direito_Controle
                     if ($resultado[$i]['id']==$id1)  $ativado = 1;
                     else                            $ativado = 0;
                 }
-                $form->Select_Opcao($resultado[$i]['titulo'],$resultado[$i]['id'],$ativado);
+                $form->Select_Opcao($resultado[$i]['titulo'], $resultado[$i]['id'], $ativado);
             }
             $form->Select_Fim();
         }
@@ -110,7 +110,7 @@ class Direito_RelatorioControle extends Direito_Controle
             $form = new \Framework\Classes\Form('Direito_Relatorio_Relatorio_Comarca', 'Direito/Relatorio/Relatorio_Comarca/', 'formajax', 'full');
             // SELECT COMARCA
             $resultado = Array();
-            $total = $this->_Modelo->Listar(MYSQL_ADVOGADO_COMARCA,'titulo',$resultado);
+            $total = $this->_Modelo->Listar(MYSQL_ADVOGADO_COMARCA,'titulo', $resultado);
             $form->Select_Novo('Comarca', 'selectadv_comarca', 'selectadv_comarca');
             for($i=0;$i<$total;++$i) {
                 if ($id1==0) {
@@ -120,7 +120,7 @@ class Direito_RelatorioControle extends Direito_Controle
                     if ($resultado[$i]['id']==$id1)  $ativado = 1;
                     else                            $ativado = 0;
                 }
-                $form->Select_Opcao($resultado[$i]['titulo'],$resultado[$i]['id'],$ativado);
+                $form->Select_Opcao($resultado[$i]['titulo'], $resultado[$i]['id'], $ativado);
             }
             $form->Select_Fim();
         }
@@ -129,7 +129,7 @@ class Direito_RelatorioControle extends Direito_Controle
             $form = new \Framework\Classes\Form('Direito_Relatorio_Relatorio_Vara', 'Direito/Relatorio/Relatorio_Vara/', 'formajax', 'full');
             // SELECT VARAS
             $resultado = Array();
-            $total = $this->_Modelo->Listar(MYSQL_ADVOGADO_VARAS,'titulo',$resultado);
+            $total = $this->_Modelo->Listar(MYSQL_ADVOGADO_VARAS,'titulo', $resultado);
             $form->Select_Novo('Vara', 'selectadv_varas', 'selectadv_varas');
             for($i=0;$i<$total;++$i) {
                 if ($id1==0) {
@@ -139,7 +139,7 @@ class Direito_RelatorioControle extends Direito_Controle
                     if ($resultado[$i]['id']==$id1)  $ativado = 1;
                     else                            $ativado = 0;
                 }
-                $form->Select_Opcao($resultado[$i]['titulo'],$resultado[$i]['id'],$ativado);
+                $form->Select_Opcao($resultado[$i]['titulo'], $resultado[$i]['id'], $ativado);
             }
             $form->Select_Fim();
         }
@@ -148,7 +148,7 @@ class Direito_RelatorioControle extends Direito_Controle
             $form = new \Framework\Classes\Form('Direito_Relatorio_Relatorio_Vara_Comarca', 'Direito/Relatorio/Relatorio_Vara_Comarca/', 'formajax', 'full');
             // SELECT COMARCAS
             $resultado = Array();
-            $total = $this->_Modelo->Listar(MYSQL_ADVOGADO_COMARCA,'titulo',$resultado);
+            $total = $this->_Modelo->Listar(MYSQL_ADVOGADO_COMARCA,'titulo', $resultado);
             $form->Select_Novo('Comarca', 'selectadv_comarca', 'selectadv_comarca');
             for($i=0;$i<$total;++$i) {
                 if ($id2==0) {
@@ -158,12 +158,12 @@ class Direito_RelatorioControle extends Direito_Controle
                     if ($resultado[$i]['id']==$id2)  $ativado = 1;
                     else                            $ativado = 0;
                 }
-                $form->Select_Opcao($resultado[$i]['titulo'],$resultado[$i]['id'],$ativado);
+                $form->Select_Opcao($resultado[$i]['titulo'], $resultado[$i]['id'], $ativado);
             }
             $form->Select_Fim();
             // SELECT VARAS
             $resultado = Array();
-            $total = $this->_Modelo->Listar(MYSQL_ADVOGADO_VARAS,'titulo',$resultado);
+            $total = $this->_Modelo->Listar(MYSQL_ADVOGADO_VARAS,'titulo', $resultado);
             $form->Select_Novo('Vara', 'selectadv_varas', 'selectadv_varas');
             for($i=0;$i<$total;++$i) {
                 if ($id1==0) {
@@ -173,7 +173,7 @@ class Direito_RelatorioControle extends Direito_Controle
                     if ($resultado[$i]['id']==$id1)  $ativado = 1;
                     else                            $ativado = 0;
                 }
-                $form->Select_Opcao($resultado[$i]['titulo'],$resultado[$i]['id'],$ativado);
+                $form->Select_Opcao($resultado[$i]['titulo'], $resultado[$i]['id'], $ativado);
             }
             $form->Select_Fim();
         }
@@ -213,12 +213,12 @@ class Direito_RelatorioControle extends Direito_Controle
         if (!isset($final)   || $final  ==0 || $final  =='' || $final  =='//') $final = 0;
         // Busca Audiencias e Preenche a variavel $processos
         $processos = Array();
-        $i = $this->_Modelo->Relatorio_Audiencia($processos,$inicial,$final);
+        $i = $this->_Modelo->Relatorio_Audiencia($processos, $inicial, $final);
         if ($imprimir=='false') {
             $this->Impressao(0,data_eua_brasil($inicial),data_eua_brasil($final));
             if ($i!=0 && $inicial!=0 && $final!=0) {
-                $this->_Visual->Blocar('<a href="#" onclick="window.open(\''.URL_PATH.SISTEMA_MODULO.'/'.SISTEMA_SUB.'/'.SISTEMA_MET.'/'.data_eua_brasil($inicial).'/'.data_eua_brasil($final).'/imprimir/\',\'Janela\',\'toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=no,width=800,height=550\'); return false;"><img src="'.WEB_URL.'img/icons/imprimir.gif" width="121" height="34"></a>');
-                $this->_Visual->Bloco_Maior_CriaJanela(__('Imprimir Dados Acima?'),'',40);
+                $this->_Visual->Blocar('<a href="#" onclick="window.open(\''.URL_PATH.SISTEMA_MODULO.'/'.SISTEMA_SUB.'/'.SISTEMA_MET.'/'.data_eua_brasil($inicial).'/'.data_eua_brasil($final).'/imprimir/\',\'Janela\',\'toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=no,width=800,height=550\'); return FALSE;"><img src="'.WEB_URL.'img/icons/imprimir.gif" width="121" height="34"></a>');
+                $this->_Visual->Bloco_Maior_CriaJanela(__('Imprimir Dados Acima?'), '',40);
             }
         }
         // Lista Processos
@@ -240,12 +240,12 @@ class Direito_RelatorioControle extends Direito_Controle
         }
         if (!isset($id) || $id==0 || $id=='') $id = 0;
         $processos = Array();
-        $i = $this->_Modelo->Relatorio_Fase($processos,$id);
+        $i = $this->_Modelo->Relatorio_Fase($processos, $id);
         if ($imprimir=='false') {
-            $this->Impressao(1,$id);
+            $this->Impressao(1, $id);
             if ($i!=0 && $id!=0) {
-                $this->_Visual->Blocar('<a href="#" onclick="window.open(\''.URL_PATH.SISTEMA_MODULO.'/'.SISTEMA_SUB.'/'.SISTEMA_MET.'/'.$id.'/imprimir/\',\'Janela\',\'toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=no,width=800,height=550\'); return false;"><img src="'.WEB_URL.'img/icons/imprimir.gif" width="121" height="34"></a>');
-                $this->_Visual->Bloco_Maior_CriaJanela(__('Imprimir Dados Acima?'),'',40);
+                $this->_Visual->Blocar('<a href="#" onclick="window.open(\''.URL_PATH.SISTEMA_MODULO.'/'.SISTEMA_SUB.'/'.SISTEMA_MET.'/'.$id.'/imprimir/\',\'Janela\',\'toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=no,width=800,height=550\'); return FALSE;"><img src="'.WEB_URL.'img/icons/imprimir.gif" width="121" height="34"></a>');
+                $this->_Visual->Bloco_Maior_CriaJanela(__('Imprimir Dados Acima?'), '',40);
             }
         }
         // Lista Processos
@@ -266,12 +266,12 @@ class Direito_RelatorioControle extends Direito_Controle
         }
         if (!isset($id) || $id==0 || $id=='') $id = 0;
         $processos = Array();
-        $i = $this->_Modelo->Relatorio_Comarca($processos,$id);
+        $i = $this->_Modelo->Relatorio_Comarca($processos, $id);
         if ($imprimir=='false') {
-            $this->Impressao(2,$id);
+            $this->Impressao(2, $id);
             if ($i!=0 && $id!=0) {
-                $this->_Visual->Blocar('<a href="#" onclick="window.open(\''.URL_PATH.SISTEMA_MODULO.'/'.SISTEMA_SUB.'/'.SISTEMA_MET.'/'.$id.'/imprimir/\',\'Janela\',\'toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=no,width=800,height=550\'); return false;"><img src="'.WEB_URL.'img/icons/imprimir.gif" width="121" height="34"></a>');
-                $this->_Visual->Bloco_Maior_CriaJanela(__('Imprimir Dados Acima?'),'',40);
+                $this->_Visual->Blocar('<a href="#" onclick="window.open(\''.URL_PATH.SISTEMA_MODULO.'/'.SISTEMA_SUB.'/'.SISTEMA_MET.'/'.$id.'/imprimir/\',\'Janela\',\'toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=no,width=800,height=550\'); return FALSE;"><img src="'.WEB_URL.'img/icons/imprimir.gif" width="121" height="34"></a>');
+                $this->_Visual->Bloco_Maior_CriaJanela(__('Imprimir Dados Acima?'), '',40);
             }
         }
         // Lista Processos
@@ -292,12 +292,12 @@ class Direito_RelatorioControle extends Direito_Controle
         }
         if (!isset($id) || $id==0 || $id=='') $id = 0;
         $processos = Array();
-        $i = $this->_Modelo->Relatorio_Vara($processos,$id);
+        $i = $this->_Modelo->Relatorio_Vara($processos, $id);
         if ($imprimir=='false') {
-            $this->Impressao(3,$id);
+            $this->Impressao(3, $id);
             if ($i!=0 && $id!=0) {            
-                $this->_Visual->Blocar('<a href="#" onclick="window.open(\''.URL_PATH.SISTEMA_MODULO.'/'.SISTEMA_SUB.'/'.SISTEMA_MET.'/'.$id.'/imprimir/\',\'Janela\',\'toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=no,width=800,height=550\'); return false;"><img src="'.WEB_URL.'img/icons/imprimir.gif" width="121" height="34"></a>');
-                $this->_Visual->Bloco_Maior_CriaJanela(__('Imprimir Dados Acima?'),'',40);
+                $this->_Visual->Blocar('<a href="#" onclick="window.open(\''.URL_PATH.SISTEMA_MODULO.'/'.SISTEMA_SUB.'/'.SISTEMA_MET.'/'.$id.'/imprimir/\',\'Janela\',\'toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=no,width=800,height=550\'); return FALSE;"><img src="'.WEB_URL.'img/icons/imprimir.gif" width="121" height="34"></a>');
+                $this->_Visual->Bloco_Maior_CriaJanela(__('Imprimir Dados Acima?'), '',40);
             }
         }
         // Lista Processos
@@ -312,7 +312,7 @@ class Direito_RelatorioControle extends Direito_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Relatorio_Vara_Comarca($idvara = 0,$idcomarca = 0, $imprimir = 'false') {
+    public function Relatorio_Vara_Comarca($idvara = 0, $idcomarca = 0, $imprimir = 'false') {
         if ($idvara==0) {
             $idvara = \Framework\App\Conexao::anti_injection($_POST['selectadv_varas']);
         }
@@ -322,12 +322,12 @@ class Direito_RelatorioControle extends Direito_Controle
         if (!isset($idvara)    || $idvara   ==0 || $idvara   =='') $idvara    = 0;
         if (!isset($idcomarca) || $idcomarca==0 || $idcomarca=='') $idcomarca = 0;
         $processos = Array();
-        $i = $this->_Modelo->Relatorio_Vara_Comarca($processos,$idvara,$idcomarca);
+        $i = $this->_Modelo->Relatorio_Vara_Comarca($processos, $idvara, $idcomarca);
         if ($imprimir=='false') {
-            $this->Impressao(4,$idvara,$idcomarca);
+            $this->Impressao(4, $idvara, $idcomarca);
             if ($i!=0 && $idvara!=0 && $idcomarca!=0) {
-                $this->_Visual->Blocar('<a href="#" onclick="window.open(\''.URL_PATH.SISTEMA_MODULO.'/'.SISTEMA_SUB.'/'.SISTEMA_MET.'/'.$idvara.'/'.$idcomarca.'/imprimir/\',\'Janela\',\'toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=no,width=800,height=550\'); return false;"><img src="'.WEB_URL.'img/icons/imprimir.gif" width="121" height="34"></a>');
-                $this->_Visual->Bloco_Maior_CriaJanela(__('Imprimir Dados Acima?'),'',40);
+                $this->_Visual->Blocar('<a href="#" onclick="window.open(\''.URL_PATH.SISTEMA_MODULO.'/'.SISTEMA_SUB.'/'.SISTEMA_MET.'/'.$idvara.'/'.$idcomarca.'/imprimir/\',\'Janela\',\'toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=no,width=800,height=550\'); return FALSE;"><img src="'.WEB_URL.'img/icons/imprimir.gif" width="121" height="34"></a>');
+                $this->_Visual->Bloco_Maior_CriaJanela(__('Imprimir Dados Acima?'), '',40);
             }
         }
         // Lista Processos
@@ -347,8 +347,8 @@ class Direito_RelatorioControle extends Direito_Controle
         $i = $this->_Modelo->Relatorio_SemAlt($processos);
         if ($imprimir=='false') {
             if ($i!=0) {
-                $this->_Visual->Blocar('<a href="#" onclick="window.open(\''.URL_PATH.SISTEMA_MODULO.'/'.SISTEMA_SUB.'/Relatorio_SemAlt/imprimir/\',\'Janela\',\'toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=no,width=800,height=550\'); return false;"><img src="'.WEB_URL.'img/icons/imprimir.gif" width="121" height="34"></a>');
-                $this->_Visual->Bloco_Maior_CriaJanela(__('Imprimir Dados Acima?'),'',40);
+                $this->_Visual->Blocar('<a href="#" onclick="window.open(\''.URL_PATH.SISTEMA_MODULO.'/'.SISTEMA_SUB.'/Relatorio_SemAlt/imprimir/\',\'Janela\',\'toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=no,width=800,height=550\'); return FALSE;"><img src="'.WEB_URL.'img/icons/imprimir.gif" width="121" height="34"></a>');
+                $this->_Visual->Bloco_Maior_CriaJanela(__('Imprimir Dados Acima?'), '',40);
             }
             // Imprimi Numeros a Direita
             $this->Meus_Numeros();

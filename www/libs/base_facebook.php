@@ -203,14 +203,14 @@ abstract class BaseFacebook
 *
 * @var boolean
 */
-  protected $fileUploadSupport = false;
+  protected $fileUploadSupport = FALSE;
 
   /**
 * Indicates if we trust HTTP_X_FORWARDED_* headers.
 *
 * @var boolean
 */
-  protected $trustForwarded = false;
+  protected $trustForwarded = FALSE;
 
   /**
 * Initialize a Facebook Application.
@@ -229,7 +229,7 @@ abstract class BaseFacebook
       $this->setFileUploadSupport($config['fileUpload']);
     }
     if (isset($config['trustForwarded']) && $config['trustForwarded']) {
-      $this->trustForwarded = true;
+      $this->trustForwarded = TRUE;
     }
     $state = $this->getPersistentData('state');
     if (!empty($state)) {
@@ -365,18 +365,18 @@ abstract class BaseFacebook
     catch (FacebookApiException $e) {
       // most likely that user very recently revoked authorization.
       // In any event, we don't have an access token, so say so.
-      return false;
+      return FALSE;
     }
 
     if (empty($access_token_response)) {
-      return false;
+      return FALSE;
     }
 
     $response_params = array();
     parse_str($access_token_response, $response_params);
 
     if (!isset($response_params['access_token'])) {
-      return false;
+      return FALSE;
     }
 
     $this->destroySession();
@@ -455,7 +455,7 @@ abstract class BaseFacebook
       // signed request states there's no access token, so anything
       // stored should be cleared.
       $this->clearAllPersistentData();
-      return false; // respect the signed request's data, even
+      return FALSE; // respect the signed request's data, even
                     // if there's an authorization code or something else
     }
 
@@ -470,7 +470,7 @@ abstract class BaseFacebook
 
       // code was bogus, so everything based on it should be invalidated.
       $this->clearAllPersistentData();
-      return false;
+      return FALSE;
     }
 
     // as a fallback, just return whatever is in the persistent
@@ -699,11 +699,11 @@ abstract class BaseFacebook
         return $_REQUEST['code'];
       } else {
         self::errorLog('CSRF state token does not match one provided.');
-        return false;
+        return FALSE;
       }
     }
 
-    return false;
+    return FALSE;
   }
 
   /**
@@ -743,7 +743,7 @@ abstract class BaseFacebook
 */
   protected function establishCSRFTokenState() {
     if ($this->state === null) {
-      $this->state = md5(uniqid(mt_rand(), true));
+      $this->state = md5(uniqid(mt_rand(), TRUE));
       $this->setPersistentData('state', $this->state);
     }
   }
@@ -762,7 +762,7 @@ abstract class BaseFacebook
 */
   protected function getAccessTokenFromCode($code, $redirect_uri = null) {
     if (empty($code)) {
-      return false;
+      return FALSE;
     }
 
     if ($redirect_uri === null) {
@@ -782,17 +782,17 @@ abstract class BaseFacebook
     } catch (FacebookApiException $e) {
       // most likely that user very recently revoked authorization.
       // In any event, we don't have an access token, so say so.
-      return false;
+      return FALSE;
     }
 
     if (empty($access_token_response)) {
-      return false;
+      return FALSE;
     }
 
     $response_params = array();
     parse_str($access_token_response, $response_params);
     if (!isset($response_params['access_token'])) {
-      return false;
+      return FALSE;
     }
 
     return $response_params['access_token'];
@@ -814,7 +814,7 @@ abstract class BaseFacebook
     $result = json_decode($this->_oauthRequest(
       $this->getApiUrl($params['method']),
       $params
-    ), true);
+    ), TRUE);
 
     // results are returned, errors are thrown
     if (is_array($result) && isset($result['error_code'])) {
@@ -842,9 +842,9 @@ abstract class BaseFacebook
 */
   protected function isVideoPost($path, $method = 'GET') {
     if ($method == 'POST' && preg_match("/^(\/)(.+)(\/)(videos)$/", $path)) {
-      return true;
+      return TRUE;
     }
-    return false;
+    return FALSE;
   }
 
   /**
@@ -873,7 +873,7 @@ abstract class BaseFacebook
     $result = json_decode($this->_oauthRequest(
       $this->getUrl($domainKey, $path),
       $params
-    ), true);
+    ), TRUE);
 
     // results are returned, errors are thrown
     if (is_array($result) && isset($result['error'])) {
@@ -973,7 +973,7 @@ abstract class BaseFacebook
         }
     }
 
-    if ($result === false) {
+    if ($result === FALSE) {
       $e = new FacebookApiException(array(
         'error_code' => curl_errno($ch),
         'error' => array(
@@ -999,7 +999,7 @@ abstract class BaseFacebook
 
     // decode the data
     $sig = self::base64UrlDecode($encoded_sig);
-    $data = json_decode(self::base64UrlDecode($payload), true);
+    $data = json_decode(self::base64UrlDecode($payload), TRUE);
 
     if (strtoupper($data['algorithm']) !== self::SIGNED_REQUEST_ALGORITHM) {
       self::errorLog(
@@ -1009,7 +1009,7 @@ abstract class BaseFacebook
 
     // check sig
     $expected_sig = hash_hmac('sha256', $payload,
-                              $this->getAppSecret(), $raw = true);
+                              $this->getAppSecret(), $raw = TRUE);
     if ($sig !== $expected_sig) {
       self::errorLog('Bad Signed JSON signature!');
       return null;
@@ -1027,13 +1027,13 @@ abstract class BaseFacebook
   protected function makeSignedRequest($data) {
     if (!is_array($data)) {
       throw new InvalidArgumentException(
-        'makeSignedRequest expects an array. Got: ' . print_r($data, true));
+        'makeSignedRequest expects an array. Got: ' . print_r($data, TRUE));
     }
     $data['algorithm'] = self::SIGNED_REQUEST_ALGORITHM;
     $data['issued_at'] = time();
     $json = json_encode($data);
     $b64 = self::base64UrlEncode($json);
-    $raw_sig = hash_hmac('sha256', $b64, $this->getAppSecret(), $raw = true);
+    $raw_sig = hash_hmac('sha256', $b64, $this->getAppSecret(), $raw = TRUE);
     $sig = self::base64UrlEncode($raw_sig);
     return $sig.'.'.$b64;
   }
@@ -1235,11 +1235,11 @@ abstract class BaseFacebook
   protected function shouldRetainParam($param) {
     foreach (self::$DROP_QUERY_PARAMS as $drop_query_param) {
       if (strpos($param, $drop_query_param.'=') === 0) {
-        return false;
+        return FALSE;
       }
     }
 
-    return true;
+    return TRUE;
   }
 
   /**
@@ -1260,9 +1260,9 @@ abstract class BaseFacebook
         // REST server errors are just Exceptions
       case 'Exception':
         $message = $e->getMessage();
-        if ((strpos($message, 'Error validating access token') !== false) ||
-            (strpos($message, 'Invalid OAuth access token') !== false) ||
-            (strpos($message, 'An active access token must be used') !== false)
+        if ((strpos($message, 'Error validating access token') !== FALSE) ||
+            (strpos($message, 'Invalid OAuth access token') !== FALSE) ||
+            (strpos($message, 'An active access token must be used') !== FALSE)
         ) {
           $this->destroySession();
         }
@@ -1380,7 +1380,7 @@ abstract class BaseFacebook
 
   protected static function isAllowedDomain($big, $small) {
     if ($big === $small) {
-      return true;
+      return TRUE;
     }
     return self::endsWith($big, '.'.$small);
   }
@@ -1388,7 +1388,7 @@ abstract class BaseFacebook
   protected static function endsWith($big, $small) {
     $len = strlen($small);
     if ($len === 0) {
-      return true;
+      return TRUE;
     }
     return substr($big, -$len) === $small;
   }
@@ -1422,7 +1422,7 @@ abstract class BaseFacebook
 *
 * @return mixed
 */
-  abstract protected function getPersistentData($key, $default = false);
+  abstract protected function getPersistentData($key, $default = FALSE);
 
   /**
 * Clear the data with $key from the persistent storage

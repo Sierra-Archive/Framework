@@ -45,7 +45,7 @@ class EasyPeasyICS {
 	}//function
 	
 	
-	public function render($output = true) {
+	public function render($output = TRUE) {
 		
 		//start Variable
 		$ics = "";
@@ -61,7 +61,7 @@ PRODID:-//hacksw/handcal//NONSGML v1.0//EN";
 		foreach($this->events as $event) {
 			$ics .= "
 BEGIN:VEVENT
-UID:". md5(uniqid(mt_rand(), true)) ."@EasyPeasyICS.php
+UID:". md5(uniqid(mt_rand(), TRUE)) ."@EasyPeasyICS.php
 DTSTAMP:" . gmdate('Ymd').'T'. gmdate('His') . "Z
 DTSTART:".gmdate('Ymd', $event["start"])."T".gmdate('His', $event["start"])."Z
 DTEND:".gmdate('Ymd', $event["end"])."T".gmdate('His', $event["end"])."Z

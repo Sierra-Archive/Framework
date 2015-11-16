@@ -72,7 +72,7 @@ class banner_AdminModelo extends banner_Modelo
         
         return 1;
     }*/
-    public function Banner_Upload_Alterar($id,$ext) {
+    public function Banner_Upload_Alterar($id, $ext) {
         $id = (int) $id;
         if (!isset($id) || !is_int($id) || $id==0) return 0;
         $this->db->query('UPDATE '.MYSQL_BANNERS.' SET foto=\''.$ext.'\' WHERE deletado!=1 AND id='.$id);

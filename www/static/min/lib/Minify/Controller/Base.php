@@ -96,16 +96,16 @@ abstract class Minify_Controller_Base {
      */
     public static function _fileIsSafe($file, $safeDirs)
     {
-        $pathOk = false;
+        $pathOk = FALSE;
         foreach ((array)$safeDirs as $safeDir) {
             if (strpos($file, $safeDir) === 0) {
-                $pathOk = true;
+                $pathOk = TRUE;
                 break;
             }
         }
         $base = basename($file);
         if (! $pathOk || ! is_file($file) || $base[0] === '.') {
-            return false;
+            return FALSE;
         }
         list($revExt) = explode('.', strrev($base));
         return in_array(strrev($revExt), array('js', 'css', 'html', 'txt'));
@@ -122,7 +122,7 @@ abstract class Minify_Controller_Base {
     {
         foreach ((array)$allowDirs as $allowDir) {
             if (strpos($file, $allowDir) === 0) {
-                return true;
+                return TRUE;
             }
         }
         throw new \Exception("File '$file' is outside \$allowDirs. If the path is"

@@ -9,8 +9,8 @@ final Class Sistema_Filial_DAO extends Framework\App\Dao
     protected $bairro;
     protected $endereco;
     
-    protected static $objetocarregado     = false;     
-    protected static $mysql_colunas       = false;     
+    protected static $objetocarregado     = FALSE;     
+    protected static $mysql_colunas       = FALSE;     
     protected static $mysql_outside       = Array();     
     protected static $mysql_inside        = Array(); 
     protected static $campos_naoaceita_config  = Array();
@@ -23,7 +23,7 @@ final Class Sistema_Filial_DAO extends Framework\App\Dao
      * @return string
      */
     public static function Permissao_Copia() {
-        return false;
+        return FALSE;
     }
     public static function Get_Sigla() {
         return 'SFi';

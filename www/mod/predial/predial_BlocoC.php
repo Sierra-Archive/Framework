@@ -19,15 +19,15 @@ class predial_BlocoControle extends predial_Controle
     */
     public function Main() {
         \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'Financeiro/Bloco/Blocos');
-        return false;
+        return FALSE;
     }
-    static function Endereco_Bloco($true=true) {
+    static function Endereco_Bloco($true= TRUE ) {
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
         $titulo = __('Blocos');
         $link = 'predial/Bloco/Blocos';
-        if ($true===true) {
-            $_Controle->Tema_Endereco($titulo,$link);
+        if ($true === TRUE) {
+            $_Controle->Tema_Endereco($titulo, $link);
         } else {
             $_Controle->Tema_Endereco($titulo);
         }
@@ -41,19 +41,19 @@ class predial_BlocoControle extends predial_Controle
         reset($blocos);
         foreach ($blocos as &$valor) {
             $tabela['Nome'][$i]             = $valor->nome;
-            $tabela['Funções'][$i]          = $Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Bloco'        ,'predial/Bloco/Blocos_Edit/'.$valor->id.'/'    ,'')).
+            $tabela['Funções'][$i]          = $Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Bloco'        ,'predial/Bloco/Blocos_Edit/'.$valor->id.'/'    , '')).
                                               $Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Bloco'       ,'predial/Bloco/Blocos_Del/'.$valor->id.'/'     ,'Deseja realmente deletar esse Bloco ?'));
             ++$i;
         }
-        return Array($tabela,$i);
+        return Array($tabela, $i);
     }
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Blocos($export=false) {
-        self::Endereco_Bloco(false);
+    public function Blocos($export = FALSE) {
+        self::Endereco_Bloco(FALSE);
         $i = 0;
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
             Array(
@@ -69,10 +69,10 @@ class predial_BlocoControle extends predial_Controle
             )
         )));
         $blocos = $this->_Modelo->db->Sql_Select('Predial_Bloco');
-        if ($blocos!==false && !empty($blocos)) {
-            list($tabela,$i) = self::Blocos_Tabela($blocos);
-            if ($export!==false) {
-                self::Export_Todos($export,$tabela, 'Blocos');
+        if ($blocos !== FALSE && !empty($blocos)) {
+            list($tabela, $i) = self::Blocos_Tabela($blocos);
+            if ($export !== FALSE) {
+                self::Export_Todos($export, $tabela, 'Blocos');
             } else {
                 $this->_Visual->Show_Tabela_DataTable($tabela);
             }
@@ -100,7 +100,7 @@ class predial_BlocoControle extends predial_Controle
         $formbt     = __('Salvar');
         $formlink   = 'predial/Bloco/Blocos_Add2/';
         $campos = Predial_Bloco_DAO::Get_Colunas();
-        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos);
+        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1, $titulo2, $formlink, $formid, $formbt, $campos);
     }
     /**
      * 
@@ -116,7 +116,7 @@ class predial_BlocoControle extends predial_Controle
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = __('Bloco cadastrado com sucesso.');
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
     }
     /**
      * 
@@ -132,9 +132,9 @@ class predial_BlocoControle extends predial_Controle
         $formid     = 'form_Sistema_AdminC_BlocoEdit';
         $formbt     = __('Alterar Bloco');
         $formlink   = 'predial/Bloco/Blocos_Edit2/'.$id;
-        $editar     = Array('Predial_Bloco',$id);
+        $editar     = Array('Predial_Bloco', $id);
         $campos = Predial_Bloco_DAO::Get_Colunas();
-        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos,$editar);
+        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1, $titulo2, $formlink, $formid, $formbt, $campos, $editar);
     }
     /**
      * 
@@ -145,12 +145,12 @@ class predial_BlocoControle extends predial_Controle
      */
     public function Blocos_Edit2($id) {
         $titulo     = __('Bloco Editado com Sucesso');
-        $dao        = Array('Predial_Bloco',$id);
+        $dao        = Array('Predial_Bloco', $id);
         $funcao     = '$this->Blocos();';
         $sucesso1   = __('Bloco Alterado com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);   
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);   
     }
     /**
      * 
@@ -167,7 +167,7 @@ class predial_BlocoControle extends predial_Controle
         $bloco = $this->_Modelo->db->Sql_Select('Predial_Bloco', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($bloco);
         // Mensagem
-    	if ($sucesso===true) {
+    	if ($sucesso === TRUE) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
@@ -180,12 +180,12 @@ class predial_BlocoControle extends predial_Controle
                 "mgs_secundaria" => __('Erro')
             );
         }
-        $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+        $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
         
         $this->Blocos();
         
         $this->_Visual->Json_Info_Update('Titulo', __('Bloco deletado com Sucesso'));  
-        $this->_Visual->Json_Info_Update('Historico', false);  
+        $this->_Visual->Json_Info_Update('Historico', FALSE);  
     }
 }
 ?>

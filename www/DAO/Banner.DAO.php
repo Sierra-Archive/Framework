@@ -14,7 +14,7 @@ final Class Banner_DAO extends Framework\App\Dao
     protected $url;
     protected $status;
     
-    protected static $objetocarregado     = false;     protected static $mysql_colunas       = false;     protected static $mysql_outside       = Array();     protected static $mysql_inside        = Array(); public function __construct() {  parent::__construct(); } public static function Get_Nome() {
+    protected static $objetocarregado     = FALSE;     protected static $mysql_colunas       = FALSE;     protected static $mysql_outside       = Array();     protected static $mysql_inside        = Array(); public function __construct() {  parent::__construct(); } public static function Get_Nome() {
         return MYSQL_BANNERS;
     }
     /**
@@ -22,7 +22,7 @@ final Class Banner_DAO extends Framework\App\Dao
      * @return string
      */
     public static function Permissao_Copia() {
-        return false;
+        return FALSE;
     }
     public static function Get_Sigla() {
         return 'B';
@@ -36,7 +36,7 @@ final Class Banner_DAO extends Framework\App\Dao
                 'mysql_titulo'      => 'id',
                 'mysql_tipovar'     => 'int', //varchar, int, 
                 'mysql_tamanho'     => 11,
-                'mysql_null'        => FALSE, // true NULL, false, NOT NULL
+                'mysql_null'        => FALSE, // true NULL, FALSE, NOT NULL
                 'mysql_default'     => FALSE, //false -> NONE, outro -> default
                 'mysql_primary'     => TRUE,
                 'mysql_estrangeira' => FALSE, // chave estrangeira
@@ -51,7 +51,7 @@ final Class Banner_DAO extends Framework\App\Dao
                 'mysql_titulo'      => 'user_criacao',
                 'mysql_tipovar'     => 'int', //varchar, int, 
                 'mysql_tamanho'     => 11,
-                'mysql_null'        => TRUE, // true NULL, false, NOT NULL
+                'mysql_null'        => TRUE, // true NULL, FALSE, NOT NULL
                 'mysql_default'     => FALSE,//false -> NONE, outro -> default
                 'mysql_primary'     => FALSE, // chave primaria
                 'mysql_estrangeira' => 'U.id|U.nome-U.razao_social', // chave estrangeira
@@ -66,7 +66,7 @@ final Class Banner_DAO extends Framework\App\Dao
                 'mysql_titulo'      => 'categoria',
                 'mysql_tipovar'     => 'int', //varchar, int, 
                 'mysql_tamanho'     => 11,
-                'mysql_null'        => TRUE, // true NULL, false, NOT NULL
+                'mysql_null'        => TRUE, // true NULL, FALSE, NOT NULL
                 'mysql_default'     => FALSE,//false -> NONE, outro -> default
                 'mysql_primary'     => FALSE, // chave primaria
                 'mysql_estrangeira' => 'C.id|C.nome|CA.mod_acc=banner', // chave estrangeira     ligacao|apresentacao|condicao
@@ -92,7 +92,7 @@ final Class Banner_DAO extends Framework\App\Dao
                 'mysql_titulo'      => 'foto',
                 'mysql_tipovar'     => 'int', //varchar, int, 
                 'mysql_tamanho'     => 11,
-                'mysql_null'        => TRUE, // true NULL, false, NOT NULL
+                'mysql_null'        => TRUE, // true NULL, FALSE, NOT NULL
                 'mysql_default'     => FALSE,//false -> NONE, outro -> default
                 'mysql_primary'     => FALSE, // chave primaria
                 'mysql_estrangeira' => FALSE, // chave estrangeira
@@ -107,7 +107,7 @@ final Class Banner_DAO extends Framework\App\Dao
                 'mysql_titulo'      => 'nome',
                 'mysql_tipovar'     => 'varchar', //varchar, int, 
                 'mysql_tamanho'     => 100,
-                'mysql_null'        => TRUE, // true NULL, false, NOT NULL
+                'mysql_null'        => TRUE, // true NULL, FALSE, NOT NULL
                 'mysql_default'     => FALSE,//false -> NONE, outro -> default
                 'mysql_primary'     => FALSE, // chave primaria
                 'mysql_estrangeira' => FALSE, // chave estrangeira
@@ -133,7 +133,7 @@ final Class Banner_DAO extends Framework\App\Dao
                 'mysql_titulo'      => 'url',
                 'mysql_tipovar'     => 'int', //varchar, int, 
                 'mysql_tamanho'     => 11,
-                'mysql_null'        => TRUE, // true NULL, false, NOT NULL
+                'mysql_null'        => TRUE, // true NULL, FALSE, NOT NULL
                 'mysql_default'     => FALSE,//false -> NONE, outro -> default
                 'mysql_primary'     => FALSE, // chave primaria
                 'mysql_estrangeira' => FALSE, // chave estrangeira
@@ -159,7 +159,7 @@ final Class Banner_DAO extends Framework\App\Dao
                 'mysql_titulo'      => 'descricao',
                 'mysql_tipovar'     => 'int', //varchar, int, 
                 'mysql_tamanho'     => 11,
-                'mysql_null'        => TRUE, // true NULL, false, NOT NULL
+                'mysql_null'        => TRUE, // true NULL, FALSE, NOT NULL
                 'mysql_default'     => FALSE,//false -> NONE, outro -> default
                 'mysql_primary'     => FALSE, // chave primaria
                 'mysql_estrangeira' => FALSE, // chave estrangeira
@@ -185,7 +185,7 @@ final Class Banner_DAO extends Framework\App\Dao
                 'mysql_titulo'      => 'ixi',
                 'mysql_tipovar'     => 'int', //varchar, int, 
                 'mysql_tamanho'     => 11,
-                'mysql_null'        => TRUE, // true NULL, false, NOT NULL
+                'mysql_null'        => TRUE, // true NULL, FALSE, NOT NULL
                 'mysql_default'     => FALSE,//false -> NONE, outro -> default
                 'mysql_primary'     => FALSE, // chave primaria
                 'mysql_estrangeira' => FALSE, // chave estrangeira
@@ -200,7 +200,7 @@ final Class Banner_DAO extends Framework\App\Dao
                 'mysql_titulo'      => 'cliq',
                 'mysql_tipovar'     => 'int', //varchar, int, 
                 'mysql_tamanho'     => 11,
-                'mysql_null'        => TRUE, // true NULL, false, NOT NULL
+                'mysql_null'        => TRUE, // true NULL, FALSE, NOT NULL
                 'mysql_default'     => FALSE,//false -> NONE, outro -> default
                 'mysql_primary'     => FALSE, // chave primaria
                 'mysql_estrangeira' => FALSE, // chave estrangeira
@@ -215,7 +215,7 @@ final Class Banner_DAO extends Framework\App\Dao
                 'mysql_titulo'      => 'limite_ixi',
                 'mysql_tipovar'     => 'int', //varchar, int, 
                 'mysql_tamanho'     => 11,
-                'mysql_null'        => TRUE, // true NULL, false, NOT NULL
+                'mysql_null'        => TRUE, // true NULL, FALSE, NOT NULL
                 'mysql_default'     => FALSE,//false -> NONE, outro -> default
                 'mysql_primary'     => FALSE, // chave primaria
                 'mysql_estrangeira' => FALSE, // chave estrangeira
@@ -242,7 +242,7 @@ final Class Banner_DAO extends Framework\App\Dao
                 'mysql_titulo'      => 'limite_cliq',
                 'mysql_tipovar'     => 'int', //varchar, int, 
                 'mysql_tamanho'     => 11,
-                'mysql_null'        => TRUE, // true NULL, false, NOT NULL
+                'mysql_null'        => TRUE, // true NULL, FALSE, NOT NULL
                 'mysql_default'     => FALSE,//false -> NONE, outro -> default
                 'mysql_primary'     => FALSE, // chave primaria
                 'mysql_estrangeira' => FALSE, // chave estrangeira
@@ -269,7 +269,7 @@ final Class Banner_DAO extends Framework\App\Dao
                 'mysql_titulo'      => 'status',
                 'mysql_tipovar'     => 'int', //varchar, int, 
                 'mysql_tamanho'     => 11,
-                'mysql_null'        => TRUE, // true NULL, false, NOT NULL
+                'mysql_null'        => TRUE, // true NULL, FALSE, NOT NULL
                 'mysql_default'     => FALSE,//false -> NONE, outro -> default
                 'mysql_primary'     => FALSE, // chave primaria
                 'mysql_estrangeira' => FALSE, // chave estrangeira

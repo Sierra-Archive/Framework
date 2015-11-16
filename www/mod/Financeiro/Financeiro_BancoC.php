@@ -33,7 +33,7 @@ class Financeiro_BancoControle extends Financeiro_Controle
     */
     public function Main() {
         \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'Financeiro/Banco/Bancos');
-        return false;
+        return FALSE;
     }
     /**
      * 
@@ -57,14 +57,14 @@ class Financeiro_BancoControle extends Financeiro_Controle
             )
         )));
         $linhas = $this->_Modelo->db->Sql_Select('Financeiro_Banco');
-        if ($linhas!==false && !empty($linhas)) {
+        if ($linhas !== FALSE && !empty($linhas)) {
             if (is_object($linhas)) $linhas = Array(0=>$linhas);
             reset($linhas);
             foreach ($linhas as $indice=>&$valor) {
                 //$tabela['#Id'][$i]       = '#'.$valor->id;
                 $tabela['Nome'][$i]      = $valor->nome;
-                $tabela['Funções'][$i]   = /*$this->_Visual->Tema_Elementos_Btn('Visualizar'      ,Array('Visualizar Banco'    ,'Financeiro/Banco/Bancos_View/'.$valor->id.'/'    ,'')).*/
-                                           $this->_Visual->Tema_Elementos_Btn('Editar'          ,Array('Editar Banco'        ,'Financeiro/Banco/Bancos_Edit/'.$valor->id.'/'    ,'')).
+                $tabela['Funções'][$i]   = /*$this->_Visual->Tema_Elementos_Btn('Visualizar'      ,Array('Visualizar Banco'    ,'Financeiro/Banco/Bancos_View/'.$valor->id.'/'    , '')).*/
+                                           $this->_Visual->Tema_Elementos_Btn('Editar'          ,Array('Editar Banco'        ,'Financeiro/Banco/Bancos_Edit/'.$valor->id.'/'    , '')).
                                            $this->_Visual->Tema_Elementos_Btn('Deletar'         ,Array('Deletar Banco'       ,'Financeiro/Banco/Bancos_Del/'.$valor->id.'/'     ,'Deseja realmente deletar esse Banco ?'));
                 ++$i;
             }
@@ -92,7 +92,7 @@ class Financeiro_BancoControle extends Financeiro_Controle
         $formbt     = __('Salvar');
         $formlink   = 'Financeiro/Banco/Bancos_Add2/';
         $campos = Financeiro_Banco_DAO::Get_Colunas();
-        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos);
+        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1, $titulo2, $formlink, $formid, $formbt, $campos);
     }
     /**
      * 
@@ -108,7 +108,7 @@ class Financeiro_BancoControle extends Financeiro_Controle
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = __('Banco cadastrado com sucesso.');
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
     }
     /**
      * 
@@ -123,9 +123,9 @@ class Financeiro_BancoControle extends Financeiro_Controle
         $formid     = __('form_Sistema_AdminC_BancoEdit');
         $formbt     = __('Alterar Banco');
         $formlink   = 'Financeiro/Banco/Bancos_Edit2/'.$id;
-        $editar     = Array('Financeiro_Banco',$id);
+        $editar     = Array('Financeiro_Banco', $id);
         $campos = Financeiro_Banco_DAO::Get_Colunas();
-        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos,$editar);
+        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1, $titulo2, $formlink, $formid, $formbt, $campos, $editar);
     }
     /**
      * 
@@ -136,12 +136,12 @@ class Financeiro_BancoControle extends Financeiro_Controle
      */
     public function Bancos_Edit2($id) {
         $titulo     = __('Banco Editado com Sucesso');
-        $dao        = Array('Financeiro_Banco',$id);
+        $dao        = Array('Financeiro_Banco', $id);
         $funcao     = '$this->Bancos();';
         $sucesso1   = __('Banco Alterado com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);      
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);      
     }
     /**
      * 
@@ -158,7 +158,7 @@ class Financeiro_BancoControle extends Financeiro_Controle
         $linha = $this->_Modelo->db->Sql_Select('Financeiro_Banco', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($linha);
         // Mensagem
-    	if ($sucesso===true) {
+    	if ($sucesso === TRUE) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
@@ -171,12 +171,12 @@ class Financeiro_BancoControle extends Financeiro_Controle
                 "mgs_secundaria" => __('Erro')
             );
         }
-        $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+        $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
         
         $this->Bancos();
         
         $this->_Visual->Json_Info_Update('Titulo', __('Banco deletado com Sucesso'));  
-        $this->_Visual->Json_Info_Update('Historico', false);  
+        $this->_Visual->Json_Info_Update('Historico', FALSE);  
     }
 }
 ?>

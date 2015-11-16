@@ -27,8 +27,8 @@ class Agenda_PastaModelo extends Agenda_Modelo
         $perm_del = $this->_Registro->_Acl->Get_Permissao_Url('Agenda/Pasta/Pastas_Del');
         
         $function = '';
-        if ($perm_editar) $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Editar\'     ,Array(__(\'Editar Pasta\')        ,\'Agenda/Pasta/Pastas_Edit/\'.$d    ,\'\'),true);';
-        if ($perm_del) $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Deletar\'    ,Array(__(\'Deletar Pasta\')       ,\'Agenda/Pasta/Pastas_Del/\'.$d     ,__(\'Deseja realmente deletar essa Pasta ?\')),true);';
+        if ($perm_editar) $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Editar\'     ,Array(__(\'Editar Pasta\')        ,\'Agenda/Pasta/Pastas_Edit/\'.$d    ,\'\'),TRUE);';
+        if ($perm_del) $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Deletar\'    ,Array(__(\'Deletar Pasta\')       ,\'Agenda/Pasta/Pastas_Del/\'.$d     ,__(\'Deseja realmente deletar essa Pasta ?\')),TRUE);';
         $columns = Array();
         
         $numero = -1;
@@ -56,7 +56,7 @@ class Agenda_PastaModelo extends Agenda_Modelo
         ); //'Funções';
                 
         echo json_encode(
-            \Framework\Classes\Datatable::complex( $_GET, Framework\App\Registro::getInstacia()->_Conexao, $tabela, $primaryKey, $columns, null,$where)
+            \Framework\Classes\Datatable::complex( $_GET, Framework\App\Registro::getInstacia()->_Conexao, $tabela, $primaryKey, $columns, null, $where)
         );
     }
 }

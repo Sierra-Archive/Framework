@@ -7,7 +7,7 @@ final Class Sistema_Local_Bairro_DAO extends Framework\App\Dao
     protected $cidade;
     protected $nome;
     
-    protected static $objetocarregado     = false;     protected static $mysql_colunas       = false;     protected static $mysql_outside       = Array();     protected static $mysql_inside        = Array(); public function __construct() {  parent::__construct(); } public static function Get_Nome() {
+    protected static $objetocarregado     = FALSE;     protected static $mysql_colunas       = FALSE;     protected static $mysql_outside       = Array();     protected static $mysql_inside        = Array(); public function __construct() {  parent::__construct(); } public static function Get_Nome() {
         return MYSQL_SIS_LOCALIZACAO_BAIRROS;
     }
     public static function Get_Engine() {
@@ -18,13 +18,13 @@ final Class Sistema_Local_Bairro_DAO extends Framework\App\Dao
      * @return string
      */
     public static function Permissao_Copia() {
-        return false;
+        return FALSE;
     }
     public static function Get_Sigla() {
         return 'SLB';
     }
     public static function Get_StaticTable() {
-        return true;
+        return TRUE;
     }
     public static function Get_Class() {
         return get_class() ; //return str_replace(Array('_DAO'), Array(''), get_class());
@@ -35,7 +35,7 @@ final Class Sistema_Local_Bairro_DAO extends Framework\App\Dao
                 'mysql_titulo'      => 'id',
                 'mysql_tipovar'     => 'int', //varchar, int, 
                 'mysql_tamanho'     => 11,
-                'mysql_null'        => FALSE, // true NULL, false, NOT NULL
+                'mysql_null'        => FALSE, // true NULL, FALSE, NOT NULL
                 'mysql_default'     => FALSE, //false -> NONE, outro -> default
                 'mysql_primary'     => TRUE,
                 'mysql_estrangeira' => FALSE, // chave estrangeira
@@ -50,7 +50,7 @@ final Class Sistema_Local_Bairro_DAO extends Framework\App\Dao
                 'mysql_titulo'      => 'pais',
                 'mysql_tipovar'     => 'int', //varchar, int, 
                 'mysql_tamanho'     => 11,
-                'mysql_null'        => TRUE, // true NULL, false, NOT NULL
+                'mysql_null'        => TRUE, // true NULL, FALSE, NOT NULL
                 'mysql_default'     => FALSE,//false -> NONE, outro -> default
                 'mysql_primary'     => FALSE, // chave primaria
                 'mysql_estrangeira' => 'SLP.id|SLP.nome', // chave estrangeira
@@ -72,7 +72,7 @@ final Class Sistema_Local_Bairro_DAO extends Framework\App\Dao
                 'mysql_titulo'      => 'estado',
                 'mysql_tipovar'     => 'int', //varchar, int, 
                 'mysql_tamanho'     => 11,
-                'mysql_null'        => TRUE, // true NULL, false, NOT NULL
+                'mysql_null'        => TRUE, // true NULL, FALSE, NOT NULL
                 'mysql_default'     => FALSE,//false -> NONE, outro -> default
                 'mysql_primary'     => FALSE, // chave primaria
                 'mysql_estrangeira' => 'SLE.id|SLE.sigla|SLE.pais={pais}', // chave estrangeira
@@ -94,7 +94,7 @@ final Class Sistema_Local_Bairro_DAO extends Framework\App\Dao
                 'mysql_titulo'      => 'cidade',
                 'mysql_tipovar'     => 'int', //varchar, int, 
                 'mysql_tamanho'     => 11,
-                'mysql_null'        => TRUE, // true NULL, false, NOT NULL
+                'mysql_null'        => TRUE, // true NULL, FALSE, NOT NULL
                 'mysql_default'     => FALSE,//false -> NONE, outro -> default
                 'mysql_primary'     => FALSE, // chave primaria
                 'mysql_estrangeira' => 'SLC.id|SLC.nome|SLC.estado={estado}', // chave estrangeira
@@ -115,7 +115,7 @@ final Class Sistema_Local_Bairro_DAO extends Framework\App\Dao
                 'mysql_titulo'      => 'nome',
                 'mysql_tipovar'     => 'varchar', //varchar, int, 
                 'mysql_tamanho'     => 100,
-                'mysql_null'        => TRUE, // true NULL, false, NOT NULL
+                'mysql_null'        => TRUE, // true NULL, FALSE, NOT NULL
                 'mysql_default'     => FALSE,//false -> NONE, outro -> default
                 'mysql_primary'     => FALSE, // chave primaria
                 'mysql_estrangeira' => FALSE, // chave estrangeira

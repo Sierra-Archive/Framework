@@ -42,7 +42,7 @@ class Minify_CommentPreserver {
     public static function process($content, $processor, $args = array())
     {
         $ret = '';
-        while (true) {
+        while (TRUE) {
             list($beforeComment, $comment, $afterComment) = self::_nextComment($content);
             if ('' !== $beforeComment) {
                 $callArgs = $args;
@@ -74,7 +74,7 @@ class Minify_CommentPreserver {
             false === ($start = strpos($in, '/*!'))
             || false === ($end = strpos($in, '*/', $start + 3))
         ) {
-            return array($in, false, false);
+            return array($in, FALSE, FALSE);
         }
         $ret = array(
             substr($in, 0, $start)

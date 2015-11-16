@@ -119,7 +119,7 @@ class PagSeguroPaymentService
                     break;
 
             }
-            return (isset($paymentReturn) ? $paymentReturn : false);
+            return (isset($paymentReturn) ? $paymentReturn : FALSE);
 
         } catch (PagSeguroServiceException $e) {
             throw $e;

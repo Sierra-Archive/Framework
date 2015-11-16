@@ -4,9 +4,9 @@
             <a data-acao="Control_Menu_Superior" href="<?php echo $params['menu']['link'][$k]; ?>" class="lajax-mesup<?php if ($params['menu']['ativo'][$k]===1) {  ?> active<?php } else if ($params['menu']['ativo'][$k]===2) { ?> active submenu-active<?php } ?>">
                 <i class="fa fa-<?php echo $params['menu']['icon'][$k]; ?>"></i>
                 <span><?php echo $params['menu']['nome'][$k]; ?></span>
-                <?php if ($params['menu']['filhos'][$k]!==false) { ?><span class="arrow"></span><?php } ?>
+                <?php if ($params['menu']['filhos'][$k] !== FALSE) { ?><span class="arrow"></span><?php } ?>
             </a>
-            <?php if ($params['menu']['filhos'][$k]!==false) { ?>
+            <?php if ($params['menu']['filhos'][$k] !== FALSE) { ?>
                 <ul class="sub">
                     <?php foreach($params['menu']['filhos'][$k] as $k2=>$v2) { ?>
                         <li>

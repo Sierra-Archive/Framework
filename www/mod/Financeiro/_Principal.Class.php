@@ -23,19 +23,19 @@ class Financeiro_Principal implements \Framework\PrincipalInterface
     static function Home(&$controle, &$Modelo, &$Visual) {
         Financeiro_Controle::Saldo_Carregar($Modelo, $Visual, \Framework\App\Acl::Usuario_GetID_Static());
     }
-    static function Busca(&$controle, &$Modelo, &$Visual,$busca) {
-        return false;
+    static function Busca(&$controle, &$Modelo, &$Visual, $busca) {
+        return FALSE;
     }
     static function Config() {
-        return false;
+        return FALSE;
     }
     
-    static function Relatorio($data_inicio,$data_final,$filtro=false) {
-        return false;
+    static function Relatorio($data_inicio, $data_final, $filtro = FALSE) {
+        return FALSE;
     }
     
-    static function Estatistica($data_inicio,$data_final,$filtro=false) {
-        return false;
+    static function Estatistica($data_inicio, $data_final, $filtro = FALSE) {
+        return FALSE;
     }
 }
 ?>

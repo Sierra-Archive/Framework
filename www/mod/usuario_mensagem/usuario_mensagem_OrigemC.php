@@ -33,15 +33,15 @@ class usuario_mensagem_OrigemControle extends usuario_mensagem_Controle
     */
     public function Main() {
         \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'usuario_mensagem/Origem/Origens/');
-        return false;
+        return FALSE;
     }
-    static function Endereco_Origem($true=true) {
+    static function Endereco_Origem($true= TRUE ) {
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
         $titulo = __('Origens');
         $link = 'usuario_mensagem/Origem/Origens';
-        if ($true===true) {
-            $_Controle->Tema_Endereco($titulo,$link);
+        if ($true === TRUE) {
+            $_Controle->Tema_Endereco($titulo, $link);
         } else {
             $_Controle->Tema_Endereco($titulo);
         }
@@ -51,15 +51,15 @@ class usuario_mensagem_OrigemControle extends usuario_mensagem_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Origens($export=false) {
-        self::Endereco_Origem(false);
+    public function Origens($export = FALSE) {
+        self::Endereco_Origem(FALSE);
        
         $tabela = Array(
             'Id', 'Nome', 'Funções'
         );
         $this->_Visual->Show_Tabela_DataTable_Massiva($tabela,'usuario_mensagem/Origem/Origens');
         $titulo = __('Listagem de Origens').' (<span id="DataTable_Contador">0</span>)';  //
-        $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',10,Array("link"=>"usuario_mensagem/Origem/Origens_Add",'icon'=>'add', 'nome'=>'Adicionar Origem'));
+        $this->_Visual->Bloco_Unico_CriaJanela($titulo, '',10,Array("link"=>"usuario_mensagem/Origem/Origens_Add",'icon'=>'add', 'nome'=>'Adicionar Origem'));
         
         //Carrega Json
         $this->_Visual->Json_Info_Update('Titulo', __('Administrar Origens'));
@@ -70,7 +70,7 @@ class usuario_mensagem_OrigemControle extends usuario_mensagem_Controle
      * @version 0.4.2
      */
     public function Origens_Add() {
-        self::Endereco_Origem(true);
+        self::Endereco_Origem(TRUE);
         // Carrega Config
         $titulo1    = __('Adicionar Origem');
         $titulo2    = __('Salvar Origem');
@@ -78,7 +78,7 @@ class usuario_mensagem_OrigemControle extends usuario_mensagem_Controle
         $formbt     = __('Salvar');
         $formlink   = 'usuario_mensagem/Origem/Origens_Add2/';
         $campos = Usuario_Mensagem_Origem_DAO::Get_Colunas();
-        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos);
+        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1, $titulo2, $formlink, $formid, $formbt, $campos);
     }
     /**
      * 
@@ -94,7 +94,7 @@ class usuario_mensagem_OrigemControle extends usuario_mensagem_Controle
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = __('Origem cadastrada com sucesso.');
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
     }
     /**
      * 
@@ -103,16 +103,16 @@ class usuario_mensagem_OrigemControle extends usuario_mensagem_Controle
      * @version 0.4.2
      */
     public function Origens_Edit($id) {
-        self::Endereco_Origem(true);
+        self::Endereco_Origem(TRUE);
         // Carrega Config
         $titulo1    = 'Editar Origem (#'.$id.')';
         $titulo2    = __('Alteração de Origem');
         $formid     = 'form_Sistema_AdminC_OrigemEdit';
         $formbt     = __('Alterar Origem');
         $formlink   = 'usuario_mensagem/Origem/Origens_Edit2/'.$id;
-        $editar     = Array('Usuario_Mensagem_Origem',$id);
+        $editar     = Array('Usuario_Mensagem_Origem', $id);
         $campos = Usuario_Mensagem_Origem_DAO::Get_Colunas();
-        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos,$editar);
+        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1, $titulo2, $formlink, $formid, $formbt, $campos, $editar);
     }
     /**
      * 
@@ -123,12 +123,12 @@ class usuario_mensagem_OrigemControle extends usuario_mensagem_Controle
      */
     public function Origens_Edit2($id) {
         $titulo     = __('Origem Editada com Sucesso');
-        $dao        = Array('Usuario_Mensagem_Origem',$id);
+        $dao        = Array('Usuario_Mensagem_Origem', $id);
         $funcao     = '$this->Origens();';
         $sucesso1   = __('Origem Alterado com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);   
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);   
     }
     /**
      * 
@@ -145,7 +145,7 @@ class usuario_mensagem_OrigemControle extends usuario_mensagem_Controle
         $setor = $this->_Modelo->db->Sql_Select('Usuario_Mensagem_Origem', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($setor);
         // Mensagem
-    	if ($sucesso===true) {
+    	if ($sucesso === TRUE) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
@@ -158,12 +158,12 @@ class usuario_mensagem_OrigemControle extends usuario_mensagem_Controle
                 "mgs_secundaria" => __('Erro')
             );
         }
-        $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+        $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
         
         $this->Origens();
         
         $this->_Visual->Json_Info_Update('Titulo', __('Origem deletada com Sucesso'));  
-        $this->_Visual->Json_Info_Update('Historico', false);  
+        $this->_Visual->Json_Info_Update('Historico', FALSE);  
     }
 }
 ?>

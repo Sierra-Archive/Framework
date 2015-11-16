@@ -19,7 +19,7 @@ function __autoload($class) {
     $original = $class;
     
     // Carrega Dao
-    if (strpos($class, '_DAO')!==false) {
+    if (strpos($class, '_DAO') !== FALSE) {
         $class = str_replace(Array('_'), Array('.'), $class);
         if ( file_exists  (DAO_PATH . $class.'.php')) {
             require_once (DAO_PATH . $class.'.php');
@@ -34,13 +34,13 @@ function __autoload($class) {
     }
     
     // Classes
-    if (strpos($class, 'Framework\Classes')!==false) {
-        $class_partes = explode('\\',$class);
+    if (strpos($class, 'Framework\Classes') !== FALSE) {
+        $class_partes = explode('\\', $class);
         $class = $class_partes[sizeof($class_partes)-1];
         $class = ucfirst($class);
         if ( file_exists  (CLASS_PATH . $class.DS.$class.'.php')) {
             require_once (CLASS_PATH . $class.DS.$class.'.php');
-            return true;
+            return TRUE;
         } else {
             throw new \Exception('Classe não encontrada'.CLASS_PATH . $class.DS.$class.'.php'.$class."\n\n<br><Br>Original: ".$original, 2802);
         }
@@ -51,19 +51,19 @@ function __autoload($class) {
         $class = str_replace('_Principal', '', $class);
         if ( file_exists  (MOD_PATH.$class.DS.'_Principal.Class.php')) {
             require_once(MOD_PATH.$class.DS.'_Principal.Class.php');
-            return true;
+            return TRUE;
         } else {
             throw new \Exception('Classe Principal não encontrada: '.$class."\n\n<br><Br>Original: ".$original, 2802);
         }
     }
 
     // Interface
-    if (strpos($class, 'Framework\\')!==false && strpos($class, 'Interface')!==false) {
+    if (strpos($class, 'Framework\\') !== FALSE && strpos($class, 'Interface') !== FALSE) {
         $class = str_replace(Array('Framework\\'), Array(''), $class);
         $class = str_replace(Array('Interface'), Array(''), $class);
         if ( file_exists  (INTER_PATH.$class.'.Interface.php')) {
             require_once (INTER_PATH.$class.'.Interface.php');
-            return true;
+            return TRUE;
         } else {
             throw new \Exception('Interface não encontrada: '.$class."\n\n<br><Br>Original: ".$original, 2802);
         }
@@ -87,7 +87,7 @@ function __autoload_Sitec($class) {
     }
     if ( file_exists  (APP_PATH.$pasta.ucfirst($class_partes[$j-1]).'.php')) {
         require_once (APP_PATH.$pasta.ucfirst($class_partes[$j-1]).'.php');
-        return true;
+        return TRUE;
     } else {
         throw new \Exception('Classe Nativa do Framework não encontrada: '.$pasta.ucfirst($class_partes[$j-1])."\n\n<br><Br>Original: ".$class, 2802);
     }
@@ -102,9 +102,9 @@ function __autoload_Modules($class) {
     } else if (  substr($class, -6)=='Visual') {
         $tipo = 'Visual';
     } else {
-        return false;
+        return FALSE;
     }
-    $class_partes = explode('_',$class);
+    $class_partes = explode('_', $class);
     $class_qnt = count($class_partes);
     $submodulo = $class_partes[$class_qnt-1];
     $modulo = '';
@@ -148,7 +148,7 @@ function __autoload_Modules($class) {
             throw new \Exception('Classe Submodulo não encontrada: '.MOD_PATH . $modulo.DS.$modulo.'_'.$submodulo.$tipo[0].'.php'."\n\n<br><Br>Original: ".$class, 2802);
         }
     }
-    return false;
+    return FALSE;
 }
 
 // Carrega Autoloads
@@ -209,10 +209,10 @@ define('MOD_PATH',  ROOT_PADRAO      .'mod'      .DS);
  * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
  * @version 0.4.2
  */
-function Erro_Get_Leve($error, $message,$_1,$_2)
+function Erro_Get_Leve($error, $message, $_1, $_2)
 {
     //echo var_dump($message.'<br>Arquivo: '.$_1.'<br>Linha:'.$_2,3100);
-    if (SISTEMA_DEBUG===true) {
+    if (SISTEMA_DEBUG === TRUE) {
         if ($error == 8)
         {
             throw new \Exception($message.'<br>Arquivo: '.$_1.'<br>Linha:'.$_2,3100);
@@ -225,7 +225,7 @@ function Erro_Get_Leve($error, $message,$_1,$_2)
         Erro_Email( $error, $message, $_1, $_2);
     }
 
-    return false;
+    return FALSE;
 }
 /**
  * Trata Erros Fatais - Pega o Erro do Sistema e os Trata como Excessoes
@@ -240,7 +240,7 @@ function Erro_Get_Fatal() {
     $errline = 0;
     $error = error_get_last();
     if ( $error !== NULL) {
-        if (SISTEMA_DEBUG!==true) {
+        if (SISTEMA_DEBUG !== TRUE) {
             $errno   = $error["type"];
             $errfile = $error["file"];
             $errline = $error["line"];
@@ -269,9 +269,9 @@ function Erro_Get_Fatal() {
  * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
  * @version 0.4.2
  */
-function Erro_Formatar( $errno, $errstr, $errfile, $errline, $previ = '', $trace = false) {
+function Erro_Formatar( $errno, $errstr, $errfile, $errline, $previ = '', $trace = FALSE) {
     require_once APP_PATH . 'Funcao'.'.php';
-    if ($trace===false) $trace = debug_backtrace( false );
+    if ($trace === FALSE) $trace = debug_backtrace( false );
     
     
     if (isset($_GET['url'])) {
@@ -289,7 +289,7 @@ function Erro_Formatar( $errno, $errstr, $errfile, $errline, $previ = '', $trace
     $content .= '<tr valign=\'top\'><td><b>Extra</b></td><td><pre>-----------</pre></td></tr>';
     $content .= '<tr valign=\'top\'><td><b>Logado</b></td><td><pre>'.\Framework\App\Session::get(SESSION_ADMIN_LOG).'</pre></td></tr>';
     $content .= '<tr valign=\'top\'><td><b>Url</b></td><td><pre>'.$url.'</pre></td></tr>';
-    $content .= '<tr valign=\'top\'><td><b>POST</b></td><td><pre>'.htmlspecialchars(print_r($_POST,true)).'</pre></td></tr>';
+    $content .= '<tr valign=\'top\'><td><b>POST</b></td><td><pre>'.htmlspecialchars(print_r($_POST,TRUE)).'</pre></td></tr>';
     $content .= '</tbody></table>';
     
     
@@ -320,7 +320,7 @@ function Erro_Formatar( $errno, $errstr, $errfile, $errline, $previ = '', $trace
             $i = 1;
             foreach($linha['args'] as &$valor) {
                 if ($i>1) $content .= '<br>';
-                $content .= '<b>'.$i.':</b> '.htmlspecialchars(print_r($valor,true), ENT_QUOTES);
+                $content .= '<b>'.$i.':</b> '.htmlspecialchars(print_r($valor,TRUE), ENT_QUOTES);
                 ++$i;
             }
             $content .= '</td>';
@@ -556,11 +556,11 @@ while ($i<1000) {
             'Descrição'                 =>  '',
             'System_Require'            =>  '3.1.0',
             'Version'                   =>  '3.1.1',
-            'Dependencias'              =>  false,
+            'Dependencias'              =>  FALSE,
         );
     };
     ++$i;
-    $config    = array_merge_recursive($config,$config_Modulo()   );
+    $config    = array_merge_recursive($config, $config_Modulo()   );
 }
 unset($tempo);
 
@@ -573,10 +573,10 @@ while ($i<1000) {
         'Descrição'                 =>  '',
         'System_Require'            =>  '3.1.0',
         'Version'                   =>  '3.1.1',
-        'Dependencias'              =>  false,
+        'Dependencias'              =>  FALSE,
     );
     ++$i;
-    $config    = array_merge_recursive($config,$config_Modulo   );
+    $config    = array_merge_recursive($config, $config_Modulo   );
 }
 unset($tempo);
 

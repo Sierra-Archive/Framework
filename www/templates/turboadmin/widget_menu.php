@@ -12,7 +12,7 @@
     <?php } ?>
 </ul><!-- #main-menu .radius-top clearfix -->
 <ul id="sub-menu" class="clearfix">
-<?php if ($params['menu']['filhos'][$k]!==false) { ?>
+<?php if ($params['menu']['filhos'][$k] !== FALSE) { ?>
     <?php foreach($params['menu']['filhos'][$k] as $k2=>$v2) { ?>
         <li><a href="<?php echo $v2['link']; ?>"<?php if ($v2['ativo']===1) { ?> class="active"<?php } ?>><?php echo $v2['nome']; ?></a></li>
     <?php } ?>

@@ -9,7 +9,7 @@ class social_personasControle extends social_Controle
         parent::__construct();
     }
     public function Main() {
-        return true;
+        return TRUE;
     }
     public function social() {
         $social     = '';
@@ -216,7 +216,7 @@ class social_personasControle extends social_Controle
         $this->_Visual->Blocar($formulario);
         $this->_Visual->Bloco_Menor_CriaJanela(__('Cadastro de Pessoas'));
 
-        $this->_Visual->Javascript_Executar(false);
+        $this->_Visual->Javascript_Executar(FALSE);
         
     }
     public function social_formcadastro() {
@@ -232,14 +232,14 @@ class social_personasControle extends social_Controle
         return $formulario;
     }
     public function social_inserir() {
-        if (!isset($_POST["nome"])) return false;
+        if (!isset($_POST["nome"])) return FALSE;
         //data_hora_brasil_eua()
         $nome = \Framework\App\Conexao::anti_injection($_POST["nome"]);
         $idface = (int) $_POST["idface"];
         
         $sucesso =  $this->_Modelo->social_inserir($idface, $nome);
         $this->social();
-        if ($sucesso===true) {
+        if ($sucesso === TRUE) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Financeiro Inserido com Sucesso'),
@@ -252,7 +252,7 @@ class social_personasControle extends social_Controle
                 "mgs_secundaria" => __('Erro')
             );
         }
-        $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);    
+        $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);    
     }
 }
 ?>

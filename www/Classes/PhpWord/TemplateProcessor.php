@@ -82,12 +82,12 @@ class TemplateProcessor
         $this->zipClass = new ZipArchive();
         $this->zipClass->open($this->temporaryDocumentFilename);
         $index = 1;
-        while ($this->zipClass->locateName($this->getHeaderName($index)) !== false) {
+        while ($this->zipClass->locateName($this->getHeaderName($index)) !== FALSE) {
             $this->temporaryDocumentHeaders[$index] = $this->zipClass->getFromName($this->getHeaderName($index));
             $index++;
         }
         $index = 1;
-        while ($this->zipClass->locateName($this->getFooterName($index)) !== false) {
+        while ($this->zipClass->locateName($this->getFooterName($index)) !== FALSE) {
             $this->temporaryDocumentFooters[$index] = $this->zipClass->getFromName($this->getFooterName($index));
             $index++;
         }
@@ -192,7 +192,7 @@ class TemplateProcessor
         if (preg_match('#<w:vMerge w:val="restart"/>#', $xmlRow)) {
             // $extraRowStart = $rowEnd;
             $extraRowEnd = $rowEnd;
-            while (true) {
+            while (TRUE) {
                 $extraRowStart = $this->findRowStart($extraRowEnd + 1);
                 $extraRowEnd = $this->findRowEnd($extraRowEnd + 1);
 
@@ -230,7 +230,7 @@ class TemplateProcessor
      * @param boolean $replace
      * @return string|null
      */
-    public function cloneBlock($blockname, $clones = 1, $replace = true)
+    public function cloneBlock($blockname, $clones = 1, $replace = TRUE)
     {
         $xmlBlock = null;
         preg_match(

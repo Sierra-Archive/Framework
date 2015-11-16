@@ -7,7 +7,7 @@ $config_Modulo = function () {
                                         'Administração que permite inserir dinheiro aos usuarios, assim como uma opção de saque.',
         'System_Require'            =>  '3.1.0',
         'Version'                   =>  '3.1.1',
-        'Dependencias'              =>  false,
+        'Dependencias'              =>  FALSE,
     );
 };
 $config_Menu = function () {

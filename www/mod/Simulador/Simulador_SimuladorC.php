@@ -19,12 +19,12 @@ class Simulador_SimuladorControle extends Simulador_Controle
     */
     public function Main() {
         \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'Simulador/Simulador/Simuladores');
-        return false;
+        return FALSE;
     }
-    static function Endereco_Simulador($true=true) {
+    static function Endereco_Simulador($true= TRUE ) {
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
-        if ($true===true) {
+        if ($true === TRUE) {
             $_Controle->Tema_Endereco(__('Simuladores'),'Simulador/Simulador/Simuladores');
         } else {
             $_Controle->Tema_Endereco(__('Simuladores'));
@@ -50,22 +50,22 @@ class Simulador_SimuladorControle extends Simulador_Controle
                 $status = 1;
                 $texto = __('Ativado');
             }
-            $tabela['Status'][$i]                   = '<span id="status'.$valor->id.'">'.$Visual->Tema_Elementos_Btn('Status'.$status     ,Array($texto        ,'Simulador/Simulador/Status/'.$valor->id.'/'    ,'')).'</span>';
-            $tabela['Funções'][$i]                  =   $Visual->Tema_Elementos_Btn('Personalizado' ,Array('Testar Simulador'    ,'Simulador/Simulador/Simuladores_Assistir/'.$valor->id.'/'    ,'', 'play', 'success')).
-                                                        $Visual->Tema_Elementos_Btn('Visualizar'    ,Array('Visualizar Perguntas do Simulador'    ,'Simulador/Pergunta/Perguntas/'.$valor->id.'/'    ,'')).
-                                                        $Visual->Tema_Elementos_Btn('Editar'        ,Array('Editar Simulador'        ,'Simulador/Simulador/Simuladores_Edit/'.$valor->id.'/'    ,'')).
+            $tabela['Status'][$i]                   = '<span id="status'.$valor->id.'">'.$Visual->Tema_Elementos_Btn('Status'.$status     ,Array($texto        ,'Simulador/Simulador/Status/'.$valor->id.'/'    , '')).'</span>';
+            $tabela['Funções'][$i]                  =   $Visual->Tema_Elementos_Btn('Personalizado' ,Array('Testar Simulador'    ,'Simulador/Simulador/Simuladores_Assistir/'.$valor->id.'/'    , '', 'play', 'success')).
+                                                        $Visual->Tema_Elementos_Btn('Visualizar'    ,Array('Visualizar Perguntas do Simulador'    ,'Simulador/Pergunta/Perguntas/'.$valor->id.'/'    , '')).
+                                                        $Visual->Tema_Elementos_Btn('Editar'        ,Array('Editar Simulador'        ,'Simulador/Simulador/Simuladores_Edit/'.$valor->id.'/'    , '')).
                                                         $Visual->Tema_Elementos_Btn('Deletar'       ,Array('Deletar Simulador'       ,'Simulador/Simulador/Simuladores_Del/'.$valor->id.'/'     ,'Deseja realmente deletar esse Simulador ?'));
             ++$i;
         }
-        return Array($tabela,$i);
+        return Array($tabela, $i);
     }
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Simuladores($export=false) {
-        self::Endereco_Simulador(false);
+    public function Simuladores($export = FALSE) {
+        self::Endereco_Simulador(FALSE);
         $i = 0;
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
             Array(
@@ -81,17 +81,17 @@ class Simulador_SimuladorControle extends Simulador_Controle
             )
         )));
         $simuladores = $this->_Modelo->db->Sql_Select('Simulador');
-        if ($simuladores!==false && !empty($simuladores)) {
-            list($tabela,$i) = self::Simuladores_Tabela($simuladores);
+        if ($simuladores !== FALSE && !empty($simuladores)) {
+            list($tabela, $i) = self::Simuladores_Tabela($simuladores);
             
-            if ($export!==false) {
-                self::Export_Todos($export,$tabela, 'Simuladores');
+            if ($export !== FALSE) {
+                self::Export_Todos($export, $tabela, 'Simuladores');
             } else {
                 $this->_Visual->Show_Tabela_DataTable(
                     $tabela,     // Array Com a Tabela
                     '',          // style extra
                     true,        // true -> Add ao Bloco, false => Retorna html
-                    false,        // Apagar primeira coluna ?
+                    FALSE,        // Apagar primeira coluna ?
                     Array(       // Ordenacao
                         Array(
                             0,'desc'
@@ -123,7 +123,7 @@ class Simulador_SimuladorControle extends Simulador_Controle
         $formbt     = __('Salvar');
         $formlink   = 'Simulador/Simulador/Simuladores_Add2/';
         $campos = Simulador_DAO::Get_Colunas();
-        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos);
+        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1, $titulo2, $formlink, $formid, $formbt, $campos);
     }
     /**
      * 
@@ -139,7 +139,7 @@ class Simulador_SimuladorControle extends Simulador_Controle
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = __('Simulador cadastrado com sucesso.');
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
     }
     /**
      * 
@@ -155,9 +155,9 @@ class Simulador_SimuladorControle extends Simulador_Controle
         $formid     = 'form_Simulador_SimuladoC_SimuladorEdit';
         $formbt     = __('Alterar Simulador');
         $formlink   = 'Simulador/Simulador/Simuladores_Edit2/'.$id;
-        $editar     = Array('Simulador',$id);
+        $editar     = Array('Simulador', $id);
         $campos = Simulador_DAO::Get_Colunas();
-        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos,$editar);
+        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1, $titulo2, $formlink, $formid, $formbt, $campos, $editar);
     }
     /**
      * 
@@ -168,12 +168,12 @@ class Simulador_SimuladorControle extends Simulador_Controle
      */
     public function Simuladores_Edit2($id) {
         $titulo     = __('Simulador Editado com Sucesso');
-        $dao        = Array('Simulador',$id);
+        $dao        = Array('Simulador', $id);
         $funcao     = '$this->Simuladores();';
         $sucesso1   = __('Simulador Alterado com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);   
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);   
     }
     /**
      * 
@@ -190,7 +190,7 @@ class Simulador_SimuladorControle extends Simulador_Controle
         $simulador = $this->_Modelo->db->Sql_Select('Simulador', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($simulador);
         // Mensagem
-    	if ($sucesso===true) {
+    	if ($sucesso === TRUE) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
@@ -203,19 +203,19 @@ class Simulador_SimuladorControle extends Simulador_Controle
                 "mgs_secundaria" => __('Erro')
             );
         }
-        $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+        $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
         
         $this->Simuladores();
         
         $this->_Visual->Json_Info_Update('Titulo', __('Simulador deletado com Sucesso'));
-        $this->_Visual->Json_Info_Update('Historico', false);
+        $this->_Visual->Json_Info_Update('Historico', FALSE);
     }
-    public function Status($id=false) {
-        if ($id===false) {
-            return false;
+    public function Status($id = FALSE) {
+        if ($id === FALSE) {
+            return FALSE;
         }
         $resultado = $this->_Modelo->db->Sql_Select('Simulador', Array('id'=>$id),1);
-        if ($resultado===false || !is_object($resultado)) {
+        if ($resultado === FALSE || !is_object($resultado)) {
             return _Sistema_erroControle::Erro_Fluxo('Esse registro não existe:'. $id,404);
         }
         if ($resultado->status=='1') {
@@ -233,9 +233,9 @@ class Simulador_SimuladorControle extends Simulador_Controle
             $conteudo = array(
                 'location' => '#status'.$resultado->id,
                 'js' => '',
-                'html' =>  $this->_Visual->Tema_Elementos_Btn('Status'.$resultado->status     ,Array($texto        ,'Simulador/Simulador/Status/'.$resultado->id.'/'    ,''))
+                'html' =>  $this->_Visual->Tema_Elementos_Btn('Status'.$resultado->status     ,Array($texto        ,'Simulador/Simulador/Status/'.$resultado->id.'/'    , ''))
             );
-            $this->_Visual->Json_IncluiTipo('Conteudo',$conteudo);
+            $this->_Visual->Json_IncluiTipo('Conteudo', $conteudo);
             $this->_Visual->Json_Info_Update('Titulo', __('Status Alterado')); 
         } else {
             $mensagens = array(
@@ -243,15 +243,15 @@ class Simulador_SimuladorControle extends Simulador_Controle
                 "mgs_principal"     => __('Erro'),
                 "mgs_secundaria"    => __('Ocorreu um Erro.')
             );
-            $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+            $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
 
             $this->_Visual->Json_Info_Update('Titulo', __('Erro')); 
         }
-        $this->_Visual->Json_Info_Update('Historico', false);  
+        $this->_Visual->Json_Info_Update('Historico', FALSE);  
     }
-    public function Simuladores_Assistir($simulador,$token=false,$pergunta=false) {
+    public function Simuladores_Assistir($simulador, $token = FALSE, $pergunta = FALSE) {
         // Verifica Token, se nao vier cria
-        if ($token===false) {
+        if ($token === FALSE) {
             $token = Framework\App\Sistema_Funcoes::Seguranca_Gerar_Token();
         } else {
             $token = Framework\App\Conexao::anti_injection($token);
@@ -264,7 +264,7 @@ class Simulador_SimuladorControle extends Simulador_Controle
         
         //Procura Simulador
         $simulador_registro = $this->_Modelo->db->Sql_Select('Simulador', '{sigla}id=\''.$simulador.'\'',1);
-        if ($simulador_registro===false || !is_object($simulador_registro)) {
+        if ($simulador_registro === FALSE || !is_object($simulador_registro)) {
             return _Sistema_erroControle::Erro_Fluxo('Simulador não existe:'. $simulador,404);
         }
         
@@ -273,7 +273,7 @@ class Simulador_SimuladorControle extends Simulador_Controle
         if (is_object($respondidas)) {
             $respondidas = Array($respondidas);
         }
-        if ($respondidas!==false) {
+        if ($respondidas !== FALSE) {
             foreach($respondidas as &$valor) {
                 $respondidas_perguntas[] = $valor->pergunta;
                 $respondidas_respostas[] = $valor->resposta;
@@ -281,7 +281,7 @@ class Simulador_SimuladorControle extends Simulador_Controle
         }
         
         // Se tiver POST, cadastra a resposta
-        if ($pergunta!==false && isset($_POST['resposta'])) {
+        if ($pergunta !== FALSE && isset($_POST['resposta'])) {
             $pergunta = (int) $pergunta;
                 
                 
@@ -289,7 +289,7 @@ class Simulador_SimuladorControle extends Simulador_Controle
         
             $titulo     = __('Pergunta Respondida com Sucesso');
             $dao        = 'Simulador_Assistir';
-            $funcao     = false;
+            $funcao     = FALSE;
             $sucesso1   = __('Pergunta Respondida com Sucesso');
             $sucesso2   = __('Pergunta Respondida com Sucesso');
             $alterar    = Array(
@@ -297,7 +297,7 @@ class Simulador_SimuladorControle extends Simulador_Controle
                 'simulador' => $simulador,
                 'pergunta'  => $pergunta
             );
-            $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
+            $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
             
             $respondidas_perguntas[] = $pergunta;
             $respondidas_respostas[] = (int) $_POST['resposta'];
@@ -311,7 +311,7 @@ class Simulador_SimuladorControle extends Simulador_Controle
         $pergunta_proxima = $this->_Modelo->db->Sql_Select('Simulador_Pergunta', $where, 1);
         
         // Escolhe a próxima Página
-        if ($pergunta_proxima===false) {
+        if ($pergunta_proxima === FALSE) {
             //IMprimi Resultado
             $caracteristicas = Array();
             // PRocura Resultados
@@ -323,7 +323,7 @@ class Simulador_SimuladorControle extends Simulador_Controle
             if (is_object($assistir_respostas)) {
                 $assistir_respostas = Array($assistir_respostas);
             }
-            if ($assistir_respostas!==false) {var_dump($assistir_respostas);
+            if ($assistir_respostas !== FALSE) {var_dump($assistir_respostas);
                 foreach($assistir_respostas as &$valor) {
                     $caracteristicas[] = Array(
                         'Tag'       => $valor->tag,
@@ -343,7 +343,7 @@ class Simulador_SimuladorControle extends Simulador_Controle
             if (is_object($pergunta_respostas)) {
                 $pergunta_respostas = Array($pergunta_respostas);
             }
-            if ($pergunta_respostas!==false) {
+            if ($pergunta_respostas !== FALSE) {
                 foreach($pergunta_respostas as &$valor) {
                     $respondidas_perguntas[] = $valor->pergunta;
                     $respondidas_respostas[] = $valor->resposta;
@@ -358,8 +358,8 @@ class Simulador_SimuladorControle extends Simulador_Controle
             $campos = Simulador_Assistir_DAO::Get_Colunas();
             self::DAO_Campos_Retira($campos, 'simulador');
             self::DAO_Campos_Retira($campos, 'pergunta');
-            self::DAO_Ext_Alterar($campos,'resposta',$pergunta_proxima->id);
-            \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos);
+            self::DAO_Ext_Alterar($campos,'resposta', $pergunta_proxima->id);
+            \Framework\App\Controle::Gerador_Formulario_Janela($titulo1, $titulo2, $formlink, $formid, $formbt, $campos);
 
         }
     }

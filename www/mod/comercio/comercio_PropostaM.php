@@ -27,8 +27,8 @@ class comercio_PropostaModelo extends comercio_Modelo
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Modelo = &$Registro->_Modelo;
         $proposta = $_Modelo->db->Sql_Select('Comercio_Proposta',Array('id'=>$motivoid),1);
-        if ($proposta===false) return 'Proposta não Encontrada';
-        return Array('Proposta: #'.$motivoid,$proposta->cliente2);
+        if ($proposta === FALSE) return 'Proposta não Encontrada';
+        return Array('Proposta: #'.$motivoid, $proposta->cliente2);
     }
 }
 ?>

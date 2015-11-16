@@ -106,14 +106,14 @@ abstract class AbstractElement
      *
      * @var bool
      */
-    protected $mediaRelation = false;
+    protected $mediaRelation = FALSE;
 
     /**
      * Is part of collection; true for Title, Footnote, Endnote, and Chart
      *
      * @var bool
      */
-    protected $collectionRelation = false;
+    protected $collectionRelation = FALSE;
 
     /**
      * Get PhpWord
@@ -360,7 +360,7 @@ abstract class AbstractElement
      * @param bool $returnObject Always return object
      * @return mixed
      */
-    protected function setNewStyle($styleObject, $styleValue = null, $returnObject = false)
+    protected function setNewStyle($styleObject, $styleValue = null, $returnObject = FALSE)
     {
         if (!is_null($styleValue) && is_array($styleValue)) {
             $styleObject->setStyleByArray($styleValue);

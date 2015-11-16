@@ -6,7 +6,7 @@ final Class Locomocao_Entrega_DAO extends Framework\App\Dao
     protected $nome;
     protected $filial_saida;
     protected $filial_chegada;
-    protected static $objetocarregado     = false;     protected static $mysql_colunas       = false;     protected static $mysql_outside       = Array();     protected static $mysql_inside        = Array(); public function __construct() {  parent::__construct(); } public static function Get_Nome() {
+    protected static $objetocarregado     = FALSE;     protected static $mysql_colunas       = FALSE;     protected static $mysql_outside       = Array();     protected static $mysql_inside        = Array(); public function __construct() {  parent::__construct(); } public static function Get_Nome() {
         return MYSQL_LOCOMOCAO_ENTREGA;
     }
     /**
@@ -14,7 +14,7 @@ final Class Locomocao_Entrega_DAO extends Framework\App\Dao
      * @return string
      */
     public static function Permissao_Copia() {
-        return false;
+        return FALSE;
     }
 
     public static function Get_Sigla() {
@@ -154,7 +154,7 @@ final Class Locomocao_Entrega_DAO extends Framework\App\Dao
                 'TabelaLinkada'     => Array(
                     'Pai'               => 'LE', // TABELA que vai manipular a conexao
                     'Tabela'            => 'LEP', // TABELA de LINK A SER CONECTADA
-                    'Preencher'         => Array( // CAso exista e != de false, preenche automaticamente esses campos
+                    'Preencher'         => Array( // CAso exista e != de FALSE, preenche automaticamente esses campos
                         'status'            => '0', // Campo e Resultado
                     ),
                     'valor_padrao'      => FALSE, // id do pai

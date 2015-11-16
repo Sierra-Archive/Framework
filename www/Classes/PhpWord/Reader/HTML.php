@@ -40,7 +40,7 @@ class HTML extends AbstractReader implements ReaderInterface
 
         if ($this->canRead($docFile)) {
             $section = $phpWord->addSection();
-            HTMLParser::addHtml($section, file_get_contents($docFile), true);
+            HTMLParser::addHtml($section, file_get_contents($docFile), TRUE);
         } else {
             throw new \Exception("Cannot read {$docFile}.");
         }

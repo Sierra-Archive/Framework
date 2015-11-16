@@ -20,7 +20,7 @@ class Minify_HTML {
     /**
      * @var boolean
      */
-    protected $_jsCleanComments = true;
+    protected $_jsCleanComments = TRUE;
 
     /**
      * "Minify" an HTML page
@@ -102,30 +102,30 @@ class Minify_HTML {
         $this->_html = preg_replace_callback(
             '/(\\s*)<script(\\b[^>]*?>)([\\s\\S]*?)<\\/script>(\\s*)/i'
             ,array($this, '_removeScriptCB')
-            ,$this->_html);
+            , $this->_html);
         
         // replace STYLEs (and minify) with placeholders
         $this->_html = preg_replace_callback(
             '/\\s*<style(\\b[^>]*>)([\\s\\S]*?)<\\/style>\\s*/i'
             ,array($this, '_removeStyleCB')
-            ,$this->_html);
+            , $this->_html);
         
         // remove HTML comments (not containing IE conditional comments).
         $this->_html = preg_replace_callback(
             '/<!--([\\s\\S]*?)-->/'
             ,array($this, '_commentCB')
-            ,$this->_html);
+            , $this->_html);
         
         // replace PREs with placeholders
         $this->_html = preg_replace_callback('/\\s*<pre(\\b[^>]*?>[\\s\\S]*?<\\/pre>)\\s*/i'
             ,array($this, '_removePreCB')
-            ,$this->_html);
+            , $this->_html);
         
         // replace TEXTAREAs with placeholders
         $this->_html = preg_replace_callback(
             '/\\s*<textarea(\\b[^>]*?>[\\s\\S]*?<\\/textarea>)\\s*/i'
             ,array($this, '_removeTextareaCB')
-            ,$this->_html);
+            , $this->_html);
         
         // trim each line.
         // @todo take into account attribute values that span multiple lines.
@@ -142,7 +142,7 @@ class Minify_HTML {
         $this->_html = preg_replace(
             '/>(\\s(?:\\s*))?([^<]+)(\\s(?:\s*))?</'
             ,'>$1$2$3<'
-            ,$this->_html);
+            , $this->_html);
         
         // use newlines before 1st attribute in open tags (to limit line lengths)
         $this->_html = preg_replace('/(<[a-z\\-]+)\\s+([^>]+>)/i', "$1\n$2", $this->_html);
@@ -151,13 +151,13 @@ class Minify_HTML {
         $this->_html = str_replace(
             array_keys($this->_placeholders)
             ,array_values($this->_placeholders)
-            ,$this->_html
+            , $this->_html
         );
         // issue 229: multi-pass to catch scripts that didn't get replaced in textareas
         $this->_html = str_replace(
             array_keys($this->_placeholders)
             ,array_values($this->_placeholders)
-            ,$this->_html
+            , $this->_html
         );
         return $this->_html;
     }

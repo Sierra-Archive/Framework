@@ -19,15 +19,15 @@ class predial_AnimalControle extends predial_Controle
     */
     public function Main() {
         \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'predial/Animal/Animais');
-        return false;
+        return FALSE;
     }
-    static function Endereco_Animal($true=true) {
+    static function Endereco_Animal($true= TRUE ) {
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
         $titulo = __('Animais');
         $link = 'predial/Animal/Animais';
-        if ($true===true) {
-            $_Controle->Tema_Endereco($titulo,$link);
+        if ($true === TRUE) {
+            $_Controle->Tema_Endereco($titulo, $link);
         } else {
             $_Controle->Tema_Endereco($titulo);
         }
@@ -43,11 +43,11 @@ class predial_AnimalControle extends predial_Controle
             $tabela['Bloco'][$i]            = $valor->bloco2;
             $tabela['Apartamento'][$i]      = $valor->apart2;
             $tabela['Nome'][$i]             = $valor->nome;
-            $tabela['Funções'][$i]          = $Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Animal'        ,'predial/Animal/Animais_Edit/'.$valor->id.'/'    ,'')).
+            $tabela['Funções'][$i]          = $Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Animal'        ,'predial/Animal/Animais_Edit/'.$valor->id.'/'    , '')).
                                               $Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Animal'       ,'predial/Animal/Animais_Del/'.$valor->id.'/'     ,'Deseja realmente deletar esse Animal ?'));
             ++$i;
         }
-        return Array($tabela,$i);
+        return Array($tabela, $i);
     }
     /**
      * 
@@ -55,7 +55,7 @@ class predial_AnimalControle extends predial_Controle
      * @version 0.4.2
      */
     public function Animais() {
-        self::Endereco_Animal(false);
+        self::Endereco_Animal(FALSE);
         $i = 0;
         // Botao Add
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
@@ -73,8 +73,8 @@ class predial_AnimalControle extends predial_Controle
         )));
         // Busca
         $animais = $this->_Modelo->db->Sql_Select('Predial_Bloco_Apart_Animal');
-        if ($animais!==false && !empty($animais)) {
-            list($tabela,$i) = self::Animais_Tabela($animais);
+        if ($animais !== FALSE && !empty($animais)) {
+            list($tabela, $i) = self::Animais_Tabela($animais);
             $this->_Visual->Show_Tabela_DataTable($tabela);
             unset($tabela);
         } else {          
@@ -100,7 +100,7 @@ class predial_AnimalControle extends predial_Controle
         $formbt     = __('Salvar');
         $formlink   = 'predial/Animal/Animais_Add2/';
         $campos = Predial_Bloco_Apart_Animal_DAO::Get_Colunas();
-        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos);
+        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1, $titulo2, $formlink, $formid, $formbt, $campos);
     }
     /**
      * 
@@ -116,7 +116,7 @@ class predial_AnimalControle extends predial_Controle
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = __('Animal cadastrado com sucesso.');
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
     }
     /**
      * 
@@ -132,9 +132,9 @@ class predial_AnimalControle extends predial_Controle
         $formid     = 'form_Sistema_AdminC_AnimalEdit';
         $formbt     = __('Alterar Animal');
         $formlink   = 'predial/Animal/Animais_Edit2/'.$id;
-        $editar     = Array('Predial_Bloco_Apart_Animal',$id);
+        $editar     = Array('Predial_Bloco_Apart_Animal', $id);
         $campos = Predial_Bloco_Apart_Animal_DAO::Get_Colunas();
-        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos,$editar);
+        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1, $titulo2, $formlink, $formid, $formbt, $campos, $editar);
     }
     /**
      * 
@@ -145,12 +145,12 @@ class predial_AnimalControle extends predial_Controle
      */
     public function Animais_Edit2($id) {
         $titulo     = __('Animal Editado com Sucesso');
-        $dao        = Array('Predial_Bloco_Apart_Animal',$id);
+        $dao        = Array('Predial_Bloco_Apart_Animal', $id);
         $funcao     = '$this->Animais();';
         $sucesso1   = __('Animal Alterado com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);   
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);   
     }
     /**
      * 
@@ -167,7 +167,7 @@ class predial_AnimalControle extends predial_Controle
         $animal = $this->_Modelo->db->Sql_Select('Predial_Bloco_Apart_Animal', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($animal);
         // Mensagem
-    	if ($sucesso===true) {
+    	if ($sucesso === TRUE) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
@@ -180,12 +180,12 @@ class predial_AnimalControle extends predial_Controle
                 "mgs_secundaria" => __('Erro')
             );
         }
-        $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+        $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
         
         $this->Animais();
         
         $this->_Visual->Json_Info_Update('Titulo', __('Animal deletado com Sucesso'));  
-        $this->_Visual->Json_Info_Update('Historico', false);  
+        $this->_Visual->Json_Info_Update('Historico', FALSE);  
     }
 }
 ?>

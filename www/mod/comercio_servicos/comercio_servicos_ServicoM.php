@@ -24,7 +24,7 @@ class comercio_servicos_ServicoModelo extends comercio_servicos_Modelo
         // Titulos
         $titulo             = \Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_servicos_Titulo');
         $titulo2            = Framework\Classes\Texto::Transformar_Plural_Singular($titulo);
-        if (Framework\Classes\Texto::Captura_Palavra_Masculina($titulo2)===true) {
+        if (Framework\Classes\Texto::Captura_Palavra_Masculina($titulo2) === TRUE) {
             $titulo_com_sexo    = 'o '.Framework\Classes\Texto::Transformar_Plural_Singular($titulo);
         } else {
             $titulo_com_sexo    = 'a '.Framework\Classes\Texto::Transformar_Plural_Singular($titulo);
@@ -35,10 +35,10 @@ class comercio_servicos_ServicoModelo extends comercio_servicos_Modelo
         
         $function = '';
         if ($perm_editar) {
-            $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Editar\'     ,Array(\'Editar '.$titulo2.'\'        ,\'comercio_servicos/Servico/Servicos_Edit/\'.$d.\'/\'    ,\'\'),true);';
+            $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Editar\'     ,Array(\'Editar '.$titulo2.'\'        ,\'comercio_servicos/Servico/Servicos_Edit/\'.$d.\'/\'    ,\'\'),TRUE);';
         }
         if ($perm_del) {
-            $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Deletar\'    ,Array(\'Deletar '.$titulo2.'\'       ,\'comercio_servicos/Servico/Servicos_Del/\'.$d.\'/\'     ,\'Deseja realmente deletar ess'.$titulo_com_sexo.' ?\'),true);';
+            $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Deletar\'    ,Array(\'Deletar '.$titulo2.'\'       ,\'comercio_servicos/Servico/Servicos_Del/\'.$d.\'/\'     ,\'Deseja realmente deletar ess'.$titulo_com_sexo.' ?\'),TRUE);';
         }
 
         

@@ -34,11 +34,11 @@ class usuario_AnexoControle extends usuario_Controle
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    public function Main($id=false,$tipo='Usuarios') {
+    public function Main($id = FALSE, $tipo='Usuarios') {
         \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'usuario/Anexo/Anexar/'.$id.'/'.$tipo);
-        return false;   
+        return FALSE;   
     }
-    public function Anexar($id=false,$tipo='Usuarios') {
+    public function Anexar($id = FALSE, $tipo='Usuarios') {
         // PEga usuario
         if ($id==0 || !isset($id)) {
             $id = (int) $this->_Acl->Usuario_GetID();
@@ -46,7 +46,7 @@ class usuario_AnexoControle extends usuario_Controle
             $id = (int) $id;
         }
         $usuario = $this->_Modelo->db->Sql_Select('Usuario', Array('id'=>$id));
-        if ($tipo===false) {
+        if ($tipo === FALSE) {
             if ($usuario->grupo==CFG_TEC_IDCLIENTE) {
                 $tipo   = __('Cliente');
                 $tipo2  = 'cliente';
@@ -89,20 +89,20 @@ class usuario_AnexoControle extends usuario_Controle
                 'Arquivos de Imagem'
             )
         );
-        $this->_Visual->Bloco_Unico_CriaJanela(__('Fazer Upload de Anexo')  ,'',8);
+        $this->_Visual->Bloco_Unico_CriaJanela(__('Fazer Upload de Anexo')  , '',8);
         
         // Processa Anexo
-        list($titulo,$html,$i) = $this->Anexos_Processar($id);
+        list($titulo, $html, $i) = $this->Anexos_Processar($id);
         $this->_Visual->Blocar('<span id="anexo_arquivos_mostrar">'.$html.'</span>');
-        $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',9);
+        $this->_Visual->Bloco_Unico_CriaJanela($titulo, '',9);
         
         //Carrega Json
         $this->_Visual->Json_Info_Update('Titulo', __('Listagem de Anexos'));
     }
     public function VisualizadordeUsuario_Upload($usuario = 0) {
-        if ($usuario!==false && $usuario!=0) {
+        if ($usuario !== FALSE && $usuario!=0) {
             $resultado_usuario = $this->_Modelo->db->Sql_Select('Usuario', Array('id'=>$usuario),1);
-            if ($resultado_usuario===false) {
+            if ($resultado_usuario === FALSE) {
                 return _Sistema_erroControle::Erro_Fluxo('Esse usuário não existe:'. $usuario,404);
             }
             // Condicao de Query
@@ -118,10 +118,10 @@ class usuario_AnexoControle extends usuario_Controle
             'pdf',
         ); // File extensions
         $dir = 'usuario'.DS.'Anexos'.DS;
-        $ext = $this->Upload($dir,$fileTypes,false);
-        $this->layoult_zerar = false;
+        $ext = $this->Upload($dir, $fileTypes, FALSE);
+        $this->layoult_zerar = FALSE;
         // CAso tenha sucesso.
-        if ($ext!==false) {
+        if ($ext !== FALSE) {
             
             $arquivo = new \Usuario_Anexo_DAO();
             $arquivo->usuario      = $usuario;
@@ -130,25 +130,25 @@ class usuario_AnexoControle extends usuario_Controle
             $arquivo->nome          = $ext[2];
             $this->_Modelo->db->Sql_Insert($arquivo);
             $this->_Visual->Json_Info_Update('Titulo', __('Upload com Sucesso'));
-            $this->_Visual->Json_Info_Update('Historico', false);
+            $this->_Visual->Json_Info_Update('Historico', FALSE);
             // Tras de Volta e Atualiza via Json
-            list($titulo,$html,$i) = $this->Anexos_Processar($usuario);
+            list($titulo, $html, $i) = $this->Anexos_Processar($usuario);
             $conteudo = array(
                 'location'  => '#anexo_arquivos_num',
                 'js'        => '',
                 'html'      => $i
             );
-            $this->_Visual->Json_IncluiTipo('Conteudo',$conteudo);
+            $this->_Visual->Json_IncluiTipo('Conteudo', $conteudo);
             $conteudo = array(
                 'location'  => '#anexo_arquivos_mostrar',
                 'js'        => '',
                 'html'      => $html
             );
-            $this->_Visual->Json_IncluiTipo('Conteudo',$conteudo);
+            $this->_Visual->Json_IncluiTipo('Conteudo', $conteudo);
             
             
             // Enviar Email
-            $this->Enviar_Email_Anexo($usuario, $dir.strtolower($arquivo->endereco.'.'.$arquivo->ext),$arquivo->nome);
+            $this->Enviar_Email_Anexo($usuario, $dir.strtolower($arquivo->endereco.'.'.$arquivo->ext), $arquivo->nome);
             
         } else {
             
@@ -157,16 +157,16 @@ class usuario_AnexoControle extends usuario_Controle
                 "mgs_principal" => __('Erro'),
                 "mgs_secundaria" => __('Houve algum erro ao fazer upload do arquivo !')
             );
-            $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens); 
+            $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens); 
             $this->_Visual->Json_Info_Update('Titulo', __('Erro com Upload'));
-            $this->_Visual->Json_Info_Update('Historico', false);
+            $this->_Visual->Json_Info_Update('Historico', FALSE);
         }
     }
-    private function Anexos_Processar($usuario = false) {
+    private function Anexos_Processar($usuario = FALSE) {
         // Anexo
-        if ($usuario!==false && $usuario!=0) {
+        if ($usuario !== FALSE && $usuario!=0) {
             $resultado_usuario = $this->_Modelo->db->Sql_Select('Usuario', Array('id'=>$usuario),1);
-            if ($resultado_usuario===false) {
+            if ($resultado_usuario === FALSE) {
                 return _Sistema_erroControle::Erro_Fluxo('Esse usuário não existe:'. $usuario,404);
             }
             // Condicao de Query
@@ -178,8 +178,8 @@ class usuario_AnexoControle extends usuario_Controle
         $i = 0;
         $html = '';
         // COntinua
-        $anexos = $this->_Modelo->db->Sql_Select('Usuario_Anexo',$where);
-        if ($anexos!==false && !empty($anexos)) {
+        $anexos = $this->_Modelo->db->Sql_Select('Usuario_Anexo', $where);
+        if ($anexos !== FALSE && !empty($anexos)) {
             // Percorre Anexos
             if (is_object($anexos)) $anexos = Array(0=>$anexos);
             reset($anexos);
@@ -192,22 +192,22 @@ class usuario_AnexoControle extends usuario_Controle
                         $tabela['Nome'][$i]             = '<a href="'.URL_PATH.'usuario/Anexo/Download/'.$valor->id.'/" border="1" class="lajax" data-acao="">'.$valor->nome.'</a>';
                         $tabela['Tamanho'][$i]          = $tamanho.' KB';
                         $tabela['Data'][$i]             = $valor->log_date_add;
-                        $tabela['Download'][$i]         = $this->_Visual->Tema_Elementos_Btn('Baixar'     ,Array('Download de Arquivo'   ,'usuario/Anexo/Download/'.$valor->id    ,''));
+                        $tabela['Download'][$i]         = $this->_Visual->Tema_Elementos_Btn('Baixar'     ,Array('Download de Arquivo'   ,'usuario/Anexo/Download/'.$valor->id    , ''));
                         ++$i;
                     }
                 }
             }
-            $html .= $this->_Visual->Show_Tabela_DataTable($tabela,'',false);
+            $html .= $this->_Visual->Show_Tabela_DataTable($tabela, '', FALSE);
             unset($tabela);
         } else {
             $html .= '<center><b><font color="#FF0000" size="5">Nenhum Anexo</font></b></center>';            
         }
         $titulo = 'Anexos (<span id="anexo_arquivos_num">'.$i.'</span>)';
-        return Array($titulo,$html,$i);
+        return Array($titulo, $html, $i);
     }
-    public function Download($anexo,$usuario=false) {
+    public function Download($anexo, $usuario = FALSE) {
         $resultado_arquivo = $this->_Modelo->db->Sql_Select('Usuario_Anexo', Array('id'=>$anexo),1);
-        if ($resultado_arquivo===false || !is_object($resultado_arquivo)) {
+        if ($resultado_arquivo === FALSE || !is_object($resultado_arquivo)) {
             return _Sistema_erroControle::Erro_Fluxo('Esse anexo não existe:'. $anexo,404);
         }
         $endereco = 'usuario'.DS.'Anexos'.DS.strtolower($resultado_arquivo->endereco.'.'.$resultado_arquivo->ext);

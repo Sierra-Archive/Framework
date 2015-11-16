@@ -24,7 +24,7 @@ class usuario_rede_ListarVisual extends usuario_rede_Visual
      * 
      * @version 0.4.2
      */
-    public function Show_RedeIndicadosNivel(&$array,$nivel = 1) {
+    public function Show_RedeIndicadosNivel(&$array, $nivel = 1) {
         $html = '';
         if ($nivel==1) {
             $nome = __('Primario');
@@ -103,7 +103,7 @@ class usuario_rede_ListarVisual extends usuario_rede_Visual
      * @param type $nivel
      * @return type
      */
-    public function Show_RedeIndicados_Recursiva(&$array,&$tabela,$i=0,$nivel=0,$prenome = '') {
+    public function Show_RedeIndicados_Recursiva(&$array,&$tabela, $i=0, $nivel=0, $prenome = '') {
         $antecipa = $nivel;
         $nomeantes = '';
         $j = 0;
@@ -128,7 +128,7 @@ class usuario_rede_ListarVisual extends usuario_rede_Visual
                 ));
                 ++$i;
                 if (!empty($array[$j]['indicados'])) {
-                    $i = $this->Show_RedeIndicados_Recursiva($array[$j]['indicados'],$tabela,$i,$nivel+1,$prenome.$array[$indice]['nome']);
+                    $i = $this->Show_RedeIndicados_Recursiva($array[$j]['indicados'], $tabela, $i, $nivel+1, $prenome.$array[$indice]['nome']);
                 }
                 ++$j;
               }

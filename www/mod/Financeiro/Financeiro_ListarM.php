@@ -16,7 +16,7 @@ class Financeiro_ListarModelo extends Financeiro_Modelo
     public function __construct() {
       parent::__construct();
     }
-    public function transferencia_inserir($login,$quantia) {
+    public function transferencia_inserir($login, $quantia) {
         GLOBAL $config;
         $i = 0;
         $sql = $this->db->query('SELECT id
@@ -27,9 +27,9 @@ class Financeiro_ListarModelo extends Financeiro_Modelo
         }
         if ($i==0) return 0;
         // Retira saldo do usuario atual   $userreceptor
-        Financeiro_Modelo::MovInt_Inserir($this,\Framework\App\Acl::Usuario_GetID_Static(),$quantia,0,'Financeiro',$userreceptor,APP_DATA,APP_HORA);
+        Financeiro_Modelo::MovInt_Inserir($this,\Framework\App\Acl::Usuario_GetID_Static(), $quantia,0,'Financeiro', $userreceptor,APP_DATA,APP_HORA);
         // Acrescenta no novo usuario
-        Financeiro_Modelo::MovInt_Inserir($this,$userreceptor,$quantia,1,'Financeiro',\Framework\App\Acl::Usuario_GetID_Static(),APP_DATA,APP_HORA);
+        Financeiro_Modelo::MovInt_Inserir($this, $userreceptor, $quantia,1,'Financeiro',\Framework\App\Acl::Usuario_GetID_Static(),APP_DATA,APP_HORA);
         return 1;
     }
     public function sacar_inserir($quantia) {

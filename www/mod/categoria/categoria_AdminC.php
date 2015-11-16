@@ -4,8 +4,8 @@ class categoria_AdminControle extends categoria_Controle
     public function __construct() {
         parent::__construct();
     }
-    protected function Endereco_Categoria($true=true) {
-        if ($true===true) {
+    protected function Endereco_Categoria($true= TRUE ) {
+        if ($true === TRUE) {
             $this->Tema_Endereco(__('Categorias'),'categoria/Admin/Categorias');
         } else {
             $this->Tema_Endereco(__('Categorias'));
@@ -15,7 +15,7 @@ class categoria_AdminControle extends categoria_Controle
      * 
      */
     public function Main() {
-        return false;
+        return FALSE;
     }
     public function Categorias($modulo='') {
         $this->Categorias_ShowTab($modulo);
@@ -44,7 +44,7 @@ class categoria_AdminControle extends categoria_Controle
     * @version 0.4.2
     */
     public function Categorias_ShowTab($tipo='') {
-        self::Endereco_Categoria(false);
+        self::Endereco_Categoria(FALSE);
         $tabela = Array();
         $array = $this->_Modelo->Categorias_Retorna($tipo);
         $tabela = new \Framework\Classes\Tabela();
@@ -65,7 +65,7 @@ class categoria_AdminControle extends categoria_Controle
             )
         )));
         // Conexao
-        $this->_Visual->Categorias_ShowTab($array,$tabela);
+        $this->_Visual->Categorias_ShowTab($array, $tabela);
         $this->_Visual->Blocar($tabela->retornatabela());
         $this->_Visual->Bloco_Unico_CriaJanela(__('Categorias'));
         unset($tabela);        
@@ -75,16 +75,16 @@ class categoria_AdminControle extends categoria_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Categorias_Add($modulo=false) {
-        self::Endereco_Categoria(true);
+    public function Categorias_Add($modulo = FALSE) {
+        self::Endereco_Categoria(TRUE);
         // Carrega Config
-        if ($modulo===false) {
+        if ($modulo === FALSE) {
             $titulo1    = __('Adicionar Categoria');
             $titulo2    = __('Salvar Categoria');
         } else {
             $dados_modulo = Categoria_Acesso_DAO::Mod_Acesso_Get($modulo);
-            if ($dados_modulo===false) {
-                return false;
+            if ($dados_modulo === FALSE) {
+                return FALSE;
             }
             $titulo1    = 'Adicionar '.$dados_modulo['nome'];
             $titulo2    = 'Adicionar '.$dados_modulo['nome'];            
@@ -93,14 +93,14 @@ class categoria_AdminControle extends categoria_Controle
         $formbt     = __('Salvar');
         $formlink   = 'categoria/Admin/Categorias_Add2/';
         $campos     = Categoria_DAO::Get_Colunas();
-        if ($modulo!==false) {
+        if ($modulo !== FALSE) {
             $formlink = $formlink.$modulo.'/';
-            if (\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('categoria_parent_extra')==false) {
+            if (\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('categoria_parent_extra') == FALSE) {
                 self::DAO_Campos_Retira($campos, 'parent');
             }
             self::DAO_Campos_Retira($campos, 'Modulos Liberados');
         }
-        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos);
+        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1, $titulo2, $formlink, $formid, $formbt, $campos);
     }
     /**
      * 
@@ -109,9 +109,9 @@ class categoria_AdminControle extends categoria_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Categorias_Add2($modulo=false) {
+    public function Categorias_Add2($modulo = FALSE) {
         if (!isset($_GET['formselect']) || !isset($_GET['condicao'])) {
-            return false;
+            return FALSE;
         }
         
         $titulo     = __('Adicionado com Sucesso');
@@ -120,9 +120,9 @@ class categoria_AdminControle extends categoria_Controle
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = __('Cadastrado com sucesso.');
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
         // Cadastra o modulo
-        if ($modulo!==false) {
+        if ($modulo !== FALSE) {
             $identificador  = $this->_Modelo->db->Sql_Select ($dao, Array(),1,'ID DESC');
             $identificador  = $identificador->id;
             $objeto = new \Categoria_Acesso_DAO();
@@ -134,7 +134,7 @@ class categoria_AdminControle extends categoria_Controle
             $condicao = \Framework\App\Conexao::anti_injection($_GET['condicao']);
             $opcoes = $this->_Modelo->db->Tabelas_CapturaExtrangeiras($condicao);   
             $html = '';
-            if ($opcoes!==false && !empty($opcoes)) {
+            if ($opcoes !== FALSE && !empty($opcoes)) {
                 if (is_object($opcoes)) $opcoes = Array(0=>$opcoes);
                 reset($opcoes);
                 foreach ($opcoes as $indice=>&$valor) {
@@ -144,7 +144,7 @@ class categoria_AdminControle extends categoria_Controle
                     else{
                         $selecionado=0;
                     }
-                    $html .= \Framework\Classes\Form::Select_Opcao_Stat($valor,$indice,$selecionado);
+                    $html .= \Framework\Classes\Form::Select_Opcao_Stat($valor, $indice, $selecionado);
                 }
             }
             // Json
@@ -154,8 +154,8 @@ class categoria_AdminControle extends categoria_Controle
                 'js'        =>  '$("#'.$select.'").trigger("liszt:updated");',
                 'html'      =>  $html
             );
-            $this->_Visual->Json_IncluiTipo('Conteudo',$conteudo);
-            $this->_Visual->Json_Info_Update('Historico', false);  
+            $this->_Visual->Json_IncluiTipo('Conteudo', $conteudo);
+            $this->_Visual->Json_Info_Update('Historico', FALSE);  
         }
     }
     /**
@@ -164,10 +164,10 @@ class categoria_AdminControle extends categoria_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Categorias_Edit($id,$modulo=false) {
-        self::Endereco_Categoria(true);
+    public function Categorias_Edit($id, $modulo = FALSE) {
+        self::Endereco_Categoria(TRUE);
         // Carrega Config
-        if ($modulo===false) {
+        if ($modulo === FALSE) {
             $titulo1    = 'Editar Categoria (#'.$id.')';
             $titulo2    = 'Alteração de Categoria (#'.$id.')';
         } else {
@@ -178,8 +178,8 @@ class categoria_AdminControle extends categoria_Controle
         $formid     = 'form_categoria_Admin_Categorias_Edit';
         $formbt     = __('Alterar Categoria');
         $formlink   = 'categoria/Admin/Categorias_Edit2/';
-        $editar     = Array('Categoria',$id);
-        if ($modulo!==false) {
+        $editar     = Array('Categoria', $id);
+        if ($modulo !== FALSE) {
             $formlink .= $formlink.$modulo.'/';
             self::DAO_Campos_Retira($campos, 'Modulos Liberados');
         }
@@ -187,12 +187,12 @@ class categoria_AdminControle extends categoria_Controle
         $formlink = $formlink.$id;
         // Captura campos e Formata
         $campos = Categoria_DAO::Get_Colunas();
-        if ($modulo!==false) {
+        if ($modulo !== FALSE) {
             self::DAO_Campos_Retira($campos, 'parent');
             self::DAO_Campos_Retira($campos, 'Modulos Liberados');
         }
         // Gera Formulario
-        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos,$editar);
+        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1, $titulo2, $formlink, $formid, $formbt, $campos, $editar);
     }
     /**
      * 
@@ -201,18 +201,18 @@ class categoria_AdminControle extends categoria_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Categorias_Edit2($id,$modulo=false) {
+    public function Categorias_Edit2($id, $modulo = FALSE) {
         if (!isset($_POST["nome"])) {
             return _Sistema_erroControle::Erro_Fluxo('Nome não Informado em Categoria',404);
         }
         
         $titulo     = __('Editado com Sucesso');
-        $dao        = Array('Categoria',$id);
+        $dao        = Array('Categoria', $id);
         $funcao     = '$this->Categorias();';
         $sucesso1   = __('Alterado com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);   
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);   
     }
     /**
      * 
@@ -229,9 +229,9 @@ class categoria_AdminControle extends categoria_Controle
         $acesso = $this->_Modelo->db->Sql_Select('Categoria_Acesso', Array('categoria'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($categorias);
         // Mensagem
-    	if ($sucesso===true) {
+    	if ($sucesso === TRUE) {
             $sucesso =  $this->_Modelo->db->Sql_Delete($acesso);
-            if ($sucesso===true) {
+            if ($sucesso === TRUE) {
                 $mensagens = array(
                     "tipo" => 'sucesso',
                     "mgs_principal" => __('Deletado'),
@@ -251,12 +251,12 @@ class categoria_AdminControle extends categoria_Controle
                 "mgs_secundaria" => __('Erro')
             );
         }
-        $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+        $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
         
         $this->Categorias();
         
         $this->_Visual->Json_Info_Update('Titulo', __('Deletado com Sucesso'));  
-        $this->_Visual->Json_Info_Update('Historico', false);  
+        $this->_Visual->Json_Info_Update('Historico', FALSE);  
     }
 }
 ?>

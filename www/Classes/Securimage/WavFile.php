@@ -240,7 +240,7 @@ class WavFile
         $this->_factChunkSize      = 0;
         $this->_dataSize           = 0;
         $this->_dataSize_fp        = 0;
-        $this->_dataSize_valid     = true;
+        $this->_dataSize_valid     = TRUE;
         $this->_dataOffset         = 44;
         $this->_audioFormat        = self::WAVE_FORMAT_PCM;
         $this->_audioSubFormat     = null;
@@ -252,13 +252,13 @@ class WavFile
         $this->_blockAlign         = 1;
         $this->_numBlocks          = 0;
         $this->_byteRate           = 8000;
-        $this->_ignoreChunkSizes   = false;
+        $this->_ignoreChunkSizes   = FALSE;
         $this->_samples            = '';
         $this->_fp                 = null;
 
 
         if (is_string($numChannelsOrFileName)) {
-            $this->openWav($numChannelsOrFileName, is_bool($sampleRateOrReadData) ? $sampleRateOrReadData : true);
+            $this->openWav($numChannelsOrFileName, is_bool($sampleRateOrReadData) ? $sampleRateOrReadData : TRUE);
 
         } else {
             $this->setNumChannels(is_null($numChannelsOrFileName) ? 1 : $numChannelsOrFileName)
@@ -571,7 +571,7 @@ class WavFile
 
         $this->setChunkSize()   // implicit setActualSize()
              ->setNumBlocks();
-        $this->_dataSize_valid = true;
+        $this->_dataSize_valid = TRUE;
 
         return $this;
     }
@@ -949,7 +949,7 @@ class WavFile
      * @throws WavFormatException
      * @throws WavFileException
      */
-    public function openWav($filename, $readData = true)
+    public function openWav($filename, $readData = TRUE)
     {
         // check preconditions
         if (!file_exists($filename)) {
@@ -973,7 +973,7 @@ class WavFile
 
     /**
      * Close a with openWav() previously opened wav file or free the buffer of setWavData().
-     * Not necessary if the data has been read (readData = true) already.
+     * Not necessary if the data has been read (readData = TRUE) already.
      */
     public function closeWav() {
         if (is_resource($this->_fp)) fclose($this->_fp);
@@ -989,7 +989,7 @@ class WavFile
      * @throws WavFormatException
      * @throws WavFileException
      */
-    public function setWavData(&$data, $free = true)
+    public function setWavData(&$data, $free = TRUE)
     {
         // check preconditions
         if (is_resource($this->_fp)) $this->closeWav();
@@ -1009,7 +1009,7 @@ class WavFile
         if ($free) $data = null;
 
         // read the stream like a file
-        return $this->readWav(true);
+        return $this->readWav(TRUE);
     }
 
     /**
@@ -1019,7 +1019,7 @@ class WavFile
      * @throws WavFormatException
      * @throws WavFileException
      */
-    protected function readWav($readData = true)
+    protected function readWav($readData = TRUE)
     {
         if (!is_resource($this->_fp)) {
             throw new WavFileException('No wav file open. Use openWav() first.');
@@ -1265,7 +1265,7 @@ class WavFile
         $this->_dataOffset     = $dataOffset;
         $this->_dataSize       = $dataSubchunk['SubchunkSize'];
         $this->_dataSize_fp    = $dataSubchunk['SubchunkSize'];
-        $this->_dataSize_valid = false;
+        $this->_dataSize_valid = FALSE;
         $this->_samples        = '';
 
 
@@ -1603,7 +1603,7 @@ class WavFile
         }
 
         // check filtes
-        $filter_mix = false;
+        $filter_mix = FALSE;
         if (array_key_exists(self::FILTER_MIX, $filters)) {
             if (!is_array($filters[self::FILTER_MIX])) {
                 // assume the 'wav' parameter
@@ -1620,7 +1620,7 @@ class WavFile
             }
 
             $mix_loop = @$filters[self::FILTER_MIX]['loop'];
-            if (is_null($mix_loop)) $mix_loop = false;
+            if (is_null($mix_loop)) $mix_loop = FALSE;
 
             $mix_blockOffset = @$filters[self::FILTER_MIX]['blockOffset'];
             if (is_null($mix_blockOffset)) $mix_blockOffset = 0;
@@ -1630,31 +1630,31 @@ class WavFile
             if (is_null($mix_numBlocks)) $mix_numBlocks = $mix_loop ? $mix_totalBlocks : $mix_totalBlocks - $mix_blockOffset;
             $mix_maxBlock = min($mix_blockOffset + $mix_numBlocks, $mix_totalBlocks);
 
-            $filter_mix = true;
+            $filter_mix = TRUE;
         }
 
-        $filter_normalize = false;
+        $filter_normalize = FALSE;
         if (array_key_exists(self::FILTER_NORMALIZE, $filters)) {
             $normalize_threshold = @$filters[self::FILTER_NORMALIZE];
 
-            if (!is_null($normalize_threshold) && abs($normalize_threshold) != 1) $filter_normalize = true;
+            if (!is_null($normalize_threshold) && abs($normalize_threshold) != 1) $filter_normalize = TRUE;
         }
 
-        $filter_degrade = false;
+        $filter_degrade = FALSE;
         if (array_key_exists(self::FILTER_DEGRADE, $filters)) {
             $degrade_quality = @$filters[self::FILTER_DEGRADE];
             if (is_null($degrade_quality)) $degrade_quality = 1;
 
-            if ($degrade_quality >= 0 && $degrade_quality < 1) $filter_degrade = true;
+            if ($degrade_quality >= 0 && $degrade_quality < 1) $filter_degrade = TRUE;
         }
 
-        $filter_vol = false;
+        $filter_vol = FALSE;
         if (array_key_exists(self::FILTER_VOLUME, $filters)) {
             $volume_amount = @$filters[self::FILTER_VOLUME];
             if (is_null($volume_amount)) $volume_amount = 1;
 
             if ($volume_amount >= 0 && $volume_amount <= 2 && $volume_amount != 1.0) {
-                $filter_vol = true;
+                $filter_vol = TRUE;
             }
         }
 

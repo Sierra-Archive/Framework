@@ -3403,7 +3403,7 @@ class PHPlot
     /*
      * Calculate the width (or height) of bars for bar plots.
      *   $stacked : If true, this is a stacked bar plot (1 bar per group).
-     *   $verticals : If false, this is a horizontal bar plot.
+     *   $verticals : If FALSE, this is a horizontal bar plot.
      * This calculates:
      *    record_bar_width : Allocated width for each bar (including gaps)
      *    actual_bar_width : Actual drawn width of each bar
@@ -4751,7 +4751,7 @@ class PHPlot
      *      If $relative_to is 'world', then this is a world coordinate position.
      *      Otherwise, this is a relative coordinate position on the $relative_to element.
      *   $x_offset, $y_offset : Additional legend box offset in device coordinates (pixels).
-     *  The legend is positioned so that point ($x,$y) is at ($x_base, $y_base).
+     *  The legend is positioned so that point ($x, $y) is at ($x_base, $y_base).
      *  'Relative coordinates' means: (0,0) is the upper left corner, and (1,1) is the lower right corner
      *  of the element (legend, image, plot, or title area), regardless of its size. These are floating
      *  point values, each usually in the range [0,1], but they can be negative or greater than 1.
@@ -5273,7 +5273,7 @@ class PHPlot
             }
             ImageFilledPolygon($this->img, $pts, $npts, $alt_color);
         } else {
-            ImageRectangle($this->img, $x1, $y1, $x2,$y2, $alt_color);
+            ImageRectangle($this->img, $x1, $y1, $x2, $y2, $alt_color);
         }
     }
 

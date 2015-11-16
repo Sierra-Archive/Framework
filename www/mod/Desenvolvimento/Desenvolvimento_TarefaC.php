@@ -18,8 +18,8 @@ class Desenvolvimento_TarefaControle extends Desenvolvimento_Controle
     public function __construct() {
         parent::__construct();
     }
-    protected function Endereco_Tarefa($true=true) {
-        if ($true===true) {
+    protected function Endereco_Tarefa($true= TRUE ) {
+        if ($true === TRUE) {
             $this->Tema_Endereco(__('Tarefas'),'Desenvolvimento/Tarefa/Tarefas');
         } else {
             $this->Tema_Endereco(__('Tarefas'));
@@ -39,7 +39,7 @@ class Desenvolvimento_TarefaControle extends Desenvolvimento_Controle
     * @version 0.4.2
     */
     public function Main() {
-        return false;
+        return FALSE;
     }
     static function Tarefas_Tabela($tarefas) {
         $Registro   = &\Framework\App\Registro::getInstacia();
@@ -57,19 +57,19 @@ class Desenvolvimento_TarefaControle extends Desenvolvimento_Controle
             $tabela['Fk - SubMód'][$i]  =   $valor->framework_submodulo;
             $tabela['Fk - Mét'][$i]     =   $valor->framework_metodo;
             $tabela['Descrição'][$i]    =   $valor->descricao;
-            $tabela['Funções'][$i]      =   $Visual->Tema_Elementos_Btn('Editar'          ,Array('Editar Tarefa'        ,'Desenvolvimento/Tarefa/Tarefas_Edit/'.$valor->id.'/'    ,'')).
+            $tabela['Funções'][$i]      =   $Visual->Tema_Elementos_Btn('Editar'          ,Array('Editar Tarefa'        ,'Desenvolvimento/Tarefa/Tarefas_Edit/'.$valor->id.'/'    , '')).
                                             $Visual->Tema_Elementos_Btn('Deletar'         ,Array('Deletar Tarefa'       ,'Desenvolvimento/Tarefa/Tarefas_Del/'.$valor->id.'/'     ,'Deseja realmente deletar esse Tarefa ?'));
             ++$i;
         }
-        return Array($tabela,$i);
+        return Array($tabela, $i);
     }
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Tarefas($export=false) {
-        $this->Endereco_Tarefa(false);
+    public function Tarefas($export = FALSE) {
+        $this->Endereco_Tarefa(FALSE);
         $i = 0;
         // Add BOtao
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
@@ -87,10 +87,10 @@ class Desenvolvimento_TarefaControle extends Desenvolvimento_Controle
         )));
         // Query
         $tarefas = $this->_Modelo->db->Sql_Select('Desenvolvimento_Projeto_Tarefa');
-        if ($tarefas!==false && !empty($tarefas)) {
-            list($tabela,$i) = self::Tarefas_Tabela($tarefas);
-            if ($export!==false) {
-                self::Export_Todos($export,$tabela, 'Tarefas');
+        if ($tarefas !== FALSE && !empty($tarefas)) {
+            list($tabela, $i) = self::Tarefas_Tabela($tarefas);
+            if ($export !== FALSE) {
+                self::Export_Todos($export, $tabela, 'Tarefas');
             } else {
                 $this->_Visual->Show_Tabela_DataTable(
                     $tabela,     // Array Com a Tabela
@@ -128,7 +128,7 @@ class Desenvolvimento_TarefaControle extends Desenvolvimento_Controle
         $formbt     = __('Salvar');
         $formlink   = 'Desenvolvimento/Tarefa/Tarefas_Add2/';
         $campos = Desenvolvimento_Projeto_Tarefa_DAO::Get_Colunas();
-        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos);
+        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1, $titulo2, $formlink, $formid, $formbt, $campos);
     }
     /**
      * 
@@ -144,7 +144,7 @@ class Desenvolvimento_TarefaControle extends Desenvolvimento_Controle
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = __('Tarefa cadastrada com sucesso.');
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
     }
     /**
      * 
@@ -160,9 +160,9 @@ class Desenvolvimento_TarefaControle extends Desenvolvimento_Controle
         $formid     = 'form_Sistema_AdminC_TarefaEdit';
         $formbt     = __('Alterar Tarefa');
         $formlink   = 'Desenvolvimento/Tarefa/Tarefas_Edit2/'.$id;
-        $editar     = Array('Desenvolvimento_Projeto_Tarefa',$id);
+        $editar     = Array('Desenvolvimento_Projeto_Tarefa', $id);
         $campos = Desenvolvimento_Projeto_Tarefa_DAO::Get_Colunas();
-        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos,$editar);
+        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1, $titulo2, $formlink, $formid, $formbt, $campos, $editar);
     }
     /**
      * 
@@ -173,12 +173,12 @@ class Desenvolvimento_TarefaControle extends Desenvolvimento_Controle
      */
     public function Tarefas_Edit2($id) {
         $titulo     = __('Tarefa Editada com Sucesso');
-        $dao        = Array('Desenvolvimento_Projeto_Tarefa',$id);
+        $dao        = Array('Desenvolvimento_Projeto_Tarefa', $id);
         $funcao     = '$this->Tarefas();';
         $sucesso1   = __('Tarefa Alterada com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);      
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);      
     }
     /**
      * 
@@ -195,7 +195,7 @@ class Desenvolvimento_TarefaControle extends Desenvolvimento_Controle
         $linha = $this->_Modelo->db->Sql_Select('Desenvolvimento_Projeto_Tarefa', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($linha);
         // Mensagem
-    	if ($sucesso===true) {
+    	if ($sucesso === TRUE) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
@@ -208,12 +208,12 @@ class Desenvolvimento_TarefaControle extends Desenvolvimento_Controle
                 "mgs_secundaria" => __('Erro')
             );
         }
-        $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+        $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
         
         $this->Tarefas();
         
         $this->_Visual->Json_Info_Update('Titulo', __('Tarefa Deletada com Sucesso'));  
-        $this->_Visual->Json_Info_Update('Historico', false);  
+        $this->_Visual->Json_Info_Update('Historico', FALSE);  
     }
 }
 ?>

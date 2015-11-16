@@ -41,11 +41,11 @@ class usuario_rede_ListarControle extends usuario_rede_Controle
             $redes = $this->_Modelo->Indicados_Retorna($this->_Acl->Usuario_GetID());
             //$this->_Visual->Blocar($this->_Visual->Show_RedeIndicados($redes));  
             $this->_Visual->Blocar($this->_Visual->Show_RedeIndicadosNivel($redes));  
-            $this->_Visual->Bloco_Maior_CriaJanela(__('Meus Primários'),'',60);  
+            $this->_Visual->Bloco_Maior_CriaJanela(__('Meus Primários'), '',60);  
             $this->_Visual->Blocar('<span id="secundarios"><center><b>Por favor, clique em um dos primários.</b></center></span>');  
-            $this->_Visual->Bloco_Maior_CriaJanela(__('Secundários'),'',50);
+            $this->_Visual->Bloco_Maior_CriaJanela(__('Secundários'), '',50);
             $this->_Visual->Blocar('<span id="terciarios"><center><b>Por favor, clique em um dos secundários.</b></center></span>');  
-            $this->_Visual->Bloco_Maior_CriaJanela(__('Terciários'),'',40);
+            $this->_Visual->Bloco_Maior_CriaJanela(__('Terciários'), '',40);
             unset($redes); // LIMPA MEMÓRIA
 
             // carrega tabela de indicados a direita
@@ -55,15 +55,15 @@ class usuario_rede_ListarControle extends usuario_rede_Controle
             $this->_Visual->Json_Info_Update('Titulo', __('Rede'));
         }
     }
-    public function Carrega_Indicados($id,$nivel) {
+    public function Carrega_Indicados($id, $nivel) {
         $usuarioid = (int) $id;
         $nivel = \Framework\App\Conexao::anti_injection($nivel);
         
         if ($nivel==2) $div = 'secundarios';
         else          $div = 'terciarios';
         
-        $redes = $this->_Modelo->Indicados_Retorna($usuarioid,$nivel);
-        $html = $this->_Visual->Show_RedeIndicadosNivel($redes,$nivel);  
+        $redes = $this->_Modelo->Indicados_Retorna($usuarioid, $nivel);
+        $html = $this->_Visual->Show_RedeIndicadosNivel($redes, $nivel);  
         // ORGANIZA E MANDA CONTEUDO
         $this->_Visual->Json_Info_Update('Titulo', __('Rede')); 
         $conteudo = array(
@@ -71,7 +71,7 @@ class usuario_rede_ListarControle extends usuario_rede_Controle
           'js' => '',
           'html' =>  $html
         );
-        $this->_Visual->Json_IncluiTipo('Conteudo',$conteudo);
+        $this->_Visual->Json_IncluiTipo('Conteudo', $conteudo);
     }
 }
 ?>

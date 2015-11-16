@@ -33,15 +33,15 @@ class comercio_FamiliaControle extends comercio_Controle
     */
     public function Main() {
         \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'comercio/Familia/Familias');
-        return false;
+        return FALSE;
     }
-    static function Endereco_Familia($true=true) {
+    static function Endereco_Familia($true= TRUE ) {
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
         $titulo = __('Familias');
         $link = 'comercio/Familia/Familias';
-        if ($true===true) {
-            $_Controle->Tema_Endereco($titulo,$link);
+        if ($true === TRUE) {
+            $_Controle->Tema_Endereco($titulo, $link);
         } else {
             $_Controle->Tema_Endereco($titulo);
         }
@@ -51,8 +51,8 @@ class comercio_FamiliaControle extends comercio_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Familias($export=false) {
-        self::Endereco_Familia(false);
+    public function Familias($export = FALSE) {
+        self::Endereco_Familia(FALSE);
         $i = 0;
         // BOTAO IMPRIMIR / ADD
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
@@ -70,18 +70,18 @@ class comercio_FamiliaControle extends comercio_Controle
         )));
         // CONEXAO
         $linhas = $this->_Modelo->db->Sql_Select('Comercio_Familia');
-        if ($linhas!==false && !empty($linhas)) {
+        if ($linhas !== FALSE && !empty($linhas)) {
             if (is_object($linhas)) $linhas = Array(0=>$linhas);
             reset($linhas);
             foreach ($linhas as $indice=>&$valor) {
                 //$tabela['#Id'][$i]       = '#'.$valor->id;
                 $tabela['Nome'][$i]      = $valor->nome;
-                $tabela['Funções'][$i]   = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Familia'        ,'comercio/Familia/Familias_Edit/'.$valor->id.'/'    ,'')).
+                $tabela['Funções'][$i]   = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Familia'        ,'comercio/Familia/Familias_Edit/'.$valor->id.'/'    , '')).
                                            $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Familia'       ,'comercio/Familia/Familias_Del/'.$valor->id.'/'     ,'Deseja realmente deletar essa Familia ?'));
                 ++$i;
             }
-            if ($export!==false) {
-                self::Export_Todos($export,$tabela, 'Comercio - Produtos (Familias)');
+            if ($export !== FALSE) {
+                self::Export_Todos($export, $tabela, 'Comercio - Produtos (Familias)');
             } else {
                 $this->_Visual->Show_Tabela_DataTable($tabela);
             }
@@ -101,7 +101,7 @@ class comercio_FamiliaControle extends comercio_Controle
      * @version 0.4.2
      */
     public function Familias_Add() {
-        self::Endereco_Familia(true);
+        self::Endereco_Familia(TRUE);
         // Carrega Config
         $titulo1    = __('Adicionar Familia');
         $titulo2    = __('Salvar Familia');
@@ -109,7 +109,7 @@ class comercio_FamiliaControle extends comercio_Controle
         $formbt     = __('Salvar');
         $formlink   = 'comercio/Familia/Familias_Add2/';
         $campos = Comercio_Familia_DAO::Get_Colunas();
-        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos);
+        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1, $titulo2, $formlink, $formid, $formbt, $campos);
     }
     /**
      * 
@@ -125,7 +125,7 @@ class comercio_FamiliaControle extends comercio_Controle
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = __('Familia cadastrada com sucesso.');
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
     }
     /**
      * 
@@ -134,16 +134,16 @@ class comercio_FamiliaControle extends comercio_Controle
      * @version 0.4.2
      */
     public function Familias_Edit($id) {
-        self::Endereco_Familia(true);
+        self::Endereco_Familia(TRUE);
         // Carrega Config
         $titulo1    = 'Editar Familia (#'.$id.')';
         $titulo2    = __('Alteração de Familia');
         $formid     = 'form_Sistema_AdminC_FamiliaEdit';
         $formbt     = __('Alterar Familia');
         $formlink   = 'comercio/Familia/Familias_Edit2/'.$id;
-        $editar     = Array('Comercio_Familia',$id);
+        $editar     = Array('Comercio_Familia', $id);
         $campos = Comercio_Familia_DAO::Get_Colunas();
-        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos,$editar);
+        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1, $titulo2, $formlink, $formid, $formbt, $campos, $editar);
     }
     /**
      * 
@@ -154,12 +154,12 @@ class comercio_FamiliaControle extends comercio_Controle
      */
     public function Familias_Edit2($id) {
         $titulo     = __('Familia Editada com Sucesso');
-        $dao        = Array('Comercio_Familia',$id);
+        $dao        = Array('Comercio_Familia', $id);
         $funcao     = '$this->Familias();';
         $sucesso1   = __('Familia Alterada com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);      
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);      
     }
     /**
      * 
@@ -176,7 +176,7 @@ class comercio_FamiliaControle extends comercio_Controle
         $linha = $this->_Modelo->db->Sql_Select('Comercio_Familia', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($linha);
         // Mensagem
-    	if ($sucesso===true) {
+    	if ($sucesso === TRUE) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletada'),
@@ -189,12 +189,12 @@ class comercio_FamiliaControle extends comercio_Controle
                 "mgs_secundaria" => __('Erro')
             );
         }
-        $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+        $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
         
         $this->Familias();
         
         $this->_Visual->Json_Info_Update('Titulo', __('Familia deletada com Sucesso'));  
-        $this->_Visual->Json_Info_Update('Historico', false);  
+        $this->_Visual->Json_Info_Update('Historico', FALSE);  
     }
 }
 ?>

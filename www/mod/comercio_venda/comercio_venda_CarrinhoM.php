@@ -22,13 +22,13 @@ class comercio_venda_CarrinhoModelo extends comercio_vendaModelo
      * @param type $produtoid
      * @param type $motivoid
      */
-    static function Estoque_Exibir($produtoid,$motivoid) {
+    static function Estoque_Exibir($produtoid, $motivoid) {
         $produtoid = (int) $produtoid;
         $motivoid = (int) $motivoid;
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Modelo = &$Registro->_Modelo;
         $retirada = $_Modelo->db->Sql_Select('Comercio_Venda_Carrinho',Array('id'=>$motivoid),1);
-        if ($retirada===false) {
+        if ($retirada === FALSE) {
             return Array('Caixa Não existente', 'Não existe');
         }
         if ($retirada->cliente2=='' || $retirada->cliente2==NULL) {
@@ -49,8 +49,8 @@ class comercio_venda_CarrinhoModelo extends comercio_vendaModelo
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Modelo = &$Registro->_Modelo;
         $caixa = $_Modelo->db->Sql_Select('Comercio_Venda_Carrinho',Array('id'=>$motivoid),1);
-        if ($caixa===false) return 'Caixa não Encontrado';
-        return Array('Caixa: #'.$motivoid,$caixa->cliente2);
+        if ($caixa === FALSE) return 'Caixa não Encontrado';
+        return Array('Caixa: #'.$motivoid, $caixa->cliente2);
     }
 }
 ?>

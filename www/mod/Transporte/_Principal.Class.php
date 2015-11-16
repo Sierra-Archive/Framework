@@ -16,13 +16,13 @@ class Transporte_Principal implements \Framework\PrincipalInterface
                     Array(
                         'span'      =>      12,
                         'conteudo'  =>  Array(Array(
-                            'div_ext'   =>      false,
-                            'title_id'  =>      false,
+                            'div_ext'   =>      FALSE,
+                            'title_id'  =>      FALSE,
                             'title'     =>      'Painel sobre o Meu Armazem',
                             'html'      =>      '<span id="painel_armazem">'.Transporte_ArmazemControle::Painel_Armazem('painel_armazem').'</span>',
                         )/*,Array(
-                            'div_ext'   =>      false,
-                            'title_id'  =>      false,
+                            'div_ext'   =>      FALSE,
+                            'title_id'  =>      FALSE,
                             'title'     =>      'Sub-'.$tema,
                             'html'      =>      ' Aqui tem !',
                         ),*/),
@@ -36,13 +36,13 @@ class Transporte_Principal implements \Framework\PrincipalInterface
                     Array(
                         'span'      =>      12,
                         'conteudo'  =>  Array(Array(
-                            'div_ext'   =>      false,
-                            'title_id'  =>      false,
+                            'div_ext'   =>      FALSE,
+                            'title_id'  =>      FALSE,
                             'title'     =>      'Painel sobre o Meu Caminhoneiro',
                             'html'      =>      '<span id="painel_caminhoneiro">'.Transporte_CaminhoneiroControle::Painel_Caminhoneiro('painel_caminhoneiro').'</span>',
                         )/*,Array(
-                            'div_ext'   =>      false,
-                            'title_id'  =>      false,
+                            'div_ext'   =>      FALSE,
+                            'title_id'  =>      FALSE,
                             'title'     =>      'Sub-'.$tema,
                             'html'      =>      ' Aqui tem !',
                         ),*/),
@@ -56,13 +56,13 @@ class Transporte_Principal implements \Framework\PrincipalInterface
                     Array(
                         'span'      =>      12,
                         'conteudo'  =>  Array(Array(
-                            'div_ext'   =>      false,
-                            'title_id'  =>      false,
+                            'div_ext'   =>      FALSE,
+                            'title_id'  =>      FALSE,
                             'title'     =>      'Painel sobre o Meu Transportadora',
                             'html'      =>      '<span id="painel_transportadora">'.Transporte_TransportadoraControle::Painel_Transportadora('painel_transportadora').'</span>',
                         )/*,Array(
-                            'div_ext'   =>      false,
-                            'title_id'  =>      false,
+                            'div_ext'   =>      FALSE,
+                            'title_id'  =>      FALSE,
                             'title'     =>      'Sub-'.$tema,
                             'html'      =>      ' Aqui tem !',
                         ),*/),
@@ -76,13 +76,13 @@ class Transporte_Principal implements \Framework\PrincipalInterface
                     Array(
                         'span'      =>      12,
                         'conteudo'  =>  Array(Array(
-                            'div_ext'   =>      false,
-                            'title_id'  =>      false,
+                            'div_ext'   =>      FALSE,
+                            'title_id'  =>      FALSE,
                             'title'     =>      'Painel sobre o Meu Fornecedor',
                             'html'      =>      '<span id="painel_fornecedor">'.Transporte_FornecedorControle::Painel_Fornecedor('painel_fornecedor').'</span>',
                         )/*,Array(
-                            'div_ext'   =>      false,
-                            'title_id'  =>      false,
+                            'div_ext'   =>      FALSE,
+                            'title_id'  =>      FALSE,
                             'title'     =>      'Sub-'.$tema,
                             'html'      =>      ' Aqui tem !',
                         ),*/),
@@ -90,36 +90,36 @@ class Transporte_Principal implements \Framework\PrincipalInterface
                 ));;
         }
         
-        return true;
+        return TRUE;
     }
     static function Widget(&$_Controle) {
-        return true;
+        return TRUE;
     } 
     
-    static function Busca(&$controle, &$Modelo, &$Visual,$busca) {
+    static function Busca(&$controle, &$Modelo, &$Visual, $busca) {
         $i = 0;
         // Busca Armazens
         $result = self::Busca_Armazens($controle, $Modelo, $Visual, $busca);
-        if ($result!==false) {
+        if ($result !== FALSE) {
             $i = $i + $result;
         }
         // Retorna
         if (is_int($i) && $i>0) {
             return $i;
         } else {
-            return false;
+            return FALSE;
         }
     }
     static function Config() {
-        return false;
+        return FALSE;
     }
     
-    static function Relatorio($data_inicio,$data_final,$filtro=false) {
-        return false;
+    static function Relatorio($data_inicio, $data_final, $filtro = FALSE) {
+        return FALSE;
     }
     
-    static function Estatistica($data_inicio,$data_final,$filtro=false) {
-        return false;
+    static function Estatistica($data_inicio, $data_final, $filtro = FALSE) {
+        return FALSE;
     }
     /***********************
      * BUSCAS
@@ -130,13 +130,13 @@ class Transporte_Principal implements \Framework\PrincipalInterface
           //'texto'                   => '%'.$busca.'%',
         ));
         $i = 0;
-        $armazens = $Modelo->db->Sql_Select('Transporte_Armazem',$where);
-        if ($armazens===false) return false;
+        $armazens = $Modelo->db->Sql_Select('Transporte_Armazem', $where);
+        if ($armazens === FALSE) return FALSE;
         // add botao
         $Visual->Blocar('<a title="Adicionar Armazem" class="btn btn-success lajax explicar-titulo" data-acao="" href="'.URL_PATH.'Transporte/Armazem/Armazens_Add">Adicionar novo Armazem</a><div class="space15"></div>');
         if (is_object($armazens)) $armazens = Array(0=>$armazens);
-        if ($armazens!==false && !empty($armazens)) {
-            list($tabela,$i) = Transporte_ArmazemControle::Armazens_Tabela($armazens);
+        if ($armazens !== FALSE && !empty($armazens)) {
+            list($tabela, $i) = Transporte_ArmazemControle::Armazens_Tabela($armazens);
             $Visual->Show_Tabela_DataTable($tabela);
         } else {   
             $Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Armazem na Busca '.$busca.'</font></b></center>');
@@ -145,7 +145,7 @@ class Transporte_Principal implements \Framework\PrincipalInterface
         $Visual->Bloco_Unico_CriaJanela($titulo);
         return $i;*/
         
-        return false;
+        return FALSE;
     }
 }
 ?>

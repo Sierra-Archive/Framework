@@ -43,9 +43,9 @@ class usuario_rede_Controle extends \Framework\App\Controle
         $graficos[0]['alt'] = 400;
         $graficos[0]['larg'] = 500;
         $graficos[0]['headers'] = array('Nome', 'Valor');
-        $graficos[0]['itens'][] = array('Primarios',$valores['primario']);
-        $graficos[0]['itens'][] = array('Secundarios',$valores['secundario']);
-        $graficos[0]['itens'][] = array('Terciarios',$valores['terciario']);
+        $graficos[0]['itens'][] = array('Primarios', $valores['primario']);
+        $graficos[0]['itens'][] = array('Secundarios', $valores['secundario']);
+        $graficos[0]['itens'][] = array('Terciarios', $valores['terciario']);
         
         // Cria Grafico niveis
         $graficos[1]['titulo'] = __('Medidor de planos');
@@ -54,7 +54,7 @@ class usuario_rede_Controle extends \Framework\App\Controle
         $graficos[1]['headers'] = array('Nome', 'Valor');
         foreach($valores['associado'] as $indice=>&$valor) {
             $grupo = \Framework\App\Registro::getInstacia()->_Conexao->Sql_Select('Sistema_Grupo', '{sigla}id=\''.$indice.'\'');
-            $graficos[1]['itens'][] = array($grupo->nome,$valor);
+            $graficos[1]['itens'][] = array($grupo->nome, $valor);
         }
         unset($valores); // LIMPA MEM�RIA
         // Cria conteudo html no layoult e add numa noja janela
@@ -63,7 +63,7 @@ class usuario_rede_Controle extends \Framework\App\Controle
     }
     static function Ranking_listar(&$Modelo, &$Visual) {
         $ranking = Array();
-        usuario_rede_Modelo::Ranking_primarios($ranking,$Modelo);
+        usuario_rede_Modelo::Ranking_primarios($ranking, $Modelo);
         if (!empty($ranking)) {
             reset($ranking);
             $i = 0;
@@ -73,7 +73,7 @@ class usuario_rede_Controle extends \Framework\App\Controle
                 ++$i;
             }
             $Visual->Show_Tabela_DataTable($tabela);
-            $Visual->Bloco_Maior_CriaJanela(__('Ranking'),'',10);
+            $Visual->Bloco_Maior_CriaJanela(__('Ranking'), '',10);
             unset($tabela);
         }
     }

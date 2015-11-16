@@ -36,7 +36,7 @@
                     <div class="loginRow">
                         <div class="rememberMe"><input type="checkbox" id="check2" name="chbox" /><label for="check2">Lembrar-me</label></div>
                         <div class="submitForm"><input type="submit" value="Entrar" class="redBtn" /></div>
-                        <a id="forget-password" class="" href="<?php echo URL_PATH.SISTEMA_DIR_INT; ?>?sistema_esquecisenha=true">Esqueceu sua senha?</a>
+                        <a id="forget-password" class="" href="<?php echo URL_PATH.SISTEMA_DIR_INT; ?>?sistema_esquecisenha= TRUE">Esqueceu sua senha?</a>
                     </div>
                 </fieldset>
             </form>

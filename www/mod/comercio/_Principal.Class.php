@@ -16,19 +16,19 @@ class comercio_Principal implements \Framework\PrincipalInterface
     static function Home(&$controle,    &$Modelo, &$Visual) {
         self::Widgets();
     }
-    static function Busca(&$controle, &$Modelo, &$Visual,$busca) {
-        return false;
+    static function Busca(&$controle, &$Modelo, &$Visual, $busca) {
+        return FALSE;
     }
     static function Config() {
-        return false;
+        return FALSE;
     }
     
-    static function Relatorio($data_inicio,$data_final,$filtro=false) {
-        return false;
+    static function Relatorio($data_inicio, $data_final, $filtro = FALSE) {
+        return FALSE;
     }
     
-    static function Estatistica($data_inicio,$data_final,$filtro=false) {
-        return false;
+    static function Estatistica($data_inicio, $data_final, $filtro = FALSE) {
+        return FALSE;
     }
     public static function Widgets() {
         $Registro = &\Framework\App\Registro::getInstacia();
@@ -45,7 +45,7 @@ class comercio_Principal implements \Framework\PrincipalInterface
                 'truck', 
                 $fornecedor_qnt, 
                 'block-yellow', 
-                false, 
+                FALSE, 
                 150
             );
         }
@@ -62,7 +62,7 @@ class comercio_Principal implements \Framework\PrincipalInterface
                'tags',
                $produto_qnt,
                'block-azulescuro',
-               false,
+               FALSE,
                113
             );
             if (\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Linha_Widget')) {
@@ -75,7 +75,7 @@ class comercio_Principal implements \Framework\PrincipalInterface
                     'tag',
                     $linha_qnt,
                     'light-green',
-                    false,
+                    FALSE,
                     112
                 );
             }

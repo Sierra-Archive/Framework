@@ -1,19 +1,19 @@
 <?php
 // Principais
 if (!defined('SISTEMA_PROXY')) {
-    define('SISTEMA_PROXY',        false); //'http://213.85.92.10:80');
+    define('SISTEMA_PROXY',        FALSE); //'http://213.85.92.10:80');
 }
 if (!defined('SISTEMA_DEBUG')) {
-    define('SISTEMA_DEBUG',        false);
+    define('SISTEMA_DEBUG',        FALSE);
 }
 if (!defined('SISTEMA_SERVIDORES')) {
-    define('SISTEMA_SERVIDORES',        false); // SE é central
+    define('SISTEMA_SERVIDORES',        FALSE); // SE é central
 }
 if (!defined('SISTEMA_DEDICADO')) {
-    define('SISTEMA_DEDICADO',        false); // SE esta em um dedicado
+    define('SISTEMA_DEDICADO',        FALSE); // SE esta em um dedicado
 }
 if (!defined('SISTEMA_CACHE_PAGINAS')) {
-    define('SISTEMA_CACHE_PAGINAS',        false);
+    define('SISTEMA_CACHE_PAGINAS',        FALSE);
 }
 
 // RESTRITO AO SISTEMA
@@ -24,10 +24,10 @@ if (!defined('SISTEMA_CFG_VERSION')) {
 
 // DINAMICA DO SISTEMA
 if (!defined('SISTEMA_EXPORTAR_PDF')) {
-    define('SISTEMA_EXPORTAR_PDF',        false); // 
+    define('SISTEMA_EXPORTAR_PDF',        FALSE); // 
 }
 if (!defined('SISTEMA_EXPORTAR_EXCEL')) {
-    define('SISTEMA_EXPORTAR_EXCEL',        true); // 
+    define('SISTEMA_EXPORTAR_EXCEL',        TRUE); // 
 }
 
 
@@ -51,7 +51,7 @@ if (!defined('CONFIG_PADRAO_TECLADO')) {
 }
 // BANCO DE DADOS
 if (!defined('SQL_MAIUSCULO')) {
-    define('SQL_MAIUSCULO',  false);
+    define('SQL_MAIUSCULO',  FALSE);
 }
 // CONFIGS DEBUG
 if (!defined('SRV_NAME_SQL')) {
@@ -89,7 +89,7 @@ if (!defined('ROOT')) {
 // Configs TEMAS
 if (!defined('TEMA_LOGIN')) {
     // Separa tela de login ?
-    define('TEMA_LOGIN',  true);
+    define('TEMA_LOGIN',  TRUE);
 }if (!defined('TEMA_PADRAO')) {
     define('TEMA_PADRAO', 'metrolab');
 }if (!defined('TEMA_COLOR')) {
@@ -97,7 +97,7 @@ if (!defined('TEMA_LOGIN')) {
 }if (!defined('TEMA_LOGO')) {
     define('TEMA_LOGO', 'png');
 }if (!defined('TEMA_BUSCAR')) {
-    define('TEMA_BUSCAR',  true);
+    define('TEMA_BUSCAR',  TRUE);
 }
 
 
@@ -156,7 +156,7 @@ if (!defined('CFG_TEC_CAT_ID_FUNCIONARIOS')) {
 
 
 if (!defined('CFG_TEC_PAISES_EXTRAGEIROS')) {
-    define('CFG_TEC_PAISES_EXTRAGEIROS',        false);
+    define('CFG_TEC_PAISES_EXTRAGEIROS',        FALSE);
 }
 
 /*****************************************************************
@@ -188,7 +188,7 @@ if (!defined('CFG_TXT_COMERCIO_OS_PLURAL')) {
 }
 // IMPRESSAO
 if (!defined('CFG_IMPRESSAO_TITULO_REPETIR')) {
-    define('CFG_IMPRESSAO_TITULO_REPETIR',    false);
+    define('CFG_IMPRESSAO_TITULO_REPETIR',    FALSE);
 }
 
 

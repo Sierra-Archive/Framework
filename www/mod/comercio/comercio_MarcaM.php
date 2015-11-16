@@ -28,16 +28,16 @@ class comercio_MarcaModelo extends comercio_Modelo
         
         if ($perm_editar && $perm_del) {
             $funcao = function( $d, $row ) {
-                return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Senha'        ,'comercio/Marca/Marcas_Edit/'.$d.'/'    ,''),true).
-                       Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Senha'       ,'comercio/Marca/Marcas_Del/'.$d.'/'     ,'Deseja realmente deletar essa Marca ?'),true);
+                return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Senha'        ,'comercio/Marca/Marcas_Edit/'.$d.'/'    , ''),TRUE).
+                       Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Senha'       ,'comercio/Marca/Marcas_Del/'.$d.'/'     ,'Deseja realmente deletar essa Marca ?'),TRUE);
             };
         } else if ($perm_editar) {
             $funcao = function( $d, $row ) {
-                return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Senha'        ,'comercio/Marca/Marcas_Edit/'.$d.'/'    ,''),true);
+                return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Senha'        ,'comercio/Marca/Marcas_Edit/'.$d.'/'    , ''),TRUE);
             };
         } else if ($perm_del) {
             $funcao = function( $d, $row ) {
-                return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Senha'       ,'comercio/Marca/Marcas_Del/'.$d.'/'     ,'Deseja realmente deletar essa Marca ?'),true);
+                return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Senha'       ,'comercio/Marca/Marcas_Del/'.$d.'/'     ,'Deseja realmente deletar essa Marca ?'),TRUE);
             };
         } else {
             $funcao = function( $d, $row ) {

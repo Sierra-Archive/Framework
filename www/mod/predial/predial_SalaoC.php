@@ -19,15 +19,15 @@ class predial_SalaoControle extends predial_Controle
     */
     public function Main() {
         \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'predial/Salao/Saloes');
-        return false;
+        return FALSE;
     }
-    static function Endereco_Salao($true=true) {
+    static function Endereco_Salao($true= TRUE ) {
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
         $titulo = __('Saloes');
         $link = 'predial/Salao/Saloes';
-        if ($true===true) {
-            $_Controle->Tema_Endereco($titulo,$link);
+        if ($true === TRUE) {
+            $_Controle->Tema_Endereco($titulo, $link);
         } else {
             $_Controle->Tema_Endereco($titulo);
         }
@@ -45,11 +45,11 @@ class predial_SalaoControle extends predial_Controle
             $tabela['Preço'][$i]            = $valor->preco;
             $tabela['Observação'][$i]       = $valor->obs;
             $tabela['Data Registrado'][$i]  = $valor->log_date_add;
-            $tabela['Funções'][$i]          = $Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Local de Reserva'        ,'predial/Salao/Saloes_Edit/'.$valor->id.'/'    ,'')).
+            $tabela['Funções'][$i]          = $Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Local de Reserva'        ,'predial/Salao/Saloes_Edit/'.$valor->id.'/'    , '')).
                                               $Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Local de Reserva'       ,'predial/Salao/Saloes_Del/'.$valor->id.'/'     ,'Deseja realmente deletar esse Local de Reserva ?'));
             ++$i;
         }
-        return Array($tabela,$i);
+        return Array($tabela, $i);
     }
     /**
      * 
@@ -57,7 +57,7 @@ class predial_SalaoControle extends predial_Controle
      * @version 0.4.2
      */
     public function Saloes() {
-        self::Endereco_Salao(false);
+        self::Endereco_Salao(FALSE);
         $i = 0;
         // Botao Add
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
@@ -75,8 +75,8 @@ class predial_SalaoControle extends predial_Controle
         )));
         // Busca
         $saloes = $this->_Modelo->db->Sql_Select('Predial_Salao');
-        if ($saloes!==false && !empty($saloes)) {
-            list($tabela,$i) = self::Saloes_Tabela($saloes);
+        if ($saloes !== FALSE && !empty($saloes)) {
+            list($tabela, $i) = self::Saloes_Tabela($saloes);
             $this->_Visual->Show_Tabela_DataTable($tabela);
             unset($tabela);
         } else {            
@@ -102,7 +102,7 @@ class predial_SalaoControle extends predial_Controle
         $formbt     = __('Salvar');
         $formlink   = 'predial/Salao/Saloes_Add2/';
         $campos = Predial_Salao_DAO::Get_Colunas();
-        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos);
+        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1, $titulo2, $formlink, $formid, $formbt, $campos);
     }
     /**
      * 
@@ -118,7 +118,7 @@ class predial_SalaoControle extends predial_Controle
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = __('Local de Reserva cadastrado com sucesso.');
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
     }
     /**
      * 
@@ -134,9 +134,9 @@ class predial_SalaoControle extends predial_Controle
         $formid     = 'form_Sistema_AdminC_SalaoEdit';
         $formbt     = __('Alterar Local de Reserva');
         $formlink   = 'predial/Salao/Saloes_Edit2/'.$id;
-        $editar     = Array('Predial_Salao',$id);
+        $editar     = Array('Predial_Salao', $id);
         $campos = Predial_Salao_DAO::Get_Colunas();
-        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos,$editar);
+        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1, $titulo2, $formlink, $formid, $formbt, $campos, $editar);
     }
     /**
      * 
@@ -147,12 +147,12 @@ class predial_SalaoControle extends predial_Controle
      */
     public function Saloes_Edit2($id) {
         $titulo     = __('Local de Reserva Editado com Sucesso');
-        $dao        = Array('Predial_Salao',$id);
+        $dao        = Array('Predial_Salao', $id);
         $funcao     = '$this->Saloes();';
         $sucesso1   = __('Local de Reserva Alterada com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);   
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);   
     }
     /**
      * 
@@ -169,7 +169,7 @@ class predial_SalaoControle extends predial_Controle
         $salao = $this->_Modelo->db->Sql_Select('Predial_Salao', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($salao);
         // Mensagem
-    	if ($sucesso===true) {
+    	if ($sucesso === TRUE) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
@@ -182,12 +182,12 @@ class predial_SalaoControle extends predial_Controle
                 "mgs_secundaria" => __('Erro')
             );
         }
-        $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+        $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
         
         $this->Saloes();
         
         $this->_Visual->Json_Info_Update('Titulo', __('Local de Reserva deletado com Sucesso'));
-        $this->_Visual->Json_Info_Update('Historico', false);
+        $this->_Visual->Json_Info_Update('Historico', FALSE);
     }
     
     
@@ -229,7 +229,7 @@ class predial_SalaoControle extends predial_Controle
     public function Reserva() {
         //mostra reservas
         /*$reservas = Array();
-        $i = $this->_Modelo->retorna_reservas($reservas,true);
+        $i = $this->_Modelo->retorna_reservas($reservas,TRUE);
         foreach($reservas as $indice=>&$valor) {
             $this->_Visual->Blocar($this->_Visual->Show_Reservas($valor));
             $this->_Visual->Bloco_Unico_CriaTitulo($indice.' ('.$i[$indice].')',2);
@@ -239,13 +239,13 @@ class predial_SalaoControle extends predial_Controle
         // carrega calendario de datas disponiveis
         $datas = Array();
         $i = $this->_Modelo->retorna_Agendadatas($datas);
-        $this->_Visual->Js_Calendar_Gerar('calendariodedatasdisponiveis',$datas);
+        $this->_Visual->Js_Calendar_Gerar('calendariodedatasdisponiveis', $datas);
         $this->_Visual->Bloco_Maior_CriaJanela(__('Datas Disponiveis'));
         // ORGANIZA E MANDA CONTEUDO
         
         $this->_Visual->Json_Info_Update('Titulo', __('Reservas'));        
     }
-    public function Popup_Agendar_reserva($idreserva,$datainicial,$datafinal,$nomereserva) {
+    public function Popup_Agendar_reserva($idreserva, $datainicial, $datafinal, $nomereserva) {
         if ($this->get_logado()) {
             if ($this->_Acl->logado_usuario->foto_cnh=='') {
                 $mensagens = array(
@@ -253,42 +253,42 @@ class predial_SalaoControle extends predial_Controle
                     "mgs_principal" => __('Erro'),
                     "mgs_secundaria" => __('É necessário fazer upload da CNH')
                 );
-                $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+                $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
             } else if ($this->_Acl->logado_usuario->foto_res=='') {
                 $mensagens = array(
                     "tipo" => 'sucesso',
                     "mgs_principal" => __('Erro'),
                     "mgs_secundaria" => __('Falta upload do comprovante de residente')
                 );
-                $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+                $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
             } else if ($controle->usuario->foto_cnh_apv==0) {
                 $mensagens = array(
                     "tipo" => 'sucesso',
                     "mgs_principal" => __('Erro'),
                     "mgs_secundaria" => __('Aguarde a aprovação de sua CNH')
                 );
-                $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+                $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
             } else if ($controle->usuario->foto_res_apv==0) {
                 $mensagens = array(
                     "tipo" => 'sucesso',
                     "mgs_principal" => __('Erro'),
                     "mgs_secundaria" => __('Aguarde a aprovação de sua residência')
                 );
-                $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+                $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
             } else if ($controle->usuario->foto_cnh_apv==1) {
                 $mensagens = array(
                     "tipo" => 'sucesso',
                     "mgs_principal" => __('CNH Negada'),
                     "mgs_secundaria" => __('Suba uma CNH válida')
                 );
-                $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+                $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
             } else if ($controle->usuario->foto_res_apv==1) {
                 $mensagens = array(
                     "tipo" => 'sucesso',
                     "mgs_principal" => __('Residência Negada'),
                     "mgs_secundaria" => __('Suba uma residência válida')
                 );
-                $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+                $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
             } else {
                 // variaveis
                 $datainicial = data_eua_brasil(\Framework\App\Conexao::anti_injection($datainicial));
@@ -304,7 +304,7 @@ class predial_SalaoControle extends predial_Controle
 
                 // formulario
                 $form = new \Framework\Classes\Form('adminformreservasagenda', 'usuario_reserva/Listar/agendamento_inserir/', 'formajax');
-                usuario_reserva_ListarControle::agendamento_form($this, $this->_Visual, $form, $idreserva,$nomereserva,$datainicial,$datafinal,$reserva['franquia'],0);
+                usuario_reserva_ListarControle::agendamento_form($this, $this->_Visual, $form, $idreserva, $nomereserva, $datainicial, $datafinal, $reserva['franquia'],0);
                 $formulario = $form->retorna_form();
                 $conteudo = array(
                     'id' => 'popup',
@@ -323,9 +323,9 @@ class predial_SalaoControle extends predial_Controle
                     ),
                     'html' => $formulario
                 );
-                $this->_Visual->Json_IncluiTipo('Popup',$conteudo);
-                //$this->_Visual->Json_IncluiTipo('JavascriptInterno',$this->_Visual->Javascript_Executar());
-                //$this->_Visual->Javascript_Executar(false);
+                $this->_Visual->Json_IncluiTipo('Popup', $conteudo);
+                //$this->_Visual->Json_IncluiTipo('JavascriptInterno', $this->_Visual->Javascript_Executar());
+                //$this->_Visual->Javascript_Executar(FALSE);
             }
         } else {
             $mensagens = array(
@@ -333,20 +333,20 @@ class predial_SalaoControle extends predial_Controle
                 "mgs_principal" => __('Erro'),
                 "mgs_secundaria" => __('É necessário se logar para continuar')
             );
-            $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+            $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
         }
     }
-    static function agendamento_form(&$controle, &$Visual, &$form, &$idreserva,$nomereserva,$datainicial = '',$datafinal = '',$franquia=0, $valor=0) {
+    static function agendamento_form(&$controle, &$Visual, &$form, &$idreserva, $nomereserva, $datainicial = '', $datafinal = '', $franquia=0, $valor=0) {
         
        
        // select de pessoas
         $form->Select_Novo('Reserva', 'selectreservas', 'selectreservas');
-        $form->Select_Opcao($nomereserva,$idreserva,1);
+        $form->Select_Opcao($nomereserva, $idreserva,1);
         $form->Select_Fim();
-        $form->Input_Novo('Data Inicial', 'data_inicial',$datainicial,'text', 10, 'obrigatorio', '',true); 
-        $form->Input_Novo('Data Final', 'data_final',$datafinal,'text', 10, 'obrigatorio', '',true); 
-        $form->Input_Novo('Franquia', 'franquia', 'R$'.number_format($franquia, 2, ', ', '.'),'text', 30, 'inactive', '',true);  
-        $form->Input_Novo('Valor', 'valor', 'R$'.number_format($valor, 2, ', ', '.'),'text', 30, 'inactive', '',true); 
+        $form->Input_Novo('Data Inicial', 'data_inicial', $datainicial,'text', 10, 'obrigatorio', '',TRUE); 
+        $form->Input_Novo('Data Final', 'data_final', $datafinal,'text', 10, 'obrigatorio', '',TRUE); 
+        $form->Input_Novo('Franquia', 'franquia', 'R$'.number_format($franquia, 2, ', ', '.'),'text', 30, 'inactive', '',TRUE);  
+        $form->Input_Novo('Valor', 'valor', 'R$'.number_format($valor, 2, ', ', '.'),'text', 30, 'inactive', '',TRUE); 
     }
      /**
      * Inserir
@@ -362,7 +362,7 @@ class predial_SalaoControle extends predial_Controle
      * @version 0.4.2
      */
     public function agendamento_inserir() {
-        if (!isset($_POST["selectreservas"]) || !isset($_POST["valor"]) || !isset($_POST["data_inicial"]) || !isset($_POST["data_final"])) return false;
+        if (!isset($_POST["selectreservas"]) || !isset($_POST["valor"]) || !isset($_POST["data_inicial"]) || !isset($_POST["data_final"])) return FALSE;
         
         $reservaid = (int) \Framework\App\Conexao::anti_injection($_POST["selectreservas"]);
         $valor = \Framework\App\Conexao::anti_injection($_POST["valor"]);
@@ -373,15 +373,15 @@ class predial_SalaoControle extends predial_Controle
         $reserva = $this->_Modelo->retorna_reserva($reservaid);
 
         // Captura Valor
-        $diaspercorridos = Data_CalculaDiferenca($data_inicial,$data_final)*24;
-        $valor = $this->recalcula_valor_aluguel($reserva['valor1'],$reserva['valor2'],$reserva['valor3'], $diaspercorridos);
+        $diaspercorridos = Data_CalculaDiferenca($data_inicial, $data_final)*24;
+        $valor = $this->recalcula_valor_aluguel($reserva['valor1'], $reserva['valor2'], $reserva['valor3'], $diaspercorridos);
         // Atualiza datas para formato americano
         $data_inicial = data_brasil_eua($data_inicial);
         $data_final   = data_brasil_eua($data_final);
         
         // inseri e mostra mensagem
-        $sucesso =  $this->_Modelo->agendamento_inserir($reservaid,$data_inicial,$data_final,$valor);
-        if ($sucesso===true) {
+        $sucesso =  $this->_Modelo->agendamento_inserir($reservaid, $data_inicial, $data_final, $valor);
+        if ($sucesso === TRUE) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Inserção bem sucedida'),
@@ -394,7 +394,7 @@ class predial_SalaoControle extends predial_Controle
                 "mgs_secundaria" => __('Erro')
             );
         }
-        $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens); 
+        $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens); 
         
         // fecha popup e atualiza dados
         $this->_Visual->Javascript_Executar('$(\'#popup\').dialog( "close" );');

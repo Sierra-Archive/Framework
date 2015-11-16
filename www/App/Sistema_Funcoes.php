@@ -20,7 +20,7 @@ Class Sistema_Funcoes {
     public static function Redirect($url)
     {
         // acrescenta url 
-        if ( strpos($url, URL_PATH)!==false && strpos($url, 'www.')===false && strpos($url, 'http://')===false) {
+        if ( strpos($url, URL_PATH) !== FALSE && strpos($url, 'www.') === FALSE && strpos($url, 'http://') === FALSE) {
             $url = URL_PATH.$url;
         }
         
@@ -28,15 +28,15 @@ Class Sistema_Funcoes {
         if (LAYOULT_IMPRIMIR==='AJAX') {
             $Registro = Registro::getInstacia();
             $params = Array('Url'=>$url,'Tempo'=>10);
-            if ($Registro->_Visual===false) {
+            if ($Registro->_Visual === FALSE) {
                 $Registro->_Visual = new \Framework\App\Visual();
             }
-            $Registro->_Visual->Json_IncluiTipo('Redirect',$params);
-            if (\Framework\App\Controle::$ligado===false) {
+            $Registro->_Visual->Json_IncluiTipo('Redirect', $params);
+            if (\Framework\App\Controle::$ligado === FALSE) {
                 $Registro->_Visual->renderizar();
                 \Framework\App\Controle::Tema_Travar();
             }
-            return true;
+            return TRUE;
         } else {
             header('Location: ' . $url);
         }
@@ -100,7 +100,7 @@ Class Sistema_Funcoes {
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public static function Letra_LinkDecode($texto,$inverso=false) {
+    public static function Letra_LinkDecode($texto, $inverso = FALSE) {
         $letras = Array(
             'À',
             'Á',
@@ -173,7 +173,7 @@ Class Sistema_Funcoes {
             '%C3%B4',
             '%C3%B5',
         );
-        if ($inverso===false) {
+        if ($inverso === FALSE) {
             $a = &$codigo;
             $b = &$letras;
         } else {
@@ -211,7 +211,7 @@ Class Sistema_Funcoes {
      * @version 0.4.2
      * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
-    public static function DirReplace($dir = false) {
+    public static function DirReplace($dir = FALSE) {
         if ($dir) {
             if (strpos($dir, '-')) {
                 $dir = str_replace(Array('-'), Array('/'), $dir);
@@ -220,7 +220,7 @@ Class Sistema_Funcoes {
             }
             return $dir;
         }
-        return false;
+        return FALSE;
     }
     /**
      * Faz uma Limpeza em uma URL
@@ -243,9 +243,9 @@ Class Sistema_Funcoes {
      */
     public static function Url_Secure($url) {
         if (strpos($url,'https://')===0) {
-            return true;
+            return TRUE;
         } else {
-            return false;
+            return FALSE;
         }
     }
     /**
@@ -259,7 +259,7 @@ Class Sistema_Funcoes {
      * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
     public static function VersionPHP($versao) {
-        if (strnatcmp(phpversion(),$versao) >= 0) return TRUE;
+        if (strnatcmp(phpversion(), $versao) >= 0) return TRUE;
         else                                        return FALSE;
     }
     /**
@@ -288,7 +288,7 @@ Class Sistema_Funcoes {
             }
             return $objetos2;
         }
-        return false;
+        return FALSE;
     }
     /**
      * Verifica se um Modulo é permitido ou nao no sistema
@@ -298,19 +298,19 @@ Class Sistema_Funcoes {
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public static function Perm_Modulos($modulo,$submodulo=false) {
-        if ($submodulo=='' || !isset($submodulo)) $submodulo = false;
+    public static function Perm_Modulos($modulo, $submodulo = FALSE) {
+        if ($submodulo=='' || !isset($submodulo)) $submodulo = FALSE;
         if (!file_exists(MOD_PATH.$modulo.DS.$modulo.'_Controle.php')) {
-            return false;
+            return FALSE;
         }
-        if ($submodulo!==false && !file_exists(MOD_PATH.$modulo.DS.$modulo.'_'.$submodulo.'C.php')) {
-            return false;
+        if ($submodulo !== FALSE && !file_exists(MOD_PATH.$modulo.DS.$modulo.'_'.$submodulo.'C.php')) {
+            return FALSE;
         }
         // Verifica se Modulo é permitido
         if ($modulo!='_Sistema' && function_exists('config_modulos') && !array_key_exists($modulo,config_modulos())) {
-            return false;
+            return FALSE;
         } else {
-            return true;
+            return TRUE;
         }
     }
     /**
@@ -324,9 +324,9 @@ Class Sistema_Funcoes {
      * @version 0.4.2
      * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
-    public static function Form_Senha_Blindar($senha,$protecao_extra = false,$datetime = false) {
+    public static function Form_Senha_Blindar($senha, $protecao_extra = FALSE, $datetime = FALSE) {
         if ($protecao_extra) {
-            if ($datetime===false) $datetime = time();
+            if ($datetime === FALSE) $datetime = time();
             // Já que Existe um Super Banco de Dados na Internet, que processa
             // ŧodos os MD5 e SHA1, e arruma senha que funcionem através de 
             // engenharia reversa. Então Aqui a gente Dificulta e muito esse tipo
@@ -375,7 +375,7 @@ Class Sistema_Funcoes {
      * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
     static public function Seguranca_Gerar_Token() {
-        return md5(uniqid(rand(), true));
+        return md5(uniqid(rand(), TRUE));
     }
     
     /********************************
@@ -416,11 +416,11 @@ Class Sistema_Funcoes {
     public static function Control_Layoult_Valida_Cep($cep) {
         // verifica o resultado
         if (preg_match("/^[0-9]{5}-[0-9]{3}$/", trim($cep))==1) {
-            return true;
+            return TRUE;
         }
         else
         {    
-            return false;
+            return FALSE;
         }
     }
 
@@ -492,16 +492,16 @@ Class Sistema_Funcoes {
      */
     public static function Tranf_Otimizado_Byte($float) {
         $tamanho = (float) $float;
-        if (strpos($float, 'TB')!==false) {
+        if (strpos($float, 'TB') !== FALSE) {
             return $tamanho*1099511627776;
         }
-        if (strpos($float, 'GB')!==false) {
+        if (strpos($float, 'GB') !== FALSE) {
             return $tamanho*1073741824;
         }
-        if (strpos($float, 'MB')!==false) {
+        if (strpos($float, 'MB') !== FALSE) {
             return $tamanho*1048576;
         }
-        if (strpos($float, 'KB')!==false) {
+        if (strpos($float, 'KB') !== FALSE) {
             return $tamanho*1024;
         }
         return $tamanho;
@@ -515,7 +515,7 @@ Class Sistema_Funcoes {
      * @version 0.4.2
      * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
-    public static function Tranf_Segundo_Tempo($tamanho,$termina_em='minutos') {
+    public static function Tranf_Segundo_Tempo($tamanho, $termina_em='minutos') {
         $tamanho = (int) $tamanho;
         $valor_final = '';
         $espaço = '';
@@ -576,43 +576,43 @@ Class Sistema_Funcoes {
     public static function Tranf_Tempo_Segundo($float) {
         $float = strtolower($float);
         $valor_final = 0;
-        if (strpos($float, 'anos')!==false) {
-            $float_quebrado = \explode('anos',$float);
+        if (strpos($float, 'anos') !== FALSE) {
+            $float_quebrado = \explode('anos', $float);
             $float = $float_quebrado[1];
             $valor_final += ((float) $float_quebrado[0])*31556926;
         }
-        if (strpos($float, 'ano')!==false) {
-            $float_quebrado = \explode('ano',$float);
+        if (strpos($float, 'ano') !== FALSE) {
+            $float_quebrado = \explode('ano', $float);
             $float = $float_quebrado[1];
             $valor_final += ((float) $float_quebrado[0])*31556926;
         }
-        if (strpos($float, 'dias')!==false) {
-            $float_quebrado = \explode('dias',$float);
+        if (strpos($float, 'dias') !== FALSE) {
+            $float_quebrado = \explode('dias', $float);
             $float = $float_quebrado[1];
             $valor_final += ((float) $float_quebrado[0])*86400;
         }
-        if (strpos($float, 'dia')!==false) {
-            $float_quebrado = \explode('dia',$float);
+        if (strpos($float, 'dia') !== FALSE) {
+            $float_quebrado = \explode('dia', $float);
             $float = $float_quebrado[1];
             $valor_final += ((float) $float_quebrado[0])*86400;
         }
-        if (strpos($float, 'horas')!==false) {
-            $float_quebrado = \explode('horas',$float);
+        if (strpos($float, 'horas') !== FALSE) {
+            $float_quebrado = \explode('horas', $float);
             $float = $float_quebrado[1];
             $valor_final += ((float) $float_quebrado[0])*3600;
         }
-        if (strpos($float, 'hora')!==false) {
-            $float_quebrado = \explode('hora',$float);
+        if (strpos($float, 'hora') !== FALSE) {
+            $float_quebrado = \explode('hora', $float);
             $float = $float_quebrado[1];
             $valor_final += ((float) $float_quebrado[0])*3600;
         }
-        if (strpos($float, 'minutos')!==false) {
-            $float_quebrado = \explode('minutos',$float);
+        if (strpos($float, 'minutos') !== FALSE) {
+            $float_quebrado = \explode('minutos', $float);
             $float = $float_quebrado[1];
             $valor_final += ((float) $float_quebrado[0])*60;
         }
-        if (strpos($float, 'minuto')!==false) {
-            $float_quebrado = \explode('minuto',$float);
+        if (strpos($float, 'minuto') !== FALSE) {
+            $float_quebrado = \explode('minuto', $float);
             $float = $float_quebrado[1];
             $valor_final += ((float) $float_quebrado[0])*60;
         }
@@ -628,7 +628,7 @@ Class Sistema_Funcoes {
      * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
     public static function Tranf_Url_Https($url) {
-        return str_replace('http://', 'https://',$url);
+        return str_replace('http://', 'https://', $url);
     }
     /**
      * Transforma Distancia para Otimizado
@@ -659,7 +659,7 @@ Class Sistema_Funcoes {
      */
     public static function Tranf_Otimizado_Distancia($float) {
         $tamanho = (float) $float;
-        if (strpos($float, 'km')!==false) {
+        if (strpos($float, 'km') !== FALSE) {
             return $tamanho*1000;
         }
         return $tamanho;
@@ -696,7 +696,7 @@ Class Sistema_Funcoes {
      * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
     public static function Tranf_Float_Real($float) {
-        if (strpos($float, 'R$') !== false) {
+        if (strpos($float, 'R$') !== FALSE) {
             return $float;
         }
         return (((float) $float)>=0
@@ -735,7 +735,7 @@ Class Sistema_Funcoes {
      * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
     public static function Tranf_Float_Porc($float) {
-        if (strpos($float, ' %') !== false) {
+        if (strpos($float, ' %') !== FALSE) {
             return $float;
         }
         $porc = number_format((float) $float*100, 2, ', ', '.');
@@ -758,15 +758,15 @@ Class Sistema_Funcoes {
      * @version 0.4.2
      * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
-    public static function Modelo_Data_Soma($data,$ano=0,$mes=0,$dia=0,$hora=0,$minuto=0,$segundos=0) {
+    public static function Modelo_Data_Soma($data, $ano=0, $mes=0, $dia=0, $hora=0, $minuto=0, $segundos=0) {
         $data = trim($data);
         // Formato: 23/09/2013 00:00:00 ou 2013-09-23 00:00:00
         if (strlen($data)==19) {
             $partes = explode(' ', $data);        
-            if (strpos($partes[1], '-')!==false) {
+            if (strpos($partes[1], '-') !== FALSE) {
                 $horas = explode('-', $partes[1]);
             
-                if (strpos($partes[0], '/')!==false) {
+                if (strpos($partes[0], '/') !== FALSE) {
                     $tipo = 'd/m/Y H-i-s';
                     $dias = explode('/', $partes[0]);  
 
@@ -806,7 +806,7 @@ Class Sistema_Funcoes {
             } else {
                 $horas = explode(':', $partes[1]);
                 
-                if (strpos($partes[0], '/')!==false) {
+                if (strpos($partes[0], '/') !== FALSE) {
                     $tipo = 'd/m/Y H:i:s';
                     $dias = explode('/', $partes[0]);  
 
@@ -848,9 +848,9 @@ Class Sistema_Funcoes {
         // Formato: 23/09/13 | 21:13 ou 13-09-23 | 21:13
         if (strlen($data)==16) {
             $partes = explode(' | ', $data);        
-            if (strpos($partes[1], '-')!==false) {
+            if (strpos($partes[1], '-') !== FALSE) {
                 $horas = explode('-', $partes[1]);
-                if (strpos($partes[0], '/')!==false) {
+                if (strpos($partes[0], '/') !== FALSE) {
                     $tipo = 'd/m/y | H-i';
                     $dias = explode('/', $partes[0]);
                     
@@ -889,7 +889,7 @@ Class Sistema_Funcoes {
                 }
             } else {
                 $horas = explode(':', $partes[1]);
-                if (strpos($partes[0], '/')!==false) {
+                if (strpos($partes[0], '/') !== FALSE) {
                     $tipo = 'd/m/y | H:i';
                     $dias = explode('/', $partes[0]);
                     
@@ -928,7 +928,7 @@ Class Sistema_Funcoes {
         } else 
         // Formato: 23/09/2013 ou 2013-09-23
         if (strlen($data)==10) {
-            if (strpos($data, '/')!==false) {
+            if (strpos($data, '/') !== FALSE) {
                 $tipo = 'd/m/Y';
                 $partes = explode('/', $data);
                     
@@ -1012,23 +1012,23 @@ Class Sistema_Funcoes {
         if ($info=='mes_nome') {
             return (string) jdmonthname($data,0);
         } else if ($info=='mes') {
-            $data = explode('/',$data);
+            $data = explode('/', $data);
             return (int) $data[1];
         } else if ($info=='semana') {
-            $data = explode('/',$data);
-            return (int) date("w", mktime(0,0,0,$data[1],$data[0],$data[2]) );
+            $data = explode('/', $data);
+            return (int) date("w", mktime(0,0,0, $data[1], $data[0], $data[2]) );
         } else if ($info=='semana_do_ano') {
-          $data = explode('/',$data);
-          return (int) intval( date('z', mktime(0,0,0,$data[1],$data[0],$data[2]) ) / 7 ) + 1;
+          $data = explode('/', $data);
+          return (int) intval( date('z', mktime(0,0,0, $data[1], $data[0], $data[2]) ) / 7 ) + 1;
         } else if ($info=='dia') {
-            $data = explode('/',$data);
+            $data = explode('/', $data);
             return (int) $data[0];
         } else if ($info=='ano') {
-            $data = explode('/',$data);
+            $data = explode('/', $data);
             return (int) $data[2];
         }
         
-        return false;
+        return FALSE;
     }
     /**
      * Geradores

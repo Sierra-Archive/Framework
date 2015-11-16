@@ -37,13 +37,13 @@ class comercio_certificado_ProdutoControle extends comercio_certificado_Controle
             Array(
                 'span'      =>      5,
                 'conteudo'  =>  Array(Array(
-                    'div_ext'   =>      false,
+                    'div_ext'   =>      FALSE,
                     'title_id'  =>      'produtosmodificar_titulo',
                     'title'     =>      'Cadastrar Produto',
-                    'html'      =>      '<span id="produtosmodificar">'.$this->Produtos_Add(true).'</span>',
+                    'html'      =>      '<span id="produtosmodificar">'.$this->Produtos_Add(TRUE).'</span>',
                 ),Array(
                     'div_ext'   =>      ' style="display:none;"  id="produtos_auditorias"',
-                    'title_id'  =>      false,
+                    'title_id'  =>      FALSE,
                     'title'     =>      'Auditoria',
                     'html'      =>      '<span id="produtos_auditoriascorpo">Produtos</span>',
                 ),),
@@ -51,8 +51,8 @@ class comercio_certificado_ProdutoControle extends comercio_certificado_Controle
             Array(
                 'span'      =>      7,
                 'conteudo'  =>  Array(Array(
-                    'div_ext'   =>      false,
-                    'title_id'  =>      false,
+                    'div_ext'   =>      FALSE,
+                    'title_id'  =>      FALSE,
                     'title'     =>      'Produtos Cadastrados',
                     'html'      =>      $this->Produtos(),
                 ),),
@@ -71,17 +71,17 @@ class comercio_certificado_ProdutoControle extends comercio_certificado_Controle
         $i = 0;
         $html = '<span id="prodaddmostrar" style="display: none;"><a title="Adicionar Produto" class="btn btn-success lajax explicar-titulo" data-acao="" href="'.URL_PATH.'comercio_certificado/Produto/Produtos_Add">Adicionar novo Produto</a><div class="space15"></div></span>';
         $produto = $this->_Modelo->db->Sql_Select('Comercio_Produto');
-        if ($produto!==false && !empty($produto)) {
+        if ($produto !== FALSE && !empty($produto)) {
             if (is_object($produto)) $produto = Array(0=>$produto);
             reset($produto);
             foreach ($produto as $indice=>&$valor) {
                 $tabela['Sigla'][$i]     = $valor->sigla;
                 $tabela['Descrição'][$i] = $valor->obs;
-                $tabela['Funções'][$i]   = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Produto'        ,'comercio_certificado/Produto/Produtos_Edit/'.$valor->id.'/'    ,'')).
+                $tabela['Funções'][$i]   = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Produto'        ,'comercio_certificado/Produto/Produtos_Edit/'.$valor->id.'/'    , '')).
                                            $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Produto'       ,'comercio_certificado/Produto/Produtos_Del/'.$valor->id.'/'     ,'Deseja realmente deletar esse Produto ?'));
                 ++$i;
             }
-            return $html.$this->_Visual->Show_Tabela_DataTable($tabela,'',false);
+            return $html.$this->_Visual->Show_Tabela_DataTable($tabela, '', FALSE);
         } else {
             $html .= '<center><b><font color="#FF0000" size="5">Nenhum Produto</font></b></center>';            
             return $html;
@@ -101,7 +101,7 @@ class comercio_certificado_ProdutoControle extends comercio_certificado_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Produtos_Add($direto=false) {
+    public function Produtos_Add($direto = FALSE) {
         // Carrega campos e retira os que nao precisam
         $campos = Comercio_Produto_DAO::Get_Colunas();
         self::Retirar_Nao_necessarios($campos);
@@ -109,7 +109,7 @@ class comercio_certificado_ProdutoControle extends comercio_certificado_Controle
         $form = new \Framework\Classes\Form('form_Sistema_Admin_Produtos', 'comercio_certificado/Produto/Produtos_Add2/', 'formajax');
         \Framework\App\Controle::Gerador_Formulario($campos, $form);
         $formulario = $form->retorna_form('Cadastrar');
-        if ($direto===true) {
+        if ($direto === TRUE) {
             return $formulario;
         } else {
             // Json
@@ -118,15 +118,15 @@ class comercio_certificado_ProdutoControle extends comercio_certificado_Controle
                 'js'        =>  '$("#produtos_auditorias").hide();',
                 'html'      =>  'Cadastrar Produto'
             );
-            $this->_Visual->Json_IncluiTipo('Conteudo',$conteudo);
+            $this->_Visual->Json_IncluiTipo('Conteudo', $conteudo);
             $conteudo = array(
                 'location'  =>  '#produtosmodificar',
                 'js'        =>  '$("#prodaddmostrar").hide();',
                 'html'      =>  $formulario
             );
-            $this->_Visual->Json_IncluiTipo('Conteudo',$conteudo);
+            $this->_Visual->Json_IncluiTipo('Conteudo', $conteudo);
             $this->_Visual->Json_Info_Update('Titulo', __('Cadastrar Produto'));
-            $this->_Visual->Json_Info_Update('Historico', false);
+            $this->_Visual->Json_Info_Update('Historico', FALSE);
         }
     }
     /**
@@ -154,23 +154,23 @@ class comercio_certificado_ProdutoControle extends comercio_certificado_Controle
             'js'        =>  '$("#produtos_auditorias").show();',
             'html'      =>  'Editar Produto (#'.$id.')'
         );
-        $this->_Visual->Json_IncluiTipo('Conteudo',$conteudo);
+        $this->_Visual->Json_IncluiTipo('Conteudo', $conteudo);
         $conteudo = array(
             'location'  =>  '#produtosmodificar',
             'js'        =>  '$("#prodaddmostrar").show();',
             'html'      =>  $formulario
         );
-        $this->_Visual->Json_IncluiTipo('Conteudo',$conteudo);
+        $this->_Visual->Json_IncluiTipo('Conteudo', $conteudo);
         // Auditorias
         $conteudo = array(
             'location'  =>  '#produtos_auditoriascorpo',
             'js'        =>  '$("#prodaddmostrar").show();',
             'html'      =>  $this->Auditorias($produto->id)
         );
-        $this->_Visual->Json_IncluiTipo('Conteudo',$conteudo);
+        $this->_Visual->Json_IncluiTipo('Conteudo', $conteudo);
         // Info Pagina
         $this->_Visual->Json_Info_Update('Titulo', 'Editar Produto (#'.$id.')');
-        $this->_Visual->Json_Info_Update('Historico', false);
+        $this->_Visual->Json_Info_Update('Historico', FALSE);
     }
     /**
      * 
@@ -191,7 +191,7 @@ class comercio_certificado_ProdutoControle extends comercio_certificado_Controle
         $this->Main();  
         
         // Mostra Mensagem de Sucesso
-        if ($sucesso===true) {
+        if ($sucesso === TRUE) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Inserção bem sucedida'),
@@ -204,10 +204,10 @@ class comercio_certificado_ProdutoControle extends comercio_certificado_Controle
                 "mgs_secundaria" => __('Erro')
             );
         }
-        $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens); 
+        $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens); 
         // Json
         $this->_Visual->Json_Info_Update('Titulo', __('Produto Adicionado com Sucesso'));  
-        $this->_Visual->Json_Info_Update('Historico', false);  
+        $this->_Visual->Json_Info_Update('Historico', FALSE);  
     }
     /**
      * 
@@ -226,7 +226,7 @@ class comercio_certificado_ProdutoControle extends comercio_certificado_Controle
         // Atualiza
         $this->Main();
         // Mensagem
-        if ($sucesso===true) {
+        if ($sucesso === TRUE) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Produto Alterado com Sucesso'),
@@ -239,12 +239,12 @@ class comercio_certificado_ProdutoControle extends comercio_certificado_Controle
                 "mgs_secundaria" => __('Erro')
             );
         }
-        $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens); 
+        $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens); 
         
         
         //Json
         $this->_Visual->Json_Info_Update('Titulo', __('Produto Editado com Sucesso'));  
-        $this->_Visual->Json_Info_Update('Historico', false);    
+        $this->_Visual->Json_Info_Update('Historico', FALSE);    
     }
     /**
      * 
@@ -261,7 +261,7 @@ class comercio_certificado_ProdutoControle extends comercio_certificado_Controle
         $produto = $this->_Modelo->db->Sql_Select('Comercio_Produto', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($produto);
         // Mensagem
-    	if ($sucesso===true) {
+    	if ($sucesso === TRUE) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
@@ -274,12 +274,12 @@ class comercio_certificado_ProdutoControle extends comercio_certificado_Controle
                 "mgs_secundaria" => __('Erro')
             );
         }
-        $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+        $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
         
         $this->Main();
         
         $this->_Visual->Json_Info_Update('Titulo', __('Produto deletado com Sucesso'));  
-        $this->_Visual->Json_Info_Update('Historico', false);  
+        $this->_Visual->Json_Info_Update('Historico', FALSE);  
     }
     public function Auditorias($produtos=0) {
         $auditorias = $this->_Modelo->db->Sql_Select(
@@ -290,7 +290,7 @@ class comercio_certificado_ProdutoControle extends comercio_certificado_Controle
         $botao = $this->_Visual->Tema_Elementos_Btn('Superior',Array('Add', '#', 'return inputadd();'));
         $formulario = new \Framework\Classes\Form('Formulario_de_Auditorias', 'comercio_certificado/Produto/Auditorias_Modificar/'.$produtos,'formajax');
         $formulario->addtexto('<span id="Formulario_de_Auditorias_Input">');
-        if ($auditorias===false) {
+        if ($auditorias === FALSE) {
             $input = \Framework\App\Sistema_Funcoes::HTML_min($formulario->Input_Novo('Auditoria 1', 'auditoria[]', 0, 'text', 11, '', '(Meses)'));
         } else {
             $i      = 0 ;
@@ -318,14 +318,14 @@ class comercio_certificado_ProdutoControle extends comercio_certificado_Controle
                             'var quant = 1+$("#Formulario_de_Auditorias_Input input").size();'.
                             'if (quant>=10) $("#produtos_auditorias > .widget-body > .clearfix").hide();'.
                             '$(\'#Formulario_de_Auditorias_Input\').append( \''.$input.'\' );'.
-                            'return false;'.
+                            'return FALSE;'.
                         ' }</script>';
         // Faz o Retorno
         return $html;
     }
     public function Auditorias_Modificar($produtos=0) {
         
-        if ($produtos==0) return false;
+        if ($produtos==0) return FALSE;
         #update
         $auditorias_post = \Framework\App\Conexao::anti_injection($_POST['auditoria']);
         $auditorias_post2 = Array();
@@ -347,7 +347,7 @@ class comercio_certificado_ProdutoControle extends comercio_certificado_Controle
         }
         $auditorias_post = $auditorias_post2;
         $j = 0;
-        if ($auditorias_sql!==false && !empty($auditorias_sql)) {
+        if ($auditorias_sql !== FALSE && !empty($auditorias_sql)) {
             foreach($auditorias_sql as $valor) {
                 if ($i>=$j) {
                     $auditorias_sql[$j]->meses = $auditorias_post[$j];
@@ -370,7 +370,7 @@ class comercio_certificado_ProdutoControle extends comercio_certificado_Controle
             ++$j;
         }
         // Mensagem
-    	if ($sucesso===true) {
+    	if ($sucesso === TRUE) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Modificado'),
@@ -383,17 +383,17 @@ class comercio_certificado_ProdutoControle extends comercio_certificado_Controle
                 "mgs_secundaria" => __('Erro')
             );
         }
-        $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+        $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
         // Auditorias
         $conteudo = array(
             'location'  =>  '#produtos_auditoriascorpo',
             'js'        =>  '$("#prodaddmostrar").show();',
             'html'      =>  $this->Auditorias($produtos)
         );
-        $this->_Visual->Json_IncluiTipo('Conteudo',$conteudo);
+        $this->_Visual->Json_IncluiTipo('Conteudo', $conteudo);
         // Titulo da Pagina
         $this->_Visual->Json_Info_Update('Titulo', __('Auditoria editada com Sucesso'));  
-        $this->_Visual->Json_Info_Update('Historico', false);  
+        $this->_Visual->Json_Info_Update('Historico', FALSE);  
     }
 }
 ?>

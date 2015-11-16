@@ -42,7 +42,7 @@ class Image extends Text
 
         $content = '';
         if (!$parentWriter->isPdf()) {
-            $imageData = $this->element->getImageStringData(true);
+            $imageData = $this->element->getImageStringData(TRUE);
             if ($imageData !== null) {
                 $styleWriter = new ImageStyleWriter($this->element->getStyle());
                 $style = $styleWriter->write();

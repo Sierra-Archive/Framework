@@ -46,7 +46,7 @@ abstract class AbstractElement
      *
      * @var bool
      */
-    protected $withoutP = false;
+    protected $withoutP = FALSE;
 
     /**
      * Write element
@@ -60,7 +60,7 @@ abstract class AbstractElement
      * @param \Framework\Classes\PhpWord\Element\AbstractElement $element
      * @param bool $withoutP
      */
-    public function __construct(AbstractWriter $parentWriter, Element $element, $withoutP = false)
+    public function __construct(AbstractWriter $parentWriter, Element $element, $withoutP = FALSE)
     {
         $this->parentWriter = $parentWriter;
         $this->element = $element;

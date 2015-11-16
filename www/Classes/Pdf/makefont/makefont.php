@@ -309,7 +309,7 @@ function MakeDefinitionFile($file, $type, $enc, $embed, $map, $info)
 	SaveToFile($file, $s, 't');
 }
 
-function MakeFont($fontfile, $enc='cp1252', $embed=true)
+function MakeFont($fontfile, $enc='cp1252', $embed= TRUE )
 {
 	// Generate a font definition file
 	if (get_magic_quotes_runtime())
@@ -367,7 +367,7 @@ if (PHP_SAPI=='cli')
 	if ($argc>=4)
 		$embed = ($argv[3]=='true' || $argv[3]=='1');
 	else
-		$embed = true;
+		$embed = TRUE;
 	MakeFont($fontfile, $enc, $embed);
 }
 ?>

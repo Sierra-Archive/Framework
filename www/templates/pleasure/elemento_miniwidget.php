@@ -10,7 +10,7 @@ $class = Array(
 );
 ?><div class="display-animation"><div class="row image-row margin-bottom-40"><?php $cont=0;
 foreach($params['widgets'] as $v) {
-    if ( isset($v['duplo']) && $v['duplo']===true) {
+    if ( isset($v['duplo']) && $v['duplo'] === TRUE) {
         $duplo=' double';
     } else {
         $duplo='';

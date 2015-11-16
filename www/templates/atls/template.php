@@ -164,7 +164,7 @@
             tabContainers.filter(this.hash).show();
             jQuery('div.tabs ul.tabNavigation a').removeClass('selected');
             jQuery(this).addClass('selected');
-            return false;
+            return FALSE;
         }).filter(':first').click();
     });
     </script>

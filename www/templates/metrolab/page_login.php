@@ -55,7 +55,7 @@
                     <input type="checkbox" id=""> <?php _e('Lembrar Login');?>
                 </div>
                 <div class="forgot-hint pull-right">
-                    <a id="forget-password" class="" href="<?php echo URL_PATH.SISTEMA_DIR_INT; ?>?sistema_esquecisenha=true"><?php _e('Esqueceu sua senha?');?></a>
+                    <a id="forget-password" class="" href="<?php echo URL_PATH.SISTEMA_DIR_INT; ?>?sistema_esquecisenha= TRUE"><?php _e('Esqueceu sua senha?');?></a>
                 </div>
             </div>
         </div>

@@ -16,15 +16,15 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
     public function __construct() {
         parent::__construct();
     }
-    protected function Endereco_Senha($true=true) {
-        if ($true===true) {
+    protected function Endereco_Senha($true= TRUE ) {
+        if ($true === TRUE) {
             $this->Tema_Endereco(__('Senhas'),'Desenvolvimento/Senha/Senhas');
         } else {
             $this->Tema_Endereco(__('Senhas'));
         }
     }
-    protected function Endereco_Senha_Todas($true=true) {
-        if ($true===true) {
+    protected function Endereco_Senha_Todas($true= TRUE ) {
+        if ($true === TRUE) {
             $this->Tema_Endereco(__('Todas as Senhas'),'Desenvolvimento/Senha/Senhas_Todas');
         } else {
             $this->Tema_Endereco(__('Todas as Senhas'));
@@ -42,15 +42,15 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
     * @version 0.4.2
     */
     public function Main() {
-        return false;
+        return FALSE;
     }
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Senhas($export=false) {
-        $this->Endereco_Senha(false);
+    public function Senhas($export = FALSE) {
+        $this->Endereco_Senha(FALSE);
         $i = 0;
         $perm_status = $this->_Registro->_Acl->Get_Permissao_Url('Desenvolvimento/Senha/Status');
         $perm_destaque = $this->_Registro->_Acl->Get_Permissao_Url('Desenvolvimento/Senha/Destaque');
@@ -67,7 +67,7 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
         
         
         $titulo = __('Listagem de Senhas');  //(<span id="DataTable_Contador">0</span>)
-        $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',10,Array("link"=>"Desenvolvimento/Senha/Senhas_Add",'icon'=>'add', 'nome'=>'Adicionar Senha'));
+        $this->_Visual->Bloco_Unico_CriaJanela($titulo, '',10,Array("link"=>"Desenvolvimento/Senha/Senhas_Add",'icon'=>'add', 'nome'=>'Adicionar Senha'));
         
         // Antigas
         $tabela = Array(
@@ -98,7 +98,7 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
         $formbt     = __('Salvar');
         $formlink   = 'Desenvolvimento/Senha/Senhas_Add2/';
         $campos = Desenvolvimento_Senha_DAO::Get_Colunas();
-        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos);
+        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1, $titulo2, $formlink, $formid, $formbt, $campos);
     }
     /**
      * 
@@ -114,7 +114,7 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = __('Senha cadastrada com sucesso.');
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
     }
     /**
      * 
@@ -130,9 +130,9 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
         $formid     = 'form_Sistema_AdminC_SenhaEdit';
         $formbt     = __('Alterar Senha');
         $formlink   = 'Desenvolvimento/Senha/Senhas_Edit2/'.$id;
-        $editar     = Array('Desenvolvimento_Senha',$id);
+        $editar     = Array('Desenvolvimento_Senha', $id);
         $campos = Desenvolvimento_Senha_DAO::Get_Colunas();
-        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos,$editar);
+        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1, $titulo2, $formlink, $formid, $formbt, $campos, $editar);
     }
     /**
      * 
@@ -143,12 +143,12 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
      */
     public function Senhas_Edit2($id) {
         $titulo     = __('Senha Editada com Sucesso');
-        $dao        = Array('Desenvolvimento_Senha',$id);
+        $dao        = Array('Desenvolvimento_Senha', $id);
         $funcao     = '$this->Senhas();';
         $sucesso1   = __('Senha Alterada com Sucesso.');
         $sucesso2   = __('Senha teve a alteração bem sucedida');
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);      
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);      
     }
     /**
      * 
@@ -165,7 +165,7 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
         $senha = $this->_Modelo->db->Sql_Select('Desenvolvimento_Senha', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($senha);
         // Mensagem
-    	if ($sucesso===true) {
+    	if ($sucesso === TRUE) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
@@ -178,12 +178,12 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
                 "mgs_secundaria" => __('Erro')
             );
         }
-        $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+        $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
         
         $this->Senhas();
         
         $this->_Visual->Json_Info_Update('Titulo', __('Senha deletada com Sucesso'));  
-        $this->_Visual->Json_Info_Update('Historico', false);  
+        $this->_Visual->Json_Info_Update('Historico', FALSE);  
     }
     
     
@@ -192,16 +192,16 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
      * @param int $id Chave Primária (Id do Registro)
      * @throws Exception
      */
-    public function Status($id=false) {
+    public function Status($id = FALSE) {
         
-        if ($id===false) {
-            return false;
+        if ($id === FALSE) {
+            return FALSE;
         }
         $id = (int) $id;
         $resultado = $this->_Modelo->db->Sql_Select('Desenvolvimento_Senha', Array('id'=>$id),1);
         
-        if ($resultado===false || !is_object($resultado)) {
-            return false;
+        if ($resultado === FALSE || !is_object($resultado)) {
+            return FALSE;
         }
         
         // troca Resutlado
@@ -224,7 +224,7 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
                 "mgs_principal"     => __('Sucesso'),
                 "mgs_secundaria"    => __('Status Alterado com Sucesso.')
             );
-            $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+            $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
             
             // Conteudo
             $conteudo = array(
@@ -232,16 +232,16 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
                 'js' => '',
                 'html' =>  self::Statuslabel($resultado)
             );
-            $this->_Visual->Json_IncluiTipo('Conteudo',$conteudo);
+            $this->_Visual->Json_IncluiTipo('Conteudo', $conteudo);
         } else {
             $mensagens = array(
                 "tipo"              => 'erro',
                 "mgs_principal"     => __('Erro'),
                 "mgs_secundaria"    => __('Ocorreu um Erro.')
             );
-            $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+            $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
         }
-        $this->_Visual->Json_Info_Update('Historico', false);  
+        $this->_Visual->Json_Info_Update('Historico', FALSE);  
     }
     /**
      * 
@@ -249,7 +249,7 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
      * @param type $link
      * @return string
      */
-    public static function Statuslabel($objeto,$link=true) {
+    public static function Statuslabel($objeto, $link= TRUE ) {
         $status = $objeto->status;
         $id = $objeto->id;
         if ($status=='0') {
@@ -261,7 +261,7 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
             $nometipo = __('Em Uso');
         }
         $html = '<span class="badge badge-'.$tipo.'">'.$nometipo.'</span>';
-        if ($link===true && \Framework\App\Registro::getInstacia()->_Acl->Get_Permissao_Url('Desenvolvimento/Senha/Status')!==false) {
+        if ($link === TRUE && \Framework\App\Registro::getInstacia()->_Acl->Get_Permissao_Url('Desenvolvimento/Senha/Status') !== FALSE) {
             $html = '<a href="'.URL_PATH.'Desenvolvimento/Senha/Status/'.$id.'" border="1" class="lajax explicar-titulo" title="'.$nometipo.'" data-acao="" data-confirma="Deseja Realmente alterar o Status?">'.$html.'</a>';
         }
         return $html;
@@ -271,16 +271,16 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
      * @param int $id Chave Primária (Id do Registro)
      * @throws Exception
      */
-    public function Destaque($id=false) {
+    public function Destaque($id = FALSE) {
         
-        if ($id===false) {
-            return false;
+        if ($id === FALSE) {
+            return FALSE;
         }
         $id = (int) $id;
         $resultado = $this->_Modelo->db->Sql_Select('Desenvolvimento_Senha', Array('id'=>$id),1);
         
-        if ($resultado===false || !is_object($resultado)) {
-            return false;
+        if ($resultado === FALSE || !is_object($resultado)) {
+            return FALSE;
         }
         
         // troca Resutlado
@@ -297,22 +297,22 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
                 "mgs_principal"     => __('Sucesso'),
                 "mgs_secundaria"    => __('Destaque Alterado com Sucesso.')
             );
-            $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+            $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
             $conteudo = array(
                 'location' => '.destaque'.$resultado->id,
                 'js' => '',
                 'html' =>  self::Destaquelabel($resultado)
             );
-            $this->_Visual->Json_IncluiTipo('Conteudo',$conteudo);
+            $this->_Visual->Json_IncluiTipo('Conteudo', $conteudo);
         } else {
             $mensagens = array(
                 "tipo"              => 'erro',
                 "mgs_principal"     => __('Erro'),
                 "mgs_secundaria"    => __('Ocorreu um Erro.')
             );
-            $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+            $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
         }
-        $this->_Visual->Json_Info_Update('Historico', false);  
+        $this->_Visual->Json_Info_Update('Historico', FALSE);  
     }
     /**
      * 
@@ -320,7 +320,7 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
      * @param type $link
      * @return string
      */
-    public static function Destaquelabel($objeto,$link=true) {
+    public static function Destaquelabel($objeto, $link= TRUE ) {
         $destaque = $objeto->destaque;
         $id = $objeto->id;
         if ($destaque=='0') {
@@ -331,7 +331,7 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
             $nometipo = __('Destaque');
         }
         $html = '<span class="badge badge-'.$tipo.'">'.$nometipo.'</span>';
-        if ($link===true && \Framework\App\Registro::getInstacia()->_Acl->Get_Permissao_Url('Desenvolvimento/Senha/Destaque')!==false) {
+        if ($link === TRUE && \Framework\App\Registro::getInstacia()->_Acl->Get_Permissao_Url('Desenvolvimento/Senha/Destaque') !== FALSE) {
             $html = '<a href="'.URL_PATH.'Desenvolvimento/Senha/Destaque/'.$id.'" border="1" class="lajax explicar-titulo" title="'.$nometipo.'" data-acao="" data-confirma="Deseja Realmente alterar o Destaque?">'.$html.'</a>';
         }
         return $html;
@@ -352,19 +352,19 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
             $tabela['Destaque'][$i]     = '<span class="destaque'.$valor->id.'">'.self::Destaquelabel($valor).'</span>';
             $tabela['Status'][$i]       = '<span class="status'.$valor->id.'">'.self::Statuslabel($valor).'</span>';
             $tabela['Adicionada em'][$i]=   $valor->log_date_add;
-            $tabela['Funções'][$i]      =   $Visual->Tema_Elementos_Btn('Editar'          ,Array('Editar Senha'        ,'Desenvolvimento/Senha/Senhas_Todas_Edit/'.$valor->id.'/'    ,'')).
+            $tabela['Funções'][$i]      =   $Visual->Tema_Elementos_Btn('Editar'          ,Array('Editar Senha'        ,'Desenvolvimento/Senha/Senhas_Todas_Edit/'.$valor->id.'/'    , '')).
                                             $Visual->Tema_Elementos_Btn('Deletar'         ,Array('Deletar Senha'       ,'Desenvolvimento/Senha/Senhas_Todas_Del/'.$valor->id.'/'     ,'Deseja realmente deletar essa Senha ?'));
             ++$i;
         }
-        return Array($tabela,$i);
+        return Array($tabela, $i);
     }
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Senhas_Todas($export=false) {
-        $this->Endereco_Senha_Todas(false);
+    public function Senhas_Todas($export = FALSE) {
+        $this->Endereco_Senha_Todas(FALSE);
         $i = 0;
         $perm_status = $this->_Registro->_Acl->Get_Permissao_Url('Desenvolvimento/Senha/Status');
         $perm_destaque = $this->_Registro->_Acl->Get_Permissao_Url('Desenvolvimento/Senha/Destaque');
@@ -380,7 +380,7 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
         $this->_Visual->Show_Tabela_DataTable_Massiva($tabela,'Desenvolvimento/Senha/Senhas_Todas');
         
         $titulo = __('Listagem de Todas as Senhas');  //(<span id="DataTable_Contador">0</span>)
-        $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',10,Array("link"=>"Desenvolvimento/Senha/Senhas_Todas_Add",'icon'=>'add', 'nome'=>'Adicionar Senha'));
+        $this->_Visual->Bloco_Unico_CriaJanela($titulo, '',10,Array("link"=>"Desenvolvimento/Senha/Senhas_Todas_Add",'icon'=>'add', 'nome'=>'Adicionar Senha'));
         
         // Antigas
         $tabela = Array(
@@ -411,7 +411,7 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
         $formbt     = __('Salvar');
         $formlink   = 'Desenvolvimento/Senha/Senhas_Todas_Add2/';
         $campos = Desenvolvimento_Senha_DAO::Get_Colunas();
-        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos);
+        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1, $titulo2, $formlink, $formid, $formbt, $campos);
     }
     /**
      * 
@@ -427,7 +427,7 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = __('Senha cadastrada com sucesso.');
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
     }
     /**
      * 
@@ -443,9 +443,9 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
         $formid     = 'form_Sistema_AdminC_SenhaEdit';
         $formbt     = __('Alterar Senha');
         $formlink   = 'Desenvolvimento/Senha/Senhas_Todas_Edit2/'.$id;
-        $editar     = Array('Desenvolvimento_Senha',$id);
+        $editar     = Array('Desenvolvimento_Senha', $id);
         $campos = Desenvolvimento_Senha_DAO::Get_Colunas();
-        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos,$editar);
+        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1, $titulo2, $formlink, $formid, $formbt, $campos, $editar);
     }
     /**
      * 
@@ -456,12 +456,12 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
      */
     public function Senhas_Todas_Edit2($id) {
         $titulo     = __('Senha Editada com Sucesso');
-        $dao        = Array('Desenvolvimento_Senha',$id);
+        $dao        = Array('Desenvolvimento_Senha', $id);
         $funcao     = '$this->Senhas_Todas();';
         $sucesso1   = __('Senha Alterada com Sucesso.');
         $sucesso2   = __('Senha teve a alteração bem sucedida');
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);      
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);      
     }
     /**
      * 
@@ -478,7 +478,7 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
         $senha = $this->_Modelo->db->Sql_Select('Desenvolvimento_Senha', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($senha);
         // Mensagem
-    	if ($sucesso===true) {
+    	if ($sucesso === TRUE) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
@@ -491,12 +491,12 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
                 "mgs_secundaria" => __('Erro')
             );
         }
-        $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+        $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
         
         $this->Senhas_Todas();
         
         $this->_Visual->Json_Info_Update('Titulo', __('Senha deletada com Sucesso'));  
-        $this->_Visual->Json_Info_Update('Historico', false);  
+        $this->_Visual->Json_Info_Update('Historico', FALSE);  
     }
     
     
@@ -505,16 +505,16 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
      * @param int $id Chave Primária (Id do Registro)
      * @throws Exception
      */
-    public function Status_Todas($id=false) {
+    public function Status_Todas($id = FALSE) {
         
-        if ($id===false) {
-            return false;
+        if ($id === FALSE) {
+            return FALSE;
         }
         $id = (int) $id;
         $resultado = $this->_Modelo->db->Sql_Select('Desenvolvimento_Senha', Array('id'=>$id),1);
         
-        if ($resultado===false || !is_object($resultado)) {
-            return false;
+        if ($resultado === FALSE || !is_object($resultado)) {
+            return FALSE;
         }
         
         // troca Resutlado
@@ -537,22 +537,22 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
                 "mgs_principal"     => __('Sucesso'),
                 "mgs_secundaria"    => __('Status Alterado com Sucesso.')
             );
-            $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+            $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
             $conteudo = array(
                 'location' => '.status'.$resultado->id,
                 'js' => '',
                 'html' =>  self::Statuslabel_Todas($resultado)
             );
-            $this->_Visual->Json_IncluiTipo('Conteudo',$conteudo);
+            $this->_Visual->Json_IncluiTipo('Conteudo', $conteudo);
         } else {
             $mensagens = array(
                 "tipo"              => 'erro',
                 "mgs_principal"     => __('Erro'),
                 "mgs_secundaria"    => __('Ocorreu um Erro.')
             );
-            $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+            $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
         }
-        $this->_Visual->Json_Info_Update('Historico', false);  
+        $this->_Visual->Json_Info_Update('Historico', FALSE);  
     }
     /**
      * 
@@ -560,7 +560,7 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
      * @param type $link
      * @return string
      */
-    public static function Statuslabel_Todas($objeto,$link=true) {
+    public static function Statuslabel_Todas($objeto, $link= TRUE ) {
         $status = $objeto->status;
         $id = $objeto->id;
         if ($status=='0') {
@@ -572,7 +572,7 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
             $nometipo = __('Em Uso');
         }
         $html = '<span class="badge badge-'.$tipo.'">'.$nometipo.'</span>';
-        if ($link===true && \Framework\App\Registro::getInstacia()->_Acl->Get_Permissao_Url('Desenvolvimento/Senha/Status')!==false) {
+        if ($link === TRUE && \Framework\App\Registro::getInstacia()->_Acl->Get_Permissao_Url('Desenvolvimento/Senha/Status') !== FALSE) {
             $html = '<a href="'.URL_PATH.'Desenvolvimento/Senha/Status_Todas/'.$id.'" border="1" class="lajax explicar-titulo" title="'.$nometipo.'" data-acao="" data-confirma="Deseja Realmente alterar o Status?">'.$html.'</a>';
         }
         return $html;
@@ -582,16 +582,16 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
      * @param int $id Chave Primária (Id do Registro)
      * @throws Exception
      */
-    public function Destaque_Todas($id=false) {
+    public function Destaque_Todas($id = FALSE) {
         
-        if ($id===false) {
-            return false;
+        if ($id === FALSE) {
+            return FALSE;
         }
         $id = (int) $id;
         $resultado = $this->_Modelo->db->Sql_Select('Desenvolvimento_Senha', Array('id'=>$id),1);
         
-        if ($resultado===false || !is_object($resultado)) {
-            return false;
+        if ($resultado === FALSE || !is_object($resultado)) {
+            return FALSE;
         }
         
         // troca Resutlado
@@ -608,22 +608,22 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
                 "mgs_principal"     => __('Sucesso'),
                 "mgs_secundaria"    => __('Destaque Alterado com Sucesso.')
             );
-            $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+            $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
             $conteudo = array(
                 'location' => '.destaque'.$resultado->id,
                 'js' => '',
                 'html' =>  self::Destaquelabel_Todas($resultado)
             );
-            $this->_Visual->Json_IncluiTipo('Conteudo',$conteudo);
+            $this->_Visual->Json_IncluiTipo('Conteudo', $conteudo);
         } else {
             $mensagens = array(
                 "tipo"              => 'erro',
                 "mgs_principal"     => __('Erro'),
                 "mgs_secundaria"    => __('Ocorreu um Erro.')
             );
-            $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+            $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
         }
-        $this->_Visual->Json_Info_Update('Historico', false);  
+        $this->_Visual->Json_Info_Update('Historico', FALSE);  
     }
     /**
      * 
@@ -631,7 +631,7 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
      * @param type $link
      * @return string
      */
-    public static function Destaquelabel_Todas($objeto,$link=true) {
+    public static function Destaquelabel_Todas($objeto, $link= TRUE ) {
         $destaque = $objeto->destaque;
         $id = $objeto->id;
         if ($destaque=='0') {
@@ -642,7 +642,7 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
             $nometipo = __('Destaque');
         }
         $html = '<span class="badge badge-'.$tipo.'">'.$nometipo.'</span>';
-        if ($link===true && \Framework\App\Registro::getInstacia()->_Acl->Get_Permissao_Url('Desenvolvimento/Senha/Destaque')!==false) {
+        if ($link === TRUE && \Framework\App\Registro::getInstacia()->_Acl->Get_Permissao_Url('Desenvolvimento/Senha/Destaque') !== FALSE) {
             $html = '<a href="'.URL_PATH.'Desenvolvimento/Senha/Destaque_Todas/'.$id.'" border="1" class="lajax explicar-titulo" title="'.$nometipo.'" data-acao="" data-confirma="Deseja Realmente alterar o Destaque?">'.$html.'</a>';
         }
         return $html;

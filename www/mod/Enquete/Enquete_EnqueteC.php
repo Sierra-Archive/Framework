@@ -19,12 +19,12 @@ class Enquete_EnqueteControle extends Enquete_Controle
     */
     public function Main() {
         \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'Enquete/Enquete/Enquetes');
-        return false;
+        return FALSE;
     }
-    static function Endereco_Enquete($true=true) {
+    static function Endereco_Enquete($true= TRUE ) {
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
-        if ($true===true) {
+        if ($true === TRUE) {
             $_Controle->Tema_Endereco(__('Enquetes'),'Enquete/Enquete/Enquetes');
         } else {
             $_Controle->Tema_Endereco(__('Enquetes'));
@@ -46,7 +46,7 @@ class Enquete_EnqueteControle extends Enquete_Controle
             $resp_votos = $Modelo->db->Sql_Select('Enquete_Voto',Array(
                 'enquete'   =>  $valor->id
             ));
-            if ($resp_votos===false) {
+            if ($resp_votos === FALSE) {
                 $resp_votos_res = 0;
             } else if (is_object($resp_votos)) {
                 $resp_votos_res = 1;
@@ -58,20 +58,20 @@ class Enquete_EnqueteControle extends Enquete_Controle
             $tabela['Nº de Votos'][$i]      = ($resp_votos_res==1)?$resp_votos_res.' Voto':$resp_votos_res.' Votos';
             $tabela['Observação'][$i]       = $valor->obs;
             $tabela['Data Registrado'][$i]  = $valor->log_date_add;
-            $tabela['Funções'][$i]          = $Visual->Tema_Elementos_Btn('Visualizar' ,Array('Visualizar Enquete'    ,'Enquete/Resposta/Respostas/'.$valor->id.'/'    ,''),$perm_view).
-                                              $Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Enquete'        ,'Enquete/Enquete/Enquetes_Edit/'.$valor->id.'/'    ,''),$perm_editar).
-                                              $Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Enquete'       ,'Enquete/Enquete/Enquetes_Del/'.$valor->id.'/'     ,'Deseja realmente deletar essa Enquete ?'),$perm_del);
+            $tabela['Funções'][$i]          = $Visual->Tema_Elementos_Btn('Visualizar' ,Array('Visualizar Enquete'    ,'Enquete/Resposta/Respostas/'.$valor->id.'/'    , ''), $perm_view).
+                                              $Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Enquete'        ,'Enquete/Enquete/Enquetes_Edit/'.$valor->id.'/'    , ''), $perm_editar).
+                                              $Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Enquete'       ,'Enquete/Enquete/Enquetes_Del/'.$valor->id.'/'     ,'Deseja realmente deletar essa Enquete ?'), $perm_del);
             ++$i;
         }
-        return Array($tabela,$i);
+        return Array($tabela, $i);
     }
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Enquetes($export=false) {
-        self::Endereco_Enquete(false);
+    public function Enquetes($export = FALSE) {
+        self::Endereco_Enquete(FALSE);
         $i = 0;
         // Botao Add
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
@@ -89,10 +89,10 @@ class Enquete_EnqueteControle extends Enquete_Controle
         )));
         // Conexao
         $enquetes = $this->_Modelo->db->Sql_Select('Enquete');
-        if ($enquetes!==false && !empty($enquetes)) {
-            list($tabela,$i) = self::Enquetes_Tabela($enquetes);
-            if ($export!==false) {
-                self::Export_Todos($export,$tabela, 'Enquetes');
+        if ($enquetes !== FALSE && !empty($enquetes)) {
+            list($tabela, $i) = self::Enquetes_Tabela($enquetes);
+            if ($export !== FALSE) {
+                self::Export_Todos($export, $tabela, 'Enquetes');
             } else {
                 $this->_Visual->Show_Tabela_DataTable(
                     $tabela,     // Array Com a Tabela
@@ -130,7 +130,7 @@ class Enquete_EnqueteControle extends Enquete_Controle
         $formbt     = __('Salvar');
         $formlink   = 'Enquete/Enquete/Enquetes_Add2/';
         $campos = Enquete_DAO::Get_Colunas();
-        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos);
+        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1, $titulo2, $formlink, $formid, $formbt, $campos);
     }
     /**
      * 
@@ -145,7 +145,7 @@ class Enquete_EnqueteControle extends Enquete_Controle
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = __('Enquete cadastrada com sucesso.');
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
     }
     /**
      * 
@@ -161,9 +161,9 @@ class Enquete_EnqueteControle extends Enquete_Controle
         $formid     = 'form_Sistema_AdminC_EnqueteEdit';
         $formbt     = __('Alterar Enquete');
         $formlink   = 'Enquete/Enquete/Enquetes_Edit2/'.$id;
-        $editar     = Array('Enquete',$id);
+        $editar     = Array('Enquete', $id);
         $campos = Enquete_DAO::Get_Colunas();
-        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos,$editar);
+        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1, $titulo2, $formlink, $formid, $formbt, $campos, $editar);
     }
     /**
      * 
@@ -174,12 +174,12 @@ class Enquete_EnqueteControle extends Enquete_Controle
      */
     public function Enquetes_Edit2($id) {
         $titulo     = __('Enquete Editada com Sucesso');
-        $dao        = Array('Enquete',$id);
+        $dao        = Array('Enquete', $id);
         $funcao     = '$this->Enquetes();';
         $sucesso1   = __('Enquete Alterada com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);   
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);   
     }
     /**
      * 
@@ -196,7 +196,7 @@ class Enquete_EnqueteControle extends Enquete_Controle
         $enquete = $this->_Modelo->db->Sql_Select('Enquete', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($enquete);
         // Mensagem
-    	if ($sucesso===true) {
+    	if ($sucesso === TRUE) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
@@ -209,12 +209,12 @@ class Enquete_EnqueteControle extends Enquete_Controle
                 "mgs_secundaria" => __('Erro')
             );
         }
-        $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+        $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
         
         $this->Enquetes();
         
         $this->_Visual->Json_Info_Update('Titulo', __('Enquete deletada com Sucesso'));
-        $this->_Visual->Json_Info_Update('Historico', false);
+        $this->_Visual->Json_Info_Update('Historico', FALSE);
     }
 }
 ?>

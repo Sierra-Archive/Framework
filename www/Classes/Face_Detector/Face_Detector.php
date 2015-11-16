@@ -161,7 +161,7 @@ class Face_Detector {
         $vnorm =  ( $ii2[($y+$w)*$iiw + $x + $w] + $ii2[$y*$iiw+$x] - $ii2[($y+$w)*$iiw+$x] - $ii2[$y*$iiw+$x+$w]  )*$inv_area - ($mean*$mean);    
         $vnorm = $vnorm > 1 ? sqrt($vnorm) : 1;
  
-        $passed = true;
+        $passed = TRUE;
         for($i_stage = 0; $i_stage < count($this->detection_data); $i_stage++ ) {
             $stage = $this->detection_data[$i_stage];  
             $trees = $stage[0];  
@@ -214,10 +214,10 @@ class Face_Detector {
                 $stage_sum += $tree_sum;
             }
             if ( $stage_sum < $stage_thresh ) {
-                return false;
+                return FALSE;
             }
         }
-        return true;
+        return TRUE;
     }
 }
 

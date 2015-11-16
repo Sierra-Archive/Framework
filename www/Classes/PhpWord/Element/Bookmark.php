@@ -37,7 +37,7 @@ class Bookmark extends AbstractElement
      *
      * @var bool
      */
-    protected $collectionRelation = true;
+    protected $collectionRelation = TRUE;
 
     /**
      * Create a new Bookmark Element

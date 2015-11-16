@@ -20,7 +20,7 @@ class categoria_categoriaModelo extends categoria_Modelo
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Categorias_alterar($id,$nome,$parent,$tipo) {
+    public function Categorias_alterar($id, $nome, $parent, $tipo) {
         global $config;
         $this->db->query('UPDATE '.MYSQL_CAT.' SET parent=\''.$parent.'\', nome=\''.$nome.'\' WHERE deletado!=1 AND servidor=\''.SRV_NAME_SQL.'\' && id='.$id);
         // Insere tipo caso este tenha sido trocado
@@ -75,7 +75,7 @@ class categoria_categoriaModelo extends categoria_Modelo
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Categorias_inserir($nome,$parent,$tipo,$subtab='') {
+    public function Categorias_inserir($nome, $parent, $tipo, $subtab='') {
         global $config;
         $this->db->query('INSERT INTO '.MYSQL_CAT.' (servidor,parent,nome,subtab,log_date_add,user) VALUES (\''.SRV_NAME_SQL.'\',\''.$parent.'\',\''.$nome.'\',\''.$subtab.'\',\''.APP_HORA.'\',\''.\Framework\App\Acl::Usuario_GetID_Static().'\')');
         $sql = $this->db->query('SELECT id FROM '.MYSQL_CAT.' WHERE deletado!=1 AND servidor=\''.SRV_NAME_SQL.'\' && parent=\''.$parent.'\' AND log_date_add=\''.APP_HORA.'\' AND nome=\''.$nome.'\' AND subtab=\''.$subtab.'\' ORDER BY id DESC LIMIT 1');

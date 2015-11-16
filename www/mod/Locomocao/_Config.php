@@ -5,7 +5,7 @@ $config_Modulo = function () {
         'Descrição'                 =>  'Módulo Criado para o Calculo de Locomocao assim como cadastro de motoboys e entrega por emcomenda.',
         'System_Require'            =>  '3.1.0',
         'Version'                   =>  '3.1.1',
-        'Dependencias'              =>  false,
+        'Dependencias'              =>  FALSE,
     );
 };
 $config_Menu = function () {
@@ -90,7 +90,7 @@ $config_Funcional = function () {
             'Nome'                  => 'Locomocao -> Avancado',
             'Desc'                  => __('Se Carrega ou nao Permissao em Avancado e se aparece no menu'),
             'chave'                 => 'Locomocao_Avancado',
-            'Valor'                 => TRUE,  // false, true, ou array com os grupos que pode
+            'Valor'                 => TRUE,  // FALSE, true, ou array com os grupos que pode
         ),*/
     );
 };

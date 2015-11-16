@@ -119,7 +119,7 @@ class PagSeguroInstallmentService
                     break;
 
             }
-            return (isset($installments) ? $installments : false);
+            return (isset($installments) ? $installments : FALSE);
 
         } catch (PagSeguroServiceException $e) {
             throw $e;

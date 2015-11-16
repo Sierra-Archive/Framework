@@ -5,7 +5,7 @@ $config_Modulo = function () {
         'Descrição'                 =>  '',
         'System_Require'            =>  '3.1.0',
         'Version'                   =>  '3.1.1',
-        'Dependencias'              =>  false,
+        'Dependencias'              =>  FALSE,
     );
 };
 $config_Menu = function () {
@@ -305,26 +305,26 @@ $config_Funcional = function () {
             'Nome'                  => 'Grupos -> Se Mostra Opções de Grupos',
             'Desc'                  => __('Se Mostra Opções de Grupos'),
             'chave'                 => 'usuario_grupo',
-            'Valor'                 => FALSE,  // false, true, ou array com os grupos que pode
+            'Valor'                 => FALSE,  // FALSE, true, ou array com os grupos que pode
         ),
         'usuario_usuarios_showconfig'  => Array(
             'Nome'                  => 'Usuarios -> Ocultar Grupos',
             'Desc'                  => __('Se verdadeiro mostra so os clientes ativos'),
             'chave'                 => 'usuario_usuarios_showconfig',
-            'Valor'                 => FALSE,  // false, true, ou array com os grupos que pode
+            'Valor'                 => FALSE,  // FALSE, true, ou array com os grupos que pode
         ),
         'usuario_Grupo_Mostrar'  => Array(
             'Nome'                  => 'Usuarios -> Ocultar Grupos',
             'Desc'                  => __('Aonde mostra adição de grupos'),
             'chave'                 => 'usuario_Grupo_Mostrar',
-            'Valor'                 => TRUE,  // false, true, ou array com os grupos que pode
+            'Valor'                 => TRUE,  // FALSE, true, ou array com os grupos que pode
         ),
         // Grupos que tem login/senha
         'usuario_Login'  => Array(
             'Nome'                  => 'Usuarios -> Login',
             'Desc'                  => __('Se possue login em Usuarios'),
             'chave'                 => 'usuario_Login',
-            'Valor'                 => TRUE,  // false, true, ou array com as categorias de grupos que podem
+            'Valor'                 => TRUE,  // FALSE, true, ou array com as categorias de grupos que podem
         ),
         'usuario_Anexo'  => Array(
             'Nome'                  => 'Usuarios -> Anexo',
@@ -354,7 +354,7 @@ $config_Funcional = function () {
             'Nome'                  => 'Usuarios -> Foto',
             'Desc'                  => __('Se possue Foto em Usuarios'),
             'chave'                 => 'usuario_Admin_Foto',
-            'Valor'                 => TRUE,  // false, true, ou array com os grupos que pode
+            'Valor'                 => TRUE,  // FALSE, true, ou array com os grupos que pode
         ),
         'usuario_Admin_Email'  => Array(
             'Nome'                  => 'Usuarios -> Email',

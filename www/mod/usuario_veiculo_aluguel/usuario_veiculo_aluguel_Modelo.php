@@ -15,7 +15,7 @@ class usuario_veiculo_aluguel_Modelo extends \Framework\App\Modelo
     public function __construct() {
         parent::__construct();
     } 
-    static function Financeiro(&$Modelo,$usuarioid,$motivoid) {
+    static function Financeiro(&$Modelo, $usuarioid, $motivoid) {
         $usuarioid = (int) $usuarioid;
         if (!isset($usuarioid) || !is_int($usuarioid) || $usuarioid==0) return 0;
         $motivoid = (int) $motivoid;
@@ -37,7 +37,7 @@ class usuario_veiculo_aluguel_Modelo extends \Framework\App\Modelo
             if ($campo->grupo!=0) {
                 eval('$novovalor = round((0.5*$valor/100), 2);');
                 $dt_vencimento = date("Y-m-d", time() + (FINANCEIRO_DIASVENCIMENTO * 86400));
-                Financeiro_Modelo::MovInt_Inserir($Modelo,$campo->id,$novovalor,1,'usuario_rede',$usuarioid,$dt_vencimento);                
+                Financeiro_Modelo::MovInt_Inserir($Modelo, $campo->id, $novovalor,1,'usuario_rede', $usuarioid, $dt_vencimento);                
             }
             ++$i;
         }
@@ -52,7 +52,7 @@ class usuario_veiculo_aluguel_Modelo extends \Framework\App\Modelo
                 if ($campo->grupo!=0) {
                     eval('$novovalor = round((0.5*$valor/100), 2);');
                     $dt_vencimento = date("Y-m-d", time() + (FINANCEIRO_DIASVENCIMENTO * 86400));
-                    Financeiro_Modelo::MovInt_Inserir($Modelo,$campo->id,$novovalor,1,'usuario_rede',$usuarioid,$dt_vencimento);                
+                    Financeiro_Modelo::MovInt_Inserir($Modelo, $campo->id, $novovalor,1,'usuario_rede', $usuarioid, $dt_vencimento);                
                 }
                 ++$i;
             }
@@ -67,7 +67,7 @@ class usuario_veiculo_aluguel_Modelo extends \Framework\App\Modelo
                 if ($campo->grupo!=0) {
                     eval('$novovalor = round((0.5*$valor/100), 2);');
                     $dt_vencimento = date("Y-m-d", time() + (FINANCEIRO_DIASVENCIMENTO * 86400));
-                    Financeiro_Modelo::MovInt_Inserir($Modelo,$campo->id,$novovalor,1,'usuario_rede',$usuarioid,$dt_vencimento);                
+                    Financeiro_Modelo::MovInt_Inserir($Modelo, $campo->id, $novovalor,1,'usuario_rede', $usuarioid, $dt_vencimento);                
                 }
                 ++$i;
             }
@@ -86,7 +86,7 @@ class usuario_veiculo_aluguel_Modelo extends \Framework\App\Modelo
             $veiculo = $campo->MARCA.' '.$campo->modelo.' '.$campo->cc.'cc';
         }
         if ($i==0) return 'Erro';
-        return  Array('Aluguel',$veiculo);
+        return  Array('Aluguel', $veiculo);
     }
 }
 ?>

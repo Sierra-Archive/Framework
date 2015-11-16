@@ -12,7 +12,7 @@ class _Sistema_LoginControle extends _Sistema_Controle
                 "mgs_principal" => __('Erro ').$codigo,
                 "mgs_secundaria" => $this->_getError($codigo)
             );
-            $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+            $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
         } else {
             $this->_Visual->Blocar($this->_getError($codigo));
             $this->_Visual->Bloco_Maior_CriaJanela('Erro '.$codigo);
@@ -20,7 +20,7 @@ class _Sistema_LoginControle extends _Sistema_Controle
         //Carrega Json
         $this->_Visual->Json_Info_Update('Titulo', __('Erro ').$codigo);
     }
-    private function _getError($codigo = false) {
+    private function _getError($codigo = FALSE) {
         if ($codigo) {
             $codigo = (int) $codigo;
         } else {

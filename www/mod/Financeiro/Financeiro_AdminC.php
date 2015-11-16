@@ -120,7 +120,7 @@ class Financeiro_AdminControle extends Financeiro_Controle
         
     	$id = (int) $id;
     	$sucesso = $this->_Modelo->pagamentos_Del($id);
-    	if ($sucesso===true) {
+    	if ($sucesso === TRUE) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
@@ -133,7 +133,7 @@ class Financeiro_AdminControle extends Financeiro_Controle
                 "mgs_secundaria" => __('Erro')
             );
         }
-        $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+        $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
         
         $this->pagamentos_lista();
     }
@@ -203,11 +203,11 @@ class Financeiro_AdminControle extends Financeiro_Controle
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    static function financas_formcadastro(&$controle, &$Modelo, &$Visual,$user) {
+    static function financas_formcadastro(&$controle, &$Modelo, &$Visual, $user) {
         
        
         $form = new \Framework\Classes\Form('adminfinanceiroinserir', 'Financeiro/Admin/financas_inserir/', 'formajax');
-        $form->Input_Novo('user', 'user',$user,'hidden', false, 'obrigatorio'); 
+        $form->Input_Novo('user', 'user', $user,'hidden', FALSE, 'obrigatorio'); 
         $form->Input_Novo(__('Valor'),'valor', '', 'text', 30, 'obrigatorio'); 
 
         $form->Input_Novo(__('Observação'),'obs', '', 'text', 255);
@@ -216,11 +216,11 @@ class Financeiro_AdminControle extends Financeiro_Controle
 
         return $formulario;
     }
-    static function financas_formretirar(&$controle, &$Modelo, &$Visual,$user) {
+    static function financas_formretirar(&$controle, &$Modelo, &$Visual, $user) {
         
        
         $form = new \Framework\Classes\Form('adminfinanceiroinserir', 'Financeiro/Admin/financas_retirar/', 'formajax');
-        $form->Input_Novo('user', 'user',$user,'hidden', false, 'obrigatorio'); 
+        $form->Input_Novo('user', 'user', $user,'hidden', FALSE, 'obrigatorio'); 
         $form->Input_Novo(__('Valor'),'valor', '', 'text', 30, 'obrigatorio'); 
 
         $form->Input_Novo(__('Observação'),'obs', '', 'text', 255);
@@ -251,16 +251,16 @@ class Financeiro_AdminControle extends Financeiro_Controle
     */
     public function financas_inserir() {
         if (!isset($_POST["valor"]) || !isset($_POST["obs"]) || !isset($_POST["user"])) {
-            return false;
+            return FALSE;
         }
         
         //data_hora_brasil_eua()
         $valor = \Framework\App\Conexao::anti_injection($_POST["valor"]);
         $user = (int) $_POST["user"];
         $obs = \Framework\App\Conexao::anti_injection($_POST["obs"]);
-        $sucesso =  $this->_Modelo->MovExt_Inserir($user,$valor,$obs,1);
+        $sucesso =  $this->_Modelo->MovExt_Inserir($user, $valor, $obs,1);
         $this->Main();
-        if ($sucesso===true) {
+        if ($sucesso === TRUE) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Depositado com Sucesso'),
@@ -275,22 +275,22 @@ class Financeiro_AdminControle extends Financeiro_Controle
             );
             $this->_Visual->Json_Info_Update('Titulo', __('Erro ao Depositar'));
         }
-        $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens); 
+        $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens); 
         // ORGANIZA E MANDA CONTEUDO
         $this->_Visual->Json_Info_Update('Historico',0);    
     }
     public function financas_retirar() {
         if (!isset($_POST["valor"]) || !isset($_POST["user"]) || !isset($_POST["obs"])) {
-            return false;
+            return FALSE;
         }
         
         //data_hora_brasil_eua()
         $valor = \Framework\App\Conexao::anti_injection($_POST["valor"]);
         $user = (int) $_POST["user"];
         $obs = \Framework\App\Conexao::anti_injection($_POST["obs"]);
-        $sucesso =  $this->_Modelo->MovExt_Inserir($user,$valor,$obs,0);
+        $sucesso =  $this->_Modelo->MovExt_Inserir($user, $valor, $obs,0);
         $this->Main();
-        if ($sucesso===true) {
+        if ($sucesso === TRUE) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Retirado com Sucesso'),
@@ -305,7 +305,7 @@ class Financeiro_AdminControle extends Financeiro_Controle
             );
             $this->_Visual->Json_Info_Update('Titulo', __('Erro ao Retirar'));
         }
-        $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens); 
+        $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens); 
         // ORGANIZA E MANDA CONTEUDO
         $this->_Visual->Json_Info_Update('Historico',0);    
     }

@@ -6,12 +6,12 @@ class locais_locaisControle extends locais_Controle
         parent::__construct();
     }
     public function Main() {
-        return false;   
+        return FALSE;   
     }
-    static function Endereco_Local($true=true) {
+    static function Endereco_Local($true= TRUE ) {
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
-        if ($true===true) {
+        if ($true === TRUE) {
             $_Controle->Tema_Endereco(__('Locais'),'locais/locais/Locais');
         } else {
             $_Controle->Tema_Endereco(__('Locais'));
@@ -22,8 +22,8 @@ class locais_locaisControle extends locais_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Locais($export=false) {
-        self::Endereco_Local(false);
+    public function Locais($export = FALSE) {
+        self::Endereco_Local(FALSE);
         $i = 0;
         // Add BOtao
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
@@ -41,18 +41,18 @@ class locais_locaisControle extends locais_Controle
         )));
         // Query
         $setores = $this->_Modelo->db->Sql_Select('Local');
-        if ($setores!==false && !empty($setores)) {
+        if ($setores !== FALSE && !empty($setores)) {
             if (is_object($setores)) $setores = Array(0=>$setores);
             reset($setores);
             foreach ($setores as $indice=>&$valor) {
                 $tabela['Tipo de Local'][$i]             = $valor->categoria2;
                 $tabela['Nome'][$i]             = $valor->nome;
-                $tabela['Funções'][$i]          = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Local'        ,'locais/locais/Locais_Edit/'.$valor->id.'/'    ,'')).
+                $tabela['Funções'][$i]          = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Local'        ,'locais/locais/Locais_Edit/'.$valor->id.'/'    , '')).
                                                   $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Local'       ,'locais/locais/Locais_Del/'.$valor->id.'/'     ,'Deseja realmente deletar esse Local ?'));
                 ++$i;
             }
-            if ($export!==false) {
-                self::Export_Todos($export,$tabela, 'Locais');
+            if ($export !== FALSE) {
+                self::Export_Todos($export, $tabela, 'Locais');
             } else {
                 $this->_Visual->Show_Tabela_DataTable(
                     $tabela,     // Array Com a Tabela
@@ -82,7 +82,7 @@ class locais_locaisControle extends locais_Controle
      * @version 0.4.2
      */
     public function Locais_Add() {
-        self::Endereco_Local(true);
+        self::Endereco_Local(TRUE);
         // Carrega Config
         $titulo1    = __('Adicionar Local');
         $titulo2    = __('Salvar Local');
@@ -90,7 +90,7 @@ class locais_locaisControle extends locais_Controle
         $formbt     = __('Salvar');
         $formlink   = 'locais/locais/Locais_Add2/';
         $campos = Local_DAO::Get_Colunas();
-        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos);
+        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1, $titulo2, $formlink, $formid, $formbt, $campos);
     }
     /**
      * 
@@ -106,7 +106,7 @@ class locais_locaisControle extends locais_Controle
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = __('Local cadastrado com sucesso.');
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
     }
     /**
      * 
@@ -115,16 +115,16 @@ class locais_locaisControle extends locais_Controle
      * @version 0.4.2
      */
     public function Locais_Edit($id) {
-        self::Endereco_Local(true);
+        self::Endereco_Local(TRUE);
         // Carrega Config
         $titulo1    = 'Editar Local (#'.$id.')';
         $titulo2    = __('Alteração de Local');
         $formid     = 'form_Sistema_AdminC_LocalEdit';
         $formbt     = __('Alterar Local');
         $formlink   = 'locais/locais/Locais_Edit2/'.$id;
-        $editar     = Array('Local',$id);
+        $editar     = Array('Local', $id);
         $campos = Local_DAO::Get_Colunas();
-        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos,$editar);
+        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1, $titulo2, $formlink, $formid, $formbt, $campos, $editar);
     }
     /**
      * 
@@ -135,12 +135,12 @@ class locais_locaisControle extends locais_Controle
      */
     public function Locais_Edit2($id) {
         $titulo     = __('Local Editado com Sucesso');
-        $dao        = Array('Local',$id);
+        $dao        = Array('Local', $id);
         $funcao     = '$this->Locais();';
         $sucesso1   = __('Local Alterado com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);   
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);   
     }
     /**
      * 
@@ -157,7 +157,7 @@ class locais_locaisControle extends locais_Controle
         $setor = $this->_Modelo->db->Sql_Select('Local', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($setor);
         // Mensagem
-    	if ($sucesso===true) {
+    	if ($sucesso === TRUE) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
@@ -170,12 +170,12 @@ class locais_locaisControle extends locais_Controle
                 "mgs_secundaria" => __('Erro')
             );
         }
-        $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+        $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
         
         $this->Locais();
         
         $this->_Visual->Json_Info_Update('Titulo', __('Local deletado com Sucesso'));  
-        $this->_Visual->Json_Info_Update('Historico', false);  
+        $this->_Visual->Json_Info_Update('Historico', FALSE);  
     }
 }
 ?>

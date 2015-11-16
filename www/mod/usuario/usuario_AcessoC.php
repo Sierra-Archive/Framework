@@ -40,21 +40,21 @@ class usuario_AcessoControle extends usuario_Controle
         $this->_Visual->Json_Info_Update('Titulo', __('Permissões de Usuários'));         
     }
     public function Listar_Clientesnao() {
-        $this->Usuarios(Array(CFG_TEC_CAT_ID_CLIENTES,'Usuários'),false,100,true);
+        $this->Usuarios(Array(CFG_TEC_CAT_ID_CLIENTES,'Usuários'), FALSE,100,TRUE);
         // ORGANIZA E MANDA CONTEUDO
         $this->_Visual->Json_Info_Update('Titulo', __('Permissões de Usuários'));         
     }
     
-    public function Usuarios($grupo=false,$ativado=false,$gravidade=0,$inverter=false) {
+    public function Usuarios($grupo = FALSE, $ativado = FALSE, $gravidade=0, $inverter = FALSE) {
         $i = 0;
-        if ((isset($tipo) && ($tipo)===false)) {
+        if ((isset($tipo) && ($tipo) === FALSE)) {
             $where = Array();
         } else {
             $where = Array();
         }
         // cria where de acordo com parametros
         
-        if ($grupo===false) {
+        if ($grupo === FALSE) {
             $categoria = 0;
             if ($inverter) {
                 $where = Array(
@@ -77,7 +77,7 @@ class usuario_AcessoControle extends usuario_Controle
             $sql_grupos = $this->_Modelo->db->Sql_Select('Sistema_Grupo',Array('categoria'=>$categoria));
             $grupos_id = Array();
             if (is_object($sql_grupos)) $sql_grupos = Array(0=>$sql_grupos);
-            if ($sql_grupos!==false && !empty($sql_grupos)) {
+            if ($sql_grupos !== FALSE && !empty($sql_grupos)) {
                 foreach ($sql_grupos as &$valor) {
                     $grupos_id[] = $valor->id;
                 }
@@ -104,21 +104,21 @@ class usuario_AcessoControle extends usuario_Controle
         }
         
         $linkextra = '';
-        if ($grupo!==false && $grupo[0]==CFG_TEC_CAT_ID_CLIENTES && $inverter===false) {
+        if ($grupo !== FALSE && $grupo[0]==CFG_TEC_CAT_ID_CLIENTES && $inverter === FALSE) {
             $linkextra = '/cliente';
         }
-        else if ($grupo!==false && $grupo[0]==CFG_TEC_CAT_ID_CLIENTES && $inverter===true) {
+        else if ($grupo !== FALSE && $grupo[0]==CFG_TEC_CAT_ID_CLIENTES && $inverter === TRUE) {
             $linkextra = '/naocliente';
         }
-        else if ($grupo!==false && $grupo[0]==CFG_TEC_CAT_ID_FUNCIONARIOS && $inverter===false) {
+        else if ($grupo !== FALSE && $grupo[0]==CFG_TEC_CAT_ID_FUNCIONARIOS && $inverter === FALSE) {
             $linkextra = '/funcionario';
         }
         
-        if ($ativado===false) unset($where['ativado']);
+        if ($ativado === FALSE) unset($where['ativado']);
         // Chama Usuarios
-        $usuarios = $this->_Modelo->db->Sql_Select('Usuario',$where);
+        $usuarios = $this->_Modelo->db->Sql_Select('Usuario', $where);
         if (is_object($usuarios)) $usuarios = Array(0=>$usuarios);
-        if ($usuarios!==false && !empty($usuarios)) {
+        if ($usuarios !== FALSE && !empty($usuarios)) {
             reset($usuarios);
             $perm_editar = $this->_Registro->_Acl->Get_Permissao_Url('usuario/Acesso/UsuariosAcesso_Edit');
             
@@ -142,12 +142,12 @@ class usuario_AcessoControle extends usuario_Controle
                 $permissoes = '';
                 if (!empty($acl)) {
                     foreach($acl as &$valor2) {
-                        if ($valor2['valor']===true) {
+                        if ($valor2['valor'] === TRUE) {
                             if ($permissoes!=='') {
                                 $permissoes .= ', ';
                             }
                             $permissoes .= $valor2['permissao'];
-                            if ($valor2['herdado']===true) {
+                            if ($valor2['herdado'] === TRUE) {
                                 $permissoes .= ' (Herdado)';
                             }
                         }
@@ -157,7 +157,7 @@ class usuario_AcessoControle extends usuario_Controle
                 }
                 $tabela['Acesso'][$i]    = $permissoes;
                 // Funcoes
-                $tabela['Funções'][$i]   = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Permissão do Usuario'        ,'usuario/Acesso/UsuariosAcesso_Edit/'.$valor->id.$linkextra    ,''),$perm_editar);
+                $tabela['Funções'][$i]   = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Permissão do Usuario'        ,'usuario/Acesso/UsuariosAcesso_Edit/'.$valor->id.$linkextra    , ''), $perm_editar);
                 ++$i;
             }
             $this->_Visual->Show_Tabela_DataTable($tabela);
@@ -166,7 +166,7 @@ class usuario_AcessoControle extends usuario_Controle
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Usuário</font></b></center>');
         }
         $titulo = __('Listagem de Permissões de Usuários').' ('.$i.')';
-        $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',60);
+        $this->_Visual->Bloco_Unico_CriaJanela($titulo, '',60);
         
         //Carrega Json
         $this->_Visual->Json_Info_Update('Titulo', __('Permissões de Usuarios'));
@@ -177,7 +177,7 @@ class usuario_AcessoControle extends usuario_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function UsuariosAcesso_Edit($id,$tipo='usuario') {
+    public function UsuariosAcesso_Edit($id, $tipo='usuario') {
         // Carrega Config
         $titulo1    = 'Editar Usuario (#'.(int) $id.')';
         $titulo2    = __('Alteração de Usuario');
@@ -187,7 +187,7 @@ class usuario_AcessoControle extends usuario_Controle
         $editar     = Array('Usuario',(int) $id);
         $campos = Usuario_DAO::Get_Colunas();
         self::DAO_Campos_Retira($campos, 'Permissões do Usuário', 1);
-        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos,$editar);   
+        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1, $titulo2, $formlink, $formid, $formbt, $campos, $editar);   
     }
     /**
      * 
@@ -196,14 +196,14 @@ class usuario_AcessoControle extends usuario_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function UsuariosAcesso_Edit2($id,$tipo='usuario') {
+    public function UsuariosAcesso_Edit2($id, $tipo='usuario') {
         if (isset($_POST["nome"])) {
             $nome   = \Framework\App\Conexao::anti_injection($_POST["nome"]);
         } else {
             $nome   = '';
         }
         $titulo     = __('Usuario Editado com Sucesso');
-        $dao        = Array('Usuario',$id);
+        $dao        = Array('Usuario', $id);
         if ($tipo=='naocliente') {
             $funcao     = '$this->Listar_Clientesnao();';
         } else /*if ($tipo=='usuario')*/{
@@ -212,7 +212,7 @@ class usuario_AcessoControle extends usuario_Controle
         $sucesso1   = __('Acesso Alterado com Sucesso.');
         $sucesso2   = $nome.' teve a alteração bem sucedida';
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);   
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);   
     }
 }
 ?>

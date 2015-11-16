@@ -108,28 +108,28 @@ class Paragraph extends Border
      *
      * @var bool
      */
-    private $widowControl = true;
+    private $widowControl = TRUE;
 
     /**
      * Keep paragraph with next paragraph
      *
      * @var bool
      */
-    private $keepNext = false;
+    private $keepNext = FALSE;
 
     /**
      * Keep all lines on one page
      *
      * @var bool
      */
-    private $keepLines = false;
+    private $keepLines = FALSE;
 
     /**
      * Start paragraph on next page
      *
      * @var bool
      */
-    private $pageBreakBefore = false;
+    private $pageBreakBefore = FALSE;
 
     /**
      * Numbering style name
@@ -492,7 +492,7 @@ class Paragraph extends Border
      * @param bool $value
      * @return self
      */
-    public function setWidowControl($value = true)
+    public function setWidowControl($value = TRUE)
     {
         $this->widowControl = $this->setBoolVal($value, $this->widowControl);
 
@@ -515,7 +515,7 @@ class Paragraph extends Border
      * @param bool $value
      * @return self
      */
-    public function setKeepNext($value = true)
+    public function setKeepNext($value = TRUE)
     {
         $this->keepNext = $this->setBoolVal($value, $this->keepNext);
 
@@ -538,7 +538,7 @@ class Paragraph extends Border
      * @param bool $value
      * @return self
      */
-    public function setKeepLines($value = true)
+    public function setKeepLines($value = TRUE)
     {
         $this->keepLines = $this->setBoolVal($value, $this->keepLines);
 
@@ -561,7 +561,7 @@ class Paragraph extends Border
      * @param bool $value
      * @return self
      */
-    public function setPageBreakBefore($value = true)
+    public function setPageBreakBefore($value = TRUE)
     {
         $this->pageBreakBefore = $this->setBoolVal($value, $this->pageBreakBefore);
 

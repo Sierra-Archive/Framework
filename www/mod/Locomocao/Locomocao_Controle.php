@@ -26,7 +26,7 @@ class Locomocao_Controle extends \Framework\App\Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public static function Retorna_Distancia($origem_pais,$origem_estado,$origem_cidade,$origem_bairro,$origem_endereco,$destino_pais,$destino_estado,$destino_cidade,$destino_bairro,$destino_endereco,$mode = 'driving',$language = 'pt-BR',$sensor = false) {
+    public static function Retorna_Distancia($origem_pais, $origem_estado, $origem_cidade, $origem_bairro, $origem_endereco, $destino_pais, $destino_estado, $destino_cidade, $destino_bairro, $destino_endereco, $mode = 'driving', $language = 'pt-BR', $sensor = FALSE) {
         
         // Trata Endereço
         if ($origem_endereco!=='') $origem_endereco .= ', ';
@@ -37,11 +37,11 @@ class Locomocao_Controle extends \Framework\App\Controle
         $destino = str_replace(' ', '+', $destino);
         
         // Pergunta ao Google
-        $xml = simplexml_load_file("http://maps.googleapis.com/maps/api/distancematrix/xml?origins=".$origem."&destinations=".$destino."&mode=".$mode."&language=".$language."&sensor=false");
+        $xml = simplexml_load_file("http://maps.googleapis.com/maps/api/distancematrix/xml?origins=".$origem."&destinations=".$destino."&mode=".$mode."&language=".$language."&sensor = FALSE");
 
         // Trata Resposta
         if ($xml->row->element->status!='OK') {
-            return false;
+            return FALSE;
         }
         return Array(
             'Tempo'=>Array(

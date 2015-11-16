@@ -138,10 +138,10 @@ class Minify_Source {
         foreach ($sources as $source) {
             if (null !== $source->minifier
                 || null !== $source->minifyOptions) {
-                return false;
+                return FALSE;
             }
         }
-        return true;
+        return TRUE;
     }
     
     /**

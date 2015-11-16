@@ -23,19 +23,19 @@ class advogado_Principal implements \Framework\PrincipalInterface
     static function Home(&$controle, &$Modelo, &$Visual) {
         return 0;
     }
-    static function Busca(&$controle, &$Modelo, &$Visual,$busca) {
-        return false;
+    static function Busca(&$controle, &$Modelo, &$Visual, $busca) {
+        return FALSE;
     }
     static function Config() {
-        return false;
+        return FALSE;
     }
 
-    public static function Estatistica($data_inicio, $data_final, $filtro = false) {
-        return false;
+    public static function Estatistica($data_inicio, $data_final, $filtro = FALSE) {
+        return FALSE;
     }
 
-    public static function Relatorio($data_inicio, $data_final, $filtro = false) {
-        return false;
+    public static function Relatorio($data_inicio, $data_final, $filtro = FALSE) {
+        return FALSE;
     }
 }
 ?>

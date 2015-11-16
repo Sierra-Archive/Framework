@@ -78,10 +78,10 @@ abstract class AbstractPart
      */
     protected function getXmlWriter()
     {
-        $useDiskCaching = false;
+        $useDiskCaching = FALSE;
         if (!is_null($this->parentWriter)) {
             if ($this->parentWriter->isUseDiskCaching()) {
-                $useDiskCaching = true;
+                $useDiskCaching = TRUE;
             }
         }
         if ($useDiskCaching) {

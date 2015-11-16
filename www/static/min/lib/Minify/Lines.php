@@ -50,7 +50,7 @@ class Minify_Lines {
         $numLines = count($lines);
         // determine left padding
         $padTo = strlen((string) $numLines); // e.g. 103 lines = 3 digits
-        $inComment = false;
+        $inComment = FALSE;
         $i = 0;
         $newLines = array();
         while (null !== ($line = array_shift($lines))) {
@@ -72,7 +72,7 @@ class Minify_Lines {
             Minify_CSS_UriRewriter::$debugText = '';
             $content = Minify_CSS_UriRewriter::rewrite(
                  $content
-                ,$options['currentDir']
+                , $options['currentDir']
                 ,isset($options['docRoot']) ? $options['docRoot'] : $_SERVER['DOCUMENT_ROOT']
                 ,isset($options['symlinks']) ? $options['symlinks'] : array()
             );

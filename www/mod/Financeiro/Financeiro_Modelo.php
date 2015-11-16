@@ -26,7 +26,7 @@ class Financeiro_Modelo extends \Framework\App\Modelo
      * @param type $dt_vencimento
      * @param type $dt_pago
      */
-    static function MovInt_Inserir(&$Modelo,$user,$valor,$positivo,$motivo,$motivoid,$dt_vencimento,$dt_pago='0000-00-00 00:00:00') {
+    static function MovInt_Inserir(&$Modelo, $user, $valor, $positivo, $motivo, $motivoid, $dt_vencimento, $dt_pago='0000-00-00 00:00:00') {
         GLOBAL $config;
         if ($positivo==1) {
             $Modelo->db->query('INSERT INTO '.MYSQL_FINANCEIRO_MOV_INT.' (saida_motivo,saida_motivoid,entrada_motivo,entrada_motivoid,valor,positivo,motivo,motivoid,dt_vencimento,log_date_add,dt_pago) VALUES (\'Servidor\',\''.SRV_NAME_SQL.'\',\'Usuario\',\''.$user.'\',\''.$valor.'\',\''.$positivo.'\',\''.$motivo.'\',\''.$motivoid.'\',\''.$dt_vencimento.'\',\''.APP_HORA.'\',\''.$dt_pago.'\')');
@@ -40,7 +40,7 @@ class Financeiro_Modelo extends \Framework\App\Modelo
      * @param type $usuarioid
      * @return int
      */
-    static function MovInt_VerificaDebito(&$Modelo,$usuarioid,$motivo) {
+    static function MovInt_VerificaDebito(&$Modelo, $usuarioid, $motivo) {
         $i=0;
         $sql = $Modelo->db->query('
                 SELECT motivoid
@@ -54,7 +54,7 @@ class Financeiro_Modelo extends \Framework\App\Modelo
     
     
     
-    public function MovFin_Carregar(&$array,$usuarioid) {
+    public function MovFin_Carregar(&$array, $usuarioid) {
         $i = 0;
         if ($usuarioid==0 || $usuarioid == NULL || $usuarioid == '') {
             return $i;
@@ -95,7 +95,7 @@ class Financeiro_Modelo extends \Framework\App\Modelo
         }
         return $i;
     }
-    public function Dividas_Carregar(&$array,$usuarioid) {
+    public function Dividas_Carregar(&$array, $usuarioid) {
         GLOBAL $config;
         $usuarioid = (int) $usuarioid;
         if ($usuarioid!=0 && $usuarioid!='' && isset($usuarioid) && is_int($usuarioid)) {
@@ -135,7 +135,7 @@ class Financeiro_Modelo extends \Framework\App\Modelo
                     $array[$i]['situacao'] = __('Pago');
                     if ($campo->dt_pago=='0000-00-00 00:00:00') {
                         $this->db->query('UPDATE '.MYSQL_FINANCEIRO_MOV_INT.' SET dt_pago=\''.APP_HORA.'\' WHERE id='.$campo->id);
-                        eval($campo->motivo.'Modelo::Financeiro($this,$usuarioid,$campo->motivoid);');
+                        eval($campo->motivo.'Modelo::Financeiro($this, $usuarioid, $campo->motivoid);');
                     }
                 } else {
                     $array[$i]['situacao'] = __('Pendente');
@@ -151,7 +151,7 @@ class Financeiro_Modelo extends \Framework\App\Modelo
             return 0;
         }
     }
-    static function Carregar_Saldo($Modelo,$usuarioid, $completo = false) {
+    static function Carregar_Saldo($Modelo, $usuarioid, $completo = FALSE) {
         // bloqueia se usuario nao existe
         if (!isset($usuarioid) || $usuarioid==0) {
           return 0;
@@ -187,7 +187,7 @@ class Financeiro_Modelo extends \Framework\App\Modelo
                 $valor = $valor - $campo->valor;
             }
         }
-        if ($completo===true) {
+        if ($completo === TRUE) {
             if ($valor<0) {
                 $valor = '<font color="red">- R$ '.number_format($valor*-1, 2, ', ', '.').'</font>';
             } else {
@@ -198,7 +198,7 @@ class Financeiro_Modelo extends \Framework\App\Modelo
             return $valor;
         }
     }
-    static function Financeiro(&$Modelo,$usuarioid,$motivoid) {
+    static function Financeiro(&$Modelo, $usuarioid, $motivoid) {
         return 1;
     }
     static function Financeiro_Motivo_Exibir($motivoid) {
@@ -210,7 +210,7 @@ class Financeiro_Modelo extends \Framework\App\Modelo
             ++$i;
         }
         if ($i==0) return 'Erro';
-        return Array('Transferencia',$nome);
+        return Array('Transferencia', $nome);
     }
     
     /**
@@ -218,7 +218,7 @@ class Financeiro_Modelo extends \Framework\App\Modelo
      */
     
     
-    public function Movimentacao_Interna($where=false,$tipo='Mini',$total=false,$endereco='') {
+    public function Movimentacao_Interna($where = FALSE, $tipo='Mini', $total = FALSE, $endereco='') {
         if ($where==='') {
             $where = 'pago = 1';
         }
@@ -263,9 +263,9 @@ class Financeiro_Modelo extends \Framework\App\Modelo
         
         //'#Vencimento';
         ++$numero;
-        if ($perm_editarvencimento===true) {
+        if ($perm_editarvencimento === TRUE) {
             $columns[] = array( 'db' => 'dt_vencimento', 'dt' => $numero,
-            'formatter' => function($d,$row) {
+            'formatter' => function($d, $row) {
                 return '<a href="'.URL_PATH.'Financeiro/Pagamento/Financeiros_VencimentoEdit/'.$row['id'].'" class="lajax" data-acao=""><span id="financeirovenc'.$row['id'].'">'.$d.'</span></a>';
             });
         } else {
@@ -289,8 +289,8 @@ class Financeiro_Modelo extends \Framework\App\Modelo
         });
 
         $function = '';
-        if ($perm_visualizar)      $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Visualizar\' ,Array(__(\'Visualizar\')    ,\'Financeiro/Pagamento/Financeiro_View/\'.$d.\'/\'    ,\'\'),true);';
-        if ($perm_naopagar)   $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Personalizado\'   ,Array(__(\'Desfazer Pagamento\')  ,\'Financeiro/Pagamento/Financeiros_NaoPagar/\'.$d.\'/'.$endereco.'/\'    ,\'\',\'download\',\'default\'),true);';
+        if ($perm_visualizar)      $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Visualizar\' ,Array(__(\'Visualizar\')    ,\'Financeiro/Pagamento/Financeiro_View/\'.$d.\'/\'    ,\'\'),TRUE);';
+        if ($perm_naopagar)   $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Personalizado\'   ,Array(__(\'Desfazer Pagamento\')  ,\'Financeiro/Pagamento/Financeiros_NaoPagar/\'.$d.\'/'.$endereco.'/\'    ,\'\',\'download\',\'default\'),TRUE);';
 
         
         ++$numero;
@@ -300,7 +300,7 @@ class Financeiro_Modelo extends \Framework\App\Modelo
         ); //'Funções';
                 
         echo json_encode(
-            \Framework\Classes\Datatable::complex( $_GET, Framework\App\Registro::getInstacia()->_Conexao, $tabela, $primaryKey, $columns, null,$where,'motivo')
+            \Framework\Classes\Datatable::complex( $_GET, Framework\App\Registro::getInstacia()->_Conexao, $tabela, $primaryKey, $columns, null, $where,'motivo')
         );
     }
 }

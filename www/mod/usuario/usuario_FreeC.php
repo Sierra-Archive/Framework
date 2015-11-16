@@ -69,11 +69,11 @@ class usuario_FreeControle extends usuario_Controle
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    public function usuarios_carregajanelaadd($tipocadastro=false) {
+    public function usuarios_carregajanelaadd($tipocadastro = FALSE) {
         // Carrega Config
         $formlink   = 'usuario/Free/usuarios_inserir/'.$tipocadastro;
         $campos = Usuario_DAO::Get_Colunas();
-        if ($tipocadastro===false) {
+        if ($tipocadastro === FALSE) {
             $titulo1    = __('Se tornar Usuário');
             $titulo2    = __('Salvar Usuário');
             $formid     = 'form_free_cadastroUsuario';
@@ -91,7 +91,7 @@ class usuario_FreeControle extends usuario_Controle
             $formid     = 'form_free_cadastroAssociado';
             $formbt     = __('Salvar Associado');
         }
-        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos);
+        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1, $titulo2, $formlink, $formid, $formbt, $campos);
     }
     /**
      * Inseri usuarios no Banco de dados
@@ -116,34 +116,34 @@ class usuario_FreeControle extends usuario_Controle
                 "mgs_principal" => __('Erro'),
                 "mgs_secundaria" => __('Preencha Login e Email')
             );
-            $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens); 
+            $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens); 
             $this->_Visual->Javascript_Executar('$("#email").css(\'border\', \'2px solid #FFAEB0\').focus();$("#login").css(\'border\', \'2px solid #FFAEB0\');');
         } else {
             $existeemail = usuario_Modelo::VerificaExtEmail($this->_Modelo,\Framework\App\Conexao::anti_injection($_POST['email']));
             $existelogin = usuario_Modelo::VerificaExtLogin($this->_Modelo,\Framework\App\Conexao::anti_injection($_POST['login']));
-            if (\Framework\App\Sistema_Funcoes::Control_Layoult_Valida_Email(\Framework\App\Conexao::anti_injection($_POST['email']))===false) {
+            if (\Framework\App\Sistema_Funcoes::Control_Layoult_Valida_Email(\Framework\App\Conexao::anti_injection($_POST['email'])) === FALSE) {
                 $mensagens = array(
                     "tipo" => 'erro',
                     "mgs_principal" => __('Erro'),
                     "mgs_secundaria" => __('Email Inválido')
                 );
-                $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens); 
+                $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens); 
                 $this->_Visual->Javascript_Executar('$("#email").css(\'border\', \'2px solid #FFAEB0\').focus();');
-             } else if ($existeemail===true) {
+             } else if ($existeemail === TRUE) {
                 $mensagens = array(
                     "tipo" => 'erro',
                     "mgs_principal" => __('Erro'),
                     "mgs_secundaria" => __('Email Ja Existe')
                 );
-                $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens); 
+                $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens); 
                 $this->_Visual->Javascript_Executar('$("#email").css(\'border\', \'2px solid #FFAEB0\').focus();');
-            } else if ($existelogin===true) {
+            } else if ($existelogin === TRUE) {
                 $mensagens = array(
                     "tipo" => 'erro',
                     "mgs_principal" => __('Erro'),
                     "mgs_secundaria" => __('Login ja existe')
                 );
-                $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens); 
+                $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens); 
                 $this->_Visual->Javascript_Executar('$("#login").css(\'border\', \'2px solid #FFAEB0\').focus();');
             } else {
                 $tipousuario = \Framework\App\Conexao::anti_injection($tipo);
@@ -158,7 +158,7 @@ class usuario_FreeControle extends usuario_Controle
                         "mgs_principal" => __('Erro'),
                         "mgs_secundaria" => __('Senha Inválida')
                     );
-                    $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+                    $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
                     return;
                 }
 
@@ -169,14 +169,14 @@ class usuario_FreeControle extends usuario_Controle
                 //insere usuario
                 $sucesso =  $this->_Modelo->usuarios_inserir();
 
-                if ($sucesso===true) {
+                if ($sucesso === TRUE) {
                     $mensagens = array(
                         "tipo" => 'sucesso',
                         "mgs_principal" => __('Inserção bem sucedida'),
                         "mgs_secundaria" => __('Voce foi cadastrado com sucesso.')
                     );
                     // loga usuario
-                    $this->_Modelo->Usuario_Logar(\Framework\App\Conexao::anti_injection($_POST['login']), \Framework\App\Sistema_Funcoes::Form_Senha_Blindar($_POST['senha'],true));  
+                    $this->_Modelo->Usuario_Logar(\Framework\App\Conexao::anti_injection($_POST['login']), \Framework\App\Sistema_Funcoes::Form_Senha_Blindar($_POST['senha'],TRUE));  
                     // boleto
                     // Mensagem Para nao Associados
                     $mgm = '<br>Seja bem vindo.'.
@@ -201,7 +201,7 @@ class usuario_FreeControle extends usuario_Controle
                     } else {
                         $this->Main();
                     }
-                    $email = Mail_Send($this->_Acl->logado_usuario->nome, $this->_Acl->logado_usuario->email,SISTEMA_EMAIL,SISTEMA_NOME.' - Cadastro Realizado com Sucesso',$mgm);
+                    $email = Mail_Send($this->_Acl->logado_usuario->nome, $this->_Acl->logado_usuario->email,SISTEMA_EMAIL,SISTEMA_NOME.' - Cadastro Realizado com Sucesso', $mgm);
                 } else {
                     $mensagens = array(
                         "tipo" => 'erro',
@@ -209,7 +209,7 @@ class usuario_FreeControle extends usuario_Controle
                         "mgs_secundaria" => __('Erro')
                     );
                 }
-                $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens); 
+                $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens); 
             }
         }
     }

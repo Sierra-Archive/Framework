@@ -27,10 +27,10 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
     * @version 0.4.2
     */
     public function Main() {
-        return false;
+        return FALSE;
     }
-    protected function Endereco_Modulo($true=true) {
-        if ($true===true) {
+    protected function Endereco_Modulo($true= TRUE ) {
+        if ($true === TRUE) {
             $this->Tema_Endereco(__('Modulos'),'Desenvolvimento/Framework/Modulos');
         } else {
             $this->Tema_Endereco(__('Modulos'));
@@ -47,19 +47,19 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
             $tabela['#Id'][$i]          =   '#'.$valor->id;
             $tabela['Submodulo'][$i]    =   $valor->submodulo2;
             $tabela['Nome'][$i]         =   $valor->nome;
-            $tabela['Funções'][$i]      =   $Visual->Tema_Elementos_Btn('Editar'          ,Array('Editar Modulo'        ,'Desenvolvimento/Framework/Modulos_Edit/'.$valor->id.'/'    ,'')).
+            $tabela['Funções'][$i]      =   $Visual->Tema_Elementos_Btn('Editar'          ,Array('Editar Modulo'        ,'Desenvolvimento/Framework/Modulos_Edit/'.$valor->id.'/'    , '')).
                                             $Visual->Tema_Elementos_Btn('Deletar'         ,Array('Deletar Modulo'       ,'Desenvolvimento/Framework/Modulos_Del/'.$valor->id.'/'     ,'Deseja realmente deletar esse Modulo ?'));
             ++$i;
         }
-        return Array($tabela,$i);
+        return Array($tabela, $i);
     }
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Modulos($export=false) {
-        $this->Endereco_Modulo(false);
+    public function Modulos($export = FALSE) {
+        $this->Endereco_Modulo(FALSE);
         $i = 0;
         // Add BOtao
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
@@ -77,10 +77,10 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
         )));
         // Query
         $modulos = $this->_Modelo->db->Sql_Select('Desenvolvimento_Framework_Modulo');
-        if ($modulos!==false && !empty($modulos)) {
-            list($tabela,$i) = self::Modulos_Tabela($modulos);
-            if ($export!==false) {
-                self::Export_Todos($export,$tabela, 'Modulos');
+        if ($modulos !== FALSE && !empty($modulos)) {
+            list($tabela, $i) = self::Modulos_Tabela($modulos);
+            if ($export !== FALSE) {
+                self::Export_Todos($export, $tabela, 'Modulos');
             } else {
                 $this->_Visual->Show_Tabela_DataTable(
                     $tabela,     // Array Com a Tabela
@@ -118,7 +118,7 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
         $formbt     = __('Salvar');
         $formlink   = 'Desenvolvimento/Modulo/Modulos_Add2/';
         $campos = Desenvolvimento_Framework_Modulo_DAO::Get_Colunas();
-        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos);
+        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1, $titulo2, $formlink, $formid, $formbt, $campos);
     }
     /**
      * 
@@ -134,7 +134,7 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = __('Modulo cadastrado com sucesso.');
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
     }
     /**
      * 
@@ -150,9 +150,9 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
         $formid     = 'form_Desenvolvimento_Framework_Modulos_Edit';
         $formbt     = __('Alterar Modulo');
         $formlink   = 'Desenvolvimento/Framework/Modulos_Edit2/'.$id;
-        $editar     = Array('Desenvolvimento_Framework_Modulo',$id);
+        $editar     = Array('Desenvolvimento_Framework_Modulo', $id);
         $campos = Desenvolvimento_Framework_Modulo_DAO::Get_Colunas();
-        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos,$editar);
+        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1, $titulo2, $formlink, $formid, $formbt, $campos, $editar);
     }
     /**
      * 
@@ -163,12 +163,12 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
      */
     public function Modulos_Edit2($id) {
         $titulo     = __('Modulo Editado com Sucesso');
-        $dao        = Array('Desenvolvimento_Framework_Modulo',$id);
+        $dao        = Array('Desenvolvimento_Framework_Modulo', $id);
         $funcao     = '$this->Modulos();';
         $sucesso1   = __('Modulo Alterado com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);      
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);      
     }
     /**
      * 
@@ -185,7 +185,7 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
         $modulos = $this->_Modelo->db->Sql_Select('Desenvolvimento_Framework_Modulo', '{sigla}id=\''.$id.'\'');
         $sucesso =  $this->_Modelo->db->Sql_Delete($modulos);
         // Mensagem
-    	if ($sucesso===true) {
+    	if ($sucesso === TRUE) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
@@ -198,17 +198,17 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
                 "mgs_secundaria" => __('Erro')
             );
         }
-        $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+        $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
         
         $this->Modulos();
         
         $this->_Visual->Json_Info_Update('Titulo', __('Modulo deletado com Sucesso'));  
-        $this->_Visual->Json_Info_Update('Historico', false);  
+        $this->_Visual->Json_Info_Update('Historico', FALSE);  
     }
     
     
-    protected function Endereco_Submodulo($true=true) {
-        if ($true===true) {
+    protected function Endereco_Submodulo($true= TRUE ) {
+        if ($true === TRUE) {
             $this->Tema_Endereco(__('Submodulos'),'Desenvolvimento/Framework/Submodulos');
         } else {
             $this->Tema_Endereco(__('Submodulos'));
@@ -225,19 +225,19 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
             $tabela['#Id'][$i]          =   '#'.$valor->id;
             $tabela['Modulo'][$i]       =   $valor->modulo2;
             $tabela['Nome'][$i]         =   $valor->nome;
-            $tabela['Funções'][$i]      =   $Visual->Tema_Elementos_Btn('Editar'          ,Array('Editar Submodulo'        ,'Desenvolvimento/Framework/Submodulos_Edit/'.$valor->id.'/'    ,'')).
+            $tabela['Funções'][$i]      =   $Visual->Tema_Elementos_Btn('Editar'          ,Array('Editar Submodulo'        ,'Desenvolvimento/Framework/Submodulos_Edit/'.$valor->id.'/'    , '')).
                                             $Visual->Tema_Elementos_Btn('Deletar'         ,Array('Deletar Submodulo'       ,'Desenvolvimento/Framework/Submodulos_Del/'.$valor->id.'/'     ,'Deseja realmente deletar esse Submodulo ?'));
             ++$i;
         }
-        return Array($tabela,$i);
+        return Array($tabela, $i);
     }
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Submodulos($export=false) {
-        $this->Endereco_Submodulo(false);
+    public function Submodulos($export = FALSE) {
+        $this->Endereco_Submodulo(FALSE);
         $i = 0;
         // Add BOtao
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
@@ -255,10 +255,10 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
         )));
         // Query
         $submodulos = $this->_Modelo->db->Sql_Select('Desenvolvimento_Framework_Submodulo');
-        if ($submodulos!==false && !empty($submodulos)) {
-            list($tabela,$i) = self::Submodulos_Tabela($submodulos);
-            if ($export!==false) {
-                self::Export_Todos($export,$tabela, 'Submodulos');
+        if ($submodulos !== FALSE && !empty($submodulos)) {
+            list($tabela, $i) = self::Submodulos_Tabela($submodulos);
+            if ($export !== FALSE) {
+                self::Export_Todos($export, $tabela, 'Submodulos');
             } else {
                 $this->_Visual->Show_Tabela_DataTable(
                     $tabela,     // Array Com a Tabela
@@ -296,7 +296,7 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
         $formbt     = __('Salvar');
         $formlink   = 'Desenvolvimento/Submodulo/Submodulos_Add2/';
         $campos = Desenvolvimento_Framework_Submodulo_DAO::Get_Colunas();
-        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos);
+        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1, $titulo2, $formlink, $formid, $formbt, $campos);
     }
     /**
      * 
@@ -312,7 +312,7 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = __('Submodulo cadastrado com sucesso.');
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
     }
     /**
      * 
@@ -328,9 +328,9 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
         $formid     = 'form_Desenvolvimento_Framework_Submodulos_Edit';
         $formbt     = __('Alterar Submodulo');
         $formlink   = 'Desenvolvimento/Framework/Submodulos_Edit2/'.$id;
-        $editar     = Array('Desenvolvimento_Framework_Submodulo',$id);
+        $editar     = Array('Desenvolvimento_Framework_Submodulo', $id);
         $campos = Desenvolvimento_Framework_Submodulo_DAO::Get_Colunas();
-        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos,$editar);
+        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1, $titulo2, $formlink, $formid, $formbt, $campos, $editar);
     }
     /**
      * 
@@ -341,12 +341,12 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
      */
     public function Submodulos_Edit2($id) {
         $titulo     = __('Submodulo Editado com Sucesso');
-        $dao        = Array('Desenvolvimento_Framework_Submodulo',$id);
+        $dao        = Array('Desenvolvimento_Framework_Submodulo', $id);
         $funcao     = '$this->Submodulos();';
         $sucesso1   = __('Submodulo Alterado com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);      
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);      
     }
     /**
      * 
@@ -363,7 +363,7 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
         $submodulos = $this->_Modelo->db->Sql_Select('Desenvolvimento_Framework_Submodulo', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($submodulos);
         // Mensagem
-    	if ($sucesso===true) {
+    	if ($sucesso === TRUE) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
@@ -376,17 +376,17 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
                 "mgs_secundaria" => __('Erro')
             );
         }
-        $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+        $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
         
         $this->Submodulos();
         
         $this->_Visual->Json_Info_Update('Titulo', __('Submodulo deletado com Sucesso'));  
-        $this->_Visual->Json_Info_Update('Historico', false);  
+        $this->_Visual->Json_Info_Update('Historico', FALSE);  
     }
     
     
-    protected function Endereco_Metodo($true=true) {
-        if ($true===true) {
+    protected function Endereco_Metodo($true= TRUE ) {
+        if ($true === TRUE) {
             $this->Tema_Endereco(__('Metodos'),'Desenvolvimento/Framework/Metodos');
         } else {
             $this->Tema_Endereco(__('Metodos'));
@@ -402,19 +402,19 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
         foreach ($metodos as $indice=>&$valor) {
             $tabela['#Id'][$i]          =   '#'.$valor->id;
             $tabela['Nome'][$i]         =   $valor->nome;
-            $tabela['Funções'][$i]      =   $Visual->Tema_Elementos_Btn('Editar'          ,Array('Editar Metodo'        ,'Desenvolvimento/Framework/Metodos_Edit/'.$valor->id.'/'    ,'')).
+            $tabela['Funções'][$i]      =   $Visual->Tema_Elementos_Btn('Editar'          ,Array('Editar Metodo'        ,'Desenvolvimento/Framework/Metodos_Edit/'.$valor->id.'/'    , '')).
                                             $Visual->Tema_Elementos_Btn('Deletar'         ,Array('Deletar Metodo'       ,'Desenvolvimento/Framework/Metodos_Del/'.$valor->id.'/'     ,'Deseja realmente deletar esse Metodo ?'));
             ++$i;
         }
-        return Array($tabela,$i);
+        return Array($tabela, $i);
     }
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Metodos($export=false) {
-        $this->Endereco_Metodo(false);
+    public function Metodos($export = FALSE) {
+        $this->Endereco_Metodo(FALSE);
         $i = 0;
         // Add BOtao
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
@@ -432,10 +432,10 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
         )));
         // Query
         $metodos = $this->_Modelo->db->Sql_Select('Desenvolvimento_Framework_Metodo');
-        if ($metodos!==false && !empty($metodos)) {
-            list($tabela,$i) = self::Metodos_Tabela($metodos);
-            if ($export!==false) {
-                self::Export_Todos($export,$tabela, 'Metodos');
+        if ($metodos !== FALSE && !empty($metodos)) {
+            list($tabela, $i) = self::Metodos_Tabela($metodos);
+            if ($export !== FALSE) {
+                self::Export_Todos($export, $tabela, 'Metodos');
             } else {
                 $this->_Visual->Show_Tabela_DataTable(
                     $tabela,     // Array Com a Tabela
@@ -473,7 +473,7 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
         $formbt     = __('Salvar');
         $formlink   = 'Desenvolvimento/Metodo/Metodos_Add2/';
         $campos = Desenvolvimento_Framework_Metodo_DAO::Get_Colunas();
-        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos);
+        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1, $titulo2, $formlink, $formid, $formbt, $campos);
     }
     /**
      * 
@@ -489,7 +489,7 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = __('Metodo cadastrado com sucesso.');
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
     }
     /**
      * 
@@ -505,9 +505,9 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
         $formid     = 'form_Desenvolvimento_Framework_Metodos_Edit';
         $formbt     = __('Alterar Metodo');
         $formlink   = 'Desenvolvimento/Framework/Metodos_Edit2/'.$id;
-        $editar     = Array('Desenvolvimento_Framework_Metodo',$id);
+        $editar     = Array('Desenvolvimento_Framework_Metodo', $id);
         $campos = Desenvolvimento_Framework_Metodo_DAO::Get_Colunas();
-        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos,$editar);
+        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1, $titulo2, $formlink, $formid, $formbt, $campos, $editar);
     }
     /**
      * 
@@ -518,12 +518,12 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
      */
     public function Metodos_Edit2($id) {
         $titulo     = __('Metodo Editado com Sucesso');
-        $dao        = Array('Desenvolvimento_Framework_Metodo',$id);
+        $dao        = Array('Desenvolvimento_Framework_Metodo', $id);
         $funcao     = '$this->Metodos();';
         $sucesso1   = __('Metodo Alterado com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);      
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);      
     }
     /**
      * 
@@ -540,7 +540,7 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
         $metodos = $this->_Modelo->db->Sql_Select('Desenvolvimento_Framework_Metodo', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($metodos);
         // Mensagem
-    	if ($sucesso===true) {
+    	if ($sucesso === TRUE) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
@@ -553,12 +553,12 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
                 "mgs_secundaria" => __('Erro')
             );
         }
-        $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+        $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
         
         $this->Metodos();
         
         $this->_Visual->Json_Info_Update('Titulo', __('Metodo deletado com Sucesso'));  
-        $this->_Visual->Json_Info_Update('Historico', false);  
+        $this->_Visual->Json_Info_Update('Historico', FALSE);  
     }
 }
 ?>

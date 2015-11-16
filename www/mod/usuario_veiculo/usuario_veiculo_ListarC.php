@@ -37,7 +37,7 @@ class usuario_veiculo_ListarControle extends usuario_veiculo_Controle
     public function Main() {
         //mostra veiculos
         $veiculos = Array();
-        $i = $this->_Modelo->retorna_veiculos($veiculos,true);
+        $i = $this->_Modelo->retorna_veiculos($veiculos,TRUE);
         foreach($veiculos as $indice=>&$valor) {
             $this->_Visual->Blocar($this->_Visual->Show_Veiculos($valor));
             $this->_Visual->Bloco_Unico_CriaTitulo($indice.' ('.$i[$indice].')',2);
@@ -47,13 +47,13 @@ class usuario_veiculo_ListarControle extends usuario_veiculo_Controle
         /*// carrega calendario de datas disponiveis
         $datas = Array();
         $i = $this->_Modelo->retorna_Agendadatas($datas);
-        $this->_Visual->Js_Calendar_Gerar('calendariodedatasdisponiveis',$datas);
+        $this->_Visual->Js_Calendar_Gerar('calendariodedatasdisponiveis', $datas);
         $this->_Visual->Bloco_Maior_CriaJanela(__('Datas Disponiveis'));
         // ORGANIZA E MANDA CONTEUDO*/
         
         $this->_Visual->Json_Info_Update('Titulo', __('Veiculos'));        
     }
-    public function Popup_Agendar_veiculo($idveiculo,$datainicial,$datafinal,$nomeveiculo) {
+    public function Popup_Agendar_veiculo($idveiculo, $datainicial, $datafinal, $nomeveiculo) {
         if ($this->_Acl->Usuario_GetLogado()) {
             if ($this->_Acl->logado_usuario->foto_cnh=='') {
                 $mensagens = array(
@@ -61,42 +61,42 @@ class usuario_veiculo_ListarControle extends usuario_veiculo_Controle
                     "mgs_principal" => __('Erro'),
                     "mgs_secundaria" => __('É necessário fazer upload da CNH')
                 );
-                $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+                $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
             } else if ($this->_Acl->logado_usuario->foto_res=='') {
                 $mensagens = array(
                     "tipo" => 'sucesso',
                     "mgs_principal" => __('Erro'),
                     "mgs_secundaria" => __('Falta upload do comprovante de residente')
                 );
-                $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+                $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
             } else if ($this->_Acl->logado_usuario->foto_cnh_apv==0) {
                 $mensagens = array(
                     "tipo" => 'sucesso',
                     "mgs_principal" => __('Erro'),
                     "mgs_secundaria" => __('Aguarde a aprovação de sua CNH')
                 );
-                $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+                $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
             } else if ($this->_Acl->logado_usuario->foto_res_apv==0) {
                 $mensagens = array(
                     "tipo" => 'sucesso',
                     "mgs_principal" => __('Erro'),
                     "mgs_secundaria" => __('Aguarde a aprovação de sua residência')
                 );
-                $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+                $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
             } else if ($this->_Acl->logado_usuario->foto_cnh_apv==1) {
                 $mensagens = array(
                     "tipo" => 'sucesso',
                     "mgs_principal" => __('CNH Negada'),
                     "mgs_secundaria" => __('Suba uma CNH válida')
                 );
-                $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+                $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
             } else if ($this->_Acl->logado_usuario->foto_res_apv==1) {
                 $mensagens = array(
                     "tipo" => 'sucesso',
                     "mgs_principal" => __('Residência Negada'),
                     "mgs_secundaria" => __('Suba uma residência válida')
                 );
-                $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+                $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
             } else {
                 // variaveis
                 $datainicial = data_eua_brasil(\Framework\App\Conexao::anti_injection($datainicial));
@@ -114,7 +114,7 @@ class usuario_veiculo_ListarControle extends usuario_veiculo_Controle
 
                 // formulario
                 $form = new \Framework\Classes\Form('adminformveiculosagenda', 'usuario_veiculo/Listar/agendamento_inserir/', 'formajax');
-                usuario_veiculo_ListarControle::agendamento_form($this, $this->_Visual, $form, $idveiculo,$nomeveiculo,$datainicial,$datafinal,$veiculo['franquia'],0);
+                usuario_veiculo_ListarControle::agendamento_form($this, $this->_Visual, $form, $idveiculo, $nomeveiculo, $datainicial, $datafinal, $veiculo['franquia'],0);
                 $formulario = $form->retorna_form();
                 $conteudo = array(
                     'id' => 'popup',
@@ -133,9 +133,9 @@ class usuario_veiculo_ListarControle extends usuario_veiculo_Controle
                     ),
                     'html' => $formulario
                 );
-                $this->_Visual->Json_IncluiTipo('Popup',$conteudo);
-                //$this->_Visual->Json_IncluiTipo('JavascriptInterno',$this->_Visual->Javascript_Executar());
-                //$this->_Visual->Javascript_Executar(false);
+                $this->_Visual->Json_IncluiTipo('Popup', $conteudo);
+                //$this->_Visual->Json_IncluiTipo('JavascriptInterno', $this->_Visual->Javascript_Executar());
+                //$this->_Visual->Javascript_Executar(FALSE);
             }
         } else {
             $mensagens = array(
@@ -143,20 +143,20 @@ class usuario_veiculo_ListarControle extends usuario_veiculo_Controle
                 "mgs_principal" => __('Erro'),
                 "mgs_secundaria" => __('É necessário se logar para continuar')
             );
-            $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+            $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
         }
     }
-    static function agendamento_form(&$controle, &$Visual, &$form, &$idveiculo,$nomeveiculo,$datainicial = '',$datafinal = '',$franquia=0, $valor=0) {
+    static function agendamento_form(&$controle, &$Visual, &$form, &$idveiculo, $nomeveiculo, $datainicial = '', $datafinal = '', $franquia=0, $valor=0) {
         
        
        // select de pessoas
         $form->Select_Novo('Veiculo', 'selectveiculos', 'selectveiculos');
-        $form->Select_Opcao($nomeveiculo,$idveiculo,1);
+        $form->Select_Opcao($nomeveiculo, $idveiculo,1);
         $form->Select_Fim();
-        $form->Input_Novo('Data Inicial', 'data_inicial',$datainicial,'text', 10, 'obrigatorio', '',true); 
-        $form->Input_Novo('Data Final', 'data_final',$datafinal,'text', 10, 'obrigatorio', '',true); 
-        $form->Input_Novo('Franquia', 'franquia', 'R$'.number_format($franquia, 2, ', ', '.'),'text', 30, 'inactive', '',true);  
-        $form->Input_Novo('Valor', 'valor', 'R$'.number_format($valor, 2, ', ', '.'),'text', 30, 'inactive', '',true); 
+        $form->Input_Novo('Data Inicial', 'data_inicial', $datainicial,'text', 10, 'obrigatorio', '',TRUE); 
+        $form->Input_Novo('Data Final', 'data_final', $datafinal,'text', 10, 'obrigatorio', '',TRUE); 
+        $form->Input_Novo('Franquia', 'franquia', 'R$'.number_format($franquia, 2, ', ', '.'),'text', 30, 'inactive', '',TRUE);  
+        $form->Input_Novo('Valor', 'valor', 'R$'.number_format($valor, 2, ', ', '.'),'text', 30, 'inactive', '',TRUE); 
     }
      /**
      * Inserir
@@ -172,7 +172,7 @@ class usuario_veiculo_ListarControle extends usuario_veiculo_Controle
      * @version 0.4.2
      */
     public function agendamento_inserir() {
-        if (!isset($_POST["selectveiculos"]) || !isset($_POST["valor"]) || !isset($_POST["data_inicial"]) || !isset($_POST["data_final"])) return false;
+        if (!isset($_POST["selectveiculos"]) || !isset($_POST["valor"]) || !isset($_POST["data_inicial"]) || !isset($_POST["data_final"])) return FALSE;
         
         $veiculoid = (int) \Framework\App\Conexao::anti_injection($_POST["selectveiculos"]);
         $valor = \Framework\App\Conexao::anti_injection($_POST["valor"]);
@@ -183,14 +183,14 @@ class usuario_veiculo_ListarControle extends usuario_veiculo_Controle
         $veiculo = $this->_Modelo->retorna_veiculo($veiculoid);
 
         // Captura Valor
-        $diaspercorridos = Data_CalculaDiferenca($data_inicial,$data_final)*24;
-        $valor = $this->recalcula_valor_aluguel($veiculo['valor1'],$veiculo['valor2'],$veiculo['valor3'], $diaspercorridos);
+        $diaspercorridos = Data_CalculaDiferenca($data_inicial, $data_final)*24;
+        $valor = $this->recalcula_valor_aluguel($veiculo['valor1'], $veiculo['valor2'], $veiculo['valor3'], $diaspercorridos);
         // Atualiza datas para formato americano
         $data_inicial = data_brasil_eua($data_inicial);
         $data_final   = data_brasil_eua($data_final);
         
         // inseri e mostra mensagem
-        $sucesso =  $this->_Modelo->agendamento_inserir($veiculoid,$data_inicial,$data_final,$valor);
+        $sucesso =  $this->_Modelo->agendamento_inserir($veiculoid, $data_inicial, $data_final, $valor);
         if ($sucesso==1) {
             $mensagens = array(
                 "tipo" => 'sucesso',
@@ -204,13 +204,13 @@ class usuario_veiculo_ListarControle extends usuario_veiculo_Controle
                 "mgs_secundaria" => __('Erro')
             );
         }
-        $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens); 
+        $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens); 
         
         // fecha popup e atualiza dados
         $this->_Visual->Javascript_Executar('$(\'#popup\').dialog( "close" );');
         $this->Main();  
     }
-    public function recalcula_valor_aluguel($valor1,$valor2,$valor3,$diasdecorridos) {
+    public function recalcula_valor_aluguel($valor1, $valor2, $valor3, $diasdecorridos) {
         $valorfinal = 0;
         if ($diasdecorridos<=3) {
             $valorfinal = $valorfinal+($diasdecorridos*$valor1);

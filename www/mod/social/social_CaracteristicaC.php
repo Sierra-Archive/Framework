@@ -32,12 +32,12 @@ class social_CaracteristicaControle extends social_Controle
     * @version 0.4.2
     */
     public function Main() {
-        return false; 
+        return FALSE; 
     }
-    static function Endereco_Caracteristica($true=true) {
+    static function Endereco_Caracteristica($true= TRUE ) {
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
-        if ($true===true) {
+        if ($true === TRUE) {
             $_Controle->Tema_Endereco(__('Caracteristicas'),'social/Caracteristica/Caracteristica');
         } else {
             $_Controle->Tema_Endereco(__('Caracteristicas'));
@@ -48,8 +48,8 @@ class social_CaracteristicaControle extends social_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Caracteristica($export=false) {
-        self::Endereco_Caracteristica(false);
+    public function Caracteristica($export = FALSE) {
+        self::Endereco_Caracteristica(FALSE);
         $i = 0;
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
             Array(
@@ -65,18 +65,18 @@ class social_CaracteristicaControle extends social_Controle
             )
         )));
         $caracteristicas = $this->_Modelo->db->Sql_Select('Social_Caracteristica');
-        if ($caracteristicas!==false && !empty($caracteristicas)) {
+        if ($caracteristicas !== FALSE && !empty($caracteristicas)) {
             if (is_object($caracteristicas)) $caracteristicas = Array(0=>$caracteristicas);
             reset($caracteristicas);
             foreach ($caracteristicas as $indice=>&$valor) {
                 $tabela['Nome'][$i]            = $valor->nome;
                 $tabela['Descriçao'][$i]        = $valor->descricao;
-                $tabela['Funções'][$i]          = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Caracteristica'        ,'social/Caracteristica/Caracteristicas_Edit/'.$valor->id.'/'    ,'')).
+                $tabela['Funções'][$i]          = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Caracteristica'        ,'social/Caracteristica/Caracteristicas_Edit/'.$valor->id.'/'    , '')).
                                                   $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Caracteristica'       ,'social/Caracteristica/Caracteristicas_Del/'.$valor->id.'/'     ,'Deseja realmente deletar essa Caracteristica ?'));
                 ++$i;
             }
-            if ($export!==false) {
-                self::Export_Todos($export,$tabela, 'Caracteristicas');
+            if ($export !== FALSE) {
+                self::Export_Todos($export, $tabela, 'Caracteristicas');
             } else {
                 $this->_Visual->Show_Tabela_DataTable(
                     $tabela,     // Array Com a Tabela
@@ -106,7 +106,7 @@ class social_CaracteristicaControle extends social_Controle
      * @version 0.4.2
      */
     public function Caracteristicas_Add() {
-        self::Endereco_Caracteristica(true);
+        self::Endereco_Caracteristica(TRUE);
         // Carrega Config
         $titulo1    = __('Adicionar Caracteristica');
         $titulo2    = __('Salvar Caracteristica');
@@ -114,7 +114,7 @@ class social_CaracteristicaControle extends social_Controle
         $formbt     = __('Salvar');
         $formlink   = 'social/Caracteristica/Caracteristicas_Add2/';
         $campos = Social_Caracteristica_DAO::Get_Colunas();
-        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos);
+        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1, $titulo2, $formlink, $formid, $formbt, $campos);
     }
     /**
      * 
@@ -130,7 +130,7 @@ class social_CaracteristicaControle extends social_Controle
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = __('Caracteristica cadastrado com sucesso.');
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
     }
     /**
      * 
@@ -139,16 +139,16 @@ class social_CaracteristicaControle extends social_Controle
      * @version 0.4.2
      */
     public function Caracteristicas_Edit($id) {
-        self::Endereco_Caracteristica(true);
+        self::Endereco_Caracteristica(TRUE);
         // Carrega Config
         $titulo1    = 'Editar Caracteristica (#'.$id.')';
         $titulo2    = __('Alteração de Caracteristica');
         $formid     = 'form_Sistema_CaracteristicaC_CaracteristicaEdit';
         $formbt     = __('Alterar Caracteristica');
         $formlink   = 'social/Caracteristica/Caracteristicas_Edit2/'.$id;
-        $editar     = Array('Social_Caracteristica',$id);
+        $editar     = Array('Social_Caracteristica', $id);
         $campos = Social_Caracteristica_DAO::Get_Colunas();
-        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos,$editar);
+        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1, $titulo2, $formlink, $formid, $formbt, $campos, $editar);
     }
     /**
      * 
@@ -159,12 +159,12 @@ class social_CaracteristicaControle extends social_Controle
      */
     public function Caracteristicas_Edit2($id) {
         $titulo     = __('Caracteristica editada com Sucesso');
-        $dao        = Array('Social_Caracteristica',$id);
+        $dao        = Array('Social_Caracteristica', $id);
         $funcao     = '$this->Caracteristica();';
         $sucesso1   = __('Caracteristica Alterado com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);   
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);   
     }
     /**
      * 
@@ -181,7 +181,7 @@ class social_CaracteristicaControle extends social_Controle
         $setor = $this->_Modelo->db->Sql_Select('Social_Caracteristica', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($setor);
         // Mensagem
-    	if ($sucesso===true) {
+    	if ($sucesso === TRUE) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletada'),
@@ -194,12 +194,12 @@ class social_CaracteristicaControle extends social_Controle
                 "mgs_secundaria" => __('Erro')
             );
         }
-        $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+        $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
         
         $this->Caracteristica();
         
         $this->_Visual->Json_Info_Update('Titulo', __('Caracteristica deletada com Sucesso'));  
-        $this->_Visual->Json_Info_Update('Historico', false);  
+        $this->_Visual->Json_Info_Update('Historico', FALSE);  
     }
 }
 ?>

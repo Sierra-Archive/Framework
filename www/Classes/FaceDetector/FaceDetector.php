@@ -134,7 +134,7 @@ class FaceDetector
             //$img      = $grayImage;
             $squares    = $grayImage;
             $tempo = new \Framework\App\Tempo('1 parte');
-            var_dump($width,$height);
+            var_dump($width, $height);
             for($i = 0; $i < $width; ++$i)
             {
                 $col    =0;
@@ -142,7 +142,7 @@ class FaceDetector
                 for($j = 0; $j < $height; ++$j)
                 {
                     //$grayImage[$i];
-                    //var_dump($i,$j);
+                    //var_dump($i, $j);
                     $colors = imagecolorsforindex($imagem, imagecolorat($imagem, $i, $j));
 
                     $value = (30*$colors['red'] +59*$colors['green'] +11*$colors['blue'])/100;
@@ -178,14 +178,14 @@ class FaceDetector
                 {
                     for($j = 0; $j < $size_height; $j += $step)
                     {
-                        $pass = true;
+                        $pass = TRUE;
                         $k = 0;
                         foreach($this->stages as $s)
                         {
 
                             if (!$s->pass($grayImage, $squares, $i, $j, $scale))
                             {
-                                $pass = false;
+                                $pass = FALSE;
                                 //echo $k."\n";
                                 break;
                             }
@@ -208,7 +208,7 @@ class FaceDetector
 	 * @param bool desire more confidence what a face is, gives less results
 	 * @return array found faces
 	 */	
-	public function getFaces($moreConfidence = false)
+	public function getFaces($moreConfidence = FALSE)
 	{
 		return $this->merge($this->foundRects, 2 + intval($moreConfidence));
 	}	
@@ -222,7 +222,7 @@ class FaceDetector
 	 * @return bool|resource if filename given, image will be saved to disk, otherwise image ressource
 	 * @throws Exception
 	 */		
-	public function getImage($fileName = null, $moreConfidence = false, $showAllRects = false)
+	public function getImage($fileName = null, $moreConfidence = FALSE, $showAllRects = FALSE)
 	{
 		$canvas = imagecreatetruecolor($this->width, $this->height);
 		imagecopyresampled($canvas, $this->imagem, 0, 0, 0, 0, $this->width, $this->height, $this->width, $this->height);
@@ -278,12 +278,12 @@ class FaceDetector
 		
 		for($i = 0; $i < count($rects); $i++)
 		{
-			$found = false;
+			$found = FALSE;
 			for($j = 0; $j < $i; $j++)
 			{
 				if ($this->equals($rects[$j], $rects[$i]))
 				{
-					$found = true;
+					$found = TRUE;
 					$ret[$i] = $ret[$j];
 				}
 			}
@@ -341,7 +341,7 @@ class FaceDetector
 			$r2['width'] <= (int)( $r1['width'] * 1.2 ) &&
 			(int)( $r2['width'] * 1.2 ) >= $r1['width'] )
 		{
-			return true;
+			return TRUE;
 		}
 		
 		if ( $r1['x'] >= $r2['x'] &&
@@ -349,10 +349,10 @@ class FaceDetector
 			$r1['y'] >= $r2['y'] &&
 			$r1['y'] + $r1['height'] <= $r2['y'] + $r2['height'] )
 		{
-			return true;
+			return TRUE;
 		}
 		
-		return false;
+		return FALSE;
 	}	
 }
 

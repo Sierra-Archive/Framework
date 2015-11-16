@@ -33,12 +33,12 @@ class comercio_servicos_ServicoTipoControle extends comercio_servicos_Controle
     */
     public function Main() {
         \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'comercio_servicos/ServicoTipo/Servico_Tipo');
-        return false;
+        return FALSE;
     }
-    static function Endereco_Servico_Tipo($true=true) {
+    static function Endereco_Servico_Tipo($true= TRUE ) {
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
-        if ($true===true) {
+        if ($true === TRUE) {
             $_Controle->Tema_Endereco(__('Tipos de Serviços'),'comercio_servicos/Servico_Tipo/Servico_Tipo');
         } else {
             $_Controle->Tema_Endereco(__('Tipos de Serviços'));
@@ -50,7 +50,7 @@ class comercio_servicos_ServicoTipoControle extends comercio_servicos_Controle
      * @version 0.4.2
      */
     public function Servico_Tipo() {
-        self::Endereco_Servico_Tipo(false);
+        self::Endereco_Servico_Tipo(FALSE);
         $tabela_colunas = Array();
 
         $tabela_colunas[] = __('Nome');
@@ -76,7 +76,7 @@ class comercio_servicos_ServicoTipoControle extends comercio_servicos_Controle
         $formbt     = __('Salvar');
         $formlink   = 'comercio_servicos/ServicoTipo/Servico_Tipo_Add2/';
         $campos = Comercio_Servicos_Servico_Tipo_DAO::Get_Colunas();
-        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos);
+        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1, $titulo2, $formlink, $formid, $formbt, $campos);
     }
     /**
      * 
@@ -92,7 +92,7 @@ class comercio_servicos_ServicoTipoControle extends comercio_servicos_Controle
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = __('Tipo de Serviço cadastrada com sucesso.');
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
     }
     /**
      * 
@@ -107,9 +107,9 @@ class comercio_servicos_ServicoTipoControle extends comercio_servicos_Controle
         $formid     = 'form_Sistema_ServicoTipoC_Tipo de ServiçoEdit';
         $formbt     = __('Alterar Tipo de Serviço');
         $formlink   = 'comercio_servicos/ServicoTipo/Servico_Tipo_Edit2/'.$id;
-        $editar     = Array('Comercio_Servicos_Servico_Tipo',$id);
+        $editar     = Array('Comercio_Servicos_Servico_Tipo', $id);
         $campos = Comercio_Servicos_Servico_Tipo_DAO::Get_Colunas();
-        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos,$editar);
+        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1, $titulo2, $formlink, $formid, $formbt, $campos, $editar);
     }
     /**
      * 
@@ -120,12 +120,12 @@ class comercio_servicos_ServicoTipoControle extends comercio_servicos_Controle
      */
     public function Servico_Tipo_Edit2($id) {
         $titulo     = __('Tipo de Serviço editada com Sucesso');
-        $dao        = Array('Comercio_Servicos_Servico_Tipo',$id);
+        $dao        = Array('Comercio_Servicos_Servico_Tipo', $id);
         $funcao     = '$this->Servico_Tipo();';
         $sucesso1   = __('Tipo de Serviço Alterada com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);   
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);   
     }
     /**
      * 
@@ -142,7 +142,7 @@ class comercio_servicos_ServicoTipoControle extends comercio_servicos_Controle
         $setor = $this->_Modelo->db->Sql_Select('Comercio_Servicos_Servico_Tipo', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($setor);
         // Mensagem
-    	if ($sucesso===true) {
+    	if ($sucesso === TRUE) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
@@ -155,12 +155,12 @@ class comercio_servicos_ServicoTipoControle extends comercio_servicos_Controle
                 "mgs_secundaria" => __('Erro')
             );
         }
-        $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+        $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
         
         $this->Servico_Tipo();
         
         $this->_Visual->Json_Info_Update('Titulo', __('Tipo de Serviço deletada com Sucesso'));  
-        $this->_Visual->Json_Info_Update('Historico', false);  
+        $this->_Visual->Json_Info_Update('Historico', FALSE);  
     }
 }
 ?>

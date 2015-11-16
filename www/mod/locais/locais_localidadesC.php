@@ -43,12 +43,12 @@ class locais_localidadesControle extends locais_Controle
         }
         $imprimir = function(&$opcoes) {
             $html = '';
-            if ($opcoes!==false && !empty($opcoes)) {
+            if ($opcoes !== FALSE && !empty($opcoes)) {
                 if (is_object($opcoes)) $opcoes = Array(0=>$opcoes);
                 reset($opcoes);
                 foreach ($opcoes as $indice2=>$valor2) {
                     $selecionado = 0;
-                    $html .= \Framework\Classes\Form::Select_Opcao_Stat($valor2->nome, $valor2->id,$selecionado);
+                    $html .= \Framework\Classes\Form::Select_Opcao_Stat($valor2->nome, $valor2->id, $selecionado);
                 }
             }
             return $html;
@@ -69,7 +69,7 @@ class locais_localidadesControle extends locais_Controle
                 $mensagem .= 'Cidade: '.$cidade."\n";
                 $mensagem .= 'Bairro: '.$bairro;
                 self::log($mensagem, 'Informações');
-                $id_estado = false;
+                $id_estado = FALSE;
                 $where['pais'] = $pais;
                 $cidade = 'falso';
             }
@@ -83,7 +83,7 @@ class locais_localidadesControle extends locais_Controle
                 'js'        =>  '',
                 'html'      =>  $html
             );
-            $this->_Visual->Json_IncluiTipo('Conteudo',$conteudo);
+            $this->_Visual->Json_IncluiTipo('Conteudo', $conteudo);
             // CIdade
             if ($cidade!='falso') {
                 $where      =   Array('estado'=>$id_estado,'nome'=>$cidade);
@@ -100,7 +100,7 @@ class locais_localidadesControle extends locais_Controle
                     $mensagem .= 'Cidade: '.$cidade."\n";
                     $mensagem .= 'Bairro: '.$bairro;
                     self::log($mensagem, 'Informações');
-                    $id_cidade = false;
+                    $id_cidade = FALSE;
                     $bairro = 'falso';
                 }
                 $html       =   $imprimir($opcoes,1);
@@ -112,7 +112,7 @@ class locais_localidadesControle extends locais_Controle
                     'js'        =>  '',
                     'html'      =>  $html
                 );
-                $this->_Visual->Json_IncluiTipo('Conteudo',$conteudo);
+                $this->_Visual->Json_IncluiTipo('Conteudo', $conteudo);
                 // Bairro
                 if ($bairro!='falso') {
                     // Procura Selecionado
@@ -138,7 +138,7 @@ class locais_localidadesControle extends locais_Controle
                         'js'        =>  '',
                         'html'      =>  $html
                     );
-                    $this->_Visual->Json_IncluiTipo('Conteudo',$conteudo);
+                    $this->_Visual->Json_IncluiTipo('Conteudo', $conteudo);
                 }
             }
         } else {
@@ -148,15 +148,15 @@ class locais_localidadesControle extends locais_Controle
                 "mgs_principal"     => __('Cep Inválido'),
                 "mgs_secundaria"    => __('Cep não Reconhecido pelos Corrêios')
             );
-            $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+            $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
             $this->_Visual->Javascript_Executar(
                     '$("#cep").css(\'border\', \'2px solid #FFAEB0\').focus();'
             );
-            $this->_Visual->Json_Info_Update('Historico', false);
-            $this->layoult_zerar = false; 
-            return false;
+            $this->_Visual->Json_Info_Update('Historico', FALSE);
+            $this->layoult_zerar = FALSE; 
+            return FALSE;
         }
-        $this->_Visual->Json_Info_Update('Historico', false);
+        $this->_Visual->Json_Info_Update('Historico', FALSE);
     }
     
     /**
@@ -168,12 +168,12 @@ class locais_localidadesControle extends locais_Controle
         $i = 0;
         $this->_Visual->Blocar('<a title="Adicionar País" class="btn btn-success lajax explicar-titulo" data-acao="" href="'.URL_PATH.'locais/localidades/Paises_Add">Adicionar novo País</a><div class="space15"></div>');
         $setores = $this->_Modelo->db->Sql_Select('Sistema_Local_Pais');
-        if ($setores!==false && !empty($setores)) {
+        if ($setores !== FALSE && !empty($setores)) {
             if (is_object($setores)) $setores = Array(0=>$setores);
             reset($setores);
             foreach ($setores as $indice=>&$valor) {
                 $tabela['Nome'][$i]             = $valor->nome;
-                $tabela['Funções'][$i]          = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar País'        ,'locais/localidades/Paises_Edit/'.$valor->id.'/'    ,'')).
+                $tabela['Funções'][$i]          = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar País'        ,'locais/localidades/Paises_Edit/'.$valor->id.'/'    , '')).
                                                   $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar País'       ,'locais/localidades/Paises_Del/'.$valor->id.'/'     ,'Deseja realmente deletar esse País ?'));
                 ++$i;
             }
@@ -201,7 +201,7 @@ class locais_localidadesControle extends locais_Controle
         $formbt     = __('Salvar');
         $formlink   = 'locais/localidades/Paises_Add2/';
         $campos = Sistema_Local_Pais_DAO::Get_Colunas();
-        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos);
+        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1, $titulo2, $formlink, $formid, $formbt, $campos);
     }
     /**
      * Retorno de Add Paises
@@ -216,7 +216,7 @@ class locais_localidadesControle extends locais_Controle
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = __('País cadastrado com sucesso.');
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
     }
     /**
      * 
@@ -231,9 +231,9 @@ class locais_localidadesControle extends locais_Controle
         $formid     = 'form_Sistema_AdminC_PaisEdit';
         $formbt     = __('Alterar País');
         $formlink   = 'locais/localidades/Paises_Edit2/'.$id;
-        $editar     = Array('Sistema_Local_Pais',$id);
+        $editar     = Array('Sistema_Local_Pais', $id);
         $campos = Sistema_Local_Pais_DAO::Get_Colunas();
-        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos,$editar);
+        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1, $titulo2, $formlink, $formid, $formbt, $campos, $editar);
     }
     /**
      * Retorno de Editar Paises
@@ -243,12 +243,12 @@ class locais_localidadesControle extends locais_Controle
      */
     public function Paises_Edit2($id) {
         $titulo     = __('País Editado com Sucesso');
-        $dao        = Array('Sistema_Local_Pais',$id);
+        $dao        = Array('Sistema_Local_Pais', $id);
         $funcao     = '$this->Paises();';
         $sucesso1   = __('País Alterado com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);   
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);   
     }
     /**
      * Deletar Paises
@@ -262,7 +262,7 @@ class locais_localidadesControle extends locais_Controle
         $setor = $this->_Modelo->db->Sql_Select('Sistema_Local_Pais', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($setor);
         // Mensagem
-    	if ($sucesso===true) {
+    	if ($sucesso === TRUE) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
@@ -275,12 +275,12 @@ class locais_localidadesControle extends locais_Controle
                 "mgs_secundaria" => __('Erro')
             );
         }
-        $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+        $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
         
         $this->Paises();
         
         $this->_Visual->Json_Info_Update('Titulo', __('País deletado com Sucesso'));  
-        $this->_Visual->Json_Info_Update('Historico', false);  
+        $this->_Visual->Json_Info_Update('Historico', FALSE);  
     }
     /**
      * 
@@ -291,12 +291,12 @@ class locais_localidadesControle extends locais_Controle
         $i = 0;
         $this->_Visual->Blocar('<a title="Adicionar Estado" class="btn btn-success lajax explicar-titulo" data-acao="" href="'.URL_PATH.'locais/localidades/Estados_Add">Adicionar novo Estado</a><div class="space15"></div>');
         $setores = $this->_Modelo->db->Sql_Select('Sistema_Local_Estado');
-        if ($setores!==false && !empty($setores)) {
+        if ($setores !== FALSE && !empty($setores)) {
             if (is_object($setores)) $setores = Array(0=>$setores);
             reset($setores);
             foreach ($setores as $indice=>&$valor) {
                 $tabela['Nome'][$i]             = $valor->nome;
-                $tabela['Funções'][$i]          = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Estado'        ,'locais/localidades/Estados_Edit/'.$valor->id.'/'    ,'')).
+                $tabela['Funções'][$i]          = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Estado'        ,'locais/localidades/Estados_Edit/'.$valor->id.'/'    , '')).
                                                   $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Estado'       ,'locais/localidades/Estados_Del/'.$valor->id.'/'     ,'Deseja realmente deletar esse Estado ?'));
                 ++$i;
             }
@@ -324,7 +324,7 @@ class locais_localidadesControle extends locais_Controle
         $formbt     = __('Salvar');
         $formlink   = 'locais/localidades/Estados_Add2/';
         $campos = Sistema_Local_Estado_DAO::Get_Colunas();
-        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos);
+        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1, $titulo2, $formlink, $formid, $formbt, $campos);
     }
     /**
      * 
@@ -340,7 +340,7 @@ class locais_localidadesControle extends locais_Controle
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = __('Estado cadastrado com sucesso.');
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
     }
     /**
      * 
@@ -355,9 +355,9 @@ class locais_localidadesControle extends locais_Controle
         $formid     = 'form_Sistema_AdminC_EstadoEdit';
         $formbt     = __('Alterar Estado');
         $formlink   = 'locais/localidades/Estados_Edit2/'.$id;
-        $editar     = Array('Sistema_Local_Estado',$id);
+        $editar     = Array('Sistema_Local_Estado', $id);
         $campos = Sistema_Local_Estado_DAO::Get_Colunas();
-        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos,$editar);
+        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1, $titulo2, $formlink, $formid, $formbt, $campos, $editar);
     }
     /**
      * 
@@ -368,12 +368,12 @@ class locais_localidadesControle extends locais_Controle
      */
     public function Estados_Edit2($id) {
         $titulo     = __('Estado Editado com Sucesso');
-        $dao        = Array('Sistema_Local_Estado',$id);
+        $dao        = Array('Sistema_Local_Estado', $id);
         $funcao     = '$this->Estados();';
         $sucesso1   = __('Estado Alterado com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);   
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);   
     }
     /**
      * 
@@ -390,7 +390,7 @@ class locais_localidadesControle extends locais_Controle
         $setor = $this->_Modelo->db->Sql_Select('Sistema_Local_Estado', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($setor);
         // Mensagem
-    	if ($sucesso===true) {
+    	if ($sucesso === TRUE) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
@@ -403,12 +403,12 @@ class locais_localidadesControle extends locais_Controle
                 "mgs_secundaria" => __('Erro')
             );
         }
-        $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+        $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
         
         $this->Estados();
         
         $this->_Visual->Json_Info_Update('Titulo', __('Estado deletado com Sucesso'));  
-        $this->_Visual->Json_Info_Update('Historico', false);  
+        $this->_Visual->Json_Info_Update('Historico', FALSE);  
     }
     /**
      * 
@@ -419,12 +419,12 @@ class locais_localidadesControle extends locais_Controle
         $i = 0;
         $this->_Visual->Blocar('<a title="Adicionar Cidade" class="btn btn-success lajax explicar-titulo" data-acao="" href="'.URL_PATH.'locais/localidades/Cidades_Add">Adicionar nova Cidade</a><div class="space15"></div>');
         $setores = $this->_Modelo->db->Sql_Select('Sistema_Local_Cidade');
-        if ($setores!==false && !empty($setores)) {
+        if ($setores !== FALSE && !empty($setores)) {
             if (is_object($setores)) $setores = Array(0=>$setores);
             reset($setores);
             foreach ($setores as $indice=>&$valor) {
                 $tabela['Nome'][$i]             = $valor->nome;
-                $tabela['Funções'][$i]          = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Cidade'        ,'locais/localidades/Cidades_Edit/'.$valor->id.'/'    ,'')).
+                $tabela['Funções'][$i]          = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Cidade'        ,'locais/localidades/Cidades_Edit/'.$valor->id.'/'    , '')).
                                                   $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Cidade'       ,'locais/localidades/Cidades_Del/'.$valor->id.'/'     ,'Deseja realmente deletar essa Cidade ?'));
                 ++$i;
             }
@@ -452,7 +452,7 @@ class locais_localidadesControle extends locais_Controle
         $formbt     = __('Salvar');
         $formlink   = 'locais/localidades/Cidades_Add2/';
         $campos = Sistema_Local_Cidade_DAO::Get_Colunas();
-        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos);
+        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1, $titulo2, $formlink, $formid, $formbt, $campos);
     }
     /**
      * 
@@ -468,7 +468,7 @@ class locais_localidadesControle extends locais_Controle
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = __('Cidade cadastrada com sucesso.');
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
     }
     /**
      * 
@@ -483,9 +483,9 @@ class locais_localidadesControle extends locais_Controle
         $formid     = 'form_Sistema_AdminC_CidadeEdit';
         $formbt     = __('Alterar Cidade');
         $formlink   = 'locais/localidades/Cidades_Edit2/'.$id;
-        $editar     = Array('Sistema_Local_Cidade',$id);
+        $editar     = Array('Sistema_Local_Cidade', $id);
         $campos = Sistema_Local_Cidade_DAO::Get_Colunas();
-        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos,$editar);
+        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1, $titulo2, $formlink, $formid, $formbt, $campos, $editar);
     }
     /**
      * 
@@ -496,12 +496,12 @@ class locais_localidadesControle extends locais_Controle
      */
     public function Cidades_Edit2($id) {
         $titulo     = __('Cidade Editada com Sucesso');
-        $dao        = Array('Sistema_Local_Cidade',$id);
+        $dao        = Array('Sistema_Local_Cidade', $id);
         $funcao     = '$this->Cidades();';
         $sucesso1   = __('Cidade Alterada com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);   
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);   
     }
     /**
      * 
@@ -518,7 +518,7 @@ class locais_localidadesControle extends locais_Controle
         $setor = $this->_Modelo->db->Sql_Select('Sistema_Local_Cidade', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($setor);
         // Mensagem
-    	if ($sucesso===true) {
+    	if ($sucesso === TRUE) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
@@ -531,12 +531,12 @@ class locais_localidadesControle extends locais_Controle
                 "mgs_secundaria" => __('Erro')
             );
         }
-        $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+        $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
         
         $this->Cidades();
         
         $this->_Visual->Json_Info_Update('Titulo', __('Cidade deletada com Sucesso'));  
-        $this->_Visual->Json_Info_Update('Historico', false);  
+        $this->_Visual->Json_Info_Update('Historico', FALSE);  
     }
     /**
      * 
@@ -547,12 +547,12 @@ class locais_localidadesControle extends locais_Controle
         $i = 0;
         $this->_Visual->Blocar('<a title="Adicionar Bairro" class="btn btn-success lajax explicar-titulo" data-acao="" href="'.URL_PATH.'locais/localidades/Bairros_Add">Adicionar novo Bairro</a><div class="space15"></div>');
         $setores = $this->_Modelo->db->Sql_Select('Sistema_Local_Bairro');
-        if ($setores!==false && !empty($setores)) {
+        if ($setores !== FALSE && !empty($setores)) {
             if (is_object($setores)) $setores = Array(0=>$setores);
             reset($setores);
             foreach ($setores as $indice=>&$valor) {
                 $tabela['Nome'][$i]             = $valor->nome;
-                $tabela['Funções'][$i]          = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Bairro'        ,'locais/localidades/Bairros_Edit/'.$valor->id.'/'    ,'')).
+                $tabela['Funções'][$i]          = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Bairro'        ,'locais/localidades/Bairros_Edit/'.$valor->id.'/'    , '')).
                                                   $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Bairro'       ,'locais/localidades/Bairros_Del/'.$valor->id.'/'     ,'Deseja realmente deletar esse Bairro ?'));
                 ++$i;
             }
@@ -580,7 +580,7 @@ class locais_localidadesControle extends locais_Controle
         $formbt     = __('Salvar');
         $formlink   = 'locais/localidades/Bairros_Add2/';
         $campos = Sistema_Local_Bairro_DAO::Get_Colunas();
-        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos);
+        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1, $titulo2, $formlink, $formid, $formbt, $campos);
     }
     /**
      * 
@@ -596,7 +596,7 @@ class locais_localidadesControle extends locais_Controle
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = __('Bairro cadastrado com sucesso.');
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
     }
     /**
      * 
@@ -611,9 +611,9 @@ class locais_localidadesControle extends locais_Controle
         $formid     = 'form_Sistema_AdminC_BairroEdit';
         $formbt     = __('Alterar Bairro');
         $formlink   = 'locais/localidades/Bairros_Edit2/'.$id;
-        $editar     = Array('Sistema_Local_Bairro',$id);
+        $editar     = Array('Sistema_Local_Bairro', $id);
         $campos = Sistema_Local_Bairro_DAO::Get_Colunas();
-        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos,$editar);
+        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1, $titulo2, $formlink, $formid, $formbt, $campos, $editar);
     }
     /**
      * 
@@ -624,12 +624,12 @@ class locais_localidadesControle extends locais_Controle
      */
     public function Bairros_Edit2($id) {
         $titulo     = __('Bairro Editado com Sucesso');
-        $dao        = Array('Sistema_Local_Bairro',$id);
+        $dao        = Array('Sistema_Local_Bairro', $id);
         $funcao     = '$this->Bairros();';
         $sucesso1   = __('Bairro Alterado com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);   
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);   
     }
     /**
      * 
@@ -646,7 +646,7 @@ class locais_localidadesControle extends locais_Controle
         $setor = $this->_Modelo->db->Sql_Select('Sistema_Local_Bairro', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($setor);
         // Mensagem
-    	if ($sucesso===true) {
+    	if ($sucesso === TRUE) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
@@ -659,12 +659,12 @@ class locais_localidadesControle extends locais_Controle
                 "mgs_secundaria" => __('Erro')
             );
         }
-        $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+        $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
         
         $this->Bairros();
         
         $this->_Visual->Json_Info_Update('Titulo', __('Bairro deletado com Sucesso'));  
-        $this->_Visual->Json_Info_Update('Historico', false);  
+        $this->_Visual->Json_Info_Update('Historico', FALSE);  
     }
 }
 ?>

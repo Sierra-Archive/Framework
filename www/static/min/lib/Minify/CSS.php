@@ -23,11 +23,11 @@ class Minify_CSS {
      * 
      * @param array $options available options:
      * 
-     * 'preserveComments': (default true) multi-line comments that begin
+     * 'preserveComments': (default TRUE) multi-line comments that begin
      * with "/*!" will be preserved with newlines before and after to
      * enhance readability.
      *
-     * 'removeCharsets': (default true) remove all @charset at-rules
+     * 'removeCharsets': (default TRUE) remove all @charset at-rules
      * 
      * 'prependRelativePath': (default null) if given, this string will be
      * prepended to all relative URIs in import/url declarations
@@ -85,14 +85,14 @@ class Minify_CSS {
         if ($options['currentDir']) {
             return Minify_CSS_UriRewriter::rewrite(
                 $css
-                ,$options['currentDir']
-                ,$options['docRoot']
-                ,$options['symlinks']
+                , $options['currentDir']
+                , $options['docRoot']
+                , $options['symlinks']
             );  
         } else {
             return Minify_CSS_UriRewriter::prepend(
                 $css
-                ,$options['prependRelativePath']
+                , $options['prependRelativePath']
             );
         }
     }

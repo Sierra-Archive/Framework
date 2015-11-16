@@ -11,7 +11,7 @@
  * @author Stephen Clay <steve@mrclay.org>
  */
 class Minify_HTML_Helper {
-    public $rewriteWorks = true;
+    public $rewriteWorks = TRUE;
     public $minAppUri = '/min';
     public $groupsConfigFile = '';
 
@@ -20,11 +20,11 @@ class Minify_HTML_Helper {
      * 
      * @param string|array $keyOrFiles a group key or array of filepaths/URIs
      * @param array $opts options:
-     *   'farExpires' : (default true) append a modified timestamp for cache revving
-     *   'debug' : (default false) append debug flag
+     *   'farExpires' : (default TRUE) append a modified timestamp for cache revving
+     *   'debug' : (default FALSE) append debug flag
      *   'charset' : (default 'UTF-8') for htmlspecialchars
      *   'minAppUri' : (default '/min') URI of min directory
-     *   'rewriteWorks' : (default true) does mod_rewrite work in min app?
+     *   'rewriteWorks' : (default TRUE) does mod_rewrite work in min app?
      *   'groupsConfigFile' : specify if different
      * @return string
      */
@@ -58,7 +58,7 @@ class Minify_HTML_Helper {
      * @param bool $debug
      * @return string
      */
-    public function getRawUri($farExpires = true, $debug = false)
+    public function getRawUri($farExpires = true, $debug = FALSE)
     {
         $path = rtrim($this->minAppUri, '/') . '/';
         if (! $this->rewriteWorks) {
@@ -84,7 +84,7 @@ class Minify_HTML_Helper {
      * @param array $files
      * @param bool $checkLastModified
      */
-    public function setFiles($files, $checkLastModified = true)
+    public function setFiles($files, $checkLastModified = TRUE)
     {
         $this->_groupKey = null;
         if ($checkLastModified) {
@@ -110,7 +110,7 @@ class Minify_HTML_Helper {
      * @param string $key
      * @param bool $checkLastModified
      */
-    public function setGroup($key, $checkLastModified = true)
+    public function setGroup($key, $checkLastModified = TRUE)
     {
         $this->_groupKey = $key;
         if ($checkLastModified) {
@@ -194,7 +194,7 @@ class Minify_HTML_Helper {
     protected static function _getShortestUri($paths, $minRoot = '/min/') {
         $pos = 0;
         $base = '';
-        while (true) {
+        while (TRUE) {
             $c = self::_getCommonCharAtPos($paths, $pos);
             if ($c === '') {
                 break;

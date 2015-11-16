@@ -28,13 +28,13 @@ class comercio_FornecedorModelo extends comercio_Modelo
         
         $function = '';
         if ($perm_view) {
-            $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Zoom\'     ,Array(\'Visualizar Comentários do Fornecedor\'        ,\'comercio/Fornecedor/Fornecedores_View/\'.$d.\'/\'    ,\'\'),true);';
+            $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Zoom\'     ,Array(\'Visualizar Comentários do Fornecedor\'        ,\'comercio/Fornecedor/Fornecedores_View/\'.$d.\'/\'    ,\'\'),TRUE);';
         }
         if ($perm_editar) {
-            $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Editar\'     ,Array(\'Editar Fornecedor\'        ,\'comercio/Fornecedor/Fornecedores_Edit/\'.$d.\'/\'    ,\'\'),true);';
+            $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Editar\'     ,Array(\'Editar Fornecedor\'        ,\'comercio/Fornecedor/Fornecedores_Edit/\'.$d.\'/\'    ,\'\'),TRUE);';
         }
         if ($perm_del) {
-            $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Deletar\'    ,Array(\'Deletar Fornecedor\'       ,\'comercio/Fornecedor/Fornecedores_Del/\'.$d.\'/\'     ,\'Deseja realmente deletar esse Fornecedor ?\'),true);';
+            $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Deletar\'    ,Array(\'Deletar Fornecedor\'       ,\'comercio/Fornecedor/Fornecedores_Del/\'.$d.\'/\'     ,\'Deseja realmente deletar esse Fornecedor ?\'),TRUE);';
         }
 
         

@@ -123,7 +123,7 @@ class Financeiro_ListarControle extends Financeiro_Controle
     }
     static function sacar_formcadastro() {
         $form = new \Framework\Classes\Form('financeiro_sacar_form', 'Financeiro/Listar/sacar_inserir/', 'formajax');
-        $form->Input_Novo(__('Quantia a Sacar (Em Reais)'),'sacar_quantia', '', 'text', 30, 'obrigatorio', '', false,'', '', 'Numero', '', false);
+        $form->Input_Novo(__('Quantia a Sacar (Em Reais)'),'sacar_quantia', '', 'text', 30, 'obrigatorio', '', FALSE, '', '', 'Numero', '', FALSE);
         
         $formulario = $form->retorna_form('Realizar Saque');
 
@@ -139,7 +139,7 @@ class Financeiro_ListarControle extends Financeiro_Controle
         global $config;
         
         if (!isset($_POST["sacar_quantia"])) {
-            return false;
+            return FALSE;
         }
         
         // Para verificar erro
@@ -154,7 +154,7 @@ class Financeiro_ListarControle extends Financeiro_Controle
                 "mgs_principal" => __('Erro'),
                 "mgs_secundaria" => 'Saque Minimo: R$ 500,00'
             );
-            $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens); 
+            $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens); 
             $this->_Visual->Javascript_Executar('$("#quantia").css(\'border\', \'2px solid #FFAEB0\').focus();');
         } else if ($saldo<$quantia) {
             $mensagens = array(
@@ -162,12 +162,12 @@ class Financeiro_ListarControle extends Financeiro_Controle
                 "mgs_principal" => __('Erro'),
                 "mgs_secundaria" => __('Saldo Insuficiente')
             );
-            $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens); 
+            $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens); 
             $this->_Visual->Javascript_Executar('$("#quantia").css(\'border\', \'2px solid #FFAEB0\').focus();');
         } else {
             $sucesso =  $this->_Modelo->sacar_inserir($quantia);
             // mostra mensagem de sucesso
-            if ($sucesso===true) {
+            if ($sucesso === TRUE) {
                 $mgm = 'Usuario Realizou um saque no sistema, com saldo suficiente e ja descontado de seu saldo<br>'.
                         '<br><br>#Id: #'.$this->_Acl->Usuario_GetID().
                         '<br>Nome: '.$this->_Acl->logado_usuario->nome.
@@ -175,7 +175,7 @@ class Financeiro_ListarControle extends Financeiro_Controle
                         '<br>Valor do Saque: R$'.$quantia.
                         '<br>Saldo Restante do Usuario: R$'.($saldo-$quantia);
                 $mgm .= '<br>Datetime: '.APP_HORA;
-                $email = Mail_Send($this->_Acl->logado_usuario->nome, $this->_Acl->logado_usuario->email,SISTEMA_EMAIL,SISTEMA_NOME.' - Saque de Usuario do Sistema',$mgm);
+                $email = Mail_Send($this->_Acl->logado_usuario->nome, $this->_Acl->logado_usuario->email,SISTEMA_EMAIL,SISTEMA_NOME.' - Saque de Usuario do Sistema', $mgm);
                 if ($email==1) {
                     $mensagens = array(
                         "tipo" => 'sucesso',
@@ -197,7 +197,7 @@ class Financeiro_ListarControle extends Financeiro_Controle
                     "mgs_secundaria" => __('Erro')
                 );
             }
-            $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+            $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
         }
         $this->Main();
         if ($erro==0) $this->_Visual->Json_Info_Update('Titulo', __('Saque Realizado com Sucesso'));
@@ -213,7 +213,7 @@ class Financeiro_ListarControle extends Financeiro_Controle
     static function transferencia_formcadastro() {
         $form = new \Framework\Classes\Form('financeiro_transferencia_form', 'Financeiro/Listar/transferencia_inserir/', 'formajax');
         $form->Input_Novo('Login do Usuario', 'login', '', 'text', 30, 'obrigatorio');
-        $form->Input_Novo('Quantia a Transferir (Em Reais)', 'transferir_quantia', '', 'text', 30, 'obrigatorio', '', false,'', '', 'Numero', '', false);
+        $form->Input_Novo('Quantia a Transferir (Em Reais)', 'transferir_quantia', '', 'text', 30, 'obrigatorio', '', FALSE, '', '', 'Numero', '', FALSE);
         
         $formulario = $form->retorna_form('Transferir Quantia');
 
@@ -221,7 +221,7 @@ class Financeiro_ListarControle extends Financeiro_Controle
     }
     public function transferencia_inserir() {
         if (!isset($_POST["login"]) || !isset($_POST["transferir_quantia"])) {
-            return false;
+            return FALSE;
         }
         $erro = 1;
         // captura variaveis
@@ -237,7 +237,7 @@ class Financeiro_ListarControle extends Financeiro_Controle
                 "mgs_principal" => __('Erro'),
                 "mgs_secundaria" => 'Transferência Minima: R$ 50,00'
             );
-            $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens); 
+            $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens); 
             $this->_Visual->Javascript_Executar('$("#quantia").css(\'border\', \'2px solid #FFAEB0\').focus();');
         } else if ($saldo<$quantia) {
             $mensagens = array(
@@ -245,20 +245,20 @@ class Financeiro_ListarControle extends Financeiro_Controle
                 "mgs_principal" => __('Erro'),
                 "mgs_secundaria" => __('Saldo Insuficiente')
             );
-            $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens); 
+            $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens); 
             $this->_Visual->Javascript_Executar('$("#quantia").css(\'border\', \'2px solid #FFAEB0\').focus();');
-        } else if ($existelogin===false) {
+        } else if ($existelogin === FALSE) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Erro'),
                 "mgs_secundaria" => __('Login não existe')
             );
-            $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens); 
+            $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens); 
             $this->_Visual->Javascript_Executar('$("#login").css(\'border\', \'2px solid #FFAEB0\').focus();');
         } else {
-            $sucesso =  $this->_Modelo->transferencia_inserir($login,$quantia);
+            $sucesso =  $this->_Modelo->transferencia_inserir($login, $quantia);
             // mostra mensagem de sucesso
-            if ($sucesso===true) {
+            if ($sucesso === TRUE) {
                 $mensagens = array(
                     "tipo" => 'sucesso',
                     "mgs_principal" => __('Transferência Realizada'),
@@ -272,7 +272,7 @@ class Financeiro_ListarControle extends Financeiro_Controle
                     "mgs_secundaria" => __('Erro')
                 );
             }
-            $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+            $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
         }
         
         $this->Main();

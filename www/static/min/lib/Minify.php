@@ -60,7 +60,7 @@ class Minify {
      * 
      * @var bool
      */
-    public static $isDocRootSet = false;
+    public static $isDocRootSet = FALSE;
 
     /**
      * Specify a cache object (with identical interface as Minify_Cache_File) or
@@ -72,12 +72,12 @@ class Minify {
      * @param mixed $cache object with identical interface as Minify_Cache_File or
      * a directory path, or null to disable caching. (default = '')
      * 
-     * @param bool $fileLocking (default = true) This only applies if the first
+     * @param bool $fileLocking (default = TRUE) This only applies if the first
      * parameter is a string.
      *
      * @return null
      */
-    public static function setCache($cache = '', $fileLocking = true)
+    public static function setCache($cache = '', $fileLocking = TRUE)
     {
         if (is_string($cache)) {
             self::$_cache = new Minify_Cache_File($cache, $fileLocking);
@@ -92,13 +92,13 @@ class Minify {
      * Here are the available options and defaults in the base controller:
      * 
      * 'isPublic' : send "public" instead of "private" in Cache-Control 
-     * headers, allowing shared caches to cache the output. (default true)
+     * headers, allowing shared caches to cache the output. (default TRUE)
      * 
      * 'quiet' : set to true to have serve() return an array rather than sending
-     * any headers/output (default false)
+     * any headers/output (default FALSE)
      * 
      * 'encodeOutput' : set to false to disable content encoding, and not send
-     * the Vary header (default true)
+     * the Vary header (default TRUE)
      * 
      * 'encodeMethod' : generally you should let this be determined by 
      * HTTP_Encoder (leave null), but you can force a particular encoding
@@ -115,11 +115,11 @@ class Minify {
      * prevent conditional GETs. Note this has nothing to do with server-side caching.
      * 
      * 'rewriteCssUris' : If true, serve() will automatically set the 'currentDir'
-     * minifier option to enable URI rewriting in CSS files (default true)
+     * minifier option to enable URI rewriting in CSS files (default TRUE)
      * 
      * 'bubbleCssImports' : If true, all @import declarations in combined CSS
      * files will be move to the top. Note this may alter effective CSS values
-     * due to a change in order. (default false)
+     * due to a change in order. (default FALSE)
      * 
      * 'debug' : set to true to minify all sources with the 'Lines' controller, which
      * eases the debugging of combined files. This also prevents 304 responses.
@@ -185,7 +185,7 @@ class Minify {
             if (! self::$_options['quiet']) {
                 self::_errorExit(self::$_options['badRequestHeader'], self::URL_DEBUG);
             } else {
-                list(,$statusCode) = explode(' ', self::$_options['badRequestHeader']);
+                list(, $statusCode) = explode(' ', self::$_options['badRequestHeader']);
                 return array(
                     'success' => false
                     ,'statusCode' => (int)$statusCode
@@ -204,7 +204,7 @@ class Minify {
         
         // determine encoding
         if (self::$_options['encodeOutput']) {
-            $sendVary = true;
+            $sendVary = TRUE;
             if (self::$_options['encodeMethod'] !== null) {
                 // controller specifically requested this
                 $contentEncoding = self::$_options['encodeMethod'];
@@ -212,8 +212,8 @@ class Minify {
                 // sniff request header
                 // depending on what the client accepts, $contentEncoding may be
                 // 'x-gzip' while our internal encodeMethod is 'gzip'. Calling
-                // getAcceptedEncoding(false, false) leaves out compress and deflate as options.
-                list(self::$_options['encodeMethod'], $contentEncoding) = HTTP_Encoder::getAcceptedEncoding(false, false);
+                // getAcceptedEncoding(FALSE, FALSE) leaves out compress and deflate as options.
+                list(self::$_options['encodeMethod'], $contentEncoding) = HTTP_Encoder::getAcceptedEncoding(FALSE, FALSE);
                 $sendVary = ! HTTP_Encoder::isBuggyIe();
             }
         } else {
@@ -229,7 +229,7 @@ class Minify {
         if (self::$_options['maxAge'] > 0) {
             $cgOptions['maxAge'] = self::$_options['maxAge'];
         } elseif (self::$_options['debug']) {
-            $cgOptions['invalidate'] = true;
+            $cgOptions['invalidate'] = TRUE;
         }
         $cg = new HTTP_ConditionalGet($cgOptions);
         if ($cg->cacheIsValid) {
@@ -295,7 +295,7 @@ class Minify {
             }
         } else {
             // no cache
-            $cacheIsReady = false;
+            $cacheIsReady = FALSE;
             try {
                 $content = self::_combineMinify();
             } catch (Exception $e) {
@@ -384,7 +384,7 @@ class Minify {
      */
     public static function setDocRoot($docRoot = '')
     {
-        self::$isDocRootSet = true;
+        self::$isDocRootSet = TRUE;
         if ($docRoot) {
             $_SERVER['DOCUMENT_ROOT'] = $docRoot;
         } elseif (isset($_SERVER['SERVER_SOFTWARE'])
@@ -426,7 +426,7 @@ class Minify {
     protected static function _errorExit($header, $url)
     {
         $url = htmlspecialchars($url, ENT_QUOTES);
-        list(,$h1) = explode(' ', $header, 2);
+        list(, $h1) = explode(' ', $header, 2);
         $h1 = htmlspecialchars($h1);
         // FastCGI environments require 3rd arg to header() to be set
         list(, $code) = explode(' ', $header, 3);

@@ -21,7 +21,7 @@ class Engenharia_Modelo extends \Framework\App\Modelo
      * @param type $usuarioid
      * @param type $motivoid
      */
-    static function Estoque_Exibir($produtoid,$motivoid) {
+    static function Estoque_Exibir($produtoid, $motivoid) {
         $produtoid = (int) $produtoid;
         $motivoid = (int) $motivoid;
         $Registro = &\Framework\App\Registro::getInstacia();

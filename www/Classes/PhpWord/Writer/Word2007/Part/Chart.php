@@ -42,13 +42,13 @@ class Chart extends AbstractPart
      */
     private $types = array(
         'pie'       => array('type' => 'pie', 'colors' => 1),
-        'doughnut'  => array('type' => 'doughnut', 'colors' => 1, 'hole' => 75, 'no3d' => true),
+        'doughnut'  => array('type' => 'doughnut', 'colors' => 1, 'hole' => 75, 'no3d' => TRUE),
         'bar'       => array('type' => 'bar', 'colors' => 0, 'axes' => TRUE, 'bar' => 'bar'),
         'column'    => array('type' => 'bar', 'colors' => 0, 'axes' => TRUE, 'bar' => 'col'),
-        'line'      => array('type' => 'line', 'colors' => 0, 'axes' => true),
-        'area'      => array('type' => 'area', 'colors' => 0, 'axes' => true),
-        'radar'     => array('type' => 'radar', 'colors' => 0, 'axes' => TRUE, 'radar' => 'standard', 'no3d' => true),
-        'scatter'   => array('type' => 'scatter', 'colors' => 0, 'axes' => TRUE, 'scatter' => 'marker', 'no3d' => true),
+        'line'      => array('type' => 'line', 'colors' => 0, 'axes' => TRUE),
+        'area'      => array('type' => 'area', 'colors' => 0, 'axes' => TRUE),
+        'radar'     => array('type' => 'radar', 'colors' => 0, 'axes' => TRUE, 'radar' => 'standard', 'no3d' => TRUE),
+        'scatter'   => array('type' => 'scatter', 'colors' => 0, 'axes' => TRUE, 'scatter' => 'marker', 'no3d' => TRUE),
     );
 
     /**
@@ -184,7 +184,7 @@ class Chart extends AbstractPart
      * @param bool $scatter
      * @return void
      */
-    private function writeSeries(XMLWriter $xmlWriter, $scatter = false)
+    private function writeSeries(XMLWriter $xmlWriter, $scatter = FALSE)
     {
         $series = $this->element->getSeries();
 
@@ -202,7 +202,7 @@ class Chart extends AbstractPart
                 $this->writeShape($xmlWriter);
             }
 
-            if ($scatter === true) {
+            if ($scatter === TRUE) {
                 $this->writeSeriesItem($xmlWriter, 'xVal', $categories);
                 $this->writeSeriesItem($xmlWriter, 'yVal', $values);
             } else {
@@ -292,7 +292,7 @@ class Chart extends AbstractPart
         $xmlWriter->writeElementBlock('c:orientation', 'val', 'minMax');
         $xmlWriter->endElement(); // c:scaling
 
-        $this->writeShape($xmlWriter, true);
+        $this->writeShape($xmlWriter, TRUE);
 
         $xmlWriter->endElement(); // $axisType
     }
@@ -305,11 +305,11 @@ class Chart extends AbstractPart
      * @param bool $line
      * @return void
      */
-    private function writeShape(XMLWriter $xmlWriter, $line = false)
+    private function writeShape(XMLWriter $xmlWriter, $line = FALSE)
     {
         $xmlWriter->startElement('c:spPr');
         $xmlWriter->startElement('a:ln');
-        if ($line === true) {
+        if ($line === TRUE) {
             $xmlWriter->writeElement('a:solidFill');
         } else {
             $xmlWriter->writeElement('a:noFill');

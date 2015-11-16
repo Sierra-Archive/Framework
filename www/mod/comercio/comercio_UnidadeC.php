@@ -33,15 +33,15 @@ class comercio_UnidadeControle extends comercio_Controle
     */
     public function Main() {
         \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'comercio/Unidade/Unidades/');
-        return false;
+        return FALSE;
     }
-    static function Endereco_Unidade($true=true) {
+    static function Endereco_Unidade($true= TRUE ) {
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
         $titulo = __('Unidades');
         $link = 'comercio/Unidade/Unidades';
-        if ($true===true) {
-            $_Controle->Tema_Endereco($titulo,$link);
+        if ($true === TRUE) {
+            $_Controle->Tema_Endereco($titulo, $link);
         } else {
             $_Controle->Tema_Endereco($titulo);
         }
@@ -52,17 +52,17 @@ class comercio_UnidadeControle extends comercio_Controle
      * @version 0.4.2
      */
     public function Unidades() {
-        self::Endereco_Unidade(false);
+        self::Endereco_Unidade(FALSE);
         $i = 0;
         $this->_Visual->Blocar('<a title="Adicionar Unidade" class="btn btn-success lajax explicar-titulo" data-acao="" href="'.URL_PATH.'comercio/Unidade/Unidades_Add">Adicionar nova Unidade</a><div class="space15"></div>');
         $linhas = $this->_Modelo->db->Sql_Select('Comercio_Unidade');
-        if ($linhas!==false && !empty($linhas)) {
+        if ($linhas !== FALSE && !empty($linhas)) {
             if (is_object($linhas)) $linhas = Array(0=>$linhas);
             reset($linhas);
             foreach ($linhas as $indice=>&$valor) {
                 //$tabela['#Id'][$i]       = '#'.$valor->id;
                 $tabela['Nome da Unidade'][$i]      = $valor->nome;
-                $tabela['Funções'][$i]   = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Unidade'        ,'comercio/Unidade/Unidades_Edit/'.$valor->id.'/'    ,'')).
+                $tabela['Funções'][$i]   = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Unidade'        ,'comercio/Unidade/Unidades_Edit/'.$valor->id.'/'    , '')).
                                            $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Unidade'       ,'comercio/Unidade/Unidades_Del/'.$valor->id.'/'     ,'Deseja realmente deletar essa Unidade ?'));
                 ++$i;
             }
@@ -83,7 +83,7 @@ class comercio_UnidadeControle extends comercio_Controle
      * @version 0.4.2
      */
     public function Unidades_Add() {
-        self::Endereco_Unidade(true);
+        self::Endereco_Unidade(TRUE);
         // Carrega Config
         $titulo1    = __('Adicionar Unidade');
         $titulo2    = __('Salvar Unidade');
@@ -91,7 +91,7 @@ class comercio_UnidadeControle extends comercio_Controle
         $formbt     = __('Salvar');
         $formlink   = 'comercio/Unidade/Unidades_Add2/';
         $campos = Comercio_Unidade_DAO::Get_Colunas();
-        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos);
+        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1, $titulo2, $formlink, $formid, $formbt, $campos);
     }
     /**
      * 
@@ -107,7 +107,7 @@ class comercio_UnidadeControle extends comercio_Controle
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = __('Unidade cadastrada com sucesso.');
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
     }
     /**
      * 
@@ -116,16 +116,16 @@ class comercio_UnidadeControle extends comercio_Controle
      * @version 0.4.2
      */
     public function Unidades_Edit($id) {
-        self::Endereco_Unidade(true);
+        self::Endereco_Unidade(TRUE);
         // Carrega Config
         $titulo1    = 'Editar Unidade (#'.$id.')';
         $titulo2    = __('Alteração de Unidade');
         $formid     = 'form_Sistema_AdminC_UnidadeEdit';
         $formbt     = __('Alterar Unidade');
         $formlink   = 'comercio/Unidade/Unidades_Edit2/'.$id;
-        $editar     = Array('Comercio_Unidade',$id);
+        $editar     = Array('Comercio_Unidade', $id);
         $campos = Comercio_Unidade_DAO::Get_Colunas();
-        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos,$editar);
+        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1, $titulo2, $formlink, $formid, $formbt, $campos, $editar);
     }
     /**
      * 
@@ -136,12 +136,12 @@ class comercio_UnidadeControle extends comercio_Controle
      */
     public function Unidades_Edit2($id) {
         $titulo     = __('Unidade Editada com Sucesso');
-        $dao        = Array('Comercio_Unidade',$id);
+        $dao        = Array('Comercio_Unidade', $id);
         $funcao     = '$this->Unidades();';
         $sucesso1   = __('Unidade Alterada com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);      
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);      
     }
     /**
      * 
@@ -158,7 +158,7 @@ class comercio_UnidadeControle extends comercio_Controle
         $linha = $this->_Modelo->db->Sql_Select('Comercio_Unidade', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($linha);
         // Mensagem
-    	if ($sucesso===true) {
+    	if ($sucesso === TRUE) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletada'),
@@ -171,12 +171,12 @@ class comercio_UnidadeControle extends comercio_Controle
                 "mgs_secundaria" => __('Erro')
             );
         }
-        $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+        $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
         
         $this->Unidades();
         
         $this->_Visual->Json_Info_Update('Titulo', __('Unidade deletada com Sucesso'));  
-        $this->_Visual->Json_Info_Update('Historico', false);  
+        $this->_Visual->Json_Info_Update('Historico', FALSE);  
     }
 }
 ?>

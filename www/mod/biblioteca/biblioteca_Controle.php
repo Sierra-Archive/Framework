@@ -16,15 +16,15 @@ class biblioteca_Controle extends \Framework\App\Controle
         // construct
         parent::__construct();
     }
-    static function Bibliotecas_AtualizaTamanho_Pai($parent=false) {
+    static function Bibliotecas_AtualizaTamanho_Pai($parent = FALSE) {
         $Registro = &\Framework\App\Registro::getInstacia();
-        if ($parent===false) return false;
+        if ($parent === FALSE) return FALSE;
         if (!is_object($parent)) {
             $parent = (int) $parent;
-            if ($parent<=0) return false;
+            if ($parent<=0) return FALSE;
 
             $pai = $Registro->_Modelo->db->Sql_Select('Biblioteca', '{sigla}id = '.$parent, 1);
-            if ($pai===false) return false;
+            if ($pai === FALSE) return FALSE;
         } else {
             $pai = $parent;
             $parent = (int) $pai->id;
@@ -35,7 +35,7 @@ class biblioteca_Controle extends \Framework\App\Controle
         
         // Soma Tamanho dos Filhos
         $biblioteca = $Registro->_Modelo->db->Sql_Select('Biblioteca', '{sigla}parent = '.$parent);
-        if ($biblioteca!==false) {
+        if ($biblioteca !== FALSE) {
             if (is_object($biblioteca)) {
                 $biblioteca = Array($biblioteca);
             }

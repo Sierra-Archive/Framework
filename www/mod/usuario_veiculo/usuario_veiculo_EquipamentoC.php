@@ -33,40 +33,40 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
     */
     public function Main() {
         \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'usuario_veiculo/Equipamento/Equipamentos');
-        return false;
+        return FALSE;
     }
-    static function Endereco_Equipamento($true=true) {
+    static function Endereco_Equipamento($true= TRUE ) {
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
         $link   = 'usuario_veiculo/Equipamento/Equipamentos';
-        if ($true===true) {
-            $_Controle->Tema_Endereco(__('Equipamentos'),$link);
+        if ($true === TRUE) {
+            $_Controle->Tema_Endereco(__('Equipamentos'), $link);
         } else {
             $_Controle->Tema_Endereco(__('Equipamentos'));
         }
     }
-    static function Endereco_Equipamento_Marca($true=true) {
+    static function Endereco_Equipamento_Marca($true= TRUE ) {
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
         $titulo = __('Marcas');
         $link   = 'usuario_veiculo/Equipamento/Marcas';
         // Chama Equipamento
-        self::Endereco_Equipamento(true);
-        if ($true===true) {
-            $_Controle->Tema_Endereco($titulo,$link);
+        self::Endereco_Equipamento(TRUE);
+        if ($true === TRUE) {
+            $_Controle->Tema_Endereco($titulo, $link);
         } else {
             $_Controle->Tema_Endereco($titulo);
         }
     }
-    static function Endereco_Equipamento_Modelo($true=true) {
+    static function Endereco_Equipamento_Modelo($true= TRUE ) {
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
         $titulo = __('Modelos');
         $link   = 'usuario_veiculo/Equipamento/Modelos';
         // Chama Equipamento
-        self::Endereco_Equipamento_Marca(true);
-        if ($true===true) {
-            $_Controle->Tema_Endereco($titulo,$link);
+        self::Endereco_Equipamento_Marca(TRUE);
+        if ($true === TRUE) {
+            $_Controle->Tema_Endereco($titulo, $link);
         } else {
             $_Controle->Tema_Endereco($titulo);
         }
@@ -76,9 +76,9 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Equipamentos($export=false) {
+    public function Equipamentos($export = FALSE) {
         $i = 0;
-        self::Endereco_Equipamento(false);
+        self::Endereco_Equipamento(FALSE);
         $titulo = __('Equipamentos');
         $titulo2 = \Framework\Classes\Texto::Transformar_Plural_Singular($titulo);
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
@@ -95,7 +95,7 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
             )
         )));
         $equipamentos = $this->_Modelo->db->Sql_Select('Usuario_Veiculo_Equipamento');
-        if ($equipamentos!==false && !empty($equipamentos)) {
+        if ($equipamentos !== FALSE && !empty($equipamentos)) {
             if (is_object($equipamentos)) $equipamentos = Array(0=>$equipamentos);
             reset($equipamentos);
             foreach ($equipamentos as $indice=>&$valor) {
@@ -107,12 +107,12 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
                 if (\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_veiculo_Status')) {
                     $tabela['Status'][$i]     =  '<span class="statusEquipamentos'.$valor->id.'">'.self::labelEquipamentos($valor).'</span>';
                 }
-                $tabela['Funções'][$i]                  =   $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Equipamento'        ,'usuario_veiculo/Equipamento/Equipamentos_Edit/'.$valor->id.'/'    ,'')).
+                $tabela['Funções'][$i]                  =   $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Equipamento'        ,'usuario_veiculo/Equipamento/Equipamentos_Edit/'.$valor->id.'/'    , '')).
                                                         $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Equipamento'       ,'usuario_veiculo/Equipamento/Equipamentos_Del/'.$valor->id.'/'     ,'Deseja realmente deletar esse Equipamento ?'));
                 ++$i;
             }
-            if ($export!==false) {
-                self::Export_Todos($export,$tabela, 'Equipamentos');
+            if ($export !== FALSE) {
+                self::Export_Todos($export, $tabela, 'Equipamentos');
             } else {
                 $this->_Visual->Show_Tabela_DataTable($tabela);
             }
@@ -124,7 +124,7 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
         $this->_Visual->Bloco_Unico_CriaJanela($titulo_janela);
         
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo',$titulo_janela);
+        $this->_Visual->Json_Info_Update('Titulo', $titulo_janela);
     }
     /**
      * Deleta Campos de Propostas 
@@ -137,25 +137,25 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
         }
         
         
-        if (\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Fornecedor')===false) {
+        if (\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Fornecedor') === FALSE) {
             self::DAO_Campos_Retira($campos,'fornecedor');
         }
         
-        if (\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_veiculo_Equipamento_Marca')===false) {
+        if (\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_veiculo_Equipamento_Marca') === FALSE) {
             self::DAO_Campos_Retira($campos,'marca');
             self::DAO_Campos_Retira($campos,'modelo');
         }
     }
-    public function StatusEquipamentos($id=false) {
+    public function StatusEquipamentos($id = FALSE) {
         
-        if ($id===false) {
-            return false;
+        if ($id === FALSE) {
+            return FALSE;
         }
         $id = (int) $id;
         $resultado = $this->_Modelo->db->Sql_Select('Usuario_Veiculo_Equipamento', 'id = '.$id,1);
         
-        if ($resultado===false || !is_object($resultado)) {
-            return false;
+        if ($resultado === FALSE || !is_object($resultado)) {
+            return FALSE;
         }
         
         if ($resultado->status=='0') { // de aprovada para Aprovada em Execução
@@ -180,7 +180,7 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
                 'js' => '',
                 'html' =>  self::labelEquipamentos($resultado)
             );
-            $this->_Visual->Json_IncluiTipo('Conteudo',$conteudo);
+            $this->_Visual->Json_IncluiTipo('Conteudo', $conteudo);
             $this->_Visual->Json_Info_Update('Titulo', __('Status Alterado')); 
         } else {
             $mensagens = array(
@@ -188,13 +188,13 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
                 "mgs_principal"     => __('Erro'),
                 "mgs_secundaria"    => __('Ocorreu um Erro.')
             );
-            $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+            $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
 
             $this->_Visual->Json_Info_Update('Titulo', __('Erro')); 
         }
-        $this->_Visual->Json_Info_Update('Historico', false);  
+        $this->_Visual->Json_Info_Update('Historico', FALSE);  
     }
-    public static function labelEquipamentos($objeto,$link=true) {
+    public static function labelEquipamentos($objeto, $link= TRUE ) {
         $status = $objeto->status;
         $id = $objeto->id;
         if ($status=='0') {
@@ -210,7 +210,7 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
             $nometipo = __('Em uso');
         }
         $html = '<span class="badge badge-'.$tipo.'">'.$nometipo.'</span>';
-        if ($link===true) {
+        if ($link === TRUE) {
             $html = '<a href="'.URL_PATH.'usuario_veiculo/Equipamento/StatusEquipamentos/'.$id.'" border="1" class="lajax explicar-titulo" title="'.$nometipo.'" data-acao="" data-confirma="Deseja Realmente alterar o Status?">'.$html.'</a>';
         }
         return $html;
@@ -221,7 +221,7 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
      * @version 0.4.2
      */
     public function Equipamentos_Add() {   
-        self::Endereco_Equipamento(true);   
+        self::Endereco_Equipamento(TRUE);   
         $titulo = __('Equipamentos');
         $titulo_singular = \Framework\Classes\Texto::Transformar_Plural_Singular($titulo);  
         // Carrega Config
@@ -232,7 +232,7 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
         $formlink   = 'usuario_veiculo/Equipamento/Equipamentos_Add2/';
         $campos = Usuario_Veiculo_Equipamento_DAO::Get_Colunas();
         self::Campos_Deletar($campos);
-        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos);
+        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1, $titulo2, $formlink, $formid, $formbt, $campos);
     }
     /**
      * 
@@ -250,7 +250,7 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = $titulo_singular.' cadastrado com sucesso.';
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
     }
     /**
      * 
@@ -261,17 +261,17 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
     public function Equipamentos_Edit($id) {
         $titulo_plural = __('Equipamentos');
         $titulo_singular = \Framework\Classes\Texto::Transformar_Plural_Singular($titulo_plural);  
-        self::Endereco_Equipamento(true);     
+        self::Endereco_Equipamento(TRUE);     
         // Carrega Config
         $titulo1    = 'Editar '.$titulo_singular.' (#'.$id.')';
         $titulo2    = 'Alteração de '.$titulo_singular;
         $formid     = 'form_Sistema_AdminC_EquipamentoEdit';
         $formbt     = 'Alterar '.$titulo_singular;
         $formlink   = 'usuario_veiculo/Equipamento/Equipamentos_Edit2/'.$id;
-        $editar     = Array('Usuario_Veiculo_Equipamento',$id);
+        $editar     = Array('Usuario_Veiculo_Equipamento', $id);
         $campos = Usuario_Veiculo_Equipamento_DAO::Get_Colunas();
         self::Campos_Deletar($campos);
-        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos,$editar);
+        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1, $titulo2, $formlink, $formid, $formbt, $campos, $editar);
     }
     /**
      * 
@@ -284,12 +284,12 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
         $titulo_plural = __('Equipamentos');
         $titulo_singular = \Framework\Classes\Texto::Transformar_Plural_Singular($titulo_plural); 
         $titulo     = $titulo_singular.' Editado com Sucesso';
-        $dao        = Array('Usuario_Veiculo_Equipamento',$id);
+        $dao        = Array('Usuario_Veiculo_Equipamento', $id);
         $funcao     = '$this->Equipamentos();';
         $sucesso1   = __('Equipamento Alterado com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);      
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);      
     }
     /**
      * 
@@ -308,7 +308,7 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
         $equipamento = $this->_Modelo->db->Sql_Select('Usuario_Veiculo_Equipamento', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($equipamento);
         // Mensagem
-    	if ($sucesso===true) {
+    	if ($sucesso === TRUE) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
@@ -321,20 +321,20 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
                 "mgs_secundaria" => __('Erro')
             );
         }
-        $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+        $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
         
         $this->Equipamentos();
         
         $this->_Visual->Json_Info_Update('Titulo', $titulo_singular.' deletado com Sucesso');  
-        $this->_Visual->Json_Info_Update('Historico', false);  
+        $this->_Visual->Json_Info_Update('Historico', FALSE);  
     }
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Marcas($export=false) {
-        self::Endereco_Equipamento_Marca(false);
+    public function Marcas($export = FALSE) {
+        self::Endereco_Equipamento_Marca(FALSE);
         $i = 0;
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
             Array(
@@ -350,18 +350,18 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
             )
         )));
         $marcas = $this->_Modelo->db->Sql_Select('Usuario_Veiculo_Equipamento_Marca');
-        if ($marcas!==false && !empty($marcas)) {
+        if ($marcas !== FALSE && !empty($marcas)) {
             if (is_object($marcas)) $marcas = Array(0=>$marcas);
             reset($marcas);
             foreach ($marcas as $indice=>&$valor) {
                 //$tabela['#Id'][$i]       = '#'.$valor->id;
                 $tabela['Nome'][$i]      = $valor->nome;
-                $tabela['Funções'][$i]   = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Marca'        ,'usuario_veiculo/Equipamento/Marcas_Edit/'.$valor->id.'/'    ,'')).
+                $tabela['Funções'][$i]   = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Marca'        ,'usuario_veiculo/Equipamento/Marcas_Edit/'.$valor->id.'/'    , '')).
                                            $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Marca'       ,'usuario_veiculo/Equipamento/Marcas_Del/'.$valor->id.'/'     ,'Deseja realmente deletar essa Marca ?'));
                 ++$i;
             }
-            if ($export!==false) {
-                self::Export_Todos($export,$tabela, 'Equipamentos - Marcas');
+            if ($export !== FALSE) {
+                self::Export_Todos($export, $tabela, 'Equipamentos - Marcas');
             } else {
                 $this->_Visual->Show_Tabela_DataTable($tabela);
             }
@@ -381,7 +381,7 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
      * @version 0.4.2
      */
     public function Marcas_Add() {
-        self::Endereco_Equipamento_Marca(true);
+        self::Endereco_Equipamento_Marca(TRUE);
         // Carrega Config
         $titulo1    = __('Adicionar Marca');
         $titulo2    = __('Salvar Marca');
@@ -389,7 +389,7 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
         $formbt     = __('Salvar');
         $formlink   = 'usuario_veiculo/Equipamento/Marcas_Add2/';
         $campos = Usuario_Veiculo_Equipamento_Marca_DAO::Get_Colunas();
-        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos);
+        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1, $titulo2, $formlink, $formid, $formbt, $campos);
     }
     /**
      * 
@@ -405,7 +405,7 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = __('Marca cadastrada com sucesso.');
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
     }
     /**
      * 
@@ -414,16 +414,16 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
      * @version 0.4.2
      */
     public function Marcas_Edit($id) {
-        self::Endereco_Equipamento_Marca(true);
+        self::Endereco_Equipamento_Marca(TRUE);
         // Carrega Config
         $titulo1    = 'Editar Marca (#'.$id.')';
         $titulo2    = __('Alteração de Marca');
         $formid     = 'form_Sistema_AdminC_MarcaEdit';
         $formbt     = __('Alterar Marca');
         $formlink   = 'usuario_veiculo/Equipamento/Marcas_Edit2/'.$id;
-        $editar     = Array('Usuario_Veiculo_Equipamento_Marca',$id);
+        $editar     = Array('Usuario_Veiculo_Equipamento_Marca', $id);
         $campos = Usuario_Veiculo_Equipamento_Marca_DAO::Get_Colunas();
-        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos,$editar);
+        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1, $titulo2, $formlink, $formid, $formbt, $campos, $editar);
     }
     /**
      * 
@@ -434,12 +434,12 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
      */
     public function Marcas_Edit2($id) {
         $titulo     = __('Marca Editada com Sucesso');
-        $dao        = Array('Usuario_Veiculo_Equipamento_Marca',$id);
+        $dao        = Array('Usuario_Veiculo_Equipamento_Marca', $id);
         $funcao     = '$this->Marcas();';
         $sucesso1   = __('Marca Alterada com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);      
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);      
     }
     /**
      * 
@@ -456,7 +456,7 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
         $marca = $this->_Modelo->db->Sql_Select('Usuario_Veiculo_Equipamento_Marca', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($marca);
         // Mensagem
-    	if ($sucesso===true) {
+    	if ($sucesso === TRUE) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletada'),
@@ -469,21 +469,21 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
                 "mgs_secundaria" => __('Erro')
             );
         }
-        $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+        $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
         
         $this->Marcas();
         
         $this->_Visual->Json_Info_Update('Titulo', __('Marca deletada com Sucesso'));  
-        $this->_Visual->Json_Info_Update('Historico', false);  
+        $this->_Visual->Json_Info_Update('Historico', FALSE);  
     }
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Modelos($export=false) {
+    public function Modelos($export = FALSE) {
         $i = 0;
-        self::Endereco_Equipamento_Modelo(false);
+        self::Endereco_Equipamento_Modelo(FALSE);
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
             Array(
                 'Adicionar Modelo',
@@ -498,19 +498,19 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
             )
         )));
         $modelos = $this->_Modelo->db->Sql_Select('Usuario_Veiculo_Equipamento_Modelo');
-        if ($modelos!==false && !empty($modelos)) {
+        if ($modelos !== FALSE && !empty($modelos)) {
             if (is_object($modelos)) $modelos = Array(0=>$modelos);
             reset($modelos);
             foreach ($modelos as $indice=>&$valor) {
                 //$tabela['#Id'][$i]     = '#'.$valor->id;
                 $tabela['Marca'][$i]     = $valor->marca2;
                 $tabela['Nome'][$i]      = $valor->nome;
-                $tabela['Funções'][$i]   = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Modelo'        ,'usuario_veiculo/Equipamento/Modelos_Edit/'.$valor->id.'/'    ,'')).
+                $tabela['Funções'][$i]   = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Modelo'        ,'usuario_veiculo/Equipamento/Modelos_Edit/'.$valor->id.'/'    , '')).
                                            $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Modelo'       ,'usuario_veiculo/Equipamento/Modelos_Del/'.$valor->id.'/'     ,'Deseja realmente deletar essa Modelo ?'));
                 ++$i;
             }
-            if ($export!==false) {
-                self::Export_Todos($export,$tabela, 'Equipamentos - Modelos');
+            if ($export !== FALSE) {
+                self::Export_Todos($export, $tabela, 'Equipamentos - Modelos');
             } else {
                 $this->_Visual->Show_Tabela_DataTable($tabela);
             }
@@ -530,7 +530,7 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
      * @version 0.4.2
      */
     public function Modelos_Add() {
-        self::Endereco_Equipamento_Modelo(true);
+        self::Endereco_Equipamento_Modelo(TRUE);
         // Carrega Config
         $titulo1    = __('Adicionar Modelo');
         $titulo2    = __('Salvar Modelo');
@@ -538,7 +538,7 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
         $formbt     = __('Salvar');
         $formlink   = 'usuario_veiculo/Equipamento/Modelos_Add2/';
         $campos = Usuario_Veiculo_Equipamento_Modelo_DAO::Get_Colunas();
-        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos);
+        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1, $titulo2, $formlink, $formid, $formbt, $campos);
     }
     /**
      * 
@@ -554,7 +554,7 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = __('Modelo cadastrada com sucesso.');
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
     }
     /**
      * 
@@ -563,16 +563,16 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
      * @version 0.4.2
      */
     public function Modelos_Edit($id) {
-        self::Endereco_Equipamento_Modelo(true);
+        self::Endereco_Equipamento_Modelo(TRUE);
         // Carrega Config
         $titulo1    = 'Editar Modelo (#'.$id.')';
         $titulo2    = __('Alteração de Modelo');
         $formid     = 'form_Sistema_AdminC_ModeloEdit';
         $formbt     = __('Alterar Modelo');
         $formlink   = 'usuario_veiculo/Equipamento/Modelos_Edit2/'.$id;
-        $editar     = Array('Usuario_Veiculo_Equipamento_Modelo',$id);
+        $editar     = Array('Usuario_Veiculo_Equipamento_Modelo', $id);
         $campos = Usuario_Veiculo_Equipamento_Modelo_DAO::Get_Colunas();
-        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos,$editar);
+        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1, $titulo2, $formlink, $formid, $formbt, $campos, $editar);
     }
     /**
      * 
@@ -583,12 +583,12 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
      */
     public function Modelos_Edit2($id) {
         $titulo     = __('Modelo Editada com Sucesso');
-        $dao        = Array('Usuario_Veiculo_Equipamento_Modelo',$id);
+        $dao        = Array('Usuario_Veiculo_Equipamento_Modelo', $id);
         $funcao     = '$this->Modelos();';
         $sucesso1   = __('Modelo Alterada com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);      
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);      
     }
     /**
      * 
@@ -605,7 +605,7 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
         $Modelo = $this->_Modelo->db->Sql_Select('Usuario_Veiculo_Equipamento_Modelo', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($Modelo);
         // Mensagem
-    	if ($sucesso===true) {
+    	if ($sucesso === TRUE) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
@@ -618,12 +618,12 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
                 "mgs_secundaria" => __('Erro')
             );
         }
-        $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+        $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
         
         $this->Modelos();
         
         $this->_Visual->Json_Info_Update('Titulo', __('Modelo deletado com Sucesso'));  
-        $this->_Visual->Json_Info_Update('Historico', false);  
+        $this->_Visual->Json_Info_Update('Historico', FALSE);  
     }
 }
 ?>

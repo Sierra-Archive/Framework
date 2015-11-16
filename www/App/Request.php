@@ -31,14 +31,14 @@ class Request
             $url = explode('/', $url);
             $url = array_filter($url);
         } else {
-            $url = false;
+            $url = FALSE;
             $this->_url = '';
         }
         
         // Extrai primeiro elemento como Controlador
         if (is_array($url) && count($url)>0) {
             $this->_modulo = array_shift($url); 
-            if ($this->isAjax()===true) {
+            if ($this->isAjax() === TRUE) {
                 if (!defined('LAYOULT_IMPRIMIR')) {
                     define('LAYOULT_IMPRIMIR', 'AJAX');
                 }

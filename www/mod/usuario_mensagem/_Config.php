@@ -5,7 +5,7 @@ $config_Modulo = function () {
         'Descrição'                 =>  'É um modulo para Atendimento telefonico de grandes empresas',
         'System_Require'            =>  '3.1.0',
         'Version'                   =>  '0.1.0',
-        'Dependencias'              =>  false,
+        'Dependencias'              =>  FALSE,
     );
 };
 $config_Menu = function () {

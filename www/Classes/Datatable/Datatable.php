@@ -119,13 +119,13 @@ class Datatable {
     * sql_exec() function
     * @return string SQL where clause
     */
-    static function filter ( $request, $columns, &$bindings, $class='', $sql_tabela_sigla = false, $tabela_campos_valores =false, $retornar_extrangeiras_usadas=false)
+    static function filter ( $request, $columns, &$bindings, $class='', $sql_tabela_sigla = FALSE, $tabela_campos_valores  = FALSE, $retornar_extrangeiras_usadas = FALSE)
     {
         $globalSearch = array();
         $columnSearch = array();
         $dtColumns = self::pluck( $columns, 'dt' );
         
-        $objeto = false;
+        $objeto = FALSE;
         if ($class!=='') {
             $objeto = new $class();
         }
@@ -138,15 +138,15 @@ class Datatable {
                 $column = $columns[ $columnIdx ];
                 $column_db = $column["db"];
                 if ( $requestColumn['searchable'] == 'true' ) {
-                    if ($objeto!==false) {
-                        $str_temp = $objeto->bd_set($column_db,$str);
+                    if ($objeto !== FALSE) {
+                        $str_temp = $objeto->bd_set($column_db, $str);
                     } else {
                         $str_temp = $str;
                     }
                     // Se Existir Funcao de Procura (Funcao Inversa), executa
                     if (isset($column['search'])) {
                         $resultado = $column['search']($str_temp);
-                        if ($resultado!==false) {
+                        if ($resultado !== FALSE) {
                             $binding = self::bind( $bindings, '%'.$resultado.'%', 's' );
                         } else {
                             continue;
@@ -157,9 +157,9 @@ class Datatable {
                         $binding = self::bind( $bindings, '%'.$str_temp.'%', 's' );
                     }
                     // Se for da propria tabela, coloca sigla pra nao ter conflito
-                    if ($tabela_campos_valores!==false && array_key_exists($column['db'],$tabela_campos_valores)) {
+                    if ($tabela_campos_valores !== FALSE && array_key_exists($column['db'], $tabela_campos_valores)) {
                         $globalSearch[] = "".$sql_tabela_sigla.'.'.$column['db']." LIKE ".$binding;
-                    } else if ($retornar_extrangeiras_usadas!==false && isset($retornar_extrangeiras_usadas[$column['db']])) {
+                    } else if ($retornar_extrangeiras_usadas !== FALSE && isset($retornar_extrangeiras_usadas[$column['db']])) {
                         $globalSearch[] = "".$retornar_extrangeiras_usadas[$column['db']]." LIKE ".$binding;
                     } else {
                         $globalSearch[] = "`".$column['db']."` LIKE ".$binding;
@@ -177,24 +177,24 @@ class Datatable {
             if ( $requestColumn['searchable'] == 'true' &&
             $str != '' ) {
                 // Trata Colunas pelo Framework se $objeto for um objeto
-                if ($objeto!==false) {
-                    $str_temp = $objeto->bd_set($column_db,$str);
+                if ($objeto !== FALSE) {
+                    $str_temp = $objeto->bd_set($column_db, $str);
                 } else {
                     $str_temp = $str;
                 }
                 // Se Existir Funcao de Procura (Funcao Inversa)
                 if (isset($column['search'])) {
                     $resultado = $column['search']($str_temp);
-                    if ($resultado!==false) {
+                    if ($resultado !== FALSE) {
                         $binding = self::bind( $bindings, '%'.$resultado.'%', 's' );
                         continue;
                     }
                 }
                 $binding = self::bind( $bindings, '%'.$str_temp.'%', 's' );
                 // Se for da propria tabela, coloca sigla pra nao ter conflito
-                if ($tabela_campos_valores!==false && array_key_exists($column['db'],$tabela_campos_valores)) {
+                if ($tabela_campos_valores !== FALSE && array_key_exists($column['db'], $tabela_campos_valores)) {
                     $columnSearch[] = "".$sql_tabela_sigla.'.'.$column['db']." LIKE ".$binding;
-                } else if ($retornar_extrangeiras_usadas!==false && isset($retornar_extrangeiras_usadas[$column['db']])) {
+                } else if ($retornar_extrangeiras_usadas !== FALSE && isset($retornar_extrangeiras_usadas[$column['db']])) {
                     $columnSearch[] = "".$retornar_extrangeiras_usadas[$column['db']]." LIKE ".$binding;
                 } else {
                     $columnSearch[] = "`".$column['db']."` LIKE ".$binding;
@@ -310,16 +310,16 @@ class Datatable {
         $table_class = $table_class.'_DAO';      
         $table = \Framework\App\Conexao::$tabelas[$table_class]['nome'];
         $colunas = \Framework\App\Conexao::$tabelas[$table_class]['colunas'];
-        $db->Sql_Select_Dados($table_class,implode(",", self::pluck($columns, 'db')),'',true);
+        $db->Sql_Select_Dados($table_class,implode(",", self::pluck($columns, 'db')), '',TRUE);
 
         list(
             $sql,
             $sql_tabela_sigla,
             $sql_condicao,
             $tabela_campos_valores,
-            $tabelas_usadas,$j,
+            $tabelas_usadas, $j,
             $retornar_extrangeiras_usadas
-        ) = $db->Sql_Select_Dados($table_class,implode(",", self::pluck($columns, 'db')),'',true);
+        ) = $db->Sql_Select_Dados($table_class,implode(",", self::pluck($columns, 'db')), '',TRUE);
         
         // Add Condicao
         if ($whereAll==null) $whereAll = $sql_condicao;
@@ -466,7 +466,7 @@ class Datatable {
             /*;
             $class = new $class;
             foreach($colunas as $valor) {
-                if (isset($row[$valor["mysql_titulo"]]) && isset($valor["mysql_outside"]) && $valor["mysql_outside"]!==false) {
+                if (isset($row[$valor["mysql_titulo"]]) && isset($valor["mysql_outside"]) && $valor["mysql_outside"] !== FALSE) {
                     $row[$valor["mysql_titulo"] = $valor["mysql_outside"];
                 }
             }*/
@@ -475,7 +475,7 @@ class Datatable {
                 $objeto = new $class();
                 foreach($row as $indice=>$valor) {
                     if ($valor==='' || $valor===NULL) continue;
-                    $objeto->bd_get($indice,$valor);
+                    $objeto->bd_get($indice, $valor);
                     $row[$indice] = $objeto->$indice;
                 }
             }

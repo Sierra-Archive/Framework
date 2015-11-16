@@ -22,12 +22,12 @@ Minify_Loader::register();
 Minify::$uploaderHoursBehind = $min_uploaderHoursBehind;
 Minify::setCache(
     isset($min_cachePath) ? $min_cachePath : ''
-    ,$min_cacheFileLocking
+    , $min_cacheFileLocking
 );
 
 if ($min_documentRoot) {
     $_SERVER['DOCUMENT_ROOT'] = $min_documentRoot;
-    Minify::$isDocRootSet = true;
+    Minify::$isDocRootSet = TRUE;
 }
 
 $min_serveOptions['minifierOptions']['text/css']['symlinks'] = $min_symlinks;
@@ -42,7 +42,7 @@ if ($min_allowDebugFlag) {
 
 if ($min_errorLogger) {
     if (true === $min_errorLogger) {
-        $min_errorLogger = FirePHP::getInstance(true);
+        $min_errorLogger = FirePHP::getInstance(TRUE);
     }
     Minify_Logger::setLogger($min_errorLogger);
 }

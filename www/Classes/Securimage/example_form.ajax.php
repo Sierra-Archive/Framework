@@ -108,7 +108,7 @@ process_si_contact_form();
 			}
 		});
 
-        return false;
+        return FALSE;
     }
 </script>
 
@@ -140,7 +140,7 @@ function process_si_contact_form()
 
         $errors = array();  // initialize empty error array
 
-        if (isset($GLOBALS['DEBUG_MODE']) && $GLOBALS['DEBUG_MODE'] == false) {
+        if (isset($GLOBALS['DEBUG_MODE']) && $GLOBALS['DEBUG_MODE'] == FALSE) {
             // only check for errors if the form is not in debug mode
 
             if (strlen($name) < 3) {
@@ -168,7 +168,7 @@ function process_si_contact_form()
             require_once dirname(__FILE__) . '/Securimage.php';
             $securimage = new Securimage();
 
-            if ($securimage->check($captcha) == false) {
+            if ($securimage->check($captcha) == FALSE) {
                 $errors['captcha_error'] = __('Incorrect security code entered');
             }
         }
@@ -186,7 +186,7 @@ function process_si_contact_form()
                      . "Time: $time<br />"
                      . "Browser: {$_SERVER['HTTP_USER_AGENT']}<br />";
 
-            if (isset($GLOBALS['DEBUG_MODE']) && $GLOBALS['DEBUG_MODE'] == false) {
+            if (isset($GLOBALS['DEBUG_MODE']) && $GLOBALS['DEBUG_MODE'] == FALSE) {
                 // send the message with mail()
                 mail($GLOBALS['ct_recipient'], $GLOBALS['ct_msg_subject'], $message, "From: {$GLOBALS['ct_recipient']}\r\nReply-To: {$email}\r\nContent-type: text/html; charset=ISO-8859-1\r\nMIME-Version: 1.0");
             }

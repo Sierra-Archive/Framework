@@ -147,7 +147,7 @@ class Footnotes extends AbstractPart
 
         // Paragraph style
         $styleWriter = new ParagraphStyleWriter($xmlWriter, $element->getParagraphStyle());
-        $styleWriter->setIsInline(true);
+        $styleWriter->setIsInline(TRUE);
         $styleWriter->write();
 
         // Reference symbol

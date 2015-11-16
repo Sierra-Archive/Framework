@@ -19,21 +19,21 @@ class usuario_PerfilControle extends usuario_Controle
     public function __construct() {
         parent::__construct();
     }
-    public function Perfil_Show($usuarioid,$tipo='Cliente') {
+    public function Perfil_Show($usuarioid, $tipo='Cliente') {
         // GAmbiarra Para Consertar erro de acento em url
         if ($tipo=='Funcionrio' || $tipo=="Funcionario") $tipo = "Funcionário";
         if ($tipo=="Usurio" || $tipo=="Usuario")         $tipo = __('Usuário');
         // Verifica Permissao e Puxa Usuário
         $usuario = $this->_Modelo->db->Sql_Select('Usuario',Array('id'=>$usuarioid),1); // Banco DAO, Condicao e LIMITE
         // Resgata DAdos e Manda pra View
-        if ($usuario===false)            return _Sistema_erroControle::Erro_Fluxo('Usuario não Existe',404);
+        if ($usuario === FALSE)            return _Sistema_erroControle::Erro_Fluxo('Usuario não Existe',404);
         $id = $usuario->id;
         // Carrega Mensagens
         /*if (\Framework\App\Sistema_Funcoes::Perm_Modulos('usuario_mensagem')) {
             usuario_mensagem_SuporteControle::MensagensdeCliente($id,'Menor');
-            $this->_Visual->Show_Perfil($tipo,$usuario,'Maior');
+            $this->_Visual->Show_Perfil($tipo, $usuario,'Maior');
         } else {*/
-            $this->_Visual->Show_Perfil($tipo,$usuario);
+            $this->_Visual->Show_Perfil($tipo, $usuario);
         //}
     }
     /**
@@ -51,16 +51,16 @@ class usuario_PerfilControle extends usuario_Controle
     */
     public function Main() {
         $this->Perfil_Edit();
-        self::usuarios_carregaAlterarSenha($this,$this->_Modelo,$this->_Visual,Usuario_DAO::Get_Colunas());
+        self::usuarios_carregaAlterarSenha($this, $this->_Modelo, $this->_Visual,Usuario_DAO::Get_Colunas());
         if (\Framework\App\Sistema_Funcoes::Perm_Modulos('usuario_veiculo')) {
-            self::usuarios_Upload_Residencia($this,$this->_Modelo,$this->_Visual);
-            self::usuarios_Upload_Cnh($this,$this->_Modelo,$this->_Visual);
+            self::usuarios_Upload_Residencia($this, $this->_Modelo, $this->_Visual);
+            self::usuarios_Upload_Cnh($this, $this->_Modelo, $this->_Visual);
         }
         
         // ORGANIZA E MANDA CONTEUDO
         $this->_Visual->Json_Info_Update('Titulo', __('Meu Perfil')); 
     }
-    public function PerfilFoto_UploadVer($camada,$id) {
+    public function PerfilFoto_UploadVer($camada, $id) {
         $camada = (string) \Framework\App\Conexao::anti_injection($camada);
         $id = (int) \Framework\App\Conexao::anti_injection($id);
        
@@ -73,9 +73,9 @@ class usuario_PerfilControle extends usuario_Controle
         $id = (int) $id;
         $fileTypes = array('jpg', 'jpeg', 'gif', 'png'); // File extensions
         $dir = 'usuario'.DS;
-        $ext = $this->Upload($dir,$fileTypes,$id);
+        $ext = $this->Upload($dir, $fileTypes, $id);
         if ($ext!='falso') {
-            $this->_Modelo->Perfilfoto_Upload_Alterar($id,$ext);  
+            $this->_Modelo->Perfilfoto_Upload_Alterar($id, $ext);  
         }
     }
     /**
@@ -85,12 +85,12 @@ class usuario_PerfilControle extends usuario_Controle
         $id = (int) $id;
         $fileTypes = array('jpg', 'jpeg', 'gif', 'png'); // File extensions
         $dir = 'usuario'.DS;
-        $ext = $this->Upload($dir,$fileTypes,$id.'_res');
+        $ext = $this->Upload($dir, $fileTypes, $id.'_res');
         if ($ext!='falso') {
-            $this->_Modelo->RESfoto_Upload_Alterar($id,$ext);  
+            $this->_Modelo->RESfoto_Upload_Alterar($id, $ext);  
         }
     }
-    public function RESFoto_UploadVer($camada,$id) {
+    public function RESFoto_UploadVer($camada, $id) {
         $camada = (string) \Framework\App\Conexao::anti_injection($camada);
         $id = (int) \Framework\App\Conexao::anti_injection($id);
        
@@ -106,7 +106,7 @@ class usuario_PerfilControle extends usuario_Controle
             else if ($_Acl->logado_usuario->foto_res_apv==2) $Visual->Blocar('<b>Aprovado</b><br>');
             else                                             $Visual->Blocar('<font color="#FF0000"><b>Negado</b></font><br>');
         }
-        $Visual->Blocar($Visual->Show_Upload('usuario', 'Perfil', 'RESFoto', 'User_RES_Imagem'.$_Acl->logado_usuario->id,$_Acl->logado_usuario->foto_res,'usuario'.DS,$_Acl->logado_usuario->id));
+        $Visual->Blocar($Visual->Show_Upload('usuario', 'Perfil', 'RESFoto', 'User_RES_Imagem'.$_Acl->logado_usuario->id, $_Acl->logado_usuario->foto_res,'usuario'.DS, $_Acl->logado_usuario->id));
         $Visual->Bloco_Menor_CriaJanela(__('Fazer upload de Comprovante de Residência')); 
     }
     /**
@@ -116,12 +116,12 @@ class usuario_PerfilControle extends usuario_Controle
         $id = (int) $id;
         $fileTypes = array('jpg', 'jpeg', 'gif', 'png'); // File extensions
         $dir = 'usuario'.DS;
-        $ext = $this->Upload($dir,$fileTypes,$id.'_cnh');
+        $ext = $this->Upload($dir, $fileTypes, $id.'_cnh');
         if ($ext!='falso') {
-            $this->_Modelo->CNHfoto_Upload_Alterar($id,$ext);  
+            $this->_Modelo->CNHfoto_Upload_Alterar($id, $ext);  
         }
     }
-    public function CNHFoto_UploadVer($camada,$id) {
+    public function CNHFoto_UploadVer($camada, $id) {
         $camada = (string) \Framework\App\Conexao::anti_injection($camada);
         $id = (int) \Framework\App\Conexao::anti_injection($id);
        
@@ -137,10 +137,10 @@ class usuario_PerfilControle extends usuario_Controle
             else if ($_Acl->logado_usuario->foto_cnh_apv==2) $Visual->Blocar('<b>CNH Aprovada</b><br>');
             else                                             $Visual->Blocar('<font color="#FF0000"><b>CNH Negada</b></font><br>');
         }
-        $Visual->Blocar($Visual->Show_Upload('usuario', 'Perfil', 'CNHFoto', 'User_CNH_Imagem'.$_Acl->logado_usuario->id,$_Acl->logado_usuario->foto_cnh,'usuario'.DS,$_Acl->logado_usuario->id));
+        $Visual->Blocar($Visual->Show_Upload('usuario', 'Perfil', 'CNHFoto', 'User_CNH_Imagem'.$_Acl->logado_usuario->id, $_Acl->logado_usuario->foto_cnh,'usuario'.DS, $_Acl->logado_usuario->id));
         $Visual->Bloco_Menor_CriaJanela(__('Fazer Upload da CNH')); 
     }
-    static function usuarios_carregaAlterarSenha(&$controle,&$Modelo,&$Visual,$campos) {
+    static function usuarios_carregaAlterarSenha(&$controle,&$Modelo,&$Visual, $campos) {
         $id = \Framework\App\Acl::Usuario_GetID_Static();
         // Carrega Config
         $titulo1    = 'Alterar Senha (#'.$id.')';
@@ -148,36 +148,36 @@ class usuario_PerfilControle extends usuario_Controle
         $formid     = 'form_perfil_senha';
         $formbt     = __('Alterar Grupo');
         $formlink   = 'usuario/Perfil/usuarios_carregaAlterarSenha2/';
-        $editar     = Array('Usuario',$id);
+        $editar     = Array('Usuario', $id);
         $campos = Usuario_DAO::Get_Colunas();
         self::DAO_Campos_Retira($campos, 'senha',1);
-        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos,$editar); 
+        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1, $titulo2, $formlink, $formid, $formbt, $campos, $editar); 
     }
     public function usuarios_carregaAlterarSenha2() {
         $id = (int) $this->_Acl->Usuario_GetID();
         $titulo     = __('Senha editada com Sucesso');
-        $dao        = Array('Usuario',$id);
+        $dao        = Array('Usuario', $id);
         $funcao     = '$this->Main();';
         $sucesso1   = __('Senha Alterada com Sucesso.');
         $sucesso2   = __('Guarde sua senha com carinho.');
         $alterar    = Array();
-        $sucesso = $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);   
+        $sucesso = $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);   
         
-        if ($sucesso===true) {
-            $this->_Modelo->Usuario_Logar('',$usuario->senha,'');
+        if ($sucesso === TRUE) {
+            $this->_Modelo->Usuario_Logar('', $usuario->senha, '');
         }
     }
-    public function Perfil_Edit($tipo=false) {
+    public function Perfil_Edit($tipo = FALSE) {
         $id = (int) $this->_Acl->Usuario_GetID();
         $usuario = $this->_Modelo->db->Sql_Select('Usuario', Array('id'=>$id));
         
         //Verifica Usuario
         if (!is_object($usuario)) {
-            return false;
+            return FALSE;
         }
         
         // Verifica Tipo
-        if ($tipo===false) {
+        if ($tipo === FALSE) {
             if ($usuario->grupo==CFG_TEC_IDCLIENTE) {
                 $tipo   = __('Cliente');
                 $tipo2  = 'cliente';
@@ -212,13 +212,13 @@ class usuario_PerfilControle extends usuario_Controle
         $formid     = 'form_usuario_PerfilEdit';
         $formbt     = __('Alterar meu Perfil');
         $formlink   = 'usuario/Perfil/Perfil_Edit2/'.$id;
-        $editar     = Array('Usuario',$id);
+        $editar     = Array('Usuario', $id);
         $campos = Usuario_DAO::Get_Colunas();
-        usuario_Controle::Campos_Deletar($tipo_pass, $campos,$usuario);
+        usuario_Controle::Campos_Deletar($tipo_pass, $campos, $usuario);
         self::DAO_Campos_Retira($campos, 'login');
         self::DAO_Campos_Retira($campos, 'senha');
         self::DAO_Campos_Retira($campos, 'grupo');
-        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos,$editar);
+        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1, $titulo2, $formlink, $formid, $formbt, $campos, $editar);
     }
     /**
      * 
@@ -227,7 +227,7 @@ class usuario_PerfilControle extends usuario_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Perfil_Edit2($tipo=false) {
+    public function Perfil_Edit2($tipo = FALSE) {
         if (isset($_POST["nome"])) {
             $nome = $_POST["nome"];
         } else {
@@ -235,12 +235,12 @@ class usuario_PerfilControle extends usuario_Controle
         }
         $id = (int) $this->_Acl->Usuario_GetID();
         $titulo     = __('Perfil Editado com Sucesso');
-        $dao        = Array('Usuario',$id);
+        $dao        = Array('Usuario', $id);
         $funcao     = '$this->Perfil_Edit();';
         $sucesso1   = __('Perfil Alterado com Sucesso.');
         $sucesso2   = ''.$nome.' teve a alteração bem sucedida';
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);      
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);      
     }
 }
 ?>

@@ -1,5 +1,5 @@
 <?php
-var_dump($_POST,$_GET,$_SERVER,$_COOKIE);exit;
+var_dump($_POST, $_GET, $_SERVER, $_COOKIE);exit;
 /*
  *face 
  * 
@@ -14,14 +14,14 @@ var_dump($_POST,$_GET,$_SERVER,$_COOKIE);exit;
 
 /*
 // Fuder tudo com Variavies nao inicializadas, afim de nao deixar ter perda de performace
-function newErrorHandler($error, $message,$_1,$_2)
+function newErrorHandler($error, $message, $_1, $_2)
 {
     if ($error == 8)
     {
         trigger_error($message.'<br>Arquivo: '.$_1.'<br>Linha: '.$_2, E_USER_ERROR);
     }
 
-    return false;
+    return FALSE;
 }
 set_error_handler("newErrorHandler");
 ini_set('memory_limit', '512M');
@@ -68,7 +68,7 @@ header('Content-Type: text/html; charset=UTF-8');
 /*header("Expires: Mon, 26 Jul 1997 05:00:00 GMT");
 header("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT");
 header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
-header("Cache-Control: post-check=0, pre-check=0", false);
+header("Cache-Control: post-check=0, pre-check=0", FALSE);
 header("Pragma: no-cache");*/
 
 // Zipa Arquivo
@@ -82,8 +82,8 @@ if (isset($_SERVER['HTTP_ACCEPT_ENCODING']) && substr_count($_SERVER['HTTP_ACCEP
 // Tenta Executar o Framework
 try{ 
     // Inicia CONSTANTES DO SISTEMA
-    define('TEMPO_COMECO',  microtime(true));
-    define('TEMPO_IMPRIMIR',  false);
+    define('TEMPO_COMECO',  microtime(TRUE));
+    define('TEMPO_IMPRIMIR',  FALSE);
     define('DS',  DIRECTORY_SEPARATOR);
     define('US', '/'); // Divisor de URL
     define('ROOT_PADRAO',  realpath(dirname(__FILE__)). DS);
@@ -102,8 +102,8 @@ try{
 }
 // Se der MERDA, Dispara Erro
 catch(Exception $e) {
-    if (SISTEMA_DEBUG===true) {
-        echo Erro_Formatar( $e->getCode(), $e->getMessage(), $e->getFile(), $e->getLine(),$e->getPrevious());
+    if (SISTEMA_DEBUG === TRUE) {
+        echo Erro_Formatar( $e->getCode(), $e->getMessage(), $e->getFile(), $e->getLine(), $e->getPrevious());
         exit;
     } else {
         // Chama Erro

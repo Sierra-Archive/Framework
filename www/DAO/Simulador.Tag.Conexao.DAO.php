@@ -5,7 +5,7 @@ final Class Simulador_Tag_Conexao_DAO extends Framework\App\Dao
     protected $motivo;
     protected $motivoid;
     protected $valor;
-    protected static $objetocarregado     = false;     protected static $mysql_colunas       = false;     protected static $mysql_outside       = Array();     protected static $mysql_inside        = Array(); public function __construct() {  parent::__construct(); } public static function Get_Nome() {
+    protected static $objetocarregado     = FALSE;     protected static $mysql_colunas       = FALSE;     protected static $mysql_outside       = Array();     protected static $mysql_inside        = Array(); public function __construct() {  parent::__construct(); } public static function Get_Nome() {
         return MYSQL_SIMULADOR_TAG_CONEXAO;
     }
     /**
@@ -13,7 +13,7 @@ final Class Simulador_Tag_Conexao_DAO extends Framework\App\Dao
      * @return string
      */
     public static function Permissao_Copia() {
-        return false;
+        return FALSE;
     }
     public static function Get_Sigla() {
         return 'SiTC';
@@ -154,8 +154,8 @@ final Class Simulador_Tag_Conexao_DAO extends Framework\App\Dao
      * @return type
      * @throws Exception
      */
-    public static function Mod_Conexao_Get($tipo=false) {
-        if ($tipo!==false) {
+    public static function Mod_Conexao_Get($tipo = FALSE) {
+        if ($tipo !== FALSE) {
             $array = Array();
             // Percorre os modulos que aceitam tags
             $percorrer = Simulador_Tag_Conexao_DAO::Mod_Conexao();
@@ -169,16 +169,16 @@ final Class Simulador_Tag_Conexao_DAO extends Framework\App\Dao
             $percorrer = Simulador_Tag_Conexao_DAO::Mod_Conexao();
             foreach($percorrer as $indice=>&$value) {
                 // Verifica se é do modulo inteiro ou de um submodulo
-                if (strpos($indice, '|')===false) {
+                if (strpos($indice, '|') === FALSE) {
                     $modulo     = $indice;
-                    $submodulo  = false;
+                    $submodulo  = FALSE;
                 } else {
-                    $indice = explode('|',$indice);
+                    $indice = explode('|', $indice);
                     $modulo     = $indice[0];
                     $submodulo  = $indice[1];
                 }
                 // Verifica se o modulo é permitido
-                if (\Framework\App\Sistema_Funcoes::Perm_Modulos($modulo,$submodulo)) {
+                if (\Framework\App\Sistema_Funcoes::Perm_Modulos($modulo, $submodulo)) {
                    $array[] = $value;
                 }
             }
