@@ -46,7 +46,7 @@ class usuario_veiculo_aluguel_ListarControle extends usuario_veiculo_aluguel_Con
                 $tabela['Veiculo'][$i] = $aluguel[$indice]['veiculo'];
                 $tabela['Data Inicial'][$i] = date_replace($aluguel[$indice]['data_inicial'], "d/m/Y");
                 $tabela['Data Final'][$i] = date_replace($aluguel[$indice]['data_final'], "d/m/Y");
-                $tabela['Valor'][$i] = 'R$ '.number_format($aluguel[$indice]['valor'], 2, ',', '.');
+                $tabela['Valor'][$i] = 'R$ '.number_format($aluguel[$indice]['valor'], 2, ', ', '.');
                 if ($aluguel[$indice]['pago']==1) {
                     $tabela['Status'][$i] = __('Confirmado');
                 } else {

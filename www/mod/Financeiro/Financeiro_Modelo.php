@@ -189,9 +189,9 @@ class Financeiro_Modelo extends \Framework\App\Modelo
         }
         if ($completo===true) {
             if ($valor<0) {
-                $valor = '<font color="red">- R$ '.number_format($valor*-1, 2, ',', '.').'</font>';
+                $valor = '<font color="red">- R$ '.number_format($valor*-1, 2, ', ', '.').'</font>';
             } else {
-                $valor = 'R$ '.number_format($valor, 2, ',', '.');
+                $valor = 'R$ '.number_format($valor, 2, ', ', '.');
             }
             return $valor;
         } else {
@@ -295,7 +295,7 @@ class Financeiro_Modelo extends \Framework\App\Modelo
         
         ++$numero;
         eval('$function = function( $d, $row ) { $html = \'\'; '.$function.' return $html; };');       
-        $columns[] = array( 'db' => 'id',            'dt' => $numero,
+        $columns[] = array( 'db' => 'id', 'dt' => $numero,
             'formatter' => $function
         ); //'Funções';
                 

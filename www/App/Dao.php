@@ -271,7 +271,7 @@ abstract class Dao implements \Framework\DaoInterface
             // Verifica Indices Unicos
             if (isset($valor['mysql_indice_unico']) && $valor['mysql_indice_unico']!==false && is_string($valor['mysql_indice_unico'])) {
                 if (isset($i_u[$valor['mysql_indice_unico']]) && is_int($i_u[$valor['mysql_indice_unico']]) && $i_u[$valor['mysql_indice_unico']]>0) {
-                    $indice_unico[$valor['mysql_indice_unico']] .= ',';
+                    $indice_unico[$valor['mysql_indice_unico']] .= ', ';
                 } else {
                     if (static::Get_StaticTable()===false) {
                         $indice_unico[$valor['mysql_indice_unico']] = (string)  '`servidor`,'  ;

@@ -240,7 +240,7 @@ class usuario_ExpedienteControle extends usuario_Controle
         
         // Inserir Expediente
         $Registros_usuario = $Registro->_Modelo->db->Sql_Select('Usuario');
-        $Registros_expediente = $Registro->_Modelo->db->Sql_Select('Usuario_Expediente','{sigla}fim=\'0000-00-00 00:00:00\'');
+        $Registros_expediente = $Registro->_Modelo->db->Sql_Select('Usuario_Expediente', '{sigla}fim=\'0000-00-00 00:00:00\'');
         $usuarios_nao_podem = Array();
         if (is_object($Registros_expediente))$Registros_expediente = Array($Registros_expediente);
         if (is_array($Registros_expediente)) {
@@ -248,7 +248,7 @@ class usuario_ExpedienteControle extends usuario_Controle
                 $usuarios_nao_podem[] = $valor->usuario;
             }
         }
-        $form = new \Framework\Classes\Form('usuarioform_expediente_add','usuario/Expediente/Expediente_Add_Rapido','formajax',"mini",'horizontal','off');
+        $form = new \Framework\Classes\Form('usuarioform_expediente_add', 'usuario/Expediente/Expediente_Add_Rapido', 'formajax',"mini",'horizontal', 'off');
         $form->Select_Novo(
             'Funcionário para Entrar no Expediente',
             'usuario',
@@ -262,9 +262,9 @@ class usuario_ExpedienteControle extends usuario_Controle
             __('Escolha um Funcionário')
         );
         /*if ($valor['edicao']['valor_padrao']===false) {
-            $html .= $form->Select_Opcao('','',1);
+            $html .= $form->Select_Opcao('', '',1);
         } else {
-            $html .= $form->Select_Opcao('','',0);
+            $html .= $form->Select_Opcao('', '',0);
         }*/
         if (is_array($Registros_usuario)) {
             foreach ($Registros_usuario as &$valor) {
@@ -283,7 +283,7 @@ class usuario_ExpedienteControle extends usuario_Controle
         $tabela_colunas[] = __('Inicio');
         $tabela_colunas[] = __('Fim');
         $tabela_colunas[] = __('Funções');
-        $html .= $Registro->_Visual->Show_Tabela_DataTable_Massiva($tabela_colunas,'usuario/Expediente/Expedientes','',false);
+        $html .= $Registro->_Visual->Show_Tabela_DataTable_Massiva($tabela_colunas,'usuario/Expediente/Expedientes', '',false);
         
         if ($span===true) {
             $html .= '</span>';
@@ -292,13 +292,13 @@ class usuario_ExpedienteControle extends usuario_Controle
         $titulo = __('Disponiveis'); //.' (<span id="DataTable_Contador">0</span>)';        
         if ($tipobloco==='Unico') {
             $Registro->_Visual->Blocar($html);
-            $Registro->_Visual->Bloco_Unico_CriaJanela($titulo,'',100,Array("link"=>"usuario/Expediente/Expedientes_Add",'icon'=>'add','nome'=>__('Adicionar Expediente')));
+            $Registro->_Visual->Bloco_Unico_CriaJanela($titulo,'',100,Array("link"=>"usuario/Expediente/Expedientes_Add",'icon'=>'add', 'nome'=>__('Adicionar Expediente')));
         } else if ($tipobloco==='Maior') {
             $Registro->_Visual->Blocar($html);
-            $Registro->_Visual->Bloco_Maior_CriaJanela($titulo,'',100,Array("link"=>"usuario/Expediente/Expedientes_Add",'icon'=>'add','nome'=>__('Adicionar Expediente')));
+            $Registro->_Visual->Bloco_Maior_CriaJanela($titulo,'',100,Array("link"=>"usuario/Expediente/Expedientes_Add",'icon'=>'add', 'nome'=>__('Adicionar Expediente')));
         } else if ($tipobloco==='Menor') {
             $Registro->_Visual->Blocar($html);
-            $Registro->_Visual->Bloco_Menor_CriaJanela($titulo,'',100,Array("link"=>"usuario/Expediente/Expedientes_Add",'icon'=>'add','nome'=>__('Adicionar Expediente')));
+            $Registro->_Visual->Bloco_Menor_CriaJanela($titulo,'',100,Array("link"=>"usuario/Expediente/Expedientes_Add",'icon'=>'add', 'nome'=>__('Adicionar Expediente')));
         } else {
             return $html;
         }
@@ -330,7 +330,7 @@ class usuario_ExpedienteControle extends usuario_Controle
         $tabela_colunas[] = __('Funcionário');
         $tabela_colunas[] = __('Horário de Saida');
         $tabela_colunas[] = __('Funções');
-        $html .= $Registro->_Visual->Show_Tabela_DataTable_Massiva($tabela_colunas,'usuario/Expediente/Expedientes/1/sim','',false);
+        $html .= $Registro->_Visual->Show_Tabela_DataTable_Massiva($tabela_colunas,'usuario/Expediente/Expedientes/1/sim', '',false);
         
         if ($span===true) {
             $html .= '</span>';
@@ -408,7 +408,7 @@ class usuario_ExpedienteControle extends usuario_Controle
      */
     public function Expedientes_StatusAlterar($id=false,$status=0) {
         $id = (int) $id;
-        $expediente = $this->_Modelo->db->Sql_Select('Usuario_Expediente','{sigla}id=\''.$id.'\'');
+        $expediente = $this->_Modelo->db->Sql_Select('Usuario_Expediente', '{sigla}id=\''.$id.'\'');
         
         if ($status==2) {
             $expediente->fim = APP_HORA_BR;

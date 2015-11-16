@@ -24,7 +24,7 @@ function newErrorHandler($error, $message,$_1,$_2)
     return false;
 }
 set_error_handler("newErrorHandler");
-ini_set('memory_limit','512M');
+ini_set('memory_limit', '512M');
 include("App/Tempo.php");
 include("Classes/FaceDetector/FaceDetector.php");
 $tempo = new \Framework\App\Tempo('Total');
@@ -85,7 +85,7 @@ try{
     define('TEMPO_COMECO',  microtime(true));
     define('TEMPO_IMPRIMIR',  false);
     define('DS',  DIRECTORY_SEPARATOR);
-    define('US',  '/'); // Divisor de URL
+    define('US', '/'); // Divisor de URL
     define('ROOT_PADRAO',  realpath(dirname(__FILE__)). DS);
     define('APP_PATH',  ROOT_PADRAO.'App'.DS);
     define("SIS_PHPVERSION",  phpversion());

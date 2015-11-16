@@ -441,7 +441,7 @@ final class Conexao
                 }
                 $campo  = $campo[1];
                 if (strpos($query, $multi.' ')!==false) $multi .= ' ';
-                if (strpos($query, $multi.',')!==false) $multi .= ',';
+                if (strpos($query, $multi.', ')!==false) $multi .= ', ';
             }
             // Trava bug quando query é muito simples e nao tem final
             if (strpos(strtolower($query), "where")===false && strpos(strtolower($query), "limit")===false && strpos(strtolower($query), "order")===false)
@@ -606,7 +606,7 @@ final class Conexao
         // Declara Varaiveis funcoes
         $autoincrement_sql = function($primaria,$autoincrement) {
             if ($primaria!='' && $autoincrement===false) {
-                $primaria = ','.$primaria;
+                $primaria = ', '.$primaria;
             }
             return ($autoincrement)?$primaria:'`servidor`'.$primaria;
         };
@@ -621,7 +621,7 @@ final class Conexao
                 $query .= 'CREATE TABLE IF NOT EXISTS `'.$tabela['nome'].'` (';
                 if ($tabela['static']===false || !isset($tabela['static'])) {
                     $tabela['static'] = false;
-                    $query .= '`servidor` VARCHAR(45) NOT NULL DEFAULT \''.SRV_NAME_SQL.'\',';
+                    $query .= '`servidor` VARCHAR(45) NOT NULL DEFAULT \''.SRV_NAME_SQL.'\', ';
                 }
                 // Logs de Usuarios e datas
                 $query .= '`log_user_add` int(11) DEFAULT NULL,';
@@ -630,7 +630,7 @@ final class Conexao
                 $query .= '`log_date_add` datetime,';
                 $query .= '`log_date_edit` datetime,';
                 $query .= '`log_date_del` datetime,';
-                $query .= '`deletado` INT(3) NOT NULL DEFAULT \'0\',';
+                $query .= '`deletado` INT(3) NOT NULL DEFAULT \'0\', ';
                 // Contadores
                 $i      = 0; // contagem colunas, servidor nao conta
                 $p      = 0; // contagem de primarias
@@ -639,7 +639,7 @@ final class Conexao
                 foreach($tabela['colunas'] as &$valor) {
                     if (isset($valor['mysql_titulo'])) {
                         $valor['mysql_tipovar'] = strtoupper($valor['mysql_tipovar']);
-                        if ($i!=0) $query .= ',';
+                        if ($i!=0) $query .= ', ';
                         $query .= '`'.$valor['mysql_titulo'].'` '.$valor['mysql_tipovar'];		
                         // text e blog nao aceita default
                         if (strpos($valor['mysql_tipovar'], 'TEXT')===false && strpos($valor['mysql_tipovar'], 'BLOG')===false) {
@@ -659,14 +659,14 @@ final class Conexao
                             }
                             // Verifica Primarias...
                             if ($valor['mysql_primary']!==false) {
-                                if ($p!=0) $primaria .= ',';
+                                if ($p!=0) $primaria .= ', ';
                                 $primaria .= '`'.$valor['mysql_titulo'].'`';
                                 ++$p;
                             }
                             // Verifica Indices Unicos
                             if (isset($valor['mysql_indice_unico']) && $valor['mysql_indice_unico']!==false && is_string($valor['mysql_indice_unico'])) {
                                 if (isset($i_u[$valor['mysql_indice_unico']]) && is_int($i_u[$valor['mysql_indice_unico']]) && $i_u[$valor['mysql_indice_unico']]>0) {
-                                    $indice_unico[$valor['mysql_indice_unico']] .= ',';
+                                    $indice_unico[$valor['mysql_indice_unico']] .= ', ';
                                 } else {
                                     if ($tabela['static']===false) {
                                         $indice_unico[$valor['mysql_indice_unico']] = (string)  '`servidor`,'  ;
@@ -1080,7 +1080,7 @@ final class Conexao
             
             // Explode CAmpos e Trata Eles
             $campos_string = $campos;
-            $campos = explode(',', $campos);
+            $campos = explode(', ', $campos);
             foreach($campos as $valor) {
                 if ($valor==='*') {
                     // Libera Todos os campos
@@ -1206,7 +1206,7 @@ final class Conexao
             if ($i==0) {
                 $sql .= $sql_tabela_sigla.'.'.$indice;
             } else {
-                $sql .= ','.$sql_tabela_sigla.'.'.$indice;
+                $sql .= ', '.$sql_tabela_sigla.'.'.$indice;
             }
             ++$i;
         }
@@ -1386,7 +1386,7 @@ final class Conexao
                             if (strpos($indice2, '.')===false) {
                                 $sql_condicao .= $sql_tabela_sigla.'.';
                             }
-                            $sql_condicao .= $indice2.' NOT IN ('.implode(',',$valor2).')';
+                            $sql_condicao .= $indice2.' NOT IN ('.implode(', ',$valor2).')';
                         } else 
                         // Para Busca Diferente
                         if (strpos($indice2, 'IN')===0) {
@@ -1396,7 +1396,7 @@ final class Conexao
                             if (strpos($indice2, '.')===false) {
                                 $sql_condicao .= $sql_tabela_sigla.'.';
                             }
-                            $sql_condicao .= $indice2.' IN ('.implode(',',$valor2).')';
+                            $sql_condicao .= $indice2.' IN ('.implode(', ',$valor2).')';
                         } else 
                         // Maior igual que
                         if (strpos($indice2, '>=')===0) {
@@ -1485,7 +1485,7 @@ final class Conexao
                         if (strpos($indice, '.')===false) {
                             $sql_condicao .= $sql_tabela_sigla.'.';
                         }
-                        $sql_condicao .= $indice.' NOT IN ('.implode(',',$valor).')';
+                        $sql_condicao .= $indice.' NOT IN ('.implode(', ',$valor).')';
                     } else 
                     // Caso de IN (Multiplos Valores)
                     if (strpos($indice, 'IN')===0) {
@@ -1498,7 +1498,7 @@ final class Conexao
                         if (strpos($indice, '.')===false) {
                             $sql_condicao .= $sql_tabela_sigla.'.';
                         }
-                        $sql_condicao .= $indice.' IN ('.implode(',',$valor).')';
+                        $sql_condicao .= $indice.' IN ('.implode(', ',$valor).')';
                     } else 
                     // Caso de where ser Diferente 
                     if (strpos($indice, '>=')===0) {
@@ -2265,7 +2265,7 @@ final class Conexao
             // Percorre Diretório
             while ($arquivo = $diretorio -> read()) {
                 if (strpos($arquivo, 'DAO.php')!==false) {
-                    $arquivo                = str_replace(Array('.php','.'), Array('','_') , $arquivo);
+                    $arquivo                = str_replace(Array('.php', '.'), Array('', '_') , $arquivo);
 
                     $tabelas[$arquivo] = self::Load($arquivo);
                     $sigla = &$tabelas[$arquivo]['sigla'];

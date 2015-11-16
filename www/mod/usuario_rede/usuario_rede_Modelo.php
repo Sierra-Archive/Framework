@@ -88,7 +88,7 @@ class usuario_rede_Modelo extends \Framework\App\Modelo
             $ranking[$i]['id'] = $campo->id;
             $ranking[$i]['nome'] = $campo->nome;
             //$ranking[$i]['PRIMARIO'] = $campo->PRIMARIO;
-            $ranking[$i]['PRIMARIO'] = number_format($campo->PRIMARIO/$total*100, 2, ',', ' ');
+            $ranking[$i]['PRIMARIO'] = number_format($campo->PRIMARIO/$total*100, 2, ', ', ' ');
             ++$i;
         }
         return $i;

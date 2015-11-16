@@ -57,7 +57,7 @@ class usuario_rede_Visual extends \Framework\App\Visual
                     '<td colspan="2" class="backcolor tcenter tbold">Niveis</td>'.
                 '</tr>';
         foreach($array['associado'] as $indice=>&$valor) {
-            $grupo = \Framework\App\Registro::getInstacia()->_Conexao->Sql_Select('Sistema_Grupo','{sigla}id=\''.$indice.'\'');
+            $grupo = \Framework\App\Registro::getInstacia()->_Conexao->Sql_Select('Sistema_Grupo', '{sigla}id=\''.$indice.'\'');
             $html .= '<tr>'.
                     '<td class="backcolor tleft">'.$grupo->nome.'</td>'.
                     '<td class="tright">'.$valor.'</td>'.

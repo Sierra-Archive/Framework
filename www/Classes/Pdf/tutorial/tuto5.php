@@ -49,7 +49,7 @@ function ImprovedTable($header, $data)
 		$this->Ln();
 	}
 	// Closing line
-	$this->Cell(array_sum($w),0,'','T');
+	$this->Cell(array_sum($w),0,'', 'T');
 }
 
 // Colored table
@@ -60,7 +60,7 @@ function FancyTable($header, $data)
 	$this->SetTextColor(255);
 	$this->SetDrawColor(128,0,0);
 	$this->SetLineWidth(.3);
-	$this->SetFont('','B');
+	$this->SetFont('', 'B');
 	// Header
 	$w = array(40, 35, 40, 45);
 	for($i=0;$i<count($header);$i++)
@@ -82,7 +82,7 @@ function FancyTable($header, $data)
 		$fill = !$fill;
 	}
 	// Closing line
-	$this->Cell(array_sum($w),0,'','T');
+	$this->Cell(array_sum($w),0,'', 'T');
 }
 }
 
@@ -91,7 +91,7 @@ $pdf = new PDF();
 $header = array('Country', 'Capital', 'Area (sq km)', 'Pop. (thousands)');
 // Data loading
 $data = $pdf->LoadData('countries.txt');
-$pdf->SetFont('Arial','',14);
+$pdf->SetFont('Arial', '',14);
 $pdf->AddPage();
 $pdf->BasicTable($header,$data);
 $pdf->AddPage();

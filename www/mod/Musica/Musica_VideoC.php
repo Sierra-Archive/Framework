@@ -105,7 +105,7 @@ class Musica_VideoControle extends Musica_Controle
                 $status = 1;
                 $texto = __('Ativado');
             }
-            $tabela['Funções'][$i]          = $Visual->Tema_Elementos_Btn('Personalizado'   ,Array('Visualizar Video'    ,'Musica/Video/Videos_Ver/'.$valor->id    ,'','youtube','inverse')).
+            $tabela['Funções'][$i]          = $Visual->Tema_Elementos_Btn('Personalizado'   ,Array('Visualizar Video'    ,'Musica/Video/Videos_Ver/'.$valor->id    ,'', 'youtube', 'inverse')).
                                             '<span id="status'.$valor->id.'">'.$Visual->Tema_Elementos_Btn('Status'.$status     ,Array($texto        ,'Musica/Video/Status/'.$valor->id.'/'    ,'')).'</span>';
             if ($destaque==1) {
                 $destaque = 1;
@@ -356,9 +356,9 @@ class Musica_VideoControle extends Musica_Controle
                 if ($musica!==false) {
                     $musica = (int) $musica;
                     $alterar['musica'] = $musica;
-                    $funcao     = '$this->Videos('.$artista.','.$album.','.$musica.');';
+                    $funcao     = '$this->Videos('.$artista.', '.$album.', '.$musica.');';
                 } else {
-                    $funcao     = '$this->Videos('.$artista.','.$album.');';
+                    $funcao     = '$this->Videos('.$artista.', '.$album.');';
                 }
             } else {
                 $funcao     = '$this->Videos('.$artista.');';
@@ -464,9 +464,9 @@ class Musica_VideoControle extends Musica_Controle
                 if ($musica!==false) {
                     $musica = (int) $musica;
                     $alterar['musica'] = $musica;
-                    $funcao     = '$this->Videos('.$artista.','.$album.','.$musica.');';
+                    $funcao     = '$this->Videos('.$artista.', '.$album.', '.$musica.');';
                 } else {
-                    $funcao     = '$this->Videos('.$artista.','.$album.');';
+                    $funcao     = '$this->Videos('.$artista.', '.$album.');';
                 }
             } else {
                 $funcao     = '$this->Videos('.$artista.');';

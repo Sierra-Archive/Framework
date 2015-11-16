@@ -21,7 +21,7 @@ class Locomocao_Principal implements \Framework\PrincipalInterface
     * @version 0.4.2
     */
     static function Home(&$controle, &$Modelo, &$Visual) {
-        //$dados = Locomocao_Controle::Retorna_Distancia('Av. Paulista, 925 - Paraiso Brazil, São Paulo, Brasil','Av. Brg. Luís Antônio, 400 - República, São Paulo, Brasil');
+        //$dados = Locomocao_Controle::Retorna_Distancia('Av. Paulista, 925 - Paraiso Brazil, São Paulo, Brasil', 'Av. Brg. Luís Antônio, 400 - República, São Paulo, Brasil');
         
         $html = 'Conteudo';
         

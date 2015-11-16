@@ -13,7 +13,7 @@ function Header()
 	// Page header
 	global $title;
 
-	$this->SetFont('Arial','B',15);
+	$this->SetFont('Arial', 'B',15);
 	$w = $this->GetStringWidth($title)+6;
 	$this->SetX((210-$w)/2);
 	$this->SetDrawColor(0,80,180);
@@ -30,7 +30,7 @@ function Footer()
 {
 	// Page footer
 	$this->SetY(-15);
-	$this->SetFont('Arial','I',8);
+	$this->SetFont('Arial', 'I',8);
 	$this->SetTextColor(128);
 	$this->Cell(0,10,'Page '.$this->PageNo(),0,0,'C');
 }
@@ -68,7 +68,7 @@ function AcceptPageBreak()
 function ChapterTitle($num, $label)
 {
 	// Title
-	$this->SetFont('Arial','',12);
+	$this->SetFont('Arial', '',12);
 	$this->SetFillColor(200,220,255);
 	$this->Cell(0,6,"Chapter $num : $label",0,1,'L',true);
 	$this->Ln(4);
@@ -81,12 +81,12 @@ function ChapterBody($file)
 	// Read text file
 	$txt = file_get_contents($file);
 	// Font
-	$this->SetFont('Times','',12);
+	$this->SetFont('Times', '',12);
 	// Output text in a 6 cm width column
 	$this->MultiCell(60,5,$txt);
 	$this->Ln();
 	// Mention
-	$this->SetFont('','I');
+	$this->SetFont('', 'I');
 	$this->Cell(0,5,'(end of excerpt)');
 	// Go back to first column
 	$this->SetCol(0);
@@ -105,7 +105,7 @@ $pdf = new PDF();
 $title = __('20000 Leagues Under the Seas');
 $pdf->SetTitle($title);
 $pdf->SetAuthor('Jules Verne');
-$pdf->PrintChapter(1,'A RUNAWAY REEF','20k_c1.txt');
-$pdf->PrintChapter(2,'THE PROS AND CONS','20k_c2.txt');
+$pdf->PrintChapter(1,'A RUNAWAY REEF', '20k_c1.txt');
+$pdf->PrintChapter(2,'THE PROS AND CONS', '20k_c2.txt');
 $pdf->Output();
 ?>

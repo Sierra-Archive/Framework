@@ -673,7 +673,7 @@ class Transporte_PedidoControle extends Transporte_Controle
         $funcao     = '$this->Arma_Sol_Solicitacoes();';
         $sucesso1   = __('Proposta enviada com Sucesso');
         $sucesso2   = __('Aguarde uma Resposta.');
-        $alterar    = Array('status'=>'0','fornecedor'=>$pedido->log_user_add,'pedido'=>$pedido->id);
+        $alterar    = Array('status'=>'0', 'fornecedor'=>$pedido->log_user_add,'pedido'=>$pedido->id);
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
     }
     /**
@@ -1398,7 +1398,7 @@ class Transporte_PedidoControle extends Transporte_Controle
         $funcao     = '$this->Trans_Sol_Solicitacoes();';
         $sucesso1   = __('Proposta enviada com Sucesso');
         $sucesso2   = __('Aguarde uma Resposta.');
-        $alterar    = Array('status'=>'0','fornecedor'=>$pedido->log_user_add,'pedido'=>$pedido->id);
+        $alterar    = Array('status'=>'0', 'fornecedor'=>$pedido->log_user_add,'pedido'=>$pedido->id);
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
     }
     /**
@@ -2119,7 +2119,7 @@ class Transporte_PedidoControle extends Transporte_Controle
         $funcao     = '$this->Caminho_Sol_Solicitacoes();';
         $sucesso1   = __('Proposta enviada com Sucesso');
         $sucesso2   = __('Aguarde uma Resposta.');
-        $alterar    = Array('status'=>'0','transportadora'=>$pedido->log_user_add,'pedido'=>$pedido->id);
+        $alterar    = Array('status'=>'0', 'transportadora'=>$pedido->log_user_add,'pedido'=>$pedido->id);
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
     }
     /**

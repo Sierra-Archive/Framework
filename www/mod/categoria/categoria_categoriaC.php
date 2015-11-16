@@ -75,7 +75,7 @@ class categoria_categoriaControle extends categoria_Controle
         $id = (int) $id;
         $categoria = $this->_Modelo->Categoria_Retorna($id);
         
-        $form = new \Framework\Classes\Form('adminformcategoriasend', SISTEMA_MODULO.'/'.SISTEMA_SUB.'/Categorias_alterar/'.$id.'/','formajax');
+        $form = new \Framework\Classes\Form('adminformcategoriasend', SISTEMA_MODULO.'/'.SISTEMA_SUB.'/Categorias_alterar/'.$id.'/', 'formajax');
         $this->Categorias_formulario($form,$tipo,$categoria['nome'],$categoria['parent']);
         $this->_Visual->Blocar($form->retorna_form(__('Editar')));
         $this->_Visual->Bloco_Menor_CriaJanela(__('Editar Categoria'));
@@ -145,7 +145,7 @@ class categoria_categoriaControle extends categoria_Controle
         $tabela = Array();
         $array = $this->_Modelo->Categorias_Retorna($tipo);
         $tabela = new \Framework\Classes\Tabela();
-        $tabela->addcabecario(array('Id','Nome', 'Acesso','Editar'));        
+        $tabela->addcabecario(array('Id', 'Nome', 'Acesso', 'Editar'));        
         $this->_Visual->Categorias_ShowTab($array,$tabela);
         $this->_Visual->Blocar($tabela->retornatabela());
         $this->_Visual->Bloco_Maior_CriaJanela(__('Categorias'));
@@ -172,7 +172,7 @@ class categoria_categoriaControle extends categoria_Controle
     */
     public function Categorias_formcadastro($modulo=false) {
         
-        $form = new \Framework\Classes\Form('adminformcategoriasend',SISTEMA_MODULO.'/'.SISTEMA_SUB.'/Main/salvar/','formajax');
+        $form = new \Framework\Classes\Form('adminformcategoriasend',SISTEMA_MODULO.'/'.SISTEMA_SUB.'/Main/salvar/', 'formajax');
         
         $formbt = __('Salvar');
         $titulo1 = __('Cadastrar Categoria');
@@ -232,10 +232,10 @@ class categoria_categoriaControle extends categoria_Controle
       
         $categorias = $this->_Modelo->Categorias_Retorna($tipo,0,1);
         // CADASTRA
-        $form->Input_Novo('Nome','nome',$nome,'text', 30, 'obrigatorio ');
+        $form->Input_Novo('Nome', 'nome',$nome,'text', 30, 'obrigatorio ');
         
         // COMEÇO DOS SELECT DE CATEGORIAS PAI
-        $form->Select_Novo('Categoria Pai','parent','selectcategorias');
+        $form->Select_Novo('Categoria Pai', 'parent', 'selectcategorias');
         if ($parent==0) $form->Select_Opcao('Pasta Raiz',0,1);
         else  $form->Select_Opcao('Pasta Raiz',0,1);
         $this->_Visual->Categorias_ShowSelect($categorias,$form,$parent);
@@ -243,7 +243,7 @@ class categoria_categoriaControle extends categoria_Controle
         
         // COMEÇO DOS SELECT DE PERMISSOES DE MODULOS
         $acc = categoria_Controle::Categorias_CarregaModulosTotais();
-        $form->Select_Novo('Modulo Aceito','mod_acc','mod_acc');
+        $form->Select_Novo('Modulo Aceito', 'mod_acc', 'mod_acc');
         $j = 0;
         foreach($acc as &$valor) {
             if ($j==0) $form->Select_Opcao($valor['chave_nome'],$valor['chave_nome'],1);

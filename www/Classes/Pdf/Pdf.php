@@ -17,7 +17,7 @@ class Pdf extends FPDF
         $this->titulo = utf8_decode($titulo);
         $this->SetTitle($this->titulo);
         $this->SetAuthor(utf8_decode('Ricardo Rebello Sierra'));
-        $this->SetFont('Arial','',10);
+        $this->SetFont('Arial', '',10);
         // Logo Caso Solicitado
         if ($logo!==false) {
             $this->logo = $logo;
@@ -31,7 +31,7 @@ class Pdf extends FPDF
         // Logo
         $this->Image($this->logo,10,6,60);
         // Arial bold 15
-        $this->SetFont('Arial','B',15);
+        $this->SetFont('Arial', 'B',15);
         // Move to the right
         $this->Cell(80);
         // Title
@@ -46,7 +46,7 @@ class Pdf extends FPDF
         // Position at 1.5 cm from bottom
         $this->SetY(-15);
         // Arial italic 8
-        $this->SetFont('Arial','I',8);
+        $this->SetFont('Arial', 'I',8);
         // Page number
         $this->Cell(0,10,utf8_decode('Página '.$this->PageNo().'/{nb}'),0,0,'C');
     }
@@ -54,7 +54,7 @@ class Pdf extends FPDF
     // Array Table do meu Framework
     function ArrayTable(&$tabela)
     {
-        $this->SetFont('Arial','B',9);
+        $this->SetFont('Arial', 'B',9);
         $colunas = count($tabela);
         $largura = 190/$colunas;
         // Header
@@ -62,7 +62,7 @@ class Pdf extends FPDF
             $this->Cell($largura,7,utf8_decode($indice),1);
         }
         
-        $this->SetFont('Arial','',8);
+        $this->SetFont('Arial', '',8);
         $this->Ln();
         for ($i=0;$i<$colunas;++$i) {
             foreach($tabela as &$valor) {
@@ -75,7 +75,7 @@ class Pdf extends FPDF
             $this->Ln();
         }
         // Closing line
-        $this->Cell($colunas*$largura,0,'','T');
+        $this->Cell($colunas*$largura,0,'', 'T');
     }
 
     // Better table
@@ -97,7 +97,7 @@ class Pdf extends FPDF
                     $this->Ln();
             }
             // Closing line
-            $this->Cell(array_sum($w),0,'','T');
+            $this->Cell(array_sum($w),0,'', 'T');
     }
 
     // Colored table
@@ -108,7 +108,7 @@ class Pdf extends FPDF
             $this->SetTextColor(255);
             $this->SetDrawColor(128,0,0);
             $this->SetLineWidth(.3);
-            $this->SetFont('','B');
+            $this->SetFont('', 'B');
             // Header
             $w = array(40, 35, 40, 45);
             for($i=0;$i<count($header);$i++)
@@ -130,6 +130,6 @@ class Pdf extends FPDF
                     $fill = !$fill;
             }
             // Closing line
-            $this->Cell(array_sum($w),0,'','T');
+            $this->Cell(array_sum($w),0,'', 'T');
     }
 }

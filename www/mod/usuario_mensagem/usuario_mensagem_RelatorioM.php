@@ -27,15 +27,15 @@ class usuario_mensagem_RelatorioModelo extends usuario_mensagem_Modelo
                 'formatter' => function( $d, $row ) {
                     return '#'.$d;
                 }),
-            array( 'db' => 'cliente2',      'dt' => 1 ),
-            array( 'db' => 'assunto2',      'dt' => 2 ),
-            array( 'db' => 'mensagem',      'dt' => 3 ,
+            array( 'db' => 'cliente2', 'dt' => 1 ),
+            array( 'db' => 'assunto2', 'dt' => 2 ),
+            array( 'db' => 'mensagem', 'dt' => 3 ,
                 'formatter' => function( $d, $row ) {
                 return str_replace ( array("\n", "\r", '<br />'), '', $d);
             }),
-            array( 'db' => 'log_date_add',  'dt' => 4 ),
+            array( 'db' => 'log_date_add', 'dt' => 4 ),
             array( 'db' => 'log_date_edit', 'dt' => 5 )/*,
-            array( 'db' => 'id',            'dt' => 6,
+            array( 'db' => 'id', 'dt' => 6,
                 'formatter' => $funcao)*/
         );
 
@@ -55,13 +55,13 @@ class usuario_mensagem_RelatorioModelo extends usuario_mensagem_Modelo
                 'formatter' => function( $d, $row ) {
                     return '#'.$d;
                 }),
-            array( 'db' => 'cliente2',      'dt' => 1 ),
-            array( 'db' => 'assunto2',      'dt' => 2 ),
-            array( 'db' => 'mensagem',      'dt' => 3 ,
+            array( 'db' => 'cliente2', 'dt' => 1 ),
+            array( 'db' => 'assunto2', 'dt' => 2 ),
+            array( 'db' => 'mensagem', 'dt' => 3 ,
                 'formatter' => function( $d, $row ) {
                 return str_replace ( array("\n", "\r", '<br />'), '', $d);
             }),
-            array( 'db' => 'finalizado',    'dt' => 4 ,
+            array( 'db' => 'finalizado', 'dt' => 4 ,
                 'formatter' => function( $d, $row ) {
                     if ($d=='1') {
                         return 'Finalizado';
@@ -78,9 +78,9 @@ class usuario_mensagem_RelatorioModelo extends usuario_mensagem_Modelo
                     }
                     return false;
                 }),
-            array( 'db' => 'log_date_add',  'dt' => 5 ),
+            array( 'db' => 'log_date_add', 'dt' => 5 ),
             array( 'db' => 'log_date_edit', 'dt' => 6 )/*,
-            array( 'db' => 'id',            'dt' => 7,
+            array( 'db' => 'id', 'dt' => 7,
                 'formatter' => $funcao)*/
         );
 
@@ -101,15 +101,15 @@ class usuario_mensagem_RelatorioModelo extends usuario_mensagem_Modelo
                 'formatter' => function( $d, $row ) {
                     return '#'.$d;
                 }),
-            array( 'db' => 'cliente2',      'dt' => 1 ),
-            array( 'db' => 'assunto2',      'dt' => 2 ),
-            array( 'db' => 'mensagem',      'dt' => 3 ,
+            array( 'db' => 'cliente2', 'dt' => 1 ),
+            array( 'db' => 'assunto2', 'dt' => 2 ),
+            array( 'db' => 'mensagem', 'dt' => 3 ,
                 'formatter' => function( $d, $row ) {
                 return str_replace ( array("\n", "\r", '<br />'), '', $d);
             }),
-            array( 'db' => 'log_date_add',  'dt' => 4 ),
+            array( 'db' => 'log_date_add', 'dt' => 4 ),
             array( 'db' => 'log_date_edit', 'dt' => 5 )/*,
-            array( 'db' => 'id',            'dt' => 6,
+            array( 'db' => 'id', 'dt' => 6,
                 'formatter' => $funcao)*/
         );
 
@@ -129,15 +129,15 @@ class usuario_mensagem_RelatorioModelo extends usuario_mensagem_Modelo
                 'formatter' => function( $d, $row ) {
                     return '#'.$d;
                 }),
-            array( 'db' => 'cliente2',      'dt' => 1 ),
-            array( 'db' => 'assunto2',      'dt' => 2 ),
-            array( 'db' => 'mensagem',      'dt' => 3 ,
+            array( 'db' => 'cliente2', 'dt' => 1 ),
+            array( 'db' => 'assunto2', 'dt' => 2 ),
+            array( 'db' => 'mensagem', 'dt' => 3 ,
                 'formatter' => function( $d, $row ) {
                 return str_replace ( array("\n", "\r", '<br />'), '', $d);
             }),
-            array( 'db' => 'log_date_add',  'dt' => 4 ),
+            array( 'db' => 'log_date_add', 'dt' => 4 ),
             array( 'db' => 'log_date_edit', 'dt' => 5 )/*,
-            array( 'db' => 'id',            'dt' => 6,
+            array( 'db' => 'id', 'dt' => 6,
                 'formatter' => $funcao)*/
         );
 
@@ -157,13 +157,13 @@ class usuario_mensagem_RelatorioModelo extends usuario_mensagem_Modelo
                 'formatter' => function( $d, $row ) {
                     return '#'.$d;
                 }),
-            array( 'db' => 'cliente2',      'dt' => 1 ),
-            array( 'db' => 'origem2',       'dt' => 2 ),
-            array( 'db' => 'mensagem',      'dt' => 3 ,
+            array( 'db' => 'cliente2', 'dt' => 1 ),
+            array( 'db' => 'origem2', 'dt' => 2 ),
+            array( 'db' => 'mensagem', 'dt' => 3 ,
                 'formatter' => function( $d, $row ) {
                 return str_replace ( array("\n", "\r", '<br />'), '', $d);
             }),
-            array( 'db' => 'finalizado',    'dt' => 4 ,
+            array( 'db' => 'finalizado', 'dt' => 4 ,
                 'formatter' => function( $d, $row ) {
                 if ($d=='1') {
                     return 'Finalizado';
@@ -171,9 +171,9 @@ class usuario_mensagem_RelatorioModelo extends usuario_mensagem_Modelo
                     return 'Novos Chamados';
                 }
             }),
-            array( 'db' => 'log_date_add',  'dt' => 4 ),
+            array( 'db' => 'log_date_add', 'dt' => 4 ),
             array( 'db' => 'log_date_edit', 'dt' => 5 )/*,
-            array( 'db' => 'id',            'dt' => 6,
+            array( 'db' => 'id', 'dt' => 6,
                 'formatter' => $funcao)*/
         );
 
@@ -189,14 +189,14 @@ class usuario_mensagem_RelatorioModelo extends usuario_mensagem_Modelo
         
         
         $columns = array(
-            array( 'db' => 'marca2',        'dt' => 0 ),
-            array( 'db' => 'linha2',        'dt' => 1 ),
-            array( 'db' => 'produto2',      'dt' => 2 ),
-            array( 'db' => 'mensagem',      'dt' => 3 ,
+            array( 'db' => 'marca2', 'dt' => 0 ),
+            array( 'db' => 'linha2', 'dt' => 1 ),
+            array( 'db' => 'produto2', 'dt' => 2 ),
+            array( 'db' => 'mensagem', 'dt' => 3 ,
                 'formatter' => function( $d, $row ) {
                 return str_replace ( array("\n", "\r", '<br />'), '', $d);
             }),
-            array( 'db' => 'log_date_add',  'dt' => 4 ),
+            array( 'db' => 'log_date_add', 'dt' => 4 ),
             array( 'db' => 'log_date_edit', 'dt' => 5 )
         );
 
@@ -213,13 +213,13 @@ class usuario_mensagem_RelatorioModelo extends usuario_mensagem_Modelo
         $innerjoin_Extra = 'INNER JOIN '.MYSQL_USUARIOS.' AS U ON UM.cliente = U.id LEFT JOIN '.MYSQL_SIS_LOCALIZACAO_ESTADOS.' AS SLE ON U.estado = SLE.id LEFT JOIN '.MYSQL_SIS_LOCALIZACAO_CIDADES.' AS SLC ON U.cidade = SLC.id';
         
         $columns = array(
-            array( 'db' => 'cidade_estado',     'dt' => 0 ),
-            array( 'db' => 'nr_chamados',       'dt' => 1 ),
-            array( 'db' => 'log_date_add',      'dt' => 2,
+            array( 'db' => 'cidade_estado', 'dt' => 0 ),
+            array( 'db' => 'nr_chamados', 'dt' => 1 ),
+            array( 'db' => 'log_date_add', 'dt' => 2,
                 'formatter' => function( $d, $row ) {
                 return data_hora_eua_brasil($d);
             }),
-            array( 'db' => 'log_date_edit',     'dt' => 3 ,
+            array( 'db' => 'log_date_edit', 'dt' => 3 ,
                 'formatter' => function( $d, $row ) {
                 return data_hora_eua_brasil($d);
             }),
@@ -238,13 +238,13 @@ class usuario_mensagem_RelatorioModelo extends usuario_mensagem_Modelo
         $innerjoin_Extra = 'INNER JOIN '.MYSQL_USUARIOS.' AS U ON UM.cliente = U.id LEFT JOIN '.MYSQL_SIS_LOCALIZACAO_ESTADOS.' AS SLE ON U.estado = SLE.id';
         
         $columns = array(
-            array( 'db' => 'estado_nome',       'dt' => 0 ),
-            array( 'db' => 'nr_chamados',       'dt' => 1 ),
-            array( 'db' => 'ult_add',           'dt' => 2 ,
+            array( 'db' => 'estado_nome', 'dt' => 0 ),
+            array( 'db' => 'nr_chamados', 'dt' => 1 ),
+            array( 'db' => 'ult_add', 'dt' => 2 ,
                 'formatter' => function( $d, $row ) {
                 return data_hora_eua_brasil($d);
             }),
-            array( 'db' => 'ult_edit',          'dt' => 3 ,
+            array( 'db' => 'ult_edit', 'dt' => 3 ,
                 'formatter' => function( $d, $row ) {
                 return data_hora_eua_brasil($d);
             }),

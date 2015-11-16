@@ -1080,7 +1080,7 @@ class Visual
             $config = Array(
                 "url_path"      => URL_PATH,
                 'user_name'     => $this->_Acl->logado_usuario->nome,
-                'upload_foto'   => ($this->_Acl->logado_usuario->foto)?$this->_Acl->logado_usuario->foto:SISTEMA_URL.SISTEMA_DIR.'static/img/icons/clientes.png'/*$this->Show_Upload('usuario','Perfil','PerfilFoto','PerfilFoto',$foto,'usuario'.DS,$this->_Acl->logado_usuario->id,'','36','36')*/
+                'upload_foto'   => ($this->_Acl->logado_usuario->foto)?$this->_Acl->logado_usuario->foto:SISTEMA_URL.SISTEMA_DIR.'static/img/icons/clientes.png'/*$this->Show_Upload('usuario', 'Perfil', 'PerfilFoto', 'PerfilFoto',$foto,'usuario'.DS,$this->_Acl->logado_usuario->id,'', '36', '36')*/
             );
             $html = $this->renderizar_bloco('widget_usuario',$config);
         }
@@ -1388,7 +1388,7 @@ class Visual
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Tema_Elementos_Btn($tipo='Editar',$nome = Array('Adicionar','#',''),$permissao='_') {
+    public function Tema_Elementos_Btn($tipo='Editar',$nome = Array('Adicionar', '#', ''),$permissao='_') {
         if (!is_array($nome)) throw new \Exception('$nome não é array: '.$nome,2810);
         if ($tipo=='Superior') {
             if (isset($nome[1]['Print'])) {
@@ -1477,8 +1477,8 @@ class Visual
     public function renderizar_login() {
         if (LAYOULT_IMPRIMIR=='AJAX') {
             $form = new \Framework\Classes\Form('Formlogin',SISTEMA_DIR_INT,''); //formajax /'.SISTEMA_MODULO.'/'.SISTEMA_SUB.'/'.SISTEMA_MET
-            $form->Input_Novo('Login','sistema_login','','text', '',30, '');
-            $form->Input_Novo('Senha','sistema_senha','','password', 30, '','');
+            $form->Input_Novo('Login', 'sistema_login', '', 'text', '',30, '');
+            $form->Input_Novo('Senha', 'sistema_senha', '', 'password', 30, '', '');
             $this->Blocar($form->retorna_form('Entrar'));
             $this->Bloco_Menor_CriaJanela(__('Login'));
             
@@ -1661,7 +1661,7 @@ class Visual
         $i = 0;
         if (is_array($aaSorting)) {
             foreach($aaSorting as &$valor) {
-                if ($i>0) $aaSortingtxt .= ',';
+                if ($i>0) $aaSortingtxt .= ', ';
                 $aaSortingtxt .= '['.$valor[0].',\''.$valor[1].'\']';
                 ++$i;
             }
@@ -1704,7 +1704,7 @@ class Visual
         $i = 0;
         if (is_array($aaSorting)) {
             foreach($aaSorting as &$valor) {
-                if ($i>0) $aaSortingtxt .= ',';
+                if ($i>0) $aaSortingtxt .= ', ';
                 $aaSortingtxt .= '['.$valor[0].',\''.$valor[1].'\']';
                 ++$i;
             }
@@ -1771,7 +1771,7 @@ class Visual
         $atributo_id = (string) 'Drop'.$inicio.'zone'.rand();
         // Carrega Dependencias
         $this->Arquivos_Css_Dependencia('sistema/dropzone/css/dropzone');
-        $this->Arquivos_Js_Dependencia(Array('sistema/dropzone/dropzone','globals/scripts/plugins/dropzone'));
+        $this->Arquivos_Js_Dependencia(Array('sistema/dropzone/dropzone', 'globals/scripts/plugins/dropzone'));
         // COmeça HTML
         $html = '<form action="'.URL_PATH.$modulo.'/'.$sub.'/'.$acao.'_Upload/'.$id.'" class="dropzone" id="'.$atributo_id.'"></form>';
         $this->Javascript_Executar('dropToUpload.init(\'#'.$atributo_id.'\');');
@@ -1786,7 +1786,7 @@ class Visual
     /**
      * Gerador de Calendário (JS+HTML)
      * @param varchar $idcalendar
-     * @param array $events 'Id,'Titulo','DataInicial','DataFinal'
+     * @param array $events 'Id,'Titulo', 'DataInicial', 'DataFinal'
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
@@ -1819,14 +1819,14 @@ class Visual
                 $i = 0;
                 foreach($events as &$valor) {
                     if ($i!=0) {
-                        $this->Javascript_Executar(',');
+                        $this->Javascript_Executar(', ');
                     }
                     $this->Javascript_Executar('{'.
-                    'id:\''.$valor['Id'].'\','.
-                    'title:\''.$valor['Titulo'].'\','.
-                    'start: \''.$valor['DataInicial'].'\','.
-                    'end: \''.$valor['DataFinal'].'\','.
-                    'comeco: \''.$valor['DataInicial'].'\','.
+                    'id:\''.$valor['Id'].'\', '.
+                    'title:\''.$valor['Titulo'].'\', '.
+                    'start: \''.$valor['DataInicial'].'\', '.
+                    'end: \''.$valor['DataFinal'].'\', '.
+                    'comeco: \''.$valor['DataInicial'].'\', '.
                     'final: \''.$valor['DataFinal'].'\''.
                     '}');  
                     ++$i;
@@ -2224,9 +2224,9 @@ class Visual
                                 }
                             }
                             if ($output_index_count !== NULL) {
-                                return '[' . implode(',', $output_indexed) . ']';
+                                return '[' . implode(', ', $output_indexed) . ']';
                             } else {
-                                return '{' . implode(',', $output_associative) . '}';
+                                return '{' . implode(', ', $output_associative) . '}';
                             }
                         default:
                             return ''; // Not supported

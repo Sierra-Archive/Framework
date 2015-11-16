@@ -7,7 +7,7 @@ class Cpf
             return (bool) (self::calcDigVerif(
                     substr(
                         str_replace(
-                            Array('.','-'),
+                            Array('.', '-'),
                             '', 
                             $cpf
                         ),
@@ -17,7 +17,7 @@ class Cpf
                 )==(
                     substr(
                         str_replace(
-                            Array('.','-'), 
+                            Array('.', '-'), 
                             '', 
                             $cpf
                         ),
@@ -53,7 +53,7 @@ class Cpf
     }  
     
     public static function Transfer_Server($cpf) {       
-        return (int) str_replace(Array('.','-'), '', $cpf);
+        return (int) str_replace(Array('.', '-'), '', $cpf);
     }
     
     private static function calcDigVerif($num) {    

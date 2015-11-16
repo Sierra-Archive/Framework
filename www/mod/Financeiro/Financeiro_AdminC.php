@@ -140,12 +140,12 @@ class Financeiro_AdminControle extends Financeiro_Controle
     public function financeiro_deposito($usuario = 0) {
         $usuario = (int) $usuario;
         Financeiro_AdminControle::financas_carregajanelaadd($this, $this->_Modelo, $this->_Visual, $usuario);
-        $this->_Visual->Json_Info_Update('Titulo','Depositar para Usuário #'.$usuario);
+        $this->_Visual->Json_Info_Update('Titulo', 'Depositar para Usuário #'.$usuario);
     }
     public function financeiro_retirar($usuario = 0) {
         $usuario = (int) $usuario;
         Financeiro_AdminControle::financas_carregajanelaretirar($this, $this->_Modelo, $this->_Visual, $usuario);
-        $this->_Visual->Json_Info_Update('Titulo','Sacar de Usuário #'.$usuario);
+        $this->_Visual->Json_Info_Update('Titulo', 'Sacar de Usuário #'.$usuario);
     }
     /**
     * Cria Janela Do Formulario de Cadastro de FInancas
@@ -206,11 +206,11 @@ class Financeiro_AdminControle extends Financeiro_Controle
     static function financas_formcadastro(&$controle, &$Modelo, &$Visual,$user) {
         
        
-        $form = new \Framework\Classes\Form('adminfinanceiroinserir','Financeiro/Admin/financas_inserir/','formajax');
-        $form->Input_Novo('user','user',$user,'hidden', false, 'obrigatorio'); 
-        $form->Input_Novo(__('Valor'),'valor','','text', 30, 'obrigatorio'); 
+        $form = new \Framework\Classes\Form('adminfinanceiroinserir', 'Financeiro/Admin/financas_inserir/', 'formajax');
+        $form->Input_Novo('user', 'user',$user,'hidden', false, 'obrigatorio'); 
+        $form->Input_Novo(__('Valor'),'valor', '', 'text', 30, 'obrigatorio'); 
 
-        $form->Input_Novo(__('Observação'),'obs','','text', 255);
+        $form->Input_Novo(__('Observação'),'obs', '', 'text', 255);
         
         $formulario = $form->retorna_form('Depositar para Usuário');
 
@@ -219,11 +219,11 @@ class Financeiro_AdminControle extends Financeiro_Controle
     static function financas_formretirar(&$controle, &$Modelo, &$Visual,$user) {
         
        
-        $form = new \Framework\Classes\Form('adminfinanceiroinserir','Financeiro/Admin/financas_retirar/','formajax');
-        $form->Input_Novo('user','user',$user,'hidden', false, 'obrigatorio'); 
-        $form->Input_Novo(__('Valor'),'valor','','text', 30, 'obrigatorio'); 
+        $form = new \Framework\Classes\Form('adminfinanceiroinserir', 'Financeiro/Admin/financas_retirar/', 'formajax');
+        $form->Input_Novo('user', 'user',$user,'hidden', false, 'obrigatorio'); 
+        $form->Input_Novo(__('Valor'),'valor', '', 'text', 30, 'obrigatorio'); 
 
-        $form->Input_Novo(__('Observação'),'obs','','text', 255);
+        $form->Input_Novo(__('Observação'),'obs', '', 'text', 255);
         
         $formulario = $form->retorna_form('Retirar de Usuário');
 

@@ -40,14 +40,14 @@ class Request
             $this->_modulo = array_shift($url); 
             if ($this->isAjax()===true) {
                 if (!defined('LAYOULT_IMPRIMIR')) {
-                    define('LAYOULT_IMPRIMIR',  'AJAX');
+                    define('LAYOULT_IMPRIMIR', 'AJAX');
                 }
                 
                 if ($this->_modulo =='Modelo') {
                     $this->_modulo = array_shift($url); 
                     $this->_url = substr($this->_url, 7);
                     if (!defined('REQUISICAO_TIPO')) {
-                        define('REQUISICAO_TIPO',  'MODELO');
+                        define('REQUISICAO_TIPO', 'MODELO');
                     }
                 }
             } else {
@@ -61,18 +61,18 @@ class Request
                     $this->_url = substr($this->_url, 7);
                 }
                 if (!defined('LAYOULT_IMPRIMIR')) {
-                    define('LAYOULT_IMPRIMIR',  'COMPLETO');
+                    define('LAYOULT_IMPRIMIR', 'COMPLETO');
                 }
             }
         } else {
             $this->_modulo = DEFAULT_MODULO;
             if (!defined('LAYOULT_IMPRIMIR')) {
-                define('LAYOULT_IMPRIMIR',  'COMPLETO');
+                define('LAYOULT_IMPRIMIR', 'COMPLETO');
             }
         }
         
         if (!defined('REQUISICAO_TIPO')) {
-            define('REQUISICAO_TIPO',  'CONTROLE');
+            define('REQUISICAO_TIPO', 'CONTROLE');
         }
         
         // Extrai primeiro elemento como submodulo

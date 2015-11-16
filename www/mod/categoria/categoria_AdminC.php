@@ -48,7 +48,7 @@ class categoria_AdminControle extends categoria_Controle
         $tabela = Array();
         $array = $this->_Modelo->Categorias_Retorna($tipo);
         $tabela = new \Framework\Classes\Tabela();
-        $tabela->addcabecario(array('Id','Nome', 'Acesso','Editar'));   
+        $tabela->addcabecario(array('Id', 'Nome', 'Acesso', 'Editar'));   
         
         // Botao Add
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(

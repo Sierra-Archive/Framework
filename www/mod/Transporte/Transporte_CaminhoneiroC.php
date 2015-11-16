@@ -46,7 +46,7 @@ class Transporte_CaminhoneiroControle extends Transporte_Controle
     }
     public function Visualizar($id,$export=false) {
 
-        $caminhoneiro = $this->_Modelo->db->Sql_Select('Transporte_Caminhoneiro','TC.id=\''.((int) $id).'\'',1);
+        $caminhoneiro = $this->_Modelo->db->Sql_Select('Transporte_Caminhoneiro', 'TC.id=\''.((int) $id).'\'',1);
         
         $this->Gerador_Visualizar_Unidade($caminhoneiro, 'Visualizar Autônomo #'.$id);
         
@@ -107,7 +107,7 @@ class Transporte_CaminhoneiroControle extends Transporte_Controle
         if ($retornar==='false') $retornar = false;
         // Verifica se Existe Conexao, se nao tiver abre o adicionar conexao, se nao, abre a pasta!
         $Registro = &\Framework\App\Registro::getInstacia();
-        $resultado = $Registro->_Modelo->db->Sql_Select('Transporte_Caminhoneiro','{sigla}usuario=\''.$Registro->_Acl->Usuario_GetID().'\'',1);
+        $resultado = $Registro->_Modelo->db->Sql_Select('Transporte_Caminhoneiro', '{sigla}usuario=\''.$Registro->_Acl->Usuario_GetID().'\'',1);
         if (is_object($resultado)) {
             $existe = true;
         }
@@ -145,7 +145,7 @@ class Transporte_CaminhoneiroControle extends Transporte_Controle
        return \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos,false,'html',false);
     }
     public function Painel_Caminhoneiro_Add2($camada) {
-        $resultado = $this->_Modelo->db->Sql_Select('Transporte_Caminhoneiro','{sigla}usuario=\''.$this->_Acl->Usuario_GetID().'\'',1);
+        $resultado = $this->_Modelo->db->Sql_Select('Transporte_Caminhoneiro', '{sigla}usuario=\''.$this->_Acl->Usuario_GetID().'\'',1);
         if (is_object($resultado)) {
             self::Painel_Caminhoneiro($camada,false);
             return true;

@@ -52,14 +52,14 @@ class Desenvolvimento_SenhaModelo extends Desenvolvimento_Modelo
                 'formatter' => function( $d, $row ) {
                     return '#'.$d;
                 }),
-            array( 'db' => 'categoria2',    'dt' => 1 ),
-            array( 'db' => 'url',           'dt' => 2,
+            array( 'db' => 'categoria2', 'dt' => 1 ),
+            array( 'db' => 'url', 'dt' => 2,
                 'formatter' => function( $d, $row ) {
                     return '<a href=\'http://'.$d.'\' target="_BLANK">'.$d.'</a>';
                 }
             ),
-            array( 'db' => 'login',         'dt' => 3 ),
-            array( 'db' => 'senha',         'dt' => 4 )
+            array( 'db' => 'login', 'dt' => 3 ),
+            array( 'db' => 'senha', 'dt' => 4 )
         );
         // Destaque, somente se tiver permissao
         $numero = 4;
@@ -109,9 +109,9 @@ class Desenvolvimento_SenhaModelo extends Desenvolvimento_Modelo
             );
         }
         ++$numero;
-        $columns[] = array( 'db' => 'log_date_add',  'dt' => $numero );
+        $columns[] = array( 'db' => 'log_date_add', 'dt' => $numero );
         ++$numero;
-        $columns[] = array( 'db' => 'id',            'dt' => $numero,
+        $columns[] = array( 'db' => 'id', 'dt' => $numero,
                 'formatter' => $funcao
         );
 
@@ -155,15 +155,15 @@ class Desenvolvimento_SenhaModelo extends Desenvolvimento_Modelo
                 'formatter' => function( $d, $row ) {
                     return '#'.$d;
                 }),
-            array( 'db' => 'usuario2',      'dt' => 1 ),
-            array( 'db' => 'categoria2',    'dt' => 2 ),
-            array( 'db' => 'url',           'dt' => 3 ,
+            array( 'db' => 'usuario2', 'dt' => 1 ),
+            array( 'db' => 'categoria2', 'dt' => 2 ),
+            array( 'db' => 'url', 'dt' => 3 ,
                 'formatter' => function( $d, $row ) {
                     return '<a href=\'http://'.$d.'\' target="_BLANK">'.$d.'</a>';
                 }
             ),
-            array( 'db' => 'login',         'dt' => 4 ),
-            array( 'db' => 'senha',         'dt' => 5 )
+            array( 'db' => 'login', 'dt' => 4 ),
+            array( 'db' => 'senha', 'dt' => 5 )
         );
         // Destaque, somente se tiver permissao
         $numero = 5;
@@ -213,9 +213,9 @@ class Desenvolvimento_SenhaModelo extends Desenvolvimento_Modelo
             );
         }
         ++$numero;
-        $columns[] = array( 'db' => 'log_date_add',  'dt' => $numero );
+        $columns[] = array( 'db' => 'log_date_add', 'dt' => $numero );
         ++$numero;
-        $columns[] = array( 'db' => 'id',            'dt' => $numero,
+        $columns[] = array( 'db' => 'id', 'dt' => $numero,
                 'formatter' => $funcao
         );
 
@@ -258,14 +258,14 @@ class Desenvolvimento_SenhaModelo extends Desenvolvimento_Modelo
                 'formatter' => function( $d, $row ) {
                     return '#'.$d;
                 }),
-            array( 'db' => 'categoria2',    'dt' => 1 ),
-            array( 'db' => 'url',           'dt' => 2 ,
+            array( 'db' => 'categoria2', 'dt' => 1 ),
+            array( 'db' => 'url', 'dt' => 2 ,
                 'formatter' => function( $d, $row ) {
                     return '<a href=\'http://'.$d.'\' target="_BLANK">'.$d.'</a>';
                 }
             ),
-            array( 'db' => 'login',         'dt' => 3 ),
-            array( 'db' => 'senha',         'dt' => 4 )
+            array( 'db' => 'login', 'dt' => 3 ),
+            array( 'db' => 'senha', 'dt' => 4 )
         );
         // Destaque, somente se tiver permissao
         $numero = 4;
@@ -315,9 +315,9 @@ class Desenvolvimento_SenhaModelo extends Desenvolvimento_Modelo
             );
         }
         ++$numero;
-        $columns[] = array( 'db' => 'log_date_add',  'dt' => $numero );
+        $columns[] = array( 'db' => 'log_date_add', 'dt' => $numero );
         ++$numero;
-        $columns[] = array( 'db' => 'id',            'dt' => $numero,
+        $columns[] = array( 'db' => 'id', 'dt' => $numero,
                 'formatter' => $funcao
         );
 
@@ -360,15 +360,15 @@ class Desenvolvimento_SenhaModelo extends Desenvolvimento_Modelo
                 'formatter' => function( $d, $row ) {
                     return '#'.$d;
                 }),
-            array( 'db' => 'usuario2',      'dt' => 1 ),
-            array( 'db' => 'categoria2',    'dt' => 2 ),
-            array( 'db' => 'url',           'dt' => 3 ,
+            array( 'db' => 'usuario2', 'dt' => 1 ),
+            array( 'db' => 'categoria2', 'dt' => 2 ),
+            array( 'db' => 'url', 'dt' => 3 ,
                 'formatter' => function( $d, $row ) {
                     return '<a href=\'http://'.$d.'\' target="_BLANK">'.$d.'</a>';
                 }
             ),
-            array( 'db' => 'login',         'dt' => 4 ),
-            array( 'db' => 'senha',         'dt' => 5 )
+            array( 'db' => 'login', 'dt' => 4 ),
+            array( 'db' => 'senha', 'dt' => 5 )
         );
         // Destaque, somente se tiver permissao
         $numero = 5;
@@ -418,9 +418,9 @@ class Desenvolvimento_SenhaModelo extends Desenvolvimento_Modelo
             );
         }
         ++$numero;
-        $columns[] = array( 'db' => 'log_date_add',  'dt' => $numero );
+        $columns[] = array( 'db' => 'log_date_add', 'dt' => $numero );
         ++$numero;
-        $columns[] = array( 'db' => 'id',            'dt' => $numero,
+        $columns[] = array( 'db' => 'id', 'dt' => $numero,
                 'formatter' => $funcao
         );
 

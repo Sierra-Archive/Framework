@@ -49,8 +49,8 @@ class usuario_mensagem_OrigemModelo extends usuario_mensagem_Modelo
                 'formatter' => function( $d, $row ) {
                     return '#'.$d;
                 }),
-            array( 'db' => 'nome',          'dt' => 1 ),
-            array( 'db' => 'id',            'dt' => 2,
+            array( 'db' => 'nome', 'dt' => 1 ),
+            array( 'db' => 'id', 'dt' => 2,
                 'formatter' => $funcao)
         );
 

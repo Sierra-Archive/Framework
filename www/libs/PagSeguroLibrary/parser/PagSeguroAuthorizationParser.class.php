@@ -59,7 +59,7 @@ class PagSeguroAuthorizationParser extends PagSeguroServiceParser
         }
         // Permissions
         if ($authorization->getPermissions()->getPermissions() != null) {
-            $data['permissions'] = implode(',',$authorization->getPermissions()->getPermissions());
+            $data['permissions'] = implode(', ',$authorization->getPermissions()->getPermissions());
         }
 
         // parameter

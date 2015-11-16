@@ -55,11 +55,11 @@ class comercio_MarcaControle extends comercio_Controle
         self::Endereco_Marca(false);
         
         $tabela = Array(
-            'Id','Nome','Funções'
+            'Id', 'Nome', 'Funções'
         );
         $this->_Visual->Show_Tabela_DataTable_Massiva($tabela,'comercio/Marca/Marcas');
         $titulo = __('Listagem de Marcas').' (<span id="DataTable_Contador">0</span>)';  //
-        $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',10,Array("link"=>"comercio/Marca/Marcas_Add",'icon'=>'add','nome'=>'Adicionar Marca'));
+        $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',10,Array("link"=>"comercio/Marca/Marcas_Add",'icon'=>'add', 'nome'=>'Adicionar Marca'));
         
         //Carrega Json
         $this->_Visual->Json_Info_Update('Titulo', __('Administrar Marcas'));

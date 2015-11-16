@@ -583,7 +583,7 @@ abstract class BaseFacebook
     // if 'scope' is passed as an array, convert to comma separated list
     $scopeParams = isset($params['scope']) ? $params['scope'] : null;
     if ($scopeParams && is_array($scopeParams)) {
-      $params['scope'] = implode(',', $scopeParams);
+      $params['scope'] = implode(', ', $scopeParams);
     }
 
     return $this->getUrl(

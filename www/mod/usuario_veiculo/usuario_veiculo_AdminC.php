@@ -32,7 +32,7 @@ class usuario_veiculo_AdminControle extends usuario_veiculo_Controle
      */
     public function Veiculos_Upload($id) {
         $id = (int) $id;
-        $fileTypes = array('jpg','jpeg','gif','png'); // File extensions
+        $fileTypes = array('jpg', 'jpeg', 'gif', 'png'); // File extensions
         $dir = 'usuario_veiculo'.DS;
         $ext = $this->Upload($dir,$fileTypes,$id);
         if ($ext!='falso') {
@@ -89,15 +89,15 @@ class usuario_veiculo_AdminControle extends usuario_veiculo_Controle
             
             foreach ($veiculos as $indice=>&$valor) {
                 $tabela['Id'][$i] = $valor['id'];
-                $tabela['Foto'][$i] = $this->_Visual->Show_Upload('usuario_veiculo','Admin','Veiculos','VeiculoImagem'.$valor['id'],$valor['foto'],'usuario_veiculo'.DS,$valor['id']);
+                $tabela['Foto'][$i] = $this->_Visual->Show_Upload('usuario_veiculo', 'Admin', 'Veiculos', 'VeiculoImagem'.$valor['id'],$valor['foto'],'usuario_veiculo'.DS,$valor['id']);
                 $tabela['Categoria'][$i] = $valor['categoria'];
                 $tabela['Ano'][$i] = $valor['ano'];
                 $tabela['Moto'][$i] = $valor['marca'].' '.$valor['modelo'];
                 $tabela['CC'][$i] = $valor['cc'];
-                $tabela['Até 3 dias<br>Entre 3 e 10 dias<br>+10 dias'][$i] = 'R$'.number_format($valor['valor1'], 2, ',', '.').
-                '<br>R$'.number_format($valor['valor2'], 2, ',', '.').
-                '<br>R$'.number_format($valor['valor3'], 2, ',', '.');
-                $tabela['Franquia'][$i] = 'R$'.number_format($valor['franquia'], 2, ',', '.');
+                $tabela['Até 3 dias<br>Entre 3 e 10 dias<br>+10 dias'][$i] = 'R$'.number_format($valor['valor1'], 2, ', ', '.').
+                '<br>R$'.number_format($valor['valor2'], 2, ', ', '.').
+                '<br>R$'.number_format($valor['valor3'], 2, ', ', '.');
+                $tabela['Franquia'][$i] = 'R$'.number_format($valor['franquia'], 2, ', ', '.');
                 $tabela['Funções'][$i] = '
                 <a title="Editar" class="lajax explicar-titulo" href="'.URL_PATH.'usuario_veiculo/Admin/veiculos_carregajanelaEdit/'.$valor['id'].'/" data-acao="">
                 <img alt="Editar" src="'.WEB_URL.'img/turboadmin/icon_edit.png">
@@ -178,7 +178,7 @@ class usuario_veiculo_AdminControle extends usuario_veiculo_Controle
         $marcas = Array();
         $qnt = $this->_Modelo->retorna_marcas($marcas);
         // cadastro de veiculos
-        $form = new \Framework\Classes\Form('adminformveiculossend','usuario_veiculo/Admin/veiculos_inserir/','formajax');
+        $form = new \Framework\Classes\Form('adminformveiculossend', 'usuario_veiculo/Admin/veiculos_inserir/', 'formajax');
         usuario_veiculo_AdminControle::veiculos_form($this, $this->_Visual, $form, $marcas);
         $formulario = $form->retorna_form('Cadastrar');
         $this->_Visual->Blocar($formulario);
@@ -193,12 +193,12 @@ class usuario_veiculo_AdminControle extends usuario_veiculo_Controle
         // recupera veiculo
         $veiculo = $this->_Modelo->retorna_veiculo($id);
         // cadastro de veiculos
-        $form = new \Framework\Classes\Form('adminformveiculossend','usuario_veiculo/Admin/veiculos_alterar/'.$id.'/','formajax');
+        $form = new \Framework\Classes\Form('adminformveiculossend', 'usuario_veiculo/Admin/veiculos_alterar/'.$id.'/', 'formajax');
         usuario_veiculo_AdminControle::veiculos_form($this, $this->_Visual, $form, $marcas, $veiculo['categoria'], $veiculo['ano'], $veiculo['modelo'], $veiculo['marcaid'], $veiculo['cc'], $veiculo['valor1'], $veiculo['valor2'], $veiculo['valor3'], $veiculo['franquia'], $veiculo['obs']);
         $formulario = $form->retorna_form('Alterar');
         $this->_Visual->Blocar($formulario);
         $this->_Visual->Bloco_Menor_CriaJanela(__('Alteração de Veiculo'));
-        $this->_Visual->Json_Info_Update('Titulo','Editar Veiculo (#'.$id.')');
+        $this->_Visual->Json_Info_Update('Titulo', 'Editar Veiculo (#'.$id.')');
         
     }
     /**
@@ -231,17 +231,17 @@ class usuario_veiculo_AdminControle extends usuario_veiculo_Controle
 	// select de categorias
         $controle->Categorias_ShowSelect($form, 'objetos', $categoria);
         
-        $form->Input_Novo('Ano do Veiculo','ano',$ano,'text', 4, 'obrigatorio', '', false,'','','Ano','', false); 
-        $form->Input_Novo('Modelo do Veiculo','modelo',$modelo,'text', 30, 'obrigatorio'); 
+        $form->Input_Novo('Ano do Veiculo', 'ano',$ano,'text', 4, 'obrigatorio', '', false,'', '', 'Ano', '', false); 
+        $form->Input_Novo('Modelo do Veiculo', 'modelo',$modelo,'text', 30, 'obrigatorio'); 
         // select de pessoas
-        $form->Select_Novo('Marca','selectmarcas','selectmarcas');
+        $form->Select_Novo('Marca', 'selectmarcas', 'selectmarcas');
         $Visual->Marcas_ShowSelect($selectmarcas,$form,$marca);
         $form->Select_Fim();
-        $form->Input_Novo('Cilindradas','cc',$cc,'text', 11, 'obrigatorio', '', false,'','','Numero','', false); 
-        $form->Input_Novo('Valor da Diária até 3 Dias','valor1',$valor1,'text', 30, 'obrigatorio', '', false,'','','Numero','', false); 
-        $form->Input_Novo('Valor da Diária de 3 a 9 Dias','valor2',$valor2,'text', 30, 'obrigatorio', '', false,'','','Numero','', false); 
-        $form->Input_Novo('Valor Acima de 10 dias','valor3',$valor3,'text', 30, 'obrigatorio', '', false,'','','Numero','', false); 
-        $form->Input_Novo('Valor da Franquia','franquia',$franquia,'text', 30, 'obrigatorio', '', false,'','','Numero','', false); 
+        $form->Input_Novo('Cilindradas', 'cc',$cc,'text', 11, 'obrigatorio', '', false,'', '', 'Numero', '', false); 
+        $form->Input_Novo('Valor da Diária até 3 Dias', 'valor1',$valor1,'text', 30, 'obrigatorio', '', false,'', '', 'Numero', '', false); 
+        $form->Input_Novo('Valor da Diária de 3 a 9 Dias', 'valor2',$valor2,'text', 30, 'obrigatorio', '', false,'', '', 'Numero', '', false); 
+        $form->Input_Novo('Valor Acima de 10 dias', 'valor3',$valor3,'text', 30, 'obrigatorio', '', false,'', '', 'Numero', '', false); 
+        $form->Input_Novo('Valor da Franquia', 'franquia',$franquia,'text', 30, 'obrigatorio', '', false,'', '', 'Numero', '', false); 
 
 
         $form->Input_Novo(__('Observação'),'obs',$obs,'text', 1000);
@@ -396,8 +396,8 @@ class usuario_veiculo_AdminControle extends usuario_veiculo_Controle
     static function marcas_formcadastro() {
         
        
-        $form = new \Framework\Classes\Form('adminformmarcassend','usuario_veiculo/Admin/marcas_inserir/','formajax');
-        $form->Input_Novo('Nome da Marca','nome','','text', 30, 'obrigatorio'); 
+        $form = new \Framework\Classes\Form('adminformmarcassend', 'usuario_veiculo/Admin/marcas_inserir/', 'formajax');
+        $form->Input_Novo('Nome da Marca', 'nome', '', 'text', 30, 'obrigatorio'); 
         
         $formulario = $form->retorna_form(__('Salvar'));
 

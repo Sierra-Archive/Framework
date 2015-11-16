@@ -46,7 +46,7 @@ class Transporte_FornecedorControle extends Transporte_Controle
     public function Visualizar($id,$export=false) {
         
         
-        $fornecedor = $this->_Modelo->db->Sql_Select('Transporte_Fornecedor','TF.id=\''.((int) $id).'\'',1);
+        $fornecedor = $this->_Modelo->db->Sql_Select('Transporte_Fornecedor', 'TF.id=\''.((int) $id).'\'',1);
         
         $this->Gerador_Visualizar_Unidade($fornecedor, 'Visualizar Fornecedor #'.$id);
         
@@ -106,7 +106,7 @@ class Transporte_FornecedorControle extends Transporte_Controle
         if ($retornar==='false') $retornar = false;
         // Verifica se Existe Conexao, se nao tiver abre o adicionar conexao, se nao, abre a pasta!
         $Registro = &\Framework\App\Registro::getInstacia();
-        $resultado = $Registro->_Modelo->db->Sql_Select('Transporte_Fornecedor','{sigla}usuario=\''.$Registro->_Acl->Usuario_GetID().'\'',1);
+        $resultado = $Registro->_Modelo->db->Sql_Select('Transporte_Fornecedor', '{sigla}usuario=\''.$Registro->_Acl->Usuario_GetID().'\'',1);
         if (is_object($resultado)) {
             $existe = true;
         }
@@ -170,7 +170,7 @@ class Transporte_FornecedorControle extends Transporte_Controle
        return \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos,false,'html',false);
     }
     public function Painel_Fornecedor_Add2($camada) {
-        $resultado = $this->_Modelo->db->Sql_Select('Transporte_Fornecedor','{sigla}usuario=\''.$this->_Acl->Usuario_GetID().'\'',1);
+        $resultado = $this->_Modelo->db->Sql_Select('Transporte_Fornecedor', '{sigla}usuario=\''.$this->_Acl->Usuario_GetID().'\'',1);
         if (is_object($resultado)) {
             self::Painel_Fornecedor($camada,false);
             return true;

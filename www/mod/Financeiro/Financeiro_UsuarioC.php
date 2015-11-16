@@ -262,7 +262,7 @@ class Financeiro_UsuarioControle extends Financeiro_Controle
         self::DAO_Campos_Retira($campos, 'saida_motivoid');
         self::DAO_Campos_Retira($campos, 'forma_pagar');
         self::DAO_Campos_Retira($campos, 'forma_condicao');
-        self::mysql_MudaLeitura($campos, Array('valor','dt_vencimento','num_parcela'));
+        self::mysql_MudaLeitura($campos, Array('valor', 'dt_vencimento', 'num_parcela'));
         return true;
     }
     /**

@@ -93,7 +93,7 @@ class Datatable {
                     'DESC';
                     $orderBy[] = $column['db'].' '.$dir;//'`'.$column['db'].'` '.$dir;
                 }
-                if ($cookie_ordenar!=='') $cookie_ordenar .= ',';
+                if ($cookie_ordenar!=='') $cookie_ordenar .= ', ';
                 $cookie_ordenar .= '['.$columnIdx.',\''.$request['order'][$i]['dir'].'\']';
             }
             // Grava Cookie
@@ -446,7 +446,7 @@ class Datatable {
             $val = '';
             for ( $i=0, $ien=count($bindings) ; $i<$ien ; $i++ ) {
                 $tipo = $tipo.$bindings[$i]['type'];
-                if ($val!=='') $val = $val.',';
+                if ($val!=='') $val = $val.', ';
                 $val = $val.'$bindings['.$i.'][\'val\']';
             }
             eval('$stmt->bind_param( $tipo, '.$val.');');

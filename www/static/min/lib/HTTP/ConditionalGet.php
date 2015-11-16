@@ -319,7 +319,7 @@ class HTTP_ConditionalGet {
         $clientEtagList = get_magic_quotes_gpc()
             ? stripslashes($_SERVER['HTTP_IF_NONE_MATCH'])
             : $_SERVER['HTTP_IF_NONE_MATCH'];
-        $clientEtags = explode(',', $clientEtagList);
+        $clientEtags = explode(', ', $clientEtagList);
         
         $compareTo = $this->normalizeEtag($this->_etag);
         foreach ($clientEtags as $clientEtag) {

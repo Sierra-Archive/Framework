@@ -84,7 +84,7 @@ class comercio_certificado_Controle extends \Framework\App\Controle
         self::mysql_AtualizaValores($campos, $usuario);
         
         // cadastro de usuario
-        $form = new \Framework\Classes\Form('form_Usuario_Update_Info','comercio_certificado/Proposta/Usuario_UpdateInfo2/'.$id.'/','formajax');
+        $form = new \Framework\Classes\Form('form_Usuario_Update_Info', 'comercio_certificado/Proposta/Usuario_UpdateInfo2/'.$id.'/', 'formajax');
         \Framework\App\Controle::Gerador_Formulario($campos, $form);
 
         $formulario = $form->retorna_form('Modificar Observação');
@@ -134,7 +134,7 @@ class comercio_certificado_Controle extends \Framework\App\Controle
             $linkextra = $tipo.'/';
         }
         // Carrega formulario
-        $form = new \Framework\Classes\Form('form_Sistema_Admin_Usuarios','comercio_certificado/Proposta/Usuarios_Add2/'.$linkextra,'formajax');
+        $form = new \Framework\Classes\Form('form_Sistema_Admin_Usuarios', 'comercio_certificado/Proposta/Usuarios_Add2/'.$linkextra,'formajax');
         // Retira os campos invalidos
         usuario_Controle::Campos_Deletar($tipo, $campos, $form);
         // Chama Formulario
@@ -162,7 +162,7 @@ class comercio_certificado_Controle extends \Framework\App\Controle
         if ($usuario===false) throw new \Exception('Usuário não existe', 8010);
         self::mysql_AtualizaValores($campos, $usuario);
         // Cria Formulario
-        $form = new \Framework\Classes\Form('form_Sistema_AdminC_UsuarioEdit','comercio_certificado/Proposta/Usuarios_Edit2/'.$tipo.'/'.$id.'/','formajax');
+        $form = new \Framework\Classes\Form('form_Sistema_AdminC_UsuarioEdit', 'comercio_certificado/Proposta/Usuarios_Edit2/'.$tipo.'/'.$id.'/', 'formajax');
         // Remove desnecessarios
         usuario_Controle::Campos_Deletar($tipo, $campos, $form);
         // cadastro de usuario

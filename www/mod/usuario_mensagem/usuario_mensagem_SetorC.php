@@ -53,11 +53,11 @@ class usuario_mensagem_SetorControle extends usuario_mensagem_Controle
         self::Endereco_Setor(false);
         
         $tabela = Array(
-            'Grupo','Nome','Email do Setor','Funções'
+            'Grupo', 'Nome', 'Email do Setor', 'Funções'
         );
         $this->_Visual->Show_Tabela_DataTable_Massiva($tabela,'usuario_mensagem/Setor/Setores');
         $titulo = __('Listagem de Setores').' (<span id="DataTable_Contador">0</span>)';  //
-        $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',10,Array("link"=>"usuario_mensagem/Setor/Setores_Add",'icon'=>'add','nome'=>'Adicionar Setor'));
+        $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',10,Array("link"=>"usuario_mensagem/Setor/Setores_Add",'icon'=>'add', 'nome'=>'Adicionar Setor'));
         
         //Carrega Json
         $this->_Visual->Json_Info_Update('Titulo', __('Administrar Setores'));
@@ -94,7 +94,7 @@ class usuario_mensagem_SetorControle extends usuario_mensagem_Controle
         self::mysql_AtualizaValores($campos, $setor);
 
         // edicao de setores
-        $form = new \Framework\Classes\Form('form_Sistema_AdminC_SetorEdit','usuario_mensagem/Setor/Setores_Edit2/'.$id.'/','formajax');
+        $form = new \Framework\Classes\Form('form_Sistema_AdminC_SetorEdit', 'usuario_mensagem/Setor/Setores_Edit2/'.$id.'/', 'formajax');
         \Framework\App\Controle::Gerador_Formulario($campos, $form);
         $formulario = $form->retorna_form('Alterar Setor');
         $this->_Visual->Blocar($formulario);

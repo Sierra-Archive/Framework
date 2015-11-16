@@ -38,9 +38,9 @@ class Financeiro_Controle extends \Framework\App\Controle
             if (\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('Financeiro_User_Saldo')) {
                 $saldo = Financeiro_Modelo::Carregar_Saldo($Modelo, $usuarioid);
                 if ($saldo<0) {
-                    $saldo = '<p class="text-error">- R$'.number_format(abs($saldo), 2, ',', '.').'</p>';
+                    $saldo = '<p class="text-error">- R$'.number_format(abs($saldo), 2, ', ', '.').'</p>';
                 } else {
-                    $saldo = 'R$'.number_format($saldo, 2, ',', '.');
+                    $saldo = 'R$'.number_format($saldo, 2, ', ', '.');
                 }
                 $html .= '<hr>Saldo em conta: '.$saldo;
             }
@@ -105,7 +105,7 @@ class Financeiro_Controle extends \Framework\App\Controle
         $tabela = Array();
         
         // SElect
-        $financeiros = $this->_Modelo->db->Sql_Select('Financeiro_Pagamento_Interno',$where,0,'','id,dt_vencimento,motivo,motivoid,valor,num_parcela');
+        $financeiros = $this->_Modelo->db->Sql_Select('Financeiro_Pagamento_Interno',$where,0,'', 'id,dt_vencimento,motivo,motivoid,valor,num_parcela');
         if ($financeiros!==false && !empty($financeiros)) {
             if (is_object($financeiros)) $financeiros = Array(0=>$financeiros);
             reset($financeiros);
@@ -192,7 +192,7 @@ class Financeiro_Controle extends \Framework\App\Controle
         $tabela = Array();
         $total_qnt = 0;
         
-        $financeiros = $this->_Modelo->db->Sql_Select('Financeiro_Pagamento_Interno',$where,0,'','id,dt_vencimento,motivo,motivoid,valor,num_parcela');
+        $financeiros = $this->_Modelo->db->Sql_Select('Financeiro_Pagamento_Interno',$where,0,'', 'id,dt_vencimento,motivo,motivoid,valor,num_parcela');
         if ($financeiros!==false && !empty($financeiros)) {
             if (is_object($financeiros)) $financeiros = Array(0=>$financeiros);
             reset($financeiros);
@@ -322,7 +322,7 @@ class Financeiro_Controle extends \Framework\App\Controle
         }
         
         // SElect
-        $financeiros = $this->_Modelo->db->Sql_Select('Financeiro_Pagamento_Interno',$where,0,'','id,dt_vencimento,motivo,motivoid,valor,num_parcela');
+        $financeiros = $this->_Modelo->db->Sql_Select('Financeiro_Pagamento_Interno',$where,0,'', 'id,dt_vencimento,motivo,motivoid,valor,num_parcela');
         if ($financeiros!==false && !empty($financeiros)) {
             if (is_object($financeiros)) $financeiros = Array(0=>$financeiros);
             reset($financeiros);
@@ -472,7 +472,7 @@ class Financeiro_Controle extends \Framework\App\Controle
             );
         }        
         
-        $financeiros = $this->_Modelo->db->Sql_Select('Financeiro_Pagamento_Interno',$where,0,'','id,dt_vencimento,motivo,motivoid,valor,num_parcela');
+        $financeiros = $this->_Modelo->db->Sql_Select('Financeiro_Pagamento_Interno',$where,0,'', 'id,dt_vencimento,motivo,motivoid,valor,num_parcela');
         if ($financeiros!==false && !empty($financeiros)) {
             if (is_object($financeiros)) $financeiros = Array(0=>$financeiros);
             reset($financeiros);

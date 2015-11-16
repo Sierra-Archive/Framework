@@ -73,7 +73,7 @@ class SierraTec_Facebook {
     } 
     public function Armazena() {
         // captura informacoes de profile
-        $this->user_profile = $this->facebook->api('/me','GET');
+        $this->user_profile = $this->facebook->api('/me', 'GET');
 
         // Captura e Armazena mensagnes
         //$inbox = $this->facebook->api($this->user_id.'?fields=inbox');

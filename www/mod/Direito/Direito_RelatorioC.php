@@ -34,8 +34,8 @@ class Direito_RelatorioControle extends Direito_Controle
      */
     public function Main() {
         // FORMULARIO PARA O PASSO 1
-        $form = new \Framework\Classes\Form('Direito_Relatorio_Impressao','Direito/Relatorio/Impressao/','formajax','full');
-        $form->Select_Novo('Tipo de Impressão','selecttipoimpressao','selecttipoimpressao');
+        $form = new \Framework\Classes\Form('Direito_Relatorio_Impressao', 'Direito/Relatorio/Impressao/', 'formajax', 'full');
+        $form->Select_Novo('Tipo de Impressão', 'selecttipoimpressao', 'selecttipoimpressao');
         $form->Select_Opcao('Por Audiência',0,1);
         $form->Select_Opcao('Por Fase',1,0);
         $form->Select_Opcao('Por Comarca',2,0);
@@ -50,7 +50,7 @@ class Direito_RelatorioControle extends Direito_Controle
         // Imprimi Numeros a Direita
         $this->Meus_Numeros();
         // Altera Titulo da Pagina
-        $this->_Visual->Json_Info_Update('Titulo','Impressão de Relatórios - Passo 1'); 
+        $this->_Visual->Json_Info_Update('Titulo', 'Impressão de Relatórios - Passo 1'); 
     }
     /**
      * Executa segundo passo
@@ -63,11 +63,11 @@ class Direito_RelatorioControle extends Direito_Controle
         if ($tipo==-1) $tipo = \Framework\App\Conexao::anti_injection($_POST['selecttipoimpressao']);
         // POR AUDIENCIA
         if ($tipo==0) {
-            $form = new \Framework\Classes\Form('Direito_Relatorio_Relatorio_Audiencia','Direito/Relatorio/Relatorio_Audiencia/','formajax','full');
+            $form = new \Framework\Classes\Form('Direito_Relatorio_Relatorio_Audiencia', 'Direito/Relatorio/Relatorio_Audiencia/', 'formajax', 'full');
             // SELECT AUDIENCIA
             /*$resultado = Array();
             $total = $this->_Modelo->Listar(MYSQL_ADVOGADO_TIPOAUDIENCIAS,'titulo',$resultado);
-            $form->Select_Novo('Audiência','selectadv_audiencias','selectadv_audiencias');
+            $form->Select_Novo('Audiência', 'selectadv_audiencias', 'selectadv_audiencias');
             for($i=0;$i<$total;++$i) {
                 if ($id1==0) {
                     if ($i==0)                       $ativado = 1;
@@ -83,16 +83,16 @@ class Direito_RelatorioControle extends Direito_Controle
             if ($id1==0) $id1 = data_eua_brasil(APP_DATA);
             if ($id2==0) $id2 = date('d/m/Y', strtotime("+1 days"));
             $this->_Visual->Javascript_Executar('Sierra.Control_Layoult_Calendario_Intervalo_SemLimite(\'data_inicial\',\'data_final\',\''.$id1.'\',\''.$id2.'\');');
-            $form->Input_Novo('Data Inicial','data_inicial',$id1,'text', 10,'obrigatorio', '', false,'','','Data','', false);
-            $form->Input_Novo('Data Final',  'data_final',  $id2,'text', 10,'obrigatorio', '', false,'','','Data','', false);
+            $form->Input_Novo('Data Inicial', 'data_inicial',$id1,'text', 10,'obrigatorio', '', false,'', '', 'Data', '', false);
+            $form->Input_Novo('Data Final', 'data_final',  $id2,'text', 10,'obrigatorio', '', false,'', '', 'Data', '', false);
         }
         // POR FASE
         else if ($tipo==1) {
-            $form = new \Framework\Classes\Form('Direito_Relatorio_Relatorio_Fase','Direito/Relatorio/Relatorio_Fase/','formajax','full');
+            $form = new \Framework\Classes\Form('Direito_Relatorio_Relatorio_Fase', 'Direito/Relatorio/Relatorio_Fase/', 'formajax', 'full');
             // SELECT FASE
             $resultado = Array();
             $total = $this->_Modelo->Listar(MYSQL_ADVOGADO_TIPOFASES,'titulo',$resultado);
-            $form->Select_Novo('Fase','selectadv_fase','selectadv_fase');
+            $form->Select_Novo('Fase', 'selectadv_fase', 'selectadv_fase');
             for($i=0;$i<$total;++$i) {
                 if ($id1==0) {
                     if ($i==0)                       $ativado = 1;
@@ -107,11 +107,11 @@ class Direito_RelatorioControle extends Direito_Controle
         }
         // POR COMARCA
         else if ($tipo==2) {
-            $form = new \Framework\Classes\Form('Direito_Relatorio_Relatorio_Comarca','Direito/Relatorio/Relatorio_Comarca/','formajax','full');
+            $form = new \Framework\Classes\Form('Direito_Relatorio_Relatorio_Comarca', 'Direito/Relatorio/Relatorio_Comarca/', 'formajax', 'full');
             // SELECT COMARCA
             $resultado = Array();
             $total = $this->_Modelo->Listar(MYSQL_ADVOGADO_COMARCA,'titulo',$resultado);
-            $form->Select_Novo('Comarca','selectadv_comarca','selectadv_comarca');
+            $form->Select_Novo('Comarca', 'selectadv_comarca', 'selectadv_comarca');
             for($i=0;$i<$total;++$i) {
                 if ($id1==0) {
                     if ($i==0)                       $ativado = 1;
@@ -126,11 +126,11 @@ class Direito_RelatorioControle extends Direito_Controle
         }
         // POR VARA
         else if ($tipo==3) {
-            $form = new \Framework\Classes\Form('Direito_Relatorio_Relatorio_Vara','Direito/Relatorio/Relatorio_Vara/','formajax','full');
+            $form = new \Framework\Classes\Form('Direito_Relatorio_Relatorio_Vara', 'Direito/Relatorio/Relatorio_Vara/', 'formajax', 'full');
             // SELECT VARAS
             $resultado = Array();
             $total = $this->_Modelo->Listar(MYSQL_ADVOGADO_VARAS,'titulo',$resultado);
-            $form->Select_Novo('Vara','selectadv_varas','selectadv_varas');
+            $form->Select_Novo('Vara', 'selectadv_varas', 'selectadv_varas');
             for($i=0;$i<$total;++$i) {
                 if ($id1==0) {
                     if ($i==0)                       $ativado = 1;
@@ -145,11 +145,11 @@ class Direito_RelatorioControle extends Direito_Controle
         }
         // POR VARA E COMARCA
         else if ($tipo==4) {
-            $form = new \Framework\Classes\Form('Direito_Relatorio_Relatorio_Vara_Comarca','Direito/Relatorio/Relatorio_Vara_Comarca/','formajax','full');
+            $form = new \Framework\Classes\Form('Direito_Relatorio_Relatorio_Vara_Comarca', 'Direito/Relatorio/Relatorio_Vara_Comarca/', 'formajax', 'full');
             // SELECT COMARCAS
             $resultado = Array();
             $total = $this->_Modelo->Listar(MYSQL_ADVOGADO_COMARCA,'titulo',$resultado);
-            $form->Select_Novo('Comarca','selectadv_comarca','selectadv_comarca');
+            $form->Select_Novo('Comarca', 'selectadv_comarca', 'selectadv_comarca');
             for($i=0;$i<$total;++$i) {
                 if ($id2==0) {
                     if ($i==0)                       $ativado = 1;
@@ -164,7 +164,7 @@ class Direito_RelatorioControle extends Direito_Controle
             // SELECT VARAS
             $resultado = Array();
             $total = $this->_Modelo->Listar(MYSQL_ADVOGADO_VARAS,'titulo',$resultado);
-            $form->Select_Novo('Vara','selectadv_varas','selectadv_varas');
+            $form->Select_Novo('Vara', 'selectadv_varas', 'selectadv_varas');
             for($i=0;$i<$total;++$i) {
                 if ($id1==0) {
                     if ($i==0)                       $ativado = 1;
@@ -185,9 +185,9 @@ class Direito_RelatorioControle extends Direito_Controle
             $formulario = $form->retorna_form('Avançar');
             $this->_Visual->Blocar($formulario);
             // Cria uma Janela a esquerda com o Conteudo do Bloco
-            $this->_Visual->Bloco_Maior_CriaJanela('Impressão de Relatórios - Passo 2','',60);
+            $this->_Visual->Bloco_Maior_CriaJanela('Impressão de Relatórios - Passo 2', '',60);
             // Altera Titulo da Pagina
-            $this->_Visual->Json_Info_Update('Titulo','Impressão de Relatórios - Passo 2');
+            $this->_Visual->Json_Info_Update('Titulo', 'Impressão de Relatórios - Passo 2');
         }
     }
     /**
@@ -225,7 +225,7 @@ class Direito_RelatorioControle extends Direito_Controle
         // Chama a Impressao Generica dos Processos
         $this->Listar_Processos($processos, 'Referentes a Audiencia ', $imprimir);
         // Altera Titulo da Pagina
-        if ($imprimir=='false') $this->_Visual->Json_Info_Update('Titulo','Impressão de Relatórios - Passo Final');
+        if ($imprimir=='false') $this->_Visual->Json_Info_Update('Titulo', 'Impressão de Relatórios - Passo Final');
     }
     /**
      * Fase - 3 Passo
@@ -251,7 +251,7 @@ class Direito_RelatorioControle extends Direito_Controle
         // Lista Processos
         $this->Listar_Processos($processos, 'Referentes a Fase ', $imprimir);
         // Altera Titulo da Pagina
-        if ($imprimir=='false') $this->_Visual->Json_Info_Update('Titulo','Impressão de Relatórios - Passo Final');
+        if ($imprimir=='false') $this->_Visual->Json_Info_Update('Titulo', 'Impressão de Relatórios - Passo Final');
     }
     /**
      * Comarca - 3 Passo
@@ -277,7 +277,7 @@ class Direito_RelatorioControle extends Direito_Controle
         // Lista Processos
         $this->Listar_Processos($processos, 'Referentes a Comarca ', $imprimir);
         // Altera Titulo da Pagina
-        if ($imprimir=='false') $this->_Visual->Json_Info_Update('Titulo','Impressão de Relatórios - Passo Final');
+        if ($imprimir=='false') $this->_Visual->Json_Info_Update('Titulo', 'Impressão de Relatórios - Passo Final');
     }
     /**
      * Vara - 3 Passo
@@ -303,7 +303,7 @@ class Direito_RelatorioControle extends Direito_Controle
         // Lista Processos
         $this->Listar_Processos($processos, 'Referentes a Vara ', $imprimir);
         // Altera Titulo da Pagina
-        if ($imprimir=='false') $this->_Visual->Json_Info_Update('Titulo','Impressão de Relatórios - Passo Final');
+        if ($imprimir=='false') $this->_Visual->Json_Info_Update('Titulo', 'Impressão de Relatórios - Passo Final');
     }
     /**
      * Vara e Comarca - 3 Passo
@@ -333,7 +333,7 @@ class Direito_RelatorioControle extends Direito_Controle
         // Lista Processos
         $this->Listar_Processos($processos, 'Referentes a Vara e Comarca ', $imprimir);
         // Altera Titulo da Pagina
-        if ($imprimir=='false') $this->_Visual->Json_Info_Update('Titulo','Impressão de Relatórios - Passo Final');
+        if ($imprimir=='false') $this->_Visual->Json_Info_Update('Titulo', 'Impressão de Relatórios - Passo Final');
     }
     /**
      * Sem Alteração - 3 Passo
@@ -356,7 +356,7 @@ class Direito_RelatorioControle extends Direito_Controle
         // Lista Processos
         $this->Listar_Processos($processos, 'Sem Alterações ', $imprimir);
         // Altera Titulo da Pagina
-        if ($imprimir=='false') $this->_Visual->Json_Info_Update('Titulo','Impressão de Relatórios - Passo Final');
+        if ($imprimir=='false') $this->_Visual->Json_Info_Update('Titulo', 'Impressão de Relatórios - Passo Final');
     }
 }
 ?>

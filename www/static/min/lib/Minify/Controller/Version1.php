@@ -55,7 +55,7 @@ class Minify_Controller_Version1 extends Minify_Controller_Base {
             return $options;
         }
 
-        $files = explode(',', $_GET['files']);
+        $files = explode(', ', $_GET['files']);
         if (count($files) > MINIFY_MAX_FILES) {
             return $options;
         }

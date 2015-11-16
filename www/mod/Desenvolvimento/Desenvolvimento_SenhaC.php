@@ -57,7 +57,7 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
         
         // EM uso
         $tabela = Array(
-            'Id','Categoria','Url','Login','Senha'
+            'Id', 'Categoria', 'Url', 'Login', 'Senha'
         );
         if ($perm_destaque)  $tabela[] = __('Destaque');
         if ($perm_status)    $tabela[] = __('Status');
@@ -67,11 +67,11 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
         
         
         $titulo = __('Listagem de Senhas');  //(<span id="DataTable_Contador">0</span>)
-        $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',10,Array("link"=>"Desenvolvimento/Senha/Senhas_Add",'icon'=>'add','nome'=>'Adicionar Senha'));
+        $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',10,Array("link"=>"Desenvolvimento/Senha/Senhas_Add",'icon'=>'add', 'nome'=>'Adicionar Senha'));
         
         // Antigas
         $tabela = Array(
-            'Id','Categoria','Url','Login','Senha'
+            'Id', 'Categoria', 'Url', 'Login', 'Senha'
         );
         if ($perm_destaque)  $tabela[] = __('Destaque');
         if ($perm_status)    $tabela[] = __('Status');
@@ -371,7 +371,7 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
         
         // Usadas
         $tabela = Array(
-            'Id','Responsável','Categoria','Url','Login','Senha'
+            'Id', 'Responsável', 'Categoria', 'Url', 'Login', 'Senha'
         );
         if ($perm_destaque)  $tabela[] = __('Destaque');
         if ($perm_status)    $tabela[] = __('Status');
@@ -380,11 +380,11 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
         $this->_Visual->Show_Tabela_DataTable_Massiva($tabela,'Desenvolvimento/Senha/Senhas_Todas');
         
         $titulo = __('Listagem de Todas as Senhas');  //(<span id="DataTable_Contador">0</span>)
-        $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',10,Array("link"=>"Desenvolvimento/Senha/Senhas_Todas_Add",'icon'=>'add','nome'=>'Adicionar Senha'));
+        $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',10,Array("link"=>"Desenvolvimento/Senha/Senhas_Todas_Add",'icon'=>'add', 'nome'=>'Adicionar Senha'));
         
         // Antigas
         $tabela = Array(
-            'Id','Responsável','Categoria','Url','Login','Senha'
+            'Id', 'Responsável', 'Categoria', 'Url', 'Login', 'Senha'
         );
         if ($perm_destaque)  $tabela[] = __('Destaque');
         if ($perm_status)    $tabela[] = __('Status');

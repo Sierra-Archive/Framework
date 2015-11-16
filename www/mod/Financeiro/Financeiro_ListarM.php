@@ -36,7 +36,7 @@ class Financeiro_ListarModelo extends Financeiro_Modelo
         GLOBAL $config;
         $user = (int) \Framework\App\Acl::Usuario_GetID_Static();
         if (!is_int($user) || $user==0) return 0;
-        $this->db->query('INSERT INTO '.MYSQL_FINANCEIRO_MOV_EXT.' (user,valor,positivo,obs,log_date_add,log_user_add) VALUES (\''.$user.'\',\''.$quantia.'\',\'0\',\'Pedido de Saque Realizado pelo Sistema\',\''.APP_HORA.'\','.$user.')');
+        $this->db->query('INSERT INTO '.MYSQL_FINANCEIRO_MOV_EXT.' (user,valor,positivo,obs,log_date_add,log_user_add) VALUES (\''.$user.'\',\''.$quantia.'\',\'0\',\'Pedido de Saque Realizado pelo Sistema\',\''.APP_HORA.'\', '.$user.')');
         return 1;
     }
 }

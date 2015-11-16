@@ -451,7 +451,7 @@ class social_PersonaControle extends social_Controle
             $where = Array();
         } else {
             $persona_id = (int) $persona_id;
-            self::Endereco_Persona_Ver_Ficar($this->_Modelo->db->Sql_Select('Social','{sigla}id=\''.$persona_id.'\''));
+            self::Endereco_Persona_Ver_Ficar($this->_Modelo->db->Sql_Select('Social', '{sigla}id=\''.$persona_id.'\''));
             $where = Array(Array('persona1'=>$persona_id,'persona2'=>$persona_id));
         }
         

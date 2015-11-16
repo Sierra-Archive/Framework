@@ -54,28 +54,28 @@ class usuario_mensagem_RelatorioControle extends usuario_mensagem_Controle
         }
         
         // Começa e Cria Formulario
-        $form = new \Framework\Classes\Form('Relatorio_Financeiro', 'usuario_mensagem/Relatorio/Relatorio_Receber', 'formajax','mini','vertical');
+        $form = new \Framework\Classes\Form('Relatorio_Financeiro', 'usuario_mensagem/Relatorio/Relatorio_Receber', 'formajax', 'mini', 'vertical');
         
         $form->Select_Novo('Relatórios', 'tipo_relatorio', 'tipo_relatorio', '', '', '', false, false, '', 'Escolha um Relatório');
-        $form->Select_Opcao('Chamados Abertos','Aberto',    ($tipo_relatorio==='Aberto'?1:0));
-        $form->Select_Opcao('Chamados por Assunto','Assunto',   ($tipo_relatorio==='Assunto'?1:0));
-        $form->Select_Opcao('Chamados Esgotados','Esgotado',  ($tipo_relatorio==='Esgotado'?1:0));
-        $form->Select_Opcao('Chamados Finalizados','Finalizado',($tipo_relatorio==='Finalizado'?1:0));
-        $form->Select_Opcao('Chamados por Origem','Origem',    ($tipo_relatorio==='Origem'?1:0));
-        $form->Select_Opcao('Chamados por Produtos','Produto',   ($tipo_relatorio==='Produto'?1:0));
-        $form->Select_Opcao('Chamados por Cidade','Qtd_Cidade',($tipo_relatorio==='Qtd_Cidade'?1:0));
-        $form->Select_Opcao('Chamados por Uf','Qtd_Uf',   ($tipo_relatorio==='Qtd_Uf'?1:0));
+        $form->Select_Opcao('Chamados Abertos', 'Aberto',    ($tipo_relatorio==='Aberto'?1:0));
+        $form->Select_Opcao('Chamados por Assunto', 'Assunto',   ($tipo_relatorio==='Assunto'?1:0));
+        $form->Select_Opcao('Chamados Esgotados', 'Esgotado',  ($tipo_relatorio==='Esgotado'?1:0));
+        $form->Select_Opcao('Chamados Finalizados', 'Finalizado',($tipo_relatorio==='Finalizado'?1:0));
+        $form->Select_Opcao('Chamados por Origem', 'Origem',    ($tipo_relatorio==='Origem'?1:0));
+        $form->Select_Opcao('Chamados por Produtos', 'Produto',   ($tipo_relatorio==='Produto'?1:0));
+        $form->Select_Opcao('Chamados por Cidade', 'Qtd_Cidade',($tipo_relatorio==='Qtd_Cidade'?1:0));
+        $form->Select_Opcao('Chamados por Uf', 'Qtd_Uf',   ($tipo_relatorio==='Qtd_Uf'?1:0));
         $form->Select_Fim();
         
-        $form->Input_Novo('Data Inicial', 'data_inicial', data_eua_brasil($data_inicial), 'text', 10, '', 'Data do Começo do Relatório', false, '', '','Data','', false);
-        $form->Input_Novo('Data Final', 'data_final', data_eua_brasil($data_final), 'text', 10, '', 'Data do Final do Relatório', false, '', '','Data','', false);
+        $form->Input_Novo('Data Inicial', 'data_inicial', data_eua_brasil($data_inicial), 'text', 10, '', 'Data do Começo do Relatório', false, '', '', 'Data', '', false);
+        $form->Input_Novo('Data Final', 'data_final', data_eua_brasil($data_final), 'text', 10, '', 'Data do Final do Relatório', false, '', '', 'Data', '', false);
         
         /*$form->Select_Novo('Retorno', 'tipo_visual', 'tipo_visual', '', '', '', false, false, '', 'Escolha um Retorno');
-        $form->Select_Opcao('Visualizar','normal',1);
-        $form->Select_Opcao('Imprimir','imprimir',0);
-        $form->Select_Opcao('Download em Excell','excell',0);
-        $form->Select_Opcao('Visualizar em PDF','pdf',0);
-        $form->Select_Opcao('Download em PDF','pdfdownload',0);
+        $form->Select_Opcao('Visualizar', 'normal',1);
+        $form->Select_Opcao('Imprimir', 'imprimir',0);
+        $form->Select_Opcao('Download em Excell', 'excell',0);
+        $form->Select_Opcao('Visualizar em PDF', 'pdf',0);
+        $form->Select_Opcao('Download em PDF', 'pdfdownload',0);
         $form->Select_Fim();*/
         // Bloca Conteudo e Cria Janela de COnfiguração
         $this->_Visual->Blocar($form->retorna_form('Atualizar')); // Relatório
@@ -86,7 +86,7 @@ class usuario_mensagem_RelatorioControle extends usuario_mensagem_Controle
         $html = $this->$tipo_relatorio($data_inicial, $data_final);
         $titulo = __('Relatório de Chamados');
         $this->_Visual->Blocar('<span id="relatorio_tabela">'.$html.'</span>');
-        $this->_Visual->Bloco_Maior_CriaJanela('<span id="relatorio_titulo">'.$titulo.'</span>','', 0, false);
+        $this->_Visual->Bloco_Maior_CriaJanela('<span id="relatorio_titulo">'.$titulo.'</span>', '', 0, false);
         
         // ORGANIZA E MANDA CONTEUDO
         $this->_Visual->Json_Info_Update('Titulo',$titulo); 
@@ -179,7 +179,7 @@ class usuario_mensagem_RelatorioControle extends usuario_mensagem_Controle
         
         
         $tabela = Array(
-            'Protocolo','Cliente','Assunto','Mensagem','Data Criação','Data Ult. Mod.'/*,'Funções'*/
+            'Protocolo', 'Cliente', 'Assunto', 'Mensagem', 'Data Criação', 'Data Ult. Mod.'/*,'Funções'*/
         );
         return $this->_Visual->Show_Tabela_DataTable_Massiva($tabela,'usuario_mensagem/Relatorio/Aberto/'.$datainicial.'/'.$datafinal,'',false);
         
@@ -192,7 +192,7 @@ class usuario_mensagem_RelatorioControle extends usuario_mensagem_Controle
      */
     public function Assunto($datainicial, $datafinal) {
         $tabela = Array(
-            'Protocolo','Cliente','Assunto','Mensagem','Tipo','Data Criação','Data Ult. Mod.'/*,'Funções'*/
+            'Protocolo', 'Cliente', 'Assunto', 'Mensagem', 'Tipo', 'Data Criação', 'Data Ult. Mod.'/*,'Funções'*/
         );
         return $this->_Visual->Show_Tabela_DataTable_Massiva($tabela,'usuario_mensagem/Relatorio/Assunto/'.$datainicial.'/'.$datafinal,'',false);
         //$titulo = __('Listagem de Senhas');  //(<span id="DataTable_Contador">0</span>)
@@ -203,7 +203,7 @@ class usuario_mensagem_RelatorioControle extends usuario_mensagem_Controle
      */
     public function Esgotado($datainicial, $datafinal) {
         $tabela = Array(
-            'Protocolo','Cliente','Assunto','Mensagem','Data Criação','Data Ult. Mod.'/*,'Funções'*/
+            'Protocolo', 'Cliente', 'Assunto', 'Mensagem', 'Data Criação', 'Data Ult. Mod.'/*,'Funções'*/
         );
         return $this->_Visual->Show_Tabela_DataTable_Massiva($tabela,'usuario_mensagem/Relatorio/Esgotado/'.$datainicial.'/'.$datafinal,'',false);
         //$titulo = __('Listagem de Senhas');  //(<span id="DataTable_Contador">0</span>)
@@ -214,7 +214,7 @@ class usuario_mensagem_RelatorioControle extends usuario_mensagem_Controle
      */
     public function Finalizado($datainicial, $datafinal) {
         $tabela = Array(
-            'Protocolo','Cliente','Assunto','Mensagem','Data Criação','Data Ult. Mod.'/*,'Funções'*/
+            'Protocolo', 'Cliente', 'Assunto', 'Mensagem', 'Data Criação', 'Data Ult. Mod.'/*,'Funções'*/
         );
         return $this->_Visual->Show_Tabela_DataTable_Massiva($tabela,'usuario_mensagem/Relatorio/Finalizado/'.$datainicial.'/'.$datafinal,'',false);
         //$titulo = __('Listagem de Senhas');  //(<span id="DataTable_Contador">0</span>)
@@ -226,7 +226,7 @@ class usuario_mensagem_RelatorioControle extends usuario_mensagem_Controle
     public function Origem($datainicial, $datafinal) {
         // EM uso
         $tabela = Array(
-            'Protocolo','Cliente','Assunto','Mensagem','Data Criação','Data Ult. Mod.'/*,'Funções'*/
+            'Protocolo', 'Cliente', 'Assunto', 'Mensagem', 'Data Criação', 'Data Ult. Mod.'/*,'Funções'*/
         );
         return $this->_Visual->Show_Tabela_DataTable_Massiva($tabela,'usuario_mensagem/Relatorio/Origem/'.$datainicial.'/'.$datafinal,'',false);
         //$titulo = __('Listagem de Senhas');  //(<span id="DataTable_Contador">0</span>)
@@ -237,7 +237,7 @@ class usuario_mensagem_RelatorioControle extends usuario_mensagem_Controle
      */
     public function Produto($datainicial, $datafinal) {
         $tabela = Array(
-            'Marca','Linha','Produto','Mensagem','Data Criação','Data Ult. Mod.'/*,'Funções'*/
+            'Marca', 'Linha', 'Produto', 'Mensagem', 'Data Criação', 'Data Ult. Mod.'/*,'Funções'*/
         );
         return $this->_Visual->Show_Tabela_DataTable_Massiva($tabela,'usuario_mensagem/Relatorio/Produto/'.$datainicial.'/'.$datafinal,'',false);
         //$titulo = __('Listagem de Senhas');  //(<span id="DataTable_Contador">0</span>)
@@ -248,7 +248,7 @@ class usuario_mensagem_RelatorioControle extends usuario_mensagem_Controle
      */
     public function Qtd_Cidade($datainicial, $datafinal) {
         $tabela = Array(
-            'Cidade / UF','No. de Chamados','Data Criação','Data Ult. Mod.'/*,'Funções'*/
+            'Cidade / UF', 'No. de Chamados', 'Data Criação', 'Data Ult. Mod.'/*,'Funções'*/
         );
         return $this->_Visual->Show_Tabela_DataTable_Massiva($tabela,'usuario_mensagem/Relatorio/Qtd_Cidade/'.$datainicial.'/'.$datafinal,'',false);
         //$titulo = __('Listagem de Senhas');  //(<span id="DataTable_Contador">0</span>)
@@ -259,7 +259,7 @@ class usuario_mensagem_RelatorioControle extends usuario_mensagem_Controle
      */
     public function Qtd_Uf($datainicial, $datafinal) {
         $tabela = Array(
-            'Estado','No. de Chamados','Data Criação','Data Ult. Mod.'/*,'Funções'*/
+            'Estado', 'No. de Chamados', 'Data Criação', 'Data Ult. Mod.'/*,'Funções'*/
         );
         return $this->_Visual->Show_Tabela_DataTable_Massiva($tabela,'usuario_mensagem/Relatorio/Qtd_Uf/'.$datainicial.'/'.$datafinal,'',false);
         //$titulo = __('Listagem de Senhas');  //(<span id="DataTable_Contador">0</span>)

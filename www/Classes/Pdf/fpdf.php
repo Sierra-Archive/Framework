@@ -465,7 +465,7 @@ function AddFont($family, $style='', $file='')
 	// Add a TrueType, OpenType or Type1 font
 	$family = strtolower($family);
 	if ($file=='')
-		$file = str_replace(' ','',$family).strtolower($style).'.php';
+		$file = str_replace(' ', '',$family).strtolower($style).'.php';
 	$style = strtoupper($style);
 	if ($style=='IB')
 		$style = 'BI';
@@ -507,7 +507,7 @@ function SetFont($family, $style='', $size=0)
 	if (strpos($style,'U')!==false)
 	{
 		$this->underline = true;
-		$style = str_replace('U','',$style);
+		$style = str_replace('U', '',$style);
 	}
 	else
 		$this->underline = false;
@@ -654,7 +654,7 @@ function Cell($w, $h=0, $txt='', $border=0, $ln=0, $align='', $fill=false, $link
 			$dx = $this->cMargin;
 		if ($this->ColorFlag)
 			$s .= 'q '.$this->TextColor.' ';
-		$txt2 = str_replace(')','\\)',str_replace('(','\\(',str_replace('\\','\\\\',$txt)));
+		$txt2 = str_replace(')', '\\)',str_replace('(', '\\(',str_replace('\\', '\\\\',$txt)));
 		$s .= sprintf('BT %.2F %.2F Td (%s) Tj ET',($this->x+$dx)*$k,($this->h-($this->y+.5*$h+.3*$this->FontSize))*$k,$txt2);
 		if ($this->underline)
 			$s .= ' '.$this->_dounderline($this->x+$dx,$this->y+.5*$h+.3*$this->FontSize,$txt);
@@ -1154,9 +1154,9 @@ function _loadfont($font)
 function _escape($s)
 {
 	// Escape special characters in strings
-	$s = str_replace('\\','\\\\',$s);
-	$s = str_replace('(','\\(',$s);
-	$s = str_replace(')','\\)',$s);
+	$s = str_replace('\\', '\\\\',$s);
+	$s = str_replace('(', '\\(',$s);
+	$s = str_replace(')', '\\)',$s);
 	$s = str_replace("\r",'\\r',$s);
 	return $s;
 }
@@ -1336,8 +1336,8 @@ function _parsepngstream($f, $file)
 				$color .= $data[$pos];
 				$alpha .= $data[$pos];
 				$line = substr($data,$pos+1,$len);
-				$color .= preg_replace('/(.)./s','$1',$line);
-				$alpha .= preg_replace('/.(.)/s','$1',$line);
+				$color .= preg_replace('/(.)./s', '$1',$line);
+				$alpha .= preg_replace('/.(.)/s', '$1',$line);
 			}
 		}
 		else
@@ -1350,8 +1350,8 @@ function _parsepngstream($f, $file)
 				$color .= $data[$pos];
 				$alpha .= $data[$pos];
 				$line = substr($data,$pos+1,$len);
-				$color .= preg_replace('/(.{3})./s','$1',$line);
-				$alpha .= preg_replace('/.{3}(.)/s','$1',$line);
+				$color .= preg_replace('/(.{3})./s', '$1',$line);
+				$alpha .= preg_replace('/.{3}(.)/s', '$1',$line);
 			}
 		}
 		unset($data);
@@ -1399,7 +1399,7 @@ function _parsegif ($file)
 	if (!$im)
 		$this->Error('Missing or incorrect image file: '.$file);
 	imageinterlace($im,0);
-	$f = @fopen('php://temp','rb+');
+	$f = @fopen('php://temp', 'rb+');
 	if ($f)
 	{
 		// Perform conversion in memory
@@ -1415,7 +1415,7 @@ function _parsegif ($file)
 	else
 	{
 		// Use temporary file
-		$tmp = tempnam('.','gif');
+		$tmp = tempnam('.', 'gif');
 		if (!$tmp)
 			$this->Error('Unable to create a temporary file');
 		if (!imagepng($im,$tmp))

@@ -203,7 +203,7 @@ class PagSeguroAuthorizationRequest
      */
     public function verifyURLTest($url)
     {
-        $address = array('127.3.0.1','::1');
+        $address = array('127.3.0.1', '::1');
 
         foreach ($address as $item) {
             $find = strpos($url, $item);

@@ -46,9 +46,9 @@ class usuario_AdminModelo extends usuario_Modelo
             $saldo = Financeiro_Modelo::Carregar_Saldo($this, $campo->id);
 
             if ($saldo<0) {
-                $usuarios[$i]['saldo'] = '<font style="color:#FF0000;">- R$ '.number_format(abs($saldo), 2, ',', '.').'</font>';
+                $usuarios[$i]['saldo'] = '<font style="color:#FF0000;">- R$ '.number_format(abs($saldo), 2, ', ', '.').'</font>';
             } else {
-                $usuarios[$i]['saldo'] = 'R$ '.number_format($saldo, 2, ',', '.');
+                $usuarios[$i]['saldo'] = 'R$ '.number_format($saldo, 2, ', ', '.');
             }
             ++$i;
         }
@@ -84,9 +84,9 @@ class usuario_AdminModelo extends usuario_Modelo
             $saldo = Financeiro_Modelo::Carregar_Saldo($this, $campo->id);
 
             if ($saldo<0) {
-                $usuarios[$i]['saldo'] = '<font style="color:#FF0000;">- R$ '.number_format(abs($saldo), 2, ',', '.').'</font>';
+                $usuarios[$i]['saldo'] = '<font style="color:#FF0000;">- R$ '.number_format(abs($saldo), 2, ', ', '.').'</font>';
             } else {
-                $usuarios[$i]['saldo'] = 'R$ '.number_format($saldo, 2, ',', '.');
+                $usuarios[$i]['saldo'] = 'R$ '.number_format($saldo, 2, ', ', '.');
             }
             ++$i;
         }

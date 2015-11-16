@@ -269,14 +269,14 @@ class comercio_PropostaControle extends comercio_Controle
         self::Endereco_Proposta(false,$tema);
         if ($tema!='Propostas') {
             $where = Array(
-                'INstatus' => Array(1,2,'1','2')
+                'INstatus' => Array(1,2,'1', '2')
             );
             $titulo             = CFG_TXT_COMERCIO_OS;
             $titulo_plural      = CFG_TXT_COMERCIO_OS_PLURAL;
             $adicionar = false;
         } else {
             $where = Array(
-                'NOTINstatus' => Array(2,3,'2','3')
+                'NOTINstatus' => Array(2,3,'2', '3')
             );
             $titulo             = __('Proposta');
             $titulo_plural      = __('Propostas');
@@ -363,8 +363,8 @@ class comercio_PropostaControle extends comercio_Controle
                 $tabela['Criado'][$i]                       = $valor->log_date_add;
                 $tabela['Ult. Alteração'][$i]                       = $valor->log_date_edit;
                 $tabela['Funções'][$i]   =  $this->_Visual->Tema_Elementos_Btn('Visualizar' ,Array('Visualizar '.$titulo         ,'comercio/Proposta/Propostas_View/'.$valor->id.'/'.$tema.'/'    ,''),$perm_view).
-                                            $this->_Visual->Tema_Elementos_Btn('Personalizado'    ,Array('Sub '.$titulo    ,'comercio/Proposta/Propostas_Sub/'.$valor->id.'/'.$tema.'/'    ,'','collapse','warning'),$perm_sub).
-                                            $this->_Visual->Tema_Elementos_Btn('Personalizado'    ,Array('Histórico da '.$titulo    ,'comercio/Proposta/Propostas_Comentario/'.$valor->id.'/'.$tema.'/'    ,'','file','inverse'),$perm_comentario).
+                                            $this->_Visual->Tema_Elementos_Btn('Personalizado'    ,Array('Sub '.$titulo    ,'comercio/Proposta/Propostas_Sub/'.$valor->id.'/'.$tema.'/'    ,'', 'collapse', 'warning'),$perm_sub).
+                                            $this->_Visual->Tema_Elementos_Btn('Personalizado'    ,Array('Histórico da '.$titulo    ,'comercio/Proposta/Propostas_Comentario/'.$valor->id.'/'.$tema.'/'    ,'', 'file', 'inverse'),$perm_comentario).
                                             $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar '.$titulo             ,'comercio/Proposta/Propostas_Edit/'.$valor->id.'/'.$tema.'/'    ,''),$perm_editar).
                                             $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar '.$titulo            ,'comercio/Proposta/Propostas_Del/'.$valor->id.'/'.$tema.'/'     ,'Deseja realmente deletar essa Proposta ? Isso irá afetar o sistema!'),$perm_deletar);
                 ++$i;
@@ -394,7 +394,7 @@ class comercio_PropostaControle extends comercio_Controle
         
         // Propostas/OS antigas
         $this->_Visual->Blocar('<span id="proposta_outras" carregado="0"><center><font color="#FF0000" size="5">Carregando...</font></center></span>');
-        $bloco_identificador =  $this->_Visual->Bloco_Unico_CriaJanela('Outras '.$titulo_plural.'','',5,false,true);
+        $bloco_identificador =  $this->_Visual->Bloco_Unico_CriaJanela('Outras '.$titulo_plural.'', '',5,false,true);
         $javascript_executar =  '$(document).on("click", \'a#'.$bloco_identificador.'_max\', function () {'. 
                                 'if ($(\'#proposta_outras\').attr("carregado")!==\'1\' && $(\'#proposta_outras\').attr("carregado")!==1) {'.
                                     '$(\'#proposta_outras\').attr("carregado",\'1\');'.
@@ -414,13 +414,13 @@ class comercio_PropostaControle extends comercio_Controle
         self::Endereco_Proposta(false,$tema);
         if ($tema!='Propostas') {
             $where = Array(
-                'NOTINstatus' => Array(1,2,'1','2')
+                'NOTINstatus' => Array(1,2,'1', '2')
             );
             $titulo             = CFG_TXT_COMERCIO_OS;
             $titulo_plural      = CFG_TXT_COMERCIO_OS_PLURAL;
         } else {
             $where = Array(
-                'INstatus' => Array(2,3,'2','3')
+                'INstatus' => Array(2,3,'2', '3')
             );
             $titulo             = __('Proposta');
             $titulo_plural      = __('Propostas');
@@ -470,7 +470,7 @@ class comercio_PropostaControle extends comercio_Controle
                 $tabela['Criado'][$i]                       = $valor->log_date_add;
                 $tabela['Ult. Alteração'][$i]                       = $valor->log_date_edit;
                 $tabela['Funções'][$i]   =  $this->_Visual->Tema_Elementos_Btn('Visualizar' ,Array('Visualizar '.$titulo         ,'comercio/Proposta/Propostas_View/'.$valor->id.'/'.$tema.'/'    ,'')).
-                                            $this->_Visual->Tema_Elementos_Btn('Personalizado'    ,Array('Histórico da '.$titulo    ,'comercio/Proposta/Propostas_Comentario/'.$valor->id.'/'.$tema.'/'    ,'','file','inverse'));
+                                            $this->_Visual->Tema_Elementos_Btn('Personalizado'    ,Array('Histórico da '.$titulo    ,'comercio/Proposta/Propostas_Comentario/'.$valor->id.'/'.$tema.'/'    ,'', 'file', 'inverse'));
                 ++$i;
             }
             if ($export!==false) {
@@ -3093,7 +3093,7 @@ class comercio_PropostaControle extends comercio_Controle
                 $tabela['Responsável'][$i]     =  $valor->responsavel2;
                 $tabela['Data do Contato'][$i] =  $valor->data;
                 $tabela['Próximo Contato'][$i] =  $valor->data_proximo;
-                $tabela['Funções'][$i]    =   $this->_Visual->Tema_Elementos_Btn('Personalizado'    ,Array('Histórico da Visita'    ,'comercio/Proposta/Visitas_Comentario/'.$valor->id    ,'','file','inverse'),$perm_view);
+                $tabela['Funções'][$i]    =   $this->_Visual->Tema_Elementos_Btn('Personalizado'    ,Array('Histórico da Visita'    ,'comercio/Proposta/Visitas_Comentario/'.$valor->id    ,'', 'file', 'inverse'),$perm_view);
                 $tabela['Funções'][$i]   .=   $this->_Visual->Tema_Elementos_Btn('Editar'           ,Array('Editar Agenda de Visita'                          ,'comercio/Proposta/Visitas_Edit/'.$valor->id.'/'    ,''),$perm_editar).
                                               $this->_Visual->Tema_Elementos_Btn('Deletar'          ,Array('Deletar Agenda de Visita'                         ,'comercio/Proposta/Visitas_Del/'.$valor->id.'/'     ,'Deseja realmente deletar essa agenda de Visita!'),$perm_del);
                 ++$i;

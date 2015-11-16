@@ -89,7 +89,7 @@ class usuario_rede_ListarVisual extends usuario_rede_Visual
         // caso tenha algum indicado
         else{
             $tabela = new \Framework\Classes\Tabela();
-            $tabela->addcabecario(array('Id','Nome')); 
+            $tabela->addcabecario(array('Id', 'Nome')); 
             $this->Show_RedeIndicados_Recursiva($array, $tabela);
             $html = $tabela->retornatabela();
         }

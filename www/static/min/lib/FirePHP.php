@@ -202,7 +202,7 @@ class FirePHP {
    * @return array
    */  
   public function __sleep() {
-    return array('options','objectFilters','enabled');
+    return array('options', 'objectFilters', 'enabled');
   }
     
   /**
@@ -472,7 +472,7 @@ class FirePHP {
   public function detectClientExtension() {
     /* Check if FirePHP is installed on client */
     if (!@preg_match_all('/\sFirePHP\/([\.|\d]*)\s?/si',$this->getUserAgent(),$m) ||
-       !version_compare($m[1][0],'0.0.6','>=')) {
+       !version_compare($m[1][0],'0.0.6', '>=')) {
       return false;
     }
     return true;    
@@ -671,15 +671,15 @@ class FirePHP {
       unset($meta['line']);
     }
 
-  	$this->setHeader('X-Wf-Protocol-1','http://meta.wildfirehq.org/Protocol/JsonStream/0.2');
-  	$this->setHeader('X-Wf-1-Plugin-1','http://meta.firephp.org/Wildfire/Plugin/FirePHP/Library-FirePHPCore/'.self::VERSION);
+  	$this->setHeader('X-Wf-Protocol-1', 'http://meta.wildfirehq.org/Protocol/JsonStream/0.2');
+  	$this->setHeader('X-Wf-1-Plugin-1', 'http://meta.firephp.org/Wildfire/Plugin/FirePHP/Library-FirePHPCore/'.self::VERSION);
  
     $structure_index = 1;
     if ($Type==self::DUMP) {
       $structure_index = 2;
-    	$this->setHeader('X-Wf-1-Structure-2','http://meta.firephp.org/Wildfire/Structure/FirePHP/Dump/0.1');
+    	$this->setHeader('X-Wf-1-Structure-2', 'http://meta.firephp.org/Wildfire/Structure/FirePHP/Dump/0.1');
     } else {
-    	$this->setHeader('X-Wf-1-Structure-1','http://meta.firephp.org/Wildfire/Structure/FirePHP/FirebugConsole/0.1');
+    	$this->setHeader('X-Wf-1-Structure-1', 'http://meta.firephp.org/Wildfire/Structure/FirePHP/FirebugConsole/0.1');
     }
   
     if ($Type==self::DUMP) {
@@ -695,7 +695,7 @@ class FirePHP {
       if (isset($meta['line'])) {
         $msg_meta['Line'] = $meta['line'];
       }
-    	$msg = '['.$this->jsonEncode($msg_meta).','.$this->jsonEncode($Object, $skipFinalObjectEncode).']';
+    	$msg = '['.$this->jsonEncode($msg_meta).', '.$this->jsonEncode($Object, $skipFinalObjectEncode).']';
     }
     
     $parts = explode("\n",chunk_split($msg, 5000, "\n"));
@@ -736,7 +736,7 @@ class FirePHP {
    * @return string
    */
   protected function _standardizePath($Path) {
-    return preg_replace('/\\\\+/','/',$Path);    
+    return preg_replace('/\\\\+/', '/',$Path);    
   }
   
   /**
@@ -769,7 +769,7 @@ class FirePHP {
     if (strpos($File,'\\')) {
       /* First strip down to single \ */
       
-      $file = preg_replace('/\\\\+/','\\',$File);
+      $file = preg_replace('/\\\\+/', '\\',$File);
       
       return $file;
     }
@@ -1296,7 +1296,7 @@ class FirePHP {
                       }
                   }
 
-                  return '{' . join(',', $properties) . '}';
+                  return '{' . join(', ', $properties) . '}';
               }
 
               $this->json_objectStack[] = $var;
@@ -1312,7 +1312,7 @@ class FirePHP {
                   }
               }
 
-              return '[' . join(',', $elements) . ']';
+              return '[' . join(', ', $elements) . ']';
 
           case 'object':
               $vars = self::encodeObject($var);
@@ -1331,7 +1331,7 @@ class FirePHP {
                   }
               }
                      
-              return '{' . join(',', $properties) . '}';
+              return '{' . join(', ', $properties) . '}';
 
           default:
               return null;

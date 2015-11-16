@@ -49,9 +49,9 @@ class comercio_LinhaModelo extends comercio_Modelo
                 'formatter' => function( $d, $row ) {
                     return '#'.$d;
                 }),
-            array( 'db' => 'nome',    'dt' => 1 ),
-            array( 'db' => 'marca2',  'dt' => 2 ),
-            array( 'db' => 'id',      'dt' => 3,
+            array( 'db' => 'nome', 'dt' => 1 ),
+            array( 'db' => 'marca2', 'dt' => 2 ),
+            array( 'db' => 'id', 'dt' => 3,
                 'formatter' => $funcao)
         );
 

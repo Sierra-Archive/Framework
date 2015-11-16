@@ -55,7 +55,7 @@ class Agenda_AtividadesModelo extends Agenda_Modelo
         
         ++$numero;
         eval('$function = function( $d, $row ) { $html = \'\'; '.$function.' return $html; };');       
-        $columns[] = array( 'db' => 'chave',            'dt' => $numero,
+        $columns[] = array( 'db' => 'chave', 'dt' => $numero,
             'formatter' => $function
         ); //'Funções';
                 

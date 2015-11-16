@@ -968,7 +968,7 @@ class _Sistema_AdminControle extends _Sistema_Controle
         self::DAO_Campos_Retira($campos, 'valor_mensalidade');
         self::DAO_Campos_Retira($campos, 'valor_matricula');
         // Carrega formulario
-        $form = new \Framework\Classes\Form('form_Sistema_Admin_Newsletter','_Sistema/Admin/Newsletter_Add2/','formajax');
+        $form = new \Framework\Classes\Form('form_Sistema_Admin_Newsletter', '_Sistema/Admin/Newsletter_Add2/', 'formajax');
         \Framework\App\Controle::Gerador_Formulario($campos, $form);
         $formulario = $form->retorna_form('Cadastrar');
         $this->_Visual->Blocar($formulario);
@@ -994,7 +994,7 @@ class _Sistema_AdminControle extends _Sistema_Controle
         self::mysql_AtualizaValores($campos, $grupopermissao);
 
         // edicao de grupos
-        $form = new \Framework\Classes\Form('form_Sistema_AdminC_GrupoEdit','_Sistema/Admin/Newsletter_Edit2/'.$id.'/','formajax');
+        $form = new \Framework\Classes\Form('form_Sistema_AdminC_GrupoEdit', '_Sistema/Admin/Newsletter_Edit2/'.$id.'/', 'formajax');
         \Framework\App\Controle::Gerador_Formulario($campos, $form);
         $formulario = $form->retorna_form('Alterar Newsletter');
         $this->_Visual->Blocar($formulario);

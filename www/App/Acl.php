@@ -93,7 +93,7 @@ class Acl{
                     if (isset($_GET['sistema_esquecisenha_cod'])) {
                         $novasenha = Sistema_Funcoes::Gerar_Senha();
                         $codPassado = Sistema_Funcoes::Seguranca_Gerar_Hash($_GET['sistema_esquecisenha_cod']);
-                        $inscricao = $this->_db->Sql_Select('Sistema_Login_Esquecisenha','{sigla}usado=\'0\' AND {sigla}chave=\''.$codPassado.'\'',1);
+                        $inscricao = $this->_db->Sql_Select('Sistema_Login_Esquecisenha', '{sigla}usado=\'0\' AND {sigla}chave=\''.$codPassado.'\'',1);
                         if ($inscricao===false) {
                             // MEnsagem de Erro
                             $mensagens = array(
@@ -121,7 +121,7 @@ class Acl{
                         }
 
                         // Verifica se usuario existe
-                        $usuario = $this->_db->Sql_Select('Usuario','{sigla}status=\'1\' && {sigla}login=\''.$inscricao->login.'\'',1);
+                        $usuario = $this->_db->Sql_Select('Usuario', '{sigla}status=\'1\' && {sigla}login=\''.$inscricao->login.'\'',1);
                         if ($usuario===false) {
                             // MEnsagem de Erro
                             $mensagens = array(
@@ -152,7 +152,7 @@ class Acl{
                         $loginPassado = Conexao::anti_injection($_POST['sistema_esquecisenha_login']);
 
                         // Procura Login
-                        $usuario = $this->_db->Sql_Select('Usuario','{sigla}login=\''.$loginPassado.'\'',1);
+                        $usuario = $this->_db->Sql_Select('Usuario', '{sigla}login=\''.$loginPassado.'\'',1);
                         if ($usuario===false) {
                             // MEnsagem de Erro
                             $mensagens = array(
@@ -163,14 +163,14 @@ class Acl{
                             $this->_Registro->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
 
                             $form = new \Framework\Classes\Form('FormEsqueciSenha',SISTEMA_DIR_INT.'?sistema_esquecisenha=true'/*,'formajax'*/); //formajax /'.SISTEMA_MODULO.'/'.SISTEMA_SUB.'/'.SISTEMA_MET
-                            $form->Input_Novo('Login','sistema_esquecisenha_login','','text', '',30, '');
+                            $form->Input_Novo('Login', 'sistema_esquecisenha_login', '', 'text', '',30, '');
                             $this->_Registro->_Visual->Blocar($form->retorna_form('Trocar a Senha'));
                             $this->_Registro->_Visual->Bloco_Unico_CriaJanela(__('Digite o Email'));
                             $this->_Registro->_Visual->renderizar();
                             \Framework\App\Controle::Tema_Travar();
                         }
                         // SE ja tiver inscricao desvale ela
-                        $inscricao = $this->_db->Sql_Select('Sistema_Login_Esquecisenha','{sigla}usado=\'0\' AND {sigla}login=\''.$loginPassado.'\'',1);
+                        $inscricao = $this->_db->Sql_Select('Sistema_Login_Esquecisenha', '{sigla}usado=\'0\' AND {sigla}login=\''.$loginPassado.'\'',1);
                         if ($inscricao!==false) {
                             if ((time()-(60*60*24))>$inscricao->time) {
                                 $inscricao->usado=2;
@@ -225,7 +225,7 @@ class Acl{
                         $this->logado           = false;
 
                         $form = new \Framework\Classes\Form('FormEsqueciSenha',SISTEMA_DIR_INT.'?sistema_esquecisenha=true'/*,'formajax'*/); //formajax /'.SISTEMA_MODULO.'/'.SISTEMA_SUB.'/'.SISTEMA_MET
-                        $form->Input_Novo('Login','sistema_esquecisenha_login','','text', '',30, '');
+                        $form->Input_Novo('Login', 'sistema_esquecisenha_login', '', 'text', '',30, '');
                         $this->_Registro->_Visual->Blocar($form->retorna_form('Trocar a Senha'));
                         $this->_Registro->_Visual->Bloco_Unico_CriaJanela(__('Digite o Email'));
                         $this->_Registro->_Visual->renderizar();
@@ -569,7 +569,7 @@ class Acl{
             $id = (int) $this->_db->ultimo_id();
             $cadastrar = $this->_db->query(
                 'INSERT INTO '.MYSQL_CAT_ACESSO.' (log_date_add,servidor,categoria,mod_acc)
-                VALUES (\''.APP_HORA.'\',\''.SRV_NAME_SQL.'\','.$id.',\'usuario_grupo\');'
+                VALUES (\''.APP_HORA.'\',\''.SRV_NAME_SQL.'\', '.$id.',\'usuario_grupo\');'
             ,true);
             $manutencao->Alterar_Config('CFG_TEC_CAT_ID_ADMIN',$id);
             // Atualiza GRUPOs REFErentes
@@ -583,7 +583,7 @@ class Acl{
             $id = (int) $this->_db->ultimo_id();
             $cadastrar = $this->_db->query(
                 'INSERT INTO '.MYSQL_CAT_ACESSO.' (log_date_add,servidor,categoria,mod_acc)
-                VALUES (\''.APP_HORA.'\',\''.SRV_NAME_SQL.'\','.$id.',\'usuario_grupo\');'
+                VALUES (\''.APP_HORA.'\',\''.SRV_NAME_SQL.'\', '.$id.',\'usuario_grupo\');'
             ,true);
             $manutencao->Alterar_Config('CFG_TEC_CAT_ID_CLIENTES',$id);
             // Atualiza GRUPOs REFErentes
@@ -597,7 +597,7 @@ class Acl{
             $id = (int) $this->_db->ultimo_id();
             $cadastrar = $this->_db->query(
                 'INSERT INTO '.MYSQL_CAT_ACESSO.' (log_date_add,servidor,categoria,mod_acc)
-                VALUES (\''.APP_HORA.'\',\''.SRV_NAME_SQL.'\','.$id.',\'usuario_grupo\');'
+                VALUES (\''.APP_HORA.'\',\''.SRV_NAME_SQL.'\', '.$id.',\'usuario_grupo\');'
             ,true);
             $manutencao->Alterar_Config('CFG_TEC_CAT_ID_FUNCIONARIOS',$id);
             // Atualiza GRUPOs REFErentes
@@ -611,7 +611,7 @@ class Acl{
             $id = (int) $this->_db->ultimo_id();
             $cadastrar = $this->_db->query(
                 'INSERT INTO '.MYSQL_CAT_ACESSO.' (log_date_add,servidor,categoria,mod_acc)
-                VALUES (\''.APP_HORA.'\',\''.SRV_NAME_SQL.'\','.$id.',\'usuario_grupo\');'
+                VALUES (\''.APP_HORA.'\',\''.SRV_NAME_SQL.'\', '.$id.',\'usuario_grupo\');'
             ,true);
             $manutencao->Alterar_Config('CFG_TEC_CAT_ID_CLIENTES',$id);
             // Atualiza GRUPOs REFErentes
@@ -710,7 +710,7 @@ class Acl{
 
         $permissao = $this->_db->query('SELECT SP.chave,SP.modulo,SP.submodulo,SP.metodo,SP.end,SP.nome,UP.valor FROM '.MYSQL_USUARIO_PERMISSAO.' UP, '.MYSQL_SIS_PERMISSAO.' SP'.
                 ' WHERE UP.deletado!=1 AND UP.permissao = SP.chave AND UP.servidor = \''.SRV_NAME_SQL.'\' AND UP.usuario = '.$this->_id
-                //.' AND UP.permissao in ( '.implode(',',$ids).' )'
+                //.' AND UP.permissao in ( '.implode(', ',$ids).' )'
                 ,true);
         while ($campo = $permissao->fetch_object()) {            
             if ($campo->valor==1 || $campo->valor=='1') {
@@ -959,7 +959,7 @@ class Acl{
             $gerais_id = (int) $db->ultimo_id();
             $cadastrar = $db->query(
                 'INSERT INTO '.MYSQL_CAT_ACESSO.' (log_date_add,servidor,categoria,mod_acc)
-                VALUES (\''.APP_HORA.'\',\''.SRV_NAME_SQL.'\','.$gerais_id.',\'usuario_grupo\');'
+                VALUES (\''.APP_HORA.'\',\''.SRV_NAME_SQL.'\', '.$gerais_id.',\'usuario_grupo\');'
             ,true);
             $manutencao->Alterar_Config('CFG_TEC_CAT_ID_ADMIN',$gerais_id);
             
@@ -971,7 +971,7 @@ class Acl{
             $clientes_id = (int) $db->ultimo_id();
             $cadastrar = $db->query(
                 'INSERT INTO '.MYSQL_CAT_ACESSO.' (log_date_add,servidor,categoria,mod_acc)
-                VALUES (\''.APP_HORA.'\',\''.SRV_NAME_SQL.'\','.$clientes_id.',\'usuario_grupo\');'
+                VALUES (\''.APP_HORA.'\',\''.SRV_NAME_SQL.'\', '.$clientes_id.',\'usuario_grupo\');'
             ,true);
             $manutencao->Alterar_Config('CFG_TEC_CAT_ID_CLIENTES',$clientes_id);
             
@@ -983,7 +983,7 @@ class Acl{
             $funcionarios_id = (int) $db->ultimo_id();
             $cadastrar = $db->query(
                 'INSERT INTO '.MYSQL_CAT_ACESSO.' (log_date_add,servidor,categoria,mod_acc)
-                VALUES (\''.APP_HORA.'\',\''.SRV_NAME_SQL.'\','.$funcionarios_id.',\'usuario_grupo\');'
+                VALUES (\''.APP_HORA.'\',\''.SRV_NAME_SQL.'\', '.$funcionarios_id.',\'usuario_grupo\');'
             ,true);
             $manutencao->Alterar_Config('CFG_TEC_CAT_ID_FUNCIONARIOS',$funcionarios_id);
         } else {

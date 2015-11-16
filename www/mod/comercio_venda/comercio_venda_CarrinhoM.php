@@ -29,7 +29,7 @@ class comercio_venda_CarrinhoModelo extends comercio_vendaModelo
         $_Modelo = &$Registro->_Modelo;
         $retirada = $_Modelo->db->Sql_Select('Comercio_Venda_Carrinho',Array('id'=>$motivoid),1);
         if ($retirada===false) {
-            return Array('Caixa Não existente','Não existe');
+            return Array('Caixa Não existente', 'Não existe');
         }
         if ($retirada->cliente2=='' || $retirada->cliente2==NULL) {
             $cliente = __('Não Cadastrado');

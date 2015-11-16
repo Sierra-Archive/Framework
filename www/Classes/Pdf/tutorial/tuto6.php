@@ -107,16 +107,16 @@ text, such as <a href="http://www.fpdf.org">www.fpdf.org</a>, or on an image: cl
 $pdf = new PDF();
 // First page
 $pdf->AddPage();
-$pdf->SetFont('Arial','',20);
+$pdf->SetFont('Arial', '',20);
 $pdf->Write(5,"To find out what's new in this tutorial, click ");
-$pdf->SetFont('','U');
+$pdf->SetFont('', 'U');
 $link = $pdf->AddLink();
 $pdf->Write(5,'here',$link);
 $pdf->SetFont('');
 // Second page
 $pdf->AddPage();
 $pdf->SetLink($link);
-$pdf->Image('logo.png',10,12,30,0,'','http://www.fpdf.org');
+$pdf->Image('logo.png',10,12,30,0,'', 'http://www.fpdf.org');
 $pdf->SetLeftMargin(45);
 $pdf->SetFontSize(14);
 $pdf->WriteHTML($html);

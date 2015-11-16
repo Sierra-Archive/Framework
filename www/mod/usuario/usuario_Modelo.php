@@ -161,7 +161,7 @@ class usuario_Modelo extends \Framework\App\Modelo
             
             // Pega GRUPOS VALIDOS
             //#update - Comer essa Query, nao há necessidade
-            $sql_grupos = $this->db->Sql_Select('Sistema_Grupo','categoria='.$categoria,0,'','id');
+            $sql_grupos = $this->db->Sql_Select('Sistema_Grupo', 'categoria='.$categoria,0,'', 'id');
             $grupos_id = Array();
             if (is_object($sql_grupos)) $sql_grupos = Array(0=>$sql_grupos);
             if ($sql_grupos!==false && !empty($sql_grupos)) {
@@ -174,9 +174,9 @@ class usuario_Modelo extends \Framework\App\Modelo
             
             // cria where de acordo com parametros
             if ($inverter) {
-                $where = 'grupo NOT IN ('.implode(',',$grupos_id).') AND ativado='.$ativado;
+                $where = 'grupo NOT IN ('.implode(', ',$grupos_id).') AND ativado='.$ativado;
             } else {
-                $where = 'grupo IN ('.implode(',',$grupos_id).') AND ativado='.$ativado;
+                $where = 'grupo IN ('.implode(', ',$grupos_id).') AND ativado='.$ativado;
             }
             
             if ($ativado===false) {
@@ -465,7 +465,7 @@ class usuario_Modelo extends \Framework\App\Modelo
 
         ++$numero;
         eval('$function = function( $d, $row ) { $html = \'\'; '.$function.' return $html; };');       
-        $columns[] = array( 'db' => 'ativado',            'dt' => $numero,
+        $columns[] = array( 'db' => 'ativado', 'dt' => $numero,
             'formatter' => $function
         ); //'Funções';
                 

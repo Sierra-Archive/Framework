@@ -108,12 +108,12 @@ class usuario_veiculo_ListarControle extends usuario_veiculo_Controle
                 $veiculo = $this->_Modelo->retorna_veiculo($idveiculo);
 
                 // Chama funcao js
-                $this->_Visual->Javascript_Executar('Sierra.Control_Layoult_Calendario_Intervalo(\'data_inicial\',\'data_final\',\''.$datainicial.'\',\''.$datafinal.'\',\'Sierra.Control_Agenda_Calpreco('.$veiculo['valor1'].','.$veiculo['valor2'].','.$veiculo['valor3'].',\');'.
+                $this->_Visual->Javascript_Executar('Sierra.Control_Layoult_Calendario_Intervalo(\'data_inicial\',\'data_final\',\''.$datainicial.'\',\''.$datafinal.'\',\'Sierra.Control_Agenda_Calpreco('.$veiculo['valor1'].', '.$veiculo['valor2'].', '.$veiculo['valor3'].',\');'.
                 'var diaspercorridos = Sierra.Control_Data_ContaDias(\''.$datainicial.'\', \''.$datafinal.'\');'.
-                'Sierra.Control_Agenda_Calpreco('.$veiculo['valor1'].','.$veiculo['valor2'].','.$veiculo['valor3'].', diaspercorridos);');
+                'Sierra.Control_Agenda_Calpreco('.$veiculo['valor1'].', '.$veiculo['valor2'].', '.$veiculo['valor3'].', diaspercorridos);');
 
                 // formulario
-                $form = new \Framework\Classes\Form('adminformveiculosagenda','usuario_veiculo/Listar/agendamento_inserir/','formajax');
+                $form = new \Framework\Classes\Form('adminformveiculosagenda', 'usuario_veiculo/Listar/agendamento_inserir/', 'formajax');
                 usuario_veiculo_ListarControle::agendamento_form($this, $this->_Visual, $form, $idveiculo,$nomeveiculo,$datainicial,$datafinal,$veiculo['franquia'],0);
                 $formulario = $form->retorna_form();
                 $conteudo = array(
@@ -150,13 +150,13 @@ class usuario_veiculo_ListarControle extends usuario_veiculo_Controle
         
        
        // select de pessoas
-        $form->Select_Novo('Veiculo','selectveiculos','selectveiculos');
+        $form->Select_Novo('Veiculo', 'selectveiculos', 'selectveiculos');
         $form->Select_Opcao($nomeveiculo,$idveiculo,1);
         $form->Select_Fim();
-        $form->Input_Novo('Data Inicial','data_inicial',$datainicial,'text', 10, 'obrigatorio','',true); 
-        $form->Input_Novo('Data Final','data_final',$datafinal,'text', 10, 'obrigatorio','',true); 
-        $form->Input_Novo('Franquia','franquia','R$'.number_format($franquia, 2, ',', '.'),'text', 30, 'inactive','',true);  
-        $form->Input_Novo('Valor','valor','R$'.number_format($valor, 2, ',', '.'),'text', 30, 'inactive','',true); 
+        $form->Input_Novo('Data Inicial', 'data_inicial',$datainicial,'text', 10, 'obrigatorio', '',true); 
+        $form->Input_Novo('Data Final', 'data_final',$datafinal,'text', 10, 'obrigatorio', '',true); 
+        $form->Input_Novo('Franquia', 'franquia', 'R$'.number_format($franquia, 2, ', ', '.'),'text', 30, 'inactive', '',true);  
+        $form->Input_Novo('Valor', 'valor', 'R$'.number_format($valor, 2, ', ', '.'),'text', 30, 'inactive', '',true); 
     }
      /**
      * Inserir

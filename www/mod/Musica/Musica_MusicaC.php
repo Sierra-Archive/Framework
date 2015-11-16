@@ -294,7 +294,7 @@ class Musica_MusicaControle extends Musica_Controle
             $alterar    = Array('artista'=>$artista);
             if ($album!==false) {
                 $album = (int) $album;
-                $funcao     = '$this->Musicas('.$artista.','.$album.');';
+                $funcao     = '$this->Musicas('.$artista.', '.$album.');';
                 $alterar['album'] = $album;
             } else {
                 $funcao     = '$this->Musicas('.$artista.');';
@@ -379,7 +379,7 @@ class Musica_MusicaControle extends Musica_Controle
         // Recupera Musicas
         if ($artista!==false) {
             if ($album!==false) {
-                $funcao     = '$this->Musicas('.$artista.','.$album.');';
+                $funcao     = '$this->Musicas('.$artista.', '.$album.');';
             } else {
                 $funcao     = '$this->Musicas('.$artista.');';
             }

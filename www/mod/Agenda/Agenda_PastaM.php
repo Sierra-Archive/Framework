@@ -51,7 +51,7 @@ class Agenda_PastaModelo extends Agenda_Modelo
         
         ++$numero;
         eval('$function = function( $d, $row ) { $html = \'\'; '.$function.' return $html; };');       
-        $columns[] = array( 'db' => 'id',            'dt' => $numero,
+        $columns[] = array( 'db' => 'id', 'dt' => $numero,
             'formatter' => $function
         ); //'Funções';
                 

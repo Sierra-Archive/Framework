@@ -294,7 +294,7 @@ class Simulador_RespostaControle extends Simulador_Controle
             $alterar    = Array('simulador'=>$simulador);
             if ($pergunta!==false) {
                 $pergunta = (int) $pergunta;
-                $funcao     = '$this->Respostas('.$simulador.','.$pergunta.');';
+                $funcao     = '$this->Respostas('.$simulador.', '.$pergunta.');';
                 $alterar['pergunta'] = $pergunta;
             } else {
                 $funcao     = '$this->Respostas('.$simulador.');';
@@ -379,7 +379,7 @@ class Simulador_RespostaControle extends Simulador_Controle
         // Recupera Respostas
         if ($simulador!==false) {
             if ($pergunta!==false) {
-                $funcao     = '$this->Respostas('.$simulador.','.$pergunta.');';
+                $funcao     = '$this->Respostas('.$simulador.', '.$pergunta.');';
             } else {
                 $funcao     = '$this->Respostas('.$simulador.');';
             }

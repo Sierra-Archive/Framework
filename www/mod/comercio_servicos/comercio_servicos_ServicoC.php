@@ -76,7 +76,7 @@ class comercio_servicos_ServicoControle extends comercio_servicos_Controle
 
         $this->_Visual->Show_Tabela_DataTable_Massiva($tabela_colunas,'comercio_servicos/Servico/Servico');
         $titulo = 'Listagem de '.$titulo;
-        $this->_Visual->Bloco_Unico_CriaJanela($titulo.' (<span id="DataTable_Contador">0</span>)','',10,Array("link"=>"comercio_servicos/Servico/Servicos_Add",'icon'=>'add','nome'=>'Adicionar nov'.$titulo_com_sexo));
+        $this->_Visual->Bloco_Unico_CriaJanela($titulo.' (<span id="DataTable_Contador">0</span>)', '',10,Array("link"=>"comercio_servicos/Servico/Servicos_Add",'icon'=>'add', 'nome'=>'Adicionar nov'.$titulo_com_sexo));
         
         //Carrega Json
         $this->_Visual->Json_Info_Update('Titulo', __('Administrar ').$titulo);

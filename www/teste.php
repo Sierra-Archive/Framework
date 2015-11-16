@@ -65,7 +65,7 @@ else
 {
     $stmt->bind_param("s", $ativado);
 
-    $ativado_array = array('0','1','2','3');
+    $ativado_array = array('0', '1', '2', '3');
 
     foreach($ativado_array as $ativado)
     {

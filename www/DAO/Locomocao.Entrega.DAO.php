@@ -166,7 +166,7 @@ final Class Locomocao_Entrega_DAO extends Framework\App\Dao
                         'Extrangeira'       => 'LEP.id|LEP.id',
                         'Linkar'            => 'entrega', // CAmpo a ser encaixado id do pai
                         'Linkado'           => 'entrega',// CAmpo a ser encaixado id do link
-                        'Campos'            => Array('pais','estado','cidade','bairro','endereco'),
+                        'Campos'            => Array('pais', 'estado', 'cidade', 'bairro', 'endereco'),
                         'infonulo'          => 'Escolha pelo menos um Ponto',
                       'linkextra'         => false
                     ), // Campo Boleano da tabela LINK, caso false apaga os que nao forem puxados

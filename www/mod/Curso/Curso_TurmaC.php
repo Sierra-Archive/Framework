@@ -139,7 +139,7 @@ class Curso_TurmaControle extends Curso_Controle
             $tabela['Inicio'][$i]           = $valor->inicio;
             $tabela['Fim'][$i]              = $valor->fim;
             if ($inscrever) $tabela['Funções'][$i]          = $Visual->Tema_Elementos_Btn('Personalizado'     ,
-                    Array('Se Inscrever'        ,$inscricao_url    ,'','hdd','success'));
+                    Array('Se Inscrever'        ,$inscricao_url    ,'', 'hdd', 'success'));
             ++$i;
         }
         return Array($tabela,$i);
@@ -170,13 +170,13 @@ class Curso_TurmaControle extends Curso_Controle
         if ($curso!==false) {
             $curso = (int) $curso;
             if ($curso==0) {
-                $curso_registro = $this->_Modelo->db->Sql_Select('Curso','',1,'id DESC');
+                $curso_registro = $this->_Modelo->db->Sql_Select('Curso', '',1,'id DESC');
                 if ($curso_registro===false) {
                     return _Sistema_erroControle::Erro_Fluxo('Não existe nenhum curso:',404);
                 }
                 $curso = $curso_registro->id;
             } else {
-                $curso_registro = $this->_Modelo->db->Sql_Select('Curso','Cu.id='.$curso.'',1);
+                $curso_registro = $this->_Modelo->db->Sql_Select('Curso', 'Cu.id='.$curso.'',1);
                 if ($curso_registro===false) {
                     return _Sistema_erroControle::Erro_Fluxo('Esse Curso não existe:',404);
                 }
@@ -406,7 +406,7 @@ class Curso_TurmaControle extends Curso_Controle
         $id         = (int) $id;
         
         // Carrega Turma
-        $turma_registro = $this->_Modelo->db->Sql_Select('Curso_Turma','{sigla}id=\''.$id.'\'',1);
+        $turma_registro = $this->_Modelo->db->Sql_Select('Curso_Turma', '{sigla}id=\''.$id.'\'',1);
         if ($turma_registro===false) {
             return _Sistema_erroControle::Erro_Fluxo('Essa Turma não existe:',404);
         }
@@ -415,7 +415,7 @@ class Curso_TurmaControle extends Curso_Controle
         if ($curso!==false) {
             $curso    = (int) $curso;
             // Carrega Turma
-            $curso_registro = $this->_Modelo->db->Sql_Select('Curso','{sigla}id=\''.$id.'\'',1);
+            $curso_registro = $this->_Modelo->db->Sql_Select('Curso', '{sigla}id=\''.$id.'\'',1);
             if ($curso_registro===false) {
                 return _Sistema_erroControle::Erro_Fluxo('Esse Curso não existe:',404);
             }
@@ -423,7 +423,7 @@ class Curso_TurmaControle extends Curso_Controle
         } else {
             self::Endereco_Turma_Ver(false,$turma_registro,false);
         }
-        $inscricoes = $this->_Modelo->db->Sql_Select('Curso_Turma_Inscricao','{sigla}turma=\''.$id.'\'');
+        $inscricoes = $this->_Modelo->db->Sql_Select('Curso_Turma_Inscricao', '{sigla}turma=\''.$id.'\'');
         $titulo = 'Visualização da Turma: '.$turma_registro->nome;
         $i = 0;
         if ($inscricoes!==false && !empty($inscricoes)) {
@@ -697,7 +697,7 @@ class Curso_TurmaControle extends Curso_Controle
         
         // Inscricao Verifica se ja tem
         $usuarioid  = $this->_Acl->Usuario_GetID();
-        $insc_registro = $this->_Modelo->db->Sql_Select('Curso_Turma_Inscricao','{sigla}usuario=\''.$usuarioid.'\' && {sigla}turma=\''.$turma_registro->curso.'\'',1);
+        $insc_registro = $this->_Modelo->db->Sql_Select('Curso_Turma_Inscricao', '{sigla}usuario=\''.$usuarioid.'\' && {sigla}turma=\''.$turma_registro->curso.'\'',1);
         if ($insc_registro!==false) {
             $mensagens = array(
                 "tipo"              => 'erro',
@@ -733,7 +733,7 @@ class Curso_TurmaControle extends Curso_Controle
         $usuarioemail  = $this->_Acl->Usuario_GetEmail();
         
         // Carrega Turma
-        $turma_registro = $this->_Modelo->db->Sql_Select('Curso_Turma','{sigla}id=\''.$id.'\'',1);
+        $turma_registro = $this->_Modelo->db->Sql_Select('Curso_Turma', '{sigla}id=\''.$id.'\'',1);
         if ($turma_registro===false) {
             return _Sistema_erroControle::Erro_Fluxo('Essa Turma não existe:',404);
         }
@@ -744,7 +744,7 @@ class Curso_TurmaControle extends Curso_Controle
         } else {
             self::Endereco_Aberta(true, false);
         }
-        $curso_registro = $this->_Modelo->db->Sql_Select('Curso','{sigla}id=\''.$turma_registro->curso.'\'',1);
+        $curso_registro = $this->_Modelo->db->Sql_Select('Curso', '{sigla}id=\''.$turma_registro->curso.'\'',1);
         if ($curso_registro===false) {
             return _Sistema_erroControle::Erro_Fluxo('Esse Curso não existe',404);
         }
@@ -752,7 +752,7 @@ class Curso_TurmaControle extends Curso_Controle
         
         
         // Inscricao Verifica se ja tem
-        $insc_registro = $this->_Modelo->db->Sql_Select('Curso_Turma_Inscricao','{sigla}usuario=\''.$usuarioid.'\' && {sigla}turma=\''.$turma_registro->id.'\'',1);
+        $insc_registro = $this->_Modelo->db->Sql_Select('Curso_Turma_Inscricao', '{sigla}usuario=\''.$usuarioid.'\' && {sigla}turma=\''.$turma_registro->id.'\'',1);
         if ($insc_registro!==false) {
             $mensagens = array(
                 "tipo"              => 'erro',

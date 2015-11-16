@@ -59,7 +59,7 @@ class banner_AdminControle extends banner_Controle
             
             foreach ($banners as $indice=>&$valor) {                
                 $tabela['Id'][$i]        = $valor['id'];
-                $tabela['Foto'][$i]      = $this->_Visual->Show_Upload('banner','Admin','Banner','BannerImagem'.$valor['id'],$valor['foto'],'banner'.DS,$valor['id']);
+                $tabela['Foto'][$i]      = $this->_Visual->Show_Upload('banner', 'Admin', 'Banner', 'BannerImagem'.$valor['id'],$valor['foto'],'banner'.DS,$valor['id']);
                 $tabela['Categoria'][$i] = $valor['categoria'];
                 $tabela['Nome'][$i]    = $valor['nome'];
                 $tabela['Url'][$i]       = $valor['url'];
@@ -215,7 +215,7 @@ class banner_AdminControle extends banner_Controle
      */
     public function Banner_Upload($id) {
         $id = (int) $id;
-        $fileTypes = array('jpg','jpeg','gif','png'); // File extensions
+        $fileTypes = array('jpg', 'jpeg', 'gif', 'png'); // File extensions
         $dir = 'banner'.DS;
         $ext = $this->Upload($dir,$fileTypes,$id);
         if ($ext!='falso') {

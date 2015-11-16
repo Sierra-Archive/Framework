@@ -27,7 +27,7 @@ class Engenharia_Modelo extends \Framework\App\Modelo
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Modelo = &$Registro->_Modelo;
         $retirada = $_Modelo->db->Sql_Select('Engenharia_Estoque_Retirada',Array('id'=>$motivoid),1);
-        return Array('Gasto com Empreendimento','Empreendimento'.$retirada->idempreendimento2);
+        return Array('Gasto com Empreendimento', 'Empreendimento'.$retirada->idempreendimento2);
     }
     static function Financeiro_Motivo_Exibir($motivoid) {
         $motivoid = (int) $motivoid;

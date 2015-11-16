@@ -276,7 +276,7 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
         self::DAO_Campos_Retira($campos, 'saida_motivoid');
         self::DAO_Campos_Retira($campos, 'forma_pagar');
         self::DAO_Campos_Retira($campos, 'forma_condicao');
-        self::mysql_MudaLeitura($campos, Array('valor','dt_vencimento','num_parcela'));
+        self::mysql_MudaLeitura($campos, Array('valor', 'dt_vencimento', 'num_parcela'));
         return true;
     }
     /**
@@ -492,11 +492,11 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
         self::Endereco_Forma(false);
         
         $tabela = Array(
-            'Nome','Funções'
+            'Nome', 'Funções'
         );
         $this->_Visual->Show_Tabela_DataTable_Massiva($tabela,'Financeiro/Pagamento/Formas');
         $titulo = __('Listagem de Formas de Pagamento').' (<span id="DataTable_Contador">0</span>)';  //
-        $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',10,Array("link"=>"Financeiro/Pagamento/Formas_Add",'icon'=>'add','nome'=>'Adicionar Forma de Pagamento'));
+        $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',10,Array("link"=>"Financeiro/Pagamento/Formas_Add",'icon'=>'add', 'nome'=>'Adicionar Forma de Pagamento'));
         
         
         //Carrega Json
@@ -627,10 +627,10 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
         self::Endereco_Forma_Condicao(false,$forma);
         
         $tabela = Array(
-            'Forma de Pagamento','Nome','Entrada','Qnt de Parcelas','Funções'
+            'Forma de Pagamento', 'Nome', 'Entrada', 'Qnt de Parcelas', 'Funções'
         );
         $this->_Visual->Show_Tabela_DataTable_Massiva($tabela,'Financeiro/Pagamento/Condicoes'.$link_extra);
-        $this->_Visual->Bloco_Unico_CriaJanela('Listagem de '.$titulo2.' (<span id="DataTable_Contador">0</span>)','',10,Array("link"=>"Financeiro/Pagamento/Condicoes_Add",'icon'=>'add','nome'=>'Adicionar '.$titulo.''));
+        $this->_Visual->Bloco_Unico_CriaJanela('Listagem de '.$titulo2.' (<span id="DataTable_Contador">0</span>)', '',10,Array("link"=>"Financeiro/Pagamento/Condicoes_Add",'icon'=>'add', 'nome'=>'Adicionar '.$titulo.''));
         
         
         //Carrega Json

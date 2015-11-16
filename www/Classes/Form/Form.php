@@ -101,14 +101,14 @@ class Form
         $Visual     = $Registro->_Visual;
         $Visual->Javascript_Executar('var form_duallist'.$controle_duallist.' = $(\'.form_duallist'.$controle_duallist.'\').bootstrapDualListbox('.
             '{bootstrap2compatible: true,'.
-            'nonselectedlistlabel: \''.$col1.'\','.
-            'selectedlistlabel: \''.$col2.'\','.
-            'preserveselectiononmove: \'moved\','.
+            'nonselectedlistlabel: \''.$col1.'\', '.
+            'selectedlistlabel: \''.$col2.'\', '.
+            'preserveselectiononmove: \'moved\', '.
             'moveonselect: false,'.
-            'infotext: \'Mostrando {0}\','.
-            'infotextfiltered: \'<span class="label label-warning">Filtrado</span> {0} de {1}\','.
-            'infotextempty: \'Lista Vazia\','.
-            'filterplaceholder: \'Filtro\','.
+            'infotext: \'Mostrando {0}\', '.
+            'infotextfiltered: \'<span class="label label-warning">Filtrado</span> {0} de {1}\', '.
+            'infotextempty: \'Lista Vazia\', '.
+            'filterplaceholder: \'Filtro\', '.
             'filtertextclear: \'mostrar tudo\'}'.
         ');');
         // Cria Formulario
@@ -225,7 +225,7 @@ class Form
                 continue;
             }
         }
-        if ($nenhum_selecionado) array_unshift($opcoes, Array('titulo'=>'','valor'=>'','selected'=>1));
+        if ($nenhum_selecionado) array_unshift($opcoes, Array('titulo'=>'', 'valor'=>'', 'selected'=>1));
         // Puxa Formulario
         $config = Array(
             'Tipo'      => 'SelectMultiplo',

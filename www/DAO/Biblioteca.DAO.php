@@ -13,7 +13,7 @@ final Class  Biblioteca_DAO extends Framework\App\Dao
     protected $usuario;
     protected $grupo;
     // Padrao é false, ou array com os campos que nao aceita
-    protected static $campos_naoaceita_config  = Array('arquivo','end_virtual','ext');
+    protected static $campos_naoaceita_config  = Array('arquivo', 'end_virtual', 'ext');
     protected static $objetocarregado     = false;     protected static $mysql_colunas       = false;     protected static $mysql_outside       = Array();     protected static $mysql_inside        = Array(); public function __construct() {  parent::__construct(); } public static function Get_Nome() {
         return MYSQL_BIBLIOTECA;
     }

@@ -53,11 +53,11 @@ class usuario_mensagem_AssuntoControle extends usuario_mensagem_Controle
         self::Endereco_Assunto(false);
         
         $tabela = Array(
-            'Setor','Nome','Tempo de Resposta','Funções'
+            'Setor', 'Nome', 'Tempo de Resposta', 'Funções'
         );
         $this->_Visual->Show_Tabela_DataTable_Massiva($tabela,'usuario_mensagem/Assunto/Assuntos');
         $titulo = __('Listagem de Assuntos').' (<span id="DataTable_Contador">0</span>)';  //
-        $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',10,Array("link"=>"usuario_mensagem/Assunto/Assuntos_Add",'icon'=>'add','nome'=>'Adicionar Assunto'));
+        $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',10,Array("link"=>"usuario_mensagem/Assunto/Assuntos_Add",'icon'=>'add', 'nome'=>'Adicionar Assunto'));
         
         //Carrega Json
         $this->_Visual->Json_Info_Update('Titulo', __('Administrar Assuntos'));
@@ -110,7 +110,7 @@ class usuario_mensagem_AssuntoControle extends usuario_mensagem_Controle
         self::mysql_AtualizaValores($campos, $assunto);
 
         // edicao de assuntos
-        $form = new \Framework\Classes\Form('form_Sistema_AdminC_AssuntoEdit','usuario_mensagem/Assunto/Assuntos_Edit2/'.$id.'/','formajax');
+        $form = new \Framework\Classes\Form('form_Sistema_AdminC_AssuntoEdit', 'usuario_mensagem/Assunto/Assuntos_Edit2/'.$id.'/', 'formajax');
         \Framework\App\Controle::Gerador_Formulario($campos, $form);
         $formulario = $form->retorna_form('Alterar Assunto');
         $this->_Visual->Blocar($formulario);

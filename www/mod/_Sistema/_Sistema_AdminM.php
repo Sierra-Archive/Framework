@@ -36,7 +36,7 @@ class _Sistema_AdminModelo extends _Sistema_Modelo
         
         ++$numero;
         eval('$function = function( $d, $row ) { $html = \'\'; '.$function.' return $html; };');       
-        $columns[] = array( 'db' => 'chave',            'dt' => $numero,
+        $columns[] = array( 'db' => 'chave', 'dt' => $numero,
             'formatter' => $function
         ); //'Funções';
                 

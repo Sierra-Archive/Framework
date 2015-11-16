@@ -59,7 +59,7 @@ class Financeiro_RelatorioControle extends Financeiro_Controle
     public function Main() {
         $this->Relatorio();
         // ORGANIZA E MANDA CONTEUDO
-        $this->_Visual->Json_Info_Update('Titulo','Relatório Financeiro'); 
+        $this->_Visual->Json_Info_Update('Titulo', 'Relatório Financeiro'); 
     }
     public function Relatorio($tipo_relatorio = 'Pagar', $data_inicial = '2014-01-01', $data_final = APP_DATA, $categoria = false) {
         
@@ -71,13 +71,13 @@ class Financeiro_RelatorioControle extends Financeiro_Controle
         }
         
         // Começa e Cria Formulario
-        $form = new \Framework\Classes\Form('Relatorio_Financeiro', 'Financeiro/Relatorio/Relatorio_Receber', 'formajax','mini','vertical');
+        $form = new \Framework\Classes\Form('Relatorio_Financeiro', 'Financeiro/Relatorio/Relatorio_Receber', 'formajax', 'mini', 'vertical');
         
         $form->Select_Novo('Relatórios', 'tipo_relatorio', 'tipo_relatorio', '', '', '', false, false, '', 'Escolha um Relatório');
-        $form->Select_Opcao('Contas à Pagar','pagar',($tipo_relatorio==='Pagar'?1:0));
-        $form->Select_Opcao('Contas Pagas','pago',($tipo_relatorio==='Pago'?1:0));
-        $form->Select_Opcao('Contas à Receber','receber',($tipo_relatorio==='Receber'?1:0));
-        $form->Select_Opcao('Contas Recebidas','recebido',($tipo_relatorio==='Recebido'?1:0));
+        $form->Select_Opcao('Contas à Pagar', 'pagar',($tipo_relatorio==='Pagar'?1:0));
+        $form->Select_Opcao('Contas Pagas', 'pago',($tipo_relatorio==='Pago'?1:0));
+        $form->Select_Opcao('Contas à Receber', 'receber',($tipo_relatorio==='Receber'?1:0));
+        $form->Select_Opcao('Contas Recebidas', 'recebido',($tipo_relatorio==='Recebido'?1:0));
         $form->Select_Fim();
         
         // Categorias
@@ -85,22 +85,22 @@ class Financeiro_RelatorioControle extends Financeiro_Controle
         if (is_object($categorias_selecionadas)) $categorias_selecionadas = Array($categorias_selecionadas);
         if (!empty($categorias_selecionadas)) {
             $form->Select_Novo('Centro de Custo', 'categoria', 'categoria', '', '', '', false, false, '', 'Escolha um Centro de Custo');
-            $form->Select_Opcao('Todos','0',($categoria===false?1:0));
+            $form->Select_Opcao('Todos', '0',($categoria===false?1:0));
             foreach($categorias_selecionadas as &$valor) {
                 $form->Select_Opcao($valor->nome,$valor->id,($categoria==$valor->id?1:0));
             }
             $form->Select_Fim();
         }
 
-        $form->Input_Novo('Data Inicial', 'data_inicial', data_eua_brasil($data_inicial), 'text', 10, '', 'Data do Começo do Relatório', false, '', '','Data','', false);
-        $form->Input_Novo('Data Final', 'data_final', data_eua_brasil($data_final), 'text', 10, '', 'Data do Final do Relatório', false, '', '','Data','', false);
+        $form->Input_Novo('Data Inicial', 'data_inicial', data_eua_brasil($data_inicial), 'text', 10, '', 'Data do Começo do Relatório', false, '', '', 'Data', '', false);
+        $form->Input_Novo('Data Final', 'data_final', data_eua_brasil($data_final), 'text', 10, '', 'Data do Final do Relatório', false, '', '', 'Data', '', false);
         
         /*$form->Select_Novo('Retorno', 'tipo_visual', 'tipo_visual', '', '', '', false, false, '', 'Escolha um Retorno');
-        $form->Select_Opcao('Visualizar','normal',1);
-        $form->Select_Opcao('Imprimir','imprimir',0);
-        $form->Select_Opcao('Download em Excell','excell',0);
-        $form->Select_Opcao('Visualizar em PDF','pdf',0);
-        $form->Select_Opcao('Download em PDF','pdfdownload',0);
+        $form->Select_Opcao('Visualizar', 'normal',1);
+        $form->Select_Opcao('Imprimir', 'imprimir',0);
+        $form->Select_Opcao('Download em Excell', 'excell',0);
+        $form->Select_Opcao('Visualizar em PDF', 'pdf',0);
+        $form->Select_Opcao('Download em PDF', 'pdfdownload',0);
         $form->Select_Fim();*/
         // Bloca Conteudo e Cria Janela de COnfiguração
         $this->_Visual->Blocar($form->retorna_form('Atualizar')); // Relatório
@@ -111,10 +111,10 @@ class Financeiro_RelatorioControle extends Financeiro_Controle
         $html = $this->$tipo_relatorio($data_inicial, $data_final,$categoria, $tipo_visual);
         $titulo = __('Relatório de Contas à Pagar');
         $this->_Visual->Blocar('<span id="relatorio_tabela">'.$html.'</span>');
-        $this->_Visual->Bloco_Maior_CriaJanela('<span id="relatorio_titulo">'.$titulo.'</span>','', 0, false);
+        $this->_Visual->Bloco_Maior_CriaJanela('<span id="relatorio_titulo">'.$titulo.'</span>', '', 0, false);
         
         // ORGANIZA E MANDA CONTEUDO
-        $this->_Visual->Json_Info_Update('Titulo','Relatório Financeiro'); 
+        $this->_Visual->Json_Info_Update('Titulo', 'Relatório Financeiro'); 
     }
     public function Relatorio_Receber() {
         // Trata Parametros
@@ -463,42 +463,42 @@ class Financeiro_RelatorioControle extends Financeiro_Controle
         }
         
         // Começa e Cria Formulario
-        $form = new \Framework\Classes\Form('Grafico_Relatorio_Financeiro', 'Financeiro/Relatorio/Grafico_Relatorio_Receber', 'formajax','mini','vertical');
+        $form = new \Framework\Classes\Form('Grafico_Relatorio_Financeiro', 'Financeiro/Relatorio/Grafico_Relatorio_Receber', 'formajax', 'mini', 'vertical');
         
         $form->Select_Novo('Relatórios', 'tipo_relatorio_Grafico', 'tipo_relatorio_Grafico', '', '', '', false, false, '', 'Escolha um Relatório');
-        $form->Select_Opcao('Contas à Pagar','pagar',($tipo_relatorio_Grafico==='Pagar'?1:0));
-        $form->Select_Opcao('Contas Pagas','pago',($tipo_relatorio_Grafico==='Pago'?1:0));
-        $form->Select_Opcao('Contas à Receber','receber',($tipo_relatorio_Grafico==='Receber'?1:0));
-        $form->Select_Opcao('Contas Recebidas','recebido',($tipo_relatorio_Grafico==='Recebido'?1:0));
+        $form->Select_Opcao('Contas à Pagar', 'pagar',($tipo_relatorio_Grafico==='Pagar'?1:0));
+        $form->Select_Opcao('Contas Pagas', 'pago',($tipo_relatorio_Grafico==='Pago'?1:0));
+        $form->Select_Opcao('Contas à Receber', 'receber',($tipo_relatorio_Grafico==='Receber'?1:0));
+        $form->Select_Opcao('Contas Recebidas', 'recebido',($tipo_relatorio_Grafico==='Recebido'?1:0));
         $form->Select_Fim();
         
         // Categorias
         $categorias_selecionadas = $this->_Modelo->db->Sql_Select('Categoria',Array('CA.mod_acc'=>'Financeiro_Financa'));
         if (!empty($categorias_selecionadas)) {
             $form->Select_Novo('Centro de Custo', 'categoria', 'categoria', '', '', '', false, false, '', 'Escolha um Centro de Custo');
-            $form->Select_Opcao('Todos','0',($categoria===false?1:0));
+            $form->Select_Opcao('Todos', '0',($categoria===false?1:0));
             foreach($categorias_selecionadas as &$valor) {
                 $form->Select_Opcao($valor->nome,$valor->id,($categoria==$valor->id?1:0));
             }
             $form->Select_Fim();
         }
         
-        $form->Input_Novo('Data Inicial', 'data_inicial', data_eua_brasil($data_inicial), 'text', 10, '', 'Data do Começo do Relatório', false, '', '','Data','', false);
-        $form->Input_Novo('Data Final', 'data_final', data_eua_brasil($data_final), 'text', 10, '', 'Data do Final do Relatório', false, '', '','Data','', false);
+        $form->Input_Novo('Data Inicial', 'data_inicial', data_eua_brasil($data_inicial), 'text', 10, '', 'Data do Começo do Relatório', false, '', '', 'Data', '', false);
+        $form->Input_Novo('Data Final', 'data_final', data_eua_brasil($data_final), 'text', 10, '', 'Data do Final do Relatório', false, '', '', 'Data', '', false);
         
         /*$form->Select_Novo('Retorno', 'tipo_visual', 'tipo_visual', '', '', '', false, false, '', 'Escolha um Retorno');
-        $form->Select_Opcao('Visualizar','normal',1);
-        $form->Select_Opcao('Imprimir','imprimir',0);
-        $form->Select_Opcao('Download em Excell','excell',0);
-        $form->Select_Opcao('Visualizar em PDF','pdf',0);
-        $form->Select_Opcao('Download em PDF','pdfdownload',0);
+        $form->Select_Opcao('Visualizar', 'normal',1);
+        $form->Select_Opcao('Imprimir', 'imprimir',0);
+        $form->Select_Opcao('Download em Excell', 'excell',0);
+        $form->Select_Opcao('Visualizar em PDF', 'pdf',0);
+        $form->Select_Opcao('Download em PDF', 'pdfdownload',0);
         $form->Select_Fim();*/
         
         // Tipo de Grafico
         $form->Select_Novo('Tipo de Gráfico', 'tipo_grafico', 'tipo_grafico', '', '', '', false, false, '', 'Escolha um Tipo de Gráfico');
-        $form->Select_Opcao('Mensal','mes',1);
-        $form->Select_Opcao('Diário','dia',0);
-        $form->Select_Opcao('Semanal','semana',0);
+        $form->Select_Opcao('Mensal', 'mes',1);
+        $form->Select_Opcao('Diário', 'dia',0);
+        $form->Select_Opcao('Semanal', 'semana',0);
         $form->Select_Fim();
         
         // Bloca Conteudo e Cria Janela de COnfiguração
@@ -513,10 +513,10 @@ class Financeiro_RelatorioControle extends Financeiro_Controle
         $html = $this->$tipo_relatorio_Grafico($data_inicial, $data_final,$categoria, $tipo_grafico, $tipo_visual);
         $titulo = __('Relatório de Contas à Pagar');
         $this->_Visual->Blocar('<span id="Grafico_relatorio_tabela">'.$html.'</span>');
-        $this->_Visual->Bloco_Maior_CriaJanela('<span id="Grafico_relatorio_titulo">'.$titulo.'</span>','', 0, false);
+        $this->_Visual->Bloco_Maior_CriaJanela('<span id="Grafico_relatorio_titulo">'.$titulo.'</span>', '', 0, false);
         
         // ORGANIZA E MANDA CONTEUDO
-        $this->_Visual->Json_Info_Update('Titulo','Relatório Financeiro'); 
+        $this->_Visual->Json_Info_Update('Titulo', 'Relatório Financeiro'); 
     }
     public function Grafico_Relatorio_Receber() {
         // Trata Parametros

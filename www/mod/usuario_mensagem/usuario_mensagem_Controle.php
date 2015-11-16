@@ -103,7 +103,7 @@ class usuario_mensagem_Controle extends \Framework\App\Controle
         usuario_mensagem_Modelo::Mensagens_Retornanaolidas($Modelo,$mensagens,$usuario,1);
         if (!empty($mensagens)) {
             $i = usuario_mensagem_Controle::Mensagens_TabelaMostrar($Visual, $mensagens,$admin);
-            $Visual->Bloco_Unico_CriaJanela('Chamados não lidos ('.$i.')','',100);
+            $Visual->Bloco_Unico_CriaJanela('Chamados não lidos ('.$i.')', '',100);
         }
         // ORGANIZA E MANDA CONTEUDO
         $this->_Visual->Json_Info_Update('Titulo', __('Chamados não lidos'));  
@@ -143,7 +143,7 @@ class usuario_mensagem_Controle extends \Framework\App\Controle
             $tabela['Data de Criação'][$i]      = $valor->log_date_add; //date_replace($valor->log_date_add, "d/m/y | H:i");
             $tabela['Ultima Modificação'][$i]   = $valor->log_date_edit; //date_replace($valor->log_date_edit, "d/m/y | H:i");
             if ($valor->tipo!='Finalizado') {
-                $tabela['Visualizar Mensagem'][$i]  = $Visual->Tema_Elementos_Btn('Personalizado' ,    Array('Finalizar Mensagem'         ,'usuario_mensagem/Suporte/Finalizar/'.$valor->id.'/'    ,'','download','inverse'),$perm_finalizar);
+                $tabela['Visualizar Mensagem'][$i]  = $Visual->Tema_Elementos_Btn('Personalizado' ,    Array('Finalizar Mensagem'         ,'usuario_mensagem/Suporte/Finalizar/'.$valor->id.'/'    ,'', 'download', 'inverse'),$perm_finalizar);
             } else {
                 $tabela['Visualizar Mensagem'][$i] = '';
             }
@@ -223,10 +223,10 @@ class usuario_mensagem_Controle extends \Framework\App\Controle
     public function Resposta_formulario($mensagemid) {
         $mensagemid = (int)$mensagemid;
         
-        $form = new \Framework\Classes\Form('mensagem_resposta',SISTEMA_MODULO.'/'.SISTEMA_SUB.'/Resposta_inserir/'.$mensagemid.'/','formajax','full');
+        $form = new \Framework\Classes\Form('mensagem_resposta',SISTEMA_MODULO.'/'.SISTEMA_SUB.'/Resposta_inserir/'.$mensagemid.'/', 'formajax', 'full');
         // CADASTRA
-        $form->Input_Novo('Mensagem','mensagem',$mensagemid,'hidden', false, 'obrigatorio');
-        $form->TextArea_Novo('Responder','resposta','','','text', 10000, 'obrigatorio');
+        $form->Input_Novo('Mensagem', 'mensagem',$mensagemid,'hidden', false, 'obrigatorio');
+        $form->TextArea_Novo('Responder', 'resposta', '', '', 'text', 10000, 'obrigatorio');
         $this->_Visual->Blocar($form->retorna_form(__('Enviar')));
         $this->_Visual->Bloco_Unico_CriaJanela(__('Responder Ticket'));
     }
@@ -298,16 +298,16 @@ class usuario_mensagem_Controle extends \Framework\App\Controle
                     '<br><b>'.__('Fabricação:').' </b>'.  $identificador->fabricacao.
                     '<br><b>'.__('Mensagem:').' </b>' . nl2br($identificador->mensagem);
         // Recupera Email e Dados do Setor
-        $assunto    = $this->_Modelo->db->Sql_Select('Usuario_Mensagem_Assunto','{sigla}id=\''.$assunto.'\'');
-        $setor      = $this->_Modelo->db->Sql_Select('Usuario_Mensagem_Setor','{sigla}id=\''.$assunto->setor.'\'');
+        $assunto    = $this->_Modelo->db->Sql_Select('Usuario_Mensagem_Assunto', '{sigla}id=\''.$assunto.'\'');
+        $setor      = $this->_Modelo->db->Sql_Select('Usuario_Mensagem_Setor', '{sigla}id=\''.$assunto->setor.'\'');
         // Enviar Email
         $mailer = new \Framework\Classes\Email();
         $enviar = '';
         $emaildosetor = $setor->email;
-        if (strpos($emaildosetor, ',')===false) {
+        if (strpos($emaildosetor, ', ')===false) {
             $enviar .= '->setTo(\''.$emaildosetor.'\', \''.$setor->nome.'\')';
         } else {
-            $emaildosetor = explode(',', $emaildosetor);
+            $emaildosetor = explode(', ', $emaildosetor);
             foreach($emaildosetor as &$valor) {
                 $enviar .= '->setTo(\''.$valor.'\', \''.$setor->nome.'\')';
             }
@@ -332,10 +332,10 @@ class usuario_mensagem_Controle extends \Framework\App\Controle
         }
         $resposta = \Framework\App\Conexao::anti_injection($_POST["resposta"]);
         $sucesso =  $this->_Modelo->Mensagem_Resp_Inserir($mensagem,$resposta);
-        $amensagem =  $this->_Modelo->db->Sql_Select('Usuario_Mensagem','{sigla}id=\''.$mensagem.'\'');
+        $amensagem =  $this->_Modelo->db->Sql_Select('Usuario_Mensagem', '{sigla}id=\''.$mensagem.'\'');
         // Recupera Email e Dados do Setor
-        $assunto    = $this->_Modelo->db->Sql_Select('Usuario_Mensagem_Assunto','{sigla}id=\''.$amensagem->assunto.'\'');
-        $setor      = $this->_Modelo->db->Sql_Select('Usuario_Mensagem_Setor','{sigla}id=\''.$assunto->setor.'\'');
+        $assunto    = $this->_Modelo->db->Sql_Select('Usuario_Mensagem_Assunto', '{sigla}id=\''.$amensagem->assunto.'\'');
+        $setor      = $this->_Modelo->db->Sql_Select('Usuario_Mensagem_Setor', '{sigla}id=\''.$assunto->setor.'\'');
         
         // REcria Mensagem
         $resposta = '<b>'.__('Cliente:').' </b>'.     $amensagem->cliente2.
@@ -354,10 +354,10 @@ class usuario_mensagem_Controle extends \Framework\App\Controle
         $mailer = new \Framework\Classes\Email();
         $enviar = '';
         $emaildosetor = $setor->email;
-        if (strpos($emaildosetor, ',')===false) {
+        if (strpos($emaildosetor, ', ')===false) {
             $enviar = '->setTo(\''.$emaildosetor.'\', \''.$setor->nome.'\')';
         } else {
-            $emaildosetor = explode(',', $emaildosetor);
+            $emaildosetor = explode(', ', $emaildosetor);
             foreach($emaildosetor as &$valor) {
                 $enviar .= '->setTo(\''.$valor.'\', \''.$setor->nome.'\')';
             }
@@ -396,7 +396,7 @@ class usuario_mensagem_Controle extends \Framework\App\Controle
         $where = Array('escritor'=>$Registro->_Acl->Usuario_GetID(), 'para'=>0);
         
         #update -> Aqui tera que ser Sql_Contar (Mais performatico, aqui ta perdendo mt tempo de processamento)
-        $array = $Modelo->db->Sql_Select('Usuario_Mensagem',$where,0, '','assunto.tempocli,log_date_edit,log_date_add,finalizado');
+        $array = $Modelo->db->Sql_Select('Usuario_Mensagem',$where,0, '', 'assunto.tempocli,log_date_edit,log_date_add,finalizado');
         if (is_object($array)) $array = Array(0=>$array);
         if ($array!==false && !empty($array)) {
             reset($array);

@@ -95,80 +95,80 @@ define('EXPRESSED_FORM',  1);
 define('STATEMENT_FORM',  2);
 
 /* Operators */
-define('OP_SEMICOLON',  ';');
-define('OP_COMMA',  ',');
-define('OP_HOOK',  '?');
-define('OP_COLON',  ':');
-define('OP_OR',  '||');
-define('OP_AND',  '&&');
-define('OP_BITWISE_OR',  '|');
-define('OP_BITWISE_XOR',  '^');
-define('OP_BITWISE_AND',  '&');
-define('OP_STRICT_EQ',  '===');
-define('OP_EQ',  '==');
-define('OP_ASSIGN',  '=');
-define('OP_STRICT_NE',  '!==');
-define('OP_NE',  '!=');
-define('OP_LSH',  '<<');
-define('OP_LE',  '<=');
-define('OP_LT',  '<');
-define('OP_URSH',  '>>>');
-define('OP_RSH',  '>>');
-define('OP_GE',  '>=');
-define('OP_GT',  '>');
-define('OP_INCREMENT',  '++');
-define('OP_DECREMENT',  '--');
-define('OP_PLUS',  '+');
-define('OP_MINUS',  '-');
-define('OP_MUL',  '*');
-define('OP_DIV',  '/');
-define('OP_MOD',  '%');
-define('OP_NOT',  '!');
-define('OP_BITWISE_NOT',  '~');
-define('OP_DOT',  '.');
-define('OP_LEFT_BRACKET',  '[');
-define('OP_RIGHT_BRACKET',  ']');
-define('OP_LEFT_CURLY',  '{');
-define('OP_RIGHT_CURLY',  '}');
-define('OP_LEFT_PAREN',  '(');
-define('OP_RIGHT_PAREN',  ')');
-define('OP_CONDCOMMENT_END',  '@*/');
+define('OP_SEMICOLON', ';');
+define('OP_COMMA', ',');
+define('OP_HOOK', '?');
+define('OP_COLON', ':');
+define('OP_OR', '||');
+define('OP_AND', '&&');
+define('OP_BITWISE_OR', '|');
+define('OP_BITWISE_XOR', '^');
+define('OP_BITWISE_AND', '&');
+define('OP_STRICT_EQ', '===');
+define('OP_EQ', '==');
+define('OP_ASSIGN', '=');
+define('OP_STRICT_NE', '!==');
+define('OP_NE', '!=');
+define('OP_LSH', '<<');
+define('OP_LE', '<=');
+define('OP_LT', '<');
+define('OP_URSH', '>>>');
+define('OP_RSH', '>>');
+define('OP_GE', '>=');
+define('OP_GT', '>');
+define('OP_INCREMENT', '++');
+define('OP_DECREMENT', '--');
+define('OP_PLUS', '+');
+define('OP_MINUS', '-');
+define('OP_MUL', '*');
+define('OP_DIV', '/');
+define('OP_MOD', '%');
+define('OP_NOT', '!');
+define('OP_BITWISE_NOT', '~');
+define('OP_DOT', '.');
+define('OP_LEFT_BRACKET', '[');
+define('OP_RIGHT_BRACKET', ']');
+define('OP_LEFT_CURLY', '{');
+define('OP_RIGHT_CURLY', '}');
+define('OP_LEFT_PAREN', '(');
+define('OP_RIGHT_PAREN', ')');
+define('OP_CONDCOMMENT_END', '@*/');
 
-define('OP_UNARY_PLUS',  'U+');
-define('OP_UNARY_MINUS',  'U-');
+define('OP_UNARY_PLUS', 'U+');
+define('OP_UNARY_MINUS', 'U-');
 
 /* Keywords */
-define('KEYWORD_BREAK',  'break');
-define('KEYWORD_CASE',  'case');
-define('KEYWORD_CATCH',  'catch');
-define('KEYWORD_CONST',  'const');
-define('KEYWORD_CONTINUE',  'continue');
-define('KEYWORD_DEBUGGER',  'debugger');
-define('KEYWORD_DEFAULT',  'default');
-define('KEYWORD_DELETE',  'delete');
-define('KEYWORD_DO',  'do');
-define('KEYWORD_ELSE',  'else');
-define('KEYWORD_ENUM',  'enum');
-define('KEYWORD_FALSE',  'false');
-define('KEYWORD_FINALLY',  'finally');
-define('KEYWORD_FOR',  'for');
-define('KEYWORD_FUNCTION',  'function');
-define('KEYWORD_IF',  'if');
-define('KEYWORD_IN',  'in');
-define('KEYWORD_INSTANCEOF',  'instanceof');
-define('KEYWORD_NEW',  'new');
-define('KEYWORD_NULL',  'null');
-define('KEYWORD_RETURN',  'return');
-define('KEYWORD_SWITCH',  'switch');
-define('KEYWORD_THIS',  'this');
-define('KEYWORD_THROW',  'throw');
-define('KEYWORD_TRUE',  'true');
-define('KEYWORD_TRY',  'try');
-define('KEYWORD_TYPEOF',  'typeof');
-define('KEYWORD_VAR',  'var');
-define('KEYWORD_VOID',  'void');
-define('KEYWORD_WHILE',  'while');
-define('KEYWORD_WITH',  'with');
+define('KEYWORD_BREAK', 'break');
+define('KEYWORD_CASE', 'case');
+define('KEYWORD_CATCH', 'catch');
+define('KEYWORD_CONST', 'const');
+define('KEYWORD_CONTINUE', 'continue');
+define('KEYWORD_DEBUGGER', 'debugger');
+define('KEYWORD_DEFAULT', 'default');
+define('KEYWORD_DELETE', 'delete');
+define('KEYWORD_DO', 'do');
+define('KEYWORD_ELSE', 'else');
+define('KEYWORD_ENUM', 'enum');
+define('KEYWORD_FALSE', 'false');
+define('KEYWORD_FINALLY', 'finally');
+define('KEYWORD_FOR', 'for');
+define('KEYWORD_FUNCTION', 'function');
+define('KEYWORD_IF', 'if');
+define('KEYWORD_IN', 'in');
+define('KEYWORD_INSTANCEOF', 'instanceof');
+define('KEYWORD_NEW', 'new');
+define('KEYWORD_NULL', 'null');
+define('KEYWORD_RETURN', 'return');
+define('KEYWORD_SWITCH', 'switch');
+define('KEYWORD_THIS', 'this');
+define('KEYWORD_THROW', 'throw');
+define('KEYWORD_TRUE', 'true');
+define('KEYWORD_TRY', 'try');
+define('KEYWORD_TYPEOF', 'typeof');
+define('KEYWORD_VAR', 'var');
+define('KEYWORD_VOID', 'void');
+define('KEYWORD_WHILE', 'while');
+define('KEYWORD_WITH', 'with');
 
 
 class JSMinPlus
@@ -257,7 +257,7 @@ class JSMinPlus
 							elseif ($type == KEYWORD_VAR && $type == $lastType)
 							{
 								// mutiple var-statements can go into one
-								$t = ',' . substr($t, 4);
+								$t = ', ' . substr($t, 4);
 							}
 							else
 							{
@@ -283,7 +283,7 @@ class JSMinPlus
 				$s .= 'function' . ($n->name ? ' ' . $n->name : '') . '(';
 				$params = $n->params;
 				for ($i = 0, $j = count($params); $i < $j; $i++)
-					$s .= ($i ? ',' : '') . $params[$i];
+					$s .= ($i ? ', ' : '') . $params[$i];
 				$s .= ') {' . $this->parseTree($n->body, true) . '}';
 			break;
 
@@ -419,7 +419,7 @@ class JSMinPlus
 				for ($i = 0, $j = count($childs); $i < $j; $i++)
 				{
 					$t = $childs[$i];
-					$s .= ($i ? ',' : '') . $t->name;
+					$s .= ($i ? ', ' : '') . $t->name;
 					$u = $t->initializer;
 					if ($u)
 						$s .= '=' . $this->parseTree($u);
@@ -484,7 +484,7 @@ class JSMinPlus
 			case OP_COMMA:
 				$childs = $n->treeNodes;
 				for ($i = 0, $j = count($childs); $i < $j; $i++)
-					$s .= ($i ? ',' : '') . $this->parseTree($childs[$i]);
+					$s .= ($i ? ', ' : '') . $this->parseTree($childs[$i]);
 			break;
 
 			case OP_ASSIGN:
@@ -568,7 +568,7 @@ class JSMinPlus
 			case JS_LIST:
 				$childs = $n->treeNodes;
 				for ($i = 0, $j = count($childs); $i < $j; $i++)
-					$s .= ($i ? ',' : '') . $this->parseTree($childs[$i]);
+					$s .= ($i ? ', ' : '') . $this->parseTree($childs[$i]);
 			break;
 
 			case JS_CALL:
@@ -585,7 +585,7 @@ class JSMinPlus
 				$childs = $n->treeNodes;
 				for ($i = 0, $j = count($childs); $i < $j; $i++)
 				{
-					$s .= ($i ? ',' : '') . $this->parseTree($childs[$i]);
+					$s .= ($i ? ', ' : '') . $this->parseTree($childs[$i]);
 				}
 				$s .= ']';
 			break;
@@ -597,7 +597,7 @@ class JSMinPlus
 				{
 					$t = $childs[$i];
 					if ($i)
-						$s .= ',';
+						$s .= ', ';
 					if ($t->type == JS_PROPERTY_INIT)
 					{
 						// Ditch the quotes when the index is a valid identifier
@@ -616,7 +616,7 @@ class JSMinPlus
 						$s .= ' ' . $t->name . '(';
 						$params = $t->params;
 						for ($i = 0, $j = count($params); $i < $j; $i++)
-							$s .= ($i ? ',' : '') . $params[$i];
+							$s .= ($i ? ', ' : '') . $params[$i];
 						$s .= ') {' . $this->parseTree($t->body, true) . '}';
 					}
 				}
@@ -677,7 +677,7 @@ class JSParser
 
 	private $opPrecedence = array(
 		';' => 0,
-		',' => 1,
+		', ' => 1,
 		'=' => 2, '?' => 2, ':' => 2,
 		// The above all have to have the same precedence, see bug 330975
 		'||' => 4,
@@ -700,7 +700,7 @@ class JSParser
 	);
 
 	private $opArity = array(
-		',' => -2,
+		', ' => -2,
 		'=' => 2,
 		'?' => 3,
 		'||' => 2,
@@ -1992,7 +1992,7 @@ class JSTokenizer
 				// FALL THROUGH
 
 				case ';':
-				case ',':
+				case ', ':
 				case '?':
 				case ':':
 				case '~':

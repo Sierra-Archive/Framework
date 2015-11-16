@@ -267,7 +267,7 @@ abstract class Controle
                     "mgs_secundaria" => __('Voce enviou um Anexo com sucesso.')
                 );
                 $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens); 
-                $this->_Visual->Json_Info_Update('Titulo','Enviado com Sucesso.');
+                $this->_Visual->Json_Info_Update('Titulo', 'Enviado com Sucesso.');
             } else {
                 $mensagens = array(
                     "tipo" => 'erro',
@@ -275,7 +275,7 @@ abstract class Controle
                     "mgs_secundaria" => __('Email não foi enviado !')
                 );
                 $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens); 
-                $this->_Visual->Json_Info_Update('Titulo','Erro ao Enviar.');
+                $this->_Visual->Json_Info_Update('Titulo', 'Erro ao Enviar.');
             }
         }
     }
@@ -592,7 +592,7 @@ readfile($link);*/
      */
     protected function Categorias_ShowSelect(&$form,$tipo='',$padrao=0) {
     	$array = $this->_Modelo->Categorias_Retorna($tipo);
-    	$form->Select_Novo(__('Categoria'),'categoria','categoria');
+    	$form->Select_Novo(__('Categoria'),'categoria', 'categoria');
     	$this->_Visual->Categorias_ShowSelect($array,$form,$padrao);
     	$form->Select_Fim();
     }
@@ -730,19 +730,19 @@ readfile($link);*/
         // Desenvolvimento
         $Desenvolvimento = Array(
             'asp',
-            'c','cpp',
-            'js','css',
-            'php','php3','php4',
+            'c', 'cpp',
+            'js', 'css',
+            'php', 'php3', 'php4',
             'jar',
             'kml',
         );
         $Executavel = Array(
-            'exe','dll','bin',
+            'exe', 'dll', 'bin',
         );
         
         // Pega Tipos e Preenche Ext
         $ext = Array();
-        $padrao = explode(',',$padrao);
+        $padrao = explode(', ',$padrao);
         foreach($padrao as $valor) {
             if (isset($$valor)) {
                 $ext = array_merge($ext, $$valor);
@@ -856,7 +856,7 @@ readfile($link);*/
         
         // Pega Tipos e Preenche Ext
         $ext = Array();
-        $padrao = explode(',',$padrao);
+        $padrao = explode(', ',$padrao);
         foreach($padrao as $valor) {
             if (isset($$valor)) {
                 $ext = array_merge($ext, $$valor);
@@ -1085,8 +1085,8 @@ readfile($link);*/
                         // Puxa CAmpos Javascript
                         $form_js = new \Framework\Classes\Form();
                         $javascript_campos = self::Gerador_Formulario($colunas_temporaria, $form_js,false);
-                        $javascript_campos = str_replace(Array('"','\n','\r','    '), Array('\"','','',''), $javascript_campos);
-                        $javascript_campos = preg_replace('/\s/',' ',trim($javascript_campos));
+                        $javascript_campos = str_replace(Array('"', '\n', '\r', '    '), Array('\"', '', '', ''), $javascript_campos);
+                        $javascript_campos = preg_replace('/\s/', ' ',trim($javascript_campos));
                         
                     } else {
                         $javascript_campos = '';
@@ -1169,8 +1169,8 @@ readfile($link);*/
                         // Puxa CAmpos Javascript
                         $form_js = new \Framework\Classes\Form();
                         $javascript_campos = self::Gerador_Formulario($colunas_temporaria, $form_js,false);
-                        $javascript_campos = str_replace(Array('"','\n','\r','    '), Array('\"','','',''), $javascript_campos);
-                        $javascript_campos = preg_replace('/\s/',' ',trim($javascript_campos));
+                        $javascript_campos = str_replace(Array('"', '\n', '\r', '    '), Array('\"', '', '', ''), $javascript_campos);
+                        $javascript_campos = preg_replace('/\s/', ' ',trim($javascript_campos));
                     } else {
                         $javascript_campos = '';
                     }
@@ -1322,9 +1322,9 @@ readfile($link);*/
                 
                 // Primeira Opção
                 if ($valor['edicao']['valor_padrao']===false) {
-                    $html .= $form->Select_Opcao('','',1);
+                    $html .= $form->Select_Opcao('', '',1);
                 } else {
-                    $html .= $form->Select_Opcao('','',0);
+                    $html .= $form->Select_Opcao('', '',0);
                 }
                 
                 // Captura Selects pré denifidos
@@ -1471,9 +1471,9 @@ readfile($link);*/
                     );
                     $select = &$valor['edicao']['select']['opcoes'];
                     if ($valor['edicao']['valor_padrao']===false) {
-                        $html .= $form->Select_Opcao('','',1);
+                        $html .= $form->Select_Opcao('', '',1);
                     } else {
-                        $html .= $form->Select_Opcao('','',0);
+                        $html .= $form->Select_Opcao('', '',0);
                     }
                     if (is_array($select)) {
                         foreach ($select as &$valor2) {
@@ -1636,7 +1636,7 @@ readfile($link);*/
             self::mysql_AtualizaValores($campos, $objeto,$id);
         }
         // Puxa Form
-        $form = new \Framework\Classes\Form($formid,$formlink,'formajax',"mini",'horizontal','off');
+        $form = new \Framework\Classes\Form($formid,$formlink,'formajax',"mini",'horizontal', 'off');
         \Framework\App\Controle::Gerador_Formulario($campos, $form, true);
         // Carrega formulario
         if ($bloco==='html') {
@@ -1714,7 +1714,7 @@ readfile($link);*/
             // recupera Arquivo
             if ($primaria!==false) {
                 $identificador = \Framework\App\Conexao::anti_injection($dao[1]);
-                var_dump('aqui','{sigla}'.$primaria[0].'=\''.$identificador.'\'');
+                var_dump('aqui', '{sigla}'.$primaria[0].'=\''.$identificador.'\'');
                 $objeto = $this->_Modelo->db->Sql_Select($tab, '{sigla}'.$primaria[0].'=\''.$identificador.'\'',1);
             } else {
                 $identificador  = (int) $dao[1];
@@ -1793,7 +1793,7 @@ readfile($link);*/
             foreach($unicos as &$valor) {
                 $indice_campos = '';
                 $valor = str_replace(Array('`'), Array(''), $valor);
-                $valores = explode(',',$valor);
+                $valores = explode(', ',$valor);
                 $where = Array();
                 foreach($valores as &$valor2) {
                     if ($valor2=='servidor') {
@@ -2680,9 +2680,9 @@ readfile($link);*/
             }
             // cria form se nao tiver logado
             if (TEMA_LOGIN===false && $this->_Acl->logado===false && $this->_request->getSubModulo()!=='erro' && $this->_request->getSubModulo()!=='Recurso' && $this->_request->getSubModulo()!=='localidades') {
-                $form = new \Framework\Classes\Form('Formlogin','',''); //formajax /'.SISTEMA_MODULO.'/'.SISTEMA_SUB.'/'.SISTEMA_MET
-                $form->Input_Novo('Login','sistema_login','','text', '',30, '');
-                $form->Input_Novo('Senha','sistema_senha','','password', 30, '','');
+                $form = new \Framework\Classes\Form('Formlogin', '', ''); //formajax /'.SISTEMA_MODULO.'/'.SISTEMA_SUB.'/'.SISTEMA_MET
+                $form->Input_Novo('Login', 'sistema_login', '', 'text', '',30, '');
+                $form->Input_Novo('Senha', 'sistema_senha', '', 'password', 30, '', '');
                 $this->_Visual->Blocar($form->retorna_form('Entrar'));
                 $this->_Visual->Bloco_Menor_CriaJanela(__('Login'));
             }
@@ -2797,7 +2797,7 @@ readfile($link);*/
     }
     private function Chamar_Widget() {
         foreach($this->ModulosHome as $value) {
-            if (is_callable(array($value.'_Principal','Widget'))) {
+            if (is_callable(array($value.'_Principal', 'Widget'))) {
                 eval($value.'_Principal::Widget($this);');
             }
         }

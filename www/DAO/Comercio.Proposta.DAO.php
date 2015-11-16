@@ -223,7 +223,7 @@ final Class Comercio_Proposta_DAO extends Framework\App\Dao
                         'Linkar'            => 'proposta', // CAmpo a ser encaixado id do pai
                         'Linkado'           => 'btu',// CAmpo a ser encaixado id do link
                         'Campos'            => Array(
-                            'distancia','suporte','tipocondensadora','infra','tipoevaporadora','tipodreno','obs'
+                            'distancia', 'suporte', 'tipocondensadora', 'infra', 'tipoevaporadora', 'tipodreno', 'obs'
                         ),
                         'form_escondido'    => TRUE,    // Vai aparecer, quando trocar select
                         'infonulo'          => 'Escolha pelo menos um Btu para Instalar',
@@ -294,7 +294,7 @@ final Class Comercio_Proposta_DAO extends Framework\App\Dao
                         'Linkar'            => 'proposta', // CAmpo a ser encaixado id do pai
                         'Linkado'           => 'servicotipo',// CAmpo a ser encaixado id do link
                         'Campos'            => Array(
-                            false //'diarias_qnt','diarias_valor'
+                            false //'diarias_qnt', 'diarias_valor'
                         ),
                         'form_escondido'    => 'apagar', // Apagar = Vai Apagar Após a troca
                         'infonulo'          => 'Escolha pelo menos um Serviço',
@@ -317,7 +317,7 @@ final Class Comercio_Proposta_DAO extends Framework\App\Dao
                         'Linkar'            => 'proposta', // CAmpo a ser encaixado id do pai
                         'Linkado'           => 'grupo',// CAmpo a ser encaixado id do link
                         'Campos'            => Array(
-                            'maodeobra_qnt','maodeobra_dias','maodeobra_diaria','maodeobra_depreciacao','maodeobra_passagem','maodeobra_alimentacao'
+                            'maodeobra_qnt', 'maodeobra_dias', 'maodeobra_diaria', 'maodeobra_depreciacao', 'maodeobra_passagem', 'maodeobra_alimentacao'
                         ),
                         'form_escondido'    => 'apagar', // Apagar = Vai Apagar Após a troca
                         'infonulo'          => 'Escolha pelo menos um Tipo de Serviço',

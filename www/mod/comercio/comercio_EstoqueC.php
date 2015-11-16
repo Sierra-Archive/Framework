@@ -288,7 +288,7 @@ class comercio_EstoqueControle extends comercio_Controle
             self::Export_Todos($export,$tabela, 'Comercio - Produtos (Estoque)');
         } else {*/
             $tabela = Array(
-                'Número','Documento','Fornecedor','Data','Valor','Funções'
+                'Número', 'Documento', 'Fornecedor', 'Data', 'Valor', 'Funções'
             );
         //}
         $this->_Visual->Show_Tabela_DataTable_Massiva($tabela,'comercio/Estoque/Material_Entrada');
@@ -297,7 +297,7 @@ class comercio_EstoqueControle extends comercio_Controle
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhuma Entrada de NFE</font></b></center>');
         }*/
         $titulo = __('Listagem de Entrada de NFE').' (<span id="DataTable_Contador">0</span>)';
-        $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',0,Array("link"=>"comercio/Estoque/Material_Entrada_Add",'icon'=>'add','nome'=>'Adicionar Entrada de NFE'));
+        $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',0,Array("link"=>"comercio/Estoque/Material_Entrada_Add",'icon'=>'add', 'nome'=>'Adicionar Entrada de NFE'));
         
         //Carrega Json
         $this->_Visual->Json_Info_Update('Titulo', __('Administrar Entrada de NFE'));

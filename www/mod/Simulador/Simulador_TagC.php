@@ -81,7 +81,7 @@ class Simulador_TagControle extends Simulador_Controle
         // Processa Tag
         list($titulo,$html,$i) = $this->Tags_Processar($raiz);
         $this->_Visual->Blocar($html);
-        $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',10,Array("link"=>"Simulador/Tag/Tags_Add",'icon'=>'add','nome'=>__('Adicionar Caracteristica')));
+        $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',10,Array("link"=>"Simulador/Tag/Tags_Add",'icon'=>'add', 'nome'=>__('Adicionar Caracteristica')));
         
         //Carrega Json
         $this->_Visual->Json_Info_Update('Titulo', __('Listagem de Caracteristicas'));
@@ -105,7 +105,7 @@ class Simulador_TagControle extends Simulador_Controle
         $tabela_colunas[] = __('Observação');
         $tabela_colunas[] = __('Funções');
 
-        $html = $_Visual->Show_Tabela_DataTable_Massiva($tabela_colunas,'Simulador/Tag/Tags','',false,false);
+        $html = $_Visual->Show_Tabela_DataTable_Massiva($tabela_colunas,'Simulador/Tag/Tags', '',false,false);
         
         $titulo = $endereco.' (<span id="DataTable_Contador">0</span>)';
         return Array($titulo,$html,$i);
@@ -246,7 +246,7 @@ class Simulador_TagControle extends Simulador_Controle
         if ($retornar==='false') $retornar = false;
         // Verifica se Existe Conexao, se nao tiver abre o adicionar conexao, se nao, abre a tag!
         $Registro = &\Framework\App\Registro::getInstacia();
-        $resultado = $Registro->_Modelo->db->Sql_Select('Simulador_Tag_Conexao','{sigla}motivo=\''.$motivo.'\' AND {sigla}motivoid=\''.$motivoid.'\'',1);
+        $resultado = $Registro->_Modelo->db->Sql_Select('Simulador_Tag_Conexao', '{sigla}motivo=\''.$motivo.'\' AND {sigla}motivoid=\''.$motivoid.'\'',1);
         if (is_object($resultado)) {
             $existe = true;
         }
@@ -295,7 +295,7 @@ class Simulador_TagControle extends Simulador_Controle
        return \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos,false,'html',false);
     }
     public function Tag_Dinamica_Add2($motivo,$motivoid,$camada) {
-        $resultado = $this->_Modelo->db->Sql_Select('Simulador_Tag_Conexao','{sigla}motivo=\''.$motivo.'\' AND {sigla}motivoid=\''.$motivoid.'\'',1);
+        $resultado = $this->_Modelo->db->Sql_Select('Simulador_Tag_Conexao', '{sigla}motivo=\''.$motivo.'\' AND {sigla}motivoid=\''.$motivoid.'\'',1);
         if (is_object($resultado)) {
             SimuladorControle::Tag_Dinamica($motivo,$motivoid,$camada,false);
             return true;

@@ -55,11 +55,11 @@ class comercio_LinhaControle extends comercio_Controle
         self::Endereco_Linha(false);
         
         $tabela = Array(
-            'Id','Nome','Linha','Funções'
+            'Id', 'Nome', 'Linha', 'Funções'
         );
         $this->_Visual->Show_Tabela_DataTable_Massiva($tabela,'comercio/Linha/Linhas');
         $titulo = __('Listagem de Linhas').' (<span id="DataTable_Contador">0</span>)';  //
-        $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',10,Array("link"=>"comercio/Linha/Linhas_Add",'icon'=>'add','nome'=>'Adicionar Linha'));
+        $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',10,Array("link"=>"comercio/Linha/Linhas_Add",'icon'=>'add', 'nome'=>'Adicionar Linha'));
         
         
         //Carrega Json

@@ -41,7 +41,7 @@ class Agenda_AtividadesVisual extends Agenda_Visual
         $html = '';
         $tamanho = sizeof($array);
         $tabela = new \Framework\Classes\Tabela();
-        $tabela->addcabecario(array('Nome / Local','Data','Descrição','Ações'));
+        $tabela->addcabecario(array('Nome / Local', 'Data', 'Descrição', 'Ações'));
         for($i=0;$i<$tamanho;++$i) {
             $tabela->addcorpo(array(
                 array("nome" => '<a class="lajax-mesup active" href="'.URL_PATH.'Agenda/compromisso/compromisso/'.$array[$i]['id'].'/" data-acao="">'.$array[$i]['nome'].'</a><br><br>'.$array[$i]['local']),

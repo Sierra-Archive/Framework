@@ -52,7 +52,7 @@ class Enquete_RespostaControle extends Enquete_Controle
             $resp_votos = $Modelo->db->Sql_Select('Enquete_Voto',Array(
                 'enquete'   =>  $valor->enquete,
                 'resposta'  =>  $valor->id
-            ),0,'','enquete,resposta');
+            ),0,'', 'enquete,resposta');
             if ($resp_votos===false) {
                 $valor->qnt_votos = 0;
             } else if (is_object($resp_votos)) {

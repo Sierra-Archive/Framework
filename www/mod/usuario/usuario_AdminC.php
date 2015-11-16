@@ -138,7 +138,7 @@ class usuario_AdminControle extends usuario_Controle
             $tipo_pass    = CFG_TEC_CAT_ID_CLIENTES;
             $tipo2  = 'cliente';
             // Troca grupo
-            self::DAO_Ext_ADD($campos,'grupo','SG.categoria='.CFG_TEC_CAT_ID_CLIENTES);
+            self::DAO_Ext_ADD($campos,'grupo', 'SG.categoria='.CFG_TEC_CAT_ID_CLIENTES);
              //Aparece na Tela
             $tipo   = Framework\Classes\Texto::Transformar_Plural_Singular(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Cliente_nome'));
             $this->Tema_Endereco(__('Clientes'),'usuario/Admin/ListarCliente');
@@ -148,14 +148,14 @@ class usuario_AdminControle extends usuario_Controle
             $tipo2  = 'funcionario'; //id do tipo
             $tipo   = Framework\Classes\Texto::Transformar_Plural_Singular(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Funcionario_nome'));
             // Troca grupo
-            self::DAO_Ext_ADD($campos,'grupo','SG.categoria='.CFG_TEC_CAT_ID_FUNCIONARIOS);
+            self::DAO_Ext_ADD($campos,'grupo', 'SG.categoria='.CFG_TEC_CAT_ID_FUNCIONARIOS);
             $this->Tema_Endereco(__('Funcionários'),'usuario/Admin/ListarFuncionario');
             $metodo = 'Funcionario_Edit2'.'/'.$id.'/';
         } else {
             $tipo_pass  = CFG_TEC_CAT_ID_ADMIN;
             $tipo2  = 'usuario'; //id do tipo
             // Troca grupo
-            self::DAO_Ext_ADD($campos,'grupo','SG.categoria='.CFG_TEC_CAT_ID_ADMIN);
+            self::DAO_Ext_ADD($campos,'grupo', 'SG.categoria='.CFG_TEC_CAT_ID_ADMIN);
             $this->Tema_Endereco(__('Usuários'),'usuario/Admin/ListarUsuario');
             $metodo = 'Usuarios_Edit2'.'/'.$id.'/'.$tipo2.'/';
         }
@@ -184,7 +184,7 @@ class usuario_AdminControle extends usuario_Controle
         // Bota Endereço
         $this->Tema_Endereco(__('Editar'));
         // cadastro de usuario
-        $form = new \Framework\Classes\Form('form_Sistema_AdminC_UsuarioEdit','usuario/Admin/'.$metodo,'formajax');
+        $form = new \Framework\Classes\Form('form_Sistema_AdminC_UsuarioEdit', 'usuario/Admin/'.$metodo,'formajax');
         // Deleta Campos Responsaveis
         self::Campos_Deletar($tipo_pass,$campos,$usuario);
         // Retira sempre a senha
@@ -324,7 +324,7 @@ class usuario_AdminControle extends usuario_Controle
         $campos = Usuario_DAO::Get_Colunas();
         // Troca grupo
         if ($categoria!==0) {
-            self::DAO_Ext_ADD($campos,'grupo','SG.categoria='.$categoria);
+            self::DAO_Ext_ADD($campos,'grupo', 'SG.categoria='.$categoria);
         }
         
         // Retira os de clientes
@@ -341,7 +341,7 @@ class usuario_AdminControle extends usuario_Controle
             self::Campos_Deletar(CFG_TEC_CAT_ID_CLIENTES,$campos, $usuario);
             $func_nome_plural = \Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Cliente_nome');
             $func_nome = Framework\Classes\Texto::Transformar_Plural_Singular($func_nome_plural);
-            $form = new \Framework\Classes\Form('form_Sistema_Admin_Usuarios','usuario/Admin/Cliente_Add2/','formajax');
+            $form = new \Framework\Classes\Form('form_Sistema_Admin_Usuarios', 'usuario/Admin/Cliente_Add2/', 'formajax');
             \Framework\App\Controle::Gerador_Formulario($campos, $form);
             $formulario = $form->retorna_form('Cadastrar '.$func_nome);
             $this->_Visual->Blocar($formulario);
@@ -351,7 +351,7 @@ class usuario_AdminControle extends usuario_Controle
             $this->Tema_Endereco($func_nome_plural,'usuario/Admin/ListarCliente');
         } else if ($tipo==='funcionario') {
             self::Campos_Deletar(CFG_TEC_CAT_ID_FUNCIONARIOS,$campos, $usuario);
-            $form = new \Framework\Classes\Form('form_Sistema_Admin_Usuarios','usuario/Admin/Funcionario_Add2','formajax');
+            $form = new \Framework\Classes\Form('form_Sistema_Admin_Usuarios', 'usuario/Admin/Funcionario_Add2', 'formajax');
             \Framework\App\Controle::Gerador_Formulario($campos, $form);
             $formulario = $form->retorna_form('Cadastrar Funcionário');
             $this->_Visual->Blocar($formulario);
@@ -361,7 +361,7 @@ class usuario_AdminControle extends usuario_Controle
         } else {
             self::Campos_Deletar(CFG_TEC_CAT_ID_ADMIN,$campos, $usuario);
             // Carrega formulario
-            $form = new \Framework\Classes\Form('form_Sistema_Admin_Usuarios','usuario/Admin/Usuarios_Add2/'.$linkextra,'formajax');
+            $form = new \Framework\Classes\Form('form_Sistema_Admin_Usuarios', 'usuario/Admin/Usuarios_Add2/'.$linkextra,'formajax');
             \Framework\App\Controle::Gerador_Formulario($campos, $form);
             $formulario = $form->retorna_form('Cadastrar Usuário');
             $this->_Visual->Blocar($formulario);
@@ -395,7 +395,7 @@ class usuario_AdminControle extends usuario_Controle
     public function Usuarios_Add2($tipo=false) {
         if (!isset($_POST['email']) || !isset($_POST['login'])) return false;
         
-        $this->_Visual->Json_Info_Update('Titulo','Usuários');
+        $this->_Visual->Json_Info_Update('Titulo', 'Usuários');
         
         if (isset($_POST['email'])) {
             $email = \Framework\App\Conexao::anti_injection($_POST['email']);
@@ -510,7 +510,7 @@ class usuario_AdminControle extends usuario_Controle
                 if ($tipo!='cliente' && !$this->_Acl->Usuario_GetLogado()) {
                     $this->_Modelo->Usuario_Logar($login, \Framework\App\Sistema_Funcoes::Form_Senha_Blindar($_POST['senha'],true));  
                 }
-                $this->_Visual->Json_Info_Update('Titulo','Adicionado com Sucesso.');
+                $this->_Visual->Json_Info_Update('Titulo', 'Adicionado com Sucesso.');
                 
                 if ($executar) {
                     $this->$executar();

@@ -89,7 +89,7 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
             }
             reset($proposta);
             $tabela = new \Framework\Classes\Tabela();
-            $tabela->addcabecario(Array('#Cod','Funções'));
+            $tabela->addcabecario(Array('#Cod', 'Funções'));
             foreach ($proposta as &$valor) {
                 //$tabela['#Cod'][$i]      = '#'.$valor->num_proposta;
                 //$tabela['Funções'][$i]   = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Proposta'        ,'comercio_certificado/Proposta/Propostas_Edit/'.$valor->id.'/'.$cliente.'/'    ,'')).
@@ -201,7 +201,7 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
         }
         
         // Carrega formulario
-        $form = new \Framework\Classes\Form('form_Sistema_Admin_Propostas','comercio_certificado/Proposta/Propostas_Add2/'.$cliente.'/','formajax');
+        $form = new \Framework\Classes\Form('form_Sistema_Admin_Propostas', 'comercio_certificado/Proposta/Propostas_Add2/'.$cliente.'/', 'formajax');
         self::mysql_AtualizaValor($campos, 'num_proposta', $proposta_num);
         \Framework\App\Controle::Gerador_Formulario($campos, $form);
         $formulario = $form->retorna_form('Cadastrar');
@@ -241,7 +241,7 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
         self::mysql_AtualizaValores($campos, $proposta);
 
         // edicao de propostas
-        $form = new \Framework\Classes\Form('form_Sistema_AdminC_PropostaEdit','comercio_certificado/Proposta/Propostas_Edit2/'.$id.'/'.$cliente.'/','formajax');
+        $form = new \Framework\Classes\Form('form_Sistema_AdminC_PropostaEdit', 'comercio_certificado/Proposta/Propostas_Edit2/'.$id.'/'.$cliente.'/', 'formajax');
         \Framework\App\Controle::Gerador_Formulario($campos, $form);
         $formulario = $form->retorna_form('Alterar Proposta');
         // Json

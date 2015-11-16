@@ -15,7 +15,7 @@ final Class Predial_Bloco_Apart_DAO extends Framework\App\Dao
     // Padrao é true, com false, a tabela nao é transformada em maiuscula
     protected static $aceita_config         = false;
     // Padrao é false, ou array com os campos que nao aceita
-    protected static $campos_naoaceita_config  = Array('email','email2');
+    protected static $campos_naoaceita_config  = Array('email', 'email2');
     
     protected static $objetocarregado     = false;     protected static $mysql_colunas       = false;     protected static $mysql_outside       = Array();     protected static $mysql_inside        = Array(); public function __construct() {  parent::__construct(); } public static function Get_Nome() {
         return MYSQL_PREDIAL_BLOCO_APART;

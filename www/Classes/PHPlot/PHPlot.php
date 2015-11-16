@@ -2573,7 +2573,7 @@ class PHPlot
             } else {
                 // Locale information not available.
                 $this->decimal_point = '.';
-                $this->thousands_sep = ',';
+                $this->thousands_sep = ', ';
             }
         }
         return number_format($number, $decimals, $this->decimal_point, $this->thousands_sep);

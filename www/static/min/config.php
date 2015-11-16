@@ -1,7 +1,7 @@
 <?php
 // Framework
 define('DS',  DIRECTORY_SEPARATOR);
-define('US',  '/'); // Divisor de URL
+define('US', '/'); // Divisor de URL
 define('ROOT_PADRAO',  realpath(dirname(__FILE__)). DS);
 define('CACHE_PATH',        ROOT_PADRAO.'Cache');
 

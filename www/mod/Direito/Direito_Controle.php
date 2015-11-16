@@ -28,7 +28,7 @@ class Direito_Controle extends \Framework\App\Controle
             if ($imprimir!='false') {
                 // Cria Tabela Estatica
                 $tabela = new \Framework\Classes\Tabela();
-                $tabela->addcabecario(array('Data','Autor / Reu','Comarca / Vara','Fases','Dias em Atraso')); 
+                $tabela->addcabecario(array('Data', 'Autor / Reu', 'Comarca / Vara', 'Fases', 'Dias em Atraso')); 
             } else {
                 // Cria Tabela Dinamica
                 $tabela = Array();

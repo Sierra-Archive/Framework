@@ -29,9 +29,9 @@ class comercio_ProdutoModelo extends comercio_Modelo
         $_Modelo = &$Registro->_Modelo;
         $retirada = $_Modelo->db->Sql_Select('Comercio_Produto_Estoque_Reduzir',Array('id'=>$motivoid),1);
         if ($retirada===false) {
-            return Array('Redução Não existente','Não existe');
+            return Array('Redução Não existente', 'Não existe');
         }
-        return Array('Redução de Estoque','Cadastrado por #'.$retirada->log_user_add);
+        return Array('Redução de Estoque', 'Cadastrado por #'.$retirada->log_user_add);
     }
     public function Produtos() {
         // Table's primary key
@@ -108,7 +108,7 @@ class comercio_ProdutoModelo extends comercio_Modelo
         
         ++$numero;
         eval('$function = function( $d, $row ) { $html = \'\'; '.$function.' return $html; };');       
-        $columns[] = array( 'db' => 'id',            'dt' => $numero,
+        $columns[] = array( 'db' => 'id', 'dt' => $numero,
             'formatter' => $function
         ); //'Funções';
 

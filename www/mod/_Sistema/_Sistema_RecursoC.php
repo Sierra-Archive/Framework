@@ -19,7 +19,7 @@ class _Sistema_RecursoControle extends _Sistema_Controle
      * @return booleanReferenceError: inArray is not defined
 	
 
-$('#produtocontrolador1 select').attr('id','produto1');
+$('#produtocontrolador1 select').attr('id', 'produto1');
 
 	
 
@@ -92,7 +92,7 @@ $('#produtocontrolador1 select').attr('id','produto1');
     }
     public function Valida_Cep($cep=false,$campos=false) {
         
-        $cep = str_replace(Array('-','.'), Array('',''), trim($cep));
+        $cep = str_replace(Array('-', '.'), Array('', ''), trim($cep));
         if (strlen($cep)!==8 || !is_numeric($cep)) {
             // CEP INVALIDO
             $mensagens = array(
@@ -169,7 +169,7 @@ $('#produtocontrolador1 select').attr('id','produto1');
     }
     public function Valida_CPF($cpf=false,$campos=false) {
         $info_cpf = $cpf; //$cpf;
-        $cpf = (int) str_replace(Array('.',',','-'), Array('','',''), $cpf/*$cpf*/);
+        $cpf = (int) str_replace(Array('.', ',', '-'), Array('', '', ''), $cpf/*$cpf*/);
         $this->_Visual->Json_Info_Update('Historico', false);
         
         $invalido = false;
@@ -313,7 +313,7 @@ $('#produtocontrolador1 select').attr('id','produto1');
             );
         }
         if ($campos!==false && trim($campos)!=='' && !is_int($campos)) {
-            $campos = \explode(',', $campos);
+            $campos = \explode(', ', $campos);
             foreach($campos as &$valor) {
                 if (strpos('=',$valor)===false) {
                     continue;
@@ -339,7 +339,7 @@ $('#produtocontrolador1 select').attr('id','produto1');
     
     public function Valida_CNPJ($cnpj=false,$campos=false) {
         $info_cnpj = $cnpj;
-        $cnpj = (int) str_replace(Array('.',',','-'), Array('','',''), $cnpj);
+        $cnpj = (int) str_replace(Array('.', ',', '-'), Array('', '', ''), $cnpj);
         $this->_Visual->Json_Info_Update('Historico', false);
         
         
@@ -366,7 +366,7 @@ $('#produtocontrolador1 select').attr('id','produto1');
                 return false;
             }
             $cep_num = $xml->CEP;
-            $cep_num = (int) str_replace(Array('.',',','-'), Array('','',''), $cep_num);
+            $cep_num = (int) str_replace(Array('.', ',', '-'), Array('', '', ''), $cep_num);
             $cons_cep = $this->_Modelo->db->Sql_Select('Universal_Vivo_Cep',Array('cep'=>$cep_num),1);
 
             if ($cons_cep!==false) {
@@ -405,7 +405,7 @@ $('#produtocontrolador1 select').attr('id','produto1');
         }
         
         if ($campos!==false) {
-            $campos = explode(',', $campos);
+            $campos = explode(', ', $campos);
             foreach($campos as &$valor) {
                 list($camada,$value) = explode('=', $valor);
                 if (isset($sql_cnpj->$value)) {

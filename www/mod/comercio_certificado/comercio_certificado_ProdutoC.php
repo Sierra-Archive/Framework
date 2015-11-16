@@ -106,7 +106,7 @@ class comercio_certificado_ProdutoControle extends comercio_certificado_Controle
         $campos = Comercio_Produto_DAO::Get_Colunas();
         self::Retirar_Nao_necessarios($campos);
         // Carrega formulario
-        $form = new \Framework\Classes\Form('form_Sistema_Admin_Produtos','comercio_certificado/Produto/Produtos_Add2/','formajax');
+        $form = new \Framework\Classes\Form('form_Sistema_Admin_Produtos', 'comercio_certificado/Produto/Produtos_Add2/', 'formajax');
         \Framework\App\Controle::Gerador_Formulario($campos, $form);
         $formulario = $form->retorna_form('Cadastrar');
         if ($direto===true) {
@@ -145,7 +145,7 @@ class comercio_certificado_ProdutoControle extends comercio_certificado_Controle
         self::mysql_AtualizaValores($campos, $produto);
 
         // edicao de produtos
-        $form = new \Framework\Classes\Form('form_Sistema_AdminC_ProdutoEdit','comercio_certificado/Produto/Produtos_Edit2/'.$id.'/','formajax');
+        $form = new \Framework\Classes\Form('form_Sistema_AdminC_ProdutoEdit', 'comercio_certificado/Produto/Produtos_Edit2/'.$id.'/', 'formajax');
         \Framework\App\Controle::Gerador_Formulario($campos, $form);
         $formulario = $form->retorna_form('Alterar Produto');
         // Json
@@ -287,20 +287,20 @@ class comercio_certificado_ProdutoControle extends comercio_certificado_Controle
                 Array('idproduto'=>$produtos),0,'id'
         );
         // Carrega Formulario
-        $botao = $this->_Visual->Tema_Elementos_Btn('Superior',Array('Add','#','return inputadd();'));
-        $formulario = new \Framework\Classes\Form('Formulario_de_Auditorias','comercio_certificado/Produto/Auditorias_Modificar/'.$produtos,'formajax');
+        $botao = $this->_Visual->Tema_Elementos_Btn('Superior',Array('Add', '#', 'return inputadd();'));
+        $formulario = new \Framework\Classes\Form('Formulario_de_Auditorias', 'comercio_certificado/Produto/Auditorias_Modificar/'.$produtos,'formajax');
         $formulario->addtexto('<span id="Formulario_de_Auditorias_Input">');
         if ($auditorias===false) {
-            $input = \Framework\App\Sistema_Funcoes::HTML_min($formulario->Input_Novo('Auditoria 1', 'auditoria[]', 0, 'text', 11, '','(Meses)'));
+            $input = \Framework\App\Sistema_Funcoes::HTML_min($formulario->Input_Novo('Auditoria 1', 'auditoria[]', 0, 'text', 11, '', '(Meses)'));
         } else {
             $i      = 0 ;
             foreach($auditorias as $indice=>&$valor) {
                 if ($valor->meses!='' && $valor->meses!=0 && $valor->meses!=NULL) {
                     if ($i==0) {
-                        $input = \Framework\App\Sistema_Funcoes::HTML_min($formulario->Input_Novo('Auditoria '.($i+1), 'auditoria[]', $valor->meses, 'text', 11, '','(Meses)'));
+                        $input = \Framework\App\Sistema_Funcoes::HTML_min($formulario->Input_Novo('Auditoria '.($i+1), 'auditoria[]', $valor->meses, 'text', 11, '', '(Meses)'));
                         $input = str_replace(Array('value="4"'), Array('value="0"'), $input);
                     } else {
-                        $formulario->Input_Novo('Auditoria '.($i+1), 'auditoria[]', $valor->meses, 'text', 11, '','(Meses)');
+                        $formulario->Input_Novo('Auditoria '.($i+1), 'auditoria[]', $valor->meses, 'text', 11, '', '(Meses)');
                     }
                     ++$i;
                 } else {
@@ -313,7 +313,7 @@ class comercio_certificado_ProdutoControle extends comercio_certificado_Controle
         $html = $formulario->retorna_form('Salvar');
         $html = str_replace(Array('col-sm-12'), Array('col-sm-8'), $html);
         // HTML EXTRA PARA ADD CAMPOS EXTRAS
-        $input = str_replace(Array('1:','col-sm-12'), Array('\'+quant+\':','col-sm-8'), $input);
+        $input = str_replace(Array('1:', 'col-sm-12'), Array('\'+quant+\':', 'col-sm-8'), $input);
         $html =   $botao.$html.'<script> function inputadd() {'.
                             'var quant = 1+$("#Formulario_de_Auditorias_Input input").size();'.
                             'if (quant>=10) $("#produtos_auditorias > .widget-body > .clearfix").hide();'.

@@ -98,10 +98,10 @@ class comercio_servicos_InstalacaoControle extends comercio_servicos_Controle
 
         $this->_Visual->Show_Tabela_DataTable_Massiva($tabela_colunas,'comercio_servicos/Instalacao/Btu');
         $titulo = 'Listagem de Btu / Equipamento';
-        $this->_Visual->Bloco_Unico_CriaJanela($titulo.' (<span id="DataTable_Contador">0</span>)','',10,Array("link"=>"comercio_servicos/Instalacao/Btu_Add",'icon'=>'add','nome'=>'Adicionar Btu / Equipamento'));
+        $this->_Visual->Bloco_Unico_CriaJanela($titulo.' (<span id="DataTable_Contador">0</span>)', '',10,Array("link"=>"comercio_servicos/Instalacao/Btu_Add",'icon'=>'add', 'nome'=>'Adicionar Btu / Equipamento'));
         
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Administrar Btu / Equipamento');
+        $this->_Visual->Json_Info_Update('Titulo', 'Administrar Btu / Equipamento');
     }
     /**
      * 
@@ -219,7 +219,7 @@ class comercio_servicos_InstalacaoControle extends comercio_servicos_Controle
 
         $this->_Visual->Show_Tabela_DataTable_Massiva($tabela_colunas,'comercio_servicos/Instalacao/Suporte');
         $titulo = __('Listagem de Suportes');
-        $this->_Visual->Bloco_Unico_CriaJanela($titulo.' (<span id="DataTable_Contador">0</span>)','',10,Array("link"=>"comercio_servicos/Instalacao/Suporte_Add",'icon'=>'add','nome'=>'Adicionar Suporte'));
+        $this->_Visual->Bloco_Unico_CriaJanela($titulo.' (<span id="DataTable_Contador">0</span>)', '',10,Array("link"=>"comercio_servicos/Instalacao/Suporte_Add",'icon'=>'add', 'nome'=>'Adicionar Suporte'));
         
         //Carrega Json
         $this->_Visual->Json_Info_Update('Titulo', __('Administrar Suportes'));

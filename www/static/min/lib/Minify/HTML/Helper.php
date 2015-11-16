@@ -119,7 +119,7 @@ class Minify_HTML_Helper {
             }
             if (is_file($this->groupsConfigFile)) {
                 $gc = (require $this->groupsConfigFile);
-                $keys = explode(',', $key);
+                $keys = explode(', ', $key);
                 foreach ($keys as $key) {
                     if (isset($gc[$key])) {
                         $this->_lastModified = self::getLastModified($gc[$key], $this->_lastModified);
@@ -204,7 +204,7 @@ class Minify_HTML_Helper {
             ++$pos;
         }
         $base = preg_replace('@[^/]+$@', '', $base);
-        $uri = $minRoot . 'f=' . implode(',', $paths);
+        $uri = $minRoot . 'f=' . implode(', ', $paths);
         
         if (substr($base, -1) === '/') {
             // we have a base dir!
@@ -214,7 +214,7 @@ class Minify_HTML_Helper {
                 $basedPaths[$i] = substr($paths[$i], strlen($base));
             }
             $base = substr($base, 0, strlen($base) - 1);
-            $bUri = $minRoot . 'b=' . $base . '&f=' . implode(',', $basedPaths);
+            $bUri = $minRoot . 'b=' . $base . '&f=' . implode(', ', $basedPaths);
 
             $uri = strlen($uri) < strlen($bUri)
                 ? $uri

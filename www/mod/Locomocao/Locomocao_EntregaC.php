@@ -28,7 +28,7 @@ class Locomocao_EntregaControle extends Locomocao_Controle
         $this->_Visual->Show_Tabela_DataTable_Massiva($tabela_colunas,'Locomocao/Entrega/Entregas');
 
         $titulo = __('Listagem de Entregas').' (<span id="DataTable_Contador">0</span>)';
-        $bt_add = Array("link"=>"Locomocao/Entrega/Entregas_Add",'icon'=>'add','nome'=>__('Adicionar Entrega'));
+        $bt_add = Array("link"=>"Locomocao/Entrega/Entregas_Add",'icon'=>'add', 'nome'=>__('Adicionar Entrega'));
         if ($tipobloco==='Unico') {
             $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',10,$bt_add);
         } else if ($tipobloco==='Maior') {
@@ -281,7 +281,7 @@ class Locomocao_EntregaControle extends Locomocao_Controle
         
         if (isset($_POST['filial_saida']) && $_POST['filial_saida']!=='') {
             $filial_saida = (int) $_POST['filial_saida'];
-            $filial_saida_registro = $this->_Modelo->db->Sql_Select('Sistema_Filial','{sigla}id=\''.$filial_saida.'\'',1);
+            $filial_saida_registro = $this->_Modelo->db->Sql_Select('Sistema_Filial', '{sigla}id=\''.$filial_saida.'\'',1);
             if ($filial_saida_registro===false) {
                 // Json
                 $conteudo = array(
@@ -310,7 +310,7 @@ class Locomocao_EntregaControle extends Locomocao_Controle
             if ($filial_saida===$filial_chegada) {
                 $filial_chegada_registro = &$filial_saida_registro;
             } else {
-                $filial_chegada_registro = $this->_Modelo->db->Sql_Select('Sistema_Filial','{sigla}id=\''.$filial_saida.'\'',1);
+                $filial_chegada_registro = $this->_Modelo->db->Sql_Select('Sistema_Filial', '{sigla}id=\''.$filial_saida.'\'',1);
             }
             if ($filial_chegada_registro===false) {
                 // Json
@@ -343,7 +343,7 @@ class Locomocao_EntregaControle extends Locomocao_Controle
         } else {
             // Inicia Para Primeiro Ponto
             $ponto_bairro = (int) $_POST['bairro'];
-            $ponto_bairro_registro = $this->_Modelo->db->Sql_Select('Sistema_Local_Bairro','{sigla}id=\''.$ponto_bairro.'\'',1);
+            $ponto_bairro_registro = $this->_Modelo->db->Sql_Select('Sistema_Local_Bairro', '{sigla}id=\''.$ponto_bairro.'\'',1);
             $dados = Locomocao_Controle::Retorna_Distancia(
                     $filial_saida_registro->pais2,
                     $filial_saida_registro->estado2,
@@ -370,7 +370,7 @@ class Locomocao_EntregaControle extends Locomocao_Controle
             
             // Primeiro Ponto para Final
             $ponto_bairro = (int) $_POST['bairro'];
-            $ponto_bairro_registro = $this->_Modelo->db->Sql_Select('Sistema_Local_Bairro','{sigla}id=\''.$ponto_bairro.'\'',1);
+            $ponto_bairro_registro = $this->_Modelo->db->Sql_Select('Sistema_Local_Bairro', '{sigla}id=\''.$ponto_bairro.'\'',1);
             $dados = Locomocao_Controle::Retorna_Distancia(
                     $ponto_bairro_registro->pais2,
                     $ponto_bairro_registro->estado2,

@@ -50,8 +50,8 @@ class comercio_MarcaModelo extends comercio_Modelo
                 'formatter' => function( $d, $row ) {
                     return '#'.$d;
                 }),
-            array( 'db' => 'nome',    'dt' => 1 ),
-            array( 'db' => 'id',            'dt' => 2,
+            array( 'db' => 'nome', 'dt' => 1 ),
+            array( 'db' => 'id', 'dt' => 2,
                 'formatter' => $funcao)
         );
 

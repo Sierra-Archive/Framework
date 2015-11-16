@@ -127,7 +127,7 @@ class usuario_Principal implements \Framework\PrincipalInterface
             
             
             
-            $usuario_qnt = $Modelo->db->Sql_Contar('Usuario','grupo!=4 AND ativado=1');
+            $usuario_qnt = $Modelo->db->Sql_Contar('Usuario', 'grupo!=4 AND ativado=1');
             
             // Adiciona Widget a Pagina Inicial
             \Framework\App\Visual::Layoult_Home_Widgets_Add(
@@ -147,7 +147,7 @@ class usuario_Principal implements \Framework\PrincipalInterface
         if (\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Admin_Cliente')) {
             // Clientes
             $inner_join = 'INNER JOIN '.MYSQL_SIS_GRUPO.' SG ON U.grupo=SG.id';
-            $cliente_qnt = $Modelo->db->Sql_Contar('Usuario','SG.categoria=\''.CFG_TEC_CAT_ID_CLIENTES.'\'',$inner_join);
+            $cliente_qnt = $Modelo->db->Sql_Contar('Usuario', 'SG.categoria=\''.CFG_TEC_CAT_ID_CLIENTES.'\'',$inner_join);
             // Adiciona Widget a Pagina Inicial
             \Framework\App\Visual::Layoult_Home_Widgets_Add(
                 \Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Cliente_nome'), 

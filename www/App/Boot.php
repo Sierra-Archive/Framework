@@ -70,7 +70,7 @@ class Boot {
             // Controle de Erros
             ini_set('error_reporting', 'E_ALL & ~E_NOTICE');
             ini_set('display_errors', 'Off');
-            ini_set('memory_limit','512M');
+            ini_set('memory_limit', '512M');
             ini_set('log_errors', 1);
             ini_set('error_log', 'my_file.log');
         }*/

@@ -55,11 +55,11 @@ class usuario_mensagem_OrigemControle extends usuario_mensagem_Controle
         self::Endereco_Origem(false);
        
         $tabela = Array(
-            'Id','Nome','Funções'
+            'Id', 'Nome', 'Funções'
         );
         $this->_Visual->Show_Tabela_DataTable_Massiva($tabela,'usuario_mensagem/Origem/Origens');
         $titulo = __('Listagem de Origens').' (<span id="DataTable_Contador">0</span>)';  //
-        $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',10,Array("link"=>"usuario_mensagem/Origem/Origens_Add",'icon'=>'add','nome'=>'Adicionar Origem'));
+        $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',10,Array("link"=>"usuario_mensagem/Origem/Origens_Add",'icon'=>'add', 'nome'=>'Adicionar Origem'));
         
         //Carrega Json
         $this->_Visual->Json_Info_Update('Titulo', __('Administrar Origens'));

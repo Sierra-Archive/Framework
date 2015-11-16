@@ -29,9 +29,9 @@ class comercio_EstoqueModelo extends comercio_Modelo
         $_Modelo = &$Registro->_Modelo;
         $retirada = $_Modelo->db->Sql_Select('Comercio_Fornecedor_Material',Array('id'=>$motivoid),1);
         if ($retirada===false) {
-            return Array('Entrada Não existente','Não existe');
+            return Array('Entrada Não existente', 'Não existe');
         }
-        return Array('Entrada de Nota Fiscal','Fornecedor '.$retirada->fornecedor2);
+        return Array('Entrada de Nota Fiscal', 'Fornecedor '.$retirada->fornecedor2);
     }
     /**
      * 
@@ -42,13 +42,13 @@ class comercio_EstoqueModelo extends comercio_Modelo
     static function Financeiro_Motivo_Exibir($motivoid) {
         $motivoid = (int) $motivoid;
         if ($motivoid===0) {
-            return Array('Compra não existe no banco de dados.','Não existe');
+            return Array('Compra não existe no banco de dados.', 'Não existe');
         }
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Modelo = &$Registro->_Modelo;
         $material = $_Modelo->db->Sql_Select('Comercio_Fornecedor_Material',Array('id'=>$motivoid),1);
         if ($material===false) {
-            return Array('Compra não existe no banco de dados.','Não existe');
+            return Array('Compra não existe no banco de dados.', 'Não existe');
         }
         return Array('Compra de Nota Fiscal '.$material->documento,'Fornecedor '.$material->fornecedor2);
     }
@@ -102,7 +102,7 @@ class comercio_EstoqueModelo extends comercio_Modelo
                 ++$i;*/
         $columns = array(
             array( 'db' => 'numero', 'dt' => 0 ),
-            array( 'db' => 'documento',  'dt' => 1 ,
+            array( 'db' => 'documento', 'dt' => 1 ,
                 'formatter' => function( $d, $row ) {
                     if ($d==0) {
                         return 'Nfe';
@@ -112,10 +112,10 @@ class comercio_EstoqueModelo extends comercio_Modelo
                         return 'Recibo';
                     }
                 }),
-            array( 'db' => 'fornecedor2',   'dt' => 2 ),
-            array( 'db' => 'data',     'dt' => 3 ),
-            array( 'db' => 'valor',     'dt' => 4 ),
-            array( 'db' => 'id',     'dt' => 5,
+            array( 'db' => 'fornecedor2', 'dt' => 2 ),
+            array( 'db' => 'data', 'dt' => 3 ),
+            array( 'db' => 'valor', 'dt' => 4 ),
+            array( 'db' => 'id', 'dt' => 5,
                 'formatter' => $funcao)
             /*array(
                 'db'        => 'start_date',

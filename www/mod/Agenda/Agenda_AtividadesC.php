@@ -43,7 +43,7 @@ class Agenda_AtividadesControle extends Agenda_Controle
     static function Atividades_Abertas($tipo='Unico') {     
         $i = 0;
         // Botao Add
-        $atividades = $Modelo->db->Sql_Select('Agenda_Atividade_Hora','AAH.dt_fim=\'0000-00-00 00:00:00\'');
+        $atividades = $Modelo->db->Sql_Select('Agenda_Atividade_Hora', 'AAH.dt_fim=\'0000-00-00 00:00:00\'');
         if ($atividades!==false && !empty($atividades)) {
             
             if (is_object($atividades)) $atividades = Array(0=>$atividades);

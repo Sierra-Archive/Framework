@@ -303,7 +303,7 @@ class predial_SalaoControle extends predial_Controle
                 $this->_Visual->Javascript_Executar('Sierra.Control_Layoult_Calendario_Intervalo(\'data_inicial\',\'data_final\',\''.$datainicial.'\',\''.$datafinal.'\');');
 
                 // formulario
-                $form = new \Framework\Classes\Form('adminformreservasagenda','usuario_reserva/Listar/agendamento_inserir/','formajax');
+                $form = new \Framework\Classes\Form('adminformreservasagenda', 'usuario_reserva/Listar/agendamento_inserir/', 'formajax');
                 usuario_reserva_ListarControle::agendamento_form($this, $this->_Visual, $form, $idreserva,$nomereserva,$datainicial,$datafinal,$reserva['franquia'],0);
                 $formulario = $form->retorna_form();
                 $conteudo = array(
@@ -340,13 +340,13 @@ class predial_SalaoControle extends predial_Controle
         
        
        // select de pessoas
-        $form->Select_Novo('Reserva','selectreservas','selectreservas');
+        $form->Select_Novo('Reserva', 'selectreservas', 'selectreservas');
         $form->Select_Opcao($nomereserva,$idreserva,1);
         $form->Select_Fim();
-        $form->Input_Novo('Data Inicial','data_inicial',$datainicial,'text', 10, 'obrigatorio','',true); 
-        $form->Input_Novo('Data Final','data_final',$datafinal,'text', 10, 'obrigatorio','',true); 
-        $form->Input_Novo('Franquia','franquia','R$'.number_format($franquia, 2, ',', '.'),'text', 30, 'inactive','',true);  
-        $form->Input_Novo('Valor','valor','R$'.number_format($valor, 2, ',', '.'),'text', 30, 'inactive','',true); 
+        $form->Input_Novo('Data Inicial', 'data_inicial',$datainicial,'text', 10, 'obrigatorio', '',true); 
+        $form->Input_Novo('Data Final', 'data_final',$datafinal,'text', 10, 'obrigatorio', '',true); 
+        $form->Input_Novo('Franquia', 'franquia', 'R$'.number_format($franquia, 2, ', ', '.'),'text', 30, 'inactive', '',true);  
+        $form->Input_Novo('Valor', 'valor', 'R$'.number_format($valor, 2, ', ', '.'),'text', 30, 'inactive', '',true); 
     }
      /**
      * Inserir

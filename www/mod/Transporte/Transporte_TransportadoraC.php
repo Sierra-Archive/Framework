@@ -46,7 +46,7 @@ class Transporte_TransportadoraControle extends Transporte_Controle
     public function Visualizar($id,$export=false) {
         
         
-        $transportadora = $this->_Modelo->db->Sql_Select('Transporte_Transportadora','TT.id=\''.((int) $id).'\'',1);
+        $transportadora = $this->_Modelo->db->Sql_Select('Transporte_Transportadora', 'TT.id=\''.((int) $id).'\'',1);
         
         $this->Gerador_Visualizar_Unidade($transportadora, 'Visualizar Transportadora #'.$id);
         
@@ -107,7 +107,7 @@ class Transporte_TransportadoraControle extends Transporte_Controle
         if ($retornar==='false') $retornar = false;
         // Verifica se Existe Conexao, se nao tiver abre o adicionar conexao, se nao, abre a pasta!
         $Registro = &\Framework\App\Registro::getInstacia();
-        $resultado = $Registro->_Modelo->db->Sql_Select('Transporte_Transportadora','{sigla}usuario=\''.$Registro->_Acl->Usuario_GetID().'\'',1);
+        $resultado = $Registro->_Modelo->db->Sql_Select('Transporte_Transportadora', '{sigla}usuario=\''.$Registro->_Acl->Usuario_GetID().'\'',1);
         if (is_object($resultado)) {
             $existe = true;
         }
@@ -171,7 +171,7 @@ class Transporte_TransportadoraControle extends Transporte_Controle
        return \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos,false,'html',false);
     }
     public function Painel_Transportadora_Add2($camada) {
-        $resultado = $this->_Modelo->db->Sql_Select('Transporte_Transportadora','{sigla}usuario=\''.$this->_Acl->Usuario_GetID().'\'',1);
+        $resultado = $this->_Modelo->db->Sql_Select('Transporte_Transportadora', '{sigla}usuario=\''.$this->_Acl->Usuario_GetID().'\'',1);
         if (is_object($resultado)) {
             self::Painel_Transportadora($camada,false);
             return true;

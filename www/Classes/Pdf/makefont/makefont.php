@@ -245,7 +245,7 @@ function MakeWidthArray($widths)
 			$s .= "chr($c)";
 		$s .= '=>'.$widths[$c];
 		if ($c<255)
-			$s .= ',';
+			$s .= ', ';
 		if (($c+1)%22==0)
 			$s .= "\n\t";
 	}

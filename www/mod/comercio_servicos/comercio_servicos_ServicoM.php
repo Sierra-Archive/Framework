@@ -62,7 +62,7 @@ class comercio_servicos_ServicoModelo extends comercio_servicos_Modelo
         // Funcoes        
         ++$numero;
         eval('$function = function( $d, $row ) { $html = \'\'; '.$function.' return $html; };');       
-        $columns[] = array( 'db' => 'id',            'dt' => $numero,
+        $columns[] = array( 'db' => 'id', 'dt' => $numero,
             'formatter' => $function
         ); //'Funções';
                 

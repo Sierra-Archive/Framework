@@ -64,9 +64,9 @@ class Financeiro_ListarControle extends Financeiro_Controle
                 $tabela['Referência'][$i] = $valor['nome'];
                 $tabela['Data'][$i] = date_replace($valor['log_date_add'], "d/m/y | H:m");
                 if ($valor['positivo']==1) {
-                    $tabela['Valor'][$i] = '<font color="#0000FF">+ R$ '.number_format($valor['valor'], 2, ',', '.').'</font>';
+                    $tabela['Valor'][$i] = '<font color="#0000FF">+ R$ '.number_format($valor['valor'], 2, ', ', '.').'</font>';
                 } else {
-                    $tabela['Valor'][$i] = '<font color="#FF0000">- RR$$ '.number_format($valor['valor'], 2, ',', '.').'</font>';
+                    $tabela['Valor'][$i] = '<font color="#FF0000">- RR$$ '.number_format($valor['valor'], 2, ', ', '.').'</font>';
                 }
                 ++$i;
             }
@@ -122,8 +122,8 @@ class Financeiro_ListarControle extends Financeiro_Controle
         
     }
     static function sacar_formcadastro() {
-        $form = new \Framework\Classes\Form('financeiro_sacar_form','Financeiro/Listar/sacar_inserir/','formajax');
-        $form->Input_Novo(__('Quantia a Sacar (Em Reais)'),'sacar_quantia','','text', 30, 'obrigatorio', '', false,'','','Numero','', false);
+        $form = new \Framework\Classes\Form('financeiro_sacar_form', 'Financeiro/Listar/sacar_inserir/', 'formajax');
+        $form->Input_Novo(__('Quantia a Sacar (Em Reais)'),'sacar_quantia', '', 'text', 30, 'obrigatorio', '', false,'', '', 'Numero', '', false);
         
         $formulario = $form->retorna_form('Realizar Saque');
 
@@ -211,9 +211,9 @@ class Financeiro_ListarControle extends Financeiro_Controle
         
     }
     static function transferencia_formcadastro() {
-        $form = new \Framework\Classes\Form('financeiro_transferencia_form','Financeiro/Listar/transferencia_inserir/','formajax');
-        $form->Input_Novo('Login do Usuario','login','','text', 30, 'obrigatorio');
-        $form->Input_Novo('Quantia a Transferir (Em Reais)','transferir_quantia','','text', 30, 'obrigatorio', '', false,'','','Numero','', false);
+        $form = new \Framework\Classes\Form('financeiro_transferencia_form', 'Financeiro/Listar/transferencia_inserir/', 'formajax');
+        $form->Input_Novo('Login do Usuario', 'login', '', 'text', 30, 'obrigatorio');
+        $form->Input_Novo('Quantia a Transferir (Em Reais)', 'transferir_quantia', '', 'text', 30, 'obrigatorio', '', false,'', '', 'Numero', '', false);
         
         $formulario = $form->retorna_form('Transferir Quantia');
 

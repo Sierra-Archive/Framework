@@ -100,7 +100,7 @@ class Agenda_PastaControle extends Agenda_Controle
         $tabela_colunas[] = __('Obs');
         $tabela_colunas[] = __('Funções');
 
-        $Visual->Show_Tabela_DataTable_Massiva($tabela_colunas,'Agenda/Pasta/Pastas/','',true,false);
+        $Visual->Show_Tabela_DataTable_Massiva($tabela_colunas,'Agenda/Pasta/Pastas/', '',true,false);
         
         $titulo = __('Arquivo de Pastas').' (<span id="DataTable_Contador">0</span>)';
         if ($tipo==='Unico') {

@@ -38,10 +38,10 @@
   // However notice that changing this value, may have impact on existing
   // scripts, using space separated filenames.
   // Recommanded values for compatibility with older versions :
-  //define( 'PCLZIP_SEPARATOR',  ' ' );
+  //define( 'PCLZIP_SEPARATOR', ' ' );
   // Recommanded values for smart separation of filenames.
   if (!defined('PCLZIP_SEPARATOR')) {
-    define( 'PCLZIP_SEPARATOR',  ', ' );
+    define( 'PCLZIP_SEPARATOR', ', ' );
   }
 
   // ----- Error configuration
@@ -60,10 +60,10 @@
   //       - MUST BE terminated by a '/'.
   //       - MUST be a valid, already created directory
   //       Samples :
-  // define( 'PCLZIP_TEMPORARY_DIR',  '/temp/' );
-  // define( 'PCLZIP_TEMPORARY_DIR',  'C:/Temp/' );
+  // define( 'PCLZIP_TEMPORARY_DIR', '/temp/' );
+  // define( 'PCLZIP_TEMPORARY_DIR', 'C:/Temp/' );
   if (!defined('PCLZIP_TEMPORARY_DIR')) {
-    define( 'PCLZIP_TEMPORARY_DIR',  '' );
+    define( 'PCLZIP_TEMPORARY_DIR', '' );
   }
 
   // ----- Optional threshold ratio for use of temporary files
@@ -831,7 +831,7 @@
   // Parameters :
   //   $p_index : A single index (integer) or a string of indexes of files to
   //              extract. The form of the string is "0,4-6,8-12" with only numbers
-  //              and '-' for range or ',' to separate ranges. No spaces or ';'
+  //              and '-' for range or ', ' to separate ranges. No spaces or ';'
   //              are allowed.
   //   $p_path : Path where the files and directories are to be extracted
   //   $p_remove_path : First part ('root' part) of the memorized path

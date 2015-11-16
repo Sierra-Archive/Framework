@@ -223,9 +223,9 @@ class social_personasControle extends social_Controle
         
         
        
-        $form = new \Framework\Classes\Form('adminformsocialend','social/social/social_inserir/','formajax');
-        $form->Input_Novo(__('Face Id'),'idface','','text', 21,'obrigatorio'); 
-        $form->Input_Novo(__('Nome'),'nome','','text', 30, 'obrigatorio'); 
+        $form = new \Framework\Classes\Form('adminformsocialend', 'social/social/social_inserir/', 'formajax');
+        $form->Input_Novo(__('Face Id'),'idface', '', 'text', 21,'obrigatorio'); 
+        $form->Input_Novo(__('Nome'),'nome', '', 'text', 30, 'obrigatorio'); 
               
         $formulario = $form->retorna_form(__('Salvar'));
         

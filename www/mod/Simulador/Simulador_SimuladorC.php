@@ -51,7 +51,7 @@ class Simulador_SimuladorControle extends Simulador_Controle
                 $texto = __('Ativado');
             }
             $tabela['Status'][$i]                   = '<span id="status'.$valor->id.'">'.$Visual->Tema_Elementos_Btn('Status'.$status     ,Array($texto        ,'Simulador/Simulador/Status/'.$valor->id.'/'    ,'')).'</span>';
-            $tabela['Funções'][$i]                  =   $Visual->Tema_Elementos_Btn('Personalizado' ,Array('Testar Simulador'    ,'Simulador/Simulador/Simuladores_Assistir/'.$valor->id.'/'    ,'','play','success')).
+            $tabela['Funções'][$i]                  =   $Visual->Tema_Elementos_Btn('Personalizado' ,Array('Testar Simulador'    ,'Simulador/Simulador/Simuladores_Assistir/'.$valor->id.'/'    ,'', 'play', 'success')).
                                                         $Visual->Tema_Elementos_Btn('Visualizar'    ,Array('Visualizar Perguntas do Simulador'    ,'Simulador/Pergunta/Perguntas/'.$valor->id.'/'    ,'')).
                                                         $Visual->Tema_Elementos_Btn('Editar'        ,Array('Editar Simulador'        ,'Simulador/Simulador/Simuladores_Edit/'.$valor->id.'/'    ,'')).
                                                         $Visual->Tema_Elementos_Btn('Deletar'       ,Array('Deletar Simulador'       ,'Simulador/Simulador/Simuladores_Del/'.$valor->id.'/'     ,'Deseja realmente deletar esse Simulador ?'));

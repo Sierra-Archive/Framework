@@ -30,7 +30,7 @@ class Texto
      * @version 0.2
      */
     public static function Transformar_Plural_Singular($nome) {
-        $nome = str_replace(Array('res ','s ','ões '), Array('r','','ão'), $nome.' ');
+        $nome = str_replace(Array('res ', 's ', 'ões '), Array('r', '', 'ão'), $nome.' ');
         return $nome;
     }
     /**

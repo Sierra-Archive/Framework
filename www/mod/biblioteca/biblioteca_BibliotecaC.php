@@ -165,7 +165,7 @@ class biblioteca_BibliotecaControle extends biblioteca_Controle
         // Processa Biblioteca
         list($titulo,$html,$i) = $this->Bibliotecas_Processar($raiz);
         $this->_Visual->Blocar('<span id="biblioteca_arquivos_mostrar">'.$html.'</span>');
-        $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',10,Array("link"=>"biblioteca/Biblioteca/Bibliotecas_Add",'icon'=>'add','nome'=>__('Adicionar Pasta')));
+        $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',10,Array("link"=>"biblioteca/Biblioteca/Bibliotecas_Add",'icon'=>'add', 'nome'=>__('Adicionar Pasta')));
         
         //Carrega Json
         $this->_Visual->Json_Info_Update('Titulo', __('Listagem de Biblíotecas'));
@@ -555,7 +555,7 @@ class biblioteca_BibliotecaControle extends biblioteca_Controle
         if ($retornar==='false') $retornar = false;
         // Verifica se Existe Conexao, se nao tiver abre o adicionar conexao, se nao, abre a pasta!
         $Registro = &\Framework\App\Registro::getInstacia();
-        $resultado = $Registro->_Modelo->db->Sql_Select('Biblioteca_Acesso','{sigla}motivo=\''.$motivo.'\' AND {sigla}motivoid=\''.$motivoid.'\'',1);
+        $resultado = $Registro->_Modelo->db->Sql_Select('Biblioteca_Acesso', '{sigla}motivo=\''.$motivo.'\' AND {sigla}motivoid=\''.$motivoid.'\'',1);
         if (is_object($resultado)) {
             $existe = true;
         }
@@ -604,7 +604,7 @@ class biblioteca_BibliotecaControle extends biblioteca_Controle
        return \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos,false,'html',false);
     }
     public function Biblioteca_Dinamica_Add2($motivo,$motivoid,$camada) {
-        $resultado = $this->_Modelo->db->Sql_Select('Biblioteca_Acesso','{sigla}motivo=\''.$motivo.'\' AND {sigla}motivoid=\''.$motivoid.'\'',1);
+        $resultado = $this->_Modelo->db->Sql_Select('Biblioteca_Acesso', '{sigla}motivo=\''.$motivo.'\' AND {sigla}motivoid=\''.$motivoid.'\'',1);
         if (is_object($resultado)) {
             biblioteca_BibliotecaControle::Biblioteca_Dinamica($motivo,$motivoid,$camada,false);
             return true;

@@ -213,7 +213,7 @@ class comercio_venda_CarrinhoControle extends comercio_venda_Controle
         // Puxa fornecedor e deleta
         $del1 = $this->_Modelo->db->Sql_Select('Comercio_Venda_Carrinho_Composicoes', Array('carrinho'=>$id));
         $del2      = $this->_Modelo->db->Sql_Select('Financeiro_Pagamento_Interno', Array('motivo' => 'comercio_venda_Carrinho', 'motivoid'=>$id));
-        $material = $this->_Modelo->db->Sql_Select('Comercio_Produto_Estoque', Array('motivo'=>'comercio_venda_Carrinho','motivoid'=>$id));
+        $material = $this->_Modelo->db->Sql_Select('Comercio_Produto_Estoque', Array('motivo'=>'comercio_venda_Carrinho', 'motivoid'=>$id));
         $sucesso1 =  $this->_Modelo->db->Sql_Delete($del1,true);
         $sucesso2 =  $this->_Modelo->db->Sql_Delete($del2,true);
         $sucesso3 =  $this->_Modelo->db->Sql_Delete($material,true);
@@ -293,7 +293,7 @@ class comercio_venda_CarrinhoControle extends comercio_venda_Controle
         }
 
         // Deleta Financeiro Anterior
-        $financeiro = $this->_Modelo->db->Sql_Select('Financeiro_Pagamento_Interno', Array('motivo'=>'comercio_venda_Carrinho','motivoid'=>$identificador->id));
+        $financeiro = $this->_Modelo->db->Sql_Select('Financeiro_Pagamento_Interno', Array('motivo'=>'comercio_venda_Carrinho', 'motivoid'=>$identificador->id));
         $sucesso3 =  $this->_Modelo->db->Sql_Delete($financeiro,true);
         // Se for Pago Gera Contas Pagas, se nao, gera contas a Receber
         if ($identificador->pago==1) {

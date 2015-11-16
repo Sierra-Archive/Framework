@@ -232,8 +232,8 @@ Class Sistema_Funcoes {
      * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
     public static function Url_Limpeza($url) {
-        $url = str_replace(Array('http://','https://'), Array('',''), $url);
-        $url = str_replace(Array('www.','www2.'), Array('',''), $url);
+        $url = str_replace(Array('http://', 'https://'), Array('', ''), $url);
+        $url = str_replace(Array('www.', 'www2.'), Array('', ''), $url);
         return $url;
     }
     /**
@@ -628,7 +628,7 @@ Class Sistema_Funcoes {
      * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
     public static function Tranf_Url_Https($url) {
-        return str_replace('http://','https://',$url);
+        return str_replace('http://', 'https://',$url);
     }
     /**
      * Transforma Distancia para Otimizado
@@ -682,7 +682,7 @@ Class Sistema_Funcoes {
         }
         return round(((float) 
             preg_replace("/[^0-9.]/", "", 
-                str_replace(Array(',','.','%A','%B'), Array('%A','%B','.',','), $real)
+                str_replace(Array(', ','.', '%A', '%B'), Array('%A', '%B', '.', ','), $real)
             )
         ),2);
     }
@@ -700,8 +700,8 @@ Class Sistema_Funcoes {
             return $float;
         }
         return (((float) $float)>=0
-            ?'R$'.number_format(((float) $float), 2, ',', '.'):
-            '<span class="text-error">- R$ '.number_format(((float) $float)*-1, 2, ',', '.').'</span>');
+            ?'R$'.number_format(((float) $float), 2, ', ', '.'):
+            '<span class="text-error">- R$ '.number_format(((float) $float)*-1, 2, ', ', '.').'</span>');
     }
     /**
      * Transforma Porcentagem em Decimal
@@ -721,7 +721,7 @@ Class Sistema_Funcoes {
         }
         return round(
             ((float) preg_replace("/[^0-9.]/", "", 
-                str_replace(Array(',','.','%A','%B'), Array('%A','%B','.',','), $porc)
+                str_replace(Array(', ','.', '%A', '%B'), Array('%A', '%B', '.', ','), $porc)
             ))
         /100,4);
     }
@@ -738,7 +738,7 @@ Class Sistema_Funcoes {
         if (strpos($float, ' %') !== false) {
             return $float;
         }
-        $porc = number_format((float) $float*100, 2, ',', '.');
+        $porc = number_format((float) $float*100, 2, ', ', '.');
         if ($porc<10) {
             return '0'.$porc.'%';
         }

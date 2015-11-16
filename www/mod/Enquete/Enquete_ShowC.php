@@ -62,7 +62,7 @@ class Enquete_ShowControle extends Enquete_Controle
             return $retorno;
         }
         // Puxa Form
-        $form = new \Framework\Classes\Form('Enquete_Show_Votar','Enquete/Show/Votar/'.$enquetes->id,'formajax','mini','vertical');// Add o Radio
+        $form = new \Framework\Classes\Form('Enquete_Show_Votar', 'Enquete/Show/Votar/'.$enquetes->id,'formajax', 'mini', 'vertical');// Add o Radio
         $form->Radio_Novo(
             '',
             'votar',

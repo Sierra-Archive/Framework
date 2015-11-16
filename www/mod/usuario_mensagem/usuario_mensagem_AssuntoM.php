@@ -46,13 +46,13 @@ class usuario_mensagem_AssuntoModelo extends usuario_mensagem_Modelo
         
         $columns = array(
             array( 'db' => 'setor2', 'dt' => 0),
-            array( 'db' => 'nome',   'dt' => 1),
-            array( 'db' => 'tempocli',    'dt' => 2 ,
+            array( 'db' => 'nome', 'dt' => 1),
+            array( 'db' => 'tempocli', 'dt' => 2 ,
                 'formatter' => function($d, $row) {
                     return $d.' horas';
                 }
             ),
-            array( 'db' => 'id',            'dt' => 3,
+            array( 'db' => 'id', 'dt' => 3,
                 'formatter' => $funcao
             )
         );

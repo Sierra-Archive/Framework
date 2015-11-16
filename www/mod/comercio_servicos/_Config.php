@@ -5,7 +5,7 @@ $config_Modulo = function () {
         'Descrição'                 =>  '',
         'System_Require'            =>  '3.1.0',
         'Version'                   =>  '3.1.1',
-        'Dependencias'              =>  Array('comercio','usuario'),
+        'Dependencias'              =>  Array('comercio', 'usuario'),
     );
 };
 $config_Menu = function () {

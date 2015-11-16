@@ -172,7 +172,7 @@ class usuario_Controle extends \Framework\App\Controle
                     $funcoes_qnt = 0;
                 }
                 ++$funcoes_qnt;
-                $tabela['Funções'][$i]     .=   $Visual->Tema_Elementos_Btn('Personalizado'   ,Array('Histórico'    ,'usuario/Admin/Usuarios_Comentario/'.$valor->id.$linkextra    ,'','file','inverse'),$perm_comentario);
+                $tabela['Funções'][$i]     .=   $Visual->Tema_Elementos_Btn('Personalizado'   ,Array('Histórico'    ,'usuario/Admin/Usuarios_Comentario/'.$valor->id.$linkextra    ,'', 'file', 'inverse'),$perm_comentario);
             }
             // Anexo de Usuario
             if (\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Anexo')) {
@@ -181,7 +181,7 @@ class usuario_Controle extends \Framework\App\Controle
                     $funcoes_qnt = 0;
                 }
                 ++$funcoes_qnt;
-                $tabela['Funções'][$i]     .=   $Visual->Tema_Elementos_Btn('Personalizado'   ,Array('Anexos'    ,'usuario/Anexo/Anexar/'.$valor->id.$linkextra    ,'','file','inverse'),$perm_anexo);
+                $tabela['Funções'][$i]     .=   $Visual->Tema_Elementos_Btn('Personalizado'   ,Array('Anexos'    ,'usuario/Anexo/Anexar/'.$valor->id.$linkextra    ,'', 'file', 'inverse'),$perm_anexo);
             }
             // Email para Usuario
             if (\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Admin_Email')) {
@@ -199,7 +199,7 @@ class usuario_Controle extends \Framework\App\Controle
                     $funcoes_qnt = 0;
                 }
                 ++$funcoes_qnt;
-                $tabela['Funções'][$i]     .=   $Visual->Tema_Elementos_Btn('Personalizado'   ,Array('Enviar email para Setor'    ,'usuario/Admin/Usuarios_Email/'.$valor->id.$linkextra.'/Setor/'    ,'','envelope','danger'),$perm_email);
+                $tabela['Funções'][$i]     .=   $Visual->Tema_Elementos_Btn('Personalizado'   ,Array('Enviar email para Setor'    ,'usuario/Admin/Usuarios_Email/'.$valor->id.$linkextra.'/Setor/'    ,'', 'envelope', 'danger'),$perm_email);
             }
             // Verifica se Possue Status e Mostra
             if ($usuario_Admin_Ativado_Listar!==false) {
@@ -273,7 +273,7 @@ class usuario_Controle extends \Framework\App\Controle
             $categoria = (int) $grupo[0];
             
             // Pega GRUPOS VALIDOS
-            $sql_grupos = $this->_Modelo->db->Sql_Select('Sistema_Grupo','categoria='.$categoria,0,'','id');
+            $sql_grupos = $this->_Modelo->db->Sql_Select('Sistema_Grupo', 'categoria='.$categoria,0,'', 'id');
             $grupos_id = Array();
             if (is_object($sql_grupos)) $sql_grupos = Array(0=>$sql_grupos);
             if ($sql_grupos!==false && !empty($sql_grupos)) {
@@ -286,9 +286,9 @@ class usuario_Controle extends \Framework\App\Controle
             
             // cria where de acordo com parametros
             if ($inverter) {
-                $where = 'grupo NOT IN ('.implode(',',$grupos_id).') AND ativado='.$ativado;
+                $where = 'grupo NOT IN ('.implode(', ',$grupos_id).') AND ativado='.$ativado;
             } else {
-                $where = 'grupo IN ('.implode(',',$grupos_id).') AND ativado='.$ativado;
+                $where = 'grupo IN ('.implode(', ',$grupos_id).') AND ativado='.$ativado;
             }
             
             if ($ativado===false) {
@@ -340,7 +340,7 @@ class usuario_Controle extends \Framework\App\Controle
         )));
         // Continua Resto
         //$this->_Visual->Blocar('<a title="Adicionar " class="btn btn-success lajax explicar-titulo" data-acao="" href="'.URL_PATH.'usuario/Admin/Usuarios_Add'.$linkextra.'">Adicionar novo '.Framework\Classes\Texto::Transformar_Plural_Singular($nomedisplay).'</a><div class="space15"></div>');
-        $usuario = $this->_Modelo->db->Sql_Select('Usuario',$where,0,'','id,grupo,foto,nome,razao_social,email,email2,telefone,telefone2,celular,celular1,celular2,celular3,ativado,log_date_add');
+        $usuario = $this->_Modelo->db->Sql_Select('Usuario',$where,0,'', 'id,grupo,foto,nome,razao_social,email,email2,telefone,telefone2,celular,celular1,celular2,celular3,ativado,log_date_add');
         if (is_object($usuario)) {
             $usuario = Array(0=>$usuario);
         }
@@ -483,7 +483,7 @@ class usuario_Controle extends \Framework\App\Controle
         $Visual->Bloco_Unico_CriaJanela($titulo);
         
         //Carrega Json
-        $Visual->Json_Info_Update('Titulo','Histórico de Email');
+        $Visual->Json_Info_Update('Titulo', 'Histórico de Email');
     }
     public function Usuarios_Email($id = 0,$tipo=false,$tema='Cliente') {
         if ($id==0 || !isset($id)) {
@@ -524,7 +524,7 @@ class usuario_Controle extends \Framework\App\Controle
             $linkextra = $tipo.'/';
         }
         // Carrega formulario
-        $form = new \Framework\Classes\Form('form_Sistema_Admin_Usuarios','usuario/Admin/Usuarios_Email2/'.$id.'/'.$linkextra,'formajax');
+        $form = new \Framework\Classes\Form('form_Sistema_Admin_Usuarios', 'usuario/Admin/Usuarios_Email2/'.$id.'/'.$linkextra,'formajax');
         $form->Input_Novo(
             'Titulo da Mensagem',
             'titulo',
@@ -667,7 +667,7 @@ class usuario_Controle extends \Framework\App\Controle
                     "mgs_principal" => __('Email enviado com Sucesso'),
                     "mgs_secundaria" => __('Voce enviou com sucesso.')
                 );
-                $this->_Visual->Json_Info_Update('Titulo','Enviado com Sucesso.');
+                $this->_Visual->Json_Info_Update('Titulo', 'Enviado com Sucesso.');
             } else {
                 $mensagens = array(
                     "tipo" => 'erro',
@@ -723,7 +723,7 @@ class usuario_Controle extends \Framework\App\Controle
             $categoria = (int) $grupo[0];
             
             // Pega GRUPOS VALIDOS
-            $sql_grupos = $Modelo->db->Sql_Select('Sistema_Grupo','categoria='.$categoria,0,'','id');
+            $sql_grupos = $Modelo->db->Sql_Select('Sistema_Grupo', 'categoria='.$categoria,0,'', 'id');
             $grupos_id = Array();
             if (is_object($sql_grupos)) $sql_grupos = Array(0=>$sql_grupos);
             if ($sql_grupos!==false && !empty($sql_grupos)) {
@@ -736,9 +736,9 @@ class usuario_Controle extends \Framework\App\Controle
             
             // cria where de acordo com parametros
             if ($inverter) {
-                $where = 'grupo NOT IN ('.implode(',',$grupos_id).') AND ativado='.$ativado;
+                $where = 'grupo NOT IN ('.implode(', ',$grupos_id).') AND ativado='.$ativado;
             } else {
-                $where = 'grupo IN ('.implode(',',$grupos_id).') AND ativado='.$ativado;
+                $where = 'grupo IN ('.implode(', ',$grupos_id).') AND ativado='.$ativado;
             }
             
             if ($ativado===false) {
@@ -793,7 +793,7 @@ class usuario_Controle extends \Framework\App\Controle
         ));
         // Continua Resto
         //$this->_Visual->Blocar('<a title="Adicionar " class="btn btn-success lajax explicar-titulo" data-acao="" href="'.URL_PATH.'usuario/Admin/Usuarios_Add'.$linkextra.'">Adicionar novo '.Framework\Classes\Texto::Transformar_Plural_Singular($nomedisplay).'</a><div class="space15"></div>');
-        $usuario = $Modelo->db->Sql_Select('Usuario',$where,0,'','id,grupo,foto,nome,razao_social,email,email2,telefone,telefone2,celular,celular1,celular2,celular3,ativado,log_date_add');
+        $usuario = $Modelo->db->Sql_Select('Usuario',$where,0,'', 'id,grupo,foto,nome,razao_social,email,email2,telefone,telefone2,celular,celular1,celular2,celular3,ativado,log_date_add');
         if (is_object($usuario)) $usuario = Array(0=>$usuario);
         if ($usuario!==false && !empty($usuario)) {
             list($tabela,$i) = self::Usuarios_Tabela($usuario,$nomedisplay_sing,$linkextra, $grupo,$link_ver, $link_editar, $link_deletar);
@@ -888,7 +888,7 @@ class usuario_Controle extends \Framework\App\Controle
             
             
         if (CFG_TEC_PAISES_EXTRAGEIROS===false) {
-            self::DAO_RemoveLinkExtra($campos, Array('pais','estado','cidade','bairro'));
+            self::DAO_RemoveLinkExtra($campos, Array('pais', 'estado', 'cidade', 'bairro'));
         }
         // LOGIN
         $usuario_Admin_Login = \Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Login');
@@ -1075,7 +1075,7 @@ class usuario_Controle extends \Framework\App\Controle
             $categoria = (int) $grupo[0];
             
             // Pega GRUPOS VALIDOS
-            $sql_grupos = $this->_Modelo->db->Sql_Select('Sistema_Grupo','categoria='.$categoria,0,'','id');
+            $sql_grupos = $this->_Modelo->db->Sql_Select('Sistema_Grupo', 'categoria='.$categoria,0,'', 'id');
             $grupos_id = Array();
             if (is_object($sql_grupos)) $sql_grupos = Array(0=>$sql_grupos);
             if ($sql_grupos!==false && !empty($sql_grupos)) {
@@ -1088,9 +1088,9 @@ class usuario_Controle extends \Framework\App\Controle
             
             // cria where de acordo com parametros
             if ($inverter) {
-                $where = 'grupo NOT IN ('.implode(',',$grupos_id).') AND ativado='.$ativado;
+                $where = 'grupo NOT IN ('.implode(', ',$grupos_id).') AND ativado='.$ativado;
             } else {
-                $where = 'grupo IN ('.implode(',',$grupos_id).') AND ativado='.$ativado;
+                $where = 'grupo IN ('.implode(', ',$grupos_id).') AND ativado='.$ativado;
             }
             
             if ($ativado===false) {
@@ -1183,7 +1183,7 @@ class usuario_Controle extends \Framework\App\Controle
             $titulo = 'Todos os '.$nomedisplay.' Ativados (<span id="DataTable_Contador">0</span>)';
         }
                 
-        $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',$gravidade,Array("link"=>$link_add,'icon'=>'add','nome'=>'Adicionar '.Framework\Classes\Texto::Transformar_Plural_Singular($nomedisplay)));
+        $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',$gravidade,Array("link"=>$link_add,'icon'=>'add', 'nome'=>'Adicionar '.Framework\Classes\Texto::Transformar_Plural_Singular($nomedisplay)));
     }
 }
 ?>

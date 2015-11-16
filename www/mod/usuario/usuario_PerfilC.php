@@ -71,7 +71,7 @@ class usuario_PerfilControle extends usuario_Controle
      */
     public function PerfilFoto_Upload($id) {
         $id = (int) $id;
-        $fileTypes = array('jpg','jpeg','gif','png'); // File extensions
+        $fileTypes = array('jpg', 'jpeg', 'gif', 'png'); // File extensions
         $dir = 'usuario'.DS;
         $ext = $this->Upload($dir,$fileTypes,$id);
         if ($ext!='falso') {
@@ -83,7 +83,7 @@ class usuario_PerfilControle extends usuario_Controle
      */
     public function RESFoto_Upload($id) {
         $id = (int) $id;
-        $fileTypes = array('jpg','jpeg','gif','png'); // File extensions
+        $fileTypes = array('jpg', 'jpeg', 'gif', 'png'); // File extensions
         $dir = 'usuario'.DS;
         $ext = $this->Upload($dir,$fileTypes,$id.'_res');
         if ($ext!='falso') {
@@ -106,7 +106,7 @@ class usuario_PerfilControle extends usuario_Controle
             else if ($_Acl->logado_usuario->foto_res_apv==2) $Visual->Blocar('<b>Aprovado</b><br>');
             else                                             $Visual->Blocar('<font color="#FF0000"><b>Negado</b></font><br>');
         }
-        $Visual->Blocar($Visual->Show_Upload('usuario','Perfil','RESFoto','User_RES_Imagem'.$_Acl->logado_usuario->id,$_Acl->logado_usuario->foto_res,'usuario'.DS,$_Acl->logado_usuario->id));
+        $Visual->Blocar($Visual->Show_Upload('usuario', 'Perfil', 'RESFoto', 'User_RES_Imagem'.$_Acl->logado_usuario->id,$_Acl->logado_usuario->foto_res,'usuario'.DS,$_Acl->logado_usuario->id));
         $Visual->Bloco_Menor_CriaJanela(__('Fazer upload de Comprovante de Residência')); 
     }
     /**
@@ -114,7 +114,7 @@ class usuario_PerfilControle extends usuario_Controle
      */
     public function CNHFoto_Upload($id) {
         $id = (int) $id;
-        $fileTypes = array('jpg','jpeg','gif','png'); // File extensions
+        $fileTypes = array('jpg', 'jpeg', 'gif', 'png'); // File extensions
         $dir = 'usuario'.DS;
         $ext = $this->Upload($dir,$fileTypes,$id.'_cnh');
         if ($ext!='falso') {
@@ -137,7 +137,7 @@ class usuario_PerfilControle extends usuario_Controle
             else if ($_Acl->logado_usuario->foto_cnh_apv==2) $Visual->Blocar('<b>CNH Aprovada</b><br>');
             else                                             $Visual->Blocar('<font color="#FF0000"><b>CNH Negada</b></font><br>');
         }
-        $Visual->Blocar($Visual->Show_Upload('usuario','Perfil','CNHFoto','User_CNH_Imagem'.$_Acl->logado_usuario->id,$_Acl->logado_usuario->foto_cnh,'usuario'.DS,$_Acl->logado_usuario->id));
+        $Visual->Blocar($Visual->Show_Upload('usuario', 'Perfil', 'CNHFoto', 'User_CNH_Imagem'.$_Acl->logado_usuario->id,$_Acl->logado_usuario->foto_cnh,'usuario'.DS,$_Acl->logado_usuario->id));
         $Visual->Bloco_Menor_CriaJanela(__('Fazer Upload da CNH')); 
     }
     static function usuarios_carregaAlterarSenha(&$controle,&$Modelo,&$Visual,$campos) {

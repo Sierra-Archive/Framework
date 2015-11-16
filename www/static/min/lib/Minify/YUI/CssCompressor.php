@@ -145,7 +145,7 @@ class Minify_YUI_CssCompressor {
 
     protected function _shortenRgbCB($m)
     {
-        $rgbcolors = explode(',', $m[1]);
+        $rgbcolors = explode(', ', $m[1]);
         $hexcolor = '#';
         for ($i = 0; $i < count($rgbcolors); $i++) {
             $val = round($rgbcolors[$i]);

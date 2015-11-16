@@ -58,9 +58,9 @@ class Financeiro_PagamentoModelo extends Financeiro_Modelo
             //Forma de Pagamento
             array( 'db' => 'forma_pagar2', 'dt' => 0),
             //Nome
-            array( 'db' => 'nome',    'dt' => 1 ),
+            array( 'db' => 'nome', 'dt' => 1 ),
             //Entrada
-            array( 'db' => 'entrada',  'dt' => 2 ),
+            array( 'db' => 'entrada', 'dt' => 2 ),
             //Qnt de Parcelas
             array( 'db' => 'parcelas', 'dt' => 3,
                 'formatter' => function( $d, $row ) {
@@ -71,7 +71,7 @@ class Financeiro_PagamentoModelo extends Financeiro_Modelo
                     }
                 }),
             // Funcoes
-            array( 'db' => 'id',      'dt' => 4,
+            array( 'db' => 'id', 'dt' => 4,
                 'formatter' => $funcao)
         );
 
@@ -106,7 +106,7 @@ class Financeiro_PagamentoModelo extends Financeiro_Modelo
         
         ++$numero;
         eval('$function = function( $d, $row ) { $html = \'\'; '.$function.' return $html; };');       
-        $columns[] = array( 'db' => 'id',            'dt' => $numero,
+        $columns[] = array( 'db' => 'id', 'dt' => $numero,
             'formatter' => $function
         ); //'Funções';
 

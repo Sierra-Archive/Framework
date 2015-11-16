@@ -586,12 +586,12 @@ class CSSmin
     {
         // Support for percentage values rgb(100%, 0%, 45%);
         if ($this->index_of($matches[1], '%') >= 0) {
-            $rgbcolors = explode(',', str_replace('%', '', $matches[1]));
+            $rgbcolors = explode(', ', str_replace('%', '', $matches[1]));
             for ($i = 0; $i < count($rgbcolors); $i++) {
                 $rgbcolors[$i] = $this->round_number(floatval($rgbcolors[$i]) * 2.55);
             }
         } else {
-            $rgbcolors = explode(',', $matches[1]);
+            $rgbcolors = explode(', ', $matches[1]);
         }
 
         // Values outside the sRGB color space should be clipped (0-255)
@@ -610,7 +610,7 @@ class CSSmin
 
     private function hsl_to_hex($matches)
     {
-        $values = explode(',', str_replace('%', '', $matches[1]));
+        $values = explode(', ', str_replace('%', '', $matches[1]));
         $h = floatval($values[0]);
         $s = floatval($values[1]);
         $l = floatval($values[2]);
@@ -630,7 +630,7 @@ class CSSmin
             $b = $this->round_number(255 * $this->hue_to_rgb($v1, $v2, $h - (1/3)));
         }
 
-        return $this->rgb_to_hex(array('', $r.','.$g.','.$b, $matches[2]));
+        return $this->rgb_to_hex(array('', $r.', '.$g.', '.$b, $matches[2]));
     }
 
     private function lowercase_pseudo_first($matches)

@@ -67,7 +67,7 @@ class Agenda_AgendaControle extends Agenda_Controle
 
         $this->_Visual->Show_Tabela_DataTable_Massiva($tabela_colunas,'Agenda/Agenda/Agendas');
         $titulo = __('Listagem de Agendas').' (<span id="DataTable_Contador">0</span>)';
-        $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',10,Array("link"=>"Agenda/Agenda/Agendas_Add",'icon'=>'add','nome'=>__('Adicionar Agenda')));
+        $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',10,Array("link"=>"Agenda/Agenda/Agendas_Add",'icon'=>'add', 'nome'=>__('Adicionar Agenda')));
         
         
         //Carrega Json

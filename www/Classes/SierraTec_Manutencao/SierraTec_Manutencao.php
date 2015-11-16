@@ -130,7 +130,7 @@ class SierraTec_Manutencao {
                         reset($achado[1]);
                         while (key($achado[1])!==NULL) {
                             if (current($achado[1]));
-                            $constante = str_replace(Array(')','\'','('), Array('','',''), 'MYSQL_'.current($achado[1]));
+                            $constante = str_replace(Array(')', '\'', '('), Array('', '', ''), 'MYSQL_'.current($achado[1]));
                             if ($constante!=='MYSQL_') {
                                 eval('$dependencia_dao_CONSTANTE[$constante] = '.$constante.';');
                             }
@@ -212,7 +212,7 @@ class SierraTec_Manutencao {
         } else {
             $arquivo = fopen ($arq, 'w');
             if (is_int($valor)) {
-                $conteudo_novo = '<?php'."\n".'define(\''.$nome.'\',  '.$valor.');'."\n"."?>";
+                $conteudo_novo = '<?php'."\n".'define(\''.$nome.'\', '.$valor.');'."\n"."?>";
             } else {
                 $conteudo_novo = '<?php'."\n".'define(\''.$nome.'\',  \''.$valor.'\');'."\n"."?>";
             }
@@ -349,7 +349,7 @@ class SierraTec_Manutencao {
                 foreach($financeiro as $valor) {
                     $valor->categoria = (int) $valor->categoria;
                     if ($valor->motivo=='comercio_Estoque' && ($valor->categoria=='' || $valor->categoria==0 || $valor->categoria==NULL)) {
-                        $valor_motivo = $this->_Conexao->Sql_Select('Comercio_Fornecedor_Material',Array('id'=>$valor->motivoid),1,'','categoria');
+                        $valor_motivo = $this->_Conexao->Sql_Select('Comercio_Fornecedor_Material',Array('id'=>$valor->motivoid),1,'', 'categoria');
                         if (!is_object($valor_motivo)) {  ++$qnt['deupau']; continue;}
                         $valor->categoria = $valor_motivo->categoria;
                         $foi = $this->_Conexao->Sql_Update($valor);
@@ -556,7 +556,7 @@ class SierraTec_Manutencao {
                 );
                 
                 if (isset($achado[3][$indice]) && $achado[3][$indice]!=='') {
-                    $argumentos = explode(',',$achado[3][$indice]);
+                    $argumentos = explode(', ',$achado[3][$indice]);
                     foreach($argumentos as $valor2) {
                         $argumentos_item = explode('=',$valor2);
                         if (isset($argumentos_item[1])) {
