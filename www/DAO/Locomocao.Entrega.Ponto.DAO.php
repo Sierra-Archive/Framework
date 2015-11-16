@@ -380,4 +380,4 @@ final Class Locomocao_Entrega_Ponto_DAO extends Framework\App\Dao
         );
     }
 }
-?>
+

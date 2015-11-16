@@ -8,11 +8,11 @@ class Locomocao_EntregaModelo extends Locomocao_Modelo
     public function Entregas() {
         // Table's primary key
         $primaryKey = 'id';
-        $tabela = 'Locomocao_Entrega';
+        $table = 'Locomocao_Entrega';
         
         
-        $perm_editar = $this->_Registro->_Acl->Get_Permissao_Url('Locomocao/Entrega/Entregas_Edit');
-        $perm_del = $this->_Registro->_Acl->Get_Permissao_Url('Locomocao/Entrega/Entregas_Del');
+        $permissionEdit = $this->_Registro->_Acl->Get_Permissao_Url('Locomocao/Entrega/Entregas_Edit');
+        $permissionDelete = $this->_Registro->_Acl->Get_Permissao_Url('Locomocao/Entrega/Entregas_Del');
         
 
 
@@ -31,10 +31,10 @@ class Locomocao_EntregaModelo extends Locomocao_Modelo
 
 
         $function = '';
-        if ($perm_editar) {
+        if ($permissionEdit) {
             $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Editar\'     ,Array(__(\'Editar Entrega\')        ,\'Locomocao/Entrega/Entregas_Edit/\'.$d.\'/\'    ,\'\'),TRUE);';
         }
-        if ($perm_del) {
+        if ($permissionDelete) {
             $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Deletar\'    ,Array(__(\'Deletar Entrega\')       ,\'Locomocao/Entrega/Entregas_Del/\'.$d.\'/\'     ,__(\'Deseja realmente deletar essa Entrega ?\')),TRUE);';
         }
         
@@ -45,7 +45,7 @@ class Locomocao_EntregaModelo extends Locomocao_Modelo
         ); //'Funções';
                 
         echo json_encode(
-            \Framework\Classes\Datatable::complex( $_GET, Framework\App\Registro::getInstacia()->_Conexao, $tabela, $primaryKey, $columns, null)
+            \Framework\Classes\Datatable::complex( $_GET, Framework\App\Registro::getInstacia()->_Conexao, $table, $primaryKey, $columns, null)
         );
     }
 }

@@ -186,4 +186,4 @@ class Enquete_ShowControle extends Enquete_Controle
         $this->_Visual->Json_Info_Update('Titulo', __('Voto computado com Sucesso'));
     }
 }
-?>
+

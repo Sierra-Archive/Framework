@@ -806,4 +806,4 @@ final Class Comercio_Fornecedor_DAO extends Framework\App\Dao
         );
     }
 }
-?>
+

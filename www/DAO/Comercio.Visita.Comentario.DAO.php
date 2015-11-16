@@ -101,4 +101,4 @@ final Class Comercio_Visita_Comentario_DAO extends Framework\App\Dao
         );
     }
 }
-?>
+

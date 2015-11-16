@@ -212,7 +212,7 @@ class usuario_Modelo extends \Framework\App\Modelo
         
         // Table's primary key
         $primaryKey = 'id';
-        $tabela = 'Usuario';
+        $table = 'Usuario';
         
         // Permissoes (Fora Do LOOPING por performace)
         $usuario_Admin_Ativado_Listar   = \Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Admin_Ativado_Listar');
@@ -226,9 +226,9 @@ class usuario_Modelo extends \Framework\App\Modelo
         $perm_comentario    = $this->_Registro->_Acl->Get_Permissao_Url('usuario/Admin/Usuarios_Comentario');
         $perm_anexo         = $this->_Registro->_Acl->Get_Permissao_Url('usuario/Anexo/Anexar');
         $perm_email         = $this->_Registro->_Acl->Get_Permissao_Url('usuario/Admin/Usuarios_Email');
-        $perm_status        = $this->_Registro->_Acl->Get_Permissao_Url('usuario/Admin/Status');
-        $perm_editar        = $this->_Registro->_Acl->Get_Permissao_Url($url_editar);
-        $perm_del           = $this->_Registro->_Acl->Get_Permissao_Url($url_deletar);
+        $permissionStatus        = $this->_Registro->_Acl->Get_Permissao_Url('usuario/Admin/Status');
+        $permissionEdit        = $this->_Registro->_Acl->Get_Permissao_Url($url_editar);
+        $permissionDelete           = $this->_Registro->_Acl->Get_Permissao_Url($url_deletar);
 
         // Verifica Grupo
         $Ativado_Grupo = FALSE;
@@ -308,7 +308,7 @@ class usuario_Modelo extends \Framework\App\Modelo
             $nome = '<a href="'.URL_PATH.'usuario_mensagem/Suporte/Mostrar_Cliente/'.$valor->id.'/">'.$nome.' ('.usuario_mensagem_SuporteModelo::Suporte_MensagensCliente_Qnt($valor->id).')</a>';
         }
         // Mostra Nome
-        $tabela['Nome'][$i]             = $nome;
+        $table['Nome'][$i]             = $nome;
          * 
          */
         
@@ -339,7 +339,7 @@ class usuario_Modelo extends \Framework\App\Modelo
             if ($telefone!='') $telefone .= '<br>';
             $telefone .= $valor->celular3;
         }
-        $tabela['Contato'][$i]         = $telefone;*/
+        $table['Contato'][$i]         = $telefone;*/
         
         // EMAIL #UPDATE
         
@@ -354,7 +354,7 @@ class usuario_Modelo extends \Framework\App\Modelo
             if ($email!='') $email .= '<br>';
             $email .= $valor->email2;
         }
-        $tabela['Email'][$i]      =  $email;*/
+        $table['Email'][$i]      =  $email;*/
         
         
         
@@ -399,7 +399,7 @@ class usuario_Modelo extends \Framework\App\Modelo
         // Comentario de Usuario
         if (\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Comentarios') && $perm_comentario) {
             if ($funcoes_qnt>2) {
-                $tabela['Funções'][$i]     .=   '<br>';
+                $table['Funções'][$i]     .=   '<br>';
                 $funcoes_qnt = 0;
             }
             ++$funcoes_qnt;
@@ -408,7 +408,7 @@ class usuario_Modelo extends \Framework\App\Modelo
         // Anexo de Usuario
         if (\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Anexo') && $perm_anexo) {
             if ($funcoes_qnt>2) {
-                $tabela['Funções'][$i]     .=   '<br>';
+                $table['Funções'][$i]     .=   '<br>';
                 $funcoes_qnt = 0;
             }
             ++$funcoes_qnt;
@@ -433,7 +433,7 @@ class usuario_Modelo extends \Framework\App\Modelo
             $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Email\'     ,Array(\'Enviar email para Setor\'        ,\'usuario/Admin/Usuarios_Email/\'.$row[\'id\'].\''.$linkextra.'/Setor/\'    ,\'\',\'envelope\',\'danger\'),TRUE);';
         }
         // Verifica se Possue Status e Mostra
-        if ($usuario_Admin_Ativado_Listar !== FALSE && $perm_status) {
+        if ($usuario_Admin_Ativado_Listar !== FALSE && $permissionStatus) {
             if ($funcoes_qnt>2) {
                 $function .= ' $html .= \'<br>\';';
                 $funcoes_qnt = 0;
@@ -456,10 +456,10 @@ class usuario_Modelo extends \Framework\App\Modelo
         
         // Editar e Deletar
         $funcoes_qnt = $funcoes_qnt+2;
-        if ($perm_editar) {
+        if ($permissionEdit) {
             $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Editar\'     ,Array(\'Editar '.$nomedisplay_sing.'\'        ,\''.$url_editar.'/\'.$row[\'id\'].\''.$linkextra.'/\'    ,\'\'),TRUE);';
         }
-        if ($perm_del) {
+        if ($permissionDelete) {
             $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Deletar\'    ,Array(\'Deletar '.$nomedisplay_sing.'\'       ,\''.$url_deletar.'/\'.$row[\'id\'].\''.$linkextra.'/\'     ,\'Deseja realmente deletar essa '.$nomedisplay_sing.'?\'),TRUE);';
         }
 
@@ -470,7 +470,7 @@ class usuario_Modelo extends \Framework\App\Modelo
         ); //'Funções';
                 
         echo json_encode(
-            \Framework\Classes\Datatable::complex( $_GET, Framework\App\Registro::getInstacia()->_Conexao, $tabela, $primaryKey, $columns, null, $where)
+            \Framework\Classes\Datatable::complex( $_GET, Framework\App\Registro::getInstacia()->_Conexao, $table, $primaryKey, $columns, null, $where)
         );
     }
 }

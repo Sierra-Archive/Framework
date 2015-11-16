@@ -120,17 +120,17 @@ class Financeiro_UsuarioControle extends Financeiro_Controle
             'entrada_motivo'     => 'Usuario',
             'entrada_motivoid'   => $usuarioid,
         );
-        list($tabela, $i) = $this->Movimentacao_Interna($where,'Mini', FALSE, '', FALSE);
+        list($table, $i) = $this->Movimentacao_Interna($where,'Mini', FALSE, '', FALSE);
         $titulo = $titulo.' ('.$i.')';
         if ($i==0) {          
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhuma Conta à pagar</font></b></center>');
         } else {
             if ($export !== FALSE) {
-                self::Export_Todos($export, $tabela, 'Contas à pagar');
+                self::Export_Todos($export, $table, 'Contas à pagar');
             } else {
-                $this->_Visual->Show_Tabela_DataTable($tabela);
+                $this->_Visual->Show_Tabela_DataTable($table);
             }
-            unset($tabela);
+            unset($table);
         }
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         $this->_Visual->Json_Info_Update('Titulo', $titulo); 
@@ -159,17 +159,17 @@ class Financeiro_UsuarioControle extends Financeiro_Controle
             'saida_motivoid'   => $usuarioid,
         );
         
-        list($tabela, $i) = $this->Movimentacao_Interna($where,'Mini');
+        list($table, $i) = $this->Movimentacao_Interna($where,'Mini');
         $titulo = $titulo.' ('.$i.')';
         if ($i==0 ) {
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhuma Conta à Receber</font></b></center>');
         } else {
             if ($export !== FALSE) {
-                self::Export_Todos($export, $tabela, 'Contas à Receber');
+                self::Export_Todos($export, $table, 'Contas à Receber');
             } else {
-                $this->_Visual->Show_Tabela_DataTable($tabela);
+                $this->_Visual->Show_Tabela_DataTable($table);
             }
-            unset($tabela);
+            unset($table);
         }
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         $this->_Visual->Json_Info_Update('Titulo', $titulo); 
@@ -195,17 +195,17 @@ class Financeiro_UsuarioControle extends Financeiro_Controle
             'entrada_motivo'     => 'Usuario',
             'entrada_motivoid'   => $usuarioid,
         );
-        list($tabela, $i) = $this->Movimentacao_Interna_Pago($where,'Mini');
+        list($table, $i) = $this->Movimentacao_Interna_Pago($where,'Mini');
         $titulo = $titulo.' ('.$i.')';
         if ($i==0) {          
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhuma Conta Paga</font></b></center>');
         } else {
             if ($export !== FALSE) {
-                self::Export_Todos($export, $tabela, 'Contas Pagas');
+                self::Export_Todos($export, $table, 'Contas Pagas');
             } else {
-                $this->_Visual->Show_Tabela_DataTable($tabela);
+                $this->_Visual->Show_Tabela_DataTable($table);
             }
-            unset($tabela);
+            unset($table);
         }
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         $this->_Visual->Json_Info_Update('Titulo', $titulo); 
@@ -234,17 +234,17 @@ class Financeiro_UsuarioControle extends Financeiro_Controle
             'saida_motivoid'   => $usuarioid,
         );
         
-        list($tabela, $i) = $this->Movimentacao_Interna_Pago($where,'Mini');
+        list($table, $i) = $this->Movimentacao_Interna_Pago($where,'Mini');
         $titulo = $titulo.' ('.$i.')';
         if ($i==0 ) {
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhuma Conta Recebida</font></b></center>');
         } else {
             if ($export !== FALSE) {
-                self::Export_Todos($export, $tabela, 'Contas Recebidas');
+                self::Export_Todos($export, $table, 'Contas Recebidas');
             } else {
-                $this->_Visual->Show_Tabela_DataTable($tabela);
+                $this->_Visual->Show_Tabela_DataTable($table);
             }
-            unset($tabela);
+            unset($table);
         }
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         $this->_Visual->Json_Info_Update('Titulo', $titulo); 
@@ -401,8 +401,8 @@ class Financeiro_UsuarioControle extends Financeiro_Controle
                 $this->_Visual->Json_IncluiTipo('Popup', $popup);
             } else {
                 // Coloca Endereco
-                $funcao = 'Endereco_'.$tema;
-                self::$funcao(TRUE);
+                $function = 'Endereco_'.$tema;
+                self::$function(TRUE);
                 $this->Tema_Endereco('Visualizar '.$titulo);
                 // Coloca COnteudo em Janela
                 $this->_Visual->Blocar($html);
@@ -419,4 +419,4 @@ class Financeiro_UsuarioControle extends Financeiro_Controle
         }
     }
 }
-?>
+

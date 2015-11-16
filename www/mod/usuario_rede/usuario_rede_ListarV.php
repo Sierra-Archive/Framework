@@ -88,22 +88,22 @@ class usuario_rede_ListarVisual extends usuario_rede_Visual
         }
         // caso tenha algum indicado
         else{
-            $tabela = new \Framework\Classes\Tabela();
-            $tabela->addcabecario(array('Id', 'Nome')); 
-            $this->Show_RedeIndicados_Recursiva($array, $tabela);
-            $html = $tabela->retornatabela();
+            $table = new \Framework\Classes\Tabela();
+            $table->addcabecario(array('Id', 'Nome')); 
+            $this->Show_RedeIndicados_Recursiva($array, $table);
+            $html = $table->retornatabela();
         }
         return $html;
     }
     /**
      * 
      * @param type $array
-     * @param type $tabela
+     * @param type $table
      * @param type $i
      * @param type $nivel
      * @return type
      */
-    public function Show_RedeIndicados_Recursiva(&$array,&$tabela, $i=0, $nivel=0, $prenome = '') {
+    public function Show_RedeIndicados_Recursiva(&$array,&$table, $i=0, $nivel=0, $prenome = '') {
         $antecipa = $nivel;
         $nomeantes = '';
         $j = 0;
@@ -122,13 +122,13 @@ class usuario_rede_ListarVisual extends usuario_rede_Visual
                 else          $class = 'tleft backcolor';*/
                 $class = 'tbold tleft';
                 
-                $tabela->addcorpo(array(
+                $table->addcorpo(array(
                     array("nome" => '#'.$array[$indice]['id']),
                     array("nome" => $prenome.$array[$indice]['nome'].' <img alt="'.__('Nivel da Indicação').' width="15" src="'.WEB_URL.'img/icons/nivel_cliente'.$array[$indice]['grupo'].'.jpg">', "class" => $class),
                 ));
                 ++$i;
                 if (!empty($array[$j]['indicados'])) {
-                    $i = $this->Show_RedeIndicados_Recursiva($array[$j]['indicados'], $tabela, $i, $nivel+1, $prenome.$array[$indice]['nome']);
+                    $i = $this->Show_RedeIndicados_Recursiva($array[$j]['indicados'], $table, $i, $nivel+1, $prenome.$array[$indice]['nome']);
                 }
                 ++$j;
               }

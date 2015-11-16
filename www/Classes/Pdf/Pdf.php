@@ -52,20 +52,20 @@ class Pdf extends FPDF
     }
 
     // Array Table do meu Framework
-    function ArrayTable(&$tabela)
+    function ArrayTable(&$table)
     {
         $this->SetFont('Arial', 'B',9);
-        $colunas = count($tabela);
+        $colunas = count($table);
         $largura = 190/$colunas;
         // Header
-        foreach($tabela as $indice=>&$valor) {
+        foreach($table as $indice=>&$valor) {
             $this->Cell($largura,7,utf8_decode($indice),1);
         }
         
         $this->SetFont('Arial', '',8);
         $this->Ln();
         for ($i=0;$i<$colunas;++$i) {
-            foreach($tabela as &$valor) {
+            foreach($table as &$valor) {
                 if (!isset($valor[$i]) || $valor[$i]=='') {
                     $this->Cell($largura,6,' ',1);
                 } else {

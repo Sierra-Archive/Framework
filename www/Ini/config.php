@@ -797,4 +797,4 @@ if (  !defined('MYSQL_DESENVOLVIMENTO_FRAMEWORK_MODULO_CONFIG')) {
 if (!defined('MYSQL_USUARIO_FUNCAO')) {
     define('MYSQL_USUARIO_FUNCAO', 'Usuario_Funcao');
 }
-?>
+

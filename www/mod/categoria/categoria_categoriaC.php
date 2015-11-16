@@ -142,14 +142,14 @@ class categoria_categoriaControle extends categoria_Controle
     * @version 0.4.2
     */
     public function Categorias_ShowTab($tipo='') {
-        $tabela = Array();
+        $table = Array();
         $array = $this->_Modelo->Categorias_Retorna($tipo);
-        $tabela = new \Framework\Classes\Tabela();
-        $tabela->addcabecario(array('Id', 'Nome', 'Acesso', 'Editar'));        
-        $this->_Visual->Categorias_ShowTab($array, $tabela);
-        $this->_Visual->Blocar($tabela->retornatabela());
+        $table = new \Framework\Classes\Tabela();
+        $table->addcabecario(array('Id', 'Nome', 'Acesso', 'Editar'));        
+        $this->_Visual->Categorias_ShowTab($array, $table);
+        $this->_Visual->Blocar($table->retornatabela());
         $this->_Visual->Bloco_Maior_CriaJanela(__('Categorias'));
-        unset($tabela);        
+        unset($table);        
     }
     /**
     * Cadastro de Nova Categoria

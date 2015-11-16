@@ -52,10 +52,10 @@ class usuario_mensagem_AssuntoControle extends usuario_mensagem_Controle
     public function Assuntos($export = FALSE) {
         self::Endereco_Assunto(FALSE);
         
-        $tabela = Array(
+        $table = Array(
             'Setor', 'Nome', 'Tempo de Resposta', 'Funções'
         );
-        $this->_Visual->Show_Tabela_DataTable_Massiva($tabela,'usuario_mensagem/Assunto/Assuntos');
+        $this->_Visual->Show_Tabela_DataTable_Massiva($table,'usuario_mensagem/Assunto/Assuntos');
         $titulo = __('Listagem de Assuntos').' (<span id="DataTable_Contador">0</span>)';  //
         $this->_Visual->Bloco_Unico_CriaJanela($titulo, '',10,Array("link"=>"usuario_mensagem/Assunto/Assuntos_Add",'icon'=>'add', 'nome'=>'Adicionar Assunto'));
         
@@ -88,11 +88,11 @@ class usuario_mensagem_AssuntoControle extends usuario_mensagem_Controle
     public function Assuntos_Add2() {
         $titulo     = __('Assunto Adicionado com Sucesso');
         $dao        = 'Usuario_Mensagem_Assunto';
-        $funcao     = '$this->Assuntos();';
+        $function     = '$this->Assuntos();';
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = __('Assunto cadastrado com sucesso.');
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);
     }
     /**
      * 

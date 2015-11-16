@@ -36,13 +36,13 @@ class _Sistema_FilialControle extends _Sistema_Controle
     public function Filiais($tipobloco='Unico') {
         $this->Endereco_Filial(FALSE);
         
-        $tabela_colunas[] = __('Id');
-        $tabela_colunas[] = __('Nome');
-        $tabela_colunas[] = __('Bairro');
-        $tabela_colunas[] = __('Endereço');
-        $tabela_colunas[] = __('Funções');
+        $table_colunas[] = __('Id');
+        $table_colunas[] = __('Nome');
+        $table_colunas[] = __('Bairro');
+        $table_colunas[] = __('Endereço');
+        $table_colunas[] = __('Funções');
 
-        $this->_Visual->Show_Tabela_DataTable_Massiva($tabela_colunas,'_Sistema/Filial/Filiais');
+        $this->_Visual->Show_Tabela_DataTable_Massiva($table_colunas,'_Sistema/Filial/Filiais');
 
         $titulo = __('Listagem de Filiais').' (<span id="DataTable_Contador">0</span>)';
         if ($tipobloco==='Unico') {
@@ -81,11 +81,11 @@ class _Sistema_FilialControle extends _Sistema_Controle
     public function Filiais_Add2() {
         $titulo     = __('Filial Adicionada com Sucesso');
         $dao        = 'Sistema_Filial';
-        $funcao     = '$this->Filiais();';
+        $function     = '$this->Filiais();';
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = __('Filial cadastrada com sucesso.');
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);
     }
     /**
      * 
@@ -116,11 +116,11 @@ class _Sistema_FilialControle extends _Sistema_Controle
         $id = (int) $id;
         $titulo     = __('Filial Alterada com Sucesso');
         $dao        = Array('Sistema_Filial', $id);
-        $funcao     = '$this->Filiais();';
+        $function     = '$this->Filiais();';
         $sucesso1   = __('Filial Alterada com Sucesso');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);
     }
     /**
      * 

@@ -162,4 +162,4 @@ final Class Simulador_Pergunta_DAO extends Framework\App\Dao
         );
     }
 }
-?>
+

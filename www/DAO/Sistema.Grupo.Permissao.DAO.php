@@ -125,4 +125,4 @@ final Class Sistema_Grupo_Permissao_DAO extends Framework\App\Dao
         );
     }
 }
-?>
+

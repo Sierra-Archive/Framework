@@ -152,4 +152,4 @@ final Class Usuario_Anexo_DAO extends Framework\App\Dao
         );
     }
 }
-?>
+

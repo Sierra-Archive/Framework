@@ -118,4 +118,4 @@ final Class Evento_Artistas_DAO extends Framework\App\Dao
         );
     }
 }
-?>
+

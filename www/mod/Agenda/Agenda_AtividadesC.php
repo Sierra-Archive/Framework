@@ -49,18 +49,18 @@ class Agenda_AtividadesControle extends Agenda_Controle
             if (is_object($atividades)) $atividades = Array(0=>$atividades);
             reset($atividades);
             foreach ($atividades as $indice=>&$valor) {
-                //$tabela['#Id'][$i]       = '#'.$valor->id;
-                $tabela['Tipo de Compromisso'][$i]        =   $valor->atividade2;
-                $tabela['Inicio'][$i]                  =   $valor->dt_inicio;
-                $tabela['Funções'][$i]              =   $Visual->Tema_Elementos_Btn('Personalizar'     ,Array('Editar Atividade'        ,'Agenda/Compromisso/Compromissos_Edit/'.$valor->id.'/'    , ''));
+                //$table['#Id'][$i]       = '#'.$valor->id;
+                $table['Tipo de Compromisso'][$i]        =   $valor->atividade2;
+                $table['Inicio'][$i]                  =   $valor->dt_inicio;
+                $table['Funções'][$i]              =   $Visual->Tema_Elementos_Btn('Personalizar'     ,Array('Editar Atividade'        ,'Agenda/Compromisso/Compromissos_Edit/'.$valor->id.'/'    , ''));
                 ++$i;
             }
         
             if ($export !== FALSE) {
-                self::Export_Todos($export, $tabela, 'Atividades Abertas');
+                self::Export_Todos($export, $table, 'Atividades Abertas');
             } else {
                 $this->_Visual->Show_Tabela_DataTable(
-                    $tabela,     // Array Com a Tabela
+                    $table,     // Array Com a Tabela
                     '',          // style extra
                     true,        // true -> Add ao Bloco, false => Retorna html
                     true,        // Apagar primeira coluna ?
@@ -71,7 +71,7 @@ class Agenda_AtividadesControle extends Agenda_Controle
                     )
                 );
             }
-            unset($tabela);
+            unset($table);
         } else {           
             $Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhuma Atividade Aberta</font></b></center>');
         }
@@ -108,4 +108,4 @@ class Agenda_AtividadesControle extends Agenda_Controle
         }
     }
 }
-?>
+

@@ -88,4 +88,4 @@ final Class Social_Acao_Presente_DAO extends Framework\App\Dao
         );
     }
 }
-?>
+

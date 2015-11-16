@@ -99,4 +99,4 @@ final Class Comercio_Servicos_Gas_DAO extends Framework\App\Dao
         );
     }
 }
-?>
+

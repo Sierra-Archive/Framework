@@ -77,8 +77,8 @@ class Agenda_Principal implements \Framework\PrincipalInterface
         // Conexao
         if (is_object($pastas)) $pastas = Array(0=>$pastas);
         if ($pastas !== FALSE && !empty($pastas)) {
-            list($tabela, $i) = Agenda_PastaControle::Pastas_Tabela($pastas);
-            $Visual->Show_Tabela_DataTable($tabela);
+            list($table, $i) = Agenda_PastaControle::Pastas_Tabela($pastas);
+            $Visual->Show_Tabela_DataTable($table);
         } else { 
             $Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhuma Pasta no Arquivo de Pastas '.$busca.'</font></b></center>');
         }
@@ -87,4 +87,4 @@ class Agenda_Principal implements \Framework\PrincipalInterface
         return $i;
     }
 }
-?>
+

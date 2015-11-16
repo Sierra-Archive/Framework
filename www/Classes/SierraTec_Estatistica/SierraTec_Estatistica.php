@@ -6,21 +6,21 @@ class SierraTec_Estatistica {
     
     /**
      * Atualiza todas as Estatisticas
-     * @param type $tabelas
+     * @param type $tables
      */
-    public function Gera_Estatistica(&$tabelas) {
+    public function Gera_Estatistica(&$tables) {
         // Para cada tabela
-        foreach($tabelas as &$valor) {
-            $this->Gera_Estatistica_Tabela($tabela, $valor);
+        foreach($tables as &$valor) {
+            $this->Gera_Estatistica_Tabela($table, $valor);
         }
     }
     /**
      * Funcao Recursiva que Gera Estaticas Localizadas
-     * @param type $tabela
+     * @param type $table
      * @param type $campos
      * #update
      */
-    private function Gera_Estatistica_Tabela($tabela, $campos, $total, $nivel=0, $query_condicao = FALSE) {
+    private function Gera_Estatistica_Tabela($table, $campos, $total, $nivel=0, $query_condicao = FALSE) {
         
         // Para cada Campo
         foreach($campos as &$valor) {
@@ -46,7 +46,7 @@ class SierraTec_Estatistica {
                 
                 // Faz Estatisticas do Filho Recursivamente
                 $this->Gera_Estatistica_Tabela(
-                    $tabela,
+                    $table,
                     array_diff($valor, $campos), //Campos Menos Atual
                     ++$nivel,
                     $query

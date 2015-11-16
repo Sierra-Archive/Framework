@@ -600,4 +600,4 @@ final Class Transporte_Caminhoneiro_Pedido_DAO extends Framework\App\Dao
         );
     }
 }
-?>
+

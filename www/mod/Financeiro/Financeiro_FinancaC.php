@@ -58,16 +58,16 @@ class Financeiro_FinancaControle extends Financeiro_Controle
             if (is_object($setores)) $setores = Array(0=>$setores);
             reset($setores);
             foreach ($setores as $indice=>&$valor) {
-                $tabela['Id'][$i]               = $valor->id;
-                $tabela['Tipo de Conta'][$i]        = $valor->categoria2;
-                $tabela['Valor'][$i]            = $valor->valor;
-                $tabela['Data Pago'][$i]        = $valor->data;
-                /*$tabela['Funções'][$i]          = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Finança'        ,'Financeiro/Financa/Financas_Edit/'.$valor->id.'/'    , '')).
+                $table['Id'][$i]               = $valor->id;
+                $table['Tipo de Conta'][$i]        = $valor->categoria2;
+                $table['Valor'][$i]            = $valor->valor;
+                $table['Data Pago'][$i]        = $valor->data;
+                /*$table['Funções'][$i]          = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Finança'        ,'Financeiro/Financa/Financas_Edit/'.$valor->id.'/'    , '')).
                                                   $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Finança'       ,'Financeiro/Financa/Financas_Del/'.$valor->id.'/'     ,'Deseja realmente deletar essa Finança ?'));*/
                 ++$i;
             }
-            $this->_Visual->Show_Tabela_DataTable($tabela, '', true, true, Array(Array(0,'asc')));
-            unset($tabela);
+            $this->_Visual->Show_Tabela_DataTable($table, '', true, true, Array(Array(0,'asc')));
+            unset($table);
         } else {     
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhuma Finança</font></b></center>');
         }
@@ -103,11 +103,11 @@ class Financeiro_FinancaControle extends Financeiro_Controle
     public function Financas_Add2() {
         $titulo     = __('Finança Adicionada com Sucesso');
         $dao        = 'Financeiro_Financa';
-        $funcao     = '$this->Financas();';
+        $function     = '$this->Financas();';
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = __('Finança cadastrada com sucesso.');
         $alterar    = Array();
-        $sucesso = $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
+        $sucesso = $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);
         // Cadastra no Financeiro
         if ($sucesso) {
             $motivo = __('Financeiro_Financa');
@@ -155,11 +155,11 @@ class Financeiro_FinancaControle extends Financeiro_Controle
     public function Financas_Edit2($id) {
         $titulo     = __('Finança Editada com Sucesso');
         $dao        = Array('Financeiro_Financa', $id);
-        $funcao     = '$this->Financas();';
+        $function     = '$this->Financas();';
         $sucesso1   = __('Finança Alterada com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);   
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);   
     }
     /**
      * 
@@ -197,4 +197,4 @@ class Financeiro_FinancaControle extends Financeiro_Controle
         $this->_Visual->Json_Info_Update('Historico', FALSE);  
     }
 }
-?>
+

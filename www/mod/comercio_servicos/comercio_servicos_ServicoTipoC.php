@@ -51,12 +51,12 @@ class comercio_servicos_ServicoTipoControle extends comercio_servicos_Controle
      */
     public function Servico_Tipo() {
         self::Endereco_Servico_Tipo(FALSE);
-        $tabela_colunas = Array();
+        $table_colunas = Array();
 
-        $tabela_colunas[] = __('Nome');
-        $tabela_colunas[] = __('Funções');
+        $table_colunas[] = __('Nome');
+        $table_colunas[] = __('Funções');
 
-        $this->_Visual->Show_Tabela_DataTable_Massiva($tabela_colunas,'comercio_servicos/ServicoTipo/Servico_Tipo');
+        $this->_Visual->Show_Tabela_DataTable_Massiva($table_colunas,'comercio_servicos/ServicoTipo/Servico_Tipo');
         $titulo = __('Listagem de Serviços');
         $this->_Visual->Bloco_Unico_CriaJanela($titulo.' (<span id="DataTable_Contador">0</span>)', '',10,Array("link"=>"comercio_servicos/ServicoTipo/Servico_Tipo_Add",'icon'=>'add', 'nome'=>'Adicionar Tipo de Serviço'));
 
@@ -88,11 +88,11 @@ class comercio_servicos_ServicoTipoControle extends comercio_servicos_Controle
     public function Servico_Tipo_Add2() {
         $titulo     = __('Tipo de Serviço adicionada com Sucesso');
         $dao        = 'Comercio_Servicos_Servico_Tipo';
-        $funcao     = '$this->Servico_Tipo();';
+        $function     = '$this->Servico_Tipo();';
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = __('Tipo de Serviço cadastrada com sucesso.');
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);
     }
     /**
      * 
@@ -121,11 +121,11 @@ class comercio_servicos_ServicoTipoControle extends comercio_servicos_Controle
     public function Servico_Tipo_Edit2($id) {
         $titulo     = __('Tipo de Serviço editada com Sucesso');
         $dao        = Array('Comercio_Servicos_Servico_Tipo', $id);
-        $funcao     = '$this->Servico_Tipo();';
+        $function     = '$this->Servico_Tipo();';
         $sucesso1   = __('Tipo de Serviço Alterada com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);   
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);   
     }
     /**
      * 

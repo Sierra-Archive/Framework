@@ -42,30 +42,30 @@ class Engenharia_UnidadeControle extends Engenharia_Controle
         $Registro   = &\Framework\App\Registro::getInstacia();
         $Modelo     = &$Registro->_Modelo;
         $Visual     = &$Registro->_Visual;
-        $tabela = Array();
+        $table = Array();
         $i = 0;
         if (is_object($unidades)) $unidades = Array(0=>$unidades);
         reset($unidades);
         foreach ($unidades as &$valor) {
             if ($empreendimento === FALSE || $empreendimento==0) {
                 
-                $tabela['Empreendimento'][$i]   = $valor->empreendimento2;
+                $table['Empreendimento'][$i]   = $valor->empreendimento2;
                 $edit_url   = 'Engenharia/Unidade/Unidades_Edit/'.$valor->id.'/';
                 $del_url    = 'Engenharia/Unidade/Unidades_Del/'.$valor->id.'/';
             } else {
                 $edit_url   = 'Engenharia/Unidade/Unidades_Edit/'.$valor->id.'/'.$valor->empreendimento.'/';
                 $del_url    = 'Engenharia/Unidade/Unidades_Del/'.$valor->id.'/'.$valor->empreendimento.'/';
             }
-            $tabela['Unidade'][$i]          = $valor->unidade;
-            $tabela['Metragem'][$i]         = $valor->metragem;
-            $tabela['N° Quartos'][$i]       = $valor->quartos;
-            $tabela['N° Banheiros'][$i]     = $valor->banheiros;
-            $tabela['Data Registrado'][$i]  = $valor->log_date_add;
-            $tabela['Funções'][$i]          = $Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Unidade'        , $edit_url    , '')).
+            $table['Unidade'][$i]          = $valor->unidade;
+            $table['Metragem'][$i]         = $valor->metragem;
+            $table['N° Quartos'][$i]       = $valor->quartos;
+            $table['N° Banheiros'][$i]     = $valor->banheiros;
+            $table['Data Registrado'][$i]  = $valor->log_date_add;
+            $table['Funções'][$i]          = $Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Unidade'        , $edit_url    , '')).
                                               $Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Unidade'       , $del_url     ,'Deseja realmente deletar essa Unidade ?'));
             ++$i;
         }
-        return Array($tabela, $i);
+        return Array($table, $i);
     }
     /**
      * 
@@ -127,12 +127,12 @@ class Engenharia_UnidadeControle extends Engenharia_Controle
         $this->_Visual->Blocar('<a title="'.$titulo_add.'" class="btn btn-success lajax explicar-titulo" data-acao="" href="'.URL_PATH.$add_url.'">'.$titulo_add.'</a><div class="space15"></div>');
         $unidades = $this->_Modelo->db->Sql_Select('Engenharia_Empreendimento_Unidade', $where);
         if ($unidades !== FALSE && !empty($unidades)) {
-            list($tabela, $i) = self::Unidades_Tabela($unidades, $empreendimento);
+            list($table, $i) = self::Unidades_Tabela($unidades, $empreendimento);
             if ($export !== FALSE) {
-                self::Export_Todos($export, $tabela, $titulo);
+                self::Export_Todos($export, $table, $titulo);
             } else {
                 $this->_Visual->Show_Tabela_DataTable(
-                    $tabela,     // Array Com a Tabela
+                    $table,     // Array Com a Tabela
                     '',          // style extra
                     true,        // true -> Add ao Bloco, false => Retorna html
                     FALSE,        // Apagar primeira coluna ?
@@ -143,7 +143,7 @@ class Engenharia_UnidadeControle extends Engenharia_Controle
                     )
                 );
             }
-            unset($tabela);
+            unset($table);
         } else {
             if ($empreendimento !== FALSE) {
                 $erro = __('Nenhuma Unidade nesse Empreendimento');
@@ -228,20 +228,20 @@ class Engenharia_UnidadeControle extends Engenharia_Controle
             $sucesso2   = __('Unidades cadastradas com sucesso.');
         }
         if ($empreendimento === FALSE) {
-            $funcao     = '$this->Unidades(0);';
+            $function     = '$this->Unidades(0);';
             $alterar    = Array();
         } else {
             $empreendimento = (int) $empreendimento;
             $alterar    = Array('empreendimento'=>$empreendimento);
-            $funcao     = '$this->Unidades('.$empreendimento.');';
+            $function     = '$this->Unidades('.$empreendimento.');';
         }
         if ($lote === FALSE) {
-            $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
+            $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);
         } else {
-            $this->Magica_Add2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
+            $this->Magica_Add2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);
         }
     }
-    private function Magica_Add2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $colocar = FALSE, $erro1 = '', $erro2 = '') {
+    private function Magica_Add2($titulo, $dao, $function, $sucesso1, $sucesso2, $colocar = FALSE, $erro1 = '', $erro2 = '') {
         $unidade1 = intval($_POST['unidade1']);
         $unidade2 = intval($_POST['unidade2']);
         $erro1 = __('Algo Errado');
@@ -506,14 +506,14 @@ class Engenharia_UnidadeControle extends Engenharia_Controle
         $titulo     = __('Unidade Editada com Sucesso');
         $dao        = Array('Engenharia_Empreendimento_Unidade', $id);
         if ($empreendimento !== FALSE) {
-            $funcao     = '$this->Unidades('.$empreendimento.');';
+            $function     = '$this->Unidades('.$empreendimento.');';
         } else {
-            $funcao     = '$this->Unidades();';
+            $function     = '$this->Unidades();';
         }
         $sucesso1   = __('Unidade Alterada com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);   
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);   
     }
     /**
      * 
@@ -564,4 +564,4 @@ class Engenharia_UnidadeControle extends Engenharia_Controle
         $this->_Visual->Json_Info_Update('Historico', FALSE);
     }
 }
-?>
+

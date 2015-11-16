@@ -140,4 +140,4 @@ final Class Sistema_Local_Bairro_DAO extends Framework\App\Dao
         );
     }
 }
-?>
+

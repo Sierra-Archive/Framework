@@ -238,4 +238,4 @@ final Class Comercio_Produto_Estoque_DAO extends Framework\App\Dao
         );
     }
 }
-?>
+

@@ -245,4 +245,4 @@ final Class Comercio_Proposta_MaodeObra_DAO extends Framework\App\Dao
         );
     }
 }
-?>
+

@@ -110,4 +110,4 @@ final Class Comercio_Proposta_Servico_DAO extends Framework\App\Dao
         );
     }
 }
-?>
+

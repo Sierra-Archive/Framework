@@ -88,31 +88,31 @@ class comercio_venda_ComposicaoControle extends comercio_venda_Controle
             if (is_object($composicoes)) $composicoes = Array(0=>$composicoes);
             reset($composicoes);
             foreach ($composicoes as $indice=>&$valor) {
-                $tabela['#Id'][$i]       = '#'.$valor->id;
+                $table['#Id'][$i]       = '#'.$valor->id;
                 if ($valor->foto==='' || $valor->foto === FALSE) {
                     $foto = WEB_URL.'img'.US.'icons'.US.'clientes.png';
                 } else {
                     $foto = $valor->foto;
                 }
-                $tabela['Foto'][$i]      = '<img alt="'.__('Foto do Item do Cardápio').'" src="'.$foto.'" style="max-width:100px;" />';
-                $tabela['Nome'][$i]      = $valor->nome;
-                $tabela['Descrição'][$i] = $valor->descricao;
+                $table['Foto'][$i]      = '<img alt="'.__('Foto do Item do Cardápio').'" src="'.$foto.'" style="max-width:100px;" />';
+                $table['Nome'][$i]      = $valor->nome;
+                $table['Descrição'][$i] = $valor->descricao;
                 if (isset($produtos_usados_array[$valor->id])) {
-                    $tabela['Produtos Usados'][$i] = $produtos_usados_array[$valor->id];
+                    $table['Produtos Usados'][$i] = $produtos_usados_array[$valor->id];
                 } else {
-                    $tabela['Produtos Usados'][$i] = __('Nenhum');
+                    $table['Produtos Usados'][$i] = __('Nenhum');
                 }
-                $tabela['Preço'][$i]     = $valor->preco;
-                $tabela['Funções'][$i]   = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Item do Cardápio'        ,'comercio_venda/Composicao/Composicoes_Edit/'.$valor->id.'/'    , '')).
+                $table['Preço'][$i]     = $valor->preco;
+                $table['Funções'][$i]   = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Item do Cardápio'        ,'comercio_venda/Composicao/Composicoes_Edit/'.$valor->id.'/'    , '')).
                                            $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Item do Cardápio'       ,'comercio_venda/Composicao/Composicoes_Del/'.$valor->id.'/'     ,__('Deseja realmente deletar esse item do Cardápio ?')));
                 ++$i;
             }
             if ($export !== FALSE) {
-                self::Export_Todos($export, $tabela, 'Comercio Vendas - Cardápio');
+                self::Export_Todos($export, $table, 'Comercio Vendas - Cardápio');
             } else {
-                $this->_Visual->Show_Tabela_DataTable($tabela);
+                $this->_Visual->Show_Tabela_DataTable($table);
             }
-            unset($tabela);
+            unset($table);
         } else {          
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Cardápio</font></b></center>');
         }
@@ -149,11 +149,11 @@ class comercio_venda_ComposicaoControle extends comercio_venda_Controle
     public function Composicoes_Add2() {
         $titulo     = __('Cardápio Adicionado com Sucesso');
         $dao        = 'Comercio_Venda_Composicao';
-        $funcao     = '$this->Composicoes();';
+        $function     = '$this->Composicoes();';
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = __('Cardápio cadastrado com sucesso.');
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);
     }
     /**
      * 
@@ -183,11 +183,11 @@ class comercio_venda_ComposicaoControle extends comercio_venda_Controle
     public function Composicoes_Edit2($id) {
         $titulo     = __('Cardápio Editado com Sucesso');
         $dao        = Array('Comercio_Venda_Composicao', $id);
-        $funcao     = '$this->Composicoes();';
+        $function     = '$this->Composicoes();';
         $sucesso1   = __('Cardápio Alterado com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);      
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);      
     }
     /**
      * 

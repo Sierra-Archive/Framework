@@ -593,4 +593,3 @@ class Email
     return strtr(filter_var($data, FILTER_SANITIZE_STRING), $rule);
   }
 }
-?>

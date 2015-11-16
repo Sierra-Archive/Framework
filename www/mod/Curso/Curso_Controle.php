@@ -17,4 +17,3 @@ class Curso_Controle extends \Framework\App\Controle
         parent::__construct();
     }
 }
-?>

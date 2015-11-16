@@ -1645,7 +1645,7 @@ class Visual
      * 
      * Funcionalidades: cria uma tabela no layoult
      * 
-     * @param array $tabela Array com a Tabela ja Prédefinida
+     * @param array $table Array com a Tabela ja Prédefinida
      * @param varchar $style Folha de Estilos Opcional
      * @param bolean $blocar Se Add ou não ao bloco
      * @param bolean $apagado1 Se Apaga ou nao a PRimeira coluna
@@ -1656,7 +1656,7 @@ class Visual
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @Version 0.2.2
      */
-    public function Show_Tabela_DataTable($tabela, $style='', $blocar= TRUE, $apagado1 = FALSE, $aaSorting=Array(Array(0,'asc')), $ColunasOrd = FALSE) {
+    public function Show_Tabela_DataTable($table, $style='', $blocar= TRUE, $apagado1 = FALSE, $aaSorting=Array(Array(0,'asc')), $ColunasOrd = FALSE) {
         $aaSortingtxt = '';
         $i = 0;
         if (is_array($aaSorting)) {
@@ -1669,7 +1669,7 @@ class Visual
         $config = Array(
             'Tipo'      => 'Dinamica',
             'Opcao'     => Array(
-                'Tabela'         => $tabela,
+                'Tabela'         => $table,
                 'Style'          => $style,
                 'Apagado1'       => $apagado1,
                 'aaSorting'      => $aaSortingtxt,
@@ -1686,7 +1686,7 @@ class Visual
      * Criação de Data Table com Muitos Dados
      * Só Carrega o Necessário
      * 
-     * @param array $tabela Array com a Tabela ja Prédefinida
+     * @param array $table Array com a Tabela ja Prédefinida
      * @param varchar $url Url que estará os Dados do Modelo que retornará os Dados
      * @param varchar $style Folha de Estilos Opcional
      * @param bolean $blocar Se Add ou não ao bloco
@@ -1695,7 +1695,7 @@ class Visual
      * @param bolean $ColunasOrd Se possue ordenação de colunas
      * @return string Retorna HTML ou se Blocar, um true
      */
-    public function Show_Tabela_DataTable_Massiva($tabela, $url = FALSE, $style='', $blocar= TRUE, $apagado1 = FALSE, $aaSorting=Array(Array(0,'asc')), $ColunasOrd = FALSE) {
+    public function Show_Tabela_DataTable_Massiva($table, $url = FALSE, $style='', $blocar= TRUE, $apagado1 = FALSE, $aaSorting=Array(Array(0,'asc')), $ColunasOrd = FALSE) {
        if ($url === FALSE) {
            $url = filter_input(INPUT_GET, 'url', FILTER_SANITIZE_URL);
        }
@@ -1712,7 +1712,7 @@ class Visual
         $config = Array(
             'Tipo'      => 'Massiva',
             'Opcao'     => Array(
-                'Tabela'         => $tabela,
+                'Tabela'         => $table,
                 'Url'            => 'Modelo/'.$url,
                 'Style'          => $style,
                 'Apagado1'       => $apagado1,
@@ -2245,7 +2245,7 @@ class Visual
     /**
      * 
      * @param type $array
-     * @param type $tabela
+     * @param type $table
      * @param type $i
      * @param type $nivel
      * @return type
@@ -2253,7 +2253,7 @@ class Visual
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Categorias_ShowTab(&$array,&$tabela, $i=0, $nivel=0) {
+    public function Categorias_ShowTab(&$array,&$table, $i=0, $nivel=0) {
         $antecipa = $nivel;
         $nomeantes = '';
         $j = 0;
@@ -2283,7 +2283,7 @@ class Visual
                         }
                     }
                 }
-                $tabela->addcorpo(array(
+                $table->addcorpo(array(
                     array("nome" => '#'.$valor['id']),
                     array("nome" => $nomeantes.$valor['nome'], "class" => $class),
                     array("nome" => $acesso, "class" => $class),
@@ -2293,7 +2293,7 @@ class Visual
                 ));
                 ++$i;
                 if (!empty($array[$j]['filhos'])) {
-                    $i = $this->Categorias_ShowTab($array[$j]['filhos'], $tabela, $i, $nivel+1);
+                    $i = $this->Categorias_ShowTab($array[$j]['filhos'], $table, $i, $nivel+1);
                 }
                 ++$j;
               }
@@ -2392,4 +2392,4 @@ class Visual
          ));
     }
 }
-?>
+

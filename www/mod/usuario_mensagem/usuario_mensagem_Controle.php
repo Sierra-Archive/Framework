@@ -122,44 +122,44 @@ class usuario_mensagem_Controle extends \Framework\App\Controle
         
         $perm_finalizar = $_Registro->_Acl->Get_Permissao_Url('usuario_mensagem/Suporte/Finalizar');
         $perm_view = $_Registro->_Acl->Get_Permissao_Url('usuario_mensagem/Suporte/VisualizadordeMensagem');
-        $perm_editar = $_Registro->_Acl->Get_Permissao_Url('usuario_mensagem/Admin/Mensagem_Editar');
-        $perm_del = $_Registro->_Acl->Get_Permissao_Url('usuario_mensagem/Admin/Mensagem_Del');
+        $permissionEdit = $_Registro->_Acl->Get_Permissao_Url('usuario_mensagem/Admin/Mensagem_Editar');
+        $permissionDelete = $_Registro->_Acl->Get_Permissao_Url('usuario_mensagem/Admin/Mensagem_Del');
         
         foreach ($mensagens as &$valor) {
             if ($valor->lido === FALSE) {
                 $valor->assunto2                = '<b>'.$valor->assunto2.'</b>';
             }
-            $tabela['Protocolo'][$i]            = '#'.$valor->id;
-            $tabela['Cliente'][$i]              = $valor->cliente2;
-            if ($admin==1) $tabela['De'][$i]     = $valor->escritor_nome;
-            $tabela['Assunto'][$i]              = $valor->assunto2;
-            $tabela['Tipo'][$i]                 = $label($valor->tipo);
+            $table['Protocolo'][$i]            = '#'.$valor->id;
+            $table['Cliente'][$i]              = $valor->cliente2;
+            if ($admin==1) $table['De'][$i]     = $valor->escritor_nome;
+            $table['Assunto'][$i]              = $valor->assunto2;
+            $table['Tipo'][$i]                 = $label($valor->tipo);
             if ($valor->datapassada==1) {
-                $tabela['Últ. Alteração'][$i]   = $valor->datapassada.' hora atrás';
+                $table['Últ. Alteração'][$i]   = $valor->datapassada.' hora atrás';
             } else {
-                $tabela['Últ. Alteração'][$i]   = $valor->datapassada.' horas atrás';
+                $table['Últ. Alteração'][$i]   = $valor->datapassada.' horas atrás';
             }
             
-            $tabela['Data de Criação'][$i]      = $valor->log_date_add; //date_replace($valor->log_date_add, "d/m/y | H:i");
-            $tabela['Ultima Modificação'][$i]   = $valor->log_date_edit; //date_replace($valor->log_date_edit, "d/m/y | H:i");
+            $table['Data de Criação'][$i]      = $valor->log_date_add; //date_replace($valor->log_date_add, "d/m/y | H:i");
+            $table['Ultima Modificação'][$i]   = $valor->log_date_edit; //date_replace($valor->log_date_edit, "d/m/y | H:i");
             if ($valor->tipo!='Finalizado') {
-                $tabela['Visualizar Mensagem'][$i]  = $Visual->Tema_Elementos_Btn('Personalizado' ,    Array('Finalizar Mensagem'         ,'usuario_mensagem/Suporte/Finalizar/'.$valor->id.'/'    , '', 'download', 'inverse'), $perm_finalizar);
+                $table['Visualizar Mensagem'][$i]  = $Visual->Tema_Elementos_Btn('Personalizado' ,    Array('Finalizar Mensagem'         ,'usuario_mensagem/Suporte/Finalizar/'.$valor->id.'/'    , '', 'download', 'inverse'), $perm_finalizar);
             } else {
-                $tabela['Visualizar Mensagem'][$i] = '';
+                $table['Visualizar Mensagem'][$i] = '';
             }
-            $tabela['Visualizar Mensagem'][$i]  .= $Visual->Tema_Elementos_Btn('Visualizar' ,    Array('Visualizar Mensagem'         ,'usuario_mensagem/Suporte/VisualizadordeMensagem/'.$valor->id.'/'    , ''), $perm_view).
-                                                  $Visual->Tema_Elementos_Btn('Editar'     ,    Array('Editar Mensagem'             ,'usuario_mensagem/Admin/Mensagem_Editar/'.$valor->id.'/'    , ''), $perm_editar).
-                                                  $Visual->Tema_Elementos_Btn('Deletar'    ,    Array('Deletar Mensagem'            ,'usuario_mensagem/Admin/Mensagem_Del/'.$valor->id.'/'     ,'Deseja realmente deletar essa Mensagem ?'), $perm_del);
+            $table['Visualizar Mensagem'][$i]  .= $Visual->Tema_Elementos_Btn('Visualizar' ,    Array('Visualizar Mensagem'         ,'usuario_mensagem/Suporte/VisualizadordeMensagem/'.$valor->id.'/'    , ''), $perm_view).
+                                                  $Visual->Tema_Elementos_Btn('Editar'     ,    Array('Editar Mensagem'             ,'usuario_mensagem/Admin/Mensagem_Editar/'.$valor->id.'/'    , ''), $permissionEdit).
+                                                  $Visual->Tema_Elementos_Btn('Deletar'    ,    Array('Deletar Mensagem'            ,'usuario_mensagem/Admin/Mensagem_Del/'.$valor->id.'/'     ,'Deseja realmente deletar essa Mensagem ?'), $permissionDelete);
             ++$i;
         }
-        $Visual->Show_Tabela_DataTable($tabela, '', TRUE, FALSE,Array(Array(1,'asc')));
-        unset($tabela);
+        $Visual->Show_Tabela_DataTable($table, '', TRUE, FALSE,Array(Array(1,'asc')));
+        unset($table);
         return $i;
     }
     public function MensagemExibir($mensagem) {
         $id = (int) $mensagem;
         $mensagens = Array();
-        $tabela = Array();
+        $table = Array();
             $i = 0;
         $amensagem = $this->_Modelo->Mensagem_Retorna($mensagens, $id, 1);
         usuario_mensagem_SuporteControle::Endereco_Suporte_Listar(FALSE, $id);
@@ -169,16 +169,16 @@ class usuario_mensagem_Controle extends \Framework\App\Controle
         if (\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_mensagem_Obs')) {
             $where = Array('id'=>$amensagem->cliente);
             $usuario = $this->_Modelo->db->Sql_Select('Usuario', $where,1);
-            $tabela['Mensagem'][$i] = '<b>'.$amensagem->cliente2.':</b> '.$usuario->obs;
-            $tabela['Data'][$i] = $usuario->log_date_add;
+            $table['Mensagem'][$i] = '<b>'.$amensagem->cliente2.':</b> '.$usuario->obs;
+            $table['Data'][$i] = $usuario->log_date_add;
             ++$i;
         }
         // Continua
         if ($mensagens->is_empty==NULL) {
             $mensagens->rewind();
             while ($mensagens->valid) {
-                $tabela['Mensagem'][$i] = '<b>'.$mensagens->current->escritor_nome.':</b> '.$mensagens->current->resposta;
-                $tabela['Data'][$i] = $mensagens->current->log_date_add;
+                $table['Mensagem'][$i] = '<b>'.$mensagens->current->escritor_nome.':</b> '.$mensagens->current->resposta;
+                $table['Data'][$i] = $mensagens->current->log_date_add;
                 ++$i;
                 $mensagens->next();
             }
@@ -195,10 +195,10 @@ class usuario_mensagem_Controle extends \Framework\App\Controle
                 '<br><b>Validade:</b> '.$amensagem->validade.
                 '<br><b>Fabricacao:</b> '.$amensagem->fabricacao;
             }
-            $this->_Visual->Show_Tabela_DataTable($tabela, '', TRUE, FALSE,Array(Array(1,'asc')));
+            $this->_Visual->Show_Tabela_DataTable($table, '', TRUE, FALSE,Array(Array(1,'asc')));
             $this->_Visual->Blocar('<h3>Informações Adicionais:</h3>'.$info);
             $this->_Visual->Bloco_Unico_CriaJanela($titulo, '',60);
-            unset($tabela);
+            unset($table);
         }
     }
     static function Mensagem_formulario_Static($cliente=0) {
@@ -277,11 +277,11 @@ class usuario_mensagem_Controle extends \Framework\App\Controle
         $sucesso =  $this->_Modelo->db->Sql_Insert($objeto);
         $titulo     = __('Mensagem inserida com Sucesso');
         $dao        = 'Usuario_Mensagem';
-        $funcao     = FALSE;
+        $function     = FALSE;
         $sucesso1   = __('Mensagem inserida com Sucesso');
         $sucesso2   = 'Solicitação de '.$paranome.' foi enviada com sucesso';
         $alterar    = Array('escritor'=>\Framework\App\Acl::Usuario_GetID_Static(),'escritor_nome'=>$this->_Acl->logado_usuario->nome);
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);  
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);  
         
         
         $identificador  = $this->_Modelo->db->Sql_Select('Usuario_Mensagem', '',1,'id DESC');

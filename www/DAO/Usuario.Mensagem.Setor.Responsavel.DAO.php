@@ -73,4 +73,4 @@ final Class Usuario_Mensagem_Setor_Responsavel_DAO extends Framework\App\Dao
         );
     }
 }
-?>
+

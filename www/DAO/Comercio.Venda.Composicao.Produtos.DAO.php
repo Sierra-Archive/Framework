@@ -97,4 +97,4 @@ final Class Comercio_Venda_Composicao_Produtos_DAO extends Framework\App\Dao
         );
     }
 }
-?>
+

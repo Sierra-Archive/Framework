@@ -331,4 +331,4 @@ final Class Sistema_Menu_DAO extends Framework\App\Dao
         );
     }
 }
-?>
+

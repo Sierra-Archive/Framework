@@ -4,4 +4,3 @@ class Desenvolvimento_Controle extends \Framework\App\Controle {
         parent::__construct();
     } 
 }
-?>

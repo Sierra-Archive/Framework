@@ -59,24 +59,24 @@ class comercio_EstoqueModelo extends comercio_Modelo
         $primaryKey = 'id';
         
         
-        $perm_editar = $this->_Registro->_Acl->Get_Permissao_Url('comercio/Estoque/Material_Entrada_Edit');
-        $perm_del = $this->_Registro->_Acl->Get_Permissao_Url('comercio/Estoque/Material_Entrada_Del');
+        $permissionEdit = $this->_Registro->_Acl->Get_Permissao_Url('comercio/Estoque/Material_Entrada_Edit');
+        $permissionDelete = $this->_Registro->_Acl->Get_Permissao_Url('comercio/Estoque/Material_Entrada_Del');
         
-        if ($perm_editar && $perm_del) {
-            $funcao = function( $d, $row ) {
+        if ($permissionEdit && $permissionDelete) {
+            $function = function( $d, $row ) {
                 return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Entrada de NFE'        ,'comercio/Estoque/Material_Entrada_Edit/'.$d.'/'    , ''),TRUE).
                        Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Entrada de NFE'       ,'comercio/Estoque/Material_Entrada_Del/'.$d.'/'     ,'Deseja realmente deletar essa Entrada de NFE ?'),TRUE);
             };
-        } else if ($perm_editar) {
-            $funcao = function( $d, $row ) {
+        } else if ($permissionEdit) {
+            $function = function( $d, $row ) {
                 return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Entrada de NFE'        ,'comercio/Estoque/Material_Entrada_Edit/'.$d.'/'    , ''),TRUE);
             };
-        } else if ($perm_del) {
-            $funcao = function( $d, $row ) {
+        } else if ($permissionDelete) {
+            $function = function( $d, $row ) {
                 return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Entrada de NFE'       ,'comercio/Estoque/Material_Entrada_Del/'.$d.'/'     ,'Deseja realmente deletar essa Entrada de NFE ?'),TRUE);
             };
         } else {
-            $funcao = function( $d, $row ) {
+            $function = function( $d, $row ) {
                 return '';
             };
         }
@@ -92,13 +92,13 @@ class comercio_EstoqueModelo extends comercio_Modelo
                 } else {
                     $documento = __('Recibo');
                 }
-                $tabela['Número'][$i]           = $valor->numero;
-                $tabela['Documento'][$i]        = $documento;
-                $tabela['Fornecedor'][$i]       = $valor->fornecedor2;
-                $tabela['Data'][$i]             = $valor->data;
-                $tabela['Valor'][$i]            = $valor->valor;
-                $tabela['Funções'][$i]   = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Entrada de NFE'        ,'comercio/Estoque/Material_Entrada_Edit/'.$valor->id.'/'    , ''), $perm_editar).
-                                           $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Entrada de NFE'       ,'comercio/Estoque/Material_Entrada_Del/'.$valor->id.'/'     ,'Deseja realmente deletar essa Entrada de NFE ?'), $perm_del);
+                $table['Número'][$i]           = $valor->numero;
+                $table['Documento'][$i]        = $documento;
+                $table['Fornecedor'][$i]       = $valor->fornecedor2;
+                $table['Data'][$i]             = $valor->data;
+                $table['Valor'][$i]            = $valor->valor;
+                $table['Funções'][$i]   = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Entrada de NFE'        ,'comercio/Estoque/Material_Entrada_Edit/'.$valor->id.'/'    , ''), $permissionEdit).
+                                           $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Entrada de NFE'       ,'comercio/Estoque/Material_Entrada_Del/'.$valor->id.'/'     ,'Deseja realmente deletar essa Entrada de NFE ?'), $permissionDelete);
                 ++$i;*/
         $columns = array(
             array( 'db' => 'numero', 'dt' => 0 ),
@@ -116,7 +116,7 @@ class comercio_EstoqueModelo extends comercio_Modelo
             array( 'db' => 'data', 'dt' => 3 ),
             array( 'db' => 'valor', 'dt' => 4 ),
             array( 'db' => 'id', 'dt' => 5,
-                'formatter' => $funcao)
+                'formatter' => $function)
             /*array(
                 'db'        => 'start_date',
                 'dt'        => 4,

@@ -72,4 +72,4 @@ final Class Foto_DAO extends Framework\App\Dao
         );
     }
 }
-?>
+

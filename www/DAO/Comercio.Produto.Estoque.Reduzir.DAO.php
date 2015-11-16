@@ -130,4 +130,3 @@ final Class Comercio_Produto_Estoque_Reduzir_DAO extends Framework\App\Dao
         );
     }
 }
-?>

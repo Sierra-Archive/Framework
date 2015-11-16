@@ -17,4 +17,3 @@ class Agenda_PastaVisual extends Agenda_Visual
       parent::__construct();
     }
 }
-?>

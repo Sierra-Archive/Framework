@@ -18,4 +18,3 @@ class Financeiro_UsuarioModelo extends Financeiro_Modelo
       parent::__construct();
     }
 }
-?>

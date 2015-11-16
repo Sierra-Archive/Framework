@@ -545,4 +545,4 @@ final Class Social_DAO extends Framework\App\Dao
         );
     }
 }
-?>
+

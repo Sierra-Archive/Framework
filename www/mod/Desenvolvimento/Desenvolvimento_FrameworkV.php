@@ -17,4 +17,3 @@ class Desenvolvimento_FrameworkVisual extends Desenvolvimento_Visual
       parent::__construct();
     }
 }
-?>

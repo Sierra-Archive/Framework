@@ -27,14 +27,14 @@ class usuario_ExpedienteModelo extends usuario_Modelo
     public function Expedientes($status=0, $almoco = FALSE) {
         // Table's primary key
         $primaryKey = 'id';
-        $tabela = 'Usuario_Expediente';
+        $table = 'Usuario_Expediente';
         $where = 'status=\''.$status.'\'';
         
         
-        $perm_statusalterar = $this->_Registro->_Acl->Get_Permissao_Url('usuario/Expediente/Expedientes_StatusAlterar');
+        $permissionStatusChange = $this->_Registro->_Acl->Get_Permissao_Url('usuario/Expediente/Expedientes_StatusAlterar');
         
         $function = '';
-        if ($perm_statusalterar) {
+        if ($permissionStatusChange) {
             if ($status==0) {
                 $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Personalizado\'     ,Array(__(\'Colocar em Almoço\')        ,\'usuario/Expediente/Expedientes_StatusAlterar/\'.$d.\'/1/\'    ,\'\',\'cutlery\',\'success\'),TRUE);';
                 $function .= ' $html .= \' \'.Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Personalizado\'     ,Array(__(\'Finalizar\')        ,\'usuario/Expediente/Expedientes_StatusAlterar/\'.$d.\'/2/\'    ,\'\',\'home\',\'warning\'),TRUE);';
@@ -87,7 +87,7 @@ class usuario_ExpedienteModelo extends usuario_Modelo
         ); //'Funções';
                 
         echo json_encode(
-            \Framework\Classes\Datatable::complex( $_GET, Framework\App\Registro::getInstacia()->_Conexao, $tabela, $primaryKey, $columns, null, $where)
+            \Framework\Classes\Datatable::complex( $_GET, Framework\App\Registro::getInstacia()->_Conexao, $table, $primaryKey, $columns, null, $where)
         );
     }
 }

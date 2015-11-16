@@ -142,8 +142,8 @@ class SierraTec_Manutencao {
         }
         
         // Adiciona as COnstantes a Classe
-        $tabelas = &\Framework\App\Conexao::$tabelas;
-        foreach($tabelas as &$valor) {
+        $tables = &\Framework\App\Conexao::$tables;
+        foreach($tables as &$valor) {
             if (in_array($valor['nome'], $dependencia_dao_CONSTANTE)) {
                 //var_dump($valor['nome'], $valor['class']); echo "\n\n";
                 $dependencia_dao[$valor['class']] = $valor['class'];
@@ -316,8 +316,8 @@ class SierraTec_Manutencao {
      * @param type $antigo Nome Novo
      */
     public function Tranferencia_DB_Servidor($novo, $antigo = FALSE) {
-        $tabelas = &\Framework\App\Conexao::$tabelas;
-        foreach($tabelas as $indice=>&$valor) {
+        $tables = &\Framework\App\Conexao::$tables;
+        foreach($tables as $indice=>&$valor) {
             if ($valor['static'] === FALSE) {
                 if ($antigo !== FALSE) {
                     $this->_Conexao->query('UPDATE '.$indice.' SET servidor=\''.$novo.'\' WHERE servidor=\''.$antigo.'\'');
@@ -600,7 +600,7 @@ class SierraTec_Manutencao {
         $metodos = Array();
         //Procura DAO SENDO USADO
         foreach($metodos as $valor) {
-            foreach($tabelas as $valor2) {
+            foreach($tables as $valor2) {
                 $this->Cod_Busca_Valor($valor, $valor2);
             }
             $this->Cod_Busca_ClassesUsadas($valor);

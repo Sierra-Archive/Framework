@@ -117,19 +117,19 @@ class social_PersonaControle extends social_Controle
                     } else {
                         $sexo = __('Feminino');
                     }
-                $tabela['Foto'][$i]             = $face;
-                $tabela['Nome'][$i]             = $valor->nome;
-                $tabela['Sexo'][$i]             = $sexo;
-                $tabela['Funções'][$i]          = $this->_Visual->Tema_Elementos_Btn('Zoom'       ,Array('Visualizar Ficada de Pessoa'        ,'social/Persona/Personas_View/'.$valor->id.'/'    , '')).
+                $table['Foto'][$i]             = $face;
+                $table['Nome'][$i]             = $valor->nome;
+                $table['Sexo'][$i]             = $sexo;
+                $table['Funções'][$i]          = $this->_Visual->Tema_Elementos_Btn('Zoom'       ,Array('Visualizar Ficada de Pessoa'        ,'social/Persona/Personas_View/'.$valor->id.'/'    , '')).
                                                   $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Pessoa'        ,'social/Persona/Personas_Edit/'.$valor->id.'/'    , '')).
                                                   $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Pessoa'       ,'social/Persona/Personas_Del/'.$valor->id.'/'     ,'Deseja realmente deletar essa Pessoa ?'));
                 ++$i;
             }
             if ($export !== FALSE) {
-                self::Export_Todos($export, $tabela, 'Social - Pessoas');
+                self::Export_Todos($export, $table, 'Social - Pessoas');
             } else {
                 $this->_Visual->Show_Tabela_DataTable(
-                    $tabela,     // Array Com a Tabela
+                    $table,     // Array Com a Tabela
                     '',          // style extra
                     true,        // true -> Add ao Bloco, false => Retorna html
                     FALSE,        // Apagar primeira coluna ?
@@ -140,7 +140,7 @@ class social_PersonaControle extends social_Controle
                     )
                 );
             }
-            unset($tabela);
+            unset($table);
         } else {          
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhuma Pessoa</font></b></center>');
         }
@@ -176,11 +176,11 @@ class social_PersonaControle extends social_Controle
     public function Personas_Add2() {
         $titulo     = __('Pessoa adicionada com Sucesso');
         $dao        = 'Social';
-        $funcao     = '$this->Personas();';
+        $function     = '$this->Personas();';
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = __('Pessoa cadastrada com sucesso.');
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);
     }
     /**
      * 
@@ -210,11 +210,11 @@ class social_PersonaControle extends social_Controle
     public function Personas_Edit2($id) {
         $titulo     = __('Pessoa editada com Sucesso');
         $dao        = Array('Social', $id);
-        $funcao     = '$this->Personas();';
+        $function     = '$this->Personas();';
         $sucesso1   = __('Pessoa Alterada com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);   
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);   
     }
     /**
      * 
@@ -298,15 +298,15 @@ class social_PersonaControle extends social_Controle
             if (is_object($comentario)) $comentario = Array(0=>$comentario);
             reset($comentario);
             foreach ($comentario as $indice=>&$valor) {
-                $tabela['#Id'][$i]          =   '#'.$valor->id;
-                $tabela['Comentário'][$i]   =   nl2br($valor->comentario);
-                $tabela['Data'][$i]         =   $valor->log_date_add;
-                $tabela['Funções'][$i]      =   $this->_Visual->Tema_Elementos_Btn('Editar'          ,Array('Editar Comentário de Persona'        ,'social/Persona/Personas_Comentario_Edit/'.$persona_id.'/'.$valor->id.'/'    , '')).
+                $table['#Id'][$i]          =   '#'.$valor->id;
+                $table['Comentário'][$i]   =   nl2br($valor->comentario);
+                $table['Data'][$i]         =   $valor->log_date_add;
+                $table['Funções'][$i]      =   $this->_Visual->Tema_Elementos_Btn('Editar'          ,Array('Editar Comentário de Persona'        ,'social/Persona/Personas_Comentario_Edit/'.$persona_id.'/'.$valor->id.'/'    , '')).
                                                 $this->_Visual->Tema_Elementos_Btn('Deletar'         ,Array('Deletar Comentário de Persona'       ,'social/Persona/Personas_Comentario_Del/'.$persona_id.'/'.$valor->id.'/'     ,'Deseja realmente deletar esse Comentário desse Persona ?'));
                 ++$i;
             }
-            $this->_Visual->Show_Tabela_DataTable($tabela, '', true, FALSE, Array(Array(0,'desc')));
-            unset($tabela);
+            $this->_Visual->Show_Tabela_DataTable($table, '', true, FALSE, Array(Array(0,'desc')));
+            unset($table);
         } else {          
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Comentário do Persona</font></b></center>');
         }
@@ -356,11 +356,11 @@ class social_PersonaControle extends social_Controle
         if ($persona_id === FALSE) return FALSE;
         $titulo     = __('Comentário do Persona Adicionado com Sucesso');
         $dao        = 'Social_Comentario';
-        $funcao     = '$this->Personas_View('.$persona_id.');';
+        $function     = '$this->Personas_View('.$persona_id.');';
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = __('Comentário de Persona cadastrado com sucesso.');
         $alterar    = Array('persona'=>$persona_id);
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);
     }
     /**
      * 
@@ -399,11 +399,11 @@ class social_PersonaControle extends social_Controle
         if ($id         == 0   ) return FALSE;
         $titulo     = __('Comentário de Persona Editado com Sucesso');
         $dao        = Array('Social_Comentario', $id);
-        $funcao     = '$this->Personas_View('.$persona_id.');';
+        $function     = '$this->Personas_View('.$persona_id.');';
         $sucesso1   = __('Comentário de Persona Alterado com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array('persona'=>$persona_id);
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);      
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);      
     }
     /**
      * 
@@ -461,21 +461,21 @@ class social_PersonaControle extends social_Controle
             reset($personas);
             foreach ($personas as $indice=>&$valor) {
                 if ($valor->persona1==$persona_id) {
-                    $tabela['Nome'][$i]        = $valor->persona22;
+                    $table['Nome'][$i]        = $valor->persona22;
                 } else if ($valor->persona2==$persona_id) {
-                    $tabela['Nome'][$i]           = $valor->persona12;
+                    $table['Nome'][$i]           = $valor->persona12;
                 } else {
-                    $tabela['Nome de Um'][$i]           = $valor->persona12;
-                    $tabela['Nome do Outro'][$i]        = $valor->persona22;
+                    $table['Nome de Um'][$i]           = $valor->persona12;
+                    $table['Nome do Outro'][$i]        = $valor->persona22;
                 }
-                //$tabela['Data'][$i]             = $valor->data;
-                $tabela['Funções'][$i]          = $this->_Visual->Tema_Elementos_Btn('Zoom'       ,Array('Visualizar Ficada de Pessoa'        ,'social/Persona/Ficou_View/'.$valor->id.'/'.$persona_id  , '')).
+                //$table['Data'][$i]             = $valor->data;
+                $table['Funções'][$i]          = $this->_Visual->Tema_Elementos_Btn('Zoom'       ,Array('Visualizar Ficada de Pessoa'        ,'social/Persona/Ficou_View/'.$valor->id.'/'.$persona_id  , '')).
                                                   $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Ficada de Pessoa'        ,'social/Persona/Ficou_Edit/'.$valor->id.'/'.$persona_id      , '')).
                                                   $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Ficada de Pessoa'       ,'social/Persona/Ficou_Del/'.$valor->id.'/'.$persona_id       ,'Deseja realmente deletar essa Ficada de Pessoa ?'));
                 ++$i;
             }
-            $this->_Visual->Show_Tabela_DataTable($tabela);
-            unset($tabela);
+            $this->_Visual->Show_Tabela_DataTable($table);
+            unset($table);
         } else {          
             $this->_Visual->Blocar('<center><b><p class="text-error">'.__('Nenhuma Ficada de Pessoa').'</p></b></center>');
         }
@@ -524,15 +524,15 @@ class social_PersonaControle extends social_Controle
         $titulo     = __('Ficada de Pessoa adicionada com Sucesso');
         $dao        = 'Social_Ficou';
         if ($persona_id === FALSE) {
-            $funcao     = '$this->Ficou();';
+            $function     = '$this->Ficou();';
             $alterar    = Array();
         } else {
-            $funcao     = '$this->Personas_View('.$persona_id.');';
+            $function     = '$this->Personas_View('.$persona_id.');';
             $alterar    = Array('persona1'=>$persona_id);
         }
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = __('Ficada de Pessoa cadastrada com sucesso.');
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);
     }
     /**
      * 
@@ -569,14 +569,14 @@ class social_PersonaControle extends social_Controle
         $titulo     = __('Ficada de Pessoa editada com Sucesso');
         $dao        = Array('Social_Ficou', $id);
         if ($persona_id === FALSE) {
-            $funcao     = '$this->Ficou();';
+            $function     = '$this->Ficou();';
         } else {
-            $funcao     = '$this->Personas_View('.$persona_id.');';
+            $function     = '$this->Personas_View('.$persona_id.');';
         }
         $sucesso1   = __('Ficada de Pessoa Alterada com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);   
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);   
     }
     /**
      * 
@@ -681,19 +681,19 @@ class social_PersonaControle extends social_Controle
             if (is_object($comentario)) $comentario = Array(0=>$comentario);
             reset($comentario);
             foreach ($comentario as $indice=>&$valor) {
-                //$tabela['#Id'][$i]        = '#'.$valor->id;
-                $tabela['Comentário'][$i]   =   $valor->comentario;
-                $tabela['Data'][$i]         =   $valor->log_date_add;
-                $tabela['Funções'][$i]      =   $this->_Visual->Tema_Elementos_Btn('Editar'          ,Array('Editar Comentário de Persona'        ,'social/Persona/Ficou_Comentario_Edit/'.$ficada_id.'/'.$valor->id.'/'    , '')).
+                //$table['#Id'][$i]        = '#'.$valor->id;
+                $table['Comentário'][$i]   =   $valor->comentario;
+                $table['Data'][$i]         =   $valor->log_date_add;
+                $table['Funções'][$i]      =   $this->_Visual->Tema_Elementos_Btn('Editar'          ,Array('Editar Comentário de Persona'        ,'social/Persona/Ficou_Comentario_Edit/'.$ficada_id.'/'.$valor->id.'/'    , '')).
                                                 $this->_Visual->Tema_Elementos_Btn('Deletar'         ,Array('Deletar Comentário de Persona'       ,'social/Persona/Ficou_Comentario_Del/'.$ficada_id.'/'.$valor->id.'/'     ,'Deseja realmente deletar esse Comentário?'));
                 ++$i;
             }
             if ($export !== FALSE) {
-                self::Export_Todos($export, $tabela, 'Usuario Social - Ficada (#'.$ficada_id.') Comentários');
+                self::Export_Todos($export, $table, 'Usuario Social - Ficada (#'.$ficada_id.') Comentários');
             } else {
-                $this->_Visual->Show_Tabela_DataTable($tabela);
+                $this->_Visual->Show_Tabela_DataTable($table);
             }
-            unset($tabela);
+            unset($table);
         } else {           
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Comentário</font></b></center>');
         }
@@ -736,11 +736,11 @@ class social_PersonaControle extends social_Controle
         if ($ficada_id === FALSE) return _Sistema_erroControle::Erro_Fluxo('Ficada não informada',404);
         $titulo     = __('Comentário do Ficada Adicionada com Sucesso');
         $dao        = 'Social_Ficou_Comentario';
-        $funcao     = '$this->Ficou_View('.$ficada_id.');';
+        $function     = '$this->Ficou_View('.$ficada_id.');';
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = __('Comentário de Ficada cadastrada com sucesso.');
         $alterar    = Array('ficada'=>$ficada_id);
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);
     }
     /**
      * 
@@ -780,11 +780,11 @@ class social_PersonaControle extends social_Controle
         if ($id         == 0   ) return _Sistema_erroControle::Erro_Fluxo('Comentário não informado',404);
         $titulo     = __('Comentário de Ficada Editada com Sucesso');
         $dao        = Array('Social_Ficou_Comentario', $id);
-        $funcao     = '$this->Ficou_View('.$persona_id.');';
+        $function     = '$this->Ficou_View('.$persona_id.');';
         $sucesso1   = __('Comentário de Ficada Alterada com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array('ficada'=>$persona_id);
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);      
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);      
     }
     /**
      * 

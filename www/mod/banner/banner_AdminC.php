@@ -58,19 +58,19 @@ class banner_AdminControle extends banner_Controle
             reset($banners);
             
             foreach ($banners as $indice=>&$valor) {                
-                $tabela['Id'][$i]        = $valor['id'];
-                $tabela['Foto'][$i]      = $this->_Visual->Show_Upload('banner', 'Admin', 'Banner', 'BannerImagem'.$valor['id'], $valor['foto'],'banner'.DS, $valor['id']);
-                $tabela['Categoria'][$i] = $valor['categoria'];
-                $tabela['Nome'][$i]    = $valor['nome'];
-                $tabela['Url'][$i]       = $valor['url'];
-                $tabela['Ixibições'][$i] = $valor['ixi'].' / '.$valor['limite_ixi'];
-                $tabela['Cliques'][$i]   = $valor['cliq'].' / '.$valor['limite_cliq'];
-                $tabela['Funções'][$i]   = '<a title="Editar Banner" class="lajax explicar-titulo" data-acao="" href="'.URL_PATH.'banner/Admin/Banners_Edit/'.$valor['id'].'/"><img alt'.__('Editar Banner').' src="'.WEB_URL.'img/icons/icon_edit.png"></a> '.
+                $table['Id'][$i]        = $valor['id'];
+                $table['Foto'][$i]      = $this->_Visual->Show_Upload('banner', 'Admin', 'Banner', 'BannerImagem'.$valor['id'], $valor['foto'],'banner'.DS, $valor['id']);
+                $table['Categoria'][$i] = $valor['categoria'];
+                $table['Nome'][$i]    = $valor['nome'];
+                $table['Url'][$i]       = $valor['url'];
+                $table['Ixibições'][$i] = $valor['ixi'].' / '.$valor['limite_ixi'];
+                $table['Cliques'][$i]   = $valor['cliq'].' / '.$valor['limite_cliq'];
+                $table['Funções'][$i]   = '<a title="Editar Banner" class="lajax explicar-titulo" data-acao="" href="'.URL_PATH.'banner/Admin/Banners_Edit/'.$valor['id'].'/"><img alt'.__('Editar Banner').' src="'.WEB_URL.'img/icons/icon_edit.png"></a> '.
                 '<a data-confirma="Deseja realmente deletar esse banner?" title="Deletar Banner" class="lajax explicar-titulo" data-acao="" href="'.URL_PATH.'banner/Admin/Banners_Del/'.$valor['id'].'/"><img alt'.__('Deletar Banner').'  src="'.WEB_URL.'img/icons/icon_bad.png"></a>';
                 ++$i;
             }
-            $this->_Visual->Show_Tabela_DataTable($tabela);
-            unset($tabela);
+            $this->_Visual->Show_Tabela_DataTable($table);
+            unset($table);
         } else {           
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Banner</font></b></center>');
         }
@@ -122,11 +122,11 @@ class banner_AdminControle extends banner_Controle
     public function Banners_Add2() {
         $titulo     = __('Banner Adicionado com Sucesso');
         $dao        = 'Banner';
-        $funcao     = '$this->Main();';
+        $function     = '$this->Main();';
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = __('Banner cadastrada com sucesso.');
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);
     }
     /**
      * 
@@ -155,11 +155,11 @@ class banner_AdminControle extends banner_Controle
     public function Banners_Edit2($id) {
         $titulo     = __('Banner Editado com Sucesso');
         $dao        = Array('Banner', $id);
-        $funcao     = '$this->Main();';
+        $function     = '$this->Main();';
         $sucesso1   = __('Banner Alterado com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);   
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);   
     }
     /**
     * Deleta banner

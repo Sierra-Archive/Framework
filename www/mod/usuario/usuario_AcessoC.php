@@ -120,11 +120,11 @@ class usuario_AcessoControle extends usuario_Controle
         if (is_object($usuarios)) $usuarios = Array(0=>$usuarios);
         if ($usuarios !== FALSE && !empty($usuarios)) {
             reset($usuarios);
-            $perm_editar = $this->_Registro->_Acl->Get_Permissao_Url('usuario/Acesso/UsuariosAcesso_Edit');
+            $permissionEdit = $this->_Registro->_Acl->Get_Permissao_Url('usuario/Acesso/UsuariosAcesso_Edit');
             
             foreach ($usuarios as $indice=>&$valor) {
-                $tabela['#Id'][$i]       = '#'.$valor->id;
-                $tabela['Grupo'][$i]     = $valor->grupo2;
+                $table['#Id'][$i]       = '#'.$valor->id;
+                $table['Grupo'][$i]     = $valor->grupo2;
                 // Atualiza Nome
                 $nome = '';
                 if ($valor->nome!='') {
@@ -135,7 +135,7 @@ class usuario_AcessoControle extends usuario_Controle
                     if ($nome!='') $nome .= '<br>';
                     $nome .= $valor->razao_social;
                 }
-                $tabela['Nome'][$i]      = $nome;
+                $table['Nome'][$i]      = $nome;
                 // Acesso
                 $acl = new \Framework\App\Acl($valor->id);
                 $acl = $acl->getPermissao();
@@ -155,13 +155,13 @@ class usuario_AcessoControle extends usuario_Controle
                 } else {
                     $permissoes = __('Sem Nenhuma Permissão');
                 }
-                $tabela['Acesso'][$i]    = $permissoes;
+                $table['Acesso'][$i]    = $permissoes;
                 // Funcoes
-                $tabela['Funções'][$i]   = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Permissão do Usuario'        ,'usuario/Acesso/UsuariosAcesso_Edit/'.$valor->id.$linkextra    , ''), $perm_editar);
+                $table['Funções'][$i]   = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Permissão do Usuario'        ,'usuario/Acesso/UsuariosAcesso_Edit/'.$valor->id.$linkextra    , ''), $permissionEdit);
                 ++$i;
             }
-            $this->_Visual->Show_Tabela_DataTable($tabela);
-            unset($tabela);
+            $this->_Visual->Show_Tabela_DataTable($table);
+            unset($table);
         } else {           
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Usuário</font></b></center>');
         }
@@ -205,14 +205,14 @@ class usuario_AcessoControle extends usuario_Controle
         $titulo     = __('Usuario Editado com Sucesso');
         $dao        = Array('Usuario', $id);
         if ($tipo=='naocliente') {
-            $funcao     = '$this->Listar_Clientesnao();';
+            $function     = '$this->Listar_Clientesnao();';
         } else /*if ($tipo=='usuario')*/{
-            $funcao     = '$this->Usuarios();';
+            $function     = '$this->Usuarios();';
         }
         $sucesso1   = __('Acesso Alterado com Sucesso.');
         $sucesso2   = $nome.' teve a alteração bem sucedida';
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);   
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);   
     }
 }
 ?>

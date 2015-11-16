@@ -469,4 +469,4 @@ final Class Comercio_Visita_DAO extends Framework\App\Dao
         );
     }
 }
-?>
+

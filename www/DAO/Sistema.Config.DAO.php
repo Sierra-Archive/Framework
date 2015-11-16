@@ -178,4 +178,4 @@ final Class Sistema_Config_DAO extends Framework\App\Dao
         );
     }
 }
-?>
+

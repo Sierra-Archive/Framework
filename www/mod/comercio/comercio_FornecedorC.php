@@ -59,19 +59,19 @@ class comercio_FornecedorControle extends comercio_Controle
     public function Fornecedores($export = FALSE) {
         self::Endereco_Fornecedor(FALSE);
         
-        $tabela_colunas = Array();
+        $table_colunas = Array();
 
-        $tabela_colunas[] = __('Nome');
+        $table_colunas[] = __('Nome');
         // Coloca Preco
         if (\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Fornecedor_Categoria')) {
-            $tabela_colunas[] = __('Tipo de Fornecimento');
+            $table_colunas[] = __('Tipo de Fornecimento');
         }
         
-        $tabela_colunas[] = __('Telefone');
-        $tabela_colunas[] = __('Email');
-        $tabela_colunas[] = __('Funções');
+        $table_colunas[] = __('Telefone');
+        $table_colunas[] = __('Email');
+        $table_colunas[] = __('Funções');
 
-        $this->_Visual->Show_Tabela_DataTable_Massiva($tabela_colunas,'comercio/Fornecedor/Fornecedores');
+        $this->_Visual->Show_Tabela_DataTable_Massiva($table_colunas,'comercio/Fornecedor/Fornecedores');
         $titulo = __('Listagem de Fornecedores').' (<span id="DataTable_Contador">0</span>)';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo, '',10,Array("link"=>"comercio/Fornecedor/Fornecedores_Add",'icon'=>'add', 'nome'=>'Adicionar Fornecedor'));
         
@@ -106,11 +106,11 @@ class comercio_FornecedorControle extends comercio_Controle
     public function Fornecedores_Add2() {
         $titulo     = __('Fornecedor Adicionado com Sucesso');
         $dao        = 'Comercio_Fornecedor';
-        $funcao     = '$this->Fornecedores();';
+        $function     = '$this->Fornecedores();';
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = __('Fornecedor cadastrado com sucesso.');
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);
      
     }
     /**
@@ -142,11 +142,11 @@ class comercio_FornecedorControle extends comercio_Controle
     public function Fornecedores_Edit2($id) {
         $titulo     = __('Fornecedor Editado com Sucesso');
         $dao        = Array('Comercio_Fornecedor', $id);
-        $funcao     = '$this->Fornecedores();';
+        $function     = '$this->Fornecedores();';
         $sucesso1   = __('Fornecedor Alterado com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);      
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);      
     }
     /**
      * 
@@ -288,19 +288,19 @@ class comercio_FornecedorControle extends comercio_Controle
             if (is_object($linhas)) $linhas = Array(0=>$linhas);
             reset($linhas);
             foreach ($linhas as $indice=>&$valor) {
-                //$tabela['#Id'][$i]        = '#'.$valor->id;
-                $tabela['Comentário'][$i]   =   $valor->comentario;
-                $tabela['Data'][$i]         =   $valor->log_date_add;
-                $tabela['Funções'][$i]      =   $this->_Visual->Tema_Elementos_Btn('Editar'          ,Array('Editar Comentário de Fornecedor'        ,'comercio/Fornecedor/Fornecedores_Comentario_Edit/'.$fornecedor_id.'/'.$valor->id.'/'    , '')).
+                //$table['#Id'][$i]        = '#'.$valor->id;
+                $table['Comentário'][$i]   =   $valor->comentario;
+                $table['Data'][$i]         =   $valor->log_date_add;
+                $table['Funções'][$i]      =   $this->_Visual->Tema_Elementos_Btn('Editar'          ,Array('Editar Comentário de Fornecedor'        ,'comercio/Fornecedor/Fornecedores_Comentario_Edit/'.$fornecedor_id.'/'.$valor->id.'/'    , '')).
                                                 $this->_Visual->Tema_Elementos_Btn('Deletar'         ,Array('Deletar Comentário de Fornecedor'       ,'comercio/Fornecedor/Fornecedores_Comentario_Del/'.$fornecedor_id.'/'.$valor->id.'/'     ,'Deseja realmente deletar esse Comentário desse Fornecedor ?'));
                 ++$i;
             }
             if ($export !== FALSE) {
-                self::Export_Todos($export, $tabela, 'Comercio - Fornecedor (#'.$fornecedor_id.') Comentários');
+                self::Export_Todos($export, $table, 'Comercio - Fornecedor (#'.$fornecedor_id.') Comentários');
             } else {
-                $this->_Visual->Show_Tabela_DataTable($tabela);
+                $this->_Visual->Show_Tabela_DataTable($table);
             }
-            unset($tabela);
+            unset($table);
         } else {   
             if ($export !== FALSE) {
                 $erro = __('Nenhum Comentário desse Fornecedor para Exportar');
@@ -351,11 +351,11 @@ class comercio_FornecedorControle extends comercio_Controle
         if ($fornecedor_id === FALSE) return _Sistema_erroControle::Erro_Fluxo('Fornecedor não informado',404);
         $titulo     = __('Comentário do Fornecedor Adicionado com Sucesso');
         $dao        = 'Comercio_Fornecedor_Comentario';
-        $funcao     = '$this->Fornecedores_View('.$fornecedor_id.');';
+        $function     = '$this->Fornecedores_View('.$fornecedor_id.');';
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = __('Comentário do Fornecedor cadastrado com sucesso.');
         $alterar    = Array('fornecedor'=>$fornecedor_id);
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);
     }
     /**
      * 
@@ -389,11 +389,11 @@ class comercio_FornecedorControle extends comercio_Controle
         if ($id            == 0   ) return _Sistema_erroControle::Erro_Fluxo('Comentário não informado',404);
         $titulo     = __('Comentário de Fornecedor Editado com Sucesso');
         $dao        = Array('Comercio_Fornecedor_Comentario', $id);
-        $funcao     = '$this->Fornecedores_View('.$fornecedor_id.');';
+        $function     = '$this->Fornecedores_View('.$fornecedor_id.');';
         $sucesso1   = __('Comentário de Fornecedor Alterado com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array('fornecedor'=>$fornecedor_id);
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);      
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);      
     }
     /**
      * 

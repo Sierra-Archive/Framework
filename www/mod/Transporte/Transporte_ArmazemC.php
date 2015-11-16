@@ -28,20 +28,20 @@ class Transporte_ArmazemControle extends Transporte_Controle
     static function Armazens_Tabela(&$armazem) {
         $Registro   = &\Framework\App\Registro::getInstacia();
         $Visual     = &$Registro->_Visual;
-        $tabela = Array();
+        $table = Array();
         $i = 0;
         if (is_object($armazem)) $armazem = Array(0=>$armazem);reset($armazem);
         $perm_view = $Registro->_Acl->Get_Permissao_Url('Transporte/Armazem/Visualizar');
         foreach ($armazem as &$valor) {                
-            $tabela['Id'][$i]           = '#'.$valor->id;
-            $tabela['Razão Social'][$i] = $valor->usuario2;
-            $tabela['Categoria'][$i]    = $valor->categoria2;
-            $tabela['Observação'][$i]   = $valor->obs;
-            $tabela['Visualizar'][$i]   = $Visual->Tema_Elementos_Btn('Visualizar'     ,Array('Visualizar'        ,'Transporte/Armazem/Visualizar/'.$valor->id    , ''), $perm_view);
+            $table['Id'][$i]           = '#'.$valor->id;
+            $table['Razão Social'][$i] = $valor->usuario2;
+            $table['Categoria'][$i]    = $valor->categoria2;
+            $table['Observação'][$i]   = $valor->obs;
+            $table['Visualizar'][$i]   = $Visual->Tema_Elementos_Btn('Visualizar'     ,Array('Visualizar'        ,'Transporte/Armazem/Visualizar/'.$valor->id    , ''), $perm_view);
             
             ++$i;
         }
-        return Array($tabela, $i);
+        return Array($table, $i);
     }
     public function Visualizar($id, $export = FALSE) {
         
@@ -63,13 +63,13 @@ class Transporte_ArmazemControle extends Transporte_Controle
         $armazem = $this->_Modelo->db->Sql_Select('Transporte_Armazem');
         if (is_object($armazem)) $armazem = Array(0=>$armazem);
         if ($armazem !== FALSE && !empty($armazem)) {
-            list($tabela, $i) = self::Armazens_Tabela($armazem);
+            list($table, $i) = self::Armazens_Tabela($armazem);
             // SE exportar ou mostra em tabela
             if ($export !== FALSE) {
-                self::Export_Todos($export, $tabela, 'Armazens');
+                self::Export_Todos($export, $table, 'Armazens');
             } else {
                 $this->_Visual->Show_Tabela_DataTable(
-                    $tabela,     // Array Com a Tabela
+                    $table,     // Array Com a Tabela
                     '',          // style extra
                     true,        // true -> Add ao Bloco, false => Retorna html
                     FALSE,        // Apagar primeira coluna ?
@@ -80,7 +80,7 @@ class Transporte_ArmazemControle extends Transporte_Controle
                     )
                 );
             }
-            unset($tabela);
+            unset($table);
         } else {
             if ($export !== FALSE) {
                 $mensagem = __('Nenhum Armazém Cadastrado para exportar');
@@ -178,13 +178,13 @@ class Transporte_ArmazemControle extends Transporte_Controle
         }
         $titulo     = __('Dados Atualizados com Sucesso');
         $dao        = 'Transporte_Armazem';
-        $funcao     = 'Transporte_ArmazemControle::Painel_Armazem(\''.$camada.'\',\'false\');';
+        $function     = 'Transporte_ArmazemControle::Painel_Armazem(\''.$camada.'\',\'false\');';
         $sucesso1   = __('Atualização bem sucedida');
         $sucesso2   = __('Dados Atualizados com sucesso.');
         $alterar    = Array(
             'usuario'        =>  $this->_Acl->Usuario_GetID(),
         );
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);
     }
 }
 ?>

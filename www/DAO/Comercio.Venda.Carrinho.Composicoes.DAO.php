@@ -124,4 +124,4 @@ final Class Comercio_Venda_Carrinho_Composicoes_DAO extends Framework\App\Dao
         );
     }
 }
-?>
+

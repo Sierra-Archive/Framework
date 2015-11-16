@@ -66,7 +66,7 @@ class predial_CorreioControle extends predial_Controle
         $Registro   = &\Framework\App\Registro::getInstacia();
         $Modelo     = &$Registro->_Modelo;
         $Visual     = &$Registro->_Visual;
-        $tabela = Array();
+        $table = Array();
         $i = 0;
         if (is_object($correios)) $correios = Array(0=>$correios);
         reset($correios);
@@ -106,23 +106,23 @@ class predial_CorreioControle extends predial_Controle
             if ($email === FALSE || $email=='') {
                 $email = '<p class="text-error">Morador não registrado</p>';
             }
-            $tabela['Bloco'][$i]                        = $valor->bloco2;
-            $tabela['Apartamento'][$i]                  = $valor->apart2;
-            $tabela['Tipo de Correio'][$i]              = $valor->categoria2;
-            $tabela['Responsável'][$i]                  = $valor->responsavel;
-            $tabela['Email para Avisos'][$i]                  = $email;
-            $tabela['Data Recebida Adm/Portaria'][$i]   = $valor->data_entregue;
+            $table['Bloco'][$i]                        = $valor->bloco2;
+            $table['Apartamento'][$i]                  = $valor->apart2;
+            $table['Tipo de Correio'][$i]              = $valor->categoria2;
+            $table['Responsável'][$i]                  = $valor->responsavel;
+            $table['Email para Avisos'][$i]                  = $email;
+            $table['Data Recebida Adm/Portaria'][$i]   = $valor->data_entregue;
             if ($recebido !== FALSE) {
-                $tabela['Data Entregue ao Morador'][$i]     = $valor->data_recebido;
-                $tabela['Funções'][$i]                      = '';
+                $table['Data Entregue ao Morador'][$i]     = $valor->data_recebido;
+                $table['Funções'][$i]                      = '';
             } else {
-                $tabela['Funções'][$i]                      = $Visual->Tema_Elementos_Btn('Baixar'     ,Array('Declarar Recebido Pelo Morador'        ,'predial/Correio/Correios_Baixar/'.$valor->id.'/'    , ''));
+                $table['Funções'][$i]                      = $Visual->Tema_Elementos_Btn('Baixar'     ,Array('Declarar Recebido Pelo Morador'        ,'predial/Correio/Correios_Baixar/'.$valor->id.'/'    , ''));
             }
-            $tabela['Funções'][$i]                      .=  $Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Correio'        ,'predial/Correio/Correios_Edit/'.$valor->id.'/'    , '')).
+            $table['Funções'][$i]                      .=  $Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Correio'        ,'predial/Correio/Correios_Edit/'.$valor->id.'/'    , '')).
                                                             $Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Correio'       ,'predial/Correio/Correios_Del/'.$valor->id.'/'     ,'Deseja realmente deletar esse Correio ?'));
             ++$i;
         }
-        return Array($tabela, $i);
+        return Array($table, $i);
     }
     public function Correios() {
         self::Endereco_Correio(FALSE);
@@ -165,8 +165,8 @@ class predial_CorreioControle extends predial_Controle
         }
         $correios = $this->_Modelo->db->Sql_Select('Predial_Bloco_Apart_Correio', $where);
         if ($correios !== FALSE && !empty($correios)) {
-            list($tabela, $i) = self::Correios_Tabela($correios, $recebido);
-            $this->_Visual->Show_Tabela_DataTable($tabela);
+            list($table, $i) = self::Correios_Tabela($correios, $recebido);
+            $this->_Visual->Show_Tabela_DataTable($table);
         } else {     
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Correio</font></b></center>');
         }
@@ -204,11 +204,11 @@ class predial_CorreioControle extends predial_Controle
         //Validar_Email
         $titulo     = __('Correio Adicionado com Sucesso');
         $dao        = 'Predial_Bloco_Apart_Correio';
-        $funcao     = '$this->Correios();';
+        $function     = '$this->Correios();';
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = __('Correio cadastrado com sucesso.');
         $alterar    = Array();
-        $sucesso = $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
+        $sucesso = $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);
         if ($sucesso === TRUE) {
             // Pega o Correio
             $identificador  = $this->_Modelo->db->Sql_Select('Predial_Bloco_Apart_Correio', FALSE,1,'id DESC');
@@ -315,11 +315,11 @@ class predial_CorreioControle extends predial_Controle
     public function Correios_Edit2($id) {
         $titulo     = __('Correio Editado com Sucesso');
         $dao        = Array('Predial_Bloco_Apart_Correio', $id);
-        $funcao     = '$this->Correios();';
+        $function     = '$this->Correios();';
         $sucesso1   = __('Correio Alterado com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);
     }
     /**
      * 
@@ -374,20 +374,20 @@ class predial_CorreioControle extends predial_Controle
         $Registro   = &\Framework\App\Registro::getInstacia();
         $Modelo     = &$Registro->_Modelo;
         $Visual     = &$Registro->_Visual;
-        $tabela = Array();
+        $table = Array();
         $i = 0;
         if (is_object($correios)) $correios = Array(0=>$correios);
         reset($correios);
         foreach ($correios as &$valor) {
-            $tabela['Tipo de Correio'][$i]              = $valor->categoria2;
-            $tabela['Responsável'][$i]                  = $valor->responsavel;
-            $tabela['Data Recebida Adm/Portaria'][$i]   = $valor->data_entregue;
+            $table['Tipo de Correio'][$i]              = $valor->categoria2;
+            $table['Responsável'][$i]                  = $valor->responsavel;
+            $table['Data Recebida Adm/Portaria'][$i]   = $valor->data_entregue;
             if ($recebido !== FALSE) {
-                $tabela['Data Entregue ao Morador'][$i]     = $valor->data_recebido;
+                $table['Data Entregue ao Morador'][$i]     = $valor->data_recebido;
             }
             ++$i;
         }
-        return Array($tabela, $i);
+        return Array($table, $i);
     }
     /**
      * 
@@ -423,8 +423,8 @@ class predial_CorreioControle extends predial_Controle
         }
         $correios = $Registro->_Modelo->db->Sql_Select('Predial_Bloco_Apart_Correio', $where);
         if ($correios !== FALSE && !empty($correios)) {
-            list($tabela, $i) = self::Correios_Tabela($correios, $recebido);
-            $html .= $Registro->_Visual->Show_Tabela_DataTable($tabela, '', FALSE);
+            list($table, $i) = self::Correios_Tabela($correios, $recebido);
+            $html .= $Registro->_Visual->Show_Tabela_DataTable($table, '', FALSE);
         } else {     
             $html .= '<center><b><font color="#FF0000" size="3">Nenhum Correio para Você</font></b></center>';
         }

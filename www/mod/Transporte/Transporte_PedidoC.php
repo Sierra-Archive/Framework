@@ -108,11 +108,11 @@ class Transporte_PedidoControle extends Transporte_Controle
     public function Arma_Ped_Add2() {
         $titulo     = __('Pedido enviado com Sucesso');
         $dao        = 'Transporte_Armazem_Pedido';
-        $funcao     = '$this->Arma_Ped_Novas();';
+        $function     = '$this->Arma_Ped_Novas();';
         $sucesso1   = __('Proposta enviada com Sucesso');
         $sucesso2   = __('Aguarde uma Resposta.');
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);
     }
     /**
      * 
@@ -186,23 +186,23 @@ class Transporte_PedidoControle extends Transporte_Controle
         if ($pedido !== FALSE && !empty($pedido)) {
             $i = 0;
             reset($pedido);
-            $perm_status = $this->_Registro->_Acl->Get_Permissao_Url('Transporte/Pedido/Arma_Ped_Novas_Aceitar');
+            $permissionStatus = $this->_Registro->_Acl->Get_Permissao_Url('Transporte/Pedido/Arma_Ped_Novas_Aceitar');
             foreach ($pedido as &$valor) {                
-                $tabela['Id'][$i]           = '#'.$valor->id;
-                $tabela['Pedido'][$i] = '#'.$valor->pedido2;
-                $tabela['Armazem'][$i] = '#'.$valor->log_user_id;
-                $tabela['Valor'][$i]       = $valor->valor;
-                $tabela['Observação'][$i]       = $valor->obs;
-                $tabela['Funções'][$i]      = $this->_Visual->Tema_Elementos_Btn('Status1'     ,Array('Aceitar'        ,'Transporte/Pedido/Arma_Ped_Novas_Aceitar/'.$valor->id.'/1'    , ''), $perm_status).
-                                            $this->_Visual->Tema_Elementos_Btn('Status0'     ,Array('Recusar'        ,'Transporte/Pedido/Arma_Ped_Novas_Aceitar/'.$valor->id.'/2'    , ''), $perm_status);
+                $table['Id'][$i]           = '#'.$valor->id;
+                $table['Pedido'][$i] = '#'.$valor->pedido2;
+                $table['Armazem'][$i] = '#'.$valor->log_user_id;
+                $table['Valor'][$i]       = $valor->valor;
+                $table['Observação'][$i]       = $valor->obs;
+                $table['Funções'][$i]      = $this->_Visual->Tema_Elementos_Btn('Status1'     ,Array('Aceitar'        ,'Transporte/Pedido/Arma_Ped_Novas_Aceitar/'.$valor->id.'/1'    , ''), $permissionStatus).
+                                            $this->_Visual->Tema_Elementos_Btn('Status0'     ,Array('Recusar'        ,'Transporte/Pedido/Arma_Ped_Novas_Aceitar/'.$valor->id.'/2'    , ''), $permissionStatus);
                 ++$i;
             }
             // SE exportar ou mostra em tabela
             if ($export !== FALSE) {
-                self::Export_Todos($export, $tabela, 'Propostas Aceitas');
+                self::Export_Todos($export, $table, 'Propostas Aceitas');
             } else {
                 $this->_Visual->Show_Tabela_DataTable(
-                    $tabela,     // Array Com a Tabela
+                    $table,     // Array Com a Tabela
                     '',          // style extra
                     true,        // true -> Add ao Bloco, false => Retorna html
                     FALSE,        // Apagar primeira coluna ?
@@ -213,7 +213,7 @@ class Transporte_PedidoControle extends Transporte_Controle
                     )
                 );
             }
-            unset($tabela);
+            unset($table);
         } else {
             if ($export !== FALSE) {
                 $mensagem = __('Nenhuma Proposta Aceita para exportar');
@@ -245,23 +245,23 @@ class Transporte_PedidoControle extends Transporte_Controle
         if ($pedido !== FALSE && !empty($pedido)) {
             $i = 0;
             reset($pedido);
-            $perm_status = $this->_Registro->_Acl->Get_Permissao_Url('Transporte/Pedido/Arma_Ped_Novas_Aceitar');
+            $permissionStatus = $this->_Registro->_Acl->Get_Permissao_Url('Transporte/Pedido/Arma_Ped_Novas_Aceitar');
             foreach ($pedido as &$valor) {                
-                $tabela['Id'][$i]           = '#'.$valor->id;
-                $tabela['Pedido'][$i] = '#'.$valor->pedido2;
-                $tabela['Armazem'][$i] = '#'.$valor->log_user_id;
-                $tabela['Valor'][$i]       = $valor->valor;
-                $tabela['Observação'][$i]       = $valor->obs;
-                $tabela['Funções'][$i]      = $this->_Visual->Tema_Elementos_Btn('Status1'     ,Array('Aceitar'        ,'Transporte/Pedido/Arma_Ped_Novas_Aceitar/'.$valor->id.'/1'    , ''), $perm_status).
-                                            $this->_Visual->Tema_Elementos_Btn('Status0'     ,Array('Recusar'        ,'Transporte/Pedido/Arma_Ped_Novas_Aceitar/'.$valor->id.'/2'    , ''), $perm_status);
+                $table['Id'][$i]           = '#'.$valor->id;
+                $table['Pedido'][$i] = '#'.$valor->pedido2;
+                $table['Armazem'][$i] = '#'.$valor->log_user_id;
+                $table['Valor'][$i]       = $valor->valor;
+                $table['Observação'][$i]       = $valor->obs;
+                $table['Funções'][$i]      = $this->_Visual->Tema_Elementos_Btn('Status1'     ,Array('Aceitar'        ,'Transporte/Pedido/Arma_Ped_Novas_Aceitar/'.$valor->id.'/1'    , ''), $permissionStatus).
+                                            $this->_Visual->Tema_Elementos_Btn('Status0'     ,Array('Recusar'        ,'Transporte/Pedido/Arma_Ped_Novas_Aceitar/'.$valor->id.'/2'    , ''), $permissionStatus);
                 ++$i;
             }
             // SE exportar ou mostra em tabela
             if ($export !== FALSE) {
-                self::Export_Todos($export, $tabela, 'Novas Propostas');
+                self::Export_Todos($export, $table, 'Novas Propostas');
             } else {
                 $this->_Visual->Show_Tabela_DataTable(
-                    $tabela,     // Array Com a Tabela
+                    $table,     // Array Com a Tabela
                     '',          // style extra
                     true,        // true -> Add ao Bloco, false => Retorna html
                     FALSE,        // Apagar primeira coluna ?
@@ -272,7 +272,7 @@ class Transporte_PedidoControle extends Transporte_Controle
                     )
                 );
             }
-            unset($tabela);
+            unset($table);
         } else {
             if ($export !== FALSE) {
                 $mensagem = __('Nenhuma nova Proposta para exportar');
@@ -307,23 +307,23 @@ class Transporte_PedidoControle extends Transporte_Controle
         if ($pedido !== FALSE && !empty($pedido)) {
             $i = 0;
             reset($pedido);
-            $perm_del = $this->_Registro->_Acl->Get_Permissao_Url('Transporte/Pedido/Arma_Ped_Del');
+            $permissionDelete = $this->_Registro->_Acl->Get_Permissao_Url('Transporte/Pedido/Arma_Ped_Del');
             foreach ($pedido as &$valor) {                
-                $tabela['Id'][$i]           = '#'.$valor->id;
-                $tabela['Descrição'][$i]       = $valor->descricao_carga;
-                $tabela['Dimensões'][$i]       = '<b>Altura:</b>'.$valor->altura.
+                $table['Id'][$i]           = '#'.$valor->id;
+                $table['Descrição'][$i]       = $valor->descricao_carga;
+                $table['Dimensões'][$i]       = '<b>Altura:</b>'.$valor->altura.
                                                 ' cm<br><b>Comprimento:</b>'.$valor->comprimento.
                                                 ' cm<br><b>Largura:</b>'.$valor->largura.' cm<br><b>Volume:</b>'.$valor->altura*$valor->comprimento*$valor->largura.' cm³';
-                $tabela['Observação'][$i]       = $valor->obs;
-                $tabela['Funções'][$i]      = $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Cancelar Pedido'       ,'Transporte/Pedido/Arma_Ped_Del/'.$valor->id.'/'     ,'Deseja realmente Cancelar esse Pedido ?'), $perm_del);
+                $table['Observação'][$i]       = $valor->obs;
+                $table['Funções'][$i]      = $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Cancelar Pedido'       ,'Transporte/Pedido/Arma_Ped_Del/'.$valor->id.'/'     ,'Deseja realmente Cancelar esse Pedido ?'), $permissionDelete);
                 ++$i;
             }
             // SE exportar ou mostra em tabela
             if ($export !== FALSE) {
-                self::Export_Todos($export, $tabela, 'Pedidos Cadastrados');
+                self::Export_Todos($export, $table, 'Pedidos Cadastrados');
             } else {
                 $this->_Visual->Show_Tabela_DataTable(
-                    $tabela,     // Array Com a Tabela
+                    $table,     // Array Com a Tabela
                     '',          // style extra
                     true,        // true -> Add ao Bloco, false => Retorna html
                     FALSE,        // Apagar primeira coluna ?
@@ -334,7 +334,7 @@ class Transporte_PedidoControle extends Transporte_Controle
                     )
                 );
             }
-            unset($tabela);
+            unset($table);
         } else {
             if ($export !== FALSE) {
                 $mensagem = __('Nenhum Pedido Cadastrado para exportar');
@@ -367,21 +367,21 @@ class Transporte_PedidoControle extends Transporte_Controle
             reset($pedido);
             $perm_add = $this->_Registro->_Acl->Get_Permissao_Url('Transporte/Pedido/Arma_Sol_Add');
             foreach ($pedido as &$valor) {                
-                $tabela['Id'][$i]           = '#'.$valor->id;
-                $tabela['Descrição'][$i]       = $valor->descricao_carga;
-                $tabela['Dimensões'][$i]       = '<b>Altura:</b>'.$valor->altura.
+                $table['Id'][$i]           = '#'.$valor->id;
+                $table['Descrição'][$i]       = $valor->descricao_carga;
+                $table['Dimensões'][$i]       = '<b>Altura:</b>'.$valor->altura.
                                                 ' cm<br><b>Comprimento:</b>'.$valor->comprimento.
                                                 ' cm<br><b>Largura:</b>'.$valor->largura.' cm<br><b>Volume:</b>'.$valor->altura*$valor->comprimento*$valor->largura.' cm³';
-                $tabela['Observação'][$i]       = $valor->obs;
-                $tabela['Funções'][$i]      = $this->_Visual->Tema_Elementos_Btn('Status1'     ,Array('Fazer Proposta'        ,'Transporte/Pedido/Arma_Sol_Add/'.$valor->id.'/'    , ''), $perm_add);
+                $table['Observação'][$i]       = $valor->obs;
+                $table['Funções'][$i]      = $this->_Visual->Tema_Elementos_Btn('Status1'     ,Array('Fazer Proposta'        ,'Transporte/Pedido/Arma_Sol_Add/'.$valor->id.'/'    , ''), $perm_add);
                 ++$i;
             }
             // SE exportar ou mostra em tabela
             if ($export !== FALSE) {
-                self::Export_Todos($export, $tabela, 'Pedidos pendentes');
+                self::Export_Todos($export, $table, 'Pedidos pendentes');
             } else {
                 $this->_Visual->Show_Tabela_DataTable(
-                    $tabela,     // Array Com a Tabela
+                    $table,     // Array Com a Tabela
                     '',          // style extra
                     true,        // true -> Add ao Bloco, false => Retorna html
                     FALSE,        // Apagar primeira coluna ?
@@ -392,7 +392,7 @@ class Transporte_PedidoControle extends Transporte_Controle
                     )
                 );
             }
-            unset($tabela);
+            unset($table);
         } else {
             if ($export !== FALSE) {
                 $mensagem = __('Nenhum Pedido pendente para exportar');
@@ -453,19 +453,19 @@ class Transporte_PedidoControle extends Transporte_Controle
             $i = 0;
             reset($pedido);
             foreach ($pedido as &$valor) {                
-                $tabela['Id'][$i]           = '#'.$valor->id;
-                $tabela['Pedido'][$i] = '#'.$valor->pedido2;
-                $tabela['Fornecedor'][$i] = '#'.$valor->fornecedor2;
-                $tabela['Valor'][$i]       = $valor->valor;
-                $tabela['Observação'][$i]       = $valor->obs;
+                $table['Id'][$i]           = '#'.$valor->id;
+                $table['Pedido'][$i] = '#'.$valor->pedido2;
+                $table['Fornecedor'][$i] = '#'.$valor->fornecedor2;
+                $table['Valor'][$i]       = $valor->valor;
+                $table['Observação'][$i]       = $valor->obs;
                 ++$i;
             }
             // SE exportar ou mostra em tabela
             if ($export !== FALSE) {
-                self::Export_Todos($export, $tabela, 'Propostas Aceitas');
+                self::Export_Todos($export, $table, 'Propostas Aceitas');
             } else {
                 $this->_Visual->Show_Tabela_DataTable(
-                    $tabela,     // Array Com a Tabela
+                    $table,     // Array Com a Tabela
                     '',          // style extra
                     true,        // true -> Add ao Bloco, false => Retorna html
                     FALSE,        // Apagar primeira coluna ?
@@ -476,7 +476,7 @@ class Transporte_PedidoControle extends Transporte_Controle
                     )
                 );
             }
-            unset($tabela);
+            unset($table);
         } else {
             if ($export !== FALSE) {
                 $mensagem = __('Nenhuma Proposta Aceita para exportar');
@@ -509,19 +509,19 @@ class Transporte_PedidoControle extends Transporte_Controle
             $i = 0;
             reset($pedido);
             foreach ($pedido as &$valor) {                
-                $tabela['Id'][$i]           = '#'.$valor->id;
-                $tabela['Pedido'][$i] = '#'.$valor->pedido2;
-                $tabela['Fornecedor'][$i] = '#'.$valor->fornecedor2;
-                $tabela['Valor'][$i]       = $valor->valor;
-                $tabela['Observação'][$i]       = $valor->obs;
+                $table['Id'][$i]           = '#'.$valor->id;
+                $table['Pedido'][$i] = '#'.$valor->pedido2;
+                $table['Fornecedor'][$i] = '#'.$valor->fornecedor2;
+                $table['Valor'][$i]       = $valor->valor;
+                $table['Observação'][$i]       = $valor->obs;
                 ++$i;
             }
             // SE exportar ou mostra em tabela
             if ($export !== FALSE) {
-                self::Export_Todos($export, $tabela, 'Propostas Recusadas');
+                self::Export_Todos($export, $table, 'Propostas Recusadas');
             } else {
                 $this->_Visual->Show_Tabela_DataTable(
-                    $tabela,     // Array Com a Tabela
+                    $table,     // Array Com a Tabela
                     '',          // style extra
                     true,        // true -> Add ao Bloco, false => Retorna html
                     FALSE,        // Apagar primeira coluna ?
@@ -532,7 +532,7 @@ class Transporte_PedidoControle extends Transporte_Controle
                     )
                 );
             }
-            unset($tabela);
+            unset($table);
         } else {
             if ($export !== FALSE) {
                 $mensagem = __('Nenhuma Proposta Recusada para exportar');
@@ -564,22 +564,22 @@ class Transporte_PedidoControle extends Transporte_Controle
         if ($pedido !== FALSE && !empty($pedido)) {
             $i = 0;
             reset($pedido);
-            $perm_del = $this->_Registro->_Acl->Get_Permissao_Url('Transporte/Pedido/Arma_Sol_Del');
+            $permissionDelete = $this->_Registro->_Acl->Get_Permissao_Url('Transporte/Pedido/Arma_Sol_Del');
             foreach ($pedido as &$valor) {                
-                $tabela['Id'][$i]           = '#'.$valor->id;
-                $tabela['Pedido'][$i] = '#'.$valor->pedido2;
-                $tabela['Fornecedor'][$i] = '#'.$valor->fornecedor2;
-                $tabela['Valor'][$i]       = $valor->valor;
-                $tabela['Observação'][$i]       = $valor->obs;
-                $tabela['Funções'][$i]      = $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Cancelar Proposta'       ,'Transporte/Pedido/Arma_Sol_Del/'.$valor->id.'/'     ,'Deseja realmente Cancelar essa Proposta ?'), $perm_del);
+                $table['Id'][$i]           = '#'.$valor->id;
+                $table['Pedido'][$i] = '#'.$valor->pedido2;
+                $table['Fornecedor'][$i] = '#'.$valor->fornecedor2;
+                $table['Valor'][$i]       = $valor->valor;
+                $table['Observação'][$i]       = $valor->obs;
+                $table['Funções'][$i]      = $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Cancelar Proposta'       ,'Transporte/Pedido/Arma_Sol_Del/'.$valor->id.'/'     ,'Deseja realmente Cancelar essa Proposta ?'), $permissionDelete);
                 ++$i;
             }
             // SE exportar ou mostra em tabela
             if ($export !== FALSE) {
-                self::Export_Todos($export, $tabela, 'Propostas Pendentes');
+                self::Export_Todos($export, $table, 'Propostas Pendentes');
             } else {
                 $this->_Visual->Show_Tabela_DataTable(
-                    $tabela,     // Array Com a Tabela
+                    $table,     // Array Com a Tabela
                     '',          // style extra
                     true,        // true -> Add ao Bloco, false => Retorna html
                     FALSE,        // Apagar primeira coluna ?
@@ -590,7 +590,7 @@ class Transporte_PedidoControle extends Transporte_Controle
                     )
                 );
             }
-            unset($tabela);
+            unset($table);
         } else {
             if ($export !== FALSE) {
                 $mensagem = __('Nenhuma Proposta Pendente para exportar');
@@ -670,11 +670,11 @@ class Transporte_PedidoControle extends Transporte_Controle
         }
         $titulo     = __('Proposta enviada com Sucesso');
         $dao        = 'Transporte_Armazem_Pedido_Lance';
-        $funcao     = '$this->Arma_Sol_Solicitacoes();';
+        $function     = '$this->Arma_Sol_Solicitacoes();';
         $sucesso1   = __('Proposta enviada com Sucesso');
         $sucesso2   = __('Aguarde uma Resposta.');
         $alterar    = Array('status'=>'0', 'fornecedor'=>$pedido->log_user_add,'pedido'=>$pedido->id);
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);
     }
     /**
      * 
@@ -833,11 +833,11 @@ class Transporte_PedidoControle extends Transporte_Controle
     public function Trans_Ped_Add2() {
         $titulo     = __('Pedido enviado com Sucesso');
         $dao        = 'Transporte_Transportadora_Pedido';
-        $funcao     = '$this->Trans_Ped_Novas();';
+        $function     = '$this->Trans_Ped_Novas();';
         $sucesso1   = __('Proposta enviada com Sucesso');
         $sucesso2   = __('Aguarde uma Resposta.');
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);
     }
     /**
      * 
@@ -911,23 +911,23 @@ class Transporte_PedidoControle extends Transporte_Controle
         if ($pedido !== FALSE && !empty($pedido)) {
             $i = 0;
             reset($pedido);
-            $perm_status = $this->_Registro->_Acl->Get_Permissao_Url('Transporte/Pedido/Trans_Ped_Novas_Aceitar');
+            $permissionStatus = $this->_Registro->_Acl->Get_Permissao_Url('Transporte/Pedido/Trans_Ped_Novas_Aceitar');
             foreach ($pedido as &$valor) {                
-                $tabela['Id'][$i]           = '#'.$valor->id;
-                $tabela['Pedido'][$i] = '#'.$valor->pedido2;
-                $tabela['Transportadora'][$i] = '#'.$valor->log_user_id;
-                $tabela['Valor'][$i]       = $valor->valor;
-                $tabela['Observação'][$i]       = $valor->obs;
-                $tabela['Funções'][$i]      = $this->_Visual->Tema_Elementos_Btn('Status1'     ,Array('Aceitar'        ,'Transporte/Pedido/Trans_Ped_Novas_Aceitar/'.$valor->id.'/1'    , ''), $perm_status).
-                                            $this->_Visual->Tema_Elementos_Btn('Status0'     ,Array('Recusar'        ,'Transporte/Pedido/Trans_Ped_Novas_Aceitar/'.$valor->id.'/2'    , ''), $perm_status);
+                $table['Id'][$i]           = '#'.$valor->id;
+                $table['Pedido'][$i] = '#'.$valor->pedido2;
+                $table['Transportadora'][$i] = '#'.$valor->log_user_id;
+                $table['Valor'][$i]       = $valor->valor;
+                $table['Observação'][$i]       = $valor->obs;
+                $table['Funções'][$i]      = $this->_Visual->Tema_Elementos_Btn('Status1'     ,Array('Aceitar'        ,'Transporte/Pedido/Trans_Ped_Novas_Aceitar/'.$valor->id.'/1'    , ''), $permissionStatus).
+                                            $this->_Visual->Tema_Elementos_Btn('Status0'     ,Array('Recusar'        ,'Transporte/Pedido/Trans_Ped_Novas_Aceitar/'.$valor->id.'/2'    , ''), $permissionStatus);
                 ++$i;
             }
             // SE exportar ou mostra em tabela
             if ($export !== FALSE) {
-                self::Export_Todos($export, $tabela, 'Propostas Aceitas');
+                self::Export_Todos($export, $table, 'Propostas Aceitas');
             } else {
                 $this->_Visual->Show_Tabela_DataTable(
-                    $tabela,     // Array Com a Tabela
+                    $table,     // Array Com a Tabela
                     '',          // style extra
                     true,        // true -> Add ao Bloco, false => Retorna html
                     FALSE,        // Apagar primeira coluna ?
@@ -938,7 +938,7 @@ class Transporte_PedidoControle extends Transporte_Controle
                     )
                 );
             }
-            unset($tabela);
+            unset($table);
         } else {
             if ($export !== FALSE) {
                 $mensagem = __('Nenhuma Proposta Aceita para exportar');
@@ -970,23 +970,23 @@ class Transporte_PedidoControle extends Transporte_Controle
         if ($pedido !== FALSE && !empty($pedido)) {
             $i = 0;
             reset($pedido);
-            $perm_status = $this->_Registro->_Acl->Get_Permissao_Url('Transporte/Pedido/Trans_Ped_Novas_Aceitar');
+            $permissionStatus = $this->_Registro->_Acl->Get_Permissao_Url('Transporte/Pedido/Trans_Ped_Novas_Aceitar');
             foreach ($pedido as &$valor) {                
-                $tabela['Id'][$i]           = '#'.$valor->id;
-                $tabela['Pedido'][$i] = '#'.$valor->pedido2;
-                $tabela['Transportadora'][$i] = '#'.$valor->log_user_id;
-                $tabela['Valor'][$i]       = $valor->valor;
-                $tabela['Observação'][$i]       = $valor->obs;
-                $tabela['Funções'][$i]      = $this->_Visual->Tema_Elementos_Btn('Status1'     ,Array('Aceitar'        ,'Transporte/Pedido/Trans_Ped_Novas_Aceitar/'.$valor->id.'/1'    , ''), $perm_status).
-                                            $this->_Visual->Tema_Elementos_Btn('Status0'     ,Array('Recusar'        ,'Transporte/Pedido/Trans_Ped_Novas_Aceitar/'.$valor->id.'/2'    , ''), $perm_status);
+                $table['Id'][$i]           = '#'.$valor->id;
+                $table['Pedido'][$i] = '#'.$valor->pedido2;
+                $table['Transportadora'][$i] = '#'.$valor->log_user_id;
+                $table['Valor'][$i]       = $valor->valor;
+                $table['Observação'][$i]       = $valor->obs;
+                $table['Funções'][$i]      = $this->_Visual->Tema_Elementos_Btn('Status1'     ,Array('Aceitar'        ,'Transporte/Pedido/Trans_Ped_Novas_Aceitar/'.$valor->id.'/1'    , ''), $permissionStatus).
+                                            $this->_Visual->Tema_Elementos_Btn('Status0'     ,Array('Recusar'        ,'Transporte/Pedido/Trans_Ped_Novas_Aceitar/'.$valor->id.'/2'    , ''), $permissionStatus);
                 ++$i;
             }
             // SE exportar ou mostra em tabela
             if ($export !== FALSE) {
-                self::Export_Todos($export, $tabela, 'Novas Propostas');
+                self::Export_Todos($export, $table, 'Novas Propostas');
             } else {
                 $this->_Visual->Show_Tabela_DataTable(
-                    $tabela,     // Array Com a Tabela
+                    $table,     // Array Com a Tabela
                     '',          // style extra
                     true,        // true -> Add ao Bloco, false => Retorna html
                     FALSE,        // Apagar primeira coluna ?
@@ -997,7 +997,7 @@ class Transporte_PedidoControle extends Transporte_Controle
                     )
                 );
             }
-            unset($tabela);
+            unset($table);
         } else {
             if ($export !== FALSE) {
                 $mensagem = __('Nenhuma nova Proposta para exportar');
@@ -1032,23 +1032,23 @@ class Transporte_PedidoControle extends Transporte_Controle
         if ($pedido !== FALSE && !empty($pedido)) {
             $i = 0;
             reset($pedido);
-            $perm_del = $this->_Registro->_Acl->Get_Permissao_Url('Transporte/Pedido/Trans_Ped_Del');
+            $permissionDelete = $this->_Registro->_Acl->Get_Permissao_Url('Transporte/Pedido/Trans_Ped_Del');
             foreach ($pedido as &$valor) {                
-                $tabela['Id'][$i]           = '#'.$valor->id;
-                $tabela['Descrição'][$i]       = $valor->descricao_carga;
-                $tabela['Dimensões'][$i]       = '<b>Altura:</b>'.$valor->altura.
+                $table['Id'][$i]           = '#'.$valor->id;
+                $table['Descrição'][$i]       = $valor->descricao_carga;
+                $table['Dimensões'][$i]       = '<b>Altura:</b>'.$valor->altura.
                                                 ' cm<br><b>Comprimento:</b>'.$valor->comprimento.
                                                 ' cm<br><b>Largura:</b>'.$valor->largura.' cm<br><b>Volume:</b>'.$valor->altura*$valor->comprimento*$valor->largura.' cm³';
-                $tabela['Observação'][$i]       = $valor->obs;
-                $tabela['Funções'][$i]      = $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Cancelar Pedido'       ,'Transporte/Pedido/Trans_Ped_Del/'.$valor->id.'/'     ,'Deseja realmente Cancelar esse Pedido ?'), $perm_del);
+                $table['Observação'][$i]       = $valor->obs;
+                $table['Funções'][$i]      = $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Cancelar Pedido'       ,'Transporte/Pedido/Trans_Ped_Del/'.$valor->id.'/'     ,'Deseja realmente Cancelar esse Pedido ?'), $permissionDelete);
                 ++$i;
             }
             // SE exportar ou mostra em tabela
             if ($export !== FALSE) {
-                self::Export_Todos($export, $tabela, 'Pedidos Cadastrados');
+                self::Export_Todos($export, $table, 'Pedidos Cadastrados');
             } else {
                 $this->_Visual->Show_Tabela_DataTable(
-                    $tabela,     // Array Com a Tabela
+                    $table,     // Array Com a Tabela
                     '',          // style extra
                     true,        // true -> Add ao Bloco, false => Retorna html
                     FALSE,        // Apagar primeira coluna ?
@@ -1059,7 +1059,7 @@ class Transporte_PedidoControle extends Transporte_Controle
                     )
                 );
             }
-            unset($tabela);
+            unset($table);
         } else {
             if ($export !== FALSE) {
                 $mensagem = __('Nenhum Pedido Cadastrado para exportar');
@@ -1090,23 +1090,23 @@ class Transporte_PedidoControle extends Transporte_Controle
         if ($pedido !== FALSE && !empty($pedido)) {
             $i = 0;
             reset($pedido);
-            $perm_status = $this->_Registro->_Acl->Get_Permissao_Url('Transporte/Pedido/Trans_Sol_Add');
+            $permissionStatus = $this->_Registro->_Acl->Get_Permissao_Url('Transporte/Pedido/Trans_Sol_Add');
             foreach ($pedido as &$valor) {                
-                $tabela['Id'][$i]           = '#'.$valor->id;
-                $tabela['Descrição'][$i]       = $valor->descricao_carga;
-                $tabela['Dimensões'][$i]       = '<b>Altura:</b>'.$valor->altura.
+                $table['Id'][$i]           = '#'.$valor->id;
+                $table['Descrição'][$i]       = $valor->descricao_carga;
+                $table['Dimensões'][$i]       = '<b>Altura:</b>'.$valor->altura.
                                                 ' cm<br><b>Comprimento:</b>'.$valor->comprimento.
                                                 ' cm<br><b>Largura:</b>'.$valor->largura.' cm<br><b>Volume:</b>'.$valor->altura*$valor->comprimento*$valor->largura.' cm³';
-                $tabela['Observação'][$i]       = $valor->obs;
-                $tabela['Funções'][$i]      = $this->_Visual->Tema_Elementos_Btn('Status1'     ,Array('Fazer Proposta'        ,'Transporte/Pedido/Trans_Sol_Add/'.$valor->id.'/'    , ''), $perm_status);
+                $table['Observação'][$i]       = $valor->obs;
+                $table['Funções'][$i]      = $this->_Visual->Tema_Elementos_Btn('Status1'     ,Array('Fazer Proposta'        ,'Transporte/Pedido/Trans_Sol_Add/'.$valor->id.'/'    , ''), $permissionStatus);
                 ++$i;
             }
             // SE exportar ou mostra em tabela
             if ($export !== FALSE) {
-                self::Export_Todos($export, $tabela, 'Pedidos pendentes');
+                self::Export_Todos($export, $table, 'Pedidos pendentes');
             } else {
                 $this->_Visual->Show_Tabela_DataTable(
-                    $tabela,     // Array Com a Tabela
+                    $table,     // Array Com a Tabela
                     '',          // style extra
                     true,        // true -> Add ao Bloco, false => Retorna html
                     FALSE,        // Apagar primeira coluna ?
@@ -1117,7 +1117,7 @@ class Transporte_PedidoControle extends Transporte_Controle
                     )
                 );
             }
-            unset($tabela);
+            unset($table);
         } else {
             if ($export !== FALSE) {
                 $mensagem = __('Nenhum Pedido pendente para exportar');
@@ -1178,19 +1178,19 @@ class Transporte_PedidoControle extends Transporte_Controle
             $i = 0;
             reset($pedido);
             foreach ($pedido as &$valor) {                
-                $tabela['Id'][$i]           = '#'.$valor->id;
-                $tabela['Pedido'][$i] = '#'.$valor->pedido2;
-                $tabela['Fornecedor'][$i] = '#'.$valor->fornecedor2;
-                $tabela['Valor'][$i]       = $valor->valor;
-                $tabela['Observação'][$i]       = $valor->obs;
+                $table['Id'][$i]           = '#'.$valor->id;
+                $table['Pedido'][$i] = '#'.$valor->pedido2;
+                $table['Fornecedor'][$i] = '#'.$valor->fornecedor2;
+                $table['Valor'][$i]       = $valor->valor;
+                $table['Observação'][$i]       = $valor->obs;
                 ++$i;
             }
             // SE exportar ou mostra em tabela
             if ($export !== FALSE) {
-                self::Export_Todos($export, $tabela, 'Propostas Aceitas');
+                self::Export_Todos($export, $table, 'Propostas Aceitas');
             } else {
                 $this->_Visual->Show_Tabela_DataTable(
-                    $tabela,     // Array Com a Tabela
+                    $table,     // Array Com a Tabela
                     '',          // style extra
                     true,        // true -> Add ao Bloco, false => Retorna html
                     FALSE,        // Apagar primeira coluna ?
@@ -1201,7 +1201,7 @@ class Transporte_PedidoControle extends Transporte_Controle
                     )
                 );
             }
-            unset($tabela);
+            unset($table);
         } else {
             if ($export !== FALSE) {
                 $mensagem = __('Nenhuma Proposta Aceita para exportar');
@@ -1234,19 +1234,19 @@ class Transporte_PedidoControle extends Transporte_Controle
             $i = 0;
             reset($pedido);
             foreach ($pedido as &$valor) {                
-                $tabela['Id'][$i]           = '#'.$valor->id;
-                $tabela['Pedido'][$i] = '#'.$valor->pedido2;
-                $tabela['Fornecedor'][$i] = '#'.$valor->fornecedor2;
-                $tabela['Valor'][$i]       = $valor->valor;
-                $tabela['Observação'][$i]       = $valor->obs;
+                $table['Id'][$i]           = '#'.$valor->id;
+                $table['Pedido'][$i] = '#'.$valor->pedido2;
+                $table['Fornecedor'][$i] = '#'.$valor->fornecedor2;
+                $table['Valor'][$i]       = $valor->valor;
+                $table['Observação'][$i]       = $valor->obs;
                 ++$i;
             }
             // SE exportar ou mostra em tabela
             if ($export !== FALSE) {
-                self::Export_Todos($export, $tabela, 'Propostas Recusadas');
+                self::Export_Todos($export, $table, 'Propostas Recusadas');
             } else {
                 $this->_Visual->Show_Tabela_DataTable(
-                    $tabela,     // Array Com a Tabela
+                    $table,     // Array Com a Tabela
                     '',          // style extra
                     true,        // true -> Add ao Bloco, false => Retorna html
                     FALSE,        // Apagar primeira coluna ?
@@ -1257,7 +1257,7 @@ class Transporte_PedidoControle extends Transporte_Controle
                     )
                 );
             }
-            unset($tabela);
+            unset($table);
         } else {
             if ($export !== FALSE) {
                 $mensagem = __('Nenhuma Proposta Recusada para exportar');
@@ -1289,22 +1289,22 @@ class Transporte_PedidoControle extends Transporte_Controle
         if ($pedido !== FALSE && !empty($pedido)) {
             $i = 0;
             reset($pedido);
-            $perm_del = $this->_Registro->_Acl->Get_Permissao_Url('Transporte/Pedido/Trans_Sol_Del');
+            $permissionDelete = $this->_Registro->_Acl->Get_Permissao_Url('Transporte/Pedido/Trans_Sol_Del');
             foreach ($pedido as &$valor) {                
-                $tabela['Id'][$i]           = '#'.$valor->id;
-                $tabela['Pedido'][$i] = '#'.$valor->pedido2;
-                $tabela['Fornecedor'][$i] = '#'.$valor->fornecedor2;
-                $tabela['Valor'][$i]       = $valor->valor;
-                $tabela['Observação'][$i]       = $valor->obs;
-                $tabela['Funções'][$i]      = $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Cancelar Proposta'       ,'Transporte/Pedido/Trans_Sol_Del/'.$valor->id.'/'     ,'Deseja realmente Cancelar essa Proposta ?'), $perm_del);
+                $table['Id'][$i]           = '#'.$valor->id;
+                $table['Pedido'][$i] = '#'.$valor->pedido2;
+                $table['Fornecedor'][$i] = '#'.$valor->fornecedor2;
+                $table['Valor'][$i]       = $valor->valor;
+                $table['Observação'][$i]       = $valor->obs;
+                $table['Funções'][$i]      = $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Cancelar Proposta'       ,'Transporte/Pedido/Trans_Sol_Del/'.$valor->id.'/'     ,'Deseja realmente Cancelar essa Proposta ?'), $permissionDelete);
                 ++$i;
             }
             // SE exportar ou mostra em tabela
             if ($export !== FALSE) {
-                self::Export_Todos($export, $tabela, 'Propostas Pendentes');
+                self::Export_Todos($export, $table, 'Propostas Pendentes');
             } else {
                 $this->_Visual->Show_Tabela_DataTable(
-                    $tabela,     // Array Com a Tabela
+                    $table,     // Array Com a Tabela
                     '',          // style extra
                     true,        // true -> Add ao Bloco, false => Retorna html
                     FALSE,        // Apagar primeira coluna ?
@@ -1315,7 +1315,7 @@ class Transporte_PedidoControle extends Transporte_Controle
                     )
                 );
             }
-            unset($tabela);
+            unset($table);
         } else {
             if ($export !== FALSE) {
                 $mensagem = __('Nenhuma Proposta Pendente para exportar');
@@ -1395,11 +1395,11 @@ class Transporte_PedidoControle extends Transporte_Controle
         }
         $titulo     = __('Proposta enviada com Sucesso');
         $dao        = 'Transporte_Transportadora_Pedido_Lance';
-        $funcao     = '$this->Trans_Sol_Solicitacoes();';
+        $function     = '$this->Trans_Sol_Solicitacoes();';
         $sucesso1   = __('Proposta enviada com Sucesso');
         $sucesso2   = __('Aguarde uma Resposta.');
         $alterar    = Array('status'=>'0', 'fornecedor'=>$pedido->log_user_add,'pedido'=>$pedido->id);
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);
     }
     /**
      * 
@@ -1554,11 +1554,11 @@ class Transporte_PedidoControle extends Transporte_Controle
     public function Caminho_Ped_Add2() {
         $titulo     = __('Pedido enviado com Sucesso');
         $dao        = 'Transporte_Caminhoneiro_Pedido';
-        $funcao     = '$this->Caminho_Ped_Novas();';
+        $function     = '$this->Caminho_Ped_Novas();';
         $sucesso1   = __('Proposta enviada com Sucesso');
         $sucesso2   = __('Aguarde uma Resposta.');
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);
     }
     /**
      * 
@@ -1632,23 +1632,23 @@ class Transporte_PedidoControle extends Transporte_Controle
         if ($pedido !== FALSE && !empty($pedido)) {
             $i = 0;
             reset($pedido);
-            $perm_status = $this->_Registro->_Acl->Get_Permissao_Url('Transporte/Pedido/Caminho_Ped_Novas_Aceitar');
+            $permissionStatus = $this->_Registro->_Acl->Get_Permissao_Url('Transporte/Pedido/Caminho_Ped_Novas_Aceitar');
             foreach ($pedido as &$valor) {                
-                $tabela['Id'][$i]           = '#'.$valor->id;
-                $tabela['Pedido'][$i] = '#'.$valor->pedido2;
-                $tabela['Caminhoneiro'][$i] = '#'.$valor->log_user_id;
-                $tabela['Valor'][$i]       = $valor->valor;
-                $tabela['Observação'][$i]       = $valor->obs;
-                $tabela['Funções'][$i]      = $this->_Visual->Tema_Elementos_Btn('Status1'     ,Array('Aceitar'        ,'Transporte/Pedido/Caminho_Ped_Novas_Aceitar/'.$valor->id.'/1'    , ''), $perm_status).
-                                            $this->_Visual->Tema_Elementos_Btn('Status0'     ,Array('Recusar'        ,'Transporte/Pedido/Caminho_Ped_Novas_Aceitar/'.$valor->id.'/2'    , ''), $perm_status);
+                $table['Id'][$i]           = '#'.$valor->id;
+                $table['Pedido'][$i] = '#'.$valor->pedido2;
+                $table['Caminhoneiro'][$i] = '#'.$valor->log_user_id;
+                $table['Valor'][$i]       = $valor->valor;
+                $table['Observação'][$i]       = $valor->obs;
+                $table['Funções'][$i]      = $this->_Visual->Tema_Elementos_Btn('Status1'     ,Array('Aceitar'        ,'Transporte/Pedido/Caminho_Ped_Novas_Aceitar/'.$valor->id.'/1'    , ''), $permissionStatus).
+                                            $this->_Visual->Tema_Elementos_Btn('Status0'     ,Array('Recusar'        ,'Transporte/Pedido/Caminho_Ped_Novas_Aceitar/'.$valor->id.'/2'    , ''), $permissionStatus);
                 ++$i;
             }
             // SE exportar ou mostra em tabela
             if ($export !== FALSE) {
-                self::Export_Todos($export, $tabela, 'Propostas Aceitas');
+                self::Export_Todos($export, $table, 'Propostas Aceitas');
             } else {
                 $this->_Visual->Show_Tabela_DataTable(
-                    $tabela,     // Array Com a Tabela
+                    $table,     // Array Com a Tabela
                     '',          // style extra
                     true,        // true -> Add ao Bloco, false => Retorna html
                     FALSE,        // Apagar primeira coluna ?
@@ -1659,7 +1659,7 @@ class Transporte_PedidoControle extends Transporte_Controle
                     )
                 );
             }
-            unset($tabela);
+            unset($table);
         } else {
             if ($export !== FALSE) {
                 $mensagem = __('Nenhuma Proposta Aceita para exportar');
@@ -1691,23 +1691,23 @@ class Transporte_PedidoControle extends Transporte_Controle
         if ($pedido !== FALSE && !empty($pedido)) {
             $i = 0;
             reset($pedido);
-            $perm_status = $this->_Registro->_Acl->Get_Permissao_Url('Transporte/Pedido/Caminho_Ped_Novas_Aceitar');
+            $permissionStatus = $this->_Registro->_Acl->Get_Permissao_Url('Transporte/Pedido/Caminho_Ped_Novas_Aceitar');
             foreach ($pedido as &$valor) {                
-                $tabela['Id'][$i]           = '#'.$valor->id;
-                $tabela['Pedido'][$i] = '#'.$valor->pedido2;
-                $tabela['Caminhoneiro'][$i] = '#'.$valor->log_user_id;
-                $tabela['Valor'][$i]       = $valor->valor;
-                $tabela['Observação'][$i]       = $valor->obs;
-                $tabela['Funções'][$i]      = $this->_Visual->Tema_Elementos_Btn('Status1'     ,Array('Aceitar'        ,'Transporte/Pedido/Caminho_Ped_Novas_Aceitar/'.$valor->id.'/1'    , ''), $perm_status).
-                                            $this->_Visual->Tema_Elementos_Btn('Status0'     ,Array('Recusar'        ,'Transporte/Pedido/Caminho_Ped_Novas_Aceitar/'.$valor->id.'/2'    , ''), $perm_status);
+                $table['Id'][$i]           = '#'.$valor->id;
+                $table['Pedido'][$i] = '#'.$valor->pedido2;
+                $table['Caminhoneiro'][$i] = '#'.$valor->log_user_id;
+                $table['Valor'][$i]       = $valor->valor;
+                $table['Observação'][$i]       = $valor->obs;
+                $table['Funções'][$i]      = $this->_Visual->Tema_Elementos_Btn('Status1'     ,Array('Aceitar'        ,'Transporte/Pedido/Caminho_Ped_Novas_Aceitar/'.$valor->id.'/1'    , ''), $permissionStatus).
+                                            $this->_Visual->Tema_Elementos_Btn('Status0'     ,Array('Recusar'        ,'Transporte/Pedido/Caminho_Ped_Novas_Aceitar/'.$valor->id.'/2'    , ''), $permissionStatus);
                 ++$i;
             }
             // SE exportar ou mostra em tabela
             if ($export !== FALSE) {
-                self::Export_Todos($export, $tabela, 'Novas Propostas');
+                self::Export_Todos($export, $table, 'Novas Propostas');
             } else {
                 $this->_Visual->Show_Tabela_DataTable(
-                    $tabela,     // Array Com a Tabela
+                    $table,     // Array Com a Tabela
                     '',          // style extra
                     true,        // true -> Add ao Bloco, false => Retorna html
                     FALSE,        // Apagar primeira coluna ?
@@ -1718,7 +1718,7 @@ class Transporte_PedidoControle extends Transporte_Controle
                     )
                 );
             }
-            unset($tabela);
+            unset($table);
         } else {
             if ($export !== FALSE) {
                 $mensagem = __('Nenhuma nova Proposta para exportar');
@@ -1753,23 +1753,23 @@ class Transporte_PedidoControle extends Transporte_Controle
         if ($pedido !== FALSE && !empty($pedido)) {
             $i = 0;
             reset($pedido);
-            $perm_del = $this->_Registro->_Acl->Get_Permissao_Url('Transporte/Pedido/Caminho_Ped_Del');
+            $permissionDelete = $this->_Registro->_Acl->Get_Permissao_Url('Transporte/Pedido/Caminho_Ped_Del');
             foreach ($pedido as &$valor) {                
-                $tabela['Id'][$i]           = '#'.$valor->id;
-                $tabela['Descrição'][$i]       = $valor->descricao_carga;
-                $tabela['Dimensões'][$i]       = '<b>Altura:</b>'.$valor->altura.
+                $table['Id'][$i]           = '#'.$valor->id;
+                $table['Descrição'][$i]       = $valor->descricao_carga;
+                $table['Dimensões'][$i]       = '<b>Altura:</b>'.$valor->altura.
                                                 ' cm<br><b>Comprimento:</b>'.$valor->comprimento.
                                                 ' cm<br><b>Largura:</b>'.$valor->largura.' cm<br><b>Volume:</b>'.$valor->altura*$valor->comprimento*$valor->largura.' cm³';
-                $tabela['Observação'][$i]       = $valor->obs;
-                $tabela['Funções'][$i]      = $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Cancelar Pedido'       ,'Transporte/Pedido/Caminho_Ped_Del/'.$valor->id.'/'     ,'Deseja realmente Cancelar esse Pedido ?'), $perm_del);
+                $table['Observação'][$i]       = $valor->obs;
+                $table['Funções'][$i]      = $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Cancelar Pedido'       ,'Transporte/Pedido/Caminho_Ped_Del/'.$valor->id.'/'     ,'Deseja realmente Cancelar esse Pedido ?'), $permissionDelete);
                 ++$i;
             }
             // SE exportar ou mostra em tabela
             if ($export !== FALSE) {
-                self::Export_Todos($export, $tabela, 'Pedidos Cadastrados');
+                self::Export_Todos($export, $table, 'Pedidos Cadastrados');
             } else {
                 $this->_Visual->Show_Tabela_DataTable(
-                    $tabela,     // Array Com a Tabela
+                    $table,     // Array Com a Tabela
                     '',          // style extra
                     true,        // true -> Add ao Bloco, false => Retorna html
                     FALSE,        // Apagar primeira coluna ?
@@ -1780,7 +1780,7 @@ class Transporte_PedidoControle extends Transporte_Controle
                     )
                 );
             }
-            unset($tabela);
+            unset($table);
         } else {
             if ($export !== FALSE) {
                 $mensagem = __('Nenhum Pedido Cadastrado para exportar');
@@ -1813,21 +1813,21 @@ class Transporte_PedidoControle extends Transporte_Controle
             reset($pedido);
             $perm_add = $this->_Registro->_Acl->Get_Permissao_Url('Transporte/Pedido/Caminho_Sol_Add');
             foreach ($pedido as &$valor) {                
-                $tabela['Id'][$i]           = '#'.$valor->id;
-                $tabela['Descrição'][$i]       = $valor->descricao_carga;
-                $tabela['Dimensões'][$i]       = '<b>Altura:</b>'.$valor->altura.
+                $table['Id'][$i]           = '#'.$valor->id;
+                $table['Descrição'][$i]       = $valor->descricao_carga;
+                $table['Dimensões'][$i]       = '<b>Altura:</b>'.$valor->altura.
                                                 ' cm<br><b>Comprimento:</b>'.$valor->comprimento.
                                                 ' cm<br><b>Largura:</b>'.$valor->largura.' cm<br><b>Volume:</b>'.$valor->altura*$valor->comprimento*$valor->largura.' cm³';
-                $tabela['Observação'][$i]       = $valor->obs;
-                $tabela['Funções'][$i]      = $this->_Visual->Tema_Elementos_Btn('Status1'     ,Array('Fazer Proposta'        ,'Transporte/Pedido/Caminho_Sol_Add/'.$valor->id.'/'    , ''), $perm_add);
+                $table['Observação'][$i]       = $valor->obs;
+                $table['Funções'][$i]      = $this->_Visual->Tema_Elementos_Btn('Status1'     ,Array('Fazer Proposta'        ,'Transporte/Pedido/Caminho_Sol_Add/'.$valor->id.'/'    , ''), $perm_add);
                 ++$i;
             }
             // SE exportar ou mostra em tabela
             if ($export !== FALSE) {
-                self::Export_Todos($export, $tabela, 'Pedidos pendentes');
+                self::Export_Todos($export, $table, 'Pedidos pendentes');
             } else {
                 $this->_Visual->Show_Tabela_DataTable(
-                    $tabela,     // Array Com a Tabela
+                    $table,     // Array Com a Tabela
                     '',          // style extra
                     true,        // true -> Add ao Bloco, false => Retorna html
                     FALSE,        // Apagar primeira coluna ?
@@ -1838,7 +1838,7 @@ class Transporte_PedidoControle extends Transporte_Controle
                     )
                 );
             }
-            unset($tabela);
+            unset($table);
         } else {
             if ($export !== FALSE) {
                 $mensagem = __('Nenhum Pedido pendente para exportar');
@@ -1899,19 +1899,19 @@ class Transporte_PedidoControle extends Transporte_Controle
             $i = 0;
             reset($pedido);
             foreach ($pedido as &$valor) {                
-                $tabela['Id'][$i]           = '#'.$valor->id;
-                $tabela['Pedido'][$i] = '#'.$valor->pedido2;
-                $tabela['Transportadora'][$i] = '#'.$valor->transportadora2;
-                $tabela['Valor'][$i]       = $valor->valor;
-                $tabela['Observação'][$i]       = $valor->obs;
+                $table['Id'][$i]           = '#'.$valor->id;
+                $table['Pedido'][$i] = '#'.$valor->pedido2;
+                $table['Transportadora'][$i] = '#'.$valor->transportadora2;
+                $table['Valor'][$i]       = $valor->valor;
+                $table['Observação'][$i]       = $valor->obs;
                 ++$i;
             }
             // SE exportar ou mostra em tabela
             if ($export !== FALSE) {
-                self::Export_Todos($export, $tabela, 'Propostas Aceitas');
+                self::Export_Todos($export, $table, 'Propostas Aceitas');
             } else {
                 $this->_Visual->Show_Tabela_DataTable(
-                    $tabela,     // Array Com a Tabela
+                    $table,     // Array Com a Tabela
                     '',          // style extra
                     true,        // true -> Add ao Bloco, false => Retorna html
                     FALSE,        // Apagar primeira coluna ?
@@ -1922,7 +1922,7 @@ class Transporte_PedidoControle extends Transporte_Controle
                     )
                 );
             }
-            unset($tabela);
+            unset($table);
         } else {
             if ($export !== FALSE) {
                 $mensagem = __('Nenhuma Proposta Aceita para exportar');
@@ -1955,19 +1955,19 @@ class Transporte_PedidoControle extends Transporte_Controle
             $i = 0;
             reset($pedido);
             foreach ($pedido as &$valor) {                
-                $tabela['Id'][$i]           = '#'.$valor->id;
-                $tabela['Pedido'][$i] = '#'.$valor->pedido2;
-                $tabela['Transportadora'][$i] = '#'.$valor->transportadora2;
-                $tabela['Valor'][$i]       = $valor->valor;
-                $tabela['Observação'][$i]       = $valor->obs;
+                $table['Id'][$i]           = '#'.$valor->id;
+                $table['Pedido'][$i] = '#'.$valor->pedido2;
+                $table['Transportadora'][$i] = '#'.$valor->transportadora2;
+                $table['Valor'][$i]       = $valor->valor;
+                $table['Observação'][$i]       = $valor->obs;
                 ++$i;
             }
             // SE exportar ou mostra em tabela
             if ($export !== FALSE) {
-                self::Export_Todos($export, $tabela, 'Propostas Recusadas');
+                self::Export_Todos($export, $table, 'Propostas Recusadas');
             } else {
                 $this->_Visual->Show_Tabela_DataTable(
-                    $tabela,     // Array Com a Tabela
+                    $table,     // Array Com a Tabela
                     '',          // style extra
                     true,        // true -> Add ao Bloco, false => Retorna html
                     FALSE,        // Apagar primeira coluna ?
@@ -1978,7 +1978,7 @@ class Transporte_PedidoControle extends Transporte_Controle
                     )
                 );
             }
-            unset($tabela);
+            unset($table);
         } else {
             if ($export !== FALSE) {
                 $mensagem = __('Nenhuma Proposta Recusada para exportar');
@@ -2010,22 +2010,22 @@ class Transporte_PedidoControle extends Transporte_Controle
         if ($pedido !== FALSE && !empty($pedido)) {
             $i = 0;
             reset($pedido);
-            $perm_del = $this->_Registro->_Acl->Get_Permissao_Url('Transporte/Pedido/Caminho_Sol_Del');
+            $permissionDelete = $this->_Registro->_Acl->Get_Permissao_Url('Transporte/Pedido/Caminho_Sol_Del');
             foreach ($pedido as &$valor) {                
-                $tabela['Id'][$i]           = '#'.$valor->id;
-                $tabela['Pedido'][$i] = '#'.$valor->pedido2;
-                $tabela['Transportadora'][$i] = '#'.$valor->transportadora2;
-                $tabela['Valor'][$i]       = $valor->valor;
-                $tabela['Observação'][$i]       = $valor->obs;
-                $tabela['Funções'][$i]      = $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Cancelar Proposta'       ,'Transporte/Pedido/Caminho_Sol_Del/'.$valor->id.'/'     ,'Deseja realmente Cancelar essa Proposta ?'), $perm_del);
+                $table['Id'][$i]           = '#'.$valor->id;
+                $table['Pedido'][$i] = '#'.$valor->pedido2;
+                $table['Transportadora'][$i] = '#'.$valor->transportadora2;
+                $table['Valor'][$i]       = $valor->valor;
+                $table['Observação'][$i]       = $valor->obs;
+                $table['Funções'][$i]      = $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Cancelar Proposta'       ,'Transporte/Pedido/Caminho_Sol_Del/'.$valor->id.'/'     ,'Deseja realmente Cancelar essa Proposta ?'), $permissionDelete);
                 ++$i;
             }
             // SE exportar ou mostra em tabela
             if ($export !== FALSE) {
-                self::Export_Todos($export, $tabela, 'Propostas Pendentes');
+                self::Export_Todos($export, $table, 'Propostas Pendentes');
             } else {
                 $this->_Visual->Show_Tabela_DataTable(
-                    $tabela,     // Array Com a Tabela
+                    $table,     // Array Com a Tabela
                     '',          // style extra
                     true,        // true -> Add ao Bloco, false => Retorna html
                     FALSE,        // Apagar primeira coluna ?
@@ -2036,7 +2036,7 @@ class Transporte_PedidoControle extends Transporte_Controle
                     )
                 );
             }
-            unset($tabela);
+            unset($table);
         } else {
             if ($export !== FALSE) {
                 $mensagem = __('Nenhuma Proposta Pendente para exportar');
@@ -2116,11 +2116,11 @@ class Transporte_PedidoControle extends Transporte_Controle
         }
         $titulo     = __('Proposta enviada com Sucesso');
         $dao        = 'Transporte_Caminhoneiro_Pedido_Lance';
-        $funcao     = '$this->Caminho_Sol_Solicitacoes();';
+        $function     = '$this->Caminho_Sol_Solicitacoes();';
         $sucesso1   = __('Proposta enviada com Sucesso');
         $sucesso2   = __('Aguarde uma Resposta.');
         $alterar    = Array('status'=>'0', 'transportadora'=>$pedido->log_user_add,'pedido'=>$pedido->id);
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);
     }
     /**
      * 

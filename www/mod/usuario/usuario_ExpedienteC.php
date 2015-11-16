@@ -77,18 +77,18 @@ class usuario_ExpedienteControle extends usuario_Controle
             if (is_object($expedientes)) $expedientes = Array(0=>$expedientes);
             reset($expedientes);
             foreach ($expedientes as $indice=>&$valor) {
-                $tabela['Pessoa'][$i]           = $valor->persona2;
-                $tabela['Numero'][$i]           = $valor->expediente;
-                $tabela['Obs'][$i]              = $valor->obs;
-                $tabela['Funções'][$i]          = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Expediente'        ,'usuario/Expediente/Expedientes_Edit/'.$valor->id.'/'    , '')).
+                $table['Pessoa'][$i]           = $valor->persona2;
+                $table['Numero'][$i]           = $valor->expediente;
+                $table['Obs'][$i]              = $valor->obs;
+                $table['Funções'][$i]          = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Expediente'        ,'usuario/Expediente/Expedientes_Edit/'.$valor->id.'/'    , '')).
                                                   $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Expediente'       ,'usuario/Expediente/Expedientes_Del/'.$valor->id.'/'     ,'Deseja realmente deletar essa Expediente ?'));
                 ++$i;
             }
             if ($export !== FALSE) {
-                self::Export_Todos($export, $tabela, 'Expedientes');
+                self::Export_Todos($export, $table, 'Expedientes');
             } else {
                 $this->_Visual->Show_Tabela_DataTable(
-                    $tabela,     // Array Com a Tabela
+                    $table,     // Array Com a Tabela
                     '',          // style extra
                     true,        // true -> Add ao Bloco, false => Retorna html
                     true,        // Apagar primeira coluna ?
@@ -99,7 +99,7 @@ class usuario_ExpedienteControle extends usuario_Controle
                     )
                 );
             }
-            unset($tabela);
+            unset($table);
         } else {        
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Expediente</font></b></center>');
         }
@@ -141,11 +141,11 @@ class usuario_ExpedienteControle extends usuario_Controle
     public function Expedientes_Add2() {
         $titulo     = __('Expediente adicionada com Sucesso');
         $dao        = 'Usuario_Expediente';
-        $funcao     = '$this->Expediente();';
+        $function     = '$this->Expediente();';
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = __('Expediente cadastrado com sucesso.');
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);
     }
     /**
      * Retorna Formulário para Edição de Expediente
@@ -178,11 +178,11 @@ class usuario_ExpedienteControle extends usuario_Controle
     public function Expedientes_Edit2($id) {
         $titulo     = __('Expediente editada com Sucesso');
         $dao        = Array('Usuario_Expediente', $id);
-        $funcao     = '$this->Expediente();';
+        $function     = '$this->Expediente();';
         $sucesso1   = __('Expediente Alterado com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);   
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);   
     }
     /**
      * Deleta Expediente
@@ -277,13 +277,13 @@ class usuario_ExpedienteControle extends usuario_Controle
         $html .= $form->retorna_form('Abrir Expediente').'<br><br>';
         
         // Carrega Tabela
-        $tabela_colunas = Array();
-        $tabela_colunas[] = __('Id');
-        $tabela_colunas[] = __('Funcionário');
-        $tabela_colunas[] = __('Inicio');
-        $tabela_colunas[] = __('Fim');
-        $tabela_colunas[] = __('Funções');
-        $html .= $Registro->_Visual->Show_Tabela_DataTable_Massiva($tabela_colunas,'usuario/Expediente/Expedientes', '', FALSE);
+        $table_colunas = Array();
+        $table_colunas[] = __('Id');
+        $table_colunas[] = __('Funcionário');
+        $table_colunas[] = __('Inicio');
+        $table_colunas[] = __('Fim');
+        $table_colunas[] = __('Funções');
+        $html .= $Registro->_Visual->Show_Tabela_DataTable_Massiva($table_colunas,'usuario/Expediente/Expedientes', '', FALSE);
         
         if ($span === TRUE) {
             $html .= '</span>';
@@ -325,12 +325,12 @@ class usuario_ExpedienteControle extends usuario_Controle
         
         
         // Carrega Tabela
-        $tabela_colunas = Array();
-        $tabela_colunas[] = __('Id');
-        $tabela_colunas[] = __('Funcionário');
-        $tabela_colunas[] = __('Horário de Saida');
-        $tabela_colunas[] = __('Funções');
-        $html .= $Registro->_Visual->Show_Tabela_DataTable_Massiva($tabela_colunas,'usuario/Expediente/Expedientes/1/sim', '', FALSE);
+        $table_colunas = Array();
+        $table_colunas[] = __('Id');
+        $table_colunas[] = __('Funcionário');
+        $table_colunas[] = __('Horário de Saida');
+        $table_colunas[] = __('Funções');
+        $html .= $Registro->_Visual->Show_Tabela_DataTable_Massiva($table_colunas,'usuario/Expediente/Expedientes/1/sim', '', FALSE);
         
         if ($span === TRUE) {
             $html .= '</span>';
@@ -386,7 +386,7 @@ class usuario_ExpedienteControle extends usuario_Controle
         $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
         
         // Recarrega
-        $tabela_colunas = Array(__('Id'),__('Funcionário'),__('Inicio'),__('Fim'),__('Status'),__('Funções'));
+        $table_colunas = Array(__('Id'),__('Funcionário'),__('Inicio'),__('Fim'),__('Status'),__('Funções'));
         $conteudo = array(
             'location'  =>  '#usuario_Expediente_Disponiveis',
             'js'        =>  '',

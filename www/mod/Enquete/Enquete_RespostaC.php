@@ -40,13 +40,13 @@ class Enquete_RespostaControle extends Enquete_Controle
         $Registro   = &\Framework\App\Registro::getInstacia();
         $Modelo     = &$Registro->_Modelo;
         $Visual     = &$Registro->_Visual;
-        $tabela = Array();
+        $table = Array();
         $i = 0;
         if (is_object($respostas)) $respostas = Array(0=>$respostas);
         reset($respostas);
         $qnt_votos_totais = 0;
-        $perm_editar = $Registro->_Acl->Get_Permissao_Url('Enquete/Resposta/Respostas_Edit');
-        $perm_del = $Registro->_Acl->Get_Permissao_Url('Enquete/Resposta/Respostas_Del');
+        $permissionEdit = $Registro->_Acl->Get_Permissao_Url('Enquete/Resposta/Respostas_Edit');
+        $permissionDelete = $Registro->_Acl->Get_Permissao_Url('Enquete/Resposta/Respostas_Del');
 
         foreach ($respostas as &$valor) {
             $resp_votos = $Modelo->db->Sql_Select('Enquete_Voto',Array(
@@ -64,14 +64,14 @@ class Enquete_RespostaControle extends Enquete_Controle
         }
         reset($respostas);
         foreach ($respostas as &$valor) {
-            $tabela['Nome'][$i]             = $valor->nome;
-            $tabela['Votos'][$i]            = $valor->qnt_votos.' / '.$qnt_votos_totais;
-            $tabela['Data Registrado'][$i]  = $valor->log_date_add;
-            $tabela['Funções'][$i]          = $Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Resposta'        ,'Enquete/Resposta/Respostas_Edit/'.$valor->enquete.'/'.$valor->id.'/'    , ''), $perm_editar).
-                                              $Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Resposta'       ,'Enquete/Resposta/Respostas_Del/'.$valor->enquete.'/'.$valor->id.'/'     ,'Deseja realmente deletar essa Resposta ?'), $perm_del);
+            $table['Nome'][$i]             = $valor->nome;
+            $table['Votos'][$i]            = $valor->qnt_votos.' / '.$qnt_votos_totais;
+            $table['Data Registrado'][$i]  = $valor->log_date_add;
+            $table['Funções'][$i]          = $Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Resposta'        ,'Enquete/Resposta/Respostas_Edit/'.$valor->enquete.'/'.$valor->id.'/'    , ''), $permissionEdit).
+                                              $Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Resposta'       ,'Enquete/Resposta/Respostas_Del/'.$valor->enquete.'/'.$valor->id.'/'     ,'Deseja realmente deletar essa Resposta ?'), $permissionDelete);
             ++$i;
         }
-        return Array($tabela, $i);
+        return Array($table, $i);
     }
     /**
      * 
@@ -117,13 +117,13 @@ class Enquete_RespostaControle extends Enquete_Controle
         // Conexao
         $respostas = $this->_Modelo->db->Sql_Select('Enquete_Resposta', $where);
         if ($respostas !== FALSE && !empty($respostas)) {
-            list($tabela, $i) = self::Respostas_Tabela($respostas);
+            list($table, $i) = self::Respostas_Tabela($respostas);
             $titulo = 'Listagem de Respostas: '.$enquete_registro->nome.' ('.$i.')';
             if ($export !== FALSE) {
-                self::Export_Todos($export, $tabela, $titulo);
+                self::Export_Todos($export, $table, $titulo);
             } else {
                 $this->_Visual->Show_Tabela_DataTable(
-                    $tabela,     // Array Com a Tabela
+                    $table,     // Array Com a Tabela
                     '',          // style extra
                     true,        // true -> Add ao Bloco, false => Retorna html
                     FALSE,        // Apagar primeira coluna ?
@@ -134,7 +134,7 @@ class Enquete_RespostaControle extends Enquete_Controle
                     )
                 );
             }
-            unset($tabela);
+            unset($table);
         } else {    
             $titulo = 'Listagem de Respostas: '.$enquete_registro->nome.' ('.$i.')';  
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhuma Resposta</font></b></center>');
@@ -179,14 +179,14 @@ class Enquete_RespostaControle extends Enquete_Controle
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = __('Resposta cadastrada com sucesso.');
         if ($enquete === FALSE) {
-            $funcao     = '$this->Respostas(0);';
+            $function     = '$this->Respostas(0);';
             $alterar    = Array();
         } else {
             $enquete = (int) $enquete;
             $alterar    = Array('enquete'=>$enquete);
-            $funcao     = '$this->Respostas('.$enquete.');';
+            $function     = '$this->Respostas('.$enquete.');';
         }
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);
     }
     /**
      * 
@@ -233,11 +233,11 @@ class Enquete_RespostaControle extends Enquete_Controle
         $enquete    = (int) $enquete;
         $titulo     = __('Resposta Editada com Sucesso');
         $dao        = Array('Enquete_Resposta', $id);
-        $funcao     = '$this->Respostas('.$enquete.');';
+        $function     = '$this->Respostas('.$enquete.');';
         $sucesso1   = __('Resposta Alterada com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);   
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);   
     }
     /**
      * 
@@ -282,4 +282,4 @@ class Enquete_RespostaControle extends Enquete_Controle
         $this->_Visual->Json_Info_Update('Historico', FALSE);
     }
 }
-?>
+

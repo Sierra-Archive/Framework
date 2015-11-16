@@ -93,8 +93,8 @@ class Simulador_Principal implements \Framework\PrincipalInterface
         $Visual->Blocar('<a title="Adicionar Tag" class="btn btn-success lajax explicar-titulo" data-acao="" href="'.URL_PATH.'Simulador/Tag/Tags_Add">Adicionar nova Tag</a><div class="space15"></div>');
         if (is_object($tags)) $tags = Array(0=>$tags);
         if ($tags !== FALSE && !empty($tags)) {
-            $funcao = '';
-            $tabela = Array();
+            $function = '';
+            $table = Array();
             $i = 0;
             if ($tags !== FALSE) {
                 // Percorre Tags
@@ -102,32 +102,32 @@ class Simulador_Principal implements \Framework\PrincipalInterface
                 reset($tags);
                 if (!empty($tags)) {
                     $perm_download = \Framework\App\Registro::getInstacia()->_Acl->Get_Permissao_Url('Simulador/Tag/Download');
-                    $perm_editar = \Framework\App\Registro::getInstacia()->_Acl->Get_Permissao_Url('Simulador/Tag/Tags_Edit');
-                    $perm_del = \Framework\App\Registro::getInstacia()->_Acl->Get_Permissao_Url('Simulador/Tag/Tags_Del');
+                    $permissionEdit = \Framework\App\Registro::getInstacia()->_Acl->Get_Permissao_Url('Simulador/Tag/Tags_Edit');
+                    $permissionDelete = \Framework\App\Registro::getInstacia()->_Acl->Get_Permissao_Url('Simulador/Tag/Tags_Del');
 
                     foreach ($tags as &$valor) {
 
-                        $tabela['Id'][$i]    = $valor->id;
-                        $tabela['Nome'][$i]      = $valor->nome;
-                        $tabela['Tipo de Resultado'][$i]      = $valor->resultado_tipo;
-                        $tabela['Observação'][$i]      = $valor->obs;
-                        $tabela['Funções'][$i]          = $Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Pasta'        ,'Simulador/Tag/Tags_Edit/'.$valor->id.'/'.$raiz    , ''), $perm_editar).
-                                                          $Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Pasta'       ,'Simulador/Tag/Tags_Del/'.$valor->id.'/'.$raiz     ,'Deseja realmente deletar essa Tag ?'), $perm_del);
+                        $table['Id'][$i]    = $valor->id;
+                        $table['Nome'][$i]      = $valor->nome;
+                        $table['Tipo de Resultado'][$i]      = $valor->resultado_tipo;
+                        $table['Observação'][$i]      = $valor->obs;
+                        $table['Funções'][$i]          = $Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Pasta'        ,'Simulador/Tag/Tags_Edit/'.$valor->id.'/'.$raiz    , ''), $permissionEdit).
+                                                          $Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Pasta'       ,'Simulador/Tag/Tags_Del/'.$valor->id.'/'.$raiz     ,'Deseja realmente deletar essa Tag ?'), $permissionDelete);
                         
-                        $funcao .= $tabela['Funções'][$i];
+                        $function .= $table['Funções'][$i];
                         ++$i;
                     }
                 }
             }
-            if ($funcao==='') {
-                unset($tabela['Funções']);
+            if ($function==='') {
+                unset($table['Funções']);
             }
             // Desconta Primeiro Registro
             if ($raiz !== FALSE && $raiz!=0) {
                 $i = $i-1;
             }
             // Retorna List
-            $Visual->Show_Tabela_DataTable($tabela);
+            $Visual->Show_Tabela_DataTable($table);
         } else {        
             $Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhuma Tag de Simulador na Busca '.$busca.'</font></b></center>');
         }

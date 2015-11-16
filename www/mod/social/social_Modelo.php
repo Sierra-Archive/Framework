@@ -13,8 +13,8 @@ class social_Modelo extends \Framework\App\Modelo
     * 
     * @param Class $model Carrega por Ponteiro Modelo Atual
     * @param Int $user Id do Usuario admin do sistema
-    * @param String $tabela Nome da Tabela que vai se relacionar com a persona
-    * @param Int $tabela_id Id do Usuario admin do sistema
+    * @param String $table Nome da Tabela que vai se relacionar com a persona
+    * @param Int $table_id Id do Usuario admin do sistema
     * @param Int $persona Id do Usuario admin do sistema
     * 
     * @uses $config
@@ -25,9 +25,9 @@ class social_Modelo extends \Framework\App\Modelo
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 0.4.2
     */
-    public static function Inserir_Pers_Relacao(&$model, $user, $tabela, $tabela_id, $persona) {
+    public static function Inserir_Pers_Relacao(&$model, $user, $table, $table_id, $persona) {
         GLOBAL $config;
-        $model->db->query('INSERT INTO '.MYSQL_SOCIAL_RELACOES.' (user,tabela,tabela_id,persona,log_date_add) VALUES (\''.$user.'\',\''.$tabela.'\',\''.$tabela_id.'\',\''.$persona.'\',\''.APP_HORA.'\')');
+        $model->db->query('INSERT INTO '.MYSQL_SOCIAL_RELACOES.' (user,tabela,tabela_id,persona,log_date_add) VALUES (\''.$user.'\',\''.$table.'\',\''.$table_id.'\',\''.$persona.'\',\''.APP_HORA.'\')');
         return 1;
     }
     public function porc_ficar($personaid) {

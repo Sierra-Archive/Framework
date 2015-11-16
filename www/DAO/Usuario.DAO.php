@@ -1966,4 +1966,4 @@ final Class Usuario_DAO extends Framework\App\Dao
         );
     }
 }
-?>
+

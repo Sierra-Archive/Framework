@@ -60,7 +60,7 @@ class Musica_VideoControle extends Musica_Controle
         $Registro   = &\Framework\App\Registro::getInstacia();
         $Modelo     = &$Registro->_Modelo;
         $Visual     = &$Registro->_Visual;
-        $tabela = Array();
+        $table = Array();
         $i = 0;
         if (is_object($videos)) $videos = Array(0=>$videos);
         reset($videos);
@@ -71,20 +71,20 @@ class Musica_VideoControle extends Musica_Controle
                         $edit_url   = 'Musica/Video/Videos_Edit/'.$valor->id.'/'.$valor->artista.'/'.$valor->album.'/'.$valor->musica.'/';
                         $del_url    = 'Musica/Video/Videos_Del/'.$valor->id.'/'.$valor->artista.'/'.$valor->album.'/'.$valor->musica.'/';
                     } else {
-                        $tabela['Musica'][$i]   = $valor->musica2;
+                        $table['Musica'][$i]   = $valor->musica2;
                         $edit_url   = 'Musica/Video/Videos_Edit/'.$valor->id.'/'.$valor->artista.'/'.$valor->album.'/';
                         $del_url    = 'Musica/Video/Videos_Del/'.$valor->id.'/'.$valor->artista.'/'.$valor->album.'/';
                     }
                 } else {
-                    $tabela['Album'][$i]     = $valor->album2;
-                    $tabela['Musica'][$i]   = $valor->musica2;
+                    $table['Album'][$i]     = $valor->album2;
+                    $table['Musica'][$i]   = $valor->musica2;
                     $edit_url   = 'Musica/Video/Videos_Edit/'.$valor->id.'/'.$valor->artista.'/';
                     $del_url    = 'Musica/Video/Videos_Del/'.$valor->id.'/'.$valor->artista.'/';
                 }
             } else {
-                $tabela['Artista'][$i]   = $valor->artista2;
-                $tabela['Album'][$i]     = $valor->album2;
-                $tabela['Musica'][$i]   = $valor->musica2;
+                $table['Artista'][$i]   = $valor->artista2;
+                $table['Album'][$i]     = $valor->album2;
+                $table['Musica'][$i]   = $valor->musica2;
                 $edit_url   = 'Musica/Video/Videos_Edit/'.$valor->id.'/';
                 $del_url    = 'Musica/Video/Videos_Del/'.$valor->id.'/';
             }
@@ -93,9 +93,9 @@ class Musica_VideoControle extends Musica_Controle
             } else {
                 $foto = $valor->foto;
             }
-            $tabela['Foto'][$i]                         = '<img alt="'.__('Foto de Video').' src="'.$foto.'" style="max-width:100px;" />';
-            $tabela['Nome do Video'][$i]                = $valor->nome;
-            $tabela['Data Registrado no Sistema'][$i]   = $valor->log_date_add;
+            $table['Foto'][$i]                         = '<img alt="'.__('Foto de Video').' src="'.$foto.'" style="max-width:100px;" />';
+            $table['Nome do Video'][$i]                = $valor->nome;
+            $table['Data Registrado no Sistema'][$i]   = $valor->log_date_add;
             $status                                     = $valor->status;
             $destaque                                     = $valor->destaque;
             if ($status!=1) {
@@ -105,7 +105,7 @@ class Musica_VideoControle extends Musica_Controle
                 $status = 1;
                 $texto = __('Ativado');
             }
-            $tabela['Funções'][$i]          = $Visual->Tema_Elementos_Btn('Personalizado'   ,Array('Visualizar Video'    ,'Musica/Video/Videos_Ver/'.$valor->id    , '', 'youtube', 'inverse')).
+            $table['Funções'][$i]          = $Visual->Tema_Elementos_Btn('Personalizado'   ,Array('Visualizar Video'    ,'Musica/Video/Videos_Ver/'.$valor->id    , '', 'youtube', 'inverse')).
                                             '<span id="status'.$valor->id.'">'.$Visual->Tema_Elementos_Btn('Status'.$status     ,Array($texto        ,'Musica/Video/Status/'.$valor->id.'/'    , '')).'</span>';
             if ($destaque==1) {
                 $destaque = 1;
@@ -114,12 +114,12 @@ class Musica_VideoControle extends Musica_Controle
                 $destaque = 0;
                 $texto = __('Não está em destaque');
             }
-            $tabela['Funções'][$i]      .= '<span id="destaques'.$valor->id.'">'.$Visual->Tema_Elementos_Btn('Destaque'.$destaque   ,Array($texto   ,'Musica/Video/Destaques/'.$valor->id.'/'    , '')).'</span>'.            
+            $table['Funções'][$i]      .= '<span id="destaques'.$valor->id.'">'.$Visual->Tema_Elementos_Btn('Destaque'.$destaque   ,Array($texto   ,'Musica/Video/Destaques/'.$valor->id.'/'    , '')).'</span>'.            
                                             $Visual->Tema_Elementos_Btn('Editar'          ,Array('Editar Video'        , $edit_url    , '')).
                                             $Visual->Tema_Elementos_Btn('Deletar'         ,Array('Deletar Video'       , $del_url     ,'Deseja realmente deletar essa Video ?'));
             ++$i;
         }
-        return Array($tabela, $i);
+        return Array($table, $i);
     }
     /**
      * 
@@ -223,13 +223,13 @@ class Musica_VideoControle extends Musica_Controle
         )));
         $videos = $this->_Modelo->db->Sql_Select('Musica_Video', $where);
         if ($videos !== FALSE && !empty($videos)) {
-            list($tabela, $i) = self::Videos_Tabela($videos, $artista, $album, $musica);
+            list($table, $i) = self::Videos_Tabela($videos, $artista, $album, $musica);
             $titulo = $titulo.' ('.$i.')';
             if ($export !== FALSE) {
-                self::Export_Todos($export, $tabela, $titulo);
+                self::Export_Todos($export, $table, $titulo);
             } else {
                 $this->_Visual->Show_Tabela_DataTable(
-                    $tabela,     // Array Com a Tabela
+                    $table,     // Array Com a Tabela
                     '',          // style extra
                     true,        // true -> Add ao Bloco, false => Retorna html
                     FALSE,        // Apagar primeira coluna ?
@@ -240,7 +240,7 @@ class Musica_VideoControle extends Musica_Controle
                     )
                 );
             }
-            unset($tabela);
+            unset($table);
         } else {     
             $titulo = $titulo.' ('.$i.')';
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">'.$erro.'</font></b></center>');
@@ -356,18 +356,18 @@ class Musica_VideoControle extends Musica_Controle
                 if ($musica !== FALSE) {
                     $musica = (int) $musica;
                     $alterar['musica'] = $musica;
-                    $funcao     = '$this->Videos('.$artista.', '.$album.', '.$musica.');';
+                    $function     = '$this->Videos('.$artista.', '.$album.', '.$musica.');';
                 } else {
-                    $funcao     = '$this->Videos('.$artista.', '.$album.');';
+                    $function     = '$this->Videos('.$artista.', '.$album.');';
                 }
             } else {
-                $funcao     = '$this->Videos('.$artista.');';
+                $function     = '$this->Videos('.$artista.');';
             }
         } else {
-            $funcao     = '$this->Videos();';
+            $function     = '$this->Videos();';
             $alterar    = Array();
         }
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);
     }
     
     /**
@@ -464,21 +464,21 @@ class Musica_VideoControle extends Musica_Controle
                 if ($musica !== FALSE) {
                     $musica = (int) $musica;
                     $alterar['musica'] = $musica;
-                    $funcao     = '$this->Videos('.$artista.', '.$album.', '.$musica.');';
+                    $function     = '$this->Videos('.$artista.', '.$album.', '.$musica.');';
                 } else {
-                    $funcao     = '$this->Videos('.$artista.', '.$album.');';
+                    $function     = '$this->Videos('.$artista.', '.$album.');';
                 }
             } else {
-                $funcao     = '$this->Videos('.$artista.');';
+                $function     = '$this->Videos('.$artista.');';
             }
         } else {
-            $funcao     = '$this->Videos(0,0,0);';
+            $function     = '$this->Videos(0,0,0);';
             $alterar    = Array();
         }
         $sucesso1   = __('Video Alterado com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);   
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);   
     }
     /**
      * 

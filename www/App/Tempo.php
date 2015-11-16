@@ -193,4 +193,4 @@ class Tempo{
         var_dump(self::$log);
     }
 }
-?>
+

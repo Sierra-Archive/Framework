@@ -478,4 +478,4 @@ final Class Financeiro_Pagamento_Interno_DAO extends Framework\App\Dao
         );
     }
 }
-?>
+

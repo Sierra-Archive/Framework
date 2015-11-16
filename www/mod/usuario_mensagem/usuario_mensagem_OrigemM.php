@@ -20,26 +20,26 @@ class usuario_mensagem_OrigemModelo extends usuario_mensagem_Modelo
         
         // Table's primary key
         $primaryKey = 'id';
-        $tabela = 'Usuario_Mensagem_Origem';
+        $table = 'Usuario_Mensagem_Origem';
         
-        $perm_editar = $this->_Registro->_Acl->Get_Permissao_Url('usuario_mensagem/Origem/Origens_Edit');
-        $perm_del = $this->_Registro->_Acl->Get_Permissao_Url('usuario_mensagem/Origem/Origens_Del');
+        $permissionEdit = $this->_Registro->_Acl->Get_Permissao_Url('usuario_mensagem/Origem/Origens_Edit');
+        $permissionDelete = $this->_Registro->_Acl->Get_Permissao_Url('usuario_mensagem/Origem/Origens_Del');
         
-        if ($perm_editar && $perm_del) {
-            $funcao = function( $d, $row ) {
+        if ($permissionEdit && $permissionDelete) {
+            $function = function( $d, $row ) {
                 return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Origem'        ,'usuario_mensagem/Origem/Origens_Edit/'.$d.'/'    , ''),TRUE).
                        Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Origem'       ,'usuario_mensagem/Origem/Origens_Del/'.$d.'/'     ,'Deseja realmente deletar essa Origem ?'),TRUE);
             };
-        } else if ($perm_editar) {
-            $funcao = function( $d, $row ) {
+        } else if ($permissionEdit) {
+            $function = function( $d, $row ) {
                 return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Origem'        ,'usuario_mensagem/Origem/Origens_Edit/'.$d.'/'    , ''),TRUE);
             };
-        } else if ($perm_del) {
-            $funcao = function( $d, $row ) {
+        } else if ($permissionDelete) {
+            $function = function( $d, $row ) {
                 return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Origem'       ,'usuario_mensagem/Origem/Origens_Del/'.$d.'/'     ,'Deseja realmente deletar essa Origem ?'),TRUE);
             };
         } else {
-            $funcao = function( $d, $row ) {
+            $function = function( $d, $row ) {
                 return '';
             };
         }
@@ -51,11 +51,11 @@ class usuario_mensagem_OrigemModelo extends usuario_mensagem_Modelo
                 }),
             array( 'db' => 'nome', 'dt' => 1 ),
             array( 'db' => 'id', 'dt' => 2,
-                'formatter' => $funcao)
+                'formatter' => $function)
         );
 
         echo json_encode(
-            \Framework\Classes\Datatable::complex( $_GET, Framework\App\Registro::getInstacia()->_Conexao, $tabela, $primaryKey, $columns, null )
+            \Framework\Classes\Datatable::complex( $_GET, Framework\App\Registro::getInstacia()->_Conexao, $table, $primaryKey, $columns, null )
         );
     }
 }

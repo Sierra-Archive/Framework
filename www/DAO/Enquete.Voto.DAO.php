@@ -128,4 +128,4 @@ final Class Enquete_Voto_DAO extends Framework\App\Dao
         );
     }
 }
-?>
+

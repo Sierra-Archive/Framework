@@ -45,17 +45,17 @@ class locais_locaisControle extends locais_Controle
             if (is_object($setores)) $setores = Array(0=>$setores);
             reset($setores);
             foreach ($setores as $indice=>&$valor) {
-                $tabela['Tipo de Local'][$i]             = $valor->categoria2;
-                $tabela['Nome'][$i]             = $valor->nome;
-                $tabela['Funções'][$i]          = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Local'        ,'locais/locais/Locais_Edit/'.$valor->id.'/'    , '')).
+                $table['Tipo de Local'][$i]             = $valor->categoria2;
+                $table['Nome'][$i]             = $valor->nome;
+                $table['Funções'][$i]          = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Local'        ,'locais/locais/Locais_Edit/'.$valor->id.'/'    , '')).
                                                   $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Local'       ,'locais/locais/Locais_Del/'.$valor->id.'/'     ,'Deseja realmente deletar esse Local ?'));
                 ++$i;
             }
             if ($export !== FALSE) {
-                self::Export_Todos($export, $tabela, 'Locais');
+                self::Export_Todos($export, $table, 'Locais');
             } else {
                 $this->_Visual->Show_Tabela_DataTable(
-                    $tabela,     // Array Com a Tabela
+                    $table,     // Array Com a Tabela
                     '',          // style extra
                     true,        // true -> Add ao Bloco, false => Retorna html
                     true,        // Apagar primeira coluna ?
@@ -66,7 +66,7 @@ class locais_locaisControle extends locais_Controle
                     )
                 );
             }
-            unset($tabela);
+            unset($table);
         } else {        
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Local</font></b></center>');
         }
@@ -102,11 +102,11 @@ class locais_locaisControle extends locais_Controle
     public function Locais_Add2() {
         $titulo     = __('Local Adicionado com Sucesso');
         $dao        = 'Local';
-        $funcao     = '$this->Locais();';
+        $function     = '$this->Locais();';
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = __('Local cadastrado com sucesso.');
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);
     }
     /**
      * 
@@ -136,11 +136,11 @@ class locais_locaisControle extends locais_Controle
     public function Locais_Edit2($id) {
         $titulo     = __('Local Editado com Sucesso');
         $dao        = Array('Local', $id);
-        $funcao     = '$this->Locais();';
+        $function     = '$this->Locais();';
         $sucesso1   = __('Local Alterado com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);   
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);   
     }
     /**
      * 

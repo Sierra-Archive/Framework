@@ -21,11 +21,11 @@ class Locomocao_EntregaControle extends Locomocao_Controle
     public function Entregas($tipobloco='Unico') {
         $this->Endereco_Entrega_Entrega(FALSE);
         
-        $tabela_colunas[] = __('Id');
-        $tabela_colunas[] = __('Motoboy');
-        $tabela_colunas[] = __('Funções');
+        $table_colunas[] = __('Id');
+        $table_colunas[] = __('Motoboy');
+        $table_colunas[] = __('Funções');
 
-        $this->_Visual->Show_Tabela_DataTable_Massiva($tabela_colunas,'Locomocao/Entrega/Entregas');
+        $this->_Visual->Show_Tabela_DataTable_Massiva($table_colunas,'Locomocao/Entrega/Entregas');
 
         $titulo = __('Listagem de Entregas').' (<span id="DataTable_Contador">0</span>)';
         $bt_add = Array("link"=>"Locomocao/Entrega/Entregas_Add",'icon'=>'add', 'nome'=>__('Adicionar Entrega'));
@@ -467,11 +467,11 @@ class Locomocao_EntregaControle extends Locomocao_Controle
         $titulo_unico       = 'Entregas';
         $titulo     = $titulo.' Adicionada com Sucesso';
         $dao        = 'Locomocao_Entrega';
-        $funcao     = FALSE;
+        $function     = FALSE;
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = $titulo.' cadastrada com sucesso.';
         $alterar    = Array();
-        $sucesso = $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
+        $sucesso = $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);
         if ($sucesso === TRUE) {
             // Pega o ID
             $identificador  = $this->_Modelo->db->Sql_Select('Locomocao_Entrega', Array(),1,'id DESC');
@@ -536,11 +536,11 @@ class Locomocao_EntregaControle extends Locomocao_Controle
         $id = (int) $id;
         $titulo     = __('Entrega Alterada com Sucesso');
         $dao        = Array('Locomocao_Entrega', $id);
-        $funcao     = '$this->Entregas();';
+        $function     = '$this->Entregas();';
         $sucesso1   = __('Entrega Alterada com Sucesso');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);
     }
     /**
      * 

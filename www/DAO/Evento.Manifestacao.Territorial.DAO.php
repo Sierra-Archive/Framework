@@ -313,4 +313,4 @@ final Class Evento_Manifestacao_Territorial_DAO extends Framework\App\Dao
         );
     }
 }
-?>
+

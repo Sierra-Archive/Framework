@@ -33,21 +33,21 @@ class Evento_EventoControle extends Evento_Controle
     static function Eventos_Tabela(&$eventos) {
         $Registro   = &\Framework\App\Registro::getInstacia();
         $Visual     = &$Registro->_Visual;
-        $tabela = Array();
+        $table = Array();
         $i = 0;
         if (is_object($eventos)) $eventos = Array(0=>$eventos);
         reset($eventos);
-        $perm_status = $Registro->_Acl->Get_Permissao_Url('Evento/Evento/Status');
-        $perm_destaque = $Registro->_Acl->Get_Permissao_Url('Evento/Evento/Destaques');
-        $perm_editar = $Registro->_Acl->Get_Permissao_Url('Evento/Evento/Eventos_Edit');
-        $perm_del = $Registro->_Acl->Get_Permissao_Url('Evento/Evento/Eventos_Del');
+        $permissionStatus = $Registro->_Acl->Get_Permissao_Url('Evento/Evento/Status');
+        $permissionFeatured = $Registro->_Acl->Get_Permissao_Url('Evento/Evento/Destaques');
+        $permissionEdit = $Registro->_Acl->Get_Permissao_Url('Evento/Evento/Eventos_Edit');
+        $permissionDelete = $Registro->_Acl->Get_Permissao_Url('Evento/Evento/Eventos_Del');
 
         foreach ($eventos as &$valor) {
-            $tabela['Nome do Evento'][$i]           =   $valor->nome;
-            $tabela['Local'][$i]                    =   $valor->local2;
-            $tabela['Data Inicio'][$i]              =   $valor->data_inicio;
-            $tabela['Data Fim'][$i]                 =   $valor->data_fim;
-            $tabela['Data Registrado'][$i]          =   $valor->log_date_add;
+            $table['Nome do Evento'][$i]           =   $valor->nome;
+            $table['Local'][$i]                    =   $valor->local2;
+            $table['Data Inicio'][$i]              =   $valor->data_inicio;
+            $table['Data Fim'][$i]                 =   $valor->data_fim;
+            $table['Data Registrado'][$i]          =   $valor->log_date_add;
             if ($valor->status==1 || $valor->status=='1') {
                 $valor->status='1';
                 $texto = 'Ativado';
@@ -56,8 +56,8 @@ class Evento_EventoControle extends Evento_Controle
                 $texto = __('Desativado');
             }
             $destaque                                     = $valor->destaque;
-            if ($perm_status)    $tabela['Funções'][$i]                   =   '<span id="status'.$valor->id.'">'.$Visual->Tema_Elementos_Btn('Status'.$valor->status     ,Array($texto        ,'Evento/Evento/Status/'.$valor->id.'/'    , '')).'</span>';
-            else                $tabela['Funções'][$i] = '';
+            if ($permissionStatus)    $table['Funções'][$i]                   =   '<span id="status'.$valor->id.'">'.$Visual->Tema_Elementos_Btn('Status'.$valor->status     ,Array($texto        ,'Evento/Evento/Status/'.$valor->id.'/'    , '')).'</span>';
+            else                $table['Funções'][$i] = '';
             
             if ($destaque==1) {
                 $destaque = 1;
@@ -66,12 +66,12 @@ class Evento_EventoControle extends Evento_Controle
                 $destaque = 0;
                 $texto = __('Não está em destaque');
             }
-            $tabela['Funções'][$i]      .= '<span id="destaques'.$valor->id.'">'.$Visual->Tema_Elementos_Btn('Destaque'.$destaque   ,Array($texto   ,'Evento/Evento/Destaques/'.$valor->id.'/'    , ''), $perm_destaque).'</span>'.            
-                                            $Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Evento'        ,'Evento/Evento/Eventos_Edit/'.$valor->id.'/'    , ''), $perm_editar).
-                                            $Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Evento'       ,'Evento/Evento/Eventos_Del/'.$valor->id.'/'     ,'Deseja realmente deletar esse Evento ?'), $perm_del);
+            $table['Funções'][$i]      .= '<span id="destaques'.$valor->id.'">'.$Visual->Tema_Elementos_Btn('Destaque'.$destaque   ,Array($texto   ,'Evento/Evento/Destaques/'.$valor->id.'/'    , ''), $permissionFeatured).'</span>'.            
+                                            $Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Evento'        ,'Evento/Evento/Eventos_Edit/'.$valor->id.'/'    , ''), $permissionEdit).
+                                            $Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Evento'       ,'Evento/Evento/Eventos_Del/'.$valor->id.'/'     ,'Deseja realmente deletar esse Evento ?'), $permissionDelete);
             ++$i;
         }
-        return Array($tabela, $i);
+        return Array($table, $i);
     }
     /**
      * 
@@ -96,13 +96,13 @@ class Evento_EventoControle extends Evento_Controle
         )));
         $eventos = $this->_Modelo->db->Sql_Select('Evento');
         if ($eventos !== FALSE && !empty($eventos)) {
-            list($tabela, $i) = self::Eventos_Tabela($eventos);
+            list($table, $i) = self::Eventos_Tabela($eventos);
             // SE exportar ou mostra em tabela
             if ($export !== FALSE) {
-                self::Export_Todos($export, $tabela, 'Eventos');
+                self::Export_Todos($export, $table, 'Eventos');
             } else {
                 $this->_Visual->Show_Tabela_DataTable(
-                    $tabela,     // Array Com a Tabela
+                    $table,     // Array Com a Tabela
                     '',          // style extra
                     true,        // true -> Add ao Bloco, false => Retorna html
                     FALSE,        // Apagar primeira coluna ?
@@ -113,7 +113,7 @@ class Evento_EventoControle extends Evento_Controle
                     )
                 );
             }
-            unset($tabela);
+            unset($table);
         } else {
             if ($export !== FALSE) {
                 $mensagem = __('Nenhum Evento para exportar');
@@ -154,11 +154,11 @@ class Evento_EventoControle extends Evento_Controle
     public function Eventos_Add2() {
         $titulo     = __('Evento Adicionado com Sucesso');
         $dao        = 'Evento';
-        $funcao     = '$this->Eventos();';
+        $function     = '$this->Eventos();';
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = __('Evento cadastrado com sucesso.');
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);
     }
     /**
      * 
@@ -192,11 +192,11 @@ class Evento_EventoControle extends Evento_Controle
     public function Eventos_Edit2($id) {
         $titulo     = __('Evento Editado com Sucesso');
         $dao        = Array('Evento', $id); // Nome do DAO , $identificador
-        $funcao     = '$this->Eventos();'; // Funcao executada depois de editar e mandar mensagem pro usuario
+        $function     = '$this->Eventos();'; // Funcao executada depois de editar e mandar mensagem pro usuario
         $sucesso1   = __('Evento Alterado com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);   
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);   
     }
     /**
      * 
@@ -323,4 +323,4 @@ class Evento_EventoControle extends Evento_Controle
         $this->_Visual->Json_Info_Update('Historico', FALSE);  
     }
 }
-?>
+

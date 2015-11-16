@@ -17,4 +17,3 @@ class Curso_TurmaVisual extends Curso_Visual
       parent::__construct();
     }
 }
-?>

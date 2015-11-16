@@ -75,13 +75,13 @@ class comercio_certificado_ProdutoControle extends comercio_certificado_Controle
             if (is_object($produto)) $produto = Array(0=>$produto);
             reset($produto);
             foreach ($produto as $indice=>&$valor) {
-                $tabela['Sigla'][$i]     = $valor->sigla;
-                $tabela['Descrição'][$i] = $valor->obs;
-                $tabela['Funções'][$i]   = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Produto'        ,'comercio_certificado/Produto/Produtos_Edit/'.$valor->id.'/'    , '')).
+                $table['Sigla'][$i]     = $valor->sigla;
+                $table['Descrição'][$i] = $valor->obs;
+                $table['Funções'][$i]   = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Produto'        ,'comercio_certificado/Produto/Produtos_Edit/'.$valor->id.'/'    , '')).
                                            $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Produto'       ,'comercio_certificado/Produto/Produtos_Del/'.$valor->id.'/'     ,'Deseja realmente deletar esse Produto ?'));
                 ++$i;
             }
-            return $html.$this->_Visual->Show_Tabela_DataTable($tabela, '', FALSE);
+            return $html.$this->_Visual->Show_Tabela_DataTable($table, '', FALSE);
         } else {
             $html .= '<center><b><font color="#FF0000" size="5">Nenhum Produto</font></b></center>';            
             return $html;

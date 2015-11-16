@@ -54,10 +54,10 @@ class usuario_mensagem_OrigemControle extends usuario_mensagem_Controle
     public function Origens($export = FALSE) {
         self::Endereco_Origem(FALSE);
        
-        $tabela = Array(
+        $table = Array(
             'Id', 'Nome', 'Funções'
         );
-        $this->_Visual->Show_Tabela_DataTable_Massiva($tabela,'usuario_mensagem/Origem/Origens');
+        $this->_Visual->Show_Tabela_DataTable_Massiva($table,'usuario_mensagem/Origem/Origens');
         $titulo = __('Listagem de Origens').' (<span id="DataTable_Contador">0</span>)';  //
         $this->_Visual->Bloco_Unico_CriaJanela($titulo, '',10,Array("link"=>"usuario_mensagem/Origem/Origens_Add",'icon'=>'add', 'nome'=>'Adicionar Origem'));
         
@@ -90,11 +90,11 @@ class usuario_mensagem_OrigemControle extends usuario_mensagem_Controle
     public function Origens_Add2() {
         $titulo     = __('Origem Adicionada com Sucesso');
         $dao        = 'Usuario_Mensagem_Origem';
-        $funcao     = '$this->Origens();';
+        $function     = '$this->Origens();';
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = __('Origem cadastrada com sucesso.');
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);
     }
     /**
      * 
@@ -124,11 +124,11 @@ class usuario_mensagem_OrigemControle extends usuario_mensagem_Controle
     public function Origens_Edit2($id) {
         $titulo     = __('Origem Editada com Sucesso');
         $dao        = Array('Usuario_Mensagem_Origem', $id);
-        $funcao     = '$this->Origens();';
+        $function     = '$this->Origens();';
         $sucesso1   = __('Origem Alterado com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);   
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);   
     }
     /**
      * 

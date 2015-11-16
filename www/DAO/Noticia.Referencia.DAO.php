@@ -2,8 +2,8 @@
 final Class Noticia_Referencia_DAO extends Framework\App\Dao 
 {
     protected $noticia;
-    protected $tabela;
-    protected $tabelaid;
+    protected $table;
+    protected $tableid;
     protected static $objetocarregado     = FALSE;     protected static $mysql_colunas       = FALSE;     protected static $mysql_outside       = Array();     protected static $mysql_inside        = Array(); public function __construct() {  parent::__construct(); } public static function Get_Nome() {
         return MYSQL_NOTICIA_REFERENCIA;
     }
@@ -107,4 +107,4 @@ final Class Noticia_Referencia_DAO extends Framework\App\Dao
         );
     }
 }
-?>
+

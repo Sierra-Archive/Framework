@@ -25,4 +25,3 @@ class Financeiro_FinancaModelo extends Financeiro_Modelo
         return  Array('<b>Gasto com Finanças</b>', $retirada->categoria2);
     }
 }
-?>

@@ -22,17 +22,17 @@ class comercio_servicos_InstalacaoModelo extends comercio_servicos_Modelo
     public function Btu() {
         // Table's primary key
         $primaryKey = 'id';
-        $tabela = 'Comercio_Servicos_Btu';
+        $table = 'Comercio_Servicos_Btu';
         
         
-        $perm_editar = $this->_Registro->_Acl->Get_Permissao_Url('comercio_servicos/Instalacao/Btu_Edit');
-        $perm_del = $this->_Registro->_Acl->Get_Permissao_Url('comercio_servicos/Instalacao/Btu_Del');
+        $permissionEdit = $this->_Registro->_Acl->Get_Permissao_Url('comercio_servicos/Instalacao/Btu_Edit');
+        $permissionDelete = $this->_Registro->_Acl->Get_Permissao_Url('comercio_servicos/Instalacao/Btu_Del');
         
         $function = '';
-        if ($perm_editar) {
+        if ($permissionEdit) {
             $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Editar\'     ,Array(\'Editar Btu\'        ,\'comercio_servicos/Instalacao/Btu_Edit/\'.$d.\'/\'    ,\'\'),TRUE);';
         }
-        if ($perm_del) {
+        if ($permissionDelete) {
             $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Deletar\'    ,Array(\'Deletar Btu\'       ,\'comercio_servicos/Instalacao/Btu_Del/\'.$d.\'/\'     ,\'Deseja realmente deletar essa Btu ?\'),TRUE);';
         }
 
@@ -57,23 +57,23 @@ class comercio_servicos_InstalacaoModelo extends comercio_servicos_Modelo
         ); //'Funções';
                 
         echo json_encode(
-            \Framework\Classes\Datatable::complex( $_GET, Framework\App\Registro::getInstacia()->_Conexao, $tabela, $primaryKey, $columns, null)
+            \Framework\Classes\Datatable::complex( $_GET, Framework\App\Registro::getInstacia()->_Conexao, $table, $primaryKey, $columns, null)
         );
     }
     public function Suporte() {
         // Table's primary key
         $primaryKey = 'id';
-        $tabela = 'Comercio_Servicos_Suporte';
+        $table = 'Comercio_Servicos_Suporte';
         
         
-        $perm_editar = $this->_Registro->_Acl->Get_Permissao_Url('comercio_servicos/Instalacao/Suporte_Edit');
-        $perm_del = $this->_Registro->_Acl->Get_Permissao_Url('comercio_servicos/Instalacao/Suporte_Del');
+        $permissionEdit = $this->_Registro->_Acl->Get_Permissao_Url('comercio_servicos/Instalacao/Suporte_Edit');
+        $permissionDelete = $this->_Registro->_Acl->Get_Permissao_Url('comercio_servicos/Instalacao/Suporte_Del');
         
         $function = '';
-        if ($perm_editar) {
+        if ($permissionEdit) {
             $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Editar\'     ,Array(\'Editar Suporte\'        ,\'comercio_servicos/Instalacao/Suporte_Edit/\'.$d.\'/\'    ,\'\'),TRUE);';
         }
-        if ($perm_del) {
+        if ($permissionDelete) {
             $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Deletar\'    ,Array(\'Deletar Suporte\'       ,\'comercio_servicos/Instalacao/Suporte_Del/\'.$d.\'/\'     ,\'Deseja realmente deletar esse Suporte ?\'),TRUE);';
         }
         
@@ -92,7 +92,7 @@ class comercio_servicos_InstalacaoModelo extends comercio_servicos_Modelo
         ); //'Funções';
                 
         echo json_encode(
-            \Framework\Classes\Datatable::complex( $_GET, Framework\App\Registro::getInstacia()->_Conexao, $tabela, $primaryKey, $columns, null)
+            \Framework\Classes\Datatable::complex( $_GET, Framework\App\Registro::getInstacia()->_Conexao, $table, $primaryKey, $columns, null)
         );
     }
 }

@@ -76,4 +76,4 @@ final Class Predial_Bloco_DAO extends Framework\App\Dao
         );
     }
 }
-?>
+

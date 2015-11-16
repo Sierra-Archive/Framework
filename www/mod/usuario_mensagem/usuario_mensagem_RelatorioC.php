@@ -178,10 +178,10 @@ class usuario_mensagem_RelatorioControle extends usuario_mensagem_Controle
     public function Aberto($datainicial, $datafinal) {
         
         
-        $tabela = Array(
+        $table = Array(
             'Protocolo', 'Cliente', 'Assunto', 'Mensagem', 'Data Criação', 'Data Ult. Mod.'/*,'Funções'*/
         );
-        return $this->_Visual->Show_Tabela_DataTable_Massiva($tabela,'usuario_mensagem/Relatorio/Aberto/'.$datainicial.'/'.$datafinal, '', FALSE);
+        return $this->_Visual->Show_Tabela_DataTable_Massiva($table,'usuario_mensagem/Relatorio/Aberto/'.$datainicial.'/'.$datafinal, '', FALSE);
         
 
 //$titulo = __('Listagem de Senhas');  //(<span id="DataTable_Contador">0</span>)
@@ -191,10 +191,10 @@ class usuario_mensagem_RelatorioControle extends usuario_mensagem_Controle
      * Chamados Assuntos
      */
     public function Assunto($datainicial, $datafinal) {
-        $tabela = Array(
+        $table = Array(
             'Protocolo', 'Cliente', 'Assunto', 'Mensagem', 'Tipo', 'Data Criação', 'Data Ult. Mod.'/*,'Funções'*/
         );
-        return $this->_Visual->Show_Tabela_DataTable_Massiva($tabela,'usuario_mensagem/Relatorio/Assunto/'.$datainicial.'/'.$datafinal, '', FALSE);
+        return $this->_Visual->Show_Tabela_DataTable_Massiva($table,'usuario_mensagem/Relatorio/Assunto/'.$datainicial.'/'.$datafinal, '', FALSE);
         //$titulo = __('Listagem de Senhas');  //(<span id="DataTable_Contador">0</span>)
         return FALSE;
     }
@@ -202,10 +202,10 @@ class usuario_mensagem_RelatorioControle extends usuario_mensagem_Controle
      * Chamados Esgotados
      */
     public function Esgotado($datainicial, $datafinal) {
-        $tabela = Array(
+        $table = Array(
             'Protocolo', 'Cliente', 'Assunto', 'Mensagem', 'Data Criação', 'Data Ult. Mod.'/*,'Funções'*/
         );
-        return $this->_Visual->Show_Tabela_DataTable_Massiva($tabela,'usuario_mensagem/Relatorio/Esgotado/'.$datainicial.'/'.$datafinal, '', FALSE);
+        return $this->_Visual->Show_Tabela_DataTable_Massiva($table,'usuario_mensagem/Relatorio/Esgotado/'.$datainicial.'/'.$datafinal, '', FALSE);
         //$titulo = __('Listagem de Senhas');  //(<span id="DataTable_Contador">0</span>)
         return FALSE;
     }
@@ -213,10 +213,10 @@ class usuario_mensagem_RelatorioControle extends usuario_mensagem_Controle
      * Chamados Finalizados
      */
     public function Finalizado($datainicial, $datafinal) {
-        $tabela = Array(
+        $table = Array(
             'Protocolo', 'Cliente', 'Assunto', 'Mensagem', 'Data Criação', 'Data Ult. Mod.'/*,'Funções'*/
         );
-        return $this->_Visual->Show_Tabela_DataTable_Massiva($tabela,'usuario_mensagem/Relatorio/Finalizado/'.$datainicial.'/'.$datafinal, '', FALSE);
+        return $this->_Visual->Show_Tabela_DataTable_Massiva($table,'usuario_mensagem/Relatorio/Finalizado/'.$datainicial.'/'.$datafinal, '', FALSE);
         //$titulo = __('Listagem de Senhas');  //(<span id="DataTable_Contador">0</span>)
         return FALSE;
     }
@@ -225,10 +225,10 @@ class usuario_mensagem_RelatorioControle extends usuario_mensagem_Controle
      */
     public function Origem($datainicial, $datafinal) {
         // EM uso
-        $tabela = Array(
+        $table = Array(
             'Protocolo', 'Cliente', 'Assunto', 'Mensagem', 'Data Criação', 'Data Ult. Mod.'/*,'Funções'*/
         );
-        return $this->_Visual->Show_Tabela_DataTable_Massiva($tabela,'usuario_mensagem/Relatorio/Origem/'.$datainicial.'/'.$datafinal, '', FALSE);
+        return $this->_Visual->Show_Tabela_DataTable_Massiva($table,'usuario_mensagem/Relatorio/Origem/'.$datainicial.'/'.$datafinal, '', FALSE);
         //$titulo = __('Listagem de Senhas');  //(<span id="DataTable_Contador">0</span>)
         return FALSE;
     }
@@ -236,10 +236,10 @@ class usuario_mensagem_RelatorioControle extends usuario_mensagem_Controle
      * Chamados Produtos
      */
     public function Produto($datainicial, $datafinal) {
-        $tabela = Array(
+        $table = Array(
             'Marca', 'Linha', 'Produto', 'Mensagem', 'Data Criação', 'Data Ult. Mod.'/*,'Funções'*/
         );
-        return $this->_Visual->Show_Tabela_DataTable_Massiva($tabela,'usuario_mensagem/Relatorio/Produto/'.$datainicial.'/'.$datafinal, '', FALSE);
+        return $this->_Visual->Show_Tabela_DataTable_Massiva($table,'usuario_mensagem/Relatorio/Produto/'.$datainicial.'/'.$datafinal, '', FALSE);
         //$titulo = __('Listagem de Senhas');  //(<span id="DataTable_Contador">0</span>)
         return FALSE;
     }
@@ -247,10 +247,10 @@ class usuario_mensagem_RelatorioControle extends usuario_mensagem_Controle
      * Qtd_Cidade
      */
     public function Qtd_Cidade($datainicial, $datafinal) {
-        $tabela = Array(
+        $table = Array(
             'Cidade / UF', 'No. de Chamados', 'Data Criação', 'Data Ult. Mod.'/*,'Funções'*/
         );
-        return $this->_Visual->Show_Tabela_DataTable_Massiva($tabela,'usuario_mensagem/Relatorio/Qtd_Cidade/'.$datainicial.'/'.$datafinal, '', FALSE);
+        return $this->_Visual->Show_Tabela_DataTable_Massiva($table,'usuario_mensagem/Relatorio/Qtd_Cidade/'.$datainicial.'/'.$datafinal, '', FALSE);
         //$titulo = __('Listagem de Senhas');  //(<span id="DataTable_Contador">0</span>)
         return FALSE;
     }
@@ -258,10 +258,10 @@ class usuario_mensagem_RelatorioControle extends usuario_mensagem_Controle
      * Qtd_Uf
      */
     public function Qtd_Uf($datainicial, $datafinal) {
-        $tabela = Array(
+        $table = Array(
             'Estado', 'No. de Chamados', 'Data Criação', 'Data Ult. Mod.'/*,'Funções'*/
         );
-        return $this->_Visual->Show_Tabela_DataTable_Massiva($tabela,'usuario_mensagem/Relatorio/Qtd_Uf/'.$datainicial.'/'.$datafinal, '', FALSE);
+        return $this->_Visual->Show_Tabela_DataTable_Massiva($table,'usuario_mensagem/Relatorio/Qtd_Uf/'.$datainicial.'/'.$datafinal, '', FALSE);
         //$titulo = __('Listagem de Senhas');  //(<span id="DataTable_Contador">0</span>)
         return FALSE;
     }

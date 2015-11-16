@@ -5,4 +5,3 @@ class Desenvolvimento_Modelo extends \Framework\App\Modelo
         parent::__construct();
     } 
 }
-?>

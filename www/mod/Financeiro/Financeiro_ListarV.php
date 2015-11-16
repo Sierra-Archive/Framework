@@ -17,4 +17,3 @@ class Financeiro_ListarVisual extends Financeiro_Visual
       parent::__construct();
     }
 }
-?>

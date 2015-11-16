@@ -17,7 +17,7 @@ define('SYSTEM_VERSION', '2.14.0');
  * 
     \Framework\App\Visual::Show_Tabela_DataTable(Array() $Tabela);
         Gerar Tabela Inteligente Dinamica com pesquisa automatica, ordenação, e paginação.
-        $tabela[ Nome_da_Coluna ][ LINHA[0;+oo) ][ coluna_LINHA_conteudo ]
+        $table[ Nome_da_Coluna ][ LINHA[0;+oo) ][ coluna_LINHA_conteudo ]
         html da tabela é add ao bloco 
  * 
  * \Framework\App\Visual::Blocar($txt, $txt2 = FALSE);
@@ -29,4 +29,4 @@ define('SYSTEM_VERSION', '2.14.0');
  * 
  * 
  */
-?>
+

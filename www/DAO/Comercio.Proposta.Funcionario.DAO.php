@@ -117,4 +117,4 @@ final Class Comercio_Proposta_Funcionario_DAO extends Framework\App\Dao
         );
     }
 }
-?>
+

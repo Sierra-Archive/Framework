@@ -96,38 +96,38 @@ class comercio_EstoqueControle extends comercio_Controle
                         if ($valor->positivo==0) {
                             $antes = '<p class="text-error">';
                             $depois = '</a>';
-                            $tabela['Tipo'][$i]      = $antes.'Retirada'.$depois;
+                            $table['Tipo'][$i]      = $antes.'Retirada'.$depois;
                         } else {
                             $antes = '';
                             $depois = '';
-                            $tabela['Tipo'][$i]      = $antes.'Entrada'.$depois;
+                            $table['Tipo'][$i]      = $antes.'Entrada'.$depois;
                         }
                         if ($valor->data!==NULL && $valor->data!=='' && $valor->data!=='0000-00-00' && $valor->data!=='00/00/0000') {
                             $data = $valor->data;
                         } else {
                             $data = $valor->log_date_add;
                         }
-                        $tabela['Data'][$i]      = $data; //$antes.$data.$depois;
-                        //$tabela['#Id'][$i]       = '#'.$valor->id;
+                        $table['Data'][$i]      = $data; //$antes.$data.$depois;
+                        //$table['#Id'][$i]       = '#'.$valor->id;
                         
 
                         list(
                                 $motivo,
                                 $responsavel
                         )                                       = $chamar::Estoque_Exibir($produto_id, $valor->motivoid);
-                        $tabela['Motivo'][$i]                   = $antes.$motivo.$depois;
-                        $tabela['Responsavel'][$i]              = $responsavel; //$antes.$responsavel.$depois;
+                        $table['Motivo'][$i]                   = $antes.$motivo.$depois;
+                        $table['Responsavel'][$i]              = $responsavel; //$antes.$responsavel.$depois;
                     
-                        $tabela['Quantidade'][$i]      = $antes.$valor->qnt.$depois;
+                        $table['Quantidade'][$i]      = $antes.$valor->qnt.$depois;
                         ++$i;
                     }
                 }
             }
             $this->_Visual->Show_Tabela_DataTable(
-                $tabela, '', TRUE, FALSE,
+                $table, '', TRUE, FALSE,
                 Array(Array(1,'desc'))
             );
-            unset($tabela);
+            unset($table);
         }
         // Se tiver Vazio
         if ($i==0) {       
@@ -261,8 +261,8 @@ class comercio_EstoqueControle extends comercio_Controle
             $materiais = $this->_Modelo->db->Sql_Select('Comercio_Fornecedor_Material', FALSE,0, '');
 
             if ($materiais !== FALSE && !empty($materiais)) {
-                $perm_editar = $this->_Registro->_Acl->Get_Permissao_Url('comercio/Estoque/Material_Entrada_Edit');
-                $perm_del = $this->_Registro->_Acl->Get_Permissao_Url('comercio/Estoque/Material_Entrada_Del');
+                $permissionEdit = $this->_Registro->_Acl->Get_Permissao_Url('comercio/Estoque/Material_Entrada_Edit');
+                $permissionDelete = $this->_Registro->_Acl->Get_Permissao_Url('comercio/Estoque/Material_Entrada_Del');
 
                 if (is_object($materiais)) $materiais = Array(0=>$materiais);
                 reset($materiais);
@@ -274,24 +274,24 @@ class comercio_EstoqueControle extends comercio_Controle
                     } else {
                         $documento = __('Recibo');
                     }
-                    $tabela['Número'][$i]           = $valor->numero;
-                    $tabela['Documento'][$i]        = $documento;
-                    $tabela['Fornecedor'][$i]       = $valor->fornecedor2;
-                    $tabela['Data'][$i]             = $valor->data;
-                    $tabela['Valor'][$i]            = $valor->valor;
-                    $tabela['Funções'][$i]   = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Entrada de NFE'        ,'comercio/Estoque/Material_Entrada_Edit/'.$valor->id.'/'    , ''), $perm_editar).
-                                               $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Entrada de NFE'       ,'comercio/Estoque/Material_Entrada_Del/'.$valor->id.'/'     ,'Deseja realmente deletar essa Entrada de NFE ?'), $perm_del);
+                    $table['Número'][$i]           = $valor->numero;
+                    $table['Documento'][$i]        = $documento;
+                    $table['Fornecedor'][$i]       = $valor->fornecedor2;
+                    $table['Data'][$i]             = $valor->data;
+                    $table['Valor'][$i]            = $valor->valor;
+                    $table['Funções'][$i]   = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Entrada de NFE'        ,'comercio/Estoque/Material_Entrada_Edit/'.$valor->id.'/'    , ''), $permissionEdit).
+                                               $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Entrada de NFE'       ,'comercio/Estoque/Material_Entrada_Del/'.$valor->id.'/'     ,'Deseja realmente deletar essa Entrada de NFE ?'), $permissionDelete);
                     ++$i;
                 }
-                unset($tabela);
+                unset($table);
             }  
-            self::Export_Todos($export, $tabela, 'Comercio - Produtos (Estoque)');
+            self::Export_Todos($export, $table, 'Comercio - Produtos (Estoque)');
         } else {*/
-            $tabela = Array(
+            $table = Array(
                 'Número', 'Documento', 'Fornecedor', 'Data', 'Valor', 'Funções'
             );
         //}
-        $this->_Visual->Show_Tabela_DataTable_Massiva($tabela,'comercio/Estoque/Material_Entrada');
+        $this->_Visual->Show_Tabela_DataTable_Massiva($table,'comercio/Estoque/Material_Entrada');
         /*
         } else {             
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhuma Entrada de NFE</font></b></center>');
@@ -323,11 +323,11 @@ class comercio_EstoqueControle extends comercio_Controle
         if (!isset($_POST['fornecedor'])) return FALSE;
         $titulo     = __('Entrada de NFE Adicionada com Sucesso');
         $dao        = 'Comercio_Fornecedor_Material';
-        $funcao     = FALSE;
+        $function     = FALSE;
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = __('Entrada de NFE cadastrada com sucesso.');
         $alterar    = Array();
-        $sucesso = $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
+        $sucesso = $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);
         if ($sucesso === TRUE) {
             $motivo = 'comercio_Estoque';
             $identificador  = $this->_Modelo->db->Sql_Select('Comercio_Fornecedor_Material', Array(),1,'id DESC');
@@ -403,11 +403,11 @@ class comercio_EstoqueControle extends comercio_Controle
         $id = (int) $id;
         $titulo     = __('Entrada de NFE Editada com Sucesso');
         $dao        = Array('Comercio_Fornecedor_Material', $id);
-        $funcao     = FALSE;
+        $function     = FALSE;
         $sucesso1   = __('Entrada de NFE Alterada com Sucesso.');
         $sucesso2   = ''.$_POST["documento"].' teve a alteração bem sucedida';
         $alterar    = Array();
-        $sucesso = $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);  
+        $sucesso = $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);  
         if ($sucesso === TRUE) {
             
             $motivo = 'comercio_Estoque';

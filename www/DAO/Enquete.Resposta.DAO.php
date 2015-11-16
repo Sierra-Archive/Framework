@@ -100,4 +100,4 @@ final Class Enquete_Resposta_DAO extends Framework\App\Dao
         );
     }
 }
-?>
+

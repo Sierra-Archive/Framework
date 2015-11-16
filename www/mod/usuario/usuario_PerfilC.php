@@ -157,11 +157,11 @@ class usuario_PerfilControle extends usuario_Controle
         $id = (int) $this->_Acl->Usuario_GetID();
         $titulo     = __('Senha editada com Sucesso');
         $dao        = Array('Usuario', $id);
-        $funcao     = '$this->Main();';
+        $function     = '$this->Main();';
         $sucesso1   = __('Senha Alterada com Sucesso.');
         $sucesso2   = __('Guarde sua senha com carinho.');
         $alterar    = Array();
-        $sucesso = $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);   
+        $sucesso = $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);   
         
         if ($sucesso === TRUE) {
             $this->_Modelo->Usuario_Logar('', $usuario->senha, '');
@@ -236,11 +236,11 @@ class usuario_PerfilControle extends usuario_Controle
         $id = (int) $this->_Acl->Usuario_GetID();
         $titulo     = __('Perfil Editado com Sucesso');
         $dao        = Array('Usuario', $id);
-        $funcao     = '$this->Perfil_Edit();';
+        $function     = '$this->Perfil_Edit();';
         $sucesso1   = __('Perfil Alterado com Sucesso.');
         $sucesso2   = ''.$nome.' teve a alteração bem sucedida';
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);      
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);      
     }
 }
 ?>

@@ -7107,4 +7107,3 @@ function draw_data_table($img, $settings)
     return TRUE;
 }
 
-?>

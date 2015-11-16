@@ -45,10 +45,10 @@ class categoria_AdminControle extends categoria_Controle
     */
     public function Categorias_ShowTab($tipo='') {
         self::Endereco_Categoria(FALSE);
-        $tabela = Array();
+        $table = Array();
         $array = $this->_Modelo->Categorias_Retorna($tipo);
-        $tabela = new \Framework\Classes\Tabela();
-        $tabela->addcabecario(array('Id', 'Nome', 'Acesso', 'Editar'));   
+        $table = new \Framework\Classes\Tabela();
+        $table->addcabecario(array('Id', 'Nome', 'Acesso', 'Editar'));   
         
         // Botao Add
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
@@ -65,10 +65,10 @@ class categoria_AdminControle extends categoria_Controle
             )
         )));
         // Conexao
-        $this->_Visual->Categorias_ShowTab($array, $tabela);
-        $this->_Visual->Blocar($tabela->retornatabela());
+        $this->_Visual->Categorias_ShowTab($array, $table);
+        $this->_Visual->Blocar($table->retornatabela());
         $this->_Visual->Bloco_Unico_CriaJanela(__('Categorias'));
-        unset($tabela);        
+        unset($table);        
     }
     /**
      * 
@@ -116,11 +116,11 @@ class categoria_AdminControle extends categoria_Controle
         
         $titulo     = __('Adicionado com Sucesso');
         $dao        = 'Categoria';
-        $funcao     = '$this->Categorias();';
+        $function     = '$this->Categorias();';
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = __('Cadastrado com sucesso.');
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);
         // Cadastra o modulo
         if ($modulo !== FALSE) {
             $identificador  = $this->_Modelo->db->Sql_Select ($dao, Array(),1,'ID DESC');
@@ -208,11 +208,11 @@ class categoria_AdminControle extends categoria_Controle
         
         $titulo     = __('Editado com Sucesso');
         $dao        = Array('Categoria', $id);
-        $funcao     = '$this->Categorias();';
+        $function     = '$this->Categorias();';
         $sucesso1   = __('Alterado com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);   
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);   
     }
     /**
      * 

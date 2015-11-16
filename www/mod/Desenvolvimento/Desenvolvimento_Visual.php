@@ -5,4 +5,3 @@ class Desenvolvimento_Visual extends \Framework\App\Visual
         parent::__construct();
     } 
 }
-?>

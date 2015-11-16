@@ -49,20 +49,20 @@ class Musica_MusicaControle extends Musica_Controle
         $Registro   = &\Framework\App\Registro::getInstacia();
         $Modelo     = &$Registro->_Modelo;
         $Visual     = &$Registro->_Visual;
-        $tabela = Array();
+        $table = Array();
         $i = 0;
         if (is_object($musicas)) $musicas = Array(0=>$musicas);
         reset($musicas);
         foreach ($musicas as &$valor) {
             if ($artista === FALSE || $artista==0) {
-                $tabela['Artista'][$i]   = $valor->artista2;
-                $tabela['Album'][$i]   = $valor->album2;
+                $table['Artista'][$i]   = $valor->artista2;
+                $table['Album'][$i]   = $valor->album2;
                 $view_url   = 'Musica/Video/Videos/'.$valor->artista.'/';
                 $edit_url   = 'Musica/Musica/Musicas_Edit/'.$valor->id.'/';
                 $del_url    = 'Musica/Musica/Musicas_Del/'.$valor->id.'/';
             } else {
                 if ($album === FALSE || $album==0) {
-                    $tabela['Album'][$i]   = $valor->album2;
+                    $table['Album'][$i]   = $valor->album2;
                     $view_url   = 'Musica/Video/Videos/'.$valor->artista.'/'.$valor->album.'/';
                     $edit_url   = 'Musica/Musica/Musicas_Edit/'.$valor->id.'/'.$valor->artista.'/';
                     $del_url    = 'Musica/Musica/Musicas_Del/'.$valor->id.'/'.$valor->artista.'/';
@@ -72,8 +72,8 @@ class Musica_MusicaControle extends Musica_Controle
                     $del_url    = 'Musica/Musica/Musicas_Del/'.$valor->id.'/'.$valor->artista.'/'.$valor->album.'/'.$valor->i.'/';
                 }
             }
-            $tabela['Musica'][$i]           = $valor->nome;
-            $tabela['Data Registrada no Sistema'][$i]  = $valor->log_date_add;
+            $table['Musica'][$i]           = $valor->nome;
+            $table['Data Registrada no Sistema'][$i]  = $valor->log_date_add;
             $status                                 = $valor->status;
             if ($status!=1) {
                 $status = 0;
@@ -82,13 +82,13 @@ class Musica_MusicaControle extends Musica_Controle
                 $status = 1;
                 $texto = __('Ativado');
             }
-            $tabela['Funções'][$i]          = $Visual->Tema_Elementos_Btn('Visualizar' ,Array('Visualizar Videos da Musica'    , $view_url    , '')).
+            $table['Funções'][$i]          = $Visual->Tema_Elementos_Btn('Visualizar' ,Array('Visualizar Videos da Musica'    , $view_url    , '')).
                                               '<span id="status'.$valor->id.'">'.$Visual->Tema_Elementos_Btn('Status'.$status     ,Array($texto        ,'Musica/Musica/Status/'.$valor->id.'/'    , '')).'</span>'.
                                               $Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Musica'        , $edit_url    , '')).
                                               $Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Musica'       , $del_url     ,'Deseja realmente deletar essa Musica ?'));
             ++$i;
         }
-        return Array($tabela, $i);
+        return Array($table, $i);
     }
     /**
      * 
@@ -176,13 +176,13 @@ class Musica_MusicaControle extends Musica_Controle
         )));
         $musicas = $this->_Modelo->db->Sql_Select('Musica', $where);
         if ($musicas !== FALSE && !empty($musicas)) {
-            list($tabela, $i) = self::Musicas_Tabela($musicas, $artista, $album);
+            list($table, $i) = self::Musicas_Tabela($musicas, $artista, $album);
             $titulo = $titulo.' ('.$i.')';
             if ($export !== FALSE) {
-                self::Export_Todos($export, $tabela, $titulo);
+                self::Export_Todos($export, $table, $titulo);
             } else {
                 $this->_Visual->Show_Tabela_DataTable(
-                    $tabela,     // Array Com a Tabela
+                    $table,     // Array Com a Tabela
                     '',          // style extra
                     true,        // true -> Add ao Bloco, false => Retorna html
                     FALSE,        // Apagar primeira coluna ?
@@ -193,7 +193,7 @@ class Musica_MusicaControle extends Musica_Controle
                     )
                 );
             }
-            unset($tabela);
+            unset($table);
         } else {
             $titulo = $titulo.' ('.$i.')';
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">'.$erro.'</font></b></center>');
@@ -294,16 +294,16 @@ class Musica_MusicaControle extends Musica_Controle
             $alterar    = Array('artista'=>$artista);
             if ($album !== FALSE) {
                 $album = (int) $album;
-                $funcao     = '$this->Musicas('.$artista.', '.$album.');';
+                $function     = '$this->Musicas('.$artista.', '.$album.');';
                 $alterar['album'] = $album;
             } else {
-                $funcao     = '$this->Musicas('.$artista.');';
+                $function     = '$this->Musicas('.$artista.');';
             }
         } else {
             $alterar    = Array();
-            $funcao     = '$this->Musicas(0,0);';
+            $function     = '$this->Musicas(0,0);';
         }
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);
     }
     /**
      * 
@@ -379,17 +379,17 @@ class Musica_MusicaControle extends Musica_Controle
         // Recupera Musicas
         if ($artista !== FALSE) {
             if ($album !== FALSE) {
-                $funcao     = '$this->Musicas('.$artista.', '.$album.');';
+                $function     = '$this->Musicas('.$artista.', '.$album.');';
             } else {
-                $funcao     = '$this->Musicas('.$artista.');';
+                $function     = '$this->Musicas('.$artista.');';
             }
         } else {
-            $funcao     = '$this->Musicas();';
+            $function     = '$this->Musicas();';
         }
         $sucesso1   = __('Musica Alterada com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);   
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);   
     }
     /**
      * 

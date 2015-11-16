@@ -74,18 +74,18 @@ class comercio_FamiliaControle extends comercio_Controle
             if (is_object($linhas)) $linhas = Array(0=>$linhas);
             reset($linhas);
             foreach ($linhas as $indice=>&$valor) {
-                //$tabela['#Id'][$i]       = '#'.$valor->id;
-                $tabela['Nome'][$i]      = $valor->nome;
-                $tabela['Funções'][$i]   = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Familia'        ,'comercio/Familia/Familias_Edit/'.$valor->id.'/'    , '')).
+                //$table['#Id'][$i]       = '#'.$valor->id;
+                $table['Nome'][$i]      = $valor->nome;
+                $table['Funções'][$i]   = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Familia'        ,'comercio/Familia/Familias_Edit/'.$valor->id.'/'    , '')).
                                            $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Familia'       ,'comercio/Familia/Familias_Del/'.$valor->id.'/'     ,'Deseja realmente deletar essa Familia ?'));
                 ++$i;
             }
             if ($export !== FALSE) {
-                self::Export_Todos($export, $tabela, 'Comercio - Produtos (Familias)');
+                self::Export_Todos($export, $table, 'Comercio - Produtos (Familias)');
             } else {
-                $this->_Visual->Show_Tabela_DataTable($tabela);
+                $this->_Visual->Show_Tabela_DataTable($table);
             }
-            unset($tabela);
+            unset($table);
         } else {          
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhuma Familia</font></b></center>');
         }
@@ -121,11 +121,11 @@ class comercio_FamiliaControle extends comercio_Controle
     public function Familias_Add2() {
         $titulo     = __('Familia Adicionada com Sucesso');
         $dao        = 'Comercio_Familia';
-        $funcao     = '$this->Familias();';
+        $function     = '$this->Familias();';
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = __('Familia cadastrada com sucesso.');
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);
     }
     /**
      * 
@@ -155,11 +155,11 @@ class comercio_FamiliaControle extends comercio_Controle
     public function Familias_Edit2($id) {
         $titulo     = __('Familia Editada com Sucesso');
         $dao        = Array('Comercio_Familia', $id);
-        $funcao     = '$this->Familias();';
+        $function     = '$this->Familias();';
         $sucesso1   = __('Familia Alterada com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);      
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);      
     }
     /**
      * 

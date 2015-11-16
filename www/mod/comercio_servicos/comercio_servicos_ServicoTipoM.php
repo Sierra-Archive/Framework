@@ -19,17 +19,17 @@ class comercio_servicos_ServicoTipoModelo extends comercio_servicos_Modelo
     public function Servico_Tipo() {
         // Table's primary key
         $primaryKey = 'id';
-        $tabela = 'Comercio_Servicos_Servico_Tipo';
+        $table = 'Comercio_Servicos_Servico_Tipo';
         
         
-        $perm_editar = $this->_Registro->_Acl->Get_Permissao_Url('comercio_servicos/ServicoTipo/Servico_Tipo_Edit');
-        $perm_del = $this->_Registro->_Acl->Get_Permissao_Url('comercio_servicos/ServicoTipo/Servico_Tipo_Del');
+        $permissionEdit = $this->_Registro->_Acl->Get_Permissao_Url('comercio_servicos/ServicoTipo/Servico_Tipo_Edit');
+        $permissionDelete = $this->_Registro->_Acl->Get_Permissao_Url('comercio_servicos/ServicoTipo/Servico_Tipo_Del');
         
         $function = '';
-        if ($perm_editar) {
+        if ($permissionEdit) {
             $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Editar\'     ,Array(\'Editar Produto\'        ,\'comercio_servicos/ServicoTipo/Servico_Tipo_Edit/\'.$d.\'/\'    ,\'\'),TRUE);';
         }
-        if ($perm_del) {
+        if ($permissionDelete) {
             $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Deletar\'    ,Array(\'Deletar Produto\'       ,\'comercio_servicos/ServicoTipo/Servico_Tipo_Del/\'.$d.\'/\'     ,\'Deseja realmente deletar esse Tipo de Serviço ?\'),TRUE);';
         }
 
@@ -47,7 +47,7 @@ class comercio_servicos_ServicoTipoModelo extends comercio_servicos_Modelo
         ); //'Funções';
                 
         echo json_encode(
-            \Framework\Classes\Datatable::complex( $_GET, Framework\App\Registro::getInstacia()->_Conexao, $tabela, $primaryKey, $columns, null)
+            \Framework\Classes\Datatable::complex( $_GET, Framework\App\Registro::getInstacia()->_Conexao, $table, $primaryKey, $columns, null)
         );
     }
 }

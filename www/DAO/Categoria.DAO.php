@@ -164,4 +164,4 @@ final Class Categoria_DAO extends Framework\App\Dao
         );
     }
 }
-?>
+

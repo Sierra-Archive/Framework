@@ -821,7 +821,7 @@ class FirePHP {
     }
     
     if (function_exists('json_encode')
-       && $this->options['useNativeJsonEncode']! = FALSE) {
+       && $this->options['useNativeJsonEncode'] !== FALSE) {
 
       return json_encode($Object);
     } else {

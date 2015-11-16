@@ -272,4 +272,4 @@ final Class Curso_Turma_Inscricao_DAO extends Framework\App\Dao
         );
     }
 }
-?>
+

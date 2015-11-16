@@ -73,4 +73,4 @@ final Class Comercio_Marca_DAO extends Framework\App\Dao
         );
     }
 }
-?>
+

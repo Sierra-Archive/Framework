@@ -16,4 +16,3 @@ $plot->SetPlotType('pie');
 foreach ($data as $row) $plot->SetLegend($row[0]);
 $plot->SetCallback('draw_graph', 'draw_data_table', $settings);
 $plot->DrawGraph();
-?>

@@ -152,4 +152,4 @@ final Class Comercio_Servicos_Servico_DAO extends Framework\App\Dao
         );
     }
 }
-?>
+

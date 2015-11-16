@@ -93,21 +93,21 @@ class biblioteca_Principal implements \Framework\PrincipalInterface
         $Visual->Blocar('<a title="Adicionar Pasta a Biblíoteca" class="btn btn-success lajax explicar-titulo" data-acao="" href="'.URL_PATH.'biblioteca/Biblioteca/Bibliotecas_Add">Adicionar nova Biblíoteca</a><div class="space15"></div>');
         if (is_object($bibliotecas)) $bibliotecas = Array(0=>$bibliotecas);
         if ($bibliotecas !== FALSE && !empty($bibliotecas)) {
-            $funcao = '';
-            $tabela = Array();
+            $function = '';
+            $table = Array();
             $i = 0;
             if ($raiz !== FALSE && $raiz!=0) {
                 $resultado_pasta = $Modelo->db->Sql_Select('Biblioteca', Array('id'=>$raiz),1);
                 if ($resultado_pasta === FALSE) {
                     return _Sistema_erroControle::Erro_Fluxo('Essa Pasta não existe:'. $raiz,404);
                 }
-                $tabela['Tipo'][$i]             = '<a href="'.URL_PATH.'biblioteca/Biblioteca/Bibliotecas/'.$resultado_pasta->parent.'" border="1" class="lajax" data-acao=""><img alt'.__('Voltar para Diretório Anterior').' src="'.WEB_URL.'img'.US.'arquivos'.US.'pastavoltar.png" alt="0" /></a>';
-                $tabela['Nome'][$i]             = '<a href="'.URL_PATH.'biblioteca/Biblioteca/Bibliotecas/'.$resultado_pasta->parent.'" border="1" class="lajax" data-acao="">Voltar para a Pasta Anterior</a>';
-                $tabela['Descrição'][$i]        = '';
-                $tabela['Tamanho'][$i]          = '';
-                $tabela['Criador'][$i]          = '';
-                $tabela['Data'][$i]  = '';
-                $tabela['Funções'][$i]          = '';
+                $table['Tipo'][$i]             = '<a href="'.URL_PATH.'biblioteca/Biblioteca/Bibliotecas/'.$resultado_pasta->parent.'" border="1" class="lajax" data-acao=""><img alt'.__('Voltar para Diretório Anterior').' src="'.WEB_URL.'img'.US.'arquivos'.US.'pastavoltar.png" alt="0" /></a>';
+                $table['Nome'][$i]             = '<a href="'.URL_PATH.'biblioteca/Biblioteca/Bibliotecas/'.$resultado_pasta->parent.'" border="1" class="lajax" data-acao="">Voltar para a Pasta Anterior</a>';
+                $table['Descrição'][$i]        = '';
+                $table['Tamanho'][$i]          = '';
+                $table['Criador'][$i]          = '';
+                $table['Data'][$i]  = '';
+                $table['Funções'][$i]          = '';
                 ++$i;
             }
             if ($bibliotecas !== FALSE) {
@@ -116,8 +116,8 @@ class biblioteca_Principal implements \Framework\PrincipalInterface
                 reset($bibliotecas);
                 if (!empty($bibliotecas)) {
                     $perm_download = \Framework\App\Registro::getInstacia()->_Acl->Get_Permissao_Url('biblioteca/Biblioteca/Download');
-                    $perm_editar = \Framework\App\Registro::getInstacia()->_Acl->Get_Permissao_Url('biblioteca/Biblioteca/Bibliotecas_Edit');
-                    $perm_del = \Framework\App\Registro::getInstacia()->_Acl->Get_Permissao_Url('biblioteca/Biblioteca/Bibliotecas_Del');
+                    $permissionEdit = \Framework\App\Registro::getInstacia()->_Acl->Get_Permissao_Url('biblioteca/Biblioteca/Bibliotecas_Edit');
+                    $permissionDelete = \Framework\App\Registro::getInstacia()->_Acl->Get_Permissao_Url('biblioteca/Biblioteca/Bibliotecas_Del');
 
                     foreach ($bibliotecas as &$valor) {
                         if ($valor->tipo==1) {
@@ -148,39 +148,39 @@ class biblioteca_Principal implements \Framework\PrincipalInterface
                         }
 
                         if ($valor->tipo==1) {
-                            $tabela['Tipo'][$i]             = '<a href="'.URL_PATH.'biblioteca/Biblioteca/Bibliotecas/'.$valor->id.'/" border="1" class="lajax" data-acao=""><img src="'.$foto.'" alt="'.__('Abrir Diretório').'" /></a>';
-                            $tabela['Nome'][$i]             = '<a href="'.URL_PATH.'biblioteca/Biblioteca/Bibliotecas/'.$valor->id.'/" border="1" class="lajax" data-acao="">'.$valor->nome.'</a>';
+                            $table['Tipo'][$i]             = '<a href="'.URL_PATH.'biblioteca/Biblioteca/Bibliotecas/'.$valor->id.'/" border="1" class="lajax" data-acao=""><img src="'.$foto.'" alt="'.__('Abrir Diretório').'" /></a>';
+                            $table['Nome'][$i]             = '<a href="'.URL_PATH.'biblioteca/Biblioteca/Bibliotecas/'.$valor->id.'/" border="1" class="lajax" data-acao="">'.$valor->nome.'</a>';
                         } else {
-                            $tabela['Tipo'][$i]             = '<a href="'.URL_PATH.'biblioteca/Biblioteca/Download/'.$valor->id.'/" border="1" target="_BLANK"><img src="'.$foto.'" alt="'.__('Fazer Download de Arquivo ').$tipo.'" /></a>';
-                            $tabela['Nome'][$i]             = '<a href="'.URL_PATH.'biblioteca/Biblioteca/Download/'.$valor->id.'/" border="1" target="_BLANK">'.$valor->nome.'</a>';
+                            $table['Tipo'][$i]             = '<a href="'.URL_PATH.'biblioteca/Biblioteca/Download/'.$valor->id.'/" border="1" target="_BLANK"><img src="'.$foto.'" alt="'.__('Fazer Download de Arquivo ').$tipo.'" /></a>';
+                            $table['Nome'][$i]             = '<a href="'.URL_PATH.'biblioteca/Biblioteca/Download/'.$valor->id.'/" border="1" target="_BLANK">'.$valor->nome.'</a>';
                         }
-                        $tabela['Descrição'][$i]        = $valor->obs;
-                        $tabela['Tamanho'][$i]          = \Framework\App\Sistema_Funcoes::Tranf_Byte_Otimizado($tamanho);
-                        $tabela['Criador'][$i]          = $valor->usuario2;
-                        $tabela['Data'][$i]             = $valor->log_date_add;
+                        $table['Descrição'][$i]        = $valor->obs;
+                        $table['Tamanho'][$i]          = \Framework\App\Sistema_Funcoes::Tranf_Byte_Otimizado($tamanho);
+                        $table['Criador'][$i]          = $valor->usuario2;
+                        $table['Data'][$i]             = $valor->log_date_add;
 
                         if ($valor->tipo==1) {
-                            $tabela['Funções'][$i]          = $Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Pasta'        ,'biblioteca/Biblioteca/Bibliotecas_Edit/'.$valor->id.'/'.$raiz    , ''), $perm_editar).
-                                                              $Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Pasta'       ,'biblioteca/Biblioteca/Bibliotecas_Del/'.$valor->id.'/'.$raiz     ,'Deseja realmente deletar essa pasta ?'), $perm_del);
+                            $table['Funções'][$i]          = $Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Pasta'        ,'biblioteca/Biblioteca/Bibliotecas_Edit/'.$valor->id.'/'.$raiz    , ''), $permissionEdit).
+                                                              $Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Pasta'       ,'biblioteca/Biblioteca/Bibliotecas_Del/'.$valor->id.'/'.$raiz     ,'Deseja realmente deletar essa pasta ?'), $permissionDelete);
                         } else {
-                            $tabela['Funções'][$i]          = $Visual->Tema_Elementos_Btn('Baixar'     ,Array('Download de Arquivo'   ,'biblioteca/Biblioteca/Download/'.$valor->id    , ''), $perm_download).
-                                                              $Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Arquivo'        ,'biblioteca/Biblioteca/Bibliotecas_Edit/'.$valor->id.'/'.$raiz    , ''), $perm_editar).
-                                                              $Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Arquivo'       ,'biblioteca/Biblioteca/Bibliotecas_Del/'.$valor->id.'/'.$raiz     ,'Deseja realmente deletar esse arquivo ?'), $perm_del);
+                            $table['Funções'][$i]          = $Visual->Tema_Elementos_Btn('Baixar'     ,Array('Download de Arquivo'   ,'biblioteca/Biblioteca/Download/'.$valor->id    , ''), $perm_download).
+                                                              $Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Arquivo'        ,'biblioteca/Biblioteca/Bibliotecas_Edit/'.$valor->id.'/'.$raiz    , ''), $permissionEdit).
+                                                              $Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Arquivo'       ,'biblioteca/Biblioteca/Bibliotecas_Del/'.$valor->id.'/'.$raiz     ,'Deseja realmente deletar esse arquivo ?'), $permissionDelete);
                         }
-                        $funcao .= $tabela['Funções'][$i];
+                        $function .= $table['Funções'][$i];
                         ++$i;
                     }
                 }
             }
-            if ($funcao==='') {
-                unset($tabela['Funções']);
+            if ($function==='') {
+                unset($table['Funções']);
             }
             // Desconta Primeiro Registro
             if ($raiz !== FALSE && $raiz!=0) {
                 $i = $i-1;
             }
             // Retorna List
-            $Visual->Show_Tabela_DataTable($tabela);
+            $Visual->Show_Tabela_DataTable($table);
         } else {        
             $Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Arquivo/Pasta na Busca '.$busca.'</font></b></center>');
         }

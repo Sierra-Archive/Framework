@@ -70,17 +70,17 @@ class Engenharia_EquipamentoControle extends Engenharia_Controle
             if (is_object($equipamentos)) $equipamentos = Array(0=>$equipamentos);
             reset($equipamentos);
             foreach ($equipamentos as $indice=>&$valor) {
-                //$tabela['#Id'][$i]       = '#'.$valor->id;
-                $tabela['Tipo de Equipamento'][$i]  =   $valor->categoria2;
-                $tabela['Equipamento'][$i]          =   $valor->nome;
-                $tabela['Data Aquisição'][$i]       =   $valor->data_aquisicao;
-                $tabela['Valor'][$i]                =   $valor->valor;
-                $tabela['Funções'][$i]              =   $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Equipamento'        ,'Engenharia/Equipamento/Equipamentos_Edit/'.$valor->id.'/'    , '')).
+                //$table['#Id'][$i]       = '#'.$valor->id;
+                $table['Tipo de Equipamento'][$i]  =   $valor->categoria2;
+                $table['Equipamento'][$i]          =   $valor->nome;
+                $table['Data Aquisição'][$i]       =   $valor->data_aquisicao;
+                $table['Valor'][$i]                =   $valor->valor;
+                $table['Funções'][$i]              =   $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Equipamento'        ,'Engenharia/Equipamento/Equipamentos_Edit/'.$valor->id.'/'    , '')).
                                                         $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Equipamento'       ,'Engenharia/Equipamento/Equipamentos_Del/'.$valor->id.'/'     ,'Deseja realmente deletar essa Equipamento ?'));
                 ++$i;
             }
-            $this->_Visual->Show_Tabela_DataTable($tabela);
-            unset($tabela);
+            $this->_Visual->Show_Tabela_DataTable($table);
+            unset($table);
         } else {           
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Equipamento</font></b></center>');
         }
@@ -115,11 +115,11 @@ class Engenharia_EquipamentoControle extends Engenharia_Controle
     public function Equipamentos_Add2() {
         $titulo     = __('Equipamento Adicionado com Sucesso');
         $dao        = 'Engenharia_Equipamento';
-        $funcao     = '$this->Equipamentos();';
+        $function     = '$this->Equipamentos();';
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = __('Equipamento cadastrado com sucesso.');
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);
     }
     /**
      * 
@@ -148,11 +148,11 @@ class Engenharia_EquipamentoControle extends Engenharia_Controle
     public function Equipamentos_Edit2($id) {
         $titulo     = __('Equipamento Editado com Sucesso');
         $dao        = Array('Engenharia_Equipamento', $id);
-        $funcao     = '$this->Equipamentos();';
+        $function     = '$this->Equipamentos();';
         $sucesso1   = __('Equipamento Alterado com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);      
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);      
     }
     /**
      * 
@@ -190,4 +190,4 @@ class Engenharia_EquipamentoControle extends Engenharia_Controle
         $this->_Visual->Json_Info_Update('Historico', FALSE);  
     }
 }
-?>
+

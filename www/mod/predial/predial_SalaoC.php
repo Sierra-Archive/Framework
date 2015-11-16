@@ -35,21 +35,21 @@ class predial_SalaoControle extends predial_Controle
     static function Saloes_Tabela(&$saloes) {
         $Registro   = &\Framework\App\Registro::getInstacia();
         $Visual     = &$Registro->_Visual;
-        $tabela = Array();
+        $table = Array();
         $i = 0;
         if (is_object($saloes)) $saloes = Array(0=>$saloes);
         reset($saloes);
         foreach ($saloes as &$valor) {
-            $tabela['Tipo'][$i]             = $valor->categoria2;
-            $tabela['Nome'][$i]             = $valor->nome;
-            $tabela['Preço'][$i]            = $valor->preco;
-            $tabela['Observação'][$i]       = $valor->obs;
-            $tabela['Data Registrado'][$i]  = $valor->log_date_add;
-            $tabela['Funções'][$i]          = $Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Local de Reserva'        ,'predial/Salao/Saloes_Edit/'.$valor->id.'/'    , '')).
+            $table['Tipo'][$i]             = $valor->categoria2;
+            $table['Nome'][$i]             = $valor->nome;
+            $table['Preço'][$i]            = $valor->preco;
+            $table['Observação'][$i]       = $valor->obs;
+            $table['Data Registrado'][$i]  = $valor->log_date_add;
+            $table['Funções'][$i]          = $Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Local de Reserva'        ,'predial/Salao/Saloes_Edit/'.$valor->id.'/'    , '')).
                                               $Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Local de Reserva'       ,'predial/Salao/Saloes_Del/'.$valor->id.'/'     ,'Deseja realmente deletar esse Local de Reserva ?'));
             ++$i;
         }
-        return Array($tabela, $i);
+        return Array($table, $i);
     }
     /**
      * 
@@ -76,9 +76,9 @@ class predial_SalaoControle extends predial_Controle
         // Busca
         $saloes = $this->_Modelo->db->Sql_Select('Predial_Salao');
         if ($saloes !== FALSE && !empty($saloes)) {
-            list($tabela, $i) = self::Saloes_Tabela($saloes);
-            $this->_Visual->Show_Tabela_DataTable($tabela);
-            unset($tabela);
+            list($table, $i) = self::Saloes_Tabela($saloes);
+            $this->_Visual->Show_Tabela_DataTable($table);
+            unset($table);
         } else {            
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Local de Reserva</font></b></center>');
         }
@@ -114,11 +114,11 @@ class predial_SalaoControle extends predial_Controle
     public function Saloes_Add2() {
         $titulo     = __('Local de Reserva Adicionado com Sucesso');
         $dao        = 'Predial_Salao';
-        $funcao     = '$this->Saloes();';
+        $function     = '$this->Saloes();';
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = __('Local de Reserva cadastrado com sucesso.');
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);
     }
     /**
      * 
@@ -148,11 +148,11 @@ class predial_SalaoControle extends predial_Controle
     public function Saloes_Edit2($id) {
         $titulo     = __('Local de Reserva Editado com Sucesso');
         $dao        = Array('Predial_Salao', $id);
-        $funcao     = '$this->Saloes();';
+        $function     = '$this->Saloes();';
         $sucesso1   = __('Local de Reserva Alterada com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);   
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);   
     }
     /**
      * 

@@ -34,14 +34,14 @@ class Simulador_SimuladorControle extends Simulador_Controle
         $Registro   = &\Framework\App\Registro::getInstacia();
         $Visual     = &$Registro->_Visual;
         
-        $tabela = Array();
+        $table = Array();
         $i = 0;
         if (is_object($simuladores)) $simuladores = Array(0=>$simuladores);
         reset($simuladores);
         foreach ($simuladores as &$valor) {
-            $tabela['Nome do Simulador'][$i]          =   $valor->nome;
+            $table['Nome do Simulador'][$i]          =   $valor->nome;
             
-            $tabela['Data Cadastrada'][$i]          =   $valor->log_date_add;
+            $table['Data Cadastrada'][$i]          =   $valor->log_date_add;
             $status                                 = $valor->status;
             if ($status!=1) {
                 $status = 0;
@@ -50,14 +50,14 @@ class Simulador_SimuladorControle extends Simulador_Controle
                 $status = 1;
                 $texto = __('Ativado');
             }
-            $tabela['Status'][$i]                   = '<span id="status'.$valor->id.'">'.$Visual->Tema_Elementos_Btn('Status'.$status     ,Array($texto        ,'Simulador/Simulador/Status/'.$valor->id.'/'    , '')).'</span>';
-            $tabela['Funções'][$i]                  =   $Visual->Tema_Elementos_Btn('Personalizado' ,Array('Testar Simulador'    ,'Simulador/Simulador/Simuladores_Assistir/'.$valor->id.'/'    , '', 'play', 'success')).
+            $table['Status'][$i]                   = '<span id="status'.$valor->id.'">'.$Visual->Tema_Elementos_Btn('Status'.$status     ,Array($texto        ,'Simulador/Simulador/Status/'.$valor->id.'/'    , '')).'</span>';
+            $table['Funções'][$i]                  =   $Visual->Tema_Elementos_Btn('Personalizado' ,Array('Testar Simulador'    ,'Simulador/Simulador/Simuladores_Assistir/'.$valor->id.'/'    , '', 'play', 'success')).
                                                         $Visual->Tema_Elementos_Btn('Visualizar'    ,Array('Visualizar Perguntas do Simulador'    ,'Simulador/Pergunta/Perguntas/'.$valor->id.'/'    , '')).
                                                         $Visual->Tema_Elementos_Btn('Editar'        ,Array('Editar Simulador'        ,'Simulador/Simulador/Simuladores_Edit/'.$valor->id.'/'    , '')).
                                                         $Visual->Tema_Elementos_Btn('Deletar'       ,Array('Deletar Simulador'       ,'Simulador/Simulador/Simuladores_Del/'.$valor->id.'/'     ,'Deseja realmente deletar esse Simulador ?'));
             ++$i;
         }
-        return Array($tabela, $i);
+        return Array($table, $i);
     }
     /**
      * 
@@ -82,13 +82,13 @@ class Simulador_SimuladorControle extends Simulador_Controle
         )));
         $simuladores = $this->_Modelo->db->Sql_Select('Simulador');
         if ($simuladores !== FALSE && !empty($simuladores)) {
-            list($tabela, $i) = self::Simuladores_Tabela($simuladores);
+            list($table, $i) = self::Simuladores_Tabela($simuladores);
             
             if ($export !== FALSE) {
-                self::Export_Todos($export, $tabela, 'Simuladores');
+                self::Export_Todos($export, $table, 'Simuladores');
             } else {
                 $this->_Visual->Show_Tabela_DataTable(
-                    $tabela,     // Array Com a Tabela
+                    $table,     // Array Com a Tabela
                     '',          // style extra
                     true,        // true -> Add ao Bloco, false => Retorna html
                     FALSE,        // Apagar primeira coluna ?
@@ -99,7 +99,7 @@ class Simulador_SimuladorControle extends Simulador_Controle
                     )
                 );
             }
-            unset($tabela);
+            unset($table);
         } else {            
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Simulador</font></b></center>');
         }
@@ -135,11 +135,11 @@ class Simulador_SimuladorControle extends Simulador_Controle
     public function Simuladores_Add2() {
         $titulo     = __('Simulador Adicionado com Sucesso');
         $dao        = 'Simulador';
-        $funcao     = '$this->Simuladores();';
+        $function     = '$this->Simuladores();';
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = __('Simulador cadastrado com sucesso.');
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);
     }
     /**
      * 
@@ -169,11 +169,11 @@ class Simulador_SimuladorControle extends Simulador_Controle
     public function Simuladores_Edit2($id) {
         $titulo     = __('Simulador Editado com Sucesso');
         $dao        = Array('Simulador', $id);
-        $funcao     = '$this->Simuladores();';
+        $function     = '$this->Simuladores();';
         $sucesso1   = __('Simulador Alterado com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);   
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);   
     }
     /**
      * 
@@ -289,7 +289,7 @@ class Simulador_SimuladorControle extends Simulador_Controle
         
             $titulo     = __('Pergunta Respondida com Sucesso');
             $dao        = 'Simulador_Assistir';
-            $funcao     = FALSE;
+            $function     = FALSE;
             $sucesso1   = __('Pergunta Respondida com Sucesso');
             $sucesso2   = __('Pergunta Respondida com Sucesso');
             $alterar    = Array(
@@ -297,7 +297,7 @@ class Simulador_SimuladorControle extends Simulador_Controle
                 'simulador' => $simulador,
                 'pergunta'  => $pergunta
             );
-            $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
+            $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);
             
             $respondidas_perguntas[] = $pergunta;
             $respondidas_respostas[] = (int) $_POST['resposta'];

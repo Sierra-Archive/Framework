@@ -198,4 +198,4 @@ final Class Financeiro_Pagamento_Externo_DAO extends Framework\App\Dao
         );
     }
 }
-?>
+

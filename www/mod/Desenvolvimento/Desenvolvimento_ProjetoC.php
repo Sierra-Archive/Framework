@@ -52,27 +52,27 @@ class Desenvolvimento_ProjetoControle extends Desenvolvimento_Controle
     static function Projetos_Tabela($projetos) {
         $Registro   = &\Framework\App\Registro::getInstacia();
         $Visual     = &$Registro->_Visual;
-        $tabela = Array();
+        $table = Array();
         $i = 0;
         if (is_object($projetos)) $projetos = Array(0=>$projetos);
         reset($projetos);
         foreach ($projetos as $indice=>&$valor) {
-            $tabela['#Id'][$i]          =   '#'.$valor->id;
-            $tabela['Categoria'][$i]    =   $valor->categoria2;
-            $tabela['Nome'][$i]         =   $valor->nome;
-            $tabela['Valor'][$i]        =   $valor->valor;
-            $tabela['Mensalidade'][$i]  =   $valor->mensalidade;
-            $tabela['Data Começo'][$i]  =   $valor->datacomeco;
-            $tabela['Data Final'][$i]   =   $valor->datafinal;
-            $tabela['Destaque'][$i]     = '<span class="destaque'.$valor->id.'">'.self::Destaquelabel($valor).'</span>';
-            $tabela['Status'][$i]       = '<span class="status'.$valor->id.'">'.self::Statuslabel($valor).'</span>';
-            $tabela['Funções'][$i]      =   $Visual->Tema_Elementos_Btn('Visualizar'      ,Array('Visualizar Projeto'    ,'Desenvolvimento/Projeto/Projetos_Popup/'.$valor->id.'/'    , '')).
+            $table['#Id'][$i]          =   '#'.$valor->id;
+            $table['Categoria'][$i]    =   $valor->categoria2;
+            $table['Nome'][$i]         =   $valor->nome;
+            $table['Valor'][$i]        =   $valor->valor;
+            $table['Mensalidade'][$i]  =   $valor->mensalidade;
+            $table['Data Começo'][$i]  =   $valor->datacomeco;
+            $table['Data Final'][$i]   =   $valor->datafinal;
+            $table['Destaque'][$i]     = '<span class="destaque'.$valor->id.'">'.self::Destaquelabel($valor).'</span>';
+            $table['Status'][$i]       = '<span class="status'.$valor->id.'">'.self::Statuslabel($valor).'</span>';
+            $table['Funções'][$i]      =   $Visual->Tema_Elementos_Btn('Visualizar'      ,Array('Visualizar Projeto'    ,'Desenvolvimento/Projeto/Projetos_Popup/'.$valor->id.'/'    , '')).
                                             $Visual->Tema_Elementos_Btn('Zoom'            ,Array('Visualizar Projeto'    ,'Desenvolvimento/Projeto/Projetos_View/'.$valor->id.'/'    , '')).
                                             $Visual->Tema_Elementos_Btn('Editar'          ,Array('Editar Projeto'        ,'Desenvolvimento/Projeto/Projetos_Edit/'.$valor->id.'/'    , '')).
                                             $Visual->Tema_Elementos_Btn('Deletar'         ,Array('Deletar Projeto'       ,'Desenvolvimento/Projeto/Projetos_Del/'.$valor->id.'/'     ,'Deseja realmente deletar esse Projeto ?'));
             ++$i;
         }
-        return Array($tabela, $i);
+        return Array($table, $i);
     }
     /**
      * 
@@ -99,12 +99,12 @@ class Desenvolvimento_ProjetoControle extends Desenvolvimento_Controle
         // Query
         $projetos = $this->_Modelo->db->Sql_Select('Desenvolvimento_Projeto');
         if ($projetos !== FALSE && !empty($projetos)) {
-            list($tabela, $i) = self::Projetos_Tabela($projetos);
+            list($table, $i) = self::Projetos_Tabela($projetos);
             if ($export !== FALSE) {
-                self::Export_Todos($export, $tabela, 'Projetos');
+                self::Export_Todos($export, $table, 'Projetos');
             } else {
                 $this->_Visual->Show_Tabela_DataTable(
-                    $tabela,     // Array Com a Tabela
+                    $table,     // Array Com a Tabela
                     '',          // style extra
                     true,        // true -> Add ao Bloco, false => Retorna html
                     true,        // Apagar primeira coluna ?
@@ -115,7 +115,7 @@ class Desenvolvimento_ProjetoControle extends Desenvolvimento_Controle
                     )
                 );
             }
-            unset($tabela);
+            unset($table);
         } else {    
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Projeto</font></b></center>');
         }
@@ -151,11 +151,11 @@ class Desenvolvimento_ProjetoControle extends Desenvolvimento_Controle
     public function Projetos_Add2() {
         $titulo     = __('Projeto Adicionado com Sucesso');
         $dao        = 'Desenvolvimento_Projeto';
-        $funcao     = '$this->Projetos();';
+        $function     = '$this->Projetos();';
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = __('Projeto cadastrado com sucesso.');
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);
     }
     /**
      * 
@@ -185,11 +185,11 @@ class Desenvolvimento_ProjetoControle extends Desenvolvimento_Controle
     public function Projetos_Edit2($id) {
         $titulo     = __('Projeto Editado com Sucesso');
         $dao        = Array('Desenvolvimento_Projeto', $id);
-        $funcao     = '$this->Projetos();';
+        $function     = '$this->Projetos();';
         $sucesso1   = __('Projeto Alterado com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);      
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);      
     }
     /**
      * 
@@ -510,15 +510,15 @@ class Desenvolvimento_ProjetoControle extends Desenvolvimento_Controle
             if (is_object($comentario)) $comentario = Array(0=>$comentario);
             reset($comentario);
             foreach ($comentario as $indice=>&$valor) {
-                $tabela['#Id'][$i]          =   '#'.$valor->id;
-                $tabela['Comentário'][$i]   =   nl2br($valor->comentario);
-                $tabela['Data'][$i]         =   $valor->log_date_add;
-                $tabela['Funções'][$i]      =   $this->_Visual->Tema_Elementos_Btn('Editar'          ,Array('Editar Comentário de Projeto'        ,'Desenvolvimento/Projeto/Projetos_Comentario_Edit/'.$Desenvolvimento_id.'/'.$valor->id.'/'    , '')).
+                $table['#Id'][$i]          =   '#'.$valor->id;
+                $table['Comentário'][$i]   =   nl2br($valor->comentario);
+                $table['Data'][$i]         =   $valor->log_date_add;
+                $table['Funções'][$i]      =   $this->_Visual->Tema_Elementos_Btn('Editar'          ,Array('Editar Comentário de Projeto'        ,'Desenvolvimento/Projeto/Projetos_Comentario_Edit/'.$Desenvolvimento_id.'/'.$valor->id.'/'    , '')).
                                                 $this->_Visual->Tema_Elementos_Btn('Deletar'         ,Array('Deletar Comentário de Projeto'       ,'Desenvolvimento/Projeto/Projetos_Comentario_Del/'.$Desenvolvimento_id.'/'.$valor->id.'/'     ,'Deseja realmente deletar esse Comentário desse Projeto ?'));
                 ++$i;
             }
-            $html .= $this->_Visual->Show_Tabela_DataTable($tabela, '', FALSE, FALSE, Array(Array(0,'desc')));
-            unset($tabela);
+            $html .= $this->_Visual->Show_Tabela_DataTable($table, '', FALSE, FALSE, Array(Array(0,'desc')));
+            unset($table);
         } else {
             $html .= '<center><b><font color="#FF0000" size="5">Nenhum Comentário do Projeto</font></b></center>';
         }
@@ -567,11 +567,11 @@ class Desenvolvimento_ProjetoControle extends Desenvolvimento_Controle
         if ($Desenvolvimento_id === FALSE) return _Sistema_erroControle::Erro_Fluxo('Projeto não informado',404);
         $titulo     = __('Comentário do Projeto Adicionado com Sucesso');
         $dao        = 'Desenvolvimento_Projeto_Comentario';
-        $funcao     = '$this->Projetos_View('.$Desenvolvimento_id.');';
+        $function     = '$this->Projetos_View('.$Desenvolvimento_id.');';
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = __('Comentário de Projeto cadastrado com sucesso.');
         $alterar    = Array('projeto'=>$Desenvolvimento_id);
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);
     }
     /**
      * 
@@ -610,11 +610,11 @@ class Desenvolvimento_ProjetoControle extends Desenvolvimento_Controle
         if ($id         == 0   ) return _Sistema_erroControle::Erro_Fluxo('Comentário não informado',404);
         $titulo     = __('Comentário de Projeto Editado com Sucesso');
         $dao        = Array('Desenvolvimento_Projeto_Comentario', $id);
-        $funcao     = '$this->Projetos_View('.$Desenvolvimento_id.');';
+        $function     = '$this->Projetos_View('.$Desenvolvimento_id.');';
         $sucesso1   = __('Comentário de Projeto Alterado com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array('projeto'=>$Desenvolvimento_id);
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);      
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);      
     }
     /**
      * 
@@ -655,4 +655,4 @@ class Desenvolvimento_ProjetoControle extends Desenvolvimento_Controle
         $this->_Visual->Json_Info_Update('Historico', FALSE);  
     }
 }
-?>
+

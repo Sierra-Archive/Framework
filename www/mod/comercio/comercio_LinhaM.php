@@ -20,26 +20,26 @@ class comercio_LinhaModelo extends comercio_Modelo
         
         // Table's primary key
         $primaryKey = 'id';
-        $tabela = 'Comercio_Linha';
+        $table = 'Comercio_Linha';
         
-        $perm_editar = $this->_Registro->_Acl->Get_Permissao_Url('comercio/Linha/Linhas_Edit');
-        $perm_del = $this->_Registro->_Acl->Get_Permissao_Url('comercio/Linha/Linhas_Del');
+        $permissionEdit = $this->_Registro->_Acl->Get_Permissao_Url('comercio/Linha/Linhas_Edit');
+        $permissionDelete = $this->_Registro->_Acl->Get_Permissao_Url('comercio/Linha/Linhas_Del');
         
-        if ($perm_editar && $perm_del) {
-            $funcao = function( $d, $row ) {
+        if ($permissionEdit && $permissionDelete) {
+            $function = function( $d, $row ) {
                 return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Linha'        ,'comercio/Linha/Linhas_Edit/'.$d.'/'    , ''),TRUE).
                        Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Linha'       ,'comercio/Linha/Linhas_Del/'.$d.'/'     ,'Deseja realmente deletar essa Linha ?'),TRUE);
             };
-        } else if ($perm_editar) {
-            $funcao = function( $d, $row ) {
+        } else if ($permissionEdit) {
+            $function = function( $d, $row ) {
                 return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Linha'        ,'comercio/Linha/Linhas_Edit/'.$d.'/'    , ''),TRUE);
             };
-        } else if ($perm_del) {
-            $funcao = function( $d, $row ) {
+        } else if ($permissionDelete) {
+            $function = function( $d, $row ) {
                 return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Linha'       ,'comercio/Linha/Linhas_Del/'.$d.'/'     ,'Deseja realmente deletar essa Linha ?'),TRUE);
             };
         } else {
-            $funcao = function( $d, $row ) {
+            $function = function( $d, $row ) {
                 return '';
             };
         }
@@ -52,11 +52,11 @@ class comercio_LinhaModelo extends comercio_Modelo
             array( 'db' => 'nome', 'dt' => 1 ),
             array( 'db' => 'marca2', 'dt' => 2 ),
             array( 'db' => 'id', 'dt' => 3,
-                'formatter' => $funcao)
+                'formatter' => $function)
         );
 
         echo json_encode(
-            \Framework\Classes\Datatable::complex( $_GET, Framework\App\Registro::getInstacia()->_Conexao, $tabela, $primaryKey, $columns, null )
+            \Framework\Classes\Datatable::complex( $_GET, Framework\App\Registro::getInstacia()->_Conexao, $table, $primaryKey, $columns, null )
         );
     }
 }

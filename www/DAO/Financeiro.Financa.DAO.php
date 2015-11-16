@@ -158,4 +158,4 @@ final Class Financeiro_Financa_DAO extends Framework\App\Dao
         );
     }
 }
-?>
+

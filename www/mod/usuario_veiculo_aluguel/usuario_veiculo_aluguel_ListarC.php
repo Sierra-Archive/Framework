@@ -42,21 +42,21 @@ class usuario_veiculo_aluguel_ListarControle extends usuario_veiculo_aluguel_Con
             reset($aluguel);
             $i = 0;
             foreach ($aluguel as $indice=>&$valor) {
-                $tabela['Pedido'][$i] = '#'.$aluguel[$indice]['id'];
-                $tabela['Veiculo'][$i] = $aluguel[$indice]['veiculo'];
-                $tabela['Data Inicial'][$i] = date_replace($aluguel[$indice]['data_inicial'], "d/m/Y");
-                $tabela['Data Final'][$i] = date_replace($aluguel[$indice]['data_final'], "d/m/Y");
-                $tabela['Valor'][$i] = 'R$ '.number_format($aluguel[$indice]['valor'], 2, ', ', '.');
+                $table['Pedido'][$i] = '#'.$aluguel[$indice]['id'];
+                $table['Veiculo'][$i] = $aluguel[$indice]['veiculo'];
+                $table['Data Inicial'][$i] = date_replace($aluguel[$indice]['data_inicial'], "d/m/Y");
+                $table['Data Final'][$i] = date_replace($aluguel[$indice]['data_final'], "d/m/Y");
+                $table['Valor'][$i] = 'R$ '.number_format($aluguel[$indice]['valor'], 2, ', ', '.');
                 if ($aluguel[$indice]['pago']==1) {
-                    $tabela['Status'][$i] = __('Confirmado');
+                    $table['Status'][$i] = __('Confirmado');
                 } else {
-                    $tabela['Status'][$i] = '<font color="#FF0000">Pendente</font>';
+                    $table['Status'][$i] = '<font color="#FF0000">Pendente</font>';
                 }
                 ++$i;
             }
-            $this->_Visual->Show_Tabela_DataTable($tabela);
+            $this->_Visual->Show_Tabela_DataTable($table);
             $this->_Visual->Bloco_Maior_CriaJanela('Todos os Alugueis ('.$i.')');
-            unset($tabela);
+            unset($table);
         } else {        
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Infelizmente você nunca fez um aluguel com a gente.</font></b></center>');
             $this->_Visual->Bloco_Maior_CriaJanela('Todos os Alugueis (0)');

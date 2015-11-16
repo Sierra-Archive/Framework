@@ -58,15 +58,15 @@ class banner_ListarControle extends banner_Controle
             reset($banners);
             
             foreach ($banners as $indice=>&$valor) {                
-                $tabela['Id'][$i]        = $valor['id'];
-                $tabela['Foto'][$i]      = $this->_Visual->Show_Upload('banner', 'Admin', 'Banner', 'BannerImagem'.$valor['id'], $valor['foto'],'banner'.DS, $valor['id']);
-                $tabela['Categoria'][$i] = $valor['categoria'];
-                $tabela['Nome'][$i]    = $valor['nome'];
-                $tabela['Url'][$i]       = $valor['url'];
+                $table['Id'][$i]        = $valor['id'];
+                $table['Foto'][$i]      = $this->_Visual->Show_Upload('banner', 'Admin', 'Banner', 'BannerImagem'.$valor['id'], $valor['foto'],'banner'.DS, $valor['id']);
+                $table['Categoria'][$i] = $valor['categoria'];
+                $table['Nome'][$i]    = $valor['nome'];
+                $table['Url'][$i]       = $valor['url'];
                 ++$i;
             }
-            $this->_Visual->Show_Tabela_DataTable($tabela);
-            unset($tabela);
+            $this->_Visual->Show_Tabela_DataTable($table);
+            unset($table);
         } else {      
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Banner</font></b></center>');
         }

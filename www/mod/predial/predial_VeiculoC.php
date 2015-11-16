@@ -35,21 +35,21 @@ class predial_VeiculoControle extends predial_Controle
     static function Veiculos_Tabela(&$veiculos) {
         $Registro   = &\Framework\App\Registro::getInstacia();
         $Visual     = &$Registro->_Visual;
-        $tabela = Array();
+        $table = Array();
         $i = 0;
         if (is_object($veiculos)) $veiculos = Array(0=>$veiculos);
         reset($veiculos);
         foreach ($veiculos as &$valor) {
-            $tabela['Bloco'][$i]            = $valor->bloco2;
-            $tabela['Apartamento'][$i]      = $valor->apart2;
-            $tabela['Modelo'][$i]           = $valor->modelo;
-            $tabela['Placa'][$i]            = $valor->placa;
-            $tabela['Marca'][$i]            = $valor->marca;
-            $tabela['Funções'][$i]          = $Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Veiculo'        ,'predial/Veiculo/Veiculos_Edit/'.$valor->id.'/'    , '')).
+            $table['Bloco'][$i]            = $valor->bloco2;
+            $table['Apartamento'][$i]      = $valor->apart2;
+            $table['Modelo'][$i]           = $valor->modelo;
+            $table['Placa'][$i]            = $valor->placa;
+            $table['Marca'][$i]            = $valor->marca;
+            $table['Funções'][$i]          = $Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Veiculo'        ,'predial/Veiculo/Veiculos_Edit/'.$valor->id.'/'    , '')).
                                               $Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Veiculo'       ,'predial/Veiculo/Veiculos_Del/'.$valor->id.'/'     ,'Deseja realmente deletar esse Veiculo ?'));
             ++$i;
         }
-        return Array($tabela, $i);
+        return Array($table, $i);
     }
     /**
      * 
@@ -76,9 +76,9 @@ class predial_VeiculoControle extends predial_Controle
         // Busca
         $veiculos = $this->_Modelo->db->Sql_Select('Predial_Bloco_Apart_Veiculo');
         if ($veiculos !== FALSE && !empty($veiculos)) {
-            list($tabela, $i) = self::Veiculos_Tabela($veiculos);
-            $this->_Visual->Show_Tabela_DataTable($tabela);
-            unset($tabela);
+            list($table, $i) = self::Veiculos_Tabela($veiculos);
+            $this->_Visual->Show_Tabela_DataTable($table);
+            unset($table);
         } else {       
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Veiculo</font></b></center>');
         }
@@ -114,11 +114,11 @@ class predial_VeiculoControle extends predial_Controle
     public function Veiculos_Add2() {
         $titulo     = __('Veiculo Adicionado com Sucesso');
         $dao        = 'Predial_Bloco_Apart_Veiculo';
-        $funcao     = '$this->Veiculos();';
+        $function     = '$this->Veiculos();';
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = __('Veiculo cadastrado com sucesso.');
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);
     }
     /**
      * 
@@ -148,11 +148,11 @@ class predial_VeiculoControle extends predial_Controle
     public function Veiculos_Edit2($id) {
         $titulo     = __('Veiculo Editado com Sucesso');
         $dao        = Array('Predial_Bloco_Apart_Veiculo', $id);
-        $funcao     = '$this->Veiculos();';
+        $function     = '$this->Veiculos();';
         $sucesso1   = __('Veiculo Alterado com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);   
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);   
     }
     /**
      * 

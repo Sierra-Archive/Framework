@@ -375,4 +375,4 @@ final Class Local_DAO extends Framework\App\Dao
         );
     }
 }
-?>
+

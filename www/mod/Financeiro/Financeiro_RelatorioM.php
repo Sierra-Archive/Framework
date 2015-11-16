@@ -18,4 +18,3 @@ class Financeiro_RelatorioModelo extends Financeiro_Modelo
       parent::__construct();
     }
 }
-?>

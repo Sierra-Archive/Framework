@@ -101,4 +101,4 @@ final Class Social_Comentario_DAO extends Framework\App\Dao
         );
     }
 }
-?>
+

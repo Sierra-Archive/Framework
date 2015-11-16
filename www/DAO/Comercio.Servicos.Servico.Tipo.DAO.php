@@ -100,4 +100,4 @@ final Class Comercio_Servicos_Servico_Tipo_DAO extends Framework\App\Dao
         );
     }
 }
-?>
+

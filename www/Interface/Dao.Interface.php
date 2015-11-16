@@ -28,4 +28,4 @@ interface DaoInterface
     function Get_Object_Vars();
     function Get_Object_Vars_Public();
 }
-?>
+

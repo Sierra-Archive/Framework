@@ -136,8 +136,8 @@ class Transporte_Principal implements \Framework\PrincipalInterface
         $Visual->Blocar('<a title="Adicionar Armazem" class="btn btn-success lajax explicar-titulo" data-acao="" href="'.URL_PATH.'Transporte/Armazem/Armazens_Add">Adicionar novo Armazem</a><div class="space15"></div>');
         if (is_object($armazens)) $armazens = Array(0=>$armazens);
         if ($armazens !== FALSE && !empty($armazens)) {
-            list($tabela, $i) = Transporte_ArmazemControle::Armazens_Tabela($armazens);
-            $Visual->Show_Tabela_DataTable($tabela);
+            list($table, $i) = Transporte_ArmazemControle::Armazens_Tabela($armazens);
+            $Visual->Show_Tabela_DataTable($table);
         } else {   
             $Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Armazem na Busca '.$busca.'</font></b></center>');
         }

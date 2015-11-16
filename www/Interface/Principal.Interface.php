@@ -22,4 +22,4 @@ interface PrincipalInterface
     // Opcional
     //static function Manutencao(&$log);
 }
-?>
+

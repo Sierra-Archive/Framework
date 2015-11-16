@@ -17,4 +17,3 @@ class Enquete_ShowVisual extends Enquete_Visual
       parent::__construct();
     }
 }
-?>

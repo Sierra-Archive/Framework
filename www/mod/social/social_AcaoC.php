@@ -90,19 +90,19 @@ class social_AcaoControle extends social_Controle
             if (is_object($acoes)) $acoes = Array(0=>$acoes);
             reset($acoes);
             foreach ($acoes as $indice=>&$valor) {
-                $tabela['Data'][$i]             = $valor->data;
-                $tabela['Vitima'][$i]           = $valor->vitima2;
-                $tabela['Alvo'][$i]             = $valor->alvo2;
-                $tabela['Funções'][$i]          = $Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Ação'        ,'social/Acao/Acoes_Edit/'.$valor->id.'/'.$persona_id    , '')).
+                $table['Data'][$i]             = $valor->data;
+                $table['Vitima'][$i]           = $valor->vitima2;
+                $table['Alvo'][$i]             = $valor->alvo2;
+                $table['Funções'][$i]          = $Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Ação'        ,'social/Acao/Acoes_Edit/'.$valor->id.'/'.$persona_id    , '')).
                                                   $Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Ação'       ,'social/Acao/Acoes_Del/'.$valor->id.'/'.$persona_id     ,'Deseja realmente deletar essa Ação ?'));
                 ++$i;
             }
             $titulo = __('Listagem de Ações').' ('.$i.')';
             if ($export !== FALSE) {
-                self::Export_Todos($export, $tabela, $titulo);
+                self::Export_Todos($export, $table, $titulo);
             } else {
                 $Visual->Show_Tabela_DataTable(
-                    $tabela,     // Array Com a Tabela
+                    $table,     // Array Com a Tabela
                     '',          // style extra
                     true,        // true -> Add ao Bloco, false => Retorna html
                     true,        // Apagar primeira coluna ?
@@ -113,7 +113,7 @@ class social_AcaoControle extends social_Controle
                     )
                 );
             }
-            unset($tabela);
+            unset($table);
         } else {        
         $titulo = __('Listagem de Ações').' ('.$i.')'; 
             $Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhuma Ação</font></b></center>');
@@ -152,19 +152,19 @@ class social_AcaoControle extends social_Controle
     public function Acoes_Add2($persona_id = FALSE) {
         $titulo     = __('Ação adicionada com Sucesso');
         $dao        = 'Social_Acao';
-        $funcao     = '$this->Acao('.$persona_id.');';
+        $function     = '$this->Acao('.$persona_id.');';
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = __('Ação cadastrado com sucesso.');
         if ($persona_id === FALSE) {
-            $funcao     = '$this->Acao(0);';
+            $function     = '$this->Acao(0);';
             $alterar    = Array();
         } else {
             $persona_id = (int) $persona_id;
             $alterar    = Array('alvo'=>$persona_id);
-            $funcao     = '$this->Acao('.$persona_id.');';
+            $function     = '$this->Acao('.$persona_id.');';
         }
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);
     }
     /**
      * 
@@ -193,11 +193,11 @@ class social_AcaoControle extends social_Controle
     public function Acoes_Edit2($id) {
         $titulo     = __('Ação editado com Sucesso');
         $dao        = Array('Social_Acao', $id);
-        $funcao     = '$this->Acao();';
+        $function     = '$this->Acao();';
         $sucesso1   = __('Ação Alterado com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);   
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);   
     }
     /**
      * 

@@ -129,4 +129,4 @@ final Class Simulador_Assistir_DAO extends Framework\App\Dao
         );
     }
 }
-?>
+

@@ -241,4 +241,4 @@ final Class Gramatica_Substantivo_DAO extends Framework\App\Dao
         );
     }
 }
-?>
+

@@ -19,21 +19,21 @@ class comercio_FornecedorModelo extends comercio_Modelo
     public function Fornecedores() {
         // Table's primary key
         $primaryKey = 'id';
-        $tabela = 'Comercio_Fornecedor';
+        $table = 'Comercio_Fornecedor';
         
         
         $perm_view = $this->_Registro->_Acl->Get_Permissao_Url('comercio/Fornecedor/Fornecedores_View');
-        $perm_editar = $this->_Registro->_Acl->Get_Permissao_Url('comercio/Fornecedor/Fornecedores_Edit');
-        $perm_del = $this->_Registro->_Acl->Get_Permissao_Url('comercio/Fornecedor/Fornecedores_Del');
+        $permissionEdit = $this->_Registro->_Acl->Get_Permissao_Url('comercio/Fornecedor/Fornecedores_Edit');
+        $permissionDelete = $this->_Registro->_Acl->Get_Permissao_Url('comercio/Fornecedor/Fornecedores_Del');
         
         $function = '';
         if ($perm_view) {
             $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Zoom\'     ,Array(\'Visualizar Comentários do Fornecedor\'        ,\'comercio/Fornecedor/Fornecedores_View/\'.$d.\'/\'    ,\'\'),TRUE);';
         }
-        if ($perm_editar) {
+        if ($permissionEdit) {
             $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Editar\'     ,Array(\'Editar Fornecedor\'        ,\'comercio/Fornecedor/Fornecedores_Edit/\'.$d.\'/\'    ,\'\'),TRUE);';
         }
-        if ($perm_del) {
+        if ($permissionDelete) {
             $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Deletar\'    ,Array(\'Deletar Fornecedor\'       ,\'comercio/Fornecedor/Fornecedores_Del/\'.$d.\'/\'     ,\'Deseja realmente deletar esse Fornecedor ?\'),TRUE);';
         }
 
@@ -65,7 +65,7 @@ class comercio_FornecedorModelo extends comercio_Modelo
         ); //'Funções';
                 
         echo json_encode(
-            \Framework\Classes\Datatable::complex( $_GET, Framework\App\Registro::getInstacia()->_Conexao, $tabela, $primaryKey, $columns, null)
+            \Framework\Classes\Datatable::complex( $_GET, Framework\App\Registro::getInstacia()->_Conexao, $table, $primaryKey, $columns, null)
         );
     }
 }

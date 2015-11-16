@@ -35,19 +35,19 @@ class predial_AnimalControle extends predial_Controle
     static function Animais_Tabela(&$animais) {
         $Registro   = &\Framework\App\Registro::getInstacia();
         $Visual     = &$Registro->_Visual;
-        $tabela = Array();
+        $table = Array();
         $i = 0;
         if (is_object($animais)) $animais = Array(0=>$animais);
         reset($animais);
         foreach ($animais as &$valor) {
-            $tabela['Bloco'][$i]            = $valor->bloco2;
-            $tabela['Apartamento'][$i]      = $valor->apart2;
-            $tabela['Nome'][$i]             = $valor->nome;
-            $tabela['Funções'][$i]          = $Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Animal'        ,'predial/Animal/Animais_Edit/'.$valor->id.'/'    , '')).
+            $table['Bloco'][$i]            = $valor->bloco2;
+            $table['Apartamento'][$i]      = $valor->apart2;
+            $table['Nome'][$i]             = $valor->nome;
+            $table['Funções'][$i]          = $Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Animal'        ,'predial/Animal/Animais_Edit/'.$valor->id.'/'    , '')).
                                               $Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Animal'       ,'predial/Animal/Animais_Del/'.$valor->id.'/'     ,'Deseja realmente deletar esse Animal ?'));
             ++$i;
         }
-        return Array($tabela, $i);
+        return Array($table, $i);
     }
     /**
      * 
@@ -74,9 +74,9 @@ class predial_AnimalControle extends predial_Controle
         // Busca
         $animais = $this->_Modelo->db->Sql_Select('Predial_Bloco_Apart_Animal');
         if ($animais !== FALSE && !empty($animais)) {
-            list($tabela, $i) = self::Animais_Tabela($animais);
-            $this->_Visual->Show_Tabela_DataTable($tabela);
-            unset($tabela);
+            list($table, $i) = self::Animais_Tabela($animais);
+            $this->_Visual->Show_Tabela_DataTable($table);
+            unset($table);
         } else {          
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Animal</font></b></center>');
         }
@@ -112,11 +112,11 @@ class predial_AnimalControle extends predial_Controle
     public function Animais_Add2() {
         $titulo     = __('Animal Adicionado com Sucesso');
         $dao        = 'Predial_Bloco_Apart_Animal';
-        $funcao     = '$this->Animais();';
+        $function     = '$this->Animais();';
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = __('Animal cadastrado com sucesso.');
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);
     }
     /**
      * 
@@ -146,11 +146,11 @@ class predial_AnimalControle extends predial_Controle
     public function Animais_Edit2($id) {
         $titulo     = __('Animal Editado com Sucesso');
         $dao        = Array('Predial_Bloco_Apart_Animal', $id);
-        $funcao     = '$this->Animais();';
+        $function     = '$this->Animais();';
         $sucesso1   = __('Animal Alterado com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);   
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);   
     }
     /**
      * 

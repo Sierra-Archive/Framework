@@ -61,15 +61,15 @@ class Financeiro_BancoControle extends Financeiro_Controle
             if (is_object($linhas)) $linhas = Array(0=>$linhas);
             reset($linhas);
             foreach ($linhas as $indice=>&$valor) {
-                //$tabela['#Id'][$i]       = '#'.$valor->id;
-                $tabela['Nome'][$i]      = $valor->nome;
-                $tabela['Funções'][$i]   = /*$this->_Visual->Tema_Elementos_Btn('Visualizar'      ,Array('Visualizar Banco'    ,'Financeiro/Banco/Bancos_View/'.$valor->id.'/'    , '')).*/
+                //$table['#Id'][$i]       = '#'.$valor->id;
+                $table['Nome'][$i]      = $valor->nome;
+                $table['Funções'][$i]   = /*$this->_Visual->Tema_Elementos_Btn('Visualizar'      ,Array('Visualizar Banco'    ,'Financeiro/Banco/Bancos_View/'.$valor->id.'/'    , '')).*/
                                            $this->_Visual->Tema_Elementos_Btn('Editar'          ,Array('Editar Banco'        ,'Financeiro/Banco/Bancos_Edit/'.$valor->id.'/'    , '')).
                                            $this->_Visual->Tema_Elementos_Btn('Deletar'         ,Array('Deletar Banco'       ,'Financeiro/Banco/Bancos_Del/'.$valor->id.'/'     ,'Deseja realmente deletar esse Banco ?'));
                 ++$i;
             }
-            $this->_Visual->Show_Tabela_DataTable($tabela);
-            unset($tabela);
+            $this->_Visual->Show_Tabela_DataTable($table);
+            unset($table);
         } else {         
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Banco</font></b></center>');
         }
@@ -104,11 +104,11 @@ class Financeiro_BancoControle extends Financeiro_Controle
     public function Bancos_Add2() {
         $titulo     = __('Banco Adicionado com Sucesso');
         $dao        = 'Financeiro_Banco';
-        $funcao     = '$this->Bancos();';
+        $function     = '$this->Bancos();';
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = __('Banco cadastrado com sucesso.');
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);
     }
     /**
      * 
@@ -137,11 +137,11 @@ class Financeiro_BancoControle extends Financeiro_Controle
     public function Bancos_Edit2($id) {
         $titulo     = __('Banco Editado com Sucesso');
         $dao        = Array('Financeiro_Banco', $id);
-        $funcao     = '$this->Bancos();';
+        $function     = '$this->Bancos();';
         $sucesso1   = __('Banco Alterado com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);      
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);      
     }
     /**
      * 
@@ -179,4 +179,4 @@ class Financeiro_BancoControle extends Financeiro_Controle
         $this->_Visual->Json_Info_Update('Historico', FALSE);  
     }
 }
-?>
+

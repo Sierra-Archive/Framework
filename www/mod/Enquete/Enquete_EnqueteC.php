@@ -34,13 +34,13 @@ class Enquete_EnqueteControle extends Enquete_Controle
         $Registro   = &\Framework\App\Registro::getInstacia();
         $Modelo     = &$Registro->_Modelo;
         $Visual     = &$Registro->_Visual;
-        $tabela = Array();
+        $table = Array();
         $i = 0;
         if (is_object($enquetes)) $enquetes = Array(0=>$enquetes);
         reset($enquetes);
         $perm_view = $Registro->_Acl->Get_Permissao_Url('Enquete/Resposta/Respostas');
-        $perm_editar = $Registro->_Acl->Get_Permissao_Url('Enquete/Enquete/Enquetes_Edit');
-        $perm_del = $Registro->_Acl->Get_Permissao_Url('Enquete/Enquete/Enquetes_Del');
+        $permissionEdit = $Registro->_Acl->Get_Permissao_Url('Enquete/Enquete/Enquetes_Edit');
+        $permissionDelete = $Registro->_Acl->Get_Permissao_Url('Enquete/Enquete/Enquetes_Del');
 
         foreach ($enquetes as &$valor) {
             $resp_votos = $Modelo->db->Sql_Select('Enquete_Voto',Array(
@@ -53,17 +53,17 @@ class Enquete_EnqueteControle extends Enquete_Controle
             } else {
                 $resp_votos_res = count($resp_votos);
             }
-            $tabela['Tipo de Enquete'][$i]  = $valor->categoria2;
-            $tabela['Pergunta'][$i]         = $valor->nome;
-            $tabela['Nº de Votos'][$i]      = ($resp_votos_res==1)?$resp_votos_res.' Voto':$resp_votos_res.' Votos';
-            $tabela['Observação'][$i]       = $valor->obs;
-            $tabela['Data Registrado'][$i]  = $valor->log_date_add;
-            $tabela['Funções'][$i]          = $Visual->Tema_Elementos_Btn('Visualizar' ,Array('Visualizar Enquete'    ,'Enquete/Resposta/Respostas/'.$valor->id.'/'    , ''), $perm_view).
-                                              $Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Enquete'        ,'Enquete/Enquete/Enquetes_Edit/'.$valor->id.'/'    , ''), $perm_editar).
-                                              $Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Enquete'       ,'Enquete/Enquete/Enquetes_Del/'.$valor->id.'/'     ,'Deseja realmente deletar essa Enquete ?'), $perm_del);
+            $table['Tipo de Enquete'][$i]  = $valor->categoria2;
+            $table['Pergunta'][$i]         = $valor->nome;
+            $table['Nº de Votos'][$i]      = ($resp_votos_res==1)?$resp_votos_res.' Voto':$resp_votos_res.' Votos';
+            $table['Observação'][$i]       = $valor->obs;
+            $table['Data Registrado'][$i]  = $valor->log_date_add;
+            $table['Funções'][$i]          = $Visual->Tema_Elementos_Btn('Visualizar' ,Array('Visualizar Enquete'    ,'Enquete/Resposta/Respostas/'.$valor->id.'/'    , ''), $perm_view).
+                                              $Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Enquete'        ,'Enquete/Enquete/Enquetes_Edit/'.$valor->id.'/'    , ''), $permissionEdit).
+                                              $Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Enquete'       ,'Enquete/Enquete/Enquetes_Del/'.$valor->id.'/'     ,'Deseja realmente deletar essa Enquete ?'), $permissionDelete);
             ++$i;
         }
-        return Array($tabela, $i);
+        return Array($table, $i);
     }
     /**
      * 
@@ -90,12 +90,12 @@ class Enquete_EnqueteControle extends Enquete_Controle
         // Conexao
         $enquetes = $this->_Modelo->db->Sql_Select('Enquete');
         if ($enquetes !== FALSE && !empty($enquetes)) {
-            list($tabela, $i) = self::Enquetes_Tabela($enquetes);
+            list($table, $i) = self::Enquetes_Tabela($enquetes);
             if ($export !== FALSE) {
-                self::Export_Todos($export, $tabela, 'Enquetes');
+                self::Export_Todos($export, $table, 'Enquetes');
             } else {
                 $this->_Visual->Show_Tabela_DataTable(
-                    $tabela,     // Array Com a Tabela
+                    $table,     // Array Com a Tabela
                     '',          // style extra
                     true,        // true -> Add ao Bloco, false => Retorna html
                     true,        // Apagar primeira coluna ?
@@ -106,7 +106,7 @@ class Enquete_EnqueteControle extends Enquete_Controle
                     )
                 );
             }
-            unset($tabela);
+            unset($table);
         } else {            
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhuma Enquete</font></b></center>');
         }
@@ -141,11 +141,11 @@ class Enquete_EnqueteControle extends Enquete_Controle
     public function Enquetes_Add2() {
         $titulo     = __('Enquete Adicionada com Sucesso');
         $dao        = 'Enquete';
-        $funcao     = '$this->Enquetes();';
+        $function     = '$this->Enquetes();';
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = __('Enquete cadastrada com sucesso.');
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);
     }
     /**
      * 
@@ -175,11 +175,11 @@ class Enquete_EnqueteControle extends Enquete_Controle
     public function Enquetes_Edit2($id) {
         $titulo     = __('Enquete Editada com Sucesso');
         $dao        = Array('Enquete', $id);
-        $funcao     = '$this->Enquetes();';
+        $function     = '$this->Enquetes();';
         $sucesso1   = __('Enquete Alterada com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);   
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);   
     }
     /**
      * 
@@ -217,4 +217,4 @@ class Enquete_EnqueteControle extends Enquete_Controle
         $this->_Visual->Json_Info_Update('Historico', FALSE);
     }
 }
-?>
+

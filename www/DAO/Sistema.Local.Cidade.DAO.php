@@ -117,4 +117,4 @@ final Class Sistema_Local_Cidade_DAO extends Framework\App\Dao
         );
     }
 }
-?>
+

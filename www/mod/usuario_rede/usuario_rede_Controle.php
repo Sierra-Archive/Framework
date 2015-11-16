@@ -68,13 +68,13 @@ class usuario_rede_Controle extends \Framework\App\Controle
             reset($ranking);
             $i = 0;
             foreach ($ranking as $indice=>&$valor) {
-                $tabela['Associado'][$i] = ($i+1).'º '.$ranking[$indice]['nome'];
-                $tabela['Primarios'][$i] = str_pad($ranking[$indice]['PRIMARIO'], 5, "0", STR_PAD_LEFT).' %';
+                $table['Associado'][$i] = ($i+1).'º '.$ranking[$indice]['nome'];
+                $table['Primarios'][$i] = str_pad($ranking[$indice]['PRIMARIO'], 5, "0", STR_PAD_LEFT).' %';
                 ++$i;
             }
-            $Visual->Show_Tabela_DataTable($tabela);
+            $Visual->Show_Tabela_DataTable($table);
             $Visual->Bloco_Maior_CriaJanela(__('Ranking'), '',10);
-            unset($tabela);
+            unset($table);
         }
     }
 }

@@ -60,4 +60,4 @@ $config_Publico = function () {
         )*/
     );
 };
-?>
+

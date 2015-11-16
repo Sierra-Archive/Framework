@@ -101,4 +101,4 @@ final Class Comercio_Proposta_Comentario_DAO extends Framework\App\Dao
         );
     }
 }
-?>
+

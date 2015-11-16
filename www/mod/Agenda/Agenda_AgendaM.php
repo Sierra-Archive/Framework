@@ -20,11 +20,11 @@ class Agenda_AgendaModelo extends Agenda_Modelo
     public function Agendas() {
         // Table's primary key
         $primaryKey = 'id';
-        $tabela = 'Agenda';
+        $table = 'Agenda';
         
         
-        $perm_editar = $this->_Registro->_Acl->Get_Permissao_Url('Agenda/Agenda/Agendas_Edit');
-        $perm_deletar = $this->_Registro->_Acl->Get_Permissao_Url('Agenda/Agenda/Agendas_Del');
+        $permissionEdit = $this->_Registro->_Acl->Get_Permissao_Url('Agenda/Agenda/Agendas_Edit');
+        $permissionDelete = $this->_Registro->_Acl->Get_Permissao_Url('Agenda/Agenda/Agendas_Del');
         
 
 
@@ -47,10 +47,10 @@ class Agenda_AgendaModelo extends Agenda_Modelo
 
 
         $function = '';
-        if ($perm_editar) {
+        if ($permissionEdit) {
             $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Editar\'     ,Array(__(\'Editar Agenda\')        ,\'Agenda/Agenda/Agendas_Edit/\'.$d.\'/\'    ,\'\'),TRUE);';
         }
-        if ($perm_deletar) {
+        if ($permissionDelete) {
             $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Deletar\'     ,Array(__(\'Deletar Agenda\')        ,\'Agenda/Agenda/Agendas_Del/\'.$d.\'/\'    ,\'\'),TRUE);';
         }
         
@@ -61,8 +61,7 @@ class Agenda_AgendaModelo extends Agenda_Modelo
         ); //'Funções';
                 
         echo json_encode(
-            \Framework\Classes\Datatable::complex( $_GET, Framework\App\Registro::getInstacia()->_Conexao, $tabela, $primaryKey, $columns, null)
+            \Framework\Classes\Datatable::complex( $_GET, Framework\App\Registro::getInstacia()->_Conexao, $table, $primaryKey, $columns, null)
         );
     }
 }
-?>

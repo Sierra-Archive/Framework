@@ -17,4 +17,3 @@ class Evento_EventoVisual extends Evento_Visual
       parent::__construct();
     }
 }
-?>

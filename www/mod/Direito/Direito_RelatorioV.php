@@ -17,4 +17,3 @@ class Direito_RelatorioVisual extends DireitoVisual
       parent::__construct();
     }
 }
-?>

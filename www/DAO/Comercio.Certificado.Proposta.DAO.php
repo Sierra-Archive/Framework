@@ -578,4 +578,4 @@ final Class Comercio_Certificado_Proposta_DAO extends Framework\App\Dao
         );
     }
 }
-?>
+

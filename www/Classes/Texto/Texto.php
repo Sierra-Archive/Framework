@@ -96,4 +96,4 @@ class Texto
             $this->_Modelo->db->Sql_Insert($objeto);
             next($array);
         }*/
-?>
+

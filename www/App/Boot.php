@@ -176,4 +176,4 @@ class Boot {
         exit;
     }
 }
-?>
+

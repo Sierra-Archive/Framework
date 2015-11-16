@@ -63,15 +63,15 @@ class usuario_veiculo_ModeloControle extends usuario_veiculo_Controle
             if (is_object($modelos)) $modelos = Array(0=>$modelos);
             reset($modelos);
             foreach ($modelos as $indice=>&$valor) {
-                //$tabela['#Id'][$i]     = '#'.$valor->id;
-                $tabela['Marca'][$i]     = $valor->marca2;
-                $tabela['Nome'][$i]      = $valor->nome;
-                $tabela['Funções'][$i]   = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Modelo'        ,'usuario_veiculo/Modelo/Modelos_Edit/'.$valor->id.'/'    , '')).
+                //$table['#Id'][$i]     = '#'.$valor->id;
+                $table['Marca'][$i]     = $valor->marca2;
+                $table['Nome'][$i]      = $valor->nome;
+                $table['Funções'][$i]   = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Modelo'        ,'usuario_veiculo/Modelo/Modelos_Edit/'.$valor->id.'/'    , '')).
                                            $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Modelo'       ,'usuario_veiculo/Modelo/Modelos_Del/'.$valor->id.'/'     ,'Deseja realmente deletar essa Modelo ?'));
                 ++$i;
             }
-            $this->_Visual->Show_Tabela_DataTable($tabela);
-            unset($tabela);
+            $this->_Visual->Show_Tabela_DataTable($table);
+            unset($table);
         } else {           
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Modelo</font></b></center>');
         }
@@ -107,11 +107,11 @@ class usuario_veiculo_ModeloControle extends usuario_veiculo_Controle
     public function Modelos_Add2() {
         $titulo     = __('Modelo Adicionada com Sucesso');
         $dao        = 'Usuario_Veiculo_Modelo';
-        $funcao     = '$this->Modelos();';
+        $function     = '$this->Modelos();';
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = __('Modelo cadastrada com sucesso.');
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);
     }
     /**
      * 
@@ -141,11 +141,11 @@ class usuario_veiculo_ModeloControle extends usuario_veiculo_Controle
     public function Modelos_Edit2($id) {
         $titulo     = __('Modelo Editada com Sucesso');
         $dao        = Array('Usuario_Veiculo_Modelo', $id);
-        $funcao     = '$this->Modelos();';
+        $function     = '$this->Modelos();';
         $sucesso1   = __('Modelo Alterada com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);      
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);      
     }
     /**
      * 

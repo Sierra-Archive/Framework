@@ -104,4 +104,4 @@ class Tabela
         return $this->_Visual->renderizar_bloco('template_tabela', $config);
     }
 }
-?>
+

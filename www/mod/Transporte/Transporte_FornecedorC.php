@@ -28,20 +28,20 @@ class Transporte_FornecedorControle extends Transporte_Controle
     static function Fornecedores_Tabela(&$fornecedor) {
         $Registro   = &\Framework\App\Registro::getInstacia();
         $Visual     = &$Registro->_Visual;
-        $tabela = Array();
+        $table = Array();
         $i = 0;
         if (is_object($fornecedor)) $fornecedor = Array(0=>$fornecedor);reset($fornecedor);
         $perm_view = $this->_Registro->_Acl->Get_Permissao_Url('Transporte/Fornecedor/Visualizar');
         foreach ($fornecedor as &$valor) {                
-            $tabela['Id'][$i]           = '#'.$valor->id;
-            $tabela['Razão Social'][$i] = $valor->usuario2;
-            $tabela['Categoria'][$i]    = $valor->categoria2;
-            $tabela['Observação'][$i]   = $valor->obs;
-            $tabela['Visualizar'][$i]   = $Visual->Tema_Elementos_Btn('Visualizar'     ,Array('Visualizar'        ,'Transporte/Fornecedor/Visualizar/'.$valor->id    , ''), $perm_view);
+            $table['Id'][$i]           = '#'.$valor->id;
+            $table['Razão Social'][$i] = $valor->usuario2;
+            $table['Categoria'][$i]    = $valor->categoria2;
+            $table['Observação'][$i]   = $valor->obs;
+            $table['Visualizar'][$i]   = $Visual->Tema_Elementos_Btn('Visualizar'     ,Array('Visualizar'        ,'Transporte/Fornecedor/Visualizar/'.$valor->id    , ''), $perm_view);
                
             ++$i;
         }
-        return Array($tabela, $i);
+        return Array($table, $i);
     }
     public function Visualizar($id, $export = FALSE) {
         
@@ -62,13 +62,13 @@ class Transporte_FornecedorControle extends Transporte_Controle
         $fornecedor = $this->_Modelo->db->Sql_Select('Transporte_Fornecedor');
         if (is_object($fornecedor)) $fornecedor = Array(0=>$fornecedor);
         if ($fornecedor !== FALSE && !empty($fornecedor)) {
-            list($tabela, $i) = self::Fornecedores_Tabela($fornecedor);
+            list($table, $i) = self::Fornecedores_Tabela($fornecedor);
             // SE exportar ou mostra em tabela
             if ($export !== FALSE) {
-                self::Export_Todos($export, $tabela, 'Fornecedores');
+                self::Export_Todos($export, $table, 'Fornecedores');
             } else {
                 $this->_Visual->Show_Tabela_DataTable(
-                    $tabela,     // Array Com a Tabela
+                    $table,     // Array Com a Tabela
                     '',          // style extra
                     true,        // true -> Add ao Bloco, false => Retorna html
                     FALSE,        // Apagar primeira coluna ?
@@ -79,7 +79,7 @@ class Transporte_FornecedorControle extends Transporte_Controle
                     )
                 );
             }
-            unset($tabela);
+            unset($table);
         } else {
             if ($export !== FALSE) {
                 $mensagem = __('Nenhum Fornecedor Cadastrado para exportar');
@@ -177,13 +177,13 @@ class Transporte_FornecedorControle extends Transporte_Controle
         }
         $titulo     = __('Dados Atualizados com Sucesso');
         $dao        = 'Transporte_Fornecedor';
-        $funcao     = 'Transporte_FornecedorControle::Painel_Fornecedor(\''.$camada.'\',\'false\');';
+        $function     = 'Transporte_FornecedorControle::Painel_Fornecedor(\''.$camada.'\',\'false\');';
         $sucesso1   = __('Atualização bem sucedida');
         $sucesso2   = __('Dados Atualizados com sucesso.');
         $alterar    = Array(
             'usuario'        =>  $this->_Acl->Usuario_GetID(),
         );
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);
     }
 }
 ?>

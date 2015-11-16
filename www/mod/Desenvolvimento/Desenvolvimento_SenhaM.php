@@ -21,27 +21,26 @@ class Desenvolvimento_SenhaModelo extends Desenvolvimento_Modelo
         // Table's primary key
         $primaryKey = 'id';
         
+        $permissionEdit = $this->_Registro->_Acl->Get_Permissao_Url('Desenvolvimento/Senha/Senhas_Edit');
+        $permissionDelete = $this->_Registro->_Acl->Get_Permissao_Url('Desenvolvimento/Senha/Senhas_Del');
+        $permissionStatus = $this->_Registro->_Acl->Get_Permissao_Url('Desenvolvimento/Senha/Status');
+        $permissionFeatured = $this->_Registro->_Acl->Get_Permissao_Url('Desenvolvimento/Senha/Destaque');
         
-        $perm_editar = $this->_Registro->_Acl->Get_Permissao_Url('Desenvolvimento/Senha/Senhas_Edit');
-        $perm_del = $this->_Registro->_Acl->Get_Permissao_Url('Desenvolvimento/Senha/Senhas_Del');
-        $perm_status = $this->_Registro->_Acl->Get_Permissao_Url('Desenvolvimento/Senha/Status');
-        $perm_destaque = $this->_Registro->_Acl->Get_Permissao_Url('Desenvolvimento/Senha/Destaque');
-        
-        if ($perm_editar && $perm_del) {
-            $funcao = function( $d, $row ) {
+        if ($permissionEdit && $permissionDelete) {
+            $function = function( $d, $row ) {
                 return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Senha'        ,'Desenvolvimento/Senha/Senhas_Edit/'.$d.'/'    , ''),TRUE).
                        Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Senha'       ,'Desenvolvimento/Senha/Senhas_Del/'.$d.'/'     ,'Deseja realmente deletar essa Senha ?'),TRUE);
             };
-        } else if ($perm_editar) {
-            $funcao = function( $d, $row ) {
+        } else if ($permissionEdit) {
+            $function = function( $d, $row ) {
                 return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Senha'        ,'Desenvolvimento/Senha/Senhas_Edit/'.$d.'/'    , ''),TRUE);
             };
-        } else if ($perm_del) {
-            $funcao = function( $d, $row ) {
+        } else if ($permissionDelete) {
+            $function = function( $d, $row ) {
                 return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Senha'       ,'Desenvolvimento/Senha/Senhas_Del/'.$d.'/'     ,'Deseja realmente deletar essa Senha ?'),TRUE);
             };
         } else {
-            $funcao = function( $d, $row ) {
+            $function = function( $d, $row ) {
                 return '';
             };
         }
@@ -63,7 +62,7 @@ class Desenvolvimento_SenhaModelo extends Desenvolvimento_Modelo
         );
         // Destaque, somente se tiver permissao
         $numero = 4;
-        if ($perm_destaque) {
+        if ($permissionFeatured) {
             ++$numero;
             $columns[] = array( 'db' => 'destaque'    ,  'dt' => $numero ,
                     'formatter' => function( $d, $row ) {
@@ -77,16 +76,16 @@ class Desenvolvimento_SenhaModelo extends Desenvolvimento_Modelo
                     return $nometipo;
                 },
                 'search' => function( $search ) {
-                    if (strpos(strtolower('Não Destaque'), strtolower($search))! = FALSE) {
+                    if (strpos(strtolower('Não Destaque'), strtolower($search)) !== FALSE) {
                         return '0';
-                    } else if (strpos(strtolower('Destaque'), strtolower($search))! = FALSE) {
+                    } else if (strpos(strtolower('Destaque'), strtolower($search)) !== FALSE) {
                         return '1';
                     }
                     return FALSE;
                 }
             );
         }
-        if ($perm_status) {
+        if ($permissionStatus) {
             ++$numero;
             $columns[] = array( 'db' => 'status'      ,  'dt' => $numero ,
                 'formatter' => function( $d, $row ) {
@@ -112,7 +111,7 @@ class Desenvolvimento_SenhaModelo extends Desenvolvimento_Modelo
         $columns[] = array( 'db' => 'log_date_add', 'dt' => $numero );
         ++$numero;
         $columns[] = array( 'db' => 'id', 'dt' => $numero,
-                'formatter' => $funcao
+                'formatter' => $function
         );
 
         echo json_encode(
@@ -124,26 +123,26 @@ class Desenvolvimento_SenhaModelo extends Desenvolvimento_Modelo
         $primaryKey = 'id';
         
         
-        $perm_editar = $this->_Registro->_Acl->Get_Permissao_Url('Desenvolvimento/Senha/Senhas_Todas_Edit');
-        $perm_del = $this->_Registro->_Acl->Get_Permissao_Url('Desenvolvimento/Senha/Senhas_Todas_Del');
-        $perm_status = $this->_Registro->_Acl->Get_Permissao_Url('Desenvolvimento/Senha/Status_Todas');
-        $perm_destaque = $this->_Registro->_Acl->Get_Permissao_Url('Desenvolvimento/Senha/Destaque_Todas');
+        $permissionEdit = $this->_Registro->_Acl->Get_Permissao_Url('Desenvolvimento/Senha/Senhas_Todas_Edit');
+        $permissionDelete = $this->_Registro->_Acl->Get_Permissao_Url('Desenvolvimento/Senha/Senhas_Todas_Del');
+        $permissionStatus = $this->_Registro->_Acl->Get_Permissao_Url('Desenvolvimento/Senha/Status_Todas');
+        $permissionFeatured = $this->_Registro->_Acl->Get_Permissao_Url('Desenvolvimento/Senha/Destaque_Todas');
         
-        if ($perm_editar && $perm_del) {
-            $funcao = function( $d, $row ) {
+        if ($permissionEdit && $permissionDelete) {
+            $function = function( $d, $row ) {
                 return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Senha'        ,'Desenvolvimento/Senha/Senhas_Todas_Edit/'.$d.'/'    , ''),TRUE).
                        Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Senha'       ,'Desenvolvimento/Senha/Senhas_Todas_Del/'.$d.'/'     ,'Deseja realmente deletar essa Senha ?'),TRUE);
             };
-        } else if ($perm_editar) {
-            $funcao = function( $d, $row ) {
+        } else if ($permissionEdit) {
+            $function = function( $d, $row ) {
                 return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Senha'        ,'Desenvolvimento/Senha/Senhas_Todas_Edit/'.$d.'/'    , ''),TRUE);
             };
-        } else if ($perm_del) {
-            $funcao = function( $d, $row ) {
+        } else if ($permissionDelete) {
+            $function = function( $d, $row ) {
                 return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Senha'       ,'Desenvolvimento/Senha/Senhas_Todas_Del/'.$d.'/'     ,'Deseja realmente deletar essa Senha ?'),TRUE);
             };
         } else {
-            $funcao = function( $d, $row ) {
+            $function = function( $d, $row ) {
                 return '';
             };
         }
@@ -167,7 +166,7 @@ class Desenvolvimento_SenhaModelo extends Desenvolvimento_Modelo
         );
         // Destaque, somente se tiver permissao
         $numero = 5;
-        if ($perm_destaque) {
+        if ($permissionFeatured) {
             ++$numero;
             $columns[] = array( 'db' => 'destaque'    ,  'dt' => $numero ,
                     'formatter' => function( $d, $row ) {
@@ -181,16 +180,16 @@ class Desenvolvimento_SenhaModelo extends Desenvolvimento_Modelo
                     return $nometipo;
                 },
                 'search' => function( $search ) {
-                    if (strpos(strtolower('Destaque'), strtolower($search))! = FALSE) {
+                    if (strpos(strtolower('Destaque'), strtolower($search)) !== FALSE) {
                         return '0';
-                    } else if (strpos(strtolower('Não Destaque'), strtolower($search))! = FALSE) {
+                    } else if (strpos(strtolower('Não Destaque'), strtolower($search)) !== FALSE) {
                         return '1';
                     }
                     return FALSE;
                 }
             );
         }
-        if ($perm_status) {
+        if ($permissionStatus) {
             ++$numero;
             $columns[] = array( 'db' => 'status'      ,  'dt' => $numero ,
                 'formatter' => function( $d, $row ) {
@@ -203,9 +202,9 @@ class Desenvolvimento_SenhaModelo extends Desenvolvimento_Modelo
                     return $nometipo;
                 },
                 'search' => function( $search ) {
-                    if (strpos(strtolower('Ultrapassada'), strtolower($search))! = FALSE) {
+                    if (strpos(strtolower('Ultrapassada'), strtolower($search)) !== FALSE) {
                         return '0';
-                    } else if (strpos(strtolower('Em Uso'), strtolower($search))! = FALSE) {
+                    } else if (strpos(strtolower('Em Uso'), strtolower($search)) !== FALSE) {
                         return '1';
                     }
                     return FALSE;
@@ -216,7 +215,7 @@ class Desenvolvimento_SenhaModelo extends Desenvolvimento_Modelo
         $columns[] = array( 'db' => 'log_date_add', 'dt' => $numero );
         ++$numero;
         $columns[] = array( 'db' => 'id', 'dt' => $numero,
-                'formatter' => $funcao
+                'formatter' => $function
         );
 
         echo json_encode(
@@ -228,26 +227,26 @@ class Desenvolvimento_SenhaModelo extends Desenvolvimento_Modelo
         $primaryKey = 'id';
         
         
-        $perm_editar = $this->_Registro->_Acl->Get_Permissao_Url('Desenvolvimento/Senha/Senhas_Edit');
-        $perm_del = $this->_Registro->_Acl->Get_Permissao_Url('Desenvolvimento/Senha/Senhas_Del');
-        $perm_status = $this->_Registro->_Acl->Get_Permissao_Url('Desenvolvimento/Senha/Status');
-        $perm_destaque = $this->_Registro->_Acl->Get_Permissao_Url('Desenvolvimento/Senha/Destaque');
+        $permissionEdit = $this->_Registro->_Acl->Get_Permissao_Url('Desenvolvimento/Senha/Senhas_Edit');
+        $permissionDelete = $this->_Registro->_Acl->Get_Permissao_Url('Desenvolvimento/Senha/Senhas_Del');
+        $permissionStatus = $this->_Registro->_Acl->Get_Permissao_Url('Desenvolvimento/Senha/Status');
+        $permissionFeatured = $this->_Registro->_Acl->Get_Permissao_Url('Desenvolvimento/Senha/Destaque');
         
-        if ($perm_editar && $perm_del) {
-            $funcao = function( $d, $row ) {
+        if ($permissionEdit && $permissionDelete) {
+            $function = function( $d, $row ) {
                 return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Senha'        ,'Desenvolvimento/Senha/Senhas_Edit/'.$d.'/'    , ''),TRUE).
                        Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Senha'       ,'Desenvolvimento/Senha/Senhas_Del/'.$d.'/'     ,'Deseja realmente deletar essa Senha ?'),TRUE);
             };
-        } else if ($perm_editar) {
-            $funcao = function( $d, $row ) {
+        } else if ($permissionEdit) {
+            $function = function( $d, $row ) {
                 return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Senha'        ,'Desenvolvimento/Senha/Senhas_Edit/'.$d.'/'    , ''),TRUE);
             };
-        } else if ($perm_del) {
-            $funcao = function( $d, $row ) {
+        } else if ($permissionDelete) {
+            $function = function( $d, $row ) {
                 return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Senha'       ,'Desenvolvimento/Senha/Senhas_Del/'.$d.'/'     ,'Deseja realmente deletar essa Senha ?'),TRUE);
             };
         } else {
-            $funcao = function( $d, $row ) {
+            $function = function( $d, $row ) {
                 return '';
             };
         }
@@ -269,7 +268,7 @@ class Desenvolvimento_SenhaModelo extends Desenvolvimento_Modelo
         );
         // Destaque, somente se tiver permissao
         $numero = 4;
-        if ($perm_destaque) {
+        if ($permissionFeatured) {
             ++$numero;
             $columns[] = array( 'db' => 'destaque'    ,  'dt' => $numero ,
                     'formatter' => function( $d, $row ) {
@@ -283,16 +282,16 @@ class Desenvolvimento_SenhaModelo extends Desenvolvimento_Modelo
                     return $nometipo;
                 },
                 'search' => function( $search ) {
-                    if (strpos(strtolower('Não Destaque'), strtolower($search))! = FALSE) {
+                    if (strpos(strtolower('Não Destaque'), strtolower($search)) !== FALSE) {
                         return '0';
-                    } else if (strpos(strtolower('Destaque'), strtolower($search))! = FALSE) {
+                    } else if (strpos(strtolower('Destaque'), strtolower($search)) !== FALSE) {
                         return '1';
                     }
                     return FALSE;
                 }
             );
         }
-        if ($perm_status) {
+        if ($permissionStatus) {
             ++$numero;
             $columns[] = array( 'db' => 'status'      ,  'dt' => $numero ,
                 'formatter' => function( $d, $row ) {
@@ -305,9 +304,9 @@ class Desenvolvimento_SenhaModelo extends Desenvolvimento_Modelo
                     return $nometipo;
                 },
                 'search' => function( $search ) {
-                    if (strpos(strtolower('Ultrapassada'), strtolower($search))! = FALSE) {
+                    if (strpos(strtolower('Ultrapassada'), strtolower($search)) !== FALSE) {
                         return '0';
-                    } else if (strpos(strtolower('Em Uso'), strtolower($search))! = FALSE) {
+                    } else if (strpos(strtolower('Em Uso'), strtolower($search)) !== FALSE) {
                         return '1';
                     }
                     return FALSE;
@@ -318,7 +317,7 @@ class Desenvolvimento_SenhaModelo extends Desenvolvimento_Modelo
         $columns[] = array( 'db' => 'log_date_add', 'dt' => $numero );
         ++$numero;
         $columns[] = array( 'db' => 'id', 'dt' => $numero,
-                'formatter' => $funcao
+                'formatter' => $function
         );
 
         echo json_encode(
@@ -330,26 +329,26 @@ class Desenvolvimento_SenhaModelo extends Desenvolvimento_Modelo
         $primaryKey = 'id';
         
         
-        $perm_editar = $this->_Registro->_Acl->Get_Permissao_Url('Desenvolvimento/Senha/Senhas_Todas_Edit');
-        $perm_del = $this->_Registro->_Acl->Get_Permissao_Url('Desenvolvimento/Senha/Senhas_Todas_Del');
-        $perm_status = $this->_Registro->_Acl->Get_Permissao_Url('Desenvolvimento/Senha/Status_Todas');
-        $perm_destaque = $this->_Registro->_Acl->Get_Permissao_Url('Desenvolvimento/Senha/Destaque_Todas');
+        $permissionEdit = $this->_Registro->_Acl->Get_Permissao_Url('Desenvolvimento/Senha/Senhas_Todas_Edit');
+        $permissionDelete = $this->_Registro->_Acl->Get_Permissao_Url('Desenvolvimento/Senha/Senhas_Todas_Del');
+        $permissionStatus = $this->_Registro->_Acl->Get_Permissao_Url('Desenvolvimento/Senha/Status_Todas');
+        $permissionFeatured = $this->_Registro->_Acl->Get_Permissao_Url('Desenvolvimento/Senha/Destaque_Todas');
         
-        if ($perm_editar && $perm_del) {
-            $funcao = function( $d, $row ) {
+        if ($permissionEdit && $permissionDelete) {
+            $function = function( $d, $row ) {
                 return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Senha'        ,'Desenvolvimento/Senha/Senhas_Todas_Edit/'.$d.'/'    , ''),TRUE).
                        Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Senha'       ,'Desenvolvimento/Senha/Senhas_Todas_Del/'.$d.'/'     ,'Deseja realmente deletar essa Senha ?'),TRUE);
             };
-        } else if ($perm_editar) {
-            $funcao = function( $d, $row ) {
+        } else if ($permissionEdit) {
+            $function = function( $d, $row ) {
                 return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Senha'        ,'Desenvolvimento/Senha/Senhas_Todas_Edit/'.$d.'/'    , ''),TRUE);
             };
-        } else if ($perm_del) {
-            $funcao = function( $d, $row ) {
+        } else if ($permissionDelete) {
+            $function = function( $d, $row ) {
                 return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Senha'       ,'Desenvolvimento/Senha/Senhas_Todas_Del/'.$d.'/'     ,'Deseja realmente deletar essa Senha ?'),TRUE);
             };
         } else {
-            $funcao = function( $d, $row ) {
+            $function = function( $d, $row ) {
                 return '';
             };
         }
@@ -372,7 +371,7 @@ class Desenvolvimento_SenhaModelo extends Desenvolvimento_Modelo
         );
         // Destaque, somente se tiver permissao
         $numero = 5;
-        if ($perm_destaque) {
+        if ($permissionFeatured) {
             ++$numero;
             $columns[] = array( 'db' => 'destaque'    ,  'dt' => $numero ,
                     'formatter' => function( $d, $row ) {
@@ -386,16 +385,16 @@ class Desenvolvimento_SenhaModelo extends Desenvolvimento_Modelo
                     return $nometipo;
                 },
                 'search' => function( $search ) {
-                    if (strpos(strtolower('Destaque'), strtolower($search))! = FALSE) {
+                    if (strpos(strtolower('Destaque'), strtolower($search)) !== FALSE) {
                         return '0';
-                    } else if (strpos(strtolower('Não Destaque'), strtolower($search))! = FALSE) {
+                    } else if (strpos(strtolower('Não Destaque'), strtolower($search)) !== FALSE) {
                         return '1';
                     }
                     return FALSE;
                 }
             );
         }
-        if ($perm_status) {
+        if ($permissionStatus) {
             ++$numero;
             $columns[] = array( 'db' => 'status'      ,  'dt' => $numero ,
                 'formatter' => function( $d, $row ) {
@@ -408,9 +407,9 @@ class Desenvolvimento_SenhaModelo extends Desenvolvimento_Modelo
                     return $nometipo;
                 },
                 'search' => function( $search ) {
-                    if (strpos(strtolower('Ultrapassada'), strtolower($search))! = FALSE) {
+                    if (strpos(strtolower('Ultrapassada'), strtolower($search)) !== FALSE) {
                         return '0';
-                    } else if (strpos(strtolower('Em Uso'), strtolower($search))! = FALSE) {
+                    } else if (strpos(strtolower('Em Uso'), strtolower($search)) !== FALSE) {
                         return '1';
                     }
                     return FALSE;
@@ -421,7 +420,7 @@ class Desenvolvimento_SenhaModelo extends Desenvolvimento_Modelo
         $columns[] = array( 'db' => 'log_date_add', 'dt' => $numero );
         ++$numero;
         $columns[] = array( 'db' => 'id', 'dt' => $numero,
-                'formatter' => $funcao
+                'formatter' => $function
         );
 
         echo json_encode(
@@ -429,4 +428,3 @@ class Desenvolvimento_SenhaModelo extends Desenvolvimento_Modelo
         );
     }
 }
-?>

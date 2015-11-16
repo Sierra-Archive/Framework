@@ -16,4 +16,3 @@ class Evento_Modelo extends \Framework\App\Modelo
         parent::__construct();
     }
 }
-?>

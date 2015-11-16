@@ -221,4 +221,3 @@ class Face_Detector {
     }
 }
 
-?>

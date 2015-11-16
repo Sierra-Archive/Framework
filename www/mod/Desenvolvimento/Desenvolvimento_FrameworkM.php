@@ -18,4 +18,3 @@ class Desenvolvimento_FrameworkModelo extends Desenvolvimento_Modelo
       parent::__construct();
     }
 }
-?>

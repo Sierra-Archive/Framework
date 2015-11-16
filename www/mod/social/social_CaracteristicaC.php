@@ -69,17 +69,17 @@ class social_CaracteristicaControle extends social_Controle
             if (is_object($caracteristicas)) $caracteristicas = Array(0=>$caracteristicas);
             reset($caracteristicas);
             foreach ($caracteristicas as $indice=>&$valor) {
-                $tabela['Nome'][$i]            = $valor->nome;
-                $tabela['Descriçao'][$i]        = $valor->descricao;
-                $tabela['Funções'][$i]          = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Caracteristica'        ,'social/Caracteristica/Caracteristicas_Edit/'.$valor->id.'/'    , '')).
+                $table['Nome'][$i]            = $valor->nome;
+                $table['Descriçao'][$i]        = $valor->descricao;
+                $table['Funções'][$i]          = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Caracteristica'        ,'social/Caracteristica/Caracteristicas_Edit/'.$valor->id.'/'    , '')).
                                                   $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Caracteristica'       ,'social/Caracteristica/Caracteristicas_Del/'.$valor->id.'/'     ,'Deseja realmente deletar essa Caracteristica ?'));
                 ++$i;
             }
             if ($export !== FALSE) {
-                self::Export_Todos($export, $tabela, 'Caracteristicas');
+                self::Export_Todos($export, $table, 'Caracteristicas');
             } else {
                 $this->_Visual->Show_Tabela_DataTable(
-                    $tabela,     // Array Com a Tabela
+                    $table,     // Array Com a Tabela
                     '',          // style extra
                     true,        // true -> Add ao Bloco, false => Retorna html
                     true,        // Apagar primeira coluna ?
@@ -90,7 +90,7 @@ class social_CaracteristicaControle extends social_Controle
                     )
                 );
             }
-            unset($tabela);
+            unset($table);
         } else {           
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhuma Caracteristica</font></b></center>');
         }
@@ -126,11 +126,11 @@ class social_CaracteristicaControle extends social_Controle
     public function Caracteristicas_Add2() {
         $titulo     = __('Caracteristica adicionada com Sucesso');
         $dao        = 'Social_Caracteristica';
-        $funcao     = '$this->Caracteristica();';
+        $function     = '$this->Caracteristica();';
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = __('Caracteristica cadastrado com sucesso.');
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);
     }
     /**
      * 
@@ -160,11 +160,11 @@ class social_CaracteristicaControle extends social_Controle
     public function Caracteristicas_Edit2($id) {
         $titulo     = __('Caracteristica editada com Sucesso');
         $dao        = Array('Social_Caracteristica', $id);
-        $funcao     = '$this->Caracteristica();';
+        $function     = '$this->Caracteristica();';
         $sucesso1   = __('Caracteristica Alterado com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);   
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);   
     }
     /**
      * 

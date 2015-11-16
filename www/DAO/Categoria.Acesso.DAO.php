@@ -272,4 +272,4 @@ final Class Categoria_Acesso_DAO extends Framework\App\Dao
         return $repassar;
     }
 }
-?>
+

@@ -88,17 +88,17 @@ class usuario_veiculo_AdminControle extends usuario_veiculo_Controle
             $i = 0;           
             
             foreach ($veiculos as $indice=>&$valor) {
-                $tabela['Id'][$i] = $valor['id'];
-                $tabela['Foto'][$i] = $this->_Visual->Show_Upload('usuario_veiculo', 'Admin', 'Veiculos', 'VeiculoImagem'.$valor['id'], $valor['foto'],'usuario_veiculo'.DS, $valor['id']);
-                $tabela['Categoria'][$i] = $valor['categoria'];
-                $tabela['Ano'][$i] = $valor['ano'];
-                $tabela['Moto'][$i] = $valor['marca'].' '.$valor['modelo'];
-                $tabela['CC'][$i] = $valor['cc'];
-                $tabela['Até 3 dias<br>Entre 3 e 10 dias<br>+10 dias'][$i] = 'R$'.number_format($valor['valor1'], 2, ', ', '.').
+                $table['Id'][$i] = $valor['id'];
+                $table['Foto'][$i] = $this->_Visual->Show_Upload('usuario_veiculo', 'Admin', 'Veiculos', 'VeiculoImagem'.$valor['id'], $valor['foto'],'usuario_veiculo'.DS, $valor['id']);
+                $table['Categoria'][$i] = $valor['categoria'];
+                $table['Ano'][$i] = $valor['ano'];
+                $table['Moto'][$i] = $valor['marca'].' '.$valor['modelo'];
+                $table['CC'][$i] = $valor['cc'];
+                $table['Até 3 dias<br>Entre 3 e 10 dias<br>+10 dias'][$i] = 'R$'.number_format($valor['valor1'], 2, ', ', '.').
                 '<br>R$'.number_format($valor['valor2'], 2, ', ', '.').
                 '<br>R$'.number_format($valor['valor3'], 2, ', ', '.');
-                $tabela['Franquia'][$i] = 'R$'.number_format($valor['franquia'], 2, ', ', '.');
-                $tabela['Funções'][$i] = '
+                $table['Franquia'][$i] = 'R$'.number_format($valor['franquia'], 2, ', ', '.');
+                $table['Funções'][$i] = '
                 <a title="Editar" class="lajax explicar-titulo" href="'.URL_PATH.'usuario_veiculo/Admin/veiculos_carregajanelaEdit/'.$valor['id'].'/" data-acao="">
                 <img alt="Editar" src="'.WEB_URL.'img/turboadmin/icon_edit.png">
                 </a>
@@ -107,9 +107,9 @@ class usuario_veiculo_AdminControle extends usuario_veiculo_Controle
                 </a>';
                 ++$i;
             }
-            $this->_Visual->Show_Tabela_DataTable($tabela);
+            $this->_Visual->Show_Tabela_DataTable($table);
             $this->_Visual->Bloco_Maior_CriaJanela('Veiculos ('.$i.')');
-            unset($tabela);
+            unset($table);
         } else {     
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Não há nenhum veiculo cadastrado.</font></b></center>');
             $this->_Visual->Bloco_Maior_CriaJanela('Veiculos (0)');

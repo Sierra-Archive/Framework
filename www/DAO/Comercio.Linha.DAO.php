@@ -99,4 +99,4 @@ final Class Comercio_Linha_DAO extends Framework\App\Dao
         );
     }
 }
-?>
+

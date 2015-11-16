@@ -409,4 +409,3 @@ final Class Comercio_Fornecedor_Material_DAO extends Framework\App\Dao
         );
     }
 }
-?>

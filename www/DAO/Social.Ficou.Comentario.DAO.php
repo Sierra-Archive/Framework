@@ -100,4 +100,4 @@ final Class Social_Ficou_Comentario_DAO extends Framework\App\Dao
         );
     }
 }
-?>
+

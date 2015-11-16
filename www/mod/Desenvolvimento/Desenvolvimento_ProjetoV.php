@@ -17,4 +17,3 @@ class Desenvolvimento_ProjetoVisual extends Desenvolvimento_Visual
       parent::__construct();
     }
 }
-?>

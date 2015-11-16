@@ -128,4 +128,4 @@ final Class Social_Ficou_DAO extends Framework\App\Dao
         );
     }
 }
-?>
+

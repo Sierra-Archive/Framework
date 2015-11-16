@@ -279,4 +279,4 @@ final Class Financeiro_Pagamento_Forma_Condicao_DAO extends Framework\App\Dao
         );
     }
 }
-?>
+

@@ -40,4 +40,3 @@ class Financeiro_ListarModelo extends Financeiro_Modelo
         return 1;
     }
 }
-?>

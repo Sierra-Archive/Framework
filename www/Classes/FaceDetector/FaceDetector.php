@@ -472,4 +472,4 @@ class Stage
 	}
 
 }
-?>
+

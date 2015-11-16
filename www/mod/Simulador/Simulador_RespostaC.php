@@ -49,20 +49,20 @@ class Simulador_RespostaControle extends Simulador_Controle
         $Registro   = &\Framework\App\Registro::getInstacia();
         $Modelo     = &$Registro->_Modelo;
         $Visual     = &$Registro->_Visual;
-        $tabela = Array();
+        $table = Array();
         $i = 0;
         if (is_object($respostas)) $respostas = Array(0=>$respostas);
         reset($respostas);
         foreach ($respostas as &$valor) {
             if ($simulador === FALSE || $simulador==0) {
-                $tabela['Simulador'][$i]   = $valor->simulador2;
-                $tabela['Pergunta'][$i]   = $valor->pergunta2;
+                $table['Simulador'][$i]   = $valor->simulador2;
+                $table['Pergunta'][$i]   = $valor->pergunta2;
                 $view_url   = 'Simulador/Video/Videos/'.$valor->simulador.'/';
                 $edit_url   = 'Simulador/Resposta/Respostas_Edit/'.$valor->id.'/';
                 $del_url    = 'Simulador/Resposta/Respostas_Del/'.$valor->id.'/';
             } else {
                 if ($pergunta === FALSE || $pergunta==0) {
-                    $tabela['Pergunta'][$i]   = $valor->pergunta2;
+                    $table['Pergunta'][$i]   = $valor->pergunta2;
                     //$view_url   = 'Simulador/Video/Videos/'.$valor->simulador.'/'.$valor->pergunta.'/';
                     $edit_url   = 'Simulador/Resposta/Respostas_Edit/'.$valor->id.'/'.$valor->simulador.'/';
                     $del_url    = 'Simulador/Resposta/Respostas_Del/'.$valor->id.'/'.$valor->simulador.'/';
@@ -72,8 +72,8 @@ class Simulador_RespostaControle extends Simulador_Controle
                     $del_url    = 'Simulador/Resposta/Respostas_Del/'.$valor->id.'/'.$valor->simulador.'/'.$valor->pergunta.'/'.$valor->i.'/';
                 }
             }
-            $tabela['Resposta'][$i]           = $valor->nome;
-            $tabela['Data Registrada no Sistema'][$i]  = $valor->log_date_add;
+            $table['Resposta'][$i]           = $valor->nome;
+            $table['Data Registrada no Sistema'][$i]  = $valor->log_date_add;
             $status                                 = $valor->status;
             if ($status!=1) {
                 $status = 0;
@@ -82,13 +82,13 @@ class Simulador_RespostaControle extends Simulador_Controle
                 $status = 1;
                 $texto = __('Ativado');
             }
-            $tabela['Funções'][$i]          = //$Visual->Tema_Elementos_Btn('Visualizar' ,Array('Visualizar Videos da Resposta'    , $view_url    , '')).
+            $table['Funções'][$i]          = //$Visual->Tema_Elementos_Btn('Visualizar' ,Array('Visualizar Videos da Resposta'    , $view_url    , '')).
                                               '<span id="status'.$valor->id.'">'.$Visual->Tema_Elementos_Btn('Status'.$status     ,Array($texto        ,'Simulador/Resposta/Status/'.$valor->id.'/'    , '')).'</span>'.
                                               $Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Resposta'        , $edit_url    , '')).
                                               $Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Resposta'       , $del_url     ,'Deseja realmente deletar essa Resposta ?'));
             ++$i;
         }
-        return Array($tabela, $i);
+        return Array($table, $i);
     }
     /**
      * 
@@ -176,13 +176,13 @@ class Simulador_RespostaControle extends Simulador_Controle
         )));
         $respostas = $this->_Modelo->db->Sql_Select('Simulador_Pergunta_Resposta', $where);
         if ($respostas !== FALSE && !empty($respostas)) {
-            list($tabela, $i) = self::Respostas_Tabela($respostas, $simulador, $pergunta);
+            list($table, $i) = self::Respostas_Tabela($respostas, $simulador, $pergunta);
             $titulo = $titulo.' ('.$i.')';
             if ($export !== FALSE) {
-                self::Export_Todos($export, $tabela, $titulo);
+                self::Export_Todos($export, $table, $titulo);
             } else {
                 $this->_Visual->Show_Tabela_DataTable(
-                    $tabela,     // Array Com a Tabela
+                    $table,     // Array Com a Tabela
                     '',          // style extra
                     true,        // true -> Add ao Bloco, false => Retorna html
                     FALSE,        // Apagar primeira coluna ?
@@ -193,7 +193,7 @@ class Simulador_RespostaControle extends Simulador_Controle
                     )
                 );
             }
-            unset($tabela);
+            unset($table);
         } else {
             $titulo = $titulo.' ('.$i.')';
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">'.$erro.'</font></b></center>');
@@ -294,16 +294,16 @@ class Simulador_RespostaControle extends Simulador_Controle
             $alterar    = Array('simulador'=>$simulador);
             if ($pergunta !== FALSE) {
                 $pergunta = (int) $pergunta;
-                $funcao     = '$this->Respostas('.$simulador.', '.$pergunta.');';
+                $function     = '$this->Respostas('.$simulador.', '.$pergunta.');';
                 $alterar['pergunta'] = $pergunta;
             } else {
-                $funcao     = '$this->Respostas('.$simulador.');';
+                $function     = '$this->Respostas('.$simulador.');';
             }
         } else {
             $alterar    = Array();
-            $funcao     = '$this->Respostas(0,0);';
+            $function     = '$this->Respostas(0,0);';
         }
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);
     }
     /**
      * 
@@ -379,17 +379,17 @@ class Simulador_RespostaControle extends Simulador_Controle
         // Recupera Respostas
         if ($simulador !== FALSE) {
             if ($pergunta !== FALSE) {
-                $funcao     = '$this->Respostas('.$simulador.', '.$pergunta.');';
+                $function     = '$this->Respostas('.$simulador.', '.$pergunta.');';
             } else {
-                $funcao     = '$this->Respostas('.$simulador.');';
+                $function     = '$this->Respostas('.$simulador.');';
             }
         } else {
-            $funcao     = '$this->Respostas();';
+            $function     = '$this->Respostas();';
         }
         $sucesso1   = __('Resposta Alterada com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);   
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);   
     }
     /**
      * 

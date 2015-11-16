@@ -20,26 +20,26 @@ class usuario_mensagem_SetorModelo extends usuario_mensagem_Modelo
         
         // Table's primary key
         $primaryKey = 'id';
-        $tabela = 'Usuario_Mensagem_Setor';
+        $table = 'Usuario_Mensagem_Setor';
         
-        $perm_editar = $this->_Registro->_Acl->Get_Permissao_Url('usuario_mensagem/Setor/Setores_Edit');
-        $perm_del = $this->_Registro->_Acl->Get_Permissao_Url('usuario_mensagem/Setor/Setores_Del');
+        $permissionEdit = $this->_Registro->_Acl->Get_Permissao_Url('usuario_mensagem/Setor/Setores_Edit');
+        $permissionDelete = $this->_Registro->_Acl->Get_Permissao_Url('usuario_mensagem/Setor/Setores_Del');
         
-        if ($perm_editar && $perm_del) {
-            $funcao = function( $d, $row ) {
+        if ($permissionEdit && $permissionDelete) {
+            $function = function( $d, $row ) {
                 return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Setor'        ,'usuario_mensagem/Setor/Setores_Edit/'.$d.'/'    , ''),TRUE).
                        Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Setor'       ,'usuario_mensagem/Setor/Setores_Del/'.$d.'/'     ,'Deseja realmente deletar essa Setor ?'),TRUE);
             };
-        } else if ($perm_editar) {
-            $funcao = function( $d, $row ) {
+        } else if ($permissionEdit) {
+            $function = function( $d, $row ) {
                 return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Setor'        ,'usuario_mensagem/Setor/Setores_Edit/'.$d.'/'    , ''),TRUE);
             };
-        } else if ($perm_del) {
-            $funcao = function( $d, $row ) {
+        } else if ($permissionDelete) {
+            $function = function( $d, $row ) {
                 return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Setor'       ,'usuario_mensagem/Setor/Setores_Del/'.$d.'/'     ,'Deseja realmente deletar essa Setor ?'),TRUE);
             };
         } else {
-            $funcao = function( $d, $row ) {
+            $function = function( $d, $row ) {
                 return '';
             };
         }
@@ -53,11 +53,11 @@ class usuario_mensagem_SetorModelo extends usuario_mensagem_Modelo
             array( 'db' => 'nome', 'dt' => 1 ),
             array( 'db' => 'email', 'dt' => 2 ),
             array( 'db' => 'id', 'dt' => 3,
-                'formatter' => $funcao)
+                'formatter' => $function)
         );
 
         echo json_encode(
-            \Framework\Classes\Datatable::complex( $_GET, Framework\App\Registro::getInstacia()->_Conexao, $tabela, $primaryKey, $columns, null )
+            \Framework\Classes\Datatable::complex( $_GET, Framework\App\Registro::getInstacia()->_Conexao, $table, $primaryKey, $columns, null )
         );
     }
 }

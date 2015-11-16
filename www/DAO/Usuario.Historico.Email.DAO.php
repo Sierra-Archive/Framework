@@ -273,4 +273,4 @@ final Class Usuario_Historico_Email_DAO extends Framework\App\Dao
         );
     }
 }
-?>
+

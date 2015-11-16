@@ -302,4 +302,4 @@ final Class Banner_DAO extends Framework\App\Dao
         );
     }
 }
-?>
+

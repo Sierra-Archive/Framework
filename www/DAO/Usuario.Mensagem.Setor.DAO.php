@@ -126,4 +126,4 @@ final Class Usuario_Mensagem_Setor_DAO extends Framework\App\Dao
         );
     }
 }
-?>
+

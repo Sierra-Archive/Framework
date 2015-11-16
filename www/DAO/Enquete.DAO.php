@@ -127,4 +127,4 @@ final Class Enquete_DAO extends Framework\App\Dao
         );
     }
 }
-?>
+

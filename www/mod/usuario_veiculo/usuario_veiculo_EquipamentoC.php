@@ -99,24 +99,24 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
             if (is_object($equipamentos)) $equipamentos = Array(0=>$equipamentos);
             reset($equipamentos);
             foreach ($equipamentos as $indice=>&$valor) {
-                //$tabela['#Id'][$i]       = '#'.$valor->id;
-                $tabela['Tipo de Equipamento'][$i]      =   $valor->categoria2;
-                $tabela[CFG_TXT_EQUIPAMENTOS_NOME][$i]  =   $valor->nome;
-                $tabela['Validade'][$i]                 =   $valor->validade;
-                $tabela['Observações'][$i]              =   $valor->obs;
+                //$table['#Id'][$i]       = '#'.$valor->id;
+                $table['Tipo de Equipamento'][$i]      =   $valor->categoria2;
+                $table[CFG_TXT_EQUIPAMENTOS_NOME][$i]  =   $valor->nome;
+                $table['Validade'][$i]                 =   $valor->validade;
+                $table['Observações'][$i]              =   $valor->obs;
                 if (\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_veiculo_Status')) {
-                    $tabela['Status'][$i]     =  '<span class="statusEquipamentos'.$valor->id.'">'.self::labelEquipamentos($valor).'</span>';
+                    $table['Status'][$i]     =  '<span class="statusEquipamentos'.$valor->id.'">'.self::labelEquipamentos($valor).'</span>';
                 }
-                $tabela['Funções'][$i]                  =   $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Equipamento'        ,'usuario_veiculo/Equipamento/Equipamentos_Edit/'.$valor->id.'/'    , '')).
+                $table['Funções'][$i]                  =   $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Equipamento'        ,'usuario_veiculo/Equipamento/Equipamentos_Edit/'.$valor->id.'/'    , '')).
                                                         $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Equipamento'       ,'usuario_veiculo/Equipamento/Equipamentos_Del/'.$valor->id.'/'     ,'Deseja realmente deletar esse Equipamento ?'));
                 ++$i;
             }
             if ($export !== FALSE) {
-                self::Export_Todos($export, $tabela, 'Equipamentos');
+                self::Export_Todos($export, $table, 'Equipamentos');
             } else {
-                $this->_Visual->Show_Tabela_DataTable($tabela);
+                $this->_Visual->Show_Tabela_DataTable($table);
             }
-            unset($tabela);
+            unset($table);
         } else { 
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum '.$titulo2.'</font></b></center>');
         }
@@ -246,11 +246,11 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
         $titulo_singular = \Framework\Classes\Texto::Transformar_Plural_Singular($titulo_plural);  
         $titulo     = $titulo_singular.' Adicionado com Sucesso';
         $dao        = 'Usuario_Veiculo_Equipamento';
-        $funcao     = '$this->Equipamentos();';
+        $function     = '$this->Equipamentos();';
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = $titulo_singular.' cadastrado com sucesso.';
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);
     }
     /**
      * 
@@ -285,11 +285,11 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
         $titulo_singular = \Framework\Classes\Texto::Transformar_Plural_Singular($titulo_plural); 
         $titulo     = $titulo_singular.' Editado com Sucesso';
         $dao        = Array('Usuario_Veiculo_Equipamento', $id);
-        $funcao     = '$this->Equipamentos();';
+        $function     = '$this->Equipamentos();';
         $sucesso1   = __('Equipamento Alterado com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);      
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);      
     }
     /**
      * 
@@ -354,18 +354,18 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
             if (is_object($marcas)) $marcas = Array(0=>$marcas);
             reset($marcas);
             foreach ($marcas as $indice=>&$valor) {
-                //$tabela['#Id'][$i]       = '#'.$valor->id;
-                $tabela['Nome'][$i]      = $valor->nome;
-                $tabela['Funções'][$i]   = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Marca'        ,'usuario_veiculo/Equipamento/Marcas_Edit/'.$valor->id.'/'    , '')).
+                //$table['#Id'][$i]       = '#'.$valor->id;
+                $table['Nome'][$i]      = $valor->nome;
+                $table['Funções'][$i]   = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Marca'        ,'usuario_veiculo/Equipamento/Marcas_Edit/'.$valor->id.'/'    , '')).
                                            $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Marca'       ,'usuario_veiculo/Equipamento/Marcas_Del/'.$valor->id.'/'     ,'Deseja realmente deletar essa Marca ?'));
                 ++$i;
             }
             if ($export !== FALSE) {
-                self::Export_Todos($export, $tabela, 'Equipamentos - Marcas');
+                self::Export_Todos($export, $table, 'Equipamentos - Marcas');
             } else {
-                $this->_Visual->Show_Tabela_DataTable($tabela);
+                $this->_Visual->Show_Tabela_DataTable($table);
             }
-            unset($tabela);
+            unset($table);
         } else {        
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhuma Marca</font></b></center>');
         }
@@ -401,11 +401,11 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
     public function Marcas_Add2() {
         $titulo     = __('Marca Adicionada com Sucesso');
         $dao        = 'Usuario_Veiculo_Equipamento_Marca';
-        $funcao     = '$this->Marcas();';
+        $function     = '$this->Marcas();';
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = __('Marca cadastrada com sucesso.');
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);
     }
     /**
      * 
@@ -435,11 +435,11 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
     public function Marcas_Edit2($id) {
         $titulo     = __('Marca Editada com Sucesso');
         $dao        = Array('Usuario_Veiculo_Equipamento_Marca', $id);
-        $funcao     = '$this->Marcas();';
+        $function     = '$this->Marcas();';
         $sucesso1   = __('Marca Alterada com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);      
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);      
     }
     /**
      * 
@@ -502,19 +502,19 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
             if (is_object($modelos)) $modelos = Array(0=>$modelos);
             reset($modelos);
             foreach ($modelos as $indice=>&$valor) {
-                //$tabela['#Id'][$i]     = '#'.$valor->id;
-                $tabela['Marca'][$i]     = $valor->marca2;
-                $tabela['Nome'][$i]      = $valor->nome;
-                $tabela['Funções'][$i]   = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Modelo'        ,'usuario_veiculo/Equipamento/Modelos_Edit/'.$valor->id.'/'    , '')).
+                //$table['#Id'][$i]     = '#'.$valor->id;
+                $table['Marca'][$i]     = $valor->marca2;
+                $table['Nome'][$i]      = $valor->nome;
+                $table['Funções'][$i]   = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Modelo'        ,'usuario_veiculo/Equipamento/Modelos_Edit/'.$valor->id.'/'    , '')).
                                            $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Modelo'       ,'usuario_veiculo/Equipamento/Modelos_Del/'.$valor->id.'/'     ,'Deseja realmente deletar essa Modelo ?'));
                 ++$i;
             }
             if ($export !== FALSE) {
-                self::Export_Todos($export, $tabela, 'Equipamentos - Modelos');
+                self::Export_Todos($export, $table, 'Equipamentos - Modelos');
             } else {
-                $this->_Visual->Show_Tabela_DataTable($tabela);
+                $this->_Visual->Show_Tabela_DataTable($table);
             }
-            unset($tabela);
+            unset($table);
         } else {       
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Modelo</font></b></center>');
         }
@@ -550,11 +550,11 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
     public function Modelos_Add2() {
         $titulo     = __('Modelo Adicionado com Sucesso');
         $dao        = 'Usuario_Veiculo_Equipamento_Modelo';
-        $funcao     = '$this->Modelos();';
+        $function     = '$this->Modelos();';
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = __('Modelo cadastrada com sucesso.');
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);
     }
     /**
      * 
@@ -584,11 +584,11 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
     public function Modelos_Edit2($id) {
         $titulo     = __('Modelo Editada com Sucesso');
         $dao        = Array('Usuario_Veiculo_Equipamento_Modelo', $id);
-        $funcao     = '$this->Modelos();';
+        $function     = '$this->Modelos();';
         $sucesso1   = __('Modelo Alterada com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);      
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);      
     }
     /**
      * 

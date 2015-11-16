@@ -111,8 +111,8 @@ class Enquete_Principal implements \Framework\PrincipalInterface
         )));
         if (is_object($enquetes)) $enquetes = Array(0=>$enquetes);
         if ($enquetes !== FALSE && !empty($enquetes)) {
-            list($tabela, $i) = Enquete_EnqueteControle::Enquetes_Tabela($enquetes);
-            $Visual->Show_Tabela_DataTable($tabela);
+            list($table, $i) = Enquete_EnqueteControle::Enquetes_Tabela($enquetes);
+            $Visual->Show_Tabela_DataTable($table);
         } else {     
             $Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhuma Enquete na Busca '.$busca.'</font></b></center>');
         }
@@ -143,8 +143,8 @@ class Enquete_Principal implements \Framework\PrincipalInterface
         )));
         if (is_object($enquetes)) $enquetes = Array(0=>$enquetes);
         if ($enquetes !== FALSE && !empty($enquetes)) {
-            list($tabela, $i) = Enquete_RespostaControle::Respostas_Tabela($enquetes);
-            $Visual->Show_Tabela_DataTable($tabela);
+            list($table, $i) = Enquete_RespostaControle::Respostas_Tabela($enquetes);
+            $Visual->Show_Tabela_DataTable($table);
         } else {  
             $Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhuma Resposta de Enquete na Busca '.$busca.'</font></b></center>');
         }
@@ -153,4 +153,3 @@ class Enquete_Principal implements \Framework\PrincipalInterface
         return $i;
     }
 }
-?>

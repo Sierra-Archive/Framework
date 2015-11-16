@@ -28,20 +28,20 @@ class Transporte_TransportadoraControle extends Transporte_Controle
     static function Transportadoras_Tabela(&$transportadora) {
         $Registro   = &\Framework\App\Registro::getInstacia();
         $Visual     = &$Registro->_Visual;
-        $tabela = Array();
+        $table = Array();
         $i = 0;
         if (is_object($transportadora)) $transportadora = Array(0=>$transportadora);reset($transportadora);
         $perm_view = $Registro->_Acl->Get_Permissao_Url('Transporte/Transportadora/Visualizar');
         foreach ($transportadora as &$valor) {                
-            $tabela['Id'][$i]           = '#'.$valor->id;
-            $tabela['Razão Social'][$i] = $valor->usuario2;
-            $tabela['Categoria'][$i]    = $valor->categoria2;
-            $tabela['Observação'][$i]   = $valor->obs;
-            $tabela['Visualizar'][$i]   = $Visual->Tema_Elementos_Btn('Visualizar'     ,Array('Visualizar'        ,'Transporte/Transportadora/Visualizar/'.$valor->id    , ''), $perm_view);
+            $table['Id'][$i]           = '#'.$valor->id;
+            $table['Razão Social'][$i] = $valor->usuario2;
+            $table['Categoria'][$i]    = $valor->categoria2;
+            $table['Observação'][$i]   = $valor->obs;
+            $table['Visualizar'][$i]   = $Visual->Tema_Elementos_Btn('Visualizar'     ,Array('Visualizar'        ,'Transporte/Transportadora/Visualizar/'.$valor->id    , ''), $perm_view);
             
             ++$i;
         }
-        return Array($tabela, $i);
+        return Array($table, $i);
     }
     public function Visualizar($id, $export = FALSE) {
         
@@ -63,13 +63,13 @@ class Transporte_TransportadoraControle extends Transporte_Controle
         $transportadora = $this->_Modelo->db->Sql_Select('Transporte_Transportadora');
         if (is_object($transportadora)) $transportadora = Array(0=>$transportadora);
         if ($transportadora !== FALSE && !empty($transportadora)) {
-            list($tabela, $i) = self::Transportadoras_Tabela($transportadora);
+            list($table, $i) = self::Transportadoras_Tabela($transportadora);
             // SE exportar ou mostra em tabela
             if ($export !== FALSE) {
-                self::Export_Todos($export, $tabela, 'Transportadoras');
+                self::Export_Todos($export, $table, 'Transportadoras');
             } else {
                 $this->_Visual->Show_Tabela_DataTable(
-                    $tabela,     // Array Com a Tabela
+                    $table,     // Array Com a Tabela
                     '',          // style extra
                     true,        // true -> Add ao Bloco, false => Retorna html
                     FALSE,        // Apagar primeira coluna ?
@@ -80,7 +80,7 @@ class Transporte_TransportadoraControle extends Transporte_Controle
                     )
                 );
             }
-            unset($tabela);
+            unset($table);
         } else {
             if ($export !== FALSE) {
                 $mensagem = __('Nenhum Transportadora Cadastrada para exportar');
@@ -178,13 +178,13 @@ class Transporte_TransportadoraControle extends Transporte_Controle
         }
         $titulo     = __('Dados Atualizados com Sucesso');
         $dao        = 'Transporte_Transportadora';
-        $funcao     = 'Transporte_TransportadoraControle::Painel_Transportadora(\''.$camada.'\',\'false\');';
+        $function     = 'Transporte_TransportadoraControle::Painel_Transportadora(\''.$camada.'\',\'false\');';
         $sucesso1   = __('Atualização bem sucedida');
         $sucesso2   = __('Dados Atualizados com sucesso.');
         $alterar    = Array(
             'usuario'        =>  $this->_Acl->Usuario_GetID(),
         );
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);
     }
 }
 ?>

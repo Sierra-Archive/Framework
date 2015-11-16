@@ -17,4 +17,3 @@ class Curso_CursoModelo extends Curso_Modelo
         parent::__construct();
     }
 }
-?>

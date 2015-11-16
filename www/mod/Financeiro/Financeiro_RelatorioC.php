@@ -221,7 +221,7 @@ class Financeiro_RelatorioControle extends Financeiro_Controle
         ));
         
         // Chama
-        list($tabela, $i, $total) = $this->Movimentacao_Interna($where,'Mini', true, 'Pagar/'.$datainicial.'/'.$datafinal);
+        list($table, $i, $total) = $this->Movimentacao_Interna($where,'Mini', true, 'Pagar/'.$datainicial.'/'.$datafinal);
         
         // ADiciona Total
         $html_total = '<br><table class="table">
@@ -247,11 +247,11 @@ class Financeiro_RelatorioControle extends Financeiro_Controle
             return '<center><b><font color=\"#FF0000\" size="5">Nenhuma Conta à pagar</font></b></center>';
         } else {
             if ($export !== FALSE) {
-                self::Export_Todos($export, $tabela, 'Contas à pagar');
+                self::Export_Todos($export, $table, 'Contas à pagar');
             } else {
-                return $html.$this->_Visual->Show_Tabela_DataTable($tabela, '', FALSE).$html_total;
+                return $html.$this->_Visual->Show_Tabela_DataTable($table, '', FALSE).$html_total;
             }
-            unset($tabela);
+            unset($table);
         }
         return FALSE;
     }
@@ -286,7 +286,7 @@ class Financeiro_RelatorioControle extends Financeiro_Controle
         ));
         
         // Chama
-        list($tabela, $i, $total) = $this->Movimentacao_Interna($where,'Mini', TRUE, 'Receber/'.$datainicial.'/'.$datafinal);
+        list($table, $i, $total) = $this->Movimentacao_Interna($where,'Mini', TRUE, 'Receber/'.$datainicial.'/'.$datafinal);
         
         
         // ADiciona Total
@@ -313,11 +313,11 @@ class Financeiro_RelatorioControle extends Financeiro_Controle
             return '<center><b><font color="#FF0000" size="5">Nenhuma Conta à Receber</font></b></center>';
         } else {
             if ($export !== FALSE) {
-                self::Export_Todos($export, $tabela, 'Contas à Receber');
+                self::Export_Todos($export, $table, 'Contas à Receber');
             } else {
-                return $html.$this->_Visual->Show_Tabela_DataTable($tabela, '', FALSE).$html_total;
+                return $html.$this->_Visual->Show_Tabela_DataTable($table, '', FALSE).$html_total;
             }
-            unset($tabela);
+            unset($table);
         }
         return FALSE;
     }
@@ -349,7 +349,7 @@ class Financeiro_RelatorioControle extends Financeiro_Controle
             )
         ));
         // Chama
-        list($tabela, $i, $total) = $this->Movimentacao_Interna_Pago($where,'Mini', TRUE, 'Pago/'.$datainicial.'/'.$datafinal);  
+        list($table, $i, $total) = $this->Movimentacao_Interna_Pago($where,'Mini', TRUE, 'Pago/'.$datainicial.'/'.$datafinal);  
         
         // ADiciona Total
         $html_total = '<br><table class="table">
@@ -375,11 +375,11 @@ class Financeiro_RelatorioControle extends Financeiro_Controle
             return '<center><b><font color="#FF0000" size="5">Nenhuma Conta Paga</font></b></center>';
         } else {
             if ($export !== FALSE) {
-                self::Export_Todos($export, $tabela, 'Contas Pagas');
+                self::Export_Todos($export, $table, 'Contas Pagas');
             } else {
-                return $html.$this->_Visual->Show_Tabela_DataTable($tabela, '', FALSE).$html_total;
+                return $html.$this->_Visual->Show_Tabela_DataTable($table, '', FALSE).$html_total;
             }
-            unset($tabela);
+            unset($table);
         }
         return FALSE;
     }
@@ -414,7 +414,7 @@ class Financeiro_RelatorioControle extends Financeiro_Controle
         ));
         
         // Chama
-        list($tabela, $i, $total) = $this->Movimentacao_Interna_Pago($where,'Mini', TRUE, 'Recebido/'.$datainicial.'/'.$datafinal);
+        list($table, $i, $total) = $this->Movimentacao_Interna_Pago($where,'Mini', TRUE, 'Recebido/'.$datainicial.'/'.$datafinal);
         
         // ADiciona Total
         $html_total = '<br><table class="table">
@@ -440,11 +440,11 @@ class Financeiro_RelatorioControle extends Financeiro_Controle
             return '<center><b><font color="#FF0000" size="5">Nenhuma Conta Recebida</font></b></center>';
         } else {
             if ($export !== FALSE) {
-                self::Export_Todos($export, $tabela, 'Contas Recebidas');
+                self::Export_Todos($export, $table, 'Contas Recebidas');
             } else {
-                return $html.$this->_Visual->Show_Tabela_DataTable($tabela, '', FALSE).$html_total;
+                return $html.$this->_Visual->Show_Tabela_DataTable($table, '', FALSE).$html_total;
             }
-            unset($tabela);
+            unset($table);
         }
         return FALSE;
     }
@@ -657,11 +657,11 @@ class Financeiro_RelatorioControle extends Financeiro_Controle
             return '<center><b><font color=\"#FF0000\" size="5">Nenhuma Conta à pagar</font></b></center>';
         } else {
             if ($export !== FALSE) {
-                self::Export_Todos($export, $tabela, 'Contas à pagar');
+                self::Export_Todos($export, $table, 'Contas à pagar');
             } else {
                 return $html.$html_total;
             }
-            unset($tabela);
+            unset($table);
         }
         return FALSE;
     }
@@ -723,11 +723,11 @@ class Financeiro_RelatorioControle extends Financeiro_Controle
             return '<center><b><font color="#FF0000" size="5">Nenhuma Conta à Receber</font></b></center>';
         } else {
             if ($export !== FALSE) {
-                self::Export_Todos($export, $tabela, 'Contas à Receber');
+                self::Export_Todos($export, $table, 'Contas à Receber');
             } else {
                 return $html.$html_total;
             }
-            unset($tabela);
+            unset($table);
         }
         return FALSE;
     }
@@ -785,11 +785,11 @@ class Financeiro_RelatorioControle extends Financeiro_Controle
             return '<center><b><font color="#FF0000" size="5">Nenhuma Conta Paga</font></b></center>';
         } else {
             if ($export !== FALSE) {
-                self::Export_Todos($export, $tabela, 'Contas Pagas');
+                self::Export_Todos($export, $table, 'Contas Pagas');
             } else {
                 return $html.$html_total;
             }
-            unset($tabela);
+            unset($table);
         }
         return FALSE;
     }
@@ -850,13 +850,13 @@ class Financeiro_RelatorioControle extends Financeiro_Controle
             return '<center><b><font color="#FF0000" size="5">Nenhuma Conta Recebida</font></b></center>';
         } else {
             if ($export !== FALSE) {
-                self::Export_Todos($export, $tabela, 'Contas Recebidas');
+                self::Export_Todos($export, $table, 'Contas Recebidas');
             } else {
                 return $html.$html_total;
             }
-            unset($tabela);
+            unset($table);
         }
         return FALSE;
     }
 }
-?>
+

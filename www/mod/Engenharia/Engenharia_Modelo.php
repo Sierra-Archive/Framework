@@ -37,4 +37,3 @@ class Engenharia_Modelo extends \Framework\App\Modelo
         return Array('<b>Gasto com Empreendimento / Unidade:</b><br> '.$retirada->empreendimento2.' / '.$retirada->unidade2,cliente);
     }
 }
-?>

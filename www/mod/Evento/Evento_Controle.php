@@ -17,4 +17,3 @@ class Evento_Controle extends \Framework\App\Controle
         parent::__construct();
     }
 }
-?>

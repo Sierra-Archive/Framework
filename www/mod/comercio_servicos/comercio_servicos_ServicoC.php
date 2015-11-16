@@ -61,20 +61,20 @@ class comercio_servicos_ServicoControle extends comercio_servicos_Controle
             $titulo_com_sexo_mudo   = 'a '.Framework\Classes\Texto::Transformar_Plural_Singular($titulo);
         }
         
-        $tabela_colunas = Array();
+        $table_colunas = Array();
 
         if (\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_servicos_ServicoTipo')) {
-            $tabela_colunas[] = 'Tipo d'.$titulo_com_sexo;
+            $table_colunas[] = 'Tipo d'.$titulo_com_sexo;
         }
         if (\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_servicos_nome')) {
-            $tabela_colunas[] = __('Nome');
+            $table_colunas[] = __('Nome');
         }
         
-        $tabela_colunas[] = __('Descriçao');
-        $tabela_colunas[] = __('Preço');
-        $tabela_colunas[] = __('Funções');
+        $table_colunas[] = __('Descriçao');
+        $table_colunas[] = __('Preço');
+        $table_colunas[] = __('Funções');
 
-        $this->_Visual->Show_Tabela_DataTable_Massiva($tabela_colunas,'comercio_servicos/Servico/Servico');
+        $this->_Visual->Show_Tabela_DataTable_Massiva($table_colunas,'comercio_servicos/Servico/Servico');
         $titulo = 'Listagem de '.$titulo;
         $this->_Visual->Bloco_Unico_CriaJanela($titulo.' (<span id="DataTable_Contador">0</span>)', '',10,Array("link"=>"comercio_servicos/Servico/Servicos_Add",'icon'=>'add', 'nome'=>'Adicionar nov'.$titulo_com_sexo));
         
@@ -111,11 +111,11 @@ class comercio_servicos_ServicoControle extends comercio_servicos_Controle
     public function Servicos_Add2() {
         $titulo     = __('Adicionado com Sucesso');
         $dao        = 'Comercio_Servicos_Servico';
-        $funcao     = '$this->Servico();';
+        $function     = '$this->Servico();';
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = __('Cadastrado com sucesso.');
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);
     }
     /**
      * 
@@ -149,11 +149,11 @@ class comercio_servicos_ServicoControle extends comercio_servicos_Controle
     public function Servicos_Edit2($id) {
         $titulo     = __('Editado com Sucesso');
         $dao        = Array('Comercio_Servicos_Servico', $id);
-        $funcao     = '$this->Servico();';
+        $function     = '$this->Servico();';
         $sucesso1   = __('Alterado com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);   
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);   
     }
     /**
      * 

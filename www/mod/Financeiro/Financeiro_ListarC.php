@@ -61,18 +61,18 @@ class Financeiro_ListarControle extends Financeiro_Controle
             reset($movimentacoes);
             $i = 0;
             foreach ($movimentacoes as $indice=>&$valor) {
-                $tabela['Referência'][$i] = $valor['nome'];
-                $tabela['Data'][$i] = date_replace($valor['log_date_add'], "d/m/y | H:m");
+                $table['Referência'][$i] = $valor['nome'];
+                $table['Data'][$i] = date_replace($valor['log_date_add'], "d/m/y | H:m");
                 if ($valor['positivo']==1) {
-                    $tabela['Valor'][$i] = '<font color="#0000FF">+ R$ '.number_format($valor['valor'], 2, ', ', '.').'</font>';
+                    $table['Valor'][$i] = '<font color="#0000FF">+ R$ '.number_format($valor['valor'], 2, ', ', '.').'</font>';
                 } else {
-                    $tabela['Valor'][$i] = '<font color="#FF0000">- RR$$ '.number_format($valor['valor'], 2, ', ', '.').'</font>';
+                    $table['Valor'][$i] = '<font color="#FF0000">- RR$$ '.number_format($valor['valor'], 2, ', ', '.').'</font>';
                 }
                 ++$i;
             }
-            $this->_Visual->Show_Tabela_DataTable($tabela);
+            $this->_Visual->Show_Tabela_DataTable($table);
             $this->_Visual->Bloco_Maior_CriaJanela('Todas as Atividades Financeiras ('.$i.')');
-            unset($tabela);
+            unset($table);
         } else {          
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Infelizmente você nunca movimentou dinheiro com a gente.</font></b></center>');
             $this->_Visual->Bloco_Maior_CriaJanela('Todas as Atividades Financeiras (0)');
@@ -85,13 +85,13 @@ class Financeiro_ListarControle extends Financeiro_Controle
             reset($movimentacoes);
             $i = 0;
             foreach ($movimentacoes as $indice=>&$valor) {
-                $tabela['Referência'][$i] = $valor['nome'];
-                $tabela['Situação'][$i] = $valor['situacao'];
-                $tabela['Data Venc'][$i] = date_replace($valor['dt_vencimento'], "d/m/y");
-                $tabela['Data Pgto'][$i] = date_replace($valor['dt_pago'], "d/m/y");
-                $tabela['Valor'][$i] = $valor['valor'];
+                $table['Referência'][$i] = $valor['nome'];
+                $table['Situação'][$i] = $valor['situacao'];
+                $table['Data Venc'][$i] = date_replace($valor['dt_vencimento'], "d/m/y");
+                $table['Data Pgto'][$i] = date_replace($valor['dt_pago'], "d/m/y");
+                $table['Valor'][$i] = $valor['valor'];
                 if ($valor['situacao']!='Pago') {
-                    $tabela['Boleto'][$i] = '<a href="'.LIBS_URL.'boleto/boleto_itau.php?clientenome='.$this->_Acl->logado_usuario->nome.
+                    $table['Boleto'][$i] = '<a href="'.LIBS_URL.'boleto/boleto_itau.php?clientenome='.$this->_Acl->logado_usuario->nome.
                     '&endereco='.$this->_Acl->logado_usuario->endereco.
                     '&numero='.$this->_Acl->logado_usuario->numero.
                     '&complemento='.$this->_Acl->logado_usuario->complemento.
@@ -101,13 +101,13 @@ class Financeiro_ListarControle extends Financeiro_Controle
                     '&cep='.$this->_Acl->logado_usuario->cep.
                     '&valor='.$valor['valor'].'" target="_BLANK">Abrir Boleto</a>';
                 } else {
-                    $tabela['Boleto'][$i] = '';
+                    $table['Boleto'][$i] = '';
                 }
                 ++$i;
             }
-            $this->_Visual->Show_Tabela_DataTable($tabela);
+            $this->_Visual->Show_Tabela_DataTable($table);
             $this->_Visual->Bloco_Maior_CriaJanela('Pagamentos ('.$i.')');
-            unset($tabela);
+            unset($table);
         } else {  
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Infelizmente você nunca fez um pagamento com a gente.</font></b></center>');
             $this->_Visual->Bloco_Maior_CriaJanela('Pagamentos (0)');
@@ -280,4 +280,4 @@ class Financeiro_ListarControle extends Financeiro_Controle
         else         $this->_Visual->Json_Info_Update('Titulo', __('Erro ao Realizar Transferência'));
     }
 }
-?>
+

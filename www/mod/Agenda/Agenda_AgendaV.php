@@ -17,4 +17,3 @@ class Agenda_AgendaVisual extends Agenda_Visual
       parent::__construct();
     }
 }
-?>

@@ -244,4 +244,4 @@ final Class Comercio_Certificado_AuditoriaPeriodica_DAO extends Framework\App\Da
         );
     }
 }
-?>
+

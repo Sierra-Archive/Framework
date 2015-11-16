@@ -17,4 +17,3 @@ class Engenharia_EmpreendimentoModelo extends Engenharia_Modelo
         parent::__construct();
     }
 }
-?>

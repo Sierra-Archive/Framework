@@ -63,14 +63,14 @@ class usuario_veiculo_MarcaControle extends usuario_veiculo_Controle
             if (is_object($linhas)) $linhas = Array(0=>$linhas);
             reset($linhas);
             foreach ($linhas as $indice=>&$valor) {
-                //$tabela['#Id'][$i]       = '#'.$valor->id;
-                $tabela['Nome'][$i]      = $valor->nome;
-                $tabela['Funções'][$i]   = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Marca'        ,'usuario_veiculo/Marca/Marcas_Edit/'.$valor->id.'/'    , '')).
+                //$table['#Id'][$i]       = '#'.$valor->id;
+                $table['Nome'][$i]      = $valor->nome;
+                $table['Funções'][$i]   = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Marca'        ,'usuario_veiculo/Marca/Marcas_Edit/'.$valor->id.'/'    , '')).
                                            $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Marca'       ,'usuario_veiculo/Marca/Marcas_Del/'.$valor->id.'/'     ,'Deseja realmente deletar essa Marca ?'));
                 ++$i;
             }
-            $this->_Visual->Show_Tabela_DataTable($tabela);
-            unset($tabela);
+            $this->_Visual->Show_Tabela_DataTable($table);
+            unset($table);
         } else {           
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhuma Marca</font></b></center>');
         }
@@ -106,11 +106,11 @@ class usuario_veiculo_MarcaControle extends usuario_veiculo_Controle
     public function Marcas_Add2() {
         $titulo     = __('Marca Adicionada com Sucesso');
         $dao        = 'Usuario_Veiculo_Marca';
-        $funcao     = '$this->Marcas();';
+        $function     = '$this->Marcas();';
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = __('Marca cadastrada com sucesso.');
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);
     }
     /**
      * 
@@ -140,11 +140,11 @@ class usuario_veiculo_MarcaControle extends usuario_veiculo_Controle
     public function Marcas_Edit2($id) {
         $titulo     = __('Marca Editada com Sucesso');
         $dao        = Array('Usuario_Veiculo_Marca', $id);
-        $funcao     = '$this->Marcas();';
+        $function     = '$this->Marcas();';
         $sucesso1   = __('Marca Alterada com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);      
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);      
     }
     /**
      * 

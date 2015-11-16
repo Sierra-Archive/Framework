@@ -119,7 +119,7 @@ class Datatable {
     * sql_exec() function
     * @return string SQL where clause
     */
-    static function filter ( $request, $columns, &$bindings, $class='', $sql_tabela_sigla = FALSE, $tabela_campos_valores  = FALSE, $retornar_extrangeiras_usadas = FALSE)
+    static function filter ( $request, $columns, &$bindings, $class='', $sql_tabela_sigla = FALSE, $table_campos_valores  = FALSE, $retornar_extrangeiras_usadas = FALSE)
     {
         $globalSearch = array();
         $columnSearch = array();
@@ -157,7 +157,7 @@ class Datatable {
                         $binding = self::bind( $bindings, '%'.$str_temp.'%', 's' );
                     }
                     // Se for da propria tabela, coloca sigla pra nao ter conflito
-                    if ($tabela_campos_valores !== FALSE && array_key_exists($column['db'], $tabela_campos_valores)) {
+                    if ($table_campos_valores !== FALSE && array_key_exists($column['db'], $table_campos_valores)) {
                         $globalSearch[] = "".$sql_tabela_sigla.'.'.$column['db']." LIKE ".$binding;
                     } else if ($retornar_extrangeiras_usadas !== FALSE && isset($retornar_extrangeiras_usadas[$column['db']])) {
                         $globalSearch[] = "".$retornar_extrangeiras_usadas[$column['db']]." LIKE ".$binding;
@@ -192,7 +192,7 @@ class Datatable {
                 }
                 $binding = self::bind( $bindings, '%'.$str_temp.'%', 's' );
                 // Se for da propria tabela, coloca sigla pra nao ter conflito
-                if ($tabela_campos_valores !== FALSE && array_key_exists($column['db'], $tabela_campos_valores)) {
+                if ($table_campos_valores !== FALSE && array_key_exists($column['db'], $table_campos_valores)) {
                     $columnSearch[] = "".$sql_tabela_sigla.'.'.$column['db']." LIKE ".$binding;
                 } else if ($retornar_extrangeiras_usadas !== FALSE && isset($retornar_extrangeiras_usadas[$column['db']])) {
                     $columnSearch[] = "".$retornar_extrangeiras_usadas[$column['db']]." LIKE ".$binding;
@@ -308,16 +308,16 @@ class Datatable {
         
         // Pega Colunas e Nome
         $table_class = $table_class.'_DAO';      
-        $table = \Framework\App\Conexao::$tabelas[$table_class]['nome'];
-        $colunas = \Framework\App\Conexao::$tabelas[$table_class]['colunas'];
+        $table = \Framework\App\Conexao::$tables[$table_class]['nome'];
+        $colunas = \Framework\App\Conexao::$tables[$table_class]['colunas'];
         $db->Sql_Select_Dados($table_class,implode(",", self::pluck($columns, 'db')), '',TRUE);
 
         list(
             $sql,
             $sql_tabela_sigla,
             $sql_condicao,
-            $tabela_campos_valores,
-            $tabelas_usadas, $j,
+            $table_campos_valores,
+            $tables_usadas, $j,
             $retornar_extrangeiras_usadas
         ) = $db->Sql_Select_Dados($table_class,implode(",", self::pluck($columns, 'db')), '',TRUE);
         
@@ -328,7 +328,7 @@ class Datatable {
         // Build the SQL query string from the request
         $limit = self::limit( $request, $columns );
         $order = self::order( $request, $columns );
-        $where = self::filter( $request, $columns, $bindings, $table_class, $sql_tabela_sigla, $tabela_campos_valores, $retornar_extrangeiras_usadas );
+        $where = self::filter( $request, $columns, $bindings, $table_class, $sql_tabela_sigla, $table_campos_valores, $retornar_extrangeiras_usadas );
         $whereResult = self::_flatten( $whereResult );
 
         if ( $whereResult ) {
@@ -555,4 +555,3 @@ class Datatable {
     return $a;
     }
 }
-?>

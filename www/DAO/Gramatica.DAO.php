@@ -73,4 +73,4 @@ final Class Gramatica_DAO extends Framework\App\Dao
         );
     }
 }
-?>
+

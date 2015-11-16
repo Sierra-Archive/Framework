@@ -155,4 +155,4 @@ final Class Agenda_Atividade_Hora_DAO extends Framework\App\Dao
         );
     }
 }
-?>
+

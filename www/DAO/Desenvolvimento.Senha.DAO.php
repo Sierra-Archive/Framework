@@ -276,4 +276,4 @@ final Class Desenvolvimento_Senha_DAO extends Framework\App\Dao
         );
     }
 }
-?>
+

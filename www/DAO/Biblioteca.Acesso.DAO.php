@@ -111,4 +111,4 @@ final Class Biblioteca_Acesso_DAO extends Framework\App\Dao
         );
     }
 }
-?>
+

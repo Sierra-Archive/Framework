@@ -56,14 +56,14 @@ class noticia_ListarControle extends noticia_Controle
                 else                        $destaque = __('Sim');
                 
                 
-                $tabela['Id'][$i]           = $valor->id;
-                $tabela['Categoria'][$i]    = $valor->categoria2;
-                $tabela['Titulo'][$i]       = $valor->titulo;
-                $tabela['Destaque'][$i]     = $destaque;
+                $table['Id'][$i]           = $valor->id;
+                $table['Categoria'][$i]    = $valor->categoria2;
+                $table['Titulo'][$i]       = $valor->titulo;
+                $table['Destaque'][$i]     = $destaque;
                 ++$i;
             }
-            $this->_Visual->Show_Tabela_DataTable($tabela);
-            unset($tabela);
+            $this->_Visual->Show_Tabela_DataTable($table);
+            unset($table);
         } else {           
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhuma Noticia</font></b></center>');
         }

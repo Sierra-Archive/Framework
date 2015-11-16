@@ -190,4 +190,4 @@ final Class Musica_Album_Artista_DAO extends Framework\App\Dao
         );
     }
 }
-?>
+

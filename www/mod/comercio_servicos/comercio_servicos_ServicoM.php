@@ -19,7 +19,7 @@ class comercio_servicos_ServicoModelo extends comercio_servicos_Modelo
     public function Servico() {
         // Table's primary key
         $primaryKey = 'id';
-        $tabela = 'Comercio_Servicos_Servico';
+        $table = 'Comercio_Servicos_Servico';
         
         // Titulos
         $titulo             = \Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_servicos_Titulo');
@@ -30,14 +30,14 @@ class comercio_servicos_ServicoModelo extends comercio_servicos_Modelo
             $titulo_com_sexo    = 'a '.Framework\Classes\Texto::Transformar_Plural_Singular($titulo);
         }
         
-        $perm_editar = $this->_Registro->_Acl->Get_Permissao_Url('comercio_servicos/Servico/Servicos_Edit');
-        $perm_del = $this->_Registro->_Acl->Get_Permissao_Url('comercio_servicos/Servico/Servicos_Del');
+        $permissionEdit = $this->_Registro->_Acl->Get_Permissao_Url('comercio_servicos/Servico/Servicos_Edit');
+        $permissionDelete = $this->_Registro->_Acl->Get_Permissao_Url('comercio_servicos/Servico/Servicos_Del');
         
         $function = '';
-        if ($perm_editar) {
+        if ($permissionEdit) {
             $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Editar\'     ,Array(\'Editar '.$titulo2.'\'        ,\'comercio_servicos/Servico/Servicos_Edit/\'.$d.\'/\'    ,\'\'),TRUE);';
         }
-        if ($perm_del) {
+        if ($permissionDelete) {
             $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Deletar\'    ,Array(\'Deletar '.$titulo2.'\'       ,\'comercio_servicos/Servico/Servicos_Del/\'.$d.\'/\'     ,\'Deseja realmente deletar ess'.$titulo_com_sexo.' ?\'),TRUE);';
         }
 
@@ -67,7 +67,7 @@ class comercio_servicos_ServicoModelo extends comercio_servicos_Modelo
         ); //'Funções';
                 
         echo json_encode(
-            \Framework\Classes\Datatable::complex( $_GET, Framework\App\Registro::getInstacia()->_Conexao, $tabela, $primaryKey, $columns, null)
+            \Framework\Classes\Datatable::complex( $_GET, Framework\App\Registro::getInstacia()->_Conexao, $table, $primaryKey, $columns, null)
         );
     }
 }

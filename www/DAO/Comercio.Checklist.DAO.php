@@ -283,4 +283,4 @@ final Class Comercio_Checklist_DAO extends Framework\App\Dao
         );
     }
 }
-?>
+

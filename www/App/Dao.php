@@ -400,13 +400,13 @@ abstract class Dao implements \Framework\DaoInterface
         $this->$nome = (SQL_MAIUSCULO && $aceita_config && ($campos_naoaceita_config === FALSE || !in_array($nome, $campos_naoaceita_config)))?mb_strtoupper(($resultado), 'UTF-8'):$resultado;
         
         
-        $funcao = static::$mysql_outside[$nome];
+        $function = static::$mysql_outside[$nome];
         // Verifica se nao tem funcao ou é nula, caso contrario à executa
-        if ($funcao === FALSE || $funcao=='' || $funcao=='{valor}') {
+        if ($function === FALSE || $function=='' || $function=='{valor}') {
             $this->$nome = $resultado;
         } else {
-            $funcao = str_replace(Array('{valor}'), Array('$this->$nome'), $funcao);
-            eval('$this->$nome = '.$funcao.';');
+            $function = str_replace(Array('{valor}'), Array('$this->$nome'), $function);
+            eval('$this->$nome = '.$function.';');
         }
         return TRUE;
     }
@@ -447,16 +447,16 @@ abstract class Dao implements \Framework\DaoInterface
         if (!isset(static::$mysql_inside[$nome])) {
             return $this->$nome;
         }
-        $funcao = static::$mysql_inside[$nome];  
-        if (!$funcao) {
+        $function = static::$mysql_inside[$nome];  
+        if (!$function) {
             return $this->$nome;
         } else {
-            $funcao = str_replace('{valor}', '$this->$nome', $funcao);
-            if ($funcao=='') {
+            $function = str_replace('{valor}', '$this->$nome', $function);
+            if ($function=='') {
                 return $this->$nome;
             }
             else{
-                return eval('return '.$funcao.';');
+                return eval('return '.$function.';');
             }
         }
     }
@@ -502,4 +502,4 @@ abstract class Dao implements \Framework\DaoInterface
         foreach ($this as $index => $value) unset($this->$index);
     }
 }
-?>
+

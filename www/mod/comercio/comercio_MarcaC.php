@@ -54,10 +54,10 @@ class comercio_MarcaControle extends comercio_Controle
     public function Marcas() {
         self::Endereco_Marca(FALSE);
         
-        $tabela = Array(
+        $table = Array(
             'Id', 'Nome', 'Funções'
         );
-        $this->_Visual->Show_Tabela_DataTable_Massiva($tabela,'comercio/Marca/Marcas');
+        $this->_Visual->Show_Tabela_DataTable_Massiva($table,'comercio/Marca/Marcas');
         $titulo = __('Listagem de Marcas').' (<span id="DataTable_Contador">0</span>)';  //
         $this->_Visual->Bloco_Unico_CriaJanela($titulo, '',10,Array("link"=>"comercio/Marca/Marcas_Add",'icon'=>'add', 'nome'=>'Adicionar Marca'));
         
@@ -90,11 +90,11 @@ class comercio_MarcaControle extends comercio_Controle
     public function Marcas_Add2() {
         $titulo     = __('Marca Adicionada com Sucesso');
         $dao        = 'Comercio_Marca';
-        $funcao     = '$this->Marcas();';
+        $function     = '$this->Marcas();';
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = __('Marca cadastrada com sucesso.');
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);
     }
     /**
      * 
@@ -124,11 +124,11 @@ class comercio_MarcaControle extends comercio_Controle
     public function Marcas_Edit2($id) {
         $titulo     = __('Marca Editada com Sucesso');
         $dao        = Array('Comercio_Marca', $id);
-        $funcao     = '$this->Marcas();';
+        $function     = '$this->Marcas();';
         $sucesso1   = __('Marca Alterada com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);      
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);      
     }
     /**
      * 

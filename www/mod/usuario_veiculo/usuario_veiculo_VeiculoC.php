@@ -105,29 +105,29 @@ class usuario_veiculo_VeiculoControle extends usuario_veiculo_Controle
             if (is_object($linhas)) $linhas = Array(0=>$linhas);
             reset($linhas);
             foreach ($linhas as $indice=>&$valor) {
-                //$tabela['#Id'][$i]       = '#'.$valor->id;
-                $tabela['Tipo de Veiculo'][$i]            = $valor->categoria2;
-                $tabela['Marca'][$i]                = $valor->marca2;
-                $tabela['Modelo'][$i]               = $valor->modelo2;
-                $tabela['Ano'][$i]                  = $valor->ano;
+                //$table['#Id'][$i]       = '#'.$valor->id;
+                $table['Tipo de Veiculo'][$i]            = $valor->categoria2;
+                $table['Marca'][$i]                = $valor->marca2;
+                $table['Modelo'][$i]               = $valor->modelo2;
+                $table['Ano'][$i]                  = $valor->ano;
                 if (\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_veiculo_VeiculoIPVA')) {
-                    $tabela['IPVA'][$i]                 = $valor->ipva;
+                    $table['IPVA'][$i]                 = $valor->ipva;
                 }
                 if (\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_veiculo_VeiculoVALOR')) {
-                    $tabela['Valor do Veiculo'][$i]     = $valor->valor;
+                    $table['Valor do Veiculo'][$i]     = $valor->valor;
                 }
-                $tabela['Funções'][$i]   = /*$this->_Visual->Tema_Elementos_Btn('Visualizar'      ,Array('Visualizar Veiculo'    ,'usuario_veiculo/Veiculo/Veiculos_Popup/'.$valor->id.'/'    , '')).*/
+                $table['Funções'][$i]   = /*$this->_Visual->Tema_Elementos_Btn('Visualizar'      ,Array('Visualizar Veiculo'    ,'usuario_veiculo/Veiculo/Veiculos_Popup/'.$valor->id.'/'    , '')).*/
                                            $this->_Visual->Tema_Elementos_Btn('Zoom'            ,Array('Visualizar Veiculo'                     ,'usuario_veiculo/Veiculo/Veiculos_View/'.$valor->id.'/'    , '')).
                                            $this->_Visual->Tema_Elementos_Btn('Editar'          ,Array('Editar Veiculo'                         ,'usuario_veiculo/Veiculo/Veiculos_Edit/'.$valor->id.'/'    , '')).
                                            $this->_Visual->Tema_Elementos_Btn('Deletar'         ,Array('Deletar Veiculo'                        ,'usuario_veiculo/Veiculo/Veiculos_Del/'.$valor->id.'/'     ,'Deseja realmente deletar esse Veiculo ?'));
                 ++$i;
             }
             if ($export !== FALSE) {
-                self::Export_Todos($export, $tabela, 'Veiculos');
+                self::Export_Todos($export, $table, 'Veiculos');
             } else {
-                $this->_Visual->Show_Tabela_DataTable($tabela);
+                $this->_Visual->Show_Tabela_DataTable($table);
             }
-            unset($tabela);
+            unset($table);
         } else {     
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Veiculo</font></b></center>');
         }
@@ -164,11 +164,11 @@ class usuario_veiculo_VeiculoControle extends usuario_veiculo_Controle
     public function Veiculos_Add2() {
         $titulo     = __('Veiculo Adicionado com Sucesso');
         $dao        = 'Usuario_Veiculo';
-        $funcao     = '$this->Veiculos();';
+        $function     = '$this->Veiculos();';
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = __('Veiculo cadastrado com sucesso.');
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);
     }
     /**
      * 
@@ -199,11 +199,11 @@ class usuario_veiculo_VeiculoControle extends usuario_veiculo_Controle
     public function Veiculos_Edit2($id) {
         $titulo     = __('Veiculo Editado com Sucesso');
         $dao        = Array('Usuario_Veiculo', $id);
-        $funcao     = '$this->Veiculos();';
+        $function     = '$this->Veiculos();';
         $sucesso1   = __('Veiculo Alterado com Sucesso.');
         $sucesso2   = ''.$_POST["placa"].' teve a alteração bem sucedida';
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);      
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);      
     }
     /**
      * 
@@ -342,19 +342,19 @@ class usuario_veiculo_VeiculoControle extends usuario_veiculo_Controle
             if (is_object($linhas)) $linhas = Array(0=>$linhas);
             reset($linhas);
             foreach ($linhas as $indice=>&$valor) {
-                //$tabela['#Id'][$i]        = '#'.$valor->id;
-                $tabela['Comentário'][$i]   =   $valor->comentario;
-                $tabela['Data'][$i]         =   $valor->log_date_add;
-                $tabela['Funções'][$i]      =   $this->_Visual->Tema_Elementos_Btn('Editar'          ,Array('Editar Comentário de Veiculo'        ,'usuario_veiculo/Veiculo/Veiculos_Comentario_Edit/'.$veiculo_id.'/'.$valor->id.'/'    , '')).
+                //$table['#Id'][$i]        = '#'.$valor->id;
+                $table['Comentário'][$i]   =   $valor->comentario;
+                $table['Data'][$i]         =   $valor->log_date_add;
+                $table['Funções'][$i]      =   $this->_Visual->Tema_Elementos_Btn('Editar'          ,Array('Editar Comentário de Veiculo'        ,'usuario_veiculo/Veiculo/Veiculos_Comentario_Edit/'.$veiculo_id.'/'.$valor->id.'/'    , '')).
                                                 $this->_Visual->Tema_Elementos_Btn('Deletar'         ,Array('Deletar Comentário de Veiculo'       ,'usuario_veiculo/Veiculo/Veiculos_Comentario_Del/'.$veiculo_id.'/'.$valor->id.'/'     ,'Deseja realmente deletar esse Comentário desse Veiculo ?'));
                 ++$i;
             }
             if ($export !== FALSE) {
-                self::Export_Todos($export, $tabela, 'Veiculos (Comentários)');
+                self::Export_Todos($export, $table, 'Veiculos (Comentários)');
             } else {
-                $this->_Visual->Show_Tabela_DataTable($tabela);
+                $this->_Visual->Show_Tabela_DataTable($table);
             }
-            unset($tabela);
+            unset($table);
         } else {          
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Comentário do Veiculo</font></b></center>');
         }
@@ -392,11 +392,11 @@ class usuario_veiculo_VeiculoControle extends usuario_veiculo_Controle
         if ($veiculo_id === FALSE) return _Sistema_erroControle::Erro_Fluxo('Veiculo não informado',404);
         $titulo     = __('Comentário do Veiculo Adicionado com Sucesso');
         $dao        = 'Usuario_Veiculo_Comentario';
-        $funcao     = '$this->Veiculos_View('.$veiculo_id.');';
+        $function     = '$this->Veiculos_View('.$veiculo_id.');';
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = __('Comentário de Veiculo cadastrado com sucesso.');
         $alterar    = Array('veiculo'=>$veiculo_id);
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);
     }
     /**
      * 
@@ -430,11 +430,11 @@ class usuario_veiculo_VeiculoControle extends usuario_veiculo_Controle
         if ($id         == 0   ) return _Sistema_erroControle::Erro_Fluxo('Comentário não informado',404);
         $titulo     = __('Comentário de Veiculo Editado com Sucesso');
         $dao        = Array('Usuario_Veiculo_Comentario', $id);
-        $funcao     = '$this->Veiculos_View('.$veiculo_id.');';
+        $function     = '$this->Veiculos_View('.$veiculo_id.');';
         $sucesso1   = __('Comentário de Veiculo Alterado com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array('veiculo'=>$veiculo_id);
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);      
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);      
     }
     /**
      * 
@@ -492,15 +492,15 @@ class usuario_veiculo_VeiculoControle extends usuario_veiculo_Controle
             if (is_object($linhas)) $linhas = Array(0=>$linhas);
             reset($linhas);
             foreach ($linhas as $indice=>&$valor) {
-                $tabela['Acontecimento'][$i]        =   $valor->nome;
-                $tabela['Data do Acontecimento'][$i]=   $valor->data;
-                $tabela['Data Registrado'][$i]      =   $valor->log_date_add;
-                $tabela['Funções'][$i]      =   $this->_Visual->Tema_Elementos_Btn('Editar'          ,Array('Editar Evento de Veiculo'        ,'usuario_veiculo/Veiculo/Veiculos_Evento_Edit/'.$veiculo_id.'/'.$valor->id.'/'    , '')).
+                $table['Acontecimento'][$i]        =   $valor->nome;
+                $table['Data do Acontecimento'][$i]=   $valor->data;
+                $table['Data Registrado'][$i]      =   $valor->log_date_add;
+                $table['Funções'][$i]      =   $this->_Visual->Tema_Elementos_Btn('Editar'          ,Array('Editar Evento de Veiculo'        ,'usuario_veiculo/Veiculo/Veiculos_Evento_Edit/'.$veiculo_id.'/'.$valor->id.'/'    , '')).
                                                 $this->_Visual->Tema_Elementos_Btn('Deletar'         ,Array('Deletar Evento de Veiculo'       ,'usuario_veiculo/Veiculo/Veiculos_Evento_Del/'.$veiculo_id.'/'.$valor->id.'/'     ,'Deseja realmente deletar esse Evento de desse Veiculo ?'));
                 ++$i;
             }
-            $this->_Visual->Show_Tabela_DataTable($tabela);
-            unset($tabela);
+            $this->_Visual->Show_Tabela_DataTable($table);
+            unset($table);
         } else {          
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Evento do Veiculo</font></b></center>');
         }
@@ -538,11 +538,11 @@ class usuario_veiculo_VeiculoControle extends usuario_veiculo_Controle
         if ($veiculo_id === FALSE) return _Sistema_erroControle::Erro_Fluxo('Veiculo não informado',404);
         $titulo     = __('Evento do Veiculo Adicionado com Sucesso');
         $dao        = 'Usuario_Veiculo_Evento';
-        $funcao     = '$this->Veiculos_View('.$veiculo_id.');';
+        $function     = '$this->Veiculos_View('.$veiculo_id.');';
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = __('Evento de Veiculo cadastrado com sucesso.');
         $alterar    = Array('veiculo'=>$veiculo_id);
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);
     }
     /**
      * 
@@ -576,11 +576,11 @@ class usuario_veiculo_VeiculoControle extends usuario_veiculo_Controle
         if ($id         == 0   ) return _Sistema_erroControle::Erro_Fluxo('Evento não informado',404);
         $titulo     = __('Evento de Veiculo Editado com Sucesso');
         $dao        = Array('Usuario_Veiculo_Evento', $id);
-        $funcao     = '$this->Veiculos_View('.$veiculo_id.');';
+        $function     = '$this->Veiculos_View('.$veiculo_id.');';
         $sucesso1   = __('Evento de Veiculo Alterado com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array('veiculo'=>$veiculo_id);
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);      
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);      
     }
     /**
      * 

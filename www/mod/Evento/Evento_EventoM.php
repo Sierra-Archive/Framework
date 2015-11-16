@@ -17,4 +17,3 @@ class Evento_EventoModelo extends Evento_Modelo
         parent::__construct();
     }
 }
-?>

@@ -70,18 +70,18 @@ class usuario_TelefoneControle extends usuario_Controle
             if (is_object($telefones)) $telefones = Array(0=>$telefones);
             reset($telefones);
             foreach ($telefones as $indice=>&$valor) {
-                $tabela['Pessoa'][$i]           = $valor->persona2;
-                $tabela['Numero'][$i]           = $valor->telefone;
-                $tabela['Obs'][$i]              = $valor->obs;
-                $tabela['Funções'][$i]          = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Telefone'        ,'usuario/Telefone/Telefones_Edit/'.$valor->id.'/'    , '')).
+                $table['Pessoa'][$i]           = $valor->persona2;
+                $table['Numero'][$i]           = $valor->telefone;
+                $table['Obs'][$i]              = $valor->obs;
+                $table['Funções'][$i]          = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Telefone'        ,'usuario/Telefone/Telefones_Edit/'.$valor->id.'/'    , '')).
                                                   $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Telefone'       ,'usuario/Telefone/Telefones_Del/'.$valor->id.'/'     ,'Deseja realmente deletar essa Telefone ?'));
                 ++$i;
             }
             if ($export !== FALSE) {
-                self::Export_Todos($export, $tabela, 'Telefones');
+                self::Export_Todos($export, $table, 'Telefones');
             } else {
                 $this->_Visual->Show_Tabela_DataTable(
-                    $tabela,     // Array Com a Tabela
+                    $table,     // Array Com a Tabela
                     '',          // style extra
                     true,        // true -> Add ao Bloco, false => Retorna html
                     true,        // Apagar primeira coluna ?
@@ -92,7 +92,7 @@ class usuario_TelefoneControle extends usuario_Controle
                     )
                 );
             }
-            unset($tabela);
+            unset($table);
         } else {        
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Telefone</font></b></center>');
         }
@@ -141,11 +141,11 @@ class usuario_TelefoneControle extends usuario_Controle
     public function Telefones_Add2() {
         $titulo     = __('Telefone adicionada com Sucesso');
         $dao        = 'Usuario_Telefone';
-        $funcao     = '$this->Telefone();';
+        $function     = '$this->Telefone();';
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = __('Telefone cadastrado com sucesso.');
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);
     }
     /**
      * 
@@ -175,11 +175,11 @@ class usuario_TelefoneControle extends usuario_Controle
     public function Telefones_Edit2($id) {
         $titulo     = __('Telefone editada com Sucesso');
         $dao        = Array('Usuario_Telefone', $id);
-        $funcao     = '$this->Telefone();';
+        $function     = '$this->Telefone();';
         $sucesso1   = __('Telefone Alterado com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);   
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);   
     }
     /**
      * 

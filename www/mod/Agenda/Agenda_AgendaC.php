@@ -56,16 +56,16 @@ class Agenda_AgendaControle extends Agenda_Controle
         $this->Endereco_Agenda(FALSE);
         // Botao Add
         
-        $tabela_colunas = Array();
+        $table_colunas = Array();
 
-        $tabela_colunas[] = __('Id');
-        $tabela_colunas[] = __('Motivo');
-        $tabela_colunas[] = __('Motivo ID');
-        $tabela_colunas[] = __('Data Inicio');
-        $tabela_colunas[] = __('Data Fim');
-        $tabela_colunas[] = __('Funções');
+        $table_colunas[] = __('Id');
+        $table_colunas[] = __('Motivo');
+        $table_colunas[] = __('Motivo ID');
+        $table_colunas[] = __('Data Inicio');
+        $table_colunas[] = __('Data Fim');
+        $table_colunas[] = __('Funções');
 
-        $this->_Visual->Show_Tabela_DataTable_Massiva($tabela_colunas,'Agenda/Agenda/Agendas');
+        $this->_Visual->Show_Tabela_DataTable_Massiva($table_colunas,'Agenda/Agenda/Agendas');
         $titulo = __('Listagem de Agendas').' (<span id="DataTable_Contador">0</span>)';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo, '',10,Array("link"=>"Agenda/Agenda/Agendas_Add",'icon'=>'add', 'nome'=>__('Adicionar Agenda')));
         
@@ -98,11 +98,11 @@ class Agenda_AgendaControle extends Agenda_Controle
     public function Agendas_Add2() {
         $titulo     = __('Agenda Adicionada com Sucesso');
         $dao        = 'Agenda';
-        $funcao     = '$this->Agendas();';
+        $function     = '$this->Agendas();';
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = __('Agenda cadastrado com sucesso.');
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);
     }
     /**
      * 
@@ -131,11 +131,11 @@ class Agenda_AgendaControle extends Agenda_Controle
     public function Agendas_Edit2($id) {
         $titulo     = __('Agenda Editada com Sucesso');
         $dao        = Array('Agenda', $id);
-        $funcao     = '$this->Agendas();';
+        $function     = '$this->Agendas();';
         $sucesso1   = __('Agenda Alterada com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);      
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);      
     }
     /**
      * 
@@ -170,4 +170,4 @@ class Agenda_AgendaControle extends Agenda_Controle
         $this->_Visual->Json_Info_Update('Historico', FALSE);  
     }
 }
-?>
+

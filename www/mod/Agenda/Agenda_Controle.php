@@ -14,4 +14,3 @@ class Agenda_Controle extends \Framework\App\Controle
         parent::__construct();
     } 
 }
-?>

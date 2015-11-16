@@ -52,32 +52,32 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
     public function Senhas($export = FALSE) {
         $this->Endereco_Senha(FALSE);
         $i = 0;
-        $perm_status = $this->_Registro->_Acl->Get_Permissao_Url('Desenvolvimento/Senha/Status');
-        $perm_destaque = $this->_Registro->_Acl->Get_Permissao_Url('Desenvolvimento/Senha/Destaque');
+        $permissionStatus = $this->_Registro->_Acl->Get_Permissao_Url('Desenvolvimento/Senha/Status');
+        $permissionFeatured = $this->_Registro->_Acl->Get_Permissao_Url('Desenvolvimento/Senha/Destaque');
         
         // EM uso
-        $tabela = Array(
+        $table = Array(
             'Id', 'Categoria', 'Url', 'Login', 'Senha'
         );
-        if ($perm_destaque)  $tabela[] = __('Destaque');
-        if ($perm_status)    $tabela[] = __('Status');
-        $tabela[] = __('Adicionada em');
-        $tabela[] = __('Funções');
-        $this->_Visual->Show_Tabela_DataTable_Massiva($tabela,'Desenvolvimento/Senha/Senhas');
+        if ($permissionFeatured)  $table[] = __('Destaque');
+        if ($permissionStatus)    $table[] = __('Status');
+        $table[] = __('Adicionada em');
+        $table[] = __('Funções');
+        $this->_Visual->Show_Tabela_DataTable_Massiva($table,'Desenvolvimento/Senha/Senhas');
         
         
         $titulo = __('Listagem de Senhas');  //(<span id="DataTable_Contador">0</span>)
         $this->_Visual->Bloco_Unico_CriaJanela($titulo, '',10,Array("link"=>"Desenvolvimento/Senha/Senhas_Add",'icon'=>'add', 'nome'=>'Adicionar Senha'));
         
         // Antigas
-        $tabela = Array(
+        $table = Array(
             'Id', 'Categoria', 'Url', 'Login', 'Senha'
         );
-        if ($perm_destaque)  $tabela[] = __('Destaque');
-        if ($perm_status)    $tabela[] = __('Status');
-        $tabela[] = __('Adicionada em');
-        $tabela[] = __('Funções');
-        $this->_Visual->Show_Tabela_DataTable_Massiva($tabela,'Desenvolvimento/Senha/Senhas_Antigas');
+        if ($permissionFeatured)  $table[] = __('Destaque');
+        if ($permissionStatus)    $table[] = __('Status');
+        $table[] = __('Adicionada em');
+        $table[] = __('Funções');
+        $this->_Visual->Show_Tabela_DataTable_Massiva($table,'Desenvolvimento/Senha/Senhas_Antigas');
         $titulo = __('Listagem de Senhas Antigas');  //(<span id="DataTable_Contador">0</span>)
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         
@@ -110,11 +110,11 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
     public function Senhas_Add2() {
         $titulo     = __('Senha Adicionada com Sucesso');
         $dao        = 'Desenvolvimento_Senha';
-        $funcao     = '$this->Senhas();';
+        $function     = '$this->Senhas();';
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = __('Senha cadastrada com sucesso.');
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);
     }
     /**
      * 
@@ -144,11 +144,11 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
     public function Senhas_Edit2($id) {
         $titulo     = __('Senha Editada com Sucesso');
         $dao        = Array('Desenvolvimento_Senha', $id);
-        $funcao     = '$this->Senhas();';
+        $function     = '$this->Senhas();';
         $sucesso1   = __('Senha Alterada com Sucesso.');
         $sucesso2   = __('Senha teve a alteração bem sucedida');
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);      
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);      
     }
     /**
      * 
@@ -339,24 +339,24 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
     static function Senhas_Todas_Tabela($Senhas_Todas) {
         $Registro   = &\Framework\App\Registro::getInstacia();
         $Visual     = &$Registro->_Visual;
-        $tabela = Array();
+        $table = Array();
         $i = 0;
         if (is_object($Senhas_Todas)) $Senhas_Todas = Array(0=>$Senhas_Todas);
         reset($Senhas_Todas);
         foreach ($Senhas_Todas as $indice=>&$valor) {
-            $tabela['#Id'][$i]          =   '#'.$valor->id;
-            $tabela['Categoria'][$i]    =   $valor->categoria2;
-            $tabela['Url'][$i]          =   $valor->url;
-            $tabela['Login'][$i]        =   $valor->login;
-            $tabela['Senha'][$i]        =   $valor->senha;
-            $tabela['Destaque'][$i]     = '<span class="destaque'.$valor->id.'">'.self::Destaquelabel($valor).'</span>';
-            $tabela['Status'][$i]       = '<span class="status'.$valor->id.'">'.self::Statuslabel($valor).'</span>';
-            $tabela['Adicionada em'][$i]=   $valor->log_date_add;
-            $tabela['Funções'][$i]      =   $Visual->Tema_Elementos_Btn('Editar'          ,Array('Editar Senha'        ,'Desenvolvimento/Senha/Senhas_Todas_Edit/'.$valor->id.'/'    , '')).
+            $table['#Id'][$i]          =   '#'.$valor->id;
+            $table['Categoria'][$i]    =   $valor->categoria2;
+            $table['Url'][$i]          =   $valor->url;
+            $table['Login'][$i]        =   $valor->login;
+            $table['Senha'][$i]        =   $valor->senha;
+            $table['Destaque'][$i]     = '<span class="destaque'.$valor->id.'">'.self::Destaquelabel($valor).'</span>';
+            $table['Status'][$i]       = '<span class="status'.$valor->id.'">'.self::Statuslabel($valor).'</span>';
+            $table['Adicionada em'][$i]=   $valor->log_date_add;
+            $table['Funções'][$i]      =   $Visual->Tema_Elementos_Btn('Editar'          ,Array('Editar Senha'        ,'Desenvolvimento/Senha/Senhas_Todas_Edit/'.$valor->id.'/'    , '')).
                                             $Visual->Tema_Elementos_Btn('Deletar'         ,Array('Deletar Senha'       ,'Desenvolvimento/Senha/Senhas_Todas_Del/'.$valor->id.'/'     ,'Deseja realmente deletar essa Senha ?'));
             ++$i;
         }
-        return Array($tabela, $i);
+        return Array($table, $i);
     }
     /**
      * 
@@ -366,31 +366,31 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
     public function Senhas_Todas($export = FALSE) {
         $this->Endereco_Senha_Todas(FALSE);
         $i = 0;
-        $perm_status = $this->_Registro->_Acl->Get_Permissao_Url('Desenvolvimento/Senha/Status');
-        $perm_destaque = $this->_Registro->_Acl->Get_Permissao_Url('Desenvolvimento/Senha/Destaque');
+        $permissionStatus = $this->_Registro->_Acl->Get_Permissao_Url('Desenvolvimento/Senha/Status');
+        $permissionFeatured = $this->_Registro->_Acl->Get_Permissao_Url('Desenvolvimento/Senha/Destaque');
         
         // Usadas
-        $tabela = Array(
+        $table = Array(
             'Id', 'Responsável', 'Categoria', 'Url', 'Login', 'Senha'
         );
-        if ($perm_destaque)  $tabela[] = __('Destaque');
-        if ($perm_status)    $tabela[] = __('Status');
-        $tabela[] = __('Adicionada em');
-        $tabela[] = __('Funções');
-        $this->_Visual->Show_Tabela_DataTable_Massiva($tabela,'Desenvolvimento/Senha/Senhas_Todas');
+        if ($permissionFeatured)  $table[] = __('Destaque');
+        if ($permissionStatus)    $table[] = __('Status');
+        $table[] = __('Adicionada em');
+        $table[] = __('Funções');
+        $this->_Visual->Show_Tabela_DataTable_Massiva($table,'Desenvolvimento/Senha/Senhas_Todas');
         
         $titulo = __('Listagem de Todas as Senhas');  //(<span id="DataTable_Contador">0</span>)
         $this->_Visual->Bloco_Unico_CriaJanela($titulo, '',10,Array("link"=>"Desenvolvimento/Senha/Senhas_Todas_Add",'icon'=>'add', 'nome'=>'Adicionar Senha'));
         
         // Antigas
-        $tabela = Array(
+        $table = Array(
             'Id', 'Responsável', 'Categoria', 'Url', 'Login', 'Senha'
         );
-        if ($perm_destaque)  $tabela[] = __('Destaque');
-        if ($perm_status)    $tabela[] = __('Status');
-        $tabela[] = __('Adicionada em');
-        $tabela[] = __('Funções');
-        $this->_Visual->Show_Tabela_DataTable_Massiva($tabela,'Desenvolvimento/Senha/Senhas_Todas_Antigas');
+        if ($permissionFeatured)  $table[] = __('Destaque');
+        if ($permissionStatus)    $table[] = __('Status');
+        $table[] = __('Adicionada em');
+        $table[] = __('Funções');
+        $this->_Visual->Show_Tabela_DataTable_Massiva($table,'Desenvolvimento/Senha/Senhas_Todas_Antigas');
         $titulo = __('Listagem de Senhas Antigas');  //(<span id="DataTable_Contador">0</span>)
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         
@@ -423,11 +423,11 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
     public function Senhas_Todas_Add2() {
         $titulo     = __('Senha Adicionada com Sucesso');
         $dao        = 'Desenvolvimento_Senha';
-        $funcao     = '$this->Senhas_Todas();';
+        $function     = '$this->Senhas_Todas();';
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = __('Senha cadastrada com sucesso.');
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);
     }
     /**
      * 
@@ -457,11 +457,11 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
     public function Senhas_Todas_Edit2($id) {
         $titulo     = __('Senha Editada com Sucesso');
         $dao        = Array('Desenvolvimento_Senha', $id);
-        $funcao     = '$this->Senhas_Todas();';
+        $function     = '$this->Senhas_Todas();';
         $sucesso1   = __('Senha Alterada com Sucesso.');
         $sucesso2   = __('Senha teve a alteração bem sucedida');
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);      
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);      
     }
     /**
      * 
@@ -649,5 +649,5 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
     }
     
 }
-?>
+
   

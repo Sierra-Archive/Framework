@@ -138,4 +138,4 @@ final Class Comercio_Proposta_ServicoTipo_DAO extends Framework\App\Dao
         );
     }
 }
-?>
+

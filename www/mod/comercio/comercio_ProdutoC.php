@@ -57,35 +57,35 @@ class comercio_ProdutoControle extends comercio_Controle
         $comercio_Unidade           = \Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Unidade');
         $comercio_marca             = \Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Marca');
 
-        $tabela_colunas = Array();
+        $table_colunas = Array();
 
         if ($comercio_Produto_Cod) {
-            $tabela_colunas[] = __('#Cod');
+            $table_colunas[] = __('#Cod');
         }
         if ($comercio_marca === TRUE) {
             if ($comercio_Produto_Familia=='Familia') {
-                $tabela_colunas[] = __('Familia');
+                $table_colunas[] = __('Familia');
             } else {
-                $tabela_colunas[] = __('Marca');
-                $tabela_colunas[] = __('Linha');
+                $table_colunas[] = __('Marca');
+                $table_colunas[] = __('Linha');
             }
         }
-        $tabela_colunas[] = __('Nome');
+        $table_colunas[] = __('Nome');
 
         // Coloca Preco
         if (\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Vendas')) {
-            $tabela_colunas[] = __('Preço');
+            $table_colunas[] = __('Preço');
         }
 
         if ($comercio_Estoque) {
-            $tabela_colunas[] = __('Estoque');
+            $table_colunas[] = __('Estoque');
         }
         if ($comercio_Unidade) {
-            $tabela_colunas[] = __('Unidade');
+            $table_colunas[] = __('Unidade');
         }
-        $tabela_colunas[] = __('Funções');
+        $table_colunas[] = __('Funções');
 
-        $this->_Visual->Show_Tabela_DataTable_Massiva($tabela_colunas,'comercio/Produto/Produtos');
+        $this->_Visual->Show_Tabela_DataTable_Massiva($table_colunas,'comercio/Produto/Produtos');
         $titulo = __('Listagem de Produtos').' (<span id="DataTable_Contador">0</span>)';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo, '',10,Array("link"=>"comercio/Produto/Produtos_Add",'icon'=>'add', 'nome'=>__('Adicionar Produto')));
         
@@ -160,11 +160,11 @@ class comercio_ProdutoControle extends comercio_Controle
     public function Produtos_Add2() {
         $titulo     = __('Produto Adicionado com Sucesso');
         $dao        = 'Comercio_Produto';
-        $funcao     = '$this->Produtos();';
+        $function     = '$this->Produtos();';
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = __('Produto cadastrado com sucesso.');
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);
      
     }
     /**
@@ -196,11 +196,11 @@ class comercio_ProdutoControle extends comercio_Controle
     public function Produtos_Edit2($id) {
         $titulo     = __('Produto Editado com Sucesso');
         $dao        = Array('Comercio_Produto', $id);
-        $funcao     = '$this->Produtos();';
+        $function     = '$this->Produtos();';
         $sucesso1   = __('Produto Alterado com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);      
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);      
     }
     /**
      * 
@@ -267,15 +267,15 @@ class comercio_ProdutoControle extends comercio_Controle
         $sucesso1   = __('Sucesso');
         $sucesso2   = __('Redução Finalizada com Sucesso');
         if ($produto === FALSE || $produto==0) {
-            //$funcao     = '$this->Produtos(0);';
+            //$function     = '$this->Produtos(0);';
             $alterar    = Array();
         } else {
             $produto    = (int) $produto;
             $alterar    = Array('produto'=>$produto);
-            //$funcao     = '$this->Produtos('.$produto.');';
+            //$function     = '$this->Produtos('.$produto.');';
         }
-        $funcao     = '$this->Produtos();';
-        $sucesso = $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
+        $function     = '$this->Produtos();';
+        $sucesso = $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);
         if ($sucesso === TRUE) {
             $motivo = 'comercio_Produto';
             $identificador  = $this->_Modelo->db->Sql_Select('Comercio_Produto_Estoque_Reduzir', Array(),1,'id DESC');

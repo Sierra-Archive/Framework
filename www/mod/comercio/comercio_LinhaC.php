@@ -54,10 +54,10 @@ class comercio_LinhaControle extends comercio_Controle
     public function Linhas($export = FALSE) {
         self::Endereco_Linha(FALSE);
         
-        $tabela = Array(
+        $table = Array(
             'Id', 'Nome', 'Linha', 'Funções'
         );
-        $this->_Visual->Show_Tabela_DataTable_Massiva($tabela,'comercio/Linha/Linhas');
+        $this->_Visual->Show_Tabela_DataTable_Massiva($table,'comercio/Linha/Linhas');
         $titulo = __('Listagem de Linhas').' (<span id="DataTable_Contador">0</span>)';  //
         $this->_Visual->Bloco_Unico_CriaJanela($titulo, '',10,Array("link"=>"comercio/Linha/Linhas_Add",'icon'=>'add', 'nome'=>'Adicionar Linha'));
         
@@ -91,11 +91,11 @@ class comercio_LinhaControle extends comercio_Controle
     public function Linhas_Add2() {
         $titulo     = __('Linha Adicionada com Sucesso');
         $dao        = 'Comercio_Linha';
-        $funcao     = '$this->Linhas();';
+        $function     = '$this->Linhas();';
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = __('Linha cadastrada com sucesso.');
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);
     }
     /**
      * 
@@ -125,11 +125,11 @@ class comercio_LinhaControle extends comercio_Controle
     public function Linhas_Edit2($id) {
         $titulo     = __('Linha Editada com Sucesso');
         $dao        = Array('Comercio_Linha', $id);
-        $funcao     = '$this->Linhas();';
+        $function     = '$this->Linhas();';
         $sucesso1   = __('Linha Alterada com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);      
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);      
     }
     /**
      * 

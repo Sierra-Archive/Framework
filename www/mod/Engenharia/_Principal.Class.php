@@ -94,8 +94,8 @@ class Engenharia_Principal implements \Framework\PrincipalInterface
         )));
         if (is_object($empreendimentos)) $empreendimentos = Array(0=>$empreendimentos);
         if ($empreendimentos !== FALSE && !empty($empreendimentos)) {
-            list($tabela, $i) = Engenharia_EmpreendimentoControle::Empreendimentos_Tabela($empreendimentos);
-            $Visual->Show_Tabela_DataTable($tabela);
+            list($table, $i) = Engenharia_EmpreendimentoControle::Empreendimentos_Tabela($empreendimentos);
+            $Visual->Show_Tabela_DataTable($table);
         } else {             
             $Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Empreendimento na Busca '.$busca.'</font></b></center>');
         }
@@ -129,8 +129,8 @@ class Engenharia_Principal implements \Framework\PrincipalInterface
         )));
         if (is_object($unidades)) $unidades = Array(0=>$unidades);
         if ($unidades !== FALSE && !empty($unidades)) {
-            list($tabela, $i) = Engenharia_UnidadeControle::Unidades_Tabela($unidades);
-            $Visual->Show_Tabela_DataTable($tabela);
+            list($table, $i) = Engenharia_UnidadeControle::Unidades_Tabela($unidades);
+            $Visual->Show_Tabela_DataTable($table);
         } else {    
             $Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhuma Unidade de Empreendimento na Busca '.$busca.'</font></b></center>');
         }
@@ -176,4 +176,3 @@ class Engenharia_Principal implements \Framework\PrincipalInterface
     }
     
 }
-?>

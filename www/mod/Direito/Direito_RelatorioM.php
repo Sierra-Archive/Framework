@@ -159,4 +159,3 @@ class Direito_RelatorioModelo extends DireitoModelo
         return $i;
     }
 }
-?>

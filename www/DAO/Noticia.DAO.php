@@ -275,4 +275,4 @@ final Class Noticia_DAO extends Framework\App\Dao
         );
     }
 }
-?>
+

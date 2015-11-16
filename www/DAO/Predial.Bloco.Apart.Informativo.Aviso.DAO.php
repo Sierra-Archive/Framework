@@ -96,4 +96,4 @@ final Class Predial_Bloco_Apart_Informativo_Aviso_DAO extends Framework\App\Dao
         );
     }
 }
-?>
+

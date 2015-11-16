@@ -221,4 +221,4 @@ final Class Sistema_Permissao_DAO extends Framework\App\Dao
         );
     }
 }
-?>
+

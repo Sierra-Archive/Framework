@@ -25,9 +25,9 @@ class social_VisualizarControle extends social_Controle
             usort($acoes, "ordenar");
             reset($acoes);
             foreach ($acoes as $indice=>&$valor) {
-                $tabela['Data'][$i] = $acoes[$indice]['data'];
-                $tabela['Tipo'][$i] = $acoes[$indice]['tiponome'];
-                $tabela['Observa��o'][$i] = $acoes[$indice]['obs'];
+                $table['Data'][$i] = $acoes[$indice]['data'];
+                $table['Tipo'][$i] = $acoes[$indice]['tiponome'];
+                $table['Observa��o'][$i] = $acoes[$indice]['obs'];
 
                 // se variavel nao existe ele cria
                 if (!isset($tipo[$acoes[$indice]['tipo']])) $tipo[$acoes[$indice]['tipo']] = 0;
@@ -36,10 +36,10 @@ class social_VisualizarControle extends social_Controle
                 // verifica os tipso e add
                 if ($acoes[$indice]['positivo']==1) {
                     $tipos[$acoes[$indice]['tipo']] = $tipos[$acoes[$indice]['tipo']] + $acoes[$indice]['gravidade'];
-                    $tabela['Pontos'][$i] = '+ '.$acoes[$indice]['gravidade'];
+                    $table['Pontos'][$i] = '+ '.$acoes[$indice]['gravidade'];
                 } else {
                     $tipos[$acoes[$indice]['tipo']] = $tipos[$acoes[$indice]['tipo']] - $acoes[$indice]['gravidade'];
-                    $tabela['Pontos'][$i] = '- '.$acoes[$indice]['gravidade'];
+                    $table['Pontos'][$i] = '- '.$acoes[$indice]['gravidade'];
                 }
                 $tipon[$acoes[$indice]['tipo']] = $acoes[$indice]['tiponome'];
                 ++$tipo[$acoes[$indice]['tipo']];
@@ -47,7 +47,7 @@ class social_VisualizarControle extends social_Controle
             }
         }
         $this->_Visual->exibetipos($tipo, $tipos, $tipon);
-        $this->_Visual->Show_Tabela_DataTable($tabela);
+        $this->_Visual->Show_Tabela_DataTable($table);
         $this->_Visual->Bloco_Maior_CriaJanela($persona['nome'] .' - Ações');
         // ORGANIZA E MANDA CONTEUDO
         $this->_Visual->Json_Start('Usuario_social - '.$persona['nome']);

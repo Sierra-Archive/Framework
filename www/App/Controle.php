@@ -524,29 +524,29 @@ readfile($link);*/
         self::Tema_Travar();
     }
     /**
-     * @param type $tabela
+     * @param type $table
      * @param string $arquivo_nome
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    private static function Export_Excel(&$tabela, $arquivo_nome='Relatorio') {
+    private static function Export_Excel(&$table, $arquivo_nome='Relatorio') {
         // Retira Funcoes Caso Exista
-        if (isset($tabela['Funções'])) unset($tabela['Funções']);
+        if (isset($table['Funções'])) unset($table['Funções']);
         // Definimos o nome do arquivo que será exportado
         $arquivo_nome = $arquivo_nome.'.xls';
         // Criamos uma tabela HTML com o formato da planilha
         $html = '<table><tr>';
         $total = 0;
-        foreach($tabela as $indice=>&$valor) {
+        foreach($table as $indice=>&$valor) {
             $html .= '<td><b>'.$indice.'</b></td>';
             ++$total;
         }
-        $tamanho = count($tabela[$indice]);
+        $tamanho = count($table[$indice]);
         $html .= '</tr>';
         for ($i=0;$i<$tamanho;++$i) {
             $html .= '<tr>';
-            foreach($tabela as &$valor) {
+            foreach($table as &$valor) {
                 $html .= '<td>';
                 if (!isset($valor[$i]) || $valor[$i]=='') {
                     $html .= '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
@@ -1036,30 +1036,30 @@ readfile($link);*/
             
             // Extrangeiras LINKADAS
             if (isset($valor['TabelaLinkada'])) {
-                $tabelalinkada = &$valor['TabelaLinkada'];
-                if ($tabelalinkada['formtipo']==='BoleanoMultiplo') {
-                    list($selecionado, $nao_selecionado) = $Modelo->db->Tabelas_CapturaLinkadas($tabelalinkada);
+                $tablelinkada = &$valor['TabelaLinkada'];
+                if ($tablelinkada['formtipo']==='BoleanoMultiplo') {
+                    list($selecionado, $nao_selecionado) = $Modelo->db->Tabelas_CapturaLinkadas($tablelinkada);
                     $html .= $form->BoleanoMultiplo(
-                        $tabelalinkada['Nome'],
-                        $tabelalinkada['BoleanoMultiplo']['Col1'],
-                        $tabelalinkada['BoleanoMultiplo']['Col2'],
-                        'tablink_'.$tabelalinkada['Tabela'],
-                        $tabelalinkada['Class'],
+                        $tablelinkada['Nome'],
+                        $tablelinkada['BoleanoMultiplo']['Col1'],
+                        $tablelinkada['BoleanoMultiplo']['Col2'],
+                        'tablink_'.$tablelinkada['Tabela'],
+                        $tablelinkada['Class'],
                         $nao_selecionado,
                         $selecionado,
                         $escondido
                     );
-                } else if ($tabelalinkada['formtipo']==='SelectMultiplo') {
+                } else if ($tablelinkada['formtipo']==='SelectMultiplo') {
                     
                     // Carrega Informação que aparecera na tela quando nada for escrito
-                    if (isset($tabelalinkada['SelectMultiplo']['infonulo']) && $tabelalinkada['SelectMultiplo']['infonulo']!='' && $tabelalinkada['SelectMultiplo']['infonulo'] !== FALSE) {
-                        $select_infonulo = $tabelalinkada['SelectMultiplo']['infonulo'];
+                    if (isset($tablelinkada['SelectMultiplo']['infonulo']) && $tablelinkada['SelectMultiplo']['infonulo']!='' && $tablelinkada['SelectMultiplo']['infonulo'] !== FALSE) {
+                        $select_infonulo = $tablelinkada['SelectMultiplo']['infonulo'];
                     } else {
                         $select_infonulo = __('Escolha uma Opção');
                     }
                     
                     // Puxa Selecionados, Resutados e Colunas
-                    list($selecionados, $resultado, $colunas) = $Modelo->db->Tabelas_CapturaLinkadas($tabelalinkada);
+                    list($selecionados, $resultado, $colunas) = $Modelo->db->Tabelas_CapturaLinkadas($tablelinkada);
                     //var_dump($selecionados, $resultado, $colunas);
                     // Configura Array
                     $opcoes = Array();
@@ -1093,57 +1093,57 @@ readfile($link);*/
                     }
                     // Puxa Select
                     $html .= $form->SelectMultiplo(
-                        $tabelalinkada['Nome'],     //Nome
+                        $tablelinkada['Nome'],     //Nome
                         $opcoes,          // Opcões do Slect
-                        $tabelalinkada['SelectMultiplo']['Linkado'], // ID
-                        $tabelalinkada['SelectMultiplo']['linkextra'],   // url
-                        $tabelalinkada['SelectMultiplo']['Campos'],   // url
+                        $tablelinkada['SelectMultiplo']['Linkado'], // ID
+                        $tablelinkada['SelectMultiplo']['linkextra'],   // url
+                        $tablelinkada['SelectMultiplo']['Campos'],   // url
                         $javascript_campos, // js
                         FALSE,    // condicao
                         $escondido,             // Se esta Escondido ou nao
-                        $tabelalinkada['Class'],           // Class
+                        $tablelinkada['Class'],           // Class
                         $select_infonulo   // Informacao quando vazio             
                     );
                     // Se tiver selecionado coloca as colunas extras extras 
                     if ($selecionados !== FALSE && !empty($selecionados) && $colunas !== FALSE) {
                         foreach ($selecionados as &$valor2) {
                             // Chama TAbela
-                            $tabela_link = \Framework\App\Conexao::Tabelas_GetSiglas_Recolher($tabelalinkada['Tabela']);
+                            $table_link = \Framework\App\Conexao::Tabelas_GetSiglas_Recolher($tablelinkada['Tabela']);
                             // Condicao
                             $where = Array(
-                                $tabelalinkada['SelectMultiplo']['Linkar'] =>$tabelalinkada['valor_padrao'],
-                                $tabelalinkada['SelectMultiplo']['Linkado']=>$valor2
+                                $tablelinkada['SelectMultiplo']['Linkar'] =>$tablelinkada['valor_padrao'],
+                                $tablelinkada['SelectMultiplo']['Linkado']=>$valor2
                             );
-                            $objeto_novo = $Modelo->db->Sql_Select($tabela_link['classe'], $where,1);
+                            $objeto_novo = $Modelo->db->Sql_Select($table_link['classe'], $where,1);
                             if ($objeto_novo === FALSE) throw new \Exception('Registro não existe: ID->'.$id,404);
                             // Atualiza Valores
                             self::mysql_AtualizaValores($colunas, $objeto_novo, $objeto_novo->id);
                             // Atualiza id
                             $colunas_temporaria = $colunas;
                             self::DAO_Campos_TrocaID($colunas_temporaria, $valor2);
-                            $nome = $tabelalinkada['SelectMultiplo']['Linkado'].'2';
+                            $nome = $tablelinkada['SelectMultiplo']['Linkado'].'2';
                             // caso nao exista
                             if ($objeto_novo->$nome===NULL) {
                                 CONTINUE;
                             }
                             self::DAO_Campos_TrocaNOME($colunas_temporaria, $objeto_novo->$nome);
                             // Separa os Span
-                            $html .= $form->addtexto('</span><span id="'.$tabelalinkada['SelectMultiplo']['Linkado'].'controlador_'.$valor2.'">');
+                            $html .= $form->addtexto('</span><span id="'.$tablelinkada['SelectMultiplo']['Linkado'].'controlador_'.$valor2.'">');
                             // PEga os CAmpos Extrangeiros
                             self::Gerador_Formulario($colunas_temporaria, $form, FALSE);
                         }
                     }
-                } else if ($tabelalinkada['formtipo']==='ExternoInsercao') {
+                } else if ($tablelinkada['formtipo']==='ExternoInsercao') {
                     
                     // Carrega Informação que aparecera na tela quando nada for escrito
-                    if (isset($tabelalinkada['ExternoInsercao']['infonulo']) && $tabelalinkada['ExternoInsercao']['infonulo']!='' && $tabelalinkada['ExternoInsercao']['infonulo'] !== FALSE) {
-                        $select_infonulo = $tabelalinkada['ExternoInsercao']['infonulo'];
+                    if (isset($tablelinkada['ExternoInsercao']['infonulo']) && $tablelinkada['ExternoInsercao']['infonulo']!='' && $tablelinkada['ExternoInsercao']['infonulo'] !== FALSE) {
+                        $select_infonulo = $tablelinkada['ExternoInsercao']['infonulo'];
                     } else {
                         $select_infonulo = __('Escolha uma Opção');
                     }
                     
                     // Puxa Selecionados, Resutados e Colunas
-                    $resultado_tabcapturados = $Modelo->db->Tabelas_CapturaLinkadas($tabelalinkada);
+                    $resultado_tabcapturados = $Modelo->db->Tabelas_CapturaLinkadas($tablelinkada);
                     if ($resultado_tabcapturados === FALSE) return FALSE;
                     list($selecionados, $resultado, $colunas) = $resultado_tabcapturados;
                     // Configura Array
@@ -1176,28 +1176,28 @@ readfile($link);*/
                     }
                     // Puxa Select
                     /*$html .= $form->ExternoInsercao(
-                        $tabelalinkada['Nome'],     //Nome
+                        $tablelinkada['Nome'],     //Nome
                         $opcoes,          // Opcões do Slect
-                        $tabelalinkada['ExternoInsercao']['Linkado'], // ID
-                        $tabelalinkada['ExternoInsercao']['linkextra'],   // url
-                        $tabelalinkada['ExternoInsercao']['Campos'],   // url
+                        $tablelinkada['ExternoInsercao']['Linkado'], // ID
+                        $tablelinkada['ExternoInsercao']['linkextra'],   // url
+                        $tablelinkada['ExternoInsercao']['Campos'],   // url
                         $javascript_campos, // js
                         FALSE,    // condicao
                         $escondido,             // Se esta Escondido ou nao
-                        $tabelalinkada['Class'],           // Class
+                        $tablelinkada['Class'],           // Class
                         $select_infonulo   // Informacao quando vazio             
                     );*/
                     
                     
                     // Insere Campos Vazios
                     // Chama TAbela
-                    $tabela_link = \Framework\App\Conexao::Tabelas_GetSiglas_Recolher($tabelalinkada['Tabela']);
+                    $table_link = \Framework\App\Conexao::Tabelas_GetSiglas_Recolher($tablelinkada['Tabela']);
                     // Atualiza id
                     $colunas_temporaria = $colunas;
-                    $nome = $tabelalinkada['ExternoInsercao']['Linkado'].'2';
+                    $nome = $tablelinkada['ExternoInsercao']['Linkado'].'2';
                     
                     // So coloca os Campos Requisitados
-                    $Ext_Campos = $tabelalinkada['ExternoInsercao']['Campos'];
+                    $Ext_Campos = $tablelinkada['ExternoInsercao']['Campos'];
                     foreach($colunas_temporaria as $indice_col_temp=>&$valor_col_temp) {
                         if (array_search($valor_col_temp["mysql_titulo"], $Ext_Campos) === FALSE) {
                             unset($colunas_temporaria[$indice_col_temp]);
@@ -1205,7 +1205,7 @@ readfile($link);*/
                     }
                     
                     // Separa os Span
-                    $html .= $form->addtexto('</fieldset></span><span id="'.$tabelalinkada['ExternoInsercao']['Linkado'].'controlador_0"><fieldset><legend>1º Ponto de Entrega</legend>');
+                    $html .= $form->addtexto('</fieldset></span><span id="'.$tablelinkada['ExternoInsercao']['Linkado'].'controlador_0"><fieldset><legend>1º Ponto de Entrega</legend>');
                     // PEga os CAmpos Extrangeiros
                     self::Gerador_Formulario($colunas_temporaria, $form, FALSE);
                     
@@ -1214,27 +1214,27 @@ readfile($link);*/
                     if ($selecionados !== FALSE && !empty($selecionados) && $colunas !== FALSE) {
                         foreach ($selecionados as &$valor2) {
                             // Chama TAbela
-                            $tabela_link = \Framework\App\Conexao::Tabelas_GetSiglas_Recolher($tabelalinkada['Tabela']);
+                            $table_link = \Framework\App\Conexao::Tabelas_GetSiglas_Recolher($tablelinkada['Tabela']);
                             // Condicao
                             $where = Array(
-                                $tabelalinkada['ExternoInsercao']['Linkar'] =>$tabelalinkada['valor_padrao'],
-                                $tabelalinkada['ExternoInsercao']['Linkado']=>$valor2
+                                $tablelinkada['ExternoInsercao']['Linkar'] =>$tablelinkada['valor_padrao'],
+                                $tablelinkada['ExternoInsercao']['Linkado']=>$valor2
                             );
-                            $objeto_novo = $Modelo->db->Sql_Select($tabela_link['classe'], $where,1);
+                            $objeto_novo = $Modelo->db->Sql_Select($table_link['classe'], $where,1);
                             if ($objeto_novo === FALSE) throw new \Exception('Registro não existe: ID->'.$id,404);
                             // Atualiza Valores
                             self::mysql_AtualizaValores($colunas, $objeto_novo, $objeto_novo->id);
                             // Atualiza id
                             $colunas_temporaria = $colunas;
                             self::DAO_Campos_TrocaID($colunas_temporaria, $valor2);
-                            $nome = $tabelalinkada['ExternoInsercao']['Linkado'].'2';
+                            $nome = $tablelinkada['ExternoInsercao']['Linkado'].'2';
                             // caso nao exista
                             if ($objeto_novo->$nome===NULL) {
                                 CONTINUE;
                             }
                             self::DAO_Campos_TrocaNOME($colunas_temporaria, $objeto_novo->$nome);
                             // Separa os Span
-                            $html .= $form->addtexto('</span><span id="'.$tabelalinkada['ExternoInsercao']['Linkado'].'controlador_'.$valor2.'">');
+                            $html .= $form->addtexto('</span><span id="'.$tablelinkada['ExternoInsercao']['Linkado'].'controlador_'.$valor2.'">');
                             // PEga os CAmpos Extrangeiros
                             self::Gerador_Formulario($colunas_temporaria, $form, FALSE);
                         }
@@ -1685,7 +1685,7 @@ readfile($link);*/
      * 
      * @param type $titulo
      * @param type $dao
-     * @param type $funcao
+     * @param type $function
      * @param type $sucesso1
      * @param type $sucesso2
      * @param type $colocar
@@ -1695,7 +1695,7 @@ readfile($link);*/
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    protected function Gerador_Formulario_Janela2($titulo, $dao, $funcao = '', $sucesso1, $sucesso2, $colocar = FALSE, $erro1 = '', $erro2 = '') {
+    protected function Gerador_Formulario_Janela2($titulo, $dao, $function = '', $sucesso1, $sucesso2, $colocar = FALSE, $erro1 = '', $erro2 = '') {
         $tempo = new \Framework\App\Tempo('Controle Gerador Form Janela2');
         // Variaveis
         $camponovo = FALSE;
@@ -1846,11 +1846,11 @@ readfile($link);*/
         if ($campos!==NULL && !empty($campos)) {
             foreach ($campos as &$valor) {
             if (isset($valor['TabelaLinkada'])) {
-                $tabelalinkada = &$valor['TabelaLinkada'];
+                $tablelinkada = &$valor['TabelaLinkada'];
                 
                 // Verifica se ta liberado e faz os calculos necessarios
-                if ($tabelalinkada['formtipo']=='SelectMultiplo') {
-                    $get = $tabelalinkada['SelectMultiplo']['Linkado'];
+                if ($tablelinkada['formtipo']=='SelectMultiplo') {
+                    $get = $tablelinkada['SelectMultiplo']['Linkado'];
                     
                     // Vericica se realmente é um array e captura
                     if (isset($_POST[$get]) && is_array($_POST[$get])) {
@@ -1860,7 +1860,7 @@ readfile($link);*/
                     // Caso Exista o Mesmo o trata
                     if (isset($get) && is_array($get)) {
                         // Busca AS caracteristicas da tabela mandando a sigla como parametro
-                        $nome_da_tab        = \Framework\App\Conexao::Tabelas_GetSiglas_Recolher($tabelalinkada['Tabela']);
+                        $nome_da_tab        = \Framework\App\Conexao::Tabelas_GetSiglas_Recolher($tablelinkada['Tabela']);
                         $nome_da_tab        = $nome_da_tab['classe'];
                         
                         // Trata o Nome
@@ -1872,7 +1872,7 @@ readfile($link);*/
                         }
 
                         // Seleciona Todas as Opções
-                        $where = Array($tabelalinkada['SelectMultiplo']['Linkar'] => $identificador);
+                        $where = Array($tablelinkada['SelectMultiplo']['Linkar'] => $identificador);
                         $respostas  = $this->_Modelo->db->Sql_Select($nome_da_tab, $where);
                         // PEga essas opcoes e deleta a porra toda !
                         if ($respostas !== FALSE) {
@@ -1885,11 +1885,11 @@ readfile($link);*/
                             if ($valor2=='' || $valor===NULL) continue;
                             // Cria Objeto e Cadastra o Mesmo
                             $objeto2 = new $nome_da_tab_class;
-                            $objeto2->$tabelalinkada['SelectMultiplo']['Linkar']  = $identificador;
-                            $objeto2->$tabelalinkada['SelectMultiplo']['Linkado'] = $valor2;
-                            $ocampos = $tabelalinkada['SelectMultiplo']['Campos'];
-                            if (isset($tabelalinkada['Preencher']) && $tabelalinkada['Preencher'] !== FALSE) {
-                                foreach($tabelalinkada['Preencher'] as $indice3=>&$valor3) {
+                            $objeto2->$tablelinkada['SelectMultiplo']['Linkar']  = $identificador;
+                            $objeto2->$tablelinkada['SelectMultiplo']['Linkado'] = $valor2;
+                            $ocampos = $tablelinkada['SelectMultiplo']['Campos'];
+                            if (isset($tablelinkada['Preencher']) && $tablelinkada['Preencher'] !== FALSE) {
+                                foreach($tablelinkada['Preencher'] as $indice3=>&$valor3) {
                                     $objeto2->$indice3 = $valor3;
                                 }
                             }
@@ -1906,23 +1906,23 @@ readfile($link);*/
                     }
                 } else
                 // Verifica se ta liberado e faz os calculos necessarios
-                if ($tabelalinkada['formtipo']=='BoleanoMultiplo') {
+                if ($tablelinkada['formtipo']=='BoleanoMultiplo') {
                     // Pega os posts
-                    $get = 'tablink_'.$tabelalinkada['Tabela'];
+                    $get = 'tablink_'.$tablelinkada['Tabela'];
                     if (isset($_POST[$get]) && is_array($_POST[$get])) {
                         $get = array_unique(\Framework\App\Conexao::anti_injection($_POST[$get]));
                     }
                     if (isset($get) && is_array($get)) {
-                        $ovalor = $tabelalinkada['BoleanoMultiplo']['Valor'];
+                        $ovalor = $tablelinkada['BoleanoMultiplo']['Valor'];
                         // Busca AS caracteristicas da tabela mandando a sigla como parametro
-                        $nome_da_tab        = \Framework\App\Conexao::Tabelas_GetSiglas_Recolher($tabelalinkada['Tabela']);
+                        $nome_da_tab        = \Framework\App\Conexao::Tabelas_GetSiglas_Recolher($tablelinkada['Tabela']);
                         $nome_da_tab        = $nome_da_tab['classe'];
                             
                         // Pega as tabelas linkadas reversa para poder achar a outra tabela de ligacao
-                        $links_reverso = \Framework\App\Conexao::Tabelas_GetLinks_Recolher($tabelalinkada['Tabela'],TRUE);
+                        $links_reverso = \Framework\App\Conexao::Tabelas_GetLinks_Recolher($tablelinkada['Tabela'],TRUE);
                         unset($links_reverso[$sigla]);
                         // Seleciona e Atualiza
-                        $where = Array($links[$tabelalinkada['Tabela']] => $identificador);
+                        $where = Array($links[$tablelinkada['Tabela']] => $identificador);
                         $respostas  = $this->_Modelo->db->Sql_Select($nome_da_tab, $where);
                         //var_dump($respostas);
                         if ($respostas !== FALSE) {
@@ -1957,18 +1957,18 @@ readfile($link);*/
                                 // Confere o Resto
                                 if ($ovalor === FALSE) {
                                     $objeto2 = new $nome_da_tab;
-                                    $objeto2->$links[$tabelalinkada['Tabela']]  = $identificador;
+                                    $objeto2->$links[$tablelinkada['Tabela']]  = $identificador;
                                     $objeto2->$camponovo                        = $valor2;
                                     $sucesso = $this->_Modelo->db->Sql_Insert($objeto2);
                                 } else {
                                     $where = Array(
-                                        $links[$tabelalinkada['Tabela']]    => $identificador,
+                                        $links[$tablelinkada['Tabela']]    => $identificador,
                                         $camponovo                          => $valor2,
                                     );
                                     $respostas2  = $this->_Modelo->db->Sql_Select($nome_da_tab, $where,1);
                                     if ($respostas2 === FALSE) {
                                         $objeto2 = new $nome_da_tab;
-                                        $objeto2->$links[$tabelalinkada['Tabela']]  = $identificador;
+                                        $objeto2->$links[$tablelinkada['Tabela']]  = $identificador;
                                         $objeto2->$camponovo                        = $valor2;
                                         $objeto2->$ovalor                           = '1';
                                         $sucesso = $this->_Modelo->db->Sql_Insert($objeto2);
@@ -2078,8 +2078,8 @@ readfile($link);*/
             $this->_Visual->Json_IncluiTipo('Conteudo', $conteudo);
         } else {
             // Recarrega Main
-            if ($funcao!='' && $funcao !== FALSE) {
-                eval($funcao);
+            if ($function!='' && $function !== FALSE) {
+                eval($function);
             }
             // Json
             $this->_Visual->Json_Info_Update('Titulo', $titulo);
@@ -2804,4 +2804,3 @@ readfile($link);*/
     }     
     //abstract public function Main();
 }
-?>

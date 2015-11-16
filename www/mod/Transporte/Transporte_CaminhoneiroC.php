@@ -28,21 +28,21 @@ class Transporte_CaminhoneiroControle extends Transporte_Controle
     static function Caminhoneiros_Tabela(&$caminhoneiro) {
         $Registro   = &\Framework\App\Registro::getInstacia();
         $Visual     = &$Registro->_Visual;
-        $tabela = Array();
+        $table = Array();
         $i = 0;
         if (is_object($caminhoneiro)) $caminhoneiro = Array(0=>$caminhoneiro);reset($caminhoneiro);
         $perm_view = $Registro->_Acl->Get_Permissao_Url('Transporte/Caminhoneiro/Visualizar');
         foreach ($caminhoneiro as &$valor) {                
-            $tabela['Id'][$i]           = '#'.$valor->id;
-            $tabela['Categoria'][$i]    = $valor->categoria2;
-            $tabela['Nome'][$i]         = $valor->usuario2;
-            $tabela['Capacidade'][$i]   = $valor->capacidade;
-            $tabela['Telefone'][$i]     = $valor->telefone;
-            $tabela['Visualizar'][$i]   = $Visual->Tema_Elementos_Btn('Visualizar'     ,Array('Visualizar'        ,'Transporte/Caminhoneiro/Visualizar/'.$valor->id    , ''), $perm_view);
+            $table['Id'][$i]           = '#'.$valor->id;
+            $table['Categoria'][$i]    = $valor->categoria2;
+            $table['Nome'][$i]         = $valor->usuario2;
+            $table['Capacidade'][$i]   = $valor->capacidade;
+            $table['Telefone'][$i]     = $valor->telefone;
+            $table['Visualizar'][$i]   = $Visual->Tema_Elementos_Btn('Visualizar'     ,Array('Visualizar'        ,'Transporte/Caminhoneiro/Visualizar/'.$valor->id    , ''), $perm_view);
             
             ++$i;
         }
-        return Array($tabela, $i);
+        return Array($table, $i);
     }
     public function Visualizar($id, $export = FALSE) {
 
@@ -63,13 +63,13 @@ class Transporte_CaminhoneiroControle extends Transporte_Controle
         $caminhoneiro = $this->_Modelo->db->Sql_Select('Transporte_Caminhoneiro');
         if (is_object($caminhoneiro)) $caminhoneiro = Array(0=>$caminhoneiro);
         if ($caminhoneiro !== FALSE && !empty($caminhoneiro)) {
-            list($tabela, $i) = self::Caminhoneiros_Tabela($caminhoneiro);
+            list($table, $i) = self::Caminhoneiros_Tabela($caminhoneiro);
             // SE exportar ou mostra em tabela
             if ($export !== FALSE) {
-                self::Export_Todos($export, $tabela, 'Autonômos');
+                self::Export_Todos($export, $table, 'Autonômos');
             } else {
                 $this->_Visual->Show_Tabela_DataTable(
-                    $tabela,     // Array Com a Tabela
+                    $table,     // Array Com a Tabela
                     '',          // style extra
                     true,        // true -> Add ao Bloco, false => Retorna html
                     FALSE,        // Apagar primeira coluna ?
@@ -80,7 +80,7 @@ class Transporte_CaminhoneiroControle extends Transporte_Controle
                     )
                 );
             }
-            unset($tabela);
+            unset($table);
         } else {
             if ($export !== FALSE) {
                 $mensagem = __('Nenhum Autonômo Cadastrado para exportar');
@@ -152,13 +152,13 @@ class Transporte_CaminhoneiroControle extends Transporte_Controle
         }
         $titulo     = __('Dados Atualizados com Sucesso');
         $dao        = 'Transporte_Caminhoneiro';
-        $funcao     = 'Transporte_CaminhoneiroControle::Painel_Caminhoneiro(\''.$camada.'\',\'false\');';
+        $function     = 'Transporte_CaminhoneiroControle::Painel_Caminhoneiro(\''.$camada.'\',\'false\');';
         $sucesso1   = __('Atualização bem sucedida');
         $sucesso2   = __('Dados Atualizados com sucesso.');
         $alterar    = Array(
             'usuario'        =>  $this->_Acl->Usuario_GetID(),
         );
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);
     }
 }
 ?>

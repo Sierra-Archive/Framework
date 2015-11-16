@@ -36,18 +36,18 @@ class comercio_ProdutoModelo extends comercio_Modelo
     public function Produtos() {
         // Table's primary key
         $primaryKey = 'id';
-        $tabela = 'Comercio_Produto';
+        $table = 'Comercio_Produto';
         
         $perm_view = $this->_Registro->_Acl->Get_Permissao_Url('comercio/Estoque/Estoques');
         $perm_reduzir = $this->_Registro->_Acl->Get_Permissao_Url('comercio/Produto/Estoque_Reduzir');
-        $perm_editar = $this->_Registro->_Acl->Get_Permissao_Url('comercio/Produto/Produtos_Edit');
-        $perm_del = $this->_Registro->_Acl->Get_Permissao_Url('comercio/Produto/Produtos_Del');
+        $permissionEdit = $this->_Registro->_Acl->Get_Permissao_Url('comercio/Produto/Produtos_Edit');
+        $permissionDelete = $this->_Registro->_Acl->Get_Permissao_Url('comercio/Produto/Produtos_Del');
         
         $function = '';
-        if ($perm_editar) {
+        if ($permissionEdit) {
             $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Editar\'     ,Array(\'Editar Produto\'        ,\'comercio/Produto/Produtos_Edit/\'.$d.\'/\'    ,\'\'),TRUE);';
         }
-        if ($perm_del) {
+        if ($permissionDelete) {
             $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Deletar\'    ,Array(\'Deletar Produto\'       ,\'comercio/Produto/Produtos_Del/\'.$d.\'/\'     ,\'Deseja realmente deletar essa Produto ?\'),TRUE);';
         }
 
@@ -113,7 +113,7 @@ class comercio_ProdutoModelo extends comercio_Modelo
         ); //'Funções';
 
         echo json_encode(
-            \Framework\Classes\Datatable::complex( $_GET, Framework\App\Registro::getInstacia()->_Conexao, $tabela, $primaryKey, $columns, null)
+            \Framework\Classes\Datatable::complex( $_GET, Framework\App\Registro::getInstacia()->_Conexao, $table, $primaryKey, $columns, null)
         );
     }
 }

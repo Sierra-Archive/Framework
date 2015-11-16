@@ -182,4 +182,4 @@ final Class Comercio_Venda_Mesa_DAO extends Framework\App\Dao
         );
     }
 }
-?>
+

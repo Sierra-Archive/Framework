@@ -60,14 +60,14 @@ class comercio_UnidadeControle extends comercio_Controle
             if (is_object($linhas)) $linhas = Array(0=>$linhas);
             reset($linhas);
             foreach ($linhas as $indice=>&$valor) {
-                //$tabela['#Id'][$i]       = '#'.$valor->id;
-                $tabela['Nome da Unidade'][$i]      = $valor->nome;
-                $tabela['Funções'][$i]   = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Unidade'        ,'comercio/Unidade/Unidades_Edit/'.$valor->id.'/'    , '')).
+                //$table['#Id'][$i]       = '#'.$valor->id;
+                $table['Nome da Unidade'][$i]      = $valor->nome;
+                $table['Funções'][$i]   = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Unidade'        ,'comercio/Unidade/Unidades_Edit/'.$valor->id.'/'    , '')).
                                            $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Unidade'       ,'comercio/Unidade/Unidades_Del/'.$valor->id.'/'     ,'Deseja realmente deletar essa Unidade ?'));
                 ++$i;
             }
-            $this->_Visual->Show_Tabela_DataTable($tabela);
-            unset($tabela);
+            $this->_Visual->Show_Tabela_DataTable($table);
+            unset($table);
         } else {            
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhuma Unidade</font></b></center>');
         }
@@ -103,11 +103,11 @@ class comercio_UnidadeControle extends comercio_Controle
     public function Unidades_Add2() {
         $titulo     = __('Unidade Adicionada com Sucesso');
         $dao        = 'Comercio_Unidade';
-        $funcao     = '$this->Unidades();';
+        $function     = '$this->Unidades();';
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = __('Unidade cadastrada com sucesso.');
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);
     }
     /**
      * 
@@ -137,11 +137,11 @@ class comercio_UnidadeControle extends comercio_Controle
     public function Unidades_Edit2($id) {
         $titulo     = __('Unidade Editada com Sucesso');
         $dao        = Array('Comercio_Unidade', $id);
-        $funcao     = '$this->Unidades();';
+        $function     = '$this->Unidades();';
         $sucesso1   = __('Unidade Alterada com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);      
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);      
     }
     /**
      * 

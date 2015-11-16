@@ -31,44 +31,44 @@ class Simulador_TagControle extends Simulador_Controle
         }
     }
     static function Tags_Tabela(&$tags) {
-        $funcao = '';
+        $function = '';
         $Registro   = &\Framework\App\Registro::getInstacia();
         $Controle     = &$Registro->_Controle;
         $Modelo     = &$Registro->_Modelo;
         $Visual     = &$Registro->_Visual;
-        $tabela = Array();
+        $table = Array();
         $i = 0;
         if ($tags !== FALSE) {
             // Percorre Tags
             if (is_object($tags)) $tags = Array(0=>$tags);
             reset($tags);
             if (!empty($tags)) {
-                $perm_editar = \Framework\App\Registro::getInstacia()->_Acl->Get_Permissao_Url('Simulador/Tag/Tags_Edit');
-                $perm_del = \Framework\App\Registro::getInstacia()->_Acl->Get_Permissao_Url('Simulador/Tag/Tags_Del');
+                $permissionEdit = \Framework\App\Registro::getInstacia()->_Acl->Get_Permissao_Url('Simulador/Tag/Tags_Edit');
+                $permissionDelete = \Framework\App\Registro::getInstacia()->_Acl->Get_Permissao_Url('Simulador/Tag/Tags_Del');
 
                 foreach ($tags as &$valor) {
-                    $tabela['Id'][$i]    = $valor->id;
-                    $tabela['Nome'][$i]      = $valor->nome;
-                    $tabela['Tipo de Resultado'][$i]      = $valor->resultado_tipo;
-                    $tabela['Observação'][$i]      = $valor->obs;
+                    $table['Id'][$i]    = $valor->id;
+                    $table['Nome'][$i]      = $valor->nome;
+                    $table['Tipo de Resultado'][$i]      = $valor->resultado_tipo;
+                    $table['Observação'][$i]      = $valor->obs;
                     
-                    $tabela['Funções'][$i]          = $Visual->Tema_Elementos_Btn('Editar'     ,Array(__('Editar Caracteristica')        ,'Simulador/Tag/Tags_Edit/'.$valor->id.'/'.$raiz    , ''), $perm_editar).
-                                                      $Visual->Tema_Elementos_Btn('Deletar'    ,Array(__('Deletar Caracteristica')       ,'Simulador/Tag/Tags_Del/'.$valor->id.'/'.$raiz     ,__('Deseja realmente deletar essa Caracteristica ?')), $perm_del);
+                    $table['Funções'][$i]          = $Visual->Tema_Elementos_Btn('Editar'     ,Array(__('Editar Caracteristica')        ,'Simulador/Tag/Tags_Edit/'.$valor->id.'/'.$raiz    , ''), $permissionEdit).
+                                                      $Visual->Tema_Elementos_Btn('Deletar'    ,Array(__('Deletar Caracteristica')       ,'Simulador/Tag/Tags_Del/'.$valor->id.'/'.$raiz     ,__('Deseja realmente deletar essa Caracteristica ?')), $permissionDelete);
 
-                    $funcao .= $tabela['Funções'][$i];
+                    $function .= $table['Funções'][$i];
                     ++$i;
                 }
             }
         }
-        if ($funcao==='') {
-            unset($tabela['Funções']);
+        if ($function==='') {
+            unset($table['Funções']);
         }
         // Desconta Primeiro Registro
         if ($raiz !== FALSE && $raiz!=0) {
             $i = $i-1;
         }
         // Retorna List
-        return Array($tabela, $i);
+        return Array($table, $i);
     }
     /**
      * 
@@ -97,15 +97,15 @@ class Simulador_TagControle extends Simulador_Controle
         $endereco = __('Caracteristica');
         $i = 0;
         
-        $tabela_colunas = Array();
+        $table_colunas = Array();
 
-        $tabela_colunas[] = __('Id');
-        $tabela_colunas[] = __('Nome');
-        $tabela_colunas[] = __('Tipo de Resultado');
-        $tabela_colunas[] = __('Observação');
-        $tabela_colunas[] = __('Funções');
+        $table_colunas[] = __('Id');
+        $table_colunas[] = __('Nome');
+        $table_colunas[] = __('Tipo de Resultado');
+        $table_colunas[] = __('Observação');
+        $table_colunas[] = __('Funções');
 
-        $html = $_Visual->Show_Tabela_DataTable_Massiva($tabela_colunas,'Simulador/Tag/Tags', '', FALSE, FALSE);
+        $html = $_Visual->Show_Tabela_DataTable_Massiva($table_colunas,'Simulador/Tag/Tags', '', FALSE, FALSE);
         
         $titulo = $endereco.' (<span id="DataTable_Contador">0</span>)';
         return Array($titulo, $html, $i);
@@ -137,11 +137,11 @@ class Simulador_TagControle extends Simulador_Controle
     public function Tags_Add2($raiz = 0) {
         $titulo     = __('Caracteristica Adicionada com Sucesso');
         $dao        = 'Simulador_Tag';
-        $funcao     = '$this->Tags('.$raiz.');';
+        $function     = '$this->Tags('.$raiz.');';
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = __('Caracteristica cadastrada com sucesso.');
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);
     }
     /**
      * 
@@ -195,11 +195,11 @@ class Simulador_TagControle extends Simulador_Controle
     public function Tags_Edit2($id, $raiz=0) {
         $titulo     = __('Editado com Sucesso');
         $dao        = Array('Simulador_Tag', $id);
-        $funcao     = '$this->Tags('.$raiz.');';
+        $function     = '$this->Tags('.$raiz.');';
         $sucesso1   = __('Caracteristica/Tag Alterado com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);   
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);   
     }
     /**
      * 
@@ -302,14 +302,14 @@ class Simulador_TagControle extends Simulador_Controle
         }
         $titulo     = __('Conexão de Tag Feita com Sucesso');
         $dao        = 'Simulador_Tag_Conexao';
-        $funcao     = 'SimuladorControle::Tag_Dinamica(\''.$motivo.'\',\''.$motivoid.'\',\''.$camada.'\',\'false\');';
+        $function     = 'SimuladorControle::Tag_Dinamica(\''.$motivo.'\',\''.$motivoid.'\',\''.$camada.'\',\'false\');';
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = __('Conexão cadastrada com sucesso.');
         $alterar    = Array(
             'motivo'        =>  $motivo,
             'motivoid'      =>  $motivoid
         );
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);
     }
 }
 ?>

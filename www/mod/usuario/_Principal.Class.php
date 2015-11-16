@@ -59,28 +59,28 @@ class usuario_Principal implements \Framework\PrincipalInterface
         if ($usuario !== FALSE && !empty($usuario)) {
             reset($usuario);
             foreach ($usuario as $indice=>&$valor) {
-                //$tabela['#Id'][$i]               = '#'.$valor->id;
-                $tabela['Nome'][$i]             = $valor->nome;
-                $tabela['Email'][$i]            = $valor->email;
-                $tabela['Telefone'][$i]         = $valor->telefone;
-                $tabela['Celular'][$i]          = $valor->celular;
+                //$table['#Id'][$i]               = '#'.$valor->id;
+                $table['Nome'][$i]             = $valor->nome;
+                $table['Email'][$i]            = $valor->email;
+                $table['Telefone'][$i]         = $valor->telefone;
+                $table['Celular'][$i]          = $valor->celular;
                 //if ($grupo == FALSE) {
-                    $tabela['Grupo'][$i]        = $valor->grupo;
+                    $table['Grupo'][$i]        = $valor->grupo;
                 //}
-                //$tabela['Nivel de Usuário'][$i] = $niveluser;
-                //$tabela['Nivel de Admin'][$i]   = $niveladmin;
-                if (\Framework\App\Sistema_Funcoes::Perm_Modulos('Financeiro')) $tabela['Saldo'][$i]            = $valor->saldo;
-                $tabela['Funções'][$i]          = '';
+                //$table['Nivel de Usuário'][$i] = $niveluser;
+                //$table['Nivel de Admin'][$i]   = $niveladmin;
+                if (\Framework\App\Sistema_Funcoes::Perm_Modulos('Financeiro')) $table['Saldo'][$i]            = $valor->saldo;
+                $table['Funções'][$i]          = '';
                 if (\Framework\App\Sistema_Funcoes::Perm_Modulos('Financeiro')) {
-                    $tabela['Funções'][$i]     .= '<a data-confirma="O cliente realizou um deposito para a empresa?" title="Add quantia ao Saldo do Usuário" class="lajax explicar-titulo" data-acao="" href="'.URL_PATH.'Financeiro/Admin/financeiro_deposito/'.$valor->id.'/"><img alt="'.__('Armazenar Depósito').' src="'.WEB_URL.'img/icons/cifrao_16x16.png"></a>'.
+                    $table['Funções'][$i]     .= '<a data-confirma="O cliente realizou um deposito para a empresa?" title="Add quantia ao Saldo do Usuário" class="lajax explicar-titulo" data-acao="" href="'.URL_PATH.'Financeiro/Admin/financeiro_deposito/'.$valor->id.'/"><img alt="'.__('Armazenar Depósito').' src="'.WEB_URL.'img/icons/cifrao_16x16.png"></a>'.
                     '<a data-confirma="O cliente confirmou o saque?" title="Remover Quantia do Saldo do Usuário" class="lajax explicar-titulo" data-acao="" href="'.URL_PATH.'Financeiro/Admin/financeiro_retirar/'.$valor->id.'/"><img alt="'.__('Armazenar Retirada').' src="'.WEB_URL.'img/icons/cifrao_16x16.png"></a>';
                 }
-                $tabela['Funções'][$i]         .= '<a title="Editar Usuário" class="lajax explicar-titulo" data-acao="" href="'.URL_PATH.'usuario/Admin/Usuarios_Edit/'.$valor->id.'/"><img alt="'.__('Editar Usuário').' src="'.WEB_URL.'img/icons/icon_edit.png"></a> '.
+                $table['Funções'][$i]         .= '<a title="Editar Usuário" class="lajax explicar-titulo" data-acao="" href="'.URL_PATH.'usuario/Admin/Usuarios_Edit/'.$valor->id.'/"><img alt="'.__('Editar Usuário').' src="'.WEB_URL.'img/icons/icon_edit.png"></a> '.
                 '<a data-confirma="Deseja realmente deletar esse usuário?" title="Deletar Usuário" class="lajax explicar-titulo" data-acao="" href="'.URL_PATH.'usuario/Admin/usuarios_Del/'.$valor->id.'/"><img alt="'.__('Deletar Usuário').' src="'.WEB_URL.'img/icons/icon_bad.png"></a>';
                 ++$i;
             }
-            $Visual->Show_Tabela_DataTable($tabela);;
-            unset($tabela);
+            $Visual->Show_Tabela_DataTable($table);;
+            unset($table);
         } else { 
             $Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Usuário na busca '.$busca.'</font></b></center>');
         }

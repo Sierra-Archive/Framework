@@ -186,8 +186,8 @@ class predial_Principal implements \Framework\PrincipalInterface
         $Visual->Blocar('<a title="Adicionar Advertência" class="btn btn-success lajax explicar-titulo" data-acao="" href="'.URL_PATH.'predial/Advertencia/Advertencias_Add">Adicionar nova Advertência</a><div class="space15"></div>');
         if (is_object($advertencias)) $advertencias = Array(0=>$advertencias);
         if ($advertencias !== FALSE && !empty($advertencias)) {
-            list($tabela, $i) = predial_AdvertenciaControle::Advertencias_Tabela($advertencias);
-            $Visual->Show_Tabela_DataTable($tabela);
+            list($table, $i) = predial_AdvertenciaControle::Advertencias_Tabela($advertencias);
+            $Visual->Show_Tabela_DataTable($table);
         } else {
             $Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhuma Advertência na Busca '.$busca.'</font></b></center>');
         }
@@ -206,8 +206,8 @@ class predial_Principal implements \Framework\PrincipalInterface
         $Visual->Blocar('<a title="Adicionar Animal" class="btn btn-success lajax explicar-titulo" data-acao="" href="'.URL_PATH.'predial/Correio/Animais_Add">Adicionar novo Animal</a><div class="space15"></div>');
         if (is_object($animais)) $animais = Array(0=>$animais);
         if ($animais !== FALSE && !empty($animais)) {
-            list($tabela, $i) = predial_CorreioControle::Animais_Tabela($animais);
-            $Visual->Show_Tabela_DataTable($tabela);
+            list($table, $i) = predial_CorreioControle::Animais_Tabela($animais);
+            $Visual->Show_Tabela_DataTable($table);
         } else {           
             $Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Animal na Busca '.$busca.'</font></b></center>');
         }
@@ -226,8 +226,8 @@ class predial_Principal implements \Framework\PrincipalInterface
         $Visual->Blocar('<a title="Adicionar Apartamento" class="btn btn-success lajax explicar-titulo" data-acao="" href="'.URL_PATH.'predial/Apart/Aparts_Add">Adicionar novo Apartamento</a><div class="space15"></div>');
         if (is_object($apartamentos)) $apartamentos = Array(0=>$apartamentos);
         if ($apartamentos !== FALSE && !empty($apartamentos)) {
-            list($tabela, $i) = predial_ApartControle::Aparts_Tabela($apartamentos);
-            $Visual->Show_Tabela_DataTable($tabela);
+            list($table, $i) = predial_ApartControle::Aparts_Tabela($apartamentos);
+            $Visual->Show_Tabela_DataTable($table);
         } else {       
             $Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Apartamento na Busca '.$busca.'</font></b></center>');
         }
@@ -246,8 +246,8 @@ class predial_Principal implements \Framework\PrincipalInterface
         $Visual->Blocar('<a title="Adicionar Bloco" class="btn btn-success lajax explicar-titulo" data-acao="" href="'.URL_PATH.'predial/Bloco/Blocos_Add">Adicionar novo Bloco</a><div class="space15"></div>');
         if (is_object($blocos)) $blocos = Array(0=>$blocos);
         if ($blocos !== FALSE && !empty($blocos)) {
-            list($tabela, $i) = predial_BlocoControle::Blocos_Tabela($blocos);
-            $Visual->Show_Tabela_DataTable($tabela);
+            list($table, $i) = predial_BlocoControle::Blocos_Tabela($blocos);
+            $Visual->Show_Tabela_DataTable($table);
         } else {          
             $Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Bloco na Busca '.$busca.'</font></b></center>');
         }
@@ -270,8 +270,8 @@ class predial_Principal implements \Framework\PrincipalInterface
         $Visual->Blocar('<a title="Adicionar Correio" class="btn btn-success lajax explicar-titulo" data-acao="" href="'.URL_PATH.'predial/Correio/Correios_Add">Adicionar novo Correio</a><div class="space15"></div>');
         if (is_object($correios)) $correios = Array(0=>$correios);
         if ($correios !== FALSE && !empty($correios)) {
-            list($tabela, $i) = predial_CorreioControle::Correios_Tabela($correios);
-            $Visual->Show_Tabela_DataTable($tabela);
+            list($table, $i) = predial_CorreioControle::Correios_Tabela($correios);
+            $Visual->Show_Tabela_DataTable($table);
         } else {       
             $Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Correio na Busca '.$busca.'</font></b></center>');
         }
@@ -295,8 +295,8 @@ class predial_Principal implements \Framework\PrincipalInterface
         $Visual->Blocar('<a title="Adicionar Informativo" class="btn btn-success lajax explicar-titulo" data-acao="" href="'.URL_PATH.'predial/Informativo/Informativos_Add">Adicionar novo Informativo</a><div class="space15"></div>');
         if (is_object($informativos)) $informativos = Array(0=>$informativos);
         if ($informativos !== FALSE && !empty($informativos)) {
-            list($tabela, $i) = predial_InformativoControle::Informativos_Tabela($informativos);
-            $Visual->Show_Tabela_DataTable($tabela);
+            list($table, $i) = predial_InformativoControle::Informativos_Tabela($informativos);
+            $Visual->Show_Tabela_DataTable($table);
         } else {     
             $Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Informativo na Busca '.$busca.'</font></b></center>');
         }
@@ -318,8 +318,8 @@ class predial_Principal implements \Framework\PrincipalInterface
         $Visual->Blocar('<a title="Adicionar Veiculo" class="btn btn-success lajax explicar-titulo" data-acao="" href="'.URL_PATH.'predial/Correio/Veiculos_Add">Adicionar novo Veiculo</a><div class="space15"></div>');
         if (is_object($veiculos)) $veiculos = Array(0=>$veiculos);
         if ($veiculos !== FALSE && !empty($veiculos)) {
-            list($tabela, $i) = predial_CorreioControle::Veiculos_Tabela($veiculos);
-            $Visual->Show_Tabela_DataTable($tabela);
+            list($table, $i) = predial_CorreioControle::Veiculos_Tabela($veiculos);
+            $Visual->Show_Tabela_DataTable($table);
         } else {      
             $Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Veiculo na Busca '.$busca.'</font></b></center>');
         }

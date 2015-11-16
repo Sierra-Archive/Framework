@@ -80,24 +80,24 @@ class Financeiro_AdminControle extends Financeiro_Controle
         $this->_Visual->Bloco_Maior_CriaJanela($titulo);
     }
     public function usuario_formatab(&$usuarios) {
-        $tabela = Array();
+        $table = Array();
         $i = 0;
         reset($usuarios);
         foreach ($usuarios as $indice=>&$valor) {
 
-            $tabela['Id'][$i] = $usuarios[$indice]['id'];
-            $tabela['Nome'][$i] = $usuarios[$indice]['nome'];
-            $tabela['Email'][$i] = $usuarios[$indice]['email'];
-            $tabela['Grupo'][$i] = $usuarios[$indice]['grupo'];
-            $tabela['Saldo'][$i] = $usuarios[$indice]['saldo'];
-            $tabela['Funções'][$i] = '<a data-confirma="O cliente realizou um deposito para a empresa?" title="Add quantia ao Saldo do Usuário" class="lajax explicar-titulo" data-acao="" href="'.URL_PATH.'Financeiro/Admin/financeiro_deposito/'.$usuarios[$indice]['id'].'/"><img alt="'.__('Armazenar Depósito da Empresa').' src="'.WEB_URL.'img/icons/cifrao_16x16.png"></a>'.
+            $table['Id'][$i] = $usuarios[$indice]['id'];
+            $table['Nome'][$i] = $usuarios[$indice]['nome'];
+            $table['Email'][$i] = $usuarios[$indice]['email'];
+            $table['Grupo'][$i] = $usuarios[$indice]['grupo'];
+            $table['Saldo'][$i] = $usuarios[$indice]['saldo'];
+            $table['Funções'][$i] = '<a data-confirma="O cliente realizou um deposito para a empresa?" title="Add quantia ao Saldo do Usuário" class="lajax explicar-titulo" data-acao="" href="'.URL_PATH.'Financeiro/Admin/financeiro_deposito/'.$usuarios[$indice]['id'].'/"><img alt="'.__('Armazenar Depósito da Empresa').' src="'.WEB_URL.'img/icons/cifrao_16x16.png"></a>'.
             '<a data-confirma="O cliente confirmou o saque?" title="Remover Quantia do Saldo do Usuário" class="lajax explicar-titulo" data-acao="" href="'.URL_PATH.'Financeiro/Admin/financeiro_retirar/'.$usuarios[$indice]['id'].'/"><img alt="'.__('Armazenar Retirada da Empresa').' src="'.WEB_URL.'img/icons/cifrao_16x16.png"></a>'.
             '<a title="Editar Usuário" class="lajax explicar-titulo" data-acao="" href="'.URL_PATH.'usuario/Admin/usuarios_carregajanelaEdit/'.$usuarios[$indice]['id'].'/"><img alt="'.__('Editar Usuário').' src="'.WEB_URL.'img/icons/icon_edit.png"></a> '.
             '<a data-confirma="Deseja realmente deletar esse usuário?" title="Deletar Usuário" class="lajax explicar-titulo" data-acao="" href="'.URL_PATH.'usuario/Admin/usuarios_Del/'.$usuarios[$indice]['id'].'/"><img alt="'.__('Deletar Usuário').' src="'.WEB_URL.'img/icons/icon_bad.png"></a>';
             ++$i;
         }
-        $this->_Visual->Show_Tabela_DataTable($tabela);
-        unset($tabela);
+        $this->_Visual->Show_Tabela_DataTable($table);
+        unset($table);
         return $i;
     }
     /**
@@ -310,4 +310,3 @@ class Financeiro_AdminControle extends Financeiro_Controle
         $this->_Visual->Json_Info_Update('Historico',0);    
     }
 }
-?>

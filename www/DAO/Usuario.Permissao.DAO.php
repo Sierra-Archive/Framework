@@ -120,4 +120,4 @@ final Class Usuario_Permissao_DAO extends Framework\App\Dao
         );
     }
 }
-?>
+

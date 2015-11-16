@@ -84,8 +84,8 @@ class noticia_Principal implements \Framework\PrincipalInterface
         $Visual->Blocar('<a title="Adicionar Noticia" class="btn btn-success lajax explicar-titulo" data-acao="" href="'.URL_PATH.'Noticia/Admin/Noticias_Add">Adicionar novo Noticia</a><div class="space15"></div>');
         if (is_object($noticias)) $noticias = Array(0=>$noticias);
         if ($noticias !== FALSE && !empty($noticias)) {
-            list($tabela, $i) = noticia_AdminControle::Noticias_Tabela($noticias);
-            $Visual->Show_Tabela_DataTable($tabela);
+            list($table, $i) = noticia_AdminControle::Noticias_Tabela($noticias);
+            $Visual->Show_Tabela_DataTable($table);
         } else {   
             $Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhuma Noticia na Busca '.$busca.'</font></b></center>');
         }

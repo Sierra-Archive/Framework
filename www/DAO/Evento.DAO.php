@@ -294,4 +294,4 @@ final Class Evento_DAO extends Framework\App\Dao
         );
     }
 }
-?>
+

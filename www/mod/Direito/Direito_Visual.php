@@ -49,4 +49,3 @@ class DireitoVisual extends \Framework\App\Visual
         return $html;
     }
 }
-?>

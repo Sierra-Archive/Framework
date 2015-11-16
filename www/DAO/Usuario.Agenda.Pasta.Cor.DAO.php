@@ -73,4 +73,4 @@ final Class Usuario_Agenda_Pasta_Cor_DAO extends Framework\App\Dao
         );
     }
 }
-?>
+

@@ -153,4 +153,4 @@ final Class Simulador_Tag_DAO extends Framework\App\Dao
         );
     }
 }
-?>
+

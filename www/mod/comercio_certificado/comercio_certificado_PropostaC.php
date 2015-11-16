@@ -88,11 +88,11 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
                 $proposta = Array(0=>$proposta);
             }
             reset($proposta);
-            $tabela = new \Framework\Classes\Tabela();
-            $tabela->addcabecario(Array('#Cod', 'Funções'));
+            $table = new \Framework\Classes\Tabela();
+            $table->addcabecario(Array('#Cod', 'Funções'));
             foreach ($proposta as &$valor) {
-                //$tabela['#Cod'][$i]      = '#'.$valor->num_proposta;
-                //$tabela['Funções'][$i]   = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Proposta'        ,'comercio_certificado/Proposta/Propostas_Edit/'.$valor->id.'/'.$cliente.'/'    , '')).
+                //$table['#Cod'][$i]      = '#'.$valor->num_proposta;
+                //$table['Funções'][$i]   = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Proposta'        ,'comercio_certificado/Proposta/Propostas_Edit/'.$valor->id.'/'.$cliente.'/'    , '')).
                 //                           $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Proposta'       ,'comercio_certificado/Proposta/Propostas_Del/'.$valor->id.'/'.$cliente.'/'     ,'Deseja realmente deletar essa Proposta ?'));
                 // Classifica de Acordo se foi aceito ou nao
                 $class = 'left';
@@ -114,12 +114,12 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
                                     $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Proposta'        ,'comercio_certificado/Proposta/Propostas_Edit/'.$valor->id.'/'.$cliente.'/'    , ''))/*.
                     $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Proposta'       ,'comercio_certificado/Proposta/Propostas_Del/'.$valor->id.'/'.$cliente.'/'     ,'Deseja realmente deletar essa Proposta ?'))*/,'class'=>''),
                 );
-                $tabela->addcorpo($corpo);
+                $table->addcorpo($corpo);
                 ++$i;
             }
-            //$html .= $this->_Visual->Show_Tabela_DataTable($tabela, '', FALSE);
-            $html .= $tabela->retornatabela();
-            unset($tabela);
+            //$html .= $this->_Visual->Show_Tabela_DataTable($table, '', FALSE);
+            $html .= $table->retornatabela();
+            unset($table);
         } else {
             $html .= '<center><b><font color="#FF0000" size="5">Nenhuma Proposta</font></b></center>';
         }
@@ -539,19 +539,19 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
     static function Periodicas_Tabela(&$periodicas) {
         $Registro   = &\Framework\App\Registro::getInstacia();
         $Visual     = &$Registro->_Visual;
-        $tabela = Array();
+        $table = Array();
         $i = 0;
         if (is_object($periodicas)) $periodicas = Array(0=>$periodicas);
         reset($periodicas);
         foreach ($periodicas as &$valor) {
-            $tabela['Proposta'][$i]         = $valor->idproposta2;
-            $tabela['Auditor'][$i]          = $valor->autor;
-            $tabela['Data Auditoria'][$i]   = $valor->data;
-            $tabela['Data Realização'][$i]  = $valor->data_realizacao;
-            $tabela['Funções'][$i]          = $Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Periodica'        ,'comercio_certificado/Proposta/Periodicas_Edit/'.$valor->id.'/'    , ''));
+            $table['Proposta'][$i]         = $valor->idproposta2;
+            $table['Auditor'][$i]          = $valor->autor;
+            $table['Data Auditoria'][$i]   = $valor->data;
+            $table['Data Realização'][$i]  = $valor->data_realizacao;
+            $table['Funções'][$i]          = $Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Periodica'        ,'comercio_certificado/Proposta/Periodicas_Edit/'.$valor->id.'/'    , ''));
             ++$i;
         }
-        return Array($tabela, $i);
+        return Array($table, $i);
     }
     public function Periodicas($cliente) {
         return $this->_Visual->Bloco_Customizavel(Array(
@@ -584,9 +584,9 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
         $i = 0;
         $periodicas = $this->_Modelo->db->Sql_Select('Comercio_Certificado_AuditoriaPeriodica',Array('idcliente'=>$cliente));
         if ($periodicas !== FALSE && !empty($periodicas)) {
-            list($tabela, $i) = self::Periodicas_Tabela($periodicas);
-            $html = $this->_Visual->Show_Tabela_DataTable($tabela, '', FALSE);
-            unset($tabela);
+            list($table, $i) = self::Periodicas_Tabela($periodicas);
+            $html = $this->_Visual->Show_Tabela_DataTable($table, '', FALSE);
+            unset($table);
         } else {
             $html = '<center><b><font color="#FF0000" size="5">Nenhuma Periódica Marcada</font></b></center>';            
         }
@@ -637,11 +637,11 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
         $id = (int) $id;
         $titulo     = __('Periodica Editada com Sucesso');
         $dao        = Array('Comercio_Certificado_AuditoriaPeriodica', $id);
-        $funcao     = FALSE;
+        $function     = FALSE;
         $sucesso1   = __('Periodica Alterada com Sucesso.');
         $sucesso2   = ''.$_POST["autor"].' teve a alteração bem sucedida';
         $alterar    = Array();
-        $sucesso = $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar); 
+        $sucesso = $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar); 
         if ($sucesso) {
             
             $periodicas    = $this->_Modelo->db->Sql_Select('Comercio_Certificado_AuditoriaPeriodica',  Array('id'=>$id),1);

@@ -27,16 +27,16 @@ class Direito_Controle extends \Framework\App\Controle
         if (!empty($processos)) {
             if ($imprimir!='false') {
                 // Cria Tabela Estatica
-                $tabela = new \Framework\Classes\Tabela();
-                $tabela->addcabecario(array('Data', 'Autor / Reu', 'Comarca / Vara', 'Fases', 'Dias em Atraso')); 
+                $table = new \Framework\Classes\Tabela();
+                $table->addcabecario(array('Data', 'Autor / Reu', 'Comarca / Vara', 'Fases', 'Dias em Atraso')); 
             } else {
                 // Cria Tabela Dinamica
-                $tabela = Array();
+                $table = Array();
             }
             reset($processos);
             foreach ($processos as &$valor) {
                 if ($imprimir!='false') {
-                    $tabela->addcorpo(array(
+                    $table->addcorpo(array(
                         array("nome" => data_hora_eua_brasil($valor['DATA'])), //, "class" => 'tbold tleft'
                         array("nome" => $valor['AUTOR'].' / '.$valor['REU']),
                         array("nome" => $valor['COMARCA'].' / '.$valor['VARA']),
@@ -44,22 +44,22 @@ class Direito_Controle extends \Framework\App\Controle
                         array("nome" => $valor['ATRASO'])
                     ));
                 } else {
-                    $tabela['Data'][$i] = data_hora_eua_brasil($valor['DATA']);
-                    $tabela['Autor / Reu'][$i] = $valor['AUTOR'].' / '.$valor['REU'];
-                    $tabela['Comarca / Vara'][$i] = $valor['COMARCA'].' / '.$valor['VARA'];
-                    $tabela['Fases'][$i] = $valor['FASE'];
-                    $tabela['Dias em Atraso'][$i] = $valor['ATRASO'];
+                    $table['Data'][$i] = data_hora_eua_brasil($valor['DATA']);
+                    $table['Autor / Reu'][$i] = $valor['AUTOR'].' / '.$valor['REU'];
+                    $table['Comarca / Vara'][$i] = $valor['COMARCA'].' / '.$valor['VARA'];
+                    $table['Fases'][$i] = $valor['FASE'];
+                    $table['Dias em Atraso'][$i] = $valor['ATRASO'];
                 }
                 ++$i;
             }
             if ($imprimir!='false') {
-                $this->_Visual->Blocar($tabela->retornatabela());
+                $this->_Visual->Blocar($table->retornatabela());
                 $this->_Visual->Blocar('<br><center><a href="#" onClick="window.print();" ><img width="121" height="34" src="'.WEB_URL.'img/icons/imprimir.gif"></a></center>');
             } else {
-                $this->_Visual->Show_Tabela_DataTable($tabela);
+                $this->_Visual->Show_Tabela_DataTable($table);
                 
             }
-            unset($tabela);
+            unset($table);
         } else {         
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Processo</font></b></center>');
         }
@@ -92,4 +92,3 @@ class Direito_Controle extends \Framework\App\Controle
         $this->_Visual->Bloco_Menor_CriaConteudo();
     }
 }
-?>

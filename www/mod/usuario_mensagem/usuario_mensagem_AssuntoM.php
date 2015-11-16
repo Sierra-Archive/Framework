@@ -20,26 +20,26 @@ class usuario_mensagem_AssuntoModelo extends usuario_mensagem_Modelo
         
         // Table's primary key
         $primaryKey = 'id';
-        $tabela = 'Usuario_Mensagem_Assunto';
+        $table = 'Usuario_Mensagem_Assunto';
         
-        $perm_editar = $this->_Registro->_Acl->Get_Permissao_Url('usuario_mensagem/Assunto/Assuntos_Edit');
-        $perm_del = $this->_Registro->_Acl->Get_Permissao_Url('usuario_mensagem/Assunto/Assuntos_Del');
+        $permissionEdit = $this->_Registro->_Acl->Get_Permissao_Url('usuario_mensagem/Assunto/Assuntos_Edit');
+        $permissionDelete = $this->_Registro->_Acl->Get_Permissao_Url('usuario_mensagem/Assunto/Assuntos_Del');
         
-        if ($perm_editar && $perm_del) {
-            $funcao = function( $d, $row ) {
+        if ($permissionEdit && $permissionDelete) {
+            $function = function( $d, $row ) {
                 return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Assunto'        ,'usuario_mensagem/Assunto/Assuntos_Edit/'.$d.'/'    , ''),TRUE).
                        Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Assunto'       ,'usuario_mensagem/Assunto/Assuntos_Del/'.$d.'/'     ,'Deseja realmente deletar essa Assunto ?'),TRUE);
             };
-        } else if ($perm_editar) {
-            $funcao = function( $d, $row ) {
+        } else if ($permissionEdit) {
+            $function = function( $d, $row ) {
                 return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Assunto'        ,'usuario_mensagem/Assunto/Assuntos_Edit/'.$d.'/'    , ''),TRUE);
             };
-        } else if ($perm_del) {
-            $funcao = function( $d, $row ) {
+        } else if ($permissionDelete) {
+            $function = function( $d, $row ) {
                 return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Assunto'       ,'usuario_mensagem/Assunto/Assuntos_Del/'.$d.'/'     ,'Deseja realmente deletar essa Assunto ?'),TRUE);
             };
         } else {
-            $funcao = function( $d, $row ) {
+            $function = function( $d, $row ) {
                 return '';
             };
         }
@@ -53,12 +53,12 @@ class usuario_mensagem_AssuntoModelo extends usuario_mensagem_Modelo
                 }
             ),
             array( 'db' => 'id', 'dt' => 3,
-                'formatter' => $funcao
+                'formatter' => $function
             )
         );
 
         echo json_encode(
-            \Framework\Classes\Datatable::complex( $_GET, Framework\App\Registro::getInstacia()->_Conexao, $tabela, $primaryKey, $columns, null )
+            \Framework\Classes\Datatable::complex( $_GET, Framework\App\Registro::getInstacia()->_Conexao, $table, $primaryKey, $columns, null )
         );
     }
 }

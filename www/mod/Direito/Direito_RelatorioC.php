@@ -359,4 +359,3 @@ class Direito_RelatorioControle extends Direito_Controle
         if ($imprimir=='false') $this->_Visual->Json_Info_Update('Titulo', 'Impressão de Relatórios - Passo Final');
     }
 }
-?>

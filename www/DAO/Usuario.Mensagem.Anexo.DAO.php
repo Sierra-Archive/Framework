@@ -152,4 +152,4 @@ final Class Usuario_Mensagem_Anexo_DAO extends Framework\App\Dao
         );
     }
 }
-?>
+

@@ -18,4 +18,3 @@ class Engenharia_EquipamentoModelo extends Engenharia_Modelo
       parent::__construct();
     }
 }
-?>

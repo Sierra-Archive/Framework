@@ -17,4 +17,3 @@ class Curso_CursoVisual extends Curso_Visual
       parent::__construct();
     }
 }
-?>

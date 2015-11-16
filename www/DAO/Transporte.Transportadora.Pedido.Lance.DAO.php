@@ -194,4 +194,4 @@ final Class Transporte_Transportadora_Pedido_Lance_DAO extends Framework\App\Dao
         );
     }
 }
-?>
+

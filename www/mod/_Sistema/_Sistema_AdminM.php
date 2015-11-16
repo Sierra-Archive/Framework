@@ -8,10 +8,10 @@ class _Sistema_AdminModelo extends _Sistema_Modelo
     public function Configs() {
         // Table's primary key
         $primaryKey = 'chave';
-        $tabela = 'Sistema_Config';
+        $table = 'Sistema_Config';
         
         
-        $perm_editar = $this->_Registro->_Acl->Get_Permissao_Url('_Sistema/Admin/Configs_Edit');
+        $permissionEdit = $this->_Registro->_Acl->Get_Permissao_Url('_Sistema/Admin/Configs_Edit');
         
 
 
@@ -30,7 +30,7 @@ class _Sistema_AdminModelo extends _Sistema_Modelo
 
 
         $function = '';
-        if ($perm_editar) {
+        if ($permissionEdit) {
             $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Editar\'     ,Array(__(\'Editar Configuração\')        ,\'_Sistema/Admin/Configs_Edit/\'.$d.\'/\'    ,\'\'),TRUE);';
         }
         
@@ -41,7 +41,7 @@ class _Sistema_AdminModelo extends _Sistema_Modelo
         ); //'Funções';
                 
         echo json_encode(
-            \Framework\Classes\Datatable::complex( $_GET, Framework\App\Registro::getInstacia()->_Conexao, $tabela, $primaryKey, $columns, null)
+            \Framework\Classes\Datatable::complex( $_GET, Framework\App\Registro::getInstacia()->_Conexao, $table, $primaryKey, $columns, null)
         );
     }
 }

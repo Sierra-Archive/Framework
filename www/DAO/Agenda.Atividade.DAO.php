@@ -156,4 +156,4 @@ final Class Agenda_Atividade_DAO extends Framework\App\Dao
         );
     }
 }
-?>
+

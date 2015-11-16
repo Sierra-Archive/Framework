@@ -73,4 +73,4 @@ final Class Comercio_Unidade_DAO extends Framework\App\Dao
         );
     }
 }
-?>
+

@@ -35,17 +35,17 @@ class predial_BlocoControle extends predial_Controle
     static function Blocos_Tabela(&$blocos) {
         $Registro   = &\Framework\App\Registro::getInstacia();
         $Visual     = &$Registro->_Visual;
-        $tabela = Array();
+        $table = Array();
         $i = 0;
         if (is_object($blocos)) $blocos = Array(0=>$blocos);
         reset($blocos);
         foreach ($blocos as &$valor) {
-            $tabela['Nome'][$i]             = $valor->nome;
-            $tabela['Funções'][$i]          = $Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Bloco'        ,'predial/Bloco/Blocos_Edit/'.$valor->id.'/'    , '')).
+            $table['Nome'][$i]             = $valor->nome;
+            $table['Funções'][$i]          = $Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Bloco'        ,'predial/Bloco/Blocos_Edit/'.$valor->id.'/'    , '')).
                                               $Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Bloco'       ,'predial/Bloco/Blocos_Del/'.$valor->id.'/'     ,'Deseja realmente deletar esse Bloco ?'));
             ++$i;
         }
-        return Array($tabela, $i);
+        return Array($table, $i);
     }
     /**
      * 
@@ -70,13 +70,13 @@ class predial_BlocoControle extends predial_Controle
         )));
         $blocos = $this->_Modelo->db->Sql_Select('Predial_Bloco');
         if ($blocos !== FALSE && !empty($blocos)) {
-            list($tabela, $i) = self::Blocos_Tabela($blocos);
+            list($table, $i) = self::Blocos_Tabela($blocos);
             if ($export !== FALSE) {
-                self::Export_Todos($export, $tabela, 'Blocos');
+                self::Export_Todos($export, $table, 'Blocos');
             } else {
-                $this->_Visual->Show_Tabela_DataTable($tabela);
+                $this->_Visual->Show_Tabela_DataTable($table);
             }
-            unset($tabela);
+            unset($table);
         } else {         
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Bloco</font></b></center>');
         }
@@ -112,11 +112,11 @@ class predial_BlocoControle extends predial_Controle
     public function Blocos_Add2() {
         $titulo     = __('Bloco Adicionado com Sucesso');
         $dao        = 'Predial_Bloco';
-        $funcao     = '$this->Blocos();';
+        $function     = '$this->Blocos();';
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = __('Bloco cadastrado com sucesso.');
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);
     }
     /**
      * 
@@ -146,11 +146,11 @@ class predial_BlocoControle extends predial_Controle
     public function Blocos_Edit2($id) {
         $titulo     = __('Bloco Editado com Sucesso');
         $dao        = Array('Predial_Bloco', $id);
-        $funcao     = '$this->Blocos();';
+        $function     = '$this->Blocos();';
         $sucesso1   = __('Bloco Alterado com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);   
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);   
     }
     /**
      * 

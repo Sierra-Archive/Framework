@@ -144,4 +144,4 @@ final Class Sistema_Log_Performace_DAO extends Framework\App\Dao
         );
     }
 }
-?>
+

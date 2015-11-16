@@ -63,4 +63,3 @@ class Financeiro_AdminModelo extends Financeiro_Modelo
         return $i;
     }
 }
-?>

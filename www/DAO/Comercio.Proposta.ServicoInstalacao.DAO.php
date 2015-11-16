@@ -323,4 +323,4 @@ final Class Comercio_Proposta_ServicoInstalacao_DAO extends Framework\App\Dao
         );
     }
 }
-?>
+

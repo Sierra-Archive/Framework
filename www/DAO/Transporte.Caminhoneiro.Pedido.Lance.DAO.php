@@ -194,4 +194,4 @@ final Class Transporte_Caminhoneiro_Pedido_Lance_DAO extends Framework\App\Dao
         );
     }
 }
-?>
+

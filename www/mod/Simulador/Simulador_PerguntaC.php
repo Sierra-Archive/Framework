@@ -44,14 +44,14 @@ class Simulador_PerguntaControle extends Simulador_Controle
         $Registro   = &\Framework\App\Registro::getInstacia();
         $Modelo     = &$Registro->_Modelo;
         $Visual     = &$Registro->_Visual;
-        $tabela = Array();
+        $table = Array();
         $i = 0;
         if (is_object($perguntas)) $perguntas = Array(0=>$perguntas);
         reset($perguntas);
         foreach ($perguntas as &$valor) {
             if ($simulador === FALSE || $simulador==0) {
                 
-                $tabela['Simulador'][$i]   = $valor->simulador2;
+                $table['Simulador'][$i]   = $valor->simulador2;
                 $edit_url   = 'Simulador/Pergunta/Perguntas_Edit/'.$valor->id.'/';
                 $del_url    = 'Simulador/Pergunta/Perguntas_Del/'.$valor->id.'/';
             } else {
@@ -59,8 +59,8 @@ class Simulador_PerguntaControle extends Simulador_Controle
                 $del_url    = 'Simulador/Pergunta/Perguntas_Del/'.$valor->id.'/'.$valor->simulador.'/';
             }
             
-            $tabela['Nome'][$i]             = $valor->nome;
-            $tabela['Data Registrada no Sistema'][$i]  = $valor->log_date_add;
+            $table['Nome'][$i]             = $valor->nome;
+            $table['Data Registrada no Sistema'][$i]  = $valor->log_date_add;
             $status                                 = $valor->status;
             if ($status!=1) {
                 $status = 0;
@@ -69,13 +69,13 @@ class Simulador_PerguntaControle extends Simulador_Controle
                 $status = 1;
                 $texto = __('Ativado');
             }
-            $tabela['Funções'][$i]          = $Visual->Tema_Elementos_Btn('Visualizar' ,Array('Visualizar Simuladores da Pergunta'    ,'Simulador/Resposta/Respostas/'.$valor->simulador.'/'.$valor->id.'/'    , '')).
+            $table['Funções'][$i]          = $Visual->Tema_Elementos_Btn('Visualizar' ,Array('Visualizar Simuladores da Pergunta'    ,'Simulador/Resposta/Respostas/'.$valor->simulador.'/'.$valor->id.'/'    , '')).
                                               '<span id="status'.$valor->id.'">'.$Visual->Tema_Elementos_Btn('Status'.$status     ,Array($texto        ,'Simulador/Pergunta/Status/'.$valor->id.'/'    , '')).'</span>'.
                                               $Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Pergunta'        , $edit_url    , '')).
                                               $Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Pergunta'       , $del_url     ,'Deseja realmente deletar esse Pergunta ?'));
             ++$i;
         }
-        return Array($tabela, $i);
+        return Array($table, $i);
     }
     /**
      * 
@@ -139,13 +139,13 @@ class Simulador_PerguntaControle extends Simulador_Controle
             $titulo = __('Listagem de Perguntas em Todos os Simuladores');
         }
         if ($perguntas !== FALSE && !empty($perguntas)) {
-            list($tabela, $i) = self::Perguntas_Tabela($perguntas, $simulador);
+            list($table, $i) = self::Perguntas_Tabela($perguntas, $simulador);
             $titulo = $titulo.' ('.$i.')';
             if ($export !== FALSE) {
-                self::Export_Todos($export, $tabela, $titulo);
+                self::Export_Todos($export, $table, $titulo);
             } else {
                 $this->_Visual->Show_Tabela_DataTable(
-                    $tabela,     // Array Com a Tabela
+                    $table,     // Array Com a Tabela
                     '',          // style extra
                     true,        // true -> Add ao Bloco, false => Retorna html
                     FALSE,        // Apagar primeira coluna ?
@@ -156,7 +156,7 @@ class Simulador_PerguntaControle extends Simulador_Controle
                     )
                 );
             }
-            unset($tabela);
+            unset($table);
         } else {
             $titulo = $titulo.' ('.$i.')';
             if ($simulador !== FALSE) {
@@ -223,14 +223,14 @@ class Simulador_PerguntaControle extends Simulador_Controle
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = __('Pergunta cadastrada com sucesso.');
         if ($simulador === FALSE) {
-            $funcao     = '$this->Perguntas(0);';
+            $function     = '$this->Perguntas(0);';
             $alterar    = Array();
         } else {
             $simulador = (int) $simulador;
             $alterar    = Array('simulador'=>$simulador);
-            $funcao     = '$this->Perguntas('.$simulador.');';
+            $function     = '$this->Perguntas('.$simulador.');';
         }
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);
     }
     /**
      * 
@@ -287,14 +287,14 @@ class Simulador_PerguntaControle extends Simulador_Controle
         $titulo     = __('Pergunta Editada com Sucesso');
         $dao        = Array('Simulador_Pergunta', $id);
         if ($simulador !== FALSE) {
-            $funcao     = '$this->Perguntas('.$simulador.');';
+            $function     = '$this->Perguntas('.$simulador.');';
         } else {
-            $funcao     = '$this->Perguntas();';
+            $function     = '$this->Perguntas();';
         }
         $sucesso1   = __('Pergunta Alterada com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);   
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);   
     }
     /**
      * 

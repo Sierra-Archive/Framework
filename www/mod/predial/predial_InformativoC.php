@@ -35,22 +35,22 @@ class predial_InformativoControle extends predial_Controle
     static function Informativos_Tabela(&$informativos) {
         $Registro   = &\Framework\App\Registro::getInstacia();
         $Visual     = &$Registro->_Visual;
-        $tabela = Array();
+        $table = Array();
         $i = 0;
         if (is_object($informativos)) $informativos = Array(0=>$informativos);
         reset($informativos);
         foreach ($informativos as &$valor) {
-            $tabela['Bloco'][$i]            = $valor->bloco2;
-            $tabela['Apartamento'][$i]      = $valor->apart2;
-            $tabela['Nome'][$i]             = $valor->nome;
-            $tabela['Descrição'][$i]        = $valor->descricao;
-            $tabela['Data Inicio'][$i]      = $valor->data_inicio;
-            $tabela['Data Fim'][$i]      = $valor->data_fim;
-            $tabela['Funções'][$i]          = $Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Informativo'        ,'predial/Informativo/Informativos_Edit/'.$valor->id.'/'    , '')).
+            $table['Bloco'][$i]            = $valor->bloco2;
+            $table['Apartamento'][$i]      = $valor->apart2;
+            $table['Nome'][$i]             = $valor->nome;
+            $table['Descrição'][$i]        = $valor->descricao;
+            $table['Data Inicio'][$i]      = $valor->data_inicio;
+            $table['Data Fim'][$i]      = $valor->data_fim;
+            $table['Funções'][$i]          = $Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Informativo'        ,'predial/Informativo/Informativos_Edit/'.$valor->id.'/'    , '')).
                                               $Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Informativo'       ,'predial/Informativo/Informativos_Del/'.$valor->id.'/'     ,'Deseja realmente deletar esse Informativo ?'));
             ++$i;
         }
-        return Array($tabela, $i);
+        return Array($table, $i);
     }
     /**
      * 
@@ -77,9 +77,9 @@ class predial_InformativoControle extends predial_Controle
         // Busca
         $informativos = $this->_Modelo->db->Sql_Select('Predial_Bloco_Apart_Informativo');
         if ($informativos !== FALSE && !empty($informativos)) {
-            list($tabela, $i) = self::Informativos_Tabela($informativos);
-            $this->_Visual->Show_Tabela_DataTable($tabela);
-            unset($tabela);
+            list($table, $i) = self::Informativos_Tabela($informativos);
+            $this->_Visual->Show_Tabela_DataTable($table);
+            unset($table);
         } else {          
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Informativo</font></b></center>');
         }
@@ -118,11 +118,11 @@ class predial_InformativoControle extends predial_Controle
     public function Informativos_Add2() {
         $titulo     = __('Informativo Adicionado com Sucesso');
         $dao        = 'Predial_Bloco_Apart_Informativo';
-        $funcao     = '$this->Informativos();';
+        $function     = '$this->Informativos();';
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = __('Informativo cadastrado com sucesso.');
         $alterar    = Array();
-        $sucesso = $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
+        $sucesso = $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);
         if ($sucesso === TRUE) {
             // Pega o Informativo
             $identificador  = $this->_Modelo->db->Sql_Select('Predial_Bloco_Apart_Informativo', Array(),1,'id DESC');
@@ -232,11 +232,11 @@ class predial_InformativoControle extends predial_Controle
     public function Informativos_Edit2($id) {
         $titulo     = __('Informativo Editado com Sucesso');
         $dao        = Array('Predial_Bloco_Apart_Informativo', $id);
-        $funcao     = '$this->Informativos();';
+        $function     = '$this->Informativos();';
         $sucesso1   = __('Informativo Alterado com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);   
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);   
     }
     /**
      * 

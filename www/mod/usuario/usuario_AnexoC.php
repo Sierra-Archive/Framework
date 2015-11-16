@@ -189,16 +189,16 @@ class usuario_AnexoControle extends usuario_Controle
                     if (file_exists($endereco)) {
                         $tamanho    =   round(filesize($endereco)/1024);
                         $tipo       =   $valor->ext;
-                        $tabela['Nome'][$i]             = '<a href="'.URL_PATH.'usuario/Anexo/Download/'.$valor->id.'/" border="1" class="lajax" data-acao="">'.$valor->nome.'</a>';
-                        $tabela['Tamanho'][$i]          = $tamanho.' KB';
-                        $tabela['Data'][$i]             = $valor->log_date_add;
-                        $tabela['Download'][$i]         = $this->_Visual->Tema_Elementos_Btn('Baixar'     ,Array('Download de Arquivo'   ,'usuario/Anexo/Download/'.$valor->id    , ''));
+                        $table['Nome'][$i]             = '<a href="'.URL_PATH.'usuario/Anexo/Download/'.$valor->id.'/" border="1" class="lajax" data-acao="">'.$valor->nome.'</a>';
+                        $table['Tamanho'][$i]          = $tamanho.' KB';
+                        $table['Data'][$i]             = $valor->log_date_add;
+                        $table['Download'][$i]         = $this->_Visual->Tema_Elementos_Btn('Baixar'     ,Array('Download de Arquivo'   ,'usuario/Anexo/Download/'.$valor->id    , ''));
                         ++$i;
                     }
                 }
             }
-            $html .= $this->_Visual->Show_Tabela_DataTable($tabela, '', FALSE);
-            unset($tabela);
+            $html .= $this->_Visual->Show_Tabela_DataTable($table, '', FALSE);
+            unset($table);
         } else {
             $html .= '<center><b><font color="#FF0000" size="5">Nenhum Anexo</font></b></center>';            
         }

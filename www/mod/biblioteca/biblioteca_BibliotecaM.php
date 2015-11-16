@@ -19,7 +19,7 @@ class biblioteca_BibliotecaModelo extends biblioteca_Modelo
     public function Bibliotecas($raiz = FALSE) {
         // Table's primary key
         $primaryKey = 'id';
-        $tabela = 'Biblioteca';
+        $table = 'Biblioteca';
         if ($raiz === FALSE) {
             $raiz = 0;
         }
@@ -27,18 +27,18 @@ class biblioteca_BibliotecaModelo extends biblioteca_Modelo
         
     
         $perm_baixar = $this->_Registro->_Acl->Get_Permissao_Url('biblioteca/Biblioteca/Download');
-        $perm_editar = $this->_Registro->_Acl->Get_Permissao_Url('biblioteca/Biblioteca/Bibliotecas_Edit');
-        $perm_del = $this->_Registro->_Acl->Get_Permissao_Url('biblioteca/Biblioteca/Bibliotecas_Del');
+        $permissionEdit = $this->_Registro->_Acl->Get_Permissao_Url('biblioteca/Biblioteca/Bibliotecas_Edit');
+        $permissionDelete = $this->_Registro->_Acl->Get_Permissao_Url('biblioteca/Biblioteca/Bibliotecas_Del');
         
         $function = '';
         $function .= ' if ($row[\'tipo\']==1) { ';
-            if ($perm_editar) $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Visualizar\'     ,Array(__(\'Visualizar Pasta\')        ,\'biblioteca/Biblioteca/Bibliotecas/\'.$d    ,\'\'),TRUE);';
-            if ($perm_editar) $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Editar\'     ,Array(__(\'Editar Pasta\')        ,\'biblioteca/Biblioteca/Bibliotecas_Edit/\'.$d.\'/'.$raiz.'\'    ,\'\'),TRUE);';
-            if ($perm_del) $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Deletar\'    ,Array(__(\'Deletar Pasta\')       ,\'biblioteca/Biblioteca/Bibliotecas_Del/\'.$d.\'/'.$raiz.'\'     ,__(\'Deseja realmente deletar essa pasta ?\')),TRUE);';
+            if ($permissionEdit) $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Visualizar\'     ,Array(__(\'Visualizar Pasta\')        ,\'biblioteca/Biblioteca/Bibliotecas/\'.$d    ,\'\'),TRUE);';
+            if ($permissionEdit) $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Editar\'     ,Array(__(\'Editar Pasta\')        ,\'biblioteca/Biblioteca/Bibliotecas_Edit/\'.$d.\'/'.$raiz.'\'    ,\'\'),TRUE);';
+            if ($permissionDelete) $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Deletar\'    ,Array(__(\'Deletar Pasta\')       ,\'biblioteca/Biblioteca/Bibliotecas_Del/\'.$d.\'/'.$raiz.'\'     ,__(\'Deseja realmente deletar essa pasta ?\')),TRUE);';
         $function .= ' } else { ';
             if ($perm_baixar) $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Baixar\'     ,Array(__(\'Download de Arquivo\')   ,\'biblioteca/Biblioteca/Download/\'.$d    ,\'\'),TRUE);';
-            if ($perm_editar) $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Editar\'     ,Array(__(\'Editar Arquivo\')        ,\'biblioteca/Biblioteca/Bibliotecas_Edit/\'.$d.\'/'.$raiz.'\'    ,\'\'),TRUE);';
-            if ($perm_del) $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Deletar\'    ,Array(__(\'Deletar Arquivo\')       ,\'biblioteca/Biblioteca/Bibliotecas_Del/\'.$d.\'/'.$raiz.'\'     ,__(\'Deseja realmente deletar esse arquivo ?\')),TRUE);';
+            if ($permissionEdit) $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Editar\'     ,Array(__(\'Editar Arquivo\')        ,\'biblioteca/Biblioteca/Bibliotecas_Edit/\'.$d.\'/'.$raiz.'\'    ,\'\'),TRUE);';
+            if ($permissionDelete) $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Deletar\'    ,Array(__(\'Deletar Arquivo\')       ,\'biblioteca/Biblioteca/Bibliotecas_Del/\'.$d.\'/'.$raiz.'\'     ,__(\'Deseja realmente deletar esse arquivo ?\')),TRUE);';
         $function .= ' } ';
         $columns = Array();
         
@@ -117,7 +117,7 @@ class biblioteca_BibliotecaModelo extends biblioteca_Modelo
                             return 'X';
                         }
                         $tamanho = filesize($endereco);
-                        \Framework\App\Registro::getInstacia()->query('UPDATE '.  \Framework\App\Conexao::$tabelas['Biblioteca_DAO']['nome'].' SET tamanho=\''.$tamanho.'\' WHERE id='.$row['id']);
+                        \Framework\App\Registro::getInstacia()->query('UPDATE '.  \Framework\App\Conexao::$tables['Biblioteca_DAO']['nome'].' SET tamanho=\''.$tamanho.'\' WHERE id='.$row['id']);
 
                     }
                 }
@@ -151,7 +151,7 @@ class biblioteca_BibliotecaModelo extends biblioteca_Modelo
         ); //'Funções';
                 
         echo json_encode(
-            \Framework\Classes\Datatable::complex( $_GET, Framework\App\Registro::getInstacia()->_Conexao, $tabela, $primaryKey, $columns, null, $where)
+            \Framework\Classes\Datatable::complex( $_GET, Framework\App\Registro::getInstacia()->_Conexao, $table, $primaryKey, $columns, null, $where)
         );
     }
 }

@@ -17,4 +17,3 @@ class Desenvolvimento_SenhaVisual extends Desenvolvimento_Visual
       parent::__construct();
     }
 }
-?>

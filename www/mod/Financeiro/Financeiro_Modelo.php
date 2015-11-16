@@ -225,12 +225,12 @@ class Financeiro_Modelo extends \Framework\App\Modelo
         
         // Table's primary key
         $primaryKey = 'id';
-        $tabela = 'Financeiro_Pagamento_Interno';
+        $table = 'Financeiro_Pagamento_Interno';
         
         
         $perm_visualizar = $this->_Registro->_Acl->Get_Permissao_Url('Financeiro/Pagamento/Financeiro_View');
         $perm_naopagar = $this->_Registro->_Acl->Get_Permissao_Url('Financeiro/Pagamento/Financeiros_NaoPagar');
-        $perm_editarvencimento = $this->_Registro->_Acl->Get_Permissao_Url('Financeiro/Pagamento/Financeiros_VencimentoEdit');
+        $permissionEditvencimento = $this->_Registro->_Acl->Get_Permissao_Url('Financeiro/Pagamento/Financeiros_VencimentoEdit');
 
         $columns = Array();
         
@@ -263,7 +263,7 @@ class Financeiro_Modelo extends \Framework\App\Modelo
         
         //'#Vencimento';
         ++$numero;
-        if ($perm_editarvencimento === TRUE) {
+        if ($permissionEditvencimento === TRUE) {
             $columns[] = array( 'db' => 'dt_vencimento', 'dt' => $numero,
             'formatter' => function($d, $row) {
                 return '<a href="'.URL_PATH.'Financeiro/Pagamento/Financeiros_VencimentoEdit/'.$row['id'].'" class="lajax" data-acao=""><span id="financeirovenc'.$row['id'].'">'.$d.'</span></a>';
@@ -300,8 +300,7 @@ class Financeiro_Modelo extends \Framework\App\Modelo
         ); //'Funções';
                 
         echo json_encode(
-            \Framework\Classes\Datatable::complex( $_GET, Framework\App\Registro::getInstacia()->_Conexao, $tabela, $primaryKey, $columns, null, $where,'motivo')
+            \Framework\Classes\Datatable::complex( $_GET, Framework\App\Registro::getInstacia()->_Conexao, $table, $primaryKey, $columns, null, $where,'motivo')
         );
     }
 }
-?>

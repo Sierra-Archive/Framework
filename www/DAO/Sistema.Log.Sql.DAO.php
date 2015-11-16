@@ -96,4 +96,4 @@ final Class Sistema_Log_Sql_DAO extends Framework\App\Dao
         );
     }
 }
-?>
+

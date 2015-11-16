@@ -151,4 +151,3 @@ $language = array(
 /*
 preg_replace(array('/{nome}/'), array('Nome do Individuo'), $language['galerias']['cadastro']['2'])
 */
-?>

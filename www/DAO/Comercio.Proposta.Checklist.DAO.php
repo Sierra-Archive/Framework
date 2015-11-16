@@ -106,4 +106,3 @@ final Class Comercio_Proposta_Checklist_DAO extends Framework\App\Dao
         );
     }
 }
-?>

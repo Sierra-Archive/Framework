@@ -152,4 +152,3 @@ final Class Log_Login_Falha_DAO extends Framework\App\Dao
         );
     }
 }
-?>

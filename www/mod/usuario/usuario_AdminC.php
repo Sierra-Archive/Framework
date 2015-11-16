@@ -66,16 +66,16 @@ class usuario_AdminControle extends usuario_Controle
         $titulo     = __('Senha editada com Sucesso');
         $dao        = Array('Usuario', $id);
         if ($tipo==='cliente' || $tipo==='Cliente') {
-            $funcao     = '$this->ListarCliente();';
+            $function     = '$this->ListarCliente();';
         } else if ($tipo==='funcionario' || $tipo==='Funcionario' || $tipo==='Funcionário' || $tipo==='Funcionrio') {
-            $funcao     = '$this->ListarFuncionario();';
+            $function     = '$this->ListarFuncionario();';
         } else {
-            $funcao     = '$this->ListarUsuario();';
+            $function     = '$this->ListarUsuario();';
         }
         $sucesso1   = __('Senha Alterada com Sucesso.');
         $sucesso2   = __('Guarde sua senha com carinho.');
         $alterar    = Array();
-        $sucesso = $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
+        $sucesso = $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);
     }
     public function ListarCliente($export = FALSE) {
         $this->Usuario_Listagem(Array(CFG_TEC_CAT_ID_CLIENTES,\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Cliente_nome')), FALSE,20, FALSE, $export);
@@ -655,22 +655,22 @@ class usuario_AdminControle extends usuario_Controle
             foreach ($usuarios as $indice=>&$valor) {
                 
                 
-                $tabela['Id'][$i] = $usuarios[$indice]['id'];
-                $tabela['Nome'][$i] = $usuarios[$indice]['nome'];
-                $tabela['Email'][$i] = $usuarios[$indice]['email'];
-                $tabela['Grupo'][$i] = $grupo;
-                $tabela['Saldo'][$i] = $usuarios[$indice]['saldo'];
-                $tabela['Funções'][$i] = '<a alt="'.__('Aprovar Usuário').' data-confirma="Deseja Realmente Aprovar?" title="Aprovar" class="lajax explicar-titulo" data-acao="" href="'.URL_PATH.'usuario/Admin/usuarios_pendente_aprovar/'.$usuarios[$indice]['id'].'/'.$tipo.'/sim/"><img src="'.WEB_URL.'img/icons/status1.png"></a>'.
+                $table['Id'][$i] = $usuarios[$indice]['id'];
+                $table['Nome'][$i] = $usuarios[$indice]['nome'];
+                $table['Email'][$i] = $usuarios[$indice]['email'];
+                $table['Grupo'][$i] = $grupo;
+                $table['Saldo'][$i] = $usuarios[$indice]['saldo'];
+                $table['Funções'][$i] = '<a alt="'.__('Aprovar Usuário').' data-confirma="Deseja Realmente Aprovar?" title="Aprovar" class="lajax explicar-titulo" data-acao="" href="'.URL_PATH.'usuario/Admin/usuarios_pendente_aprovar/'.$usuarios[$indice]['id'].'/'.$tipo.'/sim/"><img src="'.WEB_URL.'img/icons/status1.png"></a>'.
                 '<a alt="'.__('Desaprovar Usuário').' data-confirma="Deseja Realmente Desaprovar?" title="Desaprovar" class="lajax explicar-titulo" data-acao="" href="'.URL_PATH.'usuario/Admin/usuarios_pendente_aprovar/'.$usuarios[$indice]['id'].'/'.$tipo.'/nao/"><img src="'.WEB_URL.'img/icons/status2.png"></a>'.
                 '<a alt="'.__('Editar Usuário').' title="Editar Usuário" class="lajax explicar-titulo" data-acao="" href="'.URL_PATH.'usuario/Admin/Usuarios_Edit/'.$usuarios[$indice]['id'].'/"><img src="'.WEB_URL.'img/icons/icon_edit.png"></a> '.
                 '<a alt="'.__('Deletar Usuário').' data-confirma="Deseja realmente deletar esse usuário?" title="Deletar Usuário" class="lajax explicar-titulo" data-acao="" href="'.URL_PATH.'usuario/Admin/usuarios_Del/'.$usuarios[$indice]['id'].'/"><img src="'.WEB_URL.'img/icons/icon_bad.png"></a>';
                 ++$i;
             }
-            $this->_Visual->Show_Tabela_DataTable($tabela);
+            $this->_Visual->Show_Tabela_DataTable($table);
             if ($tipo=='cnh') $titulo = __('CNH Pendentes').' ('.$i.')';
             else             $titulo = __('Comprovantes de Residencia Pendentes').' ('.$i.')';
             $this->_Visual->Bloco_Maior_CriaJanela($titulo);
-            unset($tabela);
+            unset($table);
         }
     }
     public function usuarios_pendente_aprovar($id, $tipo='cnh', $aprovar='sim') {
@@ -757,18 +757,18 @@ class usuario_AdminControle extends usuario_Controle
         if ($comentario !== FALSE && !empty($comentario)) {
             if (is_object($comentario)) $comentario = Array(0=>$comentario);
             reset($comentario);
-            $perm_editar = $this->_Registro->_Acl->Get_Permissao_Url('usuario/Admin/Usuarios_Comentario_Edit');
-            $perm_del = $this->_Registro->_Acl->Get_Permissao_Url('usuario/Admin/Usuarios_Comentario_Del');
+            $permissionEdit = $this->_Registro->_Acl->Get_Permissao_Url('usuario/Admin/Usuarios_Comentario_Edit');
+            $permissionDelete = $this->_Registro->_Acl->Get_Permissao_Url('usuario/Admin/Usuarios_Comentario_Del');
             foreach ($comentario as $indice=>&$valor) {
-                $tabela['#Id'][$i]          =   '#'.$valor->id;
-                $tabela['Comentário'][$i]   =   nl2br($valor->comentario);
-                $tabela['Data'][$i]         =   $valor->log_date_add;
-                $tabela['Funções'][$i]      =   $this->_Visual->Tema_Elementos_Btn('Editar'          ,Array('Editar Comentário de Usuario'        ,'usuario/Admin/Usuarios_Comentario_Edit/'.$usuario_id.'/'.$valor->id.'/'.$tipo    , ''), $perm_editar).
-                                                $this->_Visual->Tema_Elementos_Btn('Deletar'         ,Array('Deletar Comentário de Usuario'       ,'usuario/Admin/Usuarios_Comentario_Del/'.$usuario_id.'/'.$valor->id.'/'.$tipo     ,'Deseja realmente deletar esse Comentário desse '.$nomedisplay_sing.' ?'), $perm_del);
+                $table['#Id'][$i]          =   '#'.$valor->id;
+                $table['Comentário'][$i]   =   nl2br($valor->comentario);
+                $table['Data'][$i]         =   $valor->log_date_add;
+                $table['Funções'][$i]      =   $this->_Visual->Tema_Elementos_Btn('Editar'          ,Array('Editar Comentário de Usuario'        ,'usuario/Admin/Usuarios_Comentario_Edit/'.$usuario_id.'/'.$valor->id.'/'.$tipo    , ''), $permissionEdit).
+                                                $this->_Visual->Tema_Elementos_Btn('Deletar'         ,Array('Deletar Comentário de Usuario'       ,'usuario/Admin/Usuarios_Comentario_Del/'.$usuario_id.'/'.$valor->id.'/'.$tipo     ,'Deseja realmente deletar esse Comentário desse '.$nomedisplay_sing.' ?'), $permissionDelete);
                 ++$i;
             }
-            $this->_Visual->Show_Tabela_DataTable($tabela, '', true, FALSE, Array(Array(0,'desc')));
-            unset($tabela);
+            $this->_Visual->Show_Tabela_DataTable($table, '', true, FALSE, Array(Array(0,'desc')));
+            unset($table);
         } else {          
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Comentário do '.$nomedisplay_sing.'</font></b></center>');
         }
@@ -874,11 +874,11 @@ class usuario_AdminControle extends usuario_Controle
         
         $titulo     = 'Comentário do '.$nomedisplay_sing.' Adicionado com Sucesso';
         $dao        = 'Usuario_Comentario';
-        $funcao     = '$this->Usuarios_Comentario('.$usuario_id.',\''.$tipo.'\');';
+        $function     = '$this->Usuarios_Comentario('.$usuario_id.',\''.$tipo.'\');';
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = 'Comentário de '.$nomedisplay_sing.' Cadastrado com sucesso.';
         $alterar    = Array('usuario'=>$usuario_id);
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);
     }
     /**
      * 
@@ -977,11 +977,11 @@ class usuario_AdminControle extends usuario_Controle
         // Puxa Formulario Padrao do Sistema
         $titulo     = 'Comentário de '.$nomedisplay_sing.' Editado com Sucesso';
         $dao        = Array('Usuario_Comentario', $id);
-        $funcao     = '$this->Usuarios_Comentario('.$usuario_id.',\''.$tipo.'\');';
+        $function     = '$this->Usuarios_Comentario('.$usuario_id.',\''.$tipo.'\');';
         $sucesso1   = 'Comentário de '.$nomedisplay_sing.' Alterado com Sucesso.';
         $sucesso2   = __('Comentário teve a alteração bem sucedida');
         $alterar    = Array('usuario'=>$usuario_id);
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);      
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);      
     }
     /**
      * 

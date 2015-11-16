@@ -17,4 +17,3 @@ class Enquete_EnqueteModelo extends Enquete_Modelo
         parent::__construct();
     }
 }
-?>

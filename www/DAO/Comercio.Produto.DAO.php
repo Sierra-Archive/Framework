@@ -335,4 +335,4 @@ final Class Comercio_Produto_DAO extends Framework\App\Dao
         );
     }
 }
-?>
+

@@ -73,4 +73,4 @@ final Class Usuario_Veiculo_Equipamento_Marca_DAO extends Framework\App\Dao
         );
     }
 }
-?>
+

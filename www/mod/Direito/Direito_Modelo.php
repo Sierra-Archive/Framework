@@ -20,21 +20,21 @@ class DireitoModelo extends \Framework\App\Modelo
     /**
      * Lista todos os dados de certo campo em Certa tabela
      * 
-     * @param type $tabela
-     * @param type $tabela_campo
+     * @param type $table
+     * @param type $table_campo
      * @param type $resultado
      * @return int
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Listar($tabela, $tabela_campo, &$resultado) {
+    public function Listar($table, $table_campo, &$resultado) {
         $i = 0;
-        $sql = $this->db->query('SELECT id,'.$tabela_campo.'
-        FROM '.$tabela.' WHERE deletado!=1 ORDER BY '.$tabela_campo.''); //P.categoria
+        $sql = $this->db->query('SELECT id,'.$table_campo.'
+        FROM '.$table.' WHERE deletado!=1 ORDER BY '.$table_campo.''); //P.categoria
         while ($campo = $sql->fetch_object()) {
             $resultado[$i]['id'] = $campo->id;
-            eval('$resultado[$i][$tabela_campo] = $campo->'.$tabela_campo.';');
+            eval('$resultado[$i][$table_campo] = $campo->'.$table_campo.';');
             ++$i;
         }
         return $i;
@@ -42,20 +42,19 @@ class DireitoModelo extends \Framework\App\Modelo
     /**
      * Tras qnt de Linhas de certa Tabela
      * 
-     * @param type $tabela
+     * @param type $table
      * @return int
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.4.2
      */
-    public function Contar($tabela) {
+    public function Contar($table) {
         $i = 0;
         $sql = $this->db->query('SELECT id
-        FROM '.$tabela.' WHERE deletado!=1');
+        FROM '.$table.' WHERE deletado!=1');
         while ($campo = $sql->fetch_object()) {
             ++$i;
         }
         return $i;
     }
 }
-?>

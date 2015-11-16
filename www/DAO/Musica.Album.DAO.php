@@ -243,4 +243,4 @@ final Class Musica_Album_DAO extends Framework\App\Dao
         );
     }
 }
-?>
+

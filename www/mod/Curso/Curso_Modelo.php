@@ -23,4 +23,3 @@ class Curso_Modelo extends \Framework\App\Modelo
         return Array('<b>Matricula na Turma </b> em '.$item->turma2, $item->usuario2);
     }
 }
-?>

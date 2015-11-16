@@ -1043,4 +1043,3 @@ $config_Publico = function () {
         )*/
     );
 };
-?>

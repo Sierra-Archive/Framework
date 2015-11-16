@@ -73,4 +73,4 @@ final Class Financeiro_Banco_DAO extends Framework\App\Dao
         );
     }
 }
-?>
+

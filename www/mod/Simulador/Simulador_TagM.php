@@ -19,16 +19,16 @@ class Simulador_TagModelo extends Simulador_Modelo
     public function Tags() {
         // Table's primary key
         $primaryKey = 'id';
-        $tabela = 'Simulador_Tag';
+        $table = 'Simulador_Tag';
         $where = '';
         
     
-        $perm_editar = $this->_Registro->_Acl->Get_Permissao_Url('Simulador/Tag/Tags_Edit');
-        $perm_del = $this->_Registro->_Acl->Get_Permissao_Url('Simulador/Tag/Tags_Del');
+        $permissionEdit = $this->_Registro->_Acl->Get_Permissao_Url('Simulador/Tag/Tags_Edit');
+        $permissionDelete = $this->_Registro->_Acl->Get_Permissao_Url('Simulador/Tag/Tags_Del');
         
         $function = '';
-        if ($perm_editar) $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Editar\'     ,Array(__(\'Editar Pasta\')        ,\'Simulador/Tag/Tags_Edit/\'.$d    ,\'\'),TRUE);';
-        if ($perm_del) $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Deletar\'    ,Array(__(\'Deletar Pasta\')       ,\'Simulador/Tag/Tags_Del/\'.$d     ,__(\'Deseja realmente deletar essa Caracteristica ?\')),TRUE);';
+        if ($permissionEdit) $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Editar\'     ,Array(__(\'Editar Pasta\')        ,\'Simulador/Tag/Tags_Edit/\'.$d    ,\'\'),TRUE);';
+        if ($permissionDelete) $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Deletar\'    ,Array(__(\'Deletar Pasta\')       ,\'Simulador/Tag/Tags_Del/\'.$d     ,__(\'Deseja realmente deletar essa Caracteristica ?\')),TRUE);';
 
         $columns = Array();
         
@@ -63,7 +63,7 @@ class Simulador_TagModelo extends Simulador_Modelo
         ); //'Funções';
                 
         echo json_encode(
-            \Framework\Classes\Datatable::complex( $_GET, Framework\App\Registro::getInstacia()->_Conexao, $tabela, $primaryKey, $columns, null, $where)
+            \Framework\Classes\Datatable::complex( $_GET, Framework\App\Registro::getInstacia()->_Conexao, $table, $primaryKey, $columns, null, $where)
         );
     }
 }

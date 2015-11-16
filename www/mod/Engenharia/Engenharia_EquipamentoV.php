@@ -17,4 +17,3 @@ class Engenharia_EquipamentoVisual extends Engenharia_Visual
       parent::__construct();
     }
 }
-?>

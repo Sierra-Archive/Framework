@@ -35,22 +35,22 @@ class predial_AdvertenciaControle extends predial_Controle
     static function Advertencias_Tabela(&$advertencias) {
         $Registro   = &\Framework\App\Registro::getInstacia();
         $Visual     = &$Registro->_Visual;
-        $tabela = Array();
+        $table = Array();
         $i = 0;
         if (is_object($advertencias)) $advertencias = Array(0=>$advertencias);
         reset($advertencias);
         foreach ($advertencias as &$valor) {
-            $tabela['Bloco'][$i]            = $valor->bloco2;
-            $tabela['Apartamento'][$i]      = $valor->apart2;
-            $tabela['Nome'][$i]             = $valor->nome;
-            $tabela['Descrição'][$i]        = $valor->descricao;
-            $tabela['Data do Ocorrido'][$i] = $valor->data_acontecimento;
-            $tabela['Data Registrado'][$i]  = $valor->log_date_add;
-            $tabela['Funções'][$i]          = $Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Advertência'        ,'predial/Advertencia/Advertencias_Edit/'.$valor->id.'/'    , '')).
+            $table['Bloco'][$i]            = $valor->bloco2;
+            $table['Apartamento'][$i]      = $valor->apart2;
+            $table['Nome'][$i]             = $valor->nome;
+            $table['Descrição'][$i]        = $valor->descricao;
+            $table['Data do Ocorrido'][$i] = $valor->data_acontecimento;
+            $table['Data Registrado'][$i]  = $valor->log_date_add;
+            $table['Funções'][$i]          = $Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Advertência'        ,'predial/Advertencia/Advertencias_Edit/'.$valor->id.'/'    , '')).
                                               $Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Advertência'       ,'predial/Advertencia/Advertencias_Del/'.$valor->id.'/'     ,'Deseja realmente deletar essa Advertência ?'));
             ++$i;
         }
-        return Array($tabela, $i);
+        return Array($table, $i);
     }
     /**
      * 
@@ -77,9 +77,9 @@ class predial_AdvertenciaControle extends predial_Controle
         // Busca
         $advertencias = $this->_Modelo->db->Sql_Select('Predial_Bloco_Apart_Advertencia');
         if ($advertencias !== FALSE && !empty($advertencias)) {
-            list($tabela, $i) = self::Advertencias_Tabela($advertencias);
-            $this->_Visual->Show_Tabela_DataTable($tabela);
-            unset($tabela);
+            list($table, $i) = self::Advertencias_Tabela($advertencias);
+            $this->_Visual->Show_Tabela_DataTable($table);
+            unset($table);
         } else {            
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhuma Advertência</font></b></center>');
         }
@@ -115,11 +115,11 @@ class predial_AdvertenciaControle extends predial_Controle
     public function Advertencias_Add2() {
         $titulo     = __('Advertência Adicionada com Sucesso');
         $dao        = 'Predial_Bloco_Apart_Advertencia';
-        $funcao     = '$this->Advertencias();';
+        $function     = '$this->Advertencias();';
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = __('Advertência cadastrada com sucesso.');
         $alterar    = Array();
-        $sucesso = $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
+        $sucesso = $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);
         if ($sucesso === TRUE) {
             // Pega o Correio
             $identificador  = $this->_Modelo->db->Sql_Select('Predial_Bloco_Apart_Advertencia', Array(),1,'id DESC');
@@ -227,11 +227,11 @@ class predial_AdvertenciaControle extends predial_Controle
     public function Advertencias_Edit2($id) {
         $titulo     = __('Advertência Editada com Sucesso');
         $dao        = Array('Predial_Bloco_Apart_Advertencia', $id);
-        $funcao     = '$this->Advertencias();';
+        $function     = '$this->Advertencias();';
         $sucesso1   = __('Advertência Alterada com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);   
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);   
     }
     /**
      * 
@@ -278,18 +278,18 @@ class predial_AdvertenciaControle extends predial_Controle
     static function Personalizados_Tabela(&$advertencias) {
         $Registro   = &\Framework\App\Registro::getInstacia();
         $Visual     = &$Registro->_Visual;
-        $tabela = Array();
+        $table = Array();
         $i = 0;
         if (is_object($advertencias)) $advertencias = Array(0=>$advertencias);
         reset($advertencias);
         foreach ($advertencias as &$valor) {
-            $tabela['Nome'][$i]             = $valor->nome;
-            $tabela['Descrição'][$i]        = $valor->descricao;
-            $tabela['Data do Ocorrido'][$i] = $valor->data_acontecimento;
-            $tabela['Data Registrado'][$i]  = $valor->log_date_add;
+            $table['Nome'][$i]             = $valor->nome;
+            $table['Descrição'][$i]        = $valor->descricao;
+            $table['Data do Ocorrido'][$i] = $valor->data_acontecimento;
+            $table['Data Registrado'][$i]  = $valor->log_date_add;
             ++$i;
         }
-        return Array($tabela, $i);
+        return Array($table, $i);
     }
     /**
      * 
@@ -315,9 +315,9 @@ class predial_AdvertenciaControle extends predial_Controle
         );
         $advertencias = $Registro->_Modelo->db->Sql_Select('Predial_Bloco_Apart_Advertencia', $where);
         if ($advertencias !== FALSE && !empty($advertencias)) {
-            list($tabela, $i) = self::Personalizados_Tabela($advertencias);
-            $html .= $Registro->_Visual->Show_Tabela_DataTable($tabela, '', FALSE);
-            unset($tabela);
+            list($table, $i) = self::Personalizados_Tabela($advertencias);
+            $html .= $Registro->_Visual->Show_Tabela_DataTable($table, '', FALSE);
+            unset($table);
         } else {            
             $html .= '<center><b><font color="#FF0000" size="3">Nenhuma Advertência para seu Apartamento</font></b></center>';
         }

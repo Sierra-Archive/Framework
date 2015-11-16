@@ -211,4 +211,4 @@ final Class Agenda_DAO extends Framework\App\Dao
         );
     }
 }
-?>
+

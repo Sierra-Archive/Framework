@@ -178,4 +178,4 @@ final Class Comercio_Proposta_Status_DAO extends Framework\App\Dao
         );
     }
 }
-?>
+

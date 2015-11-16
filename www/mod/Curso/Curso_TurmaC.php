@@ -80,14 +80,14 @@ class Curso_TurmaControle extends Curso_Controle
         $Registro   = &\Framework\App\Registro::getInstacia();
         $Modelo     = &$Registro->_Modelo;
         $Visual     = &$Registro->_Visual;
-        $tabela = Array();
+        $table = Array();
         $i = 0;
         if (is_object($turmas)) $turmas = Array(0=>$turmas);
         reset($turmas);
         foreach ($turmas as &$valor) {
             if ($curso === FALSE || $curso==0) {
                 
-                $tabela['Curso'][$i]   = $valor->curso2;
+                $table['Curso'][$i]   = $valor->curso2;
                 $ver_url    = 'Curso/Turma/Turmas_Ver/'.$valor->id.'/';
                 $edit_url   = 'Curso/Turma/Turmas_Edit/'.$valor->id.'/';
                 $del_url    = 'Curso/Turma/Turmas_Del/'.$valor->id.'/';
@@ -96,11 +96,11 @@ class Curso_TurmaControle extends Curso_Controle
                 $edit_url   = 'Curso/Turma/Turmas_Edit/'.$valor->id.'/'.$valor->curso.'/';
                 $del_url    = 'Curso/Turma/Turmas_Del/'.$valor->id.'/'.$valor->curso.'/';
             }
-            $tabela['Nome'][$i]             = $valor->nome;
-            $tabela['Vagas'][$i]            = $valor->qnt;
-            $tabela['Inicio'][$i]           = $valor->inicio;
-            $tabela['Fim'][$i]              = $valor->fim;
-            $tabela['Data Registrada no Sistema'][$i]  = $valor->log_date_add;
+            $table['Nome'][$i]             = $valor->nome;
+            $table['Vagas'][$i]            = $valor->qnt;
+            $table['Inicio'][$i]           = $valor->inicio;
+            $table['Fim'][$i]              = $valor->fim;
+            $table['Data Registrada no Sistema'][$i]  = $valor->log_date_add;
             $status                                 = $valor->status;
             if ($status!=1) {
                 $status = 0;
@@ -109,56 +109,56 @@ class Curso_TurmaControle extends Curso_Controle
                 $status = 1;
                 $texto = __('Ativado');
             }
-            $tabela['Funções'][$i]          = $Visual->Tema_Elementos_Btn('Visualizar' ,Array('Ver Turma'        , $ver_url    , '')).
+            $table['Funções'][$i]          = $Visual->Tema_Elementos_Btn('Visualizar' ,Array('Ver Turma'        , $ver_url    , '')).
                                               '<span id="status'.$valor->id.'">'.$Visual->Tema_Elementos_Btn('Status'.$status     ,Array($texto        ,'Curso/Turma/Status/'.$valor->id.'/'    , '')).'</span>'.
                                               $Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Turma'        , $edit_url    , '')).
                                               $Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Turma'       , $del_url     ,'Deseja realmente deletar esse Turma ?'));
             ++$i;
         }
-        return Array($tabela, $i);
+        return Array($table, $i);
     }
     static function Abertas_Tabela(&$turmas, $curso = FALSE, $inscrever= TRUE ) {
         if ($curso==='false') $curso = FALSE;
         $Registro   = &\Framework\App\Registro::getInstacia();
         $Modelo     = &$Registro->_Modelo;
         $Visual     = &$Registro->_Visual;
-        $tabela = Array();
+        $table = Array();
         $i = 0;
         if (is_object($turmas)) $turmas = Array(0=>$turmas);
         reset($turmas);
         foreach ($turmas as &$valor) {
             if ($curso === FALSE || $curso==0) {
                 
-                $tabela['Curso'][$i]   = $valor->curso2;
+                $table['Curso'][$i]   = $valor->curso2;
                 $inscricao_url    = 'Curso/Turma/Inscricao_Fazer/'.$valor->id.'/';
             } else {
                 $inscricao_url    = 'Curso/Turma/Inscricao_Fazer/'.$valor->id.'/'.$valor->curso.'/';
             }
-            $tabela['Nome'][$i]             = $valor->nome;
-            $tabela['Vagas'][$i]            = $valor->qnt;
-            $tabela['Inicio'][$i]           = $valor->inicio;
-            $tabela['Fim'][$i]              = $valor->fim;
-            if ($inscrever) $tabela['Funções'][$i]          = $Visual->Tema_Elementos_Btn('Personalizado'     ,
+            $table['Nome'][$i]             = $valor->nome;
+            $table['Vagas'][$i]            = $valor->qnt;
+            $table['Inicio'][$i]           = $valor->inicio;
+            $table['Fim'][$i]              = $valor->fim;
+            if ($inscrever) $table['Funções'][$i]          = $Visual->Tema_Elementos_Btn('Personalizado'     ,
                     Array('Se Inscrever'        , $inscricao_url    , '', 'hdd', 'success'));
             ++$i;
         }
-        return Array($tabela, $i);
+        return Array($table, $i);
     }
     static function Inscricoes_Tabela(&$inscricoes) {
         $Registro   = &\Framework\App\Registro::getInstacia();
         $Modelo     = &$Registro->_Modelo;
         $Visual     = &$Registro->_Visual;
-        $tabela = Array();
+        $table = Array();
         $i = 0;
         if (is_object($inscricoes)) $inscricoes = Array(0=>$inscricoes);
         reset($inscricoes);
         foreach ($inscricoes as &$valor) {
-            $tabela['Curso'][$i]            = $valor->curso2;
-            $tabela['Turma'][$i]            = $valor->turma2;
-            $tabela['Aluno'][$i]           = $valor->usuario2;
+            $table['Curso'][$i]            = $valor->curso2;
+            $table['Turma'][$i]            = $valor->turma2;
+            $table['Aluno'][$i]           = $valor->usuario2;
             ++$i;
         }
-        return Array($tabela, $i);
+        return Array($table, $i);
     }
     /**
      * 
@@ -219,13 +219,13 @@ class Curso_TurmaControle extends Curso_Controle
             $titulo = __('Listagem de Turmas em Todos os Cursos');
         }
         if ($turmas !== FALSE && !empty($turmas)) {
-            list($tabela, $i) = self::Turmas_Tabela($turmas, $curso);
+            list($table, $i) = self::Turmas_Tabela($turmas, $curso);
             $titulo = $titulo.' ('.$i.')';
             if ($export !== FALSE) {
-                self::Export_Todos($export, $tabela, $titulo);
+                self::Export_Todos($export, $table, $titulo);
             } else {
                 $this->_Visual->Show_Tabela_DataTable(
-                    $tabela,     // Array Com a Tabela
+                    $table,     // Array Com a Tabela
                     '',          // style extra
                     true,        // true -> Add ao Bloco, false => Retorna html
                     FALSE,        // Apagar primeira coluna ?
@@ -236,7 +236,7 @@ class Curso_TurmaControle extends Curso_Controle
                     )
                 );
             }
-            unset($tabela);
+            unset($table);
         } else {
             $titulo = $titulo.' ('.$i.')';
             if ($curso !== FALSE) {
@@ -300,13 +300,13 @@ class Curso_TurmaControle extends Curso_Controle
             $titulo = __('Listagem de Turmas em Todos os Cursos');
         }
         if ($turmas !== FALSE && !empty($turmas)) {
-            list($tabela, $i) = self::Abertas_Tabela($turmas, $curso);
+            list($table, $i) = self::Abertas_Tabela($turmas, $curso);
             $titulo = $titulo.' ('.$i.')';
             if ($export !== FALSE) {
-                self::Export_Todos($export, $tabela, $titulo);
+                self::Export_Todos($export, $table, $titulo);
             } else {
                 $this->_Visual->Show_Tabela_DataTable(
-                    $tabela,     // Array Com a Tabela
+                    $table,     // Array Com a Tabela
                     '',          // style extra
                     true,        // true -> Add ao Bloco, false => Retorna html
                     FALSE,        // Apagar primeira coluna ?
@@ -317,7 +317,7 @@ class Curso_TurmaControle extends Curso_Controle
                     )
                 );
             }
-            unset($tabela);
+            unset($table);
         } else {
             $titulo = $titulo.' ('.$i.')';
             if ($curso !== FALSE) {
@@ -383,14 +383,14 @@ class Curso_TurmaControle extends Curso_Controle
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = __('Turma cadastrada com sucesso.');
         if ($curso === FALSE) {
-            $funcao     = '$this->Turmas(0);';
+            $function     = '$this->Turmas(0);';
             $alterar    = Array();
         } else {
             $curso = (int) $curso;
             $alterar    = Array('curso'=>$curso);
-            $funcao     = '$this->Turmas('.$curso.');';
+            $function     = '$this->Turmas('.$curso.');';
         }
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);
     }
     /**
      * 
@@ -427,13 +427,13 @@ class Curso_TurmaControle extends Curso_Controle
         $titulo = 'Visualização da Turma: '.$turma_registro->nome;
         $i = 0;
         if ($inscricoes !== FALSE && !empty($inscricoes)) {
-            list($tabela, $i) = self::Inscricoes_Tabela($inscricoes);
+            list($table, $i) = self::Inscricoes_Tabela($inscricoes);
             $titulo = $titulo.' ('.$i.')';
             if ($export !== FALSE) {
-                self::Export_Todos($export, $tabela, $titulo);
+                self::Export_Todos($export, $table, $titulo);
             } else {
                 $html = $this->_Visual->Show_Tabela_DataTable(
-                    $tabela,     // Array Com a Tabela
+                    $table,     // Array Com a Tabela
                     '',          // style extra
                     FALSE,        // true -> Add ao Bloco, false => Retorna html
                     FALSE,        // Apagar primeira coluna ?
@@ -444,7 +444,7 @@ class Curso_TurmaControle extends Curso_Controle
                     )
                 );
             }
-            unset($tabela);
+            unset($table);
         } else {
             $titulo = $titulo.' ('.$i.')';
             $erro = __('Nenhuma Inscrição nessa Turma');     
@@ -542,14 +542,14 @@ class Curso_TurmaControle extends Curso_Controle
         $titulo     = __('Turma Editada com Sucesso');
         $dao        = Array('Curso_Turma', $id);
         if ($curso !== FALSE) {
-            $funcao     = '$this->Turmas('.$curso.');';
+            $function     = '$this->Turmas('.$curso.');';
         } else {
-            $funcao     = '$this->Turmas();';
+            $function     = '$this->Turmas();';
         }
         $sucesso1   = __('Turma Alterada com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);   
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);   
     }
     /**
      * Deletar Turma
@@ -784,11 +784,11 @@ class Curso_TurmaControle extends Curso_Controle
         
         $titulo     = __('Inscrição Confirmada com Sucesso');
         $dao        = 'Curso_Turma_Inscricao';
-        $funcao     = FALSE;
+        $function     = FALSE;
         $sucesso1   = __('Inscrição bem sucedida');
         $sucesso2   = __('Inscrição Confirmada com Sucesso');
         $alterar    = Array('usuario'=>$usuarioid,'valor'=>$curso_registro->valor,'curso'=>$turma_registro->curso,'turma'=>$turma_registro->id);
-        $sucesso = $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
+        $sucesso = $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);
         if ($sucesso === TRUE) {
             $motivo = 'Curso';
             $identificador  = $this->_Modelo->db->Sql_Select('Curso_Turma_Inscricao', FALSE,1,'id DESC');
@@ -859,4 +859,4 @@ class Curso_TurmaControle extends Curso_Controle
         
     }
 }
-?>
+

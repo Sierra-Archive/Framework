@@ -81,21 +81,21 @@ class comercio_venda_CarrinhoControle extends comercio_venda_Controle
                 }
                 
                 
-                $tabela['#Caixa'][$i]       =   '#'.$valor->id;
-                $tabela['Mesa'][$i]         =   $mesa2;
-                $tabela['Data Aberta'][$i]  =   $valor->data_aberta;
-                $tabela['Valor'][$i]        =   $valor->valor;
-                $tabela['pago'][$i]         = '<span class="pago'.$valor->id.'">'.self::label($valor).'</span>';
-                $tabela['Funções'][$i]      =   $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Caixa'        ,'comercio_venda/Carrinho/Carrinhos_Edit/'.$valor->id.'/'    , '')).
+                $table['#Caixa'][$i]       =   '#'.$valor->id;
+                $table['Mesa'][$i]         =   $mesa2;
+                $table['Data Aberta'][$i]  =   $valor->data_aberta;
+                $table['Valor'][$i]        =   $valor->valor;
+                $table['pago'][$i]         = '<span class="pago'.$valor->id.'">'.self::label($valor).'</span>';
+                $table['Funções'][$i]      =   $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Caixa'        ,'comercio_venda/Carrinho/Carrinhos_Edit/'.$valor->id.'/'    , '')).
                                                 $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Caixa'       ,'comercio_venda/Carrinho/Carrinhos_Del/'.$valor->id.'/'     ,'Deseja realmente deletar esse Caixa ?'));
                 ++$i;
             }
             if ($export !== FALSE) {
-                self::Export_Todos($export, $tabela, 'Comercio Caixas');
+                self::Export_Todos($export, $table, 'Comercio Caixas');
             } else {
-                $this->_Visual->Show_Tabela_DataTable($tabela);
+                $this->_Visual->Show_Tabela_DataTable($table);
             }
-            unset($tabela);
+            unset($table);
         } else {          
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Caixa</font></b></center>');
         }
@@ -135,11 +135,11 @@ class comercio_venda_CarrinhoControle extends comercio_venda_Controle
     public function Carrinhos_Add2() {
         $titulo     = __('Caixa Adicionado com Sucesso');
         $dao        = 'Comercio_Venda_Carrinho';
-        $funcao     = FALSE;
+        $function     = FALSE;
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = __('Caixa cadastrado com sucesso.');
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);
         
         // Atualiza Valor
         $identificador  = $this->_Modelo->db->Sql_Select('Comercio_Venda_Carrinho', Array(),1,'id DESC');
@@ -182,11 +182,11 @@ class comercio_venda_CarrinhoControle extends comercio_venda_Controle
     public function Carrinhos_Edit2($id) {
         $titulo     = __('Caixa Editado com Sucesso');
         $dao        = Array('Comercio_Venda_Carrinho', $id);
-        $funcao     = FALSE;
+        $function     = FALSE;
         $sucesso1   = __('Caixa Alterado com Sucesso.');
         $sucesso2   = ''.$_POST["mesa"].' teve a alteração bem sucedida';
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);
         
         // Atualiza valor
         $identificador  = $this->_Modelo->db->Sql_Select('Comercio_Venda_Carrinho', Array('id'=>$id),1);
@@ -551,21 +551,21 @@ class comercio_venda_CarrinhoControle extends comercio_venda_Controle
             if (is_object($mesas)) $mesas = Array(0=>$mesas);
             reset($mesas);
             foreach ($mesas as $indice=>&$valor) {
-                $tabela['#Id'][$i]       = '#'.$valor->id;
-                $tabela['Nome'][$i]      = $valor->nome;
-                $tabela['Lugares'][$i]   = $valor->lugares;
-                $tabela['Status'][$i]    = ($valor->status==1)?'Funcionando':'Parada';
-                $tabela['Ocupado'][$i]   = ($valor->ocupado==1)?'Ocupado':'Livre';
-                $tabela['Funções'][$i]   = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Mesa'        ,'comercio_venda/Carrinho/Mesas_Edit/'.$valor->id.'/'    , '')).
+                $table['#Id'][$i]       = '#'.$valor->id;
+                $table['Nome'][$i]      = $valor->nome;
+                $table['Lugares'][$i]   = $valor->lugares;
+                $table['Status'][$i]    = ($valor->status==1)?'Funcionando':'Parada';
+                $table['Ocupado'][$i]   = ($valor->ocupado==1)?'Ocupado':'Livre';
+                $table['Funções'][$i]   = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Mesa'        ,'comercio_venda/Carrinho/Mesas_Edit/'.$valor->id.'/'    , '')).
                                            $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Mesa'       ,'comercio_venda/Carrinho/Mesas_Del/'.$valor->id.'/'     ,'Deseja realmente deletar essa Mesa ?'));
                 ++$i;
             }
             if ($export !== FALSE) {
-                self::Export_Todos($export, $tabela, 'Comercio Vendas - Mesas');
+                self::Export_Todos($export, $table, 'Comercio Vendas - Mesas');
             } else {
-                $this->_Visual->Show_Tabela_DataTable($tabela);
+                $this->_Visual->Show_Tabela_DataTable($table);
             }
-            unset($tabela);
+            unset($table);
         } else {          
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhuma Mesa</font></b></center>');
         }
@@ -601,11 +601,11 @@ class comercio_venda_CarrinhoControle extends comercio_venda_Controle
     public function Mesas_Add2() {
         $titulo     = __('Mesa Adicionada com Sucesso');
         $dao        = 'Comercio_Venda_Mesa';
-        $funcao     = '$this->Mesas();';
+        $function     = '$this->Mesas();';
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = __('Mesa cadastrada com sucesso.');
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);
     }
     /**
      * 
@@ -635,11 +635,11 @@ class comercio_venda_CarrinhoControle extends comercio_venda_Controle
     public function Mesas_Edit2($id) {
         $titulo     = __('Mesa Editada com Sucesso');
         $dao        = Array('Comercio_Venda_Mesa', $id);
-        $funcao     = '$this->Mesas();';
+        $function     = '$this->Mesas();';
         $sucesso1   = __('Mesa Alterada com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);      
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);      
     }
     /**
      * 

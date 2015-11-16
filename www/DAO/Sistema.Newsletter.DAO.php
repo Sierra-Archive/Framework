@@ -207,4 +207,4 @@ final Class Sistema_Newsletter_DAO extends Framework\App\Dao
         );
     }
 }
-?>
+

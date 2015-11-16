@@ -28,14 +28,14 @@ class noticia_AdminControle extends noticia_Controle
     static function Noticias_Tabela(&$noticia) {
         $Registro   = &\Framework\App\Registro::getInstacia();
         $Visual     = &$Registro->_Visual;
-        $tabela = Array();
+        $table = Array();
         $i = 0;
         if (is_object($noticia)) $noticia = Array(0=>$noticia);reset($noticia);
         foreach ($noticia as &$valor) {                
-            $tabela['Id'][$i]           = '#'.$valor->id;
-            $tabela['Categoria'][$i]    = $valor->categoria2;
-            $tabela['Foto'][$i]         = '<img alt="'.__('Foto da Noticia').' src="'.$valor->foto.'" style="max-width:100px;" />';
-            $tabela['Titulo'][$i]       = $valor->nome;
+            $table['Id'][$i]           = '#'.$valor->id;
+            $table['Categoria'][$i]    = $valor->categoria2;
+            $table['Foto'][$i]         = '<img alt="'.__('Foto da Noticia').' src="'.$valor->foto.'" style="max-width:100px;" />';
+            $table['Titulo'][$i]       = $valor->nome;
             if ($valor->status==1 || $valor->status=='1') {
                 $texto = __('Ativado');
                 $valor->status='1';
@@ -43,18 +43,18 @@ class noticia_AdminControle extends noticia_Controle
                 $texto = __('Desativado');
                 $valor->status='0';
             }
-            $tabela['Funções'][$i]      = '<span id="status'.$valor->id.'">'.$Visual->Tema_Elementos_Btn('Status'.$valor->status     ,Array($texto        ,'noticia/Admin/Status/'.$valor->id.'/'    , '')).'</span>';
+            $table['Funções'][$i]      = '<span id="status'.$valor->id.'">'.$Visual->Tema_Elementos_Btn('Status'.$valor->status     ,Array($texto        ,'noticia/Admin/Status/'.$valor->id.'/'    , '')).'</span>';
             if ($valor->destaque==1) {
                 $texto = __('Em Destaque');
             } else {
                 $texto = __('Não está em destaque');
             }
-            $tabela['Funções'][$i]      .= '<span id="destaques'.$valor->id.'">'.$Visual->Tema_Elementos_Btn('Destaque'.$valor->destaque   ,Array($texto   ,'noticia/Admin/Destaques/'.$valor->id.'/'    , '')).'</span>';
-            $tabela['Funções'][$i]      .= $Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Noticia'        ,'noticia/Admin/Noticias_Edit/'.$valor->id.'/'    , '')).
+            $table['Funções'][$i]      .= '<span id="destaques'.$valor->id.'">'.$Visual->Tema_Elementos_Btn('Destaque'.$valor->destaque   ,Array($texto   ,'noticia/Admin/Destaques/'.$valor->id.'/'    , '')).'</span>';
+            $table['Funções'][$i]      .= $Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Noticia'        ,'noticia/Admin/Noticias_Edit/'.$valor->id.'/'    , '')).
                                            $Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Noticia'       ,'noticia/Admin/Noticias_Del/'.$valor->id.'/'     ,'Deseja realmente deletar esse Noticia ?'));
             ++$i;
         }
-        return Array($tabela, $i);
+        return Array($table, $i);
     }
     
     /**
@@ -97,13 +97,13 @@ class noticia_AdminControle extends noticia_Controle
         $noticia = $this->_Modelo->db->Sql_Select('Noticia');
         if (is_object($noticia)) $noticia = Array(0=>$noticia);
         if ($noticia !== FALSE && !empty($noticia)) {
-            list($tabela, $i) = self::Noticias_Tabela($noticia);
+            list($table, $i) = self::Noticias_Tabela($noticia);
             // SE exportar ou mostra em tabela
             if ($export !== FALSE) {
-                self::Export_Todos($export, $tabela, 'Noticias');
+                self::Export_Todos($export, $table, 'Noticias');
             } else {
                 $this->_Visual->Show_Tabela_DataTable(
-                    $tabela,     // Array Com a Tabela
+                    $table,     // Array Com a Tabela
                     '',          // style extra
                     true,        // true -> Add ao Bloco, false => Retorna html
                     FALSE,        // Apagar primeira coluna ?
@@ -114,7 +114,7 @@ class noticia_AdminControle extends noticia_Controle
                     )
                 );
             }
-            unset($tabela);
+            unset($table);
         } else {
             if ($export !== FALSE) {
                 $mensagem = __('Nenhuma Noticia Cadastrada para exportar');
@@ -157,11 +157,11 @@ class noticia_AdminControle extends noticia_Controle
     public function Noticias_Add2() {
         $titulo     = __('Noticia Adicionada com Sucesso');
         $dao        = 'Noticia';
-        $funcao     = '$this->Noticias();';
+        $function     = '$this->Noticias();';
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = __('Noticia cadastrada com sucesso.');
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);
     }
     /**
      * 
@@ -194,11 +194,11 @@ class noticia_AdminControle extends noticia_Controle
         $id = (int) $id;
         $titulo     = __('Noticia Alterada com Sucesso');
         $dao        = Array('Noticia', $id);
-        $funcao     = '$this->Noticias();';
+        $function     = '$this->Noticias();';
         $sucesso1   = __('Noticia Alterada com Sucesso');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);
     }
     /**
      * 

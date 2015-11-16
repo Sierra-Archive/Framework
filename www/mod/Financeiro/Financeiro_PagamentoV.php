@@ -17,4 +17,3 @@ class Financeiro_PagamentoVisual extends Financeiro_Visual
       parent::__construct();
     }
 }
-?>

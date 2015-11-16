@@ -102,4 +102,4 @@ final Class Social_Caracteristica_DAO extends Framework\App\Dao
         );
     }
 }
-?>
+

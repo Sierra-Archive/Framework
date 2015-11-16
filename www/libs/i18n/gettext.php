@@ -429,4 +429,4 @@ class gettext_reader {
   }
 }
 
-?>
+

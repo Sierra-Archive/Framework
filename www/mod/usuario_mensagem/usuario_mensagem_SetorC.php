@@ -52,10 +52,10 @@ class usuario_mensagem_SetorControle extends usuario_mensagem_Controle
     public function Setores($export = FALSE) {
         self::Endereco_Setor(FALSE);
         
-        $tabela = Array(
+        $table = Array(
             'Grupo', 'Nome', 'Email do Setor', 'Funções'
         );
-        $this->_Visual->Show_Tabela_DataTable_Massiva($tabela,'usuario_mensagem/Setor/Setores');
+        $this->_Visual->Show_Tabela_DataTable_Massiva($table,'usuario_mensagem/Setor/Setores');
         $titulo = __('Listagem de Setores').' (<span id="DataTable_Contador">0</span>)';  //
         $this->_Visual->Bloco_Unico_CriaJanela($titulo, '',10,Array("link"=>"usuario_mensagem/Setor/Setores_Add",'icon'=>'add', 'nome'=>'Adicionar Setor'));
         
@@ -113,11 +113,11 @@ class usuario_mensagem_SetorControle extends usuario_mensagem_Controle
     public function Setores_Add2() {
         $titulo     = __('Setor Adicionado com Sucesso');
         $dao        = 'Usuario_Mensagem_Setor';
-        $funcao     = '$this->Setores();';
+        $function     = '$this->Setores();';
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = __('Setor cadastrado com sucesso.');
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);
     }
     /**
      * 

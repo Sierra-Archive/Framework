@@ -38,4 +38,3 @@ class advogado_Principal implements \Framework\PrincipalInterface
         return FALSE;
     }
 }
-?>

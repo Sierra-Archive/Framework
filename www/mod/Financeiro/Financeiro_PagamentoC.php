@@ -138,12 +138,12 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
             'entrada_motivo'     => 'Servidor',
             'entrada_motivoid'   => SRV_NAME_SQL,
         );
-        list($tabela, $i) = $this->Movimentacao_Interna($where,'Mini');*/
+        list($table, $i) = $this->Movimentacao_Interna($where,'Mini');*/
         
-        $tabela = Array(
+        $table = Array(
             __('Id'),__('Parcela'),__('Motivo'),__('Valor'),__('Vencimento'),__('Funções')
         );
-        $this->_Visual->Show_Tabela_DataTable_Massiva($tabela,'Financeiro/Pagamento/Pagar');
+        $this->_Visual->Show_Tabela_DataTable_Massiva($table,'Financeiro/Pagamento/Pagar');
         $titulo = __('Listagem de Contas à pagar').' (<span id="DataTable_Contador">0</span>)';  //
         $this->_Visual->Bloco_Unico_CriaJanela($titulo, '',10);
         
@@ -174,17 +174,17 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
             'saida_motivoid'   => SRV_NAME_SQL,
         );
         
-        list($tabela, $i) = $this->Movimentacao_Interna($where,'Mini');
+        list($table, $i) = $this->Movimentacao_Interna($where,'Mini');
         $titulo = $titulo.' ('.$i.')';
         if ($i==0 ) {
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhuma Conta à Receber</font></b></center>');
         } else {
             if ($export !== FALSE) {
-                self::Export_Todos($export, $tabela, 'Contas à Receber');
+                self::Export_Todos($export, $table, 'Contas à Receber');
             } else {
-                $this->_Visual->Show_Tabela_DataTable($tabela);
+                $this->_Visual->Show_Tabela_DataTable($table);
             }
-            unset($tabela);
+            unset($table);
         }
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         $this->_Visual->Json_Info_Update('Titulo', $titulo); 
@@ -209,17 +209,17 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
             'entrada_motivo'     => 'Servidor',
             'entrada_motivoid'   => SRV_NAME_SQL,
         );
-        list($tabela, $i) = $this->Movimentacao_Interna_Pago($where,'Mini');
+        list($table, $i) = $this->Movimentacao_Interna_Pago($where,'Mini');
         $titulo = $titulo.' ('.$i.')';
         if ($i==0) {          
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhuma Conta Paga</font></b></center>');
         } else {
             if ($export !== FALSE) {
-                self::Export_Todos($export, $tabela, 'Contas Pagas');
+                self::Export_Todos($export, $table, 'Contas Pagas');
             } else {
-                $this->_Visual->Show_Tabela_DataTable($tabela);
+                $this->_Visual->Show_Tabela_DataTable($table);
             }
-            unset($tabela);
+            unset($table);
         }
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         $this->_Visual->Json_Info_Update('Titulo', $titulo); 
@@ -247,17 +247,17 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
             'saida_motivoid'   => SRV_NAME_SQL,
         );
         
-        list($tabela, $i) = $this->Movimentacao_Interna_Pago($where,'Mini');
+        list($table, $i) = $this->Movimentacao_Interna_Pago($where,'Mini');
         $titulo = $titulo.' ('.$i.')';
         if ($i==0 ) {
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhuma Conta Recebida</font></b></center>');
         } else {
             if ($export !== FALSE) {
-                self::Export_Todos($export, $tabela, 'Contas Recebidas');
+                self::Export_Todos($export, $table, 'Contas Recebidas');
             } else {
-                $this->_Visual->Show_Tabela_DataTable($tabela);
+                $this->_Visual->Show_Tabela_DataTable($table);
             }
-            unset($tabela);
+            unset($table);
         }
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         $this->_Visual->Json_Info_Update('Titulo', $titulo); 
@@ -491,10 +491,10 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
     public function Formas() {
         self::Endereco_Forma(FALSE);
         
-        $tabela = Array(
+        $table = Array(
             'Nome', 'Funções'
         );
-        $this->_Visual->Show_Tabela_DataTable_Massiva($tabela,'Financeiro/Pagamento/Formas');
+        $this->_Visual->Show_Tabela_DataTable_Massiva($table,'Financeiro/Pagamento/Formas');
         $titulo = __('Listagem de Formas de Pagamento').' (<span id="DataTable_Contador">0</span>)';  //
         $this->_Visual->Bloco_Unico_CriaJanela($titulo, '',10,Array("link"=>"Financeiro/Pagamento/Formas_Add",'icon'=>'add', 'nome'=>'Adicionar Forma de Pagamento'));
         
@@ -528,11 +528,11 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
     public function Formas_Add2() {
         $titulo     = __('Forma de Pagamento Adicionada com Sucesso');
         $dao        = 'Financeiro_Pagamento_Forma';
-        $funcao     = '$this->Formas();';
+        $function     = '$this->Formas();';
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = __('Forma de Pagamento cadastrada com sucesso.');
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);
     }
     /**
      * 
@@ -562,11 +562,11 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
     public function Formas_Edit2($id) {
         $titulo     = __('Forma de Pagamento Editada com Sucesso');
         $dao        = Array('Financeiro_Pagamento_Forma', $id);
-        $funcao     = '$this->Formas();';
+        $function     = '$this->Formas();';
         $sucesso1   = __('Forma de Pagamento Alterado com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);      
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);      
     }
     /**
      * 
@@ -626,10 +626,10 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
         }
         self::Endereco_Forma_Condicao(FALSE, $forma);
         
-        $tabela = Array(
+        $table = Array(
             'Forma de Pagamento', 'Nome', 'Entrada', 'Qnt de Parcelas', 'Funções'
         );
-        $this->_Visual->Show_Tabela_DataTable_Massiva($tabela,'Financeiro/Pagamento/Condicoes'.$link_extra);
+        $this->_Visual->Show_Tabela_DataTable_Massiva($table,'Financeiro/Pagamento/Condicoes'.$link_extra);
         $this->_Visual->Bloco_Unico_CriaJanela('Listagem de '.$titulo2.' (<span id="DataTable_Contador">0</span>)', '',10,Array("link"=>"Financeiro/Pagamento/Condicoes_Add",'icon'=>'add', 'nome'=>'Adicionar '.$titulo.''));
         
         
@@ -688,8 +688,8 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
         } else {
             $alterar    = Array('forma'=>$formaid);
         }
-        $funcao     = '$this->Condicoes('.$formaid.');';
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
+        $function     = '$this->Condicoes('.$formaid.');';
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);
     }
     /**
      * 
@@ -738,11 +738,11 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
         }
         $titulo     = __('Condição de Pagamento Editada com Sucesso');
         $dao        = Array('Financeiro_Pagamento_Forma_Condicao', $id);
-        $funcao     = '$this->Condicoes('.$formaid.');';
+        $function     = '$this->Condicoes('.$formaid.');';
         $sucesso1   = __('Condicao de Pagamento Alterado com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);      
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);      
     }
     /**
      * 
@@ -1014,8 +1014,8 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
                 $this->_Visual->Json_IncluiTipo('Popup', $popup);
             } else {
                 // Coloca Endereco
-                $funcao = 'Endereco_'.$tema;
-                self::$funcao(TRUE);
+                $function = 'Endereco_'.$tema;
+                self::$function(TRUE);
                 $this->Tema_Endereco('Visualizar '.$titulo);
                 // Coloca COnteudo em Janela
                 $this->_Visual->Blocar($html);
@@ -1032,4 +1032,4 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
         }
     }
 }
-?>
+

@@ -94,4 +94,4 @@ final Class Usuario_Veiculo_Modelo_DAO extends Framework\App\Dao
         );
     }
 }
-?>
+

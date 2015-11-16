@@ -30,26 +30,26 @@ class Financeiro_PagamentoModelo extends Financeiro_Modelo
         
         // Table's primary key
         $primaryKey = 'id';
-        $tabela = 'Financeiro_Pagamento_Forma_Condicao';
+        $table = 'Financeiro_Pagamento_Forma_Condicao';
         
-        $perm_editar = $this->_Registro->_Acl->Get_Permissao_Url('Financeiro/Pagamento/Condicoes_Edit');
-        $perm_del = $this->_Registro->_Acl->Get_Permissao_Url('Financeiro/Pagamento/Condicoes_Del');
+        $permissionEdit = $this->_Registro->_Acl->Get_Permissao_Url('Financeiro/Pagamento/Condicoes_Edit');
+        $permissionDelete = $this->_Registro->_Acl->Get_Permissao_Url('Financeiro/Pagamento/Condicoes_Del');
         
-        if ($perm_editar && $perm_del) {
-            $funcao = function( $d, $row ) {
+        if ($permissionEdit && $permissionDelete) {
+            $function = function( $d, $row ) {
                 return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Condição de Pagamento'        ,'Financeiro/Pagamento/Condicoes_Edit/'.$d.'/'    , ''),TRUE).
                        Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Condição de Pagamento'       ,'Financeiro/Pagamento/Condicoes_Del/'.$d.'/'     ,'Deseja realmente deletar essa Condiçao de Pagamento ?'),TRUE);
             };
-        } else if ($perm_editar) {
-            $funcao = function( $d, $row ) {
+        } else if ($permissionEdit) {
+            $function = function( $d, $row ) {
                 return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Condição de Pagamento'        ,'Financeiro/Pagamento/Condicoes_Edit/'.$d.'/'    , ''),TRUE);
             };
-        } else if ($perm_del) {
-            $funcao = function( $d, $row ) {
+        } else if ($permissionDelete) {
+            $function = function( $d, $row ) {
                 return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Condição de Pagamento'       ,'Financeiro/Pagamento/Condicoes_Del/'.$d.'/'     ,'Deseja realmente deletar essa Condição de Pagamento ?'),TRUE);
             };
         } else {
-            $funcao = function( $d, $row ) {
+            $function = function( $d, $row ) {
                 return '';
             };
         }
@@ -72,31 +72,31 @@ class Financeiro_PagamentoModelo extends Financeiro_Modelo
                 }),
             // Funcoes
             array( 'db' => 'id', 'dt' => 4,
-                'formatter' => $funcao)
+                'formatter' => $function)
         );
 
         echo json_encode(
-            \Framework\Classes\Datatable::complex( $_GET, Framework\App\Registro::getInstacia()->_Conexao, $tabela, $primaryKey, $columns, null, $where )
+            \Framework\Classes\Datatable::complex( $_GET, Framework\App\Registro::getInstacia()->_Conexao, $table, $primaryKey, $columns, null, $where )
         );
     }
     public function Formas() {
         
         // Table's primary key
         $primaryKey = 'id';
-        $tabela = 'Financeiro_Pagamento_Forma';
+        $table = 'Financeiro_Pagamento_Forma';
         
         $perm_condicoes = $this->_Registro->_Acl->Get_Permissao_Url('Financeiro/Pagamento/Condicoes');
-        $perm_editar = $this->_Registro->_Acl->Get_Permissao_Url('Financeiro/Pagamento/Formas_Edit');
-        $perm_del = $this->_Registro->_Acl->Get_Permissao_Url('Financeiro/Pagamento/Formas_Del');
+        $permissionEdit = $this->_Registro->_Acl->Get_Permissao_Url('Financeiro/Pagamento/Formas_Edit');
+        $permissionDelete = $this->_Registro->_Acl->Get_Permissao_Url('Financeiro/Pagamento/Formas_Del');
         
         $function = '';
         if ($perm_condicoes) {
             $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Visualizar\'     ,Array(\'Visualizar Condições de Pagamento\'        ,\'Financeiro/Pagamento/Condicoes/\'.$d.\'/\'    ,\'\'),TRUE);';
         }
-        if ($perm_editar) {
+        if ($permissionEdit) {
             $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Editar\'     ,Array(\'Editar Forma de Pagamento\'        ,\'Financeiro/Pagamento/Formas_Edit/\'.$d.\'/\'    ,\'\'),TRUE);';
         }
-        if ($perm_del) {
+        if ($permissionDelete) {
             $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Deletar\'    ,Array(\'Deletar Forma de Pagamento\'       ,\'Financeiro/Pagamento/Formas_Del/\'.$d.\'/\'     ,\'Deseja realmente deletar essa Forma de Pagamento ?\'),TRUE);';
         }
         
@@ -111,7 +111,7 @@ class Financeiro_PagamentoModelo extends Financeiro_Modelo
         ); //'Funções';
 
         echo json_encode(
-            \Framework\Classes\Datatable::complex( $_GET, Framework\App\Registro::getInstacia()->_Conexao, $tabela, $primaryKey, $columns, null )
+            \Framework\Classes\Datatable::complex( $_GET, Framework\App\Registro::getInstacia()->_Conexao, $table, $primaryKey, $columns, null )
         );
     }
     public function Pagar() {
@@ -131,4 +131,3 @@ class Financeiro_PagamentoModelo extends Financeiro_Modelo
         $this->Movimentacao_Interna_Pago($where,'Mini');
     }
 }
-?>

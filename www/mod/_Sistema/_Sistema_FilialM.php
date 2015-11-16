@@ -8,11 +8,11 @@ class _Sistema_FilialModelo extends _Sistema_Modelo
     public function Filiais() {
         // Table's primary key
         $primaryKey = 'id';
-        $tabela = 'Sistema_Filial';
+        $table = 'Sistema_Filial';
         
         
-        $perm_editar = $this->_Registro->_Acl->Get_Permissao_Url('_Sistema/Filial/Filiais_Edit');
-        $perm_deletar = $this->_Registro->_Acl->Get_Permissao_Url('_Sistema/Filial/Filiais_Del');
+        $permissionEdit = $this->_Registro->_Acl->Get_Permissao_Url('_Sistema/Filial/Filiais_Edit');
+        $permissionDelete = $this->_Registro->_Acl->Get_Permissao_Url('_Sistema/Filial/Filiais_Del');
         
 
 
@@ -33,10 +33,10 @@ class _Sistema_FilialModelo extends _Sistema_Modelo
 
 
         $function = '';
-        if ($perm_editar) {
+        if ($permissionEdit) {
             $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Editar\'     ,Array(__(\'Editar Filial\')        ,\'_Sistema/Filial/Filiais_Edit/\'.$d.\'/\'    ,\'\'),TRUE);';
         }
-        if ($perm_deletar) {
+        if ($permissionDelete) {
             $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Deletar\'     ,Array(__(\'Deletar Filial\')        ,\'_Sistema/Filial/Filiais_Del/\'.$d.\'/\'    ,\'\'),TRUE);';
         }
         
@@ -47,7 +47,7 @@ class _Sistema_FilialModelo extends _Sistema_Modelo
         ); //'Funções';
                 
         echo json_encode(
-            \Framework\Classes\Datatable::complex( $_GET, Framework\App\Registro::getInstacia()->_Conexao, $tabela, $primaryKey, $columns, null)
+            \Framework\Classes\Datatable::complex( $_GET, Framework\App\Registro::getInstacia()->_Conexao, $table, $primaryKey, $columns, null)
         );
     }
 }

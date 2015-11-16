@@ -54,22 +54,22 @@ class Agenda_PastaControle extends Agenda_Controle
     static function Pastas_Tabela($pastas) {
         $Registro   = &\Framework\App\Registro::getInstacia();
         $Visual     = &$Registro->_Visual;
-        $tabela = Array();
+        $table = Array();
         $i = 0;
         if (is_object($pastas)) $pastas = Array(0=>$pastas);
         reset($pastas);
         foreach ($pastas as $indice=>&$valor) {
-            //$tabela['#Id'][$i]       = '#'.$valor->id;
-            $tabela['Tipo de Pasta'][$i]        =   $valor->categoria2;
-            $tabela['Cor'][$i]                  =   $valor->cor2;
-            $tabela['Número'][$i]               =   $valor->num;
-            $tabela['Nome'][$i]                 =   $valor->nome;
-            $tabela['Observação'][$i]           =   $valor->obs;
-            $tabela['Funções'][$i]              =   $Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Pasta'        ,'Agenda/Pasta/Pastas_Edit/'.$valor->id.'/'    , '')).
+            //$table['#Id'][$i]       = '#'.$valor->id;
+            $table['Tipo de Pasta'][$i]        =   $valor->categoria2;
+            $table['Cor'][$i]                  =   $valor->cor2;
+            $table['Número'][$i]               =   $valor->num;
+            $table['Nome'][$i]                 =   $valor->nome;
+            $table['Observação'][$i]           =   $valor->obs;
+            $table['Funções'][$i]              =   $Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Pasta'        ,'Agenda/Pasta/Pastas_Edit/'.$valor->id.'/'    , '')).
                                                     $Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Pasta'       ,'Agenda/Pasta/Pastas_Del/'.$valor->id.'/'     ,'Deseja realmente deletar essa Pasta ?'));
             ++$i;
         }
-        return Array($tabela, $i);
+        return Array($table, $i);
     }
     /**
      * 
@@ -91,16 +91,16 @@ class Agenda_PastaControle extends Agenda_Controle
      * @param type $tipo
      */
     static function Pastas_Listar($export = FALSE,&$Modelo,&$Visual, $tipo='Unico') {
-        $tabela_colunas = Array();
+        $table_colunas = Array();
 
-        $tabela_colunas[] = __('Categoria');
-        $tabela_colunas[] = __('Cor');
-        $tabela_colunas[] = __('Numero');
-        $tabela_colunas[] = __('Nome');
-        $tabela_colunas[] = __('Obs');
-        $tabela_colunas[] = __('Funções');
+        $table_colunas[] = __('Categoria');
+        $table_colunas[] = __('Cor');
+        $table_colunas[] = __('Numero');
+        $table_colunas[] = __('Nome');
+        $table_colunas[] = __('Obs');
+        $table_colunas[] = __('Funções');
 
-        $Visual->Show_Tabela_DataTable_Massiva($tabela_colunas,'Agenda/Pasta/Pastas/', '', TRUE, FALSE);
+        $Visual->Show_Tabela_DataTable_Massiva($table_colunas,'Agenda/Pasta/Pastas/', '', TRUE, FALSE);
         
         $titulo = __('Arquivo de Pastas').' (<span id="DataTable_Contador">0</span>)';
         if ($tipo==='Unico') {
@@ -134,11 +134,11 @@ class Agenda_PastaControle extends Agenda_Controle
     public function Pastas_Add2() {
         $titulo     = __('Pasta Adicionado com Sucesso');
         $dao        = 'Usuario_Agenda_Pasta';
-        $funcao     = '$this->Pastas();';
+        $function     = '$this->Pastas();';
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = __('Pasta cadastrado com sucesso.');
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);
     }
     /**
      * 
@@ -167,11 +167,11 @@ class Agenda_PastaControle extends Agenda_Controle
     public function Pastas_Edit2($id) {
         $titulo     = __('Pasta Editado com Sucesso');
         $dao        = Array('Usuario_Agenda_Pasta', $id);
-        $funcao     = '$this->Pastas();';
+        $function     = '$this->Pastas();';
         $sucesso1   = __('Pasta Alterado com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);      
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);      
     }
     /**
      * 
@@ -234,17 +234,17 @@ class Agenda_PastaControle extends Agenda_Controle
             if (is_object($cores)) $cores = Array(0=>$cores);
             reset($cores);
             foreach ($cores as $indice=>&$valor) {
-                //$tabela['#Id'][$i]       = '#'.$valor->id;
-                $tabela['Nome'][$i]      = $valor->nome;
-                $tabela['Funções'][$i]   = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Cor'        ,'Agenda/Pasta/Cores_Edit/'.$valor->id.'/'    , '')).
+                //$table['#Id'][$i]       = '#'.$valor->id;
+                $table['Nome'][$i]      = $valor->nome;
+                $table['Funções'][$i]   = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Cor'        ,'Agenda/Pasta/Cores_Edit/'.$valor->id.'/'    , '')).
                                            $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Cor'       ,'Agenda/Pasta/Cores_Del/'.$valor->id.'/'     ,'Deseja realmente deletar essa Cor ?'));
                 ++$i;
             }
             if ($export !== FALSE) {
-                self::Export_Todos($export, $tabela, 'Cores');
+                self::Export_Todos($export, $table, 'Cores');
             } else {
                 $this->_Visual->Show_Tabela_DataTable(
-                    $tabela,     // Array Com a Tabela
+                    $table,     // Array Com a Tabela
                     '',          // style extra
                     true,        // true -> Add ao Bloco, false => Retorna html
                     true,        // Apagar primeira coluna ?
@@ -255,7 +255,7 @@ class Agenda_PastaControle extends Agenda_Controle
                     )
                 );
             }
-            unset($tabela);
+            unset($table);
         } else { 
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhuma Cor</font></b></center>');
         }
@@ -290,11 +290,11 @@ class Agenda_PastaControle extends Agenda_Controle
     public function Cores_Add2() {
         $titulo     = __('Cor Adicionada com Sucesso');
         $dao        = 'Usuario_Agenda_Pasta_Cor';
-        $funcao     = '$this->Cores();';
+        $function     = '$this->Cores();';
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = __('Cor cadastrada com sucesso.');
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);
     }
     /**
      * 
@@ -323,11 +323,11 @@ class Agenda_PastaControle extends Agenda_Controle
     public function Cores_Edit2($id) {
         $titulo     = __('Cor Editada com Sucesso');
         $dao        = Array('Usuario_Agenda_Pasta_Cor', $id);
-        $funcao     = '$this->Cores();';
+        $function     = '$this->Cores();';
         $sucesso1   = __('Cor Alterada com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);      
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);      
     }
     /**
      * 
@@ -362,4 +362,4 @@ class Agenda_PastaControle extends Agenda_Controle
         $this->_Visual->Json_Info_Update('Historico', FALSE);  
     }
 }
-?>
+

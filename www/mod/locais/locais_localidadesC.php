@@ -172,13 +172,13 @@ class locais_localidadesControle extends locais_Controle
             if (is_object($setores)) $setores = Array(0=>$setores);
             reset($setores);
             foreach ($setores as $indice=>&$valor) {
-                $tabela['Nome'][$i]             = $valor->nome;
-                $tabela['Funções'][$i]          = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar País'        ,'locais/localidades/Paises_Edit/'.$valor->id.'/'    , '')).
+                $table['Nome'][$i]             = $valor->nome;
+                $table['Funções'][$i]          = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar País'        ,'locais/localidades/Paises_Edit/'.$valor->id.'/'    , '')).
                                                   $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar País'       ,'locais/localidades/Paises_Del/'.$valor->id.'/'     ,'Deseja realmente deletar esse País ?'));
                 ++$i;
             }
-            $this->_Visual->Show_Tabela_DataTable($tabela);
-            unset($tabela);
+            $this->_Visual->Show_Tabela_DataTable($table);
+            unset($table);
         } else {       
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum País</font></b></center>');
         }
@@ -212,11 +212,11 @@ class locais_localidadesControle extends locais_Controle
     public function Paises_Add2() {
         $titulo     = __('País Adicionado com Sucesso');
         $dao        = 'Sistema_Local_Pais';
-        $funcao     = '$this->Paises();';
+        $function     = '$this->Paises();';
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = __('País cadastrado com sucesso.');
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);
     }
     /**
      * 
@@ -244,11 +244,11 @@ class locais_localidadesControle extends locais_Controle
     public function Paises_Edit2($id) {
         $titulo     = __('País Editado com Sucesso');
         $dao        = Array('Sistema_Local_Pais', $id);
-        $funcao     = '$this->Paises();';
+        $function     = '$this->Paises();';
         $sucesso1   = __('País Alterado com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);   
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);   
     }
     /**
      * Deletar Paises
@@ -295,13 +295,13 @@ class locais_localidadesControle extends locais_Controle
             if (is_object($setores)) $setores = Array(0=>$setores);
             reset($setores);
             foreach ($setores as $indice=>&$valor) {
-                $tabela['Nome'][$i]             = $valor->nome;
-                $tabela['Funções'][$i]          = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Estado'        ,'locais/localidades/Estados_Edit/'.$valor->id.'/'    , '')).
+                $table['Nome'][$i]             = $valor->nome;
+                $table['Funções'][$i]          = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Estado'        ,'locais/localidades/Estados_Edit/'.$valor->id.'/'    , '')).
                                                   $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Estado'       ,'locais/localidades/Estados_Del/'.$valor->id.'/'     ,'Deseja realmente deletar esse Estado ?'));
                 ++$i;
             }
-            $this->_Visual->Show_Tabela_DataTable($tabela);
-            unset($tabela);
+            $this->_Visual->Show_Tabela_DataTable($table);
+            unset($table);
         } else {
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Estado</font></b></center>');
         }
@@ -336,11 +336,11 @@ class locais_localidadesControle extends locais_Controle
     public function Estados_Add2() {
         $titulo     = __('Estado Adicionado com Sucesso');
         $dao        = 'Sistema_Local_Estado';
-        $funcao     = '$this->Estados();';
+        $function     = '$this->Estados();';
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = __('Estado cadastrado com sucesso.');
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);
     }
     /**
      * 
@@ -369,11 +369,11 @@ class locais_localidadesControle extends locais_Controle
     public function Estados_Edit2($id) {
         $titulo     = __('Estado Editado com Sucesso');
         $dao        = Array('Sistema_Local_Estado', $id);
-        $funcao     = '$this->Estados();';
+        $function     = '$this->Estados();';
         $sucesso1   = __('Estado Alterado com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);   
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);   
     }
     /**
      * 
@@ -423,13 +423,13 @@ class locais_localidadesControle extends locais_Controle
             if (is_object($setores)) $setores = Array(0=>$setores);
             reset($setores);
             foreach ($setores as $indice=>&$valor) {
-                $tabela['Nome'][$i]             = $valor->nome;
-                $tabela['Funções'][$i]          = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Cidade'        ,'locais/localidades/Cidades_Edit/'.$valor->id.'/'    , '')).
+                $table['Nome'][$i]             = $valor->nome;
+                $table['Funções'][$i]          = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Cidade'        ,'locais/localidades/Cidades_Edit/'.$valor->id.'/'    , '')).
                                                   $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Cidade'       ,'locais/localidades/Cidades_Del/'.$valor->id.'/'     ,'Deseja realmente deletar essa Cidade ?'));
                 ++$i;
             }
-            $this->_Visual->Show_Tabela_DataTable($tabela);
-            unset($tabela);
+            $this->_Visual->Show_Tabela_DataTable($table);
+            unset($table);
         } else {
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhuma Cidade</font></b></center>');
         }
@@ -464,11 +464,11 @@ class locais_localidadesControle extends locais_Controle
     public function Cidades_Add2() {
         $titulo     = __('Cidade Adicionada com Sucesso');
         $dao        = 'Sistema_Local_Cidade';
-        $funcao     = '$this->Cidades();';
+        $function     = '$this->Cidades();';
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = __('Cidade cadastrada com sucesso.');
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);
     }
     /**
      * 
@@ -497,11 +497,11 @@ class locais_localidadesControle extends locais_Controle
     public function Cidades_Edit2($id) {
         $titulo     = __('Cidade Editada com Sucesso');
         $dao        = Array('Sistema_Local_Cidade', $id);
-        $funcao     = '$this->Cidades();';
+        $function     = '$this->Cidades();';
         $sucesso1   = __('Cidade Alterada com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);   
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);   
     }
     /**
      * 
@@ -551,13 +551,13 @@ class locais_localidadesControle extends locais_Controle
             if (is_object($setores)) $setores = Array(0=>$setores);
             reset($setores);
             foreach ($setores as $indice=>&$valor) {
-                $tabela['Nome'][$i]             = $valor->nome;
-                $tabela['Funções'][$i]          = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Bairro'        ,'locais/localidades/Bairros_Edit/'.$valor->id.'/'    , '')).
+                $table['Nome'][$i]             = $valor->nome;
+                $table['Funções'][$i]          = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Bairro'        ,'locais/localidades/Bairros_Edit/'.$valor->id.'/'    , '')).
                                                   $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Bairro'       ,'locais/localidades/Bairros_Del/'.$valor->id.'/'     ,'Deseja realmente deletar esse Bairro ?'));
                 ++$i;
             }
-            $this->_Visual->Show_Tabela_DataTable($tabela);
-            unset($tabela);
+            $this->_Visual->Show_Tabela_DataTable($table);
+            unset($table);
         } else {
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Bairro</font></b></center>');
         }
@@ -592,11 +592,11 @@ class locais_localidadesControle extends locais_Controle
     public function Bairros_Add2() {
         $titulo     = __('Bairro Adicionado com Sucesso');
         $dao        = 'Sistema_Local_Bairro';
-        $funcao     = '$this->Bairros();';
+        $function     = '$this->Bairros();';
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = __('Bairro cadastrado com sucesso.');
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);
     }
     /**
      * 
@@ -625,11 +625,11 @@ class locais_localidadesControle extends locais_Controle
     public function Bairros_Edit2($id) {
         $titulo     = __('Bairro Editado com Sucesso');
         $dao        = Array('Sistema_Local_Bairro', $id);
-        $funcao     = '$this->Bairros();';
+        $function     = '$this->Bairros();';
         $sucesso1   = __('Bairro Alterado com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo, $dao, $funcao, $sucesso1, $sucesso2, $alterar);   
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);   
     }
     /**
      * 

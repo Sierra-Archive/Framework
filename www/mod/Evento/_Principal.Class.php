@@ -93,8 +93,8 @@ class Evento_Principal implements \Framework\PrincipalInterface
         )));
         if (is_object($eventos)) $eventos = Array(0=>$eventos);
         if ($eventos !== FALSE && !empty($eventos)) {
-            list($tabela, $i) = Evento_EventoControle::Eventos_Tabela($eventos);
-            $Visual->Show_Tabela_DataTable($tabela);
+            list($table, $i) = Evento_EventoControle::Eventos_Tabela($eventos);
+            $Visual->Show_Tabela_DataTable($table);
         } else {    
             $Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Evento na Busca '.$busca.'</font></b></center>');
         }
@@ -126,4 +126,3 @@ class Evento_Principal implements \Framework\PrincipalInterface
     }
     
 }
-?>
