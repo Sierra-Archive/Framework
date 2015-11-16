@@ -289,9 +289,9 @@ class comercio_PropostaControle extends comercio_Controle
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
             $adicionar,
             Array(
-                'Print'     => true,
-                'Pdf'       => true,
-                'Excel'     => true,
+                'Print'     => TRUE,
+                'Pdf'       => TRUE,
+                'Excel'     => TRUE,
                 'Link'      => 'comercio/Proposta/Propostas/'.$tema,
             )
         )));
@@ -551,9 +551,9 @@ class comercio_PropostaControle extends comercio_Controle
             $html .= $this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
                 false,
                 Array(
-                    'Print'     => true,
-                    'Pdf'       => false,
-                    'Excel'     => true,
+                    'Print'     => TRUE,
+                    'Pdf'       => FALSE,
+                    'Excel'     => TRUE,
                     'Link'      => 'comercio/Proposta/Propostas_View/'.$id.'/'.$tema,
                 )
             ));
@@ -2379,9 +2379,9 @@ class comercio_PropostaControle extends comercio_Controle
                 ''
             ),
             Array(
-                'Print'     => true,
-                'Pdf'       => true,
-                'Excel'     => true,
+                'Print'     => TRUE,
+                'Pdf'       => TRUE,
+                'Excel'     => TRUE,
                 'Link'      => 'comercio/Proposta/Propostas_Comentario/'.$proposta_id_ir.'/'.$tema,
             )
         )));
@@ -2626,9 +2626,9 @@ class comercio_PropostaControle extends comercio_Controle
                 ''
             ),
             Array(
-                'Print'     => true,
-                'Pdf'       => true,
-                'Excel'     => true,
+                'Print'     => TRUE,
+                'Pdf'       => TRUE,
+                'Excel'     => TRUE,
                 'Link'      => 'comercio/Proposta/Propostas_Sub/'.$proposta_id_ir.'/'.$tema,
             )
         )));
@@ -2848,9 +2848,9 @@ class comercio_PropostaControle extends comercio_Controle
                 ''
             ),
             Array(
-                'Print'     => true,
-                'Pdf'       => true,
-                'Excel'     => true,
+                'Print'     => TRUE,
+                'Pdf'       => TRUE,
+                'Excel'     => TRUE,
                 'Link'      => 'comercio/Proposta/Checklists',
             )
         )));
@@ -3074,9 +3074,9 @@ class comercio_PropostaControle extends comercio_Controle
                 ''
             ),
             Array(
-                'Print'     => true,
-                'Pdf'       => true,
-                'Excel'     => true,
+                'Print'     => TRUE,
+                'Pdf'       => TRUE,
+                'Excel'     => TRUE,
                 'Link'      => 'comercio/Proposta/Visitas',
             )
         )));

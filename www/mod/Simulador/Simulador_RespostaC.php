@@ -168,9 +168,9 @@ class Simulador_RespostaControle extends Simulador_Controle
                 ''
             ),
             Array(
-                'Print'     => true,
-                'Pdf'       => true,
-                'Excel'     => true,
+                'Print'     => TRUE,
+                'Pdf'       => TRUE,
+                'Excel'     => TRUE,
                 'Link'      => 'Simulador/Resposta/Respostas'.$url_add,
             )
         )));

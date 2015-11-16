@@ -81,9 +81,9 @@ class Enquete_EnqueteControle extends Enquete_Controle
                 ''
             ),
             Array(
-                'Print'     => true,
-                'Pdf'       => true,
-                'Excel'     => true,
+                'Print'     => TRUE,
+                'Pdf'       => TRUE,
+                'Excel'     => TRUE,
                 'Link'      => 'Enquete/Enquete/Enquetes',
             )
         )));

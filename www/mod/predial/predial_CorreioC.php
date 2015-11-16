@@ -151,9 +151,9 @@ class predial_CorreioControle extends predial_Controle
                     ''
                 ),
                 Array(
-                    'Print'     => true,
-                    'Pdf'       => true,
-                    'Excel'     => true,
+                    'Print'     => TRUE,
+                    'Pdf'       => TRUE,
+                    'Excel'     => TRUE,
                     'Link'      => 'predial/Correio/Correios',
                 )
             )));
@@ -408,9 +408,9 @@ class predial_CorreioControle extends predial_Controle
             $html .= $Registro->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
                 false,
                 Array(
-                    'Print'     => true,
-                    'Pdf'       => true,
-                    'Excel'     => true,
+                    'Print'     => TRUE,
+                    'Pdf'       => TRUE,
+                    'Excel'     => TRUE,
                     'Link'      => 'predial/Correio/Correios',
                 )
             ));

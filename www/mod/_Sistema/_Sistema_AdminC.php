@@ -92,9 +92,9 @@ class _Sistema_AdminControle extends _Sistema_Controle
                 ''
             ),
             Array(
-                'Print'     => true,
-                'Pdf'       => true,
-                'Excel'     => true,
+                'Print'     => TRUE,
+                'Pdf'       => TRUE,
+                'Excel'     => TRUE,
                 'Link'      => '_Sistema/Admin/Menus',
             )
         )));
@@ -375,9 +375,9 @@ class _Sistema_AdminControle extends _Sistema_Controle
                 ''
             ),
             Array(
-                'Print'     => true,
-                'Pdf'       => true,
-                'Excel'     => true,
+                'Print'     => TRUE,
+                'Pdf'       => TRUE,
+                'Excel'     => TRUE,
                 'Link'      => '_Sistema/Admin/Permissoes',
             )
         )));
@@ -563,9 +563,9 @@ class _Sistema_AdminControle extends _Sistema_Controle
                 ''
             ),
             Array(
-                'Print'     => true,
-                'Pdf'       => true,
-                'Excel'     => true,
+                'Print'     => TRUE,
+                'Pdf'       => TRUE,
+                'Excel'     => TRUE,
                 'Link'      => '_Sistema/Admin/Grupos/'.$grupocat,
             )
         )));
@@ -767,9 +767,9 @@ class _Sistema_AdminControle extends _Sistema_Controle
                 ''
             ),
             Array(
-                'Print'     => true,
-                'Pdf'       => true,
-                'Excel'     => true,
+                'Print'     => TRUE,
+                'Pdf'       => TRUE,
+                'Excel'     => TRUE,
                 'Link'      => '_Sistema/Admin/Grupo_Permissao'.$botao_extra,
             )
         )));
@@ -890,9 +890,9 @@ class _Sistema_AdminControle extends _Sistema_Controle
                 ''
             ),
             Array(
-                'Print'     => true,
-                'Pdf'       => true,
-                'Excel'     => true,
+                'Print'     => TRUE,
+                'Pdf'       => TRUE,
+                'Excel'     => TRUE,
                 'Link'      => '_Sistema/Admin/Newsletter',
             )
         )));

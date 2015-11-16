@@ -30,14 +30,14 @@ $config_Menu = function () {
                 'Gravidade'             => 90,
                 'Img'                   => '',
                 'Icon'                  => 'group',
-                'Filhos'                => false,
+                'Filhos'                => FALSE,
             ),'Turmas'=>Array(
                 'Nome'                  => __('Turmas'),
                 'Link'                  => 'Curso/Turma/Turmas',
                 'Gravidade'             => 80,
                 'Img'                   => '',
                 'Icon'                  => 'hdd',
-                'Filhos'                => false,
+                'Filhos'                => FALSE,
             )),
         ),
     );

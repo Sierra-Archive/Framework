@@ -43,12 +43,12 @@ class Chart extends AbstractPart
     private $types = array(
         'pie'       => array('type' => 'pie', 'colors' => 1),
         'doughnut'  => array('type' => 'doughnut', 'colors' => 1, 'hole' => 75, 'no3d' => true),
-        'bar'       => array('type' => 'bar', 'colors' => 0, 'axes' => true, 'bar' => 'bar'),
-        'column'    => array('type' => 'bar', 'colors' => 0, 'axes' => true, 'bar' => 'col'),
+        'bar'       => array('type' => 'bar', 'colors' => 0, 'axes' => TRUE, 'bar' => 'bar'),
+        'column'    => array('type' => 'bar', 'colors' => 0, 'axes' => TRUE, 'bar' => 'col'),
         'line'      => array('type' => 'line', 'colors' => 0, 'axes' => true),
         'area'      => array('type' => 'area', 'colors' => 0, 'axes' => true),
-        'radar'     => array('type' => 'radar', 'colors' => 0, 'axes' => true, 'radar' => 'standard', 'no3d' => true),
-        'scatter'   => array('type' => 'scatter', 'colors' => 0, 'axes' => true, 'scatter' => 'marker', 'no3d' => true),
+        'radar'     => array('type' => 'radar', 'colors' => 0, 'axes' => TRUE, 'radar' => 'standard', 'no3d' => true),
+        'scatter'   => array('type' => 'scatter', 'colors' => 0, 'axes' => TRUE, 'scatter' => 'marker', 'no3d' => true),
     );
 
     /**

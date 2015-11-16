@@ -125,9 +125,9 @@ class Simulador_PerguntaControle extends Simulador_Controle
                 ''
             ),
             Array(
-                'Print'     => true,
-                'Pdf'       => true,
-                'Excel'     => true,
+                'Print'     => TRUE,
+                'Pdf'       => TRUE,
+                'Excel'     => TRUE,
                 'Link'      => 'Simulador/Pergunta/Perguntas'.$url_add,
             )
         )));

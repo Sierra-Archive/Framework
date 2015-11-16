@@ -17,7 +17,7 @@ $config_Menu = function () {
                 'Gravidade'             => 70,
                 'Img'                   => '',
                 'Icon'                  => 'road',
-                'Filhos'                => false,
+                'Filhos'                => FALSE,
             ),'Equipamentos'=>Array(
                 'Nome'                  => __('Equipamentos'),
                 'Link'                  => 'usuario_veiculo/Equipamento/Equipamentos',
@@ -27,7 +27,7 @@ $config_Menu = function () {
                 'Permissao_Func'        => Array(// Permissoes NEcessarias
                     'usuario_veiculo_Equipamento' => true
                 ),
-                'Filhos'                => false,
+                'Filhos'                => FALSE,
             ),),
         ),
     );
@@ -186,73 +186,73 @@ $config_Funcional = function () {
             'Nome'                  => 'Veiculos -> IPVA',
             'chave'                 => 'usuario_veiculo_VeiculoIPVA',
             'Desc'                  => __('Se existe IPVA no cadastro de Veiculo'),
-            'Valor'                 => true,
+            'Valor'                 => TRUE,
         ),
         'usuario_veiculo_VeiculoREVISAO'     => Array(
             'Nome'                  => 'Veiculos -> REVISAO',
             'chave'                 => 'usuario_veiculo_VeiculoREVISAO',
             'Desc'                  => __('Se existe REVISAO no cadastro de Veiculo'),
-            'Valor'                 => true,
+            'Valor'                 => TRUE,
         ),
         'usuario_veiculo_VeiculoVALOR'      => Array(
             'Nome'                  => 'Veiculos -> VALOR',
             'chave'                 => 'usuario_veiculo_VeiculoVALOR',
             'Desc'                  => __('Se existe VALOR no cadastro de Veiculo'),
-            'Valor'                 => true,
+            'Valor'                 => TRUE,
         ),
         'usuario_veiculo_VeiculoVISTORIA'      => Array(
             'Nome'                  => 'Veiculos -> VISTORIA',
             'chave'                 => 'usuario_veiculo_VeiculoVISTORIA',
             'Desc'                  => __('Se existe VISTORIA no cadastro de Veiculo'),
-            'Valor'                 => false,
+            'Valor'                 => FALSE,
         ),
         'usuario_veiculo_VeiculoRENAVAN'      => Array(
             'Nome'                  => 'Veiculos -> RENAVAN',
             'chave'                 => 'usuario_veiculo_VeiculoRENAVAN',
             'Desc'                  => __('Se existe RENAVAN no cadastro de Veiculo'),
-            'Valor'                 => false,
+            'Valor'                 => FALSE,
         ),
         'usuario_veiculo_VeiculoOBS'      => Array(
             'Nome'                  => 'Veiculos -> OBS',
             'chave'                 => 'usuario_veiculo_VeiculoOBS',
             'Desc'                  => __('Se existe OBS no cadastro de Veiculo'),
-            'Valor'                 => true,
+            'Valor'                 => TRUE,
         ),
         'usuario_veiculo_Comentario'       => Array(
             'Nome'                  => __('Comentário'),
             'chave'                 => 'usuario_veiculo_Comentario',
             'Desc'                  => __('Se existe Comentários'),
-            'Valor'                 => true,
+            'Valor'                 => TRUE,
         ),
         'usuario_veiculo_Evento'       => Array(
             'Nome'                  => __('Evento'),
             'chave'                 => 'usuario_veiculo_Evento',
             'Desc'                  => __('Se existe Evento'),
-            'Valor'                 => false,
+            'Valor'                 => FALSE,
         ),
         'usuario_veiculo_Equipamento'       => Array(
             'Nome'                  => __('Equipamentos'),
             'chave'                 => 'usuario_veiculo_Equipamento',
             'Desc'                  => __('Se existe Equipamentos'),
-            'Valor'                 => true,
+            'Valor'                 => TRUE,
         ),
         'usuario_veiculo_Status'       => Array(
             'Nome'                  => __('Status de Equipamentos'),
             'chave'                 => 'usuario_veiculo_Status',
             'Desc'                  => __('Se existe Status em Equipamentos'),
-            'Valor'                 => true,
+            'Valor'                 => TRUE,
         ),
         'usuario_veiculo_Equipamento_Marca' => Array(
             'Nome'                  => 'Equipamentos -> Marca e Modelo',
             'chave'                 => 'usuario_veiculo_Equipamento_Marca',
             'Desc'                  => __('Se exibe opção de marca e modelo pra equipamentos'),
-            'Valor'                 => false,
+            'Valor'                 => FALSE,
         ),
         'usuario_veiculo_VeiculoAVALIACAO' => Array(
             'Nome'                  => 'VEiculos -> data Avaliacao',
             'chave'                 => 'usuario_veiculo_VeiculoAVALIACAO',
             'Desc'                  => __('Se exibe opção de avaliacao para carros'),
-            'Valor'                 => false,
+            'Valor'                 => FALSE,
         ),
     );
 };

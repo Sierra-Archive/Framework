@@ -17,7 +17,7 @@ $config_Menu = function () {
                 'Gravidade'             => 90,
                 'Img'                   => '',
                 'Icon'                  => 'comments-alt',
-                'Filhos'                => false,
+                'Filhos'                => FALSE,
             ),),
         ),
     );

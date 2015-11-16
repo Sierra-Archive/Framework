@@ -219,9 +219,9 @@ class biblioteca_BibliotecaControle extends biblioteca_Controle
                 ''
             ),
             Array(
-                'Print'     => true,
-                'Pdf'       => true,
-                'Excel'     => true,
+                'Print'     => TRUE,
+                'Pdf'       => TRUE,
+                'Excel'     => TRUE,
                 'Link'      => 'biblioteca/Biblioteca/Bibliotecas/'.$raiz,
             )
         )));

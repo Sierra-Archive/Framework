@@ -2032,7 +2032,7 @@ class PHPMailer
                 2 => $name,
                 3 => $encoding,
                 4 => $type,
-                5 => false, // isStringAttachment
+                5 => FALSE, // isStringAttachment
                 6 => $disposition,
                 7 => 0
             );
@@ -2478,7 +2478,7 @@ class PHPMailer
             2 => basename($filename),
             3 => $encoding,
             4 => $type,
-            5 => true, // isStringAttachment
+            5 => TRUE, // isStringAttachment
             6 => $disposition,
             7 => 0
         );
@@ -2524,7 +2524,7 @@ class PHPMailer
             2 => $name,
             3 => $encoding,
             4 => $type,
-            5 => false, // isStringAttachment
+            5 => FALSE, // isStringAttachment
             6 => $disposition,
             7 => $cid
         );
@@ -2565,7 +2565,7 @@ class PHPMailer
             2 => $name,
             3 => $encoding,
             4 => $type,
-            5 => true, // isStringAttachment
+            5 => TRUE, // isStringAttachment
             6 => $disposition,
             7 => $cid
         );

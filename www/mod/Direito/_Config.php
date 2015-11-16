@@ -17,7 +17,7 @@ $config_Menu = function () {
                 'Gravidade'             => 70,
                 'Img'                   => 'menusuperior/varas.png',
                 'Icon'                  => '',
-                'Filhos'                => false,
+                'Filhos'                => FALSE,
             ),),
         ),
     );

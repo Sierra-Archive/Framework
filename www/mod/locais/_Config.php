@@ -20,7 +20,7 @@ $config_Menu = function () {
                 'Permissao_Func'        => Array(// Permissoes NEcessarias
                     'locais_Acesso' => true
                 ),
-                'Filhos'                => false,
+                'Filhos'                => FALSE,
             ),),
         ),
     );
@@ -89,7 +89,7 @@ $config_Funcional = function () {
             'Nome'                  => 'Locais -> Se usuario tem acesso',
             'Desc'                  => __('Se usuario tem acesso aos locais'),
             'chave'                 => 'locais_Acesso',
-            'Valor'                 => true,
+            'Valor'                 => TRUE,
         ),
     );
 };

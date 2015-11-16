@@ -88,9 +88,9 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
                 ''
             ),
             Array(
-                'Print'     => true,
-                'Pdf'       => true,
-                'Excel'     => true,
+                'Print'     => TRUE,
+                'Pdf'       => TRUE,
+                'Excel'     => TRUE,
                 'Link'      => 'usuario_veiculo/Equipamento/Equipamentos',
             )
         )));
@@ -343,9 +343,9 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
                 ''
             ),
             Array(
-                'Print'     => true,
-                'Pdf'       => true,
-                'Excel'     => true,
+                'Print'     => TRUE,
+                'Pdf'       => TRUE,
+                'Excel'     => TRUE,
                 'Link'      => 'usuario_veiculo/Equipamento/Marcas',
             )
         )));
@@ -491,9 +491,9 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
                 ''
             ),
             Array(
-                'Print'     => true,
-                'Pdf'       => true,
-                'Excel'     => true,
+                'Print'     => TRUE,
+                'Pdf'       => TRUE,
+                'Excel'     => TRUE,
                 'Link'      => 'usuario_veiculo/Equipamento/Modelos',
             )
         )));

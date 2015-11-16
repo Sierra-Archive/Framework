@@ -106,9 +106,9 @@ class Financeiro_UsuarioControle extends Financeiro_Controle
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
             false,
             Array(
-                'Print'     => true,
-                'Pdf'       => true,
-                'Excel'     => true,
+                'Print'     => TRUE,
+                'Pdf'       => TRUE,
+                'Excel'     => TRUE,
                 'Link'      => 'Financeiro/Usuario/Pagar',
             )
         )));
@@ -145,9 +145,9 @@ class Financeiro_UsuarioControle extends Financeiro_Controle
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
             false,
             Array(
-                'Print'     => true,
-                'Pdf'       => true,
-                'Excel'     => true,
+                'Print'     => TRUE,
+                'Pdf'       => TRUE,
+                'Excel'     => TRUE,
                 'Link'      => 'Financeiro/Usuario/Receber',
             )
         )));
@@ -181,9 +181,9 @@ class Financeiro_UsuarioControle extends Financeiro_Controle
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
             false,
             Array(
-                'Print'     => true,
-                'Pdf'       => true,
-                'Excel'     => true,
+                'Print'     => TRUE,
+                'Pdf'       => TRUE,
+                'Excel'     => TRUE,
                 'Link'      => 'Financeiro/Usuario/Pago',
             )
         )));
@@ -220,9 +220,9 @@ class Financeiro_UsuarioControle extends Financeiro_Controle
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
             false,
             Array(
-                'Print'     => true,
-                'Pdf'       => true,
-                'Excel'     => true,
+                'Print'     => TRUE,
+                'Pdf'       => TRUE,
+                'Excel'     => TRUE,
                 'Link'      => 'Financeiro/Usuario/Recebido',
             )
         )));
@@ -364,9 +364,9 @@ class Financeiro_UsuarioControle extends Financeiro_Controle
             $html .= $this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
                 false,
                 Array(
-                    'Print'     => true,
-                    'Pdf'       => false,
-                    'Excel'     => false,
+                    'Print'     => TRUE,
+                    'Pdf'       => FALSE,
+                    'Excel'     => FALSE,
                     'Link'      => 'Financeiro/Usuario/Financeiro_View/'.$identificador->id.'/'.$tema,
                 )
             ));

@@ -16,7 +16,7 @@ $config_Menu = function () {
             'Gravidade'             => 90,
             'Img'                   => '',
             'Icon'                  => 'folder-open',
-            'Filhos'                => false,
+            'Filhos'                => FALSE,
         ),
     );
 };

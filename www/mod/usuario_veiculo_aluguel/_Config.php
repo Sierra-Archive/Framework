@@ -22,14 +22,14 @@ $config_Menu = function () {
                 'Gravidade'             => 80,
                 'Img'                   => 'menusuperior/alugueis-locar.png',
                 'Icon'                  => 'truck',
-                'Filhos'                => false,
+                'Filhos'                => FALSE,
             ),'Veiculos'=>Array(
                 'Nome'                  => __('Veiculos'),
                 'Link'                  => 'usuario_veiculo/Listar/Main',
                 'Gravidade'             => 10,
                 'Img'                   => 'menusuperior/alugueis-locar.png',
                 'Icon'                  => 'road',
-                'Filhos'                => false,
+                'Filhos'                => FALSE,
             ),),
         ),
     );

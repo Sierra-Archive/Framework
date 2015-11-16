@@ -22,21 +22,21 @@ $config_Menu = function () {
                 'Gravidade'             => 9,
                 'Img'                   => 'turboadmin/m-users.png',
                 'Icon'                  => 'male',
-                'Filhos'                => false,
+                'Filhos'                => FALSE,
             ),'Ações'=>Array(
                 'Nome'                  => __('Ações'),
                 'Link'                  => 'social/Acao/Acao',
                 'Gravidade'             => 9,
                 'Img'                   => 'turboadmin/m-users.png',
                 'Icon'                  => 'eye-close',
-                'Filhos'                => false,
+                'Filhos'                => FALSE,
             ),'Midias'=>Array(
                 'Nome'                  => __('Midias'),
                 'Link'                  => 'social/Midia/Midias',
                 'Gravidade'             => 9,
                 'Img'                   => 'turboadmin/m-users.png',
                 'Icon'                  => 'camera',
-                'Filhos'                => false,
+                'Filhos'                => FALSE,
             ) 
         ),
         'Administrar'=>Array(
@@ -46,7 +46,7 @@ $config_Menu = function () {
                 'Gravidade'             => 9,
                 'Img'                   => 'turboadmin/m-users.png',
                 'Icon'                  => 'sunglasses',
-                'Filhos'                => false,
+                'Filhos'                => FALSE,
             ),
             'Tarefas'=>Array(
                 'Nome'                  => __('Tarefas'),
@@ -54,21 +54,21 @@ $config_Menu = function () {
                 'Gravidade'             => 9,
                 'Img'                   => 'turboadmin/m-users.png',
                 'Icon'                  => 'wrench',
-                'Filhos'                => false,
+                'Filhos'                => FALSE,
             ),'Atributos'=>Array(
                 'Nome'                  => __('Atributos'),
                 'Link'                  => 'social/Atributo/Atributos',
                 'Gravidade'             => 9,
                 'Img'                   => 'turboadmin/m-users.png',
                 'Icon'                  => 'briefcase',
-                'Filhos'                => false,
+                'Filhos'                => FALSE,
             ),'Gosto'=>Array(
                 'Nome'                  => __('Gostos'),
                 'Link'                  => 'social/Gosto/Gostos',
                 'Gravidade'             => 9,
                 'Img'                   => 'turboadmin/m-users.png',
                 'Icon'                  => 'heart-empty',
-                'Filhos'                => false,
+                'Filhos'                => FALSE,
             ),),
         ),
     );

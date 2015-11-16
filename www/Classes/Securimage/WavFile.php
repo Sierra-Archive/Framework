@@ -1572,7 +1572,7 @@ class WavFile
      *      array(
      *          WavFile::FILTER_MIX => array(          // Filter for mixing 2 WavFile instances.
      *              'wav' => $wav2,                    // (Required) The WavFile to mix into this WhavFile. If no optional arguments are given, can be passed without the array.
-     *              'loop' => true,                    // (Optional) Loop the selected portion (with warping to the beginning at the end).
+     *              'loop' => TRUE,                    // (Optional) Loop the selected portion (with warping to the beginning at the end).
      *              'blockOffset' => 0,                // (Optional) Block number to start mixing from.
      *              'numBlocks' => null                // (Optional) Number of blocks to mix in or to select for looping. Defaults to the end or all data for looping.
      *          ),

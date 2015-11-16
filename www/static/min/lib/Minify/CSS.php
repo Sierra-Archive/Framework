@@ -56,9 +56,9 @@ class Minify_CSS {
     public static function minify($css, $options = array()) 
     {
         $options = array_merge(array(
-            'compress' => true,
-            'removeCharsets' => true,
-            'preserveComments' => true,
+            'compress' => TRUE,
+            'removeCharsets' => TRUE,
+            'preserveComments' => TRUE,
             'currentDir' => null,
             'docRoot' => $_SERVER['DOCUMENT_ROOT'],
             'prependRelativePath' => null,

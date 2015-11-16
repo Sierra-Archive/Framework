@@ -562,13 +562,13 @@ class SierraTec_Manutencao {
                         if (isset($argumentos_item[1])) {
                             $metodos[$i]['Args'][] = Array(
                                 'Nome'          => $valor,
-                                'Opcional'      => true,
+                                'Opcional'      => TRUE,
                                 'Padrao'        => $argumentos_item[1]
                             );
                         } else {
                             $metodos[$i]['Args'][] = Array(
                                 'Nome'          => $valor,
-                                'Opcional'      => false,
+                                'Opcional'      => FALSE,
                                 'Padrao'        => false
                             );
                         }

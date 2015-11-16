@@ -161,9 +161,9 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
             false,
             Array(
-                'Print'     => true,
-                'Pdf'       => true,
-                'Excel'     => true,
+                'Print'     => TRUE,
+                'Pdf'       => TRUE,
+                'Excel'     => TRUE,
                 'Link'      => 'Financeiro/Pagamento/Receber',
             )
         )));
@@ -196,9 +196,9 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
             false,
             Array(
-                'Print'     => true,
-                'Pdf'       => true,
-                'Excel'     => true,
+                'Print'     => TRUE,
+                'Pdf'       => TRUE,
+                'Excel'     => TRUE,
                 'Link'      => 'Financeiro/Pagamento/Pago',
             )
         )));
@@ -234,9 +234,9 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
             false,
             Array(
-                'Print'     => true,
-                'Pdf'       => true,
-                'Excel'     => true,
+                'Print'     => TRUE,
+                'Pdf'       => TRUE,
+                'Excel'     => TRUE,
                 'Link'      => 'Financeiro/Pagamento/Recebido',
             )
         )));
@@ -977,9 +977,9 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
             $html .= $this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
                 false,
                 Array(
-                    'Print'     => true,
-                    'Pdf'       => false,
-                    'Excel'     => false,
+                    'Print'     => TRUE,
+                    'Pdf'       => FALSE,
+                    'Excel'     => FALSE,
                     'Link'      => 'Financeiro/Pagamento/Financeiro_View/'.$id.'/'.$tema,
                 )
             ));

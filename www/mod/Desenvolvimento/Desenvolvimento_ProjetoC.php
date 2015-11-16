@@ -90,9 +90,9 @@ class Desenvolvimento_ProjetoControle extends Desenvolvimento_Controle
                 ''
             ),
             Array(
-                'Print'     => true,
-                'Pdf'       => true,
-                'Excel'     => true,
+                'Print'     => TRUE,
+                'Pdf'       => TRUE,
+                'Excel'     => TRUE,
                 'Link'      => 'Desenvolvimento/Projeto/Projetos',
             )
         )));

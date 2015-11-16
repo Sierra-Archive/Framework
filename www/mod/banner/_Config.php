@@ -17,7 +17,7 @@ $config_Menu = function () {
                 'Gravidade'             => 3,
                 'Img'                   => 'turboadmin/m-dashboard.png',
                 'Icon'                  => 'picture',
-                'Filhos'                => false,
+                'Filhos'                => FALSE,
             ),),
         ),
     );

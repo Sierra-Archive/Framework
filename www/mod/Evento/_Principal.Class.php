@@ -85,9 +85,9 @@ class Evento_Principal implements \Framework\PrincipalInterface
                 ''
             ),
             Array(
-                'Print'     => true,
-                'Pdf'       => true,
-                'Excel'     => true,
+                'Print'     => TRUE,
+                'Pdf'       => TRUE,
+                'Excel'     => TRUE,
                 'Evento/Evento/Eventos',
             )
         )));

@@ -94,9 +94,9 @@ class usuario_veiculo_VeiculoControle extends usuario_veiculo_Controle
                 ''
             ),
             Array(
-                'Print'     => true,
-                'Pdf'       => true,
-                'Excel'     => true,
+                'Print'     => TRUE,
+                'Pdf'       => TRUE,
+                'Excel'     => TRUE,
                 'Link'      => 'usuario_veiculo/Veiculo/Veiculos',
             )
         )));
@@ -326,9 +326,9 @@ class usuario_veiculo_VeiculoControle extends usuario_veiculo_Controle
                 ''
             ),
             Array(
-                'Print'     => true,
-                'Pdf'       => true,
-                'Excel'     => true,
+                'Print'     => TRUE,
+                'Pdf'       => TRUE,
+                'Excel'     => TRUE,
                 'Link'      => 'usuario_veiculo/Veiculo/Veiculos_Comentario/'.$veiculo_id,
             )
         )));

@@ -25,21 +25,21 @@ $config_Menu = function () {
                 'Permissao_Func'        => Array(// Permissoes NEcessarias
                     'comercio_venda_mesa' => true
                 ),
-                'Filhos'                => false,
+                'Filhos'                => FALSE,
             ),'Caixa'=>Array(
                 'Nome'                  => __('Caixa'),
                 'Link'                  => 'comercio_venda/Carrinho/Carrinhos',
                 'Gravidade'             => 8,
                 'Img'                   => 'turboadmin/m-dashboard.png',
                 'Icon'                  => 'shopping-cart',
-                'Filhos'                => false,
+                'Filhos'                => FALSE,
             ),'Cardápio'=>Array(
                 'Nome'                  => __('Cardápio'),
                 'Link'                  => 'comercio_venda/Composicao/Composicoes',
                 'Gravidade'             => 6,
                 'Img'                   => 'turboadmin/m-dashboard.png',
                 'Icon'                  => 'leaf',
-                'Filhos'                => false,
+                'Filhos'                => FALSE,
             ),),
         ),
         /*'Relatório'=>Array(
@@ -49,7 +49,7 @@ $config_Menu = function () {
                 'Gravidade'             => 70,
                 'Img'                   => 'menusuperior/varas.png',
                 'Icon'                  => '',
-                'Filhos'                => false,
+                'Filhos'                => FALSE,
             ),),
         ),*/
     );

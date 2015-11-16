@@ -59,9 +59,9 @@ class usuario_TelefoneControle extends usuario_Controle
                 ''
             ),
             Array(
-                'Print'     => true,
-                'Pdf'       => true,
-                'Excel'     => true,
+                'Print'     => TRUE,
+                'Pdf'       => TRUE,
+                'Excel'     => TRUE,
                 'Link'      => 'usuario/Telefone/Telefones',
             )
         )));

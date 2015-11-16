@@ -17,7 +17,7 @@ $config_Menu = function () {
                 'Gravidade'             => 5,
                 'Img'                   => 'envelope',
                 'Icon'                  => 'envelope',
-                'Filhos'                => false,
+                'Filhos'                => FALSE,
             ),),
         ),
         'Suporte' => Array(
@@ -33,21 +33,21 @@ $config_Menu = function () {
                 'Gravidade'             => 70,
                 'Img'                   => 'menusuperior/ticket.png',
                 'Icon'                  => 'envelope',
-                'Filhos'                => false,
+                'Filhos'                => FALSE,
             ),'Setores'=>Array(
                 'Nome'                  => __('Setores'),
                 'Link'                  => 'usuario_mensagem/Setor/Setores',
                 'Gravidade'             => 68,
                 'Img'                   => 'turboadmin/m-dashboard.png',
                 'Icon'                  => 'smile',
-                'Filhos'                => false,
+                'Filhos'                => FALSE,
             ),'Assuntos'=>Array(
                 'Nome'                  => __('Assuntos'),
                 'Link'                  => 'usuario_mensagem/Assunto/Assuntos',
                 'Gravidade'             => 67,
                 'Img'                   => 'turboadmin/m-dashboard.png',
                 'Icon'                  => 'shopping-cart',
-                'Filhos'                => false,
+                'Filhos'                => FALSE,
             ),),
         ),
     );
@@ -187,13 +187,13 @@ $config_Funcional = function () {
             'Nome'                  => 'Usuarios -> Email  Setor',
             'Desc'                  => __('Enviar Email para setor'),
             'chave'                 => 'usuario_mensagem_EmailSetor',
-            'Valor'                 => false,
+            'Valor'                 => FALSE,
         ),
         'usuario_mensagem_Obs'  => Array(
             'Nome'                  => 'Usuarios Mensagens -> Observacao como mensagem',
             'Desc'                  => __('Se observação conta como mensagem'),
             'chave'                 => 'usuario_mensagem_Obs',
-            'Valor'                 => false,
+            'Valor'                 => FALSE,
         )
     );
 };

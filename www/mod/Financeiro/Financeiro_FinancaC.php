@@ -46,9 +46,9 @@ class Financeiro_FinancaControle extends Financeiro_Controle
                 ''
             ),
             Array(
-                'Print'     => true,
-                'Pdf'       => true,
-                'Excel'     => true,
+                'Print'     => TRUE,
+                'Pdf'       => TRUE,
+                'Excel'     => TRUE,
                 'Link'     => 'Financeiro/Financa/Financas',
             )
         )));

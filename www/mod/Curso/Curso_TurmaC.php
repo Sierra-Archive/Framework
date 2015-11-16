@@ -206,9 +206,9 @@ class Curso_TurmaControle extends Curso_Controle
                 ''
             ),
             Array(
-                'Print'     => true,
-                'Pdf'       => true,
-                'Excel'     => true,
+                'Print'     => TRUE,
+                'Pdf'       => TRUE,
+                'Excel'     => TRUE,
                 'Link'      => 'Curso/Turma/Turmas'.$url_add,
             )
         )));
@@ -287,9 +287,9 @@ class Curso_TurmaControle extends Curso_Controle
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
             false,
             Array(
-                'Print'     => true,
-                'Pdf'       => true,
-                'Excel'     => true,
+                'Print'     => TRUE,
+                'Pdf'       => TRUE,
+                'Excel'     => TRUE,
                 'Link'      => 'Curso/Turma/Turmas'.$url_add,
             )
         )));

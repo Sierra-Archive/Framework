@@ -24,21 +24,21 @@ $config_Menu = function () {
                 'Gravidade'             => 10,
                 'Img'                   => 'turboadmin/m-dashboard.png',
                 'Icon'                  => 'calendar',
-                'Filhos'                => false,
+                'Filhos'                => FALSE,
             ),'Agenda'=>Array(
                 'Nome'                  => __('Agenda'),
                 'Link'                  => 'Agenda/Agenda/Agendas',
                 'Gravidade'             => 7,
                 'Img'                   => 'turboadmin/m-dashboard.png',
                 'Icon'                  => 'calendar',
-                'Filhos'                => false,
+                'Filhos'                => FALSE,
             ),'Atividades'=>Array(
                 'Nome'                  => __('Atividades'),
                 'Link'                  => 'Agenda/Atividades/Atividades',
                 'Gravidade'             => 5,
                 'Img'                   => 'turboadmin/m-dashboard.png',
                 'Icon'                  => 'time',
-                'Filhos'                => false,
+                'Filhos'                => FALSE,
             ),),
         ),
         'Administrar'=>Array(
@@ -48,7 +48,7 @@ $config_Menu = function () {
                 'Gravidade'             => 10,
                 'Img'                   => 'turboadmin/m-dashboard.png',
                 'Icon'                  => 'time',
-                'Filhos'                => false,
+                'Filhos'                => FALSE,
             ),),
         ),
     );

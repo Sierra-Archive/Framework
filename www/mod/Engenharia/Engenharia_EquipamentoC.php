@@ -58,9 +58,9 @@ class Engenharia_EquipamentoControle extends Engenharia_Controle
                 ''
             ),
             Array(
-                'Print'     => true,
-                'Pdf'       => true,
-                'Excel'     => true,
+                'Print'     => TRUE,
+                'Pdf'       => TRUE,
+                'Excel'     => TRUE,
                 'Link'      => 'Engenharia/Equipamento/Equipamentos',
             )
         )));

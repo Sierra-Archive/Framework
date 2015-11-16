@@ -17,7 +17,7 @@ $config_Menu = function () {
                 'Gravidade'             => 75,
                 'Img'                   => 'turboadmin/m-dashboard.png',
                 'Icon'                  => 'rss',
-                'Filhos'                => false,
+                'Filhos'                => FALSE,
             ),),
         ),
     );
@@ -74,7 +74,7 @@ $config_Funcional = function () {
             'Nome'                  => __('Se possui categoria em noticias'),
             'Desc'                  => __('Se possui categoria em noticias'),
             'chave'                 => 'noticia_Categoria',
-            'Valor'                 => true,
+            'Valor'                 => TRUE,
         )
     );
 };

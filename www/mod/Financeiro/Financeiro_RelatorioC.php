@@ -213,9 +213,9 @@ class Financeiro_RelatorioControle extends Financeiro_Controle
         $html = $this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
             false,
             Array(
-                'Print'     => true,
-                'Pdf'       => true,
-                'Excel'     => true,
+                'Print'     => TRUE,
+                'Pdf'       => TRUE,
+                'Excel'     => TRUE,
                 'Link'      => 'Financeiro/Relatorio/Pagar/'.$datainicial.'/'.$datafinal.'/'.($categoria===false?'false':$categoria),
             )
         ));
@@ -278,9 +278,9 @@ class Financeiro_RelatorioControle extends Financeiro_Controle
         $html = $this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
             false,
             Array(
-                'Print'     => true,
-                'Pdf'       => true,
-                'Excel'     => true,
+                'Print'     => TRUE,
+                'Pdf'       => TRUE,
+                'Excel'     => TRUE,
                 'Link'      => 'Financeiro/Relatorio/Receber/'.$datainicial.'/'.$datafinal.'/'.($categoria===false?'false':$categoria),
             )
         ));
@@ -342,9 +342,9 @@ class Financeiro_RelatorioControle extends Financeiro_Controle
         $html = $this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
             false,
             Array(
-                'Print'     => true,
-                'Pdf'       => true,
-                'Excel'     => true,
+                'Print'     => TRUE,
+                'Pdf'       => TRUE,
+                'Excel'     => TRUE,
                 'Link'      => 'Financeiro/Relatorio/Pago/'.$datainicial.'/'.$datafinal.'/'.($categoria===false?'false':$categoria),
             )
         ));
@@ -406,9 +406,9 @@ class Financeiro_RelatorioControle extends Financeiro_Controle
         $html = $this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
             false,
             Array(
-                'Print'     => true,
-                'Pdf'       => true,
-                'Excel'     => true,
+                'Print'     => TRUE,
+                'Pdf'       => TRUE,
+                'Excel'     => TRUE,
                 'Link'      => 'Financeiro/Relatorio/Recebido/'.$datainicial.'/'.$datafinal.'/'.($categoria===false?'false':$categoria),
             )
         ));
@@ -623,9 +623,9 @@ class Financeiro_RelatorioControle extends Financeiro_Controle
         $html = ''/*.$this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
             false,
             Array(
-                'Print'     => true,
-                'Pdf'       => true,
-                'Excel'     => true,
+                'Print'     => TRUE,
+                'Pdf'       => TRUE,
+                'Excel'     => TRUE,
                 'Link'      => 'Financeiro/Relatorio/Pagar/'.$datainicial.'/'.$datafinal.'/'.($categoria===false?'false':$categoria).'/'.$tipo_grafico,
             )
         ))*/;
@@ -688,9 +688,9 @@ class Financeiro_RelatorioControle extends Financeiro_Controle
         $html = ''/*.$this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
             false,
             Array(
-                'Print'     => true,
-                'Pdf'       => true,
-                'Excel'     => true,
+                'Print'     => TRUE,
+                'Pdf'       => TRUE,
+                'Excel'     => TRUE,
                 'Link'      => 'Financeiro/Relatorio/Receber/'.$datainicial.'/'.$datafinal.'/'.($categoria===false?'false':$categoria),
             )
         ))*/;
@@ -752,9 +752,9 @@ class Financeiro_RelatorioControle extends Financeiro_Controle
         $html = ''/*.$this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
             false,
             Array(
-                'Print'     => true,
-                'Pdf'       => true,
-                'Excel'     => true,
+                'Print'     => TRUE,
+                'Pdf'       => TRUE,
+                'Excel'     => TRUE,
                 'Link'      => 'Financeiro/Relatorio/Pago/'.$datainicial.'/'.$datafinal.'/'.($categoria===false?'false':$categoria),
             )
         ))*/;
@@ -816,9 +816,9 @@ class Financeiro_RelatorioControle extends Financeiro_Controle
         $html = ''/*.$this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
             false,
             Array(
-                'Print'     => true,
-                'Pdf'       => true,
-                'Excel'     => true,
+                'Print'     => TRUE,
+                'Pdf'       => TRUE,
+                'Excel'     => TRUE,
                 'Link'      => 'Financeiro/Relatorio/Recebido/'.$datainicial.'/'.$datafinal.'/'.($categoria===false?'false':$categoria),
             )
         ))*/;

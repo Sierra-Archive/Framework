@@ -17,7 +17,7 @@
  * Minify_YUICompressor::$tempDir = '/tmp';
  * $code = Minify_YUICompressor::minifyJs(
  *   $code
- *   ,array('nomunge' => true, 'line-break' => 1000)
+ *   ,array('nomunge' => TRUE, 'line-break' => 1000)
  * );
  * </code>
  *

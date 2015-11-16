@@ -103,9 +103,9 @@ class Enquete_Principal implements \Framework\PrincipalInterface
                 ''
             ),
             Array(
-                'Print'     => true,
-                'Pdf'       => true,
-                'Excel'     => true,
+                'Print'     => TRUE,
+                'Pdf'       => TRUE,
+                'Excel'     => TRUE,
                 'Enquete/Enquete/Enquetes',
             )
         )));
@@ -135,9 +135,9 @@ class Enquete_Principal implements \Framework\PrincipalInterface
                 ''
             ),
             Array(
-                'Print'     => true,
-                'Pdf'       => true,
-                'Excel'     => true,
+                'Print'     => TRUE,
+                'Pdf'       => TRUE,
+                'Excel'     => TRUE,
                 'Enquete/Resposta/Respostas',
             )
         )));

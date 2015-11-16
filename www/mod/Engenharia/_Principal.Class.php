@@ -86,9 +86,9 @@ class Engenharia_Principal implements \Framework\PrincipalInterface
                 ''
             ),
             Array(
-                'Print'     => true,
-                'Pdf'       => true,
-                'Excel'     => true,
+                'Print'     => TRUE,
+                'Pdf'       => TRUE,
+                'Excel'     => TRUE,
                 'Engenharia/Empreendimento/Empreendimentos',
             )
         )));
@@ -121,9 +121,9 @@ class Engenharia_Principal implements \Framework\PrincipalInterface
                 ''
             ),
             Array(
-                'Print'     => true,
-                'Pdf'       => true,
-                'Excel'     => true,
+                'Print'     => TRUE,
+                'Pdf'       => TRUE,
+                'Excel'     => TRUE,
                 'Engenharia/Unidade/Unidades',
             )
         )));

@@ -727,7 +727,7 @@ class Acl{
                 'end'       => $campo->end,
                 'permissao' => $campo->nome,
                 'valor'     => $v,
-                'herdado'   => false,
+                'herdado'   => FALSE,
             );
         }
         return $data;

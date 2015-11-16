@@ -16,7 +16,7 @@ $config_Menu = function () {
             'Gravidade'             => 10000,
             'Img'                   => 'turboadmin/m-dashboard.png',
             'Icon'                  => 'dashboard',
-            'Filhos'                => false,
+            'Filhos'                => FALSE,
         ),'Cadastros' => Array(
             'Nome'                  => __('Cadastros'),
             'Link'                  => '#',
@@ -41,7 +41,7 @@ $config_Menu = function () {
                 'Gravidade'             => 5,
                 'Img'                   => 'turboadmin/m-dashboard.png',
                 'Icon'                  => 'group',
-                'Filhos'                => false,
+                'Filhos'                => FALSE,
             ),'Menus'=>Array(
                 'Nome'                  => __('Menus'),
                 'Link'                  => '_Sistema/Admin/Menus',
@@ -51,7 +51,7 @@ $config_Menu = function () {
                 'Permissao_Func'        => Array(// Permissoes NEcessarias
                     '_Sistema_Avancado' => true
                 ),
-                'Filhos'                => false,
+                'Filhos'                => FALSE,
             ),'Configurações'=>Array(
                 'Nome'                  => __('Configurações'),
                 'Link'                  => '_Sistema/Admin/Configs',
@@ -61,7 +61,7 @@ $config_Menu = function () {
                 'Permissao_Func'        => Array(// Permissoes NEcessarias
                     '_Sistema_Avancado' => true
                 ),
-                'Filhos'                => false,
+                'Filhos'                => FALSE,
             ),'Filiais'=>Array(
                 'Nome'                  => __('Filiais'),
                 'Link'                  => '_Sistema/Filial/Filiais',
@@ -71,7 +71,7 @@ $config_Menu = function () {
                 'Permissao_Func'        => Array(// Permissoes NEcessarias
                     '_Sistema_Filial' => true
                 ),
-                'Filhos'                => false,
+                'Filhos'                => FALSE,
             ))
         ),'Relatório' => Array(
             'Nome'                  => __('Relatório'),
@@ -354,19 +354,19 @@ $config_Funcional = function () {
             'Nome'                  => 'Sistema -> Newsletter',
             'Desc'                  => __('Se possue Newsletter'),
             'chave'                 => '_Sistema_Newsletter',
-            'Valor'                 => false,  // false, true, ou array com os grupos que pode
+            'Valor'                 => FALSE,  // false, true, ou array com os grupos que pode
         ),
         '_Sistema_Avancado'  => Array(
             'Nome'                  => 'Sistema -> Avancado',
             'Desc'                  => __('Se Carrega ou nao Permissao em Avancado e se aparece no menu'),
             'chave'                 => '_Sistema_Avancado',
-            'Valor'                 => true,  // false, true, ou array com os grupos que pode
+            'Valor'                 => TRUE,  // false, true, ou array com os grupos que pode
         ),
         '_Sistema_Filial'  => Array(
             'Nome'                  => 'Sistema -> Avancado',
             'Desc'                  => __('Se Carrega ou nao as Filiais'),
             'chave'                 => '_Sistema_Filial',
-            'Valor'                 => false,  // false, true, ou array com os grupos que pode
+            'Valor'                 => FALSE,  // false, true, ou array com os grupos que pode
         ),
     );
 };

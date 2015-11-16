@@ -22,7 +22,7 @@ $config_Menu = function () {
                 'Gravidade'             => 5,
                 'Img'                   => 'turboadmin/m-dashboard.png',
                 'Icon'                  => 'truck',
-                'Filhos'                => false,
+                'Filhos'                => FALSE,
             ))
         )
     );
@@ -90,7 +90,7 @@ $config_Funcional = function () {
             'Nome'                  => 'Locomocao -> Avancado',
             'Desc'                  => __('Se Carrega ou nao Permissao em Avancado e se aparece no menu'),
             'chave'                 => 'Locomocao_Avancado',
-            'Valor'                 => true,  // false, true, ou array com os grupos que pode
+            'Valor'                 => TRUE,  // false, true, ou array com os grupos que pode
         ),*/
     );
 };

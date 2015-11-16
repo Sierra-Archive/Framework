@@ -88,9 +88,9 @@ class Evento_EventoControle extends Evento_Controle
                 ''
             ),
             Array(
-                'Print'     => true,
-                'Pdf'       => true,
-                'Excel'     => true,
+                'Print'     => TRUE,
+                'Pdf'       => TRUE,
+                'Excel'     => TRUE,
                 'Link'      => 'Evento/Evento/Eventos',
             )
         )));

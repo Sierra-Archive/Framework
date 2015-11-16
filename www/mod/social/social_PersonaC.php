@@ -96,9 +96,9 @@ class social_PersonaControle extends social_Controle
                 ''
             ),
             Array(
-                'Print'     => true,
-                'Pdf'       => true,
-                'Excel'     => true,
+                'Print'     => TRUE,
+                'Pdf'       => TRUE,
+                'Excel'     => TRUE,
                 'Link'      => 'social/Persona/Personas',
             )
         )));
@@ -670,9 +670,9 @@ class social_PersonaControle extends social_Controle
                 ''
             ),
             Array(
-                'Print'     => true,
-                'Pdf'       => true,
-                'Excel'     => true,
+                'Print'     => TRUE,
+                'Pdf'       => TRUE,
+                'Excel'     => TRUE,
                 'Link'      => 'social/Persona/Ficou_Comentario/'.$ficada_id,
             )
         )));

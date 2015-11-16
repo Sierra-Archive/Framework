@@ -19,7 +19,7 @@ $config_Menu = function () {
             'Permissao_Func'        => Array(// Permissoes NEcessarias
                 'usuario_Expediente' => true
             ),
-            'Filhos'                => false,
+            'Filhos'                => FALSE,
         ),
         'Lista Telefonica' => Array(
             'Nome'                  => __('Lista Telefonica'),
@@ -30,7 +30,7 @@ $config_Menu = function () {
             'Permissao_Func'        => Array(// Permissoes NEcessarias
                 'usuario_Telefone_Lista' => true
             ),
-            'Filhos'                => false,
+            'Filhos'                => FALSE,
         ),
         'Administrar'=>Array(
             'Filhos'                => Array('Usuários'=>Array(
@@ -39,7 +39,7 @@ $config_Menu = function () {
                 'Gravidade'             => 9996,
                 'Img'                   => 'turboadmin/m-dashboard.png',
                 'Icon'                  => 'user',
-                'Filhos'                => false,
+                'Filhos'                => FALSE,
             ),\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Funcionario_nome')=>Array(
                 'Nome'                  => \Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Funcionario_nome'),
                 'Link'                  => 'usuario/Admin/ListarFuncionario',
@@ -49,7 +49,7 @@ $config_Menu = function () {
                 'Permissao_Func'        => Array(// Permissoes NEcessarias
                     'usuario_Admin_Funcionario' => true
                 ),
-                'Filhos'                => false,
+                'Filhos'                => FALSE,
             ),\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Cliente_nome')=>Array(
                 'Nome'                  => \Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Cliente_nome'),
                 'Link'                  => 'usuario/Admin/ListarCliente',
@@ -59,7 +59,7 @@ $config_Menu = function () {
                 'Permissao_Func'        => Array(// Permissoes NEcessarias
                     'usuario_Admin_Cliente' => true
                 ),
-                'Filhos'                => false,
+                'Filhos'                => FALSE,
             )),
         ),'Configurações' => Array(
             'Nome'                  => __('Configurações'),
@@ -69,7 +69,7 @@ $config_Menu = function () {
                 'Gravidade'             => 1,
                 'Img'                   => 'turboadmin/m-dashboard.png',
                 'Icon'                  => 'dashboard',
-                'Filhos'                => false,
+                'Filhos'                => FALSE,
             ),),
         ),
     );
@@ -305,74 +305,74 @@ $config_Funcional = function () {
             'Nome'                  => 'Grupos -> Se Mostra Opções de Grupos',
             'Desc'                  => __('Se Mostra Opções de Grupos'),
             'chave'                 => 'usuario_grupo',
-            'Valor'                 => false,  // false, true, ou array com os grupos que pode
+            'Valor'                 => FALSE,  // false, true, ou array com os grupos que pode
         ),
         'usuario_usuarios_showconfig'  => Array(
             'Nome'                  => 'Usuarios -> Ocultar Grupos',
             'Desc'                  => __('Se verdadeiro mostra so os clientes ativos'),
             'chave'                 => 'usuario_usuarios_showconfig',
-            'Valor'                 => false,  // false, true, ou array com os grupos que pode
+            'Valor'                 => FALSE,  // false, true, ou array com os grupos que pode
         ),
         'usuario_Grupo_Mostrar'  => Array(
             'Nome'                  => 'Usuarios -> Ocultar Grupos',
             'Desc'                  => __('Aonde mostra adição de grupos'),
             'chave'                 => 'usuario_Grupo_Mostrar',
-            'Valor'                 => true,  // false, true, ou array com os grupos que pode
+            'Valor'                 => TRUE,  // false, true, ou array com os grupos que pode
         ),
         // Grupos que tem login/senha
         'usuario_Login'  => Array(
             'Nome'                  => 'Usuarios -> Login',
             'Desc'                  => __('Se possue login em Usuarios'),
             'chave'                 => 'usuario_Login',
-            'Valor'                 => true,  // false, true, ou array com as categorias de grupos que podem
+            'Valor'                 => TRUE,  // false, true, ou array com as categorias de grupos que podem
         ),
         'usuario_Anexo'  => Array(
             'Nome'                  => 'Usuarios -> Anexo',
             'Desc'                  => __('Se possue Anexo em Usuarios'),
             'chave'                 => 'usuario_Anexo',
-            'Valor'                 => false,
+            'Valor'                 => FALSE,
         ),
         'usuario_Admin_Site'  => Array(
             'Nome'                  => 'Usuarios -> Site',
             'Desc'                  => __('Se possue Site em Usuarios'),
             'chave'                 => 'usuario_Admin_Site',
-            'Valor'                 => true,
+            'Valor'                 => TRUE,
         ),
         'usuario_Admin_Ativado'  => Array(
             'Nome'                  => 'Usuarios -> Status',
             'Desc'                  => __('Se possue Status em Usuarios (Ativado)'),
             'chave'                 => 'usuario_Admin_Ativado',
-            'Valor'                 => true,
+            'Valor'                 => TRUE,
         ),
         'usuario_Admin_Ativado_Listar'  => Array(
             'Nome'                  => 'Usuarios -> Status Listagem',
             'Desc'                  => __('Se mostra na listagem o Status'),
             'chave'                 => 'usuario_Admin_Ativado_Listar',
-            'Valor'                 => false,
+            'Valor'                 => FALSE,
         ),
         'usuario_Admin_Foto'  => Array(
             'Nome'                  => 'Usuarios -> Foto',
             'Desc'                  => __('Se possue Foto em Usuarios'),
             'chave'                 => 'usuario_Admin_Foto',
-            'Valor'                 => true,  // false, true, ou array com os grupos que pode
+            'Valor'                 => TRUE,  // false, true, ou array com os grupos que pode
         ),
         'usuario_Admin_Email'  => Array(
             'Nome'                  => 'Usuarios -> Email',
             'Desc'                  => __('Enviar Email Direto Entre Usuarios'),
             'chave'                 => 'usuario_Admin_Email',
-            'Valor'                 => false,
+            'Valor'                 => FALSE,
         ),
         'usuario_Admin_EmailUnico'  => Array(
             'Nome'                  => 'Usuarios -> Email Unico',
             'Desc'                  => __('Se email nao puder repetir, vem como true'),
             'chave'                 => 'usuario_Admin_EmailUnico',
-            'Valor'                 => true,
+            'Valor'                 => TRUE,
         ),
         'usuario_Principal_Widgets'  => Array(
             'Nome'                  => 'Usuarios -> Se mostra widget',
             'Desc'                  => __('Se mostra widgetna pagina inicial'),
             'chave'                 => 'usuario_Principal_Widgets',
-            'Valor'                 => true,
+            'Valor'                 => TRUE,
         ),
         
         // Funcionario
@@ -380,7 +380,7 @@ $config_Funcional = function () {
             'Nome'                  => 'Usuarios -> Funcionarios',
             'Desc'                  => __('Se possui Funcionarios'),
             'chave'                 => 'usuario_Admin_Funcionario',
-            'Valor'                 => true,
+            'Valor'                 => TRUE,
         ),
         'usuario_Funcionario_nome'  => Array(
             'Nome'                  => 'Usuarios -> Funcionarios',
@@ -392,7 +392,7 @@ $config_Funcional = function () {
             'Nome'                  => 'Usuarios -> Expediente',
             'Desc'                  => __('Se possui Expediente de Usuários'),
             'chave'                 => 'usuario_Expediente',
-            'Valor'                 => false,
+            'Valor'                 => FALSE,
         ),
         
         // Cliente
@@ -400,7 +400,7 @@ $config_Funcional = function () {
             'Nome'                  => 'Usuarios -> Funcionarios',
             'Desc'                  => __('Se possui Clientes'),
             'chave'                 => 'usuario_Admin_Cliente',
-            'Valor'                 => true,
+            'Valor'                 => TRUE,
         ),
         'usuario_Cliente_nome'  => Array(
             'Nome'                  => 'Usuarios -> Nome do Cliente',
@@ -412,19 +412,19 @@ $config_Funcional = function () {
             'Nome'                  => 'Usuarios Cliente -> PrecoDiferenciado',
             'Desc'                  => __('Opcao preço normal ou diferenciado'),
             'chave'                 => 'usuario_Cliente_PrecoDiferenciado',
-            'Valor'                 => false,
+            'Valor'                 => FALSE,
         ),
         'usuario_Comentarios'  => Array(
             'Nome'                  => 'Usuarios -> Comentarios',
             'Desc'                  => __('Se tem historico de comentarios em usuarios'),
             'chave'                 => 'usuario_Comentarios',
-            'Valor'                 => false,
+            'Valor'                 => FALSE,
         ),
         'usuario_Telefone_Lista'  => Array(
             'Nome'                  => 'Telefone -> Listagem',
             'Desc'                  => __('Se possui listagem de telefones'),
             'chave'                 => 'usuario_Telefone_Lista',
-            'Valor'                 => false,
+            'Valor'                 => FALSE,
         ),
     );
 };

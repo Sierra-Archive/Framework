@@ -276,9 +276,9 @@ class comercio_FornecedorControle extends comercio_Controle
                 ''
             ),
             Array(
-                'Print'     => true,
-                'Pdf'       => true,
-                'Excel'     => true,
+                'Print'     => TRUE,
+                'Pdf'       => TRUE,
+                'Excel'     => TRUE,
                 'Link'      => 'comercio/Fornecedor/Fornecedores_Comentario/'.$fornecedor_id,
             )
         )));

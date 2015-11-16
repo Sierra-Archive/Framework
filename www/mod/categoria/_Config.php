@@ -20,7 +20,7 @@ $config_Menu = function () {
                 'Permissao_Func'        => Array(// Permissoes NEcessarias
                     'categoria_visualizar' => true
                 ),
-                'Filhos'                => false,
+                'Filhos'                => FALSE,
             ),),
         ),
     );
@@ -89,13 +89,13 @@ $config_Funcional = function () {
             'Nome'                      => __('Se Pagina de Categoria Pode Ser Vista pelo Usuario'),
             'Desc'                      => '',
             'chave'                     => 'categoria_visualizar',
-            'Valor'                     => false,
+            'Valor'                     => FALSE,
         ),
         'categoria_parent_extra'    => Array(
             'Nome'                      => __('Categoria Pai para Cadastros Externos'),
             'Desc'                      => '',
             'chave'                     => 'categoria_parent_extra',
-            'Valor'                     => false,
+            'Valor'                     => FALSE,
         ),
     );
 };

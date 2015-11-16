@@ -1364,7 +1364,7 @@ class Visual
             if (isset($params['widgets']['Navegacao_Endereco']) && preg_match('/<span class="divider">\/<\/span><\/li>$/', $params['widgets']['Navegacao_Endereco'])) {
                 $this->Widget_Assimilar('Navegacao_Endereco',$this->_Visual->renderizar_Template('elemento_breadcrumb',Array(
                     'nome' => $tipo_nome,
-                    'endereco' => false,
+                    'endereco' => FALSE,
                     'ativo' => false
                 ),true));
             }
@@ -1418,7 +1418,7 @@ class Visual
                 if ($ferramentas===false) return '';
                 
                 $array = Array(
-                    'btn_add'           => false,
+                    'btn_add'           => FALSE,
                     'Ferramentas'       => $ferramentas,
                     'Tipo'              => $tipo
                 );

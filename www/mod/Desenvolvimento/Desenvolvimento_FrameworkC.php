@@ -69,9 +69,9 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
                 ''
             ),
             Array(
-                'Print'     => true,
-                'Pdf'       => true,
-                'Excel'     => true,
+                'Print'     => TRUE,
+                'Pdf'       => TRUE,
+                'Excel'     => TRUE,
                 'Link'      => 'Desenvolvimento/Framework/Modulos',
             )
         )));
@@ -247,9 +247,9 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
                 ''
             ),
             Array(
-                'Print'     => true,
-                'Pdf'       => true,
-                'Excel'     => true,
+                'Print'     => TRUE,
+                'Pdf'       => TRUE,
+                'Excel'     => TRUE,
                 'Link'      => 'Desenvolvimento/Framework/Submodulos',
             )
         )));
@@ -424,9 +424,9 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
                 ''
             ),
             Array(
-                'Print'     => true,
-                'Pdf'       => true,
-                'Excel'     => true,
+                'Print'     => TRUE,
+                'Pdf'       => TRUE,
+                'Excel'     => TRUE,
                 'Link'      => 'Desenvolvimento/Framework/Metodos',
             )
         )));

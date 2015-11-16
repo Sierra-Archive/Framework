@@ -79,9 +79,9 @@ class social_AcaoControle extends social_Controle
                 ''
             ),
             Array(
-                'Print'     => true,
-                'Pdf'       => true,
-                'Excel'     => true,
+                'Print'     => TRUE,
+                'Pdf'       => TRUE,
+                'Excel'     => TRUE,
                 'Link'      => 'social/Acao/Acao'.$extra,
             )
         )));

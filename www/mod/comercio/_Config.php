@@ -20,7 +20,7 @@ $config_Menu = function () {
                 'Permissao_Func'        => Array(// Permissoes NEcessarias
                     'comercio_Fornecedor' => true
                 ),
-                'Filhos'                => false,
+                'Filhos'                => FALSE,
             ),'Checklists'=>Array(
                 'Nome'                  => __('Checklists'),
                 'Link'                  => 'comercio/Proposta/Checklists',
@@ -30,16 +30,16 @@ $config_Menu = function () {
                 'Permissao_Func'        => Array(// Permissoes NEcessarias
                     'comercio_Proposta_Checklist' => true
                 ),
-                'Filhos'                => false,
+                'Filhos'                => FALSE,
             ),'Marcas'=>Array(
                 'Nome'                  => __('Marcas'),
                 'Link'                  => 'comercio/Marca/Marcas',
                 'Gravidade'             => 66,
                 'Img'                   => 'turboadmin/m-dashboard.png',
                 'Icon'                  => 'tag',
-                'Filhos'                => false,
+                'Filhos'                => FALSE,
                 'Permissao_Func'        => Array(// Permissoes NEcessarias
-                    'comercio_Produto' => true,
+                    'comercio_Produto' => TRUE,
                     'comercio_Marca' => true
                 ),
             ),'Linhas'=>Array(
@@ -49,11 +49,11 @@ $config_Menu = function () {
                 'Img'                   => 'turboadmin/m-dashboard.png',
                 'Icon'                  => 'tags',
                 'Permissao_Func'        => Array(// Permissoes NEcessarias
-                    'comercio_Produto' => true,
-                    'comercio_Marca' => true,
+                    'comercio_Produto' => TRUE,
+                    'comercio_Marca' => TRUE,
                     'comercio_Produto_Familia' => 'Marca'
                 ),
-                'Filhos'                => false,
+                'Filhos'                => FALSE,
             ),'Familias'=>Array(
                 'Nome'                  => __('Familias'),
                 'Link'                  => 'comercio/Familia/Familias',
@@ -61,10 +61,10 @@ $config_Menu = function () {
                 'Img'                   => 'turboadmin/m-dashboard.png',
                 'Icon'                  => 'tags',
                 'Permissao_Func'        => Array(// Permissoes NEcessarias
-                    'comercio_Produto' => true,
+                    'comercio_Produto' => TRUE,
                     'comercio_Produto_Familia' => 'Familia'
                 ),
-                'Filhos'                => false,
+                'Filhos'                => FALSE,
             ),'Produtos'=>Array(
                 'Nome'                  => __('Produtos'),
                 'Link'                  => 'comercio/Produto/Produtos',
@@ -74,7 +74,7 @@ $config_Menu = function () {
                 'Permissao_Func'        => Array(// Permissoes NEcessarias
                     'comercio_Produto' => true
                 ),
-                'Filhos'                => false,
+                'Filhos'                => FALSE,
             ),),
         ),
         'Financeiro' => Array(
@@ -92,7 +92,7 @@ $config_Menu = function () {
                 'Permissao_Func'        => Array(// Permissoes NEcessarias
                     'comercio_Fornecedor' => true
                 ),
-                'Filhos'                => false,
+                'Filhos'                => FALSE,
             ),),
         ),
         'Comercial' => Array(
@@ -110,7 +110,7 @@ $config_Menu = function () {
                 'Permissao_Func'        => Array(// Permissoes NEcessarias
                     'comercio_Visitas' => true
                 ),
-                'Filhos'                => false,
+                'Filhos'                => FALSE,
             ),'Propostas'=>Array(
                 'Nome'                  => __('Propostas'),
                 'Link'                  => 'comercio/Proposta/Propostas/Propostas',
@@ -120,7 +120,7 @@ $config_Menu = function () {
                 'Permissao_Func'        => Array(// Permissoes NEcessarias
                     'comercio_Propostas' => true
                 ),
-                'Filhos'                => false,
+                'Filhos'                => FALSE,
             ),CFG_TXT_COMERCIO_OS=>Array(
                 'Nome'                  => CFG_TXT_COMERCIO_OS,
                 'Link'                  => 'comercio/Proposta/Propostas/Os',
@@ -130,7 +130,7 @@ $config_Menu = function () {
                 'Permissao_Func'        => Array(// Permissoes NEcessarias
                     'comercio_Propostas' => true
                 ),
-                'Filhos'                => false,
+                'Filhos'                => FALSE,
             ),),
         ),
         'Relatório' => Array(
@@ -141,10 +141,10 @@ $config_Menu = function () {
                 'Img'                   => 'turboadmin/m-dashboard.png',
                 'Icon'                  => 'barcode',
                 'Permissao_Func'        => Array(// Permissoes NEcessarias
-                    'comercio_Produto' => true,
+                    'comercio_Produto' => TRUE,
                     'comercio_Estoque' => true
                 ),
-                'Filhos'                => false,
+                'Filhos'                => FALSE,
             ),),
         ),
     );
@@ -461,7 +461,7 @@ $config_Permissoes = function () {
             'SubModulo'             => 'Proposta',   // Submodulo Referente
             'Metodo'                => 'Propostas_Sub',  // Metodos referentes separados por virgula
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                'comercio_Propostas'        => true,
+                'comercio_Propostas'        => TRUE,
                 'comercio_Propostas_Sub'    => true
             ),
         ),
@@ -474,7 +474,7 @@ $config_Permissoes = function () {
             'SubModulo'             => 'Proposta',   // Submodulo Referente
             'Metodo'                => 'Propostas_Sub_Add,Propostas_Sub_Add2',  // Metodos referentes separados por virgula
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                'comercio_Propostas'        => true,
+                'comercio_Propostas'        => TRUE,
                 'comercio_Propostas_Sub'    => true
             ),
         ),
@@ -487,7 +487,7 @@ $config_Permissoes = function () {
             'SubModulo'             => 'Proposta',   // Submodulo Referente   // Submodulo Referente
             'Metodo'                => 'Propostas_Sub_Edit,Propostas_Sub_Edit2',  // Metodos referentes separados por virgula
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                'comercio_Propostas'        => true,
+                'comercio_Propostas'        => TRUE,
                 'comercio_Propostas_Sub'    => true
             ),
         ),
@@ -500,7 +500,7 @@ $config_Permissoes = function () {
             'SubModulo'             => 'Proposta',   // Submodulo Referente
             'Metodo'                => 'Propostas_Sub_Del',  // Metodos referentes separados por virgula
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                'comercio_Propostas'        => true,
+                'comercio_Propostas'        => TRUE,
                 'comercio_Propostas_Sub'    => true
             ),
         ),
@@ -580,7 +580,7 @@ $config_Permissoes = function () {
             'SubModulo'             => 'Marca',   // Submodulo Referente
             'Metodo'                => '*',  // Metodos referentes separados por virgula // Endereco que deve conter a url para permitir acesso
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                'comercio_Produto'      => true,
+                'comercio_Produto'      => TRUE,
                 'comercio_Marca'        => true
             ),
         ),
@@ -593,7 +593,7 @@ $config_Permissoes = function () {
             'SubModulo'             => 'Marca',   // Submodulo Referente
             'Metodo'                => 'Marcas_Add,Marcas_Add2',  // Metodos referentes separados por virgula
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                'comercio_Produto'      => true,
+                'comercio_Produto'      => TRUE,
                 'comercio_Marca'        => true
             ),
         ),
@@ -606,7 +606,7 @@ $config_Permissoes = function () {
             'SubModulo'             => 'Marca',   // Submodulo Referente   // Submodulo Referente
             'Metodo'                => 'Marcas_Edit,Marcas_Edit2',  // Metodos referentes separados por virgula
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                'comercio_Produto'      => true,
+                'comercio_Produto'      => TRUE,
                 'comercio_Marca'        => true
             ),
         ),
@@ -619,7 +619,7 @@ $config_Permissoes = function () {
             'SubModulo'             => 'Marca',   // Submodulo Referente
             'Metodo'                => 'Marcas_Del',  // Metodos referentes separados por virgula
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                'comercio_Produto'      => true,
+                'comercio_Produto'      => TRUE,
                 'comercio_Marca'        => true
             ),
         ),
@@ -636,8 +636,8 @@ $config_Permissoes = function () {
             'SubModulo'             => 'Linha',   // Submodulo Referente
             'Metodo'                => '*',
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                'comercio_Produto'          => true,
-                'comercio_Marca'            => true,
+                'comercio_Produto'          => TRUE,
+                'comercio_Marca'            => TRUE,
                 'comercio_Produto_Familia'  => 'Marca'
             ),
         ),
@@ -650,8 +650,8 @@ $config_Permissoes = function () {
             'SubModulo'             => 'Linha',   // Submodulo Referente
             'Metodo'                => 'Linhas_Add,Linhas_Add2',  // Metodos referentes separados por virgula
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                'comercio_Produto'          => true,
-                'comercio_Marca'            => true,
+                'comercio_Produto'          => TRUE,
+                'comercio_Marca'            => TRUE,
                 'comercio_Produto_Familia'  => 'Marca'
             ),
         ),
@@ -664,8 +664,8 @@ $config_Permissoes = function () {
             'SubModulo'             => 'Linha',   // Submodulo Referente   // Submodulo Referente
             'Metodo'                => 'Linhas_Edit,Linhas_Edit2',  // Metodos referentes separados por virgula
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                'comercio_Produto'          => true,
-                'comercio_Marca'            => true,
+                'comercio_Produto'          => TRUE,
+                'comercio_Marca'            => TRUE,
                 'comercio_Produto_Familia'  => 'Marca'
             ),
         ),
@@ -678,8 +678,8 @@ $config_Permissoes = function () {
             'SubModulo'             => 'Admin',   // Submodulo Referente
             'Metodo'                => 'Linhas_Del',  // Metodos re// Endereco que deve conter a url para permitir acesso
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                'comercio_Produto'          => true,
-                'comercio_Marca'            => true,
+                'comercio_Produto'          => TRUE,
+                'comercio_Marca'            => TRUE,
                 'comercio_Produto_Familia'  => 'Marca'
             ),
         ),
@@ -696,7 +696,7 @@ $config_Permissoes = function () {
             'SubModulo'             => 'Familia',   // Submodulo Referente
             'Metodo'                => '*',// Endereco que deve conter a url para permitir acesso
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                'comercio_Produto'          => true,
+                'comercio_Produto'          => TRUE,
                 'comercio_Produto_Familia' => 'Familia'
             ),
         ),
@@ -709,7 +709,7 @@ $config_Permissoes = function () {
             'SubModulo'             => 'Familia',   // Submodulo Referente
             'Metodo'                => 'Familias_Add,Familias_Add2',  // Metodos referentes separados por virgula
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                'comercio_Produto'          => true,
+                'comercio_Produto'          => TRUE,
                 'comercio_Produto_Familia' => 'Familia'
             ),
         ),
@@ -722,7 +722,7 @@ $config_Permissoes = function () {
             'SubModulo'             => 'Familia',   // Submodulo Referente   // Submodulo Referente
             'Metodo'                => 'Familias_Edit,Familias_Edit2',  // Metodos referentes separados por virgula
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                'comercio_Produto'          => true,
+                'comercio_Produto'          => TRUE,
                 'comercio_Produto_Familia' => 'Familia'
             ),
         ),
@@ -735,7 +735,7 @@ $config_Permissoes = function () {
             'SubModulo'             => 'Familia',   // Submodulo Referente
             'Metodo'                => 'Familias_Del',  // Metodos referentes separados por virgula
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                'comercio_Produto'          => true,
+                'comercio_Produto'          => TRUE,
                 'comercio_Produto_Familia' => 'Familia'
             ),
         ),
@@ -867,19 +867,19 @@ $config_Funcional = function () {
             'Nome'                  => __('Se Produtos estao ativados ou nao.'),
             'Desc'                  => __('Se esta ativado os produtos ou nao no sistema'),
             'chave'                 => 'comercio_Produto',
-            'Valor'                 => true,
+            'Valor'                 => TRUE,
         ),
         'comercio_Vendas'  => Array(
             'Nome'                  => __('Se Produtos estao sendo vendidos.'),
             'Desc'                  => __('Se Produtos estao sendo vendidos'),
             'chave'                 => 'comercio_Vendas',
-            'Valor'                 => false,
+            'Valor'                 => FALSE,
         ),
         'comercio_Marca'    => Array(
             'Nome'                  => __('Marca'),
             'Desc'                  => __('Possui cadastro de Marcas em Produtos ?'),
             'chave'                 => 'comercio_Marca',
-            'Valor'                 => true,
+            'Valor'                 => TRUE,
         ),
         'comercio_Produto_Familia'  => Array(
             'Nome'                  => __('Marca com LInha ou Familia?'),
@@ -897,32 +897,32 @@ $config_Funcional = function () {
             'Nome'                  => __('Estoque'),
             'Desc'                  => __('Ativado ou não sistema de Estoque.'),
             'chave'                 => 'comercio_Estoque',
-            'Valor'                 => false,
+            'Valor'                 => FALSE,
         ),
         'comercio_Estoque_EntradaCategoria'  => Array(
             'Nome'                  => __('EntradaCategoria'),
             'Desc'                  => __('Ativado ou não centro de custo em entrada de Nota Fiscal.'),
             'chave'                 => 'comercio_Fornecedor',
-            'Valor'                 => true,
+            'Valor'                 => TRUE,
         ),
         
         'comercio_Linha_Widget'  => Array(
             'Nome'                  => __('Widget de Linhas'),
             'Desc'                  => __('Widget na Home'),
             'chave'                 => 'comercio_Linha_Widget',
-            'Valor'                 => true,
+            'Valor'                 => TRUE,
         ),
         'comercio_Fornecedor'  => Array(
             'Nome'                  => __('Fornecedor'),
             'Desc'                  => __('Ativado ou não sistema modulo de Fornecedores.'),
             'chave'                 => 'comercio_Fornecedor',
-            'Valor'                 => true,
+            'Valor'                 => TRUE,
         ),
         'comercio_Fornecedor_Categoria'  => Array(
             'Nome'                  => __('Tipo de Fornecedor'),
             'Desc'                  => __('Ativado ou não tipo de Fornecedores.'),
             'chave'                 => 'comercio_Fornecedor_Categoria',
-            'Valor'                 => true,
+            'Valor'                 => TRUE,
         ),
         
         
@@ -931,25 +931,25 @@ $config_Funcional = function () {
             'Nome'                  => __('Se possui Propostas'),
             'Desc'                  => __('Se possui Propostas'),
             'chave'                 => 'comercio_Propostas',
-            'Valor'                 => true,
+            'Valor'                 => TRUE,
         ),
         'comercio_Propostas_Sub'  => Array(
             'Nome'                  => __('Se possui SubPropostas'),
             'Desc'                  => __('Se possui SubPropostas'),
             'chave'                 => 'comercio_Propostas_Sub',
-            'Valor'                 => false,
+            'Valor'                 => FALSE,
         ),
         'comercio_Propostas_Biblioteca'  => Array(
             'Nome'                  => __('Se possui Biblioteca em Propostas'),
             'Desc'                  => __('Se possui Biblioteca em Propostas'),
             'chave'                 => 'comercio_Propostas_Biblioteca',
-            'Valor'                 => false,
+            'Valor'                 => FALSE,
         ),
         'comercio_Propostas_Biblioteca_Automatico'  => Array(
             'Nome'                  => __('Se cria Biblioteca automaticamente em Propostas'),
             'Desc'                  => __('Se cria Biblioteca automaticamente  em Propostas'),
             'chave'                 => 'comercio_Propostas_Biblioteca_Automatico',
-            'Valor'                 => false,
+            'Valor'                 => FALSE,
         ),
         /**
          * Se Carrega Com Si Custo de Mao de Obra
@@ -958,13 +958,13 @@ $config_Funcional = function () {
             'Nome'                  => __('Se possui Mao de Obra em Propostas'),
             'Desc'                  => __('Se possui Mao de Obra em Propostas'),
             'chave'                 => 'comercio_Propostas_MaodeObra',
-            'Valor'                 => false,
+            'Valor'                 => FALSE,
         ),
         'comercio_Propostas_Imposto'  => Array(
             'Nome'                  => 'Proposta -> Imposto',
             'Desc'                  => __('Se possui Imposto em Proposta'),
             'chave'                 => 'comercio_Propostas_Imposto',
-            'Valor'                 => false,
+            'Valor'                 => FALSE,
         ),
         /* 
          * Caso Verdadeiro, Usuario Escreve o Valor Final do Sistema 
@@ -974,49 +974,49 @@ $config_Funcional = function () {
             'Nome'                  => 'Propostas -> Valor Final',
             'Desc'                  => __('Se possui Valor Final'),
             'chave'                 => 'comercio_Proposta_ValorFinal',
-            'Valor'                 => false,
+            'Valor'                 => FALSE,
         ),
         'comercio_Proposta_ValorExtra'  => Array(
             'Nome'                  => 'Propostas -> Se possui Valor Extra a ser somado ao custo',
             'Desc'                  => __('Se possui Valor Extra a ser somado ao custo'),
             'chave'                 => 'comercio_Proposta_ValorExtra',
-            'Valor'                 => false,
+            'Valor'                 => FALSE,
         ),
         'comercio_Proposta_Comissao'  => Array(
             'Nome'                  => 'Propostas -> Se possui Comissao Extra',
             'Desc'                  => __('Se possui Comissao Extra'),
             'chave'                 => 'comercio_Proposta_Comissao',
-            'Valor'                 => false,
+            'Valor'                 => FALSE,
         ),
         'comercio_Proposta_Lucro'  => Array(
             'Nome'                  => 'Propostas -> % de Lucro',
             'Desc'                  => __('Se possui Percentual de Lucro.'),
             'chave'                 => 'comercio_Proposta_Lucro',
-            'Valor'                 => true,
+            'Valor'                 => TRUE,
         ),
         'comercio_Proposta_Desconto'  => Array(
             'Nome'                  => 'Propostas -> % de Desconto',
             'Desc'                  => __('Se possui Percentual de Desconto.'),
             'chave'                 => 'comercio_Proposta_Desconto',
-            'Valor'                 => true,
+            'Valor'                 => TRUE,
         ),
         'comercio_Proposta_Referencia'  => Array(
             'Nome'                  => 'Propostas -> Campo Referencia',
             'Desc'                  => __('Se possui campo referencia em Propostas.'),
             'chave'                 => 'comercio_Proposta_Referencia',
-            'Valor'                 => false,
+            'Valor'                 => FALSE,
         ),
         'comercio_Proposta_Telefone'  => Array(
             'Nome'                  => 'Propostas -> Campo Telefone',
             'Desc'                  => __('Se possui campo Telefone em Propostas'),
             'chave'                 => 'comercio_Proposta_Telefone',
-            'Valor'                 => false,
+            'Valor'                 => FALSE,
         ),
         'comercio_Proposta_Checklist'  => Array(
             'Nome'                  => 'Propostas -> Campo Checklist',
             'Desc'                  => __('Se possui campo Checklist em Propostas'),
             'chave'                 => 'comercio_Proposta_Checklist',
-            'Valor'                 => false,
+            'Valor'                 => FALSE,
         ),
         
         // VISITAS
@@ -1024,7 +1024,7 @@ $config_Funcional = function () {
             'Nome'                  => __('Se possui Folha de Visitas'),
             'Desc'                  => __('Se possui Folha de Visitas'),
             'chave'                 => 'comercio_Visitas',
-            'Valor'                 => true,
+            'Valor'                 => TRUE,
         ),
     );
 };

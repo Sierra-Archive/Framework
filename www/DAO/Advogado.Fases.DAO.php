@@ -36,15 +36,15 @@ final Class Advogado_Fases_DAO extends Framework\App\Dao
                 'mysql_titulo'      => 'id',
                 'mysql_tipovar'     => 'int', //varchar, int, 
                 'mysql_tamanho'     => 11,
-                'mysql_null'        => true,
-                'mysql_default'     => false,
-                'mysql_primary'     => true,
-                'mysql_estrangeira' => false, // chave estrangeira
-                'mysql_autoadd'     => true,
-                'mysql_comment'     => false,
-                'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
-                'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
-                'perm_copia'        => false, //permissao funcional necessaria para campo
+                'mysql_null'        => TRUE,
+                'mysql_default'     => FALSE,
+                'mysql_primary'     => TRUE,
+                'mysql_estrangeira' => FALSE, // chave estrangeira
+                'mysql_autoadd'     => TRUE,
+                'mysql_comment'     => FALSE,
+                'mysql_inside'      => FALSE, // Funcao Executada quando o dado for inserido no banco de dados
+                'mysql_outside'     => FALSE, // Funcao Executada quando o dado for retirado no banco de dados
+                'perm_copia'        => FALSE, //permissao funcional necessaria para campo
                 'linkextra'         => '' ,//0 ninguem, 1 admin, 2 todos 
             )
         );

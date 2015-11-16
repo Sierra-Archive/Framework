@@ -50,14 +50,14 @@ class Arg {
     public function getDefaultSpec()
     {
         return array(
-            'mayHaveValue' => false,
-            'mustHaveValue' => false,
-            'assertFile' => false,
-            'assertDir' => false,
-            'assertReadable' => false,
-            'assertWritable' => false,
-            'useAsInfile' => false,
-            'useAsOutfile' => false,
+            'mayHaveValue' => FALSE,
+            'mustHaveValue' => FALSE,
+            'assertFile' => FALSE,
+            'assertDir' => FALSE,
+            'assertReadable' => FALSE,
+            'assertWritable' => FALSE,
+            'useAsInfile' => FALSE,
+            'useAsOutfile' => FALSE,
         );
     }
 

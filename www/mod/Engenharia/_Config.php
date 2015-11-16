@@ -25,35 +25,35 @@ $config_Menu = function () {
                 'Permissao_Func'        => Array(// Permissoes NEcessarias
                     'comercio_Produto' => true
                 ),
-                'Filhos'                => false,
+                'Filhos'                => FALSE,
             ),'Retirar do Estoque'=>Array(
                 'Nome'                  => __('Adicionar Conta a Receber'),
                 'Link'                  => 'Engenharia/Empreendimento/Empreendimento_Receber',
                 'Gravidade'             => 95,
                 'Img'                   => '',
                 'Icon'                  => 'money',
-                'Filhos'                => false,
+                'Filhos'                => FALSE,
             ),'Empreendimentos'=>Array(
                 'Nome'                  => __('Empreendimentos'),
                 'Link'                  => 'Engenharia/Empreendimento/Empreendimentos',
                 'Gravidade'             => 90,
                 'Img'                   => '',
                 'Icon'                  => 'building',
-                'Filhos'                => false,
+                'Filhos'                => FALSE,
             ),'Empreendimentos'=>Array(
                 'Nome'                  => __('Unidades'),
                 'Link'                  => 'Engenharia/Unidade/Unidades',
                 'Gravidade'             => 80,
                 'Img'                   => '',
                 'Icon'                  => 'home',
-                'Filhos'                => false,
+                'Filhos'                => FALSE,
             ),'Equipamentos'=>Array(
                 'Nome'                  => __('Equipamentos'),
                 'Link'                  => 'Engenharia/Equipamento/Equipamentos',
                 'Gravidade'             => 60,
                 'Img'                   => '',
                 'Icon'                  => 'laptop',
-                'Filhos'                => false,
+                'Filhos'                => FALSE,
             ),),
         ),
     );

@@ -994,7 +994,7 @@ class Securimage
     {
         if (is_null($new) || (bool)$new == true) {
             $id = sha1(uniqid($_SERVER['REMOTE_ADDR'], true));
-            $opts = array('no_session'    => true,
+            $opts = array('no_session'    => TRUE,
                           'use_database'  => true);
             if (sizeof($options) > 0) $opts = array_merge($options, $opts);
             $si = new self($opts);
@@ -1021,7 +1021,7 @@ class Securimage
     public static function checkByCaptchaId($id, $value, array $options = array())
     {
         $opts = array('captchaId'    => $id,
-                      'no_session'   => true,
+                      'no_session'   => TRUE,
                       'use_database' => true);
 
         if (sizeof($options) > 0) $opts = array_merge($options, $opts);
@@ -2562,7 +2562,7 @@ class Securimage
 
             if ($wavNoise !== false) {
                 $mixOpts = array('wav'  => $wavNoise,
-                                 'loop' => true,
+                                 'loop' => TRUE,
                                  'blockOffset' => $randOffset);
 
                 $filters[WavFile::FILTER_MIX]       = $mixOpts;

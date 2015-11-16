@@ -250,9 +250,9 @@ class comercio_EstoqueControle extends comercio_Controle
                 ''
             ),
             Array(
-                'Print'     => true,
-                'Pdf'       => true,
-                'Excel'     => true,
+                'Print'     => TRUE,
+                'Pdf'       => TRUE,
+                'Excel'     => TRUE,
                 'Link'      => 'comercio/Estoque/Material_Entrada',
             )
         )));

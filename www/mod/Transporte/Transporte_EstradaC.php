@@ -75,9 +75,9 @@ class Transporte_EstradaControle extends Transporte_Controle
                 ''
             ),
             Array(
-                'Print'     => true,
-                'Pdf'       => true,
-                'Excel'     => true,
+                'Print'     => TRUE,
+                'Pdf'       => TRUE,
+                'Excel'     => TRUE,
                 'Link'      => 'Transporte/Estrada/Estradas',
             )
         )));

@@ -74,7 +74,7 @@ class PagSeguroHttpConnection
             $postFields = ($data ? http_build_query($data, '', '&') : "");
             $contentLength = "Content-length: " . strlen($postFields);
             $methodOptions = array(
-                CURLOPT_POST => true,
+                CURLOPT_POST => TRUE,
                 CURLOPT_POSTFIELDS => $postFields,
             );
         } else {
@@ -93,9 +93,9 @@ class PagSeguroHttpConnection
                 'language-engine-description: php:' . PagSeguroLibrary::getPHPVersion()
             ),
             CURLOPT_URL => $url,
-            CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_HEADER => false,
-            CURLOPT_SSL_VERIFYPEER => false,
+            CURLOPT_RETURNTRANSFER => TRUE,
+            CURLOPT_HEADER => FALSE,
+            CURLOPT_SSL_VERIFYPEER => FALSE,
             CURLOPT_CONNECTTIMEOUT => $timeout,
             //CURLOPT_TIMEOUT => $timeout
             );

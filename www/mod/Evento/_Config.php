@@ -22,7 +22,7 @@ $config_Menu = function () {
                 'Gravidade'             => 90,
                 'Img'                   => '',
                 'Icon'                  => 'building',
-                'Filhos'                => false,
+                'Filhos'                => FALSE,
             )),
         ),
     );

@@ -49,27 +49,27 @@ final Class Predial_Bloco_Apart_DAO extends Framework\App\Dao
                 'mysql_titulo'      => 'idproduto', // Nome do Campo no MYSQL
                 'mysql_tipovar'     => 'int', //varchar, int, 
                 'mysql_tamanho'     => 11, // Tamanho no Mysql
-                'mysql_null'        => false,
-                'mysql_default'     => false,
-                'mysql_primary'     => false,
+                'mysql_null'        => FALSE,
+                'mysql_default'     => FALSE,
+                'mysql_primary'     => FALSE,
                 'mysql_indice_unico'=> 'num', // Se pode repetir = false, se nao, 
                                               // o conjunto de campos que não podem repetir
                                               // possuem o mesmo nome neste valor
                 'mysql_estrangeira' => 'CP.id|CP.nome', // chave estrangeira
                 'form_change'       => '', // CHANGE PARA EXTRANGEIRAS -> Sigla Tabela Pai / Sigla Tabela Atual ou false
-                'mysql_autoadd'     => false,
-                'mysql_comment'     => false,
-                'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
-                'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
-                'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
+                'mysql_autoadd'     => FALSE,
+                'mysql_comment'     => FALSE,
+                'mysql_inside'      => FALSE, // Funcao Executada quando o dado for inserido no banco de dados
+                'mysql_outside'     => FALSE, // Funcao Executada quando o dado for retirado no banco de dados
+                'perm_copia'        => FALSE, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => 'comercio/Produto/Produtos_Add',
                 // Edicao sao as Partes Visuais do Formulario
                 'edicao'            => Array(
                     'Nome'              => __('Produto'),
                     'Mascara'           => 'Numero', // MAscara, pode ser false, ou Real, Numero, Porc, etc...
-                    'valor_padrao'      => false,
+                    'valor_padrao'      => FALSE,
                     'change'            => '',
-                    'readonly'          => false, // Somente Leitura
+                    'readonly'          => FALSE, // Somente Leitura
                     'aviso'             => '',
                     /* Aqui embaixo não precisa se tiver chave extrangeira, pq preenche sózinho*/
                     'formtipo'          => 'input', // input, select, textarea
@@ -89,7 +89,7 @@ final Class Predial_Bloco_Apart_DAO extends Framework\App\Dao
                     'select'             => array( // Indice respectivamente -> input, select, textarea, igual acima
                         'class'             => 'obrigatorio', // obrigatorio -> Torna o Campo Obrigatorio
                                                               // Tambem Pode Colocar qualquer outra classe, que ira entrar no input
-                        'multiplo'          => false, // false/true
+                        'multiplo'          => FALSE, // false/true
                         'infonulo'          => 'Escolha uma Opção' //-> Select quando nulo
                     ),
                     /**/
@@ -105,7 +105,7 @@ final Class Predial_Bloco_Apart_DAO extends Framework\App\Dao
                     'Preencher'         => Array( // CAso exista e != de false, preenche automaticamente esses campos
                         'tabela'            => 'Musica_Album_Artista', // Campo e Resultado
                     ),
-                    'valor_padrao'      => false, // ID do pai, usada para edicao, sempre false por padrao
+                    'valor_padrao'      => FALSE, // ID do pai, usada para edicao, sempre false por padrao
                     'Nome'              => __('Artistas'), // Nome no FOrmulario
                     'Class'             => 'obrigatorio', // Classe no formulario
                     'aviso'             => '', // Aviso no formulario
@@ -114,7 +114,7 @@ final Class Predial_Bloco_Apart_DAO extends Framework\App\Dao
                         'Extrangeira'       => 'MAA.id|MAA.nome',
                         'Linkar'            => 'noticia', // CAmpo a ser encaixado id do pai
                         'Linkado'           => 'tabelaid',// CAmpo a ser encaixado id do link
-                        'Campos'            => false, // CAmpos extras da tabela de ligacao
+                        'Campos'            => FALSE, // CAmpos extras da tabela de ligacao
                         'infonulo'          => 'Escolha pelo menos um Artista', // Informacao quando nada é clicado
                       'linkextra'         => false ,// Caso tenha atalho pra add
                     ), // Campo Boleano da tabela LINK, caso false apaga os que nao forem puxados

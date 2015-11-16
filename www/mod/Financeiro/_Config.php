@@ -19,7 +19,7 @@ $config_Menu = function () {
                 'Gravidade'             => 3,
                 'Img'                   => 'money',
                 'Icon'                  => 'money',
-                'Filhos'                => false,
+                'Filhos'                => FALSE,
             ),),
         ),
         'Gráfico' => Array(
@@ -29,7 +29,7 @@ $config_Menu = function () {
                 'Gravidade'             => 2,
                 'Img'                   => 'money',
                 'Icon'                  => 'money',
-                'Filhos'                => false,
+                'Filhos'                => FALSE,
             ),),
         ),
         'Financeiro' => Array(
@@ -45,42 +45,42 @@ $config_Menu = function () {
                     'Gravidade'             => 2,
                     'Img'                   => 'money',
                     'Icon'                  => 'money',
-                    'Filhos'                => false,
+                    'Filhos'                => FALSE,
                 ),'Condições de Pagamento'=>Array(
                     'Nome'                  => __('Condições de Pagamento'),
                     'Link'                  => 'Financeiro/Pagamento/Condicoes',
                     'Gravidade'             => 1,
                     'Img'                   => 'money',
                     'Icon'                  => 'money',
-                    'Filhos'                => false,
+                    'Filhos'                => FALSE,
                 ),'Contas à Pagar'=>Array(
                     'Nome'                  => __('Contas à Pagar'),
                     'Link'                  => 'Financeiro/Pagamento/Pagar',
                     'Gravidade'             => 10,
                     'Img'                   => 'money',
                     'Icon'                  => 'money',
-                    'Filhos'                => false,
+                    'Filhos'                => FALSE,
                 ),'Contas Pagas'=>Array(
                     'Nome'                  => __('Contas Pagas'),
                     'Link'                  => 'Financeiro/Pagamento/Pago',
                     'Gravidade'             => 9,
                     'Img'                   => 'money',
                     'Icon'                  => 'money',
-                    'Filhos'                => false,
+                    'Filhos'                => FALSE,
                 ),'Contas à Receber'=>Array(
                     'Nome'                  => __('Contas à Receber'),
                     'Link'                  => 'Financeiro/Pagamento/Receber',
                     'Gravidade'             => 8,
                     'Img'                   => 'money',
                     'Icon'                  => 'money',
-                    'Filhos'                => false,
+                    'Filhos'                => FALSE,
                 ),'Contas Recebidas'=>Array(
                     'Nome'                  => __('Contas Recebidas'),
                     'Link'                  => 'Financeiro/Pagamento/Recebido',
                     'Gravidade'             => 7,
                     'Img'                   => 'money',
                     'Icon'                  => 'money',
-                    'Filhos'                => false,
+                    'Filhos'                => FALSE,
                 ),'Finanças'=>Array(
                     'Nome'                  => __('Finanças'),
                     'Link'                  => 'Financeiro/Financa/Financas',
@@ -90,7 +90,7 @@ $config_Menu = function () {
                     'Permissao_Func'        => Array(// Permissoes NEcessarias
                         'Financeiro_Financa' => true
                     ),
-                    'Filhos'                => false,
+                    'Filhos'                => FALSE,
                 ),
 
                 //Contas de Usuarios
@@ -103,7 +103,7 @@ $config_Menu = function () {
                     'Permissao_Func'        => Array(// Permissoes NEcessarias
                         'Financeiro_User_Saldo' => true
                     ),
-                    'Filhos'                => false,
+                    'Filhos'                => FALSE,
                 ),'Minhas Contas Pagas'=>Array(
                     'Nome'                  => __('Minhas Contas Pagas'),
                     'Link'                  => 'Financeiro/Usuario/Pago',
@@ -113,7 +113,7 @@ $config_Menu = function () {
                     'Permissao_Func'        => Array(// Permissoes NEcessarias
                         'Financeiro_User_Saldo' => true
                     ),
-                    'Filhos'                => false,
+                    'Filhos'                => FALSE,
                 ),'Minhas Contas à Receber'=>Array(
                     'Nome'                  => __('Minhas Contas à Receber'),
                     'Link'                  => 'Financeiro/Usuario/Receber',
@@ -123,7 +123,7 @@ $config_Menu = function () {
                     'Permissao_Func'        => Array(// Permissoes NEcessarias
                         'Financeiro_User_Saldo' => true
                     ),
-                    'Filhos'                => false,
+                    'Filhos'                => FALSE,
                 ),'Minhas Contas Recebidas'=>Array(
                     'Nome'                  => __('Minhas Contas Recebidas'),
                     'Link'                  => 'Financeiro/Usuario/Recebido',
@@ -133,7 +133,7 @@ $config_Menu = function () {
                     'Permissao_Func'        => Array(// Permissoes NEcessarias
                         'Financeiro_User_Saldo' => true
                     ),
-                    'Filhos'                => false,
+                    'Filhos'                => FALSE,
                 )
             ),
         ),
@@ -448,19 +448,19 @@ $config_Funcional = function () {
             'Nome'                  => 'Usuarios -> Financas',
             'Desc'                  => __('Se tem Cadastro de Financas'),
             'chave'                 => 'Financeiro_Financa',
-            'Valor'                 => false,
+            'Valor'                 => FALSE,
         ),
         'Financeiro_User_Saldo'  => Array(
             'Nome'                  => 'Usuarios -> Saldo',
             'Desc'                  => __('Se usuarios terão saldo próprio dentro do sistema'),
             'chave'                 => 'Financeiro_User_Saldo',
-            'Valor'                 => false,
+            'Valor'                 => FALSE,
         ),
         'Financeiro_User_Planos'  => Array(
             'Nome'                  => 'Usuarios -> Planos',
             'Desc'                  => __('Se usuarios terão acesso a diferentes planos dentro do sistema'),
             'chave'                 => 'Financeiro_User_Planos',
-            'Valor'                 => false,
+            'Valor'                 => FALSE,
         )
     );
 };

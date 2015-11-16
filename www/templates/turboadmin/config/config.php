@@ -2,7 +2,7 @@
 function turboadmin_config() {
     return Array(
         'plugins'           => Array(
-            'abas_inverter'         => true,
+            'abas_inverter'         => TRUE,
             'abas_id'               => 'windows_tab_',
             'abas_ativar'           => function ($id) {
                 return '$(".nav-tabs > li").removeClass("active");
@@ -13,13 +13,13 @@ function turboadmin_config() {
         ),
         'camada_maior'      => '#main-content-left',
         'camada_menor'      => '#loadcoldir',
-        'camada_unica'      => false,
+        'camada_unica'      => FALSE,
         //'TEMA_JS_UNIFORM'   => 'SIM',
         'javascript'        => Array(
             'datatable_sdom'            => 'padrao',
             'datatable_sPaginationType' => 'full_numbers',
-            'datatable_bJQueryUI'       => false,
-            'datatable_bAutoWidth'      => true,
+            'datatable_bJQueryUI'       => FALSE,
+            'datatable_bAutoWidth'      => TRUE,
         )
     );
 }

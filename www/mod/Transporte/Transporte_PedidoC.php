@@ -174,9 +174,9 @@ class Transporte_PedidoControle extends Transporte_Controle
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
             false,
             Array(
-                'Print'     => true,
-                'Pdf'       => true,
-                'Excel'     => true,
+                'Print'     => TRUE,
+                'Pdf'       => TRUE,
+                'Excel'     => TRUE,
                 'Link'      => 'Transporte/Pedido/Arma_Ped_Aceitas',
             )
         )));
@@ -233,9 +233,9 @@ class Transporte_PedidoControle extends Transporte_Controle
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
             false,
             Array(
-                'Print'     => true,
-                'Pdf'       => true,
-                'Excel'     => true,
+                'Print'     => TRUE,
+                'Pdf'       => TRUE,
+                'Excel'     => TRUE,
                 'Link'      => 'Transporte/Pedido/Arma_Ped_Novas',
             )
         )));
@@ -296,9 +296,9 @@ class Transporte_PedidoControle extends Transporte_Controle
                 ''
             ),
             Array(
-                'Print'     => true,
-                'Pdf'       => true,
-                'Excel'     => true,
+                'Print'     => TRUE,
+                'Pdf'       => TRUE,
+                'Excel'     => TRUE,
                 'Link'      => 'Transporte/Pedido/Arma_Ped_Minhas',
             )
         )));
@@ -354,9 +354,9 @@ class Transporte_PedidoControle extends Transporte_Controle
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
             false,
             Array(
-                'Print'     => true,
-                'Pdf'       => true,
-                'Excel'     => true,
+                'Print'     => TRUE,
+                'Pdf'       => TRUE,
+                'Excel'     => TRUE,
                 'Link'      => 'Transporte/Pedido/Arma_Ped_Minhas',
             )
         )));
@@ -440,9 +440,9 @@ class Transporte_PedidoControle extends Transporte_Controle
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
             false,
             Array(
-                'Print'     => true,
-                'Pdf'       => true,
-                'Excel'     => true,
+                'Print'     => TRUE,
+                'Pdf'       => TRUE,
+                'Excel'     => TRUE,
                 'Link'      => 'Transporte/Pedido/Arma_Sol_PedAceitos',
             )
         )));
@@ -496,9 +496,9 @@ class Transporte_PedidoControle extends Transporte_Controle
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
             false,
             Array(
-                'Print'     => true,
-                'Pdf'       => true,
-                'Excel'     => true,
+                'Print'     => TRUE,
+                'Pdf'       => TRUE,
+                'Excel'     => TRUE,
                 'Link'      => 'Transporte/Pedido/Arma_Sol_PedRecusados',
             )
         )));
@@ -552,9 +552,9 @@ class Transporte_PedidoControle extends Transporte_Controle
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
             false,
             Array(
-                'Print'     => true,
-                'Pdf'       => true,
-                'Excel'     => true,
+                'Print'     => TRUE,
+                'Pdf'       => TRUE,
+                'Excel'     => TRUE,
                 'Link'      => 'Transporte/Pedido/Arma_Sol_PedPendente',
             )
         )));
@@ -899,9 +899,9 @@ class Transporte_PedidoControle extends Transporte_Controle
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
             false,
             Array(
-                'Print'     => true,
-                'Pdf'       => true,
-                'Excel'     => true,
+                'Print'     => TRUE,
+                'Pdf'       => TRUE,
+                'Excel'     => TRUE,
                 'Link'      => 'Transporte/Pedido/Trans_Ped_Aceitas',
             )
         )));
@@ -958,9 +958,9 @@ class Transporte_PedidoControle extends Transporte_Controle
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
             false,
             Array(
-                'Print'     => true,
-                'Pdf'       => true,
-                'Excel'     => true,
+                'Print'     => TRUE,
+                'Pdf'       => TRUE,
+                'Excel'     => TRUE,
                 'Link'      => 'Transporte/Pedido/Trans_Ped_Novas',
             )
         )));
@@ -1021,9 +1021,9 @@ class Transporte_PedidoControle extends Transporte_Controle
                 ''
             ),
             Array(
-                'Print'     => true,
-                'Pdf'       => true,
-                'Excel'     => true,
+                'Print'     => TRUE,
+                'Pdf'       => TRUE,
+                'Excel'     => TRUE,
                 'Link'      => 'Transporte/Pedido/Trans_Ped_Minhas',
             )
         )));
@@ -1079,9 +1079,9 @@ class Transporte_PedidoControle extends Transporte_Controle
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
             false,
             Array(
-                'Print'     => true,
-                'Pdf'       => true,
-                'Excel'     => true,
+                'Print'     => TRUE,
+                'Pdf'       => TRUE,
+                'Excel'     => TRUE,
                 'Link'      => 'Transporte/Pedido/Trans_Ped_Minhas',
             )
         )));
@@ -1165,9 +1165,9 @@ class Transporte_PedidoControle extends Transporte_Controle
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
             false,
             Array(
-                'Print'     => true,
-                'Pdf'       => true,
-                'Excel'     => true,
+                'Print'     => TRUE,
+                'Pdf'       => TRUE,
+                'Excel'     => TRUE,
                 'Link'      => 'Transporte/Pedido/Trans_Sol_PedAceitos',
             )
         )));
@@ -1221,9 +1221,9 @@ class Transporte_PedidoControle extends Transporte_Controle
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
             false,
             Array(
-                'Print'     => true,
-                'Pdf'       => true,
-                'Excel'     => true,
+                'Print'     => TRUE,
+                'Pdf'       => TRUE,
+                'Excel'     => TRUE,
                 'Link'      => 'Transporte/Pedido/Trans_Sol_PedRecusados',
             )
         )));
@@ -1277,9 +1277,9 @@ class Transporte_PedidoControle extends Transporte_Controle
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
             false,
             Array(
-                'Print'     => true,
-                'Pdf'       => true,
-                'Excel'     => true,
+                'Print'     => TRUE,
+                'Pdf'       => TRUE,
+                'Excel'     => TRUE,
                 'Link'      => 'Transporte/Pedido/Trans_Sol_PedPendente',
             )
         )));
@@ -1620,9 +1620,9 @@ class Transporte_PedidoControle extends Transporte_Controle
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
             false,
             Array(
-                'Print'     => true,
-                'Pdf'       => true,
-                'Excel'     => true,
+                'Print'     => TRUE,
+                'Pdf'       => TRUE,
+                'Excel'     => TRUE,
                 'Link'      => 'Transporte/Pedido/Caminho_Ped_Aceitas',
             )
         )));
@@ -1679,9 +1679,9 @@ class Transporte_PedidoControle extends Transporte_Controle
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
             false,
             Array(
-                'Print'     => true,
-                'Pdf'       => true,
-                'Excel'     => true,
+                'Print'     => TRUE,
+                'Pdf'       => TRUE,
+                'Excel'     => TRUE,
                 'Link'      => 'Transporte/Pedido/Caminho_Ped_Novas',
             )
         )));
@@ -1742,9 +1742,9 @@ class Transporte_PedidoControle extends Transporte_Controle
                 ''
             ),
             Array(
-                'Print'     => true,
-                'Pdf'       => true,
-                'Excel'     => true,
+                'Print'     => TRUE,
+                'Pdf'       => TRUE,
+                'Excel'     => TRUE,
                 'Link'      => 'Transporte/Pedido/Caminho_Ped_Minhas',
             )
         )));
@@ -1800,9 +1800,9 @@ class Transporte_PedidoControle extends Transporte_Controle
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
             false,
             Array(
-                'Print'     => true,
-                'Pdf'       => true,
-                'Excel'     => true,
+                'Print'     => TRUE,
+                'Pdf'       => TRUE,
+                'Excel'     => TRUE,
                 'Link'      => 'Transporte/Pedido/Caminho_Ped_Minhas',
             )
         )));
@@ -1886,9 +1886,9 @@ class Transporte_PedidoControle extends Transporte_Controle
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
             false,
             Array(
-                'Print'     => true,
-                'Pdf'       => true,
-                'Excel'     => true,
+                'Print'     => TRUE,
+                'Pdf'       => TRUE,
+                'Excel'     => TRUE,
                 'Link'      => 'Transporte/Pedido/Caminho_Sol_PedAceitos',
             )
         )));
@@ -1942,9 +1942,9 @@ class Transporte_PedidoControle extends Transporte_Controle
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
             false,
             Array(
-                'Print'     => true,
-                'Pdf'       => true,
-                'Excel'     => true,
+                'Print'     => TRUE,
+                'Pdf'       => TRUE,
+                'Excel'     => TRUE,
                 'Link'      => 'Transporte/Pedido/Caminho_Sol_PedRecusados',
             )
         )));
@@ -1998,9 +1998,9 @@ class Transporte_PedidoControle extends Transporte_Controle
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
             false,
             Array(
-                'Print'     => true,
-                'Pdf'       => true,
-                'Excel'     => true,
+                'Print'     => TRUE,
+                'Pdf'       => TRUE,
+                'Excel'     => TRUE,
                 'Link'      => 'Transporte/Pedido/Caminho_Sol_PedPendente',
             )
         )));

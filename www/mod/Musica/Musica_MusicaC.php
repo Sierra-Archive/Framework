@@ -168,9 +168,9 @@ class Musica_MusicaControle extends Musica_Controle
                 ''
             ),
             Array(
-                'Print'     => true,
-                'Pdf'       => true,
-                'Excel'     => true,
+                'Print'     => TRUE,
+                'Pdf'       => TRUE,
+                'Excel'     => TRUE,
                 'Link'      => 'Musica/Musica/Musicas'.$url_add,
             )
         )));

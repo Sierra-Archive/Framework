@@ -45,21 +45,21 @@ final Class Social_Acao_Presente_DAO extends Framework\App\Dao
                 'mysql_titulo'      => 'acao',
                 'mysql_tipovar'     => 'int', //varchar, int, 
                 'mysql_tamanho'     => 11,
-                'mysql_null'        => true,  // nulo ?
+                'mysql_null'        => TRUE,  // nulo ?
                 'mysql_default'     => 0, // valor padrao
-                'mysql_primary'     => true,  // chave primaria
+                'mysql_primary'     => TRUE,  // chave primaria
                 'mysql_indice_unico'=> 'acao',
                 'mysql_estrangeira' => 'SA.id|SA.nome', // chave estrangeira     ligacao|apresentacao|condicao
-                'mysql_autoadd'     => false,
-                'mysql_comment'     => false,
-                'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
-                'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
-                'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
+                'mysql_autoadd'     => FALSE,
+                'mysql_comment'     => FALSE,
+                'mysql_inside'      => FALSE, // Funcao Executada quando o dado for inserido no banco de dados
+                'mysql_outside'     => FALSE, // Funcao Executada quando o dado for retirado no banco de dados
+                'perm_copia'        => FALSE, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => 'social/Acao/Acoes_Add',
                 'edicao'            => Array(
                     'Nome'              => __('Ação'),
-                    'valor_padrao'      => false,
-                    'readonly'          => false,
+                    'valor_padrao'      => FALSE,
+                    'readonly'          => FALSE,
                     'aviso'             => ''
                 )
             ),
@@ -67,21 +67,21 @@ final Class Social_Acao_Presente_DAO extends Framework\App\Dao
                 'mysql_titulo'      => 'presente',
                 'mysql_tipovar'     => 'int', //varchar, int, 
                 'mysql_tamanho'     => 11,
-                'mysql_null'        => true,  // nulo ?
+                'mysql_null'        => TRUE,  // nulo ?
                 'mysql_default'     => 0, // valor padrao
-                'mysql_primary'     => true,  // chave primaria
+                'mysql_primary'     => TRUE,  // chave primaria
                 'mysql_indice_unico'=> 'acao',
                 'mysql_estrangeira' => 'U.id|U.nome-U.razao_social', // chave estrangeira     ligacao|apresentacao|condicao
-                'mysql_autoadd'     => false,
-                'mysql_comment'     => false,
-                'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
-                'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
-                'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
+                'mysql_autoadd'     => FALSE,
+                'mysql_comment'     => FALSE,
+                'mysql_inside'      => FALSE, // Funcao Executada quando o dado for inserido no banco de dados
+                'mysql_outside'     => FALSE, // Funcao Executada quando o dado for retirado no banco de dados
+                'perm_copia'        => FALSE, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => 'usuario/Admin/Usuarios_Add/cliente', //0 ninguem, 1 admin, 2 todos
                 'edicao'            => Array(
                     'Nome'              => __('Personagem'),
-                    'valor_padrao'      => false,
-                    'readonly'          => false,
+                    'valor_padrao'      => FALSE,
+                    'readonly'          => FALSE,
                     'aviso'             => ''
                 )
             )

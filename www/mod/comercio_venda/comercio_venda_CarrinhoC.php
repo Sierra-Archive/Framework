@@ -62,9 +62,9 @@ class comercio_venda_CarrinhoControle extends comercio_venda_Controle
                 ''
             ),
             Array(
-                'Print'     => true,
-                'Pdf'       => true,
-                'Excel'     => true,
+                'Print'     => TRUE,
+                'Pdf'       => TRUE,
+                'Excel'     => TRUE,
                 'Link'      => 'comercio_venda/Carrinho/Carrinhos',
             )
         )));
@@ -539,9 +539,9 @@ class comercio_venda_CarrinhoControle extends comercio_venda_Controle
                 ''
             ),
             Array(
-                'Print'     => true,
-                'Pdf'       => true,
-                'Excel'     => true,
+                'Print'     => TRUE,
+                'Pdf'       => TRUE,
+                'Excel'     => TRUE,
                 'Link'      => 'comercio_venda/Carrinho/Mesas',
             )
         )));

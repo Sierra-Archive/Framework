@@ -50,9 +50,9 @@ class Financeiro_BancoControle extends Financeiro_Controle
                 ''
             ),
             Array(
-                'Print'     => true,
-                'Pdf'       => true,
-                'Excel'     => true,
+                'Print'     => TRUE,
+                'Pdf'       => TRUE,
+                'Excel'     => TRUE,
                 'Link'     => 'Financeiro/Banco/Bancos',
             )
         )));

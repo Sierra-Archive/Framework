@@ -17,7 +17,7 @@ $config_Menu = function () {
                 'Gravidade'             => 9,
                 'Img'                   => 'menusuperior/rede.png',
                 'Icon'                  => 'sitemap',
-                'Filhos'                => false,
+                'Filhos'                => FALSE,
             ),),
         ),
     );

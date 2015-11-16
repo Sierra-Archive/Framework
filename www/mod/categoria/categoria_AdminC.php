@@ -58,9 +58,9 @@ class categoria_AdminControle extends categoria_Controle
                 ''
             ),
             Array(
-                'Print'     => true,
-                'Pdf'       => true,
-                'Excel'     => true,
+                'Print'     => TRUE,
+                'Pdf'       => TRUE,
+                'Excel'     => TRUE,
                 'Link'      => 'categoria/Admin/Categorias',
             )
         )));

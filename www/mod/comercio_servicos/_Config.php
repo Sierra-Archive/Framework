@@ -17,7 +17,7 @@ $config_Menu = function () {
                 'Gravidade'             => 9,
                 'Img'                   => 'turboadmin/m-dashboard.png',
                 'Icon'                  => 'archive',
-                'Filhos'                => false,
+                'Filhos'                => FALSE,
             ),'Tipos de Serviços'=>Array(
                 'Nome'                  => __('Tipos de Serviços'),
                 'Link'                  => 'comercio_servicos/ServicoTipo/Servico_Tipo',
@@ -27,7 +27,7 @@ $config_Menu = function () {
                 'Permissao_Func'        => Array(// Permissoes NEcessarias
                     'comercio_servicos_ServicoTipo' => true
                 ),
-                'Filhos'                => false,
+                'Filhos'                => FALSE,
             ),'Btu\'s'=>Array(
                 'Nome'                  => __('Btus'),
                 'Link'                  => 'comercio_servicos/Instalacao/Btu',
@@ -37,7 +37,7 @@ $config_Menu = function () {
                 'Permissao_Func'        => Array(// Permissoes NEcessarias
                     'comercio_servicos_Instalacao' => true
                 ),
-                'Filhos'                => false,
+                'Filhos'                => FALSE,
             ),'Suporte'=>Array(
                 'Nome'                  => __('Suporte'),
                 'Link'                  => 'comercio_servicos/Instalacao/Suporte',
@@ -47,7 +47,7 @@ $config_Menu = function () {
                 'Permissao_Func'        => Array(// Permissoes NEcessarias
                     'comercio_servicos_Instalacao' => true
                 ),
-                'Filhos'                => false,
+                'Filhos'                => FALSE,
             )),
         )
     );
@@ -261,13 +261,13 @@ $config_Funcional = function () {
             'Nome'                  => 'Serviços -> Tipo',
             'Desc'                  => __('Se possui Tipo'),
             'chave'                 => 'comercio_servicos_ServicoTipo',
-            'Valor'                 => true,
+            'Valor'                 => TRUE,
         ),
         'comercio_servicos_nome' => Array(
             'Nome'                  => 'Serviços -> Nome',
             'Desc'                  => __('Se possue nome'),
             'chave'                 => 'comercio_servicos_nome',
-            'Valor'                 => false,
+            'Valor'                 => FALSE,
         ),
         'comercio_servicos_Titulo' => Array(
             'Nome'                  => 'Serviços -> Nome',
@@ -280,7 +280,7 @@ $config_Funcional = function () {
             'Nome'                  => __('Servico de Instalacao'),
             'Desc'                  => __('Fornece serviço de instalacao de ar, gas e linha ?'),
             'chave'                 => 'comercio_servicos_Instalacao',
-            'Valor'                 => false,
+            'Valor'                 => FALSE,
         ),
     );
 };
